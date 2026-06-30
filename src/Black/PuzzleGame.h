@@ -57,9 +57,9 @@ public:
     // BW1W120 00561b60 BW1M100 10133a40 PuzzleGame::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006d9d40 BW1M100 10126ae0 PuzzleGame::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006d96c0 BW1M100 10127440 PuzzleGame::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561b50 BW1M100 10133a00 PuzzleGame::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00561b10 BW1M100 inlined PuzzleGame::GetPos( const(MapCoords *))
@@ -136,9 +136,9 @@ public:
     // BW1W120 00422190 BW1M100 inlined ChessPion::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00422bc0 BW1M100 inlined ChessPion::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00422aa0 BW1M100 inlined ChessPion::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00422180 BW1M100 inlined ChessPion::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00422770 BW1M100 inlined ChessPion::Draw(void)
@@ -154,7 +154,7 @@ public:
     // BW1W120 00422ec0 BW1M100 inlined ChessPion::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // BW1W120 00422ed0 BW1M100 inlined ChessPion::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
     // BW1W120 006de260 BW1M100 inlined ChessPion::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 };
@@ -323,9 +323,9 @@ public:
     // BW1W120 00561910 BW1M100 10131890 PuzzleGrain::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006dbe40 BW1M100 10123450 PuzzleGrain::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006dbeb0 BW1M100 10123370 PuzzleGrain::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561900 BW1M100 10131850 PuzzleGrain::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00561920 BW1M100 101318d0 PuzzleGrain::CanBeEatenByCreature(Creature *)
@@ -457,9 +457,9 @@ public:
     // BW1W120 00561ae0 BW1M100 10131770 PuzzleMobileObject::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006dbf20 BW1M100 10123290 PuzzleMobileObject::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006dbf80 BW1M100 101231b0 PuzzleMobileObject::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561ad0 BW1M100 10131730 PuzzleMobileObject::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 006dc510 BW1M100 10122590 PuzzleMobileObject::GetImmersionTexture(void)
@@ -531,9 +531,9 @@ public:
     // BW1W120 00561890 BW1M100 101335e0 PuzzleTotem::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006da740 BW1M100 10126150 PuzzleTotem::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006da7f0 BW1M100 10126020 PuzzleTotem::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561880 BW1M100 101335a0 PuzzleTotem::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 006da710 BW1M100 10126270 PuzzleTotem::SetMaxHeight(float)

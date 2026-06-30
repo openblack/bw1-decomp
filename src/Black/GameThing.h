@@ -422,9 +422,9 @@ public:
     // BW1W120 00401930 BW1M100 1017a550 GameThing::GetShowNeedsPos(unsigned long, MapCoords *)
     virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
     // BW1W120 0056fcf0 BW1M100 103807f0 GameThing::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0056fbe0 BW1M100 101724b0 GameThing::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0056fd90 BW1M100 101361c0 GameThing::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0056fda0 BW1M100 100bc180 GameThing::SaveExtraData(GameOSFile &)

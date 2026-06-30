@@ -38,9 +38,9 @@ public:
     // BW1W120 00405100 BW1M100 10179a00 PlannedAbode::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00405860 BW1M100 10260310 PlannedAbode::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00405830 BW1M100 10350950 PlannedAbode::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 004050f0 BW1M100 10531c20 PlannedAbode::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 004061a0 BW1M100 104333f0 PlannedAbode::IsWonder(void)

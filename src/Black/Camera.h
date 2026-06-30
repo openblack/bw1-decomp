@@ -46,9 +46,9 @@ public:
     // BW1W120 00443840 BW1M100 10198640 GCamera::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 004433a0 BW1M100 10198870 GCamera::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 004430e0 BW1M100 10198d40 GCamera::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00441b20 BW1M100 101982e0 GCamera::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00441b00 BW1M100 10086270 GCamera::IsMoving( const(void))

@@ -40,9 +40,9 @@ public:
     // BW1W120 0055d160 BW1M100 105263d0 OneOffSpellSeed::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0072aa20 BW1M100 10526a70 OneOffSpellSeed::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0072a930 BW1M100 10526be0 OneOffSpellSeed::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055d150 BW1M100 10526390 OneOffSpellSeed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0072ac50 BW1M100 10526640 OneOffSpellSeed::GetOverwritePickUpToolTip(void)

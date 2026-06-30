@@ -28,9 +28,9 @@ public:
     // BW1W120 0041dd90 BW1M100 10172860 Dove::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0041f130 BW1M100 10173580 Dove::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0041f110 BW1M100 101735e0 Dove::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0041dd80 BW1M100 10172830 Dove::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0041f190 BW1M100 10173450 Dove::CanBePickedUpByCreature(Creature *)
@@ -62,9 +62,9 @@ public:
     // BW1W120 0041eb50 BW1M100 10175210 SpellDove::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0041fad0 BW1M100 10172970 SpellDove::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0041fb40 BW1M100 10172890 SpellDove::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0041eb40 BW1M100 101751d0 SpellDove::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0041f5c0 BW1M100 10172e20 SpellDove::SetDying(void)

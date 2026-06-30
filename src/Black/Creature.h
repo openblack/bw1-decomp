@@ -246,9 +246,9 @@ public:
     // BW1W120 0071bd50 BW1M100 1050fcd0 Creature::GetSampleForAttack(void)
     virtual uint32_t GetSampleForAttack();
     // BW1W120 004e5ff0 BW1M100 1026b130 Creature::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 004e4ea0 BW1M100 1026c9c0 Creature::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 004740c0 BW1M100 101e33f0 Creature::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 004e6ab0 BW1M100 1026aa90 Creature::ResolveLoad(void)
@@ -426,7 +426,7 @@ public:
     // BW1W120 0047d4b0 BW1M100 101cf930 Creature::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // BW1W120 0047d500 BW1M100 101cf7f0 Creature::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
     // BW1W120 00477f00 BW1M100 101da0d0 Creature::IsScary(void)
     virtual bool IsScary();
     // BW1W120 00477ee0 BW1M100 101da160 Creature::GetFacingPitch(void)
@@ -597,9 +597,9 @@ public:
     // BW1W120 0050b360 BW1M100 100c0320 Creed::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0050b4e0 BW1M100 100c03b0 Creed::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0050b4c0 BW1M100 100c0410 Creed::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0050b350 BW1M100 100c02f0 Creed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0050b4a0 BW1M100 100c0470 Creed::SetScale(float)

@@ -39,9 +39,9 @@ public:
     // BW1W120 0072c040 BW1M100 10534210 MapShield::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0072c350 BW1M100 10531180 MapShield::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0072c390 BW1M100 105310e0 MapShield::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0072c030 BW1M100 105341d0 MapShield::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0072c010 BW1M100 10534010 MapShield::HandShouldFeelWithMeshIntersect(void)

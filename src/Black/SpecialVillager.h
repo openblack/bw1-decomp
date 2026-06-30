@@ -30,9 +30,9 @@ public:
     // BW1W120 00560fd0 BW1M100 10147cc0 SpecialVillager::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0071f5d0 BW1M100 10146d20 SpecialVillager::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0071f560 BW1M100 10146e00 SpecialVillager::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00560fc0 BW1M100 10147c80 SpecialVillager::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0071f3d0 BW1M100 1002d450 SpecialVillager::Draw(void)

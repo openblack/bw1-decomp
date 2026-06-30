@@ -34,9 +34,9 @@ public:
     // BW1W120 004247b0 BW1M100 100ad420 GArena::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 004251d0 BW1M100 100aa860 GArena::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 004250d0 BW1M100 100aa9e0 GArena::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 004247a0 BW1M100 100ad3e0 GArena::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00424790 BW1M100 100ad3a0 GArena::GetText(void)
@@ -56,9 +56,9 @@ public:
     // BW1W120 00425330 BW1M100 100a9c90 ArenaSpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 004257d0 BW1M100 100a9ef0 ArenaSpellIcon::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 004256e0 BW1M100 100aa070 ArenaSpellIcon::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00425320 BW1M100 100a9c50 ArenaSpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00425540 BW1M100 100aa340 ArenaSpellIcon::Create3DObject(void)

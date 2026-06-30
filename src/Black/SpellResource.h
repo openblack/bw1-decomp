@@ -24,9 +24,9 @@ public:
     // BW1W120 0055cfc0 BW1M100 1051feb0 SpellResource::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007252f0 BW1M100 1051f230 SpellResource::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00725350 BW1M100 1051f150 SpellResource::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055cfb0 BW1M100 1051fe70 SpellResource::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00724c90 BW1M100 1051fc70 SpellResource::HasEnoughChantsAndLifeForRecast(void)

@@ -92,9 +92,9 @@ public:
     // BW1W120 005190e0 BW1M100 1008d3a0 Object::DrawInHand(GInterfaceStatus *)
     virtual void DrawInHand(GInterfaceStatus* param_1);
     // BW1W120 00639eb0 BW1M100 103d1b20 Object::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00639b90 BW1M100 103d1d50 Object::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0063a020 BW1M100 103d1940 Object::ResolveLoad(void)
     virtual void ResolveLoad();
     // BW1W120 00402600 BW1M100 1004b110 Object::GetLife(void)

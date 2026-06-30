@@ -28,9 +28,9 @@ public:
     // BW1W120 0043d710 BW1M100 100be260 StandardBuildingSite::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0043d890 BW1M100 100b7ec0 StandardBuildingSite::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0043d850 BW1M100 100b7f60 StandardBuildingSite::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0043d700 BW1M100 100be220 StandardBuildingSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0043d8d0 BW1M100 10077e70 StandardBuildingSite::Process(void)

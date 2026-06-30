@@ -30,9 +30,9 @@ public:
     // BW1W120 00561460 BW1M100 105347c0 GStreetLantern::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00734be0 BW1M100 10534ab0 GStreetLantern::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00734c90 BW1M100 10534980 GStreetLantern::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561450 BW1M100 10534780 GStreetLantern::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00561440 BW1M100 10534740 GStreetLantern::IsStreetLantern(void)

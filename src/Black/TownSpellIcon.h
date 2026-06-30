@@ -40,9 +40,9 @@ public:
     // BW1W120 0055e060 BW1M100 10561d20 TownSpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00748fb0 BW1M100 10560fa0 TownSpellIcon::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00748f70 BW1M100 10561030 TownSpellIcon::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055e050 BW1M100 10561ce0 TownSpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00748f00 BW1M100 10561170 TownSpellIcon::GetWorshipSite(void)
@@ -66,9 +66,9 @@ public:
     // BW1W120 0055e0b0 BW1M100 10560a80 TownCentreSpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007490e0 BW1M100 10560b00 TownCentreSpellIcon::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00748ff0 BW1M100 10560d50 TownCentreSpellIcon::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055e0a0 BW1M100 10560a40 TownCentreSpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00519640 BW1M100 100c7a30 TownCentreSpellIcon::Draw(void)

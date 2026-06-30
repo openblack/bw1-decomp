@@ -22,9 +22,9 @@ public:
     // BW1W120 00429310 BW1M100 1017c980 ThingMusicInfo::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00429ae0 BW1M100 1017c9c0 ThingMusicInfo::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00429950 BW1M100 1017cc10 ThingMusicInfo::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00429300 BW1M100 1017c940 ThingMusicInfo::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

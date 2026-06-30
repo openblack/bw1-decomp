@@ -63,9 +63,9 @@ public:
     // BW1W120 005fe8f0 BW1M100 103b63a0 LandscapeVortex::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
     // BW1W120 00600210 BW1M100 103b3c80 LandscapeVortex::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00600000 BW1M100 103b4050 LandscapeVortex::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005fd610 BW1M100 103b93a0 LandscapeVortex::PhysicsEditorCreate(int)
     virtual void PhysicsEditorCreate(int param_1);
     // BW1W120 005fd620 BW1M100 103b93e0 LandscapeVortex::CanBePickedUpByCreature(Creature *)
@@ -133,9 +133,9 @@ public:
     // BW1W120 005fd7a0 BW1M100 103b99f0 LandscapeVortexIn::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00600550 BW1M100 103b3a80 LandscapeVortexIn::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00600460 BW1M100 103b3b80 LandscapeVortexIn::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005fd790 BW1M100 103b99b0 LandscapeVortexIn::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 005fd970 BW1M100 103b8540 LandscapeVortexIn::GetPhysicsConstantsType(void)
@@ -163,9 +163,9 @@ public:
     // BW1W120 005fddd0 BW1M100 103b98a0 LandscapeVortexOut::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00600880 BW1M100 103b3300 LandscapeVortexOut::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00600630 BW1M100 103b3690 LandscapeVortexOut::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005fddc0 BW1M100 103b9860 LandscapeVortexOut::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 005fdfe0 BW1M100 103b77f0 LandscapeVortexOut::SetTown(Town *)

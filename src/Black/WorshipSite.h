@@ -73,9 +73,9 @@ public:
     // BW1W120 0077cd70 BW1M100 105aef50 WorshipSite::GetShowNeedsPos(unsigned long, MapCoords *)
     virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
     // BW1W120 0077d700 BW1M100 105acc40 WorshipSite::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0077d2f0 BW1M100 105ad890 WorshipSite::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055dcd0 BW1M100 105b3fc0 WorshipSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0077daf0 BW1M100 105acbf0 WorshipSite::ResolveLoad(void)

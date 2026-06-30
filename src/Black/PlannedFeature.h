@@ -24,9 +24,9 @@ public:
     // BW1W120 00527490 BW1M100 100d16e0 PlannedFeature::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00527580 BW1M100 100d0f60 PlannedFeature::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00527550 BW1M100 100d0ff0 PlannedFeature::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00527480 BW1M100 100d16a0 PlannedFeature::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 005274d0 BW1M100 100d1080 PlannedFeature::CreatePlanned(float)

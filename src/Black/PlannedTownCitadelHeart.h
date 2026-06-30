@@ -29,9 +29,9 @@ public:
     // BW1W120 00467e50 BW1M100 101c2000 PlannedTownCitadelHeart::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00467ff0 BW1M100 101bd570 PlannedTownCitadelHeart::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00467fc0 BW1M100 101bd610 PlannedTownCitadelHeart::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00467e40 BW1M100 101c1fb0 PlannedTownCitadelHeart::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00467e20 BW1M100 101c1f20 PlannedTownCitadelHeart::IsWonder(void)

@@ -25,9 +25,9 @@ public:
     // BW1W120 00561060 BW1M100 10501620 ScriptMarker::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0070d9f0 BW1M100 10501660 ScriptMarker::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0070d9d0 BW1M100 105016d0 ScriptMarker::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561050 BW1M100 105015e0 ScriptMarker::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00561030 BW1M100 10501550 ScriptMarker::PhysicsEditorCreate(int)

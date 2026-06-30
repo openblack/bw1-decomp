@@ -46,9 +46,9 @@ public:
     // BW1W120 0055d750 BW1M100 103b9760 MobileStatic::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00608590 BW1M100 103c1060 MobileStatic::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00608650 BW1M100 103c0f20 MobileStatic::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055d740 BW1M100 103b9720 MobileStatic::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0055d720 BW1M100 103af140 MobileStatic::PhysicsEditorCreate(int)

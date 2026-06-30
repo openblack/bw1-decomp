@@ -27,9 +27,9 @@ public:
     // BW1W120 005faf30 BW1M100 103acd80 GMagicHand::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 005fb320 BW1M100 103acdc0 GMagicHand::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005fb2c0 BW1M100 103ace90 GMagicHand::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005faf20 BW1M100 103acd40 GMagicHand::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

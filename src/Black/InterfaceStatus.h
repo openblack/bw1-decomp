@@ -76,9 +76,9 @@ public:
     // BW1W120 005db980 BW1M100 1036be40 GInterfaceStatus::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 005dcdc0 BW1M100 1036c160 GInterfaceStatus::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005dca50 BW1M100 1036c810 GInterfaceStatus::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005db970 BW1M100 1036be00 GInterfaceStatus::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 005dd130 BW1M100 1036c080 GInterfaceStatus::SaveExtraData(GameOSFile &)

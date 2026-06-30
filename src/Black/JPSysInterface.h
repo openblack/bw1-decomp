@@ -31,9 +31,9 @@ public:
     // BW1W120 0055ecc0 BW1M100 10423d80 GJPSysInterface::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006944d0 BW1M100 1041dae0 GJPSysInterface::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006cb060 BW1M100 10485b50 GJPSysInterface::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055ecb0 BW1M100 10423d40 GJPSysInterface::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 006736b0 BW1M100 inlined GJPSysInterface::Process__1(PSysProcessInfo *const, unsigned int)

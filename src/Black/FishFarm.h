@@ -57,9 +57,9 @@ public:
     // BW1W120 0052c5b0 BW1M100 100dd9a0 FishFarm::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0052d4f0 BW1M100 100daf80 FishFarm::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0052d3b0 BW1M100 100db1a0 FishFarm::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0052c5a0 BW1M100 100dd960 FishFarm::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0052c490 BW1M100 inlined FishFarm::GetArrivePos(MapCoords *)

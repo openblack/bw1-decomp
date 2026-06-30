@@ -48,9 +48,9 @@ public:
     // BW1W120 0055c7f0 BW1M100 101342c0 Reaction::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006e4ba0 BW1M100 10134400 Reaction::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006e4990 BW1M100 10134810 Reaction::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055c7e0 BW1M100 10134280 Reaction::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

@@ -47,9 +47,9 @@ public:
     // BW1W120 00425be0 BW1M100 100adc60 MobileObject::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00607d00 BW1M100 103bb660 MobileObject::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00607c40 BW1M100 103bb7a0 MobileObject::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00425bd0 BW1M100 100adc20 MobileObject::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00607ab0 BW1M100 103bbc80 MobileObject::PhysicsEditorCreate(int)

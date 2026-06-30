@@ -34,9 +34,9 @@ public:
     // BW1W120 006e5680 BW1M100 10138f70 Reward::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006e6c70 BW1M100 10139000 Reward::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006e69c0 BW1M100 10139380 Reward::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 006e5670 BW1M100 10138f30 Reward::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 006e6f00 BW1M100 10138fb0 Reward::ResolveLoad(void)

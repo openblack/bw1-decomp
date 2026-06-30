@@ -37,9 +37,9 @@ public:
     // BW1W120 0055ebc0 BW1M100 10104780 Mist::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00606a10 BW1M100 10104820 Mist::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00606920 BW1M100 10104980 Mist::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055ebb0 BW1M100 10104750 Mist::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00606af0 BW1M100 101047c0 Mist::ResolveLoad(void)

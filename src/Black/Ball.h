@@ -51,9 +51,9 @@ public:
     // BW1W120 00435ad0 BW1M100 100affd0 Ball::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00436260 BW1M100 100b0080 Ball::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00436110 BW1M100 100b0260 Ball::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00435ac0 BW1M100 100affa0 Ball::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00435ab0 BW1M100 100aff50 Ball::CanBePickedUpByCreature(Creature *)

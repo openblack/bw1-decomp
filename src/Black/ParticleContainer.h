@@ -34,9 +34,9 @@ public:
     // BW1W120 00560f70 BW1M100 1010feb0 GParticleContainer::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0063e6d0 BW1M100 1010ff00 GParticleContainer::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0063e5d0 BW1M100 101100b0 GParticleContainer::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00560f60 BW1M100 1010fe70 GParticleContainer::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0063e3f0 BW1M100 10110510 GParticleContainer::SetScale(float)

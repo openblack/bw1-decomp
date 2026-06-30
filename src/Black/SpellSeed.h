@@ -35,9 +35,9 @@ public:
     // BW1W120 00727fb0 BW1M100 1052cdf0 SpellSeed::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00729fb0 BW1M100 10527d30 SpellSeed::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00729ca0 BW1M100 10528230 SpellSeed::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00727fa0 BW1M100 1052cdb0 SpellSeed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00727f70 BW1M100 1052cce0 SpellSeed::GetCreatureBeliefType(void)

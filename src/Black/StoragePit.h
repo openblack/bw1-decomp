@@ -53,9 +53,9 @@ public:
     // BW1W120 0055cd40 BW1M100 101515a0 StoragePit::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00733920 BW1M100 10151890 StoragePit::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 007338d0 BW1M100 10151930 StoragePit::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055cd30 BW1M100 10151560 StoragePit::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0055ccb0 BW1M100 inlined StoragePit::GetArrivePos(MapCoords *)

@@ -29,9 +29,9 @@ public:
     // BW1W120 005612b0 BW1M100 10160000 Whale::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007752c0 BW1M100 10160090 Whale::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 007752a0 BW1M100 101600f0 Whale::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005612a0 BW1M100 1015ffd0 Whale::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 007752e0 BW1M100 10160040 Whale::ResolveLoad(void)

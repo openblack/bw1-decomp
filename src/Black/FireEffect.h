@@ -46,9 +46,9 @@ public:
     // BW1W120 0072ead0 BW1M100 10150910 FireEffect::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00730df0 BW1M100 1014bcc0 FireEffect::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00730b00 BW1M100 1014c110 FireEffect::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0072eac0 BW1M100 101508d0 FireEffect::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 007310d0 BW1M100 1014bc70 FireEffect::ResolveLoad(void)

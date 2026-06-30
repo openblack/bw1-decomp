@@ -42,9 +42,9 @@ public:
     // BW1W120 00561570 BW1M100 105427e0 Totem::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00737800 BW1M100 10542950 Totem::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 007378b0 BW1M100 10542820 Totem::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561560 BW1M100 105427b0 Totem::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00561530 BW1M100 101337e0 Totem::IsCastShadowAtNight(void)

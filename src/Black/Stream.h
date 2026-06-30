@@ -25,9 +25,9 @@ public:
     // BW1W120 0055de10 BW1M100 10155220 GStream::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007344e0 BW1M100 10153560 GStream::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00734380 BW1M100 10153ac0 GStream::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055de00 BW1M100 101551e0 GStream::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00734640 BW1M100 101534f0 GStream::ResolveLoad(void)

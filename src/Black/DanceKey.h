@@ -27,9 +27,9 @@ public:
     // BW1W120 0050ebc0 BW1M100 102ace60 DanceKeyFrame::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0050f2f0 BW1M100 102acea0 DanceKeyFrame::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0050f1c0 BW1M100 102ad2b0 DanceKeyFrame::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0050ebb0 BW1M100 102ace20 DanceKeyFrame::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

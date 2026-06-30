@@ -24,9 +24,9 @@ public:
     // BW1W120 0055d290 BW1M100 1051ec90 SpellFlockFlying::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007249d0 BW1M100 1051c220 SpellFlockFlying::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00724ac0 BW1M100 1051c0a0 SpellFlockFlying::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055d280 BW1M100 1051ec50 SpellFlockFlying::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00723a30 BW1M100 1051d940 SpellFlockFlying::GetParticleType(void)

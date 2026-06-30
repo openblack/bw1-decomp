@@ -44,9 +44,9 @@ public:
     // BW1W120 004694e0 BW1M100 101c37f0 CitadelPart::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 004698b0 BW1M100 101c2780 CitadelPart::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00469830 BW1M100 101c2870 CitadelPart::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 004694d0 BW1M100 101c37b0 CitadelPart::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00464aa0 BW1M100 101c2460 CitadelPart::GetCreatureBeliefType(void)

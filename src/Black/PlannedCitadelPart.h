@@ -25,9 +25,9 @@ public:
     // BW1W120 00465590 BW1M100 101c2130 PlannedCitadelPart::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00469720 BW1M100 101c2e30 PlannedCitadelPart::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 004696f0 BW1M100 101c2ed0 PlannedCitadelPart::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00465580 BW1M100 101c20f0 PlannedCitadelPart::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

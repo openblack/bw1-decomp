@@ -31,7 +31,7 @@ public:
     // BW1W120 00731a90 BW1M100 inlined FireGraphic::SpritePos::_dt( (void))
     virtual ~FireGraphic__SpritePos();
     // BW1W120 006cb040 BW1M100 inlined FireGraphic::SpritePos::Save( (GameOSFile &))
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 004664e0 BW1M100 inlined FireGraphic::SpritePos::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };

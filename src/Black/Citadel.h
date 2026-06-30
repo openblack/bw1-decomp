@@ -50,9 +50,9 @@ public:
     // BW1W120 00462ad0 BW1M100 101b6ff0 Citadel::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00463dc0 BW1M100 101b71d0 Citadel::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00463b00 BW1M100 101b7db0 Citadel::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00462ac0 BW1M100 101b6fb0 Citadel::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00462a60 BW1M100 101b6e50 Citadel::GetCreatureBeliefType(void)

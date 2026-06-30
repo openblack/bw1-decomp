@@ -46,9 +46,9 @@ public:
     // BW1W120 0055e140 BW1M100 1013e6d0 Scaffold::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006ea3d0 BW1M100 10140100 Scaffold::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006ea240 BW1M100 10140340 Scaffold::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055e130 BW1M100 1013e690 Scaffold::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 006ea560 BW1M100 1013ffc0 Scaffold::ResolveLoad(void)

@@ -32,9 +32,9 @@ public:
     // BW1W120 005fcf20 BW1M100 103b23b0 MagicTree::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 005fd1c0 BW1M100 103b23f0 MagicTree::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005fd110 BW1M100 103b2510 MagicTree::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005fcf10 BW1M100 103b2370 MagicTree::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 005fcf00 BW1M100 103b2330 MagicTree::GetImpressiveType(void)

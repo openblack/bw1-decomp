@@ -36,9 +36,9 @@ public:
     // BW1W120 005fc0f0 BW1M100 103af0b0 MagicTeleport::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 005fbf50 BW1M100 103b1400 MagicTeleport::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005fbfa0 BW1M100 103b1350 MagicTeleport::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005fc0e0 BW1M100 103af070 MagicTeleport::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 005fc040 BW1M100 103aed40 MagicTeleport::CanBePickedUpByCreature(Creature *)

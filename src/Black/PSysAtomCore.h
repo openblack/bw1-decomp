@@ -53,9 +53,9 @@ public:
     // BW1W120 006739e0 BW1M100 10423c80 AtomCore::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00694840 BW1M100 1041d1f0 AtomCore::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006cb3a0 BW1M100 10484ec0 AtomCore::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 006739d0 BW1M100 10423c40 AtomCore::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
@@ -81,9 +81,9 @@ public:
     // BW1W120 0055f390 BW1M100 inlined UR_Plasma::AtomData::GetDebugText( (void))
     virtual char* GetDebugText();
     // BW1W120 00696570 BW1M100 inlined UR_Plasma::AtomData::Load( (GameOSFile &))
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006cd0c0 BW1M100 inlined UR_Plasma::AtomData::Save( (GameOSFile &))
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055f380 BW1M100 inlined UR_Plasma::AtomData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };
@@ -99,9 +99,9 @@ public:
     // BW1W120 0055f340 BW1M100 inlined UR_Plasma::SubCollectionData::GetDebugText( (void))
     virtual char* GetDebugText();
     // BW1W120 006963e0 BW1M100 inlined UR_Plasma::SubCollectionData::Load( (GameOSFile &))
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006ccf60 BW1M100 inlined UR_Plasma::SubCollectionData::Save( (GameOSFile &))
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055f330 BW1M100 inlined UR_Plasma::SubCollectionData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };

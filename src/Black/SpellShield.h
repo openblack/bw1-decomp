@@ -38,9 +38,9 @@ public:
     // BW1W120 0072b470 BW1M100 10534380 SpellShield::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0072bb40 BW1M100 105324f0 SpellShield::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0072bc40 BW1M100 10532270 SpellShield::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0072b460 BW1M100 10534340 SpellShield::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0072ba80 BW1M100 10532920 SpellShield::GetImpressiveValue(Living *, Reaction *)

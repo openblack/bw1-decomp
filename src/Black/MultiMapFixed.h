@@ -201,9 +201,9 @@ public:
     // BW1W120 0052ef70 BW1M100 1005fb60 MultiMapFixed::IsFunctional(void)
     virtual bool IsFunctional();
     // BW1W120 0052f310 BW1M100 100de310 MultiMapFixed::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0052f250 BW1M100 100de470 MultiMapFixed::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00421fe0 BW1M100 105b8ff0 MultiMapFixed::GetArrivePos(void)
     virtual MapCoords* GetArrivePos(MapCoords* coords);
     // BW1W120 0052e480 BW1M100 100e0e80 MultiMapFixed::IsObjectInMap(void)

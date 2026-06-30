@@ -47,9 +47,9 @@ public:
     // BW1W120 0066d330 BW1M100 10003c80 PileResource::JustAddResource(RESOURCE_TYPE, unsigned long, bool)
     virtual uint32_t JustAddResource(RESOURCE_TYPE param_1, uint32_t param_2, bool param_3);
     // BW1W120 0066f690 BW1M100 101163b0 PileResource::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0066f620 BW1M100 10116490 PileResource::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0066e3d0 BW1M100 10119880 PileResource::GetLife(void)
     virtual float GetLife();
     // BW1W120 0066e3c0 BW1M100 inlined PileResource::IsField_1(Creature *)

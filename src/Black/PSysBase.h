@@ -22,7 +22,7 @@ public:
     // BW1W120 004664f0 BW1M100 10110ed0 PSysBase::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006944b0 BW1M100 1041db80 PSysBase::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
 };
 
 #endif /* BW1_DECOMP_P_SYS_BASE_INCLUDED_H */

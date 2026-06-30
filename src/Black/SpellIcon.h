@@ -68,9 +68,9 @@ public:
     // BW1W120 0055d470 BW1M100 10526050 SpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00727a00 BW1M100 10521bb0 SpellIcon::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00727940 BW1M100 10521ce0 SpellIcon::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055d460 BW1M100 10526010 SpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0055d420 BW1M100 10525ee0 SpellIcon::GetCreatureBeliefType(void)

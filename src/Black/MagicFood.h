@@ -34,9 +34,9 @@ public:
     // BW1W120 005fa9b0 BW1M100 103abec0 MagicFood::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 005fab40 BW1M100 103abf00 MagicFood::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005fab00 BW1M100 103abf90 MagicFood::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005fa9a0 BW1M100 103abe80 MagicFood::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 005fa990 BW1M100 103abe40 MagicFood::GetImpressiveType(void)

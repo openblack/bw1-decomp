@@ -32,9 +32,9 @@ public:
     // BW1W120 004208d0 BW1M100 10176ab0 SpellWolf::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 004210b0 BW1M100 10176d80 SpellWolf::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 004211d0 BW1M100 10176bb0 SpellWolf::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 004208c0 BW1M100 10176a70 SpellWolf::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0051c560 BW1M100 100c4a10 SpellWolf::Draw(void)

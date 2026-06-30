@@ -28,9 +28,9 @@ public:
     // BW1W120 00722fa0 BW1M100 1051ac90 SpellDispenser::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00722e80 BW1M100 1051acf0 SpellDispenser::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00722d50 BW1M100 1051aeb0 SpellDispenser::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 007226f0 BW1M100 1051aa40 SpellDispenser::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 007226d0 BW1M100 1051a9b0 SpellDispenser::IsSpellDispenser(void)

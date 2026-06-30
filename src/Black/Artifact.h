@@ -36,9 +36,9 @@ public:
     // BW1W120 00426470 BW1M100 100aeac0 TownArtifact::SetVillagerActivity(Villager *)
     virtual uint32_t SetVillagerActivity(Villager* param_1);
     // BW1W120 004266c0 BW1M100 100ae750 TownArtifact::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 004265a0 BW1M100 100ae900 TownArtifact::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00425d70 BW1M100 100ae0b0 TownArtifact::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

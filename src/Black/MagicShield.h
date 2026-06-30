@@ -28,9 +28,9 @@ public:
     // BW1W120 0072c220 BW1M100 10534190 MagicShield::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0072c3d0 BW1M100 10531080 MagicShield::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0072c3f0 BW1M100 10531020 MagicShield::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0072c210 BW1M100 10534150 MagicShield::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0072c300 BW1M100 10531370 MagicShield::Draw(void)

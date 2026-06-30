@@ -84,9 +84,9 @@ public:
     // BW1W120 0071bc30 BW1M100 1050fe70 Spell::GetSampleForAttack(void)
     virtual uint32_t GetSampleForAttack();
     // BW1W120 00721cd0 BW1M100 10514eb0 Spell::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00721930 BW1M100 105155b0 Spell::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0071faf0 BW1M100 10514e40 Spell::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0055cec0 BW1M100 103b1fa0 Spell::GetCreatureBeliefType(void)

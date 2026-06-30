@@ -26,9 +26,9 @@ public:
     // BW1W120 006d0f40 BW1M100 10486980 PSysSound::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006d13a0 BW1M100 10486b50 PSysSound::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006d14a0 BW1M100 104869c0 PSysSound::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 006d0f30 BW1M100 10486940 PSysSound::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

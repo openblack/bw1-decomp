@@ -37,9 +37,9 @@ public:
     // BW1W120 0055ec60 BW1M100 100fbe70 InfluenceRing::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 005cdd40 BW1M100 100fbeb0 InfluenceRing::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005cdc60 BW1M100 100fc000 InfluenceRing::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055ec50 BW1M100 100fbe30 InfluenceRing::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0055ebf0 BW1M100 100fbcc0 InfluenceRing::SetPos(MapCoords const &)

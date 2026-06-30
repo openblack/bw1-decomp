@@ -58,9 +58,9 @@ public:
     // BW1W120 0071bde0 BW1M100 1050fbf0 Pot::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // BW1W120 0066d820 BW1M100 1011b6c0 Pot::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0066d730 BW1M100 1011b830 Pot::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055d5a0 BW1M100 10116350 Pot::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0055d580 BW1M100 101162d0 Pot::GetCreatureBeliefType(void)

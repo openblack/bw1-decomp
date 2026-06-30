@@ -66,9 +66,9 @@ public:
     // BW1W120 00474910 BW1M100 103c19a0 MobileWallHug::_dt(void)
     virtual ~MobileWallHug();
     // BW1W120 0060c740 BW1M100 103c23a0 MobileWallHug::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0060c420 BW1M100 103c28c0 MobileWallHug::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0060c070 BW1M100 100321c0 MobileWallHug::GetSpeedInMetres( const(void))
     virtual float GetSpeedInMetres();
     // BW1W120 0060c080 BW1M100 103c3320 MobileWallHug::SetSpeedInMetres(float, int)

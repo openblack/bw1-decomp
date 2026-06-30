@@ -36,9 +36,9 @@ public:
     // BW1W120 0055cbe0 BW1M100 10111890 PlannedMultiMapFixed::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00648af0 BW1M100 10114cd0 PlannedMultiMapFixed::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00648990 BW1M100 10114ef0 PlannedMultiMapFixed::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055cbd0 BW1M100 inlined PlannedMultiMapFixed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 004050c0 BW1M100 1017d1b0 PlannedMultiMapFixed::GetScale(void)

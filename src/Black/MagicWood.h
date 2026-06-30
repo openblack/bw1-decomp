@@ -32,9 +32,9 @@ public:
     // BW1W120 00600de0 BW1M100 103b9fe0 MagicWood::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00600f60 BW1M100 103ba020 MagicWood::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00600f20 BW1M100 103ba0b0 MagicWood::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00600dd0 BW1M100 103b9fa0 MagicWood::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00600db0 BW1M100 103b9f10 MagicWood::GetImpressiveType(void)

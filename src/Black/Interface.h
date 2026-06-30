@@ -109,9 +109,9 @@ public:
     // BW1W120 005ce300 BW1M100 10357e40 GInterface::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 005d04d0 BW1M100 10358550 GInterface::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005d0490 BW1M100 103585e0 GInterface::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005ce2f0 BW1M100 10357e00 GInterface::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 005d0590 BW1M100 103581e0 GInterface::SaveExtraData(GameOSFile &)

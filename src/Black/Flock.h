@@ -57,9 +57,9 @@ public:
     // BW1W120 0052f910 BW1M100 100e37a0 Flock::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00530930 BW1M100 100e3880 Flock::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005305a0 BW1M100 100e40b0 Flock::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0052f900 BW1M100 100e3770 Flock::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0052f8a0 BW1M100 100e3580 Flock::GetCreatureBeliefType(void)

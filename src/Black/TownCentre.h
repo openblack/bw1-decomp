@@ -49,9 +49,9 @@ public:
     // BW1W120 0055dba0 BW1M100 1055bf20 TownCentre::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00744880 BW1M100 10559dc0 TownCentre::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00744830 BW1M100 10559e60 TownCentre::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055db90 BW1M100 1055bee0 TownCentre::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 007448c0 BW1M100 10559d40 TownCentre::ResolveLoad(void)
@@ -101,7 +101,7 @@ public:
     // BW1W120 00744a00 BW1M100 105599a0 TownCentre::StopBeingFunctional(GPlayer *)
     virtual void StopBeingFunctional(GPlayer* param_1);
     // BW1W120 0055db30 BW1M100 1055bd40 TownCentre::CausesTownEmergencyIfDamaged(void)
-    virtual bool CausesTownEmergencyIfDamaged();
+    virtual bool32_t CausesTownEmergencyIfDamaged();
     // BW1W120 0055db80 BW1M100 1055bea0 TownCentre::CanBeHiddenIn(void)
     virtual bool CanBeHiddenIn();
 

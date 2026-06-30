@@ -34,9 +34,9 @@ public:
     // BW1W120 0050cef0 BW1M100 102aaa60 DanceGroup::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0050d9c0 BW1M100 102aab20 DanceGroup::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0050d640 BW1M100 102ab450 DanceGroup::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0050cee0 BW1M100 102aaa20 DanceGroup::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
