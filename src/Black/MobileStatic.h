@@ -146,7 +146,7 @@ public:
     // BW1W120 00609010 BW1M100 103bf860 MobileStatic::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // BW1W120 00608ac0 BW1M100 103c0450 MobileStatic::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
     // BW1W120 00439690 BW1M100 100b4420 MobileStatic::IsSolidToNewAbode(void)
     virtual uint32_t IsSolidToNewAbode();
     // BW1W120 00439660 BW1M100 100b4240 MobileStatic::GetTastiness(void)

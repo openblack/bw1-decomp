@@ -12,6 +12,7 @@
 class Base;
 class CitadelHeart;
 class Creature;
+struct GFlockInfo;
 class GPlayer;
 class GameOSFile;
 class GameThing;
@@ -85,7 +86,7 @@ public:
     // Constructors
 
     // BW1W120 0052f780 BW1M100 100e6ec0 Flock::Flock(MapCoords const &, GFlockInfo const *, GPlayer *, unsigned long)
-    Flock(MapCoords* coords, GFlockInfo* info, GPlayer* player, uint32_t param_4);
+    Flock(const MapCoords& coords, const GFlockInfo* info, GPlayer* player, uint32_t param_4);
     // BW1W120 100e6be0 BW1M100 0052f950 Flock::Flock(Living*)
     Flock(Living* param_1);
 

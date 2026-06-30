@@ -29,8 +29,8 @@ public:
     uint32_t field_0x38;
     uint32_t field_0x3c;
     uint32_t field_0x40;
-    FuncPtr(name='LHFile__custom_read_function', call_type='__cdecl', result='uint32_t', args=['void*', 'size_t', 'void*'], arg_labels=['param_0', 'param_1', 'param_2'], decorated_name='LHFile__custom_read_function', indirection_level=1) custom_read_function;
-    FuncPtr(name='LHFile__custom_set_file_pointer_function', call_type='__cdecl', result='uint32_t', args=['uint32_t', 'uint32_t', 'void*'], arg_labels=['param_0', 'param_1', 'param_2'], decorated_name='LHFile__custom_set_file_pointer_function', indirection_level=1) custom_set_file_pointer_function;
+    uint32_t (*custom_read_function)(void* data, size_t length, void* user_data); /* 0x44 */
+    uint32_t (*custom_set_file_pointer_function)(uint32_t distance_to_move, uint32_t move_method, void* user_data);
     void* custom_read_function_user_data;
     LH_FILE_MODE file_mode; /* 0x50 */
     bool segment_opened;

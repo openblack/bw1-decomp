@@ -74,12 +74,12 @@ public:
     // Static methods
 
     // BW1W120 00435b90 BW1M100 100b09f0 Ball::Create(MapCoords const &, GBallInfo const *, unsigned short, float, float)
-    static Ball* Create(Ball* this, const MapCoords* param_1, const GBallInfo* param_2, unsigned short param_3, float param_4, float param_5);
+    static Ball* Create(const MapCoords& param_1, const GBallInfo* param_2, unsigned short param_3, float param_4, float param_5);
 
     // Constructors
 
     // BW1W120 004359b0 BW1M100 100b0df0 Ball::Ball(MapCoords const &, GBallInfo const *)
-    Ball(const MapCoords* coords, const GBallInfo* info);
+    Ball(const MapCoords& coords, const GBallInfo* info);
 
     // Non-virtual methods
 

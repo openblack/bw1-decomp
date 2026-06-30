@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LHLib/ver5.0/LHDynamicStack.h> /* For LHDynamicStack */
+
 #include "DanceGroup.h" /* For enum DANCE_GROUP_ACTION_TYPE */
 #include "DancePathInfo.h" /* For struct DancePathInfo */
 #include "GameThing.h" /* For struct GameThing */
@@ -69,7 +71,7 @@ public:
     // BW1W120 00596700 BW1M100 100f90b0 GroupBehaviour::UpdateGroupBasedOnAction(DanceGroup *, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &, unsigned long)
     virtual void UpdateGroupBasedOnAction(DanceGroup* dance_group, DANCE_GROUP_ACTION_TYPE action_type, const DanceGroupActionArgument* argument, uint32_t param_4);
     // BW1W120 00597300 BW1M100 100f8760 GroupBehaviour::AddAction(float, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
-    virtual void AddAction(float param_1, LHDynamicStack__Ul* stack, DANCE_GROUP_ACTION_TYPE action_type, const DanceGroupActionArgument* argument);
+    virtual void AddAction(float param_1, LHDynamicStack<uint32_t>& stack, DANCE_GROUP_ACTION_TYPE action_type, const DanceGroupActionArgument* argument);
     // BW1W120 00597270 BW1M100 100f8990 GroupBehaviour::AddAction(float, unsigned long, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
     virtual void AddAction(float param_1, uint32_t param_2, DANCE_GROUP_ACTION_TYPE action_type, DanceGroupActionArgument* arguments);
     // BW1W120 005978e0 BW1M100 100f6eb0 GroupBehaviour::LoadDance(char const *)

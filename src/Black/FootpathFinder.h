@@ -4,8 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <lhall/released/headers/RPHolder.h> /* For struct RPHolder */
-#include <lhall/released/headers/RPlan.h> /* For struct RPlan */
+#include <Lionhead/LHLib/ver5.0/RPHolder.h> /* For struct RPHolder */
+#include <Lionhead/LHLib/ver5.0/RPlan.h> /* For struct RPlan */
 
 #include "GameThing.h" /* For struct GameThing */
 
