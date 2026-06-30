@@ -67,6 +67,9 @@ class Town;
 class GGame: public GameThing
 {
 public:
+    // BW1W120 00d0195c
+    static GGame* g_game;
+
     uint32_t field_0x14;
     GPlayer players[0x8];
     uint8_t field_0x5318[0x664];

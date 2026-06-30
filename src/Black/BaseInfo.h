@@ -16,6 +16,9 @@ public:
     GBaseInfo* next; /* 0x8 */
     int index;
 
+    // BW1W120 0x00c58604
+    static uint32_t info_count;
+
     // Override methods
 
     // BW1W120 0042e600 BW1M100 10429820 GBaseInfo::_dt(void)
