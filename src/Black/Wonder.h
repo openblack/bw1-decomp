@@ -47,7 +47,7 @@ public:
     // BW1W120 005611f0 BW1M100 10161250 Wonder::IsStoragePit(Creature *)
     virtual uint32_t IsStoragePit(Creature* param_1);
     // BW1W120 00779160 BW1M100 101613c0 Wonder::CallVirtualFunctionsForCreation(const MapCoords&)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // BW1W120 00779190 BW1M100 10161310 Wonder::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
     // BW1W120 00778f30 BW1M100 10161920 Wonder::Built(void)
@@ -62,12 +62,12 @@ public:
     // Static methods
 
     // BW1W120 00778e80 BW1M100 101619e0 Wonder::Create(const MapCoords&, const GAbodeInfo*, Town*, float, float, float, int)
-    static Wonder* Create(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
+    static Wonder* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 
     // Constructors
 
     // BW1W120 00778e00 BW1M100 10161c40 Wonder::Wonder(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-    Wonder(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
+    Wonder(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 
     // Non-virtual methods
 

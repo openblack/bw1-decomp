@@ -117,7 +117,12 @@ public:
     // BW1W120 007339d0 BW1M100 10151670 StoragePit::RestartBeingFunctional(void)
     virtual void RestartBeingFunctional();
     // BW1W120 0055cce0 BW1M100 101513e0 StoragePit::CausesTownEmergencyIfDamaged(void)
-    virtual bool CausesTownEmergencyIfDamaged();
+    virtual bool32_t CausesTownEmergencyIfDamaged();
+
+    // Static methods
+
+    // BW1W120 00732d60 BW1M100 10152df0 StoragePit::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+    static StoragePit* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 };
 
 #endif /* BW1_DECOMP_STORAGE_PIT_INCLUDED_H */

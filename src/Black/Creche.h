@@ -46,6 +46,11 @@ public:
     virtual void DeleteDependancys();
     // BW1W120 0050ab50 BW1M100 102a3de0 Creche::MakeFunctional(void)
     virtual void MakeFunctional();
+
+    // Static methods
+
+    // BW1W120 0050aad0 BW1M100 102a3e90 Creche::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+    static Creche* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 };
 
 #endif /* BW1_DECOMP_CRECHE_INCLUDED_H */

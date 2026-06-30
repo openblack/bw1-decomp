@@ -47,6 +47,11 @@ public:
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // BW1W120 007226e0 BW1M100 1051a9f0 SpellDispenser::IsSpellSeedReturnPoint( const(void))
     virtual bool IsSpellSeedReturnPoint();
+
+    // Static methods
+
+    // BW1W120 007228d0 BW1M100 1051b8a0 SpellDispenser::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+    static SpellDispenser* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 };
 
 #endif /* BW1_DECOMP_SPELL_DISPENSER_INCLUDED_H */
