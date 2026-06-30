@@ -9,12 +9,7 @@ enum LH_SCREEN_BUFFER
   LH_SCREEN_BUFFER_0x1 = 0x1,
   _LH_SCREEN_BUFFER_COUNT = 0x2
 };
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wpragma-pack"
-#pragma clang diagnostic ignored "-Wmacro-redefined"
-#pragma clang diagnostic ignored "-Wmissing-declarations"
 #include <ddraw.h> /* For IDirectDraw7, IDirectDrawClipper, IDirectDrawSurface7 */
-#pragma clang diagnostic pop
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */

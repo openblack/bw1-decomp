@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+
 #include "Container.h" /* For struct Container, struct ContainerVftable */
 #include "Tree.h" /* For struct Tree */
 
@@ -25,8 +27,8 @@ public:
     uint8_t field_0x30[0x10];
     uint32_t id; /* 0x40 */
     Forest* next;
-    LHLinkedList__Tree trees_0;
-    LHLinkedList__Tree trees_1; /* 0x50 */
+    LHLinkedList<Tree> trees_0;
+    LHLinkedList<Tree> trees_1; /* 0x50 */
 
     // Override methods
 
@@ -51,7 +53,7 @@ public:
     // BW1W120 00539b10 BW1M100 100ef7d0 Forest::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0053b070 BW1M100 100ef950 Forest::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* file);
+    virtual bool32_t Load(GameOSFile& file);
     // BW1W120 0053ae40 BW1M100 100efda0 Forest::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
     // BW1W120 00539b00 BW1M100 100ef790 Forest::GetSaveType(void)

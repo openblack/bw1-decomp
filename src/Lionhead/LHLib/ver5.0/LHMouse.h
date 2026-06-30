@@ -98,7 +98,7 @@ struct LHSurface;
 struct LHMouse
 {
     LH_SCREEN_BUFFER screen_buffer; /* 0x0 */
-    FuncPtr(name='LHMouse__handler', call_type='__cdecl', result='bool', args=['void*', 'enum LH_MOUSE_EVENT_TYPE', 'uint32_t', 'uint32_t'], arg_labels=['param_0', 'param_1', 'param_2', 'param_3'], decorated_name='LHMouse__handler', indirection_level=1) handler;
+    bool(__cdecl* handler)(void*, LH_MOUSE_EVENT_TYPE, uint32_t, uint32_t);
     uint32_t field_0x8;
     bool32_t in_window;
     uint8_t field_0x10;

@@ -164,7 +164,7 @@ public:
     // BW1W120 0074c0e0 BW1M100 10156590 Tree::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // BW1W120 0074a180 BW1M100 10158cd0 Tree::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
     // BW1W120 0074a140 BW1M100 10158d40 Tree::GetRoutePlanRadius(Creature *)
     virtual float GetRoutePlanRadius(Creature* param_1);
     // BW1W120 0074b720 BW1M100 10157800 Tree::IsARootedObject(void)

@@ -41,7 +41,7 @@ public:
     // BW1W120 00438e10 BW1M100 100b25b0 BigForest::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 004394e0 BW1M100 100b2760 BigForest::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* file);
+    virtual bool32_t Load(GameOSFile* file);
     // BW1W120 00439470 BW1M100 100b2840 BigForest::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
     // BW1W120 00438e00 BW1M100 100b2570 BigForest::GetSaveType(void)

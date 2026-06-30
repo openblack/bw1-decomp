@@ -6,7 +6,7 @@
 
 #include <chlasm/Enum.h> /* For enum TRIBE_TYPE */
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
-#include <lhall/released/headers/LHTimer.h> /* For struct LHTimer */
+#include <Lionhead/LHLib/ver5.0/LHTimer.h> /* For LHTimer */
 #include <Lionhead/LHLib/ver5.0/LHMouse.h> /* For enum LH_MOUSE_EVENT_TYPE */
 
 #include "CreatureDatabase.h" /* For struct CreatureDatabase */
