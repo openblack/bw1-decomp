@@ -27,3 +27,19 @@ Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float 
     }
     FindNearestDrinkingWater(200.0f);
 }
+
+void Abode::SetToZero()
+{
+  field_0xb6 = 0;
+  adult_count = 0;
+  field_0xb7 = 0;
+  field_0x94 = 0;
+  resources[RESOURCE_TYPE_FOOD] = 0;
+  resources[RESOURCE_TYPE_WOOD] = 0;
+  smoke = NULL;
+  destruction_mesh = NULL;
+  field_0x7c = 0;
+  field_0xb0 = 0;
+  field_0xb5 = 0;
+  field_0xb9 = 0;
+}

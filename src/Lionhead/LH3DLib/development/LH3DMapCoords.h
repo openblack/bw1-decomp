@@ -40,8 +40,8 @@ struct LH3DMapCoords
     void SetWholeZ(int z);
     // BW1W120 inlined BW1M100 1004aee0 LH3DMapCoords::SetAltitude(float)
     void SetAltitude(float altitude);
-    // BW1W120 0054b820 BW1M100 inlined LH3DMapCoords::SetZero(void)
-    void SetZero();
+    // BW1W120 0054b820 BW1M100 inlined LH3DMapCoords::SetToZero(void)
+    void SetToZero();
 };
 
 #endif /* BW1_DECOMP_LH3D_MAP_COORDS_INCLUDED_H */

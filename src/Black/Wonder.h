@@ -71,8 +71,8 @@ public:
 
     // Non-virtual methods
 
-    // BW1W120 00779060 BW1M100 inlined Wonder::SetZero(void)
-    void SetZero();
+    // BW1W120 00779060 BW1M100 inlined Wonder::SetToZero(void)
+    void SetToZero();
 };
 
 #endif /* BW1_DECOMP_WONDER_INCLUDED_H */
