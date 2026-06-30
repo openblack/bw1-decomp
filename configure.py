@@ -987,7 +987,8 @@ config.libs = [
 
             Object(Matching, "zlib/deflate.c"),
             Object(Matching, "zlib/inflate.c"),
-            Object(NonMatching, "zlib/zutil.c"),
+            # TODO: 1.1 seems to bump .bss address space
+            Object(MatchingFor("BW1W120"), "zlib/zutil.c"),
             Object(Matching, "zlib/adler32.c"),
             Object(Matching, "zlib/trees.c"),
             Object(Matching, "zlib/infblock.c"),
