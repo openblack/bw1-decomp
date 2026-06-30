@@ -54,6 +54,11 @@ public:
     virtual void MakeFunctional();
     // BW1W120 0055dfc0 BW1M100 100f4440 Graveyard::CanBeHiddenIn(void)
     virtual bool CanBeHiddenIn();
+
+    // Static methods
+
+    // BW1W120 00595d70 BW1M100 100f4ad0 Graveyard::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+    static Graveyard* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 };
 
 #endif /* BW1_DECOMP_GRAVEYARD_INCLUDED_H */

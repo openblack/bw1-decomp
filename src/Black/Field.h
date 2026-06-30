@@ -181,12 +181,12 @@ public:
     // Static methods
 
     // BW1W120 00528280 BW1M100 100d5130 Field::Create(MapCoords const &, GFieldTypeInfo const *, Town *, float, float, int)
-    static Field* Create(MapCoords* coords, GFieldTypeInfo* type_info, Town* town, float param_4, float param_5, int param_6);
+    static Field* Create(const MapCoords& coords, const GFieldTypeInfo* type_info, Town* town, float y_angle, float scale, int wood);
 
     // Constructors
 
     // BW1W120 00527dd0 BW1M100 100d5910 Field::Field(MapCoords const &, GFieldTypeInfo const *, GAbodeInfo const *, Town *, float, float, int)
-    Field(MapCoords* coords, GFieldTypeInfo* type_info, GAbodeInfo* abode_info, Town* town, float param_5, float param_6, int param_7);
+    Field(const MapCoords& coords, const GFieldTypeInfo* type_info, const GAbodeInfo* abode_info, Town* town, float y_angle, float scale, int wood);
 
     // Non-virtual methods
 

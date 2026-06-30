@@ -77,7 +77,12 @@ public:
     // Constructors
 
     // BW1W120 00737390 BW1M100 105435b0 Totem::Totem(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-    Totem(const MapCoords* coords, const GAbodeInfo* info, Town* town, float param_4, float param_5, float param_6, int param_7);
+    Totem(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
+
+    // Static methods
+
+    // BW1W120 007374c0 BW1M100 10543240 Totem::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+    static Totem* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 };
 
 #endif /* BW1_DECOMP_TOTEM_INCLUDED_H */

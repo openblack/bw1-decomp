@@ -159,7 +159,7 @@ Black/MultiMapFixed.cpp:
 Black/Flock.cpp:
 	.text       start:0x005058C0 end:0x00506D10
 
-Black/Football.cpp:
+Black/FootBall.cpp:
 	.text       start:0x00506D10 end:0x005093C0
 
 Black/Footpath.cpp:

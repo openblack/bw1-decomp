@@ -103,9 +103,14 @@ public:
     // BW1W120 00533b30 BW1M100 inlined Football::GetDoorPos(MapCoords *)
     virtual MapCoords* GetDoorPos(MapCoords* param_1);
     // BW1W120 00531290 BW1M100 102b8650 Football::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // BW1W120 005312b0 BW1M100 102b86c0 Football::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_t IsBuilt();
+
+    // Static methods
+
+    // BW1W120 005315a0 BW1M100 102bcd00 Football::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+    static Football* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 
     // Non-virtual methods
 

@@ -78,6 +78,11 @@ public:
     // BW1W120 0077a680 BW1M100 10161d90 Workshop::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
     virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus* param_2);
 
+    // Static methods
+
+    // BW1W120 00779590 BW1M100 10164020 Workshop::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+    static Workshop* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
+
     // Non-virtual methods
 
     // BW1W120 00779af0 BW1M100 10163550 Workshop::GetSpaceInStore(void)

@@ -108,14 +108,19 @@ public:
     // Static methods
 
     // BW1W120 00743c90 BW1M100 1055b520 TownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-    static TownCentre* Create(const MapCoords* coords, const GAbodeInfo* info, Town* town, float param_4, float param_5, float param_6, int param_7);
+    static TownCentre* Create(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
     // BW1W120 007447f0 BW1M100 1006eae0 TownCentre::DrawAll(void)
     static void DrawAll();
 
     // Constructors
 
     // BW1W120 00743a60 BW1M100 1055bb20 TownCentre::TownCentre(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-    TownCentre(const MapCoords* coords, const GAbodeInfo* info, Town* town, float param_4, float param_5, float param_6, int param_7);
+    TownCentre(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
+
+    // Static methods
+
+    // BW1W120 00743c90 BW1M100 1055b520 TownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+    static TownCentre* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 
     // Non-virtual methods
 
