@@ -986,7 +986,7 @@ config.libs = [
             Object(NonMatching, "Black/WorshipTotem.cpp"),
 
             Object(Matching, "zlib/deflate.c"),
-            Object(NonMatching, "zlib/inflate.c"),
+            Object(Matching, "zlib/inflate.c"),
             Object(NonMatching, "zlib/zutil.c"),
             Object(Matching, "zlib/adler32.c"),
             Object(Matching, "zlib/trees.c"),

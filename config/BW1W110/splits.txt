@@ -516,10 +516,11 @@ zlib/deflate.c:
 zlib/inflate.c:
 	.text       start:0x007B06F0 end:0x007B0E80
 	.rdata      start:0x0098F830 end:0x0098F834
+	.data       start:0x00C1ADA8 end:0x00C1AE18
 
 zlib/zutil.c:
 	.text       start:0x007B0E80 end:0x007B0EE0
-	.data       start:0x00C1ADA8 end:0x00C1AEB0
+	.data       start:0x00C1AE18 end:0x00C1AEB0
 
 zlib/adler32.c:
 	.text       start:0x007B0EE0 end:0x007B1010
