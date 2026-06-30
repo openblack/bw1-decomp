@@ -336,7 +336,7 @@ config.libs = [
             Object(NonMatching, "Black/Camera.cpp"),
             Object(NonMatching, "Black/CameraEditor.cpp"),
             Object(NonMatching, "Black/CameraExclusion.cpp"),
-            Object(Matching, "Black/CameraHelp.cpp"),
+            Object(NonMatching, "Black/CameraHelp.cpp"),
             Object(NonMatching, "Black/CameraMode.cpp"),
             Object(NonMatching, "Black/CameraModeCitadel.cpp"),
             Object(NonMatching, "Black/CameraModeCtrInteract.cpp"),
