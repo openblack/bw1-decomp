@@ -8,6 +8,7 @@
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
 #include "Name.h" /* For struct Name */
+#include "Lionhead/LHFile/ver3.0/LHFile.h" /* For LHFile */
 
 // Forward Declares
 
@@ -93,7 +94,12 @@ public:
     // BW1W120 00405a60 BW1M100 inlined GAbodeInfo::GetDescription(void)
     const char* GetDescription();
     // BW1W120 0042e520 BW1M100 inlined GAbodeInfo::LoadBinary(LHFile *)
-    void LoadBinary(LHFile* file);
+    void LoadBinary(LHFile* file)
+    {
+        file->GetSegmentData(&type, sizeof(type), -1);
+        SetInfoID();
+        file->GetSegmentData(&editorMesh, sizeof(editorMesh), -1);
+    }
 };
 static_assert(sizeof(GAbodeInfo) == 0x1c8, "Data type is of wrong size");
 
