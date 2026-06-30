@@ -54,9 +54,9 @@ public:
     // BW1W120 00726e40 BW1M100 105215a0 SpellSeedGraphic::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00727ac0 BW1M100 10521910 SpellSeedGraphic::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00727c70 BW1M100 10521650 SpellSeedGraphic::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00726e30 BW1M100 10521560 SpellSeedGraphic::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00727e30 BW1M100 105215f0 SpellSeedGraphic::ResolveLoad(void)

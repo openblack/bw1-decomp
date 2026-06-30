@@ -59,9 +59,9 @@ public:
     // BW1W120 00561170 BW1M100 10543f30 TotemStatue::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00738800 BW1M100 10544120 TotemStatue::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00738700 BW1M100 105442e0 TotemStatue::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561160 BW1M100 10543ef0 TotemStatue::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00738940 BW1M100 105440b0 TotemStatue::ResolveLoad(void)

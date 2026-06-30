@@ -29,9 +29,9 @@ public:
     // BW1W120 0055d210 BW1M100 10520090 SpellForest::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00725d50 BW1M100 105200d0 SpellForest::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00725c90 BW1M100 10520200 SpellForest::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055d200 BW1M100 10520050 SpellForest::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00725730 BW1M100 10520d80 SpellForest::HasEnoughChantsAndLifeForRecast(void)

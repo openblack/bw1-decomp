@@ -41,9 +41,9 @@ public:
     // BW1W120 0050b760 BW1M100 102a81f0 Dance::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0050c760 BW1M100 102a85a0 Dance::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0050c480 BW1M100 102a8960 Dance::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0050b750 BW1M100 102a81c0 Dance::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0050cb40 BW1M100 inlined Dance::GetArrivePos(MapCoords *)

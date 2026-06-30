@@ -25,9 +25,9 @@ public:
     // BW1W120 0055ded0 BW1M100 1059ef50 GClimate::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007736e0 BW1M100 1059ef90 GClimate::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00773320 BW1M100 1059f860 GClimate::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055dec0 BW1M100 1059ef10 GClimate::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

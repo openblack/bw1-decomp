@@ -26,7 +26,7 @@ public:
     // BW1W120 005371e0 BW1M100 100ef0b0 GFootpathLinkSave::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 005370a0 BW1M100 100eb5c0 GFootpathLinkSave::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual uint32_t Load(GameOSFile& file);
 
     // Constructors
 

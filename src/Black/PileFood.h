@@ -40,9 +40,9 @@ public:
     // BW1W120 0066e030 BW1M100 1011d5f0 PileFood::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0066f5e0 BW1M100 10116570 PileFood::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0066f5a0 BW1M100 10116600 PileFood::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0066e020 BW1M100 1011d5b0 PileFood::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0055d690 BW1M100 1011d570 PileFood::IsPileFood(void)

@@ -23,9 +23,9 @@ public:
     // BW1W120 006d0cf0 BW1M100 10417650 DefensiveSphere::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00699cd0 BW1M100 104179f0 DefensiveSphere::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006d06b0 BW1M100 1047f3d0 DefensiveSphere::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 006d0ce0 BW1M100 10417610 DefensiveSphere::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

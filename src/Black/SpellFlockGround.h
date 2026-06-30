@@ -24,9 +24,9 @@ public:
     // BW1W120 0055d2e0 BW1M100 1051bf80 SpellFlockGround::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00724bb0 BW1M100 1051c030 SpellFlockGround::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00724bd0 BW1M100 1051bfc0 SpellFlockGround::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055d2d0 BW1M100 1051bf40 SpellFlockGround::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00724290 BW1M100 1051ccf0 SpellFlockGround::GetParticleType(void)

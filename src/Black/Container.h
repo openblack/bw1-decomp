@@ -27,9 +27,9 @@ public:
     // BW1W120 00462a50 BW1M100 1005c760 Container::GetPlayer(void)
     virtual GPlayer* GetPlayer();
     // BW1W120 0046b960 BW1M100 100bf930 Container::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0046b920 BW1M100 100bf9d0 Container::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
 };
 
 #endif /* BW1_DECOMP_CONTAINER_INCLUDED_H */

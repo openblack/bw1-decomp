@@ -77,9 +77,9 @@ public:
     // BW1W120 00531320 BW1M100 102b8870 Football::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 005336e0 BW1M100 102b89e0 Football::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005332a0 BW1M100 102b9230 Football::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00531310 BW1M100 102b8830 Football::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00531180 BW1M100 102bd4d0 Football::GetCreatureBeliefType(void)

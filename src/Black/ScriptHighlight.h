@@ -34,9 +34,9 @@ public:
     // BW1W120 00709860 BW1M100 104fa730 ScriptHighlight::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0070a8f0 BW1M100 104fb050 ScriptHighlight::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0070a760 BW1M100 104fb290 ScriptHighlight::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00709850 BW1M100 104fa6f0 ScriptHighlight::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00709760 BW1M100 104fa210 ScriptHighlight::PhysicsEditorCreate(int)
@@ -90,7 +90,7 @@ public:
     // BW1W120 00709810 BW1M100 104fa5a0 ScriptHighlight::CanBecomeAPhysicsObject(void)
     virtual bool CanBecomeAPhysicsObject();
     // BW1W120 0070ae40 BW1M100 104fa770 ScriptHighlight::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
 
     // Static methods
 

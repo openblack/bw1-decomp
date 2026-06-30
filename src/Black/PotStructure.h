@@ -50,9 +50,9 @@ public:
     // BW1W120 0066ee10 BW1M100 10117970 PotStructure::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
     virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
     // BW1W120 0066db10 BW1M100 1011b060 PotStructure::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0066da90 BW1M100 1011b150 PotStructure::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055d640 BW1M100 101160a0 PotStructure::CanBeThrownByPlayer(void)
     virtual uint32_t CanBeThrownByPlayer();
     // BW1W120 0066db90 BW1M100 1011afa0 PotStructure::CallVirtualFunctionsForCreation(const MapCoords&)

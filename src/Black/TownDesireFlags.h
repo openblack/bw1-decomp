@@ -36,9 +36,9 @@ public:
     // BW1W120 0055dad0 BW1M100 1055c0c0 TownDesireFlags::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00747030 BW1M100 1055c440 TownDesireFlags::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00746f10 BW1M100 1055c600 TownDesireFlags::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055dac0 BW1M100 1055c080 TownDesireFlags::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0055daa0 BW1M100 1055bff0 TownDesireFlags::IsTownDesireFlag(void)

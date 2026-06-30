@@ -167,9 +167,9 @@ public:
     // BW1W120 007392a0 BW1M100 105594a0 Town::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0073f450 BW1M100 1054aa80 Town::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0073ed30 BW1M100 1054c770 Town::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00739290 BW1M100 10559470 Town::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 007412e0 BW1M100 10547990 Town::ResolveLoad(void)

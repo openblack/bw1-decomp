@@ -50,9 +50,9 @@ public:
     // BW1W120 0052a300 BW1M100 100d66d0 FireFly::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0052bbc0 BW1M100 100d6850 FireFly::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0052b870 BW1M100 100d7020 FireFly::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0052a2f0 BW1M100 100d6690 FireFly::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0052a1d0 BW1M100 100da180 FireFly::IsMoving( const(void))

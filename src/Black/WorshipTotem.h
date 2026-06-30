@@ -51,9 +51,9 @@ public:
     // BW1W120 00780800 BW1M100 105b7760 WorshipTotem::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00780f10 BW1M100 105b7910 WorshipTotem::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00780f90 BW1M100 105b7820 WorshipTotem::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 007807f0 BW1M100 105b7720 WorshipTotem::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00780f00 BW1M100 105b7a00 WorshipTotem::ResolveLoad(void)

@@ -42,9 +42,9 @@ public:
     // BW1W120 004178f0 BW1M100 101bb350 GameThingWithPos::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 005704a0 BW1M100 1016a2c0 GameThingWithPos::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005703f0 BW1M100 10512f10 GameThingWithPos::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00570560 BW1M100 10430e60 GameThingWithPos::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00401940 BW1M100 1004d010 GameThingWithPos::SetPos(MapCoords const &)

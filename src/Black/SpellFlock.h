@@ -26,9 +26,9 @@ public:
     // BW1W120 0055d250 BW1M100 1030e480 SpellFlock::_dt(void)
     virtual ~SpellFlock();
     // BW1W120 00724780 BW1M100 1051c560 SpellFlock::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 007248a0 BW1M100 1051c390 SpellFlock::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00723280 BW1M100 1051e660 SpellFlock::NeedsContinualPackets(GInterfaceStatus *)
     virtual bool NeedsContinualPackets(GInterfaceStatus* param_1);
     // BW1W120 007233d0 BW1M100 1051e2b0 SpellFlock::Process(void)

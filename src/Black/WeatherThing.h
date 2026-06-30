@@ -27,9 +27,9 @@ public:
     // BW1W120 0055df50 BW1M100 105a3fa0 WeatherThing::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007747e0 BW1M100 105a3fe0 WeatherThing::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 007745c0 BW1M100 105a4300 WeatherThing::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055df40 BW1M100 105a3f60 WeatherThing::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 007742e0 BW1M100 105a4be0 WeatherThing::SetPos(MapCoords const &)

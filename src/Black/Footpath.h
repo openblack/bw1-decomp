@@ -35,9 +35,9 @@ public:
     // BW1W120 00534df0 BW1M100 100ef250 GFootpath::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00535f10 BW1M100 100ecb10 GFootpath::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00535e00 BW1M100 100ece10 GFootpath::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00534de0 BW1M100 100ef210 GFootpath::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

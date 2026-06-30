@@ -31,9 +31,9 @@ public:
     // BW1W120 00426f90 BW1M100 101791e0 GAudio::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00428480 BW1M100 10179710 GAudio::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00428310 BW1M100 10179bd0 GAudio::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00426f80 BW1M100 101791a0 GAudio::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

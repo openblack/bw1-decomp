@@ -55,7 +55,7 @@ public:
     // BW1W120 0053b070 BW1M100 100ef950 Forest::Load(GameOSFile &)
     virtual bool32_t Load(GameOSFile& file);
     // BW1W120 0053ae40 BW1M100 100efda0 Forest::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00539b00 BW1M100 100ef790 Forest::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00539a80 BW1M100 100ef580 Forest::GetCreatureBeliefType(void)

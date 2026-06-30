@@ -59,9 +59,9 @@ public:
     // BW1W120 0071be10 BW1M100 1050fbb0 Animal::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // BW1W120 0041b710 BW1M100 10165620 Animal::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0041b460 BW1M100 101659a0 Animal::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0041b9a0 BW1M100 101655d0 Animal::ResolveLoad(void)
     virtual void ResolveLoad();
     // BW1W120 00417840 BW1M100 1012f3a0 Animal::GetCreatureBeliefType(void)

@@ -121,9 +121,9 @@ public:
     // BW1W120 0055cb30 BW1M100 10571f80 Villager::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00754580 BW1M100 10568980 Villager::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00754280 BW1M100 10568d70 Villager::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055cb20 BW1M100 10571f40 Villager::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00754870 BW1M100 10568900 Villager::ResolveLoad(void)
@@ -1796,9 +1796,9 @@ public:
     // BW1W120 00756730 BW1M100 10563970 MissionaryControl::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007568a0 BW1M100 105646b0 MissionaryControl::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 007568e0 BW1M100 10564610 MissionaryControl::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00756720 BW1M100 10563930 MissionaryControl::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00756920 BW1M100 10564510 MissionaryControl::GetImpressiveValue(Living *, Reaction *)

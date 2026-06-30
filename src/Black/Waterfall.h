@@ -28,9 +28,9 @@ public:
     // BW1W120 0055de50 BW1M100 10153430 GWaterfall::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00734660 BW1M100 10153470 GWaterfall::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00734650 BW1M100 101534b0 GWaterfall::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055de40 BW1M100 101533f0 GWaterfall::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 007341b0 BW1M100 10154110 GWaterfall::CallVirtualFunctionsForCreation(MapCoords const &)

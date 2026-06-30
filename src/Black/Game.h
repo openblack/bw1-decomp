@@ -186,9 +186,9 @@ public:
     // BW1W120 0054b9c0 BW1M100 10496160 GGame::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00554830 BW1M100 10354cc0 GGame::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00554090 BW1M100 104935a0 GGame::Save(GameOSFile &)
-    virtual int Save(GameOSFile* file);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0054b9b0 BW1M100 10512c00 GGame::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00555080 BW1M100 100c76b0 GGame::ResolveLoad(void)
@@ -198,10 +198,6 @@ public:
 
     // BW1W120 0054cbd0 BW1M100 101584c0 GGame::DoYesNoSkipTutorialRequestersIfNecessary(void)
     static void DoYesNoSkipTutorialRequestersIfNecessary();
-    // BW1W120 0054ff80 BW1M100 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
-    static void KeyHandler(GGame* this, unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4, void* param_5);
-    // BW1W120 0054ffe0 BW1M100 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
-    static bool MouseHandler(GGame* this, void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4);
 
     // Constructors
 
@@ -252,6 +248,10 @@ public:
     bool Init();
     // BW1W120 0054f421 BW1M100 inlined GGame::InitInner(void)
     bool InitInner();
+    // BW1W120 0054ff80 BW1M100 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
+    void KeyHandler(unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4, void* param_5);
+    // BW1W120 0054ffe0 BW1M100 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
+    bool MouseHandler(void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4);
     // BW1W120 00550080 BW1M100 101c6850 GGame::UnfinishInitialisation(void)
     void UnfinishInitialisation();
     // BW1W120 00550110 BW1M100 10505500 GGame::FinishInitialisation(void)

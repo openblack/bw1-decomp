@@ -188,9 +188,9 @@ public:
     // BW1W120 00406200 BW1M100 1005ff20 Abode::IsFunctional(void)
     virtual bool IsFunctional();
     // BW1W120 00406d20 BW1M100 101a2920 Abode::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00406a10 BW1M100 103bd750 Abode::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00407200 BW1M100 1008a7b0 Abode::IsInteractable(void)
     virtual bool IsInteractable();
     // BW1W120 004e43f0 BW1M100 105e5610 Abode::CanBeStompedOnByCreature(Creature *)

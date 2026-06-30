@@ -47,9 +47,9 @@ public:
     // BW1W120 0071bcd0 BW1M100 1050fda0 Rock::GetSampleForAttack(void)
     virtual uint32_t GetSampleForAttack();
     // BW1W120 006e7870 BW1M100 1013cfa0 Rock::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006e77b0 BW1M100 1013d0c0 Rock::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561380 BW1M100 100c41e0 Rock::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 006e79f0 BW1M100 1013c460 Rock::PhysicsEditorCreate(int)

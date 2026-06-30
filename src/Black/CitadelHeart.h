@@ -122,9 +122,9 @@ public:
     // BW1W120 00464bb0 BW1M100 101c23c0 CitadelHeart::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 004657f0 BW1M100 101bf6e0 CitadelHeart::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 004655c0 BW1M100 101bf9c0 CitadelHeart::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00464ba0 BW1M100 101c2380 CitadelHeart::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00465a10 BW1M100 101bf690 CitadelHeart::ResolveLoad(void)
@@ -164,7 +164,7 @@ public:
     // BW1W120 00467bb0 BW1M100 101bdc10 CitadelHeart::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // BW1W120 004680d0 BW1M100 101bceb0 CitadelHeart::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
     // BW1W120 004680c0 BW1M100 101bd390 CitadelHeart::GetRoutePlanRadius(Creature *)
     virtual float GetRoutePlanRadius(Creature* param_1);
     // BW1W120 00464b50 BW1M100 101c2180 CitadelHeart::GetObjectCollide(void)

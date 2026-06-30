@@ -34,9 +34,9 @@ public:
     // BW1W120 00719d30 BW1M100 10145850 ShowNeeds::GetShowNeedsPos(unsigned long, MapCoords *)
     virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
     // BW1W120 00719cf0 BW1M100 101458d0 ShowNeeds::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00719cb0 BW1M100 10145970 ShowNeeds::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055dd20 BW1M100 10146330 ShowNeeds::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

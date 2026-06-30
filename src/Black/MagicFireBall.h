@@ -38,9 +38,9 @@ public:
     // BW1W120 00682b40 BW1M100 103fd410 MagicFireBall::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00683320 BW1M100 103fb710 MagicFireBall::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006832b0 BW1M100 103fb800 MagicFireBall::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00682b30 BW1M100 103fd3d0 MagicFireBall::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00682a50 BW1M100 103fcf70 MagicFireBall::IsMagicFireBall(void)

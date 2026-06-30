@@ -26,9 +26,9 @@ public:
     // BW1W120 00722230 BW1M100 10519fb0 SpellCreature::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00722520 BW1M100 1051a0e0 SpellCreature::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00722590 BW1M100 10519ff0 SpellCreature::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00722220 BW1M100 10519f70 SpellCreature::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00722490 BW1M100 1051a2e0 SpellCreature::ProcessSpellSeed(void)

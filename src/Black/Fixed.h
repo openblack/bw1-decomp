@@ -36,9 +36,9 @@ public:
     // BW1W120 0052df20 BW1M100 100e1bd0 FixedObject::GetTownArtifactValue(void)
     virtual float GetTownArtifactValue();
     // BW1W120 0052e170 BW1M100 inlined FixedObject::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0052e140 BW1M100 100e17b0 FixedObject::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00401400 BW1M100 10513b00 FixedObject::CanBeFrighteningToCreature(Creature *)
     virtual bool32_t CanBeFrighteningToCreature(Creature* creature)
     {

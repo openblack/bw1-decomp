@@ -41,9 +41,9 @@ public:
     // BW1W120 0076e990 BW1M100 1015ac80 Fragment::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0076f6a0 BW1M100 1015afa0 Fragment::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0076f5d0 BW1M100 1015b130 Fragment::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0076e980 BW1M100 1015ac40 Fragment::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0076f7b0 BW1M100 1015af50 Fragment::ResolveLoad(void)

@@ -55,9 +55,9 @@ public:
     // BW1W120 0077f100 BW1M100 105b4440 WorshipSpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007801f0 BW1M100 105b4690 WorshipSpellIcon::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0077ff80 BW1M100 105b4bc0 WorshipSpellIcon::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0077f0f0 BW1M100 105b4400 WorshipSpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0077f0a0 BW1M100 10381d20 WorshipSpellIcon::GetWorshipSite(void)

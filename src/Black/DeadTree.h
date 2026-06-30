@@ -42,9 +42,9 @@ public:
     // BW1W120 0071be30 BW1M100 1050fb30 DeadTree::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // BW1W120 00511630 BW1M100 100c1a50 DeadTree::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005115c0 BW1M100 100c1b30 DeadTree::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005109e0 BW1M100 100c4120 DeadTree::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 005109d0 BW1M100 inlined DeadTree::IsRock_0(void)

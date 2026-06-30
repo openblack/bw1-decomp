@@ -30,9 +30,9 @@ public:
     // BW1W120 00561410 BW1M100 10535800 GStreetLight::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00735160 BW1M100 105358a0 GStreetLight::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00735140 BW1M100 10535910 GStreetLight::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561400 BW1M100 105357c0 GStreetLight::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00735180 BW1M100 10535840 GStreetLight::ResolveLoad(void)

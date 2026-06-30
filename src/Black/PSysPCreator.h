@@ -67,7 +67,7 @@ public:
     // BW1W120 006c8120 BW1M100 104230f0 RenderParticleGameObjectRef::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006957e0 BW1M100 1041c390 RenderParticleGameObjectRef::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
 };
 
 class RenderParticleGoldenShower: public RenderParticleGameObjectRef

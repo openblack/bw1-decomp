@@ -54,9 +54,9 @@ public:
     // BW1W120 0071be20 BW1M100 1050fb70 Tree::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // BW1W120 0074c2a0 BW1M100 10155f10 Tree::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0074c1b0 BW1M100 10156080 Tree::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055da20 BW1M100 10159b50 Tree::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0055d950 BW1M100 101597f0 Tree::GetCreatureBeliefType(void)

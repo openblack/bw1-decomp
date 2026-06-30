@@ -23,9 +23,9 @@ public:
     // BW1W120 00561320 BW1M100 10506350 ScriptTimer::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007117b0 BW1M100 10506390 ScriptTimer::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00711700 BW1M100 105064b0 ScriptTimer::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561310 BW1M100 10506310 ScriptTimer::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00561300 BW1M100 105062c0 ScriptTimer::IsDeletedWhenReleasedFromScript(void)

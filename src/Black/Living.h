@@ -77,9 +77,9 @@ public:
     // BW1W120 005ef160 BW1M100 1037c530 DataForScriptRemind::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 005ef570 BW1M100 1037c5c0 DataForScriptRemind::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005ef360 BW1M100 1037c8b0 DataForScriptRemind::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005ef150 BW1M100 1037c4f0 DataForScriptRemind::GetSaveType(void)
     virtual uint32_t GetSaveType();
 
@@ -165,9 +165,9 @@ public:
     // BW1W120 004172d0 BW1M100 10006820 Living::IsFunctional(void)
     virtual bool IsFunctional();
     // BW1W120 005ee960 BW1M100 1037d8d0 Living::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005ee630 BW1M100 1037ddd0 Living::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005eed20 BW1M100 1037d880 Living::ResolveLoad(void)
     virtual void ResolveLoad();
     // BW1W120 004173c0 BW1M100 10130ac0 Living::IsAnimate(void)

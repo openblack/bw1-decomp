@@ -36,9 +36,9 @@ public:
     // BW1W120 0072cb10 BW1M100 10533f80 PhysicalShield::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0072c410 BW1M100 10530bd0 PhysicalShield::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0072c700 BW1M100 10530750 PhysicalShield::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0072cb00 BW1M100 10533f40 PhysicalShield::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0072d7f0 BW1M100 1052ee20 PhysicalShield::GetImpressiveValue(Living *, Reaction *)

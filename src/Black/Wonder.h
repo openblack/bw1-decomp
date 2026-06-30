@@ -35,9 +35,9 @@ public:
     // BW1W120 00561210 BW1M100 101612d0 Wonder::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007790f0 BW1M100 10161470 Wonder::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00779080 BW1M100 10161540 Wonder::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561200 BW1M100 10161290 Wonder::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 005611b0 BW1M100 inlined Wonder::GetArrivePos(MapCoords *)

@@ -53,9 +53,9 @@ public:
     // BW1W120 0043c530 BW1M100 100baf20 BuildingSite::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
     virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
     // BW1W120 0043cad0 BW1M100 100b9cf0 BuildingSite::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0043c830 BW1M100 100ba480 BuildingSite::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0043b7a0 BW1M100 100be420 BuildingSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0043b950 BW1M100 100bcd10 BuildingSite::Init(void)

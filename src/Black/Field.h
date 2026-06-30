@@ -74,9 +74,9 @@ public:
     // BW1W120 00528080 BW1M100 100d6570 Field::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 00529d60 BW1M100 100d1eb0 Field::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 00529b10 BW1M100 100d23a0 Field::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00528070 BW1M100 100d6540 Field::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 00529330 BW1M100 inlined Field::GetArrivePos(MapCoords *)

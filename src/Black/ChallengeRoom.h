@@ -46,7 +46,7 @@ public:
     // BW1W120 00784c10 BW1M100 101abd90 ChallengeRoom::StartScript(unsigned long)
     bool StartScript(unsigned long param_1);
     // BW1W120 00784d10 BW1M100 101aba10 ChallengeRoom::ChallengeLoad(GameOSFile &)
-    void ChallengeLoad(GameOSFile* param_1);
+    void ChallengeLoad(GameOSFile& file);
 };
 
 #endif /* BW1_DECOMP_CHALLENGE_ROOM_INCLUDED_H */

@@ -23,9 +23,9 @@ public:
     // BW1W120 00560940 BW1M100 inlined UR_Tornado::CollectionData::GetDebugText( (void))
     virtual char* GetDebugText();
     // BW1W120 00699150 BW1M100 inlined UR_Tornado::CollectionData::Load( (GameOSFile &))
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006cfc40 BW1M100 inlined UR_Tornado::CollectionData::Save( (GameOSFile &))
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00560930 BW1M100 inlined UR_Tornado::CollectionData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };
@@ -41,9 +41,9 @@ public:
     // BW1W120 00560990 BW1M100 inlined UR_Tornado::DebrisCollectionData::GetDebugText( (void))
     virtual char* GetDebugText();
     // BW1W120 00698f10 BW1M100 inlined UR_Tornado::DebrisCollectionData::Load( (GameOSFile &))
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006cf9f0 BW1M100 inlined UR_Tornado::DebrisCollectionData::Save( (GameOSFile &))
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00560980 BW1M100 inlined UR_Tornado::DebrisCollectionData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };
@@ -59,9 +59,9 @@ public:
     // BW1W120 00560a30 BW1M100 inlined UR_Tornado::FlyingAtomData::GetDebugText( (void))
     virtual char* GetDebugText();
     // BW1W120 00699070 BW1M100 inlined UR_Tornado::FlyingAtomData::Load( (GameOSFile &))
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006cfb50 BW1M100 inlined UR_Tornado::FlyingAtomData::Save( (GameOSFile &))
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00560a20 BW1M100 inlined UR_Tornado::FlyingAtomData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };
@@ -77,9 +77,9 @@ public:
     // BW1W120 005609e0 BW1M100 inlined UR_Tornado::FlyingCollectionData::GetDebugText( (void))
     virtual char* GetDebugText();
     // BW1W120 00698fc0 BW1M100 inlined UR_Tornado::FlyingCollectionData::Load( (GameOSFile &))
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006cfaa0 BW1M100 inlined UR_Tornado::FlyingCollectionData::Save( (GameOSFile &))
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005609d0 BW1M100 inlined UR_Tornado::FlyingCollectionData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };

@@ -30,9 +30,9 @@ public:
     // BW1W120 00561840 BW1M100 1011edc0 HanoiBlock::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 006db960 BW1M100 10123fa0 HanoiBlock::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 006db9f0 BW1M100 10123e90 HanoiBlock::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 00561830 BW1M100 1011ed80 HanoiBlock::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 006de440 BW1M100 1011ee00 HanoiBlock::IsCannotBePickedUp( const(void))

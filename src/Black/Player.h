@@ -91,7 +91,7 @@ public:
     GameStats* game_stats; /* 0xa44 */
     Citadel* citadel;
     Creature* creature;
-    LHListHead__Town towns; /* 0xa50 */
+    LHListHead<Town> towns; /* 0xa50 */
     uint32_t field_0xa58;
     uint32_t field_0xa5c;
 

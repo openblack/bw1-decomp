@@ -26,9 +26,9 @@ public:
     // BW1W120 0055cf70 BW1M100 10519dd0 SpellWithObjects::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 007210f0 BW1M100 10516ed0 SpellWithObjects::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 007211d0 BW1M100 10516d00 SpellWithObjects::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055cf60 BW1M100 10519d90 SpellWithObjects::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 007212f0 BW1M100 10516c10 SpellWithObjects::ProcessSpellSeed(void)

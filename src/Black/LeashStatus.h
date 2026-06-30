@@ -34,9 +34,9 @@ public:
     // BW1W120 005e7630 BW1M100 1037ae50 GLeashStatus::GetPlayer(void)
     virtual GPlayer* GetPlayer();
     // BW1W120 005e7430 BW1M100 1037aeb0 GLeashStatus::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 005e7230 BW1M100 1037b1a0 GLeashStatus::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 005db930 BW1M100 1037ad30 GLeashStatus::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 005e71d0 BW1M100 1037b4b0 GLeashStatus::SaveExtraData(GameOSFile &)

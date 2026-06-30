@@ -48,9 +48,9 @@ public:
     // BW1W120 0055ddc0 BW1M100 10144af0 ShowNeedsVisuals::GetDebugText(void)
     virtual char* GetDebugText();
     // BW1W120 0071a320 BW1M100 10144bb0 ShowNeedsVisuals::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual uint32_t Load(GameOSFile& file);
     // BW1W120 0071a230 BW1M100 10144d30 ShowNeedsVisuals::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055ddb0 BW1M100 10144ab0 ShowNeedsVisuals::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // BW1W120 0071a410 BW1M100 10144b40 ShowNeedsVisuals::ResolveLoad(void)
