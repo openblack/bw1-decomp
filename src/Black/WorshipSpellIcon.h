@@ -85,8 +85,8 @@ public:
 
     // Non-virtual methods
 
-    // BW1W120 0077f1f0 BW1M100 inlined WorshipSpellIcon::SetZero(void)
-    void SetZero();
+    // BW1W120 0077f1f0 BW1M100 inlined WorshipSpellIcon::SetToZero(void)
+    void SetToZero();
     // BW1W120 0077f320 BW1M100 105b6bf0 WorshipSpellIcon::UpdateGraphicsWithPULevels(void)
     void UpdateGraphicsWithPULevels();
     // BW1W120 0077ff40 BW1M100 105b4ff0 WorshipSpellIcon::StopRemoveFromPlayer(void)
