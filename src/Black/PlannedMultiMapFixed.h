@@ -69,7 +69,7 @@ public:
     // Constructors
 
     // BW1W120 00648780 BW1M100 10115620 PlannedMultiMapFixed::PlannedMultiMapFixed(MapCoords const &, GMultiMapFixedInfo const *, float, float)
-    PlannedMultiMapFixed(const MapCoords* coords, const GMultiMapFixedInfo* info, float param_3, float param_4);
+    PlannedMultiMapFixed(const MapCoords& coords, const GMultiMapFixedInfo* info, float param_3, float param_4);
 
     // Non-virtual Destructors
 
