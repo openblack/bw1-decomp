@@ -15,6 +15,11 @@ class Base;
 class GBaseInfo;
 class GObjectInfo;
 
+struct AgeToScale
+{
+	float values[20];
+};
+
 class GVillagerInfo: public GLivingInfo
 {
 public:

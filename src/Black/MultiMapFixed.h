@@ -233,7 +233,7 @@ public:
     // BW1W120 0052f0d0 BW1M100 100de940 MultiMapFixed::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
     virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager);
     // BW1W120 0052e890 BW1M100 100e0240 MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords&)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // BW1W120 0052f1f0 BW1M100 100de6f0 MultiMapFixed::IsResourceStore(RESOURCE_TYPE)
     virtual bool IsResourceStore(RESOURCE_TYPE type);
     // BW1W120 0052f460 BW1M100 100de000 MultiMapFixed::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)

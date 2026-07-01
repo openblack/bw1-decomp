@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+
 #include "GameThing.h" /* For struct GameThing */
 #include "Living.h" /* For struct Living */
 #include "MapCoords.h" /* For struct MapCoords */
@@ -19,7 +21,7 @@ public:
     uint8_t field_0x14;
     MapCoords coords;
     GFootpathNode* next; /* 0x24 */
-    LHLinkedList__Living followers;
+    LHLinkedList<Living> followers;
 
     // Override methods
 
