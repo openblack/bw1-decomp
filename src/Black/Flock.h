@@ -95,7 +95,7 @@ public:
     // BW1W120 0052fc20 BW1M100 100e6220 Flock::SetDomainCentrePos(MapCoords const &)
     void SetDomainCentrePos(const MapCoords* param_1);
     // BW1W120 00530570 BW1M100 100684b0 Flock::GetFlockPos(void)
-    MapCoords* GetFlockPos();
+    MapCoords GetFlockPos();
 };
 
 #endif /* BW1_DECOMP_FLOCK_INCLUDED_H */
