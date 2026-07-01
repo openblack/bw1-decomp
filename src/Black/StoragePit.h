@@ -58,8 +58,8 @@ public:
     virtual uint32_t Save(GameOSFile& file);
     // BW1W120 0055cd30 BW1M100 10151560 StoragePit::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // BW1W120 0055ccb0 BW1M100 inlined StoragePit::GetArrivePos(MapCoords *)
-    virtual MapCoords* GetArrivePos(MapCoords* param_1);
+    // BW1W120 0055ccb0 BW1M100 inlined StoragePit::GetArrivePos(void)
+    virtual MapCoords GetArrivePos();
     // BW1W120 0055ccf0 BW1M100 10151430 StoragePit::IsCastShadowAtNight(void)
     virtual uint32_t IsCastShadowAtNight();
     // BW1W120 0055cd10 BW1M100 101514c0 StoragePit::CanBeEatenByCreature(Creature *)

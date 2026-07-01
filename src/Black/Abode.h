@@ -226,7 +226,7 @@ public:
     // BW1W120 00407170 BW1M100 1034ec40 Abode::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
     virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager);
     // BW1W120 00403200 BW1M100 10576c70 Abode::CallVirtualFunctionsForCreation(const MapCoords&)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // BW1W120 00406820 BW1M100 1049b920 Abode::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* status);
     // BW1W120 00406830 BW1M100 102fed90 Abode::InterfaceTap(GInterfaceStatus *)
@@ -353,7 +353,7 @@ public:
     // BW1W120 00405fb0 BW1M100 1009fda0 Abode::LeaveHome(void)
     void LeaveHome();
     // BW1W120 00405fc0 BW1M100 100cd2d0 Abode::GetNearestWaterPos(MapCoords &)
-    bool GetNearestWaterPos(MapCoords* coords);
+    bool GetNearestWaterPos(MapCoords& coords);
     // BW1W120 00406640 BW1M100 10172a50 Abode::ApplyEffectsDueToPhysicalDestruction(Object *, GPlayer *)
     void ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player);
     // BW1W120 004069c0 BW1M100 1036ee00 Abode::FindVillager(int (*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, unsigned long), SCRIPT_OBJECT_TYPE, unsigned long)
@@ -365,9 +365,9 @@ public:
     // BW1W120 004070f0 BW1M100 101b8780 Abode::DrawPercentFull(int)
     void DrawPercentFull(int param_1);
     // BW1W120 00407230 BW1M100 inlined Abode::FUN_00407230(bool)
-    MapCoords* FUN_00407230(MapCoords* coords, bool param_2);
+    MapCoords FUN_00407230(bool param_2);
     // BW1W120 004072e0 BW1M100 1000cd50 Abode::GetPosOutside(float, float, float)
-    MapCoords* GetPosOutside(MapCoords* coords, float param_2, float param_3, float param_4);
+    MapCoords GetPosOutside(float param_2, float param_3, float param_4);
     // BW1W120 004073f0 BW1M100 inlined Abode::FUN_004073f0(GPlayer *)
     void FUN_004073f0(GPlayer* param_1);
     // BW1W120 004074a0 BW1M100 100e7ac0 Abode::CalculateDesireToGainMale(void)
@@ -375,9 +375,9 @@ public:
     // BW1W120 00407540 BW1M100 100af0d0 Abode::CalculateDesireToGainVillager(void)
     float CalculateDesireToGainVillager();
     // BW1W120 004075b0 BW1M100 10518900 Abode::TakeVillagerFrom(Abode&, int)
-    bool TakeVillagerFrom(Abode* other, int param_2);
+    bool TakeVillagerFrom(Abode& other, int param_2);
     // BW1W120 00407620 BW1M100 10516470 Abode::SwapMaleForFemaleFrom(Abode&)
-    bool SwapMaleForFemaleFrom(Abode* other);
+    bool SwapMaleForFemaleFrom(Abode& other);
     // BW1W120 004076c0 BW1M100 105a17d0 Abode::GetVillagerHealthTotal(void)
     float GetVillagerHealthTotal();
 };

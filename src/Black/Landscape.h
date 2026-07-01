@@ -25,7 +25,7 @@ struct GLandscape
     // BW1W120 005e3f60 BW1M100 1001d960 GLandscape::PreDraw(void)
     static uint32_t PreDraw();
     // BW1W120 00613750 BW1M100 10048570 GLandscape::ConvertMapCoordToLandscapePoint(MapCoords const &)
-    static LHPoint* ConvertMapCoordToLandscapePoint(const MapCoords* param_2, LHPoint* param_1);
+    static LHPoint ConvertMapCoordToLandscapePoint(const MapCoords& param_2);
 
     // Non-virtual methods
 
