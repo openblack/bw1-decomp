@@ -299,7 +299,7 @@ public:
     // BW1W120 004220c0 BW1M100 100a5910 MultiMapFixed::SetShouldNotBeAddedToPlanned(int)
     virtual void SetShouldNotBeAddedToPlanned(bool value);
     // BW1W120 0052ed40 BW1M100 100df2d0 MultiMapFixed::BuildBy(float)
-    virtual void BuildBy(float param_1);
+    virtual void BuildBy(float amount);
     // BW1W120 00438d90 BW1M100 100b25f0 MultiMapFixed::ConvertToPlanned(void)
     virtual PlannedMultiMapFixed* ConvertToPlanned();
     // BW1W120 0052f550 BW1M100 100ddd70 MultiMapFixed::CreateCollideData(void)

@@ -85,7 +85,7 @@ public:
     // BW1W120 0043c680 BW1M100 100ba9d0 BuildingSite::ShouldIGetWood(Villager *)
     bool32_t ShouldIGetWood(Villager* param_1);
     // BW1W120 0043d080 BW1M100 100b9660 BuildingSite::BuildBy(float)
-    void BuildBy(float param_1);
+    void BuildBy(float amount);
 };
 
 #endif /* BW1_DECOMP_BUILDING_SITE_INCLUDED_H */

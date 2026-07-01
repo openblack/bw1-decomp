@@ -72,7 +72,7 @@ Black/BigForest.cpp:
 Black/Bonfire.cpp:
 	.text       start:0x00439590 end:0x00439AA0
 
-Black/CitadelBuildingSite.cpp:
+Black/BuildingSite.cpp:
 	.text       start:0x0043AD60 end:0x0043DD10
 
 Black/BWLan.cpp:
