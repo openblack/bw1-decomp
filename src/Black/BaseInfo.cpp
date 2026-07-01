@@ -6,5 +6,10 @@
 void GBaseInfo::SetInfoID()
 {
     index = GBaseInfo::info_count++;
-    Game::g_game->lists->base_infos.PushBack(this);
+    GGame::g_game->game_lists.base_infos.AddToFirst(this);
+}
+
+GBaseInfo* GetInfoPtr(int index)
+{
+    return GGame::g_game->game_lists.base_infos.Get(index);
 }

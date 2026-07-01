@@ -1,7 +1,7 @@
 #ifndef BW1_DECOMP_LH_TIMER_INCLUDED_H
 #define BW1_DECOMP_LH_TIMER_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
+#include <re_common.h> /* For bool32_t */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 struct LHTimer

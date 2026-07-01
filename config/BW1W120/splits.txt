@@ -60,6 +60,9 @@ Black/ThingMusicInfo.cpp:
 Black/Ball.cpp:
 	.text       start:0x00435870 end:0x004363D0
 
+Black/BaseInfo.cpp:
+	.text       start:0x004363D0 end:0x00437120
+
 Black/BigForest.cpp:
 	.text       start:0x00438BB0 end:0x00439590
 
