@@ -7,6 +7,7 @@
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE */
 #include <re_common.h> /* For bool32_t */
 
+#include "AbodeInfo.h" /* For struct GAbodeInfo */
 #include "PlannedMultiMapFixed.h" /* For struct PlannedMultiMapFixed */
 
 // Forward Declares
@@ -20,7 +21,6 @@ class GameThing;
 class GameThingWithPos;
 struct MapCoords;
 class MultiMapFixed;
-class Town;
 
 class PlannedAbode: public PlannedMultiMapFixed
 {
@@ -57,9 +57,14 @@ public:
     // Static methods
 
     // BW1W120 004055c0 BW1M100 103e4530 PlannedAbode::CreateNoInit(MapCoords const &, GAbodeInfo const *, Town *, float, float)
-    static PlannedAbode* CreateNoInit(MapCoords* coords, GMultiMapFixedInfo* info, Town* town, float param_4, float param_5);
+    static PlannedAbode* CreateNoInit(const MapCoords& coords, const GAbodeInfo* info, Town* town, float param_4, float param_5);
     // BW1W120 00405600 BW1M100 10479fb0 PlannedAbode::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float)
-    static PlannedAbode* Create(MapCoords* coords, GMultiMapFixedInfo* info, Town* town, float param_4, float param_5);
+    static PlannedAbode* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float param_4, float param_5)
+    {
+        PlannedAbode* abode = CreateNoInit(coords, info, town, param_4, param_5);
+        abode->Init(town);
+        return abode;
+    }
     // BW1W120 00405660 BW1M100 1043fad0 PlannedAbode::Create(Abode*)
     static PlannedAbode* Create(Abode* abode);
     // BW1W120 004056d0 BW1M100 10007bf0 PlannedAbode::GetInfo(void)
@@ -68,7 +73,11 @@ public:
     // Constructors
 
     // BW1W120 00405080 BW1M100 103e51a0 PlannedAbode::PlannedAbode(MapCoords const &, GAbodeInfo const *, Town *, float, float)
-    PlannedAbode(const MapCoords* coords, const GMultiMapFixedInfo* info, Town* town, float param_4, float param_5);
+    PlannedAbode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale)
+        : PlannedMultiMapFixed(coords, info, y_angle, scale)
+        , town(NULL)
+    {
+    }
     // BW1W120 00405580 BW1M100 103e4ca0 PlannedAbode::PlannedAbode(Abode*)
     PlannedAbode(Abode* abode);
 
