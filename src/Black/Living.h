@@ -620,7 +620,7 @@ public:
     // BW1W120 005ecd00 BW1M100 10380fd0 Living::MoveOnStructure(void)
     uint32_t MoveOnStructure();
     // BW1W120 005ecf60 BW1M100 1006ced0 Living::GetFlockPos(void)
-    MapCoords* GetFlockPos();
+    MapCoords GetFlockPos();
     // BW1W120 005ecf70 BW1M100 1004bf90 Living::IAmFlockLeader(void)
     bool IAmFlockLeader();
     // BW1W120 005ecfa0 BW1M100 10065500 Living::GetDomainRadius(void)
@@ -628,7 +628,7 @@ public:
     // BW1W120 005ecfc0 BW1M100 1006cd50 Living::GetFlockDistance(void)
     uint16_t GetFlockDistance();
     // BW1W120 005ed080 BW1M100 100336b0 Living::CalcRandomPos(MapCoords const &, float, float)
-    MapCoords* CalcRandomPos(MapCoords* param_1, MapCoords* param_2, float param_3, float param_4);
+    MapCoords CalcRandomPos(const MapCoords& param_2, float param_3, float param_4);
     // BW1W120 005ed2c0 BW1M100 10380600 Living::SetAge(float)
     void SetAge(int age);
     // BW1W120 005ed9a0 BW1M100 1006cf40 Living::StateInScript(void)
@@ -638,15 +638,15 @@ public:
     // BW1W120 005edc10 BW1M100 1037f3d0 Living::SetupMoveOnFootpath(GFootpath *, int, unsigned char, GFootpathNode *)
     int SetupMoveOnFootpath(GFootpath* param_1, uint32_t param_2, uint32_t param_3, GFootpathNode* param_4);
     // BW1W120 005edd20 BW1M100 100980f0 Living::SetupMoveToOnFootpath(GameThingWithPos &, MapCoords const &, unsigned char)
-    void SetupMoveToOnFootpath(GameThingWithPos* destination, MapCoords* arrive_position, uint8_t state);
+    void SetupMoveToOnFootpath(GameThingWithPos& destination, const MapCoords& arrive_position, uint8_t state);
     // BW1W120 005edde0 BW1M100 1037eef0 Living::MoveOnFootpath(void)
     int MoveOnFootpath();
     // BW1W120 005ee5f0 BW1M100 1037e2a0 Living::SetFlock(Flock *)
     void SetFlock(Flock* param_1);
     // BW1W120 005ef010 BW1M100 10065550 Living::PosWithinDomain(MapCoords const &, float)
-    uint32_t PosWithinDomain(MapCoords* param_1, float param_2);
+    uint32_t PosWithinDomain(const MapCoords& param_1, float param_2);
     // BW1W120 005ef9c0 BW1M100 10384160 Living::CalculateDancePosition(MapCoords const &, MapCoords *)
-    bool CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2);
+    bool CalculateDancePosition(const MapCoords& param_1, MapCoords* param_2);
     // BW1W120 005ef9f0 BW1M100 10383ce0 Living::PerformDance(MapCoords const &, unsigned char, unsigned long)
     bool32_t PerformDance(const MapCoords* param_1, unsigned char param_2, unsigned long param_3);
     // BW1W120 005f1270 BW1M100 1004b9b0 Living::ProcessReaction(void)
@@ -660,9 +660,9 @@ public:
     // BW1W120 005f2800 BW1M100 1038a340 Living::SetupMoveToObject(Object *, unsigned char)
     bool SetupMoveToObject(Object* param_1, unsigned char param_2);
     // BW1W120 005f2830 BW1M100 10029240 Living::SetupMoveToPos(MapCoords const &, unsigned char)
-    uint32_t SetupMoveToPos(const MapCoords* param_2, uint8_t param_3);
+    uint32_t SetupMoveToPos(const MapCoords& param_2, uint8_t param_3);
     // BW1W120 005f2890 BW1M100 10010f60 Living::SetupMoveToWithHug(MapCoords const &, unsigned char)
-    uint32_t SetupMoveToWithHug(const MapCoords* coords, uint8_t state);
+    uint32_t SetupMoveToWithHug(const MapCoords& coords, uint8_t state);
     // BW1W120 006e44a0 BW1M100 101358c0 Living::SetReactionDoneWhen(REACTION)
     void SetReactionDoneWhen(REACTION reaction);
     // BW1W120 00768640 BW1M100 105975c0 Living::CannotExitState(unsigned char)
