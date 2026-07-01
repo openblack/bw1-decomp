@@ -63,6 +63,9 @@ Black/Ball.cpp:
 Black/BaseInfo.cpp:
 	.text       start:0x004363D0 end:0x00437120
 
+Black/Belief.cpp:
+	.text       start:0x00437C60 end:0x00438BB0
+
 Black/BigForest.cpp:
 	.text       start:0x00438BB0 end:0x00439590
 
