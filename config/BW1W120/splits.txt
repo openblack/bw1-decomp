@@ -123,6 +123,9 @@ Black/CitadelHeart.cpp:
 Black/CitadelPart.cpp:
 	.text       start:0x00469390 end:0x00469930
 
+Black/Collide.cpp:
+	.text       start:0x0046A810 end:0x0046AE50
+
 Black/CPUCheck.cpp:
 	.text       start:0x00471A20 end:0x00472A10
 
@@ -1083,6 +1086,9 @@ Lionhead/LH3DLib/development/LH3DCameraChecker.cpp:
 	.text       start:0x0081F9E0 end:0x008212E0
 	.data       start:0x00C383B8 end:0x00C383BC
 	.bss        start:0x00EB99A8 end:0x00EB99AC
+
+Lionhead/LHLib/ver5.0/LHCollide.h:
+	.text       start:0x00827640 end:0x0082B1F0
 
 lib/libcmt/wcsdup.obj:
 	.text       start:0x008A5B0C end:0x008A5B3A align:1

@@ -22,7 +22,7 @@ struct GameThingWithPosVftable;
 struct GestureSystemPacketData;
 struct MapCell;
 struct MapCoords;
-struct NewCollide;
+class NewCollide;
 class PhysicsObject;
 class Villager;
 

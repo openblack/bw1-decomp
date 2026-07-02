@@ -32,7 +32,7 @@ class LHOSFile;
 class Living;
 struct MapCell;
 struct MapCoords;
-struct NewCollide;
+class NewCollide;
 struct ObjectVftable;
 class PlannedMultiMapFixed;
 class PotStructure;
