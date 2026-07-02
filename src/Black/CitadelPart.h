@@ -89,7 +89,7 @@ public:
     // BW1W120 inlined BW1M100 1030de40 CitadelPart::CitadelPart(void)
     CitadelPart();
     // BW1W120 004693f0 BW1M100 101c35b0 CitadelPart::CitadelPart(MapCoords const &, GCitadelPartInfo const *, Citadel *, float, float, float, int)
-    CitadelPart(MapCoords* coords, GCitadelPartInfo* info, Citadel* citadel, float y_angle, float scale, float param_6, int param_7);
+    CitadelPart(const MapCoords& coords, const GCitadelPartInfo* info, Citadel* citadel, float y_angle, float scale, float param_6, int param_7);
 };
 
 #endif /* BW1_DECOMP_CITADEL_PART_INCLUDED_H */
