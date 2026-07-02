@@ -36,9 +36,9 @@ public:
     // BW1W120 0077ef30 BW1M100 inlined WorshipSiteUpgrade::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
     // BW1W120 004220f0 BW1M100 inlined WorshipSiteUpgrade::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // BW1W120 00422110 BW1M100 inlined WorshipSiteUpgrade::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_t IsBuilt();
     // BW1W120 00527790 BW1M100 inlined WorshipSiteUpgrade::IsDrawBuilding(void)
     virtual bool IsDrawBuilding();
     // BW1W120 0077edd0 BW1M100 inlined WorshipSiteUpgrade::ConvertToPlanned(void)

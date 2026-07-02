@@ -42,9 +42,9 @@ public:
     // BW1W120 00644200 BW1M100 inlined PFootball::AddPlaytimeVillager(Villager *)
     virtual bool AddPlaytimeVillager(Villager* param_1);
     // BW1W120 006438f0 BW1M100 inlined PFootball::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // BW1W120 00643910 BW1M100 inlined PFootball::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_t IsBuilt();
 };
 
 class PPlannedFootball: public PlannedMultiMapFixed

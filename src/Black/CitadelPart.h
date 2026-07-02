@@ -78,9 +78,9 @@ public:
     // BW1W120 004694f0 BW1M100 101c3830 CitadelPart::ShouldFootpathsGoRound(void)
     virtual bool ShouldFootpathsGoRound();
     // BW1W120 00464ab0 BW1M100 101c08e0 CitadelPart::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // BW1W120 00464ad0 BW1M100 10081060 CitadelPart::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_t IsBuilt();
     // BW1W120 004694a0 BW1M100 101b91f0 CitadelPart::ConvertToPlanned(void)
     virtual PlannedMultiMapFixed* ConvertToPlanned();
 

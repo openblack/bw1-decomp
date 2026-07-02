@@ -29,11 +29,6 @@ public:
     // BW1W120 007bc650 BW1M100 10164fc0 LHOSFile::LHOSFile(void)
     LHOSFile();
 
-    // Non-virtual Destructors
-
-    // BW1W120 007bc680 BW1M100 inlined LHOSFile::~LHOSFile(void)
-    ~LHOSFile();
-
     // Non-virtual methods
 
     // BW1W120 0046b720 BW1M100 inlined LHOSFile::Write(char *const)

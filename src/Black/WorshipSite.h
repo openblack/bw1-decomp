@@ -143,7 +143,7 @@ public:
     // BW1W120 0077e460 BW1M100 inlined WorshipSite::GetResourceDropPosForComputerPlayer(MapCoords *)
     virtual void GetResourceDropPosForComputerPlayer(MapCoords* param_1);
     // BW1W120 0077bdd0 BW1M100 105b10a0 WorshipSite::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_t IsBuilt();
     // BW1W120 0077ac10 BW1M100 105b3210 WorshipSite::Built(void)
     virtual bool Built();
     // BW1W120 0055dc70 BW1M100 105b3e10 WorshipSite::GetAbodeType(void)
