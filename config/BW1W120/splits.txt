@@ -129,6 +129,12 @@ Black/Collide.cpp:
 Black/Config.cpp:
 	.text       start:0x0046AE50 end:0x0046B760
 
+Black/Container.cpp:
+	.text       start:0x0046B760 end:0x0046B9A0
+
+Black/ControlHand.cpp:
+	.text       start:0x0046B9A0 end:0x0046CCD0
+
 Black/CPUCheck.cpp:
 	.text       start:0x00471A20 end:0x00472A10
 

@@ -22,6 +22,7 @@ struct LH3DMesh;
 struct LH3DObjectHair;
 class LHFile;
 struct LHMatrix;
+struct Morphable_field_0x4314_t;
 
 class Morphable: public DrawingObject
 {
@@ -102,7 +103,7 @@ public:
     // Non-virtual methods
 
     // BW1W120 00617310 BW1M100 10108d10 Morphable::MorphInit(LHPoint &, long, void* )
-    void MorphInit(LHPoint* point, long param_3, void* param_4);
+    void MorphInit(LHPoint& point, long param_3, void* param_4);
     // BW1W120 00617470 BW1M100 10108c30 Morphable::AddHairGroup()
     uint32_t AddHairGroup();
     // BW1W120 00617620 BW1M100 10108960 Morphable::SelectMesh(long)

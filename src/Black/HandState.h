@@ -31,6 +31,7 @@ public:
 
     // Override methods
 
+    virtual void Enter();
     // BW1W120 0046e5e0 BW1M100 101c6110 HandState::DrawTheHeldObject(void)
     virtual void DrawTheHeldObject();
     // BW1W120 005b02d0 BW1M100 101c5590 HandState::Exit(void)

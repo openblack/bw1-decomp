@@ -24,6 +24,9 @@ struct LH3DMesh;
 class LHFile;
 struct LHFilePath;
 struct LHMatrix;
+struct CFrameData;
+
+typedef char ANM_Name[0x20];
 
 struct CFrame
 {
