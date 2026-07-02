@@ -7,28 +7,49 @@
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 #include "Morphable.h" /* For struct Morphable */
+#include "HandState.h"
+#include "HandStateInvisible.h"
+#include "HandStateNormal.h"
+#include "HandStateCamera.h"
+#include "HandStateTug.h"
+#include "HandStateHolding.h"
+#include "HandStateTotem.h"
+#include "HandStateMultiPickUp.h"
+#include "HandStateCreature.h"
+#include "HandStateGrain.h"
+#include "HandStatePlayAnim.h"
+#include "HandStateCitadel.h"
+
 
 // Forward Declares
 
 class GInterfaceStatus;
 struct HandFX;
-class HandState;
-class HandStateCamera;
-class HandStateCitadel;
-class HandStateCreature;
-class HandStateGrain;
-class HandStateHolding;
-class HandStateInvisible;
-class HandStateMultiPickUp;
-class HandStateNormal;
-class HandStatePlayAnim;
-class HandStateTotem;
-class HandStateTug;
 struct LHMatrix;
+class CHand;
 
 class CHand: public Morphable
 {
 public:
+    struct State
+    {
+        struct Named
+        {
+            HandStateInvisible* invisible;
+            HandStateNormal* normal;
+            HandStateCamera* camera;
+            HandStateTug* tug;
+            HandStateHolding* holding;
+            HandStateTotem* totem;
+            HandStateMultiPickUp* multi_pick_up;
+            HandStateCreature* creature;
+            HandStateGrain* grain;
+            HandStatePlayAnim* play_anim;
+            HandStateCitadel* citadel;
+        };
+        Named named;
+        HandState* raw[11];
+    };
     float field_0x4834;
     float max_distance_from_user;
     int field_0x483c;
@@ -56,7 +77,7 @@ public:
     uint8_t field_0x4876;
     uint8_t field_0x4877;
     uint32_t current_state;
-    CHand__State hand_states;
+    State hand_states;
     uint8_t field_0x48a8;
     uint8_t field_0x48a9;
     uint8_t field_0x48aa;

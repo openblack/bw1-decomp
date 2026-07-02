@@ -18,9 +18,9 @@ public:
     // Static methods
 
     // BW1W120 007f9d60 BW1M100 10029180 LH3DMeshedObject::SetDrawWithGlobalAlpha(int) (this is fastcall, not thiscall)
-    static void SetDrawWithGlobalAlpha(LH3DMeshedObject* this, int value);
+    void SetDrawWithGlobalAlpha(int value);
     // BW1W120 007f9fb0 BW1M100 1000bf70 LH3DMeshedObject::GetDoorPos(LHPoint *) const (this is fastcall, not thiscall)
-    static bool GetDoorPos(LH3DMeshedObject* this, LHPoint* out_point);
+    bool32_t GetDoorPos(LHPoint* out_point);
 
     // Constructors
 
