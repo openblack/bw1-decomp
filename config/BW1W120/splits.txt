@@ -50,6 +50,9 @@ Black/alexmfc.cpp:
 Black/AlignmentInfo.cpp:
 	.text       start:0x00413FF0 end:0x00414770
 
+Black/Alignment.cpp:
+	.text       start:0x00414770 end:0x00416C50
+
 Black/Animal.cpp:
 	.text       start:0x00416C50 end:0x0041BCF0
 
@@ -83,14 +86,23 @@ Black/AnimalWolf.cpp:
 Black/AnimatedStatic.cpp:
 	.text       start:0x00421DE0 end:0x00423110
 
+Black/Arena.cpp:
+	.text       start:0x00423110 end:0x004258C0
+
 Black/Arrow.cpp:
 	.text       start:0x004258C0 end:0x00425C20
 
-Black/Audio.cpp:
-	.text       start:0x00426AC0 end:0x00428820
+Black/Artifact.cpp:
+	.text       start:0x00425C20 end:0x00426AC0
 
-Black/ThingMusicInfo.cpp:
-	.text       start:0x00429150 end:0x00429C60
+Black/Audio.cpp:
+	.text       start:0x00426AC0 end:0x0042A620
+
+Black/AudioTag.cpp:
+	.text       start:0x0042A620 end:0x0042B2C0
+
+Black/Balance.cpp:
+	.text       start:0x0042B2C0 end:0x00435870
 
 Black/Ball.cpp:
 	.text       start:0x00435870 end:0x004363D0
@@ -182,7 +194,7 @@ Black/CreatureVisionState.cpp:
 Black/CreatureActionsKnownAbout.cpp:
 	.text       start:0x004E2170 end:0x004E2C90
 
-Black/Alignment.cpp:
+Black/CreatureAlignment.cpp:
 	.text       start:0x004E4DF0 end:0x004E9880
 
 Black/CreatureMimicInfo.cpp:
