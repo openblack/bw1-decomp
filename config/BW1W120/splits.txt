@@ -37,7 +37,15 @@ Black/Abode.cpp:
 	.rdata$r    start:0x009A62D8 end:0x009A6570
 	.CRT$XCU    start:0x009C6040 end:0x009C6078
 	.data       start:0x009C7E80 end:0x009C8078
-	.bss        start:0x00C3C680 end:0x00C4CC68
+	.bss        start:0x00C3C680 end:0x00C4CC80
+
+Black/alexmfc.cpp:
+	.text       start:0x00407840 end:0x00413FF0
+	.rdata      start:0x008AB278 end:0x008AB638
+	.rdata$r    start:0x009A6570 end:0x009A69C8
+	.CRT$XCU    start:0x009C6078 end:0x009C607C
+	.data       start:0x009C8078 end:0x009C83EC
+	.bss        start:0x00C4CC80 end:0x00C4CD38
 
 Black/AlignmentInfo.cpp:
 	.text       start:0x00413FF0 end:0x00414770
