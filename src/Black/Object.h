@@ -46,7 +46,7 @@ class LandscapeVortex;
 class Living;
 struct MapCell;
 class MultiMapFixed;
-struct NewCollide;
+class NewCollide;
 struct PhysOb;
 class PhysicsObject;
 struct Point2D;

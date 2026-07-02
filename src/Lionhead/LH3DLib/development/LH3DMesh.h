@@ -41,7 +41,7 @@ struct LH3DMesh
     LH3DTexture* skins;
     int extra_data_count; /* 0x40 */
     LHPoint* extra_pos;
-    FootprintData* footprint_data;
+    void* footprint_data;
 
     // Static methods
 
