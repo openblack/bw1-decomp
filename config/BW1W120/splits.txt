@@ -45,6 +45,33 @@ Black/AlignmentInfo.cpp:
 Black/Animal.cpp:
 	.text       start:0x00416C50 end:0x0041BCF0
 
+Black/AnimalAnimation.cpp:
+	.text       start:0x0041BCF0 end:0x0041D050
+
+Black/AnimalCow.cpp:
+	.text       start:0x0041D050 end:0x0041DC70
+
+Black/AnimalDove.cpp:
+	.text       start:0x0041DC70 end:0x0041FBB0
+
+Black/AnimalLeopard.cpp:
+	.text       start:0x0041FBB0 end:0x0041FCD0
+
+Black/AnimalLion.cpp:
+	.text       start:0x0041FCD0 end:0x00420130
+
+Black/AnimalReaction.cpp:
+	.text       start:0x00420130 end:0x00420790
+
+Black/AnimalSpellWolf.cpp:
+	.text       start:0x00420790 end:0x00421360
+
+Black/AnimalTiger.cpp:
+	.text       start:0x00421360 end:0x004215A0
+
+Black/AnimalWolf.cpp:
+	.text       start:0x004215A0 end:0x00421DE0
+
 Black/AnimatedStatic.cpp:
 	.text       start:0x00421DE0 end:0x00423110
 
