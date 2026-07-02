@@ -754,9 +754,6 @@ lib/libcmt/vsprintf.obj:
 lib/libcmt/qsort.obj:
 	.text       start:0x00735B79 end:0x00735D47 align:1
 
-lib_fragment_00735D47:
-	.text       start:0x00735D47 end:0x00735D5A align:1
-
 lib/libcmt/ceil.obj:
 	.text       start:0x00735D82 end:0x00735E51 align:1
 	.data       start:0x00B4F9A0 end:0x00B4F9A4 align:1
@@ -868,9 +865,6 @@ lib/libcmt/powhlp.obj:
 lib/libcmt/timeset.obj:
 	.rdata      start:0x008D68A4 end:0x008D68E4 align:4
 	.data       start:0x00B524A0 end:0x00B52534 align:4
-
-lib_fragment_00B52534:
-	.data       start:0x00B52534 end:0x00B52538 align:1
 
 lib/libcmt/adj_fdiv.obj:
 	.text       start:0x0073F2A0 end:0x0074002B align:1
