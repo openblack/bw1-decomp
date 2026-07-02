@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "LH3DColor.h" /* For struct LH3DColor */
 #include "LHMatrix.h" /* For struct LHMatrix */

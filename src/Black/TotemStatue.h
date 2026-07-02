@@ -119,9 +119,9 @@ public:
     // BW1W120 00561140 BW1M100 10543e60 TotemStatue::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
     // BW1W120 00561090 BW1M100 10543660 TotemStatue::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // BW1W120 005610b0 BW1M100 1001a9a0 TotemStatue::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_t IsBuilt();
     // BW1W120 00738130 BW1M100 10544dd0 TotemStatue::AddToPlayer(void)
     virtual void AddToPlayer();
 

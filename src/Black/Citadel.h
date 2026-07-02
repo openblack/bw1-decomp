@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LHLib/ver5.0/LHListHead.h> /* For struct LHListHead */
+
 #include "CitadelPart.h" /* For struct CitadelPart */
 #include "Container.h" /* For struct Container */
 
@@ -28,7 +30,7 @@ class Citadel: public Container
 public:
     CitadelHeart* heart; /* 0x30 */
     WorshipSite* worship_sites[0x6];
-    LHListHead__CitadelPart part_list; /* 0x4c */
+    LHListHead<CitadelPart> part_list; /* 0x4c */
     uint32_t field_0x54;
     uint32_t field_0x58;
     uint32_t field_0x5c;
@@ -81,8 +83,12 @@ public:
 
     // BW1W120 00463130 BW1M100 101b9680 Citadel::AddTown(Town*)
     void* AddTown(Town* town);
+    // BW1W120 00463190 BW1M100 101b9570 Citadel::FindTribeWorshipSite(const GTribeInfo*)
+    WorshipSite* FindTribeWorshipSite(const GTribeInfo* tribe_info);
     // BW1W120 00463220 BW1M100 101b9420 Citadel::FindOrCreateWorshipSite(GTribeInfo const *)
-    WorshipSite* FindOrCreateWorshipSite(GTribeInfo* tribe_info);
+    WorshipSite* FindOrCreateWorshipSite(const GTribeInfo* tribe_info);
+    // BW1W120 004633f0 BW1M100 101b9070 Citadel::RequestANewWorshipSite(GTribeInfo const *)
+    WorshipSite* RequestANewWorshipSite(const GTribeInfo* tribe_info);
 };
 
 #endif /* BW1_DECOMP_CITADEL_INCLUDED_H */
