@@ -1070,6 +1070,20 @@ lib/libcmt/mantold.obj:
 lib/libcmt/x10fout.obj:
 	.text       start:0x007DA9B2 end:0x007DAC45 align:1
 
+lib/libcmt/days.obj:
+	.data       start:0x00C30C44 end:0x00C30CAC align:1
+
+lib/libcmt/constpow.obj:
+	.data       start:0x00C30CB0 end:0x00C30F6C align:1
+
+lib/libcmt/strftime.obj:
+	.data       start:0x00C30F6C end:0x00C30F70 align:1
+
+Lionhead/LH3DLib/development/LH3DCameraChecker.cpp:
+	.text       start:0x0081F9E0 end:0x008212E0
+	.data       start:0x00C383B8 end:0x00C383BC
+	.bss        start:0x00EB99A8 end:0x00EB99AC
+
 lib/libcmt/wcsdup.obj:
 	.text       start:0x008A5B0C end:0x008A5B3A align:1
 
@@ -1093,12 +1107,3 @@ lib/libcmt/wcspbrk.obj:
 
 lib/libcmt/wcsspn.obj:
 	.text       start:0x008A6145 end:0x008A6187 align:1
-
-lib/libcmt/days.obj:
-	.data       start:0x00C30C44 end:0x00C30CAC align:1
-
-lib/libcmt/constpow.obj:
-	.data       start:0x00C30CB0 end:0x00C30F6C align:1
-
-lib/libcmt/strftime.obj:
-	.data       start:0x00C30F6C end:0x00C30F70 align:1

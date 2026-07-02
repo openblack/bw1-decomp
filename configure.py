@@ -985,6 +985,8 @@ config.libs = [
             Object(NonMatching, "Black/WorshipSpellIcon.cpp"),
             Object(NonMatching, "Black/WorshipTotem.cpp"),
 
+            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DCameraChecker.cpp"),
+
             Object(Matching, "zlib/deflate.c"),
             Object(Matching, "zlib/inflate.c"),
             # TODO: 1.1 seems to bump .bss address space
