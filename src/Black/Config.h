@@ -20,4 +20,7 @@ struct Config
     void ProcessOneGameTurn();
 };
 
+// BW1W120 0046b0b0 BW1M100 100bf450 ConfigGetFPS(void)
+int ConfigGetFPS();
+
 #endif /* BW1_DECOMP_CONFIG_INCLUDED_H */

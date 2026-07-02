@@ -19,6 +19,10 @@ bool CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2);
 
 This applies to any type, not just `MapCoords`.
 
+## Globals
+
+`(*globals.game)->` is an old way of writing `GGame::g_game->`.
+
 ### Rule 2: Hidden output parameter returned as pointer
 
 If a function is declared as `Type* Func(Type* first_param, ...)` but the

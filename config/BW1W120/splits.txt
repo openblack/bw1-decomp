@@ -126,6 +126,9 @@ Black/CitadelPart.cpp:
 Black/Collide.cpp:
 	.text       start:0x0046A810 end:0x0046AE50
 
+Black/Config.cpp:
+	.text       start:0x0046AE50 end:0x0046B760
+
 Black/CPUCheck.cpp:
 	.text       start:0x00471A20 end:0x00472A10
 
