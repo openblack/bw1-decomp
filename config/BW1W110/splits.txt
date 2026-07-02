@@ -657,9 +657,6 @@ lib/libcmt/vsprintf.obj:
 lib/libcmt/qsort.obj:
 	.text       start:0x007B7C74 end:0x007B7E42 align:1
 
-lib_fragment_007B7E42:
-	.text       start:0x007B7E42 end:0x007B7E5A align:1
-
 lib/libcmt/ceil.obj:
 	.text       start:0x007B7E82 end:0x007B7F51 align:1
 	.data       start:0x00C1C2F0 end:0x00C1C2F4 align:1
@@ -906,6 +903,3 @@ lib/libcmt/days.obj:
 
 lib/libcmt/constpow.obj:
 	.data       start:0x00C1FB00 end:0x00C1FDBC align:1
-
-lib_fragment_00C1FDBC:
-	.data       start:0x00C1FDBC end:0x00C1FDC0 align:1
