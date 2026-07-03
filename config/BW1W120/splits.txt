@@ -138,10 +138,19 @@ Black/CameraEditor.cpp:
 	.text       start:0x00443B40 end:0x004472E0
 
 Black/CameraHelp.cpp:
-	.text       start:0x00448F20 end:0x00448F40
+	.text       start:0x004472E0 end:0x0044A140
+
+Black/CameraModeCitadel.cpp:
+	.text       start:0x0044A140 end:0x0044A7D0
 
 Black/CameraModeCtrInteract.cpp:
 	.text       start:0x0044A7D0 end:0x0044AB30
+
+Black/CameraModeDance.cpp:
+	.text       start:0x0044AB30 end:0x0044AD00
+
+Black/CameraModeFlyAndClick.cpp:
+	.text       start:0x0044AD00 end:0x0044B720
 
 Black/CameraModeFollow.cpp:
 	.text       start:0x0044B720 end:0x0044D810
@@ -158,6 +167,9 @@ Black/CameraModeNew1.cpp:
 Black/CameraModeNew2.cpp:
 	.text       start:0x00451C20 end:0x00454820
 
+Black/CameraModeNew3.cpp:
+	.text       start:0x00454820 end:0x00460DC0
+
 Black/CameraModePath.cpp:
 	.text       start:0x00460DC0 end:0x004610F0
 
@@ -167,14 +179,20 @@ Black/CameraModeScript.cpp:
 Black/CameraModeTwoObjects.cpp:
 	.text       start:0x00461B80 end:0x00462500
 
+Black/CarriedObject.cpp:
+	.text       start:0x00462500 end:0x00462920
+
 Black/Citadel.cpp:
 	.text       start:0x00462920 end:0x00464260
 
 Black/CitadelHeart.cpp:
-	.text       start:0x00464260 end:0x00465B20
+	.text       start:0x00464260 end:0x00469390
 
 Black/CitadelPart.cpp:
 	.text       start:0x00469390 end:0x00469930
+
+Black/citadelpeople.cpp:
+	.text       start:0x00469930 end:0x0046A810
 
 Black/Collide.cpp:
 	.text       start:0x0046A810 end:0x0046AE50
@@ -186,34 +204,46 @@ Black/Container.cpp:
 	.text       start:0x0046B760 end:0x0046B9A0
 
 Black/ControlHand.cpp:
-	.text       start:0x0046B9A0 end:0x0046CCD0
+	.text       start:0x0046B9A0 end:0x0046EDC0
+
+Black/ControlMap.cpp:
+	.text       start:0x0046EDC0 end:0x00471A20
 
 Black/CPUCheck.cpp:
 	.text       start:0x00471A20 end:0x00472A10
 
-Black/CreatureAttitudeToPlayer.cpp:
-	.text       start:0x004C7DB0 end:0x004C8410
-
-Black/CreatureVisionState.cpp:
-	.text       start:0x004D02C0 end:0x004D2270
-
-Black/CreatureActionsKnownAbout.cpp:
-	.text       start:0x004E2170 end:0x004E2C90
-
-Black/CreatureAlignment.cpp:
-	.text       start:0x004E4DF0 end:0x004E9880
-
-Black/CreatureMimicInfo.cpp:
-	.text       start:0x004E9BC0 end:0x004EABE0
+Black/Creature.cpp:
+	.text       start:0x00472A10 end:0x004EED00
 
 Black/CreaturePen.cpp:
 	.text       start:0x004EED00 end:0x004EF240
 
+Black/CreaturePhysical.cpp:
+	.text       start:0x004EF240 end:0x004F02F0
+
+Black/CreaturePlan.cpp:
+	.text       start:0x004F02F0 end:0x004F2600
+
+Black/CreatureReaction.cpp:
+	.text       start:0x004F2600 end:0x004F3C20
+
+Black/CreatureReceiveSpell.cpp:
+	.text       start:0x004F3C20 end:0x004F6060
+
+Black/CreatureScript.cpp:
+	.text       start:0x004F6060 end:0x004F7110
+
 Black/CreatureSelect.cpp:
-	.text       start:0x004F7110 end:0x004F7640
+	.text       start:0x004F7110 end:0x0050A8F0
 
 Black/Creche.cpp:
 	.text       start:0x0050A8F0 end:0x0050ABB0
+
+Black/CreditsRoom.cpp:
+	.text       start:0x0050ABB0 end:0x0050B2E0
+
+Black/Creed.cpp:
+	.text       start:0x0050B2E0 end:0x0050B510
 
 Black/Dance.cpp:
 	.text       start:0x0050B510 end:0x0050CB70
