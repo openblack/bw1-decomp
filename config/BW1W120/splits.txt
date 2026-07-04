@@ -566,14 +566,29 @@ Black/Lobbybox.cpp:
 Black/logo.cpp:
 	.text       start:0x005F8760 end:0x005FA1C0
 
+Black/MagicCreatureSpellInfo.cpp:
+	.text       start:0x005FA1C0 end:0x005FA850
+
 Black/MagicFood.cpp:
-	.text       start:0x005FA710 end:0x005FAB80
+	.text       start:0x005FA850 end:0x005FAB80
+
+Black/MagicFoodInfo.cpp:
+	.text       start:0x005FAB80 end:0x005FAD10
+
+Black/MagicForestInfo.cpp:
+	.text       start:0x005FAD10 end:0x005FAED0
 
 Black/MagicHand.cpp:
-	.text       start:0x005FAB80 end:0x005FB380
+	.text       start:0x005FAED0 end:0x005FB380
+
+Black/MagicInfo.cpp:
+	.text       start:0x005FB380 end:0x005FB880
 
 Black/MagicLivingInfo.cpp:
-	.text       start:0x005FB880 end:0x005FBD90
+	.text       start:0x005FB880 end:0x005FBA20
+
+Black/MagicShieldInfo.cpp:
+	.text       start:0x005FBA20 end:0x005FBD90
 
 Black/MagicTeleport.cpp:
 	.text       start:0x005FBD90 end:0x005FCE10
@@ -581,11 +596,17 @@ Black/MagicTeleport.cpp:
 Black/MagicTree.cpp:
 	.text       start:0x005FCE10 end:0x005FD270
 
+Black/MagicVortex.cpp:
+	.text       start:0x005FD270 end:0x00600D10
+
 Black/MagicWood.cpp:
 	.text       start:0x00600D10 end:0x00600FA0
 
 Black/Map.cpp:
 	.text       start:0x00600FA0 end:0x00601EC0
+
+Black/MapCoords.cpp:
+	.text       start:0x00601EC0 end:0x00605FF0
 
 Black/Meeting.cpp:
 	.text       start:0x00605FF0 end:0x00606230
@@ -593,29 +614,74 @@ Black/Meeting.cpp:
 Black/Mist.cpp:
 	.text       start:0x00606230 end:0x00606B00
 
-Black/FieldCrop.cpp:
-	.text       start:0x00606B00 end:0x00608470
+Black/Mobile.cpp:
+	.text       start:0x00606B00 end:0x00606CE0
+
+Black/MobileObject.cpp:
+	.text       start:0x00606CE0 end:0x00608470
 
 Black/MobileStatic.cpp:
 	.text       start:0x00608470 end:0x00609760
 
-Black/Morphable.cpp:
+Black/MobileWallHug.cpp:
+	.text       start:0x00609760 end:0x00617060
+
+Black/MorphableObject.cpp:
 	.text       start:0x00617060 end:0x0061A0E0
+
+Black/MPFEAlexDialog.cpp:
+	.text       start:0x0061A0E0 end:0x00622440
+
+Black/MPFEChannelData.cpp:
+	.text       start:0x00622440 end:0x00626670
+
+Black/MPFEChannelMessages.cpp:
+	.text       start:0x00626670 end:0x0062A2C0
+
+Black/MPFEChannelSelector.cpp:
+	.text       start:0x0062A2C0 end:0x0062AC00
 
 Black/MPFEChooseConnection.cpp:
 	.text       start:0x0062AC00 end:0x0062B8C0
 
+Black/MPFEClanDetails.cpp:
+	.text       start:0x0062B8C0 end:0x0062C660
+
+Black/MPFEConditionMessages.cpp:
+	.text       start:0x0062C660 end:0x0062DAC0
+
 Black/MPFEConnectionStatus.cpp:
 	.text       start:0x0062DAC0 end:0x0062DAD0
+
+Black/MPFEDatabase.cpp:
+	.text       start:0x0062DAD0 end:0x0062E540
 
 Black/MPFEDownloads.cpp:
 	.text       start:0x0062E540 end:0x0062EBA0
 
+Black/MPFEFileTransfer.cpp:
+	.text       start:0x0062EBA0 end:0x0062F4D0
+
 Black/MPFEFindGame.cpp:
 	.text       start:0x0062F4D0 end:0x0062FA70
 
+Black/MPFEGameStartMessages.cpp:
+	.text       start:0x0062FA70 end:0x006304B0
+
+Black/MPFELogin.cpp:
+	.text       start:0x006304B0 end:0x00631100
+
+Black/MPFEMapMessages.cpp:
+	.text       start:0x00631100 end:0x00631570
+
+Black/MPFEPlayerDetails.cpp:
+	.text       start:0x00631570 end:0x00633330
+
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x00633330 end:0x00633A30
+
+Black/MusicMood.cpp:
+	.text       start:0x00633A30 end:0x006343D0
 
 Black/Object.cpp:
 	.text       start:0x00636280 end:0x0063AB30
