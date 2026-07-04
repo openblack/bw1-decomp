@@ -440,6 +440,7 @@ config.libs = [
             Object(NonMatching, "Black/DanceGroup.cpp"),
             Object(NonMatching, "Black/DanceInfo.cpp"),
             Object(NonMatching, "Black/DanceKey.cpp"),
+            Object(NonMatching, "Black/DanceLight.cpp"),
             Object(NonMatching, "Black/DancePathInfo.cpp"),
             Object(NonMatching, "Black/DanceShape.cpp"),
             Object(NonMatching, "Black/Data.cpp"),

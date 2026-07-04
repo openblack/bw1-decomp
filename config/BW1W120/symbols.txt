@@ -5042,6 +5042,7 @@ fn_00511BA0 = .text:0x00511BA0; // type:function size:0x1D0
 ?SetMessage@GDebug@@SAXGPADZZ = .text:0x00511DA0; // type:function size:0x30 scope:global
 fn_00511DD0 = .text:0x00511DD0; // type:function size:0x60
 ?ClearMessages@GDebug@@QAEXH@Z = .text:0x00511F50; // type:function size:0x50
+?GetObjectTypeDebugString@GDebug@@SAPEBDPEAVObject@@@Z = .text:0x00511FA0; // type:function size:0x18C
 crt_xc_fn_005122B0 = .text:0x005122B0; // type:function size:0x10
 fn_005122C0 = .text:0x005122C0; // type:function size:0x10
 crt_xc_fn_00512780 = .text:0x00512780; // type:function size:0x30
