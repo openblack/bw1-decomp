@@ -521,17 +521,50 @@ Black/JobInfo.cpp:
 Black/KeyBuffer.cpp:
 	.text       start:0x005E1A60 end:0x005E1C30
 
+Black/LandAlignement.cpp:
+	.text       start:0x005E1C30 end:0x005E2840
+
+Black/LandBalance.cpp:
+	.text       start:0x005E2840 end:0x005E2A30
+
+Black/LandFeature.cpp:
+	.text       start:0x005E2A30 end:0x005E3E50
+
+Black/Landscape.cpp:
+	.text       start:0x005E3E50 end:0x005E6700
+
 Black/Language.cpp:
 	.text       start:0x005E6700 end:0x005E7690
 
 Black/LevelOfDetail.cpp:
 	.text       start:0x005E7690 end:0x005E7990
 
-Black/Living.cpp:
-	.text       start:0x005EBDB0 end:0x005EC640
+Black/LHInetWeather.cpp:
+	.text       start:0x005E7990 end:0x005EA4B0
 
-Black/DataPath.cpp:
-	.text       start:0x005EC640 end:0x005EF850
+Black/LHNetBase.cpp:
+	.text       start:0x005EA4B0 end:0x005EBDB0
+
+Black/Living.cpp:
+	.text       start:0x005EBDB0 end:0x005EF850
+
+Black/LivingProjectile.cpp:
+	.text       start:0x005EF850 end:0x005F0EB0
+
+Black/LivingReaction.cpp:
+	.text       start:0x005F0EB0 end:0x005F2AF0
+
+Black/LoaderAnon.cpp:
+	.text       start:0x005F2AF0 end:0x005F3C40
+
+Black/LoadingScreen.cpp:
+	.text       start:0x005F3C40 end:0x005F5180
+
+Black/Lobbybox.cpp:
+	.text       start:0x005F5180 end:0x005F8760
+
+Black/logo.cpp:
+	.text       start:0x005F8760 end:0x005FA1C0
 
 Black/MagicFood.cpp:
 	.text       start:0x005FA710 end:0x005FAB80
