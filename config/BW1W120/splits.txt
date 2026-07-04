@@ -98,7 +98,7 @@ Black/Artifact.cpp:
 Black/Audio.cpp:
 	.text       start:0x00426AC0 end:0x0042A620
 
-Black/AudioTag.cpp:
+Black/audiotag.cpp:
 	.text       start:0x0042A620 end:0x0042B2C0
 
 Black/Balance.cpp:
@@ -506,7 +506,7 @@ Black/InterfaceMessage.cpp:
 Black/InterfaceStatus.cpp:
 	.text       start:0x005DB730 end:0x005DD2F0
 
-Black/IPSpecialDialog.cpp:
+Black/IpSpecialDialog.cpp:
 	.text       start:0x005DD2F0 end:0x005DDAF0
 
 Black/JCGameBlock.cpp:
@@ -701,11 +701,20 @@ Black/ParticleContainer.cpp:
 Black/PBall.cpp:
 	.text       start:0x0063E7D0 end:0x0063EB00
 
+Black/PCInput.cpp:
+	.text       start:0x0063EB00 end:0x00641840
+
+Black/PCMain.cpp:
+	.text       start:0x00641840 end:0x00643530
+
 Black/PFootball.cpp:
 	.text       start:0x00643530 end:0x00644210
 
 Black/PhysicsObject.cpp:
 	.text       start:0x00644210 end:0x00647490
+
+Black/PlaceSupport.cpp:
+	.text       start:0x00647490 end:0x006486F0
 
 Black/PlannedMultiMapFixed.cpp:
 	.text       start:0x006486F0 end:0x00648C90
@@ -713,44 +722,152 @@ Black/PlannedMultiMapFixed.cpp:
 Black/Player.cpp:
 	.text       start:0x00648C90 end:0x0064E670
 
+Black/PlayerAction.cpp:
+	.text       start:0x0064E670 end:0x006524D0
+
+Black/PlayerActions.cpp:
+	.text       start:0x006524D0 end:0x006559D0
+
+Black/PlayerComputer.cpp:
+	.text       start:0x006559D0 end:0x00658F70
+
+Black/PlayerComputerCreature.cpp:
+	.text       start:0x00658F70 end:0x00663B30
+
+Black/PlayerComputerInterface.cpp:
+	.text       start:0x00663B30 end:0x00664F20
+
+Black/PlayerComputerReact.cpp:
+	.text       start:0x00664F20 end:0x00665980
+
+Black/PlayerComputerSpell.cpp:
+	.text       start:0x00665980 end:0x00666A80
+
+Black/PlayerComputerTown.cpp:
+	.text       start:0x00666A80 end:0x0066B530
+
 Black/PlayerMessage.cpp:
 	.text       start:0x0066B530 end:0x0066BFD0
 
-Black/PlaytimeInfo.cpp:
+Black/PlaytimeDance.cpp:
 	.text       start:0x0066BFD0 end:0x0066CAE0
 
-Black/PileFood.cpp:
+Black/Pot.cpp:
 	.text       start:0x0066CAE0 end:0x0066F700
 
-Black/PrayerSite.cpp:
-	.text       start:0x006705D0 end:0x00670A20
+Black/PowerSpin.cpp:
+	.text       start:0x0066F700 end:0x006705D0
 
-Black/PSysManager.cpp:
+Black/PrayerSite.cpp:
+	.text       start:0x006705D0 end:0x00672A70
+
+Black/PSys3d.cpp:
 	.text       start:0x00672A70 end:0x00673720
+
+Black/PSysAtomCore.cpp:
+	.text       start:0x00673720 end:0x00675560
 
 Black/PSysBase.cpp:
 	.text       start:0x00675560 end:0x00675A00
 
-Black/MagicFireBall.cpp:
+Black/PSysBaseModifiers.cpp:
+	.text       start:0x00675A00 end:0x00677460
+
+Black/PSysBeam.cpp:
+	.text       start:0x00677460 end:0x00677DC0
+
+Black/PSysCreature.cpp:
+	.text       start:0x00677DC0 end:0x00679710
+
+Black/PSysDraw.cpp:
+	.text       start:0x00679710 end:0x0067D3F0
+
+Black/PSysEditor.cpp:
+	.text       start:0x0067D3F0 end:0x0067D7F0
+
+Black/PSysEvents.cpp:
+	.text       start:0x0067D7F0 end:0x0067E100
+
+Black/PSysExplosion.cpp:
+	.text       start:0x0067E100 end:0x0067FFB0
+
+Black/PSysFireball.cpp:
+	.text       start:0x0067FFB0 end:0x00682640
+
+Black/PSysFlock.cpp:
 	.text       start:0x00682640 end:0x006833B0
 
-Black/JPSysInterface.cpp:
+Black/PSysGeom.cpp:
+	.text       start:0x006833B0 end:0x00687A30
+
+Black/PSysGesture.cpp:
+	.text       start:0x00687A30 end:0x0068C820
+
+Black/PSysHandFX.cpp:
+	.text       start:0x0068C820 end:0x0068E810
+
+Black/PSysInterface.cpp:
 	.text       start:0x0068E810 end:0x0068FCF0
 
-Black/DefensiveShield.cpp:
+Black/PSysLightning.cpp:
+	.text       start:0x0068FCF0 end:0x00692EB0
+
+Black/PSysLoad.cpp:
+	.text       start:0x00692EB0 end:0x006936F0
+
+Black/PSysLocal.cpp:
+	.text       start:0x006936F0 end:0x00694350
+
+Black/PSysMagicSystem.cpp:
+	.text       start:0x00694350 end:0x0069D9A0
+
+Black/PSysModifiers.cpp:
+	.text       start:0x0069D9A0 end:0x006A8320
+
+Black/PSysPCreator.cpp:
+	.text       start:0x006A8320 end:0x006AAE40
+
+Black/PSysProperties.cpp:
+	.text       start:0x006AAE40 end:0x006C73B0
+
+Black/PSysRenderParticle.cpp:
+	.text       start:0x006C73B0 end:0x006CAE90
+
+Black/PSysSave.cpp:
+	.text       start:0x006CAE90 end:0x006D0860
+
+Black/PSysShield.cpp:
 	.text       start:0x006D0860 end:0x006D0C80
+
+Black/PSysSound.cpp:
+	.text       start:0x006D0C80 end:0x006D15A0
+
+Black/PSysTornado.cpp:
+	.text       start:0x006D15A0 end:0x006D6120
+
+Black/puzzlegame.cpp:
+	.text       start:0x006D6120 end:0x006DE4E0
+
+Black/RandomBuildingPlacement.cpp:
+	.text       start:0x006DE4E0 end:0x006E0050
+
+Black/RandomBuildingPlacementDefence.cpp:
+	.text       start:0x006E0050 end:0x006E06E0
 
 Black/Rank.cpp:
 	.text       start:0x006E06E0 end:0x006E0D60
 
 Black/Reaction.cpp:
-	.text       start:0x006E0D60 end:0x006E4E80
+	.text       start:0x006E0D60 end:0x006E53D0
 
 Black/Reward.cpp:
 	.text       start:0x006E53D0 end:0x006E6F10
 
 Black/Rock.cpp:
 	.text       start:0x006E6F10 end:0x006E7A80
+
+Black/RoutePlan.cpp:
+	.text       start:0x006E7A80 end:0x006E8250
 
 Black/Scaffold.cpp:
 	.text       start:0x006E8250 end:0x006EB070

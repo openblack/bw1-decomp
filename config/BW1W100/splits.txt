@@ -243,14 +243,11 @@ Black/Interface.cpp:
 Black/InterfaceStatus.cpp:
 	.text       start:0x0059B7F0 end:0x0059D1B0
 
-Black/IPSpecialDialog.cpp:
+Black/IpSpecialDialog.cpp:
 	.text       start:0x0059D1B0 end:0x0059D980
 
 Black/Language.cpp:
 	.text       start:0x005A6160 end:0x005A7020
-
-Black/DataPath.cpp:
-	.text       start:0x005AB220 end:0x005AE060
 
 Black/MagicFood.cpp:
 	.text       start:0x005B8020 end:0x005B84D0
@@ -276,13 +273,13 @@ Black/Map.cpp:
 Black/Mist.cpp:
 	.text       start:0x005C1950 end:0x005C20A0
 
-Black/FieldCrop.cpp:
+Black/MobileObject.cpp:
 	.text       start:0x005C20A0 end:0x005C33B0
 
 Black/MobileStatic.cpp:
 	.text       start:0x005C33B0 end:0x005C4450
 
-Black/Morphable.cpp:
+Black/MorphableObject.cpp:
 	.text       start:0x005CF950 end:0x005D27E0
 
 Black/MPFEChooseConnection.cpp:
@@ -324,19 +321,19 @@ Black/PlannedMultiMapFixed.cpp:
 Black/Player.cpp:
 	.text       start:0x005F6E10 end:0x005FAC60
 
-Black/PileFood.cpp:
+Black/Pot.cpp:
 	.text       start:0x00616590 end:0x0061A120
 
 Black/PrayerSiteInfo.cpp:
 	.text       start:0x0061A120 end:0x0061B9F0
 
-Black/PSysManager.cpp:
+Black/PSys3d.cpp:
 	.text       start:0x0061C110 end:0x0061CCC0
 
-Black/MagicFireBall.cpp:
+Black/PSysFlock.cpp:
 	.text       start:0x0062B2A0 end:0x0062BCC0
 
-Black/JPSysInterface.cpp:
+Black/PSysInterface.cpp:
 	.text       start:0x00636A40 end:0x00637E60
 
 Black/DefensiveSphere.cpp:

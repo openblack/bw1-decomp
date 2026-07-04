@@ -247,17 +247,14 @@ Black/Interface.cpp:
 Black/InterfaceStatus.cpp:
 	.text       start:0x005D6B30 end:0x005D86C0
 
-Black/IPSpecialDialog.cpp:
+Black/IpSpecialDialog.cpp:
 	.text       start:0x005D86C0 end:0x005D8E90
 
 Black/Language.cpp:
 	.text       start:0x005E18D0 end:0x005E2AD0
 
 Black/Living.cpp:
-	.text       start:0x005E6CB0 end:0x005E74E0
-
-Black/DataPath.cpp:
-	.text       start:0x005E74E0 end:0x005EA6F0
+	.text       start:0x005E6CB0 end:0x005EA6F0
 
 Black/MagicFood.cpp:
 	.text       start:0x005F5400 end:0x005F5810
@@ -283,7 +280,7 @@ Black/Map.cpp:
 Black/GameThingWithPos.cpp:
 	.text       start:0x00600A00 end:0x006014B0
 
-Black/FieldCrop.cpp:
+Black/MobileObject.cpp:
 	.text       start:0x006014B0 end:0x00602DC0
 
 Black/MobileStatic.cpp:
@@ -328,25 +325,25 @@ Black/Player.cpp:
 Black/PlayerMessage.cpp:
 	.text       start:0x00660E80 end:0x006618C0
 
-Black/PlaytimeInfo.cpp:
+Black/PlaytimeDance.cpp:
 	.text       start:0x006618C0 end:0x00662340
 
-Black/PileFood.cpp:
+Black/Pot.cpp:
 	.text       start:0x00662340 end:0x00665DC0
 
 Black/PrayerSite.cpp:
 	.text       start:0x00665DC0 end:0x006661E0
 
-Black/PSysManager.cpp:
+Black/PSys3d.cpp:
 	.text       start:0x00668200 end:0x00668EB0
 
 Black/PSysBase.cpp:
 	.text       start:0x0066ACC0 end:0x0066B130
 
-Black/MagicFireBall.cpp:
+Black/PSysFlock.cpp:
 	.text       start:0x00677E40 end:0x006789E0
 
-Black/JPSysInterface.cpp:
+Black/PSysInterface.cpp:
 	.text       start:0x00683D70 end:0x00685250
 
 Black/DefensiveSphere.cpp:
