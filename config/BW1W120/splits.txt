@@ -683,8 +683,17 @@ Black/MultiplayerDatabase.cpp:
 Black/MusicMood.cpp:
 	.text       start:0x00633A30 end:0x006343D0
 
+Black/Network.cpp:
+	.text       start:0x006343D0 end:0x00636280
+
 Black/Object.cpp:
-	.text       start:0x00636280 end:0x0063AB30
+	.text       start:0x00636280 end:0x0063BBA0
+
+Black/OOSDebug.cpp:
+	.text       start:0x0063BBA0 end:0x0063C350
+
+Black/Packet.cpp:
+	.text       start:0x0063C350 end:0x0063DFB0
 
 Black/ParticleContainer.cpp:
 	.text       start:0x0063DFB0 end:0x0063E7D0
