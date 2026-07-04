@@ -287,8 +287,14 @@ Black/DialogBoxSaveMessage.cpp:
 Black/DrawingObject.cpp:
 	.text       start:0x00515E90 end:0x0051CC80
 
+Black/EditorAnim.cpp:
+	.text       start:0x0051CC80 end:0x0051EDA0
+
 Black/EditorHug.cpp:
 	.text       start:0x0051EDA0 end:0x0051FAF0
+
+Black/EditorIcon.cpp:
+	.text       start:0x0051FAF0 end:0x005209A0
 
 Black/EditorIconBase.cpp:
 	.text       start:0x005209A0 end:0x005210D0
@@ -299,8 +305,20 @@ Black/EditorIconGraph.cpp:
 Black/EditorIconPDM.cpp:
 	.text       start:0x00522060 end:0x00522940
 
-Black/EffectValues.cpp:
+Black/EditorIconPlace.cpp:
+	.text       start:0x00522940 end:0x005237D0
+
+Black/EditorIconStrip.cpp:
+	.text       start:0x005237D0 end:0x00524650
+
+Black/EditorPhysics.cpp:
+	.text       start:0x00524650 end:0x00524C10
+
+Black/Effect.cpp:
 	.text       start:0x00524C10 end:0x00525970
+
+Black/ExtraFeatures.cpp:
+	.text       start:0x00525970 end:0x00525C20
 
 Black/Feature.cpp:
 	.text       start:0x00527260 end:0x00527870
