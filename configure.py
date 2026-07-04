@@ -550,7 +550,6 @@ config.libs = [
             Object(NonMatching, "Black/HandStateTug.cpp"),
             Object(NonMatching, "Black/HanoiBlock.cpp"),
             Object(NonMatching, "Black/helpdude.cpp"),
-            Object(NonMatching, "Black/HelpDude.cpp"),
             Object(NonMatching, "Black/HelpDudeControl.cpp"),
             Object(NonMatching, "Black/HelpDudeLipSync.cpp"),
             Object(NonMatching, "Black/HelpEditor.cpp"),

@@ -447,7 +447,7 @@ Black/HandStateCreature.cpp:
 	.text       start:0x005B1350 end:0x005B2AA0
 
 Black/HandStateGrain.cpp:
-	.text       start:0x005B2AA0 end:0x005B32F0
+	.text       start:0x005B2AA0 end:0x005B39E0
 
 Black/HandStateHolding.cpp:
 	.text       start:0x005B39E0 end:0x005B5700
@@ -464,6 +464,12 @@ Black/HandStatePlayAnim.cpp:
 Black/HandStateTug.cpp:
 	.text       start:0x005B7D50 end:0x005B8E90
 
+Black/helpdude.cpp:
+	.text       start:0x005B8E90 end:0x005C3D90
+
+Black/HelpDudeLipSync.cpp:
+	.text       start:0x005C3D90 end:0x005C42E0
+
 Black/HelpProfile.cpp:
 	.text       start:0x005C42E0 end:0x005C4974
 
@@ -471,7 +477,10 @@ Black/HelpSpiritInfo.cpp:
 	.text       start:0x005C4974 end:0x005C52F0
 
 Black/HelpSystem.cpp:
-	.text       start:0x005C52F0 end:0x005C8170
+	.text       start:0x005C52F0 end:0x005C9940
+
+Black/HelpSystemToolTips.cpp:
+	.text       start:0x005C9940 end:0x005CAA80
 
 Black/HelpText.cpp:
 	.text       start:0x005CAA80 end:0x005CD080
