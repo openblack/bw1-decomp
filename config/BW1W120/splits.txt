@@ -485,8 +485,23 @@ Black/HelpSystemToolTips.cpp:
 Black/HelpText.cpp:
 	.text       start:0x005CAA80 end:0x005CD080
 
+Black/Influence.cpp:
+	.text       start:0x005CD080 end:0x005CDE10
+
 Black/Interface.cpp:
 	.text       start:0x005CDE10 end:0x005D0740
+
+Black/InterfaceAction.cpp:
+	.text       start:0x005D0740 end:0x005D5690
+
+Black/InterfaceCollide.cpp:
+	.text       start:0x005D5690 end:0x005D8120
+
+Black/InterfaceImmersion.cpp:
+	.text       start:0x005D8120 end:0x005D95F0
+
+Black/InterfaceMessage.cpp:
+	.text       start:0x005D95F0 end:0x005DB730
 
 Black/InterfaceStatus.cpp:
 	.text       start:0x005DB730 end:0x005DD2F0
@@ -494,11 +509,17 @@ Black/InterfaceStatus.cpp:
 Black/IPSpecialDialog.cpp:
 	.text       start:0x005DD2F0 end:0x005DDAF0
 
+Black/JCGameBlock.cpp:
+	.text       start:0x005DDAF0 end:0x005DDF10
+
+Black/JCMisc.cpp:
+	.text       start:0x005DDF10 end:0x005E1620
+
 Black/JobInfo.cpp:
 	.text       start:0x005E1620 end:0x005E1A60
 
 Black/KeyBuffer.cpp:
-	.text       start:0x005E1A60 end:0x005E2840
+	.text       start:0x005E1A60 end:0x005E1C30
 
 Black/Language.cpp:
 	.text       start:0x005E6700 end:0x005E7690
