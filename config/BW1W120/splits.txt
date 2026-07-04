@@ -320,11 +320,14 @@ Black/Effect.cpp:
 Black/ExtraFeatures.cpp:
 	.text       start:0x00525970 end:0x00525C20
 
-Black/Feature.cpp:
-	.text       start:0x00527260 end:0x00527870
+Black/fallingspell.cpp:
+	.text       start:0x00525C20 end:0x00527260
 
-Black/Flowers.cpp:
-	.text       start:0x00527870 end:0x00527B80
+Black/Feature.cpp:
+	.text       start:0x00527260 end:0x00527B80
+
+Black/Field.cpp:
+	.text       start:0x00527B80 end:0x0052A110
 
 Black/FireFly.cpp:
 	.text       start:0x0052A110 end:0x0052C220
@@ -339,7 +342,7 @@ Black/Flock.cpp:
 	.text       start:0x0052F720 end:0x00530E40
 
 Black/FootBall.cpp:
-	.text       start:0x00530E40 end:0x00533DC0
+	.text       start:0x00530E40 end:0x00534C10
 
 Black/Footpath.cpp:
 	.text       start:0x00534C10 end:0x00535810
@@ -350,8 +353,17 @@ Black/FootpathLinkSave.cpp:
 Black/Forest.cpp:
 	.text       start:0x005398D0 end:0x0053B420
 
-Black/ProfileEditor.cpp:
-	.text       start:0x0053B420 end:0x0053C430
+Black/frontend.cpp:
+	.text       start:0x0053B420 end:0x00546200
+
+Black/FrontEndSetupGame.cpp:
+	.text       start:0x00546200 end:0x00549AE0
+
+Black/FrontEndSetupMultiplayer.cpp:
+	.text       start:0x00549AE0 end:0x0054A290
+
+Black/Furniture.cpp:
+	.text       start:0x0054A290 end:0x0054A4A0
 
 Black/GameArea.cpp:
 	.text       start:0x00557150 end:0x00557500
