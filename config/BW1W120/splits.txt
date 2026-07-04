@@ -248,20 +248,44 @@ Black/Creed.cpp:
 Black/Dance.cpp:
 	.text       start:0x0050B510 end:0x0050CB70
 
+Black/DanceGroup.cpp:
+	.text       start:0x0050CB70 end:0x0050E2E0
+
+Black/DanceKey.cpp:
+	.text       start:0x0050E2E0 end:0x0050F4B0
+
+Black/DanceLight.cpp:
+	.text       start:0x0050F4B0 end:0x0050F930
+
+Black/DanceShape.cpp:
+	.text       start:0x0050F930 end:0x005104B0
+
 Black/Data.cpp:
 	.text       start:0x005104B0 end:0x00510770
 
 Black/DeadTree.cpp:
 	.text       start:0x00510770 end:0x00511B20
 
+Black/Debug.cpp:
+	.text       start:0x00511B20 end:0x005122B0
+
+Black/DialogBoxBase.cpp:
+	.text       start:0x005122B0 end:0x00512780
+
 Black/DialogBoxKeyBinding.cpp:
 	.text       start:0x00512780 end:0x005132D0
 
-Black/DialogBoxBase.cpp:
+Black/DialogBoxMain.cpp:
 	.text       start:0x005132D0 end:0x00513790
+
+Black/DialogBoxOptions.cpp:
+	.text       start:0x00513790 end:0x00515960
 
 Black/DialogBoxSaveMessage.cpp:
 	.text       start:0x00515960 end:0x00515E90
+
+Black/DrawingObject.cpp:
+	.text       start:0x00515E90 end:0x0051CC80
 
 Black/EditorHug.cpp:
 	.text       start:0x0051EDA0 end:0x0051FAF0
