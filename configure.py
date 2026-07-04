@@ -567,6 +567,7 @@ config.libs = [
             Object(NonMatching, "Black/InfluenceInfo.cpp"),
             Object(NonMatching, "Black/InnerCamera.cpp"),
             Object(NonMatching, "Black/Interface.cpp"),
+            Object(NonMatching, "Black/InterfaceAction.cpp"),
             Object(NonMatching, "Black/InterfaceCollide.cpp"),
             Object(NonMatching, "Black/InterfaceFlags.cpp"),
             Object(NonMatching, "Black/InterfaceHandState.cpp"),
