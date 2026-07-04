@@ -365,23 +365,77 @@ Black/FrontEndSetupMultiplayer.cpp:
 Black/Furniture.cpp:
 	.text       start:0x0054A290 end:0x0054A4A0
 
+Black/Game.cpp:
+	.text       start:0x0054A4A0 end:0x00557150
+
 Black/GameArea.cpp:
 	.text       start:0x00557150 end:0x00557500
 
 Black/GameInfo.cpp:
 	.text       start:0x00557500 end:0x00557C00
 
+Black/GameOptionsRoom.cpp:
+	.text       start:0x00557C00 end:0x00557FF0
+
+Black/GameOSFile.cpp:
+	.text       start:0x00557FF0 end:0x005648D0
+
+Black/GameStats.cpp:
+	.text       start:0x005648D0 end:0x0056A8E0
+
+Black/GameStatsFrontEnd.cpp:
+	.text       start:0x0056A8E0 end:0x0056F960
+
 Black/GameThing.cpp:
 	.text       start:0x0056F960 end:0x00570620
 
-Black/SetupMP3Button.cpp:
+Black/GatheringBox.cpp:
 	.text       start:0x00570620 end:0x00573D60
+
+Black/GatheringInterface.cpp:
+	.text       start:0x00573D60 end:0x00575D70
+
+Black/GatheringText.cpp:
+	.text       start:0x00575D70 end:0x005773F0
+
+Black/GenerateCreatureHTML.cpp:
+	.text       start:0x005773F0 end:0x00578540
+
+Black/GestureSystem.cpp:
+	.text       start:0x00578540 end:0x00578B10
+
+Black/GestureSystemData.cpp:
+	.text       start:0x00578B10 end:0x00579370
+
+Black/GestureSystemDataList.cpp:
+	.text       start:0x00579370 end:0x00579CE0
+
+Black/GestureSystemResult.cpp:
+	.text       start:0x00579CE0 end:0x0057BA40
+
+Black/GJUtils.cpp:
+	.text       start:0x0057BA40 end:0x005907E0
+
+Black/GJVnoise.cpp:
+	.text       start:0x005907E0 end:0x00590ED0
+
+Black/Global.cpp:
+	.text       start:0x00590ED0 end:0x00591280
+
+Black/GlobalGameList.cpp:
+	.text       start:0x00591280 end:0x00595C00
 
 Black/GraveYard.cpp:
 	.text       start:0x00595C00 end:0x00595FC0
 
 Black/GroupBehaviour.cpp:
 	.text       start:0x00595FC0 end:0x00598DF0
+
+Black/GSLobbybox.cpp:
+	.text       start:0x00598DF0 end:0x005AFD90
+
+Black/HandState.cpp:
+	.text       start:0x005AFD90 end:0x005B0260
 
 Black/HandStateCamera.cpp:
 	.text       start:0x005B0260 end:0x005B0B70
@@ -829,9 +883,6 @@ Black/ChallengeRoom.cpp:
 
 Black/CreatureRoom.cpp:
 	.text       start:0x007864B0 end:0x00789D20
-
-Black/GameOptionsRoom.cpp:
-	.text       start:0x0078D5D0 end:0x0078D940
 
 Black/InnerCamera.cpp:
 	.text       start:0x00794AB0 end:0x00798240
