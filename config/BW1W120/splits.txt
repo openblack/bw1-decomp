@@ -989,20 +989,32 @@ Black/StreetLight.cpp:
 Black/TerrainMaterialInfo.cpp:
 	.text       start:0x00735190 end:0x00735410
 
+Black/TerrainMapInfo.cpp:
+	.text       start:0x00735410 end:0x00735860
+
+Black/TOMnavigator.cpp:
+	.text       start:0x00735860 end:0x00737310
+
 Black/Totem.cpp:
 	.text       start:0x00737310 end:0x00737960
 
 Black/TotemStatue.cpp:
 	.text       start:0x00737960 end:0x00738EC0
 
-Black/TownCreatureInfo.cpp:
+Black/Town.cpp:
+	.text       start:0x00738EC0 end:0x00743660
+
+Black/TownAttitudeToCreature.cpp:
 	.text       start:0x00743660 end:0x00743A00
 
 Black/TownCentre.cpp:
 	.text       start:0x00743A00 end:0x00744A30
 
-Black/TownDesireFlags.cpp:
-	.text       start:0x00744A30 end:0x00747310
+Black/TownDesire.cpp:
+	.text       start:0x00744A30 end:0x00748A10
+
+Black/TownSpellIcon.cpp:
+	.text       start:0x00748A10 end:0x00749CA0
 
 Black/Tree.cpp:
 	.text       start:0x00749CA0 end:0x0074C800
