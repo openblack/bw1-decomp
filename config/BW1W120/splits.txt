@@ -1579,6 +1579,18 @@ lib/libcmt/mantold.obj:
 lib/libcmt/x10fout.obj:
 	.text       start:0x007DA9B2 end:0x007DAC45 align:1
 
+Lionhead/LHLib/ver5.0/LHWin.cpp:
+	.text       start:0x007DB600 end:0x007DCE20
+
+Lionhead/LHLib/ver5.0/LHScreen.cpp:
+	.text       start:0x007DCE20 end:0x007E0550
+
+Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp:
+	.text       start:0x007E0550 end:0x007E1020
+
+Lionhead/LHLib/ver5.0/LHHeap2.cpp:
+	.text       start:0x007E1020 end:0x007E4810
+
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
 	.text       start:0x007E4810 end:0x007E5AF0
 
