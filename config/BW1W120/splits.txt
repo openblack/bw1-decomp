@@ -1150,20 +1150,26 @@ Black/VillagerTrader.cpp:
 	.bss        start:0x00DCB160 end:0x00DCB16C
 
 Black/VillagerWorshipper.cpp:
-	.text       start:0x0076B9E0 end:0x0076CED0
+	.text       start:0x0076B9E0 end:0x0076CC10
 	.rdata      start:0x0099AA5C end:0x0099AA64
 	.bss        start:0x00DCB16C end:0x00DCB174
 
-Black/Fragment.cpp:
+Black/VirtualInfluence.cpp:
+	.text       start:0x0076CC10 end:0x0076D430
+
+Black/ViscousLiquid.cpp:
 	.text       start:0x0076D430 end:0x0076F810
 
 Black/VortexSave.cpp:
 	.text       start:0x0076F810 end:0x00770080
 
+Black/Wallhug.cpp:
+	.text       start:0x00770080 end:0x00770A70
+
 Black/WayPoint.cpp:
 	.text       start:0x00770A70 end:0x00770D30
 
-Black/Climate.cpp:
+Black/Weather.cpp:
 	.text       start:0x00770D30 end:0x00773C00
 
 Black/WeatherThing.cpp:
