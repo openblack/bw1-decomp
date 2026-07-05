@@ -740,7 +740,7 @@ def generate_build_ninja(
         llvm_ar = lld_link.parent / f"llvm-ar{EXE}"
         n.rule(
             name="extract_lib_obj",
-            command=f"{llvm_ar} p $in '$member' > $out",
+            command=f'{CHAIN}{llvm_ar} p $in "$member" > $out',
             description="AR $out",
         )
         n.rule(
