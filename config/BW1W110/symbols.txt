@@ -17569,6 +17569,7 @@ fn_007B91DE = .text:0x007B91DE; // type:function size:0x9
 _strtok = .text:0x007B923A; // type:function scope:global
 _atof = .text:0x007B92DE; // type:function scope:global
 _strstr = .text:0x007B9370; // type:function scope:global
+__tolower = .text:0x007B93F0; // type:function scope:global
 _tolower = .text:0x007B93F8; // type:function scope:global
 __tolower_lk = .text:0x007B9467; // type:function scope:global
 _wcsncmp = .text:0x007B9532; // type:function scope:global

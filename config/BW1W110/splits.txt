@@ -700,6 +700,9 @@ lib/libcmt/throw.obj:
 lib/libcmt/strtok.obj:
 	.text       start:0x007B923A end:0x007B92DE align:1
 
+lib/libcmt/tolower.obj:
+	.text       start:0x007B93F0 end:0x007B9532 align:1
+
 lib/libcmt/wcsncmp.obj:
 	.text       start:0x007B9532 end:0x007B956A align:1
 
