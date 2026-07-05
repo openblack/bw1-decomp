@@ -1588,6 +1588,24 @@ lib/libcmt/mantold.obj:
 lib/libcmt/x10fout.obj:
 	.text       start:0x007DA9B2 end:0x007DAC45 align:1
 
+Lionhead/LHLib/ver5.0/LHMouse.cpp:
+	.text       start:0x007E4810 end:0x007E5AF0
+
+Lionhead/LHLib/ver5.0/LHScript.cpp:
+	.text       start:0x007E72C0 end:0x007E8D10
+
+Lionhead/LH3DLib/development/LH3DSmoke.cpp:
+	.text       start:0x007F8B60 end:0x007F8D30
+
+Lionhead/LH3DLib/development/LH3DIsland.cpp:
+	.text       start:0x007FF2D0 end:0x00804830
+
+Lionhead/LH3DLib/development/LH3DMesh.cpp:
+	.text       start:0x00806460 end:0x00808390
+
+Lionhead/LH3DLib/development/LH3DTech.cpp:
+	.text       start:0x00818C60 end:0x0081D1B0
+
 lib/libcmt/days.obj:
 	.data       start:0x00C30C44 end:0x00C30CAC align:1
 
@@ -1602,8 +1620,17 @@ Lionhead/LH3DLib/development/LH3DCameraChecker.cpp:
 	.data       start:0x00C383B8 end:0x00C383BC
 	.bss        start:0x00EB99A8 end:0x00EB99AC
 
-Lionhead/LHLib/ver5.0/LHCollide.h:
+Lionhead/LHLib/ver5.0/LHCollide.cpp:
 	.text       start:0x00827640 end:0x0082B1F0
+
+Lionhead/LH3DLib/development/LH3DRender.cpp:
+	.text       start:0x0082B220 end:0x00830050
+
+Lionhead/LH3DLib/development/LH3DWay.cpp:
+	.text       start:0x00842F10 end:0x00844620
+
+Lionhead/LH3DLib/development/LH3DHair.cpp:
+	.text       start:0x00847890 end:0x00848350
 
 lib/libcmt/wcsdup.obj:
 	.text       start:0x008A5B0C end:0x008A5B3A align:1

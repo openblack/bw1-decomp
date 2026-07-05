@@ -1264,6 +1264,17 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\setjmp3.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\mbtoupr.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\sehsupp.obj", progress_category="sdk"),
+
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMouse.cpp"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScript.cpp"),
+            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DSmoke.cpp"),
+            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DIsland.cpp"),
+            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DMesh.cpp"),
+            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DTech.cpp"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHCollide.cpp"),
+            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DRender.cpp"),
+            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DWay.cpp"),
+            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DHair.cpp"),
         ],
     },
     {
