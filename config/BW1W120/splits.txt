@@ -1022,6 +1022,9 @@ Black/Tree.cpp:
 Black/TribeInfo.cpp:
 	.text       start:0x0074C800 end:0x0074DFA0
 
+Black/Utils.cpp:
+	.text       start:0x0074DFA0 end:0x0074F7D0
+
 Black/Villager.cpp:
 	.text       start:0x0074F7D0 end:0x00756C80
 	.rdata      start:0x0099A1E4 end:0x0099A924
