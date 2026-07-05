@@ -875,11 +875,32 @@ Black/Scaffold.cpp:
 Black/Script.cpp:
 	.text       start:0x006EB070 end:0x006EC8A0
 
+Black/ScriptCamera.cpp:
+	.text       start:0x006EC8A0 end:0x006EF340
+
+Black/ScriptContainer.cpp:
+	.text       start:0x006EF340 end:0x006F0830
+
+Black/ScriptCreateOrCall.cpp:
+	.text       start:0x006F0830 end:0x006F6110
+
 Black/ScriptDLL.cpp:
 	.text       start:0x006F6110 end:0x006F6CB0
 
+Black/ScriptFunctions.cpp:
+	.text       start:0x006F6CB0 end:0x00708C00
+
+Black/ScriptGFX.cpp:
+	.text       start:0x00708C00 end:0x00709550
+
 Black/ScriptHighlight.cpp:
 	.text       start:0x00709550 end:0x0070AE60
+
+Black/ScriptManage.cpp:
+	.text       start:0x0070AE60 end:0x0070D8A0
+
+Black/ScriptMarker.cpp:
+	.text       start:0x0070D8A0 end:0x00711540
 
 Black/ScriptTimer.cpp:
 	.text       start:0x00711540 end:0x00711860
@@ -887,32 +908,53 @@ Black/ScriptTimer.cpp:
 Black/SecretCreature.cpp:
 	.text       start:0x00711860 end:0x00711DC0
 
-Black/ShowNeedsVisuals.cpp:
+Black/Serialise.cpp:
+	.text       start:0x00711DC0 end:0x00712810
+
+Black/ServerLandscapeMap.cpp:
+	.text       start:0x00712810 end:0x00714C60
+
+Black/Setup.cpp:
+	.text       start:0x00714C60 end:0x00719990
+
+Black/ShowNeeds.cpp:
 	.text       start:0x00719990 end:0x0071A420
 
-Black/Guidance.cpp:
+Black/SoundConfirmation.cpp:
+	.text       start:0x0071A420 end:0x0071A930
+
+Black/SoundGuidance.cpp:
 	.text       start:0x0071A930 end:0x0071D490
 
-Black/SoundInfo.cpp:
+Black/SoundMap.cpp:
 	.text       start:0x0071D490 end:0x0071E2A0
 
 Black/SoundTag.cpp:
 	.text       start:0x0071E2A0 end:0x0071ED90
 
-Black/SpecialVillagerInfo.cpp:
+Black/SpecialVillager.cpp:
 	.text       start:0x0071ED90 end:0x0071F960
 
 Black/Spell.cpp:
 	.text       start:0x0071F960 end:0x00722160
 
+Black/SpellCreature.cpp:
+	.text       start:0x00722160 end:0x00722600
+
 Black/SpellDispenser.cpp:
 	.text       start:0x00722600 end:0x00723050
 
-Black/SpellIcon.cpp:
-	.text       start:0x00725E10 end:0x00726D70
+Black/SpellFlock.cpp:
+	.text       start:0x00723050 end:0x00724BF0
 
-Black/SpellSeedGraphic.cpp:
-	.text       start:0x00726D70 end:0x00727E60
+Black/SpellFood.cpp:
+	.text       start:0x00724BF0 end:0x00725490
+
+Black/SpellForest.cpp:
+	.text       start:0x00725490 end:0x00725E10
+
+Black/SpellIcon.cpp:
+	.text       start:0x00725E10 end:0x00727E60
 
 Black/SpellSeed.cpp:
 	.text       start:0x00727E60 end:0x0072AD00
@@ -921,21 +963,21 @@ Black/SpellSeedInfo.cpp:
 	.text       start:0x0072AD00 end:0x0072B240
 
 Black/SpellShield.cpp:
-	.text       start:0x0072B240 end:0x0072BD60
+	.text       start:0x0072B240 end:0x0072D8B0
 
-Black/MagicShield.cpp:
-	.text       start:0x0072BD60 end:0x0072D8B0
+Black/SpellWater.cpp:
+	.text       start:0x0072D8B0 end:0x0072E0E0
 
 Black/SpookyVoices.cpp:
 	.text       start:0x0072E0E0 end:0x0072E880
 
-Black/FireEffect.cpp:
-	.text       start:0x0072E880 end:0x007310E0
+Black/SpreadEffect.cpp:
+	.text       start:0x0072E880 end:0x00732B30
 
 Black/StoragePit.cpp:
 	.text       start:0x00732B30 end:0x00733A40
 
-Black/Waterfall.cpp:
+Black/Stream.cpp:
 	.text       start:0x00733A40 end:0x007346B0
 
 Black/StreetLantern.cpp:
