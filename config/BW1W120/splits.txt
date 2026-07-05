@@ -395,9 +395,6 @@ Black/GatheringBox.cpp:
 Black/GatheringInterface.cpp:
 	.text       start:0x00573D60 end:0x00575D70
 
-Black/GatheringText.cpp:
-	.text       start:0x00575D70 end:0x005773F0
-
 Black/GenerateCreatureHTML.cpp:
 	.text       start:0x005773F0 end:0x00578540
 
@@ -1631,6 +1628,9 @@ Lionhead/LHLib/ver5.0/LHCollide.cpp:
 
 Lionhead/LH3DLib/development/LH3DRender.cpp:
 	.text       start:0x0082B220 end:0x00830050
+
+Black/GatheringText.cpp:
+	.text       start:0x00830050 end:0x00833A00
 
 Lionhead/LH3DLib/development/LH3DWay.cpp:
 	.text       start:0x00842F10 end:0x00844620
