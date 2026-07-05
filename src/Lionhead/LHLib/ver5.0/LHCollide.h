@@ -36,7 +36,7 @@ public:
         // Non-virtual methods
 
         // BW1W120 inlined BW1M100 inlined NewCollide::List::Collide(NewCollide::List)
-        bool Collide(const List* other);
+        bool Collide(const List* other) const;
     };
 
     struct Obj
@@ -60,9 +60,9 @@ public:
         // BW1W120 00828f40 BW1M100 100befb0 NewCollide::Obj::CreateList(void)
         void CreateList();
         // BW1W120 inlined BW1M100 inlined NewCollide::Obj::Collide(NewCollide::List)
-        bool Collide(const List* other);
+        bool Collide(const List* other) const;
         // BW1W120 00829140 BW1M100 1061b32c NewCollide::Obj::Collide(float, NewCollide::Obj*)
-        bool32_t Collide(const Obj* other);
+        bool32_t Collide(const Obj* other) const;
 
         // Destructors
 
