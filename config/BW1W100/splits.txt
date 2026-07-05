@@ -797,6 +797,9 @@ lib/libcmt/throw.obj:
 lib/libcmt/strtok.obj:
 	.text       start:0x00737049 end:0x007370ED align:1
 
+lib/libcmt/tolower.obj:
+	.text       start:0x00737200 end:0x0073733A align:1
+
 lib/libcmt/abort.obj:
 	.text       start:0x0073733A end:0x00737351 align:1
 

@@ -1411,6 +1411,9 @@ lib/libcmt/dosmap.obj:
 lib/libcmt/strtok.obj:
 	.text       start:0x007C942A end:0x007C94CE align:1
 
+lib/libcmt/tolower.obj:
+	.text       start:0x007C95E0 end:0x007C9722 align:1
+
 lib/libcmt/wcsncmp.obj:
 	.text       start:0x007C9722 end:0x007C975A align:1
 
