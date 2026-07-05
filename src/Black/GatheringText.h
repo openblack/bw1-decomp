@@ -108,7 +108,7 @@ struct GatheringText
     // BW1W120 00831130 BW1M100 00033360 GatheringText::GetStringWidth(wchar_t *, int, float)
     float GetStringWidth(const char16_t* str, int len, float text_size);
     // BW1W120 00831550 GatheringText::GetFrac(float, float, float)
-    float GetFrac(float param_1, float param_2, float param_3);
+    static float GetFrac(float value, float lower, float upper);
     // BW1W120 008315b0 BW1M100 1061ca0c GatheringText::DrawText(wchar_t *, float, float, float, float, float, float, float, float, float, LH3DColor *, int, int, int)
     float DrawText(const char16_t* text, float param_2, float param_3, float param_4, float param_5, float param_6, float param_7, float param_8, float param_9, float param_10, const LH3DColor* p_color, int param_12, int param_13, int param_14);
     // BW1W120 008319e0 GatheringText::DrawChar2Texture(CacheEntry *, ushort *, int, float, float, float, float, ushort *)
