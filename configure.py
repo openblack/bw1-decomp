@@ -1265,6 +1265,10 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\mbtoupr.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\sehsupp.obj", progress_category="sdk"),
 
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScreen.cpp"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHHeap2.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMouse.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScript.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DSmoke.cpp"),
