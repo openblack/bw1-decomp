@@ -1,5 +1,5 @@
-#ifndef BW1_DECOMP_GATHERING_TEXT_INCLUDED_H
-#define BW1_DECOMP_GATHERING_TEXT_INCLUDED_H
+#ifndef BW1_DECOMP_LH3D_TEXT_INCLUDED_H
+#define BW1_DECOMP_LH3D_TEXT_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t, uint16_t, uint32_t */
@@ -20,12 +20,15 @@ enum TEXTJUSTIFY
 struct LH3DColor;
 struct LHMatrix;
 
-// The glyph-cache types below (FontFile, CacheEntry, CacheLine, CachePage,
-// FontCache) are all defined inside GatheringText.cpp -- their functions are
-// interleaved with GatheringText's in the binary (e.g. FontCache::AddToCache at
-// 0x831380 sits between GatheringText::GetStringWidth and GetFrac), which only
-// happens within a single translation unit. They are private to this TU (no
-// other file references them). The TU spans 0x830050..0x833a00, ending with two
+// This is one LH3DLib translation unit (0x830050..0x833a00, sitting between
+// LH3DRender.cpp and LH3DWay.cpp in the binary -- see splits). It contains the
+// GatheringText class, the private glyph-cache types below (FontFile,
+// CacheEntry, CacheLine, CachePage, FontCache), and the CHAR2WCHAR/THAI_* free
+// functions declared at the bottom of this header (the first functions in the
+// TU, at 0x8300a0..0x8300e0). Their code is interleaved in the binary (e.g.
+// FontCache::AddToCache at 0x831380 sits between GatheringText::GetStringWidth
+// and GetFrac), which only happens within a single TU. The cache types are
+// private to this TU (no other file references them); the TU ends with two
 // empty trailing stubs (nullsub_114 @ 0x8339e0, nullsub_115 @ 0x8339f0).
 // Declarations only: field layouts are unknown and return types are inferred
 // from the demangled names -- confirm against the disassembly before relying on
@@ -123,4 +126,13 @@ struct GatheringText
     void DrawBubble(float param_1, float param_2, float param_3, float param_4, float param_5, float param_6, float param_7, int param_8, uint32_t param_9, int param_10, int param_11, int param_12);
 };
 
-#endif /* BW1_DECOMP_GATHERING_TEXT_INCLUDED_H */
+// Free functions at the head of this TU (originally declared in Utils.h).
+
+// BW1W120 008300a0 BW1M100 1000f700 CHAR2WCHAR(char *)
+char16_t* __cdecl CHAR2WCHAR(const char* param_1);
+// BW1W120 008300d0 THAI_RESET(void)
+void __cdecl THAI_RESET();
+// BW1W120 008300e0 THAI_PROCESS(wchar_t)
+char16_t __cdecl THAI_PROCESS(char16_t param_1); /* return type inferred; confirm from disassembly */
+
+#endif /* BW1_DECOMP_LH3D_TEXT_INCLUDED_H */
