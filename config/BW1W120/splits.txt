@@ -1196,6 +1196,9 @@ Black/WorshipTotem.cpp:
 Black/Temple.cpp:
 	.text       start:0x00781030 end:0x0079F910
 
+Lionhead/LHLib/ver5.0/LHOSFile.cpp:
+	.text       start:0x007BC650 end:0x007BD330
+
 Lionhead/LHFile/ver3.0/LHFile.cpp:
 	.text       start:0x007BD330 end:0x007BE280
 
@@ -1599,9 +1602,6 @@ Lionhead/LHLib/ver5.0/LHHeap2.cpp:
 
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
 	.text       start:0x007E4810 end:0x007E5AF0
-
-Lionhead/LHLib/ver5.0/LHOSFile.cpp:
-	.text       start:0x007E5AF0 end:0x007E72C0
 
 Lionhead/LHLib/ver5.0/LHScript.cpp:
 	.text       start:0x007E72C0 end:0x007E8D10
