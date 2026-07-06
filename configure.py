@@ -992,6 +992,10 @@ config.libs = [
 
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DCameraChecker.cpp"),
 
+            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHFile.cpp"),
+            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHParseFile.cpp"),
+
+            Object(Matching, "zlib/compress.c"),
             Object(Matching, "zlib/deflate.c"),
             Object(Matching, "zlib/inflate.c"),
             # TODO: 1.1 seems to bump .bss address space

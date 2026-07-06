@@ -505,6 +505,9 @@ Black/TempleRoom.cpp:
 Black/WorldRoom.cpp:
 	.text       start:0x0078C900 end:0x0078F0D0
 
+zlib/compress.c:
+	.text       start:0x007AE0B0 end:0x007AE180
+
 zlib/deflate.c:
 	.text       start:0x007AF030 end:0x007B06F0
 	.rdata      start:0x0098F780 end:0x0098F830

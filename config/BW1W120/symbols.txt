@@ -18551,6 +18551,7 @@ fn_007BE090 = .text:0x007BE090; // type:function size:0x90
 fn_007BE290 = .text:0x007BE290; // type:function size:0xB0
 fn_007BE340 = .text:0x007BE340; // type:function size:0x20
 fn_007BE360 = .text:0x007BE360; // type:function size:0xA0
+fn_007BE400 = .text:0x007BE400; // type:function size:0x80
 fn_007BE480 = .text:0x007BE480; // type:function size:0x30
 fn_007BE4B0 = .text:0x007BE4B0; // type:function size:0x60
 fn_007BE510 = .text:0x007BE510; // type:function size:0x20

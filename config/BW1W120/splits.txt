@@ -1196,6 +1196,15 @@ Black/WorshipTotem.cpp:
 Black/Temple.cpp:
 	.text       start:0x00781030 end:0x0079F910
 
+Lionhead/LHFile/ver3.0/LHFile.cpp:
+	.text       start:0x007BD330 end:0x007BE280
+
+zlib/compress.c:
+	.text       start:0x007BE290 end:0x007BE360
+
+Lionhead/LHFile/ver3.0/LHParseFile.cpp:
+	.text       start:0x007BE400 end:0x007BF0D0
+
 zlib/deflate.c:
 	.text       start:0x007BF210 end:0x007C08D0
 	.rdata      start:0x0099F878 end:0x0099F928
