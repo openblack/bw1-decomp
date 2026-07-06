@@ -54,10 +54,10 @@ struct GUtils
 // BW1W120 0074f620 BW1M100 inlined FUN_0074f620
 float FUN_0074f620(uint32_t param_1);
 // BW1W120 008300a0 BW1M100 1000f700 CHAR2WCHAR(char *)
-char16_t* __cdecl CHAR2WCHAR__FPc(const char* param_1);
+char16_t* __cdecl CHAR2WCHAR(const char* param_1);
 // BW1W120 008300d0 THAI_RESET(void)
-void __cdecl THAI_RESET__Fv();
+void __cdecl THAI_RESET();
 // BW1W120 008300e0 THAI_PROCESS(wchar_t)
-char16_t __cdecl THAI_PROCESS__Fw(char16_t param_1); /* return type inferred; confirm from disassembly */
+char16_t __cdecl THAI_PROCESS(char16_t param_1); /* return type inferred; confirm from disassembly */
 
 #endif /* BW1_DECOMP_UTILS_INCLUDED_H */
