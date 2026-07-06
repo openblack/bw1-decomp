@@ -10,18 +10,19 @@
 class LHReleasedOSFile: public LHOSFile
 {
 public:
+    char field_0x8[0x104]; /* 0x8 */
 
     // Override methods
 
     // BW1W120 0042fd40 BW1M100 1012d3f0 LHReleasedOSFile::~LHReleasedOSFile(void)
-    virtual ~LHReleasedOSFile();
+    virtual ~LHReleasedOSFile() {}
     // BW1W120 007bc7e0 BW1M100 10164a30 LHReleasedOSFile::Open(const char*, LH_FILE_MODE)
     virtual uint32_t Open(const char* path, LH_FILE_MODE mode);
 
     // Constructors
 
     // BW1W120 007e6d10 BW1M100 inlined LHReleasedOSFile::LHReleasedOSFile(void)
-    LHReleasedOSFile();
+    LHReleasedOSFile() {}
 };
 
 #endif /* BW1_DECOMP_LH_RELEASED_OS_FILE_INCLUDED_H */
