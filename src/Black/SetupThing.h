@@ -8,7 +8,7 @@
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <re_common.h> /* For bool32_t */
 
-#include "GatheringText.h" /* For enum TEXTJUSTIFY */
+#include "Lionhead/LH3DLib/development/LH3DText.h" /* For enum TEXTJUSTIFY */
 #include "SetupRect.h" /* For struct SetupRect */
 
 enum BBSTYLE

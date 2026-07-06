@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 
-#include "GatheringText.h" /* For enum TEXTJUSTIFY */
+#include "Lionhead/LH3DLib/development/LH3DText.h" /* For enum TEXTJUSTIFY */
 #include "SetupControl.h" /* For struct SetupControl */
 
 class SetupStaticText: public SetupControl

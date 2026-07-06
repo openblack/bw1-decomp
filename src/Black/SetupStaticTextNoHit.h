@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <uchar.h> /* For char16_t */
 
-#include "GatheringText.h" /* For enum TEXTJUSTIFY */
+#include "Lionhead/LH3DLib/development/LH3DText.h" /* For enum TEXTJUSTIFY */
 #include "SetupStaticText.h" /* For struct SetupStaticText */
 
 // Forward Declares
