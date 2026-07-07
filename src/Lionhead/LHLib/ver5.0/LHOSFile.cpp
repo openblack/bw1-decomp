@@ -7,7 +7,7 @@
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h>
 
 // BW1W120 00c2b9e8
-char g_GameDriveCharacter;
+char g_GameDriveCharacter = 'D';
 
 // BW1W120 007bc650 LHOSFile::LHOSFile(void)
 LHOSFile::LHOSFile()
