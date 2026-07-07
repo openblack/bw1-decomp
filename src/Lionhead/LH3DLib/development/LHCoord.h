@@ -10,6 +10,7 @@ struct LHCoord
 
     // Constructors
 
+    LHCoord() {}
     // BW1W120 inlined BW1M100 1006ebc0 LHCoord::LHCoord(LHCoord const &)
     LHCoord(const LHCoord* other);
 };
