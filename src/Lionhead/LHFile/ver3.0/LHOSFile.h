@@ -13,9 +13,9 @@ struct LHDir;
 
 class LHOSFile
 {
-public:
+private:
     void* handle; /* 0x4 */
-
+public:
     // Override methods
 
     // BW1W120 007bc660 BW1M100 10164ef0 LHOSFile::~LHOSFile(bool)
