@@ -1198,6 +1198,7 @@ Black/Temple.cpp:
 
 Lionhead/LHLib/ver5.0/LHOSFile.cpp:
 	.text       start:0x007BC650 end:0x007BD330
+	.data       start:0x00C2B9E0 end:0x00C2BA74
 
 Lionhead/LHFile/ver3.0/LHFile.cpp:
 	.text       start:0x007BD330 end:0x007BE280
