@@ -36,7 +36,7 @@ public:
     // BW1W120 00558030 BW1M100 1030fcb0 GameOSFile::_dt(void)
     virtual ~GameOSFile();
     // BW1W120 inlined BW1M100 inlined GameOSFile::Open(char *, LH_FILE_MODE)
-    virtual uint32_t Open(const char* filename, LH_FILE_MODE mode);
+    virtual LH_FILE_RESULT Open(const char* filename, LH_FILE_MODE mode);
 
     // Static methods
 
