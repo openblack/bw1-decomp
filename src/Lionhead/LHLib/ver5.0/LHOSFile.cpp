@@ -143,11 +143,10 @@ LH_FILE_RESULT LHReleasedOSFile::Open(const char* path, LH_FILE_MODE mode)
         return result;
     if (mode == LH_FILE_MODE_READ_ONLY || mode == LH_FILE_MODE_READ_WRITE_CREATE)
     {
-        char full[256];
-        sprintf(full, "%c:\\%s", g_GameDriveCharacter, path);
+        LHFilePath full(path);
         return LHOSFile::Open(full, mode);
     }
-    return LH_FILE_RESULT_ERROR;
+    return LH_FILE_RESULT_NOT_FOUND;
 }
 
 // BW1W120 007bc860 LHOSFile::Close(void)
