@@ -4,6 +4,7 @@
 #include <string.h>
 #include <windows.h>
 
+#include <Lionhead/LHFile/ver3.0/LHFilePath.h>
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h>
 
 // BW1W120 00c2b9e8
@@ -28,8 +29,7 @@ LHOSFile::~LHOSFile()
 // BW1W120 007bc6a0 LHOSFile::Exists(char const *)
 LH_FILE_RESULT LHOSFile::Exists(const char* path)
 {
-    char full[256];
-    sprintf(full, "%c:\\%s", g_GameDriveCharacter, path);
+    LHFilePath full(path);
     if (GetFileAttributesA(path) == -1 && GetFileAttributesA(full) == -1)
         return LH_FILE_RESULT_NOT_FOUND;
     else
