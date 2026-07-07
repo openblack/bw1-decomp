@@ -7,16 +7,14 @@
 #include <Lionhead/LHFile/ver3.0/LHFilePath.h>
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h>
 
-// BW1W120 00c2b9e8
+// the drive letter the game was launched from ('D' by default)
 char g_GameDriveCharacter = 'D';
 
-// BW1W120 007bc650 LHOSFile::LHOSFile(void)
 LHOSFile::LHOSFile()
 {
     handle = NULL;
 }
 
-// BW1W120 007bc680 LHOSFile::~LHOSFile(void)
 LHOSFile::~LHOSFile()
 {
     if (handle)
@@ -26,7 +24,6 @@ LHOSFile::~LHOSFile()
     }
 }
 
-// BW1W120 007bc6a0 LHOSFile::Exists(char const *)
 LH_FILE_RESULT LHOSFile::Exists(const char* path)
 {
     LHFilePath full(path);
@@ -36,20 +33,18 @@ LH_FILE_RESULT LHOSFile::Exists(const char* path)
         return LH_FILE_RESULT_OK;
 }
 
-// BW1W120 007bc700 LHOSFile::Position(unsigned long *)
-LH_FILE_RESULT LHOSFile::Position(uint32_t* position)
+LH_FILE_RESULT LHOSFile::Position(uint32_t* out_position)
 {
     DWORD pos = SetFilePointer(handle, 0, NULL, FILE_CURRENT);
     if (pos != -1)
     {
-        if (position)
-            *position = pos;
+        if (out_position)
+            *out_position = pos;
         return LH_FILE_RESULT_OK;
     }
     return LH_FILE_RESULT_ERROR;
 }
 
-// BW1W120 007bc960 LHFileLength(char const *, unsigned long *)
 LH_FILE_RESULT LHFileLength(const char* path, uint32_t* out_length)
 {
     LHReleasedOSFile file;
@@ -96,7 +91,6 @@ scan_done:
     return LH_FILE_RESULT_OK;
 }
 
-// BW1W120 007bc730 LHOSFile::Open(char const *, LH_FILE_MODE)
 LH_FILE_RESULT LHOSFile::Open(const char* path, LH_FILE_MODE mode)
 {
     DWORD creation_disposition = CREATE_ALWAYS;
@@ -135,7 +129,6 @@ LH_FILE_RESULT LHOSFile::Open(const char* path, LH_FILE_MODE mode)
     return LH_FILE_RESULT_OK;
 }
 
-// BW1W120 007bc7e0 LHReleasedOSFile::Open(char const *, LH_FILE_MODE)
 LH_FILE_RESULT LHReleasedOSFile::Open(const char* path, LH_FILE_MODE mode)
 {
     LH_FILE_RESULT result = LHOSFile::Open(path, mode);
@@ -149,7 +142,6 @@ LH_FILE_RESULT LHReleasedOSFile::Open(const char* path, LH_FILE_MODE mode)
     return LH_FILE_RESULT_NOT_FOUND;
 }
 
-// BW1W120 007bc860 LHOSFile::Close(void)
 LH_FILE_RESULT LHOSFile::Close()
 {
     BOOL closed = CloseHandle(handle);
@@ -157,8 +149,7 @@ LH_FILE_RESULT LHOSFile::Close()
     return closed == TRUE ? LH_FILE_RESULT_OK : LH_FILE_RESULT_ERROR;
 }
 
-// BW1W120 007bc880 LHOSFile::Seek(long, LH_SEEK_MODE, unsigned long *)
-LH_FILE_RESULT LHOSFile::Seek(long distance, LH_SEEK_MODE mode, uint32_t* new_position)
+LH_FILE_RESULT LHOSFile::Seek(long distance, LH_SEEK_MODE mode, uint32_t* out_new_position)
 {
     DWORD result;
     switch (mode)
@@ -178,22 +169,20 @@ LH_FILE_RESULT LHOSFile::Seek(long distance, LH_SEEK_MODE mode, uint32_t* new_po
     }
     if (result == -1)
         return LH_FILE_RESULT_ERROR;
-    if (new_position)
-        *new_position = result;
+    if (out_new_position)
+        *out_new_position = result;
     return LH_FILE_RESULT_OK;
 }
 
-// BW1W120 007bc8e0 LHOSFile::Read(void *, unsigned long, unsigned long *)
-LH_FILE_RESULT LHOSFile::Read(void* buffer, size_t size, size_t* read)
+LH_FILE_RESULT LHOSFile::Read(void* buffer, size_t size, size_t* out_read)
 {
     if (!ReadFile(handle, buffer, size, (LPDWORD)&size, NULL))
         return LH_FILE_RESULT_ERROR;
-    if (read)
-        *read = size;
+    if (out_read)
+        *out_read = size;
     return LH_FILE_RESULT_OK;
 }
 
-// BW1W120 007bc920 LHOSFile::Write(void *, unsigned long, unsigned long *)
 LH_FILE_RESULT LHOSFile::Write(const void* data, uint32_t len, uint32_t* written)
 {
     if (!WriteFile(handle, data, len, (LPDWORD)&len, NULL))
@@ -203,18 +192,16 @@ LH_FILE_RESULT LHOSFile::Write(const void* data, uint32_t len, uint32_t* written
     return LH_FILE_RESULT_OK;
 }
 
-// BW1W120 007bcae0 LHOSFile::Length(unsigned long *)
-LH_FILE_RESULT LHOSFile::Length(uint32_t* length)
+LH_FILE_RESULT LHOSFile::Length(uint32_t* out_length)
 {
     DWORD size = GetFileSize(handle, NULL);
     if (size == INVALID_FILE_SIZE)
         return LH_FILE_RESULT_ERROR;
-    if (length)
-        *length = size;
+    if (out_length)
+        *out_length = size;
     return LH_FILE_RESULT_OK;
 }
 
-// BW1W120 007bcb10 LHOSFile::DirFindFirst(char const *, LHDir *, unsigned long)
 LH_FILE_RESULT LHOSFile::DirFindFirst(const char* pattern, LHDir* dir, uint32_t attributes)
 {
     char* d = (char*)dir;
@@ -240,7 +227,6 @@ LH_FILE_RESULT LHOSFile::DirFindFirst(const char* pattern, LHDir* dir, uint32_t 
     return LH_FILE_RESULT_OK;
 }
 
-// BW1W120 007bcba0 LHOSFile::DirFindNext(LHDir *)
 LH_FILE_RESULT LHOSFile::DirFindNext(LHDir* dir)
 {
     char* d = (char*)dir;
@@ -260,25 +246,21 @@ fail:
     return LH_FILE_RESULT_ERROR;
 }
 
-// BW1W120 007bcc00 LHOSFile::DirFindEnd(LHDir *)
 LH_FILE_RESULT LHOSFile::DirFindEnd(LHDir* dir)
 {
     return FindClose(*(HANDLE*)((char*)dir + 0x130)) ? LH_FILE_RESULT_OK : LH_FILE_RESULT_ERROR;
 }
 
-// BW1W120 007bcc20 LHOSFile::Rename(char const *, char const *)
 LH_FILE_RESULT __stdcall LHOSFile::Rename(const char* from, const char* to)
 {
     return MoveFileA(from, to) ? LH_FILE_RESULT_OK : LH_FILE_RESULT_ERROR;
 }
 
-// BW1W120 007bcc40 LHOSFile::Delete(char const *)
 LH_FILE_RESULT __stdcall LHOSFile::Delete(const char* path)
 {
     return DeleteFileA(path) ? LH_FILE_RESULT_OK : LH_FILE_RESULT_ERROR;
 }
 
-// BW1W120 007bcc60 LHOSFile::ConvertDirInfo(LHDir *)
 void LHOSFile::ConvertDirInfo(LHDir* dir)
 {
     char* v1 = (char*)dir;
