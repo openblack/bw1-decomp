@@ -3068,6 +3068,7 @@ Lionhead/LHLib/ver5.0/LHCollide.cpp:
 Lionhead/LH3DLib/development/LH3DRender.cpp:
 	.text       start:0x0082B220 end:0x00830050
 	.CRT$XCU    start:0x009C7DB0 end:0x009C7DB4
+	.bss        start:0x00EC7FD0 end:0x00ECA650
 
 Lionhead/LH3DLib/development/LH3DText.cpp:
 	.text       start:0x00830050 end:0x00833A00
