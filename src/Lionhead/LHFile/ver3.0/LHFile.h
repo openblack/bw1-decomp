@@ -5,12 +5,25 @@
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
 
+enum LH_FILE_RESULT
+{
+    LH_FILE_RESULT_OK = 0,
+    LH_FILE_RESULT_NOT_FOUND = 2,
+    LH_FILE_RESULT_ERROR = 3,
+};
+
 enum LH_FILE_MODE
 {
+    LH_FILE_MODE_READ_WRITE = 0,
+    LH_FILE_MODE_READ_WRITE_CREATE = 1,
+    LH_FILE_MODE_READ_ONLY = 2,
 };
 
 enum LH_SEEK_MODE
 {
+    LH_SEEK_BEGIN = 0,
+    LH_SEEK_CURRENT = 1,
+    LH_SEEK_END = 2,
 };
 
 // Forward Declares
