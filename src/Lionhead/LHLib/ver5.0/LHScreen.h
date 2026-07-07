@@ -19,6 +19,8 @@ enum LH_SCREEN_BUFFER
 // Forward Declares
 
 struct LHDDEnum;
+struct OpaqueWindowPtr;
+struct LHColor;
 
 struct LHScreen
 {
@@ -69,10 +71,67 @@ struct LHScreen
 
     // Non-virtual methods
 
-    // BW1W120 007dd8f0 BW1M100 1014d890 LHScreen::~LHScreen(void)
+    // BW1W120 007dd850 LHScreen::~LHScreen(void)
+    // BW1W120 007dd8f0 BW1M100 1014d890 LHScreen::`vbase destructor'(void)
     ~LHScreen();
+    // BW1W120 007dd020 LHScreen::ResetDisplay(void)
+    void ResetDisplay();
     // BW1W120 007dd0d0 BW1M100 1014e420 LHScreen::SetFullscreenMode(int)
     void SetFullscreenMode(int mode);
+    // BW1W120 007dd130 LHScreen::DDrawInitialise(void)
+    int DDrawInitialise();
+    // BW1W120 007dd360 LHScreen::DDrawInitialiseDevices(void)
+    int DDrawInitialiseDevices();
+    // BW1W120 007dd930 LHScreen::SetMSTitle(char *)
+    int SetMSTitle(char* title);
+    // BW1W120 007dd960 LHScreen::DirectDrawReleaseSurface(void)
+    int DirectDrawReleaseSurface();
+    // BW1W120 007dd9c0 LHScreen::Lock(unsigned long)
+    int Lock(unsigned long param_1);
+    // BW1W120 007dda90 LHScreen::Unlock(void)
+    int Unlock();
+    // BW1W120 007ddad0 LHScreen::Close(void)
+    int Close();
+    // BW1W120 007ddb10 LHScreen::SetRGBInfo(_DDPIXELFORMAT *)
+    void SetRGBInfo(_DDPIXELFORMAT* pixel_format);
+    // BW1W120 007ddc40 LHScreen::Open(unsigned short, unsigned short, unsigned char)
+    int Open(uint16_t width, uint16_t height, uint8_t depth);
+    // BW1W120 007ddcb0 LHScreen::ChangeMode(unsigned short, unsigned short, unsigned char)
+    int ChangeMode(uint16_t width, uint16_t height, uint8_t depth);
+    // BW1W120 007de090 LHScreen::Flip(int)
+    int Flip(int param_1);
+    // BW1W120 007de200 LHScreen::Clear(LHColor *, LHRegion *)
+    int Clear(LHColor* colour, LHRegion* region);
+    // BW1W120 007de2f0 LHScreen::SetMSWindowHandle(OpaqueWindowPtr *)
+    void SetMSWindowHandle(OpaqueWindowPtr* window);
+    // BW1W120 007de320 LHScreen::SetTimingStats(void)
+    uint16_t SetTimingStats();
+    // BW1W120 007de580 LHScreen::LHFlip(int)
+    int LHFlip(int param_1);
+    // BW1W120 007de630 LHScreen::BlitToMSWindow(LHRegion *, LHCoord *, int)
+    int BlitToMSWindow(LHRegion* region, LHCoord* coord, int param_3);
+    // BW1W120 007de6c0 LHScreen::GetMSDesktopParams(unsigned short *, unsigned short *, unsigned char *)
+    int GetMSDesktopParams(uint16_t* width, uint16_t* height, uint8_t* depth);
+    // BW1W120 007de6d0 LHScreen::AltTabDeactivate(void)
+    void AltTabDeactivate();
+    // BW1W120 007de6f0 LHScreen::AltTabReactivate(void)
+    void AltTabReactivate();
+    // BW1W120 007de730 LHScreen::RunInMSWindow(int)
+    int RunInMSWindow(int param_1);
+    // BW1W120 007de820 LHScreen::SetMSOffset(void)
+    int SetMSOffset();
+    // BW1W120 007de930 LHScreen::SaveBitmap(void)
+    int SaveBitmap();
+    // BW1W120 007dec80 LHScreen::GetAvailableVidMem(void)
+    uint32_t GetAvailableVidMem();
+    // BW1W120 007decc0 LHScreen::WaitForVerticalBlank(void)
+    int WaitForVerticalBlank();
+    // BW1W120 007ded50 LHScreen::IsAppMinimized(void)
+    int IsAppMinimized();
+    // BW1W120 007e8a20 LHScreen::Depth(void)
+    uint8_t Depth();
+    // BW1W120 007e9df0 LHScreen::MaxDepth(void)
+    uint8_t MaxDepth();
 };
 
 #endif /* BW1_DECOMP_LH_SCREEN_INCLUDED_H */
