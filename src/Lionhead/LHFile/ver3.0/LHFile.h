@@ -36,17 +36,17 @@ class LHFile
 public:
     uint32_t* field_0x4;
     uint32_t field_0x8;
-    bool opened;
+    uint32_t opened;
     void* handle; /* 0x10 */
     void* field_0x14[0x9];
     uint32_t field_0x38;
     uint32_t field_0x3c;
-    uint32_t field_0x40;
-    uint32_t (*custom_read_function)(void* data, size_t length, void* user_data); /* 0x44 */
+    uint32_t (*custom_write_function)(const void* data, uint32_t length, void* user_data); /* 0x40 */
+    uint32_t (*custom_read_function)(void* data, uint32_t length, void* user_data); /* 0x44 */
     uint32_t (*custom_set_file_pointer_function)(uint32_t distance_to_move, uint32_t move_method, void* user_data);
-    void* custom_read_function_user_data;
+    void* custom_function_user_data;
     LH_FILE_MODE file_mode; /* 0x50 */
-    bool segment_opened;
+    uint32_t segment_opened;
     uint32_t segment_size;
     uint32_t current_file_offset;
     uint32_t segment_offset; /* 0x60 */
@@ -62,6 +62,8 @@ public:
 
     // BW1W120 0042e110 BW1M100 10183650 LHFile::LHFile(void)
     LHFile();
+    // BW1W120 007bda20 LHFile::~LHFile(void)
+    ~LHFile();
 
     // Non-virtual methods
 
@@ -69,10 +71,20 @@ public:
     uint32_t ResetData();
     // BW1W120 007bd390 BW1M100 1061c61c LHFile::SetName(char const *)
     uint32_t SetName(const char* name);
+    // BW1W120 007bd420 LHFile::GetSegmentDataInChunks(char *, char *, unsigned int, unsigned int, void (*)(void), int)
+    uint32_t GetSegmentDataInChunks(char* segment_name, char* data, uint32_t total_size, uint32_t chunk_size, void (*callback)(void), int offset);
+    // BW1W120 007bd490 LHFile::GetSegmentData(char *, void *, unsigned int, int)
+    uint32_t GetSegmentData(char* segment_name, void* data, uint32_t data_size, int offset);
     // BW1W120 007bd7d0 BW1M100 10168870 LHFile::VerifyFile(void)
     uint32_t VerifyFile();
+    // BW1W120 007bd930 LHFile::GetNextSegment(LHSegment *, int)
+    uint32_t GetNextSegment(LHSegment* segment, int allocate_memory);
     // BW1W120 007bd9d0 BW1M100 10168610 LHFile::AllocSegDataMem(LHSegment *)
     uint32_t AllocSegDataMem(LHSegment* segment);
+    // BW1W120 007bda70 LHFile::FreeLastSeg(void)
+    void FreeLastSeg();
+    // BW1W120 007bda90 LHFile::WriteSegment(char *)
+    uint32_t WriteSegment(char* segment);
     // BW1W120 007bdb20 BW1M100 101681d0 LHFile::WriteSegmentHeader(char *)
     uint32_t WriteSegmentHeader(char* segment_name);
     // BW1W120 007bdbc0 BW1M100 1061c64c LHFile::Close(void)
@@ -87,10 +99,20 @@ public:
     uint32_t OpenSegment(char* name);
     // BW1W120 007bdf50 BW1M100 10004d90 LHFile::CloseSegment(void)
     uint32_t CloseSegment();
+    // BW1W120 007bdfc0 LHFile::WriteSegmentData(void const *, unsigned int)
+    uint32_t WriteSegmentData(const void* data, uint32_t length);
     // BW1W120 007be040 BW1M100 10166bb0 LHFile::GetSegmentData(void* , unsigned long, long)
-    uint32_t GetSegmentData(void* data, size_t data_size, int offset);
+    uint32_t GetSegmentData(void* data, uint32_t data_size, int offset);
+    // BW1W120 007be090 LHFile::WriteData(void const *, unsigned int)
+    uint32_t WriteData(const void* data, uint32_t length);
     // BW1W120 007be120 BW1M100 10004c90 LHFile::ReadData(void* , unsigned long)
-    uint32_t ReadData(void* data, size_t length);
+    uint32_t ReadData(void* data, uint32_t length);
+    // BW1W120 007be1b0 LHFile::SetFileFunctions(void *, void *, void *, void *)
+    uint32_t SetFileFunctions(void* read_function, void* write_function, void* set_file_pointer_function, void* user_data);
+    // BW1W120 007be1f0 LHFile::TruncateFromSegment(char const *)
+    uint32_t TruncateFromSegment(const char* segment_name);
+    // BW1W120 007bffff LHFile::FlushCache(void)
+    void FlushCache();
 };
 
 #endif /* BW1_DECOMP_LH_FILE_INCLUDED_H */
