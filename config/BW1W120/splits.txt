@@ -1207,7 +1207,7 @@ zlib/compress.c:
 	.text       start:0x007BE290 end:0x007BE360
 
 Lionhead/LHFile/ver3.0/LHParseFile.cpp:
-	.text       start:0x007BE400 end:0x007BF0D0
+	.text       start:0x007BE400 end:0x007BF1C0
 
 zlib/deflate.c:
 	.text       start:0x007BF210 end:0x007C08D0
