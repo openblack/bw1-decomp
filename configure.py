@@ -1273,7 +1273,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScreen.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp"),
-            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHHeap2.cpp"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHHeap2.cpp", extra_cflags=["/GX"]),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMouse.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHOSFile.cpp", extra_cflags=["/GX"]),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScript.cpp"),
