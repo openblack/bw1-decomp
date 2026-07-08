@@ -70,9 +70,9 @@ public:
 	uint32_t                             field_0x17c;
 	uint32_t                             field_0x180;
 	uint32_t                             field_0x184;
-	CreatureHelpState                    help_state;
-	LHLinkedList__CreatureHelpStackEntry help_stack_entries[0x2a]; /* 0x220 */
-	CreatureReceiveSpell*                receive_spell;            /* 0x370 */
+	CreatureHelpState                    HelpState;
+	LHLinkedList__CreatureHelpStackEntry HelpStackEntries[0x2a]; /* 0x220 */
+	CreatureReceiveSpell*                ReceiveSpell;            /* 0x370 */
 	float                                field_0x374;
 	float                                field_0x378;
 	uint8_t                              field_0x37c;
@@ -81,7 +81,7 @@ public:
 	uint8_t                              field_0x37f;
 	uint32_t                             field_0x380;
 	uint32_t                             field_0x384;
-	CreatureEmotionsForMusic             emotions_for_music;
+	CreatureEmotionsForMusic             EmotionsForMusic;
 	uint32_t                             field_0x390[0xe];
 	uint32_t                             field_0x3c8;
 	uint32_t                             field_0x3cc;
@@ -101,7 +101,7 @@ public:
 	uint8_t                              field_0x405;
 	uint8_t                              field_0x406;
 	uint8_t                              field_0x407;
-	CreatureSubActionAgenda              sub_action_agenda;
+	CreatureSubActionAgenda              SubActionAgenda;
 	int                                  field_0x1058;
 	uint32_t                             field_0x105c;
 	uint32_t                             field_0x1060;
@@ -111,8 +111,8 @@ public:
 	GPlayer*                             owner; /* 0x1070 */
 	Dance*                               dance;
 	uint32_t                             field_0x1078;
-	GParticleContainer*                  particle_container_0x107c;
-	GParticleContainer*                  particle_container_0x1080;
+	GParticleContainer*                  ParticleContainer0x107c;
+	GParticleContainer*                  ParticleContainer0x1080;
 	uint32_t                             field_0x1084;
 	uint32_t                             field_0x1088;
 	uint32_t                             field_0x108c;
@@ -149,7 +149,7 @@ public:
 	uint32_t                             field_0x1118;
 	uint32_t                             field_0x111c;
 	uint32_t                             field_0x1120;
-	int                                  game_turn;
+	int                                  GameTurn;
 	uint8_t                              field_0x1128[0x28];
 	uint32_t                             field_0x1150;
 	uint32_t                             field_0x1154;
@@ -169,7 +169,7 @@ public:
 	uint32_t                             field_0x11c8;
 	MapCoords                            field_0x11cc;
 	uint8_t                              field_0x11d8[0xc];
-	GParticleContainer*                  particle_container_0x11e4;
+	GParticleContainer*                  ParticleContainer0x11e4;
 	uint32_t                             field_0x11e8;
 	BookmarkGraphic*                     bookmark_graphic;
 	uint8_t                              field_0x11f0;

@@ -17,8 +17,8 @@ struct LH3DMesh;
 class InnerCamera
 {
 public:
-	Zoomer3d    zoomer_pos; /* 0x4 */
-	Zoomer3d    zoomer_foc; /* 0x94 */
+	Zoomer3d    ZoomerPos; /* 0x4 */
+	Zoomer3d    ZoomerFoc; /* 0x94 */
 	uint32_t    field_0x124;
 	uint32_t    field_0x128;
 	int32_t     field_0x12c;
@@ -43,13 +43,13 @@ public:
 	uint8_t     field_0x399;
 	uint8_t     field_0x39a;
 	uint8_t     field_0x39b;
-	LHPoint     pos_0x39c;
-	LHPoint     foc_0x3a8;
+	LHPoint     Pos0x39c;
+	LHPoint     Foc0x3a8;
 	uint8_t     field_0x3b4[0x18];
 	float       field_0x3cc;
 	float       field_0x3d0;
 	LHPoint     current_pos;
-	LHPoint     current_foc; /* 0x3e0 */
+	LHPoint     CurrentFoc; /* 0x3e0 */
 	Point2D     field_0x3ec;
 	uint8_t     field_0x3f4;
 	uint8_t     field_0x3f5[0x3];

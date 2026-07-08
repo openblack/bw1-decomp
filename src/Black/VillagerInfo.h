@@ -23,93 +23,93 @@ struct AgeToScale
 class GVillagerInfo : public GLivingInfo
 {
 public:
-	TRIBE_TYPE      tribeType; /* 0x1f4 */
+	TRIBE_TYPE      TribeType; /* 0x1f4 */
 	SEX_TYPE        sex;
-	VILLAGER_NUMBER villagerNumber;
-	MESH_LIST       superMesh; /* 0x200 */
-	MESH_LIST       childMeshHigh;
-	MESH_LIST       childMeshMedium;
-	MESH_LIST       childMeshLow;
-	MESH_LIST       highDetail; /* 0x210 */
-	MESH_LIST       stdDetail;
-	MESH_LIST       lowDetail;
-	JOB_INFO        primaryJob;
-	JOB_INFO        secondaryJob; /* 0x220 */
-	float           jobEfficency;
-	uint32_t        startHavingSexAge;
-	uint32_t        stopHavingSexAge;
-	int             wantSexSpring; /* 0x230 */
-	int             wantSexSummer;
-	int             wantSexAutumn;
-	int             wantSexWinter;
-	uint32_t        timePregnantFor; /* 0x240 */
-	uint32_t        lookForJobDelay;
-	uint32_t        waitAtHome;
-	uint32_t        restAtHomeTime;
-	float           restAtHomeRestoresLifeBy; /* 0x250 */
-	float           pregnancyChance;
+	VILLAGER_NUMBER VillagerNumber;
+	MESH_LIST       SuperMesh; /* 0x200 */
+	MESH_LIST       ChildMeshHigh;
+	MESH_LIST       ChildMeshMedium;
+	MESH_LIST       ChildMeshLow;
+	MESH_LIST       HighDetail; /* 0x210 */
+	MESH_LIST       StdDetail;
+	MESH_LIST       LowDetail;
+	JOB_INFO        PrimaryJob;
+	JOB_INFO        SecondaryJob; /* 0x220 */
+	float           JobEfficency;
+	uint32_t        StartHavingSexAge;
+	uint32_t        StopHavingSexAge;
+	int             WantSexSpring; /* 0x230 */
+	int             WantSexSummer;
+	int             WantSexAutumn;
+	int             WantSexWinter;
+	uint32_t        TimePregnantFor; /* 0x240 */
+	uint32_t        LookForJobDelay;
+	uint32_t        WaitAtHome;
+	uint32_t        RestAtHomeTime;
+	float           RestAtHomeRestoresLifeBy; /* 0x250 */
+	float           PregnancyChance;
 	uint32_t        inheritence;
-	uint32_t        boyGirlChance;
-	float           aveageHeightOfAdult; /* 0x260 */
-	uint32_t        maxFoodCarried;
-	uint32_t        maxWoodCarried;
-	uint32_t        minWoodToShowGraphic;
-	uint32_t        minFoodToShowGraphic; /* 0x270 */
-	uint32_t        maxTraderFoodCarried;
-	uint32_t        maxTraderWoodCarried;
-	float           woodUsedPerBuildCycle;
-	float           repairAmount; /* 0x280 */
-	uint32_t        jobSpeed;
-	float           percentLazy;
-	float           chantLifeRate;
-	uint32_t        dyingTimeWithoutGraveyard; /* 0x290 */
-	uint32_t        dyingTimeWithGraveyard;
-	uint32_t        timeForFootballChance;
-	uint32_t        footballWinGoalTime;
-	uint32_t        footballLostGoalTime; /* 0x2a0 */
-	float           lookAheadDistance;
-	uint32_t        scaredStiffTime;
+	uint32_t        BoyGirlChance;
+	float           AveageHeightOfAdult; /* 0x260 */
+	uint32_t        MaxFoodCarried;
+	uint32_t        MaxWoodCarried;
+	uint32_t        MinWoodToShowGraphic;
+	uint32_t        MinFoodToShowGraphic; /* 0x270 */
+	uint32_t        MaxTraderFoodCarried;
+	uint32_t        MaxTraderWoodCarried;
+	float           WoodUsedPerBuildCycle;
+	float           RepairAmount; /* 0x280 */
+	uint32_t        JobSpeed;
+	float           PercentLazy;
+	float           ChantLifeRate;
+	uint32_t        DyingTimeWithoutGraveyard; /* 0x290 */
+	uint32_t        DyingTimeWithGraveyard;
+	uint32_t        TimeForFootballChance;
+	uint32_t        FootballWinGoalTime;
+	uint32_t        FootballLostGoalTime; /* 0x2a0 */
+	float           LookAheadDistance;
+	uint32_t        ScaredStiffTime;
 	uint32_t        waitForDinner;
-	uint32_t        housewifeGossipTime; /* 0x2b0 */
-	uint32_t        housewifeWaits;
-	float           foodNurishmentMultiplier;
-	float           gameTurnReducesFoodInBellyBy;
-	float           hungryForFood; /* 0x2c0 */
-	float           starvingForFood;
-	float           happyWithFood;
-	float           fullWithFood;
-	float           hungerToLifeMultiplier; /* 0x2d0 */
-	float           starvingToLifeMultiplier;
-	uint32_t        foodReqiredForDinner;
-	uint32_t        processChecksEvery;
-	uint32_t        havingSexTime; /* 0x2e0 */
-	uint32_t        dancingSpeed;
+	uint32_t        HousewifeGossipTime; /* 0x2b0 */
+	uint32_t        HousewifeWaits;
+	float           FoodNurishmentMultiplier;
+	float           GameTurnReducesFoodInBellyBy;
+	float           HungryForFood; /* 0x2c0 */
+	float           StarvingForFood;
+	float           HappyWithFood;
+	float           FullWithFood;
+	float           HungerToLifeMultiplier; /* 0x2d0 */
+	float           StarvingToLifeMultiplier;
+	uint32_t        FoodReqiredForDinner;
+	uint32_t        ProcessChecksEvery;
+	uint32_t        HavingSexTime; /* 0x2e0 */
+	uint32_t        DancingSpeed;
 	AgeToScale      ageToScale;
-	ANIM_LIST       lAttractAnim[0x3];   /* 0x338 */
-	ANIM_LIST       lNeedAnim[0x3];      /* 0x344 */
-	float           maxDistCarryFoodPit; /* 0x350 */
-	float           maxDistCarryWoodPit;
-	uint32_t        allowFaceSubstitution;
-	float           damageThresholdToGoHome;
-	float           damageThresholdToSleepUntil; /* 0x360 */
-	uint32_t        numGameTurnsAfterAggressionInterestedInShield;
-	float           pauseForASecondChance;
-	float           baseForTownNeedsSpeedMod;
-	float           divisorForTownNeedsSpeedMod; /* 0x370 */
-	float           speedModWhenFullLoadOfWood;
-	float           speedModWhenFullLoadOfFood;
-	float           lifeWhenWalksWounded;
-	float           lifeWhenCrawlsWounded; /* 0x380 */
-	uint32_t        amountOfWoodPerBuilderWanted;
-	uint32_t        keepMeshWhenChangeTown;
-	float           ownDesireThreshold;
-	float           maxDistanceFromArtifactDanceCanBe; /* 0x390 */
-	uint16_t        initialChillOutTime;
-	uint16_t        subsequentChillOutTime;
-	uint16_t        timeToWaitForArtifactDance;
-	uint16_t        drowningTime;
-	float           foodPowerupIncrease;
-	float           missionaryImpressiveValue; /* 0x3a0 */
+	ANIM_LIST       LAttractAnim[0x3];   /* 0x338 */
+	ANIM_LIST       LNeedAnim[0x3];      /* 0x344 */
+	float           MaxDistCarryFoodPit; /* 0x350 */
+	float           MaxDistCarryWoodPit;
+	uint32_t        AllowFaceSubstitution;
+	float           DamageThresholdToGoHome;
+	float           DamageThresholdToSleepUntil; /* 0x360 */
+	uint32_t        NumGameTurnsAfterAggressionInterestedInShield;
+	float           PauseForASecondChance;
+	float           BaseForTownNeedsSpeedMod;
+	float           DivisorForTownNeedsSpeedMod; /* 0x370 */
+	float           SpeedModWhenFullLoadOfWood;
+	float           SpeedModWhenFullLoadOfFood;
+	float           LifeWhenWalksWounded;
+	float           LifeWhenCrawlsWounded; /* 0x380 */
+	uint32_t        AmountOfWoodPerBuilderWanted;
+	uint32_t        KeepMeshWhenChangeTown;
+	float           OwnDesireThreshold;
+	float           MaxDistanceFromArtifactDanceCanBe; /* 0x390 */
+	uint16_t        InitialChillOutTime;
+	uint16_t        SubsequentChillOutTime;
+	uint16_t        TimeToWaitForArtifactDance;
+	uint16_t        DrowningTime;
+	float           FoodPowerupIncrease;
+	float           MissionaryImpressiveValue; /* 0x3a0 */
 
 	// Override methods
 

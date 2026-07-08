@@ -19,7 +19,7 @@ public:
 	SetupStaticText* text; /* 0x10 */
 	SetupList*       list;
 	SetupButton*     button;
-	SetupBigButton*  big_button;
+	SetupBigButton*  BigButton;
 
 	// Override methods
 

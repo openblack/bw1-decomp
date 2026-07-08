@@ -16,24 +16,24 @@ CHand::CHand(LHPoint point, GInterfaceStatus* status)
 	}
 	for (i = 0; i < 6; ++i)
 	{
-		anim_sets[i] = LH3DAnimSet();
+		AnimSets[i] = LH3DAnimSet();
 	}
 
-	point_0x48d4 = LHPoint();
-	point_0x48e0 = LHPoint();
-	point_0x48ec = LHPoint();
-	point_0x48d4.SetNull();
-	point_0x48e0.SetNull();
-	point_0x48ec.SetNull();
+	Point0x48d4 = LHPoint();
+	Point0x48e0 = LHPoint();
+	Point0x48ec = LHPoint();
+	Point0x48d4.SetNull();
+	Point0x48e0.SetNull();
+	Point0x48ec.SetNull();
 
-	hand_fx = PSysHandFX::CreateHandFX();
+	HandFx = PSysHandFX::CreateHandFX();
 
 	field_0x4958 = 0;
 	field_0x495c = 0;
 	field_0x4960 = 0;
 
-	point_0x4964 = LHPoint();
-	point_0x4964.SetNull();
+	Point0x4964 = LHPoint();
+	Point0x4964.SetNull();
 
 	field_0x4970 = 0;
 	field_0x4974 = 0;
@@ -55,10 +55,10 @@ CHand::CHand(LHPoint point, GInterfaceStatus* status)
 
 	field_0x483c = 0;
 	field_0x4848 = 0;
-	interface_status = status;
+	InterfaceStatus = status;
 	field_0x4854 = 10.0f;
 	field_0x48b4 = 0;
-	current_state = HAND_STATE_NORMAL;
+	CurrentState = HAND_STATE_NORMAL;
 	field_0x4840 = 1;
 	field_0x4904 = 0;
 	field_0x48fc = 0;
@@ -71,7 +71,7 @@ CHand::CHand(LHPoint point, GInterfaceStatus* status)
 	field_0x49bc = 0;
 	field_0x491c = '\0';
 
-	dynamic_shadow->CreateDynamicShadow();
+	DynamicShadow->CreateDynamicShadow();
 
 	field_0x4834 = 1.0f;
 	field_0x499c = 0;
@@ -79,26 +79,26 @@ CHand::CHand(LHPoint point, GInterfaceStatus* status)
 	field_0x49a4 = 0;
 	field_0x49b0 = 0.13f;
 	field_0x4998 = 1;
-	max_distance_from_user = 1800.0f;
+	MaxDistanceFromUser = 1800.0f;
 	field_0x49a8 = 0;
-	matrix_0x49ac = NULL;
+	Matrix0x49ac = NULL;
 	field_0x494c = NULL;
 	field_0x4950 = 0;
 	field_0x4954 = 0;
 
-	// hand_states.named.invisible = new(__FILE__, __LINE__) HandStateInvisible(this);
-	// hand_states.named.normal = new(__FILE__, __LINE__) HandStateNormal(this);
-	// hand_states.named.camera = new(__FILE__, __LINE__) HandStateCamera(this);
-	// hand_states.named.tug = new(__FILE__, __LINE__) HandStateTug(this);
-	// hand_states.named.holding = new(__FILE__, __LINE__) HandStateHolding(this);
-	// hand_states.named.totem = new(__FILE__, __LINE__) HandStateTotem(this);
-	// hand_states.named.multi_pick_up = new(__FILE__, __LINE__) HandStateMultiPickUp(this);
-	// hand_states.named.creature = new(__FILE__, __LINE__) HandStateCreature(this);
-	// hand_states.named.grain = new(__FILE__, __LINE__) HandStateGrain(this);
-	// hand_states.named.play_anim = new(__FILE__, __LINE__) HandStatePlayAnim(this);
-	// hand_states.named.citadel = new(__FILE__, __LINE__) HandStateCitadel(this);
+	// HandStates.named.invisible = new(__FILE__, __LINE__) HandStateInvisible(this);
+	// HandStates.named.normal = new(__FILE__, __LINE__) HandStateNormal(this);
+	// HandStates.named.camera = new(__FILE__, __LINE__) HandStateCamera(this);
+	// HandStates.named.tug = new(__FILE__, __LINE__) HandStateTug(this);
+	// HandStates.named.holding = new(__FILE__, __LINE__) HandStateHolding(this);
+	// HandStates.named.totem = new(__FILE__, __LINE__) HandStateTotem(this);
+	// HandStates.named.MultiPickUp = new(__FILE__, __LINE__) HandStateMultiPickUp(this);
+	// HandStates.named.creature = new(__FILE__, __LINE__) HandStateCreature(this);
+	// HandStates.named.grain = new(__FILE__, __LINE__) HandStateGrain(this);
+	// HandStates.named.PlayAnim = new(__FILE__, __LINE__) HandStatePlayAnim(this);
+	// HandStates.named.citadel = new(__FILE__, __LINE__) HandStateCitadel(this);
 
-	hand_states.raw[current_state]->Enter();
+	HandStates.raw[CurrentState]->Enter();
 
 	field_0x4994 = 0;
 	field_0x4900 = 0;
@@ -116,15 +116,15 @@ uint32_t CHand::LoadBinary_5CHandFPci(char* filename, int param_1)
 	result = file.GetSegmentData(&data, sizeof(data), -1);
 	if (data < 1)
 	{
-		uint32_t spec_version;
-		result = file.GetSegmentData(&spec_version, sizeof(spec_version), -1);
-		if (spec_version < 6)
+		uint32_t SpecVersion;
+		result = file.GetSegmentData(&SpecVersion, sizeof(SpecVersion), -1);
+		if (SpecVersion < 6)
 		{
 			char spec_filename[64];
-			if (spec_version < 5)
+			if (SpecVersion < 5)
 			{
 			}
-			sprintf(spec_filename, "data\\hndspec%u.txt", spec_version);
+			sprintf(spec_filename, "data\\hndspec%u.txt", SpecVersion);
 
 			AnimInfo* infos = new AnimInfo();
 			result = infos->Read(spec_filename);
@@ -144,11 +144,11 @@ uint32_t CHand::LoadBinary_5CHandFPci(char* filename, int param_1)
 			delete infos;
 
 			SetSize(1.0f);
-			if (matrix_0x49ac != NULL)
+			if (Matrix0x49ac != NULL)
 			{
-				// __dl__FPv(matrix_0x49ac);
+				// __dl__FPv(Matrix0x49ac);
 			}
-			// matrix_0x49ac = (LHMatrix*)__nw__FUl(field_0x47b8 * 0x30, __FILE__, __LINE__);
+			// Matrix0x49ac = (LHMatrix*)__nw__FUl(field_0x47b8 * 0x30, __FILE__, __LINE__);
 			return 1;
 		}
 	}
@@ -166,7 +166,7 @@ void CHand::SetSize(float size)
 	{
 		size = 2.0f;
 	}
-	size_1 = size;
+	Size1 = size;
 	float fVar1 = 3.2f; /* = FUN_0046c040() */
-	size_2 = fVar1 / field_0x8c * field_0x4834 * size_1;
+	Size2 = fVar1 / field_0x8c * field_0x4834 * Size1;
 }

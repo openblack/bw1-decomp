@@ -61,12 +61,12 @@ class MultiMapFixed : public Fixed
 {
 public:
 	uint8_t        field_0x58;
-	float          percent_built;
+	float          PercentBuilt;
 	uint32_t       field_0x60;
-	GFootpathLink* footpath_link;
-	MultiChildList multi_children_array;
+	GFootpathLink* FootpathLink;
+	MultiChildList MultiChildrenArray;
 	BuildingSite*  building_site; /* 0x74 */
-	NewCollide*    collide_data;
+	NewCollide*    CollideData;
 
 	// Override methods
 
@@ -84,7 +84,7 @@ public:
 		return ((GameThingWithPos*)this)->coords;
 	}
 	// BW1W120 004014f0 BW1M100 100531e0 MultiMapFixed::GetPercentBuilt(void)
-	virtual float GetPercentBuilt() { return percent_built; }
+	virtual float GetPercentBuilt() { return PercentBuilt; }
 	// BW1W120 00401500 BW1M100 1004b0a0 MultiMapFixed::GetPercentRepaired(void)
 	virtual float GetPercentRepaired() { return GetLife(); }
 	// BW1W120 00401510 BW1M100 100ddc00 MultiMapFixed::GetBuildingSiteWood(unsigned long *)
@@ -119,9 +119,9 @@ public:
 	// BW1W120 00401610 BW1M100 101481c0 MultiMapFixed::IsFootpathLink(void)
 	virtual bool32_t IsFootpathLink() { return true; }
 	// BW1W120 00401620 BW1M100 1009b630 MultiMapFixed::GetFootpathLink(void)
-	virtual GFootpathLink* GetFootpathLink() { return footpath_link; }
+	virtual GFootpathLink* GetFootpathLink() { return FootpathLink; }
 	// BW1W120 00401630 BW1M100 inlined MultiMapFixed::GetCollideData(void)
-	virtual NewCollide* GetCollideData() { return collide_data; }
+	virtual NewCollide* GetCollideData() { return CollideData; }
 	// BW1W120 0052e2b0 BW1M100 100e1160 MultiMapFixed::ToBeDeleted(int)
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 004220a0 BW1M100 100a5880 MultiMapFixed::GetTown(void)

@@ -50,10 +50,10 @@ struct GMoveBy
 class MobileWallHug : public Mobile
 {
 public:
-	int16_t       turns_until_next_state_change; /* 0x58 */
+	int16_t       TurnsUntilNextStateChange; /* 0x58 */
 	uint16_t      speed;
-	uint16_t      game_angle;
-	uint8_t       move_state;
+	uint16_t      GameAngle;
+	uint8_t       MoveState;
 	Object*       target; /* 0x60 */
 	GMoveBy       step;
 	CircleHugInfo circle_hug_info; /* 0x70 */
@@ -149,7 +149,7 @@ struct SubCollideBlockPos
 struct CircleHugStateInfoT
 {
 	std::map<MobileWallHug*, uint32_t>                    field_0x0;
-	std::map<NewCollide::Obj*, std::set<MobileWallHug*>*> obj_to_mwh; /* 0x10 */
+	std::map<NewCollide::Obj*, std::set<MobileWallHug*>*> ObjToMwh; /* 0x10 */
 	std::set<MobileWallHug*>                              field_0x20;
 	std::set<MobileWallHug*>                              field_0x30;
 	bool                                                  field_0x40;

@@ -22,7 +22,7 @@ struct LivingAction
 {
 	uint8_t  states[_LIVING_ACTION_INDEX_COUNT]; /* 0x0 */
 	uint8_t  field_0x3;
-	uint16_t turns_since_state_change;
+	uint16_t TurnsSinceStateChange;
 
 	// Constructors
 

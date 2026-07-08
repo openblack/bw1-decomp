@@ -22,11 +22,11 @@ class GFootpathFinder : public GameThing
 public:
 	RPHolder          holder;                 /* 0x14 */
 	RPlan             plan;                   /* 0x64040 */
-	GameThingWithPos* gamethingwithpos_start; /* 0x640b4 */
-	GameThingWithPos* gamethingwithpos_dest;
-	GFootpath*        footpath_0x7c;
-	GFootpathNode*    start_node; /* 0x640c0 */
-	GFootpathNode*    dest_node;
+	GameThingWithPos* GamethingwithposStart; /* 0x640b4 */
+	GameThingWithPos* GamethingwithposDest;
+	GFootpath*        Footpath0x7c;
+	GFootpathNode*    StartNode; /* 0x640c0 */
+	GFootpathNode*    DestNode;
 
 	// Override methods
 

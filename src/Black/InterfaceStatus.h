@@ -36,13 +36,13 @@ public:
 	uint32_t           field_0x40;
 	uint8_t            field_0x44[0x14];
 	GMagicHand         magic_hand[0x2];        /* 0x58 */
-	bool               hand_holding_something; /* 0x90 */
+	bool               HandHoldingSomething; /* 0x90 */
 	LHCoord            field_0x94;
 	uint32_t           field_0x9c;
 	uint32_t           field_0xa0;
 	LHPoint            field_0xa4;
-	LHPoint            camera_pos; /* 0xb0 */
-	LHPoint            camera_foc;
+	LHPoint            CameraPos; /* 0xb0 */
+	LHPoint            CameraFoc;
 	LHPoint            field_0xc8;
 	LHPoint            field_0xd4;
 	uint32_t           field_0xe0;
@@ -54,12 +54,12 @@ public:
 	float              field_0x100;
 	float              field_0x104;
 	float              field_0x108;
-	LHPoint            hand_velocity;
+	LHPoint            HandVelocity;
 	float              field_0x118;
 	uint32_t           field_0x11c;
-	Object*            last_dropped_object; /* 0x120 */
+	Object*            LastDroppedObject; /* 0x120 */
 	uint32_t           field_0x124;
-	GLeashStatus*      leash_status;
+	GLeashStatus*      LeashStatus;
 	GVirtualInfluence* influence;
 	float              field_0x130;
 

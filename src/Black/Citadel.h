@@ -29,8 +29,8 @@ class Citadel : public Container
 {
 public:
 	CitadelHeart*           heart; /* 0x30 */
-	WorshipSite*            worship_sites[0x6];
-	LHListHead<CitadelPart> part_list; /* 0x4c */
+	WorshipSite*            WorshipSites[0x6];
+	LHListHead<CitadelPart> PartList; /* 0x4c */
 	uint32_t                field_0x54;
 	uint32_t                field_0x58;
 	uint32_t                field_0x5c;

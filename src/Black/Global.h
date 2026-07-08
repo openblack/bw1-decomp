@@ -32,7 +32,7 @@ struct GGlobal
 	FuncPtr(name = 'GGlobal__field_0x2d2e4', call_type = '__cdecl', result = 'void*', args = [], arg_labels = [],
 	        decorated_name = 'GGlobal__field_0x2d2e4', indirection_level = 1) field_0x2d2e4;
 	uint8_t field_0x2d2e8[0xc];
-	char    current_directory[0x100]; /* 0x2d2f4 */
+	char    CurrentDirectory[0x100]; /* 0x2d2f4 */
 	uint8_t field_0x2d3f4[0x10c];
 
 	// Non-virtual methods

@@ -20,7 +20,7 @@ class SetupBigButton : public SetupButton
 public:
 	uint32_t  text_position; /* 0x244 */
 	BBSTYLE   style;
-	SetupRect inner_rect;
+	SetupRect InnerRect;
 
 	// Override methods
 

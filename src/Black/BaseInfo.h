@@ -17,7 +17,7 @@ public:
 	int        index;
 
 	// BW1W120 0x00c58604
-	static uint32_t info_count;
+	static uint32_t InfoCount;
 
 	// Override methods
 
@@ -49,8 +49,8 @@ public:
 class BaseInfo
 {
 public:
-	uint32_t unique_id; /* 0x4 */
-	uint32_t address_offset;
+	uint32_t UniqueId; /* 0x4 */
+	uint32_t AddressOffset;
 
 	// Override methods
 

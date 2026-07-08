@@ -44,7 +44,7 @@ struct LH3DMaterial;
 
 struct SetupThing
 {
-	LH3DMaterial*  ui_shadow_material; /* 0x0 */
+	LH3DMaterial*  UiShadowMaterial; /* 0x0 */
 	uint8_t        field_0x4[0x34];
 	SetupRect      SetupRect_00c4ccb8; /* 0x38 */
 	uint8_t        field_0x48[0x10];

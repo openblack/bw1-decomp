@@ -23,7 +23,7 @@ struct LH3DTexture
 	int*          field_0x120;
 	void*         surface;
 	uint32_t      field_0x128;
-	uint32_t      mask_collide;
+	uint32_t      MaskCollide;
 	uint32_t      field_0x130;
 	void*         field_0x134;
 	uint32_t      field_0x138;

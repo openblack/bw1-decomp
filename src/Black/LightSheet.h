@@ -34,7 +34,7 @@ struct LightSheet
 	float*        field_0x4c;
 	uint32_t      field_0x50;
 	int           field_0x54;
-	LH3DMaterial* material_0x58;
+	LH3DMaterial* Material0x58;
 	uint32_t      field_0x5c;
 
 	// Constructors

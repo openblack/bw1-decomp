@@ -17,7 +17,7 @@ class SetupControl;
 class SetupPicture : public SetupButton
 {
 public:
-	int           hovered_picture_index; /* 0x244 */
+	int           HoveredPictureIndex; /* 0x244 */
 	Zoomer        zoomer;
 	LH3DMaterial* material; /* 0x278 */
 	LH3DColor     tint;
@@ -25,7 +25,7 @@ public:
 	bool          dragging;
 	int           picture_index;
 	int           num_rows;
-	int           num_pictures;
+	int           NumPictures;
 	bool          clickable; /* 0x290 */
 
 	// Override methods

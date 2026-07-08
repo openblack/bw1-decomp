@@ -14,15 +14,15 @@ struct LHPoint;
 
 struct LH3DPrimitive
 {
-	LH3DMaterial     material_;     /* 0x0 */
-	int              num_vertices_; /* 0x10 */
-	LH3DVertex*      vertices_;
-	int              num_triangles_;
-	uint8_t*         triangles_;
-	int              num_vertex_groups_; /* 0x20 */
-	LH3DVertexGroup* vertex_groups_;
-	int              num_blends_;
-	uint8_t*         blends_;
+	LH3DMaterial     Material;     /* 0x0 */
+	int              NumVertices; /* 0x10 */
+	LH3DVertex*      Vertices;
+	int              NumTriangles;
+	uint8_t*         Triangles;
+	int              NumVertexGroups; /* 0x20 */
+	LH3DVertexGroup* VertexGroups;
+	int              NumBlends;
+	uint8_t*         Blends;
 
 	// Static methods
 

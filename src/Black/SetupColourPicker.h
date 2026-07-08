@@ -16,10 +16,10 @@ class SetupControl;
 class SetupColourPicker : public SetupButton
 {
 public:
-	LH3DColor     color_0x244;
+	LH3DColor     Color0x244;
 	LH3DMaterial* material;
 	bool          brightness_slider;
-	float         slider_position; /* 0x250 */
+	float         SliderPosition; /* 0x250 */
 	LH3DColor     color;
 
 	// Override methods

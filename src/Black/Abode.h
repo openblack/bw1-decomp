@@ -53,16 +53,16 @@ public:
 	uint8_t              field_0x7d;
 	uint8_t              field_0x7e;
 	uint8_t              field_0x7f;
-	MapCoords            drinking_water; /* 0x80 */
+	MapCoords            DrinkingWater; /* 0x80 */
 	LH3DSmoke*           smoke;
-	LH3DMesh*            destruction_mesh; /* 0x90 */
+	LH3DMesh*            DestructionMesh; /* 0x90 */
 	uint32_t             field_0x94;
 	Town*                town;
 	Abode*               next;
 	LHListHead<Villager> villagers; /* 0xa0 */
-	Villager*            male_female_villagers[0x2];
+	Villager*            MaleFemaleVillagers[0x2];
 	uint32_t             field_0xb0;
-	uint8_t              adult_count;
+	uint8_t              AdultCount;
 	uint8_t              field_0xb5;
 	uint8_t              field_0xb6;
 	uint8_t              field_0xb7;
@@ -94,7 +94,7 @@ public:
 	// BW1W120 004016f0 BW1M100 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
 	virtual bool32_t CausesTownEmergencyIfDamaged() { return false; }
 	// BW1W120 00401700 BW1M100 105756c0 Abode::GetDestructionMesh(void)
-	virtual LH3DMesh* GetDestructionMesh() { return destruction_mesh; }
+	virtual LH3DMesh* GetDestructionMesh() { return DestructionMesh; }
 	// BW1W120 00401710 BW1M100 100970f0 Abode::IsAbode(void)
 	virtual bool32_t IsAbode() { return true; }
 	// BW1W120 00401720 BW1M100 10435a10 Abode::IsCastShadowAtNight(void)

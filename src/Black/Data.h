@@ -9,9 +9,9 @@
 class GData : public Base
 {
 public:
-	uint32_t rand_seed; /* 0x8 */
+	uint32_t RandSeed; /* 0x8 */
 	uint32_t field_0xc;
-	uint32_t game_turn; /* 0x10 */
+	uint32_t GameTurn; /* 0x10 */
 	uint32_t field_0x14;
 	uint32_t field_0x18;
 	uint32_t field_0x1c;

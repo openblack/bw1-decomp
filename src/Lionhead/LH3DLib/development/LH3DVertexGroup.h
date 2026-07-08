@@ -7,7 +7,7 @@
 struct LH3DVertexGroup
 {
 	uint16_t vertex_count; /* 0x0 */
-	uint16_t bone_index;
+	uint16_t BoneIndex;
 };
 static_assert(sizeof(LH3DVertexGroup) == 0x4, "Data type is of wrong size");
 

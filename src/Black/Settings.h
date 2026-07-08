@@ -6,7 +6,7 @@
 
 struct Settings
 {
-	char    quest_path[0x1]; /* 0x0 */
+	char    QuestPath[0x1]; /* 0x0 */
 	uint8_t field_0x1[0x103];
 
 	// Non-virtual methods

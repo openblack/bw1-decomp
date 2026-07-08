@@ -34,8 +34,8 @@ public:
 		COUNT = 0x9
 	};
 
-	uint32_t    flags_1; /* 0x4 */
-	uint32_t    flags_2;
+	uint32_t    Flags1; /* 0x4 */
+	uint32_t    Flags2;
 	uint32_t    field_0xc;
 	float       importance; /* 0x10 */
 	LHMatrix    matrix;
@@ -43,8 +43,8 @@ public:
 	float       y_angle;
 	LH3DColor   color;
 	LH3DColor   specular; /* 0x50 */
-	LH3DColor   window_color;
-	int         snow_level;
+	LH3DColor   WindowColor;
+	int         SnowLevel;
 	int         field_0x5c;
 	uint32_t    field_0x60;
 	uint32_t    field_0x64;

@@ -123,36 +123,36 @@ extern IDirectDraw7* unk_E8507C; // 0xE8507C DirectDraw object queried for IDire
 LHScreen::LHScreen()
 {
 	frameTimerSpeed = 1.0f;
-	frameTimerSavedSpeed = 0.0f;
+	FrameTimerSavedSpeed = 0.0f;
 	DWORD tick = GetTickCount();
 	float speed = frameTimerSpeed;
 	frameTimerTick = tick;
-	frameTimerAccum = 0;
+	FrameTimerAccum = 0;
 	if (speed != 0.0f)
 	{
-		frameTimerSavedSpeed = frameTimerSpeed;
+		FrameTimerSavedSpeed = frameTimerSpeed;
 		DWORD   delta = GetTickCount() - frameTimerTick;
-		__int64 acc = (unsigned int)frameTimerAccum;
-		frameTimerAccum = (int)((double)delta * frameTimerSpeed + (double)(int)acc);
+		__int64 acc = (unsigned int)FrameTimerAccum;
+		FrameTimerAccum = (int)((double)delta * frameTimerSpeed + (double)(int)acc);
 		frameTimerTick = GetTickCount();
 		frameTimerSpeed = 0.0f;
 	}
 	if (frameTimerSpeed != 0.0f)
 	{
-		frameTimerSavedSpeed = frameTimerSpeed;
+		FrameTimerSavedSpeed = frameTimerSpeed;
 		DWORD   delta = GetTickCount() - frameTimerTick;
-		__int64 acc = (unsigned int)frameTimerAccum;
-		frameTimerAccum = (int)((double)delta * frameTimerSpeed + (double)(int)acc);
+		__int64 acc = (unsigned int)FrameTimerAccum;
+		FrameTimerAccum = (int)((double)delta * frameTimerSpeed + (double)(int)acc);
 		frameTimerTick = GetTickCount();
 		frameTimerSpeed = 0.0f;
 	}
 
 	opened = 0;
-	pBackSurface = NULL;
-	pPrimarySurface = NULL;
+	PBackSurface = NULL;
+	PPrimarySurface = NULL;
 
-	// Allocate deviceInfoArray: 4-byte count header (=5) followed by five 248-byte
-	// display-device records. deviceInfoArray points past the count header.
+	// Allocate DeviceInfoArray: 4-byte count header (=5) followed by five 248-byte
+	// display-device records. DeviceInfoArray points past the count header.
 	int*  devices;
 	void* mem = operator new(0x4dc, __FILE__, __LINE__);
 	if (mem)
@@ -164,12 +164,12 @@ LHScreen::LHScreen()
 	{
 		devices = NULL;
 	}
-	deviceInfoArray = devices;
+	DeviceInfoArray = devices;
 
 	SetFullscreenMode(0);
 
-	showTimingStats = 0;
-	targetPercent = 0.0f;
+	ShowTimingStats = 0;
+	TargetPercent = 0.0f;
 	isLocked = 0;
 
 	// VSync: registry read miss => 1 (wait); VSync value != 0 => 1; == 0 => 8 (no-vsync).
@@ -179,7 +179,7 @@ LHScreen::LHScreen()
 	else
 		flipFlags = 1;
 
-	DirectDrawCreateEx(NULL, (LPVOID*)&pDirectDraw, IID_IDirectDraw7, NULL);
+	DirectDrawCreateEx(NULL, (LPVOID*)&PDirectDraw, IID_IDirectDraw7, NULL);
 }
 
 // BW1W120 007dd850 LHScreen::~LHScreen(void)
@@ -198,22 +198,22 @@ LHScreen::~LHScreen()
 		Report3D("LH3DMem: Bad release: %d allocations, %d mem!\n", unk_EF6548, unk_EF654C);
 	}
 	LH3DRenderClose();
-	if (pClipper)
+	if (PClipper)
 	{
-		pClipper->Release();
-		pClipper = NULL;
+		PClipper->Release();
+		PClipper = NULL;
 	}
-	if (pDirectDraw)
+	if (PDirectDraw)
 	{
-		pDirectDraw->RestoreDisplayMode();
-		if (IsWindow(msWindowHandle))
+		PDirectDraw->RestoreDisplayMode();
+		if (IsWindow(MsWindowHandle))
 			sub_7DECE0();
 	}
 	DirectDrawReleaseSurface();
-	if (pDirectDraw)
+	if (PDirectDraw)
 	{
-		pDirectDraw->Release();
-		pDirectDraw = NULL;
+		PDirectDraw->Release();
+		PDirectDraw = NULL;
 	}
 }
 
@@ -263,7 +263,7 @@ void LHScreen::SetFullscreenMode(int mode)
 int LHScreen::DDrawInitialise()
 {
 	int result = DDrawInitialiseDevices();
-	pDirectDraw->CreateClipper(0, &pClipper, NULL);
+	PDirectDraw->CreateClipper(0, &PClipper, NULL);
 	return result;
 }
 
@@ -381,21 +381,21 @@ int LHScreen::DDrawInitialiseDevices()
 	char deviceIdentifierB[560];
 
 	unk_E8C5C8 = 0;
-	DirectDrawEnumerateA((LPDDENUMCALLBACKA)DDEnumCallback, deviceInfoArray);
+	DirectDrawEnumerateA((LPDDENUMCALLBACKA)DDEnumCallback, DeviceInfoArray);
 	unsigned int selected = 0;
 	if (!unk_E8C5C8)
 		return 2;
 
-	if (pDirectDraw)
+	if (PDirectDraw)
 	{
-		pDirectDraw->Release();
-		pDirectDraw = NULL;
+		PDirectDraw->Release();
+		PDirectDraw = NULL;
 	}
 
 	unsigned int i = 0;
 	if (unk_E8C5D4 && unk_E8C5C8)
 	{
-		char* records = (char*)deviceInfoArray;
+		char* records = (char*)DeviceInfoArray;
 		char* rec = records + 220; // GUID lives at +220 within each 248-byte record
 		while (memcmp(rec, unk_E8C5D4, 0x10u))
 		{
@@ -405,23 +405,23 @@ int LHScreen::DDrawInitialiseDevices()
 				goto fallback;
 		}
 		int v7 = 248 * i;
-		DirectDrawCreateEx((GUID*)&records[248 * i + 204], (LPVOID*)&pDirectDraw, IID_IDirectDraw7, NULL);
+		DirectDrawCreateEx((GUID*)&records[248 * i + 204], (LPVOID*)&PDirectDraw, IID_IDirectDraw7, NULL);
 		selected = i;
-		if (*((int*)deviceInfoArray + 62 * i + 59))
+		if (*((int*)DeviceInfoArray + 62 * i + 59))
 			unk_EDD450 = 1;
-		if (*(int*)((char*)deviceInfoArray + v7 + 244))
+		if (*(int*)((char*)DeviceInfoArray + v7 + 244))
 			unk_EA9E9C = 1;
-		if (*(int*)((char*)deviceInfoArray + v7 + 240))
+		if (*(int*)((char*)DeviceInfoArray + v7 + 240))
 			unk_EDD44C = 1;
-		pDirectDraw->GetDeviceIdentifier((LPDDDEVICEIDENTIFIER2)deviceIdentifierA, 0);
+		PDirectDraw->GetDeviceIdentifier((LPDDDEVICEIDENTIFIER2)deviceIdentifierA, 0);
 		unk_ECA5F0 |= CheckDescForPowerVRKYRO(deviceIdentifierB);
 		unk_ECA5F0 |= CheckDescForPowerVRKYRO(deviceIdentifierA);
 	}
 	else
 	{
 	fallback:
-		DirectDrawCreateEx(NULL, (LPVOID*)&pDirectDraw, IID_IDirectDraw7, NULL);
-		pDirectDraw->GetDeviceIdentifier((LPDDDEVICEIDENTIFIER2)deviceIdentifierA, 0);
+		DirectDrawCreateEx(NULL, (LPVOID*)&PDirectDraw, IID_IDirectDraw7, NULL);
+		PDirectDraw->GetDeviceIdentifier((LPDDDEVICEIDENTIFIER2)deviceIdentifierA, 0);
 		unk_EA9E9C |= CheckDescForVoodoo(deviceIdentifierB);
 		unk_EA9E9C |= CheckDescForVoodoo(deviceIdentifierA);
 		unk_EDD44C |= CheckDescForBanshee(deviceIdentifierB);
@@ -432,7 +432,7 @@ int LHScreen::DDrawInitialiseDevices()
 
 	if (unk_EDD450)
 		g_lhScreen.SetFullscreenMode(1);
-	Report3D("Display selected: %s.\n", (char*)deviceInfoArray + 248 * selected);
+	Report3D("Display selected: %s.\n", (char*)DeviceInfoArray + 248 * selected);
 	return 0;
 }
 
@@ -440,7 +440,7 @@ int LHScreen::DDrawInitialiseDevices()
 int LHScreen::SetMSTitle(char* title)
 {
 	int result = 0;
-	if (!SetWindowTextA(msWindowHandle, title))
+	if (!SetWindowTextA(MsWindowHandle, title))
 		result = 2;
 	return result;
 }
@@ -448,29 +448,29 @@ int LHScreen::SetMSTitle(char* title)
 // BW1W120 007dd960 LHScreen::DirectDrawReleaseSurface(void)
 int LHScreen::DirectDrawReleaseSurface()
 {
-	if (pBackSurface)
+	if (PBackSurface)
 	{
-		int refs = pBackSurface->AddRef();
+		int refs = PBackSurface->AddRef();
 		if (refs > 0)
 		{
 			int i = refs;
 			do
-				pBackSurface->Release();
+				PBackSurface->Release();
 			while (--i);
 		}
-		pBackSurface = NULL;
+		PBackSurface = NULL;
 	}
-	if (pPrimarySurface)
+	if (PPrimarySurface)
 	{
-		int refs = pPrimarySurface->AddRef();
+		int refs = PPrimarySurface->AddRef();
 		if (refs > 0)
 		{
 			int i = refs;
 			do
-				pPrimarySurface->Release();
+				PPrimarySurface->Release();
 			while (--i);
 		}
-		pPrimarySurface = NULL;
+		PPrimarySurface = NULL;
 	}
 	return 0;
 }
@@ -487,7 +487,7 @@ int LHScreen::Lock(unsigned long param_1)
 	DDSURFACEDESC2 desc;
 	memset(&desc, 0, sizeof(desc));
 	desc.dwSize = 124;
-	HRESULT hr = pBackSurface->Lock(NULL, &desc, 0x820, NULL);
+	HRESULT hr = PBackSurface->Lock(NULL, &desc, 0x820, NULL);
 	if (hr)
 		return (hr != 0x8876021C) + 2; // soft (2) unless surface lost -> hard (3)
 
@@ -515,7 +515,7 @@ int LHScreen::Unlock()
 		unk_E8C5DC = 0;
 		return 2;
 	}
-	if (pBackSurface->Unlock(NULL))
+	if (PBackSurface->Unlock(NULL))
 		return 2;
 	isLocked = 0;
 	return 0;
@@ -526,9 +526,9 @@ int LHScreen::Close()
 {
 	if (opened)
 	{
-		if (pDirectDraw)
+		if (PDirectDraw)
 		{
-			pDirectDraw->RestoreDisplayMode();
+			PDirectDraw->RestoreDisplayMode();
 			sub_7DECE0();
 		}
 		DirectDrawReleaseSurface();
@@ -544,14 +544,14 @@ long __stdcall EnumModesCallback(DDSURFACEDESC2* desc, void* ctx) { return 1; }
 // BW1W120 007ddb10 LHScreen::SetRGBInfo(_DDPIXELFORMAT *)
 void LHScreen::SetRGBInfo(_DDPIXELFORMAT* pixel_format)
 {
-	redMask = pixel_format->dwRBitMask;
-	greenMask = pixel_format->dwGBitMask;
-	blueMask = pixel_format->dwBBitMask;
-	maxRed = LHGetBits(redMask, &redScale, &redShift);
-	maxGreen = LHGetBits(greenMask, &greenScale, &greenShift);
-	maxBlue = LHGetBits(blueMask, &blueScale, &blueShift);
+	RedMask = pixel_format->dwRBitMask;
+	GreenMask = pixel_format->dwGBitMask;
+	BlueMask = pixel_format->dwBBitMask;
+	maxRed = LHGetBits(RedMask, &redScale, &RedShift);
+	MaxGreen = LHGetBits(GreenMask, &GreenScale, &GreenShift);
+	MaxBlue = LHGetBits(BlueMask, &BlueScale, &BlueShift);
 	// Clears the least-significant bit of each RGB channel.
-	colorLSBMask = ~((1 << greenShift) + (1 << redShift) + (1 << blueShift));
+	ColorLSBMask = ~((1 << GreenShift) + (1 << RedShift) + (1 << BlueShift));
 }
 
 // BW1W120 007ddba0 ?LHGetBits@@YAHKPAE0@Z
@@ -624,9 +624,9 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 		LH3DVRAMTexReleaseAll();
 		LH3DRenderCloseD3D();
 	}
-	if (pDirectDraw)
+	if (PDirectDraw)
 	{
-		pDirectDraw->RestoreDisplayMode();
+		PDirectDraw->RestoreDisplayMode();
 		sub_7DECE0();
 	}
 	DirectDrawReleaseSurface();
@@ -642,7 +642,7 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 	else
 	{
 		sub_7DED10();
-		pDirectDraw->SetDisplayMode(width, height, depth, 0, 0);
+		PDirectDraw->SetDisplayMode(width, height, depth, 0, 0);
 	}
 
 	if (!windowed)
@@ -668,21 +668,21 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 		desc.dwSize = 124;
 		desc.dwFlags = DDSD_CAPS;
 		desc.ddsCaps.dwCaps = DDSCAPS_PRIMARYSURFACE; // 0x200
-		pDirectDraw->CreateSurface(&desc, &pPrimarySurface, NULL);
+		PDirectDraw->CreateSurface(&desc, &PPrimarySurface, NULL);
 
 		desc.dwHeight = height;
 		desc.dwWidth = width;
 		desc.dwSize = 124;
 		desc.dwFlags = DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH;                                   // 7
 		desc.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN | DDSCAPS_3DDEVICE | DDSCAPS_VIDEOMEMORY; // 0x6040
-		if (pDirectDraw->CreateSurface(&desc, &pBackSurface, NULL))
+		if (PDirectDraw->CreateSurface(&desc, &PBackSurface, NULL))
 		{
 			unk_E8C0F8 = 1;
 			MessageBoxA(0, "In Screen Settings, please increase the number of colours to more than 256",
 			            "Screen Depth Problem", MB_ICONHAND);
 			return 3;
 		}
-		pPrimarySurface->SetClipper(pClipper);
+		PPrimarySurface->SetClipper(PClipper);
 	}
 	else
 	{
@@ -693,21 +693,21 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 		desc.dwFlags = DDSD_CAPS | DDSD_BACKBUFFERCOUNT; // 0x21
 		desc.ddsCaps.dwCaps = DDSCAPS_COMPLEX | DDSCAPS_FLIP | DDSCAPS_PRIMARYSURFACE | DDSCAPS_3DDEVICE;
 		desc.dwBackBufferCount = 1;
-		pDirectDraw->CreateSurface(&desc, &pPrimarySurface, NULL);
+		PDirectDraw->CreateSurface(&desc, &PPrimarySurface, NULL);
 
 		DDSCAPS2 caps;
 		memset(&caps, 0, sizeof(caps));
 		caps.dwCaps = DDSCAPS_BACKBUFFER; // 4
-		pPrimarySurface->GetAttachedSurface(&caps, &pBackSurface);
+		PPrimarySurface->GetAttachedSurface(&caps, &PBackSurface);
 	}
 
 	// Read the primary surface pitch/depth/address.
-	pPrimarySurface->Lock(NULL, &desc, DDLOCK_WAIT, NULL);
+	PPrimarySurface->Lock(NULL, &desc, DDLOCK_WAIT, NULL);
 	frontPitchBytes = desc.lPitch;
 	this->depth = (uint8_t)desc.ddpfPixelFormat.dwRGBBitCount;
-	frontPixelPitch = 8 * frontPitchBytes / (unsigned int)this->depth;
-	frontAddress = (uint32_t)desc.lpSurface;
-	pPrimarySurface->Unlock(NULL);
+	FrontPixelPitch = 8 * frontPitchBytes / (unsigned int)this->depth;
+	FrontAddress = (uint32_t)desc.lpSurface;
+	PPrimarySurface->Unlock(NULL);
 
 	if (windowed)
 	{
@@ -715,12 +715,12 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 		if (windowed)
 		{
 			RECT dst;
-			dst.left = msClientOffsetX;
-			int v20 = msClientOffsetY + this->height;
-			dst.top = msClientOffsetY;
+			dst.left = MsClientOffsetX;
+			int v20 = MsClientOffsetY + this->height;
+			dst.top = MsClientOffsetY;
 			dst.bottom = v20;
 			dst.right = dst.left + this->width;
-			pPrimarySurface->Blt(&dst, pBackSurface, NULL, DDBLT_WAIT, NULL);
+			PPrimarySurface->Blt(&dst, PBackSurface, NULL, DDBLT_WAIT, NULL);
 		}
 	}
 
@@ -734,11 +734,11 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 	LHFlip(1);
 
 	// Read the back surface pitch/address + pixel format.
-	pBackSurface->Lock(NULL, &desc, DDLOCK_WAIT, NULL);
+	PBackSurface->Lock(NULL, &desc, DDLOCK_WAIT, NULL);
 	backPitchBytes = desc.lPitch;
 	backAddress = (uint32_t)desc.lpSurface;
 	backPixelPitch = 8 * backPitchBytes / this->depth;
-	pBackSurface->Unlock(NULL);
+	PBackSurface->Unlock(NULL);
 	SetRGBInfo(&desc.ddpfPixelFormat);
 
 	int v24 = this->width - 1;
@@ -747,15 +747,15 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 	unk_E8C5B8 = 0;
 	unk_E8C5BC = 0;
 
-	textWindow.start.x = 0;
-	textWindow.start.y = 0;
-	textWindow.end.y = this->height - 2; // bottom before right
-	textWindow.end.x = this->width - 2;
+	TextWindow.start.x = 0;
+	TextWindow.start.y = 0;
+	TextWindow.end.y = this->height - 2; // bottom before right
+	TextWindow.end.x = this->width - 2;
 
-	graphicsWindow.start.x = 0;
-	graphicsWindow.start.y = 0;
-	graphicsWindow.end.x = this->width - 2;
-	graphicsWindow.end.y = this->height - 2;
+	GraphicsWindow.start.x = 0;
+	GraphicsWindow.start.y = 0;
+	GraphicsWindow.end.x = this->width - 2;
+	GraphicsWindow.end.y = this->height - 2;
 	return 0;
 }
 
@@ -763,7 +763,7 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 int LHScreen::Flip(int param_1)
 {
 	++flipCount;
-	if (showTimingStats)
+	if (ShowTimingStats)
 	{
 		if ((unk_E8C5B1 & 1) == 0)
 		{
@@ -773,10 +773,10 @@ int LHScreen::Flip(int param_1)
 		}
 		if (SetTimingStats())
 		{
-			if (targetPercent != 0.0f)
-				LHSPrintfSetString(byte_E8C1B0, "%5.1f<%d%%> fps", measuredFPS, (int)targetPercent);
+			if (TargetPercent != 0.0f)
+				LHSPrintfSetString(byte_E8C1B0, "%5.1f<%d%%> fps", MeasuredFPS, (int)TargetPercent);
 			else
-				LHSPrintfSetString(byte_E8C1B0, "%5.1f fps", measuredFPS);
+				LHSPrintfSetString(byte_E8C1B0, "%5.1f fps", MeasuredFPS);
 		}
 		short v7 = -1; // {0xFFFF, 0xFF} passed by address
 		char  v8 = -1;
@@ -830,15 +830,15 @@ int LHScreen::Clear(LHColor* colour, LHRegion* region)
 		unk_E8C130.dwFillColor = c->b | (*(uint16_t*)&c->g << 8);
 	}
 
-	pBackSurface->Blt(rect, NULL, NULL, DDBLT_COLORFILL | DDBLT_WAIT, &unk_E8C130);
+	PBackSurface->Blt(rect, NULL, NULL, DDBLT_COLORFILL | DDBLT_WAIT, &unk_E8C130);
 	return 0;
 }
 
 // BW1W120 007de2f0 LHScreen::SetMSWindowHandle(OpaqueWindowPtr *)
 void LHScreen::SetMSWindowHandle(OpaqueWindowPtr* window)
 {
-	IDirectDrawClipper* clipper = pClipper;
-	msWindowHandle = (HWND)window;
+	IDirectDrawClipper* clipper = PClipper;
+	MsWindowHandle = (HWND)window;
 	clipper->SetHWnd(0, (HWND)window);
 	SetMSOffset();
 }
@@ -850,45 +850,45 @@ uint16_t LHScreen::SetTimingStats()
 	{
 		LHTimer* t = (LHTimer*)fpsTimer;
 		DWORD    tick = GetTickCount();
-		float    speed = t->speed_up_factor;
-		t->tick_count = tick;
-		t->elapsed_time = 0;
+		float    speed = t->SpeedUpFactor;
+		t->TickCount = tick;
+		t->ElapsedTime = 0;
 		if (speed != 0.0f)
 		{
-			t->speed_up_factor_2 = t->speed_up_factor;
+			t->SpeedUpFactor2 = t->SpeedUpFactor;
 			t->SetSpeedUpFactor(0.0f);
 		}
-		float saved = t->speed_up_factor_2;
-		t->speed_up_factor = 0.0000099999997f;
-		t->elapsed_time = (int)((double)(GetTickCount() - t->tick_count) * t->speed_up_factor + t->elapsed_time);
-		t->tick_count = GetTickCount();
-		t->speed_up_factor = saved;
+		float saved = t->SpeedUpFactor2;
+		t->SpeedUpFactor = 0.0000099999997f;
+		t->ElapsedTime = (int)((double)(GetTickCount() - t->TickCount) * t->SpeedUpFactor + t->ElapsedTime);
+		t->TickCount = GetTickCount();
+		t->SpeedUpFactor = saved;
 	}
 
-	++frameAccum;
-	if ((unsigned int)(int)((double)(GetTickCount() - frameTimerTick) * frameTimerSpeed + frameTimerAccum) <= 0x7D0)
+	++FrameAccum;
+	if ((unsigned int)(int)((double)(GetTickCount() - frameTimerTick) * frameTimerSpeed + FrameTimerAccum) <= 0x7D0)
 		return 0;
 
 	DWORD   now = GetTickCount();
-	double  v7 = (double)frameAccum * 1000.0;
-	__int64 ms = (unsigned int)(int)((double)(now - frameTimerTick) * frameTimerSpeed + frameTimerAccum);
-	frameAccum = 0;
-	measuredFPS = (float)(v7 / (double)ms);
+	double  v7 = (double)FrameAccum * 1000.0;
+	__int64 ms = (unsigned int)(int)((double)(now - frameTimerTick) * frameTimerSpeed + FrameTimerAccum);
+	FrameAccum = 0;
+	MeasuredFPS = (float)(v7 / (double)ms);
 
 	DWORD tick = GetTickCount();
 	float speed = frameTimerSpeed;
 	frameTimerTick = tick;
-	frameTimerAccum = 0;
+	FrameTimerAccum = 0;
 	if (speed != 0.0f)
 	{
-		frameTimerSavedSpeed = frameTimerSpeed;
-		frameTimerAccum = (int)((double)(GetTickCount() - frameTimerTick) * frameTimerSpeed + frameTimerAccum);
+		FrameTimerSavedSpeed = frameTimerSpeed;
+		FrameTimerAccum = (int)((double)(GetTickCount() - frameTimerTick) * frameTimerSpeed + FrameTimerAccum);
 		frameTimerTick = GetTickCount();
 		frameTimerSpeed = 0.0f;
 	}
-	float saved = frameTimerSavedSpeed;
+	float saved = FrameTimerSavedSpeed;
 	frameTimerSpeed = 0.0000099999997f;
-	frameTimerAccum = (int)((double)(GetTickCount() - frameTimerTick) * frameTimerSpeed + frameTimerAccum);
+	FrameTimerAccum = (int)((double)(GetTickCount() - frameTimerTick) * frameTimerSpeed + FrameTimerAccum);
 	frameTimerTick = GetTickCount();
 	frameTimerSpeed = saved;
 	return 1;
@@ -900,27 +900,27 @@ int LHScreen::LHFlip(int param_1)
 	if (windowed)
 	{
 		RECT dst;
-		dst.left = msClientOffsetX;
-		dst.right = msClientOffsetX + width;
-		dst.top = msClientOffsetY;
-		dst.bottom = msClientOffsetY + height;
-		pPrimarySurface->Blt(&dst, pBackSurface, NULL, DDBLT_WAIT, NULL);
+		dst.left = MsClientOffsetX;
+		dst.right = MsClientOffsetX + width;
+		dst.top = MsClientOffsetY;
+		dst.bottom = MsClientOffsetY + height;
+		PPrimarySurface->Blt(&dst, PBackSurface, NULL, DDBLT_WAIT, NULL);
 	}
 	else
 	{
-		pPrimarySurface->Flip(NULL, flipFlags);
+		PPrimarySurface->Flip(NULL, flipFlags);
 	}
 
 	if (param_1)
 	{
 		if (!windowed)
 		{
-			uint32_t oldFront = frontAddress;
+			uint32_t oldFront = FrontAddress;
 			int      oldBackPixelPitch = backPixelPitch;
-			frontAddress = backAddress;
-			int oldFrontPixelPitch = frontPixelPitch;
+			FrontAddress = backAddress;
+			int oldFrontPixelPitch = FrontPixelPitch;
 			backAddress = oldFront;
-			frontPixelPitch = oldBackPixelPitch;
+			FrontPixelPitch = oldBackPixelPitch;
 			backPixelPitch = oldFrontPixelPitch;
 			sub_FC1285(oldFront);
 		}
@@ -935,11 +935,11 @@ int LHScreen::BlitToMSWindow(LHRegion* region, LHCoord* coord, int param_3)
 	RECT src;
 	region->GetRect(&src);
 	RECT dst;
-	dst.left = msClientOffsetX + coord->x;
-	dst.top = msClientOffsetY + coord->y;
+	dst.left = MsClientOffsetX + coord->x;
+	dst.top = MsClientOffsetY + coord->y;
 	dst.right = dst.left - src.left + src.right;
 	dst.bottom = dst.top - src.top + src.bottom;
-	pPrimarySurface->Blt(&dst, pBackSurface, &src, DDBLT_WAIT, NULL);
+	PPrimarySurface->Blt(&dst, PBackSurface, &src, DDBLT_WAIT, NULL);
 	if (param_3)
 		Clear(NULL, region);
 	return 0;
@@ -960,8 +960,8 @@ void LHScreen::AltTabDeactivate()
 // BW1W120 007de6f0 LHScreen::AltTabReactivate(void)
 void LHScreen::AltTabReactivate()
 {
-	pPrimarySurface->Restore();
-	pBackSurface->Restore();
+	PPrimarySurface->Restore();
+	PBackSurface->Restore();
 	unk_ECA63C->Restore();
 	LH3DVRAMTexAllocAllVRAM();
 	if (unk_E8C5D0)
@@ -1007,18 +1007,18 @@ int LHScreen::SetMSOffset()
 	point.x = 0;
 	if (windowed)
 	{
-		if (ClientToScreen(msWindowHandle, &point))
+		if (ClientToScreen(MsWindowHandle, &point))
 		{
-			msClientOffsetX = (int16_t)point.x;
-			msClientOffsetY = (int16_t)point.y;
+			MsClientOffsetX = (int16_t)point.x;
+			MsClientOffsetY = (int16_t)point.y;
 			// Byte address of the window client origin within the primary surface.
-			drawAddress = frontAddress + (((unsigned int)depth * (point.x + point.y * frontPixelPitch)) >> 3);
+			DrawAddress = FrontAddress + (((unsigned int)depth * (point.x + point.y * FrontPixelPitch)) >> 3);
 			return 0;
 		}
 		return 2;
 	}
-	msClientOffsetX = 0;
-	msClientOffsetY = 0;
+	MsClientOffsetX = 0;
+	MsClientOffsetY = 0;
 	return 0;
 }
 
@@ -1049,9 +1049,9 @@ int LHScreen::SaveBitmap()
 	int   bmpHeight = height;
 	short bmpBitCount = 24;
 	int   bmpPitch = backPixelPitch;
-	short bmpRedMask = (short)redMask;
-	short bmpGreenMask = (short)greenMask;
-	short bmpBlueMask = (short)blueMask;
+	short bmpRedMask = (short)RedMask;
+	short bmpGreenMask = (short)GreenMask;
+	short bmpBlueMask = (short)BlueMask;
 	short bmpAlignPad = 0;
 	(void)bmpWidth;
 	(void)bmpHeight;
@@ -1088,7 +1088,7 @@ uint32_t LHScreen::GetAvailableVidMem()
 }
 
 // BW1W120 007decc0 LHScreen::WaitForVerticalBlank(void)
-int LHScreen::WaitForVerticalBlank() { return pDirectDraw->WaitForVerticalBlank(DDWAITVB_BLOCKBEGIN, 0) != 0 ? 2 : 0; }
+int LHScreen::WaitForVerticalBlank() { return PDirectDraw->WaitForVerticalBlank(DDWAITVB_BLOCKBEGIN, 0) != 0 ? 2 : 0; }
 
 // BW1W120 007ded50 LHScreen::IsAppMinimized(void)
 int LHScreen::IsAppMinimized() { return g_appMinimized; }

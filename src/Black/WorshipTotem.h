@@ -39,7 +39,7 @@ class WorshipTotem : public CitadelPart
 {
 public:
 	uint32_t                        field_0x8c;
-	Q212WorshipTotem13TChargingData charging_data; /* 0x90 */
+	Q212WorshipTotem13TChargingData ChargingData; /* 0x90 */
 	WorshipSite*                    site;          /* 0x100 */
 
 	// Override methods

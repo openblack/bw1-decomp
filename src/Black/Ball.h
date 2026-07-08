@@ -31,7 +31,7 @@ public:
 	uint32_t field_0x84;
 	uint32_t field_0x88;
 	uint32_t field_0x8c;
-	bool32_t is_owned; /* 0x90 */
+	bool32_t IsOwned; /* 0x90 */
 	uint32_t field_0x94;
 	uint32_t field_0x98;
 	uint32_t field_0x9c;

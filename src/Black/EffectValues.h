@@ -29,7 +29,7 @@ class EffectValues : public Base
 public:
 	EffectNumbers numbers; /* 0x8 */
 	float         field_0x24;
-	GameThing*    applied_by;
+	GameThing*    AppliedBy;
 	MapCoords     coords;
 	uint32_t      field_0x38;
 	GPlayer*      player;

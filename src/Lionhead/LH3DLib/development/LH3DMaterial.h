@@ -60,7 +60,7 @@ struct LH3DMaterial
 {
 	enum LH3DMaterial__RenderMode render_mode; /* 0x0 */
 	uint8_t                       field_0x4;
-	uint8_t                       cull_mode;
+	uint8_t                       CullMode;
 	struct LH3DTexture*           texture;
 	struct LH3DColor              color;
 };

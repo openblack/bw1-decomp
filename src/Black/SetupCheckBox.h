@@ -21,7 +21,7 @@ public:
 	uint32_t  text_position; /* 0x244 */
 	BBSTYLE   style;
 	bool      checked;
-	SetupRect inner_rect; /* 0x250 */
+	SetupRect InnerRect; /* 0x250 */
 
 	// Override methods
 

@@ -98,7 +98,7 @@ public:
 class SingleMapFixed : public Fixed
 {
 public:
-	NewCollide* collide_data; /* 0x58 */
+	NewCollide* CollideData; /* 0x58 */
 
 	// Override methods
 

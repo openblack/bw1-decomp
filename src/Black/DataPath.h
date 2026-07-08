@@ -16,7 +16,7 @@ class DataPath : public GameThing
 {
 public:
 	ScriptedCamera* scripted_camera; /* 0x14 */
-	int32_t         track_no;
+	int32_t         TrackNo;
 	float           field_0x1c;
 	uint32_t        field_0x20;
 	float           field_0x24;

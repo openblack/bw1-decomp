@@ -7,16 +7,16 @@
 
 struct Zoomer
 {
-	float   current_value; /* 0x0 */
+	float   CurrentValue; /* 0x0 */
 	float   destination;
-	float   destination_speed;
-	float   current_speed;
-	float   time_m2; /* 0x10 */
-	float   current_time;
+	float   DestinationSpeed;
+	float   CurrentSpeed;
+	float   TimeM2; /* 0x10 */
+	float   CurrentTime;
 	float   duration;
-	float   start_value;
-	float   start_speed; /* 0x20 */
-	LHPoint non_linear_acceleration;
+	float   StartValue;
+	float   StartSpeed; /* 0x20 */
+	LHPoint NonLinearAcceleration;
 
 	// Constructors
 

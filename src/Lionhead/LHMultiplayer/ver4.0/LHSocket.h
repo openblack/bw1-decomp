@@ -15,13 +15,13 @@ public:
 	uint32_t field_0x4;
 	uint32_t field_0x8;
 	uint32_t field_0xc;
-	uint8_t  ip_bin[0x4]; /* 0x10 */
+	uint8_t  IpBin[0x4]; /* 0x10 */
 	uint32_t field_0x14;
 	uint32_t field_0x18;
 	char**   name;
-	uint32_t send_bytes_total; /* 0x20 */
-	uint32_t send_bytes;
-	uint32_t connection_status;
+	uint32_t SendBytesTotal; /* 0x20 */
+	uint32_t SendBytes;
+	uint32_t ConnectionStatus;
 };
 
 #endif /* BW1_DECOMP_LH_SOCKET_INCLUDED_H */

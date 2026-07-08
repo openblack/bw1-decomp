@@ -21,10 +21,10 @@ class LH3DCreature : public Morphable
 public:
 	Creature*                  creature; /* 0x4834 */
 	float                      field_0x4838;
-	float                      required_speed;
+	float                      RequiredSpeed;
 	float                      field_0x4840;
 	uint32_t                   field_0x4844;
-	float                      speed_modifier_0x4848;
+	float                      SpeedModifier0x4848;
 	uint8_t                    field_0x484c;
 	uint8_t                    field_0x484d;
 	uint8_t                    field_0x484e;
@@ -548,7 +548,7 @@ public:
 	uint8_t                    field_0x4a8d;
 	uint8_t                    field_0x4a8e;
 	uint8_t                    field_0x4a8f;
-	bool32_t                   isAnimationTimeModified; /* 0x4a90 */
+	bool32_t                   IsAnimationTimeModified; /* 0x4a90 */
 	uint8_t                    field_0x4a94;
 	uint8_t                    field_0x4a95;
 	uint8_t                    field_0x4a96;
@@ -2330,7 +2330,7 @@ public:
 	uint8_t                    field_0x5195;
 	uint8_t                    field_0x5196;
 	uint8_t                    field_0x5197;
-	RPFollow*                  rp_follow;
+	RPFollow*                  RpFollow;
 	uint32_t                   field_0x519c;
 	uint8_t                    field_0x51a0;
 	uint8_t                    field_0x51a1;
@@ -2360,7 +2360,7 @@ public:
 	uint8_t                    field_0x51bf;
 	uint32_t                   field_0x51c0;
 	uint32_t                   field_0x51c4;
-	int32_t                    right_hand_bone_index;
+	int32_t                    RightHandBoneIndex;
 	long                       field_0x51cc;
 	long                       field_0x51d0;
 	long                       field_0x51d4;
@@ -2427,7 +2427,7 @@ public:
 	uint8_t                    field_0x521a;
 	uint8_t                    field_0x521b;
 	int                        field_0x521c;
-	CAnim*                     anim_0x5220;
+	CAnim*                     Anim0x5220;
 	uint8_t                    field_0x5224;
 	uint8_t                    field_0x5225;
 	uint8_t                    field_0x5226;
@@ -2492,11 +2492,11 @@ public:
 	uint8_t                    field_0x526d;
 	uint8_t                    field_0x526e;
 	uint8_t                    field_0x526f;
-	int                        safe_buffer_selector; /* 0x5270 */
+	int                        SafeBufferSelector; /* 0x5270 */
 	uint32_t                   field_0x5274;
-	uint8_t*                   safe_buffer_0;
+	uint8_t*                   SafeBuffer0;
 	uint32_t                   field_0x527c;
-	uint8_t*                   safe_buffer_1; /* 0x5280 */
+	uint8_t*                   SafeBuffer1; /* 0x5280 */
 	uint8_t                    field_0x5284;
 	uint8_t                    field_0x5285;
 	uint8_t                    field_0x5286;

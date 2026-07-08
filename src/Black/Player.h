@@ -86,8 +86,8 @@ public:
 	uint8_t          field_0x930[0x14];
 	uintptr_t        field_0x944;
 	uint8_t          field_0x948[0x28];
-	int              magic_remainder[0x2a]; /* 0x970 */
-	bool             magic_enabled[0x2a];   /* 0xa18 */
+	int              MagicRemainder[0x2a]; /* 0x970 */
+	bool             MagicEnabled[0x2a];   /* 0xa18 */
 	GameStats*       game_stats;            /* 0xa44 */
 	Citadel*         citadel;
 	Creature*        creature;

@@ -20,8 +20,8 @@ struct Plasma
 	LH3DColor     colors[0x4f7];       /* 0xd3cc */
 	LHPoint       field_0xe7a8[0x10];
 	LHPoint       field_0xe868[0x10];
-	LH3DTexture*  pin_texture; /* 0xe928 */
-	LH3DMaterial* pin_material;
+	LH3DTexture*  PinTexture; /* 0xe928 */
+	LH3DMaterial* PinMaterial;
 
 	// Non-virtual methods
 

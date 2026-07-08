@@ -21,7 +21,7 @@ public:
 	uint32_t                           field_0x148[0x28];
 	uint32_t                           field_0x1e8[0x28];
 	uint32_t                           field_0x288[0x28];
-	LHLinkedList__CreatureDesireSource source_lists[0x28]; /* 0x328 */
+	LHLinkedList__CreatureDesireSource SourceLists[0x28]; /* 0x328 */
 	uint32_t                           field_0x468[0x28];
 	uint32_t                           field_0x508[0x28];
 	uint32_t                           field_0x5a8[0x28];

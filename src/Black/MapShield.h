@@ -26,7 +26,7 @@ class MapShield : public SingleMapFixed
 public:
 	MapShield*   next;  /* 0x5c */
 	SpellShield* spell; /* 0x60 */
-	GMagicInfo*  spell_info;
+	GMagicInfo*  SpellInfo;
 
 	// Override methods
 

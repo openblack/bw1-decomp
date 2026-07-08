@@ -97,16 +97,16 @@ struct LHSurface;
 
 struct LHMouse
 {
-	LH_SCREEN_BUFFER screen_buffer; /* 0x0 */
+	LH_SCREEN_BUFFER ScreenBuffer; /* 0x0 */
 	bool(__cdecl* handler)(void*, LH_MOUSE_EVENT_TYPE, uint32_t, uint32_t);
 	uint32_t            field_0x8;
-	bool32_t            in_window;
+	bool32_t            InWindow;
 	uint8_t             field_0x10;
 	uint8_t             field_0x11;
 	uint8_t             field_0x12;
 	uint8_t             field_0x13;
-	LH_MOUSE_IMAGE_TYPE image_0x14;
-	LH_MOUSE_IMAGE_TYPE image_0x18;
+	LH_MOUSE_IMAGE_TYPE Image0x14;
+	LH_MOUSE_IMAGE_TYPE Image0x18;
 	uint32_t            field_0x1c;
 	uint16_t            field_0x20;
 	uint8_t             field_0x22;
@@ -122,8 +122,8 @@ struct LHMouse
 	void*               field_0x38;
 	LHSurface*          field_0x3c;
 	LHSurface*          field_0x40;
-	bool32_t            is_wheel_present;
-	uint32_t            num_buttons;
+	bool32_t            IsWheelPresent;
+	uint32_t            NumButtons;
 	int                 field_0x4c;
 	LHSprite*           field_0x50;
 	LHCoord*            field_0x54;
@@ -161,10 +161,10 @@ struct LHMouse
 	uint8_t             field_0xdd;
 	uint8_t             field_0xde;
 	uint8_t             field_0xdf;
-	LHCoord             coord_0xe0;
-	LHCoord             effective_pos;
+	LHCoord             Coord0xe0;
+	LHCoord             EffectivePos;
 	LHCoord             padding; /* 0xf0 */
-	bool32_t            use_padding;
+	bool32_t            UsePadding;
 	uint32_t            field_0xfc;
 	uint32_t            field_0x100;
 	uint32_t            field_0x104;

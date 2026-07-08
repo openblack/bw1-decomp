@@ -26,8 +26,8 @@ public:
 	float                 scale;
 	uint32_t              field_0x30;
 	uint32_t              field_0x34;
-	GFootpathLink*        footpath_link;
-	int                   creation_turn;
+	GFootpathLink*        FootpathLink;
+	int                   CreationTurn;
 	GObjectInfo*          info; /* 0x40 */
 	PlannedMultiMapFixed* next;
 

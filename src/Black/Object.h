@@ -63,9 +63,9 @@ class Object : public GameThingWithPos
 public:
 	const GObjectInfo* info; /* 0x28 */
 	MapCoords          coords;
-	Object*            map_parent; /* 0x38 */
+	Object*            MapParent; /* 0x38 */
 	uint32_t           field_0x3c;
-	Game3DObject*      game_3d_object; /* 0x40 */
+	Game3DObject*      Game3dObject; /* 0x40 */
 	FireEffect*        fire_effect;
 	float              life;
 	float              y_angle;

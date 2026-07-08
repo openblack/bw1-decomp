@@ -55,7 +55,7 @@ template <bool clockwise> struct IntersectIntervalCircle
 struct CircleHugInfo
 {
 	NewCollide::Obj* obj; /* 0x0 */
-	uint8_t          turns_to_obj;
+	uint8_t          TurnsToObj;
 	uint8_t          field_0x5;
 	int16_t          field_0x6;
 
@@ -75,8 +75,8 @@ struct CircleHugInfo
 struct ObjectCircleIterator
 {
 	ObjectCircleIteratorDirection direction; /* 0x0 */
-	NewCollide*                   collide_data;
-	NewCollide::Obj*              collide_obj;
+	NewCollide*                   CollideData;
+	NewCollide::Obj*              CollideObj;
 	Object*                       obj;
 
 	// Non-virtual methods
@@ -92,13 +92,13 @@ struct ObjectCircleIterator
 struct NewCollideDescriptor
 {
 	uint32_t count; /* 0x0 */
-	int      min_x;
-	int      max_x;
-	int      min_z;
-	int      max_z; /* 0x10 */
-	int      current_x;
-	int      current_z;
-	int      array_index;
+	int      MinX;
+	int      MaxX;
+	int      MinZ;
+	int      MaxZ; /* 0x10 */
+	int      CurrentX;
+	int      CurrentZ;
+	int      ArrayIndex;
 	LH3DMem* array; /* 0x20 */
 
 	// Constructors

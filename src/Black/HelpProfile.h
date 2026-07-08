@@ -9,13 +9,13 @@
 
 struct CameraHelpAccumulator
 {
-	uint32_t total_trigger_count;
+	uint32_t TotalTriggerCount;
 	uint32_t field_0x4;
-	uint8_t  trigger_time_head;
-	uint8_t  trigger_time_count;
-	uint8_t  triggered_this_frame;
+	uint8_t  TriggerTimeHead;
+	uint8_t  TriggerTimeCount;
+	uint8_t  TriggeredThisFrame;
 	uint8_t  field_0xb;
-	uint32_t trigger_times[0x40];
+	uint32_t TriggerTimes[0x40];
 
 	// Non-virtual methods
 

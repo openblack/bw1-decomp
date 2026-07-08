@@ -11,7 +11,7 @@ struct CreatureLookState
 	uint32_t         field_0x0;
 	uint32_t         field_0x4;
 	struct MapCoords coords;
-	uint32_t         game_turn; /* 0x14 */
+	uint32_t         GameTurn; /* 0x14 */
 	float            field_0x18;
 	uint32_t         field_0x1c;
 	uint32_t         field_0x20;

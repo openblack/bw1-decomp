@@ -12,10 +12,10 @@ struct LHPoint;
 struct LH3DSubMesh
 {
 	uint32_t        flags_; /* 0x0 */
-	uint32_t        num_primitives_;
+	uint32_t        NumPrimitives;
 	LH3DPrimitive** primitives_;
-	int             num_bones_;
-	uint8_t*        bones_; /* 0x10 */
+	int             NumBones;
+	uint8_t*        Bones; /* 0x10 */
 
 	// Static methods
 

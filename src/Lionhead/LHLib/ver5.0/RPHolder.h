@@ -15,8 +15,8 @@ class RPFollow;
 
 struct RPHolder
 {
-	RPAvoid   avoid_array[0x4000]; /* 0x0 */
-	int       avoid_count;         /* 0x50000 */
+	RPAvoid   AvoidArray[0x4000]; /* 0x0 */
+	int       AvoidCount;         /* 0x50000 */
 	Point2D*  field_0x50004;
 	Point2D*  field_0x50008;
 	uint32_t  field_0x5000c[0x4];

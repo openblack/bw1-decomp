@@ -15,8 +15,8 @@ class Object;
 
 struct MapCell
 {
-	Object* first_object_mobile; /* 0x0 */
-	Object* first_object_fixed;
+	Object* FirstObjectMobile; /* 0x0 */
+	Object* FirstObjectFixed;
 
 	// Static methods
 
@@ -44,7 +44,7 @@ struct MapCell
 struct MapCellIterator
 {
 	Object*  object; /* 0x0 */
-	bool     is_fixed;
+	bool     IsFixed;
 	MapCell* cell;
 
 	// Non-virtual methods
@@ -60,7 +60,7 @@ public:
 	uint8_t  field_0x9;
 	uint8_t  field_0xa;
 	uint8_t  field_0xb;
-	uint32_t cell_extent_zx[0x2];
+	uint32_t CellExtentZx[0x2];
 	uint32_t field_0x14;
 	uint32_t field_0x18;
 	uint32_t field_0x1c;
@@ -77,7 +77,7 @@ public:
 	uint8_t  field_0x3f;
 	uint32_t field_0x40;
 	MapCell  cells[0x200][0x200];
-	uint16_t count_0x200044;
+	uint16_t Count0x200044;
 	uint8_t  field_0x200046;
 	uint8_t  field_0x200047;
 	uint8_t  field_0x200048;

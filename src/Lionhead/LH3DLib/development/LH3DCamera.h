@@ -10,7 +10,7 @@ struct LH3DCamera
 	LHPoint pos; /* 0x0 */
 	LHPoint foc;
 	float   fov; /* 0x18 */
-	LHPoint lookAtVector;
+	LHPoint LookAtVector;
 
 	// Static methods
 

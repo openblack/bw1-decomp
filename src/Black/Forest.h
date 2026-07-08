@@ -27,8 +27,8 @@ public:
 	uint8_t            field_0x30[0x10];
 	uint32_t           id; /* 0x40 */
 	Forest*            next;
-	LHLinkedList<Tree> trees_0;
-	LHLinkedList<Tree> trees_1; /* 0x50 */
+	LHLinkedList<Tree> Trees0;
+	LHLinkedList<Tree> Trees1; /* 0x50 */
 
 	// Override methods
 

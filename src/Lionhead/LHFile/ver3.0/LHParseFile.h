@@ -10,23 +10,23 @@ public:
 	char     line[0x100];     /* 0x0 */
 	char     word[0x80];      /* 0x100 */
 	char     token[0x80];     /* 0x180 */
-	char     enum_name[0x80]; /* 0x200 */
-	uint32_t pushback_type;   /* 0x280 */
-	uint32_t pushback_value;  /* 0x284 */
-	char*    pushback_text;   /* 0x288 */
-	void*    enum_pairs;      /* 0x28c */
-	void*    enum_sorted;     /* 0x290 */
-	uint16_t enum_count;      /* 0x294 */
+	char     EnumName[0x80]; /* 0x200 */
+	uint32_t PushbackType;   /* 0x280 */
+	uint32_t PushbackValue;  /* 0x284 */
+	char*    PushbackText;   /* 0x288 */
+	void*    EnumPairs;      /* 0x28c */
+	void*    EnumSorted;     /* 0x290 */
+	uint16_t EnumCount;      /* 0x294 */
 	uint16_t field_0x296;
 	uint32_t field_0x298;
 	uint32_t line_number; /* 0x29c */
-	char*    parse_ptr;   /* 0x2a0 */
-	char*    scan_ptr;    /* 0x2a4 */
+	char*    ParsePtr;   /* 0x2a0 */
+	char*    ScanPtr;    /* 0x2a4 */
 	char*    filename;    /* 0x2a8 */
 	void*    file;        /* 0x2ac */
 	char*    delimiters;  /* 0x2b0 */
-	uint16_t line_length; /* 0x2b4 */
-	uint16_t word_length; /* 0x2b6 */
+	uint16_t LineLength; /* 0x2b4 */
+	uint16_t WordLength; /* 0x2b6 */
 	uint32_t field_0x2b8;
 
 	// BW1W120 007be480 LHParseFile::Open(void)

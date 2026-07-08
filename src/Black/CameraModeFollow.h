@@ -17,7 +17,7 @@ public:
 	GameThingWithPos* target; /* 0x8 */
 	float             pitch;
 	float             yaw; /* 0x10 */
-	float             viewing_distance;
+	float             ViewingDistance;
 	float             field_0x18;
 	int               field_0x1c;
 	int               field_0x20;

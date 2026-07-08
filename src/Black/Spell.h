@@ -55,7 +55,7 @@ public:
 	uint8_t    field_0x9c;
 	GameThing* creator; /* 0xa0 */
 	GameThing* field_0xa4;
-	GameThing* interface_status;
+	GameThing* InterfaceStatus;
 	GameThing* field_0xac;
 	uint32_t   field_0xb0;
 	MAGIC_TYPE magic_type;

@@ -8,10 +8,10 @@
 
 struct PSysProcessInfo
 {
-	struct LHPoint interface_position; /* 0x0 */
+	struct LHPoint InterfacePosition; /* 0x0 */
 	struct LHPoint field_0xc;
-	struct LHPoint camera_forward_unit_vector; /* 0x18 */
-	struct LHPoint hand_velocity;              /* 0x24 */
+	struct LHPoint CameraForwardUnitVector; /* 0x18 */
+	struct LHPoint HandVelocity;              /* 0x24 */
 	float          field_0x30;
 	uint32_t       field_0x34;
 	uint8_t        field_0x38;

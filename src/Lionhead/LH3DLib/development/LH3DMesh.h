@@ -33,15 +33,15 @@ struct LH3DMesh
 	char            magic[0x4]; /* 0x0 */
 	uint32_t        flags;
 	uint32_t        size;
-	uint32_t        submesh_count;
+	uint32_t        SubmeshCount;
 	LH3DSubMesh**   submeshes; /* 0x10 */
-	LH3DBoundingBox bounding_box;
-	uint32_t        another_offset; /* 0x34 */
-	uint32_t        skin_count;
+	LH3DBoundingBox BoundingBox;
+	uint32_t        AnotherOffset; /* 0x34 */
+	uint32_t        SkinCount;
 	LH3DTexture*    skins;
-	int             extra_data_count; /* 0x40 */
-	LHPoint*        extra_pos;
-	void*           footprint_data;
+	int             ExtraDataCount; /* 0x40 */
+	LHPoint*        ExtraPos;
+	void*           FootprintData;
 
 	// Static methods
 

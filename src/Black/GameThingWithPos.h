@@ -27,7 +27,7 @@ class GameThingWithPos : public GameThing
 {
 public:
 	MapCoords coords;    /* 0x14 */
-	Object*   map_child; /* 0x20 */
+	Object*   MapChild; /* 0x20 */
 	uint16_t  field_0x24;
 	uint8_t   field_0x26;
 

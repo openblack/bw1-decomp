@@ -15,14 +15,14 @@ class GPlayer;
 class GBelief : public Base
 {
 public:
-	float    belief_in_player[0x8]; /* 0x8 */
+	float    BeliefInPlayer[0x8]; /* 0x8 */
 	uint32_t field_0x28[0x8];
 	float    field_0x48[0x8];
-	float    belief_in_player_max[0x8]; /* 0x68 */
+	float    BeliefInPlayerMax[0x8]; /* 0x68 */
 	uint32_t field_0x88[0x8];
 	float    field_0xa8[0x8];
 	float    field_0xc8[0x8];
-	float    boredom_multiplier[NUM_REACTION_FUNCTIONS]; /* 0xe8 */
+	float    BoredomMultiplier[NUM_REACTION_FUNCTIONS]; /* 0xe8 */
 	float    field_0x18c[0x11];
 
 	// Override methods

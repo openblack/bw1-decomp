@@ -12,7 +12,7 @@ public:
 	uintptr_t field_0x8;
 	uint8_t   field_0xc;
 	uint8_t   field_0xd;
-	uint16_t  buffered_keys;
+	uint16_t  BufferedKeys;
 
 	// Override methods
 

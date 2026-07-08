@@ -30,7 +30,7 @@ public:
 	uint32_t        field_0x22c;
 	SetupControl*   next; /* 0x230 */
 	SetupBox*       setup_box;
-	void*           continue_button_callback;
+	void*           ContinueButtonCallback;
 
 	// Override methods
 

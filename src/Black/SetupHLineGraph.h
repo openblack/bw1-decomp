@@ -17,7 +17,7 @@ class SetupControl;
 struct HLineData
 {
 	LH3DColor color; /* 0x0 */
-	int       point_count;
+	int       PointCount;
 	float*    points;
 
 	// Constructors
@@ -36,7 +36,7 @@ struct HLineData
 class SetupHLineGraph : public SetupButton
 {
 public:
-	LHLinkedList__HLineData line_data_list; /* 0x244 */
+	LHLinkedList__HLineData LineDataList; /* 0x244 */
 	float                   max_point;
 	float                   min_point; /* 0x250 */
 	bool                    percent_mode;

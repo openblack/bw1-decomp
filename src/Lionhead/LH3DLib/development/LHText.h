@@ -8,7 +8,7 @@
 
 struct LHText
 {
-	struct LHSpriteList sprite_list; /* 0x0 */
+	struct LHSpriteList SpriteList; /* 0x0 */
 	uint32_t            field_0xc;
 	uint32_t            field_0x10;
 	uint32_t            field_0x14;

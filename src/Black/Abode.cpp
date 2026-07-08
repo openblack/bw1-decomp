@@ -31,14 +31,14 @@ Town* Abode::GetTown() { return town; }
 
 Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
              int wood)
-	: MultiMapFixed(coords, info, y_angle, scale, food, wood), drinking_water(0, 0, 0.0f), town(NULL), next(NULL),
+	: MultiMapFixed(coords, info, y_angle, scale, food, wood), DrinkingWater(0, 0, 0.0f), town(NULL), next(NULL),
 	  villagers()
 {
 	SetToZero();
 	if (town)
 	{
 		town->AddStructureToTown(this);
-		index = town->abode_list.count - 1;
+		index = town->AbodeList.count - 1;
 	}
 	GGame::g_game->map.field_0x8 |= 1;
 	FindNearestDrinkingWater(200.0f);
@@ -47,13 +47,13 @@ Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float 
 void Abode::SetToZero()
 {
 	field_0xb6 = 0;
-	adult_count = 0;
+	AdultCount = 0;
 	field_0xb7 = 0;
 	field_0x94 = 0;
 	resources[RESOURCE_TYPE_FOOD] = 0;
 	resources[RESOURCE_TYPE_WOOD] = 0;
 	smoke = NULL;
-	destruction_mesh = NULL;
+	DestructionMesh = NULL;
 	field_0x7c = 0;
 	field_0xb0 = 0;
 	field_0xb5 = 0;
@@ -66,7 +66,7 @@ Abode* Abode::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town
 
 	Abode* result = NULL;
 
-	switch (info->abodeType)
+	switch (info->AbodeType)
 	{
 	case ABODE_TYPE_WINDMILL:
 		result = Windmill::Create(coords, info, town, y_angle, scale, food, wood);
@@ -128,7 +128,7 @@ void Abode::CallVirtualFunctionsForCreation(const MapCoords& coords_)
 {
 	MultiMapFixed::CallVirtualFunctionsForCreation(coords_);
 	LHPoint chimney_pos;
-	if (game_3d_object->GetChimneyPos(&chimney_pos))
+	if (Game3dObject->GetChimneyPos(&chimney_pos))
 	{
 		smoke = LH3DSmoke::Create(NULL);
 		smoke->pos = chimney_pos;
@@ -138,18 +138,18 @@ void Abode::CallVirtualFunctionsForCreation(const MapCoords& coords_)
 		}
 	}
 
-	if (game_3d_object->IsStaticMorphable())
+	if (Game3dObject->IsStaticMorphable())
 	{
-		coords.altitude = max(game_3d_object->GetAltitudeFondation(), -max(0.8f, Get2DRadius() * 0.2f));
+		coords.altitude = max(Game3dObject->GetAltitudeFondation(), -max(0.8f, Get2DRadius() * 0.2f));
 	}
 	LHPoint position = GLandscape::ConvertMapCoordToLandscapePoint(coords_);
-	game_3d_object->SetPosition(&position, GetYAngle(), GetScale());
+	Game3dObject->SetPosition(&position, GetYAngle(), GetScale());
 }
 
 void Abode::CreateAbodeSurroundingObjects()
 {
 	LHPoint point;
-	if (((GAbodeInfo*)info)->didYouKnow != 0)
+	if (((GAbodeInfo*)info)->DidYouKnow != 0)
 	{
 		if (GetNewEp(ABODE_EPP_SCRIPT_HIGHLIGHT, &point))
 		{
@@ -165,7 +165,7 @@ void Abode::CreateAbodeSurroundingObjects()
 
 void Abode::InsertMapObject() { MultiMapFixed::InsertMapObject(); }
 
-int Abode::GetRoomLeftForChildren() { return ((GAbodeInfo*)info)->maxVillagersInAbode - (int)adult_count; }
+int Abode::GetRoomLeftForChildren() { return ((GAbodeInfo*)info)->MaxVillagersInAbode - (int)AdultCount; }
 
 void Abode::MakeFunctional()
 {
@@ -188,7 +188,7 @@ void Abode::MakeFunctional()
 			town->RemoveBuildingSite(this);
 		}
 
-		if (town->GetStoragePit() && town->GetStoragePit() != this && GGame::g_game->data.game_turn != 0)
+		if (town->GetStoragePit() && town->GetStoragePit() != this && GGame::g_game->data.GameTurn != 0)
 		{
 			GFootpath*  footpath = new (__FILE__, __LINE__) GFootpath(NULL, NULL);
 			MapCoords   town_coords = GetArrivePos();
@@ -223,12 +223,12 @@ float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 	float score = 1.0f;
 	if (!villager->IsChild())
 	{
-		int max_adults = ((GAbodeInfo*)info)->maxVillagersInAbode;
+		int max_adults = ((GAbodeInfo*)info)->MaxVillagersInAbode;
 		if (max_adults == 0)
 		{
 			return 0.0f;
 		}
-		float adult_ratio = (float)adult_count / (float)max_adults;
+		float adult_ratio = (float)AdultCount / (float)max_adults;
 		if (adult_ratio < 1.0f)
 		{
 			score = adult_ratio;
@@ -236,7 +236,7 @@ float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 	}
 	else
 	{
-		int max_children = ((GAbodeInfo*)info)->maxChildrenInAbode;
+		int max_children = ((GAbodeInfo*)info)->MaxChildrenInAbode;
 		if (max_children == 0)
 		{
 			return 0.0f;
@@ -276,7 +276,7 @@ TRIBE_TYPE Abode::GetTribeType() { return town->tribe_type; }
 
 void Abode::FindNearestDrinkingWater(float max_dist)
 {
-	field_0x7c |= GUtils::FindNearestDrinkingWater(coords, drinking_water, max_dist) ? 1 : 0;
+	field_0x7c |= GUtils::FindNearestDrinkingWater(coords, DrinkingWater, max_dist) ? 1 : 0;
 }
 
 MapCoords Abode::GetPosOutside(float param_2, float param_3, float param_4)

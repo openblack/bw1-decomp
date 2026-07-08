@@ -7,10 +7,10 @@
 struct LHTimer
 {
 	uint8_t  field_0x0[0x100];
-	uint32_t tick_count; /* 0x100 */
-	int      elapsed_time;
-	float    speed_up_factor;
-	float    speed_up_factor_2;
+	uint32_t TickCount; /* 0x100 */
+	int      ElapsedTime;
+	float    SpeedUpFactor;
+	float    SpeedUpFactor2;
 
 	// Non-virtual methods
 

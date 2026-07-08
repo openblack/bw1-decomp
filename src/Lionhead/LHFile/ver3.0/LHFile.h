@@ -44,12 +44,12 @@ public:
 	uint32_t (*custom_write_function)(const void* data, uint32_t length, void* user_data); /* 0x40 */
 	uint32_t (*custom_read_function)(void* data, uint32_t length, void* user_data);        /* 0x44 */
 	uint32_t (*custom_set_file_pointer_function)(uint32_t distance_to_move, uint32_t move_method, void* user_data);
-	void*        custom_function_user_data;
-	LH_FILE_MODE file_mode; /* 0x50 */
-	uint32_t     segment_opened;
+	void*        CustomFunctionUserData;
+	LH_FILE_MODE FileMode; /* 0x50 */
+	uint32_t     SegmentOpened;
 	uint32_t     segment_size;
-	uint32_t     current_file_offset;
-	uint32_t     segment_offset; /* 0x60 */
+	uint32_t     CurrentFileOffset;
+	uint32_t     SegmentOffset; /* 0x60 */
 	char*        segment_name;
 	char*        file_name;
 

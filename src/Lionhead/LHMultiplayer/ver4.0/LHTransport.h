@@ -19,13 +19,13 @@ class LHTransport
 {
 public:
 	uint32_t                     field_0x4;
-	bool32_t                     owns_read_queue;
-	bool32_t                     owns_wrtie_queue;
-	LHNetEvent*                  current_event; /* 0x10 */
+	bool32_t                     OwnsReadQueue;
+	bool32_t                     OwnsWrtieQueue;
+	LHNetEvent*                  CurrentEvent; /* 0x10 */
 	uint32_t                     field_0x14;
 	uint32_t                     field_0x18;
-	LHDynamicQueue_pLHNetEvent_* write_queue;
-	LHDynamicQueue_pLHNetEvent_* read_queue; /* 0x20 */
+	LHDynamicQueue_pLHNetEvent_* WriteQueue;
+	LHDynamicQueue_pLHNetEvent_* ReadQueue; /* 0x20 */
 	uint8_t                      field_0x24;
 
 	// Override methods

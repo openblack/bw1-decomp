@@ -20,18 +20,18 @@ class MPFEChannelSelector : public DialogBoxBase
 public:
 	SetupStaticText* title; /* 0x10 */
 	SetupStaticText* instructions;
-	SetupBigButton*  back_arrow;
-	SetupBigButton*  next_arrow;
+	SetupBigButton*  BackArrow;
+	SetupBigButton*  NextArrow;
 	SetupEdit*       field_0x20;
 	SetupEdit*       field_0x24;
 	SetupList*       field_0x28;
 	SetupList*       field_0x2c;
-	SetupButton*     join_help_channel_button; /* 0x30 */
-	SetupButton*     refresh_button;
-	SetupCheckBox*   resume_checkbox;
-	SetupStaticText* current_game_label;
-	SetupStaticText* players_in_game_label; /* 0x40 */
-	SetupStaticText* game_name_label;
+	SetupButton*     JoinHelpChannelButton; /* 0x30 */
+	SetupButton*     RefreshButton;
+	SetupCheckBox*   ResumeCheckbox;
+	SetupStaticText* CurrentGameLabel;
+	SetupStaticText* PlayersInGameLabel; /* 0x40 */
+	SetupStaticText* GameNameLabel;
 	SetupStaticText* field_0x48;
 	uint8_t          field_0x4c;
 	uint32_t         field_0x50;

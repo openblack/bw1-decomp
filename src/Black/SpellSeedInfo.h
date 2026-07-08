@@ -17,7 +17,7 @@ class GSpellSeedInfo : public GObjectInfo
 {
 public:
 	uint8_t    field_0x100[0x24];
-	MAGIC_TYPE magic_types[0x4]; /* 0x124 */
+	MAGIC_TYPE MagicTypes[0x4]; /* 0x124 */
 	uint8_t    field_0x134[0x5c];
 
 	// Override methods

@@ -12,7 +12,7 @@ class LHFile;
 struct HairGroup
 {
 	bool      field_0x0;
-	int       hair_count;
+	int       HairCount;
 	uint32_t  field_0x8[0x3];
 	uint32_t  field_0x14[0x3];
 	uint32_t  field_0x20[0x3];
@@ -20,7 +20,7 @@ struct HairGroup
 	float     field_0x38[0x3];
 	float     field_0x44[0x3];
 	float     field_0x50[0x3];
-	uint32_t  count_0x5c;
+	uint32_t  Count0x5c;
 	uint32_t  field_0x60;
 	uint32_t  field_0x64;
 	uint32_t  field_0x68;

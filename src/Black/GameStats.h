@@ -15,10 +15,10 @@ class GameStats : public GameThing
 {
 public:
 	uint8_t  field_0x14[0x94];
-	uint32_t wood_used; /* 0xa8 */
-	uint8_t  graph_0[0x1f4];
+	uint32_t WoodUsed; /* 0xa8 */
+	uint8_t  Graph0[0x1f4];
 	uint8_t  field_0x2a0[0x5e8];
-	uint8_t  graph_1[0x1f4]; /* 0x888 */
+	uint8_t  Graph1[0x1f4]; /* 0x888 */
 	uint8_t  field_0xa7c[0x6ac];
 
 	// Override methods

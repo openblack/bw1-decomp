@@ -8,14 +8,14 @@
 #include <cstdio>
 
 NewCollide::Obj::Obj(float radius, LHPoint* position)
-	: position(*position), radius(radius), r2(radius * radius), angle(0.0f), bounding_box(radius, 0.0f, radius),
-	  iterator_list(NULL)
+	: position(*position), radius(radius), r2(radius * radius), angle(0.0f), BoundingBox(radius, 0.0f, radius),
+	  IteratorList(NULL)
 {
 }
 
 NewCollide::Obj::Obj(LHPoint* position, float bb_x, float bb_z, float angle)
 	: position(*position), radius(sqrtf(bb_x * bb_x + bb_z * bb_z)), r2(bb_x * bb_x + bb_z * bb_z), angle(angle),
-	  bounding_box(bb_x, 0.0f, bb_z), iterator_list(NULL)
+	  BoundingBox(bb_x, 0.0f, bb_z), IteratorList(NULL)
 {
 	CreateList();
 }
@@ -58,24 +58,24 @@ bool32_t NewCollide::Obj::Collide(const NewCollide::Obj* other) const
 		return false;
 	}
 
-	if (iterator_list == NULL && other->iterator_list == NULL)
+	if (IteratorList == NULL && other->IteratorList == NULL)
 	{
 		return true;
 	}
 
-	if (iterator_list == NULL && other->iterator_list != NULL)
+	if (IteratorList == NULL && other->IteratorList != NULL)
 	{
 		return other->Collide(this);
 	}
 
-	if (iterator_list != NULL && other->iterator_list == NULL)
+	if (IteratorList != NULL && other->IteratorList == NULL)
 	{
 		return Collide(other);
 	}
 
-	if (iterator_list != NULL && other->iterator_list != NULL)
+	if (IteratorList != NULL && other->IteratorList != NULL)
 	{
-		return Collide(other->iterator_list);
+		return Collide(other->IteratorList);
 	}
 
 	return false;
@@ -85,11 +85,11 @@ NewCollide::NewCollide(LH3DObject* obj) : obj(NULL)
 {
 	LH3DMesh* mesh = obj->GetMesh();
 
-	LHPoint point = /*obj->matrix * &*/ mesh->bounding_box.centre;
+	LHPoint point = /*obj->matrix * &*/ mesh->BoundingBox.centre;
 	point.y = 0.0f;
 
-	float x = mesh->bounding_box.size.x * obj->scale;
-	float z = mesh->bounding_box.size.z * obj->scale;
+	float x = mesh->BoundingBox.size.x * obj->scale;
+	float z = mesh->BoundingBox.size.z * obj->scale;
 	// x = max(x, 1.0f);
 	// z = max(z, 1.0f);
 

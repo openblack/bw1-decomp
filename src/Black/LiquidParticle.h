@@ -28,8 +28,8 @@ static_assert(sizeof(LiquidParticle) == 0x2c, "Data type is of wrong size");
 
 struct LiquidParticleGroup
 {
-	struct LiquidParticle       particle_buffer[0x400]; /* 0x0 */
-	uint32_t                    particle_count;         /* 0xb000 */
+	struct LiquidParticle       ParticleBuffer[0x400]; /* 0x0 */
+	uint32_t                    ParticleCount;         /* 0xb000 */
 	struct LHPoint              point;
 	struct LiquidParticleGroup* next; /* 0xb010 */
 	struct GInterface*          iface;

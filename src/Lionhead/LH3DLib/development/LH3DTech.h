@@ -17,17 +17,17 @@ struct LHPoint;
 struct InfoTransform
 {
 	struct LHCoord resolution; /* 0x0 */
-	float          aspect_ratio_x_over_y;
-	struct Point2D half_res;
-	struct Point2D inv_half_res; /* 0x14 */
-	float          inv_half_tan_fov_y;
-	float          inv_half_tan_fov_x; /* 0x20 */
-	float          cos_half_fov_sqr;
+	float          AspectRatioXOverY;
+	struct Point2D HalfRes;
+	struct Point2D InvHalfRes; /* 0x14 */
+	float          InvHalfTanFovY;
+	float          InvHalfTanFovX; /* 0x20 */
+	float          CosHalfFovSqr;
 	float          field_0x28;
-	float          cos_half_fov;
+	float          CosHalfFov;
 	float          field_0x30;
-	float          inv_aspect_sqr_hypo_inv_times_inv_aspect;
-	float          inv_aspect_sqr_hypo_inv;
+	float          InvAspectSqrHypoInvTimesInvAspect;
+	float          InvAspectSqrHypoInv;
 };
 static_assert(sizeof(InfoTransform) == 0x3c, "Data type is of wrong size");
 

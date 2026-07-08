@@ -46,13 +46,13 @@ public:
 	uint8_t                      field_0xcc[0xc];
 	int                          field_0xd8;
 	WorshipTotem*                totem;
-	LHListHead__WorshipSpellIcon icon_list; /* 0xe0 */
+	LHListHead__WorshipSpellIcon IconList; /* 0xe0 */
 	uint8_t                      field_0xe8[0x2c];
 	float                        field_0x114;
 	float                        field_0x118;
 	float                        field_0x11c;
 	uint32_t                     field_0x120;
-	int                          num_villagers_requesting_to_go_home;
+	int                          NumVillagersRequestingToGoHome;
 
 	// Override methods
 
