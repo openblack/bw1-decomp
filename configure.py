@@ -990,12 +990,15 @@ config.libs = [
             Object(NonMatching, "Black/WorshipSpellIcon.cpp"),
             Object(NonMatching, "Black/WorshipTotem.cpp"),
 
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DCameraChecker.cpp"),
+            Object(NonMatching, "Lionhead/LHDLL/ver1.0/LHDLL.cpp"),
 
             Object(NonMatching, "Lionhead/LHFile/ver3.0/LHFile.cpp"),
-            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHParseFile.cpp"),
+            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHOSFile.cpp", extra_cflags=["/GX"]),
 
             Object(NonMatching, "zlib/compress.c"),
+
+            Object(NonMatching, "Lionhead/LHFile/ver3.0/LHParseFile.cpp"),
+
             Object(Matching, "zlib/deflate.c"),
             Object(Matching, "zlib/inflate.c"),
             # TODO: 1.1 seems to bump .bss address space
@@ -1128,6 +1131,9 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\ctype.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\nlsdata1.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\strftime.obj", progress_category="sdk"), # mismatch for the __Strftime function
+
+            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DCameraChecker.cpp"),
+
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\cmiscdat.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\a_cmp.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\fp8.obj", progress_category="sdk"),
@@ -1268,8 +1274,6 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\mbtoupr.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\sehsupp.obj", progress_category="sdk"),
 
-            Object(NonMatching, "Lionhead/LHDLL/ver1.0/LHDLL.cpp"),
-
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp"),
             Object(Matching, "Lionhead/LHLib/ver5.0/LHMem.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScreen.cpp"),
@@ -1279,7 +1283,6 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHText.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHHeap2.cpp", extra_cflags=["/GX"]),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMouse.cpp"),
-            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHOSFile.cpp", extra_cflags=["/GX"]),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScript.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DSmoke.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DIsland.cpp"),

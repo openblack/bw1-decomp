@@ -1,4 +1,4 @@
-#include <Lionhead/LHFile/ver3.0/LHOSFile.h>
+#include "LHOSFile.h"
 
 #include <stdio.h>
 #include <string.h>
