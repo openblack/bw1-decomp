@@ -48,7 +48,7 @@ public:
 class CreatureBeliefs : public Base
 {
 public:
-	CreatureBeliefList  lists[0x2];     /* 0x8 */
+	CreatureBeliefList  lists[0x2];    /* 0x8 */
 	AllocatedBeliefList AllocatedList; /* 0x30 */
 	uint8_t             field_0x48[0x228];
 

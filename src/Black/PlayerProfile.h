@@ -11,7 +11,7 @@ struct PlayerProfile
 	char16_t CurrentProfile[0x100]; /* 0x200 */
 	char16_t LoginName[0x100];      /* 0x400 */
 	char16_t LoginPassword[0x100];  /* 0x600 */
-	uint32_t stuff;                  /* 0x800 */
+	uint32_t stuff;                 /* 0x800 */
 	uint32_t PlayerSymbol;
 	uint32_t timestarted;
 	uint32_t numberofsaves;

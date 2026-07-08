@@ -33,7 +33,7 @@ class WorshipSite;
 class TotemStatue : public MultiMapFixed
 {
 public:
-	TownCentre*   town_centre;   /* 0x7c */
+	TownCentre*   town_centre;  /* 0x7c */
 	float         WorshipSpeed; /* 0x80 */
 	uint32_t      field_0x84;
 	float         WorshipSpeed2;

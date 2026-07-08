@@ -33,9 +33,9 @@ public:
 	CreatureAgenda            agenda;                   /* 0x710 */
 	CreatureBeliefs           beliefs;                  /* 0x2208 */
 	DecisionTreeCollection    decision_tree_collection; /* 0x2478 */
-	CreatureActionOpinions    ActionOpinions;          /* 0x25b8 */
+	CreatureActionOpinions    ActionOpinions;           /* 0x25b8 */
 	CreatureLearning          learning;                 /* 0x2ad8 */
-	CreatureAttitudeToPlayer  AttitudeToPlayer;       /* 0x18c40 */
+	CreatureAttitudeToPlayer  AttitudeToPlayer;         /* 0x18c40 */
 	uint32_t                  field_0x1a9f4;
 	uint32_t                  field_0x1a9f8;
 	CreatureActionsKnownAbout ActionsKnownAbout;

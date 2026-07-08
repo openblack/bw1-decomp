@@ -72,7 +72,7 @@ public:
 	uint32_t                             field_0x184;
 	CreatureHelpState                    HelpState;
 	LHLinkedList__CreatureHelpStackEntry HelpStackEntries[0x2a]; /* 0x220 */
-	CreatureReceiveSpell*                ReceiveSpell;            /* 0x370 */
+	CreatureReceiveSpell*                ReceiveSpell;           /* 0x370 */
 	float                                field_0x374;
 	float                                field_0x378;
 	uint8_t                              field_0x37c;

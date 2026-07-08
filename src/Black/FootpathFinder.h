@@ -20,8 +20,8 @@ class GameThingWithPos;
 class GFootpathFinder : public GameThing
 {
 public:
-	RPHolder          holder;                 /* 0x14 */
-	RPlan             plan;                   /* 0x64040 */
+	RPHolder          holder;                /* 0x14 */
+	RPlan             plan;                  /* 0x64040 */
 	GameThingWithPos* GamethingwithposStart; /* 0x640b4 */
 	GameThingWithPos* GamethingwithposDest;
 	GFootpath*        Footpath0x7c;

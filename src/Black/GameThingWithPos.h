@@ -26,7 +26,7 @@ class WorshipSite;
 class GameThingWithPos : public GameThing
 {
 public:
-	MapCoords coords;    /* 0x14 */
+	MapCoords coords;   /* 0x14 */
 	Object*   MapChild; /* 0x20 */
 	uint16_t  field_0x24;
 	uint8_t   field_0x26;

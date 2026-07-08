@@ -34,7 +34,7 @@ struct VBarData
 class SetupVBarGraph : public SetupButton
 {
 public:
-	Zoomer                 zoomer;        /* 0x244 */
+	Zoomer                 zoomer;      /* 0x244 */
 	LHLinkedList__VBarData BarDataList; /* 0x274 */
 	float                  max_point;
 	float                  min_point; /* 0x280 */

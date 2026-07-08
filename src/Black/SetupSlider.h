@@ -12,7 +12,7 @@
 class SetupSlider : public SetupControl
 {
 public:
-	float   value;            /* 0x23c */
+	float   value;          /* 0x23c */
 	float   DragStartValue; /* 0x240 */
 	LHCoord DragStart;
 	int     height;

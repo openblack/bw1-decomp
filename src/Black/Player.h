@@ -88,7 +88,7 @@ public:
 	uint8_t          field_0x948[0x28];
 	int              MagicRemainder[0x2a]; /* 0x970 */
 	bool             MagicEnabled[0x2a];   /* 0xa18 */
-	GameStats*       game_stats;            /* 0xa44 */
+	GameStats*       game_stats;           /* 0xa44 */
 	Citadel*         citadel;
 	Creature*        creature;
 	LHListHead<Town> towns; /* 0xa50 */

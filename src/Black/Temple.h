@@ -10,7 +10,7 @@ class TempleRoom;
 
 struct Temple
 {
-	TempleRoom* rooms[0x7];  /* 0x0 */
+	TempleRoom* rooms[0x7]; /* 0x0 */
 	TempleRoom* ActiveRoom; /* 0x1c */
 	uintptr_t   field_0x20;
 	uint32_t    field_0x24;

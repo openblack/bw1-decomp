@@ -123,15 +123,15 @@ public:
 
 	struct StateTableEntry
 	{
-		StateTableSubEntryState      state;       /* 0x0 */
+		StateTableSubEntryState      state;      /* 0x0 */
 		StateTableSubEntryEntryState EntryState; /* 0x10 */
 		StateTableSubEntry           ExitState;  /* 0x20 */
-		StateTableSubEntry           save_state;  /* 0x30 */
+		StateTableSubEntry           save_state; /* 0x30 */
 		StateTableSubEntry           LoadState;  /* 0x40 */
 		StateTableSubEntry           field_0x50;
 		StateTableSubEntry           field_0x60;
 		StateTableSubEntry           TransitionAnimation; /* 0x70 */
-		StateTableSubEntry           validate;             /* 0x80 */
+		StateTableSubEntry           validate;            /* 0x80 */
 	};
 
 	LivingAction         action;   /* 0x8c */

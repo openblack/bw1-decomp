@@ -65,7 +65,7 @@ public:
 	bool                     ScreenCentreHit;
 	LHPoint                  MouseHitPoint;
 	LHPoint                  LastGrabMouseHitPoint; /* 0xd8 */
-	float                    Yaw1;                     /* 0xe4 */
+	float                    Yaw1;                  /* 0xe4 */
 	float                    Pitch1;
 	float                    PerpDistance0xec;
 	LHPoint                  ScreenCentreHitPoint; /* 0xf0 */
