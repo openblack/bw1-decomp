@@ -13,13 +13,7 @@
 struct LHRegion;
 struct LHCoord;
 class LHSpriteFrame;
-
-struct LHSprite
-{
-	uint16_t Width;     /* 0x0 */
-	uint16_t Height;    /* 0x2 */
-	uint8_t* PixelData; /* 0x4 */
-};
+struct LHSprite;
 
 // What LHSurface::Image points at.
 enum LH_SURFACE_IMAGE_TYPE

@@ -1624,7 +1624,8 @@ Lionhead/LHLib/ver5.0/LHDraw.cpp:
 	.text       start:0x007E2810 end:0x007E3C20
 
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
-	.text       start:0x007E4810 end:0x007E5AF0
+	.text       start:0x007E4810 end:0x007E6290
+	.bss        start:0x00E90650 end:0x00E90670
 
 Lionhead/LHLib/ver5.0/LHSurface.cpp:
 	.text       start:0x007E6290 end:0x007E69D0
