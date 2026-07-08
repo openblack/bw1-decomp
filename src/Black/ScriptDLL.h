@@ -81,12 +81,16 @@ public:
     // Static methods
 
     // BW1W120 006f6320 BW1M100 104e8e70 ScriptDLL::Create(char const *)
-    static ScriptDLL* Create(char* library_path);
+    static ScriptDLL* Create(const char* library_path);
 
     // Constructors
 
     // BW1W120 inlined BW1M100 inlined ScriptDLL::ScriptDLL(const char*)
-    ScriptDLL(char* library_path);
+    ScriptDLL(const char* library_path)
+      : LHDLL(library_path)
+    {
+      field_0x28 = 0;
+    }
 
     // Non-virtual methods
 
@@ -102,6 +106,10 @@ public:
     void PUSH(void* param_1, VMType param_2);
     // BW1W120 006f6c50 BW1M100 104e7d70 ScriptDLL::GetScriptType(unsigned long)
     void* GetScriptType(unsigned long param_1);
+
+    virtual void GetAPI();
+    virtual void AutoStart(LHTransport* transport);
+    virtual int LoadBinary(LHTransport* transport, const char* path);
 };
 
 #endif /* BW1_DECOMP_SCRIPT_DLL_INCLUDED_H */

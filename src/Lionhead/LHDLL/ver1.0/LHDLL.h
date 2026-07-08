@@ -28,12 +28,14 @@ public:
     // Constructors
 
     // BW1W120 007ad370 BW1M100 1061e11c LHDLL::LHDLL(const char*)
-    LHDLL(char* library_path);
+    LHDLL(const char* library_path);
 
     // Non-virtual Destructors
 
     // BW1W120 007ad4c0 BW1M100 1061e14c LHDLL::~LHDLL(void)
     ~LHDLL();
+
+    virtual void GetAPI() = 0;
 };
 
 #endif /* BW1_DECOMP_LHDLL_INCLUDED_H */
