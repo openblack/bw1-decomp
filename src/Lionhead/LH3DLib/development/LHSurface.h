@@ -16,7 +16,7 @@ struct LHPixel;
 
 struct LHSurface
 {
-	IDirectDrawSurface7* d3d_surfaces; /* 0x0 */
+	IDirectDrawSurface7* D3dSurfaces; /* 0x0 */
 	uint32_t             field_0x4;
 	int                  field_0x8;
 	uint32_t             field_0xc;

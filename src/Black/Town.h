@@ -64,7 +64,7 @@ struct PlayerTownInteract
 class Town : public Container
 {
 public:
-	StoragePit*                      storage_pit_list; /* 0x30 */
+	StoragePit*                      StoragePitList; /* 0x30 */
 	TownDesire                       desire;
 	uint8_t                          field_0x598[0x18];
 	char*                            field_0x5b0;
@@ -72,12 +72,12 @@ public:
 	TRIBE_TYPE                       tribe_type;
 	uint8_t                          player_number;
 	float                            worship_percentage; /* 0x5c0 */
-	uint32_t                         worship_count;
+	uint32_t                         WorshipCount;
 	float                            influence;
 	int                              field_0x5cc;
 	uint32_t                         field_0x5d0;
 	uint32_t                         field_0x5d4;
-	float                            belief_in_neutral_player;
+	float                            BeliefInNeutralPlayer;
 	float                            field_0x5dc;
 	uint32_t                         field_0x5e0;
 	uint32_t                         field_0x5e4;
@@ -97,19 +97,19 @@ public:
 	uint32_t                         field_0x740;
 	Creche*                          creche;
 	uint32_t                         field_0x748;
-	Abode*                           abode_0x74c;
+	Abode*                           Abode0x74c;
 	uint32_t                         field_0x750;
-	LHListHead<Abode>                abode_list;
+	LHListHead<Abode>                AbodeList;
 	Town*                            next;
 	uint32_t                         field_0x760;
 	uint32_t                         field_0x764;
-	LHLinkedList<Villager>           homeless_list;
+	LHLinkedList<Villager>           HomelessList;
 	uint32_t                         field_0x770;
 	uint32_t                         field_0x774;
-	LHListHead<TownSpellIcon>        spell_icon_list;
-	LHLinkedList<Field>              field_list; /* 0x780 */
-	LHLinkedList<FishFarm>           fish_farms;
-	LHListHead<BuildingSite>         building_site_list; /* 0x790 */
+	LHListHead<TownSpellIcon>        SpellIconList;
+	LHLinkedList<Field>              FieldList; /* 0x780 */
+	LHLinkedList<FishFarm>           FishFarms;
+	LHListHead<BuildingSite>         BuildingSiteList; /* 0x790 */
 	GBelief                          belief;
 	uint32_t                         field_0x968;
 	uint32_t                         field_0x96c;
@@ -125,12 +125,12 @@ public:
 	uint32_t                         field_0x99c;
 	uint32_t                         field_0x9a0;
 	TownCentre*                      town_centre;
-	LHListHead<PlannedMultiMapFixed> planned_list;
+	LHListHead<PlannedMultiMapFixed> PlannedList;
 	TownDesireFlags*                 town_desire_flags[TOWN_DESIRE_INFO_LAST]; /* 0x9b0 */
 	uint32_t                         field_0x9f4;
 	uint32_t                         field_0x9f8;
 	PlayerTownInteract               field_0x9fc[0x8];
-	int                              magic_remainder[MAGIC_TYPE_LAST_142]; /* 0xdfc */
+	int                              MagicRemainder[MAGIC_TYPE_LAST_142]; /* 0xdfc */
 	uint32_t                         field_0xea4;
 	uint32_t                         field_0xea8;
 	uint32_t                         field_0xeac;
@@ -143,7 +143,7 @@ public:
 	void*                            field_0xec8[0x10];
 	uint32_t                         field_0xf08;
 	uint32_t                         field_0xf0c;
-	MapCoords                        congregation_pos; /* 0xf10 */
+	MapCoords                        CongregationPos; /* 0xf10 */
 	uint32_t                         field_0xf1c;
 	uint32_t                         field_0xf20;
 	uint32_t                         field_0xf24;

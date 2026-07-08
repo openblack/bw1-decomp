@@ -16,34 +16,34 @@ class SetupList : public SetupControl
 {
 public:
 	bool field_0x23c;
-	int  scrollback_width; /* 0x240 */
+	int  ScrollbackWidth; /* 0x240 */
 	bool field_0x244;
-	int  selected_index;
+	int  SelectedIndex;
 	int  field_0x24c;
-	int  num_items; /* 0x250 */
+	int  NumItems; /* 0x250 */
 	int  field_0x254;
 	char16_t(*) item_labels[0x100];
-	int*                      item_heights;
+	int*                      ItemHeights;
 	uint32_t*                 field_0x260;
 	uint32_t*                 field_0x264;
 	LH3DColor*                color;
 	SetupList__ListBoxDraw_t* ListBoxDraw;
-	int                       scroll_distance; /* 0x270 */
-	bool                      show_scrollbar;
+	int                       ScrollDistance; /* 0x270 */
+	bool                      ShowScrollbar;
 	int                       field_0x278;
-	int                       scroll_position;
+	int                       ScrollPosition;
 	int                       field_0x280;
 	bool                      field_0x284;
 	bool                      field_0x285;
-	LHCoord                   drag_start;
-	bool                      use_color_background; /* 0x290 */
-	bool                      draw_highlight_box;
+	LHCoord                   DragStart;
+	bool                      UseColorBackground; /* 0x290 */
+	bool                      DrawHighlightBox;
 	uint8_t                   field_0x292;
 	uint8_t                   field_0x293;
-	LH3DColor                 box_outline_color;
-	LH3DColor                 selection_color;
+	LH3DColor                 BoxOutlineColor;
+	LH3DColor                 SelectionColor;
 	uint8_t                   field_0x29c;
-	SetupRect                 selection_rect; /* 0x2a0 */
+	SetupRect                 SelectionRect; /* 0x2a0 */
 
 	// Override methods
 

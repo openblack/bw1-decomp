@@ -16,25 +16,25 @@ class ReactionInfo : public GBaseInfo
 {
 public:
 	uint32_t           priority; /* 0x10 */
-	uint32_t           numGameTurnsForNormalThingsToReact;
-	uint32_t           numGameTurnsForNormalThingsBeforeReactingAgain;
-	uint32_t           numGameTurnsForCreatureToReact;
-	uint32_t           numGameTurnsForCreatureBeforeReactingAgain; /* 0x20 */
-	uint32_t           whetherItImpresses;
-	uint32_t           whetherReactionFinishesIfInitiatorInHand;
-	float              maxReactionDistance;
-	float              howImportantIsDistance; /* 0x30 */
-	uint32_t           whetherReactionGrows;
-	float              reactionGrowthPerGameTurn;
-	uint32_t           stealthRandomChance;
-	float              minDistanceToRunAwayFromObject; /* 0x40 */
-	float              maxDistanceToRunAwayFromObject;
-	float              defaultReactionImpressiveMultiplier;
-	float              additionToTownBoredomMultipliers;
-	TOWN_DESIRE_INFO   correspondingTownDesire; /* 0x50 */
-	TOWN_DESIRE_INFO   correspondingTownDesireForAlignment;
-	float              alignmentModifier;
-	GUIDANCE_ALIGNMENT alignmentForSFX;
+	uint32_t           NumGameTurnsForNormalThingsToReact;
+	uint32_t           NumGameTurnsForNormalThingsBeforeReactingAgain;
+	uint32_t           NumGameTurnsForCreatureToReact;
+	uint32_t           NumGameTurnsForCreatureBeforeReactingAgain; /* 0x20 */
+	uint32_t           WhetherItImpresses;
+	uint32_t           WhetherReactionFinishesIfInitiatorInHand;
+	float              MaxReactionDistance;
+	float              HowImportantIsDistance; /* 0x30 */
+	uint32_t           WhetherReactionGrows;
+	float              ReactionGrowthPerGameTurn;
+	uint32_t           StealthRandomChance;
+	float              MinDistanceToRunAwayFromObject; /* 0x40 */
+	float              MaxDistanceToRunAwayFromObject;
+	float              DefaultReactionImpressiveMultiplier;
+	float              AdditionToTownBoredomMultipliers;
+	TOWN_DESIRE_INFO   CorrespondingTownDesire; /* 0x50 */
+	TOWN_DESIRE_INFO   CorrespondingTownDesireForAlignment;
+	float              AlignmentModifier;
+	GUIDANCE_ALIGNMENT AlignmentForSFX;
 	uint32_t           missing4bytesfromwhere; /* 0x60 */
 
 	// Override methods

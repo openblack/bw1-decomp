@@ -28,10 +28,10 @@ class Town;
 class BuildingSite : public GameThing
 {
 public:
-	MultiMapFixed*         root_building; /* 0x14 */
-	LHLinkedList<Villager> building_worker_list;
+	MultiMapFixed*         RootBuilding; /* 0x14 */
+	LHLinkedList<Villager> BuildingWorkerList;
 	uint8_t                field_0x20[0x14];
-	LHPoint                building_positions[0x7f]; /* 0x34 */
+	LHPoint                BuildingPositions[0x7f]; /* 0x34 */
 	uint8_t                field_0x628[0x14];
 	uint8_t                field_0x63c[0x4];
 	float                  life; /* 0x640 */

@@ -11,7 +11,7 @@ class GTerrainMap : public Base
 {
 public:
 	TerrainMapInfo list[0x400]; /* 0x8 */
-	TerrainMapInfo map_info;    /* 0x4a008 */
+	TerrainMapInfo MapInfo;    /* 0x4a008 */
 
 	// Override methods
 

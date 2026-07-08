@@ -13,8 +13,8 @@ class SetupSlider : public SetupControl
 {
 public:
 	float   value;            /* 0x23c */
-	float   drag_start_value; /* 0x240 */
-	LHCoord drag_start;
+	float   DragStartValue; /* 0x240 */
+	LHCoord DragStart;
 	int     height;
 
 	// Override methods

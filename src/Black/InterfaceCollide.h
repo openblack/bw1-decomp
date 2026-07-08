@@ -17,13 +17,13 @@ class GInterfaceCollide : public Base
 {
 public:
 	MapCoords pos;          /* 0x8 */
-	float     pos_distance; /* 0x14 */
+	float     PosDistance; /* 0x14 */
 	Object*   object;
-	float     object_distance;
+	float     ObjectDistance;
 	Bubble*   bubble; /* 0x20 */
-	float     bubble_distance;
+	float     BubbleDistance;
 	Leash*    leash;
-	float     leash_distance;
+	float     LeashDistance;
 
 	// Override methods
 

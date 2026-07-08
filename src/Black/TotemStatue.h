@@ -34,10 +34,10 @@ class TotemStatue : public MultiMapFixed
 {
 public:
 	TownCentre*   town_centre;   /* 0x7c */
-	float         worship_speed; /* 0x80 */
+	float         WorshipSpeed; /* 0x80 */
 	uint32_t      field_0x84;
-	float         worship_speed_2;
-	Game3DObject* game_3d_object;
+	float         WorshipSpeed2;
+	Game3DObject* Game3dObject;
 	float         field_0x90;
 	float         field_0x94;
 	uint32_t      field_0x98;

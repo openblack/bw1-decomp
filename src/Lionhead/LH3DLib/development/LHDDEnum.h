@@ -6,7 +6,7 @@
 
 struct LHDDEnum
 {
-	char    display_name[0xf8]; /* 0x0 */
+	char    DisplayName[0xf8]; /* 0x0 */
 	uint8_t field_0xf8[0x3e0];
 
 	// Non-virtual methods

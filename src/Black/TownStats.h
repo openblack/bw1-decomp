@@ -18,8 +18,8 @@ class Villager;
 class TownStats : public Base
 {
 public:
-	int          num_adults; /* 0x8 */
-	int          num_children;
+	int          NumAdults; /* 0x8 */
+	int          NumChildren;
 	uint32_t     field_0x10;
 	uint32_t     field_0x14;
 	uint32_t     field_0x18;
@@ -42,17 +42,17 @@ public:
 	uint32_t     field_0x5c[0x8];
 	uint32_t     field_0x7c[0xa];
 	uint32_t     field_0xa4[0x9];
-	uint8_t      num_disciples[VILLAGER_DISCIPLE_LAST]; /* 0xc8 */
+	uint8_t      NumDisciples[VILLAGER_DISCIPLE_LAST]; /* 0xc8 */
 	uint32_t     field_0xd8;
 	uint32_t     field_0xdc;
 	uint32_t     field_0xe0;
 	uint32_t     field_0xe4;
 	uint32_t     field_0xe8;
-	float        wood_used;
+	float        WoodUsed;
 	float        field_0xf0;
 	float        field_0xf4;
-	float        total_food;
-	float        total_wood;
+	float        TotalFood;
+	float        TotalWood;
 	uint32_t     field_0x100;
 	uint32_t     field_0x104;
 	uint32_t     field_0x108;

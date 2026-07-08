@@ -11,7 +11,7 @@ class TempleRoom;
 struct Temple
 {
 	TempleRoom* rooms[0x7];  /* 0x0 */
-	TempleRoom* active_room; /* 0x1c */
+	TempleRoom* ActiveRoom; /* 0x1c */
 	uintptr_t   field_0x20;
 	uint32_t    field_0x24;
 	float       fov;

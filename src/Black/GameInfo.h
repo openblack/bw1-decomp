@@ -13,20 +13,20 @@ public:
 	uint8_t  field_0x9;
 	uint8_t  field_0xa;
 	uint8_t  field_0xb;
-	int      time_scale;
-	float    elapsed_days; /* 0x10 */
-	float    elapsed_years;
-	float    seconds_per_day;
-	uint32_t current_year;
-	double   elapsed_seconds_since_start; /* 0x20 */
-	int32_t  start_year;
-	int32_t  start_month;
-	int32_t  start_day; /* 0x30 */
-	int32_t  start_hour;
-	int32_t  start_minute;
-	int32_t  start_second;
+	int      TimeScale;
+	float    ElapsedDays; /* 0x10 */
+	float    ElapsedYears;
+	float    SecondsPerDay;
+	uint32_t CurrentYear;
+	double   ElapsedSecondsSinceStart; /* 0x20 */
+	int32_t  StartYear;
+	int32_t  StartMonth;
+	int32_t  StartDay; /* 0x30 */
+	int32_t  StartHour;
+	int32_t  StartMinute;
+	int32_t  StartSecond;
 	uint32_t field_0x40;
-	float    visual_time_scale;
+	float    VisualTimeScale;
 	float    field_0x48;
 	float    field_0x4c;
 	float    field_0x50;

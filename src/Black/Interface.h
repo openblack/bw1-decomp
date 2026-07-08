@@ -39,13 +39,13 @@ public:
 	uint32_t                field_0x4c;
 	LHReleasedOSFile        file; /* 0x50 */
 	uint8_t                 field_0x58[0x104];
-	uint32_t                is_specific_playback; /* 0x15c */
-	uint32_t                is_any_playback;      /* 0x160 */
+	uint32_t                IsSpecificPlayback; /* 0x15c */
+	uint32_t                IsAnyPlayback;      /* 0x160 */
 	uint8_t                 field_0x164[0x30];
 	uint32_t                field_0x194;
-	Leash*                  leash_0x198;
-	Leash*                  leash_0x19c;
-	Leash*                  leash_0x1a0;
+	Leash*                  Leash0x198;
+	Leash*                  Leash0x19c;
+	Leash*                  Leash0x1a0;
 	uint32_t                field_0x1a4;
 	uint32_t                field_0x1a8;
 	uint32_t                field_0x1ac;
@@ -82,7 +82,7 @@ public:
 	uint32_t                field_0x424;
 	uint32_t                field_0x428;
 	uint32_t                field_0x42c;
-	GInterfaceMessageBuffer message_buffers; /* 0x430 */
+	GInterfaceMessageBuffer MessageBuffers; /* 0x430 */
 	int                     field_0x444;
 	int                     field_0x448;
 	uint32_t                field_0x44c;

@@ -25,7 +25,7 @@ public:
 	uint32_t          field_0x2c;
 	uint8_t           player_number; /* 0x30 */
 	uint32_t          field_0x34;
-	GInterfaceStatus* interface_status;
+	GInterfaceStatus* InterfaceStatus;
 
 	// Override methods
 

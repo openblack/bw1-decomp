@@ -40,23 +40,23 @@ public:
 			HandStateTug*         tug;
 			HandStateHolding*     holding;
 			HandStateTotem*       totem;
-			HandStateMultiPickUp* multi_pick_up;
+			HandStateMultiPickUp* MultiPickUp;
 			HandStateCreature*    creature;
 			HandStateGrain*       grain;
-			HandStatePlayAnim*    play_anim;
+			HandStatePlayAnim*    PlayAnim;
 			HandStateCitadel*     citadel;
 		};
 		Named      named;
 		HandState* raw[11];
 	};
 	float             field_0x4834;
-	float             max_distance_from_user;
+	float             MaxDistanceFromUser;
 	int               field_0x483c;
 	uint32_t          field_0x4840;
 	uint32_t          field_0x4844;
 	uint32_t          field_0x4848;
 	int               field_0x484c;
-	GInterfaceStatus* interface_status; /* 0x4850 */
+	GInterfaceStatus* InterfaceStatus; /* 0x4850 */
 	float             field_0x4854;
 	uint8_t           field_0x4858;
 	uint8_t           field_0x4859;
@@ -75,8 +75,8 @@ public:
 	uint8_t           field_0x4875;
 	uint8_t           field_0x4876;
 	uint8_t           field_0x4877;
-	uint32_t          current_state;
-	State             hand_states;
+	uint32_t          CurrentState;
+	State             HandStates;
 	uint8_t           field_0x48a8;
 	uint8_t           field_0x48a9;
 	uint8_t           field_0x48aa;
@@ -112,9 +112,9 @@ public:
 	uint8_t           field_0x48d1;
 	uint8_t           field_0x48d2;
 	uint8_t           field_0x48d3;
-	LHPoint           point_0x48d4;
-	LHPoint           point_0x48e0;
-	LHPoint           point_0x48ec;
+	LHPoint           Point0x48d4;
+	LHPoint           Point0x48e0;
+	LHPoint           Point0x48ec;
 	uint32_t          field_0x48f8;
 	uint32_t          field_0x48fc;
 	uint32_t          field_0x4900;
@@ -174,7 +174,7 @@ public:
 	uint8_t           field_0x4945;
 	uint8_t           field_0x4946;
 	uint8_t           field_0x4947;
-	HandFX*           hand_fx;
+	HandFX*           HandFx;
 	int*              field_0x494c;
 	int               field_0x4950;
 	uint8_t           field_0x4954;
@@ -184,7 +184,7 @@ public:
 	uint32_t          field_0x4958;
 	uint32_t          field_0x495c;
 	uint32_t          field_0x4960;
-	LHPoint           point_0x4964;
+	LHPoint           Point0x4964;
 	uint32_t          field_0x4970;
 	uint32_t          field_0x4974;
 	uint32_t          field_0x4978;
@@ -203,7 +203,7 @@ public:
 	uint32_t          field_0x49a0;
 	uint32_t          field_0x49a4;
 	uint32_t          field_0x49a8;
-	LHMatrix*         matrix_0x49ac;
+	LHMatrix*         Matrix0x49ac;
 	float             field_0x49b0;
 	uint32_t          field_0x49b4;
 	uint32_t          field_0x49b8;

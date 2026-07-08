@@ -14,13 +14,13 @@ class SetupControl;
 class SetupBox
 {
 public:
-	Zoomer        zoomer_0x4;
-	Zoomer        zoomer_0x34;
+	Zoomer        Zoomer0x4;
+	Zoomer        Zoomer0x34;
 	uint32_t      field_0x64;
-	SetupControl* widgets_0x68;
-	SetupControl* widget_list;
-	SetupControl* focused_widget; /* 0x70 */
-	SetupControl* widget_0x74;
+	SetupControl* Widgets0x68;
+	SetupControl* WidgetList;
+	SetupControl* FocusedWidget; /* 0x70 */
+	SetupControl* Widget0x74;
 	uint8_t       field_0x78;
 	uint32_t      field_0x7c;
 	uint32_t      field_0x80;
@@ -34,7 +34,7 @@ public:
 	uint32_t      field_0xa0;
 	uint32_t      field_0xa4;
 	uint32_t      field_0xa8;
-	uint32_t      default_text_size;
+	uint32_t      DefaultTextSize;
 	FuncPtr(name = 'SetupBox__field_0xb0', call_type = '__stdcall', result = 'void',
 	        args = [ 'int', 'struct SetupBox*', 'struct SetupControl*', 'int', 'int' ],
 	        arg_labels = [ 'param_0', 'param_1', 'param_2', 'x', 'y' ], decorated_name = 'SetupBox__field_0xb0',

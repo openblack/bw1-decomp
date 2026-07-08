@@ -14,8 +14,8 @@ struct GameBlock
 	uint32_t size; /* 0x0 */
 	uint32_t capacity;
 	Object** array;
-	Object*  last_inserted;
-	Object*  last_removed; /* 0x10 */
+	Object*  LastInserted;
+	Object*  LastRemoved; /* 0x10 */
 
 	// Static methods
 

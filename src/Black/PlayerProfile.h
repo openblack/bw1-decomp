@@ -7,12 +7,12 @@
 
 struct PlayerProfile
 {
-	char16_t creature_name[0x100];   /* 0x0 */
-	char16_t current_profile[0x100]; /* 0x200 */
-	char16_t login_name[0x100];      /* 0x400 */
-	char16_t login_password[0x100];  /* 0x600 */
+	char16_t CreatureName[0x100];   /* 0x0 */
+	char16_t CurrentProfile[0x100]; /* 0x200 */
+	char16_t LoginName[0x100];      /* 0x400 */
+	char16_t LoginPassword[0x100];  /* 0x600 */
 	uint32_t stuff;                  /* 0x800 */
-	uint32_t player_symbol;
+	uint32_t PlayerSymbol;
 	uint32_t timestarted;
 	uint32_t numberofsaves;
 	uint32_t numberofloads; /* 0x810 */

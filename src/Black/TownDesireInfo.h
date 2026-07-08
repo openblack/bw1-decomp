@@ -19,28 +19,28 @@ struct GTownDesireFunction;
 class GTownDesireInfo : public GBaseInfo
 {
 public:
-	GPrayerIconInfo*    associatedPrayerSite; /* 0x10 */
-	float               showsAfterPercent;
-	float               desireTriggersVillagerAction;
-	float               desireTriggersVillagerEmergencyAction;
-	VILLAGER_BASIC_INFO associatedVillagerBirth[0x3]; /* 0x20 */
-	MESH_LIST           worshipSiteMesh;
-	int                 worshipSiteSlot; /* 0x30 */
-	float               worshipSiteScale;
-	float               desireToBeliefScale;
-	float               desireAffectsBeliefAfter;
-	float               desireBuildWonderReducer; /* 0x40 */
-	float               desireValueGreaterCausesDecayInBelief;
-	float               desireToBeliefThresholdDecay;
-	float               desireAffectsAlignmentAfter;
-	float               howImportantDesireIsToAlignment; /* 0x50 */
-	uint32_t            maxTimeForAlignmentChange;
-	float               tribeMultiplier[0x9];
-	HELP_TEXT           helpStartEnum; /* 0x7c */
-	HELP_TEXT           helpEndEnum;   /* 0x80 */
-	HELP_TEXT           helpStatEnum;
-	uint32_t            helpMessage;
-	uint32_t            helpCondition;
+	GPrayerIconInfo*    AssociatedPrayerSite; /* 0x10 */
+	float               ShowsAfterPercent;
+	float               DesireTriggersVillagerAction;
+	float               DesireTriggersVillagerEmergencyAction;
+	VILLAGER_BASIC_INFO AssociatedVillagerBirth[0x3]; /* 0x20 */
+	MESH_LIST           WorshipSiteMesh;
+	int                 WorshipSiteSlot; /* 0x30 */
+	float               WorshipSiteScale;
+	float               DesireToBeliefScale;
+	float               DesireAffectsBeliefAfter;
+	float               DesireBuildWonderReducer; /* 0x40 */
+	float               DesireValueGreaterCausesDecayInBelief;
+	float               DesireToBeliefThresholdDecay;
+	float               DesireAffectsAlignmentAfter;
+	float               HowImportantDesireIsToAlignment; /* 0x50 */
+	uint32_t            MaxTimeForAlignmentChange;
+	float               TribeMultiplier[0x9];
+	HELP_TEXT           HelpStartEnum; /* 0x7c */
+	HELP_TEXT           HelpEndEnum;   /* 0x80 */
+	HELP_TEXT           HelpStatEnum;
+	uint32_t            HelpMessage;
+	uint32_t            HelpCondition;
 
 	// Override methods
 

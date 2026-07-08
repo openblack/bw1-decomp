@@ -34,16 +34,16 @@ class TattooEditor;
 
 struct FrontEnd
 {
-	bool                     cursor_on; /* 0x0 */
+	bool                     CursorOn; /* 0x0 */
 	ChannelBox*              channel_box;
 	EditingDebugBox*         editing_debug_box;
 	SetupMultiplayerMain*    setup_multiplayer_main;
 	SetupOnlineLandscapes*   setup_online_landscapes; /* 0x10 */
 	SkipBox*                 skip_box;
-	CDBox*                   cd_box;
+	CDBox*                   CdBox;
 	GatheringBox*            gathering_box;
 	LoadingBox*              loading_box; /* 0x20 */
-	GSLobbyBox*              gs_lobby_box;
+	GSLobbyBox*              GsLobbyBox;
 	LobbyBox*                lobby_box;
 	RegisterBox*             register_box;
 	LoginBox*                login_box; /* 0x30 */

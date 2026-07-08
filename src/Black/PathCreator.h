@@ -7,9 +7,9 @@
 
 struct PathCreator
 {
-	char*     dev_black; /* 0x0 */
+	char*     DevBlack; /* 0x0 */
 	char*     profiles;
-	char*     saved_games;
+	char*     SavedGames;
 	char*     pictures;
 	char*     current; /* 0x10 */
 	char*     field_0x16;

@@ -44,13 +44,13 @@ public:
 	float         top;
 	float         right;
 	float         bottom; /* 0x10 */
-	float         arrow_x;
-	float         arrow_y;
+	float         ArrowX;
+	float         ArrowY;
 	float         depth;
 	float         text_size; /* 0x20 */
 	float         field_0x24;
-	int           num_lines;
-	float         text_padding;
+	int           NumLines;
+	float         TextPadding;
 	char16_t      field_0x30[0x100];
 	uint8_t       field_0x230[0x200];
 	char16_t*     lines[0x8]; /* 0x430 */

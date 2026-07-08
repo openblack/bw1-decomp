@@ -11,7 +11,7 @@ struct LH3DBoundingBox
 	uint32_t       unknown; /* 0x0 */
 	struct LHPoint centre;
 	struct LHPoint size; /* 0x10 */
-	float          diagonal_length;
+	float          DiagonalLength;
 };
 static_assert(sizeof(LH3DBoundingBox) == 0x20, "Data type is of wrong size");
 

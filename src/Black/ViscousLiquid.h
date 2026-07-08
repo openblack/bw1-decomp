@@ -22,7 +22,7 @@ struct FragVertex
 
 struct FragPrimitive
 {
-	LH3DPrimitive* lh3d_primitive; /* 0x0 */
+	LH3DPrimitive* Lh3dPrimitive; /* 0x0 */
 	uint32_t       field_0x4[0x3];
 	FragTriangle*  triangle; /* 0x10 */
 

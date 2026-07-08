@@ -55,7 +55,7 @@ class TownCentreSpellIcon : public TownSpellIcon
 {
 public:
 	uint32_t field_0x118;
-	uint32_t power_up_enabled[POWER_UP_TYPE_LAST];
+	uint32_t PowerUpEnabled[POWER_UP_TYPE_LAST];
 
 	// Override methods
 

@@ -15,8 +15,8 @@ class Object;
 class GMagicHand : public GameThing
 {
 public:
-	bool    has_object_in_hand; /* 0x14 */
-	Object* object_in_hand;
+	bool    HasObjectInHand; /* 0x14 */
+	Object* ObjectInHand;
 
 	// Override methods
 

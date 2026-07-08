@@ -9,8 +9,8 @@
 struct LHPacketHeader
 {
 	uint16_t          length; /* 0x0 */
-	uint16_t          netevent_type;
-	struct LH_USER_ID user_id;
+	uint16_t          NeteventType;
+	struct LH_USER_ID UserId;
 };
 static_assert(sizeof(LHPacketHeader) == 0x8, "Data type is of wrong size");
 

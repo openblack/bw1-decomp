@@ -25,7 +25,7 @@ void CitadelHeart::SetToZero()
 	field_0xd0 = 0.0f;
 	field_0xd4 = 0;
 	leashes = NULL;
-	collide_data = NULL;
+	CollideData = NULL;
 }
 
 uint32_t CitadelHeart::Load(GameOSFile& file)

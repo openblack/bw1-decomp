@@ -70,7 +70,7 @@ uint32_t LHFile::GetSegmentData(char* segment_name, void* data, uint32_t data_si
 {
 	if (!opened)
 		return 3;
-	if (segment_opened)
+	if (SegmentOpened)
 		CloseSegment();
 	if (OpenSegment(segment_name))
 		return 2;
@@ -115,7 +115,7 @@ uint32_t LHFile::Open(LH_FILE_MODE mode)
 	Buffer[0] = 0;
 	opened = 1;
 	Buffer[1] = 0;
-	file_mode = mode;
+	FileMode = mode;
 	v8 = 0;
 	if (mode == 2 || mode == 3)
 	{
@@ -132,7 +132,7 @@ uint32_t LHFile::Open(LH_FILE_MODE mode)
 		strcpy((char*)Buffer, off_C2B9EC);
 		WriteData(Buffer, 8);
 	}
-	current_file_offset = 8;
+	CurrentFileOffset = 8;
 	if (mode == 3)
 	{
 		LHLinkedNode*  node = (LHLinkedNode*)field_0x4;
@@ -181,7 +181,7 @@ uint32_t LHFile::VerifyFile()
 			if (ReadData(lDistanceToMove, 4))
 				return 2;
 			if (custom_set_file_pointer_function)
-				custom_set_file_pointer_function(lDistanceToMove[0], 1, custom_function_user_data);
+				custom_set_file_pointer_function(lDistanceToMove[0], 1, CustomFunctionUserData);
 			else
 				SetFilePointer(handle, lDistanceToMove[0], 0, 1);
 			int v5;
@@ -213,7 +213,7 @@ uint32_t LHFile::VerifyFile()
 		}
 	}
 	if (custom_set_file_pointer_function)
-		custom_set_file_pointer_function(8, 0, custom_function_user_data);
+		custom_set_file_pointer_function(8, 0, CustomFunctionUserData);
 	else
 		SetFilePointer(handle, 8, 0, 0);
 	return 0;
@@ -226,9 +226,9 @@ uint32_t LHFile::GetNextSegment(LHSegment* segment, int allocate_memory)
 
 	if (!opened)
 		return 3;
-	if (file_mode != 2)
+	if (FileMode != 2)
 		return 3;
-	if (segment_opened)
+	if (SegmentOpened)
 		CloseSegment();
 	if (!allocate_memory && (!segment->buffer || !segment->size))
 		return 3;
@@ -272,9 +272,9 @@ uint32_t LHFile::WriteSegment(char* segment)
 {
 	if (!opened)
 		return 3;
-	if (file_mode && file_mode != 3)
+	if (FileMode && FileMode != 3)
 		return 3;
-	if (segment_opened)
+	if (SegmentOpened)
 		CloseSegment();
 	if (OpenSegment(segment))
 		return 3;
@@ -315,7 +315,7 @@ uint32_t LHFile::Close()
 {
 	if (!opened)
 		return 0;
-	if (segment_opened)
+	if (SegmentOpened)
 		CloseSegment();
 	FreeLastSeg();
 	void* v3 = handle;
@@ -379,7 +379,7 @@ uint32_t LHFile::SetLHFilePointer(char* segment_name, int offset)
 	{
 		if (!opened)
 			goto fail;
-		if (file_mode != 2 && file_mode != 3)
+		if (FileMode != 2 && FileMode != 3)
 			goto fail;
 		LHSegmentDesc* SegmentSize = Lookup(segment_name);
 		if (!SegmentSize)
@@ -388,9 +388,9 @@ uint32_t LHFile::SetLHFilePointer(char* segment_name, int offset)
 		if (offset > (int)SegmentSize->offset)
 			goto fail;
 	}
-	v9 = custom_set_file_pointer_function ? custom_set_file_pointer_function(offset + v4, 0, custom_function_user_data)
+	v9 = custom_set_file_pointer_function ? custom_set_file_pointer_function(offset + v4, 0, CustomFunctionUserData)
 	                                      : SetFilePointer(handle, offset + v4, 0, 0);
-	current_file_offset = v9;
+	CurrentFileOffset = v9;
 	if (v9 != -1)
 		goto ok;
 fail:
@@ -404,9 +404,9 @@ uint32_t LHFile::GetSegment(char* segment, LHSegment* dataOut, int bAllocMemory)
 {
 	if (!opened)
 		return 3;
-	if (file_mode != 2)
+	if (FileMode != 2)
 		return 3;
-	if (segment_opened)
+	if (SegmentOpened)
 		CloseSegment();
 	LHSegmentDesc* segmentLocation = Lookup(segment);
 	if (!segmentLocation)
@@ -433,10 +433,10 @@ uint32_t LHFile::OpenSegment(char* name)
 {
 	if (!opened)
 		return 3;
-	if (segment_opened)
+	if (SegmentOpened)
 		CloseSegment();
-	LH_FILE_MODE v4 = file_mode;
-	segment_opened = 1;
+	LH_FILE_MODE v4 = FileMode;
+	SegmentOpened = 1;
 	segment_size = 0;
 	segment_name = name;
 	if (v4 == 2)
@@ -445,29 +445,29 @@ uint32_t LHFile::OpenSegment(char* name)
 		if (!v5)
 			return 2;
 		segment_size = v5->offset;
-		segment_offset = v5->size;
+		SegmentOffset = v5->size;
 		return SetLHFilePointer(name, 0);
 	}
-	segment_offset = current_file_offset + 36;
+	SegmentOffset = CurrentFileOffset + 36;
 	return WriteSegmentHeader(name);
 }
 
 // BW1W120 007bdf50 LHFile::CloseSegment(void)
 uint32_t LHFile::CloseSegment()
 {
-	if (segment_opened)
+	if (SegmentOpened)
 	{
-		LH_FILE_MODE v2 = file_mode;
+		LH_FILE_MODE v2 = FileMode;
 		if (!v2 || v2 == 3)
 		{
-			int v3 = current_file_offset;
-			if (SetLHFilePointer(0, segment_offset - 4))
+			int v3 = CurrentFileOffset;
+			if (SetLHFilePointer(0, SegmentOffset - 4))
 				return 3;
 			WriteData(&segment_size, 4);
 			SetLHFilePointer(0, v3);
 		}
-		int v5 = segment_size + segment_offset;
-		segment_opened = 0;
+		int v5 = segment_size + SegmentOffset;
+		SegmentOpened = 0;
 		SetLHFilePointer(0, v5);
 	}
 	return 0;
@@ -476,9 +476,9 @@ uint32_t LHFile::CloseSegment()
 // BW1W120 007bdfc0 LHFile::WriteSegmentData(void const *, unsigned int)
 uint32_t LHFile::WriteSegmentData(const void* data, uint32_t length)
 {
-	if (!segment_opened)
+	if (!SegmentOpened)
 		return 3;
-	if (file_mode && file_mode != 3)
+	if (FileMode && FileMode != 3)
 		return 3;
 	segment_size += length;
 	WriteData(data, length);
@@ -488,7 +488,7 @@ uint32_t LHFile::WriteSegmentData(const void* data, uint32_t length)
 // BW1W120 007be040 LHFile::GetSegmentData(void *, unsigned int, int)
 uint32_t LHFile::GetSegmentData(void* data, uint32_t data_size, int offset)
 {
-	if (!segment_opened)
+	if (!SegmentOpened)
 		return 3;
 	if (offset == -1 || !SetLHFilePointer(segment_name, offset))
 		return ReadData(data, data_size);
@@ -500,13 +500,13 @@ uint32_t LHFile::WriteData(const void* lpBuffer, uint32_t nNumberOfBytesToWrite)
 {
 	if (!opened)
 		return 3;
-	if (file_mode && file_mode != 3)
+	if (FileMode && FileMode != 3)
 		return 3;
 	const void* v5 = (const void*)nNumberOfBytesToWrite;
-	current_file_offset += nNumberOfBytesToWrite;
+	CurrentFileOffset += nNumberOfBytesToWrite;
 	if (custom_write_function)
 	{
-		custom_write_function(lpBuffer, (uint32_t)v5, custom_function_user_data);
+		custom_write_function(lpBuffer, (uint32_t)v5, CustomFunctionUserData);
 	}
 	else
 	{
@@ -523,13 +523,13 @@ uint32_t LHFile::ReadData(void* lpBuffer, uint32_t nNumberOfBytesToRead)
 {
 	if (!opened)
 		return 3;
-	if (file_mode != 2 && file_mode != 3)
+	if (FileMode != 2 && FileMode != 3)
 		return 3;
 	void* v5 = (void*)nNumberOfBytesToRead;
-	current_file_offset += nNumberOfBytesToRead;
+	CurrentFileOffset += nNumberOfBytesToRead;
 	if (custom_read_function)
 	{
-		if (!custom_read_function(lpBuffer, (uint32_t)v5, custom_function_user_data))
+		if (!custom_read_function(lpBuffer, (uint32_t)v5, CustomFunctionUserData))
 			return 2;
 	}
 	else
@@ -552,7 +552,7 @@ uint32_t LHFile::SetFileFunctions(void* read_function, void* write_function, voi
 		result = (uint32_t)set_file_pointer_function;
 		if (set_file_pointer_function)
 		{
-			custom_function_user_data = user_data;
+			CustomFunctionUserData = user_data;
 			custom_write_function = (uint32_t (*)(const void*, uint32_t, void*))write_function;
 			custom_read_function = (uint32_t (*)(void*, uint32_t, void*))read_function;
 			custom_set_file_pointer_function = (uint32_t (*)(uint32_t, uint32_t, void*))set_file_pointer_function;

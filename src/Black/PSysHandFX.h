@@ -29,7 +29,7 @@ class PHandFX : public PSysHandFX
 {
 public:
 	uint8_t  field_0x4[0x44];
-	uint32_t power_up_level; /* 0x48 */
+	uint32_t PowerUpLevel; /* 0x48 */
 	uint8_t  field_0x4c[0x28];
 
 	// Override methods

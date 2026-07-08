@@ -84,7 +84,7 @@ public:
 	uint8_t                field_0x59a8[0xc];
 	Temple*                temple; /* 0x59b4 */
 	GMap                   map;
-	int32_t                land_number; /* 0x205a08 */
+	int32_t                LandNumber; /* 0x205a08 */
 	uint32_t               field_0x205a0c;
 	int                    field_0x205a10;
 	uint32_t               field_0x205a14;
@@ -95,23 +95,23 @@ public:
 	uint32_t               field_0x205a2c;
 	GData                  data; /* 0x205a30 */
 	uint8_t                field_0x205a58;
-	uint8_t                player_index;
+	uint8_t                PlayerIndex;
 	uint8_t                field_0x205a5a;
-	uint8_t                neutral_player_index;
+	uint8_t                NeutralPlayerIndex;
 	uint32_t               field_0x205a5c;
 	uint8_t                field_0x205a60;
 	uint8_t                field_0x205a61;
 	uint8_t                field_0x205a62;
 	uint8_t                field_0x205a63;
 	uint32_t               field_0x205a64;
-	MapCoords              coords_0x205a68;
-	MapCoords              coords_0x205a74;
+	MapCoords              Coords0x205a68;
+	MapCoords              Coords0x205a74;
 	uint8_t                field_0x205a80[0xf0];
 	GNetwork               network; /* 0x205b70 */
 	uint8_t                field_0x205b84[0x20];
-	GlobalGameLists        game_lists; /* 0x205ba4 */
+	GlobalGameLists        GameLists; /* 0x205ba4 */
 	uint32_t               field_0x205d34;
-	int                    fps_0x205d38;
+	int                    Fps0x205d38;
 	uint32_t               field_0x205d3c;
 	int                    field_0x205d40;
 	uint32_t               field_0x205d44;
@@ -126,7 +126,7 @@ public:
 	GTerrainMap            terrain_map; /* 0x205e8c */
 	GPlayerInfo            player_info; /* 0x24ffbc */
 	GLanguage              language;    /* 0x25004c */
-	GSoundMap*             sound_map;   /* 0x250058 */
+	GSoundMap*             SoundMap;   /* 0x250058 */
 	HelpSystem*            help_system;
 	HelpProfile*           help_profile; /* 0x250060 */
 	GestureSystemDataList* gesture_system_data_list;
@@ -134,20 +134,20 @@ public:
 	GestureSystem*         gesture_system;
 	GestureSystemResult*   gesture_system_result; /* 0x250070 */
 	Settings*              settings;
-	float                  town_influence_multiplier;
-	float                  player_influence_multiplier;
+	float                  TownInfluenceMultiplier;
+	float                  PlayerInfluenceMultiplier;
 	uint32_t               field_0x250080;
 	ScriptCreatureCurse    script_creature_curse;
 	GScript*               script; /* 0x250090 */
 	uint32_t               field_0x250094;
 	uint32_t               field_0x250098;
-	MapCoords              start_camera_coords;
+	MapCoords              StartCameraCoords;
 	uint8_t                field_0x2500a8[0xc8];
 	char*                  field_0x250170;
 	uint32_t               field_0x250174;
 	Config*                config;
-	uint32_t               enum_0x25017c;
-	GAME_MODE              game_mode; /* 0x250180 */
+	uint32_t               Enum0x25017c;
+	GAME_MODE              GameMode; /* 0x250180 */
 	uint8_t                field_0x250184[0x124];
 	GKeyBuffer             key_buffer; /* 0x2502a8 */
 	uint32_t               field_0x2502b8;

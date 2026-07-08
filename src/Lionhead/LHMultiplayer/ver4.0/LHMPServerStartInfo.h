@@ -16,13 +16,13 @@ struct LHTransportInfo;
 struct LHMPServerStartInfo
 {
 	struct LHNetUser*       user; /* 0x0 */
-	struct LHTransportInfo* listener_address;
-	char*                   registered_name;
+	struct LHTransportInfo* ListenerAddress;
+	char*                   RegisteredName;
 	uint8_t                 field_0xc[0x18];
-	char*                   user_file; /* 0x24 */
-	char*                   game_file;
-	enum LH_OPERATING_MODE  operating_mode;
-	bool32_t                run_message_server; /* 0x30 */
+	char*                   UserFile; /* 0x24 */
+	char*                   GameFile;
+	enum LH_OPERATING_MODE  OperatingMode;
+	bool32_t                RunMessageServer; /* 0x30 */
 	uint8_t                 field_0x34[0xc88];
 };
 static_assert(sizeof(LHMPServerStartInfo) == 0xcbc, "Data type is of wrong size");

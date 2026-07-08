@@ -31,7 +31,7 @@ public:
 	float        field_0x7c;
 	Citadel*     citadel; /* 0x80 */
 	CitadelPart* next;
-	GameThing*   game_thing_0x88;
+	GameThing*   GameThing0x88;
 
 	// Override methods
 

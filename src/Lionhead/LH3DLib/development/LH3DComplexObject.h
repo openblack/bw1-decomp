@@ -14,7 +14,7 @@ struct LHMatrix;
 class LH3DComplexObject : public LH3DStaticObject
 {
 public:
-	LHMatrix*          matrix_0x80;
+	LHMatrix*          Matrix0x80;
 	uint32_t*          field_0x84;
 	LH3DObjectHair*    hair;
 	uint32_t           field_0x8c;

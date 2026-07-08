@@ -11,13 +11,13 @@
 class LHPlayer : public LHPacketisableObject
 {
 public:
-	char            user_filename[0x104]; /* 0x4 */
+	char            UserFilename[0x104]; /* 0x4 */
 	void*           user_data;            /* 0x108 */
-	uint32_t        user_data_len;
+	uint32_t        UserDataLen;
 	char16_t        name[0x32]; /* 0x110 */
-	uint32_t        player_id;  /* 0x174 */
-	uint32_t        user_id;
-	void*           system_data;
+	uint32_t        PlayerId;  /* 0x174 */
+	uint32_t        UserId;
+	void*           SystemData;
 	LHTransportInfo transport_info; /* 0x180 */
 	uint32_t        field_0x1f4;
 	uint32_t        field_0x1f8;

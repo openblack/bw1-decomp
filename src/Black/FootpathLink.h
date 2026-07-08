@@ -19,7 +19,7 @@ struct MapCoords;
 class GFootpathLink : public GameThing
 {
 public:
-	LHLinkedList__GFootpath footpath_list; /* 0x14 */
+	LHLinkedList__GFootpath FootpathList; /* 0x14 */
 
 	// Override methods
 

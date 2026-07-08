@@ -14,7 +14,7 @@ struct CreatureReceiveSpell
 {
 	Creature*                                 creature; /* 0x0 */
 	CreatureReceiveSpell__TPerSpellData       data[0x10];
-	GJVector__CreatureReceiveSpell__QueueData queue_data; /* 0x184 */
+	GJVector__CreatureReceiveSpell__QueueData QueueData; /* 0x184 */
 	uint8_t                                   field_0x194[0x8];
 	LHPoint                                   field_0x19c;
 	LHPoint                                   field_0x1a8;

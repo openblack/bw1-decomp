@@ -22,7 +22,7 @@ class GFootpath : public GameThing
 {
 public:
 	GFootpathNode* nodes; /* 0x14 */
-	int            node_count;
+	int            NodeCount;
 	GFootpath*     next;
 	uint32_t       field_0x20;
 

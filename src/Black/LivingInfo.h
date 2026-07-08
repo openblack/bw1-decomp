@@ -15,9 +15,9 @@ public:
 	float    field_0x12c;
 	float    field_0x130;
 	int      field_0x134;
-	uint32_t teen_age;
-	uint32_t middle_age;
-	uint32_t old_age; /* 0x140 */
+	uint32_t TeenAge;
+	uint32_t MiddleAge;
+	uint32_t OldAge; /* 0x140 */
 	uint32_t field_0x144;
 	uint32_t field_0x148;
 	uint32_t field_0x14c;

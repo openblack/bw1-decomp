@@ -47,7 +47,7 @@ public:
 	float         field_0xa0;
 	uint32_t      field_0xa4;
 	uint32_t      field_0xa8;
-	float         group_angle;
+	float         GroupAngle;
 	uint32_t      field_0xb0;
 	uint32_t      field_0xb4;
 	uint32_t      field_0xb8;

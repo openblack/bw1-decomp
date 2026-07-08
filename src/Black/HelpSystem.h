@@ -249,8 +249,8 @@ class HelpSpirit;
 class HelpSystem : public Base
 {
 public:
-	HelpSpirit*      spirit_type_2; /* 0x8 */
-	HelpSpirit*      spirit_type_1;
+	HelpSpirit*      SpiritType2; /* 0x8 */
+	HelpSpirit*      SpiritType1;
 	HelpDudeControl* help_dude_control; /* 0x10 */
 	uint32_t         help_text;
 	Bubble*          bubble;

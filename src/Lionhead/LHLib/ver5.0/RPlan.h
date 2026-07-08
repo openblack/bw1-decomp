@@ -33,13 +33,13 @@ struct RPlan
 	float       field_0x4c;
 	uint32_t    field_0x50;
 	uint32_t    field_0x54;
-	VisitBlock* visit_blocks;
+	VisitBlock* VisitBlocks;
 	float       field_0x5c;
-	Route*      route_0x60;
+	Route*      Route0x60;
 	uint32_t    field_0x64;
-	Route*      route_0x68;
-	Route*      route_0x6c;
-	Route*      route_0x70;
+	Route*      Route0x68;
+	Route*      Route0x6c;
+	Route*      Route0x70;
 
 	// Constructors
 

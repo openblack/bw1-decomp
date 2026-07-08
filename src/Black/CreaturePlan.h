@@ -18,7 +18,7 @@ class CreatureMental;
 class CreaturePlan : public Base
 {
 public:
-	CREATURE_DESIRES creature_desire; /* 0x8 */
+	CREATURE_DESIRES CreatureDesire; /* 0x8 */
 	CreatureBelief*  field_0xc;
 	CreatureBelief*  field_0x10;
 	CreatureBelief*  field_0x14;
@@ -48,7 +48,7 @@ struct CreaturePlanState
 	uint32_t         field_0x784;
 	CREATURE_DESIRES desires[0x28];
 	uint32_t         field_0x788; /* 0x828 */
-	int              desire_count;
+	int              DesireCount;
 
 	// Constructors
 

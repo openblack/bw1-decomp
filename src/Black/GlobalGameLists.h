@@ -60,52 +60,52 @@ class GlobalGameLists : public Base
 public:
 	LHListHead<Ball>               balls;   /* 0x8 */
 	LHListHead<Forest>             forests; /* 0x10 */
-	LHListHead<Living>             living_list;
+	LHListHead<Living>             LivingList;
 	LHListHead<Spell>              spells; /* 0x20 */
-	LHListHead<GParticleContainer> particle_containers;
+	LHListHead<GParticleContainer> ParticleContainers;
 	LHListHead<Dance>              dances; /* 0x30 */
 	LHListHead<Reaction>           reactions;
-	LHLinkedList<MobileObject>     mobile_objects; /* 0x40 */
+	LHLinkedList<MobileObject>     MobileObjects; /* 0x40 */
 	LHLinkedList<GFootpathFinder>  footpath_finder;
 	LHListHead<EarthQuake>         earthquakes; /* 0x50 */
-	LHListHead<Villager>           villagers_without_town;
+	LHListHead<Villager>           VillagersWithoutTown;
 	LHListHead<Field>              fields; /* 0x60 */
-	LHListHead<FishFarm>           fish_farms;
-	LHListHead<FireEffect>         fire_effects; /* 0x70 */
-	LHListHead<SoundTag>           sound_tags;
+	LHListHead<FishFarm>           FishFarms;
+	LHListHead<FireEffect>         FireEffects; /* 0x70 */
+	LHListHead<SoundTag>           SoundTags;
 	LHListHead<Mist>               mist; /* 0x80 */
-	LHListHead<GStreetLight>       street_lights;
-	LHListHead<GStreetLantern>     street_lanterns; /* 0x90 */
-	LHListHead<PileFood>           food_piles;
+	LHListHead<GStreetLight>       StreetLights;
+	LHListHead<GStreetLantern>     StreetLanterns; /* 0x90 */
+	LHListHead<PileFood>           FoodPiles;
 	LHLinkedList<Flock>            flocks; /* 0xa0 */
-	LHListHead<InfluenceRing>      influence_ring_list;
-	LHListHead<WeatherThing>       weather_things; /* 0xb0 */
+	LHListHead<InfluenceRing>      InfluenceRingList;
+	LHListHead<WeatherThing>       WeatherThings; /* 0xb0 */
 	LHListHead<GStream>            streams;
 	LHListHead<GFootpath>          footpaths; /* 0xc0 */
 	LHListHead<GWaterfall>         waterfalls;
 	LHListHead<Waypoint>           waypoints; /* 0xd0 */
 	LHListHead<GArena>             arenas;
-	LHLinkedList<Town>             town_list; /* 0xe0 */
+	LHLinkedList<Town>             TownList; /* 0xe0 */
 	LHLinkedList<GameThingWithPos> game_thing_with_pos;
-	LHListHead<ScriptHighlight>    script_highlights; /* 0xf0 */
-	LHListHead<MagicFireBall>      magic_fire_balls;
-	LHListHead<MapShield>          map_shields; /* 0x100 */
-	LHLinkedList<BuildingSite>     building_sites;
+	LHListHead<ScriptHighlight>    ScriptHighlights; /* 0xf0 */
+	LHListHead<MagicFireBall>      MagicFireBalls;
+	LHListHead<MapShield>          MapShields; /* 0x100 */
+	LHLinkedList<BuildingSite>     BuildingSites;
 	LHLinkedList<MultiMapFixed>    multi_map_fixed; /* 0x110 */
-	LHLinkedList<AnimatedStatic>   animated_statics;
+	LHLinkedList<AnimatedStatic>   AnimatedStatics;
 	LHListHead<GPlayer>            players; /* 0x120 */
 	LHLinkedList<Reward>           rewards;
 	LHLinkedList<Object>           objects; /* 0x130 */
 	LHLinkedList<Tree>             trees;
-	LHListHead<BigForest>          big_forests; /* 0x140 */
-	LHListHead<GBaseInfo>          base_infos;
+	LHListHead<BigForest>          BigForests; /* 0x140 */
+	LHListHead<GBaseInfo>          BaseInfos;
 	LHLinkedList<GClimate>         climates; /* 0x150 */
-	LHLinkedList<TownCentre>       town_centres;
+	LHLinkedList<TownCentre>       TownCentres;
 	LHListHead<Whale>              whales; /* 0x160 */
-	LHListHead<FireFly>            fire_flies;
+	LHListHead<FireFly>            FireFlies;
 	LHListHead<PuzzleGame>         puzzle_game; /* 0x170 */
-	LHListHead<GameThing>          game_things;
-	LHLinkedList<TownArtifact>     town_artifacts; /* 0x180 */
+	LHListHead<GameThing>          GameThings;
+	LHLinkedList<TownArtifact>     TownArtifacts; /* 0x180 */
 	LHLinkedList<Fragment>         fragments;
 
 	// Override methods

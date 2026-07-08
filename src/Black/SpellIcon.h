@@ -49,8 +49,8 @@ public:
 	SpellSeedGraphic*           graphic;   /* 0x7c */
 	GSpellSeedInfo*             seed_info; /* 0x80 */
 	uint32_t                    field_0x84;
-	Q29SpellIcon13TChargingData charging_data;
-	MapCoords                   spell_coords; /* 0x100 */
+	Q29SpellIcon13TChargingData ChargingData;
+	MapCoords                   SpellCoords; /* 0x100 */
 	uint32_t                    field_0x10c;
 
 	// Override methods

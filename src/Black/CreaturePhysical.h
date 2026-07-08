@@ -50,8 +50,8 @@ public:
 	uint32_t          field_0x4c;
 	uint32_t          field_0x50;
 	Creature*         creature;
-	LH3DCreature*     creature_3d;
-	CreatureDamageMap damage_map;
+	LH3DCreature*     Creature3d;
+	CreatureDamageMap DamageMap;
 	uint8_t*          field_0x6c;
 	uint32_t          field_0x70;
 

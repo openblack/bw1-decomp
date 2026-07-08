@@ -8,7 +8,7 @@
 class MPFEDatabase
 {
 public:
-	float    progress_percentage; /* 0x4 */
+	float    ProgressPercentage; /* 0x4 */
 	bool32_t populated;
 
 	// Override methods

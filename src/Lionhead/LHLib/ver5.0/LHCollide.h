@@ -45,8 +45,8 @@ public:
 		float   radius;
 		float   r2; /* 0x10 */
 		float   angle;
-		LHPoint bounding_box;
-		List*   iterator_list; /* 0x24 */
+		LHPoint BoundingBox;
+		List*   IteratorList; /* 0x24 */
 
 		// Constructors
 

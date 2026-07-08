@@ -9,7 +9,7 @@ struct HairGroup;
 
 struct LH3DObjectHair
 {
-	long        hair_count; /* 0x0 */
+	long        HairCount; /* 0x0 */
 	HairGroup** hairs;
 
 	// Non-virtual methods

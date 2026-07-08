@@ -22,41 +22,41 @@ class Town;
 class GAbodeInfo : public GMultiMapFixedInfo
 {
 public:
-	ABODE_TYPE   abodeType; /* 0x120 */
-	ABODE_NUMBER abodeNumber;
+	ABODE_TYPE   AbodeType; /* 0x120 */
+	ABODE_NUMBER AbodeNumber;
 	Name         description;
 	uint32_t     field_0x148;
 	uint32_t     field_0x14c;
 	uint32_t     field_0x150;
 	uint32_t     field_0x154;
 	TRIBE_TYPE   tribe_type;
-	MESH_LIST    meshId;
-	uint32_t     canBePhysicallyDamaged; /* 0x160 */
-	float        startLife;
-	uint32_t     startStrength;
-	float        startDefence;
-	uint32_t     startInfluence; /* 0x170 */
-	int          maxVillagersInAbode;
-	int          maxChildrenInAbode;
-	uint32_t     startVillagersInAbode;
-	uint32_t     startChildrenInAbode; /* 0x180 */
-	uint32_t     startFood;
-	uint32_t     startFoodRAnd;
-	uint32_t     startWood;
-	uint32_t     startWoodRAnd; /* 0x190 */
-	uint32_t     howLongRuinLastsFor;
-	uint32_t     potForResourceFood;
-	uint32_t     potForResourceWood;
-	float        percentTooCrowded; /* 0x1a0 */
-	int          producesMobileObject;
-	float        maxNumMobileObjectsToProduce;
-	float        timeEachMobileObjectTakesToProduce;
-	float        emptyAbodeLifeReducer; /* 0x1b0 */
-	int          populationWhenNeeded;
-	float        thresholdForStopBeingFunctional;
-	int          toolTipsForBuild;
-	int          didYouKnow; /* 0x1c0 */
-	DYK_CATEGORY dykCategory;
+	MESH_LIST    MeshId;
+	uint32_t     CanBePhysicallyDamaged; /* 0x160 */
+	float        StartLife;
+	uint32_t     StartStrength;
+	float        StartDefence;
+	uint32_t     StartInfluence; /* 0x170 */
+	int          MaxVillagersInAbode;
+	int          MaxChildrenInAbode;
+	uint32_t     StartVillagersInAbode;
+	uint32_t     StartChildrenInAbode; /* 0x180 */
+	uint32_t     StartFood;
+	uint32_t     StartFoodRAnd;
+	uint32_t     StartWood;
+	uint32_t     StartWoodRAnd; /* 0x190 */
+	uint32_t     HowLongRuinLastsFor;
+	uint32_t     PotForResourceFood;
+	uint32_t     PotForResourceWood;
+	float        PercentTooCrowded; /* 0x1a0 */
+	int          ProducesMobileObject;
+	float        MaxNumMobileObjectsToProduce;
+	float        TimeEachMobileObjectTakesToProduce;
+	float        EmptyAbodeLifeReducer; /* 0x1b0 */
+	int          PopulationWhenNeeded;
+	float        ThresholdForStopBeingFunctional;
+	int          ToolTipsForBuild;
+	int          DidYouKnow; /* 0x1c0 */
+	DYK_CATEGORY DykCategory;
 
 	// Override methods
 
@@ -65,11 +65,11 @@ public:
 	// BW1W120 00401270 BW1M100 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
 	virtual GBaseInfo& GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00401240 BW1M100 1019a370 GAbodeInfo::GetMesh() const
-	virtual MESH_LIST GetMesh() const { return meshId; }
+	virtual MESH_LIST GetMesh() const { return MeshId; }
 	// BW1W120 00401250 BW1M100 106fde70 GAbodeInfo::GetAbodeType() const
-	virtual ABODE_TYPE GetAbodeType() const { return abodeType; }
+	virtual ABODE_TYPE GetAbodeType() const { return AbodeType; }
 	// BW1W120 00401260 BW1M100 100984c0 GAbodeInfo::GetAbodeNumber() const
-	virtual ABODE_NUMBER GetAbodeNumber() const { return abodeNumber; }
+	virtual ABODE_NUMBER GetAbodeNumber() const { return AbodeNumber; }
 
 	// Static methods
 
@@ -89,7 +89,7 @@ public:
 	{
 		file->GetSegmentData(&type, sizeof(type), -1);
 		SetInfoID();
-		file->GetSegmentData(&editorMesh, sizeof(editorMesh), -1);
+		file->GetSegmentData(&EditorMesh, sizeof(EditorMesh), -1);
 	}
 };
 static_assert(sizeof(GAbodeInfo) == 0x1c8, "Data type is of wrong size");

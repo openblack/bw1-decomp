@@ -61,9 +61,9 @@ struct CMouse
 struct ControlKey
 {
 	LH_KEY   key; /* 0x0 */
-	char16_t key_display_text[0x40];
+	char16_t KeyDisplayText[0x40];
 	LH_KEY   keymod; /* 0x84 */
-	char16_t keymod_display_text[0x40];
+	char16_t KeymodDisplayText[0x40];
 
 	// Non-virtual methods
 
@@ -74,7 +74,7 @@ struct ControlKey
 struct ControlMouse
 {
 	uint32_t code; /* 0x0 */
-	char16_t display_text[0x80];
+	char16_t DisplayText[0x80];
 
 	// Non-virtual methods
 

@@ -34,7 +34,7 @@ class Animal : public Living
 {
 public:
 	uint8_t  field_0xe0[0x2c];
-	uint8_t  death_reason; /* 0x10c */
+	uint8_t  DeathReason; /* 0x10c */
 	float    field_0x110;
 	float    field_0x114;
 	float    field_0x118;

@@ -80,22 +80,22 @@ public:
 	uint16_t      field_0xe0;
 	Villager*     next;
 	float         food;
-	int           last_check_turn;
-	bool          food_speed_up; /* 0xf0 */
+	int           LastCheckTurn;
+	bool          FoodSpeedUp; /* 0xf0 */
 	uint8_t       field_0xf1;
-	uint8_t       disciple_type;
+	uint8_t       DiscipleType;
 	uint8_t       field_0xf3;
-	int16_t       resource_held[RESOURCE_TYPE_LAST];
+	int16_t       ResourceHeld[RESOURCE_TYPE_LAST];
 	int16_t       is_pregnant;
 	int16_t       field_0xfa;
 	BuildingSite* building_site;
 	Villager*     mother; /* 0x100 */
-	GPlayer*      last_player_to_interact;
+	GPlayer*      LastPlayerToInteract;
 	float         field_0x108;
 	float         field_0x10c;
 	uint32_t      field_0x110;
 	FireEffect*   fire_effect;
-	GameThing*    target_thing;
+	GameThing*    TargetThing;
 	Football*     football;
 	uint32_t      field_0x120;
 	uint32_t      field_0x124;

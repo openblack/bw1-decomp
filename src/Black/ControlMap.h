@@ -11,17 +11,17 @@
 
 struct ControlMap
 {
-	BindableAction bindable_actions[_BINDABLE_ACTION_SIZE];       /* 0x0 */
-	bool32_t       bindable_action_states[_BINDABLE_ACTION_SIZE]; /* 0x648c */
-	bool32_t       field2_0x6510;
-	bool32_t       field3_0x6514;
-	bool32_t       field4_0x6518;
-	bool32_t       field5_0x651c;
-	bool32_t       field6_0x6520;
-	bool32_t       field7_0x6524;
-	bool32_t       field7_0x6528;
-	bool32_t       field9_0x652c;
-	bool32_t       field10_0x6530;
+	BindableAction BindableActions[_BINDABLE_ACTION_SIZE];       /* 0x0 */
+	bool32_t       BindableActionStates[_BINDABLE_ACTION_SIZE]; /* 0x648c */
+	bool32_t       Field20x6510;
+	bool32_t       Field30x6514;
+	bool32_t       Field40x6518;
+	bool32_t       Field50x651c;
+	bool32_t       Field60x6520;
+	bool32_t       Field70x6524;
+	bool32_t       Field70x6528;
+	bool32_t       Field90x652c;
+	bool32_t       Field100x6530;
 
 	// Constructors
 

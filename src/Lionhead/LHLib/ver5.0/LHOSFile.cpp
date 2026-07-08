@@ -204,22 +204,22 @@ LH_FILE_RESULT LHOSFile::Length(uint32_t* out_length)
 
 LH_FILE_RESULT LHOSFile::DirFindFirst(const char* pattern, LHDir* dir, uint32_t attributes)
 {
-	HANDLE find_handle = FindFirstFileA(pattern, &dir->find_data);
-	dir->find_handle = find_handle;
-	if (find_handle == INVALID_HANDLE_VALUE)
+	HANDLE FindHandle = FindFirstFileA(pattern, &dir->FindData);
+	dir->FindHandle = FindHandle;
+	if (FindHandle == INVALID_HANDLE_VALUE)
 		return LH_FILE_RESULT_ERROR;
-	dir->search_attributes = attributes;
-	DWORD attr = dir->find_data.dwFileAttributes;
-	if ((dir->find_data.dwFileAttributes & attributes) == 0)
+	dir->SearchAttributes = attributes;
+	DWORD attr = dir->FindData.dwFileAttributes;
+	if ((dir->FindData.dwFileAttributes & attributes) == 0)
 	{
 		do
 		{
-			if (attr == 0 && (*(uint8_t*)&dir->search_attributes & FILE_ATTRIBUTE_NORMAL))
+			if (attr == 0 && (*(uint8_t*)&dir->SearchAttributes & FILE_ATTRIBUTE_NORMAL))
 				break;
-			if (!FindNextFileA(dir->find_handle, &dir->find_data))
+			if (!FindNextFileA(dir->FindHandle, &dir->FindData))
 				return LH_FILE_RESULT_ERROR;
-			attr = dir->find_data.dwFileAttributes;
-		} while ((dir->search_attributes & attr) == 0);
+			attr = dir->FindData.dwFileAttributes;
+		} while ((dir->SearchAttributes & attr) == 0);
 	}
 	ConvertDirInfo(dir);
 	return LH_FILE_RESULT_OK;
@@ -227,9 +227,9 @@ LH_FILE_RESULT LHOSFile::DirFindFirst(const char* pattern, LHDir* dir, uint32_t 
 
 LH_FILE_RESULT LHOSFile::DirFindNext(LHDir* dir)
 {
-	while (FindNextFileA(dir->find_handle, &dir->find_data))
+	while (FindNextFileA(dir->FindHandle, &dir->FindData))
 	{
-		if ((dir->find_data.dwFileAttributes & dir->search_attributes) != 0)
+		if ((dir->FindData.dwFileAttributes & dir->SearchAttributes) != 0)
 		{
 			ConvertDirInfo(dir);
 			return LH_FILE_RESULT_OK;
@@ -240,7 +240,7 @@ LH_FILE_RESULT LHOSFile::DirFindNext(LHDir* dir)
 
 LH_FILE_RESULT LHOSFile::DirFindEnd(LHDir* dir)
 {
-	return FindClose(dir->find_handle) ? LH_FILE_RESULT_OK : LH_FILE_RESULT_ERROR;
+	return FindClose(dir->FindHandle) ? LH_FILE_RESULT_OK : LH_FILE_RESULT_ERROR;
 }
 
 LH_FILE_RESULT __stdcall LHOSFile::Rename(const char* from, const char* to)
@@ -258,55 +258,55 @@ void LHOSFile::ConvertDirInfo(LHDir* dir)
 	DWORD dos_date;
 	DWORD dos_time;
 
-	strcpy(dir->name, dir->find_data.cFileName);
-	strcpy(dir->alternate_name, dir->find_data.cAlternateFileName);
-	DWORD attributes = dir->find_data.dwFileAttributes;
-	dir->size = dir->find_data.nFileSizeLow;
+	strcpy(dir->name, dir->FindData.cFileName);
+	strcpy(dir->AlternateName, dir->FindData.cAlternateFileName);
+	DWORD attributes = dir->FindData.dwFileAttributes;
+	dir->size = dir->FindData.nFileSizeLow;
 	dir->attributes = attributes;
 
 	unsigned int creation_date =
-		CoFileTimeToDosDateTime(&dir->find_data.ftCreationTime, (LPWORD)&dos_date, (LPWORD)&dos_time);
-	unsigned int creation_time;
+		CoFileTimeToDosDateTime(&dir->FindData.ftCreationTime, (LPWORD)&dos_date, (LPWORD)&dos_time);
+	unsigned int CreationTime;
 	if (!creation_date)
 	{
-		creation_time = 0;
+		CreationTime = 0;
 		dos_date = 0;
 		dos_time = 0;
 	}
 	else
 	{
 		creation_date = dos_date;
-		creation_time = dos_time;
+		CreationTime = dos_time;
 	}
-	dir->creation_time.day_of_week = 0;
-	dir->creation_time.field_0x9 = 0;
-	dir->creation_time.day = creation_date & 0x1F;
-	dir->creation_time.month = (creation_date >> 5) & 0xF;
-	dir->creation_time.year = ((unsigned short)creation_date >> 9) + 1980;
-	dir->creation_time.second = 2 * (creation_time & 0x1F);
-	dir->creation_time.minute = (creation_time >> 5) & 0x3F;
-	dir->creation_time.hour = (creation_time >> 11) & 0x1F;
+	dir->CreationTime.DayOfWeek = 0;
+	dir->CreationTime.field_0x9 = 0;
+	dir->CreationTime.day = creation_date & 0x1F;
+	dir->CreationTime.month = (creation_date >> 5) & 0xF;
+	dir->CreationTime.year = ((unsigned short)creation_date >> 9) + 1980;
+	dir->CreationTime.second = 2 * (CreationTime & 0x1F);
+	dir->CreationTime.minute = (CreationTime >> 5) & 0x3F;
+	dir->CreationTime.hour = (CreationTime >> 11) & 0x1F;
 
 	unsigned int write_date =
-		CoFileTimeToDosDateTime(&dir->find_data.ftLastWriteTime, (LPWORD)&dos_date, (LPWORD)&dos_time);
-	unsigned int write_time;
+		CoFileTimeToDosDateTime(&dir->FindData.ftLastWriteTime, (LPWORD)&dos_date, (LPWORD)&dos_time);
+	unsigned int WriteTime;
 	if (!write_date)
 	{
-		write_time = 0;
+		WriteTime = 0;
 	}
 	else
 	{
 		write_date = dos_date;
-		write_time = dos_time;
+		WriteTime = dos_time;
 	}
-	dir->write_time.day_of_week = 0;
-	dir->write_time.day = write_date & 0x1F;
+	dir->WriteTime.DayOfWeek = 0;
+	dir->WriteTime.day = write_date & 0x1F;
 	unsigned int write_month = write_date >> 5;
 	write_date = (unsigned short)write_date >> 9;
-	dir->write_time.month = write_month & 0xF;
-	dir->write_time.year = (unsigned short)(write_date + 1980);
-	dir->write_time.field_0x9 = 0;
-	dir->write_time.second = 2 * (write_time & 0x1F);
-	dir->write_time.minute = (write_time >> 5) & 0x3F;
-	dir->write_time.hour = (write_time >> 11) & 0x1F;
+	dir->WriteTime.month = write_month & 0xF;
+	dir->WriteTime.year = (unsigned short)(write_date + 1980);
+	dir->WriteTime.field_0x9 = 0;
+	dir->WriteTime.second = 2 * (WriteTime & 0x1F);
+	dir->WriteTime.minute = (WriteTime >> 5) & 0x3F;
+	dir->WriteTime.hour = (WriteTime >> 11) & 0x1F;
 }

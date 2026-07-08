@@ -19,7 +19,7 @@ class PotStructure;
 class StandardBuildingSite : public BuildingSite
 {
 public:
-	Pot* wood_pile; /* 0x644 */
+	Pot* WoodPile; /* 0x644 */
 
 	// Override methods
 

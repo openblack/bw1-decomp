@@ -47,7 +47,7 @@ public:
 	int               field_0x1c;
 	uint32_t          field_0x20;
 	uint32_t          field_0x24;
-	CreatureSubAction sub_actions[0x20];
+	CreatureSubAction SubActions[0x20];
 	Creature*         creature; /* 0xc28 */
 	uint32_t          field_0xc2c;
 	uint32_t          field_0xc30;

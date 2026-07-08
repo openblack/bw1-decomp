@@ -36,40 +36,40 @@ public:
 	LHPoint                  field_0x30;
 	uint32_t                 field_0x3c;
 	uint32_t                 field_0x40;
-	bool32_t                 has_fight;
+	bool32_t                 HasFight;
 	GArena*                  arena;
 	uint8_t                  field_0x4c;
 	uint8_t                  field_0x4d;
 	uint8_t                  field_0x4e;
 	uint8_t                  field_0x4f;
-	float                    yaw_0; /* 0x50 */
-	float                    pitch_0;
-	float                    fight_distance;
-	int                      fight_time_left;
-	int                      time_in_arena; /* 0x60 */
-	fight_status_t           fight_status;
+	float                    Yaw0; /* 0x50 */
+	float                    Pitch0;
+	float                    FightDistance;
+	int                      FightTimeLeft;
+	int                      TimeInArena; /* 0x60 */
+	fight_status_t           FightStatus;
 	LHPoint                  field_0x68;
 	float                    field_0x74;
-	float                    elapsed_time;
-	LHPoint                  rotate_point;
-	bool                     rotate_around_point; /* 0x88 */
-	CAMERA_MODE_MOUSE_STATUS mouse_buttons;
-	uint32_t                 tricon_0x90;
-	uint32_t                 tricon_0x94;
-	Point2D                  from_screen_centre;
-	Point2D                  from_screen_centre_abs; /* 0xa0 */
-	LHCoord                  mouse_delta;
-	LHCoord                  mouse_pos_current; /* 0xb0 */
-	LHCoord                  rotate_around_mouse_pos;
-	LHCoord                  mouse_pos_1; /* 0xc0 */
-	bool                     screen_centre_hit;
-	LHPoint                  mouse_hit_point;
-	LHPoint                  last_grab_mouse_hit_point; /* 0xd8 */
-	float                    yaw_1;                     /* 0xe4 */
-	float                    pitch_1;
-	float                    perp_distance_0xec;
-	LHPoint                  screen_centre_hit_point; /* 0xf0 */
-	float                    distance_0xfc;
+	float                    ElapsedTime;
+	LHPoint                  RotatePoint;
+	bool                     RotateAroundPoint; /* 0x88 */
+	CAMERA_MODE_MOUSE_STATUS MouseButtons;
+	uint32_t                 Tricon0x90;
+	uint32_t                 Tricon0x94;
+	Point2D                  FromScreenCentre;
+	Point2D                  FromScreenCentreAbs; /* 0xa0 */
+	LHCoord                  MouseDelta;
+	LHCoord                  MousePosCurrent; /* 0xb0 */
+	LHCoord                  RotateAroundMousePos;
+	LHCoord                  MousePos1; /* 0xc0 */
+	bool                     ScreenCentreHit;
+	LHPoint                  MouseHitPoint;
+	LHPoint                  LastGrabMouseHitPoint; /* 0xd8 */
+	float                    Yaw1;                     /* 0xe4 */
+	float                    Pitch1;
+	float                    PerpDistance0xec;
+	LHPoint                  ScreenCentreHitPoint; /* 0xf0 */
+	float                    Distance0xfc;
 	uint8_t                  field_0x100;
 	uint8_t                  field_0x101;
 	uint8_t                  field_0x102;
@@ -78,40 +78,40 @@ public:
 	LHPoint                  field_0x110;
 	LHPoint                  field_0x11c;
 	int                      field_0x128;
-	LHPoint                  heading_0x12c;
+	LHPoint                  Heading0x12c;
 	LHPoint                  field_0x138;
-	bool                     hand_hit; /* 0x144 */
+	bool                     HandHit; /* 0x144 */
 	uint8_t                  field_0x145;
 	uint8_t                  field_0x146;
 	uint8_t                  field_0x147;
-	bool                     hit_0x148;
+	bool                     Hit0x148;
 	LHPoint                  field_0x14c;
 	double                   field_0x158;
 	LHPoint                  field_0x160;
 	LHPoint                  field_0x16c;
 	LHMatrix                 field_0x178;
-	float                    distance_0x1a8;
-	CAMERA_MODE_HAND_STATUS  hand_status;
+	float                    Distance0x1a8;
+	CAMERA_MODE_HAND_STATUS  HandStatus;
 	LHCoord                  field_0x1b0;
 	Point2D                  field_0x1b8;
-	float                    length_0x1c0;
-	float                    vertical_distance;
-	LHPoint                  fallback_origin;
-	LHPoint                  fallback_heading; /* 0x1d4 */
+	float                    Length0x1c0;
+	float                    VerticalDistance;
+	LHPoint                  FallbackOrigin;
+	LHPoint                  FallbackHeading; /* 0x1d4 */
 	LHPoint                  field_0x1e0;
-	LHPoint                  origin_0x1ec;
+	LHPoint                  Origin0x1ec;
 	LHPoint                  field_0x1f8;
-	LHPoint                  heading_0x204;
+	LHPoint                  Heading0x204;
 	Zoomer                   field_0x210;
 	Zoomer3d                 field_0x240;
 	bool                     field_0x2d0;
 	uint8_t                  field_0x2d1;
 	uint8_t                  field_0x2d2;
 	uint8_t                  field_0x2d3;
-	LHCoord                  mouse_pos_previous;
+	LHCoord                  MousePosPrevious;
 	LHCoord                  field_0x2dc;
-	float                    heading_distance; /* 0x2e4 */
-	float                    idle_time;
+	float                    HeadingDistance; /* 0x2e4 */
+	float                    IdleTime;
 	int                      field_0x2ec;
 	int                      field_0x2f0;
 	CameraExclusion*         camera_exclusion;

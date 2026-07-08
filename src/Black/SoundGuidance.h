@@ -27,7 +27,7 @@ struct Q29GGuidance10LastThings
 class GGuidance : public Base
 {
 public:
-	LH_SamplePlayOptions*                  play_options; /* 0x8 */
+	LH_SamplePlayOptions*                  PlayOptions; /* 0x8 */
 	int                                    field_0xc[0x21];
 	LHLinkedList__Q29GGuidance10LastThings lastThings; /* 0x90 */
 	uint32_t                               field_0x98;
@@ -43,7 +43,7 @@ public:
 	uint32_t                               field_0xc0;
 	uint32_t                               field_0xc4;
 	uint32_t                               field_0xc8;
-	GInterfaceStatus*                      interface_status;
+	GInterfaceStatus*                      InterfaceStatus;
 	uint32_t                               field_0xd0[0x7];
 
 	// Override methods

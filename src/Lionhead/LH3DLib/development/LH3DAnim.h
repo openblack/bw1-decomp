@@ -41,15 +41,15 @@ struct CFrame
 
 struct CAnim
 {
-	uint32_t frame_offset; /* 0x0 */
+	uint32_t FrameOffset; /* 0x0 */
 	uint32_t field_0x4;
 	float    field_0x8[0x5];
-	uint32_t frame_count; /* 0x1c */
+	uint32_t FrameCount; /* 0x1c */
 	uint32_t field_0x20;
-	int      frame_field_0x0_count;
-	int      frame_field_0x4_count;
-	int*     frame_field_0x0_indices;
-	int*     frame_field_0x4_indices; /* 0x30 */
+	int      FrameField0x0Count;
+	int      FrameField0x4Count;
+	int*     FrameField0x0Indices;
+	int*     FrameField0x4Indices; /* 0x30 */
 	CFrame** frames;
 
 	// Constructors
@@ -91,9 +91,9 @@ struct LH3DAnimSet
 
 struct CatInfo
 {
-	int          animation_count; /* 0x0 */
-	ANM_Name     animation_names[0x18];
-	AnimInfoType animation_type[0x18]; /* 0x304 */
+	int          AnimationCount; /* 0x0 */
+	ANM_Name     AnimationNames[0x18];
+	AnimInfoType AnimationType[0x18]; /* 0x304 */
 
 	// Non-virtual methods
 
@@ -103,9 +103,9 @@ struct CatInfo
 
 struct AnimInfo
 {
-	uint32_t spec_version; /* 0x0 */
-	int      category_count;
-	ANM_Name category_names[0x18];
+	uint32_t SpecVersion; /* 0x0 */
+	int      CategoryCount;
+	ANM_Name CategoryNames[0x18];
 	CatInfo  categories[0x18]; /* 0x308 */
 
 	// Non-virtual methods
@@ -135,7 +135,7 @@ struct LH3DAnim
 	uint8_t  field_0x35;
 	uint8_t  field_0x36;
 	uint8_t  field_0x37;
-	int      num_frames;
+	int      NumFrames;
 	int      field_0x3c;
 	uint8_t  field_0x40;
 	uint8_t  field_0x41;
@@ -146,12 +146,12 @@ struct LH3DAnim
 	uint8_t  field_0x46;
 	uint8_t  field_0x47;
 	uint32_t parents;
-	int**    list_ptr_frames;
+	int**    ListPtrFrames;
 	uint16_t field_0x50;
-	uint16_t pack_index_1;
-	uint32_t current_time_maybe;
+	uint16_t PackIndex1;
+	uint32_t CurrentTimeMaybe;
 	uint32_t field_0x58;
-	uint32_t pack_index_2;
+	uint32_t PackIndex2;
 
 	// Static methods
 

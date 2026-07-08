@@ -124,13 +124,13 @@ public:
 	struct StateTableEntry
 	{
 		StateTableSubEntryState      state;       /* 0x0 */
-		StateTableSubEntryEntryState entry_state; /* 0x10 */
-		StateTableSubEntry           exit_state;  /* 0x20 */
+		StateTableSubEntryEntryState EntryState; /* 0x10 */
+		StateTableSubEntry           ExitState;  /* 0x20 */
 		StateTableSubEntry           save_state;  /* 0x30 */
-		StateTableSubEntry           load_state;  /* 0x40 */
+		StateTableSubEntry           LoadState;  /* 0x40 */
 		StateTableSubEntry           field_0x50;
 		StateTableSubEntry           field_0x60;
-		StateTableSubEntry           transition_animation; /* 0x70 */
+		StateTableSubEntry           TransitionAnimation; /* 0x70 */
 		StateTableSubEntry           validate;             /* 0x80 */
 	};
 
@@ -138,7 +138,7 @@ public:
 	Reaction*            reaction; /* 0x94 */
 	ReactionDoneWhen*    reaction_done_when;
 	int                  field_0x9c;
-	int32_t              birth_turn; /* 0xa0 */
+	int32_t              BirthTurn; /* 0xa0 */
 	Living*              next;
 	uint32_t             field_0xa8;
 	DataPath*            data_path;
@@ -150,7 +150,7 @@ public:
 	uint32_t             field_0xc4;
 	GFootpath*           footpath;
 	GFootpathNode*       footpath_node;
-	LH3DColor            specular_color; /* 0xd0 */
+	LH3DColor            SpecularColor; /* 0xd0 */
 	uint32_t             field_0xd4;
 	DanceGroup*          dance_group;
 	uint8_t              field_0xdc;

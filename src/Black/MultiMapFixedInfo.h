@@ -16,13 +16,13 @@ struct MapCoords;
 class GMultiMapFixedInfo : public GObjectInfo
 {
 public:
-	MESH_LIST editorMesh; /* 0x100 */
-	uint32_t  woodRequiredPerBuild;
-	uint32_t  timeToBuild;
-	uint32_t  scaffoldsRequired;
-	uint32_t  maxVillagerNeededToBuild; /* 0x110 */
-	float     desireToBeBuilt;
-	float     desireToBeRepaired;
+	MESH_LIST EditorMesh; /* 0x100 */
+	uint32_t  WoodRequiredPerBuild;
+	uint32_t  TimeToBuild;
+	uint32_t  ScaffoldsRequired;
+	uint32_t  MaxVillagerNeededToBuild; /* 0x110 */
+	float     DesireToBeBuilt;
+	float     DesireToBeRepaired;
 	float     influence;
 
 	// Override methods

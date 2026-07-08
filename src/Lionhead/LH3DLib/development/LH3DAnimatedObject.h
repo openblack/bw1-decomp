@@ -9,7 +9,7 @@
 class LH3DAnimatedObject : public LH3DMeshedObject
 {
 public:
-	uint32_t current_anim; /* 0x80 */
+	uint32_t CurrentAnim; /* 0x80 */
 	uint32_t field_0x84;
 	uint32_t field_0x88;
 	uint32_t field_0x8c;

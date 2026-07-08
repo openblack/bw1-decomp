@@ -33,21 +33,21 @@ public:
 	CreatureAgenda            agenda;                   /* 0x710 */
 	CreatureBeliefs           beliefs;                  /* 0x2208 */
 	DecisionTreeCollection    decision_tree_collection; /* 0x2478 */
-	CreatureActionOpinions    action_opinions;          /* 0x25b8 */
+	CreatureActionOpinions    ActionOpinions;          /* 0x25b8 */
 	CreatureLearning          learning;                 /* 0x2ad8 */
-	CreatureAttitudeToPlayer  attitude_to_player;       /* 0x18c40 */
+	CreatureAttitudeToPlayer  AttitudeToPlayer;       /* 0x18c40 */
 	uint32_t                  field_0x1a9f4;
 	uint32_t                  field_0x1a9f8;
-	CreatureActionsKnownAbout actions_known_about;
-	CreatureInnatePersonality innate_personality; /* 0x1aa14 */
-	CreatureVisionState       vision_state;       /* 0x1aa38 */
-	CreatureExplorationMap    exploration_map;    /* 0x1aa80 */
+	CreatureActionsKnownAbout ActionsKnownAbout;
+	CreatureInnatePersonality InnatePersonality; /* 0x1aa14 */
+	CreatureVisionState       VisionState;       /* 0x1aa38 */
+	CreatureExplorationMap    ExplorationMap;    /* 0x1aa80 */
 	uint8_t                   field_0x1ca98[0x400];
-	CreaturePreviousActions   previous_actions; /* 0x1ce98 */
-	CreatureLookState         look_state;       /* 0x1d3c0 */
+	CreaturePreviousActions   PreviousActions; /* 0x1ce98 */
+	CreatureLookState         LookState;       /* 0x1d3c0 */
 	uint8_t                   field_0x1d3f8[0x14];
-	CreatureFaceState         face_state;        /* 0x1d40c */
-	CreatureObjectsInspected  objects_inspected; /* 0x1d418 */
+	CreatureFaceState         FaceState;        /* 0x1d40c */
+	CreatureObjectsInspected  ObjectsInspected; /* 0x1d418 */
 	uint32_t                  field_0x1d480;
 	uint32_t                  field_0x1d484;
 	uint32_t                  field_0x1d488;

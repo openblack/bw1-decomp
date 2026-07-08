@@ -19,7 +19,7 @@ class CreatureMimicState : public Base
 public:
 	uint32_t               field_0x8;
 	uint32_t               field_0xc;
-	DETECTED_PLAYER_ACTION detected_player_action; /* 0x10 */
+	DETECTED_PLAYER_ACTION DetectedPlayerAction; /* 0x10 */
 	MAGIC_TYPE             magic_type;
 	GameThingWithPos*      game_thing;
 	uint32_t               field_0x1c;

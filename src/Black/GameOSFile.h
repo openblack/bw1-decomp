@@ -28,8 +28,8 @@ public:
 	uint32_t                   checksum;
 	uint32_t                   field_0x218;
 	uint32_t                   field_0x21c;
-	LHLinkedList<GSaveLoadPtr> save_load_ptr_list; /* 0x220 */
-	LHLinkedList<GameThing>    game_thing_list;
+	LHLinkedList<GSaveLoadPtr> SaveLoadPtrList; /* 0x220 */
+	LHLinkedList<GameThing>    GameThingList;
 
 	// Override methods
 

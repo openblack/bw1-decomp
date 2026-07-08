@@ -18,7 +18,7 @@ struct LandCell
 	uint8_t b;
 	uint8_t luminosity;
 	uint8_t altitude;
-	uint8_t saveColor;
+	uint8_t SaveColor;
 	uint8_t properties;
 	uint8_t flags;
 

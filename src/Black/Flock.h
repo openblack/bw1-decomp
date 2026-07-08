@@ -32,7 +32,7 @@ public:
 	LivingDLList* field_0x44;
 	int           field_0x48;
 	uint32_t      field_0x4c;
-	uint16_t      domain_radius; /* 0x50 */
+	uint16_t      DomainRadius; /* 0x50 */
 	uint16_t      field_0x52;
 	uint32_t      field_0x54;
 	uint32_t      field_0x58;

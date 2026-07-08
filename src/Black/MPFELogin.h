@@ -16,8 +16,8 @@ class SetupStaticText;
 class MPFELogin : public DialogBoxBase
 {
 public:
-	SetupBigButton*  left_arrow_button; /* 0x10 */
-	SetupBigButton*  right_arrow_button;
+	SetupBigButton*  LeftArrowButton; /* 0x10 */
+	SetupBigButton*  RightArrowButton;
 	SetupEdit*       edit;
 	SetupEdit*       edit2;
 	SetupStaticText* text1; /* 0x20 */

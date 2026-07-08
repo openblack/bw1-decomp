@@ -21,12 +21,12 @@ public:
 	int        field_0x240;
 	int        field_0x244;
 	int        field_0x248;
-	int        cursor_position;
-	int        select_start; /* 0x250 */
-	int        select_end;
+	int        CursorPosition;
+	int        SelectStart; /* 0x250 */
+	int        SelectEnd;
 	int        field_0x258;
 	bool32_t   editable;
-	bool       masked_text; /* 0x260 */
+	bool       MaskedText; /* 0x260 */
 	char16_t   text[0x100];
 	uint32_t   field_0x464;
 

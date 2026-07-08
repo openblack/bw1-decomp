@@ -35,7 +35,7 @@ class Villager;
 class TownCentre : public Abode
 {
 public:
-	LH3DObject*          game_object; /* 0xc4 */
+	LH3DObject*          GameObject; /* 0xc4 */
 	PSysInterface*       psys;
 	TotemStatue*         totem_statue;
 	TownCentreSpellIcon* icons[0x6]; /* 0xd0 */

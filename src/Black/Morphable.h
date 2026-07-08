@@ -43,9 +43,9 @@ public:
 	uint8_t                   field_0x8a;
 	uint8_t                   field_0x8b;
 	float                     field_0x8c;
-	float                     size_1; /* 0x90 */
-	float                     size_2;
-	int                       current_mesh;
+	float                     Size1; /* 0x90 */
+	float                     Size2;
+	int                       CurrentMesh;
 	uint8_t                   field_0x9c;
 	uint8_t                   field_0x9d;
 	uint8_t                   field_0x9e;
@@ -66,22 +66,22 @@ public:
 	uint8_t                   field_0xb3;
 	LH3DMesh*                 meshes[0x8];
 	Name                      names[0x8];     /* 0xd4 */
-	LH3DAnimSet               anim_sets[0x6]; /* 0x1d4 */
+	LH3DAnimSet               AnimSets[0x6]; /* 0x1d4 */
 	Morphable_field_0x4314_t* field_0x4314[0xe8];
 	uint8_t                   field_0x46b4[0x104];
 	int                       field_0x47b8;
 	uint8_t                   field_0x47bc[0x24];
 	float                     field_0x47e0;
 	uint8_t                   field_0x47e4[0xc];
-	LHMatrix*                 transformed_matrices; /* 0x47f0 */
+	LHMatrix*                 TransformedMatrices; /* 0x47f0 */
 	LHMatrix*                 field_0x47f4;
 	LHMatrix*                 field_0x47f8;
 	CFrame*                   frame;
-	int32_t                   hair_group_count; /* 0x4800 */
-	HairGroup*                hair_groups[0x8];
+	int32_t                   HairGroupCount; /* 0x4800 */
+	HairGroup*                HairGroups[0x8];
 	uint32_t                  field_0x4824;
-	LH3DObjectHair*           l3d_hair_group;
-	LH3DComplexObject*        dynamic_shadow;
+	LH3DObjectHair*           L3dHairGroup;
+	LH3DComplexObject*        DynamicShadow;
 	uint32_t                  field_0x4830;
 
 	// Override methods

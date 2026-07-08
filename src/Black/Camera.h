@@ -21,21 +21,21 @@ class GCamera : public GameThingWithPos
 {
 public:
 	CameraMode* modes[0xc];         /* 0x28 */
-	int         mode_current_index; /* 0x58 */
+	int         ModeCurrentIndex; /* 0x58 */
 	LHPoint     pos;
 	float       time; /* 0x68 */
-	float       time_delta;
+	float       TimeDelta;
 	uint32_t    field_0x70;
-	uint32_t    camera_dirty;
+	uint32_t    CameraDirty;
 	uint8_t     field_0x78;
 	uint8_t     field_0x79;
 	uint8_t     field_0x7a;
 	uint8_t     field_0x7b;
 	uint32_t    field_0x7c;
 	uint8_t     field_0x8c[0x8]; /* 0x80 */
-	Zoomer3d    camera_heading_zoomer;
-	Zoomer3d    camera_origin_zoomer; /* 0x118 */
-	Zoomer      fov_zoomer;           /* 0x1a8 */
+	Zoomer3d    CameraHeadingZoomer;
+	Zoomer3d    CameraOriginZoomer; /* 0x118 */
+	Zoomer      FovZoomer;           /* 0x1a8 */
 
 	// Override methods
 

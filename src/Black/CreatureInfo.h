@@ -14,7 +14,7 @@ class GBaseInfo;
 class CreatureInfo : public GLivingInfo
 {
 public:
-	uint32_t creature_type; /* 0x1f4 */
+	uint32_t CreatureType; /* 0x1f4 */
 	float    field_0x1f8[0x4];
 	uint32_t field_0x208;
 	float    field_0x20c;

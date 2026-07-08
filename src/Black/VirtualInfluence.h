@@ -25,7 +25,7 @@ public:
 	uint32_t          field_0x2c;
 	float             field_0x30;
 	float             field_0x34;
-	GInterfaceStatus* interface_status;
+	GInterfaceStatus* InterfaceStatus;
 	uint32_t          field_0x3c;
 	float             field_0x40;
 	uint32_t          field_0x44;

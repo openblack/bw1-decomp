@@ -26,56 +26,56 @@ struct LHScreen
 {
 	// Heap array: 4-byte count header (=5) followed by five 248-byte display-device
 	// records. Allocated in the ctor; this pointer is past the count header.
-	void*                deviceInfoArray; /* 0x0 */
+	void*                DeviceInfoArray; /* 0x0 */
 	int                  opened;          /* 0x4  Open() sets 1, Close() clears */
 	uint16_t             width;           /* 0x8  current mode width */
 	uint16_t             height;          /* 0xa  current mode height */
 	int                  frontPitchBytes; /* 0xc  front surface lPitch (bytes) */
-	int                  frontPixelPitch; /* 0x10 8*lPitch/depth, swapped on flip */
+	int                  FrontPixelPitch; /* 0x10 8*lPitch/depth, swapped on flip */
 	uint8_t              depth;           /* 0x14 bits per pixel */
 	uint8_t              _pad0x15[0x3];
 	int                  isLocked;        /* 0x18 Lock() sets 1, Unlock() clears */
-	uint32_t             frontAddress;    /* 0x1c front lpSurface, swapped on flip */
-	uint32_t             drawAddress;     /* 0x20 frontAddress + windowed client offset */
+	uint32_t             FrontAddress;    /* 0x1c front lpSurface, swapped on flip */
+	uint32_t             DrawAddress;     /* 0x20 FrontAddress + windowed client offset */
 	uint32_t             backAddress;     /* 0x24 back lpSurface, swapped on flip */
-	HWND                 msWindowHandle;  /* 0x28 windowed-mode HWND */
-	IDirectDraw7*        pDirectDraw;     /* 0x2c */
-	IDirectDrawSurface7* pPrimarySurface; /* 0x30 */
-	IDirectDrawSurface7* pBackSurface;    /* 0x34 */
-	LHRegion             graphicsWindow;  /* 0x38 3D/graphics viewport rect */
-	LHRegion             textWindow;      /* 0x48 text/UI viewport rect */
-	int                  msClientOffsetX; /* 0x58 screen-X of windowed client area */
-	int                  msClientOffsetY; /* 0x5c screen-Y of windowed client area */
-	IDirectDrawClipper*  pClipper;        /* 0x60 windowed-mode clipper */
+	HWND                 MsWindowHandle;  /* 0x28 windowed-mode HWND */
+	IDirectDraw7*        PDirectDraw;     /* 0x2c */
+	IDirectDrawSurface7* PPrimarySurface; /* 0x30 */
+	IDirectDrawSurface7* PBackSurface;    /* 0x34 */
+	LHRegion             GraphicsWindow;  /* 0x38 3D/graphics viewport rect */
+	LHRegion             TextWindow;      /* 0x48 text/UI viewport rect */
+	int                  MsClientOffsetX; /* 0x58 screen-X of windowed client area */
+	int                  MsClientOffsetY; /* 0x5c screen-Y of windowed client area */
+	IDirectDrawClipper*  PClipper;        /* 0x60 windowed-mode clipper */
 	int                  windowed;        /* 0x64 1 = run in window, 0 = fullscreen */
-	uint32_t             redMask;         /* 0x68 pixel-format R bit mask */
-	uint32_t             greenMask;       /* 0x6c pixel-format G bit mask */
-	uint32_t             blueMask;        /* 0x70 pixel-format B bit mask */
-	uint32_t             colorLSBMask;    /* 0x74 clears each channel's LSB */
-	uint8_t              maxRed;          /* 0x78 2^popcount(redMask)-1 */
-	uint8_t              maxGreen;        /* 0x79 */
-	uint8_t              maxBlue;         /* 0x7a */
-	uint8_t              redScale;        /* 0x7b 8 - popcount(redMask) */
-	uint8_t              greenScale;      /* 0x7c */
-	uint8_t              blueScale;       /* 0x7d */
-	uint8_t              redShift;        /* 0x7e up-shift to channel bit position */
-	uint8_t              greenShift;      /* 0x7f */
-	uint8_t              blueShift;       /* 0x80 */
+	uint32_t             RedMask;         /* 0x68 pixel-format R bit mask */
+	uint32_t             GreenMask;       /* 0x6c pixel-format G bit mask */
+	uint32_t             BlueMask;        /* 0x70 pixel-format B bit mask */
+	uint32_t             ColorLSBMask;    /* 0x74 clears each channel's LSB */
+	uint8_t              maxRed;          /* 0x78 2^popcount(RedMask)-1 */
+	uint8_t              MaxGreen;        /* 0x79 */
+	uint8_t              MaxBlue;         /* 0x7a */
+	uint8_t              redScale;        /* 0x7b 8 - popcount(RedMask) */
+	uint8_t              GreenScale;      /* 0x7c */
+	uint8_t              BlueScale;       /* 0x7d */
+	uint8_t              RedShift;        /* 0x7e up-shift to channel bit position */
+	uint8_t              GreenShift;      /* 0x7f */
+	uint8_t              BlueShift;       /* 0x80 */
 	uint8_t              _pad0x81[0x3];
 	uint32_t             flipFlags;      /* 0x84 Flip dwFlags (VSync setting) */
 	int                  backPitchBytes; /* 0x88 back surface lPitch (bytes) */
 	int                  backPixelPitch; /* 0x8c 8*lPitch/depth = back pixels/row */
 	int                  flipCount;      /* 0x90 incremented every Flip() */
-	uint16_t             frameAccum;     /* 0x94 frames counted since last FPS sample */
+	uint16_t             FrameAccum;     /* 0x94 frames counted since last FPS sample */
 	uint16_t             _pad0x96;
 	uint8_t              fpsTimer[0x100];      /* 0x98 inline LHTimer blob (reserved) */
 	uint32_t             frameTimerTick;       /* 0x198 GetTickCount() reference */
-	int                  frameTimerAccum;      /* 0x19c accumulated scaled ticks */
+	int                  FrameTimerAccum;      /* 0x19c accumulated scaled ticks */
 	float                frameTimerSpeed;      /* 0x1a0 time-scale factor (ctor = 1.0) */
-	float                frameTimerSavedSpeed; /* 0x1a4 saved speed */
-	float                measuredFPS;          /* 0x1a8 FPS over a ~2000ms window */
-	int                  showTimingStats;      /* 0x1ac if set, Flip draws FPS overlay */
-	float                targetPercent;        /* 0x1b0 reference % for the Flip FPS format */
+	float                FrameTimerSavedSpeed; /* 0x1a4 saved speed */
+	float                MeasuredFPS;          /* 0x1a8 FPS over a ~2000ms window */
+	int                  ShowTimingStats;      /* 0x1ac if set, Flip draws FPS overlay */
+	float                TargetPercent;        /* 0x1b0 reference % for the Flip FPS format */
 
 	// Constructors
 

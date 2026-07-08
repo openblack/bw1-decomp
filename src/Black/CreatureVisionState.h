@@ -25,7 +25,7 @@ struct CreatureInterestingThingToLookAt
 class CreatureVisionState : public Base
 {
 public:
-	CreatureInterestingThingToLookAt thing_to_look_at; /* 0x8 */
+	CreatureInterestingThingToLookAt ThingToLookAt; /* 0x8 */
 	uint32_t                         field_0x28;
 	uint32_t                         field_0x2c;
 	uint32_t                         field_0x30;
