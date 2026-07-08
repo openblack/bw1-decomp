@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum ABODE_NUMBER, enum ABODE_TYPE, enum DYK_CATEGORY, enum TRIBE_TYPE */
+#include <chlasm/Enum.h> /* For ABODE_INFO_LAST, enum ABODE_NUMBER, enum ABODE_TYPE, enum DYK_CATEGORY, enum TRIBE_TYPE */
 
 #include "MultiMapFixedInfo.h"             /* For struct GMultiMapFixedInfo */
 #include "Name.h"                          /* For struct Name */
@@ -63,7 +63,7 @@ public:
 	// BW1W120 00401320 BW1M100 101ca240 GAbodeInfo::~GAbodeInfo(unsigned int)
 	virtual ~GAbodeInfo();
 	// BW1W120 00401270 BW1M100 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
-	virtual GBaseInfo& GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 	// BW1W120 00401240 BW1M100 1019a370 GAbodeInfo::GetMesh() const
 	virtual MESH_LIST GetMesh() const { return MeshId; }
 	// BW1W120 00401250 BW1M100 106fde70 GAbodeInfo::GetAbodeType() const
@@ -94,12 +94,12 @@ public:
 };
 static_assert(sizeof(GAbodeInfo) == 0x1c8, "Data type is of wrong size");
 
-static GAbodeInfo AbodeInfos[0x93];
+static GAbodeInfo AbodeInfos[ABODE_INFO_LAST];
 
-GBaseInfo& GAbodeInfo::GetBaseInfo(uint32_t& param_1)
+GBaseInfo* GAbodeInfo::GetBaseInfo(uint32_t& num_infos)
 {
-	param_1 = 0x93;
-	return AbodeInfos[0];
+	num_infos = ABODE_INFO_LAST;
+	return &AbodeInfos[0];
 }
 
 #endif /* BW1_DECOMP_ABODE_INFO_INCLUDED_H */

@@ -2,6 +2,7 @@
 
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>
 
+#include "chlasm/GStates.h"
 #include "GameOSFile.h"
 #include "GameThing.h"
 #include "InterfaceStatus.h"
@@ -12,6 +13,9 @@
 #include "Pot.h"
 #include "Reaction.h"
 #include "StoragePit.h"
+#include "Town.h"
+
+static DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST];
 
 // BW1W120 0074fb20
 void Villager::SetToZero() {}
@@ -244,17 +248,63 @@ bool Villager::GetResourceHeld(RESOURCE_TYPE& param_1)
 // BW1W120 007515c0
 bool32_t Villager::DecideWhatToDo()
 {
-	return false;
+	if (GetTown() != NULL)
+	{
+		if (GetTown()->IsInStateOfEmergency())
+		{
+			SetTopState(VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY);
+			return true;
+		}
+	}
+
+	uint32_t flags = Flags;
+	uint8_t  disciple_flags = flags >> 9;
+	if (disciple_flags & 1 || flags & 0x400)
+	{
+		if (DiscipleDecideWhatToDo() == true)
+		{
+			if (Flags & 0x400)
+			{
+				DiscipleType = VILLAGER_DISCIPLE_NONE;
+				return true;
+			}
+			if (g_DiscipleInfos[DiscipleType].field_0x4 == 0)
+			{
+				return true;
+			}
+			Reaction::CreateReaction(this, REACTION_REACT_TO_DROPPED_BY_HAND, GetPlayer(), 1);
+			return true;
+		}
+		flags = Flags;
+		if (flags & 0x400)
+		{
+			DiscipleType = VILLAGER_DISCIPLE_NONE;
+			Flags = flags & ~(0x200 | 0x400);
+		}
+	}
+
+	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+
+	if (IsChild())
+	{
+		return ChildDecideWhatToDo();
+	}
+
+	if (CheckNeededForSomething() != true && !CheckTakeResourcesToStoragePit() && SetupNothingToDo() == false)
+	{
+		SetTopState(VILLAGER_STATE_GO_HOME);
+	}
+	return true;
 }
 
 // BW1W120 007516e0
-bool Villager::CheckTakeResourcesToStoragePit()
+bool32_t Villager::CheckTakeResourcesToStoragePit()
 {
 	return false;
 }
 
 // BW1W120 00751720
-bool Villager::DiscipleDecideWhatToDo()
+bool32_t Villager::DiscipleDecideWhatToDo()
 {
 	return false;
 }
@@ -380,7 +430,7 @@ int Villager::SetTopState(VILLAGER_STATES state)
 }
 
 // BW1W120 007520e0
-int Villager::SetCurrentAndDestinationState(VILLAGER_STATES current, VILLAGER_STATES destination)
+int Villager::SetCurrentAndDestinationState(uint8_t current, uint8_t destination)
 {
 	return 0;
 }

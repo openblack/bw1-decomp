@@ -21,7 +21,7 @@ uint32_t Animal::KeepFlockMemberWithinFlockArea()
 	int       randomPosInDomain = PosWithinDomain(&randomPos, 1.0f);
 	if (randomPosInDomain != 0 || flockPosInDomain == 0)
 	{
-		SetupMoveToPos(&randomPos, 0x2b);
+		SetupMoveToPos(randomPos, ANIMAL_STATE_DECIDE_WHAT_TO_DO);
 	}
 	return 0x23;
 }

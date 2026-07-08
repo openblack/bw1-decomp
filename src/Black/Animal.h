@@ -215,7 +215,7 @@ public:
 	// BW1W120 004203b0 BW1M100 10176560 Animal::ReactToFallingTreePriority(Reaction *, Reaction *)
 	virtual uint8_t ReactToFallingTreePriority(Reaction* param_1, Reaction* param_2);
 	// BW1W120 0041bb00 BW1M100 101650c0 Animal::IsChild(void)
-	virtual bool IsChild();
+	virtual bool32_t IsChild();
 	// BW1W120 00420550 BW1M100 10175d80 Animal::GetFleeingPositionFromMovingObject(MapCoords *, GameThingWithPos *, float)
 	virtual void GetFleeingPositionFromMovingObject(MapCoords* param_1, GameThingWithPos* param_2, float param_3);
 	// BW1W120 0041a240 BW1M100 1007c570 Animal::GetFinalState( const(void))

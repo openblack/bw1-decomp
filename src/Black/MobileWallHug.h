@@ -115,18 +115,20 @@ public:
 
 	// BW1W120 00609d10 BW1M100 inlined MobileWallHug::RebuildMoveByStep(void)
 	void RebuildMoveByStep();
+	// BW1W120 0060aad0 BW1M100 inlined MobileWallHug::SetupMobileMoveToPos(MapCoords const &)
+	void SetupMobileMoveToPos(const MapCoords& coords);
 	// BW1W120 0060abc0 BW1M100 1001c770 MobileWallHug::SetupMobileMoveToPos(MapCoords const &, MOVE_TO_STATES)
-	void SetupMobileMoveToPos(const MapCoords* coords, MOVE_TO_STATES move_to_state);
+	void SetupMobileMoveToPos(const MapCoords& coords, MOVE_TO_STATES move_to_state);
 	// BW1W120 0060acd0 BW1M100 103c3ee0 MobileWallHug::SetupMobileMoveToObject(Object *)
 	void SetupMobileMoveToObject(Object* param_1);
 	// BW1W120 0060ad40 BW1M100 1005f4a0 MobileWallHug::AreWeThere(float)
-	bool AreWeThere(float param_1);
+	bool32_t AreWeThere(float param_1);
 	// BW1W120 0060af20 BW1M100 10047250 MobileWallHug::MoveTo(void)
 	int MoveTo();
 	// BW1W120 0060bfa0 BW1M100 103c3600 MobileWallHug::InitStepsXZ(void)
 	void InitStepsXZ();
 	// BW1W120 0060ca50 BW1M100 10076600 MobileWallHug::MoveToCircleHugLinearSquareSweep(MapCoords const &)
-	uint32_t MoveToCircleHugLinearSquareSweep(MapCoords* dest);
+	uint32_t MoveToCircleHugLinearSquareSweep(const MapCoords& dest);
 	// BW1W120 0060d800 BW1M100 100382d0 MobileWallHug::MoveToCircleHug(void)
 	int MoveToCircleHug();
 	// BW1W120 0060da90 BW1M100 1004cce0 MobileWallHug::SetGameAngle(unsigned short)
