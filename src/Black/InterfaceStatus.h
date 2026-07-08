@@ -35,7 +35,7 @@ public:
 	uint32_t           field_0x3c;
 	uint32_t           field_0x40;
 	uint8_t            field_0x44[0x14];
-	GMagicHand         magic_hand[0x2];        /* 0x58 */
+	GMagicHand         magic_hand[0x2];      /* 0x58 */
 	bool               HandHoldingSomething; /* 0x90 */
 	LHCoord            field_0x94;
 	uint32_t           field_0x9c;

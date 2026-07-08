@@ -19,11 +19,11 @@ class CreatureInfo;
 class CreatureAgenda : public Base
 {
 public:
-	CreaturePlanState       PlanState;        /* 0x8 */
-	CreaturePlan            plans[0x2];        /* 0x838 */
+	CreaturePlanState       PlanState;       /* 0x8 */
+	CreaturePlan            plans[0x2];      /* 0x838 */
 	CreatureSubActionAgenda SubActionAgenda; /* 0x898 */
-	CreatureCommandState    CommandState;     /* 0x14e8 */
-	Creature*               creature;          /* 0x1514 */
+	CreatureCommandState    CommandState;    /* 0x14e8 */
+	Creature*               creature;        /* 0x1514 */
 	uint32_t                field_0x1518;
 	uint32_t                field_0x151c;
 	CreatureMimicState      MimicState; /* 0x1520 */

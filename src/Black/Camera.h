@@ -20,7 +20,7 @@ struct MapCoords;
 class GCamera : public GameThingWithPos
 {
 public:
-	CameraMode* modes[0xc];         /* 0x28 */
+	CameraMode* modes[0xc];       /* 0x28 */
 	int         ModeCurrentIndex; /* 0x58 */
 	LHPoint     pos;
 	float       time; /* 0x68 */
@@ -35,7 +35,7 @@ public:
 	uint8_t     field_0x8c[0x8]; /* 0x80 */
 	Zoomer3d    CameraHeadingZoomer;
 	Zoomer3d    CameraOriginZoomer; /* 0x118 */
-	Zoomer      FovZoomer;           /* 0x1a8 */
+	Zoomer      FovZoomer;          /* 0x1a8 */
 
 	// Override methods
 

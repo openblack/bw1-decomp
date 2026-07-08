@@ -11,24 +11,24 @@
 // zeroed rather than derived from the find data.
 struct LHDirDateTime
 {
-	uint8_t  day;         /* 0x0 */
-	uint8_t  month;       /* 0x1 */
-	uint16_t year;        /* 0x2 */
+	uint8_t  day;       /* 0x0 */
+	uint8_t  month;     /* 0x1 */
+	uint16_t year;      /* 0x2 */
 	uint8_t  DayOfWeek; /* 0x4 */
-	uint8_t  field_0x5;   /* 0x5 */
-	uint8_t  hour;        /* 0x6 */
-	uint8_t  minute;      /* 0x7 */
-	uint8_t  second;      /* 0x8 */
-	uint8_t  field_0x9;   /* 0x9 */
+	uint8_t  field_0x5; /* 0x5 */
+	uint8_t  hour;      /* 0x6 */
+	uint8_t  minute;    /* 0x7 */
+	uint8_t  second;    /* 0x8 */
+	uint8_t  field_0x9; /* 0x9 */
 };
 static_assert(sizeof(LHDirDateTime) == 0xa, "Data type is of wrong size");
 
 struct LHDir
 {
-	char                 name[260];          /* 0x0 */
+	char                 name[260];         /* 0x0 */
 	char                 AlternateName[14]; /* 0x104 */
-	uint32_t             attributes;         /* 0x114 */
-	uint32_t             size;               /* 0x118 */
+	uint32_t             attributes;        /* 0x114 */
+	uint32_t             size;              /* 0x118 */
 	struct LHDirDateTime CreationTime;      /* 0x11c */
 	struct LHDirDateTime WriteTime;         /* 0x126 */
 	HANDLE               FindHandle;        /* 0x130 */

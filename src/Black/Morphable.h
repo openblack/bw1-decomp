@@ -65,7 +65,7 @@ public:
 	uint8_t                   field_0xb2;
 	uint8_t                   field_0xb3;
 	LH3DMesh*                 meshes[0x8];
-	Name                      names[0x8];     /* 0xd4 */
+	Name                      names[0x8];    /* 0xd4 */
 	LH3DAnimSet               AnimSets[0x6]; /* 0x1d4 */
 	Morphable_field_0x4314_t* field_0x4314[0xe8];
 	uint8_t                   field_0x46b4[0x104];

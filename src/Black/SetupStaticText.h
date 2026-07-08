@@ -9,7 +9,7 @@
 class SetupStaticText : public SetupControl
 {
 public:
-	TEXTJUSTIFY text_justify;      /* 0x23c */
+	TEXTJUSTIFY text_justify;    /* 0x23c */
 	int         DisplayTextSize; /* 0x240 */
 
 	// Override methods

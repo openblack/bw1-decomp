@@ -12,10 +12,10 @@ class LHPlayer : public LHPacketisableObject
 {
 public:
 	char            UserFilename[0x104]; /* 0x4 */
-	void*           user_data;            /* 0x108 */
+	void*           user_data;           /* 0x108 */
 	uint32_t        UserDataLen;
 	char16_t        name[0x32]; /* 0x110 */
-	uint32_t        PlayerId;  /* 0x174 */
+	uint32_t        PlayerId;   /* 0x174 */
 	uint32_t        UserId;
 	void*           SystemData;
 	LHTransportInfo transport_info; /* 0x180 */

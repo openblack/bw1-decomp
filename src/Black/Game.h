@@ -126,7 +126,7 @@ public:
 	GTerrainMap            terrain_map; /* 0x205e8c */
 	GPlayerInfo            player_info; /* 0x24ffbc */
 	GLanguage              language;    /* 0x25004c */
-	GSoundMap*             SoundMap;   /* 0x250058 */
+	GSoundMap*             SoundMap;    /* 0x250058 */
 	HelpSystem*            help_system;
 	HelpProfile*           help_profile; /* 0x250060 */
 	GestureSystemDataList* gesture_system_data_list;

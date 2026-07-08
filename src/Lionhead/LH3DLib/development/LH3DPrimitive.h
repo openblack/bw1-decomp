@@ -14,7 +14,7 @@ struct LHPoint;
 
 struct LH3DPrimitive
 {
-	LH3DMaterial     Material;     /* 0x0 */
+	LH3DMaterial     Material;    /* 0x0 */
 	int              NumVertices; /* 0x10 */
 	LH3DVertex*      Vertices;
 	int              NumTriangles;

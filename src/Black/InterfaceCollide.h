@@ -16,7 +16,7 @@ class Object;
 class GInterfaceCollide : public Base
 {
 public:
-	MapCoords pos;          /* 0x8 */
+	MapCoords pos;         /* 0x8 */
 	float     PosDistance; /* 0x14 */
 	Object*   object;
 	float     ObjectDistance;

@@ -20,7 +20,7 @@ class CreatureLearning : public Base
 public:
 	PreviousContextStack       previous_context_stack;        /* 0x8 */
 	PreviousActionContextStack previous_action_context_stack; /* 0x260 */
-	CreaturePreviousLesson     PreviousLesson;               /* 0x14020 */
+	CreaturePreviousLesson     PreviousLesson;                /* 0x14020 */
 	uint32_t                   field_0x1522c;
 	uint32_t                   field_0x15230[0x6];
 	uint32_t                   field_0x15248[0x6];
