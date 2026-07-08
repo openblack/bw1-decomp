@@ -9,6 +9,11 @@ template <typename T> class LHLinkedNode
 public:
 	LHLinkedNode<T>* next;
 	T*               payload;
+	inline LHLinkedNode(T* val)
+	{
+		payload = val;
+		next = NULL;
+	}
 };
 template <typename T> class LHLinkedList
 {
@@ -60,6 +65,51 @@ public:
 		}
 		return false;
 	}
+	inline LHLinkedNode<T>* GetLastNode()
+	{
+		LHLinkedNode<T>* node = head;
+		if (!node)
+		{
+			return NULL;
+		}
+		LHLinkedNode<T>* last;
+		do
+		{
+			last = node;
+			node = node->next;
+		} while (node);
+		return last;
+	}
+
+	int AddToEnd(T* val);
 };
+
+template <typename T> int LHLinkedList<T>::AddToEnd(T* val)
+{
+	LHLinkedNode<T>* node;
+	if (!val)
+	{
+		goto fail;
+	}
+	node = new LHLinkedNode<T>(val);
+	if (!node)
+	{
+		goto fail;
+	}
+	{
+		LHLinkedNode<T>* last = GetLastNode();
+		if (last)
+		{
+			last->next = node;
+			++count;
+			return 1;
+		}
+		head = node;
+		++count;
+		return 1;
+	}
+fail:
+	return 0;
+}
 
 #endif /* BW1_DECOMP_LH_LINKED_LIST_INCLUDED_H */

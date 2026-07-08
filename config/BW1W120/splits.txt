@@ -1599,13 +1599,23 @@ Lionhead/LHLib/ver5.0/LHWin.cpp:
 	.text       start:0x007DB600 end:0x007DCE20
 
 Lionhead/LHLib/ver5.0/LHScreen.cpp:
-	.text       start:0x007DCE20 end:0x007E0550
+	.text       start:0x007DCE20 end:0x007DEEF0
+
+lib/libcmt/days.obj:
+	.data       start:0x00C30C44 end:0x00C30CAC align:1
+
+lib/libcmt/constpow.obj:
+	.data       start:0x00C30CB0 end:0x00C30F6C align:1
+
+lib/libcmt/strftime.obj:
+	.data       start:0x00C30F6C end:0x00C30F70 align:1
 
 Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp:
-	.text       start:0x007E0550 end:0x007E0FA0
+	.text       start:0x007E0440 end:0x007E0FA0
+	.data       start:0x00C33FBC end:0x00C34098 align:4
 
 Lionhead/LHLib/ver5.0/LHHeap2.cpp:
-	.text       start:0x007E0FA0 end:0x007E4810
+	.text       start:0x007E0FA0 end:0x007E2810
 
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
 	.text       start:0x007E4810 end:0x007E5AF0
@@ -1624,15 +1634,6 @@ Lionhead/LH3DLib/development/LH3DMesh.cpp:
 
 Lionhead/LH3DLib/development/LH3DTech.cpp:
 	.text       start:0x00818C60 end:0x0081D1B0
-
-lib/libcmt/days.obj:
-	.data       start:0x00C30C44 end:0x00C30CAC align:1
-
-lib/libcmt/constpow.obj:
-	.data       start:0x00C30CB0 end:0x00C30F6C align:1
-
-lib/libcmt/strftime.obj:
-	.data       start:0x00C30F6C end:0x00C30F70 align:1
 
 Lionhead/LH3DLib/development/LH3DCameraChecker.cpp:
 	.text       start:0x0081F9E0 end:0x008212E0
