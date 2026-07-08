@@ -24,7 +24,7 @@ public:
 	// BW1W120 00435680 BW1M100 1018ee20 GMagicInfo::_dt(void)
 	virtual ~GMagicInfo();
 	// BW1W120 0042d700 BW1M100 101980a0 GMagicInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Static methods
 

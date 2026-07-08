@@ -21,7 +21,7 @@ public:
 	// BW1W120 0054be80 BW1M100 101522e0 TerrainMapInfo::_dt(void)
 	virtual ~TerrainMapInfo();
 	// BW1W120 0054bd80 BW1M100 1032d1b0 TerrainMapInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Constructors
 

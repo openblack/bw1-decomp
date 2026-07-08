@@ -28,7 +28,7 @@ public:
 	// BW1W120 00524dd0 BW1M100 100cc6a0 GEffectInfo::_dt(void)
 	virtual ~GEffectInfo();
 	// BW1W120 00524d70 BW1M100 100ccc90 GEffectInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Constructors
 

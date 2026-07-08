@@ -18,7 +18,7 @@ public:
 	// BW1W120 00773ce0 BW1M100 105a3a30 GClimateRainInfo::_dt(void)
 	virtual ~GClimateRainInfo();
 	// BW1W120 00773c90 BW1M100 105a39e0 GClimateRainInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_CLIMATE_RAIN_INFO_INCLUDED_H */

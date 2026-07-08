@@ -147,7 +147,7 @@ public:
 	// BW1W120 00606bd0 BW1M100 103ba910 GSpeedThreshold::_dt(void)
 	virtual ~GSpeedThreshold();
 	// BW1W120 00606b70 BW1M100 103baa30 GSpeedThreshold::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_MOBILE_OBJECT_INCLUDED_H */

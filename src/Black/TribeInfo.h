@@ -24,7 +24,7 @@ public:
 	// BW1W120 0074c920 BW1M100 10159d30 GTribeInfo::_dt(void)
 	virtual ~GTribeInfo();
 	// BW1W120 0074c8c0 BW1M100 10159ef0 GTribeInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Static methods
 

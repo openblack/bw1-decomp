@@ -47,7 +47,7 @@ public:
 	// BW1W120 00744b90 BW1M100 1055d6c0 GTownDesireInfo::_dt(void)
 	virtual ~GTownDesireInfo();
 	// BW1W120 00744b20 BW1M100 1055ef20 GTownDesireInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Non-virtual methods
 

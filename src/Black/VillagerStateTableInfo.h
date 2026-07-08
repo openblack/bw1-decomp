@@ -55,7 +55,7 @@ public:
 	// BW1W120 007695f0 BW1M100 1059c500 GVillagerStateTableInfo::_dt(void)
 	virtual ~GVillagerStateTableInfo();
 	// BW1W120 00769580 BW1M100 1059c630 GVillagerStateTableInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Static methods
 

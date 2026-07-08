@@ -20,7 +20,7 @@ public:
 	// BW1W120 00643620 BW1M100 10111690 GPFootballInfo::_dt(void)
 	virtual ~GPFootballInfo();
 	// BW1W120 006435d0 BW1M100 10111730 GPFootballInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 006435c0 BW1M100 10111320 GPFootballInfo::GetMesh( const(void))
 	virtual uint32_t GetMesh();
 };

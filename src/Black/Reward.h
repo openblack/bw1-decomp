@@ -77,7 +77,7 @@ public:
 	// BW1W120 006e5580 BW1M100 1013afe0 GRewardProgress::_dt(void)
 	virtual ~GRewardProgress();
 	// BW1W120 006e5520 BW1M100 1013c310 GRewardProgress::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_REWARD_INCLUDED_H */

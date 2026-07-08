@@ -20,7 +20,7 @@ public:
 	// BW1W120 0050b670 BW1M100 102a8e60 GDanceInfo::_dt(void)
 	virtual ~GDanceInfo();
 	// BW1W120 0050b600 BW1M100 102aa810 GDanceInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_DANCE_INFO_INCLUDED_H */

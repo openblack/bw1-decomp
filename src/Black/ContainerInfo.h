@@ -25,7 +25,7 @@ public:
 	// BW1W120 0046b880 BW1M100 100bfd60 GContainerInfo::_dt(void)
 	virtual ~GContainerInfo();
 	// BW1W120 0046b820 BW1M100 100bfe80 GContainerInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_CONTAINER_INFO_INCLUDED_H */

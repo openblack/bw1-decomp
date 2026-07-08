@@ -18,7 +18,7 @@ public:
 	// BW1W120 00414120 BW1M100 100a42b0 GAlignmentInfo::_dt(void)
 	virtual ~GAlignmentInfo();
 	// BW1W120 004140c0 BW1M100 100a4bb0 GAlignmentInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_ALIGNMENT_INFO_INCLUDED_H */

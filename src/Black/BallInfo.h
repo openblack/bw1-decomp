@@ -21,7 +21,7 @@ public:
 	// BW1W120 00435980 BW1M100 100b0ff0 GBallInfo::_dt(void)
 	virtual ~GBallInfo();
 	// BW1W120 00435930 BW1M100 100b1090 GBallInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 class GPBallInfo : public GMobileObjectInfo
@@ -32,7 +32,7 @@ public:
 	// BW1W120 0063e8c0 BW1M100 10110ff0 GPBallInfo::_dt(void)
 	virtual ~GPBallInfo();
 	// BW1W120 0063e870 BW1M100 10111090 GPBallInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_BALL_INFO_INCLUDED_H */

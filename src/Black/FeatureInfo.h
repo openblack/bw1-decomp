@@ -22,7 +22,7 @@ public:
 	// BW1W120 00527320 BW1M100 100a6900 GFeatureInfo::_dt(void)
 	virtual ~GFeatureInfo();
 	// BW1W120 00421eb0 BW1M100 100a7c10 GFeatureInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00421ea0 BW1M100 100a5310 GFeatureInfo::GetMesh( const(void))
 	virtual uint32_t GetMesh();
 	// BW1W120 00421e80 BW1M100 inlined GFeatureInfo::GetAbodeType( const(void))

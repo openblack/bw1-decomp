@@ -75,7 +75,7 @@ public:
 	// BW1W120 004012c0 BW1M100 10511e08 GObjectInfo::GetDebugText(void)
 	virtual const char* GetDebugText() { return DebugString; }
 	// BW1W120 0042b380 BW1M100 104cc120 GObjectInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 0042b370 BW1M100 1016ddf0 GObjectInfo::GetMesh( const(void))
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00401290 BW1M100 1016e3a0 GObjectInfo::GetMesh(TRIBE_TYPE) const

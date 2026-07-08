@@ -77,7 +77,7 @@ public:
 	// BW1W120 006f3770 BW1M100 104e3ad0 GScriptOpposingCreature::_dt(void)
 	virtual ~GScriptOpposingCreature();
 	// BW1W120 006f3710 BW1M100 104e7b10 GScriptOpposingCreature::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_SCRIPT_INCLUDED_H */

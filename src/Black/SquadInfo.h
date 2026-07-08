@@ -18,7 +18,7 @@ public:
 	// BW1W120 006e07b0 BW1M100 10133d90 GSquadInfo::_dt(void)
 	virtual ~GSquadInfo();
 	// BW1W120 006e0750 BW1M100 10133ff0 GSquadInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_SQUAD_INFO_INCLUDED_H */
