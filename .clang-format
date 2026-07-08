@@ -1,4 +1,3 @@
-Language:                    Cpp
 BasedOnStyle:                Microsoft
 Standard:                    c++03          # MSVC 6.0
 PointerAlignment:            Left
