@@ -883,6 +883,8 @@ Black/ScriptCreateOrCall.cpp:
 
 Black/ScriptDLL.cpp:
 	.text       start:0x006F6110 end:0x006F6CB0
+	.rdata      start:0x00942200 end:0x00942208
+	.data       start:0x00C0D108 end:0x00C0D368
 
 Black/ScriptFunctions.cpp:
 	.text       start:0x006F6CB0 end:0x00708C00
