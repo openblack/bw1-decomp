@@ -121,7 +121,7 @@ Options:
 
 Each `.o` file maps 1:1 to a `.cpp` file. The path is listed in `configure.py` under `config.libs`. Each object has a status:
 
-- `Matching` — our code compiles to byte-identical output. Linked into the final DOL.
+- `Matching` — our code compiles to byte-identical output. Linked into the final executable (`runblack.exe`).
 - `NonMatching` — work in progress. Not linked.
 - `Equivalent` — functionally equivalent but not byte-identical. Only linked with `--non-matching`.
 
@@ -156,8 +156,37 @@ Scope is `global`, `local` (static), or `weak` (inline/header-defined).
 
 ### `config/BW1W120/splits.txt`
 
-Maps each source file to its section address ranges, telling dtk how to split the DOL into per-TU objects.
+Maps each source file to its section address ranges, telling dtk how to split the binary into per-TU objects.
 
+## Code Conventions
+
+### Naming
+
+- **Use original names wherever possible.** The symbols from the Mac version can be mapped to Windows methods 90%+ of the time.
+- Function arguments: `snake_case` (e.g., `food_amount`, `wood_amount`, `max_dist`). Or placeholders where unsure: `param_1`, `param_2`, etc.
+- Local variables: `camelCase` (e.g., `abodeType`, `maxVillagersInAbode`). Or Hex-Rays placeholders where unsure what name to choose: `fVar1`, `fVar2`, etc.
+- Classes: `PascalCase` (e.g., `Abode`, `Villager`, `Town`, `MapCoords`).
+- Enums: type name in `SCREAMING_SNAKE_CASE`, enumerators prefixed with the type name (e.g., `TOWN_STATUS` → `TOWN_STATUS_DEFAULT`, `TOWN_STATUS_CAPTURED`).
+- Member variables: `PascalCase`, no prefix (e.g., `AttachedThing`, `PreviousStatus`, `XOffset`, `FlashOn`). Real Lionhead headers show members are consistently `PascalCase` — not `snake_case`/`camelCase`, and never `m_`-prefixed. Member names don't survive in the binary, so where the true name is unknown, pick a readable `PascalCase` name.
+- Unknown members retain placeholder names like `field_0x7c`, `field_0x94`, encoding the hex offset.
+- Method names use PascalCase: `ArriveHome()`, `AddVillagerToAbode()`, `CalcRandomPos()`.
+
+### Comments & annotations in the code
+
+- `// fabricated` — the code is not from the original binary; it was invented/guessed to make things compile. May be incorrect.
+- `// TODO:` — known issues, suspected inaccuracies, or incomplete understanding.
+- `// Tiny size mismatch` / `// TODO: incorrect size` — for functions which were completely inlined and not emitted to the original binary, but are present in the symbol map as UNUSED symbols and their size is available. That size can be compared against the size in our code using tools/decomp-diff.py and if it's different, then the guess for the function's contents is not correct yet.
+- `// correct but X is incorrect` — the function itself matches, but a called function does not.
+- `// rogue includes needed for matching sinit & bss` — includes added purely for BSS/static-init ordering.
+- `#pragma dont_inline on/off` — forces the compiler to not inline a function (required for matching in specific cases).
+
+Don't be afraid to leave notes that would be useful to the next person trying to match the code, figure it out, or in the far future, write mods for the game.
+
+### Style
+
+- Formatting follows `.clang-format` (Microsoft-based, 120-column, tabs for indentation with spaces for alignment).
+- Pre-C++11 style (`.clang-format` sets `Standard: c++03`; the compiler is MSVC 6.0): no `auto`, no range-for, no lambdas, no `nullptr` (use `NULL` or `0`).
+- Header guards use the `#ifndef BW1_DECOMP_<NAME>_INCLUDED_H` / `#define` / `#endif` pattern (e.g. `BW1_DECOMP_ABODE_INCLUDED_H`).
 
 # Project conventions
 
