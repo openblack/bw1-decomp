@@ -9,6 +9,10 @@ struct LHRegion;
 struct LHPixel16
 {
 	uint16_t value; /* 0x0 */
+
+	// BW1W120 00449650 LHPixel16::Set(LHColor)
+	// Packs an LHColor into this pixel using the active LHScreen format.
+	void Set(LHColor color);
 };
 
 struct LHSprite
