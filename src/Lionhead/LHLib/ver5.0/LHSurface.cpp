@@ -7,20 +7,8 @@
 #include <Lionhead/LH3DLib/development/LHColor.h>
 #include <Lionhead/LH3DLib/development/LHCoord.h>
 #include <Lionhead/LH3DLib/development/LHRegion.h>
+#include <Lionhead/LHLib/ver5.0/LHDraw.h>
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
-
-struct LHPixel16;
-
-// TODO: Move to LHDraw.h
-class LHDraw
-{
-public:
-	// BW1W120 007eb870 LHDraw::Sprite16(long, long, LHSprite *, unsigned long, unsigned short, LHPixel16 *, unsigned long)
-	int Sprite16(long x, long y, LHSprite* sprite, unsigned long flags, unsigned short alpha, LHPixel16* dst,
-	             unsigned long pitch);
-	// BW1W120 007eadb0 LHDraw::Sprite24(long, long, LHSprite *, unsigned long, LHColor *, unsigned long)
-	int Sprite24(long x, long y, LHSprite* sprite, unsigned long flags, LHColor* dst, unsigned long pitch);
-};
 
 // A multi-part sprite frame: an array of parts, each a positioned LHSprite.
 class LHSpriteFrame
