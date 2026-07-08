@@ -13,19 +13,19 @@ struct DBInfo;
 class MultiplayerDatabase
 {
 public:
-    bool32_t field_0x4;
-    DBInfo* info;
-    char* field_0xc;
+	bool32_t field_0x4;
+	DBInfo*  info;
+	char*    field_0xc;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 00633610 BW1M100 10109f20 MultiplayerDatabase::ReceiveReturnData(void)
-    virtual uint32_t ReceiveReturnData();
+	// BW1W120 00633610 BW1M100 10109f20 MultiplayerDatabase::ReceiveReturnData(void)
+	virtual uint32_t ReceiveReturnData();
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 00633400 BW1M100 1010a230 MultiplayerDatabase::MultiplayerDatabase(void)
-    MultiplayerDatabase();
+	// BW1W120 00633400 BW1M100 1010a230 MultiplayerDatabase::MultiplayerDatabase(void)
+	MultiplayerDatabase();
 };
 
 #endif /* BW1_DECOMP_MULTIPLAYER_DATABASE_INCLUDED_H */

@@ -13,57 +13,57 @@ class CreatureInfo;
 class LH3DCreature;
 struct MapCoords;
 
-class CreatureDamageMap: public Base
+class CreatureDamageMap : public Base
 {
 public:
-    uint32_t field_0x8;
-    uint32_t field_0xc;
+	uint32_t field_0x8;
+	uint32_t field_0xc;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 004ef4a0 BW1M100 101e28f0 CreatureDamageMap::_dt(void)
-    virtual ~CreatureDamageMap();
+	// BW1W120 004ef4a0 BW1M100 101e28f0 CreatureDamageMap::_dt(void)
+	virtual ~CreatureDamageMap();
 };
 
-class CreaturePhysical: public Base
+class CreaturePhysical : public Base
 {
 public:
-    uint32_t field_0x8;
-    float strength;
-    uint32_t field_0x10;
-    float field_0x14;
-    float field_0x18;
-    uint32_t field_0x1c;
-    uint32_t field_0x20;
-    uint16_t field_0x24;
-    uint8_t field_0x26;
-    uint8_t field_0x27;
-    uint32_t field_0x28;
-    uint32_t field_0x2c;
-    float field_0x30;
-    uint32_t field_0x34;
-    uint32_t field_0x38;
-    float field_0x3c;
-    uint32_t field_0x40;
-    uint32_t field_0x44;
-    float field_0x48;
-    uint32_t field_0x4c;
-    uint32_t field_0x50;
-    Creature* creature;
-    LH3DCreature* creature_3d;
-    CreatureDamageMap damage_map;
-    uint8_t* field_0x6c;
-    uint32_t field_0x70;
+	uint32_t          field_0x8;
+	float             strength;
+	uint32_t          field_0x10;
+	float             field_0x14;
+	float             field_0x18;
+	uint32_t          field_0x1c;
+	uint32_t          field_0x20;
+	uint16_t          field_0x24;
+	uint8_t           field_0x26;
+	uint8_t           field_0x27;
+	uint32_t          field_0x28;
+	uint32_t          field_0x2c;
+	float             field_0x30;
+	uint32_t          field_0x34;
+	uint32_t          field_0x38;
+	float             field_0x3c;
+	uint32_t          field_0x40;
+	uint32_t          field_0x44;
+	float             field_0x48;
+	uint32_t          field_0x4c;
+	uint32_t          field_0x50;
+	Creature*         creature;
+	LH3DCreature*     creature_3d;
+	CreatureDamageMap damage_map;
+	uint8_t*          field_0x6c;
+	uint32_t          field_0x70;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 004ef4c0 BW1M100 101defb0 CreaturePhysical::_dt(void)
-    virtual ~CreaturePhysical();
+	// BW1W120 004ef4c0 BW1M100 101defb0 CreaturePhysical::_dt(void)
+	virtual ~CreaturePhysical();
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 004ef2c0 BW1M100 102767c0 CreaturePhysical::CreaturePhysical(MapCoords const &, unsigned short, CreatureInfo const *, Creature *)
-    CreaturePhysical(const MapCoords* coords, uint16_t param_2, const CreatureInfo* info, Creature* creature);
+	// BW1W120 004ef2c0 BW1M100 102767c0 CreaturePhysical::CreaturePhysical(MapCoords const &, unsigned short, CreatureInfo const *, Creature *)
+	CreaturePhysical(const MapCoords* coords, uint16_t param_2, const CreatureInfo* info, Creature* creature);
 };
 
 #endif /* BW1_DECOMP_CREATURE_PHYSICAL_INCLUDED_H */

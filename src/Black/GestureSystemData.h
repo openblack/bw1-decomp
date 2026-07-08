@@ -6,20 +6,20 @@
 
 #include "Base.h" /* For struct Base */
 
-class GestureSystemData: public Base
+class GestureSystemData : public Base
 {
 public:
-    uint8_t field_0x8[0x654];
+	uint8_t field_0x8[0x654];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 00579690 BW1M100 1042dc90 GestureSystemData::_dt(void)
-    virtual ~GestureSystemData();
+	// BW1W120 00579690 BW1M100 1042dc90 GestureSystemData::_dt(void)
+	virtual ~GestureSystemData();
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 0054baf0 BW1M100 inlined GestureSystemData::GestureSystemData(void)
-    GestureSystemData();
+	// BW1W120 0054baf0 BW1M100 inlined GestureSystemData::GestureSystemData(void)
+	GestureSystemData();
 };
 
 #endif /* BW1_DECOMP_GESTURE_SYSTEM_DATA_INCLUDED_H */

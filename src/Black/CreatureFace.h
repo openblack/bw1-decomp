@@ -6,9 +6,9 @@
 
 struct CreatureFaceState
 {
-  int field_0x0;
-  float field_0x4;
-  uint32_t field_0xc;
+	int      field_0x0;
+	float    field_0x4;
+	uint32_t field_0xc;
 };
 static_assert(sizeof(CreatureFaceState) == 0xc, "Data type is of wrong size");
 

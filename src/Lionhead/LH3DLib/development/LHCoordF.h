@@ -3,8 +3,8 @@
 
 struct LHCoordF
 {
-    float x; /* 0x0 */
-    float y;
+	float x; /* 0x0 */
+	float y;
 };
 
 #endif /* BW1_DECOMP_LH_COORD_F_INCLUDED_H */

@@ -7,24 +7,23 @@
 
 #include "Base.h" /* For struct Base */
 
-class LocalBase: public Base
+class LocalBase : public Base
 {
 public:
+	// Override methods
 
-    // Override methods
+	// BW1W120 005c2150 BW1M100 1033f600 LocalBase::_dt(void)
+	virtual ~LocalBase();
 
-    // BW1W120 005c2150 BW1M100 1033f600 LocalBase::_dt(void)
-    virtual ~LocalBase();
+	// Static methods
 
-    // Static methods
+	// BW1W120 005f8790 BW1M100 1009eb9c LocalBase::operator new(unsigned long)
+	static LocalBase* __nw(size_t size, const char* file_name, uint32_t line);
 
-    // BW1W120 005f8790 BW1M100 1009eb9c LocalBase::operator new(unsigned long)
-    static LocalBase* __nw(size_t size, const char* file_name, uint32_t line);
+	// Constructors
 
-    // Constructors
-
-    // BW1W120 inlined BW1M100 1034ab30 LocalBase::LocalBase(void)
-    LocalBase();
+	// BW1W120 inlined BW1M100 1034ab30 LocalBase::LocalBase(void)
+	LocalBase();
 };
 
 #endif /* BW1_DECOMP_LOCAL_BASE_INCLUDED_H */

@@ -5,14 +5,13 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-class MPFEChangeClanRequest: public MPFEMessageObject
+class MPFEChangeClanRequest : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0062c160 BW1M100 10397200 MPFEChangeClanRequest::_dt(void)
-    virtual ~MPFEChangeClanRequest();
+	// BW1W120 0062c160 BW1M100 10397200 MPFEChangeClanRequest::_dt(void)
+	virtual ~MPFEChangeClanRequest();
 };
 
 #endif /* BW1_DECOMP_MPFE_CHANGE_CLAN_REQUEST_INCLUDED_H */

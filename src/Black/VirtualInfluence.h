@@ -10,39 +10,39 @@
 
 class GInterfaceStatus;
 
-class GVirtualInfluence: public Base
+class GVirtualInfluence : public Base
 {
 public:
-    uint32_t field_0x8;
-    uint32_t field_0xc;
-    uint32_t field_0x10;
-    uint32_t field_0x14;
-    uint32_t field_0x18;
-    uint32_t field_0x1c;
-    uint32_t field_0x20;
-    uint32_t field_0x24;
-    uint32_t field_0x28;
-    uint32_t field_0x2c;
-    float field_0x30;
-    float field_0x34;
-    GInterfaceStatus* interface_status;
-    uint32_t field_0x3c;
-    float field_0x40;
-    uint32_t field_0x44;
-    uint32_t field_0x48;
-    uint32_t field_0x4c;
-    uint32_t field_0x50;
-    uint8_t field_0x54[0xc];
+	uint32_t          field_0x8;
+	uint32_t          field_0xc;
+	uint32_t          field_0x10;
+	uint32_t          field_0x14;
+	uint32_t          field_0x18;
+	uint32_t          field_0x1c;
+	uint32_t          field_0x20;
+	uint32_t          field_0x24;
+	uint32_t          field_0x28;
+	uint32_t          field_0x2c;
+	float             field_0x30;
+	float             field_0x34;
+	GInterfaceStatus* interface_status;
+	uint32_t          field_0x3c;
+	float             field_0x40;
+	uint32_t          field_0x44;
+	uint32_t          field_0x48;
+	uint32_t          field_0x4c;
+	uint32_t          field_0x50;
+	uint8_t           field_0x54[0xc];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 0076cd10 BW1M100 1015a660 GVirtualInfluence::_dt(void)
-    virtual ~GVirtualInfluence();
+	// BW1W120 0076cd10 BW1M100 1015a660 GVirtualInfluence::_dt(void)
+	virtual ~GVirtualInfluence();
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 0076cca0 BW1M100 1015a6f0 GVirtualInfluence::GVirtualInfluence(GInterfaceStatus *)
-    GVirtualInfluence(GInterfaceStatus* status);
+	// BW1W120 0076cca0 BW1M100 1015a6f0 GVirtualInfluence::GVirtualInfluence(GInterfaceStatus *)
+	GVirtualInfluence(GInterfaceStatus* status);
 };
 
 #endif /* BW1_DECOMP_VIRTUAL_INFLUENCE_INCLUDED_H */

@@ -10,15 +10,15 @@
 
 class CHand;
 
-class HandStateGrain: public HandStateHolding
+class HandStateGrain : public HandStateHolding
 {
 public:
-    uint8_t field_0x8[0xe4]; /* 0x144 */
+	uint8_t field_0x8[0xe4]; /* 0x144 */
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 005b2b80 BW1M100 10339d60 HandStateGrain::HandStateGrain(CHand*)
-    HandStateGrain(CHand* hand);
+	// BW1W120 005b2b80 BW1M100 10339d60 HandStateGrain::HandStateGrain(CHand*)
+	HandStateGrain(CHand* hand);
 };
 
 #endif /* BW1_DECOMP_HAND_STATE_GRAIN_INCLUDED_H */

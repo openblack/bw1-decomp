@@ -11,16 +11,15 @@
 class Base;
 class GBaseInfo;
 
-class GWorshipSiteUpgradeInfo: public GFeatureInfo
+class GWorshipSiteUpgradeInfo : public GFeatureInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0077ebc0 BW1M100 105b4170 GWorshipSiteUpgradeInfo::_dt(void)
-    virtual ~GWorshipSiteUpgradeInfo();
-    // BW1W120 0077eb70 BW1M100 105b4210 GWorshipSiteUpgradeInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 0077ebc0 BW1M100 105b4170 GWorshipSiteUpgradeInfo::_dt(void)
+	virtual ~GWorshipSiteUpgradeInfo();
+	// BW1W120 0077eb70 BW1M100 105b4210 GWorshipSiteUpgradeInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_UPGRADE_INFO_INCLUDED_H */

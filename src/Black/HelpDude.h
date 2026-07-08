@@ -11,16 +11,15 @@
 class Base;
 struct LHPoint;
 
-class HelpDude: public LocalBase
+class HelpDude : public LocalBase
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 005c2110 BW1M100 10348c90 HelpDude::_dt(void)
-    virtual ~HelpDude();
-    // BW1W120 005c20e0 BW1M100 10348c40 HelpDude::Get3DSoundPos(LHPoint *)
-    virtual int Get3DSoundPos(LHPoint* param_1);
+	// BW1W120 005c2110 BW1M100 10348c90 HelpDude::_dt(void)
+	virtual ~HelpDude();
+	// BW1W120 005c20e0 BW1M100 10348c40 HelpDude::Get3DSoundPos(LHPoint *)
+	virtual int Get3DSoundPos(LHPoint* param_1);
 };
 
 #endif /* BW1_DECOMP_HELP_DUDE_INCLUDED_H */

@@ -10,14 +10,13 @@
 
 class Base;
 
-class GMagicObjectInfo: public GMagicInfo
+class GMagicObjectInfo : public GMagicInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00435830 BW1M100 1018fa30 GMagicObjectInfo::_dt(void)
-    virtual ~GMagicObjectInfo();
+	// BW1W120 00435830 BW1M100 1018fa30 GMagicObjectInfo::_dt(void)
+	virtual ~GMagicObjectInfo();
 };
 
 #endif /* BW1_DECOMP_MAGIC_OBJECT_INFO_INCLUDED_H */

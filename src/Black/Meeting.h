@@ -13,22 +13,21 @@ class GPlayer;
 class GameThing;
 class Town;
 
-class Meeting: public GameThingWithPos
+class Meeting : public GameThingWithPos
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00606160 BW1M100 inlined Meeting::_dt(void)
-    virtual ~Meeting();
-    // BW1W120 00606180 BW1M100 inlined Meeting::ToBeDeleted(int)
-    virtual void ToBeDeleted(int param_1);
-    // BW1W120 00606230 BW1M100 inlined Meeting::GetPlayer(void)
-    virtual GPlayer* GetPlayer();
-    // BW1W120 00606150 BW1M100 inlined Meeting::RemoveDance(void)
-    virtual void RemoveDance();
-    // BW1W120 00606140 BW1M100 inlined Meeting::GetTown(void)
-    virtual Town* GetTown();
+	// BW1W120 00606160 BW1M100 inlined Meeting::_dt(void)
+	virtual ~Meeting();
+	// BW1W120 00606180 BW1M100 inlined Meeting::ToBeDeleted(int)
+	virtual void ToBeDeleted(int param_1);
+	// BW1W120 00606230 BW1M100 inlined Meeting::GetPlayer(void)
+	virtual GPlayer* GetPlayer();
+	// BW1W120 00606150 BW1M100 inlined Meeting::RemoveDance(void)
+	virtual void RemoveDance();
+	// BW1W120 00606140 BW1M100 inlined Meeting::GetTown(void)
+	virtual Town* GetTown();
 };
 
 #endif /* BW1_DECOMP_MEETING_INCLUDED_H */

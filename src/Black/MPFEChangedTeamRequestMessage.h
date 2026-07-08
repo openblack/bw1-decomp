@@ -5,14 +5,13 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-class MPFEChangedTeamRequestMessage: public MPFEMessageObject
+class MPFEChangedTeamRequestMessage : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00632d20 BW1M100 10397440 MPFEChangedTeamRequestMessage::_dt(void)
-    virtual ~MPFEChangedTeamRequestMessage();
+	// BW1W120 00632d20 BW1M100 10397440 MPFEChangedTeamRequestMessage::_dt(void)
+	virtual ~MPFEChangedTeamRequestMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_CHANGED_TEAM_REQUEST_MESSAGE_INCLUDED_H */

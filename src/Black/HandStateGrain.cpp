@@ -1,6 +1,3 @@
 #include "HandStateGrain.h"
 
-HandStateGrain::HandStateGrain(CHand* hand)
-    : HandStateHolding(hand)
-{
-}
+HandStateGrain::HandStateGrain(CHand* hand) : HandStateHolding(hand) {}

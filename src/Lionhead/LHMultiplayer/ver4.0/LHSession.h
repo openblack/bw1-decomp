@@ -8,48 +8,48 @@
 
 struct LHSession
 {
-    LHConnection conn; /* 0x0 */
-    uint8_t field_0x88; /* 0x90 */
-    uint8_t field_0x89;
-    uint8_t field_0x8a;
-    uint8_t field_0x8b;
-    int field_0x8c;
-    uint8_t field_0x90;
-    uint8_t field_0x91;
-    uint8_t field_0x92;
-    uint8_t field_0x93;
-    uint8_t field_0x94;
-    uint8_t field_0x95;
-    uint8_t field_0x96;
-    uint8_t field_0x97;
-    uint8_t field_0x98; /* 0xa0 */
-    uint8_t field_0x99;
-    uint8_t field_0x9a;
-    uint8_t field_0x9b;
-    uint8_t field_0x9c;
-    uint8_t field_0x9d;
-    uint8_t field_0x9e;
-    uint8_t field_0x9f;
-    int field_0xa0;
-    uint8_t field_0xa4;
-    uint8_t field_0xa5;
-    uint8_t field_0xa6;
-    uint8_t field_0xa7;
-    uint8_t field_0xa8; /* 0xb0 */
-    uint8_t field_0xa9;
-    uint8_t field_0xaa;
-    uint8_t field_0xab;
-    uint8_t field_0xac;
-    uint8_t field_0xad;
-    uint8_t field_0xae;
-    uint8_t field_0xaf;
+	LHConnection conn;       /* 0x0 */
+	uint8_t      field_0x88; /* 0x90 */
+	uint8_t      field_0x89;
+	uint8_t      field_0x8a;
+	uint8_t      field_0x8b;
+	int          field_0x8c;
+	uint8_t      field_0x90;
+	uint8_t      field_0x91;
+	uint8_t      field_0x92;
+	uint8_t      field_0x93;
+	uint8_t      field_0x94;
+	uint8_t      field_0x95;
+	uint8_t      field_0x96;
+	uint8_t      field_0x97;
+	uint8_t      field_0x98; /* 0xa0 */
+	uint8_t      field_0x99;
+	uint8_t      field_0x9a;
+	uint8_t      field_0x9b;
+	uint8_t      field_0x9c;
+	uint8_t      field_0x9d;
+	uint8_t      field_0x9e;
+	uint8_t      field_0x9f;
+	int          field_0xa0;
+	uint8_t      field_0xa4;
+	uint8_t      field_0xa5;
+	uint8_t      field_0xa6;
+	uint8_t      field_0xa7;
+	uint8_t      field_0xa8; /* 0xb0 */
+	uint8_t      field_0xa9;
+	uint8_t      field_0xaa;
+	uint8_t      field_0xab;
+	uint8_t      field_0xac;
+	uint8_t      field_0xad;
+	uint8_t      field_0xae;
+	uint8_t      field_0xaf;
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 1001dab0 BW1M100 10036a3c LHSession::IsSinglePlayer(void)
-    bool IsSinglePlayer();
-    // BW1W120 1001e5e0 BW1M100 inlined LHSession::NextPacketIsSuperpacket(void)
-    bool NextPacketIsSuperpacket();
+	// BW1W120 1001dab0 BW1M100 10036a3c LHSession::IsSinglePlayer(void)
+	bool IsSinglePlayer();
+	// BW1W120 1001e5e0 BW1M100 inlined LHSession::NextPacketIsSuperpacket(void)
+	bool NextPacketIsSuperpacket();
 };
 
 #endif /* BW1_DECOMP_LH_SESSION_INCLUDED_H */

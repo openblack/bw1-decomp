@@ -12,16 +12,15 @@ class Base;
 class GPlayer;
 class GameThing;
 
-class Arrow: public MobileObject
+class Arrow : public MobileObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00425c00 BW1M100 inlined Arrow::_dt(void)
-    virtual ~Arrow();
-    // BW1W120 00425bf0 BW1M100 inlined Arrow::GetPlayer(void)
-    virtual GPlayer* GetPlayer();
+	// BW1W120 00425c00 BW1M100 inlined Arrow::_dt(void)
+	virtual ~Arrow();
+	// BW1W120 00425bf0 BW1M100 inlined Arrow::GetPlayer(void)
+	virtual GPlayer* GetPlayer();
 };
 
 #endif /* BW1_DECOMP_ARROW_INCLUDED_H */

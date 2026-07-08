@@ -11,30 +11,30 @@
 class GCamera;
 class GameThingWithPos;
 
-class CameraModeFollow: public CameraMode
+class CameraModeFollow : public CameraMode
 {
 public:
-    GameThingWithPos* target; /* 0x8 */
-    float pitch;
-    float yaw; /* 0x10 */
-    float viewing_distance;
-    float field_0x18;
-    int field_0x1c;
-    int field_0x20;
-    uint8_t field_0x24[0x18];
-    int32_t field_0x3c;
-    int32_t field_0x40;
-    int32_t field_0x44;
+	GameThingWithPos* target; /* 0x8 */
+	float             pitch;
+	float             yaw; /* 0x10 */
+	float             viewing_distance;
+	float             field_0x18;
+	int               field_0x1c;
+	int               field_0x20;
+	uint8_t           field_0x24[0x18];
+	int32_t           field_0x3c;
+	int32_t           field_0x40;
+	int32_t           field_0x44;
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 0044b800 BW1M100 101a00c0 CameraModeFollow::CameraModeFollow(GCamera *, GameThingWithPos *, float, int, int)
-    CameraModeFollow(GCamera* camera, GameThingWithPos* target, float param_3, int param_4, int param_5);
+	// BW1W120 0044b800 BW1M100 101a00c0 CameraModeFollow::CameraModeFollow(GCamera *, GameThingWithPos *, float, int, int)
+	CameraModeFollow(GCamera* camera, GameThingWithPos* target, float param_3, int param_4, int param_5);
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 0044ba00 BW1M100 1019ff80 CameraModeFollow::Set(GameThingWithPos *)
-    void Set(GameThingWithPos* target);
+	// BW1W120 0044ba00 BW1M100 1019ff80 CameraModeFollow::Set(GameThingWithPos *)
+	void Set(GameThingWithPos* target);
 };
 
 #endif /* BW1_DECOMP_CAMERA_MODE_FOLLOW_INCLUDED_H */

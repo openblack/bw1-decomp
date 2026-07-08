@@ -10,14 +10,13 @@
 
 class Base;
 
-class GFieldInfo: public GMultiMapFixedInfo
+class GFieldInfo : public GMultiMapFixedInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00527cc0 BW1M100 100d5dc0 GFieldInfo::_dt(void)
-    virtual ~GFieldInfo();
+	// BW1W120 00527cc0 BW1M100 100d5dc0 GFieldInfo::_dt(void)
+	virtual ~GFieldInfo();
 };
 
 #endif /* BW1_DECOMP_FIELD_INFO_INCLUDED_H */

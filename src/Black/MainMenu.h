@@ -6,21 +6,22 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
-class MainMenu: public DialogBoxBase
+class MainMenu : public DialogBoxBase
 {
 public:
-    uint8_t field_0x10[0x28];
+	uint8_t field_0x10[0x28];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 0053f910 BW1M100 105c0610 MainMenu::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // BW1W120 0053fb50 BW1M100 105c05a0 MainMenu::Destroy(void)
-    virtual void Destroy();
-    // BW1W120 0053bd50 BW1M100 105c5ef0 MainMenu::CanESCOut(void)
-    virtual bool CanESCOut();
-    // BW1W120 0053fba0 BW1M100 105bff40 MainMenu::InitControls(void)
-    virtual void InitControls();
+	// BW1W120 0053f910 BW1M100 105c0610 MainMenu::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	virtual void Init(uint32_t param_1, uint32_t param_2,
+	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	// BW1W120 0053fb50 BW1M100 105c05a0 MainMenu::Destroy(void)
+	virtual void Destroy();
+	// BW1W120 0053bd50 BW1M100 105c5ef0 MainMenu::CanESCOut(void)
+	virtual bool CanESCOut();
+	// BW1W120 0053fba0 BW1M100 105bff40 MainMenu::InitControls(void)
+	virtual void InitControls();
 };
 
 #endif /* BW1_DECOMP_MAIN_MENU_INCLUDED_H */

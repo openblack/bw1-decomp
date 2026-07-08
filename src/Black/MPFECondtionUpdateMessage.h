@@ -5,14 +5,13 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-class MPFECondtionUpdateMessage: public MPFEMessageObject
+class MPFECondtionUpdateMessage : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0062c860 BW1M100 inlined MPFECondtionUpdateMessage::_dt(void)
-    virtual ~MPFECondtionUpdateMessage();
+	// BW1W120 0062c860 BW1M100 inlined MPFECondtionUpdateMessage::_dt(void)
+	virtual ~MPFECondtionUpdateMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_CONDTION_UPDATE_MESSAGE_INCLUDED_H */

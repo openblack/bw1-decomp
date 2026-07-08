@@ -10,15 +10,15 @@
 
 class Base;
 
-class GTreeInfo: public GSingleMapFixedInfo
+class GTreeInfo : public GSingleMapFixedInfo
 {
 public:
-    uint8_t field_0x100[0x40];
+	uint8_t field_0x100[0x40];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 00749dd0 BW1M100 10155680 GTreeInfo::_dt(void)
-    virtual ~GTreeInfo();
+	// BW1W120 00749dd0 BW1M100 10155680 GTreeInfo::_dt(void)
+	virtual ~GTreeInfo();
 };
 
 #endif /* BW1_DECOMP_TREE_INFO_INCLUDED_H */

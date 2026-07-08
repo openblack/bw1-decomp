@@ -10,22 +10,21 @@
 
 class Base;
 
-class WeatherInfo: public GBaseInfo
+class WeatherInfo : public GBaseInfo
 {
 public:
-    uint8_t field_0x10[0x54];
+	uint8_t field_0x10[0x54];
 };
 
-class GWeatherInfo: public GBaseInfo
+class GWeatherInfo : public GBaseInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00770e30 BW1M100 105a3520 GWeatherInfo::_dt(void)
-    virtual ~GWeatherInfo();
-    // BW1W120 00770dd0 BW1M100 105a3640 GWeatherInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 00770e30 BW1M100 105a3520 GWeatherInfo::_dt(void)
+	virtual ~GWeatherInfo();
+	// BW1W120 00770dd0 BW1M100 105a3640 GWeatherInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
 #endif /* BW1_DECOMP_WEATHER_INFO_INCLUDED_H */

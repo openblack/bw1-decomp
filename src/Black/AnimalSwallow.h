@@ -12,20 +12,19 @@ class Base;
 class GameThing;
 class Object;
 
-class Swallow: public Dove
+class Swallow : public Dove
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0041ece0 BW1M100 101715b0 Swallow::_dt(void)
-    virtual ~Swallow();
-    // BW1W120 0041ecd0 BW1M100 10171680 Swallow::GetDebugText(void)
-    virtual char* GetDebugText();
-    // BW1W120 0041ecc0 BW1M100 10171640 Swallow::GetSaveType(void)
-    virtual uint32_t GetSaveType();
-    // BW1W120 0041c070 BW1M100 101700d0 Swallow::StandAnimation(void)
-    virtual uint32_t StandAnimation();
+	// BW1W120 0041ece0 BW1M100 101715b0 Swallow::_dt(void)
+	virtual ~Swallow();
+	// BW1W120 0041ecd0 BW1M100 10171680 Swallow::GetDebugText(void)
+	virtual char* GetDebugText();
+	// BW1W120 0041ecc0 BW1M100 10171640 Swallow::GetSaveType(void)
+	virtual uint32_t GetSaveType();
+	// BW1W120 0041c070 BW1M100 101700d0 Swallow::StandAnimation(void)
+	virtual uint32_t StandAnimation();
 };
 
 #endif /* BW1_DECOMP_ANIMAL_SWALLOW_INCLUDED_H */

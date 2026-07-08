@@ -3,9 +3,9 @@
 
 void PlannedAbode::Init(Town* town_)
 {
-    town = town_;
-    if (town != NULL)
-    {
-        town->AddPlanned(this);
-    }
+	town = town_;
+	if (town != NULL)
+	{
+		town->AddPlanned(this);
+	}
 }

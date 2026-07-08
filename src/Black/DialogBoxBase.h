@@ -12,41 +12,42 @@ class SetupControl;
 class DialogBoxBase
 {
 public:
-    SetupBox* setup_box; /* 0x4 */
-    uint8_t field_0x8;
-    uint8_t field_0x9;
-    uint8_t field_0xa;
-    uint8_t field_0xb;
-    DialogBoxBase* next;
+	SetupBox*      setup_box; /* 0x4 */
+	uint8_t        field_0x8;
+	uint8_t        field_0x9;
+	uint8_t        field_0xa;
+	uint8_t        field_0xb;
+	DialogBoxBase* next;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 00513400 BW1M100 102b24c0 DialogBoxBase::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // BW1W120 00513590 BW1M100 102b23a0 DialogBoxBase::Destroy(void)
-    virtual void Destroy();
-    // BW1W120 005127d0 BW1M100 100fd590 DialogBoxBase::InitSubDialogs(void)
-    virtual void InitSubDialogs();
-    // BW1W120 005135f0 BW1M100 102b22e0 DialogBoxBase::Show(void)
-    virtual void Show();
-    // BW1W120 005127e0 BW1M100 100fd5d0 DialogBoxBase::CloseNotification(void)
-    virtual bool CloseNotification();
-    // BW1W120 005127f0 BW1M100 10504080 DialogBoxBase::WantsKeyControl(void)
-    virtual bool WantsKeyControl();
-    // BW1W120 00512800 BW1M100 100fd610 DialogBoxBase::WantsMouseControl(void)
-    virtual bool WantsMouseControl();
-    // BW1W120 00512810 BW1M100 103c4090 DialogBoxBase::CanESCOut(void)
-    virtual void CanESCOut();
+	// BW1W120 00513400 BW1M100 102b24c0 DialogBoxBase::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	virtual void Init(uint32_t param_1, uint32_t param_2,
+	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	// BW1W120 00513590 BW1M100 102b23a0 DialogBoxBase::Destroy(void)
+	virtual void Destroy();
+	// BW1W120 005127d0 BW1M100 100fd590 DialogBoxBase::InitSubDialogs(void)
+	virtual void InitSubDialogs();
+	// BW1W120 005135f0 BW1M100 102b22e0 DialogBoxBase::Show(void)
+	virtual void Show();
+	// BW1W120 005127e0 BW1M100 100fd5d0 DialogBoxBase::CloseNotification(void)
+	virtual bool CloseNotification();
+	// BW1W120 005127f0 BW1M100 10504080 DialogBoxBase::WantsKeyControl(void)
+	virtual bool WantsKeyControl();
+	// BW1W120 00512800 BW1M100 100fd610 DialogBoxBase::WantsMouseControl(void)
+	virtual bool WantsMouseControl();
+	// BW1W120 00512810 BW1M100 103c4090 DialogBoxBase::CanESCOut(void)
+	virtual void CanESCOut();
 
-    // Static methods
+	// Static methods
 
-    // BW1W120 005136e0 BW1M100 102b1ff0 DialogBoxBase::HideAll(void)
-    static void HideAll();
+	// BW1W120 005136e0 BW1M100 102b1ff0 DialogBoxBase::HideAll(void)
+	static void HideAll();
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 005133a0 BW1M100 102b2750 DialogBoxBase::DialogBoxBase(void)
-    DialogBoxBase();
+	// BW1W120 005133a0 BW1M100 102b2750 DialogBoxBase::DialogBoxBase(void)
+	DialogBoxBase();
 };
 
 #endif /* BW1_DECOMP_DIALOG_BOX_BASE_INCLUDED_H */

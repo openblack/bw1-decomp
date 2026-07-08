@@ -6,13 +6,13 @@
 
 #include "CameraMode.h" /* For struct CameraMode */
 
-class CameraModeFree: public CameraMode
+class CameraModeFree : public CameraMode
 {
 public:
-    float field_0x8;
-    uint32_t field_0xc;
-    uint32_t field_0x10;
-    uint32_t field_0x14;
+	float    field_0x8;
+	uint32_t field_0xc;
+	uint32_t field_0x10;
+	uint32_t field_0x14;
 };
 
 #endif /* BW1_DECOMP_CAMERA_MODE_FREE_INCLUDED_H */

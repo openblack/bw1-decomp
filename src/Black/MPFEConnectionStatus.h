@@ -7,14 +7,14 @@
 
 struct MPFEConnectionStatus
 {
-    LOBBY_TYPE type; /* 0x0 */
+	LOBBY_TYPE type; /* 0x0 */
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 0062dab0 BW1M100 103a1860 MPFEConnectionStatus::IsLanLobby(void)
-    bool IsLanLobby();
-    // BW1W120 0062dac0 BW1M100 103a1810 MPFEConnectionStatus::IsInternetLobby(void)
-    bool IsInternetLobby();
+	// BW1W120 0062dab0 BW1M100 103a1860 MPFEConnectionStatus::IsLanLobby(void)
+	bool IsLanLobby();
+	// BW1W120 0062dac0 BW1M100 103a1810 MPFEConnectionStatus::IsInternetLobby(void)
+	bool IsInternetLobby();
 };
 
 #endif /* BW1_DECOMP_MPFE_CONNECTION_STATUS_INCLUDED_H */

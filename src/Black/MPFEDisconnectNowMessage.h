@@ -5,14 +5,13 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-class MPFEDisconnectNowMessage: public MPFEMessageObject
+class MPFEDisconnectNowMessage : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006302c0 BW1M100 10393c20 MPFEDisconnectNowMessage::_dt(void)
-    virtual ~MPFEDisconnectNowMessage();
+	// BW1W120 006302c0 BW1M100 10393c20 MPFEDisconnectNowMessage::_dt(void)
+	virtual ~MPFEDisconnectNowMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_DISCONNECT_NOW_MESSAGE_INCLUDED_H */

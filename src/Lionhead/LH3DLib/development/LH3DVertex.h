@@ -7,17 +7,17 @@
 
 struct LH3DVertex
 {
-  struct LHPoint position;  /* 0x0 */
-  struct Point2D uv;
-  struct LHPoint normal;  /* 0x14 */
+	struct LHPoint position; /* 0x0 */
+	struct Point2D uv;
+	struct LHPoint normal; /* 0x14 */
 };
 static_assert(sizeof(LH3DVertex) == 0x20, "Data type is of wrong size");
 
 struct Vertex3D
 {
-  struct LHPoint position;  /* 0x0 */
-  struct Point2D uv;
-  struct LHPoint normal;  /* 0x14 */
+	struct LHPoint position; /* 0x0 */
+	struct Point2D uv;
+	struct LHPoint normal; /* 0x14 */
 };
 static_assert(sizeof(Vertex3D) == 0x20, "Data type is of wrong size");
 

@@ -12,18 +12,17 @@ class Base;
 class GBaseInfo;
 class GObjectInfo;
 
-class GPrayerSiteInfo: public GMultiMapFixedInfo
+class GPrayerSiteInfo : public GMultiMapFixedInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006706c0 BW1M100 1011ea20 GPrayerSiteInfo::_dt(void)
-    virtual ~GPrayerSiteInfo();
-    // BW1W120 00670670 BW1M100 1011eb00 GPrayerSiteInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
-    // BW1W120 00670660 BW1M100 1011eac0 GPrayerSiteInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+	// BW1W120 006706c0 BW1M100 1011ea20 GPrayerSiteInfo::_dt(void)
+	virtual ~GPrayerSiteInfo();
+	// BW1W120 00670670 BW1M100 1011eb00 GPrayerSiteInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 00670660 BW1M100 1011eac0 GPrayerSiteInfo::GetMesh( const(void))
+	virtual uint32_t GetMesh();
 };
 
 #endif /* BW1_DECOMP_PRAYER_SITE_INFO_INCLUDED_H */

@@ -6,12 +6,12 @@
 
 struct GSaveLoadPtr
 {
-    uintptr_t ptr; /* 0x0 */
+	uintptr_t ptr; /* 0x0 */
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 00562320 BW1M100 inlined GSaveLoadPtr::GSaveLoadPtr(void*)
-    GSaveLoadPtr(void* ptr);
+	// BW1W120 00562320 BW1M100 inlined GSaveLoadPtr::GSaveLoadPtr(void*)
+	GSaveLoadPtr(void* ptr);
 };
 
 #endif /* BW1_DECOMP_SAVE_LOAD_PTR_INCLUDED_H */

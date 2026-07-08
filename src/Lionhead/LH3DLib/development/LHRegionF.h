@@ -7,17 +7,17 @@
 
 struct LHRegionF
 {
-  struct LHCoordF start;  /* 0x0 */
-  struct LHCoordF end;
+	struct LHCoordF start; /* 0x0 */
+	struct LHCoordF end;
 
-  // Non-virtual methods
+	// Non-virtual methods
 
-  // BW1W120 007deb70 LHRegionF::CoordInRegion(LHCoordF const &) const
-  int CoordInRegion(const LHCoordF& coord) const;
-  // BW1W120 007debc0 LHRegionF::CentreCoord(LHCoordF *) const
-  void CentreCoord(LHCoordF* out) const;
-  // BW1W120 007dec00 LHRegionF::BoundWithRegion(LHRegionF *)
-  void BoundWithRegion(LHRegionF* other);
+	// BW1W120 007deb70 LHRegionF::CoordInRegion(LHCoordF const &) const
+	int CoordInRegion(const LHCoordF& coord) const;
+	// BW1W120 007debc0 LHRegionF::CentreCoord(LHCoordF *) const
+	void CentreCoord(LHCoordF* out) const;
+	// BW1W120 007dec00 LHRegionF::BoundWithRegion(LHRegionF *)
+	void BoundWithRegion(LHRegionF* other);
 };
 static_assert(sizeof(LHRegionF) == 0x10, "Data type is of wrong size");
 

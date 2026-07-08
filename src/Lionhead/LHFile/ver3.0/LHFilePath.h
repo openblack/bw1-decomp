@@ -10,14 +10,11 @@ extern char g_GameDriveCharacter;
 // buffer. Always inlined; no out-of-line symbol exists in any Windows build.
 struct LHFilePath
 {
-    char buffer[256];
+	char buffer[256];
 
-    LHFilePath(const char* path)
-    {
-        sprintf(buffer, "%c:\\%s", g_GameDriveCharacter, path);
-    }
+	LHFilePath(const char* path) { sprintf(buffer, "%c:\\%s", g_GameDriveCharacter, path); }
 
-    operator char*() { return buffer; }
+	operator char*() { return buffer; }
 };
 
 #endif /* BW1_DECOMP_LH_FILE_PATH_INCLUDED_H */

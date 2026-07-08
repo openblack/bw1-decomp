@@ -1,6 +1,3 @@
 #include "HandStateCreature.h"
 
-HandStateCreature::HandStateCreature(CHand* hand)
-    : HandState(hand)
-{
-}
+HandStateCreature::HandStateCreature(CHand* hand) : HandState(hand) {}

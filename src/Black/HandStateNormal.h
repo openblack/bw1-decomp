@@ -11,23 +11,23 @@
 class CHand;
 struct LHMatrix;
 
-class HandStateNormal: public HandState
+class HandStateNormal : public HandState
 {
 public:
-    uintptr_t field_0x8;
-    uintptr_t field_0xC;
+	uintptr_t field_0x8;
+	uintptr_t field_0xC;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 005b5d00 BW1M100 1033c7a0 HandStateNormal::Enter(void)
-    virtual void Enter();
-    // BW1W120 005b71a0 BW1M100 100792d0 HandStateNormal::Update(float, LHMatrix *)
-    virtual void Update(float param_1, LHMatrix* param_2);
+	// BW1W120 005b5d00 BW1M100 1033c7a0 HandStateNormal::Enter(void)
+	virtual void Enter();
+	// BW1W120 005b71a0 BW1M100 100792d0 HandStateNormal::Update(float, LHMatrix *)
+	virtual void Update(float param_1, LHMatrix* param_2);
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 005b5c70 BW1M100 1033c8a0 HandStateNormal::HandStateNormal(CHand*)
-    HandStateNormal(CHand* hand);
+	// BW1W120 005b5c70 BW1M100 1033c8a0 HandStateNormal::HandStateNormal(CHand*)
+	HandStateNormal(CHand* hand);
 };
 
 #endif /* BW1_DECOMP_HAND_STATE_NORMAL_INCLUDED_H */

@@ -10,14 +10,13 @@
 
 class Base;
 
-class GMagicForestInfo: public GMagicInfo
+class GMagicForestInfo : public GMagicInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 004356e0 BW1M100 103ac990 GMagicForestInfo::_dt(void)
-    virtual ~GMagicForestInfo();
+	// BW1W120 004356e0 BW1M100 103ac990 GMagicForestInfo::_dt(void)
+	virtual ~GMagicForestInfo();
 };
 
 #endif /* BW1_DECOMP_MAGIC_FOREST_INFO_INCLUDED_H */

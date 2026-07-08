@@ -6,15 +6,15 @@
 
 struct Settings
 {
-    char quest_path[0x1]; /* 0x0 */
-    uint8_t field_0x1[0x103];
+	char    quest_path[0x1]; /* 0x0 */
+	uint8_t field_0x1[0x103];
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 00714af0 BW1M100 105e8db0 Settings::ParseConfigFile(char*)
-    void ParseConfigFile(char* path);
-    // BW1W120 00714c20 BW1M100 105e8d50 Settings::InitialiseToDefaults(void)
-    void InitialiseToDefaults();
+	// BW1W120 00714af0 BW1M100 105e8db0 Settings::ParseConfigFile(char*)
+	void ParseConfigFile(char* path);
+	// BW1W120 00714c20 BW1M100 105e8d50 Settings::InitialiseToDefaults(void)
+	void InitialiseToDefaults();
 };
 
 #endif /* BW1_DECOMP_SETTINGS_INCLUDED_H */

@@ -1,6 +1,3 @@
 #include "HandStateMultiPickUp.h"
 
-HandStateMultiPickUp::HandStateMultiPickUp(CHand* hand)
-    : HandState(hand)
-{
-}
+HandStateMultiPickUp::HandStateMultiPickUp(CHand* hand) : HandState(hand) {}

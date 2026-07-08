@@ -10,16 +10,15 @@
 
 class Base;
 
-class CreatureInitialSourceInfo: public GBaseInfo
+class CreatureInitialSourceInfo : public GBaseInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 004dd2c0 BW1M100 1025d520 CreatureInitialSourceInfo::_dt(void)
-    virtual ~CreatureInitialSourceInfo();
-    // BW1W120 004dd260 BW1M100 1025eee0 CreatureInitialSourceInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 004dd2c0 BW1M100 1025d520 CreatureInitialSourceInfo::_dt(void)
+	virtual ~CreatureInitialSourceInfo();
+	// BW1W120 004dd260 BW1M100 1025eee0 CreatureInitialSourceInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
 #endif /* BW1_DECOMP_CREATURE_INITIAL_SOURCE_INFO_INCLUDED_H */

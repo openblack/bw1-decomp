@@ -6,35 +6,35 @@
 
 #include "MobileWallHugInfo.h" /* For struct GMobileWallHugInfo */
 
-class GLivingInfo: public GMobileWallHugInfo
+class GLivingInfo : public GMobileWallHugInfo
 {
 public:
-    uint32_t field_0x120;
-    uint8_t move_to_state;
-    float life;
-    float field_0x12c;
-    float field_0x130;
-    int field_0x134;
-    uint32_t teen_age;
-    uint32_t middle_age;
-    uint32_t old_age; /* 0x140 */
-    uint32_t field_0x144;
-    uint32_t field_0x148;
-    uint32_t field_0x14c;
-    uint32_t field_0x150;
-    uint32_t field_0x154;
-    uint32_t field_0x158;
-    uint32_t field_0x15c;
-    uint32_t field_0x160;
-    uint32_t field_0x164;
-    uint32_t field_0x168;
-    uint32_t field_0x16c;
-    uint8_t field_0x170[0x8];
-    uint32_t field_0x178;
-    uint8_t field_0x17c[0x34];
-    uint32_t field_0x1b0;
-    uint32_t field_0x1b4;
-    uint8_t field_0x1b8[0x3c];
+	uint32_t field_0x120;
+	uint8_t  move_to_state;
+	float    life;
+	float    field_0x12c;
+	float    field_0x130;
+	int      field_0x134;
+	uint32_t teen_age;
+	uint32_t middle_age;
+	uint32_t old_age; /* 0x140 */
+	uint32_t field_0x144;
+	uint32_t field_0x148;
+	uint32_t field_0x14c;
+	uint32_t field_0x150;
+	uint32_t field_0x154;
+	uint32_t field_0x158;
+	uint32_t field_0x15c;
+	uint32_t field_0x160;
+	uint32_t field_0x164;
+	uint32_t field_0x168;
+	uint32_t field_0x16c;
+	uint8_t  field_0x170[0x8];
+	uint32_t field_0x178;
+	uint8_t  field_0x17c[0x34];
+	uint32_t field_0x1b0;
+	uint32_t field_0x1b4;
+	uint8_t  field_0x1b8[0x3c];
 };
 
 #endif /* BW1_DECOMP_LIVING_INFO_INCLUDED_H */

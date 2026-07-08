@@ -10,18 +10,18 @@
 
 class Base;
 
-class DancePathInfo: public GameThing
+class DancePathInfo : public GameThing
 {
 public:
-    uint8_t field_0x14;
-    uint8_t field_0x15[0x3];
-    uint8_t (*field_0x18)[0xc];
-    uint32_t field_0x1c;
+	uint8_t field_0x14;
+	uint8_t field_0x15[0x3];
+	uint8_t (*field_0x18)[0xc];
+	uint32_t field_0x1c;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 005961c0 BW1M100 100fafe0 DancePathInfo::_dt(void)
-    virtual ~DancePathInfo();
+	// BW1W120 005961c0 BW1M100 100fafe0 DancePathInfo::_dt(void)
+	virtual ~DancePathInfo();
 };
 
 #endif /* BW1_DECOMP_DANCE_PATH_INFO_INCLUDED_H */

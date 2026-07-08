@@ -12,40 +12,40 @@ struct LH3DMaterial;
 
 struct LightSheet
 {
-    int count; /* 0x0 */
-    float field_0x4;
-    float field_0x8;
-    float field_0xc;
-    float field_0x10;
-    float field_0x14;
-    float field_0x18;
-    float field_0x1c;
-    LHPoint* field_0x20;
-    float* field_0x24;
-    float* field_0x28;
-    uint32_t field_0x2c;
-    uint32_t field_0x30;
-    float field_0x34;
-    uint32_t field_0x38;
-    uint32_t field_0x3c;
-    float field_0x40;
-    float* field_0x44;
-    uint16_t* field_0x48;
-    float* field_0x4c;
-    uint32_t field_0x50;
-    int field_0x54;
-    LH3DMaterial* material_0x58;
-    uint32_t field_0x5c;
+	int           count; /* 0x0 */
+	float         field_0x4;
+	float         field_0x8;
+	float         field_0xc;
+	float         field_0x10;
+	float         field_0x14;
+	float         field_0x18;
+	float         field_0x1c;
+	LHPoint*      field_0x20;
+	float*        field_0x24;
+	float*        field_0x28;
+	uint32_t      field_0x2c;
+	uint32_t      field_0x30;
+	float         field_0x34;
+	uint32_t      field_0x38;
+	uint32_t      field_0x3c;
+	float         field_0x40;
+	float*        field_0x44;
+	uint16_t*     field_0x48;
+	float*        field_0x4c;
+	uint32_t      field_0x50;
+	int           field_0x54;
+	LH3DMaterial* material_0x58;
+	uint32_t      field_0x5c;
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 0083e690 BW1M100 100cddd0 LightSheet::LightSheet(void)
-    LightSheet();
+	// BW1W120 0083e690 BW1M100 100cddd0 LightSheet::LightSheet(void)
+	LightSheet();
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 0083e610 BW1M100 100cde20 LightSheet::PulseForceField(LHPoint, float)
-    void PulseForceField(LHPoint param_1, float param_2);
+	// BW1W120 0083e610 BW1M100 100cde20 LightSheet::PulseForceField(LHPoint, float)
+	void PulseForceField(LHPoint param_1, float param_2);
 };
 
 #endif /* BW1_DECOMP_LIGHT_SHEET_INCLUDED_H */

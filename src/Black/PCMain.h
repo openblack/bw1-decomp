@@ -1,7 +1,6 @@
 #ifndef BW1_DECOMP_PC_MAIN_INCLUDED_H
 #define BW1_DECOMP_PC_MAIN_INCLUDED_H
 
-
 #include <re_common.h> /* For HINSTANCE */
 
 // BW1W120 00641a10 BW1M100 1011c650 IsACmdLineString(char*, const char*)

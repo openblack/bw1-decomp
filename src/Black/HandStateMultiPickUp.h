@@ -9,14 +9,13 @@
 
 class CHand;
 
-class HandStateMultiPickUp: public HandState
+class HandStateMultiPickUp : public HandState
 {
 public:
+	// Constructors
 
-    // Constructors
-
-    // BW1W120 005b5730 BW1M100 1033c330 HandStateMultiPickUp::HandStateMultiPickUp(CHand*)
-    HandStateMultiPickUp(CHand* hand);
+	// BW1W120 005b5730 BW1M100 1033c330 HandStateMultiPickUp::HandStateMultiPickUp(CHand*)
+	HandStateMultiPickUp(CHand* hand);
 };
 
 #endif /* BW1_DECOMP_HAND_STATE_MULTI_PICK_UP_INCLUDED_H */

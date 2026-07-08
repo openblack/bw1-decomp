@@ -6,19 +6,20 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
-class StatsBox: public DialogBoxBase
+class StatsBox : public DialogBoxBase
 {
 public:
-    uint8_t field_0x10[0x64];
+	uint8_t field_0x10[0x64];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 0056d370 BW1M100 1031d8a0 StatsBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // BW1W120 0056d980 BW1M100 1031d840 StatsBox::Destroy(void)
-    virtual void Destroy();
-    // BW1W120 0056d990 BW1M100 1031d780 StatsBox::InitControls(void)
-    virtual void InitControls();
+	// BW1W120 0056d370 BW1M100 1031d8a0 StatsBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	virtual void Init(uint32_t param_1, uint32_t param_2,
+	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	// BW1W120 0056d980 BW1M100 1031d840 StatsBox::Destroy(void)
+	virtual void Destroy();
+	// BW1W120 0056d990 BW1M100 1031d780 StatsBox::InitControls(void)
+	virtual void InitControls();
 };
 
 #endif /* BW1_DECOMP_STATS_BOX_INCLUDED_H */

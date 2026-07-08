@@ -5,14 +5,13 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-class MPFEReplyToInviteMessage: public MPFEMessageObject
+class MPFEReplyToInviteMessage : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006274f0 BW1M100 10397500 MPFEReplyToInviteMessage::_dt(void)
-    virtual ~MPFEReplyToInviteMessage();
+	// BW1W120 006274f0 BW1M100 10397500 MPFEReplyToInviteMessage::_dt(void)
+	virtual ~MPFEReplyToInviteMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_REPLY_TO_INVITE_MESSAGE_INCLUDED_H */

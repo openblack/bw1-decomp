@@ -12,24 +12,24 @@ class Base;
 class GBaseInfo;
 class GObjectInfo;
 
-class GMobileStaticInfo: public GMultiMapFixedInfo
+class GMobileStaticInfo : public GMultiMapFixedInfo
 {
 public:
-    uint8_t field_0x120[0xc];
+	uint8_t field_0x120[0xc];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 00608560 BW1M100 103be790 GMobileStaticInfo::_dt(void)
-    virtual ~GMobileStaticInfo();
-    // BW1W120 006084f0 BW1M100 103c1240 GMobileStaticInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
-    // BW1W120 006084e0 BW1M100 10050090 GMobileStaticInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+	// BW1W120 00608560 BW1M100 103be790 GMobileStaticInfo::_dt(void)
+	virtual ~GMobileStaticInfo();
+	// BW1W120 006084f0 BW1M100 103c1240 GMobileStaticInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 006084e0 BW1M100 10050090 GMobileStaticInfo::GetMesh( const(void))
+	virtual uint32_t GetMesh();
 
-    // Static methods
+	// Static methods
 
-    // BW1W120 005ff2f0 BW1M100 103c1190 GMobileStaticInfo::GetInfo(void)
-    static GMobileStaticInfo* GetInfo();
+	// BW1W120 005ff2f0 BW1M100 103c1190 GMobileStaticInfo::GetInfo(void)
+	static GMobileStaticInfo* GetInfo();
 };
 
 #endif /* BW1_DECOMP_MOBILE_STATIC_INFO_INCLUDED_H */

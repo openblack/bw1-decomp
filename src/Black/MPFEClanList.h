@@ -5,14 +5,13 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-class MPFEClanList: public MPFEMessageObject
+class MPFEClanList : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0062bf30 BW1M100 10396a90 MPFEClanList::_dt(void)
-    virtual ~MPFEClanList();
+	// BW1W120 0062bf30 BW1M100 10396a90 MPFEClanList::_dt(void)
+	virtual ~MPFEClanList();
 };
 
 #endif /* BW1_DECOMP_MPFE_CLAN_LIST_INCLUDED_H */
