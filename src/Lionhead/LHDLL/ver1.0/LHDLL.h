@@ -23,7 +23,7 @@ public:
     // Static methods
 
     // BW1W120 007ad230 BW1M100 100db740 LHDLL::AddToInternalList(LHDLL*)
-    static LHDLL* AddToInternalList(LHDLL* param_1);
+    static LHDLL* AddToInternalList(LHDLL* dll);
 
     // Constructors
 
