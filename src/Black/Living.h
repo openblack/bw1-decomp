@@ -270,7 +270,7 @@ public:
 	// BW1W120 005f26d0 BW1M100 10385ce0 Living::LookAtFlyingObjectReaction(void)
 	virtual bool LookAtFlyingObjectReaction();
 	// BW1W120 005f2980 BW1M100 10076180 Living::SetCurrentAndDestinationState(unsigned char, unsigned char)
-	virtual int SetCurrentAndDestinationState(VILLAGER_STATES current, VILLAGER_STATES destination);
+	virtual int SetCurrentAndDestinationState(uint8_t current, uint8_t destination);
 	// BW1W120 005f28e0 BW1M100 10075940 Living::SetTopState(unsigned char)
 	virtual int SetTopState(VILLAGER_STATES state);
 	// BW1W120 00417040 BW1M100 1012f8d0 Living::StorePreviousState(void)
@@ -531,7 +531,7 @@ public:
 	// BW1W120 00417270 BW1M100 10130570 Living::IsDead(void)
 	virtual bool IsDead();
 	// BW1W120 00473ed0 BW1M100 101e36f0 Living::IsChild(void)
-	virtual bool IsChild();
+	virtual bool32_t IsChild();
 	// BW1W120 005f2160 BW1M100 103864c0 Living::GetFleeingPositionFromMovingObject(MapCoords *, GameThingWithPos *, float)
 	virtual void GetFleeingPositionFromMovingObject(MapCoords* param_1, GameThingWithPos* param_2, float param_3);
 	// BW1W120 005f2010 BW1M100 10386800 Living::GetFleeingPositionFromStationaryObject(MapCoords *, GameThingWithPos *, float)
@@ -669,9 +669,9 @@ public:
 	// BW1W120 005f2800 BW1M100 1038a340 Living::SetupMoveToObject(Object *, unsigned char)
 	bool SetupMoveToObject(Object* param_1, unsigned char param_2);
 	// BW1W120 005f2830 BW1M100 10029240 Living::SetupMoveToPos(MapCoords const &, unsigned char)
-	uint32_t SetupMoveToPos(const MapCoords& param_2, uint8_t param_3);
+	bool32_t SetupMoveToPos(const MapCoords& coord, uint8_t end_state);
 	// BW1W120 005f2890 BW1M100 10010f60 Living::SetupMoveToWithHug(MapCoords const &, unsigned char)
-	uint32_t SetupMoveToWithHug(const MapCoords& coords, uint8_t state);
+	bool32_t SetupMoveToWithHug(const MapCoords& coords, VILLAGER_STATES state);
 	// BW1W120 006e44a0 BW1M100 101358c0 Living::SetReactionDoneWhen(REACTION)
 	void SetReactionDoneWhen(REACTION reaction);
 	// BW1W120 00768640 BW1M100 105975c0 Living::CannotExitState(unsigned char)

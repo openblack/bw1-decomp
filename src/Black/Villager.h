@@ -74,10 +74,21 @@ struct ClearAreaPoint
 	bool32_t ProcessPoint(const LHPoint* param_1);
 };
 
+struct DiscipleInfo
+{
+	uint32_t         field_0x0;
+	uint32_t         field_0x4;
+	uint32_t         field_0x8;
+	uint32_t         field_0xc;
+	uint32_t         field_0x10;
+	TOWN_DESIRE_INFO desire_i_fulfil;
+	uint32_t         field_0x18;
+};
+
 class Villager : public Living
 {
 public:
-	uint16_t      field_0xe0;
+	uint16_t      Flags;
 	Villager*     next;
 	float         food;
 	int           LastCheckTurn;
@@ -316,7 +327,7 @@ public:
 	// BW1W120 007528c0 BW1M100 1056b4c0 Villager::SetAge(unsigned long)
 	virtual void SetAge(uint32_t age);
 	// BW1W120 007520e0 BW1M100 10087ab0 Villager::SetCurrentAndDestinationState(unsigned char, unsigned char)
-	virtual int SetCurrentAndDestinationState(VILLAGER_STATES current, VILLAGER_STATES destination);
+	virtual int SetCurrentAndDestinationState(uint8_t current, uint8_t destination);
 	// BW1W120 00756590 BW1M100 inlined Villager::CallIntoAnimationFunction(VILLAGER_STATES)
 	virtual int CallIntoAnimationFunction(VILLAGER_STATES param_1);
 	// BW1W120 00756620 BW1M100 inlined Villager::CallOutofAnimationFunction(VILLAGER_STATES)
@@ -477,7 +488,7 @@ public:
 	virtual uint32_t NumGameTurnsBeforeReactingToShieldAgainFunction(GameThingWithPos* param_1, uint32_t param_2,
 	                                                                 float param_3);
 	// BW1W120 0055c970 BW1M100 10064ef0 Villager::IsChild(void)
-	virtual bool IsChild();
+	virtual bool32_t IsChild();
 	// BW1W120 00751dd0 BW1M100 1004ec00 Villager::GetFinalState(void) const
 	virtual VILLAGER_STATES GetFinalState() const;
 	// BW1W120 00751510 BW1M100 1056ec00 Villager::RemoveFromDance(int)
@@ -602,9 +613,9 @@ public:
 	// BW1W120 00751570 BW1M100 100007e0 Villager::GetResourceHeld(RESOURCE_TYPE &)
 	bool GetResourceHeld(RESOURCE_TYPE& param_1);
 	// BW1W120 007516e0 BW1M100 10003bb0 Villager::CheckTakeResourcesToStoragePit(void)
-	bool CheckTakeResourcesToStoragePit();
+	bool32_t CheckTakeResourcesToStoragePit();
 	// BW1W120 00751720 BW1M100 1056e1f0 Villager::DiscipleDecideWhatToDo(void)
-	bool DiscipleDecideWhatToDo();
+	bool32_t DiscipleDecideWhatToDo();
 	// BW1W120 00751970 BW1M100 1056e1b0 Villager::GetPrayerSite(void)
 	bool GetPrayerSite();
 	// BW1W120 00751980 BW1M100 1056e0e0 Villager::RestartDance(VILLAGER_STATES)
@@ -1436,7 +1447,7 @@ public:
 	// BW1W120 00763280 BW1M100 1058bbe0 Villager::ExitFootball(unsigned char)
 	bool32_t ExitFootball(unsigned char param_1);
 	// BW1W120 00763800 BW1M100 1001a3e0 Villager::SetupMoveToPos(MapCoords const &, VILLAGER_STATES)
-	bool32_t SetupMoveToPos(const MapCoords& param_1, VILLAGER_STATES param_2);
+	bool32_t SetupMoveToPos(const MapCoords& coord, VILLAGER_STATES end_state);
 	// BW1W120 00763b40 BW1M100 105935e0 Villager::FleeingFromPredatorReaction(void)
 	bool32_t FleeingFromPredatorReaction();
 	// BW1W120 00763cb0 BW1M100 10593430 Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos *)

@@ -325,7 +325,7 @@ public:
 	// BW1W120 007477a0 BW1M100 10067510 Town::ProcessTownEmergency(void)
 	void ProcessTownEmergency();
 	// BW1W120 00747970 BW1M100 1006d3c0 Town::IsInStateOfEmergency(void)
-	bool IsInStateOfEmergency();
+	bool32_t IsInStateOfEmergency();
 	// BW1W120 007479a0 BW1M100 105602e0 Town::SetInStateOfEmergency(void)
 	void SetInStateOfEmergency();
 	// BW1W120 00747ea0 BW1M100 1055f880 Town::GetBestRepairBuildingSite(void)

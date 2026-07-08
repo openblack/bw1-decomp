@@ -622,6 +622,7 @@ Black/MobileStatic.cpp:
 
 Black/MobileWallHug.cpp:
 	.text       start:0x00609760 end:0x00617060
+	.bss        start:0x00D3EE60 end:0x00D3EEFC
 
 Black/MorphableObject.cpp:
 	.text       start:0x00617060 end:0x0061A0E0

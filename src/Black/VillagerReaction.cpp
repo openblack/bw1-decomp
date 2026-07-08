@@ -28,9 +28,9 @@ void Villager::UpdateHowImpressed(Reaction* param_1, int param_2) {}
 void Villager::StopReacting() {}
 
 // BW1W120 00763800
-bool32_t Villager::SetupMoveToPos(const MapCoords& param_1, VILLAGER_STATES param_2)
+bool32_t Villager::SetupMoveToPos(const MapCoords& coord, VILLAGER_STATES end_state)
 {
-	return false;
+	return Living::SetupMoveToPos(coord, end_state);
 }
 
 // BW1W120 00763820

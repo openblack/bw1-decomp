@@ -643,7 +643,7 @@ config.libs = [
             Object(NonMatching, "Black/MobileObjectInfo.cpp"),
             Object(NonMatching, "Black/MobileStatic.cpp"),
             Object(NonMatching, "Black/MobileStaticInfo.cpp"),
-            Object(NonMatching, "Black/MobileWallHug.cpp"),
+            Object(NonMatching, "Black/MobileWallHug.cpp", extra_cflags=["/GX"]),
             Object(NonMatching, "Black/MobileWallHugInfo.cpp"),
             Object(NonMatching, "Black/MorphableObject.cpp"),
             Object(NonMatching, "Black/MPFEAlexDialog.cpp"),
