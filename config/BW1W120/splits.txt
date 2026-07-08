@@ -1602,10 +1602,10 @@ Lionhead/LHLib/ver5.0/LHScreen.cpp:
 	.text       start:0x007DCE20 end:0x007E0550
 
 Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp:
-	.text       start:0x007E0550 end:0x007E1020
+	.text       start:0x007E0550 end:0x007E0FA0
 
 Lionhead/LHLib/ver5.0/LHHeap2.cpp:
-	.text       start:0x007E1020 end:0x007E4810
+	.text       start:0x007E0FA0 end:0x007E4810
 
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
 	.text       start:0x007E4810 end:0x007E5AF0
