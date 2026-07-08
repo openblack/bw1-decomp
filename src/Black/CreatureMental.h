@@ -4,75 +4,75 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include "Base.h" /* For struct Base */
-#include "CreatureAction.h" /* For struct CreatureActionOpinions, struct CreaturePreviousActions */
-#include "CreatureActionsKnownAbout.h" /* For struct CreatureActionsKnownAbout */
-#include "CreatureAgenda.h" /* For struct CreatureAgenda */
-#include "CreatureAttitudeToPlayer.h" /* For struct CreatureAttitudeToPlayer */
-#include "CreatureExplorationMap.h" /* For struct CreatureExplorationMap */
-#include "CreatureFace.h" /* For struct CreatureFaceState */
-#include "CreatureLearning.h" /* For struct CreatureLearning */
-#include "CreatureLook.h" /* For struct CreatureLookState */
+#include "Base.h"                        /* For struct Base */
+#include "CreatureAction.h"              /* For struct CreatureActionOpinions, struct CreaturePreviousActions */
+#include "CreatureActionsKnownAbout.h"   /* For struct CreatureActionsKnownAbout */
+#include "CreatureAgenda.h"              /* For struct CreatureAgenda */
+#include "CreatureAttitudeToPlayer.h"    /* For struct CreatureAttitudeToPlayer */
+#include "CreatureExplorationMap.h"      /* For struct CreatureExplorationMap */
+#include "CreatureFace.h"                /* For struct CreatureFaceState */
+#include "CreatureLearning.h"            /* For struct CreatureLearning */
+#include "CreatureLook.h"                /* For struct CreatureLookState */
 #include "CreatureMentalAttributeTest.h" /* For struct DecisionTreeCollection */
-#include "CreatureMentalBeliefs.h" /* For struct CreatureBeliefs */
-#include "CreatureMentalDebug.h" /* For struct CreatureMentalDebug */
-#include "CreatureMentalDesire.h" /* For struct CreatureDesires */
-#include "CreatureObjectsInspected.h" /* For struct CreatureObjectsInspected */
-#include "CreatureVisionState.h" /* For struct CreatureVisionState */
-#include "MapCoords.h" /* For struct MapCoords */
+#include "CreatureMentalBeliefs.h"       /* For struct CreatureBeliefs */
+#include "CreatureMentalDebug.h"         /* For struct CreatureMentalDebug */
+#include "CreatureMentalDesire.h"        /* For struct CreatureDesires */
+#include "CreatureObjectsInspected.h"    /* For struct CreatureObjectsInspected */
+#include "CreatureVisionState.h"         /* For struct CreatureVisionState */
+#include "MapCoords.h"                   /* For struct MapCoords */
 
 // Forward Declares
 
 class Creature;
 class GameThingWithPos;
 
-class CreatureMental: public Base
+class CreatureMental : public Base
 {
 public:
-    CreatureDesires desires; /* 0x8 */
-    CreatureAgenda agenda; /* 0x710 */
-    CreatureBeliefs beliefs; /* 0x2208 */
-    DecisionTreeCollection decision_tree_collection; /* 0x2478 */
-    CreatureActionOpinions action_opinions; /* 0x25b8 */
-    CreatureLearning learning; /* 0x2ad8 */
-    CreatureAttitudeToPlayer attitude_to_player; /* 0x18c40 */
-    uint32_t field_0x1a9f4;
-    uint32_t field_0x1a9f8;
-    CreatureActionsKnownAbout actions_known_about;
-    CreatureInnatePersonality innate_personality; /* 0x1aa14 */
-    CreatureVisionState vision_state; /* 0x1aa38 */
-    CreatureExplorationMap exploration_map; /* 0x1aa80 */
-    uint8_t field_0x1ca98[0x400];
-    CreaturePreviousActions previous_actions; /* 0x1ce98 */
-    CreatureLookState look_state; /* 0x1d3c0 */
-    uint8_t field_0x1d3f8[0x14];
-    CreatureFaceState face_state; /* 0x1d40c */
-    CreatureObjectsInspected objects_inspected; /* 0x1d418 */
-    uint32_t field_0x1d480;
-    uint32_t field_0x1d484;
-    uint32_t field_0x1d488;
-    MapCoords field_0x1d48c[0x1e][0x28];
-    CreatureMentalDebug debug; /* 0x20ccc */
-    Creature* creature; /* 0x20d18 */
-    int field_0x20d1c;
-    uint32_t field_0x20d20;
-    uint32_t field_0x20d24;
-    uint32_t field_0x20d28;
-    uint32_t field_0x20d2c;
-    uint32_t field_0x20d230; /* 0x20d30 */
-    uint32_t field_0x20d234;
-    uint32_t field_0x20d238;
-    uint32_t field_0x20d23c;
+	CreatureDesires           desires;                  /* 0x8 */
+	CreatureAgenda            agenda;                   /* 0x710 */
+	CreatureBeliefs           beliefs;                  /* 0x2208 */
+	DecisionTreeCollection    decision_tree_collection; /* 0x2478 */
+	CreatureActionOpinions    action_opinions;          /* 0x25b8 */
+	CreatureLearning          learning;                 /* 0x2ad8 */
+	CreatureAttitudeToPlayer  attitude_to_player;       /* 0x18c40 */
+	uint32_t                  field_0x1a9f4;
+	uint32_t                  field_0x1a9f8;
+	CreatureActionsKnownAbout actions_known_about;
+	CreatureInnatePersonality innate_personality; /* 0x1aa14 */
+	CreatureVisionState       vision_state;       /* 0x1aa38 */
+	CreatureExplorationMap    exploration_map;    /* 0x1aa80 */
+	uint8_t                   field_0x1ca98[0x400];
+	CreaturePreviousActions   previous_actions; /* 0x1ce98 */
+	CreatureLookState         look_state;       /* 0x1d3c0 */
+	uint8_t                   field_0x1d3f8[0x14];
+	CreatureFaceState         face_state;        /* 0x1d40c */
+	CreatureObjectsInspected  objects_inspected; /* 0x1d418 */
+	uint32_t                  field_0x1d480;
+	uint32_t                  field_0x1d484;
+	uint32_t                  field_0x1d488;
+	MapCoords                 field_0x1d48c[0x1e][0x28];
+	CreatureMentalDebug       debug;    /* 0x20ccc */
+	Creature*                 creature; /* 0x20d18 */
+	int                       field_0x20d1c;
+	uint32_t                  field_0x20d20;
+	uint32_t                  field_0x20d24;
+	uint32_t                  field_0x20d28;
+	uint32_t                  field_0x20d2c;
+	uint32_t                  field_0x20d230; /* 0x20d30 */
+	uint32_t                  field_0x20d234;
+	uint32_t                  field_0x20d238;
+	uint32_t                  field_0x20d23c;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 004d2560 BW1M100 10245b60 CreatureMental::_dt(void)
-    virtual ~CreatureMental();
+	// BW1W120 004d2560 BW1M100 10245b60 CreatureMental::_dt(void)
+	virtual ~CreatureMental();
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 004d7bd0 BW1M100 10253c90 CreatureMental::AddBeliefAboutObject(Creature *, GameThingWithPos *)
-    void* AddBeliefAboutObject(Creature* param_1, GameThingWithPos* param_2);
+	// BW1W120 004d7bd0 BW1M100 10253c90 CreatureMental::AddBeliefAboutObject(Creature *, GameThingWithPos *)
+	void* AddBeliefAboutObject(Creature* param_1, GameThingWithPos* param_2);
 };
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_INCLUDED_H */

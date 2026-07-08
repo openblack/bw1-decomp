@@ -6,17 +6,18 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
-class GatheringBox: public DialogBoxBase
+class GatheringBox : public DialogBoxBase
 {
 public:
-    uint8_t field_0x10[0xe0];
+	uint8_t field_0x10[0xe0];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 00570e90 BW1M100 10326ea0 GatheringBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // BW1W120 00572530 BW1M100 103266d0 GatheringBox::Destroy(void)
-    virtual void Destroy();
+	// BW1W120 00570e90 BW1M100 10326ea0 GatheringBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	virtual void Init(uint32_t param_1, uint32_t param_2,
+	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	// BW1W120 00572530 BW1M100 103266d0 GatheringBox::Destroy(void)
+	virtual void Destroy();
 };
 
 #endif /* BW1_DECOMP_GATHERING_BOX_INCLUDED_H */

@@ -5,14 +5,13 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-class MPFECancelStartMessage: public MPFEMessageObject
+class MPFECancelStartMessage : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00627640 BW1M100 1039ba50 MPFECancelStartMessage::_dt(void)
-    virtual ~MPFECancelStartMessage();
+	// BW1W120 00627640 BW1M100 1039ba50 MPFECancelStartMessage::_dt(void)
+	virtual ~MPFECancelStartMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_CANCEL_START_MESSAGE_INCLUDED_H */

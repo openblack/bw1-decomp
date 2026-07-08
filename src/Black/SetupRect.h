@@ -7,8 +7,8 @@
 
 struct SetupRect
 {
-  struct LHCoord p0;
-  struct LHCoord p1;
+	struct LHCoord p0;
+	struct LHCoord p1;
 };
 static_assert(sizeof(SetupRect) == 0x10, "Data type is of wrong size");
 

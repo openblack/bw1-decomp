@@ -6,16 +6,16 @@
 
 #include "Base.h" /* For struct Base */
 
-class CreaturePreviousLesson: public Base
+class CreaturePreviousLesson : public Base
 {
 public:
-    uint32_t field_0x8;
-    uint8_t field_0xc[0x1200];
+	uint32_t field_0x8;
+	uint8_t  field_0xc[0x1200];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 004e03a0 BW1M100 10245f80 CreaturePreviousLesson::_dt(void)
-    virtual ~CreaturePreviousLesson();
+	// BW1W120 004e03a0 BW1M100 10245f80 CreaturePreviousLesson::_dt(void)
+	virtual ~CreaturePreviousLesson();
 };
 
 #endif /* BW1_DECOMP_CREATURE_PREVIOUS_LESSON_INCLUDED_H */

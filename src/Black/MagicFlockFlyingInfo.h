@@ -10,14 +10,13 @@
 
 class Base;
 
-class GMagicFlockFlyingInfo: public GMagicInfo
+class GMagicFlockFlyingInfo : public GMagicInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 004357c0 BW1M100 1051ed80 GMagicFlockFlyingInfo::_dt(void)
-    virtual ~GMagicFlockFlyingInfo();
+	// BW1W120 004357c0 BW1M100 1051ed80 GMagicFlockFlyingInfo::_dt(void)
+	virtual ~GMagicFlockFlyingInfo();
 };
 
 #endif /* BW1_DECOMP_MAGIC_FLOCK_FLYING_INFO_INCLUDED_H */

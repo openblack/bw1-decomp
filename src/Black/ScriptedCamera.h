@@ -10,9 +10,9 @@ struct Q27LH3DWay7Running;
 
 struct ScriptedCamera
 {
-  uint8_t* data;  /* 0x0 */
-  struct Q27LH3DWay7Running* field_0x4;
-  struct Q27LH3DWay7Running* field_0x8;
+	uint8_t*                   data; /* 0x0 */
+	struct Q27LH3DWay7Running* field_0x4;
+	struct Q27LH3DWay7Running* field_0x8;
 };
 static_assert(sizeof(ScriptedCamera) == 0xc, "Data type is of wrong size");
 

@@ -6,13 +6,13 @@
 
 struct LH_USER_ID
 {
-  uint32_t field_0x0;
+	uint32_t field_0x0;
 };
 static_assert(sizeof(LH_USER_ID) == 0x4, "Data type is of wrong size");
 
 struct LHNetUser
 {
-  struct LH_USER_ID id;  /* 0x0 */
+	struct LH_USER_ID id; /* 0x0 */
 };
 static_assert(sizeof(LHNetUser) == 0x4, "Data type is of wrong size");
 

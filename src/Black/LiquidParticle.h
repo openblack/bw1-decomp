@@ -12,28 +12,28 @@ struct GInterface;
 
 struct LiquidParticle
 {
-  float field_0x0;
-  float field_0x4;
-  float field_0x8;
-  float field_0xc;
-  float field_0x10;
-  float field_0x14;
-  float field_0x18;
-  float field_0x1c;
-  float field_0x20;
-  float field_0x24;
-  float field_0x28;
+	float field_0x0;
+	float field_0x4;
+	float field_0x8;
+	float field_0xc;
+	float field_0x10;
+	float field_0x14;
+	float field_0x18;
+	float field_0x1c;
+	float field_0x20;
+	float field_0x24;
+	float field_0x28;
 };
 static_assert(sizeof(LiquidParticle) == 0x2c, "Data type is of wrong size");
 
 struct LiquidParticleGroup
 {
-  struct LiquidParticle particle_buffer[0x400];  /* 0x0 */
-  uint32_t particle_count;  /* 0xb000 */
-  struct LHPoint point;
-  struct LiquidParticleGroup* next;  /* 0xb010 */
-  struct GInterface* iface;
-  void (__cdecl* sparkle_func)(struct LiquidParticleGroup* param_0, struct GInterface* param_1);
+	struct LiquidParticle       particle_buffer[0x400]; /* 0x0 */
+	uint32_t                    particle_count;         /* 0xb000 */
+	struct LHPoint              point;
+	struct LiquidParticleGroup* next; /* 0xb010 */
+	struct GInterface*          iface;
+	void(__cdecl* sparkle_func)(struct LiquidParticleGroup* param_0, struct GInterface* param_1);
 };
 static_assert(sizeof(LiquidParticleGroup) == 0xb01c, "Data type is of wrong size");
 

@@ -3,30 +3,30 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
-#include <uchar.h> /* For char16_t */
+#include <uchar.h>  /* For char16_t */
 
 struct PlayerProfile
 {
-    char16_t creature_name[0x100]; /* 0x0 */
-    char16_t current_profile[0x100]; /* 0x200 */
-    char16_t login_name[0x100]; /* 0x400 */
-    char16_t login_password[0x100]; /* 0x600 */
-    uint32_t stuff; /* 0x800 */
-    uint32_t player_symbol;
-    uint32_t timestarted;
-    uint32_t numberofsaves;
-    uint32_t numberofloads; /* 0x810 */
-    uint32_t pitchaboutcentre;
-    uint32_t pushscroll;
-    uint32_t HAND_ORIENTATION;
-    uint32_t IMMERSION_KEY; /* 0x820 */
+	char16_t creature_name[0x100];   /* 0x0 */
+	char16_t current_profile[0x100]; /* 0x200 */
+	char16_t login_name[0x100];      /* 0x400 */
+	char16_t login_password[0x100];  /* 0x600 */
+	uint32_t stuff;                  /* 0x800 */
+	uint32_t player_symbol;
+	uint32_t timestarted;
+	uint32_t numberofsaves;
+	uint32_t numberofloads; /* 0x810 */
+	uint32_t pitchaboutcentre;
+	uint32_t pushscroll;
+	uint32_t HAND_ORIENTATION;
+	uint32_t IMMERSION_KEY; /* 0x820 */
 
-    // Static methods
+	// Static methods
 
-    // BW1W120 0066b7a0 BW1M100 104cbec0 PlayerProfile::SetCurrentProfile(wchar_t *)
-    static void SetCurrentProfile(char16_t* name);
-    // BW1W120 0066bfb0 BW1M100 104cb130 PlayerProfile::ProfileExists(wchar_t *)
-    static uint32_t ProfileExists(char16_t* name);
+	// BW1W120 0066b7a0 BW1M100 104cbec0 PlayerProfile::SetCurrentProfile(wchar_t *)
+	static void SetCurrentProfile(char16_t* name);
+	// BW1W120 0066bfb0 BW1M100 104cb130 PlayerProfile::ProfileExists(wchar_t *)
+	static uint32_t ProfileExists(char16_t* name);
 };
 
 #endif /* BW1_DECOMP_PLAYER_PROFILE_INCLUDED_H */

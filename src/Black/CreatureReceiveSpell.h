@@ -12,22 +12,22 @@ class Creature;
 
 struct CreatureReceiveSpell
 {
-    Creature* creature; /* 0x0 */
-    CreatureReceiveSpell__TPerSpellData data[0x10];
-    GJVector__CreatureReceiveSpell__QueueData queue_data; /* 0x184 */
-    uint8_t field_0x194[0x8];
-    LHPoint field_0x19c;
-    LHPoint field_0x1a8;
-    LHPoint field_0x1b4;
-    LHPoint field_0x1c0;
-    float field_0x1cc;
-    uint32_t field_0x1d0;
-    uint8_t field_0x1d4;
+	Creature*                                 creature; /* 0x0 */
+	CreatureReceiveSpell__TPerSpellData       data[0x10];
+	GJVector__CreatureReceiveSpell__QueueData queue_data; /* 0x184 */
+	uint8_t                                   field_0x194[0x8];
+	LHPoint                                   field_0x19c;
+	LHPoint                                   field_0x1a8;
+	LHPoint                                   field_0x1b4;
+	LHPoint                                   field_0x1c0;
+	float                                     field_0x1cc;
+	uint32_t                                  field_0x1d0;
+	uint8_t                                   field_0x1d4;
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 004f5240 BW1M100 102802a0 CreatureReceiveSpell::CreatureReceiveSpell(Creature *)
-    CreatureReceiveSpell(Creature* creature);
+	// BW1W120 004f5240 BW1M100 102802a0 CreatureReceiveSpell::CreatureReceiveSpell(Creature *)
+	CreatureReceiveSpell(Creature* creature);
 };
 
 #endif /* BW1_DECOMP_CREATURE_RECEIVE_SPELL_INCLUDED_H */

@@ -5,19 +5,18 @@
 
 #include "PictureRoom.h" /* For struct PictureRoomBase */
 
-class SaveGameRoom: public PictureRoomBase
+class SaveGameRoom : public PictureRoomBase
 {
 public:
+	// Static methods
 
-    // Static methods
+	// BW1W120 007923a0 BW1M100 104ce930 SaveGameRoom::CreateSaveGameFiles(char*)
+	static bool CreateSaveGameFiles();
 
-    // BW1W120 007923a0 BW1M100 104ce930 SaveGameRoom::CreateSaveGameFiles(char*)
-    static bool CreateSaveGameFiles();
+	// Constructors
 
-    // Constructors
-
-    // BW1W120 0078f960 BW1M100 104d5aa0 SaveGameRoom::SaveGameRoom(void)
-    SaveGameRoom();
+	// BW1W120 0078f960 BW1M100 104d5aa0 SaveGameRoom::SaveGameRoom(void)
+	SaveGameRoom();
 };
 
 #endif /* BW1_DECOMP_SAVE_GAME_ROOM_INCLUDED_H */

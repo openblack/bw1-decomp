@@ -10,25 +10,25 @@
 
 class Base;
 
-class GSpecialVillagerInfo: public GBaseInfo
+class GSpecialVillagerInfo : public GBaseInfo
 {
 public:
-    char name[0x30]; /* 0x10 */
-    uint32_t field_0x40;
-    uint32_t field_0x44;
-    uint32_t field_0x48;
-    uint32_t field_0x4c;
-    uint32_t field_0x50;
-    int field_0x54;
-    uint32_t field_0x58;
-    uint32_t field_0x5c;
+	char     name[0x30]; /* 0x10 */
+	uint32_t field_0x40;
+	uint32_t field_0x44;
+	uint32_t field_0x48;
+	uint32_t field_0x4c;
+	uint32_t field_0x50;
+	int      field_0x54;
+	uint32_t field_0x58;
+	uint32_t field_0x5c;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 0071f880 BW1M100 10146650 GSpecialVillagerInfo::_dt(void)
-    virtual ~GSpecialVillagerInfo();
-    // BW1W120 0071ee80 BW1M100 101463b0 GSpecialVillagerInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 0071f880 BW1M100 10146650 GSpecialVillagerInfo::_dt(void)
+	virtual ~GSpecialVillagerInfo();
+	// BW1W120 0071ee80 BW1M100 101463b0 GSpecialVillagerInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
 #endif /* BW1_DECOMP_SPECIAL_VILLAGER_INFO_INCLUDED_H */

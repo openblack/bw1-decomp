@@ -12,28 +12,26 @@ class Base;
 class GameOSFile;
 class GameThing;
 
-class FireGraphic: public PSysBase
+class FireGraphic : public PSysBase
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00731390 BW1M100 1014b860 FireGraphic::_dt(void)
-    virtual ~FireGraphic();
+	// BW1W120 00731390 BW1M100 1014b860 FireGraphic::_dt(void)
+	virtual ~FireGraphic();
 };
 
-class FireGraphic__SpritePos: public PSysBase
+class FireGraphic__SpritePos : public PSysBase
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00731a90 BW1M100 inlined FireGraphic::SpritePos::_dt( (void))
-    virtual ~FireGraphic__SpritePos();
-    // BW1W120 006cb040 BW1M100 inlined FireGraphic::SpritePos::Save( (GameOSFile &))
-    virtual uint32_t Save(GameOSFile& file);
-    // BW1W120 004664e0 BW1M100 inlined FireGraphic::SpritePos::GetSaveType( (void))
-    virtual uint32_t GetSaveType();
+	// BW1W120 00731a90 BW1M100 inlined FireGraphic::SpritePos::_dt( (void))
+	virtual ~FireGraphic__SpritePos();
+	// BW1W120 006cb040 BW1M100 inlined FireGraphic::SpritePos::Save( (GameOSFile &))
+	virtual uint32_t Save(GameOSFile& file);
+	// BW1W120 004664e0 BW1M100 inlined FireGraphic::SpritePos::GetSaveType( (void))
+	virtual uint32_t GetSaveType();
 };
 
 #endif /* BW1_DECOMP_FIRE_GRAPHIC_INCLUDED_H */

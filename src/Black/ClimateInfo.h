@@ -10,16 +10,15 @@
 
 class Base;
 
-class GClimateInfo: public GBaseInfo
+class GClimateInfo : public GBaseInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00770ff0 BW1M100 105a16b0 GClimateInfo::_dt(void)
-    virtual ~GClimateInfo();
-    // BW1W120 00770f80 BW1M100 105a3780 GClimateInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 00770ff0 BW1M100 105a16b0 GClimateInfo::_dt(void)
+	virtual ~GClimateInfo();
+	// BW1W120 00770f80 BW1M100 105a3780 GClimateInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
 #endif /* BW1_DECOMP_CLIMATE_INFO_INCLUDED_H */

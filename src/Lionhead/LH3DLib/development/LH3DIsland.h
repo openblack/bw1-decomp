@@ -13,19 +13,19 @@ struct LH3DTexture;
 
 struct LandCell
 {
-    uint8_t r; /* 0x0 */
-    uint8_t g;
-    uint8_t b;
-    uint8_t luminosity;
-    uint8_t altitude;
-    uint8_t saveColor;
-    uint8_t properties;
-    uint8_t flags;
+	uint8_t r; /* 0x0 */
+	uint8_t g;
+	uint8_t b;
+	uint8_t luminosity;
+	uint8_t altitude;
+	uint8_t saveColor;
+	uint8_t properties;
+	uint8_t flags;
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 inlined BW1M100 1000cd10 LandCell::IsWater(void)
-    bool IsWater();
+	// BW1W120 inlined BW1M100 1000cd10 LandCell::IsWater(void)
+	bool IsWater();
 };
 
 #endif /* BW1_DECOMP_LH3D_ISLAND_INCLUDED_H */

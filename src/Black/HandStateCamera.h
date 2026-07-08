@@ -10,21 +10,21 @@
 
 class CHand;
 
-class HandStateCamera: public HandState
+class HandStateCamera : public HandState
 {
 public:
-    uintptr_t field_0x8;
-    uint8_t field_0xC[0xcc];
+	uintptr_t field_0x8;
+	uint8_t   field_0xC[0xcc];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 005b02f0 BW1M100 10336de0 HandStateCamera::Enter(void)
-    virtual void Enter();
+	// BW1W120 005b02f0 BW1M100 10336de0 HandStateCamera::Enter(void)
+	virtual void Enter();
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 005b02b0 BW1M100 10336ec0 HandStateCamera::HandStateCamera(CHand*)
-    HandStateCamera(CHand* hand);
+	// BW1W120 005b02b0 BW1M100 10336ec0 HandStateCamera::HandStateCamera(CHand*)
+	HandStateCamera(CHand* hand);
 };
 
 #endif /* BW1_DECOMP_HAND_STATE_CAMERA_INCLUDED_H */

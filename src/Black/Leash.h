@@ -7,10 +7,10 @@
 
 struct Leash
 {
-  struct LHPoint field_0x0;
-  struct LHPoint field_0xc;
-  float field_0x18;
-  struct LHPoint field_0x1c;
+	struct LHPoint field_0x0;
+	struct LHPoint field_0xc;
+	float          field_0x18;
+	struct LHPoint field_0x1c;
 };
 static_assert(sizeof(Leash) == 0x28, "Data type is of wrong size");
 

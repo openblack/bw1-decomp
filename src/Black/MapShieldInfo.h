@@ -10,14 +10,13 @@
 
 class Base;
 
-class GMapShieldInfo: public GSingleMapFixedInfo
+class GMapShieldInfo : public GSingleMapFixedInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0072bdf0 BW1M100 10531f60 GMapShieldInfo::_dt(void)
-    virtual ~GMapShieldInfo();
+	// BW1W120 0072bdf0 BW1M100 10531f60 GMapShieldInfo::_dt(void)
+	virtual ~GMapShieldInfo();
 };
 
 #endif /* BW1_DECOMP_MAP_SHIELD_INFO_INCLUDED_H */

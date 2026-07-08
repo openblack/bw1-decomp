@@ -8,20 +8,20 @@
 class MPFEDatabase
 {
 public:
-    float progress_percentage; /* 0x4 */
-    bool32_t populated;
+	float    progress_percentage; /* 0x4 */
+	bool32_t populated;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 0062e4f0 BW1M100 103a35b0 MPFEDatabase::DatabaseError(void)
-    virtual void DatabaseError();
-    // BW1W120 0062e510 BW1M100 103a3520 MPFEDatabase::DatabaseComplete(void)
-    virtual void DatabaseComplete();
+	// BW1W120 0062e4f0 BW1M100 103a35b0 MPFEDatabase::DatabaseError(void)
+	virtual void DatabaseError();
+	// BW1W120 0062e510 BW1M100 103a3520 MPFEDatabase::DatabaseComplete(void)
+	virtual void DatabaseComplete();
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 0062e100 BW1M100 103a3ce0 MPFEDatabase::MPFEDatabase(void)
-    MPFEDatabase();
+	// BW1W120 0062e100 BW1M100 103a3ce0 MPFEDatabase::MPFEDatabase(void)
+	MPFEDatabase();
 };
 
 #endif /* BW1_DECOMP_MPFE_DATABASE_INCLUDED_H */

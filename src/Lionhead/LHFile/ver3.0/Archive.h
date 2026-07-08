@@ -8,9 +8,9 @@
 
 class Archive
 {
-  uint32_t field_0x0;
-  uint32_t field_0x4;
-  struct LHOSFile file;
+	uint32_t        field_0x0;
+	uint32_t        field_0x4;
+	struct LHOSFile file;
 };
 static_assert(sizeof(Archive) == 0x10, "Data type is of wrong size");
 

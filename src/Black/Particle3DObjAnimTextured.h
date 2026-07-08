@@ -10,14 +10,13 @@
 
 class Base;
 
-class Particle3DObjAnimTextured: public Particle3DObj
+class Particle3DObjAnimTextured : public Particle3DObj
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006c7e40 BW1M100 inlined Particle3DObjAnimTextured::_dt(void)
-    virtual ~Particle3DObjAnimTextured();
+	// BW1W120 006c7e40 BW1M100 inlined Particle3DObjAnimTextured::_dt(void)
+	virtual ~Particle3DObjAnimTextured();
 };
 
 #endif /* BW1_DECOMP_PARTICLE_3D_OBJ_ANIM_TEXTURED_INCLUDED_H */

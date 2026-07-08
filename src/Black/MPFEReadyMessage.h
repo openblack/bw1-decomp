@@ -5,14 +5,13 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-class MPFEReadyMessage: public MPFEMessageObject
+class MPFEReadyMessage : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00627d80 BW1M100 inlined MPFEReadyMessage::_dt(void)
-    virtual ~MPFEReadyMessage();
+	// BW1W120 00627d80 BW1M100 inlined MPFEReadyMessage::_dt(void)
+	virtual ~MPFEReadyMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_READY_MESSAGE_INCLUDED_H */

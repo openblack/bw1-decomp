@@ -10,16 +10,15 @@
 
 class Base;
 
-class GRankInfo: public GBaseInfo
+class GRankInfo : public GBaseInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006e0870 BW1M100 10133c10 GRankInfo::_dt(void)
-    virtual ~GRankInfo();
-    // BW1W120 006e0810 BW1M100 101340a0 GRankInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 006e0870 BW1M100 10133c10 GRankInfo::_dt(void)
+	virtual ~GRankInfo();
+	// BW1W120 006e0810 BW1M100 101340a0 GRankInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
 #endif /* BW1_DECOMP_RANK_INFO_INCLUDED_H */

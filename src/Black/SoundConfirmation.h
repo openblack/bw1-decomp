@@ -6,14 +6,13 @@
 
 #include "Base.h" /* For struct Base */
 
-class GConfirmation: public Base
+class GConfirmation : public Base
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0071a4e0 BW1M100 1050d010 GConfirmation::_dt(void)
-    virtual ~GConfirmation();
+	// BW1W120 0071a4e0 BW1M100 1050d010 GConfirmation::_dt(void)
+	virtual ~GConfirmation();
 };
 
 #endif /* BW1_DECOMP_SOUND_CONFIRMATION_INCLUDED_H */

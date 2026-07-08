@@ -11,16 +11,15 @@
 class Base;
 class GObjectInfo;
 
-class GFlowersInfo: public GFeatureInfo
+class GFlowersInfo : public GFeatureInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00527910 BW1M100 100d06a0 GFlowersInfo::_dt(void)
-    virtual ~GFlowersInfo();
-    // BW1W120 005278b0 BW1M100 100d15c0 GFlowersInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+	// BW1W120 00527910 BW1M100 100d06a0 GFlowersInfo::_dt(void)
+	virtual ~GFlowersInfo();
+	// BW1W120 005278b0 BW1M100 100d15c0 GFlowersInfo::GetMesh( const(void))
+	virtual uint32_t GetMesh();
 };
 
 #endif /* BW1_DECOMP_FLOWERS_INFO_INCLUDED_H */

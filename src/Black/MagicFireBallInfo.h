@@ -11,16 +11,15 @@
 class Base;
 class GBaseInfo;
 
-class GMagicFireBallInfo: public GObjectInfo
+class GMagicFireBallInfo : public GObjectInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00682910 BW1M100 103fbe00 GMagicFireBallInfo::_dt(void)
-    virtual ~GMagicFireBallInfo();
-    // BW1W120 006828a0 BW1M100 103fce80 GMagicFireBallInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 00682910 BW1M100 103fbe00 GMagicFireBallInfo::_dt(void)
+	virtual ~GMagicFireBallInfo();
+	// BW1W120 006828a0 BW1M100 103fce80 GMagicFireBallInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
 #endif /* BW1_DECOMP_MAGIC_FIRE_BALL_INFO_INCLUDED_H */

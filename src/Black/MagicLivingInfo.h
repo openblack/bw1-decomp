@@ -12,18 +12,17 @@ class Base;
 class GBaseInfo;
 class GObjectInfo;
 
-class GMagicLivingInfo: public GLivingInfo
+class GMagicLivingInfo : public GLivingInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 005fb980 BW1M100 inlined GMagicLivingInfo::_dt(void)
-    virtual ~GMagicLivingInfo();
-    // BW1W120 005fb910 BW1M100 inlined GMagicLivingInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
-    // BW1W120 005fb900 BW1M100 inlined GMagicLivingInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+	// BW1W120 005fb980 BW1M100 inlined GMagicLivingInfo::_dt(void)
+	virtual ~GMagicLivingInfo();
+	// BW1W120 005fb910 BW1M100 inlined GMagicLivingInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 005fb900 BW1M100 inlined GMagicLivingInfo::GetMesh( const(void))
+	virtual uint32_t GetMesh();
 };
 
 #endif /* BW1_DECOMP_MAGIC_LIVING_INFO_INCLUDED_H */

@@ -10,14 +10,13 @@
 
 class Base;
 
-class GMagicCreatureSpellInfo: public GMagicInfo
+class GMagicCreatureSpellInfo : public GMagicInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00435800 BW1M100 103aba10 GMagicCreatureSpellInfo::_dt(void)
-    virtual ~GMagicCreatureSpellInfo();
+	// BW1W120 00435800 BW1M100 103aba10 GMagicCreatureSpellInfo::_dt(void)
+	virtual ~GMagicCreatureSpellInfo();
 };
 
 #endif /* BW1_DECOMP_MAGIC_CREATURE_SPELL_INFO_INCLUDED_H */

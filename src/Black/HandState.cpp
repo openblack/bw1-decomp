@@ -1,6 +1,3 @@
 #include "HandState.h"
 
-HandState::HandState(CHand* hand)
-    : hand(hand)
-{
-}
+HandState::HandState(CHand* hand) : hand(hand) {}

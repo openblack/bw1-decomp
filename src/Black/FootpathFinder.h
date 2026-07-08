@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LHLib/ver5.0/RPHolder.h> /* For struct RPHolder */
-#include <Lionhead/LHLib/ver5.0/RPlan.h> /* For struct RPlan */
+#include <Lionhead/LHLib/ver5.0/RPlan.h>    /* For struct RPlan */
 
 #include "GameThing.h" /* For struct GameThing */
 
@@ -17,45 +17,45 @@ class GFootpathNode;
 class GameOSFile;
 class GameThingWithPos;
 
-class GFootpathFinder: public GameThing
+class GFootpathFinder : public GameThing
 {
 public:
-    RPHolder holder; /* 0x14 */
-    RPlan plan; /* 0x64040 */
-    GameThingWithPos* gamethingwithpos_start; /* 0x640b4 */
-    GameThingWithPos* gamethingwithpos_dest;
-    GFootpath* footpath_0x7c;
-    GFootpathNode* start_node; /* 0x640c0 */
-    GFootpathNode* dest_node;
+	RPHolder          holder;                 /* 0x14 */
+	RPlan             plan;                   /* 0x64040 */
+	GameThingWithPos* gamethingwithpos_start; /* 0x640b4 */
+	GameThingWithPos* gamethingwithpos_dest;
+	GFootpath*        footpath_0x7c;
+	GFootpathNode*    start_node; /* 0x640c0 */
+	GFootpathNode*    dest_node;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 00538ff0 BW1M100 100e7f30 GFootpathFinder::_dt(void)
-    virtual ~GFootpathFinder();
-    // BW1W120 005391c0 BW1M100 100e78e0 GFootpathFinder::ToBeDeleted(int)
-    virtual void ToBeDeleted(int param_1);
-    // BW1W120 00538fe0 BW1M100 100e7110 GFootpathFinder::GetDebugText(void)
-    virtual char* GetDebugText();
-    // BW1W120 005390e0 BW1M100 100e7ce0 GFootpathFinder::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile& file);
-    // BW1W120 00539150 BW1M100 100e7c00 GFootpathFinder::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile& file);
-    // BW1W120 00538fd0 BW1M100 100e70d0 GFootpathFinder::GetSaveType(void)
-    virtual uint32_t GetSaveType();
+	// BW1W120 00538ff0 BW1M100 100e7f30 GFootpathFinder::_dt(void)
+	virtual ~GFootpathFinder();
+	// BW1W120 005391c0 BW1M100 100e78e0 GFootpathFinder::ToBeDeleted(int)
+	virtual void ToBeDeleted(int param_1);
+	// BW1W120 00538fe0 BW1M100 100e7110 GFootpathFinder::GetDebugText(void)
+	virtual char* GetDebugText();
+	// BW1W120 005390e0 BW1M100 100e7ce0 GFootpathFinder::Load(GameOSFile &)
+	virtual uint32_t Load(GameOSFile& file);
+	// BW1W120 00539150 BW1M100 100e7c00 GFootpathFinder::Save(GameOSFile &)
+	virtual uint32_t Save(GameOSFile& file);
+	// BW1W120 00538fd0 BW1M100 100e70d0 GFootpathFinder::GetSaveType(void)
+	virtual uint32_t GetSaveType();
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 inlined BW1M100 inlined GFootpathFinder::GFootpathFinder(void)
-    GFootpathFinder();
+	// BW1W120 inlined BW1M100 inlined GFootpathFinder::GFootpathFinder(void)
+	GFootpathFinder();
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 00539040 BW1M100 100e7dc0 GFootpathFinder::GameTurnProcess(void)
-    void GameTurnProcess();
-    // BW1W120 00539240 BW1M100 100e7760 GFootpathFinder::Done(void)
-    void Done();
-    // BW1W120 005392f0 BW1M100 100e7150 GFootpathFinder::Init(void)
-    void Init();
+	// BW1W120 00539040 BW1M100 100e7dc0 GFootpathFinder::GameTurnProcess(void)
+	void GameTurnProcess();
+	// BW1W120 00539240 BW1M100 100e7760 GFootpathFinder::Done(void)
+	void Done();
+	// BW1W120 005392f0 BW1M100 100e7150 GFootpathFinder::Init(void)
+	void Init();
 };
 
 #endif /* BW1_DECOMP_FOOTPATH_FINDER_INCLUDED_H */

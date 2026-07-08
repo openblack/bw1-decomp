@@ -6,12 +6,12 @@
 
 struct LHInetWeather
 {
-    uint32_t field_0x0;
+	uint32_t field_0x0;
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 005e98b0 BW1M100 10352780 LHInetWeather::InitForGame(void)
-    void InitForGame();
+	// BW1W120 005e98b0 BW1M100 10352780 LHInetWeather::InitForGame(void)
+	void InitForGame();
 };
 
 #endif /* BW1_DECOMP_LH_INET_WEATHER_INCLUDED_H */

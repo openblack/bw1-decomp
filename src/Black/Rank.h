@@ -6,14 +6,13 @@
 
 #include "Base.h" /* For struct Base */
 
-class Rank: public Base
+class Rank : public Base
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006e0b80 BW1M100 inlined Rank::_dt(void)
-    virtual ~Rank();
+	// BW1W120 006e0b80 BW1M100 inlined Rank::_dt(void)
+	virtual ~Rank();
 };
 
 #endif /* BW1_DECOMP_RANK_INCLUDED_H */

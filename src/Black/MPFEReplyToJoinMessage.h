@@ -5,14 +5,13 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-class MPFEReplyToJoinMessage: public MPFEMessageObject
+class MPFEReplyToJoinMessage : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006270a0 BW1M100 10394150 MPFEReplyToJoinMessage::_dt(void)
-    virtual ~MPFEReplyToJoinMessage();
+	// BW1W120 006270a0 BW1M100 10394150 MPFEReplyToJoinMessage::_dt(void)
+	virtual ~MPFEReplyToJoinMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_REPLY_TO_JOIN_MESSAGE_INCLUDED_H */

@@ -10,16 +10,15 @@
 
 class Base;
 
-class DifferentCreatureInfo: public GBaseInfo
+class DifferentCreatureInfo : public GBaseInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00472d50 BW1M100 101d2170 DifferentCreatureInfo::_dt(void)
-    virtual ~DifferentCreatureInfo();
-    // BW1W120 00472cf0 BW1M100 101e2a50 DifferentCreatureInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 00472d50 BW1M100 101d2170 DifferentCreatureInfo::_dt(void)
+	virtual ~DifferentCreatureInfo();
+	// BW1W120 00472cf0 BW1M100 101e2a50 DifferentCreatureInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
 #endif /* BW1_DECOMP_DIFFERENT_CREATURE_INFO_INCLUDED_H */

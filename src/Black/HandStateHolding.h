@@ -10,17 +10,17 @@
 
 class CHand;
 
-class HandStateHolding: public HandState
+class HandStateHolding : public HandState
 {
 public:
-    uintptr_t field_0x8;
-    uintptr_t field_0x10;
-    uint8_t field_0xC[0x134]; /* 0x10 */
+	uintptr_t field_0x8;
+	uintptr_t field_0x10;
+	uint8_t   field_0xC[0x134]; /* 0x10 */
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 005b3aa0 BW1M100 1033bba0 HandStateHolding::HandStateHolding(CHand*)
-    HandStateHolding(CHand* hand);
+	// BW1W120 005b3aa0 BW1M100 1033bba0 HandStateHolding::HandStateHolding(CHand*)
+	HandStateHolding(CHand* hand);
 };
 
 #endif /* BW1_DECOMP_HAND_STATE_HOLDING_INCLUDED_H */

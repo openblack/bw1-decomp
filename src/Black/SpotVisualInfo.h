@@ -10,16 +10,15 @@
 
 class Base;
 
-class GSpotVisualInfo: public GBaseInfo
+class GSpotVisualInfo : public GBaseInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0063e070 BW1M100 101102f0 GSpotVisualInfo::_dt(void)
-    virtual ~GSpotVisualInfo();
-    // BW1W120 0063e020 BW1M100 10110f10 GSpotVisualInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 0063e070 BW1M100 101102f0 GSpotVisualInfo::_dt(void)
+	virtual ~GSpotVisualInfo();
+	// BW1W120 0063e020 BW1M100 10110f10 GSpotVisualInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
 #endif /* BW1_DECOMP_SPOT_VISUAL_INFO_INCLUDED_H */

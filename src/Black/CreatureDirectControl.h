@@ -6,14 +6,13 @@
 
 #include "Base.h" /* For struct Base */
 
-class CreatureCommand: public Base
+class CreatureCommand : public Base
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 004c7420 BW1M100 inlined CreatureCommand::_dt(void)
-    virtual ~CreatureCommand();
+	// BW1W120 004c7420 BW1M100 inlined CreatureCommand::_dt(void)
+	virtual ~CreatureCommand();
 };
 
 #endif /* BW1_DECOMP_CREATURE_DIRECT_CONTROL_INCLUDED_H */

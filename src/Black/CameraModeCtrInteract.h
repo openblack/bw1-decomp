@@ -5,7 +5,7 @@
 
 #include "CameraMode.h" /* For struct CameraMode */
 
-class CameraModeCtrInteract: public CameraMode
+class CameraModeCtrInteract : public CameraMode
 {
 public:
 };

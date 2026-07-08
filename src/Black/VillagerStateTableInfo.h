@@ -12,55 +12,55 @@
 
 class Base;
 
-class GVillagerStateTableInfo: public GBaseInfo
+class GVillagerStateTableInfo : public GBaseInfo
 {
 public:
-    uint32_t field_0x10;
-    int field_0x14;
-    float field_0x18;
-    bool32_t isFinalState;
-    int field_0x20;
-    uint32_t field_0x24;
-    uint32_t isScriptState;
-    uint32_t isScriptInterruptableState;
-    int field_0x30;
-    uint32_t field_0x34;
-    char name[0x80];
-    int field_0xb8;
-    uint32_t field_0xbc;
-    uint32_t field_0xc0;
-    uint32_t field_0xc4;
-    int field_0xc8;
-    uint32_t field_0xcc;
-    int field_0xd0;
-    int field_0xd4;
-    float field_0xd8;
-    float field_0xdc;
-    uint32_t field_0xe0;
-    uint32_t field_0xe4;
-    uint32_t field_0xe8;
-    int field_0xec;
-    uint32_t field_0xf0;
-    uint32_t field_0xf4;
-    uint32_t field_0xf8;
-    uint32_t field_0xfc;
-    uint32_t field_0x100;
-    uint32_t field_0x104;
-    float field_0x108;
-    uint32_t field_0x10c;
-    uint32_t field_0x110;
+	uint32_t field_0x10;
+	int      field_0x14;
+	float    field_0x18;
+	bool32_t isFinalState;
+	int      field_0x20;
+	uint32_t field_0x24;
+	uint32_t isScriptState;
+	uint32_t isScriptInterruptableState;
+	int      field_0x30;
+	uint32_t field_0x34;
+	char     name[0x80];
+	int      field_0xb8;
+	uint32_t field_0xbc;
+	uint32_t field_0xc0;
+	uint32_t field_0xc4;
+	int      field_0xc8;
+	uint32_t field_0xcc;
+	int      field_0xd0;
+	int      field_0xd4;
+	float    field_0xd8;
+	float    field_0xdc;
+	uint32_t field_0xe0;
+	uint32_t field_0xe4;
+	uint32_t field_0xe8;
+	int      field_0xec;
+	uint32_t field_0xf0;
+	uint32_t field_0xf4;
+	uint32_t field_0xf8;
+	uint32_t field_0xfc;
+	uint32_t field_0x100;
+	uint32_t field_0x104;
+	float    field_0x108;
+	uint32_t field_0x10c;
+	uint32_t field_0x110;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 007695f0 BW1M100 1059c500 GVillagerStateTableInfo::_dt(void)
-    virtual ~GVillagerStateTableInfo();
-    // BW1W120 00769580 BW1M100 1059c630 GVillagerStateTableInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// BW1W120 007695f0 BW1M100 1059c500 GVillagerStateTableInfo::_dt(void)
+	virtual ~GVillagerStateTableInfo();
+	// BW1W120 00769580 BW1M100 1059c630 GVillagerStateTableInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 
-    // Static methods
+	// Static methods
 
-    // BW1W120 inlined BW1M100 1004aff0 GVillagerStateTableInfo::GetInfo(void)
-    static GVillagerStateTableInfo* GetInfo();
+	// BW1W120 inlined BW1M100 1004aff0 GVillagerStateTableInfo::GetInfo(void)
+	static GVillagerStateTableInfo* GetInfo();
 };
 
 #endif /* BW1_DECOMP_VILLAGER_STATE_TABLE_INFO_INCLUDED_H */
