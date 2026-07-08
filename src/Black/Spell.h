@@ -78,7 +78,7 @@ public:
 	// BW1W120 0055cdf0 BW1M100 100d40a0 Spell::GetPlayer(void)
 	virtual GPlayer* GetPlayer();
 	// BW1W120 0055cdc0 BW1M100 103b1c30 Spell::IsFunctional(void)
-	virtual bool IsFunctional();
+	virtual bool32_t IsFunctional();
 	// BW1W120 0071fb00 BW1M100 10514e70 Spell::GetDebugText(void)
 	virtual char* GetDebugText();
 	// BW1W120 0071bc30 BW1M100 1050fe70 Spell::GetSampleForAttack(void)

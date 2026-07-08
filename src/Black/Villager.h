@@ -111,14 +111,14 @@ public:
 	// BW1W120 007502f0 BW1M100 10064390 Villager::GetPlayer(void)
 	virtual GPlayer* GetPlayer();
 	// BW1W120 00751d50 BW1M100 10054860 Villager::IsAvailable(void)
-	virtual bool IsAvailable();
+	virtual bool32_t IsAvailable();
 	// BW1W120 00751f00 BW1M100 10064360 Villager::GetTown(void)
 	virtual Town* GetTown();
 	// BW1W120 007564d0 BW1M100 10565060 Villager::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
 	                             const MapCoords* param_5, int param_6);
 	// BW1W120 00751cf0 BW1M100 100199f0 Villager::IsFunctional(void)
-	virtual bool IsFunctional();
+	virtual bool32_t IsFunctional();
 	// BW1W120 0055cb30 BW1M100 10571f80 Villager::GetDebugText(void)
 	virtual char* GetDebugText();
 	// BW1W120 00754580 BW1M100 10568980 Villager::Load(GameOSFile &)
@@ -136,7 +136,7 @@ public:
 	// BW1W120 00753110 BW1M100 1056a8c0 Villager::SetSpeedInMetres(float, int)
 	virtual void SetSpeedInMetres(float param_1, int param_2);
 	// BW1W120 00756b30 BW1M100 10563e60 Villager::IsDrowning(void)
-	virtual bool IsDrowning();
+	virtual bool32_t IsDrowning();
 	// BW1W120 004e4c90 BW1M100 105e3c40 Villager::CanBeHealedByCreature(Creature *)
 	virtual uint32_t CanBeHealedByCreature(Creature* param_1);
 	// BW1W120 0055caa0 BW1M100 10148110 Villager::CanBeHelpedByCreature(Creature *)
@@ -202,7 +202,7 @@ public:
 	// BW1W120 00753020 BW1M100 10005a00 Villager::GetScriptObjectType(void)
 	virtual uint32_t GetScriptObjectType();
 	// BW1W120 00756460 BW1M100 10094080 Villager::IsReachable(void)
-	virtual bool IsReachable();
+	virtual bool32_t IsReachable();
 	// BW1W120 00756450 BW1M100 1005f5e0 Villager::InsertMapObject(void)
 	virtual void InsertMapObject();
 	// BW1W120 00750310 BW1M100 10097630 Villager::GetHoldType(void)
@@ -232,7 +232,7 @@ public:
 	// BW1W120 0055c990 BW1M100 10147d30 Villager::IsABeliever(void)
 	virtual bool32_t IsABeliever();
 	// BW1W120 0076a4c0 BW1M100 1059a990 Villager::SetDying(void)
-	virtual bool SetDying();
+	virtual bool32_t SetDying();
 	// BW1W120 00753040 BW1M100 inlined Villager::IsTouching_2( const(MapCoords *))
 	virtual bool IsTouching_2(MapCoords* param_1);
 	// BW1W120 0055c9a0 BW1M100 inlined Villager::IsTouching_3( const(Object *, float))
@@ -264,9 +264,9 @@ public:
 	// BW1W120 005f0a60 BW1M100 103846d0 Villager::EndPhysics(PhysicsObject *, bool)
 	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 007564c0 BW1M100 10565140 Villager::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00750ab0 BW1M100 1056fb10 Villager::HasSunk(void)
-	virtual bool HasSunk();
+	virtual bool32_t HasSunk();
 	// BW1W120 0075b400 BW1M100 10578430 Villager::IsFireMan(void)
 	virtual bool IsFireMan();
 	// BW1W120 00753e00 BW1M100 10569a30 Villager::RemoveFromGame(void)
@@ -274,7 +274,7 @@ public:
 	// BW1W120 0055ca30 BW1M100 10147f70 Villager::GetTastiness(void)
 	virtual uint32_t GetTastiness();
 	// BW1W120 00751af0 BW1M100 1056dae0 Villager::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 00753410 BW1M100 1056a150 Villager::SetFoodSpeedup(bool)
 	virtual void SetFoodSpeedup(bool param_1);
 	// BW1W120 0055c980 BW1M100 10051310 Villager::IsFoodSpeedUp(void)
@@ -282,35 +282,35 @@ public:
 	// BW1W120 00756ad0 BW1M100 10563fe0 Villager::GetFinalDestPos(MapCoords *)
 	virtual MapCoords GetFinalDestPos();
 	// BW1W120 00763b00 BW1M100 10593810 Villager::FleeingFromObjectReaction(void)
-	virtual bool FleeingFromObjectReaction();
+	virtual bool32_t FleeingFromObjectReaction();
 	// BW1W120 007642c0 BW1M100 105927e0 Villager::LookingAtObjectReaction(void)
-	virtual bool LookingAtObjectReaction();
+	virtual bool32_t LookingAtObjectReaction();
 	// BW1W120 00764310 BW1M100 10592770 Villager::FleeingAndLookingAtObjectReaction(void)
-	virtual bool FleeingAndLookingAtObjectReaction();
+	virtual bool32_t FleeingAndLookingAtObjectReaction();
 	// BW1W120 00764320 BW1M100 105926d0 Villager::FollowingObjectReaction(void)
-	virtual bool FollowingObjectReaction();
+	virtual bool32_t FollowingObjectReaction();
 	// BW1W120 00764350 BW1M100 105925b0 Villager::InspectObjectReaction(void)
-	virtual bool InspectObjectReaction();
+	virtual bool32_t InspectObjectReaction();
 	// BW1W120 0076a570 BW1M100 1059a890 Villager::Dying(void)
-	virtual bool Dying();
+	virtual bool32_t Dying();
 	// BW1W120 0076a5e0 BW1M100 1059a580 Villager::Dead(void)
-	virtual bool Dead();
+	virtual bool32_t Dead();
 	// BW1W120 0076b380 BW1M100 10598f90 Villager::BeingEaten(void)
-	virtual bool BeingEaten();
+	virtual bool32_t BeingEaten();
 	// BW1W120 007646a0 BW1M100 10591f20 Villager::GotoFoodReaction(void)
-	virtual bool GotoFoodReaction();
+	virtual bool32_t GotoFoodReaction();
 	// BW1W120 007646d0 BW1M100 10591e40 Villager::GotoWoodReaction(void)
-	virtual bool GotoWoodReaction();
+	virtual bool32_t GotoWoodReaction();
 	// BW1W120 00756c60 BW1M100 1004d520 Villager::IsMovingForAnimation(void)
-	virtual bool IsMovingForAnimation();
+	virtual bool32_t IsMovingForAnimation();
 	// BW1W120 00764920 BW1M100 10591770 Villager::ArrivesAtFoodReaction(void)
-	virtual bool ArrivesAtFoodReaction();
+	virtual bool32_t ArrivesAtFoodReaction();
 	// BW1W120 00764720 BW1M100 10591b50 Villager::ArrivesAtWoodReaction(void)
-	virtual bool ArrivesAtWoodReaction();
+	virtual bool32_t ArrivesAtWoodReaction();
 	// BW1W120 0076ade0 BW1M100 1000abe0 Villager::InHand(void)
-	virtual bool InHand();
+	virtual bool32_t InHand();
 	// BW1W120 007515c0 BW1M100 10098ff0 Villager::DecideWhatToDo(void)
-	virtual bool DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo();
 	// BW1W120 00751040 BW1M100 1056f5e0 Villager::Birthday(void)
 	virtual void Birthday();
 	// BW1W120 007528c0 BW1M100 1056b4c0 Villager::SetAge(unsigned long)
@@ -360,9 +360,9 @@ public:
 	// BW1W120 00764f60 BW1M100 10590c40 Villager::IsInterestedInWoodObject(Object *)
 	virtual bool IsInterestedInWoodObject(Object* param_1);
 	// BW1W120 00763390 BW1M100 10021260 Villager::IsAvailableForReaction(REACTION)
-	virtual bool IsAvailableForReaction(REACTION param_1);
+	virtual bool32_t IsAvailableForReaction(REACTION param_1);
 	// BW1W120 00763410 BW1M100 1000edf0 Villager::IsAvailableForBeliefButNotReaction(REACTION)
-	virtual bool IsAvailableForBeliefButNotReaction(REACTION param_1);
+	virtual bool32_t IsAvailableForBeliefButNotReaction(REACTION param_1);
 	// BW1W120 007634c0 BW1M100 100072a0 Villager::UpdateHowImpressed(Reaction *, int)
 	virtual void UpdateHowImpressed(Reaction* param_1, int param_2);
 	// BW1W120 00763440 BW1M100 inlined Villager::AddReaction(Reaction *, VILLAGER_STATES)
@@ -612,7 +612,7 @@ public:
 	// BW1W120 00751ab0 BW1M100 1056dea0 Villager::GetVillagerText(char *)
 	char* GetVillagerText(char* param_1);
 	// BW1W120 00751d20 BW1M100 1056d6a0 Villager::GetJobInfo(unsigned char) const
-	GJobInfo* GetJobInfo(unsigned char param_1);
+	GJobInfo* GetJobInfo(unsigned char param_1) const;
 	// BW1W120 00751d40 BW1M100 inlined Villager::FUN00751d40(void)
 	bool FUN00751d40();
 	// BW1W120 00751e50 BW1M100 1056d290 Villager::PopFromPrevious(void)
@@ -644,7 +644,7 @@ public:
 	// BW1W120 00752290 BW1M100 1056c8b0 Villager::IsVillagerAvailable(void)
 	bool IsVillagerAvailable();
 	// BW1W120 007522c0 BW1M100 1056c7a0 Villager::IsAvailableToBeSummonedByCreature(void)
-	bool IsAvailableToBeSummonedByCreature();
+	bool32_t IsAvailableToBeSummonedByCreature();
 	// BW1W120 007524d0 BW1M100 1009d4c0 Villager::IsStateEntryFunctionSameAs(unsigned long, unsigned long) const
 	bool IsStateEntryFunctionSameAs(unsigned long param_1, unsigned long param_2);
 	// BW1W120 007525b0 BW1M100 1056c220 Villager::IsReactiveState(unsigned long)
@@ -660,13 +660,13 @@ public:
 	// BW1W120 007527e0 BW1M100 1056ba70 Villager::ExitDance(unsigned char)
 	bool ExitDance(unsigned char param_1);
 	// BW1W120 00752820 BW1M100 1056b9c0 Villager::IsAvailableForWorshipSite(int)
-	bool IsAvailableForWorshipSite(int param_1);
+	bool32_t IsAvailableForWorshipSite(int param_1);
 	// BW1W120 00752860 BW1M100 1056b900 Villager::IsAtOrOnTheWayToWorshipSite(void)
 	bool IsAtOrOnTheWayToWorshipSite();
 	// BW1W120 00752a90 BW1M100 1056b340 Villager::SetScaleForAge(unsigned long)
 	void SetScaleForAge(unsigned long param_1);
 	// BW1W120 00752b80 BW1M100 1056b240 Villager::SetStateWhenTappedOnAbode(void)
-	bool SetStateWhenTappedOnAbode();
+	bool32_t SetStateWhenTappedOnAbode();
 	// BW1W120 00753140 BW1M100 inlined Villager::FUN_00753140(void)
 	uint32_t FUN_00753140();
 	// BW1W120 007531a0 BW1M100 1056a780 Villager::IsVagrant(void)

@@ -348,7 +348,7 @@ public:
 	// BW1W120 004f6760 BW1M100 10289e50 Creature::SetFocus(LHPoint const &)
 	virtual void SetFocus(const LHPoint* param_1);
 	// BW1W120 00473f50 BW1M100 101e2d40 Creature::IsReachable(void)
-	virtual bool IsReachable();
+	virtual bool32_t IsReachable();
 	// BW1W120 00479e50 BW1M100 101d6990 Creature::MoveMapObject(MapCoords const &)
 	virtual int MoveMapObject(const MapCoords* param_1);
 	// BW1W120 0047dd00 BW1M100 101ce700 Creature::ReduceLife(float, GPlayer *)
@@ -422,7 +422,7 @@ public:
 	// BW1W120 00479990 BW1M100 101d6fd0 Creature::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00479d10 BW1M100 101d6d70 Creature::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0047d4b0 BW1M100 101cf930 Creature::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0047d500 BW1M100 101cf7f0 Creature::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
@@ -443,7 +443,7 @@ public:
 	// BW1W120 004753d0 BW1M100 101de690 Creature::GetFinalDestPos(MapCoords *)
 	virtual MapCoords* GetFinalDestPos(MapCoords* param_1);
 	// BW1W120 004f0560 BW1M100 1027a2e0 Creature::DecideWhatToDo(void)
-	virtual bool DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo();
 	// BW1W120 0047b1a0 BW1M100 101d49f0 Creature::GetAge(void)
 	virtual uint32_t GetAge();
 	// BW1W120 0047b1b0 BW1M100 101d49b0 Creature::SetAge(unsigned long)
@@ -467,7 +467,7 @@ public:
 	// BW1W120 0047c670 BW1M100 101d2490 Creature::IsDancing(void)
 	virtual bool IsDancing();
 	// BW1W120 004f2820 BW1M100 1027db00 Creature::IsAvailableForReaction(REACTION)
-	virtual bool IsAvailableForReaction(REACTION param_1);
+	virtual bool32_t IsAvailableForReaction(REACTION param_1);
 	// BW1W120 004f2780 BW1M100 1027dca0 Creature::UpdateHowImpressed(Reaction *, int)
 	virtual void UpdateHowImpressed(Reaction* param_1, int param_2);
 	// BW1W120 004f2680 BW1M100 inlined Creature::AddReaction(Reaction *, VILLAGER_STATES)
@@ -620,7 +620,7 @@ public:
 	// BW1W120 0050b330 BW1M100 100c0270 Creed::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 0050b340 BW1M100 100c02b0 Creed::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 };
 
 #endif /* BW1_DECOMP_CREATURE_INCLUDED_H */

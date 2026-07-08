@@ -30,7 +30,7 @@ public:
 	// BW1W120 00607e20 BW1M100 103bb470 FieldCrop::ToBeDeleted(int)
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00608270 BW1M100 103bb1e0 FieldCrop::IsFunctional(void)
-	virtual bool IsFunctional();
+	virtual bool32_t IsFunctional();
 	// BW1W120 0055d100 BW1M100 103bab60 FieldCrop::GetDebugText(void)
 	virtual char* GetDebugText();
 	// BW1W120 0055d0f0 BW1M100 103bab20 FieldCrop::GetSaveType(void)
@@ -61,7 +61,7 @@ public:
 	// BW1W120 00608340 BW1M100 103baf80 FieldCrop::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 006082d0 BW1M100 103bb100 FieldCrop::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00608440 BW1M100 103baba0 FieldCrop::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00608350 BW1M100 103baf40 FieldCrop::IsARootedObject(void)

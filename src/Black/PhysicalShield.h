@@ -53,7 +53,7 @@ public:
 	// BW1W120 0072ce50 BW1M100 1052fe80 PhysicalShield::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 0072d170 BW1M100 1052f8a0 PhysicalShield::SetDying(void)
-	virtual bool SetDying();
+	virtual bool32_t SetDying();
 	// BW1W120 0072cc80 BW1M100 10530260 PhysicalShield::IsEffectReceiver(EffectValues *)
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0072d7e0 BW1M100 1052ef50 PhysicalShield::GetPhysicsConstantsType(void)

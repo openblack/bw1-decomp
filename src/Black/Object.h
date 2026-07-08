@@ -112,7 +112,7 @@ public:
 	// BW1W120 006392b0 BW1M100 10037930 Object::IsObjectInMap(void)
 	virtual bool IsObjectInMap();
 	// BW1W120 0063a780 BW1M100 103d07e0 Object::IsDrowning(void)
-	virtual bool IsDrowning();
+	virtual bool32_t IsDrowning();
 	// BW1W120 006377f0 BW1M100 103d6d80 Object::CleanupWhenDeleted(int)
 	virtual void CleanupWhenDeleted(int param_1);
 	// BW1W120 00639860 BW1M100 103d2e30 Object::GetImpressiveValue(Living *, Reaction *)
@@ -206,7 +206,7 @@ public:
 	// BW1W120 00402550 BW1M100 105890b0 Object::MoveAlongPath(void)
 	virtual uint32_t MoveAlongPath();
 	// BW1W120 00402560 BW1M100 1030b0c0 Object::IsReachable(void)
-	virtual bool IsReachable();
+	virtual bool32_t IsReachable();
 	// BW1W120 0063a920 BW1M100 103d03c0 Object::BlocksTownClearArea( const(void))
 	virtual bool BlocksTownClearArea();
 	// BW1W120 006365f0 BW1M100 103d9010 Object::Create3DObject(void)
@@ -392,7 +392,7 @@ public:
 	// BW1W120 00402790 BW1M100 10109690 Object::IsLockedInInteract(void)
 	virtual bool IsLockedInInteract();
 	// BW1W120 004027a0 BW1M100 10109580 Object::SetDying(void)
-	virtual bool SetDying();
+	virtual bool32_t SetDying();
 	// BW1W120 00636ab0 BW1M100 103d8820 Object::IsAttackable(Object *)
 	virtual bool IsAttackable(Object* param_1);
 	// BW1W120 00636af0 BW1M100 103d8770 Object::IsAllied(Object *)
@@ -527,11 +527,11 @@ public:
 	// BW1W120 006377c0 BW1M100 103d6ee0 Object::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 006377e0 BW1M100 103d6e10 Object::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00402a10 BW1M100 103db1f0 Object::GetAlwaysRemainsInPhysicsInternalSystem(void)
 	virtual bool GetAlwaysRemainsInPhysicsInternalSystem();
 	// BW1W120 00637470 BW1M100 103d7730 Object::HasSunk(void)
-	virtual bool HasSunk();
+	virtual bool32_t HasSunk();
 	// BW1W120 00638740 BW1M100 103d48a0 Object::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00638790 BW1M100 103d43b0 Object::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))

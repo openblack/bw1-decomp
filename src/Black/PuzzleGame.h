@@ -213,7 +213,7 @@ public:
 	// BW1W120 0041da90 BW1M100 101315b0 PiecePig::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041da70 BW1M100 10131530 PiecePig::DecideWhatToDo(void)
-	virtual bool DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo();
 };
 
 class PieceSheep : public Sheep
@@ -293,7 +293,7 @@ public:
 	// BW1W120 006dd4b0 BW1M100 inlined PuzzleCow::CanBeFrighteningToCreature(Creature *)
 	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
 	// BW1W120 006dd690 BW1M100 10132390 PuzzleCow::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0041c7e0 BW1M100 inlined PuzzleCow::StandAnimation(void)
 	virtual uint32_t StandAnimation();
 };
@@ -352,7 +352,7 @@ public:
 	// BW1W120 00561a40 BW1M100 10131ec0 PuzzleGrain::EndPhysics(PhysicsObject *, bool)
 	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00561a60 BW1M100 10131f20 PuzzleGrain::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 006dc550 BW1M100 10122550 PuzzleGrain::GetImmersionTexture(void)
 	virtual IMMERSION_EFFECT_TYPE GetImmersionTexture();
 };
@@ -367,7 +367,7 @@ public:
 	// BW1W120 006dd520 BW1M100 10132850 PuzzleHorse::GetDebugText(void)
 	virtual char* GetDebugText();
 	// BW1W120 006dd530 BW1M100 10132890 PuzzleHorse::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00416fd0 BW1M100 inlined PuzzleHorse::SetFoodSpeedup(bool)
 	virtual void SetFoodSpeedup(bool param_1);
 	// BW1W120 00416fe0 BW1M100 inlined PuzzleHorse::IsFoodSpeedUp(void)
@@ -383,11 +383,11 @@ public:
 	// BW1W120 005f2540 BW1M100 inlined PuzzleHorse::InspectObjectReaction(void)
 	virtual bool InspectObjectReaction();
 	// BW1W120 005ec3f0 BW1M100 inlined PuzzleHorse::Dying(void)
-	virtual bool Dying();
+	virtual bool32_t Dying();
 	// BW1W120 005ec400 BW1M100 inlined PuzzleHorse::Dead(void)
-	virtual bool Dead();
+	virtual bool32_t Dead();
 	// BW1W120 005ec4d0 BW1M100 inlined PuzzleHorse::BeingEaten(void)
-	virtual bool BeingEaten();
+	virtual bool32_t BeingEaten();
 	// BW1W120 005f2550 BW1M100 inlined PuzzleHorse::GotoFoodReaction(void)
 	virtual bool GotoFoodReaction();
 	// BW1W120 005f25c0 BW1M100 inlined PuzzleHorse::GotoWoodReaction(void)
@@ -395,15 +395,15 @@ public:
 	// BW1W120 0041a9f0 BW1M100 inlined PuzzleHorse::MoveInFlock(void)
 	virtual bool MoveInFlock();
 	// BW1W120 005ef350 BW1M100 inlined PuzzleHorse::IsMovingForAnimation(void)
-	virtual bool IsMovingForAnimation();
+	virtual bool32_t IsMovingForAnimation();
 	// BW1W120 0041a0a0 BW1M100 inlined PuzzleHorse::ArrivesAtFoodReaction(void)
-	virtual bool ArrivesAtFoodReaction();
+	virtual bool32_t ArrivesAtFoodReaction();
 	// BW1W120 00417030 BW1M100 inlined PuzzleHorse::ArrivesAtWoodReaction(void)
-	virtual bool ArrivesAtWoodReaction();
+	virtual bool32_t ArrivesAtWoodReaction();
 	// BW1W120 005ec620 BW1M100 inlined PuzzleHorse::InHand(void)
-	virtual bool InHand();
+	virtual bool32_t InHand();
 	// BW1W120 006db120 BW1M100 10124e30 PuzzleHorse::DecideWhatToDo(void)
-	virtual bool DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo();
 	// BW1W120 005ec8f0 BW1M100 inlined PuzzleHorse::Birthday(void)
 	virtual void Birthday();
 	// BW1W120 004179c0 BW1M100 inlined PuzzleHorse::SetAge(unsigned long)
@@ -426,7 +426,7 @@ public:
 	// BW1W120 005615b0 BW1M100 10132d90 PuzzleLion::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 005615d0 BW1M100 10132e10 PuzzleLion::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 };
 
 class PuzzleMobileObject : public MobileObject
@@ -462,9 +462,9 @@ public:
 	// BW1W120 006dd720 BW1M100 101325b0 PuzzlePig::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 006dd740 BW1M100 10132630 PuzzlePig::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 006db130 BW1M100 10124df0 PuzzlePig::DecideWhatToDo(void)
-	virtual bool DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo();
 };
 
 class PuzzleSheep : public PieceSheep
@@ -479,9 +479,9 @@ public:
 	// BW1W120 00561740 BW1M100 10132ad0 PuzzleSheep::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 00561760 BW1M100 10132b50 PuzzleSheep::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 006db110 BW1M100 10124e70 PuzzleSheep::DecideWhatToDo(void)
-	virtual bool DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo();
 };
 
 class PuzzleTortoise : public PieceTortoise
@@ -496,7 +496,7 @@ public:
 	// BW1W120 006dd5c0 BW1M100 10132010 PuzzleTortoise::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 006dd5e0 BW1M100 10132090 PuzzleTortoise::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 };
 
 class PuzzleTotem : public Totem
@@ -554,7 +554,7 @@ public:
 	// BW1W120 00561660 BW1M100 10133160 PuzzleVillager::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 00561680 BW1M100 101331e0 PuzzleVillager::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 };
 
 #endif /* BW1_DECOMP_PUZZLE_GAME_INCLUDED_H */

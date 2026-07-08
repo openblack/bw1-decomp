@@ -328,7 +328,7 @@ public:
 	// BW1W120 00401800 BW1M100 10494700 GameThing::RemoveDance(void)
 	virtual void RemoveDance();
 	// BW1W120 00401810 BW1M100 100512d0 GameThing::IsAvailable(void)
-	virtual bool IsAvailable();
+	virtual bool32_t IsAvailable();
 	// BW1W120 00401820 BW1M100 10494880 GameThing::IsCreature(Creature *)
 	virtual bool IsCreature(Creature* param_1);
 	// BW1W120 00401830 BW1M100 1002c400 GameThing::IsCreature(void)
@@ -413,7 +413,7 @@ public:
 	// BW1W120 00405230 BW1M100 10199e20 GameThing::DrawInHand(GInterfaceStatus *)
 	virtual void DrawInHand(GInterfaceStatus* param_1);
 	// BW1W120 00405240 BW1M100 10067860 GameThing::IsFunctional(void)
-	virtual bool IsFunctional();
+	virtual bool32_t IsFunctional();
 	// BW1W120 00425da0 BW1M100 1054ef00 GameThing::GetDebugText(void)
 	virtual char* GetDebugText();
 	// BW1W120 0071bc20 BW1M100 1050ff50 GameThing::GetSampleForAttack(void)

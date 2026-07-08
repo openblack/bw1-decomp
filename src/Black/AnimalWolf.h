@@ -41,7 +41,7 @@ public:
 	// BW1W120 00420910 BW1M100 10177d60 SpellWolf::CallVirtualFunctionsForCreation(MapCoords const &)
 	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
 	// BW1W120 00420cf0 BW1M100 101777b0 SpellWolf::SetDying(void)
-	virtual bool SetDying();
+	virtual bool32_t SetDying();
 	// BW1W120 0041c6a0 BW1M100 1016ee70 SpellWolf::StandAnimation(void)
 	virtual uint32_t StandAnimation();
 	// BW1W120 004209b0 BW1M100 10177c00 SpellWolf::SetSpeed(long)

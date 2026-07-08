@@ -47,7 +47,7 @@ public:
 	// BW1W120 00561270 BW1M100 1015ff50 Whale::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00561290 BW1M100 1015ff10 Whale::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 };
 
 #endif /* BW1_DECOMP_WHALE_INCLUDED_H */

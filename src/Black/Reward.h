@@ -66,7 +66,7 @@ public:
 	// BW1W120 006e5d00 BW1M100 1013a480 Reward::InterfaceTap(GInterfaceStatus *)
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 006e6980 BW1M100 10139800 Reward::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 };
 
 class GRewardProgress : public GBaseInfo

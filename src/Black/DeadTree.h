@@ -105,7 +105,7 @@ public:
 	// BW1W120 00510ca0 BW1M100 100c3670 DeadTree::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00511a10 BW1M100 100c1250 DeadTree::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00510e30 BW1M100 100c2e50 DeadTree::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00511200 BW1M100 100c2450 DeadTree::IsARootedObject(void)

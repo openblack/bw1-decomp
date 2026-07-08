@@ -125,7 +125,7 @@ public:
 	// BW1W120 0066dc90 BW1M100 1011ac90 Pot::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0066e8f0 BW1M100 10118e10 Pot::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0066d550 BW1M100 1011bd00 Pot::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 	// BW1W120 0055d590 BW1M100 10116310 Pot::IsAPotFromABuildingSite(void)

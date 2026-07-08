@@ -140,7 +140,7 @@ public:
 	// BW1W120 00403f10 BW1M100 103c9730 Abode::GetNumberOfInstanceForGlobalList(void)
 	virtual uint16_t GetNumberOfInstanceForGlobalList();
 	// BW1W120 00406200 BW1M100 1005ff20 Abode::IsFunctional(void)
-	virtual bool IsFunctional();
+	virtual bool32_t IsFunctional();
 	// BW1W120 00406d20 BW1M100 101a2920 Abode::Load(GameOSFile &)
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00406a10 BW1M100 103bd750 Abode::Save(GameOSFile &)
@@ -194,7 +194,7 @@ public:
 	// BW1W120 00406240 BW1M100 104a8350 Abode::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00406800 BW1M100 1010ab50 Abode::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00402cd0 BW1M100 100c7020 Abode::GetInspectObjectPos(Villager *, MapCoords *)
 	virtual bool GetInspectObjectPos(Villager* param_1, MapCoords* pos);
 	// BW1W120 00407420 BW1M100 10351de0 Abode::DiscipleInHandNear(Villager &, GInterfaceStatus &)

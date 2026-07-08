@@ -112,7 +112,7 @@ public:
 	// BW1W120 004052c0 BW1M100 103f07b0 GameThingWithPos::IsObjectInMap(void)
 	virtual bool IsObjectInMap();
 	// BW1W120 004052d0 BW1M100 103ee440 GameThingWithPos::IsDrowning(void)
-	virtual bool IsDrowning();
+	virtual bool32_t IsDrowning();
 	// BW1W120 00401a10 BW1M100 100cb2b0 GameThingWithPos::IsCannotBePickedUp( const(void))
 	virtual bool IsCannotBePickedUp();
 	// BW1W120 00570590 BW1M100 101bf190 GameThingWithPos::GetOverwritePickUpToolTip(void)
@@ -120,7 +120,7 @@ public:
 	// BW1W120 00401a20 BW1M100 100cb270 GameThingWithPos::IsStompable(void)
 	virtual bool IsStompable();
 	// BW1W120 00401a30 BW1M100 100cb210 GameThingWithPos::IsAvailableForStateChange(void)
-	virtual bool IsAvailableForStateChange();
+	virtual bool32_t IsAvailableForStateChange();
 	// BW1W120 005701b0 BW1M100 1007b9d0 GameThingWithPos::IsInteractable(void)
 	virtual bool IsInteractable();
 	// BW1W120 005705a0 BW1M100 100b34e0 GameThingWithPos::GetOverwriteInteractableToolTip(void)
