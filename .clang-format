@@ -1,0 +1,39 @@
+Language:                    Cpp
+BasedOnStyle:                Microsoft
+Standard:                    c++03          # MSVC 6.0
+PointerAlignment:            Left
+AccessModifierOffset:        -4
+
+# Indentation: tabs. AlignWithSpaces keeps tabs for indentation but uses spaces
+# for alignment, so the /* 0xNN */ offset-comment columns stay lined up at any
+# tab width. TabWidth is the assumed display width of a tab for column math.
+UseTab:                      AlignWithSpaces
+IndentWidth:                 4
+TabWidth:                    4
+
+ColumnLimit:                 120
+AlignAfterOpenBracket:       Align
+AlignOperands:               Align
+
+# Includes: never reorder, I have a feeling header order will matter in this codebase.
+SortIncludes:                Never
+
+# Comments: protect the "// BW1W120 <addr> <signature>" provenance comments
+ReflowComments:              Never
+BreakStringLiterals:         false
+
+AlignConsecutiveDeclarations:
+  Enabled:                   true
+  AcrossEmptyLines:          false
+  AcrossComments:            false
+AlignConsecutiveMacros:
+  Enabled:                   true
+  AcrossEmptyLines:          false
+  AcrossComments:            false
+AlignTrailingComments:
+  Kind:                      Always
+  OverEmptyLines:            0
+
+# Trivial accessors (the many one-line virtual getters) may stay on one line.
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: Never
