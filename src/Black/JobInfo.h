@@ -18,7 +18,7 @@ public:
 	// BW1W120 005e1720 BW1M100 100fe5c0 GJobInfo::_dt(void)
 	virtual ~GJobInfo();
 	// BW1W120 005e16c0 BW1M100 100fe6d0 GJobInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Non-virtual methods
 

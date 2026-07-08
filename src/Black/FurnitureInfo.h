@@ -19,7 +19,7 @@ public:
 	// BW1W120 0054a3c0 BW1M100 100f2b20 GFurnitureInfo::_dt(void)
 	virtual ~GFurnitureInfo();
 	// BW1W120 0054a350 BW1M100 100f2c30 GFurnitureInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_FURNITURE_INFO_INCLUDED_H */

@@ -29,7 +29,7 @@ public:
 	// BW1W120 004643e0 BW1M100 101c1bf0 GCitadelHeartInfo::_dt(void)
 	virtual ~GCitadelHeartInfo();
 	// BW1W120 00464390 BW1M100 101c1de0 GCitadelHeartInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_CITADEL_HEART_INFO_INCLUDED_H */

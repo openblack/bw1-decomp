@@ -20,7 +20,7 @@ public:
 	// BW1W120 005fb980 BW1M100 inlined GMagicLivingInfo::_dt(void)
 	virtual ~GMagicLivingInfo();
 	// BW1W120 005fb910 BW1M100 inlined GMagicLivingInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 005fb900 BW1M100 inlined GMagicLivingInfo::GetMesh( const(void))
 	virtual uint32_t GetMesh();
 };

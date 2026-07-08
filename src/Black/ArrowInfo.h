@@ -19,7 +19,7 @@ public:
 	// BW1W120 00425980 BW1M100 100ad540 GArrowInfo::_dt(void)
 	virtual ~GArrowInfo();
 	// BW1W120 00425930 BW1M100 100ad830 GArrowInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_ARROW_INFO_INCLUDED_H */

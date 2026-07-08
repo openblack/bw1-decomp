@@ -37,7 +37,7 @@ public:
 	// BW1W120 00472c80 BW1M100 101d2300 CreatureInfo::_dt(void)
 	virtual ~CreatureInfo();
 	// BW1W120 00472c10 BW1M100 101e2980 CreatureInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_CREATURE_INFO_INCLUDED_H */

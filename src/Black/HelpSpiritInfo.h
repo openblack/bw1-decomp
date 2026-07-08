@@ -19,7 +19,7 @@ public:
 	// BW1W120 005c4a70 BW1M100 1034c8b0 HelpSpiritInfo::_dt(void)
 	virtual ~HelpSpiritInfo();
 	// BW1W120 005c4a00 BW1M100 1034c9c0 HelpSpiritInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_HELP_SPIRIT_INFO_INCLUDED_H */

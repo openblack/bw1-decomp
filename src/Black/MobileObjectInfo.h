@@ -22,7 +22,7 @@ public:
 	// BW1W120 00606e10 BW1M100 100ad680 GMobileObjectInfo::_dt(void)
 	virtual ~GMobileObjectInfo();
 	// BW1W120 00606da0 BW1M100 100ad7d0 GMobileObjectInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00425920 BW1M100 100ad790 GMobileObjectInfo::GetMesh( const(void))
 	virtual uint32_t GetMesh();
 

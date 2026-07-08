@@ -54,7 +54,7 @@ public:
 	// BW1W120 00491980 BW1M100 1022e3c0 CreatureDesireActionEntry::_dt(void)
 	virtual ~CreatureDesireActionEntry();
 	// BW1W120 00491910 BW1M100 1022ed30 CreatureDesireActionEntry::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 class CreatureDesireAttributeEntry : public GBaseInfo
@@ -65,7 +65,7 @@ public:
 	// BW1W120 00491b70 BW1M100 1022e150 CreatureDesireAttributeEntry::_dt(void)
 	virtual ~CreatureDesireAttributeEntry();
 	// BW1W120 00491b10 BW1M100 1022edf0 CreatureDesireAttributeEntry::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 class CreatureDesireDependency : public GBaseInfo
@@ -76,7 +76,7 @@ public:
 	// BW1W120 004db350 BW1M100 10259590 CreatureDesireDependency::_dt(void)
 	virtual ~CreatureDesireDependency();
 	// BW1W120 004db2e0 BW1M100 1025c710 CreatureDesireDependency::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 class CreatureDesireForType : public GBaseInfo
@@ -87,7 +87,7 @@ public:
 	// BW1W120 004db420 BW1M100 1025ac00 CreatureDesireForType::_dt(void)
 	virtual ~CreatureDesireForType();
 	// BW1W120 004db3c0 BW1M100 1025c650 CreatureDesireForType::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 class CreatureDesireSourceTable : public GBaseInfo
@@ -98,7 +98,7 @@ public:
 	// BW1W120 004dd1f0 BW1M100 1025c960 CreatureDesireSourceTable::_dt(void)
 	virtual ~CreatureDesireSourceTable();
 	// BW1W120 004dd180 BW1M100 1025efa0 CreatureDesireSourceTable::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_DESIRE_INCLUDED_H */

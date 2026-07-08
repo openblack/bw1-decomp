@@ -28,7 +28,7 @@ public:
 	// BW1W120 0071f880 BW1M100 10146650 GSpecialVillagerInfo::_dt(void)
 	virtual ~GSpecialVillagerInfo();
 	// BW1W120 0071ee80 BW1M100 101463b0 GSpecialVillagerInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_SPECIAL_VILLAGER_INFO_INCLUDED_H */

@@ -70,7 +70,7 @@ public:
 	// BW1W120 004e2db0 BW1M100 102676b0 CreatureActionKnownAboutEntry::_dt(void)
 	virtual ~CreatureActionKnownAboutEntry();
 	// BW1W120 004e2d50 BW1M100 10267920 CreatureActionKnownAboutEntry::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 class CreatureFalling : public LH3DCreature

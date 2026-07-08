@@ -21,7 +21,7 @@ public:
 	// BW1W120 00719a80 BW1M100 10146040 GShowNeedsInfo::_dt(void)
 	virtual ~GShowNeedsInfo();
 	// BW1W120 00719a10 BW1M100 101461f0 GShowNeedsInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00719a00 BW1M100 10144960 GShowNeedsInfo::GetMesh( const(void))
 	virtual uint32_t GetMesh();
 };

@@ -18,7 +18,7 @@ public:
 	// BW1W120 0071aa60 BW1M100 1050d8c0 GHelpSpritesGuidance::_dt(void)
 	virtual ~GHelpSpritesGuidance();
 	// BW1W120 0071a9f0 BW1M100 105128d0 GHelpSpritesGuidance::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Non-virtual methods
 

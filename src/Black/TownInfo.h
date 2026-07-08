@@ -40,7 +40,7 @@ public:
 	// BW1W120 0073fd80 BW1M100 inlined GTownInfo::GetDebugColor( const(LHColor *))
 	virtual LHColor* GetDebugColor(LHColor* param_1);
 	// BW1W120 00738f70 BW1M100 10545ba0 GTownInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_TOWN_INFO_INCLUDED_H */

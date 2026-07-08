@@ -19,7 +19,7 @@ public:
 	// BW1W120 004eee30 BW1M100 10274c20 GCreaturePenInfo::_dt(void)
 	virtual ~GCreaturePenInfo();
 	// BW1W120 004eedc0 BW1M100 102755a0 GCreaturePenInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_CREATURE_PEN_INFO_INCLUDED_H */

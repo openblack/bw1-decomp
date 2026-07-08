@@ -25,7 +25,7 @@ public:
 	// BW1W120 0072aee0 BW1M100 1052d120 GSpellSeedInfo::_dt(void)
 	virtual ~GSpellSeedInfo();
 	// BW1W120 0072ae70 BW1M100 1052df40 GSpellSeedInfo::GetBaseInfo(unsigned long &)
-	virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 0072ae60 BW1M100 1052df00 GSpellSeedInfo::GetMesh( const(void))
 	virtual uint32_t GetMesh();
 
