@@ -88,13 +88,6 @@ public:
 	// BW1W120 005db960 BW1M100 1036bdc0 GInterfaceStatus::GetText(void)
 	virtual const char* GetText();
 
-	// Static methods
-
-	// BW1W120 005cedc0 BW1M100 1035acc0 GInterfaceStatus::SetActive(int)
-	static void SetActive(GInterface* this, const void* edx, int param_1);
-	// BW1W120 005d29c0 BW1M100 10026ad0 GInterfaceStatus::ResetActionState(void)
-	static void ResetActionState(GInterface* this);
-
 	// Constructors
 
 	// BW1W120 005db860 BW1M100 1036f590 GInterfaceStatus::GInterfaceStatus(void)
@@ -102,6 +95,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 005cedc0 BW1M100 1035acc0 GInterfaceStatus::SetActive(int)
+	void SetActive(int param_1);
+	// BW1W120 005d29c0 BW1M100 10026ad0 GInterfaceStatus::ResetActionState(void)
+	void ResetActionState();
 	// BW1W120 005dba00 BW1M100 1036f310 GInterfaceStatus::SetToZero(GInterface *)
 	void SetToZero(GInterface* param_1);
 	// BW1W120 005dc130 BW1M100 100755c0 GInterfaceStatus::GetFirstObjectInCurrentHand(void)

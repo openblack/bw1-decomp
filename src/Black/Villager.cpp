@@ -1,0 +1,1167 @@
+#include "Villager.h"
+
+#include <Lionhead/LHFile/ver3.0/LHOSFile.h>
+
+#include "GameOSFile.h"
+#include "GameThing.h"
+#include "InterfaceStatus.h"
+#include "VillagerInfo.h"
+#include "JobInfo.h"
+#include "MapCoords.h"
+#include "Object.h"
+#include "Pot.h"
+#include "Reaction.h"
+#include "StoragePit.h"
+
+// BW1W120 0074fb20
+void Villager::SetToZero() {}
+
+// BW1W120 0074fb80
+void Villager::InitialiseScale(unsigned long param_1) {}
+
+// BW1W120 0074fbe0
+Villager* Villager::Create(const MapCoords& coords, const GVillagerInfo* info, uint32_t age, bool skeleton)
+{
+	return NULL;
+}
+
+// BW1W120 0074fc70
+void Villager::CallVirtualFunctionsForCreation(const MapCoords& param_1) {}
+
+// BW1W120 0074fd60
+void Villager::DeleteDependancys() {}
+
+// BW1W120 0074fec0
+bool Villager::UnemployedJobs()
+{
+	return false;
+}
+
+// BW1W120 0074ff60
+bool Villager::SetupJobLocation()
+{
+	return false;
+}
+
+// BW1W120 0074ff70
+uint32_t Villager::ProcessState()
+{
+	return 0;
+}
+
+// BW1W120 00750060
+void Villager::FinishedIntoOutOfAnimation() {}
+
+// BW1W120 00750110
+ANIM_LIST Villager::GetAnimId()
+{
+	return ANIM_LIST(0);
+}
+
+// BW1W120 007501a0
+void Villager::SetStateCarriedObject() {}
+
+// BW1W120 007502a0
+uint32_t Villager::GetWoodCarriedObject()
+{
+	return 0;
+}
+
+// BW1W120 007502d0
+uint32_t Villager::DestroyedByEffect(GPlayer* param_1, float param_2)
+{
+	return 0;
+}
+
+// BW1W120 007502f0
+GPlayer* Villager::GetPlayer()
+{
+	return NULL;
+}
+
+// BW1W120 00750310
+HOLD_TYPE Villager::GetHoldType()
+{
+	return HOLD_TYPE(0);
+}
+
+// BW1W120 00750320
+float Villager::GetHoldLoweringMultiplier()
+{
+	return 0.0f;
+}
+
+// BW1W120 00750330
+Villager* Villager::GetSpouse()
+{
+	return NULL;
+}
+
+// BW1W120 00750370
+Villager* Villager::LookAroundForVillagerInState(VILLAGER_STATES param_1, unsigned long param_2)
+{
+	return NULL;
+}
+
+// BW1W120 00750410
+int Villager::CheckEveryTime()
+{
+	return 0;
+}
+
+// BW1W120 00750670
+uint32_t Villager::GetGameTurnsSinceLastChecked()
+{
+	return 0;
+}
+
+// BW1W120 00750690
+int Villager::GetGameTurnLastChecked()
+{
+	return 0;
+}
+
+// BW1W120 007506a0
+void Villager::SetGameTurnLastChecked() {}
+
+// BW1W120 007506c0
+void Villager::VillagerDead(DEATH_REASON param_1, GPlayer* param_2, float param_3, int param_4) {}
+
+// BW1W120 00750940
+void Villager::CreateDroppedResource(LHPoint* param_1, LHPoint* param_2, LHPoint* param_3) {}
+
+// BW1W120 00750ab0
+bool32_t Villager::HasSunk()
+{
+	return false;
+}
+
+// BW1W120 00750b50
+void Villager::TownDeleted() {}
+
+// BW1W120 00750bb0
+void Villager::DebugText(int param_1) {}
+
+// BW1W120 00750de0
+void Villager::SetAbode(Abode* abode) {}
+
+// BW1W120 00750e10
+bool Villager::GetRandomLookAhead(MapCoords* param_1, float param_2)
+{
+	return false;
+}
+
+// BW1W120 00750ed0
+void Villager::SetSpeed(int base_speed, int scale_speed) {}
+
+// BW1W120 00751040
+void Villager::Birthday() {}
+
+// BW1W120 00751050
+int Villager::CheckChildGrownUp()
+{
+	return 0;
+}
+
+// BW1W120 00751110
+bool Villager::IsAMother()
+{
+	return false;
+}
+
+// BW1W120 00751190
+bool Villager::StartMoveToObject(Object* param_1, VILLAGER_STATES param_2)
+{
+	return false;
+}
+
+// BW1W120 007511b0
+unsigned short Villager::DropResource(RESOURCE_TYPE param_1, unsigned short param_2)
+{
+	return 0;
+}
+
+// BW1W120 007511e0
+unsigned short Villager::DropFood(unsigned short param_1)
+{
+	return 0;
+}
+
+// BW1W120 00751240
+unsigned short Villager::DropWood(unsigned short param_1)
+{
+	return 0;
+}
+
+// BW1W120 007512a0
+bool Villager::IsEnoughFoodInStoragePitForDinner()
+{
+	return false;
+}
+
+// BW1W120 007512e0
+Pot* Villager::FindPotAroundToGoto(RESOURCE_TYPE param_1, unsigned long& param_2, int param_3)
+{
+	return NULL;
+}
+
+// BW1W120 007513f0
+void Villager::PickupResource(RESOURCE_TYPE param_1, short param_2, unsigned char param_3) {}
+
+// BW1W120 00751490
+void Villager::PickupFood(short param_1) {}
+
+// BW1W120 007514b0
+void Villager::PickupWood(short param_1, unsigned char param_2) {}
+
+// BW1W120 007514d0
+int Villager::GetFoodCapacity()
+{
+	return 0;
+}
+
+// BW1W120 007514f0
+int Villager::GetWoodCapacity()
+{
+	return 0;
+}
+
+// BW1W120 00751510
+void Villager::RemoveFromDance(int param_1) {}
+
+// BW1W120 00751520
+bool Villager::IsRandomlyLazy()
+{
+	return false;
+}
+
+// BW1W120 00751570
+bool Villager::GetResourceHeld(RESOURCE_TYPE& param_1)
+{
+	return false;
+}
+
+// BW1W120 007515c0
+bool32_t Villager::DecideWhatToDo()
+{
+	return false;
+}
+
+// BW1W120 007516e0
+bool Villager::CheckTakeResourcesToStoragePit()
+{
+	return false;
+}
+
+// BW1W120 00751720
+bool Villager::DiscipleDecideWhatToDo()
+{
+	return false;
+}
+
+// BW1W120 00751970
+bool Villager::GetPrayerSite()
+{
+	return false;
+}
+
+// BW1W120 00751980
+bool Villager::RestartDance(VILLAGER_STATES param_1)
+{
+	return false;
+}
+
+// BW1W120 00751ab0
+char* Villager::GetVillagerText(char* param_1)
+{
+	return NULL;
+}
+
+// BW1W120 00751af0
+uint32_t Villager::SaveObject(LHOSFile& param_1, const MapCoords& param_2)
+{
+	return 0;
+}
+
+// BW1W120 00751cf0
+bool32_t Villager::IsFunctional()
+{
+	return false;
+}
+
+// BW1W120 00751d20
+GJobInfo* Villager::GetJobInfo(unsigned char param_1) const
+{
+	return NULL;
+}
+
+// BW1W120 00751d40
+bool Villager::FUN00751d40()
+{
+	return false;
+}
+
+// BW1W120 00751d50
+bool32_t Villager::IsAvailable()
+{
+	return false;
+}
+
+// BW1W120 00751d70
+uint32_t Villager::IsEffectReceiver(EffectValues* param_1)
+{
+	return 0;
+}
+
+// BW1W120 00751db0
+Citadel* Villager::GetCitadel()
+{
+	return NULL;
+}
+
+// BW1W120 00751dd0
+VILLAGER_STATES Villager::GetFinalState() const
+{
+	return VILLAGER_STATES(0);
+}
+
+// BW1W120 00751e10
+void Villager::ResetStateAfterReacting() {}
+
+// BW1W120 00751e50
+void Villager::PopFromPrevious() {}
+
+// BW1W120 00751ea0
+Football* Villager::GetFootball()
+{
+	return NULL;
+}
+
+// BW1W120 00751ee0
+GTribeInfo* Villager::GetTribe()
+{
+	return NULL;
+}
+
+// BW1W120 00751f00
+Town* Villager::GetTown()
+{
+	return NULL;
+}
+
+// BW1W120 00751f10
+StoragePit* Villager::GetStoragePit()
+{
+	return NULL;
+}
+
+// BW1W120 00751f40
+VILLAGER_STATES Villager::GetVillagerAvailableState()
+{
+	return VILLAGER_STATES(0);
+}
+
+// BW1W120 00751f70
+VILLAGER_STATES Villager::FUN_00751f70()
+{
+	return VILLAGER_STATES(0);
+}
+
+// BW1W120 00751fa0
+void Villager::ArriveHome() {}
+
+// BW1W120 00751fd0
+void Villager::LeaveHome() {}
+
+// BW1W120 00752010
+int Villager::SetTopState(VILLAGER_STATES state)
+{
+	return 0;
+}
+
+// BW1W120 007520e0
+int Villager::SetCurrentAndDestinationState(VILLAGER_STATES current, VILLAGER_STATES destination)
+{
+	return 0;
+}
+
+// BW1W120 00752120
+uint32_t Villager::CanPauseForASecond(VILLAGER_STATES state)
+{
+	return 0;
+}
+
+// BW1W120 00752160
+Abode* Villager::GetAbode()
+{
+	return NULL;
+}
+
+// BW1W120 007521b0
+void Villager::ToBeDeleted(int param_1) {}
+
+// BW1W120 007521d0
+uint32_t Villager::CallState()
+{
+	return 0;
+}
+
+// BW1W120 00752210
+bool Villager::IsPregnant()
+{
+	return false;
+}
+
+// BW1W120 00752240
+uint32_t Villager::WomanSpecial()
+{
+	return 0;
+}
+
+// BW1W120 00752290
+bool Villager::IsVillagerAvailable()
+{
+	return false;
+}
+
+// BW1W120 007522c0
+bool32_t Villager::IsAvailableToBeSummonedByCreature()
+{
+	return false;
+}
+
+// BW1W120 00752320
+uint32_t Villager::CallExitStateFunction(VILLAGER_STATES param_1)
+{
+	return 0;
+}
+
+// BW1W120 007523d0
+bool32_t Villager::CallEntryStateFunction(VILLAGER_STATES param_1)
+{
+	return false;
+}
+
+// BW1W120 00752440
+bool32_t Villager::CallEntryStateFunction(VILLAGER_STATES param_1, VILLAGER_STATES param_2)
+{
+	return false;
+}
+
+// BW1W120 007524d0
+bool Villager::IsStateEntryFunctionSameAs(unsigned long param_1, unsigned long param_2) const
+{
+	return false;
+}
+
+// BW1W120 00752530
+bool Villager::IsStateExitFunctionSameAs(VILLAGER_STATES param_1) const
+{
+	return false;
+}
+
+// BW1W120 007525b0
+bool Villager::IsReactiveState(unsigned long param_1)
+{
+	return false;
+}
+
+// BW1W120 00752600
+bool Villager::IsHungry()
+{
+	return false;
+}
+
+// BW1W120 00752620
+bool Villager::IsWoman()
+{
+	return false;
+}
+
+// BW1W120 00752690
+bool Villager::MakeVillagesMeet(Villager* param_1, VILLAGER_STATES param_2, float param_3)
+{
+	return false;
+}
+
+// BW1W120 00752760
+bool Villager::MakeVillagerFaceObject(Object* param_1)
+{
+	return false;
+}
+
+// BW1W120 007527a0
+int Villager::ExitReaction(VILLAGER_STATES param_1)
+{
+	return 0;
+}
+
+// BW1W120 007527e0
+bool Villager::ExitDance(unsigned char param_1)
+{
+	return false;
+}
+
+// BW1W120 00752820
+bool32_t Villager::IsAvailableForWorshipSite(int param_1)
+{
+	return false;
+}
+
+// BW1W120 00752860
+bool Villager::IsAtOrOnTheWayToWorshipSite()
+{
+	return false;
+}
+
+// BW1W120 007528b0
+uint32_t Villager::DebugShowTime(uint32_t param_1, unsigned char param_2, unsigned char param_3)
+{
+	return 0;
+}
+
+// BW1W120 007528c0
+void Villager::SetAge(uint32_t age) {}
+
+// BW1W120 00752a90
+void Villager::SetScaleForAge(unsigned long param_1) {}
+
+// BW1W120 00752b80
+bool32_t Villager::SetStateWhenTappedOnAbode()
+{
+	return false;
+}
+
+// BW1W120 00752bd0
+uint32_t Villager::ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2)
+{
+	return 0;
+}
+
+// BW1W120 00752c40
+uint32_t Villager::ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3)
+{
+	return 0;
+}
+
+// BW1W120 00753020
+uint32_t Villager::GetScriptObjectType()
+{
+	return 0;
+}
+
+// BW1W120 00753040
+bool Villager::IsTouching(MapCoords* param_1) const
+{
+	return false;
+}
+
+// BW1W120 00753080
+uint32_t Villager::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+{
+	return 0;
+}
+
+// BW1W120 00753110
+void Villager::SetSpeedInMetres(float param_1, int param_2) {}
+
+// BW1W120 00753140
+uint32_t Villager::FUN_00753140()
+{
+	return 0;
+}
+
+// BW1W120 007531a0
+bool Villager::IsVagrant()
+{
+	return false;
+}
+
+// BW1W120 007531d0
+void Villager::ReleaseFromScript() {}
+
+// BW1W120 00753340
+void Villager::TestSpecial() {}
+
+// BW1W120 00753390
+uint32_t Villager::GetResourceFrom(Object* param_1, RESOURCE_TYPE param_2, short param_3)
+{
+	return 0;
+}
+
+// BW1W120 00753410
+void Villager::SetFoodSpeedup(bool param_1) {}
+
+// BW1W120 00753430
+void Villager::ProcessFoodSpeedup() {}
+
+// BW1W120 00753460
+void Villager::IncreaseLife(float param_1) {}
+
+// BW1W120 00753470
+void Villager::FindPosOutsideAbode(Abode* param_1) {}
+
+// BW1W120 00753540
+Abode* Villager::FUN_00753540()
+{
+	return NULL;
+}
+
+// BW1W120 00753560
+void Villager::AdjustTownModifier(VILLAGER_STATES state, int param_2) {}
+
+// BW1W120 00753690
+void Villager::SetStateSpeed() {}
+
+// BW1W120 00753740
+void Villager::SetStateSpeed(unsigned char param_1) {}
+
+// BW1W120 00753b50
+uint32_t Villager::SetupNothingToDo()
+{
+	return 0;
+}
+
+// BW1W120 00753c70
+uint32_t Villager::GetChillOutPos(MapCoords& coords)
+{
+	return 0;
+}
+
+// BW1W120 00753dd0
+uint32_t Villager::VillagerCreated()
+{
+	return 0;
+}
+
+// BW1W120 00753e00
+uint32_t Villager::RemoveFromGame()
+{
+	return 0;
+}
+
+// BW1W120 00753e20
+GameThingWithPos* Villager::GetResourceDropoffPos(RESOURCE_TYPE param_1)
+{
+	return NULL;
+}
+
+// BW1W120 00753f00
+bool Villager::IsFinalState(VILLAGER_STATES param_1)
+{
+	return false;
+}
+
+// BW1W120 00753f20
+HELP_TEXT Villager::GetQueryFirstEnumText()
+{
+	return HELP_TEXT(0);
+}
+
+// BW1W120 00753f90
+HELP_TEXT Villager::GetQueryLastEnumText()
+{
+	return HELP_TEXT(0);
+}
+
+// BW1W120 00754050
+uint32_t Villager::GetFOVHelpMessageSet()
+{
+	return 0;
+}
+
+// BW1W120 00754060
+uint32_t Villager::GetFOVHelpCondition()
+{
+	return 0;
+}
+
+// BW1W120 00754070
+bool32_t Villager::SetDiscipleNothingToDo()
+{
+	return false;
+}
+
+// BW1W120 007540d0
+bool32_t Villager::DiscipleNothingToDo()
+{
+	return false;
+}
+
+// BW1W120 00754140
+bool32_t Villager::EnterDiscipleNothingToDo(unsigned char param_1, unsigned char param_2)
+{
+	return false;
+}
+
+// BW1W120 00754180
+bool32_t Villager::FindDisciplePrayerPos(MapCoords* param_1)
+{
+	return false;
+}
+
+// BW1W120 00754280
+uint32_t Villager::Save(GameOSFile& file)
+{
+	return 0;
+}
+
+// BW1W120 00754580
+uint32_t Villager::Load(GameOSFile& file)
+{
+	return 0;
+}
+
+// BW1W120 00754870
+void Villager::ResolveLoad() {}
+
+// BW1W120 007548a0
+bool32_t Villager::CallSaveStateFunction(GameOSFile& param_1, STATE_TYPE param_2)
+{
+	return false;
+}
+
+// BW1W120 00754910
+bool32_t Villager::CallLoadStateFunction(GameOSFile& param_1, STATE_TYPE param_2)
+{
+	return false;
+}
+
+// BW1W120 00754980
+bool32_t Villager::SaveStateFunction(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 007549b0
+bool32_t Villager::LoadStateFunction(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754a00
+bool32_t Villager::SaveBuilding(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754a60
+bool32_t Villager::LoadBuilding(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754ac0
+bool32_t Villager::SaveDance(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754b60
+bool32_t Villager::LoadDance(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754c00
+bool32_t Villager::SaveWorship(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754c60
+bool32_t Villager::LoadWorship(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754cc0
+bool32_t Villager::SaveDead(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754d20
+bool32_t Villager::LoadDead(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754d80
+bool32_t Villager::SaveInHand(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754de0
+bool32_t Villager::LoadInHand(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754e40
+bool32_t Villager::SaveFishing(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754e60
+bool32_t Villager::LoadFishing(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754e80
+bool32_t Villager::SaveFarming(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754ef0
+bool32_t Villager::LoadFarming(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00754f60
+bool32_t Villager::SaveFootball(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755040
+bool32_t Villager::LoadFootball(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755120
+bool32_t Villager::SaveShepherd(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 007551c0
+bool32_t Villager::LoadShepherd(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755260
+bool32_t Villager::SaveInScript(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755370
+bool32_t Villager::LoadInScript(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755470
+bool32_t Villager::SaveScriptPos(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755580
+bool32_t Villager::LoadScriptPos(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755680
+bool32_t Villager::SaveFire(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 007556f0
+bool32_t Villager::LoadFire(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755760
+bool32_t Villager::SaveDiscipleNothingToDo(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755780
+bool32_t Villager::LoadDiscipleNothingToDo(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 007557a0
+bool32_t Villager::SaveTrader(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755810
+bool32_t Villager::LoadTrader(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755880
+bool32_t Villager::SaveInspectObject(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 007558a0
+bool32_t Villager::LoadInspectObject(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 007558c0
+bool32_t Villager::SaveReaction(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 007558d0
+bool32_t Villager::LoadReaction(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 007558e0
+bool32_t Villager::SaveClearArea(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755980
+bool32_t Villager::LoadClearArea(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755a20
+bool32_t Villager::SaveBreeder(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755a80
+bool32_t Villager::LoadBreeder(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755ae0
+bool32_t Villager::SaveForesting(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755b00
+bool32_t Villager::LoadForesting(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755b20
+bool32_t Villager::SaveFootPath(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755b50
+bool32_t Villager::LoadFootPath(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755b80
+bool32_t Villager::SaveInspectionReaction(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755c20
+bool32_t Villager::LoadInspectionReaction(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755cc0
+bool32_t Villager::SaveMagicTreeReaction(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00755d60
+bool32_t Villager::LoadMagicTreeReaction(GameOSFile& param_1)
+{
+	return 0;
+}
+
+// BW1W120 00755e00
+uint32_t Villager::SaveHideInBuilding(GameOSFile& param_1)
+{
+	return 0;
+}
+
+// BW1W120 00755ea0
+uint32_t Villager::LoadHideInBuilding(GameOSFile& param_1)
+{
+	return 0;
+}
+
+// BW1W120 00755f40
+uint32_t Villager::SaveShieldReaction(GameOSFile& param_1)
+{
+	return 0;
+}
+
+// BW1W120 00755fa0
+uint32_t Villager::LoadShieldReaction(GameOSFile& param_1)
+{
+	return 0;
+}
+
+// BW1W120 00756000
+uint32_t Villager::SetVillagerDisciple(GameThing* param_1, VILLAGER_DISCIPLE param_2, int param_3)
+{
+	return 0;
+}
+
+// BW1W120 007560e0
+uint32_t Villager::GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2)
+{
+	return 0;
+}
+
+// BW1W120 00756170
+void Villager::ShowDiscipleIcon(VILLAGER_DISCIPLE param_1) {}
+
+// BW1W120 00756230
+void Villager::DebugValidateState() {}
+
+// BW1W120 00756240
+void Villager::ForceMoveVillagerToAbode(Abode* abode) {}
+
+// BW1W120 007562c0
+void Villager::SetSkeleton(int index) {}
+
+// BW1W120 00756450
+void Villager::InsertMapObject() {}
+
+// BW1W120 00756460
+bool32_t Villager::IsReachable()
+{
+	return false;
+}
+
+// BW1W120 007564a0
+uint32_t Villager::ValidForPlaceInHand(GInterfaceStatus* param_1)
+{
+	return 0;
+}
+
+// BW1W120 007564c0
+bool32_t Villager::CanBecomeAPhysicsObject()
+{
+	return false;
+}
+
+// BW1W120 007564d0
+uint32_t Villager::AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
+                               const MapCoords* param_5, int param_6)
+{
+	return 0;
+}
+
+// BW1W120 00756520
+VILLAGER_STATES Villager::LookAtPreviousStateReactToTownEmergency()
+{
+	return VILLAGER_STATES(0);
+}
+
+// BW1W120 00756530
+void Villager::SetTown(Town* town) {}
+
+// BW1W120 00756540
+bool32_t Villager::ScriptInCrowd()
+{
+	return false;
+}
+
+// BW1W120 00756570
+bool32_t Villager::SaveLanded(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00756580
+bool32_t Villager::LoadLanded(GameOSFile& param_1)
+{
+	return false;
+}
+
+// BW1W120 00756590
+int Villager::CallIntoAnimationFunction(VILLAGER_STATES param_1)
+{
+	return 0;
+}
+
+// BW1W120 00756620
+int Villager::CallOutofAnimationFunction(VILLAGER_STATES param_1)
+{
+	return 0;
+}
+
+// BW1W120 007569a0
+void Villager::MoveToObjectValidate() {}
+
+// BW1W120 007569d0
+void Villager::MoveOnStructureValidate() {}
+
+// BW1W120 00756a00
+void Villager::ReactionValidate() {}
+
+// BW1W120 00756a50
+void Villager::SexValidate() {}
+
+// BW1W120 00756a80
+void Villager::WallhugAndReactionValidate() {}
+
+// BW1W120 00756aa0
+void Villager::ClosestObjectValidate() {}
+
+// BW1W120 00756ad0
+MapCoords Villager::GetFinalDestPos()
+{
+	return MapCoords();
+}
+
+// BW1W120 00756ae0
+uint32_t Villager::ThrowObjectFromHand(GInterfaceStatus* param_1, int param_2)
+{
+	return 0;
+}
+
+// BW1W120 00756b30
+bool32_t Villager::IsDrowning()
+{
+	return false;
+}
+
+// BW1W120 00756b40
+void Villager::SetLife(float param_1) {}
+
+// BW1W120 00756be0
+void Villager::FindChildrenAndOrphanThem() {}
+
+// BW1W120 00756c60
+bool32_t Villager::IsMovingForAnimation()
+{
+	return false;
+}
