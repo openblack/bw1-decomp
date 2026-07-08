@@ -168,7 +168,7 @@ public:
 	// BW1W120 00528020 BW1M100 100d6410 Field::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00528030 BW1M100 100d6450 Field::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 005280c0 BW1M100 100d5880 Field::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00529730 BW1M100 100d3050 Field::ProcessInInteract(GInterfaceStatus *)

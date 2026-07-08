@@ -66,7 +66,7 @@ public:
 	// BW1W120 0052a1b0 BW1M100 100da1f0 FireFly::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0052a1c0 BW1M100 100da1b0 FireFly::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0052bf10 BW1M100 100d6710 FireFly::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 

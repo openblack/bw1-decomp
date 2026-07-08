@@ -52,7 +52,7 @@ public:
 	// BW1W120 00439a80 BW1M100 100b4750 Bonfire::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 004397a0 BW1M100 100b3d40 Bonfire::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 004398a0 BW1M100 100b49b0 Bonfire::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 	// BW1W120 004397d0 BW1M100 100b3e20 Bonfire::GetInHandImmersionTexture(void)

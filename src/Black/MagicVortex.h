@@ -107,7 +107,7 @@ public:
 	// BW1W120 005fff80 BW1M100 103b4620 LandscapeVortex::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 005fff90 BW1M100 103b45d0 LandscapeVortex::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 
 	// Constructors
 

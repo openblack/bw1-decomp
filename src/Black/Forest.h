@@ -49,7 +49,7 @@ public:
 	// BW1W120 0053acc0 BW1M100 100f0830 Forest::RemoveFootpath(GFootpath *)
 	virtual uint32_t RemoveFootpath(GFootpath* param_1);
 	// BW1W120 00539a60 BW1M100 100ef4a0 Forest::IsFunctional(void)
-	virtual bool IsFunctional();
+	virtual bool32_t IsFunctional();
 	// BW1W120 00539b10 BW1M100 100ef7d0 Forest::GetDebugText(void)
 	virtual char* GetDebugText();
 	// BW1W120 0053b070 BW1M100 100ef950 Forest::Load(GameOSFile &)

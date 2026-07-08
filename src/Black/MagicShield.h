@@ -39,7 +39,7 @@ public:
 	// BW1W120 0072c340 BW1M100 10531220 MagicShield::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 0072c320 BW1M100 105312c0 MagicShield::SetDying(void)
-	virtual bool SetDying();
+	virtual bool32_t SetDying();
 	// BW1W120 0072c310 BW1M100 10531320 MagicShield::IsEffectReceiver(EffectValues *)
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0072c330 BW1M100 10531270 MagicShield::InteractsWithPhysicsObjects(void)

@@ -55,7 +55,7 @@ public:
 	// BW1W120 0072c1e0 BW1M100 10531620 MapShield::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object *)
 	virtual void ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
 	// BW1W120 0072c1d0 BW1M100 10531680 MapShield::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0072c170 BW1M100 10531740 MapShield::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0072c020 BW1M100 10534060 MapShield::SaveObject(LHOSFile &, MapCoords const &)

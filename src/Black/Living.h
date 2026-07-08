@@ -162,7 +162,7 @@ public:
 	// BW1W120 005ec0a0 BW1M100 10383210 Living::ToBeDeleted(int)
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 004172d0 BW1M100 10006820 Living::IsFunctional(void)
-	virtual bool IsFunctional();
+	virtual bool32_t IsFunctional();
 	// BW1W120 005ee960 BW1M100 1037d8d0 Living::Load(GameOSFile &)
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 005ee630 BW1M100 1037ddd0 Living::Save(GameOSFile &)
@@ -224,7 +224,7 @@ public:
 	// BW1W120 00416fa0 BW1M100 1012f760 Living::SetPoisoned(int)
 	virtual void SetPoisoned(int param_1);
 	// BW1W120 005ec390 BW1M100 10382b30 Living::SetDying(void)
-	virtual bool SetDying();
+	virtual bool32_t SetDying();
 	// BW1W120 005eccb0 BW1M100 10381220 Living::InterfaceSetInMagicHand(GInterfaceStatus *)
 	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 005ed590 BW1M100 1037ffb0 Living::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
@@ -242,9 +242,9 @@ public:
 	// BW1W120 005ed3e0 BW1M100 10380210 Living::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 005ed4f0 BW1M100 103801d0 Living::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 005ed370 BW1M100 103803b0 Living::HasSunk(void)
-	virtual bool HasSunk();
+	virtual bool32_t HasSunk();
 	// BW1W120 005edba0 BW1M100 1037f690 Living::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 005ee560 BW1M100 1037e320 Living::RemoveFromGame(void)
@@ -262,9 +262,9 @@ public:
 	// BW1W120 005ecdb0 BW1M100 10380b40 Living::MoveInFlock(void)
 	virtual bool MoveInFlock();
 	// BW1W120 005f2630 BW1M100 10385ed0 Living::ArrivesAtFoodReaction(void)
-	virtual bool ArrivesAtFoodReaction();
+	virtual bool32_t ArrivesAtFoodReaction();
 	// BW1W120 00474940 BW1M100 103838c0 Living::DecideWhatToDo(void)
-	virtual bool DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo();
 	// BW1W120 005ecaf0 BW1M100 1004c540 Living::GetAge(void)
 	virtual uint32_t GetAge();
 	// BW1W120 005f26d0 BW1M100 10385ce0 Living::LookAtFlyingObjectReaction(void)
@@ -340,9 +340,9 @@ public:
 	// BW1W120 00417080 BW1M100 1012fa20 Living::IsInterestedInWoodObject(Object *)
 	virtual bool IsInterestedInWoodObject(Object* param_1);
 	// BW1W120 005f11f0 BW1M100 10019a90 Living::IsAvailableForReaction(REACTION)
-	virtual bool IsAvailableForReaction(REACTION param_1);
+	virtual bool32_t IsAvailableForReaction(REACTION param_1);
 	// BW1W120 00417090 BW1M100 1012fa70 Living::IsAvailableForBeliefButNotReaction(REACTION)
-	virtual bool IsAvailableForBeliefButNotReaction(REACTION param_1);
+	virtual bool32_t IsAvailableForBeliefButNotReaction(REACTION param_1);
 	// BW1W120 004170a0 BW1M100 1012fac0 Living::UpdateHowImpressed(Reaction *, int)
 	virtual void UpdateHowImpressed(Reaction* param_1, int param_2);
 	// BW1W120 005f0f30 BW1M100 inlined Living::AddReaction(Reaction *, VILLAGER_STATES)

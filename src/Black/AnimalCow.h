@@ -28,7 +28,7 @@ public:
 	// BW1W120 0041d110 BW1M100 1012e4c0 Cow::IsCow(Creature *)
 	virtual uint32_t IsCow(Creature* param_1);
 	// BW1W120 0041d1b0 BW1M100 1000e870 Cow::DecideWhatToDo(void)
-	virtual bool DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo();
 };
 
 #endif /* BW1_DECOMP_ANIMAL_COW_INCLUDED_H */

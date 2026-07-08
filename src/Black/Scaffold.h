@@ -117,7 +117,7 @@ public:
 	// BW1W120 006ea940 BW1M100 1013f890 Scaffold::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 006ea910 BW1M100 1013f8e0 Scaffold::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 006e8570 BW1M100 101436c0 Scaffold::ProcessInHand(void)
 	virtual bool ProcessInHand();
 	// BW1W120 006eaf30 BW1M100 1013e710 Scaffold::SaveObject(LHOSFile &, MapCoords const &)

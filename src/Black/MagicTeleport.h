@@ -75,7 +75,7 @@ public:
 	// BW1W120 005fcde0 BW1M100 103af230 MagicTeleport::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 005fcdf0 BW1M100 103af1e0 MagicTeleport::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 005fc4a0 BW1M100 103b04c0 MagicTeleport::IsSolidToNewAbode(void)
 	virtual uint32_t IsSolidToNewAbode();
 };

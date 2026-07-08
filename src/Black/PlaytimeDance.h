@@ -23,7 +23,7 @@ public:
 	// BW1W120 0066c3e0 BW1M100 inlined PlaytimeElement::GetTown(void)
 	virtual Town* GetTown();
 	// BW1W120 0066c810 BW1M100 inlined PlaytimeElement::IsFunctional(void)
-	virtual bool IsFunctional();
+	virtual bool32_t IsFunctional();
 };
 
 #endif /* BW1_DECOMP_PLAYTIME_DANCE_INCLUDED_H */

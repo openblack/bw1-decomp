@@ -182,7 +182,7 @@ public:
 	// BW1W120 00550780 BW1M100 10560930 GGame::Dump(void)
 	virtual void Dump();
 	// BW1W120 0054b9a0 BW1M100 1009d100 GGame::IsAvailable(void)
-	virtual bool IsAvailable();
+	virtual bool32_t IsAvailable();
 	// BW1W120 0054b9c0 BW1M100 10496160 GGame::GetDebugText(void)
 	virtual char* GetDebugText();
 	// BW1W120 00554830 BW1M100 10354cc0 GGame::Load(GameOSFile &)

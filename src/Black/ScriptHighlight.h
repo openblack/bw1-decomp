@@ -88,7 +88,7 @@ public:
 	// BW1W120 00709820 BW1M100 104fa5f0 ScriptHighlight::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00709810 BW1M100 104fa5a0 ScriptHighlight::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0070ae40 BW1M100 104fa770 ScriptHighlight::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));

@@ -140,7 +140,7 @@ public:
 	// BW1W120 0052f1c0 BW1M100 100de760 MultiMapFixed::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 0052ef70 BW1M100 1005fb60 MultiMapFixed::IsFunctional(void)
-	virtual bool IsFunctional();
+	virtual bool32_t IsFunctional();
 	// BW1W120 0052f310 BW1M100 100de310 MultiMapFixed::Load(GameOSFile &)
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 0052f250 BW1M100 100de470 MultiMapFixed::Save(GameOSFile &)

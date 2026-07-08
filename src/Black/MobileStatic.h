@@ -42,7 +42,7 @@ public:
 	// BW1W120 006088b0 BW1M100 103c0890 MobileStatic::GetPlayer(void)
 	virtual GPlayer* GetPlayer();
 	// BW1W120 004396a0 BW1M100 100b4460 MobileStatic::IsFunctional(void)
-	virtual bool IsFunctional();
+	virtual bool32_t IsFunctional();
 	// BW1W120 0055d750 BW1M100 103b9760 MobileStatic::GetDebugText(void)
 	virtual char* GetDebugText();
 	// BW1W120 00608590 BW1M100 103c1060 MobileStatic::Load(GameOSFile &)
@@ -143,7 +143,7 @@ public:
 	// BW1W120 00608fc0 BW1M100 103bf8c0 MobileStatic::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00609320 BW1M100 103bee30 MobileStatic::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00609010 BW1M100 103bf860 MobileStatic::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00608ac0 BW1M100 103c0450 MobileStatic::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))

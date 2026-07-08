@@ -39,7 +39,7 @@ public:
 	// BW1W120 006de3f0 BW1M100 1011eed0 HanoiBlock::InterfaceSetInMagicHand(GInterfaceStatus *)
 	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 00561800 BW1M100 1011eca0 HanoiBlock::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 005617f0 BW1M100 1011ec50 HanoiBlock::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 	// BW1W120 00561820 BW1M100 1011ed30 HanoiBlock::GetInHandImmersionTexture(void)

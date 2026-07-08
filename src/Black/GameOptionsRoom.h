@@ -20,7 +20,7 @@ public:
 	// Override methods
 
 	// BW1W120 0078d8f0 BW1M100 102ffdb0 GameOptionsRoom::IsAvailable(void)
-	virtual bool IsAvailable();
+	virtual bool32_t IsAvailable();
 	// BW1W120 0079a230 BW1M100 inlined GameOptionsRoom::DrawAdditional(bool)
 	virtual void DrawAdditional(bool param_1);
 	// BW1W120 00799f80 BW1M100 inlined GameOptionsRoom::PreDraw(void)

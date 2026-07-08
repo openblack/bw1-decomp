@@ -66,7 +66,7 @@ public:
 	// BW1W120 0041eb40 BW1M100 101751d0 SpellDove::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041f5c0 BW1M100 10172e20 SpellDove::SetDying(void)
-	virtual bool SetDying();
+	virtual bool32_t SetDying();
 	// BW1W120 0041bde0 BW1M100 10170a20 SpellDove::StandAnimation(void)
 	virtual uint32_t StandAnimation();
 	// BW1W120 0041f620 BW1M100 10172de0 SpellDove::GetNumTurnsToDieOver(void)

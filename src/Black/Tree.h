@@ -161,7 +161,7 @@ public:
 	// BW1W120 0074b6b0 BW1M100 10157840 Tree::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0074b630 BW1M100 10157ad0 Tree::CanBecomeAPhysicsObject(void)
-	virtual bool CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0074c0e0 BW1M100 10156590 Tree::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0074a180 BW1M100 10158cd0 Tree::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))

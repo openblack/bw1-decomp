@@ -133,7 +133,7 @@ public:
 	// BW1W120 0041a3f0 BW1M100 1000bfc0 Animal::SetNewWander(MapCoords const &, long, long)
 	virtual void SetNewWander(const MapCoords* param_1, int param_2, int param_3);
 	// BW1W120 0041acc0 BW1M100 10166b90 Animal::DecideWhatToDo(void)
-	virtual bool DecideWhatToDo();
+	virtual bool32_t DecideWhatToDo();
 	// BW1W120 0041a2b0 BW1M100 1007c6d0 Animal::SetStateSpeed(void)
 	virtual void SetStateSpeed();
 	// BW1W120 0041b430 BW1M100 inlined Animal::IsFinalState(VILLAGER_STATES)
