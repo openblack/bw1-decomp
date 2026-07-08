@@ -228,15 +228,15 @@ public:
 	// BW1W120 007560e0 BW1M100 10565860 Villager::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
 	// BW1W120 0074fc70 BW1M100 10571530 Villager::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0055c990 BW1M100 10147d30 Villager::IsABeliever(void)
 	virtual bool32_t IsABeliever();
 	// BW1W120 0076a4c0 BW1M100 1059a990 Villager::SetDying(void)
 	virtual bool32_t SetDying();
-	// BW1W120 00753040 BW1M100 inlined Villager::IsTouching_2( const(MapCoords *))
-	virtual bool IsTouching_2(MapCoords* param_1);
-	// BW1W120 0055c9a0 BW1M100 inlined Villager::IsTouching_3( const(Object *, float))
-	virtual bool IsTouching_3(Object* param_1, float param_2);
+	// BW1W120 00753040 BW1M100 inlined Villager::IsTouching(MapCoords *)
+	virtual bool IsTouching(MapCoords* param_1) const;
+	// BW1W120 0055c9a0 BW1M100 inlined Villager::IsTouching(Object *, float)
+	virtual bool IsTouching(Object* param_1, float param_2) const;
 	// BW1W120 007564a0 BW1M100 105651b0 Villager::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00753080 BW1M100 1056a940 Villager::InterfaceSetInMagicHand(GInterfaceStatus *)
@@ -334,9 +334,9 @@ public:
 	// BW1W120 00752320 BW1M100 inlined Villager::CallExitStateFunction(VILLAGER_STATES)
 	virtual uint32_t CallExitStateFunction(VILLAGER_STATES param_1);
 	// BW1W120 00752440 BW1M100 1007b1b0 Villager::CallEntryStateFunction(unsigned char, unsigned char)
-	virtual uint32_t CallEntryStateFunction__UcUc(VILLAGER_STATES current, VILLAGER_STATES destination);
+	virtual uint32_t CallEntryStateFunction(VILLAGER_STATES current, VILLAGER_STATES destination);
 	// BW1W120 007523d0 BW1M100 10075c50 Villager::CallEntryStateFunction(unsigned char)
-	virtual uint32_t CallEntryStateFunction__Uc(VILLAGER_STATES state);
+	virtual uint32_t CallEntryStateFunction(VILLAGER_STATES state);
 	// BW1W120 007527a0 BW1M100 inlined Villager::ExitReaction(VILLAGER_STATES)
 	virtual int ExitReaction(VILLAGER_STATES param_1);
 	// BW1W120 0076b000 BW1M100 inlined Villager::ExitInHand(VILLAGER_STATES)
@@ -347,12 +347,12 @@ public:
 	virtual void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
 	// BW1W120 0076afe0 BW1M100 inlined Villager::EnterInHand(VILLAGER_STATES, VILLAGER_STATES)
 	virtual uint32_t EnterInHand(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
-	// BW1W120 0055c9f0 BW1M100 inlined Villager::IsScriptState( const(VILLAGER_STATES))
-	virtual bool IsScriptState(VILLAGER_STATES param_1);
-	// BW1W120 0055ca10 BW1M100 inlined Villager::IsScriptInterruptableState( const(VILLAGER_STATES))
-	virtual bool IsScriptInterruptableState(VILLAGER_STATES param_1);
-	// BW1W120 00752530 BW1M100 inlined Villager::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
-	virtual bool IsStateExitFunctionSameAs(VILLAGER_STATES param_1);
+	// BW1W120 0055c9f0 BW1M100 inlined Villager::IsScriptState(VILLAGER_STATES)
+	virtual bool IsScriptState(VILLAGER_STATES param_1) const;
+	// BW1W120 0055ca10 BW1M100 inlined Villager::IsScriptInterruptableState(VILLAGER_STATES) const
+	virtual bool IsScriptInterruptableState(VILLAGER_STATES param_1) const;
+	// BW1W120 00752530 BW1M100 inlined Villager::IsStateExitFunctionSameAs(VILLAGER_STATES) const
+	virtual bool IsStateExitFunctionSameAs(VILLAGER_STATES param_1) const;
 	// BW1W120 007528b0 BW1M100 1056b830 Villager::DebugShowTime(unsigned long, unsigned char, unsigned char)
 	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 00764df0 BW1M100 10590f30 Villager::IsInterestedInFoodObject(Object *)
@@ -479,7 +479,7 @@ public:
 	// BW1W120 0055c970 BW1M100 10064ef0 Villager::IsChild(void)
 	virtual bool IsChild();
 	// BW1W120 00751dd0 BW1M100 1004ec00 Villager::GetFinalState(void) const
-	virtual VILLAGER_STATES GetFinalState();
+	virtual VILLAGER_STATES GetFinalState() const;
 	// BW1W120 00751510 BW1M100 1056ec00 Villager::RemoveFromDance(int)
 	virtual void RemoveFromDance(int param_1);
 	// BW1W120 00759b80 BW1M100 10577060 Villager::SetStateAfterFinishingDance(void)
@@ -514,7 +514,7 @@ public:
 	// BW1W120 inlined BW1M100 1061e41c Villager::GetStateTable(void)
 	static Living::StateTableEntry& GetStateTable(VILLAGER_STATES state);
 	// BW1W120 0074fbe0 BW1M100 10571750 Villager::Create(MapCoords const &, GVillagerInfo const *, unsigned long, int)
-	static Villager* Create(MapCoords* coords, GVillagerInfo* info, uint32_t age, bool skeleton);
+	static Villager* Create(const MapCoords& coords, const GVillagerInfo* info, uint32_t age, bool skeleton);
 
 	// Constructors
 
@@ -566,7 +566,7 @@ public:
 	// BW1W120 00750bb0 BW1M100 1056f840 Villager::DebugText(int)
 	void DebugText(int param_1);
 	// BW1W120 00750de0 BW1M100 1056f7b0 Villager::SetAbode(Abode*)
-	void SetAbode(Town* town);
+	void SetAbode(Abode* abode);
 	// BW1W120 00750e10 BW1M100 1056f660 Villager::GetRandomLookAhead(MapCoords *, float)
 	bool GetRandomLookAhead(MapCoords* param_1, float param_2);
 	// BW1W120 00750ed0 BW1M100 10068820 Villager::SetSpeed__8VillagerFli(int, int)
@@ -586,7 +586,7 @@ public:
 	// BW1W120 007512a0 BW1M100 1056f160 Villager::IsEnoughFoodInStoragePitForDinner(void)
 	bool IsEnoughFoodInStoragePitForDinner();
 	// BW1W120 007512e0 BW1M100 1056efc0 Villager::FindPotAroundToGoto(RESOURCE_TYPE, unsigned long &, int)
-	Pot* FindPotAroundToGoto(RESOURCE_TYPE param_1, unsigned long* param_2, int param_3);
+	Pot* FindPotAroundToGoto(RESOURCE_TYPE param_1, unsigned long& param_2, int param_3);
 	// BW1W120 007513f0 BW1M100 1056ee50 Villager::PickupResource(RESOURCE_TYPE, short, unsigned char)
 	void PickupResource(RESOURCE_TYPE param_1, short param_2, unsigned char param_3);
 	// BW1W120 00751490 BW1M100 1009cfd0 Villager::PickupFood(short)
@@ -600,7 +600,7 @@ public:
 	// BW1W120 00751520 BW1M100 1056eb50 Villager::IsRandomlyLazy(void)
 	bool IsRandomlyLazy();
 	// BW1W120 00751570 BW1M100 100007e0 Villager::GetResourceHeld(RESOURCE_TYPE &)
-	bool GetResourceHeld(RESOURCE_TYPE* param_1);
+	bool GetResourceHeld(RESOURCE_TYPE& param_1);
 	// BW1W120 007516e0 BW1M100 10003bb0 Villager::CheckTakeResourcesToStoragePit(void)
 	bool CheckTakeResourcesToStoragePit();
 	// BW1W120 00751720 BW1M100 1056e1f0 Villager::DiscipleDecideWhatToDo(void)
@@ -646,7 +646,7 @@ public:
 	// BW1W120 007522c0 BW1M100 1056c7a0 Villager::IsAvailableToBeSummonedByCreature(void)
 	bool32_t IsAvailableToBeSummonedByCreature();
 	// BW1W120 007524d0 BW1M100 1009d4c0 Villager::IsStateEntryFunctionSameAs(unsigned long, unsigned long) const
-	bool IsStateEntryFunctionSameAs(unsigned long param_1, unsigned long param_2);
+	bool IsStateEntryFunctionSameAs(unsigned long param_1, unsigned long param_2) const;
 	// BW1W120 007525b0 BW1M100 1056c220 Villager::IsReactiveState(unsigned long)
 	bool IsReactiveState(unsigned long param_1);
 	// BW1W120 00752600 BW1M100 1001ff70 Villager::IsHungry(void)
@@ -690,9 +690,9 @@ public:
 	// BW1W120 00753b50 BW1M100 10099cf0 Villager::SetupNothingToDo(void)
 	uint32_t SetupNothingToDo();
 	// BW1W120 00753c70 BW1M100 1000e4e0 Villager::GetChillOutPos(MapCoords &)
-	uint32_t GetChillOutPos(MapCoords* coords);
+	uint32_t GetChillOutPos(MapCoords& coords);
 	// BW1W120 00753d50 BW1M100 100096d0 Villager::GetPosOutsideMyHouse(MapCoords &)
-	int GetPosOutsideMyHouse(MapCoords* coords);
+	int GetPosOutsideMyHouse(MapCoords& coords);
 	// BW1W120 00753dd0 BW1M100 10569aa0 Villager::VillagerCreated(void)
 	uint32_t VillagerCreated();
 	// BW1W120 00753e20 BW1M100 10569870 Villager::GetResourceDropoffPos(RESOURCE_TYPE)
@@ -706,113 +706,113 @@ public:
 	// BW1W120 00754180 BW1M100 10569180 Villager::FindDisciplePrayerPos(MapCoords *)
 	bool32_t FindDisciplePrayerPos(MapCoords* param_1);
 	// BW1W120 007548a0 BW1M100 10568810 Villager::CallSaveStateFunction(GameOSFile &, STATE_TYPE)
-	bool32_t CallSaveStateFunction(GameOSFile* param_1, STATE_TYPE param_2);
+	bool32_t CallSaveStateFunction(GameOSFile& param_1, STATE_TYPE param_2);
 	// BW1W120 00754910 BW1M100 10568720 Villager::CallLoadStateFunction(GameOSFile &, STATE_TYPE)
-	bool32_t CallLoadStateFunction(GameOSFile* param_1, STATE_TYPE param_2);
+	bool32_t CallLoadStateFunction(GameOSFile& param_1, STATE_TYPE param_2);
 	// BW1W120 00754980 BW1M100 10568670 Villager::SaveStateFunction(GameOSFile &)
-	bool32_t SaveStateFunction(GameOSFile* param_1);
+	bool32_t SaveStateFunction(GameOSFile& param_1);
 	// BW1W120 007549b0 BW1M100 105685b0 Villager::LoadStateFunction(GameOSFile &)
-	bool32_t LoadStateFunction(GameOSFile* param_1);
+	bool32_t LoadStateFunction(GameOSFile& param_1);
 	// BW1W120 00754a00 BW1M100 105684d0 Villager::SaveBuilding(GameOSFile &)
-	bool32_t SaveBuilding(GameOSFile* param_1);
+	bool32_t SaveBuilding(GameOSFile& param_1);
 	// BW1W120 00754a60 BW1M100 10568400 Villager::LoadBuilding(GameOSFile &)
-	bool32_t LoadBuilding(GameOSFile* param_1);
+	bool32_t LoadBuilding(GameOSFile& param_1);
 	// BW1W120 00754ac0 BW1M100 105682e0 Villager::SaveDance(GameOSFile &)
-	bool32_t SaveDance(GameOSFile* param_1);
+	bool32_t SaveDance(GameOSFile& param_1);
 	// BW1W120 00754b60 BW1M100 105681d0 Villager::LoadDance(GameOSFile &)
-	bool32_t LoadDance(GameOSFile* param_1);
+	bool32_t LoadDance(GameOSFile& param_1);
 	// BW1W120 00754c00 BW1M100 10568100 Villager::SaveWorship(GameOSFile &)
-	bool32_t SaveWorship(GameOSFile* param_1);
+	bool32_t SaveWorship(GameOSFile& param_1);
 	// BW1W120 00754c60 BW1M100 10568030 Villager::LoadWorship(GameOSFile &)
-	bool32_t LoadWorship(GameOSFile* param_1);
+	bool32_t LoadWorship(GameOSFile& param_1);
 	// BW1W120 00754cc0 BW1M100 10567f70 Villager::SaveDead(GameOSFile &)
-	bool32_t SaveDead(GameOSFile* param_1);
+	bool32_t SaveDead(GameOSFile& param_1);
 	// BW1W120 00754d20 BW1M100 10567eb0 Villager::LoadDead(GameOSFile &)
-	bool32_t LoadDead(GameOSFile* param_1);
+	bool32_t LoadDead(GameOSFile& param_1);
 	// BW1W120 00754d80 BW1M100 10567de0 Villager::SaveInHand(GameOSFile &)
-	bool32_t SaveInHand(GameOSFile* param_1);
+	bool32_t SaveInHand(GameOSFile& param_1);
 	// BW1W120 00754de0 BW1M100 10567d10 Villager::LoadInHand(GameOSFile &)
-	bool32_t LoadInHand(GameOSFile* param_1);
+	bool32_t LoadInHand(GameOSFile& param_1);
 	// BW1W120 00754e40 BW1M100 10567ca0 Villager::SaveFishing(GameOSFile &)
-	bool32_t SaveFishing(GameOSFile* param_1);
+	bool32_t SaveFishing(GameOSFile& param_1);
 	// BW1W120 00754e60 BW1M100 10567c30 Villager::LoadFishing(GameOSFile &)
-	bool32_t LoadFishing(GameOSFile* param_1);
+	bool32_t LoadFishing(GameOSFile& param_1);
 	// BW1W120 00754e80 BW1M100 10567b50 Villager::SaveFarming(GameOSFile &)
-	bool32_t SaveFarming(GameOSFile* param_1);
+	bool32_t SaveFarming(GameOSFile& param_1);
 	// BW1W120 00754ef0 BW1M100 10567a80 Villager::LoadFarming(GameOSFile &)
-	bool32_t LoadFarming(GameOSFile* param_1);
+	bool32_t LoadFarming(GameOSFile& param_1);
 	// BW1W120 00754f60 BW1M100 10567900 Villager::SaveFootball(GameOSFile &)
-	bool32_t SaveFootball(GameOSFile* param_1);
+	bool32_t SaveFootball(GameOSFile& param_1);
 	// BW1W120 00755040 BW1M100 105677a0 Villager::LoadFootball(GameOSFile &)
-	bool32_t LoadFootball(GameOSFile* param_1);
+	bool32_t LoadFootball(GameOSFile& param_1);
 	// BW1W120 00755120 BW1M100 10567680 Villager::SaveShepherd(GameOSFile &)
-	bool32_t SaveShepherd(GameOSFile* param_1);
+	bool32_t SaveShepherd(GameOSFile& param_1);
 	// BW1W120 007551c0 BW1M100 10567570 Villager::LoadShepherd(GameOSFile &)
-	bool32_t LoadShepherd(GameOSFile* param_1);
+	bool32_t LoadShepherd(GameOSFile& param_1);
 	// BW1W120 00755260 BW1M100 105673b0 Villager::SaveInScript(GameOSFile &)
-	bool32_t SaveInScript(GameOSFile* param_1);
+	bool32_t SaveInScript(GameOSFile& param_1);
 	// BW1W120 00755370 BW1M100 10567210 Villager::LoadInScript(GameOSFile &)
-	bool32_t LoadInScript(GameOSFile* param_1);
+	bool32_t LoadInScript(GameOSFile& param_1);
 	// BW1W120 00755470 BW1M100 10567050 Villager::SaveScriptPos(GameOSFile &)
-	bool32_t SaveScriptPos(GameOSFile* param_1);
+	bool32_t SaveScriptPos(GameOSFile& param_1);
 	// BW1W120 00755580 BW1M100 10566eb0 Villager::LoadScriptPos(GameOSFile &)
-	bool32_t LoadScriptPos(GameOSFile* param_1);
+	bool32_t LoadScriptPos(GameOSFile& param_1);
 	// BW1W120 00755680 BW1M100 10566dd0 Villager::SaveFire(GameOSFile &)
-	bool32_t SaveFire(GameOSFile* param_1);
+	bool32_t SaveFire(GameOSFile& param_1);
 	// BW1W120 007556f0 BW1M100 10566d00 Villager::LoadFire(GameOSFile &)
-	bool32_t LoadFire(GameOSFile* param_1);
+	bool32_t LoadFire(GameOSFile& param_1);
 	// BW1W120 00755760 BW1M100 10566c80 Villager::SaveDiscipleNothingToDo(GameOSFile &)
-	bool32_t SaveDiscipleNothingToDo(GameOSFile* param_1);
+	bool32_t SaveDiscipleNothingToDo(GameOSFile& param_1);
 	// BW1W120 00755780 BW1M100 10566c00 Villager::LoadDiscipleNothingToDo(GameOSFile &)
-	bool32_t LoadDiscipleNothingToDo(GameOSFile* param_1);
+	bool32_t LoadDiscipleNothingToDo(GameOSFile& param_1);
 	// BW1W120 007557a0 BW1M100 10566b20 Villager::SaveTrader(GameOSFile &)
-	bool32_t SaveTrader(GameOSFile* param_1);
+	bool32_t SaveTrader(GameOSFile& param_1);
 	// BW1W120 00755810 BW1M100 10566a50 Villager::LoadTrader(GameOSFile &)
-	bool32_t LoadTrader(GameOSFile* param_1);
+	bool32_t LoadTrader(GameOSFile& param_1);
 	// BW1W120 00755880 BW1M100 105669e0 Villager::SaveInspectObject(GameOSFile &)
-	bool32_t SaveInspectObject(GameOSFile* param_1);
+	bool32_t SaveInspectObject(GameOSFile& param_1);
 	// BW1W120 007558a0 BW1M100 10566970 Villager::LoadInspectObject(GameOSFile &)
-	bool32_t LoadInspectObject(GameOSFile* param_1);
+	bool32_t LoadInspectObject(GameOSFile& param_1);
 	// BW1W120 007558c0 BW1M100 10566930 Villager::SaveReaction(GameOSFile &)
-	bool32_t SaveReaction(GameOSFile* param_1);
+	bool32_t SaveReaction(GameOSFile& param_1);
 	// BW1W120 007558d0 BW1M100 105668f0 Villager::LoadReaction(GameOSFile &)
-	bool32_t LoadReaction(GameOSFile* param_1);
+	bool32_t LoadReaction(GameOSFile& param_1);
 	// BW1W120 007558e0 BW1M100 105667d0 Villager::SaveClearArea(GameOSFile &)
-	bool32_t SaveClearArea(GameOSFile* param_1);
+	bool32_t SaveClearArea(GameOSFile& param_1);
 	// BW1W120 00755980 BW1M100 105666c0 Villager::LoadClearArea(GameOSFile &)
-	bool32_t LoadClearArea(GameOSFile* param_1);
+	bool32_t LoadClearArea(GameOSFile& param_1);
 	// BW1W120 00755a20 BW1M100 105665e0 Villager::SaveBreeder(GameOSFile &)
-	bool32_t SaveBreeder(GameOSFile* param_1);
+	bool32_t SaveBreeder(GameOSFile& param_1);
 	// BW1W120 00755a80 BW1M100 10566510 Villager::LoadBreeder(GameOSFile &)
-	bool32_t LoadBreeder(GameOSFile* param_1);
+	bool32_t LoadBreeder(GameOSFile& param_1);
 	// BW1W120 00755ae0 BW1M100 105664a0 Villager::SaveForesting(GameOSFile &)
-	bool32_t SaveForesting(GameOSFile* param_1);
+	bool32_t SaveForesting(GameOSFile& param_1);
 	// BW1W120 00755b00 BW1M100 10566430 Villager::LoadForesting(GameOSFile &)
-	bool32_t LoadForesting(GameOSFile* param_1);
+	bool32_t LoadForesting(GameOSFile& param_1);
 	// BW1W120 00755b20 BW1M100 105663a0 Villager::SaveFootPath(GameOSFile &)
-	bool32_t SaveFootPath(GameOSFile* param_1);
+	bool32_t SaveFootPath(GameOSFile& param_1);
 	// BW1W120 00755b50 BW1M100 10566310 Villager::LoadFootPath(GameOSFile &)
-	bool32_t LoadFootPath(GameOSFile* param_1);
+	bool32_t LoadFootPath(GameOSFile& param_1);
 	// BW1W120 00755b80 BW1M100 105661e0 Villager::SaveInspectionReaction(GameOSFile &)
-	bool32_t SaveInspectionReaction(GameOSFile* param_1);
+	bool32_t SaveInspectionReaction(GameOSFile& param_1);
 	// BW1W120 00755c20 BW1M100 105660c0 Villager::LoadInspectionReaction(GameOSFile &)
-	bool32_t LoadInspectionReaction(GameOSFile* param_1);
+	bool32_t LoadInspectionReaction(GameOSFile& param_1);
 	// BW1W120 00755cc0 BW1M100 10565f90 Villager::SaveMagicTreeReaction(GameOSFile &)
-	bool32_t SaveMagicTreeReaction(GameOSFile* param_1);
+	bool32_t SaveMagicTreeReaction(GameOSFile& param_1);
 	// BW1W120 00755d60 BW1M100 10565e70 Villager::LoadMagicTreeReaction(GameOSFile &)
-	uint32_t LoadMagicTreeReaction(GameOSFile* param_1);
+	uint32_t LoadMagicTreeReaction(GameOSFile& param_1);
 	// BW1W120 00755e00 BW1M100 10565d40 Villager::SaveHideInBuilding(GameOSFile &)
-	uint32_t SaveHideInBuilding(GameOSFile* param_1);
+	uint32_t SaveHideInBuilding(GameOSFile& param_1);
 	// BW1W120 00755ea0 BW1M100 10565c20 Villager::LoadHideInBuilding(GameOSFile &)
-	uint32_t LoadHideInBuilding(GameOSFile* param_1);
+	uint32_t LoadHideInBuilding(GameOSFile& param_1);
 	// BW1W120 00755f40 BW1M100 10565b50 Villager::SaveShieldReaction(GameOSFile &)
-	uint32_t SaveShieldReaction(GameOSFile* param_1);
+	uint32_t SaveShieldReaction(GameOSFile& param_1);
 	// BW1W120 00755fa0 BW1M100 10565a80 Villager::LoadShieldReaction(GameOSFile &)
-	uint32_t LoadShieldReaction(GameOSFile* param_1);
+	uint32_t LoadShieldReaction(GameOSFile& param_1);
 	// BW1W120 00756000 BW1M100 1000a990 Villager::SetVillagerDisciple(GameThing *, VILLAGER_DISCIPLE, int)
 	uint32_t SetVillagerDisciple(GameThing* param_1, VILLAGER_DISCIPLE param_2, int param_3);
 	// BW1W120 00756170 BW1M100 10565770 Villager::ShowDiscipleIcon(VILLAGER_DISCIPLE)
-	uint32_t ShowDiscipleIcon(VILLAGER_DISCIPLE param_1);
+	void ShowDiscipleIcon(VILLAGER_DISCIPLE param_1);
 	// BW1W120 00756230 BW1M100 10565730 Villager::DebugValidateState(void)
 	void DebugValidateState();
 	// BW1W120 00756240 BW1M100 105655e0 Villager::ForceMoveVillagerToAbode(Abode*)
@@ -824,9 +824,9 @@ public:
 	// BW1W120 00756540 BW1M100 10564f50 Villager::ScriptInCrowd(void)
 	bool32_t ScriptInCrowd();
 	// BW1W120 00756570 BW1M100 10564f10 Villager::SaveLanded(GameOSFile &)
-	bool32_t SaveLanded(GameOSFile* param_1);
+	bool32_t SaveLanded(GameOSFile& param_1);
 	// BW1W120 00756580 BW1M100 10564ed0 Villager::LoadLanded(GameOSFile &)
-	bool32_t LoadLanded(GameOSFile* param_1);
+	bool32_t LoadLanded(GameOSFile& param_1);
 	// BW1W120 007569a0 BW1M100 10564420 Villager::MoveToObjectValidate(void)
 	void MoveToObjectValidate();
 	// BW1W120 007569d0 BW1M100 10564390 Villager::MoveOnStructureValidate(void)
@@ -1436,7 +1436,7 @@ public:
 	// BW1W120 00763280 BW1M100 1058bbe0 Villager::ExitFootball(unsigned char)
 	bool32_t ExitFootball(unsigned char param_1);
 	// BW1W120 00763800 BW1M100 1001a3e0 Villager::SetupMoveToPos(MapCoords const &, VILLAGER_STATES)
-	bool32_t SetupMoveToPos(const MapCoords* param_1, VILLAGER_STATES param_2);
+	bool32_t SetupMoveToPos(const MapCoords& param_1, VILLAGER_STATES param_2);
 	// BW1W120 00763b40 BW1M100 105935e0 Villager::FleeingFromPredatorReaction(void)
 	bool32_t FleeingFromPredatorReaction();
 	// BW1W120 00763cb0 BW1M100 10593430 Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos *)
@@ -1444,7 +1444,7 @@ public:
 	// BW1W120 00763d90 BW1M100 105931e0 Villager::GoAndHideInNearbyBuilding(void)
 	bool32_t GoAndHideInNearbyBuilding();
 	// BW1W120 00763f00 BW1M100 105930c0 Villager::GetAbodeToHideInAtPos(MapCoords const &)
-	Abode* GetAbodeToHideInAtPos(const MapCoords* param_1);
+	Abode* GetAbodeToHideInAtPos(const MapCoords& param_1);
 	// BW1W120 00763f80 BW1M100 10592f10 Villager::LookToSeeIfItIsSafe(void)
 	bool32_t LookToSeeIfItIsSafe();
 	// BW1W120 00764410 BW1M100 105924a0 Villager::PerformInspectionReaction(void)
@@ -1645,7 +1645,7 @@ public:
 	uint32_t AtStructureRemoveResource(MultiMapFixed* param_1, RESOURCE_TYPE param_2, unsigned long param_3,
 	                                   bool* param_4);
 	// BW1W120 0076a3b0 BW1M100 100094e0 Villager::AtStructureAddResource(MultiMapFixed *, RESOURCE_TYPE, unsigned long &, bool)
-	uint32_t AtStructureAddResource(MultiMapFixed* param_1, RESOURCE_TYPE param_2, unsigned long* param_3,
+	uint32_t AtStructureAddResource(MultiMapFixed* param_1, RESOURCE_TYPE param_2, unsigned long& param_3,
 	                                bool param_4);
 	// BW1W120 0076a780 BW1M100 1059a490 Villager::Drowning(void)
 	bool32_t Drowning();
@@ -1666,7 +1666,7 @@ public:
 	// BW1W120 0076ace0 BW1M100 10599b50 Villager::EnterSex(unsigned char, unsigned char)
 	bool32_t EnterSex(unsigned char param_1, unsigned char param_2);
 	// BW1W120 0076acf0 BW1M100 10599a60 Villager::SetupWander(JustWholeMapXZ &, VILLAGER_STATES)
-	bool32_t SetupWander(JustWholeMapXZ* param_1, VILLAGER_STATES param_2);
+	bool32_t SetupWander(JustWholeMapXZ& param_1, VILLAGER_STATES param_2);
 	// BW1W120 0076ad80 BW1M100 10599960 Villager::ExitSex(unsigned char)
 	bool32_t ExitSex(unsigned char param_1);
 	// BW1W120 0076b030 BW1M100 1000ab40 Villager::IsInACreaturesHand(void)
@@ -1678,7 +1678,7 @@ public:
 	// BW1W120 0076b0b0 BW1M100 1000e650 Villager::PauseForASecond(void)
 	bool32_t PauseForASecond();
 	// BW1W120 0076b0d0 BW1M100 105993e0 Villager::SetupPanicReaction(Reaction *, MapCoords &)
-	bool32_t SetupPanicReaction(Reaction* param_1, MapCoords* param_2);
+	bool32_t SetupPanicReaction(Reaction* param_1, MapCoords& param_2);
 	// BW1W120 0076b1c0 BW1M100 10599350 Villager::PanicReaction(void)
 	bool32_t PanicReaction();
 	// BW1W120 0076b200 BW1M100 10599180 Villager::GotoCongregateInTownAfterEmergency(void)
