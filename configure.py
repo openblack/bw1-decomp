@@ -1268,6 +1268,8 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\mbtoupr.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\sehsupp.obj", progress_category="sdk"),
 
+            Object(NonMatching, "Lionhead/LHDLL/ver1.0/LHDLL.cpp"),
+
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScreen.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp"),

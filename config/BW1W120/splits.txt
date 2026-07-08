@@ -1168,6 +1168,7 @@ Black/WayPoint.cpp:
 
 Black/Weather.cpp:
 	.text       start:0x00770D30 end:0x00773C00
+	.rdata      start:0x0099F014 end:0x0099F01C
 
 Black/WeatherThing.cpp:
 	.text       start:0x00773C00 end:0x00774A20
@@ -1195,6 +1196,9 @@ Black/WorshipTotem.cpp:
 
 Black/Temple.cpp:
 	.text       start:0x00781030 end:0x0079F910
+
+Lionhead/LHLib/ver5.0/LHDLL.cpp:
+	.text       start:0x007AD230 end:0x007AE6B0
 
 Lionhead/LHLib/ver5.0/LHOSFile.cpp:
 	.text       start:0x007BC650 end:0x007BD330
