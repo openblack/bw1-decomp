@@ -54,6 +54,27 @@ It watches source files and **automatically recompiles** whenever a file changes
 This means after editing a source or header file, you do **not** need to manually `touch` files or force rebuilds — just run `ninja` and if it says "no work to do", that's fine; objdiff has already compiled the latest code.
 Never waste time trying to force ninja to rebuild.
 
+### Fast per-iteration loop (agents)
+
+When iterating on a single translation unit, do **not** run bare `ninja` on every
+edit. Full `ninja` recompiles the graph, **relinks `runblack-decrypted-linked.exe`,
+and regenerates the whole progress report** — several seconds of overhead per cycle,
+all to produce one `.o` that `decomp-diff.py` reads. For a scheduling-sensitive
+function that needs many guess-and-check cycles this dominates your runtime.
+
+Instead, build **only the object you are working on** — the `base_path` for the unit
+in `objdiff.json`, which is exactly what `decomp-diff.py` reads:
+
+```
+# inner loop (edit -> build one .o -> diff), ~1-2s per cycle:
+ninja build/BW1W120/src/Lionhead/LHLib/ver5.0/LHHeap2.o
+python tools/decomp-diff.py -u runblack-decrypted/Lionhead/LHLib/ver5.0/LHHeap2 -d "Heap::New(int)"
+```
+
+Only run full `ninja` (and the `baseline` / `changes_all` regression pair) **once at
+the end** to confirm the overall result — not on every micro-edit. Grep `objdiff.json`
+for the source filename to find both the unit name (`-u`) and the object path.
+
 ### Using `decomp-diff.py` (agent-friendly CLI diffing)
 
 Since agents cannot use the objdiff GUI, use the wrapper script `tools/decomp-diff.py` instead. It calls `objdiff-cli` and produces readable text output.
