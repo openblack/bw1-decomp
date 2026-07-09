@@ -21,10 +21,16 @@ struct LHEnumPair
 };
 
 // BW1W120 007be400 LHEnumPairCompare(char const **, char const **)
-int LHEnumPairCompare(const char** a, const char** b) { return strcmp(*a, *b); }
+int LHEnumPairCompare(const char** a, const char** b)
+{
+	return strcmp(*a, *b);
+}
 
 // BW1W120 007be440 LHEnumPairCompareWithString(char const *, char const **)
-int LHEnumPairCompareWithString(const char* a, const char** b) { return strcmp(a, *b); }
+int LHEnumPairCompareWithString(const char* a, const char** b)
+{
+	return strcmp(a, *b);
+}
 
 // BW1W120 007be480 LHParseFile::Open(void)
 uint32_t LHParseFile::Open()

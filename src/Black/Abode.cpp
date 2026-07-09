@@ -25,9 +25,15 @@
 
 #define M_PI 3.14159265358979323846
 
-Abode* Abode::CastAbode() { return this; }
+Abode* Abode::CastAbode()
+{
+	return this;
+}
 
-Town* Abode::GetTown() { return town; }
+Town* Abode::GetTown()
+{
+	return town;
+}
 
 Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
              int wood)
@@ -163,9 +169,15 @@ void Abode::CreateAbodeSurroundingObjects()
 	}
 }
 
-void Abode::InsertMapObject() { MultiMapFixed::InsertMapObject(); }
+void Abode::InsertMapObject()
+{
+	MultiMapFixed::InsertMapObject();
+}
 
-int Abode::GetRoomLeftForChildren() { return ((GAbodeInfo*)info)->MaxVillagersInAbode - (int)AdultCount; }
+int Abode::GetRoomLeftForChildren()
+{
+	return ((GAbodeInfo*)info)->MaxVillagersInAbode - (int)AdultCount;
+}
 
 void Abode::MakeFunctional()
 {
@@ -272,7 +284,10 @@ float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 	return score;
 }
 
-TRIBE_TYPE Abode::GetTribeType() { return town->tribe_type; }
+TRIBE_TYPE Abode::GetTribeType()
+{
+	return town->tribe_type;
+}
 
 void Abode::FindNearestDrinkingWater(float max_dist)
 {

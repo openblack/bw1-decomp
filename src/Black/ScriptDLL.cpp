@@ -16,6 +16,12 @@ ScriptDLL* ScriptDLL::Create(const char* library_path)
 	return (ScriptDLL*)dll;
 }
 
-void ScriptDLL::AutoStart() { AutoStart(transport); }
+void ScriptDLL::AutoStart()
+{
+	AutoStart(transport);
+}
 
-int ScriptDLL::LoadBinary(const char* path) { return LoadBinary(transport, path); }
+int ScriptDLL::LoadBinary(const char* path)
+{
+	return LoadBinary(transport, path);
+}

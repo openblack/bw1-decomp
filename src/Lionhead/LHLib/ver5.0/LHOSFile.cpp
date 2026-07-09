@@ -11,7 +11,10 @@
 // the drive letter the game was launched from ('D' by default)
 char g_GameDriveCharacter = 'D';
 
-LHOSFile::LHOSFile() { handle = NULL; }
+LHOSFile::LHOSFile()
+{
+	handle = NULL;
+}
 
 LHOSFile::~LHOSFile()
 {

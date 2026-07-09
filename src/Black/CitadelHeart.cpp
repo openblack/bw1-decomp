@@ -2,7 +2,10 @@
 
 #include "GameOSFile.h"
 
-CitadelHeart::CitadelHeart() : CitadelPart(), field_0x90(0) { SetToZero(); }
+CitadelHeart::CitadelHeart() : CitadelPart(), field_0x90(0)
+{
+	SetToZero();
+}
 
 void CitadelHeart::SetToZero()
 {

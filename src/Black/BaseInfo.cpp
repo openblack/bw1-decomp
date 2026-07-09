@@ -9,4 +9,7 @@ void GBaseInfo::SetInfoID()
 	GGame::g_game->GameLists.BaseInfos.AddToFirst(this);
 }
 
-GBaseInfo* GBaseInfo::GetInfoPtr(int index) { return GGame::g_game->GameLists.BaseInfos.Get(index); }
+GBaseInfo* GBaseInfo::GetInfoPtr(int index)
+{
+	return GGame::g_game->GameLists.BaseInfos.Get(index);
+}
