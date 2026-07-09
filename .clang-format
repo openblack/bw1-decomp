@@ -34,5 +34,5 @@ AlignTrailingComments:
   OverEmptyLines:            0
 
 # Trivial accessors (the many one-line virtual getters) may stay on one line.
-AllowShortFunctionsOnASingleLine: All
+AllowShortFunctionsOnASingleLine: Inline
 AllowShortIfStatementsOnASingleLine: Never
