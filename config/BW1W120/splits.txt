@@ -1623,6 +1623,9 @@ Lionhead/LHLib/ver5.0/LHHeap2.cpp:
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
 	.text       start:0x007E4810 end:0x007E5AF0
 
+Lionhead/LHLib/ver5.0/LHMem.cpp:
+	.text       start:0x007E69D0 end:0x007E6A50
+
 Lionhead/LHLib/ver5.0/LHScript.cpp:
 	.text       start:0x007E72C0 end:0x007E8D10
 

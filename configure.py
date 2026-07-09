@@ -1271,6 +1271,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHDLL/ver1.0/LHDLL.cpp"),
 
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp"),
+            Object(Matching, "Lionhead/LHLib/ver5.0/LHMem.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScreen.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHHeap2.cpp", extra_cflags=["/GX"]),
