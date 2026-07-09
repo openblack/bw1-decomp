@@ -536,7 +536,10 @@ int LHScreen::Close()
 
 // BW1W120 007ddb00 EnumModesCallback(_DDSURFACEDESC2 *, void *)
 // DirectDraw mode-enumeration callback; always continue (DDENUMRET_OK).
-long __stdcall EnumModesCallback(DDSURFACEDESC2* desc, void* ctx) { return 1; }
+long __stdcall EnumModesCallback(DDSURFACEDESC2* desc, void* ctx)
+{
+	return 1;
+}
 
 // BW1W120 007ddb10 LHScreen::SetRGBInfo(_DDPIXELFORMAT *)
 void LHScreen::SetRGBInfo(_DDPIXELFORMAT* pixel_format)
@@ -943,7 +946,10 @@ int LHScreen::BlitToMSWindow(LHRegion* region, LHCoord* coord, int param_3)
 }
 
 // BW1W120 007de6c0 LHScreen::GetMSDesktopParams(unsigned short *, unsigned short *, unsigned char *)
-int LHScreen::GetMSDesktopParams(uint16_t* width, uint16_t* height, uint8_t* depth) { return 0; }
+int LHScreen::GetMSDesktopParams(uint16_t* width, uint16_t* height, uint8_t* depth)
+{
+	return 0;
+}
 
 // BW1W120 007de6d0 LHScreen::AltTabDeactivate(void)
 void LHScreen::AltTabDeactivate()
@@ -1085,13 +1091,25 @@ uint32_t LHScreen::GetAvailableVidMem()
 }
 
 // BW1W120 007decc0 LHScreen::WaitForVerticalBlank(void)
-int LHScreen::WaitForVerticalBlank() { return PDirectDraw->WaitForVerticalBlank(DDWAITVB_BLOCKBEGIN, 0) != 0 ? 2 : 0; }
+int LHScreen::WaitForVerticalBlank()
+{
+	return PDirectDraw->WaitForVerticalBlank(DDWAITVB_BLOCKBEGIN, 0) != 0 ? 2 : 0;
+}
 
 // BW1W120 007ded50 LHScreen::IsAppMinimized(void)
-int LHScreen::IsAppMinimized() { return g_appMinimized; }
+int LHScreen::IsAppMinimized()
+{
+	return g_appMinimized;
+}
 
 // BW1W120 007e8a20 LHScreen::Depth(void)
-uint8_t LHScreen::Depth() { return depth; }
+uint8_t LHScreen::Depth()
+{
+	return depth;
+}
 
 // BW1W120 007e9df0 LHScreen::MaxDepth(void)
-uint8_t LHScreen::MaxDepth() { return 32; }
+uint8_t LHScreen::MaxDepth()
+{
+	return 32;
+}

@@ -56,7 +56,10 @@ void Heap::SetToZero()
 	Allocates = 1;
 }
 
-unsigned int Heap::GetActualMemoryRequired(unsigned int size) const { return size; }
+unsigned int Heap::GetActualMemoryRequired(unsigned int size) const
+{
+	return size;
+}
 
 Heap* Heap::Create(unsigned int size, unsigned int a2)
 {
@@ -117,7 +120,10 @@ int Heap::Delete(void* ptr, unsigned int size)
 	return (int)NewFreeList((unsigned char*)ptr, size);
 }
 
-int Heap::DeleteArray(void* ptr) { return Delete((char*)ptr - 4, *((unsigned int*)ptr - 1)); }
+int Heap::DeleteArray(void* ptr)
+{
+	return Delete((char*)ptr - 4, *((unsigned int*)ptr - 1));
+}
 
 FreeList* Heap::NewFreeList(unsigned char* addr, unsigned int size)
 {
@@ -199,9 +205,15 @@ int Heap::ExtendFreeList(unsigned char* addr, unsigned int size)
 	return 0;
 }
 
-int Heap::IsAddressInMemoryPool(const void* addr) const { return addr >= MemoryPool && addr < &MemoryPool[Size - 4]; }
+int Heap::IsAddressInMemoryPool(const void* addr) const
+{
+	return addr >= MemoryPool && addr < &MemoryPool[Size - 4];
+}
 
-int Heap::GetOffsetFromAddress(const void* addr) const { return (unsigned char*)addr - MemoryPool; }
+int Heap::GetOffsetFromAddress(const void* addr) const
+{
+	return (unsigned char*)addr - MemoryPool;
+}
 
 void Heap::Defragment()
 {
@@ -243,9 +255,15 @@ int Heap::GetMemoryUsed() const
 	return size - GetFreeMemory();
 }
 
-void* Heap::GetAddressFromOffset(unsigned int offset) const { return &MemoryPool[offset]; }
+void* Heap::GetAddressFromOffset(unsigned int offset) const
+{
+	return &MemoryPool[offset];
+}
 
-double Heap::GetDesireToDefragment() const { return (unsigned int)FreeListCount * 0.1f; }
+double Heap::GetDesireToDefragment() const
+{
+	return (unsigned int)FreeListCount * 0.1f;
+}
 
 unsigned int Heap::GetLargestMemoryFragment() const
 {
@@ -334,9 +352,15 @@ int HeapWithPools::Delete(void* ptr, unsigned int size)
 // LHPool
 // =============================================================================
 
-int LHPool::GetCapacity(int blockSize) { return 0x2000 / blockSize; }
+int LHPool::GetCapacity(int blockSize)
+{
+	return 0x2000 / blockSize;
+}
 
-int LHPool::GetSize(int blockSize) { return blockSize * GetCapacity(blockSize); }
+int LHPool::GetSize(int blockSize)
+{
+	return blockSize * GetCapacity(blockSize);
+}
 
 void* LHPool::AllocateFromPool(LHPool*& slot, int blockSize, Heap* heap)
 {
@@ -451,7 +475,10 @@ void UniqueKeyHeap::SetToZero()
 	NextUniqueId = 1;
 }
 
-unsigned int UniqueKeyHeap::GetActualMemoryRequired(unsigned int size) const { return size + 4; }
+unsigned int UniqueKeyHeap::GetActualMemoryRequired(unsigned int size) const
+{
+	return size + 4;
+}
 
 UniqueKeyHeap* UniqueKeyHeap::Create(unsigned int size, unsigned int a2)
 {
@@ -543,7 +570,10 @@ int UniqueKeyHeap::CheckKeyIsValid(const HeapKey* key) const
 	return key->UniqueId < NextUniqueId;
 }
 
-int UniqueKeyHeap::GetUniqueIdFromAddress(void* addr) const { return GetUniqueIdFromAddressNoCheck(addr); }
+int UniqueKeyHeap::GetUniqueIdFromAddress(void* addr) const
+{
+	return GetUniqueIdFromAddressNoCheck(addr);
+}
 
 int UniqueKeyHeap::GetUniqueIdFromAddressNoCheck(void* addr) const
 {
@@ -555,7 +585,10 @@ int UniqueKeyHeap::GetUniqueIdFromAddressNoCheck(void* addr) const
 	return 0;
 }
 
-HeapKey* UniqueKeyHeap::GetKeyFromAddress(void* addr) const { return (HeapKey*)((char*)addr - 4); }
+HeapKey* UniqueKeyHeap::GetKeyFromAddress(void* addr) const
+{
+	return (HeapKey*)((char*)addr - 4);
+}
 
 int UniqueKeyHeap::IsUniqueIdAtAddressTheSame(void* addr, unsigned int id) const
 {
