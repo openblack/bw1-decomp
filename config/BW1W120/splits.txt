@@ -1596,7 +1596,10 @@ lib/libcmt/x10fout.obj:
 	.text       start:0x007DA9B2 end:0x007DAC45 align:1
 
 Lionhead/LHLib/ver5.0/LHWin.cpp:
-	.text       start:0x007DB600 end:0x007DCE20
+	.text       start:0x007DB410 end:0x007DB7B0
+
+Lionhead/LHLib/ver5.0/LHSystem.cpp:
+	.text       start:0x007DB7B0 end:0x007DCE20
 
 Lionhead/LHLib/ver5.0/LHScreen.cpp:
 	.text       start:0x007DCE20 end:0x007DEEF0

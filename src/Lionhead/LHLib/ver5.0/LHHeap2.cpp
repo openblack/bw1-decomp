@@ -6,13 +6,7 @@
 #include <stdio.h>  /* For sprintf */
 #include <windows.h>
 
-// -----------------------------------------------------------------------------
-// External symbols this translation unit depends on.
-// -----------------------------------------------------------------------------
-
-// Debug allocator that records the originating file/line.
-// BW1W120 007db790 operator new(unsigned int, char const*, unsigned int)
-void* operator new(size_t size, const char* file_name, uint32_t line);
+#include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
 // When set, HeapWithPools bypasses the LHPool buckets and routes every request
 // straight to the underlying Heap free-list allocator. Defaults to true (pools off).
