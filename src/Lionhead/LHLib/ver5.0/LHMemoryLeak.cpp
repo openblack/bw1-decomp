@@ -5,9 +5,7 @@
 #include <stdlib.h> /* For atexit */
 #include <string.h> /* For strcpy, strlen */
 
-// Debug allocator that records the originating file/line.
-// BW1W120 007db790 operator new(unsigned int, char const*, unsigned int)
-void* operator new(size_t size, const char* file_name, uint32_t line);
+#include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
 // The global call-stack tracer, provided by LHLogR. gDebugStack is a plain global
 // (accessed by address, not via the import table); its 512-byte frame slots hold

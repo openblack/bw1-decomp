@@ -10,15 +10,12 @@
 #include <Lionhead/LH3DLib/development/LHColor.h> /* For struct LHColor */
 #include <Lionhead/LHLib/ver5.0/LHTimer.h>        /* For struct LHTimer */
 #include <Lionhead/LHLib/ver5.0/LHMouse.h>        /* For LHMouse::Draw */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>          /* For operator new(size_t, const char*, uint32_t) */
 
 // -----------------------------------------------------------------------------
 // External symbols this translation unit depends on that have not been
 // decompiled yet.
 // -----------------------------------------------------------------------------
-
-// Global debug allocator, records the originating file/line.
-// BW1W120 007db790 operator new(unsigned int, char const*, unsigned int)
-void* operator new(size_t size, const char* file_name, uint32_t line);
 
 // BW1W120 007aedea RegistryRetrieveULong(char const*, char const*, int*)
 __declspec(dllimport) int RegistryRetrieveULong(const char* key, const char* value, int* out);
