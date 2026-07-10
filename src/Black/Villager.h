@@ -661,7 +661,7 @@ public:
 	// BW1W120 007525b0 BW1M100 1056c220 Villager::IsReactiveState(unsigned long)
 	bool IsReactiveState(unsigned long param_1);
 	// BW1W120 00752600 BW1M100 1001ff70 Villager::IsHungry(void)
-	bool IsHungry();
+	bool32_t IsHungry();
 	// BW1W120 00752620 BW1M100 1006a7a0 Villager::IsWoman(void)
 	bool IsWoman();
 	// BW1W120 00752690 BW1M100 1056bc60 Villager::MakeVillagesMeet(Villager *, VILLAGER_STATES, float)
