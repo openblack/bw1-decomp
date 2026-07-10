@@ -1684,6 +1684,9 @@ Lionhead/LH3DLib/development/ValueSpinner.cpp:
 Lionhead/LH3DLib/development/LH3DLightningSheet.cpp:
 	.text       start:0x00837110 end:0x00837300
 
+Lionhead/LHLib/ver5.0/Route.cpp:
+	.text       start:0x0083B280 end:0x0083C830
+
 Lionhead/LH3DLib/development/LH3DWay.cpp:
 	.text       start:0x00842F10 end:0x00844620
 
