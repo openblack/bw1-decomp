@@ -1678,6 +1678,9 @@ Lionhead/LH3DLib/development/LH3DRender.cpp:
 Lionhead/LH3DLib/development/LH3DText.cpp:
 	.text       start:0x00830050 end:0x00833A00
 
+Lionhead/LH3DLib/development/ValueSpinner.cpp:
+	.text       start:0x00833A00 end:0x00833CF0
+
 Lionhead/LH3DLib/development/LH3DWay.cpp:
 	.text       start:0x00842F10 end:0x00844620
 
