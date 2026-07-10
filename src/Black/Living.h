@@ -197,8 +197,8 @@ public:
 	virtual uint32_t CanBeDancedWith(Creature* param_1);
 	// BW1W120 00417450 BW1M100 10130dc0 Living::IsAggressive(Creature *)
 	virtual uint32_t IsAggressive(Creature* param_1);
-	// BW1W120 00417460 BW1M100 inlined Living::IsLiving_1( const(void))
-	virtual uint32_t IsLiving_1();
+	// BW1W120 00417460 BW1M100 10006920 Living::IsLiving(void)
+	virtual bool32_t IsLiving();
 	// BW1W120 00768580 BW1M100 10594bb0 Living::AttitudeToCreatureEating(void)
 	virtual uint32_t AttitudeToCreatureEating();
 	// BW1W120 00416ff0 BW1M100 1012f810 Living::IsSkeleton( const(void))
@@ -253,34 +253,82 @@ public:
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 	// BW1W120 005f2710 BW1M100 10385c50 Living::AmILikelyToMove(void)
 	virtual bool AmILikelyToMove();
+	// BW1W120 004416fd0 BW1M100 1012f7a0 Living::SetFoodSpeedup(bool)
+	virtual void SetFoodSpeedup(bool value);
+	// BW1W120 00416fe0 BW1M100 1012f7d0 Living::IsFoodSpeedUp(void)
+	virtual bool IsFoodSpeedUp();
 	// BW1W120 005ec3e0 BW1M100 10382af0 Living::GetNumTurnsToDieOver(void)
 	virtual uint32_t GetNumTurnsToDieOver();
 	// BW1W120 005ec1e0 BW1M100 103830e0 Living::GetFinalDestPos(MapCoords *)
 	virtual void GetFinalDestPos(MapCoords* result);
+	// BW1W120 005f1d10 BW1M100 10386d40 Living::FleeingFromObjectReaction(void)
+	virtual bool32_t FleeingFromObjectReaction();
+	// BW1W120 005f23a0 BW1M100 103863c0 Living::LookingAtObjectReaction(void)
+	virtual bool32_t LookingAtObjectReaction();
+	// BW1W120 005f2420 BW1M100 10386350 Living::FleeingAndLookingAtObjectReaction(void)
+	virtual bool32_t FleeingAndLookingAtObjectReaction();
+	// BW1W120 005f2430 BW1M100 10386180 Living::FollowingObjectReaction(void)
+	virtual bool32_t FollowingObjectReaction();
+	// BW1W120 005f2540 BW1M100 10386120 Living::InspectObjectReaction(void)
+	virtual bool32_t InspectObjectReaction();
+	// BW1W120 005ec3f0 BW1M100 10382a60 Living::Dying(void)
+	virtual bool32_t Dying();
+	// BW1W120 005ec400 BW1M100 10382950 Living::Dead(void)
+	virtual bool32_t Dead();
 	// BW1W120 005ec4b0 BW1M100 10382830 Living::Downed(void)
 	virtual bool Downed();
+	// BW1W120 005ec4d0 BW1M100 10382720 Living::BeingEaten(void)
+	virtual bool32_t BeingEaten();
+	// BW1W120 005f2550 BW1M100 10386030 Living::GotoFoodReaction(void)
+	virtual bool32_t GotoFoodReaction();
+	// BW1W120 005f25c0 BW1M100 10385f40 Living::GotoWoodReaction(void)
+	virtual bool32_t GotoWoodReaction();
 	// BW1W120 005ecdb0 BW1M100 10380b40 Living::MoveInFlock(void)
 	virtual bool MoveInFlock();
+	// BW1W120 005ef350 BW1M100 100325b0 Living::IsMovingForAnimation(void)
+	virtual bool32_t IsMovingForAnimation();
 	// BW1W120 005f2630 BW1M100 10385ed0 Living::ArrivesAtFoodReaction(void)
 	virtual bool32_t ArrivesAtFoodReaction();
+	// BW1W120 00417030 BW1M100 1012f890 Living::ArrivesAtWoodReaction(void)
+	virtual bool32_t ArrivesAtWoodReaction();
+	// BW1W120 005ec620 BW1M100 103824b0 Living::InHand(void)
+	virtual bool32_t InHand();
 	// BW1W120 00474940 BW1M100 103838c0 Living::DecideWhatToDo(void)
 	virtual bool32_t DecideWhatToDo();
+	// BW1W120 005ec8f0 BW1M100 103823e0 Living::Birthday(void)
+	virtual void Birthday();
 	// BW1W120 005ecaf0 BW1M100 1004c540 Living::GetAge(void)
 	virtual uint32_t GetAge();
+	// BW1W120 unknown BW1M100 10380600 Living::SetAge(unsigned long)
+	virtual void SetAge(uint32_t age);
 	// BW1W120 005f26d0 BW1M100 10385ce0 Living::LookAtFlyingObjectReaction(void)
 	virtual bool LookAtFlyingObjectReaction();
 	// BW1W120 005f2980 BW1M100 10076180 Living::SetCurrentAndDestinationState(unsigned char, unsigned char)
 	virtual int SetCurrentAndDestinationState(uint8_t current, uint8_t destination);
+	// BW1W120 __purecall BW1M100 null
+	virtual int CallIntoAnimationFunction(VILLAGER_STATES param_1) = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual int CallOutofAnimationFunction(VILLAGER_STATES param_1) = 0;
 	// BW1W120 005f28e0 BW1M100 10075940 Living::SetTopState(unsigned char)
 	virtual int SetTopState(VILLAGER_STATES state);
 	// BW1W120 00417040 BW1M100 1012f8d0 Living::StorePreviousState(void)
 	virtual void StorePreviousState();
 	// BW1W120 00473e50 BW1M100 101e3470 Living::SetStateSpeed(void)
 	virtual void SetStateSpeed();
+	// BW1W120 __purecall BW1M100 null
+	virtual bool IsFinalState(VILLAGER_STATES param_1) = 0;
 	// BW1W120 005ecba0 BW1M100 inlined Living::SetAnim__li(int, int)
 	virtual void SetAnim__li(int param_1, int param_2);
 	// BW1W120 005ecb80 BW1M100 inlined Living::SetAnim__i(int)
 	virtual void SetAnim__i(int param_1);
+	// BW1W120 __purecall BW1M100 null
+	virtual ANIM_LIST GetAnimId() = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual uint32_t CallExitStateFunction(VILLAGER_STATES param_1) = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual uint32_t CallEntryStateFunction(VILLAGER_STATES current, VILLAGER_STATES destination) = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual uint32_t CallEntryStateFunction(VILLAGER_STATES state) = 0;
 	// BW1W120 005eccd0 BW1M100 inlined Living::ExitReaction(VILLAGER_STATES)
 	virtual int ExitReaction(VILLAGER_STATES param_1);
 	// BW1W120 005ed9c0 BW1M100 inlined Living::ExitInScript(VILLAGER_STATES)
@@ -353,6 +401,8 @@ public:
 	virtual void StopReacting();
 	// BW1W120 005f11c0 BW1M100 103894f0 Living::StopReactingAndSetState(void)
 	virtual void StopReactingAndSetState();
+	// BW1W120 __purecall BW1M100 null
+	virtual void ResetStateAfterReacting() = 0;
 	// BW1W120 005f1360 BW1M100 10388d10 Living::SetupFleeFromObject(GameThingWithPos *, Reaction *)
 	virtual void SetupFleeFromObject(GameThingWithPos* param_1, Reaction* param_2);
 	// BW1W120 005f13b0 BW1M100 10388be0 Living::SetupLookAtObject(GameThingWithPos *, Reaction *)
@@ -548,6 +598,24 @@ public:
 	virtual uint32_t DanceType();
 	// BW1W120 005ee550 BW1M100 1037e4a0 Living::CanBeHealedByHealSpell(void)
 	virtual bool CanBeHealedByHealSpell();
+	// BW1W120 __purecall BW1M100 null
+	virtual bool MoveAllowedForChessGame() = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual bool AttackAllowedForChessGame() = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual void AddToBoxPositionForChessGame(int param_1, int param_2) = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual int GetBoxXForChessGame() = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual int GetBoxZForChessGame() = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual void SetBoxXForChessGame(int param_1) = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual void SetBoxZForChessGame(int param_1) = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual uint32_t GetTeamForChessGame() = 0;
+	// BW1W120 __purecall BW1M100 null
+	virtual bool IsPosValidForTurnAngle(const MapCoords* param_1) = 0;
 
 	// Static methods
 
