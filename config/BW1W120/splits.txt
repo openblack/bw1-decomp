@@ -1690,6 +1690,9 @@ Lionhead/LHLib/ver5.0/Route.cpp:
 Lionhead/LH3DLib/development/LH3DOrientSprite.cpp:
 	.text       start:0x0083C920 end:0x0083CE00
 
+Lionhead/LH3DLib/development/Glow.cpp:
+	.text       start:0x0083D750 end:0x0083E4F0
+
 Lionhead/LH3DLib/development/LH3DWay.cpp:
 	.text       start:0x00842F10 end:0x00844620
 
