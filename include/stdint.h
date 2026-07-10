@@ -2,7 +2,7 @@
 
 #ifdef __cplusplus
 
-#include "BASETSD.H"
+#include "basetsd.h"
 
 typedef char int8_t;
 typedef short int16_t;

@@ -213,8 +213,24 @@ config.custom_build_rules = [
         "command": f"$python tools/post_link_patch.py --version {config.version} $in $out",
         "description": "PATCH $out",
     },
+    {
+        "name": "patch_headers",
+        "command": f"$python tools/patch_compiler_headers.py $in/include -o $out",
+        "description": "PATCH $in",
+    },
 ]
+config.linker_version = "MSVC/6.5"
+_msvc_dir = f"build/compilers/{config.linker_version}"
+_patch_stamp = f"build/{config.version}/patched_compiler_headers"
 config.custom_build_steps = {
+    "pre-compile": [
+        {
+            "outputs": _patch_stamp,
+            "rule": "patch_headers",
+            "inputs": _msvc_dir,
+            "implicit": ["tools/patch_compiler_headers.py"],
+        },
+    ],
     "post-link": [
         {
             "outputs": _patched,
@@ -225,7 +241,6 @@ config.custom_build_steps = {
         },
     ],
 }
-config.linker_version = "MSVC/6.5"
 cflags_base = [
     "/nologo",
     "/W3",
