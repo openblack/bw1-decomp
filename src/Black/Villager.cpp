@@ -534,7 +534,7 @@ bool Villager::IsReactiveState(unsigned long param_1)
 }
 
 // BW1W120 00752600
-bool Villager::IsHungry()
+bool32_t Villager::IsHungry()
 {
 	return food <= ((const GVillagerInfo*)info)->HungryForFood;
 }
