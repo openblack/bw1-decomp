@@ -441,7 +441,7 @@ void Villager::ArriveHome() {}
 void Villager::LeaveHome() {}
 
 // BW1W120 00752010
-int Villager::SetTopState(VILLAGER_STATES state)
+int Villager::SetTopState(uint8_t state)
 {
 	return 0;
 }
@@ -498,19 +498,19 @@ bool32_t Villager::IsAvailableToBeSummonedByCreature()
 }
 
 // BW1W120 00752320
-uint32_t Villager::CallExitStateFunction(VILLAGER_STATES param_1)
+uint32_t Villager::CallExitStateFunction(uint8_t state)
 {
 	return 0;
 }
 
 // BW1W120 007523d0
-bool32_t Villager::CallEntryStateFunction(VILLAGER_STATES param_1)
+bool32_t Villager::CallEntryStateFunction(uint8_t state)
 {
 	return false;
 }
 
 // BW1W120 00752440
-bool32_t Villager::CallEntryStateFunction(VILLAGER_STATES param_1, VILLAGER_STATES param_2)
+bool32_t Villager::CallEntryStateFunction(uint8_t current, uint8_t destination)
 {
 	return false;
 }
@@ -1174,13 +1174,13 @@ bool32_t Villager::LoadLanded(GameOSFile& param_1)
 }
 
 // BW1W120 00756590
-int Villager::CallIntoAnimationFunction(VILLAGER_STATES param_1)
+int Villager::CallIntoAnimationFunction(uint8_t state)
 {
 	return 0;
 }
 
 // BW1W120 00756620
-int Villager::CallOutofAnimationFunction(VILLAGER_STATES param_1)
+int Villager::CallOutofAnimationFunction(uint8_t state)
 {
 	return 0;
 }

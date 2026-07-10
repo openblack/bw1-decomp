@@ -94,6 +94,14 @@ public:
 	DataForScriptRemind();
 };
 
+// fabricated: result codes of Living::SetTopState / SetCurrentAndDestinationState
+enum LIVING_SET_STATE_RESULT
+{
+	LIVING_SET_STATE_SUCCESS = 0x1,
+	LIVING_SET_STATE_EXIT_REFUSED = 0x2e,
+	LIVING_SET_STATE_ENTRY_REFUSED = 0x2f
+};
+
 class Living : public MobileWallHug
 {
 public:
@@ -306,29 +314,29 @@ public:
 	// BW1W120 005f2980 BW1M100 10076180 Living::SetCurrentAndDestinationState(unsigned char, unsigned char)
 	virtual int SetCurrentAndDestinationState(uint8_t current, uint8_t destination);
 	// BW1W120 __purecall BW1M100 null
-	virtual int CallIntoAnimationFunction(VILLAGER_STATES param_1) = 0;
+	virtual int CallIntoAnimationFunction(uint8_t state) = 0;
 	// BW1W120 __purecall BW1M100 null
-	virtual int CallOutofAnimationFunction(VILLAGER_STATES param_1) = 0;
+	virtual int CallOutofAnimationFunction(uint8_t state) = 0;
 	// BW1W120 005f28e0 BW1M100 10075940 Living::SetTopState(unsigned char)
-	virtual int SetTopState(VILLAGER_STATES state);
+	virtual int SetTopState(uint8_t state);
 	// BW1W120 00417040 BW1M100 1012f8d0 Living::StorePreviousState(void)
 	virtual void StorePreviousState();
 	// BW1W120 00473e50 BW1M100 101e3470 Living::SetStateSpeed(void)
 	virtual void SetStateSpeed();
 	// BW1W120 __purecall BW1M100 null
 	virtual bool IsFinalState(VILLAGER_STATES param_1) = 0;
-	// BW1W120 005ecba0 BW1M100 inlined Living::SetAnim__li(int, int)
-	virtual void SetAnim__li(int param_1, int param_2);
-	// BW1W120 005ecb80 BW1M100 inlined Living::SetAnim__i(int)
-	virtual void SetAnim__i(int param_1);
+	// BW1W120 005ecba0 BW1M100 inlined Living::SetAnim(int, int)
+	virtual void SetAnim(int anim, int flags);
+	// BW1W120 005ecb80 BW1M100 inlined Living::SetAnim(int)
+	virtual void SetAnim(int anim);
 	// BW1W120 __purecall BW1M100 null
 	virtual ANIM_LIST GetAnimId() = 0;
 	// BW1W120 __purecall BW1M100 null
-	virtual uint32_t CallExitStateFunction(VILLAGER_STATES param_1) = 0;
+	virtual uint32_t CallExitStateFunction(uint8_t state) = 0;
 	// BW1W120 __purecall BW1M100 null
-	virtual uint32_t CallEntryStateFunction(VILLAGER_STATES current, VILLAGER_STATES destination) = 0;
+	virtual uint32_t CallEntryStateFunction(uint8_t current, uint8_t destination) = 0;
 	// BW1W120 __purecall BW1M100 null
-	virtual uint32_t CallEntryStateFunction(VILLAGER_STATES state) = 0;
+	virtual uint32_t CallEntryStateFunction(uint8_t state) = 0;
 	// BW1W120 005eccd0 BW1M100 inlined Living::ExitReaction(VILLAGER_STATES)
 	virtual int ExitReaction(VILLAGER_STATES param_1);
 	// BW1W120 005ed9c0 BW1M100 inlined Living::ExitInScript(VILLAGER_STATES)

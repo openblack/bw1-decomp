@@ -329,11 +329,11 @@ public:
 	// BW1W120 007520e0 BW1M100 10087ab0 Villager::SetCurrentAndDestinationState(unsigned char, unsigned char)
 	virtual int SetCurrentAndDestinationState(uint8_t current, uint8_t destination);
 	// BW1W120 00756590 BW1M100 inlined Villager::CallIntoAnimationFunction(VILLAGER_STATES)
-	virtual int CallIntoAnimationFunction(VILLAGER_STATES param_1);
+	virtual int CallIntoAnimationFunction(uint8_t state);
 	// BW1W120 00756620 BW1M100 inlined Villager::CallOutofAnimationFunction(VILLAGER_STATES)
-	virtual int CallOutofAnimationFunction(VILLAGER_STATES param_1);
+	virtual int CallOutofAnimationFunction(uint8_t state);
 	// BW1W120 00752010 BW1M100 1007bba0 Villager::SetTopState(unsigned char)
-	virtual int SetTopState(VILLAGER_STATES state);
+	virtual int SetTopState(uint8_t state);
 	// BW1W120 00763470 BW1M100 10594430 Villager::StorePreviousState(void)
 	virtual void StorePreviousState();
 	// BW1W120 00753740 BW1M100 10075d50 Villager::SetStateSpeed(void)
@@ -343,11 +343,11 @@ public:
 	// BW1W120 00750110 BW1M100 10066490 Villager::GetAnimId(void)
 	virtual ANIM_LIST GetAnimId();
 	// BW1W120 00752320 BW1M100 inlined Villager::CallExitStateFunction(VILLAGER_STATES)
-	virtual uint32_t CallExitStateFunction(VILLAGER_STATES param_1);
+	virtual uint32_t CallExitStateFunction(uint8_t state);
 	// BW1W120 00752440 BW1M100 1007b1b0 Villager::CallEntryStateFunction(unsigned char, unsigned char)
-	virtual uint32_t CallEntryStateFunction(VILLAGER_STATES current, VILLAGER_STATES destination);
+	virtual uint32_t CallEntryStateFunction(uint8_t current, uint8_t destination);
 	// BW1W120 007523d0 BW1M100 10075c50 Villager::CallEntryStateFunction(unsigned char)
-	virtual uint32_t CallEntryStateFunction(VILLAGER_STATES state);
+	virtual uint32_t CallEntryStateFunction(uint8_t state);
 	// BW1W120 007527a0 BW1M100 inlined Villager::ExitReaction(VILLAGER_STATES)
 	virtual int ExitReaction(VILLAGER_STATES param_1);
 	// BW1W120 0076b000 BW1M100 inlined Villager::ExitInHand(VILLAGER_STATES)

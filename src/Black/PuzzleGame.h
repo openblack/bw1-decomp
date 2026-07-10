@@ -409,9 +409,9 @@ public:
 	// BW1W120 004179c0 BW1M100 inlined PuzzleHorse::SetAge(unsigned long)
 	virtual void SetAge(uint32_t param_1);
 	// BW1W120 00417820 BW1M100 inlined PuzzleHorse::CallIntoAnimationFunction(VILLAGER_STATES)
-	virtual int CallIntoAnimationFunction(VILLAGER_STATES param_1);
+	virtual int CallIntoAnimationFunction(uint8_t state);
 	// BW1W120 00417830 BW1M100 inlined PuzzleHorse::CallOutofAnimationFunction(VILLAGER_STATES)
-	virtual int CallOutofAnimationFunction(VILLAGER_STATES param_1);
+	virtual int CallOutofAnimationFunction(uint8_t state);
 };
 
 class PuzzleLion : public PieceWolf

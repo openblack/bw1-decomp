@@ -141,11 +141,11 @@ public:
 	// BW1W120 00417fa0 BW1M100 10054d90 Animal::GetAnimId(void)
 	virtual ANIM_LIST GetAnimId();
 	// BW1W120 0041a2c0 BW1M100 inlined Animal::CallExitStateFunction(VILLAGER_STATES)
-	virtual uint32_t CallExitStateFunction(VILLAGER_STATES param_1);
+	virtual uint32_t CallExitStateFunction(uint8_t state);
 	// BW1W120 0041a370 BW1M100 inlined Animal::CallEntryStateFunctionUcUc(VILLAGER_STATES, VILLAGER_STATES)
-	virtual uint32_t CallEntryStateFunction__UcUc(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
+	virtual uint32_t CallEntryStateFunction(uint8_t current, uint8_t destination);
 	// BW1W120 0041a310 BW1M100 inlined Animal::CallEntryStateFunctionUc(VILLAGER_STATES)
-	virtual uint32_t CallEntryStateFunction__Uc(VILLAGER_STATES param_1);
+	virtual uint32_t CallEntryStateFunction(uint8_t state);
 	// BW1W120 0041b170 BW1M100 inlined Animal::ExitReaction(VILLAGER_STATES)
 	virtual int ExitReaction(VILLAGER_STATES param_1);
 	// BW1W120 00417570 BW1M100 inlined Animal::IsScriptState( const(VILLAGER_STATES))
