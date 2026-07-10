@@ -1297,6 +1297,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DText.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/ValueSpinner.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DLightningSheet.cpp"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/Route.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DWay.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DHair.cpp"),
         ],
