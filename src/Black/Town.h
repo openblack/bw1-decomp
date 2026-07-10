@@ -214,7 +214,7 @@ public:
 	// Static methods
 
 	// BW1W120 0073b170 BW1M100 10554ef0 Town::GetNearestTownToPos(MapCoords const &, TRIBE_TYPE, ABODE_TYPE, float)
-	static Town* GetNearestTownToPos(MapCoords* coords, TRIBE_TYPE tribe_type, ABODE_TYPE abode_type,
+	static Town* GetNearestTownToPos(const MapCoords& coords, TRIBE_TYPE tribe_type, ABODE_TYPE abode_type,
 	                                 float max_distance);
 	// BW1W120 0073eac0 BW1M100 1054e290 Town::AsssignTownFeature(void)
 	static void AsssignTownFeature();
@@ -277,7 +277,7 @@ public:
 	// BW1W120 0073c0f0 BW1M100 10552710 Town::AdjustWorshipersWorshipping(long, int, int)
 	void AdjustWorshipersWorshipping(long param_1, int param_2, int param_3);
 	// BW1W120 0073c840 BW1M100 1005d020 Town::GetTribe(void) const
-	GTribeInfo* GetTribe();
+	GTribeInfo* GetTribe() const;
 	// BW1W120 0073c860 BW1M100 10092530 Town::GetWorshipersNeeded(int, int, int *)
 	int GetWorshipersNeeded(int param_1, int param_2, int* result);
 	// BW1W120 0073cf00 BW1M100 10551920 Town::IsBuildingSiteValid(BuildingSite *)
@@ -314,6 +314,8 @@ public:
 	void AssignForestsToTown();
 	// BW1W120 00740250 BW1M100 10549810 Town::GetBestWorkshop(MapCoords &, int, int)
 	Workshop* GetBestWorkshop(MapCoords* param_1, int param_2, int param_3);
+	// BW1W120 0073d6b0 Town::IsAbodeTypeInTown(ABODE_TYPE)
+	uint32_t IsAbodeTypeInTown(ABODE_TYPE abode_type);
 	// BW1W120 007408b0 BW1M100 10008020 Town::GetCongregationPos(void)
 	MapCoords* GetCongregationPos(MapCoords* coords);
 	// BW1W120 00741b40 BW1M100 105464d0 Town::MakeScenicForest(void)
