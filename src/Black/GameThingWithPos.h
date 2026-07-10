@@ -23,12 +23,20 @@ class Object;
 class Reaction;
 class WorshipSite;
 
+// fabricated: bit meanings of GameThingWithPos::Flags. Bit 7 is set by the
+// MOVE_ON_STRUCTURE state handler (BW1W120 005ecd00) when a structure is found
+// under the position, together with snapping the altitude onto it.
+enum GAME_THING_WITH_POS_FLAGS
+{
+	GAME_THING_WITH_POS_FLAG_ON_STRUCTURE = 0x80
+};
+
 class GameThingWithPos : public GameThing
 {
 public:
 	MapCoords coords;   /* 0x14 */
 	Object*   MapChild; /* 0x20 */
-	uint16_t  field_0x24;
+	uint16_t  Flags;    /* 0x24 */
 	uint8_t   field_0x26;
 
 	// Override methods
