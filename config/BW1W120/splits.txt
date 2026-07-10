@@ -1640,6 +1640,9 @@ Lionhead/LHLib/ver5.0/LHMem.cpp:
 Lionhead/LHLib/ver5.0/LHScript.cpp:
 	.text       start:0x007E72C0 end:0x007EA0B0
 
+Lionhead/LHLib/ver5.0/LHSpriteList.cpp:
+	.text       start:0x007EE540 end:0x007EE6E0
+
 Lionhead/LH3DLib/development/LH3DSmoke.cpp:
 	.text       start:0x007F8B60 end:0x007F8D30
 
