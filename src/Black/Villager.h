@@ -239,7 +239,7 @@ public:
 	// BW1W120 007560e0 BW1M100 10565860 Villager::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
 	// BW1W120 0074fc70 BW1M100 10571530 Villager::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055c990 BW1M100 10147d30 Villager::IsABeliever(void)
 	virtual bool32_t IsABeliever();
 	// BW1W120 0076a4c0 BW1M100 1059a990 Villager::SetDying(void)
@@ -339,7 +339,7 @@ public:
 	// BW1W120 00753740 BW1M100 10075d50 Villager::SetStateSpeed(void)
 	virtual void SetStateSpeed();
 	// BW1W120 00753f00 BW1M100 inlined Villager::IsFinalState(VILLAGER_STATES)
-	virtual bool IsFinalState(VILLAGER_STATES param_1);
+	virtual bool IsFinalState(VILLAGER_STATES state);
 	// BW1W120 00750110 BW1M100 10066490 Villager::GetAnimId(void)
 	virtual ANIM_LIST GetAnimId();
 	// BW1W120 00752320 BW1M100 inlined Villager::CallExitStateFunction(VILLAGER_STATES)
@@ -349,21 +349,21 @@ public:
 	// BW1W120 007523d0 BW1M100 10075c50 Villager::CallEntryStateFunction(unsigned char)
 	virtual uint32_t CallEntryStateFunction(uint8_t state);
 	// BW1W120 007527a0 BW1M100 inlined Villager::ExitReaction(VILLAGER_STATES)
-	virtual int ExitReaction(VILLAGER_STATES param_1);
+	virtual int ExitReaction(VILLAGER_STATES state);
 	// BW1W120 0076b000 BW1M100 inlined Villager::ExitInHand(VILLAGER_STATES)
-	virtual int ExitInHand(VILLAGER_STATES param_1);
+	virtual int ExitInHand(VILLAGER_STATES state);
 	// BW1W120 0076acb0 BW1M100 inlined Villager::ExitInFlying(VILLAGER_STATES)
-	virtual int ExitInFlying(VILLAGER_STATES param_1);
+	virtual int ExitInFlying(VILLAGER_STATES state);
 	// BW1W120 00753690 BW1M100 1006a4d0 Villager::SetState(unsigned long, unsigned char)
 	virtual void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
 	// BW1W120 0076afe0 BW1M100 inlined Villager::EnterInHand(VILLAGER_STATES, VILLAGER_STATES)
 	virtual uint32_t EnterInHand(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
 	// BW1W120 0055c9f0 BW1M100 inlined Villager::IsScriptState(VILLAGER_STATES)
-	virtual bool IsScriptState(VILLAGER_STATES param_1) const;
+	virtual bool IsScriptState(VILLAGER_STATES state) const;
 	// BW1W120 0055ca10 BW1M100 inlined Villager::IsScriptInterruptableState(VILLAGER_STATES) const
-	virtual bool IsScriptInterruptableState(VILLAGER_STATES param_1) const;
+	virtual bool IsScriptInterruptableState(VILLAGER_STATES state) const;
 	// BW1W120 00752530 BW1M100 inlined Villager::IsStateExitFunctionSameAs(VILLAGER_STATES) const
-	virtual bool IsStateExitFunctionSameAs(VILLAGER_STATES param_1) const;
+	virtual bool IsStateExitFunctionSameAs(VILLAGER_STATES state) const;
 	// BW1W120 007528b0 BW1M100 1056b830 Villager::DebugShowTime(unsigned long, unsigned char, unsigned char)
 	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 00764df0 BW1M100 10590f30 Villager::IsInterestedInFoodObject(Object *)
@@ -619,7 +619,7 @@ public:
 	// BW1W120 00751970 BW1M100 1056e1b0 Villager::GetPrayerSite(void)
 	bool GetPrayerSite();
 	// BW1W120 00751980 BW1M100 1056e0e0 Villager::RestartDance(VILLAGER_STATES)
-	bool RestartDance(VILLAGER_STATES param_1);
+	bool RestartDance(VILLAGER_STATES state);
 	// BW1W120 00751ab0 BW1M100 1056dea0 Villager::GetVillagerText(char *)
 	char* GetVillagerText(char* param_1);
 	// BW1W120 00751d20 BW1M100 1056d6a0 Villager::GetJobInfo(unsigned char) const

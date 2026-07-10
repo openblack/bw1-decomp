@@ -137,7 +137,7 @@ public:
 	// BW1W120 0041a2b0 BW1M100 1007c6d0 Animal::SetStateSpeed(void)
 	virtual void SetStateSpeed();
 	// BW1W120 0041b430 BW1M100 inlined Animal::IsFinalState(VILLAGER_STATES)
-	virtual bool IsFinalState(VILLAGER_STATES param_1);
+	virtual bool IsFinalState(uint8_t state);
 	// BW1W120 00417fa0 BW1M100 10054d90 Animal::GetAnimId(void)
 	virtual ANIM_LIST GetAnimId();
 	// BW1W120 0041a2c0 BW1M100 inlined Animal::CallExitStateFunction(VILLAGER_STATES)
@@ -147,13 +147,13 @@ public:
 	// BW1W120 0041a310 BW1M100 inlined Animal::CallEntryStateFunctionUc(VILLAGER_STATES)
 	virtual uint32_t CallEntryStateFunction(uint8_t state);
 	// BW1W120 0041b170 BW1M100 inlined Animal::ExitReaction(VILLAGER_STATES)
-	virtual int ExitReaction(VILLAGER_STATES param_1);
+	virtual int ExitReaction(uint8_t state);
 	// BW1W120 00417570 BW1M100 inlined Animal::IsScriptState( const(VILLAGER_STATES))
-	virtual bool IsScriptState(VILLAGER_STATES param_1);
+	virtual bool IsScriptState(uint8_t state);
 	// BW1W120 00417590 BW1M100 inlined Animal::IsScriptInterruptableState( const(VILLAGER_STATES))
-	virtual bool IsScriptInterruptableState(VILLAGER_STATES param_1);
+	virtual bool IsScriptInterruptableState(uint8_t state);
 	// BW1W120 0041b100 BW1M100 inlined Animal::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
-	virtual bool IsStateExitFunctionSameAs(VILLAGER_STATES param_1);
+	virtual bool IsStateExitFunctionSameAs(uint8_t state);
 	// BW1W120 0041b1c0 BW1M100 101665d0 Animal::DebugShowTime(unsigned long, unsigned char, unsigned char)
 	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 00419bc0 BW1M100 10168630 Animal::IsInterestedInFoodObject(Object *)

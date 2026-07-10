@@ -205,7 +205,7 @@ bool32_t Villager::InspectObject()
 }
 
 // BW1W120 0076acb0
-int Villager::ExitInFlying(VILLAGER_STATES param_1)
+int Villager::ExitInFlying(VILLAGER_STATES state)
 {
 	return 0;
 }
@@ -241,7 +241,7 @@ uint32_t Villager::EnterInHand(VILLAGER_STATES param_1, VILLAGER_STATES param_2)
 }
 
 // BW1W120 0076b000
-int Villager::ExitInHand(VILLAGER_STATES param_1)
+int Villager::ExitInHand(VILLAGER_STATES state)
 {
 	return 0;
 }
