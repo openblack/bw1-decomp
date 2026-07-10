@@ -449,21 +449,21 @@ public:
 	// BW1W120 0047b1b0 BW1M100 101d49b0 Creature::SetAge(unsigned long)
 	virtual void SetAge(uint32_t param_1);
 	// BW1W120 00473f00 BW1M100 inlined Creature::CallIntoAnimationFunction(VILLAGER_STATES)
-	virtual int CallIntoAnimationFunction(VILLAGER_STATES param_1);
+	virtual int CallIntoAnimationFunction(uint8_t state);
 	// BW1W120 00473f10 BW1M100 inlined Creature::CallOutofAnimationFunction(VILLAGER_STATES)
-	virtual int CallOutofAnimationFunction(VILLAGER_STATES param_1);
+	virtual int CallOutofAnimationFunction(uint8_t state);
 	// BW1W120 00473f40 BW1M100 inlined Creature::IsFinalState(VILLAGER_STATES)
 	virtual bool IsFinalState(VILLAGER_STATES param_1);
-	// BW1W120 00473f90 BW1M100 inlined Creature::SetAnim__i(int)
-	virtual void SetAnim__i(int param_1);
+	// BW1W120 00473f90 BW1M100 inlined Creature::SetAnim(int)
+	virtual void SetAnim(int anim);
 	// BW1W120 00473ef0 BW1M100 101e2be0 Creature::GetAnimId(void)
 	virtual ANIM_LIST GetAnimId();
 	// BW1W120 00473fa0 BW1M100 inlined Creature::CallExitStateFunction(VILLAGER_STATES)
-	virtual uint32_t CallExitStateFunction(VILLAGER_STATES param_1);
+	virtual uint32_t CallExitStateFunction(uint8_t state);
 	// BW1W120 00473fc0 BW1M100 inlined Creature::CallEntryStateFunctionUcUc(VILLAGER_STATES, VILLAGER_STATES)
-	virtual uint32_t CallEntryStateFunction__UcUc(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
+	virtual uint32_t CallEntryStateFunction(uint8_t current, uint8_t destination);
 	// BW1W120 00473fb0 BW1M100 inlined Creature::CallEntryStateFunctionUc(VILLAGER_STATES)
-	virtual uint32_t CallEntryStateFunction__Uc(VILLAGER_STATES param_1);
+	virtual uint32_t CallEntryStateFunction(uint8_t state);
 	// BW1W120 0047c670 BW1M100 101d2490 Creature::IsDancing(void)
 	virtual bool IsDancing();
 	// BW1W120 004f2820 BW1M100 1027db00 Creature::IsAvailableForReaction(REACTION)
