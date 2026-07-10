@@ -1302,6 +1302,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LH3DLib/development/Glow.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DStorm.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DWay.cpp"),
+            Object(NonMatching, "Lionhead/LH3DLib/development/Font.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DHair.cpp"),
         ],
     },
