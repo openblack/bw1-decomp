@@ -38,12 +38,12 @@ template <bool clockwise> struct Point2DCompare
 
 template <bool clockwise> struct IntersectIntervalCircle
 {
-	Point2DCompare   compares[0x2]; /* 0x0 */
-	float            field_0x18;
-	float            field_0x1c;
-	float            field_0x20;
-	bool             field_0x24;
-	NewCollide::Obj* obj;
+	Point2DCompare<clockwise> compares[0x2]; /* 0x0 */
+	float                     field_0x18;
+	float                     field_0x1c;
+	float                     field_0x20;
+	bool                      field_0x24;
+	NewCollide::Obj*          obj;
 
 	// Non-virtual methods
 

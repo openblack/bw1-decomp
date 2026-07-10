@@ -15,12 +15,6 @@
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
 #include "MapCoords.h"        /* For struct MapCoords */
 
-enum FOOD_TYPE
-{
-	FOOD_TYPE_0 = 0x0,
-	_FOOD_TYPE_COUNT = 0x1
-};
-
 // Forward Declares
 
 class Base;

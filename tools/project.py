@@ -2264,6 +2264,8 @@ def generate_compile_commands(
     CFLAG_PASSTHROUGH_PREFIX: Tuple[str, ...] = (
         "-I",  # includes
         "-D",  # defines
+        "/I",  # MSVC-style includes
+        "/D",  # MSVC-style defines
     )
 
     clangd_config = []
@@ -2332,7 +2334,36 @@ def generate_compile_commands(
 
                 return False
 
-            for flag in flags:
+            # Flags that take a value as the next element
+            CFLAG_TWO_PART: Tuple[str, ...] = (
+                "-i",
+                "-I",
+                "-I+",
+                "-d",
+                "-D",
+                "-D+",
+                "/i",
+                "/I",
+                "/I+",
+                "/d",
+                "/D",
+                "/D+",
+            )
+
+            # Include flags (subset of TWO_PART) that should become /external:I
+            # for paths under build/, so clangd treats compiler/SDK headers as
+            # external and suppresses noisy diagnostics from them.
+            CFLAG_INCLUDE: Set[str] = {
+                "-i",
+                "-I",
+                "-I+",
+                "/i",
+                "/I",
+                "/I+",
+            }
+
+            flags_iter = iter(flags)
+            for flag in flags_iter:
                 # Ignore flags first
                 if should_ignore(flag):
                     continue
@@ -2343,7 +2374,19 @@ def generate_compile_commands(
 
                 # Pass flags through last
                 if should_passthrough(flag):
-                    cflags.append(flag)
+                    # Consume the next element if this flag takes a value argument
+                    if flag in CFLAG_TWO_PART:
+                        try:
+                            value = next(flags_iter)
+                            if flag in CFLAG_INCLUDE and value.startswith("build/compilers/"):
+                                cflags.append("/external:I")
+                            else:
+                                cflags.append(flag)
+                            cflags.append(value)
+                        except StopIteration:
+                            cflags.append(flag)
+                    else:
+                        cflags.append(flag)
                     continue
 
         append_cflags(obj.options["cflags"])
@@ -2356,10 +2399,10 @@ def generate_compile_commands(
             "file": obj.src_path,
             "output": obj.src_obj_path,
             "arguments": [
-                "clang",
+                "clang-cl",
+                "--target=i686-pc-windows-msvc",
                 "-nostdinc",
                 "-fno-builtin",
-                "--target=powerpc-eabi",
                 *cflags,
                 "-c",
                 obj.src_path,
