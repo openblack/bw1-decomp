@@ -1709,7 +1709,7 @@ Lionhead/LH3DLib/development/Blob.cpp:
 	.text       start:0x00845BA0 end:0x00846680
 
 Lionhead/LH3DLib/development/LH3DHair.cpp:
-	.text       start:0x00847890 end:0x00848350
+	.text       start:0x00846680 end:0x008483C0
 
 Lionhead/LH3DLib/development/Leash.cpp:
 	.text       start:0x008483C0 end:0x008499C0
