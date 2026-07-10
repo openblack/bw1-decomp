@@ -2,6 +2,7 @@
 
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>
 
+#include "chlasm/Enum.h"
 #include "chlasm/GStates.h"
 #include "GameOSFile.h"
 #include "GameThing.h"
@@ -15,7 +16,23 @@
 #include "StoragePit.h"
 #include "Town.h"
 
-static DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST];
+// clang-format off
+static const DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST] = {
+	/* [VILLAGER_DISCIPLE_NONE]         = */ {VILLAGER_STATE_INVALID_STATE,                 0, 0, 0, 0, TOWN_DESIRE_INFO_NONE,         0},
+	/* [VILLAGER_DISCIPLE_FARMER]       = */ {VILLAGER_STATE_INVALID_STATE,                 1, 1, 1, 0, TOWN_DESIRE_INFO_FOR_FOOD,     1},
+	/* [VILLAGER_DISCIPLE_FORESTER]     = */ {VILLAGER_STATE_FORESTER_ARRIVES_AT_FOREST,    1, 1, 1, 1, TOWN_DESIRE_INFO_FOR_WOOD,     0},
+	/* [VILLAGER_DISCIPLE_FISHERMAN]    = */ {VILLAGER_STATE_INVALID_STATE,                 1, 1, 1, 0, TOWN_DESIRE_INFO_FOR_FOOD,     0},
+	/* [VILLAGER_DISCIPLE_BUILDER]      = */ {VILLAGER_STATE_INVALID_STATE,                 1, 1, 1, 1, TOWN_DESIRE_INFO_TO_BUILD,     1},
+	/* [VILLAGER_DISCIPLE_BREEDER]      = */ {VILLAGER_STATE_BREEDER_JUST_LANDED,           0, 1, 1, 0, TOWN_DESIRE_INFO_FOR_CHILDREN, 1},
+	/* [VILLAGER_DISCIPLE_PROTECTION]   = */ {VILLAGER_STATE_INVALID_STATE,                 1, 1, 1, 0, TOWN_DESIRE_INFO_NONE,         0},
+	/* [VILLAGER_DISCIPLE_MISSIONARY]   = */ {VILLAGER_STATE_MISSIONARY_DISCIPLE,           0, 1, 0, 0, TOWN_DESIRE_INFO_NONE,         0},
+	/* [VILLAGER_DISCIPLE_CRAFTSMAN]    = */ {VILLAGER_STATE_INVALID_STATE,                 1, 1, 1, 1, TOWN_DESIRE_INFO_NONE,         1},
+	/* [VILLAGER_DISCIPLE_TRADER]       = */ {VILLAGER_STATE_DECIDE_WHAT_TO_DO,             0, 1, 1, 0, TOWN_DESIRE_INFO_NONE,         0},
+	/* [VILLAGER_DISCIPLE_CHANGE_HOUSE] = */ {VILLAGER_STATE_DECIDE_WHAT_TO_DO,             0, 1, 0, 0, TOWN_DESIRE_INFO_NONE,         0},
+	/* [VILLAGER_DISCIPLE_WORSHIP]      = */ {VILLAGER_STATE_GOTO_WORSHIP_SITE_FOR_WORSHIP, 0, 0, 0, 0, TOWN_DESIRE_INFO_NONE,         0},
+	/* [VILLAGER_DISCIPLE_FROM_VORTEX]  = */ {VILLAGER_STATE_SCRIPT_IN_CROWD,               0, 0, 0, 0, TOWN_DESIRE_INFO_NONE,         0},
+};
+// clang-format on
 
 // BW1W120 0074fb20
 void Villager::SetToZero() {}

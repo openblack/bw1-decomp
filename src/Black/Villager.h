@@ -76,7 +76,7 @@ struct ClearAreaPoint
 
 struct DiscipleInfo
 {
-	uint32_t         field_0x0;
+	VILLAGER_STATES  begin_state;
 	uint32_t         field_0x4;
 	uint32_t         field_0x8;
 	uint32_t         field_0xc;
