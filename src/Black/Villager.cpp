@@ -47,7 +47,7 @@ Villager* Villager::Create(const MapCoords& coords, const GVillagerInfo* info, u
 }
 
 // BW1W120 0074fc70
-void Villager::CallVirtualFunctionsForCreation(const MapCoords& param_1) {}
+void Villager::CallVirtualFunctionsForCreation(const MapCoords& coords) {}
 
 // BW1W120 0074fd60
 void Villager::DeleteDependancys() {}
@@ -387,7 +387,7 @@ Citadel* Villager::GetCitadel()
 }
 
 // BW1W120 00751dd0
-VILLAGER_STATES Villager::GetFinalState() const
+VILLAGER_STATES Villager::GetFinalState()
 {
 	return VILLAGER_STATE_INVALID_STATE;
 }
@@ -618,7 +618,7 @@ uint32_t Villager::GetScriptObjectType()
 }
 
 // BW1W120 00753040
-bool Villager::IsTouching(MapCoords* param_1) const
+bool Villager::IsTouching(MapCoords* coords)
 {
 	return false;
 }

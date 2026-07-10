@@ -245,9 +245,9 @@ public:
 	// BW1W120 0076a4c0 BW1M100 1059a990 Villager::SetDying(void)
 	virtual bool32_t SetDying();
 	// BW1W120 00753040 BW1M100 inlined Villager::IsTouching(MapCoords *)
-	virtual bool IsTouching(MapCoords* param_1) const;
+	virtual bool IsTouching(MapCoords* coords);
 	// BW1W120 0055c9a0 BW1M100 inlined Villager::IsTouching(Object *, float)
-	virtual bool IsTouching(Object* param_1, float param_2) const;
+	virtual bool IsTouching(Object* target, float epsilon);
 	// BW1W120 007564a0 BW1M100 105651b0 Villager::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00753080 BW1M100 1056a940 Villager::InterfaceSetInMagicHand(GInterfaceStatus *)
@@ -490,7 +490,7 @@ public:
 	// BW1W120 0055c970 BW1M100 10064ef0 Villager::IsChild(void)
 	virtual bool32_t IsChild();
 	// BW1W120 00751dd0 BW1M100 1004ec00 Villager::GetFinalState(void) const
-	virtual VILLAGER_STATES GetFinalState() const;
+	virtual VILLAGER_STATES GetFinalState();
 	// BW1W120 00751510 BW1M100 1056ec00 Villager::RemoveFromDance(int)
 	virtual void RemoveFromDance(int param_1);
 	// BW1W120 00759b80 BW1M100 10577060 Villager::SetStateAfterFinishingDance(void)
@@ -516,9 +516,9 @@ public:
 	// BW1W120 00473ee0 BW1M100 inlined Villager::IsPosValidForTurnAngle(MapCoords const &)
 	virtual bool IsPosValidForTurnAngle(const MapCoords* param_1);
 	// BW1W120 0055ca40 BW1M100 100c54f0 Villager::GetVillagerName(void)
-	virtual const char* GetVillagerName();
+	const char* GetVillagerName();
 	// BW1W120 0051b510 BW1M100 10057c40 Villager::DrawVillagerInfo(void)
-	virtual uint32_t DrawVillagerInfo();
+	uint32_t DrawVillagerInfo();
 
 	// Static methods
 
