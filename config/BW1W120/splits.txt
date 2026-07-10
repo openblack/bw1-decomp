@@ -1638,7 +1638,7 @@ Lionhead/LHLib/ver5.0/LHMem.cpp:
 	.text       start:0x007E69D0 end:0x007E6A50
 
 Lionhead/LHLib/ver5.0/LHScript.cpp:
-	.text       start:0x007E72C0 end:0x007E8D10
+	.text       start:0x007E72C0 end:0x007EA0B0
 
 Lionhead/LH3DLib/development/LH3DSmoke.cpp:
 	.text       start:0x007F8B60 end:0x007F8D30
