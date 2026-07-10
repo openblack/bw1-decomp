@@ -232,21 +232,8 @@ void Abode::MakeFunctional()
 
 float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 {
-	float score = 1.0f;
-	if (!villager->IsChild())
-	{
-		int max_adults = ((GAbodeInfo*)info)->MaxVillagersInAbode;
-		if (max_adults == 0)
-		{
-			return 0.0f;
-		}
-		float adult_ratio = (float)AdultCount / (float)max_adults;
-		if (adult_ratio < 1.0f)
-		{
-			score = adult_ratio;
-		}
-	}
-	else
+	float score;
+	if (villager->IsChild())
 	{
 		int max_children = ((GAbodeInfo*)info)->MaxChildrenInAbode;
 		if (max_children == 0)
@@ -257,6 +244,26 @@ float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 		if (child_ratio < 1.0f)
 		{
 			score = child_ratio;
+		}
+		else
+		{
+			score = 1.0f;
+		}
+	}
+	else
+	{
+		int max_adults = ((GAbodeInfo*)info)->MaxVillagersInAbode;
+		if (max_adults == 0)
+		{
+			return 0.0f;
+		}
+		if ((float)AdultCount / (float)max_adults < 1.0f)
+		{
+			score = (float)AdultCount / (float)max_adults;
+		}
+		else
+		{
+			score = 1.0f;
 		}
 	}
 	score = 1.0f - score;
@@ -277,8 +284,8 @@ float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 		{
 			sex_modifier = (((1.0f - same_sex_count / (float)villagers.count) + 1.0f) * 0.5f);
 		}
-		float distance = GUtils::GetDistanceInMetres(coords, villager->coords);
-		float distance_modifier = GUtils::GetDistanceModifier(distance, 500.0f);
+		float distance_modifier =
+			GUtils::GetDistanceModifier(GUtils::GetDistanceInMetres(coords, villager->coords), 500.0f);
 		score = (distance_modifier + 1.0f) * 0.50f * sex_modifier * score;
 	}
 	return score;
