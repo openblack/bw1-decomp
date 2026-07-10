@@ -455,6 +455,8 @@ public:
 	virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
 	// BW1W120 00768570 BW1M100 10594c30 GameThingWithPos::AttitudeToCreatureEating(void)
 	virtual uint32_t AttitudeToCreatureEating();
+	// BW1W120 00402b40 BW1M100 1016dc30 Object::GetText(void)
+	virtual const char* GetText();
 	// BW1W120 00402200 BW1M100 100db7b0 GameThingWithPos::CalculateDesireForFood(void)
 	virtual float CalculateDesireForFood();
 	// BW1W120 00402210 BW1M100 10111950 GameThingWithPos::CalculateDesireForRest(void)

@@ -97,20 +97,14 @@ public:
 	virtual float GetScale();
 	// BW1W120 00639200 BW1M100 103d3c80 Object::SetScale(float)
 	virtual void SetScale(float scale);
-	// BW1W120 004027c0 BW1M100 1016ea00 Object::GetDistanceFromObject(MapCoords &)
-	virtual float GetDistanceFromObject(const MapCoords* target);
 	// BW1W120 006394e0 BW1M100 103d35f0 Object::GetPhysicsMovementDirection(LHPoint *)
 	virtual void GetPhysicsMovementDirection(LHPoint* pos);
 	// BW1W120 00402710 BW1M100 10032610 Object::IsMoving( const(void))
 	virtual bool IsMoving();
-	// BW1W120 006392b0 BW1M100 10037930 Object::IsObjectInMap(void)
-	virtual bool IsObjectInMap();
 	// BW1W120 0063a780 BW1M100 103d07e0 Object::IsDrowning(void)
 	virtual bool32_t IsDrowning();
 	// BW1W120 006377f0 BW1M100 103d6d80 Object::CleanupWhenDeleted(int)
 	virtual void CleanupWhenDeleted(int param_1);
-	// BW1W120 00639860 BW1M100 103d2e30 Object::GetImpressiveValue(Living *, Reaction *)
-	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
 	// BW1W120 00639940 BW1M100 103d2cf0 Object::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
 	virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
 	// BW1W120 00638550 BW1M100 103d5010 Object::IsBuildingMaterial(void)
@@ -159,8 +153,6 @@ public:
 	virtual bool32_t CanBeKickedByCreature(Creature* creature);
 	// BW1W120 0063b8d0 BW1M100 103da7f0 Object::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
 	virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
-	// BW1W120 00402b40 BW1M100 1016dc30 Object::GetText(void)
-	virtual const char* GetText();
 	// BW1W120 00638120 BW1M100 10030760 Object::GetHeight(void)
 	virtual float GetHeight();
 	// BW1W120 00639b20 BW1M100 103d2290 Object::SetInScript(int)
@@ -348,7 +340,7 @@ public:
 	// BW1W120 006385d0 BW1M100 103d4c90 Object::GetHandHelpCondition(void)
 	virtual uint32_t GetHandHelpCondition();
 	// BW1W120 00636be0 BW1M100 103d84b0 Object::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 006364f0 BW1M100 103d92f0 Object::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 004026d0 BW1M100 10586d80 Object::GetFoodValue(FOOD_TYPE)
@@ -394,7 +386,9 @@ public:
 	// BW1W120 00637e60 BW1M100 103d5970 Object::IsTouching(MapCoords const &, MapCoords const &)
 	virtual bool IsTouching(MapCoords* param_1, MapCoords* param_2);
 	// BW1W120 00637e30 BW1M100 103d5ef0 Object::IsTouching(MapCoords const &)
-	virtual bool IsTouching(MapCoords* param_1);
+	virtual bool IsTouching(MapCoords* coords);
+	// BW1W120 00637e00 BW1M100 103d5f70 Object::IsTouching(Object *, float)
+	virtual bool IsTouching(Object* target, float epsilon);
 	// BW1W120 00419300 BW1M100 100a9e50 Object::StartOnFire(void)
 	virtual void StartOnFire();
 	// BW1W120 004027b0 BW1M100 100a8170 Object::EndOnFire(void)
@@ -627,8 +621,6 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 00637e00 BW1M100 103d5f70 Object::IsTouching(Object *, float)
-	bool IsTouching(Object* param_1, float param_2);
 	// BW1W120 00638560 BW1M100 1005ba80 Object::GetMapChild(MapCoords const &)
 	Object* GetMapChild(const MapCoords* coord);
 	// BW1W120 0063a810 BW1M100 103d04b0 Object::CreateSmokyStuff(long, float, LH3DColor)
