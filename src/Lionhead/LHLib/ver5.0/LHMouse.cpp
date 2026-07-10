@@ -21,7 +21,6 @@
 extern LHScreen  g_lhScreen;       // 0xE85050
 extern LHDraw    gLHDraw;          // 0xE8586C
 extern HINSTANCE g_hInstance;      // 0xE85040
-extern HWND      g_mainWindow;     // 0xE85078
 extern LHMouse*  gMouse;           // 0xE85204
 extern int       gMouseWheelAccum; // 0xE85300
 extern uint8_t   gMouseWheelSkip;  // 0xC311A4
@@ -108,7 +107,7 @@ int LHMouse::InitDirectInput()
 		return 2;
 	if (gMouseDevice->SetDataFormat(&c_dfDIMouse) < 0)
 		return 2;
-	if (gMouseDevice->SetCooperativeLevel(g_mainWindow, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND) >= 0)
+	if (gMouseDevice->SetCooperativeLevel(g_lhScreen.MsWindowHandle, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND) >= 0)
 		return gMouseDevice->Acquire() >= 0 ? 0 : 2;
 	return 2;
 }
@@ -251,7 +250,7 @@ int LHMouse::SetPosition(LHCoord* position)
 	if (gWindowedMode)
 	{
 		ImageMode = 1;
-		PostMessageA(g_mainWindow, 0x8007, 0, 0);
+		PostMessageA(g_lhScreen.MsWindowHandle, 0x8007, 0, 0);
 		gMouse->UpdateCurrentPos(*position);
 		gMouse->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)4);
 	}
@@ -260,7 +259,7 @@ int LHMouse::SetPosition(LHCoord* position)
 		POINT point;
 		point.x = position->x;
 		point.y = position->y;
-		ClientToScreen(g_mainWindow, &point);
+		ClientToScreen(g_lhScreen.MsWindowHandle, &point);
 		SetCursorPos(point.x, point.y);
 	}
 	return 0;
@@ -271,7 +270,7 @@ int LHMouse::SetPositionRel(LHCoord* delta)
 	POINT point;
 	point.x = delta->x + DefaultPos.x;
 	point.y = delta->y + DefaultPos.y;
-	ClientToScreen(g_mainWindow, &point);
+	ClientToScreen(g_lhScreen.MsWindowHandle, &point);
 	SetCursorPos(point.x, point.y);
 	return 0;
 }
@@ -459,7 +458,7 @@ int LHMouse::SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, int reallocSu
 				DoubleBuffered = 0;
 			}
 			LeaveCriticalSection(&g_screenCritSec);
-			PostMessageA(g_mainWindow, 0x8007, 0, 0);
+			PostMessageA(g_lhScreen.MsWindowHandle, 0x8007, 0, 0);
 		}
 		if ((ImageMode & ~7) != 0)
 		{
@@ -480,7 +479,7 @@ int LHMouse::SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, int reallocSu
 			DoubleBuffered = 0;
 		}
 		LeaveCriticalSection(&g_screenCritSec);
-		PostMessageA(g_mainWindow, 0x8007, 0, 0);
+		PostMessageA(g_lhScreen.MsWindowHandle, 0x8007, 0, 0);
 	}
 	LeaveCriticalSection(&g_screenCritSec);
 	return 0;
@@ -734,7 +733,7 @@ int LHMouse::SetAnimFrame()
 			return CurrentFrame;
 		}
 		CurrentFrame = 0;
-		return PostMessageA(g_mainWindow, 0x8006, 0, 0);
+		return PostMessageA(g_lhScreen.MsWindowHandle, 0x8006, 0, 0);
 	}
 	if (AnimType != 2)
 	{
@@ -764,7 +763,7 @@ int LHMouse::SetAnimFrame()
 			CurrentFrame = --result;
 			return result;
 		}
-		return PostMessageA(g_mainWindow, 0x8006, 0, 0);
+		return PostMessageA(g_lhScreen.MsWindowHandle, 0x8006, 0, 0);
 	}
 	if ((unsigned int)result >= (uint16_t)(FrameCount - 1))
 	{
@@ -872,7 +871,7 @@ void LHMouse::Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long fr
 	switch (animType)
 	{
 	case 0: {
-		PostMessageA(g_mainWindow, 0x8006, 0, 0);
+		PostMessageA(g_lhScreen.MsWindowHandle, 0x8006, 0, 0);
 		int savedMode = field_18;
 		FrameCount = 0;
 		CurrentFrame = 0;
@@ -897,14 +896,14 @@ void LHMouse::Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long fr
 				DoubleBuffered = 0;
 			}
 			LeaveCriticalSection(&g_screenCritSec);
-			PostMessageA(g_mainWindow, 0x8007, 0, 0);
+			PostMessageA(g_lhScreen.MsWindowHandle, 0x8007, 0, 0);
 			LeaveCriticalSection(&g_screenCritSec);
 		}
 		break;
 	}
 	case 1:
 	case 2:
-		PostMessageA(g_mainWindow, 0x8006, 0, 0);
+		PostMessageA(g_lhScreen.MsWindowHandle, 0x8006, 0, 0);
 		if (FrameBank)
 			ImageMode = 64;
 		AnimReverse = 0;
@@ -920,7 +919,7 @@ void LHMouse::Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long fr
 		CurrentFrame = 0;
 		FrameCount = FrameCount16 ? FrameCount16 : frameCount;
 		Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)256);
-		PostMessageA(g_mainWindow, 0x8005, 0, 0);
+		PostMessageA(g_lhScreen.MsWindowHandle, 0x8005, 0, 0);
 		LeaveCriticalSection(&g_screenCritSec);
 		break;
 	default:

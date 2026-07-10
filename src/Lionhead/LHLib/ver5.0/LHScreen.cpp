@@ -44,7 +44,6 @@ void LHPixel16Set(uint16_t value);
 int TurnOffMenu();
 
 // Fixed-address globals (MEMORY[...] in the dump).
-extern HWND               g_mainWindow;             // 0xE85078 main game window
 extern LHScreen           g_lhScreen;               // 0xE85050 the global LHScreen instance
 extern HWND               g_windowForScreen;        // 0xE8C0F4 HWND passed to SetMSWindowHandle
 extern int                g_d3dActive;              // 0xECA620 non-zero while D3D is running
@@ -112,9 +111,6 @@ extern IDirectDrawSurface7* unk_ECA63C; // extra surface restored on reactivate
 void sub_8A5440(char* scopeGuard);
 int  sub_8A5590(const char* fileName, uint32_t backAddress);
 void nullsub_203(char* scopeGuard);
-
-// GetAvailableVidMem().
-extern IDirectDraw7* unk_E8507C; // 0xE8507C DirectDraw object queried for IDirectDraw2
 
 // BW1W120 007dce20 BW1M100 1014e500 LHScreen::LHScreen(void)
 LHScreen::LHScreen()
@@ -246,8 +242,8 @@ void LHScreen::SetFullscreenMode(int mode)
 	{
 		LHAssertIgnoreAllAsserts = 1;
 		windowed = 0;
-		SetWindowLongA(g_mainWindow, GWL_STYLE, WS_POPUP);
-		SetWindowLongA(g_mainWindow, GWL_EXSTYLE, WS_EX_TOPMOST);
+		SetWindowLongA(g_lhScreen.MsWindowHandle, GWL_STYLE, WS_POPUP);
+		SetWindowLongA(g_lhScreen.MsWindowHandle, GWL_EXSTYLE, WS_EX_TOPMOST);
 		TurnOffMenu();
 	}
 	else
@@ -648,15 +644,16 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 	if (!windowed)
 	{
 		sub_7DED10();
-		SetWindowLongA(g_mainWindow, GWL_STYLE, WS_POPUP);
+		SetWindowLongA(g_lhScreen.MsWindowHandle, GWL_STYLE, WS_POPUP);
 		int desktopHeight = GetSystemMetrics(SM_CYSCREEN);
-		SetWindowPos(g_mainWindow, HWND_TOPMOST, 0, 0, GetSystemMetrics(SM_CXSCREEN), desktopHeight, SWP_NOACTIVATE);
+		SetWindowPos(g_lhScreen.MsWindowHandle, HWND_TOPMOST, 0, 0, GetSystemMetrics(SM_CXSCREEN), desktopHeight,
+		             SWP_NOACTIVATE);
 		TurnOffMenu();
 	}
 	else
 	{
-		SetWindowLongA(g_mainWindow, GWL_STYLE, WS_OVERLAPPEDWINDOW); // 0x00CF0000
-		SetWindowLongA(g_mainWindow, GWL_EXSTYLE, 0);
+		SetWindowLongA(g_lhScreen.MsWindowHandle, GWL_STYLE, WS_OVERLAPPEDWINDOW); // 0x00CF0000
+		SetWindowLongA(g_lhScreen.MsWindowHandle, GWL_EXSTYLE, 0);
 		sub_7DECE0();
 		sub_7DB8F0();
 	}
@@ -1081,7 +1078,7 @@ int LHScreen::SaveBitmap()
 uint32_t LHScreen::GetAvailableVidMem()
 {
 	IDirectDraw2* dd2;
-	unk_E8507C->QueryInterface(IID_IDirectDraw2, (void**)&dd2);
+	g_lhScreen.PDirectDraw->QueryInterface(IID_IDirectDraw2, (void**)&dd2);
 	DDSCAPS caps;
 	caps.dwCaps = DDSCAPS_VIDEOMEMORY; // 0x4000
 	DWORD total;
