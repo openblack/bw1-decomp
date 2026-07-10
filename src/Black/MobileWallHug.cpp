@@ -1,5 +1,7 @@
 #include "MobileWallHug.h"
 
+#include "Utils.h"
+
 static CircleHugStateInfoT g_CircleHugStateInfo;
 
 // fabricated: an inlined helper is needed to reproduce the out-of-line
@@ -95,3 +97,20 @@ void MobileWallHug::SetupMobileMoveToPos(const MapCoords& coords, MOVE_TO_STATES
 }
 
 #pragma inline_depth()
+
+// BW1W120 0060da90 BW1M100 1004cce0 MobileWallHug::SetGameAngle(unsigned short)
+void MobileWallHug::SetGameAngle(uint16_t angle)
+{
+	GameAngle = angle;
+	Object::SetYAngle(GUtils::ConvertGameAngleTo3D(angle));
+}
+
+// BW1W120 0060f760 BW1M100 103c1910 MobileWallHug::SetToZero(void)
+void MobileWallHug::SetToZero()
+{
+	speed = 0;
+	TurnsUntilNextStateChange = 0;
+	SetGameAngle(0);
+	target = NULL;
+	footpath = NULL;
+}
