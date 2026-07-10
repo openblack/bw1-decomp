@@ -1286,6 +1286,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScript.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSpriteList.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHConvert.cpp"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSprite.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DSmoke.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DIsland.cpp"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DMesh.cpp"),

@@ -1646,6 +1646,9 @@ Lionhead/LHLib/ver5.0/LHSpriteList.cpp:
 Lionhead/LHLib/ver5.0/LHConvert.cpp:
 	.text       start:0x007EE6E0 end:0x007F04D0
 
+Lionhead/LHLib/ver5.0/LHSprite.cpp:
+	.text       start:0x007F04D0 end:0x007F1990
+
 Lionhead/LH3DLib/development/LH3DSmoke.cpp:
 	.text       start:0x007F8B60 end:0x007F8D30
 
