@@ -7,10 +7,7 @@
 bool32_t Living::SetupMoveToPos(const MapCoords& coord, uint8_t end_state)
 {
 	uint8_t state = ((const GLivingInfo*)info)->move_to_state;
-	// field_0x24 bit 7 = "on a structure": set by the MOVE_ON_STRUCTURE state
-	// handler (0x5ecd00) when a structure is found under the position, which
-	// also snaps coords altitude onto it.
-	if (field_0x24 & 0x80)
+	if (Flags & GAME_THING_WITH_POS_FLAG_ON_STRUCTURE)
 	{
 		state = VILLAGER_STATE_MOVE_ON_STRUCTURE;
 	}
