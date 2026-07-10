@@ -1693,6 +1693,9 @@ Lionhead/LH3DLib/development/LH3DOrientSprite.cpp:
 Lionhead/LH3DLib/development/Glow.cpp:
 	.text       start:0x0083D750 end:0x0083E4F0
 
+Lionhead/LH3DLib/development/LH3DStorm.cpp:
+	.text       start:0x0083F4E0 end:0x008404A0
+
 Lionhead/LH3DLib/development/LH3DWay.cpp:
 	.text       start:0x00842F10 end:0x00844620
 
