@@ -2,12 +2,6 @@ name: lint
 
 on:
   pull_request:
-    paths:
-      - '**.hpp'
-      - '**.cpp'
-      - '**.h'
-      - '**.c'
-      - '**.clang-format'
   push:
     branches:
       - main
