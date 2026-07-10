@@ -8,12 +8,14 @@ __pycache__
 .cache/
 
 # Original files
+orig
 orig/*/*
-!orig/*/.gitkeep
-*.dol
-*.rel
-*.elf
 *.o
+*.obj
+*.exe
+*.EXE
+*.lib
+*.LIB
 *.map
 *.MAP
 
