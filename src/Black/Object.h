@@ -589,6 +589,8 @@ public:
 	virtual float GetFacingPitch();
 	// BW1W120 00402b10 BW1M100 1058c010 Object::SetHeadPos(MapCoords *)
 	virtual void SetHeadPos(MapCoords* param_1);
+	// BW1W120 __purecall BW1M100 null Object::SaveObject(const MapCoords& )
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords) = 0;
 	// BW1W120 00402b30 BW1M100 1016e7f0 Object::IsAPotFromABuildingSite(void)
 	virtual bool IsAPotFromABuildingSite();
 	// BW1W120 00636cd0 BW1M100 103d8340 Object::GetNearestEdgeOfObject(Object *)
