@@ -373,15 +373,15 @@ public:
 	// BW1W120 00416fe0 BW1M100 inlined PuzzleHorse::IsFoodSpeedUp(void)
 	virtual bool IsFoodSpeedUp();
 	// BW1W120 005f1d10 BW1M100 inlined PuzzleHorse::FleeingFromObjectReaction(void)
-	virtual bool FleeingFromObjectReaction();
+	virtual bool32_t FleeingFromObjectReaction();
 	// BW1W120 005f23a0 BW1M100 inlined PuzzleHorse::LookingAtObjectReaction(void)
-	virtual bool LookingAtObjectReaction();
+	virtual bool32_t LookingAtObjectReaction();
 	// BW1W120 005f2420 BW1M100 inlined PuzzleHorse::FleeingAndLookingAtObjectReaction(void)
-	virtual bool FleeingAndLookingAtObjectReaction();
+	virtual bool32_t FleeingAndLookingAtObjectReaction();
 	// BW1W120 005f2430 BW1M100 inlined PuzzleHorse::FollowingObjectReaction(void)
-	virtual bool FollowingObjectReaction();
+	virtual bool32_t FollowingObjectReaction();
 	// BW1W120 005f2540 BW1M100 inlined PuzzleHorse::InspectObjectReaction(void)
-	virtual bool InspectObjectReaction();
+	virtual bool32_t InspectObjectReaction();
 	// BW1W120 005ec3f0 BW1M100 inlined PuzzleHorse::Dying(void)
 	virtual bool32_t Dying();
 	// BW1W120 005ec400 BW1M100 inlined PuzzleHorse::Dead(void)
@@ -389,9 +389,9 @@ public:
 	// BW1W120 005ec4d0 BW1M100 inlined PuzzleHorse::BeingEaten(void)
 	virtual bool32_t BeingEaten();
 	// BW1W120 005f2550 BW1M100 inlined PuzzleHorse::GotoFoodReaction(void)
-	virtual bool GotoFoodReaction();
+	virtual bool32_t GotoFoodReaction();
 	// BW1W120 005f25c0 BW1M100 inlined PuzzleHorse::GotoWoodReaction(void)
-	virtual bool GotoWoodReaction();
+	virtual bool32_t GotoWoodReaction();
 	// BW1W120 0041a9f0 BW1M100 inlined PuzzleHorse::MoveInFlock(void)
 	virtual bool MoveInFlock();
 	// BW1W120 005ef350 BW1M100 inlined PuzzleHorse::IsMovingForAnimation(void)
