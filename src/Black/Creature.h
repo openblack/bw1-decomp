@@ -453,7 +453,7 @@ public:
 	// BW1W120 00473f10 BW1M100 inlined Creature::CallOutofAnimationFunction(VILLAGER_STATES)
 	virtual int CallOutofAnimationFunction(uint8_t state);
 	// BW1W120 00473f40 BW1M100 inlined Creature::IsFinalState(VILLAGER_STATES)
-	virtual bool IsFinalState(VILLAGER_STATES param_1);
+	virtual bool IsFinalState(uint8_t state);
 	// BW1W120 00473f90 BW1M100 inlined Creature::SetAnim(int)
 	virtual void SetAnim(int anim);
 	// BW1W120 00473ef0 BW1M100 101e2be0 Creature::GetAnimId(void)

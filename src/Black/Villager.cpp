@@ -333,7 +333,7 @@ bool Villager::GetPrayerSite()
 }
 
 // BW1W120 00751980
-bool Villager::RestartDance(VILLAGER_STATES param_1)
+bool Villager::RestartDance(VILLAGER_STATES state)
 {
 	return false;
 }
@@ -389,7 +389,7 @@ Citadel* Villager::GetCitadel()
 // BW1W120 00751dd0
 VILLAGER_STATES Villager::GetFinalState() const
 {
-	return VILLAGER_STATES(0);
+	return VILLAGER_STATE_INVALID_STATE;
 }
 
 // BW1W120 00751e10
@@ -425,13 +425,13 @@ StoragePit* Villager::GetStoragePit()
 // BW1W120 00751f40
 VILLAGER_STATES Villager::GetVillagerAvailableState()
 {
-	return VILLAGER_STATES(0);
+	return VILLAGER_STATE_INVALID_STATE;
 }
 
 // BW1W120 00751f70
 VILLAGER_STATES Villager::FUN_00751f70()
 {
-	return VILLAGER_STATES(0);
+	return VILLAGER_STATE_INVALID_STATE;
 }
 
 // BW1W120 00751fa0
@@ -522,7 +522,7 @@ bool Villager::IsStateEntryFunctionSameAs(unsigned long param_1, unsigned long p
 }
 
 // BW1W120 00752530
-bool Villager::IsStateExitFunctionSameAs(VILLAGER_STATES param_1) const
+bool Villager::IsStateExitFunctionSameAs(VILLAGER_STATES state) const
 {
 	return false;
 }
@@ -558,7 +558,7 @@ bool Villager::MakeVillagerFaceObject(Object* param_1)
 }
 
 // BW1W120 007527a0
-int Villager::ExitReaction(VILLAGER_STATES param_1)
+int Villager::ExitReaction(VILLAGER_STATES state)
 {
 	return 0;
 }
@@ -714,7 +714,7 @@ GameThingWithPos* Villager::GetResourceDropoffPos(RESOURCE_TYPE param_1)
 }
 
 // BW1W120 00753f00
-bool Villager::IsFinalState(VILLAGER_STATES param_1)
+bool Villager::IsFinalState(VILLAGER_STATES state)
 {
 	return false;
 }
@@ -1149,7 +1149,7 @@ uint32_t Villager::AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfa
 // BW1W120 00756520
 VILLAGER_STATES Villager::LookAtPreviousStateReactToTownEmergency()
 {
-	return VILLAGER_STATES(0);
+	return VILLAGER_STATE_INVALID_STATE;
 }
 
 // BW1W120 00756530
