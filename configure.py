@@ -1275,6 +1275,7 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\sehsupp.obj", progress_category="sdk"),
 
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSystem.cpp"),
             Object(Matching, "Lionhead/LHLib/ver5.0/LHMem.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScreen.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp"),
