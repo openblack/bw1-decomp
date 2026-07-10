@@ -1708,6 +1708,9 @@ Lionhead/LH3DLib/development/LH3DHair.cpp:
 Lionhead/LH3DLib/development/Leash.cpp:
 	.text       start:0x008483C0 end:0x008499C0
 
+Lionhead/LH3DLib/development/CAnim.cpp:
+	.text       start:0x00860860 end:0x008629D0
+
 lib/libcmt/wcsdup.obj:
 	.text       start:0x008A5B0C end:0x008A5B3A align:1
 
