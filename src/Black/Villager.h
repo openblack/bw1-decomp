@@ -585,7 +585,7 @@ public:
 	// BW1W120 00751050 BW1M100 10021a00 Villager::CheckChildGrownUp(void)
 	int CheckChildGrownUp();
 	// BW1W120 00751110 BW1M100 1056f4c0 Villager::IsAMother(void)
-	bool IsAMother();
+	bool32_t IsAMother();
 	// BW1W120 00751190 BW1M100 1056f440 Villager::StartMoveToObject(Object *, VILLAGER_STATES)
 	bool StartMoveToObject(Object* param_1, VILLAGER_STATES param_2);
 	// BW1W120 007511b0 BW1M100 1009cd40 Villager::DropResource(RESOURCE_TYPE, unsigned short)
@@ -915,7 +915,7 @@ public:
 	// BW1W120 007580d0 BW1M100 105733f0 Villager::MakeChildOrphaned(Villager *)
 	uint32_t MakeChildOrphaned(Villager* param_1);
 	// BW1W120 00758180 BW1M100 10096f90 Villager::CheckNeededForCivic(void)
-	float CheckNeededForCivic();
+	bool32_t CheckNeededForCivic();
 	// BW1W120 007581a0 BW1M100 1007dae0 Villager::CheckNeededForTownDesire(void)
 	uint32_t CheckNeededForTownDesire();
 	// BW1W120 007581e0 BW1M100 10021390 Villager::GetOwnDesiresTrigger(void)
@@ -1726,7 +1726,7 @@ public:
 	// BW1W120 0076b9d0 BW1M100 1059c6f0 Villager::ExcessWood(void)
 	bool32_t ExcessWood();
 	// BW1W120 0076ba60 BW1M100 10096dd0 Villager::CheckNeededForWorship(void)
-	float CheckNeededForWorship();
+	bool32_t CheckNeededForWorship();
 	// BW1W120 0076bae0 BW1M100 1059ec20 Villager::CheckWorshipActivity(int)
 	float CheckWorshipActivity(int param_1);
 	// BW1W120 0076bc20 BW1M100 1059eaf0 Villager::CanIGetToTheWorshipSite(MagicTeleport * &)

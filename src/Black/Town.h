@@ -103,7 +103,7 @@ public:
 	Town*                            next;
 	uint32_t                         field_0x760;
 	uint32_t                         field_0x764;
-	LHLinkedList<Villager>           HomelessList;
+	LHListHead<Villager>             HomelessList;
 	uint32_t                         field_0x770;
 	uint32_t                         field_0x774;
 	LHListHead<TownSpellIcon>        SpellIconList;
@@ -317,7 +317,7 @@ public:
 	// BW1W120 0073d6b0 Town::IsAbodeTypeInTown(ABODE_TYPE)
 	uint32_t IsAbodeTypeInTown(ABODE_TYPE abode_type);
 	// BW1W120 007408b0 BW1M100 10008020 Town::GetCongregationPos(void)
-	MapCoords* GetCongregationPos(MapCoords* coords);
+	MapCoords GetCongregationPos();
 	// BW1W120 00741b40 BW1M100 105464d0 Town::MakeScenicForest(void)
 	void MakeScenicForest();
 	// BW1W120 007437f0 BW1M100 10071340 Town::UpdateAttitudeToCreature(void)
