@@ -86,8 +86,11 @@ Black/AnimalWolf.cpp:
 Black/AnimatedStatic.cpp:
 	.text       start:0x00421DE0 end:0x00423110
 
+Black/Animations.cpp:
+	.text       start:0x00423110 end:0x00424450
+
 Black/Arena.cpp:
-	.text       start:0x00423110 end:0x004258C0
+	.text       start:0x00424450 end:0x004258C0
 
 Black/Arrow.cpp:
 	.text       start:0x004258C0 end:0x00425C20
@@ -96,7 +99,10 @@ Black/Artifact.cpp:
 	.text       start:0x00425C20 end:0x00426AC0
 
 Black/Audio.cpp:
-	.text       start:0x00426AC0 end:0x0042A620
+	.text       start:0x00426AC0 end:0x00429150
+
+Black/AudioMusicThing.cpp:
+	.text       start:0x00429150 end:0x0042A620
 
 Black/audiotag.cpp:
 	.text       start:0x0042A620 end:0x0042B2C0
@@ -413,7 +419,7 @@ Black/FireFly.cpp:
 Black/FishFarm.cpp:
 	.text       start:0x0052C220 end:0x0052DB10
 
-Black/MultiMapFixed.cpp:
+Black/Fixed.cpp:
 	.text       start:0x0052DB10 end:0x0052F720
 
 Black/Flock.cpp:
@@ -423,10 +429,7 @@ Black/FootBall.cpp:
 	.text       start:0x00530E40 end:0x00534C10
 
 Black/Footpath.cpp:
-	.text       start:0x00534C10 end:0x00535810
-
-Black/FootpathLinkSave.cpp:
-	.text       start:0x00535810 end:0x005398D0
+	.text       start:0x00534C10 end:0x005398D0
 
 Black/Forest.cpp:
 	.text       start:0x005398D0 end:0x0053B420
@@ -467,11 +470,8 @@ Black/GameStatsFrontEnd.cpp:
 Black/GameThing.cpp:
 	.text       start:0x0056F960 end:0x00570620
 
-Black/GatheringBox.cpp:
-	.text       start:0x00570620 end:0x00573D60
-
 Black/GatheringInterface.cpp:
-	.text       start:0x00573D60 end:0x00575D70
+	.text       start:0x00570620 end:0x00575D70
 
 Black/GenerateCreatureHTML.cpp:
 	.text       start:0x005773F0 end:0x00578540
@@ -489,7 +489,13 @@ Black/GestureSystemResult.cpp:
 	.text       start:0x00579CE0 end:0x0057BA40
 
 Black/GJUtils.cpp:
-	.text       start:0x0057BA40 end:0x005907E0
+	.text       start:0x0057BA40 end:0x00580810
+
+Black/GJPersistent.cpp:
+	.text       start:0x00580810 end:0x00583DB0
+
+Black/GJProperty.cpp:
+	.text       start:0x00583DB0 end:0x005907E0
 
 Black/GJVnoise.cpp:
 	.text       start:0x005907E0 end:0x00590ED0
@@ -540,15 +546,21 @@ Black/HandStateTug.cpp:
 	.text       start:0x005B7D50 end:0x005B8E90
 
 Black/helpdude.cpp:
-	.text       start:0x005B8E90 end:0x005C3D90
+	.text       start:0x005B8E90 end:0x005C2A10
+
+Black/HelpDudeControl.cpp:
+	.text       start:0x005C2A10 end:0x005C3D90
 
 Black/HelpDudeLipSync.cpp:
 	.text       start:0x005C3D90 end:0x005C42E0
 
-Black/HelpProfile.cpp:
-	.text       start:0x005C42E0 end:0x005C4974
+Black/HelpEditor.cpp:
+	.text       start:0x005C42E0 end:0x005C4500
 
-Black/HelpSpiritInfo.cpp:
+Black/HelpProfile.cpp:
+	.text       start:0x005C4500 end:0x005C4974
+
+Black/HelpSpirit.cpp:
 	.text       start:0x005C4974 end:0x005C52F0
 
 Black/HelpSystem.cpp:
@@ -639,10 +651,10 @@ Black/Lobbybox.cpp:
 	.text       start:0x005F5180 end:0x005F8760
 
 Black/logo.cpp:
-	.text       start:0x005F8760 end:0x005FA1C0
+	.text       start:0x005F8760 end:0x005FA710
 
 Black/MagicCreatureSpellInfo.cpp:
-	.text       start:0x005FA1C0 end:0x005FA850
+	.text       start:0x005FA710 end:0x005FA850
 
 Black/MagicFood.cpp:
 	.text       start:0x005FA850 end:0x005FAB80
@@ -712,10 +724,10 @@ Black/MPFEChannelData.cpp:
 	.text       start:0x00622440 end:0x00626670
 
 Black/MPFEChannelMessages.cpp:
-	.text       start:0x00626670 end:0x0062A2C0
+	.text       start:0x00626670 end:0x00628260
 
 Black/MPFEChannelSelector.cpp:
-	.text       start:0x0062A2C0 end:0x0062AC00
+	.text       start:0x00628260 end:0x0062AC00
 
 Black/MPFEChooseConnection.cpp:
 	.text       start:0x0062AC00 end:0x0062B8C0
@@ -865,13 +877,10 @@ Black/PSysEvents.cpp:
 	.text       start:0x0067D7F0 end:0x0067E100
 
 Black/PSysExplosion.cpp:
-	.text       start:0x0067E100 end:0x0067FFB0
+	.text       start:0x0067E100 end:0x00681110
 
 Black/PSysFireball.cpp:
-	.text       start:0x0067FFB0 end:0x00682640
-
-Black/PSysFlock.cpp:
-	.text       start:0x00682640 end:0x006833B0
+	.text       start:0x00681110 end:0x006833B0
 
 Black/PSysGeom.cpp:
 	.text       start:0x006833B0 end:0x00687A30
@@ -1251,8 +1260,11 @@ Black/Weather.cpp:
 	.text       start:0x00770D30 end:0x00773C00
 	.rdata      start:0x0099F014 end:0x0099F01C
 
+Black/WeatherRain.cpp:
+	.text       start:0x00773C00 end:0x00773E60
+
 Black/WeatherThing.cpp:
-	.text       start:0x00773C00 end:0x00774A20
+	.text       start:0x00773E60 end:0x00774A20
 
 Black/Whale.cpp:
 	.text       start:0x00774A20 end:0x00778D20
