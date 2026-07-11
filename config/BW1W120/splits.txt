@@ -213,7 +213,76 @@ Black/CPUCheck.cpp:
 	.text       start:0x00471A20 end:0x00472A10
 
 Black/Creature.cpp:
-	.text       start:0x00472A10 end:0x004EED00
+	.text       start:0x00472A10 end:0x0047F110
+
+Black/Creature3D.cpp:
+	.text       start:0x0047F110 end:0x00491690
+
+Black/CreatureAction.cpp:
+	.text       start:0x00491690 end:0x004C48F0
+
+Black/CreatureAttitudeToCreature.cpp:
+	.text       start:0x004C48F0 end:0x004C5500
+
+Black/CreatureDevelopment.cpp:
+	.text       start:0x004C5500 end:0x004C5F50
+
+Black/CreatureDirectControl.cpp:
+	.text       start:0x004C5F50 end:0x004C8410
+
+Black/CreatureFace.cpp:
+	.text       start:0x004C8410 end:0x004C88A0
+
+Black/CreatureHelp.cpp:
+	.text       start:0x004C88A0 end:0x004CB340
+
+Black/CreatureInitialLesson.cpp:
+	.text       start:0x004CB340 end:0x004CF170
+
+Black/CreatureLessonChooser.cpp:
+	.text       start:0x004CF170 end:0x004D02C0
+
+Black/CreatureLook.cpp:
+	.text       start:0x004D02C0 end:0x004D2270
+
+Black/CreatureMental.cpp:
+	.text       start:0x004D2270 end:0x004D41F0
+
+Black/CreatureMentalAttributeTest.cpp:
+	.text       start:0x004D41F0 end:0x004D7790
+
+Black/CreatureMentalBelief.cpp:
+	.text       start:0x004D7790 end:0x004D9610
+
+Black/CreatureMentalBeliefs.cpp:
+	.text       start:0x004D9610 end:0x004DB220
+
+Black/CreatureMentalDesire.cpp:
+	.text       start:0x004DB220 end:0x004DD000
+
+Black/CreatureMentalDesireSource.cpp:
+	.text       start:0x004DD000 end:0x004DF1F0
+
+Black/CreatureMentalExploration.cpp:
+	.text       start:0x004DF1F0 end:0x004E0210
+
+Black/CreatureMentalLearn.cpp:
+	.text       start:0x004E0210 end:0x004E2170
+
+Black/CreatureMentalLearnAction.cpp:
+	.text       start:0x004E2170 end:0x004E2C90
+
+Black/CreatureMentalMisc.cpp:
+	.text       start:0x004E2C90 end:0x004E4DF0
+
+Black/CreatureMentalSaveAndLoad.cpp:
+	.text       start:0x004E4DF0 end:0x004E9BC0
+
+Black/CreatureMimic.cpp:
+	.text       start:0x004E9BC0 end:0x004EABE0
+
+Black/CreatureMorph.cpp:
+	.text       start:0x004EABE0 end:0x004EED00
 
 Black/CreaturePen.cpp:
 	.text       start:0x004EED00 end:0x004EF240
@@ -234,7 +303,16 @@ Black/CreatureScript.cpp:
 	.text       start:0x004F6060 end:0x004F7110
 
 Black/CreatureSelect.cpp:
-	.text       start:0x004F7110 end:0x0050A8F0
+	.text       start:0x004F7110 end:0x004F8CF0
+
+Black/CreatureSubAction.cpp:
+	.text       start:0x004F8CF0 end:0x004FF8E0
+
+Black/CreatureSubActions.cpp:
+	.text       start:0x004FF8E0 end:0x00508E40
+
+Black/CreatureWhatToDoNext.cpp:
+	.text       start:0x00508E40 end:0x0050A8F0
 
 Black/Creche.cpp:
 	.text       start:0x0050A8F0 end:0x0050ABB0
@@ -1197,8 +1275,38 @@ Black/WorshipSpellIcon.cpp:
 Black/WorshipTotem.cpp:
 	.text       start:0x00780640 end:0x00781030
 
+Black/ChallengeRoom.cpp:
+	.text       start:0x00781030 end:0x007864B0
+
+Black/CreatureRoom.cpp:
+	.text       start:0x007864B0 end:0x00789D20
+
+Black/CreatureRoomCamera.cpp:
+	.text       start:0x00789D20 end:0x0078E870
+
+Black/PathCreator.cpp:
+	.text       start:0x0078E870 end:0x0078F0D0
+
+Black/PictureRoom.cpp:
+	.text       start:0x0078F0D0 end:0x0078F6B0
+
+Black/SaveGameRoom.cpp:
+	.text       start:0x0078F6B0 end:0x00793970
+
 Black/Temple.cpp:
-	.text       start:0x00781030 end:0x0079F910
+	.text       start:0x00793970 end:0x00794AB0
+
+Black/TempleEngine.cpp:
+	.text       start:0x00794AB0 end:0x00798240
+
+Black/TempleRoom.cpp:
+	.text       start:0x00798240 end:0x0079A850
+
+Black/TempleRoomAddText.cpp:
+	.text       start:0x0079A850 end:0x0079CCB0
+
+Black/WorldRoom.cpp:
+	.text       start:0x0079CCB0 end:0x0079F910
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
 	.text       start:0x007AD230 end:0x007AE6B0
