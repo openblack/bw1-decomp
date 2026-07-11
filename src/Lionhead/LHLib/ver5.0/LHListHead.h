@@ -29,6 +29,34 @@ struct LHListHead
 		}
 		return walker;
 	}
+
+	void Remove(T* element)
+	{
+		if (head == element)
+		{
+			head = element->next;
+		}
+		else
+		{
+			T* walker = head;
+			while (true)
+			{
+				if (walker == NULL)
+				{
+					return;
+				}
+				T* next = walker->next;
+				if (next == element)
+				{
+					break;
+				}
+				walker = next;
+			}
+			walker->next = element->next;
+		}
+		count--;
+		element->next = NULL;
+	}
 };
 
 #endif /* BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H */
