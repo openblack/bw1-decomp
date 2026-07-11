@@ -277,99 +277,143 @@ Black/CPUCheck.cpp:
 
 Black/Creature.cpp:
 	.text       start:0x00472A10 end:0x0047F110
+	.rdata      start:0x008CBF44 end:0x008CF2F0
 	.CRT$XCU    start:0x009C6330 end:0x009C6364
+	.data       start:0x009CF9B8 end:0x009D1078
+	.bss        start:0x00C5FD20 end:0x00C641F4
 
 Black/Creature3D.cpp:
 	.text       start:0x0047F110 end:0x00491690
 	.CRT$XCU    start:0x009C6364 end:0x009C637C
+	.data       start:0x009D1078 end:0x009D7D90
+	.bss        start:0x00C641F4 end:0x00C66084
 
 Black/CreatureAction.cpp:
 	.text       start:0x00491690 end:0x004C48F0
 	.CRT$XCU    start:0x009C637C end:0x009C63BC
+	.data       start:0x009D7D90 end:0x009D96E0
+	.bss        start:0x00C66084 end:0x00C82640
 
 Black/CreatureAttitudeToCreature.cpp:
 	.text       start:0x004C48F0 end:0x004C5500
 	.CRT$XCU    start:0x009C63BC end:0x009C63E0
+	.bss        start:0x00C82640 end:0x00C82658
 
 Black/CreatureDevelopment.cpp:
 	.text       start:0x004C5500 end:0x004C5F50
 	.CRT$XCU    start:0x009C63E0 end:0x009C63F0
+	.data       start:0x009D96E0 end:0x009D97C8
+	.bss        start:0x00C82658 end:0x00C82820
 
 Black/CreatureDirectControl.cpp:
 	.text       start:0x004C5F50 end:0x004C8410
+	.rdata      start:0x008CF2F0 end:0x008CFF9C
 	.CRT$XCU    start:0x009C63F0 end:0x009C6414
+	.data       start:0x009D97C8 end:0x009D9B58
+	.bss        start:0x00C82820 end:0x00C8283C
 
 Black/CreatureFace.cpp:
 	.text       start:0x004C8410 end:0x004C88A0
 	.CRT$XCU    start:0x009C6414 end:0x009C6420
+	.bss        start:0x00C8283C end:0x00C82844
 
 Black/CreatureHelp.cpp:
 	.text       start:0x004C88A0 end:0x004CB340
 	.CRT$XCU    start:0x009C6420 end:0x009C6434
+	.data       start:0x009D9B58 end:0x009DD3EC
+	.bss        start:0x00C82844 end:0x00C82914
 
 Black/CreatureInitialLesson.cpp:
 	.text       start:0x004CB340 end:0x004CF170
 	.CRT$XCU    start:0x009C6434 end:0x009C644C
+	.data       start:0x009DD3EC end:0x009DD658
+	.bss        start:0x00C82914 end:0x00C82F28
 
 Black/CreatureLessonChooser.cpp:
 	.text       start:0x004CF170 end:0x004D02C0
 	.CRT$XCU    start:0x009C644C end:0x009C6458
+	.data       start:0x009DD658 end:0x009DD7E8
+	.bss        start:0x00C82F28 end:0x00C82F38
 
 Black/CreatureLook.cpp:
 	.text       start:0x004D02C0 end:0x004D2270
 	.CRT$XCU    start:0x009C6458 end:0x009C6464
+	.data       start:0x009DD7E8 end:0x00BDEA58
+	.bss        start:0x00C82F38 end:0x00C82F40
 
 Black/CreatureMental.cpp:
 	.text       start:0x004D2270 end:0x004D41F0
 	.CRT$XCU    start:0x009C6464 end:0x009C6494
+	.bss        start:0x00C82F40 end:0x00C84388
 
 Black/CreatureMentalAttributeTest.cpp:
 	.text       start:0x004D41F0 end:0x004D7790
 	.CRT$XCU    start:0x009C6494 end:0x009C64A0
+	.data       start:0x00BDEA58 end:0x00BDF390
+	.bss        start:0x00C84388 end:0x00C84390
 
 Black/CreatureMentalBelief.cpp:
 	.text       start:0x004D7790 end:0x004D9610
 	.CRT$XCU    start:0x009C64A0 end:0x009C64AC
+	.bss        start:0x00C84390 end:0x00C84398
 
 Black/CreatureMentalBeliefs.cpp:
 	.text       start:0x004D9610 end:0x004DB220
 	.CRT$XCU    start:0x009C64AC end:0x009C64B8
+	.data       start:0x00BDF390 end:0x00BDF508
+	.bss        start:0x00C84398 end:0x00C843A4
 
 Black/CreatureMentalDesire.cpp:
 	.text       start:0x004DB220 end:0x004DD000
 	.CRT$XCU    start:0x009C64B8 end:0x009C64D8
+	.data       start:0x00BDF508 end:0x00BDF5B0
+	.bss        start:0x00C843A4 end:0x00C892A0
 
 Black/CreatureMentalDesireSource.cpp:
 	.text       start:0x004DD000 end:0x004DF1F0
 	.CRT$XCU    start:0x009C64D8 end:0x009C6510
+	.data       start:0x00BDF5B0 end:0x00BDF8B0
+	.bss        start:0x00C892A0 end:0x00C8DC28
 
 Black/CreatureMentalExploration.cpp:
 	.text       start:0x004DF1F0 end:0x004E0210
 	.CRT$XCU    start:0x009C6510 end:0x009C652C
+	.data       start:0x00BDF8B0 end:0x00BDF938
+	.bss        start:0x00C8DC28 end:0x00CA9C54
 
 Black/CreatureMentalLearn.cpp:
 	.text       start:0x004E0210 end:0x004E2170
 	.CRT$XCU    start:0x009C652C end:0x009C6538
+	.data       start:0x00BDF938 end:0x00BDFDA8
+	.bss        start:0x00CA9C54 end:0x00CA9C5C
 
 Black/CreatureMentalLearnAction.cpp:
 	.text       start:0x004E2170 end:0x004E2C90
 	.CRT$XCU    start:0x009C6538 end:0x009C6544
+	.data       start:0x00BDFDA8 end:0x00BDFE30
+	.bss        start:0x00CA9C5C end:0x00CAAED4
 
 Black/CreatureMentalMisc.cpp:
 	.text       start:0x004E2C90 end:0x004E4DF0
 	.CRT$XCU    start:0x009C6544 end:0x009C6570
+	.data       start:0x00BDFE30 end:0x00BDFEB8
+	.bss        start:0x00CAAED4 end:0x00CAB164
 
 Black/CreatureMentalSaveAndLoad.cpp:
 	.text       start:0x004E4DF0 end:0x004E9BC0
 	.CRT$XCU    start:0x009C6570 end:0x009C658C
+	.data       start:0x00BDFEB8 end:0x00BE0028
+	.bss        start:0x00CAB164 end:0x00CAB184
 
 Black/CreatureMimic.cpp:
 	.text       start:0x004E9BC0 end:0x004EABE0
 	.CRT$XCU    start:0x009C658C end:0x009C659C
+	.bss        start:0x00CAB184 end:0x00CAD410
 
 Black/CreatureMorph.cpp:
 	.text       start:0x004EABE0 end:0x004EED00
 	.CRT$XCU    start:0x009C659C end:0x009C65AC
+	.bss        start:0x00CAD410 end:0x00CAD41C
 
 Black/CreaturePen.cpp:
 	.text       start:0x004EED00 end:0x004EF240
@@ -398,18 +442,24 @@ Black/CreatureScript.cpp:
 Black/CreatureSelect.cpp:
 	.text       start:0x004F7110 end:0x004F8CF0
 	.CRT$XCU    start:0x009C6624 end:0x009C6654
+	.bss        start:0x00CADAD8 end:0x00CADB00
 
 Black/CreatureSubAction.cpp:
 	.text       start:0x004F8CF0 end:0x004FF8E0
 	.CRT$XCU    start:0x009C6654 end:0x009C6670
+	.bss        start:0x00CADB00 end:0x00CADB10
 
 Black/CreatureSubActions.cpp:
 	.text       start:0x004FF8E0 end:0x00508E40
 	.CRT$XCU    start:0x009C6670 end:0x009C6684
+	.data       start:0x00BE0A98 end:0x00BE67C8
+	.bss        start:0x00CADB10 end:0x00CADB2C
 
 Black/CreatureWhatToDoNext.cpp:
 	.text       start:0x00508E40 end:0x0050A8F0
 	.CRT$XCU    start:0x009C6684 end:0x009C669C
+	.data       start:0x00BE67C8 end:0x00BE67F8
+	.bss        start:0x00CADB2C end:0x00CADB3C
 
 Black/Creche.cpp:
 	.text       start:0x0050A8F0 end:0x0050ABB0
@@ -1678,30 +1728,40 @@ Black/WorshipTotem.cpp:
 Black/ChallengeRoom.cpp:
 	.text       start:0x00781030 end:0x007864B0
 	.CRT$XCU    start:0x009C7B20 end:0x009C7B3C
+	.data       start:0x00C24EB4 end:0x00C275C8
+	.bss        start:0x00DD0BE0 end:0x00DE0F68
 
 Black/CreatureRoom.cpp:
 	.text       start:0x007864B0 end:0x00789D20
 	.CRT$XCU    start:0x009C7B3C end:0x009C7B58
+	.data       start:0x00C275C8 end:0x00C28578
+	.bss        start:0x00DE0F68 end:0x00DE19E0
 
 Black/CreatureRoomCamera.cpp:
 	.text       start:0x00789D20 end:0x0078E870
 	.CRT$XCU    start:0x009C7B58 end:0x009C7B9C
+	.bss        start:0x00DE19E0 end:0x00E01EC4
 
 Black/PathCreator.cpp:
 	.text       start:0x0078E870 end:0x0078F0D0
 	.CRT$XCU    start:0x009C7B9C end:0x009C7BA4
+	.data       start:0x00C28578 end:0x00C28608
+	.bss        start:0x00E01EC4 end:0x00E05F20
 
 Black/PictureRoom.cpp:
 	.text       start:0x0078F0D0 end:0x0078F6B0
 	.CRT$XCU    start:0x009C7BA4 end:0x009C7BA8
+	.data       start:0x00C28608 end:0x00C286A0
 
 Black/SaveGameRoom.cpp:
 	.text       start:0x0078F6B0 end:0x00793970
 	.CRT$XCU    start:0x009C7BA8 end:0x009C7BB8
+	.bss        start:0x00E05F20 end:0x00E05FE4
 
 Black/Temple.cpp:
 	.text       start:0x00793970 end:0x00794AB0
 	.CRT$XCU    start:0x009C7BB8 end:0x009C7BD8
+	.bss        start:0x00E05FE4 end:0x00E360B8
 
 Black/TempleEngine.cpp:
 	.text       start:0x00794AB0 end:0x00798240
@@ -1710,14 +1770,18 @@ Black/TempleEngine.cpp:
 Black/TempleRoom.cpp:
 	.text       start:0x00798240 end:0x0079A850
 	.CRT$XCU    start:0x009C7BDC end:0x009C7C00
+	.bss        start:0x00E360B8 end:0x00E36144
 
 Black/TempleRoomAddText.cpp:
 	.text       start:0x0079A850 end:0x0079CCB0
 	.CRT$XCU    start:0x009C7C00 end:0x009C7C0C
+	.data       start:0x00C286A0 end:0x00C2A5A0
+	.bss        start:0x00E36144 end:0x00E36150
 
 Black/WorldRoom.cpp:
 	.text       start:0x0079CCB0 end:0x0079F910
 	.CRT$XCU    start:0x009C7C0C end:0x009C7C80
+	.bss        start:0x00E36150 end:0x00E3A168
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
 	.text       start:0x007AD230 end:0x007AE6B0
