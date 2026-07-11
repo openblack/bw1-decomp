@@ -51,8 +51,8 @@ struct MapCoords
 
 	// Constructors
 
-	// BW1W120 00441b60 BW1M100 1006e040 MapCoords::MapCoords(void)
-	MapCoords();
+	// BW1W120 inlined BW1M100 1006e040 MapCoords::MapCoords(void)
+	MapCoords() : x(0), z(0), altitude(0.0f) {}
 	// BW1W120 006031b0 BW1M100 1004feb0 MapCoords::MapCoords(long, long, float)
 	MapCoords(long x, long z, float altitude);
 	// BW1W120 006031d0 BW1M100 10324c60 MapCoords::MapCoords(char *)
@@ -75,7 +75,7 @@ struct MapCoords
 	// BW1W120 00605470 BW1M100 100494b0 MapCoords::operator+=(JustMapXZ const &)
 	MapCoords* operator+=(const JustMapXZ& other) const;
 	// BW1W120 00605520 BW1M100 100503e0 MapCoords::operator+(MapCoords const &) const
-	MapCoords* operator+(const MapCoords& other) const;
+	MapCoords operator+(const MapCoords& other) const;
 	// BW1W120 006020e0 BW1M100 1048f050 MapCoords::GetNearestTown(float) const
 	Town* GetNearestTown(float t_max);
 	// BW1W120 00603280 BW1M100 10513100 MapCoords::Set(char *)

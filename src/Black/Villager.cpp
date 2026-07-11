@@ -15,6 +15,9 @@
 #include "Reaction.h"
 #include "StoragePit.h"
 #include "Town.h"
+#include "TownInfo.h"
+#include "Utils.h"
+#include "Rand.h"
 
 // clang-format off
 static const DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST] = {
@@ -185,7 +188,7 @@ int Villager::CheckChildGrownUp()
 }
 
 // BW1W120 00751110
-bool Villager::IsAMother()
+bool32_t Villager::IsAMother()
 {
 	return false;
 }
@@ -686,12 +689,59 @@ void Villager::SetStateSpeed(unsigned char param_1) {}
 // BW1W120 00753b50
 uint32_t Villager::SetupNothingToDo()
 {
-	return 0;
+	Town*  town = GetTown();
+	Abode* abode = GetAbode();
+	switch (GRand::GameRand(9, __FILE__, __LINE__))
+	{
+	case 0:
+		if ((abode != NULL && abode->IsFunctional()) || GRand::GameRand(100, __FILE__, __LINE__) < 10u)
+		{
+			SetTopState(VILLAGER_STATE_GO_HOME);
+			return true;
+		}
+	case 1:
+	case 2:
+	case 3:
+		if (abode != NULL)
+		{
+			SetTopState(VILLAGER_STATE_GO_AND_CHILLOUT_OUTSIDE_HOME);
+			return true;
+		}
+	case 4:
+	case 5:
+	case 6:
+	case 7:
+	case 8:
+		if (town != NULL)
+		{
+			MapCoords pos;
+			if (GetChillOutPos(pos))
+			{
+				SetupMoveToWithHug(pos, VILLAGER_STATE_SIT_AND_CHILLOUT);
+				return true;
+			}
+		}
+	default:
+		SetTopState(VILLAGER_STATE_GO_HOME);
+		return true;
+	}
 }
 
 // BW1W120 00753c70
 uint32_t Villager::GetChillOutPos(MapCoords& coords)
 {
+	Town* town = GetTown();
+	if (town != NULL)
+	{
+		MapCoords congregationPos = town->GetCongregationPos();
+		float     radius = ((const GTownInfo*)town->info)->field_0x140 * 0.1f;
+		float     angle = GUtils::Get3DAngleFromXZ(congregationPos, GameThingWithPos::coords);
+		float     jitter = GRand::GameFloatRand(0.7853982f, __FILE__, __LINE__) - 0.39269909f;
+		MapCoords offset =
+			GUtils::GetPosFromAngle(jitter + angle, GRand::GameFloatRand(radius * 9.0f, __FILE__, __LINE__));
+		coords = congregationPos + offset;
+		return 1;
+	}
 	return 0;
 }
 
