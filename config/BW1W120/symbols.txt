@@ -31550,6 +31550,7 @@ _AbodeInfos = .data:0x00C3C690; // type:object size:0x105D8 scope:global
 ?_Nil@?$_Tree@PAXU?$pair@QAXPAVLeakNode@LHMemoryLeak@@@std@@U_Kfn@?$map@PAXPAVLeakNode@LHMemoryLeak@@U?$less@PAX@std@@V?$allocator@PAVLeakNode@LHMemoryLeak@@@4@@2@U?$less@PAX@2@V?$allocator@PAVLeakNode@LHMemoryLeak@@@2@@std@@1PAU_Node@12@A = .data:0x00C58610; // type:object size:0x4 scope:global
 ?g_game@GGame@@2PAV1@A = .data:0x00D0195C; // type:object size:0x4 scope:global
 _g_CircleHugStateInfo = .data:0x00D3EE78; // type:object size:0x54 scope:local
+?g_GVillagerStateTableInfos@@3PAVGVillagerStateTableInfo@@A = .data:0x00DB9E68; // type:object size:0x112EC scope:global
 ___fastflag = .data:0x00E84190; // type:object size:0x4 scope:global
 __adjust_fdiv = .data:0x00E84194; // type:object size:0x4 scope:global
 __environ = .data:0x00E841F4; // type:object size:0x4 scope:global
