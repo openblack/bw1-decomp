@@ -63,3 +63,11 @@ Diff signature: `~`/`>`/`<` where a `push 0x20` (or other constant state arg) an
 ### toy-experiment
 Rule: to test codegen variants fast, write `V::tN()` methods on a struct with the field at the right offset in a scratch .cpp and compile with `wine build/compilers/MSVC/6.5/cl.exe /nologo /W3 /O2 /Og /Ob1 /Zd /MT /GR /c file.cpp` (cd into the file's dir first — wine cl can't take absolute unix paths), then `objdump -d -M intel`. IMPORTANT: a toy match does NOT guarantee a real-TU match — register pressure from the full function can still change scheduling (see retbuf-arg-order).
 Diff signature: n/a — workflow tool for when two source shapes are both plausible.
+
+### byte-enum-compare
+Rule: when the target loads an enum/int param as a byte (`mov al,[esp+4]`) and does `cmp al, K`, the source compared the enum truncated to a byte. Cast EACH comparison operand: `(uint8_t)state == VILLAGER_STATE_X`. A single `uint8_t s = state;` then `s == K` does NOT work — comparing a uint8_t to an int literal re-promotes to `cmp eax`.
+Diff signature: target `cmp al, imm8` vs ours `cmp eax, imm32` on an enum param → per-comparison `(uint8_t)` cast.
+
+### setstate-eq-1
+Rule: `SetCurrentAndDestinationState(CURRENT, dest) == 1` (vtable slot 0x8dc) is the standard state-entry predicate; the `== 1` (not `!= 0`) matches the `dec;neg;sbb;inc` normalization the compiler emits and the existing LivingReaction precedent.
+Diff signature: target calls `[vtbl+0x8dc]` then `dec eax;neg eax;sbb eax,eax;inc eax` → write `... == 1`.

@@ -366,7 +366,7 @@ bool32_t Villager::EatOutside()
 // BW1W120 0076aa80
 float Villager::GetImportance()
 {
-	return 0.0f;
+	return (float)GetAge() * 0.001f;
 }
 
 // BW1W120 0076aab0
@@ -384,7 +384,9 @@ bool32_t Villager::InspectObject()
 // BW1W120 0076acb0
 int Villager::ExitInFlying(VILLAGER_STATES state)
 {
-	return 0;
+	return (uint8_t)state == VILLAGER_STATE_IN_HAND || (uint8_t)state == VILLAGER_STATE_LANDED ||
+	       (uint8_t)state == VILLAGER_STATE_DYING || (uint8_t)state == VILLAGER_STATE_DEAD ||
+	       (uint8_t)state == VILLAGER_STATE_DROWNING;
 }
 
 // BW1W120 0076ace0
@@ -432,6 +434,11 @@ bool32_t Villager::IsInACreaturesHand()
 // BW1W120 0076b060
 bool32_t Villager::SetupWaitForCounter(unsigned short param_1, VILLAGER_STATES param_2)
 {
+	if (SetCurrentAndDestinationState(VILLAGER_STATE_WAIT_FOR_COUNTER, param_2) == 1)
+	{
+		TurnsUntilNextStateChange = param_1;
+		return true;
+	}
 	return false;
 }
 
