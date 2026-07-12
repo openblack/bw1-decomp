@@ -47,7 +47,7 @@ public:
 	// BW1W120 0050b750 BW1M100 102a81c0 Dance::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 0050cb40 BW1M100 inlined Dance::GetArrivePos(MapCoords *)
-	virtual MapCoords* GetArrivePos(MapCoords* param_1);
+	virtual MapCoords GetArrivePos();
 	// BW1W120 0050b730 BW1M100 102a8160 Dance::IsDance( const(void))
 	virtual uint32_t IsDance();
 	// BW1W120 0050b710 BW1M100 102a80e0 Dance::IsScriptContainer( const(void))

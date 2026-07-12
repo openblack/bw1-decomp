@@ -63,7 +63,7 @@ public:
 	// BW1W120 0052c5a0 BW1M100 100dd960 FishFarm::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 0052c490 BW1M100 inlined FishFarm::GetArrivePos(MapCoords *)
-	virtual MapCoords* GetArrivePos(MapCoords* param_1);
+	virtual MapCoords GetArrivePos();
 	// BW1W120 0052c4d0 BW1M100 100dd5a0 FishFarm::GetCreatureBeliefType(void)
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 0052c980 BW1M100 100dc470 FishFarm::IsObjectInMap(void)

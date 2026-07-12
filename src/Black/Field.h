@@ -80,7 +80,7 @@ public:
 	// BW1W120 00528070 BW1M100 100d6540 Field::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 00529330 BW1M100 inlined Field::GetArrivePos(MapCoords *)
-	virtual MapCoords* GetArrivePos(MapCoords* param_1);
+	virtual MapCoords GetArrivePos();
 	// BW1W120 00527f20 BW1M100 100d5fa0 Field::GetCreatureBeliefType(void)
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 0052a000 BW1M100 100d1d20 Field::GetOverwriteInteractableToolTip(void)

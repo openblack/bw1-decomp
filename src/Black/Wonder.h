@@ -41,7 +41,7 @@ public:
 	// BW1W120 00561200 BW1M100 10161290 Wonder::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 005611b0 BW1M100 inlined Wonder::GetArrivePos(MapCoords *)
-	virtual MapCoords* GetArrivePos(MapCoords* param_1);
+	virtual MapCoords GetArrivePos();
 	// BW1W120 005611e0 BW1M100 10161200 Wonder::CanActAsAContainer(Creature *)
 	virtual uint32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 005611f0 BW1M100 10161250 Wonder::IsStoragePit(Creature *)
