@@ -309,7 +309,7 @@ public:
 	// BW1W120 0073e420 BW1M100 10055140 Town::GetRawDesire(TOWN_DESIRE_INFO)
 	float GetRawDesire(TOWN_DESIRE_INFO param_1);
 	// BW1W120 0073e900 BW1M100 1054e460 Town::GetTemporaryResourceStorePotOrPos(MapCoords const &, MapCoords &, RESOURCE_TYPE)
-	void* GetTemporaryResourceStorePotOrPos(const MapCoords* param_1, MapCoords* param_2, RESOURCE_TYPE param_3);
+	void* GetTemporaryResourceStorePotOrPos(const MapCoords& param_1, MapCoords& param_2, RESOURCE_TYPE param_3);
 	// BW1W120 0073eb00 BW1M100 1054dfe0 Town::AssignForestsToTown(void)
 	void AssignForestsToTown();
 	// BW1W120 00740250 BW1M100 10549810 Town::GetBestWorkshop(MapCoords &, int, int)

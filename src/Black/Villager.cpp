@@ -477,7 +477,7 @@ uint32_t Villager::CallState()
 }
 
 // BW1W120 00752210
-bool Villager::IsPregnant()
+bool32_t Villager::IsPregnant()
 {
 	return false;
 }

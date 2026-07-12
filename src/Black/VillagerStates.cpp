@@ -3,11 +3,14 @@
 #include "chlasm/Enum.h"
 
 #include "Abode.h"
+#include "Game.h"
+#include "GameThing.h"
 #include "MapCoords.h"
 #include "MultiMapFixed.h"
 #include "Object.h"
 #include "Reaction.h"
 #include "StoragePit.h"
+#include "Town.h"
 #include "Villager.h"
 
 // BW1W120 00db9e68
@@ -46,13 +49,58 @@ bool32_t Villager::GotoStoragePitForDropOff()
 // BW1W120 007696d0
 bool32_t Villager::ArrivesAtStoragePitForDropOff()
 {
-	return 0;
+	RESOURCE_TYPE resourceHeld;
+	int           held = GetResourceHeld(resourceHeld);
+	if (held)
+	{
+		StoragePit* storagePit = GetStoragePit();
+		if (storagePit != NULL && storagePit->IsFunctional())
+		{
+			unsigned long amount;
+			if (AtStructureAddResource(storagePit, resourceHeld, amount, false) == VILLAGER_STATE_GO_HOME)
+			{
+				return true;
+			}
+			SetupMoveToOnFootpath(*storagePit, storagePit->GetArrivePos(), VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+			return true;
+		}
+		if (GetTown() != NULL)
+		{
+			MapCoords  storePos;
+			GameThing* pot = (GameThing*)GetTown()->GetTemporaryResourceStorePotOrPos(coords, storePos, resourceHeld);
+			if (pot != NULL)
+			{
+				if (!AreWeThere(&storePos, 0.0f))
+				{
+					SetupMoveToWithHug(storePos, GetFinalState());
+					return true;
+				}
+				pot->AddResource(resourceHeld, held, NULL, false, NULL, 0);
+				if (resourceHeld == RESOURCE_TYPE_FOOD)
+				{
+					DropFood(held);
+				}
+				else
+				{
+					DropWood(held);
+				}
+			}
+		}
+	}
+	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+	return true;
 }
 
 // BW1W120 00769830
 bool32_t Villager::GotoStoragePitForFood()
 {
-	return false;
+	if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional())
+	{
+		SetupMoveToOnFootpath(*GetStoragePit(), GetStoragePit()->GetArrivePos(), 0);
+		return true;
+	}
+	SetupMoveToWithHug(GetResourceDropoffPos(RESOURCE_TYPE_FOOD), VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_FOOD);
+	return true;
 }
 
 // BW1W120 007698b0
@@ -63,10 +111,63 @@ bool32_t Villager::ArrivesAtStoragePitForFood()
 }
 
 // BW1W120 007698d0
-bool32_t Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE param_1, unsigned long param_2, VILLAGER_STATES param_3,
-                                                  VILLAGER_STATES param_4)
+bool32_t Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE resourceType, unsigned long amount,
+                                                  VILLAGER_STATES arriveState, VILLAGER_STATES failState)
 {
-	return false;
+	if (amount != 0)
+	{
+		if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional())
+		{
+			unsigned long take = amount;
+			if (amount >= GetStoragePit()->GetResource(resourceType))
+			{
+				take = GetStoragePit()->GetResource(resourceType);
+			}
+			if (take != 0)
+			{
+				uint32_t result = AtStructureRemoveResource(GetStoragePit(), resourceType, take, NULL);
+				if (result == VILLAGER_STATE_GO_HOME)
+				{
+					return VILLAGER_STATE_GO_HOME;
+				}
+				if (result == 1 && arriveState != VILLAGER_STATE_INVALID_STATE)
+				{
+					SetupMoveToOnFootpath(*GetStoragePit(), GetStoragePit()->GetArrivePos(), arriveState);
+					return true;
+				}
+			}
+			SetTopState(failState);
+			return false;
+		}
+		if (GetTown() != NULL)
+		{
+			MapCoords storePos;
+			Object*   pot = (Object*)GetTown()->GetTemporaryResourceStorePotOrPos(coords, storePos, resourceType);
+			if (pot != NULL)
+			{
+				// TODO: float block — pot->GetNearestEdgeOfObject(this) returns a position by value
+				// (Rule 2; header currently void), converted to fixed-point LH3DMapCoords via *6553.6
+				// and *65536*0.1, then storePos.altitude -= LH3DIsland::GetAltitude(mapCoords).
+				if (!AreWeThere(&storePos, 0.0f))
+				{
+					SetupMoveToWithHug(storePos, GetFinalState());
+					return VILLAGER_STATE_GO_HOME;
+				}
+				// TODO: pot->RemoveResource(resourceType, amount, NULL, NULL) — vtable slot 0xa0, not on Object; needs concrete pot type
+				short carried = (short)pot->GetCarriedTreeType();
+				PickupResource(resourceType, carried, amount);
+				if (arriveState != VILLAGER_STATE_INVALID_STATE)
+				{
+					SetTopState(failState);
+					return true;
+				}
+				SetTopState(failState);
+				return false;
+			}
+		}
+	}
+	SetTopState(failState);
+	return true;
 }
 
 // BW1W120 00769b30
@@ -85,7 +186,11 @@ bool32_t Villager::ArrivesAtHomeWithFood()
 // BW1W120 00769b80
 bool32_t Villager::CheckTrader()
 {
-	return false;
+	if (football)
+	{
+		return false;
+	}
+	return SetTraderNothingToDo();
 }
 
 // BW1W120 00769c10
@@ -117,11 +222,10 @@ bool32_t Villager::SetTraderNothingToDo()
 {
 	Town* town = GetTown();
 
-	// TODO: traders reuse the football slot (0x11c) as the trade-target Town*; field may really be a union
 	// TODO: 84% — prologue scheduling differs: target emits `push edi` after the vtbl load and sinks the
 	// town spill (`mov edi,eax`) below `mov ecx,esi`; toy variants (inline getter, decl order, ==0) all
 	// produce our shape. Semantics verified against 0x769ea0.
-	SetTown((Town*)football);
+	SetTown(TradeTown);
 	if (!SetDiscipleNothingToDo())
 	{
 		SetTown(town);
@@ -140,7 +244,20 @@ bool32_t Villager::SetupBreederDisciple()
 // BW1W120 0076a1b0
 bool32_t Villager::BreederDisciple()
 {
-	return false;
+	if (!IsPregnant())
+	{
+		if (GetTown()->desire.GetSortedDesire(0)->field_0x8 != TOWN_DESIRE_INFO_FOR_SLEEP)
+		{
+			if (TurnsUntilNextStateChange-- > 0)
+			{
+				return true;
+			}
+			SetupWander(WanderArea, VILLAGER_STATE_BREEDER_DISCIPLE);
+			return true;
+		}
+	}
+	SetTopState(VILLAGER_STATE_GO_HOME);
+	return true;
 }
 
 // BW1W120 0076a220
@@ -152,13 +269,18 @@ bool32_t Villager::MissionaryDisciple()
 // BW1W120 0076a2a0
 bool32_t Villager::EnterBreeder(unsigned char param_1, unsigned char param_2)
 {
-	return false;
+	if ((GGame::g_game->field_0x14 & 0x8000) == 0)
+	{
+		Reaction::CreateReaction(this, REACTION_REACT_TO_BREEDER, GetPlayer(), 1);
+	}
+	return true;
 }
 
 // BW1W120 0076a2d0
 bool32_t Villager::ExitBreeder(unsigned char param_1)
 {
-	return false;
+	Reaction::RemoveAllReactionsOfTypeInitiatedByObject(this, REACTION_REACT_TO_BREEDER);
+	return true;
 }
 
 // BW1W120 0076a2f0
