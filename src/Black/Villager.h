@@ -107,11 +107,14 @@ public:
 	uint32_t      field_0x110;
 	FireEffect*   fire_effect;
 	GameThing*    TargetThing;
-	Football*     football;
-	uint32_t      field_0x120;
-	uint32_t      field_0x124;
-	Abode*        home;
-	Town*         town;
+	union { /* 0x11c */
+		Football*      football;
+		Town*          TradeTown;
+		JustWholeMapXZ WanderArea;
+	};
+	uint32_t field_0x124;
+	Abode*   home;
+	Town*    town;
 
 	// Override methods
 
@@ -649,7 +652,7 @@ public:
 	// BW1W120 007521d0 BW1M100 1004b330 Villager::CallState(void)
 	uint32_t CallState();
 	// BW1W120 00752210 BW1M100 10020260 Villager::IsPregnant(void)
-	bool IsPregnant();
+	bool32_t IsPregnant();
 	// BW1W120 00752240 BW1M100 100201b0 Villager::WomanSpecial(void)
 	uint32_t WomanSpecial();
 	// BW1W120 00752290 BW1M100 1056c8b0 Villager::IsVillagerAvailable(void)

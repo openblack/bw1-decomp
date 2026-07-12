@@ -64,6 +64,8 @@ public:
 	void Process();
 	// BW1W120 00745f80 BW1M100 1005d280 TownDesire::GetInfo(unsigned long) const
 	GTownDesireInfo* GetInfo(unsigned long param_1);
+	// BW1W120 007465d0 BW1M100 1055dee0 TownDesire::GetSortedDesire(unsigned long)
+	DesireSort* GetSortedDesire(uint32_t index);
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INCLUDED_H */
