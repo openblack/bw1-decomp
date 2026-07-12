@@ -5,6 +5,7 @@
 #include "Abode.h"
 #include "Game.h"
 #include "GameThing.h"
+#include "VillagerInfo.h"
 #include "MapCoords.h"
 #include "MultiMapFixed.h"
 #include "Object.h"
@@ -27,6 +28,13 @@ GBaseInfo* GVillagerStateTableInfo::GetBaseInfo(uint32_t& count)
 GVillagerStateTableInfo::~GVillagerStateTableInfo() {}
 
 // BW1W120 00769620
+// TODO: 86.6% — semantics verified. Both branches pass a by-value MapCoords temp
+// (GetArrivePos / GetResourceDropoffPos) as a const-ref arg alongside a constant state arg.
+// Target pushes the constant state first, then materialises the retbuf; ours hoists the
+// retbuf call ahead of the constant push. An isolated toy of this exact shape (POD *and*
+// copy-ctor MapCoords) matches the target, so the hoist is a whole-function register-pressure
+// interaction, not a local shape bug — revisit once a neighbour with the same retbuf-arg
+// pattern matches. See CHEATSHEET retbuf-arg-order.
 bool32_t Villager::GotoStoragePitForDropOff()
 {
 	if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional())
@@ -330,7 +338,11 @@ bool32_t Villager::MakeScaredStiff()
 // BW1W120 0076a8b0
 bool32_t Villager::ScaredStiff()
 {
-	return false;
+	if (--TurnsUntilNextStateChange == 0)
+	{
+		GoHome();
+	}
+	return true;
 }
 
 // BW1W120 0076a8d0
@@ -342,13 +354,13 @@ bool32_t Villager::VagrantStart()
 // BW1W120 0076aa60
 bool32_t Villager::MornDeath()
 {
-	return false;
+	return GoHome();
 }
 
 // BW1W120 0076aa70
 bool32_t Villager::EatOutside()
 {
-	return false;
+	return true;
 }
 
 // BW1W120 0076aa80
@@ -378,7 +390,7 @@ int Villager::ExitInFlying(VILLAGER_STATES state)
 // BW1W120 0076ace0
 bool32_t Villager::EnterSex(unsigned char param_1, unsigned char param_2)
 {
-	return false;
+	return true;
 }
 
 // BW1W120 0076acf0
@@ -426,7 +438,7 @@ bool32_t Villager::SetupWaitForCounter(unsigned short param_1, VILLAGER_STATES p
 // BW1W120 0076b090
 uint32_t Villager::SetupPauseForASecond(VILLAGER_STATES state)
 {
-	return 0;
+	return SetCurrentAndDestinationState(VILLAGER_STATE_PAUSE_FOR_A_SECOND, state) == 1;
 }
 
 // BW1W120 0076b0b0
@@ -480,7 +492,8 @@ bool32_t Villager::SitAndChillout()
 // BW1W120 0076b570
 bool32_t Villager::EnterSitAndChillOut(unsigned char param_1, unsigned char param_2)
 {
-	return false;
+	TurnsUntilNextStateChange = ((const GVillagerInfo*)info)->InitialChillOutTime;
+	return true;
 }
 
 // BW1W120 0076b590
@@ -498,13 +511,13 @@ void Villager::GetMeToMyChillOutPos(int (Villager::*callback)(MapCoords&), MapCo
 // BW1W120 0076b7e0
 bool32_t Villager::ArrivesHomeFromWorship()
 {
-	return false;
+	return ArrivesHome();
 }
 
 // BW1W120 0076b7f0
 bool32_t Villager::SleepInTentFromWorship()
 {
-	return false;
+	return SleepInTent();
 }
 
 // BW1W120 0076b800
