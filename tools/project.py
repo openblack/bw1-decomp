@@ -155,16 +155,11 @@ class ProjectConfig:
         self.compilers_tag: Optional[str] = None  # 1
         self.compilers_path: Optional[Path] = None  # If None, download
         # Static libraries to pull verbatim objects from. `static_libs` maps a
-        # lib id (e.g. "libcmt") to the package it ships in (e.g. "msvc6.5");
-        # `static_lib_packages` maps that package to its download_tool tag (the
-        # archive.org item id). Members are extracted at build time (see
-        # LibObject); the .LIB and extracted .obj are build artifacts.
+        # lib id (e.g. "libcmt") to the package it ships in (e.g. "msvc6.5").
+        # The user supplies each lib at orig/libs/<package>/<lib_id>.lib; members
+        # are extracted at build time (see LibObject). The .LIB and extracted
+        # .obj are build artifacts.
         self.static_libs: Dict[str, str] = {}
-        self.static_lib_packages: Dict[str, str] = {}
-        # If set, the base directory holding the static libs. Each lib is looked
-        # up at <static_libs_path>/<package>/<lib_id>.lib and used verbatim
-        # instead of downloading; missing ones still fall back to download_tool.
-        self.static_libs_path: Optional[Path] = None
         self.wibo_tag: Optional[str] = None  # Git tag
         self.wrapper: Optional[Path] = None  # If None, download wibo on Linux
         self.sjiswrap_tag: Optional[str] = None  # Git tag
@@ -728,9 +723,10 @@ def generate_build_ninja(
 
     n.newline()
 
-    # Download static libraries (config.static_libs) so prebuilt members can be
-    # extracted at build time and nothing need be committed. `lib_archives` maps
-    # an archive id (LibObject's first arg) to the downloaded .LIB.
+    # Static libraries (config.static_libs) are supplied by the user, not
+    # committed and not downloaded. Each is read from orig/<package>/<lib_id>.lib
+    # and copied into place; verbatim members are extracted at build time (see
+    # LibObject). `lib_archives` maps a lib id (LibObject's first arg) to the .LIB.
     lib_archives: Dict[str, Path] = {}
     llvm_ar: Optional[Path] = None
     if config.static_libs and lld_link is not None:
@@ -749,37 +745,18 @@ def generate_build_ninja(
             f'shutil.copyfile(sys.argv[1],sys.argv[2])" $in $out',
             description="COPY $out",
         )
-        # Collect the libs that must be downloaded, grouped by package, so each
-        # package's disc is fetched by a single download_tool edge (downloaded
-        # once, all its members extracted) rather than once per lib.
-        to_download: Dict[str, List[Path]] = {}
         for lib_id, package in config.static_libs.items():
             # The .lib always lands at build/lib/<lib_id>.lib: it is both the
             # member-extraction source and the sha-checked build artifact.
             archive = config.build_dir / "lib" / f"{lib_id}.lib"
             lib_archives[lib_id] = archive
-            # Prefer a locally supplied lib (under <static_libs_path>/<package>)
-            # over the download: copy it into place so ninja never runs
-            # download_tool and the source disc is never fetched.
-            local = (
-                config.static_libs_path / package / f"{lib_id}.lib"
-                if config.static_libs_path is not None
-                else None
-            )
-            if local is not None and local.exists():
-                n.build(outputs=archive, rule="copy_lib", inputs=local)
-                continue
-            to_download.setdefault(package, []).append(archive)
-        for package, archives in to_download.items():
-            tag = config.static_lib_packages[package]
-            # One edge per package: download_tool fetches the disc once and
-            # extracts every listed member (keyed by output filename).
-            n.build(
-                outputs=archives,
-                rule="download_tool",
-                implicit=download_tool,
-                variables={"tool": "msvc65_libs", "tag": tag},
-            )
+            local = Path("orig") / "libs" / package / f"{lib_id}.lib"
+            if not local.exists():
+                sys.exit(
+                    f"Static library {local} not found. Place the MSVC 6.0 SP5 "
+                    f"static libs under orig/libs/{package}/ (see the README)."
+                )
+            n.build(outputs=archive, rule="copy_lib", inputs=local)
         n.newline()
 
     ###

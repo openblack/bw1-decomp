@@ -13,7 +13,26 @@ See [Dependencies](dependencies.md) first.
 
    The Windows builds expect a **decrypted** exe. The original retail discs ship the executable wrapped in SafeDisc 2 / Macrovision protection. Use the SafeDisc cleaner referenced in the project notes to produce `runblack-decrypted.exe`.
 
-3. Run `configure.py` with the version you want to work on:
+3. Place the MSVC 6.0 SP5 static CRT libraries and the DirectX 7.0 SDK headers under `orig/` (they are not committed and not downloaded). The build errors out with the expected path if a static lib is missing.
+
+   **MSVC 6.0 SP5 static libs → `orig/libs/msvc6.5/`**
+
+   Needed: `libcmt.lib` and `libcpmt.lib`. If you have a Visual C++ 6.0 (SP5) install, copy them straight from `VC98\Lib`. Otherwise pull them from the genuine SP5 install CD on the Internet Archive, item [`X08-02111`](https://archive.org/details/X08-02111):
+
+   1. Download `2001-03_X08-02111_X06-21660_CD_ROM.7z` from that item.
+   2. Extract the `.7z` (e.g. `7z x 2001-03_X08-02111_X06-21660_CD_ROM.7z`). It yields a raw CD image (a `.mdf`).
+   3. The `.mdf` is a raw 2352/2448-byte-sector image, not a plain ISO. Convert it first: `mdf2iso disc.mdf disc.iso` (the `mdf2iso` package on Linux/macOS). On Windows, mount the `.mdf` directly with DAEMON Tools / WinCDEmu, or open it in 7-Zip / AnyBurn.
+   4. From the image, copy `VC98\Lib\LIBCMT.LIB` and `VC98\Lib\LIBCPMT.LIB` to `orig/libs/msvc6.5/libcmt.lib` and `orig/libs/msvc6.5/libcpmt.lib`. Filenames are matched case-insensitively; lowercase is fine.
+
+   **DirectX 7.0 DDK → `orig/directx7.0/`**
+
+   From the Internet Archive item [`dx7ddk`](https://archive.org/details/dx7ddk):
+
+   1. Download `dx7ddk.exe` (a self-extracting installer).
+   2. Extract it with 7-Zip (`7z x dx7ddk.exe`), or run it on Windows to install.
+   3. Copy both the `include` directory (holding `ddraw.h`, `d3d.h`, `dinput.h`, `dsound.h`, …) and the `lib` directory (holding `ddraw.lib`, `dinput.lib`, `dsound.lib`, `dxguid.lib`, …) to `orig/directx7.0/include/` and `orig/directx7.0/lib/`.
+
+4. Run `configure.py` with the version you want to work on:
 
    ```sh
    python configure.py --version BW1W100
@@ -21,7 +40,7 @@ See [Dependencies](dependencies.md) first.
 
    Pass `--version BW1W120` or `--version BW1M100` for the other targets. Default is `BW1W120`.
 
-4. Build:
+5. Build:
 
    ```sh
    ninja
