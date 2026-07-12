@@ -57,7 +57,9 @@ public:
 	// Static methods
 
 	// BW1W120 006e3d70 BW1M100 10136010 Reaction::CreateReaction(GameThingWithPos *, unsigned char, GPlayer *, int)
-	static Reaction* CreateReaction(GameThingWithPos* param_1, uint8_t param_2, GPlayer* player, int param_4);
+	static Reaction* CreateReaction(GameThingWithPos* target, uint8_t param_2, GPlayer* player, int param_4);
+	// BW1W120 006e4780 BW1M100 101350e0 Reaction::RemoveAllReactionsOfTypeInitiatedByObject(GameThingWithPos *, REACTION)
+	static Reaction* RemoveAllReactionsOfTypeInitiatedByObject(GameThingWithPos* target, REACTION reaction);
 
 	// Non-virtual methods
 
