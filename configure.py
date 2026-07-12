@@ -64,14 +64,6 @@ parser.add_argument(
     help="path to compilers directory (optional)",
 )
 parser.add_argument(
-    "--static-libs-dir",
-    metavar="DIR",
-    type=Path,
-    dest="static_libs_dir",
-    help="directory of prebuilt static libs (<lib_id>.lib); used verbatim "
-    "instead of downloading the SP5 disc (optional)",
-)
-parser.add_argument(
     "--lld-link",
     metavar="BINARY",
     type=Path,
@@ -156,7 +148,6 @@ config.build_dir = args.build_dir
 config.dtk_path = args.dtk
 config.objdiff_path = args.objdiff
 config.compilers_path = args.compilers
-config.static_libs_path = args.static_libs_dir
 config.lld_link_path = args.lld_link
 config.generate_map = args.map
 config.non_matching = args.non_matching
@@ -178,16 +169,9 @@ config.wibo_tag = "1.1.0"
 config.compilers_tag = "6.5"  # MSVC 6.0 SP5
 config.lld_link_tag = "bw1-decomp-017"
 # Static libraries to pull verbatim CRT objects from (see LibObject). All ship
-# in the "msvc6.5" package: Visual Studio 6.0 (1998) SP5. When --static-libs-dir
-# is given they are read from <dir>/msvc6.5/<lib>.lib; otherwise each is
-# extracted at build time from the genuine SP5 install CD on the Internet Archive
-# (item X08-02111) — the disc is downloaded and the file pulled out of its
-# ISO9660 filesystem, so nothing is committed (see tools/download_tool.py).
-# `static_lib_packages` maps each package to its archive.org item id; each id
-# must have a matching download_tool URL entry.
-config.static_lib_packages = {
-    "msvc6.5": "X08-02111",  # MSVC 6.0 SP5 install CD
-}
+# in the "msvc6.5" package: Visual Studio 6.0 (1998) SP5. They are not committed
+# and not downloaded — you must supply them yourself: place each .lib at
+# orig/libs/msvc6.5/<lib>.lib. See the README for how to obtain them.
 config.static_libs = {
     "libcmt": "msvc6.5",   # multithreaded C runtime (CRT)
     "libcpmt": "msvc6.5",  # multithreaded C++ standard library (iostreams, RTTI)
@@ -251,6 +235,7 @@ cflags_base = [
     "/MT",
     "/GR",
     "/I", "include",
+    "/I", "orig/directx7.0/include",
     "/I", "src",
     f"/I", f"build/{config.version}/include",
     f"/I", f"build/compilers/{config.linker_version}/include",

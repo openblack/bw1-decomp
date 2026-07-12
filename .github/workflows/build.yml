@@ -66,13 +66,12 @@ jobs:
         cmake --build build/release64 -j
 
     # Build the project. Static libs ship in the build container under
-    # orig/libs (copied above via /orig), so --static-libs-dir uses them
-    # verbatim and the SP5 disc is never downloaded. --wrapper points at the
-    # wibo built above so it overrides the downloaded 1.1.0.
+    # orig/libs (copied above via /orig), where configure.py reads them
+    # verbatim. --wrapper points at the wibo built above so it overrides the
+    # downloaded 1.1.0.
     - name: Build
       run: |
         python configure.py --map --version ${{ matrix.version }} \
-            --static-libs-dir orig/libs \
             --wrapper /tmp/wibo/build/release64/wibo
         ninja all_source progress build/${{ matrix.version }}/report.json
 
