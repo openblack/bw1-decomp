@@ -2,9 +2,11 @@
 #define BW1_DECOMP_LH_TEXT_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint8_t */
 
 #include <Lionhead/LH3DLib/development/LHColor.h> /* For struct LHColor */
+#include <Lionhead/LHLib/ver5.0/LHReturn.h>       /* For enum LH_RETURN */
 
 // Forward Declares
 
@@ -20,8 +22,20 @@ struct LHSpriteList
 	LHSprite* Sprites;     /* 0x4 */
 	int       Count;       /* 0x8 */
 
+	// Constructors
+
+	// BW1W120 007e89f0 LHSpriteList::LHSpriteList(void) (comdat, emitted from LHScript.cpp)
+	LHSpriteList() { Set(NULL, 0); }
+
 	// Non-virtual methods
 
+	// BW1W120 007e8a00 (comdat, emitted from LHScript.cpp) TODO: fabricated name
+	void Set(LHSprite* sprites, long count)
+	{
+		Sprites = sprites;
+		Count = count;
+		OwnsSprites = 1;
+	}
 	// BW1W120 007ee540 LHSpriteList::FreeSpriteList(int)
 	int FreeSpriteList(int keepPixelData);
 	// BW1W120 007ee5b0 LHSpriteList::FreeSprite(long)
@@ -51,6 +65,8 @@ struct LHText : LHSpriteList
 
 	// Non-virtual methods
 
+	// BW1W120 007e3c20 LHText::LoadFont(char*, unsigned long)
+	LH_RETURN LoadFont(char* file_name, unsigned long flags);
 	// BW1W120 007e3d00 LHText::FreeFont(void)
 	int FreeFont();
 	// BW1W120 007e3d20 LHText::StringWidth(char *, char *)

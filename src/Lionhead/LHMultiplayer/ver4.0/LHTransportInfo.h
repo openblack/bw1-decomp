@@ -4,10 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-enum LH_RETURN
-{
-	LH_RETURN_0 = 0x0,
-};
+#include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
 
 enum LH_TRANSPORT_TYPE
 {
