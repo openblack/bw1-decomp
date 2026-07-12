@@ -142,9 +142,9 @@ struct LHScreen
 	// BW1W120 007ded50 LHScreen::IsAppMinimized(void)
 	int IsAppMinimized();
 	// BW1W120 007e8a20 LHScreen::Depth(void)
-	uint8_t Depth();
+	uint8_t Depth() { return depth; }
 	// BW1W120 007e9df0 LHScreen::MaxDepth(void)
-	uint8_t MaxDepth();
+	uint8_t MaxDepth() { return 32; }
 };
 static_assert(sizeof(LHScreen) == 0x1b4, "Data type is of wrong size");
 

@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.19"
+config.dtk_tag = "v0.0.20"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.1.0"
@@ -1284,7 +1284,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHText.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHHeap2.cpp", extra_cflags=["/GX"]),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMouse.cpp"),
-            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScript.cpp"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScript.cpp", extra_cflags=["/GX", "/Ob0"]),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSpriteList.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHConvert.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSprite.cpp"),

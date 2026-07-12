@@ -1098,15 +1098,3 @@ int LHScreen::IsAppMinimized()
 {
 	return g_appMinimized;
 }
-
-// BW1W120 007e8a20 LHScreen::Depth(void)
-uint8_t LHScreen::Depth()
-{
-	return depth;
-}
-
-// BW1W120 007e9df0 LHScreen::MaxDepth(void)
-uint8_t LHScreen::MaxDepth()
-{
-	return 32;
-}

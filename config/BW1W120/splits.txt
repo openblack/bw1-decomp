@@ -3028,7 +3028,8 @@ Lionhead/LHLib/ver5.0/LHMem.cpp:
 	.text       start:0x007E69D0 end:0x007E6A50
 
 Lionhead/LHLib/ver5.0/LHScript.cpp:
-	.text       start:0x007E72C0 end:0x007EA0B0
+	.text       start:0x007E7260 end:0x007EA0B0
+	.data       start:0x00C341C0 end:0x00C34DF0 align:4
 
 Lionhead/LHLib/ver5.0/LHSpriteList.cpp:
 	.text       start:0x007EE540 end:0x007EE6E0

@@ -8,18 +8,19 @@ struct LHRegion;
 
 struct LHPixel16
 {
-	uint16_t value; /* 0x0 */
+	uint16_t value;
 
 	// BW1W120 00449650 LHPixel16::Set(LHColor)
-	// Packs an LHColor into this pixel using the active LHScreen format.
 	void Set(LHColor color);
+	// BW1W120 00521a90 LHPixel16::Set(unsigned char, unsigned char, unsigned char)
+	void Set(uint8_t red, uint8_t green, uint8_t blue);
 };
 
 struct LHSprite
 {
-	uint16_t Width;     /* 0x0 */
-	uint16_t Height;    /* 0x2 */
-	uint8_t* PixelData; /* 0x4 */
+	uint16_t Width;
+	uint16_t Height;
+	uint8_t* PixelData;
 };
 
 class LHDraw
