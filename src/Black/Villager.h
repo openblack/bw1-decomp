@@ -899,7 +899,7 @@ public:
 	bool32_t ChildFollowsMother();
 	// BW1W120 007579f0 BW1M100 10573ed0 Villager::ChildGotoCreche(void)
 	uint32_t ChildGotoCreche();
-	// BW1W120 00757c90 BW1M100 1006d8c0 Villager::ChildAtCreche(void)
+	// BW1W120 00757c80 BW1M100 1006d8c0 Villager::ChildAtCreche(void)
 	bool32_t ChildAtCreche();
 	// BW1W120 00757e80 BW1M100 10084940 Villager::CheckChild(void)
 	uint32_t CheckChild();
@@ -908,7 +908,7 @@ public:
 	// BW1W120 00757f00 BW1M100 10573a20 Villager::CheckChildActivity(void)
 	bool32_t CheckChildActivity();
 	// BW1W120 00757f10 BW1M100 10573990 Villager::ChildBecomesAdult(void)
-	bool32_t ChildBecomesAdult();
+	bool ChildBecomesAdult();
 	// BW1W120 00757f40 BW1M100 10095500 Villager::IsMotherAlive(void)
 	bool32_t IsMotherAlive();
 	// BW1W120 00757f90 BW1M100 10573570 Villager::CheckNeedNewAbode(void)
