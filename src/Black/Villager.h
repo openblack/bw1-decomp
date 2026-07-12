@@ -707,7 +707,7 @@ public:
 	// BW1W120 00753dd0 BW1M100 10569aa0 Villager::VillagerCreated(void)
 	uint32_t VillagerCreated();
 	// BW1W120 00753e20 BW1M100 10569870 Villager::GetResourceDropoffPos(RESOURCE_TYPE)
-	GameThingWithPos* GetResourceDropoffPos(RESOURCE_TYPE param_1);
+	MapCoords GetResourceDropoffPos(RESOURCE_TYPE resource_type);
 	// BW1W120 00754070 BW1M100 10569470 Villager::SetDiscipleNothingToDo(void)
 	bool32_t SetDiscipleNothingToDo();
 	// BW1W120 007540d0 BW1M100 10569390 Villager::DiscipleNothingToDo(void)
@@ -1618,9 +1618,9 @@ public:
 	// BW1W120 00769460 BW1M100 105976d0 Villager::ShepherdFetchStray(void)
 	bool32_t ShepherdFetchStray();
 	// BW1W120 00769620 BW1M100 10096900 Villager::GotoStoragePitForDropOff(void)
-	uint32_t GotoStoragePitForDropOff();
+	bool32_t GotoStoragePitForDropOff();
 	// BW1W120 007696d0 BW1M100 100062f0 Villager::ArrivesAtStoragePitForDropOff(void)
-	uint32_t ArrivesAtStoragePitForDropOff();
+	bool32_t ArrivesAtStoragePitForDropOff();
 	// BW1W120 00769830 BW1M100 10096ac0 Villager::GotoStoragePitForFood(void)
 	bool32_t GotoStoragePitForFood();
 	// BW1W120 007698b0 BW1M100 1059c070 Villager::ArrivesAtStoragePitForFood(void)

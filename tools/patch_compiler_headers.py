@@ -49,6 +49,8 @@ def main() -> int:
         text = path.read_text(encoding="utf-8", errors="replace")
         for old, new in replacements:
             if old not in text:
+                if new in text:  # already patched
+                    continue
                 errors.append(f"{path}: pattern not found:\n  {old!r}")
                 continue
             text = text.replace(old, new, 1)

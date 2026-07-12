@@ -1,10 +1,12 @@
 #include "Villager.h"
 
+#include "Abode.h"
 #include "VillagerStateTableInfo.h"
 #include "MapCoords.h"
 #include "MultiMapFixed.h"
 #include "Object.h"
 #include "Reaction.h"
+#include "StoragePit.h"
 
 // BW1W120 00769580
 GBaseInfo* GVillagerStateTableInfo::GetBaseInfo(uint32_t& param_1)
@@ -16,13 +18,27 @@ GBaseInfo* GVillagerStateTableInfo::GetBaseInfo(uint32_t& param_1)
 GVillagerStateTableInfo::~GVillagerStateTableInfo() {}
 
 // BW1W120 00769620
-uint32_t Villager::GotoStoragePitForDropOff()
+bool32_t Villager::GotoStoragePitForDropOff()
 {
-	return 0;
+	if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional())
+	{
+		SetupMoveToOnFootpath(*GetStoragePit(), GetStoragePit()->GetArrivePos(),
+		                      VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_DROP_OFF);
+		return true;
+	}
+	RESOURCE_TYPE resourceType;
+	GetResourceHeld(resourceType);
+	if (resourceType != RESOURCE_TYPE_FOOD && resourceType != RESOURCE_TYPE_WOOD)
+	{
+		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+		return false;
+	}
+	SetupMoveToWithHug(GetResourceDropoffPos(resourceType), VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_DROP_OFF);
+	return true;
 }
 
 // BW1W120 007696d0
-uint32_t Villager::ArrivesAtStoragePitForDropOff()
+bool32_t Villager::ArrivesAtStoragePitForDropOff()
 {
 	return 0;
 }
@@ -36,7 +52,8 @@ bool32_t Villager::GotoStoragePitForFood()
 // BW1W120 007698b0
 bool32_t Villager::ArrivesAtStoragePitForFood()
 {
-	return false;
+	return ArrivesAtStoragePitForResource(RESOURCE_TYPE_FOOD, GetAmountOfFoodRequiredForMeal(),
+	                                      VILLAGER_STATE_DECIDE_WHAT_TO_DO, VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 }
 
 // BW1W120 007698d0
@@ -47,9 +64,16 @@ bool32_t Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE param_1, unsigne
 }
 
 // BW1W120 00769b30
+// TODO: 86% — semantics verified, but the 8966 scheduler places `mov esi,eax` (save Abode*) and
+// `mov ebx,[esi]` (vtable load) later among the constant arg pushes than our source produces.
+// Pure scheduler tie-break, not a semantic bug (see CHEATSHEET save-across-call-spill).
 bool32_t Villager::ArrivesAtHomeWithFood()
 {
-	return false;
+	if (GetAbode())
+	{
+		GetAbode()->AddResource(RESOURCE_TYPE_FOOD, (int16_t)DropFood(0), NULL, false, NULL, 0);
+	}
+	return ArrivesHome();
 }
 
 // BW1W120 00769b80
@@ -85,7 +109,20 @@ bool32_t Villager::ArrivesAtStoragePitForTraderDropOff()
 // BW1W120 00769ea0
 bool32_t Villager::SetTraderNothingToDo()
 {
-	return false;
+	Town* town = GetTown();
+
+	// TODO: traders reuse the football slot (0x11c) as the trade-target Town*; field may really be a union
+	// TODO: 84% — prologue scheduling differs: target emits `push edi` after the vtbl load and sinks the
+	// town spill (`mov edi,eax`) below `mov ecx,esi`; toy variants (inline getter, decl order, ==0) all
+	// produce our shape. Semantics verified against 0x769ea0.
+	SetTown((Town*)football);
+	if (!SetDiscipleNothingToDo())
+	{
+		SetTown(town);
+		return false;
+	}
+	SetTown(town);
+	return true;
 }
 
 // BW1W120 00769ee0

@@ -758,9 +758,9 @@ uint32_t Villager::RemoveFromGame()
 }
 
 // BW1W120 00753e20
-GameThingWithPos* Villager::GetResourceDropoffPos(RESOURCE_TYPE param_1)
+MapCoords Villager::GetResourceDropoffPos(RESOURCE_TYPE resource_type)
 {
-	return NULL;
+	return MapCoords();
 }
 
 // BW1W120 00753f00
