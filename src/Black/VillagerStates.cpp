@@ -1,17 +1,23 @@
-#include "Villager.h"
+#include "VillagerStateTableInfo.h"
+
+#include "chlasm/Enum.h"
 
 #include "Abode.h"
-#include "VillagerStateTableInfo.h"
 #include "MapCoords.h"
 #include "MultiMapFixed.h"
 #include "Object.h"
 #include "Reaction.h"
 #include "StoragePit.h"
+#include "Villager.h"
+
+// BW1W120 00db9e68
+GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
 
 // BW1W120 00769580
-GBaseInfo* GVillagerStateTableInfo::GetBaseInfo(uint32_t& param_1)
+GBaseInfo* GVillagerStateTableInfo::GetBaseInfo(uint32_t& count)
 {
-	return NULL;
+	count = sizeof(g_GVillagerStateTableInfos) / sizeof(g_GVillagerStateTableInfos[0]);
+	return (GBaseInfo*)g_GVillagerStateTableInfos;
 }
 
 // BW1W120 007695f0 ~GVillagerStateTableInfo()
