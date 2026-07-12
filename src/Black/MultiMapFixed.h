@@ -146,7 +146,7 @@ public:
 	// BW1W120 0052f250 BW1M100 100de470 MultiMapFixed::Save(GameOSFile &)
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00421fe0 BW1M100 105b8ff0 MultiMapFixed::GetArrivePos(void)
-	virtual MapCoords* GetArrivePos(MapCoords* coords);
+	virtual MapCoords GetArrivePos();
 	// BW1W120 0052e480 BW1M100 100e0e80 MultiMapFixed::IsObjectInMap(void)
 	virtual bool IsObjectInMap();
 	// BW1W120 004e41c0 BW1M100 105e5c20 MultiMapFixed::IsBuildingWhichIsBeingBuilt(Creature *)

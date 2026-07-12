@@ -36,7 +36,7 @@ public:
 	// BW1W120 0055dff0 BW1M100 100f4510 Graveyard::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 0055df90 BW1M100 inlined Graveyard::GetArrivePos(MapCoords *)
-	virtual MapCoords* GetArrivePos(MapCoords* param_1);
+	virtual MapCoords GetArrivePos();
 	// BW1W120 0055dfd0 BW1M100 100f4480 Graveyard::CanActAsAContainer(Creature *)
 	virtual uint32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 0055dfe0 BW1M100 100f44d0 Graveyard::IsStoragePit(Creature *)

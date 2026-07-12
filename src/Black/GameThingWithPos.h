@@ -60,7 +60,7 @@ public:
 	// BW1W120 00401960 BW1M100 10032b70 GameThingWithPos::GetPos(void)
 	virtual MapCoords* GetPos(MapCoords* param_1);
 	// BW1W120 00405260 BW1M100 101c7ec0 GameThingWithPos::GetArrivePos(void)
-	virtual MapCoords* GetArrivePos(MapCoords* param_1);
+	virtual MapCoords GetArrivePos();
 	// BW1W120 00401980 BW1M100 103d18f0 GameThingWithPos::GetArriPhysicsEditorCreatevePos(int)
 	virtual void PhysicsEditorCreate(int param_1);
 	// BW1W120 00405280 BW1M100 103e5940 GameThingWithPos::GetCreatureBeliefType(void)

@@ -82,7 +82,7 @@ public:
 	// BW1W120 0077daf0 BW1M100 105acbf0 WorshipSite::ResolveLoad(void)
 	virtual void ResolveLoad();
 	// BW1W120 0077ced0 BW1M100 inlined WorshipSite::GetArrivePos(MapCoords *)
-	virtual MapCoords* GetArrivePos(MapCoords* param_1);
+	virtual MapCoords GetArrivePos();
 	// BW1W120 0055dc30 BW1M100 inlined WorshipSite::GetInteractPos(LHPoint *)
 	virtual void GetInteractPos(LHPoint* param_1);
 	// BW1W120 0055dc80 BW1M100 105b3e50 WorshipSite::IsSuitableForCreatureAction(void)

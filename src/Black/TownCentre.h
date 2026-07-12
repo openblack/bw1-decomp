@@ -57,7 +57,7 @@ public:
 	// BW1W120 007448c0 BW1M100 10559d40 TownCentre::ResolveLoad(void)
 	virtual void ResolveLoad();
 	// BW1W120 007449e0 BW1M100 inlined TownCentre::GetArrivePos(MapCoords *)
-	virtual MapCoords* GetArrivePos(MapCoords* param_1);
+	virtual MapCoords GetArrivePos();
 	// BW1W120 0055db60 BW1M100 1055be20 TownCentre::IsCastShadowAtNight(void)
 	virtual uint32_t IsCastShadowAtNight();
 	// BW1W120 0055db70 BW1M100 1055be60 TownCentre::IsTownCentre(void)

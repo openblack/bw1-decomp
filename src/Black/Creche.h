@@ -32,7 +32,7 @@ public:
 	// BW1W120 0050a9e0 BW1M100 102a3d00 Creche::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 0050a990 BW1M100 inlined Creche::GetArrivePos(MapCoords *)
-	virtual MapCoords* GetArrivePos(MapCoords* param_1);
+	virtual MapCoords GetArrivePos();
 	// BW1W120 0050a9b0 BW1M100 102a3c40 Creche::CanActAsAContainer(Creature *)
 	virtual uint32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 0050a9c0 BW1M100 102a3c90 Creche::IsStoragePit(Creature *)
