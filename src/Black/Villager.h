@@ -1000,11 +1000,11 @@ public:
 	// BW1W120 00759a00 BW1M100 105772e0 Villager::ControlledByCreature(void)
 	bool32_t ControlledByCreature();
 	// BW1W120 00759a90 BW1M100 105770d0 Villager::ExitControlledByCreature(unsigned char)
-	bool32_t ExitControlledByCreature(unsigned char param_1);
+	bool32_t ExitControlledByCreature(unsigned char state);
 	// BW1W120 00759bf0 BW1M100 105783f0 Villager::FarmerLookForField(void)
 	bool32_t FarmerLookForField();
 	// BW1W120 00759c00 BW1M100 10578330 Villager::VillagerBecomesFarmer(Field *)
-	bool32_t VillagerBecomesFarmer(Field* param_1);
+	bool32_t VillagerBecomesFarmer(Field* field);
 	// BW1W120 00759c40 BW1M100 10578150 Villager::SetFarmerGotoField(Field *, int)
 	bool32_t SetFarmerGotoField(Field* param_1, int param_2);
 	// BW1W120 00759d20 BW1M100 10004ad0 Villager::FarmerArrivesAtFarm(void)
@@ -1058,7 +1058,7 @@ public:
 	// BW1W120 0075b510 BW1M100 1057a710 Villager::VillagerBecomesFisherman(void)
 	bool32_t VillagerBecomesFisherman();
 	// BW1W120 0075b560 BW1M100 1057a5b0 Villager::VillagerBecomesFisherman(FishFarm *)
-	bool32_t VillagerBecomesFisherman(FishFarm* param_1);
+	bool32_t VillagerBecomesFisherman(FishFarm* fish_farm);
 	// BW1W120 0075b5d0 BW1M100 1057a410 Villager::FishermanArrivesAtFishing(void)
 	bool32_t FishermanArrivesAtFishing();
 	// BW1W120 0075b670 BW1M100 1057a390 Villager::IsAtValidFishingPos(void)
@@ -1066,9 +1066,9 @@ public:
 	// BW1W120 0075b6a0 BW1M100 1001b120 Villager::Fishing(void)
 	bool32_t Fishing();
 	// BW1W120 0075b820 BW1M100 1057a240 Villager::EnterFishing(unsigned char, unsigned char)
-	bool32_t EnterFishing(unsigned char param_1, unsigned char param_2);
+	bool32_t EnterFishing(unsigned char new_state, unsigned char old_state);
 	// BW1W120 0075b880 BW1M100 1009acc0 Villager::ExitFishing(unsigned char)
-	bool32_t ExitFishing(unsigned char param_1);
+	bool32_t ExitFishing(unsigned char state);
 	// BW1W120 0075b940 BW1M100 1057b620 Villager::ShowPoisoned(void)
 	bool ShowPoisoned();
 	// BW1W120 0075b990 BW1M100 1000a640 Villager::ChangeStateToFindFoodToEat(void)
@@ -1454,7 +1454,7 @@ public:
 	// BW1W120 007631f0 BW1M100 1058bce0 Villager::FootballWatchMatch(void)
 	bool32_t FootballWatchMatch();
 	// BW1W120 00763280 BW1M100 1058bbe0 Villager::ExitFootball(unsigned char)
-	bool32_t ExitFootball(unsigned char param_1);
+	bool32_t ExitFootball(unsigned char exit_state);
 	// BW1W120 00763800 BW1M100 1001a3e0 Villager::SetupMoveToPos(MapCoords const &, VILLAGER_STATES)
 	bool32_t SetupMoveToPos(const MapCoords& coord, VILLAGER_STATES end_state);
 	// BW1W120 00763b40 BW1M100 105935e0 Villager::FleeingFromPredatorReaction(void)
