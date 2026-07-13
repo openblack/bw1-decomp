@@ -332,7 +332,8 @@ public:
 	// BW1W120 00639b80 BW1M100 103d2110 Object::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager);
 	// BW1W120 00639550 BW1M100 103d3460 Object::GetWorkingPos(Object *)
-	virtual MapCoords* GetWorkingPos(MapCoords* param_1, Object* param_2);
+	// Rule 2 (hidden retbuf): comment shows one param (Object*), so returns MapCoords by value.
+	virtual MapCoords GetWorkingPos(Object* param_1);
 	// BW1W120 00638150 BW1M100 103d5500 Object::GetHeightForHandAboveInteractObject(void)
 	virtual float GetHeightForHandAboveInteractObject();
 	// BW1W120 006385c0 BW1M100 103d4cf0 Object::GetHandHelpMessageSet(void)

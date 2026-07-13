@@ -126,7 +126,8 @@ public:
 	// BW1W120 0074c150 BW1M100 101562a0 Tree::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
 	// BW1W120 0074c040 BW1M100 inlined Tree::GetWorkingPos(MapCoords *, Object *)
-	virtual MapCoords* GetWorkingPos(MapCoords* param_1, Object* param_2);
+	// Rule 2 (hidden retbuf): overrides Object::GetWorkingPos, returns MapCoords by value.
+	virtual MapCoords GetWorkingPos(Object* param_1);
 	// BW1W120 00749f70 BW1M100 10158e00 Tree::CallVirtualFunctionsForCreation(MapCoords const &)
 	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
 	// BW1W120 0074b7b0 BW1M100 10157590 Tree::GetWoodValue(void)

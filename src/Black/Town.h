@@ -254,6 +254,8 @@ public:
 	bool32_t RequestANewAbode(ABODE_TYPE param_1);
 	// BW1W120 0073b370 BW1M100 10554d60 Town::FindAbodeWithSpaceInTown(Villager *, float)
 	Abode* FindAbodeWithSpaceInTown(Villager* villager, float min_score);
+	// BW1W120 0073ffd0 Town::IsSpaceForNewVillager(void)
+	bool IsSpaceForNewVillager();
 	// BW1W120 0073b3d0 BW1M100 10554c70 Town::FindClosesFieldToWithFood(MapCoords const &)
 	Field* FindClosesFieldToWithFood(const MapCoords& param_1);
 	// BW1W120 0073b580 BW1M100 10554bd0 Town::IsVillagerInHomelessList(Villager *)
@@ -304,6 +306,8 @@ public:
 	TotemStatue* GetTotemStatue();
 	// BW1W120 0073e210 BW1M100 1054f460 Town::RemoveVillager(Villager *)
 	void RemoveVillager(Villager* villager);
+	// BW1W120 0073e300 Town::AddVillagerOnWayToWorshipSite(Villager *)
+	void AddVillagerOnWayToWorshipSite(Villager* villager);
 	// BW1W120 0073e360 BW1M100 1054f190 Town::RemoveVillagerOnWayToWorshipSite(Villager *)
 	void RemoveVillagerOnWayToWorshipSite(Villager* villager);
 	// BW1W120 0073e400 BW1M100 10060840 Town::GetDesire(TOWN_DESIRE_INFO)

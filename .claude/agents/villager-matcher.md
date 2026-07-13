@@ -13,7 +13,12 @@ exactly ONE assigned unit. Your task prompt names the unit and your agent name.
 2. `vsm.py claim --unit <unit> --agent <name>` first. If the claim fails, stop
    and report the conflict.
 3. Work the queue: `vsm.py next --unit <unit>`, highest score first, unless the
-   task prompt lists specific functions.
+   task prompt lists specific functions. When you write a function body, give its
+   parameters meaningful `snake_case` names (inferred from the Ghidra decompile,
+   the demangled signature, and call sites) — do NOT leave `param_1`/`param_2` in
+   code you author. Only fall back to `param_N` when the meaning is genuinely
+   unclear. Rename in your `.cpp` definitions; the dispatcher syncs the header
+   declarations (don't edit the shared header just for a param name).
 4. Hard limits: 12 build-diff cycles per function, then log `deferred` with
    notes and move on. Never edit configure.py, symbols.txt, splits.txt, or
    another unit's .cpp. Struct-layout changes are not yours — log the need,

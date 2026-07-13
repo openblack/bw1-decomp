@@ -40,7 +40,7 @@ struct JustWholeMapXZ
 	// Non-virtual methods
 
 	// BW1W120 005e1900 BW1M100 100fe880 JustWholeMapXZ::Init(MapCoords const &)
-	void Init(const MapCoords* param_1);
+	void Init(const MapCoords& param_1);
 };
 
 struct MapCoords

@@ -4,10 +4,12 @@
 
 #include "chlasm/Enum.h"
 #include "chlasm/GStates.h"
+#include "Game.h"
 #include "GameOSFile.h"
 #include "GameThing.h"
 #include "InterfaceStatus.h"
 #include "VillagerInfo.h"
+#include "VillagerStateTableInfo.h"
 #include "JobInfo.h"
 #include "MapCoords.h"
 #include "Object.h"
@@ -18,6 +20,8 @@
 #include "TownInfo.h"
 #include "Utils.h"
 #include "Rand.h"
+
+extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
 
 // clang-format off
 static const DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST] = {
@@ -88,7 +92,19 @@ void Villager::SetStateCarriedObject() {}
 // BW1W120 007502a0
 uint32_t Villager::GetWoodCarriedObject()
 {
-	return 0;
+	// TODO: return values 0xc-0xf are an unnamed carried-object/graphic enum
+	uint32_t flags = Flags;
+	switch (flags >> 14)
+	{
+	case 1:
+		return 0xd;
+	case 2:
+		return 0xe;
+	case 3:
+		return 0xf;
+	default:
+		return 0xc;
+	}
 }
 
 // BW1W120 007502d0
@@ -136,17 +152,24 @@ int Villager::CheckEveryTime()
 // BW1W120 00750670
 uint32_t Villager::GetGameTurnsSinceLastChecked()
 {
-	return 0;
+	// TODO: 57% -- correct semantics. Only diff: target folds LastCheckTurn into
+	// the sub as a memory operand (`sub eax,[ecx+0xec]`); MSVC6 here pre-loads it
+	// into edx between the two GameTurn loads. Toy-confirmed unreachable from natural
+	// source (scheduler tie-break, save-across-call-spill family).
+	return GGame::g_game->data.GameTurn - LastCheckTurn;
 }
 
 // BW1W120 00750690
 int Villager::GetGameTurnLastChecked()
 {
-	return 0;
+	return LastCheckTurn;
 }
 
 // BW1W120 007506a0
-void Villager::SetGameTurnLastChecked() {}
+void Villager::SetGameTurnLastChecked()
+{
+	LastCheckTurn = GGame::g_game->data.GameTurn;
+}
 
 // BW1W120 007506c0
 void Villager::VillagerDead(DEATH_REASON param_1, GPlayer* param_2, float param_3, int param_4) {}
@@ -167,7 +190,15 @@ void Villager::TownDeleted() {}
 void Villager::DebugText(int param_1) {}
 
 // BW1W120 00750de0
-void Villager::SetAbode(Abode* abode) {}
+void Villager::SetAbode(Abode* abode)
+{
+	home = abode;
+	SetTown(NULL);
+	if (abode != NULL)
+	{
+		SetTown(abode->GetTown());
+	}
+}
 
 // BW1W120 00750e10
 bool Villager::GetRandomLookAhead(MapCoords* param_1, float param_2)
@@ -190,7 +221,10 @@ int Villager::CheckChildGrownUp()
 // BW1W120 00751110
 bool32_t Villager::IsAMother()
 {
-	return false;
+	// TODO: 77% -- correct semantics. Only diff: target loads sex into edx first
+	// (`mov edx,[eax+0x1f8]; cmp edx,1`); MSVC6 here compares the memory operand
+	// directly. Toy-confirmed unreachable from natural source (scheduler tie-break).
+	return ((const GVillagerInfo*)info)->sex == SEX_FEMALE;
 }
 
 // BW1W120 00751190
@@ -284,8 +318,25 @@ bool Villager::IsRandomlyLazy()
 }
 
 // BW1W120 00751570
-bool Villager::GetResourceHeld(RESOURCE_TYPE& param_1)
+// TODO: 37% -- structure/semantics correct (picks dominant of FOOD/WOOD via unsigned-16
+// compare, writes `type`, returns the held amount). BLOCKED return-type-truth: target
+// returns the RAW amount (`xor eax,eax; mov ax,[0xf4]`), but the `_N` bool return forces
+// MSVC6 to normalize (`cmp;setne al`), which also pushes the `type` out-ptr from edx to
+// eax. Faithful bool source cannot emit the raw-value return; return type is likely wider
+// (unsigned short) in reality -- dispatcher/symbols call.
+bool Villager::GetResourceHeld(RESOURCE_TYPE& type)
 {
+	type = RESOURCE_TYPE_NONE;
+	if ((unsigned short)ResourceHeld[RESOURCE_TYPE_FOOD] > (unsigned short)ResourceHeld[RESOURCE_TYPE_WOOD])
+	{
+		type = RESOURCE_TYPE_FOOD;
+		return ResourceHeld[RESOURCE_TYPE_FOOD];
+	}
+	if (ResourceHeld[RESOURCE_TYPE_WOOD] != 0)
+	{
+		type = RESOURCE_TYPE_WOOD;
+		return ResourceHeld[RESOURCE_TYPE_WOOD];
+	}
 	return false;
 }
 
@@ -344,7 +395,13 @@ bool32_t Villager::DecideWhatToDo()
 // BW1W120 007516e0
 bool32_t Villager::CheckTakeResourcesToStoragePit()
 {
-	return false;
+	if (ResourceHeld[RESOURCE_TYPE_WOOD] > (int)((const GVillagerInfo*)info)->MinWoodToShowGraphic ||
+	    ResourceHeld[RESOURCE_TYPE_FOOD] > (int)((const GVillagerInfo*)info)->MinFoodToShowGraphic)
+	{
+		SetTopState(VILLAGER_STATE_GOTO_STORAGE_PIT_FOR_DROP_OFF);
+		return 1;
+	}
+	return 0;
 }
 
 // BW1W120 00751720
@@ -434,7 +491,8 @@ Football* Villager::GetFootball()
 // BW1W120 00751ee0
 GTribeInfo* Villager::GetTribe()
 {
-	return NULL;
+	TRIBE_TYPE tribeType = ((const GVillagerInfo*)info)->TribeType;
+	return GGame::g_game->GetTribe(tribeType);
 }
 
 // BW1W120 00751f00
@@ -458,7 +516,10 @@ StoragePit* Villager::GetStoragePit()
 // BW1W120 00751f40
 VILLAGER_STATES Villager::GetVillagerAvailableState()
 {
-	return VILLAGER_STATE_INVALID_STATE;
+	// TODO: 86% -- correct semantics/reloc (g_GVillagerStateTableInfos[GetFinalState()&0xff]
+	// .field_0xb8). Only diff: target parks the masked index in ecx (`mov ecx,eax`) and
+	// runs the *276 multiply through eax; MSVC6 here keeps it in eax. Regalloc tie-break.
+	return (VILLAGER_STATES)g_GVillagerStateTableInfos[GetFinalState() & 0xff].field_0xb8;
 }
 
 // BW1W120 00751f70
@@ -509,7 +570,7 @@ uint32_t Villager::CallState()
 // BW1W120 00752210
 bool32_t Villager::IsPregnant()
 {
-	return false;
+	return ((const GVillagerInfo*)info)->sex == SEX_FEMALE && is_pregnant != 0;
 }
 
 // BW1W120 00752240
@@ -561,9 +622,15 @@ bool Villager::IsStateExitFunctionSameAs(VILLAGER_STATES state) const
 }
 
 // BW1W120 007525b0
-bool Villager::IsReactiveState(unsigned long param_1)
+bool Villager::IsReactiveState(unsigned long state)
 {
-	return false;
+	// TODO: 57% -- index/field semantics correct (g_GVillagerStateTableInfos[state]
+	// .field_0xc8 != 0). BLOCKED: symbols.txt names this thiscall (?...@@QAE_NK@Z) but the
+	// target body is __cdecl -- ends `c3` (ret, NO arg cleanup), reads state from [esp+4],
+	// never touches ecx(this), returns full eax. Not ICF (ret != ret4 => bytes differ). A
+	// faithful thiscall member compiles to `ret 4`+al. Calling-convention/symbol anomaly for
+	// the dispatcher (symbol may need to be static/cdecl).
+	return g_GVillagerStateTableInfos[state].field_0xc8 != 0;
 }
 
 // BW1W120 00752600
@@ -575,7 +642,7 @@ bool32_t Villager::IsHungry()
 // BW1W120 00752620
 bool Villager::IsWoman()
 {
-	return false;
+	return ((const GVillagerInfo*)info)->sex == SEX_FEMALE && !IsChild();
 }
 
 // BW1W120 00752690
@@ -585,9 +652,14 @@ bool Villager::MakeVillagesMeet(Villager* param_1, VILLAGER_STATES param_2, floa
 }
 
 // BW1W120 00752760
-bool Villager::MakeVillagerFaceObject(Object* param_1)
+// TODO: 89% -- semantics correct. Remaining: bool-return-full-eax-epilogue (mov eax,1 vs
+// al) + SetGameAngle argeval order (target push eax then mov ecx,esi; ours reversed). Both
+// open scheduler blockers.
+bool Villager::MakeVillagerFaceObject(Object* object)
 {
-	return false;
+	float angle = GUtils::Get3DAngleFromXZ(Pos, object->Pos);
+	SetGameAngle(GUtils::ConvertAngle3DToGame(angle));
+	return true;
 }
 
 // BW1W120 007527a0
@@ -609,8 +681,23 @@ bool32_t Villager::IsAvailableForWorshipSite(int param_1)
 }
 
 // BW1W120 00752860
+// TODO: 84% -- semantics/states all correct. Remaining diffs are open blockers: (1)
+// bool-return-full-eax-epilogue (target `mov eax,1`/`xor eax,eax`, ours al); (2) target
+// tests Flags directly (`test byte[esi+0xe0],2`) then pops esi, ours pre-loads it to cl to
+// pop esi earlier -- epilogue/scheduler tie-break.
 bool Villager::IsAtOrOnTheWayToWorshipSite()
 {
+	int state = GetFinalState() & 0xff;
+	if (state == VILLAGER_STATE_GO_TOWARDS_TELEPORT_REACTION || state == VILLAGER_STATE_TELEPORT_REACTION ||
+	    state == VILLAGER_STATE_GO_TOWARDS_TELEPORT_REACTION_QUICKLY)
+	{
+		state = action.states[LIVING_ACTION_INDEX_PREVIOUS];
+	}
+	if ((Flags & 2) || state == VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_FOR_WORSHIP ||
+	    state == VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_WITH_SUPPLIES)
+	{
+		return true;
+	}
 	return false;
 }
 
@@ -693,6 +780,12 @@ uint32_t Villager::GetResourceFrom(Object* param_1, RESOURCE_TYPE param_2, short
 void Villager::SetFoodSpeedup(bool param_1) {}
 
 // BW1W120 00753430
+// TODO: deferred -- body is
+//   if (IsFoodSpeedUp() && GGame::g_game->data.GameTurn % 10 == 0) FoodSpeedUp--;
+// but the target emits `dec byte ptr [esi+0xf0]`, i.e. FoodSpeedUp is a uint8_t
+// COUNTDOWN, not a bool. `bool--` is rejected by MSVC6 (C2428). Needs the header
+// member `bool FoodSpeedUp` (0xf0) retyped to uint8_t (dispatcher/header call --
+// IsFoodSpeedUp@0x55c980 in another unit also reads it).
 void Villager::ProcessFoodSpeedup() {}
 
 // BW1W120 00753460

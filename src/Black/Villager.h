@@ -380,23 +380,23 @@ public:
 	// BW1W120 007634c0 BW1M100 100072a0 Villager::UpdateHowImpressed(Reaction *, int)
 	virtual void UpdateHowImpressed(Reaction* param_1, int param_2);
 	// BW1W120 00763440 BW1M100 inlined Villager::AddReaction(Reaction *, VILLAGER_STATES)
-	virtual void AddReaction(Reaction* param_1, VILLAGER_STATES param_2);
+	virtual void AddReaction(Reaction* reaction, VILLAGER_STATES state);
 	// BW1W120 007637d0 BW1M100 105941a0 Villager::StopReacting(void)
 	virtual void StopReacting();
 	// BW1W120 00751e10 BW1M100 1056d350 Villager::ResetStateAfterReacting(void)
 	virtual void ResetStateAfterReacting();
 	// BW1W120 00763aa0 BW1M100 105939d0 Villager::SetupLookAtObject(GameThingWithPos *, Reaction *)
-	virtual void SetupLookAtObject(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupLookAtObject(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00763ac0 BW1M100 10593960 Villager::SetupLookAtSpell(GameThingWithPos *, Reaction *)
-	virtual void SetupLookAtSpell(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupLookAtSpell(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00763ae0 BW1M100 105938e0 Villager::SetupLookAtNiceSpell(GameThingWithPos *, Reaction *)
-	virtual void SetupLookAtNiceSpell(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupLookAtNiceSpell(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00767630 BW1M100 10596820 Villager::SetupReactToCreature(GameThingWithPos *, Reaction *)
 	virtual void SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2);
 	// BW1W120 00765b70 BW1M100 1058fc00 Villager::SetupReactToWood(GameThingWithPos *, Reaction *)
 	virtual void SetupReactToWood(GameThingWithPos* param_1, Reaction* param_2);
 	// BW1W120 00763820 BW1M100 10593f50 Villager::SetupReactToMagicTree(GameThingWithPos *, Reaction *)
-	virtual void SetupReactToMagicTree(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToMagicTree(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 007639d0 BW1M100 10593a40 Villager::SetupReactToFlyingObject(GameThingWithPos *, Reaction *)
 	virtual void SetupReactToFlyingObject(GameThingWithPos* param_1, Reaction* param_2);
 	// BW1W120 00765540 BW1M100 10590390 Villager::SetupReactToFire(GameThingWithPos *, Reaction *)
@@ -406,7 +406,7 @@ public:
 	// BW1W120 00766010 BW1M100 1058f360 Villager::SetupReactToNewBuilding(GameThingWithPos *, Reaction *)
 	virtual void SetupReactToNewBuilding(GameThingWithPos* param_1, Reaction* param_2);
 	// BW1W120 00766e30 BW1M100 1058d620 Villager::SetupReactToFight(GameThingWithPos *, Reaction *)
-	virtual void SetupReactToFight(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFight(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00766250 BW1M100 1058f020 Villager::SetupReactToTeleport(GameThingWithPos *, Reaction *)
 	virtual void SetupReactToTeleport(GameThingWithPos* param_1, Reaction* param_2);
 	// BW1W120 007665b0 BW1M100 1058e7d0 Villager::SetupReactToDeath(GameThingWithPos *, Reaction *)
@@ -414,27 +414,27 @@ public:
 	// BW1W120 00766620 BW1M100 1058e6f0 Villager::SetupReactToDroppedByHand(GameThingWithPos *, Reaction *)
 	virtual void SetupReactToDroppedByHand(GameThingWithPos* param_1, Reaction* param_2);
 	// BW1W120 007668c0 BW1M100 1058e200 Villager::SetupReactToFainting(GameThingWithPos *, Reaction *)
-	virtual void SetupReactToFainting(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFainting(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 007668f0 BW1M100 1058e110 Villager::SetupReactToConfused(GameThingWithPos *, Reaction *)
-	virtual void SetupReactToConfused(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToConfused(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00766a20 BW1M100 1058de00 Villager::SetupReactToFallingTree(GameThingWithPos *, Reaction *)
-	virtual void SetupReactToFallingTree(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFallingTree(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00766a60 BW1M100 1058dce0 Villager::SetupReactToCrowd(GameThingWithPos *, Reaction *)
-	virtual void SetupReactToCrowd(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToCrowd(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 007671e0 BW1M100 1058ce20 Villager::SetupReactToBreeder(GameThingWithPos *, Reaction *)
-	virtual void SetupReactToBreeder(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToBreeder(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00763990 BW1M100 10593b90 Villager::SetupFleeFromPredator(GameThingWithPos *, Reaction *)
-	virtual void SetupFleeFromPredator(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupFleeFromPredator(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00766fd0 BW1M100 1058cfd0 Villager::SetupReactToTownCelebration(GameThingWithPos *, Reaction *)
 	virtual void SetupReactToTownCelebration(GameThingWithPos* param_1, Reaction* param_2);
 	// BW1W120 007672f0 BW1M100 1058cae0 Villager::SetupReactToVillagerInHand(GameThingWithPos *, Reaction *)
-	virtual void SetupReactToVillagerInHand(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToVillagerInHand(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00767490 BW1M100 1058c650 Villager::SetupReactToBurningObjectInHand(GameThingWithPos *, Reaction *)
-	virtual void SetupReactToBurningObjectInHand(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToBurningObjectInHand(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 007674b0 BW1M100 1058c4f0 Villager::SetupReactToMagicShieldStruck(GameThingWithPos *, Reaction *)
 	virtual void SetupReactToMagicShieldStruck(GameThingWithPos* param_1, Reaction* param_2);
 	// BW1W120 00767520 BW1M100 1058c460 Villager::SetupReactToMagicShieldDestroyed(GameThingWithPos *, Reaction *)
-	virtual void SetupReactToMagicShieldDestroyed(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToMagicShieldDestroyed(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 007676e0 BW1M100 10596540 Villager::ReactToCreaturePriority(Reaction *, Reaction *)
 	virtual uint8_t ReactToCreaturePriority(Reaction* param_1, Reaction* param_2);
 	// BW1W120 00765260 BW1M100 105908a0 Villager::ReactToFlyingObjectPriority(Reaction *, Reaction *)
@@ -472,7 +472,7 @@ public:
 	// BW1W120 00763980 BW1M100 10593c90 Villager::ReactToScaffoldPriority(Reaction *, Reaction *)
 	virtual uint8_t ReactToScaffoldPriority(Reaction* param_1, Reaction* param_2);
 	// BW1W120 007640a0 BW1M100 10592e20 Villager::NumGameTurnsToReactToPredatorFunction(GameThingWithPos *, unsigned long, float)
-	virtual uint32_t NumGameTurnsToReactToPredatorFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
+	virtual uint32_t NumGameTurnsToReactToPredatorFunction(GameThingWithPos* thing, uint32_t param_2, float param_3);
 	// BW1W120 007640e0 BW1M100 10592d30 Villager::NumGameTurnsBeforeReactingAgainToPredatorFunction(GameThingWithPos *, unsigned long, float)
 	virtual uint32_t NumGameTurnsBeforeReactingAgainToPredatorFunction(GameThingWithPos* param_1, uint32_t param_2,
 	                                                                   float param_3);
@@ -590,13 +590,13 @@ public:
 	// BW1W120 00751110 BW1M100 1056f4c0 Villager::IsAMother(void)
 	bool32_t IsAMother();
 	// BW1W120 00751190 BW1M100 1056f440 Villager::StartMoveToObject(Object *, VILLAGER_STATES)
-	bool StartMoveToObject(Object* param_1, VILLAGER_STATES param_2);
+	bool StartMoveToObject(Object* object, VILLAGER_STATES state);
 	// BW1W120 007511b0 BW1M100 1009cd40 Villager::DropResource(RESOURCE_TYPE, unsigned short)
 	uint16_t DropResource(RESOURCE_TYPE param_1, unsigned short param_2);
 	// BW1W120 007511e0 BW1M100 1056f310 Villager::DropFood(unsigned short)
-	uint16_t DropFood(unsigned short param_1);
+	uint16_t DropFood(unsigned short food_amount);
 	// BW1W120 00751240 BW1M100 1056f220 Villager::DropWood(unsigned short)
-	uint16_t DropWood(unsigned short param_1);
+	uint16_t DropWood(unsigned short wood_amount);
 	// BW1W120 007512a0 BW1M100 1056f160 Villager::IsEnoughFoodInStoragePitForDinner(void)
 	bool IsEnoughFoodInStoragePitForDinner();
 	// BW1W120 007512e0 BW1M100 1056efc0 Villager::FindPotAroundToGoto(RESOURCE_TYPE, unsigned long &, int)
@@ -614,7 +614,7 @@ public:
 	// BW1W120 00751520 BW1M100 1056eb50 Villager::IsRandomlyLazy(void)
 	bool IsRandomlyLazy();
 	// BW1W120 00751570 BW1M100 100007e0 Villager::GetResourceHeld(RESOURCE_TYPE &)
-	bool GetResourceHeld(RESOURCE_TYPE& param_1);
+	bool GetResourceHeld(RESOURCE_TYPE& type);
 	// BW1W120 007516e0 BW1M100 10003bb0 Villager::CheckTakeResourcesToStoragePit(void)
 	bool32_t CheckTakeResourcesToStoragePit();
 	// BW1W120 00751720 BW1M100 1056e1f0 Villager::DiscipleDecideWhatToDo(void)
@@ -662,7 +662,7 @@ public:
 	// BW1W120 007524d0 BW1M100 1009d4c0 Villager::IsStateEntryFunctionSameAs(unsigned long, unsigned long) const
 	bool IsStateEntryFunctionSameAs(unsigned long param_1, unsigned long param_2) const;
 	// BW1W120 007525b0 BW1M100 1056c220 Villager::IsReactiveState(unsigned long)
-	bool IsReactiveState(unsigned long param_1);
+	bool IsReactiveState(unsigned long state);
 	// BW1W120 00752600 BW1M100 1001ff70 Villager::IsHungry(void)
 	bool32_t IsHungry();
 	// BW1W120 00752620 BW1M100 1006a7a0 Villager::IsWoman(void)
@@ -670,7 +670,7 @@ public:
 	// BW1W120 00752690 BW1M100 1056bc60 Villager::MakeVillagesMeet(Villager *, VILLAGER_STATES, float)
 	bool MakeVillagesMeet(Villager* param_1, VILLAGER_STATES param_2, float param_3);
 	// BW1W120 00752760 BW1M100 1056bbd0 Villager::MakeVillagerFaceObject(Object *)
-	bool MakeVillagerFaceObject(Object* param_1);
+	bool MakeVillagerFaceObject(Object* object);
 	// BW1W120 007527e0 BW1M100 1056ba70 Villager::ExitDance(unsigned char)
 	bool ExitDance(unsigned char param_1);
 	// BW1W120 00752820 BW1M100 1056b9c0 Villager::IsAvailableForWorshipSite(int)
@@ -868,7 +868,7 @@ public:
 	// BW1W120 00757180 BW1M100 10572de0 Villager::CheckMoveHouse(Object *)
 	bool32_t CheckMoveHouse(Object* object);
 	// BW1W120 00757210 BW1M100 10572cf0 Villager::CheckMoveIntoTown(Town &)
-	bool32_t CheckMoveIntoTown(Town* param_1);
+	bool32_t CheckMoveIntoTown(Town& target_town);
 	// BW1W120 00757260 BW1M100 10572cb0 Villager::CheckInteractWithAnimal(void)
 	bool32_t CheckInteractWithAnimal();
 	// BW1W120 00757270 BW1M100 105729e0 Villager::CheckInteractWithWorshipSite(void)
@@ -892,7 +892,7 @@ public:
 	// BW1W120 00757760 BW1M100 105720a0 Villager::CheckInteractWithVillager(void)
 	bool32_t CheckInteractWithVillager();
 	// BW1W120 00757820 BW1M100 10572010 Villager::SetDiscipleFollower(VILLAGER_DISCIPLE)
-	void SetDiscipleFollower(VILLAGER_DISCIPLE param_1);
+	void SetDiscipleFollower(VILLAGER_DISCIPLE disciple_type);
 	// BW1W120 00757850 BW1M100 10571fc0 Villager::CheckInteractWithMagicLiving(void)
 	bool32_t CheckInteractWithMagicLiving();
 	// BW1W120 007578c0 BW1M100 10573fc0 Villager::ChildFollowsMother(void)
@@ -916,7 +916,7 @@ public:
 	// BW1W120 00758080 BW1M100 105734a0 Villager::MoveVillagerToAbode(Abode*)
 	void MoveVillagerToAbode(Abode* abode);
 	// BW1W120 007580d0 BW1M100 105733f0 Villager::MakeChildOrphaned(Villager *)
-	uint32_t MakeChildOrphaned(Villager* param_1);
+	uint32_t MakeChildOrphaned(Villager* dead_villager);
 	// BW1W120 00758180 BW1M100 10096f90 Villager::CheckNeededForCivic(void)
 	bool32_t CheckNeededForCivic();
 	// BW1W120 007581a0 BW1M100 1007dae0 Villager::CheckNeededForTownDesire(void)
@@ -930,9 +930,9 @@ public:
 	// BW1W120 00758390 BW1M100 10576a80 Villager::RunAwayFromObjectReaction(void)
 	bool32_t RunAwayFromObjectReaction();
 	// BW1W120 007584b0 BW1M100 10576950 Villager::SetupBuildingObject(BuildingSite *)
-	bool32_t SetupBuildingObject(BuildingSite* param_1);
+	bool32_t SetupBuildingObject(BuildingSite* building_site);
 	// BW1W120 00758530 BW1M100 105767a0 Villager::SetupBuildingObject(MultiMapFixed *)
-	bool32_t SetupBuildingObject(MultiMapFixed* param_1);
+	bool32_t SetupBuildingObject(MultiMapFixed* building_site);
 	// BW1W120 007585a0 BW1M100 10576630 Villager::SetupWaitForWood(BuildingSite *)
 	bool32_t SetupWaitForWood(BuildingSite* param_1);
 	// BW1W120 007586b0 BW1M100 10576590 Villager::WaitForWood(void)
@@ -942,7 +942,7 @@ public:
 	// BW1W120 007587d0 BW1M100 10576150 Villager::GotoStoragePitForBuildingMaterials(BuildingSite *)
 	bool32_t GotoStoragePitForBuildingMaterials(BuildingSite* param_1);
 	// BW1W120 00758960 BW1M100 10576080 Villager::GotoWorkshopForBuildingMaterials(BuildingSite *)
-	bool32_t GotoWorkshopForBuildingMaterials(BuildingSite* param_1);
+	bool32_t GotoWorkshopForBuildingMaterials(BuildingSite* building_site);
 	// BW1W120 00758990 BW1M100 10575f70 Villager::ArrivesAtStoragePitForBuildingMaterials(void)
 	uint32_t ArrivesAtStoragePitForBuildingMaterials();
 	// BW1W120 00758a00 BW1M100 10575d70 Villager::GotoBuildingSite(BuildingSite *)
@@ -1021,8 +1021,10 @@ public:
 	bool32_t ExitFarming(unsigned char param_1);
 	// BW1W120 0075a3d0 BW1M100 1057a120 Villager::DecideHowToPutOutFire(FireEffect *)
 	bool32_t DecideHowToPutOutFire(FireEffect* param_1);
+	// BW1W120 0075a760 Villager::FUN_0075a760(void)
+	void FUN_0075a760();
 	// BW1W120 0075a770 BW1M100 10579a00 Villager::SetupMoveAroundFire(MapCoords const &, VILLAGER_STATES)
-	bool32_t SetupMoveAroundFire(const MapCoords* param_1, VILLAGER_STATES param_2);
+	bool32_t SetupMoveAroundFire(const MapCoords& pos, VILLAGER_STATES state);
 	// BW1W120 0075a7e0 BW1M100 105796c0 Villager::MoveAroundFire(void)
 	uint32_t MoveAroundFire();
 	// BW1W120 0075aa90 BW1M100 10579520 Villager::GetFireFightingPos(FireEffect *, MapCoords *)
@@ -1030,7 +1032,7 @@ public:
 	// BW1W120 0075ac50 BW1M100 10579150 Villager::PutOutFireByBeating(void)
 	bool32_t PutOutFireByBeating();
 	// BW1W120 0075ad90 BW1M100 105790d0 Villager::IsValidFire(FireEffect *)
-	bool32_t IsValidFire(FireEffect* param_1);
+	bool32_t IsValidFire(FireEffect* fire_effect);
 	// BW1W120 0075adc0 BW1M100 10578f40 Villager::EnterPutOutFire(unsigned char, unsigned char)
 	bool32_t EnterPutOutFire(unsigned char param_1, unsigned char param_2);
 	// BW1W120 0075ae80 BW1M100 10578da0 Villager::ExitPutOutFire(unsigned char)
@@ -1038,7 +1040,7 @@ public:
 	// BW1W120 0075af30 BW1M100 10578cc0 Villager::EnterOnFire(unsigned char, unsigned char)
 	bool32_t EnterOnFire(unsigned char param_1, unsigned char param_2);
 	// BW1W120 0075af80 BW1M100 10578bd0 Villager::ExitOnFire(unsigned char)
-	bool32_t ExitOnFire(unsigned char param_1);
+	bool32_t ExitOnFire(unsigned char fire_effect);
 	// BW1W120 0075afe0 BW1M100 10578b60 Villager::PutOutFireWithWater(void)
 	bool32_t PutOutFireWithWater();
 	// BW1W120 0075b000 BW1M100 10578af0 Villager::GetWaterToPutOutFire(void)
@@ -1046,7 +1048,7 @@ public:
 	// BW1W120 0075b020 BW1M100 10578900 Villager::StopFireFighting(void)
 	bool32_t StopFireFighting();
 	// BW1W120 0075b170 BW1M100 105787c0 Villager::SetupOnFire(FireEffect *)
-	bool32_t SetupOnFire(FireEffect* param_1);
+	bool32_t SetupOnFire(FireEffect* new_fire_effect);
 	// BW1W120 0075b1e0 BW1M100 105785a0 Villager::OnFire(void)
 	bool32_t OnFire();
 	// BW1W120 0075b3d0 BW1M100 105784e0 Villager::FinishBeingOnFire(void)
@@ -1080,7 +1082,7 @@ public:
 	// BW1W120 0075bba0 BW1M100 100214f0 Villager::GetDesireForLife(void)
 	void GetDesireForLife();
 	// BW1W120 0075bbc0 BW1M100 100285a0 Villager::GetLifeDesireFromLife(float)
-	float GetLifeDesireFromLife(float param_1);
+	float GetLifeDesireFromLife(float life);
 	// BW1W120 0075bc00 BW1M100 100035f0 Villager::GetAmountOfFoodRequiredForMeal(void)
 	uint32_t GetAmountOfFoodRequiredForMeal();
 	// BW1W120 0075bc20 BW1M100 1009ae40 Villager::GetAmountOfFoodToEat(void)
@@ -1094,7 +1096,7 @@ public:
 	// BW1W120 0075c000 BW1M100 1057aaa0 Villager::EatFood(void)
 	bool32_t EatFood();
 	// BW1W120 0075c040 BW1M100 1057a9c0 Villager::GetFoodFromHome(unsigned long)
-	bool32_t GetFoodFromHome(unsigned long param_1);
+	bool32_t GetFoodFromHome(unsigned long food_amount);
 	// BW1W120 0075c090 BW1M100 1057a900 Villager::EatFoodAtHome(void)
 	bool32_t EatFoodAtHome();
 	// BW1W120 0075c0f0 BW1M100 1057a8c0 Villager::HomelessEatDinner(void)
@@ -1144,7 +1146,7 @@ public:
 	// BW1W120 0075e210 BW1M100 1057f760 Villager::FootballDefenderSaveProcess(Football *)
 	void FootballDefenderSaveProcess(Football* param_1);
 	// BW1W120 0075e370 BW1M100 1057f6f0 Villager::FootballDefenderClearProcess(Football *)
-	void FootballDefenderClearProcess(Football* param_1);
+	void FootballDefenderClearProcess(Football* football);
 	// BW1W120 0075e380 BW1M100 1057f400 Villager::FootballDefenderDribbleProcess(Football *)
 	void FootballDefenderDribbleProcess(Football* param_1);
 	// BW1W120 0075e560 BW1M100 1057f340 Villager::FootballDefenderMarkProcess(Football *)
@@ -1180,7 +1182,7 @@ public:
 	// BW1W120 0075eb70 BW1M100 1057cc00 Villager::FootballGoalieSaveProcess(Football *)
 	void FootballGoalieSaveProcess(Football* param_1);
 	// BW1W120 0075ec50 BW1M100 1057cb90 Villager::FootballGoalieClearProcess(Football *)
-	void FootballGoalieClearProcess(Football* param_1);
+	void FootballGoalieClearProcess(Football* football);
 	// BW1W120 0075ec60 BW1M100 1057ca90 Villager::FootballGoalieLookProcess(Football *)
 	void FootballGoalieLookProcess(Football* param_1);
 	// BW1W120 0075ecd0 BW1M100 1057c8e0 Villager::FootballGoalieGoToBallProcess(Football *)
@@ -1188,7 +1190,7 @@ public:
 	// BW1W120 0075edb0 BW1M100 1057c7e0 Villager::FootballGoalieGoHomeProcess(Football *)
 	void FootballGoalieGoHomeProcess(Football* param_1);
 	// BW1W120 0075ee00 BW1M100 1057c770 Villager::FootballGoalieIdleProcess(Football *)
-	void FootballGoalieIdleProcess(Football* param_1);
+	void FootballGoalieIdleProcess(Football* football);
 	// BW1W120 0075ee10 BW1M100 1057c4c0 Villager::FootballGoaliePassProcess(Football *)
 	void FootballGoaliePassProcess(Football* param_1);
 	// BW1W120 0075efc0 BW1M100 1057c450 Villager::FootballGoalieSavePriority(Football *)
@@ -1264,9 +1266,9 @@ public:
 	// BW1W120 0075fc30 BW1M100 10585080 Villager::GotWoodDecideWhatToDo(void)
 	bool32_t GotWoodDecideWhatToDo();
 	// BW1W120 0075fd00 BW1M100 10584e30 Villager::FindTreeNearVillager(Tree * *)
-	bool32_t FindTreeNearVillager(Tree** param_1);
+	bool32_t FindTreeNearVillager(Tree** found_tree);
 	// BW1W120 0075fe20 BW1M100 10584dc0 Villager::ExitForesting(unsigned char)
-	bool32_t ExitForesting(unsigned char param_1);
+	bool32_t ExitForesting(unsigned char state);
 	// BW1W120 0075fea0 BW1M100 10097120 Villager::HomeDecideWhatToDo(void)
 	bool32_t HomeDecideWhatToDo();
 	// BW1W120 0075ff80 BW1M100 1000a8c0 Villager::CheckNeededForSomething(void)
@@ -1380,7 +1382,7 @@ public:
 	// BW1W120 00761ae0 BW1M100 10586240 Villager::SleepInTent(void)
 	bool32_t SleepInTent();
 	// BW1W120 00761b40 BW1M100 100957f0 Villager::ExitAtHome(unsigned char)
-	bool32_t ExitAtHome(unsigned char param_1);
+	bool32_t ExitAtHome(unsigned char state);
 	// BW1W120 00761b70 BW1M100 10586150 Villager::GoHomeFromWorship(void)
 	bool32_t GoHomeFromWorship();
 	// BW1W120 00761c00 BW1M100 1058ad30 Villager::HousewifeLookForWork(void)
@@ -1390,7 +1392,11 @@ public:
 	// BW1W120 00761c40 BW1M100 1058abc0 Villager::CheckNeededForHouseWork(void)
 	bool32_t CheckNeededForHouseWork();
 	// BW1W120 00761c90 BW1M100 1058aac0 Villager::CheckNeededToMakeDinner(void)
-	bool32_t CheckNeededToMakeDinner();
+	// TODO: symbols.txt has QAE_N (bool) but codegen proves QAEI (bool32_t): compiled as bool32_t
+	// the body matches the target exactly (no neg;sbb;neg normalization, and xor eax vs xor al).
+	// Needs symbols.txt QAE_N->QAEI plus this decl -> bool32_t (dispatcher). Also unblocks
+	// HousewifeAtHome (its `== 1` compare wants full eax).
+	bool CheckNeededToMakeDinner();
 	// BW1W120 00761ce0 BW1M100 1058a9d0 Villager::HousewifeGotoStoragePit(void)
 	bool32_t HousewifeGotoStoragePit();
 	// BW1W120 00761d60 BW1M100 1058a7e0 Villager::HousewifeArrivesAtStoragePit(void)
@@ -1458,7 +1464,7 @@ public:
 	// BW1W120 00763d90 BW1M100 105931e0 Villager::GoAndHideInNearbyBuilding(void)
 	bool32_t GoAndHideInNearbyBuilding();
 	// BW1W120 00763f00 BW1M100 105930c0 Villager::GetAbodeToHideInAtPos(MapCoords const &)
-	Abode* GetAbodeToHideInAtPos(const MapCoords& param_1);
+	Abode* GetAbodeToHideInAtPos(const MapCoords& pos);
 	// BW1W120 00763f80 BW1M100 10592f10 Villager::LookToSeeIfItIsSafe(void)
 	bool32_t LookToSeeIfItIsSafe();
 	// BW1W120 00764410 BW1M100 105924a0 Villager::PerformInspectionReaction(void)
@@ -1506,7 +1512,7 @@ public:
 	// BW1W120 00766380 BW1M100 1058ee60 Villager::GoToTeleportReactionQuickly(void)
 	bool32_t GoToTeleportReactionQuickly();
 	// BW1W120 00766390 BW1M100 1058ed70 Villager::ExitReactToTeleport(unsigned char)
-	bool32_t ExitReactToTeleport(unsigned char param_1);
+	bool32_t ExitReactToTeleport(unsigned char state);
 	// BW1W120 007663f0 BW1M100 1058eca0 Villager::TeleportReaction(void)
 	bool32_t TeleportReaction();
 	// BW1W120 00766680 BW1M100 1058e5f0 Villager::PointAtDeadPerson(void)
@@ -1536,7 +1542,7 @@ public:
 	// BW1W120 00767280 BW1M100 1058cc50 Villager::ReactToBreeder(void)
 	bool32_t ReactToBreeder();
 	// BW1W120 007672c0 BW1M100 1058cba0 Villager::GoAndHaveSexWith(Villager *)
-	bool32_t GoAndHaveSexWith(Villager* param_1);
+	bool32_t GoAndHaveSexWith(Villager* mate);
 	// BW1W120 007673a0 BW1M100 1058c890 Villager::WaitForMate(void)
 	bool32_t WaitForMate();
 	// BW1W120 00767410 BW1M100 1058c850 Villager::EnterDrowning(unsigned char, unsigned char)
@@ -1570,8 +1576,8 @@ public:
 	// BW1W120 00768510 BW1M100 10594d70 Villager::SetupMoveToCreatureReaction(MapCoords const &, unsigned char)
 	void SetupMoveToCreatureReaction(const MapCoords& param_1, unsigned char param_2);
 	// BW1W120 00768680 BW1M100 105974b0 Villager::SetupScriptWanderToPos(MapCoords const &, float, unsigned short, unsigned short)
-	bool32_t SetupScriptWanderToPos(const MapCoords* param_1, float param_2, unsigned short param_3,
-	                                unsigned short param_4);
+	bool32_t SetupScriptWanderToPos(const MapCoords& pos, float radius, unsigned short min_turns,
+	                                unsigned short max_turns);
 	// BW1W120 007686d0 BW1M100 10597370 Villager::SetupNewScriptWander(void)
 	bool32_t SetupNewScriptWander();
 	// BW1W120 007687f0 BW1M100 105971a0 Villager::ScriptWanderAroundPos(void)
@@ -1654,7 +1660,7 @@ public:
 	// BW1W120 0076a2a0 BW1M100 1059ae60 Villager::EnterBreeder(unsigned char, unsigned char)
 	bool32_t EnterBreeder(unsigned char param_1, unsigned char param_2);
 	// BW1W120 0076a2d0 BW1M100 1059ae00 Villager::ExitBreeder(unsigned char)
-	bool32_t ExitBreeder(unsigned char param_1);
+	bool32_t ExitBreeder(unsigned char state);
 	// BW1W120 0076a2f0 BW1M100 1059ac90 Villager::AtStructureRemoveResource(MultiMapFixed *, RESOURCE_TYPE, unsigned long, bool *)
 	uint32_t AtStructureRemoveResource(MultiMapFixed* param_1, RESOURCE_TYPE param_2, unsigned long param_3,
 	                                   bool* param_4);
@@ -1686,7 +1692,7 @@ public:
 	// BW1W120 0076b030 BW1M100 1000ab40 Villager::IsInACreaturesHand(void)
 	bool32_t IsInACreaturesHand();
 	// BW1W120 0076b060 BW1M100 10599640 Villager::SetupWaitForCounter(unsigned short, VILLAGER_STATES)
-	bool32_t SetupWaitForCounter(unsigned short param_1, VILLAGER_STATES param_2);
+	bool32_t SetupWaitForCounter(unsigned short counter, VILLAGER_STATES state);
 	// BW1W120 0076b090 BW1M100 1009deb0 Villager::SetupPauseForASecond(VILLAGER_STATES)
 	uint32_t SetupPauseForASecond(VILLAGER_STATES state);
 	// BW1W120 0076b0b0 BW1M100 1000e650 Villager::PauseForASecond(void)
