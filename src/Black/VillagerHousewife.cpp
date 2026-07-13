@@ -53,7 +53,7 @@ bool32_t Villager::CheckNeededForHouseWork()
 }
 
 // BW1W120 00761c90 BW1M100 1058aac0 Villager::CheckNeededToMakeDinner(void)
-bool Villager::CheckNeededToMakeDinner()
+bool32_t Villager::CheckNeededToMakeDinner()
 {
 	Villager* villager = GetAbode()->villagers.head;
 	while (villager != NULL)

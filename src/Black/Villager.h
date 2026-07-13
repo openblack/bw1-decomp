@@ -608,13 +608,13 @@ public:
 	// BW1W120 007514b0 BW1M100 1056ed20 Villager::PickupWood(short, unsigned char)
 	void PickupWood(short param_1, unsigned char param_2);
 	// BW1W120 007514d0 BW1M100 10004d10 Villager::GetFoodCapacity(void)
-	int GetFoodCapacity();
+	int16_t GetFoodCapacity();
 	// BW1W120 007514f0 BW1M100 1056ec50 Villager::GetWoodCapacity(void)
-	int GetWoodCapacity();
+	int16_t GetWoodCapacity();
 	// BW1W120 00751520 BW1M100 1056eb50 Villager::IsRandomlyLazy(void)
 	bool IsRandomlyLazy();
 	// BW1W120 00751570 BW1M100 100007e0 Villager::GetResourceHeld(RESOURCE_TYPE &)
-	bool GetResourceHeld(RESOURCE_TYPE& type);
+	uint16_t GetResourceHeld(RESOURCE_TYPE& type);
 	// BW1W120 007516e0 BW1M100 10003bb0 Villager::CheckTakeResourcesToStoragePit(void)
 	bool32_t CheckTakeResourcesToStoragePit();
 	// BW1W120 00751720 BW1M100 1056e1f0 Villager::DiscipleDecideWhatToDo(void)
@@ -1076,7 +1076,7 @@ public:
 	// BW1W120 0075baf0 BW1M100 1057b4f0 Villager::CheckHungryAtHome(void)
 	bool32_t CheckHungryAtHome();
 	// BW1W120 0075bb00 BW1M100 1057b400 Villager::GetDesireToPickupFood(void)
-	bool32_t GetDesireToPickupFood();
+	float GetDesireToPickupFood();
 	// BW1W120 0075bb50 BW1M100 10087950 Villager::GetDesireForFood(void)
 	float GetDesireForFood();
 	// BW1W120 0075bba0 BW1M100 100214f0 Villager::GetDesireForLife(void)
@@ -1332,7 +1332,7 @@ public:
 	// BW1W120 00761030 BW1M100 10587a00 Villager::WaitForDinner(void)
 	bool32_t WaitForDinner();
 	// BW1W120 00761040 BW1M100 10587960 Villager::GetPromiscuity(void)
-	bool32_t GetPromiscuity();
+	float GetPromiscuity();
 	// BW1W120 00761070 BW1M100 105878e0 Villager::IsAvailableForSex(void)
 	bool32_t IsAvailableForSex();
 	// BW1W120 00761090 BW1M100 10587810 Villager::IsSexuallyActive(void)
@@ -1392,11 +1392,7 @@ public:
 	// BW1W120 00761c40 BW1M100 1058abc0 Villager::CheckNeededForHouseWork(void)
 	bool32_t CheckNeededForHouseWork();
 	// BW1W120 00761c90 BW1M100 1058aac0 Villager::CheckNeededToMakeDinner(void)
-	// TODO: symbols.txt has QAE_N (bool) but codegen proves QAEI (bool32_t): compiled as bool32_t
-	// the body matches the target exactly (no neg;sbb;neg normalization, and xor eax vs xor al).
-	// Needs symbols.txt QAE_N->QAEI plus this decl -> bool32_t (dispatcher). Also unblocks
-	// HousewifeAtHome (its `== 1` compare wants full eax).
-	bool CheckNeededToMakeDinner();
+	bool32_t CheckNeededToMakeDinner();
 	// BW1W120 00761ce0 BW1M100 1058a9d0 Villager::HousewifeGotoStoragePit(void)
 	bool32_t HousewifeGotoStoragePit();
 	// BW1W120 00761d60 BW1M100 1058a7e0 Villager::HousewifeArrivesAtStoragePit(void)
