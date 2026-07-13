@@ -51,28 +51,12 @@ jobs:
         key: ${{ runner.os }}-${{ matrix.version }}-${{ github.sha }}
         restore-keys: ${{ runner.os }}-${{ matrix.version }}-
 
-    # Build wibo from main and use it as the compiler wrapper. The pinned
-    # release (1.1.0) doesn't implement kernel32!lstrcpynA, which cl.exe calls
-    # when compiling any translation unit that includes <windows.h>; the
-    # implementation only exists on wibo main.
-    - name: Build wibo
-      run: |
-        apt-get update
-        apt-get install -y --no-install-recommends \
-            build-essential cmake clang libclang-dev python3-venv
-        git clone --depth 1 https://github.com/decompals/wibo.git /tmp/wibo
-        cd /tmp/wibo
-        cmake --preset release64
-        cmake --build build/release64 -j
-
     # Build the project. Static libs ship in the build container under
     # orig/libs (copied above via /orig), where configure.py reads them
-    # verbatim. --wrapper points at the wibo built above so it overrides the
-    # downloaded 1.1.0.
+    # verbatim.
     - name: Build
       run: |
-        python configure.py --map --version ${{ matrix.version }} \
-            --wrapper /tmp/wibo/build/release64/wibo
+        python configure.py --map --version ${{ matrix.version }}
         ninja all_source progress build/${{ matrix.version }}/report.json
 
     # Upload map files
