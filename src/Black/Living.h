@@ -690,11 +690,11 @@ public:
 	// BW1W120 005ec550 BW1M100 10382540 Living::LookAtPos(MapCoords const &, ulong)
 	bool LookAtPos(MapCoords* pos, int param_2);
 	// BW1W120 005ec960 BW1M100 1004eb50 Living::IsReadyForNewAnimation(unsigned long)
-	bool IsReadyForNewAnimation(uint32_t index);
+	bool32_t IsReadyForNewAnimation(uint32_t index);
 	// BW1W120 005ec990 BW1M100 10054e20 Living::WaitForAnimation(void)
 	uint32_t WaitForAnimation();
 	// BW1W120 005eca60 BW1M100 10381e30 Living::GetReaction(void)
-	void GetReaction();
+	Reaction* GetReaction();
 	// BW1W120 005eca80 BW1M100 inlined Living::SetTopStateToFinal(void)
 	void SetTopStateToFinal();
 	// BW1W120 005ecac0 BW1M100 10091bd0 Living::PlayAnimThenSetState(unsigned char, unsigned long)
