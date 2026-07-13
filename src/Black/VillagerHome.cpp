@@ -2,10 +2,12 @@
 
 #include "chlasm/GStates.h"
 
+#include "Rand.h"
 #include "VillagerInfo.h"
 #include "VillagerStateTableInfo.h"
 #include "Abode.h"
 #include "Town.h"
+#include "Game.h"
 
 extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
 
@@ -20,6 +22,24 @@ bool32_t Villager::CheckNeededForSomething()
 		}
 	}
 	return CheckNeededForSpecial() == 1;
+}
+
+// BW1W120 0075ffb0 BW1M100 105894c0 Villager::HomeNothingToDo(void)
+bool32_t Villager::HomeNothingToDo()
+{
+	if (Flags & 4)
+	{
+		if (GRand::GameRand(4, __FILE__, __LINE__) == 0)
+		{
+			TurnsUntilNextStateChange = 0;
+			SetTopState(VILLAGER_STATE_GOTO_BED_AT_HOME);
+			return true;
+		}
+	}
+	// TODO: GameRand __FILE__/__LINE__ can't match in a split TU (original line 75,
+	// original file path); costs the two arg pushes. Rest matches.
+	SetupNothingToDo();
+	return true;
 }
 
 // BW1W120 00760000 BW1M100 10589480 Villager::NothingToDo(void)
@@ -226,11 +246,41 @@ void Villager::HomeDeleted()
 // BW1W120 00761220 BW1M100 10587440 Villager::MakeHomeless(void)
 bool Villager::MakeHomeless()
 {
-	// TODO: 96.9% - target saves the result full-width in edi; we store it
-	// byte-width in ebx. Register-allocation tie-break, semantics correct.
+	// TODO: 96.9% - target saves MakeHomelessNoStateChange()'s bool result full-width
+	// in edi; we store bl. Likely resolves once MakeHomelessNoStateChange is DEFINED
+	// in-TU (bool-return width). `int result` forces edi but adds a return-normalization.
 	bool result = MakeHomelessNoStateChange();
 	SetTopState(VILLAGER_STATE_HOMELESS_START);
 	return result;
+}
+
+// BW1W120 00761240 BW1M100 10587220 Villager::MakeHomelessNoStateChange(void)
+bool Villager::MakeHomelessNoStateChange()
+{
+	Town* town = GetTown();
+	if (GetAbode() != NULL)
+	{
+		GetAbode()->RemoveAliveVillagerFromAbode(this);
+		SetAbode(NULL);
+		SetTown(town);
+	}
+	if (town == NULL)
+	{
+		return false;
+	}
+	if (town->IsVillagerInHomelessList(this))
+	{
+		return false;
+	}
+	// TODO: 74% - target's VillagersWithoutTown.Remove(this) inline has a membership
+	// pre-scan loop (walk once to confirm `this` is present, bail if not) that
+	// LHListHead<T>::Remove lacks; also count-- emits in-place `dec [mem]` there vs
+	// our load/dec/store. Both stem from LHListHead::Remove's shape (shared header,
+	// dispatcher-owned). Plus bool-width epilogue (xor eax vs xor al, mov eax,1 vs
+	// mov al,1) and push edi prologue scheduling.
+	GGame::g_game->GameLists.VillagersWithoutTown.Remove(this);
+	town->HomelessList.AddToFirst(this);
+	return true;
 }
 
 // BW1W120 00761320 BW1M100 10587160 Villager::HomelessStart(void)
@@ -238,7 +288,9 @@ bool32_t Villager::HomelessStart()
 {
 	GetTown();
 	// TODO: 99.8% - target compares CheckHungry()'s bool result full-width
-	// (`cmp eax,1`); our build emits `cmp al,1`. bool-return width tie-break.
+	// (`cmp eax,1`); our build emits `cmp al,1`. bool-return width tie-break
+	// (CheckHungry is _N/bool and extern to this TU). int-local zext trick tried,
+	// does not force widening.
 	if (CheckHungry() != 1 && CheckNeededForSomething() != 1 && CheckHomelessMoveIntoAbode() == 0)
 	{
 		SetupNothingToDo();
@@ -279,7 +331,9 @@ void Villager::SetupAfterTapOnAbode(MapCoords& pos, VILLAGER_STATES previous_sta
 bool32_t Villager::AfterTapOnAbode()
 {
 	// TODO: 85.7% - target zero-extends the byte arg (`xor eax,eax; mov al,[..]`);
-	// our build emits only `mov al,[..]`. Codegen tie-break, semantics correct.
+	// ours emits only `mov al`. states[] is uint8 and PlayAnimThenSetState's first
+	// param is unsigned char, so the upper bits are dead and MSVC drops the xor.
+	// uint32/enum-cast local tricks do not force it (prototype-visibility tie-break).
 	PlayAnimThenSetState(action.states[LIVING_ACTION_INDEX_PREVIOUS], 1);
 	return true;
 }

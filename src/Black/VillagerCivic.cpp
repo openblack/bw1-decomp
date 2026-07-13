@@ -3,14 +3,32 @@
 #include "BuildingSite.h"
 #include "GameThingWithPos.h"
 #include "MultiMapFixed.h"
+#include "StoragePit.h"
 #include "Town.h"
 #include "VillagerInfo.h"
+#include "Workshop.h"
 
 // BW1W120 00758180 BW1M100 10096f90 Villager::CheckNeededForCivic(void)
 bool32_t Villager::CheckNeededForCivic()
 {
 	if (GetTown() != NULL && CheckNeededForTownDesire() == 1)
 		return true;
+	return false;
+}
+
+// BW1W120 007582f0 BW1M100 10576e60 Villager::CheckNeededForHarvest(void)
+bool32_t Villager::CheckNeededForHarvest()
+{
+	// TODO: 99.7% -- target does `test eax,eax` on IsHarvestTime()'s result, ours
+	// does `test al,al`. IsHarvestTime is _N (1-byte bool); target treats the return
+	// as full-eax. Declaring it bool32_t would fix the width but change the call reloc
+	// (_N->I). Caller-side mirror of CHEATSHEET bool-return-mask-needs-callee-defined.
+	if (GetTown()->IsHarvestTime())
+	{
+		Field* field = GetTown()->FindClosesFieldToWithFood(((GameThingWithPos*)this)->coords);
+		if (field != NULL && SetFarmerGotoField(field, 0))
+			return true;
+	}
 	return false;
 }
 
@@ -110,6 +128,114 @@ bool32_t Villager::CheckSatisfyToRepair()
 			return true;
 	}
 	return false;
+}
+
+// BW1W120 007593a0 BW1M100 10574980 Villager::CheckSatisfySupplyWorkshop(void)
+bool32_t Villager::CheckSatisfySupplyWorkshop()
+{
+	// TODO: 87.7% -- semantics/vtable slots (GetResource@0x98, GetArrivePos@0x104)/states
+	// all correct. Remaining diffs are MSVC6 prologue scheduling: target defers `push edi`
+	// (callee-save) until after `mov eax,[esi]`, ours emits it eagerly, which shifts the
+	// shared GetArrivePos retbuf frame offset (esp+0xc vs esp+8) and the coords `lea`
+	// arg-eval order. Scheduler tie-break family (CHEATSHEET save-across-call-spill).
+	Town* town = GetTown();
+	if (town != NULL)
+	{
+		Workshop* workshop = town->GetBestWorkshop(((GameThingWithPos*)this)->coords, 1, 1);
+		if (workshop != NULL)
+		{
+			if (ResourceHeld[RESOURCE_TYPE_WOOD] != 0)
+			{
+				SetupMoveToOnFootpath(*workshop, workshop->GetArrivePos(),
+				                      VILLAGER_STATE_ARRIVES_AT_WORKSHOP_FOR_DROP_OFF);
+				return true;
+			}
+			StoragePit* storagePit = GetStoragePit();
+			if (storagePit != NULL && (int)storagePit->GetResource(RESOURCE_TYPE_WOOD) > 0)
+			{
+				SetupMoveToOnFootpath(*storagePit, storagePit->GetArrivePos(),
+				                      VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_WORKSHOP_MATERIALS);
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+// BW1W120 00759450 BW1M100 10574800 Villager::ArrivesAtStoragePitForWorkshopMaterials(void)
+bool32_t Villager::ArrivesAtStoragePitForWorkshopMaterials()
+{
+	// TODO: 92.6% -- all semantics correct (IsFunctional@0xd4, AreWeThere(float),
+	// GetBestWorkshop, GetWoodCapacity truncated to short, ArrivesAtStoragePitForResource,
+	// GetArrivePos@0x104, SetTopState). Remaining are the scheduler ties: eager vs lazy
+	// `push edi`, coords `lea` arg-eval order, GetArrivePos retbuf frame offset
+	// (esp+0xc vs esp+0x10). Same family as CheckSatisfySupplyWorkshop.
+	Town* town = GetTown();
+	if (town == NULL)
+		return false;
+	StoragePit* storagePit = GetStoragePit();
+	if (storagePit != NULL && storagePit->IsFunctional())
+	{
+		if (AreWeThere(0.0f))
+		{
+			Workshop* workshop = town->GetBestWorkshop(((GameThingWithPos*)this)->coords, 1, 1);
+			if (workshop != NULL)
+			{
+				int woodCapacity = (short)GetWoodCapacity();
+				if (woodCapacity != 0)
+				{
+					ArrivesAtStoragePitForResource(RESOURCE_TYPE_WOOD, woodCapacity,
+					                               VILLAGER_STATE_ARRIVES_AT_WORKSHOP_FOR_DROP_OFF,
+					                               VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+					return true;
+				}
+			}
+		}
+		else
+		{
+			SetupMoveToOnFootpath(*storagePit, storagePit->GetArrivePos(),
+			                      VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_WORKSHOP_MATERIALS);
+			return true;
+		}
+	}
+	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+	return true;
+}
+
+// BW1W120 00759520 BW1M100 10574670 Villager::ArrivesAtWorkshopForDropOff(void)
+bool32_t Villager::ArrivesAtWorkshopForDropOff()
+{
+	// TODO: 73.4% here, but 89.1% with the correct signature (semantics all verified:
+	// GetArrivePos@0x104, AreWeThere@0x85c, AddResource@0x9c, SetTopState@0x8e8, DropWood,
+	// states). DISPATCHER: MobileWallHug::AreWeThere is really `bool AreWeThere(const
+	// MapCoords&, float)` (symbol ABUMapCoords, Rule 1), which lets the inline temp
+	// `AreWeThere(workshop->GetArrivePos(), 0.0f)` share ONE retbuf with the else-branch
+	// GetArrivePos (sub esp,0xc). But VillagerStates.cpp calls `AreWeThere(&storePos,..)`
+	// with a pointer, so the header can't be flipped without also fixing that unit -- a
+	// coordinated cross-TU change. With the pointer header, the named-local `&arrivePos`
+	// forces a 2nd buffer (sub esp,0x18), costing the frame-offset match. Residual after
+	// the ref fix = save-across-call-spill scheduler ties (push edi, lea arg-eval).
+	Town* town = GetTown();
+	if (town == NULL)
+		return false;
+	Workshop* workshop = town->GetBestWorkshop(((GameThingWithPos*)this)->coords, 1, 1);
+	if (workshop != NULL)
+	{
+		MapCoords arrivePos = workshop->GetArrivePos();
+		if (AreWeThere(&arrivePos, 0.0f))
+		{
+			int amount = ResourceHeld[RESOURCE_TYPE_WOOD];
+			DropWood(amount);
+			workshop->AddResource(RESOURCE_TYPE_WOOD, amount, NULL, false, NULL, 0);
+		}
+		else
+		{
+			SetupMoveToOnFootpath(*workshop, workshop->GetArrivePos(), VILLAGER_STATE_ARRIVES_AT_WORKSHOP_FOR_DROP_OFF);
+			return true;
+		}
+	}
+	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+	return true;
 }
 
 // BW1W120 007595e0 BW1M100 10574610 Villager::CheckForScaffoldForBuildingSite(BuildingSite *)

@@ -1568,7 +1568,7 @@ public:
 	// BW1W120 00768400 BW1M100 10594e00 Villager::UpdateReactiveStateFromAttitudeToCreature(void)
 	bool32_t UpdateReactiveStateFromAttitudeToCreature();
 	// BW1W120 00768510 BW1M100 10594d70 Villager::SetupMoveToCreatureReaction(MapCoords const &, unsigned char)
-	void SetupMoveToCreatureReaction(const MapCoords* param_1, unsigned char param_2);
+	void SetupMoveToCreatureReaction(const MapCoords& param_1, unsigned char param_2);
 	// BW1W120 00768680 BW1M100 105974b0 Villager::SetupScriptWanderToPos(MapCoords const &, float, unsigned short, unsigned short)
 	bool32_t SetupScriptWanderToPos(const MapCoords* param_1, float param_2, unsigned short param_3,
 	                                unsigned short param_4);
@@ -1757,7 +1757,7 @@ public:
 	// BW1W120 0076c170 BW1M100 1059df70 Villager::ExitMoveToWorshipSite(unsigned char)
 	bool32_t ExitMoveToWorshipSite(unsigned char param_1);
 	// BW1W120 0076c1f0 BW1M100 1059de40 Villager::ExitAtWorshipSite(unsigned char)
-	bool32_t ExitAtWorshipSite(unsigned char param_1);
+	bool ExitAtWorshipSite(unsigned char state);
 	// BW1W120 0076c280 BW1M100 1059dd90 Villager::ExitGetFoodAtWorship(unsigned char)
 	bool32_t ExitGetFoodAtWorship(unsigned char param_1);
 	// BW1W120 0076c2d0 BW1M100 1059dc80 Villager::ArrivesAtWorshipSiteWithSupplies(void)
@@ -1769,7 +1769,7 @@ public:
 	// BW1W120 0076c3f0 BW1M100 1059d990 Villager::AddVillagerToWorshipSite(void)
 	bool32_t AddVillagerToWorshipSite();
 	// BW1W120 0076c440 BW1M100 1059d850 Villager::RemoveVillagerFromWorshipSite(void)
-	bool32_t RemoveVillagerFromWorshipSite();
+	bool RemoveVillagerFromWorshipSite();
 	// BW1W120 0076c4c0 BW1M100 1059d740 Villager::StartWorshippingAtWorshipSite(void)
 	bool32_t StartWorshippingAtWorshipSite();
 	// BW1W120 0076c550 BW1M100 1059d640 Villager::StartHidingAtWorshipSite(void)
@@ -1779,7 +1779,7 @@ public:
 	// BW1W120 0076c680 BW1M100 1059d470 Villager::WorshippingAtWorshipSite(void)
 	bool32_t WorshippingAtWorshipSite();
 	// BW1W120 0076c6e0 BW1M100 1059d310 Villager::StartWorshippingCreature(Creature *)
-	bool32_t StartWorshippingCreature(Creature* param_1);
+	bool StartWorshippingCreature(Creature* creature);
 	// BW1W120 0076c7c0 BW1M100 1059d280 Villager::WorshippingCreature(void)
 	bool32_t WorshippingCreature();
 	// BW1W120 0076c800 BW1M100 1059d130 Villager::ReduceVillagerLifeByChant(void)

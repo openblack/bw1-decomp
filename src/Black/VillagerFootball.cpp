@@ -109,8 +109,8 @@ bool32_t Villager::StartMoveToPickUpBallForDeadBall()
 {
 	// TODO: block-ordering tie-break. Semantics correct but MSVC6 lays out
 	// [cond][body][ret0] while target is [cond][ret0][body] (target jumps to the
-	// body via `jne`, ret0 is fallthrough). Tried &&, ||-early-return and nested-if
-	// forms — all produce identical [body][ret0] layout. ~9.6% (pure reorder).
+	// body via `jne`, ret0 is fallthrough). Tried &&, ||-early-return, nested-if and
+	// explicit `goto`-to-body forms — MSVC6 normalizes all to [body][ret0]. ~9.6%.
 	if (GetFootball() != NULL && GetFootball()->GetBall() != NULL)
 	{
 		StartMoveToObject((Object*)GetFootball()->GetBall(), VILLAGER_STATE_ARRIVED_AT_PICK_UP_BALL_FOR_DEAD_BALL);

@@ -255,7 +255,7 @@ public:
 	// BW1W120 0073b370 BW1M100 10554d60 Town::FindAbodeWithSpaceInTown(Villager *, float)
 	Abode* FindAbodeWithSpaceInTown(Villager* villager, float min_score);
 	// BW1W120 0073b3d0 BW1M100 10554c70 Town::FindClosesFieldToWithFood(MapCoords const &)
-	Field* FindClosesFieldToWithFood(const MapCoords* param_1);
+	Field* FindClosesFieldToWithFood(const MapCoords& param_1);
 	// BW1W120 0073b580 BW1M100 10554bd0 Town::IsVillagerInHomelessList(Villager *)
 	bool32_t IsVillagerInHomelessList(Villager* villager);
 	// BW1W120 0073b5b0 BW1M100 100572e0 Town::GetStoragePit(void)
@@ -315,7 +315,7 @@ public:
 	// BW1W120 0073eb00 BW1M100 1054dfe0 Town::AssignForestsToTown(void)
 	void AssignForestsToTown();
 	// BW1W120 00740250 BW1M100 10549810 Town::GetBestWorkshop(MapCoords &, int, int)
-	Workshop* GetBestWorkshop(MapCoords* param_1, int param_2, int param_3);
+	Workshop* GetBestWorkshop(MapCoords& param_1, int param_2, int param_3);
 	// BW1W120 0073d6b0 Town::IsAbodeTypeInTown(ABODE_TYPE)
 	uint32_t IsAbodeTypeInTown(ABODE_TYPE abode_type);
 	// BW1W120 007408b0 BW1M100 10008020 Town::GetCongregationPos(void)
