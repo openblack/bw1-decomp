@@ -16,16 +16,20 @@ enum DANCE_GROUP_ACTION_TYPE
 
 class Base;
 class GameOSFile;
+class GameThingWithPos;
 class GroupBehaviour;
 
 class DanceGroup : public GameThing
 {
 public:
-	uint8_t         field_0x14[0x4];
-	GroupBehaviour* behaviour;
-	uint8_t         field_0x1c[0x40];
-	uint32_t        field_0x5c;
-	uint8_t         field_0x60[0x11c];
+	// Pointer to the object being danced around (the dancer/target). Its MapCoords
+	// base member is at +0x14 (GameThingWithPos::coords); it also has a flag at +0x100
+	// and a counter at +0x114 whose containing (derived) type is not yet identified.
+	GameThingWithPos* Dancer; /* 0x14 */
+	GroupBehaviour*   behaviour;
+	uint8_t           field_0x1c[0x40];
+	uint32_t          field_0x5c;
+	uint8_t           field_0x60[0x11c];
 
 	// Override methods
 

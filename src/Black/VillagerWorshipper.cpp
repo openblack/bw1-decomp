@@ -2,6 +2,7 @@
 
 #include "Dance.h"
 #include "DanceGroup.h"
+#include "GameThingWithPos.h"
 #include "MapCoords.h"
 #include "WorshipSite.h"
 #include "chlasm/GStates.h"
@@ -60,14 +61,14 @@ bool32_t Villager::RestartWorshippingAtWorshipSite()
 }
 
 // BW1W120 0076c3c0 BW1M100 1059da60 Villager::RestartWorshippingCreature(void)
-// TODO: 85% — dance_group->field_0x14 holds a pointer to an object with MapCoords at +0x14 (type
-// unknown). Only diff is `add eax,0x14` (arg1 address) scheduled before `push 0x5a` instead of after
+// TODO: 85% — dance_group->Dancer's MapCoords base is at +0x14 (type unknown beyond GameThingWithPos).
+// Only diff is `add eax,0x14` (arg1 address) scheduled before `push 0x5a` instead of after
 // — an arg-evaluation scheduler tie-break (named-local variant gives identical asm). Semantics correct.
 bool32_t Villager::RestartWorshippingCreature()
 {
 	if (dance_group != NULL)
 	{
-		PerformDance((const MapCoords*)(*(int*)dance_group->field_0x14 + 0x14), VILLAGER_STATE_WORSHIPPING_CREATURE, 9);
+		PerformDance(&dance_group->Dancer->coords, VILLAGER_STATE_WORSHIPPING_CREATURE, 9);
 		return 1;
 	}
 	GoHome();
@@ -98,37 +99,40 @@ bool32_t Villager::StartWorshippingAtWorshipSite()
 }
 
 // BW1W120 0076c680 BW1M100 1059d470 Villager::WorshippingAtWorshipSite(void)
-// TODO: 91.7% — dance_group->field_0x14 holds a pointer to an object with a counter at +0x114 and
-// MapCoords at +0x14 (type unknown). Only diff is the arg1 pointer landing in edx instead of ecx —
-// a register-allocation tie-break (scheduling and everything else match). Semantics correct.
+// TODO: 91.7% — dance_group->Dancer has a counter at +0x114 and its MapCoords base at +0x14 (the
+// containing type beyond GameThingWithPos is unknown, hence the raw +0x114 cast). Only diff is the
+// arg1 pointer landing in edx instead of ecx — a register-allocation tie-break (scheduling and
+// everything else match). Semantics correct.
 bool32_t Villager::WorshippingAtWorshipSite()
 {
 	uint32_t flags = Flags;
 	if (flags & 0x10)
 	{
 		Flags = flags & 0xffef;
-		--*(int*)(*(int*)dance_group->field_0x14 + 0x114);
+		// TODO: +0x114 is a counter on the (unidentified) dancer type; keep the raw offset.
+		--*(int*)((char*)dance_group->Dancer + 0x114);
 	}
 	bool32_t result = ProcessInWorship();
 	if (result == 1)
-		result = PerformDance((const MapCoords*)(*(int*)dance_group->field_0x14 + 0x14),
-		                      VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE, dance_group->field_0x5c);
+		result = PerformDance(&dance_group->Dancer->coords, VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE,
+		                      dance_group->field_0x5c);
 	return result;
 }
 
 // BW1W120 0076c7c0 BW1M100 1059d280 Villager::WorshippingCreature(void)
 // TODO: 79.5% — same arg-eval scheduler tie-break as RestartWorshippingCreature on the PerformDance
 // call (`add edx,0x14` for arg1 address floats before the const pushes instead of after). Everything
-// else — including the push/pop esi flag test at +0x100 — matches. field_0x14 points to an object with
-// a flag at +0x100 and MapCoords at +0x14 (type unknown). Semantics correct.
+// else — including the push/pop esi flag test at +0x100 — matches. dance_group->Dancer has a flag at
+// +0x100 and its MapCoords base at +0x14 (containing type beyond GameThingWithPos unknown). Semantics correct.
 bool32_t Villager::WorshippingCreature()
 {
 	if (dance_group != NULL)
 	{
-		int p = *(int*)dance_group->field_0x14;
-		if (*(int*)(p + 0x100) == 0)
+		GameThingWithPos* p = dance_group->Dancer;
+		// TODO: +0x100 is a flag on the (unidentified) dancer type; keep the raw offset.
+		if (*(int*)((char*)p + 0x100) == 0)
 		{
-			PerformDance((const MapCoords*)(p + 0x14), VILLAGER_STATE_WORSHIPPING_CREATURE, dance_group->field_0x5c);
+			PerformDance(&p->coords, VILLAGER_STATE_WORSHIPPING_CREATURE, dance_group->field_0x5c);
 			return 1;
 		}
 		GoHome();

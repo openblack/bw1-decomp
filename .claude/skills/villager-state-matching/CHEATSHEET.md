@@ -76,10 +76,12 @@ fakematches (negative progress). They resolve at the campaign level, not per-fun
 
 3. **Base-class vtable / layout bugs** — `call [reg+0xNNN]` differs only in the displacement,
    or a member is read at the wrong offset. The header hierarchy has extra/missing virtuals or
-   a base placed at the wrong offset (seen in Creche, MultiMapFixed, Abode/GameThingWithPos).
-   VERIFY with a raw `.rdata` vtable dump ([`vtable-slot-verify`]) — never trust Ghidra alone —
-   then defer with the exact byte delta. **Do not edit another unit's class header to "fix" layout**;
-   that is dispatcher work with cross-TU blast radius.
+   a base placed at the wrong offset (seen in Creche, MultiMapFixed). VERIFY with a raw `.rdata`
+   vtable dump ([`vtable-slot-verify`]) — never trust Ghidra alone — then defer with the exact byte
+   delta. **Do not edit another unit's class header to "fix" layout**; cross-TU blast radius.
+   CAUTION: before blaming layout on a *member-offset* mismatch, rule out [`base-member-shadow`]
+   first — a "coords at 0x2c vs 0x14" diff was misdiagnosed campaign-wide as "GameThingWithPos base
+   0x18 too deep" when it was really `Object::coords` (0x2c) shadowing the inherited base member.
 
 4. **Missing / unnamed symbols** — a global at an absolute address or an `fn_00xxxxxx` helper
    that has no name in `symbols.txt`. You cannot reference it by name, so the call/load reloc
@@ -224,3 +226,7 @@ Diff signature: an otherwise-perfect diff whose only `>`/`<` are a floating `pus
 ### member-reload-eax-vs-ecx-before-lookatobject (OPEN — 99.7%, don't burn cycles)
 Rule: the "reaction look-at" family — `if (!field_0xbc || !field_0xbc->IsAvailable()){StopReactingAndSetState(); return true;} if (LookAtObject(field_0xbc, N) != 1) return true; TurnsUntilNextStateChange=0; SetTopState(K); return true;` — matches to exactly 99.7%. field_0xbc is loaded into `ecx` at the top for the null-check + IsAvailable dispatch, and after the (caller-clobbering) IsAvailable call it must be RELOADED as the stack arg for LookAtObject. The target reloads into `eax` (`mov eax,[esi+0xbc]; push N; push eax`); MSVC6 in our build reloads into `ecx` (`mov ecx,[esi+0xbc]; push N; push ecx`) — a 2-instruction `~` operand diff (register only), everything else byte-identical. Proven identical on TurnToFaceMagicTree (0x764d10) and InitialiseImpressedReaction (0x766d00). NOT source-fixable: early-return form and positive `if(field&&avail){...}else` form give the SAME 99.7% diff; a top-level named local (`GameThingWithPos* t = field_0xbc;`) makes it WORSE (caches into callee-saved `edi` with an extra `push edi`, ~82%). The `InitialiseTellOthersAboutObject` sibling that has NO LookAtObject reload (SetTopState directly after IsAvailable) reaches 100% — confirming the reload is the sole tie-break. Pure 8966 regalloc tie-break in the same family as save-across-call-spill.
 Diff signature: only diff is `mov {eax}` (target) vs `mov {ecx}` (ours) on a `[esi+0xbc]` reload feeding `push` before a `LookAtObject` thiscall, everything else identical → correct semantics, `// TODO:` if desired, `vsm.py log --result improved`. Don't chase; revisit only if a neighbour in the family matches and reveals the trigger.
+
+### base-member-shadow
+Rule: a "member read at the wrong offset" diff (classic symptom: target `lea/mov [esi+0x14]`, ours `[esi+0x2c]` for `coords`) is usually NOT a base-class layout bug — it is a **shadowing** member. `Object` (0x2c) declares its OWN `MapCoords coords`, distinct from the inherited `GameThingWithPos::coords` (0x14); both are real members (Object's is at 0x2c, verified: 0x2c + sizeof(MapCoords)=0xc == MapParent@0x38). Bare `coords` in any Object-derived method (Villager, Creature, …) binds to the most-derived `Object::coords` (0x2c). When the target wants the base position it read 0x14, so QUALIFY the access: `((GameThingWithPos*)this)->coords` (the established idiom, already used ~5x). Applies to any object expr: `((GameThingWithPos*)abode)->coords`, `((GameThingWithPos*)dancer)->coords`. This is a SAFE per-function SOURCE fix (codegen changes 0x2c→0x14 and matches) — NOT the "GameThingWithPos base 0x18 too deep" layout change that was mis-hypothesised campaign-wide. Do NOT touch base-class headers for this.
+Diff signature: only diff is the displacement on a `coords` access — target `[reg+0x14]`, ours `[reg+0x2c]` (delta 0x18) → wrap the object in `((GameThingWithPos*)x)->coords`. Verify build+diff (proof the offset is right). Beware: NOT every bare `coords` wants 0x14 — some legitimately use `Object::coords` (0x2c); only qualify where the target reads 0x14.

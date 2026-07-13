@@ -144,16 +144,15 @@ bool32_t Villager::GoAndHideInNearbyBuilding()
 // BW1W120 00763f00
 Abode* Villager::GetAbodeToHideInAtPos(const MapCoords& pos)
 {
-	// TODO: body is structurally exact (90%). Remaining diffs are Abode layout bugs
-	// outside this unit: coords read at [esi+0x2c] but target uses [esi+0x14] (GameThingWithPos
-	// base sits 0x18 bytes too deep in our Abode hierarchy); CanBeHiddenIn dispatches at vtbl
-	// +0x928 but target uses +0x924 (one extra virtual declared before it). Also Abode::CanBeHiddenIn
-	// header return type is `bool` but its mangling is UAEIXZ (unsigned int) -> test al,al vs eax,eax.
+	// TODO: body is structurally exact. Remaining diffs are Abode vtable/return-type issues
+	// outside this unit: CanBeHiddenIn dispatches at vtbl +0x928 but target uses +0x924 (one extra
+	// virtual declared before it). Also Abode::CanBeHiddenIn header return type is `bool` but its
+	// mangling is UAEIXZ (unsigned int) -> test al,al vs eax,eax.
 	Abode* abode = (Abode*)pos.ToMap()->FindFixedOnMap(NULL);
 	while (abode != NULL)
 	{
-		if (abode->IsAbode() && abode->coords.x == pos.x && abode->coords.z == pos.z && abode->IsAvailable() &&
-		    abode->CanBeHiddenIn())
+		if (abode->IsAbode() && ((GameThingWithPos*)abode)->coords.x == pos.x &&
+		    ((GameThingWithPos*)abode)->coords.z == pos.z && abode->IsAvailable() && abode->CanBeHiddenIn())
 		{
 			return abode;
 		}
@@ -387,11 +386,8 @@ bool32_t Villager::ApproachHandReaction()
 		StopReactingAndSetState();
 		return true;
 	}
-	// TODO: layout bug (dispatcher): this->coords emits [esi+0x2c] but target uses [esi+0x14] -
-	// GameThingWithPos base sits 0x18 too deep in the Living/Villager hierarchy (same class of bug
-	// as GetAbodeToHideInAtPos' Abode note). field_0xbc->coords (standalone GTWP) is correct at 0x14.
-	// Also a fstp/LookAtObject-arg-setup scheduler reorder. Body is semantically exact.
-	GUtils::GetDistanceInMetres(this->coords, this->field_0xbc->coords);
+	// TODO: fstp/LookAtObject-arg-setup scheduler reorder remains. Body is semantically exact.
+	GUtils::GetDistanceInMetres(((GameThingWithPos*)this)->coords, this->field_0xbc->coords);
 	LookAtObject(this->field_0xbc, 1);
 	return true;
 }
