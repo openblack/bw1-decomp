@@ -995,7 +995,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHFile/ver3.0/LHFile.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHFile/ver3.0/LHOSFile.cpp", progress_category="sdk", extra_cflags=["/GX"]),
 
-            Object(NonMatching, "zlib/compress.c", progress_category="sdk"),
+            Object(Matching, "zlib/compress.c", progress_category="sdk"),
 
             Object(NonMatching, "Lionhead/LHFile/ver3.0/LHParseFile.cpp", progress_category="sdk"),
 
