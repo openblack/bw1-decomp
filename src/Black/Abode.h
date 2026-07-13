@@ -283,7 +283,7 @@ public:
 	// BW1W120 004045d0 BW1M100 103d89d0 Abode::CalculateFoodNeededForDinner(void)
 	int CalculateFoodNeededForDinner();
 	// BW1W120 00404600 BW1M100 1032c5d0 Abode::IsEnoughFoodForDinner(void)
-	bool IsEnoughFoodForDinner();
+	bool32_t IsEnoughFoodForDinner();
 	// BW1W120 00404630 BW1M100 1032c250 Abode::GetOtherParent(Villager *)
 	Villager* GetSpouse(Villager* villager);
 	// BW1W120 00404660 BW1M100 1032c3e0 Abode::GetRoomLeftForAdults(void)

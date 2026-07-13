@@ -149,6 +149,11 @@ public:
 	bool IsMemberOfThisPlayer(GInterfaceStatus* param_1);
 	// BW1W120 0064d800 BW1M100 10021970 GPlayer::GetPlayerColour(void) const
 	LH3DColor GetPlayerColour();
+	// BW1W120 004c80f0 GPlayer::MakeCreatureEmpathiseWithPlayerTownDesire(TOWN_DESIRE_INFO, float, MapCoords const &)
+	// TODO: the binary mangles the first param as a CLASS (VTOWN_DESIRE_INFO@@) but our headers
+	// define TOWN_DESIRE_INFO as an enum (W4...), so callers currently reloc a W4-mangled symbol
+	// that the target lacks. Dispatcher: reconcile TOWN_DESIRE_INFO's kind (class vs enum) game-wide.
+	void MakeCreatureEmpathiseWithPlayerTownDesire(TOWN_DESIRE_INFO param_1, float param_2, const MapCoords& param_3);
 };
 
 #endif /* BW1_DECOMP_PLAYER_INCLUDED_H */

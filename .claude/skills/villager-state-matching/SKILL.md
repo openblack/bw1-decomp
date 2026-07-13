@@ -34,6 +34,9 @@ python3 .claude/skills/villager-state-matching/vsm.py next --unit VillagerStates
 #    the header — never retype the BW1M100 (Mac) address. Retyping corrupts the Mac
 #    address map (9 such copy errors were found and fixed in the pilot). Validate with:
 #      python3 tools/check_stub_addrs.py src/Black/<Unit>.cpp
+#    PARAMS: name parameters meaningfully (snake_case, from Ghidra/callsites) as you
+#    write each body — don't leave param_1/param_2 in code you author (only when the
+#    meaning is truly unknown). Rename in the .cpp definition; header sync is dispatcher work.
 
 # 4. build ONLY your object (never bare `ninja` in the loop — seconds vs minutes)
 ninja build/BW1W120/src/Black/VillagerStates.o
@@ -109,6 +112,9 @@ unit with match %.
   `PascalCase`, no C++11, `NULL` not `nullptr`. Copy the surrounding file's look.
 - Log **every** attempt (`matched` / `improved` / `deferred`). The ledger is the
   campaign's shared memory; an unlogged discovery is a lost discovery.
+- **Never `git stash` / `git reset` / `git checkout` in the worktree.** Parallel
+  workers share one checkout, so a stash sweeps up *their* uncommitted edits too.
+  To compare against a clean baseline, build/diff a single `.o` — don't touch git.
 
 ## Unit completion checklist (usually dispatcher work)
 

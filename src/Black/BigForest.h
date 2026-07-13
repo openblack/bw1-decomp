@@ -75,6 +75,14 @@ public:
 	// BW1W120 00438f70 BW1M100 100b3190 BigForest::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 
+	// Non-virtual methods
+
+	// BW1W120 00439360 BigForest::GetArrivePos(Villager *)
+	// NOTE: symbols.txt mangles this ?GetArrivePos@BigForest@@QAEXPAVVillager@@@Z (void ret),
+	// but the call sites pass a hidden MapCoords retbuf, so it really returns MapCoords by value
+	// (AGENTS.md Rule 2). Declared by-value here; symbols.txt needs the dispatcher to re-mangle.
+	MapCoords GetArrivePos(Villager* villager);
+
 	// Static methods
 
 	// BW1W120 00438ec0 BW1M100 100b3590 BigForest::Create(MapCoords const &, GBigForestInfo const *, unsigned long, float, float)

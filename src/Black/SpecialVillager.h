@@ -50,6 +50,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0071ef70 SpecialVillager::MakeHimSpeak(wchar_t *)
+	void MakeHimSpeak(wchar_t* param_1);
+	// BW1W120 0071f170 SpecialVillager::GetSpecialInfo(void)
+	void GetSpecialInfo();
 	// BW1W120 0071f470 BW1M100 101470a0 SpecialVillager::CanShowName(void)
 	bool CanShowName();
 };
