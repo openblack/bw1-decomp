@@ -182,16 +182,12 @@ bool32_t Villager::FleeingFromCreatureReaction()
 // BW1W120 00767f70 BW1M100 10595930 Villager::MoveTowardsCreatureReaction(void)
 bool32_t Villager::MoveTowardsCreatureReaction()
 {
-	// TODO: 99.8% — body is structurally exact. Sole real diff: `coords` compiles to [esi+0x2c]
-	// but the target reads [esi+0x14] — the GameThingWithPos base sits 0x18 bytes too deep in the
-	// Villager hierarchy (same layout bug documented in VillagerReaction.cpp GetAbodeToHideInAtPos).
-	// Dispatcher-owned struct-layout fix. The GetDistanceInMetres call operand `~` is just the
-	// unlinked cross-unit reloc and resolves after link.
 	if (field_0xbc != NULL && field_0xbc->IsAvailable())
 	{
 		if (MoveTo() == 10)
 		{
-			if (GUtils::GetDistanceInMetres(coords, *GetDestPos()) <= 0.5f)
+			// `coords` here is the GameThingWithPos base member (0x14), not Object::coords (0x2c)
+			if (GUtils::GetDistanceInMetres(((GameThingWithPos*)this)->coords, *GetDestPos()) <= 0.5f)
 			{
 				SetTopStateToFinal();
 			}
