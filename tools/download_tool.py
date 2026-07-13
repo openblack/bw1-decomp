@@ -100,6 +100,8 @@ def llvm_url(tag: str) -> str:
     system = uname.system.lower()
     if system == "windows":
         asset = "llvm-windows.zip"
+    elif system == "darwin":
+        asset = "llvm-macos.zip"
     else:
         asset = "llvm-ubuntu.zip"
 
