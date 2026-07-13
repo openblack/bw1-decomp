@@ -83,7 +83,7 @@ struct MapCoords
 	// BW1W120 00603340 BW1M100 1006a370 MapCoords::Set(LHPoint const &)
 	MapCoords* Set(const LHPoint* point);
 	// BW1W120 00603430 BW1M100 10049b80 MapCoords::ToMap(void) const
-	MapCell* ToMap();
+	MapCell* ToMap() const;
 	// BW1W120 006034b0 BW1M100 1002cb50 MapCoords::GetFirstObjectFixed(void) const
 	Object* GetFirstObjectFixed();
 	// BW1W120 006034d0 BW1M100 1002c570 MapCoords::GetFirstIterator(void) const

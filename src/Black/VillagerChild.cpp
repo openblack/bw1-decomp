@@ -7,6 +7,13 @@
 #include "VillagerInfo.h"
 
 // BW1W120 007579f0 BW1M100 10573ed0 Villager::ChildGotoCreche(void)
+// TODO: 94.7% match. Two blocking diffs, both outside this unit:
+// (1) retbuf-arg-order (OPEN): target pushes the constant state 0x71 before materialising
+//     GetDoorPos' hidden retbuf temp; our build hoists the retbuf lea/push ahead of the push 0x71.
+// (2) vtable-slot: our build calls Creche vtable slot 0x8a4 for GetDoorPos, but the real Creche
+//     vtable (??_7Creche@@6B@ @0x8D16C4) has GetDoorPos (=MultiMapFixed::GetDoorPos, 0x52e370) at
+//     slot 0x864 -- 0x40 (16 slots) earlier. The Creche/MultiMapFixed header hierarchy declares
+//     ~16 extra virtuals before GetDoorPos. Layout fix belongs to the dispatcher.
 uint32_t Villager::ChildGotoCreche()
 {
 	if (GetTown() != NULL)
@@ -45,7 +52,7 @@ uint32_t Villager::CheckChild()
 	return 0;
 }
 
-// BW1W120 00757ec0 BW1M100 105744c0 Villager::ChildDecideWhatToDo(void)
+// BW1W120 00757ec0 BW1M100 10573a80 Villager::ChildDecideWhatToDo(void)
 bool32_t Villager::ChildDecideWhatToDo()
 {
 	if (CheckChild() != true && ChildAtCreche() != true && ChildGotoCreche() == false)
@@ -93,15 +100,16 @@ bool32_t Villager::IsMotherAlive()
 }
 
 // BW1W120 00758080 BW1M100 105734a0 Villager::MoveVillagerToAbode(Abode*)
-// TODO: 59.3% match. Target reaches a SINGLE shared ForceMoveVillagerToAbode call site from
-// both branches (jg to a common tail), but duplicates the early-return epilogue in each branch;
-// our build does the reverse -- it inlines/duplicates the ForceMoveVillagerToAbode call into
-// both branches and shares only the final epilogue. Tried a shared `int roomLeft` local computed
-// in each branch with a single trailing `if (roomLeft > 0) ForceMoveVillagerToAbode(abode);`
-// (regressed to 56.0%, still duplicated) and the plain nested if/else with the call written
-// inside each branch (49.8%, wrong register assignment too). This early-return form gives the
-// closest match (correct edi=this/esi=abode register assignment) but the call-site sharing is
-// an unresolved compiler tail-duplication asymmetry.
+// TODO: 59.3% match. ROOT CAUSE (confirmed via target objdump): this is the void-call-eax-probed-
+// by-caller OPEN research case (cheatsheet names this exact function). The mangling QAEX makes it
+// void, yet the target body loads a return value on every path -- `xor eax,eax` (=0) in BOTH
+// bail-out branches at 0x840/0x850 and `mov eax,1` at the shared action tail 0x85f -- which its
+// caller CheckNeedNewAbode reads via `cmp eax,1`. A legal void function cannot emit those eax
+// loads (MSVC6 errors on `return 1;` from void and dead-eliminates a 0/1 local under /O2), so the
+// remaining 40% (the missing xor/mov eax + the resulting shared-action/duplicated-bailout tail
+// shape) cannot be closed without solving that research idiom. The control-flow structure below
+// is the closest legal void shape (correct edi=this/esi=abode assignment). Cause still unknown --
+// look for a matched neighbour with the identical void-eax shape before attempting again.
 void Villager::MoveVillagerToAbode(Abode* abode)
 {
 	if (IsChild())
@@ -122,15 +130,15 @@ void Villager::MoveVillagerToAbode(Abode* abode)
 }
 
 // BW1W120 007580d0 BW1M100 105733f0 Villager::MakeChildOrphaned(Villager *)
-uint32_t Villager::MakeChildOrphaned(Villager* param_1)
+uint32_t Villager::MakeChildOrphaned(Villager* dead_villager)
 {
 	// TODO: 91% match. Target loads `mother` into eax and compares directly against the
-	// [esp+8] stack slot (`cmp eax,[esp+8]`); our build additionally spills param_1 into ecx
+	// [esp+8] stack slot (`cmp eax,[esp+8]`); our build additionally spills dead_villager into ecx
 	// first (`mov ecx,[esp+8]; cmp eax,ecx`). Tried swapping comparison operand order and an
-	// early-return (`if (mother != param_1) return 0;`) restructuring -- both regressed further
+	// early-return (`if (mother != dead_villager) return 0;`) restructuring -- both regressed further
 	// (86%/58%). Also `test eax,eax` (target) vs `test al,al` (ours) after IsVillagerAvailable(),
 	// same family as the bool-return-full-eax-epilogue open idiom.
-	if (mother == param_1)
+	if (mother == dead_villager)
 	{
 		if (IsVillagerAvailable())
 		{

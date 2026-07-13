@@ -390,7 +390,7 @@ public:
 	// BW1W120 005ed2b0 BW1M100 10380650 Living::DebugShowTime(unsigned long, unsigned char, unsigned char)
 	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 005ecc10 BW1M100 10084310 Living::IsDancing(void)
-	virtual bool IsDancing();
+	virtual bool32_t IsDancing();
 	// BW1W120 00473e90 BW1M100 101e3580 Living::IsInterestedInFoodObject(Object *)
 	virtual bool IsInterestedInFoodObject(Object* param_1);
 	// BW1W120 00417080 BW1M100 1012fa20 Living::IsInterestedInWoodObject(Object *)
@@ -740,8 +740,8 @@ public:
 	                                         VILLAGER_STATES param_3);
 	// BW1W120 005f2640 BW1M100 10385e00 Living::GotoPickupBallReaction(void)
 	uint32_t GotoPickupBallReaction();
-	// BW1W120 005f27f0 BW1M100 10056110 Living::GetTopState(void)
-	VILLAGER_STATES GetTopState();
+	// BW1W120 005f27f0 BW1M100 10056110 Living::GetTopState(void) const
+	VILLAGER_STATES GetTopState() const;
 	// BW1W120 005f2800 BW1M100 1038a340 Living::SetupMoveToObject(Object *, unsigned char)
 	bool SetupMoveToObject(Object* param_1, unsigned char param_2);
 	// BW1W120 005f2830 BW1M100 10029240 Living::SetupMoveToPos(MapCoords const &, unsigned char)

@@ -100,11 +100,17 @@ bool32_t Villager::ArrivesAtStoragePitForDropOff()
 }
 
 // BW1W120 00769830
+// TODO: 86.4% — state arg corrected to ARRIVES_AT_STORAGE_PIT_FOR_FOOD (was wrongly 0).
+// Residual is retbuf-arg-order (same as sibling GotoStoragePitForDropOff): target
+// materialises the GetArrivePos/GetResourceDropoffPos retbuf temp before pushing the
+// constant state arg; ours pushes the state first. Whole-function register-pressure
+// scheduler interaction — see CHEATSHEET retbuf-arg-order. Defer.
 bool32_t Villager::GotoStoragePitForFood()
 {
 	if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional())
 	{
-		SetupMoveToOnFootpath(*GetStoragePit(), GetStoragePit()->GetArrivePos(), 0);
+		SetupMoveToOnFootpath(*GetStoragePit(), GetStoragePit()->GetArrivePos(),
+		                      VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_FOOD);
 		return true;
 	}
 	SetupMoveToWithHug(GetResourceDropoffPos(RESOURCE_TYPE_FOOD), VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_FOOD);
@@ -285,7 +291,7 @@ bool32_t Villager::EnterBreeder(unsigned char param_1, unsigned char param_2)
 }
 
 // BW1W120 0076a2d0
-bool32_t Villager::ExitBreeder(unsigned char param_1)
+bool32_t Villager::ExitBreeder(unsigned char state)
 {
 	Reaction::RemoveAllReactionsOfTypeInitiatedByObject(this, REACTION_REACT_TO_BREEDER);
 	return true;
@@ -416,13 +422,35 @@ bool32_t Villager::InHand()
 // BW1W120 0076afe0
 uint32_t Villager::EnterInHand(VILLAGER_STATES param_1, VILLAGER_STATES param_2)
 {
-	return 0;
+	// field_0x10c is a float slot elsewhere; this state stashes the (remapped) disciple
+	// type into its raw bits, hence the reinterpret store rather than a float conversion.
+	uint32_t discipleType = DiscipleType;
+	if (discipleType == VILLAGER_DISCIPLE_MISSIONARY)
+	{
+		discipleType = VILLAGER_DISCIPLE_NONE;
+	}
+	*(uint32_t*)&field_0x10c = discipleType;
+	return 1;
 }
 
 // BW1W120 0076b000
+// TODO: 88.9% — semantics verified. Only diff is the epilogue: target sandwiches
+// `mov eax,esi` between `pop edi` and `pop esi`; ours emits it before both pops.
+// Toy-tested (named-result, !=0 test, early-return) — the result/if/return-result form
+// is confirmed correct (early-return diverges into 1-reg + immediate return), leaving a
+// whole-TU epilogue scheduler tie (bool-return-full-eax-epilogue family). Defer.
 int Villager::ExitInHand(VILLAGER_STATES state)
 {
-	return 0;
+	int result = Living::ExitInHand(state);
+	if (result == 1)
+	{
+		Abode* abode = GetAbode();
+		if (abode != NULL)
+		{
+			abode->field_0x7c &= ~0x10;
+		}
+	}
+	return result;
 }
 
 // BW1W120 0076b030
@@ -432,11 +460,11 @@ bool32_t Villager::IsInACreaturesHand()
 }
 
 // BW1W120 0076b060
-bool32_t Villager::SetupWaitForCounter(unsigned short param_1, VILLAGER_STATES param_2)
+bool32_t Villager::SetupWaitForCounter(unsigned short counter, VILLAGER_STATES state)
 {
-	if (SetCurrentAndDestinationState(VILLAGER_STATE_WAIT_FOR_COUNTER, param_2) == 1)
+	if (SetCurrentAndDestinationState(VILLAGER_STATE_WAIT_FOR_COUNTER, state) == 1)
 	{
-		TurnsUntilNextStateChange = param_1;
+		TurnsUntilNextStateChange = counter;
 		return true;
 	}
 	return false;
@@ -449,9 +477,19 @@ uint32_t Villager::SetupPauseForASecond(VILLAGER_STATES state)
 }
 
 // BW1W120 0076b0b0
+// TODO: 98.6% — semantics verified. Residual: target calls Living::IsReadyForNewAnimation
+// as the void-mangled symbol (?...@QAEXI@Z) and does `test eax,eax`; ours calls the
+// bool-mangled symbol (Living.h declares it `bool`) and does `test al,al`. Target's 32-bit
+// eax test implies a 32-bit return, but the real symbol is `void` (QAEXI) — the
+// void-call-eax-probed-by-caller idiom. Fixing needs Living.h's return type (shared header,
+// affects Living.cpp + symbols.txt) — dispatcher territory. Defer.
 bool32_t Villager::PauseForASecond()
 {
-	return false;
+	if (IsReadyForNewAnimation(1))
+	{
+		SetTopStateToFinal();
+	}
+	return true;
 }
 
 // BW1W120 0076b0d0
@@ -497,6 +535,10 @@ bool32_t Villager::SitAndChillout()
 }
 
 // BW1W120 0076b570
+// TODO: 76% — semantics verified (2 loads + store + `mov eax,1`). Target schedules the
+// `mov [ecx+0x58],dx` store BEFORE `mov eax,1`; ours emits `mov eax,1` first. Toy-tested
+// (return 1/true, value-local, ptr-local, this-> forms) all reproduce our order under the
+// exact build flags — a whole-TU scheduler tie-break, not a local source shape. Defer.
 bool32_t Villager::EnterSitAndChillOut(unsigned char param_1, unsigned char param_2)
 {
 	TurnsUntilNextStateChange = ((const GVillagerInfo*)info)->InitialChillOutTime;

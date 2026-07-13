@@ -285,7 +285,7 @@ public:
 	// BW1W120 0073cf00 BW1M100 10551920 Town::IsBuildingSiteValid(BuildingSite *)
 	bool32_t IsBuildingSiteValid(BuildingSite* param_1);
 	// BW1W120 0073cf60 BW1M100 10097910 Town::GetBestBuildingSite(MapCoords const &, int)
-	bool32_t GetBestBuildingSite(const MapCoords* param_1, int param_2);
+	bool32_t GetBestBuildingSite(const MapCoords& param_1, int param_2);
 	// BW1W120 0073d080 BW1M100 105516a0 Town::AddPlanned(PlannedMultiMapFixed *)
 	void AddPlanned(PlannedMultiMapFixed* planned);
 	// BW1W120 0073d0d0 BW1M100 10551530 Town::RemovePlanned(PlannedMultiMapFixed *)
