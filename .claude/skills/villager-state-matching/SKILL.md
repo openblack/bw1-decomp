@@ -30,6 +30,10 @@ python3 .claude/skills/villager-state-matching/vsm.py next --unit VillagerStates
 # 3. write the body in the unit's .cpp at the stub marked  // BW1W120 00769830
 #    (if the file has no stub yet, add the function in ADDRESS ORDER with that comment;
 #     the declaration already exists in src/Black/Villager.h)
+#    STUB COMMENT: copy the ENTIRE `// BW1W120 <w> BW1M100 <m> <sig>` line VERBATIM from
+#    the header — never retype the BW1M100 (Mac) address. Retyping corrupts the Mac
+#    address map (9 such copy errors were found and fixed in the pilot). Validate with:
+#      python3 tools/check_stub_addrs.py src/Black/<Unit>.cpp
 
 # 4. build ONLY your object (never bare `ninja` in the loop — seconds vs minutes)
 ninja build/BW1W120/src/Black/VillagerStates.o
@@ -114,3 +118,21 @@ A unit is done when overview mode shows every symbol `match`, including:
 
 Then the **dispatcher** (not you): full `ninja` + `ninja baseline`/`changes_all`
 regression pair, flip the TU to `Matching` in `configure.py`, commit.
+
+## Generalizing to other subsystems (Creature, Town, World, …)
+
+This skill is the template for matching *any* BW1 subsystem, not just Villager. What is
+reusable as-is vs. what to re-scope per campaign:
+
+- **Reusable game-wide (do not rewrite):** `CHEATSHEET.md` (MSVC6 codegen idioms +
+  mangled-name decoder + systemic-blocker taxonomy), the per-function loop
+  (Ghidra → write → build one `.o` → decomp-diff → iterate), the 12-cycle cap /
+  defer-is-success discipline, the diff-triage table, and `tools/check_stub_addrs.py`.
+- **Re-scope per campaign:** `vsm.py` is currently hard-scoped to the Villager objdiff
+  units (`index`/`next` rank within that set). For a new subsystem, point the same queue
+  machinery at that subsystem's units (or generalize the unit list), keep one ledger,
+  and reuse the claim protocol so parallel workers don't collide.
+- **Dispatcher handoff is the same everywhere:** workers own single-unit source shapes;
+  struct/vtable **layout**, **symbol naming** in `symbols.txt`, shared-header return-type
+  decisions, and TU-status flips in `configure.py` are dispatcher-owned. Workers log the
+  need and defer — see the systemic-blocker taxonomy in `CHEATSHEET.md`.

@@ -964,7 +964,7 @@ public:
 	// BW1W120 00758f60 BW1M100 105751d0 Villager::ReenterBuildingState(void)
 	bool32_t ReenterBuildingState();
 	// BW1W120 007590a0 BW1M100 10574e20 Villager::CheckForClearArea(MapCoords const &, float)
-	bool32_t CheckForClearArea(const MapCoords* param_1, float param_2);
+	bool32_t CheckForClearArea(const MapCoords& param_1, float param_2);
 	// BW1W120 007592e0 BW1M100 10574d90 Villager::ArriveAtPushObject(void)
 	bool32_t ArriveAtPushObject();
 	// BW1W120 00759330 BW1M100 10574c20 Villager::CheckSatisfyToBuild(void)
@@ -1346,9 +1346,9 @@ public:
 	// BW1W120 007611f0 BW1M100 105874c0 Villager::HomeDeleted(void)
 	void HomeDeleted();
 	// BW1W120 00761220 BW1M100 10587440 Villager::MakeHomeless(void)
-	bool32_t MakeHomeless();
+	bool MakeHomeless();
 	// BW1W120 00761240 BW1M100 10587220 Villager::MakeHomelessNoStateChange(void)
-	bool32_t MakeHomelessNoStateChange();
+	bool MakeHomelessNoStateChange();
 	// BW1W120 00761320 BW1M100 10587160 Villager::HomelessStart(void)
 	bool32_t HomelessStart();
 	// BW1W120 00761360 BW1M100 10586fd0 Villager::CheckHomelessMoveIntoAbode(void)
@@ -1356,7 +1356,7 @@ public:
 	// BW1W120 007613f0 BW1M100 10586f90 Villager::VillagerGossips(void)
 	bool32_t VillagerGossips();
 	// BW1W120 00761400 BW1M100 10586ed0 Villager::SetupAfterTapOnAbode(MapCoords &, VILLAGER_STATES)
-	void SetupAfterTapOnAbode(MapCoords* param_1, VILLAGER_STATES param_2);
+	void SetupAfterTapOnAbode(MapCoords& param_1, VILLAGER_STATES param_2);
 	// BW1W120 00761440 BW1M100 10586e70 Villager::AfterTapOnAbode(void)
 	bool32_t AfterTapOnAbode();
 	// BW1W120 00761460 BW1M100 100955e0 Villager::CheckSatisfyRelaxation(void)

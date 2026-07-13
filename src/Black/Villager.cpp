@@ -241,13 +241,13 @@ void Villager::PickupWood(short param_1, unsigned char param_2) {}
 // BW1W120 007514d0
 int Villager::GetFoodCapacity()
 {
-	return 0;
+	return ((const GVillagerInfo*)info)->MaxFoodCarried - ResourceHeld[RESOURCE_TYPE_FOOD];
 }
 
 // BW1W120 007514f0
 int Villager::GetWoodCapacity()
 {
-	return 0;
+	return ((const GVillagerInfo*)info)->MaxWoodCarried - ResourceHeld[RESOURCE_TYPE_WOOD];
 }
 
 // BW1W120 00751510
@@ -404,7 +404,7 @@ void Villager::PopFromPrevious() {}
 // BW1W120 00751ea0
 Football* Villager::GetFootball()
 {
-	return NULL;
+	return football;
 }
 
 // BW1W120 00751ee0
@@ -422,7 +422,13 @@ Town* Villager::GetTown()
 // BW1W120 00751f10
 StoragePit* Villager::GetStoragePit()
 {
-	return NULL;
+	if (GetTown() != NULL)
+	{
+		StoragePit* storagePit = GetTown()->GetStoragePit();
+		if (storagePit != NULL)
+			return storagePit;
+	}
+	return (StoragePit*)GetAbode();
 }
 
 // BW1W120 00751f40
@@ -464,7 +470,7 @@ uint32_t Villager::CanPauseForASecond(VILLAGER_STATES state)
 // BW1W120 00752160
 Abode* Villager::GetAbode()
 {
-	return NULL;
+	return home;
 }
 
 // BW1W120 007521b0
