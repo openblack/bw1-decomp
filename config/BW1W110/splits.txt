@@ -507,6 +507,7 @@ Black/WorldRoom.cpp:
 
 zlib/compress.c:
 	.text       start:0x007AE0B0 end:0x007AE180
+	.data       start:0x00C1A8BC end:0x00C1A8C2
 
 zlib/deflate.c:
 	.text       start:0x007AF030 end:0x007B06F0

@@ -2600,6 +2600,7 @@ Lionhead/LHFile/ver3.0/LHFile.cpp:
 
 zlib/compress.c:
 	.text       start:0x007BE290 end:0x007BE360
+	.data       start:0x00C2BA74 end:0x00C2BA7A
 
 Lionhead/LHFile/ver3.0/LHParseFile.cpp:
 	.text       start:0x007BE400 end:0x007BF1C0
