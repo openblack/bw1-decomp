@@ -26,7 +26,8 @@ bool Villager::ShowPoisoned()
 // and its only caller (GetDesireForFood) relies on that value as if POWER_f_ returned float.
 // Also the second (unsigned int) parameter is never read from the stack in the target; the
 // loop trip count is a hardcoded immediate 2. See idiom fpu-leak-void-return in CHEATSHEET.md.
-void POWER_f_(float param_1, unsigned int param_2);
+template <int T> float __stdcall POWER(float base);
+template <> float __stdcall POWER<2>(float base);
 
 // BW1W120 0075bae0
 float Villager::CalculateLifeDesire()
@@ -56,25 +57,18 @@ bool32_t Villager::GetDesireToPickupFood()
 // BW1W120 0075bb50
 float Villager::GetDesireForFood()
 {
-	// TODO: best-effort reconstruction; doesn't reproduce the target's exact "call, ret" shape
-	// (no stack cleanup, no reload) - see idiom fpu-leak-void-return.
-	float result;
-	POWER_f_(food, 2);
-	return result;
+	return POWER<2>(food);
 }
 
-// BW1W120 0075bb60
-void POWER_f_(float param_1, unsigned int param_2)
+template <> float __stdcall POWER<2>(float base)
 {
-	float        clamped = (param_1 < 1.0f) ? param_1 : 1.0f;
-	float        result = clamped;
-	unsigned int n = 2;
-	do
+	float clamped = (base < 1.0f) ? base : 1.0f;
+	float result = clamped;
+	for (int i = 0; i < 2; ++i)
 	{
-		--n;
 		result *= clamped;
-	} while (n != 0);
-	1.0f - result;
+	};
+	return 1.0f - result;
 }
 
 // BW1W120 0075bba0
