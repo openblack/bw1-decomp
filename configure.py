@@ -1132,7 +1132,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\nlsdata1.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\strftime.obj", progress_category="sdk"), # mismatch for the __Strftime function
 
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DCameraChecker.cpp"),
+            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DCameraChecker.cpp", progress_category="sdk"),
 
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\cmiscdat.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\a_cmp.obj", progress_category="sdk"),
