@@ -85,7 +85,7 @@ void MobileWallHug::SetupMobileMoveToPos(const MapCoords& coords, MOVE_TO_STATES
 
 	if (move_to_state == MOVE_TO_STATES_LINEAR)
 	{
-		MoveToCircleHugLinearSquareSweep(GameThingWithPos::coords);
+		MoveToCircleHugLinearSquareSweep(Pos);
 		MoveState = move_to_state;
 		return;
 	}

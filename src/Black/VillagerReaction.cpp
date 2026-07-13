@@ -151,8 +151,8 @@ Abode* Villager::GetAbodeToHideInAtPos(const MapCoords& pos)
 	Abode* abode = (Abode*)pos.ToMap()->FindFixedOnMap(NULL);
 	while (abode != NULL)
 	{
-		if (abode->IsAbode() && ((GameThingWithPos*)abode)->coords.x == pos.x &&
-		    ((GameThingWithPos*)abode)->coords.z == pos.z && abode->IsAvailable() && abode->CanBeHiddenIn())
+		if (abode->IsAbode() && abode->Pos.x == pos.x && abode->Pos.z == pos.z && abode->IsAvailable() &&
+		    abode->CanBeHiddenIn())
 		{
 			return abode;
 		}
@@ -387,7 +387,7 @@ bool32_t Villager::ApproachHandReaction()
 		return true;
 	}
 	// TODO: fstp/LookAtObject-arg-setup scheduler reorder remains. Body is semantically exact.
-	GUtils::GetDistanceInMetres(((GameThingWithPos*)this)->coords, this->field_0xbc->coords);
+	GUtils::GetDistanceInMetres(Pos, this->field_0xbc->Pos);
 	LookAtObject(this->field_0xbc, 1);
 	return true;
 }
@@ -632,7 +632,7 @@ bool32_t Villager::MoveTowardsObjectToLookAt()
 	// MSVC6 here does zero-init first and copies altitude via integer mov. Semantics exact.
 	MapCoords destPos;
 	destPos = *GetDestPos();
-	if (GUtils::GetDistanceInMetres(this->field_0xbc->coords, destPos) > 100.0f)
+	if (GUtils::GetDistanceInMetres(this->field_0xbc->Pos, destPos) > 100.0f)
 	{
 		SetTopState(VILLAGER_STATE_CROWD_REACTION);
 		return true;
@@ -776,7 +776,7 @@ void Villager::SetupReactToMagicShieldStruck(GameThingWithPos* param_1, Reaction
 // BW1W120 00767520
 void Villager::SetupReactToMagicShieldDestroyed(GameThingWithPos* thing, Reaction* reaction)
 {
-	SetupPanicReaction(reaction, thing->coords);
+	SetupPanicReaction(reaction, thing->Pos);
 }
 
 // BW1W120 00767540

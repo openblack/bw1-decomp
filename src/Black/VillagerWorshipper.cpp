@@ -68,7 +68,7 @@ bool32_t Villager::RestartWorshippingCreature()
 {
 	if (dance_group != NULL)
 	{
-		PerformDance(&dance_group->Dancer->coords, VILLAGER_STATE_WORSHIPPING_CREATURE, 9);
+		PerformDance(&dance_group->Dancer->Pos, VILLAGER_STATE_WORSHIPPING_CREATURE, 9);
 		return 1;
 	}
 	GoHome();
@@ -87,7 +87,7 @@ bool32_t Villager::StartWorshippingAtWorshipSite()
 		if (worshipSite->dance->FindDanceGroup(this) == 1)
 		{
 			MapCoords pos;
-			CalculateDancePosition(worshipSite->dance->coords, &pos);
+			CalculateDancePosition(worshipSite->dance->Pos, &pos);
 			if (SetupMoveToPos(pos, VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE))
 			{
 				AddVillagerToWorshipSite();
@@ -114,7 +114,7 @@ bool32_t Villager::WorshippingAtWorshipSite()
 	}
 	bool32_t result = ProcessInWorship();
 	if (result == 1)
-		result = PerformDance(&dance_group->Dancer->coords, VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE,
+		result = PerformDance(&dance_group->Dancer->Pos, VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE,
 		                      dance_group->field_0x5c);
 	return result;
 }
@@ -132,7 +132,7 @@ bool32_t Villager::WorshippingCreature()
 		// TODO: +0x100 is a flag on the (unidentified) dancer type; keep the raw offset.
 		if (*(int*)((char*)p + 0x100) == 0)
 		{
-			PerformDance(&p->coords, VILLAGER_STATE_WORSHIPPING_CREATURE, dance_group->field_0x5c);
+			PerformDance(&p->Pos, VILLAGER_STATE_WORSHIPPING_CREATURE, dance_group->field_0x5c);
 			return 1;
 		}
 		GoHome();

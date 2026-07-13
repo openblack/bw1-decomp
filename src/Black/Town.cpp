@@ -16,7 +16,7 @@ Town* Town::GetNearestTownToPos(const MapCoords& coords, TRIBE_TYPE tribe_type, 
 	{
 		for (Town* town = player->towns.head; town != NULL; town = town->next)
 		{
-			float dist = GUtils::GetDistanceInMetres(coords, town->GameThingWithPos::coords);
+			float dist = GUtils::GetDistanceInMetres(coords, town->Pos);
 			if (dist < bestDist)
 			{
 				if (tribe_type == town->GetTribe()->type || tribe_type == TRIBE_TYPE_NONE)

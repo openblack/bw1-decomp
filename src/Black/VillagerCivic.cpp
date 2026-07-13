@@ -25,7 +25,7 @@ bool32_t Villager::CheckNeededForHarvest()
 	// (_N->I). Caller-side mirror of CHEATSHEET bool-return-mask-needs-callee-defined.
 	if (GetTown()->IsHarvestTime())
 	{
-		Field* field = GetTown()->FindClosesFieldToWithFood(((GameThingWithPos*)this)->coords);
+		Field* field = GetTown()->FindClosesFieldToWithFood(Pos);
 		if (field != NULL && SetFarmerGotoField(field, 0))
 			return true;
 	}
@@ -46,7 +46,7 @@ bool32_t Villager::SetupBuildingObject(BuildingSite* building_site)
 			// (push ebx/esi/edi) scheduling differs. Body logic verified correct (84.5%).
 			if (building->IsBuilt() == 1 && building->IsRepaired())
 				return false;
-			if (CheckForClearArea(((GameThingWithPos*)building)->coords, building_site->GetClearAreaRadius()) == 1)
+			if (CheckForClearArea(building->Pos, building_site->GetClearAreaRadius()) == 1)
 				return true;
 			if (SetupGetBuildingSupplies(building_site) == 1)
 				return true;
@@ -110,7 +110,7 @@ bool32_t Villager::CheckSatisfyToBuild()
 	if (town != NULL)
 	{
 		int           isDisciple = (DiscipleType == VILLAGER_DISCIPLE_BUILDER);
-		BuildingSite* site = (BuildingSite*)town->GetBestBuildingSite(((GameThingWithPos*)this)->coords, isDisciple);
+		BuildingSite* site = (BuildingSite*)town->GetBestBuildingSite(Pos, isDisciple);
 		if (site != NULL && SetupBuildingObject(site) == 1)
 			return true;
 	}
@@ -141,7 +141,7 @@ bool32_t Villager::CheckSatisfySupplyWorkshop()
 	Town* town = GetTown();
 	if (town != NULL)
 	{
-		Workshop* workshop = town->GetBestWorkshop(((GameThingWithPos*)this)->coords, 1, 1);
+		Workshop* workshop = town->GetBestWorkshop(Pos, 1, 1);
 		if (workshop != NULL)
 		{
 			if (ResourceHeld[RESOURCE_TYPE_WOOD] != 0)
@@ -178,7 +178,7 @@ bool32_t Villager::ArrivesAtStoragePitForWorkshopMaterials()
 	{
 		if (AreWeThere(0.0f))
 		{
-			Workshop* workshop = town->GetBestWorkshop(((GameThingWithPos*)this)->coords, 1, 1);
+			Workshop* workshop = town->GetBestWorkshop(Pos, 1, 1);
 			if (workshop != NULL)
 			{
 				int woodCapacity = (short)GetWoodCapacity();
@@ -218,7 +218,7 @@ bool32_t Villager::ArrivesAtWorkshopForDropOff()
 	Town* town = GetTown();
 	if (town == NULL)
 		return false;
-	Workshop* workshop = town->GetBestWorkshop(((GameThingWithPos*)this)->coords, 1, 1);
+	Workshop* workshop = town->GetBestWorkshop(Pos, 1, 1);
 	if (workshop != NULL)
 	{
 		MapCoords arrivePos = workshop->GetArrivePos();

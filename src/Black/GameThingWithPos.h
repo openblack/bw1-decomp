@@ -34,7 +34,7 @@ enum GAME_THING_WITH_POS_FLAGS
 class GameThingWithPos : public GameThing
 {
 public:
-	MapCoords coords;   /* 0x14 */
+	MapCoords Pos;      /* 0x14 */
 	Object*   MapChild; /* 0x20 */
 	uint16_t  Flags;    /* 0x24 */
 	uint8_t   field_0x26;
