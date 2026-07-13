@@ -262,6 +262,8 @@ public:
 	StoragePit* GetStoragePit();
 	// BW1W120 0073b5d0 BW1M100 10554b00 Town::Birthday(void)
 	void Birthday();
+	// BW1W120 0073b5e0 Town::UseFood(unsigned int)
+	void UseFood(uint32_t param_1);
 	// BW1W120 0073b860 BW1M100 10554610 Town::AddBuildingSite(PlannedMultiMapFixed *)
 	BuildingSite* AddBuildingSite(PlannedMultiMapFixed* param_1);
 	// BW1W120 0073b8a0 BW1M100 10554530 Town::AddBuildingSiteNoFixedCheck(PlannedMultiMapFixed *)

@@ -1068,9 +1068,9 @@ public:
 	// BW1W120 0075b880 BW1M100 1009acc0 Villager::ExitFishing(unsigned char)
 	bool32_t ExitFishing(unsigned char param_1);
 	// BW1W120 0075b940 BW1M100 1057b620 Villager::ShowPoisoned(void)
-	bool32_t ShowPoisoned();
+	bool ShowPoisoned();
 	// BW1W120 0075b990 BW1M100 1000a640 Villager::ChangeStateToFindFoodToEat(void)
-	bool32_t ChangeStateToFindFoodToEat();
+	bool ChangeStateToFindFoodToEat();
 	// BW1W120 0075baf0 BW1M100 1057b4f0 Villager::CheckHungryAtHome(void)
 	bool32_t CheckHungryAtHome();
 	// BW1W120 0075bb00 BW1M100 1057b400 Villager::GetDesireToPickupFood(void)
@@ -1086,7 +1086,7 @@ public:
 	// BW1W120 0075bc20 BW1M100 1009ae40 Villager::GetAmountOfFoodToEat(void)
 	uint32_t GetAmountOfFoodToEat();
 	// BW1W120 0075bcc0 BW1M100 100577f0 Villager::CheckHungry(void)
-	bool32_t CheckHungry();
+	bool CheckHungry();
 	// BW1W120 0075bf00 BW1M100 10096d50 Villager::CheckSatisfyOwnFoodDesire(void)
 	bool32_t CheckSatisfyOwnFoodDesire();
 	// BW1W120 0075bf20 BW1M100 1057ab30 Villager::EatFoodHeld(void)
