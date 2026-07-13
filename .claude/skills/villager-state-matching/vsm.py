@@ -442,11 +442,25 @@ def cmd_release(args) -> None:
 
 def cmd_log(args) -> None:
     idx = ensure_index()
+    funcs = all_functions(idx)
+    # Prefer an EXACT match (mangled or demangled name) so e.g. "Dying" never
+    # silently attributes to "SetDying". Only fall back to substring when it is
+    # unambiguous; a substring that hits several functions is an error, not a guess.
     fn = None
-    for f in all_functions(idx):
-        if f["mangled"] == args.function or f["name"] == args.function or args.function in f["mangled"]:
-            fn = f
-            break
+    exact = [f for f in funcs if args.function in (f["mangled"], f["name"])]
+    if len(exact) == 1:
+        fn = exact[0]
+    elif len(exact) > 1:
+        emit({"error": f"'{args.function}' matches {len(exact)} functions exactly; "
+              f"use the mangled name", "candidates": [f["mangled"] for f in exact]}, 1)
+    else:
+        subs = [f for f in funcs if args.function in f["mangled"] or args.function in f["name"]]
+        if len(subs) == 1:
+            fn = subs[0]
+        elif len(subs) > 1:
+            emit({"error": f"'{args.function}' is an ambiguous substring ({len(subs)} matches); "
+                  f"pass the exact demangled or mangled name",
+                  "candidates": [f["name"] for f in subs]}, 1)
     rec = {
         "ts": now_iso(),
         "type": "attempt",
@@ -507,6 +521,46 @@ def cmd_report(args) -> None:
           "deferred": len({r['function'] for r in deferred})})
 
 
+def cmd_blockers(args) -> None:
+    """Surface leftover work: near-miss functions (one fix from matching) and the
+    deferred-blocker notes from the ledger, so campaign-level (dispatcher) fixes —
+    shared vtable/layout bugs, unnamed symbols, return-type retypes — are visible at
+    a glance. This is the "what should the dispatcher do next" view."""
+    idx = ensure_index()
+    recs = ledger_records()
+    fns = all_functions(idx)
+    if args.unit:
+        fns = [f for f in fns if f["unit"].endswith(args.unit)]
+
+    near = [f for f in fns
+            if f["status"] == "nonmatching" and (f["match_percent"] or 0) >= args.min_pct]
+    near.sort(key=lambda f: -(f["match_percent"] or 0))
+
+    # latest deferred attempt per function (ledger is append-only; last wins)
+    deferred: Dict[str, Dict[str, Any]] = {}
+    for r in recs:
+        if r.get("type") == "attempt" and r.get("result") == "deferred":
+            deferred[r["function"]] = r
+    if args.unit:
+        deferred = {k: v for k, v in deferred.items()
+                    if (v.get("unit") or "").endswith(args.unit)}
+
+    emit({
+        "near_miss_total": len(near),
+        "near_miss": [
+            {"name": f["name"], "unit": f["unit"].split("/")[-1],
+             "pct": f["match_percent"], "size": f["size"], "addr": f["addr"]}
+            for f in near[:args.count]
+        ],
+        "deferred": [
+            {"name": r.get("name") or r["function"],
+             "unit": (r.get("unit") or "").split("/")[-1],
+             "pct": r.get("pct_after"), "notes": r.get("notes")}
+            for r in sorted(deferred.values(), key=lambda r: -(r.get("pct_after") or 0))
+        ],
+    })
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description="Villager state-matching campaign driver")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -550,6 +604,12 @@ def main() -> None:
 
     sp = sub.add_parser("report", help="regenerate vsm_report.md")
     sp.set_defaults(fn=cmd_report)
+
+    sp = sub.add_parser("blockers", help="leftover work: near-miss functions + deferred-blocker notes")
+    sp.add_argument("--unit")
+    sp.add_argument("--min-pct", type=float, default=90.0)
+    sp.add_argument("-n", "--count", type=int, default=40)
+    sp.set_defaults(fn=cmd_blockers)
 
     args = p.parse_args()
     args.fn(args)

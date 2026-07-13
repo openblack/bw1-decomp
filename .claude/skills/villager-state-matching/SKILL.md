@@ -42,6 +42,9 @@ ninja build/BW1W120/src/Black/VillagerStates.o
 python tools/decomp-diff.py -u runblack-decrypted/Black/VillagerStates -d "GotoStoragePitForFood"
 
 # 6. iterate 4↔5 until match, then log it (also log deferred/improved — see limits below)
+#    --function prefers an EXACT demangled/mangled name; an ambiguous substring
+#    (e.g. "Dying" also matches "SetDying") now ERRORS instead of mis-logging —
+#    pass the full name when in doubt.
 python3 .claude/skills/villager-state-matching/vsm.py log --function GotoStoragePitForFood \
     --result matched --pct 100 --idiom <slug-if-new-idiom>
 
@@ -118,6 +121,12 @@ A unit is done when overview mode shows every symbol `match`, including:
 
 Then the **dispatcher** (not you): full `ninja` + `ninja baseline`/`changes_all`
 regression pair, flip the TU to `Matching` in `configure.py`, commit.
+
+**Dispatcher: what to fix next.** `vsm.py blockers` surfaces the leftover work —
+near-miss functions (≥90%, one fix from matching) and every deferred function's
+notes. When many near-misses share a blocker (a base-class vtable/layout offset, an
+unnamed `symbols.txt` symbol, a return-type retype), fixing that ONE shared thing
+converts a whole cluster at once — far higher leverage than another matching round.
 
 ## Generalizing to other subsystems (Creature, Town, World, …)
 

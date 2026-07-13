@@ -45,12 +45,12 @@ struct LivingMapCell
 	// Constructors
 
 	// BW1W120 00767fe0 BW1M100 10595660 LivingMapCell::LivingMapCell(JustMapXZ &)
-	LivingMapCell(JustMapXZ* param_1);
+	LivingMapCell(JustMapXZ& param_1);
 
 	// Non-virtual methods
 
 	// BW1W120 007680d0 BW1M100 105953b0 LivingMapCell::FindFreePosition(JustMapXZ &, MapCoords const &, MapCoords *)
-	bool32_t FindFreePosition(JustMapXZ* param_1, const MapCoords* param_2, MapCoords* param_3);
+	bool32_t FindFreePosition(JustMapXZ& param_1, const MapCoords& param_2, MapCoords* param_3);
 };
 
 class DataForScriptRemind : public GameThing

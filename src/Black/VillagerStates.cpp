@@ -9,6 +9,7 @@
 #include "MapCoords.h"
 #include "MultiMapFixed.h"
 #include "Object.h"
+#include "Rand.h"
 #include "Reaction.h"
 #include "StoragePit.h"
 #include "Town.h"
@@ -320,7 +321,23 @@ bool32_t Villager::SetDying()
 // BW1W120 0076a570
 bool32_t Villager::Dying()
 {
-	return false;
+	if (GetDeathReason() != DEATH_REASON_SACRIFICE)
+	{
+		PlayAnimThenSetState(VILLAGER_STATE_DEAD, 1);
+	}
+	else
+	{
+		SetTopState(VILLAGER_STATE_DEAD);
+	}
+	if ((Flags & 4) == 0)
+	{
+		if (GetTown() != NULL && GetTown()->field_0x748 != 0)
+		{
+			return true;
+		}
+		Reaction::CreateReaction(this, REACTION_REACT_TO_DEATH, NULL, 0);
+	}
+	return true;
 }
 
 // BW1W120 0076a5e0
@@ -382,9 +399,32 @@ bool32_t Villager::SetupInspectObject(Object* param_1)
 }
 
 // BW1W120 0076ac40
+// TODO: IsReadyForNewAnimation is mangled void (QAEXI) but Living.h declares it bool;
+// caller does `test eax,eax` on a void call (void-call-eax-probed-by-caller idiom). Costs the
+// al-vs-eax test until the shared header return type is fixed (dispatcher). Rest matches.
 bool32_t Villager::InspectObject()
 {
-	return false;
+	GameThingWithPos* target = (GameThingWithPos*)TargetThing;
+	if (target != NULL && LookAtObject(target, 1) == 0)
+	{
+		return true;
+	}
+	if (IsReadyForNewAnimation(1))
+	{
+		if (DiscipleType == VILLAGER_DISCIPLE_BUILDER && target != NULL && (target->Flags & 2))
+		{
+			if (TargetThing == NULL)
+			{
+				return false;
+			}
+			if (SetupBuildingObject((MultiMapFixed*)TargetThing) == 1)
+			{
+				return true;
+			}
+		}
+		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+	}
+	return true;
 }
 
 // BW1W120 0076acb0
@@ -511,9 +551,21 @@ bool32_t Villager::GotoCongregateInTownAfterEmergency()
 }
 
 // BW1W120 0076b300
+// TODO: GameRand's __FILE__/__LINE__ default args can't match the original line numbers
+// in a split TU (costs the file-string + line-number arg pushes per call). Rest matches.
 bool32_t Villager::CongregateInTownAfterEmergency()
 {
-	return false;
+	if (GetTown() != NULL && GetTown()->IsInStateOfEmergency())
+	{
+		int state = GRand::GameRand(12, __FILE__, __LINE__) ? VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY
+		                                                    : VILLAGER_STATE_GO_HOME;
+		PlayAnimThenSetState(state, 1);
+		return true;
+	}
+	int state = GRand::GameRand(5, __FILE__, __LINE__) ? VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY
+	                                                   : VILLAGER_STATE_DECIDE_WHAT_TO_DO;
+	PlayAnimThenSetState(state, 1);
+	return true;
 }
 
 // BW1W120 0076b380

@@ -4,6 +4,8 @@
 #include "Map.h"
 #include "MapCoords.h"
 #include "Reaction.h"
+#include "Town.h"
+#include "Utils.h"
 #include "VillagerStateTableInfo.h"
 
 extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
@@ -254,7 +256,14 @@ bool32_t Villager::ApproachObjectReaction()
 // BW1W120 00764610
 bool32_t Villager::InitialiseTellOthersAboutObject()
 {
-	return false;
+	if (!this->field_0xbc->IsAvailable())
+	{
+		StopReactingAndSetState();
+		return true;
+	}
+	this->TurnsUntilNextStateChange = 0;
+	SetTopState(VILLAGER_STATE_TELL_OTHERS_ABOUT_INTERESTING_OBJECT);
+	return true;
 }
 
 // BW1W120 00764650
@@ -339,7 +348,17 @@ bool32_t Villager::PerformBewilderedByMagicTreeReaction()
 // BW1W120 00764d10
 bool32_t Villager::TurnToFaceMagicTree()
 {
-	return false;
+	if (this->field_0xbc == NULL || !this->field_0xbc->IsAvailable())
+	{
+		StopReactingAndSetState();
+		return true;
+	}
+	if (LookAtObject(this->field_0xbc, 1) != 1)
+	{
+		return true;
+	}
+	SetTopState(VILLAGER_STATE_LOOK_AT_MAGIC_TREE);
+	return true;
 }
 
 // BW1W120 00764d70
@@ -363,7 +382,18 @@ bool Villager::IsInterestedInWoodObject(Object* param_1)
 // BW1W120 00765140
 bool32_t Villager::ApproachHandReaction()
 {
-	return false;
+	if (!this->field_0xbc->IsAvailable())
+	{
+		StopReactingAndSetState();
+		return true;
+	}
+	// TODO: layout bug (dispatcher): this->coords emits [esi+0x2c] but target uses [esi+0x14] -
+	// GameThingWithPos base sits 0x18 too deep in the Living/Villager hierarchy (same class of bug
+	// as GetAbodeToHideInAtPos' Abode note). field_0xbc->coords (standalone GTWP) is correct at 0x14.
+	// Also a fstp/LookAtObject-arg-setup scheduler reorder. Body is semantically exact.
+	GUtils::GetDistanceInMetres(this->coords, this->field_0xbc->coords);
+	LookAtObject(this->field_0xbc, 1);
+	return true;
 }
 
 // BW1W120 007651a0
@@ -460,9 +490,17 @@ bool32_t Villager::GoToTeleportReactionQuickly()
 }
 
 // BW1W120 00766390
-bool32_t Villager::ExitReactToTeleport(unsigned char param_1)
+bool32_t Villager::ExitReactToTeleport(unsigned char state)
 {
-	return false;
+	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state))
+	{
+		if (GetTown() != NULL)
+		{
+			GetTown()->RemoveVillagerOnWayToWorshipSite(this);
+		}
+		this->Flags &= ~0x10;
+	}
+	return ExitReaction((VILLAGER_STATES)state);
 }
 
 // BW1W120 007663f0
@@ -504,7 +542,13 @@ bool32_t Villager::GoTowardsDeadPerson()
 // BW1W120 00766810
 bool32_t Villager::LookAtDeadPerson()
 {
-	return false;
+	GameThingWithPos* target = this->field_0xbc;
+	if (LookAtObject(target, 1) == 1)
+	{
+		this->TurnsUntilNextStateChange = 0;
+		SetTopState(VILLAGER_STATE_MOURN_DEAD_PERSON);
+	}
+	return true;
 }
 
 // BW1W120 00766850
@@ -536,7 +580,9 @@ void Villager::SetupReactToConfused(GameThingWithPos* thing, Reaction* reaction)
 // BW1W120 00766910
 bool32_t Villager::StartConfusedReaction()
 {
-	return false;
+	this->action.TurnsSinceStateChange = 0;
+	SetTopState(VILLAGER_STATE_CONFUSED_REACTION);
+	return true;
 }
 
 // BW1W120 00766930
@@ -580,13 +626,39 @@ bool32_t Villager::CrowdReaction()
 // BW1W120 00766c60
 bool32_t Villager::MoveTowardsObjectToLookAt()
 {
-	return false;
+	if (!this->field_0xbc->IsAvailable())
+	{
+		StopReactingAndSetState();
+		return true;
+	}
+	// TODO: 73.7% - MapCoords copy codegen + GetDestPos scheduling ceiling.
+	// Target calls GetDestPos() BEFORE the zero-init and copies altitude via fld/fstp (float);
+	// MSVC6 here does zero-init first and copies altitude via integer mov. Semantics exact.
+	MapCoords destPos;
+	destPos = *GetDestPos();
+	if (GUtils::GetDistanceInMetres(this->field_0xbc->coords, destPos) > 100.0f)
+	{
+		SetTopState(VILLAGER_STATE_CROWD_REACTION);
+		return true;
+	}
+	return MoveToPos();
 }
 
 // BW1W120 00766d00
 bool32_t Villager::InitialiseImpressedReaction()
 {
-	return false;
+	if (this->field_0xbc == NULL || !this->field_0xbc->IsAvailable())
+	{
+		StopReactingAndSetState();
+		return true;
+	}
+	if (LookAtObject(this->field_0xbc, 2) != 1)
+	{
+		return true;
+	}
+	this->TurnsUntilNextStateChange = 0;
+	SetTopState(VILLAGER_STATE_PERFORM_IMPRESSED_REACTION);
+	return true;
 }
 
 // BW1W120 00766d60
@@ -602,7 +674,11 @@ uint8_t Villager::ReactToFightPriority(Reaction* param_1, Reaction* param_2)
 }
 
 // BW1W120 00766e30
-void Villager::SetupReactToFight(GameThingWithPos* param_1, Reaction* param_2) {}
+void Villager::SetupReactToFight(GameThingWithPos* thing, Reaction* reaction)
+{
+	this->field_0xbc = thing;
+	AddReaction(reaction, VILLAGER_STATE_INITIALISE_FIGHT_REACTION);
+}
 
 // BW1W120 00766e50
 bool32_t Villager::InitialiseFightReaction()

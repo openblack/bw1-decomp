@@ -194,9 +194,10 @@ bool32_t Villager::IsAMother()
 }
 
 // BW1W120 00751190
-bool Villager::StartMoveToObject(Object* param_1, VILLAGER_STATES param_2)
+bool Villager::StartMoveToObject(Object* object, VILLAGER_STATES state)
 {
-	return false;
+	SetupMoveToObject(object, (unsigned char)state);
+	return true;
 }
 
 // BW1W120 007511b0
@@ -206,15 +207,33 @@ unsigned short Villager::DropResource(RESOURCE_TYPE param_1, unsigned short para
 }
 
 // BW1W120 007511e0
-unsigned short Villager::DropFood(unsigned short param_1)
+unsigned short Villager::DropFood(unsigned short food_amount)
 {
-	return 0;
+	if (food_amount == 0 || food_amount > (unsigned short)ResourceHeld[RESOURCE_TYPE_FOOD])
+	{
+		food_amount = ResourceHeld[RESOURCE_TYPE_FOOD];
+	}
+	ResourceHeld[RESOURCE_TYPE_FOOD] = ResourceHeld[RESOURCE_TYPE_FOOD] - food_amount;
+	if (GetTown() != NULL)
+	{
+		GetTown()->stats.TotalFood -= (float)food_amount;
+	}
+	return food_amount;
 }
 
 // BW1W120 00751240
-unsigned short Villager::DropWood(unsigned short param_1)
+unsigned short Villager::DropWood(unsigned short wood_amount)
 {
-	return 0;
+	if (wood_amount == 0 || wood_amount > (unsigned short)ResourceHeld[RESOURCE_TYPE_WOOD])
+	{
+		wood_amount = ResourceHeld[RESOURCE_TYPE_WOOD];
+	}
+	ResourceHeld[RESOURCE_TYPE_WOOD] = ResourceHeld[RESOURCE_TYPE_WOOD] - wood_amount;
+	if (GetTown() != NULL)
+	{
+		GetTown()->stats.TotalWood -= (float)wood_amount;
+	}
+	return wood_amount;
 }
 
 // BW1W120 007512a0
@@ -239,12 +258,17 @@ void Villager::PickupFood(short param_1) {}
 void Villager::PickupWood(short param_1, unsigned char param_2) {}
 
 // BW1W120 007514d0
+// TODO: target emits `mov cx,[ecx+0xf4]` (bare 16-bit partial load) not `movsx`; that
+// codegen is byte-exact only when the return type is `short` (mangled F), but symbols.txt
+// has H (int). Return type is likely wrong in symbols.txt/header — dispatcher call. 88% now.
 int Villager::GetFoodCapacity()
 {
 	return ((const GVillagerInfo*)info)->MaxFoodCarried - ResourceHeld[RESOURCE_TYPE_FOOD];
 }
 
 // BW1W120 007514f0
+// TODO: same as GetFoodCapacity — byte-exact requires `short` return (mangled F) but
+// symbols.txt has H (int). 88% with movsx; dispatcher should verify the true return type.
 int Villager::GetWoodCapacity()
 {
 	return ((const GVillagerInfo*)info)->MaxWoodCarried - ResourceHeld[RESOURCE_TYPE_WOOD];
@@ -1209,7 +1233,10 @@ VILLAGER_STATES Villager::LookAtPreviousStateReactToTownEmergency()
 }
 
 // BW1W120 00756530
-void Villager::SetTown(Town* town) {}
+void Villager::SetTown(Town* town)
+{
+	this->town = town;
+}
 
 // BW1W120 00756540
 bool32_t Villager::ScriptInCrowd()

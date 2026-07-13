@@ -6,6 +6,8 @@
 
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE, enum RESOURCE_TYPE, enum SPELL_SEED_TYPE */
 
+#include <Lionhead/LHLib/ver5.0/LHListHead.h> /* For LHListHead */
+
 #include "CitadelPart.h"      /* For struct CitadelPart */
 #include "WorshipSpellIcon.h" /* For struct WorshipSpellIcon */
 
@@ -46,7 +48,7 @@ public:
 	uint8_t                      field_0xcc[0xc];
 	int                          field_0xd8;
 	WorshipTotem*                totem;
-	LHListHead__WorshipSpellIcon IconList; /* 0xe0 */
+	LHListHead<WorshipSpellIcon> IconList; /* 0xe0 */
 	uint8_t                      field_0xe8[0x2c];
 	float                        field_0x114;
 	float                        field_0x118;
@@ -150,7 +152,7 @@ public:
 	// BW1W120 0055dc70 BW1M100 105b3e10 WorshipSite::GetAbodeType(void)
 	virtual ABODE_TYPE GetAbodeType();
 	// BW1W120 0077c5d0 BW1M100 105afeb0 WorshipSite::GetResourcePos(RESOURCE_TYPE, long)
-	virtual MapCoords* GetResourcePos(RESOURCE_TYPE param_1, int param_2);
+	virtual MapCoords GetResourcePos(RESOURCE_TYPE type, int index);
 	// BW1W120 0077c6d0 BW1M100 105afb90 WorshipSite::GetResourceNearestEdge(RESOURCE_TYPE, Object *, int)
 	virtual MapCoords* GetResourceNearestEdge(MapCoords* param_1, RESOURCE_TYPE param_2, Object* param_3, int param_4);
 	// BW1W120 0077ae10 BW1M100 105b2d80 WorshipSite::RemovePotFromStructure(PotStructure *)
