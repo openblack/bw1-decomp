@@ -765,7 +765,7 @@ uint32_t Villager::GetChillOutPos(MapCoords& coords)
 	{
 		MapCoords congregationPos = town->GetCongregationPos();
 		float     radius = ((const GTownInfo*)town->info)->field_0x140 * 0.1f;
-		float     angle = GUtils::Get3DAngleFromXZ(congregationPos, GameThingWithPos::coords);
+		float     angle = GUtils::Get3DAngleFromXZ(congregationPos, Pos);
 		float     jitter = GRand::GameFloatRand(0.7853982f, __FILE__, __LINE__) - 0.39269909f;
 		MapCoords offset =
 			GUtils::GetPosFromAngle(jitter + angle, GRand::GameFloatRand(radius * 9.0f, __FILE__, __LINE__));

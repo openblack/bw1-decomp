@@ -79,10 +79,7 @@ public:
 	// BW1W120 004014c0 BW1M100 1037fbf0 MultiMapFixed::AddPlaytimeVillager(Villager *)
 	virtual bool AddPlaytimeVillager(Villager* villager) { return false; }
 	// BW1W120 004014d0 BW1M100 1016ecd0 MultiMapFixed::GetResourceDropPosForComputerPlayer(RESOURCE_TYPE)
-	virtual MapCoords GetResourceDropPosForComputerPlayer(RESOURCE_TYPE type)
-	{
-		return ((GameThingWithPos*)this)->coords;
-	}
+	virtual MapCoords GetResourceDropPosForComputerPlayer(RESOURCE_TYPE type) { return Pos; }
 	// BW1W120 004014f0 BW1M100 100531e0 MultiMapFixed::GetPercentBuilt(void)
 	virtual float GetPercentBuilt() { return PercentBuilt; }
 	// BW1W120 00401500 BW1M100 1004b0a0 MultiMapFixed::GetPercentRepaired(void)

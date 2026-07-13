@@ -186,8 +186,8 @@ bool32_t Villager::MoveTowardsCreatureReaction()
 	{
 		if (MoveTo() == 10)
 		{
-			// `coords` here is the GameThingWithPos base member (0x14), not Object::coords (0x2c)
-			if (GUtils::GetDistanceInMetres(((GameThingWithPos*)this)->coords, *GetDestPos()) <= 0.5f)
+			// `Pos` here is the GameThingWithPos base member (0x14), not Object::coords (0x2c)
+			if (GUtils::GetDistanceInMetres(Pos, *GetDestPos()) <= 0.5f)
 			{
 				SetTopStateToFinal();
 			}

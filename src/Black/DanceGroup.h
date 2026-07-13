@@ -23,7 +23,7 @@ class DanceGroup : public GameThing
 {
 public:
 	// Pointer to the object being danced around (the dancer/target). Its MapCoords
-	// base member is at +0x14 (GameThingWithPos::coords); it also has a flag at +0x100
+	// base member is at +0x14 (GameThingWithPos::Pos); it also has a flag at +0x100
 	// and a counter at +0x114 whose containing (derived) type is not yet identified.
 	GameThingWithPos* Dancer; /* 0x14 */
 	GroupBehaviour*   behaviour;
