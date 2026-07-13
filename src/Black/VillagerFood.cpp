@@ -54,22 +54,12 @@ bool32_t Villager::CheckHungryAtHome()
 }
 
 // BW1W120 0075bb00
-// TODO: 51% — RETURN-TYPE CONTRADICTION (needs human/dispatcher). symbols.txt records this as
-// ?GetDesireToPickupFood@Villager@@QAEIXZ (unsigned int, `I`), so the header keeps bool32_t to
-// match. But the target body returns a FLOAT via ST0 on BOTH paths and never touches EAX:
-//   - held >= required : `fld [0.0f]; add esp,8; ret`   (returns 0.0f on ST0)
-//   - else             : `1.0 - held/required` left on ST0, NO __ftol
-// A faithful uint body can't reproduce this: the early-out becomes `xor eax,eax` (int 0) and the
-// compute path adds `call __ftol`. To byte-match, the function would have to be DECLARED float
-// (mangled `M`), which contradicts the recorded `I` symbol — either symbols.txt is wrong or the
-// original is UB (float returned from an unsigned-int-declared function). Deferred for a human to
-// decide the true signature; can't touch symbols.txt. Same fpu-leak family as POWER/EatFoodHeld.
-bool32_t Villager::GetDesireToPickupFood()
+float Villager::GetDesireToPickupFood()
 {
 	const GVillagerInfo* villagerInfo = (const GVillagerInfo*)info;
-	if (ResourceHeld[RESOURCE_TYPE_FOOD] >= (int16_t)villagerInfo->FoodReqiredForDinner)
-		return 0;
-	return (uint32_t)(1.0f - (float)ResourceHeld[RESOURCE_TYPE_FOOD] / (float)villagerInfo->FoodReqiredForDinner);
+	if (ResourceHeld[RESOURCE_TYPE_FOOD] < (int16_t)villagerInfo->FoodReqiredForDinner)
+		return 1.0f - (float)ResourceHeld[RESOURCE_TYPE_FOOD] / (float)villagerInfo->FoodReqiredForDinner;
+	return 0.0f;
 }
 
 // BW1W120 0075bb50

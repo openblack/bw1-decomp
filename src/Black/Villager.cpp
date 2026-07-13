@@ -292,18 +292,13 @@ void Villager::PickupFood(short param_1) {}
 void Villager::PickupWood(short param_1, unsigned char param_2) {}
 
 // BW1W120 007514d0
-// TODO: target emits `mov cx,[ecx+0xf4]` (bare 16-bit partial load) not `movsx`; that
-// codegen is byte-exact only when the return type is `short` (mangled F), but symbols.txt
-// has H (int). Return type is likely wrong in symbols.txt/header — dispatcher call. 88% now.
-int Villager::GetFoodCapacity()
+int16_t Villager::GetFoodCapacity()
 {
 	return ((const GVillagerInfo*)info)->MaxFoodCarried - ResourceHeld[RESOURCE_TYPE_FOOD];
 }
 
 // BW1W120 007514f0
-// TODO: same as GetFoodCapacity — byte-exact requires `short` return (mangled F) but
-// symbols.txt has H (int). 88% with movsx; dispatcher should verify the true return type.
-int Villager::GetWoodCapacity()
+int16_t Villager::GetWoodCapacity()
 {
 	return ((const GVillagerInfo*)info)->MaxWoodCarried - ResourceHeld[RESOURCE_TYPE_WOOD];
 }
@@ -318,13 +313,7 @@ bool Villager::IsRandomlyLazy()
 }
 
 // BW1W120 00751570
-// TODO: 37% -- structure/semantics correct (picks dominant of FOOD/WOOD via unsigned-16
-// compare, writes `type`, returns the held amount). BLOCKED return-type-truth: target
-// returns the RAW amount (`xor eax,eax; mov ax,[0xf4]`), but the `_N` bool return forces
-// MSVC6 to normalize (`cmp;setne al`), which also pushes the `type` out-ptr from edx to
-// eax. Faithful bool source cannot emit the raw-value return; return type is likely wider
-// (unsigned short) in reality -- dispatcher/symbols call.
-bool Villager::GetResourceHeld(RESOURCE_TYPE& type)
+uint16_t Villager::GetResourceHeld(RESOURCE_TYPE& type)
 {
 	type = RESOURCE_TYPE_NONE;
 	if ((unsigned short)ResourceHeld[RESOURCE_TYPE_FOOD] > (unsigned short)ResourceHeld[RESOURCE_TYPE_WOOD])
