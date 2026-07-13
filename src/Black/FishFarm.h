@@ -143,6 +143,13 @@ public:
 	// BW1W120 0052c4c0 BW1M100 100dd560 FishFarm::ConvertToPlanned(void)
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
 
+	// Non-virtual methods
+
+	// BW1W120 0052d290 FishFarm::RemoveFisherman(Villager *)
+	// TODO: added from symbols.txt (?RemoveFisherman@FishFarm@@QAEXPAVVillager@@@Z), called from
+	// Villager::ExitFishing (VillagerFisherman.cpp); no BW1M100 (Mac) address correlated yet.
+	void RemoveFisherman(Villager* villager);
+
 	// Constructors
 
 	// BW1W120 0052c360 BW1M100 100dd070 FishFarm::FishFarm(MapCoords const &, GFishFarmInfo const *, Town *)

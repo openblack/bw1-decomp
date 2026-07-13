@@ -73,7 +73,9 @@ struct MapCoords
 	// BW1W120 00605410 BW1M100 1001fb00 MapCoords::operator+=(MapCoords const &)
 	MapCoords* operator+=(const MapCoords& other);
 	// BW1W120 00605470 BW1M100 100494b0 MapCoords::operator+=(JustMapXZ const &)
-	MapCoords* operator+=(const JustMapXZ& other) const;
+	// NOTE: mangled ??YMapCoords@@QAEXABUJustMapXZ@@@Z proves void return, non-const (Rule 1);
+	// zero existing call sites depend on the old (wrong) MapCoords* / const signature.
+	void operator+=(const JustMapXZ& other);
 	// BW1W120 00605520 BW1M100 100503e0 MapCoords::operator+(MapCoords const &) const
 	MapCoords operator+(const MapCoords& other) const;
 	// BW1W120 006020e0 BW1M100 1048f050 MapCoords::GetNearestTown(float) const
@@ -97,7 +99,9 @@ struct MapCoords
 	// BW1W120 006045c0 BW1M100 100195c0 MapCoords::FindType(OBJECT_TYPE, Object *) const
 	Object* FindType(OBJECT_TYPE type, Object* object);
 	// BW1W120 00605660 BW1M100 10087b50 MapCoords::operator==(MapCoords const &) const
-	uint32_t operator==(const MapCoords* param_2);
+	// NOTE: mangled ??8MapCoords@@QBEIABU0@@Z proves const MapCoords& + const method (Rule 1);
+	// zero existing call sites depend on the old (wrong) pointer signature.
+	bool32_t operator==(const MapCoords& other) const;
 	// BW1W120 00605c40 BW1M100 1004ff00 MapCoords::GetLHPoint(void) const
 	LHPoint* GetLHPoint(LHPoint* point);
 	// BW1W120 00605fb0 BW1M100 10032290 MapCoords::GetMetresDistanceSq(MapCoords const &) const
@@ -109,7 +113,10 @@ struct MapCoords
 	// BW1W120 00603490 BW1M100 105a3bb0 MapCoords::GetFirstObjectMobile(void) const
 	Object* GetFirstObjectMobile();
 	// BW1W120 006056b0 BW1M100 10557130 MapCoords::__ne(MapCoords const &) const
-	bool __ne(const MapCoords* param_1);
+	// NOTE: mangled ??9MapCoords@@QBEIABU0@@Z is the real operator!= (??9), not a plain "__ne"
+	// method -- the plain-name form can never produce this relocation. Renamed + fixed to
+	// const MapCoords& / const method (Rule 1); zero existing call sites depended on the old form.
+	bool32_t operator!=(const MapCoords& other) const;
 	// BW1W120 00604fe0 BW1M100 10406220 MapCoords::CollideCollideWithFixe(void) const
 	int CollideCollideWithFixe();
 };

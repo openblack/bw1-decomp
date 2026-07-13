@@ -43,6 +43,5 @@ compile_commands.json
 # Claude
 /.claude/*
 !/.claude/skills/
-/.claude/skills/*/vsm_index.json
 /.claude/skills/*/__pycache__/
 !/.claude/agents/

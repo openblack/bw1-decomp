@@ -192,8 +192,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 005283e0 Field::AddFarmer(Villager *)
+	void AddFarmer(Villager* villager);
 	// BW1W120 005291a0 BW1M100 100d3e50 Field::PlantCrop(MapCoords const &)
-	bool32_t PlantCrop(const MapCoords* param_1);
+	bool32_t PlantCrop(const MapCoords& param_1);
 	// BW1W120 00529210 BW1M100 100d3de0 Field::GetPlantCropPos(void)
 	bool32_t GetPlantCropPos();
 	// BW1W120 00529350 BW1M100 10000690 Field::GetFieldActivity(int)
