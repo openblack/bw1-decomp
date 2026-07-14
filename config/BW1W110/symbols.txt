@@ -20333,6 +20333,7 @@ fn_00895DDB = .text:0x00895DDB; // type:function
 fn_00895E2F = .text:0x00895E2F; // type:function size:0xA
 fn_00895E39 = .text:0x00895E39; // type:function size:0x18
 fn_00895E51 = .text:0x00895E51; // type:function size:0x1F
+_strspn = .text:0x00895E70; // type:function scope:global
 _wcschr = .text:0x00895EAE; // type:function scope:global
 _wcsrchr = .text:0x00895ED7; // type:function scope:global
 _wcspbrk = .text:0x00895F17; // type:function scope:global
