@@ -1268,7 +1268,8 @@ config.libs = [
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\wcsrchr.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\wcspbrk.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\wcsspn.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\ehvecctr.obj", progress_category="sdk"),
+            # TODO: Match BW1W100. It's excluded because there's some dedup between ??_L@YGXPAXIHP6EX0@Z1@Z - ??_M@YGXPAXIHP6EX0@Z@Z
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\ehvecctr.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\clock.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\longjmp.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\setjmp3.obj", progress_category="sdk"),

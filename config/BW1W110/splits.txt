@@ -905,6 +905,10 @@ lib/libcmt/wcspbrk.obj:
 lib/libcmt/wcsspn.obj:
 	.text       start:0x00895F55 end:0x00895F97 align:1
 
+lib/libcmt/ehvecctr.obj:
+	.text       start:0x00895F97 end:0x00896019 align:1
+	.rdata      start:0x009961B8 end:0x009961C8 align:4
+
 lib/libcmt/clock.obj:
 	.text       start:0x00896019 end:0x00896091 align:1
 	.CRT$XIC    start:0x009B760C end:0x009B7610 align:4
