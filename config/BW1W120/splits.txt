@@ -3150,3 +3150,7 @@ lib/libcmt/wcspbrk.obj:
 
 lib/libcmt/wcsspn.obj:
 	.text       start:0x008A6145 end:0x008A6187 align:1
+
+lib/libcmt/sehsupp.obj:
+	.text       start:0x008A63F6 end:0x008A645B align:1
+	.rdata      start:0x009A62C8 end:0x009A62D8 align:4
