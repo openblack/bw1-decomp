@@ -1271,7 +1271,7 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\ehvecctr.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\clock.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\longjmp.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\setjmp3.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\setjmp3.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\mbtoupr.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\sehsupp.obj", progress_category="sdk"),
 
