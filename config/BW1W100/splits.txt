@@ -973,6 +973,10 @@ lib/libcmt/fileno.obj:
 lib/libcmt/wcsnicmp.obj:
 	.text       start:0x007E8AED end:0x007E8BE5 align:1
 
+lib/libcmt/ehvecctr.obj:
+	.text       start:0x007E8D9F end:0x007E8F60 align:1
+	.rdata      start:0x008DA550 end:0x008DA560 align:4
+
 lib/libcmt/clock.obj:
 	.text       start:0x007E8F60 end:0x007E8FD8 align:1
 	.CRT$XIC    start:0x008F7570 end:0x008F7574 align:4
