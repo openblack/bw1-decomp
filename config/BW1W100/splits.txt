@@ -976,6 +976,9 @@ lib/libcmt/wcsnicmp.obj:
 lib/libcmt/towlower.obj:
 	.text       start:0x007E8FD8 end:0x007E904D align:1
 
+lib/libcmt/mbtoupr.obj:
+	.text       start:0x007E904D end:0x007E90C8 align:1
+
 lib/libcmt/days.obj:
 	.data       start:0x00B53144 end:0x00B531AC align:1
 

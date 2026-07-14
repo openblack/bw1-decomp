@@ -31835,6 +31835,7 @@ __nhandle = .data:0x00FACA60; // type:object size:0x4 scope:global
 ___mbcodepage = .data:0x00FACA64; // type:object size:0xC scope:global
 ___mbulinfo = .data:0x00FACA70; // type:object size:0xC scope:global
 ___ismbcodepage = .data:0x00FACA7C; // type:object size:0x104 scope:global
+__mbcasemap = .data:0x00FACA80; // type:object size:0x100 scope:global
 __mbctype = .data:0x00FACB80; // type:object size:0x104 scope:global
 ___mblcid = .data:0x00FACC84; // type:object size:0x4 scope:global
 ___sbh_sizeHeaderList = .data:0x00FACC88; // type:object size:0x4 scope:global
