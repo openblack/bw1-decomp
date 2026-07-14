@@ -973,6 +973,11 @@ lib/libcmt/fileno.obj:
 lib/libcmt/wcsnicmp.obj:
 	.text       start:0x007E8AED end:0x007E8BE5 align:1
 
+lib/libcmt/clock.obj:
+	.text       start:0x007E8F60 end:0x007E8FD8 align:1
+	.CRT$XIC    start:0x008F7570 end:0x008F7574 align:4
+	.bss        start:0x00ECC698 end:0x00ECC6A0 align:4
+
 lib/libcmt/towlower.obj:
 	.text       start:0x007E8FD8 end:0x007E904D align:1
 
