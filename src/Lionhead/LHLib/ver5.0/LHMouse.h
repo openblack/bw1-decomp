@@ -157,7 +157,7 @@ struct LHMouse
 	LHCoord      EffectivePos;
 	LHCoord      Margin;
 	int          UsePadding;
-	int          field_fc;
+	int          MouseWheelAccum;
 	uint8_t      Buttons;
 	uint8_t      _pad0x101[3];
 	LHCoord      ButtonPos[9];

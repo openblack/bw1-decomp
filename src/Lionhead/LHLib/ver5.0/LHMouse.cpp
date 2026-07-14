@@ -21,8 +21,7 @@
 extern LHScreen  g_lhScreen;       // 0xE85050
 extern LHDraw    gLHDraw;          // 0xE8586C
 extern HINSTANCE g_hInstance;      // 0xE85040
-extern LHMouse*  gMouse;           // 0xE85204
-extern int       gMouseWheelAccum; // 0xE85300
+extern LHMouse   gMouse;           // 0xE85204
 extern uint8_t   gMouseWheelSkip;  // 0xC311A4
 extern uint8_t   gWindowedMode;    // 0xE8C0FA
 
@@ -62,7 +61,7 @@ LHMouse::LHMouse()
 	EventMask = 7;
 	BufferToggle = 0;
 	UsePadding = 0;
-	field_fc = 0;
+	MouseWheelAccum = 0;
 	NumButtons = GetSystemMetrics(SM_CMOUSEBUTTONS);
 	IsWheelPresent = GetSystemMetrics(SM_MOUSEWHEELPRESENT);
 	AccumDelta.x = 0;
@@ -87,7 +86,7 @@ int LHMouse::UpdateDeltaPos()
 				else
 				{
 					if ((int16_t)state.lZ < 2000)
-						gMouseWheelAccum += (int16_t)state.lZ;
+						MouseWheelAccum += (int16_t)state.lZ;
 					if (state.lZ)
 						IsWheelPresent = 1;
 				}
@@ -251,8 +250,8 @@ int LHMouse::SetPosition(LHCoord* position)
 	{
 		ImageMode = 1;
 		PostMessageA(g_lhScreen.MsWindowHandle, 0x8007, 0, 0);
-		gMouse->UpdateCurrentPos(*position);
-		gMouse->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)4);
+		gMouse.UpdateCurrentPos(*position);
+		gMouse.Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)4);
 	}
 	else
 	{
