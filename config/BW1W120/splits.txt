@@ -3151,6 +3151,9 @@ lib/libcmt/wcspbrk.obj:
 lib/libcmt/wcsspn.obj:
 	.text       start:0x008A6145 end:0x008A6187 align:1
 
+lib/libcmt/setjmp3.obj:
+	.text       start:0x008A6300 end:0x008A637B align:1
+
 lib/libcmt/mbtoupr.obj:
 	.text       start:0x008A637B end:0x008A63F6 align:1
 
