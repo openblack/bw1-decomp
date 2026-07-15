@@ -1,64 +1,70 @@
 #ifndef BW1_DECOMP_LH_SYSTEM_GLOBALS_INCLUDED_H
 #define BW1_DECOMP_LH_SYSTEM_GLOBALS_INCLUDED_H
 
-// The original executable exposes these objects at fixed addresses. Keep the
-// declarations in one header instead of inventing per-TU extern declarations.
-#define g_lhScreen (*(LHScreen*)0x00E85050)
-#define g_hInstance (*(HINSTANCE*)0x00E85040)
-#define gSystem (*(LHSystem*)0x00E85040)
-#define gLHDraw (*(LHDraw*)0x00E8586C)
-#define gMouse (*(LHMouse*)0x00E85204)
-#define g_screenCritSec (*(CRITICAL_SECTION*)0x00E90650)
+// Keep the fixed-address globals in one declaration block so every TU uses the
+// same type and the compiler emits the original COFF relocations.
+struct TbIMEWrapper;
+struct LHSystem;
+struct CharRing;
 
-#define g_windowForScreen (*(HWND*)0x00E8C0F4)
-#define gMenu (*(HMENU*)0x00E8C0F0)
-#define gAccel (*(HACCEL*)0x00E8C0E8)
-#define gAltTabPending (*(uint8_t*)0x00E8C0FB)
-#define unk_E8C5E0 (*(int*)0x00E8C5E0)
-#define gKeyToAsciiTable (*(unsigned char (*)[0x100])0x00C3122C)
-#define gMouseThreadRunning (*(uint8_t*)0x00E8C108)
-#define gTerminateRequested (*(uint8_t*)0x00E8C109)
-#define gWindowedMode (*(uint8_t*)0x00E8C0FA)
-#define gWindowActive (*(int*)0x00C311A8)
-#define unk_E8C0F8 (*(int*)0x00E8C0F8)
-#define gQueryCancelAutoPlayMsg (*(UINT*)0x00E8C0C4)
-#define gQueryCancelAutoPlayInit (*(uint8_t*)0x00E8C0C8)
-#define gMessageHook (*(void (__stdcall**)(UINT, int, unsigned int))0x00E8C10C)
-#define gLastCommand (*(UINT*)0x00E8C0AC)
-#define gLastCommandParam (*(unsigned int*)0x00E8C0B0)
-#define g_appMinimized (*(int*)0x00E8C0FC)
-#define gAppMinimizedByUs (*(int*)0x00E8C100)
-#define unk_E852E4 (*(int*)0x00E852E4)
-#define unk_E852E8 (*(int*)0x00E852E8)
-#define gMouseWheelAccum (*(int*)0x00E85300)
-#define gButtonState (*(int*)0x00E85304)
-#define unk_E85274 (*(int*)0x00E85274)
-#define gCursorTimerInterval (*(UINT*)0x00E8526C)
-#define unk_E8520C (*(int*)0x00E8520C)
-#define unk_E8522C (*(int*)0x00E8522C)
-#define unk_E85230 (*(LHSurface* (*)[0xF])0x00E85230)
-#define gMouseNeedsRedraw (*(int*)0x00E85210)
-#define gMouseWheelSkip (*(uint8_t*)0x00C311A4)
-#define unk_E85288 (*(LHRegion*)0x00E85288)
-#define unk_E852A8 (*(LHCoord*)0x00E852A8)
-#define gKeyboard (*(CRITICAL_SECTION*)0x00E8C118)
-#define gLastKey (*(int*)0x00E8C110)
-#define gTbIME (*(TbIMEWrapper**)0x00E8C104)
+extern LHSystem gSystem;
+// LHSystem::HInstance is the first field; this preserves the gSystem relocation.
+#define g_hInstance (*(HINSTANCE*)&gSystem)
+extern LHScreen g_lhScreen;
+extern LHMouse gMouse;
+extern LHDraw gLHDraw;
+extern CRITICAL_SECTION g_screenCritSec;
 
+extern int unk_E8520C;
+extern int gMouseNeedsRedraw;
+extern int gCursorMode;
+extern int unk_E8522C;
+extern LHSurface* unk_E85230[0xF];
+extern UINT gCursorTimerInterval;
+extern int gCursorAnimMode;
+extern int unk_E85274;
+extern LHRegion unk_E85288;
+extern LHCoord unk_E852A8;
+extern int unk_E852E4;
+extern int unk_E852E8;
+extern int gMouseWheelAccum;
+extern int gButtonState;
+extern int gMouseMoveDelta;
+extern uint8_t gKeyboardState[0xFC];
+extern uint16_t unk_E85470;
+extern uint16_t unk_E85472;
+extern uint8_t gCharRing[0x60];
+extern CharRing charRing;
+
+extern UINT gLastCommand;
+extern unsigned int gLastCommandParam;
+extern int gLastMouseMsgTime;
+extern UINT gQueryCancelAutoPlayMsg;
+extern uint8_t gQueryCancelAutoPlayInit;
+extern HANDLE gAppEvent;
+extern HCURSOR gArrowCursor;
+extern HCURSOR gAppCursor;
+extern struct tagTRACKMOUSEEVENT gTrackMouseEvent;
+extern HACCEL gAccel;
+extern HMENU gMenu;
+extern HWND g_windowForScreen;
+extern int unk_E8C0F8;
 __declspec(dllimport) bool InAssertDialog;
-#define unk_E85470 (*(uint16_t*)0x00E85470)
-#define unk_E85472 (*(uint16_t*)0x00E85472)
-#define gKeyboardState (*(uint8_t (*)[0xFC])0x00E85374)
-#define gCharRing (*(uint8_t (*)[0x60])0x00E85478)
-#define charRing (*(CharRing*)0x00E855A0)
-#define gLastMouseMsgTime (*(int*)0x00E8C0C0)
-#define gMouseMoveDelta (*(int*)0x00E85368)
-#define gCursorMode (*(int*)0x00E85218)
-#define gAppEvent (*(HANDLE*)0x00E8C0CC)
-#define gArrowCursor (*(HCURSOR*)0x00E8C0D0)
-#define gAppCursor (*(HCURSOR*)0x00E8C0D4)
-#define gTrackMouseEvent (*(TRACKMOUSEEVENT*)0x00E8C0D8)
-#define gTrackingMouse (*(int*)0x00C311AC)
-#define gCursorAnimMode (*(int*)0x00E85270)
+extern uint8_t gWindowedMode;
+extern uint8_t gAltTabPending;
+extern int g_appMinimized;
+extern int gAppMinimizedByUs;
+extern TbIMEWrapper* gTbIME;
+extern uint8_t gMouseThreadRunning;
+extern uint8_t gTerminateRequested;
+extern void (__stdcall* gMessageHook)(UINT, int, unsigned int);
+extern int gLastKey;
+extern CRITICAL_SECTION gKeyboard;
+extern int unk_E8C5E0;
+extern int gWindowActive;
+extern int gTrackingMouse;
+extern uint8_t gMouseWheelSkip;
+extern unsigned char gKeyToAsciiTable[0x100];
+
 
 #endif /* BW1_DECOMP_LH_SYSTEM_GLOBALS_INCLUDED_H */

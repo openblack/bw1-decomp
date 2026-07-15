@@ -20,6 +20,7 @@
 #include <Lionhead/LHLib/ver5.0/LHSurface.h>
 #include <Lionhead/LHLib/ver5.0/LHSystemGlobals.h>
 
+CRITICAL_SECTION g_screenCritSec; // 0xE90650
 IDirectInputA*       gDirectInput;    // 0xE90668
 IDirectInputDeviceA* gMouseDevice;    // 0xE9066C
 

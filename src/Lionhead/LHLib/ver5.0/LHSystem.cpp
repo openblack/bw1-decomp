@@ -57,7 +57,7 @@ static_assert(offsetof(LHSys, mouse) == 0x1c4, "LHSys mouse offset changed");
 // TODO: Probably an inline accessor on LHSystem or LHSys or something
 inline LHMouse* GetMouseObject()
 {
-	return (LHMouse*)&gMouse;
+	return &gMouse;
 }
 
 // BW1W120 007db800 construct theSystem's embedded screen, mouse, input, and text state.
