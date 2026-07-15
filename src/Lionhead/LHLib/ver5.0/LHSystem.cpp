@@ -1,103 +1,24 @@
-#define ReleaseCapture BW1_WindowsReleaseCapture
-#define KillTimer BW1_WindowsKillTimer
-#define SetTimer BW1_WindowsSetTimer
-#define GetMessageTime BW1_WindowsGetMessageTime
-#define DefWindowProcA BW1_WindowsDefWindowProcA
 #include <windows.h>
 #include <commctrl.h>
 #include <ddraw.h>
-#undef ReleaseCapture
-#undef KillTimer
-#undef SetTimer
-#undef GetMessageTime
-#undef DefWindowProcA
+
+// Standard Win32 declarations are used below; import decorations are defined in symbols.txt.
 
 #include <assert.h> /* For static_assert */
 #include <stddef.h> /* For offsetof */
-// Target-import workaround: the extracted TU names these IATs with @4 regardless of API arity.
-// The one-argument declarations select those COFF names; call sites cast to the true signatures
-// so MSVC still emits the original argument pushes and stack behavior. These are not API prototypes.
-extern "C" __declspec(dllimport) BOOL __stdcall ReleaseCapture(HWND);
-typedef BOOL (__stdcall *ReleaseCaptureProc)(void);
-extern "C" __declspec(dllimport) BOOL __stdcall KillTimer(HWND);
-typedef BOOL (__stdcall *KillTimerProc)(HWND, UINT);
-extern "C" __declspec(dllimport) UINT __stdcall SetTimer(HWND);
-typedef UINT (__stdcall *SetTimerProc)(HWND, UINT, UINT, TIMERPROC);
-extern "C" __declspec(dllimport) LONG __stdcall GetMessageTime(int);
-typedef LONG (__stdcall *GetMessageTimeProc)(void);
-extern "C" __declspec(dllimport) LRESULT __stdcall DefWindowProcA(HWND);
-typedef LRESULT (__stdcall *DefWindowProcProc)(HWND, UINT, WPARAM, LPARAM);
 
 #include <Lionhead/LHLib/ver5.0/LHSystem.h> /* For struct LHSystem */
 
-#include <Lionhead/LH3DLib/development/LHCoord.h>  /* For struct LHCoord */
+#include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
 #include <Lionhead/LH3DLib/development/LHRegion.h> /* For struct LHRegion */
-#include <Lionhead/LHLib/ver5.0/LHMouse.h>         /* For struct LHMouse */
-#include <Lionhead/LHLib/ver5.0/LHScreen.h>        /* For struct LHScreen */
-#include <Lionhead/LHLib/ver5.0/LHSurface.h>       /* For struct LHSurface */
-#include <Lionhead/LHLib/ver5.0/LHWin.h>           /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LHLib/ver5.0/LHMouse.h> /* For struct LHMouse */
+#include <Lionhead/LHLib/ver5.0/LHScreen.h> /* For struct LHScreen */
+#include <Lionhead/LHLib/ver5.0/LHSurface.h> /* For struct LHSurface */
+#include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LHLib/ver5.0/LHSystemGlobals.h>
 
-// -----------------------------------------------------------------------------
-// Fixed-address globals owned/referenced by this translation unit.
-// -----------------------------------------------------------------------------
+WINUSERAPI BOOL WINAPI TrackMouseEvent(LPTRACKMOUSEEVENT);
 
-// BW1W120 00e85050 the global LHScreen instance (theSystem.screen)
-extern LHScreen g_lhScreen;
-// BW1W120 00e8c0f4 HWND of the main game window (theSystem.window)
-extern HWND g_windowForScreen;
-// BW1W120 00e8c0f0 the window's menu (theSystem.field_0x70b0)
-extern HMENU gMenu;
-// BW1W120 00e8c0e8 accelerator table
-extern HACCEL gAccel;
-// BW1W120 00e8c0fb set when a WM_SYSCOMMAND SC_TASKSWITCH arrives; drained by the pump
-extern uint8_t gAltTabPending;
-// BW1W120 00e8c5e0 alt-tabbed-away flag; non-zero requests another pass of the loop
-extern int unk_E8C5E0;
-// BW1W120 00c3122c key-code -> ASCII lookup, indexed by (key | (shift ? 0x80 : 0))
-extern unsigned char gKeyToAsciiTable[];
-// BW1W120 00e85040 the LHSystem sub-object (theSystem.system)
-extern LHSystem gSystem;
-// BW1W120 00e8c108 set while the mouse-input thread is running
-extern uint8_t gMouseThreadRunning;
-// BW1W120 00e8c109 set once shutdown has been requested
-extern uint8_t gTerminateRequested;
-// BW1W120 00e8c0fa non-zero while running in a window
-extern uint8_t gWindowedMode;
-// BW1W120 00c311a8 non-zero while the game window has focus/is active
-extern int gWindowActive;
-// BW1W120 00e8c0f8 set if a 256-colour mode switch failed (also read by LHScreen)
-extern int unk_E8C0F8;
-// BW1W120 imported LHLogR: true while an assert dialog is on screen
-extern __declspec(dllimport) bool InAssertDialog;
-// --- WndProc state ---
-extern UINT gQueryCancelAutoPlayMsg;                       // 00e8c0c4
-extern uint8_t gQueryCancelAutoPlayInit;                   // 00e8c0c8
-extern void(__stdcall* gMessageHook)(UINT, int, unsigned int); // 00e8c10c
-extern UINT gLastCommand;                                  // 00e8c0ac
-extern unsigned int gLastCommandParam;                     // 00e8c0b0
-extern int g_appMinimized;                                 // 00e8c0fc
-extern int gAppMinimizedByUs;                              // 00e8c100
-// The target TU emits explicit relocations for these embedded mouse fields; aliases below preserve them.
-// BW1W120 00e85204 is the embedded LHMouse object, named as a pointer symbol by the original TU.
-extern LHMouse* gMouse;
-extern int unk_E852E4;                                     // 00e852e4 LHMouse::AccumDelta.x storage
-extern int unk_E852E8;                                     // 00e852e8 LHMouse::AccumDelta.y storage
-extern int gMouseWheelAccum;                               // 00e85300 LHMouse::MouseWheelAccum storage
-extern int gButtonState;                                   // 00e85304 LHMouse::Buttons storage
-extern int unk_E85274;                                     // 00e85274
-extern UINT gCursorTimerInterval;                          // 00e8526c
-extern int unk_E8520C;                                     // 00e8520c
-extern int unk_E8522C;                                     // 00e8522c
-extern LHSurface* unk_E85230[0xF];                         // 00e85230 surface array
-extern int gMouseNeedsRedraw;                              // 00e85210
-extern uint8_t gMouseWheelSkip;                            // 00c311a4
-extern LHRegion unk_E85288;                                // 00e85288 saved cursor region
-extern LHCoord unk_E852A8;                                 // 00e852a8 saved cursor pos
-
-// The embedded keyboard object is at theSystem + 0x32c; the global at 0xE8C118
-// is a separate critical section initialized by LHSys::LHSys().
-extern CRITICAL_SECTION gKeyboard; // 00e8c118
-extern int gLastKey;                // 00e8c110
 
 // TODO: This is probably an inline accessor on LHSystem or LHSys or sometihng
 inline LHKeyboard& GetKeyboardObject()
@@ -112,14 +33,6 @@ int TbIME_ConvertCHAR8toCHAR16(char c);
 // BW1W120 007de8d0 (LHScreen.cpp) per-message screen bookkeeping
 void sub_7DE8D0();
 // BW1W120 00e85470/00e85472 cleared alongside the key-down state on (re)init
-extern uint16_t unk_E85470;
-extern uint16_t unk_E85472;
-// BW1W120 00e8c0d8 TrackMouseEvent request for WM_MOUSELEAVE tracking
-extern TRACKMOUSEEVENT gTrackMouseEvent;
-// BW1W120 00c311ac non-zero while a TrackMouseEvent request is active
-extern int gTrackingMouse;
-// BW1W120 00e85270 cursor animation mode (3 => needs an initial timer kick)
-extern int gCursorAnimMode;
 
 // The IME helper wrapper (slim::TbIME), constructed on window creation.
 struct TbIMEWrapper
@@ -132,28 +45,12 @@ struct TbIMEWrapper
 	// Returns a byte (target tests al, not eax).
 	bool ProcessMessage(HWND wnd, UINT* msg, WPARAM* w, LPARAM* l, LRESULT* result);
 };
-// BW1W120 00e8c104 the global IME wrapper instance
-extern TbIMEWrapper* gTbIME;
-
-// BW1W120 imported: register a TrackMouseEvent request (user32 shim).
-extern "C" __declspec(dllimport) BOOL __stdcall TrackMouseEvent(LPTRACKMOUSEEVENT);
-// BW1W120 00e90650 guards screen/window state (shared with LHScreen/LHMouse)
-extern CRITICAL_SECTION g_screenCritSec;
-// BW1W120 00e85374 per-key down state, indexed by scan code
-extern uint8_t gKeyboardState[0xFC];
-// BW1W120 00e85478 typed-character ring buffer (indices live at [90]/[91])
-extern uint8_t gCharRing[0x60];
-// BW1W120 00e855a0 typed-character ring (WM_CHAR / 0x410). One object: Buffer[Head]=char then
-// Head advances; the target RELOADS Head after the store (Buffer[] and Head may alias since Head
-// is a runtime index), which only happens if they live in a single object — hence the struct.
-// Distinct from gCharRing above (a separate byte buffer at 0xE85478).
 struct CharRing
 {
 	int Buffer[16]; /* 0x00 */
 	int Head;       /* 0x40 */
 	int Tail;       /* 0x44 */
 };
-extern CharRing charRing; // 00e855a0
 // BW1W120 00e85204 is theSystem.mouse: LHSys embeds LHMouse at offset 0x1c4.
 static_assert(offsetof(LHSys, mouse) == 0x1c4, "LHSys mouse offset changed");
 
@@ -178,25 +75,11 @@ LHSys::LHSys()
 	joypads.count = 0;
 }
 
-// BW1W120 00e8c0c0 timestamp of the previous mouse-move message
-extern int gLastMouseMsgTime;
-// BW1W120 00e85368 ms elapsed since the previous mouse-move
-extern int gMouseMoveDelta;
-// BW1W120 00e85218 current cursor-image mode (2/4 => show arrow)
-extern int gCursorMode;
-// BW1W120 00e85210 set to request a mouse redraw on the next frame
-extern int gMouseNeedsRedraw;
-// BW1W120 00e8c0cc signalled by the WndProc to wake the mouse-input thread
-extern HANDLE gAppEvent;
-// BW1W120 00e8c0d0 the standard arrow cursor (IDC_ARROW)
-extern HCURSOR gArrowCursor;
-// BW1W120 00e8c0d4 the app's own cursor resource
-extern HCURSOR gAppCursor;
 
 // Assert force-callbacks, provided by LHLogR (imported).
 // BW1W120 008a9358 / 008a93d0
-extern __declspec(dllimport) void(__cdecl* LHAssertBeforeForceCallback)();
-extern __declspec(dllimport) void(__cdecl* LHAssertAfterForceCallback)();
+__declspec(dllimport) void(__cdecl* LHAssertBeforeForceCallback)();
+__declspec(dllimport) void(__cdecl* LHAssertAfterForceCallback)();
 
 // BW1W120 imported LHLogR: spawn a named worker thread.
 __declspec(dllimport) unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), unsigned int stack, void* arg, long priority);
@@ -406,51 +289,51 @@ void ClearKeyboardState()
 int LHKeyboard::ProcessKeyboard(unsigned int msg, int key_data)
 {
 	unsigned char scancode = (unsigned char)(key_data >> 16);
-	if (key_data & 0x1000000)
-		scancode += 0x80;
+	if (key_data & LH_KEY_DATA_EXTENDED)
+		scancode += LH_KEY_SCAN_EXTENDED_OFFSET;
 	ModifierFlags = 0;
 	int reported = scancode;
-	if (key_data & 0x80000000)
+	if (key_data & LH_KEY_DATA_RELEASED)
 	{
 		KeyState[scancode] = 0;
-		if (scancode == 42)
+		if (scancode == LH_KEY_SCAN_LSHIFT)
 		{
-			if (!KeyState[54])
+			if (!KeyState[LH_KEY_SCAN_RSHIFT])
 				goto check_shift;
 		}
 		else
 		{
-			if (scancode != 54)
+			if (scancode != LH_KEY_SCAN_RSHIFT)
 				goto check_shift;
-			if (!KeyState[42])
+			if (!KeyState[LH_KEY_SCAN_LSHIFT])
 				goto check_rshift;
 		}
-		KeyState[54] = 0;
+		KeyState[LH_KEY_SCAN_RSHIFT] = 0;
 	check_shift:
-		if (KeyState[42])
+		if (KeyState[LH_KEY_SCAN_LSHIFT])
 		{
 		set_shift:
-			ModifierFlags |= 0x10;
+			ModifierFlags |= LH_KEY_MODIFIER_SHIFT;
 		check_ctrl_alt:
-			if (KeyState[29] || KeyState[157])
-				ModifierFlags |= 0x20;
-			if (KeyState[56] || KeyState[184])
-				ModifierFlags |= 0x40;
+			if (KeyState[LH_KEY_SCAN_LCTRL] || KeyState[LH_KEY_SCAN_RCTRL])
+				ModifierFlags |= LH_KEY_MODIFIER_CTRL;
+			if (KeyState[LH_KEY_SCAN_LALT] || KeyState[LH_KEY_SCAN_RALT])
+				ModifierFlags |= LH_KEY_MODIFIER_ALT;
 			CurrentKey = 0;
 			goto invoke;
 		}
 	check_rshift:
-		if (!KeyState[54])
+		if (!KeyState[LH_KEY_SCAN_RSHIFT])
 			goto check_ctrl_alt;
 		goto set_shift;
 	}
 	KeyState[scancode] = 1;
-	if (KeyState[42] || KeyState[54])
-		ModifierFlags |= 0x10;
-	if (KeyState[29] || KeyState[157])
-		ModifierFlags |= 0x20;
-	if (KeyState[56] || KeyState[184])
-		ModifierFlags |= 0x40;
+	if (KeyState[LH_KEY_SCAN_LSHIFT] || KeyState[LH_KEY_SCAN_RSHIFT])
+		ModifierFlags |= LH_KEY_MODIFIER_SHIFT;
+	if (KeyState[LH_KEY_SCAN_LCTRL] || KeyState[LH_KEY_SCAN_RCTRL])
+		ModifierFlags |= LH_KEY_MODIFIER_CTRL;
+	if (KeyState[LH_KEY_SCAN_LALT] || KeyState[LH_KEY_SCAN_RALT])
+		ModifierFlags |= LH_KEY_MODIFIER_ALT;
 	{
 		int active = StringActive;
 		CurrentKey = scancode;
@@ -731,7 +614,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 			gTrackingMouse = 1;
 		}
 		if (!g_lhScreen.windowed)
-			MouseMoveHandler((int)hWnd, lParam, ((GetMessageTimeProc)GetMessageTime)());
+			MouseMoveHandler((int)hWnd, lParam, GetMessageTime());
 		break;
 	case WM_CHAR:
 	{
@@ -789,8 +672,8 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 			GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
 		break;
 		}
-		((KillTimerProc)KillTimer)(hWnd, 1);
-		((SetTimerProc)SetTimer)(hWnd, 1, (unsigned short)gCursorTimerInterval, 0);
+		KillTimer(hWnd, 1);
+		SetTimer(hWnd, 1, (unsigned short)gCursorTimerInterval, 0);
 		if (gCursorAnimMode == 1)
 			GetMouseObject()->SetCurrentCursorAnimFrame(0);
 		unk_E85274 = 0;
@@ -802,13 +685,13 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 		GetMouseObject()->SetButtons(4);
 		GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
 		if ((gButtonState & 0x42) == 0)
-			((ReleaseCaptureProc)ReleaseCapture)();
+			ReleaseCapture();
 		break;
 	case WM_RBUTTONUP:
 		GetMouseObject()->SetButtons(8);
 		GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
 		if ((gButtonState & 0x41) == 0)
-			((ReleaseCaptureProc)ReleaseCapture)();
+			ReleaseCapture();
 		break;
 	case WM_MBUTTONDOWN:
 		SetCapture(hWnd);
@@ -825,13 +708,13 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 		GetMouseObject()->SetButtons(0x80);
 		GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
 		if ((gButtonState & 3) == 0)
-			((ReleaseCaptureProc)ReleaseCapture)();
+			ReleaseCapture();
 		break;
 	case 0x20A: // WM_MOUSEWHEEL (not defined at this WINVER)
 		break;
 	case 0x2A3: // WM_MOUSELEAVE (not defined at this WINVER)
 		if ((gButtonState & 0x43) == 0)
-			((ReleaseCaptureProc)ReleaseCapture)();
+			ReleaseCapture();
 		gTrackingMouse = 0;
 		if (g_lhScreen.windowed)
 		{
@@ -851,8 +734,8 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 		}
 		break;
 	case WM_APP + 5:
-		((KillTimerProc)KillTimer)(hWnd, 1);
-		((SetTimerProc)SetTimer)(hWnd, 1, (unsigned short)gCursorTimerInterval, 0);
+		KillTimer(hWnd, 1);
+		SetTimer(hWnd, 1, (unsigned short)gCursorTimerInterval, 0);
 		break;
 	case WM_USER + 0x10:
 		if (wParam)
@@ -872,7 +755,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 		(*(WindowMessageHandler*)(*(int*)wParam + 80))(wParam, hWnd, lParam);
 		break;
 	case WM_APP + 6:
-		((KillTimerProc)KillTimer)(hWnd, 1);
+		KillTimer(hWnd, 1);
 		break;
 	case WM_APP + 9:
 		if ((unsigned char)unk_E8C0F8)
@@ -891,7 +774,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 				TrackMouseEvent(&gTrackMouseEvent);
 				gTrackingMouse = 1;
 			}
-			MouseMoveHandler((int)hWnd, lParam, ((GetMessageTimeProc)GetMessageTime)());
+			MouseMoveHandler((int)hWnd, lParam, GetMessageTime());
 		}
 		break;
 	case WM_APP + 7:
@@ -908,7 +791,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 		break;
 	}
 	sub_7DE8D0();
-	return ((DefWindowProcProc)DefWindowProcA)(hWnd, msg, wParam, lParam);
+	return DefWindowProcA(hWnd, msg, wParam, lParam);
 }
 
 // BW1W120 007e5af0 add the windowed-mode client offset to a coordinate. Inlined into

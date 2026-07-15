@@ -73,6 +73,27 @@ struct LHKeyboard
 	// BW1W120 007dcda0 ?SetKeyValue@LHKeyboard@@QAEHXZ
 	int SetKeyValue();
 };
+
+enum LH_KEY_SCAN_CODE
+{
+	LH_KEY_SCAN_LSHIFT = 42,
+	LH_KEY_SCAN_RSHIFT = 54,
+	LH_KEY_SCAN_EXTENDED_OFFSET = 0x80,
+	LH_KEY_SCAN_LCTRL = 29,
+	LH_KEY_SCAN_RCTRL = 157,
+	LH_KEY_SCAN_LALT = 56,
+	LH_KEY_SCAN_RALT = 184
+};
+
+enum LH_KEY_MODIFIER
+{
+	LH_KEY_MODIFIER_SHIFT = 0x10,
+	LH_KEY_MODIFIER_CTRL = 0x20,
+	LH_KEY_MODIFIER_ALT = 0x40
+};
+
+static const unsigned int LH_KEY_DATA_EXTENDED = 0x01000000;
+static const unsigned int LH_KEY_DATA_RELEASED = 0x80000000;
 static_assert(sizeof(LHKeyboard) == 0x234, "LHKeyboard is the wrong size");
 
 struct Q24slim5TbIME

@@ -10,6 +10,7 @@
 #define SM_MOUSEWHEELPRESENT 75 /* absent from the MSVC 6.0 SDK headers */
 #endif
 
+
 #include <Lionhead/LH3DLib/development/LHColor.h>
 #include <Lionhead/LH3DLib/development/LHCoord.h>
 #include <Lionhead/LH3DLib/development/LHRegion.h>
@@ -17,15 +18,8 @@
 #include <Lionhead/LHLib/ver5.0/LHMem.h>
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
 #include <Lionhead/LHLib/ver5.0/LHSurface.h>
+#include <Lionhead/LHLib/ver5.0/LHSystemGlobals.h>
 
-extern LHScreen  g_lhScreen;       // 0xE85050
-extern LHDraw    gLHDraw;          // 0xE8586C
-extern HINSTANCE g_hInstance;      // 0xE85040
-extern LHMouse   gMouse;           // 0xE85204
-extern uint8_t   gMouseWheelSkip;  // 0xC311A4
-extern uint8_t   gWindowedMode;    // 0xE8C0FA
-
-CRITICAL_SECTION     g_screenCritSec; // 0xE90650
 IDirectInputA*       gDirectInput;    // 0xE90668
 IDirectInputDeviceA* gMouseDevice;    // 0xE9066C
 
