@@ -3098,8 +3098,11 @@ Lionhead/LH3DLib/development/Glow.cpp:
 Lionhead/LH3DLib/development/LH3DStorm.cpp:
 	.text       start:0x0083F4E0 end:0x008404A0
 
+Lionhead/LH3DLib/development/LH3DSprite.cpp:
+	.text       start:0x008404A0 end:0x00841170
+
 Lionhead/LH3DLib/development/LH3DMath.cpp:
-	.text       start:0x00841230 end:0x00841260
+	.text       start:0x00841170 end:0x008412B0
 	.bss        start:0x00EEA394 end:0x00EEA398
 
 Lionhead/LH3DLib/development/LH3DMem.cpp:

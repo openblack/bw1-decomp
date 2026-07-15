@@ -6,6 +6,8 @@
 
 #include "LHPoint.h" /* For struct LHPoint */
 
+struct LHMatrix;
+
 struct LH3DSprite
 {
 	LHPoint  pos; /* 0x0 */
@@ -36,6 +38,10 @@ struct LH3DSprite
 	void Release();
 	// BW1W120 00840530 BW1M100 1002a870 LH3DSprite::Draw(void)
 	void Draw();
+	// BW1W120 00840c70 BW1M100 10142ac0 LH3DSprite::AddDrawing(void)
+	void AddDrawing();
+	// BW1W120 00840cc0 BW1M100 10142b40 LH3DSprite::DrawSpecial1(LHMatrix *)
+	void DrawSpecial1(LHMatrix* matrix);
 };
 
 #endif /* BW1_DECOMP_LH3D_SPRITE_INCLUDED_H */
