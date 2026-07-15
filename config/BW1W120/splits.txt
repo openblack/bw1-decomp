@@ -2670,7 +2670,11 @@ lib/libcmt/sprintf.obj:
 	.text       start:0x007C57D2 end:0x007C5824 align:1
 
 lib/libcmt/rtti.obj:
-	.text       start:0x007C5824 end:0x007C5874 align:1
+	.text       start:0x007C5824 end:0x007C5E49 align:1
+	.rdata      start:0x009A05C8 end:0x009A0698 align:4
+	.rdata$r    start:0x009BB898 end:0x009BB984 align:4
+	.xdata$x    start:0x009BE430 end:0x009BE4F0 align:4
+	.data       start:0x00C2D3C0 end:0x00C2D41C align:4
 
 lib/libcmt/toupper.obj:
 	.text       start:0x007C5E49 end:0x007C5F8C align:1
