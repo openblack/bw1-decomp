@@ -1316,6 +1316,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DOrientSprite.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LH3DLib/development/Glow.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DStorm.cpp", progress_category="sdk"),
+            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DSprite.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DMath.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DMem.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DWay.cpp", progress_category="sdk"),

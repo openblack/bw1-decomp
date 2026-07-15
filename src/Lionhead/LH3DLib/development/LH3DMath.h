@@ -1,6 +1,8 @@
 #ifndef BW1_DECOMP_LH3D_MATH_INCLUDED_H
 #define BW1_DECOMP_LH3D_MATH_INCLUDED_H
 
+struct LHPoint;
+
 struct LH3DMath
 {
 	// BW1W120 00eea394 BW1M100 101bca74
@@ -9,9 +11,15 @@ struct LH3DMath
 	// Static methods
 
 	// BW1W120 00841230 BW1M100 10061ed0 LH3DMath::Open(void)
-	void Open();
+	static void Open();
 	// BW1W120 00841240 BW1M100 10061ed0 LH3DMath::Free(void)
-	void Close();
+	static void Close();
+	// BW1W120 008411d0 LH3DMath::MakeInverseSqrtLookupTable(void)
+	static void MakeInverseSqrtLookupTable();
+	// BW1W120 00841290 LH3DMath::GetYAngle(LHPoint *)
+	static float GetYAngle(LHPoint* point);
+	// BW1W120 00841260 LH3DMath::GetYAngle(LHPoint *, LHPoint *)
+	static float GetYAngle(LHPoint* from, LHPoint* to);
 };
 
 // TODO: Judging by the function address, this is the wrong TU for this:
