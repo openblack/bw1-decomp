@@ -1,3 +1,4 @@
+#include "Lionhead/LH3DLib/development/LH3DRender.h"
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
 
 #include <stddef.h> /* For size_t */
@@ -29,10 +30,6 @@ void Report3D(const char* fmt, ...);
 int LHGetBits(unsigned long mask, unsigned char* scale, unsigned char* shift);
 
 // Peer LH subsystems (not yet decompiled).
-void LH3DRenderClose();
-void LH3DRenderOpen();
-void LH3DRenderOpenD3D();
-void LH3DRenderCloseD3D();
 int  LH3DRenderIsInit();
 void LH3DVRAMTexReleaseAll();
 void LH3DVRAMTexAllocAllVRAM();
@@ -46,7 +43,6 @@ int TurnOffMenu();
 // Fixed-address globals (MEMORY[...] in the dump).
 extern LHScreen           g_lhScreen;               // 0xE85050 the global LHScreen instance
 extern HWND               g_windowForScreen;        // 0xE8C0F4 HWND passed to SetMSWindowHandle
-extern int                g_d3dActive;              // 0xECA620 non-zero while D3D is running
 extern int                g_appMinimized;           // 0xE8C0FC
 extern CRITICAL_SECTION   g_screenCritSec;          // 0xE90650
 __declspec(dllimport) int LHAssertIgnoreAllAsserts; // assert-suppression flag
@@ -190,7 +186,7 @@ LHScreen::~LHScreen()
 	{
 		Report3D("LH3DMem: Bad release: %d allocations, %d mem!\n", unk_EF6548, unk_EF654C);
 	}
-	LH3DRenderClose();
+	LH3DRender::Close();
 	if (PClipper)
 	{
 		PClipper->Release();
@@ -600,13 +596,13 @@ int LHScreen::Open(uint16_t width, uint16_t height, uint8_t depth)
 		SetMSWindowHandle((OpaqueWindowPtr*)g_windowForScreen);
 		LHMouseInitDirectInput();
 	}
-	LH3DRenderClose();
+	LH3DRender::Close();
 	int result = ChangeMode(width, height, depth);
 	int v6 = result;
 	if (result != 3)
 	{
 		opened = 1;
-		LH3DRenderOpen();
+		LH3DRender::Open();
 		return v6;
 	}
 	return result;
@@ -615,10 +611,10 @@ int LHScreen::Open(uint16_t width, uint16_t height, uint8_t depth)
 // BW1W120 007ddcb0 LHScreen::ChangeMode(unsigned short, unsigned short, unsigned char)
 int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 {
-	if (g_d3dActive)
+	if (LH3DRender::b_open)
 	{
 		LH3DVRAMTexReleaseAll();
-		LH3DRenderCloseD3D();
+		LH3DRender::CloseD3D();
 	}
 	if (PDirectDraw)
 	{
@@ -721,9 +717,9 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 		}
 	}
 
-	if (g_d3dActive)
+	if (LH3DRender::b_open)
 	{
-		LH3DRenderOpenD3D();
+		LH3DRender::OpenD3D();
 		LH3DVRAMTexAllocAllVRAM();
 	}
 
