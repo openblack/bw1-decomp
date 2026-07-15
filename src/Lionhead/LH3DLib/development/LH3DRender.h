@@ -19,12 +19,23 @@ struct Vertex3D;
 
 struct LH3DRender
 {
-	static LHMatrix          g_d3d_view2proj;
-	static LHMatrix          g_d3d_world2view;
-	static uint32_t          UINT_ARRAY_00ec81f0[0x800];
-	static uint32_t          g_RenderStates[D3DRENDERSTATE_CLIPPLANEENABLE + 1];
-	static bool32_t          g_b_need_tilling;
-	static void*             g_set_render_mode_data;
+	// BW1W120 00eca624 BW1M100 101bcd28
+	static bool32_t b_need_init;
+	// BW1W120 00ec7fd0 BW1M100 102ca938
+	static LHMatrix g_d3d_view2proj;
+	// BW1W120 00ec8010 BW1M100 102ca978
+	static LHMatrix g_d3d_world2view;
+	// BW1W120 00ec81f0 BW1M100 102caa18
+	static uint32_t g_texture_stage_state[0x800];
+	// BW1W120 00eca1f0 BW1M100 102cca18
+	static uint32_t g_render_states[D3DRENDERSTATE_CLIPPLANEENABLE + 1];
+	// BW1W120 00ecA614 BW1M100 102cce18
+	static bool32_t g_b_need_tilling;
+	// BW1W120 00ecA618
+	static void* g_set_render_mode_data;
+	// BW1W120 00eca620 BW1M100 101bc5d8
+	static bool32_t b_open;
+	// BW1W120 00ecA638
 	static IDirect3DDevice7* Direct3DDevice7;
 
 	// BW1W120 0082f810 BW1M100 1002af30 LH3DRender::DrawTriangle(Vertex3D *, unsigned long, unsigned short *, unsigned long)
@@ -37,10 +48,16 @@ struct LH3DRender
 	static void SetD3DMatrix(D3DMATRIX* param_1, LHMatrix* param_2);
 	// BW1W120 0082b2d0 BW1M100 inlined LH3DRender::SetProjMatrix(D3DMATRIX *, D3DMATRIX *, float, float, float)
 	static void SetProjMatrix(D3DMATRIX* param_1, D3DMATRIX* projection, float near_plane, float far_plane, float fov);
+	// BW1W120 0082b3c0 BW1M100 100a7b00 LH3DRender::Open(void)
+	static bool32_t Open();
 	// BW1W120 0082b570 BW1M100 100a7970 LH3DRender::Close(void)
-	static int Close();
+	static bool32_t Close();
 	// BW1W120 0082b9c0 BW1M100 1002dbb0 LH3DRender::SetTextureStageState(unsigned long, D3DTEXTURESTAGESTATETYPE, unsigned long)
 	static int SetTextureStageState(uint32_t index, D3DTEXTURESTAGESTATETYPE type, uint32_t value);
+	// BW1W120 0082cd80 BW1M100 100a4fe0 LH3DRender::OpenD3D(void)
+	static bool32_t OpenD3D();
+	// BW1W120 0082d3f0 BW1M100 100a4eb0 LH3DRender::CloseD3D(void)
+	static bool32_t CloseD3D();
 	// BW1W120 0082f0e0 BW1M100 10013290 LH3DRender::StartFrame(void)
 	static void StartFrame();
 	// BW1W120 0082ff10 BW1M100 10046bbc LH3DRender::SetD3DTillingOn(int)
