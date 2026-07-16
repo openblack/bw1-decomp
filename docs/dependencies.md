@@ -13,10 +13,11 @@ Everything else is downloaded automatically by `configure.py` on first run:
 - MSVC 6.0 SP5 compilers — pulled at the version pinned in `configure.py`
 - `objdiff-cli` — diff report generator
 
-Two things are **not** downloaded and must be supplied by hand under `orig/` (see [Getting Started](getting_started.md)):
+Three things are **not** downloaded and must be supplied by hand under `orig/` (see [Getting Started](getting_started.md)):
 
 - MSVC 6.0 SP5 static CRT libs — `orig/libs/msvc6.5/libcmt.lib`, `orig/libs/msvc6.5/libcpmt.lib` (from `VC98\Lib`)
 - DirectX 7.0 DDK — headers in `orig/directx7.0/include/` and libs in `orig/directx7.0/lib/`
+- Intel Approximate Math Library — `orig/libs/amaths-2.0/amaths.lib` (linked verbatim for SSE `sin`/`cos`/`tan`/`atan`/`exp`/`log`/`pow`)
 
 Windows
 -------
