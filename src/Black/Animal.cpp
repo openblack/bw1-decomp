@@ -6,7 +6,7 @@ uint32_t Animal::KeepFlockMemberWithinFlockArea()
 {
 	MapCoords flockPos = flock->GetFlockPos();
 
-	if (PosWithinDomain(&coords, 1.0f) != 0)
+	if (PosWithinDomain(coords, 1.0f) != 0)
 	{
 		float distToFlock = GUtils::GetDistanceInMetres(flockPos, coords);
 		if (distToFlock <= (float)GetFlockDistance())
@@ -17,8 +17,8 @@ uint32_t Animal::KeepFlockMemberWithinFlockArea()
 
 	float     flockDistance = (float)GetFlockDistance();
 	MapCoords randomPos = CalcRandomPos(flockPos, 0.0f, flockDistance);
-	int       flockPosInDomain = PosWithinDomain(&flockPos, 1.0f);
-	int       randomPosInDomain = PosWithinDomain(&randomPos, 1.0f);
+	int       flockPosInDomain = PosWithinDomain(flockPos, 1.0f);
+	int       randomPosInDomain = PosWithinDomain(randomPos, 1.0f);
 	if (randomPosInDomain != 0 || flockPosInDomain == 0)
 	{
 		SetupMoveToPos(randomPos, ANIMAL_STATE_DECIDE_WHAT_TO_DO);

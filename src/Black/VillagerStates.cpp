@@ -1,8 +1,15 @@
 #include "VillagerStateTableInfo.h"
 
+#include <stdlib.h> /* For max */
+
+#include <Lionhead/LH3DLib/development/LH3DIsland.h>    /* For LH3DIsland */
+#include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
+#include <Lionhead/LH3DLib/development/LHPoint.h>       /* For struct LHPoint */
+
 #include "chlasm/Enum.h"
 
 #include "Abode.h"
+#include "ContainerInfo.h"
 #include "Game.h"
 #include "GameThing.h"
 #include "VillagerInfo.h"
@@ -13,6 +20,7 @@
 #include "Reaction.h"
 #include "StoragePit.h"
 #include "Town.h"
+#include "Utils.h"
 #include "Villager.h"
 
 // BW1W120 00db9e68
@@ -29,44 +37,40 @@ GBaseInfo* GVillagerStateTableInfo::GetBaseInfo(uint32_t& count)
 GVillagerStateTableInfo::~GVillagerStateTableInfo() {}
 
 // BW1W120 00769620
-// TODO: 86.6% — semantics verified. Both branches pass a by-value MapCoords temp
-// (GetArrivePos / GetResourceDropoffPos) as a const-ref arg alongside a constant state arg.
-// Target pushes the constant state first, then materialises the retbuf; ours hoists the
-// retbuf call ahead of the constant push. An isolated toy of this exact shape (POD *and*
-// copy-ctor MapCoords) matches the target, so the hoist is a whole-function register-pressure
-// interaction, not a local shape bug — revisit once a neighbour with the same retbuf-arg
-// pattern matches. See CHEATSHEET retbuf-arg-order.
 bool32_t Villager::GotoStoragePitForDropOff()
 {
 	if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional())
 	{
-		SetupMoveToOnFootpath(*GetStoragePit(), GetStoragePit()->GetArrivePos(),
-		                      VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_DROP_OFF);
+		MapCoords arrivePos = GetStoragePit()->GetArrivePos();
+		SetupMoveToOnFootpath(*GetStoragePit(), arrivePos, VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_DROP_OFF);
 		return true;
 	}
 	RESOURCE_TYPE resourceType;
 	GetResourceHeld(resourceType);
-	if (resourceType != RESOURCE_TYPE_FOOD && resourceType != RESOURCE_TYPE_WOOD)
+	if (resourceType == RESOURCE_TYPE_FOOD || resourceType == RESOURCE_TYPE_WOOD)
 	{
-		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
-		return false;
+		MapCoords dropoffPos = GetResourceDropoffPos(resourceType);
+		SetupMoveToWithHug(dropoffPos, VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_DROP_OFF);
+		return true;
 	}
-	SetupMoveToWithHug(GetResourceDropoffPos(resourceType), VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_DROP_OFF);
-	return true;
+	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+	return false;
 }
 
 // BW1W120 007696d0
+// TODO: GetResourceHeld should return a 32-bit type (target stores raw eax with no
+// widening); AreWeThere should return bool32_t (target tests full eax); push/lea
+// scheduling also differs
 bool32_t Villager::ArrivesAtStoragePitForDropOff()
 {
 	RESOURCE_TYPE resourceHeld;
-	int           held = GetResourceHeld(resourceHeld);
+	unsigned long held = GetResourceHeld(resourceHeld);
 	if (held)
 	{
 		StoragePit* storagePit = GetStoragePit();
 		if (storagePit != NULL && storagePit->IsFunctional())
 		{
-			unsigned long amount;
-			if (AtStructureAddResource(storagePit, resourceHeld, amount, false) == VILLAGER_STATE_GO_HOME)
+			if (AtStructureAddResource(storagePit, resourceHeld, held, false) == VILLAGER_STATE_GO_HOME)
 			{
 				return true;
 			}
@@ -75,23 +79,26 @@ bool32_t Villager::ArrivesAtStoragePitForDropOff()
 		}
 		if (GetTown() != NULL)
 		{
-			MapCoords  storePos;
-			GameThing* pot = (GameThing*)GetTown()->GetTemporaryResourceStorePotOrPos(coords, storePos, resourceHeld);
+			MapCoords storePos;
+			Object*   pot = (Object*)GetTown()->GetTemporaryResourceStorePotOrPos(Pos, storePos, resourceHeld);
 			if (pot != NULL)
 			{
-				if (!AreWeThere(&storePos, 0.0f))
+				if (AreWeThere(&storePos, 0.0f))
 				{
-					SetupMoveToWithHug(storePos, GetFinalState());
-					return true;
-				}
-				pot->AddResource(resourceHeld, held, NULL, false, NULL, 0);
-				if (resourceHeld == RESOURCE_TYPE_FOOD)
-				{
-					DropFood(held);
+					pot->AddResource(resourceHeld, held, NULL, false, NULL, 0);
+					if (resourceHeld == RESOURCE_TYPE_FOOD)
+					{
+						DropFood((unsigned short)held);
+					}
+					else
+					{
+						DropWood((unsigned short)held);
+					}
 				}
 				else
 				{
-					DropWood(held);
+					SetupMoveToWithHug(storePos, GetFinalState());
+					return true;
 				}
 			}
 		}
@@ -101,21 +108,20 @@ bool32_t Villager::ArrivesAtStoragePitForDropOff()
 }
 
 // BW1W120 00769830
-// TODO: 86.4% — state arg corrected to ARRIVES_AT_STORAGE_PIT_FOR_FOOD (was wrongly 0).
-// Residual is retbuf-arg-order (same as sibling GotoStoragePitForDropOff): target
-// materialises the GetArrivePos/GetResourceDropoffPos retbuf temp before pushing the
-// constant state arg; ours pushes the state first. Whole-function register-pressure
-// scheduler interaction — see CHEATSHEET retbuf-arg-order. Defer.
 bool32_t Villager::GotoStoragePitForFood()
 {
 	if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional())
 	{
-		SetupMoveToOnFootpath(*GetStoragePit(), GetStoragePit()->GetArrivePos(),
-		                      VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_FOOD);
+		MapCoords arrivePos = GetStoragePit()->GetArrivePos();
+		SetupMoveToOnFootpath(*GetStoragePit(), arrivePos, VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_FOOD);
 		return true;
 	}
-	SetupMoveToWithHug(GetResourceDropoffPos(RESOURCE_TYPE_FOOD), VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_FOOD);
-	return true;
+	else
+	{
+		MapCoords dropoffPos = GetResourceDropoffPos(RESOURCE_TYPE_FOOD);
+		SetupMoveToWithHug(dropoffPos, VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_FOOD);
+		return true;
+	}
 }
 
 // BW1W120 007698b0
@@ -126,21 +132,23 @@ bool32_t Villager::ArrivesAtStoragePitForFood()
 }
 
 // BW1W120 007698d0
+// TODO: the shared 0.001f constant is pooled in another unit's .rdata (byte-identical after
+// link); AreWeThere should return bool32_t (target tests full eax); push/lea scheduling
+// also differs
 bool32_t Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE resourceType, unsigned long amount,
                                                   VILLAGER_STATES arriveState, VILLAGER_STATES failState)
 {
-	if (amount != 0)
+	if (amount > 0)
 	{
 		if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional())
 		{
-			unsigned long take = amount;
 			if (amount >= GetStoragePit()->GetResource(resourceType))
 			{
-				take = GetStoragePit()->GetResource(resourceType);
+				amount = GetStoragePit()->GetResource(resourceType);
 			}
-			if (take != 0)
+			if (amount > 0)
 			{
-				uint32_t result = AtStructureRemoveResource(GetStoragePit(), resourceType, take, NULL);
+				uint32_t result = AtStructureRemoveResource(GetStoragePit(), resourceType, amount, NULL);
 				if (result == VILLAGER_STATE_GO_HOME)
 				{
 					return VILLAGER_STATE_GO_HOME;
@@ -157,27 +165,33 @@ bool32_t Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE resourceType, un
 		if (GetTown() != NULL)
 		{
 			MapCoords storePos;
-			Object*   pot = (Object*)GetTown()->GetTemporaryResourceStorePotOrPos(coords, storePos, resourceType);
+			Object*   pot = (Object*)GetTown()->GetTemporaryResourceStorePotOrPos(Pos, storePos, resourceType);
 			if (pot != NULL)
 			{
-				// TODO: float block — pot->GetNearestEdgeOfObject(this) returns a position by value
-				// (Rule 2; header currently void), converted to fixed-point LH3DMapCoords via *6553.6
-				// and *65536*0.1, then storePos.altitude -= LH3DIsland::GetAltitude(mapCoords).
-				if (!AreWeThere(&storePos, 0.0f))
+				LHPoint       edgePos = pot->GetNearestEdgeOfObject(this);
+				LH3DMapCoords lh3dCoords;
+				storePos.x = (int)(edgePos.x * 6553.6f);
+				storePos.z = (int)(edgePos.z * 6553.6f);
+				float fixedX = edgePos.x * 65536.0f;
+				float fixedZ = edgePos.z * 65536.0f;
+				lh3dCoords.x = (int)(fixedX * 0.001f);
+				lh3dCoords.z = (int)(fixedZ * 0.001f);
+				lh3dCoords.altitude = 0.0f;
+				storePos.altitude = edgePos.y - LH3DIsland::GetAltitude(lh3dCoords);
+				if (AreWeThere(&storePos, 0.0f))
 				{
-					SetupMoveToWithHug(storePos, GetFinalState());
-					return VILLAGER_STATE_GO_HOME;
-				}
-				// TODO: pot->RemoveResource(resourceType, amount, NULL, NULL) — vtable slot 0xa0, not on Object; needs concrete pot type
-				short carried = (short)pot->GetCarriedTreeType();
-				PickupResource(resourceType, carried, amount);
-				if (arriveState != VILLAGER_STATE_INVALID_STATE)
-				{
+					pot->RemoveResource(resourceType, amount, NULL, NULL);
+					PickupResource(resourceType, (short)amount, (unsigned char)pot->GetCarriedTreeType());
+					if (arriveState != VILLAGER_STATE_INVALID_STATE)
+					{
+						SetTopState(arriveState);
+						return true;
+					}
 					SetTopState(failState);
-					return true;
+					return false;
 				}
-				SetTopState(failState);
-				return false;
+				SetupMoveToWithHug(storePos, GetFinalState());
+				return VILLAGER_STATE_GO_HOME;
 			}
 		}
 	}
@@ -201,9 +215,29 @@ bool32_t Villager::ArrivesAtHomeWithFood()
 // BW1W120 00769b80
 bool32_t Villager::CheckTrader()
 {
-	if (football)
+	if (TradeTown == NULL)
 	{
 		return false;
+	}
+	float woodDesire = TradeTown->desire.field_0x168[TOWN_DESIRE_INFO_FOR_WOOD] +
+	                   TradeTown->desire.field_0xd4[TOWN_DESIRE_INFO_FOR_WOOD] +
+	                   TradeTown->desire.field_0x90[TOWN_DESIRE_INFO_FOR_WOOD];
+	float foodDesire = TradeTown->desire.field_0x168[TOWN_DESIRE_INFO_FOR_FOOD] +
+	                   TradeTown->desire.field_0xd4[TOWN_DESIRE_INFO_FOR_FOOD] +
+	                   TradeTown->desire.field_0x90[TOWN_DESIRE_INFO_FOR_FOOD];
+	if (foodDesire > woodDesire)
+	{
+		TargetThing = NULL;
+		VILLAGER_STATES state = (VILLAGER_STATES)CheckTraderPickUpOrDropOff(RESOURCE_TYPE_FOOD);
+		SetTopState(state);
+		return true;
+	}
+	if (woodDesire != 0.0f)
+	{
+		TargetThing = (GameThing*)1; // fabricated cast: the binary stores literal 1 into the pointer
+		VILLAGER_STATES state = (VILLAGER_STATES)CheckTraderPickUpOrDropOff(RESOURCE_TYPE_WOOD);
+		SetTopState(state);
+		return true;
 	}
 	return SetTraderNothingToDo();
 }
@@ -215,21 +249,82 @@ bool32_t Villager::CheckMissionary()
 }
 
 // BW1W120 00769c20
-bool32_t Villager::CheckTraderPickUpOrDropOff(RESOURCE_TYPE param_1)
+// TODO: our build computes `remainder` after the distance calls (target stores it first);
+// the target's distance calls land on the unnamed GetDistanceInMetres copy at 0x74cd70;
+// GetResourceHeld should return a 32-bit type
+bool32_t Villager::CheckTraderPickUpOrDropOff(RESOURCE_TYPE resourceType)
 {
-	return false;
+	MapCoords dropoffPos = GetResourceDropoffPos(resourceType);
+	Town*     town = GetTown();
+	SetTown(TradeTown);
+	MapCoords tradeDropoffPos = GetResourceDropoffPos(resourceType);
+	SetTown(town);
+	const GVillagerInfo* villagerInfo = (const GVillagerInfo*)info;
+	unsigned long        held = GetResourceHeld(resourceType);
+	float                fraction = (float)held / villagerInfo->MaxTraderFoodCarried;
+	float                remainder = 1.0f - fraction;
+	float                dropScore =
+		GUtils::GetDistanceModifier(GUtils::GetDistanceInMetres(Pos, tradeDropoffPos), 5000.0f) * fraction;
+	float pickScore = GUtils::GetDistanceModifier(GUtils::GetDistanceInMetres(Pos, dropoffPos), 5000.0f) * remainder;
+	return pickScore <= dropScore ? VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_TRADER_DROP_OFF
+	                              : VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_TRADER_PICK_UP;
 }
 
 // BW1W120 00769d20
+// TODO: GetResourceHeld should return a 32-bit type (the widening it forces perturbs the
+// float-conversion tails)
 bool32_t Villager::ArrivesAtStoragePitForTraderPickUp()
 {
-	return false;
+	RESOURCE_TYPE resourceType = (RESOURCE_TYPE)(int)TargetThing; // trader stashes the resource type in TargetThing
+	if (resourceType != RESOURCE_TYPE_FOOD && resourceType != RESOURCE_TYPE_WOOD)
+	{
+		return false;
+	}
+	float maxCarried;
+	if (resourceType == RESOURCE_TYPE_FOOD)
+	{
+		maxCarried = (float)((const GVillagerInfo*)info)->MaxTraderFoodCarried;
+	}
+	else
+	{
+		maxCarried = (float)((const GVillagerInfo*)info)->MaxTraderWoodCarried;
+	}
+	unsigned long held = GetResourceHeld(resourceType);
+	uint32_t      result =
+		ArrivesAtStoragePitForResource(resourceType, (unsigned long)(maxCarried - (float)held),
+	                                   VILLAGER_STATE_DECIDE_WHAT_TO_DO, VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+	if (result == 0)
+	{
+		return SetTraderNothingToDo();
+	}
+	return result;
 }
 
 // BW1W120 00769dc0
+// TODO: register allocation differs — target keeps the held counts in memory slots, ours
+// registerizes them
 bool32_t Villager::ArrivesAtStoragePitForTraderDropOff()
 {
-	return false;
+	Town* tradeTown = TradeTown;
+	Town* town = GetTown();
+	SetTown(tradeTown);
+	uint32_t woodHeld = (uint16_t)ResourceHeld[RESOURCE_TYPE_WOOD];
+	uint32_t foodHeld = (uint16_t)ResourceHeld[RESOURCE_TYPE_FOOD];
+	uint32_t result = ArrivesAtStoragePitForDropOff();
+	short    woodDropped = (short)(woodHeld - ResourceHeld[RESOURCE_TYPE_WOOD]);
+	short    foodDropped = (short)(foodHeld - ResourceHeld[RESOURCE_TYPE_FOOD]);
+	SetTown(town);
+	if (town != NULL)
+	{
+		town->stats.TotalWood -= woodDropped;
+		town->stats.TotalFood -= foodDropped;
+	}
+	if (tradeTown != NULL)
+	{
+		tradeTown->stats.TotalWood += woodDropped;
+		tradeTown->stats.TotalFood += foodDropped;
+	}
+	return result;
 }
 
 // BW1W120 00769ea0
@@ -276,6 +371,8 @@ bool32_t Villager::BreederDisciple()
 }
 
 // BW1W120 0076a220
+// TODO: needs GUtils::FindClosestAbode's declaration fixed (declared thiscall/void; really
+// cdecl returning Abode*) and Town::AddMissionary declared
 bool32_t Villager::MissionaryDisciple()
 {
 	return false;
@@ -299,23 +396,88 @@ bool32_t Villager::ExitBreeder(unsigned char state)
 }
 
 // BW1W120 0076a2f0
-uint32_t Villager::AtStructureRemoveResource(MultiMapFixed* param_1, RESOURCE_TYPE param_2, unsigned long param_3,
-                                             bool* param_4)
+// TODO: GetResourceNearestEdge dispatches through the wrong vtable slot (the Object.h
+// virtual list ends short of the real vtable); push/lea scheduling also differs
+uint32_t Villager::AtStructureRemoveResource(MultiMapFixed* structure, RESOURCE_TYPE resourceType, unsigned long amount,
+                                             bool* unused)
 {
-	return 0;
+	MapCoords workingPos;
+	workingPos = structure->GetResourceNearestEdge(resourceType, this, 1);
+	if (Pos.IsCloseToEqual(workingPos, GetRadius()) == 1)
+	{
+		int taken = (short)GetResourceFrom(structure, resourceType, (short)amount);
+		if (taken == 0)
+		{
+			return 0;
+		}
+		return taken < amount ? VILLAGER_STATE_GO_HOME : 1;
+	}
+	SetupMoveToWithHug(workingPos, GetFinalState());
+	return VILLAGER_STATE_GO_HOME;
 }
 
 // BW1W120 0076a3b0
-uint32_t Villager::AtStructureAddResource(MultiMapFixed* param_1, RESOURCE_TYPE param_2, unsigned long& param_3,
-                                          bool param_4)
+// TODO: needs the GPlayer helper at 0x64a9c0 (returns a GInterfaceStatus*) named and a
+// GPlayer class header — without it the player branch below is dead and collapses; same
+// GetResourceNearestEdge vtable-slot issue as AtStructureRemoveResource
+uint32_t Villager::AtStructureAddResource(MultiMapFixed* structure, RESOURCE_TYPE resourceType, unsigned long& amount,
+                                          bool unused)
 {
-	return 0;
+	MapCoords workingPos;
+	GPlayer*  player = GetPlayer();
+	if (player == structure->GetPlayer())
+	{
+		player = NULL;
+	}
+	GInterfaceStatus* status = NULL;
+	if (player != NULL)
+	{
+		// fabricated: should call the unnamed GPlayer helper at 0x64a9c0
+		status = NULL;
+	}
+	workingPos = structure->GetResourceNearestEdge(resourceType, this, 0);
+	if (Pos.IsCloseToEqual(workingPos, GetSpeedInMetres()) == 1)
+	{
+		uint32_t added = structure->AddResource(resourceType, amount, status, false, NULL, status != NULL);
+		if (added != 0)
+		{
+			DropResource(resourceType, (unsigned short)added);
+			amount = added;
+			return 1;
+		}
+		return 0;
+	}
+	SetupMoveToWithHug(workingPos, GetFinalState());
+	amount = 0;
+	return VILLAGER_STATE_GO_HOME;
 }
 
 // BW1W120 0076a4c0
 bool32_t Villager::SetDying()
 {
-	return false;
+	Town* town = GetTown();
+	if ((status & 1) != 1)
+	{
+		SetLife(0.0f);
+		SetTopState(VILLAGER_STATE_DYING);
+		status |= 1;
+		DeleteDependancys();
+		status |= 0x30;
+	}
+	if (town != NULL && town->field_0x748 != 0 && ((MultiMapFixed*)town->field_0x748)->IsFunctional())
+	{
+		TurnsUntilNextStateChange = (int16_t)((const GVillagerInfo*)info)->DyingTimeWithGraveyard;
+	}
+	else
+	{
+		TurnsUntilNextStateChange = (int16_t)((const GVillagerInfo*)info)->DyingTimeWithoutGraveyard;
+	}
+	if (!(Flags & 0x40))
+	{
+		GGame::g_game->data.field_0x24--;
+		Flags |= 0x40;
+	}
+	return true;
 }
 
 // BW1W120 0076a570
@@ -353,9 +515,16 @@ bool32_t Villager::Drowning()
 }
 
 // BW1W120 0076a7e0
+// TODO: the max() macro double-evaluates both arms, baking GameRand __FILE__/__LINE__ into
+// several calls — cannot match in a split TU
 bool32_t Villager::MakeScaredStiff()
 {
-	return false;
+	TurnsUntilNextStateChange = (int16_t)max(
+		(float)(uint32_t)GRand::GameRand(((const GVillagerInfo*)info)->ScaredStiffTime, __FILE__, __LINE__),
+		GRand::GameFloatRand(5.0f, __FILE__, __LINE__) + 10.0f);
+	SetTopState(VILLAGER_STATE_SCARED_STIFF);
+	ScaredStiff();
+	return true;
 }
 
 // BW1W120 0076a8b0
@@ -442,7 +611,11 @@ bool32_t Villager::EnterSex(unsigned char param_1, unsigned char param_2)
 }
 
 // BW1W120 0076acf0
-bool32_t Villager::SetupWander(JustWholeMapXZ& param_1, VILLAGER_STATES param_2)
+// TODO: needs GUtils::AddDistanceFromAngle declared (its target symbol is thiscall but the
+// body is cdecl) and the JustWholeMapXZ class/struct keyword reconciled with the MapCoords
+// ctor; GameRand __FILE__/__LINE__ cannot match in a split TU (same blockers as
+// SetupNewScriptWander in VillagerScript.cpp)
+bool32_t Villager::SetupWander(JustWholeMapXZ& wander_area, VILLAGER_STATES state)
 {
 	return false;
 }
@@ -583,7 +756,30 @@ bool32_t Villager::GoAndChilloutOutsideHome()
 // BW1W120 0076b4e0
 bool32_t Villager::SitAndChillout()
 {
-	return false;
+	uint32_t turns = (uint16_t)TurnsUntilNextStateChange;
+	TurnsUntilNextStateChange = turns - 1;
+	if ((int16_t)turns > 0)
+	{
+		return true;
+	}
+	TurnsUntilNextStateChange = 0;
+	Town* town = GetTown();
+	if (town != NULL && town->IsInStateOfEmergency())
+	{
+		SetTopState(VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY);
+		return true;
+	}
+	if (CheckNeededForSomething())
+	{
+		return true;
+	}
+	if (GRand::GameRand(10, __FILE__, __LINE__) == 0)
+	{
+		SetupNothingToDo();
+		return true;
+	}
+	TurnsUntilNextStateChange = ((const GVillagerInfo*)info)->SubsequentChillOutTime;
+	return true;
 }
 
 // BW1W120 0076b570
@@ -598,9 +794,21 @@ bool32_t Villager::EnterSitAndChillOut(unsigned char param_1, unsigned char para
 }
 
 // BW1W120 0076b590
+// TODO: the target passes the member-function pointer in the 16-byte general representation
+// (/vmg); our build uses the 4-byte single-inheritance one. The cast bridges
+// GetChillOutPos's int/uint return mismatch.
 bool32_t Villager::GoAndChilloutInTown()
 {
-	return false;
+	Town* town = GetTown();
+	if (town != NULL)
+	{
+		MapCoords congregationPos = town->GetCongregationPos();
+		GetMeToMyChillOutPos((int (Villager::*)(MapCoords&))&Villager::GetChillOutPos, congregationPos,
+		                     town->info->field_0x140, congregationPos);
+		return true;
+	}
+	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+	return true;
 }
 
 // BW1W120 0076b610

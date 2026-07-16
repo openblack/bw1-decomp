@@ -82,11 +82,9 @@ template <> float __stdcall POWER<2>(float base)
 }
 
 // BW1W120 0075bba0
-void Villager::GetDesireForLife()
+float Villager::GetDesireForLife()
 {
-	// TODO: target has no fstp cleanup after the call (leaks GetLifeDesireFromLife's return on
-	// the FPU stack); ours emits fstp st(0). See idiom fpu-leak-void-return in CHEATSHEET.md.
-	GetLifeDesireFromLife(GetLife());
+	return GetLifeDesireFromLife(GetLife());
 }
 
 // BW1W120 0075bbc0

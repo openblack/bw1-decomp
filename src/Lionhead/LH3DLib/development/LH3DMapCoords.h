@@ -4,6 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t */
 
+// fabricated
+typedef int32_t LH3DMapCoordsFull;
+
 struct LH3DMapCoords
 {
 	LH3DMapCoordsFull x; /* 0x0 */

@@ -7,6 +7,7 @@
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 #include <re_common.h>                            /* For bool32_t */
 
+#include "MapCoords.h"    /* For struct MapCoords */
 #include "MobileObject.h" /* For struct MobileObject */
 
 // Forward Declares
@@ -25,22 +26,20 @@ class Town;
 class Ball : public MobileObject
 {
 public:
-	uint32_t field_0x68;
-	LHPoint  field_0x6c;
-	LHPoint  field_0x78;
-	uint32_t field_0x84;
-	uint32_t field_0x88;
-	uint32_t field_0x8c;
-	bool32_t IsOwned; /* 0x90 */
-	uint32_t field_0x94;
-	uint32_t field_0x98;
-	uint32_t field_0x9c;
-	Town*    town; /* 0xa0 */
-	uint32_t field_0xa4;
-	uint32_t field_0xa8;
-	uint32_t field_0xac;
-	uint32_t field_0xb0;
-	uint32_t field_0xb4;
+	uint32_t  field_0x68;
+	LHPoint   field_0x6c;
+	LHPoint   field_0x78;
+	MapCoords Destination; /* 0x84 -- where the ball was last kicked at */
+	bool32_t  IsOwned;     /* 0x90 */
+	uint32_t  field_0x94;
+	uint32_t  field_0x98;
+	uint32_t  field_0x9c;
+	Town*     town; /* 0xa0 */
+	uint32_t  field_0xa4;
+	uint32_t  field_0xa8;
+	uint32_t  field_0xac;
+	uint32_t  field_0xb0;
+	uint32_t  field_0xb4;
 
 	// Override methods
 
@@ -84,6 +83,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00435c40 Ball::KickBallAtDestination(MapCoords const &, float, int)
+	void KickBallAtDestination(const MapCoords& destination, float speed, int flag);
 	// BW1W120 004360e0 BW1M100 100b04d0 Ball::IsBallFree(void)
 	bool IsBallFree();
 };

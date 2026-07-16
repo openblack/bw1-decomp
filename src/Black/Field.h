@@ -122,7 +122,7 @@ public:
 	// BW1W120 00528a30 BW1M100 100d4a10 Field::GetMeshRadius( const(void))
 	virtual float GetMeshRadius();
 	// BW1W120 0052a0a0 BW1M100 100d1b50 Field::ReduceLife(float, GPlayer *)
-	virtual void ReduceLife(float param_1, GPlayer* param_2);
+	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0052a050 BW1M100 100d1c00 Field::ReduceLifeDueToBurning(float, GPlayer *)
 	virtual void ReduceLifeDueToBurning(float param_1, GPlayer* param_2);
 	// BW1W120 005288d0 BW1M100 100d4d30 Field::GetFireGPHXDrawn(bool *, bool *, bool *, bool *)

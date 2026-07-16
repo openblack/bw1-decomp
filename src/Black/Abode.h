@@ -166,7 +166,7 @@ public:
 	// BW1W120 00402cf0 BW1M100 101c66a0 Abode::GetPSysFireLocalRndFlamePos(LHPoint *, long *)
 	virtual bool GetPSysFireLocalRndFlamePos(LHPoint* point, int* param_2);
 	// BW1W120 00405d90 BW1M100 10097be0 Abode::ReduceLife(float, GPlayer *)
-	virtual void ReduceLife(float value, GPlayer* player);
+	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00405ed0 BW1M100 10112270 Abode::IncreaseLife(float)
 	virtual void IncreaseLife(float value);
 	// BW1W120 00403f80 BW1M100 10573770 Abode::DestroyedByEffect(GPlayer *, float)
@@ -311,7 +311,7 @@ public:
 	// BW1W120 00405fb0 BW1M100 1009fda0 Abode::LeaveHome(void)
 	void LeaveHome();
 	// BW1W120 00405fc0 BW1M100 100cd2d0 Abode::GetNearestWaterPos(MapCoords &)
-	bool GetNearestWaterPos(MapCoords& coords);
+	bool32_t GetNearestWaterPos(MapCoords& coords);
 	// BW1W120 00406640 BW1M100 10172a50 Abode::ApplyEffectsDueToPhysicalDestruction(Object *, GPlayer *)
 	void ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player);
 	// BW1W120 004069c0 BW1M100 1036ee00 Abode::FindVillager(int (*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, unsigned long), SCRIPT_OBJECT_TYPE, unsigned long)

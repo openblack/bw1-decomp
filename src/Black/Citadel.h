@@ -86,6 +86,8 @@ public:
 	void* AddTown(Town* town);
 	// BW1W120 00463190 BW1M100 101b9570 Citadel::FindTribeWorshipSite(const GTribeInfo*)
 	WorshipSite* FindTribeWorshipSite(const GTribeInfo* tribe_info);
+	// BW1W120 004631d0 Citadel::FindOrCreateWorshipSite(Town *)
+	WorshipSite* FindOrCreateWorshipSite(Town* town);
 	// BW1W120 00463220 BW1M100 101b9420 Citadel::FindOrCreateWorshipSite(GTribeInfo const *)
 	WorshipSite* FindOrCreateWorshipSite(const GTribeInfo* tribe_info);
 	// BW1W120 004633f0 BW1M100 101b9070 Citadel::RequestANewWorshipSite(GTribeInfo const *)

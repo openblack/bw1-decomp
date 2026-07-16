@@ -125,7 +125,7 @@ public:
 	// BW1W120 007519e0 BW1M100 1056df60 GVillagerInfo::GetInfoFromText(char *)
 	static int GetInfoFromText(char* text);
 	// BW1W120 00752650 BW1M100 1056be30 GVillagerInfo::Find(TRIBE_TYPE, VILLAGER_NUMBER)
-	static GVillagerInfo* Find(TRIBE_TYPE type, int villager_number);
+	static GVillagerInfo* Find(TRIBE_TYPE type, VILLAGER_NUMBER villager_number);
 };
 
 #endif /* BW1_DECOMP_VILLAGER_INFO_INCLUDED_H */

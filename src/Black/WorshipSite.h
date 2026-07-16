@@ -49,7 +49,9 @@ public:
 	int                          field_0xd8;
 	WorshipTotem*                totem;
 	LHListHead<WorshipSpellIcon> IconList; /* 0xe0 */
-	uint8_t                      field_0xe8[0x2c];
+	uint8_t                      field_0xe8[0x1c];
+	float                        ChantDamage; /* 0x104 */
+	uint8_t                      field_0x108[0xc];
 	float                        field_0x114;
 	float                        field_0x118;
 	float                        field_0x11c;
@@ -142,7 +144,7 @@ public:
 	// BW1W120 0077c120 BW1M100 105b0620 WorshipSite::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 	// BW1W120 0077dc90 BW1M100 105ac5f0 WorshipSite::GetNearestEdgeOfObject(Object *)
-	virtual void GetNearestEdgeOfObject(Object* param_1);
+	virtual LHPoint GetNearestEdgeOfObject(Object* object);
 	// BW1W120 0077e460 BW1M100 inlined WorshipSite::GetResourceDropPosForComputerPlayer(MapCoords *)
 	virtual void GetResourceDropPosForComputerPlayer(MapCoords* param_1);
 	// BW1W120 0077bdd0 BW1M100 105b10a0 WorshipSite::IsBuilt(void)
@@ -154,7 +156,7 @@ public:
 	// BW1W120 0077c5d0 BW1M100 105afeb0 WorshipSite::GetResourcePos(RESOURCE_TYPE, long)
 	virtual MapCoords GetResourcePos(RESOURCE_TYPE type, int index);
 	// BW1W120 0077c6d0 BW1M100 105afb90 WorshipSite::GetResourceNearestEdge(RESOURCE_TYPE, Object *, int)
-	virtual MapCoords* GetResourceNearestEdge(MapCoords* param_1, RESOURCE_TYPE param_2, Object* param_3, int param_4);
+	virtual MapCoords GetResourceNearestEdge(RESOURCE_TYPE type, Object* object, int index);
 	// BW1W120 0077ae10 BW1M100 105b2d80 WorshipSite::RemovePotFromStructure(PotStructure *)
 	virtual void RemovePotFromStructure(PotStructure* param_1);
 
@@ -164,6 +166,10 @@ public:
 	MapCoords* GetSpellIconPosFromSlot(MapCoords* coords, uint32_t slot, float angle);
 	// BW1W120 0077b080 BW1M100 105b26e0 WorshipSite::GetSpellIconPos(short &)
 	MapCoords* GetSpellIconPos(MapCoords* coords, int16_t* slot);
+	// BW1W120 0077bdb0 WorshipSite::GetFood(void)
+	int GetFood();
+	// BW1W120 0077c4d0 WorshipSite::RemoveFromFoodOnTheWay(unsigned int)
+	void RemoveFromFoodOnTheWay(uint32_t amount);
 	// BW1W120 0077c430 BW1M100 105b01e0 WorshipSite::AddSpellIcon(WorshipSpellIcon *)
 	void AddSpellIcon(WorshipSpellIcon* icon);
 	// BW1W120 0077c910 BW1M100 105af7f0 WorshipSite::AddTownSpells(Town *)

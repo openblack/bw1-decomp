@@ -16,6 +16,7 @@ class GPlayer;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
+class Living;
 struct MapCoords;
 class Object;
 
@@ -78,6 +79,11 @@ public:
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 005fc4a0 BW1M100 103b04c0 MagicTeleport::IsSolidToNewAbode(void)
 	virtual uint32_t IsSolidToNewAbode();
+
+	// Non-virtual methods
+
+	// BW1W120 005fc790 MagicTeleport::DoTeleport(Living *, bool)
+	void DoTeleport(Living* living, bool force);
 };
 
 #endif /* BW1_DECOMP_MAGIC_TELEPORT_INCLUDED_H */
