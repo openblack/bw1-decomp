@@ -384,7 +384,7 @@ public:
 	// BW1W120 00417070 BW1M100 inlined Living::IsStateForInterface( const(VILLAGER_STATES))
 	virtual bool IsStateForInterface(VILLAGER_STATES state);
 	// BW1W120 00473e80 BW1M100 inlined Living::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
-	virtual bool IsStateExitFunctionSameAs(VILLAGER_STATES state) const;
+	virtual bool32_t IsStateExitFunctionSameAs(VILLAGER_STATES state) const;
 	// BW1W120 005ecaa0 BW1M100 inlined Living::IsDeathState( const(VILLAGER_STATES))
 	virtual bool IsDeathState(VILLAGER_STATES state);
 	// BW1W120 005ed2b0 BW1M100 10380650 Living::DebugShowTime(unsigned long, unsigned char, unsigned char)
@@ -587,7 +587,7 @@ public:
 	// BW1W120 005ec340 BW1M100 10382c10 Living::MoveByTeleport(MapCoords const &)
 	virtual void MoveByTeleport(const MapCoords* param_1);
 	// BW1W120 00417270 BW1M100 10130570 Living::IsDead(void)
-	virtual bool IsDead();
+	virtual bool32_t IsDead();
 	// BW1W120 00473ed0 BW1M100 101e36f0 Living::IsChild(void)
 	virtual bool32_t IsChild();
 	// BW1W120 005f2160 BW1M100 103864c0 Living::GetFleeingPositionFromMovingObject(MapCoords *, GameThingWithPos *, float)

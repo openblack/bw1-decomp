@@ -87,7 +87,7 @@ public:
 	// BW1W120 00561120 BW1M100 10543dc0 TotemStatue::HandShouldFeelWithMeshIntersect(void)
 	virtual uint32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 00737c90 BW1M100 10545510 TotemStatue::ReduceLife(float, GPlayer *)
-	virtual void ReduceLife(float param_1, GPlayer* param_2);
+	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00737c60 BW1M100 105455d0 TotemStatue::IncreaseLife(float)
 	virtual void IncreaseLife(float param_1);
 	// BW1W120 00737f40 BW1M100 10077f00 TotemStatue::Process(void)

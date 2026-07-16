@@ -18,7 +18,8 @@ exactly ONE assigned unit. Your task prompt names the unit and your agent name.
    the demangled signature, and call sites) — do NOT leave `param_1`/`param_2` in
    code you author. Only fall back to `param_N` when the meaning is genuinely
    unclear. Rename in your `.cpp` definitions; the dispatcher syncs the header
-   declarations (don't edit the shared header just for a param name).
+   declarations (don't edit the shared header just for a param name). Never use
+   `goto` — a block-order mismatch is a tie-break to TODO, not a reason for labels.
 4. Hard limits: 12 build-diff cycles per function, then log `deferred` with
    notes and move on. Never edit configure.py, symbols.txt, splits.txt, or
    another unit's .cpp. Struct-layout changes are not yours — log the need,

@@ -58,20 +58,23 @@ struct MapCoords
 	// BW1W120 006031d0 BW1M100 10324c60 MapCoords::MapCoords(char *)
 	MapCoords(const char* str);
 	// BW1W120 inlined BW1M100 inlined MapCoords::MapCoords(MapCoords const &)
-	MapCoords(const MapCoords* other);
+	// fabricated
+	MapCoords(const MapCoords& other) : x(other.x), z(other.z), altitude(other.altitude) {}
+	// BW1W120 00603030 MapCoords::MapCoords(JustWholeMapXZ *)
+	MapCoords(JustWholeMapXZ* xz);
 	// BW1W120 00603160 BW1M100 1006a450 MapCoords::MapCoords(LHPoint const &)
-	MapCoords(const LHPoint* point);
+	MapCoords(const LHPoint& point);
 
 	// Non-virtual methods
 
 	// BW1W120 00602880 BW1M100 10569c60 MapCoords::ConvertToText(char *)
 	char* ConvertToText(char* buff);
 	// BW1W120 006042c0 BW1M100 100499f0 MapCoords::InBounds(void) const
-	bool32_t InBounds();
+	bool32_t InBounds() const;
 	// BW1W120 006053c0 BW1M100 100028d0 MapCoords::IsCloseToEqual(const MapCoords&, float) const
 	bool32_t IsCloseToEqual(const MapCoords& other, float epsilon) const;
 	// BW1W120 00605410 BW1M100 1001fb00 MapCoords::operator+=(MapCoords const &)
-	MapCoords* operator+=(const MapCoords& other);
+	void operator+=(const MapCoords& other);
 	// BW1W120 00605470 BW1M100 100494b0 MapCoords::operator+=(JustMapXZ const &)
 	// NOTE: mangled ??YMapCoords@@QAEXABUJustMapXZ@@@Z proves void return, non-const (Rule 1);
 	// zero existing call sites depend on the old (wrong) MapCoords* / const signature.
@@ -97,19 +100,22 @@ struct MapCoords
 	// BW1W120 00603dc0 BW1M100 101c2c00 MapCoords::IsSuitableForFixed(Game3DObject *) const
 	void IsSuitableForFixed(Game3DObject* object);
 	// BW1W120 006045c0 BW1M100 100195c0 MapCoords::FindType(OBJECT_TYPE, Object *) const
-	Object* FindType(OBJECT_TYPE type, Object* object);
+	Object* FindType(OBJECT_TYPE type, Object* object) const;
 	// BW1W120 00605660 BW1M100 10087b50 MapCoords::operator==(MapCoords const &) const
 	// NOTE: mangled ??8MapCoords@@QBEIABU0@@Z proves const MapCoords& + const method (Rule 1);
 	// zero existing call sites depend on the old (wrong) pointer signature.
 	bool32_t operator==(const MapCoords& other) const;
 	// BW1W120 00605c40 BW1M100 1004ff00 MapCoords::GetLHPoint(void) const
-	LHPoint* GetLHPoint(LHPoint* point);
+	LHPoint GetLHPoint() const;
+	// BW1W120 00605cd0 MapCoords::GetDistanceInMetres(MapCoords const &) const
+	// TODO: fabricated name
+	float GetDistanceInMetres(const MapCoords& other) const;
 	// BW1W120 00605fb0 BW1M100 10032290 MapCoords::GetMetresDistanceSq(MapCoords const &) const
 	float GetMetresDistanceSq(MapCoords* param_2);
 	// BW1W120 inlined BW1M100 100e62c0 MapCoords::operator=(MapCoords const &)
 	MapCoords* operator=(const MapCoords* other);
 	// BW1W120 inlined BW1M100 1004a1d0 MapCoords::Altitude(void) const
-	float Altitude();
+	float Altitude() const { return altitude; }
 	// BW1W120 00603490 BW1M100 105a3bb0 MapCoords::GetFirstObjectMobile(void) const
 	Object* GetFirstObjectMobile();
 	// BW1W120 006056b0 BW1M100 10557130 MapCoords::__ne(MapCoords const &) const

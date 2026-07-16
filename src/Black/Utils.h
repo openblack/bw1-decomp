@@ -41,7 +41,9 @@ struct GUtils
 	// BW1W120 0074f540 BW1M100 100027c0 GUtils::GetIncrementSpiralSizeFromRadius(float, float)
 	static int GetIncrementSpiralSizeFromRadius(float param_1, float param_2);
 	// BW1W120 0074d420 BW1M100 1010b7d0 GUtils::GetXByAngleMetersDistance(unsigned short, float)
-	static void GetXByAngleMetersDistance(unsigned short param_1, float param_2);
+	static int GetXByAngleMetersDistance(unsigned short angle, float distance);
+	// BW1W120 0074d450 GUtils::GetZByAngleMetersDistance(unsigned short, float)
+	static int GetZByAngleMetersDistance(unsigned short angle, float distance);
 	// BW1W120 0074ce10 BW1M100 103cac30 GUtils::FastDistance(MapCoords const &, MapCoords const &)
 	static int FastDistance(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074ecc0 BW1M100 10109320 GUtils::GetMidPoint(MapCoords &, MapCoords &, float)

@@ -153,7 +153,7 @@ public:
 	// BW1W120 00417590 BW1M100 inlined Animal::IsScriptInterruptableState( const(VILLAGER_STATES))
 	virtual bool IsScriptInterruptableState(uint8_t state);
 	// BW1W120 0041b100 BW1M100 inlined Animal::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
-	virtual bool IsStateExitFunctionSameAs(uint8_t state);
+	virtual bool32_t IsStateExitFunctionSameAs(uint8_t state);
 	// BW1W120 0041b1c0 BW1M100 101665d0 Animal::DebugShowTime(unsigned long, unsigned char, unsigned char)
 	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 00419bc0 BW1M100 10168630 Animal::IsInterestedInFoodObject(Object *)

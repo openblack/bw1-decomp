@@ -110,6 +110,23 @@ unit with match %.
   `list_*`, `search_*`). Do not rename/retype anything in the shared Ghidra DB.
 - Style: AGENTS.md conventions — args `snake_case`, locals `camelCase`, members
   `PascalCase`, no C++11, `NULL` not `nullptr`. Copy the surrounding file's look.
+  **Never use `goto`** — not even to force the target's block ordering; that is a
+  block-ordering tie-break: keep the best natural if/else shape, TODO the residual.
+- **Comment hygiene (code is for the game's engineers, not the campaign):**
+  - Never mention symbols.txt, manglings, "Rule 1/2", proofs, percentages,
+    the dispatcher, the ledger, or your own attempts in code comments. That
+    detail goes in `vsm.py log --notes`; code keeps at most one terse
+    `// TODO:` phrased about the code ("incorrect return type", "block
+    ordering differs", "needs helper at 0xNNNNNN named").
+  - No notes about other classes in a class's header; state what a member IS
+    or nothing. Where a field's meaning is established, RENAME it (PascalCase)
+    instead of commenting on `field_0xNN`.
+  - Every declaration you add or touch keeps its full
+    `// BW1W120 <addr> BW1M100 <addr> <sig>` line and named parameters.
+  - Never invent types/enums from a mangling you constructed yourself — real
+    names come from the Mac symbols; use the simplest expressible type instead.
+  - Don't invent public container types (check src/Lionhead for existing ones);
+    never name anything "DLL".
 - Log **every** attempt (`matched` / `improved` / `deferred`). The ledger is the
   campaign's shared memory; an unlogged discovery is a lost discovery.
 - **Never `git stash` / `git reset` / `git checkout` in the worktree.** Parallel

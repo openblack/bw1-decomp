@@ -28,4 +28,13 @@ struct LandCell
 	bool IsWater();
 };
 
+class LH3DIsland
+{
+public:
+	// Static methods
+
+	// BW1W120 00803090 LH3DIsland::GetAltitude(LH3DMapCoords const &)
+	static float __fastcall GetAltitude(const LH3DMapCoords& coords);
+};
+
 #endif /* BW1_DECOMP_LH3D_ISLAND_INCLUDED_H */

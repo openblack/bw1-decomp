@@ -2,30 +2,22 @@
 
 #include "Football.h"
 
-// TODO: deferred cluster (crt_xc_fn_atexitCleanupReg_VillagerPlaytime_00763080 [44B],
-// crt_xc_fn_secsPerYear_VillagerPlaytime_007630B0 [5B jmp-stub], and the FUN_007630c0 body below),
-// plus the 3 .rdata float consts and 1 .bss float -- same systemic pattern as
-// VillagerTrader.cpp/VillagerScript.cpp (see those files for the full writeup).
-// Summary of what's confirmed vs. still open:
-//  - VALUES confirmed from raw .rdata bytes: 10.0f (@0x99a9c0, UNREFERENCED per Ghidra xrefs),
-//    365.25f (num_days_in_year @0x99a9c4), 86400.0f (seconds_in_day @0x99a9c8).
-//  - FUN_007630c0's operand order confirmed: fld seconds_in_day; fmul num_days_in_year; fstp -> a
-//    private .bss float (0xdb9e2c, owned by this TU per splits.txt, zero further xrefs -- likely
-//    vestigial/dead). Reproduced exactly below EXCEPT for symbol identity (next point).
-//  - BLOCKED: target's real symbol for the init function is `?FUN_007630c0@Villager@@QAEXXZ` --
-//    a genuine __thiscall Villager:: member mangling (public, non-virtual, void, no args), NOT the
-//    anonymous `_$E9`/`_$S11`-style compiler-synthesized initializer a plain file-scope (or even
-//    non-member `const`) global produces. This strongly implies NumDaysInYear/SecondsInDay/
-//    SecondsPerYear are actually `static` DATA MEMBERS of Villager (MSVC6 mangles a static member's
-//    dynamic-initializer helper as a class-scoped thiscall function) -- a Villager.h change with
-//    naming implications shared by other TUs; deferring rather than guessing.
-const float VillagerPlaytimeUnknown10 = 10.0f;
-const float VillagerPlaytimeNumDaysInYear = 365.25f;
-const float VillagerPlaytimeSecondsInDay = 86400.0f;
+// TODO: static-init cluster — the 44-byte atexit-registration fragment at 0x763080 and the
+// 5-byte initializer jmp-thunk at 0x7630b0 are compiler-generated and cannot be authored
+// from source.
+extern "C" const float villager_playtime_float10p0_0x0099a9c0 = 10.0f;
+extern "C" const float villager_playtime_num_days_in_year_0x0099a9c4 = 365.25f;
+extern "C" const float villager_playtime_seconds_in_day_0x0099a9c8 = 86400.0f;
 
-// BW1W120 007630c0 Villager::FUN_007630c0(void) -- see TODO above; kept as a fabricated file-scope
-// approximation (correct values/operand order, wrong symbol identity) for the next pass.
-static float VillagerPlaytimeSecondsPerYear = VillagerPlaytimeSecondsInDay * VillagerPlaytimeNumDaysInYear;
+// Seconds per game year (365.25 * 86400); written only by FUN_007630c0 below, never read.
+static float VillagerPlaytimeSecondsPerYear;
+
+// BW1W120 007630c0 Villager::FUN_007630c0(void)
+void Villager::FUN_007630c0()
+{
+	VillagerPlaytimeSecondsPerYear =
+		villager_playtime_num_days_in_year_0x0099a9c4 * villager_playtime_seconds_in_day_0x0099a9c8;
+}
 
 // BW1W120 007630e0 BW1M100 1058c1c0 Villager::IsPlaytime(void)
 bool Villager::IsPlaytime()
@@ -119,23 +111,17 @@ bool32_t Villager::FootballWatchMatch()
 }
 
 // BW1W120 00763280 BW1M100 1058bbe0 Villager::ExitFootball(unsigned char)
-// TODO: deferred (partial) -- blocked on two UNNAMED Football methods (blocker #4, needs naming):
-//   fn_005325D0 (Football+0x224/+0x22c intrusive linked lists, thiscall(Villager*) -> bool32_t;
-//     removes this villager from what look like attacker/defender lists, uses operator_delete)
-//   fn_005326E0 (Football+0x25c, a 40-entry Villager* array, thiscall(Villager*) -> bool32_t;
-//     linear scan removing this villager and decrementing a count at +0x218 -- a spectator list?)
-// Full logic once those are named:
-//   Football* football = GetFootball();
-//   if (football->field_0x254 == this)       // some "current <role>" Villager* slot on Football
-//       football->field_0x254 = NULL;
-//   if (football->fn_005325D0(this) != 1)
-//       football->fn_005326E0(this);
-// This TODO block sits between the state-exit bail-out and the Flags clear below.
 bool32_t Villager::ExitFootball(unsigned char exit_state)
 {
 	circle_hug_info.Reset(this);
 	if (IsStateExitFunctionSameAs((VILLAGER_STATES)exit_state) || exit_state == 1 || exit_state == 2)
-		return true;
+		return 1;
+	Football* football = GetFootball();
+	// TODO: Villager* field at Football+0x254 not yet modelled in Football.h
+	if (*(Villager**)((char*)football + 0x254) == this)
+		*(Villager**)((char*)football + 0x254) = NULL;
+	if (football->RemoveVillagerFromTeam(this) != 1)
+		football->RemoveVillagerFromMexicanWave(this);
 	Flags &= ~0x80;
-	return true;
+	return 1;
 }

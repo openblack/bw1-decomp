@@ -1,19 +1,43 @@
 #include "Villager.h"
 
 #include "Abode.h"
+#include "Animal.h"
+#include "DanceGroup.h"
+#include "GroupBehaviour.h"
+#include "MagicTeleport.h"
+#include "MagicTree.h"
 #include "Map.h"
 #include "MapCoords.h"
+#include "MobileWallHugInfo.h"
+#include "Rand.h"
 #include "Reaction.h"
+#include "ReactionInfo.h"
 #include "Town.h"
+#include "Tree.h"
 #include "Utils.h"
+#include "VillagerInfo.h"
 #include "VillagerStateTableInfo.h"
 
 extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
 
+// Metres-per-cell scale used by ConfusedReaction's coord<->metre jitter maths (the target
+// loads it from .rdata rather than folding the literal, so it must be a variable).
+const float VillagerReactionFloat10p0 = 10.0f;
+
 // BW1W120 00763390
-bool32_t Villager::IsAvailableForReaction(REACTION param_1)
+bool32_t Villager::IsAvailableForReaction(REACTION reaction)
 {
-	return false;
+	VILLAGER_STATES state = (VILLAGER_STATES)(GetFinalState() & VILLAGER_STATE_LAST_STATE);
+	uint16_t        flags = this->Flags;
+	if (!(flags & 2) && g_GVillagerStateTableInfos[state].field_0x34 != 0 && !(flags & 0x80) && !IsDeathState(state))
+	{
+		const GVillagerInfo* villagerInfo = (const GVillagerInfo*)this->info;
+		if (GetLife() > villagerInfo->LifeWhenCrawlsWounded || reaction == REACTION_REACT_TO_FOOD)
+		{
+			return Living::IsAvailableForReaction(reaction);
+		}
+	}
+	return 0;
 }
 
 // BW1W120 00763410
@@ -126,19 +150,127 @@ bool32_t Villager::FleeingFromObjectReaction()
 // BW1W120 00763b40
 bool32_t Villager::FleeingFromPredatorReaction()
 {
-	return false;
+	// TODO: needs the coming-towards-me helper at 0x5f1e60 named (its leg of the hide
+	// condition is omitted below); the distance callee is the unnamed 2D twin at 0x74cd50
+	// and GameRand __FILE__/__LINE__ cannot match in a split TU
+	if (this->field_0xbc != NULL && this->field_0xbc->IsAvailable())
+	{
+		Animal* predator = dynamic_cast<Animal*>(this->field_0xbc);
+		if (predator == NULL)
+		{
+			return 0;
+		}
+		float distance = GUtils::GetDistanceInMetres(Pos, this->field_0xbc->Pos);
+		if (distance > GetReaction()->GetInfo()->MaxDistanceToRunAwayFromObject)
+		{
+			StopReactingAndSetState();
+			return 1;
+		}
+		if ((uint8_t)GetFinalState() == VILLAGER_STATE_LOOK_TO_SEE_IF_IT_IS_SAFE)
+		{
+			Abode* abode = GetAbodeToHideInAtPos(MapCoords((JustWholeMapXZ*)&this->field_0x110));
+			if (abode != NULL)
+			{
+				SetupMoveToOnFootpath(*abode, abode->GetArrivePos(), VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING);
+				return 1;
+			}
+		}
+		if ((predator->GetSpeedInMetresPerSecond() > 5.0f /* && fn_005F1E60(predator) */) ||
+		    GRand::GameRand(6, __FILE__, __LINE__) == 0)
+		{
+			if (SetupGoAndHideInNearbyBuilding(predator))
+			{
+				return 1;
+			}
+		}
+		return FleeFromObjectIfComingTowardsMe(this->field_0xbc, VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION,
+		                                       VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION);
+	}
+	StopReactingAndSetState();
+	return 1;
 }
 
 // BW1W120 00763cb0
-bool32_t Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos* param_1)
+bool32_t Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos* thing)
 {
-	return false;
+	// TODO: the distance callee is the unnamed GetDistanceInMetres copy at 0x74cd70;
+	// CanBeHiddenIn dispatches through the wrong Abode vtable slot
+	if (GetTown() == NULL)
+	{
+		return 0;
+	}
+	float              bestDistance = 100.0f;
+	Abode*             bestAbode = NULL;
+	LHListHead<Abode>& abodeList = GetTown()->AbodeList;
+	Abode*             abode = abodeList.head;
+	if (abode != NULL)
+	{
+		do
+		{
+			float distance = GUtils::GetDistanceInMetres(Pos, abode->GetArrivePos());
+			if (abode->CanBeHiddenIn() && distance < bestDistance)
+			{
+				bestDistance = distance;
+				bestAbode = abode;
+			}
+			abode = abode->next;
+		} while (abode != NULL);
+		if (bestAbode != NULL)
+		{
+			// TODO: 0x110 is really a JustWholeMapXZ (hide-area cell), not yet modelled in
+			// Villager.h — hence the cast
+			((JustWholeMapXZ*)&this->field_0x110)->Init(bestAbode->Pos);
+			this->field_0x10c = 0.0f;
+			SetupMoveToOnFootpath(*bestAbode, bestAbode->GetArrivePos(), VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING);
+			return 1;
+		}
+	}
+	return 0;
 }
 
 // BW1W120 00763d90
 bool32_t Villager::GoAndHideInNearbyBuilding()
 {
-	return false;
+	// TODO: the distance callee is the unnamed 2D twin of GetDistanceInMetres at 0x74cd50;
+	// GameRand __FILE__/__LINE__ cannot match in a split TU; field_0x10c is an int
+	// hide-turns counter here (header declares float), hence the casts
+	MapCoords coords((JustWholeMapXZ*)&this->field_0x110);
+	Abode*    abode = GetAbodeToHideInAtPos(coords);
+	if (this->field_0xbc != NULL && this->field_0xbc->IsAvailable() != 1)
+	{
+		this->field_0xbc = NULL;
+	}
+	if (abode != NULL && abode->CanBeHiddenIn())
+	{
+		MapCoords arrivePos = abode->GetArrivePos();
+		if (AreWeThere(&arrivePos, 0.0f))
+		{
+			if (this->field_0xbc != NULL)
+			{
+				float distance = GUtils::GetDistanceInMetres(Pos, this->field_0xbc->Pos);
+				if (distance <= GetReaction()->GetInfo()->MinDistanceToRunAwayFromObject)
+				{
+					return 1;
+				}
+			}
+			uint32_t hideTurns = *(uint32_t*)&this->field_0x10c + 1;
+			*(uint32_t*)&this->field_0x10c = hideTurns;
+			if (hideTurns > GRand::GameRand(150, __FILE__, __LINE__) + 150)
+			{
+				*(uint32_t*)&this->field_0x10c = 0;
+				// TODO: FindPosOutsideAbode is declared void but really returns the pos via
+				// hidden retbuf into the slot arrivePos occupies; passing arrivePos below
+				// reuses that slot until its return type is fixed
+				FindPosOutsideAbode(abode);
+				SetupMoveToWithHug(arrivePos, VILLAGER_STATE_LOOK_TO_SEE_IF_IT_IS_SAFE);
+			}
+			return 1;
+		}
+		SetupMoveToOnFootpath(*abode, abode->GetArrivePos(), VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING);
+		return 1;
+	}
+	StopReactingAndSetState();
+	return 1;
 }
 
 // BW1W120 00763f00
@@ -164,7 +296,37 @@ Abode* Villager::GetAbodeToHideInAtPos(const MapCoords& pos)
 // BW1W120 00763f80
 bool32_t Villager::LookToSeeIfItIsSafe()
 {
-	return false;
+	// TODO: the distance callee is the unnamed 2D twin of GetDistanceInMetres at 0x74cd50;
+	// GameRand __FILE__/__LINE__ cannot match in a split TU
+	if (this->field_0xbc != NULL)
+	{
+		float distance = GUtils::GetDistanceInMetres(Pos, this->field_0xbc->Pos);
+		if (distance <= GetReaction()->GetInfo()->MaxReactionDistance && this->field_0xbc->IsAnimal())
+		{
+			// The predator is only still a threat if it is awake and out of its lair.
+			uint8_t predatorState = ((Living*)this->field_0xbc)->action.states[LIVING_ACTION_INDEX_TOP];
+			if (predatorState != ANIMAL_STATE_SLEEPS && predatorState != ANIMAL_STATE_HIDE_IN_LAIR)
+			{
+				Abode* abode = GetAbodeToHideInAtPos(MapCoords((JustWholeMapXZ*)&this->field_0x110));
+				if (abode != NULL)
+				{
+					*(uint32_t*)&this->field_0x10c = 0;
+					SetupMoveToOnFootpath(*abode, abode->GetArrivePos(), VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING);
+					return 1;
+				}
+				return FleeFromObjectIfComingTowardsMe(this->field_0xbc, VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION,
+				                                       VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION);
+			}
+		}
+	}
+	// TODO: register allocation of the counter differs around the GameRand call
+	uint32_t safeTurns = *(uint32_t*)&this->field_0x10c + 1;
+	*(uint32_t*)&this->field_0x10c = safeTurns;
+	if (safeTurns > GRand::GameRand(25, __FILE__, __LINE__) + 25)
+	{
+		StopReactingAndSetState();
+	}
+	return 1;
 }
 
 // BW1W120 007640a0
@@ -237,18 +399,38 @@ bool32_t Villager::FollowingObjectReaction()
 // BW1W120 00764350
 bool32_t Villager::InspectObjectReaction()
 {
+	// TODO: needs the game-turns-per-second global at 0xd01a38 named (it drives the
+	// inspection-turns maths)
 	return false;
 }
 
 // BW1W120 00764410
 bool32_t Villager::PerformInspectionReaction()
 {
-	return false;
+	if (!this->field_0xbc->IsAvailable())
+	{
+		StopReactingAndSetState();
+		return 1;
+	}
+	if (this->field_0x10c < 1.0f)
+	{
+		StopReactingAndSetState();
+		return 1;
+	}
+	if (--this->field_0x110 == 0)
+	{
+		SetTopState(VILLAGER_STATE_APPROACH_OBJECT_REACTION);
+		return 1;
+	}
+	LookAtObject(this->field_0xbc, 1);
+	return 1;
 }
 
 // BW1W120 00764490
 bool32_t Villager::ApproachObjectReaction()
 {
+	// TODO: needs the helpers at 0x74d3e0/0x74d400 (X/Z offset from angle), 0x74e1d0/0x74e200
+	// (cos/sin), the 2D distance twin at 0x74cd50 and the global at 0xd01a38 named
 	return false;
 }
 
@@ -335,7 +517,20 @@ bool32_t Villager::ArrivesAtFoodReaction()
 // BW1W120 00764aa0
 bool32_t Villager::InitialiseBewilderedByMagicTreeReaction()
 {
-	return false;
+	// TODO: the tail needs Tree::GetForest fixed — it is declared void and non-virtual, but
+	// the target dispatches it virtually and uses its result
+	if (this->field_0xbc != NULL && this->field_0xbc->IsAvailable())
+	{
+		if (dynamic_cast<MagicTree*>(this->field_0xbc) == NULL)
+		{
+			StopReactingAndSetState();
+			return 1;
+		}
+		// deferred tail — see TODO above
+		return 1;
+	}
+	StopReactingAndSetState();
+	return 1;
 }
 
 // BW1W120 00764b50
@@ -363,7 +558,27 @@ bool32_t Villager::TurnToFaceMagicTree()
 // BW1W120 00764d70
 bool32_t Villager::LookAtMagicTree()
 {
-	return false;
+	if (this->field_0xbc != NULL && this->field_0xbc->IsAvailable())
+	{
+		// The original discards the cast result too (kept only as a call).
+		dynamic_cast<Tree*>(this->field_0xbc);
+		// TurnsUntilNextStateChange doubles as {uint8 remaining, uint8 total} in this state:
+		// play the look-up anim at the halfway point.
+		// TODO: SetAnim dispatches through the wrong vtable slot — the two same-name SetAnim
+		// virtual declarations in Living.h are in reversed order vs the real vtable
+		if (((uint8_t*)&this->TurnsUntilNextStateChange)[0] ==
+		    (uint8_t)(((uint8_t*)&this->TurnsUntilNextStateChange)[1] >> 1))
+		{
+			SetAnim(1);
+		}
+		if (--*(uint8_t*)&this->TurnsUntilNextStateChange == 0)
+		{
+			SetTopState(VILLAGER_STATE_PERFORM_BEWILDERED_BY_MAGIC_TREE_REACTION);
+		}
+		return 1;
+	}
+	StopReactingAndSetState();
+	return 1;
 }
 
 // BW1W120 00764df0
@@ -438,7 +653,12 @@ bool32_t Villager::ReactToFire()
 }
 
 // BW1W120 00765b70
-void Villager::SetupReactToWood(GameThingWithPos* param_1, Reaction* param_2) {}
+void Villager::SetupReactToWood(GameThingWithPos* thing, Reaction* reaction)
+{
+	Object* wood = dynamic_cast<Object*>(thing);
+	AddReaction(reaction, VILLAGER_STATE_GOTO_WOOD_REACTION);
+	this->field_0xbc = wood;
+}
 
 // BW1W120 00765bb0
 uint8_t Villager::ReactToMagicShieldPriority(Reaction* param_1, Reaction* param_2)
@@ -461,22 +681,67 @@ void Villager::SetupReactToNewBuilding(GameThingWithPos* param_1, Reaction* para
 // BW1W120 00766130
 bool32_t Villager::DanceWhileReacting()
 {
-	return false;
+	MapCoords dancePos;
+	CalculateDancePosition(dance_group->Dancer->Pos, &dancePos);
+	if (Pos != dancePos && Pos == dance_group->Dancer->GetArrivePos())
+	{
+		SetupMoveToPos(dancePos, VILLAGER_STATE_DANCE_WHILE_REACTING);
+		return 1;
+	}
+	if (!IsDancing())
+	{
+		return DecideWhatToDo();
+	}
+	PerformDance(&dance_group->behaviour->Pos, VILLAGER_STATE_DANCE_WHILE_REACTING, dance_group->field_0x5c);
+	return 1;
 }
 
 // BW1W120 00766200
-uint8_t Villager::ReactToTeleportPriority(Reaction* param_1, Reaction* param_2)
+uint8_t Villager::ReactToTeleportPriority(Reaction* reaction_1, Reaction* reaction_2)
 {
+	// TODO: tail deferred — MagicTeleport::ShouldLivingThingReact is declared void but the
+	// target consumes its result, and the priority byte is an unnamed global at 0xd4fe90
+	if (dynamic_cast<MagicTeleport*>(reaction_1->target) == NULL)
+	{
+		return 0;
+	}
 	return 0;
 }
 
 // BW1W120 00766250
-void Villager::SetupReactToTeleport(GameThingWithPos* param_1, Reaction* param_2) {}
+void Villager::SetupReactToTeleport(GameThingWithPos* thing, Reaction* reaction)
+{
+	// TODO: after GetFinalDestPos the target calls the MagicTeleport helper at 0x5fc6a0 with
+	// (this, &coords); omitted until that helper is named
+	if (dynamic_cast<MagicTeleport*>(thing) != NULL)
+	{
+		MapCoords coords;
+		coords = GetFinalDestPos();
+		int speedNow = this->speed;
+		this->field_0xbc = thing;
+		AddReaction(reaction, speedNow > ((const GMobileWallHugInfo*)this->info)->field_0x10c
+		                          ? VILLAGER_STATE_GO_TOWARDS_TELEPORT_REACTION_QUICKLY
+		                          : VILLAGER_STATE_GO_TOWARDS_TELEPORT_REACTION);
+	}
+}
 
 // BW1W120 007662f0
 bool32_t Villager::GoToTeleportReaction()
 {
-	return false;
+	// TODO: target materialises &teleport->Pos mid-copy where ours folds it into
+	// displacements; AreWeThere should return bool32_t (target tests full eax)
+	GameThingWithPos* teleport = GetReaction()->target;
+	MapCoords         coords;
+	coords.x = teleport->Pos.x;
+	coords.z = teleport->Pos.z;
+	coords.altitude = teleport->Pos.Altitude();
+	if (AreWeThere(&coords, 0.0f))
+	{
+		SetTopState(VILLAGER_STATE_TELEPORT_REACTION);
+		return true;
+	}
+	SetupMoveToWithHug(coords, GetFinalState());
+	return true;
 }
 
 // BW1W120 00766380
@@ -488,6 +753,8 @@ bool32_t Villager::GoToTeleportReactionQuickly()
 // BW1W120 00766390
 bool32_t Villager::ExitReactToTeleport(unsigned char state)
 {
+	// TODO: ExitReaction originally took unsigned char (the target pushes the raw byte and
+	// the callee re-masks it), not VILLAGER_STATES
 	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state))
 	{
 		if (GetTown() != NULL)
@@ -502,7 +769,19 @@ bool32_t Villager::ExitReactToTeleport(unsigned char state)
 // BW1W120 007663f0
 bool32_t Villager::TeleportReaction()
 {
-	return false;
+	Reaction* reaction = GetReaction();
+	if (reaction == NULL)
+	{
+		return 0;
+	}
+	GameThingWithPos* target = reaction->target;
+	if (dynamic_cast<MagicTeleport*>(target) == NULL)
+	{
+		return 0;
+	}
+	((MagicTeleport*)target)->DoTeleport(this, false);
+	StopReactingAndSetState();
+	return 1;
 }
 
 // BW1W120 00766440
@@ -518,10 +797,34 @@ uint8_t Villager::ReactToDroppedByHandPriority(Reaction* param_1, Reaction* para
 }
 
 // BW1W120 007665b0
-void Villager::SetupReactToDeath(GameThingWithPos* param_1, Reaction* param_2) {}
+void Villager::SetupReactToDeath(GameThingWithPos* thing, Reaction* reaction)
+{
+	if (reaction->target != NULL && reaction->target->IsCreature())
+	{
+		AddReaction(reaction, VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION);
+	}
+	else if (GRand::GameRand(2, __FILE__, __LINE__) == 0)
+	{
+		this->TurnsUntilNextStateChange = 0;
+		AddReaction(reaction, VILLAGER_STATE_POINT_AT_DEAD_PERSON);
+	}
+	else
+	{
+		AddReaction(reaction, VILLAGER_STATE_GO_TOWARDS_DEAD_PERSON);
+	}
+	this->field_0xbc = thing;
+}
 
 // BW1W120 00766620
-void Villager::SetupReactToDroppedByHand(GameThingWithPos* param_1, Reaction* param_2) {}
+void Villager::SetupReactToDroppedByHand(GameThingWithPos* thing, Reaction* reaction)
+{
+	GameThingWithPos* target = reaction->target;
+	Villager*         dropped = dynamic_cast<Villager*>(target);
+	if (dropped != NULL && dropped->IsAvailable() && !(this->Flags & 0x400))
+	{
+		SetDiscipleFollower((VILLAGER_DISCIPLE)dropped->DiscipleType);
+	}
+}
 
 // BW1W120 00766680
 bool32_t Villager::PointAtDeadPerson()
@@ -532,6 +835,8 @@ bool32_t Villager::PointAtDeadPerson()
 // BW1W120 00766700
 bool32_t Villager::GoTowardsDeadPerson()
 {
+	// TODO: needs the same unnamed helpers as ApproachObjectReaction (2D distance, cos/sin,
+	// X/Z offsets) plus the float at 0x8c6c98 named
 	return false;
 }
 
@@ -584,7 +889,23 @@ bool32_t Villager::StartConfusedReaction()
 // BW1W120 00766930
 bool32_t Villager::ConfusedReaction()
 {
-	return false;
+	action.TurnsSinceStateChange++;
+	if (action.TurnsSinceStateChange > 100)
+	{
+		// Wander to a random point within +/-10 metres (coords are 16.16 fixed-point map
+		// units; x * 10 / 65536 converts to metres and back).
+		// TODO: target keeps an extra local dword for coords.z and schedules the final
+		// z-store after the SetupMoveToWithHug arg pushes
+		MapCoords coords = Pos;
+		coords.x = (int)((coords.x * VillagerReactionFloat10p0 * (1.0f / 65536.0f) +
+		                  GRand::GameFloatRand(20.0f, __FILE__, __LINE__) - 10.0f) *
+		                 65536.0f / VillagerReactionFloat10p0);
+		coords.z = (int)((coords.z * VillagerReactionFloat10p0 * (1.0f / 65536.0f) +
+		                  GRand::GameFloatRand(20.0f, __FILE__, __LINE__) - 10.0f) *
+		                 65536.0f / VillagerReactionFloat10p0);
+		SetupMoveToWithHug(coords, VILLAGER_STATE_START_CONFUSED_REACTION);
+	}
+	return 1;
 }
 
 // BW1W120 00766a10
@@ -660,6 +981,7 @@ bool32_t Villager::InitialiseImpressedReaction()
 // BW1W120 00766d60
 bool32_t Villager::PerformImpressedReaction()
 {
+	// TODO: needs the game-turns-per-second global at 0xd01a38 named
 	return false;
 }
 
@@ -742,6 +1064,7 @@ uint8_t Villager::ReactToVillagerInHandPriority(Reaction* param_1, Reaction* par
 // BW1W120 007673a0
 bool32_t Villager::WaitForMate()
 {
+	// TODO: needs the mate-wait distance global at 0xd5035c named
 	return false;
 }
 

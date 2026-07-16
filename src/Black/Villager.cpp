@@ -5,6 +5,7 @@
 #include "chlasm/Enum.h"
 #include "chlasm/GStates.h"
 #include "Game.h"
+#include "Game3DObject.h"
 #include "GameOSFile.h"
 #include "GameThing.h"
 #include "InterfaceStatus.h"
@@ -22,6 +23,9 @@
 #include "Rand.h"
 
 extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
+
+// 84 entries (12 tribe slots x VILLAGER_NUMBER_LAST), filled by GVillagerInfo::GetInfoFromText.
+GVillagerInfo GVillagerInfo_ARRAY_00da6be8[84];
 
 // clang-format off
 static const DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST] = {
@@ -41,11 +45,47 @@ static const DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST] = {
 };
 // clang-format on
 
+// TODO: GVillagerInfo::GetMesh (0x74f880, returns StdDetail) cannot be defined yet — its
+// return type conflicts with the base GObjectInfo::GetMesh() const across the *Info
+// classes; unify those first (GAnimalInfo has the same conflict).
+
+// BW1W120 0074f890 BW1M100 10571e90 GVillagerInfo::GetBaseInfo(unsigned long &)
+GBaseInfo* GVillagerInfo::GetBaseInfo(uint32_t& count)
+{
+	count = 84;
+	return GVillagerInfo_ARRAY_00da6be8;
+}
+
 // BW1W120 0074fb20
-void Villager::SetToZero() {}
+void Villager::SetToZero()
+{
+	Flags = 0;
+	food = 0.0f;
+	FoodSpeedUp = false;
+	ResourceHeld[RESOURCE_TYPE_FOOD] = 0;
+	ResourceHeld[RESOURCE_TYPE_WOOD] = 0;
+	building_site = NULL;
+	home = NULL;
+	DiscipleType = 0;
+	town = NULL;
+	LastCheckTurn = 0;
+	mother = NULL;
+	LastPlayerToInteract = NULL;
+	field_0x108 = 0.0f;
+}
 
 // BW1W120 0074fb80
-void Villager::InitialiseScale(unsigned long param_1) {}
+void Villager::InitialiseScale(unsigned long age)
+{
+	if (age < ((const GVillagerInfo*)info)->TeenAge)
+	{
+		SetScale(((const GVillagerInfo*)info)->ageToScale.values[age]);
+	}
+	else
+	{
+		SetScale(0.9f);
+	}
+}
 
 // BW1W120 0074fbe0
 Villager* Villager::Create(const MapCoords& coords, const GVillagerInfo* info, uint32_t age, bool skeleton)
@@ -108,32 +148,47 @@ uint32_t Villager::GetWoodCarriedObject()
 }
 
 // BW1W120 007502d0
-uint32_t Villager::DestroyedByEffect(GPlayer* param_1, float param_2)
+uint32_t Villager::DestroyedByEffect(GPlayer* player, float damage)
 {
-	return 0;
+	VillagerDead(DEATH_REASON_SPELL, player, damage, 1);
+	return 1;
 }
 
 // BW1W120 007502f0
 GPlayer* Villager::GetPlayer()
 {
+	if (GetTown() != NULL)
+	{
+		return GetTown()->owner;
+	}
 	return NULL;
 }
 
 // BW1W120 00750310
 HOLD_TYPE Villager::GetHoldType()
 {
-	return HOLD_TYPE(0);
+	return HOLD_TYPE_VILLAGER;
 }
 
 // BW1W120 00750320
 float Villager::GetHoldLoweringMultiplier()
 {
-	return 0.0f;
+	// TODO: the 0.65f lives as a shared named .rdata float in another unit's range; a
+	// literal's own constant cannot match that operand (see SetSpeed)
+	return 0.65f;
 }
 
 // BW1W120 00750330
 Villager* Villager::GetSpouse()
 {
+	if (GetAbode() != NULL)
+	{
+		Villager* spouse = GetAbode()->GetSpouse(this);
+		if (spouse != NULL && spouse->IsAvailable() == 1)
+		{
+			return spouse;
+		}
+	}
 	return NULL;
 }
 
@@ -207,7 +262,45 @@ bool Villager::GetRandomLookAhead(MapCoords* param_1, float param_2)
 }
 
 // BW1W120 00750ed0
-void Villager::SetSpeed(int base_speed, int scale_speed) {}
+void Villager::SetSpeed(int base_speed, int scale_speed)
+{
+	// TODO: the 0.01f/0.2f/0.1f/0.4f constants live as shared named .rdata floats in other
+	// units' ranges; literals emit their own constants, so those operands cannot match
+	// until the shared floats are named
+	float factor = 1.0f;
+	if (scale_speed != 0)
+	{
+		factor = ((int)(field_0x3c * 47) % 31 - 16) * 0.01f + 1.0f;
+		if (GetAge() < ((const GVillagerInfo*)info)->TeenAge)
+		{
+			float slowDown = (((const GVillagerInfo*)info)->TeenAge - GetAge()) * 0.2f * 0.1f;
+			if (slowDown >= 0.4f)
+			{
+				slowDown = 0.4f;
+			}
+			factor = factor - slowDown;
+		}
+		else if (GetAge() > ((const GVillagerInfo*)info)->MiddleAge)
+		{
+			float slowDown = (GetAge() - ((const GVillagerInfo*)info)->MiddleAge) * 0.2f * 0.1f;
+			if (slowDown >= 0.4f)
+			{
+				slowDown = 0.4f;
+			}
+			factor = factor - slowDown;
+		}
+		else
+		{
+			factor = factor - GetDesireForFood() * 0.1f;
+			factor = factor - GetLife() * 0.1f;
+			if (((const GVillagerInfo*)info)->sex == SEX_FEMALE)
+			{
+				factor -= 0.2f;
+			}
+		}
+	}
+	MobileWallHug::SetSpeed((int)(base_speed * factor));
+}
 
 // BW1W120 00751040
 void Villager::Birthday() {}
@@ -228,7 +321,7 @@ bool32_t Villager::IsAMother()
 }
 
 // BW1W120 00751190
-bool Villager::StartMoveToObject(Object* object, VILLAGER_STATES state)
+bool32_t Villager::StartMoveToObject(Object* object, VILLAGER_STATES state)
 {
 	SetupMoveToObject(object, (unsigned char)state);
 	return true;
@@ -283,13 +376,40 @@ Pot* Villager::FindPotAroundToGoto(RESOURCE_TYPE param_1, unsigned long& param_2
 }
 
 // BW1W120 007513f0
-void Villager::PickupResource(RESOURCE_TYPE param_1, short param_2, unsigned char param_3) {}
+int16_t Villager::PickupResource(RESOURCE_TYPE resource_type, short amount, unsigned char wood_graphic)
+{
+	if (resource_type == RESOURCE_TYPE_FOOD)
+	{
+		ResourceHeld[RESOURCE_TYPE_FOOD] += amount;
+		if (GetTown() != NULL)
+		{
+			GetTown()->stats.TotalFood += amount;
+		}
+	}
+	else
+	{
+		ResourceHeld[RESOURCE_TYPE_WOOD] += amount;
+		if (GetTown() != NULL)
+		{
+			GetTown()->stats.TotalWood += amount;
+		}
+		unsigned short graphic = wood_graphic & 3;
+		Flags = (graphic << 14) | (Flags & 0x3fff);
+	}
+	return amount;
+}
 
 // BW1W120 00751490
-void Villager::PickupFood(short param_1) {}
+void Villager::PickupFood(short amount)
+{
+	PickupResource(RESOURCE_TYPE_FOOD, amount, 0);
+}
 
 // BW1W120 007514b0
-void Villager::PickupWood(short param_1, unsigned char param_2) {}
+void Villager::PickupWood(short amount, unsigned char wood_graphic)
+{
+	PickupResource(RESOURCE_TYPE_WOOD, amount, wood_graphic);
+}
 
 // BW1W120 007514d0
 int16_t Villager::GetFoodCapacity()
@@ -304,7 +424,10 @@ int16_t Villager::GetWoodCapacity()
 }
 
 // BW1W120 00751510
-void Villager::RemoveFromDance(int param_1) {}
+void Villager::RemoveFromDance(int is_worshipping)
+{
+	Living::RemoveFromDance(is_worshipping);
+}
 
 // BW1W120 00751520
 bool Villager::IsRandomlyLazy()
@@ -426,12 +549,22 @@ uint32_t Villager::SaveObject(LHOSFile& param_1, const MapCoords& param_2)
 // BW1W120 00751cf0
 bool32_t Villager::IsFunctional()
 {
-	return false;
+	if (IsAvailable() == 1)
+	{
+		uint8_t topState = action.states[LIVING_ACTION_INDEX_TOP];
+		if (topState < VILLAGER_STATE_SET_DYING || topState > VILLAGER_STATE_DYING)
+		{
+			return 1;
+		}
+	}
+	return 0;
 }
 
 // BW1W120 00751d20
-GJobInfo* Villager::GetJobInfo(unsigned char param_1) const
+GJobInfo* Villager::GetJobInfo(unsigned char job) const
 {
+	// TODO: target body is `return &<GJobInfo array at 0xd19cc8>[job];` — needs that
+	// array named and declared
 	return NULL;
 }
 
@@ -444,18 +577,31 @@ bool Villager::FUN00751d40()
 // BW1W120 00751d50
 bool32_t Villager::IsAvailable()
 {
-	return false;
+	if (!(field_0xa & 1) && (uint8_t)GetFinalState() != VILLAGER_STATE_DYING)
+	{
+		return 1;
+	}
+	return 0;
 }
 
 // BW1W120 00751d70
-uint32_t Villager::IsEffectReceiver(EffectValues* param_1)
+uint32_t Villager::IsEffectReceiver(EffectValues* effect)
 {
-	return 0;
+	if (effect != NULL && effect->numbers.values[EFFECT_TYPE_HEAL] > 0.0f)
+	{
+		return !IsDead();
+	}
+	return IsReachable();
 }
 
 // BW1W120 00751db0
 Citadel* Villager::GetCitadel()
 {
+	Town* town = GetTown();
+	if (town != NULL && town->owner != NULL)
+	{
+		return town->owner->citadel;
+	}
 	return NULL;
 }
 
@@ -469,7 +615,18 @@ VILLAGER_STATES Villager::GetFinalState()
 void Villager::ResetStateAfterReacting() {}
 
 // BW1W120 00751e50
-void Villager::PopFromPrevious() {}
+void Villager::PopFromPrevious()
+{
+	// TODO: target pushes the state-table field as a raw dword (natural if SetTopState's
+	// param were the 4-byte enum rather than unsigned char); vtable-load scheduling also
+	// differs
+	if (SetTopState(g_GVillagerStateTableInfos[action.states[LIVING_ACTION_INDEX_PREVIOUS]].field_0x30) ==
+	    VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_WITH_SUPPLIES)
+	{
+		action.SetState(LIVING_ACTION_INDEX_TOP, VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+	}
+	action.SetState(LIVING_ACTION_INDEX_PREVIOUS, VILLAGER_STATE_INVALID_STATE);
+}
 
 // BW1W120 00751ea0
 Football* Villager::GetFootball()
@@ -480,6 +637,8 @@ Football* Villager::GetFootball()
 // BW1W120 00751ee0
 GTribeInfo* Villager::GetTribe()
 {
+	// TODO: target evaluates info->TribeType through ecx before loading g_game; ours keeps
+	// info in eax and loads g_game earlier
 	TRIBE_TYPE tribeType = ((const GVillagerInfo*)info)->TribeType;
 	return GGame::g_game->GetTribe(tribeType);
 }
@@ -538,6 +697,11 @@ int Villager::SetCurrentAndDestinationState(uint8_t current, uint8_t destination
 // BW1W120 00752120
 uint32_t Villager::CanPauseForASecond(VILLAGER_STATES state)
 {
+	if (action.states[LIVING_ACTION_INDEX_TOP] != VILLAGER_STATE_PAUSE_FOR_A_SECOND &&
+	    g_GVillagerStateTableInfos[state & 0xff].field_0xd4 != 0 && !(((GameThingWithPos*)this)->Flags & 0x400))
+	{
+		return 1;
+	}
 	return 0;
 }
 
@@ -569,8 +733,12 @@ uint32_t Villager::WomanSpecial()
 }
 
 // BW1W120 00752290
-bool Villager::IsVillagerAvailable()
+bool32_t Villager::IsVillagerAvailable()
 {
+	if (!(((GameThingWithPos*)this)->Flags & 0x400) && IsAvailableForStateChange())
+	{
+		return GetVillagerAvailableState() & 1;
+	}
 	return false;
 }
 
@@ -599,13 +767,25 @@ bool32_t Villager::CallEntryStateFunction(uint8_t current, uint8_t destination)
 }
 
 // BW1W120 007524d0
-bool Villager::IsStateEntryFunctionSameAs(unsigned long param_1, unsigned long param_2) const
+bool Villager::IsStateEntryFunctionSameAs(unsigned long state_a, unsigned long state_b) const
 {
+	// TODO: needs the villager state-function table at 0xd09198 named — the target indexes
+	// it directly, so the relocs cannot match. The comparison below spells out MSVC6
+	// 16-byte pointer-to-member equality over the modelled fields.
+	Living::StateTableEntry& entryA = GetStateTable((VILLAGER_STATES)state_a);
+	Living::StateTableEntry& entryB = GetStateTable((VILLAGER_STATES)state_b);
+	if (entryA.EntryState.function == entryB.EntryState.function &&
+	    (entryA.EntryState.function == NULL || (entryA.EntryState.field_0x4 == entryB.EntryState.field_0x4 &&
+	                                            entryA.EntryState.field_0x8 == entryB.EntryState.field_0x8 &&
+	                                            entryA.EntryState.field_0xc == entryB.EntryState.field_0xc)))
+	{
+		return true;
+	}
 	return false;
 }
 
 // BW1W120 00752530
-bool Villager::IsStateExitFunctionSameAs(VILLAGER_STATES state) const
+bool32_t Villager::IsStateExitFunctionSameAs(VILLAGER_STATES state) const
 {
 	return false;
 }
@@ -632,6 +812,21 @@ bool32_t Villager::IsHungry()
 bool Villager::IsWoman()
 {
 	return ((const GVillagerInfo*)info)->sex == SEX_FEMALE && !IsChild();
+}
+
+// BW1W120 00752650 BW1M100 1056be30 GVillagerInfo::Find(TRIBE_TYPE, VILLAGER_NUMBER)
+GVillagerInfo* GVillagerInfo::Find(TRIBE_TYPE type, VILLAGER_NUMBER villager_number)
+{
+	// TODO: needs the info-array data symbol carved at 0xda6be8 (currently inside a pad)
+	// so the relocs can pair
+	for (GVillagerInfo* info = GVillagerInfo_ARRAY_00da6be8; info < &GVillagerInfo_ARRAY_00da6be8[84]; info++)
+	{
+		if (info->TribeType == type && info->VillagerNumber == villager_number)
+		{
+			return info;
+		}
+	}
+	return NULL;
 }
 
 // BW1W120 00752690
@@ -760,9 +955,23 @@ void Villager::ReleaseFromScript() {}
 void Villager::TestSpecial() {}
 
 // BW1W120 00753390
-uint32_t Villager::GetResourceFrom(Object* param_1, RESOURCE_TYPE param_2, short param_3)
+uint16_t Villager::GetResourceFrom(Object* object, RESOURCE_TYPE resource_type, short amount)
 {
-	return 0;
+	// The (uint8_t) casts on IsSpeedUp/IsPoisoned reproduce the target's byte tests.
+	unsigned short got = object->RemoveResource(resource_type, amount, NULL, NULL);
+	if (got != 0)
+	{
+		PickupResource(resource_type, got, object->GetCarriedTreeType());
+		if ((uint8_t)object->IsSpeedUp())
+		{
+			SetFoodSpeedup(true);
+		}
+		if ((uint8_t)object->IsPoisoned())
+		{
+			SetPoisoned(1);
+		}
+	}
+	return got;
 }
 
 // BW1W120 00753410
@@ -778,7 +987,10 @@ void Villager::SetFoodSpeedup(bool param_1) {}
 void Villager::ProcessFoodSpeedup() {}
 
 // BW1W120 00753460
-void Villager::IncreaseLife(float param_1) {}
+void Villager::IncreaseLife(float value)
+{
+	Object::IncreaseLife(value);
+}
 
 // BW1W120 00753470
 void Villager::FindPosOutsideAbode(Abode* param_1) {}
@@ -872,7 +1084,27 @@ uint32_t Villager::RemoveFromGame()
 // BW1W120 00753e20
 MapCoords Villager::GetResourceDropoffPos(RESOURCE_TYPE resource_type)
 {
-	return MapCoords();
+	// TODO: block ordering differs — target keeps the merged `return pit->GetArrivePos()`
+	// tail at its first occurrence and jumps backward to it; ours sinks it after the
+	// town-pit check
+	Town*       town = GetTown();
+	MapCoords   tempPos;
+	StoragePit* pit = GetStoragePit();
+	if (pit != NULL && pit->IsFunctional())
+	{
+		return pit->GetArrivePos();
+	}
+	if (town != NULL)
+	{
+		pit = town->GetStoragePit();
+		if (pit == NULL || !pit->IsFunctional())
+		{
+			town->GetTemporaryResourceStorePotOrPos(Pos, tempPos, resource_type);
+			return tempPos;
+		}
+		return pit->GetArrivePos();
+	}
+	return Pos;
 }
 
 // BW1W120 00753f00
@@ -908,7 +1140,14 @@ uint32_t Villager::GetFOVHelpCondition()
 // BW1W120 00754070
 bool32_t Villager::SetDiscipleNothingToDo()
 {
-	return false;
+	MapCoords prayerPos;
+	if (FindDisciplePrayerPos(&prayerPos))
+	{
+		TurnsUntilNextStateChange = 0;
+		SetupMoveToWithHug(prayerPos, VILLAGER_STATE_DISCIPLE_NOTHING_TO_DO);
+		return 1;
+	}
+	return 0;
 }
 
 // BW1W120 007540d0
@@ -1257,9 +1496,36 @@ uint32_t Villager::LoadShieldReaction(GameOSFile& param_1)
 }
 
 // BW1W120 00756000
-uint32_t Villager::SetVillagerDisciple(GameThing* param_1, VILLAGER_DISCIPLE param_2, int param_3)
+uint32_t Villager::SetVillagerDisciple(GameThing* interacted_thing, VILLAGER_DISCIPLE disciple, int unused)
 {
-	return 0;
+	// TODO: block ordering (early-out sunk to the end) and Flags RMW width differ from
+	// the target; SetIsGlowing is __fastcall in the binary but declared thiscall in the
+	// shared LH3D header
+	if (disciple < 0 || disciple >= VILLAGER_DISCIPLE_LAST)
+	{
+		return false;
+	}
+	if (GetTown() != NULL)
+	{
+		VILLAGER_DISCIPLE oldDisciple = (VILLAGER_DISCIPLE)DiscipleType;
+		if (oldDisciple != disciple)
+		{
+			GetTown()->stats.DecrementNumOfDisciples(oldDisciple);
+			GetTown()->stats.IncrementNumOfDisciples(disciple);
+		}
+	}
+	if (disciple != VILLAGER_DISCIPLE_NONE)
+	{
+		Flags = Flags & 0xfbff | 0x200;
+		Game3dObject->SetIsGlowing(g_DiscipleInfos[disciple].field_0x8);
+		GetPlayer();
+		DiscipleType = (uint8_t)disciple;
+		return true;
+	}
+	Flags &= 0xf9ff;
+	Game3dObject->SetIsGlowing(0);
+	DiscipleType = (uint8_t)disciple;
+	return true;
 }
 
 // BW1W120 007560e0
@@ -1275,7 +1541,35 @@ void Villager::ShowDiscipleIcon(VILLAGER_DISCIPLE param_1) {}
 void Villager::DebugValidateState() {}
 
 // BW1W120 00756240
-void Villager::ForceMoveVillagerToAbode(Abode* abode) {}
+void Villager::ForceMoveVillagerToAbode(Abode* abode)
+{
+	// TODO: GetPercentAbodeFullWithChildren/Adults dispatch through the wrong Abode vtable
+	// slots (the Abode hierarchy headers declare 10 extra virtuals before them)
+	Town* oldTown = GetTown();
+	Town* newTown = abode->GetTown();
+	if (oldTown != newTown)
+	{
+		if (oldTown != NULL)
+		{
+			oldTown->RemoveVillager(this);
+		}
+		float percentFull;
+		if (IsChild())
+		{
+			percentFull = abode->GetPercentAbodeFullWithChildren();
+		}
+		else
+		{
+			percentFull = abode->GetPercentAbodeFullWithAdults();
+		}
+		if (percentFull >= 1.0f)
+		{
+			newTown->AddVillagerToTown(this);
+			return;
+		}
+	}
+	abode->AddVillagerToAbode(this);
+}
 
 // BW1W120 007562c0
 void Villager::SetSkeleton(int index) {}

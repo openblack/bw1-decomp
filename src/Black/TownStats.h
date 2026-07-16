@@ -46,7 +46,7 @@ public:
 	uint32_t     field_0xd8;
 	uint32_t     field_0xdc;
 	uint32_t     field_0xe0;
-	uint32_t     field_0xe4;
+	float        FoodReqiredForDinner; /* 0xe4 */
 	uint32_t     field_0xe8;
 	float        WoodUsed;
 	float        field_0xf0;

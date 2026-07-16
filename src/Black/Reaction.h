@@ -64,7 +64,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 006e4700 BW1M100 1008c230 Reaction::GetInfo(void) const
-	ReactionInfo* GetInfo();
+	ReactionInfo* GetInfo() const;
 	// BW1W120 006e48a0 BW1M100 10134d90 Reaction::GetDefaultReactionMultiplier(Living *)
 	float GetDefaultReactionMultiplier(Living* param_1);
 };

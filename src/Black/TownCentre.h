@@ -67,7 +67,7 @@ public:
 	// BW1W120 0055db50 BW1M100 1055bde0 TownCentre::IsStoragePit(Creature *)
 	virtual uint32_t IsStoragePit(Creature* param_1);
 	// BW1W120 007445d0 BW1M100 10559f30 TownCentre::ReduceLife(float, GPlayer *)
-	virtual void ReduceLife(float param_1, GPlayer* param_2);
+	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00744320 BW1M100 1055a570 TownCentre::IncreaseLife(float)
 	virtual void IncreaseLife(float param_1);
 	// BW1W120 00743df0 BW1M100 10070780 TownCentre::Process(void)

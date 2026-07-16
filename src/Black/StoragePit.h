@@ -104,7 +104,7 @@ public:
 	// BW1W120 00733550 BW1M100 inlined StoragePit::IsPoisonedResource(void)
 	virtual bool IsPoisonedResource();
 	// BW1W120 00733400 BW1M100 10002840 StoragePit::GetResourceNearestEdge(RESOURCE_TYPE, Object *, int)
-	virtual MapCoords* GetResourceNearestEdge(MapCoords* param_1, RESOURCE_TYPE param_2, Object* param_3, int param_4);
+	virtual MapCoords GetResourceNearestEdge(RESOURCE_TYPE type, Object* object, int index);
 	// BW1W120 00733260 BW1M100 101526e0 StoragePit::CalulateAmountOverMaximum(RESOURCE_TYPE)
 	virtual int CalulateAmountOverMaximum(RESOURCE_TYPE param_1);
 	// BW1W120 007331d0 BW1M100 101527b0 StoragePit::RemovePotFromStructure(PotStructure *)

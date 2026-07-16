@@ -23,7 +23,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 005e1740 BW1M100 100fe450 GJobInfo::GetJobActivity(void) const
-	uint32_t GetJobActivity();
+	uint32_t GetJobActivity() const;
 };
 
 #endif /* BW1_DECOMP_JOB_INFO_INCLUDED_H */

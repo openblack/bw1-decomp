@@ -62,8 +62,11 @@ public:
 
 	// BW1W120 00745ae0 BW1M100 1005c8d0 TownDesire::Process(void)
 	void Process();
+	// BW1W120 00745ff0 TownDesire::CheckVillagerNeededForTownDesire(Villager *, float)
+	// TODO: incorrect return type
+	void CheckVillagerNeededForTownDesire(Villager* villager, float trigger);
 	// BW1W120 00745f80 BW1M100 1005d280 TownDesire::GetInfo(unsigned long) const
-	GTownDesireInfo* GetInfo(unsigned long param_1);
+	GTownDesireInfo* GetInfo(unsigned long desire) const;
 	// BW1W120 007465d0 BW1M100 1055dee0 TownDesire::GetSortedDesire(unsigned long)
 	DesireSort* GetSortedDesire(uint32_t index);
 };

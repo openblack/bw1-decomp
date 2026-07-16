@@ -38,7 +38,7 @@ public:
 	// BW1W120 0050a9c0 BW1M100 102a3c90 Creche::IsStoragePit(Creature *)
 	virtual uint32_t IsStoragePit(Creature* param_1);
 	// BW1W120 0050ab90 BW1M100 102a3d80 Creche::ReduceLife(float, GPlayer *)
-	virtual void ReduceLife(float param_1, GPlayer* param_2);
+	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0050a9d0 BW1M100 102a3cd0 Creche::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 0050aa50 BW1M100 102a3fd0 Creche::DeleteDependancys(void)

@@ -352,7 +352,7 @@ public:
 	// BW1W120 00479e50 BW1M100 101d6990 Creature::MoveMapObject(MapCoords const &)
 	virtual int MoveMapObject(const MapCoords* param_1);
 	// BW1W120 0047dd00 BW1M100 101ce700 Creature::ReduceLife(float, GPlayer *)
-	virtual void ReduceLife(float param_1, GPlayer* param_2);
+	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0047de20 BW1M100 101ce640 Creature::IncreaseLife(float)
 	virtual void IncreaseLife(float param_1);
 	// BW1W120 00478c00 BW1M100 101d8e40 Creature::FillInEffectDefenceMultiplier(EffectNumbers &)
@@ -437,7 +437,7 @@ public:
 	// BW1W120 00477f70 BW1M100 101d9d60 Creature::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 	// BW1W120 00477860 BW1M100 101dae90 Creature::GetNearestEdgeOfObject(Object *)
-	virtual void GetNearestEdgeOfObject(Object* param_1);
+	virtual LHPoint GetNearestEdgeOfObject(Object* object);
 	// BW1W120 004753c0 BW1M100 101de710 Creature::GetDestPos(void)
 	virtual MapCoords* GetDestPos();
 	// BW1W120 004753d0 BW1M100 101de690 Creature::GetFinalDestPos(MapCoords *)

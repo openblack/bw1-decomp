@@ -6,7 +6,8 @@
 
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 
-#include "Abode.h" /* For struct Abode */
+#include "Abode.h"     /* For struct Abode */
+#include "MapCoords.h" /* For struct MapCoords */
 
 enum FOOTBALL_SUBSTATES_ATTACKER
 {
@@ -62,7 +63,15 @@ class Villager;
 class Football : public Abode
 {
 public:
-	uint8_t field_0xc4[0x254];
+	enum FOOTBALL_STATES // fabricated enumerator names
+	{
+		FOOTBALL_STATES_0 = 0x0,
+		FOOTBALL_STATES_1 = 0x1,
+	};
+
+	uint8_t field_0xc4[0x180];
+	Object* MarkTargets[2]; /* 0x244 -- indexed by IsPlayerOnHomeTeam() */
+	uint8_t field_0x24c[0xcc];
 
 	// Override methods
 
@@ -87,7 +96,7 @@ public:
 	// BW1W120 00531280 BW1M100 102b8610 Football::IsFootball(void)
 	virtual uint32_t IsFootball();
 	// BW1W120 00531e40 BW1M100 102bc020 Football::ReduceLife(float, GPlayer *)
-	virtual void ReduceLife(float param_1, GPlayer* param_2);
+	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00533e40 BW1M100 102be320 Football::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00531610 BW1M100 102bccb0 Football::Draw(void)
@@ -117,10 +126,22 @@ public:
 
 	// BW1W120 00531410 BW1M100 102bd040 Football::GetBall(void)
 	void* GetBall();
+	// BW1W120 005325d0 Football::RemoveVillagerFromTeam(Villager *)
+	bool32_t RemoveVillagerFromTeam(Villager* villager);
+	// BW1W120 005326e0 Football::RemoveVillagerFromMexicanWave(Villager *)
+	bool32_t RemoveVillagerFromMexicanWave(Villager* villager);
+	// BW1W120 00532eb0 Football::PerturbTarget(MapCoords *, Villager *)
+	void PerturbTarget(MapCoords* target, Villager* player);
 	// BW1W120 00532960 BW1M100 102baa80 Football::IsPlayerOnHomeTeam(Villager *)
-	bool IsPlayerOnHomeTeam(Villager* param_1);
+	bool32_t IsPlayerOnHomeTeam(Villager* villager);
 	// BW1W120 00532c80 BW1M100 102ba570 Football::GetGoalPosition(unsigned long)
-	void GetGoalPosition(unsigned long param_1);
+	MapCoords GetGoalPosition(unsigned long home_team);
+	// BW1W120 005347c0 Football::GetHowCloseToBallIndex(Villager *)
+	int GetHowCloseToBallIndex(Villager* villager);
+	// BW1W120 00534820 Football::GetHowCloseToGoalIndex(Villager *)
+	int GetHowCloseToGoalIndex(Villager* villager);
+	// BW1W120 00534860 Football::SetPlayState(Football::FOOTBALL_STATES)
+	void SetPlayState(FOOTBALL_STATES state);
 };
 
 #endif /* BW1_DECOMP_FOOTBALL_INCLUDED_H */

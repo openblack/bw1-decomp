@@ -14,14 +14,17 @@ struct LH3DColor
 	// Constructors
 
 	// BW1W120 inlined BW1M100 10083c40 LH3DColor::LH3DColor(uint)
-	LH3DColor(uint32_t color);
+	// fabricated
+	LH3DColor(uint32_t color) { *(uint32_t*)this = color; }
 	// BW1W120 inlined BW1M100 100530b0 LH3DColor::LH3DColor(LH3DColor const &)
-	LH3DColor(const LH3DColor* other);
+	// fabricated
+	LH3DColor(const LH3DColor& other) { *(uint32_t*)this = *(uint32_t*)&other; }
 
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M100 1047dc00 LH3DColor::operator=(LH3DColor const &)
-	void operator=(const LH3DColor* other);
+	// fabricated
+	void operator=(const LH3DColor& other) { *(uint32_t*)this = *(uint32_t*)&other; }
 };
 
 #endif /* BW1_DECOMP_LH3D_COLOR_INCLUDED_H */

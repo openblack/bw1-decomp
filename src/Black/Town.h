@@ -29,6 +29,7 @@ class Base;
 class Citadel;
 class Creature;
 class Creche;
+class Flock;
 class GMultiMapFixedInfo;
 class GPlayer;
 class GTownInfo;
@@ -76,7 +77,7 @@ public:
 	float                            influence;
 	int                              field_0x5cc;
 	uint32_t                         field_0x5d0;
-	uint32_t                         field_0x5d4;
+	float                            Promiscuity; /* 0x5d4 */
 	float                            BeliefInNeutralPlayer;
 	float                            field_0x5dc;
 	uint32_t                         field_0x5e0;
@@ -284,6 +285,10 @@ public:
 	GTribeInfo* GetTribe() const;
 	// BW1W120 0073c860 BW1M100 10092530 Town::GetWorshipersNeeded(int, int, int *)
 	int GetWorshipersNeeded(int param_1, int param_2, int* result);
+	// BW1W120 0073c950 Town::GetFoodForWorshipSiteIfEnough(void)
+	uint32_t GetFoodForWorshipSiteIfEnough();
+	// BW1W120 0073ce40 Town::GetBuildingSiteInList(MultiMapFixed *)
+	BuildingSite* GetBuildingSiteInList(MultiMapFixed* building);
 	// BW1W120 0073cf00 BW1M100 10551920 Town::IsBuildingSiteValid(BuildingSite *)
 	bool32_t IsBuildingSiteValid(BuildingSite* param_1);
 	// BW1W120 0073cf60 BW1M100 10097910 Town::GetBestBuildingSite(MapCoords const &, int)
@@ -301,7 +306,7 @@ public:
 	// BW1W120 0073d630 BW1M100 10550b00 Town::IsMagicTypeHeld(MAGIC_TYPE)
 	bool IsMagicTypeHeld(MAGIC_TYPE type);
 	// BW1W120 0073de30 BW1M100 1054fb60 Town::GetFlock(LIVING_TYPE, int)
-	bool GetFlock(LIVING_TYPE param_1, int param_2);
+	Flock* GetFlock(LIVING_TYPE living_type, int include_shepherded);
 	// BW1W120 0073e1d0 BW1M100 1054f6b0 Town::GetTotemStatue(void)
 	TotemStatue* GetTotemStatue();
 	// BW1W120 0073e210 BW1M100 1054f460 Town::RemoveVillager(Villager *)

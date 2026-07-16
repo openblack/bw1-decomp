@@ -163,7 +163,7 @@ public:
 	// BW1W120 0052e4f0 BW1M100 100e0cd0 MultiMapFixed::MoveMapObject(MapCoords const &)
 	virtual int MoveMapObject(const MapCoords* param_2);
 	// BW1W120 0052f5e0 BW1M100 10099940 MultiMapFixed::ReduceLife(float, GPlayer *)
-	virtual void ReduceLife(float value, GPlayer* player);
+	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0052f700 BW1M100 10050020 MultiMapFixed::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00518090 BW1M100 10044a70 MultiMapFixed::Draw(void)

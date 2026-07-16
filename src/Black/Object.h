@@ -260,7 +260,7 @@ public:
 	// BW1W120 00402610 BW1M100 1005f530 Object::IsAlive(void)
 	virtual bool IsAlive();
 	// BW1W120 00637810 BW1M100 1004b140 Object::ReduceLife(float, GPlayer *)
-	virtual void ReduceLife(float value, GPlayer* player);
+	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00637870 BW1M100 103d6b50 Object::IncreaseLife(float)
 	virtual void IncreaseLife(float value);
 	// BW1W120 0063aaf0 BW1M100 103cff40 Object::GetSacrificeValue(void)
@@ -567,7 +567,7 @@ public:
 	// BW1W120 00639620 BW1M100 103d3290 Object::CalculateForceAppliedBy(Living *)
 	virtual float CalculateForceAppliedBy(Living* param_1);
 	// BW1W120 00402ae0 BW1M100 102fd140 Object::IsPushable(void)
-	virtual bool IsPushable();
+	virtual bool32_t IsPushable();
 	// BW1W120 006397c0 BW1M100 103d2f90 Object::PushObject(Living *, MapCoords &)
 	virtual void PushObject(Living* param_1, MapCoords* param_2);
 	// BW1W120 00639640 BW1M100 103d30f0 Object::PushObject(Living *)
@@ -583,11 +583,11 @@ public:
 	// BW1W120 00402b30 BW1M100 1016e7f0 Object::IsAPotFromABuildingSite(void)
 	virtual bool IsAPotFromABuildingSite();
 	// BW1W120 00636cd0 BW1M100 103d8340 Object::GetNearestEdgeOfObject(Object *)
-	virtual void GetNearestEdgeOfObject(Object* param_1);
+	virtual LHPoint GetNearestEdgeOfObject(Object* object);
 	// BW1W120 00636d30 BW1M100 103d8250 Object::GetNearestPosOfObject(Object *)
 	virtual void GetNearestPosOfObject(Object* param_1);
 	// BW1W120 00636da0 BW1M100 103d8190 Object::GetNearestEdgeToPos(MapCoords const &)
-	virtual void GetNearestEdgeToPos(const MapCoords* param_1);
+	virtual MapCoords GetNearestEdgeToPos(const MapCoords& pos);
 	// BW1W120 00636df0 BW1M100 103d80e0 Object::GetNearestEdge(float, float)
 	virtual void GetNearestEdge(float param_1, float param_2);
 	// BW1W120 0063a220 BW1M100 103d1140 Object::GetImmersionTexture(void)
