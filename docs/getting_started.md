@@ -4,25 +4,26 @@ See [Dependencies](dependencies.md) first.
 
 1. Clone the repository.
 
-2. Place the original game executable in `orig/<VERSION>/`. The path inside `orig` matches the version ID in [`configure.py`](/configure.py).
+2. Place the original game executable **and its DLLs** in `orig/<VERSION>/`. The path inside `orig` matches the version ID in [`configure.py`](/configure.py).
 
    - `orig/BW1W100/runblack-decrypted.exe` — Windows v1.0 (decrypted)
    - `orig/BW1W110/runblack-decrypted.exe` — Windows v1.1 (decrypted)
    - `orig/BW1W120/runblack-decrypted.exe` — Windows v1.2 (decrypted)
    - `orig/BW1M100/Black & White` — Classic Mac OS v1.0.0 PEF binary
 
-   The Windows builds expect a **decrypted** exe. The original retail discs ship the executable wrapped in SafeDisc 2 / Macrovision protection. Use the SafeDisc cleaner referenced in the project notes to produce `runblack-decrypted.exe`.
+   The Windows builds also need the four DLLs shipped alongside the exe, in the same directory: `LHaudiodllR.dll`, `LHLogR.dll`, `LHMultiplayerR.dll`, `LHDialogLib.dll` (copy these from your own install — the build checks all five files' hashes against `config/<VERSION>/build.sha1` and fails at the split step with a clear "not found" message naming whichever one is missing).
 
-3. Place the MSVC 6.0 SP5 static CRT libraries and the DirectX 7.0 SDK headers under `orig/` (they are not committed and not downloaded). The build errors out with the expected path if a static lib is missing.
+   The Windows builds expect a **decrypted** exe. The original retail discs ship the executable wrapped in SafeDisc 2 / Macrovision protection. Decrypting it is currently undocumented tribal knowledge — if you don't already have a decrypted copy, ask in the project's Discord/issue tracker rather than guessing at a tool name.
+
+3. Place the MSVC 6.0 SP5 static CRT libraries and the DirectX 7.0 SDK headers under `orig/` (they are not committed and not downloaded).
 
    **MSVC 6.0 SP5 static libs → `orig/libs/msvc6.5/`**
 
-   Needed: `libcmt.lib` and `libcpmt.lib`. If you have a Visual C++ 6.0 (SP5) install, copy them straight from `VC98\Lib`. Otherwise pull them from the genuine SP5 install CD on the Internet Archive, item [`X08-02111`](https://archive.org/details/X08-02111):
+   Needed: `libcmt.lib` and `libcpmt.lib`. If you have a Visual C++ 6.0 (SP5) install, copy them straight from `VC98\Lib`. Otherwise pull them from a plain ISO of the SP5 disc on the Internet Archive, item [`MSDN_VisualStudio_6.0_SP5_MASM_6.11_Visual_C_1.2`](https://archive.org/details/MSDN_VisualStudio_6.0_SP5_MASM_6.11_Visual_C_1.2) (`VS60SP5_EN`, byte-verified identical to the genuine SP5 CD):
 
-   1. Download `2001-03_X08-02111_X06-21660_CD_ROM.7z` from that item.
-   2. Extract the `.7z` (e.g. `7z x 2001-03_X08-02111_X06-21660_CD_ROM.7z`). It yields a raw CD image (a `.mdf`).
-   3. The `.mdf` is a raw 2352/2448-byte-sector image, not a plain ISO. Convert it first: `mdf2iso disc.mdf disc.iso` (the `mdf2iso` package on Linux/macOS). On Windows, mount the `.mdf` directly with DAEMON Tools / WinCDEmu, or open it in 7-Zip / AnyBurn.
-   4. From the image, copy `VC98\Lib\LIBCMT.LIB` and `VC98\Lib\LIBCPMT.LIB` to `orig/libs/msvc6.5/libcmt.lib` and `orig/libs/msvc6.5/libcpmt.lib`. Filenames are matched case-insensitively; lowercase is fine.
+   1. Download `MSDN_VisualStudio_6.0_SP5_MASM_6.11_Visual_C++_1.2.iso` from that item. It's a plain ISO9660 image — no proprietary disc-image format, no conversion step.
+   2. Extract `ENGLISH/VS60SP5/VC98/LIB/LIBCMT.LIB` and `LIBCPMT.LIB` with `7z e <iso> "*LIBCMT.LIB" "*LIBCPMT.LIB" -r`, or mount the ISO directly (`mount -o loop` on Linux; double-click on Windows/macOS).
+   3. Copy the two files to `orig/libs/msvc6.5/libcmt.lib` and `orig/libs/msvc6.5/libcpmt.lib`. Filenames are matched case-insensitively; lowercase is fine.
 
    **DirectX 7.0 DDK → `orig/directx7.0/`**
 

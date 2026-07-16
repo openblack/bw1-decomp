@@ -753,8 +753,8 @@ def generate_build_ninja(
             local = Path("orig") / "libs" / package / f"{lib_id}.lib"
             if not local.exists():
                 sys.exit(
-                    f"Static library {local} not found. Place the MSVC 6.0 SP5 "
-                    f"static libs under orig/libs/{package}/ (see the README)."
+                    f"Static library {local} not found. Place {lib_id}.lib "
+                    f"under orig/libs/{package}/ (see docs/getting_started.md)."
                 )
             n.build(outputs=archive, rule="copy_lib", inputs=local)
         n.newline()
