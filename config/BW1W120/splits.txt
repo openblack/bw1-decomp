@@ -3138,6 +3138,10 @@ Lionhead/LH3DLib/development/LH3DVRAMTex.cpp:
 Lionhead/LH3DLib/development/CAnim.cpp:
 	.text       start:0x00860860 end:0x008629D0
 
+lib/amaths/AMaths.obj:
+	.text       start:0x008A2770 end:0x008A5010 align:1
+	.data       start:0x00C3C240 end:0x00C3C680 align:4
+
 lib/libcmt/wcsdup.obj:
 	.text       start:0x008A5B0C end:0x008A5B3A align:1
 
