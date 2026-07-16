@@ -1,0 +1,6 @@
+Sections:
+	.text       type:code align:4096
+	.rdata      type:rodata align:4096
+	.data       type:data align:4096
+	.idata      type:data align:4096
+	.rsrc       type:rodata align:4096
