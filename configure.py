@@ -1287,6 +1287,7 @@ config.libs = [
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\setjmp3.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\mbtoupr.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\sehsupp.obj", progress_category="sdk"),
+            LibObject(NonMatching, "amaths", ".\\Release\\AMaths.obj", progress_category="sdk"),
 
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSystem.cpp", progress_category="sdk"),
