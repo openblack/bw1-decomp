@@ -20,8 +20,8 @@ Scaffolded from [encounter/dtk-template](https://github.com/encounter/dtk-templa
 
 Supported versions:
 
-- `BW1W100` — Windows v1.00 (PE/COFF, MSVC 6.0 SP5 with `/OPT:ICF`)
-- `BW1W110` — Windows v1.10 (PE/COFF, MSVC 6.0 SP5)
+- `BW1W100` — Windows v1.00 (PE/COFF, MSVC 6.0 SP4 with `/OPT:ICF`)
+- `BW1W110` — Windows v1.10 (PE/COFF, MSVC 6.0 SP4)
 - `BW1W120` — Windows v1.20 (PE/COFF, MSVC 6.0 SP5)
 
 Work in progress:

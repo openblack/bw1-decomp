@@ -166,16 +166,24 @@ config.dtk_tag = "v0.0.22"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
-config.compilers_tag = "6.5"  # MSVC 6.0 SP5
+# MSVC toolchain per version. BW1W100/BW1W110 = VC6 SP4, BW1W120 = SP5 (Rich
+# header build-number comparison against dishather/richprint comp_id.txt). SP4
+# never shipped its own libcpmt.lib, so those fall back to the RTM (6.0) copy.
+config.compilers_tag = {
+    "BW1W100": "6.4",
+    "BW1W110": "6.4",
+    "BW1W120": "6.5",
+}[config.version]
+config.linker_version = f"MSVC/{config.compilers_tag}"
 config.lld_link_tag = "bw1-decomp-018"
 # Static libraries to pull verbatim CRT objects from (see LibObject). They are
 # not committed and not downloaded — you must supply them yourself: place each
 # .lib at orig/libs/<package>/<lib>.lib. See the README for how to obtain them.
 config.static_libs = {
-    "libcmt": "msvc6.5",    # multithreaded C runtime (CRT) — VC6 SP5
-    "libcpmt": "msvc6.5",   # multithreaded C++ standard library (iostreams, RTTI) — VC6 SP5
-    "amaths": "amaths-2.0",  # Intel Approximate Math Library (SSE sin/cos/tan/atan/exp/log/pow)
-}
+    "BW1W100": {"libcmt": "msvc6.4", "libcpmt": "msvc6.0", "amaths": "amaths-2.0"},
+    "BW1W110": {"libcmt": "msvc6.4", "libcpmt": "msvc6.0", "amaths": "amaths-2.0"},
+    "BW1W120": {"libcmt": "msvc6.5", "libcpmt": "msvc6.5", "amaths": "amaths-2.0"},
+}[config.version]
 
 # Project
 config.config_path = Path("config") / config.version / "config.yml"
@@ -218,7 +226,6 @@ config.custom_build_rules = [
         "description": "PATCH $in",
     },
 ]
-config.linker_version = "MSVC/6.5"
 _msvc_dir = f"build/compilers/{config.linker_version}"
 _patch_stamp = f"build/{config.version}/patched_compiler_headers"
 config.custom_build_steps = {

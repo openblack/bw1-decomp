@@ -15,15 +15,33 @@ See [Dependencies](dependencies.md) first.
 
    The Windows builds expect a **decrypted** exe. The original retail discs ship the executable wrapped in SafeDisc 2 / Macrovision protection. Decrypting it is currently undocumented tribal knowledge — if you don't already have a decrypted copy, ask in the project's Discord/issue tracker rather than guessing at a tool name.
 
-3. Place the MSVC 6.0 SP5 static CRT libraries and the DirectX 7.0 SDK headers under `orig/` (they are not committed and not downloaded).
+3. Place the MSVC 6.0 static CRT libraries and the DirectX 7.0 SDK headers under `orig/` (they are not committed and not downloaded).
 
-   **MSVC 6.0 SP5 static libs → `orig/libs/msvc6.5/`**
+   BW1W120 was built with VC6 **SP5**; BW1W100/BW1W110 with VC6 **SP4** (confirmed via Rich header build-number comparison — see `configure.py`). `configure.py` picks the right package automatically based on `--version`, so both sets need to be present side by side if you plan to work on more than one version.
+
+   **MSVC 6.0 SP5 static libs → `orig/libs/msvc6.5/`** (BW1W120)
 
    Needed: `libcmt.lib` and `libcpmt.lib`. If you have a Visual C++ 6.0 (SP5) install, copy them straight from `VC98\Lib`. Otherwise pull them from a plain ISO of the SP5 disc on the Internet Archive, item [`MSDN_VisualStudio_6.0_SP5_MASM_6.11_Visual_C_1.2`](https://archive.org/details/MSDN_VisualStudio_6.0_SP5_MASM_6.11_Visual_C_1.2) (`VS60SP5_EN`, byte-verified identical to the genuine SP5 CD):
 
    1. Download `MSDN_VisualStudio_6.0_SP5_MASM_6.11_Visual_C++_1.2.iso` from that item. It's a plain ISO9660 image — no proprietary disc-image format, no conversion step.
    2. Extract `ENGLISH/VS60SP5/VC98/LIB/LIBCMT.LIB` and `LIBCPMT.LIB` with `7z e <iso> "*LIBCMT.LIB" "*LIBCPMT.LIB" -r`, or mount the ISO directly (`mount -o loop` on Linux; double-click on Windows/macOS).
    3. Copy the two files to `orig/libs/msvc6.5/libcmt.lib` and `orig/libs/msvc6.5/libcpmt.lib`. Filenames are matched case-insensitively; lowercase is fine.
+
+   **MSVC 6.0 SP4 `libcmt.lib` → `orig/libs/msvc6.4/`** (BW1W100/BW1W110)
+
+   From the Internet Archive item [`msdn-disc0034-january-2001-x06-11596`](https://archive.org/details/msdn-disc0034-january-2001-x06-11596) (a plain ISO, no disc-image conversion needed):
+
+   1. Download `1_V60SP4_DE.iso`.
+   2. Extract `GERMAN/VS60SP4/VC98/LIB/LIBCMT.LIB` with `7z e <iso> "*LIBCMT.LIB" -r`, or mount directly.
+   3. Copy it to `orig/libs/msvc6.4/libcmt.lib`.
+
+   **MSVC 6.0 RTM `libcpmt.lib` → `orig/libs/msvc6.0/`** (also BW1W100/BW1W110)
+
+   SP4 never shipped its own `libcpmt.lib` — checked three independent SP4 discs, none include it, since Microsoft only redistributes files that changed for a given service pack. The original 1998 RTM copy is the right one (a real SP4-era machine would still have it, untouched, in `VC98\Lib`). It's byte-different from SP5's, so don't substitute that one. From the Internet Archive item [`visualstudiov60enterpriseedition_199807`](https://archive.org/details/visualstudiov60enterpriseedition_199807):
+
+   1. Download Disc 1 (`...(X03-78941)(Microsoft Corporation)(August 1998).iso`, a plain ISO).
+   2. Extract `VC98/LIB/LIBCPMT.LIB` with `7z e <iso> "*LIBCPMT.LIB" -r`, or mount directly.
+   3. Copy it to `orig/libs/msvc6.0/libcpmt.lib`.
 
    **DirectX 7.0 DDK → `orig/directx7.0/`**
 

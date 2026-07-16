@@ -10,12 +10,14 @@ Everything else is downloaded automatically by `configure.py` on first run:
 
 - `dtk` — [openblack/decomp-toolkit](https://github.com/openblack/decomp-toolkit) build (split + link verification)
 - `lld-link` — [openblack/llvm-project](https://github.com/openblack/llvm-project) release (PE linker)
-- MSVC 6.0 SP5 compilers — pulled at the version pinned in `configure.py`
+- MSVC 6.0 compilers (SP5 for BW1W120, SP4 for BW1W100/BW1W110) — pulled at the version pinned in `configure.py`
 - `objdiff-cli` — diff report generator
 
-Three things are **not** downloaded and must be supplied by hand under `orig/` (see [Getting Started](getting_started.md)):
+These are **not** downloaded and must be supplied by hand under `orig/` (see [Getting Started](getting_started.md)):
 
-- MSVC 6.0 SP5 static CRT libs — `orig/libs/msvc6.5/libcmt.lib`, `orig/libs/msvc6.5/libcpmt.lib` (from `VC98\Lib`)
+- MSVC 6.0 SP5 static CRT libs (BW1W120) — `orig/libs/msvc6.5/libcmt.lib`, `orig/libs/msvc6.5/libcpmt.lib` (from `VC98\Lib`)
+- MSVC 6.0 SP4 `libcmt.lib` (BW1W100/BW1W110) — `orig/libs/msvc6.4/libcmt.lib`
+- MSVC 6.0 RTM `libcpmt.lib` (also BW1W100/BW1W110; SP4 never shipped its own) — `orig/libs/msvc6.0/libcpmt.lib`
 - DirectX 7.0 DDK — headers in `orig/directx7.0/include/` and libs in `orig/directx7.0/lib/`
 - Intel Approximate Math Library — `orig/libs/amaths-2.0/amaths.lib` (linked verbatim for SSE `sin`/`cos`/`tan`/`atan`/`exp`/`log`/`pow`)
 

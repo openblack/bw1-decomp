@@ -8,5 +8,5 @@
 184601784d2eb1a2f999f79cd032128cf3196b38  build/BW1W110/LHMultiplayer.dll
 64a22b88a51adc4bc119777642263e419ea8d09e  orig/BW1W110/LHDialogLib.dll
 64a22b88a51adc4bc119777642263e419ea8d09e  build/BW1W110/LHDialog.dll
-8e8c7f7dcf2121114ff73ad65112d8eba51675fe  build/lib/libcmt.lib
-792e20d86eb741bc6f111f3ca439620f7b2cf566  build/lib/libcpmt.lib
+05f7c53a28401bfa36cf3367142cde169aba330a  build/lib/libcmt.lib
+bffeaaf36e3b656efb924d46eb11ae04b2fae5d1  build/lib/libcpmt.lib
