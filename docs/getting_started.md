@@ -32,6 +32,23 @@ See [Dependencies](dependencies.md) first.
    2. Extract it with 7-Zip (`7z x dx7ddk.exe`), or run it on Windows to install.
    3. Copy both the `include` directory (holding `ddraw.h`, `d3d.h`, `dinput.h`, `dsound.h`, …) and the `lib` directory (holding `ddraw.lib`, `dinput.lib`, `dsound.lib`, `dxguid.lib`, …) to `orig/directx7.0/include/` and `orig/directx7.0/lib/`.
 
+   **Intel Approximate Math Library (AM Library) → `orig/libs/amaths-2.0/`**
+
+   Needed: `amaths.lib`. The game links Intel's AM Library verbatim (SSE/SSE2
+   `sin`/`cos`/`sincos`/`tan`/`atan`/`exp`/`log`/`pow`), Release 2.0 (Oct/Nov
+   2000). Intel's own download location is long gone; pull the package from
+   the Wayback Machine:
+
+   1. Fetch `AMaths.zip` from the Internet Archive capture of Intel's old
+      Pentium III devtools page:
+      `https://web.archive.org/web/20060218064543id_/http://www.intel.com/design/pentiumiii/devtools/AMaths.zip`
+      (the `id_` suffix returns the raw file instead of a replayed page).
+   2. Unzip it. It contains `AMaths.lib`, `AMaths.c`/`AMaths.h` (source, for
+      reference), `AMaths.pdf` (documentation), `MathTest.exe`/`.cpp` (Intel's
+      test harness), and license files.
+   3. Copy `AMaths.lib` to `orig/libs/amaths-2.0/amaths.lib`. As with the MSVC
+      libs, the filename must be lowercase to match the config key.
+
 4. Run `configure.py` with the version you want to work on:
 
    ```sh

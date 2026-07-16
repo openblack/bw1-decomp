@@ -168,13 +168,13 @@ config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
 config.compilers_tag = "6.5"  # MSVC 6.0 SP5
 config.lld_link_tag = "bw1-decomp-017"
-# Static libraries to pull verbatim CRT objects from (see LibObject). All ship
-# in the "msvc6.5" package: Visual Studio 6.0 (1998) SP5. They are not committed
-# and not downloaded — you must supply them yourself: place each .lib at
-# orig/libs/msvc6.5/<lib>.lib. See the README for how to obtain them.
+# Static libraries to pull verbatim CRT objects from (see LibObject). They are
+# not committed and not downloaded — you must supply them yourself: place each
+# .lib at orig/libs/<package>/<lib>.lib. See the README for how to obtain them.
 config.static_libs = {
-    "libcmt": "msvc6.5",   # multithreaded C runtime (CRT)
-    "libcpmt": "msvc6.5",  # multithreaded C++ standard library (iostreams, RTTI)
+    "libcmt": "msvc6.5",    # multithreaded C runtime (CRT) — VC6 SP5
+    "libcpmt": "msvc6.5",   # multithreaded C++ standard library (iostreams, RTTI) — VC6 SP5
+    "amaths": "amaths-2.0",  # Intel Approximate Math Library (SSE sin/cos/tan/atan/exp/log/pow)
 }
 
 # Project
