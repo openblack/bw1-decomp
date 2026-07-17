@@ -1290,7 +1290,7 @@ config.libs = [
             LibObject(NonMatching, "amaths", ".\\Release\\AMaths.obj", progress_category="sdk"),
 
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSystem.cpp", progress_category="sdk"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSystem.cpp", progress_category="sdk", extra_cflags=["/GX"]),
             Object(Matching, "Lionhead/LHLib/ver5.0/LHMem.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScreen.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp", progress_category="sdk"),

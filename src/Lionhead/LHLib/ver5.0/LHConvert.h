@@ -11,7 +11,8 @@ struct LHSprite;
 struct LHSpriteList;
 
 // Image-to-sprite conversion. The global instance lives at 0xE85874.
-// TODO: layout unknown (0x90 bytes); only ToSprites is declared so far.
+// LHSys::LHSys calls fn_007EF7D0 with ecx = this + 0x8b8 (convert + 0x84);
+// it writes word [ecx+4] = 0. The nested type at this tail remains unidentified.
 class LHConvert
 {
 public:

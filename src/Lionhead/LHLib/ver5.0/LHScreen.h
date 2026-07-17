@@ -145,6 +145,14 @@ struct LHScreen
 	uint8_t Depth() { return depth; }
 	// BW1W120 007e9df0 LHScreen::MaxDepth(void)
 	uint8_t MaxDepth() { return 32; }
+
+	// Static members
+
+	// BW1W120 00e90650 guards all screen/mouse drawing (initialized by LHMouse::LHMouse)
+	static CRITICAL_SECTION CriticalSection;
+	// BW1W120 00e8c5e0 set by AltTabDeactivate, cleared by AltTabReactivate; the message
+	// pump (ProcessWindowMessages) spins while it is set. TODO: fabricated name.
+	static int AltTabbedAway;
 };
 static_assert(sizeof(LHScreen) == 0x1b4, "Data type is of wrong size");
 

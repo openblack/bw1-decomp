@@ -8,9 +8,7 @@
 #include <Lionhead/LH3DLib/development/LHRegion.h>
 #include <Lionhead/LHLib/ver5.0/LHDraw.h>
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
-
-extern LHScreen g_lhScreen; // 0xE85050
-extern LHDraw   gLHDraw;    // 0xE8586C
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>
 
 extern int      g_lhTextFontUninit; // 0xC3417C
 extern HFONT    g_lhTextFont;       // 0xE90608
@@ -128,11 +126,11 @@ int LHText::DrawActualTextSprites(long x, long y, char* start, char* end, unsign
 				if (c >= 32)
 				{
 					LHSprite* glyph = &Sprites[c - 32];
-					if (g_lhScreen.depth == 16)
+					if (LHSys::GetScreen().depth == 16)
 					{
 						LHPixel16 pix;
 						pix.Set(Color);
-						gLHDraw.OneColorSprite16(penX, y, glyph, pix, 1);
+						LHSys::GetDraw().OneColorSprite16(penX, y, glyph, pix, 1);
 					}
 					else
 					{
@@ -140,7 +138,7 @@ int LHText::DrawActualTextSprites(long x, long y, char* start, char* end, unsign
 						col.b = Color.b;
 						col.g = Color.g;
 						col.r = Color.r;
-						gLHDraw.OneColorSprite24(penX, y, glyph, col, 1);
+						LHSys::GetDraw().OneColorSprite24(penX, y, glyph, col, 1);
 					}
 					if ((unsigned int)(*p - 32) >= (unsigned int)Count)
 						advance = 0;
@@ -180,10 +178,10 @@ int LHText::DrawActualTextSprites(long x, long y, char* start, char* end, unsign
 				if (c >= 32)
 				{
 					LHSprite* glyph = &Sprites[c - 32];
-					if (g_lhScreen.depth == 16)
-						gLHDraw.Sprite16(penX, y, glyph);
+					if (LHSys::GetScreen().depth == 16)
+						LHSys::GetDraw().Sprite16(penX, y, glyph);
 					else
-						gLHDraw.Sprite24(penX, y, glyph);
+						LHSys::GetDraw().Sprite24(penX, y, glyph);
 					int advance;
 					if ((unsigned int)(*p - 32) >= (unsigned int)Count)
 						advance = 0;
@@ -220,12 +218,12 @@ int LHText::DrawActualTextSprites(long x, long y, char* start, char* end, unsign
 				else
 				{
 					LHSprite* glyph = &Sprites[c - 32];
-					if (g_lhScreen.depth == 16)
-						gLHDraw.Sprite16(penX, y, glyph, 1, 0, (LHPixel16*)g_lhScreen.backAddress,
-						                 g_lhScreen.backPixelPitch);
+					if (LHSys::GetScreen().depth == 16)
+						LHSys::GetDraw().Sprite16(penX, y, glyph, 1, 0, (LHPixel16*)LHSys::GetScreen().backAddress,
+						                          LHSys::GetScreen().backPixelPitch);
 					else
-						gLHDraw.Sprite24(penX, y, glyph, 1, (LHColor*)g_lhScreen.backAddress,
-						                 g_lhScreen.backPixelPitch);
+						LHSys::GetDraw().Sprite24(penX, y, glyph, 1, (LHColor*)LHSys::GetScreen().backAddress,
+						                          LHSys::GetScreen().backPixelPitch);
 					if ((unsigned int)(*p - 32) < (unsigned int)Count)
 						penX += Sprites[*p - 32].Width;
 				}
@@ -242,14 +240,16 @@ underline:
 		int height2 = Count ? Sprites->Height : 0;
 		int underlineY2 = height2 + y;
 		int underlineY1 = height1 + y;
-		if (g_lhScreen.depth == 16)
+		if (LHSys::GetScreen().depth == 16)
 		{
-			unsigned int packed = ((unsigned int)(uint8_t)(Color.r >> g_lhScreen.redScale) << g_lhScreen.RedShift) +
-			                      ((unsigned int)(uint8_t)(Color.b >> g_lhScreen.BlueScale) << g_lhScreen.BlueShift);
-			packed += (unsigned int)(uint8_t)(Color.g >> g_lhScreen.GreenScale) << g_lhScreen.GreenShift;
+			unsigned int packed =
+				((unsigned int)(uint8_t)(Color.r >> LHSys::GetScreen().redScale) << LHSys::GetScreen().RedShift) +
+				((unsigned int)(uint8_t)(Color.b >> LHSys::GetScreen().BlueScale) << LHSys::GetScreen().BlueShift);
+			packed += (unsigned int)(uint8_t)(Color.g >> LHSys::GetScreen().GreenScale)
+			          << LHSys::GetScreen().GreenShift;
 			LHPixel16 pix;
 			pix.value = (uint16_t)packed;
-			return gLHDraw.HVLine16(x, underlineY2, penX, underlineY1, pix, 1);
+			return LHSys::GetDraw().HVLine16(x, underlineY2, penX, underlineY1, pix, 1);
 		}
 		else
 		{
@@ -257,7 +257,7 @@ underline:
 			col.b = Color.b;
 			col.g = Color.g;
 			col.r = Color.r;
-			return gLHDraw.HVLine24(x, underlineY2, penX, underlineY1, col, 1);
+			return LHSys::GetDraw().HVLine24(x, underlineY2, penX, underlineY1, col, 1);
 		}
 	}
 	return result;
@@ -267,12 +267,12 @@ int LHText::Draw(long x, long y, char* text, unsigned long flags)
 {
 	// TODO(nonmatching): stack layout / register allocation
 	char*    lineStart = text;
-	LHRegion savedGraphicsWindow = g_lhScreen.GraphicsWindow;
-	g_lhScreen.GraphicsWindow = g_lhScreen.TextWindow;
-	int lineWidth = g_lhScreen.TextWindow.end.x - g_lhScreen.TextWindow.start.x + 1;
-	int penY = g_lhScreen.TextWindow.start.y + y;
-	int textLeft = g_lhScreen.TextWindow.start.x;
-	int penX = g_lhScreen.TextWindow.start.x + x;
+	LHRegion savedGraphicsWindow = LHSys::GetScreen().GraphicsWindow;
+	LHSys::GetScreen().GraphicsWindow = LHSys::GetScreen().TextWindow;
+	int lineWidth = LHSys::GetScreen().TextWindow.end.x - LHSys::GetScreen().TextWindow.start.x + 1;
+	int penY = LHSys::GetScreen().TextWindow.start.y + y;
+	int textLeft = LHSys::GetScreen().TextWindow.start.x;
+	int penX = LHSys::GetScreen().TextWindow.start.x + x;
 	Flags = flags;
 	int startX = penX;
 	int spaceCount = 0;
@@ -429,7 +429,7 @@ int LHText::Draw(long x, long y, char* text, unsigned long flags)
 			lineX = startX + (lineWidth + startX - penX) / 2;
 	}
 	DrawActualTextSprites(lineX, penY, lineStart, text, 0);
-	g_lhScreen.GraphicsWindow = savedGraphicsWindow;
+	LHSys::GetScreen().GraphicsWindow = savedGraphicsWindow;
 	return 0;
 }
 
@@ -440,7 +440,7 @@ int LHText::DrawSimple(long x, long y, char* text, LHColor* color, int mode)
 	uint8_t b = 0;
 	uint8_t g = 0;
 	uint8_t r = 0;
-	if (g_lhScreen.PBackSurface->GetDC(&hdc))
+	if (LHSys::GetScreen().PBackSurface->GetDC(&hdc))
 		return 2;
 	if (g_lhTextFontUninit)
 	{
@@ -505,6 +505,6 @@ int LHText::DrawSimple(long x, long y, char* text, LHColor* color, int mode)
 		y += 13;
 	} while (!done);
 
-	g_lhScreen.PBackSurface->ReleaseDC(hdc);
+	LHSys::GetScreen().PBackSurface->ReleaseDC(hdc);
 	return 0;
 }

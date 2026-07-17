@@ -13,24 +13,12 @@
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
 #include <Lionhead/LHLib/ver5.0/LHString.h>
 #include <Lionhead/LHLib/ver5.0/LHText.h>
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
 
-extern LHScreen g_lhScreen; // 0xE85050 the global LHScreen instance
+// NB this TU builds with /Ob0, so the LHSys accessors would not inline; the
+// system aggregate's members are reached through LHSys::TheSystem directly.
 
-// The front-end resource bank filled by the LOAD_BMP/LOAD_SPRITES/LOAD_DATA
-// commands and read back by the front end. 100 slots at 0xE85964.
-// TODO: fabricated names; real home unknown (probably a member of LHSystem,
-// like most globals referenced here — 0xE85964 = LHSystem 0xE85040 + 0x924).
-struct LHScriptResource
-{
-	long  type; /* 1 = raw data, 2 = BMP sprite, 3 = sprite list */
-	void* data;
-	char  name[256];
-};
-extern LHScriptResource g_lhScriptResources[100]; // 0xE85964
-
-extern LHConvert g_lhConvert;            // 0xE85874
-extern LHText    g_lhText;               // 0xE8C084
 extern LHPixel16 g_lhTransparentPixel16; // 0xE91EDC TODO: fabricated name
 extern LHColor   g_lhTransparentColour;  // 0xE91EE0 TODO: fabricated name
 
@@ -227,8 +215,8 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 		{
 		case 1: // OPEN_SCREEN
 			if (pram->number[3] == 1)
-				g_lhScreen.SetFullscreenMode(1);
-			return (LH_RETURN)g_lhScreen.Open(pram->number[0], pram->number[1], pram->number[2]);
+				LHSys::TheSystem.screen.SetFullscreenMode(1);
+			return (LH_RETURN)LHSys::TheSystem.screen.Open(pram->number[0], pram->number[1], pram->number[2]);
 		case 2: // BUILD_ALL_MNT_TEXTURE
 			SetBuildAllMntTexture(pram->number[0]);
 			return LH_OK;
@@ -271,11 +259,11 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
 			result = (LH_RETURN)LHLoadDataToMemory(LHStringOps<T>::makechar(pram->text[0]),
-			                                       &g_lhScriptResources[pram->number[1]].data, NULL);
+			                                       &LHSys::TheSystem.ScriptResources[pram->number[1]].data, NULL);
 			if (result)
 				return result;
-			g_lhScriptResources[pram->number[1]].type = 1;
-			strcpy(g_lhScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
+			LHSys::TheSystem.ScriptResources[pram->number[1]].type = 1;
+			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return result;
 		}
 		// TODO: the original shares a single "return result" tail and the type=3 +
@@ -293,7 +281,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 #line 312 "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHScript.cpp"
 			LHSprite* sprite = new (__FILE__, __LINE__) LHSprite;
 			result = LH_ERROR;
-			g_lhScriptResources[pram->number[1]].data = sprite;
+			LHSys::TheSystem.ScriptResources[pram->number[1]].data = sprite;
 			if (!sprite)
 				return result;
 			result = LHLoadABMP(LHStringOps<T>::makechar(pram->text[0]), sprite, 0);
@@ -302,8 +290,8 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				delete sprite;
 				return result;
 			}
-			g_lhScriptResources[pram->number[1]].type = 2;
-			strcpy(g_lhScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
+			LHSys::TheSystem.ScriptResources[pram->number[1]].type = 2;
+			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return LH_OK;
 		}
 		case 18: // LOAD_SPRITES_DEPTH
@@ -313,7 +301,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 #line 333
 			LHSpriteList* spriteList = new (__FILE__, __LINE__) LHSpriteList;
 			result = LH_ERROR;
-			g_lhScriptResources[pram->number[1]].data = spriteList;
+			LHSys::TheSystem.ScriptResources[pram->number[1]].data = spriteList;
 			if (!spriteList)
 				return result;
 			if (pram->number[2] != 16 && pram->number[2] != 24)
@@ -321,15 +309,15 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				delete spriteList;
 				return result;
 			}
-			result = g_lhConvert.ToSprites(LHStringOps<T>::makechar(pram->text[0]), spriteList, NULL,
-			                               pram->number[2] == 16 ? 3 : 1, NULL, NULL, NULL);
+			result = LHSys::TheSystem.convert.ToSprites(LHStringOps<T>::makechar(pram->text[0]), spriteList, NULL,
+			                                            pram->number[2] == 16 ? 3 : 1, NULL, NULL, NULL);
 			if (result)
 			{
 				delete spriteList;
 				return result;
 			}
-			g_lhScriptResources[pram->number[1]].type = 3;
-			strcpy(g_lhScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
+			LHSys::TheSystem.ScriptResources[pram->number[1]].type = 3;
+			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return result;
 		}
 		case 19: // LOAD_SPRITES
@@ -338,24 +326,27 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 				return LH_ERROR;
 			LHSpriteList* spriteList = new (__FILE__, __LINE__) LHSpriteList;
 			result = LH_ERROR;
-			g_lhScriptResources[pram->number[1]].data = spriteList;
+			LHSys::TheSystem.ScriptResources[pram->number[1]].data = spriteList;
 			if (!spriteList)
 				return result;
-			result = g_lhConvert.ToSprites(LHStringOps<T>::makechar(pram->text[0]), spriteList, NULL,
-			                               g_lhScreen.Depth() == 16 ? 3 : 1, NULL, NULL, NULL);
+			result =
+				LHSys::TheSystem.convert.ToSprites(LHStringOps<T>::makechar(pram->text[0]), spriteList, NULL,
+			                                       LHSys::TheSystem.screen.Depth() == 16 ? 3 : 1, NULL, NULL, NULL);
 			if (result)
 			{
 				delete spriteList;
 				return result;
 			}
-			g_lhScriptResources[pram->number[1]].type = 3;
-			strcpy(g_lhScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
+			LHSys::TheSystem.ScriptResources[pram->number[1]].type = 3;
+			strcpy(LHSys::TheSystem.ScriptResources[pram->number[1]].name, LHStringOps<T>::makechar(pram->text[0]));
 			return result;
 		}
 		case 21: // LOAD_FONT_DEPTH
-			return g_lhText.LoadFont(LHStringOps<T>::makechar(pram->text[0]), pram->number[1] != 16 ? 1 : 3);
+			return LHSys::TheSystem.text.LoadFont(LHStringOps<T>::makechar(pram->text[0]),
+			                                      pram->number[1] != 16 ? 1 : 3);
 		case 22: // LOAD_FONT
-			return g_lhText.LoadFont(LHStringOps<T>::makechar(pram->text[0]), g_lhScreen.Depth() == 16 ? 3 : 1);
+			return LHSys::TheSystem.text.LoadFont(LHStringOps<T>::makechar(pram->text[0]),
+			                                      LHSys::TheSystem.screen.Depth() == 16 ? 3 : 1);
 		case 23: // SET_TRANSPARENCY
 			g_lhTransparentPixel16.Set(pram->number[0], pram->number[1], pram->number[2]);
 			g_lhTransparentColour.Set(pram->number[0], pram->number[1], pram->number[2]);
@@ -905,7 +896,7 @@ template <class T> LH_RETURN LHScriptX<T>::GetConditionValue(T* name, long* valu
 		switch (index)
 		{
 		case 0: // MAX_DEPTH
-			*value = g_lhScreen.MaxDepth();
+			*value = LHSys::TheSystem.screen.MaxDepth();
 			return LH_OK;
 		case 1:
 			*value = LH_OK;

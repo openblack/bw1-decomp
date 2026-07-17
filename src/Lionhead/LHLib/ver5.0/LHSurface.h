@@ -88,6 +88,8 @@ struct LHSurface
 	// BW1W120 007e67e0 LHSurface::CopySurface(LHRegion *, LHCoord *, IndirectX::IDirectDrawSurface7 *, LH_COPY_DIRECTION, int)
 	int CopySurface(LHRegion* region, LHCoord* coord, IDirectDrawSurface7* dest, LH_COPY_DIRECTION direction,
 	                int useColorKey);
+	// BW1W120 007dc8b0 LHSurface::CopyRegionFromScreen(LHRegion *, LHCoord *, int)
+	int CopyRegionFromScreen(LHRegion* region, LHCoord* pos, int from_primary);
 	// BW1W120 007e68e0 LHSurface::Add(void)
 	void Add();
 	// BW1W120 007e6920 LHSurface::Remove(void)

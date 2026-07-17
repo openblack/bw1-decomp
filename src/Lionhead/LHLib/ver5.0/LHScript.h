@@ -23,6 +23,16 @@ template <class T> struct LHScriptPramX
 	float flt[12]; // TODO: fabricated member name
 };
 
+// The front-end resource bank filled by the LOAD_BMP/LOAD_SPRITES/LOAD_DATA
+// commands and read back by the front end. 100 slots embedded in LHSys at +0x924.
+// TODO: fabricated names; real home unknown.
+struct LHScriptResource
+{
+	long  type; /* 1 = raw data, 2 = BMP sprite, 3 = sprite list */
+	void* data;
+	char  name[256];
+};
+
 template <class T> struct LHScriptVariable
 {
 	long                 type;  /* 0x0 0 = number, 1 = string, 2 = float */

@@ -6,9 +6,7 @@
 #include <Lionhead/LH3DLib/development/LHCoord.h>
 #include <Lionhead/LH3DLib/development/LHRegion.h>
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
-
-extern LHScreen g_lhScreen; // 0xE85050 the global LHScreen instance (draw target = back buffer)
-extern LHDraw   gLHDraw;    // 0xE8586C the global LHDraw context
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>
 
 extern uint16_t g_transColor[4];  // 0xE91EDC
 extern uint8_t  g_embossShade[4]; // 0xC34178
@@ -37,7 +35,8 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color)
 	}
 	if (top == bottom)
 	{
-		uint16_t* p = (uint16_t*)(g_lhScreen.backAddress + 2 * (left + top * g_lhScreen.backPixelPitch));
+		uint16_t* p =
+			(uint16_t*)(LHSys::GetScreen().backAddress + 2 * (left + top * LHSys::GetScreen().backPixelPitch));
 		for (long i = right - left + 1; i; --i)
 			*p++ = color.value;
 		return 0;
@@ -45,8 +44,9 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color)
 	else if (left == right)
 	{
 		long n = bottom - top + 1;
-		for (uint16_t* p = (uint16_t*)(g_lhScreen.backAddress + 2 * (left + top * g_lhScreen.backPixelPitch)); n;
-		     p += g_lhScreen.backPixelPitch)
+		for (uint16_t* p =
+		         (uint16_t*)(LHSys::GetScreen().backAddress + 2 * (left + top * LHSys::GetScreen().backPixelPitch));
+		     n; p += LHSys::GetScreen().backPixelPitch)
 		{
 			*p = color.value;
 			--n;
@@ -81,8 +81,8 @@ int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color)
 	if (top == bottom)
 	{
 		long     n = right - left + 1;
-		uint8_t* p = (uint8_t*)(left + top * g_lhScreen.backPixelPitch + g_lhScreen.backAddress +
-		                        2 * (left + top * g_lhScreen.backPixelPitch));
+		uint8_t* p = (uint8_t*)(left + top * LHSys::GetScreen().backPixelPitch + LHSys::GetScreen().backAddress +
+		                        2 * (left + top * LHSys::GetScreen().backPixelPitch));
 		while (n)
 		{
 			p[2] = color.r;
@@ -96,15 +96,15 @@ int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color)
 	else if (left == right)
 	{
 		long     n = bottom - top + 1;
-		uint8_t* p = (uint8_t*)(left + top * g_lhScreen.backPixelPitch + g_lhScreen.backAddress +
-		                        2 * (left + top * g_lhScreen.backPixelPitch));
+		uint8_t* p = (uint8_t*)(left + top * LHSys::GetScreen().backPixelPitch + LHSys::GetScreen().backAddress +
+		                        2 * (left + top * LHSys::GetScreen().backPixelPitch));
 		while (n)
 		{
 			p[2] = color.r;
 			p[1] = color.r;
 			*p = color.b;
 			--n;
-			p += 3 * g_lhScreen.backPixelPitch;
+			p += 3 * LHSys::GetScreen().backPixelPitch;
 		}
 		return 0;
 	}
@@ -139,15 +139,16 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color, unsign
 		// Vertical run.
 		if (left != right)
 			return 3;
-		if (left > g_lhScreen.GraphicsWindow.end.x || left < g_lhScreen.GraphicsWindow.start.x ||
-		    top > g_lhScreen.GraphicsWindow.end.y || bottom < g_lhScreen.GraphicsWindow.start.y)
+		if (left > LHSys::GetScreen().GraphicsWindow.end.x || left < LHSys::GetScreen().GraphicsWindow.start.x ||
+		    top > LHSys::GetScreen().GraphicsWindow.end.y || bottom < LHSys::GetScreen().GraphicsWindow.start.y)
 			return 2;
-		if (top < g_lhScreen.GraphicsWindow.start.y)
-			top = g_lhScreen.GraphicsWindow.start.y;
-		if (bottom > g_lhScreen.GraphicsWindow.end.y)
-			bottom = g_lhScreen.GraphicsWindow.end.y;
+		if (top < LHSys::GetScreen().GraphicsWindow.start.y)
+			top = LHSys::GetScreen().GraphicsWindow.start.y;
+		if (bottom > LHSys::GetScreen().GraphicsWindow.end.y)
+			bottom = LHSys::GetScreen().GraphicsWindow.end.y;
 		long      n = bottom - top + 1;
-		uint16_t* p = (uint16_t*)(g_lhScreen.backAddress + 2 * (left + top * g_lhScreen.backPixelPitch));
+		uint16_t* p =
+			(uint16_t*)(LHSys::GetScreen().backAddress + 2 * (left + top * LHSys::GetScreen().backPixelPitch));
 		if (!n)
 			return 0;
 		while (true)
@@ -158,59 +159,66 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color, unsign
 			}
 			else if ((mode & 2) != 0)
 			{
-				*p = (uint16_t)(((uint16_t)(g_lhScreen.ColorLSBMask & *p) +
-				                 (uint16_t)(g_lhScreen.ColorLSBMask & color.value)) >>
+				*p = (uint16_t)(((uint16_t)(LHSys::GetScreen().ColorLSBMask & *p) +
+				                 (uint16_t)(LHSys::GetScreen().ColorLSBMask & color.value)) >>
 				                1);
 			}
 			else if ((mode & 4) != 0)
 			{
-				uint16_t r = g_lhScreen.RedMask;
+				uint16_t r = LHSys::GetScreen().RedMask;
 				uint8_t  d = *(uint8_t*)p;
-				int      rr = (uint8_t)(g_lhScreen.RedMask & color.value) + (uint8_t)(g_lhScreen.RedMask & d);
-				if (rr < (int)g_lhScreen.RedMask)
+				int      rr =
+					(uint8_t)(LHSys::GetScreen().RedMask & color.value) + (uint8_t)(LHSys::GetScreen().RedMask & d);
+				if (rr < (int)LHSys::GetScreen().RedMask)
 					r = (uint16_t)rr;
-				uint16_t g = (uint8_t)(g_lhScreen.GreenMask & color.value) + (uint8_t)(d & g_lhScreen.GreenMask);
-				if ((unsigned)((uint8_t)(g_lhScreen.GreenMask & color.value) + (uint8_t)(d & g_lhScreen.GreenMask)) >=
-				    g_lhScreen.GreenMask)
-					g = g_lhScreen.GreenMask;
-				unsigned b = (uint8_t)(d & g_lhScreen.BlueMask) + (uint8_t)(g_lhScreen.BlueMask & color.value);
-				if (b >= g_lhScreen.BlueMask)
-					b = g_lhScreen.BlueMask;
+				uint16_t g =
+					(uint8_t)(LHSys::GetScreen().GreenMask & color.value) + (uint8_t)(d & LHSys::GetScreen().GreenMask);
+				if ((unsigned)((uint8_t)(LHSys::GetScreen().GreenMask & color.value) +
+				               (uint8_t)(d & LHSys::GetScreen().GreenMask)) >= LHSys::GetScreen().GreenMask)
+					g = LHSys::GetScreen().GreenMask;
+				unsigned b =
+					(uint8_t)(d & LHSys::GetScreen().BlueMask) + (uint8_t)(LHSys::GetScreen().BlueMask & color.value);
+				if (b >= LHSys::GetScreen().BlueMask)
+					b = LHSys::GetScreen().BlueMask;
 				*p = (uint16_t)(r + g + b);
 			}
 			else if ((mode & 8) != 0)
 			{
 				uint8_t d = *(uint8_t*)p;
-				*p = ((uint8_t)(g_lhScreen.RedMask & d) != (uint8_t)(g_lhScreen.RedMask & color.value)
-				          ? (uint8_t)(g_lhScreen.RedMask & d) - (uint8_t)(g_lhScreen.RedMask & color.value)
+				*p = ((uint8_t)(LHSys::GetScreen().RedMask & d) != (uint8_t)(LHSys::GetScreen().RedMask & color.value)
+				          ? (uint8_t)(LHSys::GetScreen().RedMask & d) -
+				                (uint8_t)(LHSys::GetScreen().RedMask & color.value)
 				          : 0) +
-				     ((uint8_t)(d & g_lhScreen.GreenMask) != (uint8_t)(g_lhScreen.GreenMask & color.value)
-				          ? (uint8_t)(d & g_lhScreen.GreenMask) - (uint8_t)(g_lhScreen.GreenMask & color.value)
+				     ((uint8_t)(d & LHSys::GetScreen().GreenMask) !=
+				              (uint8_t)(LHSys::GetScreen().GreenMask & color.value)
+				          ? (uint8_t)(d & LHSys::GetScreen().GreenMask) -
+				                (uint8_t)(LHSys::GetScreen().GreenMask & color.value)
 				          : 0) +
-				     ((uint8_t)(d & g_lhScreen.BlueMask) != (uint8_t)(g_lhScreen.BlueMask & color.value)
-				          ? (uint8_t)(d & g_lhScreen.BlueMask) - (uint8_t)(g_lhScreen.BlueMask & color.value)
+				     ((uint8_t)(d & LHSys::GetScreen().BlueMask) != (uint8_t)(LHSys::GetScreen().BlueMask & color.value)
+				          ? (uint8_t)(d & LHSys::GetScreen().BlueMask) -
+				                (uint8_t)(LHSys::GetScreen().BlueMask & color.value)
 				          : 0);
 			}
 			else
 			{
 				*p = color.value;
 			}
-			p += g_lhScreen.backPixelPitch;
+			p += LHSys::GetScreen().backPixelPitch;
 			if (!--n)
 				return 0;
 		}
 	}
 
 	// Horizontal run.
-	if (top > g_lhScreen.GraphicsWindow.end.y || top < g_lhScreen.GraphicsWindow.start.y ||
-	    left > g_lhScreen.GraphicsWindow.end.x || right < g_lhScreen.GraphicsWindow.start.x)
+	if (top > LHSys::GetScreen().GraphicsWindow.end.y || top < LHSys::GetScreen().GraphicsWindow.start.y ||
+	    left > LHSys::GetScreen().GraphicsWindow.end.x || right < LHSys::GetScreen().GraphicsWindow.start.x)
 		return 2;
-	if (left < g_lhScreen.GraphicsWindow.start.x)
-		left = g_lhScreen.GraphicsWindow.start.x;
-	if (right > g_lhScreen.GraphicsWindow.end.x)
-		right = g_lhScreen.GraphicsWindow.end.x;
+	if (left < LHSys::GetScreen().GraphicsWindow.start.x)
+		left = LHSys::GetScreen().GraphicsWindow.start.x;
+	if (right > LHSys::GetScreen().GraphicsWindow.end.x)
+		right = LHSys::GetScreen().GraphicsWindow.end.x;
 	long      n = right - left + 1;
-	uint16_t* p = (uint16_t*)(g_lhScreen.backAddress + 2 * (left + top * g_lhScreen.backPixelPitch));
+	uint16_t* p = (uint16_t*)(LHSys::GetScreen().backAddress + 2 * (left + top * LHSys::GetScreen().backPixelPitch));
 	if (!n)
 		return 0;
 	while (true)
@@ -221,38 +229,42 @@ int LHDraw::HVLine16(long x0, long y0, long x1, long y1, LHPixel16 color, unsign
 		}
 		else if ((mode & 2) != 0)
 		{
-			*p = (uint16_t)(((uint16_t)(g_lhScreen.ColorLSBMask & color.value) +
-			                 (uint16_t)(g_lhScreen.ColorLSBMask & *p)) >>
+			*p = (uint16_t)(((uint16_t)(LHSys::GetScreen().ColorLSBMask & color.value) +
+			                 (uint16_t)(LHSys::GetScreen().ColorLSBMask & *p)) >>
 			                1);
 		}
 		else if ((mode & 4) != 0)
 		{
-			uint16_t r = g_lhScreen.RedMask;
+			uint16_t r = LHSys::GetScreen().RedMask;
 			uint8_t  d = *(uint8_t*)p;
-			int      rr = (uint8_t)(g_lhScreen.RedMask & color.value) + (uint8_t)(g_lhScreen.RedMask & d);
-			if (rr < (int)g_lhScreen.RedMask)
+			int rr = (uint8_t)(LHSys::GetScreen().RedMask & color.value) + (uint8_t)(LHSys::GetScreen().RedMask & d);
+			if (rr < (int)LHSys::GetScreen().RedMask)
 				r = (uint16_t)rr;
-			uint16_t g = (uint8_t)(g_lhScreen.GreenMask & color.value) + (uint8_t)(d & g_lhScreen.GreenMask);
-			if ((unsigned)((uint8_t)(g_lhScreen.GreenMask & color.value) + (uint8_t)(d & g_lhScreen.GreenMask)) >=
-			    g_lhScreen.GreenMask)
-				g = g_lhScreen.GreenMask;
-			unsigned b = (uint8_t)(d & g_lhScreen.BlueMask) + (uint8_t)(g_lhScreen.BlueMask & color.value);
-			if (b >= g_lhScreen.BlueMask)
-				b = g_lhScreen.BlueMask;
+			uint16_t g =
+				(uint8_t)(LHSys::GetScreen().GreenMask & color.value) + (uint8_t)(d & LHSys::GetScreen().GreenMask);
+			if ((unsigned)((uint8_t)(LHSys::GetScreen().GreenMask & color.value) +
+			               (uint8_t)(d & LHSys::GetScreen().GreenMask)) >= LHSys::GetScreen().GreenMask)
+				g = LHSys::GetScreen().GreenMask;
+			unsigned b =
+				(uint8_t)(d & LHSys::GetScreen().BlueMask) + (uint8_t)(LHSys::GetScreen().BlueMask & color.value);
+			if (b >= LHSys::GetScreen().BlueMask)
+				b = LHSys::GetScreen().BlueMask;
 			*p = (uint16_t)(r + g + b);
 		}
 		else if ((mode & 8) != 0)
 		{
 			uint8_t d = *(uint8_t*)p;
-			*p = ((uint8_t)(g_lhScreen.RedMask & d) != (uint8_t)(g_lhScreen.RedMask & color.value)
-			          ? (uint8_t)(g_lhScreen.RedMask & d) - (uint8_t)(g_lhScreen.RedMask & color.value)
-			          : 0) +
-			     ((uint8_t)(d & g_lhScreen.GreenMask) != (uint8_t)(g_lhScreen.GreenMask & color.value)
-			          ? (uint8_t)(d & g_lhScreen.GreenMask) - (uint8_t)(g_lhScreen.GreenMask & color.value)
-			          : 0) +
-			     ((uint8_t)(d & g_lhScreen.BlueMask) != (uint8_t)(g_lhScreen.BlueMask & color.value)
-			          ? (uint8_t)(d & g_lhScreen.BlueMask) - (uint8_t)(g_lhScreen.BlueMask & color.value)
-			          : 0);
+			*p =
+				((uint8_t)(LHSys::GetScreen().RedMask & d) != (uint8_t)(LHSys::GetScreen().RedMask & color.value)
+			         ? (uint8_t)(LHSys::GetScreen().RedMask & d) - (uint8_t)(LHSys::GetScreen().RedMask & color.value)
+			         : 0) +
+				((uint8_t)(d & LHSys::GetScreen().GreenMask) != (uint8_t)(LHSys::GetScreen().GreenMask & color.value)
+			         ? (uint8_t)(d & LHSys::GetScreen().GreenMask) -
+			               (uint8_t)(LHSys::GetScreen().GreenMask & color.value)
+			         : 0) +
+				((uint8_t)(d & LHSys::GetScreen().BlueMask) != (uint8_t)(LHSys::GetScreen().BlueMask & color.value)
+			         ? (uint8_t)(d & LHSys::GetScreen().BlueMask) - (uint8_t)(LHSys::GetScreen().BlueMask & color.value)
+			         : 0);
 		}
 		else
 		{
@@ -291,15 +303,15 @@ int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color, unsigned
 	{
 		if (left != right)
 			return 3;
-		if (left > g_lhScreen.GraphicsWindow.end.x || left < g_lhScreen.GraphicsWindow.start.x ||
-		    top > g_lhScreen.GraphicsWindow.end.y || bottom < g_lhScreen.GraphicsWindow.start.y)
+		if (left > LHSys::GetScreen().GraphicsWindow.end.x || left < LHSys::GetScreen().GraphicsWindow.start.x ||
+		    top > LHSys::GetScreen().GraphicsWindow.end.y || bottom < LHSys::GetScreen().GraphicsWindow.start.y)
 			return 2;
-		if (top < g_lhScreen.GraphicsWindow.start.y)
-			top = g_lhScreen.GraphicsWindow.start.y;
-		if (bottom > g_lhScreen.GraphicsWindow.end.y)
-			bottom = g_lhScreen.GraphicsWindow.end.y;
-		uint8_t* p = (uint8_t*)(left + top * g_lhScreen.backPixelPitch + g_lhScreen.backAddress +
-		                        2 * (left + top * g_lhScreen.backPixelPitch));
+		if (top < LHSys::GetScreen().GraphicsWindow.start.y)
+			top = LHSys::GetScreen().GraphicsWindow.start.y;
+		if (bottom > LHSys::GetScreen().GraphicsWindow.end.y)
+			bottom = LHSys::GetScreen().GraphicsWindow.end.y;
+		uint8_t* p = (uint8_t*)(left + top * LHSys::GetScreen().backPixelPitch + LHSys::GetScreen().backAddress +
+		                        2 * (left + top * LHSys::GetScreen().backPixelPitch));
 		long     n = bottom - top + 1;
 		while (n)
 		{
@@ -318,13 +330,13 @@ int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color, unsigned
 			else if ((mode & 4) != 0)
 			{
 				int bch = *p + color.b;
-				if (bch >= g_lhScreen.MaxBlue)
-					bch = g_lhScreen.MaxBlue;
+				if (bch >= LHSys::GetScreen().MaxBlue)
+					bch = LHSys::GetScreen().MaxBlue;
 				int gch = color.g + p[1];
-				if (gch >= g_lhScreen.MaxGreen)
-					gch = g_lhScreen.MaxGreen;
-				uint8_t rch = g_lhScreen.maxRed;
-				if (color.r + p[2] < g_lhScreen.maxRed)
+				if (gch >= LHSys::GetScreen().MaxGreen)
+					gch = LHSys::GetScreen().MaxGreen;
+				uint8_t rch = LHSys::GetScreen().maxRed;
+				if (color.r + p[2] < LHSys::GetScreen().maxRed)
 					rch = (uint8_t)(color.r + p[2]);
 				p[2] = rch;
 				p[1] = (uint8_t)gch;
@@ -345,21 +357,21 @@ int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color, unsigned
 				p[1] = color.r;
 				*p = color.b;
 			}
-			p += 3 * g_lhScreen.backPixelPitch;
+			p += 3 * LHSys::GetScreen().backPixelPitch;
 			--n;
 		}
 		return 0;
 	}
 
-	if (top > g_lhScreen.GraphicsWindow.end.y || top < g_lhScreen.GraphicsWindow.start.y ||
-	    left > g_lhScreen.GraphicsWindow.end.x || right < g_lhScreen.GraphicsWindow.start.x)
+	if (top > LHSys::GetScreen().GraphicsWindow.end.y || top < LHSys::GetScreen().GraphicsWindow.start.y ||
+	    left > LHSys::GetScreen().GraphicsWindow.end.x || right < LHSys::GetScreen().GraphicsWindow.start.x)
 		return 2;
-	if (left < g_lhScreen.GraphicsWindow.start.x)
-		left = g_lhScreen.GraphicsWindow.start.x;
-	if (right > g_lhScreen.GraphicsWindow.end.x)
-		right = g_lhScreen.GraphicsWindow.end.x;
-	uint8_t* p = (uint8_t*)(left + top * g_lhScreen.backPixelPitch + g_lhScreen.backAddress +
-	                        2 * (left + top * g_lhScreen.backPixelPitch));
+	if (left < LHSys::GetScreen().GraphicsWindow.start.x)
+		left = LHSys::GetScreen().GraphicsWindow.start.x;
+	if (right > LHSys::GetScreen().GraphicsWindow.end.x)
+		right = LHSys::GetScreen().GraphicsWindow.end.x;
+	uint8_t* p = (uint8_t*)(left + top * LHSys::GetScreen().backPixelPitch + LHSys::GetScreen().backAddress +
+	                        2 * (left + top * LHSys::GetScreen().backPixelPitch));
 	long     n = right - left + 1;
 	while (n)
 	{
@@ -378,14 +390,14 @@ int LHDraw::HVLine24(long x0, long y0, long x1, long y1, LHColor color, unsigned
 		else if ((mode & 4) != 0)
 		{
 			int bch = color.b + *p;
-			if (bch >= g_lhScreen.MaxBlue)
-				bch = g_lhScreen.MaxBlue;
+			if (bch >= LHSys::GetScreen().MaxBlue)
+				bch = LHSys::GetScreen().MaxBlue;
 			int gch = color.g + p[1];
-			if (gch >= g_lhScreen.MaxGreen)
-				gch = g_lhScreen.MaxGreen;
+			if (gch >= LHSys::GetScreen().MaxGreen)
+				gch = LHSys::GetScreen().MaxGreen;
 			int rch = p[2] + color.r;
-			if (rch >= g_lhScreen.maxRed)
-				rch = g_lhScreen.maxRed;
+			if (rch >= LHSys::GetScreen().maxRed)
+				rch = LHSys::GetScreen().maxRed;
 			p[2] = (uint8_t)rch;
 			p[1] = (uint8_t)gch;
 			*p = (uint8_t)bch;
@@ -443,18 +455,18 @@ int LHDraw::Line16(long x0, long y0, long x1, long y1, LHPixel16 color, unsigned
 
 int LHDraw::Box16(long left, long top, long right, long bottom, LHPixel16 color)
 {
-	gLHDraw.HVLine16(left, top, right, top, color);
-	gLHDraw.HVLine16(right, top, right, bottom, color);
-	gLHDraw.HVLine16(left, bottom, right, bottom, color);
-	return gLHDraw.HVLine16(left, top, left, bottom, color);
+	LHSys::GetDraw().HVLine16(left, top, right, top, color);
+	LHSys::GetDraw().HVLine16(right, top, right, bottom, color);
+	LHSys::GetDraw().HVLine16(left, bottom, right, bottom, color);
+	return LHSys::GetDraw().HVLine16(left, top, left, bottom, color);
 }
 
 int LHDraw::Box24(long left, long top, long right, long bottom, LHColor color)
 {
-	gLHDraw.HVLine24(left, top, right, top, color);
-	gLHDraw.HVLine24(right, top, right, bottom, color);
-	gLHDraw.HVLine24(left, bottom, right, bottom, color);
-	return gLHDraw.HVLine24(left, top, left, bottom, color);
+	LHSys::GetDraw().HVLine24(left, top, right, top, color);
+	LHSys::GetDraw().HVLine24(right, top, right, bottom, color);
+	LHSys::GetDraw().HVLine24(left, bottom, right, bottom, color);
+	return LHSys::GetDraw().HVLine24(left, top, left, bottom, color);
 }
 
 int LHDraw::Box16(long left, long top, long right, long bottom, LHPixel16 color, unsigned long style)
@@ -476,31 +488,31 @@ int LHDraw::Box16(long left, long top, long right, long bottom, LHPixel16 color,
 		b = top;
 		t = bottom;
 	}
-	if (l > g_lhScreen.GraphicsWindow.end.x || r < g_lhScreen.GraphicsWindow.start.x ||
-	    t > g_lhScreen.GraphicsWindow.end.y || b < g_lhScreen.GraphicsWindow.start.y)
+	if (l > LHSys::GetScreen().GraphicsWindow.end.x || r < LHSys::GetScreen().GraphicsWindow.start.x ||
+	    t > LHSys::GetScreen().GraphicsWindow.end.y || b < LHSys::GetScreen().GraphicsWindow.start.y)
 		return 2;
-	if (l < g_lhScreen.GraphicsWindow.start.x)
+	if (l < LHSys::GetScreen().GraphicsWindow.start.x)
 	{
 		clip = 8;
-		l = g_lhScreen.GraphicsWindow.start.x;
+		l = LHSys::GetScreen().GraphicsWindow.start.x;
 		clipped = 8;
 	}
-	if (r > g_lhScreen.GraphicsWindow.end.x)
+	if (r > LHSys::GetScreen().GraphicsWindow.end.x)
 	{
 		clip |= 2;
-		r = g_lhScreen.GraphicsWindow.end.x;
+		r = LHSys::GetScreen().GraphicsWindow.end.x;
 		clipped = clip;
 	}
-	if (t < g_lhScreen.GraphicsWindow.start.y)
+	if (t < LHSys::GetScreen().GraphicsWindow.start.y)
 	{
 		clip |= 1;
-		t = g_lhScreen.GraphicsWindow.start.y;
+		t = LHSys::GetScreen().GraphicsWindow.start.y;
 		clipped = clip;
 	}
-	if (b > g_lhScreen.GraphicsWindow.end.y)
+	if (b > LHSys::GetScreen().GraphicsWindow.end.y)
 	{
 		clip |= 4;
-		b = g_lhScreen.GraphicsWindow.end.y;
+		b = LHSys::GetScreen().GraphicsWindow.end.y;
 		clipped = clip;
 	}
 
@@ -508,21 +520,21 @@ int LHDraw::Box16(long left, long top, long right, long bottom, LHPixel16 color,
 	{
 		if ((clip & 1) == 0)
 		{
-			result = gLHDraw.HVLine16(l, t, r, t, color);
+			result = LHSys::GetDraw().HVLine16(l, t, r, t, color);
 			clip = clipped;
 		}
 		if ((clip & 2) == 0)
 		{
-			result = gLHDraw.HVLine16(r, t, r, b, color);
+			result = LHSys::GetDraw().HVLine16(r, t, r, b, color);
 			clip = clipped;
 		}
 		if ((clip & 4) == 0)
 		{
-			result = gLHDraw.HVLine16(l, b, r, b, color);
+			result = LHSys::GetDraw().HVLine16(l, b, r, b, color);
 			clip = clipped;
 		}
 		if ((clip & 8) == 0)
-			return gLHDraw.HVLine16(l, t, l, b, color);
+			return LHSys::GetDraw().HVLine16(l, t, l, b, color);
 	}
 	else
 	{
@@ -531,32 +543,32 @@ int LHDraw::Box16(long left, long top, long right, long bottom, LHPixel16 color,
 			if (style == 17)
 			{
 				for (; t <= b; ++t)
-					gLHDraw.HVLine16(l, t, r, t, color);
+					LHSys::GetDraw().HVLine16(l, t, r, t, color);
 			}
 			else
 			{
 				for (; t <= b; ++t)
-					gLHDraw.HVLine16(l, t, r, t, color, style);
+					LHSys::GetDraw().HVLine16(l, t, r, t, color, style);
 			}
 			return 0;
 		}
 		if ((clip & 1) == 0)
 		{
-			result = gLHDraw.HVLine16(l, t, r, t, color, style);
+			result = LHSys::GetDraw().HVLine16(l, t, r, t, color, style);
 			clip = clipped;
 		}
 		if ((clip & 2) == 0)
 		{
-			result = gLHDraw.HVLine16(r, t, r, b, color, style);
+			result = LHSys::GetDraw().HVLine16(r, t, r, b, color, style);
 			clip = clipped;
 		}
 		if ((clip & 4) == 0)
 		{
-			result = gLHDraw.HVLine16(l, b, r, b, color, style);
+			result = LHSys::GetDraw().HVLine16(l, b, r, b, color, style);
 			clip = clipped;
 		}
 		if ((clip & 8) == 0)
-			return gLHDraw.HVLine16(l, t, l, b, color, style);
+			return LHSys::GetDraw().HVLine16(l, t, l, b, color, style);
 	}
 	return result;
 }
@@ -580,31 +592,31 @@ int LHDraw::Box24(long left, long top, long right, long bottom, LHColor color, u
 		b = top;
 		t = bottom;
 	}
-	if (l > g_lhScreen.GraphicsWindow.end.x || r < g_lhScreen.GraphicsWindow.start.x ||
-	    t > g_lhScreen.GraphicsWindow.end.y || b < g_lhScreen.GraphicsWindow.start.y)
+	if (l > LHSys::GetScreen().GraphicsWindow.end.x || r < LHSys::GetScreen().GraphicsWindow.start.x ||
+	    t > LHSys::GetScreen().GraphicsWindow.end.y || b < LHSys::GetScreen().GraphicsWindow.start.y)
 		return 2;
-	if (l < g_lhScreen.GraphicsWindow.start.x)
+	if (l < LHSys::GetScreen().GraphicsWindow.start.x)
 	{
 		clipped = 8;
-		l = g_lhScreen.GraphicsWindow.start.x;
+		l = LHSys::GetScreen().GraphicsWindow.start.x;
 		clip = 8;
 	}
-	if (r > g_lhScreen.GraphicsWindow.end.x)
+	if (r > LHSys::GetScreen().GraphicsWindow.end.x)
 	{
 		clip |= 2;
-		r = g_lhScreen.GraphicsWindow.end.x;
+		r = LHSys::GetScreen().GraphicsWindow.end.x;
 		clipped = clip;
 	}
-	if (t < g_lhScreen.GraphicsWindow.start.y)
+	if (t < LHSys::GetScreen().GraphicsWindow.start.y)
 	{
 		clip |= 1;
-		t = g_lhScreen.GraphicsWindow.start.y;
+		t = LHSys::GetScreen().GraphicsWindow.start.y;
 		clipped = clip;
 	}
-	if (b > g_lhScreen.GraphicsWindow.end.y)
+	if (b > LHSys::GetScreen().GraphicsWindow.end.y)
 	{
 		clip |= 4;
-		b = g_lhScreen.GraphicsWindow.end.y;
+		b = LHSys::GetScreen().GraphicsWindow.end.y;
 		clipped = clip;
 	}
 
@@ -612,21 +624,21 @@ int LHDraw::Box24(long left, long top, long right, long bottom, LHColor color, u
 	{
 		if ((clip & 1) == 0)
 		{
-			result = gLHDraw.HVLine24(l, t, r, t, color);
+			result = LHSys::GetDraw().HVLine24(l, t, r, t, color);
 			clip = clipped;
 		}
 		if ((clip & 2) == 0)
 		{
-			result = gLHDraw.HVLine24(r, t, r, b, color);
+			result = LHSys::GetDraw().HVLine24(r, t, r, b, color);
 			clip = clipped;
 		}
 		if ((clip & 4) == 0)
 		{
-			result = gLHDraw.HVLine24(l, b, r, b, color);
+			result = LHSys::GetDraw().HVLine24(l, b, r, b, color);
 			clip = clipped;
 		}
 		if ((clip & 8) == 0)
-			return gLHDraw.HVLine24(l, t, l, b, color);
+			return LHSys::GetDraw().HVLine24(l, t, l, b, color);
 	}
 	else
 	{
@@ -635,32 +647,32 @@ int LHDraw::Box24(long left, long top, long right, long bottom, LHColor color, u
 			if (style == 17)
 			{
 				for (; t <= b; ++t)
-					gLHDraw.HVLine24(l, t, r, t, color);
+					LHSys::GetDraw().HVLine24(l, t, r, t, color);
 			}
 			else
 			{
 				for (; t <= b; ++t)
-					gLHDraw.HVLine24(l, t, r, t, color, style);
+					LHSys::GetDraw().HVLine24(l, t, r, t, color, style);
 			}
 			return 0;
 		}
 		if ((clip & 1) == 0)
 		{
-			result = gLHDraw.HVLine24(l, t, r, t, color, style);
+			result = LHSys::GetDraw().HVLine24(l, t, r, t, color, style);
 			clip = clipped;
 		}
 		if ((clip & 2) == 0)
 		{
-			result = gLHDraw.HVLine24(r, t, r, b, color, style);
+			result = LHSys::GetDraw().HVLine24(r, t, r, b, color, style);
 			clip = clipped;
 		}
 		if ((clip & 4) == 0)
 		{
-			result = gLHDraw.HVLine24(l, b, r, b, color, style);
+			result = LHSys::GetDraw().HVLine24(l, b, r, b, color, style);
 			clip = clipped;
 		}
 		if ((clip & 8) == 0)
-			return gLHDraw.HVLine24(l, t, l, b, color, style);
+			return LHSys::GetDraw().HVLine24(l, t, l, b, color, style);
 	}
 	return result;
 }
@@ -698,33 +710,35 @@ int LHDraw::EmbossedBox24(long left, long top, long right, long bottom, LHColor 
 int LHDraw::Pixel16(unsigned long x, unsigned long y, LHPixel16 color, unsigned long mode)
 {
 	uint16_t* p = (uint16_t*)(this->drawAddress + 2 * (x + y * this->pixelPitch));
-	if (x > (unsigned long)g_lhScreen.GraphicsWindow.end.x || y > (unsigned long)g_lhScreen.GraphicsWindow.end.y)
+	if (x > (unsigned long)LHSys::GetScreen().GraphicsWindow.end.x ||
+	    y > (unsigned long)LHSys::GetScreen().GraphicsWindow.end.y)
 		return 2;
 	uint16_t out = color.value;
 	if ((mode & 0x580E) == 0)
 		*p = color.value;
 	if ((mode & 2) != 0)
 	{
-		*p =
-			(uint16_t)(((uint16_t)(g_lhScreen.ColorLSBMask & *p) + (uint16_t)(g_lhScreen.ColorLSBMask & color.value)) >>
-		               1);
+		*p = (uint16_t)(((uint16_t)(LHSys::GetScreen().ColorLSBMask & *p) +
+		                 (uint16_t)(LHSys::GetScreen().ColorLSBMask & color.value)) >>
+		                1);
 		return 0;
 	}
 	else if ((mode & 4) != 0)
 	{
-		uint16_t r = g_lhScreen.RedMask;
+		uint16_t r = LHSys::GetScreen().RedMask;
 		uint8_t  d = *(uint8_t*)p;
-		int      rp = (uint8_t)(g_lhScreen.RedMask & color.value);
-		int      rd = (uint8_t)(g_lhScreen.RedMask & d);
-		if (rp + rd < (int)g_lhScreen.RedMask)
+		int      rp = (uint8_t)(LHSys::GetScreen().RedMask & color.value);
+		int      rd = (uint8_t)(LHSys::GetScreen().RedMask & d);
+		if (rp + rd < (int)LHSys::GetScreen().RedMask)
 			r = (uint16_t)(rp + rd);
-		uint16_t g = (uint8_t)(g_lhScreen.GreenMask & color.value) + (uint8_t)(d & g_lhScreen.GreenMask);
-		if ((unsigned)((uint8_t)(g_lhScreen.GreenMask & color.value) + (uint8_t)(d & g_lhScreen.GreenMask)) >=
-		    g_lhScreen.GreenMask)
-			g = g_lhScreen.GreenMask;
-		unsigned b = (uint8_t)(d & g_lhScreen.BlueMask) + (uint8_t)(g_lhScreen.BlueMask & color.value);
-		if (b >= g_lhScreen.BlueMask)
-			b = g_lhScreen.BlueMask;
+		uint16_t g =
+			(uint8_t)(LHSys::GetScreen().GreenMask & color.value) + (uint8_t)(d & LHSys::GetScreen().GreenMask);
+		if ((unsigned)((uint8_t)(LHSys::GetScreen().GreenMask & color.value) +
+		               (uint8_t)(d & LHSys::GetScreen().GreenMask)) >= LHSys::GetScreen().GreenMask)
+			g = LHSys::GetScreen().GreenMask;
+		unsigned b = (uint8_t)(d & LHSys::GetScreen().BlueMask) + (uint8_t)(LHSys::GetScreen().BlueMask & color.value);
+		if (b >= LHSys::GetScreen().BlueMask)
+			b = LHSys::GetScreen().BlueMask;
 		*p = (uint16_t)(r + g + b);
 		return 0;
 	}
@@ -733,15 +747,17 @@ int LHDraw::Pixel16(unsigned long x, unsigned long y, LHPixel16 color, unsigned 
 		if ((mode & 8) != 0)
 		{
 			uint8_t d = *(uint8_t*)p;
-			out = ((uint8_t)(g_lhScreen.RedMask & d) != (uint8_t)(g_lhScreen.RedMask & color.value)
-			           ? (uint8_t)(g_lhScreen.RedMask & d) - (uint8_t)(g_lhScreen.RedMask & color.value)
-			           : 0) +
-			      ((uint8_t)(d & g_lhScreen.GreenMask) != (uint8_t)(g_lhScreen.GreenMask & color.value)
-			           ? (uint8_t)(d & g_lhScreen.GreenMask) - (uint8_t)(g_lhScreen.GreenMask & color.value)
-			           : 0) +
-			      ((uint8_t)(d & g_lhScreen.BlueMask) != (uint8_t)(g_lhScreen.BlueMask & color.value)
-			           ? (uint8_t)(d & g_lhScreen.BlueMask) - (uint8_t)(g_lhScreen.BlueMask & color.value)
-			           : 0);
+			out =
+				((uint8_t)(LHSys::GetScreen().RedMask & d) != (uint8_t)(LHSys::GetScreen().RedMask & color.value)
+			         ? (uint8_t)(LHSys::GetScreen().RedMask & d) - (uint8_t)(LHSys::GetScreen().RedMask & color.value)
+			         : 0) +
+				((uint8_t)(d & LHSys::GetScreen().GreenMask) != (uint8_t)(LHSys::GetScreen().GreenMask & color.value)
+			         ? (uint8_t)(d & LHSys::GetScreen().GreenMask) -
+			               (uint8_t)(LHSys::GetScreen().GreenMask & color.value)
+			         : 0) +
+				((uint8_t)(d & LHSys::GetScreen().BlueMask) != (uint8_t)(LHSys::GetScreen().BlueMask & color.value)
+			         ? (uint8_t)(d & LHSys::GetScreen().BlueMask) - (uint8_t)(LHSys::GetScreen().BlueMask & color.value)
+			         : 0);
 		}
 		*p = out;
 		return 0;
@@ -750,9 +766,10 @@ int LHDraw::Pixel16(unsigned long x, unsigned long y, LHPixel16 color, unsigned 
 
 int LHDraw::Pixel24(unsigned long x, unsigned long y, LHColor color, unsigned long mode)
 {
-	uint8_t* p = (uint8_t*)(g_lhScreen.backAddress + 2 * (x + y * g_lhScreen.backPixelPitch) + x +
-	                        y * g_lhScreen.backPixelPitch);
-	if (x > (unsigned long)g_lhScreen.GraphicsWindow.end.x || y > (unsigned long)g_lhScreen.GraphicsWindow.end.y)
+	uint8_t* p = (uint8_t*)(LHSys::GetScreen().backAddress + 2 * (x + y * LHSys::GetScreen().backPixelPitch) + x +
+	                        y * LHSys::GetScreen().backPixelPitch);
+	if (x > (unsigned long)LHSys::GetScreen().GraphicsWindow.end.x ||
+	    y > (unsigned long)LHSys::GetScreen().GraphicsWindow.end.y)
 		return 2;
 	if ((mode & 0x580E) == 0)
 	{
@@ -770,14 +787,14 @@ int LHDraw::Pixel24(unsigned long x, unsigned long y, LHColor color, unsigned lo
 	else if ((mode & 4) != 0)
 	{
 		int bch = *p + color.b;
-		if (bch >= g_lhScreen.MaxBlue)
-			bch = g_lhScreen.MaxBlue;
+		if (bch >= LHSys::GetScreen().MaxBlue)
+			bch = LHSys::GetScreen().MaxBlue;
 		int gch = p[1] + color.g;
-		if (gch >= g_lhScreen.MaxGreen)
-			gch = g_lhScreen.MaxGreen;
+		if (gch >= LHSys::GetScreen().MaxGreen)
+			gch = LHSys::GetScreen().MaxGreen;
 		int     rv = p[2];
-		uint8_t rch = g_lhScreen.maxRed;
-		if (rv + color.r < g_lhScreen.maxRed)
+		uint8_t rch = LHSys::GetScreen().maxRed;
+		if (rv + color.r < LHSys::GetScreen().maxRed)
 			rch = (uint8_t)(rv + color.r);
 		p[2] = rch;
 		p[1] = (uint8_t)gch;
@@ -847,10 +864,10 @@ int LHDraw::Circle16(long centerX, long centerY, unsigned long radius, LHPixel16
 	int yBot = centerY + r;
 	while (true)
 	{
-		gLHDraw.HVLine16(centerX - off, centerY - r, centerX + off, centerY - r, color, mode);
-		gLHDraw.HVLine16(centerX - off, centerY + r, centerX + off, centerY + r, color, mode);
-		gLHDraw.HVLine16(centerX - r, yTop, centerX + r, yTop, color, mode);
-		gLHDraw.HVLine16(centerX - r, yBot, centerX + r, yBot, color, mode);
+		LHSys::GetDraw().HVLine16(centerX - off, centerY - r, centerX + off, centerY - r, color, mode);
+		LHSys::GetDraw().HVLine16(centerX - off, centerY + r, centerX + off, centerY + r, color, mode);
+		LHSys::GetDraw().HVLine16(centerX - r, yTop, centerX + r, yTop, color, mode);
+		LHSys::GetDraw().HVLine16(centerX - r, yBot, centerX + r, yBot, color, mode);
 		if (d >= 0)
 		{
 			++yTop;
@@ -880,14 +897,14 @@ int LHDraw::Circle24(long centerX, long centerY, unsigned long radius, LHColor c
 			while (true)
 			{
 				int yTop = centerY - r;
-				gLHDraw.Pixel24(centerX - off, yTop, color, mode);
-				gLHDraw.Pixel24(centerX + off, yTop, color, mode);
-				gLHDraw.Pixel24(centerX - off, centerY + r, color, mode);
-				gLHDraw.Pixel24(centerX + off, centerY + r, color, mode);
-				gLHDraw.Pixel24(centerX - r, centerY - off, color, mode);
-				gLHDraw.Pixel24(centerX + r, centerY - off, color, mode);
-				gLHDraw.Pixel24(centerX - r, centerY + off, color, mode);
-				gLHDraw.Pixel24(centerX + r, centerY + off, color, mode);
+				LHSys::GetDraw().Pixel24(centerX - off, yTop, color, mode);
+				LHSys::GetDraw().Pixel24(centerX + off, yTop, color, mode);
+				LHSys::GetDraw().Pixel24(centerX - off, centerY + r, color, mode);
+				LHSys::GetDraw().Pixel24(centerX + off, centerY + r, color, mode);
+				LHSys::GetDraw().Pixel24(centerX - r, centerY - off, color, mode);
+				LHSys::GetDraw().Pixel24(centerX + r, centerY - off, color, mode);
+				LHSys::GetDraw().Pixel24(centerX - r, centerY + off, color, mode);
+				LHSys::GetDraw().Pixel24(centerX + r, centerY + off, color, mode);
 				if (d >= 0)
 				{
 					int t = off - r--;
@@ -909,10 +926,10 @@ int LHDraw::Circle24(long centerX, long centerY, unsigned long radius, LHColor c
 	int yBot = centerY + r;
 	while (true)
 	{
-		gLHDraw.HVLine24(centerX - off, centerY - r, centerX + off, centerY - r, color, mode);
-		gLHDraw.HVLine24(centerX - off, centerY + r, centerX + off, centerY + r, color, mode);
-		gLHDraw.HVLine24(centerX - r, yTop, centerX + r, yTop, color, mode);
-		gLHDraw.HVLine24(centerX - r, yBot, centerX + r, yBot, color, mode);
+		LHSys::GetDraw().HVLine24(centerX - off, centerY - r, centerX + off, centerY - r, color, mode);
+		LHSys::GetDraw().HVLine24(centerX - off, centerY + r, centerX + off, centerY + r, color, mode);
+		LHSys::GetDraw().HVLine24(centerX - r, yTop, centerX + r, yTop, color, mode);
+		LHSys::GetDraw().HVLine24(centerX - r, yBot, centerX + r, yBot, color, mode);
 		if (d >= 0)
 		{
 			++yTop;
@@ -933,8 +950,8 @@ int LHDraw::Circle24(long centerX, long centerY, unsigned long radius, LHColor c
 int LHDraw::Sprite16(long x, long y, LHSprite* sprite)
 {
 	uint8_t*  src = sprite->PixelData;
-	uint16_t* dst = (uint16_t*)(g_lhScreen.backAddress + 2 * (x + y * g_lhScreen.backPixelPitch));
-	int       rowGap = g_lhScreen.backPixelPitch - sprite->Width;
+	uint16_t* dst = (uint16_t*)(LHSys::GetScreen().backAddress + 2 * (x + y * LHSys::GetScreen().backPixelPitch));
+	int       rowGap = LHSys::GetScreen().backPixelPitch - sprite->Width;
 	if (sprite->Height)
 	{
 		int h = sprite->Height;
@@ -962,8 +979,9 @@ int LHDraw::Sprite16(long x, long y, LHSprite* sprite)
 int LHDraw::Sprite24(long x, long y, LHSprite* sprite)
 {
 	uint8_t* src = sprite->PixelData;
-	int      dst = g_lhScreen.backAddress + 2 * (x + y * g_lhScreen.backPixelPitch) + x + y * g_lhScreen.backPixelPitch;
-	int      rowGap = g_lhScreen.backPixelPitch - sprite->Width;
+	int      dst = LHSys::GetScreen().backAddress + 2 * (x + y * LHSys::GetScreen().backPixelPitch) + x +
+	          y * LHSys::GetScreen().backPixelPitch;
+	int rowGap = LHSys::GetScreen().backPixelPitch - sprite->Width;
 	if (sprite->Height)
 	{
 		int h = sprite->Height;
@@ -997,8 +1015,8 @@ int LHDraw::Sprite24(long x, long y, LHSprite* sprite)
 int LHDraw::Sprite24To16(long x, long y, LHSprite* sprite)
 {
 	uint8_t*  src = sprite->PixelData;
-	uint16_t* dst = (uint16_t*)(g_lhScreen.backAddress + 2 * (x + y * g_lhScreen.backPixelPitch));
-	int       rowGap = g_lhScreen.backPixelPitch - sprite->Width;
+	uint16_t* dst = (uint16_t*)(LHSys::GetScreen().backAddress + 2 * (x + y * LHSys::GetScreen().backPixelPitch));
+	int       rowGap = LHSys::GetScreen().backPixelPitch - sprite->Width;
 	int       result = sprite->Height;
 	if ((uint16_t)result)
 	{
@@ -1012,11 +1030,11 @@ int LHDraw::Sprite24To16(long x, long y, LHSprite* sprite)
 				{
 					if (src[2] != (uint8_t)g_transColor[3] || *(uint16_t*)src != g_transColor[2])
 					{
-						int red = (uint8_t)(src[2] >> g_lhScreen.redScale);
-						int green = (uint8_t)((uint8_t)(*(uint16_t*)src >> 8) >> g_lhScreen.GreenScale);
-						int v = (green << g_lhScreen.GreenShift) + (red << g_lhScreen.RedShift);
-						int blue = (uint8_t)((uint8_t)*(uint16_t*)src >> g_lhScreen.BlueScale);
-						*dst = (uint16_t)((blue << g_lhScreen.BlueShift) + v);
+						int red = (uint8_t)(src[2] >> LHSys::GetScreen().redScale);
+						int green = (uint8_t)((uint8_t)(*(uint16_t*)src >> 8) >> LHSys::GetScreen().GreenScale);
+						int v = (green << LHSys::GetScreen().GreenShift) + (red << LHSys::GetScreen().RedShift);
+						int blue = (uint8_t)((uint8_t)*(uint16_t*)src >> LHSys::GetScreen().BlueScale);
+						*dst = (uint16_t)((blue << LHSys::GetScreen().BlueShift) + v);
 					}
 					++dst;
 					src += 3;

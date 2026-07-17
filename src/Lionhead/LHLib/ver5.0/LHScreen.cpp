@@ -11,6 +11,7 @@
 #include <Lionhead/LH3DLib/development/LHColor.h> /* For struct LHColor */
 #include <Lionhead/LHLib/ver5.0/LHTimer.h>        /* For struct LHTimer */
 #include <Lionhead/LHLib/ver5.0/LHMouse.h>        /* For LHMouse::Draw */
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>       /* For LHSys::TheSystem */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>          /* For operator new(size_t, const char*, uint32_t) */
 
 // -----------------------------------------------------------------------------
@@ -41,10 +42,6 @@ void LHPixel16Set(uint16_t value);
 int TurnOffMenu();
 
 // Fixed-address globals (MEMORY[...] in the dump).
-extern LHScreen           g_lhScreen;               // 0xE85050 the global LHScreen instance
-extern HWND               g_windowForScreen;        // 0xE8C0F4 HWND passed to SetMSWindowHandle
-extern int                g_appMinimized;           // 0xE8C0FC
-extern CRITICAL_SECTION   g_screenCritSec;          // 0xE90650
 __declspec(dllimport) int LHAssertIgnoreAllAsserts; // assert-suppression flag
 extern int                dword_C3132C;             // 0xC3132C one-time DDraw-init guard
 
@@ -57,11 +54,9 @@ extern int          unk_EDD44C; // Banshee detected
 extern int          unk_ECA5F0; // PowerVR-KYRO detected
 
 // Lock/Unlock bookkeeping and the mouse/render back-buffer publish target.
-extern int      unk_E8C5D8;                       // Lock() double-lock marker
-extern int      unk_E8C5DC;                       // Unlock() not-locked marker
-extern int      unk_E85870;                       // published back pixel pitch
-extern uint32_t unk_E8586C;                       // published back address
-void            sub_FC1285(uint32_t backAddress); // notify mouse/render of new back address
+extern int unk_E8C5D8;                       // Lock() double-lock marker
+extern int unk_E8C5DC;                       // Unlock() not-locked marker
+void       sub_FC1285(uint32_t backAddress); // notify mouse/render of new back address
 
 // Clear() statics.
 extern uint8_t unk_E8C1AB; // "atexit registered" bit
@@ -76,7 +71,6 @@ extern int unk_E8C5B8;               // clip left
 extern int unk_E8C5BC;               // clip top
 extern int unk_E8C5C0;               // clip right  (width - 1)
 extern int unk_E8C5C4;               // clip bottom (height - 1)
-extern int unk_E8C0F8;               // 256-colour failure marker
 void       sub_7DECE0();             // restore/reset window state
 void       sub_7DC9A0(int a, int b); // windowed window fit-up
 void       sub_7DED10();             // fullscreen cooperative level setup
@@ -85,12 +79,10 @@ void       sub_7DB8F0();             // windowed extra setup
 // Flip() overlay + present pump.
 extern uint8_t unk_E8C5B1;      // Flip atexit-registered bit
 extern char    byte_E8C1B0[64]; // FPS overlay text buffer (LHSPrintf)
-extern int     unk_E8520C;      // mouse "needs redraw" flag
 void           nullsub_92();
 void           sub_7E45F0(int x, int y, int text, int colour, int flags); // draw text
-extern LHMouse g_mouseForScreen; // 0xE85204 global mouse (LHMouse::Draw target)
-int            sub_7DB910();     // window-message pending?
-void           sub_7DB940();     // pump window messages
+int            sub_7DB910();                                              // window-message pending?
+void           sub_7DB940();                                              // pump window messages
 
 // RunInMSWindow().
 extern char unk_E8C5E4; // re-entrancy guard (accessed as a byte)
@@ -100,8 +92,9 @@ void                      sub_7E69B0(); // pre-mode-switch teardown
 
 // AltTab().
 extern ScreenModeCallback   unk_E8C5D0; // alt-tab callback
-extern int                  unk_E8C5E0; // alt-tabbed-away flag
 extern IDirectDrawSurface7* unk_ECA63C; // extra surface restored on reactivate
+// BW1W120 00e8c5e0 defined here: it sits in this TU's screen-state .data cluster.
+int LHScreen::AltTabbedAway;
 
 // SaveBitmap().
 void sub_8A5440(char* scopeGuard);
@@ -238,8 +231,8 @@ void LHScreen::SetFullscreenMode(int mode)
 	{
 		LHAssertIgnoreAllAsserts = 1;
 		windowed = 0;
-		SetWindowLongA(g_lhScreen.MsWindowHandle, GWL_STYLE, WS_POPUP);
-		SetWindowLongA(g_lhScreen.MsWindowHandle, GWL_EXSTYLE, WS_EX_TOPMOST);
+		SetWindowLongA(LHSys::GetScreen().MsWindowHandle, GWL_STYLE, WS_POPUP);
+		SetWindowLongA(LHSys::GetScreen().MsWindowHandle, GWL_EXSTYLE, WS_EX_TOPMOST);
 		TurnOffMenu();
 	}
 	else
@@ -420,7 +413,7 @@ int LHScreen::DDrawInitialiseDevices()
 	}
 
 	if (unk_EDD450)
-		g_lhScreen.SetFullscreenMode(1);
+		LHSys::GetScreen().SetFullscreenMode(1);
 	Report3D("Display selected: %s.\n", (char*)DeviceInfoArray + 248 * selected);
 	return 0;
 }
@@ -491,8 +484,8 @@ int LHScreen::Lock(unsigned long param_1)
 	}
 	uint32_t addr = backAddress;
 	int      pitch = backPixelPitch;
-	unk_E85870 = pitch;
-	unk_E8586C = addr;
+	LHSys::GetDraw().pixelPitch = pitch;
+	LHSys::GetDraw().drawAddress = addr;
 	return 0;
 }
 
@@ -593,7 +586,7 @@ int LHScreen::Open(uint16_t width, uint16_t height, uint8_t depth)
 		int result = DDrawInitialise();
 		if (result)
 			return result;
-		SetMSWindowHandle((OpaqueWindowPtr*)g_windowForScreen);
+		SetMSWindowHandle((OpaqueWindowPtr*)LHSys::GetWindow());
 		LHMouseInitDirectInput();
 	}
 	LH3DRender::Close();
@@ -640,16 +633,16 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 	if (!windowed)
 	{
 		sub_7DED10();
-		SetWindowLongA(g_lhScreen.MsWindowHandle, GWL_STYLE, WS_POPUP);
+		SetWindowLongA(LHSys::GetScreen().MsWindowHandle, GWL_STYLE, WS_POPUP);
 		int desktopHeight = GetSystemMetrics(SM_CYSCREEN);
-		SetWindowPos(g_lhScreen.MsWindowHandle, HWND_TOPMOST, 0, 0, GetSystemMetrics(SM_CXSCREEN), desktopHeight,
-		             SWP_NOACTIVATE);
+		SetWindowPos(LHSys::GetScreen().MsWindowHandle, HWND_TOPMOST, 0, 0, GetSystemMetrics(SM_CXSCREEN),
+		             desktopHeight, SWP_NOACTIVATE);
 		TurnOffMenu();
 	}
 	else
 	{
-		SetWindowLongA(g_lhScreen.MsWindowHandle, GWL_STYLE, WS_OVERLAPPEDWINDOW); // 0x00CF0000
-		SetWindowLongA(g_lhScreen.MsWindowHandle, GWL_EXSTYLE, 0);
+		SetWindowLongA(LHSys::GetScreen().MsWindowHandle, GWL_STYLE, WS_OVERLAPPEDWINDOW); // 0x00CF0000
+		SetWindowLongA(LHSys::GetScreen().MsWindowHandle, GWL_EXSTYLE, 0);
 		sub_7DECE0();
 		sub_7DB8F0();
 	}
@@ -670,7 +663,7 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 		desc.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN | DDSCAPS_3DDEVICE | DDSCAPS_VIDEOMEMORY; // 0x6040
 		if (PDirectDraw->CreateSurface(&desc, &PBackSurface, NULL))
 		{
-			unk_E8C0F8 = 1;
+			LHSys::TheSystem.field_0x70b8 = 1;
 			MessageBoxA(0, "In Screen Settings, please increase the number of colours to more than 256",
 			            "Screen Depth Problem", MB_ICONHAND);
 			return 3;
@@ -776,13 +769,13 @@ int LHScreen::Flip(int param_1)
 		sub_7E45F0(width - 7 * strlen(byte_E8C1B0), 0, (int)byte_E8C1B0, (int)&v7, 0);
 	}
 
-	EnterCriticalSection(&g_screenCritSec);
-	EnterCriticalSection(&g_screenCritSec);
-	unk_E8520C = 1;
-	LeaveCriticalSection(&g_screenCritSec);
-	g_mouseForScreen.Draw(LH_SCREEN_BUFFER_0x0, LH_MOUSE_EVENT_TYPE_0x1);
+	EnterCriticalSection(&LHScreen::CriticalSection);
+	EnterCriticalSection(&LHScreen::CriticalSection);
+	LHSys::GetMouse().Locked = 1;
+	LeaveCriticalSection(&LHScreen::CriticalSection);
+	LHSys::GetMouse().Draw(LH_SCREEN_BUFFER_0x0, LH_MOUSE_EVENT_TYPE_0x1);
 	int flipResult = LHFlip(param_1);
-	LeaveCriticalSection(&g_screenCritSec);
+	LeaveCriticalSection(&LHScreen::CriticalSection);
 
 	if ((unsigned char)sub_7DB910())
 		sub_7DB940();
@@ -950,7 +943,7 @@ void LHScreen::AltTabDeactivate()
 	if (unk_E8C5D0)
 		unk_E8C5D0(0);
 	LH3DVRAMTexReleaseAll();
-	unk_E8C5E0 = 1;
+	AltTabbedAway = 1;
 }
 
 // BW1W120 007de6f0 LHScreen::AltTabReactivate(void)
@@ -962,7 +955,7 @@ void LHScreen::AltTabReactivate()
 	LH3DVRAMTexAllocAllVRAM();
 	if (unk_E8C5D0)
 		unk_E8C5D0(1);
-	unk_E8C5E0 = 0;
+	AltTabbedAway = 0;
 }
 
 // BW1W120 007de730 LHScreen::RunInMSWindow(int)
@@ -975,8 +968,8 @@ int LHScreen::RunInMSWindow(int param_1)
 	if (!unk_E8C5E4)
 	{
 		unk_E8C5E4 = 1;
-		EnterCriticalSection(&g_screenCritSec);
-		LeaveCriticalSection(&g_screenCritSec);
+		EnterCriticalSection(&LHScreen::CriticalSection);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		int wasOpened = opened;
 		if (param_1 == windowed)
 			return 0;
@@ -984,9 +977,9 @@ int LHScreen::RunInMSWindow(int param_1)
 		windowed = (windowed == 0);
 		if (wasOpened == 1)
 			result = ChangeMode(width, height, depth);
-		EnterCriticalSection(&g_screenCritSec);
+		EnterCriticalSection(&LHScreen::CriticalSection);
 		LHSurfaceRestoreAll(1);
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		SetMSOffset();
 		if (unk_E8C5CC)
 			unk_E8C5CC(param_1);
@@ -1058,12 +1051,12 @@ int LHScreen::SaveBitmap()
 	(void)bmpBlueMask;
 	(void)bmpAlignPad;
 
-	EnterCriticalSection(&g_screenCritSec);
-	EnterCriticalSection(&g_screenCritSec);
-	unk_E8520C = 1;
-	LeaveCriticalSection(&g_screenCritSec);
-	g_mouseForScreen.Draw(LH_SCREEN_BUFFER_0x0, LH_MOUSE_EVENT_TYPE_0x1);
-	LeaveCriticalSection(&g_screenCritSec);
+	EnterCriticalSection(&LHScreen::CriticalSection);
+	EnterCriticalSection(&LHScreen::CriticalSection);
+	LHSys::GetMouse().Locked = 1;
+	LeaveCriticalSection(&LHScreen::CriticalSection);
+	LHSys::GetMouse().Draw(LH_SCREEN_BUFFER_0x0, LH_MOUSE_EVENT_TYPE_0x1);
+	LeaveCriticalSection(&LHScreen::CriticalSection);
 
 	int result = sub_8A5590(fileName, backAddress);
 	nullsub_203(fileName);
@@ -1074,7 +1067,7 @@ int LHScreen::SaveBitmap()
 uint32_t LHScreen::GetAvailableVidMem()
 {
 	IDirectDraw2* dd2;
-	g_lhScreen.PDirectDraw->QueryInterface(IID_IDirectDraw2, (void**)&dd2);
+	LHSys::GetScreen().PDirectDraw->QueryInterface(IID_IDirectDraw2, (void**)&dd2);
 	DDSCAPS caps;
 	caps.dwCaps = DDSCAPS_VIDEOMEMORY; // 0x4000
 	DWORD total;
@@ -1092,5 +1085,5 @@ int LHScreen::WaitForVerticalBlank()
 // BW1W120 007ded50 LHScreen::IsAppMinimized(void)
 int LHScreen::IsAppMinimized()
 {
-	return g_appMinimized;
+	return LHSys::TheSystem.AppMinimized;
 }

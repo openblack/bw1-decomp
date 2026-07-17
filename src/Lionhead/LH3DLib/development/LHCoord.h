@@ -13,6 +13,10 @@ struct LHCoord
 	LHCoord() {}
 	// BW1W120 inlined BW1M100 1006ebc0 LHCoord::LHCoord(LHCoord const &)
 	LHCoord(const LHCoord* other);
+
+	// BW1W120 007e5af0 LHCoord::AddMSWindowOffset(void)
+	// Defined out-of-line where the screen is in scope (LHSystem.cpp); inlined at call sites.
+	void AddMSWindowOffset();
 };
 
 #endif /* BW1_DECOMP_LH_COORD_INCLUDED_H */
