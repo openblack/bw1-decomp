@@ -8,10 +8,10 @@
 
 struct LHSystem
 {
-	HINSTANCE HInstance;  /* 0x0  application instance */
-	uint32_t  field_0x4;  /* 0x4  set from WinMain's 4th arg */
-	uint32_t  field_0x8;  /* 0x8 */
-	uint32_t  Terminate;  /* 0xc  set once SetTerminate() has run */
+	HINSTANCE HInstance; /* 0x0  application instance */
+	uint32_t  field_0x4; /* 0x4  set from WinMain's 4th arg */
+	uint32_t  field_0x8; /* 0x8 */
+	uint32_t  Terminate; /* 0xc  set once SetTerminate() has run */
 
 	// Non-virtual methods
 
@@ -19,20 +19,21 @@ struct LHSystem
 	LRESULT SetTerminate();
 };
 
-// The full LHSys aggregate: the file-scope global `theSystem` (0xE85040), built by
-// this TU's single static-init constructor. It embeds system/screen/mouse/keyboard/
-// joypads/convert/script/text; the fixed-address "globals" other TUs reference
-// (g_lhScreen, gMouse, g_lhText, g_windowForScreen, ...) are members of it.
+// The full LHSys aggregate: the file-scope global `LHSys::TheSystem` (0xE85040), built
+// by this TU's single static-init constructor. It embeds system/screen/mouse/keyboard/
+// joypads/convert/script/text; the fixed-address "globals" other TUs reference are
+// members of it and are reached through the static inline accessors below.
 // Fixed-width field types keep this layout stable across include contexts.
-#include <assert.h> /* For static_assert */
-#include <wchar.h>  /* For wchar_t */
+#include <assert.h>   /* For static_assert */
+#include <wchar.h>    /* For wchar_t */
+#include <commctrl.h> /* For TRACKMOUSEEVENT (comctl32's _TrackMouseEvent, pre-NT4 SDK) */
 
 #include "LHConvert.h" /* For class LHConvert */
 #include "LHJoypad.h"  /* For struct LHJoypads */
 #include "LHMouse.h"   /* For struct LHMouse */
 #include "LHDraw.h"    /* For struct LHDraw */
 #include "LHScreen.h"  /* For struct LHScreen */
-#include "LHScript.h"  /* For class LHScriptX */
+#include "LHScript.h"  /* For class LHScriptX, struct LHScriptResource */
 #include "LHText.h"    /* For struct LHText */
 
 typedef LHScriptX<char> LHScriptX_c_;
@@ -96,6 +97,15 @@ static const unsigned int LH_KEY_DATA_EXTENDED = 0x01000000;
 static const unsigned int LH_KEY_DATA_RELEASED = 0x80000000;
 static_assert(sizeof(LHKeyboard) == 0x234, "LHKeyboard is the wrong size");
 
+// The typed-character ring fed by WM_CHAR / WM_USER+0x10 and drained by the front end.
+// One object (Buffer and the cursors may alias) — separate globals change the codegen.
+struct CharRing
+{
+	int Buffer[16]; /* 0x00 */
+	int Head;       /* 0x40 */
+	int Tail;       /* 0x44 */
+};
+
 struct Q24slim5TbIME
 {
 	void* field_0x0;
@@ -114,38 +124,81 @@ struct Q24slim5TbIME
 	void CandidateList_SetViewWindow(uint32_t param_1, uint32_t param_2, uint32_t idx);
 };
 
+// The IME helper wrapper (slim::TbIME), constructed on window creation (LHSystem.cpp).
+struct TbIMEWrapper;
+
 struct LHSys
 {
-	LHSystem       system; /* 0x0 */
-	LHScreen       screen; /* 0x10 */
-	LHMouse        mouse;  /* 0x1c4 */
-	LHKeyboard     keyboard; /* 0x32c */
-	uint32_t       field_0x560[0x10];
-	uint32_t       field_0x5a0;
-	uint32_t       field_0x5a4;
-	LHJoypads      joypads;
-	LHDraw         draw; /* 0x82c */
-	LHConvert      convert; /* 0x834 */
-	LHScriptX_c_   script;  /* 0x8c4 */
-	uint8_t        field_0x8f4[0x6750];
-	LHText         text; /* 0x7044 */
-	uint8_t        field_0x706c[0x48];
-	HWND           window; /* 0x70b4 */
-	uint8_t        field_0x70b8;
-	uint8_t        field_0x70b9;
-	uint8_t        field_0x70ba;
-	uint8_t        field_0x70bb;
-	uint32_t       field_0x70bc;
-	uint32_t       field_0x70c0;
-	Q24slim5TbIME* field_0x70c4;
-	uint8_t        field_0x70c8[0x10];
+	LHSystem         system;   /* 0x0 */
+	LHScreen         screen;   /* 0x10 */
+	LHMouse          mouse;    /* 0x1c4 */
+	LHKeyboard       keyboard; /* 0x32c */
+	CharRing         charRing; /* 0x560 */
+	LHJoypads        joypads;  /* 0x5a8 */
+	LHDraw           draw;     /* 0x82c */
+	LHConvert        convert;  /* 0x834 */
+	LHScriptX_c_     script;   /* 0x8c4 */
+	uint8_t          field_0x8f4[0x30];
+	LHScriptResource ScriptResources[100]; /* 0x924 the front-end script resource bank */
+	LHText           text;                 /* 0x7044 */
+	unsigned int     LastCommand;          /* 0x706c most recent WM_* the app was told about */
+	unsigned int     LastCommandParam;     /* 0x7070 */
+	uint8_t          field_0x7074[0xC];
+	int              LastMouseMsgTime;        /* 0x7080 */
+	unsigned int     QueryCancelAutoPlayMsg;  /* 0x7084 registered "QueryCancelAutoPlay" message */
+	uint8_t          QueryCancelAutoPlayInit; /* 0x7088 bit 0 = message registered */
+	uint8_t          _pad7089[3];
+	HANDLE           AppEvent;            /* 0x708c signalled on WM_MOUSEMOVE, waited on by the mouse thread */
+	HCURSOR          ArrowCursor;         /* 0x7090 */
+	HCURSOR          AppCursor;           /* 0x7094 */
+	TRACKMOUSEEVENT  TrackMouseEventInfo; /* 0x7098 */
+	HACCEL           Accel;               /* 0x70a8 */
+	uint8_t          field_0x70ac[4];
+	HMENU            Menu;         /* 0x70b0 */
+	HWND             Window;       /* 0x70b4 the game's top-level window */
+	uint8_t          field_0x70b8; /* 256-colour failure marker (byte store in LHScreen::ChangeMode) */
+	uint8_t          field_0x70b9;
+	uint8_t          WindowedMode;       /* 0x70ba */
+	uint8_t          AltTabPending;      /* 0x70bb */
+	int              AppMinimized;       /* 0x70bc */
+	int              AppMinimizedByUs;   /* 0x70c0 */
+	TbIMEWrapper*    TbIME;              /* 0x70c4 */
+	uint8_t          MouseThreadRunning; /* 0x70c8 */
+	uint8_t          TerminateRequested; /* 0x70c9 */
+	uint8_t          _pad70ca[2];
+	void(__stdcall* MessageHook)(UINT, int, unsigned int); /* 0x70cc 0x05xx-message hook */
+	int     LastKey;                                       /* 0x70d0 */
+	uint8_t field_0x70d4[4];
 
 	// Constructors
 
 	// BW1W120 007db800 BW1M100 inlined LHSys::LHSys(void)
 	LHSys();
+
+	// The one instance, at 0xE85040, built by LHSystem.cpp's static-init constructor.
+	static LHSys TheSystem;
+
+	// Static inline accessors — the binary has no getters (neighbour TUs compile to
+	// direct absolute loads), so these are source-level style only and must inline.
+	// NB /Ob0 TUs (LHScript.cpp) must use TheSystem.<member> directly instead.
+	static LHSys&      Get() { return TheSystem; }
+	static LHSystem&   GetSystem() { return TheSystem.system; }
+	static LHScreen&   GetScreen() { return TheSystem.screen; }
+	static LHMouse&    GetMouse() { return TheSystem.mouse; }
+	static LHKeyboard& GetKeyboard() { return TheSystem.keyboard; }
+	static LHDraw&     GetDraw() { return TheSystem.draw; }
+	static LHConvert&  GetConvert() { return TheSystem.convert; }
+	static LHText&     GetText() { return TheSystem.text; }
+	static HINSTANCE   GetInstance() { return TheSystem.system.HInstance; }
+	static HWND        GetWindow() { return TheSystem.Window; }
 };
 static_assert(sizeof(LHSys) == 0x70D8, "LHSys is the wrong size");
 static_assert(offsetof(LHSys, keyboard) == 0x32c, "LHSys keyboard offset changed");
+static_assert(offsetof(LHSys, charRing) == 0x560, "LHSys charRing offset changed");
+static_assert(offsetof(LHSys, draw) == 0x82c, "LHSys draw offset changed");
+static_assert(offsetof(LHSys, ScriptResources) == 0x924, "LHSys ScriptResources offset changed");
+static_assert(offsetof(LHSys, text) == 0x7044, "LHSys text offset changed");
+static_assert(offsetof(LHSys, Window) == 0x70b4, "LHSys Window offset changed");
+static_assert(offsetof(LHSys, LastKey) == 0x70d0, "LHSys LastKey offset changed");
 
 #endif /* BW1_DECOMP_LH_SYSTEM_INCLUDED_H */

@@ -215,6 +215,12 @@ struct LHMouse
 
 	// BW1W120 007e4960 LHMouse::ShutdownDirectInput(void)
 	static int ShutdownDirectInput();
+
+	// Static members
+
+	// BW1W120 00c311a4 set on WM_ACTIVATEAPP so UpdateDeltaPos skips the stale wheel
+	// delta accumulated while the app was inactive. TODO: fabricated name.
+	static uint8_t MouseWheelSkip;
 };
 static_assert(sizeof(LHMouse) == 360, "Data type is of wrong size");
 

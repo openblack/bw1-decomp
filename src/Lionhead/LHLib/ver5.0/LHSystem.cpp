@@ -9,30 +9,20 @@
 
 #include <Lionhead/LHLib/ver5.0/LHSystem.h> /* For struct LHSystem */
 
-#include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
+#include <Lionhead/LH3DLib/development/LHCoord.h>  /* For struct LHCoord */
 #include <Lionhead/LH3DLib/development/LHRegion.h> /* For struct LHRegion */
-#include <Lionhead/LHLib/ver5.0/LHMouse.h> /* For struct LHMouse */
-#include <Lionhead/LHLib/ver5.0/LHScreen.h> /* For struct LHScreen */
-#include <Lionhead/LHLib/ver5.0/LHSurface.h> /* For struct LHSurface */
-#include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
-#include <Lionhead/LHLib/ver5.0/LHSystemGlobals.h>
+#include <Lionhead/LHLib/ver5.0/LHMouse.h>         /* For struct LHMouse */
+#include <Lionhead/LHLib/ver5.0/LHScreen.h>        /* For struct LHScreen */
+#include <Lionhead/LHLib/ver5.0/LHSurface.h>       /* For struct LHSurface */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>           /* For operator new(size_t, const char*, uint32_t) */
 
 WINUSERAPI BOOL WINAPI TrackMouseEvent(LPTRACKMOUSEEVENT);
 
-
-// TODO: This is probably an inline accessor on LHSystem or LHSys or sometihng
-inline LHKeyboard& GetKeyboardObject()
-{
-	return *(LHKeyboard*)((unsigned char*)&gSystem + 0x32c);
-}
-
 // slim::TbIME helpers implemented in another TU.
-struct TbIMEWrapper; // full definition below
 // BW1W120 007f42b0 slim::TbIME::ConvertCHAR8toCHAR16(char)
 int TbIME_ConvertCHAR8toCHAR16(char c);
 // BW1W120 007de8d0 (LHScreen.cpp) per-message screen bookkeeping
 void sub_7DE8D0();
-// BW1W120 00e85470/00e85472 cleared alongside the key-down state on (re)init
 
 // The IME helper wrapper (slim::TbIME), constructed on window creation.
 struct TbIMEWrapper
@@ -41,29 +31,48 @@ struct TbIMEWrapper
 	// BW1W120 007f3b80 TbIMEWrapper::TbIMEWrapper(void)
 	TbIMEWrapper();
 	// BW1W120 007f3d20 TbIMEWrapper::ProcessMessage(HWND, UINT*, WPARAM*, LPARAM*, LRESULT*)
-	// __thiscall: `this` (gTbIME) rides in ecx, only the 5 explicit args are pushed.
+	// __thiscall: `this` (LHSys::TheSystem.TbIME) rides in ecx, only the 5 explicit args are pushed.
 	// Returns a byte (target tests al, not eax).
 	bool ProcessMessage(HWND wnd, UINT* msg, WPARAM* w, LPARAM* l, LRESULT* result);
 };
-struct CharRing
-{
-	int Buffer[16]; /* 0x00 */
-	int Head;       /* 0x40 */
-	int Tail;       /* 0x44 */
-};
-// BW1W120 00e85204 is theSystem.mouse: LHSys embeds LHMouse at offset 0x1c4.
+// BW1W120 00e85204 is TheSystem.mouse: LHSys embeds LHMouse at offset 0x1c4.
 static_assert(offsetof(LHSys, mouse) == 0x1c4, "LHSys mouse offset changed");
 
-// TODO: Probably an inline accessor on LHSystem or LHSys or something
-inline LHMouse* GetMouseObject()
-{
-	return &gMouse;
-}
+// This TU's own file-scope state, outside the LHSys aggregate.
+// BW1W120 008a9338 imported from LHLogR: nonzero while the assert dialog is up.
+__declspec(dllimport) bool InAssertDialog;
+// BW1W120 00e8c118 guards the key-event ring; the first object after TheSystem.
+static CRITICAL_SECTION gKeyboardCritSec;
+// BW1W120 00c311a4 defined here: it heads this TU's initialized-data cluster
+// (gWindowActive/gTrackingMouse/the class-name strings follow it).
+uint8_t LHMouse::MouseWheelSkip = 1;
+// BW1W120 00c311a8 whether the game window is the active application (WM_ACTIVATEAPP).
+static int gWindowActive = 1;
+// BW1W120 00c311ac whether a TrackMouseEvent request is armed (rearmed on WM_*MOUSEMOVE).
+static int gTrackingMouse = 1;
+// BW1W120 00c3122c UK-layout scancode -> ASCII; low half unshifted, high half shifted
+// (0x9C = 'GBP'). Zero rows cover keypad/function/extended scancodes with no character.
+static unsigned char gKeyToAsciiTable[0x100] = {
+	0x00, 0x00, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x30, 0x2D, 0x3D, 0x08, 0x09, 0x71, 0x77, 0x65,
+	0x72, 0x74, 0x79, 0x75, 0x69, 0x6F, 0x70, 0x5B, 0x5D, 0x00, 0x00, 0x61, 0x73, 0x64, 0x66, 0x67, 0x68, 0x6A, 0x6B,
+	0x6C, 0x3B, 0x27, 0x60, 0x00, 0x23, 0x7A, 0x78, 0x63, 0x76, 0x62, 0x6E, 0x6D, 0x2C, 0x2E, 0x2F, 0x00, 0x2A, 0x00,
+	0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D,
+	0x00, 0x00, 0x00, 0x2B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x5C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x2F, 0x00, 0x00, 0x28, 0x29, 0x2F, 0x2A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	0x2E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0x22, 0x9C, 0x24,
+	0x25, 0x5E, 0x26, 0x2A, 0x28, 0x29, 0x5F, 0x2B, 0x08, 0x09, 0x51, 0x57, 0x45, 0x52, 0x54, 0x59, 0x55, 0x49, 0x4F,
+	0x50, 0x7B, 0x7D, 0x00, 0x00, 0x41, 0x53, 0x44, 0x46, 0x47, 0x48, 0x4A, 0x4B, 0x4C, 0x3A, 0x40, 0x7E, 0x00, 0x7E,
+	0x5A, 0x58, 0x43, 0x56, 0x42, 0x4E, 0x4D, 0x3C, 0x3E, 0x3F, 0x00, 0x2A, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2D, 0x00, 0x00, 0x00, 0x2B, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x7C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2F, 0x00, 0x00, 0x28, 0x29, 0x2F,
+	0x2A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+};
 
-// BW1W120 007db800 construct theSystem's embedded screen, mouse, input, and text state.
+// BW1W120 007db800 construct TheSystem's embedded screen, mouse, input, and text state.
 LHSys::LHSys()
 {
-	InitializeCriticalSection(&gKeyboard);
+	InitializeCriticalSection(&gKeyboardCritSec);
 	// TODO: target emits the LHText/LHSpriteList stores at 0x7048/0x704c/0x7044 after
 	// the convert-tail helper; this TU's inferred LHText base constructor emits them early.
 	// Do not suppress the evidenced LHText type without identifying the original ordering.
@@ -75,6 +84,9 @@ LHSys::LHSys()
 	joypads.count = 0;
 }
 
+// BW1W120 00e85040 the one LHSys instance; its static-init thunk is this TU's .CRT$XCU
+// entry (0x9C7CF4), and the registered atexit dtor tail-jumps into LHScreen::~LHScreen.
+LHSys LHSys::TheSystem;
 
 // Assert force-callbacks, provided by LHLogR (imported).
 // BW1W120 008a9358 / 008a93d0
@@ -82,18 +94,19 @@ __declspec(dllimport) void(__cdecl* LHAssertBeforeForceCallback)();
 __declspec(dllimport) void(__cdecl* LHAssertAfterForceCallback)();
 
 // BW1W120 imported LHLogR: spawn a named worker thread.
-__declspec(dllimport) unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), unsigned int stack, void* arg, long priority);
+__declspec(dllimport) unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), unsigned int stack,
+                                                   void* arg, long priority);
 
 // Functions defined further down / elsewhere in this TU, referenced by WinMain.
-void LHAssertBeforeForce();                                  // 007dbcf0
-void LHAssertAfterForce();                                   // 007dbd00
-void sub_7DECE0();                                           // 007dece0 (LHScreen.cpp) restore window
-void sub_7DED10();                                           // 007ded10 (LHScreen.cpp) fullscreen coop
-int RegisterGameWindowClass(HINSTANCE inst, WNDPROC proc);   // 007dba00
-int CreateGameWindow(HINSTANCE inst, int cmd_show, int windowed); // 007dba90
-void MouseInputThreadProc(void* arg);                        // 007dbd10
-LRESULT CALLBACK GameWindowProc(HWND wnd, UINT msg, WPARAM w, LPARAM l); // 007dbf30
-typedef void (__stdcall *WindowMessageHandler)(WPARAM, HWND, LPARAM);
+void             LHAssertBeforeForce();                                 // 007dbcf0
+void             LHAssertAfterForce();                                  // 007dbd00
+void             sub_7DECE0();                                          // 007dece0 (LHScreen.cpp) restore window
+void             sub_7DED10();                                          // 007ded10 (LHScreen.cpp) fullscreen coop
+int              RegisterGameWindowClass(HINSTANCE inst, WNDPROC proc); // 007dba00
+int              CreateGameWindow(HINSTANCE inst, int cmd_show, int windowed); // 007dba90
+void             MouseInputThreadProc(void* arg);                              // 007dbd10
+LRESULT CALLBACK GameWindowProc(HWND wnd, UINT msg, WPARAM w, LPARAM l);       // 007dbf30
+typedef void(__stdcall* WindowMessageHandler)(WPARAM, HWND, LPARAM);
 
 LRESULT LHSystem::SetTerminate()
 {
@@ -101,21 +114,21 @@ LRESULT LHSystem::SetTerminate()
 	if (!result)
 	{
 		Terminate = 1;
-		result = IsWindow(g_lhScreen.MsWindowHandle);
+		result = IsWindow(LHSys::GetScreen().MsWindowHandle);
 		if (result)
-			result = SendMessageA(g_lhScreen.MsWindowHandle, WM_SYSCOMMAND, SC_CLOSE, 0);
+			result = SendMessageA(LHSys::GetScreen().MsWindowHandle, WM_SYSCOMMAND, SC_CLOSE, 0);
 	}
 	return result;
 }
 
 int TurnOffMenu()
 {
-	return SetMenu(g_windowForScreen, NULL);
+	return SetMenu(LHSys::GetWindow(), NULL);
 }
 
 int TurnOnMenu()
 {
-	return SetMenu(g_windowForScreen, gMenu);
+	return SetMenu(LHSys::GetWindow(), LHSys::TheSystem.Menu);
 }
 
 void ProcessWindowMessages()
@@ -123,21 +136,21 @@ void ProcessWindowMessages()
 	MSG msg;
 	do
 	{
-		while (PeekMessageA(&msg, g_windowForScreen, 0, 0, 0))
+		while (PeekMessageA(&msg, LHSys::GetWindow(), 0, 0, 0))
 		{
-			GetMessageA(&msg, g_windowForScreen, 0, 0);
-			if (!TranslateAcceleratorA(g_windowForScreen, gAccel, &msg))
+			GetMessageA(&msg, LHSys::GetWindow(), 0, 0);
+			if (!TranslateAcceleratorA(LHSys::GetWindow(), LHSys::TheSystem.Accel, &msg))
 			{
 				TranslateMessage(&msg);
 				DispatchMessageA(&msg);
 			}
 		}
-		if (gAltTabPending)
+		if (LHSys::TheSystem.AltTabPending)
 		{
-			gAltTabPending = 0;
-			g_lhScreen.AltTabReactivate();
+			LHSys::TheSystem.AltTabPending = 0;
+			LHSys::GetScreen().AltTabReactivate();
 		}
-	} while (unk_E8C5E0);
+	} while (LHScreen::AltTabbedAway);
 }
 
 unsigned char __stdcall LHKeyToAscii(int key, int shift)
@@ -147,25 +160,25 @@ unsigned char __stdcall LHKeyToAscii(int key, int shift)
 
 int ResizeWindow(unsigned short width, unsigned short height)
 {
-	if (g_lhScreen.windowed)
+	if (LHSys::GetScreen().windowed)
 	{
-		ShowWindow(g_lhScreen.MsWindowHandle, SW_SHOWNORMAL);
+		ShowWindow(LHSys::GetScreen().MsWindowHandle, SW_SHOWNORMAL);
 		RECT client;
-		GetClientRect(g_lhScreen.MsWindowHandle, &client);
+		GetClientRect(LHSys::GetScreen().MsWindowHandle, &client);
 		RECT rect;
 		rect.left = 0;
 		rect.top = 0;
-		if (height && height <= g_lhScreen.height)
+		if (height && height <= LHSys::GetScreen().height)
 			rect.bottom = client.bottom - client.top;
 		else
-			rect.bottom = g_lhScreen.height;
-		if (width && width <= g_lhScreen.width)
+			rect.bottom = LHSys::GetScreen().height;
+		if (width && width <= LHSys::GetScreen().width)
 			rect.right = client.right - client.left;
 		else
-			rect.right = g_lhScreen.width;
+			rect.right = LHSys::GetScreen().width;
 		AdjustWindowRect(&rect, 0xCF0000, TRUE);
-		GetWindowRect(g_lhScreen.MsWindowHandle, &client);
-		if (!MoveWindow(g_lhScreen.MsWindowHandle, client.left, client.top, rect.right - rect.left,
+		GetWindowRect(LHSys::GetScreen().MsWindowHandle, &client);
+		if (!MoveWindow(LHSys::GetScreen().MsWindowHandle, client.left, client.top, rect.right - rect.left,
 		                rect.bottom - rect.top, TRUE))
 			return 2;
 	}
@@ -176,39 +189,38 @@ int ResizeWindow(unsigned short width, unsigned short height)
 // Named for its raw address until its true name is recovered.
 void jmp_addr_0x007dbed0()
 {
-	if (!gTerminateRequested)
+	if (!LHSys::TheSystem.TerminateRequested)
 	{
-		gTerminateRequested = 1;
-		while (gMouseThreadRunning)
+		LHSys::TheSystem.TerminateRequested = 1;
+		while (LHSys::TheSystem.MouseThreadRunning)
 			Sleep(300);
 	}
-	EnterCriticalSection(&g_screenCritSec);
-	gSystem.SetTerminate();
+	EnterCriticalSection(&LHScreen::CriticalSection);
+	LHSys::GetSystem().SetTerminate();
 }
 
 static bool AnyWindowMessages();
-static int GetCursorPosClient(int hwnd, POINT* point);
+static int  GetCursorPosClient(int hwnd, POINT* point);
 
 // BW1W120 007dbd10 the mouse-input worker thread. When the WndProc hasn't fed us a
 // mouse message (the event times out) it polls the async button/modifier state and the
 // cursor position itself and posts a synthetic 0x8009 message to the window.
 // TODO: 90% — logic faithful. Residual: MSVC hoists the GetAsyncKeyState import ptr into a
-// different callee-saved reg + caches the "1" constant, and the poll condition reads
-// unk_E8C0F8 as a byte (it's shared as `int` with LHScreen). Optimizer-level, not logic.
+// different callee-saved reg + caches the "1" constant. Optimizer-level, not logic.
 void MouseInputThreadProc(void* arg)
 {
-	if (!gMouseThreadRunning)
+	if (!LHSys::TheSystem.MouseThreadRunning)
 	{
 		while (true)
 		{
-			DWORD wait = WaitForSingleObject(gAppEvent, 40);
-			if (gMouseThreadRunning)
+			DWORD wait = WaitForSingleObject(LHSys::TheSystem.AppEvent, 40);
+			if (LHSys::TheSystem.MouseThreadRunning)
 				break;
 			if (wait)
 			{
-				// unk_E8C0F8 is a 0/1 flag; read its low byte (stays `int` — shared with LHScreen).
-				while ((InAssertDialog || gWindowedMode || !gWindowActive || (unsigned char)unk_E8C0F8) &&
-				       !gMouseThreadRunning)
+				while ((InAssertDialog || LHSys::TheSystem.WindowedMode || !gWindowActive ||
+				        LHSys::TheSystem.field_0x70b8) &&
+				       !LHSys::TheSystem.MouseThreadRunning)
 					Sleep(300);
 				int ctrl = 1;
 				int left = GetAsyncKeyState(VK_LBUTTON);
@@ -237,47 +249,49 @@ void MouseInputThreadProc(void* arg)
 				if (ctrl)
 					buttons |= 8;
 				RECT rect;
-				GetWindowRect(g_windowForScreen, &rect);
-				if (g_lhScreen.windowed)
-					GetCursorPosClient((int)g_windowForScreen, &point);
-				PostMessageA(g_windowForScreen, 0x8009, buttons,
+				GetWindowRect(LHSys::GetWindow(), &rect);
+				if (LHSys::GetScreen().windowed)
+					GetCursorPosClient((int)LHSys::GetWindow(), &point);
+				PostMessageA(LHSys::GetWindow(), 0x8009, buttons,
 				             (unsigned short)point.x | ((unsigned short)point.y << 16));
-				if (gMouseThreadRunning)
+				if (LHSys::TheSystem.MouseThreadRunning)
 					break;
 			}
 		}
 	}
-	gMouseThreadRunning = 0;
+	LHSys::TheSystem.MouseThreadRunning = 0;
 }
 
 // BW1W120 007dc920 handle a mouse-move: track the inter-move delta, pick the cursor,
 // and forward the new position to the mouse.
 void MouseMoveHandler(int hwnd, int lparam, int msg_time)
 {
-	int prev = gLastMouseMsgTime;
-	if (!gLastMouseMsgTime)
+	int prev = LHSys::TheSystem.LastMouseMsgTime;
+	if (!LHSys::TheSystem.LastMouseMsgTime)
 		prev = msg_time;
-	gLastMouseMsgTime = msg_time;
-	gMouseMoveDelta = msg_time - prev;
+	LHSys::TheSystem.LastMouseMsgTime = msg_time;
+	// TODO: CallbackArg2/DoubleBuffered are LHMouse.h's names for these fields; from this
+	// TU's usage they read as inter-move time delta / needs-redraw. Revisit the names.
+	LHSys::GetMouse().CallbackArg2 = msg_time - prev;
 	LHCoord pos;
 	pos.x = (short)LOWORD(lparam);
 	pos.y = (short)HIWORD(lparam);
-	if (gCursorMode == 4)
-		SetCursor(gArrowCursor);
-	else if (gCursorMode == 2)
-		SetCursor(gArrowCursor);
+	if (LHSys::GetMouse().ImageMode == 4)
+		SetCursor(LHSys::TheSystem.ArrowCursor);
+	else if (LHSys::GetMouse().ImageMode == 2)
+		SetCursor(LHSys::TheSystem.ArrowCursor);
 	else
 		SetCursor(NULL);
-	GetMouseObject()->UpdateCurrentPos(pos);
-	gMouseNeedsRedraw = 1;
-	GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_0x4);
+	LHSys::GetMouse().UpdateCurrentPos(pos);
+	LHSys::GetMouse().DoubleBuffered = 1;
+	LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_0x4);
 }
 
-// BW1W120 007dcab0 reset all key-down state and the typed-character ring.
+// BW1W120 007dcab0 reset all key-down state and the modifier flags.
 void ClearKeyboardState()
 {
-	memset(gKeyboardState, 0, 0xFF);
-	gCharRing[0] = 0;
+	memset(LHSys::GetKeyboard().KeyState, 0, 0xFF);
+	LHSys::GetKeyboard().ModifierFlags = 0;
 }
 
 // TODO: 75% — logic faithful (all struct offsets + the up/down/modifier flow match).
@@ -342,7 +356,7 @@ int LHKeyboard::ProcessKeyboard(unsigned int msg, int key_data)
 		SetKeyValue();
 	}
 invoke:
-	gLastKey = CurrentKey;
+	LHSys::TheSystem.LastKey = CurrentKey;
 	if (Callback)
 		return Callback(msg, reported, ModifierFlags, ((unsigned int)key_data >> 30) & 1, CallbackContext);
 	return (int)Callback;
@@ -403,7 +417,7 @@ int LHKeyboard::SetKeyValue()
 	KeyEventRing[RingWrite].Key = CurrentKey;
 	KeyEventRing[RingWrite].Mod = ModifierFlags;
 	unsigned int next = (RingWrite + 1) % 29;
-	int result = RingRead;
+	int          result = RingRead;
 	RingWrite = next;
 	if (next == (unsigned int)result)
 	{
@@ -420,14 +434,14 @@ int __stdcall jmp_addr_0x007dbc30(HINSTANCE hInstance, HINSTANCE prev_instance, 
 {
 	LHAssertBeforeForceCallback = (void(__cdecl*)())LHAssertBeforeForce;
 	LHAssertAfterForceCallback = (void(__cdecl*)())LHAssertAfterForce;
-	gSystem.HInstance = hInstance;
-	gSystem.field_0x4 = cmd_show;
-	gSystem.Terminate = 0;
-	gAppCursor = LoadCursorA(hInstance, (LPCSTR)0x6C);
-	gArrowCursor = LoadCursorA(NULL, (LPCSTR)0x7F00 /* IDC_ARROW */);
-	gAppEvent = CreateEventA(NULL, FALSE, FALSE, NULL);
+	LHSys::GetSystem().HInstance = hInstance;
+	LHSys::GetSystem().field_0x4 = cmd_show;
+	LHSys::GetSystem().Terminate = 0;
+	LHSys::TheSystem.AppCursor = LoadCursorA(hInstance, (LPCSTR)0x6C);
+	LHSys::TheSystem.ArrowCursor = LoadCursorA(NULL, (LPCSTR)0x7F00 /* IDC_ARROW */);
+	LHSys::TheSystem.AppEvent = CreateEventA(NULL, FALSE, FALSE, NULL);
 	RegisterGameWindowClass(hInstance, GameWindowProc);
-	CreateGameWindow(hInstance, cmd_show, g_lhScreen.windowed);
+	CreateGameWindow(hInstance, cmd_show, LHSys::GetScreen().windowed);
 	while (!AnyWindowMessages())
 		;
 	ProcessWindowMessages();
@@ -438,7 +452,7 @@ int __stdcall jmp_addr_0x007dbc30(HINSTANCE hInstance, HINSTANCE prev_instance, 
 static bool AnyWindowMessages()
 {
 	MSG msg;
-	return PeekMessageA(&msg, g_windowForScreen, 0, 0, 0) == TRUE;
+	return PeekMessageA(&msg, LHSys::GetWindow(), 0, 0, 0) == TRUE;
 }
 
 // BW1W120 007dbcf0 / 007dbd00 — installed as the LHLog assert force-callbacks by WinMain.
@@ -446,13 +460,13 @@ static bool AnyWindowMessages()
 // assert dialog can appear over/under the game.
 void LHAssertBeforeForce()
 {
-	if (!g_lhScreen.windowed)
+	if (!LHSys::GetScreen().windowed)
 		sub_7DECE0();
 }
 
 void LHAssertAfterForce()
 {
-	if (!g_lhScreen.windowed)
+	if (!LHSys::GetScreen().windowed)
 		sub_7DED10();
 }
 
@@ -472,7 +486,7 @@ int RegisterGameWindowClass(HINSTANCE inst, WNDPROC proc)
 	wc.lpszClassName = "LIONHEAD";
 	if (!RegisterClassA(&wc))
 		return 2;
-	gAccel = LoadAcceleratorsA(inst, "AppAccel");
+	LHSys::TheSystem.Accel = LoadAcceleratorsA(inst, "AppAccel");
 	return 0;
 }
 
@@ -483,8 +497,8 @@ int RegisterGameWindowClass(HINSTANCE inst, WNDPROC proc)
 // choice in the CreateWindowEx branch. Optimizer-level.
 int CreateGameWindow(HINSTANCE inst, int cmd_show, int windowed)
 {
-	memset(gKeyboardState, 0, 0xFF);
-	gCharRing[0] = 0;
+	memset(LHSys::GetKeyboard().KeyState, 0, 0xFF);
+	LHSys::GetKeyboard().ModifierFlags = 0;
 	HWND window;
 	if (windowed == 1)
 	{
@@ -501,133 +515,132 @@ int CreateGameWindow(HINSTANCE inst, int cmd_show, int windowed)
 	{
 		int height = GetSystemMetrics(SM_CYSCREEN);
 		int width = GetSystemMetrics(SM_CXSCREEN);
-		window = CreateWindowExA(WS_EX_TOPMOST, "LIONHEAD", "LIONHEAD", WS_POPUP, 50, 50, width, height, NULL,
-		                         NULL, inst, NULL);
+		window = CreateWindowExA(WS_EX_TOPMOST, "LIONHEAD", "LIONHEAD", WS_POPUP, 50, 50, width, height, NULL, NULL,
+		                         inst, NULL);
 	}
-	g_windowForScreen = window;
+	LHSys::TheSystem.Window = window;
 	if (!window)
 		return 2;
 	ShowWindow(window, SW_SHOWNORMAL);
-	gMenu = GetMenu(g_windowForScreen);
-	gTrackMouseEvent.cbSize = 16;
-	gTrackMouseEvent.dwFlags = 2;
-	gTrackMouseEvent.hwndTrack = g_windowForScreen;
-	TrackMouseEvent(&gTrackMouseEvent);
+	LHSys::TheSystem.Menu = GetMenu(LHSys::GetWindow());
+	LHSys::TheSystem.TrackMouseEventInfo.cbSize = 16;
+	LHSys::TheSystem.TrackMouseEventInfo.dwFlags = 2;
+	LHSys::TheSystem.TrackMouseEventInfo.hwndTrack = LHSys::GetWindow();
+	TrackMouseEvent(&LHSys::TheSystem.TrackMouseEventInfo);
 	gTrackingMouse = 1;
-	if (gCursorAnimMode == 3)
-		SendMessageA(g_windowForScreen, 0x8005, 0, 0);
+	if (LHSys::GetMouse().AnimType == 3)
+		SendMessageA(LHSys::GetWindow(), 0x8005, 0, 0);
 	TurnOnMenu();
-	gTbIME = new (__FILE__, __LINE__) TbIMEWrapper();
+	LHSys::TheSystem.TbIME = new (__FILE__, __LINE__) TbIMEWrapper();
 	return 0;
 }
 
-// TODO: This is probably a LHSystem getter or something
+// The under-cursor save surface currently pointed at by the mouse's buffer toggle.
 inline LHSurface* GetMouseSurface()
 {
-	return unk_E85230[unk_E8522C & 0xFF];
+	return LHSys::GetMouse().SaveSurface[LHSys::GetMouse().BufferToggle];
 }
 
 LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	LRESULT result;
-	if ((gQueryCancelAutoPlayInit & 1) == 0)
+	if ((LHSys::TheSystem.QueryCancelAutoPlayInit & 1) == 0)
 	{
-		gQueryCancelAutoPlayInit |= 1;
-		gQueryCancelAutoPlayMsg = RegisterWindowMessageA("QueryCancelAutoPlay");
+		LHSys::TheSystem.QueryCancelAutoPlayInit |= 1;
+		LHSys::TheSystem.QueryCancelAutoPlayMsg = RegisterWindowMessageA("QueryCancelAutoPlay");
 	}
 
 	// Does the IME wrapper want to handle this message?
-	if (gTbIME && !gTbIME->ProcessMessage(hWnd, &msg, &wParam, &lParam, &result))
+	if (LHSys::TheSystem.TbIME && !LHSys::TheSystem.TbIME->ProcessMessage(hWnd, &msg, &wParam, &lParam, &result))
 		return result;
 
-	if (msg >= 0x500 && msg < 0x600 && gMessageHook)
-		gMessageHook(msg - 0x500, wParam, lParam);
+	if (msg >= 0x500 && msg < 0x600 && LHSys::TheSystem.MessageHook)
+		LHSys::TheSystem.MessageHook(msg - 0x500, wParam, lParam);
 
 	switch (msg)
 	{
 	case WM_MOVE:
-		g_lhScreen.SetMSOffset();
+		LHSys::GetScreen().SetMSOffset();
 		break;
 	case WM_SIZE:
 		if (wParam == 1)
 		{
-			g_appMinimized = 1;
-			gLastCommand = 32770;
+			LHSys::TheSystem.AppMinimized = 1;
+			LHSys::TheSystem.LastCommand = 32770;
 		}
 		else
 		{
 			if (wParam == 2 || !wParam)
 			{
-				g_appMinimized = 0;
-				gAppMinimizedByUs = 0;
+				LHSys::TheSystem.AppMinimized = 0;
+				LHSys::TheSystem.AppMinimizedByUs = 0;
 			}
 			else
 			{
-				gAppMinimizedByUs = 1;
+				LHSys::TheSystem.AppMinimizedByUs = 1;
 			}
-			gLastCommand = 32771;
-			gLastCommandParam = lParam;
+			LHSys::TheSystem.LastCommand = 32771;
+			LHSys::TheSystem.LastCommandParam = lParam;
 		}
 		break;
 	case WM_CREATE:
-		gLastCommand = 32769;
+		LHSys::TheSystem.LastCommand = 32769;
 		break;
 	case WM_DESTROY:
-		EnterCriticalSection(&g_screenCritSec);
+		EnterCriticalSection(&LHScreen::CriticalSection);
 		PostQuitMessage(0);
 		break;
 	case WM_ACTIVATEAPP:
-		gMouseWheelSkip = 1;
+		LHMouse::MouseWheelSkip = 1;
 		if (gWindowActive == (int)wParam)
 			break;
 		gWindowActive = wParam;
-		gLastCommand = 32776;
+		LHSys::TheSystem.LastCommand = 32776;
 		// fall through to clearkbd
 	case WM_KILLFOCUS:
 		// TODO: order of the stosb instruction can't get right
-		memset(gKeyboardState, 0, 0xFF);
-		gCharRing[0] = 0;
-		GetMouseObject()->SetButtons(4);
-		GetMouseObject()->SetButtons(8);
-		GetMouseObject()->SetButtons(0x80);
-		unk_E852E4 = 0;
-		unk_E852E8 = 0;
-		gMouseWheelAccum = 0;
+		memset(LHSys::GetKeyboard().KeyState, 0, 0xFF);
+		LHSys::GetKeyboard().ModifierFlags = 0;
+		LHSys::GetMouse().SetButtons(4);
+		LHSys::GetMouse().SetButtons(8);
+		LHSys::GetMouse().SetButtons(0x80);
+		LHSys::GetMouse().AccumDelta.x = 0;
+		LHSys::GetMouse().AccumDelta.y = 0;
+		LHSys::GetMouse().MouseWheelAccum = 0;
 		break;
 	case WM_COMMAND:
 		// TODO: Nested switch is probably bullshit
 		switch (LOWORD(wParam))
 		{
 		case 32772:
-			g_lhScreen.SetMSOffset();
+			LHSys::GetScreen().SetMSOffset();
 			break;
 		default:
-			gLastCommand = LOWORD(wParam);
-			gLastCommandParam = wParam;
+			LHSys::TheSystem.LastCommand = LOWORD(wParam);
+			LHSys::TheSystem.LastCommandParam = wParam;
 			break;
 		}
 		break;
 	case WM_NCMOUSEMOVE:
 		if (!gTrackingMouse)
 		{
-			TrackMouseEvent(&gTrackMouseEvent);
+			TrackMouseEvent(&LHSys::TheSystem.TrackMouseEventInfo);
 			gTrackingMouse = 1;
 		}
-		if (!g_lhScreen.windowed)
+		if (!LHSys::GetScreen().windowed)
 			MouseMoveHandler((int)hWnd, lParam, GetMessageTime());
 		break;
-	case WM_CHAR:
-	{
+	case WM_CHAR: {
 		int c = TbIME_ConvertCHAR8toCHAR16((char)wParam) & 0xFFFF;
 		if (c)
 		{
-			int used = charRing.Head - charRing.Tail;
+			int used = LHSys::TheSystem.charRing.Head - LHSys::TheSystem.charRing.Tail;
 			if (used < 0)
 				used += 0x10;
 			if (used < 15)
 			{
-				charRing.Buffer[charRing.Head] = c;
-				charRing.Head = (charRing.Head + 1) & 0xF;
+				LHSys::TheSystem.charRing.Buffer[LHSys::TheSystem.charRing.Head] = c;
+				LHSys::TheSystem.charRing.Head = (LHSys::TheSystem.charRing.Head + 1) & 0xF;
 			}
 		}
 		break;
@@ -636,117 +649,118 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 	case WM_KEYUP:
 	case WM_SYSKEYDOWN:
 	case WM_SYSKEYUP:
-		GetKeyboardObject().ProcessKeyboard(msg, lParam);
+		LHSys::GetKeyboard().ProcessKeyboard(msg, lParam);
 		break;
 	case WM_SETCURSOR:
 		break;
 	case WM_SYSCOMMAND:
 		if (wParam == SC_CLOSE)
 		{
-			gSystem.SetTerminate();
+			LHSys::GetSystem().SetTerminate();
 			return 0;
 		}
 		if (wParam == SC_MAXIMIZE)
 		{
-			gLastCommand = 40026;
-			gLastCommandParam = 61488;
+			LHSys::TheSystem.LastCommand = 40026;
+			LHSys::TheSystem.LastCommandParam = 61488;
 		}
 		else if (wParam == SC_RESTORE)
 		{
-			gAltTabPending = 1;
+			LHSys::TheSystem.AltTabPending = 1;
 		}
 		break;
 	case WM_RBUTTONDOWN:
 		SetCapture(hWnd);
-		GetMouseObject()->SetButtons(2);
-		GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+		LHSys::GetMouse().SetButtons(2);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
 		break;
 	case WM_LBUTTONDBLCLK:
-		GetMouseObject()->SetButtons(0x10);
+		LHSys::GetMouse().SetButtons(0x10);
 		break;
 	case WM_LBUTTONDOWN:
 		SetCapture(hWnd);
-		GetMouseObject()->SetButtons(1);
-		if (gCursorAnimMode != 1 && gCursorAnimMode != 2)
+		LHSys::GetMouse().SetButtons(1);
+		if (LHSys::GetMouse().AnimType != 1 && LHSys::GetMouse().AnimType != 2)
 		{
-			GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
-		break;
+			LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+			break;
 		}
 		KillTimer(hWnd, 1);
-		SetTimer(hWnd, 1, (unsigned short)gCursorTimerInterval, 0);
-		if (gCursorAnimMode == 1)
-			GetMouseObject()->SetCurrentCursorAnimFrame(0);
-		unk_E85274 = 0;
+		SetTimer(hWnd, 1, (unsigned short)LHSys::GetMouse().AnimParam, 0);
+		if (LHSys::GetMouse().AnimType == 1)
+			LHSys::GetMouse().SetCurrentCursorAnimFrame(0);
+		LHSys::GetMouse().AnimReverse = 0;
 		// fall through to the shared Draw(1,2)
 	case WM_TIMER:
-		GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)2);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)2);
 		break;
 	case WM_LBUTTONUP:
-		GetMouseObject()->SetButtons(4);
-		GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
-		if ((gButtonState & 0x42) == 0)
+		LHSys::GetMouse().SetButtons(4);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+		if ((LHSys::GetMouse().Buttons & 0x42) == 0)
 			ReleaseCapture();
 		break;
 	case WM_RBUTTONUP:
-		GetMouseObject()->SetButtons(8);
-		GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
-		if ((gButtonState & 0x41) == 0)
+		LHSys::GetMouse().SetButtons(8);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+		if ((LHSys::GetMouse().Buttons & 0x41) == 0)
 			ReleaseCapture();
 		break;
 	case WM_MBUTTONDOWN:
 		SetCapture(hWnd);
-		GetMouseObject()->SetButtons(0x40);
-		GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+		LHSys::GetMouse().SetButtons(0x40);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
 		break;
 	case WM_MBUTTONDBLCLK:
-		GetMouseObject()->SetButtons(0);
+		LHSys::GetMouse().SetButtons(0);
 		break;
 	case WM_RBUTTONDBLCLK:
-		GetMouseObject()->SetButtons(0x20);
+		LHSys::GetMouse().SetButtons(0x20);
 		break;
 	case WM_MBUTTONUP:
-		GetMouseObject()->SetButtons(0x80);
-		GetMouseObject()->Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
-		if ((gButtonState & 3) == 0)
+		LHSys::GetMouse().SetButtons(0x80);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+		if ((LHSys::GetMouse().Buttons & 3) == 0)
 			ReleaseCapture();
 		break;
 	case 0x20A: // WM_MOUSEWHEEL (not defined at this WINVER)
 		break;
 	case 0x2A3: // WM_MOUSELEAVE (not defined at this WINVER)
-		if ((gButtonState & 0x43) == 0)
+		if ((LHSys::GetMouse().Buttons & 0x43) == 0)
 			ReleaseCapture();
 		gTrackingMouse = 0;
-		if (g_lhScreen.windowed)
+		if (LHSys::GetScreen().windowed)
 		{
-			EnterCriticalSection(&g_screenCritSec);
-			if (gMouseNeedsRedraw)
+			EnterCriticalSection(&LHScreen::CriticalSection);
+			if (LHSys::GetMouse().DoubleBuffered)
 			{
-				EnterCriticalSection(&g_screenCritSec);
-				if (!unk_E8520C)
+				EnterCriticalSection(&LHScreen::CriticalSection);
+				if (!LHSys::GetMouse().Locked)
 				{
-					GetMouseSurface()->CopyRegionFromScreen(&unk_E85288, &unk_E852A8, 1);
-					unk_E8520C = 1;
+					GetMouseSurface()->CopyRegionFromScreen(&LHSys::GetMouse().PrevSavedRegion,
+					                                        &LHSys::GetMouse().PrevDrawRegion.start, 1);
+					LHSys::GetMouse().Locked = 1;
 				}
-				LeaveCriticalSection(&g_screenCritSec);
-				gMouseNeedsRedraw = 0;
+				LeaveCriticalSection(&LHScreen::CriticalSection);
+				LHSys::GetMouse().DoubleBuffered = 0;
 			}
-			LeaveCriticalSection(&g_screenCritSec);
+			LeaveCriticalSection(&LHScreen::CriticalSection);
 		}
 		break;
 	case WM_APP + 5:
 		KillTimer(hWnd, 1);
-		SetTimer(hWnd, 1, (unsigned short)gCursorTimerInterval, 0);
+		SetTimer(hWnd, 1, (unsigned short)LHSys::GetMouse().AnimParam, 0);
 		break;
 	case WM_USER + 0x10:
 		if (wParam)
 		{
-			int used = charRing.Head - charRing.Tail;
+			int used = LHSys::TheSystem.charRing.Head - LHSys::TheSystem.charRing.Tail;
 			if (used < 0)
 				used += 0x10;
 			if (used < 15)
 			{
-				charRing.Buffer[charRing.Head] = wParam;
-				charRing.Head = (charRing.Head + 1) & 0xF;
+				LHSys::TheSystem.charRing.Buffer[LHSys::TheSystem.charRing.Head] = wParam;
+				LHSys::TheSystem.charRing.Head = (LHSys::TheSystem.charRing.Head + 1) & 0xF;
 			}
 		}
 		break;
@@ -758,35 +772,35 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 		KillTimer(hWnd, 1);
 		break;
 	case WM_APP + 9:
-		if ((unsigned char)unk_E8C0F8)
-		break;
+		if (LHSys::TheSystem.field_0x70b8)
+			break;
 		// fall through
 	case WM_MOUSEMOVE:
 		if (msg == WM_MOUSEMOVE)
 		{
-			SetEvent(gAppEvent);
+			SetEvent(LHSys::TheSystem.AppEvent);
 			lParam = (unsigned short)lParam | (HIWORD(lParam) << 16);
 		}
-		if (!gWindowedMode)
+		if (!LHSys::TheSystem.WindowedMode)
 		{
 			if (!gTrackingMouse)
 			{
-				TrackMouseEvent(&gTrackMouseEvent);
+				TrackMouseEvent(&LHSys::TheSystem.TrackMouseEventInfo);
 				gTrackingMouse = 1;
 			}
 			MouseMoveHandler((int)hWnd, lParam, GetMessageTime());
 		}
 		break;
 	case WM_APP + 7:
-		if (gCursorMode == 4)
-			SetCursor(gArrowCursor);
-		else if (gCursorMode == 2)
-			SetCursor(gArrowCursor);
+		if (LHSys::GetMouse().ImageMode == 4)
+			SetCursor(LHSys::TheSystem.ArrowCursor);
+		else if (LHSys::GetMouse().ImageMode == 2)
+			SetCursor(LHSys::TheSystem.ArrowCursor);
 		else
 			SetCursor(NULL);
 		break;
 	default:
-		if (msg && msg == gQueryCancelAutoPlayMsg)
+		if (msg && msg == LHSys::TheSystem.QueryCancelAutoPlayMsg)
 			return 1;
 		break;
 	}
@@ -800,8 +814,8 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 inline void LHCoord::AddMSWindowOffset()
 {
 	LHCoord offset;
-	offset.x = g_lhScreen.MsClientOffsetX;
-	offset.y = g_lhScreen.MsClientOffsetY;
+	offset.x = LHSys::GetScreen().MsClientOffsetX;
+	offset.y = LHSys::GetScreen().MsClientOffsetY;
 	x += offset.x;
 	y += offset.y;
 }
@@ -817,11 +831,11 @@ int LHSurface::CopyRegionFromScreen(LHRegion* region, LHCoord* pos, int from_pri
 	if (from_primary == 1)
 	{
 		coord.AddMSWindowOffset();
-		surface = g_lhScreen.PPrimarySurface;
+		surface = LHSys::GetScreen().PPrimarySurface;
 	}
 	else
 	{
-		surface = g_lhScreen.PBackSurface;
+		surface = LHSys::GetScreen().PBackSurface;
 	}
 	return CopySurface(region, &coord, surface, LH_COPY_DIRECTION_0x0, 0);
 }
@@ -829,5 +843,5 @@ int LHSurface::CopyRegionFromScreen(LHRegion* region, LHCoord* pos, int from_pri
 static int GetCursorPosClient(int param_1, POINT* point)
 {
 	GetCursorPos(point);
-	return ScreenToClient(g_windowForScreen, point);
+	return ScreenToClient(LHSys::GetWindow(), point);
 }

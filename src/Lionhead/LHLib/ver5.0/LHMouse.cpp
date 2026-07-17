@@ -10,7 +10,6 @@
 #define SM_MOUSEWHEELPRESENT 75 /* absent from the MSVC 6.0 SDK headers */
 #endif
 
-
 #include <Lionhead/LH3DLib/development/LHColor.h>
 #include <Lionhead/LH3DLib/development/LHCoord.h>
 #include <Lionhead/LH3DLib/development/LHRegion.h>
@@ -18,11 +17,13 @@
 #include <Lionhead/LHLib/ver5.0/LHMem.h>
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
 #include <Lionhead/LHLib/ver5.0/LHSurface.h>
-#include <Lionhead/LHLib/ver5.0/LHSystemGlobals.h>
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>
 
-CRITICAL_SECTION g_screenCritSec; // 0xE90650
-IDirectInputA*       gDirectInput;    // 0xE90668
-IDirectInputDeviceA* gMouseDevice;    // 0xE9066C
+// Defined here (not LHScreen.cpp): 0xE90650 sits immediately before this TU's
+// gDirectInput/gMouseDevice in .data, and LHMouse::LHMouse initializes it.
+CRITICAL_SECTION            LHScreen::CriticalSection; // 0xE90650
+static IDirectInputA*       gDirectInput;              // 0xE90668
+static IDirectInputDeviceA* gMouseDevice;              // 0xE9066C
 
 static int __stdcall CopyRegionFromScreen(LHRegion* dst, LHCoord* pos, int fromPrimary)
 {
@@ -32,20 +33,20 @@ static int __stdcall CopyRegionFromScreen(LHRegion* dst, LHCoord* pos, int fromP
 	IDirectDrawSurface7* surface;
 	if (fromPrimary == 1)
 	{
-		coord.x += g_lhScreen.MsClientOffsetX;
-		coord.y += g_lhScreen.MsClientOffsetY;
-		surface = g_lhScreen.PPrimarySurface;
+		coord.x += LHSys::GetScreen().MsClientOffsetX;
+		coord.y += LHSys::GetScreen().MsClientOffsetY;
+		surface = LHSys::GetScreen().PPrimarySurface;
 	}
 	else
 	{
-		surface = g_lhScreen.PBackSurface;
+		surface = LHSys::GetScreen().PBackSurface;
 	}
 	return ((LHSurface*)dst)->CopySurface(dst, &coord, surface, LH_COPY_DIRECTION_0x0, 0);
 }
 
 LHMouse::LHMouse()
 {
-	InitializeCriticalSection(&g_screenCritSec);
+	InitializeCriticalSection(&LHScreen::CriticalSection);
 	field_18 = 2;
 	ImageMode = 2;
 	DoubleBuffered = 1;
@@ -74,9 +75,9 @@ int LHMouse::UpdateDeltaPos()
 		{
 			if (result >= 0)
 			{
-				if (gMouseWheelSkip)
+				if (MouseWheelSkip)
 				{
-					gMouseWheelSkip = 0;
+					MouseWheelSkip = 0;
 				}
 				else
 				{
@@ -95,13 +96,14 @@ int LHMouse::UpdateDeltaPos()
 
 int LHMouse::InitDirectInput()
 {
-	if (DirectInputCreateA(g_hInstance, DIRECTINPUT_VERSION, &gDirectInput, NULL) < 0)
+	if (DirectInputCreateA(LHSys::GetInstance(), DIRECTINPUT_VERSION, &gDirectInput, NULL) < 0)
 		return 2;
 	if (gDirectInput->CreateDevice(GUID_SysMouse, (LPDIRECTINPUTDEVICEA*)&gMouseDevice, NULL) < 0)
 		return 2;
 	if (gMouseDevice->SetDataFormat(&c_dfDIMouse) < 0)
 		return 2;
-	if (gMouseDevice->SetCooperativeLevel(g_lhScreen.MsWindowHandle, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND) >= 0)
+	if (gMouseDevice->SetCooperativeLevel(LHSys::GetScreen().MsWindowHandle, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND) >=
+	    0)
 		return gMouseDevice->Acquire() >= 0 ? 0 : 2;
 	return 2;
 }
@@ -125,8 +127,8 @@ int LHMouse::ShutdownDirectInput()
 int LHMouse::UpdateCurrentPos(LHCoord coord)
 {
 	// TODO(nonmatching): x87 evaluation order for the mixed float/int expression differs.
-	int width = g_lhScreen.width;
-	int height = g_lhScreen.height;
+	int width = LHSys::GetScreen().width;
+	int height = LHSys::GetScreen().height;
 	EffectivePos.x = (int)((float)coord.x * width / (width - 2 * Margin.x) - Margin.x);
 	EffectivePos.y = (int)((float)coord.y * height / (height - 2 * Margin.y) - Margin.y);
 	if (UsePadding)
@@ -173,7 +175,7 @@ void LHMouse::SetMouseMargin(LHCoord margin)
 void LHMouse::SetButtons(uint8_t button)
 {
 	// TODO(nonmatching): pressed/held masks allocated to different registers than the original.
-	EnterCriticalSection(&g_screenCritSec);
+	EnterCriticalSection(&LHScreen::CriticalSection);
 	uint8_t pressed = ButtonPressed | button;
 	uint8_t held = Buttons | button;
 	ButtonPressed = pressed;
@@ -185,75 +187,75 @@ void LHMouse::SetButtons(uint8_t button)
 		ButtonPos[1].y = DefaultPos.y;
 		ButtonPressed = pressed & 0xF7;
 		Buttons = held & 0xF7;
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	case 8:
 		ButtonPos[4].x = DefaultPos.x;
 		ButtonPos[4].y = DefaultPos.y;
 		Buttons = held & 0xFD;
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	case 0x40:
 		ButtonPos[2].x = DefaultPos.x;
 		ButtonPos[2].y = DefaultPos.y;
 		ButtonPressed = pressed & 0x7F;
 		Buttons = held & 0x7F;
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	case 0x80:
 		ButtonPos[5].x = DefaultPos.x;
 		ButtonPos[5].y = DefaultPos.y;
 		Buttons = held & 0xBF;
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	case 1:
 		ButtonPos[0].x = DefaultPos.x;
 		ButtonPos[0].y = DefaultPos.y;
 		ButtonPressed = pressed & 0xFB;
 		Buttons = held & 0xFB;
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	case 4:
 		ButtonPos[3].x = DefaultPos.x;
 		ButtonPos[3].y = DefaultPos.y;
 		Buttons = held & 0xFE;
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	case 0x10:
 		ButtonPos[6].x = DefaultPos.x;
 		ButtonPos[6].y = DefaultPos.y;
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	case 0x20:
 		ButtonPos[7].x = DefaultPos.x;
 		ButtonPos[7].y = DefaultPos.y;
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	case 0:
 		ButtonPos[8].x = DefaultPos.x;
 		ButtonPos[8].y = DefaultPos.y;
 		// fallthrough to the shared unlock
 	default:
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	}
 }
 
 int LHMouse::SetPosition(LHCoord* position)
 {
-	if (gWindowedMode)
+	if (LHSys::TheSystem.WindowedMode)
 	{
 		ImageMode = 1;
-		PostMessageA(g_lhScreen.MsWindowHandle, 0x8007, 0, 0);
-		gMouse.UpdateCurrentPos(*position);
-		gMouse.Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)4);
+		PostMessageA(LHSys::GetScreen().MsWindowHandle, 0x8007, 0, 0);
+		LHSys::GetMouse().UpdateCurrentPos(*position);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)4);
 	}
 	else
 	{
 		POINT point;
 		point.x = position->x;
 		point.y = position->y;
-		ClientToScreen(g_lhScreen.MsWindowHandle, &point);
+		ClientToScreen(LHSys::GetScreen().MsWindowHandle, &point);
 		SetCursorPos(point.x, point.y);
 	}
 	return 0;
@@ -264,7 +266,7 @@ int LHMouse::SetPositionRel(LHCoord* delta)
 	POINT point;
 	point.x = delta->x + DefaultPos.x;
 	point.y = delta->y + DefaultPos.y;
-	ClientToScreen(g_lhScreen.MsWindowHandle, &point);
+	ClientToScreen(LHSys::GetScreen().MsWindowHandle, &point);
 	SetCursorPos(point.x, point.y);
 	return 0;
 }
@@ -286,14 +288,14 @@ static LHSurface* AllocWorkSurface(uint16_t width, uint16_t height)
 
 int LHMouse::SetWorkingArea(uint16_t width, uint16_t height)
 {
-	EnterCriticalSection(&g_screenCritSec);
-	EnterCriticalSection(&g_screenCritSec);
+	EnterCriticalSection(&LHScreen::CriticalSection);
+	EnterCriticalSection(&LHScreen::CriticalSection);
 	if (!Locked)
 	{
 		CopyRegionFromScreen(&PrevSavedRegion, (LHCoord*)&PrevDrawRegion, 1);
 		Locked = 1;
 	}
-	LeaveCriticalSection(&g_screenCritSec);
+	LeaveCriticalSection(&LHScreen::CriticalSection);
 
 	field_10 = width && height;
 	if (SingleSurface)
@@ -386,14 +388,14 @@ int LHMouse::SetWorkingArea(uint16_t width, uint16_t height)
 	}
 
 	BufferToggle = 0;
-	LeaveCriticalSection(&g_screenCritSec);
+	LeaveCriticalSection(&LHScreen::CriticalSection);
 	return 0;
 }
 
 int LHMouse::SetSpriteFlags(unsigned long flags)
 {
 	// TODO(nonmatching)
-	EnterCriticalSection(&g_screenCritSec);
+	EnterCriticalSection(&LHScreen::CriticalSection);
 	LHSurface* single = SingleSurface;
 	SpriteFlags = flags;
 	int result;
@@ -407,14 +409,14 @@ int LHMouse::SetSpriteFlags(unsigned long flags)
 			FrameSurfaces[i]->SetSpriteFlags(SpriteFlags & 0x60);
 	}
 	Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)128);
-	LeaveCriticalSection(&g_screenCritSec);
+	LeaveCriticalSection(&LHScreen::CriticalSection);
 	return result;
 }
 
 int LHMouse::SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, int reallocSurface)
 {
 	// TODO(nonmatching)
-	EnterCriticalSection(&g_screenCritSec);
+	EnterCriticalSection(&LHScreen::CriticalSection);
 	int prevMode = ImageMode;
 	field_18 = imageType;
 	if (prevMode != 64)
@@ -439,50 +441,50 @@ int LHMouse::SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, int reallocSu
 	{
 		if ((mode2 & ~7) == 0)
 		{
-			EnterCriticalSection(&g_screenCritSec);
+			EnterCriticalSection(&LHScreen::CriticalSection);
 			if (DoubleBuffered)
 			{
-				EnterCriticalSection(&g_screenCritSec);
+				EnterCriticalSection(&LHScreen::CriticalSection);
 				if (!Locked)
 				{
 					CopyRegionFromScreen(&PrevSavedRegion, (LHCoord*)&PrevDrawRegion, 1);
 					Locked = 1;
 				}
-				LeaveCriticalSection(&g_screenCritSec);
+				LeaveCriticalSection(&LHScreen::CriticalSection);
 				DoubleBuffered = 0;
 			}
-			LeaveCriticalSection(&g_screenCritSec);
-			PostMessageA(g_lhScreen.MsWindowHandle, 0x8007, 0, 0);
+			LeaveCriticalSection(&LHScreen::CriticalSection);
+			PostMessageA(LHSys::GetScreen().MsWindowHandle, 0x8007, 0, 0);
 		}
 		if ((ImageMode & ~7) != 0)
 		{
 			Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)8);
-			LeaveCriticalSection(&g_screenCritSec);
+			LeaveCriticalSection(&LHScreen::CriticalSection);
 			return 0;
 		}
-		EnterCriticalSection(&g_screenCritSec);
+		EnterCriticalSection(&LHScreen::CriticalSection);
 		if (DoubleBuffered)
 		{
-			EnterCriticalSection(&g_screenCritSec);
+			EnterCriticalSection(&LHScreen::CriticalSection);
 			if (!Locked)
 			{
 				CopyRegionFromScreen(&PrevSavedRegion, (LHCoord*)&PrevDrawRegion, 1);
 				Locked = 1;
 			}
-			LeaveCriticalSection(&g_screenCritSec);
+			LeaveCriticalSection(&LHScreen::CriticalSection);
 			DoubleBuffered = 0;
 		}
-		LeaveCriticalSection(&g_screenCritSec);
-		PostMessageA(g_lhScreen.MsWindowHandle, 0x8007, 0, 0);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
+		PostMessageA(LHSys::GetScreen().MsWindowHandle, 0x8007, 0, 0);
 	}
-	LeaveCriticalSection(&g_screenCritSec);
+	LeaveCriticalSection(&LHScreen::CriticalSection);
 	return 0;
 }
 
 void LHMouse::PinImage(int16_t x, int16_t y)
 {
 	// TODO(nonmatching)
-	EnterCriticalSection(&g_screenCritSec);
+	EnterCriticalSection(&LHScreen::CriticalSection);
 	Pinned = 1;
 	if (x == (int16_t)0x8000)
 	{
@@ -494,7 +496,7 @@ void LHMouse::PinImage(int16_t x, int16_t y)
 		PinPos.x = x;
 		PinPos.y = y;
 	}
-	LeaveCriticalSection(&g_screenCritSec);
+	LeaveCriticalSection(&LHScreen::CriticalSection);
 }
 
 void LHMouse::UpdateDrawRegions(LHSurface* surface)
@@ -548,13 +550,13 @@ void LHMouse::UpdateDrawRegions(LHSurface* surface)
 	bool offScreen = false;
 	if (DrawRegion.start.x < 0)
 		DrawRegion.start.x = 0;
-	else if (DrawRegion.start.x >= g_lhScreen.width)
+	else if (DrawRegion.start.x >= LHSys::GetScreen().width)
 		offScreen = true;
 	if (!offScreen)
 	{
 		if (DrawRegion.start.y < 0)
 			DrawRegion.start.y = 0;
-		else if (DrawRegion.start.y >= g_lhScreen.height)
+		else if (DrawRegion.start.y >= LHSys::GetScreen().height)
 			offScreen = true;
 	}
 	if (!offScreen)
@@ -563,14 +565,14 @@ void LHMouse::UpdateDrawRegions(LHSurface* surface)
 			offScreen = true;
 		else
 		{
-			if (DrawRegion.end.x >= g_lhScreen.width)
-				DrawRegion.end.x = g_lhScreen.width - 1;
+			if (DrawRegion.end.x >= LHSys::GetScreen().width)
+				DrawRegion.end.x = LHSys::GetScreen().width - 1;
 			if (DrawRegion.end.y < 0)
 				offScreen = true;
 			else
 			{
-				if (DrawRegion.end.y >= g_lhScreen.height)
-					DrawRegion.end.y = g_lhScreen.height - 1;
+				if (DrawRegion.end.y >= LHSys::GetScreen().height)
+					DrawRegion.end.y = LHSys::GetScreen().height - 1;
 				SavedRegion.start.x = DrawRegion.start.x - x;
 				SavedRegion.start.y = DrawRegion.start.y - y;
 				SavedRegion.end.x = DrawRegion.end.x - x;
@@ -580,19 +582,19 @@ void LHMouse::UpdateDrawRegions(LHSurface* surface)
 		}
 	}
 
-	EnterCriticalSection(&g_screenCritSec);
+	EnterCriticalSection(&LHScreen::CriticalSection);
 	if (DoubleBuffered)
 	{
-		EnterCriticalSection(&g_screenCritSec);
+		EnterCriticalSection(&LHScreen::CriticalSection);
 		if (!Locked)
 		{
 			CopyRegionFromScreen(&PrevSavedRegion, (LHCoord*)&PrevDrawRegion, 1);
 			Locked = 1;
 		}
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		DoubleBuffered = 0;
 	}
-	LeaveCriticalSection(&g_screenCritSec);
+	LeaveCriticalSection(&LHScreen::CriticalSection);
 }
 
 void LHMouse::Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType)
@@ -602,20 +604,20 @@ void LHMouse::Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType)
 	{
 		if (DrawCallback)
 		{
-			EnterCriticalSection(&g_screenCritSec);
+			EnterCriticalSection(&LHScreen::CriticalSection);
 			DrawCallback(CallbackArg1, eventType, CurrentFrame, CallbackArg2);
-			LeaveCriticalSection(&g_screenCritSec);
+			LeaveCriticalSection(&LHScreen::CriticalSection);
 		}
 		return;
 	}
 	if ((EventMask & eventType) == 0)
 		return;
 
-	EnterCriticalSection(&g_screenCritSec);
+	EnterCriticalSection(&LHScreen::CriticalSection);
 	LHSprite* sprite = NULL;
 	if (eventType == 2 && !AnimType)
 	{
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		return;
 	}
 	int suppress;
@@ -645,7 +647,7 @@ void LHMouse::Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType)
 		break;
 	}
 	UpdateDrawRegions(image);
-	if (DoubleBuffered && g_lhScreen.opened)
+	if (DoubleBuffered && LHSys::GetScreen().opened)
 	{
 		int mode = ImageMode;
 		if ((mode & ~7) != 0 && !suppress)
@@ -656,40 +658,41 @@ void LHMouse::Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType)
 				CurrentSurface->Lock();
 				CurrentSurface->Unlock();
 				LHSurface* cur = CurrentSurface;
-				if (g_lhScreen.depth == 16)
-					gLHDraw.Sprite16(0, 0, sprite, SpriteFlags, SpriteColor16, (LHPixel16*)cur->LockedAddress,
-					                 cur->BitDepth);
+				if (LHSys::GetScreen().depth == 16)
+					LHSys::GetDraw().Sprite16(0, 0, sprite, SpriteFlags, SpriteColor16, (LHPixel16*)cur->LockedAddress,
+					                          cur->BitDepth);
 				else
-					gLHDraw.Sprite24(0, 0, sprite, SpriteFlags, (LHColor*)cur->LockedAddress, cur->BitDepth);
+					LHSys::GetDraw().Sprite24(0, 0, sprite, SpriteFlags, (LHColor*)cur->LockedAddress, cur->BitDepth);
 				image = CurrentSurface;
 			}
 			GetScreenUnderCursorNoSetup(SaveSurface[BufferToggle == 0], image);
-			EnterCriticalSection(&g_screenCritSec);
+			EnterCriticalSection(&LHScreen::CriticalSection);
 			if (!Locked)
 			{
 				LHCoord coord;
 				coord.x = PrevDrawRegion.start.x;
 				coord.y = PrevDrawRegion.start.y;
 				LHSurface* prev = SaveSurface[BufferToggle];
-				coord.x += g_lhScreen.MsClientOffsetX; // LHCoord::AddMSWindowOffset (0x7e5af0)
-				coord.y += g_lhScreen.MsClientOffsetY;
-				prev->CopySurface(&PrevSavedRegion, &coord, g_lhScreen.PPrimarySurface, LH_COPY_DIRECTION_0x0, 0);
+				coord.x += LHSys::GetScreen().MsClientOffsetX; // LHCoord::AddMSWindowOffset (0x7e5af0)
+				coord.y += LHSys::GetScreen().MsClientOffsetY;
+				prev->CopySurface(&PrevSavedRegion, &coord, LHSys::GetScreen().PPrimarySurface, LH_COPY_DIRECTION_0x0,
+				                  0);
 				Locked = 1;
 			}
-			LeaveCriticalSection(&g_screenCritSec);
+			LeaveCriticalSection(&LHScreen::CriticalSection);
 			LHCoord coord;
 			coord.x = DrawRegion.start.x;
 			coord.y = DrawRegion.start.y;
 			IDirectDrawSurface7* dest;
 			if (buffer == 1)
 			{
-				coord.x += g_lhScreen.MsClientOffsetX;
-				coord.y += g_lhScreen.MsClientOffsetY;
-				dest = g_lhScreen.PPrimarySurface;
+				coord.x += LHSys::GetScreen().MsClientOffsetX;
+				coord.y += LHSys::GetScreen().MsClientOffsetY;
+				dest = LHSys::GetScreen().PPrimarySurface;
 			}
 			else
 			{
-				dest = g_lhScreen.PBackSurface;
+				dest = LHSys::GetScreen().PBackSurface;
 			}
 			image->CopySurface(&SavedRegion, &coord, dest, LH_COPY_DIRECTION_0x0, 0);
 			Locked = 0;
@@ -706,7 +709,7 @@ void LHMouse::Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType)
 				SetAnimFrame();
 		}
 	}
-	LeaveCriticalSection(&g_screenCritSec);
+	LeaveCriticalSection(&LHScreen::CriticalSection);
 }
 
 void LHMouse::SetCurrentCursorAnimFrame(unsigned long frame)
@@ -727,7 +730,7 @@ int LHMouse::SetAnimFrame()
 			return CurrentFrame;
 		}
 		CurrentFrame = 0;
-		return PostMessageA(g_lhScreen.MsWindowHandle, 0x8006, 0, 0);
+		return PostMessageA(LHSys::GetScreen().MsWindowHandle, 0x8006, 0, 0);
 	}
 	if (AnimType != 2)
 	{
@@ -757,7 +760,7 @@ int LHMouse::SetAnimFrame()
 			CurrentFrame = --result;
 			return result;
 		}
-		return PostMessageA(g_lhScreen.MsWindowHandle, 0x8006, 0, 0);
+		return PostMessageA(LHSys::GetScreen().MsWindowHandle, 0x8006, 0, 0);
 	}
 	if ((unsigned int)result >= (uint16_t)(FrameCount - 1))
 	{
@@ -778,7 +781,7 @@ int LHMouse::SetAnimFrame()
 void LHMouse::SetAnimateImages(LH_ANIMATE_IMAGE_TYPE imageType, void* images, unsigned long index)
 {
 	// TODO(nonmatching)
-	EnterCriticalSection(&g_screenCritSec);
+	EnterCriticalSection(&LHScreen::CriticalSection);
 	if (FrameSurfaces)
 	{
 		for (uint16_t i = 0; i < FrameCount16; ++i)
@@ -853,19 +856,19 @@ void LHMouse::SetAnimateImages(LH_ANIMATE_IMAGE_TYPE imageType, void* images, un
 		SetWorkingArea(0, 0);
 	if (!AnimType || CurrentFrame >= (unsigned int)FrameCount16)
 		CurrentFrame = 0;
-	LeaveCriticalSection(&g_screenCritSec);
+	LeaveCriticalSection(&LHScreen::CriticalSection);
 }
 
 void LHMouse::Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long frameCount)
 {
 	// TODO(nonmatching)
-	EnterCriticalSection(&g_screenCritSec);
+	EnterCriticalSection(&LHScreen::CriticalSection);
 	AnimParam = param;
 	AnimType = animType;
 	switch (animType)
 	{
 	case 0: {
-		PostMessageA(g_lhScreen.MsWindowHandle, 0x8006, 0, 0);
+		PostMessageA(LHSys::GetScreen().MsWindowHandle, 0x8006, 0, 0);
 		int savedMode = field_18;
 		FrameCount = 0;
 		CurrentFrame = 0;
@@ -873,38 +876,38 @@ void LHMouse::Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long fr
 		if ((savedMode & ~7) != 0)
 		{
 			Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)512);
-			LeaveCriticalSection(&g_screenCritSec);
+			LeaveCriticalSection(&LHScreen::CriticalSection);
 		}
 		else
 		{
-			EnterCriticalSection(&g_screenCritSec);
+			EnterCriticalSection(&LHScreen::CriticalSection);
 			if (DoubleBuffered)
 			{
-				EnterCriticalSection(&g_screenCritSec);
+				EnterCriticalSection(&LHScreen::CriticalSection);
 				if (!Locked)
 				{
 					CopyRegionFromScreen(&PrevSavedRegion, (LHCoord*)&PrevDrawRegion, 1);
 					Locked = 1;
 				}
-				LeaveCriticalSection(&g_screenCritSec);
+				LeaveCriticalSection(&LHScreen::CriticalSection);
 				DoubleBuffered = 0;
 			}
-			LeaveCriticalSection(&g_screenCritSec);
-			PostMessageA(g_lhScreen.MsWindowHandle, 0x8007, 0, 0);
-			LeaveCriticalSection(&g_screenCritSec);
+			LeaveCriticalSection(&LHScreen::CriticalSection);
+			PostMessageA(LHSys::GetScreen().MsWindowHandle, 0x8007, 0, 0);
+			LeaveCriticalSection(&LHScreen::CriticalSection);
 		}
 		break;
 	}
 	case 1:
 	case 2:
-		PostMessageA(g_lhScreen.MsWindowHandle, 0x8006, 0, 0);
+		PostMessageA(LHSys::GetScreen().MsWindowHandle, 0x8006, 0, 0);
 		if (FrameBank)
 			ImageMode = 64;
 		AnimReverse = 0;
 		FrameCount = FrameCount16 ? FrameCount16 : frameCount;
 		CurrentFrame = 0;
 		Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)256);
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	case 3:
 		if (FrameBank)
@@ -913,11 +916,11 @@ void LHMouse::Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long fr
 		CurrentFrame = 0;
 		FrameCount = FrameCount16 ? FrameCount16 : frameCount;
 		Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)256);
-		PostMessageA(g_lhScreen.MsWindowHandle, 0x8005, 0, 0);
-		LeaveCriticalSection(&g_screenCritSec);
+		PostMessageA(LHSys::GetScreen().MsWindowHandle, 0x8005, 0, 0);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	default:
-		LeaveCriticalSection(&g_screenCritSec);
+		LeaveCriticalSection(&LHScreen::CriticalSection);
 		break;
 	}
 }
@@ -925,7 +928,7 @@ void LHMouse::Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long fr
 int LHMouse::GetScreenUnderCursorNoSetup(LHSurface* surface, LHSurface* prevSurface)
 {
 	// TODO(nonmatching)
-	EnterCriticalSection(&g_screenCritSec);
+	EnterCriticalSection(&LHScreen::CriticalSection);
 	int      result = surface->GetScreenSurface(&DrawRegion, (LHCoord*)&SavedRegion, (LH_SCREEN_BUFFER)ScreenBuffer);
 	LHRegion clip;
 	clip.start.x = PrevDrawRegion.start.x;
@@ -987,7 +990,7 @@ int LHMouse::GetScreenUnderCursorNoSetup(LHSurface* surface, LHSurface* prevSurf
 				                              save->HasTransparentColor);
 				if (result)
 				{
-					LeaveCriticalSection(&g_screenCritSec);
+					LeaveCriticalSection(&LHScreen::CriticalSection);
 					return result;
 				}
 			}
@@ -1006,6 +1009,6 @@ int LHMouse::GetScreenUnderCursorNoSetup(LHSurface* surface, LHSurface* prevSurf
 			}
 		}
 	}
-	LeaveCriticalSection(&g_screenCritSec);
+	LeaveCriticalSection(&LHScreen::CriticalSection);
 	return result;
 }

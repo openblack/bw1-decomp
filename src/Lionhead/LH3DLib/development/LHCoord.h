@@ -15,7 +15,7 @@ struct LHCoord
 	LHCoord(const LHCoord* other);
 
 	// BW1W120 007e5af0 LHCoord::AddMSWindowOffset(void)
-	// Defined out-of-line where g_lhScreen is in scope (needs LHScreen); inlined at call sites.
+	// Defined out-of-line where the screen is in scope (LHSystem.cpp); inlined at call sites.
 	void AddMSWindowOffset();
 };
 

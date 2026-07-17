@@ -9,6 +9,7 @@
 #include <Lionhead/LH3DLib/development/LHRegion.h>
 #include <Lionhead/LHLib/ver5.0/LHDraw.h>
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>
 
 // A multi-part sprite frame: an array of parts, each a positioned LHSprite.
 class LHSpriteFrame
@@ -26,8 +27,6 @@ public:
 };
 
 // Fixed-address globals
-extern LHScreen   g_lhScreen;      // 0xE85050 the global LHScreen instance
-extern LHDraw     gLHDraw;         // 0xE8586C the global LHDraw context (draws to the back buffer)
 extern DDBLTFX    gLHSurfaceBltFx; // 0xE90670 scratch DDBLTFX reused by Clear()
 extern LHSurface* gLHSurfaceList;  // 0xE906D8 head of the registered-surface list
 extern uint16_t   gLHSurfaceCount; // 0xE906D4 number of registered surfaces
@@ -75,7 +74,7 @@ int LHSurface::InitialiseSurface()
 	desc.dwSize = sizeof(DDSURFACEDESC2);
 	desc.dwFlags = DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH;
 	desc.ddsCaps.dwCaps = DDSCAPS_OFFSCREENPLAIN;
-	g_lhScreen.PDirectDraw->CreateSurface(&desc, (LPDIRECTDRAWSURFACE7*)this, NULL);
+	LHSys::GetScreen().PDirectDraw->CreateSurface(&desc, (LPDIRECTDRAWSURFACE7*)this, NULL);
 	return Reset();
 }
 
@@ -209,13 +208,14 @@ int LHSurface::CopyImageIn()
 			int           top = rect.start.y;
 			int           left = rect.start.x;
 			LHSprite*     sprite = ((LHSpriteFrame*)Image)->GetSpritePtr((unsigned short)i);
-			if (g_lhScreen.depth == 16)
+			if (LHSys::GetScreen().depth == 16)
 			{
-				gLHDraw.Sprite16(outX - left, outY - top, sprite, flags, 0, (LHPixel16*)lockedAddress, bitDepth);
+				LHSys::GetDraw().Sprite16(outX - left, outY - top, sprite, flags, 0, (LHPixel16*)lockedAddress,
+				                          bitDepth);
 			}
 			else
 			{
-				gLHDraw.Sprite24(outX - left, outY - top, sprite, flags, (LHColor*)lockedAddress, bitDepth);
+				LHSys::GetDraw().Sprite24(outX - left, outY - top, sprite, flags, (LHColor*)lockedAddress, bitDepth);
 			}
 			i += 0xFFFF;
 		}
@@ -225,13 +225,13 @@ int LHSurface::CopyImageIn()
 		LHSprite*     sprite = (LHSprite*)Image;
 		int           bitDepth = BitDepth;
 		void*         lockedAddress = LockedAddress;
-		if (g_lhScreen.depth == 16)
+		if (LHSys::GetScreen().depth == 16)
 		{
-			result = gLHDraw.Sprite16(0, 0, sprite, flags, 0, (LHPixel16*)lockedAddress, bitDepth);
+			result = LHSys::GetDraw().Sprite16(0, 0, sprite, flags, 0, (LHPixel16*)lockedAddress, bitDepth);
 		}
 		else
 		{
-			int r = gLHDraw.Sprite24(0, 0, sprite, flags, (LHColor*)lockedAddress, bitDepth);
+			int r = LHSys::GetDraw().Sprite24(0, 0, sprite, flags, (LHColor*)lockedAddress, bitDepth);
 			Unlock();
 			return r;
 		}
@@ -266,15 +266,15 @@ int LHSurface::GetScreenSurface(LHRegion* rect, LHCoord* coord, LH_SCREEN_BUFFER
 	IDirectDrawSurface7* surface;
 	if (screenBuffer == LH_SCREEN_BUFFER_0x1)
 	{
-		region.start.x += g_lhScreen.MsClientOffsetX;
-		region.start.y += g_lhScreen.MsClientOffsetY;
-		region.end.x += g_lhScreen.MsClientOffsetX;
-		region.end.y += g_lhScreen.MsClientOffsetY;
-		surface = g_lhScreen.PPrimarySurface;
+		region.start.x += LHSys::GetScreen().MsClientOffsetX;
+		region.start.y += LHSys::GetScreen().MsClientOffsetY;
+		region.end.x += LHSys::GetScreen().MsClientOffsetX;
+		region.end.y += LHSys::GetScreen().MsClientOffsetY;
+		surface = LHSys::GetScreen().PPrimarySurface;
 	}
 	else
 	{
-		surface = g_lhScreen.PBackSurface;
+		surface = LHSys::GetScreen().PBackSurface;
 	}
 	return CopySurface(&region, coord, surface, LH_COPY_DIRECTION_0x1, 0);
 }
