@@ -31947,6 +31947,7 @@ _gDebugStackInitialised = .data:0x00E905F8; // type:object size:0x1 scope:global
 ?g_current_count@LH3DMem@@2PAXA = .data:0x00EF6548; // type:object size:0x4 scope:global
 ?g_current_amount@LH3DMem@@2PAXA = .data:0x00EF654C; // type:object size:0x4 scope:global
 ?g_open@LH3DMem@@2PAXA = .data:0x00EF6550; // type:object size:0x4 scope:global
+__ps_am_0 = .data:0x00FAC860; // type:object size:0x20 scope:global
 _start_tics = .data:0x00FAC880; // type:object size:0x8 scope:global
 __setjmpexused = .data:0x00FAC888; // type:object size:0xD8 scope:global
 ?_Stz@?$fpos@H@std@@0HA = .data:0x00FAC930; // type:object size:0x8 scope:global
