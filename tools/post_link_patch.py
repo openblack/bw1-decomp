@@ -330,12 +330,14 @@ def insert_rich_header(pe, key, records, reserved_slots=RICH_HEADER_RESERVED_SLO
     gap = rich_header_size(records) + reserved_slots * RICH_RECORD_SIZE
 
     # Shift IMAGE_NT_HEADERS back to make room. pefile's set_file_offset
-    # updates section PointerToRawData, data directories, etc. automatically.
+    # updates section PointerToRawData, data directories, etc. automatically;
+    # insert_header_padding moves the free-floating header bytes pefile does not
+    # track (e.g. exestr comments).
     pe.DOS_HEADER.e_lfanew += gap
     for structure in pe.__structures__:
         if 0 < structure.get_file_offset() < 0x1000:
             structure.set_file_offset(structure.get_file_offset() + gap)
-    write_bytes(pe, rich_start, b'\x00' * gap)
+    insert_header_padding(pe, rich_start, gap)
 
     # e_cblp: bytes on the last DOS page. The MSVC stub ends at rich_start + preamble.
     pe.DOS_HEADER.e_cblp     = rich_start + len(RICH_PREAMBLE)
@@ -410,11 +412,25 @@ def apply_BW1_common_patch(pe, cfg):
     pe.OPTIONAL_HEADER.BaseOfData = find_section_header(pe, '.rdata').get_PointerToRawData_adj()
 
 
-def apply_intel_strings(pe, cfg):
-    # Weird leaked icc compiler strings for certain files  that were compiled with icc
-    write_bytes(pe, 0x390, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Build 001120  : C:\\Dev\\libs\\LIONHEAD\\LH3DLIB\\DEVELOPMENT\\LH3DP3.cpp : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -MT -W3 -GX -Zi -O2 -Ob1 -D NDEBUG -D _LH_LIB_RELEASE -D WIN32 -D _WINDOWS -D _LH_3D_LIB_ -D _GOLD -D _GOLD_ -D _USE_INTEL_COMPILER -FAcs -FaGold/ -FoGold/ -FdGold/ -FD -QxiW -G7 -c"[24:])
-    write_bytes(pe, 0x503, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0.1 Beta  Build 010214Z  : cpu_disp.c : -I../ -Zl -Zp8 -DVX -DWMT -DMULTI_THREADED -Focpu_disp_mt.obj -c")
-    write_bytes(pe, 0x5a5, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Beta  Build 001024  : C:\\PROJECTS\\MathTest\\AMaths.c : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -ML -W3 -GX -O2 -D WIN32 -D NDEBUG -D _WINDOWS -D _USE_INTEL_COMPILER -D _KATMAI_STEP_B -FpRelease/AMaths.pch -YX -FoRelease/ -FdRelease/ -FD -QxiMKW -c")
+# Two section headers SafeDisc inserts after the section table.
+SAFEDISC_SECTION_BUMP = 0x50
+# Bytes zeroed off the front of the first exestr comment.
+EXESTR_PREFIX_ERASE = 24
+
+
+def section_table_end(pe):
+    return (pe.DOS_HEADER.e_lfanew + 4 + 20
+            + pe.FILE_HEADER.SizeOfOptionalHeader
+            + pe.FILE_HEADER.NumberOfSections * 40)
+
+
+def insert_header_padding(pe, at, count):
+    # Shift the free-floating header bytes forward within SizeOfHeaders; pefile
+    # structures are relocated separately via set_file_offset.
+    soh = pe.OPTIONAL_HEADER.SizeOfHeaders
+    content = bytes(pe.__data__[at:soh - count])
+    pe.__data__[at + count:soh] = content
+    pe.__data__[at:at + count] = b'\x00' * count
 
 
 def apply_BW1W100_patch_safedisc_cleaner(pe):
@@ -462,10 +478,13 @@ def apply_BW1W100_patch(pe, cfg, out_dir, modules):
 
 
 def apply_BW1W110_patch(pe, cfg, out_dir, modules):
+    ste = section_table_end(pe)
+    insert_header_padding(pe, ste, SAFEDISC_SECTION_BUMP)
+    write_bytes(pe, ste + SAFEDISC_SECTION_BUMP, b'\x00' * EXESTR_PREFIX_ERASE)
+
     apply_patch_safedisc(pe, cfg)
     apply_BW1W110_patch_safedisc_cleaner(pe)
     apply_BW1_common_patch(pe, cfg)
-    apply_intel_strings(pe, cfg)
 
     # This version has an existing but deleted debug directory
     patch_directory(pe, 'IMAGE_DIRECTORY_ENTRY_DEBUG', 0x008999c0, 0x1c)
@@ -494,10 +513,16 @@ def apply_BW1W110_patch(pe, cfg, out_dir, modules):
 
 
 def apply_BW1W120_patch(pe, cfg, out_dir, modules):
+    # Bump the exestr comments past SafeDisc's section headers, then re-apply the
+    # decryptor's prefix erasure. Runs before the artifacts below so they land at
+    # their final offsets.
+    ste = section_table_end(pe)
+    insert_header_padding(pe, ste, SAFEDISC_SECTION_BUMP)
+    write_bytes(pe, ste + SAFEDISC_SECTION_BUMP, b'\x00' * EXESTR_PREFIX_ERASE)
+
     apply_patch_safedisc(pe, cfg)
     apply_BW1W120_patch_safedisc_cleaner(pe)
     apply_BW1_common_patch(pe, cfg)
-    apply_intel_strings(pe, cfg)
 
     # Different safedisc decryptor easter egg
     # https://www.beatport.com/nl/track/crazy-bad-bwoy/682050

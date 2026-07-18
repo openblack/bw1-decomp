@@ -1,5 +1,6 @@
 object_base: orig/BW1W100
-object: runblack-decrypted.exe
+name: runblack
+object: ../../build/BW1W100/runblack-preprocessed.exe
 hash: d810fe43e2956f2b76533ab698632756ba99b44d
 symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt

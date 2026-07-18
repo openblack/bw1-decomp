@@ -14,6 +14,7 @@ import io
 import json
 import math
 import os
+import re
 import platform
 import sys
 from pathlib import Path
@@ -174,6 +175,9 @@ class ProjectConfig:
         self.check_sha_path: Optional[Path] = None  # Path to version.sha1
         self.config_path: Optional[Path] = None  # Path to config.yml
         self.generate_map: bool = False  # Generate map file(s)
+        # Debug build: emit a per-object /Zi vc60 type server (.o.pdb) so the
+        # openblack lld-link fork can merge VC6 types into the program PDB.
+        self.debug: bool = False
         self.asflags: Optional[List[str]] = None  # Assembler flags
         self.ldflags: Optional[List[str]] = None  # Linker flags
         self.libs: Optional[List[Library]] = None  # List of libraries
@@ -198,7 +202,7 @@ class ProjectConfig:
             None  # Custom ninja build rules
         )
         self.custom_build_steps: Optional[Dict[str, List[Dict[str, Any]]]] = (
-            None  # Custom build steps, types are ["pre-compile", "post-compile", "post-link", "post-build"]
+            None  # Custom build steps, types are ["pre-split", "pre-compile", "post-compile", "post-link", "post-build"]
         )
         self.generate_compile_commands: bool = (
             True  # Generate compile_commands.json for clangd
@@ -851,10 +855,15 @@ def generate_build_ninja(
         cl = (compiler_path / "cl.exe") if compiler_path is not None else Path("cl.exe")
         cl_implicit: List[Optional[Path]] = [compilers_implicit or cl if compilers is not None else None, wrapper_implicit]
 
+        # In debug builds, give each object its own /Zi type server ($out.pdb)
+        # instead of a single shared vc60.pdb in the cwd, which 462 parallel
+        # compiles would race on (fatal error C1041). lld-link opens every
+        # referenced type server and merges their VC6 types into the program PDB.
+        fd_flag = " /Fd$out.pdb" if config.debug else ""
         n.comment("CL build (MSVC / clang-cl)")
         n.rule(
             name="cl",
-            command=f"{wrapper_cmd}{cl} /nologo $cflags /c $in /Fo$out",
+            command=f"{wrapper_cmd}{cl} /nologo $cflags /c $in /Fo$out{fd_flag}",
             description="CL $out",
         )
         n.newline()
@@ -1807,6 +1816,9 @@ def generate_build_ninja(
     else:
         split_kind = "dol"
         split_desc = "Split DOL into relocatable objects"
+    # Steps that prepare the split input (e.g. normalizing the source binary).
+    write_custom_step("pre-split")
+
     n.comment(split_desc)
     n.rule(
         name="split",
@@ -1837,26 +1849,51 @@ def generate_build_ninja(
         # only exists when build_config is set (the link section ran).
         if build_config and extracted in lib_extracted_added:
             lib_object_paths.append(extracted)
+    # Rewrite the top-level `object:` to a lexically-absolute path. The source
+    # config points it at the preprocessed exe via `../../build/...`, which dtk
+    # joins onto `object_base` and resolves *physically*; when `orig` is a symlink
+    # (e.g. pointing at a shared build store) that climb escapes the repo. Using
+    # os.path.abspath normalizes `..` lexically (without following symlinks) so the
+    # split works regardless of how `orig` is materialized. dtk treats an absolute
+    # `object` as authoritative and ignores `object_base` for it.
+    lines = config.config_path.read_text(encoding="utf-8").splitlines(keepends=True)
+    object_base = ""
+    for line in lines:
+        m = re.match(r"object_base:\s*(\S+)", line)
+        if m:
+            object_base = m.group(1)
+            break
+    rewritten = []
+    for line in lines:
+        m = re.match(r"(object:\s*)(\S+)(.*)", line)
+        if m and not os.path.isabs(m.group(2)):
+            abs_object = os.path.abspath(os.path.join(object_base, m.group(2)))
+            line = f"{m.group(1)}{abs_object}{m.group(3)}\n"
+        rewritten.append(line)
+    lines = rewritten
+
     if lib_object_entries:
         block = ["lib_objects:"]
         for unit, path in lib_object_entries:
             block.append(f"- unit: {unit}")
             block.append(f"  object: {path}")
         block_text = "\n".join(block) + "\n"
-        lines = config.config_path.read_text(encoding="utf-8").splitlines(keepends=True)
         insert_at = next(
             (i for i, line in enumerate(lines) if line.startswith("modules:")),
             len(lines),
         )
-        new_text = "".join(lines[:insert_at]) + block_text + "".join(lines[insert_at:])
-        split_config_path = build_path / "config.yml"
-        split_config_path.parent.mkdir(parents=True, exist_ok=True)
-        split_config_path.write_text(new_text, encoding="utf-8")
+        lines = lines[:insert_at] + [block_text] + lines[insert_at:]
+
+    new_text = "".join(lines)
+    split_config_path = build_path / "config.yml"
+    split_config_path.parent.mkdir(parents=True, exist_ok=True)
+    split_config_path.write_text(new_text, encoding="utf-8")
     n.build(
         inputs=split_config_path,
         outputs=build_config_path,
         rule="split",
         implicit=[dtk, config.config_path, *lib_object_paths],
+        order_only="pre-split",
         variables={"out_dir": build_path},
     )
     n.newline()
