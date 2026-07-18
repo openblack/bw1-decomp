@@ -162,12 +162,12 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.21"
+config.dtk_tag = "v0.0.22"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
 config.compilers_tag = "6.5"  # MSVC 6.0 SP5
-config.lld_link_tag = "bw1-decomp-017"
+config.lld_link_tag = "bw1-decomp-018"
 # Static libraries to pull verbatim CRT objects from (see LibObject). They are
 # not committed and not downloaded — you must supply them yourself: place each
 # .lib at orig/libs/<package>/<lib>.lib. See the README for how to obtain them.
@@ -182,16 +182,31 @@ config.config_path = Path("config") / config.version / "config.yml"
 config.check_sha_path = Path("config") / config.version / "build.sha1"
 config.asflags = None
 config.ldflags = []
+config.debug = args.debug
+if args.debug:
+    # Emit a program PDB (types merged from the per-object /Zi vc60 type
+    # servers) alongside the linked image so Ghidra can load real types +
+    # symbol names.
+    config.ldflags.append("/debug")
 config.reconfig_deps = []
 
 # Post-link patch: applies version-specific binary fixups after linking,
 # producing the final exe that is checked against build.sha1.
-_linked = f"build/{config.version}/runblack-decrypted-linked.exe"
-_patched = f"build/{config.version}/runblack-decrypted.exe"
+_linked = f"build/{config.version}/runblack-linked.exe"
+_patched = f"build/{config.version}/runblack.exe"
 _modules = ["LHAudio", "LHLog", "LHMultiplayer", "LHDialog"]
 _module_linked = [f"build/{config.version}/{m}-linked.dll" for m in _modules]
 _module_patched = [f"build/{config.version}/{m}.dll" for m in _modules]
+# Pre-split normalization: strip SafeDisc/decryptor vandalism from the source
+# exe so dtk/lld see pristine linker output (see docs/transformations.md).
+_decrypted = f"orig/{config.version}/runblack-decrypted.exe"
+_preprocessed = f"build/{config.version}/runblack-preprocessed.exe"
 config.custom_build_rules = [
+    {
+        "name": "predtk",
+        "command": f"$python tools/pre_dtk_patch.py $in $out",
+        "description": "PREDTK $out",
+    },
     {
         "name": "postpatch",
         "command": f"$python tools/post_link_patch.py --version {config.version} $in $out",
@@ -207,6 +222,14 @@ config.linker_version = "MSVC/6.5"
 _msvc_dir = f"build/compilers/{config.linker_version}"
 _patch_stamp = f"build/{config.version}/patched_compiler_headers"
 config.custom_build_steps = {
+    "pre-split": [
+        {
+            "outputs": _preprocessed,
+            "rule": "predtk",
+            "inputs": _decrypted,
+            "implicit": ["tools/pre_dtk_patch.py"],
+        },
+    ],
     "pre-compile": [
         {
             "outputs": _patch_stamp,
@@ -243,6 +266,12 @@ cflags_base = [
     f"/DVERSION_{config.version}",
 ]
 if args.debug:
+    # /Zi emits types into a vc60.pdb type server (PDB 2.0) referenced by each
+    # obj via LF_TYPESERVER; the openblack lld-link fork reads those old type
+    # servers (see "signature_out_of_date ... old PDB 2.0 type servers") and
+    # merges them into the program PDB for loading types+symbols into Ghidra.
+    # (/Z7 is NOT usable: its embedded .debug$S uses pre-C13 CodeView magic
+    # that lld-link ignores.)
     cflags_base.extend(["/Zi", "/DDEBUG=1"])
 else:
     cflags_base.append("/DNDEBUG=1")
@@ -1287,7 +1316,7 @@ config.libs = [
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\setjmp3.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\mbtoupr.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\sehsupp.obj", progress_category="sdk"),
-            LibObject(NonMatching, "amaths", ".\\Release\\AMaths.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "amaths", ".\\Release\\AMaths.obj", progress_category="sdk"),
 
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSystem.cpp", progress_category="sdk"),

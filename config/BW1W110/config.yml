@@ -1,6 +1,7 @@
 object_base: orig/BW1W110
-object: runblack-decrypted.exe
-hash: 44315eb19b6e2ab9023ea330b99bf5d471597402
+name: runblack
+object: ../../build/BW1W110/runblack-preprocessed.exe
+hash: ef763f2b88488d1099ca50379a1b9c904c316c0c
 symbols: config/BW1W110/symbols.txt
 splits: config/BW1W110/splits.txt
 # TODO: Unsure why we get 0x832000, probably because of decryptor
