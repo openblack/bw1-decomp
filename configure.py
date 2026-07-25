@@ -175,7 +175,7 @@ config.compilers_tag = {
     "BW1W120": "6.5",
 }[config.version]
 config.linker_version = f"MSVC/{config.compilers_tag}"
-config.lld_link_tag = "bw1-decomp-018"
+config.lld_link_tag = "bw1-decomp-020"
 # Static libraries to pull verbatim CRT objects from (see LibObject). They are
 # not committed and not downloaded — you must supply them yourself: place each
 # .lib at orig/libs/<package>/<lib>.lib. See the README for how to obtain them.
