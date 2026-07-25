@@ -35,9 +35,9 @@ public:
 	// BW1W120 00643980 BW1M100 inlined PFootball::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 	// BW1W120 00643950 BW1M100 inlined PFootball::IsPlaytimeStructure(void)
-	virtual bool IsPlaytimeStructure();
+	virtual bool32_t IsPlaytimeStructure();
 	// BW1W120 00643960 BW1M100 inlined PFootball::IsPlaytimeStarted(void)
-	virtual bool IsPlaytimeStarted();
+	virtual bool32_t IsPlaytimeStarted();
 	// BW1W120 00644200 BW1M100 inlined PFootball::AddPlaytimeVillager(Villager *)
 	virtual bool AddPlaytimeVillager(Villager* param_1);
 	// BW1W120 006438f0 BW1M100 inlined PFootball::IsRepaired(void)

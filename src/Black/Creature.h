@@ -10,7 +10,8 @@
 #include <chlasm/Enum.h>          /* For enum CREATURE_DESIRES, enum EFFECT_TYPE, enum IMPRESSIVE_TYPE, enum REACTION */
 #include <chlasm/GStates.h>       /* For enum VILLAGER_STATES */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
-#include <re_common.h>            /* For bool32_t */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+#include <re_common.h>                          /* For bool32_t */
 
 #include "CreatureHelp.h"      /* For struct CreatureHelpStackEntry, struct CreatureHelpState */
 #include "CreatureSubAction.h" /* For struct CreatureSubActionAgenda */
@@ -56,6 +57,12 @@ struct RPHolder;
 class Reaction;
 class Spell;
 
+struct CreatureEmotionsForMusic
+{
+	uint32_t field_0x0;
+	uint32_t field_0x4;
+};
+
 class Creature : public Living
 {
 public:
@@ -71,7 +78,7 @@ public:
 	uint32_t                             field_0x180;
 	uint32_t                             field_0x184;
 	CreatureHelpState                    HelpState;
-	LHLinkedList__CreatureHelpStackEntry HelpStackEntries[0x2a]; /* 0x220 */
+	LHLinkedList<CreatureHelpStackEntry> HelpStackEntries[0x2a]; /* 0x220 */
 	CreatureReceiveSpell*                ReceiveSpell;           /* 0x370 */
 	float                                field_0x374;
 	float                                field_0x378;
@@ -465,7 +472,7 @@ public:
 	// BW1W120 00473fb0 BW1M100 inlined Creature::CallEntryStateFunctionUc(VILLAGER_STATES)
 	virtual uint32_t CallEntryStateFunction(uint8_t state);
 	// BW1W120 0047c670 BW1M100 101d2490 Creature::IsDancing(void)
-	virtual bool IsDancing();
+	virtual bool32_t IsDancing();
 	// BW1W120 004f2820 BW1M100 1027db00 Creature::IsAvailableForReaction(REACTION)
 	virtual bool32_t IsAvailableForReaction(REACTION param_1);
 	// BW1W120 004f2780 BW1M100 1027dca0 Creature::UpdateHowImpressed(Reaction *, int)

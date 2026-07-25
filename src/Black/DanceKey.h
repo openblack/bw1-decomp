@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LHLib/ver5.0/LHDynamicStack.h> /* For struct LHDynamicStack */
+
 #include "DanceGroup.h" /* For enum DANCE_GROUP_ACTION_TYPE */
 #include "GameThing.h"  /* For struct GameThing */
 
@@ -36,7 +38,7 @@ public:
 	// Constructors
 
 	// BW1W120 0050eb60 BW1M100 102ae450 DanceKeyFrame::DanceKeyFrame(long, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
-	DanceKeyFrame(int param_1, LHDynamicStack__Ul* stack, DANCE_GROUP_ACTION_TYPE action_type,
+	DanceKeyFrame(int param_1, LHDynamicStack<uint32_t>* stack, DANCE_GROUP_ACTION_TYPE action_type,
 	              const DanceGroupActionArgument* arguments);
 };
 

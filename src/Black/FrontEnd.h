@@ -101,11 +101,11 @@ struct FrontEnd
 	// BW1W120 0053c450 BW1M100 105c47d0 FrontEnd::SetCursorOn(void)
 	static void SetCursorOn();
 	// BW1W120 00544f90 BW1M100 105b9c50 FrontEnd::JustDoABox(DialogBoxBase *)
-	static void JustDoABox(DialogBoxBase* this);
+	static void JustDoABox(DialogBoxBase* box);
 	// BW1W120 0053ce70 BW1M100 105c3cf0 FrontEnd::JustDoNewProfileBox(void)
-	static void JustDoNewProfileBox(FrontEnd* this);
+	void JustDoNewProfileBox();
 	// BW1W120 00544f80 BW1M100 105ba050 FrontEnd::JustDoSkirmishGameBox(void)
-	static void JustDoSkirmishGameBox(FrontEnd* this);
+	static void JustDoSkirmishGameBox();
 };
 
 #endif /* BW1_DECOMP_FRONT_END_INCLUDED_H */

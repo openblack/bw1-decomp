@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+
 #include "Base.h"                       /* For struct Base */
 #include "BaseInfo.h"                   /* For struct GBaseInfo */
 #include "CreatureMentalDesireSource.h" /* For struct CreatureDesireSource */
@@ -21,7 +23,7 @@ public:
 	uint32_t                           field_0x148[0x28];
 	uint32_t                           field_0x1e8[0x28];
 	uint32_t                           field_0x288[0x28];
-	LHLinkedList__CreatureDesireSource SourceLists[0x28]; /* 0x328 */
+	LHLinkedList<CreatureDesireSource> SourceLists[0x28]; /* 0x328 */
 	uint32_t                           field_0x468[0x28];
 	uint32_t                           field_0x508[0x28];
 	uint32_t                           field_0x5a8[0x28];

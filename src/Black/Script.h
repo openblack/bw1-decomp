@@ -34,7 +34,7 @@ public:
 	// Static methods
 
 	// BW1W120 006eb100 BW1M100 104d8610 GScript::Create(void)
-	static GScript* Create(GScript* this);
+	static GScript* Create();
 	// BW1W120 006eb710 BW1M100 104d7e50 GScript::StartScript(char *)
 	static int StartScript(char* name);
 	// BW1W120 0070b220 BW1M100 104fcda0 GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL)
@@ -65,7 +65,7 @@ public:
 	// BW1W120 006f62c0 BW1M100 100054c0 GScript::ScriptWarningMessage(char*)
 	void ScriptWarningMessage(char* msg);
 	// BW1W120 006f7410 BW1M100 104ea250 GScript::FindInTown(GameThingWithPos*, int (*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong), SCRIPT_OBJECT_TYPE, ulong)
-	Abode* FindInTown(GameThingWithPos* param_1, int(__cdecl*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t) param_2,
+	Abode* FindInTown(GameThingWithPos* param_1, int(__cdecl* param_2)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
 	                  SCRIPT_OBJECT_TYPE param_3, uint32_t param_4);
 };
 

@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t */
 
+#include <re_common.h>                            /* For bool32_t */
 #include <chlasm/LHKeyBoard.h>                    /* For enum LH_KEY */
 #include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
 

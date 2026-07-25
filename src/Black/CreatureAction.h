@@ -20,6 +20,16 @@ enum CREATURE_SUB_STATE_ACTIONS
 
 class CreatureContext;
 class Morphable;
+struct CreatureActionContext;
+
+struct CreatureActionContextStart
+{
+	uint32_t               field_0x0;
+	CreatureActionContext* field_0x4;
+	uint32_t               field_0x8;
+	uint32_t               field_0xc;
+	uint32_t               field_0x10;
+};
 
 struct CreatureActionContext
 {
@@ -30,6 +40,12 @@ struct CreatureActionContext
 
 	// BW1W120 004c3960 BW1M100 10230320 CreatureActionContext::CreatureActionContext(CreatureContext &, float)
 	CreatureActionContext(CreatureContext* context, float param_2);
+};
+
+struct PreviousActionContextStack
+{
+	uint32_t              indexes[0x2][0x148]; /* 0x0 */
+	CreatureActionContext stack[0x148][0xa];   /* 0xa40 */
 };
 
 struct CreatureActionOpinions
