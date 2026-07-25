@@ -3,16 +3,6 @@
 #include "Field.h"
 #include "Game.h"
 
-// TODO: crt static-init cluster (dispatcher-owned, mirrors VillagerTrader.cpp/VillagerScript.cpp):
-// atexitCleanupReg (44B boilerplate) + secsPerYear (5B jmp-stub) + FUN_00759bd0 (the product
-// below). Values confirmed from raw .rdata: 365.25f @0x99a958, 86400.0f @0x99a95c, stored to a
-// private .bss float @0xdb9dfc. Real init symbol is `?FUN_00759bd0@Villager@@QAEXXZ`, a genuine
-// Villager:: member mangling -- implies these are static DATA MEMBERS of Villager, a cross-TU
-// Villager.h change; left as file-scope approximations for the dispatcher.
-const float  VillagerFarmerNumDaysInYear = 365.25f;
-const float  VillagerFarmerSecondsInDay = 86400.0f;
-static float VillagerFarmerSecondsPerYear = VillagerFarmerNumDaysInYear * VillagerFarmerSecondsInDay;
-
 // BW1W120 00759bf0 BW1M100 105783f0 Villager::FarmerLookForField(void)
 bool32_t Villager::FarmerLookForField()
 {

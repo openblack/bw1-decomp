@@ -9,14 +9,7 @@
 #include "Utils.h"
 #include "chlasm/GStates.h"
 
-// TODO: static-init cluster — the 44-byte atexit-registration fragment at 0x768b80 needs the
-// original compiler frontend, and the initializer below is emitted under a compiler-generated
-// name; not fully matchable from source.
-const float VillagerShepherdNumDaysInYear = 365.25f;
-const float VillagerShepherdSecondsInDay = 86400.0f;
-
 // BW1W120 00768bc0 Villager::FUN_00768bc0(void)
-static float VillagerShepherdSecondsPerYear = VillagerShepherdSecondsInDay * VillagerShepherdNumDaysInYear;
 
 // TODO: the shepherd states reuse the TargetThing slot (0x118) as two uint16 fields
 // { int16 turns-countdown @0x118, uint16 pending-state @0x11a }, hence the casts below;

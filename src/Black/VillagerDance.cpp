@@ -9,36 +9,6 @@
 #include "Utils.h"
 #include "chlasm/GStates.h"
 
-// ============================================================================
-// UNIT-WIDE BLOCKER (dispatcher): crt static-init cluster, mirrors the identical
-// cluster documented in VillagerTrader.cpp / VillagerScript.cpp.
-//   crt_xc_fn_atexitCleanupReg_VillagerDance_00759810 (44B): common CRT/header
-//     boilerplate (same guard flag `_Stz@?$fpos@H@std@@0HA` pattern seen binary-wide),
-//     not VillagerDance-specific logic.
-//   crt_xc_fn_secsPerYear_VillagerDance_00759840 (5B jmp-stub) + FUN_00759850 (0x759850):
-//     computes SecondsInDay * NumDaysInYear into a private .bss float (0xdb9df8, owned
-//     by this TU per splits.txt). Values confirmed from raw .rdata bytes: 365.25f
-//     (num_days_in_year @0x99a950), 86400.0f (seconds_in_day @0x99a954); operand order
-//     confirmed from the target: fld seconds_in_day; fmul num_days_in_year; fstp.
-//   crt_xc_fn_sentinelNegOne_VillagerDance_00759870 (5B jmp-stub) + FUN_00759880 (0x759880):
-//     sets another private .bss dword (0xdb9df4, adjacent to the float above) to -1.
-//   BLOCKED (both FUN_ bodies): the target's real symbols are `?FUN_00759850@Villager@@QAEXXZ`
-//   and `?FUN_00759880@Villager@@QAEXXZ` -- genuine __thiscall Villager:: member manglings
-//   (public, non-virtual, void, no args), NOT the anonymous compiler-synthesized initializer
-//   a plain file-scope const/static produces. This strongly implies NumDaysInYear/SecondsInDay/
-//   SecondsPerYear (and the -1 sentinel) are actually `static` DATA MEMBERS of Villager -- a
-//   Villager.h change with cross-TU naming implications shared by other TUs (VillagerTrader,
-//   VillagerScript already hit the identical wall); deferring rather than guessing. Kept below
-//   as fabricated file-scope approximations (correct values/operand order, wrong symbol
-//   identity) for the next pass.
-// ============================================================================
-const float VillagerDanceNumDaysInYear = 365.25f;
-const float VillagerDanceSecondsInDay = 86400.0f;
-
-// BW1W120 00759850 Villager::FUN_00759850(void) -- see unit-wide blocker above.
-static float VillagerDanceSecondsPerYear = VillagerDanceSecondsInDay * VillagerDanceNumDaysInYear;
-
-// BW1W120 00759880 Villager::FUN_00759880(void) -- see unit-wide blocker above.
 static int VillagerDanceSentinel = -1;
 
 // BW1W120 00759890 BW1M100 105775d0 Villager::FindImmediateNeighbour(void)

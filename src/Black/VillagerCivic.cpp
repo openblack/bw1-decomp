@@ -13,14 +13,9 @@
 #include "VillagerInfo.h"
 #include "Workshop.h"
 
-// TODO: static-init cluster — the 44-byte atexit-registration fragment at 0x758120 needs the
-// original compiler frontend, and the initializer below is emitted under a compiler-generated
-// name; not fully matchable from source. 10.0f is CheckForClearArea's iteration step.
-const float  VillagerCivicFloat1000p0 = 1000.0f;
-const float  VillagerCivicFloat10p0 = 10.0f;
-const float  VillagerCivicNumDaysInYear = 365.25f;
-const float  VillagerCivicSecondsInDay = 86400.0f;
-static float VillagerCivicSecondsPerYear = VillagerCivicSecondsInDay * VillagerCivicNumDaysInYear;
+const float VillagerCivicFloat1000p0 = 1000.0f;
+// CheckForClearArea's iteration step.
+const float VillagerCivicFloat10p0 = 10.0f;
 
 // BW1W120 00758180 BW1M100 10096f90 Villager::CheckNeededForCivic(void)
 bool32_t Villager::CheckNeededForCivic()

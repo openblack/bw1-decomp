@@ -6,16 +6,6 @@
 // TODO: may belong to the preceding translation unit -- the .rdata split boundary starts here.
 extern "C" const float villager_playtime_float10p0_0x0099a9c0 = 10.0f;
 
-// Game-time constants. These live in a widely included header: every translation unit that
-// pulls it in gets its own private copy of the pair and of the product below, which is why
-// they recur throughout the game with per-file addresses.
-const float NumDaysInYear = 365.25f;
-const float SecondsInDay = 86400.0f;
-
-// The product of two consts is not a constant expression, so MSVC computes it at startup:
-// a .CRT$XCU entry pointing at a jmp thunk and a small fld/fmul/fstp body.
-static float SecondsPerYear = NumDaysInYear * SecondsInDay;
-
 // BW1W120 007630e0 BW1M100 1058c1c0 Villager::IsPlaytime(void)
 bool Villager::IsPlaytime()
 {
