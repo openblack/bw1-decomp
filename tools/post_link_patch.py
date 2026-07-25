@@ -94,6 +94,16 @@ SAFEDISC_CLEANER_SIGNATURE = (0x2BAD).to_bytes(2, 'big')
 # (MechWarrior 4 has a different value).
 SAFEDISC_TITLE_STAMP = 0x81444BA5
 
+# Two timestamps per shipped image: the link time the debug directory records,
+# and the .pdb creation time in the CodeView record it names. SafeDisc Cleaner
+# overwrote the PE header's copy of 1.10's link time with its author handle (see
+# apply_BW1W110_patch_safedisc_cleaner), leaving the debug directory as the only
+# place it survives; 1.20's is the same instant as config.yml's timestamp.
+BW1W110_LINK_TIME = datetime.fromisoformat('2001-06-26T15:07:58+00:00')
+BW1W110_PDB_TIME = datetime.fromisoformat('2001-06-04T14:50:17+00:00')
+BW1W120_LINK_TIME = datetime.fromisoformat('2002-06-18T06:13:22+00:00')
+BW1W120_PDB_TIME = datetime.fromisoformat('2002-05-27T11:24:14+00:00')
+
 # The CodeView record an IMAGE_DEBUG_DIRECTORY of type IMAGE_DEBUG_TYPE_CODEVIEW
 # points at: a reference to the (unshipped) .pdb rather than debug info itself.
 # MSVC 6 leaves it at the end of the file, outside any section; lld-link emits
@@ -526,13 +536,55 @@ def write_codeview_record(pe, at, pdb_creation_time: datetime, age, pdb_path):
 
     MSVC 6 leaves it at the end of the file, outside any section, so `at` is the
     linker's EOF -- the same place the SafeDisc tail tag that follows it starts.
+    Returns the record's length, which is what the debug directory reports as
+    SizeOfData.
     """
     cv = pefile.Structure(__CV_INFO_PDB20_format__)
     cv.CvSignature = b'NB10'
     cv.Offset      = 0
     cv.Signature   = int(pdb_creation_time.timestamp())
     cv.Age         = age
-    write_bytes(pe, at, cv.__pack__() + pdb_path.encode() + b'\x00')
+    record = cv.__pack__() + pdb_path.encode() + b'\x00'
+    write_bytes(pe, at, record)
+    return len(record)
+
+
+def restore_debug_directory(pe, at, link_time: datetime, cv_offset, cv_size):
+    """Restamp the IMAGE_DEBUG_DIRECTORY entry with the shipped values.
+
+    1.10 and 1.20 were linked with /debug, so lld-link emits this entry itself:
+    splits.txt hands it the 0x1C hole just past the IAT that link.exe used, and
+    nothing around it shifts. Only the run-dependent fields differ -- lld stamps
+    its own link time and points at the RSDS/CV_INFO_PDB70 record it appends to
+    .rdata's tail slack, where the shipped image has the older NB10 form sitting
+    past the last section (AddressOfRawData 0, since it is in no section).
+
+    Erasing lld's record restores .rdata's slack to the zeros the shipped image
+    has there. Both the entry and the record are parsed structures, so they have
+    to be edited (and the record dropped) rather than overwritten: pe.write()
+    re-serializes everything in pe.__structures__ over the raw bytes.
+
+    `at` is the entry's virtual address; it is asserted rather than used, so a
+    layout change that moves the entry fails loudly instead of silently patching
+    the wrong bytes.
+    """
+    expected_rva = at - pe.OPTIONAL_HEADER.ImageBase
+    directory = find_directory(pe, 'IMAGE_DIRECTORY_ENTRY_DEBUG')
+    assert directory.VirtualAddress == expected_rva, (
+        f"debug directory at {directory.VirtualAddress:#x}, expected {expected_rva:#x}: "
+        "the linker no longer places it in the hole splits.txt leaves for it")
+    debug_entry, = pe.DIRECTORY_ENTRY_DEBUG
+    entry = debug_entry.struct
+
+    if debug_entry.entry is not None:
+        pe.__structures__.remove(debug_entry.entry)
+        debug_entry.entry = None
+    write_bytes(pe, entry.PointerToRawData, b'\x00' * entry.SizeOfData)
+
+    entry.TimeDateStamp = int(link_time.timestamp())
+    entry.SizeOfData = cv_size
+    entry.AddressOfRawData = 0  # the record is past the last section
+    entry.PointerToRawData = cv_offset
 
 
 def write_exe_tail_tag(pe, build_field):
@@ -561,10 +613,10 @@ def apply_BW1W110_patch(pe, cfg, out_dir, modules):
     apply_BW1W110_patch_safedisc_cleaner(pe)
     apply_BW1_common_patch(pe, cfg)
 
-    # CodeView record pointing at the .pdb (project not built in debug mode)
-    patch_directory(pe, 'IMAGE_DIRECTORY_ENTRY_DEBUG', 0x008999c0, 0x1c)
-    write_codeview_record(pe, 0x00832000, datetime.fromisoformat('2001-06-04T14:50:17+00:00'), 0x10,
-                          'C:\\dev\\Black\\Gold\\Black.pdb')
+    # CodeView record pointing at the .pdb, and the debug directory naming it.
+    cv_size = write_codeview_record(pe, 0x00832000, BW1W110_PDB_TIME, 0x10,
+                                    'C:\\dev\\Black\\Gold\\Black.pdb')
+    restore_debug_directory(pe, 0x008999c0, BW1W110_LINK_TIME, 0x00832000, cv_size)
     write_exe_tail_tag(pe, 0x75e1f353)
 
     apply_modules_patch(out_dir, cfg, modules)
@@ -588,9 +640,13 @@ def apply_BW1W120_patch(pe, cfg, out_dir, modules):
 
     # What the shipped exe held past the last section, before SafeDisc Cleaner cut
     # the file at 0x843000 (see force_size), orphaning the debug directory above.
-    patch_directory(pe, 'IMAGE_DIRECTORY_ENTRY_DEBUG', 0x008a99c0, 0x1c)
-    write_codeview_record(pe, 0x00843000, datetime.fromisoformat('2002-05-27T11:24:14+00:00'), 0xC,
-                          'C:\\dev\\MP\\Black\\Gold\\Black.pdb')
+    # Both writes land beyond force_size, so the trim below cuts them straight
+    # back off; they are kept because the debug directory still has to report the
+    # record's size and offset, and to keep this reconstruction of the shipped
+    # tail identical to 1.10's, where nothing is trimmed and both survive.
+    cv_size = write_codeview_record(pe, 0x00843000, BW1W120_PDB_TIME, 0xC,
+                                    'C:\\dev\\MP\\Black\\Gold\\Black.pdb')
+    restore_debug_directory(pe, 0x008a99c0, BW1W120_LINK_TIME, 0x00843000, cv_size)
     write_exe_tail_tag(pe, 0x872ec8b7)
 
     apply_modules_patch(out_dir, cfg, modules)

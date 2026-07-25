@@ -21508,6 +21508,7 @@ __imp_??0Dialup@@QAE@XZ = .rdata:0x00899998; // type:object size:0x4
 __imp_?Disconnect@Dialup@@QAEXH@Z = .rdata:0x0089999C; // type:object size:0x4 data:string
 __imp_?Connect@Dialup@@QAEHHP6GXHPAX@ZPAG20@Z = .rdata:0x008999A0; // type:object size:0x4 data:string
 lbl_008999A4 = .rdata:0x008999A4; // type:object size:0x4
+_DebugDirectory = .rdata:0x008999C0; // type:object size:0x1C scope:global
 ??_7GAbodeInfo@@6B@ = .rdata:0x008999F8; // type:object size:0x4C
 ??_7Base@@6B@ = .rdata:0x00899A44; // type:object size:0x20
 ??_7Abode@@6B@ = .rdata:0x00899A64; // type:object size:0x958

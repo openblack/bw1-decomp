@@ -61,6 +61,22 @@ Features
 - Integration with [objdiff](https://github.com/encounter/objdiff) for a diffing workflow.
 - CI workflow for GitHub Actions.
 
+Debug Symbols
+=============
+
+Black & White 1.1 and 1.2 releases were built with debug symbols in a now-missing `.pdb` file that wasn't leaked.
+
+The compilation with `.pdb` left traces in the released artifact and the default target here will produce a working executable with pdb as an intermediate step before changes are applied to make it byte-match:
+* build/BW1W110/runblack-linked.exe
+* build/BW1W110/runblack-linked.pdb
+* build/BW1W120/runblack-linked.exe
+* build/BW1W120/runblack-linked.pdb
+
+Loading the exe for 1.1 and 1.2 into Ghidra or IDA will give the tool access to type, function name and line number information while having an exe that is very close to the original. The differences with the original are minor and do not have any offset differences.
+
+They should be good enough to use as a reference.
+
+
 Diffing
 =======
 
