@@ -1435,8 +1435,6 @@ public:
 	bool32_t CheckSatisfyForChildren();
 	// BW1W120 007626e0 BW1M100 1058ad90 Villager::CheckLeaderNeeded(void)
 	bool32_t CheckLeaderNeeded();
-	// BW1W120 007630c0 Villager::FUN_007630c0(void)
-	void FUN_007630c0();
 	// BW1W120 007630e0 BW1M100 1058c1c0 Villager::IsPlaytime(void)
 	bool IsPlaytime();
 	// BW1W120 007630f0 BW1M100 1058c170 Villager::CheckPlaytimeAvailableToPlayPFootball(void)
