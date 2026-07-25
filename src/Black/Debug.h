@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include <lhall/released/headers/LHTimer.h> /* For struct LHTimer */
+#include <Lionhead/LHLib/ver5.0/LHTimer.h> /* For struct LHTimer */
 
 struct GDebug
 {

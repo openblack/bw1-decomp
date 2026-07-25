@@ -8,6 +8,7 @@
 
 #include "Base.h"           /* For struct Base */
 #include "CreatureAction.h" /* For enum CREATURE_SUB_STATE_ACTIONS */
+#include "MapCoords.h"      /* For struct MapCoords */
 
 // Forward Declares
 
@@ -73,12 +74,12 @@ public:
 
 	// BW1W120 004ff240 BW1M100 1028cc30 CreatureSubActionAgenda::AddSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
 	void AddSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2,
-	                  int(__thiscall*)(Creature*, const void*, void*, MapCoords*) param_3,
-	                  void(__thiscall*)(Creature*, const void*, void*) param_4);
+	                  int(CreatureSubActionAgenda::param_3)(Creature*, const void*, void*, MapCoords*),
+	                  void(CreatureSubActionAgenda::param_4)(Creature*, const void*, void*));
 	// BW1W120 004ff3a0 BW1M100 1028cb10 CreatureSubActionAgenda::AddMainSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
 	void AddMainSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2,
-	                      int(__thiscall*)(Creature*, const void*, void*, MapCoords*) param_3,
-	                      void(__thiscall*)(Creature*, const void*, void*) param_4);
+	                      int(CreatureSubActionAgenda::param_3)(Creature*, const void*, void*, MapCoords*),
+	                      void(CreatureSubActionAgenda::param_4)(Creature*, const void*, void*));
 };
 
 #endif /* BW1_DECOMP_CREATURE_SUB_ACTION_INCLUDED_H */

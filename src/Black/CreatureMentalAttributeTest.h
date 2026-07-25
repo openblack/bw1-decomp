@@ -4,8 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/CreatureEnum.h> /* For enum ATTRIBUTE_TYPE, enum CREATURE_ACTION */
-#include <chlasm/Enum.h>         /* For enum CREATURE_DESIRES */
+#include <chlasm/CreatureEnum.h>                /* For enum ATTRIBUTE_TYPE, enum CREATURE_ACTION */
+#include <chlasm/Enum.h>                        /* For enum CREATURE_DESIRES */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 
 #include "Base.h"                  /* For struct Base */
 #include "CreatureLearning.h"      /* For struct CreatureLearningEpisode */
@@ -19,7 +20,7 @@ enum DECISION_TREE_TYPE
 
 struct AttributeTest
 {
-	LHLinkedList__CreatureLearningEpisode episodes; /* 0x0 */
+	LHLinkedList<CreatureLearningEpisode> episodes; /* 0x0 */
 	uint32_t                              field_0x8;
 	uint32_t                              field_0xc;
 	uint32_t                              field_0x10;
@@ -37,6 +38,11 @@ struct AttributeTest
 
 	// BW1W120 004d4c20 BW1M100 1024fa20 AttributeTest::AttributeTest(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
 	AttributeTest(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
+};
+
+struct DecisionTreeNode
+{
+	AttributeTest* tests[0x2]; /* 0x0 */
 };
 
 struct DecisionTree
@@ -62,6 +68,11 @@ struct DecisionTreeAgenda
 
 	// BW1W120 004d43f0 BW1M100 102505c0 DecisionTreeAgenda::DecisionTreeAgenda(DECISION_TREE_TYPE, CREATURE_DESIRES)
 	DecisionTreeAgenda(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire);
+};
+
+struct DecisionTreeAgendas
+{
+	DecisionTreeAgenda* contents[0x28]; /* 0x0 */
 };
 
 struct DecisionTreeCollection

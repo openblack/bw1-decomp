@@ -15,7 +15,7 @@ public:
 
 	// BW1W120 0053dd30 BW1M100 105c2560 ProfileEditor::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
-	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 0053e210 BW1M100 105c2500 ProfileEditor::Destroy(void)
 	virtual void Destroy();
 	// BW1W120 0053bd30 BW1M100 105c5f30 ProfileEditor::CanESCOut(void)

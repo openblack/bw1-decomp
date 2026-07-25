@@ -11,6 +11,8 @@
 
 #include "DrawingObject.h" /* For struct DrawingObject */
 
+class VillagerName;
+
 struct VillagerNameBlock
 {
 	uint8_t field_0x0[0x14];

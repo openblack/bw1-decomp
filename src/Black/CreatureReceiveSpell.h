@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LHLib/ver5.0/GJVector.h>       /* For struct GJVector */
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 // Forward Declares
@@ -12,17 +13,25 @@ class Creature;
 
 struct CreatureReceiveSpell
 {
-	Creature*                                 creature; /* 0x0 */
-	CreatureReceiveSpell__TPerSpellData       data[0x10];
-	GJVector__CreatureReceiveSpell__QueueData QueueData; /* 0x184 */
-	uint8_t                                   field_0x194[0x8];
-	LHPoint                                   field_0x19c;
-	LHPoint                                   field_0x1a8;
-	LHPoint                                   field_0x1b4;
-	LHPoint                                   field_0x1c0;
-	float                                     field_0x1cc;
-	uint32_t                                  field_0x1d0;
-	uint8_t                                   field_0x1d4;
+	struct TPerSpellData
+	{
+		uint8_t field_0x0[0x18];
+	};
+	struct QueueData
+	{
+		uint8_t field_0x0;
+	};
+	Creature*           creature; /* 0x0 */
+	TPerSpellData       data[0x10];
+	GJVector<QueueData> queueData; /* 0x184 */
+	uint8_t             field_0x194[0x8];
+	LHPoint             field_0x19c;
+	LHPoint             field_0x1a8;
+	LHPoint             field_0x1b4;
+	LHPoint             field_0x1c0;
+	float               field_0x1cc;
+	uint32_t            field_0x1d0;
+	uint8_t             field_0x1d4;
 
 	// Constructors
 

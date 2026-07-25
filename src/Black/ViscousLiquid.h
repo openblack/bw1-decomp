@@ -20,6 +20,13 @@ struct FragVertex
 	FragVertex();
 };
 
+struct FragTriangle
+{
+	uint32_t   field_0x0;
+	FragVertex vertices[0x3];
+	uint8_t    field_0x40[0x18];
+};
+
 struct FragPrimitive
 {
 	LH3DPrimitive* Lh3dPrimitive; /* 0x0 */

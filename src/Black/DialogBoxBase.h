@@ -23,7 +23,7 @@ public:
 
 	// BW1W120 00513400 BW1M100 102b24c0 DialogBoxBase::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
-	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 00513590 BW1M100 102b23a0 DialogBoxBase::Destroy(void)
 	virtual void Destroy();
 	// BW1W120 005127d0 BW1M100 100fd590 DialogBoxBase::InitSubDialogs(void)
@@ -37,7 +37,7 @@ public:
 	// BW1W120 00512800 BW1M100 100fd610 DialogBoxBase::WantsMouseControl(void)
 	virtual bool WantsMouseControl();
 	// BW1W120 00512810 BW1M100 103c4090 DialogBoxBase::CanESCOut(void)
-	virtual void CanESCOut();
+	virtual bool CanESCOut();
 
 	// Static methods
 

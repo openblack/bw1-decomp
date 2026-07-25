@@ -128,7 +128,7 @@ public:
 	// Static methods
 
 	// BW1W120 00737cc0 BW1M100 10545210 TotemStatue::Create(TownCentre *)
-	static TotemStatue* Create(TownCentre* this);
+	static TotemStatue* Create(TownCentre* town_centre);
 
 	// Constructors
 

@@ -19,7 +19,7 @@ public:
 
 	// BW1W120 005159d0 BW1M100 102b5db0 DialogBoxSaveMessage::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
-	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 00515b80 BW1M100 102b5d50 DialogBoxSaveMessage::Destroy(void)
 	virtual void Destroy();
 

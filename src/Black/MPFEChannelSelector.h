@@ -41,7 +41,7 @@ public:
 
 	// BW1W120 00628450 BW1M100 1039e270 MPFEChannelSelector::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
-	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 00628e20 BW1M100 1039e230 MPFEChannelSelector::Destroy(void)
 	virtual void Destroy();
 	// BW1W120 00628430 BW1M100 1039e800 MPFEChannelSelector::Show(void)

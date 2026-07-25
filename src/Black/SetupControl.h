@@ -60,11 +60,6 @@ public:
 	// BW1W120 00409250 BW1M100 101668d0 SetupControl::SetupControl(int, int, int, int, int, wchar_t *)
 	SetupControl(int id, int x, int y, int width, int height, const char16_t* label);
 
-	// Non-virtual Destructors
-
-	// BW1W120 004093c0 BW1M100 inlined SetupControl::~SetupControl(void)
-	~SetupControl();
-
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M100 inlined SetupControl::GetTextSize(void)

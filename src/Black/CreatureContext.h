@@ -31,4 +31,13 @@ public:
 	virtual ~CreatureContext();
 };
 
+struct PreviousContextStack
+{
+	Creature*       creature; /* 0x0 */
+	uint8_t         field_0x4[0x1c];
+	uint32_t        field_0x20;
+	uint32_t        field_0x24;
+	CreatureContext contexts[0x5];
+};
+
 #endif /* BW1_DECOMP_CREATURE_CONTEXT_INCLUDED_H */

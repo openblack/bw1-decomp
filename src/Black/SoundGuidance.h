@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+
 #include "Base.h" /* For struct Base */
 
 // Forward Declares
@@ -13,38 +15,37 @@ class GameThingWithPos;
 struct LH_SamplePlayOptions;
 class Town;
 
-struct Q29GGuidance10LastThings
-{
-	GameThingWithPos* thing; /* 0x0 */
-	uint32_t          turn;
-
-	// Constructors
-
-	// BW1W120 0071aec0 BW1M100 10511e30 GGuidance::LastThings::LastThings(GameThingWithPos *)
-	Q29GGuidance10LastThings(GameThingWithPos* thing);
-};
-
 class GGuidance : public Base
 {
 public:
-	LH_SamplePlayOptions*                  PlayOptions; /* 0x8 */
-	int                                    field_0xc[0x21];
-	LHLinkedList__Q29GGuidance10LastThings lastThings; /* 0x90 */
-	uint32_t                               field_0x98;
-	uint32_t                               field_0x9c;
-	uint32_t                               field_0xa0;
-	uint32_t                               field_0xa4;
-	float                                  field_0xa8;
-	uint32_t                               field_0xac;
-	uint32_t                               field_0xb0;
-	uint32_t                               field_0xb4;
-	uint32_t                               field_0xb8;
-	uint32_t                               field_0xbc;
-	uint32_t                               field_0xc0;
-	uint32_t                               field_0xc4;
-	uint32_t                               field_0xc8;
-	GInterfaceStatus*                      InterfaceStatus;
-	uint32_t                               field_0xd0[0x7];
+	struct LastThings
+	{
+		GameThingWithPos* thing; /* 0x0 */
+		uint32_t          turn;
+
+		// Constructors
+
+		// BW1W120 0071aec0 BW1M100 10511e30 GGuidance::LastThings::LastThings(GameThingWithPos *)
+		LastThings(GameThingWithPos* thing);
+	};
+	LH_SamplePlayOptions*    PlayOptions; /* 0x8 */
+	int                      field_0xc[0x21];
+	LHLinkedList<LastThings> lastThings; /* 0x90 */
+	uint32_t                 field_0x98;
+	uint32_t                 field_0x9c;
+	uint32_t                 field_0xa0;
+	uint32_t                 field_0xa4;
+	float                    field_0xa8;
+	uint32_t                 field_0xac;
+	uint32_t                 field_0xb0;
+	uint32_t                 field_0xb4;
+	uint32_t                 field_0xb8;
+	uint32_t                 field_0xbc;
+	uint32_t                 field_0xc0;
+	uint32_t                 field_0xc4;
+	uint32_t                 field_0xc8;
+	GInterfaceStatus*        InterfaceStatus;
+	uint32_t                 field_0xd0[0x7];
 
 	// Override methods
 
