@@ -1,8 +1,14 @@
 Sections:
 	.text       type:code align:4096
 	.rdata      type:rodata align:4096
+	.idata$5    type:rodata vaddr:0x00899000 end:0x008999A8
 	.rdata$r    type:rodata vaddr:0x009961D8 end:0x009ABA90
-	.xdata$x    type:rodata vaddr:0x009ABA90 end:0x009B52EE
+	.xdata$x    type:rodata vaddr:0x009ABA90 end:0x009AF438
+	.idata$2    type:rodata vaddr:0x009AF438 end:0x009AF5DC
+	.idata$3    type:rodata vaddr:0x009AF5DC end:0x009AF5F0
+	.idata$4    type:rodata vaddr:0x009AF5F0 end:0x009AFF98
+	.idata$6    type:rodata vaddr:0x009AFF98 end:0x009B4F30
+	.edata      type:rodata vaddr:0x009B4F30 end:0x009B52EE
 	.data       type:data align:4096
 	.CRT$XCA    type:data vaddr:0x009B6000 end:0x009B6004
 	.CRT$XCU    type:data vaddr:0x009B6004 end:0x009B75F8

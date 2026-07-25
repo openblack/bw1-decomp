@@ -424,6 +424,14 @@ def apply_BW1_common_patch(pe, cfg):
     patch_directory(pe, 'IMAGE_DIRECTORY_ENTRY_IMPORT', cfg.get("entry_import_addr"), cfg.get("entry_import_size"))
     patch_directory(pe, 'IMAGE_DIRECTORY_ENTRY_RESOURCE', cfg.get("entry_resource_addr"), cfg.get("entry_resource_size"))
 
+    # Once the import table is carved into real .idata$N sub-sections, lld-link's
+    # locateImportTables() sets DataDirectory[IAT] from our .idata$5 chunk. The
+    # SafeDisc decryptor zeroed this directory in the decrypted image we match
+    # against, so re-zero it here. (No-op for versions not yet carved.)
+    iat_dir = find_directory(pe, 'IMAGE_DIRECTORY_ENTRY_IAT')
+    iat_dir.VirtualAddress = 0
+    iat_dir.Size = 0
+
     # Point to .rdata
     # TODO: Why is this set to 0?
     pe.OPTIONAL_HEADER.BaseOfData = find_section_header(pe, '.rdata').get_PointerToRawData_adj()
