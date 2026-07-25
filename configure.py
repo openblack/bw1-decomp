@@ -175,7 +175,7 @@ config.compilers_tag = {
     "BW1W120": "6.5",
 }[config.version]
 config.linker_version = f"MSVC/{config.compilers_tag}"
-config.lld_link_tag = "bw1-decomp-020"
+config.lld_link_tag = "bw1-decomp-021"
 # Static libraries to pull verbatim CRT objects from (see LibObject). They are
 # not committed and not downloaded — you must supply them yourself: place each
 # .lib at orig/libs/<package>/<lib>.lib. See the README for how to obtain them.
@@ -190,12 +190,24 @@ config.config_path = Path("config") / config.version / "config.yml"
 config.check_sha_path = Path("config") / config.version / "build.sha1"
 config.asflags = None
 config.ldflags = []
+config.base_ldflags = []
 config.debug = args.debug
-if args.debug:
-    # Emit a program PDB (types merged from the per-object /Zi vc60 type
-    # servers) alongside the linked image so Ghidra can load real types +
-    # symbol names.
-    config.ldflags.append("/debug")
+# 1.10 and 1.20 shipped an IMAGE_DEBUG_DIRECTORY (link.exe wrote it into .rdata
+# past the IAT, naming an NB10 record at EOF), so link them with /debug and let
+# lld-link emit it: splits.txt leaves the 0x1C hole by holding back the unit
+# below, and post_link_patch.py restores the shipped field values. runblack-linked
+# is then debuggable while runblack.exe still matches. Base image only -- no hole
+# is carved in the module DLLs yet. 1.00 shipped no directory, so --debug there
+# has to make room and shifts .rdata past the IAT by 0x1C.
+_debug_directory_unit = {
+    "BW1W110": "auto_01_008999C0_rdata",
+    "BW1W120": "auto_01_008A99C0_rdata",
+}.get(config.version)
+if _debug_directory_unit is not None:
+    config.base_ldflags.append("/debug")
+    config.linker_provided_units = [_debug_directory_unit]
+elif args.debug:
+    config.base_ldflags.append("/debug")
 config.reconfig_deps = []
 
 # Post-link patch: applies version-specific binary fixups after linking,
@@ -261,7 +273,6 @@ cflags_base = [
     "/O2",
     "/Og",
     "/Ob1",
-    "/Zd",
     "/MT",
     "/GR",
     "/I", "include",
@@ -272,16 +283,20 @@ cflags_base = [
     f"/DBUILD_VERSION={version_num}",
     f"/DVERSION_{config.version}",
 ]
+# NDEBUG unconditionally, including under --debug: it keeps assert() disabled,
+# and its counterpart DEBUG=1 compiles different code (zlib's Assert/Trace,
+# plus two extra deflate_state fields), shifting every address after src/zlib.
+# --debug adds debug *info* to the same bytes, so it only toggles /Zi vs /Zd.
+cflags_base.append("/DNDEBUG=1")
 if args.debug:
-    # /Zi emits types into a vc60.pdb type server (PDB 2.0) referenced by each
-    # obj via LF_TYPESERVER; the openblack lld-link fork reads those old type
-    # servers (see "signature_out_of_date ... old PDB 2.0 type servers") and
-    # merges them into the program PDB for loading types+symbols into Ghidra.
-    # (/Z7 is NOT usable: its embedded .debug$S uses pre-C13 CodeView magic
-    # that lld-link ignores.)
-    cflags_base.extend(["/Zi", "/DDEBUG=1"])
+    # /Zi puts types in a per-object PDB 2.0 type server (.o.pdb) referenced from
+    # .debug$T; the openblack lld-link fork merges those into the program PDB for
+    # Ghidra. /Z7 would need a full inline C11 type-record reader and makes
+    # MSVC6's per-module debug-info limit (C1067) worse. /Zi supersedes /Zd, so
+    # /Zd is omitted rather than added alongside it (cl warns D4025 for both).
+    cflags_base.append("/Zi")
 else:
-    cflags_base.append("/DNDEBUG=1")
+    cflags_base.append("/Zd")
 
 # The game code (Black/) was compiled for Pentium Pro (/G6); the static
 # libraries (Lionhead/, zlib/) were not. Black/ objects are declared with

@@ -1,7 +1,7 @@
 Sections:
 	.text       type:code align:4096
 	.rdata      type:rodata align:4096
-	.idata$5    type:rodata vaddr:0x008A9000 end:0x008A99A8
+	.idata$5    type:rodata vaddr:0x008A9000 end:0x008A99C0
 	.rdata$r    type:rodata vaddr:0x009A62D8 end:0x009BBDC8
 	.xdata$x    type:rodata vaddr:0x009BBDC8 end:0x009BF6E8
 	.idata$2    type:rodata vaddr:0x009BF6E8 end:0x009BF88C
