@@ -3,38 +3,6 @@
 #include "FishFarm.h"
 #include "Rand.h"
 
-// TODO: deferred cluster (crt_xc_fn_atexitCleanupReg_VillagerFisherman_0075B460 [44B],
-// crt_xc_fn_secsPerYear_VillagerFisherman_0075B490 [5B jmp-stub], and the FUN_0075b4a0 body below),
-// plus the 2 .rdata float consts and .bss pad range -- see vsm ledger "deferred" note for full writeup.
-// Summary of what's confirmed vs. still open (mirrors the VillagerTrader/VillagerScript/VillagerChild
-// precedent for this exact cluster shape):
-//  - VALUES confirmed from raw .rdata bytes: 365.25f (num_days_in_year @0x99a970), 86400.0f
-//    (seconds_in_day @0x99a974). Unlike VillagerTrader/VillagerScript, there is NO third (0.7f)
-//    float here -- the next TU's rdata symbol (_villager_food_num_days_in_year) begins immediately
-//    at 0x99a978, confirmed via raw byte dump.
-//  - FUN_0075b4a0's operand order confirmed: fld seconds_in_day; fmul num_days_in_year; fstp -> a
-//    private .bss float (0xdb9e04, owned by this TU per splits.txt).
-//  - BLOCKED: target's real symbol for the init function is `?FUN_0075b4a0@Villager@@QAEXXZ` --
-//    a genuine __thiscall Villager:: member mangling (public, non-virtual, void, no args), NOT the
-//    anonymous `_$E9`/`_$S11`-style compiler-synthesized initializer a plain file-scope (or even
-//    non-member `const`) global produces (confirmed empirically across the whole campaign: this
-//    exact source shape below compiles to `_$E9`/`_$E10`/`_$S11`, never a Villager:: mangled symbol).
-//    This strongly implies NumDaysInYear/SecondsInDay are actually `static` DATA MEMBERS of Villager
-//    (MSVC6 mangles a static member's dynamic-initializer helper as a class-scoped thiscall
-//    function) -- static members don't affect Villager's instance layout/sizeof, but adding one is
-//    a Villager.h change with naming implications shared by other TUs; deferring rather than
-//    guessing.
-//  - crt_xc_fn_atexitCleanupReg (44B) is IDENTICAL byte-for-byte (same guard flag
-//    `_Stz@?$fpos@H@std@@0HA+4`, same target `nullsub`-style callee at 0x407870) across >500 unrelated
-//    TUs binary-wide (per VillagerTrader precedent) -- clearly common CRT/header boilerplate, not
-//    VillagerFisherman-specific logic. Out of scope for a single-unit pass.
-const float VillagerFishermanNumDaysInYear = 365.25f;
-const float VillagerFishermanSecondsInDay = 86400.0f;
-
-// BW1W120 0075b4a0 Villager::FUN_0075b4a0(void) -- see TODO above; kept as a fabricated file-scope
-// approximation (correct values/operand order, wrong symbol identity) for the next pass.
-static float VillagerFishermanSecondsPerYear = VillagerFishermanNumDaysInYear * VillagerFishermanSecondsInDay;
-
 // BW1W120 0075b4c0 BW1M100 1057a800 Villager::FishermanLookForWater(void)
 // TODO: deferred -- blocked on the UNNAMED global fn_0073E750 (systemic blocker #4: no symbols.txt
 // name). Reverse-engineered structure (from raw target disasm, confirmed via manual byte-level

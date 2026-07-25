@@ -2,19 +2,7 @@
 
 #include "MapCoords.h"
 
-// TODO: crt static-init cluster (dispatcher-owned, mirrors VillagerTrader.cpp):
-// crt_xc_fn_atexitCleanupReg_VillagerScript_007685B0 (44B header boilerplate, identical
-// binary-wide), crt_xc_fn_secsPerYear_VillagerScript_007685E0 + FUN_007685f0 (the
-// NumDaysInYear*SecondsInDay product below), and crt_xc_fn_sentinelNegOne_VillagerScript_00768610
-// + FUN_00768620 (sets a private .bss dword @0xdb9e48 to -1). Values confirmed from raw .rdata:
-// 365.25f (@0x99a9f8), 86400.0f (@0x99a9fc), 0.7f (@0x99aa00, UNREFERENCED). As in VillagerTrader,
-// the real init symbols are `?FUN_...@Villager@@QAEXXZ` thiscall members => these are almost
-// certainly static DATA MEMBERS of Villager (a Villager.h change with cross-TU naming
-// implications); left as file-scope approximations for the dispatcher.
-const float  VillagerScriptNumDaysInYear = 365.25f;
-const float  VillagerScriptSecondsInDay = 86400.0f;
-const float  VillagerScriptFloat0p7 = 0.7f;
-static float VillagerScriptSecondsPerYear = VillagerScriptNumDaysInYear * VillagerScriptSecondsInDay;
+const float VillagerScriptFloat0p7 = 0.7f;
 
 // BW1W120 00768630 BW1M100 10597660 Villager::IsReadyForNewScriptAction(void)
 uint32_t Villager::IsReadyForNewScriptAction()

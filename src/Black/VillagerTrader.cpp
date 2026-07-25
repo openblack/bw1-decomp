@@ -1,15 +1,9 @@
 #include "Villager.h"
 
-// TODO: static-init cluster — the 44-byte atexit-registration fragment at 0x76b920 needs the
-// original compiler frontend, and the initializer below is emitted under a compiler-generated
-// name; not fully matchable from source.
-const float VillagerTraderNumDaysInYear = 365.25f;
-const float VillagerTraderSecondsInDay = 86400.0f;
 // extern: an unreferenced internal-linkage const float is dropped from .rdata.
 extern const float VillagerTraderFloat0p7 = 0.7f;
 
 // BW1W120 0076b960 Villager::FUN_0076b960(void)
-static float VillagerTraderSecondsPerYear = VillagerTraderNumDaysInYear * VillagerTraderSecondsInDay;
 
 // BW1W120 0076b980 BW1M100 1059c830 Villager::ArrivesInAbodeToPickUpExcess(void)
 bool32_t Villager::ArrivesInAbodeToPickUpExcess()

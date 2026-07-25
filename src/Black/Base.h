@@ -5,6 +5,13 @@
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
 
+// Game-time constants. These have internal linkage, so every translation unit including this
+// header gets its own copy of the pair and of the product below. The product is not a constant
+// expression, so the compiler computes it at startup.
+const float  NumDaysInYear = 365.25f;
+const float  SecondsInDay = 86400.0f;
+static float SecondsPerYear = NumDaysInYear * SecondsInDay;
+
 // Forward Declares
 
 class Archive;
