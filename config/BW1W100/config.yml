@@ -5,6 +5,10 @@ hash: d810fe43e2956f2b76533ab698632756ba99b44d
 symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 dead_strip: true
+# The original 1.0 link used /OPT:REF, which only collects COMDATs. Until the
+# reference graph is fully recovered, keep function sections plain so it cannot
+# strip code nothing has been shown to reach yet.
+function_comdat: false
 # map: orig/BW1W1001/files/runblack.map
 force_size: 0x0081b58f
 linker_version: "6.0"
