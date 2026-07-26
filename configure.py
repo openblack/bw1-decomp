@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.23"
+config.dtk_tag = "v0.0.24"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
@@ -175,7 +175,7 @@ config.compilers_tag = {
     "BW1W120": "6.5",
 }[config.version]
 config.linker_version = f"MSVC/{config.compilers_tag}"
-config.lld_link_tag = "bw1-decomp-021"
+config.lld_link_tag = "bw1-decomp-022"
 # Static libraries to pull verbatim CRT objects from (see LibObject). They are
 # not committed and not downloaded — you must supply them yourself: place each
 # .lib at orig/libs/<package>/<lib>.lib. See the README for how to obtain them.
@@ -1017,7 +1017,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/VillagerInfo.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerLeader.cpp"),
             GameCodeObject(NonMatching, "Black/villagernames.cpp"),
-            GameCodeObject(NonMatching, "Black/VillagerPlaytime.cpp"),
+            GameCodeObject(MatchingFor("BW1W110", "BW1W120"), "Black/VillagerPlaytime.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerReaction.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerReactionToCreature.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerScript.cpp"),

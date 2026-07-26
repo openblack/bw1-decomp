@@ -663,13 +663,13 @@ zlib/inffast.c:
 lib/libcmt/fpinit.obj:
 	.text       start:0x00733CA4 end:0x00733CF4 align:1
 	.data       start:0x00B4F894 end:0x00B4F8A8 align:1
-	.bss        start:0x00D5B240 end:0x00D5B248 align:4
+	.bss        start:0x00D5B240 end:0x00D5B248
 
 lib/libcmt/typinfo.obj:
 	.text       start:0x00733CF4 end:0x00733D58 align:1
-	.rdata      start:0x008D63E8 end:0x008D63F0 align:4
-	.rdata$r    start:0x008EDFC8 end:0x008EE010 align:4
-	.data       start:0x00B4F8A8 end:0x00B4F8C0 align:4
+	.rdata      start:0x008D63E8 end:0x008D63F0
+	.rdata$r    start:0x008EDFC8 end:0x008EE010
+	.data       start:0x00B4F8A8 end:0x00B4F8C0
 
 lib/libcmt/onexit.obj:
 	.text       start:0x00733D58 end:0x00733E17 align:1
@@ -710,11 +710,11 @@ lib/libcmt/atox.obj:
 
 lib/libcmt/malloc.obj:
 	.text       start:0x00734984 end:0x00734ABE align:1
-	.rdata      start:0x008D6458 end:0x008D6470 align:4
+	.rdata      start:0x008D6458 end:0x008D6470
 
 lib/libcmt/free.obj:
 	.text       start:0x00734ABE end:0x00734BA7 align:1
-	.rdata      start:0x008D6470 end:0x008D6488 align:4
+	.rdata      start:0x008D6470 end:0x008D6488
 
 lib/libcmt/_ctype.obj:
 	.text       start:0x00734BA7 end:0x00734C81 align:1
@@ -800,12 +800,12 @@ lib/libcmt/floor.obj:
 lib/libcmt/stdexcpt.obj:
 	.text       start:0x0073684C end:0x00736912 align:1
 	.rdata      start:0x008D6488 end:0x008D64A8
-	.rdata$r    start:0x008EE0FC end:0x008EE12C align:4
+	.rdata$r    start:0x008EE0FC end:0x008EE12C
 
 lib/libcmt/throw.obj:
 	.text       start:0x00736912 end:0x0073694C align:1
-	.rdata      start:0x008D64A8 end:0x008D64C8 align:4
-	.data       start:0x00B4F9B8 end:0x00B4F9BC align:4
+	.rdata      start:0x008D64A8 end:0x008D64C8
+	.data       start:0x00B4F9B8 end:0x00B4F9BC
 
 lib/libcmt/strtok.obj:
 	.text       start:0x00737049 end:0x007370ED align:1
@@ -876,8 +876,8 @@ lib/libcmt/powhlp.obj:
 	.text       start:0x0073EE97 end:0x0073F02C align:1
 
 lib/libcmt/timeset.obj:
-	.rdata      start:0x008D68A4 end:0x008D68E4 align:4
-	.data       start:0x00B524A0 end:0x00B52534 align:4
+	.rdata      start:0x008D68A4 end:0x008D68E4
+	.data       start:0x00B524A0 end:0x00B52534
 
 lib/libcmt/adj_fdiv.obj:
 	.text       start:0x0073F2A0 end:0x0074002B align:1
@@ -888,8 +888,8 @@ lib/libcmt/frnd.obj:
 
 lib/libcmt/frame.obj:
 	.text       start:0x0074003D end:0x00740840 align:1
-	.rdata      start:0x008D6920 end:0x008D6968 align:4
-	.data       start:0x00B52720 end:0x00B52730 align:4
+	.rdata      start:0x008D6920 end:0x008D6968
+	.data       start:0x00B52720 end:0x00B52730
 
 lib/libcmt/lowhelpr.obj:
 	.text       start:0x00740840 end:0x0074088C align:1
@@ -899,7 +899,7 @@ lib/libcmt/cfin.obj:
 
 lib/libcmt/winput.obj:
 	.text       start:0x00741243 end:0x00741DB5 align:1
-	.data       start:0x00B52860 end:0x00B52870 align:4
+	.data       start:0x00B52860 end:0x00B52870
 
 lib/libcmt/crt0msg.obj:
 	.data       start:0x00B52870 end:0x00B52900 align:1
@@ -948,8 +948,8 @@ lib/libcmt/wcstombs.obj:
 
 lib/libcmt/crtmbox.obj:
 	.text       start:0x00745D0C end:0x00745D95 align:1
-	.rdata      start:0x008D7338 end:0x008D7374 align:4
-	.bss        start:0x00D5B604 end:0x00D5B610 align:4
+	.rdata      start:0x008D7338 end:0x008D7374
+	.bss        start:0x00D5B604 end:0x00D5B610
 
 lib/libcmt/ismbbyte.obj:
 	.text       start:0x00745D95 end:0x00745DD7 align:1
@@ -981,12 +981,12 @@ lib/libcmt/wcsnicmp.obj:
 
 lib/libcmt/ehvecctr.obj:
 	.text       start:0x007E8D9F end:0x007E8F60 align:1
-	.rdata      start:0x008DA550 end:0x008DA560 align:4
+	.rdata      start:0x008DA550 end:0x008DA560
 
 lib/libcmt/clock.obj:
 	.text       start:0x007E8F60 end:0x007E8FD8 align:1
 	.CRT$XIC    start:0x008F7570 end:0x008F7574 align:4
-	.bss        start:0x00ECC698 end:0x00ECC6A0 align:4
+	.bss        start:0x00ECC698 end:0x00ECC6A0
 
 lib/libcmt/towlower.obj:
 	.text       start:0x007E8FD8 end:0x007E904D align:1

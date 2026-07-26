@@ -1,10 +1,13 @@
+// Nothing here uses std::string. It is included for the guarded one-time
+// initializer <string> brings in for std::ctype<wchar_t>::id, which the original
+// object ends with. Some 395 of the ~405 Black translation units carry that same
+// initializer, so the real include almost certainly sits in a shared header --
+// TODO: find it and move this there.
+#include <string>
+
 #include "Villager.h"
 
 #include "Football.h"
-
-// Unreferenced anywhere in the game; kept extern so it is still emitted.
-// TODO: may belong to the preceding translation unit -- the .rdata split boundary starts here.
-extern "C" const float villager_playtime_float10p0_0x0099a9c0 = 10.0f;
 
 // BW1W120 007630e0 BW1M100 1058c1c0 Villager::IsPlaytime(void)
 bool Villager::IsPlaytime()
