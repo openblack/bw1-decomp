@@ -912,7 +912,7 @@ lib/libcmt/wincmdln.obj:
 	.text       start:0x00742278 end:0x007422D0 align:1
 
 lib/libcmt/nlsdata2.obj:
-	.bss        start:0x00D5B348 end:0x00D5B368
+	.bss        start:0x00D5B348 end:0x00D5B368 align:8
 
 lib/libcmt/a_env.obj:
 	.text       start:0x007425D6 end:0x00742708 align:1
