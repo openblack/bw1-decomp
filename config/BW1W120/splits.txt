@@ -58,7 +58,7 @@ Black/AlignmentInfo.cpp:
 	.text       start:0x00414020 end:0x00414770
 	.rdata      start:0x008AB638 end:0x008AB6F0
 	.CRT$XCU    start:0x009C6078 end:0x009C6088
-	.bss        start:0x00C4D018 end:0x00C4D024
+	.bss        start:0x00C4D018 end:0x00C4D024 align:8
 
 Black/Alignment.cpp:
 	.text       start:0x00414770 end:0x00416C80
@@ -2934,7 +2934,7 @@ lib/libcmt/wincmdln.obj:
 	.text       start:0x007D6A27 end:0x007D6A7F align:1
 
 lib/libcmt/nlsdata2.obj:
-	.bss        start:0x00E84298 end:0x00E842B8
+	.bss        start:0x00E84298 end:0x00E842B8 align:8
 
 lib/libcmt/a_env.obj:
 	.text       start:0x007D6D85 end:0x007D6EB7 align:1
@@ -3030,7 +3030,7 @@ Lionhead/LHLib/ver5.0/LHText.cpp:
 
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
 	.text       start:0x007E4810 end:0x007E6290
-	.bss        start:0x00E90650 end:0x00E90670
+	.bss        start:0x00E90650 end:0x00E90670 align:8
 
 Lionhead/LHLib/ver5.0/LHSurface.cpp:
 	.text       start:0x007E6290 end:0x007E69D0
@@ -3068,7 +3068,7 @@ Lionhead/LH3DLib/development/LH3DCameraChecker.cpp:
 	.text       start:0x0081F9E0 end:0x008212E0
 	.CRT$XCU    start:0x009C7D70 end:0x009C7DA0
 	.data       start:0x00C383B8 end:0x00C383BC
-	.bss        start:0x00EB99A8 end:0x00EB99AC
+	.bss        start:0x00EB99A8 end:0x00EB99AC align:8
 
 Lionhead/LH3DLib/development/Fish.cpp:
 	.text       start:0x00824700 end:0x00825090
@@ -3080,7 +3080,7 @@ Lionhead/LHLib/ver5.0/LHCollide.cpp:
 Lionhead/LH3DLib/development/LH3DRender.cpp:
 	.text       start:0x0082B220 end:0x00830050
 	.CRT$XCU    start:0x009C7DB0 end:0x009C7DB4
-	.bss        start:0x00EC7FD0 end:0x00ECA650
+	.bss        start:0x00EC7FD0 end:0x00ECA650 align:8
 
 Lionhead/LH3DLib/development/LH3DText.cpp:
 	.text       start:0x00830050 end:0x00833A00
@@ -3114,7 +3114,7 @@ Lionhead/LH3DLib/development/LH3DMath.cpp:
 
 Lionhead/LH3DLib/development/LH3DMem.cpp:
 	.text       start:0x00842CE0 end:0x00842DF0
-	.bss        start:0x00EF6540 end:0x00EF6554
+	.bss        start:0x00EF6540 end:0x00EF6554 align:8
 
 Lionhead/LH3DLib/development/LH3DWay.cpp:
 	.text       start:0x00842F10 end:0x00844620
