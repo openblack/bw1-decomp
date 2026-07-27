@@ -16004,6 +16004,7 @@ fn_007EA166 = .text:0x007EA166; // type:function size:0xE
 fn_007EA174 = .text:0x007EA174; // type:function size:0xE
 fn_007EA182 = .text:0x007EA182; // type:function size:0xE
 fn_007EA1A0 = .text:0x007EA1A0; // type:function size:0xB
+$T267 = .text:0x008DA570; // type:object size:0x10 scope:local
 __imp__RegOpenKeyExA@4 = .rdata:0x007EB000; // type:object size:0x4 data:string
 __imp__RegQueryValueExA@4 = .rdata:0x007EB004; // type:object size:0x4
 __imp__RegCreateKeyExA@4 = .rdata:0x007EB008; // type:object size:0x4
