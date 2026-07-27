@@ -15826,6 +15826,7 @@ fn_007E8E5B = .text:0x007E8E5B; // type:function size:0xA
 fn_007E8E65 = .text:0x007E8E65; // type:function size:0x18
 ?FrameUnwindFilter@@YAHPAU_EXCEPTION_POINTERS@@@Z = .text:0x007E8E7D; // type:function scope:local
 fn_007e8e93 = .text:0x007E8E93; // type:function size:0xD
+_strspn = .text:0x007E8EA0; // type:function scope:global
 ??_L@YGXPAXIHP6EX0@Z1@Z = .text:0x007E8EDE; // type:function scope:global
 fn_007E8F48 = .text:0x007E8F48; // type:function
 _clock = .text:0x007E8F60; // type:function scope:global
