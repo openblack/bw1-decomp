@@ -20369,6 +20369,7 @@ __wcsicmp = .text:0x0089594A; // type:function scope:global
 __filelength = .text:0x00895A29; // type:function scope:global
 __fileno = .text:0x00895AB3; // type:function scope:global
 __wcsnicmp = .text:0x00895ABB; // type:function scope:global
+__chdir = .text:0x00895BB3; // type:function scope:global
 _GetCurrentProcessId = .text:0x00895D6D; // type:function size:0x6
 ??_M@YGXPAXIHP6EX0@Z@Z = .text:0x00895D73; // type:function scope:global
 fn_00895DDB = .text:0x00895DDB; // type:function
