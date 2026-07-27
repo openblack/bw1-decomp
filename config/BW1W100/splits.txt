@@ -989,6 +989,9 @@ lib/libcmt/ehvecdtr.obj:
 	.text       start:0x007E8D9F end:0x007E8E93 align:1
 	.rdata      start:0x008DA550 end:0x008DA570
 
+lib/libcmt/strspn.obj:
+	.text       start:0x007E8EA0 end:0x007E8EDE align:1
+
 lib/libcmt/clock.obj:
 	.text       start:0x007E8F60 end:0x007E8FD8 align:1
 	.CRT$XIC    start:0x008F7570 end:0x008F7574 align:4
