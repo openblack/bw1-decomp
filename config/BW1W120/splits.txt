@@ -968,13 +968,13 @@ Black/GestureSystemData.cpp:
 	.CRT$XCU    start:0x009C69F4 end:0x009C6A08 align:4
 
 Black/GestureSystemDataList.cpp:
-	.text       start:0x00579370 end:0x00579CE0
-	.CRT$XCU    start:0x009C6A08 end:0x009C6A1C align:4
+	.text       start:0x00579370 end:0x0057A8F0
+	.CRT$XCU    start:0x009C6A08 end:0x009C6A3C align:4
 
 Black/GestureSystemResult.cpp:
-	.text       start:0x00579CE0 end:0x0057BA70
+	.text       start:0x0057A8F0 end:0x0057BA70
 	.rdata      start:0x00900108 end:0x00900290
-	.CRT$XCU    start:0x009C6A1C end:0x009C6A54 align:4
+	.CRT$XCU    start:0x009C6A3C end:0x009C6A54 align:4
 	.bss        start:0x00D064C4 end:0x00D06510
 
 Black/GJUtils.cpp:
@@ -2144,16 +2144,16 @@ Black/SpellSeedInfo.cpp:
 	.bss        start:0x00D9D670 end:0x00DA05B4
 
 Black/SpellShield.cpp:
-	.text       start:0x0072B270 end:0x0072D8B0
+	.text       start:0x0072B270 end:0x0072DD60
 	.rdata      start:0x00982864 end:0x009847DC
-	.CRT$XCU    start:0x009C7808 end:0x009C7828 align:4
+	.CRT$XCU    start:0x009C7808 end:0x009C7830 align:4
 	.data       start:0x00C227C8 end:0x00C228E4
 	.bss        start:0x00DA05B4 end:0x00DA0808
 
 Black/SpellWater.cpp:
-	.text       start:0x0072D8B0 end:0x0072E110
+	.text       start:0x0072DD60 end:0x0072E110
 	.rdata      start:0x009847DC end:0x009995F8
-	.CRT$XCU    start:0x009C7828 end:0x009C7848 align:4
+	.CRT$XCU    start:0x009C7830 end:0x009C7848 align:4
 	.bss        start:0x00DA0808 end:0x00DA084C
 
 Black/SpookyVoices.cpp:
