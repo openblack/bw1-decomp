@@ -3163,6 +3163,9 @@ lib/libcmt/wcsnicmp.obj:
 lib/libcmt/chdir.obj:
 	.text       start:0x008A5DA3 end:0x008A5E29 align:1
 
+lib/libcmt/strlwr.obj:
+	.text       start:0x008A5E29 end:0x008A5F5D align:1
+
 lib/libcmt/strspn.obj:
 	.text       start:0x008A6060 end:0x008A609E align:1
 
