@@ -921,6 +921,10 @@ lib/libcmt/strlwr.obj:
 lib/libcmt/getpid.obj:
 	.text       start:0x00895D6D end:0x00895D73 align:1
 
+lib/libcmt/ehvecdtr.obj:
+	.text       start:0x00895D73 end:0x00895E67 align:1
+	.rdata      start:0x00996198 end:0x009961B8
+
 lib/libcmt/strspn.obj:
 	.text       start:0x00895E70 end:0x00895EAE align:1
 
