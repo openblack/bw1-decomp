@@ -1107,12 +1107,13 @@ Black/HelpEditor.cpp:
 	.bss        start:0x00D15AD0 end:0x00D16154
 
 Black/HelpProfile.cpp:
-	.text       start:0x005C4500 end:0x005C4974
+	.text       start:0x005C4500 end:0x005C49B0
+	.CRT$XCU    start:0x009C6BA4 end:0x009C6BA8 align:4
 	.data       start:0x00BF0BB4 end:0x00BF0C24
 
 Black/HelpSpirit.cpp:
-	.text       start:0x005C4974 end:0x005C5320
-	.CRT$XCU    start:0x009C6BA4 end:0x009C6BB0 align:4
+	.text       start:0x005C49B0 end:0x005C5320
+	.CRT$XCU    start:0x009C6BA8 end:0x009C6BB0 align:4
 	.data       start:0x00BF0C24 end:0x00BF0CC4
 
 Black/HelpSystem.cpp:
@@ -1391,15 +1392,15 @@ Black/MapCoords.cpp:
 	.bss        start:0x00D38324 end:0x00D3833C
 
 Black/Meeting.cpp:
-	.text       start:0x00606020 end:0x00606230
+	.text       start:0x00606020 end:0x00606270
 	.rdata      start:0x00930084 end:0x00930594
-	.CRT$XCU    start:0x009C6F14 end:0x009C6F18 align:4
+	.CRT$XCU    start:0x009C6F14 end:0x009C6F1C align:4
 	.data       start:0x00BF41E0 end:0x00BF41FC
 	.bss        start:0x00D3833C end:0x00D3843C
 
 Black/Mist.cpp:
-	.text       start:0x00606230 end:0x00606B30
-	.CRT$XCU    start:0x009C6F18 end:0x009C6F20 align:4
+	.text       start:0x00606270 end:0x00606B30
+	.CRT$XCU    start:0x009C6F1C end:0x009C6F20 align:4
 	.data       start:0x00BF41FC end:0x00BF4238
 
 Black/Mobile.cpp:
@@ -2437,12 +2438,13 @@ Black/ViscousLiquid.cpp:
 	.bss        start:0x00DCB188 end:0x00DCB194
 
 Black/VortexSave.cpp:
-	.text       start:0x0076F840 end:0x00770080
+	.text       start:0x0076F840 end:0x007700B0
+	.CRT$XCU    start:0x009C7A70 end:0x009C7A74 align:4
 	.data       start:0x00C246C4 end:0x00C246EC
 
 Black/Wallhug.cpp:
-	.text       start:0x00770080 end:0x00770AD0
-	.CRT$XCU    start:0x009C7A70 end:0x009C7A7C align:4
+	.text       start:0x007700B0 end:0x00770AD0
+	.CRT$XCU    start:0x009C7A74 end:0x009C7A7C align:4
 	.data       start:0x00C246EC end:0x00C24738
 
 Black/WayPoint.cpp:
