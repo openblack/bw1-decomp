@@ -31509,6 +31509,7 @@ lbl_009C77F4 = .data:0x009C77F4; // type:object size:0x10
 lbl_009C7804 = .data:0x009C7804; // type:object size:0x4
 _$S3 = .data:0x009C7814; // type:object size:0x4 scope:local
 lbl_009C7818 = .data:0x009C7818; // type:object size:0x10
+lbl_009C7828 = .data:0x009C7828; // type:object size:0x8
 _$S3 = .data:0x009C7858; // type:object size:0x4 scope:local
 lbl_009C785C = .data:0x009C785C; // type:object size:0x18
 lbl_009C7874 = .data:0x009C7874; // type:object size:0x4 data:string
