@@ -1,6 +1,11 @@
 #ifndef BW1_DECOMP_GAME_THING_WITH_POS_INCLUDED_H
 #define BW1_DECOMP_GAME_THING_WITH_POS_INCLUDED_H
 
+/* Unused here; emits the guarded atexit registration of std::ctype<wchar_t>::id
+   (.CRT$XCU thunk -> mov cl,[0xFAC934]; push 0x407870; call atexit) that every
+   object derived from this one ends with. */
+#include <string>
+
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
