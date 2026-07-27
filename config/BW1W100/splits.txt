@@ -1,5 +1,6 @@
 Sections:
 	.text       type:code align:4096
+	.text$x     type:code vaddr:0x007E9310 end:0x007EA1CD
 	.rdata      type:rodata align:4096
 	.idata$5    type:rodata vaddr:0x007EB000 end:0x007EB8FC
 	.rdata$r    type:rodata vaddr:0x008DA598 end:0x008EE238
