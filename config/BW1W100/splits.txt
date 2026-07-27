@@ -982,6 +982,9 @@ lib/libcmt/wcsnicmp.obj:
 lib/libcmt/chdir.obj:
 	.text       start:0x007E8BE5 end:0x007E8C6B align:1
 
+lib/libcmt/strlwr.obj:
+	.text       start:0x007E8C6B end:0x007E8D9F align:1
+
 lib/libcmt/ehvecctr.obj:
 	.text       start:0x007E8D9F end:0x007E8F60 align:1
 	.rdata      start:0x008DA550 end:0x008DA560

@@ -15818,6 +15818,7 @@ __filelength = .text:0x007E8A5B; // type:function scope:global
 __fileno = .text:0x007E8AE5; // type:function scope:global
 __wcsnicmp = .text:0x007E8AED; // type:function scope:global
 __chdir = .text:0x007E8BE5; // type:function scope:global
+__strlwr = .text:0x007E8C6B; // type:function scope:global
 ??_M@YGXPAXIHP6EX0@Z@Z = .text:0x007E8D9F; // type:function scope:global
 fn_007E8E07 = .text:0x007E8E07; // type:function
 ?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z = .text:0x007E8E1F; // type:function scope:global
