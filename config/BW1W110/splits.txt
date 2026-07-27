@@ -912,6 +912,9 @@ lib/libcmt/fileno.obj:
 lib/libcmt/wcsnicmp.obj:
 	.text       start:0x00895ABB end:0x00895BB3 align:1
 
+lib/libcmt/chdir.obj:
+	.text       start:0x00895BB3 end:0x00895C39 align:1
+
 lib/libcmt/strspn.obj:
 	.text       start:0x00895E70 end:0x00895EAE align:1
 
