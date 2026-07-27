@@ -1,10 +1,3 @@
-// Nothing here uses std::string. It is included for the guarded one-time
-// initializer <string> brings in for std::ctype<wchar_t>::id, which the original
-// object ends with. Some 395 of the ~405 Black translation units carry that same
-// initializer, so the real include almost certainly sits in a shared header --
-// TODO: find it and move this there.
-#include <string>
-
 #include "Villager.h"
 
 #include "Football.h"
