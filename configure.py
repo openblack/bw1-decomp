@@ -1313,10 +1313,10 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\chsize.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "..\\build\\intel\\mt_obj\\tenpow.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\constpow.obj", progress_category="sdk"),
-            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\txtmode.obj", progress_category="sdk"),
+            LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\txtmode.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\w_loc.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\a_loc.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\setmode.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\setmode.obj", progress_category="sdk"),
 
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSystem.cpp", progress_category="sdk", extra_cflags=["/GX"]),

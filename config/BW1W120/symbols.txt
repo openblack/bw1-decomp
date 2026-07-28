@@ -19901,6 +19901,7 @@ fn_007DB2F3 = .text:0x007DB2F3; // type:function size:0x4
 fn_007DB2F7 = .text:0x007DB2F7; // type:function size:0x5B
 __setmode = .text:0x007DB352; // type:function size:0x59 scope:global
 __setmode_lk = .text:0x007DB3AB; // type:function scope:global
+fn_007db40c = .text:0x007DB40C; // type:function size:0x4
 ParseCommandLineToArgv = .text:0x007DB410; // type:function size:0xB4 scope:global
 QueryProcessWorkingSet = .text:0x007DB4D0; // type:function size:0xC1 scope:global
 MemProfile_BeginEntry = .text:0x007DB5A0; // type:function size:0x23 scope:global

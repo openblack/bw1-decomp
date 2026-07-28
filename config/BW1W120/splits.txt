@@ -2993,6 +2993,9 @@ lib/libcmt/mantold.obj:
 lib/libcmt/x10fout.obj:
 	.text       start:0x007DA9B2 end:0x007DAC45 align:1
 
+lib/libcmt/setmode.obj:
+	.text       start:0x007DB352 end:0x007DB40C align:1
+
 Lionhead/LHLib/ver5.0/LHWin.cpp:
 	.text       start:0x007DB410 end:0x007DB7B0
 

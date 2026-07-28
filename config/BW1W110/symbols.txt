@@ -17993,6 +17993,7 @@ fn_007CAFE4 = .text:0x007CAFE4; // type:function size:0x56
 ___crtGetLocaleInfoA = .text:0x007CB03A; // type:function size:0xBF scope:global
 fn_007CB0F9 = .text:0x007CB0F9; // type:function size:0x4
 fn_007CB0FD = .text:0x007CB0FD; // type:function size:0x5B
+__setmode = .text:0x007CB158; // type:function scope:global
 __setmode_lk = .text:0x007CB1B1; // type:function scope:global
 fn_007CB220 = .text:0x007CB220; // type:function size:0xC0
 _LHRand__FlRU = .text:0x007CB410; // type:function size:0x40 scope:global
