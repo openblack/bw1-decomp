@@ -13897,6 +13897,7 @@ fn_0074634F = .text:0x0074634F; // type:label size:0x12
 fn_00746361 = .text:0x00746361; // type:function size:0x1B2
 __mbschr = .text:0x0074653B; // type:function scope:global
 __mbsdup = .text:0x007465D2; // type:function scope:global
+__chsize = .text:0x007dad07; // type:function scope:global
 __chsize_lk = .text:0x007465FD; // type:function scope:global
 ___ld12mul = .text:0x00746722; // type:function scope:global
 ___multtenpow12 = .text:0x00746942; // type:function scope:global

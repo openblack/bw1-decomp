@@ -2993,6 +2993,9 @@ lib/libcmt/mantold.obj:
 lib/libcmt/x10fout.obj:
 	.text       start:0x007DA9B2 end:0x007DAC45 align:1
 
+lib/libcmt/chsize.obj:
+	.text       start:0x007DAD07 end:0x007DAE85 align:1
+
 lib/libcmt/tenpow.obj:
 	.text       start:0x007DAE85 end:0x007DB121 align:1
 
