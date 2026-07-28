@@ -3155,6 +3155,9 @@ lib/libcmt/wcsdup.obj:
 lib/libcmt/wcsicmp.obj:
 	.text       start:0x008A5B3A end:0x008A5C19 align:1
 
+lib/libcmt/flength.obj:
+	.text       start:0x008A5C19 end:0x008A5CA3 align:1
+
 lib/libcmt/fileno.obj:
 	.text       start:0x008A5CA3 end:0x008A5CAB align:1
 
