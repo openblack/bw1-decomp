@@ -968,6 +968,9 @@ lib/libcmt/lseeki64.obj:
 lib/libcmt/mantold.obj:
 	.text       start:0x00746107 end:0x007462A8 align:1
 
+lib/libcmt/setmode.obj:
+	.text       start:0x00746BEF end:0x00746C50 align:1
+
 lib/libcmt/wcsdup.obj:
 	.text       start:0x007E894E end:0x007E897C align:1
 
