@@ -33848,6 +33848,7 @@ _?pfnMessageBoxA@?1??__crtMessageBoxA@@9@9 = .data:0x00E84558; // type:object si
 _?pfnGetActiveWindow@?1??__crtMessageBoxA@@9@9 = .data:0x00E8455C; // type:object size:0x4 scope:global
 _?pfnGetLastActivePopup@?1??__crtMessageBoxA@@9@9 = .data:0x00E84560; // type:object size:0x4 scope:global
 _?wcbuffer@?4??__getlocaleinfo@@9@9 = .data:0x00E84564; // type:object size:0x8 scope:global
+__fmode = .data:0x00E8456C; // type:object size:0x4 scope:global
 _?f_use@?1??__crtGetLocaleInfoW@@9@9 = .data:0x00E84570; // type:object size:0x4 scope:global
 _?f_use@?1??__crtGetLocaleInfoA@@9@9 = .data:0x00E84574; // type:object size:0x4 scope:global
 ?TheSystem@LHSys@@2U1@A = .data:0x00E85040; // type:object size:0x70D8 scope:global

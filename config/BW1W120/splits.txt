@@ -2993,6 +2993,9 @@ lib/libcmt/mantold.obj:
 lib/libcmt/x10fout.obj:
 	.text       start:0x007DA9B2 end:0x007DAC45 align:1
 
+lib/libcmt/txtmode.obj:
+	.bss        start:0x00E8456C end:0x00E84570 align:4
+
 lib/libcmt/w_loc.obj:
 	.text       start:0x007DB121 end:0x007DB234 align:1
 	.rdata      start:0x009A1600 end:0x009A160C align:4
