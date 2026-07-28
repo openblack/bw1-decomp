@@ -889,6 +889,11 @@ lib/libcmt/mantold.obj:
 lib/libcmt/x10fout.obj:
 	.text       start:0x007CA7B8 end:0x007CAA4B align:1
 
+lib/libcmt/a_loc.obj:
+	.text       start:0x007CB03A end:0x007CB158 align:1
+	.rdata      start:0x00991510 end:0x0099151C align:4
+	.bss        start:0x00E72F3C end:0x00E72F40 align:4
+
 lib/libcmt/setmode.obj:
 	.text       start:0x007CB158 end:0x007CB212 align:1
 

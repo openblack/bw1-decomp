@@ -968,6 +968,11 @@ lib/libcmt/lseeki64.obj:
 lib/libcmt/mantold.obj:
 	.text       start:0x00746107 end:0x007462A8 align:1
 
+lib/libcmt/a_loc.obj:
+	.text       start:0x00746AD1 end:0x00746BEF align:1
+	.rdata      start:0x008D73A8 end:0x008D73B4 align:4
+	.bss        start:0x00D5B620 end:0x00D5B624 align:4
+
 lib/libcmt/setmode.obj:
 	.text       start:0x00746BEF end:0x00746C50 align:1
 
