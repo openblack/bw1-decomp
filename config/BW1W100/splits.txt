@@ -968,6 +968,9 @@ lib/libcmt/lseeki64.obj:
 lib/libcmt/mantold.obj:
 	.text       start:0x00746107 end:0x007462A8 align:1
 
+lib/libcmt/mbschr.obj:
+	.text       start:0x0074653B end:0x007465D2 align:1
+
 lib/libcmt/chsize.obj:
 	.text       start:0x007465FD end:0x00746722 align:1
 
