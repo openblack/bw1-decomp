@@ -2992,6 +2992,7 @@ lib/libcmt/mantold.obj:
 
 lib/libcmt/x10fout.obj:
 	.text       start:0x007DA9B2 end:0x007DAC45 align:1
+	.rdata      start:0x009A15DC end:0x009A15FC align:4
 
 lib/libcmt/mbschr.obj:
 	.text       start:0x007DAC45 end:0x007DACDC align:1
