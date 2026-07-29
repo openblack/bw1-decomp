@@ -888,6 +888,7 @@ lib/libcmt/mantold.obj:
 
 lib/libcmt/x10fout.obj:
 	.text       start:0x007CA7B8 end:0x007CAA4B align:1
+	.rdata      start:0x009914DC end:0x009914FC align:4
 
 lib/libcmt/mbschr.obj:
 	.text       start:0x007CAA4B end:0x007CAAE2 align:1

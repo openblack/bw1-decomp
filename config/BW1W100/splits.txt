@@ -968,6 +968,10 @@ lib/libcmt/lseeki64.obj:
 lib/libcmt/mantold.obj:
 	.text       start:0x00746107 end:0x007462A8 align:1
 
+lib/libcmt/x10fout.obj:
+	.text       start:0x007462A8 end:0x0074653B align:1
+	.rdata      start:0x008D7374 end:0x008D7394 align:4
+
 lib/libcmt/mbschr.obj:
 	.text       start:0x0074653B end:0x007465D2 align:1
 
