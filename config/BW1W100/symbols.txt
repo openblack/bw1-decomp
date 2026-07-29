@@ -21247,6 +21247,7 @@ _start_tics = .data:0x00ECC698; // type:object size:0x8 scope:global
 ___pioinfo = .data:0x00ECC6C0; // type:object size:0x4
 __nhandle = .data:0x00ECC7C0; // type:object size:0x4 scope:global
 ___mbcodepage = .data:0x00ECC7C4; // type:object size:0xC scope:global
+___ismbcodepage = .data:0x00ECC7DC; // type:object size:0x104 scope:global
 __mbcasemap = .data:0x00ECC7E0; // type:object size:0x100 scope:global
 __mbctype = .data:0x00ECC8E0; // type:object size:0x104 scope:global
 ___mblcid = .data:0x00ECC9E4; // type:object size:0x4 scope:global
