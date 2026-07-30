@@ -2758,6 +2758,9 @@ lib/libcmt/lldiv.obj:
 lib/libcmt/fscanf.obj:
 	.text       start:0x007C7DAA end:0x007C7DD7 align:1
 
+lib/libcmt/fgetc.obj:
+	.text       start:0x007C7DD7 end:0x007C7E13 align:1
+
 lib/libcmt/vsprintf.obj:
 	.text       start:0x007C7E13 end:0x007C7E64 align:1
 
