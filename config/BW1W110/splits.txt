@@ -754,6 +754,14 @@ lib/libcmt/fgetpos.obj:
 lib/libcmt/fsetpos.obj:
 	.text       start:0x007BAE9C end:0x007BAEB4 align:1
 
+lib/libcmt/nlsdata2.obj:
+	.bss        start:0x00E72C60 end:0x00E72C80 align:8
+
+lib/libcmt/a_cmp.obj:
+	.text       start:0x007BC4CB end:0x007BC773 align:1
+	.rdata      start:0x009907F0 end:0x00990808
+	.bss        start:0x00E72C84 end:0x00E72C88
+
 lib/libcmt/fp8.obj:
 	.text       start:0x007BC773 end:0x007BC785 align:1
 
@@ -761,21 +769,43 @@ lib/libcmt/testfdiv.obj:
 	.text       start:0x007BC785 end:0x007BC7EC align:1
 	.rdata      start:0x00990808 end:0x00990840
 
-lib/libcmt/xtoa.obj:
-	.text       start:0x007BD6B4 end:0x007BD854 align:1
+lib/libcmt/cvt.obj:
+	.text       start:0x007BC7EC end:0x007BCC12 align:1
+	.rdata      start:0x00990840 end:0x00990848
 
-lib/libcmt/nlsdata2.obj:
-	.bss        start:0x00E72C60 end:0x00E72C80 align:8
+lib/libcmt/msize.obj:
+	.text       start:0x007BCCA4 end:0x007BCD92 align:1
+	.rdata      start:0x00990848 end:0x00990860
 
-lib/libcmt/handler.obj:
-	.text       start:0x007BE128 end:0x007BE16D align:1
-	.bss        start:0x00E72C8C end:0x00E72C90
+lib/libcmt/_flsbuf.obj:
+	.text       start:0x007BCD92 end:0x007BCEAA align:1
 
 lib/libcmt/ctype.obj:
 	.data       start:0x00C1C970 end:0x00C1CB7A align:1
 
 lib/libcmt/nlsdata1.obj:
 	.data       start:0x00C1CB7C end:0x00C1CB88 align:1
+
+lib/libcmt/cmiscdat.obj:
+	.data       start:0x00C1CC3C end:0x00C1CC54
+
+lib/libcmt/output.obj:
+	.text       start:0x007BCEAA end:0x007BD6B4 align:1
+	.rdata      start:0x00990860 end:0x009908CC
+	.data       start:0x00C1CC60 end:0x00C1CC68
+
+lib/libcmt/xtoa.obj:
+	.text       start:0x007BD6B4 end:0x007BD854 align:1
+
+lib/libcmt/woutput.obj:
+	.text       start:0x007BD854 end:0x007BE048 align:1
+
+lib/libcmt/exsup3.obj:
+	.text       start:0x007BE048 end:0x007BE128 align:1
+
+lib/libcmt/handler.obj:
+	.text       start:0x007BE128 end:0x007BE16D align:1
+	.bss        start:0x00E72C8C end:0x00E72C90
 
 lib/libcmt/heapinit.obj:
 	.text       start:0x007BE16D end:0x007BE3E7 align:1
