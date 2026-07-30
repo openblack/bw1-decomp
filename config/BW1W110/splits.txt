@@ -811,6 +811,15 @@ lib/libcmt/abort.obj:
 lib/libcmt/chmod.obj:
 	.text       start:0x007B9670 end:0x007B96AF align:1
 
+lib/libcmt/llshr.obj:
+	.text       start:0x007B9E10 end:0x007B9E31 align:1
+
+lib/libcmt/llshl.obj:
+	.text       start:0x007B9E40 end:0x007B9E5F align:1
+
+lib/libcmt/llrem.obj:
+	.text       start:0x007B9E60 end:0x007B9F12 align:1
+
 lib/libcmt/mkdir.obj:
 	.text       start:0x007B9F12 end:0x007B9F3E align:1
 
