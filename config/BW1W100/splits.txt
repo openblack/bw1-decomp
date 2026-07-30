@@ -844,6 +844,29 @@ lib/libcmt/fgetpos.obj:
 lib/libcmt/fsetpos.obj:
 	.text       start:0x00738A9C end:0x00738AB4 align:1
 
+lib/libcmt/setvbuf.obj:
+	.text       start:0x00738AB4 end:0x00738B63 align:1
+
+lib/libcmt/fflush.obj:
+	.text       start:0x00738B63 end:0x00738CC9 align:1
+
+lib/libcmt/ungetwc.obj:
+	.text       start:0x00738DEC end:0x00738F03 align:1
+
+lib/libcmt/nlsdata2.obj:
+	.bss        start:0x00D5B348 end:0x00D5B368 align:8
+
+lib/libcmt/a_map.obj:
+	.text       start:0x007390B6 end:0x00739305 align:1
+	.rdata      start:0x008D6560 end:0x008D6578
+	.bss        start:0x00D5B368 end:0x00D5B36C
+
+lib/libcmt/isctype.obj:
+	.text       start:0x00739305 end:0x0073937A align:1
+
+lib/libcmt/strtod.obj:
+	.text       start:0x0073937A end:0x00739424 align:1
+
 lib/libcmt/fp8.obj:
 	.text       start:0x007396A1 end:0x007396B3 align:1
 
@@ -870,9 +893,6 @@ lib/libcmt/woutput.obj:
 
 lib/libcmt/exsup3.obj:
 	.text       start:0x0073AE34 end:0x0073AF14 align:1
-
-lib/libcmt/nlsdata2.obj:
-	.bss        start:0x00D5B348 end:0x00D5B368 align:8
 
 lib/libcmt/handler.obj:
 	.text       start:0x0073AF14 end:0x0073AF2F align:1
