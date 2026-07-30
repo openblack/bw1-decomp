@@ -2864,6 +2864,13 @@ lib/libcmt/wcsncat.obj:
 lib/libcmt/ehprolog.obj:
 	.text       start:0x007CA66C end:0x007CA68B align:1
 
+lib/libcmt/_file.obj:
+	.text       start:0x007CB158 end:0x007CB2B8 align:1
+	.CRT$XIC    start:0x009C7E48 end:0x009C7E4C align:4
+	.CRT$XPX    start:0x009C7E60 end:0x009C7E64 align:4
+	.data       start:0x00C2D7E0 end:0x00C2DA60
+	.bss        start:0x00E84230 end:0x00E84234
+
 lib/libcmt/fputwc.obj:
 	.text       start:0x007CB2B8 end:0x007CB3EB align:1
 
@@ -2872,6 +2879,11 @@ lib/libcmt/ungetwc.obj:
 
 lib/libcmt/fgetwc.obj:
 	.text       start:0x007CB502 end:0x007CB621 align:1
+
+lib/libcmt/mlock.obj:
+	.text       start:0x007CB621 end:0x007CB744 align:1
+	.data       start:0x00C2DA60 end:0x00C2DB20
+	.bss        start:0x00E84238 end:0x00E84298
 
 lib/libcmt/nlsdata2.obj:
 	.bss        start:0x00E84298 end:0x00E842B8 align:8
@@ -3278,9 +3290,6 @@ lib/libcmt/days.obj:
 
 lib/libcmt/constpow.obj:
 	.data       start:0x00C30CB0 end:0x00C30F6C align:1
-
-lib/libcmt/strftime.obj:
-	.data       start:0x00C30F6C end:0x00C30F70 align:1
 
 Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp:
 	.text       start:0x007E0440 end:0x007E0FA0
