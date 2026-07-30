@@ -754,6 +754,32 @@ lib/libcmt/chkstk.obj:
 lib/libcmt/wcscmp.obj:
 	.text       start:0x00734FDF end:0x00735014 align:1
 
+lib/libcmt/asin.obj:
+	.text       start:0x007350E0 end:0x007351AB align:1
+	.data       start:0x00B4F920 end:0x00B4F928
+
+lib/libcmt/fwrite.obj:
+	.text       start:0x007352F1 end:0x007353FB align:1
+
+lib/libcmt/acos.obj:
+	.text       start:0x00735400 end:0x007354CB align:1
+	.data       start:0x00B4F930 end:0x00B4F938
+
+lib/libcmt/asctime.obj:
+	.text       start:0x007354CB end:0x007355BD align:1
+	.bss        start:0x00D5B248 end:0x00D5B262
+
+lib/libcmt/localtim.obj:
+	.text       start:0x007355BD end:0x0073571D align:1
+
+lib/libcmt/time.obj:
+	.text       start:0x0073571D end:0x007357F9 align:1
+	.bss        start:0x00D5B268 end:0x00D5B280
+
+lib/libcmt/pow.obj:
+	.text       start:0x00735800 end:0x00735A1D align:1
+	.data       start:0x00B4F940 end:0x00B4F950
+
 lib/libcmt/lldiv.obj:
 	.text       start:0x00735A20 end:0x00735ACA align:1
 
