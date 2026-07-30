@@ -3310,6 +3310,14 @@ lib/libcmt/open.obj:
 lib/libcmt/osfinfo.obj:
 	.text       start:0x007D9756 end:0x007D9ADE align:1
 
+lib/libcmt/matherr.obj:
+	.text       start:0x007D9ADE end:0x007D9AE1 align:1
+	.data       start:0x00C30C40 end:0x00C30C44
+
+lib/libcmt/days.obj:
+	.text       start:0x007D9AE1 end:0x007D9AE1 align:1
+	.data       start:0x00C30C44 end:0x00C30CAC align:1
+
 lib/libcmt/87except.obj:
 	.text       start:0x007D9AE1 end:0x007D9BB1 align:1
 
@@ -3339,6 +3347,7 @@ lib/libcmt/inithelp.obj:
 
 lib/libcmt/strnicmp.obj:
 	.text       start:0x007DA710 end:0x007DA811 align:1
+	.data       start:0x00C30CAC end:0x00C30CB0 align:1
 
 lib/libcmt/mantold.obj:
 	.text       start:0x007DA811 end:0x007DA9B2 align:1
@@ -3384,9 +3393,6 @@ Lionhead/LHLib/ver5.0/LHSystem.cpp:
 
 Lionhead/LHLib/ver5.0/LHScreen.cpp:
 	.text       start:0x007DCE20 end:0x007DEEF0
-
-lib/libcmt/days.obj:
-	.data       start:0x00C30C44 end:0x00C30CAC align:1
 
 lib/libcmt/constpow.obj:
 	.data       start:0x00C30CB0 end:0x00C30F6C align:1
