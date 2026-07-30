@@ -1073,6 +1073,13 @@ lib/libcmt/initctyp.obj:
 	.text       start:0x007430BE end:0x00743310 align:1
 	.bss        start:0x00D5B5A8 end:0x00D5B5B0
 
+lib/libcmt/strpbrk.obj:
+	.text       start:0x00743310 end:0x0074334A align:1
+	.data       start:0x00B52988 end:0x00B52990 align:1
+
+lib/libcmt/closeall.obj:
+	.text       start:0x00743BF1 end:0x00743C72 align:1
+
 lib/libcmt/_getbuf.obj:
 	.text       start:0x00743C72 end:0x00743CB6 align:1
 
@@ -1084,6 +1091,29 @@ lib/libcmt/fseeki64.obj:
 
 lib/libcmt/commit.obj:
 	.text       start:0x00743F2E end:0x00743FC1 align:1
+
+lib/libcmt/_flswbuf.obj:
+	.text       start:0x00743FC1 end:0x007440E8 align:1
+
+lib/libcmt/wctomb.obj:
+	.text       start:0x007440E8 end:0x007441AA align:1
+
+lib/libcmt/_filwbuf.obj:
+	.text       start:0x007441AA end:0x00744291 align:1
+
+lib/libcmt/mbtowc.obj:
+	.text       start:0x00744291 end:0x007443B7 align:1
+
+lib/libcmt/nlsdata3.obj:
+	.bss        start:0x00D5B5B0 end:0x00D5B5D4
+
+lib/libcmt/a_str.obj:
+	.text       start:0x007443B7 end:0x00744500 align:1
+	.rdata      start:0x008D7310 end:0x008D731C align:1
+	.bss        start:0x00D5B5F8 end:0x00D5B5FC
+
+lib/libcmt/huge.obj:
+	.data       start:0x00B53108 end:0x00B53110 align:1
 
 lib/libcmt/intrncvt.obj:
 	.text       start:0x00744500 end:0x007448EC align:1
@@ -1097,9 +1127,6 @@ lib/libcmt/cfout.obj:
 
 lib/libcmt/ullrem.obj:
 	.text       start:0x00744AB0 end:0x00744B25 align:1
-
-lib/libcmt/nlsdata3.obj:
-	.bss        start:0x00D5B5B0 end:0x00D5B5D4
 
 lib/libcmt/w_str.obj:
 	.text       start:0x00744B25 end:0x00744CEA align:1
