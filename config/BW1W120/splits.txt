@@ -2851,14 +2851,41 @@ lib/libcmt/throw.obj:
 	.rdata      start:0x009A06E8 end:0x009A0708
 	.data       start:0x00C2D4B8 end:0x00C2D4BC
 
+lib/libcmt/strcspn.obj:
+	.text       start:0x007C8CF0 end:0x007C8D2E align:1
+	.data       start:0x00C2D4BC end:0x00C2D4C0
+
+lib/libcmt/memchr.obj:
+	.text       start:0x007C8D30 end:0x007C8DD5 align:1
+
 lib/libcmt/lconv.obj:
 	.text       start:0x007C8DD5 end:0x007C8DDB align:1
 	.data       start:0x00C2D4C0 end:0x00C2D4FC
 	.bss        start:0x00E841D0 end:0x00E841D1
 
+lib/libcmt/strtol.obj:
+	.text       start:0x007C8DDB end:0x007C900E align:1
+
 lib/libcmt/dosmap.obj:
 	.text       start:0x007C900E end:0x007C9093 align:1
 	.data       start:0x00C2D500 end:0x00C2D668 align:1
+
+lib/libcmt/strncpy.obj:
+	.text       start:0x007C90A0 end:0x007C919E align:1
+	.data       start:0x00C2D668 end:0x00C2D670
+
+lib/libcmt/strncmp.obj:
+	.text       start:0x007C91A0 end:0x007C91D8 align:1
+
+lib/libcmt/strchr.obj:
+	.text       start:0x007C91E0 end:0x007C92AC align:1
+
+lib/libcmt/calloc.obj:
+	.text       start:0x007C92AC end:0x007C93E9 align:1
+	.rdata      start:0x009A0708 end:0x009A0720
+
+lib/libcmt/printf.obj:
+	.text       start:0x007C93E9 end:0x007C942A align:1
 
 lib/libcmt/strtok.obj:
 	.text       start:0x007C942A end:0x007C94CE align:1
