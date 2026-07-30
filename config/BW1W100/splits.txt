@@ -15,13 +15,14 @@ Sections:
 	.CRT$XCU    type:data vaddr:0x008F6004 end:0x008F755C
 	.CRT$XCZ    type:data vaddr:0x008F755C end:0x008F7560
 	.CRT$XIA    type:data vaddr:0x008F7560 end:0x008F7564
-	.CRT$XIC    type:data vaddr:0x008F7564 end:0x008F7578
+	.CRT$XIC    type:data vaddr:0x008F7564 end:0x008F7574
+	.CRT$XIY    type:data vaddr:0x008F7574 end:0x008F7578
 	.CRT$XIZ    type:data vaddr:0x008F7578 end:0x008F757C
 	.CRT$XPA    type:data vaddr:0x008F757C end:0x008F7580
 	.CRT$XPX    type:data vaddr:0x008F7580 end:0x008F7584
 	.CRT$XPZ    type:data vaddr:0x008F7584 end:0x008F7588
 	.CRT$XTA    type:data vaddr:0x008F7588 end:0x008F758C
-	.CRT$XTX    type:data vaddr:0x008F758C end:0x008F7590
+	.CRT$XTB    type:data vaddr:0x008F758C end:0x008F7590
 	.CRT$XTZ    type:data vaddr:0x008F7590 end:0x008F7594
 	.bss        type:data vaddr:0x00B5E000 end:0x00EDFB00
 	SELFMOD     type:data align:4096
@@ -958,6 +959,36 @@ lib/libcmt/frame.obj:
 
 lib/libcmt/lowhelpr.obj:
 	.text       start:0x00740840 end:0x0074088C align:1
+
+lib/libcmt/hooks.obj:
+	.text       start:0x0074088C end:0x00740943 align:1
+	.rdata      start:0x008D6968 end:0x008D6998 align:8
+	.data       start:0x00B52730 end:0x00B52734 align:4
+
+lib/libcmt/mbctype.obj:
+	.text       start:0x00740943 end:0x00740D37 align:1
+	.CRT$XIC    start:0x008F756C end:0x008F7570 align:4
+	.data       start:0x00B52738 end:0x00B52830 align:8
+	.bss        start:0x00D5B46C end:0x00D5B470
+
+lib/libcmt/mbsnbcpy.obj:
+	.text       start:0x00740D37 end:0x00740DD1 align:1
+
+lib/libcmt/lseek.obj:
+	.text       start:0x00740DD1 end:0x00740EA9 align:1
+
+lib/libcmt/ioinit.obj:
+	.text       start:0x00740EA9 end:0x00741065 align:1
+	.data       start:0x00B52830 end:0x00B52860 align:8
+
+lib/libcmt/strcat.obj:
+	.text       start:0x00741070 end:0x00741160 align:16
+
+lib/libcmt/unhandld.obj:
+	.text       start:0x00741160 end:0x007411C4 align:1
+	.CRT$XIY    start:0x008F7574 end:0x008F7578 align:4
+	.CRT$XTB    start:0x008F758C end:0x008F7590 align:4
+	.bss        start:0x00D5B470 end:0x00D5B474
 
 lib/libcmt/cfin.obj:
 	.text       start:0x007411C4 end:0x00741243 align:1
