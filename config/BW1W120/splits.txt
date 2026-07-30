@@ -2806,6 +2806,11 @@ lib/libcmt/throw.obj:
 	.rdata      start:0x009A06E8 end:0x009A0708
 	.data       start:0x00C2D4B8 end:0x00C2D4BC
 
+lib/libcmt/lconv.obj:
+	.text       start:0x007C8DD5 end:0x007C8DDB align:1
+	.data       start:0x00C2D4C0 end:0x00C2D4FC
+	.bss        start:0x00E841D0 end:0x00E841D1
+
 lib/libcmt/dosmap.obj:
 	.text       start:0x007C900E end:0x007C9093 align:1
 	.data       start:0x00C2D500 end:0x00C2D668 align:1
@@ -2939,7 +2944,26 @@ lib/libcmt/a_env.obj:
 	.bss        start:0x00E844E4 end:0x00E844E8 align:1
 
 lib/libcmt/inittime.obj:
-	.text       start:0x007D6EB7 end:0x007D6EB8 align:1
+	.text       start:0x007D6EB7 end:0x007D7426 align:1
+	.bss        start:0x00E844E8 end:0x00E844EC
+
+lib/libcmt/initnum.obj:
+	.text       start:0x007D7426 end:0x007D7632 align:1
+	.bss        start:0x00E844EC end:0x00E844F8
+
+lib/libcmt/initmon.obj:
+	.text       start:0x007D7632 end:0x007D78A4 align:1
+	.bss        start:0x00E844F8 end:0x00E844FC
+
+lib/libcmt/initctyp.obj:
+	.text       start:0x007D78A4 end:0x007D7AE9 align:1
+	.bss        start:0x00E844FC end:0x00E84504
+
+lib/libcmt/initcoll.obj:
+	.text       start:0x007D7AE9 end:0x007D7AEC align:1
+
+lib/libcmt/nlsdata3.obj:
+	.bss        start:0x00E84504 end:0x00E84528
 
 lib/libcmt/getqloc.obj:
 	.text       start:0x007D7B2A end:0x007D83D1 align:1
