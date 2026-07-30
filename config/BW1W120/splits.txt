@@ -2937,12 +2937,33 @@ lib/libcmt/87disp.obj:
 	.text       start:0x007D19E0 end:0x007D1BAA align:1
 	.data       start:0x00C2FF70 end:0x00C2FF9C align:1
 
-lib/libcmt/powhlp.obj:
-	.text       start:0x007D2DF7 end:0x007D2F8C align:1
-
 lib/libcmt/timeset.obj:
 	.rdata      start:0x009A0AF4 end:0x009A0B34
 	.data       start:0x00C2FFA0 end:0x00C30034
+
+lib/libcmt/tidtable.obj:
+	.text       start:0x007D22A6 end:0x007D243E align:1
+	.data       start:0x00C30034 end:0x00C30038 align:1
+
+lib/libcmt/tzset.obj:
+	.text       start:0x007D243E end:0x007D2A16 align:1
+	.rdata      start:0x009A0B34 end:0x009A0B37 align:1
+	.data       start:0x00C30038 end:0x00C30054 align:1
+	.bss        start:0x00E842D8 end:0x00E84394
+
+lib/libcmt/gmtime.obj:
+	.text       start:0x007D2A16 end:0x007D2B20 align:1
+	.bss        start:0x00E84398 end:0x00E843BC
+
+lib/libcmt/dtoxtime.obj:
+	.text       start:0x007D2B20 end:0x007D2BE2 align:1
+
+lib/libcmt/87tran.obj:
+	.text       start:0x007D2BF0 end:0x007D2DF7 align:1
+	.data       start:0x00C30060 end:0x00C300BA align:1
+
+lib/libcmt/powhlp.obj:
+	.text       start:0x007D2DF7 end:0x007D2F8C align:1
 
 lib/libcmt/adj_fdiv.obj:
 	.text       start:0x007D3200 end:0x007D3F8B align:1
