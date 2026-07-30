@@ -1034,6 +1034,11 @@ lib/libcmt/87tran.obj:
 lib/libcmt/powhlp.obj:
 	.text       start:0x007C2C07 end:0x007C2D9C align:1
 
+lib/libcmt/87cdisp.obj:
+	.text       start:0x007C2DA0 end:0x007C300A align:1
+	.rdata      start:0x00990A40 end:0x00990A70
+	.data       start:0x00C1EF0A end:0x00C1EF10 align:1
+
 lib/libcmt/adj_fdiv.obj:
 	.text       start:0x007C3010 end:0x007C3D9B align:1
 	.data       start:0x00C1EF10 end:0x00C1F070 align:1
