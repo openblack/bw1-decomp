@@ -690,11 +690,20 @@ lib/libcmt/exsup.obj:
 lib/libcmt/fgets.obj:
 	.text       start:0x007B8416 end:0x007B8478 align:1
 
+lib/libcmt/splitpat.obj:
+	.text       start:0x007B8478 end:0x007B85BF align:1
+
+lib/libcmt/wtox.obj:
+	.text       start:0x007B85BF end:0x007B863A align:1
+
 lib/libcmt/rand.obj:
 	.text       start:0x007B863A end:0x007B8669 align:1
 
 lib/libcmt/fseek.obj:
 	.text       start:0x007B8669 end:0x007B8722 align:1
+
+lib/libcmt/ftell.obj:
+	.text       start:0x007B8722 end:0x007B88A5 align:1
 
 lib/libcmt/fputs.obj:
 	.text       start:0x007B88A5 end:0x007B88F3 align:1
