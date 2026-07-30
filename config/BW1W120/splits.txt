@@ -3109,6 +3109,11 @@ lib/libcmt/util.obj:
 	.text       start:0x007D0FDD end:0x007D1185 align:1
 	.data       start:0x00C2FE58 end:0x00C2FE80
 
+lib/libcmt/fpexcept.obj:
+	.text       start:0x007D1185 end:0x007D1942 align:1
+	.rdata      start:0x009A09F4 end:0x009A0AA8
+	.data       start:0x00C2FE80 end:0x00C2FF58 align:1
+
 lib/libcmt/fpctrl.obj:
 	.text       start:0x007D1942 end:0x007D19D8 align:1
 	.data       start:0x00C2FF58 end:0x00C2FF70 align:1
@@ -3116,6 +3121,23 @@ lib/libcmt/fpctrl.obj:
 lib/libcmt/87disp.obj:
 	.text       start:0x007D19E0 end:0x007D1BAA align:1
 	.data       start:0x00C2FF70 end:0x00C2FF9C align:1
+
+lib/libcmt/genexcep.obj:
+	.text       start:0x007D1BB0 end:0x007D1C03 align:1
+	.data       start:0x00C2FF9C end:0x00C2FFA0
+
+lib/libcmt/common.obj:
+	.text       start:0x007D1C10 end:0x007D1D9C align:1
+	.rdata      start:0x009A0AA8 end:0x009A0AF4
+
+lib/libcmt/_filbuf.obj:
+	.text       start:0x007D1D9C end:0x007D1E78 align:1
+
+lib/libcmt/read.obj:
+	.text       start:0x007D1E78 end:0x007D20B6 align:1
+
+lib/libcmt/write.obj:
+	.text       start:0x007D20B6 end:0x007D22A6 align:1
 
 lib/libcmt/timeset.obj:
 	.rdata      start:0x009A0AF4 end:0x009A0B34
