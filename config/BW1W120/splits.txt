@@ -2799,6 +2799,10 @@ lib/libcmt/vsprintf.obj:
 lib/libcmt/qsort.obj:
 	.text       start:0x007C7E64 end:0x007C8032 align:1
 
+lib/libcmt/87fmod.obj:
+	.text       start:0x007C8040 end:0x007C8072 align:1
+	.data       start:0x00C2D450 end:0x00C2D4A0
+
 lib/libcmt/ceil.obj:
 	.text       start:0x007C8072 end:0x007C8141 align:1
 	.data       start:0x00C2D4A0 end:0x00C2D4A4 align:1
@@ -2893,6 +2897,9 @@ lib/libcmt/strtok.obj:
 lib/libcmt/atof.obj:
 	.text       start:0x007C94CE end:0x007C9525 align:1
 
+lib/libcmt/swscanf.obj:
+	.text       start:0x007C9525 end:0x007C955B align:1
+
 lib/libcmt/strstr.obj:
 	.text       start:0x007C9560 end:0x007C95E0 align:1
 
@@ -2920,6 +2927,9 @@ lib/libcmt/slbeep.obj:
 
 lib/libcmt/strrchr.obj:
 	.text       start:0x007C9BF0 end:0x007C9C17 align:1
+
+lib/libcmt/ieee87.obj:
+	.text       start:0x007C9C17 end:0x007C9E04 align:1
 
 lib/libcmt/ulldiv.obj:
 	.text       start:0x007C9E10 end:0x007C9E78 align:1

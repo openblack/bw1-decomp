@@ -795,6 +795,10 @@ lib/libcmt/vsprintf.obj:
 lib/libcmt/qsort.obj:
 	.text       start:0x00735B79 end:0x00735D47 align:1
 
+lib/libcmt/87fmod.obj:
+	.text       start:0x00735D50 end:0x00735D82 align:1
+	.data       start:0x00B4F950 end:0x00B4F9A0
+
 lib/libcmt/ceil.obj:
 	.text       start:0x00735D82 end:0x00735E51 align:1
 	.data       start:0x00B4F9A0 end:0x00B4F9A4 align:1
