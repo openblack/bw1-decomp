@@ -2984,6 +2984,23 @@ lib/libcmt/cfout.obj:
 lib/libcmt/ullrem.obj:
 	.text       start:0x007D8FF0 end:0x007D9065 align:1
 
+lib/libcmt/w_str.obj:
+	.text       start:0x007D9065 end:0x007D922A align:1
+	.rdata      start:0x009A1588 end:0x009A15A0
+	.bss        start:0x00E84550 end:0x00E84554
+
+lib/libcmt/setenv.obj:
+	.text       start:0x007D922A end:0x007D9470 align:1
+
+lib/libcmt/open.obj:
+	.text       start:0x007D9470 end:0x007D9756 align:1
+
+lib/libcmt/osfinfo.obj:
+	.text       start:0x007D9756 end:0x007D9ADE align:1
+
+lib/libcmt/87except.obj:
+	.text       start:0x007D9AE1 end:0x007D9BB1 align:1
+
 lib/libcmt/validate.obj:
 	.text       start:0x007D9BB1 end:0x007D9C01 align:1
 

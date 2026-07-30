@@ -956,6 +956,26 @@ lib/libcmt/cfout.obj:
 lib/libcmt/ullrem.obj:
 	.text       start:0x00744AB0 end:0x00744B25 align:1
 
+lib/libcmt/nlsdata3.obj:
+	.bss        start:0x00D5B5B0 end:0x00D5B5D4
+
+lib/libcmt/w_str.obj:
+	.text       start:0x00744B25 end:0x00744CEA align:1
+	.rdata      start:0x008D7320 end:0x008D7338
+	.bss        start:0x00D5B5FC end:0x00D5B600
+
+lib/libcmt/setenv.obj:
+	.text       start:0x00744CEA end:0x00744F30 align:1
+
+lib/libcmt/open.obj:
+	.text       start:0x00744F30 end:0x007451FF align:1
+
+lib/libcmt/osfinfo.obj:
+	.text       start:0x007451FF end:0x007454E0 align:1
+
+lib/libcmt/87except.obj:
+	.text       start:0x007454E0 end:0x007455B0 align:1
+
 lib/libcmt/validate.obj:
 	.text       start:0x007455B0 end:0x00745600 align:1
 
@@ -964,9 +984,6 @@ lib/libcmt/strgtold.obj:
 
 lib/libcmt/wcstombs.obj:
 	.text       start:0x00745AD1 end:0x00745D0C align:1
-
-lib/libcmt/nlsdata3.obj:
-	.bss        start:0x00D5B5B0 end:0x00D5B5D4
 
 lib/libcmt/crtmbox.obj:
 	.text       start:0x00745D0C end:0x00745D95 align:1
