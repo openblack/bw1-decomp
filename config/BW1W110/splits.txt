@@ -751,8 +751,27 @@ lib/libcmt/mkdir.obj:
 lib/libcmt/wcsncat.obj:
 	.text       start:0x007B9F3E end:0x007B9F7E align:1
 
+lib/libcmt/wincrt0.obj:
+	.text       start:0x007B9F7E end:0x007BA0CF align:1
+	.rdata      start:0x00990640 end:0x0099064C
+	.data       start:0x00C1C4C0 end:0x00C1C4C8
+	.bss        start:0x00E72BE0 end:0x00E72BEC
+
+lib/libcmt/strlen.obj:
+	.text       start:0x007BA0D0 end:0x007BA14B align:1
+	.data       start:0x00C1C4C8 end:0x00C1C4D0
+
 lib/libcmt/ehprolog.obj:
 	.text       start:0x007BA14C end:0x007BA16B align:1
+
+lib/libcmt/memcpy.obj:
+	.text       start:0x007BA170 end:0x007BA4A5 align:1
+
+lib/libcmt/memcmp.obj:
+	.text       start:0x007BA4B0 end:0x007BA55C align:1
+
+lib/libcmt/memset.obj:
+	.text       start:0x007BABE0 end:0x007BAC38 align:1
 
 lib/libcmt/_file.obj:
 	.text       start:0x007BAC38 end:0x007BAD98 align:1
