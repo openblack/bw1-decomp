@@ -883,6 +883,12 @@ lib/libcmt/calloc.obj:
 lib/libcmt/strtok.obj:
 	.text       start:0x00737049 end:0x007370ED align:1
 
+lib/libcmt/atof.obj:
+	.text       start:0x007370ED end:0x00737144 align:1
+
+lib/libcmt/strstr.obj:
+	.text       start:0x00737180 end:0x00737200 align:1
+
 lib/libcmt/tolower.obj:
 	.text       start:0x00737200 end:0x0073733A align:1
 
@@ -891,6 +897,23 @@ lib/libcmt/abort.obj:
 
 lib/libcmt/chmod.obj:
 	.text       start:0x00737351 end:0x00737390 align:1
+
+lib/libcmt/realloc.obj:
+	.text       start:0x00737390 end:0x007376BF align:1
+	.rdata      start:0x008D64E0 end:0x008D64F8
+
+lib/libcmt/strrchr.obj:
+	.text       start:0x007376C0 end:0x007376E7 align:1
+
+lib/libcmt/ulldiv.obj:
+	.text       start:0x00737850 end:0x007378B8 align:1
+
+lib/libcmt/llmul.obj:
+	.text       start:0x007378C0 end:0x007378F4 align:1
+
+lib/libcmt/crt0dat.obj:
+	.text       start:0x007378F4 end:0x00737A14 align:1
+	.bss        start:0x00D5B284 end:0x00D5B2C8
 
 lib/libcmt/llshr.obj:
 	.text       start:0x00737A20 end:0x00737A41 align:1

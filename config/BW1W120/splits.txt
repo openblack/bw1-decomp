@@ -2890,6 +2890,12 @@ lib/libcmt/printf.obj:
 lib/libcmt/strtok.obj:
 	.text       start:0x007C942A end:0x007C94CE align:1
 
+lib/libcmt/atof.obj:
+	.text       start:0x007C94CE end:0x007C9525 align:1
+
+lib/libcmt/strstr.obj:
+	.text       start:0x007C9560 end:0x007C95E0 align:1
+
 lib/libcmt/tolower.obj:
 	.text       start:0x007C95E0 end:0x007C9722 align:1
 
@@ -2905,8 +2911,25 @@ lib/libcmt/abort.obj:
 lib/libcmt/chmod.obj:
 	.text       start:0x007C9860 end:0x007C989F align:1
 
+lib/libcmt/realloc.obj:
+	.text       start:0x007C989F end:0x007C9BCE align:1
+	.rdata      start:0x009A0720 end:0x009A0738
+
 lib/libcmt/slbeep.obj:
 	.text       start:0x007C9BCE end:0x007C9BF0 align:1
+
+lib/libcmt/strrchr.obj:
+	.text       start:0x007C9BF0 end:0x007C9C17 align:1
+
+lib/libcmt/ulldiv.obj:
+	.text       start:0x007C9E10 end:0x007C9E78 align:1
+
+lib/libcmt/llmul.obj:
+	.text       start:0x007C9E80 end:0x007C9EB4 align:1
+
+lib/libcmt/crt0dat.obj:
+	.text       start:0x007C9EB4 end:0x007C9FF2 align:1
+	.bss        start:0x00E841D4 end:0x00E84218
 
 lib/libcmt/llshr.obj:
 	.text       start:0x007CA000 end:0x007CA021 align:1
@@ -2921,7 +2944,7 @@ lib/libcmt/mkdir.obj:
 	.text       start:0x007CA102 end:0x007CA12E align:1
 
 lib/libcmt/fputc.obj:
-	.text       start:0x007CA12E end:0x007CA130 align:1
+	.text       start:0x007CA12E end:0x007CA179 align:1
 
 lib/libcmt/ungetc.obj:
 	.text       start:0x007CA179 end:0x007CA210 align:1

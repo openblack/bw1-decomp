@@ -796,6 +796,12 @@ lib/libcmt/printf.obj:
 lib/libcmt/strtok.obj:
 	.text       start:0x007B923A end:0x007B92DE align:1
 
+lib/libcmt/atof.obj:
+	.text       start:0x007B92DE end:0x007B9335 align:1
+
+lib/libcmt/strstr.obj:
+	.text       start:0x007B9370 end:0x007B93F0 align:1
+
 lib/libcmt/tolower.obj:
 	.text       start:0x007B93F0 end:0x007B9532 align:1
 
@@ -810,6 +816,23 @@ lib/libcmt/abort.obj:
 
 lib/libcmt/chmod.obj:
 	.text       start:0x007B9670 end:0x007B96AF align:1
+
+lib/libcmt/realloc.obj:
+	.text       start:0x007B96AF end:0x007B99DE align:1
+	.rdata      start:0x00990628 end:0x00990640
+
+lib/libcmt/strrchr.obj:
+	.text       start:0x007B9A00 end:0x007B9A27 align:1
+
+lib/libcmt/ulldiv.obj:
+	.text       start:0x007B9C20 end:0x007B9C88 align:1
+
+lib/libcmt/llmul.obj:
+	.text       start:0x007B9C90 end:0x007B9CC4 align:1
+
+lib/libcmt/crt0dat.obj:
+	.text       start:0x007B9CC4 end:0x007B9E02 align:1
+	.bss        start:0x00E72B9C end:0x00E72BE0
 
 lib/libcmt/llshr.obj:
 	.text       start:0x007B9E10 end:0x007B9E31 align:1
@@ -860,6 +883,9 @@ lib/libcmt/_file.obj:
 	.CRT$XPX    start:0x009B761C end:0x009B7620 align:4
 	.data       start:0x00C1C630 end:0x00C1C8B0
 	.bss        start:0x00E72BF8 end:0x00E72BFC
+
+lib/libcmt/fputc.obj:
+	.text       start:0x007BAD98 end:0x007BADE3 align:1
 
 lib/libcmt/ungetc.obj:
 	.text       start:0x007BADE3 end:0x007BAE7A align:1
