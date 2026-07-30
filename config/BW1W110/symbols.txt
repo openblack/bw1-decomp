@@ -22620,6 +22620,7 @@ $T17070 = .rdata:0x00990588; // type:object size:0x10 scope:local
 ??_7exception@@6B@ = .rdata:0x009905D4; // type:object size:0x8 stripped
 ??_C@_0BC@OIDF@Unknown?5exception?$AA@ = .rdata:0x009905DC; // type:object size:0x14 scope:global data:string stripped
 _?ExceptionTemplate@?1??_CxxThrowException@@9@8@4UEHExceptionRecord@@B = .rdata:0x009905F0; // type:object size:0x20
+$T16954 = .rdata:0x00990610; // type:object size:0x18
 $T17734 = .rdata:0x00990640; // type:object size:0xC
 ??_C@_07PCLE@LC_TIME?$AA@ = .rdata:0x0099064C; // type:object size:0x8 scope:global data:string
 ??_C@_0L@NKG@LC_NUMERIC?$AA@ = .rdata:0x00990654; // type:object size:0xC scope:global data:string
