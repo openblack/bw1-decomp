@@ -2908,6 +2908,15 @@ lib/libcmt/chmod.obj:
 lib/libcmt/slbeep.obj:
 	.text       start:0x007C9BCE end:0x007C9BF0 align:1
 
+lib/libcmt/llshr.obj:
+	.text       start:0x007CA000 end:0x007CA021 align:1
+
+lib/libcmt/llshl.obj:
+	.text       start:0x007CA030 end:0x007CA04F align:1
+
+lib/libcmt/llrem.obj:
+	.text       start:0x007CA050 end:0x007CA102 align:1
+
 lib/libcmt/mkdir.obj:
 	.text       start:0x007CA102 end:0x007CA12E align:1
 
