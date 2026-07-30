@@ -1087,7 +1087,13 @@ lib/libcmt/_fptostr.obj:
 	.text       start:0x007C8C34 end:0x007C8CAB align:1
 
 lib/libcmt/cfout.obj:
-	.text       start:0x007C8CAB end:0x007C8CAC align:1
+	.text       start:0x007C8CAB end:0x007C8DBD align:1
+
+lib/libcmt/crt0fp.obj:
+	.text       start:0x007C8DBD end:0x007C8DC6 align:1
+
+lib/libcmt/isatty.obj:
+	.text       start:0x007C8DC6 end:0x007C8DEF align:1
 
 lib/libcmt/ullrem.obj:
 	.text       start:0x007C8DF0 end:0x007C8E65 align:1
