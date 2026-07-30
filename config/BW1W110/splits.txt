@@ -1210,6 +1210,14 @@ lib/libcmt/open.obj:
 lib/libcmt/osfinfo.obj:
 	.text       start:0x007C9556 end:0x007C98DE align:1
 
+lib/libcmt/matherr.obj:
+	.text       start:0x007C98DE end:0x007C98E1 align:1
+	.data       start:0x00C1FA90 end:0x00C1FA94
+
+lib/libcmt/days.obj:
+	.text       start:0x007C98E1 end:0x007C98E1 align:1
+	.data       start:0x00C1FA94 end:0x00C1FAFC align:1
+
 lib/libcmt/87except.obj:
 	.text       start:0x007C98E1 end:0x007C99B1 align:1
 
@@ -1236,6 +1244,7 @@ lib/libcmt/inithelp.obj:
 
 lib/libcmt/strnicmp.obj:
 	.text       start:0x007CA420 end:0x007CA521 align:1
+	.data       start:0x00C1FAFC end:0x00C1FB00 align:1
 
 lib/libcmt/lseeki64.obj:
 	.text       start:0x007CA521 end:0x007CA617 align:1
@@ -1274,9 +1283,6 @@ lib/libcmt/a_loc.obj:
 
 lib/libcmt/setmode.obj:
 	.text       start:0x007CB158 end:0x007CB212 align:1
-
-lib/libcmt/days.obj:
-	.data       start:0x00C1FA94 end:0x00C1FAFC align:1
 
 lib/libcmt/constpow.obj:
 	.data       start:0x00C1FB00 end:0x00C1FDBC align:1
