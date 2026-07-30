@@ -2752,6 +2752,38 @@ lib/libcmt/chkstk.obj:
 lib/libcmt/wcscmp.obj:
 	.text       start:0x007C6EDF end:0x007C6F14 align:1
 
+lib/libcmt/ieeemisc.obj:
+	.text       start:0x007C6F14 end:0x007C73C0 align:1
+
+lib/libcmt/asin.obj:
+	.text       start:0x007C73C0 end:0x007C748B align:1
+	.data       start:0x00C2D420 end:0x00C2D428
+
+lib/libcmt/fread.obj:
+	.text       start:0x007C748B end:0x007C75A2 align:1
+
+lib/libcmt/fwrite.obj:
+	.text       start:0x007C75A2 end:0x007C76DB align:1
+
+lib/libcmt/acos.obj:
+	.text       start:0x007C76E0 end:0x007C77AB align:1
+	.data       start:0x00C2D430 end:0x00C2D438
+
+lib/libcmt/asctime.obj:
+	.text       start:0x007C77AB end:0x007C789D align:1
+	.bss        start:0x00E84198 end:0x00E841B2
+
+lib/libcmt/localtim.obj:
+	.text       start:0x007C789D end:0x007C79FD align:1
+
+lib/libcmt/time.obj:
+	.text       start:0x007C79FD end:0x007C7AD9 align:1
+	.bss        start:0x00E841B8 end:0x00E841D0
+
+lib/libcmt/pow.obj:
+	.text       start:0x007C7AE0 end:0x007C7CFD align:1
+	.data       start:0x00C2D440 end:0x00C2D450
+
 lib/libcmt/lldiv.obj:
 	.text       start:0x007C7D00 end:0x007C7DAA align:1
 
