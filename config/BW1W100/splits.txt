@@ -808,6 +808,11 @@ lib/libcmt/throw.obj:
 	.rdata      start:0x008D64A8 end:0x008D64C8
 	.data       start:0x00B4F9B8 end:0x00B4F9BC
 
+lib/libcmt/lconv.obj:
+	.text       start:0x00736A35 end:0x00736A3B align:1
+	.data       start:0x00B4F9C0 end:0x00B4F9FC
+	.bss        start:0x00D5B280 end:0x00D5B281
+
 lib/libcmt/strtok.obj:
 	.text       start:0x00737049 end:0x007370ED align:1
 
@@ -920,7 +925,20 @@ lib/libcmt/a_env.obj:
 	.bss        start:0x00D5B590 end:0x00D5B594 align:1
 
 lib/libcmt/inittime.obj:
-	.text       start:0x00742708 end:0x00742799 align:1
+	.text       start:0x00742708 end:0x00742C77 align:1
+	.bss        start:0x00D5B594 end:0x00D5B598
+
+lib/libcmt/initnum.obj:
+	.text       start:0x00742C77 end:0x00742E4C align:1
+	.bss        start:0x00D5B598 end:0x00D5B5A4
+
+lib/libcmt/initmon.obj:
+	.text       start:0x00742E4C end:0x007430BE align:1
+	.bss        start:0x00D5B5A4 end:0x00D5B5A8
+
+lib/libcmt/initctyp.obj:
+	.text       start:0x007430BE end:0x00743310 align:1
+	.bss        start:0x00D5B5A8 end:0x00D5B5B0
 
 lib/libcmt/fseeki64.obj:
 	.text       start:0x00743E6E end:0x00743F2E align:1
@@ -946,6 +964,9 @@ lib/libcmt/strgtold.obj:
 
 lib/libcmt/wcstombs.obj:
 	.text       start:0x00745AD1 end:0x00745D0C align:1
+
+lib/libcmt/nlsdata3.obj:
+	.bss        start:0x00D5B5B0 end:0x00D5B5D4
 
 lib/libcmt/crtmbox.obj:
 	.text       start:0x00745D0C end:0x00745D95 align:1
