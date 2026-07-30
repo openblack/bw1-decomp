@@ -880,8 +880,20 @@ lib/libcmt/winput.obj:
 	.text       start:0x007C5053 end:0x007C5BC5 align:1
 	.data       start:0x00C1F1B0 end:0x00C1F1C0
 
+lib/libcmt/w_map.obj:
+	.text       start:0x007C5BC5 end:0x007C5DFE align:1
+	.rdata      start:0x00990AE8 end:0x00990B00
+	.bss        start:0x00E72D8C end:0x00E72D90
+
+lib/libcmt/winsig.obj:
+	.text       start:0x007C5DFE end:0x007C61B3 align:1
+	.bss        start:0x00E72D90 end:0x00E72DA4
+
 lib/libcmt/crt0msg.obj:
+	.text       start:0x007C61B3 end:0x007C6370 align:1
+	.rdata      start:0x00990B00 end:0x00990DF0
 	.data       start:0x00C1F1C0 end:0x00C1F250 align:1
+	.bss        start:0x00E72DA4 end:0x00E72DA8
 
 lib/libcmt/winxfltr.obj:
 	.text       start:0x007C6370 end:0x007C64E8 align:1
@@ -889,6 +901,13 @@ lib/libcmt/winxfltr.obj:
 
 lib/libcmt/wincmdln.obj:
 	.text       start:0x007C64E8 end:0x007C6540 align:1
+
+lib/libcmt/stdenvp.obj:
+	.text       start:0x007C6540 end:0x007C65F9 align:1
+
+lib/libcmt/stdargv.obj:
+	.text       start:0x007C65F9 end:0x007C6846 align:1
+	.bss        start:0x00E72DA8 end:0x00E72EAC
 
 lib/libcmt/a_env.obj:
 	.text       start:0x007C6846 end:0x007C6978 align:1
@@ -922,8 +941,17 @@ lib/libcmt/getqloc.obj:
 	.data       start:0x00C1F2E0 end:0x00C1FA58
 	.bss        start:0x00E72EF0 end:0x00E72F14
 
+lib/libcmt/_getbuf.obj:
+	.text       start:0x007C7F12 end:0x007C7F56 align:1
+
+lib/libcmt/ftelli64.obj:
+	.text       start:0x007C7F56 end:0x007C810E align:1
+
 lib/libcmt/fseeki64.obj:
 	.text       start:0x007C810E end:0x007C81CE align:1
+
+lib/libcmt/commit.obj:
+	.text       start:0x007C81CE end:0x007C8261 align:1
 
 lib/libcmt/intrncvt.obj:
 	.text       start:0x007C87A0 end:0x007C8C34 align:1

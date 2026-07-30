@@ -967,7 +967,10 @@ lib/libcmt/winput.obj:
 	.data       start:0x00B52860 end:0x00B52870
 
 lib/libcmt/crt0msg.obj:
+	.text       start:0x00741F74 end:0x00742100 align:1
+	.rdata      start:0x008D6998 end:0x008D6C88
 	.data       start:0x00B52870 end:0x00B52900 align:1
+	.bss        start:0x00D5B488 end:0x00D5B48C
 
 lib/libcmt/winxfltr.obj:
 	.text       start:0x00742100 end:0x00742278 align:1
@@ -975,6 +978,13 @@ lib/libcmt/winxfltr.obj:
 
 lib/libcmt/wincmdln.obj:
 	.text       start:0x00742278 end:0x007422D0 align:1
+
+lib/libcmt/stdenvp.obj:
+	.text       start:0x007422D0 end:0x00742389 align:1
+
+lib/libcmt/stdargv.obj:
+	.text       start:0x00742389 end:0x007425D6 align:1
+	.bss        start:0x00D5B48C end:0x00D5B590
 
 lib/libcmt/a_env.obj:
 	.text       start:0x007425D6 end:0x00742708 align:1
@@ -996,8 +1006,17 @@ lib/libcmt/initctyp.obj:
 	.text       start:0x007430BE end:0x00743310 align:1
 	.bss        start:0x00D5B5A8 end:0x00D5B5B0
 
+lib/libcmt/_getbuf.obj:
+	.text       start:0x00743C72 end:0x00743CB6 align:1
+
+lib/libcmt/ftelli64.obj:
+	.text       start:0x00743CB6 end:0x00743E6E align:1
+
 lib/libcmt/fseeki64.obj:
 	.text       start:0x00743E6E end:0x00743F2E align:1
+
+lib/libcmt/commit.obj:
+	.text       start:0x00743F2E end:0x00743FC1 align:1
 
 lib/libcmt/intrncvt.obj:
 	.text       start:0x00744500 end:0x007448EC align:1
@@ -1133,6 +1152,11 @@ lib/libcmt/towlower.obj:
 
 lib/libcmt/mbtoupr.obj:
 	.text       start:0x007E904D end:0x007E90C8 align:1
+
+lib/libcmt/w_map.obj:
+	.text       start:0x007E90C8 end:0x007E9301 align:1
+	.rdata      start:0x008DA580 end:0x008DA598
+	.bss        start:0x00ECC6A0 end:0x00ECC6A4
 
 lib/libcmt/days.obj:
 	.data       start:0x00B53144 end:0x00B531AC align:1
