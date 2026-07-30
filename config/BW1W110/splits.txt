@@ -763,17 +763,60 @@ lib/libcmt/testfdiv.obj:
 lib/libcmt/xtoa.obj:
 	.text       start:0x007BD6B4 end:0x007BD854 align:1
 
-lib/libcmt/_freebuf.obj:
-	.text       start:0x007C0BDC end:0x007C0C07 align:1
+lib/libcmt/nlsdata2.obj:
+	.bss        start:0x00E72C60 end:0x00E72C80 align:8
 
-lib/libcmt/ldexp.obj:
-	.text       start:0x007C0C07 end:0x007C0DED align:1
+lib/libcmt/handler.obj:
+	.text       start:0x007BE128 end:0x007BE16D align:1
+	.bss        start:0x00E72C8C end:0x00E72C90
 
 lib/libcmt/ctype.obj:
 	.data       start:0x00C1C970 end:0x00C1CB7A align:1
 
 lib/libcmt/nlsdata1.obj:
 	.data       start:0x00C1CB7C end:0x00C1CB88 align:1
+
+lib/libcmt/heapinit.obj:
+	.text       start:0x007BE16D end:0x007BE3E7 align:1
+	.rdata      start:0x009908CC end:0x009908FC
+	.data       start:0x00C1CC68 end:0x00C1CC70
+
+lib/libcmt/sbheap.obj:
+	.text       start:0x007BE3E7 end:0x007BFC4D align:1
+	.data       start:0x00C1CC70 end:0x00C1EC98
+	.bss        start:0x00E72C90 end:0x00E72C94
+
+lib/libcmt/input.obj:
+	.text       start:0x007BFC4D end:0x007C06FE align:1
+	.data       start:0x00C1EC98 end:0x00C1ECA8
+
+lib/libcmt/iswctype.obj:
+	.text       start:0x007C06FE end:0x007C0760 align:1
+
+lib/libcmt/mbsnbico.obj:
+	.text       start:0x007C0760 end:0x007C079F align:1
+
+lib/libcmt/wtombenv.obj:
+	.text       start:0x007C079F end:0x007C080D align:1
+
+lib/libcmt/_sftbuf.obj:
+	.text       start:0x007C080D end:0x007C08C4 align:1
+	.bss        start:0x00E72C94 end:0x00E72C9C
+
+lib/libcmt/_open.obj:
+	.text       start:0x007C08C4 end:0x007C0A34 align:1
+
+lib/libcmt/stream.obj:
+	.text       start:0x007C0A34 end:0x007C0AFC align:1
+
+lib/libcmt/close.obj:
+	.text       start:0x007C0AFC end:0x007C0BDC align:1
+
+lib/libcmt/_freebuf.obj:
+	.text       start:0x007C0BDC end:0x007C0C07 align:1
+
+lib/libcmt/ldexp.obj:
+	.text       start:0x007C0C07 end:0x007C0DED align:1
 
 lib/libcmt/util.obj:
 	.text       start:0x007C0DED end:0x007C0F95 align:1
@@ -828,9 +871,6 @@ lib/libcmt/winxfltr.obj:
 
 lib/libcmt/wincmdln.obj:
 	.text       start:0x007C64E8 end:0x007C6540 align:1
-
-lib/libcmt/nlsdata2.obj:
-	.bss        start:0x00E72C60 end:0x00E72C80 align:8
 
 lib/libcmt/a_env.obj:
 	.text       start:0x007C6846 end:0x007C6978 align:1
