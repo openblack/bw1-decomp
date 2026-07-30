@@ -852,11 +852,24 @@ lib/libcmt/testfdiv.obj:
 	.rdata      start:0x008D66B8 end:0x008D66ED
 
 lib/libcmt/cvt.obj:
-	.text       start:0x0073971A end:0x0073971C align:1
-	.rdata      start:0x008D66ED end:0x008D66F0 align:1
+	.text       start:0x0073971A end:0x00739B40 align:1
+	.rdata      start:0x008D66ED end:0x008D66F8 align:1
+
+lib/libcmt/msize.obj:
+	.text       start:0x00739BC4 end:0x00739CB2 align:1
+	.rdata      start:0x008D66F8 end:0x008D6710
+
+lib/libcmt/_flsbuf.obj:
+	.text       start:0x00739CB2 end:0x00739DCA align:1
 
 lib/libcmt/xtoa.obj:
 	.text       start:0x0073A5B7 end:0x0073A640 align:1
+
+lib/libcmt/woutput.obj:
+	.text       start:0x0073A640 end:0x0073AE34 align:1
+
+lib/libcmt/exsup3.obj:
+	.text       start:0x0073AE34 end:0x0073AF14 align:1
 
 lib/libcmt/nlsdata2.obj:
 	.bss        start:0x00D5B348 end:0x00D5B368 align:8
@@ -870,6 +883,9 @@ lib/libcmt/ctype.obj:
 
 lib/libcmt/nlsdata1.obj:
 	.data       start:0x00B5022C end:0x00B50238 align:1
+
+lib/libcmt/cmiscdat.obj:
+	.data       start:0x00B502EC end:0x00B50304
 
 lib/libcmt/heapinit.obj:
 	.text       start:0x0073AF2F end:0x0073B101 align:1

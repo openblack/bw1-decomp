@@ -2858,6 +2858,14 @@ lib/libcmt/wcsncat.obj:
 lib/libcmt/ehprolog.obj:
 	.text       start:0x007CA66C end:0x007CA68B align:1
 
+lib/libcmt/nlsdata2.obj:
+	.bss        start:0x00E84298 end:0x00E842B8 align:8
+
+lib/libcmt/a_cmp.obj:
+	.text       start:0x007CC6BA end:0x007CC962 align:1
+	.rdata      start:0x009A08E8 end:0x009A0900
+	.bss        start:0x00E842BC end:0x00E842C0
+
 lib/libcmt/fp8.obj:
 	.text       start:0x007CC962 end:0x007CC974 align:1
 
@@ -2866,23 +2874,42 @@ lib/libcmt/testfdiv.obj:
 	.rdata      start:0x009A0900 end:0x009A0938
 
 lib/libcmt/cvt.obj:
-	.text       start:0x007CC9DB end:0x007CC9DC align:1
+	.text       start:0x007CC9DB end:0x007CCE01 align:1
+	.rdata      start:0x009A0938 end:0x009A0940
 
-lib/libcmt/xtoa.obj:
-	.text       start:0x007CD984 end:0x007CDB24 align:1
+lib/libcmt/msize.obj:
+	.text       start:0x007CCE94 end:0x007CCF82 align:1
+	.rdata      start:0x009A0940 end:0x009A0958
 
-lib/libcmt/nlsdata2.obj:
-	.bss        start:0x00E84298 end:0x00E842B8 align:8
-
-lib/libcmt/handler.obj:
-	.text       start:0x007CE318 end:0x007CE35D align:1
-	.bss        start:0x00E842C4 end:0x00E842C8
+lib/libcmt/_flsbuf.obj:
+	.text       start:0x007CCF82 end:0x007CD09A align:1
 
 lib/libcmt/ctype.obj:
 	.data       start:0x00C2DB20 end:0x00C2DD2A align:1
 
 lib/libcmt/nlsdata1.obj:
 	.data       start:0x00C2DD2C end:0x00C2DD38 align:1
+
+lib/libcmt/cmiscdat.obj:
+	.data       start:0x00C2DDEC end:0x00C2DE04
+
+lib/libcmt/output.obj:
+	.text       start:0x007CD09A end:0x007CD8A4 align:1
+	.rdata      start:0x009A0958 end:0x009A09C4
+	.data       start:0x00C2DE10 end:0x00C2DE18
+
+lib/libcmt/exsup3.obj:
+	.text       start:0x007CD8A4 end:0x007CD984 align:1
+
+lib/libcmt/xtoa.obj:
+	.text       start:0x007CD984 end:0x007CDB24 align:1
+
+lib/libcmt/woutput.obj:
+	.text       start:0x007CDB24 end:0x007CE318 align:1
+
+lib/libcmt/handler.obj:
+	.text       start:0x007CE318 end:0x007CE35D align:1
+	.bss        start:0x00E842C4 end:0x00E842C8
 
 lib/libcmt/heapinit.obj:
 	.text       start:0x007CE35D end:0x007CE5D7 align:1
