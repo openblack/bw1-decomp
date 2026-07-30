@@ -1019,6 +1019,10 @@ lib/libcmt/initctyp.obj:
 lib/libcmt/initcoll.obj:
 	.text       start:0x007C75AA end:0x007C75AD align:1
 
+lib/libcmt/strpbrk.obj:
+	.text       start:0x007C75B0 end:0x007C75EA align:1
+	.data       start:0x00C1F2D8 end:0x00C1F2E0 align:1
+
 lib/libcmt/nlsdata3.obj:
 	.bss        start:0x00E72ECC end:0x00E72EF0
 
@@ -1027,6 +1031,9 @@ lib/libcmt/getqloc.obj:
 	.rdata      start:0x00990DF0 end:0x00991478
 	.data       start:0x00C1F2E0 end:0x00C1FA58
 	.bss        start:0x00E72EF0 end:0x00E72F14
+
+lib/libcmt/closeall.obj:
+	.text       start:0x007C7E91 end:0x007C7F12 align:1
 
 lib/libcmt/_getbuf.obj:
 	.text       start:0x007C7F12 end:0x007C7F56 align:1
@@ -1039,6 +1046,26 @@ lib/libcmt/fseeki64.obj:
 
 lib/libcmt/commit.obj:
 	.text       start:0x007C81CE end:0x007C8261 align:1
+
+lib/libcmt/_flswbuf.obj:
+	.text       start:0x007C8261 end:0x007C8388 align:1
+
+lib/libcmt/wctomb.obj:
+	.text       start:0x007C8388 end:0x007C844A align:1
+
+lib/libcmt/_filwbuf.obj:
+	.text       start:0x007C844A end:0x007C8531 align:1
+
+lib/libcmt/mbtowc.obj:
+	.text       start:0x007C8531 end:0x007C8657 align:1
+
+lib/libcmt/a_str.obj:
+	.text       start:0x007C8657 end:0x007C87A0 align:1
+	.rdata      start:0x00991478 end:0x00991484 align:1
+	.bss        start:0x00E72F14 end:0x00E72F18
+
+lib/libcmt/huge.obj:
+	.data       start:0x00C1FA58 end:0x00C1FA60 align:1
 
 lib/libcmt/intrncvt.obj:
 	.text       start:0x007C87A0 end:0x007C8C34 align:1

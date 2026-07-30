@@ -3135,6 +3135,10 @@ lib/libcmt/initctyp.obj:
 lib/libcmt/initcoll.obj:
 	.text       start:0x007D7AE9 end:0x007D7AEC align:1
 
+lib/libcmt/strpbrk.obj:
+	.text       start:0x007D7AF0 end:0x007D7B2A align:1
+	.data       start:0x00C30488 end:0x00C30490 align:1
+
 lib/libcmt/nlsdata3.obj:
 	.bss        start:0x00E84504 end:0x00E84528
 
@@ -3143,6 +3147,29 @@ lib/libcmt/getqloc.obj:
 	.rdata      start:0x009A0EF0 end:0x009A1578
 	.data       start:0x00C30490 end:0x00C30C08
 	.bss        start:0x00E84528 end:0x00E8454C
+
+lib/libcmt/closeall.obj:
+	.text       start:0x007D83D1 end:0x007D8452 align:1
+
+lib/libcmt/_flswbuf.obj:
+	.text       start:0x007D8452 end:0x007D8579 align:1
+
+lib/libcmt/wctomb.obj:
+	.text       start:0x007D8579 end:0x007D863B align:1
+
+lib/libcmt/_filwbuf.obj:
+	.text       start:0x007D863B end:0x007D8722 align:1
+
+lib/libcmt/mbtowc.obj:
+	.text       start:0x007D8722 end:0x007D8848 align:1
+
+lib/libcmt/a_str.obj:
+	.text       start:0x007D8848 end:0x007D8991 align:1
+	.rdata      start:0x009A1578 end:0x009A1584 align:1
+	.bss        start:0x00E8454C end:0x00E84550
+
+lib/libcmt/huge.obj:
+	.data       start:0x00C30C08 end:0x00C30C10 align:1
 
 lib/libcmt/intrncvt.obj:
 	.text       start:0x007D8994 end:0x007D8E28 align:1
