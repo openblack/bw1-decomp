@@ -664,6 +664,9 @@ lib/libcmt/lldiv.obj:
 lib/libcmt/fscanf.obj:
 	.text       start:0x007B7BBA end:0x007B7BE7 align:1
 
+lib/libcmt/fgetc.obj:
+	.text       start:0x007B7BE7 end:0x007B7C23 align:1
+
 lib/libcmt/vsprintf.obj:
 	.text       start:0x007B7C23 end:0x007B7C74 align:1
 
