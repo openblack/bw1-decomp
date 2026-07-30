@@ -828,6 +828,9 @@ lib/libcmt/realloc.obj:
 	.text       start:0x007B96AF end:0x007B99DE align:1
 	.rdata      start:0x00990628 end:0x00990640
 
+lib/libcmt/slbeep.obj:
+	.text       start:0x007B99DE end:0x007B9A00 align:1
+
 lib/libcmt/strrchr.obj:
 	.text       start:0x007B9A00 end:0x007B9A27 align:1
 
