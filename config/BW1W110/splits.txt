@@ -845,6 +845,12 @@ lib/libcmt/memcpy.obj:
 lib/libcmt/memcmp.obj:
 	.text       start:0x007BA4B0 end:0x007BA55C align:1
 
+lib/libcmt/setlocal.obj:
+	.text       start:0x007BA55C end:0x007BABD5 align:1
+	.rdata      start:0x0099064C end:0x0099069C
+	.data       start:0x00C1C4D0 end:0x00C1C630
+	.bss        start:0x00E72BEC end:0x00E72BF8
+
 lib/libcmt/memset.obj:
 	.text       start:0x007BABE0 end:0x007BAC38 align:1
 
@@ -898,6 +904,17 @@ lib/libcmt/isctype.obj:
 lib/libcmt/strtod.obj:
 	.text       start:0x007BB819 end:0x007BB8C3 align:1
 
+lib/libcmt/ctype.obj:
+	.data       start:0x00C1C970 end:0x00C1CB7A align:1
+
+lib/libcmt/nlsdata1.obj:
+	.data       start:0x00C1CB7C end:0x00C1CB88 align:1
+
+lib/libcmt/strftime.obj:
+	.text       start:0x007BB8C3 end:0x007BC4CB align:1
+	.rdata      start:0x009906C0 end:0x009907F0
+	.data       start:0x00C1CB88 end:0x00C1CC3C
+
 lib/libcmt/a_cmp.obj:
 	.text       start:0x007BC4CB end:0x007BC773 align:1
 	.rdata      start:0x009907F0 end:0x00990808
@@ -913,12 +930,6 @@ lib/libcmt/testfdiv.obj:
 lib/libcmt/cvt.obj:
 	.text       start:0x007BC7EC end:0x007BCC12 align:1
 	.rdata      start:0x00990840 end:0x00990848
-
-lib/libcmt/ctype.obj:
-	.data       start:0x00C1C970 end:0x00C1CB7A align:1
-
-lib/libcmt/nlsdata1.obj:
-	.data       start:0x00C1CB7C end:0x00C1CB88 align:1
 
 lib/libcmt/cmiscdat.obj:
 	.data       start:0x00C1CC3C end:0x00C1CC54

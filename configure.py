@@ -1181,7 +1181,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\ehprolog.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\memcpy.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\memcmp.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\setlocal.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\setlocal.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\memset.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\_file.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\fputwc.obj", progress_category="sdk"),
@@ -1194,7 +1194,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\strtod.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\ctype.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\nlsdata1.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\strftime.obj", progress_category="sdk"), # mismatch for the __Strftime function
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\strftime.obj", progress_category="sdk"),
 
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DCameraChecker.cpp", progress_category="sdk"),
 
