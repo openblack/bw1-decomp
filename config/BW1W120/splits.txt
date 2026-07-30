@@ -2915,13 +2915,6 @@ lib/libcmt/cvt.obj:
 	.text       start:0x007CC9DB end:0x007CCE01 align:1
 	.rdata      start:0x009A0938 end:0x009A0940
 
-lib/libcmt/msize.obj:
-	.text       start:0x007CCE94 end:0x007CCF82 align:1
-	.rdata      start:0x009A0940 end:0x009A0958
-
-lib/libcmt/_flsbuf.obj:
-	.text       start:0x007CCF82 end:0x007CD09A align:1
-
 lib/libcmt/ctype.obj:
 	.data       start:0x00C2DB20 end:0x00C2DD2A align:1
 
@@ -2930,6 +2923,17 @@ lib/libcmt/nlsdata1.obj:
 
 lib/libcmt/cmiscdat.obj:
 	.data       start:0x00C2DDEC end:0x00C2DE04
+
+lib/libcmt/strcmp.obj:
+	.text       start:0x007CCE10 end:0x007CCE94 align:1
+	.data       start:0x00C2DE04 end:0x00C2DE10
+
+lib/libcmt/msize.obj:
+	.text       start:0x007CCE94 end:0x007CCF82 align:1
+	.rdata      start:0x009A0940 end:0x009A0958
+
+lib/libcmt/_flsbuf.obj:
+	.text       start:0x007CCF82 end:0x007CD09A align:1
 
 lib/libcmt/output.obj:
 	.text       start:0x007CD09A end:0x007CD8A4 align:1
