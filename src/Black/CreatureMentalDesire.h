@@ -84,6 +84,11 @@ public:
 class CreatureDesireForType : public GBaseInfo
 {
 public:
+	// One weight per CREATURE_TYPE. TODO: order/mapping to CREATURE_TYPE unconfirmed;
+	// openblack (github.com/openblack/openblack PR #859) independently reversed this as
+	// 17 contiguous floats in on-disk creature-type order (Cow..GiantApe) from info.dat.
+	float ByCreatureType[0x11]; /* 0x10 */
+
 	// Override methods
 
 	// BW1W120 004db420 BW1M100 1025ac00 CreatureDesireForType::_dt(void)
