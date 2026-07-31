@@ -796,8 +796,11 @@ Black/VillagerHome.cpp:
 Black/VillagerReaction.cpp:
 	.text       start:0x007570B0 end:0x0075B240
 
+Black/VillagerStates.cpp:
+	.text       start:0x0075D100 end:0x0075F050
+
 Black/VillagerStateTableInfo.cpp:
-	.text       start:0x0075D100 end:0x0075F580
+	.text       start:0x0075F050 end:0x0075F580
 
 Black/VillagerWorshipper.cpp:
 	.text       start:0x0075F6E0 end:0x00760530
@@ -850,8 +853,14 @@ Black/PathCreator.cpp:
 Black/PictureRoom.cpp:
 	.text       start:0x0077EB90 end:0x0077F080
 
+Black/SaveGameRoom.cpp:
+	.text       start:0x0077F130 end:0x00783360
+
+Black/Temple.cpp:
+	.text       start:0x007834B0 end:0x007844A0
+
 Black/InnerCamera.cpp:
-	.text       start:0x00783260 end:0x00787C00
+	.text       start:0x007844A0 end:0x00787C00
 
 Black/TempleRoom.cpp:
 	.text       start:0x00787C00 end:0x0078A050
