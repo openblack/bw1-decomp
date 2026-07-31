@@ -166,8 +166,11 @@ Black/CitadelHeart.cpp:
 Black/CitadelPart.cpp:
 	.text       start:0x00468580 end:0x004699A0
 
+Black/ControlMap.cpp:
+	.text       start:0x0046DE90 end:0x00470AF0
+
 Black/CPUCheck.cpp:
-	.text       start:0x0046DE90 end:0x00471A80
+	.text       start:0x00470AF0 end:0x00471A80
 
 Black/CreatureAttitudeToPlayer.cpp:
 	.text       start:0x004C6C30 end:0x004C7260
