@@ -108,13 +108,23 @@ Black/CameraModeCtrInteract.cpp:
 	.text       start:0x0043E6C0 end:0x0043EAB0
 
 Black/CameraModeFollow.cpp:
-	.text       start:0x0043EAB0 end:0x00441EE0
+	.text       start:0x0043EAB0 end:0x00441170
+
+Black/CameraModeFree.cpp:
+	.text       start:0x00441170 end:0x00441EA0
 
 Black/CameraModePath.cpp:
 	.text       start:0x0044C890 end:0x0044CB30
 
 Black/CameraModeScript.cpp:
-	.text       start:0x0044CB30 end:0x0044E280
+	.text       start:0x0044CB30 end:0x0044D600
+
+Black/BuildingSite.cpp:
+	.data       start:0x008FBFE8 end:0x008FC1B0
+
+Black/CameraModeTwoObjects.cpp:
+	.text       start:0x0044D600 end:0x0044DE90
+	.data       start:0x008FCE98 end:0x008FCF06
 
 Black/Citadel.cpp:
 	.text       start:0x0044E280 end:0x0044F810
@@ -239,6 +249,9 @@ Black/SetupStaticTextNoHit.cpp:
 Black/GestureSystemData.cpp:
 	.text       start:0x005458D0 end:0x00545C50
 
+Black/GJVnoise.cpp:
+	.text       start:0x005598C0 end:0x00559BB0
+
 Black/GraveYard.cpp:
 	.text       start:0x0055CD80 end:0x0055CFD0
 
@@ -304,9 +317,6 @@ Black/Language.cpp:
 
 Black/LHNetBase.cpp:
 	.text       start:0x005A98B0 end:0x005AA9B0
-
-Black/BuildingSite.cpp:
-	.data       start:0x008FBFE8 end:0x008FC1B0
 
 Black/Arena.cpp:
 	.rdata      start:0x00802680 end:0x00803900
@@ -617,7 +627,10 @@ Black/StoragePit.cpp:
 	.text       start:0x006C8DB0 end:0x006CAD70
 
 Black/TerrainMaterialInfo.cpp:
-	.text       start:0x006CAD70 end:0x006CB2F0
+	.text       start:0x006CAD70 end:0x006CAF80
+
+Black/TerrainMapInfo.cpp:
+	.text       start:0x006CAF80 end:0x006CB000
 
 Black/Totem.cpp:
 	.text       start:0x006CB2F0 end:0x006CB860
@@ -839,6 +852,9 @@ Black/TempleRoom.cpp:
 
 Black/WorldRoom.cpp:
 	.text       start:0x007237C0 end:0x00725F30
+
+Lionhead/LHDLL/ver1.0/LHDLL.cpp:
+	.text       start:0x00727B50 end:0x00727C86
 
 zlib/compress.c:
 	.text       start:0x0072D460 end:0x0072D530
@@ -1610,6 +1626,39 @@ lib/libcmt/a_loc.obj:
 
 lib/libcmt/setmode.obj:
 	.text       start:0x00746BEF end:0x00746C50 align:1
+
+Lionhead/LHLib/ver5.0/LHHeap2.cpp:
+	.text       start:0x0074A5D0 end:0x0074AA60
+
+Lionhead/LH3DLib/development/LH3DSmoke.cpp:
+	.text       start:0x00757420 end:0x007575F0
+
+Lionhead/LH3DLib/development/LH3DIsland.cpp:
+	.text       start:0x00760FD0 end:0x00761570
+
+Lionhead/LH3DLib/development/LH3DMesh.cpp:
+	.text       start:0x00763B50 end:0x00764EA0
+
+Lionhead/LH3DLib/development/LH3DTech.cpp:
+	.text       start:0x007747B0 end:0x00776AB0
+
+Lionhead/LHLib/ver5.0/LHCollide.cpp:
+	.text       start:0x00782BF0 end:0x00784380
+
+Lionhead/LHLib/ver5.0/Route.cpp:
+	.text       start:0x00790250 end:0x007911F2
+
+Lionhead/LH3DLib/development/LH3DSprite.cpp:
+	.text       start:0x007950F0 end:0x00795170
+
+Lionhead/LH3DLib/development/LH3DWay.cpp:
+	.text       start:0x0079A470 end:0x0079B040
+
+Lionhead/LH3DLib/development/LH3DHair.cpp:
+	.text       start:0x0079DFB0 end:0x0079E500
+
+Lionhead/LH3DLib/development/CAnim.cpp:
+	.text       start:0x007B4F30 end:0x007B53D0
 
 lib/libcmt/wcsdup.obj:
 	.text       start:0x007E894E end:0x007E897C align:1
