@@ -116,6 +116,9 @@ Black/CameraModeFollow.cpp:
 Black/CameraModeFree.cpp:
 	.text       start:0x00441170 end:0x00441EA0
 
+Black/CameraModeNew3.cpp:
+	.text       start:0x00442050 end:0x0044C500
+
 Black/CameraModePath.cpp:
 	.text       start:0x0044C890 end:0x0044CB30
 
@@ -149,6 +152,9 @@ Black/Config.cpp:
 
 Black/CPUCheck.cpp:
 	.text       start:0x00459B70 end:0x0045D510
+
+Black/Creature.cpp:
+	.text       start:0x0045D8A0 end:0x00467190
 
 Black/CreatureAttitudeToCreature.cpp:
 	.text       start:0x004ABC30 end:0x004AC240
