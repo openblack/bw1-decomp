@@ -119,6 +119,9 @@ Black/CameraModePath.cpp:
 Black/CameraModeScript.cpp:
 	.text       start:0x0044CB30 end:0x0044D600
 
+Black/Belief.cpp:
+	.data       start:0x008FBE60 end:0x008FBE98
+
 Black/BuildingSite.cpp:
 	.data       start:0x008FBFE8 end:0x008FC1B0
 
@@ -135,8 +138,17 @@ Black/CitadelHeart.cpp:
 Black/CitadelPart.cpp:
 	.text       start:0x004545B0 end:0x004558D0
 
+Black/Collide.cpp:
+	.text       start:0x004558F0 end:0x00455EE0
+
+Black/Config.cpp:
+	.text       start:0x00456290 end:0x00456750
+
 Black/CPUCheck.cpp:
 	.text       start:0x00459B70 end:0x0045D510
+
+Black/CreatureAttitudeToCreature.cpp:
+	.text       start:0x004ABC30 end:0x004AC240
 
 Black/CreatureAttitudeToPlayer.cpp:
 	.text       start:0x004AE6D0 end:0x004AED00
@@ -144,14 +156,69 @@ Black/CreatureAttitudeToPlayer.cpp:
 Black/CreatureVisionState.cpp:
 	.text       start:0x004B3B00 end:0x004B5A70
 
+Black/Arena.cpp:
+	.rdata      start:0x00802680 end:0x00803900
+
+Black/Balance.cpp:
+	.rdata      start:0x00803B94 end:0x00804064
+
+Black/ControlHand.cpp:
+	.rdata      start:0x0080A850 end:0x0080AE04
+	.data       start:0x008FD528 end:0x008FE078
+
+Black/CreatureAction.cpp:
+	.rdata      start:0x0080DF64 end:0x0080E198
+	.data       start:0x008FF718 end:0x00907D98
+
+Black/CreatureLessonChooser.cpp:
+	.data       start:0x0090BA90 end:0x0090BB5A
+
+Black/CreatureMentalBeliefs.cpp:
+	.text       start:0x004BC280 end:0x004BD3C0
+	.data       start:0x00B0D630 end:0x00B0D6FE
+
 Black/CreatureActionsKnownAbout.cpp:
 	.text       start:0x004C3920 end:0x004C42E0
+
+Black/CreatureInitialLesson.cpp:
+	.rdata      start:0x0080E2C8 end:0x0080E630
+
+Black/CreatureMental.cpp:
+	.rdata      start:0x0080E718 end:0x0080E80C
+
+Black/CreatureMentalAttributeTest.cpp:
+	.rdata      start:0x0080E850 end:0x0080EC50
+
+Black/CreatureMentalBelief.cpp:
+	.rdata      start:0x0080EC50 end:0x0080ECF8
+
+Black/CreatureMentalDesire.cpp:
+	.rdata      start:0x0080ED34 end:0x0080EDF4
+
+Black/CreatureMentalDesireSource.cpp:
+	.rdata      start:0x0080EDF4 end:0x0080EE88
+
+Black/CreatureMentalExploration.cpp:
+	.rdata      start:0x0080EEF8 end:0x0080EF38
+
+Black/CreatureMentalLearn.cpp:
+	.rdata      start:0x0080EF38 end:0x0080F2A8
+
+Black/CreatureMentalLearnAction.cpp:
+	.rdata      start:0x0080F2A8 end:0x0080F2F4
+
+Black/CreatureMentalMisc.cpp:
+	.text       start:0x004C4E00 end:0x004C5920
+	.rdata      start:0x0080F2F4 end:0x0080F3F8
 
 Black/Alignment.cpp:
 	.text       start:0x004C60F0 end:0x004CA4E0
 
 Black/CreatureMimicInfo.cpp:
 	.text       start:0x004CA7E0 end:0x004CB7B0
+
+Black/CreatureMorph.cpp:
+	.text       start:0x004CB830 end:0x004CE110
 
 Black/CreaturePen.cpp:
 	.text       start:0x004CF220 end:0x004CF710
@@ -303,6 +370,9 @@ Black/Interface.cpp:
 Black/InterfaceImmersion.cpp:
 	.text       start:0x00598810 end:0x00599800
 
+Black/InterfaceMessage.cpp:
+	.text       start:0x0059A0B0 end:0x0059B7F0
+
 Black/InterfaceStatus.cpp:
 	.text       start:0x0059B7F0 end:0x0059D1B0
 
@@ -312,49 +382,20 @@ Black/IpSpecialDialog.cpp:
 Black/JCMisc.cpp:
 	.text       start:0x0059E400 end:0x005A13C0
 
+Black/LandAlignement.cpp:
+	.text       start:0x005A18A0 end:0x005A20E0
+
+Black/LandFeature.cpp:
+	.text       start:0x005A2830 end:0x005A3940
+
+Black/Landscape.cpp:
+	.text       start:0x005A4DB0 end:0x005A6090
+
 Black/Language.cpp:
 	.text       start:0x005A6160 end:0x005A7020
 
 Black/LHNetBase.cpp:
 	.text       start:0x005A98B0 end:0x005AA9B0
-
-Black/Arena.cpp:
-	.rdata      start:0x00802680 end:0x00803900
-
-Black/Balance.cpp:
-	.rdata      start:0x00803B94 end:0x00804064
-
-Black/ControlHand.cpp:
-	.rdata      start:0x0080A850 end:0x0080AE04
-	.data       start:0x008FD528 end:0x008FE078
-
-Black/CreatureAction.cpp:
-	.rdata      start:0x0080DF64 end:0x0080E198
-	.data       start:0x008FF718 end:0x00907D98
-
-Black/CreatureInitialLesson.cpp:
-	.rdata      start:0x0080E2C8 end:0x0080E630
-
-Black/CreatureMental.cpp:
-	.rdata      start:0x0080E718 end:0x0080E80C
-
-Black/CreatureMentalAttributeTest.cpp:
-	.rdata      start:0x0080E850 end:0x0080EC50
-
-Black/CreatureMentalBelief.cpp:
-	.rdata      start:0x0080EC50 end:0x0080ECF8
-
-Black/CreatureMentalDesire.cpp:
-	.rdata      start:0x0080ED34 end:0x0080EDF4
-
-Black/CreatureMentalDesireSource.cpp:
-	.rdata      start:0x0080EDF4 end:0x0080EE88
-
-Black/CreatureMentalLearn.cpp:
-	.rdata      start:0x0080EF38 end:0x0080F2A8
-
-Black/CreatureMentalLearnAction.cpp:
-	.rdata      start:0x0080F2A8 end:0x0080F2F4
 
 Black/CreaturePhysical.cpp:
 	.rdata      start:0x0080FDD4 end:0x00810328
@@ -380,6 +421,9 @@ Black/Fixed.cpp:
 Black/frontend.cpp:
 	.rdata      start:0x0081CB64 end:0x0081D390
 
+Black/Furniture.cpp:
+	.rdata      start:0x0081D434 end:0x0081D4C8
+
 Black/GameOptionsRoom.cpp:
 	.rdata      start:0x0081D790 end:0x0083DB04
 
@@ -392,6 +436,9 @@ Black/Living.cpp:
 
 Black/LivingReaction.cpp:
 	.text       start:0x005AF860 end:0x005B1000
+
+Black/LoadingScreen.cpp:
+	.text       start:0x005B22A0 end:0x005B34D0
 
 Black/MagicFood.cpp:
 	.text       start:0x005B8020 end:0x005B84D0
@@ -426,6 +473,9 @@ Black/MobileStatic.cpp:
 Black/MorphableObject.cpp:
 	.text       start:0x005CF950 end:0x005D27E0
 
+Black/MPFEChannelSelector.cpp:
+	.text       start:0x005DD670 end:0x005DE550
+
 Black/MPFEChooseConnection.cpp:
 	.text       start:0x005DE9F0 end:0x005DF650
 
@@ -447,6 +497,9 @@ Black/MPFEChangedMapMessage.cpp:
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x005E5CB0 end:0x005E6390
 
+Black/MusicMood.cpp:
+	.text       start:0x005E6460 end:0x005E6C70
+
 Black/InterfaceFlags.cpp:
 	.text       start:0x005E7020 end:0x005E8810
 
@@ -464,6 +517,9 @@ Black/PlannedMultiMapFixed.cpp:
 
 Black/Player.cpp:
 	.text       start:0x005F6E10 end:0x005FAC60
+
+Black/PlayerComputer.cpp:
+	.text       start:0x00602430 end:0x00603540
 
 Black/Pot.cpp:
 	.text       start:0x00616590 end:0x0061A120
@@ -483,8 +539,17 @@ Black/PSysEvents.cpp:
 Black/PSysFlock.cpp:
 	.text       start:0x0062B2A0 end:0x0062BCC0
 
+Black/DialogBoxSaveMessage.cpp:
+	.data       start:0x00B169E8 end:0x00B16A76
+
+Black/FrontEndSetupMultiplayer.cpp:
+	.data       start:0x00B17A88 end:0x00B17AE5
+
 Black/GJPersistent.cpp:
 	.data       start:0x00B1C908 end:0x00B1CA78
+
+Black/helpdude.cpp:
+	.data       start:0x00B1D198 end:0x00B1D697
 
 Black/MagicVortex.cpp:
 	.rdata      start:0x0086A7FC end:0x0086D570
@@ -494,8 +559,14 @@ Black/MPFEChannelMessages.cpp:
 	.rdata      start:0x0086DF7C end:0x0086E010
 	.data       start:0x00B211B0 end:0x00B213D0
 
+Black/MPFEFileTransfer.cpp:
+	.data       start:0x00B21730 end:0x00B21773
+
 Black/MPFEClanDetails.cpp:
 	.rdata      start:0x0086E07C end:0x0086E0CC
+
+Black/MPFEDatabase.cpp:
+	.rdata      start:0x0086E0F0 end:0x0086E12C
 
 Black/MPFEGameStartMessages.cpp:
 	.rdata      start:0x0086E164 end:0x0086E1D8
@@ -512,6 +583,9 @@ Black/MPFELogin.cpp:
 
 Black/MPFEMapMessages.cpp:
 	.rdata      start:0x0086E214 end:0x0086E250
+
+Black/Packet.cpp:
+	.rdata      start:0x0086EBB8 end:0x0086ECBC
 
 Black/PrayerSite.cpp:
 	.rdata      start:0x008700F4 end:0x008701EC
@@ -668,11 +742,26 @@ Black/PSysRenderParticle.cpp:
 	.rdata      start:0x00873BCC end:0x00874E30
 	.data       start:0x00B2CC90 end:0x00B2CDE8
 
+Black/Reaction.cpp:
+	.data       start:0x00B2F368 end:0x00B2F3BD
+
+Black/SoundConfirmation.cpp:
+	.data       start:0x00B452A0 end:0x00B452E0
+
+Black/SpecialVillager.cpp:
+	.data       start:0x00B45658 end:0x00B456A5
+
 Black/PSysSave.cpp:
 	.rdata      start:0x00874E30 end:0x0087507C
 
 Black/PSysTornado.cpp:
 	.rdata      start:0x00875198 end:0x00875440
+
+Black/puzzlegame.cpp:
+	.rdata      start:0x00875440 end:0x008788F8
+
+Black/RandomBuildingPlacementDefence.cpp:
+	.rdata      start:0x008788F8 end:0x00878968
 
 Black/SoundGuidance.cpp:
 	.rdata      start:0x008A2B84 end:0x008B7624
@@ -847,11 +936,18 @@ Black/ChallengeRoom.cpp:
 Black/SubOptionEntry.cpp:
 	.text       start:0x00714B90 end:0x00715A00
 
+Black/PathCreator.cpp:
+	.text       start:0x00715B00 end:0x00716020
+
 Black/InnerCamera.cpp:
 	.text       start:0x0071A480 end:0x0071EB60
 
 Black/TempleRoom.cpp:
 	.text       start:0x0071EB60 end:0x00720F90
+
+Black/TempleRoomAddText.cpp:
+	.text       start:0x007211A0 end:0x00723400
+	.data       start:0x00B4CE90 end:0x00B4D0F6
 
 Black/WorldRoom.cpp:
 	.text       start:0x007237C0 end:0x00725F30
@@ -1644,6 +1740,9 @@ Lionhead/LH3DLib/development/LH3DMesh.cpp:
 
 Lionhead/LH3DLib/development/LH3DTech.cpp:
 	.text       start:0x007747B0 end:0x00776AB0
+
+Black/WorshipSiteUpgrade.cpp:
+	.text       start:0x0077EBF0 end:0x0077F030
 
 Lionhead/LHLib/ver5.0/LHCollide.cpp:
 	.text       start:0x00782BF0 end:0x00784380
