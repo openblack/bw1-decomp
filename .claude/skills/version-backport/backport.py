@@ -183,14 +183,32 @@ class VersionData:
 
 def name_anchor(src, tgt, idx, sec, s, e):
     """Translate [s,e) via mangled-name lookup. Returns (matched pairs in
-    BW1W120 order, precise_start_or_None, precise_end_or_None)."""
+    BW1W120 order, precise_start_or_None, precise_end_or_None).
+
+    Placeholder names (fn_/sub_/lbl_/data_/func_ + hex address) are excluded
+    from consideration on the BW1W120 side. A placeholder can only ever
+    "match" into tgt.by_name if the target has an unnamed symbol at the
+    *exact same hex offset* as BW1W120's — since the two binaries have
+    completely different, independently-linked layouts, this is a numeric
+    coincidence, not name evidence (like matching two people because they
+    both live at "123 Main St" in different cities). Found in practice: e.g.
+    Black/CameraModeNew1.cpp had a real, coherent, monotonic run of 14 named
+    vtable-func anchors, but got flagged 'conflict'/'reordered' because two
+    coincidental fn_XXXXXXXX collisions (same literal hex offset in both
+    versions, otherwise unrelated) pulled cand_start far below the true
+    start and briefly broke monotonicity. Filtering these out is a stricter
+    evidence requirement, not a loosened one."""
     syms_in_range = [x for x in src.by_sec.get(sec, []) if s <= x["addr"] < e]
-    matched = [(x["name"], tgt.by_name[x["name"]]["addr"]) for x in syms_in_range if x["name"] in tgt.by_name]
+    matched = [
+        (x["name"], tgt.by_name[x["name"]]["addr"])
+        for x in syms_in_range
+        if x["name"] in tgt.by_name and not is_placeholder(x["name"])
+    ]
 
     precise_start = None
     first_syms = [x for x in syms_in_range if x["addr"] == s]
     for x in first_syms:
-        if x["name"] in tgt.by_name:
+        if x["name"] in tgt.by_name and not is_placeholder(x["name"]):
             precise_start = tgt.by_name[x["name"]]["addr"]
             break
 
@@ -199,7 +217,7 @@ def name_anchor(src, tgt, idx, sec, s, e):
         if sec in nxt["secs"]:
             ns, _ = nxt["secs"][sec]
             for x in src.by_sec.get(sec, []):
-                if x["addr"] == ns and x["name"] in tgt.by_name:
+                if x["addr"] == ns and x["name"] in tgt.by_name and not is_placeholder(x["name"]):
                     precise_end = tgt.by_name[x["name"]]["addr"]
             break
 
@@ -292,11 +310,31 @@ def analyze_file(src, tgt, idx, tgt_occ):
             bisected = bisects_symbol(tgt, sec, cand_start) or bisects_symbol(tgt, sec, cand_end)
         sr["bisects_symbol"] = bisected
 
+        # A non-exact (fallback min/max-of-matched) boundary is just wherever
+        # some matched symbol happens to sit — dtk requires split boundaries
+        # to be 4-byte aligned (its own default unit alignment), but a real
+        # function's address has no such guarantee, especially when it isn't
+        # actually the file's first/last symbol (most of the file's symbols
+        # went unmatched, so the fallback undershoots further than usual).
+        # Found in practice: Black/GameOSFile.cpp's fallback cand_start
+        # landed exactly on `?LoadInstance@GameOSFile@@...` at 0x557265 (odd
+        # address — packed with zero padding after the previous function),
+        # 9% symbol match rate in range, and dtk rejected it at the SPLIT
+        # step ("Invalid alignment for split ... expected 4"). `exact`
+        # boundaries (precise_start/precise_end, taken from a literal
+        # boundary-symbol translation) are trusted regardless — if that's
+        # really where the linker put the next file, that's the boundary,
+        # aligned or not.
+        misaligned = False
+        if not sr["exact"] and cand_start is not None and cand_end is not None:
+            misaligned = (cand_start % 4 != 0) or (cand_end % 4 != 0)
+        sr["misaligned"] = misaligned
+
         if len(matched) < 2 or cand_start is None or cand_end is None or cand_start >= cand_end:
             sr["status"] = "no_anchor"
         elif not monotonic:
             sr["status"] = "reordered"
-        elif not size_ok or bisected:
+        elif not size_ok or bisected or misaligned:
             sr["status"] = "conflict"
         else:
             overlap = find_overlap(tgt_occ, sec, cand_start, cand_end)

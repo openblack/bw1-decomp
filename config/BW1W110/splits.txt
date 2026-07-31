@@ -151,6 +151,9 @@ Black/CameraModeFollowHeading.cpp:
 Black/CameraModeFree.cpp:
 	.text       start:0x0044D3B0 end:0x0044E000
 
+Black/CameraModeNew3.cpp:
+	.text       start:0x00453D40 end:0x0045F900
+
 Black/CameraModePath.cpp:
 	.text       start:0x004600F0 end:0x004603C0
 
@@ -171,6 +174,9 @@ Black/ControlMap.cpp:
 
 Black/CPUCheck.cpp:
 	.text       start:0x00470AF0 end:0x00471A80
+
+Black/Creature3D.cpp:
+	.text       start:0x0047E4B0 end:0x0048E780
 
 Black/CreatureAttitudeToPlayer.cpp:
 	.text       start:0x004C6C30 end:0x004C7260
@@ -217,8 +223,14 @@ Black/Alignment.cpp:
 Black/CreatureMimicInfo.cpp:
 	.text       start:0x004E84D0 end:0x004E94C0
 
+Black/CreatureMorph.cpp:
+	.text       start:0x004E9540 end:0x004EBEF0
+
 Black/CreaturePen.cpp:
 	.text       start:0x004ED5B0 end:0x004EDAC0
+
+Black/CreaturePlan.cpp:
+	.text       start:0x004EF4C0 end:0x004F0B30
 
 Black/CreatureReaction.cpp:
 	.text       start:0x004F0E10 end:0x004F2360
@@ -350,6 +362,9 @@ Black/HandStatePlayAnim.cpp:
 Black/HandStateTug.cpp:
 	.text       start:0x005B3990 end:0x005B4ABC
 
+Black/helpdude.cpp:
+	.text       start:0x005B5200 end:0x005BE3E0
+
 Black/HelpProfile.cpp:
 	.text       start:0x005BFE60 end:0x005C0500
 
@@ -365,6 +380,9 @@ Black/ToolTipsInfo.cpp:
 Black/HelpText.cpp:
 	.text       start:0x005C63E0 end:0x005C8780
 
+Black/Influence.cpp:
+	.text       start:0x005C8840 end:0x005C9130
+
 Black/Interface.cpp:
 	.text       start:0x005C94E0 end:0x005CBDB0
 
@@ -376,6 +394,9 @@ Black/InterfaceStatus.cpp:
 
 Black/IpSpecialDialog.cpp:
 	.text       start:0x005D86C0 end:0x005D8E90
+
+Black/JCMisc.cpp:
+	.text       start:0x005D9920 end:0x005DC8F0
 
 Black/Language.cpp:
 	.text       start:0x005E18D0 end:0x005E2AD0
@@ -415,6 +436,15 @@ Black/MobileObject.cpp:
 
 Black/MobileStatic.cpp:
 	.text       start:0x00602DC0 end:0x00604080
+
+Black/MobileWallHug.cpp:
+	.text       start:0x00604F30 end:0x00611200
+
+Black/MorphableObject.cpp:
+	.text       start:0x00611AF0 end:0x00614360
+
+Black/MPFEChannelData.cpp:
+	.text       start:0x0061B290 end:0x0061E620
 
 Black/MPFEChooseConnection.cpp:
 	.text       start:0x00622A90 end:0x00623720
@@ -564,6 +594,9 @@ Black/PSysAtomCore.cpp:
 
 Black/PSysBase.cpp:
 	.text       start:0x0066ACC0 end:0x0066B130
+
+Black/PSysDraw.cpp:
+	.text       start:0x0066EE70 end:0x00672350
 
 Black/PSysEvents.cpp:
 	.text       start:0x00672E90 end:0x00673770
@@ -798,6 +831,9 @@ Black/CreatureRoom.cpp:
 
 Black/GameOptionsRoom.cpp:
 	.text       start:0x0077D1A0 end:0x0077E350
+
+Black/PathCreator.cpp:
+	.text       start:0x0077E460 end:0x0077EA10
 
 Black/PictureRoom.cpp:
 	.text       start:0x0077EB90 end:0x0077F080
@@ -1700,6 +1736,9 @@ lib/libcmt/setmode.obj:
 
 Lionhead/LH3DLib/development/LH3DSmoke.cpp:
 	.text       start:0x007E8970 end:0x007EF0E0
+
+Lionhead/LH3DLib/development/LH3DIsland.cpp:
+	.text       start:0x007EF0E0 end:0x007F6270
 
 Lionhead/LH3DLib/development/LH3DMesh.cpp:
 	.text       start:0x007F6270 end:0x00808A70
