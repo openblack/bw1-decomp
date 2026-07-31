@@ -128,8 +128,11 @@ Black/CameraEditor.cpp:
 Black/CameraHelp.cpp:
 	.text       start:0x00448510 end:0x00448530
 
+Black/CameraModeCitadel.cpp:
+	.text       start:0x00449730 end:0x00449D90
+
 Black/CameraMode.cpp:
-	.text       start:0x00449730 end:0x0044A1A0
+	.text       start:0x00449D90 end:0x0044A1A0
 
 Black/CameraModeFlyAndClick.cpp:
 	.text       start:0x0044A1A0 end:0x0044AB80
@@ -157,8 +160,11 @@ Black/CameraModeNew3.cpp:
 Black/CameraModePath.cpp:
 	.text       start:0x004600F0 end:0x004603C0
 
+Black/CameraModeScript.cpp:
+	.text       start:0x004603C0 end:0x00460E20
+
 Black/CameraModeTwoObjects.cpp:
-	.text       start:0x004603C0 end:0x00461B60
+	.text       start:0x00460E20 end:0x00461B60
 
 Black/Citadel.cpp:
 	.text       start:0x00461B60 end:0x004634A0
@@ -220,7 +226,7 @@ Black/CreatureActionsKnownAbout.cpp:
 Black/Alignment.cpp:
 	.text       start:0x004E37A0 end:0x004E81C0
 
-Black/CreatureMimicInfo.cpp:
+Black/CreatureMimic.cpp:
 	.text       start:0x004E84D0 end:0x004E94C0
 
 Black/CreatureMorph.cpp:
@@ -399,7 +405,10 @@ Black/JCMisc.cpp:
 	.text       start:0x005D9920 end:0x005DC8F0
 
 Black/Language.cpp:
-	.text       start:0x005E18D0 end:0x005E2AD0
+	.text       start:0x005E18D0 end:0x005E27D0
+
+Black/LevelOfDetail.cpp:
+	.text       start:0x005E27D0 end:0x005E2AD0
 
 Black/Living.cpp:
 	.text       start:0x005E6CB0 end:0x005EA6F0
@@ -414,7 +423,10 @@ Black/MagicHand.cpp:
 	.text       start:0x005F5810 end:0x005F6450
 
 Black/MagicLivingInfo.cpp:
-	.text       start:0x005F6450 end:0x005F6900
+	.text       start:0x005F6450 end:0x005F6590
+
+Black/MagicShieldInfo.cpp:
+	.text       start:0x005F6590 end:0x005F6900
 
 Black/MagicTeleport.cpp:
 	.text       start:0x005F6900 end:0x005F7950
