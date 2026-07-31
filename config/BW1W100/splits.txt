@@ -477,6 +477,9 @@ Black/PSys3d.cpp:
 Black/PSysDraw.cpp:
 	.text       start:0x006227C0 end:0x00625C50
 
+Black/PSysEvents.cpp:
+	.text       start:0x00626590 end:0x00626BC0
+
 Black/PSysFlock.cpp:
 	.text       start:0x0062B2A0 end:0x0062BCC0
 
