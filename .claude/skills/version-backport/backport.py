@@ -139,7 +139,17 @@ def is_placeholder(name):
 # parsing                                                                     #
 # --------------------------------------------------------------------------- #
 def load_symbols(version):
-    """-> (entries list, name->entry dict, sec->addr-sorted-entries dict)"""
+    """-> (entries list, name->entry dict, sec->addr-sorted-entries dict)
+
+    `by_name` deliberately omits any name that occurs more than once in this
+    version's symbols.txt at all. Found in practice: `_$E1`/`_$E2` (MSVC's
+    per-function EH scope-table labels, NOT unique — 240 occurrences each in
+    BW1W120) silently matched via `setdefault`'s first-wins semantics,
+    pointing `name_anchor()` at a random unrelated function's label and
+    producing a nonsense (often zero-width) candidate range. Same failure
+    class as the fn_/sub_ numeric-coincidence bug, different name pattern —
+    so the fix is general (global uniqueness within a version), not another
+    hardcoded prefix."""
     entries = []
     for line in symbols_path(version).read_text().splitlines():
         line = line.strip()
@@ -160,9 +170,13 @@ def load_symbols(version):
                 "raw": line,
             }
         )
+    name_counts = {}
+    for e in entries:
+        name_counts[e["name"]] = name_counts.get(e["name"], 0) + 1
     by_name = {}
     for e in entries:
-        by_name.setdefault(e["name"], e)
+        if name_counts[e["name"]] == 1:
+            by_name[e["name"]] = e
     by_sec = {}
     for e in entries:
         by_sec.setdefault(e["sec"], []).append(e)
@@ -230,18 +244,32 @@ def name_anchor(src, tgt, idx, sec, s, e):
     coincidental fn_XXXXXXXX collisions (same literal hex offset in both
     versions, otherwise unrelated) pulled cand_start far below the true
     start and briefly broke monotonicity. Filtering these out is a stricter
-    evidence requirement, not a loosened one."""
+    evidence requirement, not a loosened one.
+
+    Also requires the name be globally unique within BW1W120 itself, i.e.
+    present in `src.by_name` (which load_symbols() already excludes non-
+    unique names from) — not just unique within this narrow [s,e) slice.
+    A name can look like a fine anchor locally yet be one of a few hundred
+    identical, non-unique compiler-generated labels elsewhere in the same
+    binary (MSVC's per-function `_$E1`/`_$E2` EH scope-table labels: 240
+    occurrences each in BW1W120) — `x["name"] in tgt.by_name` alone can't
+    tell the two cases apart, since by_name's first-wins insertion would
+    otherwise silently pick some unrelated function's occurrence."""
     syms_in_range = [x for x in src.by_sec.get(sec, []) if s <= x["addr"] < e]
-    matched = [
-        (x["name"], tgt.by_name[x["name"]]["addr"])
-        for x in syms_in_range
-        if x["name"] in tgt.by_name and not is_placeholder(x["name"])
-    ]
+
+    def usable(x):
+        return (
+            not is_placeholder(x["name"])
+            and x["name"] in src.by_name
+            and x["name"] in tgt.by_name
+        )
+
+    matched = [(x["name"], tgt.by_name[x["name"]]["addr"]) for x in syms_in_range if usable(x)]
 
     precise_start = None
     first_syms = [x for x in syms_in_range if x["addr"] == s]
     for x in first_syms:
-        if x["name"] in tgt.by_name and not is_placeholder(x["name"]):
+        if usable(x):
             precise_start = tgt.by_name[x["name"]]["addr"]
             break
 
@@ -250,7 +278,7 @@ def name_anchor(src, tgt, idx, sec, s, e):
         if sec in nxt["secs"]:
             ns, _ = nxt["secs"][sec]
             for x in src.by_sec.get(sec, []):
-                if x["addr"] == ns and x["name"] in tgt.by_name and not is_placeholder(x["name"]):
+                if x["addr"] == ns and usable(x):
                     precise_end = tgt.by_name[x["name"]]["addr"]
             break
 
@@ -325,18 +353,28 @@ def _longest_increasing_subsequence(js):
     return seq
 
 
-def align_and_rename(src_syms, tgt_syms):
+def align_and_rename(src_syms, tgt_syms, src_by_name=None, tgt_by_name=None):
     """Positionally align two already-address-filtered, addr-sorted symbol
     lists via an LIS of real (non-placeholder) name matches, then propose
     renames for target placeholders in any inter-anchor gap where both sides
     hold exactly the same number of symbols. See the module docstring's
     "Symbol renaming" section for why local, anchor-bounded matching is used
-    instead of a single global count check."""
+    instead of a single global count check.
+
+    `src_by_name`/`tgt_by_name` should be the *global*, already-uniqueness-
+    filtered `by_name` dicts from `load_symbols()` (names occurring more than
+    once anywhere in that version are absent). A name can look unique within
+    this one address range yet still be a generic, repeated label elsewhere
+    in the binary (e.g. MSVC's per-function `_$E1`/`_$E2` EH scope-table
+    labels — 240 occurrences each in BW1W120) — checking against the global
+    dict, not just this slice, is what catches that."""
     tgt_idx_by_name = {}
     ambiguous = set()
     for j, x in enumerate(tgt_syms):
         if is_placeholder(x["name"]):
             continue
+        if tgt_by_name is not None and tgt_by_name.get(x["name"], {}).get("addr") != x["addr"]:
+            continue  # globally ambiguous or stale — not a safe anchor
         if x["name"] in tgt_idx_by_name:
             ambiguous.add(x["name"])
         else:
@@ -348,6 +386,8 @@ def align_and_rename(src_syms, tgt_syms):
     for i, x in enumerate(src_syms):
         if is_placeholder(x["name"]):
             continue
+        if src_by_name is not None and src_by_name.get(x["name"], {}).get("addr") != x["addr"]:
+            continue  # globally ambiguous in BW1W120 itself
         j = tgt_idx_by_name.get(x["name"])
         if j is not None:
             pairs.append((i, j))
@@ -427,7 +467,7 @@ def run_rename(target_version, only=None):
             tgt_syms = [x for x in tgt.by_sec.get(sec, []) if ts <= x["addr"] < te]
             if not src_syms or not tgt_syms:
                 continue
-            for r in align_and_rename(src_syms, tgt_syms):
+            for r in align_and_rename(src_syms, tgt_syms, src.by_name, tgt.by_name):
                 r["file"] = u["name"]
                 file_renames.append(r)
         if file_renames:
@@ -652,7 +692,7 @@ def run_apply(target_version, limit, only, partial=True):
                 tgt_syms = [x for x in tgt_by_sec.get(sec, []) if ts <= x["addr"] < te]
                 if not src_syms or not tgt_syms:
                     continue
-                for rn in align_and_rename(src_syms, tgt_syms):
+                for rn in align_and_rename(src_syms, tgt_syms, src.by_name, tgt_by_name):
                     rn["file"] = r["file"]
                     proposed.append(rn)
 
