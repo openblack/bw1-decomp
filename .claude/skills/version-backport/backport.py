@@ -46,6 +46,25 @@ guarantee it is still adjacent to this one in that target. (This was tried
 and produced silently wrong ranges — see git history of this file.) Treat
 .bss/.CRT$XCU backporting as a separate follow-up problem.
 
+Symbol renaming
+---------------
+`apply`'s per-batch renaming and the standalone `rename` subcommand both use
+`align_and_rename()`: a longest-increasing-subsequence alignment (the same
+idea as a text diff) over the *real* (non-placeholder, non-`_pef_`) name
+matches between a BW1W120 range and the corresponding target range. Those
+matches are the anchors. Between two consecutive anchors, if both sides have
+exactly the same number of symbols, they're paired up positionally and any
+target placeholder is renamed to the BW1W120 name.
+
+Requiring a single *global* exact count match across the whole range (the
+first version of this tool) turned out to almost never fire — compiler
+differences (inlining, dead-stripping) mean the raw symbol count in a given
+file/section legitimately differs between versions almost everywhere, even
+when the vast majority of functions correspond 1:1. Anchoring locally and
+only trusting *equal-length gaps between confirmed matches* keeps the same
+safety property (no guessing without corroborating evidence) while actually
+producing renames in practice.
+
 Subcommands
 -----------
   report <version>            JSON summary: counts per status.
@@ -58,6 +77,13 @@ Subcommands
                                backports placeholder->named symbol renames
                                within the newly-added ranges. Idempotent;
                                skips files already present in target.
+  rename <version> [--only file1,file2]
+                               WRITE (symbols.txt only). Re-runs the same
+                               alignment-based renaming across *every* file
+                               already present in both BW1W120's and the
+                               target's splits.txt (not just newly-applied
+                               ones) — the sweep worth re-running any time
+                               either side gains more splits or names.
 """
 
 import argparse
@@ -76,7 +102,14 @@ TARGET_VERSIONS = ["BW1W110", "BW1W100"]
 # deliberately excluded — see module docstring.
 PRIMARY_SECTIONS = {".text", ".rdata", ".rdata$r", ".data", ".data1"}
 
-PLACEHOLDER_RE = re.compile(r"^(fn|sub|lbl|data|func)_[0-9A-Fa-f]+$")
+# fn_/sub_/lbl_/data_/func_ + hex: dtk's own auto-generated fallback names
+# (raw Windows-binary hex offset — matching one across versions by pure
+# numeric coincidence is meaningless, see name_anchor()).
+# _pef_ + hex: "this Windows function is cross-referenced to Mac PEF address
+# <hex>, but no real C++ name has been assigned yet" — also not a real,
+# backportable name, but for a different reason (known correspondence,
+# pending naming, rather than an unresolved stub).
+PLACEHOLDER_RE = re.compile(r"^(fn|sub|lbl|data|func)_[0-9A-Fa-f]+$|^_pef_[0-9A-Fa-f]+$")
 
 SYM_LINE_RE = re.compile(
     r"^(?P<name>\S+)\s*=\s*\.(?P<sec>[\w$]+):0x(?P<addr>[0-9A-Fa-f]+);"
@@ -258,6 +291,151 @@ def bisects_symbol(tgt, sec, addr):
             return x["name"]
         i -= 1
     return None
+
+
+def _longest_increasing_subsequence(js):
+    """Standard O(n log n) patience-sort LIS. Returns the list of *indices
+    into js* (not values) making up one longest strictly-increasing
+    subsequence, in order."""
+    tails = []  # tails[k] = index into js of the smallest tail of an
+    # increasing run of length k+1 found so far
+    prev = [-1] * len(js)
+    for idx, j in enumerate(js):
+        lo, hi = 0, len(tails)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if js[tails[mid]] < j:
+                lo = mid + 1
+            else:
+                hi = mid
+        if lo > 0:
+            prev[idx] = tails[lo - 1]
+        if lo == len(tails):
+            tails.append(idx)
+        else:
+            tails[lo] = idx
+    if not tails:
+        return []
+    seq = []
+    k = tails[-1]
+    while k != -1:
+        seq.append(k)
+        k = prev[k]
+    seq.reverse()
+    return seq
+
+
+def align_and_rename(src_syms, tgt_syms):
+    """Positionally align two already-address-filtered, addr-sorted symbol
+    lists via an LIS of real (non-placeholder) name matches, then propose
+    renames for target placeholders in any inter-anchor gap where both sides
+    hold exactly the same number of symbols. See the module docstring's
+    "Symbol renaming" section for why local, anchor-bounded matching is used
+    instead of a single global count check."""
+    tgt_idx_by_name = {}
+    ambiguous = set()
+    for j, x in enumerate(tgt_syms):
+        if is_placeholder(x["name"]):
+            continue
+        if x["name"] in tgt_idx_by_name:
+            ambiguous.add(x["name"])
+        else:
+            tgt_idx_by_name[x["name"]] = j
+    for name in ambiguous:
+        del tgt_idx_by_name[name]  # duplicate name in range — not a safe anchor
+
+    pairs = []  # (src_index, tgt_index) for every real name match
+    for i, x in enumerate(src_syms):
+        if is_placeholder(x["name"]):
+            continue
+        j = tgt_idx_by_name.get(x["name"])
+        if j is not None:
+            pairs.append((i, j))
+
+    lis_idx = _longest_increasing_subsequence([j for _, j in pairs])
+    anchors = [pairs[k] for k in lis_idx]
+
+    renames = []
+    bounds = [(-1, -1)] + anchors + [(len(src_syms), len(tgt_syms))]
+    for (pi, pj), (ni, nj) in zip(bounds, bounds[1:]):
+        src_gap = src_syms[pi + 1 : ni]
+        tgt_gap = tgt_syms[pj + 1 : nj]
+        if not src_gap or len(src_gap) != len(tgt_gap):
+            continue
+        for a, b in zip(src_gap, tgt_gap):
+            if is_placeholder(b["name"]) and not is_placeholder(a["name"]):
+                renames.append({"from": b["name"], "to": a["name"], "addr": b["addr"]})
+    return renames
+
+
+def write_symbol_renames(target_version, renamed):
+    """Apply a list of {"from","to",...} renames to a target's symbols.txt,
+    skipping any whose target name already exists elsewhere (would create a
+    duplicate symbol name) and any duplicate 'from' entries."""
+    if not renamed:
+        return []
+    _, tgt_by_name, _ = load_symbols(target_version)
+    seen_from = set()
+    seen_to = set()
+    rename_map = {}
+    applied = []
+    for r in renamed:
+        if r["from"] in seen_from or r["to"] in seen_to:
+            continue
+        if r["to"] in tgt_by_name:
+            continue
+        seen_from.add(r["from"])
+        seen_to.add(r["to"])
+        rename_map[r["from"]] = r["to"]
+        applied.append(r)
+    if not rename_map:
+        return []
+    lines = symbols_path(target_version).read_text().splitlines()
+    out_lines = []
+    for line in lines:
+        m = SYM_LINE_RE.match(line.strip())
+        if m and m.group("name") in rename_map:
+            line = line.replace(m.group("name"), rename_map[m.group("name")], 1)
+        out_lines.append(line)
+    symbols_path(target_version).write_text("\n".join(out_lines) + "\n")
+    return applied
+
+
+def run_rename(target_version, only=None):
+    """Sweep every file present in both BW1W120's and the target's
+    splits.txt and propose+apply alignment-based renames across all of
+    PRIMARY_SECTIONS. Independent of `apply` — safe to re-run any time
+    either side gains more splits or names."""
+    src = VersionData(SRC_VERSION)
+    tgt = VersionData(target_version)
+    tgt_units_by_name = {u["name"]: u for u in tgt.units}
+
+    all_renames = []
+    per_file = []
+    for u in src.game_units:
+        if only and u["name"] not in only:
+            continue
+        tu = tgt_units_by_name.get(u["name"])
+        if not tu:
+            continue
+        file_renames = []
+        for sec, (s, e) in u["secs"].items():
+            if sec not in PRIMARY_SECTIONS or sec not in tu["secs"]:
+                continue
+            ts, te = tu["secs"][sec]
+            src_syms = [x for x in src.by_sec.get(sec, []) if s <= x["addr"] < e]
+            tgt_syms = [x for x in tgt.by_sec.get(sec, []) if ts <= x["addr"] < te]
+            if not src_syms or not tgt_syms:
+                continue
+            for r in align_and_rename(src_syms, tgt_syms):
+                r["file"] = u["name"]
+                file_renames.append(r)
+        if file_renames:
+            per_file.append({"file": u["name"], "count": len(file_renames)})
+            all_renames.extend(file_renames)
+
+    applied = write_symbol_renames(target_version, all_renames)
+    return {"proposed": len(all_renames), "applied": len(applied), "renamed": applied, "per_file": per_file}
 
 
 def analyze_file(src, tgt, idx, tgt_occ):
@@ -458,10 +636,9 @@ def run_apply(target_version, limit, only, partial=True):
 
     splits_path(target_version).write_text(splits_text)
 
-    # symbol backport: within each newly-added range, rename target
-    # placeholders to the BW1W120 name at the same position, when the
-    # symbol counts on both sides agree exactly (safe positional pairing).
-    renamed = []
+    # symbol backport: within each newly-added range, align_and_rename()'s
+    # LIS-anchored positional pairing (see module docstring).
+    proposed = []
     if applied:
         _, tgt_by_name, tgt_by_sec = load_symbols(target_version)
         for r in queue:
@@ -473,24 +650,13 @@ def run_apply(target_version, limit, only, partial=True):
                 ts, te = sr["cand_start"], sr["cand_end"]
                 src_syms = [x for x in src.by_sec.get(sec, []) if s <= x["addr"] < e]
                 tgt_syms = [x for x in tgt_by_sec.get(sec, []) if ts <= x["addr"] < te]
-                if len(src_syms) != len(tgt_syms) or not src_syms:
+                if not src_syms or not tgt_syms:
                     continue
-                for sx, tx in zip(src_syms, tgt_syms):
-                    if tx["addr"] != 0 and is_placeholder(tx["name"]) and not is_placeholder(sx["name"]):
-                        renamed.append({"file": r["file"], "from": tx["name"], "to": sx["name"], "addr": tx["addr"]})
+                for rn in align_and_rename(src_syms, tgt_syms):
+                    rn["file"] = r["file"]
+                    proposed.append(rn)
 
-    if renamed:
-        lines = symbols_path(target_version).read_text().splitlines()
-        rename_map = {r["from"]: r["to"] for r in renamed}
-        out_lines = []
-        for line in lines:
-            m = SYM_LINE_RE.match(line.strip())
-            if m and m.group("name") in rename_map:
-                new_name = rename_map[m.group("name")]
-                line = line.replace(m.group("name"), new_name, 1)
-            out_lines.append(line)
-        symbols_path(target_version).write_text("\n".join(out_lines) + "\n")
-
+    renamed = write_symbol_renames(target_version, proposed)
     return {"applied": applied, "skipped": skipped, "renamed": renamed, "count": len(applied)}
 
 
@@ -517,6 +683,10 @@ def main(argv=None):
     pa.add_argument("--limit", type=int, default=None)
     pa.add_argument("--only", default=None)
 
+    pn = sub.add_parser("rename")
+    pn.add_argument("version", choices=TARGET_VERSIONS)
+    pn.add_argument("--only", default=None)
+
     args = p.parse_args(argv)
 
     if args.cmd == "report":
@@ -534,6 +704,10 @@ def main(argv=None):
     elif args.cmd == "apply":
         only = set(args.only.split(",")) if args.only else None
         out = run_apply(args.version, args.limit, only)
+        print(json.dumps(out, indent=2))
+    elif args.cmd == "rename":
+        only = set(args.only.split(",")) if args.only else None
+        out = run_rename(args.version, only)
         print(json.dumps(out, indent=2))
 
 

@@ -17,14 +17,19 @@ docstring first — it explains the translation method (name-anchor based,
 deliberately *not* address-adjacency based) and, importantly, **why**: an
 adjacency/neighbor-based approach was tried first and produced a silently
 wrong, overlapping range because link order is not guaranteed to be
-preserved across game versions. That failure mode, and two more (a
-min/max-of-matched-symbols fallback overshooting into a neighboring file;
-a boundary landing mid-vtable/mid-symbol), are exactly what the current
-guards (`size_ok`, `bisects_symbol`, the cross-batch occupancy check in
-`apply`) exist to catch. **Do not remove or loosen these without
-re-deriving why they're there** — each one corresponds to a real corrupted
-splits.txt this tool produced once during development, caught only by
-actually running `configure.py` + `ninja` afterwards.
+preserved across game versions. That failure mode, and four more —
+a min/max-of-matched-symbols fallback overshooting into a neighboring file;
+a boundary landing mid-vtable/mid-symbol; two *placeholder* names (e.g.
+`fn_00450020` in both versions) "matching" by pure numeric coincidence of
+unrelated per-binary hex offsets; a non-exact fallback boundary landing at
+an unaligned address dtk rejects — are exactly what the current guards
+(`size_ok`, `bisects_symbol`, `misaligned`, the placeholder exclusion in
+`name_anchor`, the cross-batch occupancy check in `apply`) exist to catch.
+**Do not remove or loosen these without re-deriving why they're there** —
+each one corresponds to a real corrupted splits.txt (or a real false
+`conflict`/`reordered` misclassification) this tool produced once during
+development, caught only by actually running `configure.py` + `ninja`
+afterwards.
 
 Deliberately out of scope: `.bss` and `.CRT$XCU`. Both are almost entirely
 unlabeled by individual symbol in *every* version, so there's no name
@@ -38,6 +43,7 @@ python3 .claude/skills/version-backport/backport.py report BW1W110       # summa
 python3 .claude/skills/version-backport/backport.py show BW1W110 --status mixed   # full detail
 python3 .claude/skills/version-backport/backport.py diff-file BW1W110 "Black/Foo.cpp"  # one file
 python3 .claude/skills/version-backport/backport.py apply BW1W110        # writes splits.txt (+ any safe symbol renames)
+python3 .claude/skills/version-backport/backport.py rename BW1W110       # symbols.txt only: re-sweep every already-split file
 ```
 
 `report`/`show`/`diff-file` are read-only. `apply` is the only writer, and
@@ -88,16 +94,40 @@ config/<VER>/splits.txt config/<VER>/symbols.txt` and investigate via
   (`bisects_symbol`). Investigate by hand with `diff-file`; do not silence
   by just relaxing the threshold.
 
-## Symbol backport (secondary, currently low-yield)
+## Symbol backport
 
-`apply` also renames target placeholders (`fn_`/`sub_`/`lbl_`/`data_`/
-`func_` + hex address) to the BW1W120 name, but only within newly-added
-ranges and only when the BW1W120 and target symbol *counts* in that range
-match exactly (safe positional pairing). This is intentionally strict and
-currently renames very few symbols per batch — loosening the count
-requirement to handle partial mismatches (extra/missing symbols from
-`/OPT:REF` dead-stripping in BW1W100, or from real reordering) is unexplored
-follow-up work, not something to hack around casually.
+Placeholder names come in two flavors, both handled the same way by
+`is_placeholder()`: dtk's own auto-generated fallback names (`fn_`/`sub_`/
+`lbl_`/`data_`/`func_` + a raw per-binary hex offset), and `_pef_` + hex
+(cross-referenced to a Mac PEF address, so the correspondence is *known*,
+just not yet given a real C++ name).
+
+`apply` (within newly-added ranges) and the standalone `rename <version>`
+subcommand (a full sweep — every file already present in *both* BW1W120's
+and the target's splits.txt, not just newly-added ones) both use
+`align_and_rename()`: an LIS (longest-increasing-subsequence) alignment over
+the real (non-placeholder) name matches between a BW1W120 range and the
+corresponding target range, the same idea as a text diff. Those matches are
+anchors; between two consecutive anchors, if both sides have exactly the
+same number of symbols, they're paired up positionally and target
+placeholders get renamed.
+
+The first version of this required a single *global* exact count match
+across the whole range and almost never fired (a file's total symbol count
+legitimately differs between versions from inlining/dead-stripping even
+when the great majority of functions correspond 1:1). Anchor-bounded local
+matching fixed that — run `rename BW1W110` / `rename BW1W100` any time
+either side gains more splits or names; it's idempotent and safe to re-run.
+`write_symbol_renames()` refuses any rename whose target name would
+duplicate an existing symbol elsewhere in the file.
+
+Note: a rename can be correct even when the *file* it lives in is
+questionable — `align_and_rename` only asserts "this address is named X in
+BW1W120", not "this file assignment is right". If you see a rename bringing
+in a name from a different class than the file's own name (e.g. a
+`CameraModeTwoObjects::` method landing in `CameraModeCitadel.cpp`), that's
+usually pointing at a pre-existing BW1W120 file-labeling question, not a
+bug in the rename — leave a note rather than blocking on it.
 
 ## Manual cases: judgement, not force
 
