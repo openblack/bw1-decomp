@@ -48,7 +48,10 @@ Black/AlignmentInfo.cpp:
 	.text       start:0x00411F70 end:0x00412680
 
 Black/Animal.cpp:
-	.text       start:0x00413AE0 end:0x004189B0
+	.text       start:0x00413AE0 end:0x00418080
+
+Black/AnimalAnimation.cpp:
+	.text       start:0x00418080 end:0x00418990
 
 Black/alexmfc.cpp:
 	.rdata      start:0x007ED1A4 end:0x007ED4E8
