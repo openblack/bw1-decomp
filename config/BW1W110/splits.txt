@@ -868,12 +868,24 @@ Black/TempleRoom.cpp:
 Black/WorldRoom.cpp:
 	.text       start:0x0078C900 end:0x0078F0D0
 
-zlib/compress.c:
-	.text       start:0x007AE0B0 end:0x007AE180
-	.data       start:0x00C1A8BC end:0x00C1A8C2
+lib/libcpmt/delop.obj:
+	.text       start:0x0079E5C2 end:0x0079E5CD align:1
 
-zlib/uncompr.c:
-	.text       start:0x007AE180 end:0x007AE220
+lib/libcpmt/xlock.obj:
+	.text       start:0x0079E5CD end:0x0079E67E align:1
+	.bss        start:0x00E72420 end:0x00E7243C align:8
+
+lib/libcpmt/uncaught.obj:
+	.text       start:0x0079EFD9 end:0x0079EFDC align:1
+
+lib/libcpmt/_tolower.obj:
+	.text       start:0x007A2A1A end:0x007A2C29 align:1
+
+lib/libcpmt/_toupper.obj:
+	.text       start:0x007A2C29 end:0x007A2D89 align:1
+
+lib/libcpmt/xstod.obj:
+	.text       start:0x007A2D89 end:0x007A2DEF align:1
 
 Black/SoundGuidance.cpp:
 	.rdata      start:0x0095B984 end:0x00970424
@@ -898,6 +910,28 @@ Black/Worship.cpp:
 
 Black/CreatureRoomCamera.cpp:
 	.rdata      start:0x0098EAD8 end:0x0098ECC4
+
+lib/libcpmt/nomemory.obj:
+	.text       start:0x007A2DEF end:0x007A2EB9 align:1
+	.rdata      start:0x0098F338 end:0x0098F35C align:4
+	.rdata$r    start:0x009AAD30 end:0x009AAD7C align:8
+	.xdata$x    start:0x009ACBE0 end:0x009ACC20 align:8
+	.data       start:0x00C1A278 end:0x00C1A294 align:8
+	.bss        start:0x00E72888 end:0x00E7289C align:8
+
+lib/libcpmt/xwctomb.obj:
+	.text       start:0x007ABC9C end:0x007ABF77 align:1
+
+lib/libcpmt/xmbtowc.obj:
+	.text       start:0x007ABF77 end:0x007AC31F align:1
+	.bss        start:0x00E72998 end:0x00E729A4 align:8
+
+zlib/compress.c:
+	.text       start:0x007AE0B0 end:0x007AE180
+	.data       start:0x00C1A8BC end:0x00C1A8C2
+
+zlib/uncompr.c:
+	.text       start:0x007AE180 end:0x007AE220
 
 zlib/deflate.c:
 	.text       start:0x007AF030 end:0x007B06F0
@@ -1319,7 +1353,7 @@ lib/libcmt/nlsdata2.obj:
 
 lib/libcmt/a_map.obj:
 	.text       start:0x007BB555 end:0x007BB7A4 align:1
-	.rdata      start:0x009906A8 end:0x009906C0
+	.rdata      start:0x0099069C end:0x009906C0
 	.bss        start:0x00E72C80 end:0x00E72C84
 
 lib/libcmt/isctype.obj:
