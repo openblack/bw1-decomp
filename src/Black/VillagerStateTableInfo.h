@@ -3,18 +3,43 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
+#include <string.h> /* For memcpy */
 
 #include <re_common.h> /* For bool32_t */
 
+#include <Lionhead/LHFile/ver3.0/LHFile.h> /* For struct LHFile */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>   /* For operator new(size_t, const char*, uint32_t) */
+
 #include "BaseInfo.h" /* For struct GBaseInfo */
-
-// Forward Declares
-
-class Base;
 
 class GVillagerStateTableInfo : public GBaseInfo
 {
 public:
+	// BW1W120 inlined BW1M100 inlined GVillagerStateTableInfo::LoadBinary(LHFile *)
+	void LoadBinary(LHFile* file)
+	{
+		uint8_t* temp = new ("C:\\dev\\MP\\Black\\VillagerStates.h", 23) uint8_t[get_size()];
+		file->GetSegmentData(temp, get_size(), -1);
+		memcpy(get_start(), temp, get_size());
+		delete[] temp;
+		SetInfoID();
+	}
+
+	// BW1W120 inlined BW1M100 inlined GVillagerStateTableInfo::LoadTextAndCache(char **, LHFile *)
+	uint32_t LoadTextAndCache(char** cursor, LHFile* file)
+	{
+		file->WriteSegmentData(*cursor, get_size());
+		memcpy(get_start(), *cursor, get_size());
+		*cursor += get_size();
+		SetInfoID();
+		return get_size();
+	}
+
+	// BW1W120 inlined BW1M100 101966c0 GVillagerStateTableInfo::get_start(void)
+	char* get_start() { return (char*)&field_0x10; }
+	// BW1W120 inlined BW1M100 10196710 GVillagerStateTableInfo::get_size(void)
+	unsigned long get_size() { return sizeof(GVillagerStateTableInfo) - sizeof(GBaseInfo); }
+
 	uint32_t field_0x10;
 	int      field_0x14;
 	float    field_0x18;
