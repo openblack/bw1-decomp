@@ -964,6 +964,19 @@ Black/WorldRoom.cpp:
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
 	.text       start:0x00727B50 end:0x00727C86
 
+lib/libcpmt/delop.obj:
+	.text       start:0x007290DE end:0x007290E9 align:1
+
+lib/libcpmt/xlock.obj:
+	.text       start:0x007290E9 end:0x0072919A align:1
+	.bss        start:0x00D5ABB8 end:0x00D5ABD4 align:8
+
+lib/libcpmt/_tolower.obj:
+	.text       start:0x0072B5D8 end:0x0072B7E7 align:1
+
+lib/libcpmt/_toupper.obj:
+	.text       start:0x0072B7E7 end:0x0072B947 align:1
+
 zlib/compress.c:
 	.text       start:0x0072D460 end:0x0072D530
 	.data       start:0x00B4DF74 end:0x00B4DF7A
@@ -1352,7 +1365,7 @@ lib/libcmt/nlsdata2.obj:
 
 lib/libcmt/a_map.obj:
 	.text       start:0x007390B6 end:0x00739305 align:1
-	.rdata      start:0x008D6560 end:0x008D6578
+	.rdata      start:0x008D6554 end:0x008D6578
 	.bss        start:0x00D5B368 end:0x00D5B36C
 
 lib/libcmt/isctype.obj:

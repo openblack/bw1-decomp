@@ -41,7 +41,7 @@ lib/libcmt/crt0init.obj:
 	.CRT$XTZ    start:0x009C7E70 end:0x009C7E74 align:4
 
 Black/Abode.cpp:
-	.text       start:0x00401000 end:0x00407870
+	.text       start:0x00401000 end:0x00407880
 	.rdata      start:0x008A99DC end:0x008AB278
 	.rdata$r    start:0x009A62D8 end:0x009A6570
 	.CRT$XCU    start:0x009C6004 end:0x009C6054 align:4
@@ -49,7 +49,7 @@ Black/Abode.cpp:
 	.bss        start:0x00C3C680 end:0x00C4CC80
 
 Black/alexmfc.cpp:
-	.text       start:0x00407870 end:0x00414020
+	.text       start:0x00407880 end:0x00414020
 	.rdata      start:0x008AB278 end:0x008AB638
 	.rdata$r    start:0x009A6570 end:0x009A69C8
 	.CRT$XCU    start:0x009C6054 end:0x009C607C align:4
@@ -2596,6 +2596,40 @@ Lionhead/LHDLL/ver1.0/LHDLL.cpp:
 	.text       start:0x007AD230 end:0x007AE6B0
 	.CRT$XCU    start:0x009C7C80 end:0x009C7CEC align:4
 
+lib/libcpmt/delop.obj:
+	.text       start:0x007AEE98 end:0x007AEEA3 align:1
+
+lib/libcpmt/xlock.obj:
+	.text       start:0x007AEEA3 end:0x007AEF54 align:1
+	.bss        start:0x00E83A60 end:0x00E83A7C align:8
+
+lib/libcpmt/uncaught.obj:
+	.text       start:0x007AF880 end:0x007AF883 align:1
+
+lib/libcpmt/_tolower.obj:
+	.text       start:0x007B2B40 end:0x007B2D4F align:1
+
+lib/libcpmt/_toupper.obj:
+	.text       start:0x007B2D4F end:0x007B2EAF align:1
+
+lib/libcpmt/xstod.obj:
+	.text       start:0x007B2EAF end:0x007B2F15 align:1
+
+lib/libcpmt/xwctomb.obj:
+	.text       start:0x007B2FD0 end:0x007B32AB align:1
+
+lib/libcpmt/nomemory.obj:
+	.text       start:0x007B32AB end:0x007B3375 align:1
+	.rdata      start:0x0099F430 end:0x0099F454 align:4
+	.rdata$r    start:0x009BB068 end:0x009BB0B4 align:8
+	.xdata$x    start:0x009BCE90 end:0x009BCED0 align:8
+	.data       start:0x00C2B430 end:0x00C2B44C align:8
+	.bss        start:0x00E83EC0 end:0x00E83ED4 align:8
+
+lib/libcpmt/xmbtowc.obj:
+	.text       start:0x007BC158 end:0x007BC500 align:1
+	.bss        start:0x00E83FD0 end:0x00E83FDC align:8
+
 Lionhead/LHFile/ver3.0/LHOSFile.cpp:
 	.text       start:0x007BC650 end:0x007BD330
 	.data       start:0x00C2B9E0 end:0x00C2BA74
@@ -3032,7 +3066,7 @@ lib/libcmt/nlsdata2.obj:
 
 lib/libcmt/a_map.obj:
 	.text       start:0x007CB744 end:0x007CB993 align:1
-	.rdata      start:0x009A07A0 end:0x009A07B8
+	.rdata      start:0x009A0794 end:0x009A07B8
 	.bss        start:0x00E842B8 end:0x00E842BC
 
 lib/libcmt/isctype.obj:
