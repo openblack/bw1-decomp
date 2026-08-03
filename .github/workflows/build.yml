@@ -40,16 +40,17 @@ jobs:
     - name: Prepare
       run: cp -a /orig .
 
-    # Restore cached files
-    - name: Cache build
-      uses: actions/cache@v4
-      with:
-        path: |
-          build
-          .ninja_deps
-          .ninja_log
-        key: ${{ runner.os }}-${{ matrix.version }}-${{ github.sha }}
-        restore-keys: ${{ runner.os }}-${{ matrix.version }}-
+    # Caching doesn't same much time and breaks some changesets such as inline header definitions
+    # # Restore cached files
+    # - name: Cache build
+    #   uses: actions/cache@v4
+    #   with:
+    #     path: |
+    #       build
+    #       .ninja_deps
+    #       .ninja_log
+    #     key: ${{ runner.os }}-${{ matrix.version }}-${{ github.sha }}
+    #     restore-keys: ${{ runner.os }}-${{ matrix.version }}-
 
     # Build the project. Static libs ship in the build container under
     # orig/libs (copied above via /orig), where configure.py reads them
