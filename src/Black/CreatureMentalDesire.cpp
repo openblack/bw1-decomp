@@ -1,5 +1,6 @@
 #include "CreatureMentalDesire.h"
 
+#include "ColourConstants.h"     /* For White */
 #include "CreatureDevelopment.h" /* For struct CreatureDevelopmentDurationEntry, struct CreatureDevelopmentPhaseEntry */
 #include "CreatureInfo.h"        /* For struct CreatureInfo */
 #include "CreatureInitialDesireInfo.h" /* For struct CreatureInitialDesireInfo */

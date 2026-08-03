@@ -1,3 +1,4 @@
+#include "ColourConstants.h" /* For White */
 #include "HelpProfile.h"
 
 void CameraHelpAccumulator::Reset()

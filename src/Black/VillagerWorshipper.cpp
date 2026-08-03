@@ -1,6 +1,7 @@
 #include "Villager.h"
 
 #include "Citadel.h"
+#include "ColourConstants.h" /* For White */
 #include "Dance.h"
 #include "DanceGroup.h"
 #include "GameThingWithPos.h"

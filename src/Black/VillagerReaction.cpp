@@ -2,6 +2,7 @@
 
 #include "Abode.h"
 #include "Animal.h"
+#include "ColourConstants.h" /* For White */
 #include "DanceGroup.h"
 #include "GroupBehaviour.h"
 #include "MagicTeleport.h"

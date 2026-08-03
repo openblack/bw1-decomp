@@ -1,5 +1,6 @@
 #include "Villager.h"
 
+#include "ColourConstants.h" /* For White */
 #include "MapCoords.h"
 
 const float VillagerScriptFloat0p7 = 0.7f;

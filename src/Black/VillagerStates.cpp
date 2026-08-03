@@ -9,6 +9,7 @@
 #include "chlasm/Enum.h"
 
 #include "Abode.h"
+#include "ColourConstants.h" /* For White */
 #include "ContainerInfo.h"
 #include "Game.h"
 #include "GameThing.h"

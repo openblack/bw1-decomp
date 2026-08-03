@@ -1,5 +1,6 @@
 #include "CitadelHeart.h"
 
+#include "ColourConstants.h" /* For White */
 #include "GameOSFile.h"
 
 CitadelHeart::CitadelHeart() : CitadelPart(), field_0x90(0)

@@ -4,6 +4,7 @@
 
 #include "Lionhead/LH3DLib/development/LH3DComplexObject.h" /* For struct LH3DComplexObject */
 
+#include "ColourConstants.h" /* For White */
 #include "HandState.h"
 #include "PSysHandFX.h"
 
