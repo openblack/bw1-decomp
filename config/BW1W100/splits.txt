@@ -1069,7 +1069,7 @@ lib/libcmt/xtow.obj:
 	.text       start:0x0073401D end:0x0073404F align:1
 
 lib/libcmt/purevirt.obj:
-	.text       start:0x0073404F end:0x00734058 align:1
+	.text       start:0x0073404F end:0x00734060 align:1
 
 lib/libcmt/memmove.obj:
 	.text       start:0x00734060 end:0x00734395 align:1
@@ -1113,7 +1113,7 @@ lib/libcmt/unlink.obj:
 	.text       start:0x00734CFF end:0x00734D34 align:1
 
 lib/libcmt/getenv.obj:
-	.text       start:0x00734D34 end:0x00734DD2 align:1
+	.text       start:0x00734D34 end:0x00734DE0 align:1
 
 lib/libcmt/stricmp.obj:
 	.text       start:0x00734DE0 end:0x00734EB0 align:1
@@ -1125,7 +1125,7 @@ lib/libcmt/fopen.obj:
 	.text       start:0x00734EEC end:0x00734F30 align:1
 
 lib/libcmt/fclose.obj:
-	.text       start:0x00734F30 end:0x00734FAD align:1
+	.text       start:0x00734F30 end:0x00734FB0 align:1
 
 lib/libcmt/chkstk.obj:
 	.text       start:0x00734FB0 end:0x00734FDF align:1
@@ -1138,7 +1138,7 @@ lib/libcmt/asin.obj:
 	.data       start:0x00B4F920 end:0x00B4F928
 
 lib/libcmt/fwrite.obj:
-	.text       start:0x007352F1 end:0x007353FB align:1
+	.text       start:0x007352F1 end:0x00735400 align:1
 
 lib/libcmt/acos.obj:
 	.text       start:0x00735400 end:0x007354CB align:1
@@ -1152,11 +1152,11 @@ lib/libcmt/localtim.obj:
 	.text       start:0x007355BD end:0x0073571D align:1
 
 lib/libcmt/time.obj:
-	.text       start:0x0073571D end:0x007357F9 align:1
+	.text       start:0x0073571D end:0x00735800 align:1
 	.bss        start:0x00D5B268 end:0x00D5B280
 
 lib/libcmt/pow.obj:
-	.text       start:0x00735800 end:0x00735A1D align:1
+	.text       start:0x00735800 end:0x00735A20 align:1
 	.data       start:0x00B4F940 end:0x00B4F950
 
 lib/libcmt/lldiv.obj:
@@ -1172,7 +1172,7 @@ lib/libcmt/vsprintf.obj:
 	.text       start:0x00735B28 end:0x00735B79 align:1
 
 lib/libcmt/qsort.obj:
-	.text       start:0x00735B79 end:0x00735D47 align:1
+	.text       start:0x00735B79 end:0x00735D50 align:1
 
 lib/libcmt/87fmod.obj:
 	.text       start:0x00735D50 end:0x00735D82 align:1
@@ -1226,12 +1226,12 @@ lib/libcmt/stdexcpt.obj:
 	.rdata$r    start:0x008EE0FC end:0x008EE12C
 
 lib/libcmt/throw.obj:
-	.text       start:0x00736912 end:0x0073694C align:1
+	.text       start:0x00736912 end:0x00736950 align:1
 	.rdata      start:0x008D64A8 end:0x008D64C8
 	.data       start:0x00B4F9B8 end:0x00B4F9BC
 
 lib/libcmt/strcspn.obj:
-	.text       start:0x00736950 end:0x0073698E align:1
+	.text       start:0x00736950 end:0x00736990 align:1
 	.data       start:0x00B4F9BC end:0x00B4F9C0
 
 lib/libcmt/memchr.obj:
@@ -1246,15 +1246,15 @@ lib/libcmt/strtol.obj:
 	.text       start:0x00736A3B end:0x00736C6E align:1
 
 lib/libcmt/dosmap.obj:
-	.text       start:0x00736C6E end:0x00736CF3 align:1
+	.text       start:0x00736C6E end:0x00736D00 align:1
 	.data       start:0x00B4FA00 end:0x00B4FB68
 
 lib/libcmt/strncpy.obj:
-	.text       start:0x00736D00 end:0x00736DFE align:1
+	.text       start:0x00736D00 end:0x00736E00 align:1
 	.data       start:0x00B4FB68 end:0x00B4FB70
 
 lib/libcmt/strncmp.obj:
-	.text       start:0x00736E00 end:0x00736E38 align:1
+	.text       start:0x00736E00 end:0x00736E40 align:1
 
 lib/libcmt/strchr.obj:
 	.text       start:0x00736E40 end:0x00736F0C align:1
@@ -1282,27 +1282,27 @@ lib/libcmt/chmod.obj:
 	.text       start:0x00737351 end:0x00737390 align:1
 
 lib/libcmt/realloc.obj:
-	.text       start:0x00737390 end:0x007376BF align:1
+	.text       start:0x00737390 end:0x007376C0 align:1
 	.rdata      start:0x008D64E0 end:0x008D64F8
 
 lib/libcmt/strrchr.obj:
 	.text       start:0x007376C0 end:0x007376E7 align:1
 
 lib/libcmt/ulldiv.obj:
-	.text       start:0x00737850 end:0x007378B8 align:1
+	.text       start:0x00737850 end:0x007378C0 align:1
 
 lib/libcmt/llmul.obj:
 	.text       start:0x007378C0 end:0x007378F4 align:1
 
 lib/libcmt/crt0dat.obj:
-	.text       start:0x007378F4 end:0x00737A14 align:1
+	.text       start:0x007378F4 end:0x00737A20 align:1
 	.bss        start:0x00D5B284 end:0x00D5B2C8
 
 lib/libcmt/llshr.obj:
-	.text       start:0x00737A20 end:0x00737A41 align:1
+	.text       start:0x00737A20 end:0x00737A50 align:1
 
 lib/libcmt/llshl.obj:
-	.text       start:0x00737A50 end:0x00737A6F align:1
+	.text       start:0x00737A50 end:0x00737A70 align:1
 
 lib/libcmt/llrem.obj:
 	.text       start:0x00737A70 end:0x00737B22 align:1
@@ -1314,20 +1314,20 @@ lib/libcmt/wcsncat.obj:
 	.text       start:0x00737B4E end:0x00737B8E align:1
 
 lib/libcmt/wincrt0.obj:
-	.text       start:0x00737B8E end:0x00737CDF align:1
+	.text       start:0x00737B8E end:0x00737CE0 align:1
 	.rdata      start:0x008D64F8 end:0x008D6504
 	.data       start:0x00B4FB70 end:0x00B4FB78
 	.bss        start:0x00D5B2C8 end:0x00D5B2D4
 
 lib/libcmt/strlen.obj:
-	.text       start:0x00737CE0 end:0x00737D5B align:1
+	.text       start:0x00737CE0 end:0x00737D5C align:1
 	.data       start:0x00B4FB78 end:0x00B4FB80
 
 lib/libcmt/ehprolog.obj:
-	.text       start:0x00737D5C end:0x00737D7B align:1
+	.text       start:0x00737D5C end:0x00737D80 align:1
 
 lib/libcmt/memcpy.obj:
-	.text       start:0x00737D80 end:0x007380B5 align:1
+	.text       start:0x00737D80 end:0x007380C0 align:1
 
 lib/libcmt/memcmp.obj:
 	.text       start:0x007380C0 end:0x0073816C align:1
@@ -1462,15 +1462,15 @@ lib/libcmt/fpexcept.obj:
 	.data       start:0x00B52380 end:0x00B52458 align:1
 
 lib/libcmt/fpctrl.obj:
-	.text       start:0x0073DABB end:0x0073DB51 align:1
+	.text       start:0x0073DABB end:0x0073DB60 align:1
 	.data       start:0x00B52458 end:0x00B52470 align:1
 
 lib/libcmt/87disp.obj:
-	.text       start:0x0073DB60 end:0x0073DD2A align:1
+	.text       start:0x0073DB60 end:0x0073DD30 align:1
 	.data       start:0x00B52470 end:0x00B5249C align:1
 
 lib/libcmt/genexcep.obj:
-	.text       start:0x0073DD30 end:0x0073DD83 align:1
+	.text       start:0x0073DD30 end:0x0073DD90 align:1
 	.data       start:0x00B5249C end:0x00B524A0
 
 lib/libcmt/common.obj:
@@ -1505,17 +1505,17 @@ lib/libcmt/gmtime.obj:
 	.bss        start:0x00D5B448 end:0x00D5B46C
 
 lib/libcmt/dtoxtime.obj:
-	.text       start:0x0073EBC0 end:0x0073EC82 align:1
+	.text       start:0x0073EBC0 end:0x0073EC90 align:1
 
 lib/libcmt/87tran.obj:
 	.text       start:0x0073EC90 end:0x0073EE97 align:1
 	.data       start:0x00B52560 end:0x00B525BA align:1
 
 lib/libcmt/powhlp.obj:
-	.text       start:0x0073EE97 end:0x0073F02C align:1
+	.text       start:0x0073EE97 end:0x0073F030 align:1
 
 lib/libcmt/87cdisp.obj:
-	.text       start:0x0073F030 end:0x0073F29A align:1
+	.text       start:0x0073F030 end:0x0073F2A0 align:1
 	.rdata      start:0x008D68F0 end:0x008D6920
 	.data       start:0x00B525BA end:0x00B525C0 align:1
 
@@ -1552,7 +1552,7 @@ lib/libcmt/lseek.obj:
 	.text       start:0x00740DD1 end:0x00740EA9 align:1
 
 lib/libcmt/ioinit.obj:
-	.text       start:0x00740EA9 end:0x00741065 align:1
+	.text       start:0x00740EA9 end:0x00741070 align:1
 	.data       start:0x00B52830 end:0x00B52860 align:8
 
 lib/libcmt/strcat.obj:
@@ -1667,7 +1667,7 @@ lib/libcmt/crt0fp.obj:
 	.text       start:0x00744A75 end:0x00744A7E align:1
 
 lib/libcmt/isatty.obj:
-	.text       start:0x00744A7E end:0x00744AA7 align:1
+	.text       start:0x00744A7E end:0x00744AB0 align:1
 
 lib/libcmt/ullrem.obj:
 	.text       start:0x00744AB0 end:0x00744B25 align:1
@@ -1707,7 +1707,7 @@ lib/libcmt/ismbbyte.obj:
 	.text       start:0x00745D95 end:0x00745DD7 align:1
 
 lib/libcmt/inithelp.obj:
-	.text       start:0x00745DD7 end:0x00745F0F align:1
+	.text       start:0x00745DD7 end:0x00745F10 align:1
 	.bss        start:0x00D5B610 end:0x00D5B618
 
 lib/libcmt/strnicmp.obj:
@@ -1806,7 +1806,7 @@ lib/libcmt/strlwr.obj:
 	.text       start:0x007E8C6B end:0x007E8D9F align:1
 
 lib/libcmt/ehvecdtr.obj:
-	.text       start:0x007E8D9F end:0x007E8E93 align:1
+	.text       start:0x007E8D9F end:0x007E8EA0 align:1
 	.rdata      start:0x008DA550 end:0x008DA570
 
 lib/libcmt/strspn.obj:
