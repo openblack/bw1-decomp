@@ -1,3 +1,4 @@
+#include "LandscapeConstants.h" /* For CellSizeXGridDim */
 #include "Living.h"
 
 #include "ColourConstants.h" /* For White */

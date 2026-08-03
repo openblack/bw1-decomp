@@ -12,6 +12,7 @@
 #include "Game.h"
 #include "Game3DObject.h"
 #include "GraveYard.h"
+#include "LandscapeConstants.h" /* For CellSizeXGridDim */
 #include "Rand.h"
 #include "SpellDispenser.h"
 #include "StoragePit.h"
