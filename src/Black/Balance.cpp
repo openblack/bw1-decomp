@@ -7,6 +7,7 @@
 #include <Lionhead/LHFile/ver3.0/LHFile.h> /* For struct LHFile */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>   /* For operator new(size_t, const char*, uint32_t) */
 
+#include "ColourConstants.h"        /* For White */
 #include "CreatureMentalDesire.h"   /* For struct CreatureDesireDependency */
 #include "VillagerStateTableInfo.h" /* For struct GVillagerStateTableInfo */
 

@@ -1,5 +1,6 @@
 #include "Town.h"
 
+#include "ColourConstants.h" /* For White */
 #include "Game.h"
 #include "Player.h"
 #include "TribeInfo.h"

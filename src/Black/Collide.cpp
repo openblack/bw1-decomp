@@ -3,6 +3,7 @@
 #include <Lionhead/LH3DLib/development/LH3DMem.h>
 #include <Lionhead/LH3DLib/development/LH3DMesh.h> /* For LHPoint */
 
+#include "ColourConstants.h" /* For White */
 #include "Game3DObject.h"
 #include "Game.h"
 #include "Landscape.h"

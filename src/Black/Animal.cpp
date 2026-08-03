@@ -1,4 +1,6 @@
 #include "Animal.h"
+
+#include "ColourConstants.h" /* For White */
 #include "Flock.h"
 #include "Utils.h"
 

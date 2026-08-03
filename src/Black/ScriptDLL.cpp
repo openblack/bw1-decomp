@@ -1,5 +1,7 @@
 #include "ScriptDLL.h"
 
+#include "ColourConstants.h" /* For White */
+
 #include <stddef.h> /* For NULL */
 
 ScriptDLL* ScriptDLL::Create(const char* library_path)

@@ -1,5 +1,6 @@
 #include "Living.h"
 
+#include "ColourConstants.h" /* For White */
 #include "LivingInfo.h"
 #include "MapCoords.h"
 

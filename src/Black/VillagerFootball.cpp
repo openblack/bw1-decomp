@@ -3,6 +3,7 @@
 #include <math.h> /* For sqrt */
 
 #include "Ball.h"
+#include "ColourConstants.h" /* For White */
 #include "Football.h"
 #include "Object.h"
 #include "Rand.h"

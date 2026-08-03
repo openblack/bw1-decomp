@@ -1,5 +1,6 @@
 #include "Villager.h"
 
+#include "ColourConstants.h" /* For White */
 #include "MapCoords.h"
 #include "Reaction.h"
 #include "Utils.h"

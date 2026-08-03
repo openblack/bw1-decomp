@@ -2,6 +2,7 @@
 
 #include <chlasm/Enum.h> /* For NUM_CREATURE_DESIRES */
 
+#include "ColourConstants.h"           /* For White */
 #include "CreatureInitialDesireInfo.h" /* For struct CreatureInitialDesireInfo */
 
 // BW1W120 0x00c67e90 BW1M100 0x10a856b8

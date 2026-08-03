@@ -3,6 +3,7 @@
 #include <cstdio> /* For sprintf */
 
 #include "Camera.h"
+#include "ColourConstants.h" /* For White */
 #include "Game.h"
 
 void Config::Process()

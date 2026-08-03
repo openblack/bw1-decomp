@@ -4,6 +4,7 @@
 
 #include "AbodeInfo.h"
 #include "chlasm/Enum.h"
+#include "ColourConstants.h" /* For White */
 #include "Creche.h"
 #include "Field.h"
 #include "Football.h"

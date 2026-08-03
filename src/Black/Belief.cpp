@@ -1,5 +1,6 @@
 #include "Belief.h"
 
+#include "ColourConstants.h" /* For White */
 #include "Player.h"
 
 void GBelief::SetBelief(int index, float value)

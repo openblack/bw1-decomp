@@ -44,6 +44,10 @@ struct Temple
 
 	// Non-virtual methods
 
+	// BW1W120 00793ee0 BW1M100 1053fe70 Temple::Update(void)
+	void Update();
+	// BW1W120 00794370 BW1M100 1053f7c0 Temple::Draw(void)
+	void Draw();
 	// BW1W120 00794a20 BW1M100 10536350 Temple::StartScript(unsigned long)
 	bool StartScript(unsigned long param_1);
 };
