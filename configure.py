@@ -175,7 +175,7 @@ config.compilers_tag = {
     "BW1W120": "6.5",
 }[config.version]
 config.linker_version = f"MSVC/{config.compilers_tag}"
-config.lld_link_tag = "bw1-decomp-023"
+config.lld_link_tag = "bw1-decomp-024"
 # Static libraries to pull verbatim CRT objects from (see LibObject). They are
 # not committed and not downloaded — you must supply them yourself: place each
 # .lib at orig/libs/<package>/<lib>.lib. See the README for how to obtain them.
@@ -1085,9 +1085,11 @@ config.libs = [
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\_tolower.obj", progress_category="sdk"),
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\_toupper.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\xstod.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W120"), "libcpmt", "build\\intel\\mt_obj\\fiopen.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\nomemory.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\xwctomb.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\xmbtowc.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\xstrcoll.obj", progress_category="sdk"),
 
             LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\fpinit.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\typinfo.obj", progress_category="sdk"),
