@@ -85,24 +85,24 @@ public:
 	// BW1W120 00728940 BW1M100 1052b0d0 SpellSeed::InterfaceSetOutMagicHand(GInterfaceStatus *)
 	virtual uint32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 00728760 BW1M100 1052b4f0 SpellSeed::ValidToRemoveFromHand(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t ValidToRemoveFromHand(GInterfaceStatus* param_1, const MapCoords* param_2);
+	virtual uint32_t ValidToRemoveFromHand(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 00728f00 BW1M100 1052a460 SpellSeed::RemoveFromHand(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t RemoveFromHand(GInterfaceStatus* param_1, const MapCoords* param_2);
+	virtual uint32_t RemoveFromHand(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 007286d0 BW1M100 1052b6d0 SpellSeed::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 00728d10 BW1M100 1052a720 SpellSeed::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
 	// BW1W120 00728720 BW1M100 1052b600 SpellSeed::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
+	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 00728e20 BW1M100 1052a5d0 SpellSeed::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
-	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2,
+	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 00728750 BW1M100 1052b580 SpellSeed::ValidForLockedApplyProcess(GInterfaceStatus *)
 	virtual uint32_t ValidForLockedApplyProcess(GInterfaceStatus* param_1);
 	// BW1W120 00728eb0 BW1M100 1052a500 SpellSeed::ApplyUnlockProcess(GInterfaceStatus *)
 	virtual uint32_t ApplyUnlockProcess(GInterfaceStatus* param_1);
 	// BW1W120 007286a0 BW1M100 1052b830 SpellSeed::IsInterfacePowerUpWhenInHand( const(void))
-	virtual uint32_t IsInterfacePowerUpWhenInHand();
+	virtual uint32_t IsInterfacePowerUpWhenInHand() const;
 	// BW1W120 007286b0 BW1M100 1052b7c0 SpellSeed::ApplyOnlyAfterRecSystem(void)
 	virtual uint32_t ApplyOnlyAfterRecSystem();
 	// BW1W120 0072acd0 BW1M100 10526410 SpellSeed::ThrowObjectFromHand(GInterfaceStatus *, int)

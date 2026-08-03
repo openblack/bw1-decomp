@@ -62,8 +62,8 @@ public:
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00561b50 BW1M100 10133a00 PuzzleGame::GetSaveType(void)
 	virtual uint32_t GetSaveType();
-	// BW1W120 00561b10 BW1M100 inlined PuzzleGame::GetPos( const(MapCoords *))
-	virtual MapCoords* GetPos(MapCoords* param_1);
+	// BW1W120 00561b10 BW1M100 inlined PuzzleGame::GetPos( const(void))
+	virtual MapCoords GetPos() const;
 	// BW1W120 00561b30 BW1M100 10133980 PuzzleGame::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 00561b40 BW1M100 101339c0 PuzzleGame::IsPuzzleGame(void)

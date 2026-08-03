@@ -63,7 +63,7 @@ public:
 	// BW1W120 00539a90 BW1M100 100ef5c0 Forest::GetCreatureBeliefListType(void)
 	virtual uint32_t GetCreatureBeliefListType();
 	// BW1W120 00539ab0 BW1M100 100ef650 Forest::IsActivityObjectWhichAngerAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* creature);
 	// BW1W120 00539aa0 BW1M100 100ef600 Forest::IsSuitableForCreatureActivity(void)
 	virtual uint32_t IsSuitableForCreatureActivity();
 	// BW1W120 00539ac0 BW1M100 100ef6b0 Forest::GetText(void)

@@ -114,7 +114,7 @@ public:
 	// BW1W120 00720240 BW1M100 10518ca0 Spell::GetWorshipSite(void)
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 0055ce50 BW1M100 103b1df0 Spell::IsSpell( const(void))
-	virtual uint32_t IsSpell();
+	virtual uint32_t IsSpell() const;
 	// BW1W120 0055cf00 BW1M100 103b20a0 Spell::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 007218a0 BW1M100 10515fb0 Spell::GetQueryFirstEnumText(void)

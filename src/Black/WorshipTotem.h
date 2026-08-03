@@ -81,7 +81,7 @@ public:
 	// BW1W120 007807d0 BW1M100 105b7690 WorshipTotem::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 00780790 BW1M100 105b7570 WorshipTotem::IsSpellSeedReturnPoint( const(void))
-	virtual bool IsSpellSeedReturnPoint();
+	virtual bool32_t IsSpellSeedReturnPoint() const;
 	// BW1W120 007807a0 BW1M100 105b75c0 WorshipTotem::IsEffectReceiver(EffectValues *)
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
 

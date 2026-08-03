@@ -46,7 +46,7 @@ public:
 	// BW1W120 00401420 BW1M100 105e81f0 FixedObject::CanBeDestroyedByStoning(Creature *)
 	virtual bool32_t CanBeDestroyedByStoning(Creature* creature) { return true; }
 	// BW1W120 00401430 BW1M100 100b19c0 FixedObject::CanBeSetOnFire(Creature *)
-	virtual bool32_t CanBeSetOnFire(Creature* creature) { return (~(field_0xa) >> 3) & 1; }
+	virtual bool32_t CanBeSetOnFire(Creature* creature) { return (GameThing::Flags & GAME_THING_FLAG_FIREPROOF) == 0; }
 	// BW1W120 00401440 BW1M100 1056c2a0 FixedObject::CanBePickedUpByCreature(Creature *)
 	virtual bool32_t CanBePickedUpByCreature(Creature* creature) { return false; }
 	// BW1W120 00401450 BW1M100 1057a200 FixedObject::CanBeCrushed(void)
@@ -121,9 +121,9 @@ public:
 	// BW1W120 0052eaf0 BW1M100 100e3210 SingleMapFixed::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 0052eb00 BW1M100 100e3270 SingleMapFixed::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
+	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 0052f420 BW1M100 100de180 SingleMapFixed::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
-	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2,
+	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 0052eb20 BW1M100 100e3350 SingleMapFixed::ApplyOnlyAfterReleased(void)
 	virtual uint32_t ApplyOnlyAfterReleased();

@@ -46,9 +46,9 @@ public:
 	// BW1W120 006e69b0 BW1M100 10139730 Reward::GetOverwriteTapToolTip(void)
 	virtual uint32_t GetOverwriteTapToolTip();
 	// BW1W120 006e5650 BW1M100 10138ed0 Reward::IsReward( const(void))
-	virtual uint32_t IsReward();
+	virtual uint32_t IsReward() const;
 	// BW1W120 006e5660 BW1M100 10138f00 Reward::IsActive( const(void))
-	virtual uint32_t IsActive();
+	virtual uint32_t IsActive() const;
 	// BW1W120 006e5ca0 BW1M100 1013b370 Reward::GetScriptObjectType(void)
 	virtual uint32_t GetScriptObjectType();
 	// BW1W120 006e68f0 BW1M100 10139850 Reward::Process(void)

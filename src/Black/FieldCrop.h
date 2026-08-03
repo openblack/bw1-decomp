@@ -52,7 +52,7 @@ public:
 	// BW1W120 00608390 BW1M100 103badc0 FieldCrop::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
 	// BW1W120 006082b0 BW1M100 103bb140 FieldCrop::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
-	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2,
+	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 006082e0 BW1M100 103bb0c0 FieldCrop::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();

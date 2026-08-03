@@ -52,7 +52,7 @@ public:
 	// BW1W120 007097b0 BW1M100 104fa3d0 ScriptHighlight::CanBeDestroyedByStoning(Creature *)
 	virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
 	// BW1W120 00709750 BW1M100 104fa1d0 ScriptHighlight::IsActive( const(void))
-	virtual uint32_t IsActive();
+	virtual uint32_t IsActive() const;
 	// BW1W120 0070aa70 BW1M100 104faf70 ScriptHighlight::ForDrawFXGetNumVertices(void)
 	virtual int ForDrawFXGetNumVertices();
 	// BW1W120 0070aac0 BW1M100 104facf0 ScriptHighlight::ForDrawFXGetVertexPos(long, LHPoint *)
@@ -76,7 +76,7 @@ public:
 	// BW1W120 00709840 BW1M100 104fa690 ScriptHighlight::InterfaceMustBeInInfluenceForInteraction(void)
 	virtual uint32_t InterfaceMustBeInInfluenceForInteraction();
 	// BW1W120 00709790 BW1M100 104fa300 ScriptHighlight::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
+	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 00709780 BW1M100 104fa2b0 ScriptHighlight::ApplyOnlyAfterReleased(void)
 	virtual uint32_t ApplyOnlyAfterReleased();
 	// BW1W120 0070add0 BW1M100 104fa940 ScriptHighlight::InterfaceValidToTap(GInterfaceStatus *)

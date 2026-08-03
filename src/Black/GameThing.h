@@ -307,13 +307,30 @@ class Town;
 class Tree;
 class Villager;
 
+// fabricated: bit meanings of GameThing::Flags. Both bits are only ever read inverted, so they
+// are named for the state that having them set denotes. The enum cannot be used as the member's
+// type because MSVC6 makes every enum int-sized and the field is one byte.
+enum GAME_THING_FLAGS
+{
+	GAME_THING_FLAG_UNAVAILABLE = 0x1,
+	GAME_THING_FLAG_FIREPROOF = 0x8,
+	GAME_THING_FLAG_NAME_HIDDEN = 0x40,
+};
+
 class GameThing : public Base
 {
 public:
-	uint16_t   field_0x8;
-	uint8_t    field_0xa;
-	uint16_t   field_0xc;
-	GameThing* next; /* 0x10 */
+	uint16_t field_0x8;
+	uint8_t  Flags; /* 0xa, see GAME_THING_FLAGS */
+
+	// Static data
+
+	// BW1W120 .rdata:008aa394 GameThing::maxAlignmentChangePerGameTurn
+	// TODO: which TU carries the definition is unresolved; dtk puts the symbol in Abode.cpp's
+	// .rdata, which is where the first user of it lands.
+	static const float maxAlignmentChangePerGameTurn;
+	uint16_t           field_0xc;
+	GameThing*         next; /* 0x10 */
 
 	// Override methods
 
@@ -324,31 +341,31 @@ public:
 	// BW1W120 00570150 BW1M100 10359980 GameThing::SetPlayer(GPlayer *)
 	virtual void SetPlayer(GPlayer* param_1);
 	// BW1W120 004017f0 BW1M100 1010bb00 GameThing::CalculateInfluence(MapCoords const &)
-	virtual float CalculateInfluence(const MapCoords* param_1);
+	virtual float CalculateInfluence(const MapCoords& coords) { return 1.0f; }
 	// BW1W120 00401800 BW1M100 10494700 GameThing::RemoveDance(void)
-	virtual void RemoveDance();
+	virtual void RemoveDance() {}
 	// BW1W120 00401810 BW1M100 100512d0 GameThing::IsAvailable(void)
-	virtual bool32_t IsAvailable();
-	// BW1W120 00401820 BW1M100 10494880 GameThing::IsCreature(Creature *)
-	virtual bool IsCreature(Creature* param_1);
-	// BW1W120 00401830 BW1M100 1002c400 GameThing::IsCreature(void)
-	virtual bool IsCreature();
+	virtual bool32_t IsAvailable() { return (Flags & GAME_THING_FLAG_UNAVAILABLE) == 0; }
+	// BW1W120 00401820 BW1M100 1002c400 GameThing::IsCreature(void)
+	virtual bool32_t IsCreature() { return false; }
+	// BW1W120 00401830 BW1M100 10494880 GameThing::IsCreature(Creature *)
+	virtual bool32_t IsCreature(Creature* creature) { return false; }
 	// BW1W120 00401840 BW1M100 104948c0 GameThing::IsCreatureNotTooNear(Creature *)
-	virtual bool IsCreatureNotTooNear(Creature* param_1);
+	virtual bool32_t IsCreatureNotTooNear(Creature* creature) { return false; }
 	// BW1W120 00405130 BW1M100 10169a70 GameThing::GetDrawImportance(void)
 	virtual float GetDrawImportance();
 	// BW1W120 00401850 BW1M100 10428ff0 GameThing::GetMaxAlignmentChangePerGameTurn(void)
-	virtual float GetMaxAlignmentChangePerGameTurn();
+	virtual float GetMaxAlignmentChangePerGameTurn() { return maxAlignmentChangePerGameTurn; }
 	// BW1W120 00401860 BW1M100 10425a40 GameThing::GetComputerSeen(void)
-	virtual bool GetComputerSeen();
+	virtual bool32_t GetComputerSeen() { return false; }
 	// BW1W120 0056ff10 BW1M100 103c22d0 GameThing::GetTown(void)
 	virtual Town* GetTown();
 	// BW1W120 00401870 BW1M100 103f1450 GameThing::GetVillagerActivityDesire(Villager *)
-	virtual float GetVillagerActivityDesire(Villager* param_1);
+	virtual float GetVillagerActivityDesire(Villager* villager) { return 0.0f; }
 	// BW1W120 00401880 BW1M100 10389ac0 GameThing::SetVillagerActivity(Villager *)
-	virtual uint32_t SetVillagerActivity(Villager* param_1);
+	virtual uint32_t SetVillagerActivity(Villager* villager) { return 0; }
 	// BW1W120 00401890 BW1M100 1037f2e0 GameThing::UpdateVillagerActivityEffect(Villager *)
-	virtual uint32_t UpdateVillagerActivityEffect(Villager* param_1);
+	virtual uint32_t UpdateVillagerActivityEffect(Villager* villager) { return 0; }
 	// BW1W120 0056fed0 BW1M100 10160960 GameThing::MaintainSpell(Spell *, float)
 	virtual void MaintainSpell(uint32_t param_1, float param_2);
 	// BW1W120 0056fee0 BW1M100 100fc510 GameThing::UpdateSpellInfo(Spell *, PSysProcessInfo *)
@@ -358,15 +375,15 @@ public:
 	// BW1W120 00405150 BW1M100 1034f3d0 GameThing::Get2DRadius(void)
 	virtual float Get2DRadius();
 	// BW1W120 004018a0 BW1M100 101664f0 GameThing::GetPlayerWhoLastPickedMeUp(void)
-	virtual GPlayer* GetPlayerWhoLastPickedMeUp();
+	virtual GPlayer* GetPlayerWhoLastPickedMeUp() { return NULL; }
 	// BW1W120 004018b0 BW1M100 10381da0 GameThing::GetPlayerWhoLastDroppedMe(void)
-	virtual GPlayer* GetPlayerWhoLastDroppedMe();
+	virtual GPlayer* GetPlayerWhoLastDroppedMe() { return NULL; }
 	// BW1W120 00405160 BW1M100 103c36e0 GameThing::IsFootpathLink(void)
 	virtual bool32_t IsFootpathLink();
 	// BW1W120 00405170 BW1M100 1056c160 GameThing::GetFootpathLink(void)
 	virtual GFootpathLink* GetFootpathLink();
 	// BW1W120 004018c0 BW1M100 101063a0 GameThing::AddFootpathLink(GFootpath *)
-	virtual uint32_t AddFootpathLink(GFootpath* param_1);
+	virtual uint32_t AddFootpathLink(GFootpath* footpath) { return 0; }
 	// BW1W120 00405180 BW1M100 104788b0 GameThing::GetNearestPathTo(MapCoords const &, float, int)
 	virtual uint32_t GetNearestPathTo(const MapCoords* param_1, float param_2, int param_3);
 	// BW1W120 00570330 BW1M100 100e4740 GameThing::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
@@ -389,21 +406,21 @@ public:
 	// BW1W120 004051d0 BW1M100 104f8b20 GameThing::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 004018d0 BW1M100 103dd790 GameThing::CastCreature(void)
-	virtual Creature* CastCreature();
+	virtual Creature* CastCreature() { return NULL; }
 	// BW1W120 004018e0 BW1M100 103dd5d0 GameThing::CastPlayer(void)
-	virtual GPlayer* CastPlayer();
+	virtual GPlayer* CastPlayer() { return NULL; }
 	// BW1W120 004018f0 BW1M100 104fb790 GameThing::CastOneOffSpellSeed(void)
-	virtual SpellSeed* CastOneOffSpellSeed();
+	virtual SpellSeed* CastOneOffSpellSeed() { return NULL; }
 	// BW1W120 004051e0 BW1M100 1017ebc0 GameThing::CastAbode(void)
 	virtual Abode* CastAbode();
 	// BW1W120 004051f0 BW1M100 10199740 GameThing::CastMultiMapFixed(void)
 	virtual MultiMapFixed* CastMultiMapFixed();
 	// BW1W120 00401900 BW1M100 100a0a70 GameThing::CastSpellIcon(void)
-	virtual SpellIcon* CastSpellIcon();
+	virtual SpellIcon* CastSpellIcon() { return NULL; }
 	// BW1W120 00401910 BW1M100 101c8320 GameThing::CastTree(void)
-	virtual Tree* CastTree();
+	virtual Tree* CastTree() { return NULL; }
 	// BW1W120 00401920 BW1M100 1019e2b0 GameThing::IsDeletedOnNewMap(void)
-	virtual bool32_t IsDeletedOnNewMap();
+	virtual bool32_t IsDeletedOnNewMap() { return true; }
 	// BW1W120 00405200 BW1M100 100ac9a0 GameThing::GetNumberOfInstanceForGlobalList(void)
 	virtual uint16_t GetNumberOfInstanceForGlobalList();
 	// BW1W120 00405210 BW1M100 1019aa00 GameThing::GetTownArtifactValue(void)
@@ -421,7 +438,7 @@ public:
 	// BW1W120 0071bdd0 BW1M100 1050fc90 GameThing::GetGuidanceResourceType(void)
 	virtual uint32_t GetGuidanceResourceType();
 	// BW1W120 00401930 BW1M100 1017a550 GameThing::GetShowNeedsPos(unsigned long, MapCoords *)
-	virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
+	virtual uint32_t GetShowNeedsPos(uint32_t need, MapCoords* pos) { return 0; }
 	// BW1W120 0056fcf0 BW1M100 103807f0 GameThing::Load(GameOSFile &)
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 0056fbe0 BW1M100 101724b0 GameThing::Save(GameOSFile &)

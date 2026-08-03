@@ -46,7 +46,7 @@ public:
 	// BW1W120 0055d8c0 BW1M100 10159560 Tree::GetPlayer(void)
 	virtual GPlayer* GetPlayer();
 	// BW1W120 0055d9f0 BW1M100 10159a80 Tree::GetComputerSeen(void)
-	virtual bool GetComputerSeen();
+	virtual bool32_t GetComputerSeen();
 	// BW1W120 0055d8e0 BW1M100 101595f0 Tree::CastTree(void)
 	virtual Tree* CastTree();
 	// BW1W120 0055da30 BW1M100 10159b80 Tree::GetDebugText(void)
@@ -120,7 +120,7 @@ public:
 	// BW1W120 0074b270 BW1M100 10157fc0 Tree::DrawOutOfMap(bool)
 	virtual void DrawOutOfMap(bool param_1);
 	// BW1W120 0055d8b0 BW1M100 10159520 Tree::CanBePickedUp(void)
-	virtual bool CanBePickedUp();
+	virtual bool32_t CanBePickedUp();
 	// BW1W120 0074a1a0 BW1M100 10158c20 Tree::GetVillagerHugRadius(void)
 	virtual float GetVillagerHugRadius();
 	// BW1W120 0074c150 BW1M100 101562a0 Tree::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
@@ -147,7 +147,7 @@ public:
 	// BW1W120 0074bda0 BW1M100 10156910 Tree::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
 	// BW1W120 0074bfd0 BW1M100 101567f0 Tree::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
-	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2,
+	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 0074b640 BW1M100 10157a90 Tree::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();

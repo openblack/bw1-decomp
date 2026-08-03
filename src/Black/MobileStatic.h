@@ -108,7 +108,7 @@ public:
 	// BW1W120 00517f60 BW1M100 10042f50 MobileStatic::Draw(void)
 	virtual void Draw();
 	// BW1W120 00439670 BW1M100 100b4280 MobileStatic::CanBePickedUp(void)
-	virtual bool CanBePickedUp();
+	virtual bool32_t CanBePickedUp();
 	// BW1W120 00608de0 BW1M100 103bfb00 MobileStatic::GetWorldMatrix(LHMatrix *)
 	virtual void GetWorldMatrix(LHMatrix* param_1);
 	// BW1W120 00609700 BW1M100 103be330 MobileStatic::CallVirtualFunctionsForCreation(MapCoords const &)
@@ -124,9 +124,9 @@ public:
 	// BW1W120 00608c30 BW1M100 103bff70 MobileStatic::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
 	// BW1W120 004396c0 BW1M100 100b4510 MobileStatic::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
+	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 00608b30 BW1M100 103c0270 MobileStatic::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
-	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2,
+	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 004396b0 BW1M100 100b44c0 MobileStatic::ApplyOnlyAfterReleased(void)
 	virtual uint32_t ApplyOnlyAfterReleased();

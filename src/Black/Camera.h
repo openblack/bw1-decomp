@@ -52,7 +52,7 @@ public:
 	// BW1W120 00441b20 BW1M100 101982e0 GCamera::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 00441b00 BW1M100 10086270 GCamera::IsMoving( const(void))
-	virtual bool IsMoving();
+	virtual bool32_t IsMoving() const;
 	// BW1W120 00441af0 BW1M100 101980f0 GCamera::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 00441b10 BW1M100 101982b0 GCamera::GetHeight(void)
