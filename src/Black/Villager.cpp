@@ -577,7 +577,7 @@ bool Villager::FUN00751d40()
 // BW1W120 00751d50
 bool32_t Villager::IsAvailable()
 {
-	if (!(field_0xa & 1) && (uint8_t)GetFinalState() != VILLAGER_STATE_DYING)
+	if (!(GameThing::Flags & GAME_THING_FLAG_UNAVAILABLE) && (uint8_t)GetFinalState() != VILLAGER_STATE_DYING)
 	{
 		return 1;
 	}

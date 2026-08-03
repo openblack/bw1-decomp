@@ -109,7 +109,7 @@ public:
 	// BW1W120 0066ddd0 BW1M100 1011a930 Pot::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
 	// BW1W120 0066de70 BW1M100 1011a7e0 Pot::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
-	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2,
+	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 0066d650 BW1M100 1011bcb0 Pot::IsEffectReceiver(EffectValues *)
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
@@ -129,7 +129,7 @@ public:
 	// BW1W120 0066d550 BW1M100 1011bd00 Pot::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 	// BW1W120 0055d590 BW1M100 10116310 Pot::IsAPotFromABuildingSite(void)
-	virtual bool IsAPotFromABuildingSite();
+	virtual bool32_t IsAPotFromABuildingSite();
 
 	// Constructors
 

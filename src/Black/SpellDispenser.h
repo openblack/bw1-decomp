@@ -35,7 +35,7 @@ public:
 	// BW1W120 007226d0 BW1M100 1051a9b0 SpellDispenser::IsSpellDispenser(void)
 	virtual uint32_t IsSpellDispenser();
 	// BW1W120 007226c0 BW1M100 1051a970 SpellDispenser::IsActive( const(void))
-	virtual uint32_t IsActive();
+	virtual uint32_t IsActive() const;
 	// BW1W120 00722fb0 BW1M100 1051ac40 SpellDispenser::GetScriptObjectType(void)
 	virtual uint32_t GetScriptObjectType();
 	// BW1W120 00722a70 BW1M100 1051b590 SpellDispenser::Process(void)
@@ -45,7 +45,7 @@ public:
 	// BW1W120 007227d0 BW1M100 1051ba80 SpellDispenser::CallVirtualFunctionsForCreation(MapCoords const &)
 	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
 	// BW1W120 007226e0 BW1M100 1051a9f0 SpellDispenser::IsSpellSeedReturnPoint( const(void))
-	virtual bool IsSpellSeedReturnPoint();
+	virtual bool32_t IsSpellSeedReturnPoint() const;
 
 	// Static methods
 

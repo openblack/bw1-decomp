@@ -56,7 +56,7 @@ public:
 	// BW1W120 0052a2f0 BW1M100 100d6690 FireFly::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 0052a1d0 BW1M100 100da180 FireFly::IsMoving( const(void))
-	virtual bool IsMoving();
+	virtual bool32_t IsMoving() const;
 	// BW1W120 0052aa90 BW1M100 100d9130 FireFly::Draw(void)
 	virtual void Draw();
 	// BW1W120 0052a510 BW1M100 100d9950 FireFly::CallVirtualFunctionsForCreation(MapCoords const &)

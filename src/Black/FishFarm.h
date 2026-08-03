@@ -115,7 +115,7 @@ public:
 	// BW1W120 0052d760 BW1M100 100dac50 FishFarm::GetResourceType(void)
 	virtual RESOURCE_TYPE GetResourceType();
 	// BW1W120 0052c590 BW1M100 100dd920 FishFarm::IsLockedInInteract(void)
-	virtual bool IsLockedInInteract();
+	virtual bool32_t IsLockedInInteract();
 	// BW1W120 0052d750 BW1M100 100dac90 FishFarm::ValidForLockedSelectProcess(GInterfaceStatus *)
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
 	// BW1W120 0052d770 BW1M100 100da990 FishFarm::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)

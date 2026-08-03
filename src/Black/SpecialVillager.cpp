@@ -28,5 +28,5 @@ bool SpecialVillager::CanShowName()
 {
 	if (IsInScript())
 		return false;
-	return (field_0xa & 0x40) == 0;
+	return (GameThing::Flags & GAME_THING_FLAG_NAME_HIDDEN) == 0;
 }

@@ -188,13 +188,13 @@ public:
 	// BW1W120 00739220 BW1M100 inlined Town::IsTown_1(Creature *)
 	virtual bool IsTown_1(Creature* param_1);
 	// BW1W120 004e47f0 BW1M100 105e4b50 Town::IsActivityObjectWhichAngerAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* creature);
 	// BW1W120 00739230 BW1M100 105592e0 Town::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichCompassionAppliesTo(Creature* creature);
 	// BW1W120 00739240 BW1M100 10559340 Town::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature);
 	// BW1W120 004e4750 BW1M100 105e4c40 Town::IsTownBelongingToAnotherPlayer(Creature *)
-	virtual bool IsTownBelongingToAnotherPlayer(Creature* param_1);
+	virtual bool32_t IsTownBelongingToAnotherPlayer(Creature* creature);
 	// BW1W120 00739260 BW1M100 105593a0 Town::IsSuitableForCreatureActivity(void)
 	virtual uint32_t IsSuitableForCreatureActivity();
 	// BW1W120 00739270 BW1M100 105593f0 Town::CanBePlayedWithByCreature(Creature *)
@@ -204,7 +204,7 @@ public:
 	// BW1W120 004e4140 BW1M100 105e5e00 Town::IsTownBelongingToOtherPlayer(Creature *)
 	virtual uint32_t IsTownBelongingToOtherPlayer(Creature* param_1);
 	// BW1W120 00739210 BW1M100 105591b0 Town::IsScriptContainer( const(void))
-	virtual uint32_t IsScriptContainer();
+	virtual uint32_t IsScriptContainer() const;
 	// BW1W120 00739280 BW1M100 10559440 Town::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 00747f00 BW1M100 10065180 Town::CalculateDesireForFood(void)

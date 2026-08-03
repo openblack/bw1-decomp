@@ -28,12 +28,24 @@ class Object;
 class Reaction;
 class WorshipSite;
 
-// fabricated: bit meanings of GameThingWithPos::Flags. Bit 7 is set by the
-// MOVE_ON_STRUCTURE state handler (BW1W120 005ecd00) when a structure is found
-// under the position, together with snapping the altitude onto it.
+// fabricated: bit meanings of GameThingWithPos::Flags. ON_STRUCTURE is set by the
+// MOVE_ON_STRUCTURE state handler (BW1W120 005ecd00) when a structure is found under the
+// position, together with snapping the altitude onto it. The rest are named after the accessor
+// that reads them; UNAVAILABLE_FOR_STATE_CHANGE is only ever read inverted.
+// fabricated: selector returned by GetCreatureBeliefListType, which picks which of a creature's
+// belief lists an object belongs in.
+enum CREATURE_BELIEF_LIST_TYPE
+{
+	CREATURE_BELIEF_LIST_TYPE_OBJECT = 1
+};
+
 enum GAME_THING_WITH_POS_FLAGS
 {
-	GAME_THING_WITH_POS_FLAG_ON_STRUCTURE = 0x80
+	GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE = 0x4,
+	GAME_THING_WITH_POS_FLAG_ON_STRUCTURE = 0x80,
+	GAME_THING_WITH_POS_FLAG_IN_SCRIPT = 0x200,
+	GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT = 0x400,
+	GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP = 0x2000
 };
 
 class GameThingWithPos : public GameThing
@@ -61,19 +73,19 @@ public:
 	// BW1W120 00570560 BW1M100 10430e60 GameThingWithPos::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 00401940 BW1M100 1004d010 GameThingWithPos::SetPos(MapCoords const &)
-	virtual void SetPos(const MapCoords* param_2);
+	virtual void SetPos(const MapCoords& pos) { Pos = pos; }
 	// BW1W120 00401960 BW1M100 10032b70 GameThingWithPos::GetPos(void)
-	virtual MapCoords* GetPos(MapCoords* param_1);
+	virtual MapCoords GetPos() { return Pos; }
 	// BW1W120 00405260 BW1M100 101c7ec0 GameThingWithPos::GetArrivePos(void)
 	virtual MapCoords GetArrivePos();
-	// BW1W120 00401980 BW1M100 103d18f0 GameThingWithPos::GetArriPhysicsEditorCreatevePos(int)
-	virtual void PhysicsEditorCreate(int param_1);
+	// BW1W120 00401980 BW1M100 103d18f0 GameThingWithPos::PhysicsEditorCreate(int)
+	virtual void PhysicsEditorCreate(int type) { Pos.altitude = 0.0f; }
 	// BW1W120 00405280 BW1M100 103e5940 GameThingWithPos::GetCreatureBeliefType(void)
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 00401990 BW1M100 103e0cc0 GameThingWithPos::GetCreatureBeliefListType(void)
-	virtual uint32_t GetCreatureBeliefListType();
+	virtual uint32_t GetCreatureBeliefListType() { return CREATURE_BELIEF_LIST_TYPE_OBJECT; }
 	// BW1W120 004019a0 BW1M100 103e0d50 GameThingWithPos::GetCitadel(void)
-	virtual Citadel* GetCitadel();
+	virtual Citadel* GetCitadel() { return NULL; }
 	// BW1W120 00405290 BW1M100 103efe40 GameThingWithPos::GetOrigin(void)
 	virtual uint32_t GetOrigin();
 	// BW1W120 004052a0 BW1M100 103e1210 GameThingWithPos::GetLife(void)
@@ -97,11 +109,11 @@ public:
 	// BW1W120 00570240 BW1M100 101473d0 GameThingWithPos::GetDefaultSpeedInMetres(void)
 	virtual float GetDefaultSpeedInMetres();
 	// BW1W120 004019b0 BW1M100 103e1140 GameThingWithPos::SetHeight(float)
-	virtual void SetHeight(float height);
+	virtual void SetHeight(float height) {}
 	// BW1W120 004019c0 BW1M100 103e3580 GameThingWithPos::SetMaxHeight(float)
-	virtual void SetMaxHeight(float height);
+	virtual void SetMaxHeight(float height) {}
 	// BW1W120 004019d0 BW1M100 103e11c0 GameThingWithPos::GetMaxHeight(void)
-	virtual float GetMaxHeight();
+	virtual float GetMaxHeight() { return 0.0f; }
 	// BW1W120 005702e0 BW1M100 10110d20 GameThingWithPos::GetPSysBeamTargetPos(LHPoint *)
 	virtual void GetPSysBeamTargetPos(LHPoint* pos);
 	// BW1W120 00570260 BW1M100 1055f490 GameThingWithPos::GetSpeedInMetresPerSecond( const(void))
@@ -113,7 +125,7 @@ public:
 	// BW1W120 00570280 BW1M100 1055e070 GameThingWithPos::GetDefaultSpeedInMetresPerSecond(void)
 	virtual float GetDefaultSpeedInMetresPerSecond();
 	// BW1W120 004019e0 BW1M100 103e1180 GameThingWithPos::IsAnimate(void)
-	virtual bool IsAnimate();
+	virtual bool32_t IsAnimate() { return false; }
 	// BW1W120 0056ff20 BW1M100 1019c820 GameThingWithPos::GetMovementDirection(LHPoint *)
 	virtual void GetMovementDirection(LHPoint* pos);
 	// BW1W120 0056ff50 BW1M100 1056c0f0 GameThingWithPos::GetPhysicsMovementDirection(LHPoint *)
@@ -121,19 +133,22 @@ public:
 	// BW1W120 004019f0 BW1M100 103efd20 GameThingWithPos::GetInteractPos(void)
 	virtual void GetInteractPos(LHPoint* pos);
 	// BW1W120 004052b0 BW1M100 103efb80 GameThingWithPos::IsMoving( const(void))
-	virtual bool IsMoving();
+	virtual bool32_t IsMoving() const;
 	// BW1W120 004052c0 BW1M100 103f07b0 GameThingWithPos::IsObjectInMap(void)
 	virtual bool IsObjectInMap();
 	// BW1W120 004052d0 BW1M100 103ee440 GameThingWithPos::IsDrowning(void)
 	virtual bool32_t IsDrowning();
 	// BW1W120 00401a10 BW1M100 100cb2b0 GameThingWithPos::IsCannotBePickedUp( const(void))
-	virtual bool IsCannotBePickedUp();
+	virtual bool32_t IsCannotBePickedUp() const { return (Flags & GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP) != 0; }
 	// BW1W120 00570590 BW1M100 101bf190 GameThingWithPos::GetOverwritePickUpToolTip(void)
 	virtual uint32_t GetOverwritePickUpToolTip();
 	// BW1W120 00401a20 BW1M100 100cb270 GameThingWithPos::IsStompable(void)
-	virtual bool IsStompable();
+	virtual bool32_t IsStompable() { return false; }
 	// BW1W120 00401a30 BW1M100 100cb210 GameThingWithPos::IsAvailableForStateChange(void)
-	virtual bool32_t IsAvailableForStateChange();
+	virtual bool32_t IsAvailableForStateChange()
+	{
+		return (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE) == 0;
+	}
 	// BW1W120 005701b0 BW1M100 1007b9d0 GameThingWithPos::IsInteractable(void)
 	virtual bool IsInteractable();
 	// BW1W120 005705a0 BW1M100 100b34e0 GameThingWithPos::GetOverwriteInteractableToolTip(void)
@@ -149,69 +164,69 @@ public:
 	// BW1W120 0056ff70 BW1M100 10569e60 GameThingWithPos::GetImpressiveType(void)
 	virtual IMPRESSIVE_TYPE GetImpressiveType();
 	// BW1W120 00401a40 BW1M100 103104e0 GameThingWithPos::GetImpressiveIntensity(IMPRESSIVE_TYPE)
-	virtual float GetImpressiveIntensity(IMPRESSIVE_TYPE type);
+	virtual float GetImpressiveIntensity(IMPRESSIVE_TYPE type) { return 1.0f; }
 	// BW1W120 00405300 BW1M100 100026f0 GameThingWithPos::GetImpressiveValue(Living *, Reaction *)
 	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
 	// BW1W120 0056feb0 BW1M100 10002750 GameThingWithPos::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
 	virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
-	// BW1W120 00401ae0 BW1M100 100d3ed0 GameThingWithPos::IsTown(void)
-	virtual bool IsTown();
 	// BW1W120 00401a50 BW1M100 1002b190 GameThingWithPos::IsTown(Creature *)
-	virtual bool IsTown(Creature* param_1);
+	virtual bool32_t IsTown(Creature* creature) { return false; }
+	// BW1W120 00401ae0 BW1M100 100d3ed0 GameThingWithPos::IsTown(void)
+	virtual bool32_t IsTown() { return false; }
 	// BW1W120 00401a60 BW1M100 103efcc0 GameThingWithPos::IsActivityObjectWhichAngerAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* creature) { return false; }
 	// BW1W120 00401a70 BW1M100 100c8d70 GameThingWithPos::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichCompassionAppliesTo(Creature* creature) { return false; }
 	// BW1W120 00401a80 BW1M100 10381cb0 GameThingWithPos::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature) { return false; }
 	// BW1W120 00401a90 BW1M100 1055f950 GameThingWithPos::IsTownBelongingToAnotherPlayer(Creature *)
-	virtual bool IsTownBelongingToAnotherPlayer(Creature* param_1);
+	virtual bool32_t IsTownBelongingToAnotherPlayer(Creature* creature) { return false; }
 	// BW1W120 00401aa0 BW1M100 10354120 GameThingWithPos::TrueFunction(void)
-	virtual bool32_t TrueFunction();
+	virtual bool32_t TrueFunction() { return true; }
 	// BW1W120 00401ab0 BW1M100 100c53e0 GameThingWithPos::FalseFunction(void)
-	virtual bool32_t FalseFunction();
+	virtual bool32_t FalseFunction() { return false; }
 	// BW1W120 00401ac0 BW1M100 10174ec0 GameThingWithPos::IsNotLiving(void)
-	virtual bool32_t IsNotLiving();
+	virtual bool32_t IsNotLiving() { return true; }
 	// BW1W120 00401ad0 BW1M100 100a9d40 GameThingWithPos::IsSuitableForCreatureActivity(void)
-	virtual bool32_t IsSuitableForCreatureActivity();
+	virtual bool32_t IsSuitableForCreatureActivity() { return false; }
 	// BW1W120 00401af0 BW1M100 10093ec0 GameThingWithPos::IsTownCentre(void)
-	virtual bool32_t IsTownCentre();
+	virtual bool32_t IsTownCentre() { return false; }
 	// BW1W120 00401b00 BW1M100 101a36a0 GameThingWithPos::IsTotemStatue(void)
-	virtual bool32_t IsTotemStatue();
+	virtual bool32_t IsTotemStatue() { return false; }
 	// BW1W120 00401b10 BW1M100 103d8ae0 GameThingWithPos::IsTownDesireFlag(void)
-	virtual bool32_t IsTownDesireFlag();
-	// BW1W120 00401f50 BW1M100 104a9cd0 GameThingWithPos::IsRock(Creature *)
-	virtual bool32_t IsRock(Creature* creature);
+	virtual bool32_t IsTownDesireFlag() { return false; }
 	// BW1W120 00401b20 BW1M100 10135ee0 GameThingWithPos::IsRock(void)
-	virtual bool32_t IsRock();
+	virtual bool32_t IsRock() { return false; }
+	// BW1W120 00401f50 BW1M100 104a9cd0 GameThingWithPos::IsRock(Creature *)
+	virtual bool32_t IsRock(Creature* creature) { return IsRock(); }
 	// BW1W120 00401b30 BW1M100 103d8b30 GameThingWithPos::IsSpellDispenser(void)
-	virtual bool32_t IsSpellDispenser();
+	virtual bool32_t IsSpellDispenser() { return false; }
 	// BW1W120 00401b40 BW1M100 100c3630 GameThingWithPos::IsMist(void)
-	virtual bool32_t IsMist();
+	virtual bool32_t IsMist() { return false; }
 	// BW1W120 00401b50 BW1M100 10097020 GameThingWithPos::IsQueryIcon(void)
-	virtual bool32_t IsQueryIcon();
+	virtual bool32_t IsQueryIcon() { return false; }
 	// BW1W120 00401b60 BW1M100 105e81b0 GameThingWithPos::IsStreetLight(void)
-	virtual bool32_t IsStreetLight();
+	virtual bool32_t IsStreetLight() { return false; }
 	// BW1W120 00401b70 BW1M100 104a63f0 GameThingWithPos::IsStreetLantern(void)
-	virtual bool32_t IsStreetLantern();
+	virtual bool32_t IsStreetLantern() { return false; }
 	// BW1W120 00405310 BW1M100 1009aa60 GameThingWithPos::IsAbode(void)
 	virtual bool32_t IsAbode();
-	// BW1W120 00401e40 BW1M100 104c28e0 GameThingWithPos::IsField(Creature *)
-	virtual bool32_t IsField(Creature* creature);
 	// BW1W120 00401b80 BW1M100 105e8170 GameThingWithPos::IsField(void)
-	virtual bool32_t IsField();
+	virtual bool32_t IsField() { return false; }
+	// BW1W120 00401e40 BW1M100 104c28e0 GameThingWithPos::IsField(Creature *)
+	virtual bool32_t IsField(Creature* creature) { return false; }
 	// BW1W120 00405320 BW1M100 105e8120 GameThingWithPos::IsBuildingMaterial(void)
 	virtual bool32_t IsBuildingMaterial();
 	// BW1W120 00401b90 BW1M100 1009eea0 GameThingWithPos::IsMagicFireBall(void)
-	virtual bool32_t IsMagicFireBall();
+	virtual bool32_t IsMagicFireBall() { return false; }
 	// BW1W120 00405330 BW1M100 104a6920 GameThingWithPos::IsSuitableForCreatureAction(void)
 	virtual bool32_t IsSuitableForCreatureAction();
 	// BW1W120 00401ba0 BW1M100 104a8310 GameThingWithPos::IsCitadelHeart(void)
-	virtual bool32_t IsCitadelHeart();
+	virtual bool32_t IsCitadelHeart() { return false; }
 	// BW1W120 00401bb0 BW1M100 10479f30 GameThingWithPos::IsDamaged(void)
-	virtual bool32_t IsDamaged();
+	virtual bool32_t IsDamaged() { return GetLife() < 1.0f; }
 	// BW1W120 00401bd0 BW1M100 100c7090 GameThingWithPos::CanBeHealedByCreature(Creature *)
-	virtual bool32_t CanBeHealedByCreature(Creature* creature);
+	virtual bool32_t CanBeHealedByCreature(Creature* creature) { return false; }
 	// BW1W120 00405340 BW1M100 1016b460 GameThingWithPos::CanBeEatenByCreature(Creature *)
 	virtual bool32_t CanBeEatenByCreature(Creature* creature);
 	// BW1W120 004e4b90 BW1M100 105e3d90 GameThingWithPos::CanCreatureEatMe(Creature *)
@@ -231,7 +246,7 @@ public:
 	// BW1W120 004053b0 BW1M100 103d5780 GameThingWithPos::CanBePoodUponByCreature(Creature *)
 	virtual bool32_t CanBePoodUponByCreature(Creature* creature);
 	// BW1W120 00401be0 BW1M100 104956c0 GameThingWithPos::CanBeBefriendedByCreature(Creature *)
-	virtual bool32_t CanBeBefriendedByCreature(Creature* creature);
+	virtual bool32_t CanBeBefriendedByCreature(Creature* creature) { return false; }
 	// BW1W120 004053c0 BW1M100 102fdd30 GameThingWithPos::CanBeSleptNextToByCreature(Creature *)
 	virtual bool32_t CanBeSleptNextToByCreature(Creature* creature);
 	// BW1W120 004053d0 BW1M100 102fde30 GameThingWithPos::CanBePickedUpByCreature(Creature *)
@@ -239,7 +254,7 @@ public:
 	// BW1W120 004053e0 BW1M100 100cb730 GameThingWithPos::CanBeStrokedByCreature(Creature *)
 	virtual bool32_t CanBeStrokedByCreature(Creature* creature);
 	// BW1W120 00401bf0 BW1M100 102fe080 GameThingWithPos::CanBeKissedByCreature(Creature *)
-	virtual bool32_t CanBeKissedByCreature(Creature* creature);
+	virtual bool32_t CanBeKissedByCreature(Creature* creature) { return false; }
 	// BW1W120 004053f0 BW1M100 105609f0 GameThingWithPos::CanBeSetOnFire(Creature *)
 	virtual bool32_t CanBeSetOnFire(Creature* creature);
 	// BW1W120 00405400 BW1M100 1043fa70 GameThingWithPos::CanBeStompedOnByCreature(Creature *)
@@ -247,21 +262,24 @@ public:
 	// BW1W120 00405410 BW1M100 10147ea0 GameThingWithPos::CanBeThrownByCreature(Creature *)
 	virtual bool32_t CanBeThrownByCreature(Creature* creature);
 	// BW1W120 00401c00 BW1M100 10569b20 GameThingWithPos::CanBeGivenToVillager(Creature *)
-	virtual bool32_t CanBeGivenToVillager(Creature* creature);
+	virtual bool32_t CanBeGivenToVillager(Creature* creature) { return false; }
 	// BW1W120 00405420 BW1M100 101660d0 GameThingWithPos::CanBePutInAStoragePit(Creature *)
 	virtual bool32_t CanBePutInAStoragePit(Creature* creature);
 	// BW1W120 00405430 BW1M100 104fb730 GameThingWithPos::CanBeDestroyedByStoning(Creature *)
 	virtual bool32_t CanBeDestroyedByStoning(Creature* creature);
 	// BW1W120 00401c10 BW1M100 104fb7d0 GameThingWithPos::CanBeStonedAndEatenByCreature(Creature *)
-	virtual bool32_t CanBeStonedAndEatenByCreature(Creature* creature);
+	virtual bool32_t CanBeStonedAndEatenByCreature(Creature* creature)
+	{
+		return CanBePickedUpByCreature(creature) && CanBeDestroyedByStoning(creature);
+	}
 	// BW1W120 00405440 BW1M100 10160390 GameThingWithPos::CanBeExaminedByCreature(Creature *)
 	virtual bool32_t CanBeExaminedByCreature(Creature* creature);
 	// BW1W120 00401c50 BW1M100 100d4ba0 GameThingWithPos::CanBeFoughtByCreature(Creature *)
-	virtual bool32_t CanBeFoughtByCreature(Creature* creature);
+	virtual bool32_t CanBeFoughtByCreature(Creature* creature) { return false; }
 	// BW1W120 00401c60 BW1M100 1038a3e0 GameThingWithPos::CanReceiveGifts(Creature *)
-	virtual bool32_t CanReceiveGifts(Creature* creature);
+	virtual bool32_t CanReceiveGifts(Creature* creature) { return false; }
 	// BW1W120 00401c70 BW1M100 103dc5a0 GameThingWithPos::CanActAsAContainer(Creature *)
-	virtual bool32_t CanActAsAContainer(Creature* creature);
+	virtual bool32_t CanActAsAContainer(Creature* creature) { return false; }
 	// BW1W120 00405450 BW1M100 103e0d90 GameThingWithPos::IsBeingBuilt(Creature *)
 	virtual bool32_t IsBeingBuilt(Creature* creature);
 	// BW1W120 00405460 BW1M100 104272b0 GameThingWithPos::NeedsRepair(Creature *)
@@ -269,209 +287,212 @@ public:
 	// BW1W120 00405470 BW1M100 1036f0b0 GameThingWithPos::IsOnFire(Creature *)
 	virtual bool32_t IsOnFire(Creature* creature);
 	// BW1W120 00401c80 BW1M100 10554b50 GameThingWithPos::IsNotOnFire(Creature *)
-	virtual bool32_t IsNotOnFire(Creature* creature);
+	virtual bool32_t IsNotOnFire(Creature* creature) { return !IsOnFire(creature); }
 	// BW1W120 00401ca0 BW1M100 10596ca0 GameThingWithPos::CanBeUsedForBuilding(Creature *)
-	virtual bool32_t CanBeUsedForBuilding(Creature* creature);
+	virtual bool32_t CanBeUsedForBuilding(Creature* creature) { return false; }
 	// BW1W120 00401cb0 BW1M100 100a8420 GameThingWithPos::IsMushroom(Creature *)
-	virtual bool32_t IsMushroom(Creature* creature);
+	virtual bool32_t IsMushroom(Creature* creature) { return false; }
 	// BW1W120 00401cc0 BW1M100 100be460 GameThingWithPos::CanBeUsedForRepair(Creature *)
-	virtual bool32_t CanBeUsedForRepair(Creature* creature);
+	virtual bool32_t CanBeUsedForRepair(Creature* creature) { return false; }
 	// BW1W120 00401cd0 BW1M100 103efed0 GameThingWithPos::CanBeGivenToTown(Creature *)
-	virtual bool32_t CanBeGivenToTown(Creature* creature);
+	virtual bool32_t CanBeGivenToTown(Creature* creature) { return false; }
 	// BW1W120 00401ce0 BW1M100 103efe80 GameThingWithPos::CanBeUsedToHoldWater(Creature *)
-	virtual bool32_t CanBeUsedToHoldWater(Creature* creature);
+	virtual bool32_t CanBeUsedToHoldWater(Creature* creature) { return false; }
 	// BW1W120 00405480 BW1M100 100d56a0 GameThingWithPos::CanBePutInFoodPile(Creature *)
 	virtual bool32_t CanBePutInFoodPile(Creature* creature);
 	// BW1W120 00405490 BW1M100 105644c0 GameThingWithPos::CanBePutInWoodPile(Creature *)
 	virtual bool32_t CanBePutInWoodPile(Creature* creature);
 	// BW1W120 00401cf0 BW1M100 1054aa20 GameThingWithPos::CanHaveMagicFoodCastOnMe(Creature *)
-	virtual bool32_t CanHaveMagicFoodCastOnMe(Creature* creature);
+	virtual bool32_t CanHaveMagicFoodCastOnMe(Creature* creature) { return false; }
 	// BW1W120 00401d00 BW1M100 1057ace0 GameThingWithPos::CanHaveMagicWoodCastOnMe(Creature *)
-	virtual bool32_t CanHaveMagicWoodCastOnMe(Creature* creature);
+	virtual bool32_t CanHaveMagicWoodCastOnMe(Creature* creature) { return false; }
 	// BW1W120 004054a0 BW1M100 103e1250 GameThingWithPos::CanBeBroughtBackToCitadel(Creature *)
 	virtual bool32_t CanBeBroughtBackToCitadel(Creature* creature);
 	// BW1W120 00401d10 BW1M100 10091d50 GameThingWithPos::IsVillager(Creature *)
-	virtual bool32_t IsVillager(Creature* creature);
+	virtual bool32_t IsVillager(Creature* creature) { return false; }
 	// BW1W120 00401d20 BW1M100 10478860 GameThingWithPos::IsVillagerFarFromHome(Creature *)
-	virtual bool32_t IsVillagerFarFromHome(Creature* creature);
+	virtual bool32_t IsVillagerFarFromHome(Creature* creature) { return false; }
 	// BW1W120 00401d30 BW1M100 1036e6c0 GameThingWithPos::IsVillagerInTownWithoutManyBreeders(Creature *)
-	virtual bool32_t IsVillagerInTownWithoutManyBreeders(Creature* creature);
+	virtual bool32_t IsVillagerInTownWithoutManyBreeders(Creature* creature) { return false; }
 	// BW1W120 00401d40 BW1M100 101343a0 GameThingWithPos::IsVillagerNotWorshipping(Creature *)
-	virtual bool32_t IsVillagerNotWorshipping(Creature* creature);
+	virtual bool32_t IsVillagerNotWorshipping(Creature* creature) { return false; }
 	// BW1W120 00401d50 BW1M100 1036f100 GameThingWithPos::IsVillagerBelongingToOtherPlayer(Creature *)
-	virtual bool32_t IsVillagerBelongingToOtherPlayer(Creature* creature);
+	virtual bool32_t IsVillagerBelongingToOtherPlayer(Creature* creature) { return false; }
 	// BW1W120 00401d60 BW1M100 101107f0 GameThingWithPos::IsCow(Creature *)
-	virtual bool32_t IsCow(Creature* creature);
+	virtual bool32_t IsCow(Creature* creature) { return false; }
 	// BW1W120 004054b0 BW1M100 10560070 GameThingWithPos::CanBePoodOn(Creature *)
 	virtual bool32_t CanBePoodOn(Creature* creature);
 	// BW1W120 00401d70 BW1M100 102aa900 GameThingWithPos::IsVillagerWhoHasNotBeenImpressedRecently(Creature *)
-	virtual bool32_t IsVillagerWhoHasNotBeenImpressedRecently(Creature* creature);
+	virtual bool32_t IsVillagerWhoHasNotBeenImpressedRecently(Creature* creature) { return false; }
 	// BW1W120 00401d80 BW1M100 10569bf0 GameThingWithPos::IsVillagerWhoHasNotBeenDancedWithRecently(Creature *)
-	virtual bool32_t IsVillagerWhoHasNotBeenDancedWithRecently(Creature* creature);
+	virtual bool32_t IsVillagerWhoHasNotBeenDancedWithRecently(Creature* creature) { return false; }
 	// BW1W120 00401d90 BW1M100 10336360 GameThingWithPos::DoesVillagerBelongToATownWhichIsAlreadyImpressed(Creature *)
-	virtual bool32_t DoesVillagerBelongToATownWhichIsAlreadyImpressed(Creature* creature);
+	virtual bool32_t DoesVillagerBelongToATownWhichIsAlreadyImpressed(Creature* creature) { return false; }
 	// BW1W120 00401da0 BW1M100 100fc2f0 GameThingWithPos::DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature *)
-	virtual bool32_t DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature* creature);
+	virtual bool32_t DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature* creature) { return false; }
 	// BW1W120 00401db0 BW1M100 103c9640 GameThingWithPos::IsDominantCreature(Creature *)
-	virtual bool32_t IsDominantCreature(Creature* creature);
+	virtual bool32_t IsDominantCreature(Creature* creature) { return false; }
 	// BW1W120 00401dc0 BW1M100 100e9bb0 GameThingWithPos::CanBeDancedWith(Creature *)
-	virtual bool32_t CanBeDancedWith(Creature* creature);
+	virtual bool32_t CanBeDancedWith(Creature* creature) { return false; }
 	// BW1W120 00401dd0 BW1M100 103c91e0 GameThingWithPos::IsAggressive(Creature *)
-	virtual bool32_t IsAggressive(Creature* creature);
+	virtual bool32_t IsAggressive(Creature* creature) { return false; }
 	// BW1W120 00401de0 BW1M100 100ed8f0 GameThingWithPos::IsStoragePit(Creature *)
-	virtual bool32_t IsStoragePit(Creature* creature);
-	// BW1W120 00401e00 BW1M100 10553fb0 GameThingWithPos::IsWorshipSite(Creature *)
-	virtual bool32_t IsWorshipSite();
-	// BW1W120 00401df0 BW1M100 103d4fd0 GameThingWithPos::IsWorshipSite(void)
-	virtual bool32_t IsWorshipSite(Creature* creature);
+	virtual bool32_t IsStoragePit(Creature* creature) { return false; }
+	// BW1W120 00401df0 BW1M100 103d4fd0 GameThingWithPos::IsWorshipSite(Creature *)
+	virtual bool32_t IsWorshipSite(Creature* creature) { return false; }
+	// BW1W120 00401e00 BW1M100 10553fb0 GameThingWithPos::IsWorshipSite(void)
+	virtual bool32_t IsWorshipSite() { return false; }
 	// BW1W120 00401e10 BW1M100 10136890 GameThingWithPos::GetWorshipSite(void)
-	virtual WorshipSite* GetWorshipSite();
-	// BW1W120 004023b0 BW1M100 1042dbb0 GameThingWithPos::IsWorkshop(Creature *)
-	virtual bool32_t IsWorkshop();
-	// BW1W120 00401e20 BW1M100 1002c6a0 GameThingWithPos::IsWorkshop(void)
-	virtual bool32_t IsWorkshop(Creature* creature);
+	virtual WorshipSite* GetWorshipSite() { return NULL; }
+	// BW1W120 00401e20 BW1M100 1002c6a0 GameThingWithPos::IsWorkshop(Creature *)
+	virtual bool32_t IsWorkshop(Creature* creature) { return false; }
+	// BW1W120 004023b0 BW1M100 1042dbb0 GameThingWithPos::IsWorkshop(void)
+	virtual bool32_t IsWorkshop() { return false; }
 	// BW1W120 004054c0 BW1M100 1048f310 GameThingWithPos::IsBuildingWhichIsBeingBuilt(Creature *)
 	virtual bool32_t IsBuildingWhichIsBeingBuilt(Creature* creature);
 	// BW1W120 00401e30 BW1M100 104964f0 GameThingWithPos::IsStoragePitWithFoodInIt(Creature *)
-	virtual bool32_t IsStoragePitWithFoodInIt(Creature* creature);
+	virtual bool32_t IsStoragePitWithFoodInIt(Creature* creature) { return false; }
 	// BW1W120 00401e50 BW1M100 1048f2b0 GameThingWithPos::IsFieldWhichNeedsWatering(Creature *)
-	virtual bool32_t IsFieldWhichNeedsWatering(Creature* creature);
+	virtual bool32_t IsFieldWhichNeedsWatering(Creature* creature) { return false; }
 	// BW1W120 00401e60 BW1M100 1054fb10 GameThingWithPos::IsFieldWithFoodInIt(Creature *)
-	virtual bool32_t IsFieldWithFoodInIt(Creature* creature);
+	virtual bool32_t IsFieldWithFoodInIt(Creature* creature) { return false; }
 	// BW1W120 00401e70 BW1M100 1054f730 GameThingWithPos::IsFieldBelongingToAnotherPlayer(Creature *)
-	virtual bool32_t IsFieldBelongingToAnotherPlayer(Creature* creature);
+	virtual bool32_t IsFieldBelongingToAnotherPlayer(Creature* creature) { return false; }
 	// BW1W120 00401e80 BW1M100 100b1d40 GameThingWithPos::IsStoragePitBelongingToAnotherPlayer(Creature *)
-	virtual bool32_t IsStoragePitBelongingToAnotherPlayer(Creature* creature);
+	virtual bool32_t IsStoragePitBelongingToAnotherPlayer(Creature* creature) { return false; }
 	// BW1W120 00401e90 BW1M100 10379d10 GameThingWithPos::IsStoragePitBelongingToMyPlayer(Creature *)
-	virtual bool32_t IsStoragePitBelongingToMyPlayer(Creature* creature);
+	virtual bool32_t IsStoragePitBelongingToMyPlayer(Creature* creature) { return false; }
 	// BW1W120 00401ea0 BW1M100 1055e010 GameThingWithPos::BenefitsFromHavingWaterSprinkledOnIt(Creature *)
-	virtual bool32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* creature);
-	// BW1W120 00402320 BW1M100 1055e8b0 GameThingWithPos::IsTree(Creature *)
-	virtual bool32_t IsTree();
-	// BW1W120 00401eb0 BW1M100 1055e440 GameThingWithPos::IsTree(void)
-	virtual bool32_t IsTree(Creature* creature);
+	virtual bool32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* creature) { return false; }
+	// BW1W120 00401eb0 BW1M100 1055e440 GameThingWithPos::IsTree(Creature *)
+	virtual bool32_t IsTree(Creature* creature) { return false; }
+	// BW1W120 00402320 BW1M100 1055e8b0 GameThingWithPos::IsTree(void)
+	virtual bool32_t IsTree() { return false; }
 	// BW1W120 00401ec0 BW1M100 10159e90 GameThingWithPos::IsTreeNotTooNearPlannedForest(Creature *)
-	virtual bool32_t IsTreeNotTooNearPlannedForest(Creature* creature);
+	virtual bool32_t IsTreeNotTooNearPlannedForest(Creature* creature) { return false; }
 	// BW1W120 00401ed0 BW1M100 1017ac30 GameThingWithPos::IsTreeBigEnoughForCreature(Creature *)
-	virtual bool32_t IsTreeBigEnoughForCreature(Creature* creature);
+	virtual bool32_t IsTreeBigEnoughForCreature(Creature* creature) { return false; }
 	// BW1W120 00401ee0 BW1M100 10552270 GameThingWithPos::IsAFoodPileOutsideStoragePit(Creature *)
-	virtual bool32_t IsAFoodPileOutsideStoragePit(Creature* creature);
+	virtual bool32_t IsAFoodPileOutsideStoragePit(Creature* creature) { return false; }
 	// BW1W120 00401ef0 BW1M100 1055e160 GameThingWithPos::IsAWoodPileOutsideStoragePit(Creature *)
-	virtual bool32_t IsAWoodPileOutsideStoragePit(Creature* creature);
+	virtual bool32_t IsAWoodPileOutsideStoragePit(Creature* creature) { return false; }
 	// BW1W120 00401f00 BW1M100 1055e800 GameThingWithPos::IsDoingSomethingInteresting(Creature *)
-	virtual bool32_t IsDoingSomethingInteresting(Creature* creature);
+	virtual bool32_t IsDoingSomethingInteresting(Creature* creature) { return false; }
 	// BW1W120 00401f10 BW1M100 1055e630 GameThingWithPos::CanBeUsedForBuildingHomeByCreature(Creature *)
-	virtual bool32_t CanBeUsedForBuildingHomeByCreature(Creature* creature);
+	virtual bool32_t CanBeUsedForBuildingHomeByCreature(Creature* creature)
+	{
+		return IsRock() && CanBeUsedForBuilding(creature) && !IsInsideCreatureHome(creature);
+	}
 	// BW1W120 00401f60 BW1M100 1055ec40 GameThingWithPos::IsPickupableRock(Creature *)
-	virtual bool32_t IsPickupableRock(Creature* creature);
-	// BW1W120 00402360 BW1M100 1055e860 GameThingWithPos::IsCitadelPart(void)
-	virtual bool32_t IsCitadelPart();
+	virtual bool32_t IsPickupableRock(Creature* creature) { return IsRock() && CanBePickedUpByCreature(creature); }
 	// BW1W120 00401fa0 BW1M100 1055df30 GameThingWithPos::IsCitadelPart(Creature *)
-	virtual bool32_t IsCitadelPart(Creature* creature);
+	virtual bool32_t IsCitadelPart(Creature* creature) { return false; }
+	// BW1W120 00402360 BW1M100 1055e860 GameThingWithPos::IsCitadelPart(void)
+	virtual bool32_t IsCitadelPart() { return false; }
 	// BW1W120 00401fb0 BW1M100 1055ddd0 GameThingWithPos::IsPlayingFootball(Creature *)
-	virtual bool32_t IsPlayingFootball(Creature* creature);
+	virtual bool32_t IsPlayingFootball(Creature* creature) { return false; }
 	// BW1W120 00401fc0 BW1M100 10365210 GameThingWithPos::IsPlayingFootballAndMySideHasJustScored(Creature *)
-	virtual bool32_t IsPlayingFootballAndMySideHasJustScored(Creature* creature);
+	virtual bool32_t IsPlayingFootballAndMySideHasJustScored(Creature* creature) { return false; }
 	// BW1W120 00401fd0 BW1M100 1055f4e0 GameThingWithPos::IsPlayingFootballAndOtherSideHasJustScored(Creature *)
-	virtual bool32_t IsPlayingFootballAndOtherSideHasJustScored(Creature* creature);
+	virtual bool32_t IsPlayingFootballAndOtherSideHasJustScored(Creature* creature) { return false; }
 	// BW1W120 004e3f30 BW1M100 105e6470 GameThingWithPos::CanBeBroughtHomeByCreature(Creature *)
 	virtual bool32_t CanBeBroughtHomeByCreature(Creature* creature);
 	// BW1W120 00401fe0 BW1M100 100db860 GameThingWithPos::IsAnimalBelongingToOtherPlayer(Creature *)
-	virtual bool32_t IsAnimalBelongingToOtherPlayer(Creature* creature);
+	virtual bool32_t IsAnimalBelongingToOtherPlayer(Creature* creature) { return false; }
 	// BW1W120 00401ff0 BW1M100 103c3e80 GameThingWithPos::IsOneOffSpellBelongingToOtherPlayer(Creature *)
-	virtual bool32_t IsOneOffSpellBelongingToOtherPlayer(Creature* creature);
+	virtual bool32_t IsOneOffSpellBelongingToOtherPlayer(Creature* creature) { return false; }
 	// BW1W120 00402000 BW1M100 10167800 GameThingWithPos::IsOneOffSpellAggressive(Creature *)
-	virtual bool32_t IsOneOffSpellAggressive(Creature* creature);
+	virtual bool32_t IsOneOffSpellAggressive(Creature* creature) { return false; }
 	// BW1W120 00402010 BW1M100 10565280 GameThingWithPos::IsOneOffSpellCompassionate(Creature *)
-	virtual bool32_t IsOneOffSpellCompassionate(Creature* creature);
+	virtual bool32_t IsOneOffSpellCompassionate(Creature* creature) { return false; }
 	// BW1W120 00402020 BW1M100 103c95f0 GameThingWithPos::IsOneOffSpellPlayful(Creature *)
-	virtual bool32_t IsOneOffSpellPlayful(Creature* creature);
+	virtual bool32_t IsOneOffSpellPlayful(Creature* creature) { return false; }
 	// BW1W120 00402030 BW1M100 103c9590 GameThingWithPos::IsOneOffSpellToRestoreHealth(Creature *)
-	virtual bool32_t IsOneOffSpellToRestoreHealth(Creature* creature);
+	virtual bool32_t IsOneOffSpellToRestoreHealth(Creature* creature) { return false; }
 	// BW1W120 004054d0 BW1M100 100e74b0 GameThingWithPos::CanBeKickedByCreature(Creature *)
 	virtual bool32_t CanBeKickedByCreature(Creature* creature);
 	// BW1W120 00402040 BW1M100 1055f7f0 GameThingWithPos::CanBeStolenByCreature(Creature *)
-	virtual bool32_t CanBeStolenByCreature(Creature* creature);
+	virtual bool32_t CanBeStolenByCreature(Creature* creature) { return false; }
 	// BW1W120 004e4210 BW1M100 105e5ae0 GameThingWithPos::IsStealableByCreature(Creature *)
 	virtual bool32_t IsStealableByCreature(Creature* creature);
 	// BW1W120 00402050 BW1M100 100e7500 GameThingWithPos::IsStealableSpell(Creature *)
-	virtual bool32_t IsStealableSpell(Creature* creature);
+	virtual bool32_t IsStealableSpell(Creature* creature) { return false; }
 	// BW1W120 00402060 BW1M100 10541f60 GameThingWithPos::IsStealableScaffold(Creature *)
-	virtual bool32_t IsStealableScaffold(Creature* creature);
+	virtual bool32_t IsStealableScaffold(Creature* creature) { return false; }
 	// BW1W120 00402070 BW1M100 100dee30 GameThingWithPos::IsTownBelongingToOtherPlayer(Creature *)
-	virtual bool32_t IsTownBelongingToOtherPlayer(Creature* creature);
+	virtual bool32_t IsTownBelongingToOtherPlayer(Creature* creature) { return false; }
 	// BW1W120 00402080 BW1M100 10598e70 GameThingWithPos::IsTotemWithStealableSpell(Creature *)
-	virtual bool32_t IsTotemWithStealableSpell(Creature* creature);
+	virtual bool32_t IsTotemWithStealableSpell(Creature* creature) { return false; }
 	// BW1W120 00402090 BW1M100 100bc240 GameThingWithPos::IsCreatureAvailableForJointActivity(Creature *)
-	virtual bool32_t IsCreatureAvailableForJointActivity(Creature* creature);
+	virtual bool32_t IsCreatureAvailableForJointActivity(Creature* creature) { return false; }
 	// BW1W120 004020a0 BW1M100 100bc380 GameThingWithPos::IsCreatureNotAvailableForJointActivity(Creature *)
-	virtual bool32_t IsCreatureNotAvailableForJointActivity(Creature* creature);
+	virtual bool32_t IsCreatureNotAvailableForJointActivity(Creature* creature) { return false; }
 	// BW1W120 004020b0 BW1M100 100b1cf0 GameThingWithPos::IsToyAwayFromHome(Creature *)
-	virtual bool32_t IsToyAwayFromHome(Creature* creature);
+	virtual bool32_t IsToyAwayFromHome(Creature* creature) { return false; }
 	// BW1W120 004020c0 BW1M100 10378410 GameThingWithPos::IsToy(Creature *)
-	virtual bool32_t IsToy(Creature* creature);
+	virtual bool32_t IsToy(Creature* creature) { return false; }
 	// BW1W120 004020d0 BW1M100 1014d010 GameThingWithPos::IsToyBall(Creature *)
-	virtual bool32_t IsToyBall(Creature* creature);
+	virtual bool32_t IsToyBall(Creature* creature) { return false; }
 	// BW1W120 004020e0 BW1M100 10570d30 GameThingWithPos::IsToyDie(Creature *)
-	virtual bool32_t IsToyDie(Creature* creature);
+	virtual bool32_t IsToyDie(Creature* creature) { return false; }
 	// BW1W120 004020f0 BW1M100 1055e0d0 GameThingWithPos::IsToyCuddly(Creature *)
-	virtual bool32_t IsToyCuddly(Creature* creature);
-	// BW1W120 00402350 BW1M100 103d8a70 GameThingWithPos::IsLiving(void)
-	virtual bool32_t IsLiving();
+	virtual bool32_t IsToyCuddly(Creature* creature) { return false; }
 	// BW1W120 00402100 BW1M100 10560030 GameThingWithPos::IsLiving(Creature *)
-	virtual bool32_t IsLiving(Creature* creature);
+	virtual bool32_t IsLiving(Creature* creature) { return IsLiving(); }
+	// BW1W120 00402350 BW1M100 103d8a70 GameThingWithPos::IsLiving(void)
+	virtual bool32_t IsLiving() { return false; }
 	// BW1W120 00402110 BW1M100 1007f100 GameThingWithPos::IsFence(void)
-	virtual bool32_t IsFence();
+	virtual bool32_t IsFence() { return false; }
 	// BW1W120 00402120 BW1M100 1055f270 GameThingWithPos::IsSpellIcon(void)
-	virtual bool32_t IsSpellIcon();
+	virtual bool32_t IsSpellIcon() { return false; }
 	// BW1W120 004e4480 BW1M100 105e54b0 GameThingWithPos::NothingScareyNearMe(Creature *)
 	virtual bool32_t NothingScareyNearMe();
 	// BW1W120 00402130 BW1M100 1054f090 GameThingWithPos::CanBeUsedForThrowingDamageByCreature(Creature *)
-	virtual bool32_t CanBeUsedForThrowingDamageByCreature(Creature* creature);
+	virtual bool32_t CanBeUsedForThrowingDamageByCreature(Creature* creature) { return false; }
 	// BW1W120 00402140 BW1M100 1055f2b0 GameThingWithPos::IsCreatureWhoSeemsFriendly(Creature *)
-	virtual bool32_t IsCreatureWhoSeemsFriendly(Creature* creature);
+	virtual bool32_t IsCreatureWhoSeemsFriendly(Creature* creature) { return false; }
 	// BW1W120 00402150 BW1M100 1019d0f0 GameThingWithPos::CanBeThrownInTheSeaPlayfully(Creature *)
-	virtual bool32_t CanBeThrownInTheSeaPlayfully(Creature* creature);
+	virtual bool32_t CanBeThrownInTheSeaPlayfully(Creature* creature) { return false; }
 	// BW1W120 004054e0 BW1M100 10554000 GameThingWithPos::GetCreatureMimicType(void)
 	virtual uint32_t GetCreatureMimicType();
 	// BW1W120 004054f0 BW1M100 100e5cc0 GameThingWithPos::GetHowMuchCreatureWantsToLookAtMe(void)
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
 	// BW1W120 00402160 BW1M100 10057640 GameThingWithPos::IsFlock( const(void))
-	virtual bool32_t IsFlock();
+	virtual bool32_t IsFlock() const { return false; }
 	// BW1W120 00402170 BW1M100 103dbe60 GameThingWithPos::IsDance( const(void))
-	virtual bool32_t IsDance();
+	virtual bool32_t IsDance() const { return false; }
 	// BW1W120 00402180 BW1M100 100d0970 GameThingWithPos::IsReward( const(void))
-	virtual bool32_t IsReward();
+	virtual bool32_t IsReward() const { return false; }
 	// BW1W120 00402190 BW1M100 10033ae0 GameThingWithPos::IsScriptContainer( const(void))
-	virtual bool32_t IsScriptContainer();
+	virtual bool32_t IsScriptContainer() const { return false; }
 	// BW1W120 004021a0 BW1M100 1055f140 GameThingWithPos::IsWeather( const(void))
-	virtual bool32_t IsWeather();
+	virtual bool32_t IsWeather() const { return false; }
 	// BW1W120 004021b0 BW1M100 1015a0c0 GameThingWithPos::IsSpell( const(void))
-	virtual bool32_t IsSpell();
+	virtual bool32_t IsSpell() const { return false; }
 	// BW1W120 004021c0 BW1M100 10000790 GameThingWithPos::IsDeletedWhenReleasedFromScript(void)
-	virtual bool32_t IsDeletedWhenReleasedFromScript();
+	virtual bool32_t IsDeletedWhenReleasedFromScript() { return false; }
 	// BW1W120 004021d0 BW1M100 100332d0 GameThingWithPos::IsMobileWallHug( const(void))
-	virtual bool32_t IsMobileWallHug();
+	virtual bool32_t IsMobileWallHug() const { return false; }
 	// BW1W120 004021e0 BW1M100 10576f20 GameThingWithPos::IsActive( const(void))
-	virtual bool32_t IsActive();
+	virtual bool32_t IsActive() const { return false; }
 	// BW1W120 004021f0 BW1M100 1012f070 GameThingWithPos::IsObjectTurningTooFastForCameraToFollowSmoothly(void)
-	virtual bool32_t IsObjectTurningTooFastForCameraToFollowSmoothly();
+	virtual bool32_t IsObjectTurningTooFastForCameraToFollowSmoothly() { return false; }
 	// BW1W120 005703a0 BW1M100 103dbd40 GameThingWithPos::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
 	virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
 	// BW1W120 00768570 BW1M100 10594c30 GameThingWithPos::AttitudeToCreatureEating(void)
 	virtual uint32_t AttitudeToCreatureEating();
-	// BW1W120 00402b40 BW1M100 1016dc30 Object::GetText(void)
+	// BW1W120 inlined BW1M100 1016dc30 GameThingWithPos::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 00402200 BW1M100 100db7b0 GameThingWithPos::CalculateDesireForFood(void)
-	virtual float CalculateDesireForFood();
+	virtual float CalculateDesireForFood() { return 0.0f; }
 	// BW1W120 00402210 BW1M100 10111950 GameThingWithPos::CalculateDesireForRest(void)
-	virtual float CalculateDesireForRest();
+	virtual float CalculateDesireForRest() { return 0.0f; }
 	// BW1W120 00402220 BW1M100 100db800 GameThingWithPos::CalculatePeopleHidingIndicator(void)
-	virtual float CalculatePeopleHidingIndicator();
+	virtual float CalculatePeopleHidingIndicator() { return 0.0f; }
 	// BW1W120 00405500 BW1M100 100b1980 GameThingWithPos::GetHeight(void)
 	virtual float GetHeight();
 	// BW1W120 00402230 BW1M100 10495720 GameThingWithPos::IsReadyForNewScriptAction(void)
-	virtual bool32_t IsReadyForNewScriptAction();
+	virtual bool32_t IsReadyForNewScriptAction() { return false; }
 	// BW1W120 00570290 BW1M100 1036ad90 GameThingWithPos::ForDrawFXGetNumVertices(void)
 	virtual int ForDrawFXGetNumVertices();
 	// BW1W120 005702a0 BW1M100 1056f610 GameThingWithPos::ForDrawFXGetVertexPos(long, LHPoint *)
@@ -479,79 +500,82 @@ public:
 	// BW1W120 00405510 BW1M100 10003460 GameThingWithPos::SetInScript(int)
 	virtual void SetInScript(int param_1);
 	// BW1W120 00402240 BW1M100 100552b0 GameThingWithPos::SetControlledByScript(int)
-	virtual void SetControlledByScript(int param_1);
+	virtual void SetControlledByScript(int controlled)
+	{
+		Flags = (Flags & ~GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) | ((controlled & 1) << 10);
+	}
 	// BW1W120 00402270 BW1M100 101a4ed0 GameThingWithPos::GetDeathReason(void)
-	virtual DEATH_REASON GetDeathReason();
+	virtual DEATH_REASON GetDeathReason() { return DEATH_REASON_NONE; }
 	// BW1W120 00402280 BW1M100 1004cf30 GameThingWithPos::IsInScript(void)
-	virtual bool32_t IsInScript();
+	virtual bool32_t IsInScript() { return (Flags & GAME_THING_WITH_POS_FLAG_IN_SCRIPT) != 0; }
 	// BW1W120 00402290 BW1M100 1033c710 GameThingWithPos::IsMaleVillager(void)
-	virtual bool32_t IsMaleVillager();
+	virtual bool32_t IsMaleVillager() { return false; }
 	// BW1W120 004022a0 BW1M100 1056d120 GameThingWithPos::IsFemaleVillager(void)
-	virtual bool32_t IsFemaleVillager();
+	virtual bool32_t IsFemaleVillager() { return false; }
 	// BW1W120 004022b0 BW1M100 1002a950 GameThingWithPos::IsAnimal(void)
-	virtual bool32_t IsAnimal();
+	virtual bool32_t IsAnimal() { return false; }
 	// BW1W120 004022c0 BW1M100 10572f10 GameThingWithPos::IsAChild(void)
-	virtual bool32_t IsAChild();
+	virtual bool32_t IsAChild() { return false; }
 	// BW1W120 00405540 BW1M100 103c1df0 GameThingWithPos::IsHouse(void)
 	virtual bool32_t IsHouse();
 	// BW1W120 00405550 BW1M100 103c2360 GameThingWithPos::IsObject( const(void))
-	virtual bool32_t IsObject();
+	virtual bool32_t IsObject() const;
 	// BW1W120 004022d0 BW1M100 100b6810 GameThingWithPos::IsFootball(void)
-	virtual bool32_t IsFootball();
+	virtual bool32_t IsFootball() { return false; }
 	// BW1W120 004022e0 BW1M100 10159fa0 GameThingWithPos::IsCitadel(void)
-	virtual bool32_t IsCitadel();
+	virtual bool32_t IsCitadel() { return false; }
 	// BW1W120 004022f0 BW1M100 100fd0e0 GameThingWithPos::IsForest(void)
-	virtual bool32_t IsForest();
+	virtual bool32_t IsForest() { return false; }
 	// BW1W120 00402300 BW1M100 105a2310 GameThingWithPos::IsMobileObject(void)
-	virtual bool32_t IsMobileObject();
+	virtual bool32_t IsMobileObject() { return false; }
 	// BW1W120 00402310 BW1M100 101c64c0 GameThingWithPos::IsMobileStatic(void)
-	virtual bool32_t IsMobileStatic();
+	virtual bool32_t IsMobileStatic() { return false; }
 	// BW1W120 00402330 BW1M100 100d56f0 GameThingWithPos::IsAnyKindOfTree(void)
-	virtual bool32_t IsAnyKindOfTree();
+	virtual bool32_t IsAnyKindOfTree() { return false; }
 	// BW1W120 00402340 BW1M100 1055e120 GameThingWithPos::IsDeadTree(void)
-	virtual bool32_t IsDeadTree();
+	virtual bool32_t IsDeadTree() { return false; }
 	// BW1W120 00402370 BW1M100 105600c0 GameThingWithPos::IsPileFood(void)
-	virtual bool32_t IsPileFood();
+	virtual bool32_t IsPileFood() { return false; }
 	// BW1W120 00402380 BW1M100 1055f840 GameThingWithPos::IsFeature(void)
-	virtual bool32_t IsFeature();
+	virtual bool32_t IsFeature() { return false; }
 	// BW1W120 00402390 BW1M100 100bc020 GameThingWithPos::IsScriptMarker(void)
-	virtual bool32_t IsScriptMarker();
+	virtual bool32_t IsScriptMarker() { return false; }
 	// BW1W120 004023a0 BW1M100 10000870 GameThingWithPos::IsScriptHighlight(void)
-	virtual bool32_t IsScriptHighlight();
+	virtual bool32_t IsScriptHighlight() { return false; }
 	// BW1W120 004178d0 BW1M100 10380910 GameThingWithPos::IsWonder(void)
 	virtual bool32_t IsWonder();
 	// BW1W120 004023c0 BW1M100 10380730 GameThingWithPos::IsInfluenceRing(void)
-	virtual bool32_t IsInfluenceRing();
+	virtual bool32_t IsInfluenceRing() { return false; }
 	// BW1W120 004023d0 BW1M100 103809e0 GameThingWithPos::IsPuzzleGame(void)
-	virtual bool32_t IsPuzzleGame();
+	virtual bool32_t IsPuzzleGame() { return false; }
 	// BW1W120 004023e0 BW1M100 100a08c0 GameThingWithPos::IsScaffold(void)
-	virtual bool32_t IsScaffold();
+	virtual bool32_t IsScaffold() { return false; }
 	// BW1W120 004023f0 BW1M100 1019d850 GameThingWithPos::IsSkeleton( const(void))
-	virtual bool32_t IsSkeleton();
+	virtual bool32_t IsSkeleton() const { return false; }
 	// BW1W120 00402400 BW1M100 100dcd70 GameThingWithPos::IsPoisoned(void)
-	virtual bool32_t IsPoisoned();
+	virtual bool32_t IsPoisoned() { return false; }
 	// BW1W120 00402410 BW1M100 10427300 GameThingWithPos::IsSpeedUp(void)
-	virtual bool32_t IsSpeedUp();
+	virtual bool32_t IsSpeedUp() { return false; }
 	// BW1W120 00402420 BW1M100 10170360 GameThingWithPos::IsParticleContainer(void)
-	virtual bool32_t IsParticleContainer();
+	virtual bool32_t IsParticleContainer() { return false; }
 	// BW1W120 00402430 BW1M100 103dbea0 GameThingWithPos::IsSacrificeAltar(void)
-	virtual bool32_t IsSacrificeAltar();
+	virtual bool32_t IsSacrificeAltar() { return false; }
 	// BW1W120 00402440 BW1M100 10570ed0 GameThingWithPos::IsPot(void)
-	virtual bool32_t IsPot();
+	virtual bool32_t IsPot() { return false; }
 	// BW1W120 00402450 BW1M100 104daf10 GameThingWithPos::IsComputerPlayer(void)
-	virtual bool32_t IsComputerPlayer();
+	virtual bool32_t IsComputerPlayer() { return false; }
 	// BW1W120 005701c0 BW1M100 103623e0 GameThingWithPos::CanBeThrownByPlayer(void)
 	virtual bool32_t CanBeThrownByPlayer();
 	// BW1W120 00402460 BW1M100 1035b870 GameThingWithPos::SetSkeleton(int)
-	virtual void SetSkeleton(int index);
+	virtual void SetSkeleton(int index) {}
 	// BW1W120 00402470 BW1M100 1007b170 GameThingWithPos::IsSpellSeed(void)
-	virtual bool32_t IsSpellSeed();
+	virtual bool32_t IsSpellSeed() { return false; }
 	// BW1W120 00402480 BW1M100 10571e10 GameThingWithPos::IsSpellShield(void)
-	virtual bool32_t IsSpellShield();
+	virtual bool32_t IsSpellShield() { return false; }
 	// BW1W120 00402490 BW1M100 1054ecb0 GameThingWithPos::IsPileResource(void)
-	virtual bool32_t IsPileResource();
+	virtual bool32_t IsPileResource() { return false; }
 	// BW1W120 004024a0 BW1M100 100bb900 GameThingWithPos::IsScriptTimer(void)
-	virtual bool32_t IsScriptTimer();
+	virtual bool32_t IsScriptTimer() { return false; }
 	// BW1W120 004178e0 BW1M100 102ff000 GameThingWithPos::CreateBuildingSite(void)
 	virtual bool32_t CreateBuildingSite();
 	// BW1W120 00405560 BW1M100 102ffbb0 GameThingWithPos::GetQueryFirstEnumText(void)
@@ -565,15 +589,15 @@ public:
 	// BW1W120 00570200 BW1M100 100008c0 GameThingWithPos::GetScriptObjectType(void)
 	virtual uint32_t GetScriptObjectType();
 	// BW1W120 004024b0 BW1M100 100b2190 GameThingWithPos::GetFacingDirection(void)
-	virtual float GetFacingDirection();
+	virtual float GetFacingDirection() { return 0.0f; }
 	// BW1W120 004024c0 BW1M100 1055fa50 GameThingWithPos::SetAffectedByWind(int)
-	virtual void SetAffectedByWind(int param_1);
+	virtual void SetAffectedByWind(int affected) {}
 	// BW1W120 004024d0 BW1M100 100188b0 GameThingWithPos::GetReactionPower(void)
-	virtual float GetReactionPower();
+	virtual float GetReactionPower() { return 1.0f; }
 	// BW1W120 00570570 BW1M100 10541fb0 GameThingWithPos::GetSpellCastPos(void)
 	virtual void GetSpellCastPos(MapCoords* outPos);
 	// BW1W120 004024e0 BW1M100 1015a1b0 GameThingWithPos::CleanUpBeforeReset(void)
-	virtual void CleanUpBeforeReset();
+	virtual void CleanUpBeforeReset() {}
 
 	// Constructors
 
@@ -587,6 +611,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 004e3ee0 BW1M100 105e6600 GameThingWithPos::IsInsideCreatureHome(Creature *)
+	bool32_t IsInsideCreatureHome(Creature* creature);
 	// BW1W120 0056fe70 BW1M100 103793b0 GameThingWithPos::GetBoredomMultiplier(Reaction *)
 	int GetBoredomMultiplier(Reaction* param_1);
 	// BW1W120 005705d0 BW1M100 10098a30 GameThingWithPos::SetToZero(void)

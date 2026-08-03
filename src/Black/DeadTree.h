@@ -88,7 +88,7 @@ public:
 	// BW1W120 00510ee0 BW1M100 100c2a40 DeadTree::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
 	// BW1W120 00511050 BW1M100 100c2910 DeadTree::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
-	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2,
+	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 005109a0 BW1M100 100c0f00 DeadTree::InterfaceValidToTap(GInterfaceStatus *)
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);

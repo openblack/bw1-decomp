@@ -244,7 +244,7 @@ public:
 	// BW1W120 0074ff70 BW1M100 1004b3c0 Villager::ProcessState(void)
 	virtual uint32_t ProcessState();
 	// BW1W120 0055ca50 BW1M100 10147fb0 Villager::CanBePickedUp(void)
-	virtual bool CanBePickedUp();
+	virtual bool32_t CanBePickedUp();
 	// BW1W120 007560e0 BW1M100 10565860 Villager::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
 	// BW1W120 0074fc70 BW1M100 10571530 Villager::CallVirtualFunctionsForCreation(MapCoords const &)

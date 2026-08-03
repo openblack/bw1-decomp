@@ -231,11 +231,11 @@ public:
 	// BW1W120 00473f30 BW1M100 101e2cc0 Creature::RemoveDance(void)
 	virtual void RemoveDance();
 	// BW1W120 00474090 BW1M100 101e32a0 Creature::IsCreature(Creature *)
-	virtual bool IsCreature(Creature* param_1);
+	virtual bool32_t IsCreature(Creature* creature);
 	// BW1W120 00474080 BW1M100 inlined Creature::IsCreature_1(void)
 	virtual bool IsCreature_1();
 	// BW1W120 004e4080 BW1M100 105e6020 Creature::IsCreatureNotTooNear(Creature *)
-	virtual bool IsCreatureNotTooNear(Creature* param_1);
+	virtual bool32_t IsCreatureNotTooNear(Creature* creature);
 	// BW1W120 0047b1f0 BW1M100 101d48a0 Creature::GetMaxAlignmentChangePerGameTurn(void)
 	virtual float GetMaxAlignmentChangePerGameTurn();
 	// BW1W120 004f8350 BW1M100 inlined Creature::MaintainSpell(unsigned int, float)
@@ -283,7 +283,7 @@ public:
 	// BW1W120 00477ac0 BW1M100 101daa00 Creature::GetMovementDirection(LHPoint *)
 	virtual void GetMovementDirection(LHPoint* param_1);
 	// BW1W120 00479e40 BW1M100 101d6a50 Creature::IsMoving( const(void))
-	virtual bool IsMoving();
+	virtual bool32_t IsMoving() const;
 	// BW1W120 00477e10 BW1M100 101da2c0 Creature::GetImpressiveType(void)
 	virtual IMPRESSIVE_TYPE GetImpressiveType();
 	// BW1W120 0047b150 BW1M100 101d4b00 Creature::GetImpressiveIntensity(IMPRESSIVE_TYPE)
@@ -291,11 +291,11 @@ public:
 	// BW1W120 0047b200 BW1M100 101d4730 Creature::GetImpressiveValue(Living *, Reaction *)
 	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
 	// BW1W120 004e4310 BW1M100 105e5880 Creature::IsActivityObjectWhichAngerAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* creature);
 	// BW1W120 00474020 BW1M100 101e30a0 Creature::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichCompassionAppliesTo(Creature* creature);
 	// BW1W120 00474030 BW1M100 101e3100 Creature::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature);
 	// BW1W120 004c5e50 BW1M100 10231ab0 Creature::FalseFunction(void)
 	virtual uint32_t FalseFunction();
 	// BW1W120 00473fd0 BW1M100 101e2f50 Creature::IsSuitableForCreatureActivity(void)
@@ -377,7 +377,7 @@ public:
 	// BW1W120 00477ef0 BW1M100 101da120 Creature::GetProjectileSpeed(void)
 	virtual float GetProjectileSpeed();
 	// BW1W120 00473fe0 BW1M100 101e2fa0 Creature::CanBePickedUp(void)
-	virtual bool CanBePickedUp();
+	virtual bool32_t CanBePickedUp();
 	// BW1W120 0047cd60 BW1M100 101d06d0 Creature::GetWeight(void)
 	virtual float GetWeight();
 	// BW1W120 004f8a10 BW1M100 1028ac60 Creature::CanBeSuckedIntoVortex(LandscapeVortex *)
@@ -405,15 +405,15 @@ public:
 	// BW1W120 0047a320 BW1M100 101d63d0 Creature::InterfaceGiveObject(GInterfaceStatus *, Object *)
 	virtual uint32_t InterfaceGiveObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 00476dc0 BW1M100 101dc510 Creature::ValidToSelectFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t ValidToSelectFightThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
+	virtual uint32_t ValidToSelectFightThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 00476dd0 BW1M100 101dc480 Creature::ValidToApplyFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t ValidToApplyFightThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
+	virtual uint32_t ValidToApplyFightThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 004c6460 BW1M100 10233f70 Creature::SelectFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t SelectFightThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
+	virtual uint32_t SelectFightThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 004c64d0 BW1M100 10233ea0 Creature::ApplyFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t ApplyFightThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
+	virtual uint32_t ApplyFightThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 00476df0 BW1M100 101dc3f0 Creature::ValidToFightThisToObject(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t ValidToFightThisToObject(GInterfaceStatus* param_1, const MapCoords* param_2);
+	virtual uint32_t ValidToFightThisToObject(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 004c5fe0 BW1M100 102345e0 Creature::FightThisToObject(GInterfaceStatus *, Object *)
 	virtual uint32_t FightThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 0047b1e0 BW1M100 inlined Creature::CanBeDestroyedBySpell_1(Spell *)
@@ -436,7 +436,7 @@ public:
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));
 	// BW1W120 00477f00 BW1M100 101da0d0 Creature::IsScary(void)
-	virtual bool IsScary();
+	virtual bool32_t IsScary();
 	// BW1W120 00477ee0 BW1M100 101da160 Creature::GetFacingPitch(void)
 	virtual float GetFacingPitch();
 	// BW1W120 004770d0 BW1M100 101dbbc0 Creature::SetHeadPos(MapCoords *)

@@ -63,7 +63,7 @@ public:
 	// BW1W120 0066e300 BW1M100 10119a80 PileResource::CallVirtualFunctionsForCreation(MapCoords const &)
 	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
 	// BW1W120 0055d680 BW1M100 1011d530 PileResource::IsLockedInInteract(void)
-	virtual bool IsLockedInInteract();
+	virtual bool32_t IsLockedInInteract();
 	// BW1W120 0066e4f0 BW1M100 10119600 PileResource::ValidForLockedSelectProcess(GInterfaceStatus *)
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
 	// BW1W120 0066e710 BW1M100 10119060 PileResource::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)

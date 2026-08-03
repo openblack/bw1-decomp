@@ -37,7 +37,7 @@ public:
 	// BW1W120 00774580 BW1M100 105a4680 WeatherThing::SetSpeedInMetres(float, int)
 	virtual void SetSpeedInMetres(float param_1, int param_2);
 	// BW1W120 0055df10 BW1M100 105a3ea0 WeatherThing::IsWeather( const(void))
-	virtual uint32_t IsWeather();
+	virtual uint32_t IsWeather() const;
 	// BW1W120 0055df30 BW1M100 105a3f20 WeatherThing::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 00774360 BW1M100 105a4b40 WeatherThing::GetScriptObjectType(void)

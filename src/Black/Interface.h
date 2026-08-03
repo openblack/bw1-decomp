@@ -119,7 +119,7 @@ public:
 	// BW1W120 005d0510 BW1M100 10358340 GInterface::ResolveLoad(void)
 	virtual void ResolveLoad();
 	// BW1W120 005ce2e0 BW1M100 10074680 GInterface::IsActive( const(void))
-	virtual uint32_t IsActive();
+	virtual uint32_t IsActive() const;
 	// BW1W120 005ce2d0 BW1M100 10357dc0 GInterface::GetText(void)
 	virtual const char* GetText();
 

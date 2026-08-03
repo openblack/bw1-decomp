@@ -178,9 +178,9 @@ public:
 	// BW1W120 005eed20 BW1M100 1037d880 Living::ResolveLoad(void)
 	virtual void ResolveLoad();
 	// BW1W120 004173c0 BW1M100 10130ac0 Living::IsAnimate(void)
-	virtual bool IsAnimate();
+	virtual bool32_t IsAnimate();
 	// BW1W120 004172c0 BW1M100 101306c0 Living::IsStompable(void)
-	virtual bool IsStompable();
+	virtual bool32_t IsStompable();
 	// BW1W120 00417470 BW1M100 10130e00 Living::IsNotLiving(void)
 	virtual uint32_t IsNotLiving();
 	// BW1W120 00417330 BW1M100 10130890 Living::IsSuitableForCreatureAction(void)
@@ -210,7 +210,7 @@ public:
 	// BW1W120 00768580 BW1M100 10594bb0 Living::AttitudeToCreatureEating(void)
 	virtual uint32_t AttitudeToCreatureEating();
 	// BW1W120 00416ff0 BW1M100 1012f810 Living::IsSkeleton( const(void))
-	virtual uint32_t IsSkeleton();
+	virtual uint32_t IsSkeleton() const;
 	// BW1W120 00416f90 BW1M100 10057470 Living::IsPoisoned(void)
 	virtual uint32_t IsPoisoned();
 	// BW1W120 00417000 BW1M100 1012f850 Living::SetSkeleton(int)
@@ -224,7 +224,7 @@ public:
 	// BW1W120 0051aec0 BW1M100 100c5880 Living::Draw(void)
 	virtual void Draw();
 	// BW1W120 004172a0 BW1M100 10130640 Living::CanBePickedUp(void)
-	virtual bool CanBePickedUp();
+	virtual bool32_t CanBePickedUp();
 	// BW1W120 004172b0 BW1M100 10130680 Living::CanBeCrushed(void)
 	virtual uint32_t CanBeCrushed();
 	// BW1W120 005ec9b0 BW1M100 10382060 Living::CallVirtualFunctionsForCreation(MapCoords const &)

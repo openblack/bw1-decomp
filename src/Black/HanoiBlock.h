@@ -35,7 +35,7 @@ public:
 	// BW1W120 00561830 BW1M100 1011ed80 HanoiBlock::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 006de440 BW1M100 1011ee00 HanoiBlock::IsCannotBePickedUp( const(void))
-	virtual bool IsCannotBePickedUp();
+	virtual bool32_t IsCannotBePickedUp() const;
 	// BW1W120 006de3f0 BW1M100 1011eed0 HanoiBlock::InterfaceSetInMagicHand(GInterfaceStatus *)
 	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 00561800 BW1M100 1011eca0 HanoiBlock::CanBecomeAPhysicsObject(void)

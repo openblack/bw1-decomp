@@ -99,7 +99,7 @@ public:
 	// BW1W120 00518150 BW1M100 10036400 MobileObject::Draw(void)
 	virtual void Draw();
 	// BW1W120 00425b30 BW1M100 100ad910 MobileObject::CanBePickedUp(void)
-	virtual bool CanBePickedUp();
+	virtual bool32_t CanBePickedUp();
 	// BW1W120 00607560 BW1M100 103bc790 MobileObject::GetWorldMatrix(LHMatrix *)
 	virtual void GetWorldMatrix(LHMatrix* param_1);
 	// BW1W120 00607150 BW1M100 103bd200 MobileObject::CallVirtualFunctionsForCreation(MapCoords const &)

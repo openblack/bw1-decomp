@@ -74,17 +74,17 @@ public:
 	// BW1W120 0052f8b0 BW1M100 100e35c0 Flock::GetCreatureBeliefListType(void)
 	virtual uint32_t GetCreatureBeliefListType();
 	// BW1W120 0052f8d0 BW1M100 100e3650 Flock::IsActivityObjectWhichAngerAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* creature);
 	// BW1W120 0052f8e0 BW1M100 100e36b0 Flock::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichCompassionAppliesTo(Creature* creature);
 	// BW1W120 0052f8f0 BW1M100 100e3710 Flock::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature);
 	// BW1W120 0052f8c0 BW1M100 100e3600 Flock::IsSuitableForCreatureActivity(void)
 	virtual uint32_t IsSuitableForCreatureActivity();
 	// BW1W120 0052f860 BW1M100 100e34b0 Flock::IsFlock( const(void))
-	virtual uint32_t IsFlock();
+	virtual uint32_t IsFlock() const;
 	// BW1W120 0052f880 BW1M100 100e3510 Flock::IsScriptContainer( const(void))
-	virtual uint32_t IsScriptContainer();
+	virtual uint32_t IsScriptContainer() const;
 	// BW1W120 0052f890 BW1M100 100e3550 Flock::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 00530490 BW1M100 100e4a70 Flock::GetScriptObjectType(void)

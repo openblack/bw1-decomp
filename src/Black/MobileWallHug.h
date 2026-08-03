@@ -86,7 +86,7 @@ public:
 	// BW1W120 0060c040 BW1M100 103c3450 MobileWallHug::GetMovementDirection(LHPoint *)
 	virtual void GetMovementDirection(LHPoint* param_1);
 	// BW1W120 00416f80 BW1M100 1002c440 MobileWallHug::IsMobileWallHug( const(void))
-	virtual uint32_t IsMobileWallHug();
+	virtual uint32_t IsMobileWallHug() const;
 	// BW1W120 0060c020 BW1M100 103c3520 MobileWallHug::GetFacingDirection(void)
 	virtual float GetFacingDirection();
 	// BW1W120 0060dac0 BW1M100 103c1a50 MobileWallHug::SetYAngle(float)

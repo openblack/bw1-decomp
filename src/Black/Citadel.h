@@ -64,7 +64,7 @@ public:
 	// BW1W120 00462a80 BW1M100 101b6ed0 Citadel::GetOrigin(void)
 	virtual uint32_t GetOrigin();
 	// BW1W120 004e40e0 BW1M100 105e5f60 Citadel::IsActivityObjectWhichAngerAppliesTo(Creature *)
-	virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
+	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
 	// BW1W120 00462a90 BW1M100 101b6f00 Citadel::IsSuitableForCreatureActivity(void)
 	virtual uint32_t IsSuitableForCreatureActivity();
 	// BW1W120 004d1b50 BW1M100 10242fd0 Citadel::GetHowMuchCreatureWantsToLookAtMe(void)

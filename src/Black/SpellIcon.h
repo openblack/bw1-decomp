@@ -100,7 +100,7 @@ public:
 	// BW1W120 00726160 BW1M100 105253c0 SpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
 	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
 	// BW1W120 0055d400 BW1M100 10525e50 SpellIcon::IsSpellSeedReturnPoint( const(void))
-	virtual bool IsSpellSeedReturnPoint();
+	virtual bool32_t IsSpellSeedReturnPoint() const;
 	// BW1W120 0055d410 BW1M100 10525e90 SpellIcon::ValidAsInterfaceLeashTarget(void)
 	virtual uint32_t ValidAsInterfaceLeashTarget();
 	// BW1W120 007263c0 BW1M100 10524b00 SpellIcon::InterfaceValidToTap(GInterfaceStatus *)
