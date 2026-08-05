@@ -14961,6 +14961,7 @@ fn_006F8060 = .text:0x006F8060; // type:function size:0xD0
 fn_006F8130 = .text:0x006F8130; // type:function size:0x130
 fn_006F8260 = .text:0x006F8260; // type:function size:0x20
 fn_006F82E0 = .text:0x006F82E0; // type:function size:0x90
+fn_006F90B0 = .text:0x006F90B0; // type:function size:0x132
 fn_006FAA60 = .text:0x006FAA60; // type:function size:0x50
 crt_xc_fn_ctypeGuard_ScriptFunctions_006FFF70 = .text:0x006FFF70; // type:function size:0x20
 crt_xc_fn_atexitCleanupReg_ScriptFunctions_006FFF90 = .text:0x006FFF90; // type:function size:0x10
