@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include "Fixed.h" /* For struct SingleMapFixed */
 
 // Forward Declares
@@ -60,7 +62,7 @@ public:
 	// BW1W120 00709740 BW1M100 104fa180 ScriptHighlight::IsScriptHighlight(void)
 	virtual uint32_t IsScriptHighlight();
 	// BW1W120 0070ae30 BW1M100 100083b0 ScriptHighlight::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0070a580 BW1M100 10055e10 ScriptHighlight::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00709c60 BW1M100 10043ec0 ScriptHighlight::Draw(void)

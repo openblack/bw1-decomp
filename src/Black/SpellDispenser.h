@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include "Abode.h" /* For struct Abode */
 
 // Forward Declares
@@ -37,7 +39,7 @@ public:
 	// BW1W120 007226c0 BW1M100 1051a970 SpellDispenser::IsActive( const(void))
 	virtual uint32_t IsActive() const;
 	// BW1W120 00722fb0 BW1M100 1051ac40 SpellDispenser::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00722a70 BW1M100 1051b590 SpellDispenser::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00722940 BW1M100 1051b6d0 SpellDispenser::Draw(void)

@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum HOLD_TYPE */
+#include <chlasm/Enum.h>        /* For enum HOLD_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "MobileObject.h" /* For struct MobileObject */
 
@@ -27,7 +28,7 @@ public:
 	// BW1W120 0055d0a0 BW1M100 103be1b0 Poo::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 006083c0 BW1M100 103bad80 Poo::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 006079d0 BW1M100 103bc130 Poo::InsertMapObject(void)
 	virtual void InsertMapObject();
 	// BW1W120 006083d0 BW1M100 103bad50 Poo::GetHoldType(void)

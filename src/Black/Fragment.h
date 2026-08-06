@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE, enum SOUND_COLLISION_TYPE */
+#include <chlasm/Enum.h>        /* For enum IMMERSION_EFFECT_TYPE, enum SOUND_COLLISION_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "Rock.h" /* For struct Rock */
 
@@ -53,7 +54,7 @@ public:
 	// BW1W120 0076e960 BW1M100 1015aba0 Fragment::CanBeThrownByPlayer(void)
 	virtual uint32_t CanBeThrownByPlayer();
 	// BW1W120 0076f7c0 BW1M100 1015aef0 Fragment::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0076ec00 BW1M100 1015be10 Fragment::Draw(void)
 	virtual void Draw();
 	// BW1W120 0076e940 BW1M100 1015ab00 Fragment::ValidForPlaceInHand(GInterfaceStatus *)

@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include "Animal.h" /* For struct Animal */
 
 // Forward Declares
@@ -41,7 +43,7 @@ public:
 	// BW1W120 004d1b10 BW1M100 10243110 Dove::GetHowMuchCreatureWantsToLookAtMe(void)
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
 	// BW1W120 0041eaa0 BW1M100 10173fb0 Dove::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0041f680 BW1M100 10037cf0 Dove::Draw(void)
 	virtual void Draw();
 	// BW1W120 0041f240 BW1M100 101732a0 Dove::CallVirtualFunctionsForCreation(MapCoords const &)

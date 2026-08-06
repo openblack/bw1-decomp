@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For enum HOLD_TYPE, enum IMMERSION_EFFECT_TYPE */
+#include <chlasm/Enum.h>        /* For enum HOLD_TYPE, enum IMMERSION_EFFECT_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "Object.h" /* For struct Object */
 
@@ -53,7 +54,7 @@ public:
 	// BW1W120 00727f50 BW1M100 1052cc60 SpellSeed::IsSpellSeed(void)
 	virtual uint32_t IsSpellSeed();
 	// BW1W120 00729c90 BW1M100 10528780 SpellSeed::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00728f30 BW1M100 1052a420 SpellSeed::InsertMapObject(void)
 	virtual void InsertMapObject();
 	// BW1W120 00728f40 BW1M100 1052a3e0 SpellSeed::RemoveMapObject(void)

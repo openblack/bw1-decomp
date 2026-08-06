@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
+#include <chlasm/ScriptEnums.h>   /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 
@@ -42,7 +43,7 @@ public:
 	// BW1W120 00527820 BW1M100 100d07b0 Feature::GetQueryLastEnumText(void)
 	virtual HELP_TEXT GetQueryLastEnumText();
 	// BW1W120 005276c0 BW1M100 10008370 Feature::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 004220d0 BW1M100 100a52b0 Feature::GetMesh( const(void))
 	virtual int GetMesh();
 	// BW1W120 00518690 BW1M100 100238a0 Feature::Draw(void)

@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For enum VORTEX_TYPE */
+#include <chlasm/Enum.h>        /* For enum VORTEX_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "MobileStatic.h"  /* For struct MobileStatic */
 #include "MultiMapFixed.h" /* For struct MultiMapFixedVftable */
@@ -89,7 +90,7 @@ public:
 	// BW1W120 005fd6b0 BW1M100 103b96d0 LandscapeVortex::CanActAsAContainer(Creature *)
 	virtual uint32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 005ffff0 BW1M100 103b4430 LandscapeVortex::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 005fedf0 BW1M100 103b5d50 LandscapeVortex::Create3DObject(void)
 	virtual void Create3DObject();
 	// BW1W120 005fd600 BW1M100 103b9350 LandscapeVortex::HandShouldFeelWithMeshIntersect(void)

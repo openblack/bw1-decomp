@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum HOLD_TYPE, enum IMMERSION_EFFECT_TYPE, enum RESOURCE_TYPE, enum SOUND_COLLISION_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "Rock.h" /* For struct Rock */
 
@@ -54,7 +55,7 @@ public:
 	// BW1W120 00510990 BW1M100 100c0ec0 DeadTree::IsDeadTree(void)
 	virtual uint32_t IsDeadTree();
 	// BW1W120 005115b0 BW1M100 100c1c10 DeadTree::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 005110d0 BW1M100 100c2890 DeadTree::GetHoldType(void)
 	virtual HOLD_TYPE GetHoldType();
 	// BW1W120 005110e0 BW1M100 100c2820 DeadTree::GetHoldRadius(void)

@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h>                             /* For LEASH_TYPE_LAST, enum ABODE_TYPE */
+#include <chlasm/ScriptEnums.h>                      /* For enum SCRIPT_OBJECT_TYPE */
 #include <chlasm/HelpTextEnums.h>                    /* For enum HELP_TEXT */
 #include <Lionhead/LH3DLib/development/LH3DColor.h>  /* For struct LH3DColor */
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
@@ -134,7 +135,7 @@ public:
 	// BW1W120 00468dc0 BW1M100 101bbf10 CitadelHeart::CreateBuildingSite(void)
 	virtual uint32_t CreateBuildingSite();
 	// BW1W120 004680b0 BW1M100 101bd410 CitadelHeart::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00464b20 BW1M100 inlined CitadelHeart::SetSpecularColor(LH3DColor)
 	virtual void SetSpecularColor(LH3DColor param_1);
 	// BW1W120 00464b30 BW1M100 100173c0 CitadelHeart::GetSpecularColor(void)

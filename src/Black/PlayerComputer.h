@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include "GameThing.h"        /* For struct GameThing */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
@@ -58,7 +60,7 @@ public:
 	// BW1W120 0055e3c0 BW1M100 104abff0 GComputerPlayer::IsComputerPlayer(void)
 	virtual uint32_t IsComputerPlayer();
 	// BW1W120 006587b0 BW1M100 104a5850 GComputerPlayer::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 };
 
 class GComputerPlayerQueue : public GameThing
