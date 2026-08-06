@@ -1,6 +1,9 @@
 #ifndef BW1_DECOMP_LH3D_MATH_INCLUDED_H
 #define BW1_DECOMP_LH3D_MATH_INCLUDED_H
 
+const float PI = 3.14159265358979323846f;
+const float TWO_PI = 6.2831854820251465f;
+
 struct LHPoint;
 
 struct LH3DMath
