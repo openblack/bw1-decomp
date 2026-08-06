@@ -11,6 +11,7 @@
 
 #include <chlasm/Enum.h>          /* For enum DEATH_REASON, enum IMPRESSIVE_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
+#include <chlasm/ScriptEnums.h>   /* For enum SCRIPT_OBJECT_TYPE */
 #include <re_common.h>            /* For bool32_t */
 
 #include "GameThing.h" /* For struct GameThing, struct GameThingVftable */
@@ -587,7 +588,7 @@ public:
 	// BW1W120 005703e0 BW1M100 100e46f0 GameThingWithPos::GetFOVHelpCondition(void)
 	virtual uint32_t GetFOVHelpCondition();
 	// BW1W120 00570200 BW1M100 100008c0 GameThingWithPos::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 004024b0 BW1M100 100b2190 GameThingWithPos::GetFacingDirection(void)
 	virtual float GetFacingDirection() { return 0.0f; }
 	// BW1W120 004024c0 BW1M100 1055fa50 GameThingWithPos::SetAffectedByWind(int)

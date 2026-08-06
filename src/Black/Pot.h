@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
+#include <chlasm/Enum.h>        /* For enum RESOURCE_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "MobileObject.h" /* For struct MobileObject, struct MobileObjectVftable */
 #include "Object.h"       /* For enum FOOD_TYPE */
@@ -75,7 +76,7 @@ public:
 	// BW1W120 0055d500 BW1M100 10116210 Pot::IsPot(void)
 	virtual uint32_t IsPot();
 	// BW1W120 0066f530 BW1M100 101167d0 Pot::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0051bb70 BW1M100 100c5290 Pot::Draw(void)
 	virtual void Draw();
 	// BW1W120 0051bbc0 BW1M100 100c5150 Pot::DrawOutOfMap(bool)

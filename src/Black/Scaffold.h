@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
+#include <chlasm/Enum.h>        /* For enum RESOURCE_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "MobileObject.h" /* For struct MobileObject */
 
@@ -71,7 +72,7 @@ public:
 	// BW1W120 0055e100 BW1M100 1013e5d0 Scaffold::IsScaffold(void)
 	virtual uint32_t IsScaffold();
 	// BW1W120 006eab60 BW1M100 1013f280 Scaffold::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 006e9890 BW1M100 10141590 Scaffold::ActualMoveMapObject(MapCoords const &)
 	virtual void ActualMoveMapObject(const MapCoords* param_1);
 	// BW1W120 006ea5c0 BW1M100 1013fd30 Scaffold::Draw(void)

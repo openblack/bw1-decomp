@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include "GroupBehaviour.h" /* For struct GroupBehaviour */
 
 // Forward Declares
@@ -55,7 +57,7 @@ public:
 	// BW1W120 0050b740 BW1M100 102a8190 Dance::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 0050c3c0 BW1M100 102a9110 Dance::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0050bb30 BW1M100 102a9db0 Dance::CleanUpBeforeReset(void)
 	virtual void CleanUpBeforeReset();
 	// BW1W120 0050bb90 BW1M100 102a9810 Dance::Process(void)

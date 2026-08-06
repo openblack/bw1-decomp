@@ -4,9 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include <chlasm/AllMeshes.h> /* For enum ANIM_LIST */
-#include <chlasm/Enum.h>      /* For enum DEATH_REASON, enum HOLD_TYPE, enum RESOURCE_TYPE */
-#include <chlasm/GStates.h>   /* For ANIMAL_STATE_LAST_STATE, enum VILLAGER_STATES */
+#include <chlasm/AllMeshes.h>   /* For enum ANIM_LIST */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+#include <chlasm/Enum.h>        /* For enum DEATH_REASON, enum HOLD_TYPE, enum RESOURCE_TYPE */
+#include <chlasm/GStates.h>     /* For ANIMAL_STATE_LAST_STATE, enum VILLAGER_STATES */
 
 #include "Living.h"       /* For struct Living */
 #include "LivingAction.h" /* For struct Living__StateTableEntry */
@@ -79,7 +80,7 @@ public:
 	// BW1W120 00417880 BW1M100 1004f080 Animal::IsAnimal(void)
 	virtual uint32_t IsAnimal();
 	// BW1W120 0041b200 BW1M100 101662b0 Animal::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00419310 BW1M100 101696e0 Animal::GetHoldType(void)
 	virtual HOLD_TYPE GetHoldType();
 	// BW1W120 00419320 BW1M100 10169690 Animal::GetHoldLoweringMultiplier(void)

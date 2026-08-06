@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int16_t, uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For enum ABODE_TYPE, enum RESOURCE_TYPE, enum SPELL_SEED_TYPE */
+#include <chlasm/Enum.h>        /* For enum ABODE_TYPE, enum RESOURCE_TYPE, enum SPELL_SEED_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include <Lionhead/LHLib/ver5.0/LHListHead.h> /* For LHListHead */
 
@@ -106,7 +107,7 @@ public:
 	// BW1W120 0077c3d0 BW1M100 105b0290 WorshipSite::CalculatePeopleHidingIndicator(void)
 	virtual float CalculatePeopleHidingIndicator();
 	// BW1W120 0077d2e0 BW1M100 105ae4e0 WorshipSite::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0077d030 BW1M100 105ae820 WorshipSite::UpdateFrom3DPosition(void)
 	virtual void UpdateFrom3DPosition();
 	// BW1W120 0077dde0 BW1M100 inlined WorshipSite::GetDefaultFireCentrePos(LHPoint *)

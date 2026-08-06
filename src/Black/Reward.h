@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include "BaseInfo.h"     /* For struct GBaseInfo */
 #include "MobileObject.h" /* For struct MobileObject */
 
@@ -50,7 +52,7 @@ public:
 	// BW1W120 006e5660 BW1M100 10138f00 Reward::IsActive( const(void))
 	virtual uint32_t IsActive() const;
 	// BW1W120 006e5ca0 BW1M100 1013b370 Reward::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 006e68f0 BW1M100 10139850 Reward::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 006e6380 BW1M100 1013a430 Reward::Draw(void)

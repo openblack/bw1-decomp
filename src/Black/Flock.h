@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include "Container.h" /* For struct Container */
 #include "MapCoords.h" /* For struct MapCoords */
 
@@ -88,7 +90,7 @@ public:
 	// BW1W120 0052f890 BW1M100 100e3550 Flock::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 00530490 BW1M100 100e4a70 Flock::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 
 	// Constructors
 

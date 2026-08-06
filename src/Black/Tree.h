@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int16_t, uint32_t */
 
-#include <chlasm/Enum.h> /* For enum HOLD_TYPE, enum RESOURCE_TYPE */
+#include <chlasm/Enum.h>        /* For enum HOLD_TYPE, enum RESOURCE_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "Fixed.h" /* For struct SingleMapFixed, struct SingleMapFixedVftable */
 
@@ -96,7 +97,7 @@ public:
 	// BW1W120 0055d9c0 BW1M100 101599f0 Tree::IsAnyKindOfTree(void)
 	virtual uint32_t IsAnyKindOfTree();
 	// BW1W120 0074c130 BW1M100 100036d0 Tree::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0055d8d0 BW1M100 10159590 Tree::GetReactionPower(void)
 	virtual float GetReactionPower();
 	// BW1W120 0074c7f0 BW1M100 10155720 Tree::BlocksTownClearArea( const(void))

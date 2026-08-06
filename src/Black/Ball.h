@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 #include <re_common.h>                            /* For bool32_t */
 
@@ -62,7 +64,7 @@ public:
 	// BW1W120 004363c0 BW1M100 100b0000 Ball::IsToyBall(Creature *)
 	virtual uint32_t IsToyBall(Creature* param_1);
 	// BW1W120 00436100 BW1M100 100b0450 Ball::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00435c30 BW1M100 100b0970 Ball::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00516870 BW1M100 100cb190 Ball::Draw(void)

@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE */
+#include <chlasm/Enum.h>        /* For enum IMMERSION_EFFECT_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "Rock.h" /* For struct Rock */
 
@@ -38,7 +39,7 @@ public:
 	// BW1W120 004397c0 BW1M100 100b3dd0 Bonfire::PhysicsEditorCreate(int)
 	virtual void PhysicsEditorCreate(int param_1);
 	// BW1W120 00439a70 BW1M100 100b47a0 Bonfire::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00439a90 BW1M100 1001a450 Bonfire::Draw(void)
 	virtual void Draw();
 	// BW1W120 00439840 BW1M100 100b4c70 Bonfire::CallVirtualFunctionsForCreation(MapCoords const &)

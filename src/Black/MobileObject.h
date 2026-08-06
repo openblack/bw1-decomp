@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum HOLD_TYPE, enum RESOURCE_TYPE */
+#include <chlasm/Enum.h>        /* For enum HOLD_TYPE, enum RESOURCE_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 #include "Mobile.h"   /* For struct Mobile, struct MobileVftable */
@@ -73,7 +74,7 @@ public:
 	// BW1W120 006079e0 BW1M100 103bc0b0 MobileObject::IsPoisoned(void)
 	virtual uint32_t IsPoisoned();
 	// BW1W120 00607b60 BW1M100 103bbc40 MobileObject::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00425b10 BW1M100 100ad890 MobileObject::GetXAngle(void)
 	virtual float GetXAngle();
 	// BW1W120 00425b20 BW1M100 100ad8d0 MobileObject::GetZAngle(void)
