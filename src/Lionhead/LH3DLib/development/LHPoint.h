@@ -66,8 +66,6 @@ struct LHPoint
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 inlined LHPoint::operator=(Point const &)
-	LHPoint& operator=(const LHPoint& other);
 	// BW1W120 inlined BW1M100 inlined LHPoint::operator*=(float)
 	LHPoint& operator*=(float rhs);
 	// BW1W120 inlined BW1M100 inlined LHPoint::operator+(LHPoint const &) const
