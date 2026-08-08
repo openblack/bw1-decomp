@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int16_t, uint16_t, uint32_t, uint8_t */
 
-#include <chlasm/AllMeshes.h> /* For enum ANIM_LIST */
+#include <chlasm/AllMeshes.h>   /* For enum ANIM_LIST */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 #include <chlasm/Enum.h> /* For RESOURCE_TYPE_LAST, enum DEATH_REASON, enum HOLD_TYPE, enum REACTION, enum RESOURCE_TYPE, enum TRIBE_TYPE, enum VILLAGER_DISCIPLE */
 #include <chlasm/GStates.h>                            /* For VILLAGER_STATE_LAST_STATE, enum VILLAGER_STATES */
 #include <chlasm/HelpTextEnums.h>                      /* For enum HELP_TEXT */
@@ -220,7 +221,7 @@ public:
 	// BW1W120 00754060 BW1M100 10569510 Villager::GetFOVHelpCondition(void)
 	virtual uint32_t GetFOVHelpCondition();
 	// BW1W120 00753020 BW1M100 10005a00 Villager::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00756460 BW1M100 10094080 Villager::IsReachable(void)
 	virtual bool32_t IsReachable();
 	// BW1W120 00756450 BW1M100 1005f5e0 Villager::InsertMapObject(void)

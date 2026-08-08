@@ -1,6 +1,7 @@
 #include "ScriptTimer.h"
 
-uint32_t ScriptTimer::GetScriptObjectType()
+// BW1W120 00711600 BW1M100 1050e230 ScriptTimer::GetScriptObjectType(void)
+SCRIPT_OBJECT_TYPE ScriptTimer::GetScriptObjectType()
 {
-	return 0x11;
+	return SCRIPT_OBJECT_TYPE_TIMER;
 }

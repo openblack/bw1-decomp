@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include "BaseInfo.h"         /* For struct BaseInfo */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
@@ -49,7 +51,7 @@ public:
 	// BW1W120 0055ec20 BW1M100 100fbd60 InfluenceRing::IsInfluenceRing(void)
 	virtual uint32_t IsInfluenceRing();
 	// BW1W120 005cdc50 BW1M100 100fc170 InfluenceRing::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 
 	// Constructors
 

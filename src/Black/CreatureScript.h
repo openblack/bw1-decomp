@@ -4,12 +4,13 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+
 #include "SubArgument.h" /* For struct SubArgument */
 
 // Forward Declares
 
 class CreatureSubActionAgenda;
-struct LHPoint;
 class Object;
 
 class SubArgumentInteger : public SubArgument
@@ -37,6 +38,13 @@ public:
 class SubArgumentPoint : public SubArgument
 {
 public:
+	LHPoint Point; /* 0x4 */
+
+	// Constructors
+
+	// BW1W120 inlined BW1M100 inlined SubArgumentPoint::SubArgumentPoint(LHPoint const &)
+	SubArgumentPoint(const LHPoint& point);
+
 	// Override methods
 
 	// BW1W120 004ff780 BW1M100 10290e40 SubArgumentPoint::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)

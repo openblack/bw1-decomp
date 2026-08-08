@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
 // Forward Declares
@@ -53,7 +55,7 @@ public:
 	// BW1W120 0055eb80 BW1M100 101046b0 Mist::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 00606910 BW1M100 10104af0 Mist::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 
 	// Constructors
 

@@ -58,7 +58,7 @@ struct LHPoint
 	// Constructors
 
 	// BW1W120 inlined BW1M100 inlined LHPoint::LHPoint(void)
-	LHPoint();
+	LHPoint() {}
 	// BW1W120 00442700 BW1M100 1004a260 LHPoint::LHPoint(float, float, float)
 	LHPoint(float x, float y, float z);
 	// BW1W120 0044cfc0 BW1M100 1003a450 LHPoint::LHPoint(const LHPoint&)
@@ -66,8 +66,6 @@ struct LHPoint
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 inlined LHPoint::operator=(Point const &)
-	LHPoint& operator=(const LHPoint& other);
 	// BW1W120 inlined BW1M100 inlined LHPoint::operator*=(float)
 	LHPoint& operator*=(float rhs);
 	// BW1W120 inlined BW1M100 inlined LHPoint::operator+(LHPoint const &) const

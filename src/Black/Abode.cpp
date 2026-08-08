@@ -150,7 +150,8 @@ void Abode::CallVirtualFunctionsForCreation(const MapCoords& coords_)
 	{
 		coords.altitude = max(Game3dObject->GetAltitudeFondation(), -max(0.8f, Get2DRadius() * 0.2f));
 	}
-	LHPoint position = GLandscape::ConvertMapCoordToLandscapePoint(coords_);
+	LHPoint position;
+	GLandscape::ConvertMapCoordToLandscapePoint(coords_, position);
 	Game3dObject->SetPosition(&position, GetYAngle(), GetScale());
 }
 

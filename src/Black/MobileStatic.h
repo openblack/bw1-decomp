@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For enum HOLD_TYPE, enum RESOURCE_TYPE */
+#include <chlasm/Enum.h>        /* For enum HOLD_TYPE, enum RESOURCE_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 #include "Object.h"        /* For struct Object */
@@ -88,7 +89,7 @@ public:
 	// BW1W120 004396f0 BW1M100 100b4610 MobileStatic::IsMobileStatic(void)
 	virtual uint32_t IsMobileStatic();
 	// BW1W120 00609330 BW1M100 10008460 MobileStatic::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00439610 BW1M100 100b40c0 MobileStatic::GetXAngle(void)
 	virtual float GetXAngle();
 	// BW1W120 00439620 BW1M100 100b4100 MobileStatic::GetZAngle(void)

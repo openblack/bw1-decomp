@@ -30,9 +30,9 @@ struct LH3DMapCoords
 	// BW1W120 inlined BW1M100 100499b0 LH3DMapCoords::MapZ(void) const
 	uint16_t MapZ();
 	// BW1W120 inlined BW1M100 100456f0 LH3DMapCoords::WholeX(void) const
-	uint32_t WholeX();
+	int32_t WholeX() const { return x; }
 	// BW1W120 inlined BW1M100 10045a60 LH3DMapCoords::WholeZ(void) const
-	uint32_t WholeZ();
+	int32_t WholeZ() const { return z; }
 	// BW1W120 inlined BW1M100 inlined LH3DMapCoords::SetMapX(short) const
 	void SetMapX(uint16_t x);
 	// BW1W120 inlined BW1M100 inlined LH3DMapCoords::SetMapZ(short) const

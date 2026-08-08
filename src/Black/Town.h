@@ -5,7 +5,8 @@
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For MAGIC_TYPE_LAST_142, TOWN_DESIRE_INFO_LAST, enum ABODE_TYPE, enum LIVING_TYPE, enum MAGIC_TYPE, enum RESOURCE_TYPE, enum TOWN_DESIRE_INFO, enum TRIBE_TYPE */
-#include <re_common.h>   /* For bool32_t */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+#include <re_common.h>          /* For bool32_t */
 
 #include "Abode.h"                /* For struct Abode */
 #include "Artifact.h"             /* For struct TownArtifact */
@@ -210,7 +211,7 @@ public:
 	// BW1W120 00747f00 BW1M100 10065180 Town::CalculateDesireForFood(void)
 	virtual float CalculateDesireForFood();
 	// BW1W120 0073e200 BW1M100 1054f630 Town::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 
 	// Static methods
 

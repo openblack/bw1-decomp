@@ -42,7 +42,7 @@ public:
 	uintptr_t StopTask;
 	uintptr_t StopAllTasks_ptr;
 	uintptr_t StopTasksOfType_ptr;
-	uintptr_t POP; /* 0x50 */
+	uintptr_t POP_ptr; /* 0x50 */
 	uintptr_t PUSH_ptr;
 	uintptr_t STRING;
 	int(__cdecl* LoadBinary_ptr)(LHTransport* transport, const char* path);
@@ -58,25 +58,43 @@ public:
 	uint32_t  GetTaskFilename;
 	uint32_t  GetTaskName;
 	uint32_t  OpCode;
-	uint32_t  GetCurrentScriptType; /* 0x90 */
-	uint32_t  GetScriptInstructionCount;
-	uint32_t  Mode;
-	uint32_t  Type;
-	uint32_t  Value; /* 0xa0 */
-	uint32_t  OpCodeName;
-	uint32_t  StopScripts;
-	uint32_t  GetScriptID;
-	uint32_t  Version; /* 0xb0 */
-	uint32_t  CodeSize;
-	uint32_t  GetNextTask;
-	uint32_t  GetPreviousTask;
-	uint32_t  GetHighestRunningTask; /* 0xc0 */
-	uint32_t  GetFirstRunningTaskId;
-	uint32_t  LoopTaskVariables;
-	uint32_t  LoopGlobalVariables;
-	uint32_t  GetScriptType_ptr; /* 0xd0 */
-	uint32_t  GetGlobalVariableValue;
-	uint32_t  field_0xd8;
+
+	// Non-virtual methods
+
+	// BW1W120 006f6bc0 BW1M100 100457b0 ScriptDLL::POP(VMType *)
+	uint32_t POP(VMType* type);
+	// BW1W120 inlined BW1M100 10045810 ScriptDLL::COORD_POP(void)
+	float COORD_POP()
+	{
+		VMType   type;
+		uint32_t value = POP(&type);
+		return *(float*)&value;
+	}
+	// BW1W120 inlined BW1M100 10045620 ScriptDLL::THING_OR_NULL_POP(void)
+	uint32_t THING_OR_NULL_POP()
+	{
+		VMType type;
+		return POP(&type);
+	}
+	uint32_t GetCurrentScriptType; /* 0x90 */
+	uint32_t GetScriptInstructionCount;
+	uint32_t Mode;
+	uint32_t Type;
+	uint32_t Value; /* 0xa0 */
+	uint32_t OpCodeName;
+	uint32_t StopScripts;
+	uint32_t GetScriptID;
+	uint32_t Version; /* 0xb0 */
+	uint32_t CodeSize;
+	uint32_t GetNextTask;
+	uint32_t GetPreviousTask;
+	uint32_t GetHighestRunningTask; /* 0xc0 */
+	uint32_t GetFirstRunningTaskId;
+	uint32_t LoopTaskVariables;
+	uint32_t LoopGlobalVariables;
+	uint32_t GetScriptType_ptr; /* 0xd0 */
+	uint32_t GetGlobalVariableValue;
+	uint32_t field_0xd8;
 
 	// Static methods
 

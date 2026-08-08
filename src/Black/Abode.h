@@ -158,7 +158,7 @@ public:
 	// BW1W120 004061c0 BW1M100 1014d0e0 Abode::IsWonder(void)
 	virtual bool32_t IsWonder();
 	// BW1W120 00406810 BW1M100 1001b380 Abode::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00402cb0 BW1M100 10570ad0 Abode::DestroyedByBeam(void)
 	virtual void DestroyedByBeam();
 	// BW1W120 00403ee0 BW1M100 1036edb0 Abode::InsertMapObject(void)

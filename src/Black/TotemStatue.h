@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer */
 #include <re_common.h>                           /* For bool32_t */
 
@@ -83,7 +85,7 @@ public:
 	// BW1W120 004e4170 BW1M100 105e5d00 TotemStatue::IsTotemWithStealableSpell(Creature *)
 	virtual uint32_t IsTotemWithStealableSpell(Creature* param_1);
 	// BW1W120 00738eb0 BW1M100 10543f70 TotemStatue::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00561120 BW1M100 10543dc0 TotemStatue::HandShouldFeelWithMeshIntersect(void)
 	virtual uint32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 00737c90 BW1M100 10545510 TotemStatue::ReduceLife(float, GPlayer *)

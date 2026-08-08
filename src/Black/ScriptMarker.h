@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
 // Forward Declares
@@ -38,7 +40,7 @@ public:
 	// BW1W120 00561020 BW1M100 10501510 ScriptMarker::IsScriptMarker(void)
 	virtual uint32_t IsScriptMarker();
 	// BW1W120 0070d960 BW1M100 10501850 ScriptMarker::GetScriptObjectType(void)
-	virtual uint32_t GetScriptObjectType();
+	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 };
 
 #endif /* BW1_DECOMP_SCRIPT_MARKER_INCLUDED_H */
