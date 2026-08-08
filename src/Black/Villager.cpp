@@ -915,10 +915,10 @@ uint32_t Villager::ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2,
 	return 0;
 }
 
-// BW1W120 00753020
-uint32_t Villager::GetScriptObjectType()
+// BW1W120 00753020 BW1M100 10005910 Villager::GetScriptObjectType(void)
+SCRIPT_OBJECT_TYPE Villager::GetScriptObjectType()
 {
-	return 0;
+	return SCRIPT_OBJECT_TYPE_NONE;
 }
 
 // BW1W120 00753040

@@ -586,8 +586,12 @@ public:
 	                                 CreatureBelief* param_4, CreatureBelief* param_5, int param_6, int param_7);
 	// BW1W120 004c44b0 BW1M100 10230950 Creature::ForceActivityAndForceAction(CreaturePlan &, int, int)
 	void ForceActivityAndForceAction(CreaturePlan* param_1, int param_2, int param_3);
+	// BW1W120 004d1460 BW1M100 10248530 Creature::LookAtPosition(MapCoords *)
+	int LookAtPosition(MapCoords* destination);
 	// BW1W120 004ea670 BW1M100 10279d20 Creature::DecideOnNewPlan(CreaturePlan &)
 	void DecideOnNewPlan(CreaturePlan* param_1);
+	// BW1W120 004f6a90 BW1M100 1028d560 Creature::PrepareCreatureForScriptedAction(int)
+	void PrepareCreatureForScriptedAction(int stop_moving);
 	// BW1W120 004f8b80 BW1M100 1028a7b0 Creature::ProcessSpells(void)
 	void ProcessSpells();
 	// BW1W120 004ffdd0 BW1M100 102a0fc0 Creature::SubStatePerformPickUpParameter(CreatureBelief *)

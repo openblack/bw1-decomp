@@ -18,7 +18,7 @@ NewCollideDescriptor::NewCollideDescriptor(Object* obj)
 
 	LHPoint point;
 
-	point = GLandscape::ConvertMapCoordToLandscapePoint(obj->coords);
+	GLandscape::ConvertMapCoordToLandscapePoint(obj->coords, point);
 	obj->Game3dObject->SetPosition(point, y_angle, scale);
 	Init(obj->Game3dObject);
 
