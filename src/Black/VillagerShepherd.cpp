@@ -66,7 +66,7 @@ bool32_t Villager::FindClosestFlockAnimal()
 // TODO: Abode::FindNearestDrinkingWater is declared void but the target tests its eax result;
 // the original was surely `|| (FindNearestDrinkingWater(400.0f) && GetNearestWaterPos(waterPos))`
 // and the comma form below is the closest legal shape until the return type is fixed.
-bool Villager::ShepherdMoveFlockToWater()
+uint32_t Villager::ShepherdMoveFlockToWater()
 {
 	GetJobInfo(10); // result discarded
 	Flock*    my_flock = flock;
@@ -117,7 +117,7 @@ bool32_t Villager::ShepherdWaitForFlock()
 
 // BW1W120 00768e30 BW1M100 105981b0 Villager::ShepherdGotoFlock(void)
 // TODO: Flock::GetFlockPos really returns MapCoords*, not MapCoords by value (see Flock.h)
-bool Villager::ShepherdGotoFlock()
+uint32_t Villager::ShepherdGotoFlock()
 {
 	MapCoords flockPos;
 	Flock*    my_flock = flock;

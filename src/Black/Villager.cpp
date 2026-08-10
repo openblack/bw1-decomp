@@ -853,7 +853,7 @@ int Villager::ExitReaction(VILLAGER_STATES state)
 }
 
 // BW1W120 007527e0
-bool Villager::ExitDance(unsigned char param_1)
+uint32_t Villager::ExitDance(unsigned char param_1)
 {
 	return false;
 }
