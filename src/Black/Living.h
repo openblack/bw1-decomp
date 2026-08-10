@@ -680,7 +680,7 @@ public:
 	// BW1W120 005ec1d0 BW1M100 103831d0 Living::InvalidState(void)
 	bool32_t InvalidState();
 	// BW1W120 005ec270 BW1M100 1004cf70 Living::MoveToPos(void)
-	int MoveToPos();
+	uint32_t MoveToPos();
 	// BW1W120 005ec2c0 BW1M100 10382da0 Living::MoveToObject(void)
 	uint32_t MoveToObject();
 	// BW1W120 005ec330 BW1M100 10382cf0 Living::Flying(void)
@@ -724,7 +724,7 @@ public:
 	// BW1W120 005edd20 BW1M100 100980f0 Living::SetupMoveToOnFootpath(GameThingWithPos &, MapCoords const &, unsigned char)
 	void SetupMoveToOnFootpath(GameThingWithPos& destination, const MapCoords& arrive_position, uint8_t state);
 	// BW1W120 005edde0 BW1M100 1037eef0 Living::MoveOnFootpath(void)
-	int MoveOnFootpath();
+	uint32_t MoveOnFootpath();
 	// BW1W120 005ee5f0 BW1M100 1037e2a0 Living::SetFlock(Flock *)
 	void SetFlock(Flock* param_1);
 	// BW1W120 005ef010 BW1M100 10065550 Living::PosWithinDomain(MapCoords const &, float)
@@ -752,6 +752,8 @@ public:
 	void SetReactionDoneWhen(REACTION reaction);
 	// BW1W120 00768640 BW1M100 105975c0 Living::CannotExitState(unsigned char)
 	bool32_t CannotExitState(unsigned char param_1);
+	// BW1W120 005ec310 BW1M100 1038af00 Living::WaitForCounter(void)
+	uint32_t WaitForCounter();
 };
 
 #endif /* BW1_DECOMP_LIVING_INCLUDED_H */

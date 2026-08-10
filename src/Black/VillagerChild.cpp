@@ -70,7 +70,7 @@ bool32_t Villager::CheckChildActivity()
 }
 
 // BW1W120 00757f10 BW1M100 10573990 Villager::ChildBecomesAdult(void)
-bool Villager::ChildBecomesAdult()
+uint32_t Villager::ChildBecomesAdult()
 {
 	mother = NULL;
 	CheckNeedNewAbode();

@@ -20,7 +20,7 @@
 // definition in Villager.cpp:678 (`void Villager::FindPosOutsideAbode(Abode*) {}`), which is
 // ANOTHER unit — dispatcher-owned. Once FindPosOutsideAbode returns MapCoords, the body above
 // should match. Left as-is (early-return in the if-block) until then to keep it compiling.
-bool Villager::ShowPoisoned()
+uint32_t Villager::ShowPoisoned()
 {
 	if (Flags & 4)
 	{

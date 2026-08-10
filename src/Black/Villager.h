@@ -679,7 +679,7 @@ public:
 	// BW1W120 00752760 BW1M100 1056bbd0 Villager::MakeVillagerFaceObject(Object *)
 	bool MakeVillagerFaceObject(Object* object);
 	// BW1W120 007527e0 BW1M100 1056ba70 Villager::ExitDance(unsigned char)
-	bool ExitDance(unsigned char param_1);
+	uint32_t ExitDance(unsigned char param_1);
 	// BW1W120 00752820 BW1M100 1056b9c0 Villager::IsAvailableForWorshipSite(int)
 	bool32_t IsAvailableForWorshipSite(int param_1);
 	// BW1W120 00752860 BW1M100 1056b900 Villager::IsAtOrOnTheWayToWorshipSite(void)
@@ -865,9 +865,9 @@ public:
 	// BW1W120 00756be0 BW1M100 10563bb0 Villager::FindChildrenAndOrphanThem(void)
 	void FindChildrenAndOrphanThem();
 	// BW1W120 00756d30 BW1M100 10573250 Villager::InteractDecideWhatToDoForOtherVillager(void)
-	void InteractDecideWhatToDoForOtherVillager();
+	uint32_t InteractDecideWhatToDoForOtherVillager();
 	// BW1W120 00756e10 BW1M100 105731e0 Villager::InteractDecideWhatToDo(void)
-	void InteractDecideWhatToDo();
+	uint32_t InteractDecideWhatToDo();
 	// BW1W120 00756e20 BW1M100 10573130 Villager::GetDiscipleInteractState(void)
 	uint32_t GetDiscipleInteractState();
 	// BW1W120 00756e80 BW1M100 1002ae20 Villager::FindCloseObjectsForInteract(class LHOrderedLinkedList<class SortedObject> *, struct MapCoords const &)
@@ -915,7 +915,7 @@ public:
 	// BW1W120 00757f00 BW1M100 10573a20 Villager::CheckChildActivity(void)
 	bool32_t CheckChildActivity();
 	// BW1W120 00757f10 BW1M100 10573990 Villager::ChildBecomesAdult(void)
-	bool ChildBecomesAdult();
+	uint32_t ChildBecomesAdult();
 	// BW1W120 00757f40 BW1M100 10095500 Villager::IsMotherAlive(void)
 	bool32_t IsMotherAlive();
 	// BW1W120 00757f90 BW1M100 10573570 Villager::CheckNeedNewAbode(void)
@@ -1077,7 +1077,7 @@ public:
 	// BW1W120 0075b880 BW1M100 1009acc0 Villager::ExitFishing(unsigned char)
 	bool32_t ExitFishing(unsigned char state);
 	// BW1W120 0075b940 BW1M100 1057b620 Villager::ShowPoisoned(void)
-	bool ShowPoisoned();
+	uint32_t ShowPoisoned();
 	// BW1W120 0075b990 BW1M100 1000a640 Villager::ChangeStateToFindFoodToEat(void)
 	bool ChangeStateToFindFoodToEat();
 	// BW1W120 0075baf0 BW1M100 1057b4f0 Villager::CheckHungryAtHome(void)
@@ -1602,11 +1602,11 @@ public:
 	// BW1W120 00768c90 BW1M100 10598650 Villager::FindClosestFlockAnimal(void)
 	bool32_t FindClosestFlockAnimal();
 	// BW1W120 00768cc0 BW1M100 105984c0 Villager::ShepherdMoveFlockToWater(void)
-	bool ShepherdMoveFlockToWater();
+	uint32_t ShepherdMoveFlockToWater();
 	// BW1W120 00768dd0 BW1M100 10006020 Villager::ShepherdWaitForFlock(void)
 	bool32_t ShepherdWaitForFlock();
 	// BW1W120 00768e30 BW1M100 105981b0 Villager::ShepherdGotoFlock(void)
-	bool ShepherdGotoFlock();
+	uint32_t ShepherdGotoFlock();
 	// BW1W120 00768ec0 BW1M100 105980a0 Villager::ShepherdTakesControlOfFlock(void)
 	bool32_t ShepherdTakesControlOfFlock();
 	// BW1W120 00768f20 BW1M100 10597fd0 Villager::ShepherdReleasesControlOfFlock(void)
@@ -1766,7 +1766,7 @@ public:
 	// BW1W120 0076c170 BW1M100 1059df70 Villager::ExitMoveToWorshipSite(unsigned char)
 	bool32_t ExitMoveToWorshipSite(unsigned char state);
 	// BW1W120 0076c1f0 BW1M100 1059de40 Villager::ExitAtWorshipSite(unsigned char)
-	bool ExitAtWorshipSite(unsigned char state);
+	uint32_t ExitAtWorshipSite(unsigned char state);
 	// BW1W120 0076c280 BW1M100 1059dd90 Villager::ExitGetFoodAtWorship(unsigned char)
 	bool32_t ExitGetFoodAtWorship(unsigned char state);
 	// BW1W120 0076c2d0 BW1M100 1059dc80 Villager::ArrivesAtWorshipSiteWithSupplies(void)
@@ -1815,6 +1815,40 @@ public:
 	bool32_t AtAltarFinishedRest();
 	// BW1W120 0076cc00 BW1M100 1059c880 Villager::CheckSatisfySuppyWorship(void)
 	bool32_t CheckSatisfySuppyWorship();
+	// BW1W120 005ac9a0 BW1M100 inlined Villager::SaveInFlying(GameOSFile &)
+	uint32_t SaveInFlying(GameOSFile& file);
+	// BW1W120 005ac9c0 BW1M100 inlined Villager::SaveWaitForAnim(GameOSFile &)
+	uint32_t SaveWaitForAnim(GameOSFile& file);
+	// BW1W120 005ac9b0 BW1M100 inlined Villager::LoadInFlying(GameOSFile &)
+	uint32_t LoadInFlying(GameOSFile& file);
+	// BW1W120 005ac9d0 BW1M100 inlined Villager::LoadWaitForAnim(GameOSFile &)
+	uint32_t LoadWaitForAnim(GameOSFile& file);
+	// BW1W120 005319c0 BW1M100 102c0330 Villager::FootballWonGoal(void)
+	uint32_t FootballWonGoal();
+	// BW1W120 005319d0 BW1M100 102c02f0 Villager::FootballLostGoal(void)
+	uint32_t FootballLostGoal();
+	// BW1W120 00766fb0 BW1M100 10594b10 Villager::PerformFightReaction(void)
+	uint32_t PerformFightReaction();
+	// BW1W120 00423730 BW1M100 100ad0f0 Villager::LandedAnimation(void)
+	uint32_t LandedAnimation();
+	// BW1W120 00423770 BW1M100 100ad060 Villager::DyingAnimation(void)
+	uint32_t DyingAnimation();
+	// BW1W120 004237a0 BW1M100 100acfd0 Villager::DeadAnimation(void)
+	uint32_t DeadAnimation();
+	// BW1W120 00423bd0 BW1M100 100ac690 Villager::FootballWaitForKickOffAnimation(void)
+	uint32_t FootballWaitForKickOffAnimation();
+	// BW1W120 00423c60 BW1M100 100ac5f0 Villager::FootballAttackerAnimation(void)
+	uint32_t FootballAttackerAnimation();
+	// BW1W120 00423c70 BW1M100 100ac5a0 Villager::FootballDefenderAnimation(void)
+	uint32_t FootballDefenderAnimation();
+	// BW1W120 00423d20 BW1M100 100ac380 Villager::FootballMatchPausedAnimation(void)
+	uint32_t FootballMatchPausedAnimation();
+	// BW1W120 00423e20 BW1M100 100ac170 Villager::BuildingAnimation(void)
+	uint32_t BuildingAnimation();
+	// BW1W120 00423fa0 BW1M100 100abf40 Villager::ControlledByCreatureAnimation(void)
+	uint32_t ControlledByCreatureAnimation();
+	// BW1W120 00424080 BW1M100 1009e6d0 Villager::PauseForASecondAnimation(void)
+	uint32_t PauseForASecondAnimation();
 };
 
 class MissionaryControl : public GameThingWithPos

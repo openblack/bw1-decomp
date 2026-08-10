@@ -308,7 +308,7 @@ bool32_t Villager::ExitMoveToWorshipSite(unsigned char state)
 // TODO: 88.5% — structure/semantics correct. Residual diffs are all bool-width scheduler tie-breaks:
 // target tests full `eax` and ends `mov eax,1` where ours uses `al` (bool-return-full-eax-epilogue,
 // documented open idiom), plus a prologue reg-move reorder. == 0 vs ! forms give identical asm.
-bool Villager::ExitAtWorshipSite(unsigned char state)
+uint32_t Villager::ExitAtWorshipSite(unsigned char state)
 {
 	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state))
 	{

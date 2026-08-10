@@ -1021,17 +1021,26 @@ Black/GraveYard.cpp:
 
 Black/GroupBehaviour.cpp:
 	.text       start:0x00596020 end:0x00598E20
-	.rdata      start:0x009003E8 end:0x00900914
+	.rdata      start:0x009003E8 end:0x00900A10
 	.CRT$XCU    start:0x009C6AD4 end:0x009C6AE0 align:4
 	.data       start:0x00BEFF3C end:0x00BEFF68
 	.bss        start:0x00D06AF0 end:0x00D09188
 
+Black/GSFunctions.cpp:
+	.text       start:0x00598E20 end:0x00599250
+	.CRT$XCU    start:0x009C6AE0 end:0x009C6AE4 align:4
+
 Black/GSLobbybox.cpp:
-	.text       start:0x00598E20 end:0x005AFDC0
-	.rdata      start:0x00900914 end:0x00900A48
-	.CRT$XCU    start:0x009C6AE0 end:0x009C6AFC align:4
+	.text       start:0x00599250 end:0x0059D020
+	.rdata      start:0x00900A10 end:0x00900A48
+	.CRT$XCU    start:0x009C6AE4 end:0x009C6AF0 align:4
 	.data       start:0x00BEFF68 end:0x00BF0260
-	.bss        start:0x00D09188 end:0x00D13ED8
+	.bss        start:0x00D09188 end:0x00D09198
+
+Black/GStates.cpp:
+	.text       start:0x0059D020 end:0x005AFDC0
+	.CRT$XCU    start:0x009C6AF0 end:0x009C6AFC align:4
+	.bss        start:0x00D09198 end:0x00D13ED8
 
 Black/HandState.cpp:
 	.text       start:0x005AFDC0 end:0x005B0260

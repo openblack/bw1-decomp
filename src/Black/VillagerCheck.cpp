@@ -14,12 +14,15 @@
 #include "VillagerInfo.h"
 
 // BW1W120 00756d30 BW1M100 10573250 Villager::InteractDecideWhatToDoForOtherVillager(void)
-void Villager::InteractDecideWhatToDoForOtherVillager() {}
+uint32_t Villager::InteractDecideWhatToDoForOtherVillager()
+{
+	return 0;
+}
 
 // BW1W120 00756e10 BW1M100 105731e0 Villager::InteractDecideWhatToDo(void)
-void Villager::InteractDecideWhatToDo()
+uint32_t Villager::InteractDecideWhatToDo()
 {
-	DecideWhatToDo();
+	return DecideWhatToDo();
 }
 
 // BW1W120 00757180 BW1M100 10572de0 Villager::CheckMoveHouse(Object *)
