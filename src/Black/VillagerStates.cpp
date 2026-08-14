@@ -598,7 +598,7 @@ bool32_t Villager::InspectObject()
 }
 
 // BW1W120 0076acb0
-int Villager::ExitInFlying(VILLAGER_STATES state)
+uint32_t Villager::ExitInFlying(uint8_t state)
 {
 	return (uint8_t)state == VILLAGER_STATE_IN_HAND || (uint8_t)state == VILLAGER_STATE_LANDED ||
 	       (uint8_t)state == VILLAGER_STATE_DYING || (uint8_t)state == VILLAGER_STATE_DEAD ||
@@ -634,7 +634,7 @@ bool32_t Villager::InHand()
 }
 
 // BW1W120 0076afe0
-uint32_t Villager::EnterInHand(VILLAGER_STATES param_1, VILLAGER_STATES param_2)
+uint32_t Villager::EnterInHand(uint8_t param_1, uint8_t param_2)
 {
 	// field_0x10c is a float slot elsewhere; this state stashes the (remapped) disciple
 	// type into its raw bits, hence the reinterpret store rather than a float conversion.
@@ -653,7 +653,7 @@ uint32_t Villager::EnterInHand(VILLAGER_STATES param_1, VILLAGER_STATES param_2)
 // Toy-tested (named-result, !=0 test, early-return) — the result/if/return-result form
 // is confirmed correct (early-return diverges into 1-reg + immediate return), leaving a
 // whole-TU epilogue scheduler tie (bool-return-full-eax-epilogue family). Defer.
-int Villager::ExitInHand(VILLAGER_STATES state)
+uint32_t Villager::ExitInHand(uint8_t state)
 {
 	int result = Living::ExitInHand(state);
 	if (result == 1)

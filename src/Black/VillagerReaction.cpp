@@ -754,8 +754,6 @@ bool32_t Villager::GoToTeleportReactionQuickly()
 // BW1W120 00766390
 bool32_t Villager::ExitReactToTeleport(unsigned char state)
 {
-	// TODO: ExitReaction originally took unsigned char (the target pushes the raw byte and
-	// the callee re-masks it), not VILLAGER_STATES
 	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state))
 	{
 		if (GetTown() != NULL)
@@ -764,7 +762,7 @@ bool32_t Villager::ExitReactToTeleport(unsigned char state)
 		}
 		this->Flags &= ~0x10;
 	}
-	return ExitReaction((VILLAGER_STATES)state);
+	return ExitReaction(state);
 }
 
 // BW1W120 007663f0
