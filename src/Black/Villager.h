@@ -358,16 +358,16 @@ public:
 	virtual uint32_t CallEntryStateFunction(uint8_t current, uint8_t destination);
 	// BW1W120 007523d0 BW1M100 10075c50 Villager::CallEntryStateFunction(unsigned char)
 	virtual uint32_t CallEntryStateFunction(uint8_t state);
-	// BW1W120 007527a0 BW1M100 inlined Villager::ExitReaction(VILLAGER_STATES)
-	virtual int ExitReaction(VILLAGER_STATES state);
+	// BW1W120 007527a0 BW1M100 inlined Villager::ExitReaction(unsigned char)
+	virtual uint32_t ExitReaction(uint8_t state);
 	// BW1W120 0076b000 BW1M100 inlined Villager::ExitInHand(VILLAGER_STATES)
-	virtual int ExitInHand(VILLAGER_STATES state);
+	virtual uint32_t ExitInHand(uint8_t state);
 	// BW1W120 0076acb0 BW1M100 inlined Villager::ExitInFlying(VILLAGER_STATES)
-	virtual int ExitInFlying(VILLAGER_STATES state);
+	virtual uint32_t ExitInFlying(uint8_t state);
 	// BW1W120 00753690 BW1M100 1006a4d0 Villager::SetState(unsigned long, unsigned char)
 	virtual void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
 	// BW1W120 0076afe0 BW1M100 inlined Villager::EnterInHand(VILLAGER_STATES, VILLAGER_STATES)
-	virtual uint32_t EnterInHand(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
+	virtual uint32_t EnterInHand(uint8_t current, uint8_t destination);
 	// BW1W120 0055c9f0 BW1M100 inlined Villager::IsScriptState(VILLAGER_STATES)
 	virtual bool IsScriptState(VILLAGER_STATES state) const;
 	// BW1W120 0055ca10 BW1M100 inlined Villager::IsScriptInterruptableState(VILLAGER_STATES) const
@@ -839,7 +839,7 @@ public:
 	// BW1W120 00756240 BW1M100 105655e0 Villager::ForceMoveVillagerToAbode(Abode*)
 	void ForceMoveVillagerToAbode(Abode* abode);
 	// BW1W120 00756520 BW1M100 10565010 Villager::LookAtPreviousStateReactToTownEmergency(void)
-	VILLAGER_STATES LookAtPreviousStateReactToTownEmergency();
+	uint32_t LookAtPreviousStateReactToTownEmergency();
 	// BW1W120 00756530 BW1M100 10564fd0 Villager::SetTown(Town*)
 	void SetTown(Town* town);
 	// BW1W120 00756540 BW1M100 10564f50 Villager::ScriptInCrowd(void)
@@ -906,8 +906,6 @@ public:
 	bool32_t ChildFollowsMother();
 	// BW1W120 007579f0 BW1M100 10573ed0 Villager::ChildGotoCreche(void)
 	uint32_t ChildGotoCreche();
-	// BW1W120 00757c80 BW1M100 1006d8c0 Villager::ChildAtCreche(void)
-	bool32_t ChildAtCreche();
 	// BW1W120 00757e80 BW1M100 10084940 Villager::CheckChild(void)
 	uint32_t CheckChild();
 	// BW1W120 00757ec0 BW1M100 10573a80 Villager::ChildDecideWhatToDo(void)
@@ -1815,28 +1813,64 @@ public:
 	bool32_t AtAltarFinishedRest();
 	// BW1W120 0076cc00 BW1M100 1059c880 Villager::CheckSatisfySuppyWorship(void)
 	bool32_t CheckSatisfySuppyWorship();
+
+	// State-table handlers reached only through the villager/animal state
+	// tables in GStates.cpp. Names are placeholders keyed on the address;
+	// the signature of each is fixed by the table slot it is stored in.
+
+	// The five below keep their real names. The Mac game binary inlined them, so
+	// they have no BW1M100 address: each name appears exactly once in the whole
+	// Mac file, in the traceback tables of one of the 11 shared-library PEF
+	// containers that follow the game container, and never in the game container
+	// itself (unlike the other 54 members of the Save/Load family).
+
+	// save_state slot
 	// BW1W120 005ac9a0 BW1M100 inlined Villager::SaveInFlying(GameOSFile &)
-	uint32_t SaveInFlying(GameOSFile& file);
-	// BW1W120 005ac9c0 BW1M100 inlined Villager::SaveWaitForAnim(GameOSFile &)
-	uint32_t SaveWaitForAnim(GameOSFile& file);
+	uint32_t SaveInFlying(GameOSFile& file) { return 1; }
 	// BW1W120 005ac9b0 BW1M100 inlined Villager::LoadInFlying(GameOSFile &)
-	uint32_t LoadInFlying(GameOSFile& file);
+	uint32_t LoadInFlying(GameOSFile& file) { return 1; }
+	// BW1W120 005ac9c0 BW1M100 inlined Villager::SaveWaitForAnim(GameOSFile &)
+	uint32_t SaveWaitForAnim(GameOSFile& file) { return 1; }
 	// BW1W120 005ac9d0 BW1M100 inlined Villager::LoadWaitForAnim(GameOSFile &)
-	uint32_t LoadWaitForAnim(GameOSFile& file);
+	uint32_t LoadWaitForAnim(GameOSFile& file) { return 1; }
+	// BW1W120 005ac990 BW1M100 inlined Villager::AlwaysReactToTownEmergency(void)
+	uint32_t AlwaysReactToTownEmergency() { return VILLAGER_STATE_MOVE_TO_POS; }
 	// BW1W120 005319c0 BW1M100 102c0330 Villager::FootballWonGoal(void)
 	uint32_t FootballWonGoal();
 	// BW1W120 005319d0 BW1M100 102c02f0 Villager::FootballLostGoal(void)
 	uint32_t FootballLostGoal();
+	// BW1W120 00757c90 BW1M100 10070040 Villager::ChildAtCreche(void)
+	uint32_t ChildAtCreche();
 	// BW1W120 00766fb0 BW1M100 10594b10 Villager::PerformFightReaction(void)
 	uint32_t PerformFightReaction();
+
+	// field_0x60 slot
+	// BW1W120 00423400 BW1M100 1002aa20 Villager::MoveToPosAnimation(void)
+	uint32_t MoveToPosAnimation();
+	// BW1W120 00423540 BW1M100 100ad160 Villager::WatchFightAnimation(void)
+	uint32_t WatchFightAnimation();
 	// BW1W120 00423730 BW1M100 100ad0f0 Villager::LandedAnimation(void)
 	uint32_t LandedAnimation();
 	// BW1W120 00423770 BW1M100 100ad060 Villager::DyingAnimation(void)
 	uint32_t DyingAnimation();
 	// BW1W120 004237a0 BW1M100 100acfd0 Villager::DeadAnimation(void)
 	uint32_t DeadAnimation();
+	// BW1W120 004237d0 BW1M100 100acf60 Villager::KissingAnimation(void)
+	uint32_t KissingAnimation();
+	// BW1W120 004237f0 BW1M100 100acec0 Villager::ThrownAnimation(void)
+	uint32_t ThrownAnimation();
+	// BW1W120 00423850 BW1M100 100acb10 Villager::DanceAnimation(void)
+	uint32_t DanceAnimation();
+	// BW1W120 00423a80 BW1M100 100acab0 Villager::LookAtLargeObjectAnimation(void)
+	uint32_t LookAtLargeObjectAnimation();
+	// BW1W120 00423ac0 BW1M100 100aca00 Villager::ForesteringAnimation(void)
+	uint32_t ForesteringAnimation();
+	// BW1W120 00423ad0 BW1M100 100ac920 Villager::LookAtFlyingObjectAnimation(void)
+	uint32_t LookAtFlyingObjectAnimation();
 	// BW1W120 00423bd0 BW1M100 100ac690 Villager::FootballWaitForKickOffAnimation(void)
 	uint32_t FootballWaitForKickOffAnimation();
+	// BW1W120 00423c50 BW1M100 100ac640 Villager::FootballGoalKeeperAnimation(void)
+	uint32_t FootballGoalKeeperAnimation();
 	// BW1W120 00423c60 BW1M100 100ac5f0 Villager::FootballAttackerAnimation(void)
 	uint32_t FootballAttackerAnimation();
 	// BW1W120 00423c70 BW1M100 100ac5a0 Villager::FootballDefenderAnimation(void)
@@ -1845,10 +1879,46 @@ public:
 	uint32_t FootballMatchPausedAnimation();
 	// BW1W120 00423e20 BW1M100 100ac170 Villager::BuildingAnimation(void)
 	uint32_t BuildingAnimation();
+	// BW1W120 00423eb0 BW1M100 100ac060 Villager::InspectCreatureAnimation(void)
+	uint32_t InspectCreatureAnimation();
+	// BW1W120 00423f60 BW1M100 100abfd0 Villager::RespectCreatureAnimation(void)
+	uint32_t RespectCreatureAnimation();
 	// BW1W120 00423fa0 BW1M100 100abf40 Villager::ControlledByCreatureAnimation(void)
 	uint32_t ControlledByCreatureAnimation();
+	// BW1W120 00423fd0 BW1M100 100abe60 Villager::PointAtFlyingObjectAnimation
+	uint32_t PointAtFlyingObjectAnimation();
+	// BW1W120 00424050 BW1M100 100abdb0 Villager::YawnAnimation(void)
+	uint32_t YawnAnimation();
 	// BW1W120 00424080 BW1M100 1009e6d0 Villager::PauseForASecondAnimation(void)
 	uint32_t PauseForASecondAnimation();
+	// BW1W120 004240c0 BW1M100 100abca0 Villager::AmazedByShieldAnimation(void)
+	uint32_t AmazedByShieldAnimation();
+	// BW1W120 00424100 BW1M100 100abbb0 Villager::TownEmergencyAnimation(void)
+	uint32_t TownEmergencyAnimation();
+	// BW1W120 004241b0 BW1M100 100abaf0 Villager::RandomCrowdAnimation(void)
+	uint32_t RandomCrowdAnimation();
+	// BW1W120 00424210 BW1M100 1009f030 Villager::SitDownAnimation(void)
+	uint32_t SitDownAnimation();
+
+	// TransitionAnimation slot
+	// BW1W120 00424290 BW1M100 100aba00 Villager::SleepInTentIntoOutofAnimation
+	uint32_t SleepInTentIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+	// BW1W120 004242b0 BW1M100 10028bb0 Villager::MoveToPosIntoOutofAnimation(int, unsigned char)
+	uint32_t MoveToPosIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+	// BW1W120 00424300 BW1M100 100ab8f0 Villager::MournIntoOutofAnimation
+	uint32_t MournIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+	// BW1W120 00424350 BW1M100 100ab820 Villager::PrayIntoOutofAnimation
+	uint32_t PrayIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+	// BW1W120 00424370 BW1M100 100ab650 Villager::ArrivesAtResourceIntoOutofAnimation
+	uint32_t ArrivesAtResourceIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+	// BW1W120 004243a0 BW1M100 1009e810 Villager::SitDownIntoOutOfAnimation(void)
+	uint32_t SitDownIntoOutOfAnimation(uint8_t param_1, uint8_t param_2);
+	// BW1W120 004243e0 BW1M100 100ab510 Villager::BuildingIntoOutofAnimation(void)
+	uint32_t BuildingIntoOutofAnimation(uint8_t param_1, uint8_t param_2);
+
+	// validate slot
+	// BW1W120 00756990 BW1M100 1005a350 Villager::WallhugValidate(void)
+	void WallhugValidate();
 };
 
 class MissionaryControl : public GameThingWithPos

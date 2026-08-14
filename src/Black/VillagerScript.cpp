@@ -83,7 +83,7 @@ bool32_t Villager::SetupNewScriptWander()
 // trailing `xor eax,eax`, but the target uses `test eax,eax` and reuses eax=0 (int-returning form).
 // Also a minor vtable-load schedule diff (target does `mov eax,[esi]` before `and edi,0xff`, ours
 // after). Both are dispatcher-owned (return-type + scheduler tie-break).
-int Living::ExitNoChangeState(VILLAGER_STATES state)
+uint32_t Living::ExitNoChangeState(uint8_t state)
 {
 	if (!IsScriptInterruptableState((VILLAGER_STATES)(state & VILLAGER_STATE_LAST_STATE)) &&
 	    !IsStateForInterface((VILLAGER_STATES)(state & VILLAGER_STATE_LAST_STATE)) &&
@@ -95,7 +95,7 @@ int Living::ExitNoChangeState(VILLAGER_STATES state)
 }
 
 // BW1W120 007687d0 BW1M100 inlined Living::EnterScriptWander(VILLAGER_STATES, VILLAGER_STATES)
-uint32_t Living::EnterScriptWander(VILLAGER_STATES param_1, VILLAGER_STATES param_2)
+uint32_t Living::EnterScriptWander(uint8_t param_1, uint8_t param_2)
 {
 	return EnterInScript(param_1, param_2);
 }
@@ -117,7 +117,7 @@ bool32_t Villager::ScriptWanderAroundPos()
 }
 
 // BW1W120 00768830 BW1M100 inlined Living::ExitScriptWander(VILLAGER_STATES)
-int Living::ExitScriptWander(VILLAGER_STATES state)
+uint32_t Living::ExitScriptWander(uint8_t state)
 {
 	return ExitInScript(state);
 }
@@ -140,7 +140,7 @@ int Living::ExitScriptWander(VILLAGER_STATES state)
 // propagates); (2) references the unnamed global DAT_00edd508 (an animation-index table) — needs a
 // name in symbols.txt; (3) data_for_script_remind->field_0x24/0x44 are placeholder fields;
 // (4) dynamic_cast/RTDynamicCast + MapCoords operator!= + AreWeThere + SetupMoveToPos scheduling.
-uint32_t Living::EnterPlayAnim(VILLAGER_STATES param_1, VILLAGER_STATES param_2)
+uint32_t Living::EnterPlayAnim(uint8_t param_1, uint8_t param_2)
 {
 	return 1;
 }
@@ -178,7 +178,7 @@ bool32_t Villager::ScriptPlayAnim()
 }
 
 // BW1W120 007689c0 BW1M100 inlined Living::ExitPlayAnim(VILLAGER_STATES)
-int Living::ExitPlayAnim(VILLAGER_STATES state)
+uint32_t Living::ExitPlayAnim(uint8_t state)
 {
 	return ExitInScript(state);
 }

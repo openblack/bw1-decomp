@@ -847,7 +847,7 @@ bool Villager::MakeVillagerFaceObject(Object* object)
 }
 
 // BW1W120 007527a0
-int Villager::ExitReaction(VILLAGER_STATES state)
+uint32_t Villager::ExitReaction(uint8_t state)
 {
 	return 0;
 }
@@ -1603,7 +1603,7 @@ uint32_t Villager::AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfa
 }
 
 // BW1W120 00756520
-VILLAGER_STATES Villager::LookAtPreviousStateReactToTownEmergency()
+uint32_t Villager::LookAtPreviousStateReactToTownEmergency()
 {
 	return VILLAGER_STATE_INVALID_STATE;
 }

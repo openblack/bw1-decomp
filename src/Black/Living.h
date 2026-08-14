@@ -337,46 +337,46 @@ public:
 	virtual uint32_t CallEntryStateFunction(uint8_t current, uint8_t destination) = 0;
 	// BW1W120 __purecall BW1M100 null
 	virtual uint32_t CallEntryStateFunction(uint8_t state) = 0;
-	// BW1W120 005eccd0 BW1M100 inlined Living::ExitReaction(VILLAGER_STATES)
-	virtual int ExitReaction(VILLAGER_STATES state);
+	// BW1W120 005eccd0 BW1M100 inlined Living::ExitReaction(unsigned char)
+	virtual uint32_t ExitReaction(uint8_t state);
 	// BW1W120 005ed9c0 BW1M100 inlined Living::ExitInScript(VILLAGER_STATES)
-	virtual int ExitInScript(VILLAGER_STATES state);
+	virtual uint32_t ExitInScript(uint8_t state);
 	// BW1W120 005edb10 BW1M100 inlined Living::ExitDanceInScript(VILLAGER_STATES)
-	virtual int ExitDanceInScript(VILLAGER_STATES state);
+	virtual uint32_t ExitDanceInScript(uint8_t state);
 	// BW1W120 005ed500 BW1M100 inlined Living::ExitInHand(VILLAGER_STATES)
-	virtual int ExitInHand(VILLAGER_STATES state);
+	virtual uint32_t ExitInHand(uint8_t state);
 	// BW1W120 005ed540 BW1M100 inlined Living::ExitInFlying(VILLAGER_STATES)
-	virtual int ExitInFlying(VILLAGER_STATES state);
+	virtual uint32_t ExitInFlying(uint8_t state);
 	// BW1W120 005ed580 BW1M100 inlined Living::ExitInLanded(VILLAGER_STATES)
-	virtual int ExitInLanded(VILLAGER_STATES state);
+	virtual uint32_t ExitInLanded(uint8_t state);
 	// BW1W120 00768780 BW1M100 inlined Living::ExitNoChangeState(VILLAGER_STATES)
-	virtual int ExitNoChangeState(VILLAGER_STATES state);
+	virtual uint32_t ExitNoChangeState(uint8_t state);
 	// BW1W120 005ee090 BW1M100 inlined Living::ExitMoveOnPath(VILLAGER_STATES)
-	virtual int ExitMoveOnPath(VILLAGER_STATES state);
+	virtual uint32_t ExitMoveOnPath(uint8_t state);
 	// BW1W120 005edda0 BW1M100 1001fb70 Living::ExitMoveToPos(unsigned char)
-	virtual int ExitMoveToPos(uint8_t param_1);
+	virtual uint32_t ExitMoveToPos(uint8_t state);
 	// BW1W120 005eddc0 BW1M100 1037f2a0 Living::ExitBeingEaten(unsigned char)
-	virtual int ExitBeingEaten(uint8_t param_1);
+	virtual uint32_t ExitBeingEaten(uint8_t state);
 	// BW1W120 005f2a80 BW1M100 10072250 Living::SetState(unsigned long, unsigned char)
 	virtual void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
 	// BW1W120 005edd90 BW1M100 inlined Living::EnterMoveToPos(VILLAGER_STATES, VILLAGER_STATES)
 	virtual uint32_t EnterMoveToPos(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
 	// BW1W120 005ed7e0 BW1M100 inlined Living::EnterInScript(VILLAGER_STATES, VILLAGER_STATES)
-	virtual uint32_t EnterInScript(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
+	virtual uint32_t EnterInScript(uint8_t current, uint8_t destination);
 	// BW1W120 00417060 BW1M100 inlined Living::EnterInHand(VILLAGER_STATES, VILLAGER_STATES)
-	virtual uint32_t EnterInHand(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
+	virtual uint32_t EnterInHand(uint8_t current, uint8_t destination);
 	// BW1W120 005eddd0 BW1M100 1037f260 Living::EnterMoveOnPath(unsigned char, unsigned char)
-	virtual uint32_t EnterMoveOnPath(VILLAGER_STATES state_1, VILLAGER_STATES state_2);
+	virtual uint32_t EnterMoveOnPath(uint8_t current, uint8_t destination);
 	// BW1W120 005eda50 BW1M100 inlined Living::EnterDanceInScript(VILLAGER_STATES, VILLAGER_STATES)
-	virtual uint32_t EnterDanceInScript(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
+	virtual uint32_t EnterDanceInScript(uint8_t current, uint8_t destination);
 	// BW1W120 007687d0 BW1M100 inlined Living::EnterScriptWander(VILLAGER_STATES, VILLAGER_STATES)
-	virtual uint32_t EnterScriptWander(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
+	virtual uint32_t EnterScriptWander(uint8_t current, uint8_t destination);
 	// BW1W120 00768830 BW1M100 inlined Living::ExitScriptWander(VILLAGER_STATES)
-	virtual int ExitScriptWander(VILLAGER_STATES state);
+	virtual uint32_t ExitScriptWander(uint8_t state);
 	// BW1W120 00768840 BW1M100 inlined Living::EnterPlayAnim(VILLAGER_STATES, VILLAGER_STATES)
-	virtual uint32_t EnterPlayAnim(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
+	virtual uint32_t EnterPlayAnim(uint8_t current, uint8_t destination);
 	// BW1W120 007689c0 BW1M100 inlined Living::ExitPlayAnim(VILLAGER_STATES)
-	virtual int ExitPlayAnim(VILLAGER_STATES state);
+	virtual uint32_t ExitPlayAnim(uint8_t state);
 	// BW1W120 00473e60 BW1M100 inlined Living::IsScriptState( const(VILLAGER_STATES))
 	virtual bool IsScriptState(VILLAGER_STATES state) const;
 	// BW1W120 00473e70 BW1M100 inlined Living::IsScriptInterruptableState( const(VILLAGER_STATES))
@@ -752,8 +752,15 @@ public:
 	void SetReactionDoneWhen(REACTION reaction);
 	// BW1W120 00768640 BW1M100 105975c0 Living::CannotExitState(unsigned char)
 	bool32_t CannotExitState(unsigned char param_1);
+
+	// State-table handlers reached only through the villager/animal state
+	// tables in GStates.cpp. The signature of each is fixed by the table
+	// slot it is stored in.
+
 	// BW1W120 005ec310 BW1M100 1038af00 Living::WaitForCounter(void)
 	uint32_t WaitForCounter();
+	// BW1W120 005f26a0 BW1M100 1038df10 Living::ArrivesAtPickupBallReaction(void)
+	uint32_t ArrivesAtPickupBallReaction();
 };
 
 #endif /* BW1_DECOMP_LIVING_INCLUDED_H */
