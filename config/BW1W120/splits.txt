@@ -28,7 +28,6 @@ Sections:
 	.data1      type:data align:4096
 	SELFMOD     type:data align:4096
 	.rsrc       type:rodata align:4096
-	.drectve    type:comment vaddr:0x00400328 end:0x00400555
 
 lib/libcmt/crt0init.obj:
 	.CRT$XCA    start:0x009C6000 end:0x009C6004 align:4
@@ -2600,6 +2599,11 @@ Black/WorldRoom.cpp:
 	.CRT$XCU    start:0x009C7C10 end:0x009C7C80 align:4
 	.data       start:0x00C2A67C end:0x00C2A6A0
 	.bss        start:0x00E36150 end:0x00E3A168
+
+Lionhead/LH3DLib/development/LH3DP3.cpp:
+	.text       start:0x007A1480 end:0x007AD230
+	.data1      start:0x00FC0000 end:0x00FC0B40
+	.drectve    type:comment start:0x00400328 end:0x00400555
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
 	.text       start:0x007AD230 end:0x007AE6B0
