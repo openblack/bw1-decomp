@@ -35,13 +35,17 @@ See [Dependencies](dependencies.md) first.
    2. Extract `GERMAN/VS60SP4/VC98/LIB/LIBCMT.LIB` with `7z e <iso> "*LIBCMT.LIB" -r`, or mount directly.
    3. Copy it to `orig/libs/msvc6.4/libcmt.lib`.
 
-   **MSVC 6.0 RTM `libcpmt.lib` → `orig/libs/msvc6.0/`** (also BW1W100/BW1W110)
+   **MSVC 6.0 RTM `libcpmt.lib` and `libcimt.lib` → `orig/libs/msvc6.0/`** (`libcpmt.lib` for BW1W100/BW1W110, `libcimt.lib` for BW1W110/BW1W120)
 
-   SP4 never shipped its own `libcpmt.lib` — checked three independent SP4 discs, none include it, since Microsoft only redistributes files that changed for a given service pack. The original 1998 RTM copy is the right one (a real SP4-era machine would still have it, untouched, in `VC98\Lib`). It's byte-different from SP5's, so don't substitute that one. From the Internet Archive item [`visualstudiov60enterpriseedition_199807`](https://archive.org/details/visualstudiov60enterpriseedition_199807):
+   SP4 never shipped its own `libcpmt.lib` — checked three independent SP4 discs, none include it, since Microsoft only redistributes files that changed for a given service pack. The original 1998 RTM copy is the right one (a real SP4-era machine would still have it, untouched, in `VC98\Lib`). It's byte-different from SP5's, so don't substitute that one.
+
+   `libcimt.lib` — the pre-standard iostreams (`ios`, `streambuf`, `filebuf`, `fstream`, `istream`, `ostream`), which the game uses alongside the standard library in `libcpmt.lib` — is a stronger case of the same thing: *no* service pack ever replaced it. The SP5 package shows this plainly, every library in it dated 2000-08 except `libcimt.lib`, still the 1998-06-17 original. So RTM's copy is what 1.10 and 1.20 both link, and it is the only one that matches: a later rebuild (Feb 2004, SP6-era) exists in the wild whose `_ios.obj` differs — its `ios` constructors are 0x64/0x6F/0x4D/0x51 bytes against RTM's 0x5E/0x69/0x48/0x4A, and it adds an `__InitLock` class and a `.CRT$XCL` static initializer that appear nowhere in either game binary. If your copy is dated 2004, it is the wrong one.
+
+   Both come off the same disc, from the Internet Archive item [`visualstudiov60enterpriseedition_199807`](https://archive.org/details/visualstudiov60enterpriseedition_199807):
 
    1. Download Disc 1 (`...(X03-78941)(Microsoft Corporation)(August 1998).iso`, a plain ISO).
-   2. Extract `VC98/LIB/LIBCPMT.LIB` with `7z e <iso> "*LIBCPMT.LIB" -r`, or mount directly.
-   3. Copy it to `orig/libs/msvc6.0/libcpmt.lib`.
+   2. Extract `VC98/LIB/LIBCPMT.LIB` and `VC98/LIB/LIBCIMT.LIB` with `7z e <iso> "*LIBCPMT.LIB" "*LIBCIMT.LIB" -r`, or mount directly.
+   3. Copy them to `orig/libs/msvc6.0/libcpmt.lib` and `orig/libs/msvc6.0/libcimt.lib`.
 
    **DirectX 7.0 DDK → `orig/directx7.0/`**
 

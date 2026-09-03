@@ -18,6 +18,7 @@ These are **not** downloaded and must be supplied by hand under `orig/` (see [Ge
 - MSVC 6.0 SP5 static CRT libs (BW1W120) — `orig/libs/msvc6.5/libcmt.lib`, `orig/libs/msvc6.5/libcpmt.lib` (from `VC98\Lib`)
 - MSVC 6.0 SP4 `libcmt.lib` (BW1W100/BW1W110) — `orig/libs/msvc6.4/libcmt.lib`
 - MSVC 6.0 RTM `libcpmt.lib` (also BW1W100/BW1W110; SP4 never shipped its own) — `orig/libs/msvc6.0/libcpmt.lib`
+- MSVC 6.0 RTM `libcimt.lib` (BW1W110/BW1W120; the old iostreams, never updated by any service pack) — `orig/libs/msvc6.0/libcimt.lib`
 - DirectX 7.0 DDK — headers in `orig/directx7.0/include/` and libs in `orig/directx7.0/lib/`
 - Intel Approximate Math Library — `orig/libs/amaths-2.0/amaths.lib` (linked verbatim for SSE `sin`/`cos`/`tan`/`atan`/`exp`/`log`/`pow`)
 

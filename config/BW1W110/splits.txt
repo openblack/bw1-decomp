@@ -1813,6 +1813,72 @@ Lionhead/LH3DLib/development/LH3DWay.cpp:
 lib/libcmt/constpow.obj:
 	.data       start:0x00C1FB00 end:0x00C1FDBC align:1
 
+lib/libcimt/_ios.obj:
+	.text       start:0x00890306 end:0x0089053C align:1
+	.rdata      start:0x00996084 end:0x00996098
+	.rdata$r    start:0x009AB680 end:0x009AB6C4
+	.data       start:0x00C2AF7C end:0x00C2AF9A
+	.bss        start:0x00F9B1C0 end:0x00F9B1FC
+
+lib/libcimt/fstream.obj:
+	.text       start:0x0089053C end:0x0089098B align:1
+	.text$x     start:0x008984C8 end:0x00898594
+	.rdata      start:0x00996098 end:0x009960B0
+	.rdata$r    start:0x009AB6C8 end:0x009AB7A0
+	.xdata$x    start:0x009AF0B0 end:0x009AF178
+	.data       start:0x00C2AFA0 end:0x00C2B000
+
+lib/libcimt/istrget.obj:
+	.text       start:0x0089098B end:0x00890A97 align:1
+
+lib/libcimt/filebuf.obj:
+	.text       start:0x00890A97 end:0x00890EA4 align:1
+	.text$x     start:0x00898594 end:0x008985BC
+	.rdata      start:0x009960B0 end:0x009960F8
+	.rdata$r    start:0x009AB7A0 end:0x009AB7F0
+	.xdata$x    start:0x009AF178 end:0x009AF1C8
+	.data       start:0x00C2B000 end:0x00C2B02E
+
+lib/libcimt/ostrput.obj:
+	.text       start:0x00890EA4 end:0x00890F27 align:1
+
+lib/libcimt/mtlock.obj:
+	.text       start:0x00890F27 end:0x00890F53 align:1
+
+lib/libcimt/_iostrea.obj:
+	.text       start:0x00890F53 end:0x0089112F align:1
+	.text$x     start:0x008985BC end:0x00898664
+	.rdata      start:0x009960F8 end:0x00996110
+	.rdata$r    start:0x009AB7F0 end:0x009AB830
+	.xdata$x    start:0x009AF1C8 end:0x009AF280
+
+lib/libcimt/filebuf1.obj:
+	.text       start:0x0089112F end:0x00891381 align:1
+
+lib/libcimt/streamb1.obj:
+	.text       start:0x00891381 end:0x00891462 align:1
+
+lib/libcimt/istream.obj:
+	.text       start:0x00891462 end:0x00891AA4 align:1
+	.text$x     start:0x00898664 end:0x00898708
+	.rdata      start:0x00996110 end:0x00996130
+	.rdata$r    start:0x009AB830 end:0x009AB8B4
+	.xdata$x    start:0x009AF280 end:0x009AF348
+	.data       start:0x00C2B030 end:0x00C2B058
+
+lib/libcimt/streamb.obj:
+	.text       start:0x00891AA4 end:0x00891DB9 align:1
+	.rdata      start:0x00996130 end:0x00996160
+	.rdata$r    start:0x009AB8B4 end:0x009AB8E8
+
+lib/libcimt/ostream.obj:
+	.text       start:0x00891DB9 end:0x008923BA align:1
+	.text$x     start:0x00898708 end:0x008987AC
+	.rdata      start:0x00996160 end:0x00996180
+	.rdata$r    start:0x009AB8E8 end:0x009AB984
+	.xdata$x    start:0x009AF348 end:0x009AF410
+	.data       start:0x00C2B058 end:0x00C2B079
+
 lib/amaths/AMaths.obj:
 	.text       start:0x00892580 end:0x00894E40 align:1
 	.data       start:0x00C2B080 end:0x00C2B4C0
@@ -1883,3 +1949,6 @@ lib/libcmt/mbtoupr.obj:
 lib/libcmt/sehsupp.obj:
 	.text       start:0x00896206 end:0x0089626B align:1
 	.rdata      start:0x009961C8 end:0x009961D8
+
+Lionhead/LHFile/ver3.0/BitmapInfo.cpp:
+	.text$x     start:0x008987B0 end:0x008987C5
