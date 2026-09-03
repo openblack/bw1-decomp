@@ -68,6 +68,7 @@ class Object:
             "lib_archive": None,
             "lib_member": None,
             "compiler_version": None,
+            "env": None,
             "progress_category": None,
             "scratch_preset_id": None,
             "shift_jis": None,
@@ -872,7 +873,7 @@ def generate_build_ninja(
         n.comment("CL build (MSVC / clang-cl)")
         n.rule(
             name="cl",
-            command=f"{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /c $in /Fo$out{fd_flag}",
+            command=f"${{env}}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /c $in /Fo$out{fd_flag}",
             description="CL $out",
         )
         n.newline()
@@ -1232,6 +1233,7 @@ def generate_build_ninja(
                     variables={
                         "compiler_version": Path(obj.options["compiler_version"]) if obj.options["compiler_version"] else "",
                         "cflags": cflags_str,
+                        "env": obj.options["env"] or "",
                     },
                     implicit=cl_implicit,
                     order_only="pre-compile",

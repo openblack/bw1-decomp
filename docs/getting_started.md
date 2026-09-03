@@ -72,6 +72,32 @@ See [Dependencies](dependencies.md) first.
    3. Copy `AMaths.lib` to `orig/libs/amaths-2.0/amaths.lib`. As with the MSVC
       libs, the filename must be lowercase to match the config key.
 
+   **Intel C++ 5.0 `libircmt.lib` → `orig/libs/icc-5.0.115/`** (BW1W110/BW1W120)
+
+   Needed: `libircmt.lib`, the multithreaded Intel C++ runtime. One member is
+   linked, `cpu_disp_mt.obj` — the CPU dispatch code (`___intel_cpu_indicator`
+   and its init) that `LH3DP3.cpp`, the one translation unit built with `icl`,
+   drags in.
+
+   Both versions link the 5.0.1 **beta**, build 010214Z, which has not turned up
+   anywhere. The nearest release, 5.0.115 (build 010525Z), is close enough to
+   use: its `cpu_disp_mt.obj` has the same section layout and differs only in
+   ten code bytes across nine sites (a stack adjust, and the `[ebp-4]`/`[ebp-8]`
+   locals swapped) plus the compiler banner in the `.drectve`.
+   `tools/post_link_patch.py` rewrites both, so the image still hashes clean —
+   delete those two patches if a 010214Z copy ever surfaces.
+
+   Unlike the libraries above there is no Internet Archive item to point at; take
+   it from Intel C++ Compiler 5.0.115 install media, where the libraries sit in
+   the InstallShield cabinet `compiler/icl/data1.cab`:
+
+   1. `unshield -g "Compiler32 Lib files (shared)" -d <out> x <media>/compiler/icl/data1.cab`
+   2. That yields `libirc.lib`, `libircmt.lib`, `libm.lib`, `libmmd.lib`,
+      `libmmt.lib` and `svml_disp.lib`. Only `libircmt.lib` is needed; it should
+      hold `psa_mt`, `dispfail_mt`, `cpu_disp_mt`, `xmm_malloc_mt`, `cpcheck_mt`
+      and `pgopti_mt`.
+   3. Copy it to `orig/libs/icc-5.0.115/libircmt.lib`, lowercase as above.
+
 4. Run `configure.py` with the version you want to work on:
 
    ```sh

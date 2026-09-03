@@ -459,6 +459,58 @@ def section_table_end(pe):
             + pe.FILE_HEADER.NumberOfSections * 40)
 
 
+# We link ICC 5.0.115's cpu_disp_mt.obj; BW1 shipped the 5.0.1 beta's. The
+# banner differs, as do ten code bytes below. 1.1 and 1.2 ship the same object.
+CPU_DISP_EXESTR_SUBSTITUTION = (b"Version 5.0.1   Build 010525Z",
+                                b"Version 5.0.1 Beta  Build 010214Z")
+
+
+def substitute_exestr(pe, old, new):
+    """Rewrite one exestr comment in the header padding, shifting the records after it."""
+    ste = section_table_end(pe)
+    soh = pe.OPTIONAL_HEADER.SizeOfHeaders
+    blob = bytes(pe.__data__[ste:soh])
+    at = blob.find(old)
+    if at < 0:
+        if blob.find(new) >= 0:
+            return
+        raise SystemExit(f"exestr comment {old!r} not found in the header padding")
+    patched = blob[:at] + new + blob[at + len(old):]
+    if len(patched.rstrip(b'\x00')) > soh - ste:
+        raise SystemExit("exestr substitution overflows SizeOfHeaders")
+    pe.__data__[ste:soh] = patched[:soh - ste]
+
+
+# These seem to be differences in codegen between 5.0.115 build 010525Z and the
+# 5.0.1 beta build 010214Z BW1 shipped. Offsets are from the object's .text, which
+# 1.1 and 1.2 place at different addresses.
+CPU_DISP_CODEGEN = (
+    (0x003, b'\x83\xec\x08', b'\x83\xc4\xf8'),  # sub esp,8       -> add esp,-8
+    (0x08A, b'\x89\x45\xfc', b'\x89\x45\xf8'),  # mov [ebp-4],eax -> mov [ebp-8],eax
+    (0x08D, b'\x89\x55\xf8', b'\x89\x55\xfc'),  # mov [ebp-8],edx -> mov [ebp-4],edx
+    (0x095, b'\xc7\x45\xfc', b'\xc7\x45\xf8'),  # mov [ebp-4],0   -> mov [ebp-8],0
+    (0x09C, b'\xc7\x45\xf8', b'\xc7\x45\xfc'),  # mov [ebp-8],0   -> mov [ebp-4],0
+    (0x0A3, b'\x8b\x55\xfc', b'\x8b\x55\xf8'),  # mov edx,[ebp-4] -> mov edx,[ebp-8]
+    (0x0D0, b'\x8b\x55\xf8', b'\x8b\x55\xfc'),  # mov edx,[ebp-8] -> mov edx,[ebp-4]
+    (0x0F7, b'\x8b\x55\xf8', b'\x8b\x55\xfc'),  # mov edx,[ebp-8] -> mov edx,[ebp-4]
+    (0x138, b'\x8b\x55\xf8', b'\x8b\x55\xfc'),  # mov edx,[ebp-8] -> mov edx,[ebp-4]
+)
+BW1W110_CPU_DISP_TEXT = 0x008923C0
+BW1W120_CPU_DISP_TEXT = 0x008A25B0
+
+
+def substitute_code(pe, base, rows):
+    for delta, linked, shipped in rows:
+        address = base + delta
+        offset = pe.get_offset_from_rva(address - pe.OPTIONAL_HEADER.ImageBase)
+        found = bytes(pe.__data__[offset:offset + len(linked)])
+        if found == shipped:
+            continue
+        if found != linked:
+            raise SystemExit(f"{address:#010x}: found {found.hex()}, expected {linked.hex()}")
+        write_bytes(pe, offset, shipped)
+
+
 def insert_header_padding(pe, at, count):
     # Shift the free-floating header bytes forward within SizeOfHeaders; pefile
     # structures are relocated separately via set_file_offset.
@@ -605,6 +657,9 @@ def apply_BW1W100_patch(pe, cfg, out_dir, modules):
 
 
 def apply_BW1W110_patch(pe, cfg, out_dir, modules):
+    substitute_code(pe, BW1W110_CPU_DISP_TEXT, CPU_DISP_CODEGEN)
+    substitute_exestr(pe, *CPU_DISP_EXESTR_SUBSTITUTION)
+
     ste = section_table_end(pe)
     insert_header_padding(pe, ste, SAFEDISC_SECTION_BUMP)
     write_bytes(pe, ste + SAFEDISC_SECTION_BUMP, b'\x00' * EXESTR_PREFIX_ERASE)
@@ -623,6 +678,9 @@ def apply_BW1W110_patch(pe, cfg, out_dir, modules):
 
 
 def apply_BW1W120_patch(pe, cfg, out_dir, modules):
+    substitute_code(pe, BW1W120_CPU_DISP_TEXT, CPU_DISP_CODEGEN)
+    substitute_exestr(pe, *CPU_DISP_EXESTR_SUBSTITUTION)
+
     # Bump the exestr comments past SafeDisc's section headers, then re-apply the
     # decryptor's prefix erasure. Runs before the artifacts below so they land at
     # their final offsets.

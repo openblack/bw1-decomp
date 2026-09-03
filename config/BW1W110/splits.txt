@@ -28,7 +28,7 @@ Sections:
 	.data1      type:data align:4096
 	SELFMOD     type:data align:4096
 	.rsrc       type:rodata align:4096
-	.drectve    type:comment vaddr:0x00400328 end:0x00400555
+	.drectve    type:comment vaddr:0x00400328 end:0x004004B3
 
 lib/libcmt/crt0init.obj:
 	.CRT$XCA    start:0x009B6000 end:0x009B6004 align:4
@@ -1877,7 +1877,12 @@ lib/libcimt/ostream.obj:
 	.rdata      start:0x00996160 end:0x00996180
 	.rdata$r    start:0x009AB8E8 end:0x009AB984
 	.xdata$x    start:0x009AF348 end:0x009AF410
-	.data       start:0x00C2B058 end:0x00C2B079
+	.data       start:0x00C2B058 end:0x00C2B080
+
+lib/libircmt/cpu_disp_mt.obj:
+	.text       start:0x008923C0 end:0x00892520
+	.bss        start:0x00F9B200 end:0x00F9B220
+	.drectve    type:comment start:0x004004B3 end:0x00400555
 
 lib/amaths/AMaths.obj:
 	.text       start:0x00892580 end:0x00894E40 align:1

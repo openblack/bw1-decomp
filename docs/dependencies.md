@@ -21,6 +21,7 @@ These are **not** downloaded and must be supplied by hand under `orig/` (see [Ge
 - MSVC 6.0 RTM `libcimt.lib` (BW1W110/BW1W120; the old iostreams, never updated by any service pack) — `orig/libs/msvc6.0/libcimt.lib`
 - DirectX 7.0 DDK — headers in `orig/directx7.0/include/` and libs in `orig/directx7.0/lib/`
 - Intel Approximate Math Library — `orig/libs/amaths-2.0/amaths.lib` (linked verbatim for SSE `sin`/`cos`/`tan`/`atan`/`exp`/`log`/`pow`)
+- Intel C++ 5.0 runtime `libircmt.lib` (BW1W110/BW1W120) — `orig/libs/icc-5.0.115/libircmt.lib` (supplies `cpu_disp_mt.obj`, the CPU-dispatch init behind the SSE paths)
 
 Windows
 -------
