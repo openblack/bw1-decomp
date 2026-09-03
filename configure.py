@@ -181,8 +181,8 @@ config.lld_link_tag = "bw1-decomp-024"
 # .lib at orig/libs/<package>/<lib>.lib. See the README for how to obtain them.
 config.static_libs = {
     "BW1W100": {"libcmt": "msvc6.4", "libcpmt": "msvc6.0", "amaths": "amaths-2.0"},
-    "BW1W110": {"libcmt": "msvc6.4", "libcpmt": "msvc6.0", "amaths": "amaths-2.0"},
-    "BW1W120": {"libcmt": "msvc6.5", "libcpmt": "msvc6.5", "amaths": "amaths-2.0"},
+    "BW1W110": {"libcmt": "msvc6.4", "libcpmt": "msvc6.0", "libcimt": "msvc6.0", "amaths": "amaths-2.0"},
+    "BW1W120": {"libcmt": "msvc6.5", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0"},
 }[config.version]
 
 # Project
@@ -1377,7 +1377,22 @@ config.libs = [
             Object(NonMatching, "Lionhead/LH3DLib/development/LH3DVRAMTex.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LH3DLib/development/CAnim.cpp", progress_category="sdk"),
 
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\_ios.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\fstream.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\istrget.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\filebuf.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\ostrput.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\mtlock.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\_iostrea.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\filebuf1.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\streamb1.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\istream.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\streamb.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\ostream.obj", progress_category="sdk"),
+
             LibObject(MatchingFor("BW1W110", "BW1W120"), "amaths", ".\\Release\\AMaths.obj", progress_category="sdk"),
+
+            Object(NonMatching, "Lionhead/LHFile/ver3.0/BitmapInfo.cpp", progress_category="sdk"),
 
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\wcsdup.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\wcsicmp.obj", progress_category="sdk"),
