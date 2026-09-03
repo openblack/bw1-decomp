@@ -179,10 +179,11 @@ config.lld_link_tag = "bw1-decomp-024"
 # Static libraries to pull verbatim CRT objects from (see LibObject). They are
 # not committed and not downloaded — you must supply them yourself: place each
 # .lib at orig/libs/<package>/<lib>.lib. See the README for how to obtain them.
+# icc-5.0.115 is not the 5.0.1 beta build 010214Z BW1 used, but it is a close match.
 config.static_libs = {
     "BW1W100": {"libcmt": "msvc6.4", "libcpmt": "msvc6.0", "amaths": "amaths-2.0"},
-    "BW1W110": {"libcmt": "msvc6.4", "libcpmt": "msvc6.0", "libcimt": "msvc6.0", "amaths": "amaths-2.0"},
-    "BW1W120": {"libcmt": "msvc6.5", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0"},
+    "BW1W110": {"libcmt": "msvc6.4", "libcpmt": "msvc6.0", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
+    "BW1W120": {"libcmt": "msvc6.5", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
 }[config.version]
 
 # Project
@@ -267,6 +268,13 @@ config.custom_build_steps = {
         },
     ],
 }
+icc_version = "ICC/5.0.115"
+includes_project = [
+    "/I", "include",
+    "/I", "orig/directx7.0/include",
+    "/I", "src",
+    f"/I", f"build/{config.version}/include",
+]
 cflags_base = [
     "/nologo",
     "/W3",
@@ -275,10 +283,7 @@ cflags_base = [
     "/Ob1",
     "/MT",
     "/GR",
-    "/I", "include",
-    "/I", "orig/directx7.0/include",
-    "/I", "src",
-    f"/I", f"build/{config.version}/include",
+    *includes_project,
     f"/I", f"build/compilers/{config.linker_version}/include",
     f"/DBUILD_VERSION={version_num}",
     f"/DVERSION_{config.version}",
@@ -288,6 +293,26 @@ cflags_base = [
 # plus two extra deflate_state fields), shifting every address after src/zlib.
 # --debug adds debug *info* to the same bytes, so it only toggles /Zi vs /Zd.
 cflags_base.append("/DNDEBUG=1")
+
+# ICC 5.0 for LH3DP3.cpp, from its .drectve banner. Dropped from the original line:
+# -nologo (the rule adds it), -Fa/-Fo/-Fd (the rule supplies /Fo), and
+# -Qlocation,link,<VC98 path> which cannot resolve here. Also dropped -FAcs and
+# -FD: both are output-only and run after codegen, but -FAcs litters the repo
+# root with .cod listings and -FD makes icl shell out to MSVC cl, which cannot
+# parse ICC intrinsics or cpu_dispatch and emits pages of bogus errors.
+cflags_icc = [
+    "/Qvc6",
+    "/G6", "/G7", "/QxiW",
+    "/MT", "/W3", "/GX",
+    "/O2", "/Ob1",
+    *includes_project,
+    "/I", f"build/compilers/{config.linker_version}/include",
+    "/I", f"build/compilers/{icc_version}/include",
+    "/DNDEBUG", "/D_LH_LIB_RELEASE", "/DWIN32", "/D_WINDOWS",
+    "/D_LH_3D_LIB_", "/D_GOLD", "/D_GOLD_", "/D_USE_INTEL_COMPILER",
+    f"/DBUILD_VERSION={version_num}",
+    f"/DVERSION_{config.version}",
+]
 if args.debug:
     # /Zi puts types in a per-object PDB 2.0 type server (.o.pdb) referenced from
     # .debug$T; the openblack lld-link fork merges those into the program PDB for
@@ -330,6 +355,13 @@ def LibObject(completed, archive, member, **options):
 # extra_cflags still apply on top, as with Object.
 def GameCodeObject(completed, name, **options):
     return Object(completed, name, cflags=cflags_gamecode, **options)
+
+
+# An object built with Intel C++ 5.0 instead of MSVC. MSVC's bin stays on PATH
+# because icl shells out to cl for some driver-level options.
+def IntelObject(completed, name, **options):
+    return Object(completed, name, compiler_version=icc_version, cflags=cflags_icc,
+                  env=f"PATH=build/compilers/{config.linker_version}:$PATH ", **options)
 
 
 config.warn_missing_config = True
@@ -1389,6 +1421,8 @@ config.libs = [
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\istream.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\streamb.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcimt", "build\\intel\\mt_obj\\ostream.obj", progress_category="sdk"),
+
+            LibObject(Matching, "libircmt", "cpu_disp_mt.obj", progress_category="sdk"),
 
             LibObject(MatchingFor("BW1W110", "BW1W120"), "amaths", ".\\Release\\AMaths.obj", progress_category="sdk"),
 
