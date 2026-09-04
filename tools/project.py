@@ -69,6 +69,9 @@ class Object:
             "lib_member": None,
             "compiler_version": None,
             "env": None,
+            # Executable to invoke, relative to the compiler directory. Defaults
+            # to cl.exe; hand-supplied compilers may keep their own name/layout.
+            "compiler_exe": None,
             "progress_category": None,
             "scratch_preset_id": None,
             "shift_jis": None,
@@ -162,6 +165,10 @@ class ProjectConfig:
         # are extracted at build time (see LibObject). The .LIB and extracted
         # .obj are build artifacts.
         self.static_libs: Dict[str, str] = {}
+        # Extra compilers downloaded alongside the main one. Maps a
+        # compiler_version (e.g. "ICC/5.0.1") to the (tool, tag) pair that
+        # download_tool.py fetches it with.
+        self.extra_compilers: Dict[str, Tuple[str, str]] = {}
         self.wibo_tag: Optional[str] = None  # Git tag
         self.wrapper: Optional[Path] = None  # If None, download wibo on Linux
         self.sjiswrap_tag: Optional[str] = None  # Git tag
@@ -688,6 +695,21 @@ def generate_build_ninja(
                 },
             )
 
+    # Extra compilers (see `extra_compilers`): fetched the same way the main
+    # compiler is, so a clean tree restores them without manual steps.
+    local_compiler_dirs: List[Path] = []
+    if config.extra_compilers and compilers is not None:
+        for compiler_version, (tool, tag) in config.extra_compilers.items():
+            dest = compilers / compiler_version
+            local_compiler_dirs.append(dest)
+            n.build(
+                outputs=dest,
+                rule="download_tool",
+                implicit=download_tool,
+                variables={"tool": tool, "tag": tag},
+            )
+        n.newline()
+
     binutils = None
     binutils_implicit = None
     if config.binutils_path:
@@ -858,8 +880,9 @@ def generate_build_ninja(
 
         # CL (MSVC-compatible: MSVC cl.exe or clang-cl)
         compiler_path = compilers / "$compiler_version" if compilers is not None else None
-        cl = (compiler_path / "cl.exe") if compiler_path is not None else Path("cl.exe")
+        cl = (compiler_path / "${cl_exe}") if compiler_path is not None else Path("${cl_exe}")
         cl_implicit: List[Optional[Path]] = [compilers_implicit or cl if compilers is not None else None, wrapper_implicit]
+        cl_implicit += local_compiler_dirs
 
         # In debug builds, give each object its own /Zi type server ($out.pdb)
         # instead of a single shared vc60.pdb in the cwd, which 462 parallel
@@ -870,6 +893,8 @@ def generate_build_ninja(
         # retries without /Zi: the oversized unit keeps its code and public
         # symbols (function names) but drops its types, and the build completes.
         cl_prefix = f"$python {Path('tools') / 'cl_pdb_fallback.py'} " if config.debug else ""
+        n.variable("cl_exe", "cl.exe")
+        n.newline()
         n.comment("CL build (MSVC / clang-cl)")
         n.rule(
             name="cl",
@@ -1234,6 +1259,7 @@ def generate_build_ninja(
                         "compiler_version": Path(obj.options["compiler_version"]) if obj.options["compiler_version"] else "",
                         "cflags": cflags_str,
                         "env": obj.options["env"] or "",
+                        "cl_exe": obj.options["compiler_exe"] or "cl.exe",
                     },
                     implicit=cl_implicit,
                     order_only="pre-compile",
@@ -1496,6 +1522,8 @@ def generate_build_ninja(
             # Check if CL exists for each used compiler version
             for compiler_version in used_compiler_versions:
                 if compilers is not None and config.compilers_path:
+                    if compiler_version in config.extra_compilers:
+                        continue  # downloaded; nothing to check locally
                     cl_path = compilers / compiler_version / "cl.exe"
                     if not os.path.exists(cl_path):
                         sys.exit(f"Compiler {cl_path} does not exist")
