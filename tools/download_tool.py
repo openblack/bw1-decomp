@@ -46,6 +46,13 @@ def compilers_msvc_url(tag: str) -> str:
     return f"https://github.com/OmniBlade/decomp.me/releases/download/msvcwin9x/msvc{tag}.tar.gz"
 
 
+def icc_url(tag: str) -> str:
+    # Intel C++ 5.0.1, repackaged. No release assets: fetch the source archive
+    # for a branch or tag directly.
+    repo = "https://github.com/bwrsandman/icc5.0.1.010525Z"
+    return f"{repo}/archive/{tag}.tar.gz"
+
+
 def dtk_url(tag: str) -> str:
     uname = platform.uname()
     suffix = ""
@@ -114,6 +121,7 @@ TOOLS: Dict[str, Callable[[str], str]] = {
     "compilers": compilers_url,
     "compilers_msvc": compilers_msvc_url,
     "dtk": dtk_url,
+    "icc": icc_url,
     "llvm": llvm_url,
     "objdiff-cli": objdiff_cli_url,
     "sjiswrap": sjiswrap_url,
@@ -142,8 +150,21 @@ def download(url, response, outputs) -> None:
         # makes case-variant members land in the same directory, so re-runs
         # are idempotent and never need the output dir deleted.
         with tarfile.open(fileobj=data, mode="r:gz") as t:
-            for member in t.getmembers():
-                member.name = member.name.lower()
+            members = t.getmembers()
+            # GitHub source archives wrap everything in a single top-level
+            # directory ("<repo>-<ref>/"); drop it so the layout matches a
+            # release asset's.
+            roots = {m.name.split("/", 1)[0] for m in members if m.name != "."}
+            strip = len(roots) == 1 and not any(
+                m.isfile() and "/" not in m.name for m in members
+            )
+            for member in members:
+                name = member.name.lower()
+                if strip:
+                    name = name.split("/", 1)[1] if "/" in name else ""
+                if not name:
+                    continue
+                member.name = name
                 t.extract(member, output)
         # Flatten Bin/ to root so cl.exe lands directly in the output directory.
         # Overwrite existing entries so re-runs stay idempotent.

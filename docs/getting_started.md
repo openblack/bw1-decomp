@@ -87,9 +87,16 @@ See [Dependencies](dependencies.md) first.
    `tools/post_link_patch.py` rewrites both, so the image still hashes clean —
    delete those two patches if a 010214Z copy ever surfaces.
 
-   Unlike the libraries above there is no Internet Archive item to point at; take
-   it from Intel C++ Compiler 5.0.115 install media, where the libraries sit in
-   the InstallShield cabinet `compiler/icl/data1.cab`:
+   The compiler is downloaded automatically (see below) and ships the libraries
+   with it, so the simplest source is `build/compilers/ICC/5.0.1/lib/`:
+
+   1. Run `ninja` once so the compiler is fetched.
+   2. Copy `build/compilers/ICC/5.0.1/lib/libircmt.lib` to
+      `orig/libs/icc-5.0.115/libircmt.lib`, lowercase as above.
+
+   Failing that, it can be extracted from Intel C++ Compiler 5.0.115 install
+   media, where the libraries sit in the InstallShield cabinet
+   `compiler/icl/data1.cab`:
 
    1. `unshield -g "Compiler32 Lib files (shared)" -d <out> x <media>/compiler/icl/data1.cab`
    2. That yields `libirc.lib`, `libircmt.lib`, `libm.lib`, `libmmd.lib`,
