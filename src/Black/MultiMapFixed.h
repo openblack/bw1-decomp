@@ -70,45 +70,10 @@ public:
 
 	// Override methods
 
-	// BW1W120 00401490 BW1M100 1056ea60 MultiMapFixed::AsMultiMapFixed(void)
-	virtual MultiMapFixed* AsMultiMapFixed() { return this; }
-	// BW1W120 004014a0 BW1M100 103dc840 MultiMapFixed::IsPlaytimeStructure(void)
-	virtual bool32_t IsPlaytimeStructure() { return false; }
-	// BW1W120 004014b0 BW1M100 103e2190 MultiMapFixed::IsPlaytimeStarted(void)
-	virtual bool32_t IsPlaytimeStarted() { return false; }
-	// BW1W120 004014c0 BW1M100 1037fbf0 MultiMapFixed::AddPlaytimeVillager(Villager *)
-	virtual bool AddPlaytimeVillager(Villager* villager) { return false; }
-	// BW1W120 004014d0 BW1M100 1016ecd0 MultiMapFixed::GetResourceDropPosForComputerPlayer(RESOURCE_TYPE)
-	virtual MapCoords GetResourceDropPosForComputerPlayer(RESOURCE_TYPE type) { return Pos; }
-	// BW1W120 004014f0 BW1M100 100531e0 MultiMapFixed::GetPercentBuilt(void)
-	virtual float GetPercentBuilt() { return PercentBuilt; }
-	// BW1W120 00401500 BW1M100 1004b0a0 MultiMapFixed::GetPercentRepaired(void)
-	virtual float GetPercentRepaired() { return GetLife(); }
-	// BW1W120 00401510 BW1M100 100ddc00 MultiMapFixed::GetBuildingSiteWood(unsigned long *)
-	virtual uint32_t GetBuildingSiteWood(uint32_t* param_1) { return 0; }
-	// BW1W120 00401520 BW1M100 1005fe80 MultiMapFixed::GetBuildingObject(void)
-	virtual void* GetBuildingObject() { return this; }
 	// BW1W120 00401530 BW1M100 100a0e40 MultiMapFixed::IsSolidToNewAbode(void)
 	virtual bool32_t IsSolidToNewAbode() { return true; }
 	// BW1W120 00401540 BW1M100 10569bb0 MultiMapFixed::CastMultiMapFixed(void)
 	virtual MultiMapFixed* CastMultiMapFixed() { return this; }
-	// BW1W120 00401550 BW1M100 102ff050 MultiMapFixed::SetPower(float)
-	virtual void SetPower(float power) {}
-	// BW1W120 00401560 BW1M100 10369300 MultiMapFixed::GetResourcePos(RESOURCE_TYPE, long)
-	virtual MapCoords GetResourcePos(RESOURCE_TYPE type, int param_2) { return coords; }
-	// BW1W120 00401580 BW1M100 1035b520 MultiMapFixed::IsPoisonedResource(RESOURCE_TYPE)
-	virtual bool IsPoisonedResource(RESOURCE_TYPE type) { return false; }
-	// BW1W120 00401590 BW1M100 10368ea0 MultiMapFixed::GetResourceNearestEdge(RESOURCE_TYPE, Object *, int)
-	virtual MapCoords GetResourceNearestEdge(RESOURCE_TYPE type, Object* param_3, int param_4)
-	{
-		return GetResourcePos(type, param_4);
-	}
-	// BW1W120 004015b0 BW1M100 101a93f0 MultiMapFixed::AddToPlayer(void)
-	virtual void AddToPlayer() {}
-	// BW1W120 004015c0 BW1M100 1019fe20 MultiMapFixed::RemoveFromPlayer(void)
-	virtual void RemoveFromPlayer() {}
-	// BW1W120 004015d0 BW1M100 101aa2d0 MultiMapFixed::CalulateAmountOverMaximum(RESOURCE_TYPE)
-	virtual int CalulateAmountOverMaximum(RESOURCE_TYPE type) { return 0; }
 	// BW1W120 004015e0 BW1M100 10570a50 MultiMapFixed::IsBeingBuilt(Creature *)
 	virtual bool32_t IsBeingBuilt(Creature* creature) { return !IsBuilt(); }
 	// BW1W120 00401600 BW1M100 100dc2a0 MultiMapFixed::NeedsRepair(Creature *)
@@ -185,15 +150,32 @@ public:
 	// BW1W120 0052f490 BW1M100 100dded0 MultiMapFixed::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0052ef10 BW1M100 100dee90 MultiMapFixed::SaveObject(LHOSFile &, MapCoords const &)
-	virtual size_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 0052e490 BW1M100 100e0d80 MultiMapFixed::IsObjectFullyInMap(void)
 	virtual bool IsObjectFullyInMap();
+
+	// Virtual methods
+
 	// BW1W120 0052e370 BW1M100 1002c2e0 MultiMapFixed::GetDoorPos(void)
 	virtual MapCoords GetDoorPos();
 	// BW1W120 0052eca0 BW1M100 1004af20 MultiMapFixed::GetInfluence(void)
 	virtual float GetInfluence();
+	// BW1W120 00401490 BW1M100 1056ea60 MultiMapFixed::AsMultiMapFixed(void)
+	virtual MultiMapFixed* AsMultiMapFixed() { return this; }
+	// BW1W120 004014a0 BW1M100 103dc840 MultiMapFixed::IsPlaytimeStructure(void)
+	virtual bool32_t IsPlaytimeStructure() { return false; }
+	// BW1W120 004014b0 BW1M100 103e2190 MultiMapFixed::IsPlaytimeStarted(void)
+	virtual bool32_t IsPlaytimeStarted() { return false; }
+	// BW1W120 004014c0 BW1M100 1037fbf0 MultiMapFixed::AddPlaytimeVillager(Villager *)
+	virtual bool AddPlaytimeVillager(Villager* villager) { return false; }
 	// BW1W120 0052e840 BW1M100 100e04f0 MultiMapFixed::CheckMapObject(void)
 	virtual void CheckMapObject();
+	// BW1W120 004014d0 BW1M100 1016ecd0 MultiMapFixed::GetResourceDropPosForComputerPlayer(RESOURCE_TYPE)
+	virtual MapCoords GetResourceDropPosForComputerPlayer(RESOURCE_TYPE type) { return Pos; }
+	// BW1W120 004014f0 BW1M100 100531e0 MultiMapFixed::GetPercentBuilt(void)
+	virtual float GetPercentBuilt() { return PercentBuilt; }
+	// BW1W120 00401500 BW1M100 1004b0a0 MultiMapFixed::GetPercentRepaired(void)
+	virtual float GetPercentRepaired() { return GetLife(); }
 	// BW1W120 0052f010 BW1M100 100debc0 MultiMapFixed::GetPercentRepairedFromWhenDamaged(void)
 	virtual float GetPercentRepairedFromWhenDamaged();
 	// BW1W120 00438d70 BW1M100 10368f30 MultiMapFixed::IsRepaired(void)
@@ -214,21 +196,42 @@ public:
 	virtual bool Built();
 	// BW1W120 0052ec70 BW1M100 100dfca0 MultiMapFixed::Repaired(void)
 	virtual bool Repaired();
+	// BW1W120 00401510 BW1M100 100ddc00 MultiMapFixed::GetBuildingSiteWood(unsigned long *)
+	virtual uint32_t GetBuildingSiteWood(uint32_t* param_1) { return 0; }
 	// BW1W120 00422020 BW1M100 100a5620 MultiMapFixed::GetDestructionMesh(void)
 	virtual LH3DMesh* GetDestructionMesh();
 	// BW1W120 00422030 BW1M100 100a5660 MultiMapFixed::RemoveDamage(void)
 	virtual void RemoveDamage();
+	// BW1W120 00401520 BW1M100 1005fe80 MultiMapFixed::GetBuildingObject(void)
+	virtual void* GetBuildingObject() { return this; }
 	// BW1W120 00422040 BW1M100 100a56a0 MultiMapFixed::IsCivic(void)
 	virtual bool IsCivic();
 	// BW1W120 00422060 BW1M100 100a5720 MultiMapFixed::GetAbodeType(void)
 	virtual ABODE_TYPE GetAbodeType();
+	// BW1W120 00401550 BW1M100 102ff050 MultiMapFixed::SetPower(float)
+	virtual void SetPower(float power) {}
+	// BW1W120 00401560 BW1M100 10369300 MultiMapFixed::GetResourcePos(RESOURCE_TYPE, long)
+	virtual MapCoords GetResourcePos(RESOURCE_TYPE type, int param_2) { return coords; }
+	// BW1W120 00401580 BW1M100 1035b520 MultiMapFixed::IsPoisonedResource(RESOURCE_TYPE)
+	virtual bool IsPoisonedResource(RESOURCE_TYPE type) { return false; }
+	// BW1W120 00401590 BW1M100 10368ea0 MultiMapFixed::GetResourceNearestEdge(RESOURCE_TYPE, Object *, int)
+	virtual MapCoords GetResourceNearestEdge(RESOURCE_TYPE type, Object* param_3, int param_4)
+	{
+		return GetResourcePos(type, param_4);
+	}
 	// BW1W120 0052ece0 BW1M100 100df410 MultiMapFixed::GetDesireToBeRepaired(void)
 	virtual float GetDesireToBeRepaired();
+	// BW1W120 004015b0 BW1M100 101a93f0 MultiMapFixed::AddToPlayer(void)
+	virtual void AddToPlayer() {}
+	// BW1W120 004015c0 BW1M100 1019fe20 MultiMapFixed::RemoveFromPlayer(void)
+	virtual void RemoveFromPlayer() {}
 	// BW1W120 00422070 BW1M100 100a5760 MultiMapFixed::DoResourceAdding(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, GInterfaceStatus* iface, bool param_3, MapCoords* param_4,
 	                                  int param_5);
 	// BW1W120 00422080 BW1M100 100a57d0 MultiMapFixed::DoResourceRemoving(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool param_4);
+	// BW1W120 004015d0 BW1M100 101aa2d0 MultiMapFixed::CalulateAmountOverMaximum(RESOURCE_TYPE)
+	virtual int CalulateAmountOverMaximum(RESOURCE_TYPE type) { return 0; }
 	// BW1W120 00422090 BW1M100 inlined MultiMapFixed::SetTown(void)
 	virtual void SetTown(Town* town);
 	// BW1W120 0052f160 BW1M100 100de8b0 MultiMapFixed::RemovePotFromStructure(PotStructure *)
