@@ -76,8 +76,6 @@ public:
 	virtual bool32_t GetShouldNotBeAddedToPlanned() { return (field_0x7c & 4) >> 2; }
 	// BW1W120 00401660 BW1M100 1031a9a0 Abode::SetShouldNotBeAddedToPlanned(int)
 	virtual void SetShouldNotBeAddedToPlanned(bool value) { field_0x7c |= (value << 2); }
-	// BW1W120 00401680 BW1M100 10371be0 Abode::RestartBeingFunctional(void)
-	virtual void RestartBeingFunctional() {}
 	// BW1W120 00401690 BW1M100 1037f370 Abode::SetTown(Town *)
 	virtual void SetTown(Town* _town) { town = _town; }
 	// BW1W120 004016a0 BW1M100 10066b80 Abode::IsRepaired(void)
@@ -91,8 +89,6 @@ public:
 		}
 		return GetPercentBuilt() >= 1.0f;
 	}
-	// BW1W120 004016f0 BW1M100 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
-	virtual bool32_t CausesTownEmergencyIfDamaged() { return false; }
 	// BW1W120 00401700 BW1M100 105756c0 Abode::GetDestructionMesh(void)
 	virtual LH3DMesh* GetDestructionMesh() { return DestructionMesh; }
 	// BW1W120 00401710 BW1M100 100970f0 Abode::IsAbode(void)
@@ -113,7 +109,6 @@ public:
 	virtual uint32_t GetSaveType() { return 0x7; }
 	// BW1W120 004017b0 BW1M100 10434340 Abode::GetDebugText(void)
 	virtual char* GetDebugText() { return "Abode:"; }
-
 	// BW1W120 004017c0 BW1M100 103d4980 Abode::_dt(unsigned int)
 	virtual ~Abode();
 	// BW1W120 00402c10 BW1M100 1033b510 Abode::Delete(void)
@@ -200,7 +195,7 @@ public:
 	// BW1W120 00407420 BW1M100 10351de0 Abode::DiscipleInHandNear(Villager &, GInterfaceStatus &)
 	virtual void DiscipleInHandNear(Villager* param_1, GInterfaceStatus* status);
 	// BW1W120 00405bb0 BW1M100 101ca440 Abode::SaveObject(LHOSFile &, MapCoords const &)
-	virtual size_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 00403ef0 BW1M100 10589380 Abode::ShouldFootpathsGoRound(void)
 	virtual bool ShouldFootpathsGoRound();
 	// BW1W120 004072a0 BW1M100 10053220 Abode::GetInfluence(void)
@@ -230,6 +225,9 @@ public:
 	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool param_4);
 	// BW1W120 00405050 BW1M100 100a3330 Abode::ConvertToPlanned(void)
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
+
+	// Virtual methods
+
 	// BW1W120 00404520 BW1M100 1036d5a0 Abode::MoveAbodeToPlannedAbodes(void)
 	virtual void MoveAbodeToPlannedAbodes();
 	// BW1W120 00403f00 BW1M100 100e33a0 Abode::DeleteDependancys(void)
@@ -238,6 +236,10 @@ public:
 	virtual void MakeFunctional();
 	// BW1W120 004073c0 BW1M100 103b5600 Abode::StopBeingFunctional(GPlayer *)
 	virtual void StopBeingFunctional(GPlayer* param_1);
+	// BW1W120 00401680 BW1M100 10371be0 Abode::RestartBeingFunctional(void)
+	virtual void RestartBeingFunctional() {}
+	// BW1W120 004016f0 BW1M100 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
+	virtual bool32_t CausesTownEmergencyIfDamaged() { return false; }
 	// BW1W120 00407280 BW1M100 100dcdb0 Abode::CanBeHiddenIn(void)
 	virtual bool CanBeHiddenIn();
 	// BW1W120 00405f50 BW1M100 103b5680 Abode::GetTribe(void)
