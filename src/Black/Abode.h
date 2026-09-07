@@ -191,7 +191,7 @@ public:
 	// BW1W120 00406800 BW1M100 1010ab50 Abode::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00402cd0 BW1M100 100c7020 Abode::GetInspectObjectPos(Villager *, MapCoords *)
-	virtual bool GetInspectObjectPos(Villager* param_1, MapCoords* pos);
+	virtual bool32_t GetInspectObjectPos(Villager* param_1, MapCoords* pos);
 	// BW1W120 00407420 BW1M100 10351de0 Abode::DiscipleInHandNear(Villager &, GInterfaceStatus &)
 	virtual void DiscipleInHandNear(Villager* param_1, GInterfaceStatus* status);
 	// BW1W120 00405bb0 BW1M100 101ca440 Abode::SaveObject(LHOSFile &, MapCoords const &)

@@ -570,7 +570,7 @@ public:
 	// BW1W120 00402ac0 BW1M100 102fd110 Object::IsScary(void)
 	virtual bool32_t IsScary() { return false; }
 	// BW1W120 00638cb0 BW1M100 103d3fe0 Object::GetInspectObjectPos(Villager *, MapCoords *)
-	virtual bool GetInspectObjectPos(Villager* param_1, MapCoords* pos);
+	virtual bool32_t GetInspectObjectPos(Villager* param_1, MapCoords* pos);
 	// BW1W120 0063ab10 BW1M100 103cfef0 Object::DiscipleInHandNear(Villager &, GInterfaceStatus &)
 	virtual void DiscipleInHandNear(Villager* param_1, GInterfaceStatus* status);
 	// BW1W120 00638cd0 BW1M100 103d3f70 Object::GetSpecialPos(unsigned long, MapCoords *)
