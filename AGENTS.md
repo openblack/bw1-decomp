@@ -234,6 +234,14 @@ This applies to any type, not just `MapCoords`.
 
 `(*globals.game)->` is an old way of writing `GGame::g_game->`.
 
+Globals belong to a class as `static` data members (`GGame::g_game`,
+`EditorPhysics::PhysicsConstants`), declared in that class's header and defined in
+its `.cpp`. Do not reach for a file-scope `extern` declaration just to get a global
+address to compile — that hides which translation unit owns the data and produces a
+mangled name (`?Name@@3...`) that will not match the real one. Find the owning class
+first (the functions that write the data usually name it), and only fall back to a
+free `extern` when the evidence really points at a file-scope variable.
+
 ### Rule 2: Hidden output parameter returned as pointer
 
 If a function is declared as `Type* Func(Type* first_param, ...)` but the
