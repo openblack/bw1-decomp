@@ -2,10 +2,13 @@
 
 #include "Lionhead/LH3DLib/development/LH3DSmoke.h"
 
+#include <Lionhead/LH3DLib/development/PhysOb.h> /* For struct PhysOb */
+
 #include "AbodeInfo.h"
 #include "chlasm/Enum.h"
 #include "ColourConstants.h" /* For White */
 #include "Creche.h"
+#include "EditorPhysics.h"
 #include "Field.h"
 #include "Football.h"
 #include "FootpathNode.h"
@@ -122,6 +125,16 @@ bool Abode::GetPSysFireLocalRndFlamePos(LHPoint* point, int* bone_index)
 uint32_t Abode::GetPhysicsConstantsType()
 {
 	return 0;
+}
+
+void Abode::SetUpPhysOb(PhysOb* obj)
+{
+	if (DestructionMesh != NULL)
+	{
+		DestructionMesh->field_0x0 = 0;
+	}
+	obj->SetUpConstants(2000.0f, &EditorPhysics::PhysicsConstants[GetPhysicsConstantsType()], 0);
+	obj->BuildFromVertices();
 }
 
 Abode* Abode::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,

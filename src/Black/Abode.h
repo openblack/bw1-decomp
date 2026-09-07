@@ -184,7 +184,7 @@ public:
 	// BW1W120 00402dc0 BW1M100 103bf040 Abode::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 00402dd0 BW1M100 103bf110 Abode::SetUpPhysOb(PhysOb *)
-	virtual void SetUpPhysOb(PhysOb* param_1);
+	virtual void SetUpPhysOb(PhysOb* obj);
 	// BW1W120 00406230 BW1M100 1014cfd0 Abode::ChecksVerticesVObjects(void)
 	virtual uint32_t ChecksVerticesVObjects();
 	// BW1W120 00406240 BW1M100 104a8350 Abode::ReactToPhysicsImpact(PhysicsObject *, bool)
