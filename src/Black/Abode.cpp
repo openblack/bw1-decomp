@@ -119,6 +119,11 @@ bool Abode::GetPSysFireLocalRndFlamePos(LHPoint* point, int* bone_index)
 	return Object::GetPSysFireLocalRndFlamePos(point, bone_index);
 }
 
+uint32_t Abode::GetPhysicsConstantsType()
+{
+	return 0;
+}
+
 Abode* Abode::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
                      uint32_t param_6, uint32_t param_7, float food, int wood, int param_10)
 {
