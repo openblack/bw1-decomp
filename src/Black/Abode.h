@@ -66,7 +66,7 @@ public:
 	uint8_t              AdultCount;
 	uint8_t              field_0xb5;
 	uint8_t              field_0xb6;
-	uint8_t              field_0xb7;
+	uint8_t              ChildCount;
 	uint8_t              index;
 	uint8_t              field_0xb9;
 	uint32_t             resources[RESOURCE_TYPE_LAST];

@@ -60,7 +60,7 @@ void Abode::SetToZero()
 {
 	field_0xb6 = 0;
 	AdultCount = 0;
-	field_0xb7 = 0;
+	ChildCount = 0;
 	field_0x94 = 0;
 	resources[RESOURCE_TYPE_FOOD] = 0;
 	resources[RESOURCE_TYPE_WOOD] = 0;
@@ -322,7 +322,7 @@ float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 		{
 			return 0.0f;
 		}
-		float child_ratio = (float)field_0xb7 / (float)max_children;
+		float child_ratio = (float)ChildCount / (float)max_children;
 		if (child_ratio < 1.0f)
 		{
 			score = child_ratio;
