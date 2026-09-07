@@ -201,6 +201,16 @@ void Abode::Init(int param_1, uint32_t food_amount, uint32_t wood_amount)
 	}
 }
 
+Abode* CreateWithoutSpecial(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood)
+{
+	Abode* result = new("C:\\dev\\MP\\Black\\Abode.cpp", 316) Abode(coords, info, town, y_angle, scale, food, wood);
+	if (result != NULL)
+	{
+		result->CallVirtualFunctionsForCreation(coords);
+	}
+	return result;
+}
+
 void Abode::CallVirtualFunctionsForCreation(const MapCoords& coords_)
 {
 	MultiMapFixed::CallVirtualFunctionsForCreation(coords_);
