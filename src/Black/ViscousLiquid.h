@@ -9,6 +9,7 @@
 class GameOSFile;
 struct LH3DMesh;
 struct LH3DPrimitive;
+struct LHPoint;
 
 struct FragVertex
 {
@@ -37,16 +38,21 @@ struct FragPrimitive
 
 	// BW1W120 0076d7a0 BW1M100 1015de30 FragPrimitive::FragPrimitive(GameOSFile &, LH3DMesh *)
 	FragPrimitive(GameOSFile* file, LH3DMesh* mesh);
+
+	// Non-virtual methods
+
+	// BW1W120 0076dae0 BW1M100 1015d920 FragPrimitive::GetRandomSurfacePos(LHPoint *, float (*)(float))
+	bool GetRandomSurfacePos(LHPoint* pos, float (*rand_func)(float));
 };
 
 struct FragMesh
 {
-	uint32_t       field_0x0;
-	uint32_t       count;
-	uint32_t       field_0x8;
-	FragPrimitive* primitives;
-	uint32_t       field_0x10;
-	uint8_t        field_0x14[0x14];
+	uint32_t        field_0x0;
+	uint32_t        count;
+	uint32_t        field_0x8;
+	FragPrimitive** primitives;
+	uint32_t        field_0x10;
+	uint8_t         field_0x14[0x14];
 
 	// Constructors
 
@@ -57,6 +63,8 @@ struct FragMesh
 
 	// BW1W120 007f70e0 BW1M100 1015e8f0 FragMesh::_dt(void)
 	void _dt();
+	// BW1W120 0076d4c0 BW1M100 1015e5a0 FragMesh::GetRandomSurfacePos(LHPoint *, float (*)(float))
+	bool GetRandomSurfacePos(LHPoint* pos, float (*rand_func)(float));
 };
 
 #endif /* BW1_DECOMP_VISCOUS_LIQUID_INCLUDED_H */

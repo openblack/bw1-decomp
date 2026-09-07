@@ -36,6 +36,7 @@ class GameOSFile;
 class GameThing;
 struct GameThingVftable;
 struct GameThingWithPosVftable;
+struct FragMesh;
 struct LH3DMesh;
 struct LH3DSmoke;
 class LHOSFile;
@@ -55,7 +56,7 @@ public:
 	uint8_t              field_0x7f;
 	MapCoords            DrinkingWater; /* 0x80 */
 	LH3DSmoke*           smoke;
-	LH3DMesh*            DestructionMesh; /* 0x90 */
+	FragMesh*            DestructionMesh; /* 0x90 */
 	uint32_t             field_0x94;
 	Town*                town;
 	Abode*               next;
@@ -90,7 +91,7 @@ public:
 		return GetPercentBuilt() >= 1.0f;
 	}
 	// BW1W120 00401700 BW1M100 105756c0 Abode::GetDestructionMesh(void)
-	virtual LH3DMesh* GetDestructionMesh() { return DestructionMesh; }
+	virtual FragMesh* GetDestructionMesh() { return DestructionMesh; }
 	// BW1W120 00401710 BW1M100 100970f0 Abode::IsAbode(void)
 	virtual bool32_t IsAbode() { return true; }
 	// BW1W120 00401720 BW1M100 10435a10 Abode::IsCastShadowAtNight(void)
