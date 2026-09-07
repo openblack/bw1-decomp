@@ -237,6 +237,38 @@ void Abode::CallVirtualFunctionsForCreation(const MapCoords& coords_)
 	Game3dObject->SetPosition(&position, GetYAngle(), GetScale());
 }
 
+void Abode::DeleteAbodeSurroundingObjects()
+{
+	LHPoint point;
+	if (((GAbodeInfo*)info)->DidYouKnow != 0)
+	{
+		if (GetNewEp(ABODE_EPP_SCRIPT_HIGHLIGHT, &point))
+		{
+			MapCoords coords(point);
+			for (Object* obj = coords.FindType(OBJECT_TYPE_SCRIPT_HIGHLIGHT, NULL); obj != NULL;
+			     obj = coords.FindType(OBJECT_TYPE_SCRIPT_HIGHLIGHT, obj))
+			 {
+				if (obj->IsScriptHighlight())
+				{
+					obj->ToBeDeleted(0);
+				}
+			 }
+		}
+	}
+	if (GetNewEp(ABODE_EPP_LANTERN, &point))
+	{
+		MapCoords coords(point);
+		for (Object* obj = coords.FindType(OBJECT_TYPE_MOBILE_STATIC, NULL); obj != NULL;
+		     obj = coords.FindType(OBJECT_TYPE_MOBILE_STATIC, obj))
+		{
+			if (obj->IsStreetLantern())
+			{
+				obj->ToBeDeleted(0);
+			}
+		}
+	}
+}
+
 void Abode::CreateAbodeSurroundingObjects()
 {
 	LHPoint point;
