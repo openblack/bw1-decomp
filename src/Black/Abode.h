@@ -62,7 +62,7 @@ public:
 	Abode*               next;
 	LHListHead<Villager> villagers; /* 0xa0 */
 	Villager*            MaleFemaleVillagers[0x2];
-	uint32_t             field_0xb0;
+	float                field_0xb0;
 	uint8_t              AdultCount;
 	uint8_t              field_0xb5;
 	uint8_t              field_0xb6;
