@@ -95,6 +95,11 @@ void Abode::ToBeDeleted(int param_1)
 	MultiMapFixed::ToBeDeleted(param_1);
 }
 
+void Abode::DestroyedByBeam()
+{
+	ReduceLife(GetLife(), NULL);
+}
+
 Abode* Abode::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
                      uint32_t param_6, uint32_t param_7, float food, int wood, int param_10)
 {
