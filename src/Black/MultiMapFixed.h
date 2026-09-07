@@ -202,7 +202,7 @@ public:
 	// BW1W120 00422020 BW1M100 100a5620 MultiMapFixed::GetDestructionMesh(void)
 	virtual FragMesh* GetDestructionMesh();
 	// BW1W120 00422030 BW1M100 100a5660 MultiMapFixed::RemoveDamage(void)
-	virtual void RemoveDamage();
+	virtual float RemoveDamage();
 	// BW1W120 00401520 BW1M100 1005fe80 MultiMapFixed::GetBuildingObject(void)
 	virtual void* GetBuildingObject() { return this; }
 	// BW1W120 00422040 BW1M100 100a56a0 MultiMapFixed::IsCivic(void)

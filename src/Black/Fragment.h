@@ -78,7 +78,7 @@ public:
 	// BW1W120 0076e970 BW1M100 1015abe0 Fragment::GetInHandImmersionTexture(void)
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 	// BW1W120 0076f7e0 BW1M100 1015ae70 Fragment::ShouldFootpathsGoRound(void)
-	virtual bool ShouldFootpathsGoRound();
+	virtual bool32_t ShouldFootpathsGoRound();
 
 	// Constructors
 

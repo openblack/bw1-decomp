@@ -25,7 +25,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 0063abc0 BW1M100 103da030 Game3DObject::GetAltitudeFondation(void) const
-	float GetAltitudeFondation();
+	float GetAltitudeFondation() const;
 	// BW1W120 0063afe0 BW1M100 10019840 Game3DObject::GetDoorPosition(MapCoords *) const
 	bool GetDoorPosition(MapCoords* position);
 	// BW1W120 0063b060 BW1M100 103d9d50 Game3DObject::GetSpecialPos(unsigned long, MapCoords &) const

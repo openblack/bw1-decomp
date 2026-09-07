@@ -47,7 +47,7 @@ public:
 	// BW1W120 0055d8c0 BW1M100 10159560 Tree::GetPlayer(void)
 	virtual GPlayer* GetPlayer();
 	// BW1W120 0055d9f0 BW1M100 10159a80 Tree::GetComputerSeen(void)
-	virtual bool32_t GetComputerSeen();
+	virtual GComputerSeen* GetComputerSeen();
 	// BW1W120 0055d8e0 BW1M100 101595f0 Tree::CastTree(void)
 	virtual Tree* CastTree();
 	// BW1W120 0055da30 BW1M100 10159b80 Tree::GetDebugText(void)

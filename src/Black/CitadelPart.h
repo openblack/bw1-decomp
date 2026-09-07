@@ -76,7 +76,7 @@ public:
 	// BW1W120 004694c0 BW1M100 101c3760 CitadelPart::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 	// BW1W120 004694f0 BW1M100 101c3830 CitadelPart::ShouldFootpathsGoRound(void)
-	virtual bool ShouldFootpathsGoRound();
+	virtual bool32_t ShouldFootpathsGoRound();
 	// BW1W120 00464ab0 BW1M100 101c08e0 CitadelPart::IsRepaired(void)
 	virtual bool32_t IsRepaired();
 	// BW1W120 00464ad0 BW1M100 10081060 CitadelPart::IsBuilt(void)

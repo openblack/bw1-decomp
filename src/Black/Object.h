@@ -616,7 +616,7 @@ public:
 	// BW1W120 0063a7c0 BW1M100 103d0770 Object::GetInHandImmersionTexture(void)
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 	// BW1W120 00419a50 BW1M100 100a5a00 Object::ShouldFootpathsGoRound(void)
-	virtual bool ShouldFootpathsGoRound();
+	virtual bool32_t ShouldFootpathsGoRound();
 	// BW1W120 0063a640 BW1M100 103d0b20 Object::InitialiseIsFixedForMapList(void)
 	virtual void InitialiseIsFixedForMapList();
 	// BW1W120 00402b40 BW1M100 1016dc30 Object::GetText(void)

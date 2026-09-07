@@ -5,6 +5,7 @@
 #include <Lionhead/LH3DLib/development/PhysOb.h> /* For struct PhysOb */
 
 #include "AbodeInfo.h"
+#include "Villager.h"
 #include "chlasm/Enum.h"
 #include "ColourConstants.h" /* For White */
 #include "Creche.h"
@@ -16,6 +17,7 @@
 #include "Game3DObject.h"
 #include "GraveYard.h"
 #include "LandscapeConstants.h" /* For CellSizeXGridDim */
+#include "PlannedAbode.h"
 #include "Rand.h"
 #include "SpellDispenser.h"
 #include "StoragePit.h"
@@ -201,9 +203,10 @@ void Abode::Init(int param_1, uint32_t food_amount, uint32_t wood_amount)
 	}
 }
 
-Abode* CreateWithoutSpecial(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood)
+Abode* CreateWithoutSpecial(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
+                            float food, int wood)
 {
-	Abode* result = new("C:\\dev\\MP\\Black\\Abode.cpp", 316) Abode(coords, info, town, y_angle, scale, food, wood);
+	Abode* result = new ("C:\\dev\\MP\\Black\\Abode.cpp", 316) Abode(coords, info, town, y_angle, scale, food, wood);
 	if (result != NULL)
 	{
 		result->CallVirtualFunctionsForCreation(coords);
@@ -256,9 +259,179 @@ void Abode::InsertMapObject()
 	MultiMapFixed::InsertMapObject();
 }
 
+bool32_t Abode::ShouldFootpathsGoRound()
+{
+	uint8_t field = field_0x58;
+	return (field & 2) != 2;
+}
+
+void Abode::DeleteDependancys()
+{
+	RemoveAllVillagersFromAbode();
+}
+
+uint16_t Abode::GetNumberOfInstanceForGlobalList()
+{
+	return 1;
+}
+
+float Abode::GetRemainingFloat()
+{
+	if (DestructionMesh == NULL)
+	{
+		return 1.0f;
+	}
+	return DestructionMesh->field_0x18;
+}
+
+float Abode::RemoveDamage()
+{
+	float remaining = GetRemainingFloat();
+	if (DestructionMesh != NULL)
+	{
+		delete DestructionMesh;
+		DestructionMesh = NULL;
+	}
+	return remaining;
+}
+
+uint32_t Abode::DestroyedByEffect(GPlayer* player, float param_2)
+{
+	//GoolooGooloo();
+	if (IsInScript())
+	{
+		if (building_site == NULL)
+		{
+			if (GetTown() == NULL)
+			{
+				return 0;
+			}
+			GetTown()->AddBuildingSite(building_site);
+		}
+		if (IsBuilt() != true)
+		{
+			SetLife(1.0f);
+		}
+		if (fire_effect != NULL)
+		{
+			fire_effect->ToBeDeleted(0);
+			fire_effect = NULL;
+		}
+		return 1;
+	}
+	if (building_site != NULL && building_site->field_0x24 != 0)
+	{
+		if (building_site->field_0x20 == 0)
+		{
+			building_site = NULL;
+		}
+
+		if (building_site == NULL)
+		{
+			ToBeDeleted(0);
+		}
+	}
+
+	ToBeDeleted(0);
+	return 1;
+}
+
+void Abode::AddVillagerToAbode(Villager* villager) {}
+
+void Abode::RemoveDeletedVillagerFromAbode(Villager* village) {}
+
+void Abode::RemoveAliveVillagerFromAbode(Villager* village) {}
+
+uint32_t Abode::Process()
+{
+	MultiMapFixed::Process();
+	if (GetPercentAbodeFullWithAdults() == 0.0f && GetPercentAbodeFullWithChildren() == 0.0f && IsBuilt() &&
+	    !IsInScript())
+	{
+		if (GetTown() == NULL || GetTown()->field_0x5f4 == 0)
+		{
+			field_0xb0 += 0.001f;
+			if (field_0xb0 >= 1.0f)
+			{
+				field_0x7c |= 0x40;
+				ReduceLife(((GAbodeInfo*)info)->EmptyAbodeLifeReducer, NULL);
+				field_0x7c &= ~0x40;
+				field_0xb0 = 0.0f;
+			}
+		}
+	}
+	if (field_0xb9 < 200)
+	{
+		++field_0xb9;
+	}
+	return 1;
+}
+
+void Abode::MoveAbodeToPlannedAbodes()
+{
+	Town* town = GetTown();
+	if (town != NULL)
+	{
+		if (GetShouldNotBeAddedToPlanned() || PlannedAbode::Create(this) == NULL)
+		{
+			town->RemoveBuildingSite(this);
+		}
+	}
+}
+
+void Abode::RemoveAllVillagersFromAbode()
+{
+	for (Villager* v = villagers.head; v != NULL; v = v->next)
+	{
+		v->HomeDeleted();
+	}
+}
+
+int Abode::NumVillagersOfSex(SEX_TYPE sex)
+{
+	int total = 0;
+	for (Villager* v = villagers.head; v != NULL; v = v->next)
+	{
+		if (v->IsVillagerAvailable() && ((GVillagerInfo*)v->info)->sex == sex)
+		{
+			++total;
+		}
+	}
+	return total;
+}
+
+int Abode::CalculateFoodNeededForDinner()
+{
+	int total = 0;
+	for (Villager* v = villagers.head; v != NULL; v = v->next)
+	{
+		total += ((GVillagerInfo*)v->info)->FoodReqiredForDinner;
+	}
+	return total;
+}
+
+bool32_t Abode::IsEnoughFoodForDinner()
+{
+	return (CalculateFoodNeededForDinner() & 0xffff) <= GetResource(RESOURCE_TYPE_FOOD);
+}
+
+Villager* Abode::GetSpouse(Villager* villager)
+{
+	if (MaleFemaleVillagers[((GVillagerInfo*)villager->info)->sex] == villager)
+	{
+		return MaleFemaleVillagers[((GVillagerInfo*)villager->info)->sex == SEX_MALE];
+	}
+	return NULL;
+}
+
+int Abode::GetRoomLeftForAdults()
+{
+	return ((GAbodeInfo*)info)->MaxVillagersInAbode - AdultCount;
+}
+
 int Abode::GetRoomLeftForChildren()
 {
-	return ((GAbodeInfo*)info)->MaxVillagersInAbode - (int)AdultCount;
+	return ((GAbodeInfo*)info)->MaxChildrenInAbode - ChildCount;
 }
 
 void Abode::MakeFunctional()

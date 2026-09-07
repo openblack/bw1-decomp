@@ -34,7 +34,7 @@ public:
 	// BW1W120 0072a420 BW1M100 105278e0 OneOffSpellSeed::ToBeDeleted(int)
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0055d140 BW1M100 10526350 OneOffSpellSeed::GetComputerSeen(void)
-	virtual bool GetComputerSeen();
+	virtual GComputerSeen* GetComputerSeen();
 	// BW1W120 0055d130 BW1M100 10526310 OneOffSpellSeed::CastOneOffSpellSeed(void)
 	virtual SpellSeed* CastOneOffSpellSeed();
 	// BW1W120 0055d160 BW1M100 105263d0 OneOffSpellSeed::GetDebugText(void)

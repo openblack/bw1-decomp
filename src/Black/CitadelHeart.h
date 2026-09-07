@@ -174,7 +174,7 @@ public:
 	// BW1W120 004673a0 BW1M100 101be8e0 CitadelHeart::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 	// BW1W120 00464b70 BW1M100 101c2200 CitadelHeart::ShouldFootpathsGoRound(void)
-	virtual bool ShouldFootpathsGoRound();
+	virtual bool32_t ShouldFootpathsGoRound();
 	// BW1W120 00467d10 BW1M100 inlined CitadelHeart::GetDoorPos(MapCoords *)
 	virtual MapCoords* GetDoorPos(MapCoords* param_1);
 	// BW1W120 00465000 BW1M100 101c0570 CitadelHeart::Built(void)
