@@ -52,12 +52,19 @@ struct FragMesh
 	uint32_t        field_0x8;
 	FragPrimitive** primitives;
 	uint32_t        field_0x10;
-	uint8_t         field_0x14[0x14];
+	uint8_t         field_0x14[0x4];
+	float           field_0x18;
+	uint8_t         field_0x1c[0xc];
 
 	// Constructors
 
 	// BW1W120 0076d520 BW1M100 1015e3a0 FragMesh::FragMesh(GameOSFile &, LH3DMesh *)
 	FragMesh(GameOSFile* file, LH3DMesh* mesh);
+
+	// Destructors
+
+	// BW1W120 007f70e0 BW1M100 1061c0dc FragMesh::~FragMesh()
+	~FragMesh();
 
 	// Non-virtual methods
 
