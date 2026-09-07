@@ -36210,6 +36210,7 @@ _SecondsPerYear = .data:0x00CC6030; // type:object size:0x4 scope:local
 _SecondsPerYear = .data:0x00CC62AC; // type:object size:0x4 scope:local
 _SecondsPerYear = .data:0x00CC6304; // type:object size:0x4 scope:local
 _SecondsPerYear = .data:0x00CC632C; // type:object size:0x4 scope:local
+?PhysicsConstants@EditorPhysics@@2PAUPhysicsData@@A = .data:0x00CC63E0; // type:object size:0x240 scope:global
 _SecondsPerYear = .data:0x00CC973C; // type:object size:0x4 scope:local
 _SecondsPerYear = .data:0x00CCF068; // type:object size:0x4 scope:local
 _SecondsPerYear = .data:0x00CCFC58; // type:object size:0x4 scope:local

@@ -7,6 +7,7 @@
 // Forward Declares
 
 class LH3DObject;
+struct PhysicsData;
 
 struct PhysOb
 {
@@ -36,6 +37,10 @@ struct PhysOb
 
 	// BW1W120 007fb780 BW1M100 10088820 PhysOb::Initialise(LH3DObject *, float)
 	void Initialise(LH3DObject* obj, float param_3);
+	// BW1W120 007fb810 BW1M100 1061b44c PhysOb::SetUpConstants(float, PhysicsData *, int)
+	void SetUpConstants(float mass, PhysicsData* data, int param_3);
+	// BW1W120 007fbac0 BW1M100 1061b464 PhysOb::BuildFromVertices(void)
+	void BuildFromVertices();
 };
 
 #endif /* BW1_DECOMP_PHYS_OB_INCLUDED_H */
