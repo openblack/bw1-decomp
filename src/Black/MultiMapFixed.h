@@ -27,6 +27,7 @@ class GameOSFile;
 class GameThing;
 struct GameThingVftable;
 struct GameThingWithPosVftable;
+struct FragMesh;
 struct LH3DMesh;
 class LHOSFile;
 class Living;
@@ -199,7 +200,7 @@ public:
 	// BW1W120 00401510 BW1M100 100ddc00 MultiMapFixed::GetBuildingSiteWood(unsigned long *)
 	virtual uint32_t GetBuildingSiteWood(uint32_t* param_1) { return 0; }
 	// BW1W120 00422020 BW1M100 100a5620 MultiMapFixed::GetDestructionMesh(void)
-	virtual LH3DMesh* GetDestructionMesh();
+	virtual FragMesh* GetDestructionMesh();
 	// BW1W120 00422030 BW1M100 100a5660 MultiMapFixed::RemoveDamage(void)
 	virtual void RemoveDamage();
 	// BW1W120 00401520 BW1M100 1005fe80 MultiMapFixed::GetBuildingObject(void)

@@ -21,6 +21,7 @@
 #include "TownCentre.h"
 #include "Utils.h"
 #include "VillagerInfo.h"
+#include "ViscousLiquid.h"
 #include "Windmill.h"
 #include "Wonder.h"
 #include "Workshop.h"
@@ -103,6 +104,19 @@ void Abode::DestroyedByBeam()
 bool32_t Abode::GetInspectObjectPos(Villager* villager, MapCoords* pos)
 {
 	return Object::GetInspectObjectPos(villager, pos);
+}
+
+bool Abode::GetPSysFireLocalRndFlamePos(LHPoint* point, int* bone_index)
+{
+	if (DestructionMesh != NULL && DestructionMesh->GetRandomSurfacePos(point, GRand::LocalFloatRand))
+	{
+		LHMatrix inverse;
+		inverse.SetInverse(Game3dObject->matrix);
+		inverse.TransformPoint(*point);
+		*bone_index = 0;
+		return true;
+	}
+	return Object::GetPSysFireLocalRndFlamePos(point, bone_index);
 }
 
 Abode* Abode::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
