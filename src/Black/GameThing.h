@@ -291,6 +291,7 @@ enum GAME_THING_TYPE
 
 class Abode;
 class Creature;
+class GComputerSeen;
 class GFootpath;
 class GFootpathLink;
 class GInterfaceStatus;
@@ -357,7 +358,7 @@ public:
 	// BW1W120 00401850 BW1M100 10428ff0 GameThing::GetMaxAlignmentChangePerGameTurn(void)
 	virtual float GetMaxAlignmentChangePerGameTurn() { return maxAlignmentChangePerGameTurn; }
 	// BW1W120 00401860 BW1M100 10425a40 GameThing::GetComputerSeen(void)
-	virtual bool32_t GetComputerSeen() { return false; }
+	virtual GComputerSeen* GetComputerSeen() { return NULL; }
 	// BW1W120 0056ff10 BW1M100 103c22d0 GameThing::GetTown(void)
 	virtual Town* GetTown();
 	// BW1W120 00401870 BW1M100 103f1450 GameThing::GetVillagerActivityDesire(Villager *)

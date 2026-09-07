@@ -95,7 +95,7 @@ public:
 	// BW1W120 006e7930 BW1M100 1013ce40 Rock::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00439770 BW1M100 100b4080 Rock::ShouldFootpathsGoRound(void)
-	virtual bool ShouldFootpathsGoRound();
+	virtual bool32_t ShouldFootpathsGoRound();
 	// BW1W120 00439740 BW1M100 100b3fc0 Rock::IsMovable(void)
 	virtual bool IsMovable();
 

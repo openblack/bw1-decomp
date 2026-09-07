@@ -198,7 +198,7 @@ public:
 	// BW1W120 00405bb0 BW1M100 101ca440 Abode::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 00403ef0 BW1M100 10589380 Abode::ShouldFootpathsGoRound(void)
-	virtual bool ShouldFootpathsGoRound();
+	virtual bool32_t ShouldFootpathsGoRound();
 	// BW1W120 004072a0 BW1M100 10053220 Abode::GetInfluence(void)
 	virtual float GetInfluence();
 	// BW1W120 00407290 BW1M100 10064f30 Abode::GetPercentRepairedForNonFunctional(void)
@@ -212,7 +212,7 @@ public:
 	// BW1W120 004047b0 BW1M100 105b9280 Abode::Repaired(void)
 	virtual bool Repaired();
 	// BW1W120 00403f40 BW1M100 105861b0 Abode::RemoveDamage(void)
-	virtual void RemoveDamage();
+	virtual float RemoveDamage();
 	// BW1W120 00405ff0 BW1M100 10199f30 Abode::IsCivic(void)
 	virtual bool IsCivic();
 	// BW1W120 004061f0 BW1M100 10089cd0 Abode::GetAbodeType(void)
@@ -267,12 +267,14 @@ public:
 	void SetToZero();
 	// BW1W120 00403130 BW1M100 1033b920 Abode::Init(int, unsigned long, unsigned long)
 	void Init(int param_1, uint32_t food_amount, uint32_t wood_amount);
-	// BW1W120 00403590 BW1M100 103602f0 Abode::GetNewEp(ABODE_EPP, MapCoords*)
-	bool GetNewEp(ABODE_EPP index, LHPoint* point);
+	// BW1W120 00403590 BW1M100 103602f0 Abode::GetNewEp(ABODE_EPP, LHPoint*)
+	bool32_t GetNewEp(ABODE_EPP index, LHPoint* point);
 	// BW1W120 00403d20 BW1M100 10573d50 Abode::DeleteAbodeSurroundingObjects(void)
 	void DeleteAbodeSurroundingObjects();
 	// BW1W120 00403e00 BW1M100 10494a10 Abode::CreateAbodeSurroundingObjects(void)
 	void CreateAbodeSurroundingObjects();
+	// BW1W120 00403f20 BW1M100 1033c380 Abode::.GetRemainingFloat()
+	float GetRemainingFloat();
 	// BW1W120 00404060 BW1M100 100d2ca0 Abode::AddVillagerToAbode(Villager *)
 	void AddVillagerToAbode(Villager* villager);
 	// BW1W120 00404220 BW1M100 1033b0e0 Abode::RemoveDeletedVillagerFromAbode(Villager *)
@@ -282,7 +284,7 @@ public:
 	// BW1W120 00404560 BW1M100 10547ee0 Abode::RemoveAllVillagersFromAbode(void)
 	void RemoveAllVillagersFromAbode();
 	// BW1W120 00404580 BW1M100 inlined Abode::NumVillagersOfSex(SEX_TYPE)
-	int NumVillagersOfSex();
+	int NumVillagersOfSex(SEX_TYPE sex);
 	// BW1W120 004045d0 BW1M100 103d89d0 Abode::CalculateFoodNeededForDinner(void)
 	int CalculateFoodNeededForDinner();
 	// BW1W120 00404600 BW1M100 1032c5d0 Abode::IsEnoughFoodForDinner(void)
