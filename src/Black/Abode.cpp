@@ -68,6 +68,33 @@ void Abode::SetToZero()
 	field_0xb9 = 0;
 }
 
+void Abode::Delete()
+{
+	DeleteDependancys();
+	if (GetTown() != NULL)
+	{
+		if ((GGame::g_game->field_0x14 & 0x8000) == 0)
+		{
+			MoveAbodeToPlannedAbodes();
+		}
+		GetTown()->RemoveStructureFromTown(this);
+	}
+	Object::Delete();
+}
+
+void Abode::ToBeDeleted(int param_1)
+{
+	Town* town = GetTown();
+	DeleteDependancys();
+	if (town != NULL && (GGame::g_game->field_0x14 & 0x8000) == 0)
+	{
+		MoveAbodeToPlannedAbodes();
+		town->RemoveStructureFromTown(this);
+	}
+	DeleteAbodeSurroundingObjects();
+	MultiMapFixed::ToBeDeleted(param_1);
+}
+
 Abode* Abode::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
                      uint32_t param_6, uint32_t param_7, float food, int wood, int param_10)
 {

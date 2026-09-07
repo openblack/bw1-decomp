@@ -240,6 +240,8 @@ public:
 	void AddStructureToTown(MultiMapFixed* structure);
 	// BW1W120 00739a20 BW1M100 105567f0 Town::AddAbodeToTownStats(Abode *)
 	void AddAbodeToTownStats(Abode* abode);
+	// BW1W120 00739a60 BW1M100 105566a8 Town::.RemoveStructureFromTown(MultiMapFixed*)
+	void RemoveStructureFromTown(MultiMapFixed* structure);
 	// BW1W120 0073a090 BW1M100 10556400 Town::AddVillagerToTown(Villager *)
 	bool AddVillagerToTown(Villager* villager);
 	// BW1W120 0073a140 BW1M100 10007ca0 Town::GetBestPlanned(float &, ABODE_TYPE)
