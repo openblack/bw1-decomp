@@ -137,7 +137,7 @@ public:
 	// BW1W120 0055dc60 BW1M100 105b3dc0 WorshipSite::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 0077ae30 BW1M100 105b2cf0 WorshipSite::GetInspectObjectPos(Villager *, MapCoords *)
-	virtual bool GetInspectObjectPos(Villager* param_1, MapCoords* param_2);
+	virtual bool32_t GetInspectObjectPos(Villager* param_1, MapCoords* param_2);
 	// BW1W120 0077cc90 BW1M100 105aefc0 WorshipSite::GetSpecialPos(unsigned long, MapCoords *)
 	virtual uint32_t GetSpecialPos(uint32_t param_1, MapCoords* param_2);
 	// BW1W120 0077d000 BW1M100 105ae860 WorshipSite::GetObjectCollide(void)
