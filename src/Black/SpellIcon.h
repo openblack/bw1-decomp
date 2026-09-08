@@ -94,7 +94,7 @@ public:
 	// BW1W120 007265c0 BW1M100 10524740 SpellIcon::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 0055d440 BW1M100 10525f70 SpellIcon::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00519650 BW1M100 100c77b0 SpellIcon::Draw(void)
 	virtual void Draw();
 	// BW1W120 00726160 BW1M100 105253c0 SpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)

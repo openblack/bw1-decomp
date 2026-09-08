@@ -41,7 +41,7 @@ public:
 	virtual void SetPlayer(GPlayer* param_1);
 	// BW1W120 006e7170 BW1M100 1013d800 Rock::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* param_5, int param_6);
+	                             MapCoords* param_5, int param_6);
 	// BW1W120 006e70d0 BW1M100 1013d970 Rock::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 00561390 BW1M100 100c4210 Rock::GetDebugText(void)

@@ -70,7 +70,7 @@ public:
 	// BW1W120 00727f60 BW1M100 1052cc90 SpellSeed::HandShouldFeelWithMeshIntersect(void)
 	virtual uint32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 00729850 BW1M100 10529210 SpellSeed::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00518710 BW1M100 100c8c10 SpellSeed::Draw(void)
 	virtual void Draw();
 	// BW1W120 005190a0 BW1M100 100c7ef0 SpellSeed::DrawOutOfMap(bool)

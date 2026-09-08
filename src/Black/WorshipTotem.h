@@ -73,7 +73,7 @@ public:
 	// BW1W120 007807c0 BW1M100 105b7650 WorshipTotem::GetSpecularColor(void)
 	virtual LH3DColor GetSpecularColor();
 	// BW1W120 00780a70 BW1M100 105b83a0 WorshipTotem::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00519360 BW1M100 100c7bd0 WorshipTotem::Draw(void)
 	virtual void Draw();
 	// BW1W120 00780ab0 BW1M100 105b81d0 WorshipTotem::CallVirtualFunctionsForCreation(MapCoords const &)

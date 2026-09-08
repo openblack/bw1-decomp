@@ -42,12 +42,12 @@ public:
 	// BW1W120 0066ef60 BW1M100 10117830 PotStructure::GetTown(void)
 	virtual Town* GetTown();
 	// BW1W120 0066d9b0 BW1M100 1011b3d0 PotStructure::JustRemoveResource(RESOURCE_TYPE, unsigned long, bool *)
-	virtual uint32_t JustRemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, bool* param_3);
+	virtual uint32_t JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3);
 	// BW1W120 0066ef00 BW1M100 10077c70 PotStructure::GetResource(RESOURCE_TYPE)
 	virtual uint32_t GetResource(RESOURCE_TYPE param_1);
 	// BW1W120 0066ed70 BW1M100 10117b70 PotStructure::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* param_5, int param_6);
+	                             MapCoords* param_5, int param_6);
 	// BW1W120 0066ee10 BW1M100 10117970 PotStructure::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 0066db10 BW1M100 1011b060 PotStructure::Load(GameOSFile &)

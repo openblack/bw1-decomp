@@ -62,6 +62,8 @@ public:
 
 	// BW1W120 00745ae0 BW1M100 1005c8d0 TownDesire::Process(void)
 	void Process();
+	// BW1W120 00745d80 BW1M100 1005d130 TownDesire::CallDesireFunction(unsigned long)
+	void CallDesireFunction(uint32_t param_1);
 	// BW1W120 00745ff0 TownDesire::CheckVillagerNeededForTownDesire(Villager *, float)
 	// TODO: incorrect return type
 	void CheckVillagerNeededForTownDesire(Villager* villager, float trigger);

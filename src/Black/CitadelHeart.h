@@ -161,7 +161,7 @@ public:
 	// BW1W120 00467b40 BW1M100 101bdf40 CitadelHeart::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00467b30 BW1M100 101bdfc0 CitadelHeart::ChecksVerticesVObjects(void)
-	virtual uint32_t ChecksVerticesVObjects();
+	virtual bool ChecksVerticesVObjects();
 	// BW1W120 00467bb0 BW1M100 101bdc10 CitadelHeart::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 004680d0 BW1M100 101bceb0 CitadelHeart::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
@@ -178,7 +178,7 @@ public:
 	// BW1W120 00467d10 BW1M100 inlined CitadelHeart::GetDoorPos(MapCoords *)
 	virtual MapCoords* GetDoorPos(MapCoords* param_1);
 	// BW1W120 00465000 BW1M100 101c0570 CitadelHeart::Built(void)
-	virtual bool Built();
+	virtual bool32_t Built();
 	// BW1W120 00464b60 BW1M100 101c21c0 CitadelHeart::GetAbodeType(void)
 	virtual ABODE_TYPE GetAbodeType();
 	// BW1W120 00465430 BW1M100 101bfcc0 CitadelHeart::ConvertToPlanned(void)

@@ -47,7 +47,7 @@ public:
 	// BW1W120 00438e00 BW1M100 100b2570 BigForest::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 00438df0 BW1M100 100b24d0 BigForest::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00438f60 BW1M100 10020e40 BigForest::Draw(void)
 	virtual void Draw();
 	// BW1W120 00439550 BW1M100 100b2690 BigForest::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)

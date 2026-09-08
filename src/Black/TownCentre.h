@@ -103,7 +103,7 @@ public:
 	// BW1W120 0055db30 BW1M100 1055bd40 TownCentre::CausesTownEmergencyIfDamaged(void)
 	virtual bool32_t CausesTownEmergencyIfDamaged();
 	// BW1W120 0055db80 BW1M100 1055bea0 TownCentre::CanBeHiddenIn(void)
-	virtual bool CanBeHiddenIn();
+	virtual bool32_t CanBeHiddenIn();
 
 	// Static methods
 

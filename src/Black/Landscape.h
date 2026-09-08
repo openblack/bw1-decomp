@@ -39,7 +39,7 @@ struct GLandscape
 	// The scale must stay literal/literal: MSVC 6 folds it to one constant,
 	// but `CellSize / ...` is not folded and emits a runtime fld+fmul.
 	// LHPoint& is an out-param, not a Rule 2 retbuf; by-value costs a copy.
-	static void ConvertMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point)
+	static LHPoint* ConvertMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point)
 	{
 		float altitude;
 
@@ -47,6 +47,7 @@ struct GLandscape
 		point.y = altitude + LH3DIsland::GetAltitude((const LH3DMapCoords&)coords);
 		point.x = ((const LH3DMapCoords&)coords).WholeX() * (10.0f / (float)0x10000);
 		point.z = ((const LH3DMapCoords&)coords).WholeZ() * (10.0f / (float)0x10000);
+		return &point;
 	}
 
 	// Non-virtual methods

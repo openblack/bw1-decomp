@@ -304,7 +304,7 @@ public:
 	// BW1W120 00637ff0 BW1M100 103d57e0 Object::ApplySingleEffect(EFFECT_TYPE, float, GameThing *, MapCoords const &)
 	virtual void ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords* param_4);
 	// BW1W120 00425340 BW1M100 10368d70 Object::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00402660 BW1M100 10368ae0 Object::GetDetailMesh( const(DETAIL_LEVEL))
 	virtual int GetDetailMesh(int detail) { return GetMesh(); }
 	// BW1W120 004648b0 BW1M100 100e33f0 Object::Draw(void)
@@ -529,7 +529,7 @@ public:
 	// BW1W120 006377b0 BW1M100 103d6f30 Object::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00419890 BW1M100 100a9e80 Object::ChecksVerticesVObjects(void)
-	virtual uint32_t ChecksVerticesVObjects();
+	virtual bool ChecksVerticesVObjects();
 	// BW1W120 006377d0 BW1M100 103d6e50 Object::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object *)
 	virtual void ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
 	// BW1W120 00402a00 BW1M100 100b06b0 Object::PhysicallyDestroysAbodes(void)
@@ -572,7 +572,7 @@ public:
 	// BW1W120 00638cb0 BW1M100 103d3fe0 Object::GetInspectObjectPos(Villager *, MapCoords *)
 	virtual bool32_t GetInspectObjectPos(Villager* param_1, MapCoords* pos);
 	// BW1W120 0063ab10 BW1M100 103cfef0 Object::DiscipleInHandNear(Villager &, GInterfaceStatus &)
-	virtual void DiscipleInHandNear(Villager* param_1, GInterfaceStatus* status);
+	virtual void DiscipleInHandNear(Villager& villager, GInterfaceStatus& status);
 	// BW1W120 00638cd0 BW1M100 103d3f70 Object::GetSpecialPos(unsigned long, MapCoords *)
 	virtual bool32_t GetSpecialPos(uint32_t index, MapCoords* pos);
 	// BW1W120 00419960 BW1M100 100adee0 Object::GetTownArtifact(void)

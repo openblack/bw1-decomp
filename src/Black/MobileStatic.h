@@ -105,7 +105,7 @@ public:
 	// BW1W120 00609230 BW1M100 10097510 MobileStatic::GetHoldLoweringMultiplier(void)
 	virtual float GetHoldLoweringMultiplier();
 	// BW1W120 00439680 BW1M100 100b42d0 MobileStatic::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00517f60 BW1M100 10042f50 MobileStatic::Draw(void)
 	virtual void Draw();
 	// BW1W120 00439670 BW1M100 100b4280 MobileStatic::CanBePickedUp(void)
@@ -138,7 +138,7 @@ public:
 	// BW1W120 006090b0 BW1M100 103bf550 MobileStatic::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00609260 BW1M100 103beff0 MobileStatic::ChecksVerticesVObjects(void)
-	virtual uint32_t ChecksVerticesVObjects();
+	virtual bool ChecksVerticesVObjects();
 	// BW1W120 00609210 BW1M100 103bf080 MobileStatic::PhysicallyDestroysAbodes(void)
 	virtual uint32_t PhysicallyDestroysAbodes();
 	// BW1W120 00608fc0 BW1M100 103bf8c0 MobileStatic::ReactToPhysicsImpact(PhysicsObject *, bool)

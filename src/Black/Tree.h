@@ -115,7 +115,7 @@ public:
 	// BW1W120 0074a290 BW1M100 10158860 Tree::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 0055d8a0 BW1M100 101594d0 Tree::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 0074ab00 BW1M100 10044ce0 Tree::Draw(void)
 	virtual void Draw();
 	// BW1W120 0074b270 BW1M100 10157fc0 Tree::DrawOutOfMap(bool)

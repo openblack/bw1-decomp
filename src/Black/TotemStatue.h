@@ -95,7 +95,7 @@ public:
 	// BW1W120 00737f40 BW1M100 10077f00 TotemStatue::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 005610e0 BW1M100 10543c30 TotemStatue::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00738960 BW1M100 10024bb0 TotemStatue::Draw(void)
 	virtual void Draw();
 	// BW1W120 00737d60 BW1M100 10544f40 TotemStatue::CallVirtualFunctionsForCreation(MapCoords const &)

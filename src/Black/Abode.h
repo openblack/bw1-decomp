@@ -64,8 +64,8 @@ public:
 	Villager*            MaleFemaleVillagers[0x2];
 	float                field_0xb0;
 	uint8_t              AdultCount;
-	uint8_t              field_0xb5;
-	uint8_t              field_0xb6;
+	uint8_t              AdultMaleCount;
+	uint8_t              PresentAtHome;
 	uint8_t              ChildCount;
 	uint8_t              index;
 	uint8_t              field_0xb9;
@@ -84,7 +84,7 @@ public:
 	// BW1W120 004016c0 BW1M100 10055bb0 Abode::IsBuilt(void)
 	virtual bool32_t IsBuilt()
 	{
-		if (field_0x58 & 2)
+		if ((field_0x58 & 2) == 2)
 		{
 			return false;
 		}
@@ -121,16 +121,16 @@ public:
 	// BW1W120 00401730 BW1M100 1004fe30 Abode::GetTown(void)
 	virtual Town* GetTown();
 	// BW1W120 00404d40 BW1M100 10000f50 Abode::JustAddResource(RESOURCE_TYPE, unsigned long, bool)
-	virtual uint32_t JustAddResource(RESOURCE_TYPE param_1, uint32_t param_2, bool param_3);
+	virtual void JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3);
 	// BW1W120 00404d60 BW1M100 1034cdd0 Abode::JustRemoveResource(RESOURCE_TYPE, unsigned long, bool *)
-	virtual uint32_t JustRemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, bool* param_3);
+	virtual uint32_t JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3);
 	// BW1W120 00404d30 BW1M100 1006d300 Abode::GetResource(RESOURCE_TYPE)
 	virtual uint32_t GetResource(RESOURCE_TYPE type);
 	// BW1W120 00404d90 BW1M100 101c95e0 Abode::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* coords, int param_6);
+	                             MapCoords* coords, int param_6);
 	// BW1W120 00404f10 BW1M100 101c9a10 Abode::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
-	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
+	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* param_4);
 	// BW1W120 00401640 BW1M100 105602b0 Abode::CastAbode(void)
 	virtual Abode* CastAbode();
 	// BW1W120 00403f10 BW1M100 103c9730 Abode::GetNumberOfInstanceForGlobalList(void)
@@ -142,7 +142,7 @@ public:
 	// BW1W120 00406a10 BW1M100 103bd750 Abode::Save(GameOSFile &)
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00407200 BW1M100 1008a7b0 Abode::IsInteractable(void)
-	virtual bool IsInteractable();
+	virtual bool32_t IsInteractable();
 	// BW1W120 004e43f0 BW1M100 105e5610 Abode::CanBeStompedOnByCreature(Creature *)
 	virtual bool32_t CanBeStompedOnByCreature(Creature* creature);
 	// BW1W120 004e3fa0 BW1M100 105e63e0 Abode::CanBeKickedByCreature(Creature *)
@@ -170,7 +170,7 @@ public:
 	// BW1W120 00404440 BW1M100 1004fcb0 Abode::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00404aa0 BW1M100 100ac700 Abode::GetMesh(void) const
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00515f70 BW1M100 10036a60 Abode::Draw(void)
 	virtual void Draw();
 	// BW1W120 00407170 BW1M100 1034ec40 Abode::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
@@ -178,7 +178,7 @@ public:
 	// BW1W120 00403200 BW1M100 10576c70 Abode::CallVirtualFunctionsForCreation(const MapCoords&)
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 00406820 BW1M100 1049b920 Abode::InterfaceValidToTap(GInterfaceStatus *)
-	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* status);
+	virtual bool32_t InterfaceValidToTap(GInterfaceStatus* status);
 	// BW1W120 00406830 BW1M100 102fed90 Abode::InterfaceTap(GInterfaceStatus *)
 	virtual uint32_t InterfaceTap(GInterfaceStatus* status);
 	// BW1W120 00402dc0 BW1M100 103bf040 Abode::GetPhysicsConstantsType(void)
@@ -186,7 +186,7 @@ public:
 	// BW1W120 00402dd0 BW1M100 103bf110 Abode::SetUpPhysOb(PhysOb *)
 	virtual void SetUpPhysOb(PhysOb* obj);
 	// BW1W120 00406230 BW1M100 1014cfd0 Abode::ChecksVerticesVObjects(void)
-	virtual uint32_t ChecksVerticesVObjects();
+	virtual bool ChecksVerticesVObjects();
 	// BW1W120 00406240 BW1M100 104a8350 Abode::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00406800 BW1M100 1010ab50 Abode::CanBecomeAPhysicsObject(void)
@@ -194,9 +194,9 @@ public:
 	// BW1W120 00402cd0 BW1M100 100c7020 Abode::GetInspectObjectPos(Villager *, MapCoords *)
 	virtual bool32_t GetInspectObjectPos(Villager* param_1, MapCoords* pos);
 	// BW1W120 00407420 BW1M100 10351de0 Abode::DiscipleInHandNear(Villager &, GInterfaceStatus &)
-	virtual void DiscipleInHandNear(Villager* param_1, GInterfaceStatus* status);
+	virtual void DiscipleInHandNear(Villager& villager, GInterfaceStatus& status);
 	// BW1W120 00405bb0 BW1M100 101ca440 Abode::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 	// BW1W120 00403ef0 BW1M100 10589380 Abode::ShouldFootpathsGoRound(void)
 	virtual bool32_t ShouldFootpathsGoRound();
 	// BW1W120 004072a0 BW1M100 10053220 Abode::GetInfluence(void)
@@ -208,20 +208,20 @@ public:
 	// BW1W120 00407090 BW1M100 10058a60 Abode::GetPercentAbodeFullWithChildren(void)
 	virtual float GetPercentAbodeFullWithChildren();
 	// BW1W120 00404720 BW1M100 105b9180 Abode::Built(void)
-	virtual bool Built();
+	virtual bool32_t Built();
 	// BW1W120 004047b0 BW1M100 105b9280 Abode::Repaired(void)
-	virtual bool Repaired();
+	virtual bool32_t Repaired();
 	// BW1W120 00403f40 BW1M100 105861b0 Abode::RemoveDamage(void)
 	virtual float RemoveDamage();
 	// BW1W120 00405ff0 BW1M100 10199f30 Abode::IsCivic(void)
-	virtual bool IsCivic();
+	virtual bool32_t IsCivic();
 	// BW1W120 004061f0 BW1M100 10089cd0 Abode::GetAbodeType(void)
 	virtual ABODE_TYPE GetAbodeType();
 	// BW1W120 00406970 BW1M100 1004c590 Abode::GetDesireToBeRepaired(void)
 	virtual float GetDesireToBeRepaired();
 	// BW1W120 00404df0 BW1M100 10002b90 Abode::DoResourceAdding(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
-	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, GInterfaceStatus* iface, bool param_3, MapCoords* param_4,
-	                                  int param_5);
+	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool param_4,
+	                                  MapCoords* coords, int param_6);
 	// BW1W120 00404f60 BW1M100 104f7960 Abode::DoResourceRemoving(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool param_4);
 	// BW1W120 00405050 BW1M100 100a3330 Abode::ConvertToPlanned(void)
@@ -236,13 +236,13 @@ public:
 	// BW1W120 004047e0 BW1M100 103c1e30 Abode::MakeFunctional(void)
 	virtual void MakeFunctional();
 	// BW1W120 004073c0 BW1M100 103b5600 Abode::StopBeingFunctional(GPlayer *)
-	virtual void StopBeingFunctional(GPlayer* param_1);
+	virtual void StopBeingFunctional(GPlayer* player);
 	// BW1W120 00401680 BW1M100 10371be0 Abode::RestartBeingFunctional(void)
 	virtual void RestartBeingFunctional() {}
 	// BW1W120 004016f0 BW1M100 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
 	virtual bool32_t CausesTownEmergencyIfDamaged() { return false; }
 	// BW1W120 00407280 BW1M100 100dcdb0 Abode::CanBeHiddenIn(void)
-	virtual bool CanBeHiddenIn();
+	virtual bool32_t CanBeHiddenIn();
 	// BW1W120 00405f50 BW1M100 103b5680 Abode::GetTribe(void)
 	virtual GTribeInfo* GetTribe();
 
@@ -263,6 +263,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M100 10377350 Abode::GetInfo() const
+	inline GAbodeInfo* GetInfo() const { return (GAbodeInfo*)info; }
 	// BW1W120 00402bc0 BW1M100 inlined Abode::SetToZero(void)
 	void SetToZero();
 	// BW1W120 00403130 BW1M100 1033b920 Abode::Init(int, unsigned long, unsigned long)
@@ -310,7 +312,7 @@ public:
 	// BW1W120 00405d80 BW1M100 inlined Abode::FUN_00405d80(void)
 	int FUN_00405d80();
 	// BW1W120 00405f40 BW1M100 10177200 Abode::GetTribeType(void) const
-	TRIBE_TYPE GetTribeType();
+	TRIBE_TYPE GetTribeType() const;
 	// BW1W120 00405fa0 BW1M100 10003a60 Abode::ArriveHome(void)
 	void ArriveHome();
 	// BW1W120 00405fb0 BW1M100 1009fda0 Abode::LeaveHome(void)
@@ -325,9 +327,9 @@ public:
 	// BW1W120 00407020 BW1M100 inlined Abode::FindNearestDrinkingWater(float)
 	void FindNearestDrinkingWater(float max_dist);
 	// BW1W120 004070d0 BW1M100 104ed230 Abode::GetNumAdultsInAbode(void)
-	uint8_t GetNumAdultsInAbode();
+	float GetNumAdultsInAbode();
 	// BW1W120 004070f0 BW1M100 101b8780 Abode::DrawPercentFull(int)
-	void DrawPercentFull(int param_1);
+	void DrawPercentFull(uint32_t param_1);
 	// BW1W120 00407230 BW1M100 inlined Abode::FUN_00407230(bool)
 	MapCoords FUN_00407230(bool param_2);
 	// BW1W120 004072e0 BW1M100 1000cd50 Abode::GetPosOutside(float, float, float)
@@ -339,9 +341,9 @@ public:
 	// BW1W120 00407540 BW1M100 100af0d0 Abode::CalculateDesireToGainVillager(void)
 	float CalculateDesireToGainVillager();
 	// BW1W120 004075b0 BW1M100 10518900 Abode::TakeVillagerFrom(Abode&, int)
-	bool TakeVillagerFrom(Abode& other, int param_2);
+	bool32_t TakeVillagerFrom(Abode& other, uint32_t param_2);
 	// BW1W120 00407620 BW1M100 10516470 Abode::SwapMaleForFemaleFrom(Abode&)
-	bool SwapMaleForFemaleFrom(Abode& other);
+	bool32_t SwapMaleForFemaleFrom(Abode& other);
 	// BW1W120 004076c0 BW1M100 105a17d0 Abode::GetVillagerHealthTotal(void)
 	float GetVillagerHealthTotal();
 };

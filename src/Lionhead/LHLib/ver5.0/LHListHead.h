@@ -30,6 +30,16 @@ struct LHListHead
 		return walker;
 	}
 
+	T* GetLast() const
+	{
+		T* walker = head;
+		while (walker != NULL && walker->next != NULL)
+		{
+			walker = walker->next;
+		}
+		return walker;
+	}
+
 	void Remove(T* element)
 	{
 		if (head == element)

@@ -45,7 +45,7 @@ public:
 	// BW1W120 0066ecb0 BW1M100 1011a3b0 PileResource::_dt(void)
 	virtual ~PileResource();
 	// BW1W120 0066d330 BW1M100 10003c80 PileResource::JustAddResource(RESOURCE_TYPE, unsigned long, bool)
-	virtual uint32_t JustAddResource(RESOURCE_TYPE param_1, uint32_t param_2, bool param_3);
+	virtual void JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3);
 	// BW1W120 0066f690 BW1M100 101163b0 PileResource::Load(GameOSFile &)
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 0066f620 BW1M100 10116490 PileResource::Save(GameOSFile &)

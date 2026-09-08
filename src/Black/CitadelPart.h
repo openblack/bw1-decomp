@@ -64,7 +64,7 @@ public:
 	// BW1W120 00469490 BW1M100 101ba510 CitadelPart::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00464a90 BW1M100 101c2400 CitadelPart::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00469760 BW1M100 101c2b70 CitadelPart::CallVirtualFunctionsForCreation(MapCoords const &)
 	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
 	// BW1W120 004694b0 BW1M100 101c3720 CitadelPart::Get3DType(void)

@@ -137,7 +137,7 @@ public:
 	virtual Town* GetTown();
 	// BW1W120 007564d0 BW1M100 10565060 Villager::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* param_5, int param_6);
+	                             MapCoords* param_5, int param_6);
 	// BW1W120 00751cf0 BW1M100 100199f0 Villager::IsFunctional(void)
 	virtual bool32_t IsFunctional();
 	// BW1W120 0055cb30 BW1M100 10571f80 Villager::GetDebugText(void)
@@ -237,7 +237,7 @@ public:
 	// BW1W120 007502d0 BW1M100 10570c30 Villager::DestroyedByEffect(GPlayer *, float)
 	virtual uint32_t DestroyedByEffect(GPlayer* player, float damage);
 	// BW1W120 0055c9c0 BW1M100 10147dd0 Villager::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 0055c9d0 BW1M100 inlined Villager::GetDetailMesh(int)
 	virtual int GetDetailMesh(int param_1);
 	// BW1W120 0051b940 BW1M100 1004c6c0 Villager::Draw(void)

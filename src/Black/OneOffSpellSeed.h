@@ -68,7 +68,7 @@ public:
 	// BW1W120 0072acb0 BW1M100 105264c0 OneOffSpellSeed::GetQueryLastEnumText(void)
 	virtual HELP_TEXT GetQueryLastEnumText();
 	// BW1W120 0072a910 BW1M100 10526db0 OneOffSpellSeed::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00518e90 BW1M100 100c7fc0 OneOffSpellSeed::Draw(void)
 	virtual void Draw();
 	// BW1W120 00518c50 BW1M100 100c8340 OneOffSpellSeed::DrawOutOfMap(bool)

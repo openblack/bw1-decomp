@@ -33,8 +33,14 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 00751aa0 BW1M100 10159e50 GTribeInfo::GetTribeTextArray(void)
-	char* GetTribeTextArray();
+	// BW1W120 inlined BW1M100 10159e50 GTribeInfo::GetTribeTextArray(void)
+	inline static char** GetTribeTextArray()
+	{
+		static char* TribeTextArray[] = {
+			"CELTIC", "AFRICAN", "AZTEC", "JAPANESE", "INDIAN", "EGYPTIAN", "GREEK", "NORSE", "TIBETAN", "LAST_ERROR",
+		};
+		return TribeTextArray;
+	}
 };
 
 #endif /* BW1_DECOMP_TRIBE_INFO_INCLUDED_H */

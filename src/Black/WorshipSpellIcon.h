@@ -115,7 +115,7 @@ public:
 	// BW1W120 006709d0 BW1M100 inlined PrayerIcon::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00670950 BW1M100 inlined PrayerIcon::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 006709f0 BW1M100 inlined PrayerIcon::Draw(void)
 	virtual void Draw();
 };

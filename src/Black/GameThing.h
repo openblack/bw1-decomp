@@ -394,16 +394,16 @@ public:
 	// BW1W120 004051a0 BW1M100 103dff70 GameThing::RemoveFootpath(GFootpath *)
 	virtual uint32_t RemoveFootpath(GFootpath* param_1);
 	// BW1W120 005705f0 BW1M100 10560530 GameThing::JustAddResource(RESOURCE_TYPE, unsigned long, bool)
-	virtual uint32_t JustAddResource(RESOURCE_TYPE param_1, uint32_t param_2, bool param_3);
+	virtual void JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3);
 	// BW1W120 00570600 BW1M100 1054a9d0 GameThing::JustRemoveResource(RESOURCE_TYPE, unsigned long, bool *)
-	virtual uint32_t JustRemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, bool* param_3);
+	virtual uint32_t JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3);
 	// BW1W120 00570610 BW1M100 101669d0 GameThing::JustGetResource(RESOURCE_TYPE, unsigned long, bool *)
 	virtual uint32_t JustGetResource(RESOURCE_TYPE param_1, uint32_t param_2, bool* param_3);
 	// BW1W120 004051b0 BW1M100 1056c950 GameThing::GetResource(RESOURCE_TYPE)
 	virtual uint32_t GetResource(RESOURCE_TYPE type);
 	// BW1W120 004051c0 BW1M100 1056c9a0 GameThing::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* coords, int param_6);
+	                             MapCoords* coords, int param_6);
 	// BW1W120 004051d0 BW1M100 104f8b20 GameThing::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 004018d0 BW1M100 103dd790 GameThing::CastCreature(void)

@@ -35,7 +35,7 @@ public:
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00779e00 BW1M100 10162ee0 Workshop::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* param_5, int param_6);
+	                             MapCoords* param_5, int param_6);
 	// BW1W120 00779ec0 BW1M100 10162dc0 Workshop::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 00779310 BW1M100 10164960 Workshop::GetDebugText(void)

@@ -42,7 +42,7 @@ public:
 	virtual Town* GetTown();
 	// BW1W120 006eaef0 BW1M100 1013eaf0 Scaffold::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* param_5, int param_6);
+	                             MapCoords* param_5, int param_6);
 	// BW1W120 005181a0 BW1M100 100c8e20 Scaffold::DrawInHand(GInterfaceStatus *)
 	virtual void DrawInHand(GInterfaceStatus* param_1);
 	// BW1W120 0055e140 BW1M100 1013e6d0 Scaffold::GetDebugText(void)

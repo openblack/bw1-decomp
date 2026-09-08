@@ -5,6 +5,9 @@
 #include <Lionhead/LH3DLib/development/PhysOb.h> /* For struct PhysOb */
 
 #include "AbodeInfo.h"
+#include "MapCoords.h"
+#include "MultiMapFixedInfo.h"
+#include "Player.h"
 #include "Villager.h"
 #include "chlasm/Enum.h"
 #include "ColourConstants.h" /* For White */
@@ -15,6 +18,7 @@
 #include "FootpathNode.h"
 #include "Game.h"
 #include "Game3DObject.h"
+#include "GameStats.h"
 #include "GraveYard.h"
 #include "LandscapeConstants.h" /* For CellSizeXGridDim */
 #include "PlannedAbode.h"
@@ -23,7 +27,10 @@
 #include "StoragePit.h"
 #include "Totem.h"
 #include "Town.h"
+#include "TownDesire.h"
 #include "TownCentre.h"
+#include "TownInfo.h"
+#include "TribeInfo.h"
 #include "Utils.h"
 #include "VillagerInfo.h"
 #include "ViscousLiquid.h"
@@ -60,7 +67,7 @@ Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float 
 
 void Abode::SetToZero()
 {
-	field_0xb6 = 0;
+	PresentAtHome = 0;
 	AdultCount = 0;
 	ChildCount = 0;
 	field_0x94 = 0;
@@ -70,7 +77,7 @@ void Abode::SetToZero()
 	DestructionMesh = NULL;
 	field_0x7c = 0;
 	field_0xb0 = 0;
-	field_0xb5 = 0;
+	AdultMaleCount = 0;
 	field_0xb9 = 0;
 }
 
@@ -221,38 +228,49 @@ void Abode::CallVirtualFunctionsForCreation(const MapCoords& coords_)
 	if (Game3dObject->GetChimneyPos(&chimney_pos))
 	{
 		smoke = LH3DSmoke::Create(NULL);
-		smoke->pos = chimney_pos;
-		if (IsWorkshop())
+		if (smoke != NULL)
 		{
-			smoke->color = LH3DColor(0x00808080);
+			smoke->pos = chimney_pos;
+			if (IsWorkshop())
+			{
+				smoke->color = LH3DColor(0x00808080);
+			}
 		}
 	}
 
-	if (Game3dObject->IsStaticMorphable())
+	if (!Game3dObject->IsStaticMorphable())
 	{
-		coords.altitude = max(Game3dObject->GetAltitudeFondation(), -max(0.8f, Get2DRadius() * 0.2f));
+		float minAltitude = min(-(Get2DRadius() * 0.2f), -0.8f);
+		Pos.altitude = max(Game3dObject->GetAltitudeFondation(), minAltitude);
 	}
+	float   scale = GetScale();
+	float   yAngle = GetYAngle();
 	LHPoint position;
-	GLandscape::ConvertMapCoordToLandscapePoint(coords_, position);
-	Game3dObject->SetPosition(&position, GetYAngle(), GetScale());
+	Game3dObject->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
+}
+
+bool32_t Abode::GetNewEp(ABODE_EPP index, LHPoint* point)
+{
+	int mesh = GetMesh();
+	return false;
 }
 
 void Abode::DeleteAbodeSurroundingObjects()
 {
 	LHPoint point;
-	if (((GAbodeInfo*)info)->DidYouKnow != 0)
+	if (GetInfo()->DidYouKnow != 0)
 	{
 		if (GetNewEp(ABODE_EPP_SCRIPT_HIGHLIGHT, &point))
 		{
 			MapCoords coords(point);
 			for (Object* obj = coords.FindType(OBJECT_TYPE_SCRIPT_HIGHLIGHT, NULL); obj != NULL;
 			     obj = coords.FindType(OBJECT_TYPE_SCRIPT_HIGHLIGHT, obj))
-			 {
+			{
 				if (obj->IsScriptHighlight())
 				{
 					obj->ToBeDeleted(0);
 				}
-			 }
+			}
 		}
 	}
 	if (GetNewEp(ABODE_EPP_LANTERN, &point))
@@ -272,17 +290,19 @@ void Abode::DeleteAbodeSurroundingObjects()
 void Abode::CreateAbodeSurroundingObjects()
 {
 	LHPoint point;
-	if (((GAbodeInfo*)info)->DidYouKnow != 0)
+	if (GetInfo()->DidYouKnow != 0)
 	{
 		if (GetNewEp(ABODE_EPP_SCRIPT_HIGHLIGHT, &point))
 		{
 			// TODO
+			MapCoords coords(point);
 			return;
 		}
 	}
 	if (GetNewEp(ABODE_EPP_LANTERN, &point))
 	{
 		// TODO
+		MapCoords coords(point);
 	}
 }
 
@@ -386,7 +406,7 @@ uint32_t Abode::Process()
 			if (field_0xb0 >= 1.0f)
 			{
 				field_0x7c |= 0x40;
-				ReduceLife(((GAbodeInfo*)info)->EmptyAbodeLifeReducer, NULL);
+				ReduceLife(GetInfo()->EmptyAbodeLifeReducer, NULL);
 				field_0x7c &= ~0x40;
 				field_0xb0 = 0.0f;
 			}
@@ -458,12 +478,54 @@ Villager* Abode::GetSpouse(Villager* villager)
 
 int Abode::GetRoomLeftForAdults()
 {
-	return ((GAbodeInfo*)info)->MaxVillagersInAbode - AdultCount;
+	return GetInfo()->MaxVillagersInAbode - AdultCount;
 }
 
 int Abode::GetRoomLeftForChildren()
 {
-	return ((GAbodeInfo*)info)->MaxChildrenInAbode - ChildCount;
+	return GetInfo()->MaxChildrenInAbode - ChildCount;
+}
+
+bool32_t Abode::IsTooCrowded()
+{
+	int max_villagers = GetInfo()->MaxVillagersInAbode;
+	if (max_villagers == 0)
+	{
+		return true;
+	}
+
+	return (float)AdultCount / (float)max_villagers >= GetInfo()->PercentTooCrowded;
+}
+
+bool32_t Abode::Built()
+{
+	MultiMapFixed::Built();
+
+	if (GetTown() != NULL)
+	{
+		if (GetTown()->GetPlayer() != NULL)
+		{
+			GPlayer* player = GetTown()->GetPlayer();
+			// TODO
+			return (unsigned)player;
+		}
+	}
+
+	if (GetTown() != NULL)
+	{
+		MakeFunctional();
+	}
+	return true;
+}
+
+bool32_t Abode::Repaired()
+{
+	MultiMapFixed::Repaired();
+	if (GetTown() != NULL)
+	{
+		MakeFunctional();
+	}
+	return true;
 }
 
 void Abode::MakeFunctional()
@@ -487,22 +549,18 @@ void Abode::MakeFunctional()
 			town->RemoveBuildingSite(this);
 		}
 
-		if (town->GetStoragePit() && town->GetStoragePit() != this && GGame::g_game->data.GameTurn != 0)
+		if (town->GetStoragePit() && town->GetStoragePit() != this && GGame::g_game->data.GameTurn > 0)
 		{
-			GFootpath*  footpath = new (__FILE__, __LINE__) GFootpath(NULL, NULL);
+			GFootpath*  footpath = new ("C:\\dev\\MP\\Black\\Abode.cpp", 1019) GFootpath(NULL, NULL);
 			MapCoords   town_coords = GetArrivePos();
 			StoragePit* storage_pit = town->GetStoragePit();
 			MapCoords   pit_coords = storage_pit->GetArrivePos();
 			footpath->AddPos(town_coords);
 			footpath->AddPos(pit_coords);
 
-			GFootpathNode* end = NULL;
-			for (GFootpathNode* walker = footpath->nodes; walker != NULL; walker = walker->next)
-			{
-				end = walker;
-			}
+			GFootpathNode* end = footpath->nodes.GetLast();
 
-			if (footpath->AttemptRerenderFootpathWithCreatureRP(footpath->nodes, end, NULL) == NULL)
+			if (footpath->AttemptRerenderFootpathWithCreatureRP(footpath->nodes.head, end, NULL) == NULL)
 			{
 				footpath->ToBeDeleted(0);
 			}
@@ -517,12 +575,17 @@ void Abode::MakeFunctional()
 	}
 }
 
+MESH_LIST Abode::GetMesh()
+{
+	return GetInfo()->GetMesh();
+}
+
 float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 {
 	float score;
 	if (villager->IsChild())
 	{
-		int max_children = ((GAbodeInfo*)info)->MaxChildrenInAbode;
+		int max_children = GetInfo()->MaxChildrenInAbode;
 		if (max_children == 0)
 		{
 			return 0.0f;
@@ -539,7 +602,7 @@ float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 	}
 	else
 	{
-		int max_adults = ((GAbodeInfo*)info)->MaxVillagersInAbode;
+		int max_adults = GetInfo()->MaxVillagersInAbode;
 		if (max_adults == 0)
 		{
 			return 0.0f;
@@ -578,14 +641,301 @@ float Abode::CalculateScoreForAddingVillagerToAbode(Villager* villager)
 	return score;
 }
 
-TRIBE_TYPE Abode::GetTribeType()
+void Abode::ChildToAdult(Villager* villager)
+{
+	if (ChildCount != NULL)
+	{
+		--ChildCount;
+	}
+	++AdultCount;
+	AdultMaleCount += villager->IsMaleVillager() != false;
+	if (GetTown())
+	{
+		GetTown()->ChildToAdult(villager);
+	}
+}
+
+uint32_t Abode::GetResource(RESOURCE_TYPE type)
+{
+	return resources[type];
+}
+
+void Abode::JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3)
+{
+	resources[type] += amount;
+}
+
+uint32_t Abode::JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3)
+{
+	amount = min(resources[type], amount);
+	resources[type] -= amount;
+	return amount;
+}
+
+uint32_t Abode::AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool param_4,
+                            MapCoords* coords, int param_6)
+{
+	if (building_site != NULL && (type == RESOURCE_TYPE_WOOD || type == RESOURCE_TYPE_ANY))
+	{
+		return building_site->AddResource(type, amount, status, param_4, 0, 0);
+	}
+	return DoResourceAdding(type, amount, status, param_4, coords, param_6);
+}
+
+uint32_t Abode::DoResourceAdding(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool param_4,
+                                 MapCoords* coords, int param_6)
+{
+	Town* town = GetTown();
+	if (param_4 && town != NULL)
+	{
+		town->desire.CallDesireFunction(type != RESOURCE_TYPE_FOOD);
+		// uint32_t result = JustAddResource(type, iface, param_3);
+		town->desire.CallDesireFunction(type != RESOURCE_TYPE_FOOD);
+		// return result;
+	}
+	// return JustAddResource(type, amount, param_3);
+	return 0;
+}
+
+uint32_t Abode::RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* param_4)
+{
+	if (building_site != NULL && (type == RESOURCE_TYPE_WOOD || type == RESOURCE_TYPE_ANY))
+	{
+		return building_site->RemoveResource(type, amount, status, param_4);
+	}
+	return DoResourceRemoving(type, amount, status, param_4);
+}
+
+uint32_t Abode::DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool param_4)
+{
+	return 0;
+}
+
+PlannedMultiMapFixed* Abode::ConvertToPlanned()
+{
+	PlannedAbode* result = PlannedAbode::Create(this);
+	if (result != NULL)
+	{
+		ToBeDeleted(0);
+	}
+	return result;
+}
+
+char* Abode::GetAbodeText(char* buff)
+{
+	sprintf(buff, "%s_%s", GTribeInfo::GetTribeTextArray()[GetTribe()->index], GetInfo()->GetDescription());
+	return buff;
+}
+
+uint32_t Abode::SaveObject(LHOSFile& file, const MapCoords& coords)
+{
+	if (CheckAndSetSaved())
+	{
+		return 0;
+	}
+	return MultiMapFixed::SaveObject(file, coords);
+}
+
+float Abode::ReduceLife(float value, GPlayer* player)
+{
+	return MultiMapFixed::ReduceLife(value, player);
+}
+
+void Abode::IncreaseLife(float value)
+{
+	float life = GetLife();
+	float repaired_before = GetPercentRepairedForNonFunctional();
+	Object::IncreaseLife(value);
+	if (repaired_before >= life && GetPercentRepairedForNonFunctional() < life)
+	{
+		RestartBeingFunctional();
+	}
+}
+
+TRIBE_TYPE Abode::GetTribeType() const
 {
 	return town->tribe_type;
+}
+
+GTribeInfo* Abode::GetTribe()
+{
+	if (GetTown() != NULL)
+	{
+		return GetTown()->GetTribe();
+	}
+	return NULL;
+}
+
+GPlayer* Abode::GetPlayer()
+{
+	if (GetTown() != NULL)
+	{
+		return GetTown()->GetPlayer();
+	}
+	return GameThing::GetPlayer();
+}
+
+void Abode::ArriveHome()
+{
+	++PresentAtHome;
+}
+
+void Abode::LeaveHome()
+{
+	--PresentAtHome;
+}
+
+bool32_t Abode::IsCivic()
+{
+	switch (GetInfo()->AbodeType)
+	{
+	case ABODE_TYPE_TOTEM:
+	case ABODE_TYPE_STORAGE_PIT:
+	case ABODE_TYPE_CRECHE:
+	case ABODE_TYPE_WORKSHOP:
+	case ABODE_TYPE_GRAVEYARD:
+	case ABODE_TYPE_TOWN_CENTRE:
+	case ABODE_TYPE_FOOTBALL_PITCH:
+	case ABODE_TYPE_SPELL_DISPENSER:
+		return true;
+	}
+}
+
+bool32_t Abode::IsWonder()
+{
+	return GetInfo()->AbodeType == ABODE_TYPE_WONDER;
+}
+
+ABODE_TYPE Abode::GetAbodeType()
+{
+	return GetInfo()->AbodeType;
+}
+
+bool32_t Abode::IsFunctional()
+{
+	return MultiMapFixed::IsFunctional() == true && IsBuilt();
+}
+
+bool Abode::ChecksVerticesVObjects()
+{
+	return false;
+}
+
+void Abode::ReactToPhysicsImpact(PhysicsObject* obj, bool param_2) {}
+
+void Abode::ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player) {}
+
+bool32_t Abode::CanBecomeAPhysicsObject()
+{
+	return false;
+}
+
+SCRIPT_OBJECT_TYPE Abode::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_ABODE;
+}
+
+bool32_t Abode::InterfaceValidToTap(GInterfaceStatus* status)
+{
+	return true;
+}
+
+uint32_t Abode::InterfaceTap(GInterfaceStatus* status)
+{
+	return 1;
+}
+
+float Abode::GetDesireToBeRepaired()
+{
+	if (GetPercentRepaired() <= GetTown()->GetInfo()->field_0x10c &&
+	    ((GetInfo()->AbodeType & 2) == 0 || MaleFemaleVillagers[0] != 0))
+	{
+		return MultiMapFixed::GetDesireToBeRepaired();
+	}
+	return 0.0f;
+}
+
+Villager* Abode::FindVillager(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+                              SCRIPT_OBJECT_TYPE type, uint32_t param_3)
+{
+	Villager* v = villagers.head;
+	for (; v != NULL; v = v->next)
+	{
+		if (callback(v, type, param_3))
+		{
+			break;
+		}
+	}
+	return v;
+}
+
+uint32_t Abode::Save(GameOSFile& file)
+{
+	return 1;
+}
+
+uint32_t Abode::Load(GameOSFile& file)
+{
+	return 1;
 }
 
 void Abode::FindNearestDrinkingWater(float max_dist)
 {
 	field_0x7c |= GUtils::FindNearestDrinkingWater(coords, DrinkingWater, max_dist) ? 1 : 0;
+}
+
+float Abode::GetPercentAbodeFullWithAdults()
+{
+	if (GetInfo()->MaxVillagersInAbode != 0)
+	{
+		return (float)GetNumAdultsInAbode() / (float)GetInfo()->MaxVillagersInAbode;
+	}
+	return 1.0f;
+}
+
+float Abode::GetPercentAbodeFullWithChildren()
+{
+	if (GetInfo()->MaxChildrenInAbode != 0)
+	{
+		return (float)ChildCount / (float)GetInfo()->MaxChildrenInAbode;
+	}
+	return 1.0f;
+}
+
+float Abode::GetNumAdultsInAbode()
+{
+	return AdultCount;
+}
+
+void Abode::DrawPercentFull(uint32_t param_1) {}
+
+uint32_t Abode::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager)
+{
+	return MultiMapFixed::GetDiscipleStateIfInteractedWith(status, villager);
+}
+
+bool32_t Abode::IsInteractable()
+{
+	if (GetPercentBuilt() == 0.0f)
+	{
+		return false;
+	}
+	return GameThingWithPos::IsInteractable();
+}
+
+bool32_t Abode::CanBeHiddenIn()
+{
+	return IsFunctional();
+}
+
+float Abode::GetPercentRepairedForNonFunctional()
+{
+	return GetInfo()->ThresholdForStopBeingFunctional;
+}
+
+float Abode::GetInfluence()
+{
+	return (GetNumAdultsInAbode() + ChildCount + 1.0f) * MultiMapFixed::GetInfluence();
 }
 
 MapCoords Abode::GetPosOutside(float param_2, float param_3, float param_4)
@@ -596,4 +946,39 @@ MapCoords Abode::GetPosOutside(float param_2, float param_3, float param_4)
 	float     fVar2 = GRand::GameFloatRand(param_4, __FILE__, __LINE__);
 
 	return coords + GUtils::GetPosFromAngle(fVar3 + fVar1 - 2.0f * (float)M_PI / (2.0f * param_2), fVar2 + param_3);
+}
+
+void Abode::StopBeingFunctional(GPlayer* player)
+{
+	if (player != NULL && field_0xb9 > 199)
+	{
+		++player->game_stats->field_0x1080;
+	}
+}
+
+void Abode::DiscipleInHandNear(Villager& villager, GInterfaceStatus& status) {}
+
+float Abode::CalculateDesireToGainMale()
+{
+	return 0.0f;
+}
+
+float Abode::CalculateDesireToGainVillager()
+{
+	return 0.0f;
+}
+
+bool32_t Abode::TakeVillagerFrom(Abode& other, uint32_t param_2)
+{
+	return true;
+}
+
+bool32_t Abode::SwapMaleForFemaleFrom(Abode& other)
+{
+	return true;
+}
+
+float Abode::GetVillagerHealthTotal()
+{
+	return 0.0f;
 }

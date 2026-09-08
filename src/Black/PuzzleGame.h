@@ -145,7 +145,7 @@ public:
 	// BW1W120 004221e0 BW1M100 inlined ChessPion::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 004221d0 BW1M100 inlined ChessPion::ChecksVerticesVObjects(void)
-	virtual uint32_t ChecksVerticesVObjects();
+	virtual bool ChecksVerticesVObjects();
 	// BW1W120 00422ec0 BW1M100 inlined ChessPion::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00422ed0 BW1M100 inlined ChessPion::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
@@ -535,7 +535,7 @@ public:
 	// BW1W120 006da610 BW1M100 10126420 PuzzleTotem::InterfaceTap(GInterfaceStatus *)
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 005618b0 BW1M100 10133680 PuzzleTotem::ReactToPhysicsImpact(PhysicsObject *, bool)
-	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+	virtual void ReactToPhysicsImpact(PhysicsObject* obj, bool param_2);
 	// BW1W120 00737450 BW1M100 inlined PuzzleTotem::DeleteDependancys(void)
 	virtual void DeleteDependancys();
 	// BW1W120 007377d0 BW1M100 inlined PuzzleTotem::MakeFunctional(void)

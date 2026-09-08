@@ -96,7 +96,7 @@ public:
 	// BW1W120 00607130 BW1M100 103bd3f0 MobileObject::GetHoldLoweringMultiplier(void)
 	virtual float GetHoldLoweringMultiplier();
 	// BW1W120 00425b40 BW1M100 100ad960 MobileObject::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00518150 BW1M100 10036400 MobileObject::Draw(void)
 	virtual void Draw();
 	// BW1W120 00425b30 BW1M100 100ad910 MobileObject::CanBePickedUp(void)

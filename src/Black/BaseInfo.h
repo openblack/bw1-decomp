@@ -27,6 +27,8 @@ public:
 	virtual const char* GetDebugText();
 	// BW1W120 00436c60 BW1M100 1055df70 GBaseInfo::GetDebugColor(void) const
 	virtual LHColor* GetDebugColor(LHColor* color);
+	// BW1W120 purecall BW1M100 purecall GBaseInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos) = 0;
 	// BW1W120 00401230 BW1M100 101228b0 GBaseInfo::UpdateValue(void)
 	virtual void UpdateValue(float param_1, uint32_t param_2, uint32_t param_3) {}
 

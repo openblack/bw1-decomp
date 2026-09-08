@@ -71,7 +71,7 @@ public:
 	virtual uint32_t GetResource(RESOURCE_TYPE param_1);
 	// BW1W120 0077c5f0 BW1M100 105afd80 WorshipSite::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* param_5, int param_6);
+	                             MapCoords* param_5, int param_6);
 	// BW1W120 0077c670 BW1M100 105afca0 WorshipSite::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 0055dce0 BW1M100 105b4000 WorshipSite::GetDebugText(void)
@@ -117,7 +117,7 @@ public:
 	// BW1W120 0077b1d0 BW1M100 105b2440 WorshipSite::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 0055dcc0 BW1M100 105b3f70 WorshipSite::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 005193d0 BW1M100 100c7a80 WorshipSite::Draw(void)
 	virtual void Draw();
 	// BW1W120 0077de70 BW1M100 105ac230 WorshipSite::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
@@ -151,7 +151,7 @@ public:
 	// BW1W120 0077bdd0 BW1M100 105b10a0 WorshipSite::IsBuilt(void)
 	virtual bool32_t IsBuilt();
 	// BW1W120 0077ac10 BW1M100 105b3210 WorshipSite::Built(void)
-	virtual bool Built();
+	virtual bool32_t Built();
 	// BW1W120 0055dc70 BW1M100 105b3e10 WorshipSite::GetAbodeType(void)
 	virtual ABODE_TYPE GetAbodeType();
 	// BW1W120 0077c5d0 BW1M100 105afeb0 WorshipSite::GetResourcePos(RESOURCE_TYPE, long)
