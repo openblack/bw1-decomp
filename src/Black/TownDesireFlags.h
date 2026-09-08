@@ -54,7 +54,7 @@ public:
 	// BW1W120 00746a20 BW1M100 100550f0 TownDesireFlags::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 0055da80 BW1M100 1055bf60 TownDesireFlags::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00746a30 BW1M100 100364a0 TownDesireFlags::Draw(void)
 	virtual void Draw();
 	// BW1W120 00746dc0 BW1M100 1055d830 TownDesireFlags::CallVirtualFunctionsForCreation(MapCoords const &)

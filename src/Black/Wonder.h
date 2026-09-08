@@ -51,7 +51,7 @@ public:
 	// BW1W120 00779190 BW1M100 10161310 Wonder::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 00778f30 BW1M100 10161920 Wonder::Built(void)
-	virtual bool Built();
+	virtual bool32_t Built();
 	// BW1W120 00779070 BW1M100 10161620 Wonder::SetPower(float)
 	virtual void SetPower(float param_1);
 	// BW1W120 00778fc0 BW1M100 10161700 Wonder::AddToPlayer(void)

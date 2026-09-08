@@ -58,7 +58,7 @@ public:
 	// BW1W120 00648c50 BW1M100 10114bf0 PlannedMultiMapFixed::PostCreatePlanned(MultiMapFixed&)
 	virtual void PostCreatePlanned(MultiMapFixed* param_1);
 	// BW1W120 00465550 BW1M100 100d1770 PlannedMultiMapFixed::IsCivic(void)
-	virtual bool IsCivic();
+	virtual bool32_t IsCivic();
 	// BW1W120 00465570 BW1M100 100d17f0 PlannedMultiMapFixed::GetAbodeType(void)
 	virtual ABODE_TYPE GetAbodeType();
 	// BW1W120 00648910 BW1M100 1006f570 PlannedMultiMapFixed::GetDesireToBeRepaired(void)

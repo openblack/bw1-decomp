@@ -98,10 +98,10 @@ public:
 	// BW1W120 0052ee80 BW1M100 100df010 MultiMapFixed::RemoveFootpath(GFootpath *)
 	virtual uint32_t RemoveFootpath(GFootpath* param_1);
 	// BW1W120 0052f180 BW1M100 100de800 MultiMapFixed::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
-	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* coords, int param_6);
+	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool param_4,
+	                             MapCoords* coords, int param_6);
 	// BW1W120 0052f1c0 BW1M100 100de760 MultiMapFixed::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
-	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
+	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* param_4);
 	// BW1W120 0052ef70 BW1M100 1005fb60 MultiMapFixed::IsFunctional(void)
 	virtual bool32_t IsFunctional();
 	// BW1W120 0052f310 BW1M100 100de310 MultiMapFixed::Load(GameOSFile &)
@@ -151,7 +151,7 @@ public:
 	// BW1W120 0052f490 BW1M100 100dded0 MultiMapFixed::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0052ef10 BW1M100 100dee90 MultiMapFixed::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 	// BW1W120 0052e490 BW1M100 100e0d80 MultiMapFixed::IsObjectFullyInMap(void)
 	virtual bool IsObjectFullyInMap();
 
@@ -194,9 +194,9 @@ public:
 	// BW1W120 0052f0c0 BW1M100 10040f00 MultiMapFixed::IsDrawBuilding(void)
 	virtual bool IsDrawBuilding();
 	// BW1W120 0052ebb0 BW1M100 100dfda0 MultiMapFixed::Built(void)
-	virtual bool Built();
+	virtual bool32_t Built();
 	// BW1W120 0052ec70 BW1M100 100dfca0 MultiMapFixed::Repaired(void)
-	virtual bool Repaired();
+	virtual bool32_t Repaired();
 	// BW1W120 00401510 BW1M100 100ddc00 MultiMapFixed::GetBuildingSiteWood(unsigned long *)
 	virtual uint32_t GetBuildingSiteWood(uint32_t* param_1) { return 0; }
 	// BW1W120 00422020 BW1M100 100a5620 MultiMapFixed::GetDestructionMesh(void)
@@ -206,7 +206,7 @@ public:
 	// BW1W120 00401520 BW1M100 1005fe80 MultiMapFixed::GetBuildingObject(void)
 	virtual void* GetBuildingObject() { return this; }
 	// BW1W120 00422040 BW1M100 100a56a0 MultiMapFixed::IsCivic(void)
-	virtual bool IsCivic();
+	virtual bool32_t IsCivic();
 	// BW1W120 00422060 BW1M100 100a5720 MultiMapFixed::GetAbodeType(void)
 	virtual ABODE_TYPE GetAbodeType();
 	// BW1W120 00401550 BW1M100 102ff050 MultiMapFixed::SetPower(float)
@@ -227,8 +227,8 @@ public:
 	// BW1W120 004015c0 BW1M100 1019fe20 MultiMapFixed::RemoveFromPlayer(void)
 	virtual void RemoveFromPlayer() {}
 	// BW1W120 00422070 BW1M100 100a5760 MultiMapFixed::DoResourceAdding(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
-	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, GInterfaceStatus* iface, bool param_3, MapCoords* param_4,
-	                                  int param_5);
+	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool param_4,
+	                                  MapCoords* coords, int param_6);
 	// BW1W120 00422080 BW1M100 100a57d0 MultiMapFixed::DoResourceRemoving(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool param_4);
 	// BW1W120 004015d0 BW1M100 101aa2d0 MultiMapFixed::CalulateAmountOverMaximum(RESOURCE_TYPE)

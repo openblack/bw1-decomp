@@ -1597,7 +1597,7 @@ bool32_t Villager::CanBecomeAPhysicsObject()
 
 // BW1W120 007564d0
 uint32_t Villager::AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-                               const MapCoords* param_5, int param_6)
+                               MapCoords* param_5, int param_6)
 {
 	return 0;
 }

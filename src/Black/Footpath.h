@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <Lionhead/LHLib/ver5.0/LHListHead.h> /* For LHListHead */
+
 #include "GameThing.h" /* For struct GameThing */
 
 // Forward Declares
@@ -21,10 +23,9 @@ struct RPlan;
 class GFootpath : public GameThing
 {
 public:
-	GFootpathNode* nodes; /* 0x14 */
-	int            NodeCount;
-	GFootpath*     next;
-	uint32_t       field_0x20;
+	LHListHead<GFootpathNode> nodes; /* 0x14 */
+	GFootpath*                next;
+	uint32_t                  field_0x20;
 
 	// Override methods
 

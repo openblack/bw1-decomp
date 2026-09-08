@@ -31,7 +31,7 @@ public:
 	// BW1W120 006708b0 BW1M100 inlined PrayerSite::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 006707f0 BW1M100 inlined PrayerSite::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00670a10 BW1M100 inlined PrayerSite::CreatureMustAvoid(Creature *)
 	virtual bool CreatureMustAvoid(Creature* param_1);
 };

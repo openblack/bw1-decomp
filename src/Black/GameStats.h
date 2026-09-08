@@ -19,7 +19,9 @@ public:
 	uint8_t  Graph0[0x1f4];
 	uint8_t  field_0x2a0[0x5e8];
 	uint8_t  Graph1[0x1f4]; /* 0x888 */
-	uint8_t  field_0xa7c[0x6ac];
+	uint8_t  field_0xa7c[0xa8];
+	uint32_t field_0x1080;
+	uint8_t  field_0x1084[0x600];
 
 	// Override methods
 

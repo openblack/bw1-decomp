@@ -79,7 +79,7 @@ public:
 	// BW1W120 0042b370 BW1M100 1016ddf0 GObjectInfo::GetMesh( const(void))
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00401290 BW1M100 1016e3a0 GObjectInfo::GetMesh(TRIBE_TYPE) const
-	virtual MESH_LIST GetMesh(TRIBE_TYPE tribe) const { return MSH_DUMMY; }
+	virtual MESH_LIST GetMesh2(TRIBE_TYPE tribe) const { return MSH_DUMMY; }
 	// BW1W120 004012a0 BW1M100 1016de30 GObjectInfo::GetAlignmentType(void) const
 	virtual ALIGNMENT_TYPE GetAlignmentType() const { return AlignmentType; }
 	// BW1W120 004012b0 BW1M100 100627a0 GObjectInfo::GetFoodType(void) const

@@ -236,6 +236,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M100 inlined Town::GetInfo() const
+	inline GTownInfo* GetInfo() const { return (GTownInfo*)info; }
 	// BW1W120 007399a0 BW1M100 10556850 Town::AddStructureToTown(MultiMapFixed *)
 	void AddStructureToTown(MultiMapFixed* structure);
 	// BW1W120 00739a20 BW1M100 105567f0 Town::AddAbodeToTownStats(Abode *)
@@ -251,7 +253,7 @@ public:
 	// BW1W120 0073a650 BW1M100 105561f0 Town::RequestBestPlanned(void)
 	bool32_t RequestBestPlanned();
 	// BW1W120 0073af50 BW1M100 10555160 Town::ChildToAdult(Villager *)
-	void ChildToAdult(Villager* param_1);
+	void ChildToAdult(Villager* villager);
 	// BW1W120 0073b2d0 BW1M100 10554e90 Town::IsHarvestTime(void)
 	bool IsHarvestTime();
 	// BW1W120 0073b330 BW1M100 1009ada0 Town::RequestANewAbode(ABODE_TYPE)

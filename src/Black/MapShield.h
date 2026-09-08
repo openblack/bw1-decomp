@@ -47,7 +47,7 @@ public:
 	// BW1W120 0072c010 BW1M100 10534010 MapShield::HandShouldFeelWithMeshIntersect(void)
 	virtual uint32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 0072c1b0 BW1M100 10531700 MapShield::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 0072c1c0 BW1M100 105316c0 MapShield::GetTopPos(void)
 	virtual float GetTopPos();
 	// BW1W120 0072c000 BW1M100 10533fc0 MapShield::ValidForPlaceInHand(GInterfaceStatus *)

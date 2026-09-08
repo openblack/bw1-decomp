@@ -52,7 +52,7 @@ public:
 	// BW1W120 00595e00 BW1M100 100f4870 Graveyard::MakeFunctional(void)
 	virtual void MakeFunctional();
 	// BW1W120 0055dfc0 BW1M100 100f4440 Graveyard::CanBeHiddenIn(void)
-	virtual bool CanBeHiddenIn();
+	virtual bool32_t CanBeHiddenIn();
 
 	// Static methods
 

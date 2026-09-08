@@ -90,7 +90,7 @@ public:
 	// BW1W120 00417700 BW1M100 1012eed0 Animal::ProcessBySpell(Spell *)
 	virtual uint32_t ProcessBySpell(Spell* param_1);
 	// BW1W120 00417540 BW1M100 1012e540 Animal::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00417550 BW1M100 inlined Animal::GetDetailMesh(int)
 	virtual int GetDetailMesh(int param_1);
 	// BW1W120 0051c310 BW1M100 100419a0 Animal::Draw(void)

@@ -50,7 +50,7 @@ public:
 	// BW1W120 00405770 BW1M100 10282ed0 PlannedAbode::CreatePlannedNoFixedCheck(float)
 	virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1);
 	// BW1W120 004060c0 BW1M100 101a36e0 PlannedAbode::IsCivic(void)
-	virtual bool IsCivic();
+	virtual bool32_t IsCivic();
 	// BW1W120 004061e0 BW1M100 10007c40 PlannedAbode::GetAbodeType(void)
 	virtual ABODE_TYPE GetAbodeType();
 

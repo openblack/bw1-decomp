@@ -40,7 +40,7 @@ public:
 	// BW1W120 00467ef0 BW1M100 101bd6b0 PlannedTownCitadelHeart::CreatePlannedNoFixedCheck(float)
 	virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1);
 	// BW1W120 00467e10 BW1M100 101c1ee0 PlannedTownCitadelHeart::IsCivic(void)
-	virtual bool IsCivic();
+	virtual bool32_t IsCivic();
 	// BW1W120 00467e30 BW1M100 101c1f60 PlannedTownCitadelHeart::GetAbodeType(void)
 	virtual ABODE_TYPE GetAbodeType();
 };

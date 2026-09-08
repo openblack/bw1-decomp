@@ -27,7 +27,7 @@ public:
 	// BW1W120 006438e0 BW1M100 inlined PFootball::GetPlayer(void)
 	virtual GPlayer* GetPlayer();
 	// BW1W120 00643940 BW1M100 inlined PFootball::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00643fd0 BW1M100 inlined PFootball::Draw(void)
 	virtual void Draw();
 	// BW1W120 00644030 BW1M100 inlined PFootball::CallVirtualFunctionsForCreation(MapCoords const &)

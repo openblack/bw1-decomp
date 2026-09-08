@@ -1,3 +1,4 @@
+#include "MapCoords.h"
 #include "Villager.h"
 
 #include "chlasm/GStates.h"

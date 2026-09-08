@@ -45,7 +45,7 @@ public:
 	// BW1W120 005276c0 BW1M100 10008370 Feature::GetScriptObjectType(void)
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 004220d0 BW1M100 100a52b0 Feature::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00518690 BW1M100 100238a0 Feature::Draw(void)
 	virtual void Draw();
 	// BW1W120 005275b0 BW1M100 100d0dc0 Feature::SaveObject(LHOSFile &, MapCoords const &)

@@ -62,7 +62,7 @@ public:
 	// BW1W120 0055dd90 BW1M100 10144a20 ShowNeedsVisuals::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 0055dd60 BW1M100 101448f0 ShowNeedsVisuals::GetMesh( const(void))
-	virtual int GetMesh();
+	virtual MESH_LIST GetMesh();
 	// BW1W120 00719e00 BW1M100 10145510 ShowNeedsVisuals::CallVirtualFunctionsForCreation(const MapCoords &)
 	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
 	// BW1W120 0055dda0 BW1M100 10144a60 ShowNeedsVisuals::SaveObject(LHOSFile &, MapCoords const &)

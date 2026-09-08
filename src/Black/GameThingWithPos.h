@@ -151,7 +151,7 @@ public:
 		return (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE) == 0;
 	}
 	// BW1W120 005701b0 BW1M100 1007b9d0 GameThingWithPos::IsInteractable(void)
-	virtual bool IsInteractable();
+	virtual bool32_t IsInteractable();
 	// BW1W120 005705a0 BW1M100 100b34e0 GameThingWithPos::GetOverwriteInteractableToolTip(void)
 	virtual uint32_t GetOverwriteInteractableToolTip();
 	// BW1W120 005705b0 BW1M100 10097060 GameThingWithPos::GetOverwriteDropToolTip(void)

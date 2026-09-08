@@ -1368,6 +1368,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\a_loc.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\setmode.obj", progress_category="sdk"),
 
+            # TODO(#298): It's likely that LH3DLib was compiled with `/Gr` that sets __thiscall as __fastcall (e.g. first argument is in edx)
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSystem.cpp", progress_category="sdk", extra_cflags=["/GX"]),
             Object(Matching, "Lionhead/LHLib/ver5.0/LHMem.cpp", progress_category="sdk"),
