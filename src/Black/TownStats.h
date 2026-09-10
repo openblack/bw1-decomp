@@ -73,6 +73,8 @@ public:
 	void ChildToAdult(Villager* param_1);
 	// BW1W120 007494c0 BW1M100 10562a10 TownStats::VillagerMoveOutOfAbode(Villager *)
 	void VillagerMoveOutOfAbode(Villager* villager);
+	// BW1W120 00749500 BW1M100 10562960 TownStats::VillagerMoveIntoAbode(Villager *)
+	void VillagerMoveIntoAbode(Villager* villager);
 	// BW1W120 00749a60 BW1M100 10562330 TownStats::Add(PlannedMultiMapFixed *)
 	void Add(PlannedMultiMapFixed* planned);
 	// BW1W120 00749aa0 BW1M100 10562220 TownStats::Add(BuildingSite *)

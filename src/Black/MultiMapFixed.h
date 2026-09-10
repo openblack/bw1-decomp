@@ -230,7 +230,7 @@ public:
 	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool param_4,
 	                                  MapCoords* coords, int param_6);
 	// BW1W120 00422080 BW1M100 100a57d0 MultiMapFixed::DoResourceRemoving(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
-	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool param_4);
+	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool* param_4);
 	// BW1W120 004015d0 BW1M100 101aa2d0 MultiMapFixed::CalulateAmountOverMaximum(RESOURCE_TYPE)
 	virtual int CalulateAmountOverMaximum(RESOURCE_TYPE type) { return 0; }
 	// BW1W120 00422090 BW1M100 inlined MultiMapFixed::SetTown(void)

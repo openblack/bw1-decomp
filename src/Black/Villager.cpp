@@ -987,9 +987,9 @@ void Villager::SetFoodSpeedup(bool param_1) {}
 void Villager::ProcessFoodSpeedup() {}
 
 // BW1W120 00753460
-void Villager::IncreaseLife(float value)
+float Villager::IncreaseLife(float value)
 {
-	Object::IncreaseLife(value);
+	return Object::IncreaseLife(value);
 }
 
 // BW1W120 00753470

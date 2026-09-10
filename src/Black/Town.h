@@ -273,13 +273,15 @@ public:
 	// BW1W120 0073b5e0 Town::UseFood(unsigned int)
 	void UseFood(uint32_t param_1);
 	// BW1W120 0073b860 BW1M100 10554610 Town::AddBuildingSite(PlannedMultiMapFixed *)
-	BuildingSite* AddBuildingSite(PlannedMultiMapFixed* param_1);
+	BuildingSite* AddBuildingSite(PlannedMultiMapFixed* site);
 	// BW1W120 0073b8a0 BW1M100 10554530 Town::AddBuildingSiteNoFixedCheck(PlannedMultiMapFixed *)
-	BuildingSite* AddBuildingSiteNoFixedCheck(PlannedMultiMapFixed* param_1);
+	BuildingSite* AddBuildingSiteNoFixedCheck(PlannedMultiMapFixed* site);
+	// BW1W120 0073b8e0 BW1M100 10554490 Town::AddBuildingSite(MultiMapFixed *)
+	void AddBuildingSite(MultiMapFixed* site);
 	// BW1W120 0073b910 BW1M100 10554340 Town::AddBuildingSite(BuildingSite *)
-	void AddBuildingSite(BuildingSite* param_1);
+	void AddBuildingSite(BuildingSite* site);
 	// BW1W120 0073ba20 BW1M100 10554100 Town::RemoveBuildingSite(MultiMapFixed *)
-	uint32_t RemoveBuildingSite(MultiMapFixed* param_1);
+	uint32_t RemoveBuildingSite(MultiMapFixed* site);
 	// BW1W120 0073ba70 BW1M100 10554050 Town::SetBeliefInPlayer(GPlayer *, float)
 	void SetBeliefInPlayer(GPlayer* player, float value);
 	// BW1W120 0073c060 BW1M100 105539a0 Town::SetWorshipPercentage(float)
@@ -326,6 +328,10 @@ public:
 	float GetRawDesire(TOWN_DESIRE_INFO param_1);
 	// BW1W120 0073e900 BW1M100 1054e460 Town::GetTemporaryResourceStorePotOrPos(MapCoords const &, MapCoords &, RESOURCE_TYPE)
 	void* GetTemporaryResourceStorePotOrPos(const MapCoords& param_1, MapCoords& param_2, RESOURCE_TYPE param_3);
+	// BW1W120 00740030 BW1M100 10549df0 Town::GetGameTurnResourceLastRemovedModifier(unsigned long, RESOURCE_TYPE)
+	float GetGameTurnResourceLastRemovedModifier(RESOURCE_TYPE type, int param_2);
+	// BW1W120 007400d0 BW1M100 10549d60 Town::SetGameTurnResourceLastRemoved(unsigned long, RESOURCE_TYPE)
+	void SetGameTurnResourceLastRemoved(RESOURCE_TYPE type, int param_2);
 	// BW1W120 0073eb00 BW1M100 1054dfe0 Town::AssignForestsToTown(void)
 	void AssignForestsToTown();
 	// BW1W120 00740250 BW1M100 10549810 Town::GetBestWorkshop(MapCoords &, int, int)

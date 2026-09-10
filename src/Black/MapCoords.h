@@ -79,8 +79,12 @@ struct MapCoords
 	// NOTE: mangled ??YMapCoords@@QAEXABUJustMapXZ@@@Z proves void return, non-const (Rule 1);
 	// zero existing call sites depend on the old (wrong) MapCoords* / const signature.
 	void operator+=(const JustMapXZ& other);
+	// BW1W120 006054a0 BW1M100 inlined MapCoords::operator-=(MapCoords const &)
+	void operator-=(const MapCoords& other);
 	// BW1W120 00605520 BW1M100 100503e0 MapCoords::operator+(MapCoords const &) const
 	MapCoords operator+(const MapCoords& other) const;
+	// BW1W120 006055c0 BW1M100 inlined MapCoords::operator-(MapCoords const &) const
+	MapCoords operator-(const MapCoords& other) const;
 	// BW1W120 006020e0 BW1M100 1048f050 MapCoords::GetNearestTown(float) const
 	Town* GetNearestTown(float t_max);
 	// BW1W120 00603280 BW1M100 10513100 MapCoords::Set(char *)

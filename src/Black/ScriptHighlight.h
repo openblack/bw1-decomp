@@ -14,6 +14,7 @@ class Base;
 class Creature;
 class EffectValues;
 class GInterfaceStatus;
+class GScriptHighlightInfo;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
@@ -97,11 +98,18 @@ public:
 
 	// Static methods
 
+	// BW1W120 00709a40 BW1M100 104fbdf0 ScriptHighlight::Create(MapCoords const &, GScriptHighlightInfo const *, unsigned long, float, float)
+	static ScriptHighlight* Create(const MapCoords& coords, const GScriptHighlightInfo* info, uint32_t param_3,
+	                               float param_4, float param_5);
 	// BW1W120 0070a460 BW1M100 10055f10 ScriptHighlight::ProcessHighlights(void)
 	static void ProcessHighlights();
 
 	// Non-virtual methods
 
+	// BW1W120 00709a20 BW1M100 104fbf10 ScriptHighlight::SetScriptId(unsigned long, DYK_CATEGORY)
+	void SetScriptId(uint32_t script_id, DYK_CATEGORY category);
+	// BW1W120 00709c40 BW1M100 104fbab0 ScriptHighlight::SetDrawHeight(float)
+	void SetDrawHeight(float height);
 	// BW1W120 0070a630 BW1M100 104fb550 ScriptHighlight::SetActivated(int)
 	void SetActivated(int param_1);
 	// BW1W120 0070ac20 BW1M100 1004f0b0 ScriptHighlight::IsDidYouKnow(void)

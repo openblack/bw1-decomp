@@ -266,7 +266,7 @@ public:
 	// BW1W120 00637810 BW1M100 1004b140 Object::ReduceLife(float, GPlayer *)
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00637870 BW1M100 103d6b50 Object::IncreaseLife(float)
-	virtual void IncreaseLife(float value);
+	virtual float IncreaseLife(float value);
 	// BW1W120 0063aaf0 BW1M100 103cff40 Object::GetSacrificeValue(void)
 	virtual float GetSacrificeValue();
 	// BW1W120 00637c20 BW1M100 103d63c0 Object::ReduceLifeDueToBurning(float, GPlayer *)

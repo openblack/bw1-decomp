@@ -362,7 +362,7 @@ public:
 	// BW1W120 0047dd00 BW1M100 101ce700 Creature::ReduceLife(float, GPlayer *)
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0047de20 BW1M100 101ce640 Creature::IncreaseLife(float)
-	virtual void IncreaseLife(float param_1);
+	virtual float IncreaseLife(float value);
 	// BW1W120 00478c00 BW1M100 101d8e40 Creature::FillInEffectDefenceMultiplier(EffectNumbers &)
 	virtual void FillInEffectDefenceMultiplier(EffectNumbers* param_1);
 	// BW1W120 00478c80 BW1M100 101d89d0 Creature::ApplyEffect(EffectValues &, int)

@@ -36,8 +36,8 @@ public:
 	uint32_t     StartStrength;
 	float        StartDefence;
 	uint32_t     StartInfluence; /* 0x170 */
-	int          MaxVillagersInAbode;
-	int          MaxChildrenInAbode;
+	uint32_t     MaxVillagersInAbode;
+	uint32_t     MaxChildrenInAbode;
 	uint32_t     StartVillagersInAbode;
 	uint32_t     StartChildrenInAbode; /* 0x180 */
 	uint32_t     StartFood;

@@ -8,6 +8,7 @@
 
 // Forward Declares
 
+class Abode;
 class Base;
 class GPlayer;
 
@@ -19,7 +20,7 @@ public:
 	uint8_t  Graph0[0x1f4];
 	uint8_t  field_0x2a0[0x5e8];
 	uint8_t  Graph1[0x1f4]; /* 0x888 */
-	uint8_t  field_0xa7c[0xa8];
+	uint8_t  field_0xa7c[0x604];
 	uint32_t field_0x1080;
 	uint8_t  field_0x1084[0x600];
 
@@ -33,6 +34,11 @@ public:
 	virtual void SetPlayer(GPlayer* param_1);
 	// BW1W120 00564af0 BW1M100 10310a90 GameStats::GetDebugText(void)
 	virtual char* GetDebugText();
+
+	// Non-virtual methods
+
+	// BW1W120 0056a3f0 BW1M100 10311000 GameStats::IncrementAllBuildingsBuilt(Abode *)
+	void IncrementAllBuildingsBuilt(Abode* abode);
 
 	// Constructors
 

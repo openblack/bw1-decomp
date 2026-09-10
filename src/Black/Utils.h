@@ -3,6 +3,8 @@
 
 #include <stdint.h> /* For uint16_t, uint32_t */
 
+#include <re_common.h> /* For bool32_t */
+
 // Forward Declares
 
 struct JustMapXZ;
@@ -31,7 +33,7 @@ struct GUtils
 	// BW1W120 0074dcc0 BW1M100 10032220 GUtils::ConvertWholeDistanceToMeters(long)
 	static float ConvertWholeDistanceToMeters(int param_1);
 	// BW1W120 0074e3a0 BW1M100 104fa7f0 GUtils::FindNearestDrinkingWater(MapCoords &, MapCoords &, float)
-	static bool FindNearestDrinkingWater(MapCoords& param_1, MapCoords& param_2, float max_dist);
+	static bool32_t FindNearestDrinkingWater(MapCoords& param_1, MapCoords& param_2, float max_dist);
 	// BW1W120 0074f170 BW1M100 10067300 GUtils::SigmoidThreshold(float, float)
 	static float SigmoidThreshold(float param_1, float param_2);
 	// BW1W120 0074f290 BW1M100 100673e0 GUtils::GetDistanceModifier(float float)

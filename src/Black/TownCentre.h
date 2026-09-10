@@ -69,7 +69,7 @@ public:
 	// BW1W120 007445d0 BW1M100 10559f30 TownCentre::ReduceLife(float, GPlayer *)
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00744320 BW1M100 1055a570 TownCentre::IncreaseLife(float)
-	virtual void IncreaseLife(float param_1);
+	virtual float IncreaseLife(float value);
 	// BW1W120 00743df0 BW1M100 10070780 TownCentre::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00516450 BW1M100 1001e8b0 TownCentre::Draw(void)

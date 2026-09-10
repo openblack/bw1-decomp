@@ -16,6 +16,7 @@ struct LH3DMaterial;
 struct LH3DTexture;
 struct LHPoint;
 struct MapCoords;
+class Object;
 
 struct GLandscape
 {
@@ -57,5 +58,10 @@ struct GLandscape
 	// BW1W120 005e52e0 BW1M100 10379f50 GLandscape::Open(char *)
 	void Open(const char* path);
 };
+
+// Free functions
+
+// BW1W120 005e6540 BW1M100 10378b00 GoolooGooloo(Object *)
+void GoolooGooloo(Object* object);
 
 #endif /* BW1_DECOMP_LANDSCAPE_INCLUDED_H */
