@@ -15,7 +15,7 @@ Town* Town::GetNearestTownToPos(const MapCoords& coords, TRIBE_TYPE tribe_type, 
 	for (GPlayer* player = GGame::g_game->GetNextPlayerAndNeutral(NULL); player != NULL;
 	     player = GGame::g_game->GetNextPlayerAndNeutral(player))
 	{
-		for (Town* town = player->towns.head; town != NULL; town = town->next)
+		FOREACH_LH_LIST_HEAD(Town, town, player->towns)
 		{
 			float dist = GUtils::GetDistanceInMetres(coords, town->Pos);
 			if (dist < bestDist)

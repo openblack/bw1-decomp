@@ -233,7 +233,7 @@ public:
 	// BW1W120 00756b40 BW1M100 1004b210 Villager::SetLife(float)
 	virtual void SetLife(float param_1);
 	// BW1W120 00753460 BW1M100 1056a0d0 Villager::IncreaseLife(float)
-	virtual void IncreaseLife(float value);
+	virtual float IncreaseLife(float value);
 	// BW1W120 007502d0 BW1M100 10570c30 Villager::DestroyedByEffect(GPlayer *, float)
 	virtual uint32_t DestroyedByEffect(GPlayer* player, float damage);
 	// BW1W120 0055c9c0 BW1M100 10147dd0 Villager::GetMesh( const(void))

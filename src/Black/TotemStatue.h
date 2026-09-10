@@ -91,7 +91,7 @@ public:
 	// BW1W120 00737c90 BW1M100 10545510 TotemStatue::ReduceLife(float, GPlayer *)
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00737c60 BW1M100 105455d0 TotemStatue::IncreaseLife(float)
-	virtual void IncreaseLife(float param_1);
+	virtual float IncreaseLife(float value);
 	// BW1W120 00737f40 BW1M100 10077f00 TotemStatue::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 005610e0 BW1M100 10543c30 TotemStatue::GetMesh( const(void))

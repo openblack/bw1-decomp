@@ -15,6 +15,7 @@ class Creature;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
+class GMobileStaticInfo;
 class LHOSFile;
 struct MapCoords;
 
@@ -51,6 +52,13 @@ public:
 	virtual bool CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00734b10 BW1M100 10534be0 GStreetLantern::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+
+	// Static methods
+
+	// BW1W120 007346e0 BW1M100 105354b0 GStreetLantern::Create(MapCoords const &, GMobileStaticInfo const *)
+	static GStreetLantern* Create(const MapCoords& coords, const GMobileStaticInfo* info);
+	// BW1W120 00734a30 BW1M100 10534f30 GStreetLantern::IsALaternWithinDistance(MapCoords, float)
+	static bool32_t IsALaternWithinDistance(MapCoords coords, float max_dist);
 };
 
 #endif /* BW1_DECOMP_STREET_LANTERN_INCLUDED_H */

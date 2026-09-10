@@ -123,6 +123,13 @@ public:
 	virtual bool ProcessInHand();
 	// BW1W120 006eaf30 BW1M100 1013e710 Scaffold::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+
+	// Non-virtual methods
+
+	// BW1W120 006e8860 BW1M100 10143450 Scaffold::ForceBuildBuilding(GPlayer *)
+	void ForceBuildBuilding(GPlayer* player);
+	// BW1W120 006e9610 BW1M100 10141bc0 Scaffold::RemoveOldBuildingSite(void)
+	void RemoveOldBuildingSite();
 };
 
 #endif /* BW1_DECOMP_SCAFFOLD_INCLUDED_H */

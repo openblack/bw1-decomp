@@ -209,13 +209,6 @@ public:
 
 	// Non-virtual functions
 
-	// Inlined into Abode::CallVirtualFunctionsForCreation (~86% there). The remaining diff is a
-	// tightly-coupled MSVC inline-budget issue we can't force from source (inline_depth/auto_inline
-	// pragmas are inert for explicit inlines in this toolchain): target *calls* SetIdentityMatrix in
-	// the scale==1 branch but *inlines* PostTranslation in the scale!=1 branch; MSVC picks the
-	// opposite here, which swaps the esi/edi matrix-base allocation across the two branches. The
-	// scale==1 branch is written as Translation(point) so MSVC inlines Translation but leaves the
-	// nested SetIdentityMatrix as a call (matching target) when the branch is small enough.
 	// BW1W120 00423140 BW1M100 10041480 LH3DObject::SetPosition(const LHPoint&, float, float)
 	void SetPosition(const LHPoint& point, float y_angle, float scale)
 	{

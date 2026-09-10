@@ -3,6 +3,17 @@
 
 #include <stdint.h> // For uint32_t
 
+// Plain iteration; the body must not unlink the element it is given.
+// Cursor advances in place, successor read after the body:
+//   mov <r>,[<r>+next] / test <r>,<r> / jne     8b b6 dd dd dd dd  85 f6  75 xx   (esi)
+#define FOREACH_LH_LIST_HEAD(T, var, list) for (T* var = (list).head; var != NULL; var = var->next)
+
+// Reads the successor before running the body, which may unlink the element it is given.
+// Successor cached ahead of the call, then moved into the cursor:
+//   mov esi,[ecx+next] / call / test esi,esi / mov ecx,esi / jne     85 f6  8b ce  75 xx
+#define FOREACH_LH_LIST_HEAD_SAFE(T, var, list)                                                                        \
+	for (T* var = (list).head, *var##Next; var != NULL && ((var##Next = var->next), 1); var = var##Next)
+
 template <typename T> // Must have T.next and must be T*
 struct LHListHead
 {
@@ -30,12 +41,14 @@ struct LHListHead
 		return walker;
 	}
 
+	T* GetNext(T* element) const { return element->next; }
+
 	T* GetLast() const
 	{
 		T* walker = head;
-		while (walker != NULL && walker->next != NULL)
+		while (walker != NULL && GetNext(walker) != NULL)
 		{
-			walker = walker->next;
+			walker = GetNext(walker);
 		}
 		return walker;
 	}

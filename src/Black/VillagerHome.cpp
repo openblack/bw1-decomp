@@ -330,7 +330,7 @@ bool32_t Villager::CheckWhenGoingToBed()
 			{
 				if (IsFemaleVillager() != 0)
 				{
-					for (Villager* mate = GetAbode()->villagers.head; mate != NULL; mate = mate->next)
+					FOREACH_LH_LIST_HEAD(Villager, mate, GetAbode()->villagers)
 					{
 						if (mate->IsMaleVillager() != 0 && (mate->Flags & 4))
 						{
@@ -342,7 +342,7 @@ bool32_t Villager::CheckWhenGoingToBed()
 				}
 				if (IsMaleVillager() != 0)
 				{
-					for (Villager* mate = GetAbode()->villagers.head; mate != NULL; mate = mate->next)
+					FOREACH_LH_LIST_HEAD(Villager, mate, GetAbode()->villagers)
 					{
 						if (mate->IsFemaleVillager() != 0 && (mate->Flags & 4))
 						{
@@ -601,7 +601,7 @@ bool32_t Villager::FindAMateAtHome()
 {
 	if (IsPromiscious() != 0)
 	{
-		for (Villager* mate = GetAbode()->villagers.head; mate != NULL; mate = mate->next)
+		FOREACH_LH_LIST_HEAD(Villager, mate, GetAbode()->villagers)
 		{
 			if (mate != this && ((const GVillagerInfo*)mate->info)->sex != ((const GVillagerInfo*)info)->sex &&
 			    (mate->Flags & 4) && mate->IsAvailableForSex() != 0 && (mate->Flags & 4))

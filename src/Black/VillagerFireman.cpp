@@ -114,12 +114,10 @@ bool32_t Villager::PutOutFireByBeating()
 // BW1W120 0075ad90 BW1M100 105790d0 Villager::IsValidFire(FireEffect *)
 bool32_t Villager::IsValidFire(FireEffect* fire_effect)
 {
-	FireEffect* fire = GGame::g_game->GameLists.FireEffects.head;
-	while (fire != NULL)
+	FOREACH_LH_LIST_HEAD(FireEffect, fire, GGame::g_game->GameLists.FireEffects)
 	{
 		if (fire == fire_effect)
 			return true;
-		fire = fire->next;
 	}
 	return false;
 }

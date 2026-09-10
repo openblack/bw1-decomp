@@ -76,7 +76,7 @@ public:
 	// BW1W120 00401650 BW1M100 10565230 Abode::GetShouldNotBeAddedToPlanned(void)
 	virtual bool32_t GetShouldNotBeAddedToPlanned() { return (field_0x7c & 4) >> 2; }
 	// BW1W120 00401660 BW1M100 1031a9a0 Abode::SetShouldNotBeAddedToPlanned(int)
-	virtual void SetShouldNotBeAddedToPlanned(bool value) { field_0x7c |= (value << 2); }
+	virtual void SetShouldNotBeAddedToPlanned(bool value) { field_0x7c = (value & 1) << 2 | field_0x7c & ~4; }
 	// BW1W120 00401690 BW1M100 1037f370 Abode::SetTown(Town *)
 	virtual void SetTown(Town* _town) { town = _town; }
 	// BW1W120 004016a0 BW1M100 10066b80 Abode::IsRepaired(void)
@@ -164,7 +164,7 @@ public:
 	// BW1W120 00405d90 BW1M100 10097be0 Abode::ReduceLife(float, GPlayer *)
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00405ed0 BW1M100 10112270 Abode::IncreaseLife(float)
-	virtual void IncreaseLife(float value);
+	virtual float IncreaseLife(float value);
 	// BW1W120 00403f80 BW1M100 10573770 Abode::DestroyedByEffect(GPlayer *, float)
 	virtual uint32_t DestroyedByEffect(GPlayer* player, float param_2);
 	// BW1W120 00404440 BW1M100 1004fcb0 Abode::Process(void)
@@ -223,14 +223,14 @@ public:
 	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool param_4,
 	                                  MapCoords* coords, int param_6);
 	// BW1W120 00404f60 BW1M100 104f7960 Abode::DoResourceRemoving(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
-	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool param_4);
+	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool* param_4);
 	// BW1W120 00405050 BW1M100 100a3330 Abode::ConvertToPlanned(void)
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
 
 	// Virtual methods
 
 	// BW1W120 00404520 BW1M100 1036d5a0 Abode::MoveAbodeToPlannedAbodes(void)
-	virtual void MoveAbodeToPlannedAbodes();
+	virtual bool32_t MoveAbodeToPlannedAbodes();
 	// BW1W120 00403f00 BW1M100 100e33a0 Abode::DeleteDependancys(void)
 	virtual void DeleteDependancys();
 	// BW1W120 004047e0 BW1M100 103c1e30 Abode::MakeFunctional(void)
@@ -251,7 +251,7 @@ public:
 	// BW1W120 00402e20 BW1M100 103bf260 Abode::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, unsigned long, unsigned long, float, int, int)
 	static Abode* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
 	                     uint32_t param_6, uint32_t param_7, float food, int wood, int param_10);
-	// BW1W120 00403190 BW1M100 10589610 Abode::CreateWithoutSpecial(MapCoords const &, GAbodeInfo const *, Town *, float, float, unsigned long, unsigned long, float, int, int)
+	// BW1W120 00403190 BW1M100 10589610 Abode::CreateWithoutSpecial(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
 	static Abode* CreateWithoutSpecial(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle,
 	                                   float scale, float food, int wood);
 

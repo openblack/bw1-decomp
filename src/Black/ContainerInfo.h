@@ -15,7 +15,7 @@ class GContainerInfo : public GBaseInfo
 public:
 	uint32_t field_0x10;
 	uint8_t  field_0x14[0xf8];
-	uint32_t field_0x10c;
+	float    field_0x10c;
 	uint32_t field_0x110;
 	uint8_t  field_0x114[0x2c];
 	float    field_0x140;
