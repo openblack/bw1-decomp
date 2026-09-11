@@ -928,7 +928,7 @@ void GameOSFile::ReadInfo(const GBaseInfo** info)
 }
 
 // BW1W120 00563f60 BW1M100 103007e0 GameOSFile::WriteCheckSum(GameThing *)
-void GameOSFile::WriteChecksum(GameThing* thing)
+void GameOSFile::WriteCheckSum(GameThing* thing)
 {
 	if (WriteEnabled)
 	{
@@ -937,7 +937,7 @@ void GameOSFile::WriteChecksum(GameThing* thing)
 }
 
 // BW1W120 00563fa0 BW1M100 10300720 GameOSFile::ReadCheckSum(GameThing *)
-void GameOSFile::ReadChecksum(GameThing* thing)
+void GameOSFile::ReadCheckSum(GameThing* thing)
 {
 	// The release build does not compare the saved checksum.
 	uint32_t checksum;

@@ -1,3 +1,9 @@
+// Limits inline expansion to direct calls only: WriteSafe/ReadSafe and the
+// list/counted-array templates inline into Save/Load, while the Read/WriteIt
+// calls inside those templates stay calls and land here as COMDATs -- exactly
+// what the original objects show (see GameOSFile.h). Without this, the
+// depth-2 Read/WriteIt sites inline too and Save/Load lose their 100% match.
+#pragma inline_depth(1)
 #include "Abode.h"
 
 #include "Lionhead/LH3DLib/development/LH3DSmoke.h"
@@ -937,15 +943,7 @@ uint32_t Abode::Load(GameOSFile& file)
 		file.ReadSafe(PresentAtHome);
 		file.ReadSafe(ChildCount);
 		file.ReadSafe(index);
-		if (GameOSFile::ReadEnabled)
-		{
-			uint32_t resourceCount;
-			file.ReadIt(resourceCount);
-			for (uint32_t i = 0; i < resourceCount; i++)
-			{
-				file.ReadIt(resources[i]);
-			}
-		}
+		ReadCountedArray(file, resources);
 		bool32_t hasDestructionMesh;
 		file.ReadSafe(hasDestructionMesh);
 		if (hasDestructionMesh)

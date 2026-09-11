@@ -183,6 +183,15 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
+	// Instantiated per translation unit; the linker folds the copies, so an address
+	// only names whichever unit won. BW1W120 00407750 is ReadIt<long> in this build.
+	// A list is stored as its count followed by that many GameThing pointers. The
+	// count is copied out before it is written, because WriteIt takes it by
+	// reference and the walk that follows has to agree with what went to disk: a
+	// list longer than its own count would deserialise short, so the save is failed
+	// instead. Seeding the cursor with NULL keeps the first element and the
+	// successors in one expression, which the compiler emits as a single
+	// next-or-head dispatcher.
 	// BW1W120 inlined BW1M100 inlined GameOSFile::ReadSafe<T>(LHListHead<T> &)
 	template <typename T> void ReadSafe(LHListHead<T>& list)
 	{
@@ -201,6 +210,8 @@ public:
 		}
 	}
 	// BW1W120 inlined BW1M100 inlined GameOSFile::WriteSafe<T>(LHListHead<T> &)
+	// Declaring written/element inside the guarded block is load-bearing: hoisting
+	// them out swaps the ebx/edi/ebp assignment in Abode::Save (see its 100% match).
 	template <typename T> void WriteSafe(LHListHead<T>& list)
 	{
 		if (WriteEnabled)
@@ -225,10 +236,30 @@ public:
 	}
 
 	// BW1W120 00407750 BW1M100 100ba3d0 GameOSFile::ReadIt<T>(T &)
-	template <typename T> void ReadIt(T& out);
+	template <typename T> void ReadIt(T& out)
+	{
+		if (ReadEnabled)
+		{
+			if (Read(&out, sizeof(out), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				ReadEnabled = false;
+			}
+			Checksum += *(uint8_t*)&out + sizeof(out);
+		}
+	}
 
 	// BW1W120 00407700 BW1M100 100ba920 GameOSFile::WriteIt<T>(T &)
-	template <typename T> void WriteIt(T& value);
+	template <typename T> void WriteIt(T& value)
+	{
+		if (WriteEnabled)
+		{
+			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				WriteEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
 	// BW1W120 00558dc0 BW1M100 10304ef0 GameOSFile::LoadInstance(GameThing **)
 	// TODO: Integrate the recovered factory after fixing constructed class layouts,
 	// particle nested scopes, and class-specific allocation functions.
@@ -316,10 +347,10 @@ public:
 	void WriteInfo(const GBaseInfo* info);
 	// BW1W120 00563f00 BW1M100 103008a0 GameOSFile::ReadInfo(GBaseInfo const **)
 	void ReadInfo(const GBaseInfo** info);
-	// BW1W120 00563f60 BW1M100 103007e0 GameOSFile::WriteChecksum(GameThing *)
-	void WriteChecksum(GameThing* thing);
-	// BW1W120 00563fa0 BW1M100 10300720 GameOSFile::ReadChecksum(GameThing *)
-	void ReadChecksum(GameThing* thing);
+	// BW1W120 00563f60 BW1M100 103007e0 GameOSFile::WriteCheckSum(GameThing *)
+	void WriteCheckSum(GameThing* thing);
+	// BW1W120 00563fa0 BW1M100 10300720 GameOSFile::ReadCheckSum(GameThing *)
+	void ReadCheckSum(GameThing* thing);
 };
 
 static_assert(sizeof(GameOSFile) == 0x230, "GameOSFile size is incorrect");
