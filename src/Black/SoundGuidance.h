@@ -55,7 +55,9 @@ public:
 	// Static methods
 
 	// BW1W120 0071b020 BW1M100 10082330 GGuidance::ProcessTownDesireSFX(GInterfaceStatus &)
-	static void ProcessTownDesireSFX(GInterfaceStatus* status);
+	static void ProcessTownDesireSFX(GInterfaceStatus& status);
+	// BW1W120 0071d1c0 BW1M100 10082f00 GGuidance::HelpSpritesCheckMoonPhase(void)
+	static void HelpSpritesCheckMoonPhase();
 
 	// Constructors
 

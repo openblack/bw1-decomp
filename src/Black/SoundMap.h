@@ -26,6 +26,16 @@ public:
 	// BW1W120 0071d990 BW1M100 10068330 GSoundMap::Dump(void)
 	virtual void Dump();
 
+	// Non-virtual methods
+	// BW1W120 0071d6f0 BW1M100 10078d50 GSoundMap::Update(void)
+	void Update();
+	// BW1W120 0071d800 BW1M100 1006a980 GSoundMap::CalculateRadiusPointAndDistance(void)
+	void CalculateRadiusPointAndDistance();
+	// BW1W120 0071d720 BW1M100 100432f0 GSoundMap::UpdateFromMap(MapCoords const &)
+	void UpdateFromMap(const MapCoords& coords);
+	// BW1W120 inlined BW1M100 10362f90 GSoundMap::GetReceiverPos(void)
+	LHPoint GetReceiverPos() { return field_0xec; }
+
 	// Constructors
 
 	// BW1W120 0054b9d0 BW1M100 inlined GSoundMap::GSoundMap(void)

@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <stddef.h>
 
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
 
@@ -37,8 +38,7 @@ public:
 	int                     field_0x44;
 	uint32_t                field_0x48;
 	uint32_t                field_0x4c;
-	LHReleasedOSFile        file; /* 0x50 */
-	uint8_t                 field_0x58[0x104];
+	LHReleasedOSFile        file;               /* 0x50 */
 	uint32_t                IsSpecificPlayback; /* 0x15c */
 	uint32_t                IsAnyPlayback;      /* 0x160 */
 	uint8_t                 field_0x164[0x30];
@@ -152,5 +152,9 @@ public:
 	// BW1W120 005d9d80 BW1M100 10004300 GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES, LHCoord *)
 	bool SendMessageA(INTERFACE_MESSAGE_TYPES param_1, LHCoord* param_2);
 };
+
+// LHReleasedOSFile already includes its 0x104-byte filename storage.
+static_assert(offsetof(GInterface, IsSpecificPlayback) == 0x15c, "GInterface playback offset is incorrect");
+static_assert(offsetof(GInterface, hand) == 0x3a0, "GInterface hand offset is incorrect");
 
 #endif /* BW1_DECOMP_INTERFACE_INCLUDED_H */

@@ -11,7 +11,7 @@ public:
 	// Override methods
 
 	// BW1W120 004f7210 BW1M100 inlined CreatureSelect::ProcessTurn(void)
-	virtual int ProcessTurn();
+	virtual Prss* ProcessTurn();
 	// BW1W120 004f7250 BW1M100 inlined CreatureSelect::Display(void)
 	virtual void Display();
 	// BW1W120 004f74d0 BW1M100 inlined CreatureSelect::ClickFunction(int, int, int)

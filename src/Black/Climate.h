@@ -14,6 +14,9 @@ class GameOSFile;
 class GClimate : public GameThing
 {
 public:
+	// BW1W120 00771be0 BW1M100 10050a00 GClimate::ProcessAll(void)
+	static void ProcessAll();
+
 	uint8_t field_0x14[0x74];
 
 	// Override methods

@@ -35,6 +35,9 @@ struct GNetwork
 
 	// Non-virtual methods
 
+	// BW1W120 006360b0 BW1M100 1008e350 GNetwork::UpdateDebug(void)
+	void UpdateDebug();
+
 	// BW1W120 006349f0 BW1M100 1010bff0 GNetwork::ProcessOnePacket(void)
 	bool ProcessOnePacket();
 	// BW1W120 00635290 BW1M100 100229f0 GNetwork::ProcessOneSuperpacket(void)

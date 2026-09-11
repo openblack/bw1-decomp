@@ -101,6 +101,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 006016d0 BW1M100 1055e8f0 GMap::UpdateControlMap(void)
+	void UpdateControlMap();
+	// BW1W120 00601850 BW1M100 1008eac0 GMap::CalculateMapInfluenceX(void)
+	void CalculateMapInfluenceX();
 	// BW1W120 00612660 BW1M100 100fddf0 GMap::ToMap(long, long)
 	MapCell* ToMap(uint32_t cell_x, uint32_t cell_z);
 	// BW1W120 00612690 BW1M100 10049c10 GMap::InBounds(long, long)

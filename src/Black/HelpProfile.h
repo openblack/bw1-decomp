@@ -28,6 +28,12 @@ static_assert(sizeof(CameraHelpAccumulator) == 0x10c, "Data type is of wrong siz
 class HelpProfile : public Base
 {
 public:
+	// BW1W120 005c4660 BW1M100 10089270 HelpProfile::Process(void)
+	void Process();
+	// BW1W120 005c4820 BW1M100 1034adf0 HelpProfile::Save(GameOSFile &)
+	uint32_t Save(GameOSFile& file);
+	// BW1W120 005c4830 BW1M100 1034ad20 HelpProfile::Load(GameOSFile &)
+	uint32_t              Load(GameOSFile& file);
 	CameraHelpAccumulator accumulators[0x31]; /* 0x8 */
 	uint32_t              field_0x3354;
 

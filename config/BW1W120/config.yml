@@ -5,6 +5,13 @@ hash: e554d46de745e604c05d7e3607b2f4ec61e8c063
 symbols: config/BW1W120/symbols.txt
 splits: config/BW1W120/splits.txt
 
+# WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
+block_relocations:
+  - source: 0x007DBAD7
+  - source: 0x007DBB1D
+  - source: 0x007DCA45
+  - source: 0x007DDDA9
+
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000
 linker_version: "6.0"

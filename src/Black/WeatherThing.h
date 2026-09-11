@@ -18,6 +18,9 @@ struct MapCoords;
 class WeatherThing : public GameThingWithPos
 {
 public:
+	// BW1W120 007741a0 BW1M100 10083030 WeatherThing::ProcessWeatherThings(void)
+	static void ProcessWeatherThings();
+
 	uint8_t field_0x28[0x60];
 
 	// Override methods

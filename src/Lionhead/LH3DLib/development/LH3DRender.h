@@ -73,6 +73,10 @@ struct LH3DRender
 	void FinishFrame();
 };
 
+// BW1W120 00c386e0 BW1M100 LH Combined Release Shared 001ccfe0.
+// Original free global, updated by FrameRate(), not a member of LH3DRender.
+extern int g_frame_rate_stats;
+
 // BW1W120 005f4e40 BW1M100 10100190 RenderLoadingFrame(bool)
 void __cdecl RenderLoadingFrame(bool param_1);
 // BW1W120 0082a500 BW1M100 10017228 DrawAndClip(D3DPRIMITIVETYPE, unsigned long, Vertex3D *, unsigned long, unsigned short *, unsigned long)

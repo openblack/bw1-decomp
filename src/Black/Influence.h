@@ -20,6 +20,9 @@ struct MapCoords;
 class InfluenceRing : public GameThingWithPos
 {
 public:
+	// BW1W120 005cdb90 BW1M100 10059380 InfluenceRing::ProcessRings(void)
+	static void ProcessRings();
+
 	BaseInfo info;   /* 0x28 */
 	GPlayer* player; /* 0x34 */
 	float    field_0x38;

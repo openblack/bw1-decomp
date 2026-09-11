@@ -8,7 +8,7 @@
 // Forward Declares
 
 struct LHPoint;
-class WeatherInfo;
+struct WeatherInfo;
 
 class GWeather : public LH3DStorm
 {

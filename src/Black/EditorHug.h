@@ -17,7 +17,7 @@ public:
 	// Override methods
 
 	// BW1W120 0051f180 BW1M100 inlined EditorHug::ProcessTurn(void)
-	virtual int ProcessTurn();
+	virtual Prss* ProcessTurn();
 	// BW1W120 0051f200 BW1M100 inlined EditorHug::Display(void)
 	virtual void Display();
 	// BW1W120 0060db30 BW1M100 inlined EditorHug::PrssKey(LH_KEY, unsigned short)

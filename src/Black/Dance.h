@@ -24,6 +24,9 @@ class Town;
 class Dance : public GroupBehaviour
 {
 public:
+	// BW1W120 0050bb60 BW1M100 1008dc50 Dance::ProcessDances(void)
+	static void ProcessDances();
+
 	uint8_t field_0xe8[0x44];
 
 	// Override methods

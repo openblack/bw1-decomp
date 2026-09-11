@@ -156,4 +156,7 @@ struct LHScreen
 };
 static_assert(sizeof(LHScreen) == 0x1b4, "Data type is of wrong size");
 
+// BW1W120 007dee00. Resets x87 state and selects single precision; original name unrecovered.
+void fn_007DEE00();
+
 #endif /* BW1_DECOMP_LH_SCREEN_INCLUDED_H */

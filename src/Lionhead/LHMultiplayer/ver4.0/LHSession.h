@@ -47,7 +47,11 @@ struct LHSession
 	// Non-virtual methods
 
 	// BW1W120 1001dab0 BW1M100 10036a3c LHSession::IsSinglePlayer(void)
-	bool IsSinglePlayer();
+#ifdef LH_MULTIPLAYER_EXPORTS
+	__declspec(dllexport) int IsSinglePlayer();
+#else
+	__declspec(dllimport) int IsSinglePlayer();
+#endif
 	// BW1W120 1001e5e0 BW1M100 inlined LHSession::NextPacketIsSuperpacket(void)
 	bool NextPacketIsSuperpacket();
 };

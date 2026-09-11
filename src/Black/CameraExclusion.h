@@ -6,6 +6,8 @@
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
+class GameOSFile;
+
 struct CameraExclusion
 {
 	CameraExclusion* next; /* 0x0 */
@@ -18,6 +20,10 @@ struct CameraExclusion
 	uint32_t         field_0x24;
 
 	// Static methods
+	// BW1W120 00455a10 BW1M100 101a6cf0 CameraExclusion::SaveExclusionFile(GameOSFile &)
+	static void SaveExclusionFile(GameOSFile& file);
+	// BW1W120 00455660 BW1M100 101a72e0 CameraExclusion::LoadExclusionFile(GameOSFile &)
+	static void LoadExclusionFile(GameOSFile& file);
 
 	// BW1W120 00455d50 BW1M100 10000050 CameraExclusion::InsideExclusion(LHPoint)
 	static bool InsideExclusion(LHPoint point);

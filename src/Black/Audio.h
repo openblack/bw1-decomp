@@ -39,6 +39,11 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00427080 BW1M100 1007d430 GAudio::ProcessAudioGameTurn(void)
+	void ProcessAudioGameTurn();
+	// BW1W120 004286c0 BW1M100 10179400 GAudio::AtmosProcess(int)
+	void AtmosProcess(int param_1);
+
 	// BW1W120 00428ef0 BW1M100 1017c7c0 GAudio::InitAtmos(void)
 	void InitAtmos();
 	// BW1W120 00428f90 BW1M100 1017c710 GAudio::ReleaseAtmosSoundBanks(void)

@@ -243,6 +243,7 @@ enum HELP_EVENT_TYPE
 
 struct Bubble;
 class GameThingWithPos;
+class GameOSFile;
 struct HelpDudeControl;
 class HelpSpirit;
 
@@ -324,6 +325,15 @@ public:
 	HelpSystem();
 
 	// Non-virtual methods
+
+	// BW1W120 005c8fe0 BW1M100 1007d4f0 HelpSystem::Process(void)
+	void Process();
+	// BW1W120 005c6eb0 BW1M100 1034dd60 HelpSystem::Save(GameOSFile &)
+	uint32_t Save(GameOSFile& file);
+	// BW1W120 005c73e0 BW1M100 1034cf90 HelpSystem::Load(GameOSFile &)
+	uint32_t Load(GameOSFile& file);
+	// BW1W120 005c78b0 BW1M100 1034cf40 HelpSystem::ResolveLoad(void)
+	void ResolveLoad();
 
 	// BW1W120 005c5460 BW1M100 103518b0 HelpSystem::SetToZero(void)
 	void SetToZero();

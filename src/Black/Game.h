@@ -9,16 +9,17 @@
 #include <Lionhead/LHLib/ver5.0/LHTimer.h> /* For LHTimer */
 #include <Lionhead/LHLib/ver5.0/LHMouse.h> /* For enum LH_MOUSE_EVENT_TYPE */
 
-#include "CreatureDatabase.h"    /* For struct CreatureDatabase */
-#include "Data.h"                /* For struct GData */
-#include "GameThing.h"           /* For struct GameThing */
-#include "GlobalGameLists.h"     /* For struct GlobalGameLists */
-#include "KeyBuffer.h"           /* For struct GKeyBuffer */
-#include "Landscape.h"           /* For struct GLandscape */
-#include "Language.h"            /* For struct GLanguage */
-#include "Map.h"                 /* For struct GMap */
-#include "MapCoords.h"           /* For struct MapCoords */
-#include "Network.h"             /* For struct GNetwork */
+#include "CreatureDatabase.h" /* For struct CreatureDatabase */
+#include "Data.h"             /* For struct GData */
+#include "GameThing.h"        /* For struct GameThing */
+#include "GlobalGameLists.h"  /* For struct GlobalGameLists */
+#include "KeyBuffer.h"        /* For struct GKeyBuffer */
+#include "Landscape.h"        /* For struct GLandscape */
+#include "Language.h"         /* For struct GLanguage */
+#include "Map.h"              /* For struct GMap */
+#include "MapCoords.h"        /* For struct MapCoords */
+#include "Network.h"          /* For struct GNetwork */
+#include "Packet.h"
 #include "PathCreator.h"         /* For struct PathCreator */
 #include "Player.h"              /* For enum PLAYER_NAME, struct GPlayer */
 #include "PlayerInfo.h"          /* For struct GPlayerInfo */
@@ -69,6 +70,15 @@ class GGame : public GameThing
 public:
 	// BW1W120 00d0195c
 	static GGame* g_game;
+	// BW1W120 00d019a9. TODO: Original static member name is unrecovered.
+	static uint8_t ScriptRebootRequested;
+	// TODO: Original names are unrecovered; shared with tutorial and packet processing.
+	// BW1W120 00d019a4
+	static uint32_t TutorialState;
+	// BW1W120 00d019ac
+	static uint32_t StartTime;
+	// BW1W120 00d019b0
+	static uint32_t MemoryState;
 
 	uint32_t               field_0x14;
 	GPlayer                players[0x8];
@@ -85,10 +95,10 @@ public:
 	Temple*                temple; /* 0x59b4 */
 	GMap                   map;
 	int32_t                LandNumber; /* 0x205a08 */
-	uint32_t               field_0x205a0c;
+	int                    field_0x205a0c;
 	int                    field_0x205a10;
-	uint32_t               field_0x205a14;
-	int                    field_0x205a18;
+	int                    field_0x205a14;
+	uint32_t               field_0x205a18;
 	int                    field_0x205a1c;
 	GLandscape             landscape; /* 0x205a20 */
 	uint32_t               field_0x205a28;
@@ -98,7 +108,10 @@ public:
 	uint8_t                PlayerIndex;
 	uint8_t                field_0x205a5a;
 	uint8_t                NeutralPlayerIndex;
-	uint32_t               field_0x205a5c;
+	uint8_t                field_0x205a5c;
+	uint8_t                field_0x205a5d;
+	uint8_t                field_0x205a5e;
+	uint8_t                field_0x205a5f;
 	uint8_t                field_0x205a60;
 	uint8_t                field_0x205a61;
 	uint8_t                field_0x205a62;
@@ -108,7 +121,8 @@ public:
 	MapCoords              Coords0x205a74;
 	uint8_t                field_0x205a80[0xf0];
 	GNetwork               network; /* 0x205b70 */
-	uint8_t                field_0x205b84[0x20];
+	uint8_t                field_0x205b84[0x1c];
+	uint32_t               field_0x205ba0;
 	GlobalGameLists        GameLists; /* 0x205ba4 */
 	uint32_t               field_0x205d34;
 	int                    Fps0x205d38;
@@ -146,8 +160,8 @@ public:
 	char*                  field_0x250170;
 	uint32_t               field_0x250174;
 	Config*                config;
-	uint32_t               Enum0x25017c;
-	GAME_MODE              GameMode; /* 0x250180 */
+	uint32_t               Enum0x25017c; // TODO: Original enum identity is unrecovered; serialized as four bytes.
+	GAME_MODE              GameMode;     /* 0x250180 */
 	uint8_t                field_0x250184[0x120];
 	uint32_t               field_0x2502a4; /* Set before an automatic save. */
 	GKeyBuffer             key_buffer;     /* 0x2502a8 */
@@ -271,23 +285,28 @@ public:
 	// BW1W120 00550820 BW1M100 inlined GGame::MyPlayerID(unsigned long)
 	int MyPlayerID(unsigned long param_1);
 	// BW1W120 005508a0 BW1M100 10064420 GGame::GetNextPlayer(GPlayer *)
-	GPlayer* GetNextPlayer(GPlayer* param_1);
+	GPlayer* GetNextPlayer(GPlayer* player);
 	// BW1W120 005508d0 BW1M100 100c0950 GGame::GetNextActivePlayer(GPlayer *)
-	GPlayer* GetNextActivePlayer(GPlayer* param_1);
+	GPlayer* GetNextActivePlayer(GPlayer* player);
 	// BW1W120 00550930 BW1M100 10095d40 GGame::GetNextActivePlayerAndNeutral(GPlayer *)
 	GPlayer* GetNextActivePlayerAndNeutral(GPlayer* player);
 	// BW1W120 00550980 BW1M100 1005c2a0 GGame::GetNextPlayerAndNeutral(GPlayer *)
 	GPlayer* GetNextPlayerAndNeutral(GPlayer* player);
 	// BW1W120 005509b0 BW1M100 100586e0 GGame::GetPlayer(unsigned long)
-	GPlayer* GetPlayer(uint32_t param_1);
+	GPlayer* GetPlayer(uint32_t player_index);
 	// BW1W120 005509e0 BW1M100 1000be00 GGame::GetPlayerFromReal(unsigned long)
 	GPlayer* GetPlayerFromReal(unsigned long param_1);
 	// BW1W120 00550a10 BW1M100 inlined GGame::GetPlayerInterfaceFromReal(unsigned long)
 	GInterface* GetPlayerInterfaceFromReal(unsigned long param_1);
 	// BW1W120 00550a30 BW1M100 inlined GGame::GetNextPlayerWithNoCreature(GPlayer *)
+	// TODO: Windows takes no argument; recover the original Mac signature before implementing.
 	GPlayer* GetNextPlayerWithNoCreature(GPlayer* param_1);
 	// BW1W120 00550a60 BW1M100 inlined GGame::GetPlayer(PLAYER_NAME)
-	GPlayer* GetPlayer(PLAYER_NAME param_1);
+	GPlayer* GetPlayer(PLAYER_NAME player_name);
+	// BW1W120 00550dd0 BW1M100 1055efd0 GGame::SetPacket(PACKET_TYPE)
+	void SetPacket(PACKET_TYPE type);
+	// BW1W120 00551690 BW1M100 10008870 GGame::SendPacketCompressed(PACKET_TYPE, SETPACKET_FUNCTION_NUMBER)
+	void SendPacketCompressed(PACKET_TYPE type, SETPACKET_FUNCTION_NUMBER function_number);
 	// BW1W120 00552620 BW1M100 1005cfb0 GGame::GetTribe(TRIBE_TYPE)
 	GTribeInfo* GetTribe(TRIBE_TYPE type);
 	// BW1W120 00552640 BW1M100 10073d30 GGame::AddPlayerSparkles(void)
@@ -297,15 +316,17 @@ public:
 	// BW1W120 00552f40 BW1M100 1056f520 GGame::StartPlaygroundGame(char *)
 	void StartPlaygroundGame(char* map_path);
 	// BW1W120 00552f80 BW1M100 100369c0 GGame::IsMultiplayerGame(void) const
-	int IsMultiplayerGame() const;
+	bool32_t IsMultiplayerGame() const;
 	// BW1W120 00552fa0 BW1M100 10423f90 GGame::FindTownWithID(unsigned long)
-	Town* FindTownWithID(int id);
+	Town* FindTownWithID(unsigned long id);
 	// BW1W120 005538e0 BW1M100 10166f50 GGame::OnNewGame(void)
 	void OnNewGame();
 	// BW1W120 00555280 BW1M100 1008f570 GGame::Update3DInfluence(void)
 	GPlayer* Update3DInfluence();
 	// BW1W120 00555850 BW1M100 10051560 GGame::MyInterface(void)
 	GInterface* MyInterface();
+	// BW1W120 00555880 BW1M100 1005fec0 GGame::MyInterfaceStatus(void)
+	GInterfaceStatus* MyInterfaceStatus();
 	// BW1W120 00555890 BW1M100 105996f0 GGame::SetLandBalance(unsigned long, float, GPlayer *)
 	void SetLandBalance(int index, float balance, GPlayer* player);
 	// BW1W120 00555990 BW1M100 inlined GGame::ResetAndStartPlaygroundGame(char *)

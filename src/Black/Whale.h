@@ -18,6 +18,9 @@ class Object;
 class Whale : public MobileObject
 {
 public:
+	// BW1W120 00775140 BW1M100 1008ea30 Whale::ProcessAll(void)
+	static void ProcessAll();
+
 	uint8_t field_0x68[0xc];
 
 	// Override methods
