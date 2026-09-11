@@ -49,8 +49,8 @@ uint32_t GameOSFile::LastAutoSaveTurn;
 uint32_t GameOSFile::SaveCount;
 int      GameOSFile::Saving;
 
-int GameOSFile::WriteEnabled = 1;
-int GameOSFile::ReadEnabled = 1;
+int GameOSFile::WriteEnabled = true;
+int GameOSFile::ReadEnabled = true;
 
 unsigned char    GameOSFile::LoadedCreatureFlags;
 uint32_t         GameOSFile::LoadCount;
@@ -862,38 +862,6 @@ void GameOSFile::ReadSafe(GData& value)
 	ReadIt(value.field_0x1c);
 	ReadIt(value.field_0x20);
 	ReadIt(value.field_0x24);
-}
-
-// fabricated names: the original counted-array template names are unknown.
-// Each array has an unsigned-long count followed by individually checksummed raw elements.
-// Readers trust the saved count and keep iterating after errors; writers stop on an element error.
-template <typename T> static inline void ReadCountedArray(GameOSFile& file, T* values)
-{
-	if (GameOSFile::ReadEnabled)
-	{
-		unsigned long count;
-		file.ReadIt(count);
-		for (unsigned long i = 0; i < count; ++i)
-		{
-			file.ReadIt(values[i]);
-		}
-	}
-}
-
-template <typename T> static inline void WriteCountedArray(GameOSFile& file, T* values, unsigned long count)
-{
-	if (GameOSFile::WriteEnabled)
-	{
-		file.WriteIt(count);
-		for (unsigned long i = 0; i < count; ++i)
-		{
-			file.WriteIt(values[i]);
-			if (!GameOSFile::WriteEnabled)
-			{
-				break;
-			}
-		}
-	}
 }
 
 // BW1W120 005637f0 BW1M100 10301420 GameOSFile::ReadSafe(TownDesire &)

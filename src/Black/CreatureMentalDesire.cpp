@@ -80,3 +80,19 @@ void CreatureDesires::Initialise(Creature* creature, const CreatureInfo* info)
 	field_0x704 = 0;
 	field_0x6f8 = NUM_CREATURE_DESIRES;
 }
+
+// BW1W120 004dc7b0 BW1M100 10259de0 CreatureDesires::FindWeakestDesire(void)
+uint32_t CreatureDesires::FindWeakestDesire()
+{
+	uint32_t weakest = 0;
+	float    weakestValue = 2.0f;
+	for (uint32_t i = 0; i < NUM_CREATURE_DESIRES; i++)
+	{
+		if (IsActivated((CREATURE_DESIRES)i) && field_0x148[i] < weakestValue)
+		{
+			weakest = i;
+			weakestValue = field_0x148[i];
+		}
+	}
+	return weakest;
+}

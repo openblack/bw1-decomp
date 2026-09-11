@@ -9,19 +9,25 @@ void CreatureDesires::InitialiseSources()
 {
 	for (int i = 0; i < NUM_CREATURE_DESIRES; i++)
 	{
-		while (SourceLists[i].head != NULL)
+		for (;;)
 		{
-			CreatureDesireSource* payload = SourceLists[i].head->payload;
+			LHLinkedNode<CreatureDesireSource>* node = SourceLists[i].head;
+			if (node == NULL)
+			{
+				break;
+			}
+			CreatureDesireSource* payload = node->payload;
 			SourceLists[i].Remove(payload);
 			delete payload;
 		}
 
 		for (int j = 0; j < 8; j++)
 		{
-			CREATURE_DESIRE_SOURCE sourceType = CreatureInitialDesireInfo::g_CreatureInitialDesireInfos[i].Sources[j];
-			if (sourceType != INVALID_CREATURE_DESIRE_SOURCE)
+			if (CreatureInitialDesireInfo::g_CreatureInitialDesireInfos[i].Sources[j] != INVALID_CREATURE_DESIRE_SOURCE)
 			{
-				CreatureDesireSource* source = new CreatureDesireSource(sourceType, creature);
+				CreatureDesireSource* source = new ("C:\\dev\\MP\\Black\\CreatureMentalDesireSource.cpp", 117)
+					CreatureDesireSource(CreatureInitialDesireInfo::g_CreatureInitialDesireInfos[i].Sources[j],
+				                         creature);
 				if (source)
 					SourceLists[i].AddToEnd(source);
 			}

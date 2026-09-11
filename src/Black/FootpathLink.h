@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+
 #include "Footpath.h"  /* For struct GFootpath */
 #include "GameThing.h" /* For struct GameThing */
 
@@ -19,7 +21,7 @@ struct MapCoords;
 class GFootpathLink : public GameThing
 {
 public:
-	LHLinkedList__GFootpath FootpathList; /* 0x14 */
+	LHLinkedList<GFootpath> FootpathList; /* 0x14 */
 
 	// Override methods
 
