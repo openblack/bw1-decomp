@@ -6,7 +6,7 @@
 // Forward Declares
 
 struct LHPoint;
-class WeatherInfo;
+struct WeatherInfo;
 
 // win1.41 00c24780 mac inlined LH3DStorm::`RTTI Type Descriptor'
 // win1.41 009ba028 mac inlined LH3DStorm::`RTTI Base Class Descriptor'

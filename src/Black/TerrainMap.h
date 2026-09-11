@@ -10,6 +10,8 @@
 class GTerrainMap : public Base
 {
 public:
+	// BW1W120 00735500 BW1M100 10542500 GTerrainMap::Init(void)
+	void           Init();
 	TerrainMapInfo list[0x400]; /* 0x8 */
 	TerrainMapInfo MapInfo;     /* 0x4a008 */
 

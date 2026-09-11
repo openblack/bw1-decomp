@@ -20,6 +20,9 @@ class PhysicsObject;
 class FireFly : public Object
 {
 public:
+	// BW1W120 0052b7a0 BW1M100 1007d730 FireFly::ProcessAll(void)
+	static void ProcessAll();
+
 	uint32_t    field_0x54;
 	LH3DSprite* sprite;
 	uint32_t    field_0x5c;

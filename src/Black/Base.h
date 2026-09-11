@@ -17,10 +17,15 @@ static float SecondsPerYear = NumDaysInYear * SecondsInDay;
 class Archive;
 class BaseInfo;
 struct LHPoint;
+struct UniqueKeyHeap;
 
 class Base
 {
 public:
+	// BW1W120 00cd3b1c. Used by Base allocation/deletion; created by PCMain.
+	// TODO: Original global name and declaration scope are unrecovered.
+	static UniqueKeyHeap* ObjectHeap;
+
 	uint32_t destroyed; /* 0x4 */
 
 	// Override methods

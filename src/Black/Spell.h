@@ -30,6 +30,9 @@ class WorshipSite;
 class Spell : public GameThingWithPos
 {
 public:
+	// BW1W120 00720300 BW1M100 1007d600 Spell::ProcessSpells(void)
+	static void ProcessSpells();
+
 	uint32_t   field_0x28;
 	float      field_0x2c;
 	uint32_t   field_0x30;

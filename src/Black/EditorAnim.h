@@ -13,7 +13,7 @@ public:
 	// Override methods
 
 	// BW1W120 0051cde0 BW1M100 inlined AnimEdit::ProcessTurn(void)
-	virtual int ProcessTurn();
+	virtual Prss* ProcessTurn();
 	// BW1W120 0051d460 BW1M100 inlined AnimEdit::Display(void)
 	virtual void Display();
 	// BW1W120 0051de20 BW1M100 inlined AnimEdit::PrssKey(LH_KEY, unsigned short)

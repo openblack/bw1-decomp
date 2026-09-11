@@ -22,6 +22,13 @@ struct GLandscape
 {
 	// BW1W120 00d99580. Set by Open; TODO: original global name unknown.
 	static char Filename[];
+	// Original names unrecovered. Paired draw arrays hold 3000 entries; insertion stops at 2999.
+	// BW1W120 00d1a3ac
+	static uint32_t DrawObjectActive[3000];
+	// BW1W120 00d1d28c
+	static Object* DrawObjects[3000];
+	// BW1W120 00d20198
+	static int DrawObjectCount;
 
 	LH3DTexture*  texture; /* 0x0 */
 	LH3DMaterial* material;

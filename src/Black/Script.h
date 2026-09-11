@@ -21,6 +21,7 @@ enum SCRIPT_FEATURE_COMMANDS
 // Forward Declares
 
 class Abode;
+class GameOSFile;
 class GameThingWithPos;
 class Living;
 struct MapCoords;
@@ -44,6 +45,14 @@ struct ScriptObjectDispatch
 class GScript : public Base
 {
 public:
+	// BW1W120 006ebea0 BW1M100 104d6b50 GScript::Save(GameOSFile &)
+	uint32_t Save(GameOSFile& file);
+	// BW1W120 006ec270 BW1M100 104d63d0 GScript::Load(GameOSFile &)
+	uint32_t Load(GameOSFile& file);
+	// BW1W120 006eb710 BW1M100 104de060 GScript::StartScript(char *)
+	// RET 4 and script-object ECX at callers establish a member, not a static function.
+	// TODO: Existing int result retained pending a complete task-ID caller audit.
+	int StartScript(char* name);
 	// BW1W120 00d95c10 BW1M100 10b49ffc
 	static ScriptDLL* g_scriptDLL;
 	// BW1W120 00c0c740 BW1M100 1099bea4
@@ -62,8 +71,6 @@ public:
 
 	// BW1W120 006eb100 BW1M100 104de810 GScript::Create(void)
 	static GScript* Create();
-	// BW1W120 006eb710 BW1M100 104de060 GScript::StartScript(char *)
-	static int StartScript(char* name);
 	// BW1W120 0070b220 BW1M100 10503f10 GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL)
 	static void SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level);
 	// BW1W120 006ec8f0 BW1M100 104e2f90 GScript::SetCameraPos(void)

@@ -228,9 +228,18 @@ static const char* CameraHelpReason_strs[_CameraHelpReason_COUNT] = {
 	"CameraHelpReason_0x308",
 };
 
-// BW1W120 00449140 BW1M100 100018f0 CameraHelp::CameraHelpCallback(CameraHelpReason, LHPoint &, unsigned long)
-void __cdecl CameraHelpCallback__10CameraHelpF16CameraHelpReasonR7LHPointUl(
-	enum CameraHelpReason reason, struct LHPoint* point,
-	uint32_t param_3) asm("?CameraHelpCallback@CameraHelp@@SAXW4CameraHelpReason@@AAULHPoint@@K@Z");
+class CameraHelp
+{
+public:
+	// TODO: Original static member names are unrecovered; ownership follows SetAutoPitch/EnableCameraFeatures.
+	// BW1W120 009cdd64
+	static float AutoPitchParam1;
+	// BW1W120 009cdd68
+	static float AutoPitchParam2;
+	// BW1W120 009cdd6c
+	static int EnabledFeatures;
+	// BW1W120 00449140 BW1M100 100018f0 CameraHelp::CameraHelpCallback(CameraHelpReason, LHPoint &, unsigned long)
+	static void CameraHelpCallback(CameraHelpReason reason, LHPoint& point, unsigned long param_3);
+};
 
 #endif /* BW1_DECOMP_CAMERA_HELP_INCLUDED_H */

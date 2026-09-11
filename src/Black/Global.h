@@ -9,12 +9,17 @@
 // Forward Declares
 
 class GAudio;
+class Prss;
 
 struct GGlobal
 {
-	GAudio* audio; /* 0x0 */
-	GDebug  debug;
-	void*(__cdecl* field_0x2d2ac)();
+	// BW1W120 00cd3b20. TODO: Original singleton name is unrecovered; this is an object, not a pointer.
+	static GGlobal Global;
+	// BW1W120 00590f00 BW1M100 1032d8b0 GGlobal::GGlobal(void)
+	GGlobal();
+	GAudio*  audio; /* 0x0 */
+	GDebug   debug;
+	uint32_t field_0x2d2ac; // Editor mode; original member name unrecovered.
 	uint32_t field_0x2d2b0;
 	uint32_t field_0x2d2b4;
 	uint32_t field_0x2d2b8;
@@ -28,10 +33,10 @@ struct GGlobal
 	uint32_t field_0x2d2d8;
 	uint32_t field_0x2d2dc;
 	uint32_t field_0x2d2e0;
-	void*(__cdecl* field_0x2d2e4)();
-	uint8_t field_0x2d2e8[0xc];
-	char    CurrentDirectory[0x100]; /* 0x2d2f4 */
-	uint8_t field_0x2d3f4[0x10c];
+	Prss*    field_0x2d2e4; // Active editor interface; concrete subtype unrecovered.
+	uint8_t  field_0x2d2e8[0xc];
+	char     CurrentDirectory[0x100]; /* 0x2d2f4 */
+	uint8_t  field_0x2d3f4[0x10c];
 
 	// Non-virtual methods
 

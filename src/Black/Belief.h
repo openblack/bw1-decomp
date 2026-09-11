@@ -15,6 +15,9 @@ class GPlayer;
 class GBelief : public Base
 {
 public:
+	// BW1W120 004380b0 BW1M100 1007f1c0 GBelief::ProcessOncePerTurn(void)
+	static void ProcessOncePerTurn();
+
 	float    BeliefInPlayer[0x8]; /* 0x8 */
 	uint32_t field_0x28[0x8];
 	float    field_0x48[0x8];

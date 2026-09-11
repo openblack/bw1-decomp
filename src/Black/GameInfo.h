@@ -9,33 +9,35 @@
 class GGameInfo : public Base
 {
 public:
-	uint8_t  field_0x8;
-	uint8_t  field_0x9;
-	uint8_t  field_0xa;
-	uint8_t  field_0xb;
-	int      TimeScale;
-	float    ElapsedDays; /* 0x10 */
-	float    ElapsedYears;
-	float    SecondsPerDay;
-	uint32_t CurrentYear;
-	double   ElapsedSecondsSinceStart; /* 0x20 */
-	int32_t  StartYear;
-	int32_t  StartMonth;
-	int32_t  StartDay; /* 0x30 */
-	int32_t  StartHour;
-	int32_t  StartMinute;
-	int32_t  StartSecond;
-	uint32_t field_0x40;
-	float    VisualTimeScale;
-	float    field_0x48;
-	float    field_0x4c;
-	float    field_0x50;
-	uint32_t field_0x54;
+	// BW1W120 00d019f8. TODO: Original singleton name is unrecovered. Storage is emitted in Game.
+	static GGameInfo Info;
+	uint8_t          field_0x8;
+	uint8_t          field_0x9;
+	uint8_t          field_0xa;
+	uint8_t          field_0xb;
+	int              TimeScale;
+	float            ElapsedDays; /* 0x10 */
+	float            ElapsedYears;
+	float            SecondsPerDay;
+	uint32_t         CurrentYear;
+	double           ElapsedSecondsSinceStart; /* 0x20 */
+	int32_t          StartYear;
+	int32_t          StartMonth;
+	int32_t          StartDay; /* 0x30 */
+	int32_t          StartHour;
+	int32_t          StartMinute;
+	int32_t          StartSecond;
+	uint32_t         field_0x40;
+	float            VisualTimeScale;
+	float            field_0x48;
+	float            field_0x4c;
+	float            field_0x50;
+	uint32_t         field_0x54;
 
 	// Override methods
 
 	// BW1W120 005577b0 BW1M100 102ffc00 GGameInfo::_dt(void)
-	virtual ~GGameInfo();
+	virtual ~GGameInfo() {}
 
 	// Constructors
 
@@ -43,6 +45,12 @@ public:
 	GGameInfo();
 
 	// Non-virtual methods
+	// BW1W120 005575a0 BW1M100 10066e30 GGameInfo::GetVisualTime(void)
+	float GetVisualTime();
+	// BW1W120 005575d0 BW1M100 102ffb10 GGameInfo::ForceVisualTime(float)
+	void ForceVisualTime(float time);
+	// BW1W120 00557610 BW1M100 102ffa50 GGameInfo::SetVisualTimeScale(float)
+	void SetVisualTimeScale(float scale);
 
 	// BW1W120 00557620 BW1M100 102ff910 GGameInfo::SetVisualTimeCycle(float, float, float)
 	void SetVisualTimeCycle(float param_1, float param_2, float param_3);
@@ -58,8 +66,12 @@ public:
 	uint32_t GetSeason();
 	// BW1W120 00557b60 BW1M100 1008c3f0 GGameInfo::Process(void)
 	void Process();
+	// BW1W120 00557ba0 BW1M100 1008ea00 GGameInfo::Debug(void)
+	void Debug();
 	// BW1W120 00557bb0 BW1M100 102fecf0 GGameInfo::SetVisualTimeCycleFromMapEditor(float, float, float)
 	void SetVisualTimeCycleFromMapEditor(float param_1, float param_2, float param_3);
 };
+
+static_assert(sizeof(GGameInfo) == 0x58, "GGameInfo size is incorrect");
 
 #endif /* BW1_DECOMP_GAME_INFO_INCLUDED_H */

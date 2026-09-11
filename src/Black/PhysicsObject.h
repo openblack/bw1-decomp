@@ -9,6 +9,9 @@
 class PhysicsObject : public Base
 {
 public:
+	// BW1W120 00644fc0 BW1M100 10038e40 PhysicsObject::GameTurnUpdate(void)
+	static void GameTurnUpdate();
+
 	uint8_t  field_0x8[0x1a0];
 	float    field_0x1a8;
 	uint32_t field_0x1ac;

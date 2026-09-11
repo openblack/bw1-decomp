@@ -46,6 +46,8 @@ public:
 	bool StartScript(unsigned long param_1);
 	// BW1W120 00784d10 BW1M100 101aba10 ChallengeRoom::ChallengeLoad(GameOSFile &)
 	void ChallengeLoad(GameOSFile& file);
+	// BW1W120 00784c70 BW1M100 101abc70 ChallengeRoom::ChallengeSave(GameOSFile &)
+	void ChallengeSave(GameOSFile& file);
 };
 
 #endif /* BW1_DECOMP_CHALLENGE_ROOM_INCLUDED_H */

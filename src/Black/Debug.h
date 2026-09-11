@@ -5,6 +5,9 @@
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include <Lionhead/LHLib/ver5.0/LHTimer.h> /* For struct LHTimer */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
+
+class CellBox;
 
 struct GDebug
 {
@@ -39,8 +42,11 @@ struct GDebug
 	uint32_t field_0x2d294;
 	uint32_t field_0x2d298;
 	uint32_t field_0x2d29c;
-	uint32_t field_0x2d2a0;
-	uint32_t field_0x2d2a4;
+	// TODO: Original member name is unrecovered. Mac constructor establishes the list type.
+	LHLinkedList<CellBox> CellBoxes; /* 0x2d2a0 */
+
+	// BW1W120 00511f50 BW1M100 1008e810 GDebug::ClearMessages(long)
+	void ClearMessages(long category);
 
 	// Static methods
 

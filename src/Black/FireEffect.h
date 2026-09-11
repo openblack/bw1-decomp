@@ -18,6 +18,9 @@ class Object;
 class FireEffect : public GameThing
 {
 public:
+	// BW1W120 00730760 BW1M100 1008f3e0 FireEffect::ProcessList(void)
+	static void ProcessList();
+
 	float       temperature; /* 0x14 */
 	float       temperature2;
 	Object*     source;

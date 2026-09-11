@@ -148,7 +148,7 @@ public:
 	// BW1W120 0064c220 BW1M100 10492490 GPlayer::IsMagicTypeEnabled(MAGIC_TYPE)
 	bool32_t IsMagicTypeEnabled(MAGIC_TYPE type);
 	// BW1W120 0064d120 BW1M100 10051520 GPlayer::GetRealInterface(unsigned long)
-	GInterface* GetRealInterface(int param_2);
+	GInterface* GetRealInterface(unsigned long interface_index);
 	// BW1W120 0064d750 BW1M100 10033320 GPlayer::IsMemberOfThisPlayer(GInterfaceStatus *)
 	bool IsMemberOfThisPlayer(GInterfaceStatus* param_1);
 	// BW1W120 0064d800 BW1M100 10021970 GPlayer::GetPlayerColour(void) const

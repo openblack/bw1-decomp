@@ -28,6 +28,9 @@ class Town;
 class Ball : public MobileObject
 {
 public:
+	// BW1W120 00435f30 BW1M100 1008f090 Ball::ProcessBalls(void)
+	static void ProcessBalls();
+
 	uint32_t  field_0x68;
 	LHPoint   field_0x6c;
 	LHPoint   field_0x78;

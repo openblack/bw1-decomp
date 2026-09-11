@@ -23,6 +23,9 @@ class Object;
 class Reward : public MobileObject
 {
 public:
+	// BW1W120 006e6890 BW1M100 1008e000 Reward::ProcessList(void)
+	static void ProcessList();
+
 	uint8_t field_0x68[0x40];
 
 	// Override methods

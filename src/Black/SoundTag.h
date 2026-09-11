@@ -44,6 +44,9 @@ public:
 
 	// Static methods
 
+	// BW1W120 0071e5f0 BW1M100 1002e6d0 SoundTag::ProcessSoundTags(void)
+	static void ProcessSoundTags();
+
 	// BW1W120 0071e840 BW1M100 10513e30 SoundTag::Create(GameThingWithPos *, unsigned long, bool, unsigned long, unsigned long, int, int, AUDIO_SFX_BANK_TYPE, int)
 	static SoundTag* Create(GameThingWithPos* param_1, uint32_t param_2, bool param_3, uint32_t param_4,
 	                        uint32_t param_5, int param_6, int param_7, AUDIO_SFX_BANK_TYPE bank_type, int param_9);

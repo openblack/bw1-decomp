@@ -16,6 +16,9 @@ class GameThing;
 class GParticleContainer : public GameThingWithPos
 {
 public:
+	// BW1W120 0063e090 BW1M100 10068530 GParticleContainer::ProcessParticleContainers(void)
+	static void ProcessParticleContainers();
+
 	GameThingWithPos*   thing; /* 0x28 */
 	uint32_t            field_0x2c;
 	uint32_t            field_0x30;

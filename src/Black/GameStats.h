@@ -15,6 +15,15 @@ class GPlayer;
 class GameStats : public GameThing
 {
 public:
+	// Original static names unrecovered; shared by EndTurn and the stats subsystem.
+	// BW1W120 008ffdb8
+	static const uint32_t UpdateInterval;
+	// BW1W120 00d06040 / 00d06044
+	static float MaxFrameRate;
+	static float MinFrameRate;
+	// BW1W120 00565110 BW1M100 10098000 GameStats::AddToTotalLinesOfCodeExecuted(void)
+	static void AddToTotalLinesOfCodeExecuted();
+
 	uint8_t  field_0x14[0x94];
 	uint32_t WoodUsed; /* 0xa8 */
 	uint8_t  Graph0[0x1f4];

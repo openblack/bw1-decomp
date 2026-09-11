@@ -116,6 +116,10 @@ public:
 	virtual void Dump();
 
 	// Non-virtual methods
+	// BW1W120 00591ac0 BW1M100 10332360 GlobalGameLists::Save(GameOSFile &)
+	uint32_t Save(GameOSFile& file);
+	// BW1W120 00592040 BW1M100 1032d950 GlobalGameLists::Load(GameOSFile &)
+	uint32_t Load(GameOSFile& file);
 
 	// BW1W120 00591370 BW1M100 10059120 GlobalGameLists::Process(void)
 	void Process();

@@ -23,6 +23,7 @@
 // Forward Declares
 
 class GInterfaceStatus;
+class GameOSFile;
 struct HandFX;
 struct LHMatrix;
 class CHand;
@@ -229,6 +230,12 @@ public:
 	CHand(LHPoint point, GInterfaceStatus* status);
 
 	// Non-virtual methods
+	// BW1W120 0046eb10 BW1M100 101c56d0 CHand::Save(GameOSFile &)
+	uint32_t Save(GameOSFile& file);
+	// BW1W120 0046e930 BW1M100 101c59a0 CHand::Load(GameOSFile &)
+	uint32_t Load(GameOSFile& file);
+	// BW1W120 0046ecf0 BW1M100 101c55c0 CHand::ResolveLoad(void)
+	void ResolveLoad();
 
 	// BW1W120 0046c260 BW1M100 101c86d0 CHand::ToggleLeftRight(void)
 	void ToggleLeftRight();

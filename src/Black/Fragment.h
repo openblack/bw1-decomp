@@ -27,6 +27,9 @@ class PhysicsObject;
 class Fragment : public Rock
 {
 public:
+	// BW1W120 0076eaf0 BW1M100 1015c000 Fragment::ProcessTimer(void)
+	void ProcessTimer();
+
 	FragMesh* frag_mesh; /* 0x94 */
 	uint32_t  field_0x98;
 	uint32_t  field_0x9c;
