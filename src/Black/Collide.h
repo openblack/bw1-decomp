@@ -72,6 +72,8 @@ struct CircleHugInfo
 	void SetObjectPtr(NewCollide::Obj* param_2, MobileWallHug* param_3, bool param_4);
 	// BW1W120 0060a9f0 BW1M100 10029be0 CircleHugInfo::Reset(MobileWallHug *)
 	void Reset(MobileWallHug* mwh);
+	// BW1W120 0060c200 BW1M100 103c2d60 CircleHugInfo::ResolveLoad(MobileWallHug *)
+	void ResolveLoad(MobileWallHug* mwh);
 };
 
 struct ObjectCircleIterator

@@ -14,19 +14,19 @@ struct LHTimer
 
 	// Non-virtual methods
 
-	// win1.41 inlined mac 10001570 LHTimer::Running(void)
+	// BW1W120 inlined BW1M100 10001570 LHTimer::Running(void)
 	bool32_t Running();
-	// win1.41 inlined mac 10005790 LHTimer::Start(void)
+	// BW1W120 inlined BW1M100 10005790 LHTimer::Start(void)
 	void Start();
-	// win1.41 0043e9c0 mac 10001820 LHTimer::Stop(void)
+	// BW1W120 0043e9c0 BW1M100 10001820 LHTimer::Stop(void)
 	void Stop();
-	// win1.41 0043eb70 mac 100056e0 LHTimer::MSeconds(void)
+	// BW1W120 0043eb70 BW1M100 100056e0 LHTimer::MSeconds(void)
 	int MSeconds();
-	// win1.41 inlined mac 100017b0 LHTimer::GetSpeedUpFactor(void)
+	// BW1W120 inlined BW1M100 100017b0 LHTimer::GetSpeedUpFactor(void)
 	float GetSpeedUpFactor();
-	// win1.41 0043ebc0 mac 100016c0 LHTimer::SetSpeedUpFactor(float)
+	// BW1W120 0043ebc0 BW1M100 100016c0 LHTimer::SetSpeedUpFactor(float)
 	void SetSpeedUpFactor(float factor);
-	// win1.41 0054b850 mac 10005830 LHTimer::Reset(ulong)
+	// BW1W120 0054b850 BW1M100 10005830 LHTimer::Reset(unsigned long)
 	void Reset(uint32_t value);
 };
 

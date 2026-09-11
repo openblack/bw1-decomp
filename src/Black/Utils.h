@@ -36,6 +36,10 @@ struct GUtils
 	static bool32_t FindNearestDrinkingWater(MapCoords& param_1, MapCoords& param_2, float max_dist);
 	// BW1W120 0074f170 BW1M100 10067300 GUtils::SigmoidThreshold(float, float)
 	static float SigmoidThreshold(float param_1, float param_2);
+	// BW1W120 0074f210 BW1M100 10167400 GUtils::GetFilenameFromPath(char*)
+	static char* GetFilenameFromPath(char* path);
+	// BW1W120 0074f250 BW1M100 101674c0 GUtils::GetPathFromPath(char*, char*)
+	static int GetPathFromPath(char* path, char* out);
 	// BW1W120 0074f290 BW1M100 100673e0 GUtils::GetDistanceModifier(float float)
 	static float GetDistanceModifier(float param_1, float param_2);
 	// BW1W120 0074f520 BW1M100 10022930 GUtils::GetMapCellSpiralSizeFromRadius(float)

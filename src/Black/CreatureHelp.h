@@ -4,8 +4,6 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LHLib/ver5.0/GJVector.h> /* For struct GJVector */
-
 #include "MapCoords.h" /* For struct MapCoords */
 
 // Forward Declares
@@ -14,24 +12,28 @@ class GameThingWithPos;
 
 struct CreatureHelpState
 {
-	struct field_0x88_t
-	{
-		uint8_t field_0x0;
-	};
-	uint32_t               field_0x0;
-	uint32_t               field_0x4;
-	uint32_t               field_0x8;
-	uint32_t               field_0xc;
-	uint32_t               field_0x10[0xc];
-	uint32_t               field_0x40[0xc];
-	uint32_t               field_0x70[0x6];
-	GJVector<field_0x88_t> field_0x88;
+	uint32_t field_0x0;
+	uint32_t field_0x4;
+	uint32_t field_0x8;
+	uint32_t field_0xc;
+	uint32_t field_0x10[0xc];
+	uint32_t field_0x40[0xc];
+	uint32_t field_0x70[0x6];
+	// These are scalars, not a vector. UpdateHelp (004c9c90) reads the timestamp
+	// and toggles +0x90; SendCandidateHelpScript (004c9fe0) compares +0x94.
+	uint32_t field_0x88;
+	uint32_t field_0x8c;
+	uint32_t field_0x90;
+	uint32_t field_0x94;
 
 	// Constructors
 
 	// BW1W120 004c9c30 BW1M100 1023b830 CreatureHelpState::CreatureHelpState(void)
 	CreatureHelpState();
 };
+
+// Creature's constructor (00474690) places this at +0x188 and the next member at +0x220.
+static_assert(sizeof(CreatureHelpState) == 0x98, "CreatureHelpState size is incorrect");
 
 struct CreatureHelpStackEntry
 {

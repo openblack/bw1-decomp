@@ -133,6 +133,10 @@ public:
 	void Birthday();
 	// BW1W120 0064a790 BW1M100 1005c3d0 GPlayer::GetPlayerNumber(void) const
 	uint8_t GetPlayerNumber();
+	// BW1W120 0055da60 BW1M100 10031c50 GPlayer::GetStats(void)
+	GameStats* GetStats();
+	// BW1W120 0064a9f0 BW1M100 10496090 GPlayer::GetLeaderInterfaceStatus(void)
+	GInterfaceStatus* GetLeaderInterfaceStatus();
 	// BW1W120 0064aac0 BW1M100 10035b60 GPlayer::GetNextInterfaceStatus(GInterfaceStatus *)
 	GInterfaceStatus* GetNextInterfaceStatus(GInterfaceStatus* param_1);
 	// BW1W120 0064ac00 BW1M100 100306d0 GPlayer::IsNeutral(void)

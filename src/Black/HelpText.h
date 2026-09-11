@@ -44,15 +44,28 @@ public:
 	HelpText(LHRegion* region);
 };
 
+// Database entries are 12 bytes, distinct from the on-screen HelpText object.
+struct HelpTextData
+{
+	uint32_t  field_0x0;
+	uint32_t  field_0x4;
+	char16_t* Text;
+};
+
+static_assert(sizeof(HelpTextData) == 0xc, "HelpTextData size is incorrect");
+
 struct HelpTextDataBase
 {
-	HelpText* array; /* 0x0 */
-	uint32_t  count;
+	// BW1W120 00d17ca8. TODO: Original global name unknown.
+	static HelpTextDataBase HelpTextDatabase;
+
+	HelpTextData* array; /* 0x0 */
+	uint32_t      count;
 
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M100 100924c0 HelpTextDataBase::GetHelpText(unsigned long) const
-	const char16_t* GetHelpText(uint32_t index);
+	char16_t* GetHelpText(unsigned long index) const { return array[index < count && index != 0 ? index : 0].Text; }
 };
 
 #endif /* BW1_DECOMP_HELP_TEXT_INCLUDED_H */

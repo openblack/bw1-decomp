@@ -24,29 +24,26 @@ struct DesireSort
 class TownDesire : public Base
 {
 public:
-	struct field_0x8_t
-	{
-		uint8_t field_0x0[0x8];
-	};
-
-	field_0x8_t field_0x8[TOWN_DESIRE_INFO_LAST];
-	float       field_0x90[TOWN_DESIRE_INFO_LAST];
-	float       field_0xd4[TOWN_DESIRE_INFO_LAST];
-	float       field_0x118[TOWN_DESIRE_INFO_LAST];
-	uint32_t    field_0x15fc; /* 0x15c */
-	Town*       town;         /* 0x160 */
-	float       field_0x164;
-	float       field_0x168[TOWN_DESIRE_INFO_LAST];
-	uint32_t    field_0x1ac[TOWN_DESIRE_INFO_LAST];
-	uint32_t    field_0x1f0[TOWN_DESIRE_INFO_LAST];
-	uint32_t    field_0x234[TOWN_DESIRE_INFO_LAST];
-	DesireSort  sorts[TOWN_DESIRE_INFO_LAST];  /* 0x278 */
-	DesireSort  sorts2[TOWN_DESIRE_INFO_LAST]; /* 0x344 */
-	uint32_t    field_0x410[TOWN_DESIRE_INFO_LAST];
-	float       field_0x454[TOWN_DESIRE_INFO_LAST];
-	uint32_t    field_0x498[TOWN_DESIRE_INFO_LAST];
-	float       field_0x4dc[TOWN_DESIRE_INFO_LAST];
-	uint32_t    field_0x520[TOWN_DESIRE_INFO_LAST];
+	// Mac GameOSFile::ReadSafe (10301420) exposes these as separate float arrays.
+	float      field_0x8[TOWN_DESIRE_INFO_LAST];
+	float      field_0x4c[TOWN_DESIRE_INFO_LAST];
+	float      field_0x90[TOWN_DESIRE_INFO_LAST];
+	float      field_0xd4[TOWN_DESIRE_INFO_LAST];
+	float      field_0x118[TOWN_DESIRE_INFO_LAST];
+	uint32_t   field_0x15fc; /* 0x15c */
+	Town*      town;         /* 0x160 */
+	float      field_0x164;
+	float      field_0x168[TOWN_DESIRE_INFO_LAST];
+	float      field_0x1ac[TOWN_DESIRE_INFO_LAST];
+	float      field_0x1f0[TOWN_DESIRE_INFO_LAST];
+	float      field_0x234[TOWN_DESIRE_INFO_LAST];
+	DesireSort sorts[TOWN_DESIRE_INFO_LAST];  /* 0x278 */
+	DesireSort sorts2[TOWN_DESIRE_INFO_LAST]; /* 0x344 */
+	long       field_0x410[TOWN_DESIRE_INFO_LAST];
+	float      field_0x454[TOWN_DESIRE_INFO_LAST];
+	float      field_0x498[TOWN_DESIRE_INFO_LAST];
+	float      field_0x4dc[TOWN_DESIRE_INFO_LAST];
+	float      field_0x520[TOWN_DESIRE_INFO_LAST];
 
 	// Override methods
 

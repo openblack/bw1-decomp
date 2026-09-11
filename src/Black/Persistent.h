@@ -10,6 +10,12 @@ struct PropertyList;
 class Persistent
 {
 public:
+	// Static methods; neither Windows body uses a this pointer.
+	// BW1W120 00580c30 BW1M100 102cb9f0 Persistent::GetSaveID(Persistent *, long *, long *)
+	static void GetSaveID(Persistent* value, long* file_id, long* index);
+	// BW1W120 00580cc0 BW1M100 102cb860 Persistent::GetFromSaveID(long, long)
+	static Persistent* GetFromSaveID(long file_id, long index);
+
 	// Override methods
 
 	// BW1W120 00580a10 BW1M100 102cb7a0 Persistent::VirtualFunc(void)
