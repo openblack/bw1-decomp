@@ -2,7 +2,9 @@
 
 #include "Lionhead/LH3DLib/development/LH3DSmoke.h"
 
-#include <Lionhead/LH3DLib/development/PhysOb.h> /* For struct PhysOb */
+#include <Lionhead/LH3DLib/development/LH3DMesh.h> /* For struct LH3DMesh */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>           /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LH3DLib/development/PhysOb.h>   /* For struct PhysOb */
 
 #include "AbodeInfo.h"
 #include "MapCoords.h"
@@ -17,6 +19,7 @@
 #include "Football.h"
 #include "FootpathNode.h"
 #include "Game.h"
+#include "GameOSFile.h"
 #include "Game3DObject.h"
 #include "GameStats.h"
 #include "GraveYard.h"
@@ -875,12 +878,84 @@ Villager* Abode::FindVillager(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_O
 
 uint32_t Abode::Save(GameOSFile& file)
 {
-	return 1;
+	if (MultiMapFixed::Save(file))
+	{
+		if (GameOSFile::WriteEnabled)
+		{
+			file.WriteSafe(field_0x7c);
+			if (GameOSFile::WriteEnabled)
+			{
+				file.WriteSafe(DrinkingWater);
+				if (GameOSFile::WriteEnabled)
+				{
+					file.WriteSafe(field_0x94);
+				}
+			}
+		}
+		file.WritePtr(town);
+		file.WriteSafe(villagers);
+		if (GameOSFile::WriteEnabled)
+		{
+			file.WriteSafe(AdultCount);
+			if (GameOSFile::WriteEnabled)
+			{
+				file.WriteSafe(PresentAtHome);
+				if (GameOSFile::WriteEnabled)
+				{
+					file.WriteSafe(ChildCount);
+					if (GameOSFile::WriteEnabled)
+					{
+						file.WriteSafe(index);
+					}
+				}
+			}
+		}
+		WriteCountedArray(file, resources, RESOURCE_TYPE_LAST);
+		bool32_t hasDestructionMesh = DestructionMesh != NULL;
+		file.WriteSafe(hasDestructionMesh);
+		if (hasDestructionMesh)
+		{
+			DestructionMesh->WriteToFile(file);
+		}
+		return 1;
+	}
+	return 0;
 }
 
 uint32_t Abode::Load(GameOSFile& file)
 {
-	return 1;
+	if (MultiMapFixed::Load(file))
+	{
+		file.ReadSafe(field_0x7c);
+		file.ReadSafe(DrinkingWater);
+		file.ReadSafe(field_0x94);
+		file.ReadPtr((GameThing**)&town);
+		file.ReadSafe(villagers);
+		MaleFemaleVillagers[SEX_MALE] = NULL;
+		MaleFemaleVillagers[SEX_FEMALE] = NULL;
+		file.ReadSafe(AdultCount);
+		file.ReadSafe(PresentAtHome);
+		file.ReadSafe(ChildCount);
+		file.ReadSafe(index);
+		if (GameOSFile::ReadEnabled)
+		{
+			uint32_t resourceCount;
+			file.ReadIt(resourceCount);
+			for (uint32_t i = 0; i < resourceCount; i++)
+			{
+				file.ReadIt(resources[i]);
+			}
+		}
+		bool32_t hasDestructionMesh;
+		file.ReadSafe(hasDestructionMesh);
+		if (hasDestructionMesh)
+		{
+			DestructionMesh = new ("C:\\dev\\MP\\Black\\Abode.cpp", 2210)
+				FragMesh(file, LH3DMesh::GetPackedMesh(GetInfo()->GetMesh()));
+		}
+		return 1;
+	}
+	return 0;
 }
 
 void Abode::FindNearestDrinkingWater(float max_dist)

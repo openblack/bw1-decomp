@@ -41,14 +41,18 @@ struct LHListHead
 		return walker;
 	}
 
-	T* GetNext(T* element) const { return element->next; }
+	// NULL means "before the first", so a walk seeded with NULL needs only one call
+	// site:  for (T* v = NULL; (v = list.GetNext(v)) != NULL;)
+	// Confirmed against BW1M100 .GetNext__21LHListHead<8Villager>FP8Villager:
+	//   if (param_2 == 0) return *param_1; return *(param_2 + 0xe4);
+	T* GetNext(T* element) const { return element == NULL ? head : element->next; }
 
 	T* GetLast() const
 	{
 		T* walker = head;
-		while (walker != NULL && GetNext(walker) != NULL)
+		while (walker != NULL && walker->next != NULL)
 		{
-			walker = GetNext(walker);
+			walker = walker->next;
 		}
 		return walker;
 	}
@@ -81,5 +85,24 @@ struct LHListHead
 		element->next = NULL;
 	}
 };
+
+template <typename T> void LHListHead<T>::AddToLast(T* element)
+{
+	T* walker = head;
+	if (walker != NULL)
+	{
+		for (T* next = walker->next; next != NULL; next = walker->next)
+		{
+			walker = next;
+		}
+		walker->next = element;
+		element->next = NULL;
+		++count;
+		return;
+	}
+	head = element;
+	element->next = NULL;
+	++count;
+}
 
 #endif /* BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H */

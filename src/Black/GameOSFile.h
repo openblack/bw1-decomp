@@ -7,8 +7,12 @@
 #include <Lionhead/LHFile/ver3.0/LHFile.h>           /* For enum LH_FILE_MODE */
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>      /* For struct LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHListHead.h>        /* For struct LHListHead */
+
+#include <re_common.h> /* For bool32_t */
 
 #include "GameThing.h"   /* For struct GameThing */
+#include "MapCoords.h"   /* For struct MapCoords */
 #include "SaveLoadPtr.h" /* For struct GSaveLoadPtr */
 
 // Forward Declares
@@ -45,25 +49,23 @@ public:
 	LHLinkedList<GSaveLoadPtr> SaveLoadPtrList; /* 0x220 */
 	LHLinkedList<GameThing>    GameThingList;
 
-	// Override methods
-
-	// BW1W120 00558050 BW1M100 1030fcb0 GameOSFile::~GameOSFile(void)
-	// Scalar-deleting wrapper: BW1W120 00558030.
-	virtual ~GameOSFile();
-	// Open is inherited: the original vtable points directly to LHReleasedOSFile::Open.
-
 	// Static data
 
 	// TODO: Original global names unknown; revision fragments are deliberately separate.
-	// BW1W120 00bec980, 00bec984, 00bec988, 00bec98c
-	static char*    RevisionPrefix;
-	static char*    RevisionSuffix;
-	static char*    AutoSaveFilename;
+	// BW1W120 00bec980
+	static char* RevisionPrefix;
+	// BW1W120 00bec984
+	static char* RevisionSuffix;
+	// BW1W120 00bec988
+	static char* AutoSaveFilename;
+	// BW1W120 00bec98c
 	static uint32_t AutoSaveInterval;
-	// BW1W120 00d01a80, 00d01a84, 00d01a9c
+	// BW1W120 00d01a80
 	static uint32_t LastAutoSaveTurn;
+	// BW1W120 00d01a84
 	static uint32_t SaveCount;
-	static int      Saving;
+	// BW1W120 00d01a9c
+	static int Saving;
 
 	// TODO: Original names unknown; reset by SaveAllGame/LoadAllGame and cleared on I/O errors.
 	// BW1W120 00bec990
@@ -78,6 +80,11 @@ public:
 	// BW1W120 00d01aa0 (also tested by footpath and circle-hug code)
 	static int Loading;
 
+	// Override methods
+
+	// BW1W120 00558050 BW1M100 1030fcb0 GameOSFile::~GameOSFile(void)
+	// Scalar-deleting wrapper: BW1W120 00558030.
+	virtual ~GameOSFile();
 	// Static methods
 
 	// BW1W120 00558160 BW1M100 1030f6f0 GameOSFile::SaveAllGame(char *)
@@ -101,30 +108,127 @@ public:
 
 	// BW1W120 inlined BW1M100 inlined GameOSFile::ReadIt<MapCoords>(MapCoords*)
 	void ReadIt_MapCoords_(MapCoords* out);
-	// BW1W120 inlined BW1M100 inlined GameOSFile::ReadIt<T>(T&)
-	template <typename T> void ReadIt(T& out)
+	// BW1W120 inlined BW1M100 103b3ef0 GameOSFile::ReadSafe(unsigned char &)
+	void ReadSafe(uint8_t& value)
 	{
 		if (ReadEnabled)
 		{
-			if (Read(&out, sizeof(T), NULL) == LH_FILE_RESULT_ERROR)
+			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
 			{
-				ReadEnabled = 0;
+				ReadEnabled = false;
 			}
-			Checksum += sizeof(T) + *(unsigned char*)&out;
+			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
-
-	template <typename T> void WriteIt(T& value)
+	// BW1W120 inlined BW1M100 102ab2f0 GameOSFile::ReadSafe(unsigned long &)
+	void ReadSafe(uint32_t& value)
+	{
+		if (ReadEnabled)
+		{
+			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				ReadEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	// fabricated: no MapCoords overload survives in either binary, but Abode::Load
+	// reads its 12-byte MapCoords through this shape.
+	// BW1W120 inlined BW1M100 inlined GameOSFile::ReadSafe(MapCoords &)
+	void ReadSafe(MapCoords& value)
+	{
+		if (ReadEnabled)
+		{
+			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				ReadEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	// BW1W120 inlined BW1M100 103b4290 GameOSFile::WriteSafe(unsigned char &)
+	void WriteSafe(uint8_t& value)
 	{
 		if (WriteEnabled)
 		{
-			if (Write(&value, sizeof(T), NULL) == LH_FILE_RESULT_ERROR)
+			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
 			{
-				WriteEnabled = 0;
+				WriteEnabled = false;
 			}
-			Checksum += sizeof(T) + *(unsigned char*)&value;
+			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
+	// BW1W120 inlined BW1M100 102abca0 GameOSFile::WriteSafe(unsigned long &)
+	void WriteSafe(uint32_t& value)
+	{
+		if (WriteEnabled)
+		{
+			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				WriteEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	// fabricated: see ReadSafe(MapCoords &)
+	// BW1W120 inlined BW1M100 inlined GameOSFile::WriteSafe(MapCoords &)
+	void WriteSafe(MapCoords& value)
+	{
+		if (WriteEnabled)
+		{
+			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				WriteEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	// BW1W120 inlined BW1M100 inlined GameOSFile::ReadSafe<T>(LHListHead<T> &)
+	template <typename T> void ReadSafe(LHListHead<T>& list)
+	{
+		if (ReadEnabled)
+		{
+			int count;
+			ReadIt(count);
+			while (count > 0)
+			{
+				T* element;
+				ReadPtr((GameThing**)&element);
+				element->next = NULL;
+				list.AddToLast(element);
+				count--;
+			}
+		}
+	}
+	// BW1W120 inlined BW1M100 inlined GameOSFile::WriteSafe<T>(LHListHead<T> &)
+	template <typename T> void WriteSafe(LHListHead<T>& list)
+	{
+		if (WriteEnabled)
+		{
+			uint32_t count = list.count;
+			WriteIt(list.count);
+			int written = 0;
+			for (T* element = NULL; (element = (element == NULL ? list.head : element->next)) != NULL;)
+			{
+				if (++written > (int)count)
+				{
+					WriteEnabled = false;
+					break;
+				}
+				if (!WriteEnabled)
+				{
+					break;
+				}
+				WritePtr(element);
+			}
+		}
+	}
+
+	// BW1W120 00407750 BW1M100 100ba3d0 GameOSFile::ReadIt<T>(T &)
+	template <typename T> void ReadIt(T& out);
+
+	// BW1W120 00407700 BW1M100 100ba920 GameOSFile::WriteIt<T>(T &)
+	template <typename T> void WriteIt(T& value);
 	// BW1W120 00558dc0 BW1M100 10304ef0 GameOSFile::LoadInstance(GameThing **)
 	// TODO: Integrate the recovered factory after fixing constructed class layouts,
 	// particle nested scopes, and class-specific allocation functions.
@@ -212,12 +316,44 @@ public:
 	void WriteInfo(const GBaseInfo* info);
 	// BW1W120 00563f00 BW1M100 103008a0 GameOSFile::ReadInfo(GBaseInfo const **)
 	void ReadInfo(const GBaseInfo** info);
-	// BW1W120 00563f60 BW1M100 103007e0 GameOSFile::WriteCheckSum(GameThing *)
-	void WriteCheckSum(GameThing* thing);
-	// BW1W120 00563fa0 BW1M100 10300720 GameOSFile::ReadCheckSum(GameThing *)
-	void ReadCheckSum(GameThing* thing);
+	// BW1W120 00563f60 BW1M100 103007e0 GameOSFile::WriteChecksum(GameThing *)
+	void WriteChecksum(GameThing* thing);
+	// BW1W120 00563fa0 BW1M100 10300720 GameOSFile::ReadChecksum(GameThing *)
+	void ReadChecksum(GameThing* thing);
 };
 
 static_assert(sizeof(GameOSFile) == 0x230, "GameOSFile size is incorrect");
+
+// fabricated names: the original counted-array template names are unknown.
+// Each array has an unsigned-int count followed by individually checksummed raw elements.
+// Readers trust the saved count and keep iterating after errors; writers stop on an element error.
+template <typename T> static inline void ReadCountedArray(GameOSFile& file, T* values)
+{
+	if (GameOSFile::ReadEnabled)
+	{
+		unsigned int count;
+		file.ReadIt(count);
+		for (unsigned int i = 0; i < count; ++i)
+		{
+			file.ReadIt(values[i]);
+		}
+	}
+}
+
+template <typename T> static inline void WriteCountedArray(GameOSFile& file, T* values, unsigned int count)
+{
+	if (GameOSFile::WriteEnabled)
+	{
+		file.WriteIt(count);
+		for (unsigned int i = 0; i < count; ++i)
+		{
+			file.WriteIt(values[i]);
+			if (!GameOSFile::WriteEnabled)
+			{
+				break;
+			}
+		}
+	}
+}
 
 #endif /* BW1_DECOMP_GAME_OS_FILE_INCLUDED_H */

@@ -59,7 +59,7 @@ struct FragMesh
 	// Constructors
 
 	// BW1W120 0076d520 BW1M100 1015e3a0 FragMesh::FragMesh(GameOSFile &, LH3DMesh *)
-	FragMesh(GameOSFile* file, LH3DMesh* mesh);
+	FragMesh(GameOSFile& file, LH3DMesh* mesh);
 
 	// Destructors
 
@@ -72,6 +72,8 @@ struct FragMesh
 	void _dt();
 	// BW1W120 0076d4c0 BW1M100 1015e5a0 FragMesh::GetRandomSurfacePos(LHPoint *, float (*)(float))
 	bool GetRandomSurfacePos(LHPoint* pos, float (*rand_func)(float));
+	// BW1W120 0076d680 BW1M100 1015e1b0 FragMesh::WriteToFile(GameOSFile &)
+	void WriteToFile(GameOSFile& file);
 };
 
 #endif /* BW1_DECOMP_VISCOUS_LIQUID_INCLUDED_H */

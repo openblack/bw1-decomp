@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/AllMeshes.h> /* For MAX_COUNT_3D_MESHES */
+
 #include "LH3DBoundingBox.h" /* For struct LH3DBoundingBox */
 
 enum LH3D_MESH_FLAGS
@@ -24,9 +26,16 @@ enum LH3D_MESH_FLAGS
 
 // Forward Declares
 
+struct LH3DMesh;
 struct LH3DSubMesh;
 struct LH3DTexture;
 struct LHPoint;
+
+struct LH3DMeshPack
+{
+	int       MeshCount; /* 0x0 */
+	LH3DMesh* Meshes[MAX_COUNT_3D_MESHES];
+};
 
 struct LH3DMesh
 {
@@ -43,10 +52,21 @@ struct LH3DMesh
 	LHPoint*        ExtraPos;
 	void*           FootprintData;
 
+	// Static data
+
+	static LH3DMeshPack* MeshPack; /* 0x00e9fe34 */
+
 	// Static methods
 
 	// BW1W120 inlined BW1M100 103d9410 LH3DMesh::GetPackedMesh(long)
-	static LH3DMesh* GetPackedMesh(int index);
+	static LH3DMesh* GetPackedMesh(int index)
+	{
+		if (index < 0 || index >= MeshPack->MeshCount)
+		{
+			index = 0;
+		}
+		return MeshPack->Meshes[index];
+	}
 	// BW1W120 00806460 BW1M100 1006c720 LH3DMesh::Create(void* , int)
 	static LH3DMesh* Create(const void* buf, bool dont_care_about_texture);
 	// BW1W120 008067f0 BW1M100 1006c640 LH3DMesh::CreateFromHD(char *, int)
