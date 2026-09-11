@@ -33,4 +33,9 @@ public:
 	virtual void StringFunction(int param_1, char* param_2, int param_3);
 };
 
+// BW1W120 00842030 BW1M100 imported EditorProcessKey(LH_KEY, unsigned short)
+void EditorProcessKey(LH_KEY key, unsigned short modifier);
+// BW1W120 00842050 BW1M100 imported EditorProcessInputs(void)
+void EditorProcessInputs();
+
 #endif /* BW1_DECOMP_PRSS_INCLUDED_H */

@@ -7,14 +7,18 @@
 #include "Belief.h"
 #include "Bookmark.h"
 #include "Camera.h"
+#include "CameraEditor.h"
 #include "CameraExclusion.h"
 #include "CameraHelp.h"
 #include "ChallengeRoom.h"
 #include "Citadel.h"
 #include "CitadelHeart.h"
 #include "Climate.h"
+#include "Config.h"
 #include "ControlHand.h"
 #include "Creature.h"
+#include "CreatureLessonChooser.h"
+#include "CreatureMentalEditor.h"
 #include "CreatureRoom.h"
 #include "CreditsRoom.h"
 #include "GameInfo.h"
@@ -22,11 +26,14 @@
 #include "GameStats.h"
 #include "GestureSystem.h"
 #include "Global.h"
+#include "GroupBehaviour.h"
 #include "HelpProfile.h"
 #include "HelpSystem.h"
 #include "Interface.h"
 #include "LandBalance.h"
 #include "LandAlignement.h"
+#include "Living.h"
+#include "MobileWallHug.h"
 #include "MusicMood.h"
 #include "PhysicsObject.h"
 #include "PSysEditor.h"
@@ -39,6 +46,7 @@
 #include "SoundTag.h"
 #include "SpookyVoices.h"
 #include "Temple.h"
+#include "Villager.h"
 #include "WorldRoom.h"
 #include "WeatherInfo.h"
 #include <Lionhead/LH3DLib/development/LH3DAtmos.h>
@@ -51,6 +59,7 @@
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
 #include <Lionhead/LHMultiplayer/ver4.0/LHSession.h>
 #include <windows.h>
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>
 #include <mmsystem.h>
 #include <stdlib.h>
 #include <string.h>
@@ -59,8 +68,12 @@ GGame*    GGame::g_game;
 uint32_t  GGame::TutorialState;
 uint32_t  GGame::StartTime;
 uint32_t  GGame::MemoryState;
-uint8_t   GGame::ScriptRebootRequested;
+bool      GGame::ScriptRebootRequested;
+uint32_t  GGame::RepairMissingMothers;
 GGameInfo GGameInfo::Info;
+
+// BW1W120 0054d610. TODO: Original name unknown; tail-jumps to fn_007DEE00, not an empty function.
+void fn_0054D610();
 
 static_assert(sizeof(GGlobal) == 0x2d500, "GGlobal size is incorrect");
 static_assert(offsetof(GGlobal, field_0x2d2ac) == 0x2d2ac, "GGlobal editor mode offset is incorrect");
@@ -82,6 +95,17 @@ static_assert(offsetof(Town, next) == 0x75c, "Town next offset is incorrect");
 static_assert(offsetof(GGame, field_0x205a5c) == 0x205a5c, "GGame serialized byte offset is incorrect");
 static_assert(offsetof(GGame, field_0x205ba0) == 0x205ba0, "GGame serialized word offset is incorrect");
 static_assert(offsetof(GGame, script_creature_curse) == 0x250084, "GGame curse offset is incorrect");
+static_assert(sizeof(CMouse) == 4, "CMouse size is incorrect");
+static_assert(offsetof(GGame, Mouse) == 0x2502b8, "GGame mouse offset is incorrect");
+static_assert(offsetof(GGame, key_buffer) + offsetof(GKeyBuffer, Inputs) == 0x2502b0,
+              "GGame key array offset is incorrect");
+static_assert(offsetof(GGame, key_buffer) + offsetof(GKeyBuffer, BufferedKeys) == 0x2502b6,
+              "GGame key count offset is incorrect");
+static_assert(offsetof(GCameraEditor, field_0x10) == 0x10, "GCameraEditor flag offset is incorrect");
+static_assert(offsetof(GGame, GameLists) + offsetof(GlobalGameLists, LivingList) == 0x205bbc,
+              "GGame living list offset is incorrect");
+static_assert(offsetof(Living, next) == 0xa4, "Living link offset is incorrect");
+static_assert(offsetof(Villager, mother) == 0x100, "Villager mother offset is incorrect");
 
 // BW1W120 0054b9a0 BW1M100 1009d100 GGame::IsAvailable(void)
 bool32_t GGame::IsAvailable()
@@ -109,6 +133,95 @@ GCamera* GGame::GetCamera()
 
 // BW1W120 0054c330 BW1M100 10496be0 GGame::Delete(void)
 void GGame::Delete() {}
+
+// BW1W120 0054c340 BW1M100 10079850 GGame::ProcessFrameInputs(void)
+void GGame::ProcessFrameInputs()
+{
+	DanceEditState::UpdateEveryRender();
+	CreatureMentalEditor::Update();
+	CreatureLessonChooser::Update();
+	PSysEditorInterface::ProcessFrameInputs();
+	ProcessMapKeys();
+	if (GGlobal::Global.field_0x2d2ac != 0)
+	{
+		if (GCameraEditor::Instance == NULL || GCameraEditor::Instance->field_0x10 != 0)
+		{
+			EditorProcessInputs();
+		}
+	}
+	else if (!MyInterface()->IsPlayBack(0))
+	{
+		Mouse.ProcessButtons();
+	}
+	BMan_Zero();
+	EnterCriticalSection(&LHScreen::CriticalSection);
+	MyInterface()->ProcessFrameUpdates();
+	LeaveCriticalSection(&LHScreen::CriticalSection);
+}
+
+// BW1W120 0054c3d0 BW1M100 1001e260 GGame::ProcessGameInputs(void)
+void GGame::ProcessGameInputs()
+{
+	EnterCriticalSection(&LHKeyboard::CriticalSection);
+	ProcessBufferedKeys();
+	LeaveCriticalSection(&LHKeyboard::CriticalSection);
+	ProcessOneSuperpacket();
+	EnterCriticalSection(&LHScreen::CriticalSection);
+	MyInterface()->Process();
+	LeaveCriticalSection(&LHScreen::CriticalSection);
+}
+
+// BW1W120 0054c420 BW1M100 10083f50 GGame::ProcessBufferedKeys(void)
+void GGame::ProcessBufferedKeys()
+{
+	int count = key_buffer.BufferedKeys;
+	for (int i = 0; i < count; ++i)
+	{
+		// Snapshot the count, but reload the mode and array after each callback.
+		if (GGlobal::Global.field_0x2d2ac != 0)
+		{
+			EditorProcessKey(key_buffer.Inputs[(unsigned short)i].Key, key_buffer.Inputs[(unsigned short)i].Modifier);
+		}
+		else
+		{
+			ProcessKey(key_buffer.Inputs[(unsigned short)i].Key, key_buffer.Inputs[(unsigned short)i].Modifier);
+		}
+	}
+	key_buffer.BufferedKeys = 0;
+}
+
+// BW1W120 0054d620 BW1M100 1001e2f0 GGame::ProcessOneGameTurn(void)
+void GGame::ProcessOneGameTurn()
+{
+	fn_0054D610();
+	network.session->IsSinglePlayer();
+	if (config != NULL)
+	{
+		config->Process();
+	}
+	field_0x205d44 = 0;
+	field_0x205d40 += GGameInfo::Info.field_0x40;
+	ProcessGameInputs();
+	if (!g_game->field_0x599c)
+	{
+		ProcessGameCode();
+	}
+	fn_005557D0();
+	DoWallHuggerLookahead();
+	if (RepairMissingMothers == 1)
+	{
+		// Preserve the original iterator's null-to-head fallback.
+		for (Living* living = g_game->GameLists.LivingList.head; living != NULL;
+		     living = living == NULL ? g_game->GameLists.LivingList.head : living->next)
+		{
+			Villager* villager = dynamic_cast<Villager*>(living);
+			if (villager != NULL && villager->mother == NULL)
+			{
+				villager->mother = villager;
+			}
+		}
+	}
+}
 
 // BW1W120 0054d820 BW1M100 10083dd0 GGame::ProcessGameCode(void)
 void GGame::ProcessGameCode()
@@ -617,8 +730,9 @@ uint32_t GGame::Load(GameOSFile& file)
 	GGameInfo::Info.SetVisualTimeCycle(GGameInfo::Info.field_0x48, GGameInfo::Info.field_0x50,
 	                                   GGameInfo::Info.field_0x4c);
 	terrain_map.Init();
-	SoundMap->CalculateRadiusPointAndDistance();
-	SoundMap->UpdateFromMap(MapCoords(SoundMap->GetReceiverPos()));
+	GSoundMap* soundMap = SoundMap;
+	soundMap->CalculateRadiusPointAndDistance();
+	soundMap->UpdateFromMap(MapCoords(soundMap->GetReceiverPos()));
 	gesture_system->Reset();
 	help_system->Load(file);
 	help_profile->Load(file);

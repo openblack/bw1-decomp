@@ -46,6 +46,10 @@ struct LHKeyEvent
 
 struct LHKeyboard
 {
+	// BW1W120 00e8c118. Same lock formerly named gKeyboardCritSec in LHSystem.cpp.
+	// TODO: Descriptive name; original class/file scope is unknown.
+	static CRITICAL_SECTION CriticalSection;
+
 	int(__cdecl* Callback)(int, int, unsigned short, unsigned int, int);
 	int          CallbackContext;
 	uint8_t      KeyState[0x100];

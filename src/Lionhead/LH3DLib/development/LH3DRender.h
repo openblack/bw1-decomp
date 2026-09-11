@@ -91,6 +91,8 @@ void __cdecl stop_draw_sprite_to_screen();
 void __cdecl RenderLoadingFrame(char* param_1);
 // BW1W120 00841c20 BW1M100 10063840 BMan_Display(void)
 void __cdecl BMan_Display();
+// BW1W120 008415a0 BW1M100 10091a28 BMan_Zero(void)
+void __cdecl BMan_Zero();
 // BW1W120 0054d6f0 BW1M100 100a4900 DrawMouseCross(void)
 void __cdecl DrawMouseCross();
 

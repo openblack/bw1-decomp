@@ -42,7 +42,7 @@ static_assert(offsetof(LHSys, mouse) == 0x1c4, "LHSys mouse offset changed");
 // BW1W120 008a9338 imported from LHLogR: nonzero while the assert dialog is up.
 __declspec(dllimport) bool InAssertDialog;
 // BW1W120 00e8c118 guards the key-event ring; the first object after TheSystem.
-static CRITICAL_SECTION gKeyboardCritSec;
+CRITICAL_SECTION LHKeyboard::CriticalSection;
 // BW1W120 00c311a4 defined here: it heads this TU's initialized-data cluster
 // (gWindowActive/gTrackingMouse/the class-name strings follow it).
 uint8_t LHMouse::MouseWheelSkip = 1;
@@ -72,7 +72,7 @@ static unsigned char gKeyToAsciiTable[0x100] = {
 // BW1W120 007db800 construct TheSystem's embedded screen, mouse, input, and text state.
 LHSys::LHSys()
 {
-	InitializeCriticalSection(&gKeyboardCritSec);
+	InitializeCriticalSection(&LHKeyboard::CriticalSection);
 	// TODO: target emits the LHText/LHSpriteList stores at 0x7048/0x704c/0x7044 after
 	// the convert-tail helper; this TU's inferred LHText base constructor emits them early.
 	// Do not suppress the evidenced LHText type without identifying the original ordering.

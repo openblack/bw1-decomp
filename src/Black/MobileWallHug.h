@@ -179,4 +179,7 @@ struct LinearSquareSweepStruct
 	bool operator<(LinearSquareSweepStruct* other);
 };
 
+// BW1W120 00609a50 BW1M100 10013020 DoWallHuggerLookahead(void)
+void DoWallHuggerLookahead();
+
 #endif /* BW1_DECOMP_MOBILE_WALL_HUG_INCLUDED_H */
