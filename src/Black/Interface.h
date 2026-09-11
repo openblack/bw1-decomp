@@ -145,6 +145,10 @@ public:
 	void PostDrawProcess();
 	// BW1W120 005cec10 BW1M100 100254c0 GInterface::Process(void)
 	void Process();
+	// BW1W120 005cedb0 BW1M100 10084120 GInterface::ProcessFrameUpdates(void)
+	void ProcessFrameUpdates();
+	// BW1W120 005db710 BW1M100 10072560 GInterface::IsPlayBack(unsigned long) const
+	bool32_t IsPlayBack(uint32_t playback) const;
 	// BW1W120 005d0610 BW1M100 10084060 GInterface::UpdateHandRenderCollide(void)
 	void UpdateHandRenderCollide();
 	// BW1W120 005d9130 BW1M100 100315f0 GInterface::UpdateAllLeashes(void)

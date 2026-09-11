@@ -9,6 +9,7 @@
 #include <Lionhead/LHLib/ver5.0/LHTimer.h> /* For LHTimer */
 #include <Lionhead/LHLib/ver5.0/LHMouse.h> /* For enum LH_MOUSE_EVENT_TYPE */
 
+#include "BindableAction.h"   /* For struct CMouse */
 #include "CreatureDatabase.h" /* For struct CreatureDatabase */
 #include "Data.h"             /* For struct GData */
 #include "GameThing.h"        /* For struct GameThing */
@@ -71,7 +72,7 @@ public:
 	// BW1W120 00d0195c
 	static GGame* g_game;
 	// BW1W120 00d019a9. TODO: Original static member name is unrecovered.
-	static uint8_t ScriptRebootRequested;
+	static bool ScriptRebootRequested;
 	// TODO: Original names are unrecovered; shared with tutorial and packet processing.
 	// BW1W120 00d019a4
 	static uint32_t TutorialState;
@@ -79,6 +80,8 @@ public:
 	static uint32_t StartTime;
 	// BW1W120 00d019b0
 	static uint32_t MemoryState;
+	// BW1W120 00d0197c. TODO: Descriptive name and provisional scope; no writer found in either target.
+	static uint32_t RepairMissingMothers;
 
 	uint32_t               field_0x14;
 	GPlayer                players[0x8];
@@ -165,7 +168,7 @@ public:
 	uint8_t                field_0x250184[0x120];
 	uint32_t               field_0x2502a4; /* Set before an automatic save. */
 	GKeyBuffer             key_buffer;     /* 0x2502a8 */
-	uint32_t               field_0x2502b8;
+	CMouse                 Mouse;          /* 0x2502b8 */
 	uint32_t               field_0x2502bc;
 	GCamera*               camera; /* 0x2502c0 */
 	uint32_t               field_0x2502c4;
@@ -333,6 +336,12 @@ public:
 	void ResetAndStartPlaygroundGame(char* path);
 	// BW1W120 0063c3d0 BW1M100 1001e1e0 GGame::ProcessOneSuperpacket(void)
 	void ProcessOneSuperpacket();
+	// BW1W120 0063ef20 BW1M100 103db300 GGame::ProcessKey(LH_KEY, unsigned short)
+	void ProcessKey(LH_KEY key, unsigned short modifier);
+	// BW1W120 0063f710 BW1M100 100283d0 GGame::ProcessMapKeys(void)
+	void ProcessMapKeys();
+	// BW1W120 005557d0. TODO: Original name unknown; callers supply this, callee selects LHInetWeather singleton.
+	void fn_005557D0();
 	// BW1W120 0063f830 BW1M100 1009f340 GGame::ProcessBindableKeys(LH_KEY, LH_KEY, unsigned long)
 	uint32_t ProcessBindableKeys(LH_KEY param_1, LH_KEY param_2, unsigned long param_3);
 	// BW1W120 0063f940 BW1M100 1009f4b0 GGame::DoAction(unsigned long)

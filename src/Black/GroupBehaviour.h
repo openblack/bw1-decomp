@@ -99,6 +99,9 @@ public:
 class DanceEditState : public GroupBehaviour
 {
 public:
+	// BW1W120 0050ccc0 BW1M100 10091910 DanceEditState::UpdateEveryRender(void)
+	static void UpdateEveryRender();
+
 	// Override methods
 
 	// BW1W120 0050cc50 BW1M100 inlined DanceEditState::_dt(void)

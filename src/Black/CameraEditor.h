@@ -15,7 +15,10 @@ struct LH3DWay;
 class GCameraEditor : public Prss
 {
 public:
-	uint8_t field_0x10[0x18];
+	// BW1W120 00c59cf8. TODO: Original singleton name is unrecovered.
+	static GCameraEditor* Instance;
+	uint32_t              field_0x10;
+	uint8_t               field_0x14[0x14];
 
 	// Static methods
 

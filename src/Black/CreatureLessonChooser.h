@@ -3,6 +3,13 @@
 
 #include <assert.h> /* For static_assert */
 
+class CreatureLessonChooser
+{
+public:
+	// BW1W120 004cfb10 BW1M100 10091830 CreatureLessonChooser::Update(void)
+	static void Update();
+};
+
 enum LESSON_TYPE
 {
 	LESSON_TYPE_0x0 = 0x0,

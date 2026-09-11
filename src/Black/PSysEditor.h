@@ -4,6 +4,8 @@
 class PSysEditorInterface
 {
 public:
+	// BW1W120 0067d610 BW1M100 100918c0 PSysEditorInterface::ProcessFrameInputs(void)
+	static void ProcessFrameInputs();
 	// BW1W120 0067d630 BW1M100 1008e310 PSysEditorInterface::ProcessGameTurn(void)
 	static void ProcessGameTurn();
 	// BW1W120 0067d620 BW1M100 10014ce0 PSysEditorInterface::Draw3D
