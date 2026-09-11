@@ -20,18 +20,22 @@ template <typename T> class LHLinkedList
 public:
 	LHLinkedNode<T>*        head;
 	uint32_t                count;
-	inline LHLinkedNode<T>* GetStart() { return head.get(); }
+	inline LHLinkedNode<T>* GetStart() { return head; }
 	inline bool             Add(T* val)
 	{
 		if (!val)
 			return false;
 		LHLinkedNode<T>* node = new LHLinkedNode<T>(val);
-		node->next = head;
-		head = node;
-		++count;
+		if (node)
+		{
+			node->next = head;
+			head = node;
+			++count;
+		}
 		return true;
 	}
-	inline void Remove(T* val)
+	// The flag stops after the first match; it never controls payload ownership.
+	inline void Remove(T* val, bool only_first = false)
 	{
 		LHLinkedNode<T>* prev = NULL;
 		LHLinkedNode<T>* node = head;
@@ -46,6 +50,8 @@ public:
 					prev->next = next;
 				count--;
 				delete node;
+				if (only_first)
+					return;
 			}
 			else
 			{

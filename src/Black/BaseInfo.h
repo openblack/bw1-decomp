@@ -35,7 +35,7 @@ public:
 	// Static methods
 
 	// BW1W120 00436c30 BW1M100 103e4630 GBaseInfo::GetInfoPtr(unsigned long)
-	static GBaseInfo* GetInfoPtr(int index);
+	static GBaseInfo* GetInfoPtr(unsigned long index);
 
 	// Constructors
 
@@ -46,6 +46,8 @@ public:
 
 	// BW1W120 00436bd0 BW1M100 1035b720 GBaseInfo::SetInfoID(void)
 	void SetInfoID();
+	// BW1W120 00436c00 BW1M100 1017e040 GBaseInfo::GetInfoID(void) const
+	unsigned long GetInfoID() const;
 };
 
 class BaseInfo

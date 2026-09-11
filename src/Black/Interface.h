@@ -125,6 +125,12 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 005d8af0 BW1M100 103678e0 GInterface::StopAllImmersion(void)
+	void StopAllImmersion();
+
+	// BW1W120 005d0560 BW1M100 103582b0 GInterface::ResolveLoadForCreature(void)
+	void ResolveLoadForCreature();
+
 	// BW1W120 005ce4d0 BW1M100 1035be80 GInterface::SetToZero(void)
 	void SetToZero();
 	// BW1W120 005ce670 BW1M100 1035bd00 GInterface::Init(unsigned char)

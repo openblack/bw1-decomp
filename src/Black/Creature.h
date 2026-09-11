@@ -2,6 +2,7 @@
 #define BW1_DECOMP_CREATURE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For offsetof */
 #include <stdint.h> /* For uint32_t, uint8_t */
 #include <uchar.h>  /* For char16_t */
 
@@ -67,6 +68,9 @@ struct CreatureEmotionsForMusic
 class Creature : public Living
 {
 public:
+	// BW1W120 00c5fcf8 BW1M100 10aa7af0 CreatureList__8Creature
+	static LHLinkedList<Creature> CreatureList;
+
 	char16_t                             name[0x40]; /* 0xe0 */
 	CreaturePhysical*                    physical;   /* 0x160 */
 	CreatureMental*                      mind;
@@ -634,5 +638,14 @@ public:
 	// BW1W120 0050b340 BW1M100 100c02b0 Creed::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 };
+
+// Constructor boundaries: 00474690; flag stores: 00474130; allocation: 0055a697.
+static_assert(offsetof(Creature, HelpState) == 0x188, "Creature help offset is incorrect");
+static_assert(offsetof(Creature, HelpStackEntries) == 0x220, "Creature help stack offset is incorrect");
+static_assert(offsetof(Creature, ReceiveSpell) == 0x370, "Creature spell receiver offset is incorrect");
+static_assert(offsetof(Creature, field_0x110c) == 0x110c, "Creature flag offset is incorrect");
+static_assert(offsetof(Creature, field_0x1110) == 0x1110, "Creature flag offset is incorrect");
+static_assert(offsetof(Creature, field_0x1114) == 0x1114, "Creature flag offset is incorrect");
+static_assert(sizeof(Creature) == 0x12c8, "Creature size is incorrect");
 
 #endif /* BW1_DECOMP_CREATURE_INCLUDED_H */

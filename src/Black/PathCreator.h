@@ -30,6 +30,8 @@ struct PathCreator
 	void GetSaveGamePicturesPath__11PathCreatorFPc(char* path);
 	// BW1W120 0078eae0 BW1M100 101ca330 PathCreator::GetCurrentGamePath(char*)
 	void GetCurrentGamePath(char* path);
+	// BW1W120 0078eb20 BW1M100 100d7860 PathCreator::GetAutoSavePath(char*)
+	void GetAutoSavePath(char* path);
 	// BW1W120 0078efc0 BW1M100 103655d0 PathCreator::CheckAndRecreateSaveGamePaths(void)
 	bool CheckAndRecreateSaveGamePaths();
 };

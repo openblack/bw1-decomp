@@ -20,6 +20,9 @@ class Object;
 
 struct GLandscape
 {
+	// BW1W120 00d99580. Set by Open; TODO: original global name unknown.
+	static char Filename[];
+
 	LH3DTexture*  texture; /* 0x0 */
 	LH3DMaterial* material;
 
@@ -56,7 +59,7 @@ struct GLandscape
 	// BW1W120 005e42e0 BW1M100 1004d770 GLandscape::Draw(void)
 	void Draw();
 	// BW1W120 005e52e0 BW1M100 10379f50 GLandscape::Open(char *)
-	void Open(const char* path);
+	void Open(char* path);
 };
 
 // Free functions

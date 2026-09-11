@@ -148,8 +148,9 @@ public:
 	Config*                config;
 	uint32_t               Enum0x25017c;
 	GAME_MODE              GameMode; /* 0x250180 */
-	uint8_t                field_0x250184[0x124];
-	GKeyBuffer             key_buffer; /* 0x2502a8 */
+	uint8_t                field_0x250184[0x120];
+	uint32_t               field_0x2502a4; /* Set before an automatic save. */
+	GKeyBuffer             key_buffer;     /* 0x2502a8 */
 	uint32_t               field_0x2502b8;
 	uint32_t               field_0x2502bc;
 	GCamera*               camera; /* 0x2502c0 */
@@ -296,7 +297,7 @@ public:
 	// BW1W120 00552f40 BW1M100 1056f520 GGame::StartPlaygroundGame(char *)
 	void StartPlaygroundGame(char* map_path);
 	// BW1W120 00552f80 BW1M100 100369c0 GGame::IsMultiplayerGame(void) const
-	bool IsMultiplayerGame();
+	int IsMultiplayerGame() const;
 	// BW1W120 00552fa0 BW1M100 10423f90 GGame::FindTownWithID(unsigned long)
 	Town* FindTownWithID(int id);
 	// BW1W120 005538e0 BW1M100 10166f50 GGame::OnNewGame(void)
