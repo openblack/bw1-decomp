@@ -355,6 +355,16 @@ public:
 
 static_assert(sizeof(GameOSFile) == 0x230, "GameOSFile size is incorrect");
 
+// fabricated name: the original spelling is unknown, but Save paths re-check
+// WriteEnabled before every field write (Abode::Save), and only a macro can add
+// that guard without spending an inline level (WriteSafe must still expand
+// under the depth-1 inlining those TUs use). Load paths do not guard ReadSafe.
+#define WRITE_SAFE(file, value)                                                                                        \
+	if (GameOSFile::WriteEnabled)                                                                                      \
+	{                                                                                                                  \
+		(file).WriteSafe(value);                                                                                       \
+	}
+
 // fabricated names: the original counted-array template names are unknown.
 // Each array has an unsigned-int count followed by individually checksummed raw elements.
 // Readers trust the saved count and keep iterating after errors; writers stop on an element error.

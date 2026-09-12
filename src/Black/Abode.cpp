@@ -886,36 +886,15 @@ uint32_t Abode::Save(GameOSFile& file)
 {
 	if (MultiMapFixed::Save(file))
 	{
-		if (GameOSFile::WriteEnabled)
-		{
-			file.WriteSafe(field_0x7c);
-			if (GameOSFile::WriteEnabled)
-			{
-				file.WriteSafe(DrinkingWater);
-				if (GameOSFile::WriteEnabled)
-				{
-					file.WriteSafe(field_0x94);
-				}
-			}
-		}
+		WRITE_SAFE(file, field_0x7c);
+		WRITE_SAFE(file, DrinkingWater);
+		WRITE_SAFE(file, field_0x94);
 		file.WritePtr(town);
 		file.WriteSafe(villagers);
-		if (GameOSFile::WriteEnabled)
-		{
-			file.WriteSafe(AdultCount);
-			if (GameOSFile::WriteEnabled)
-			{
-				file.WriteSafe(PresentAtHome);
-				if (GameOSFile::WriteEnabled)
-				{
-					file.WriteSafe(ChildCount);
-					if (GameOSFile::WriteEnabled)
-					{
-						file.WriteSafe(index);
-					}
-				}
-			}
-		}
+		WRITE_SAFE(file, AdultCount);
+		WRITE_SAFE(file, PresentAtHome);
+		WRITE_SAFE(file, ChildCount);
+		WRITE_SAFE(file, index);
 		WriteCountedArray(file, resources, RESOURCE_TYPE_LAST);
 		bool32_t hasDestructionMesh = DestructionMesh != NULL;
 		file.WriteSafe(hasDestructionMesh);
