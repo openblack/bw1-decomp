@@ -233,6 +233,11 @@ class ProjectConfig:
         self.progress_each_module: bool = (
             False  # Include individual modules, disable for large numbers of modules
         )
+        # Reported names of the two built-in categories. The ids stay "dol" and
+        # "modules"; only the displayed name changes, so a PE project can call
+        # them e.g. "runblack" and "DLLs".
+        self.progress_base_name: str = "DOL"  # Name of the base image category
+        self.progress_modules_name: str = "Modules"  # Name of the combined modules category
         self.progress_categories: List[ProgressCategory] = []  # Additional categories
         self.print_progress_categories: Union[bool, List[str]] = (
             True  # Print additional progress categories in the CLI progress output
@@ -2193,15 +2198,17 @@ def generate_objdiff_config(
             }
         )
 
+    # The base image and its breakdown first, the modules and theirs last
     if len(build_config["modules"]) > 0:
-        add_category("dol", "DOL")
+        add_category("dol", config.progress_base_name)
+    for category in config.progress_categories:
+        add_category(category.id, category.name)
+    if len(build_config["modules"]) > 0:
         if config.progress_modules:
-            add_category("modules", "Modules")
+            add_category("modules", config.progress_modules_name)
         if config.progress_each_module:
             for module in build_config["modules"]:
                 add_category(module["name"], module["name"])
-    for category in config.progress_categories:
-        add_category(category.id, category.name)
 
     def cleandict(d):
         if isinstance(d, dict):

@@ -1549,9 +1549,11 @@ def link_order_callback(module_id: int, objects: List[str]) -> List[str]:
 # Adjust as desired for your project
 config.progress_categories = [
     ProgressCategory("game", "Game Code"),
-    ProgressCategory("sdk", "SDK Code"),
+    ProgressCategory("sdk", "Engine Code"),
 ]
-config.progress_each_module = args.verbose
+config.progress_base_name = "runblack"
+config.progress_modules_name = "DLLs"
+config.progress_each_module = True
 # Optional extra arguments to `objdiff-cli report generate`
 config.progress_report_args = [
     # Marks relocations as mismatching if the target value is different
