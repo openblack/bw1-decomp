@@ -40,9 +40,9 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00405980 BW1M100 103f15c0 Windmill::Open(void)
-	void Open();
+	static void Open();
 	// BW1W120 004059d0 BW1M100 10241170 Windmill::Close(void)
-	void Close();
+	static void Close();
 	// BW1W120 004059f0 BW1M100 1007d870 Windmill::PreDraw(void)
 	void PreDraw();
 };

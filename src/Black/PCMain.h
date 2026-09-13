@@ -2,6 +2,12 @@
 #define BW1_DECOMP_PC_MAIN_INCLUDED_H
 
 #include <windows.h> /* For HINSTANCE */
+#include <chlasm/LHKeyBoard.h>
+
+// BW1W120 00d019c5 / 00d019c8. Descriptive names; the free assertion callback
+// at 00641ff0 owns this input override, shared with GGame::KeyHandler.
+extern bool   AssertionKeyCapture;
+extern LH_KEY AssertionKey;
 
 // BW1W120 00d46abe / 00d46abf; byte flags written by ScanParameters.
 extern bool ARGS_FORCEINETCONN;

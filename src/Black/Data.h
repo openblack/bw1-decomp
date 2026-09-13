@@ -34,6 +34,8 @@ public:
 	uint32_t Rand(uint32_t max, const char* src_file, uint32_t src_line);
 	// BW1W120 00510750 BW1M100 100c08f0 GData::Reset(void)
 	void Reset();
+	// BW1W120 0050f960 GData::InitialiseShapes(void)
+	void InitialiseShapes();
 };
 
 #endif /* BW1_DECOMP_DATA_INCLUDED_H */

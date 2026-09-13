@@ -335,13 +335,14 @@ public:
 	static void KeyHandler(unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4,
 	                       void* param_5);
 	// BW1W120 0054ffe0 BW1M100 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
-	bool MouseHandler(void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4);
+	static uint32_t MouseHandler(void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3,
+	                             unsigned long param_4);
 	// BW1W120 00550080 BW1M100 101c6850 GGame::UnfinishInitialisation(void)
 	void UnfinishInitialisation();
 	// BW1W120 00550110 BW1M100 10505500 GGame::FinishInitialisation(void)
 	void FinishInitialisation();
 	// BW1W120 00550170 BW1M100 inlined GGame::CreateMeshPack(void)
-	void CreateMeshPack();
+	static void CreateMeshPack();
 	// BW1W120 00550390 BW1M100 10427340 GGame::LoadFiles(void)
 	bool32_t LoadFiles();
 	// BW1W120 00550410 BW1M100 1054a080 GGame::SetupPlayers(void)

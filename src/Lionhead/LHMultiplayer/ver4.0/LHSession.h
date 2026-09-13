@@ -32,6 +32,8 @@ public:
 	LH_MULTIPLAYER_API LH_RETURN Write(void* packet, unsigned long length);
 	// BW1W120 1001e2b0, import 008a945c
 	LH_MULTIPLAYER_API LH_RETURN SetIdlePeriod(unsigned long period);
+	// BW1W120 1001e6b0, import 008a9460
+	LH_MULTIPLAYER_API void EmptyEventQ();
 };
 
 #endif
