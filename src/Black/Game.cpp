@@ -103,6 +103,13 @@
 #include "WorldRoom.h"
 #include "WeatherInfo.h"
 #include "Windmill.h"
+#include "Plasma.h"
+#include "Setup.h"
+#include "Town.h"
+#include <Lionhead/LH3DLib/development/LH3DIsland.h>
+#include <Lionhead/LH3DLib/development/LH3DLandscape.h>
+#include <Lionhead/LH3DLib/development/LH3DMaterial.h>
+#include <Lionhead/LH3DLib/development/LH3DTexture.h>
 #include <Lionhead/LH3DLib/development/LH3DAtmos.h>
 #include <Lionhead/LH3DLib/development/LH3DRender.h>
 #include <Lionhead/LH3DLib/development/LH3DTech.h>
@@ -182,6 +189,135 @@ struct LHPlayerPointer_less
 		return left->TeamNumber * 100u + left->TeamMemberNumber < right->TeamNumber * 100u + right->TeamMemberNumber;
 	}
 };
+
+// BW1W120 0054c190 BW1M100 101c8360 GGame::StartGame(void)
+void GGame::StartGame()
+{
+	g_game->GameMode = GAME_MODE_RUNNING;
+	// TODO: Init returns full EAX in the original; its signature/boundary audit is deferred.
+	if (Init() == 1 && !Dat_00D46AC1)
+	{
+		stop_draw_sprite_to_screen();
+		Plasma* plasma = FrontEnd::Dat_00CD06E8;
+		if (plasma != NULL)
+		{
+			// Inlined Plasma::Close(), followed by nonvirtual delete.
+			plasma->PinMaterial->texture = NULL;
+			plasma->PinTexture->Release();
+			delete plasma;
+		}
+		FrontEnd::Dat_00CD06E8 = NULL;
+
+		// Inlined timer.Reset(0); timer.Start(), as in ResetLocalGameTimer.
+		timer.TickCount = GetTickCount();
+		timer.ElapsedTime = 0;
+		if (timer.SpeedUpFactor != 0.0f)
+		{
+			timer.SpeedUpFactor2 = timer.SpeedUpFactor;
+			unsigned long ticks = GetTickCount() - timer.TickCount;
+			timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+			timer.TickCount = GetTickCount();
+			timer.SpeedUpFactor = 0.0f;
+		}
+		timer.SpeedUpFactor = 0.00001f;
+		float         speed = timer.SpeedUpFactor2;
+		unsigned long ticks = GetTickCount() - timer.TickCount;
+		timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+		timer.TickCount = GetTickCount();
+		timer.SpeedUpFactor = speed;
+		Loop();
+	}
+}
+
+// BW1W120 00552f40. Mac 1056f520 includes the Reset performed by the Windows wrapper.
+void GGame::StartPlaygroundGame(char* map_path)
+{
+	if (map_path != NULL)
+	{
+		g_game->ClearMap();
+		LH3DLandscape::Release();
+		LH3DIsland::Release();
+		g_game->data.field_0x20 = 0;
+		GSetup::LoadMapFeatures(map_path);
+		Town::AsssignTownFeature();
+	}
+}
+
+// BW1W120 00555990. Combined with StartPlaygroundGame in the Mac binary.
+void GGame::ResetAndStartPlaygroundGame(char* path)
+{
+	script->Reset(1);
+	StartPlaygroundGame(path);
+}
+
+// BW1W120 005538e0 BW1M100 10166f50 GGame::OnNewGame(void)
+void GGame::OnNewGame()
+{
+	char path[260];
+	path_creator.CheckAndRecreateSaveGamePaths();
+	path_creator.GetCurrentGamePath(path);
+	ChallengeRoom::CreateChallengeFiles(path);
+	path_creator.GetSaveGamePicturesPath(path);
+	SaveGameRoom::CreateSaveGameFiles(path);
+
+	bool started = false;
+	if (g_game->script != NULL && GScript::Dat_00D95C0C && g_game->LandNumber == 1)
+	{
+		if (g_game->script->StartScript("LandControlAll"))
+		{
+			started = true;
+		}
+	}
+	DoYesNoSkipTutorialRequestersIfNecessary();
+	if (started && !(g_game->field_0x14 & 4))
+	{
+		g_game->script->SetupScreenFadeTo(0, 0, 0, 0);
+		Temple::Dat_00C2A150 = 0.0f;
+		Temple::Dat_00E06020 = 0.0f;
+	}
+}
+
+// BW1W120 00555270 BW1M100 10173ff0 GGame::ForceNeedUpdateInfluence(void)
+void GGame::ForceNeedUpdateInfluence()
+{
+	field_0x250174 = 1;
+}
+
+// BW1W120 00555280 BW1M100 1008f570 GGame::Update3DInfluence(void)
+void GGame::Update3DInfluence()
+{
+	if (field_0x250174 && data.GameTurn % 10 == 0)
+	{
+		InfluenceCircle::Reset();
+		GPlayer* player = NULL;
+		while ((player = GetNextPlayer(player)) != NULL)
+		{
+			// TODO: Original omits MSVC's byte-result mask after GetPlayerNumber.
+			long     playerNumber = GetRemapedPlayer(player->GetPlayerNumber());
+			float    influence;
+			Citadel* citadel = player->citadel;
+			if (citadel != NULL)
+			{
+				influence = citadel->GetInfluence();
+				if (influence != 0.0f)
+				{
+					InfluenceCircle::Add(playerNumber, citadel->Pos.GetLHPoint(), influence);
+				}
+				citadel->field_0x78 = influence;
+			}
+			for (Town* town = player->towns.head; town != NULL; town = town->next)
+			{
+				influence = town->influence;
+				if (influence != 0.0f)
+				{
+					InfluenceCircle::Add(playerNumber, town->Pos.GetLHPoint(), influence);
+				}
+				town->field_0xf24 = influence;
+			}
+		}
+		field_0x250174 = 0;
+	}
+}
 
 // BW1W120 0054ae20 BW1M100 1016b7c0 PauseGame(int)
 void PauseGame(int pause)
