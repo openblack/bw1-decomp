@@ -1,3 +1,3 @@
-#include "InterfaceMessage.h"
+#include "InterfaceMessageBuffer.h"
 
 #include "ColourConstants.h" /* For White */

@@ -6,11 +6,17 @@
 
 #include "Base.h"             /* For struct Base */
 #include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
+#include "InterfaceCollide.h"
+#include <Lionhead/LH3DLib/development/LHCoord.h>
 
-// Forward Declares
+struct GInterfaceMessage
+{
+	INTERFACE_MESSAGE_TYPES Message;
+	LHCoord                 Position;
+	GInterfaceCollide       Collide;
+};
 
-class GInterfaceCollide;
-struct LHCoord;
+static_assert(sizeof(GInterfaceMessage) == 0x3c, "GInterfaceMessage stride is incorrect");
 
 class GInterfaceMessageBuffer : public Base
 {
