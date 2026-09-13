@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 #include <stdio.h>
+#include <time.h>
 #include <windows.h>
 
 #include <chlasm/Enum.h>                   /* For enum TRIBE_TYPE */
@@ -62,12 +63,15 @@ class GestureSystemData;
 class GestureSystemDataList;
 struct GestureSystemResult;
 class HelpProfile;
+class HelpEditor;
+struct CreatureDanceLineInput;
 class HelpSystem;
 struct LHFilePath;
 struct Settings;
 struct Temple;
 class Town;
 class LHVideoPlayer;
+class LHMail;
 
 class GGame : public GameThing
 {
@@ -101,6 +105,21 @@ public:
 	static uint32_t NetworkTurnsThisFrame;
 	// BW1W120 00bec280
 	static bool RenderLoopEnabled;
+	// BW1W120 00d01964. Descriptive name for the Windows-only line-input object.
+	static CreatureDanceLineInput* CreatureDanceLineIn;
+	// Descriptive shared lifecycle names; original spellings are unrecovered.
+	// BW1W120 00d01970
+	static LHMail* Mail;
+	// BW1W120 00d01974
+	static bool InternetAvailable;
+	// BW1W120 00bea9a0. Extracted storage; full array extent is not established.
+	static uint8_t RealPlayerMap[];
+	// BW1W120 008df608
+	static char* const NetworkApplication;
+	// BW1W120 008df60c
+	static char* const NetworkChannel;
+	// BW1W120 008df610
+	static char* const NetworkPassword;
 
 	uint32_t               field_0x14;
 	GPlayer                players[0x8];
@@ -116,7 +135,9 @@ public:
 	uint8_t                field_0x599f;
 	uint32_t               field_0x59a0;
 	uint32_t               field_0x59a4;
-	uint8_t                field_0x59a8[0xc];
+	uint32_t               field_0x59a8;
+	time_t                 field_0x59ac;
+	uint32_t               field_0x59b0;
 	Temple*                temple; /* 0x59b4 */
 	GMap                   map;
 	int32_t                LandNumber; /* 0x205a08 */
@@ -172,7 +193,7 @@ public:
 	uint32_t               field_0x250080;
 	ScriptCreatureCurse    script_creature_curse;
 	GScript*               script; /* 0x250090 */
-	uint32_t               field_0x250094;
+	HelpEditor*            field_0x250094;
 	uint32_t               field_0x250098;
 	MapCoords              StartCameraCoords;
 	uint8_t                field_0x2500a8[0xc8];
@@ -259,6 +280,11 @@ public:
 	void SetupDataTables();
 	// BW1W120 0054bf20 BW1M100 104eff40 GGame::ClearVariables(void)
 	void ClearVariables();
+	// BW1W120 0054ec80 BW1M100 105b94a0 GGame::Close(void)
+	// Both targets return 1 in the full result register; original Boolean spelling is unknown.
+	bool32_t Close();
+	// BW1W120 005557a0 BW1M100 101bf310 GGame::ResetState(void)
+	void ResetState();
 	// BW1W120 0054c180 BW1M100 1003a410 GGame::GetCamera(void)
 	GCamera* GetCamera();
 	// BW1W120 0054c190 BW1M100 101c8360 GGame::StartGame(void)
@@ -317,7 +343,7 @@ public:
 	// BW1W120 00550170 BW1M100 inlined GGame::CreateMeshPack(void)
 	void CreateMeshPack();
 	// BW1W120 00550390 BW1M100 10427340 GGame::LoadFiles(void)
-	bool LoadFiles();
+	bool32_t LoadFiles();
 	// BW1W120 00550410 BW1M100 1054a080 GGame::SetupPlayers(void)
 	void SetupPlayers();
 	// BW1W120 005507d0 BW1M100 inlined GGame::LoopThroughPlayers(void)
@@ -363,6 +389,8 @@ public:
 	Town* FindTownWithID(unsigned long id);
 	// BW1W120 005538e0 BW1M100 10166f50 GGame::OnNewGame(void)
 	void OnNewGame();
+	// BW1W120 005537f0 BW1M100 1035f700 GGame::SetSpeed(float)
+	void SetSpeed(float speed);
 	// BW1W120 00555280 BW1M100 1008f570 GGame::Update3DInfluence(void)
 	GPlayer* Update3DInfluence();
 	// BW1W120 00555850 BW1M100 10051560 GGame::MyInterface(void)

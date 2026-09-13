@@ -1,4 +1,41 @@
 #include "Game.h"
+#include "Alignment.h"
+#include "MobileStatic.h"
+#include "CarriedObject.h"
+#include "CreatureDanceLineInput.h"
+#include "CreatureMental.h"
+#include "DanceGroup.h"
+#include "DeadTree.h"
+#include "HelpEditor.h"
+#include "InterfaceStatus.h"
+#include "JCGameBlock.h"
+#include "MPFEData.h"
+#include "PowerSpin.h"
+#include "SpecialVillagerInfo.h"
+#include "DialogBoxKeyBinding.h"
+#include "DialogBoxOptions.h"
+#include "DialogBoxSaveMessage.h"
+#include "EditorPhysics.h"
+#include "IpSpecialDialog.h"
+#include "PCMain.h"
+#include "PlayerSymbol.h"
+#include "SetupBox.h"
+#include "SpecialVillager.h"
+#include "Utils.h"
+#include "MapShield.h"
+#include "Object.h"
+#include "RoutePlan.h"
+#include <Lionhead/LH3DLib/development/LH3DText.h>
+#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <Lionhead/LHLib/ver5.0/RPFollow.h>
+#include <Lionhead/LHLog/ver4.0/LHSPrintf.h>
+#include <Lionhead/LHMultiplayer/ver4.0/LHMail.h>
+#include <Lionhead/LHMultiplayer/ver4.0/LHNetUser.h>
+#include <set>
+#include <Lionhead/LH3DLib/development/InfluenceCircle.h>
+#include <Lionhead/LH3DLib/development/SuperVillager.h>
+#include <Lionhead/LH3DLib/development/LH3DSprite.h>
+#include <Lionhead/LHMultiplayer/ver4.0/LHPlayer.h>
 
 #include "ColourConstants.h"    /* For White */
 #include "LandscapeConstants.h" /* For CellSizeXGridDim */
@@ -87,30 +124,380 @@
 #include <string.h>
 #include <wchar.h>
 
-GGame*           GGame::g_game;
-uint32_t         GGame::TutorialState;
-uint32_t         GGame::StartTime;
-uint32_t         GGame::MemoryState;
-bool             GGame::ScriptRebootRequested;
-uint32_t         GGame::RepairMissingMothers;
-GGameInfo        GGameInfo::Info;
-CRITICAL_SECTION GGame::VideoTimerSection;
-bool             GGame::SavingMap;
-bool             GGame::SystemExit;
-int              GGame::PacketTimeHistory[10];
-unsigned long    GGame::IncomingQueueHistory[100];
-uint32_t         GGame::NetworkTurnsThisFrame;
-bool             GGame::RenderLoopEnabled = true;
+GGame*                  GGame::g_game;
+uint32_t                GGame::TutorialState;
+uint32_t                GGame::StartTime;
+uint32_t                GGame::MemoryState;
+bool                    GGame::ScriptRebootRequested;
+uint32_t                GGame::RepairMissingMothers;
+GGameInfo               GGameInfo::Info;
+CRITICAL_SECTION        GGame::VideoTimerSection;
+bool                    GGame::SavingMap;
+bool                    GGame::SystemExit;
+int                     GGame::PacketTimeHistory[10];
+unsigned long           GGame::IncomingQueueHistory[100];
+uint32_t                GGame::NetworkTurnsThisFrame;
+bool                    GGame::RenderLoopEnabled = true;
+CreatureDanceLineInput* GGame::CreatureDanceLineIn;
+LHMail*                 GGame::Mail;
+bool                    GGame::InternetAvailable;
+char* const             GGame::NetworkApplication = "Lionhead";
+char* const             GGame::NetworkChannel = "Channel";
+char* const             GGame::NetworkPassword = "Password";
 
 // BW1W120 0054d610. TODO: Original name unknown; tail-jumps to fn_007DEE00, not an empty function.
-void fn_0054D610();
-void CheckSquareFunction(int x, int z, RPHolder* holder);
-void AddSpecialRPObjects(RPHolder* holder);
-void InputReset();              // 005fa000
-void DoLogo();                  // 005fa070
-void ClearTipVideo();           // 005f3d90
-void ResetLocalGameTimer();     // 0054c570
-void SendNetworkChecksum(bool); // 00635210
+void             fn_0054D610();
+void             CheckSquareFunction(int x, int z, RPHolder* holder);
+void             AddSpecialRPObjects(RPHolder* holder);
+void             InputReset();                  // 005fa000
+void             DoLogo();                      // 005fa070
+void             ClearTipVideo();               // 005f3d90
+void             ResetLocalGameTimer();         // 0054c570
+void             SendNetworkChecksum(bool);     // 00635210
+void             EnterVideoSection();           // 00844c80
+void             LeaveVideoSection();           // 00844ca0
+void             DeleteVideo(bool);             // 0054a940
+void             fn_0064D0F0();                 // Real emitted empty function; original name unrecovered.
+void             UninitialiseLiquidParticles(); // 00845c10
+void             ResetCameraModeNew3();         // 00460b20
+void             ResetBlockersForClearMap();    // 0060a400
+void             InitStaticsValues();           // 0054a780
+void             ClearAllStuff();               // 0082aed0
+void             ReinitLoadingScreen();
+unsigned __int64 GetCreatureFileChecksum();
+void             load_variables();
+void             fn_0054B190();
+char*            WCHAR2CHAR(char16_t* text);
+void __stdcall   camera_editor_callback(unsigned long message, unsigned long param_1, unsigned long param_2);
+void __stdcall   water_drop_cb(LHPoint& position, float size, unsigned long type);
+
+// Original comparator name; equal team/member keys intentionally collide in the set.
+struct LHPlayerPointer_less
+{
+	bool32_t operator()(LHPlayer* left, LHPlayer* right) const
+	{
+		return left->TeamNumber * 100u + left->TeamMemberNumber < right->TeamNumber * 100u + right->TeamMemberNumber;
+	}
+};
+
+// BW1W120 0054ae20 BW1M100 1016b7c0 PauseGame(int)
+void PauseGame(int pause)
+{
+	// Mac confirms unsigned-to-float conversion; MSVC optimizes the elapsed add to signed FIADD.
+	if (pause != ((GGame::g_game->field_0x14 >> 2) & 1))
+	{
+		if (GGame::g_game->network.session->IsSinglePlayer())
+		{
+			uint32_t flags = GGame::g_game->field_0x14;
+			// Replace only the pause bit with its complement, preserving the other flags.
+			GGame::g_game->field_0x14 = flags ^ ((~flags ^ flags) & 4u);
+			LHTimer& timer = GGame::g_game->timer;
+			if (GGame::g_game->field_0x14 & 4)
+			{
+				if (timer.SpeedUpFactor != 0.0f)
+				{
+					timer.SpeedUpFactor2 = timer.SpeedUpFactor;
+					unsigned long ticks = GetTickCount() - timer.TickCount;
+					timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+					timer.TickCount = GetTickCount();
+					timer.SpeedUpFactor = 0.0f;
+				}
+			}
+			else
+			{
+				timer.SpeedUpFactor = 0.00001f;
+				float         speed = timer.SpeedUpFactor2;
+				unsigned long ticks = GetTickCount() - timer.TickCount;
+				timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+				timer.TickCount = GetTickCount();
+				timer.SpeedUpFactor = speed;
+			}
+		}
+	}
+}
+
+// BW1W120 005537f0 BW1M100 1035f700 GGame::SetSpeed(float)
+void GGame::SetSpeed(float speed)
+{
+	// As in PauseGame, unsigned source conversion produces signed FIADD with the original MSVC.
+	network.field_0x4 = speed;
+	if (!network.session->IsSinglePlayer())
+	{
+		network.session->SetIdlePeriod((unsigned long)(100.0f / network.field_0x4));
+	}
+	else
+	{
+		float newSpeed = network.field_0x4;
+		if (timer.SpeedUpFactor != 0.0f)
+		{
+			unsigned long ticks = GetTickCount() - timer.TickCount;
+			timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+			timer.TickCount = GetTickCount();
+			timer.SpeedUpFactor = newSpeed;
+		}
+		else
+		{
+			timer.SpeedUpFactor2 = newSpeed;
+		}
+		GGlobal::Global.debug.field_0x2d284 = 0;
+	}
+}
+
+// BW1W120 0054af60 BW1M100 100e4d00 AddSpecialRPObjects(RPHolder*)
+void AddSpecialRPObjects(RPHolder* holder)
+{
+	if (holder->field_0x50024 != NULL)
+	{
+		Creature* creature = (Creature*)holder->field_0x50024->field_0x64060;
+		for (MapShield* shield = GGame::g_game->GameLists.MapShields.head; shield != NULL; shield = shield->next)
+		{
+			if (shield->CreatureMustAvoid(creature))
+			{
+				shield->AddToRoutePlan(holder, creature, 0, NULL);
+			}
+		}
+	}
+}
+
+// BW1W120 0054afb0 BW1M100 105705d0 CheckSquareFunction(int,int,RPHolder*)
+void CheckSquareFunction(int x, int z, RPHolder* holder)
+{
+	if (x >= 0 && x < 512 && z >= 0 && z < 512)
+	{
+		JustMapXZ mapPos;
+		mapPos.Init((unsigned short)x, (unsigned short)z);
+		if (mapPos.InBounds())
+		{
+			bool avoidWater = holder->field_0x50024 == NULL;
+			for (int dx = -1; dx < 2; ++dx)
+			{
+				int cellX = x + dx;
+				if (cellX >= 0 && cellX < 512)
+				{
+					for (int dz = -1; dz < 2; ++dz)
+					{
+						int cellZ = z + dz;
+						if (cellZ >= 0 && cellZ < 512)
+						{
+							int type = LandAvoid[cellZ][cellX];
+							if (type == 1 || (avoidWater && type == 6))
+							{
+								Point2D centre(cellX * 10.0f + 5.0f, cellZ * 10.0f + 5.0f);
+								holder->AddObject(-1, centre, 7.1f, 0);
+							}
+						}
+					}
+				}
+			}
+			MapCell*        cell = mapPos.ToMap();
+			Creature*       creature = avoidWater ? NULL : (Creature*)holder->field_0x50024->field_0x64060;
+			MapCellIterator iter = cell->GetFirstIterator();
+			while (iter.object != NULL)
+			{
+				if (iter.object->CreatureMustAvoid(creature) && holder->SquareDoesNotContain((int)iter.object, x, z))
+				{
+					iter.object->AddToRoutePlan(holder, creature, 0, NULL);
+				}
+				iter.object = iter.object->GetMapChild(*iter.cell);
+				iter.MoveToMobileObsIfNeededAndPoss();
+			}
+		}
+	}
+}
+
+// BW1W120 0054ef40 BW1M100 10514230 GGame::InitOneTimeOnly(void)
+uint32_t GGame::InitOneTimeOnly()
+{
+	Report3D__FPCce("InitOneTimeOnly\n");
+	settings->ParseConfigFile(NULL);
+	RenderLoadingFrame(true);
+	key_buffer.Init(0x80);
+	Report3D__FPCce("LoadTextScript\n");
+	RenderLoadingFrame(true);
+	RenderLoadingFrame(true);
+	MPFEData::CreatureFileChecksum = GetCreatureFileChecksum();
+	Report3D__FPCce("LHNetUseProfile\n");
+	LHSys::TheSystem.MessageHook = camera_editor_callback;
+	g_water_drop_cb = water_drop_cb;
+	LHNetUseProfile(LHNetGetCurrentProfileNameFromRegistry());
+	Report3D__FPCce("ReinitLoadingScreen\n");
+	RenderLoadingFrame(true);
+	ReinitLoadingScreen();
+	Report3D__FPCce("EditorPhysics::Load\n");
+	RenderLoadingFrame(true);
+	EditorPhysics::Load();
+	fn_007DEE00();
+	Report3D__FPCce("GSpookyVoices\n");
+	RenderLoadingFrame(true);
+	GSpookyVoices::Init();
+	Report3D__FPCce("GConfirmation\n");
+	RenderLoadingFrame(true);
+	GConfirmation::Init();
+	fn_007DEE00();
+	Report3D__FPCce("StartupGameInfo\n");
+	RenderLoadingFrame(true);
+	GGameInfo::Info.CurrentYear = (uint32_t)(int)GGameInfo::Info.GetYear();
+	fn_007DEE00();
+	RenderLoadingFrame(true);
+	GUtils::SetupUtils();
+	fn_007DEE00();
+	RenderLoadingFrame(true);
+	if (LoadFiles() != 1)
+	{
+		return 0;
+	}
+	fn_007DEE00();
+	RenderLoadingFrame("Loading variables...");
+	Report3D__FPCce("load_variables\n");
+	load_variables();
+	fn_007DEE00();
+	fn_007DEE00();
+	RenderLoadingFrame(true);
+	Report3D__FPCce("SetupStatics\n");
+	GInterface::SetupStatics();
+	RenderLoadingFrame("Initialising PSysGlobal...");
+	PSysGlobal::InitializeOneTimeOnly();
+	RenderLoadingFrame("...Finished PSysGlobal");
+	dialog_box_options = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1025) DialogBoxOptions;
+	dialog_box_options->Init(780, 500, DialogBoxOptions::ControlCallback);
+	dialog_box_options->setup_box->field_0xc8 = 1;
+	dialog_box_key_binding = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102a) DialogBoxKeyBinding;
+	dialog_box_key_binding->Init(780, 500, DialogBoxKeyBinding::ControlCallback);
+	dialog_box_save_message = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102e) DialogBoxSaveMessage;
+	dialog_box_save_message->Init(500, 250, DialogBoxSaveMessage::ControlCallback);
+	IPSpecialDialog::Instance = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1031) IPSpecialDialog;
+	IPSpecialDialog::Instance->Init(700, 250, IPSpecialDialog::ControlCallback);
+	control_map = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1034) ControlMap;
+	control_map->LoadDefaults();
+	if (PlayerProfile::GetNumberOfProfiles() != 0 && LHNetGetCurrentProfileNameFromRegistry() != NULL)
+	{
+		char16_t profile[256];
+		PlayerProfile::SetCurrentProfile((char16_t*)LHNetGetCurrentProfileNameFromRegistry());
+		PlayerProfile::GetCurrentProfile(profile);
+		PlayerProfile::GetProfileByName(profile, PlayerProfile::Profile);
+	}
+	PlayerSymbol::OpenOnce();
+	char internetOptions = 0;
+	if (ARGS_FORCEINETCONN)
+	{
+		internetOptions = 1;
+	}
+	if (ARGS_NOINETCONN)
+	{
+		internetOptions = 2;
+	}
+	field_0x59a0 = 30;
+	Report3D__FPCce("LHCheckForInternetConnection\n");
+	InternetAvailable = LHCheckForInternetConnection(internetOptions);
+	Report3D__FPCce("GetNumberOfProfiles\n");
+	if (InternetAvailable == true && PlayerProfile::GetNumberOfProfiles() > 0)
+	{
+		char userPath[256];
+		memset(userPath, 0, sizeof(userPath));
+		path_creator.UpdateCurrentProfile();
+		path_creator.GetCurrentUserPath(userPath);
+		if (path_creator.field_0x21c != NULL && path_creator.field_0x21c[0] != '\0')
+		{
+			Mail = LHLoadInGameEmailSystem(LHSPrintf("%s\\addressbook.lhe", userPath).Text);
+		}
+		else
+		{
+			Mail = LHLoadInGameEmailSystem(NULL);
+		}
+		if (Mail != NULL && !Mail->InitDriver())
+		{
+			delete Mail;
+			Mail = NULL;
+		}
+	}
+	else
+	{
+		Mail = NULL;
+	}
+	SpecialVillager::InitOnStartup();
+	fn_0054B190();
+	GLandBalance::Init();
+	Base::ObjectHeapStore->Store();
+	return 1;
+}
+
+// BW1W120 00550410 BW1M100 1054a080 GGame::SetupPlayers(void)
+void GGame::SetupPlayers()
+{
+	// TODO: FindNext still inlines here, and STL cleanup outlines more than the original.
+	LHPlayer* player = NULL;
+	if (network.Open(WCHAR2CHAR(player_info.NetworkName), NetworkApplication, NetworkChannel, NetworkPassword) ==
+	    LH_ERROR)
+	{
+		return;
+	}
+	NeutralPlayerIndex = PLAYER_NAME_NEUTRAL;
+	HelpTextDataBase& textDatabase = HelpTextDataBase::HelpTextDatabase;
+	players[PLAYER_NAME_NEUTRAL].Init(
+		PLAYER_TYPE_NEUTRAL, PLAYER_NAME_NEUTRAL,
+		(textDatabase.count <= 0x1a6c ? textDatabase.array : &textDatabase.array[0x1a6c])->Text, PLAYER_NAME_NEUTRAL);
+	field_0x205a5c = 0;
+	while ((player = network.session->Players.FindNext(player)) != NULL)
+	{
+		++field_0x205a5c;
+		if (!g_game->IsMultiplayerGame())
+		{
+			player->TeamNumber = player->PlayerId + 1;
+			player->TeamMemberNumber = 1;
+		}
+		if (player->UserId == network.session->NetUser->id.field_0x0)
+		{
+			g_game->field_0x205a5a = (uint8_t)player->PlayerId;
+			if (player->TeamNumber == 0)
+			{
+				g_game->PlayerIndex = PLAYER_NAME_PLAYER_SEVEN;
+			}
+			else
+			{
+				g_game->PlayerIndex = (uint8_t)(player->TeamNumber - 1);
+			}
+		}
+	}
+	player = NULL;
+	std::set<LHPlayer*, LHPlayerPointer_less> orderedPlayers;
+	while ((player = network.session->Players.FindNext(player)) != NULL)
+	{
+		orderedPlayers.insert(player);
+	}
+	for (std::set<LHPlayer*, LHPlayerPointer_less>::iterator it = orderedPlayers.begin(); it != orderedPlayers.end();
+	     it++)
+	{
+		player = *it;
+		if (player->TeamNumber == 0)
+		{
+			RealPlayerMap[player->PlayerId] = PLAYER_NAME_PLAYER_SEVEN;
+			players[PLAYER_NAME_PLAYER_SEVEN].InitReal(player, PLAYER_NAME_PLAYER_SEVEN);
+		}
+		else
+		{
+			RealPlayerMap[player->PlayerId] = (uint8_t)(player->TeamNumber - 1);
+			// Only the argument and map entry truncate; indexing uses the full team number.
+			players[player->TeamNumber - 1].InitReal(player, (uint8_t)(player->TeamNumber - 1));
+		}
+	}
+	for (unsigned int i = 0; i < 7; ++i)
+	{
+		char playerName[200];
+		sprintf(playerName, "Player[%d]", i + 1);
+		if (players[i].GetNextInterfaceStatus(NULL) == NULL)
+		{
+			players[i].Init(PLAYER_TYPE_0, (uint8_t)i, CHAR2WCHAR(playerName), (uint8_t)i);
+		}
+	}
+}
+
+static_assert(offsetof(LHPlayer, PlayerId) == 0x174, "LHPlayer ID offset");
+static_assert(offsetof(LHPlayer, TeamMemberNumber) == 0x1f4, "LHPlayer member offset");
+static_assert(offsetof(LHPlayer, TeamNumber) == 0x1f8, "LHPlayer team offset");
+static_assert(offsetof(LHSession, Players) == 0x90, "LHSession player list offset");
+static_assert(offsetof(LHConnection, NetUser) == 0x88, "LHConnection user offset");
+static_assert(offsetof(GPlayerInfo, NetworkName) == 0x50, "GPlayerInfo network name offset");
+static_assert(offsetof(LHSys, MessageHook) == 0x70cc, "LHWin message callback offset");
 
 // BW1W120 0054b240 BW1M100 104fda10 GGame::GGame(void)
 GGame::GGame()
@@ -191,6 +578,222 @@ void GGame::ClearVariables()
 	field_0x205a1c = 0;
 }
 
+// BW1W120 0054bfd0 BW1M100 103dcca0 GGame::ToBeDeleted(int)
+void GGame::ToBeDeleted(int param_1)
+{
+	DanceLight::CloseBitmaps();
+	delete gesture_system_data_list;
+	delete gesture_system_data;
+	delete gesture_system;
+	::operator delete(gesture_system_result);
+	::operator delete(settings);
+	delete script;
+	delete SoundMap;
+	fclose(field_0x2502d0);
+	fclose(field_0x2502d4);
+	fclose(field_0x2502d8);
+	fclose(field_0x2502dc);
+	fclose(field_0x2502e0);
+	fclose(field_0x2502e4);
+	GWater::g_sprite_circle->Release();
+	LHSys::TheSystem.keyboard.Callback = NULL;
+	LHSys::TheSystem.keyboard.CallbackContext = NULL;
+	CPController::Close();
+	EnterVideoSection();
+	DeleteVideo(true);
+	LH3DRender::RemoveFinishFrameCallback(LHVideoPlayer::thedraw, NULL);
+	LeaveVideoSection();
+	EnterCriticalSection(&VideoTimerSection);
+	LeaveCriticalSection(&VideoTimerSection);
+	DeleteCriticalSection(&LHVideoPlayer::CriticalSection);
+	DeleteCriticalSection(&VideoTimerSection);
+	Flags |= GAME_THING_FLAG_UNAVAILABLE;
+	delete field_0x250094;
+	if (config != NULL)
+	{
+		delete config;
+		config = NULL;
+	}
+}
+
+// BW1W120 0054ec80 BW1M100 105b94a0 GGame::Close(void)
+bool32_t GGame::Close()
+{
+	ClearMap();
+	climate = NULL;
+	field_0x59a0 = 30;
+	GameThing::ProcessDeadList(1);
+	time_t currentTime;
+	time(&currentTime);
+	PlayerProfile::Profile.timestarted += currentTime - field_0x59ac;
+	PlayerProfile::WriteBackToRegistry(PlayerProfile::Profile);
+	GameThing::ProcessDeadList(1);
+	field_0x250538 = 0;
+	if (script != NULL)
+	{
+		script->Reset(1);
+	}
+	GameThing::ProcessDeadList(1);
+	delete temple;
+	temple = NULL;
+	MusicMoodController::Close();
+	DeadTree::Close();
+	GameThing::ProcessDeadList(1);
+	UnfinishInitialisation();
+	CarriedObject::Reset();
+	help_profile->ToBeDeleted(0);
+	help_system->ToBeDeleted(0);
+	help_system = NULL;
+	help_profile = NULL;
+	CreatureDanceLineInput* lineInput = CreatureDanceLineIn;
+	if (lineInput != NULL)
+	{
+		lineInput->fn_00437C00();
+		lineInput->Analysis.fn_004373E0();
+		::operator delete(lineInput);
+	}
+	CreatureDanceLineIn = NULL;
+	MusicMoodController::CreatureMusicMoodEnabled = 0;
+	GameThing::ProcessDeadList(1);
+	SoundMap->Reset();
+	camera->ToBeDeleted(0);
+	camera = NULL;
+	GameThing::ProcessDeadList(1);
+	terrain_map.Clear();
+	DanceGroup::NextUntitledNumber = 1;
+	fn_0064D0F0();
+	for (GPlayer* player = GetNextPlayerAndNeutral(NULL); player != NULL; player = GetNextPlayerAndNeutral(player))
+	{
+		player->Uninit();
+		GameThing::ProcessDeadList(1);
+	}
+	UninitialiseLiquidParticles();
+	GameThing::ProcessDeadList(1);
+	landscape.Close();
+	GameThing::ProcessDeadList(1);
+	AttributeTest::DeleteAttributeArray();
+	AttributeTest::DeleteBeliefArray();
+	GameThing::ProcessDeadList(1);
+	PhysicsObject::DeleteAll();
+	while (PowerSpinRunner::First != NULL)
+	{
+		delete PowerSpinRunner::First;
+	}
+	for (int i = 0; i < 8; ++i)
+	{
+		players[i].SetToZero();
+		GAlignment* alignment = players[i].alignment;
+		alignment->field_0xc = 0.0f;
+		alignment->value = 0.0f;
+	}
+	GameThing::ProcessDeadList(1);
+	Base::ObjectHeapStore->Restore();
+	return 1;
+}
+
+// BW1W120 00552bb0 BW1M100 10424170 GGame::ClearMap(void)
+void GGame::ClearMap()
+{
+	fn_007DEE00();
+	g_game->field_0x14 |= 0x8000;
+	field_0x14 &= 0xffddffff;
+	field_0x205a10 = 0;
+	field_0x205a14 = 0;
+	SuperVillager* superVillager = SuperVillager::g_first;
+	while (superVillager != NULL)
+	{
+		SuperVillager* current = superVillager;
+		superVillager = superVillager->Next;
+		current->Release();
+	}
+	SuperVillager::g_first = NULL;
+	g_game->GetCamera()->ClearCameraStack();
+	MPFEData::Data.Reset();
+	InfluenceCircle::Reset();
+	// The coordinate setters are inlined here, unlike the constructor's SetToZero call.
+	LH3DMapCoords& startCoords = (LH3DMapCoords&)StartCameraCoords;
+	startCoords.x = 0;
+	startCoords.z = 0;
+	startCoords.altitude = 0.0f;
+	if (players[PlayerIndex].creature != NULL && players[PlayerIndex].GetLeaderInterfaceStatus() != NULL &&
+	    players[PlayerIndex].creature->field_0x1058 == 0)
+	{
+		char mindPath[256];
+		char physiquePath[256];
+		sprintf(mindPath, ".\\Scripts\\CreatureMind\\%s",
+		        players[PlayerIndex].GetLeaderInterfaceStatus()->GetInterface()->player->UserFilename);
+		players[PlayerIndex].creature->mind->SaveMind(mindPath);
+		sprintf(physiquePath, ".\\Scripts\\CreatureMind\\Physique%s",
+		        players[PlayerIndex].GetLeaderInterfaceStatus()->GetInterface()->player->UserFilename);
+		players[PlayerIndex].creature->Save3D(physiquePath);
+	}
+	CameraExclusion::RemoveAll();
+	CameraExclusion::ResetExclusionFile(0);
+	ResetCameraModeNew3();
+	PhysicsObject::DeleteAll();
+	g_game->MyInterface()->hand->OnClearMap();
+	GGlobal::Global.audio->ReleaseAllThingMusicInfo();
+	GGlobal::Global.audio->Reset();
+	g_game->script->ValidateScriptVariables();
+	GGlobal::Global.audio->Reset();
+	GameLists.ClearMap();
+	if (g_game->temple != NULL)
+	{
+		ChallengeRoom::ChallengeClear();
+	}
+	for (int i = 0; i < 8; ++i)
+	{
+		players[i].OnEndOfClearMap();
+	}
+	Bookmark::ClearAll();
+	ScriptHighlight::OnClearMap();
+	FireFly::OnClearMap();
+	PSysGlobal::OnClearMap();
+	g_game->script->ValidateScriptVariables();
+	g_game->MyInterface()->Validate();
+	GLandscape::DrawListRebuildCount = 1;
+	GBaseOnly::ReleaseAll();
+	Dance* dance = g_game->GameLists.dances.head;
+	while (dance != NULL)
+	{
+		Dance* next = dance->Next;
+		dance->ToBeDeleted(0);
+		dance = next;
+	}
+	GameThing::ProcessDeadList(1);
+	ResetState();
+	GameStats::ClearAll();
+	CameraHelp::EnabledFeatures = 0x1bf;
+	CameraHelp::AutoPitchParam2 = 75.0f;
+	CameraHelp::AutoPitchParam1 = 0.5235988f;
+	HelpProfile::AccumulatedTime = 0;
+	for (int j = 0; j < GLandscape::DrawObjectCount; ++j)
+	{
+		GLandscape::DrawObjects[j] = NULL;
+	}
+	GLandscape::DrawObjectCount = 0;
+	GLandscape::DrawListRebuildCount = 1;
+	ResetBlockersForClearMap();
+	climate = NULL;
+	SoundMap->Reset();
+	terrain_map.Clear();
+	PhysicsObject::DeleteAll();
+	while (PowerSpinRunner::First != NULL)
+	{
+		delete PowerSpinRunner::First;
+	}
+	GameThing::ProcessDeadList(1);
+	Forest::OnClearMap();
+	Creature::OnClearMap();
+	GSpecialVillagerInfo::OnClearMap();
+	g_game->field_0x14 &= ~0x8000u;
+	GLandBalance::Init();
+	InitStaticsValues();
+	GameBlock::Clean();
+	ClearAllStuff();
+	fn_007DEE00();
+}
+
 // Constructors emitted in the original Game translation unit.
 // BW1W120 0054b910 BW1M100 10018800 MusicMoodPacket::MusicMoodPacket(void)
 MusicMoodPacket::MusicMoodPacket()
@@ -253,6 +856,10 @@ static_assert(sizeof(GestureSystemData) == 0x65c, "GestureSystemData size is inc
 static_assert(sizeof(GestureSystem) == 0xc98, "GestureSystem size is incorrect");
 static_assert(sizeof(GestureSystemResult) == 0xc, "GestureSystemResult size is incorrect");
 static_assert(sizeof(Settings) == 0x104, "Settings size is incorrect");
+static_assert(offsetof(CreatureDanceLineInput, Analysis) == 0x28, "Line-input prefix offset is incorrect");
+static_assert(offsetof(Dance, Next) == 0xec, "Dance link offset is incorrect");
+static_assert(sizeof(Dance) == 0x12c, "Dance size is incorrect");
+static_assert(offsetof(GGame, field_0x59ac) == 0x59ac, "Game start-time offset is incorrect");
 
 static_assert(sizeof(GGlobal) == 0x2d500, "GGlobal size is incorrect");
 static_assert(offsetof(GGlobal, field_0x2d2ac) == 0x2d2ac, "GGlobal editor mode offset is incorrect");
