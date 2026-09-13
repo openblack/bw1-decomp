@@ -8,43 +8,36 @@ Two modes:
   Diff (-d):          Show side-by-side instruction diff for a function
 
 Usage:
-  python tools/decomp-diff.py -u runblack-decrypted/Black/Abode
-  python tools/decomp-diff.py -u runblack-decrypted/Black/Abode -s nonmatching
-  python tools/decomp-diff.py -u runblack-decrypted/Black/Abode -d "Fixed::CanBeSetOnFire"
+  python tools/decomp-diff.py -u Abode -s nonmatching
+  python tools/decomp-diff.py --source src/Black/Player.cpp --sections
+  python tools/decomp-diff.py -u Packet --strict -d "GPacket::ProcessPacket"
+  python tools/decomp-diff.py -u Abode --regex -d "Fixed::(CanBeSetOnFire|Get)"
+
+LEFT is the original target, RIGHT the compiled object. --strict compares all
+function relocations; the default explicitly uses data_value. --exact compares
+complete mangled or demangled names (case-sensitive); --regex searches either
+name (case-sensitive) and explicitly permits batch diffs. Default selection is
+case-insensitive substring matching, but ambiguous -d selections are errors.
+--sections aggregates actual section sizes by name, including BSS and COMDAT
+fragments, with target-size-weighted objdiff scores. Unknown scores are N/A,
+not zero, and weighted scores are not counts of physically matching bytes.
+Missing symbol section membership is recovered from unique COFF name/offset
+matches. Ambiguous symbols or unavailable/unsupported objects leave it as '?'.
 """
 
 import argparse
-import json
-import os
-import subprocess
+import re
 import sys
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List
 
-script_dir = os.path.dirname(os.path.realpath(__file__))
-root_dir = os.path.abspath(os.path.join(script_dir, ".."))
+sys.dont_write_bytecode = True
 
-_exe = ".exe" if os.name == "nt" else ""
-OBJDIFF_CLI = os.environ.get("OBJDIFF_CLI", os.path.join(root_dir, "build", "tools", "objdiff-cli" + _exe))
+from decomp_common import resolve_unit, run_diff, symbol_section
 
 
-def run_objdiff(unit: str) -> Dict[str, Any]:
-    """Run objdiff-cli diff and return parsed JSON."""
-    try:
-        result = subprocess.run(
-            [OBJDIFF_CLI, "diff", "-c", "functionRelocDiffs=data_value", "-u", unit, "-o", "-", "--format", "json"],
-            capture_output=True,
-            cwd=root_dir,
-        )
-    except FileNotFoundError:
-        print(
-            f"objdiff-cli not found at '{OBJDIFF_CLI}'. Build it (ninja) or set OBJDIFF_CLI.",
-            file=sys.stderr,
-        )
-        sys.exit(1)
-    if result.returncode != 0:
-        print(f"objdiff-cli error: {result.stderr.decode()}", file=sys.stderr)
-        sys.exit(1)
-    return json.loads(result.stdout)
+def run_objdiff(unit: str, strict=False) -> Dict[str, Any]:
+    """Compatibility entry point; shared callers should use run_diff."""
+    return run_diff(unit, strict=strict)
 
 
 def classify_symbol(sym: Dict[str, Any]) -> str:
@@ -64,26 +57,54 @@ def classify_symbol(sym: Dict[str, Any]) -> str:
     return "unknown"
 
 
-def symbol_section(sym: Dict[str, Any], sections: List[Dict[str, Any]]) -> str:
-    """Determine which section a symbol belongs to."""
-    # For named section data symbols like [.rodata-0]
-    name = sym.get("name", "")
-    if name.startswith("[."):
-        return name[1:].split("-")[0].rstrip("]")
-    # Use content type as best indicator
-    if classify_symbol(sym) == "function":
-        return ".text"
-    # Check sections for data
-    for sec in sections:
-        kind = sec.get("kind", "")
-        if kind in ("SECTION_DATA", "SECTION_BSS"):
-            return sec["name"]
-    return ".data"
-
-
 def fuzzy_match(pattern: str, name: str) -> bool:
     """Case-insensitive substring match."""
     return pattern.lower() in name.lower()
+
+
+def name_matches(pattern, sym, args):
+    """Select by either original mangled name or full demangled name."""
+    names = (sym.get("name", ""), sym.get("demangled_name") or sym.get("name", ""))
+    if getattr(args, "exact", False):
+        return pattern in names
+    if getattr(args, "regex", False):
+        return any(re.search(pattern, name) is not None for name in names)
+    return any(fuzzy_match(pattern, name) for name in names)
+
+
+def build_sections(data, args):
+    """Aggregate each side independently by name; never zip COFF fragments.
+
+    Scores come from target sections. If any nonempty target fragment lacks a
+    score, the aggregate is N/A. Missing sizes display '-', distinct from zero.
+    Compiled-only debug/directive sections are included. --section filters rows.
+    """
+    sides = []
+    for side in ("left", "right"):
+        totals = {}
+        for section in data.get(side, {}).get("sections", []):
+            row = totals.setdefault(section["name"], {"size": 0, "weighted": 0.0, "known": True})
+            size = int(section.get("size", 0))
+            row["size"] += size
+            score = section.get("match_percent")
+            if score is None and size:
+                row["known"] = False
+            elif score is not None:
+                row["weighted"] += size * score
+        sides.append(totals)
+    left, right = sides
+    print(f"{'SECTION':<16} {'TARGET':>10} {'COMPILED':>10} {'SCORE':>9}")
+    print("-" * 48)
+    for name in dict.fromkeys(list(left) + list(right)):
+        if args.section and name != args.section:
+            continue
+        target, compiled = left.get(name), right.get(name)
+        target_size = str(target["size"]) + "B" if target is not None else "-"
+        compiled_size = str(compiled["size"]) + "B" if compiled is not None else "-"
+        score = "N/A"
+        if target and target["known"] and target["size"]:
+            score = f"{target['weighted'] / target['size']:.2f}%"
+        print(f"{name:<16} {target_size:>10} {compiled_size:>10} {score:>9}")
 
 
 def build_overview(data: Dict[str, Any], args) -> None:
@@ -97,6 +118,8 @@ def build_overview(data: Dict[str, Any], args) -> None:
 
     # Process left (original/target) symbols
     for i, sym in enumerate(left_syms):
+        if args.search and not name_matches(args.search, sym, args):
+            continue
         sym_type = classify_symbol(sym)
         # Skip section symbols and external references
         if sym_type in ("section", "unknown"):
@@ -128,6 +151,8 @@ def build_overview(data: Dict[str, Any], args) -> None:
 
     # Process right (decomp/base) symbols that aren't targeted (extra)
     for i, sym in enumerate(right_syms):
+        if args.search and not name_matches(args.search, sym, args):
+            continue
         if sym.get("target_symbol") is not None:
             continue  # Already covered via left side
         sym_type = classify_symbol(sym)
@@ -151,9 +176,6 @@ def build_overview(data: Dict[str, Any], args) -> None:
 
     if args.section:
         rows = [r for r in rows if r[3] == args.section]
-
-    if args.search:
-        rows = [r for r in rows if fuzzy_match(args.search, r[5])]
 
     if not rows:
         print("No symbols match the given filters.")
@@ -212,13 +234,16 @@ def render_instruction(
                 # Resolve relocation target from instruction.relocation
                 reloc_info = inst.get("relocation", {})
                 ts = reloc_info.get("target_symbol")
-                if ts is not None and ts < len(all_syms):
+                if ts is not None and 0 <= ts < len(all_syms):
                     target_sym = all_syms[ts]
                     val = target_sym.get("demangled_name", target_sym.get("name", "?"))
                 else:
-                    # Fallback: extract from formatted text
-                    formatted = inst.get("formatted", "")
-                    val = formatted.split()[-1] if formatted else "?"
+                    val = "?"
+                # Protobuf JSON encodes the signed int64 addend as a decimal
+                # string and omits zero. Keep it inside the diff braces.
+                addend = int(reloc_info.get("addend", 0))
+                if addend:
+                    val += ("+" if addend > 0 else "-") + f"0x{abs(addend):x}"
             else:
                 val = str(arg)
 
@@ -242,41 +267,42 @@ def render_instruction(
 
 
 def build_diff(data: Dict[str, Any], symbol_name: str, args) -> None:
-    """Print side-by-side instruction diff for a specific function."""
+    """Select function pairs; only explicit regex selection allows batches."""
     left_syms = data.get("left", {}).get("symbols", [])
     right_syms = data.get("right", {}).get("symbols", [])
-
-    # Find the symbol by fuzzy matching on either side, then resolve
-    # the pair via target_symbol (direct index into other side's array).
-    left_sym = None
-    right_sym = None
-
+    pairs = []
+    paired_right = set()
     for sym in left_syms:
-        name = sym.get("demangled_name", sym.get("name", ""))
-        mangled = sym.get("name", "")
-        if fuzzy_match(symbol_name, name) or fuzzy_match(symbol_name, mangled):
-            left_sym = sym
+        ts = sym.get("target_symbol")
+        right = right_syms[ts] if ts is not None and 0 <= ts < len(right_syms) else None
+        if right is not None:
+            paired_right.add(ts)
+        if classify_symbol(sym) == "function" and (
+            name_matches(symbol_name, sym, args) or
+            (right is not None and name_matches(symbol_name, right, args))
+        ):
+            pairs.append((sym, right))
+    for i, sym in enumerate(right_syms):
+        if i not in paired_right and classify_symbol(sym) == "function" and name_matches(symbol_name, sym, args):
             ts = sym.get("target_symbol")
-            if ts is not None and ts < len(right_syms):
-                right_sym = right_syms[ts]
-            break
+            left = left_syms[ts] if ts is not None and 0 <= ts < len(left_syms) else None
+            if not any(pair[0] is left for pair in pairs) or left is None:
+                pairs.append((left, sym))
+    if not pairs:
+        raise ValueError(f"Function not found: {symbol_name}")
+    if len(pairs) > 1 and not getattr(args, "regex", False):
+        names = [(left or right).get("demangled_name", (left or right).get("name", "?"))
+                 for left, right in pairs]
+        raise ValueError("Ambiguous function selection; use --exact with a full name or --regex for a batch:\n  "
+                         + "\n  ".join(names))
+    for i, (left, right) in enumerate(pairs):
+        if i:
+            print()
+        render_diff_pair(left, right, left_syms, right_syms, args)
 
-    # If not found in left, try right
-    if left_sym is None:
-        for sym in right_syms:
-            name = sym.get("demangled_name", sym.get("name", ""))
-            mangled = sym.get("name", "")
-            if fuzzy_match(symbol_name, name) or fuzzy_match(symbol_name, mangled):
-                right_sym = sym
-                ts = sym.get("target_symbol")
-                if ts is not None and ts < len(left_syms):
-                    left_sym = left_syms[ts]
-                break
 
-    if left_sym is None and right_sym is None:
-        print(f"Symbol not found: {symbol_name}", file=sys.stderr)
-        sys.exit(1)
-
+def render_diff_pair(left_sym, right_sym, left_syms, right_syms, args):
+    """Render one already-selected target/compiled function pair."""
     # Header
     display_name = (left_sym or right_sym).get(
         "demangled_name", (left_sym or right_sym).get("name", "?")
@@ -300,10 +326,7 @@ def build_diff(data: Dict[str, Any], symbol_name: str, args) -> None:
     range_start = 0
     range_end = float("inf")
     if args.range:
-        parts = args.range.split("-")
-        range_start = int(parts[0], 16)
-        if len(parts) > 1 and parts[1]:
-            range_end = int(parts[1], 16)
+        range_start, range_end = parse_range(args.range)
 
     context = args.context
     no_collapse = args.no_collapse
@@ -317,14 +340,15 @@ def build_diff(data: Dict[str, Any], symbol_name: str, args) -> None:
         l_inst = li.get("instruction", {})
         r_inst = ri.get("instruction", {})
 
-        l_addr = l_inst.get("address", "")
-        r_addr = r_inst.get("address", "")
+        # Address zero is omitted by protobuf JSON, even for real instructions.
+        l_addr = l_inst.get("address", 0) if l_inst else None
+        r_addr = r_inst.get("address", 0) if r_inst else None
 
         # Use the first available address for offset display
         addr_str = ""
-        if l_addr:
+        if l_addr is not None:
             addr_str = f"{int(l_addr):x}"
-        elif r_addr:
+        elif r_addr is not None:
             addr_str = f"{int(r_addr):x}"
 
         l_text = render_instruction(li, left_syms, is_diff=True) if li else ""
@@ -349,7 +373,7 @@ def build_diff(data: Dict[str, Any], symbol_name: str, args) -> None:
             marker = "?"
 
         is_match = (marker == " ")
-        offset_int = int(l_addr) if l_addr else (int(r_addr) if r_addr else 0)
+        offset_int = int(l_addr) if l_addr is not None else (int(r_addr) if r_addr is not None else 0)
         rows.append((addr_str, marker, l_text, r_text, is_match, offset_int))
 
     # Apply range filter
@@ -409,16 +433,36 @@ def build_diff(data: Dict[str, Any], symbol_name: str, args) -> None:
                 print(f"{m}{a:>6} | {lt:<{max_left}} | {rt}")
 
 
-def main():
+def parse_range(value):
+    """Inclusive hexadecimal range: START, START-, or START-END."""
+    if not re.fullmatch(r"(?:0[xX])?[0-9a-fA-F]+(?:-(?:(?:0[xX])?[0-9a-fA-F]+)?)?", value):
+        raise ValueError("Invalid range; expected hexadecimal START, START-, or START-END")
+    start, separator, end = value.partition("-")
+    start = int(start, 16)
+    end = int(end, 16) if separator and end else float("inf")
+    if end < start:
+        raise ValueError("Invalid range: end must be greater than or equal to start")
+    return start, end
+
+
+def main(argv=None):
     parser = argparse.ArgumentParser(
-        description="Agent-friendly objdiff wrapper for decomp projects"
+        description="Agent-friendly objdiff wrapper for decomp projects",
+        epilog=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter,
     )
+    selector = parser.add_mutually_exclusive_group(required=True)
+    selector.add_argument(
+        "-u", "--unit", help="Exact full unit name or unique basename (e.g. Abode)"
+    )
+    selector.add_argument("--source", help="Source path from metadata.source_path; relative to project root or absolute")
     parser.add_argument(
-        "-u", "--unit", required=True, help="Unit name (e.g. runblack-decrypted/Black/Abode)"
+        "-d", "--diff", metavar="SYMBOL", help="Function name selector; --regex explicitly permits multiple functions"
     )
-    parser.add_argument(
-        "-d", "--diff", metavar="SYMBOL", help="Show diff for a specific symbol"
-    )
+    parser.add_argument("--strict", action="store_true", help="Compare all function relocations (default: data_value)")
+    parser.add_argument("--sections", action="store_true", help="Show actual section sizes and target-weighted scores, including BSS")
+    names = parser.add_mutually_exclusive_group()
+    names.add_argument("--exact", action="store_true", help="Match complete mangled/demangled names for --search or -d")
+    names.add_argument("--regex", action="store_true", help="Use case-sensitive regex for --search or -d (batch diff)")
 
     # Overview filters
     parser.add_argument(
@@ -429,11 +473,11 @@ def main():
     parser.add_argument(
         "-s",
         "--status",
-        help="Filter by status: missing, matching, nonmatching, extra (comma-separated)",
+        help="Filter by status: missing, match, nonmatching, extra (comma-separated; matching is an alias)",
     )
     parser.add_argument("--section", help="Filter by section name (e.g. .text)")
     parser.add_argument(
-        "--search", help="Fuzzy search on demangled symbol name"
+        "--search", help="Overview name selector (default: case-insensitive substring)"
     )
 
     # Diff options
@@ -453,15 +497,46 @@ def main():
         help="Don't collapse matching instruction runs",
     )
 
-    args = parser.parse_args()
-
-    data = run_objdiff(args.unit)
-
-    if args.diff:
-        build_diff(data, args.diff, args)
-    else:
-        build_overview(data, args)
+    args = parser.parse_args(argv)
+    if args.context < 0:
+        parser.error("--context must be nonnegative")
+    if args.sections and (args.diff or args.search or args.type or args.status):
+        parser.error("--sections supports --section, but not symbol filters or -d")
+    if args.diff and (args.search or args.type or args.status or args.section):
+        parser.error("-d cannot be combined with overview filters")
+    if (args.exact or args.regex) and not (args.diff or args.search):
+        parser.error("--exact/--regex requires -d or --search")
+    if not args.diff and (args.range or args.no_collapse or args.context != 3):
+        parser.error("--range, --no-collapse and --context require -d")
+    for field, allowed in (("type", {"function", "object"}),
+                           ("status", {"missing", "match", "matching", "nonmatching", "extra"})):
+        value = getattr(args, field)
+        if value is not None:
+            values = [part.strip() for part in value.split(",")]
+            if any(part not in allowed for part in values):
+                parser.error(f"Invalid --{field}; choose from {', '.join(sorted(allowed))}")
+            setattr(args, field, ",".join("match" if part == "matching" else part for part in values))
+    try:
+        if args.range:
+            parse_range(args.range)
+        if args.regex:
+            re.compile(args.diff or args.search)
+    except (ValueError, re.error) as error:
+        parser.error(str(error))
+    try:
+        unit = resolve_unit(unit=args.unit, source=args.source)
+        data = run_objdiff(unit["name"], strict=args.strict)
+        if args.sections:
+            build_sections(data, args)
+        elif args.diff:
+            build_diff(data, args.diff, args)
+        else:
+            build_overview(data, args)
+    except (OSError, ValueError, RuntimeError) as error:
+        print(f"error: {error}", file=sys.stderr)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

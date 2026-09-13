@@ -18,6 +18,10 @@ Truly hard judgment calls — ambiguous code structure, naming disputes, archite
 Do that by leaving TODOs around places that feel especially fake and wrong rather than refusing to tackle complicated tasks.
 The ultimate goal of the project is not just a matching binary, but **human-readable, modifiable source code**.
 
+Before trying another source variant, identify the assembly difference it is intended
+to explain. If repeated experiments merely shuffle registers or move mismatches
+elsewhere, retain the clearest supported implementation and document the unresolved cause.
+
 ## Repository Layout
 
 - `configure.py`        — Project configuration and generator script.
@@ -33,16 +37,64 @@ The ultimate goal of the project is not just a matching binary, but **human-read
 - `tools/`              — Scripts shared between projects.
 - `docs/`               — documentation on reverse-engineering
 
+Keep detailed investigation records and task-specific handoffs in the user's disassembly
+folder (`C:\Users\Matt\Development\Disassembly\RE` in this environment), rather than
+adding them to `docs/`.
+
 ## Build & Diff Workflow
 
-Note that on windows, all tool names should be suffixed with `.exe`, while the following documentation uses the UNIX spelling (without `.exe`) for simplicity.
+On Windows, native tool names use `.exe`; examples below omit that suffix for brevity.
+Preserve Ninja target spelling exactly, including case and separators, even on Windows.
+Normalize paths for filesystem comparisons, not when passing target names to Ninja.
 
 Ninja is used for most workflows. Simply running `ninja` in the root of the repository will build the project and report the overall matching progress.
 
-To check changes against a baseline, `ninja baseline` can be used to generate a baseline report on the current state of the work tree, after which `ninja changes_all` can be used to show how the current changes to work tree influence matching progress, including a per-symbol report.
-**Important**: for regression testing, you **must** use `ninja baseline` and `ninja changes_all`.
-If the worktree already has changes and you want to test for regressions when compared to master, stash the changes, call `ninja baseline`, pop the stash and call `ninja changes_all`.
-When asked to work on a task, if a worktree is clean or only contains general scaffolding like classes and function stubs, you **must** use `baseline` before starting work and `changes_all` after finishing work to report on the results to the user.
+### Baselines and final verification
+
+For matching work, run `ninja baseline` **before editing** and preserve that baseline
+throughout the task. If the worktree already has changes, record whether the baseline
+includes them. To compare against a clean branch instead, preserve the changes before
+building that baseline and restore them afterward.
+
+For actively investigated units, also capture rich snapshots: ordinary reports do not
+preserve historical compiled layouts or strict relocation evidence.
+
+```powershell
+ninja baseline
+python tools/decomp-regress.py --unit Game --strict --snapshot build/BW1W120/Game-before.json
+```
+
+At completion, verify affected sources and header consumers, build, explicitly refresh
+the report, and run `ninja changes_all`. `decomp-verify.py` automates whole-file formatting
+checks, original compiler replay, the full build/hash checks, report refresh and regression
+analysis. It defaults to a read-only plan; execution requires `--run` and an existing baseline.
+
+```powershell
+python tools/decomp-verify.py --since main --list
+python tools/decomp-verify.py --since main --run --baseline build/BW1W120/baseline.json
+ninja changes_all
+```
+
+Use `--changed` for current worktree edits or `--unit Game` for a focused unit. After shared
+header changes, use changed/since selection to cover consumers rather than only one unit.
+`--compile-only` provides a focused compiler check without the full verification pipeline.
+
+**Inspect sections as well as functions.** `changes_all` does not expose every section
+change; use `decomp-regress.py` for the full audit. A negative byte count for `.bss` may
+represent actual storage changes, an include introducing a TU-local static, or a fuzzy-score
+change caused by splitting an anonymous target range into named symbols. Determine which
+occurred; never add padding or undo established symbol recovery to restore a percentage.
+
+A successful Ninja run does not always refresh the report after extracted objects change.
+For an explicit refresh and audit without rebuilding:
+
+```powershell
+python tools/decomp-regress.py --refresh --fail-on-regression
+```
+
+Refreshing reads existing objects; it does not establish that sources and headers were
+rebuilt. Freshness checks report stale or uncertain evidence, not proof of a correct build.
+Use `--help` for snapshot comparison and machine-readable output options.
 
 The underlying utility used for splitting the binary is `dtk` (`build/tools/dtk`).
 It is already properly set up and almost never requires any meddling.
@@ -51,13 +103,14 @@ The main diffing tool used by humans is **objdiff**. It compares the compiled `.
 
 **Important**: The human user typically has objdiff open in the background.
 It watches source files and **automatically recompiles** whenever a file changes.
-This means after editing a source or header file, you do **not** need to manually `touch` files or force rebuilds — just run `ninja` and if it says "no work to do", that's fine; objdiff has already compiled the latest code.
-Never waste time trying to force ninja to rebuild.
+Do not manually `touch` files or force Ninja rebuilds when it says "no work to do";
+objdiff may already have compiled the latest code. This does not replace final
+header-consumer verification through `decomp-verify.py`.
 
 ### Fast per-iteration loop (agents)
 
 When iterating on a single translation unit, do **not** run bare `ninja` on every
-edit. Full `ninja` recompiles the graph, **relinks `runblack-decrypted-linked.exe`,
+edit. Full `ninja` recompiles the graph, **relinks the executable,
 and regenerates the whole progress report** — several seconds of overhead per cycle,
 all to produce one `.o` that `decomp-diff.py` reads. For a scheduling-sensitive
 function that needs many guess-and-check cycles this dominates your runtime.
@@ -68,23 +121,24 @@ in `objdiff.json`, which is exactly what `decomp-diff.py` reads:
 ```
 # inner loop (edit -> build one .o -> diff), ~1-2s per cycle:
 ninja build/BW1W120/src/Lionhead/LHLib/ver5.0/LHHeap2.o
-python tools/decomp-diff.py -u runblack-decrypted/Lionhead/LHLib/ver5.0/LHHeap2 -d "Heap::New(int)"
+python tools/decomp-diff.py --source src/Lionhead/LHLib/ver5.0/LHHeap2.cpp -d "Heap::New(int)"
 ```
 
-Only run full `ninja` (and the `baseline` / `changes_all` regression pair) **once at
-the end** to confirm the overall result — not on every micro-edit. Grep `objdiff.json`
-for the source filename to find both the unit name (`-u`) and the object path.
+Reserve full verification for the completed batch, rather than every micro-edit.
+The pre-edit baseline must not be regenerated at the end. Find the exact object target
+in `objdiff.json` under `base_path`.
 
 ### Using `decomp-diff.py` (agent-friendly CLI diffing)
 
 Since agents cannot use the objdiff GUI, use the wrapper script `tools/decomp-diff.py` instead. It calls `objdiff-cli` and produces readable text output.
 
-Unit names follow the pattern in `objdiff.json` — typically `runblack-decrypted/<path>` (e.g. `runblack-decrypted/Black/Abode`, `runblack-decrypted/Lionhead/LHScreen`). You can grep `objdiff.json` for a source filename to find its unit name.
+Use `--source src/Black/Abode.cpp`, an exact unit name from `objdiff.json`, or a unique
+basename such as `--unit Abode`. Executable prefixes can change; do not hardcode them.
 
 #### Overview mode (list symbols with match status)
 
 ```
-python tools/decomp-diff.py -u runblack-decrypted/Black/Abode
+python tools/decomp-diff.py --unit Abode
 ```
 
 Output columns: STATUS (match/nonmatching/missing/extra), MATCH %, SIZE, SECTION, demangled NAME.
@@ -97,31 +151,36 @@ Useful filters (can be combined):
 - `-t function` — only functions (skip data/bss)
 - `-t object` — only data objects
 - `--section .text` — only `.text` section
-- `--search "init"` — fuzzy substring search on demangled name
+- `--search "init"` — substring search on mangled or demangled name
+- `--exact` / `--regex` — change name selection to exact matching or a regular expression
+- `--sections` — target/compiled section sizes and scores, including `.bss`
+- `--strict` — compare all function relocation identities and addends; default is `data_value`
 
 Example — list all nonmatching functions:
 ```
-python tools/decomp-diff.py -u runblack-decrypted/Black/Abode -s nonmatching -t function --section .text
+python tools/decomp-diff.py --unit Abode -s nonmatching -t function --section .text
 ```
 
 #### Diff mode (side-by-side instruction comparison)
 
 ```
-python tools/decomp-diff.py -u runblack-decrypted/Black/Abode -d "Fixed::CanBeSetOnFire"
+python tools/decomp-diff.py --unit Abode -d "Fixed::CanBeSetOnFire"
 ```
 
-The `-d` argument takes a substring match on the demangled or mangled symbol name.
+The `-d` argument selects a symbol by substring; ambiguous selections are errors.
+Use `--exact` to disambiguate or `--regex` to explicitly select a batch of functions.
 
-Output shows target (original) and our build x86 assembly **interleaved** in a single column, with diff markers in the leftmost position:
+Output shows target (original) x86 assembly in the **LEFT** column and our build in
+the **RIGHT** column, with diff markers at the start of each row:
 - ` ` (space) — instructions match perfectly
 - `~` — same opcode, but one or more operands differ (shown in `{braces}`)
 - `|` — different opcode at corresponding position
 - `>` — instruction exists only in our build (inserted/extra)
 - `<` — instruction exists only in the target (deleted/missing)
 
-Each line shows **one** instruction. When the marker is ` ` or `~`, both target and our build have a corresponding instruction at that position. When the marker is `|`, the target instruction is shown but our build emits a different opcode there. `<` and `>` lines indicate instructions present in only one side — the shown instruction is from whichever side has it.
-
-Differing operands are wrapped in `{braces}` for easy identification.
+Each row aligns corresponding instructions; insertions/deletions occupy only one side.
+Differing operands are wrapped in `{braces}`. Relocation addends are shown explicitly,
+for example `PacketTimeHistory+0x28`.
 
 By default, long runs of fully matching instructions are **collapsed** into a summary line like `... 10 matching instructions ...`.
 This is only a display shortcut: those instructions still exist and still match; they are just hidden to keep the diff compact.
@@ -137,6 +196,32 @@ Options:
 - `-C 5` — show 5 context lines instead of 3
 - `--no-collapse` — disable match-run collapsing and show every instruction
 - `--range 100-300` — only show instructions at hex offsets 0x100–0x300
+
+### Interpreting matches and relocations
+
+State the comparison mode and source-linking status when reporting results:
+
+- **Report match:** under the settings used to generate the report.
+- **Strict object match:** includes relocation identities and addends (`--strict`).
+- **Resolved-byte match:** relocations mapped back to original addresses produce identical bytes.
+
+A rounded `100.0%` display is not sufficient proof of exactness. Successful executable
+hashes do not prove that a `NonMatching` source replacement was linked.
+
+`decomp-relocs.py` inspects relocation-boundary ambiguity and verifies resolved bytes
+for i386 COFF/PE32. It provides evidence without automatically applying overrides:
+
+```powershell
+python tools/decomp-relocs.py --unit Game --address 0054CE1E --symbol ProcessNetworkPackets --original orig/BW1W120/runblack-decrypted.exe --verify
+```
+
+### Parallel work
+
+When parallel agents are requested, use them for independent investigations and give
+each explicit file ownership. Serialize integration, configuration edits and builds
+that share a translation unit. Handoffs should include changed files, supporting evidence,
+verification commands/results, remaining mismatches, and whether source, objects and
+reports describe the same revision.
 
 ## Source Organization
 
@@ -191,6 +276,7 @@ Maps each source file to its section address ranges, telling dtk how to split th
 - Member variables: `PascalCase`, no prefix (e.g., `AttachedThing`, `PreviousStatus`, `XOffset`, `FlashOn`). Real Lionhead headers show members are consistently `PascalCase` — not `snake_case`/`camelCase`, and never `m_`-prefixed. Member names don't survive in the binary, so where the true name is unknown, pick a readable `PascalCase` name.
 - Unknown members retain placeholder names like `field_0x7c`, `field_0x94`, encoding the hex offset.
 - Method names use PascalCase: `ArriveHome()`, `AddVillagerToAbode()`, `CalcRandomPos()`.
+- Distinguish recovered original names from descriptive names and provisional ownership in comments.
 
 ### Comments & annotations in the code
 
@@ -206,18 +292,33 @@ Don't be afraid to leave notes that would be useful to the next person trying to
 ### Style
 
 - Formatting follows `.clang-format` (Microsoft-based, 120-column, tabs for indentation with spaces for alignment).
+- Apply whole-file clang-format to touched C++ files before final verification and commits, not just changed lines.
 - Pre-C++11 style (`.clang-format` sets `Standard: c++03`; the compiler is MSVC 6.0): no `auto`, no range-for, no lambdas, no `nullptr` (use `NULL` or `0`).
 - Header guards use the `#ifndef BW1_DECOMP_<NAME>_INCLUDED_H` / `#define` / `#endif` pattern (e.g. `BW1_DECOMP_ABODE_INCLUDED_H`).
 
-# Project conventions
+### Header dependencies
 
-## Header signatures vs debug comments
+An include can change generated code even when its declarations are unused: TU-local
+constants, dynamic initializers, template storage/helpers and inlining can all be affected.
+Keep enum-only headers lightweight and place complete types where consumers need them.
+Verify affected header consumers after layout, virtual-interface or include-boundary changes.
+
+### Signatures, function boundaries and layouts
 
 The comments above function declarations show the mangled name from the
 original BW1 binary, which encodes the true C++ signature. When the header
 signature disagrees with the comment, the header needs fixing.
 
-### Rule 1: Pointer vs reference
+Treat decompiler signatures and function boundaries as hypotheses. Corroborate Windows
+assembly with Mac symbols and call sites; neither platform alone establishes every detail
+of the other. Check full-register versus byte-sized Boolean results, static versus instance
+methods, calling conventions and virtual slots. An apparent entry can be a continuation
+or exception funclet.
+
+A recovered prefix is not necessarily an allocation-ready type. Document incomplete
+layouts; do not allocate using an unproven `sizeof` or define undersized singleton storage.
+
+#### Pointer vs reference
 
 If the comment says `Type&` or `Type const &` but the header has `Type*`,
 the header should use `Type&` or `const Type&` instead.
@@ -230,19 +331,7 @@ bool CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2);
 
 This applies to any type, not just `MapCoords`.
 
-## Globals
-
-`(*globals.game)->` is an old way of writing `GGame::g_game->`.
-
-Globals belong to a class as `static` data members (`GGame::g_game`,
-`EditorPhysics::PhysicsConstants`), declared in that class's header and defined in
-its `.cpp`. Do not reach for a file-scope `extern` declaration just to get a global
-address to compile — that hides which translation unit owns the data and produces a
-mangled name (`?Name@@3...`) that will not match the real one. Find the owning class
-first (the functions that write the data usually name it), and only fall back to a
-free `extern` when the evidence really points at a file-scope variable.
-
-### Rule 2: Hidden output parameter returned as pointer
+#### Hidden output parameter returned as pointer
 
 If a function is declared as `Type* Func(Type* first_param, ...)` but the
 comment omits `first_param` (showing fewer params), then `first_param` is
@@ -255,3 +344,15 @@ of `Type*`, and the first parameter should be removed.
 // Fix:      MapCoords CalcRandomPos(MapCoords* param_2, float, float)
 //                            ^^ return by value, remove first param
 ```
+
+### Globals
+
+`(*globals.game)->` is an old way of writing `GGame::g_game->`.
+
+Globals belong to a class as `static` data members (`GGame::g_game`,
+`EditorPhysics::PhysicsConstants`), declared in that class's header and defined in
+its `.cpp`. Do not reach for a file-scope `extern` declaration just to get a global
+address to compile — that hides which translation unit owns the data and produces a
+mangled name (`?Name@@3...`) that will not match the real one. Find the owning class
+first (the functions that write the data usually name it), and only fall back to a
+free `extern` when the evidence really points at a file-scope variable.
