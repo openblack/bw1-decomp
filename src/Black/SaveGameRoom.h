@@ -1,7 +1,8 @@
 #ifndef BW1_DECOMP_SAVE_GAME_ROOM_INCLUDED_H
 #define BW1_DECOMP_SAVE_GAME_ROOM_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
+#include <assert.h>    /* For static_assert */
+#include <re_common.h> /* For bool32_t */
 
 #include "PictureRoom.h" /* For struct PictureRoomBase */
 
@@ -17,7 +18,7 @@ public:
 	static void InstantSaveGame(long slot);
 
 	// BW1W120 007923a0 BW1M100 104ce930 SaveGameRoom::CreateSaveGameFiles(char*)
-	static bool CreateSaveGameFiles();
+	static bool32_t CreateSaveGameFiles(char* path);
 
 	// Constructors
 

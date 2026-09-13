@@ -148,7 +148,7 @@ public:
 	MapCoords                        CongregationPos; /* 0xf10 */
 	uint32_t                         field_0xf1c;
 	uint32_t                         field_0xf20;
-	uint32_t                         field_0xf24;
+	float                            field_0xf24;
 
 	// Override methods
 

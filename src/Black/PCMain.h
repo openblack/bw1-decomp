@@ -12,6 +12,11 @@ extern LH_KEY AssertionKey;
 // BW1W120 00d46abe / 00d46abf; byte flags written by ScanParameters.
 extern bool ARGS_FORCEINETCONN;
 extern bool ARGS_NOINETCONN;
+// BW1W120 00d46ac1. TODO: Original name unknown; ScanParameters sets this for CONVERT.
+extern bool Dat_00D46AC1;
+
+// BW1W120 006419f0 BW1M100 100d50d0 stop_draw_sprite_to_screen(void)
+void stop_draw_sprite_to_screen();
 
 // BW1W120 00641a10 BW1M100 1011c650 IsACmdLineString(char*, const char*)
 bool __cdecl IsACmdLineString(char* cmd_line, char* cmd);

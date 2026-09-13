@@ -40,7 +40,7 @@ public:
 	float                   influence;
 	uint32_t                field_0x70;
 	uint32_t                field_0x74;
-	uint32_t                field_0x78;
+	float                   field_0x78;
 	Living*                 living;
 
 	// Override methods
@@ -81,6 +81,9 @@ public:
 	                              float param_5);
 
 	// Non-virtual methods
+
+	// BW1W120 00464090 BW1M100 1002dc30 Citadel::GetInfluence(void)
+	float GetInfluence();
 
 	// BW1W120 00463130 BW1M100 101b9680 Citadel::AddTown(Town*)
 	void* AddTown(Town* town);

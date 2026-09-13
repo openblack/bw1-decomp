@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_CHALLENGE_ROOM_INCLUDED_H
 #define BW1_DECOMP_CHALLENGE_ROOM_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <assert.h>    /* For static_assert */
+#include <stdint.h>    /* For uint8_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "PictureRoom.h" /* For struct PictureRoomBase */
 
@@ -35,7 +36,7 @@ public:
 	// Static methods
 
 	// BW1W120 00784b30 BW1M100 101abfe0 ChallengeRoom::CreateChallengeFiles(char*)
-	static bool CreateChallengeFiles();
+	static bool32_t CreateChallengeFiles(char* path);
 
 	// Constructors
 

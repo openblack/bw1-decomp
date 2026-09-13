@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_LH3D_ISLAND_INCLUDED_H
 #define BW1_DECOMP_LH3D_ISLAND_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <assert.h>    /* For static_assert */
+#include <stdint.h>    /* For uint32_t, uint8_t */
+#include <re_common.h> /* For bool32_t */
 
 // Forward Declares
 
@@ -32,6 +33,8 @@ class LH3DIsland
 {
 public:
 	// Static methods
+	// BW1W120 00804790 BW1M100 1061cc34 LH3DIsland::Release(void)
+	static bool32_t Release();
 
 	// BW1W120 00803090 LH3DIsland::GetAltitude(LH3DMapCoords const &)
 	static float __fastcall GetAltitude(const LH3DMapCoords& coords);

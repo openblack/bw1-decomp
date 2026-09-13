@@ -55,6 +55,8 @@ public:
 	int StartScript(char* name);
 	// BW1W120 00d95c10 BW1M100 10b49ffc
 	static ScriptDLL* g_scriptDLL;
+	// BW1W120 00d95c0c. TODO: Original name unknown; Reset/LoadBinary own this loaded-binary flag.
+	static bool32_t Dat_00D95C0C;
 	// BW1W120 00c0c740 BW1M100 1099bea4
 	static ScriptObjectDispatch g_scriptObjectDispatch[SCRIPT_OBJECT_TYPE_LAST - 1];
 
@@ -1020,7 +1022,7 @@ public:
 	// BW1W120 006eb9d0 BW1M100 10084630 GScript::ProcessFade(bool)
 	void ProcessFade(bool param_1);
 	// BW1W120 006eba90 BW1M100 104dd990 GScript::SetupScreenFadeTo(uchar,uchar,uchar,char)
-	void SetupScreenFadeTo(uint8_t r, uint8_t g, uint8_t b, int8_t a);
+	void SetupScreenFadeTo(uint8_t r, uint8_t g, uint8_t b, signed char a);
 	// BW1W120 006ebbc0 BW1M100 104dd630 GScript::CleanGameForScriptReboot(void)
 	void CleanGameForScriptReboot();
 	// BW1W120 006ec790 BW1M100 104dc490 GScript::PUSH(void *, VMType)
