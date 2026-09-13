@@ -90,10 +90,16 @@ public:
 	virtual void SetAnimTime(int param_1, int param_2);
 	// BW1W120 00618360 BW1M100 101073d0 Morphable::LoadBase(char *)
 	virtual uint32_t LoadBase(char* param_1);
+	virtual void     SetSize(float size) = 0;
 	// BW1W120 00619100 BW1M100 101063f0 Morphable::MorphAnims(void)
 	virtual void MorphAnims();
 	// BW1W120 00619500 BW1M100 101061c0 Morphable::MorphTexture(void)
-	virtual void MorphTexture();
+	virtual void     MorphTexture();
+	virtual void     UpdateTime(int time) = 0;
+	virtual void     PrepareForDrawing() = 0;
+	virtual uint32_t AddForDrawing() = 0;
+	virtual uint32_t LoadBinary(char* filename, int param_1) = 0;
+	virtual uint32_t SaveBinary(char* filename) = 0;
 
 	// Static methods
 

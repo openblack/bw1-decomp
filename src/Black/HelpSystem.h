@@ -349,6 +349,7 @@ public:
 	void ResetIcons();
 	// BW1W120 005c5eb0 BW1M100 10091a40 HelpSystem::PostDrawProcess(void)
 	void PostDrawProcess();
+	void Draw3D(); // 005c59a0
 	// BW1W120 005c67e0 BW1M100 1034f730 HelpSystem::ClearDialogueControl(void)
 	void ClearDialogueControl();
 	// BW1W120 005c6ad0 BW1M100 1034f2c0 HelpSystem::SetWideScreen(int, ulong)

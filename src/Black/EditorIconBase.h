@@ -12,6 +12,7 @@ struct LHRegion;
 class EditorIconBase
 {
 public:
+	static void DrawMouseOver(); // 00520e70
 	// Override methods
 
 	// BW1W120 00520f00 BW1M100 102b77f0 EditorIconBase::DrawTextString(LH3DColor *, LHRegion *)

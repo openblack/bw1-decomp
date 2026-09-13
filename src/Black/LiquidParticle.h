@@ -8,7 +8,7 @@
 
 // Forward Declares
 
-struct GInterface;
+class GInterface;
 
 struct LiquidParticle
 {
@@ -32,12 +32,16 @@ struct LiquidParticleGroup
 	uint32_t                    ParticleCount;         /* 0xb000 */
 	struct LHPoint              point;
 	struct LiquidParticleGroup* next; /* 0xb010 */
-	struct GInterface*          iface;
-	void(__cdecl* sparkle_func)(struct LiquidParticleGroup* param_0, struct GInterface* param_1);
+	GInterface*                 iface;
+	void(__cdecl* sparkle_func)(struct LiquidParticleGroup* param_0, GInterface* param_1);
 };
 static_assert(sizeof(LiquidParticleGroup) == 0xb01c, "Data type is of wrong size");
 
 // BW1W120 005cdfc0 BW1M100 1035c8f0 sparklecbstub(LiquidParticleGroup *, unsigned long)
-void __cdecl sparklecbstub__FP19LiquidParticleGroupUl(struct LiquidParticleGroup* param_1, struct GInterface* param_2);
+void __cdecl sparklecbstub__FP19LiquidParticleGroupUl(struct LiquidParticleGroup* param_1, GInterface* param_2);
+
+// Existing extracted free APIs.
+void UpdateLiquidParticles(float time); // 00845d00
+void DrawLiquidParticles();             // 00845c50
 
 #endif /* BW1_DECOMP_LIQUID_PARTICLE_INCLUDED_H */

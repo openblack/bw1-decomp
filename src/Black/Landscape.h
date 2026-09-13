@@ -46,7 +46,7 @@ struct GLandscape
 	// BW1W120 inlined BW1M100 106f5c34 GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(MapCoords const &, LHPoint &)
 	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords* coords, LHPoint* point);
 	// BW1W120 005e3f60 BW1M100 1001d960 GLandscape::PreDraw(void)
-	static uint32_t PreDraw();
+	uint32_t PreDraw();
 	// BW1W120 00613750 BW1M100 1004aef0 GLandscape::ConvertMapCoordToLandscapePoint(MapCoords const &, LHPoint &)
 	// MSVC 6 inlines this. Inlined uses look like (esi=coords, eax=point):
 	//     call LH3DIsland::GetAltitude
@@ -76,6 +76,8 @@ struct GLandscape
 };
 
 // Free functions
+
+void ClearLight(); // 005e57b0
 
 // BW1W120 005e6540 BW1M100 10378b00 GoolooGooloo(Object *)
 void GoolooGooloo(Object* object);

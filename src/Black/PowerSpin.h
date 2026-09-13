@@ -10,6 +10,9 @@
 class PowerSpin : public DrawingObject
 {
 public:
+	// Observed prefix only; the drawing data and derived tail remain unrecovered.
+	unsigned char field_0x4[0x9a4];
+	LHPoint       Position; // 0x9a8, written by PowerSpin::Update
 	// Declaration-only view: do not allocate before recovering the drawing data layout.
 	// TODO: These real vtable entries are established, but original base-class placement is not.
 	// BW1W120 0066fcb0 BW1M100 1011dee0 PowerSpin::Init(wchar_t*, LHPoint const&, LHPoint const&, float, float, int)
@@ -25,10 +28,12 @@ public:
 class PowerSpinRunner : public PowerSpin
 {
 public:
+	PowerSpinRunner* Next; // 0x9b4; do not allocate this partial type using sizeof
 	// BW1W120 00d4de74. Descriptive list-head name; destructor unlinks itself.
 	static PowerSpinRunner* First;
 	// BW1W120 0066f890 BW1M100 1011e000 PowerSpinRunner::Update(LHMatrix, float)
-	virtual void Update(LHMatrix matrix, float time);
+	// Returns this or NULL and may delete itself.
+	virtual PowerSpinRunner* Update(LHMatrix matrix, float time);
 	// BW1W120 0066f840 BW1M100 1011e4c0 PowerSpinRunner::~PowerSpinRunner(void)
 	// Scalar deleting destructor at 0066f820 occupies vtable slot +0x10.
 	virtual ~PowerSpinRunner();

@@ -34,7 +34,9 @@ struct GDebug
 	uint32_t field_0x15c;
 	uint8_t  field_0x160[0x2d040];
 	uint32_t field_0x2d1a0;
-	uint8_t  field_0x2d1a4[0xe0];
+	uint8_t  field_0x2d1a4[0xc];
+	uint32_t field_0x2d1b0;
+	uint8_t  field_0x2d1b4[0xd0];
 	int      field_0x2d284;
 	uint32_t field_0x2d288;
 	uint32_t field_0x2d28c;

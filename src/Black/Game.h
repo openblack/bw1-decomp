@@ -73,12 +73,21 @@ struct Temple;
 class Town;
 class LHVideoPlayer;
 class LHMail;
+class FallingSpell;
 
 class GGame : public GameThing
 {
 public:
 	// BW1W120 00d0195c
 	static GGame* g_game;
+	// Video lifecycle storage. Descriptive identifiers; storage remains extracted.
+	static int           VideoFinished;      // 00d0198c
+	static int           VideoFramesReady;   // 00d01988
+	static int           VideoPreviousPause; // 00d0199c
+	static FallingSpell* FallingSpellVideo;  // 00cd3b10
+	// Single-reader globals: original names/scope unknown, provisional Game association.
+	static float VideoLetterboxScale; // 00bec16c, initial 1.0f
+	static char  VideoStatistics[];   // 00cd3618, extent unknown
 	// BW1W120 00d019a9. TODO: Original static member name is unrecovered.
 	static bool ScriptRebootRequested;
 	// TODO: Original names are unrecovered; shared with tutorial and packet processing.
@@ -149,7 +158,7 @@ public:
 	uint32_t               field_0x59a4;
 	uint32_t               field_0x59a8;
 	time_t                 field_0x59ac;
-	uint32_t               field_0x59b0;
+	float                  field_0x59b0;
 	Temple*                temple; /* 0x59b4 */
 	GMap                   map;
 	int32_t                LandNumber; /* 0x205a08 */
@@ -217,9 +226,9 @@ public:
 	GAME_MODE              GameMode;     /* 0x250180 */
 	uint32_t               field_0x250184;
 	LHVideoPlayer*         VideoPlayer;
-	uint32_t               field_0x25018c;
-	uint32_t               field_0x250190;
-	uint32_t               field_0x250194;
+	int                    field_0x25018c;
+	int                    field_0x250190;
+	float                  field_0x250194;
 	uint8_t                field_0x250198[0x10c];
 	uint32_t               field_0x2502a4; /* Set before an automatic save. */
 	GKeyBuffer             key_buffer;     /* 0x2502a8 */
@@ -330,8 +339,12 @@ public:
 	void ProcessGameCode();
 	// BW1W120 0054d850 BW1M100 10079980 GGame::ProcessGraphicsEngine(unsigned long, unsigned long)
 	void ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2);
-	// BW1W120 0054da80 BW1M100 10033dd0 GGame::ProcessGraphicsEngine(void)
+	// BW1W120 0054da80 BW1M100 10033dd0 GGame::Process3dEngine(void)
 	void Process3dEngine();
+	void FinishedVideo();        // 0054d8d0 BW1M100 1037cbd0
+	void Draw();                 // 005533b0 BW1M100 100140b0
+	void fn_00553A60();          // 00553a60, original helper name unknown
+	void EndFallingSpellVideo(); // 00553a10 BW1M100 100d45b0
 	// BW1W120 0054e4f0 BW1M100 10083c70 GGame::StartTurn(void)
 	void StartTurn();
 	// BW1W120 0054e5c0 BW1M100 100665c0 GGame::ProcessTurn(void)

@@ -17,10 +17,18 @@
 struct CameraExclusion;
 class GArena;
 class GCamera;
+struct LightSheet;
+struct LH3DMaterial;
 
 class CameraModeNew3 : public CameraMode
 {
 public:
+	// Descriptive identifiers for CameraModeNew3's extracted force-field storage.
+	static LightSheet*   ForceField;           // 00c5e150
+	static int           DrawForceField;       // 00c5e144
+	static int           ForceFieldPointCount; // 00c5e130
+	static LHPoint       ForceFieldPoints[];   // 00c5b130, extent unknown
+	static LH3DMaterial* ForceFieldMaterial;   // 00c5b0fc
 	// TODO: Original shared constant names/scope unrecovered; also read by GPlayer.
 	// BW1W120 009ce694 / 009ce698
 	static const float CitadelDistance;

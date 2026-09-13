@@ -10,6 +10,7 @@ class TempleRoom;
 
 struct Temple
 {
+	static void UpdateFade(); // 00794280
 	// TODO: Original names/static scope unrecovered; shared state maintained by Temple::UpdateFade.
 	// BW1W120 00c2a150
 	static float Dat_00C2A150;

@@ -13,10 +13,22 @@ struct LH3DColor;
 struct LH3DMaterial;
 struct LHMatrix;
 struct LHPoint;
+struct InfoTransform;
 
 class LH3DTech
 {
 public:
+	// Original Mac imported names; storage remains extracted.
+	static InfoTransform g_info_transform; // 00e839e4
+	static LHPoint       g_camera;         // 00ea1db8
+	static uint32_t      g_delta_time;     // 00c38134
+	static float         GetValueForZSorter(const LHPoint& point)
+	{
+		float x = point.x - g_camera.x;
+		float y = point.y - g_camera.y;
+		float z = point.z - g_camera.z;
+		return x * x + y * y + z * z;
+	}
 	// BW1W120 00ea9e70. Original Mac symbol: g_ambient_wind_direction__8LH3DTech.
 	static LHPoint g_ambient_wind_direction;
 	// BW1W120 00ea9ec0. Original Mac symbol: g_game_time_inc__8LH3DTech.

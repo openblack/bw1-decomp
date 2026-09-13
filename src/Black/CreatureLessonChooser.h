@@ -8,6 +8,7 @@ class CreatureLessonChooser
 public:
 	// BW1W120 004cfb10 BW1M100 10091830 CreatureLessonChooser::Update(void)
 	static void Update();
+	static void UpdateDraw(); // 004cfb50
 };
 
 enum LESSON_TYPE

@@ -60,9 +60,12 @@ public:
 	// BW1W120 00c0c740 BW1M100 1099bea4
 	static ScriptObjectDispatch g_scriptObjectDispatch[SCRIPT_OBJECT_TYPE_LAST - 1];
 
-	uint8_t field_0x8[0x38];
-	LHPoint FocusPos; /* 0x40 */
-	uint8_t field_0x4c[0x70];
+	uint32_t CountDownTimerEnabled;   // +08
+	uint32_t CountDownTimerRemaining; // +0c
+	uint32_t CountDownTimerVisible;   // +10
+	uint8_t  field_0x14[0x2c];
+	LHPoint  FocusPos; /* 0x40 */
+	uint8_t  field_0x4c[0x70];
 
 	// Override methods
 
@@ -1020,7 +1023,8 @@ public:
 	// BW1W120 006eb6b0 BW1M100 100813d0 GScript::Process(void)
 	void Process();
 	// BW1W120 006eb9d0 BW1M100 10084630 GScript::ProcessFade(bool)
-	void ProcessFade(bool param_1);
+	void  ProcessFade(bool param_1);
+	float GetCountDownTimerRemainingTime(); // 006eb950
 	// BW1W120 006eba90 BW1M100 104dd990 GScript::SetupScreenFadeTo(uchar,uchar,uchar,char)
 	void SetupScreenFadeTo(uint8_t r, uint8_t g, uint8_t b, signed char a);
 	// BW1W120 006ebbc0 BW1M100 104dd630 GScript::CleanGameForScriptReboot(void)

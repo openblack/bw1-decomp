@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <uchar.h>  /* For char16_t */
+#include <Lionhead/LH3DLib/development/LHCoord.h>
 
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
 #include <re_common.h>         /* For bool32_t */
@@ -11,6 +12,9 @@
 
 struct ControlMap
 {
+	// BW1W120 00c5e8d0. Shared delta returned by ControlMap::DeltaPos on Mac.
+	// Original member spelling unrecovered; storage remains extracted.
+	static LHCoord MouseDelta;
 	BindableAction BindableActions[_BINDABLE_ACTION_SIZE];      /* 0x0 */
 	bool32_t       BindableActionStates[_BINDABLE_ACTION_SIZE]; /* 0x648c */
 	bool32_t       Field20x6510;

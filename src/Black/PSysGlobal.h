@@ -4,6 +4,7 @@
 class PSysGlobal
 {
 public:
+	static void DrawLoop(); // 0068f5e0
 	// BW1W120 0068f750 BW1M100 1040f3a0
 	static void InitializeOneTimeOnly();
 	// BW1W120 0068f590 BW1M100 1008ef70 PSysGlobal::GameLoopStart(void)

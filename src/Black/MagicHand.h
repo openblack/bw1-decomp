@@ -36,7 +36,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 005fb040 BW1M100 10075560 GMagicHand::GetObjectFromHand(void) const
-	Object* GetObjectFromHand();
+	Object* GetObjectFromHand() const;
 };
 
 #endif /* BW1_DECOMP_MAGIC_HAND_INCLUDED_H */
