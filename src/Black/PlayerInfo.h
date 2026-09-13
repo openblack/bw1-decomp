@@ -3,13 +3,18 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <uchar.h>
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
 enum PLAYER_TYPE
 {
 	PLAYER_TYPE_0 = 0x0,
-	_PLAYER_TYPE_COUNT = 0x1
+	// Descriptive enumerator names; values established by InitReal/ToggleComputerPlayer/SetupPlayers.
+	PLAYER_TYPE_HUMAN = 0x1,
+	PLAYER_TYPE_COMPUTER = 0x2,
+	PLAYER_TYPE_NEUTRAL = 0x3,
+	_PLAYER_TYPE_COUNT = 0x4
 };
 
 // Forward Declares
@@ -44,7 +49,7 @@ public:
 	uint32_t field_0x44;
 	float    field_0x48;
 	float    field_0x4c;
-	uint8_t  field_0x50[0x40];
+	char16_t NetworkName[32]; /* 0x50; passed to WCHAR2CHAR by SetupPlayers. */
 
 	// Override methods
 

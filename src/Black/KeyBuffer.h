@@ -26,6 +26,8 @@ public:
 
 	// BW1W120 0054b930 BW1M100 inlined GKeyBuffer::GKeyBuffer(void)
 	GKeyBuffer();
+	// BW1W120 005e1ac0 BW1M100 1056cd50
+	bool32_t Init(unsigned short capacity);
 };
 
 class GKeyInput : public Base

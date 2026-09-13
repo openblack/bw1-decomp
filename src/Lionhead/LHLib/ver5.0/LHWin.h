@@ -4,6 +4,8 @@
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
 
+// BW1W120 00e8c10c is LHSys::TheSystem.MessageHook, not separate storage.
+
 // BW1W120 007db790 operator new(unsigned int, char const*, unsigned int)
 void* operator new(size_t size, const char* file_name, uint32_t line);
 

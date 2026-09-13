@@ -16,6 +16,8 @@ public:
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 0062f8c0 BW1M100 103a5d10 MPFEFindGame::Destroy(void)
 	virtual void Destroy();
+	// BW1W120 0062f8d0. Vtable +0x20 at 00930900.
+	virtual void InitControls();
 };
 
 #endif /* BW1_DECOMP_MPFE_FIND_GAME_INCLUDED_H */

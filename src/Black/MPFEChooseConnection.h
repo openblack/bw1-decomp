@@ -15,6 +15,8 @@ public:
 
 	// BW1W120 0062b340 BW1M100 1039f9c0 MPFEChooseConnection::Destroy(void)
 	virtual void Destroy();
+	// BW1W120 0062b350. Vtable +0x20 at 009307f8.
+	virtual void InitControls();
 
 	// Non-virtual methods
 

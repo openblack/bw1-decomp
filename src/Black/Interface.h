@@ -32,6 +32,8 @@ struct LiquidParticleGroup;
 class GInterface : public GameThingWithPos
 {
 public:
+	// BW1W120 005d05f0 BW1M100 10358180 GInterface::Validate(void)
+	void                    Validate();
 	uint32_t                field_0x28;
 	LiquidParticleGroup*    liquid_particle_group;
 	GInterfaceFlags         flags; /* 0x30 */
@@ -151,6 +153,10 @@ public:
 	bool32_t IsPlayBack(uint32_t playback) const;
 	// BW1W120 005d0610 BW1M100 10084060 GInterface::UpdateHandRenderCollide(void)
 	void UpdateHandRenderCollide();
+	// BW1W120 005ce3f0 BW1M100 1035c310
+	static void SetupStatics();
+	// BW1W120 005ceba0 BW1M100 1035b4e0
+	bool32_t LoadFiles();
 	// BW1W120 005d9130 BW1M100 100315f0 GInterface::UpdateAllLeashes(void)
 	void UpdateAllLeashes();
 	// BW1W120 005d9d80 BW1M100 10004300 GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES, LHCoord *)

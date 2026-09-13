@@ -33,7 +33,7 @@ public:
 	uint32_t     field_0x14;
 	uint8_t      field_0x18[0x6c];
 	LHTransport* transport; /* 0x84 */
-	int          field_0x88;
+	LHNetUser*   NetUser;   /* 0x88; GetUserID dereferences its first word. */
 	int          field_0x8c;
 
 	// Non-virtual methods

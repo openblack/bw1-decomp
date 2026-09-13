@@ -27,7 +27,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00579af0 BW1M100 1032b530 GestureSystemDataList::Load(char *)
-	bool Load(char* param_1);
+	bool32_t Load(char* param_1);
 };
 
 #endif /* BW1_DECOMP_GESTURE_SYSTEM_DATA_LIST_INCLUDED_H */

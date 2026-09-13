@@ -27,6 +27,8 @@ struct ControlMap
 
 	// BW1W120 0046f6c0 BW1M100 101cbaa0 ControlMap::ControlMap(void)
 	ControlMap();
+	// BW1W120 0046f890 BW1M100 101cae30
+	void LoadDefaults();
 
 	// Non-virtual methods
 
@@ -35,5 +37,7 @@ struct ControlMap
 	// BW1W120 00470ab0 BW1M100 10090ab0 ControlMap::ProcessActionsPerformed(void)
 	void ProcessActionsPerformed();
 };
+
+static_assert(sizeof(ControlMap) == 0x6534, "ControlMap size is incorrect");
 
 #endif /* BW1_DECOMP_CONTROL_MAP_INCLUDED_H */

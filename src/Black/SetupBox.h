@@ -3,7 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
-#include <uchar.h>  /* For char16_t */
+#include <stddef.h>
+#include <uchar.h> /* For char16_t */
 
 #include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer */
 
@@ -14,6 +15,8 @@ class SetupControl;
 class SetupBox
 {
 public:
+	// BW1W120 00409170. TODO: Original name and two argument types are unrecovered (RET 8).
+	virtual void  fn_00409170(uint32_t param_1, uint32_t param_2);
 	Zoomer        Zoomer0x4;
 	Zoomer        Zoomer0x34;
 	uint32_t      field_0x64;
@@ -61,5 +64,8 @@ public:
 	// BW1W120 00411190 BW1M100 100c3160 SetupBox::MessageBoxA(wchar_t*, MSGBOXSTYLE, ulong)
 	void MessageBoxA(const char16_t* param_2, uint32_t param_3, uint32_t param_4);
 };
+
+static_assert(sizeof(SetupBox) == 0xcc, "SetupBox size is incorrect");
+static_assert(offsetof(SetupBox, field_0xc8) == 0xc8, "SetupBox flag offset is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_BOX_INCLUDED_H */

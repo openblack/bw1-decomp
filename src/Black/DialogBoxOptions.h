@@ -24,7 +24,7 @@ public:
 	SetupButton*          field_0x1c;
 	SetupBigButton*       field_0x20;
 	SetupBigButton*       field_0x24;
-	SetupBigButton*       field_0x28;
+	SetupButton*          field_0x28;
 	SetupBigButton*       field_0x2c;
 	SetupBigButton*       field_0x30;
 	SetupCheckBox*        field_0x34;
@@ -57,6 +57,12 @@ public:
 
 	// BW1W120 00513810 BW1M100 102b5740 DialogBoxOptions::DialogBoxOptions(void)
 	DialogBoxOptions();
+	// BW1W120 00513850. Nonvirtual; implementation remains extracted.
+	~DialogBoxOptions();
+	// BW1W120 005140c0 BW1M100 102b44b0
+	static void __stdcall ControlCallback(int event, SetupBox* box, SetupControl* control, int x, int y);
 };
+
+static_assert(sizeof(DialogBoxOptions) == 0x68, "DialogBoxOptions size is incorrect");
 
 #endif /* BW1_DECOMP_DIALOG_BOX_OPTIONS_INCLUDED_H */

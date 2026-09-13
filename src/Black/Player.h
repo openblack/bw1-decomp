@@ -35,15 +35,15 @@ class GAlignment;
 class GInterface;
 class GInterfaceStatus;
 class GameStats;
+class LHPlayer;
 struct PSysProcessInfo;
 class Spell;
 
 class GPlayer : public GameThing
 {
 public:
-	GInterface*      interfaces[0x1]; /* 0x14 */
-	int              field_0x18;
-	uint8_t          field_0x1c[0x44];
+	GInterface*      interfaces[18]; /* 0x14 */
+	uint32_t         field_0x5c;
 	GAlignment*      alignment; /* 0x60 */
 	uint32_t         field_0x64;
 	float            field_0x68;
@@ -132,6 +132,14 @@ public:
 
 	// BW1W120 00649190 BW1M100 10497020 GPlayer::Init(PLAYER_TYPE, unsigned char, wchar_t *, unsigned char)
 	void Init(PLAYER_TYPE type, uint8_t player_number, char16_t* param_3, unsigned char param_4);
+	// BW1W120 00649110 BW1M100 104971f0 GPlayer::InitReal(LHPlayer*, unsigned char)
+	void InitReal(LHPlayer* player, unsigned char player_number);
+	// BW1W120 006492b0 BW1M100 10496f00 GPlayer::Uninit(void)
+	void Uninit();
+	// BW1W120 00649340 BW1M100 10496c10 GPlayer::SetToZero(void)
+	void SetToZero();
+	// BW1W120 0064cd00 BW1M100 10490080 GPlayer::OnEndOfClearMap(void)
+	void OnEndOfClearMap();
 	// BW1W120 006494e0 BW1M100 10036020 GPlayer::Process(void)
 	void Process();
 	// BW1W120 0064a6b0 BW1M100 104965e0 GPlayer::Birthday(void)

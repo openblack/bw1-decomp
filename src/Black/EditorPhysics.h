@@ -25,7 +25,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 005249d0 EditorPhysics::Load(void)
-	void Load();
+	static void Load();
 };
 
 #endif /* BW1_DECOMP_EDITOR_PHYSICS_INCLUDED_H */

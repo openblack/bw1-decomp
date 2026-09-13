@@ -15,9 +15,11 @@ public:
 
 	// BW1W120 00541040 BW1M100 105beb60 LoginBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
-	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 005417f0 BW1M100 105beb30 LoginBox::Destroy(void)
 	virtual void Destroy();
+	// BW1W120 00541840. Vtable +0x20 at 008decb8.
+	virtual void InitControls();
 
 	// Constructors
 

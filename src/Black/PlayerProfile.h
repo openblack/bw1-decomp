@@ -25,6 +25,8 @@ struct PlayerProfile
 	uint32_t             field_0x824;   // Flags copied by LHNetBase::UpdateUserData.
 
 	// Static methods
+	// BW1W120 0066b9c0 BW1M100 104cbbb0
+	static int GetNumberOfProfiles();
 
 	// BW1W120 0066b7a0 BW1M100 104cbec0 PlayerProfile::SetCurrentProfile(wchar_t *)
 	static void SetCurrentProfile(char16_t* name);

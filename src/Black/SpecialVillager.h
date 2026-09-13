@@ -43,6 +43,8 @@ public:
 	virtual uint32_t DrawVillagerInfo();
 
 	// Static methods
+	// BW1W120 0071f8f0 BW1M100 101466f0
+	static void InitOnStartup();
 
 	// BW1W120 0071f1a0 BW1M100 10147420 SpecialVillager::Create(MapCoords const &, GVillagerInfo const *, unsigned long, int, GSpecialVillagerInfo *)
 	static SpecialVillager* Create(const MapCoords* coords, const GVillagerInfo* villager_info, uint32_t age,

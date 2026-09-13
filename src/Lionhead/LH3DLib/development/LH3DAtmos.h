@@ -3,6 +3,10 @@
 
 #include "WeatherInfo.h"
 
+struct LHPoint;
+// BW1W120 00edd3a0. Original free callback; storage remains in the extracted LH3DAtmos TU.
+extern void(__stdcall* g_water_drop_cb)(LHPoint&, float, unsigned long);
+
 class LH3DAtmos
 {
 public:
