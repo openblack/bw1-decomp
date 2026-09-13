@@ -40,6 +40,8 @@ struct FrontEnd
 	static bool CursorOn;
 	// BW1W120 00cd065c
 	static MainMenu* MainMenuDialog;
+	// BW1W120 00cd06e8. TODO: Original name unknown; created by JustDoABox.
+	static Plasma* Dat_00CD06E8;
 	// BW1W120 00cd0b03. Cleared by MainMenu's close callback.
 	static bool StartupMenuActive;
 	// BW1W120 00cd3a18. Original array extent is not established; extracted storage only.

@@ -145,7 +145,7 @@ public:
 	// BW1W120 0064a6b0 BW1M100 104965e0 GPlayer::Birthday(void)
 	void Birthday();
 	// BW1W120 0064a790 BW1M100 1005c3d0 GPlayer::GetPlayerNumber(void) const
-	uint8_t GetPlayerNumber();
+	uint8_t GetPlayerNumber() const;
 	// BW1W120 0055da60 BW1M100 10031c50 GPlayer::GetStats(void)
 	GameStats* GetStats();
 	// BW1W120 0064a9f0 BW1M100 10496090 GPlayer::GetLeaderInterfaceStatus(void)
@@ -172,5 +172,9 @@ public:
 	// that the target lacks. Dispatcher: reconcile TOWN_DESIRE_INFO's kind (class vs enum) game-wide.
 	void MakeCreatureEmpathiseWithPlayerTownDesire(TOWN_DESIRE_INFO param_1, float param_2, const MapCoords& param_3);
 };
+
+// BW1W120 0064d790 BW1M100 100218a0 GetRemapedPlayer(unsigned long)
+// TODO: Integer result is a remapped player ID; original return-type spelling is unrecovered.
+long GetRemapedPlayer(unsigned long player);
 
 #endif /* BW1_DECOMP_PLAYER_INCLUDED_H */

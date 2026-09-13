@@ -393,7 +393,9 @@ public:
 	// BW1W120 005537f0 BW1M100 1035f700 GGame::SetSpeed(float)
 	void SetSpeed(float speed);
 	// BW1W120 00555280 BW1M100 1008f570 GGame::Update3DInfluence(void)
-	GPlayer* Update3DInfluence();
+	void Update3DInfluence();
+	// BW1W120 00555270 BW1M100 10173ff0 GGame::ForceNeedUpdateInfluence(void)
+	void ForceNeedUpdateInfluence();
 	// BW1W120 00555850 BW1M100 10051560 GGame::MyInterface(void)
 	GInterface* MyInterface();
 	// BW1W120 00555880 BW1M100 1005fec0 GGame::MyInterfaceStatus(void)
