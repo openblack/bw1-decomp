@@ -35,69 +35,15 @@ class TattooEditor;
 
 struct FrontEnd
 {
-	// BW1W120 00cd0620. Descriptive singleton name; split ownership remains unresolved.
-	static FrontEnd Instance;
+	// These are independent globals, not an instance layout. Names and subsystem scope are descriptive.
+	// BW1W120 00cd0620
+	static bool CursorOn;
+	// BW1W120 00cd065c
+	static MainMenu* MainMenuDialog;
+	// BW1W120 00cd0b03. Cleared by MainMenu's close callback.
+	static bool StartupMenuActive;
 	// BW1W120 00cd3a18. Original array extent is not established; extracted storage only.
-	static char16_t          PreviousProfile[];
-	bool                     CursorOn; /* 0x0 */
-	ChannelBox*              channel_box;
-	EditingDebugBox*         editing_debug_box;
-	SetupMultiplayerMain*    setup_multiplayer_main;
-	SetupOnlineLandscapes*   setup_online_landscapes; /* 0x10 */
-	SkipBox*                 skip_box;
-	CDBox*                   CdBox;
-	GatheringBox*            gathering_box;
-	LoadingBox*              loading_box; /* 0x20 */
-	GSLobbyBox*              GsLobbyBox;
-	LobbyBox*                lobby_box;
-	RegisterBox*             register_box;
-	LoginBox*                login_box; /* 0x30 */
-	TattooEditor*            tattoo_editor;
-	NewProfileBox*           new_profile_box;
-	MainMenu*                main_menu;
-	ProfileEditor*           profile_editor; /* 0x40 */
-	uint32_t                 field_0x44;
-	uint32_t                 field_0x48;
-	uint32_t                 field_0x4c;
-	uint32_t                 field_0x50;
-	uint32_t                 field_0x54;
-	uint32_t                 field_0x58;
-	uint32_t                 field_0x5c;
-	uint32_t                 field_0x60;
-	uint32_t                 field_0x64;
-	uint32_t                 field_0x68;
-	uint32_t                 field_0x6c;
-	uint32_t                 field_0x70;
-	uint32_t                 field_0x74;
-	uint32_t                 field_0x78;
-	uint8_t                  field_0x7c[0x40];
-	bool                     field_0xbc;
-	bool                     field_0xbd;
-	uint8_t                  field_0xbe;
-	uint8_t                  field_0xbf;
-	uint32_t                 field_0xc0;
-	uint32_t                 field_0xc4;
-	Plasma*                  plasma;
-	LH3DMaterial*            field_0xcc;
-	LH3DMaterial*            field_0xd0;
-	LH3DMaterial*            field_0xd4;
-	uint8_t                  field_0xd8[0x400];
-	float                    field_0x4d8;
-	int                      field_0x4dc;
-	bool                     field_0x4e0;
-	bool                     field_0x4e1;
-	bool                     field_0x4e2;
-	bool                     field_0x4e3;
-	bool                     field_0x4e4;
-	bool                     field_0x4e5;
-	uint8_t                  field_0x4e6;
-	uint8_t                  field_0x4e7;
-	StatsBox*                stats_box;
-	EndGameBox*              end_game_box;
-	MultiplayerConditionBox* multiplayer_condition_box; /* 0x4f0 */
-	StartGameBox*            start_game_box;
-	HistoryBox*              history_box;
-	SkirmishGameBox*         skirmish_game_box;
+	static char16_t PreviousProfile[];
 
 	// Static methods
 
