@@ -20,6 +20,7 @@ class PhysicsObject;
 class FireFly : public Object
 {
 public:
+	static void DrawAll(); // 0052b790
 	// BW1W120 0052a1e0 BW1M100 100da080 FireFly::OnClearMap(void)
 	static void OnClearMap();
 	// BW1W120 0052b7a0 BW1M100 1007d730 FireFly::ProcessAll(void)

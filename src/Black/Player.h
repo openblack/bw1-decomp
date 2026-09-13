@@ -45,7 +45,9 @@ struct MPFEStartGameData;
 class GPlayer : public GameThing
 {
 public:
-	GInterface*                 interfaces[18]; /* 0x14 */
+	static void                 DrawPlayers();         // 0064c140
+	static void                 DrawComputerPlayers(); // 0064c1a0
+	GInterface*                 interfaces[18];        /* 0x14 */
 	uint32_t                    field_0x5c;
 	GAlignment*                 alignment; /* 0x60 */
 	uint32_t                    field_0x64;

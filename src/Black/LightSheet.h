@@ -12,7 +12,9 @@ struct LH3DMaterial;
 
 struct LightSheet
 {
-	int           count; /* 0x0 */
+	void          Update(float time);                   // 0083e4f0
+	void          DoTheDrawing(LH3DMaterial* material); // 0083e8c0
+	int           count;                                /* 0x0 */
 	float         field_0x4;
 	float         field_0x8;
 	float         field_0xc;

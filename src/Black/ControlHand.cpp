@@ -105,7 +105,7 @@ CHand::CHand(LHPoint point, GInterfaceStatus* status)
 	field_0x4900 = 0;
 }
 
-uint32_t CHand::LoadBinary_5CHandFPci(char* filename, int param_1)
+uint32_t CHand::LoadBinary(char* filename, int param_1)
 {
 	uint32_t result;
 

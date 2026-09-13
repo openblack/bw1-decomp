@@ -14,6 +14,7 @@ struct WeatherInfo;
 class LH3DStorm
 {
 public:
+	static void DebugDrawAll(); // 0083f890
 	// Virtual functions
 
 	virtual void Update(float param_1); /* 0x0 */

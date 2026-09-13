@@ -31,27 +31,30 @@ struct Zoomer3d;
 class TempleRoom
 {
 public:
-	char         name[0x20]; /* 0x4 */
-	uint32_t     field_0x24;
-	uint32_t     field_0x28;
-	uint32_t     field_0x2c;
-	uint32_t     field_0x30;
-	int32_t      field_0x34;
-	int32_t      field_0x38;
-	uint8_t      field_0x3c[0x40];
-	uint32_t     field_0x7c;
-	uint8_t      field_0x80[0x40];
-	InnerRoom*   inner_room; /* 0xc0 */
-	InnerCamera* camera;
-	int32_t      field_0xc8;
-	uint8_t      field_0xcc[0x4];
-	uint32_t     field_0xd0;
-	uint32_t     field_0xd4;
-	uint32_t     field_0xd8;
-	uint32_t     field_0xdc;
-	uint32_t     field_0xe0;
-	float        field_0xe4;
-	float        field_0xe8;
+	// First slot is __purecall in the Windows table; derived rooms supply IsAvailable.
+	// Other virtual slots remain unrecovered. This establishes the real vptr for RTTI.
+	virtual uint32_t IsAvailable() = 0;
+	char             name[0x20]; /* 0x4 */
+	uint32_t         field_0x24;
+	uint32_t         field_0x28;
+	uint32_t         field_0x2c;
+	uint32_t         field_0x30;
+	int32_t          field_0x34;
+	int32_t          field_0x38;
+	uint8_t          field_0x3c[0x40];
+	uint32_t         field_0x7c;
+	uint8_t          field_0x80[0x40];
+	InnerRoom*       inner_room; /* 0xc0 */
+	InnerCamera*     camera;
+	int32_t          field_0xc8;
+	uint8_t          field_0xcc[0x4];
+	uint32_t         field_0xd0;
+	uint32_t         field_0xd4;
+	uint32_t         field_0xd8;
+	uint32_t         field_0xdc;
+	uint32_t         field_0xe0;
+	float            field_0xe4;
+	float            field_0xe8;
 
 	// Constructors
 

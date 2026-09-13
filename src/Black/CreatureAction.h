@@ -95,8 +95,7 @@ class CreatureFalling : public LH3DCreature
 public:
 	// Override methods
 
-	// BW1W120 004803d0 BW1M100 inlined CreatureFalling::SetAnimTime(long, long)
-	virtual void SetAnimTime(int param_1, int param_2);
+	// The Windows table uses LH3DCreature::SetAnimTime, not a separate override.
 };
 
 class CreatureMagicActionKnownAboutEntry : public CreatureActionKnownAboutEntry

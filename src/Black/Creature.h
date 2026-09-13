@@ -68,6 +68,7 @@ struct CreatureEmotionsForMusic
 class Creature : public Living
 {
 public:
+	static void DrawLeashInfo(); // 004cefb0
 	// BW1W120 004e70c0 BW1M100 1026a8e0 Creature::Save3D(char*)
 	void Save3D(char* path);
 	// BW1W120 0047d830 BW1M100 101cf170 Creature::OnClearMap(void)

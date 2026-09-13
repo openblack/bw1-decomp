@@ -16,9 +16,14 @@ struct LH3DRender;
 struct LH3DTexture;
 struct LHMatrix;
 struct Vertex3D;
+class LH3DZSorter;
 
 struct LH3DRender
 {
+	// Original Mac imported names; storage remains extracted.
+	static int          g_started_frame; // 00eca644
+	static LH3DZSorter* g_zsorter;       // 00eca648
+	static int          g_mode_cleaning; // 00c3871c
 	// BW1W120 00eca624 BW1M100 101bcd28
 	static bool32_t b_need_init;
 	// BW1W120 00ec7fd0 BW1M100 102ca938

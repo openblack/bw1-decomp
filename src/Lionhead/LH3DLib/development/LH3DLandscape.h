@@ -4,6 +4,7 @@
 class LH3DLandscape
 {
 public:
+	static void TextureUpdateThread(); // 00871f00
 	// BW1W120 00871220 BW1M100 1061cc1c LH3DLandscape::Release(void)
 	static void Release();
 };

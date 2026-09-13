@@ -224,7 +224,9 @@ public:
 	// BW1W120 0046c550 BW1M100 10029b00 CHand::PrepareForDrawing(void)
 	virtual void PrepareForDrawing();
 	// BW1W120 0046d0f0 BW1M100 101c7f70 CHand::AddForDrawing(void)
-	virtual bool AddForDrawing();
+	virtual uint32_t AddForDrawing();
+	// BW1W120 0046d5f0 BW1M100 101c7500 CHand::SaveBinary(char *)
+	virtual uint32_t SaveBinary(char* filename);
 
 	// Constructors
 
@@ -242,11 +244,15 @@ public:
 	// BW1W120 0046c260 BW1M100 101c86d0 CHand::ToggleLeftRight(void)
 	void ToggleLeftRight();
 	// BW1W120 0046d2c0 BW1M100 101c76b0 CHand::LoadBinary(char *, int)
-	uint32_t LoadBinary_5CHandFPci(char* filename, int param_1);
+	virtual uint32_t LoadBinary(char* filename, int param_1);
 	// BW1W120 0046ddd0 BW1M100 101c6b10 CHand::ThrowObject(void)
 	void ThrowObject();
 	// BW1W120 0046e4e0 BW1M100 10081dd0 CHand::GameTurnUpdate()
 	void GameTurnUpdate();
+	// BW1W120 0046e490 BW1M100 10014040 CHand::UpdateHeldObject(void)
+	void UpdateHeldObject();
+	// BW1W120 0046d100 BW1M100 10021f00 CHand::AddDrawing(void)
+	void AddDrawing();
 };
 
 #endif /* BW1_DECOMP_CONTROL_HAND_INCLUDED_H */

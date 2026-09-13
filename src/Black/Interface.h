@@ -144,7 +144,9 @@ public:
 	// BW1W120 005ce9e0 BW1M100 1007b8b0 GInterface::PreDrawProcess(void)
 	void PreDrawProcess();
 	// BW1W120 005ceab0 BW1M100 1007d9b0 GInterface::PostDrawProcess(void)
-	void PostDrawProcess();
+	void        PostDrawProcess();
+	void        Draw();           // 00518640
+	static void DrawAllLeashes(); // 005d9310
 	// BW1W120 005cec10 BW1M100 100254c0 GInterface::Process(void)
 	void Process();
 	// BW1W120 005cedb0 BW1M100 10084120 GInterface::ProcessFrameUpdates(void)

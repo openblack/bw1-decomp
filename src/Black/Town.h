@@ -355,7 +355,7 @@ public:
 	// BW1W120 00747ea0 BW1M100 1055f880 Town::GetBestRepairBuildingSite(void)
 	bool32_t GetBestRepairBuildingSite();
 	// BW1W120 007635d0 BW1M100 10012ce0 Town::DisplayHowImpressed(void)
-	bool32_t DisplayHowImpressed();
+	static void DisplayHowImpressed();
 };
 
 #endif /* BW1_DECOMP_TOWN_INCLUDED_H */

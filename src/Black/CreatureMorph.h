@@ -3807,6 +3807,25 @@ public:
 
 	// BW1W120 004eac90 BW1M100 10274660 LH3DCreature::LoadBase(char *)
 	virtual uint32_t LoadBase(char* path);
+	// Windows vtable entries shared with CreatureFalling.
+	// BW1W120 004803d0 BW1M100 101fa480 LH3DCreature::SetAnimTime(long,long)
+	virtual void SetAnimTime(int time, int anim);
+	// BW1W120 00480530 BW1M100 101fa2d0 LH3DCreature::SetSize(float)
+	virtual void SetSize(float size);
+	// BW1W120 0048d790 BW1M100 101e85e0 LH3DCreature::MorphAnims(void)
+	virtual void MorphAnims();
+	// BW1W120 0048d540 BW1M100 101e8670 LH3DCreature::MorphTexture(void)
+	virtual void MorphTexture();
+	// BW1W120 00481df0 LH3DCreature::UpdateTime(long)
+	virtual void UpdateTime(int time);
+	// BW1W120 004ed320 BW1M100 10271a60 LH3DCreature::PrepareForDrawing(void)
+	virtual void PrepareForDrawing();
+	// BW1W120 0048e1c0 BW1M100 101e7880 LH3DCreature::AddForDrawing(void)
+	virtual uint32_t AddForDrawing();
+	// BW1W120 004eb430 BW1M100 102738a0 LH3DCreature::LoadBinary(char*,int)
+	virtual uint32_t LoadBinary(char* filename, int param_1);
+	// BW1W120 004ed640 BW1M100 10271330 LH3DCreature::SaveBinary(char*)
+	virtual uint32_t SaveBinary(char* filename);
 
 	// Static methods
 
@@ -3832,6 +3851,8 @@ public:
 	bool IsPerformingBodyAction();
 	// BW1W120 0048b780 BW1M100 101eb040 LH3DCreature::GetObjectActionStatus(void)
 	uint32_t GetObjectActionStatus();
+	// BW1W120 0048dd70 BW1M100 101e79a0 LH3DCreature::DrawFightSparkles(void)
+	void DrawFightSparkles();
 };
 
 #endif /* BW1_DECOMP_CREATURE_MORPH_INCLUDED_H */

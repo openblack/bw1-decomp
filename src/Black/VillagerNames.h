@@ -32,7 +32,7 @@ struct VillagerNameBlock
 	// Non-virtual methods
 
 	// BW1W120 007627e0 BW1M100 10012bf0 VillagerNameBlock::DeleteAll(void)
-	bool32_t DeleteAll();
+	static void DeleteAll();
 	// BW1W120 00762900 BW1M100 inlined VillagerNameBlock::~VillagerNameBlock()
 	~VillagerNameBlock();
 	// BW1W120 00762970 BW1M100 inlined VillagerNameBlock::FreeAll(void)
@@ -42,6 +42,26 @@ struct VillagerNameBlock
 class VillagerName : public DrawingObject
 {
 public:
+	static VillagerName* First; // 00db9e28, descriptive name
+	void                 Remove()
+	{
+		if (First == this)
+		{
+			First = next;
+		}
+		else
+		{
+			for (VillagerName* name = First; name && name->next; name = name->next)
+			{
+				if (name->next == this)
+				{
+					name->next = next;
+					break;
+				}
+			}
+		}
+		VillagerNameBlock::Delete(this);
+	}
 	float         left; /* 0x4 */
 	float         top;
 	float         right;
