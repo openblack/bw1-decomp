@@ -186,6 +186,17 @@ config.static_libs = {
     "BW1W120": {"libcmt": "msvc6.5", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
 }[config.version]
 
+config.context_keep_dirs = [
+    "build/compilers/MSVC/6.0/include",
+    "build/compilers/MSVC/6.1/include",
+    "build/compilers/MSVC/6.2/include",
+    "build/compilers/MSVC/6.3/include",
+    "build/compilers/MSVC/6.4/include",
+    "build/compilers/MSVC/6.5/include",
+    "build/compilers/MSVC/6.6/include",
+    "build/compilers/ICC/5.0.1/include",
+]
+
 # Project
 config.config_path = Path("config") / config.version / "config.yml"
 config.check_sha_path = Path("config") / config.version / "build.sha1"
@@ -328,8 +339,8 @@ else:
 # GameCodeObject (below), which compiles them with these flags.
 cflags_gamecode = [*cflags_base, "/G6"]
 
-# Optional numeric ID for decomp.me preset
-config.scratch_preset_id = 208
+# Optional numeric ID for decomp.me preset. A preset dictates the compiler.
+config.scratch_preset_id = 208 if config.compilers_tag == "6.5" else None
 
 
 Matching = True                   # Object matches and should be linked

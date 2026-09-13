@@ -226,6 +226,9 @@ class ProjectConfig:
         self.context_defines: List[
             str
         ] = []  # Macros to define at the top of context files
+        self.context_keep_dirs: List[
+            str
+        ] = []  # Directories whose headers stay as plain #include in context files
 
         # Progress output and report.json config
         self.progress = True  # Enable report.json generation and CLI progress output
@@ -550,7 +553,7 @@ def generate_build_ninja(
     decompctx = config.tools_dir / "decompctx.py"
     n.rule(
         name="decompctx",
-        command=f"$python {decompctx} $in -o $out -d $out.d $includes $excludes $defines",
+        command=f"$python {decompctx} $in -o $out -d $out.d $includes $excludes $defines $keeps",
         description="CTX $in",
         depfile="$out.d",
         deps="gcc",
@@ -1319,6 +1322,7 @@ def generate_build_ninja(
                 includes = " ".join([f"-I {d}" for d in include_dirs])
                 excludes = " ".join([f"-x {d}" for d in config.context_exclude_globs])
                 defines = " ".join([f"-D {d}" for d in config.context_defines])
+                keeps = " ".join([f"-k {d}" for d in config.context_keep_dirs])
 
                 n.build(
                     outputs=obj.ctx_path,
@@ -1329,6 +1333,7 @@ def generate_build_ninja(
                         "includes": includes,
                         "excludes": excludes,
                         "defines": defines,
+                        "keeps": keeps,
                     },
                 )
             n.newline()
@@ -2052,6 +2057,7 @@ def generate_objdiff_config(
         "Wii/1.7": "mwcc_43_213",
         "MSVC/6.4": "msvc6.4",
         "MSVC/6.5": "msvc6.5",
+        "ICC/5.0.1": "icc5.0.1-010525z",
     }
 
     def add_unit(
@@ -2110,6 +2116,11 @@ def generate_objdiff_config(
                 and not flag.startswith("-I ")
                 and not flag.startswith("-I+")
                 and not flag.startswith("-I-")
+                and not flag.startswith("/i ")
+                and not flag.startswith("/i-")
+                and not flag.startswith("/I ")
+                and not flag.startswith("/I+")
+                and not flag.startswith("/I-")
             )
 
         all_cflags = list(
@@ -2130,11 +2141,18 @@ def generate_objdiff_config(
             print(f"Missing scratch compiler mapping for {obj.options['compiler_version']}")
         else:
             cflags_str = make_flags_str(all_cflags)
+            if src_exists and obj.src_path.suffix.lower() in (".cpp", ".cxx", ".cc"):
+                cflags_str += " /TP"
+            # A preset overrides the compiler and flags sent here, so only objects
+            # built with the default compiler may use it.
+            preset_id = obj.options["scratch_preset_id"]
+            if obj.options["compiler_version"] != config.linker_version:
+                preset_id = None
             unit_config["scratch"] = {
-                "platform": "gc_wii",
+                "platform": "win32",
                 "compiler": compiler_version,
                 "c_flags": cflags_str,
-                "preset_id": obj.options["scratch_preset_id"],
+                "preset_id": preset_id,
             }
             if src_exists and not src_is_obj:
                 unit_config["scratch"].update(
