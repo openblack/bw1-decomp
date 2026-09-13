@@ -60,7 +60,7 @@ public:
 	// BW1W120 0066ec50 BW1M100 10117fe0 PileFood::GetResourceType(void)
 	virtual RESOURCE_TYPE GetResourceType();
 	// BW1W120 0066e1f0 BW1M100 10119d80 PileFood::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 
 	// Constructors
 

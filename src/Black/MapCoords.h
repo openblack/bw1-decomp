@@ -27,9 +27,17 @@ struct JustMapXZ
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M100 10032f20 JustMapXZ::Init(ushort, ushort)
-	JustMapXZ* Init(int16_t x, int16_t z);
+	void Init(unsigned short cell_x, unsigned short cell_z)
+	{
+		x = cell_x;
+		z = cell_z;
+	}
 	// BW1W120 005e1920 BW1M100 100fe800 JustMapXZ::Init(MapCell*)
-	JustMapXZ* Init(MapCell* cell);
+	void Init(MapCell* cell);
+	// BW1W120 005e1860 BW1M100 100220f0 JustMapXZ::InBounds(void)
+	bool32_t InBounds();
+	// BW1W120 005e1950 BW1M100 1002a480 JustMapXZ::ToMap(void) const
+	MapCell* ToMap() const;
 };
 
 struct JustWholeMapXZ
@@ -96,7 +104,7 @@ struct MapCoords
 	// BW1W120 006034b0 BW1M100 1002cb50 MapCoords::GetFirstObjectFixed(void) const
 	Object* GetFirstObjectFixed();
 	// BW1W120 006034d0 BW1M100 1002c570 MapCoords::GetFirstIterator(void) const
-	MapCellIterator* GetFirstIterator(MapCellIterator* iter);
+	MapCellIterator GetFirstIterator() const;
 	// BW1W120 006035b0 BW1M100 10018e70 MapCoords::IsWater(void) const
 	bool32_t IsWater();
 	// BW1W120 00603b30 BW1M100 1055e480 MapCoords::IsSuitableForFixed 9MESH_LISTff

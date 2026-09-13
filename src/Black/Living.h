@@ -254,7 +254,7 @@ public:
 	// BW1W120 005ed370 BW1M100 103803b0 Living::HasSunk(void)
 	virtual bool32_t HasSunk();
 	// BW1W120 005edba0 BW1M100 1037f690 Living::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 005ee560 BW1M100 1037e320 Living::RemoveFromGame(void)
 	virtual uint32_t RemoveFromGame();
 	// BW1W120 005ef340 BW1M100 1037cc80 Living::GetInHandImmersionTexture(void)

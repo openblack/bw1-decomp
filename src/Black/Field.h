@@ -170,7 +170,7 @@ public:
 	// BW1W120 00528030 BW1M100 100d6450 Field::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 005280c0 BW1M100 100d5880 Field::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00529730 BW1M100 100d3050 Field::ProcessInInteract(GInterfaceStatus *)
 	virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
 	// BW1W120 00528ce0 BW1M100 100d4250 Field::SaveObject(LHOSFile &, MapCoords const &)

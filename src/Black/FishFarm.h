@@ -91,7 +91,7 @@ public:
 	// BW1W120 0052c4e0 BW1M100 100dd5e0 FishFarm::CanBePoodOn(Creature *)
 	virtual uint32_t CanBePoodOn(Creature* param_1);
 	// BW1W120 0052cad0 BW1M100 1009a360 FishFarm::GetMapChild(MapCell const &)
-	virtual Object* GetMapChild(const MapCell* param_1);
+	virtual Object* GetMapChild(const MapCell& cell);
 	// BW1W120 0052cb70 BW1M100 100dc1a0 FishFarm::SetMapChild(Object *, MapCell *)
 	virtual void SetMapChild(Object* param_1, MapCell* param_2);
 	// BW1W120 0052ca10 BW1M100 100dc3c0 FishFarm::InsertMapObject(void)
@@ -133,7 +133,7 @@ public:
 	// BW1W120 0052c4b0 BW1M100 100dd510 FishFarm::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 0052c460 BW1M100 100dd3e0 FishFarm::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0052d950 BW1M100 100da4d0 FishFarm::ProcessInInteract(GInterfaceStatus *)
 	virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
 	// BW1W120 0052cf90 BW1M100 100db980 FishFarm::SaveObject(LHOSFile &, MapCoords const &)

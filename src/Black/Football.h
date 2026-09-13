@@ -108,7 +108,7 @@ public:
 	// BW1W120 00531930 BW1M100 102bcad0 Football::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 005312f0 BW1M100 102b87a0 Football::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00533b30 BW1M100 inlined Football::GetDoorPos(MapCoords *)
 	virtual MapCoords* GetDoorPos(MapCoords* param_1);
 	// BW1W120 00531290 BW1M100 102b8650 Football::IsRepaired(void)

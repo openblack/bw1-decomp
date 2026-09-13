@@ -67,7 +67,7 @@ public:
 	// BW1W120 004390a0 BW1M100 100b3050 BigForest::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00438f50 BW1M100 100b3530 BigForest::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00438dd0 BW1M100 100b2420 BigForest::VillagerMustAvoid(Villager *)
 	virtual uint32_t VillagerMustAvoid(Villager* param_1);
 	// BW1W120 00438de0 BW1M100 100b2470 BigForest::GetCarriedTreeType(void)

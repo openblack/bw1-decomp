@@ -12,6 +12,7 @@
 
 class Fixed;
 class Object;
+struct MapCellIterator;
 
 struct MapCell
 {
@@ -39,19 +40,40 @@ struct MapCell
 	uint32_t GetZ();
 	// BW1W120 00601690 BW1M100 10570500 MapCell::FindFixedOnMap(Object *)
 	Fixed* FindFixedOnMap(Object* param_1);
+	// BW1W120 inlined BW1M100 10388dc0 MapCell::GetFirstIterator(void) const
+	MapCellIterator GetFirstIterator() const;
 };
 
 struct MapCellIterator
 {
-	Object*  object; /* 0x0 */
-	bool     IsFixed;
-	MapCell* cell;
+	Object*        object; /* 0x0 */
+	bool32_t       IsFixed;
+	const MapCell* cell;
 
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M100 1002c620 MapCellIterator::MoveToMobileObsIfNeededAndPoss(void)
-	void MoveToMobileObsIfNeededAndPoss();
+	void MoveToMobileObsIfNeededAndPoss()
+	{
+		if (object == NULL && IsFixed)
+		{
+			object = cell->FirstObjectMobile;
+			IsFixed = 0;
+		}
+	}
 };
+
+inline MapCellIterator MapCell::GetFirstIterator() const
+{
+	MapCellIterator iter;
+	iter.object = FirstObjectFixed;
+	iter.IsFixed = 1;
+	iter.cell = this;
+	iter.MoveToMobileObsIfNeededAndPoss();
+	return iter;
+}
+
+static_assert(sizeof(MapCellIterator) == 0xc, "MapCellIterator size is incorrect");
 
 class GMap : public Base
 {

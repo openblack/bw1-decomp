@@ -147,7 +147,7 @@ public:
 	// BW1W120 004221d0 BW1M100 inlined ChessPion::ChecksVerticesVObjects(void)
 	virtual bool ChecksVerticesVObjects();
 	// BW1W120 00422ec0 BW1M100 inlined ChessPion::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00422ed0 BW1M100 inlined ChessPion::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));

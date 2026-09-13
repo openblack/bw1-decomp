@@ -75,7 +75,7 @@ public:
 	// BW1W120 0076f3e0 BW1M100 1015b4a0 Fragment::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0076f7f0 BW1M100 1015ae00 Fragment::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0076f7d0 BW1M100 1015aeb0 Fragment::GetCollideSoundType(void)
 	virtual SOUND_COLLISION_TYPE GetCollideSoundType();
 	// BW1W120 0076e970 BW1M100 1015abe0 Fragment::GetInHandImmersionTexture(void)
