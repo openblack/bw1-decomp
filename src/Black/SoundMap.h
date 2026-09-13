@@ -8,16 +8,26 @@
 
 #include "Base.h"      /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */
+#include <string.h>
 
 class GSoundMap : public Base
 {
 public:
-	uint8_t   field_0x8[0xc][0xe];
+	struct Entry
+	{
+		uint16_t Count;
+		float    Distance;
+		int16_t  NearestX;
+		int16_t  NearestZ;
+	};
+	Entry     Entries[0xe];
 	uint16_t  field_0xb0;
 	uint32_t  field_0xb4[0xe];
 	LHPoint   field_0xec;
 	MapCoords field_0xf8;
-	uint8_t   field_0xfc[0xc]; /* 0x104 */
+	float     Radius;
+	float     HeightAboveLand;
+	float     ReceiverHeight;
 
 	// Override methods
 
@@ -40,6 +50,8 @@ public:
 
 	// BW1W120 0054b9d0 BW1M100 inlined GSoundMap::GSoundMap(void)
 	GSoundMap();
+	// BW1W120 0071d6d0 BW1M100 10018580 GSoundMap::Reset(void)
+	void Reset();
 };
 
 #endif /* BW1_DECOMP_SOUND_MAP_INCLUDED_H */

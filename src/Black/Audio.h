@@ -52,9 +52,9 @@ public:
 	void PlaySoundEffect(Base* param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4, int param_5, int param_6,
 	                     AUDIO_SFX_BANK_TYPE param_7);
 	// BW1W120 00429e30 BW1M100 10020580 GAudio::PlaySoundEffect(LH_SamplePlayOptions *)
-	uint32_t PlaySoundEffect(LH_SamplePlayOptions* options);
+	void PlaySoundEffect(LH_SamplePlayOptions* options);
 	// BW1W120 0042a210 BW1M100 1017e7d0 GAudio::StopPlayingSoundEffect(unsigned long, unsigned long, AUDIO_SFX_BANK_TYPE) const
-	void StopPlayingSoundEffect(uint32_t param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type);
+	void StopPlayingSoundEffect(uint32_t param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type) const;
 	// BW1W120 0042a330 BW1M100 1017e410 GAudio::ReleaseLoopOnSoundEffect(Base *, unsigned long, AUDIO_SFX_BANK_TYPE) const
 	void ReleaseLoopOnSoundEffect(Base* param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type);
 };

@@ -32,6 +32,8 @@ struct GLandscape
 
 	LH3DTexture*  texture; /* 0x0 */
 	LH3DMaterial* material;
+	// BW1W120 005e55c0 GLandscape::~GLandscape(void)
+	~GLandscape();
 
 	// Static methods
 

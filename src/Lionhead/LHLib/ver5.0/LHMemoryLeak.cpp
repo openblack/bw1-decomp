@@ -41,8 +41,8 @@ static unsigned char gMemoryLeakListCleaned;
 class MemoryLeakRegistry
 {
 public:
-	LHLinkedNode<LHMemoryLeak>* Head;  /* 0x00e905f0 */
-	uint32_t                    Count; /* 0x00e905f4 */
+	LHLinkedNode<LHMemoryLeak*>* Head;  /* 0x00e905f0 */
+	uint32_t                     Count; /* 0x00e905f4 */
 
 	MemoryLeakRegistry();
 	~MemoryLeakRegistry()
@@ -64,27 +64,27 @@ MemoryLeakRegistry::MemoryLeakRegistry()
 // Global (not static): also referenced directly from Black/BaseInfo.cpp (Base::operator new/delete).
 MemoryLeakRegistry gMemoryLeakList;
 
-template <> int LHLinkedList<char>::AddToEnd(char* val)
+template <> int LHLinkedList<char*>::AddToEnd(char* val)
 {
-	LHLinkedNode<char>* node;
+	LHLinkedNode<char*>* node;
 	if (!val)
 	{
 		goto fail;
 	}
-	node = new LHLinkedNode<char>(val);
+	node = new LHLinkedNode<char*>(val, NULL);
 	if (!node)
 	{
 		goto fail;
 	}
 	{
-		LHLinkedNode<char>* last = GetLastNode();
+		LHLinkedNode<char*>* last = GetLastNode();
 		if (last)
 		{
-			last->next = node;
+			last->next.Set(node);
 			++count;
 			return 1;
 		}
-		head = node;
+		head.Set(node);
 		++count;
 		return 1;
 	}
@@ -106,10 +106,10 @@ void LHMemoryLeak::LeakNode::LogError(const char* msg, bool logStack, bool alloc
 
 void LHMemoryLeak::LeakNode::LogCallStack(bool allocStack)
 {
-	LHLinkedNode<char>* node;
+	LHLinkedNode<char*>* node;
 	if (allocStack)
 	{
-		node = AllocStack.head;
+		node = AllocStack.head.Get();
 		if (gMemoryLeakLogFile)
 		{
 			fprintf(gMemoryLeakLogFile, "Allocation call stack:\n");
@@ -117,7 +117,7 @@ void LHMemoryLeak::LeakNode::LogCallStack(bool allocStack)
 	}
 	else
 	{
-		node = DeleteStack.head;
+		node = DeleteStack.head.Get();
 		if (gMemoryLeakLogFile)
 		{
 			fprintf(gMemoryLeakLogFile, "Deletion call stack:\n");
@@ -129,7 +129,7 @@ void LHMemoryLeak::LeakNode::LogCallStack(bool allocStack)
 		{
 			fprintf(gMemoryLeakLogFile, "     |->%s\n", node->payload);
 		}
-		node = node->next;
+		node = node->next.Get();
 	}
 	fprintf(gMemoryLeakLogFile, "\n");
 }
@@ -145,7 +145,7 @@ void LHMemoryLeak::LeakNode::GrabFunctionNamesFromDebugStack(LHDebugStack* debug
 		const char* name = debugStack->GetFunctionName(i);
 		char*       copy = (char*)operator new(strlen(name) + 1, __FILE__, __LINE__);
 		strcpy(copy, name);
-		LHLinkedList<char>* list = allocStack ? &AllocStack : &DeleteStack;
+		LHLinkedList<char*>* list = allocStack ? &AllocStack : &DeleteStack;
 		list->AddToEnd(copy);
 	}
 }

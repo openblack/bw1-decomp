@@ -208,7 +208,7 @@ bool32_t Villager::Fishing()
 //  1) the "add self to the fish farm's villager list" call is blocked on the UNNAMED helper
 //     fn_0052D250 (systemic blocker #4; likely FishFarm::AddFisherman(Villager*), a sibling of the
 //     already-declared FishFarm::RemoveFisherman). The membership check itself
-//     (fish_farm->villagers.Contains(this)) is the existing LHLinkedList<Villager>::Contains()
+//     (fish_farm->villagers.Contains(this)) is the existing LHLinkedList<Villager*>::Contains()
 //     inline template method -- confirmed field-for-field identical to the target's open-coded list
 //     walk (head@0x80, node->next@0x0, node->payload@0x4).
 //  2) IsStateEntryFunctionSameAs's bool result: target `test eax,eax`, ours `test al,al` -- same

@@ -3,7 +3,8 @@
 #include <d3d.h>
 
 // TODO: Reconcile the original Render data split before source linkage.
-int g_frame_rate_stats = 5;
+int  g_frame_rate_stats = 5;
+bool g_enable_callbacks = true;
 
 int __cdecl LH3DRender::SetRenderState(D3DRENDERSTATETYPE type, uint32_t value)
 {

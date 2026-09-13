@@ -21,7 +21,7 @@ public:
 	// Override methods
 
 	// BW1W120 00510610 BW1M100 1056c340 GData::_dt(void)
-	virtual ~GData();
+	virtual ~GData() {}
 
 	// Constructors
 

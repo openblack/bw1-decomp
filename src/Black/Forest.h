@@ -27,11 +27,11 @@ public:
 	// BW1W120 00539d70 BW1M100 10025440 Forest::ProcessForests(void)
 	static void ProcessForests();
 
-	uint8_t            field_0x30[0x10];
-	uint32_t           id; /* 0x40 */
-	Forest*            next;
-	LHLinkedList<Tree> Trees0;
-	LHLinkedList<Tree> Trees1; /* 0x50 */
+	uint8_t             field_0x30[0x10];
+	uint32_t            id; /* 0x40 */
+	Forest*             next;
+	LHLinkedList<Tree*> Trees0;
+	LHLinkedList<Tree*> Trees1; /* 0x50 */
 
 	// Override methods
 

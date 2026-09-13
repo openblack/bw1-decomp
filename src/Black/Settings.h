@@ -6,8 +6,8 @@
 
 struct Settings
 {
-	char    QuestPath[0x1]; /* 0x0 */
-	uint8_t field_0x1[0x103];
+	char QuestPath[0x104];
+	Settings() { InitialiseToDefaults(); }
 
 	// Non-virtual methods
 

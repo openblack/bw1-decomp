@@ -20,19 +20,19 @@ enum DECISION_TREE_TYPE
 
 struct AttributeTest
 {
-	LHLinkedList<CreatureLearningEpisode> episodes; /* 0x0 */
-	uint32_t                              field_0x8;
-	uint32_t                              field_0xc;
-	uint32_t                              field_0x10;
-	uint32_t                              field_0x14;
-	uint32_t                              field_0x18;
-	ATTRIBUTE_TYPE                        AttributeStack[0x18];
-	uint32_t                              field_0x7c;
-	uint32_t                              field_0x80;
-	uint32_t                              field_0x84;
-	uint32_t                              field_0x88;
-	uint32_t                              field_0x8c;
-	uint32_t                              field_0x90;
+	LHLinkedList<CreatureLearningEpisode*> episodes; /* 0x0 */
+	uint32_t                               field_0x8;
+	uint32_t                               field_0xc;
+	uint32_t                               field_0x10;
+	uint32_t                               field_0x14;
+	uint32_t                               field_0x18;
+	ATTRIBUTE_TYPE                         AttributeStack[0x18];
+	uint32_t                               field_0x7c;
+	uint32_t                               field_0x80;
+	uint32_t                               field_0x84;
+	uint32_t                               field_0x88;
+	uint32_t                               field_0x8c;
+	uint32_t                               field_0x90;
 
 	// Constructors
 
