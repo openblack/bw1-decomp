@@ -102,6 +102,7 @@
 #include "Villager.h"
 #include "WorldRoom.h"
 #include "WeatherInfo.h"
+#include "Windmill.h"
 #include <Lionhead/LH3DLib/development/LH3DAtmos.h>
 #include <Lionhead/LH3DLib/development/LH3DRender.h>
 #include <Lionhead/LH3DLib/development/LH3DTech.h>
@@ -167,6 +168,8 @@ void             ReinitLoadingScreen();
 unsigned __int64 GetCreatureFileChecksum();
 void             load_variables();
 void             fn_0054B190();
+void             fn_0054B180(); // Real emitted empty function; original name unrecovered.
+void             LoadAllAnimations();
 char*            WCHAR2CHAR(char16_t* text);
 void __stdcall   camera_editor_callback(unsigned long message, unsigned long param_1, unsigned long param_2);
 void __stdcall   water_drop_cb(LHPoint& position, float size, unsigned long type);
@@ -419,6 +422,145 @@ uint32_t GGame::InitOneTimeOnly()
 	GLandBalance::Init();
 	Base::ObjectHeapStore->Store();
 	return 1;
+}
+
+// BW1W120 0054ff80 BW1M100 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void*)
+void GGame::KeyHandler(unsigned short message, LH_KEY key, unsigned short modifier, unsigned short param_4,
+                       void* context)
+{
+	if ((message == WM_KEYDOWN || message == WM_SYSKEYDOWN) && key != KB_NONE)
+	{
+		if (AssertionKeyCapture)
+		{
+			AssertionKey = key;
+		}
+		else if (g_game != NULL && g_game->IsAvailable())
+		{
+			g_game->key_buffer.AddKeyIfDifferentToPrevious(key, modifier);
+		}
+	}
+}
+
+// BW1W120 00550080 BW1M100 101c6850 GGame::UnfinishInitialisation(void)
+void GGame::UnfinishInitialisation()
+{
+	GGlobal::Global.audio->ReleaseAtmosSoundBanks();
+	Windmill::Close();
+	LHSys::TheSystem.mouse.DrawCallback = NULL;
+	LHSys::TheSystem.mouse.CallbackArg1 = NULL;
+	LHSys::TheSystem.keyboard.Callback = NULL;
+	LHSys::TheSystem.keyboard.CallbackContext = NULL;
+	if (MyInterface() != NULL)
+	{
+		MyInterface()->MessageBuffers.FreeMsgBuffer();
+	}
+}
+
+// BW1W120 00550110 BW1M100 10505500 GGame::FinishInitialisation(void)
+void GGame::FinishInitialisation()
+{
+	if (MyInterface() != NULL)
+	{
+		GInterface* playerInterface = MyInterface();
+		playerInterface->MessageBuffers.Init(64);
+	}
+	LHSys::TheSystem.keyboard.Callback = KeyHandler;
+	LHSys::TheSystem.keyboard.CallbackContext = NULL;
+	LHSys::TheSystem.mouse.DrawCallback = MouseHandler;
+	LHSys::TheSystem.mouse.CallbackArg1 = NULL;
+	Windmill::Open();
+	GGlobal::Global.audio->InitAtmos();
+}
+
+// BW1W120 00550390 BW1M100 10427340 GGame::LoadFiles(void)
+bool32_t GGame::LoadFiles()
+{
+	RenderLoadingFrame("loading animations");
+	LoadAllAnimations();
+	RenderLoadingFrame("loading meshes");
+	CreateMeshPack();
+	if (!gesture_system_data_list->Load(".\\Data\\Gestures.jty"))
+	{
+		return 0;
+	}
+	RenderLoadingFrame("loading interface files");
+	if (MyInterface()->LoadFiles() != 1)
+	{
+		return 0;
+	}
+	RenderLoadingFrame("initialising shapes");
+	data.InitialiseShapes();
+	return 1;
+}
+
+// BW1W120 00550820 GGame::MyPlayerID(unsigned long)
+int GGame::MyPlayerID(unsigned long user_id)
+{
+	// TODO: MSVC assigns the user ID and player counter to opposite registers in the original.
+	for (unsigned long i = 0; i < 8; ++i)
+	{
+		for (GInterfaceStatus* status = players[i].GetNextInterfaceStatus(NULL); status != NULL;
+		     status = players[i].GetNextInterfaceStatus(status))
+		{
+			if (status->GetInterface()->player != NULL && status->GetInterface()->player->UserId == user_id)
+			{
+				return status->GetInterface()->player->PlayerId;
+			}
+		}
+	}
+	return -1;
+}
+
+// BW1W120 00550780 BW1M100 10560930 GGame::Dump(void)
+void GGame::Dump()
+{
+	for (unsigned int i = 0; i < 8; ++i)
+	{
+		GetPlayer(i)->Dump();
+	}
+	map.Dump();
+	GameLists.Dump();
+}
+
+// BW1W120 005507d0 GGame::LoopThroughPlayers(void)
+void GGame::LoopThroughPlayers()
+{
+	for (GPlayer* player = GetNextPlayer(NULL); player != NULL; player = GetNextPlayer(player))
+	{
+	}
+}
+
+// BW1W120 005509e0 BW1M100 1000be00 GGame::GetPlayerFromReal(unsigned long)
+GPlayer* GGame::GetPlayerFromReal(unsigned long player_id)
+{
+	if (player_id >= 8)
+	{
+		return NULL;
+	}
+	return &players[RealPlayerMap[player_id]];
+}
+
+// BW1W120 00550a10 GGame::GetPlayerInterfaceFromReal(unsigned long)
+GInterface* GGame::GetPlayerInterfaceFromReal(unsigned long player_id)
+{
+	if (player_id >= 8)
+	{
+		return NULL;
+	}
+	return GetPlayerFromReal(player_id)->GetRealInterface(player_id);
+}
+
+// BW1W120 005557a0 BW1M100 101bf310 GGame::ResetState(void)
+void GGame::ResetState()
+{
+	data.Reset();
+	if (network.session != NULL)
+	{
+		network.session->EmptyEventQ();
+	}
+	GNetwork::ResetStateDebug();
+	fn_0054B180();
+	fn_0054B190();
 }
 
 // BW1W120 00550410 BW1M100 1054a080 GGame::SetupPlayers(void)
@@ -860,6 +1002,11 @@ static_assert(offsetof(CreatureDanceLineInput, Analysis) == 0x28, "Line-input pr
 static_assert(offsetof(Dance, Next) == 0xec, "Dance link offset is incorrect");
 static_assert(sizeof(Dance) == 0x12c, "Dance size is incorrect");
 static_assert(offsetof(GGame, field_0x59ac) == 0x59ac, "Game start-time offset is incorrect");
+static_assert(offsetof(GInterfaceMessage, Collide) == 0xc, "Message collision offset is incorrect");
+static_assert(offsetof(GInterfaceMessageBuffer, Messages) == 8, "Message array offset is incorrect");
+static_assert(sizeof(GInterfaceMessageBuffer) == 0x14, "Message buffer size is incorrect");
+static_assert(offsetof(LHSys, mouse) + offsetof(LHMouse, DrawCallback) == 0x1c8, "Mouse callback offset is incorrect");
+static_assert(offsetof(LHSys, mouse) + offsetof(LHMouse, CallbackArg1) == 0x314, "Mouse context offset is incorrect");
 
 static_assert(sizeof(GGlobal) == 0x2d500, "GGlobal size is incorrect");
 static_assert(offsetof(GGlobal, field_0x2d2ac) == 0x2d2ac, "GGlobal editor mode offset is incorrect");
