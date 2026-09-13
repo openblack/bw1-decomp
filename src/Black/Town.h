@@ -109,8 +109,8 @@ public:
 	uint32_t                         field_0x770;
 	uint32_t                         field_0x774;
 	LHListHead<TownSpellIcon>        SpellIconList;
-	LHLinkedList<Field>              FieldList; /* 0x780 */
-	LHLinkedList<FishFarm>           FishFarms;
+	LHLinkedList<Field*>             FieldList; /* 0x780 */
+	LHLinkedList<FishFarm*>          FishFarms;
 	LHListHead<BuildingSite>         BuildingSiteList; /* 0x790 */
 	GBelief                          belief;
 	uint32_t                         field_0x968;
@@ -118,12 +118,12 @@ public:
 	uint32_t                         field_0x970;
 	uint32_t                         field_0x974;
 	uint32_t                         field_0x978;
-	LHLinkedList<Object>             playthings;
+	LHLinkedList<Object*>            playthings;
 	uint32_t                         field_0x984;
 	uint32_t                         field_0x988;
 	uint32_t                         field_0x98c;
 	uint32_t                         field_0x990;
-	LHLinkedList<TownArtifact>       artifacts;
+	LHLinkedList<TownArtifact*>      artifacts;
 	uint32_t                         field_0x99c;
 	uint32_t                         field_0x9a0;
 	TownCentre*                      town_centre;

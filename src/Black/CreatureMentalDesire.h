@@ -24,24 +24,24 @@ class CreatureInfo;
 class CreatureDesires : public Base
 {
 public:
-	uint32_t                           field_0x8[NUM_CREATURE_DESIRES];
-	float                              field_0xa8[NUM_CREATURE_DESIRES];
-	float                              field_0x148[NUM_CREATURE_DESIRES];
-	float                              IncreaseTime[NUM_CREATURE_DESIRES]; /* 0x1e8 */
-	uint32_t                           field_0x288[NUM_CREATURE_DESIRES];
-	LHLinkedList<CreatureDesireSource> SourceLists[NUM_CREATURE_DESIRES]; /* 0x328 */
-	uint32_t                           field_0x468[NUM_CREATURE_DESIRES];
-	uint32_t                           field_0x508[NUM_CREATURE_DESIRES];
-	uint32_t                           field_0x5a8[NUM_CREATURE_DESIRES];
-	Creature*                          creature; /* 0x648 */
-	const CreatureInfo*                creature_info;
-	uint32_t                           field_0x650;
-	uint32_t                           field_0x654;
-	uint32_t                           field_0x658[NUM_CREATURE_DESIRES];
-	uint32_t                           field_0x6f8;
-	uint32_t                           field_0x6fc;
-	uint32_t                           field_0x700;
-	uint32_t                           field_0x704;
+	uint32_t                            field_0x8[NUM_CREATURE_DESIRES];
+	float                               field_0xa8[NUM_CREATURE_DESIRES];
+	float                               field_0x148[NUM_CREATURE_DESIRES];
+	float                               IncreaseTime[NUM_CREATURE_DESIRES]; /* 0x1e8 */
+	uint32_t                            field_0x288[NUM_CREATURE_DESIRES];
+	LHLinkedList<CreatureDesireSource*> SourceLists[NUM_CREATURE_DESIRES]; /* 0x328 */
+	uint32_t                            field_0x468[NUM_CREATURE_DESIRES];
+	uint32_t                            field_0x508[NUM_CREATURE_DESIRES];
+	uint32_t                            field_0x5a8[NUM_CREATURE_DESIRES];
+	Creature*                           creature; /* 0x648 */
+	const CreatureInfo*                 creature_info;
+	uint32_t                            field_0x650;
+	uint32_t                            field_0x654;
+	uint32_t                            field_0x658[NUM_CREATURE_DESIRES];
+	uint32_t                            field_0x6f8;
+	uint32_t                            field_0x6fc;
+	uint32_t                            field_0x700;
+	uint32_t                            field_0x704;
 
 	// Override methods
 

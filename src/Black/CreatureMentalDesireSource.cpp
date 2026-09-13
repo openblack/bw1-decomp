@@ -11,7 +11,7 @@ void CreatureDesires::InitialiseSources()
 	{
 		for (;;)
 		{
-			LHLinkedNode<CreatureDesireSource>* node = SourceLists[i].head;
+			LHLinkedNode<CreatureDesireSource*>* node = SourceLists[i].head.Get();
 			if (node == NULL)
 			{
 				break;

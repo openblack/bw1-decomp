@@ -28,15 +28,15 @@ class Town;
 class BuildingSite : public GameThing
 {
 public:
-	MultiMapFixed*         RootBuilding; /* 0x14 */
-	LHLinkedList<Villager> BuildingWorkerList;
-	uint32_t               field_0x20;
-	uint32_t               field_0x24;
-	uint8_t                field_0x28[0xc];
-	LHPoint                BuildingPositions[0x7f]; /* 0x34 */
-	uint8_t                field_0x628[0x14];
-	uint8_t                field_0x63c[0x4];
-	float                  life; /* 0x640 */
+	MultiMapFixed*          RootBuilding; /* 0x14 */
+	LHLinkedList<Villager*> BuildingWorkerList;
+	uint32_t                field_0x20;
+	uint32_t                field_0x24;
+	uint8_t                 field_0x28[0xc];
+	LHPoint                 BuildingPositions[0x7f]; /* 0x34 */
+	uint8_t                 field_0x628[0x14];
+	uint8_t                 field_0x63c[0x4];
+	float                   life; /* 0x640 */
 
 	// Override methods
 
