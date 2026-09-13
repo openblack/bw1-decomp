@@ -2,6 +2,7 @@
 #define BW1_DECOMP_LH_SESSION_INCLUDED_H
 
 #include "LHConnection.h"
+#include "LHChannel.h"
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 
 class LHPlayer;
@@ -14,7 +15,7 @@ public:
 	LHLinkedList<LHPlayer*> Players; /* 0x90 */
 	uint32_t                field_0x98;
 	uint32_t                field_0x9c;
-	uint32_t                field_0xa0;
+	LHChannel*              Channel; /* 0xa0 */
 	uint32_t                field_0xa4;
 	uint32_t                field_0xa8;
 	// Original GetSuperPacketGameTurn at 10003170 reads this signed long.

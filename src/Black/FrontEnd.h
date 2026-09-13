@@ -32,9 +32,15 @@ class SkirmishGameBox;
 class StartGameBox;
 class StatsBox;
 class TattooEditor;
+class SetupTabButton;
 
 struct FrontEnd
 {
+	// Descriptive names; pointers assigned by frontend dialog/tab creation.
+	// BW1W120 00cd0b1c
+	static SkirmishGameBox* SkirmishDialog;
+	// BW1W120 00cd0698
+	static SetupTabButton* MultiplayerTab;
 	// These are independent globals, not an instance layout. Names and subsystem scope are descriptive.
 	// BW1W120 00cd0620
 	static bool CursorOn;

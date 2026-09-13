@@ -78,6 +78,10 @@ static_assert(sizeof(MapCellIterator) == 0xc, "MapCellIterator size is incorrect
 class GMap : public Base
 {
 public:
+	// BW1W120 006014c0 BW1M100 101a6180
+	bool32_t Init(unsigned long x_size, unsigned long z_size, unsigned long flags);
+	// BW1W120 00601820 BW1M100 102ffa90
+	void     CalculateMapInfluence();
 	uint8_t  field_0x8;
 	uint8_t  field_0x9;
 	uint8_t  field_0xa;

@@ -28,6 +28,8 @@ class WorshipSite;
 class Citadel : public Container
 {
 public:
+	// BW1W120 00463a30 BW1M100 101b8550 Citadel::GetCreatureHomePos(void)
+	MapCoords               GetCreatureHomePos();
 	CitadelHeart*           heart; /* 0x30 */
 	WorshipSite*            WorshipSites[0x6];
 	LHListHead<CitadelPart> PartList; /* 0x4c */

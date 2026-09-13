@@ -28,6 +28,8 @@ class PhysicsObject;
 class DeadTree : public Rock
 {
 public:
+	// BW1W120 00511210 BW1M100 100c2390 DeadTree::Init(void)
+	static void Init();
 	// BW1W120 00511250 BW1M100 100c2310 DeadTree::Close(void)
 	static void Close();
 	uint8_t     field_0x94[0xc];

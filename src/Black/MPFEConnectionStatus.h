@@ -7,7 +7,9 @@
 
 struct MPFEConnectionStatus
 {
-	LOBBY_TYPE type; /* 0x0 */
+	// BW1W120 00d40e20. Descriptive singleton name; extracted storage.
+	static MPFEConnectionStatus Status;
+	LOBBY_TYPE                  type; /* 0x0 */
 
 	// Non-virtual methods
 
