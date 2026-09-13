@@ -6,6 +6,7 @@
 #include <stddef.h>
 
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
+#include <Lionhead/LHLib/ver5.0/LHFastPointer.h>
 
 #include "BaseInfo.h"               /* For struct BaseInfo */
 #include "GameThingWithPos.h"       /* For struct GameThingWithPos */
@@ -72,7 +73,7 @@ public:
 	uint32_t                field_0x394;
 	uint32_t                field_0x398;
 	GInterfaceStatus*       status;
-	CHand*                  hand; /* 0x3a0 */
+	LHFastPointer<CHand>    hand; /* 0x3a0 */
 	InterfaceHandState      field_0x3a4;
 	GInterfaceCollide       interface_collide; /* 0x3b0 */
 	GInterfaceCollide       field_0x3e0;
@@ -168,5 +169,7 @@ public:
 // LHReleasedOSFile already includes its 0x104-byte filename storage.
 static_assert(offsetof(GInterface, IsSpecificPlayback) == 0x15c, "GInterface playback offset is incorrect");
 static_assert(offsetof(GInterface, hand) == 0x3a0, "GInterface hand offset is incorrect");
+static_assert(sizeof(LHFastPointer<CHand>) == 4, "GInterface hand pointer size is incorrect");
+static_assert(offsetof(GInterface, field_0x3a4) == 0x3a4, "GInterface hand state offset is incorrect");
 
 #endif /* BW1_DECOMP_INTERFACE_INCLUDED_H */
