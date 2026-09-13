@@ -943,7 +943,7 @@ int GGame::MyPlayerID(unsigned long user_id)
 		for (GInterfaceStatus* status = players[i].GetNextInterfaceStatus(NULL); status != NULL;
 		     status = players[i].GetNextInterfaceStatus(status))
 		{
-			if (status->GetInterface()->player != NULL && status->GetInterface()->player->UserId == user_id)
+			if (status->GetInterface()->player != NULL && status->GetInterface()->player->UserId.field_0x0 == user_id)
 			{
 				return status->GetInterface()->player->PlayerId;
 			}
@@ -1028,7 +1028,7 @@ void GGame::SetupPlayers()
 			player->TeamNumber = player->PlayerId + 1;
 			player->TeamMemberNumber = 1;
 		}
-		if (player->UserId == network.session->NetUser->id.field_0x0)
+		if (player->UserId.field_0x0 == network.session->NetUser->id.field_0x0)
 		{
 			g_game->field_0x205a5a = (uint8_t)player->PlayerId;
 			if (player->TeamNumber == 0)
@@ -1314,7 +1314,8 @@ void GGame::ClearMap()
 	CameraExclusion::ResetExclusionFile(0);
 	ResetCameraModeNew3();
 	PhysicsObject::DeleteAll();
-	g_game->MyInterface()->hand->OnClearMap();
+	GInterface& playerInterface = *g_game->MyInterface();
+	playerInterface.hand.Get()->OnClearMap();
 	GGlobal::Global.audio->ReleaseAllThingMusicInfo();
 	GGlobal::Global.audio->Reset();
 	g_game->script->ValidateScriptVariables();
@@ -2164,7 +2165,7 @@ void GGame::Process3dEngine()
 			{
 				node->payload->physical->Creature3d->PrepareForDrawing();
 			}
-			CHand* hand = g_game->MyInterface()->hand;
+			CHand* hand = g_game->MyInterface()->hand.Get();
 			if (hand)
 				hand->PrepareForDrawing();
 			PSysLightMaps::AddDrawing();
@@ -2177,7 +2178,7 @@ void GGame::Process3dEngine()
 				players[PlayerIndex].creature->physical->Creature3d->DrawFightSparkles();
 			GInterface::DrawAllLeashes();
 			PhysicsObject::DrawAll();
-			MyInterface()->hand->UpdateHeldObject();
+			MyInterface()->hand.Get()->UpdateHeldObject();
 			if (GGlobal::Global.field_0x2d2ac)
 				GGlobal::Global.field_0x2d2e4->Display();
 			if (hand)
@@ -2279,7 +2280,7 @@ void GGame::Process3dEngine()
 		for (PowerSpinRunner *spin = PowerSpinRunner::First, *nextSpin; spin; spin = nextSpin)
 		{
 			nextSpin = spin->Next;
-			if (spin->Update(MyInterface()->hand->DynamicShadow->matrix, (int)LH3DTech::g_game_time_inc * 0.001f))
+			if (spin->Update(MyInterface()->hand.Get()->DynamicShadow->matrix, (int)LH3DTech::g_game_time_inc * 0.001f))
 			{
 				if (LH3DRender::g_started_frame)
 				{
@@ -2362,14 +2363,11 @@ void GGame::StartTurn()
 void GGame::ProcessTurn()
 {
 	Whale::ProcessAll();
-	// TODO: Recover original inline visual-time access and wind return-value construction.
-	LH3DAtmos::UpdateGame(GGameInfo::Info.GetVisualTime(), 0.1f);
-	// The original inlines GetWind(const WeatherInfo&) here.
-	LHPoint wind;
-	wind.x = (float)LH3DAtmos::ambient.WindX * 0.125f;
-	wind.y = 0.0f;
-	wind.z = (float)LH3DAtmos::ambient.WindZ * 0.125f;
-	LH3DTech::g_ambient_wind_direction = wind;
+	LH3DAtmos::UpdateGame(GLandAlignement::VisualTime, 0.1f);
+	LHPoint wind = LH3DAtmos::GetWind(LH3DAtmos::ambient);
+	LH3DTech::g_ambient_wind_direction.x = wind.x;
+	LH3DTech::g_ambient_wind_direction.y = 0.0f;
+	LH3DTech::g_ambient_wind_direction.z = wind.z;
 	LH3DTech::g_ambient_wind_direction.FastNormalize();
 	PSysGlobal::GameLoopStart();
 	GGameInfo::Info.Process();
@@ -2397,7 +2395,7 @@ void GGame::ProcessTurn()
 	ScriptHighlight::ProcessHighlights();
 	GClimate::ProcessAll();
 	GBelief::ProcessOncePerTurn();
-	MyInterface()->hand->GameTurnUpdate();
+	MyInterface()->hand.Get()->GameTurnUpdate();
 	AddPlayerSparkles();
 	MobileObject::AddMobileObjectCheckSum();
 	GameThing::ProcessDeadList(0);
@@ -2767,7 +2765,8 @@ uint32_t GGame::Save(GameOSFile& file)
 	file.WriteIt(field_0x205a18);
 	Bookmark::SaveAll(file);
 	GLandBalance::SaveAll(file);
-	CHand* hand = GGame::g_game->MyInterface()->hand;
+	GInterface& playerInterface = *GGame::g_game->MyInterface();
+	CHand*      hand = playerInterface.hand.Get();
 	if (hand)
 	{
 		hand->Save(file);
@@ -2891,7 +2890,8 @@ uint32_t GGame::Load(GameOSFile& file)
 	file.ReadIt(field_0x205a18);
 	Bookmark::LoadAll(file);
 	GLandBalance::LoadAll(file);
-	CHand* hand = GGame::g_game->MyInterface()->hand;
+	GInterface& playerInterface = *GGame::g_game->MyInterface();
+	CHand*      hand = playerInterface.hand.Get();
 	if (hand)
 	{
 		hand->Load(file);
@@ -2908,7 +2908,8 @@ uint32_t GGame::Load(GameOSFile& file)
 // BW1W120 00555080 BW1M100 100c76b0 GGame::ResolveLoad(void)
 void GGame::ResolveLoad()
 {
-	CHand* hand = GGame::g_game->MyInterface()->hand;
+	GInterface& playerInterface = *GGame::g_game->MyInterface();
+	CHand*      hand = playerInterface.hand.Get();
 	if (hand)
 	{
 		hand->ResolveLoad();

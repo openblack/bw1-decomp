@@ -6,6 +6,7 @@
 #include <uchar.h>  /* For char16_t */
 
 #include "LHPacketisableObject.h" /* For struct LHPacketisableObject */
+#include "LHNetUser.h"            /* For LH_USER_ID */
 #include "LHTransportInfo.h"      /* For struct LHTransportInfo */
 
 class LHPlayer : public LHPacketisableObject
@@ -16,7 +17,7 @@ public:
 	uint32_t        UserDataLen;
 	char16_t        name[0x32]; /* 0x110 */
 	uint32_t        PlayerId;   /* 0x174 */
-	uint32_t        UserId;
+	LH_USER_ID      UserId;
 	void*           SystemData;
 	LHTransportInfo transport_info;   /* 0x180 */
 	uint32_t        TeamMemberNumber; // +1f4; ordinal, not a Boolean flag.
