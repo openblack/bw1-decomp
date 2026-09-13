@@ -14,7 +14,7 @@ public:
 	// BW1W120 00461c70 BW1M100 101aa520 CameraModeTwoObjects::_dt(void)
 	virtual ~CameraModeTwoObjects();
 	// BW1W120 0044a290 BW1M100 inlined CameraModeTwoObjects::CanPlayerGestureWhenCameraMoving(void)
-	virtual bool CanPlayerGestureWhenCameraMoving();
+	virtual bool32_t CanPlayerGestureWhenCameraMoving();
 	// BW1W120 00461de0 BW1M100 101aa880 CameraModeTwoObjects::Update(void)
 	virtual void Update();
 	// BW1W120 0044a2b0 BW1M100 inlined CameraModeTwoObjects::Validate(void)

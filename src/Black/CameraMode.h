@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_CAMERA_MODE_INCLUDED_H
 #define BW1_DECOMP_CAMERA_MODE_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint16_t, uint32_t */
+#include <assert.h>    /* For static_assert */
+#include <stdint.h>    /* For uint16_t, uint32_t */
+#include <re_common.h> /* For bool32_t */
 
 enum CAMERA_MODE_HAND_STATUS
 {
@@ -36,9 +37,13 @@ class CameraMode
 {
 public:
 	// BW1W120 0044a3c0 (deleting wrapper), BW1M100 10199460 CameraMode::~CameraMode()
-	// First slot at 008c76e0. Other original virtual declarations remain unrecovered.
+	// First three slots at 008c76e0; the remaining virtual interface is unrecovered.
 	virtual ~CameraMode();
-	GCamera* camera; /* 0x4 */
+	// BW1W120 0044a290, shared with CameraModeTwoObjects.
+	virtual bool32_t CanPlayerGestureWhenCameraMoving() { return 0; }
+	// BW1W120 0044a2a0
+	virtual void Update() {}
+	GCamera*     camera; /* 0x4 */
 };
 
 #endif /* BW1_DECOMP_CAMERA_MODE_INCLUDED_H */
