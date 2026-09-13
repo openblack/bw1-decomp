@@ -1,4 +1,16 @@
 #include "Game.h"
+#include "CameraModeNew3.h"
+#include "ChannelBox.h"
+#include "CreatureExplorationMap.h"
+#include "CreatureMentalAttributeTest.h"
+#include "LHInetWeather.h"
+#include "MPFEConnectionStatus.h"
+#include "MPFEStartGameData.h"
+#include "ServerLandscapeMap.h"
+#include "SetupTabButton.h"
+#include "SkirmishGameBox.h"
+#include <Lionhead/LH3DLib/development/LH3DMeshIntersect.h>
+#include <io.h>
 #include "Alignment.h"
 #include "MobileStatic.h"
 #include "CarriedObject.h"
@@ -132,6 +144,16 @@
 #include <string.h>
 #include <wchar.h>
 
+static_assert(sizeof(GSetup) == 1, "GSetup must remain an empty utility member");
+static_assert(offsetof(GGame, setup) == 0x205a58, "GGame setup offset is incorrect");
+static_assert(offsetof(GGame, PlayerIndex) == 0x205a59, "GGame player index offset is incorrect");
+static_assert(offsetof(GPlayer, Conditions) == 0xf8, "GPlayer condition map offset is incorrect");
+static_assert(offsetof(GPlayer, type) == 0x8e0, "GPlayer condition map changed its layout");
+static_assert(offsetof(ChannelBox, ConditionEnabled) == 0xac4, "ChannelBox condition offset is incorrect");
+static_assert(sizeof(ChannelBox) == 0xad4, "ChannelBox size is incorrect");
+static_assert(offsetof(MPFEData, ActiveDialog) == 0xa64, "MPFEData dialog offset is incorrect");
+static_assert(offsetof(MPFEData, Conditions) == 0x15d4, "MPFEData condition offset is incorrect");
+
 GGame*                  GGame::g_game;
 uint32_t                GGame::TutorialState;
 uint32_t                GGame::StartTime;
@@ -149,6 +171,9 @@ bool                    GGame::RenderLoopEnabled = true;
 CreatureDanceLineInput* GGame::CreatureDanceLineIn;
 LHMail*                 GGame::Mail;
 bool                    GGame::InternetAvailable;
+bool                    GGame::Initialising;
+int                     GGame::LoadingFrameEnabled;
+int                     GGame::FootballEnabled;
 char* const             GGame::NetworkApplication = "Lionhead";
 char* const             GGame::NetworkChannel = "Channel";
 char* const             GGame::NetworkPassword = "Password";
@@ -157,20 +182,24 @@ char* const             GGame::NetworkPassword = "Password";
 void             fn_0054D610();
 void             CheckSquareFunction(int x, int z, RPHolder* holder);
 void             AddSpecialRPObjects(RPHolder* holder);
-void             InputReset();                  // 005fa000
-void             DoLogo();                      // 005fa070
-void             ClearTipVideo();               // 005f3d90
-void             ResetLocalGameTimer();         // 0054c570
-void             SendNetworkChecksum(bool);     // 00635210
-void             EnterVideoSection();           // 00844c80
-void             LeaveVideoSection();           // 00844ca0
-void             DeleteVideo(bool);             // 0054a940
-void             fn_0064D0F0();                 // Real emitted empty function; original name unrecovered.
-void             UninitialiseLiquidParticles(); // 00845c10
-void             ResetCameraModeNew3();         // 00460b20
-void             ResetBlockersForClearMap();    // 0060a400
-void             InitStaticsValues();           // 0054a780
-void             ClearAllStuff();               // 0082aed0
+void             InputReset();                           // 005fa000
+void             DoLogo();                               // 005fa070
+void             ClearTipVideo();                        // 005f3d90
+void             ResetLocalGameTimer();                  // 0054c570
+void             SendNetworkChecksum(bool);              // 00635210
+void             EnterVideoSection();                    // 00844c80
+void             LeaveVideoSection();                    // 00844ca0
+void             DeleteVideo(bool);                      // 0054a940
+void             fn_0064D0F0();                          // Real emitted empty function; original name unrecovered.
+void             UninitialiseLiquidParticles();          // 00845c10
+void             ResetCameraModeNew3();                  // 00460b20
+void             ResetBlockersForClearMap();             // 0060a400
+void             InitStaticsValues();                    // 0054a780
+void             InitialiseLiquidParticles();            // 00845c00
+void             StartTipOfTheDayText();                 // 005f4c90
+void             MakeTipVideo();                         // 005f3ce0
+bool             BWCheckFeatureIsEnabled(char* feature); // 005259d0
+void             ClearAllStuff();                        // 0082aed0
 void             ReinitLoadingScreen();
 unsigned __int64 GetCreatureFileChecksum();
 void             load_variables();
@@ -190,11 +219,259 @@ struct LHPlayerPointer_less
 	}
 };
 
+// BW1W120 0054f3b0 BW1M100 101b9770 GGame::Init(void)
+// 0054f421 is a continuation in this same frame. Only the internet check is caught.
+// TODO: Nonmatching switch/local scheduling and std::map insertion inlining.
+bool32_t GGame::Init()
+{
+	InitStaticsValues();
+	SavingMap = false;
+	try
+	{
+		InternetAvailable = LHCheckForInternetConnection(CheckInternetConnectionOptions);
+	}
+	catch (...)
+	{
+		InternetAvailable = false;
+	}
+	field_0x25053c = 0;
+	field_0x250540 = 0;
+	Initialising = true;
+	LoadingFrameEnabled = 1;
+	if (TipVideo == NULL)
+	{
+		StartTipOfTheDayText();
+		MakeTipVideo();
+	}
+	field_0x14 &= ~0x20004u;
+	field_0x59b0 = 0;
+	RenderLoadingFrame(true);
+	GGlobal::Global.audio->Reset();
+	field_0x599c = false;
+	field_0x599d = 0;
+	AttributeTest::CreateAttributeArray();
+	AttributeTest::CreateBeliefArray();
+	remove("physlog.txt");
+	InitialiseLiquidParticles();
+	DeadTree::Init();
+	GGameInfo::Info.field_0x40 = 100;
+	data.field_0xc = 0x88f89f;
+	data.RandSeed = 0x88f89f;
+	fn_0054D610();
+	RenderLoadingFrame("Setting up players...");
+	SetupPlayers();
+	RenderLoadingFrame("Setting up data tables...");
+	SetupDataTables();
+	LandNumber = 0;
+	help_profile = HelpProfile::Create();
+	help_system = HelpSystem::Create();
+	temple = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x10ff) Temple;
+	script->Reset(1);
+	FootballEnabled = BWCheckFeatureIsEnabled("football") != 0;
+	MusicMoodController::CreatureMusicMoodEnabled = BWCheckFeatureIsEnabled("CreatureMusicMood");
+	if (BWCheckFeatureIsEnabled("CreatureDanceLineIn") && CreatureDanceLineIn == NULL)
+	{
+		CreatureDanceLineIn = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1113) CreatureDanceLineInput;
+		CreatureDanceLineIn->fn_00437A40();
+		if (!CreatureDanceLineIn->Active)
+		{
+			delete CreatureDanceLineIn;
+			CreatureDanceLineIn = NULL;
+		}
+	}
+	RenderLoadingFrame("Initialising map...");
+	if (map.Init(0x200, 0x200, 0) != 1)
+	{
+		LoadingFrameEnabled = 0;
+		Initialising = false;
+		return 0;
+	}
+	map.field_0x8 |= 2;
+	RenderLoadingFrame("Loading map script...");
+	PlayerInfluenceMultiplier = 1.0f;
+	TownInfluenceMultiplier = 1.0f;
+	camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x112a) GCamera(StartCameraCoords);
+	if (Enum0x25017c == 0 && !GameOSFile::IsAutoSaveValid())
+		Enum0x25017c = 1;
+	field_0x205a0c = 0;
+	field_0x205a10 = 0;
+	field_0x205a14 = 0;
+	switch (Enum0x25017c)
+	{
+	case 0:
+		RenderLoadingFrame(true);
+		if (GameOSFile::AutoLoad())
+		{
+			Enum0x25017c = 0;
+			break;
+		}
+		goto newGame;
+	case 2:
+		if (GameOSFile::LoadAllGame(LoadGameFilename))
+		{
+			Enum0x25017c = 2;
+			break;
+		}
+		// Both failed loads use the complete new-game path.
+	case 1:
+	newGame:
+		Enum0x25017c = 1;
+		delete camera;
+		camera = NULL;
+		setup.LoadMapScript();
+		OnNewGame();
+		break;
+	case 3: {
+		char* mapName = NULL;
+		field_0x14 &= ~0x2000u;
+		if (network.session->Channel->GetGameDataLength())
+			mapName = (char*)network.session->Channel->GetGameData();
+		if (mapName && strcmp(mapName, "oos") == 0)
+		{
+			GSetup::CreateMultiplayerCreatures = 0;
+			GSetup::LoadMapFeatures("oos.txt");
+			GSetup::CreateMultiplayerCreatures = 1;
+			g_game->SetUnusedCitadelComputerPlayers();
+		}
+		else
+		{
+			ServerLandscapeMap serverMap(NULL);
+			char               mapPath[0x104];
+			sprintf(mapPath, ".\\Online Maps\\%s.map", mapName ? mapName : "mpm_2p_1");
+			serverMap.LoadMap(mapPath);
+			serverMap.SaveLND(".");
+			serverMap.SaveMAP(".");
+			GSetup::CreateMultiplayerCreatures = 0;
+			GSetup::MPDebugLoadState = 0;
+			// LHOSFile reports success (zero) when the file exists.
+			if (LHOSFile::Exists(".\\Scripts\\MPDebug.txt") == 0)
+				GSetup::MPDebugLoadState = 1;
+			if (!GSetup::MPDebugLoadState)
+				GSetup::LoadMapFeatures(serverMap.GetMAPFilename("."));
+			else
+			{
+				LHSys::TheSystem.script.Load(".\\Scripts\\MPDebug.txt", GSetup::MapCommands, GSetup::MapCommandProcess,
+				                             NULL);
+				if (GSetup::MPDebugLoadState == 1)
+					GSetup::LoadMapFeatures(serverMap.GetMAPFilename("."));
+				GSetup::MPDebugLoadState = 0;
+			}
+			_unlink(serverMap.GetMAPFilename("."));
+			_unlink(serverMap.GetLNDFilename("."));
+			GSetup::CreateMultiplayerCreatures = 1;
+			g_game->SetUnusedCitadelComputerPlayers();
+		}
+		_unlink("oos.txt");
+		_unlink("oos.lnd");
+		field_0x59a0 *= 600;
+		for (GPlayer* player = GetNextActivePlayer(NULL); player; player = GetNextActivePlayer(player))
+		{
+			for (int i = 0; i < 15; ++i)
+			{
+				if (MPFEData::Data.ActiveDialog->ConditionEnabled[i])
+					player->Conditions.insert(std::make_pair(i, MPFEData::Data.Conditions[i]));
+			}
+		}
+		break;
+	}
+	case 4: {
+		char mapPath[0x104];
+		strcpy(mapPath, WCHAR2CHAR(FrontEnd::SkirmishDialog->MapPath));
+		g_game->ResetAndStartPlaygroundGame(mapPath);
+		field_0x205a0c = 1;
+		break;
+	}
+	}
+	if (g_game->Enum0x25017c == 4 || g_game->Enum0x25017c == 1 || g_game->Enum0x25017c == 3)
+	{
+		delete camera;
+		camera = NULL;
+		Citadel* citadel = players[PlayerIndex].citadel;
+		if (((StartCameraCoords.x == 0 && StartCameraCoords.z == 0 && StartCameraCoords.altitude == 0.0f) ||
+		     g_game->Enum0x25017c == 3) &&
+		    citadel)
+		{
+			camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x11cc) GCamera(citadel->Pos);
+			CameraMode*     currentMode = camera->ModeCurrentIndex < 0 ? NULL : camera->modes[camera->ModeCurrentIndex];
+			CameraModeNew3* mode = dynamic_cast<CameraModeNew3*>(currentMode);
+			if (mode)
+			{
+				LHPoint point;
+				GLandscape::ConvertMapCoordToLandscapePoint(citadel->Pos, point);
+				mode->ZoomToCitadel(point.x, point.z, CameraModeNew3::CitadelDistance, CameraModeNew3::CitadelPitch, 0);
+			}
+		}
+		else
+			camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x11d7) GCamera(StartCameraCoords);
+	}
+	map.UpdateControlMap();
+	CreatureGlobalExplorationMap::GlobalMap.PrecalculateMap();
+	terrain_map.Init();
+	field_0x205ba0 = 1;
+	GSoundMap* soundMap = SoundMap;
+	soundMap->CalculateRadiusPointAndDistance();
+	soundMap->UpdateFromMap(MapCoords(soundMap->GetReceiverPos()));
+	map.CalculateMapInfluence();
+	field_0x205a2c = 0;
+	field_0x205a28 = 0;
+	RenderLoadingFrame(true);
+	CarriedObject::Init();
+	BMan_Zero();
+	field_0x205d40 = 0;
+	field_0x2502bc = 0;
+	field_0x205e78 = 0;
+	FinishInitialisation();
+	MeshIntersect::InitialiseMeshIntersect();
+	field_0x250538 = 1;
+	field_0x205d60 = 0;
+	RenderLoadingFrame(true);
+	PlayerSymbol::CreateFinalTextureSymbols();
+	RenderLoadingFrame(true);
+	ReadRegistrySettings();
+	RenderLoadingFrame(true);
+	GSpookyVoices::GetPlayerName();
+	time(&field_0x59ac);
+	if ((field_0x205a0c || IsMultiplayerGame()) && players[PlayerIndex].citadel)
+	{
+		GInterfaceStatus* leader = players[PlayerIndex].GetLeaderInterfaceStatus();
+		if (MyInterfaceStatus() == leader)
+		{
+			// Preserve the two by-value home-position calls and right-to-left argument evaluation.
+			SetPacket((PACKET_TYPE)0x4e, (short)(players[PlayerIndex].citadel->GetCreatureHomePos().x >> 16),
+			          (short)(players[PlayerIndex].citadel->GetCreatureHomePos().z >> 16), -1L);
+		}
+	}
+	fn_005525E0();
+	RenderLoadingFrame(true);
+	wcscpy(FrontEnd::MultiplayerTab->label, L"");
+	if (g_game->IsMultiplayerGame())
+	{
+		swprintf(FrontEnd::MultiplayerTab->label, L"%s", HelpTextDataBase::MultiplayerTextDatabase.GetHelpText(19));
+		field_0x59a8 = MPFEConnectionStatus::Status.IsInternetLobby() ? 1 : 2;
+		for (GPlayer* player = GetNextPlayer(NULL); player; player = GetNextPlayer(player))
+		{
+			float alignment = player->StartGameData ? player->StartGameData->Alignment : 0.0f;
+			player->alignment->CrudeSet(alignment);
+			player->game_stats->Init(*player);
+		}
+	}
+	else
+	{
+		players[PlayerIndex].LoadPlayerAlignment();
+		players[PlayerIndex].game_stats->Init(players[PlayerIndex]);
+		field_0x59a8 = 0;
+	}
+	RenderLoadingFrame(true);
+	LHInetWeather::Weather.InitForGame();
+	LoadingFrameEnabled = 0;
+	Initialising = false;
+	return 1;
+}
+
 // BW1W120 0054c190 BW1M100 101c8360 GGame::StartGame(void)
 void GGame::StartGame()
 {
 	g_game->GameMode = GAME_MODE_RUNNING;
-	// TODO: Init returns full EAX in the original; its signature/boundary audit is deferred.
 	if (Init() == 1 && !Dat_00D46AC1)
 	{
 		stop_draw_sprite_to_screen();
