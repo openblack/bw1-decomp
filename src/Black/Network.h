@@ -49,6 +49,8 @@ struct GNetwork
 	static void ResetStateDebug();
 
 	// Non-virtual methods
+	// BW1W120 00634640 BW1M100 1010cb00
+	LH_RETURN Open(char* name, char* application, char* channel, char* password);
 
 	// BW1W120 006360b0 BW1M100 1008e350 GNetwork::UpdateDebug(void)
 	void UpdateDebug();

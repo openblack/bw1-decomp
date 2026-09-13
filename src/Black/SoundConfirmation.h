@@ -9,6 +9,8 @@
 class GConfirmation : public Base
 {
 public:
+	// BW1W120 0071a560 BW1M100 1050cf30
+	static void Init();
 	// BW1W120 0071a650 BW1M100 1008dce0 GConfirmation::Process(void)
 	static void Process();
 

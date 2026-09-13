@@ -18,10 +18,25 @@ public:
 	uint32_t        PlayerId;   /* 0x174 */
 	uint32_t        UserId;
 	void*           SystemData;
-	LHTransportInfo transport_info; /* 0x180 */
-	uint32_t        field_0x1f4;
-	uint32_t        field_0x1f8;
+	LHTransportInfo transport_info;   /* 0x180 */
+	uint32_t        TeamMemberNumber; // +1f4; ordinal, not a Boolean flag.
+	uint32_t        TeamNumber;       // +1f8; zero is unassigned.
 	uint32_t        field_0x1fc;
+
+	// BW1W120 100019c0 / 10019eb0. Destructor is nonvirtual.
+	LH_MULTIPLAYER_API LHPlayer();
+	LH_MULTIPLAYER_API ~LHPlayer();
+	// BW1W120 1001a0f0
+	virtual LH_MULTIPLAYER_API unsigned long GetEncodedLength(unsigned long options, void* context);
+	// BW1W120 1001a160
+	virtual LH_MULTIPLAYER_API unsigned char* EncodeToBuffer(unsigned char* buffer, unsigned long options,
+	                                                         void* context);
+	// BW1W120 1001a210
+	virtual LH_MULTIPLAYER_API unsigned char* DecodeFromBuffer(unsigned char* buffer);
+	// BW1W120 1001a330
+	virtual LH_MULTIPLAYER_API void ClearObject();
 };
+
+static_assert(sizeof(LHPlayer) == 0x200, "LHPlayer size is incorrect");
 
 #endif /* BW1_DECOMP_LH_PLAYER_INCLUDED_H */

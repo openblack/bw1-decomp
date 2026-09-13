@@ -91,7 +91,45 @@ public:
 	}
 
 	int AddToEnd(T val);
+	// BW1M100 10251ef0 for CreatureBelief*: returns the matching node, not its payload.
+	LHLinkedNode<T>* Find(T value);
+	// BW1W120 00555cc0 for LHPlayer*. NULL starts at the head.
+	T FindNext(T value)
+	{
+		if (value == NULL)
+		{
+			if (GetStart() != NULL)
+			{
+				return GetStart()->payload;
+			}
+		}
+		else
+		{
+			LHLinkedNode<T>* node = Find(value);
+			if (node != NULL)
+			{
+				node = node->next.Get();
+				if (node != NULL)
+				{
+					return node->payload;
+				}
+			}
+		}
+		return NULL;
+	}
 };
+
+template <typename T> LHLinkedNode<T>* LHLinkedList<T>::Find(T value)
+{
+	for (LHLinkedNode<T>* node = head.Get(); node != NULL; node = node->next.Get())
+	{
+		if (node->payload == value)
+		{
+			return node;
+		}
+	}
+	return NULL;
+}
 
 template <typename T> LHLinkedList<T>::LHLinkedList()
 {

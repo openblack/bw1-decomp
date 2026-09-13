@@ -7,17 +7,17 @@
 
 struct PathCreator
 {
-	char*     DevBlack; /* 0x0 */
-	char*     profiles;
-	char*     SavedGames;
-	char*     pictures;
-	char*     current; /* 0x10 */
-	char*     field_0x16;
-	char      field_0x18[0x10];
-	uint8_t   field_0x28[0xf4];
-	char      field_0x11c[0x44];
-	uint8_t   field_0x160[0xbc];
-	char16_t* field_0x21c;
+	char*   DevBlack; /* 0x0 */
+	char*   profiles;
+	char*   SavedGames;
+	char*   pictures;
+	char*   current; /* 0x10 */
+	char*   field_0x16;
+	char    field_0x18[0x10];
+	uint8_t field_0x28[0xf4];
+	char    field_0x11c[0x44];
+	uint8_t field_0x160[0xbc];
+	char*   field_0x21c; // ProfileNameToKey returns a narrow registry key.
 
 	// Constructors
 
@@ -27,6 +27,10 @@ struct PathCreator
 	~PathCreator();
 
 	// Non-virtual methods
+	// BW1W120 0078e9b0 BW1M100 100b6de0
+	void UpdateCurrentProfile();
+	// BW1W120 0078ea20 BW1M100 10170e10
+	void GetCurrentUserPath(char* path);
 
 	// BW1W120 0078eaa0 BW1M100 1035b570 PathCreator::GetSaveGamePicturesPath__11PathCreatorFPc(char*)
 	void GetSaveGamePicturesPath__11PathCreatorFPc(char* path);

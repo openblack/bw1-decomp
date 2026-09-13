@@ -1,0 +1,16 @@
+#ifndef BW1_DECOMP_LH_SPRINTF_INCLUDED_H
+#define BW1_DECOMP_LH_SPRINTF_INCLUDED_H
+
+#include <assert.h>
+
+class LHSPrintf
+{
+public:
+	char Text[0x401]; // GetBufSize excludes the terminator; the DLL assignment copies all 0x401 bytes.
+	// BW1W120 LHLogR 100029d0, import 008a935c. Variadic member uses cdecl.
+	__declspec(dllimport) LHSPrintf(char* format, ...);
+};
+
+static_assert(sizeof(LHSPrintf) == 0x401, "LHSPrintf size is incorrect");
+
+#endif

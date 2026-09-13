@@ -12,12 +12,14 @@ class SetupControl;
 class DialogBoxBase
 {
 public:
-	SetupBox*      setup_box; /* 0x4 */
-	uint8_t        field_0x8;
-	uint8_t        field_0x9;
-	uint8_t        field_0xa;
-	uint8_t        field_0xb;
-	DialogBoxBase* next;
+	// BW1W120 00cc6298. Descriptive name for the intrusive dialog list.
+	static DialogBoxBase* First;
+	SetupBox*             setup_box; /* 0x4 */
+	uint8_t               field_0x8;
+	uint8_t               field_0x9;
+	uint8_t               field_0xa;
+	uint8_t               field_0xb;
+	DialogBoxBase*        next;
 
 	// Override methods
 
@@ -31,13 +33,15 @@ public:
 	// BW1W120 005135f0 BW1M100 102b22e0 DialogBoxBase::Show(void)
 	virtual void Show();
 	// BW1W120 005127e0 BW1M100 100fd5d0 DialogBoxBase::CloseNotification(void)
-	virtual bool CloseNotification();
+	virtual void CloseNotification();
 	// BW1W120 005127f0 BW1M100 10504080 DialogBoxBase::WantsKeyControl(void)
 	virtual bool WantsKeyControl();
 	// BW1W120 00512800 BW1M100 100fd610 DialogBoxBase::WantsMouseControl(void)
 	virtual bool WantsMouseControl();
 	// BW1W120 00512810 BW1M100 103c4090 DialogBoxBase::CanESCOut(void)
 	virtual bool CanESCOut();
+	// BW1W120 vtable +0x20 points to __purecall.
+	virtual void InitControls() = 0;
 
 	// Static methods
 
@@ -48,6 +52,8 @@ public:
 
 	// BW1W120 005133a0 BW1M100 102b2750 DialogBoxBase::DialogBoxBase(void)
 	DialogBoxBase();
+	// BW1W120 005133c0. Nonvirtual: unlinks this dialog from First.
+	~DialogBoxBase();
 };
 
 #endif /* BW1_DECOMP_DIALOG_BOX_BASE_INCLUDED_H */

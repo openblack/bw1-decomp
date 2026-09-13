@@ -20,6 +20,8 @@ public:
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 00572530 BW1M100 103266d0 GatheringBox::Destroy(void)
 	virtual void Destroy();
+	// BW1W120 00572540. Vtable +0x20 at 008deb4c.
+	virtual void InitControls();
 };
 
 #endif /* BW1_DECOMP_GATHERING_BOX_INCLUDED_H */

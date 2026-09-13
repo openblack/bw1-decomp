@@ -6,6 +6,8 @@ class GameOSFile;
 class GLandBalance
 {
 public:
+	// BW1W120 005e2890 BW1M100 103779e0 GLandBalance::Init(void)
+	static void Init();
 	// BW1W120 005e2990 BW1M100 103776c0 GLandBalance::SaveAll(GameOSFile &)
 	static bool SaveAll(GameOSFile& file);
 	// BW1W120 005e29e0 BW1M100 10377600 GLandBalance::LoadAll(GameOSFile &)

@@ -12,6 +12,8 @@ struct MapCoords;
 
 struct GUtils
 {
+	// BW1W120 0074cca0 BW1M100 103c80c0
+	static void SetupUtils();
 	// BW1W120 0074ccb0 BW1M100 100495f0 GUtils::GetDistance(MapCoords const &, MapCoords const &)
 	static void GetDistance(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074cd70 BW1M100 10049550 GUtils::GetDistanceInMetres(MapCoords const &, MapCoords const &)

@@ -6,6 +6,13 @@
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>
 #include "LHMultiplayerExport.h"
 
+class LHMail;
+
+// BW1W120 imports 008a9548 / 008a9430 / 008a95f8.
+LH_MULTIPLAYER_API void __cdecl    LHNetUseProfile(unsigned short* profile);
+LH_MULTIPLAYER_API bool __cdecl    LHCheckForInternetConnection(char options);
+LH_MULTIPLAYER_API LHMail* __cdecl LHLoadInGameEmailSystem(char* address_book);
+
 // BW1W120 import slots 008a9638 / 008a9634; LHMultiplayerR 10018c60 / 10018e90.
 LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetGetCurrentProfileUlong(char* name, unsigned long* value);
 LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetSetCurrentProfileUlong(char* name, unsigned long value);

@@ -171,8 +171,8 @@ struct LHSys
 	uint8_t          MouseThreadRunning; /* 0x70c8 */
 	uint8_t          TerminateRequested; /* 0x70c9 */
 	uint8_t          _pad70ca[2];
-	void(__stdcall* MessageHook)(UINT, int, unsigned int); /* 0x70cc 0x05xx-message hook */
-	int     LastKey;                                       /* 0x70d0 */
+	void(__stdcall* MessageHook)(unsigned long, unsigned long, unsigned long); /* 0x70cc; Mac UserMessageCallback */
+	int     LastKey;                                                           /* 0x70d0 */
 	uint8_t field_0x70d4[4];
 
 	// Constructors
