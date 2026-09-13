@@ -55,7 +55,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M100 100a0450 Base::Base(void)
-	Base() {}
+	Base() : destroyed(false) {}
 
 	// Non-virtual methods
 

@@ -49,7 +49,7 @@ public:
 	// BW1W120 0077f230 BW1M100 105b6ed0 WorshipSpellIcon::ToBeDeleted(int)
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0077f6f0 BW1M100 inlined WorshipSpellIcon::MaintainSpell(unsigned int, float)
-	virtual void MaintainSpell(uint32_t param_1, float param_2);
+	virtual float MaintainSpell(uint32_t param_1, float param_2);
 	// BW1W120 0077f750 BW1M100 105b64c0 WorshipSpellIcon::UpdateSpellInfo(Spell *, PSysProcessInfo *)
 	virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
 	// BW1W120 0077f100 BW1M100 105b4440 WorshipSpellIcon::GetDebugText(void)

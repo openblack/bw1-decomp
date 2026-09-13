@@ -244,7 +244,7 @@ public:
 	// BW1W120 0047b1f0 BW1M100 101d48a0 Creature::GetMaxAlignmentChangePerGameTurn(void)
 	virtual float GetMaxAlignmentChangePerGameTurn();
 	// BW1W120 004f8350 BW1M100 inlined Creature::MaintainSpell(unsigned int, float)
-	virtual void MaintainSpell(uint32_t param_1, float param_2);
+	virtual float MaintainSpell(uint32_t param_1, float param_2);
 	// BW1W120 004f8750 BW1M100 1028b0e0 Creature::UpdateSpellInfo(Spell *, PSysProcessInfo *)
 	virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
 	// BW1W120 004792c0 BW1M100 101d8510 Creature::GetRadius(void)
