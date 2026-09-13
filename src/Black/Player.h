@@ -108,7 +108,7 @@ public:
 	// BW1W120 0064b670 BW1M100 1002b8e0 GPlayer::GetMaxAlignmentChangePerGameTurn(void)
 	virtual float GetMaxAlignmentChangePerGameTurn();
 	// BW1W120 0064c430 BW1M100 inlined GPlayer::MaintainSpell(unsigned int, float)
-	virtual void MaintainSpell(uint32_t param_1, float param_2);
+	virtual float MaintainSpell(uint32_t param_1, float param_2);
 	// BW1W120 0064c470 BW1M100 10491f30 GPlayer::UpdateSpellInfo(Spell *, PSysProcessInfo *)
 	virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
 	// BW1W120 00648e80 BW1M100 1048eac0 GPlayer::CastPlayer(void)

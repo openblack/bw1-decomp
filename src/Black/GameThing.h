@@ -4,8 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
-#include <re_common.h>   /* For bool32_t */
+#include <chlasm/Enum.h>                      /* For enum RESOURCE_TYPE */
+#include <re_common.h>                        /* For bool32_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For LHListNode */
 
 #include "Base.h" /* For struct Base, struct BaseVftable */
 
@@ -321,17 +322,20 @@ enum GAME_THING_FLAGS
 class GameThing : public Base
 {
 public:
-	uint16_t field_0x8;
-	uint8_t  Flags; /* 0xa, see GAME_THING_FLAGS */
+	// BW1W120 00d06082 BW1M100 10a20aec
+	static uint16_t NumActiveGameThings;
+	static uint16_t NumCreatedGameThings;
+	uint16_t        CreationIndex;
+	uint8_t         Flags; /* 0xa, see GAME_THING_FLAGS */
 
 	// Static data
 
 	// BW1W120 .rdata:008aa394 GameThing::maxAlignmentChangePerGameTurn
 	// TODO: which TU carries the definition is unresolved; dtk puts the symbol in Abode.cpp's
 	// .rdata, which is where the first user of it lands.
-	static const float maxAlignmentChangePerGameTurn;
-	uint16_t           field_0xc;
-	GameThing*         next; /* 0x10 */
+	static const float    maxAlignmentChangePerGameTurn;
+	uint16_t              field_0xc;
+	LHListNode<GameThing> next; /* 0x10 */
 
 	// Override methods
 
@@ -368,7 +372,7 @@ public:
 	// BW1W120 00401890 BW1M100 1037f2e0 GameThing::UpdateVillagerActivityEffect(Villager *)
 	virtual uint32_t UpdateVillagerActivityEffect(Villager* villager) { return 0; }
 	// BW1W120 0056fed0 BW1M100 10160960 GameThing::MaintainSpell(Spell *, float)
-	virtual void MaintainSpell(uint32_t param_1, float param_2);
+	virtual float MaintainSpell(uint32_t param_1, float param_2);
 	// BW1W120 0056fee0 BW1M100 100fc510 GameThing::UpdateSpellInfo(Spell *, PSysProcessInfo *)
 	virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
 	// BW1W120 00405140 BW1M100 104e9450 GameThing::GetRadius(void)
@@ -447,7 +451,7 @@ public:
 	// BW1W120 0056fd90 BW1M100 101361c0 GameThing::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 0056fda0 BW1M100 100bc180 GameThing::SaveExtraData(GameOSFile &)
-	virtual void SaveExtraData(GameOSFile* file);
+	virtual void SaveExtraData(GameOSFile& file);
 	// BW1W120 00405250 BW1M100 1057b140 GameThing::ResolveLoad(void)
 	virtual void ResolveLoad();
 
