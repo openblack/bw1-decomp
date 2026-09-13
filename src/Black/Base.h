@@ -1,9 +1,10 @@
 #ifndef BW1_DECOMP_BASE_INCLUDED_H
 #define BW1_DECOMP_BASE_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stddef.h> /* For size_t */
-#include <stdint.h> /* For uint32_t */
+#include <assert.h>    /* For static_assert */
+#include <stddef.h>    /* For size_t */
+#include <stdint.h>    /* For uint32_t */
+#include <re_common.h> /* For bool32_t */
 
 // Game-time constants. These have internal linkage, so every translation unit including this
 // header gets its own copy of the pair and of the product below. The product is not a constant
@@ -26,7 +27,7 @@ public:
 	// TODO: Original global name and declaration scope are unrecovered.
 	static UniqueKeyHeap* ObjectHeap;
 
-	uint32_t destroyed; /* 0x4 */
+	bool32_t destroyed; /* 0x4 */
 
 	// Override methods
 
@@ -55,7 +56,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M100 100a0450 Base::Base(void)
-	Base() {}
+	Base() : destroyed(false) {}
 
 	// Non-virtual methods
 

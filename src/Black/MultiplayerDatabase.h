@@ -26,6 +26,8 @@ public:
 
 	// BW1W120 00633400 BW1M100 1010a230 MultiplayerDatabase::MultiplayerDatabase(void)
 	MultiplayerDatabase();
+	// BW1W120 00633480 MultiplayerDatabase::~MultiplayerDatabase(void)
+	~MultiplayerDatabase();
 };
 
 #endif /* BW1_DECOMP_MULTIPLAYER_DATABASE_INCLUDED_H */

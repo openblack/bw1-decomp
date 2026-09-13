@@ -15,7 +15,7 @@ public:
 
 	// BW1W120 0053f910 BW1M100 105c0610 MainMenu::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
-	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 0053fb50 BW1M100 105c05a0 MainMenu::Destroy(void)
 	virtual void Destroy();
 	// BW1W120 0053bd50 BW1M100 105c5ef0 MainMenu::CanESCOut(void)

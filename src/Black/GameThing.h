@@ -463,7 +463,7 @@ public:
 
 	// Non-virtual Destructors
 
-	// BW1W120 0056fa50 BW1M100 10086e30 GameThing::~GameThing(void)
+	// BW1W120 0056fa80 BW1M100 10086e30 GameThing::~GameThing(void)
 	~GameThing();
 
 	// Non-virtual methods

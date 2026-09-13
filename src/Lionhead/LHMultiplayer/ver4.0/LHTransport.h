@@ -12,7 +12,7 @@
 // Forward Declares
 
 struct LHDynamicQueue_pLHNetEvent_;
-struct LHNetEvent;
+class LHNetEvent;
 class LHTransportInfo;
 
 class LHTransport

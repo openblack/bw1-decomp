@@ -7,26 +7,37 @@
 
 struct PlayerProfile
 {
-	char16_t CreatureName[0x100];   /* 0x0 */
-	char16_t CurrentProfile[0x100]; /* 0x200 */
-	char16_t LoginName[0x100];      /* 0x400 */
-	char16_t LoginPassword[0x100];  /* 0x600 */
-	uint32_t stuff;                 /* 0x800 */
-	uint32_t PlayerSymbol;
-	uint32_t timestarted;
-	uint32_t numberofsaves;
-	uint32_t numberofloads; /* 0x810 */
-	uint32_t pitchaboutcentre;
-	uint32_t pushscroll;
-	uint32_t HAND_ORIENTATION;
-	uint32_t IMMERSION_KEY; /* 0x820 */
+	// BW1W120 00d4bd38. Descriptive singleton name.
+	static PlayerProfile Profile;
+	char16_t             CreatureName[0x100];   /* 0x0 */
+	char16_t             CurrentProfile[0x100]; /* 0x200 */
+	char16_t             LoginName[0x100];      /* 0x400 */
+	char16_t             LoginPassword[0x100];  /* 0x600 */
+	uint32_t             stuff;                 /* 0x800 */
+	uint32_t             PlayerSymbol;
+	uint32_t             timestarted;
+	uint32_t             numberofsaves;
+	uint32_t             numberofloads; /* 0x810 */
+	uint32_t             pitchaboutcentre;
+	uint32_t             pushscroll;
+	uint32_t             HAND_ORIENTATION;
+	uint32_t             IMMERSION_KEY; /* 0x820 */
+	uint32_t             field_0x824;   // Flags copied by LHNetBase::UpdateUserData.
 
 	// Static methods
 
 	// BW1W120 0066b7a0 BW1M100 104cbec0 PlayerProfile::SetCurrentProfile(wchar_t *)
 	static void SetCurrentProfile(char16_t* name);
 	// BW1W120 0066bfb0 BW1M100 104cb130 PlayerProfile::ProfileExists(wchar_t *)
-	static uint32_t ProfileExists(char16_t* name);
+	// Both Windows callers consume AL; the DLL int result is normalized by this bool wrapper.
+	static bool ProfileExists(char16_t* name);
+	// BW1W120 0066b900 BW1M100 104cbe40
+	static void GetCurrentProfile(char16_t* name);
+	// BW1W120 0066bad0 BW1M100 104cb610
+	static void GetProfileByName(char16_t* name, PlayerProfile& profile);
+	// BW1W120 0066bcd0 BW1M100 104cb2e0
+	static void WriteBackToRegistry(PlayerProfile& profile);
 };
+static_assert(sizeof(PlayerProfile) == 0x828, "PlayerProfile size is incorrect");
 
 #endif /* BW1_DECOMP_PLAYER_PROFILE_INCLUDED_H */

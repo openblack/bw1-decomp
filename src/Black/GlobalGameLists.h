@@ -58,6 +58,7 @@
 class GlobalGameLists : public Base
 {
 public:
+	GlobalGameLists() {}
 	LHListHead<Ball>               balls;   /* 0x8 */
 	LHListHead<Forest>             forests; /* 0x10 */
 	LHListHead<Living>             LivingList;

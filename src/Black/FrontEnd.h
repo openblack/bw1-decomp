@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <uchar.h>
 
 // Forward Declares
 
@@ -34,6 +35,10 @@ class TattooEditor;
 
 struct FrontEnd
 {
+	// BW1W120 00cd0620. Descriptive singleton name; split ownership remains unresolved.
+	static FrontEnd Instance;
+	// BW1W120 00cd3a18. Original array extent is not established; extracted storage only.
+	static char16_t          PreviousProfile[];
 	bool                     CursorOn; /* 0x0 */
 	ChannelBox*              channel_box;
 	EditingDebugBox*         editing_debug_box;

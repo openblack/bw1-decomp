@@ -9,6 +9,8 @@
 class CreatureRoom : public TempleRoom
 {
 public:
+	// BW1W120 007899f0 BW1M100 10091a80
+	static void ProcessScreenShot();
 	// BW1W120 00d96270. TODO: Original static member name is unrecovered.
 	static int CreatureInTemple;
 	uint8_t    field_0xec[0x380];

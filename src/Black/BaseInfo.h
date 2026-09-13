@@ -40,7 +40,7 @@ public:
 	// Constructors
 
 	// BW1W120 0042e5e0 BW1M100 102f9af0 GBaseInfo::GBaseInfo(void)
-	GBaseInfo();
+	GBaseInfo() : next(NULL) {}
 
 	// Non-virtual methods
 

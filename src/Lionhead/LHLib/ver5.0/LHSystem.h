@@ -3,6 +3,7 @@
 
 #include <stdint.h> /* For uint32_t */
 #include <stddef.h> /* For offsetof */
+#include <chlasm/LHKeyBoard.h>
 
 #include <re_common.h> /* For bool32_t (Win32 types come from <windows.h> in the includer) */
 
@@ -50,8 +51,8 @@ struct LHKeyboard
 	// TODO: Descriptive name; original class/file scope is unknown.
 	static CRITICAL_SECTION CriticalSection;
 
-	int(__cdecl* Callback)(int, int, unsigned short, unsigned int, int);
-	int          CallbackContext;
+	void(__cdecl* Callback)(unsigned short, LH_KEY, unsigned short, unsigned short, void*);
+	void*        CallbackContext;
 	uint8_t      KeyState[0x100];
 	int          CurrentKey;
 	uint8_t      ModifierFlags;
@@ -65,8 +66,8 @@ struct LHKeyboard
 	int          StringEndKey;
 	int          StringActive;
 
-	// BW1W120 007dcaf0 ?ProcessKeyboard@LHKeyboard@@QAEHIH@Z
-	int ProcessKeyboard(unsigned int msg, int key_data);
+	// BW1W120 007dcaf0 ?ProcessKeyboard@LHKeyboard@@QAEXIH@Z
+	void ProcessKeyboard(unsigned int msg, int key_data);
 	// BW1W120 007dcc90 ?StringCollect@LHKeyboard@@QAEXH@Z
 	void StringCollect(int key);
 	// BW1W120 007dcd10 ?StopString@LHKeyboard@@QAEXXZ

@@ -6,10 +6,13 @@
 
 #include "Base.h" /* For struct Base */
 
+class GestureSystemData;
+
 class GestureSystemDataList : public Base
 {
 public:
-	uint8_t field_0x8[0x8];
+	GestureSystemData* Data;
+	int                Count;
 
 	// Override methods
 
