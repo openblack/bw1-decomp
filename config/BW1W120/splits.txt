@@ -480,13 +480,14 @@ Black/CreatureLook.cpp:
 	.text       start:0x004D02F0 end:0x004D22A0
 	.rdata      start:0x008CF840 end:0x008CF880
 	.CRT$XCU    start:0x009C645C end:0x009C6468 align:4
-	.data       start:0x009DD80C end:0x00BDEE10
+	.data       start:0x009DD80C end:0x009DD904
 	.bss        start:0x00C82F38 end:0x00C82F40
 
 Black/CreatureMental.cpp:
 	.text       start:0x004D22A0 end:0x004D4220
 	.rdata      start:0x008CF880 end:0x008CF9A4
 	.CRT$XCU    start:0x009C6468 end:0x009C6498 align:4
+	.data       start:0x009DD904 end:0x00BDEE10
 	.bss        start:0x00C82F40 end:0x00C84388
 
 Black/CreatureMentalAttributeTest.cpp:

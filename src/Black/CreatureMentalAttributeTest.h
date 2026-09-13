@@ -101,6 +101,10 @@ public:
 class AttributeAbodeBeingBuilt : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004d6090 BW1M100 10249c80 AttributeAbodeBeingBuilt::_dt(void)
@@ -110,6 +114,10 @@ public:
 class AttributeAbodeType : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004d6020 BW1M100 10249e60 AttributeAbodeType::_dt(void)
@@ -119,6 +127,10 @@ public:
 class AttributeAllegiance : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004cb7c0 BW1M100 1024bad0 AttributeAllegiance::_dt(void)
@@ -146,6 +158,10 @@ public:
 class AttributeCreatureHeight : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004d5e10 BW1M100 1024aa00 AttributeCreatureHeight::_dt(void)
@@ -182,6 +198,10 @@ public:
 class AttributeForestSize : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004d5f40 BW1M100 1024a510 AttributeForestSize::_dt(void)
@@ -200,6 +220,10 @@ public:
 class AttributeLife : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004cb980 BW1M100 1024b470 AttributeLife::_dt(void)
@@ -209,6 +233,10 @@ public:
 class AttributeMobileObjectType : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004d5fb0 BW1M100 1024a010 AttributeMobileObjectType::_dt(void)
@@ -218,6 +246,10 @@ public:
 class AttributeOnFire : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004cbac0 BW1M100 10249ad0 AttributeOnFire::_dt(void)
@@ -227,6 +259,10 @@ public:
 class AttributeOrigin : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004cb830 BW1M100 1024b920 AttributeOrigin::_dt(void)
@@ -245,6 +281,10 @@ public:
 class AttributeSex : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004cba50 BW1M100 1024a200 AttributeSex::_dt(void)
@@ -254,6 +294,10 @@ public:
 class AttributeTownReligiousBeliefInYou : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004cd710 BW1M100 1024b0c0 AttributeTownReligiousBeliefInYou::_dt(void)
@@ -263,6 +307,10 @@ public:
 class AttributeTownSize : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004cd7e0 BW1M100 1024ad70 AttributeTownSize::_dt(void)
@@ -272,6 +320,10 @@ public:
 class AttributeTribe : public Attribute
 {
 public:
+	// Static members
+
+	static char ValueNames[][64]; // fabricated name
+
 	// Override methods
 
 	// BW1W120 004cd6a0 BW1M100 1024b2c0 AttributeTribe::_dt(void)

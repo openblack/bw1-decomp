@@ -208,6 +208,7 @@ Black/CreatureVisionState.cpp:
 
 Black/CreatureMental.cpp:
 	.rdata      start:0x008BF870 end:0x008BF960
+	.data       start:0x009CCEE4 end:0x00BCE3F0
 
 Black/CreatureMentalAttributeTest.cpp:
 	.rdata      start:0x008BF9A4 end:0x008BFDA4
