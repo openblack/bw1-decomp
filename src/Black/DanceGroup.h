@@ -22,6 +22,8 @@ class GroupBehaviour;
 class DanceGroup : public GameThing
 {
 public:
+	// BW1W120 00be8290. Descriptive name; constructor formats "Untitled %d".
+	static int NextUntitledNumber;
 	// Pointer to the object being danced around (the dancer/target). Its MapCoords
 	// base member is at +0x14 (GameThingWithPos::Pos); it also has a flag at +0x100
 	// and a counter at +0x114 whose containing (derived) type is not yet identified.

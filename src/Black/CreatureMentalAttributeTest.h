@@ -20,6 +20,10 @@ enum DECISION_TREE_TYPE
 
 struct AttributeTest
 {
+	// BW1W120 004d60b0 BW1M100 1024df00 AttributeTest::DeleteAttributeArray(void)
+	static void DeleteAttributeArray();
+	// BW1W120 004d6110 BW1M100 1024ddd0 AttributeTest::DeleteBeliefArray(void)
+	static void                            DeleteBeliefArray();
 	LHLinkedList<CreatureLearningEpisode*> episodes; /* 0x0 */
 	uint32_t                               field_0x8;
 	uint32_t                               field_0xc;

@@ -15,6 +15,8 @@ class GPlayer;
 class GameStats : public GameThing
 {
 public:
+	// BW1W120 00564d90 BW1M100 1031b3f0 GameStats::ClearAll(void)
+	static void ClearAll();
 	// Original static names unrecovered; shared by EndTurn and the stats subsystem.
 	// BW1W120 008ffdb8
 	static const uint32_t UpdateInterval;

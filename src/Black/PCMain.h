@@ -3,6 +3,10 @@
 
 #include <windows.h> /* For HINSTANCE */
 
+// BW1W120 00d46abe / 00d46abf; byte flags written by ScanParameters.
+extern bool ARGS_FORCEINETCONN;
+extern bool ARGS_NOINETCONN;
+
 // BW1W120 00641a10 BW1M100 1011c650 IsACmdLineString(char*, const char*)
 bool __cdecl IsACmdLineString(char* cmd_line, char* cmd);
 // BW1W120 00641aa0 BW1M100 101528f0 ScanParameters(void)

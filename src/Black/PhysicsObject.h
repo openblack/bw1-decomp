@@ -9,6 +9,8 @@
 class PhysicsObject : public Base
 {
 public:
+	// BW1W120 006442b0 BW1M100 10114020 PhysicsObject::DeleteAll(void)
+	static void DeleteAll();
 	// BW1W120 00644fc0 BW1M100 10038e40 PhysicsObject::GameTurnUpdate(void)
 	static void GameTurnUpdate();
 

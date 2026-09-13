@@ -28,6 +28,8 @@ static_assert(sizeof(CameraHelpAccumulator) == 0x10c, "Data type is of wrong siz
 class HelpProfile : public Base
 {
 public:
+	// BW1W120 00c5afd8. Descriptive clock name, advanced by Process.
+	static unsigned int AccumulatedTime;
 	// BW1W120 005c4660 BW1M100 10089270 HelpProfile::Process(void)
 	void Process();
 	// BW1W120 005c4820 BW1M100 1034adf0 HelpProfile::Save(GameOSFile &)

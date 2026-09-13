@@ -25,6 +25,10 @@ struct MusicMoodPacket
 class MusicMoodController
 {
 public:
+	// BW1W120 00d06438. Descriptive name for the CreatureMusicMood option.
+	static unsigned int CreatureMusicMoodEnabled;
+	// BW1W120 00634040 BW1M100 1010aa90 MusicMoodController::Close(void)
+	static void Close();
 	// BW1W120 00633ef0 BW1M100 1008eb20 MusicMoodController::UpdateOnGameTurn(float, bool)
 	static void UpdateOnGameTurn(float delta_time, bool reset);
 };

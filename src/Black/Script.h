@@ -1011,6 +1011,8 @@ public:
 
 	// BW1W120 006eb2d0 BW1M100 104de360 GScript::Reset(int)
 	void Reset(int param_2);
+	// BW1W120 006eb6f0 BW1M100 104d7f00 GScript::ValidateScriptVariables(void)
+	void ValidateScriptVariables();
 	// BW1W120 006eb610 BW1M100 104de270 GScript::LoadBinary(char *)
 	void LoadBinary(char* binary);
 	// BW1W120 006eb6b0 BW1M100 100813d0 GScript::Process(void)

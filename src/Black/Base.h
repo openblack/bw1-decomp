@@ -19,6 +19,7 @@ class Archive;
 class BaseInfo;
 struct LHPoint;
 struct UniqueKeyHeap;
+struct HeapStore;
 
 class Base
 {
@@ -26,6 +27,8 @@ public:
 	// BW1W120 00cd3b1c. Used by Base allocation/deletion; created by PCMain.
 	// TODO: Original global name and declaration scope are unrecovered.
 	static UniqueKeyHeap* ObjectHeap;
+	// BW1W120 00cd3b18. Descriptive name; initialized with ObjectHeap by PCMain.
+	static HeapStore* ObjectHeapStore;
 
 	bool32_t destroyed; /* 0x4 */
 

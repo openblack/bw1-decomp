@@ -13,6 +13,8 @@ class GameOSFile;
 class Bookmark
 {
 public:
+	// BW1W120 00439d60 BW1M100 100b6f70 Bookmark::ClearAll(void)
+	static void ClearAll();
 	// BW1W120 00439dd0 BW1M100 10082d20 Bookmark::ProcessAll(void)
 	static void ProcessAll();
 	// TODO: Instance layout is not recovered; only the static serialization interface is declared.

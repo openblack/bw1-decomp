@@ -10,6 +10,8 @@
 class GTerrainMap : public Base
 {
 public:
+	// BW1W120 00735540 BW1M100 10542460 GTerrainMap::Clear(void)
+	void Clear();
 	// BW1W120 0054bcd0 GTerrainMap::GTerrainMap(void)
 	GTerrainMap();
 	// BW1W120 00735500 BW1M100 10542500 GTerrainMap::Init(void)

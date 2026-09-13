@@ -20,6 +20,10 @@ struct CameraExclusion
 	uint32_t         field_0x24;
 
 	// Static methods
+	// BW1W120 00454a70 BW1M100 101a89f0 CameraExclusion::RemoveAll(void)
+	static void RemoveAll();
+	// BW1W120 00455320 BW1M100 101a7dc0 CameraExclusion::ResetExclusionFile(unsigned long)
+	static void ResetExclusionFile(unsigned long index);
 	// BW1W120 00455a10 BW1M100 101a6cf0 CameraExclusion::SaveExclusionFile(GameOSFile &)
 	static void SaveExclusionFile(GameOSFile& file);
 	// BW1W120 00455660 BW1M100 101a72e0 CameraExclusion::LoadExclusionFile(GameOSFile &)

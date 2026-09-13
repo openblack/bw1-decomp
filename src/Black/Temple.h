@@ -41,6 +41,8 @@ struct Temple
 
 	// BW1W120 00793ac0 BW1M100 10537d50 Temple::Temple(void)
 	Temple();
+	// BW1W120 00793c30 BW1M100 10537ca0 Temple::~Temple(void)
+	~Temple();
 
 	// Non-virtual methods
 

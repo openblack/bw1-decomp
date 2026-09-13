@@ -40,6 +40,8 @@ struct CreatureInnatePersonality
 class CreatureMental : public Base
 {
 public:
+	// BW1W120 004e7820 BW1M100 1026a130 CreatureMental::SaveMind(char*)
+	void                      SaveMind(char* path);
 	CreatureDesires           desires;                  /* 0x8 */
 	CreatureAgenda            agenda;                   /* 0x710 */
 	CreatureBeliefs           beliefs;                  /* 0x2208 */
