@@ -112,7 +112,7 @@ struct LHSurface;
 struct LHMouse
 {
 	int ScreenBuffer;
-	int(__cdecl* DrawCallback)(int, int, int, int);
+	uint32_t(__cdecl* DrawCallback)(void*, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long);
 	int          Locked;
 	int          DoubleBuffered;
 	int          field_10;
@@ -163,7 +163,7 @@ struct LHMouse
 	LHCoord      ButtonPos[9];
 	uint8_t      ButtonPressed;
 	uint8_t      _pad0x14d[3];
-	int          CallbackArg1;
+	void*        CallbackArg1;
 	uint8_t      gap_154[16];
 	int          CallbackArg2;
 

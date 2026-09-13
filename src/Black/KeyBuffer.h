@@ -28,6 +28,8 @@ public:
 	GKeyBuffer();
 	// BW1W120 005e1ac0 BW1M100 1056cd50
 	bool32_t Init(unsigned short capacity);
+	// BW1W120 005e1bf0 BW1M100 1019d7a0 GKeyBuffer::AddKeyIfDifferentToPrevious(LH_KEY, unsigned short)
+	void AddKeyIfDifferentToPrevious(LH_KEY key, unsigned short modifier);
 };
 
 class GKeyInput : public Base

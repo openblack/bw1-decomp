@@ -25,10 +25,7 @@ public:
 	Leash*    leash;
 	float     LeashDistance;
 
-	// Override methods
-
-	// BW1W120 005ce380 BW1M100 1017a1d0 GInterfaceCollide::_dt(void)
-	virtual ~GInterfaceCollide();
+	// BW1W120 005ce380 BW1M100 1017a1d0: implicit destructor, only Base is destroyed.
 };
 
 #endif /* BW1_DECOMP_INTERFACE_COLLIDE_INCLUDED_H */

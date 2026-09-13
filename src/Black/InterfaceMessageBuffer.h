@@ -15,7 +15,10 @@ struct LHCoord;
 class GInterfaceMessageBuffer : public Base
 {
 public:
-	uint8_t field_0x8[0xc];
+	GInterfaceMessage* Messages;
+	unsigned short     Capacity;
+	unsigned short     Count;
+	uint32_t           field_0x10;
 
 	// Override methods
 
@@ -26,6 +29,15 @@ public:
 
 	// BW1W120 005d9e80 BW1M100 10368b50 GInterfaceMessageBuffer::Init(unsigned short)
 	void Init(unsigned short param_1);
+	// BW1W120 inlined BW1M100 10534ea0 GInterfaceMessageBuffer::FreeMsgBuffer(void)
+	void FreeMsgBuffer()
+	{
+		if (Messages != NULL)
+		{
+			delete[] Messages;
+		}
+		Messages = NULL;
+	}
 	// BW1W120 005d9f10 BW1M100 1009c3b0 GInterfaceMessageBuffer::Add(INTERFACE_MESSAGE_TYPES, GInterfaceCollide *, LHCoord *)
 	bool Add(INTERFACE_MESSAGE_TYPES param_1, GInterfaceCollide* param_2, LHCoord* param_3);
 };
