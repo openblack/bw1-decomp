@@ -13,6 +13,8 @@ struct LH3DColor
 
 	// Constructors
 
+	// BW1W120 inlined BW1M100 10147d00 LH3DColor::LH3DColor(void)
+	LH3DColor() {}
 	// BW1W120 inlined BW1M100 10083c40 LH3DColor::LH3DColor(uint)
 	// White's per-TU startup initialisers store the packed color as one DWORD.
 	LH3DColor(uint32_t color) { *(uint32_t*)this = color; }

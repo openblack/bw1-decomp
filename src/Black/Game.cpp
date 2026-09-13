@@ -535,7 +535,7 @@ void GGame::Loop()
 	}
 	if (Enum0x25017c == 0)
 	{
-		FrontEnd::Instance.field_0x4e3 = true;
+		FrontEnd::StartupMenuActive = true;
 		FrontEnd::SetCursorOn();
 		showMainMenu = 1;
 	}
@@ -578,7 +578,7 @@ void GGame::Loop()
 	}
 	if (showMainMenu)
 	{
-		FrontEnd::Instance.main_menu->Show();
+		FrontEnd::MainMenuDialog->Show();
 	}
 	InputReset();
 	if (IsMultiplayerGame())
@@ -592,8 +592,7 @@ void GGame::Loop()
 		LH3DRender::StartFrame();
 		SetupThing::DrawAlpha = 0xff;
 		SetupThing::DrawBg(100, 200, 700, 400, 0xffffff, 0, -1);
-		LH3DColor color(0xff000000);
-		// TODO: The packed constructor leaves a redundant store before the original channel assignments.
+		LH3DColor color;
 		color.b = 0;
 		color.g = 0;
 		color.r = 0;
