@@ -29,7 +29,8 @@
 #include "PlayerInfo.h"          /* For struct GPlayerInfo */
 #include "ScriptCreatureCurse.h" /* For struct ScriptCreatureCurse */
 #include "StatsDatabase.h"       /* For struct StatsDatabase */
-#include "TerrainMap.h"          /* For struct GTerrainMap */
+#include "Setup.h"
+#include "TerrainMap.h" /* For struct GTerrainMap */
 
 enum GAME_MODE
 {
@@ -112,6 +113,17 @@ public:
 	static LHMail* Mail;
 	// BW1W120 00d01974
 	static bool InternetAvailable;
+	// TODO: Original names are unrecovered; initialization and loading-screen state.
+	// BW1W120 00d019c4
+	static bool Initialising;
+	// BW1W120 00d01980
+	static int LoadingFrameEnabled;
+	// BW1W120 00d0196c
+	static int FootballEnabled;
+	// BW1W120 00d01838. Extracted filename storage; full extent not established.
+	static char LoadGameFilename[];
+	// BW1W120 00d318d4. Loading-screen video; descriptive name and provisional scope.
+	static LHVideoPlayer* TipVideo;
 	// BW1W120 00bea9a0. Extracted storage; full array extent is not established.
 	static uint8_t RealPlayerMap[];
 	// BW1W120 008df608
@@ -149,8 +161,8 @@ public:
 	GLandscape             landscape; /* 0x205a20 */
 	uint32_t               field_0x205a28;
 	uint32_t               field_0x205a2c;
-	GData                  data; /* 0x205a30 */
-	uint8_t                field_0x205a58;
+	GData                  data;  /* 0x205a30 */
+	GSetup                 setup; /* 0x205a58; empty utility member occupies one byte. */
 	uint8_t                PlayerIndex;
 	uint8_t                field_0x205a5a;
 	uint8_t                NeutralPlayerIndex;
@@ -176,7 +188,8 @@ public:
 	uint32_t               field_0x205d60;
 	float                  field_0x205d64;
 	LHTimer                timer;
-	uint8_t                field_0x205e78[0x14];
+	uint32_t               field_0x205e78;
+	uint8_t                field_0x205e7c[0x10];
 	GTerrainMap            terrain_map; /* 0x205e8c */
 	GPlayerInfo            player_info; /* 0x24ffbc */
 	GLanguage              language;    /* 0x25004c */
@@ -328,9 +341,14 @@ public:
 	// BW1W120 0054ef40 BW1M100 10514230 GGame::InitOneTimeOnly(void)
 	uint32_t InitOneTimeOnly();
 	// BW1W120 0054f3b0 BW1M100 101b9770 GGame::Init(void)
-	bool Init();
-	// BW1W120 0054f421 BW1M100 inlined GGame::InitInner(void)
-	bool InitInner();
+	// 0054f421 is a continuation in this function's exception frame, not another entry.
+	bool32_t Init();
+	// BW1W120 005550f0
+	void ReadRegistrySettings();
+	// BW1W120 00555a80 BW1M100 1057af10
+	void SetUnusedCitadelComputerPlayers();
+	// BW1W120 00550ba0 BW1M100 103dd850
+	void SetPacket(PACKET_TYPE type, short x, short z, long value);
 	// BW1W120 0054ff80 BW1M100 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
 	static void KeyHandler(unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4,
 	                       void* param_5);

@@ -10,16 +10,18 @@ class LHFile;
 
 struct MeshIntersect
 {
-	uint32_t field_0x0;
-	uint32_t field_0x4;
-	uint32_t field_0x8;
-	uint32_t field_0xc;
-	uint32_t field_0x10;
-	uint32_t field_0x14;
-	uint32_t field_0x18;
-	uint32_t field_0x1c;
-	uint32_t field_0x20;
-	uint32_t field_0x24;
+	// BW1W120 00865000 BW1M100 1061fd6c MeshIntersect::InitialiseMeshIntersect(void)
+	static void InitialiseMeshIntersect();
+	uint32_t    field_0x0;
+	uint32_t    field_0x4;
+	uint32_t    field_0x8;
+	uint32_t    field_0xc;
+	uint32_t    field_0x10;
+	uint32_t    field_0x14;
+	uint32_t    field_0x18;
+	uint32_t    field_0x1c;
+	uint32_t    field_0x20;
+	uint32_t    field_0x24;
 
 	// Non-virtual methods
 

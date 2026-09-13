@@ -73,7 +73,7 @@ public:
 	// Constructors
 
 	// BW1W120 00441870 BW1M100 1019a720 GCamera::Camera(MapCoords&)
-	GCamera(MapCoords* coords);
+	GCamera(MapCoords& coords);
 
 	// Non-virtual methods
 

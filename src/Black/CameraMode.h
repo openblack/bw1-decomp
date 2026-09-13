@@ -35,6 +35,9 @@ struct LHCoord;
 class CameraMode
 {
 public:
+	// BW1W120 0044a3c0 (deleting wrapper), BW1M100 10199460 CameraMode::~CameraMode()
+	// First slot at 008c76e0. Other original virtual declarations remain unrecovered.
+	virtual ~CameraMode();
 	GCamera* camera; /* 0x4 */
 };
 

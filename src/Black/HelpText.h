@@ -58,6 +58,8 @@ struct HelpTextDataBase
 {
 	// BW1W120 00d17ca8. TODO: Original global name unknown.
 	static HelpTextDataBase HelpTextDatabase;
+	// BW1W120 00d17c98. Descriptive name; filled from InfoScriptMultiplayer2.txt.
+	static HelpTextDataBase MultiplayerTextDatabase;
 
 	HelpTextData* array; /* 0x0 */
 	uint32_t      count;

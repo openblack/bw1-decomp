@@ -5,6 +5,8 @@
 class PlayerSymbol
 {
 public:
+	// BW1W120 005def00 BW1M100 10372950
+	static void CreateFinalTextureSymbols();
 	// BW1W120 005de2f0 BW1M100 103740f0
 	static void OpenOnce();
 };

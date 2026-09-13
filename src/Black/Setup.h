@@ -16,6 +16,15 @@ struct MapCoords;
 class GSetup
 {
 public:
+	// Descriptive names for extracted map command storage.
+	// BW1W120 00c20d5c
+	static int CreateMultiplayerCreatures;
+	// BW1W120 00d01968
+	static int MPDebugLoadState;
+	// BW1W120 00c20d60
+	static LHScriptCommandX<char> MapCommands[];
+	// BW1W120 00714d10 BW1M100 1050c450 GSetup::MapCommandProcess(long, LHScriptPramX<c>*)
+	static LH_RETURN __cdecl MapCommandProcess(long command, LHScriptPramX<char>* params);
 	// win1.41 00715180 mac 105091d0 GSetup::FeatureMapCommandProcess<c>(long, LHScriptPramX<c> *)
 	uint32_t FeatureMapCommandProcess(uint32_t op, LHScriptPramX<char>* script_param);
 	// win1.41 007180b0 mac 10508ff0 GSetup::LoadMapFeatures(char *)
@@ -29,7 +38,7 @@ public:
 	// win1.41 00719280 mac 10507ce0 GSetup::LoadTextScripts(void)
 	static int LoadTextScripts();
 	// win1.41 00715080 mac 1050c3d0 GSetup::LoadMapScript(void)
-	static int LoadMapScript();
+	int LoadMapScript();
 	// win1.41 00718330 mac 10508550 GSetup::SaveAllMap(char *)
 	static int SaveAllMap(char* param_1);
 	// win1.41 00718870 mac 10508160 GSetup::SaveMapCell(LHOSFile &, MapCell *, unsigned long &, unsigned long &, unsigned long &, unsigned long &, unsigned long &, MapCoords const &)

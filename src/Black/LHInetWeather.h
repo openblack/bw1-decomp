@@ -6,7 +6,9 @@
 
 struct LHInetWeather
 {
-	uint32_t field_0x0;
+	// BW1W120 00d01600. Descriptive singleton name; declaration only, incomplete layout.
+	static LHInetWeather Weather;
+	uint32_t             field_0x0;
 
 	// Non-virtual methods
 

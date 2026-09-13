@@ -27,6 +27,8 @@ public:
 
 	// BW1W120 00414520 BW1M100 100a3e80 GAlignment::Update(Abode *, RESOURCE_TYPE, long, float)
 	void Update(Abode* abode, RESOURCE_TYPE type, int amount, float param_4);
+	// BW1W120 004146f0 BW1M100 100a33c0 GAlignment::CrudeSet(float)
+	void CrudeSet(float value);
 };
 
 #endif /* BW1_DECOMP_ALIGNMENT_INCLUDED_H */

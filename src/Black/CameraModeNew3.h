@@ -21,6 +21,12 @@ class GCamera;
 class CameraModeNew3 : public CameraMode
 {
 public:
+	// TODO: Original shared constant names/scope unrecovered; also read by GPlayer.
+	// BW1W120 009ce694 / 009ce698
+	static const float CitadelDistance;
+	static const float CitadelPitch;
+	// BW1W120 00457b60 BW1M100 101a59d0 CameraModeNew3::ZoomToCitadel(float,float,float,float,int)
+	void ZoomToCitadel(float x, float z, float distance, float pitch, int param_5);
 	enum fight_status_t
 	{
 		fight_status_t_0x0 = 0x0,

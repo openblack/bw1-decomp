@@ -32,6 +32,10 @@ public:
 class CreatureGlobalExplorationMap : public Base
 {
 public:
+	// BW1W120 00c8dc40. Descriptive name; declaration only, full layout unrecovered.
+	static CreatureGlobalExplorationMap GlobalMap;
+	// BW1W120 004df9c0 BW1M100 10261260
+	void PrecalculateMap();
 	// Override methods
 
 	// BW1W120 004df450 BW1M100 102605a0 CreatureGlobalExplorationMap::_dt(void)

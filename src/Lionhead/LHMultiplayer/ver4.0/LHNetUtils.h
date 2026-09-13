@@ -8,6 +8,9 @@
 
 class LHMail;
 
+// BW1W120 IAT 008a9434, DLL data export 1006272c.
+LH_MULTIPLAYER_API extern char CheckInternetConnectionOptions;
+
 // BW1W120 imports 008a9548 / 008a9430 / 008a95f8.
 LH_MULTIPLAYER_API void __cdecl    LHNetUseProfile(unsigned short* profile);
 LH_MULTIPLAYER_API bool __cdecl    LHCheckForInternetConnection(char options);
