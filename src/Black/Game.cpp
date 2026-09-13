@@ -1,4 +1,25 @@
 #include "Game.h"
+#include "GameVideo.h"
+#include "PCInput.h"
+#include "CreaturePhysical.h"
+#include "CreatureMorph.h"
+#include "EditorIconBase.h"
+#include "FallingSpell.h"
+#include "FireFly.h"
+#include "LH3DZSorter.h"
+#include "LightSheet.h"
+#include "LiquidParticle.h"
+#include "MagicHand.h"
+#include "ParticleContainer.h"
+#include "PSysLightMaps.h"
+#include "Spell.h"
+#include "TemporaryShadow.h"
+#include "TownCentre.h"
+#include "ValueSpinner.h"
+#include "VillagerNames.h"
+#include <Lionhead/LH3DLib/development/LH3DComplexObject.h>
+#include <Lionhead/LH3DLib/development/LH3DSky.h>
+#include <Lionhead/LH3DLib/development/LH3DStorm.h>
 #include "CameraModeNew3.h"
 #include "ChannelBox.h"
 #include "CreatureExplorationMap.h"
@@ -145,6 +166,16 @@
 #include <wchar.h>
 
 static_assert(sizeof(GSetup) == 1, "GSetup must remain an empty utility member");
+static_assert(sizeof(BINKREALTIME) == 0x38, "Bink realtime ABI is incorrect");
+static_assert(sizeof(LH3DZSorter::DrawCallback) == 4, "Windows drawing callback must be one word");
+static_assert(offsetof(Morphable, DynamicShadow) == 0x482c, "Morphable shadow offset is incorrect");
+static_assert(offsetof(CreaturePhysical, Creature3d) == 0x58, "Creature render pointer offset is incorrect");
+static_assert(offsetof(PowerSpin, Position) == 0x9a8, "PowerSpin position offset is incorrect");
+static_assert(offsetof(PowerSpinRunner, Next) == 0x9b4, "PowerSpinRunner link offset is incorrect");
+static_assert(offsetof(ValueSpinner, point) == 8, "ValueSpinner position offset is incorrect");
+static_assert(offsetof(VillagerName, next) == 0x460, "VillagerName link offset is incorrect");
+static_assert(offsetof(TempleRoom, name) == 4, "TempleRoom vptr is missing");
+static_assert(offsetof(GScript, FocusPos) == 0x40, "Script timer fields changed its layout");
 static_assert(offsetof(GGame, setup) == 0x205a58, "GGame setup offset is incorrect");
 static_assert(offsetof(GGame, PlayerIndex) == 0x205a59, "GGame player index offset is incorrect");
 static_assert(offsetof(GPlayer, Conditions) == 0xf8, "GPlayer condition map offset is incorrect");
@@ -187,9 +218,6 @@ void             DoLogo();                               // 005fa070
 void             ClearTipVideo();                        // 005f3d90
 void             ResetLocalGameTimer();                  // 0054c570
 void             SendNetworkChecksum(bool);              // 00635210
-void             EnterVideoSection();                    // 00844c80
-void             LeaveVideoSection();                    // 00844ca0
-void             DeleteVideo(bool);                      // 0054a940
 void             fn_0064D0F0();                          // Real emitted empty function; original name unrecovered.
 void             UninitialiseLiquidParticles();          // 00845c10
 void             ResetCameraModeNew3();                  // 00460b20
@@ -1995,6 +2023,303 @@ void GGame::ProcessOneGameTurn()
 			}
 		}
 	}
+}
+
+// BW1W120 0054d850 BW1M100 10079980
+void GGame::ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2)
+{
+	LHSys::GetMouse().UpdateDeltaPos();
+	ControlMap::MouseDelta = LHSys::GetMouse().AccumDelta;
+	camera->Update();
+	MyInterface()->PreDrawProcess();
+	Process3dEngine();
+	if (GGlobal::Global.field_0x2d2ac)
+	{
+		BMan_Display();
+		DrawMouseCross();
+		GCameraEditor::FinalDraw();
+	}
+	g_game->MyInterface()->PostDrawProcess();
+	help_system->PostDrawProcess();
+}
+
+// BW1W120 0054da80 BW1M100 10033dd0
+void GGame::Process3dEngine()
+{
+	bool32_t drewLandscape = false;
+	if (Dat_00D46A74 && (field_0x14 & 4) && (g_game->field_0x14 & 4))
+	{
+		PhysicsObject::GameTurnUpdate();
+	}
+	LH3DRender::StartFrame();
+	EnterVideoSection();
+	if (g_game->VideoPlayer && g_game->VideoPlayer->Bink)
+	{
+		BinkService(g_game->VideoPlayer->Bink);
+	}
+	if (VideoFinished)
+	{
+		FinishedVideo();
+	}
+	if (VideoPlayer)
+	{
+		field_0x250194 = 1.0f;
+		if (VideoPlayer->CurrentFrame >= field_0x250190)
+		{
+			field_0x250194 = 0.0f;
+			DeleteVideo(true);
+		}
+		else
+		{
+			if (VideoPlayer->CurrentFrame > field_0x25018c)
+			{
+				if (VideoPreviousPause != ((field_0x14 >> 2) & 1))
+				{
+					PauseGame(VideoPreviousPause);
+				}
+				field_0x250194 = 1.0f - (float)(VideoPlayer->CurrentFrame - field_0x25018c) /
+				                            (abs(field_0x250190 - field_0x25018c) + 1);
+			}
+			if (field_0x250194 == 1.0f && !FallingSpellVideo)
+			{
+				int tries = 1000;
+				while (!VideoFramesReady && tries--)
+				{
+					VideoPoll(false, false);
+					Good_sleep_us(500);
+				}
+			}
+			// VideoPoll can finish and delete the movie.
+			if (VideoPlayer)
+			{
+				int border = (int)((LH3DTech::g_info_transform.resolution.y -
+				                    LH3DTech::g_info_transform.resolution.x * (9.0f / 16.0f)) *
+				                   VideoLetterboxScale) /
+				             2;
+				LH3DColor color;
+				color.b = 255;
+				color.g = 255;
+				color.r = 255;
+				color.a = (unsigned char)((FallingSpellVideo ? 80 : 255) * field_0x250194);
+				VideoPlayer->DrawToScreen(color, 0, border, LH3DTech::g_info_transform.resolution.x + 1,
+				                          LH3DTech::g_info_transform.resolution.y - border * 2 + 1, false, false);
+				VideoFramesReady = 0;
+				BINKREALTIME realtime;
+				BinkGetRealtime(VideoPlayer->Bink, &realtime, 1);
+				unsigned long frameTime = realtime.FramesTime;
+				if (frameTime < 1)
+					frameTime = 1;
+				unsigned long bufferSize = realtime.ReadBufferSize;
+				if (bufferSize < 1)
+					bufferSize = 1;
+				sprintf(
+					VideoStatistics,
+					"frame %d, video=%d%% audio=%d%% readfore=%d%% readback=%d%% readidle=%d%% blit=%d%% buffer=%d%% datarate=%dk",
+					realtime.FrameNum, realtime.FramesVideoDecompTime * 100 / frameTime,
+					realtime.FramesAudioDecompTime * 100 / frameTime, realtime.FramesReadTime * 100 / frameTime,
+					realtime.FramesThreadReadTime * 100 / frameTime, realtime.FramesIdleReadTime * 100 / frameTime,
+					realtime.FramesBlitTime * 100 / frameTime, realtime.ReadBufferUsed * 100 / bufferSize,
+					realtime.FramesDataRate >> 10);
+			}
+		}
+	}
+	bool videoOnly = VideoPlayer && field_0x250194 == 1.0f;
+	if (FallingSpellVideo)
+		videoOnly = false;
+	LeaveVideoSection();
+	if (!videoOnly)
+	{
+		switch (field_0x205a28)
+		{
+		case 2:
+			LH3DAtmos::Update3D((int)LH3DTech::g_delta_time * 0.001f);
+			LH3DRender::g_mode_cleaning = 0;
+			fn_00553A60();
+			if (!VideoPlayer || FallingSpellVideo->field_0x20 == 4)
+			{
+				EndFallingSpellVideo();
+				break;
+			}
+			FallingSpellVideo->Draw();
+			UpdateLiquidParticles((int)LH3DTech::g_delta_time * 0.001f);
+			DrawLiquidParticles();
+			break;
+		case 1:
+			LH3DAtmos::Update3D((int)LH3DTech::g_delta_time * 0.001f);
+			LH3DRender::g_mode_cleaning = 0;
+			LH3DSky::g_b_we_are_inside_citadel = 1;
+			TemporaryShadow::UpdateAll();
+			GLandAlignement::DrawSky();
+			LH3DSky::g_b_we_are_inside_citadel = 0;
+			temple->Draw();
+			temple->Update();
+			UpdateLiquidParticles((int)LH3DTech::g_delta_time * 0.001f);
+			DrawLiquidParticles();
+			break;
+		case 0: {
+			if (RenderLoopEnabled)
+				landscape.PreDraw();
+			TemporaryShadow::UpdateAll();
+			for (LHLinkedNode<Creature*>* node = Creature::CreatureList.GetStart(); node; node = node->next.Get())
+			{
+				node->payload->physical->Creature3d->PrepareForDrawing();
+			}
+			CHand* hand = g_game->MyInterface()->hand;
+			if (hand)
+				hand->PrepareForDrawing();
+			PSysLightMaps::AddDrawing();
+			LH3DLandscape::TextureUpdateThread();
+			LH3DAtmos::Update3D((int)LH3DTech::g_game_time_inc * 0.001f);
+			if (RenderLoopEnabled)
+				landscape.Draw();
+			drewLandscape = true;
+			if (players[PlayerIndex].creature)
+				players[PlayerIndex].creature->physical->Creature3d->DrawFightSparkles();
+			GInterface::DrawAllLeashes();
+			PhysicsObject::DrawAll();
+			MyInterface()->hand->UpdateHeldObject();
+			if (GGlobal::Global.field_0x2d2ac)
+				GGlobal::Global.field_0x2d2e4->Display();
+			if (hand)
+				hand->AddDrawing();
+			for (GPlayer* player = GetNextPlayer(NULL); player; player = GetNextPlayer(player))
+			{
+				for (GInterfaceStatus* status = player->GetNextInterfaceStatus(NULL); status;
+				     status = player->GetNextInterfaceStatus(status))
+				{
+					if (status != MyInterface()->status)
+					{
+						GMagicHand* magicHand =
+							status->HandHoldingSomething ? &status->magic_hand[status->HandHoldingSomething] : NULL;
+						if (magicHand)
+						{
+							Object* object = magicHand->GetObjectFromHand();
+							if (object)
+								object->DrawInHand(status);
+						}
+					}
+				}
+			}
+			MyInterface()->Draw();
+			UpdateLiquidParticles((unsigned int)field_0x205d48 * 0.001f);
+			DrawLiquidParticles();
+			Draw();
+			CreatureLessonChooser::UpdateDraw();
+			EditorIconBase::DrawMouseOver();
+			PSysGlobal::DrawLoop();
+			FireFly::DrawAll();
+			Spell::DrawSpells();
+			GParticleContainer::DrawParticleContainers();
+			GPlayer::DrawPlayers();
+			TownCentre::DrawAll();
+			float time = (int)LH3DTech::g_game_time_inc * 0.001f;
+			for (ValueSpinner *spinner = ValueSpinner::first, *nextSpinner; spinner; spinner = nextSpinner)
+			{
+				nextSpinner = spinner->next;
+				spinner->Update(time);
+			}
+			if (!g_game->help_system->field_0x45e8)
+			{
+				for (ValueSpinner* spinner = ValueSpinner::first; spinner; spinner = spinner->next)
+					spinner->AddDrawing();
+			}
+			if (GGlobal::Global.debug.field_0x2d1b0)
+			{
+				LH3DStorm::DebugDrawAll();
+				LH3DAtmos::DrawWindField();
+			}
+			LH3DAtmos::Render3D();
+			if (CameraModeNew3::ForceField && CameraModeNew3::DrawForceField)
+			{
+				CameraModeNew3::ForceField->count = CameraModeNew3::ForceFieldPointCount + 1;
+				int i;
+				for (i = 0; i < CameraModeNew3::ForceField->count - 1; ++i)
+					CameraModeNew3::ForceField->field_0x20[i] = CameraModeNew3::ForceFieldPoints[i];
+				CameraModeNew3::ForceField->field_0x20[i] = CameraModeNew3::ForceFieldPoints[0];
+				CameraModeNew3::ForceField->Update((int)LH3DTech::g_game_time_inc * 0.001f);
+				CameraModeNew3::ForceField->DoTheDrawing(CameraModeNew3::ForceFieldMaterial);
+			}
+			float target = (float)((field_0x14 >> 17) & 1);
+			float step = (int)LH3DTech::g_game_time_inc * 0.003f;
+			if (field_0x59b0 < target)
+			{
+				field_0x59b0 += step;
+				if (field_0x59b0 > target)
+					field_0x59b0 = target;
+			}
+			else
+			{
+				field_0x59b0 -= step;
+				if (field_0x59b0 < target)
+					field_0x59b0 = target;
+			}
+			if (!g_game->help_system->field_0x45e8 || !g_game->help_system->field_0x45ec)
+			{
+				for (VillagerName* name = VillagerName::First; name; name = name->next)
+					name->AddDrawing();
+			}
+			else
+			{
+				while (VillagerName::First)
+					VillagerName::First->Remove();
+			}
+			break;
+		}
+		}
+	}
+	if (field_0x205a28 != 3)
+	{
+		if (Temple::Dat_00E06020 == Temple::Dat_00C2A150 && field_0x205a28 != 1)
+			script->ProcessFade(true);
+		else
+			Temple::UpdateFade();
+		help_system->Draw3D();
+		if (drewLandscape)
+			ClearLight();
+		for (PowerSpinRunner *spin = PowerSpinRunner::First, *nextSpin; spin; spin = nextSpin)
+		{
+			nextSpin = spin->Next;
+			if (spin->Update(MyInterface()->hand->DynamicShadow->matrix, (int)LH3DTech::g_game_time_inc * 0.001f))
+			{
+				if (LH3DRender::g_started_frame)
+				{
+					LH3DRender::g_zsorter->NewZObject(spin, (LH3DZSorter::DrawCallback)&PowerSpin::Draw,
+					                                  LH3DTech::GetValueForZSorter(spin->Position), 0);
+				}
+			}
+		}
+		if (GCameraEditor::Instance)
+			GCameraEditor::Draw3DPart();
+	}
+	g_enable_callbacks = true;
+	if (!field_0x205a28)
+		InfluenceCircle::Draw(1);
+	else if (field_0x205a28 != 2 && dynamic_cast<class WorldRoom*>(temple->ActiveRoom) && WorldRoom::ShowInfluence)
+		InfluenceCircle::Draw(0);
+	LH3DRender::FinishFrame();
+	VillagerNameBlock::DeleteAll();
+	fn_007DEE00();
+	if (CreatureMentalEditor::Instance)
+		CreatureMentalEditor::Instance->Draw();
+	Creature::DrawLeashInfo();
+	Town::DisplayHowImpressed();
+	GPlayer::DrawComputerPlayers();
+	if (script->CountDownTimerEnabled && script->CountDownTimerVisible)
+	{
+		char  text[256];
+		float remaining = script->GetCountDownTimerRemainingTime();
+		sprintf(text, "Time: %.1f", remaining);
+		unsigned long red = 0;
+		unsigned long green = 0;
+		if (remaining < 10.0f)
+			red = 255;
+		else
+			green = 255;
+		CreatureMentalEditor::DrawTextA(text, 320, 90, 24.0f, red, green, 0);
+	}
+	if (field_0x205a28 != 1 && field_0x205a28 != 2)
+		LH3DAtmos::Render2D();
+	fn_007DEE00();
 }
 
 // BW1W120 0054d820 BW1M100 10083dd0 GGame::ProcessGameCode(void)
