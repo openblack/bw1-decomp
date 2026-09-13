@@ -26,15 +26,15 @@ public:
 	class LeakNode
 	{
 	public:
-		int                Line;           /* 0x000 source line of the allocation */
-		char               FileName[260];  /* 0x004 strcpy of __FILE__ */
-		unsigned char      ShouldLog;      /* 0x108 copied from gMemoryLeak+0x10 */
-		int                field_10C;      /* 0x10C zero-initialised */
-		int                Tag;            /* 0x110 copied from gMemoryLeak+0x14 */
-		int                AllocSize;      /* 0x114 requested allocation size */
-		unsigned char      DeletionLogged; /* 0x118 set by LogDeletion; second delete => double free */
-		LHLinkedList<char> AllocStack;     /* 0x11C allocation call stack */
-		LHLinkedList<char> DeleteStack;    /* 0x124 deletion call stack */
+		int                 Line;           /* 0x000 source line of the allocation */
+		char                FileName[260];  /* 0x004 strcpy of __FILE__ */
+		unsigned char       ShouldLog;      /* 0x108 copied from gMemoryLeak+0x10 */
+		int                 field_10C;      /* 0x10C zero-initialised */
+		int                 Tag;            /* 0x110 copied from gMemoryLeak+0x14 */
+		int                 AllocSize;      /* 0x114 requested allocation size */
+		unsigned char       DeletionLogged; /* 0x118 set by LogDeletion; second delete => double free */
+		LHLinkedList<char*> AllocStack;     /* 0x11C allocation call stack */
+		LHLinkedList<char*> DeleteStack;    /* 0x124 deletion call stack */
 
 		// Constructors
 
@@ -42,9 +42,9 @@ public:
 		inline LeakNode(const char* file, int line, int size, unsigned char shouldLog, int tag)
 		{
 			AllocStack.count = 0;
-			AllocStack.head = NULL;
+			AllocStack.head.Clear();
 			DeleteStack.count = 0;
-			DeleteStack.head = NULL;
+			DeleteStack.head.Clear();
 			strcpy(FileName, file);
 			Line = line;
 			ShouldLog = shouldLog;

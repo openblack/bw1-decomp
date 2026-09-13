@@ -5,30 +5,29 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 #include <stddef.h> /* For NULL */
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 
 // Forward Declares
 
 class LHSession;
+class GBWPlayers;
 
 struct GNetwork
 {
-	uint32_t   field_0x0;
-	float      field_0x4;
-	uint32_t   field_0x8;
-	uint32_t   field_0xc;
-	LHSession* session; /* 0x10 */
-	uint32_t   field_0x14;
-	uint32_t   field_0x18;
-	uint32_t   field_0x1c;
-	uint8_t    field_0x20;
-	uint32_t   field_0x24;
-	uint32_t   field_0x28;
-	uint32_t   field_0x2c;
+	uint32_t                  field_0x0;
+	float                     field_0x4;
+	LHLinkedList<GBWPlayers*> Players; /* 0x8; descriptive member name */
+	LHSession*                session; /* 0x10 */
+	uint32_t                  field_0x14;
+	uint32_t                  field_0x18;
+	uint32_t                  field_0x1c;
+	uint8_t                   field_0x20;
+	uint32_t                  field_0x24;
+	uint32_t                  field_0x28;
+	uint32_t                  field_0x2c;
 
 	GNetwork()
 	{
-		field_0xc = 0;
-		field_0x8 = 0;
 		session = NULL;
 		field_0x14 = 0;
 		field_0x18 = 0;

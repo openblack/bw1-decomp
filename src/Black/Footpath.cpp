@@ -13,7 +13,7 @@ uint32_t GFootpathLink::Save(GameOSFile& file)
 			uint32_t count = FootpathList.count;
 			int      written = 0;
 			file.WriteSafe(FootpathList.count);
-			for (LHLinkedNode<GFootpath>* node = FootpathList.head; node != NULL; node = node->next)
+			for (LHLinkedNode<GFootpath*>* node = FootpathList.head.Get(); node != NULL; node = node->next.Get())
 			{
 				written++;
 				if (written > (int)count)

@@ -40,14 +40,14 @@ struct PSysProcessInfo;
 class GameOSFile : public LHReleasedOSFile
 {
 public:
-	uint32_t                   field_0x10c;
-	char                       Filename[0x100]; /* 0x110 */
-	uint32_t                   field_0x210;
-	uint32_t                   Checksum; /* 0x214 */
-	uint32_t                   field_0x218;
-	uint32_t                   field_0x21c;
-	LHLinkedList<GSaveLoadPtr> SaveLoadPtrList; /* 0x220 */
-	LHLinkedList<GameThing>    GameThingList;
+	uint32_t                    field_0x10c;
+	char                        Filename[0x100]; /* 0x110 */
+	uint32_t                    field_0x210;
+	uint32_t                    Checksum; /* 0x214 */
+	uint32_t                    field_0x218;
+	uint32_t                    field_0x21c;
+	LHLinkedList<GSaveLoadPtr*> SaveLoadPtrList; /* 0x220 */
+	LHLinkedList<GameThing*>    GameThingList;
 
 	// Static data
 

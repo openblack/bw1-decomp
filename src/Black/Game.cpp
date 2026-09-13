@@ -396,34 +396,40 @@ bool32_t GGame::LocalTimerSaysDoATurn()
 void ResetLocalGameTimer()
 {
 	// Stop, Reset and Start are fully inlined here in the original, unlike Loop startup.
-	LHTimer& stoppedTimer = GGame::g_game->timer;
-	if (stoppedTimer.SpeedUpFactor != 0.0f)
 	{
-		stoppedTimer.SpeedUpFactor2 = stoppedTimer.SpeedUpFactor;
-		stoppedTimer.ElapsedTime = (int)((float)(GetTickCount() - stoppedTimer.TickCount) * stoppedTimer.SpeedUpFactor +
-		                                 (float)(uint32_t)stoppedTimer.ElapsedTime);
-		stoppedTimer.TickCount = GetTickCount();
-		stoppedTimer.SpeedUpFactor = 0.0f;
+		LHTimer& timer = GGame::g_game->timer;
+		if (timer.SpeedUpFactor != 0.0f)
+		{
+			timer.SpeedUpFactor2 = timer.SpeedUpFactor;
+			unsigned long ticks = GetTickCount() - timer.TickCount;
+			timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+			timer.TickCount = GetTickCount();
+			timer.SpeedUpFactor = 0.0f;
+		}
 	}
-	uint32_t gameTurn = GGame::g_game->data.GameTurn;
-	LHTimer& resetTimer = GGame::g_game->timer;
-	resetTimer.TickCount = GetTickCount();
-	resetTimer.ElapsedTime = gameTurn * 100;
-	if (resetTimer.SpeedUpFactor != 0.0f)
 	{
-		resetTimer.SpeedUpFactor2 = resetTimer.SpeedUpFactor;
-		resetTimer.ElapsedTime = (int)((float)(GetTickCount() - resetTimer.TickCount) * resetTimer.SpeedUpFactor +
-		                               (float)(uint32_t)resetTimer.ElapsedTime);
-		resetTimer.TickCount = GetTickCount();
-		resetTimer.SpeedUpFactor = 0.0f;
+		uint32_t gameTurn = GGame::g_game->data.GameTurn;
+		LHTimer& timer = GGame::g_game->timer;
+		timer.TickCount = GetTickCount();
+		timer.ElapsedTime = gameTurn * 100;
+		if (timer.SpeedUpFactor != 0.0f)
+		{
+			timer.SpeedUpFactor2 = timer.SpeedUpFactor;
+			unsigned long ticks = GetTickCount() - timer.TickCount;
+			timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+			timer.TickCount = GetTickCount();
+			timer.SpeedUpFactor = 0.0f;
+		}
 	}
-	LHTimer& startedTimer = GGame::g_game->timer;
-	startedTimer.SpeedUpFactor = 0.00001f;
-	float speed = startedTimer.SpeedUpFactor2;
-	startedTimer.ElapsedTime = (int)((float)(GetTickCount() - startedTimer.TickCount) * startedTimer.SpeedUpFactor +
-	                                 (float)(uint32_t)startedTimer.ElapsedTime);
-	startedTimer.TickCount = GetTickCount();
-	startedTimer.SpeedUpFactor = speed;
+	{
+		LHTimer& timer = GGame::g_game->timer;
+		timer.SpeedUpFactor = 0.00001f;
+		float         speed = timer.SpeedUpFactor2;
+		unsigned long ticks = GetTickCount() - timer.TickCount;
+		timer.ElapsedTime = (int)((float)ticks * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+		timer.TickCount = GetTickCount();
+		timer.SpeedUpFactor = speed;
+	}
 }
 
 // BW1W120 0054cc30 BW1M100 10029320 GGame::ProcessNetworkPackets(void)
@@ -844,7 +850,7 @@ void GGame::StartTurn()
 		++data.GameTurn;
 	}
 	GGlobal::Global.debug.ClearMessages(-1);
-	for (LHLinkedNode<CellBox>* node = GGlobal::Global.debug.CellBoxes.GetStart(); node != NULL;
+	for (LHLinkedNode<CellBox*>* node = GGlobal::Global.debug.CellBoxes.GetStart(); node != NULL;
 	     node = GGlobal::Global.debug.CellBoxes.GetStart())
 	{
 		CellBox* cellBox = node->payload;
@@ -911,10 +917,10 @@ void GGame::ProcessTurn()
 	Update3DInfluence();
 	camera->CheckStackedModesForValidity();
 	camera->Validate();
-	LHLinkedNode<Fragment>* node = g_game->GameLists.fragments.head;
+	LHLinkedNode<Fragment*>* node = g_game->GameLists.fragments.head.Get();
 	while (node != NULL)
 	{
-		LHLinkedNode<Fragment>* next = node->next;
+		LHLinkedNode<Fragment*>* next = node->next.Get();
 		node->payload->ProcessTimer();
 		node = next;
 	}

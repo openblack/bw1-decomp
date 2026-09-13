@@ -33,12 +33,12 @@ class Town;
 class FishFarm : public MultiMapFixed
 {
 public:
-	FishFarm*              next;      /* 0x7c */
-	LHLinkedList<Villager> villagers; /* 0x80 */
-	uint32_t               field_0x88;
-	Town*                  town;
-	float                  field_0x90;
-	float                  field_0x94;
+	FishFarm*               next;      /* 0x7c */
+	LHLinkedList<Villager*> villagers; /* 0x80 */
+	uint32_t                field_0x88;
+	Town*                   town;
+	float                   field_0x90;
+	float                   field_0x94;
 
 	// Override methods
 

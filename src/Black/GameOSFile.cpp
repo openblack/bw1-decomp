@@ -312,7 +312,7 @@ int GameOSFile::LoadAllGame(char* filename)
 // BW1W120 00561c60 BW1M100 103049e0 GameOSFile::ResolveAllLoads(void)
 void GameOSFile::ResolveAllLoads()
 {
-	LHLinkedNode<GameThing>* node;
+	LHLinkedNode<GameThing*>* node;
 	while ((node = GameThingList.GetLastNode()) != NULL)
 	{
 		if (dynamic_cast<GameThing*>(node->payload))
@@ -322,11 +322,11 @@ void GameOSFile::ResolveAllLoads()
 		GameThingList.Remove(node->payload, false);
 	}
 
-	LHLinkedNode<Creature>* creatureNode = Creature::CreatureList.GetStart();
+	LHLinkedNode<Creature*>* creatureNode = Creature::CreatureList.GetStart();
 	while (creatureNode)
 	{
-		LHLinkedNode<Creature>* next = creatureNode->next;
-		GPlayer*                player = creatureNode->payload->GetPlayer();
+		LHLinkedNode<Creature*>* next = creatureNode->next.Get();
+		GPlayer*                 player = creatureNode->payload->GetPlayer();
 		if (player)
 		{
 			player->GetLeaderInterfaceStatus()->GetInterface()->ResolveLoadForCreature();
@@ -372,7 +372,7 @@ void GameOSFile::WritePtr(GameThing* ptr)
 		if (ptr->GetSaveType())
 		{
 			index = SaveLoadPtrList.count;
-			LHLinkedNode<GSaveLoadPtr>* node = SaveLoadPtrList.GetStart();
+			LHLinkedNode<GSaveLoadPtr*>* node = SaveLoadPtrList.GetStart();
 			while (node)
 			{
 				if ((GameThing*)node->payload->ptr == ptr)
@@ -380,7 +380,7 @@ void GameOSFile::WritePtr(GameThing* ptr)
 					WriteIt(index);
 					return;
 				}
-				node = node->next;
+				node = node->next.Get();
 				--index;
 			}
 			SaveLoadPtrList.Add(new ("C:\\dev\\MP\\Black\\GameOSFile.cpp", 0x676) GSaveLoadPtr(ptr));
@@ -440,10 +440,10 @@ void GameOSFile::ReadPtr(GameThing** ptr)
 		}
 		else
 		{
-			LHLinkedNode<GSaveLoadPtr>* node = SaveLoadPtrList.GetStart();
+			LHLinkedNode<GSaveLoadPtr*>* node = SaveLoadPtrList.GetStart();
 			for (uint32_t remaining = SaveLoadPtrList.count - index; remaining; --remaining)
 			{
-				node = node->next;
+				node = node->next.Get();
 			}
 			*ptr = (GameThing*)node->payload->ptr;
 		}

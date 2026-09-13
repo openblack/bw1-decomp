@@ -18,10 +18,10 @@ class GameOSFile;
 class GFootpathNode : public GameThing
 {
 public:
-	uint8_t              field_0x14;
-	MapCoords            coords;
-	GFootpathNode*       next; /* 0x24 */
-	LHLinkedList<Living> followers;
+	uint8_t               field_0x14;
+	MapCoords             coords;
+	GFootpathNode*        next; /* 0x24 */
+	LHLinkedList<Living*> followers;
 
 	// Override methods
 
