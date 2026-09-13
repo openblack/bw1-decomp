@@ -28,7 +28,9 @@ class PhysicsObject;
 class DeadTree : public Rock
 {
 public:
-	uint8_t field_0x94[0xc];
+	// BW1W120 00511250 BW1M100 100c2310 DeadTree::Close(void)
+	static void Close();
+	uint8_t     field_0x94[0xc];
 
 	// Override methods
 
@@ -108,7 +110,7 @@ public:
 	// BW1W120 00511a10 BW1M100 100c1250 DeadTree::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00510e30 BW1M100 100c2e50 DeadTree::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00511200 BW1M100 100c2450 DeadTree::IsARootedObject(void)
 	virtual bool IsARootedObject();
 	// BW1W120 00511130 BW1M100 100c2640 DeadTree::GetCollideSoundType(void)

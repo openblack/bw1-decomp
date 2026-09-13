@@ -11,7 +11,7 @@ struct Point2D
 	// Constructors
 
 	// BW1W120 inlined BW1M100 inlined Point2D::Point2D(float, float)
-	Point2D(float x, float y);
+	Point2D(float x, float y) : x(x), y(y) {}
 	// BW1W120 inlined BW1M100 inlined Point2D::Point2D(long, long)
 	Point2D(int x, int y);
 

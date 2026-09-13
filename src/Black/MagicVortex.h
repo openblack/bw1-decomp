@@ -147,7 +147,7 @@ public:
 	// BW1W120 005fd8e0 BW1M100 103b8590 LandscapeVortexIn::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 005fd980 BW1M100 103b84a0 LandscapeVortexIn::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 };
 
 class LandscapeVortexOut : public LandscapeVortex

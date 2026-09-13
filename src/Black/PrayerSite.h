@@ -33,7 +33,7 @@ public:
 	// BW1W120 006707f0 BW1M100 inlined PrayerSite::GetMesh( const(void))
 	virtual MESH_LIST GetMesh();
 	// BW1W120 00670a10 BW1M100 inlined PrayerSite::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 };
 
 #endif /* BW1_DECOMP_PRAYER_SITE_INCLUDED_H */

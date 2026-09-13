@@ -202,7 +202,7 @@ public:
 	// BW1W120 006365f0 BW1M100 103d9010 Object::Create3DObject(void)
 	virtual void Create3DObject();
 	// BW1W120 00418c90 BW1M100 100540e0 Object::GetMapChild(MapCell const &)
-	virtual Object* GetMapChild(const MapCell* param_1);
+	virtual Object* GetMapChild(const MapCell& cell);
 	// BW1W120 00418cc0 BW1M100 10053b70 Object::SetMapChild(Object *, MapCell *)
 	virtual void SetMapChild(Object* child, MapCell* cell);
 	// BW1W120 00636740 BW1M100 1004ad80 Object::InsertMapObject(void)
@@ -543,7 +543,7 @@ public:
 	// BW1W120 00637470 BW1M100 103d7730 Object::HasSunk(void)
 	virtual bool32_t HasSunk();
 	// BW1W120 00638740 BW1M100 103d48a0 Object::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00638790 BW1M100 103d43b0 Object::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));
@@ -648,7 +648,7 @@ public:
 	// BW1W120 00637cc0 BW1M100 103d6210 Object::IsOnFire(void)
 	bool32_t IsOnFire();
 	// BW1W120 00638560 BW1M100 1005ba80 Object::GetMapChild(MapCoords const &)
-	Object* GetMapChild(const MapCoords* coord);
+	Object* GetMapChild(const MapCoords& coord);
 	// BW1W120 0063a810 BW1M100 103d04b0 Object::CreateSmokyStuff(long, float, LH3DColor)
 	bool32_t CreateSmokyStuff(long param_1, float param_2, LH3DColor param_3);
 };

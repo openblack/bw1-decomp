@@ -119,7 +119,7 @@ public:
 	// BW1W120 0052f590 BW1M100 100ddc50 MultiMapFixed::CreateBuildingSite(void)
 	virtual bool32_t CreateBuildingSite();
 	// BW1W120 0052e400 BW1M100 10033c30 MultiMapFixed::GetMapChild(MapCell const &)
-	virtual Object* GetMapChild(const MapCell* cell);
+	virtual Object* GetMapChild(const MapCell& cell);
 	// BW1W120 0052e420 BW1M100 100e0ec0 MultiMapFixed::SetMapChild(Object *, MapCell *)
 	virtual void SetMapChild(Object* child, MapCell* cell);
 	// BW1W120 0052e650 BW1M100 100e0690 MultiMapFixed::InsertMapObject(void)
@@ -149,7 +149,7 @@ public:
 	// BW1W120 0052f3d0 BW1M100 100de230 MultiMapFixed::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 0052f490 BW1M100 100dded0 MultiMapFixed::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0052ef10 BW1M100 100dee90 MultiMapFixed::SaveObject(LHOSFile &, MapCoords const &)
 	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 	// BW1W120 0052e490 BW1M100 100e0d80 MultiMapFixed::IsObjectFullyInMap(void)

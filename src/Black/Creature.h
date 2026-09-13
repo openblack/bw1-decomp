@@ -68,6 +68,10 @@ struct CreatureEmotionsForMusic
 class Creature : public Living
 {
 public:
+	// BW1W120 004e70c0 BW1M100 1026a8e0 Creature::Save3D(char*)
+	void Save3D(char* path);
+	// BW1W120 0047d830 BW1M100 101cf170 Creature::OnClearMap(void)
+	static void OnClearMap();
 	// BW1W120 00c5fcf8 BW1M100 10aa7af0 CreatureList__8Creature
 	static LHLinkedList<Creature*> CreatureList;
 
@@ -436,7 +440,7 @@ public:
 	// BW1W120 00479d10 BW1M100 101d6d70 Creature::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0047d4b0 BW1M100 101cf930 Creature::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0047d500 BW1M100 101cf7f0 Creature::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));

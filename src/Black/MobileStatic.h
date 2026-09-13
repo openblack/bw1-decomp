@@ -146,7 +146,7 @@ public:
 	// BW1W120 00609320 BW1M100 103bee30 MobileStatic::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00609010 BW1M100 103bf860 MobileStatic::CreatureMustAvoid(Creature *)
-	virtual bool CreatureMustAvoid(Creature* param_1);
+	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00608ac0 BW1M100 103c0450 MobileStatic::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));
@@ -166,6 +166,8 @@ public:
 class GBaseOnly : public Object
 {
 public:
+	// BW1W120 006094e0 BW1M100 103bea30 GBaseOnly::ReleaseAll(void)
+	static void ReleaseAll();
 	// Override methods
 
 	// BW1W120 0055d7d0 BW1M100 103be220 GBaseOnly::_dt(void)
