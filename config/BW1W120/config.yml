@@ -12,6 +12,13 @@ block_relocations:
   - source: 0x007DCA45
   - source: 0x007DDDA9
 
+# CMP EDX compares against PacketTimeHistory's one-past-end, not the next array.
+add_relocations:
+  - source: 0x0054CE1E
+    type: x86_abs32
+    target: '?PacketTimeHistory@GGame@@2PAHA'
+    addend: 0x28
+
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000
 linker_version: "6.0"

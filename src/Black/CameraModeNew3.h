@@ -134,6 +134,8 @@ public:
 
 	// Override methods
 
+	// BW1W120 0045a860 CameraModeNew3::CanPlayerGestureWhenCameraMoving(void)
+	virtual bool32_t CanPlayerGestureWhenCameraMoving();
 	// BW1W120 0045a960 BW1M100 1003a4f0 CameraModeNew3::Update(void)
 	virtual void Update();
 
