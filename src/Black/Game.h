@@ -3,6 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
+#include <stdio.h>
+#include <windows.h>
 
 #include <chlasm/Enum.h>                   /* For enum TRIBE_TYPE */
 #include <chlasm/LHKeyBoard.h>             /* For enum LH_KEY */
@@ -65,6 +67,7 @@ struct LHFilePath;
 struct Settings;
 struct Temple;
 class Town;
+class LHVideoPlayer;
 
 class GGame : public GameThing
 {
@@ -82,10 +85,29 @@ public:
 	static uint32_t MemoryState;
 	// BW1W120 00d0197c. TODO: Descriptive name and provisional scope; no writer found in either target.
 	static uint32_t RepairMissingMothers;
+	// TODO: Descriptive names/scope for game lifecycle globals, confirmed by constructor and teardown.
+	// BW1W120 00cd3af8
+	static CRITICAL_SECTION VideoTimerSection;
+	// BW1W120 00d01834
+	static bool SavingMap;
+	// BW1W120 00bec1f4
+	static bool SystemExit;
+	// Descriptive shared scheduler names; original spellings are unrecovered.
+	// BW1W120 00d0143c
+	static int PacketTimeHistory[10];
+	// BW1W120 00d01464
+	static unsigned long IncomingQueueHistory[100];
+	// BW1W120 00d01978
+	static uint32_t NetworkTurnsThisFrame;
+	// BW1W120 00bec280
+	static bool RenderLoopEnabled;
 
 	uint32_t               field_0x14;
 	GPlayer                players[0x8];
-	uint8_t                field_0x5318[0x664];
+	uint8_t                field_0x5318[0x660];
+	uint8_t                field_0x5978;
+	uint8_t                field_0x5979;
+	uint8_t                field_0x597a[2];
 	StatsDatabase          stats_database;    /* 0x597c */
 	CreatureDatabase       creature_database; /* 0x598c */
 	bool                   field_0x599c;
@@ -115,16 +137,8 @@ public:
 	uint8_t                field_0x205a5d;
 	uint8_t                field_0x205a5e;
 	uint8_t                field_0x205a5f;
-	uint8_t                field_0x205a60;
-	uint8_t                field_0x205a61;
-	uint8_t                field_0x205a62;
-	uint8_t                field_0x205a63;
-	uint32_t               field_0x205a64;
-	MapCoords              Coords0x205a68;
-	MapCoords              Coords0x205a74;
-	uint8_t                field_0x205a80[0xf0];
+	GPacket                Packet;
 	GNetwork               network; /* 0x205b70 */
-	uint8_t                field_0x205b84[0x1c];
 	uint32_t               field_0x205ba0;
 	GlobalGameLists        GameLists; /* 0x205ba4 */
 	uint32_t               field_0x205d34;
@@ -133,7 +147,9 @@ public:
 	int                    field_0x205d40;
 	uint32_t               field_0x205d44;
 	int                    field_0x205d48;
-	uint8_t                field_0x205d4c[0xc];
+	uint32_t               field_0x205d4c;
+	uint32_t               field_0x205d50;
+	uint32_t               field_0x205d54;
 	int                    field_0x205d58;
 	uint32_t               field_0x205d5c;
 	uint32_t               field_0x205d60;
@@ -161,25 +177,37 @@ public:
 	MapCoords              StartCameraCoords;
 	uint8_t                field_0x2500a8[0xc8];
 	char*                  field_0x250170;
-	uint32_t               field_0x250174;
+	uint8_t                field_0x250174;
 	Config*                config;
 	uint32_t               Enum0x25017c; // TODO: Original enum identity is unrecovered; serialized as four bytes.
 	GAME_MODE              GameMode;     /* 0x250180 */
-	uint8_t                field_0x250184[0x120];
+	uint32_t               field_0x250184;
+	LHVideoPlayer*         VideoPlayer;
+	uint32_t               field_0x25018c;
+	uint32_t               field_0x250190;
+	uint32_t               field_0x250194;
+	uint8_t                field_0x250198[0x10c];
 	uint32_t               field_0x2502a4; /* Set before an automatic save. */
 	GKeyBuffer             key_buffer;     /* 0x2502a8 */
 	CMouse                 Mouse;          /* 0x2502b8 */
 	uint32_t               field_0x2502bc;
 	GCamera*               camera; /* 0x2502c0 */
 	uint32_t               field_0x2502c4;
-	uint32_t               field_0x2502c8;
+	uint8_t                field_0x2502c8;
+	uint8_t                field_0x2502c9[3];
 	uint8_t                field_0x2502cc;
 	uint8_t                field_0x2502cd;
 	uint8_t                field_0x2502ce;
 	uint8_t                field_0x2502cf;
-	uint8_t                field_0x2502d0[0x14];
-	LHFilePath*            field_0x2502e4;
-	uint8_t                field_0x2502e8[0x18];
+	FILE*                  field_0x2502d0;
+	FILE*                  field_0x2502d4;
+	FILE*                  field_0x2502d8;
+	FILE*                  field_0x2502dc;
+	FILE*                  field_0x2502e0;
+	FILE*                  field_0x2502e4;
+	uint32_t               field_0x2502e8;
+	uint32_t               field_0x2502ec;
+	uint8_t                field_0x2502f0[0x10];
 	ControlMap*            control_map; /* 0x250300 */
 	DialogBoxOptions*      dialog_box_options;
 	DialogBoxKeyBinding*   dialog_box_key_binding;
@@ -221,6 +249,9 @@ public:
 
 	// BW1W120 0054b240 BW1M100 104fda10 GGame::GGame(void)
 	GGame();
+	// BW1W120 0054bba0 (scalar deleting destructor)
+	// Allocated resources are owned by ToBeDeleted; only embedded members are destroyed here.
+	virtual ~GGame() {}
 
 	// Non-virtual methods
 
@@ -239,13 +270,21 @@ public:
 	// BW1W120 0054c420 BW1M100 10083f50 GGame::ProcessBufferedKeys(void)
 	void ProcessBufferedKeys();
 	// BW1W120 0054c4a0 BW1M100 10029760 GGame::LocalTimerSaysDoATurn(void)
-	bool LocalTimerSaysDoATurn();
+	bool32_t LocalTimerSaysDoATurn();
 	// BW1W120 0054cc30 BW1M100 10029320 GGame::ProcessNetworkPackets(void)
 	void ProcessNetworkPackets();
 	// BW1W120 0054ced0 BW1M100 100dc070 GGame::DoNetworkStart(void)
 	void DoNetworkStart();
 	// BW1W120 0054cf20 BW1M100 100e23b0 GGame::Loop(void)
 	void Loop();
+	// BW1W120 0054d800 BW1M100 1048f9d0 GGame::FlipScreen(void)
+	void FlipScreen();
+	// BW1W120 0054d7f0. Original name unrecovered; increments rendered-frame count.
+	void fn_0054D7F0();
+	// BW1W120 00555400. Original name unrecovered; selects online game mode.
+	void fn_00555400();
+	// BW1W120 005525e0. Original name unrecovered; flushes packed network data.
+	void fn_005525E0();
 	// BW1W120 0054d620 BW1M100 1001e2f0 GGame::ProcessOneGameTurn(void)
 	void ProcessOneGameTurn();
 	// BW1W120 0054d820 BW1M100 10083dd0 GGame::ProcessGameCode(void)
@@ -267,8 +306,8 @@ public:
 	// BW1W120 0054f421 BW1M100 inlined GGame::InitInner(void)
 	bool InitInner();
 	// BW1W120 0054ff80 BW1M100 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
-	void KeyHandler(unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4,
-	                void* param_5);
+	static void KeyHandler(unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4,
+	                       void* param_5);
 	// BW1W120 0054ffe0 BW1M100 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
 	bool MouseHandler(void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4);
 	// BW1W120 00550080 BW1M100 101c6850 GGame::UnfinishInitialisation(void)

@@ -49,7 +49,7 @@ public:
 	// Override methods
 
 	// BW1W120 0054be50 BW1M100 104e7bd0 GPlayerInfo::_dt(void)
-	virtual ~GPlayerInfo();
+	virtual ~GPlayerInfo() {}
 	// BW1W120 0054b830 BW1M100 1058eb00 GPlayerInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };

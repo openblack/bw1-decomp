@@ -21,7 +21,7 @@ enum LH_OPERATING_MODE
 // Forward Declares
 
 struct LHMPServerStartInfo;
-struct LHNetEvent;
+class LHNetEvent;
 
 struct LHLobby
 {

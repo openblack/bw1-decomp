@@ -19,11 +19,12 @@ enum LH_NETEVENT_TYPE
 
 // Forward Declares
 
-struct LHNetEvent;
+class LHNetEvent;
 struct LHPacket;
 
-struct LHNetEvent
+class LHNetEvent
 {
+public:
 	LHPacket*       packet; /* 0x0 */
 	int             field_0x4;
 	LHTransportInfo transport_info;

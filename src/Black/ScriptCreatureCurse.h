@@ -13,6 +13,13 @@ struct ScriptCreatureCurse
 	float strength;
 	float alignment;
 
+	ScriptCreatureCurse()
+	{
+		alignment = 0.0f;
+		strength = 0.0f;
+		height = 0.0f;
+	}
+
 	// Non-virtual methods
 
 	// BW1W120 006f6190 BW1M100 105e86b0 ScriptCreatureCurse::Init(Creature *)

@@ -46,8 +46,6 @@ GBaseInfo* CreatureDesireDependency::GetBaseInfo(uint32_t& num_infos)
 // BW1W120 004dbff0 BW1M100 1025b030 CreatureDesires::CreatureDesires(Creature *, CreatureInfo const *)
 CreatureDesires::CreatureDesires(Creature* creature, const CreatureInfo* info)
 {
-	for (int i = 0; i < NUM_CREATURE_DESIRES; i++)
-		SourceLists[i] = LHLinkedList<CreatureDesireSource>();
 	Initialise(creature, info);
 }
 

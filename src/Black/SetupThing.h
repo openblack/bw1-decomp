@@ -44,6 +44,8 @@ struct LH3DMaterial;
 
 struct SetupThing
 {
+	// BW1W120 009c8078. Descriptive name; original signed alpha word.
+	static int     DrawAlpha;
 	LH3DMaterial*  UiShadowMaterial; /* 0x0 */
 	uint8_t        field_0x4[0x34];
 	SetupRect      SetupRect_00c4ccb8; /* 0x38 */
@@ -60,6 +62,8 @@ struct SetupThing
 	char16_t       WCHAR_00c4cd30[0x4]; /* 0xb0 */
 
 	// Static methods
+	// BW1W120 00413960 BW1M100 1036d6d0 SetupThing::DrawBg(int, int, int, int, int, int, int)
+	static void DrawBg(int x_min, int y_min, int x_max, int y_max, int color, int opaque, int top_border);
 
 	// BW1W120 00411690 BW1M100 10135530 SetupThing::GetTextHeight(int, int, int, int, int, bool, wchar_t *, int)
 	static float GetTextHeight(int param_1, int param_2, int param_3, int param_4, int param_5, bool param_6,
@@ -94,8 +98,8 @@ struct SetupThing
 	static void DrawQuad(int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, LH3DColor color_1,
 	                     LH3DColor color_2, LH3DColor color_3, LH3DColor color_4, uint32_t use_alpha, uint32_t adjust);
 	// BW1W120 004132c0 BW1M100 1035b610 SetupThing::DrawBox(int, int, int, int, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long)
-	static void DrawBox(int x_min, int y_min, int x_max, int y_max, LH3DColor color_1, LH3DColor color_2,
-	                    LH3DColor color_3, LH3DColor color_4, uint32_t use_alpha, uint32_t adjust);
+	static void DrawBox(int x_min, int y_min, int x_max, int y_max, unsigned long color_1, unsigned long color_2,
+	                    unsigned long color_3, unsigned long color_4, unsigned long use_alpha, unsigned long adjust);
 	// BW1W120 00413360 BW1M100 1013c530 SetupThing::DrawTab(int, int, int, int, int, int, int, wchar_t *, int, int)
 	static void DrawTab(int x_min, int y_min, int x_max, int y_max, bool selected, bool first_in_row, bool last_in_row,
 	                    const char16_t* label, LH3DColor color, bool no_blend);
@@ -103,5 +107,8 @@ struct SetupThing
 	static void DrawBevBox(int x_min, int y_min, int x_max, int y_max, uint32_t style, uint32_t outline_thickness,
 	                       uint32_t horizontal_outline, LH3DColor color);
 };
+
+// BW1W120 00407a20 BW1M100 105133e0
+int GetBigTextSize();
 
 #endif /* BW1_DECOMP_SETUP_THING_INCLUDED_H */

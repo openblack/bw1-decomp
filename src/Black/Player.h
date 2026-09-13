@@ -95,6 +95,9 @@ public:
 	uint32_t         field_0xa58;
 	uint32_t         field_0xa5c;
 
+	// BW1W120 00648da0 GPlayer::GPlayer(void)
+	GPlayer();
+
 	// Override methods
 
 	// BW1W120 00648eb0 BW1M100 10497380 GPlayer::_dt(void)
@@ -124,6 +127,8 @@ public:
 	static GPlayer* GetPlayerFromText(const char* str);
 
 	// Non-virtual methods
+	// BW1W120 0064d280 BW1M100 10084180 GPlayer::SavePlayerAlignment(unsigned long)
+	void SavePlayerAlignment(uint32_t game_turn);
 
 	// BW1W120 00649190 BW1M100 10497020 GPlayer::Init(PLAYER_TYPE, unsigned char, wchar_t *, unsigned char)
 	void Init(PLAYER_TYPE type, uint8_t player_number, char16_t* param_3, unsigned char param_4);

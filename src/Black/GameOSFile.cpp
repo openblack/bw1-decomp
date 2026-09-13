@@ -74,10 +74,6 @@ void DoSaveProblemRequestor(char16_t* message);
 // BW1W120 00557ff0 BW1M100 1030fde0 GameOSFile::GameOSFile(void)
 GameOSFile::GameOSFile()
 {
-	SaveLoadPtrList.count = 0;
-	SaveLoadPtrList.head = NULL;
-	GameThingList.count = 0;
-	GameThingList.head = NULL;
 	Checksum = 0;
 	field_0x10c = 0;
 }

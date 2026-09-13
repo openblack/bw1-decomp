@@ -12,6 +12,12 @@ struct LHTimer
 	float    SpeedUpFactor;
 	float    SpeedUpFactor2;
 
+	LHTimer() : SpeedUpFactor(1.0f), SpeedUpFactor2(0.0f)
+	{
+		Reset(0);
+		Stop();
+	}
+
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M100 10001570 LHTimer::Running(void)

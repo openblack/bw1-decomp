@@ -6,16 +6,20 @@
 
 struct GestureSystemResult
 {
-	uint8_t field_0x0;
+	uint8_t  field_0x0;
+	uint32_t Reversed;
+	uint8_t  StartSample;
+	uint8_t  EndSample;
+	uint8_t  DataIndex;
 
 	// Constructors
 
-	// BW1W120 0054bb90 BW1M100 inlined GestureSystemResult::GestureSystemResult(void)
-	GestureSystemResult();
+	// BW1W120 inlined BW1M100 inlined GestureSystemResult::GestureSystemResult(void)
+	GestureSystemResult() { SetToZero(); }
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 100938a0 GestureSystemResult::SetToZero(void)
+	// BW1W120 0054bb90 BW1M100 100938a0 GestureSystemResult::SetToZero(void)
 	void SetToZero();
 };
 

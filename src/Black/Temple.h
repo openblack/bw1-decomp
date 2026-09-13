@@ -35,7 +35,7 @@ struct Temple
 	// Static methods
 
 	// BW1W120 00794a30 BW1M100 105362a0 Temple::ProcessGameTurn(void)
-	static void ProcessGameTurn();
+	void ProcessGameTurn();
 
 	// Constructors
 

@@ -18,8 +18,9 @@ public:
 template <typename T> class LHLinkedList
 {
 public:
-	LHLinkedNode<T>*        head;
-	uint32_t                count;
+	LHLinkedNode<T>* head;
+	uint32_t         count;
+	LHLinkedList();
 	inline LHLinkedNode<T>* GetStart() { return head; }
 	inline bool             Add(T* val)
 	{
@@ -89,6 +90,12 @@ public:
 
 	int AddToEnd(T* val);
 };
+
+template <typename T> LHLinkedList<T>::LHLinkedList()
+{
+	count = 0;
+	head = NULL;
+}
 
 template <typename T> int LHLinkedList<T>::AddToEnd(T* val)
 {

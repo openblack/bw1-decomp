@@ -8,17 +8,26 @@
 
 #include "LHNetEvent.h"      /* For enum LH_NETEVENT_TYPE */
 #include "LHTransportInfo.h" /* For enum LH_TRANSPORT_TYPE */
+#include "LHMultiplayerExport.h"
 
 // Forward Declares
 
-struct LHNetEvent;
+class LHNetEvent;
 struct LHNetUser;
 class LHTransport;
 class LHTransportInfo;
 
 class LHConnection
 {
+private:
+	// Original DLL vtable order, 100502cc. The vptr precedes field_0x4.
+	virtual LH_MULTIPLAYER_API LH_RETURN ProcessEvent(LHNetEvent* event);
+
 public:
+	virtual LH_MULTIPLAYER_API ~LHConnection();
+	virtual LH_MULTIPLAYER_API void        Close();
+	virtual LH_MULTIPLAYER_API LHNetEvent* Read(unsigned long timeout, LH_NETEVENT_TYPE type);
+
 	int          field_0x4;
 	uint8_t      field_0x8[0xc];
 	uint32_t     field_0x14;
@@ -34,13 +43,13 @@ public:
 	// BW1W120 100046e0 BW1M100 100df6d0 LHConnection::GetTransportType(void)
 	LH_TRANSPORT_TYPE GetTransportType();
 	// BW1W120 10004760 BW1M100 1000f630 LHConnection::GetIncomingEventQSize(void)
-	uint32_t GetIncomingEventQSize();
+	LH_MULTIPLAYER_API unsigned long GetIncomingEventQSize();
 	// BW1W120 100047f0 BW1M100 100df100 LHConnection::RawRead(unsigned long, LH_NETEVENT_TYPE)
 	LHNetEvent* RawRead(uint32_t param_1, LH_NETEVENT_TYPE type);
 	// BW1W120 10004840 BW1M100 100df070 LHConnection::RawPeek(unsigned long, LH_NETEVENT_TYPE)
-	LHNetEvent* RawPeek(uint32_t param_1, LH_NETEVENT_TYPE param_2);
+	LH_MULTIPLAYER_API LHNetEvent* RawPeek(unsigned long param_1, LH_NETEVENT_TYPE param_2);
 	// BW1W120 10004870 BW1M100 100095c0 LHConnection::Peek(ulong)
-	LHNetEvent* Peek(uint32_t param_1);
+	LH_MULTIPLAYER_API LHNetEvent* Peek(unsigned long param_1);
 	// BW1W120 100048b0 BW1M100 100ded90 LHConnection::BaseProcessEvent(LHNetEvent *)
 	LH_RETURN BaseProcessEvent(LHNetEvent* net_event);
 	// BW1W120 10004d70 BW1M100 100de0c0 LHConnection::Write(LHNetEvent *)
@@ -56,13 +65,12 @@ public:
 	// BW1W120 100051b0 BW1M100 100dd710 LHConnection::ClearTransport(void)
 	void ClearTransport();
 	// BW1W120 10005270 BW1M100 10010210 LHConnection::IsDisconnected(void)
-	bool IsDisconnected();
+	LH_MULTIPLAYER_API int IsDisconnected();
 	// BW1W120 100052d0 BW1M100 100dd3b0 LHConnection::CheckForEvents(void)
-	bool CheckForEvents();
+	LH_MULTIPLAYER_API int CheckForEvents();
 	// BW1W120 10005330 BW1M100 100dd1e0 LHConnection::GetProtocolVersion(void)
 	uint32_t GetProtocolVersion();
-	// BW1W120 100df100 BW1M100 100047b0 LHConnection::Read(unsigned long, LH_NETEVENT_TYPE)
-	LHNetEvent* Read(uint32_t param_1, LH_NETEVENT_TYPE type);
 };
+static_assert(sizeof(LHConnection) == 0x90, "LHConnection size is incorrect");
 
 #endif /* BW1_DECOMP_LH_CONNECTION_INCLUDED_H */

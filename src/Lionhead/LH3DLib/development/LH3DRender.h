@@ -66,12 +66,17 @@ struct LH3DRender
 	static void SetD3DTillingOff(uint32_t index);
 	// BW1W120 0082fd30 BW1M100 100a1d90 LH3DRender::CreateMaterial(LH3DMaterial::RenderMode, LH3DTexture *)
 	static LH3DMaterial* CreateMaterial(LH3DMaterial::RenderMode render_mode, LH3DTexture* texture);
-	// BW1W120 0082f2c0 BW1M100 100a27d0 LH3DRender::RegisterFinishFrameCallback(unsigned long, bool, void (__cdecl *)(void *), void *)
-	void RegisterFinishFrameCallback(unsigned long param_1, bool param_2, void(__cdecl* param_3)(void* param_1),
-	                                 void* param_4);
+	// BW1W120 0082f2c0 BW1M100 100a27d0. Windows callbacks pop their one argument.
+	static void RegisterFinishFrameCallback(unsigned long param_1, bool                    param_2,
+	                                        void(__stdcall* param_3)(void* param_1), void* param_4);
+	// BW1W120 0082f3b0
+	static void RemoveFinishFrameCallback(void(__stdcall* callback)(void*), void* context);
 	// BW1W120 0082f460 BW1M100 1003699c LH3DRender::FinishFrame(void)
-	void FinishFrame();
+	static void FinishFrame();
 };
+
+// BW1W120 00c386d0. Original free symbol imported by the Mac executable.
+extern bool g_enable_callbacks;
 
 // BW1W120 00c386e0 BW1M100 LH Combined Release Shared 001ccfe0.
 // Original free global, updated by FrameRate(), not a member of LH3DRender.

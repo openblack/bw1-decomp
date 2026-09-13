@@ -300,7 +300,7 @@ void ClearKeyboardState()
 // BW1W120 007dcaf0 process a raw WM_KEY* message: update the key-down state and the
 // ctrl/alt/shift modifier bits, feed string-collection / the key-event ring, and invoke
 // the registered key callback. `key_data` is the WM_KEY lParam (scan code + flags).
-int LHKeyboard::ProcessKeyboard(unsigned int msg, int key_data)
+void LHKeyboard::ProcessKeyboard(unsigned int msg, int key_data)
 {
 	unsigned char scancode = (unsigned char)(key_data >> 16);
 	if (key_data & LH_KEY_DATA_EXTENDED)
@@ -358,8 +358,8 @@ int LHKeyboard::ProcessKeyboard(unsigned int msg, int key_data)
 invoke:
 	LHSys::TheSystem.LastKey = CurrentKey;
 	if (Callback)
-		return Callback(msg, reported, ModifierFlags, ((unsigned int)key_data >> 30) & 1, CallbackContext);
-	return (int)Callback;
+		Callback((unsigned short)msg, (LH_KEY)reported, ModifierFlags,
+		         (unsigned short)(((unsigned int)key_data >> 30) & 1), CallbackContext);
 }
 
 // BW1W120 007dcc90 feed a key into the active string-collection buffer.

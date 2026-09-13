@@ -23,6 +23,8 @@ struct PathCreator
 
 	// BW1W120 0078e8c0 BW1M100 1017a270 PathCreator::PathCreator(void)
 	PathCreator();
+	// BW1W120 0078e9a0 PathCreator::~PathCreator(void)
+	~PathCreator();
 
 	// Non-virtual methods
 
