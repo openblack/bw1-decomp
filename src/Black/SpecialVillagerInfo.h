@@ -13,15 +13,17 @@ class Base;
 class GSpecialVillagerInfo : public GBaseInfo
 {
 public:
-	char     name[0x30]; /* 0x10 */
-	uint32_t field_0x40;
-	uint32_t field_0x44;
-	uint32_t field_0x48;
-	uint32_t field_0x4c;
-	uint32_t field_0x50;
-	int      field_0x54;
-	uint32_t field_0x58;
-	uint32_t field_0x5c;
+	// BW1W120 0071f930 BW1M100 10146560 GSpecialVillagerInfo::OnClearMap(void)
+	static void OnClearMap();
+	char        name[0x30]; /* 0x10 */
+	uint32_t    field_0x40;
+	uint32_t    field_0x44;
+	uint32_t    field_0x48;
+	uint32_t    field_0x4c;
+	uint32_t    field_0x50;
+	int         field_0x54;
+	uint32_t    field_0x58;
+	uint32_t    field_0x5c;
 
 	// Override methods
 

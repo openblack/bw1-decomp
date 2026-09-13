@@ -24,6 +24,8 @@ struct MapCoords;
 class Forest : public Container
 {
 public:
+	// BW1W120 0053b2f0 BW1M100 100ef810 Forest::OnClearMap(void)
+	static void OnClearMap();
 	// BW1W120 00539d70 BW1M100 10025440 Forest::ProcessForests(void)
 	static void ProcessForests();
 

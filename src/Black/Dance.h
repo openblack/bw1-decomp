@@ -27,7 +27,9 @@ public:
 	// BW1W120 0050bb60 BW1M100 1008dc50 Dance::ProcessDances(void)
 	static void ProcessDances();
 
-	uint8_t field_0xe8[0x44];
+	uint32_t field_0xe8;
+	Dance*   Next; /* 0xec */
+	uint8_t  field_0xf0[0x3c];
 
 	// Override methods
 

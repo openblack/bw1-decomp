@@ -31,6 +31,8 @@ class CHand;
 class CHand : public Morphable
 {
 public:
+	// BW1W120 0046e8c0 BW1M100 101c5c70 CHand::OnClearMap(void)
+	void OnClearMap();
 	struct State
 	{
 		struct Named

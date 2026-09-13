@@ -20,6 +20,8 @@ struct MapCoords;
 class GCamera : public GameThingWithPos
 {
 public:
+	// BW1W120 00442fe0 BW1M100 10199360 GCamera::ClearCameraStack(void)
+	void        ClearCameraStack();
 	CameraMode* modes[0xc];       /* 0x28 */
 	int         ModeCurrentIndex; /* 0x58 */
 	LHPoint     pos;

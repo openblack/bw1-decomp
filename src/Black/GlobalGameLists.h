@@ -58,6 +58,8 @@
 class GlobalGameLists : public Base
 {
 public:
+	// BW1W120 00591520 BW1M100 10334690 GlobalGameLists::ClearMap(void)
+	void ClearMap();
 	GlobalGameLists() {}
 	LHListHead<Ball>                balls;   /* 0x8 */
 	LHListHead<Forest>              forests; /* 0x10 */

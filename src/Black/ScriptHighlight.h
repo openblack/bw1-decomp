@@ -26,7 +26,9 @@ struct RPHolder;
 class ScriptHighlight : public SingleMapFixed
 {
 public:
-	uint8_t field_0x5c[0x30];
+	// BW1W120 007096e0 BW1M100 104fc430 ScriptHighlight::OnClearMap(void)
+	static void OnClearMap();
+	uint8_t     field_0x5c[0x30];
 
 	// Override methods
 

@@ -30,6 +30,8 @@ struct TempleChallenge
 class ChallengeRoom : public PictureRoomBase
 {
 public:
+	// BW1W120 00784de0 BW1M100 101ab830 ChallengeRoom::ChallengeClear(void)
+	static void ChallengeClear();
 	// Static methods
 
 	// BW1W120 00784b30 BW1M100 101abfe0 ChallengeRoom::CreateChallengeFiles(char*)

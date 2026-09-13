@@ -18,6 +18,10 @@ struct LH_SamplePlayOptions;
 class GAudio : public GameThing
 {
 public:
+	// BW1W120 004291b0 BW1M100 1017dd30 GAudio::ReleaseAllThingMusicInfo(void)
+	void ReleaseAllThingMusicInfo();
+	// BW1W120 00426ca0 BW1M100 1017b470 GAudio::Reset(void)
+	void          Reset();
 	uint8_t       field_0x14[0x394];
 	LH_AudioBank* AudioBanks[0x2]; /* 0x3a8 */
 	uint8_t       field_0x3b0[0x24];

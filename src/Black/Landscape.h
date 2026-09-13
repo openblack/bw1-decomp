@@ -29,6 +29,10 @@ struct GLandscape
 	static Object* DrawObjects[3000];
 	// BW1W120 00d20198
 	static int DrawObjectCount;
+	// BW1W120 00bf358c. Descriptive name; decremented when rebuilding the draw list.
+	static int DrawListRebuildCount;
+	// BW1W120 005e5280 BW1M100 1037a310 GLandscape::Close(void)
+	void Close();
 
 	LH3DTexture*  texture; /* 0x0 */
 	LH3DMaterial* material;

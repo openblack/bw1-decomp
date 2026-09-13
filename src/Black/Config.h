@@ -11,6 +11,9 @@ struct Config
 	LHOSFile file; /* 0x0 */
 	uint8_t  field_0x8[0x104];
 	int      field_0x10c;
+	~Config() { CloseDown(); }
+	// BW1W120 0046b750 BW1M100 Config::CloseDown(void)
+	void CloseDown();
 
 	// Non-virtual methods
 
