@@ -4,6 +4,11 @@
 class GLandAlignement
 {
 public:
+	// Windows uses no instance: Open's option is caller-cleaned on the stack; results are full EAX.
+	// BW1W120 005e1d10 GLandAlignement::Open(unsigned int)
+	static unsigned int Open(unsigned int options);
+	// BW1W120 005e1db0
+	static unsigned int Close();
 	// BW1W120 00bf3380. TODO: Original member name and data split ownership are unrecovered.
 	static float VisualTime;
 	static void  DrawSky(); // 005e2160

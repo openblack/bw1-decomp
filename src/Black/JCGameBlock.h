@@ -20,6 +20,9 @@ struct GameBlock
 	Object*     LastRemoved; /* 0x10 */
 
 	// Static methods
+	// BW1W120 005ddc00 / 005ddc90. Descriptive names for grid creation/release; no instance argument.
+	static void Init();
+	static void Release();
 
 	// BW1W120 005ddce0 BW1M100 10054520 GameBlock::Insert(Object *, MapCell *)
 	static void Insert(Object* param_1, MapCell* param_2);
