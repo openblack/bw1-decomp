@@ -12,6 +12,17 @@ public:
 	TEXTJUSTIFY text_justify;    /* 0x23c */
 	int         DisplayTextSize; /* 0x240 */
 
+	// BW1W120 inlined in frontend and FrontEndSetupGame constructors.
+	// BW1M100 traceback: __ct__15SetupStaticTextFiiiiiPw11TEXTJUSTIFY.
+	SetupStaticText(int id, int x, int y, int width, int height, const char16_t* label,
+	                TEXTJUSTIFY justify = TEXTJUSTIFY_LEFT)
+		: SetupControl(id, x, y, width, height, label)
+	{
+		text_justify = justify;
+		field_0x22a = false;
+		DisplayTextSize = 0;
+	}
+
 	// Override methods
 
 	// BW1W120 00409430 BW1M100 105436e0 SetupStaticText::Draw(bool, bool)
@@ -19,5 +30,7 @@ public:
 	// BW1W120 00411670 BW1M100 100cb300 SetupStaticText::~SetupStaticText(void)
 	virtual ~SetupStaticText();
 };
+
+static_assert(sizeof(SetupStaticText) == 0x244, "SetupStaticText size is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_STATIC_TEXT_INCLUDED_H */

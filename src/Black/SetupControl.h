@@ -3,7 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
-#include <uchar.h>  /* For char16_t */
+#include <stddef.h>
+#include <uchar.h> /* For char16_t */
 
 #include <Lionhead/LHLib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
 
@@ -34,12 +35,20 @@ public:
 
 	// Override methods
 
+	// MSVC emits new virtual overloads in reverse declaration order. Target slots
+	// are SetToolTip(unsigned long) at +0x00, SetToolTip(text) at +0x04.
+	// BW1W120 004092f0 BW1M100 100c4fd0 SetupControl::SetToolTip(wchar_t *)
+	virtual void SetToolTip(const char16_t* tooltip);
+	// BW1W120 00409210 BW1M100 1057a320 SetupControl::SetToolTip(unsigned long)
+	virtual void SetToolTip(uint32_t tooltip_id);
 	// BW1W120 00409300 BW1M100 105a3830 SetupControl::Hide(bool)
 	virtual void Hide(bool hidden);
 	// BW1W120 00409180 BW1M100 1032c7e0 SetupControl::SetFocus(bool)
 	virtual void SetFocus(bool focus);
 	// BW1W120 00409310 BW1M100 10310540 SetupControl::HitTest(int, int)
 	virtual bool HitTest(int x, int y);
+	// BW1W120 vtable +0x14 is __purecall.
+	virtual void Draw(bool hovered, bool selected) = 0;
 	// BW1W120 00409340 BW1M100 inlined SetupControl::Drag(int, int)
 	virtual void Drag(int x, int y);
 	// BW1W120 00409350 BW1M100 100a6190 SetupControl::MouseDown(int, int, bool)
@@ -64,10 +73,9 @@ public:
 
 	// BW1W120 inlined BW1M100 inlined SetupControl::GetTextSize(void)
 	int GetTextSize();
-	// BW1W120 00409210 BW1M100 1057a320 SetupControl::SetToolTip(unsigned long)
-	void SetToolTip(uint32_t tooltip_id);
-	// BW1W120 004092f0 BW1M100 100c4fd0 SetupControl::SetToolTip(wchar_t *)
-	void SetToolTip(const char16_t* tooltip);
 };
+
+static_assert(sizeof(SetupControl) == 0x23c, "SetupControl size is incorrect");
+static_assert(offsetof(SetupControl, next) == 0x230, "SetupControl list offset is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_CONTROL_INCLUDED_H */

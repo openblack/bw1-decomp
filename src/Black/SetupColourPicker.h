@@ -18,8 +18,8 @@ class SetupColourPicker : public SetupButton
 public:
 	LH3DColor     Color0x244;
 	LH3DMaterial* material;
-	bool          brightness_slider;
-	float         SliderPosition; /* 0x250 */
+	int           brightness_slider; /* 0x24c: constructor copies the full argument word */
+	float         SliderPosition;    /* 0x250 */
 	LH3DColor     color;
 
 	// Override methods
@@ -42,7 +42,9 @@ public:
 	// Constructors
 
 	// BW1W120 00410ac0 BW1M100 103c6130 SetupColourPicker::SetupColourPicker(int, int, int, int, int, int, LH3DMaterial *)
-	SetupColourPicker(int id, int x, int y, int width, int height, bool brightness_slider, LH3DMaterial* material);
+	SetupColourPicker(int id, int x, int y, int width, int height, int brightness_slider, LH3DMaterial* material);
 };
+
+static_assert(sizeof(SetupColourPicker) == 0x258, "SetupColourPicker size is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_COLOUR_PICKER_INCLUDED_H */

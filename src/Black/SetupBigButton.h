@@ -18,7 +18,7 @@ class SetupControl;
 class SetupBigButton : public SetupButton
 {
 public:
-	uint32_t  text_position; /* 0x244 */
+	int       text_position; /* 0x244 */
 	BBSTYLE   style;
 	SetupRect InnerRect;
 
@@ -36,7 +36,9 @@ public:
 	// Constructors
 
 	// BW1W120 0040d260 BW1M100 100fd210 SetupBigButton::SetupBigButton(int, int, int, wchar_t *, int, int, int)
-	SetupBigButton(int id, int x, int y, const char16_t* label, int size, uint32_t text_position, BBSTYLE style);
+	SetupBigButton(int id, int x, int y, const char16_t* label, int size, int text_position, int style);
 };
+
+static_assert(sizeof(SetupBigButton) == 0x25c, "SetupBigButton size is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_BIG_BUTTON_INCLUDED_H */
