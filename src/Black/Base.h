@@ -63,6 +63,9 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00436a70 BW1M100 Base::GetIndexOffset(void) const
+	// Returns the heap-relative byte offset in EAX; Config passes it as an unsigned packet identifier.
+	uint32_t GetIndexOffset() const;
 	// BW1W120 00436b20 BW1M100 10001480 Base::SetInfo(BaseInfo*) const
 	void SetInfo(BaseInfo* info);
 };

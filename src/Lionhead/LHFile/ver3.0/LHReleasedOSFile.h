@@ -14,8 +14,8 @@ public:
 
 	// Override methods
 
-	// BW1W120 0042fd40 BW1M100 1012d3f0 LHReleasedOSFile::~LHReleasedOSFile(void)
-	virtual ~LHReleasedOSFile() {}
+	// BW1W120 0042fd40 BW1M100 1012d3f0: implicitly generated virtual destructor.
+	// The original directly calls LHOSFile's destructor without resetting the derived vtable.
 	// BW1W120 007bc7e0 BW1M100 10164a30 LHReleasedOSFile::Open(const char*, LH_FILE_MODE)
 	virtual LH_FILE_RESULT Open(const char* path, LH_FILE_MODE mode);
 

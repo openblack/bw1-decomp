@@ -375,15 +375,15 @@ Black/citadelpeople.cpp:
 Black/Collide.cpp:
 	.text       start:0x0046A840 end:0x0046AE80
 	.CRT$XCU    start:0x009C62DC end:0x009C62E4 align:4
-	.data       start:0x009CEB8C end:0x009CEBB0
-	.bss        start:0x00C5E494 end:0x00C5E5CC
+	.data       start:0x009CEB8C end:0x009CEBA8
+	.bss        start:0x00C5E494 end:0x00C5E4A0
 
 Black/Config.cpp:
 	.text       start:0x0046AE80 end:0x0046B790
 	.rdata      start:0x008CB410 end:0x008CB944
 	.CRT$XCU    start:0x009C62E4 end:0x009C62F4 align:4
-	.data       start:0x009CEBB0 end:0x009CED1C
-	.bss        start:0x00C5E5CC end:0x00C5E5E0
+	.data       start:0x009CEBA8 end:0x009CED1C
+	.bss        start:0x00C5E4A0 end:0x00C5E5E0
 
 Black/Container.cpp:
 	.text       start:0x0046B790 end:0x0046B9D0
