@@ -12,6 +12,12 @@
 #include "SetupControl.h" /* For struct SetupControl, struct SetupControlVftable */
 #include "SetupRect.h"    /* For struct SetupRect */
 
+class SetupList;
+// BW1W120 CatDraw 005706a0 / PlayerDraw 00570710 return EAX=1 and RET 20h.
+// Typedef name is retained from the existing decompiler-derived declaration.
+typedef uint32_t(__stdcall* SetupList__ListBoxDraw_t)(SetupList* list, int index, int x_min, int y_min, int x_max,
+                                                      int y_max, int clip_min, int clip_max);
+
 class SetupList : public SetupControl
 {
 public:
@@ -22,7 +28,7 @@ public:
 	int  field_0x24c;
 	int  NumItems; /* 0x250 */
 	int  field_0x254;
-	char16_t(*) item_labels[0x100];
+	char16_t (*item_labels)[0x100];
 	int*                      ItemHeights;
 	uint32_t*                 field_0x260;
 	uint32_t*                 field_0x264;
@@ -81,6 +87,15 @@ public:
 	void InsertString(int index, const char16_t* text);
 	// BW1W120 0040b050 BW1M100 104ea7a0 SetupList::SetNum(int)
 	void SetNum(int num);
+	// BW1W120 005471c0; implemented in FrontEndSetupGame.cpp.
+	void SetCol(int index, uint32_t value);
+	// BW1W120 00547150. Selection setter also synchronizes IME candidates.
+	// TODO: Recover the original method name; implementation remains extracted.
+	void fn_00547150(int index);
 };
+
+static_assert(sizeof(SetupList) == 0x2b0, "SetupList size is incorrect");
+static_assert(offsetof(SetupList, item_labels) == 0x258, "SetupList label offset is incorrect");
+static_assert(offsetof(SetupList, ListBoxDraw) == 0x26c, "SetupList callback offset is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_LIST_INCLUDED_H */

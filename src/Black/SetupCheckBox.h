@@ -19,9 +19,9 @@ class SetupCheckBox : public SetupButton
 {
 public:
 	uint32_t  text_position; /* 0x244 */
-	BBSTYLE   style;
-	bool      checked;
-	SetupRect InnerRect; /* 0x250 */
+	int       style;         // Checked-state word. Name retained for existing consumers.
+	bool      checked;       // Radio-mode flag: Click forces style=1 when this is true.
+	SetupRect InnerRect;     /* 0x250 */
 
 	// Override methods
 
@@ -39,7 +39,9 @@ public:
 	// Constructors
 
 	// BW1W120 00410f10 BW1M100 1058b890 SetupCheckBox::SetupCheckBox(int, int, int, bool, int, wchar_t *, int)
-	SetupCheckBox(int id, int x, int y, bool checked, BBSTYLE style, const char16_t* label, int size);
+	SetupCheckBox(int id, int x, int y, bool checked, int style, const char16_t* label, int size);
 };
+
+static_assert(sizeof(SetupCheckBox) == 0x260, "SetupCheckBox size is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_CHECK_BOX_INCLUDED_H */
