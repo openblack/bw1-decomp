@@ -8,6 +8,10 @@ class GWater
 public:
 	// BW1W120 00eb9ab4. Original Mac member name.
 	static LH3DSprite* g_sprite_circle;
+	// BW1W120 00eb9ab8. Original Mac member name; storage stays extracted.
+	static int g_count_activated_circle;
+	// BW1W120 00eb9ab0. Descriptive name for the per-frame ambient-wind displacement scale.
+	static float CircleWindStep;
 	// BW1W120 0054ba40. TODO: Descriptive name; Mac inlines initialization of g_circle,
 	// g_sprite_circle and g_count_activated_circle into GGame's constructor.
 	static void InitialiseCircles();

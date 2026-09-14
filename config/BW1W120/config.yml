@@ -29,6 +29,32 @@ add_relocations:
     type: x86_abs32
     target: '?PacketTimeHistory@GGame@@2PAHA'
     addend: 0x28
+  # Indexed operands omitted by automatic extraction; checked against original PE DWORDs.
+  - source: 0x0053B4C1
+    type: x86_abs32
+    target: '?ConversionBuffer@FrontEnd@@2PADA'
+  - source: 0x005C8A9D
+    type: x86_abs32
+    target: '?MessageSets@HelpSystem@@2PAUHelpSystemMessageSet@@A'
+    addend: 0xC
+  - source: 0x005C8AED
+    type: x86_abs32
+    target: '?MessageSets@HelpSystem@@2PAUHelpSystemMessageSet@@A'
+    addend: 0x8
+  - source: 0x005C8B58
+    type: x86_abs32
+    target: '?MessageSets@HelpSystem@@2PAUHelpSystemMessageSet@@A'
+  - source: 0x005C8B64
+    type: x86_abs32
+    target: '?MessageSets@HelpSystem@@2PAUHelpSystemMessageSet@@A'
+    addend: 0x4
+  - source: 0x005C8C1D
+    type: x86_abs32
+    target: '?MessageSets@HelpSystem@@2PAUHelpSystemMessageSet@@A'
+  - source: 0x005C8C23
+    type: x86_abs32
+    target: '?MessageSets@HelpSystem@@2PAUHelpSystemMessageSet@@A'
+    addend: 0x4
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000

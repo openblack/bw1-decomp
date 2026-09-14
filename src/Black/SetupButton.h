@@ -11,8 +11,8 @@
 class SetupButton : public SetupControl
 {
 public:
-	bool pressed; /* 0x23c */
-	int  field_0x240;
+	int pressed; /* 0x23c: DWORD stores in constructor and both mouse handlers */
+	int field_0x240;
 
 	// Override methods
 
@@ -32,5 +32,7 @@ public:
 	// BW1W120 004098b0 BW1M100 103dd710 SetupButton::SetupButton(int, int, int, int, int, wchar_t *, int)
 	SetupButton(int id, int x, int y, int width, int height, const char16_t* label, int param_8);
 };
+
+static_assert(sizeof(SetupButton) == 0x244, "SetupButton size is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_BUTTON_INCLUDED_H */

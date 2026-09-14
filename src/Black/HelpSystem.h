@@ -3,8 +3,12 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
+#include <uchar.h>
 
-#include "Base.h" /* For struct Base */
+#include <chlasm/Enum.h> /* For HELP_SPIRIT_TYPE */
+
+#include "Base.h"           /* For struct Base */
+#include "BindableAction.h" /* For BINDABLE_ACTIONS */
 
 enum HELP_SET_CATEGORY
 {
@@ -22,7 +26,7 @@ enum HELP_SET_CATEGORY
 
 // Real names + values from the game's localized help data (infotxtzspell/InfoHelp1.txt,
 // "ENUM_HELP_SYSTEM_MESSAGE_SET"). HelpSystem::RunMessageSet() indexes a 0x14-stride
-// definition table at 0xbf0d68 by this value. The _FIRST/_LAST entries are the game's
+// definition table at 0xbf0d60 by this value. The _FIRST/_LAST entries are the game's
 // own range sentinels (intentional duplicate values).
 enum HELP_SYSTEM_MESSAGE_SET
 {
@@ -246,80 +250,108 @@ class GameThingWithPos;
 class GameOSFile;
 struct HelpDudeControl;
 class HelpSpirit;
+class HelpText;
+struct MapCoords;
+
+// Descriptive names: the Windows save stream establishes these record layouts.
+struct HelpSystemTextHistory
+{
+	uint32_t Text;
+	int      DisplayMode;
+	uint32_t field_0x8;
+	uint32_t Speaker;
+};
+
+struct HelpSystemSavedText
+{
+	uint32_t Control;
+	uint32_t Text[6];
+	int      WaitForDismissal;
+	int      field_0x20;
+	int      Valid;
+};
+
+// BW1W120 00bf0d60, stride 0x14. Names are descriptive; this is not HelpSystemInfo.
+struct HelpSystemMessageSet
+{
+	uint32_t          FirstText;
+	uint32_t          LastText;
+	int               Type;
+	HELP_SET_CATEGORY Category;
+	char*             Script;
+};
 
 class HelpSystem : public Base
 {
 public:
+	// TODO: Map these descriptive declarations to the original extracted data.
+	// MessageSets is the 152-entry table at 00bf0d60, not 00bf0d68 (the Type member).
+	static HelpSystemMessageSet MessageSets[HELP_SYSTEM_MESSAGE_SET_LAST];
+	// BW1W120 00d16174. Owned by the HelpSystem configuration/initialization path.
+	static float WideScreenDuration;
+
 	// BW1W120 005c5710 BW1M100 10351380 HelpSystem::Create(void)
-	static HelpSystem* Create();
-	HelpSpirit*        SpiritType2; /* 0x8 */
-	HelpSpirit*        SpiritType1;
-	HelpDudeControl*   help_dude_control; /* 0x10 */
-	uint32_t           help_text;
-	Bubble*            bubble;
-	uint32_t           field_0x1c;
-	uint32_t           field_0x20;
-	uint32_t           icon0;
-	uint32_t           icon1;
-	uint32_t           icon2;
-	uint8_t            field_0x30[0x48];
-	uint32_t           field_0x78[0x98];
-	uint32_t           field_0x2d8[0x9];
-	uint32_t           field_0x2fc[0x98];
-	uint32_t           field_0x55c;
-	uint32_t           field_0x560;
-	uint8_t            field_0x564;
-	uint8_t            field_0x565;
-	uint8_t            field_0x566;
-	uint8_t            field_0x567;
-	uint32_t           field_0x568;
-	uint16_t           field_0x56c;
-	uint8_t            field_0x56e;
-	uint8_t            field_0x56f;
-	uint32_t           field_0x570;
-	uint32_t           field_0x574;
-	uint32_t           field_0x578;
-	uint32_t           field_0x57c;
-	uint32_t           field_0x580;
-	uint32_t           field_0x584[0x6];
-	uint8_t            field_0x59c[0x4028];
-	uint32_t           field_0x45c4;
-	uint32_t           field_0x45c8;
-	uint32_t           field_0x45cc;
-	uint32_t           field_0x45d0;
-	uint8_t            field_0x45d4;
-	uint8_t            field_0x45d5;
-	uint8_t            field_0x45d6;
-	uint8_t            field_0x45d7;
-	uint32_t           field_0x45d8;
-	uint32_t           field_0x45dc;
-	uint32_t           field_0x45e0;
-	uint32_t           field_0x45e4;
-	int                field_0x45e8;
-	int                field_0x45ec;
-	float              field_0x45f0;
-	int                field_0x45f4;
-	int                field_0x45f8;
-	uint32_t           field_0x45fc;
-	uint8_t            field_0x4600;
-	uint8_t            field_0x4601;
-	uint8_t            field_0x4602;
-	uint8_t            field_0x4603;
-	uint8_t            field_0x4604;
-	uint8_t            field_0x4605;
-	uint8_t            field_0x4606;
-	uint8_t            field_0x4607;
-	uint32_t           field_0x4608;
-	uint32_t           field_0x460c;
-	uint8_t            field_0x4610;
-	uint8_t            field_0x4611;
-	uint8_t            field_0x4612;
-	uint8_t            field_0x4613;
+	static HelpSystem*    Create();
+	HelpSpirit*           SpiritType2; /* 0x8 */
+	HelpSpirit*           SpiritType1;
+	HelpDudeControl*      help_dude_control; /* 0x10 */
+	HelpText*             help_text;
+	Bubble*               bubble;
+	uint32_t              field_0x1c;
+	uint32_t              field_0x20;
+	uint32_t              icon0;
+	uint32_t              icon1;
+	uint32_t              icon2;
+	int                   field_0x30[0x12];
+	uint32_t              field_0x78[0x98];
+	uint32_t              field_0x2d8[0x9];
+	uint32_t              field_0x2fc[0x98];
+	uint32_t              field_0x55c;
+	uint32_t              field_0x560;
+	GameThingWithPos*     field_0x564;
+	uint32_t              field_0x568;
+	uint16_t              field_0x56c;
+	uint8_t               field_0x56e;
+	uint8_t               field_0x56f;
+	uint32_t              field_0x570;
+	uint32_t              field_0x574;
+	uint32_t              field_0x578;
+	uint32_t              field_0x57c;
+	uint32_t              field_0x580;
+	uint32_t              field_0x584[0x6];
+	HelpSystemSavedText   SavedText;          /* 0x59c */
+	HelpSystemTextHistory TextHistory[0x400]; /* 0x5c4 */
+	int                   field_0x45c4;
+	int                   field_0x45c8;
+	uint32_t              field_0x45cc;
+	uint32_t              field_0x45d0;
+	uint16_t              field_0x45d4;
+	uint8_t               field_0x45d6;
+	uint8_t               field_0x45d7;
+	uint32_t              field_0x45d8;
+	uint32_t              field_0x45dc;
+	uint32_t              field_0x45e0;
+	uint32_t              field_0x45e4;
+	int                   field_0x45e8;
+	int                   field_0x45ec;
+	float                 field_0x45f0;
+	int                   field_0x45f4;
+	int                   field_0x45f8;
+	uint32_t              field_0x45fc;
+	int                   field_0x4600;
+	int                   field_0x4604;
+	uint32_t              field_0x4608;
+	uint32_t              field_0x460c;
+	float                 field_0x4610;
 
 	// Override methods
 
-	// BW1W120 005c5430 BW1M100 10351450 HelpSystem::_dt(void)
+	// BW1W120 005c5680 BW1M100 10351450 HelpSystem::_dt(void)
+	// Scalar-deleting wrapper at 005c5430; 005c5680 is mislabeled HelpDudeControl::Uninit in the map.
 	virtual ~HelpSystem();
+	// BW1W120 005c5860. Create calls vtable slot +0x1c, after Base's seven slots.
+	// TODO: Recover the body and dependent creation APIs; the current map incorrectly says nonvirtual.
+	virtual void CallVirtualFunctionsForCreation();
 
 	// Constructors
 
@@ -355,7 +387,7 @@ public:
 	// BW1W120 005c6ad0 BW1M100 1034f2c0 HelpSystem::SetWideScreen(int, ulong)
 	void SetWideScreen(int param_2, uint32_t param_3);
 	// BW1W120 005c6b60 BW1M100 1001d4b0 HelpSystem::GetWideScreenPercentage(void) const
-	float GetWideScreenPercentage();
+	float GetWideScreenPercentage() const;
 	// BW1W120 005c8280 BW1M100 10351b90 HelpSystem::TriggerCategory(HELP_SET_CATEGORY)
 	void TriggerCategory(HELP_SET_CATEGORY param_1);
 	// BW1W120 005c8b80 BW1M100 10353090 HelpSystem::RunMessageSet(HELP_SYSTEM_MESSAGE_SET, GameThingWithPos *)
@@ -370,6 +402,84 @@ public:
 	void GetHelpQueryOnGameThingWithPos(GameThingWithPos* param_1);
 	// BW1W120 005c98e0 BW1M100 10353970 HelpSystem::HelpQuery(void)
 	void HelpQuery();
+	// Names below without a Mac address are descriptive unless a signature is cited.
+	// BW1W120 005c6740. Full EAX Boolean result; existing void symbol is incorrect.
+	int IsDialogueControlled() const;
+	// BW1W120 005c6780 HelpSystem::SetCurrentControl(unsigned long)
+	void SetCurrentControl(uint32_t control);
+	// BW1W120 005c5760. Descriptive name; EAX Boolean.
+	int IsTextBeingDrawn() const;
+	// BW1W120 005c64e0 HelpSystem::IsTextRead(void). Clears EAX or forwards the full-register result below.
+	int IsTextRead();
+	// BW1W120 005c6340. TODO: Speech-bank lookup, advisor speech and scaled clock bindings.
+	// All return paths produce a full-register Boolean (MOV/XOR/SBB EAX), not an AL-only bool.
+	int HasFinishedTextReading();
+	// BW1W120 005c61b0. TODO: Reading duration configuration and scaled wall clock.
+	void SetTextReadTime(char16_t* text);
+	// BW1W120 005c6790. Full EAX Boolean result.
+	int DialogueControlRequest(uint32_t control);
+	// BW1W120 005c68a0. Returns SpiritType1 only for GOOD; all other values select Type2.
+	HelpSpirit* GetSpirit(HELP_SPIRIT_TYPE type) const;
+	// BW1W120 005c6550 / 005c6670. Bodies deferred pending HelpSpirit's nonvirtual API.
+	// The delegate at 005c4c50 returns NEG/SBB/INC EAX; ResetFOV tests EAX.
+	int  IsSpiritEjected(HELP_SPIRIT_TYPE type);
+	void SpiritHome(HELP_SPIRIT_TYPE type, int param_2) const;
+	// BW1W120 005c6c40. TODO: Recover the transition-completion constant at 00915d18.
+	void FinishWideScreenTransition();
+	// BW1W120 005c6c50
+	int IsWideScreenTransitioning() const;
+	// BW1W120 005c6c90 / 005c6ca0
+	void  SetReadSpeed(float speed);
+	float GetReadSpeed() const;
+	// BW1W120 005c6e20. Full EAX result and caller cleanup; no this access.
+	static HELP_SPIRIT_TYPE GetSpiritWhoTalks(uint32_t text);
+	// BW1W120 005c6e60
+	int ShouldDrawText() const;
+	// BW1W120 005c79c0
+	void SetHelpLevel(int level);
+	// BW1W120 005c79e0 HelpSystem::SaveTextOnTempleEntry(void)
+	void SaveTextOnTempleEntry();
+	// BW1W120 005c7a80 HelpSystem::ReInitialiseText(void)
+	void ReInitialiseText();
+	// BW1W120 005c7b00; ResolveLoad at 005c78b0 is a tail jump here.
+	void RestoreTextOnTempleExit();
+	// BW1W120 005c78c0. Descriptive name; only releases the matching widescreen owner.
+	void ReleaseWideScreen(uint32_t control);
+	// BW1W120 005c7b70
+	void SetImmersion(int enabled);
+	// BW1W120 005c5ee0 / 005c5f50
+	void                   AddTextToHistory(uint32_t text, int display_mode, uint32_t param_3, uint32_t speaker);
+	HelpSystemTextHistory* GetTextHistory(int index);
+	// BW1W120 005c81c0 HelpSystem::ProcessBanter(void)
+	void ProcessBanter();
+	// BW1W120 005c81e0 HelpSystem::GetRandomBanterSet(void). EAX returns the set.
+	HELP_SYSTEM_MESSAGE_SET GetRandomBanterSet();
+	// BW1W120 005c8a80 HelpSystem::SetSetSent(HELP_SYSTEM_MESSAGE_SET)
+	void SetSetSent(HELP_SYSTEM_MESSAGE_SET set);
+	// BW1W120 005c8ae0 HelpSystem::GetStartAndEndTextForSet(HELP_SYSTEM_MESSAGE_SET, ulong *, ulong *, GameThingWithPos *)
+	void GetStartAndEndTextForSet(HELP_SYSTEM_MESSAGE_SET set, uint32_t* first, uint32_t* last,
+	                              GameThingWithPos* thing);
+	// BW1W120 005c8c10 HelpSystem::GetRandomTextFromSet(HELP_SYSTEM_MESSAGE_SET)
+	uint32_t GetRandomTextFromSet(HELP_SYSTEM_MESSAGE_SET set);
+	// BW1W120 005c8c90 HelpSystem::RunMessage(char *). Full EAX Boolean result.
+	uint32_t RunMessage(char* script);
+	// BW1W120 005c9300 HelpSystem::ResetFOV(void)
+	void ResetFOV();
+	// BW1W120 005c9780 HelpSystem::GetHelpQueryAtPosition(MapCoords const &)
+	void GetHelpQueryAtPosition(const MapCoords& position);
+	// BW1W120 005c9490. Descriptive name.
+	void NoHelpAvailable();
+	// BW1W120 005c5b50. Mac: SetTextIcon__10HelpSystemFQ210ControlMap16BINDABLE_ACTIONS.
+	// TODO: The shared enum is currently global; original ControlMap nesting needs parent integration.
+	void SetTextIcon(BINDABLE_ACTIONS action);
 };
+
+static_assert(sizeof(HelpSystemTextHistory) == 0x10, "HelpSystem text history size is incorrect");
+static_assert(sizeof(HelpSystemSavedText) == 0x28, "HelpSystem saved text size is incorrect");
+static_assert(sizeof(HelpSystemMessageSet) == 0x14, "HelpSystem message set size is incorrect");
+static_assert(offsetof(HelpSystem, SavedText) == 0x59c, "HelpSystem saved text offset is incorrect");
+static_assert(offsetof(HelpSystem, TextHistory) == 0x5c4, "HelpSystem history offset is incorrect");
+static_assert(offsetof(HelpSystem, field_0x45c4) == 0x45c4, "HelpSystem history cursor offset is incorrect");
+static_assert(sizeof(HelpSystem) == 0x4614, "HelpSystem size is incorrect");
 
 #endif /* BW1_DECOMP_HELP_SYSTEM_INCLUDED_H */

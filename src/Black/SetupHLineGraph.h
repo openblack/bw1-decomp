@@ -6,6 +6,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <Lionhead/LHLib/ver5.0/LHKey.h>            /* For enum LHKey, enum LHKeyMod */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 
 #include "SetupButton.h"  /* For struct SetupButton */
 #include "SetupControl.h" /* For struct SetupControlVftable */
@@ -23,12 +24,19 @@ struct HLineData
 	// Constructors
 
 	// BW1W120 inlined BW1M100 inlined HLineData::HLineData(void)
-	HLineData();
+	HLineData() : color(0), PointCount(0), points(NULL) {}
 
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M100 inlined HLineData::operator=(const HLineData&)
-	HLineData* operator=(const HLineData* other);
+	// Shallow assignment is visible in SetLine/GetLine; AddLine explicitly deep-copies.
+	HLineData& operator=(const HLineData& other)
+	{
+		color = other.color;
+		PointCount = other.PointCount;
+		points = other.points;
+		return *this;
+	}
 	// BW1W120 0040da30 BW1M100 10501060 HLineData::SetNum()
 	void SetNum(int num);
 };
@@ -36,10 +44,10 @@ struct HLineData
 class SetupHLineGraph : public SetupButton
 {
 public:
-	LHLinkedList__HLineData LineDataList; /* 0x244 */
-	float                   max_point;
-	float                   min_point; /* 0x250 */
-	bool                    percent_mode;
+	LHLinkedList<HLineData*> LineDataList; /* 0x244 */
+	float                    max_point;
+	float                    min_point; /* 0x250 */
+	bool                     percent_mode;
 
 	// Override methods
 
@@ -56,16 +64,20 @@ public:
 	// BW1W120 0040e650 BW1M100 10211b80 SetupHLineGraph::SetScale(float, float, bool)
 	virtual void SetScale(float max_point, float min_point, bool centered_at_zero);
 	// BW1W120 0040e730 BW1M100 1010ccb0 SetupHLineGraph::AddLine(HLineData &)
-	virtual void AddLine(const HLineData* line);
-	// BW1W120 0040e7f0 BW1M100 100c9eb0 SetupHLineGraph::SetLine(int, const HLineData &)
-	virtual void SetLine(int index, const HLineData* line);
+	virtual void AddLine(HLineData& line);
+	// BW1W120 0040e7f0 BW1M100 100c9eb0 SetupHLineGraph::SetLine(int, HLineData &)
+	// Raw Mac traceback SetLine__15SetupHLineGraphFiR9HLineData confirms non-const.
+	virtual void SetLine(int index, HLineData& line);
 	// BW1W120 0040e850 BW1M100 10372050 SetupHLineGraph::GetLine(int, HLineData &)
-	virtual void GetLine(int index, HLineData* result);
+	virtual void GetLine(int index, HLineData& result);
 
 	// Constructors
 
 	// BW1W120 0040e510 BW1M100 103dcbb0 SetupHLineGraph::SetupHLineGraph(int, int, int, int, int, wchar_t *, bool)
 	SetupHLineGraph(int id, int x, int y, int width, int height, const char16_t* label, bool percent_mode);
 };
+
+static_assert(sizeof(HLineData) == 0xc, "HLineData size is incorrect");
+static_assert(sizeof(SetupHLineGraph) == 0x258, "SetupHLineGraph size is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_H_LINE_GRAPH_INCLUDED_H */

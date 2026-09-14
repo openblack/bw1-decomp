@@ -20,6 +20,9 @@ public:
 	static MPFEData Data;
 	// BW1W120 00d408b0. TODO: Original declaration scope is unrecovered.
 	static uint64_t CreatureFileChecksum;
+	// BW1W120 00bf456c. Shared MPFE team palette; descriptive name and provisional
+	// class scope, supported by MPFE dialog consumers. Storage remains extracted.
+	static uint32_t TeamColors[5];
 	// BW1W120 006227c0 BW1M100 103989b0 MPFEData::Reset(void)
 	void Reset();
 };

@@ -34,8 +34,10 @@ public:
 	// Constructors
 
 	// BW1W120 0040f5e0 BW1M100 101995b0 SetupTabButton::SetupTabButton(int, int, int, int, int, wchar_t *, int, int, int)
-	SetupTabButton(int id, int x, int y, int width, int height, const char16_t* label, bool selected, bool first_in_row,
-	               bool last_in_row);
+	SetupTabButton(int id, int x, int y, int width, int height, const char16_t* label, int selected, int first_in_row,
+	               int last_in_row);
 };
+
+static_assert(sizeof(SetupTabButton) == 0x254, "SetupTabButton size is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_TAB_BUTTON_INCLUDED_H */

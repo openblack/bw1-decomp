@@ -10,6 +10,7 @@
 
 #include "Lionhead/LH3DLib/development/LH3DText.h" /* For enum TEXTJUSTIFY */
 #include "SetupRect.h"                             /* For struct SetupRect */
+#include "AlexMfc.h"                               /* Text-size helper declarations */
 
 enum BBSTYLE
 {
@@ -44,6 +45,13 @@ struct LH3DMaterial;
 
 struct SetupThing
 {
+	// Descriptive views of existing UI storage, not additional allocated state.
+	// Parent symbol integration must map these declarations onto the offsets below.
+	static bool32_t  IMEActive;     // BW1W120 00c4cd00 (instance view +0x80 below)
+	static bool32_t  MouseCaptured; // BW1W120 00c4cd0c (instance view +0x8c)
+	static LH3DColor DefaultColor;  // BW1W120 00c4ccf8 (instance view +0x78)
+	// TODO: Remaining instance fields are an incomplete global-layout view;
+	// do not allocate a SetupThing singleton from this prefix.
 	// BW1W120 009c8078. Descriptive name; original signed alpha word.
 	static int     DrawAlpha;
 	LH3DMaterial*  UiShadowMaterial; /* 0x0 */
@@ -77,9 +85,13 @@ struct SetupThing
 	static float DrawText(int x, int y, int width, TEXTJUSTIFY justify, const char16_t* text, int size,
 	                      const LH3DColor* p_color, int param_8);
 	// BW1W120 00411b40 BW1M100 103e4a50 SetupThing::adjust(int &, int &)
-	static float adjust(int* x, int* y);
+	static float adjust(int& x, int& y);
 	// BW1W120 00411c30 BW1M100 104f62a0 SetupThing::unadjust(int &, int &)
-	static float unadjust(int* x, int* y);
+	static float unadjust(int& x, int& y);
+	// BW1W120 00411dd0: caller cleanup and full EAX result.
+	static int unadjustx(int x);
+	// BW1W120 00411fc0: integer overload, caller cleanup and full EAX result.
+	static int unadjustsize(int size);
 	// BW1W120 00411e70 BW1M100 104f2b70 SetupThing::adjusty(int)
 	static int adjusty(int y);
 	// BW1W120 00412030 BW1M100 10174f00 SetupThing::unadjustsize(float)
@@ -92,11 +104,12 @@ struct SetupThing
 	                     float inv_w);
 	// BW1W120 00412980 BW1M100 10048980 SetupThing::DrawBox(int, int, int, int, float, float, float, float, LH3DMaterial *, LH3DColor *, int, int, int, bool, float)
 	static void DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max,
-	                    LH3DMaterial* material, const LH3DColor* color, int adjust, int clip_y_start, int clip_y_end,
+	                    LH3DMaterial* material, LH3DColor* color, int adjust, int clip_y_start, int clip_y_end,
 	                    bool depth_test, float inv_w);
 	// BW1W120 00412eb0 BW1M100 1010f3e0 SetupThing::DrawQuad(int, int, int, int, int, int, int, int, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long)
-	static void DrawQuad(int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, LH3DColor color_1,
-	                     LH3DColor color_2, LH3DColor color_3, LH3DColor color_4, uint32_t use_alpha, uint32_t adjust);
+	static void DrawQuad(int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, unsigned long color_1,
+	                     unsigned long color_2, unsigned long color_3, unsigned long color_4, unsigned long use_alpha,
+	                     unsigned long adjust);
 	// BW1W120 004132c0 BW1M100 1035b610 SetupThing::DrawBox(int, int, int, int, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long)
 	static void DrawBox(int x_min, int y_min, int x_max, int y_max, unsigned long color_1, unsigned long color_2,
 	                    unsigned long color_3, unsigned long color_4, unsigned long use_alpha, unsigned long adjust);

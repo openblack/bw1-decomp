@@ -29,6 +29,7 @@ struct Bubble;
 class Citadel;
 struct ControlHandUpdateInfo;
 class CreatureBelief;
+class CreatureInfo;
 class CreatureMental;
 class CreaturePhysical;
 class CreaturePlan;
@@ -38,7 +39,6 @@ struct EffectNumbers;
 class EffectValues;
 class GAlignment;
 class GArena;
-struct GCreatureInfo;
 class GInterfaceStatus;
 class GParticleContainer;
 class GPlayer;
@@ -571,9 +571,9 @@ public:
 	// Static methods
 
 	// BW1W120 00474a20 BW1M100 101dfc60 Creature::Create(MapCoords const &, CreatureInfo const *, GPlayer *)
-	static Creature* Create(const MapCoords* coords, const GCreatureInfo* info, GPlayer* player);
+	static Creature* Create(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
 	// BW1W120 00474b50 BW1M100 101dfb90 Creature::CreateCreature(MapCoords const &, CreatureInfo const *, GPlayer *)
-	static Creature* CreateCreature(const MapCoords* coords, const GCreatureInfo* info, GPlayer* player);
+	static Creature* CreateCreature(const MapCoords& coords, const CreatureInfo* info, GPlayer* player);
 
 	// Constructors
 
@@ -586,6 +586,8 @@ public:
 	void FinishActionUnsuccessfully(char* param_1, int param_2, int param_3);
 	// BW1W120 00477850 BW1M100 101daef0 Creature::GetCreature3D(void)
 	LH3DCreature* GetCreature3D();
+	// BW1W120 00479eb0 BW1M100 Creature::ForceMoveMapObjectWithoutWalking(MapCoords const &)
+	void ForceMoveMapObjectWithoutWalking(const MapCoords& coords);
 	// BW1W120 0047c650 BW1M100 101d2500 Creature::SetAnimationTimeModify(bool value)
 	void SetAnimationTimeModify(bool value);
 	// BW1W120 0047c690 BW1M100 101d2420 Creature::IsOnHomeTeam(void)
@@ -595,6 +597,8 @@ public:
 	                                 CreatureBelief* param_4, CreatureBelief* param_5, int param_6, int param_7);
 	// BW1W120 004c44b0 BW1M100 10230950 Creature::ForceActivityAndForceAction(CreaturePlan &, int, int)
 	void ForceActivityAndForceAction(CreaturePlan* param_1, int param_2, int param_3);
+	// BW1W120 004c59c0 BW1M100 Creature::MoveToDevelopmentPhase(DEVELOPMENT_PHASE, int)
+	void MoveToDevelopmentPhase(DEVELOPMENT_PHASE phase, int param_2);
 	// BW1W120 004d1460 BW1M100 10248530 Creature::LookAtPosition(MapCoords *)
 	int LookAtPosition(MapCoords* destination);
 	// BW1W120 004ea670 BW1M100 10279d20 Creature::DecideOnNewPlan(CreaturePlan &)

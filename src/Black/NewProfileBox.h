@@ -6,16 +6,25 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+class SetupEdit;
+class SetupBigButton;
+class SetupPicture;
+
 class NewProfileBox : public DialogBoxBase
 {
 public:
-	uint8_t field_0x10[0x14];
+	// Descriptive member names, recovered from Init and InitControls.
+	SetupEdit*      NameEdit; /* 0x10 */
+	SetupBigButton* CancelButton;
+	SetupBigButton* ContinueButton;
+	SetupPicture*   SymbolPicture;
+	bool            Completed; /* 0x20 */
 
 	// Override methods
 
 	// BW1W120 0053ce80 BW1M100 105c3a30 NewProfileBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
-	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 0053d150 BW1M100 105c39d0 NewProfileBox::Destroy(void)
 	virtual void Destroy();
 	// BW1W120 0053bd10 BW1M100 105c5f90 NewProfileBox::CanESCOut(void)
@@ -23,5 +32,8 @@ public:
 	// BW1W120 0053d160 BW1M100 105c3890 NewProfileBox::InitControls(void)
 	virtual void InitControls();
 };
+
+static_assert(sizeof(NewProfileBox) == 0x24, "NewProfileBox size is incorrect");
+static_assert(offsetof(NewProfileBox, Completed) == 0x20, "NewProfileBox completion offset is incorrect");
 
 #endif /* BW1_DECOMP_NEW_PROFILE_BOX_INCLUDED_H */

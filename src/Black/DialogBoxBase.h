@@ -3,6 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <stddef.h>
+#include <re_common.h> /* For bool32_t */
 
 // Forward Declares
 
@@ -48,6 +50,10 @@ public:
 	// BW1W120 005136e0 BW1M100 102b1ff0 DialogBoxBase::HideAll(void)
 	static void HideAll();
 
+	// Non-virtual methods
+	// BW1W120 00513770. Callers test the full EAX Boolean result.
+	bool32_t IsVisible();
+
 	// Constructors
 
 	// BW1W120 005133a0 BW1M100 102b2750 DialogBoxBase::DialogBoxBase(void)
@@ -55,5 +61,8 @@ public:
 	// BW1W120 005133c0. Nonvirtual: unlinks this dialog from First.
 	~DialogBoxBase();
 };
+
+static_assert(sizeof(DialogBoxBase) == 0x10, "DialogBoxBase size is incorrect");
+static_assert(offsetof(DialogBoxBase, setup_box) == 0x4, "DialogBoxBase setup box offset is incorrect");
 
 #endif /* BW1_DECOMP_DIALOG_BOX_BASE_INCLUDED_H */

@@ -24,6 +24,14 @@ struct LH3DRender
 	static int          g_started_frame; // 00eca644
 	static LH3DZSorter* g_zsorter;       // 00eca648
 	static int          g_mode_cleaning; // 00c3871c
+	// BW1W120 00eca640. Original Mac import g_frame__10LH3DRender.
+	static int g_frame;
+	// BW1W120 00c38714. Original Mac import g_b_do_update_material__10LH3DRender.
+	static int g_b_do_update_material;
+	// Descriptive names for the current material and depth-pass override state. Storage remains extracted.
+	static LH3DMaterial* CurrentMaterial;    // 00eca64c
+	static int           OverrideMaterial;   // 00eca658
+	static int           OverrideRenderMode; // 00eca65c
 	// BW1W120 00eca624 BW1M100 101bcd28
 	static bool32_t b_need_init;
 	// BW1W120 00ec7fd0 BW1M100 102ca938
@@ -66,9 +74,9 @@ struct LH3DRender
 	// BW1W120 0082f0e0 BW1M100 10013290 LH3DRender::StartFrame(void)
 	static void StartFrame();
 	// BW1W120 0082ff10 BW1M100 10046bbc LH3DRender::SetD3DTillingOn(int)
-	static void SetD3DTillingOn(uint32_t index);
+	static void SetD3DTillingOn(int index);
 	// BW1W120 0082ff50 BW1M100 10046c4c LH3DRender::SetD3DTillingOff(int)
-	static void SetD3DTillingOff(uint32_t index);
+	static void SetD3DTillingOff(int index);
 	// BW1W120 0082fd30 BW1M100 100a1d90 LH3DRender::CreateMaterial(LH3DMaterial::RenderMode, LH3DTexture *)
 	static LH3DMaterial* CreateMaterial(LH3DMaterial::RenderMode render_mode, LH3DTexture* texture);
 	// BW1W120 0082f2c0 BW1M100 100a27d0. Windows callbacks pop their one argument.

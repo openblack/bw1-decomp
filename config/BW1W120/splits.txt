@@ -375,15 +375,15 @@ Black/citadelpeople.cpp:
 Black/Collide.cpp:
 	.text       start:0x0046A840 end:0x0046AE80
 	.CRT$XCU    start:0x009C62DC end:0x009C62E4 align:4
-	.data       start:0x009CEB8C end:0x009CEBB0
-	.bss        start:0x00C5E494 end:0x00C5E5CC
+	.data       start:0x009CEB8C end:0x009CEBA8
+	.bss        start:0x00C5E494 end:0x00C5E4A0
 
 Black/Config.cpp:
 	.text       start:0x0046AE80 end:0x0046B790
 	.rdata      start:0x008CB410 end:0x008CB944
 	.CRT$XCU    start:0x009C62E4 end:0x009C62F4 align:4
-	.data       start:0x009CEBB0 end:0x009CED1C
-	.bss        start:0x00C5E5CC end:0x00C5E5E0
+	.data       start:0x009CEBA8 end:0x009CED1C
+	.bss        start:0x00C5E4A0 end:0x00C5E5E0
 
 Black/Container.cpp:
 	.text       start:0x0046B790 end:0x0046B9D0
@@ -869,14 +869,14 @@ Black/Forest.cpp:
 	.rdata      start:0x008DE2E0 end:0x008DE41C
 	.CRT$XCU    start:0x009C68D0 end:0x009C68E0 align:4
 	.data       start:0x00BEA26C end:0x00BEA568
-	.bss        start:0x00CD04C0 end:0x00CD0AF8
+	.bss        start:0x00CD04C0 end:0x00CD0620
 
 Black/frontend.cpp:
 	.text       start:0x0053B450 end:0x00546230
 	.rdata      start:0x008DE41C end:0x008DECD8
 	.CRT$XCU    start:0x009C68E0 end:0x009C68F0 align:4
 	.data       start:0x00BEA568 end:0x00BEA7C8
-	.bss        start:0x00CD0AF8 end:0x00CD165C
+	.bss        start:0x00CD0620 end:0x00CD165C
 
 Black/FrontEndSetupGame.cpp:
 	.text       start:0x00546230 end:0x00549B10
@@ -945,14 +945,14 @@ Black/GameThing.cpp:
 	.text       start:0x0056F990 end:0x00570650
 	.rdata      start:0x008FFEE4 end:0x008FFF50
 	.CRT$XCU    start:0x009C6998 end:0x009C69A8 align:4
-	.bss        start:0x00D06070 end:0x00D0631C
+	.bss        start:0x00D06070 end:0x00D060EC
 
 Black/GatheringInterface.cpp:
 	.text       start:0x00570650 end:0x00575D70
 	.rdata      start:0x008FFF50 end:0x00900098
 	.CRT$XCU    start:0x009C69A8 end:0x009C69CC align:4
 	.data       start:0x00BEF1B8 end:0x00BEF29C
-	.bss        start:0x00D0631C end:0x00D06454
+	.bss        start:0x00D060EC end:0x00D06454
 
 Black/GenerateCreatureHTML.cpp:
 	.text       start:0x005773F0 end:0x00578540
@@ -1142,14 +1142,14 @@ Black/HelpSystemToolTips.cpp:
 
 Black/HelpText.cpp:
 	.text       start:0x005CAAB0 end:0x005CD0B0
-	.rdata      start:0x0092A4E8 end:0x0092A520
+	.rdata      start:0x0092A4E8 end:0x0092A554
 	.CRT$XCU    start:0x009C6C10 end:0x009C6C2C align:4
 	.data       start:0x00BF1A2C end:0x00BF1AD8
 	.bss        start:0x00D17C90 end:0x00D17CDC
 
 Black/Influence.cpp:
 	.text       start:0x005CD0B0 end:0x005CDE40
-	.rdata      start:0x0092A520 end:0x0092A560
+	.rdata      start:0x0092A554 end:0x0092A560
 	.CRT$XCU    start:0x009C6C2C end:0x009C6C38 align:4
 	.data       start:0x00BF1AD8 end:0x00BF1BB0
 	.bss        start:0x00D17CDC end:0x00D17CF8
@@ -1237,14 +1237,14 @@ Black/LandBalance.cpp:
 Black/LandFeature.cpp:
 	.text       start:0x005E2A60 end:0x005E3E80
 	.CRT$XCU    start:0x009C6D84 end:0x009C6D8C align:4
-	.data       start:0x00BF3528 end:0x00BF35DC
+	.data       start:0x00BF3528 end:0x00BF357C
 	.bss        start:0x00D1A2E0 end:0x00D1A360
 
 Black/Landscape.cpp:
 	.text       start:0x005E3E80 end:0x005E6730
 	.rdata      start:0x0092B2D8 end:0x0092B344
 	.CRT$XCU    start:0x009C6D8C end:0x009C6DA4 align:4
-	.data       start:0x00BF35DC end:0x00BF3654
+	.data       start:0x00BF357C end:0x00BF3654
 	.bss        start:0x00D1A360 end:0x00D201A4
 
 Black/Language.cpp:
@@ -2460,19 +2460,20 @@ Black/Wallhug.cpp:
 
 Black/WayPoint.cpp:
 	.text       start:0x00770AD0 end:0x00770D60
+	.rdata      start:0x0099B4AC end:0x0099B9AC
 	.CRT$XCU    start:0x009C7A7C end:0x009C7A80 align:4
-	.data       start:0x00C24738 end:0x00C247B0
+	.data       start:0x00C24738 end:0x00C24758
 
 Black/Weather.cpp:
 	.text       start:0x00770D60 end:0x00773C30
-	.rdata      start:0x0099B4AC end:0x0099BA00
+	.rdata      start:0x0099B9AC end:0x0099BA40
 	.CRT$XCU    start:0x009C7A80 end:0x009C7A90 align:4
-	.data       start:0x00C247B0 end:0x00C24988
+	.data       start:0x00C24758 end:0x00C24988
 	.bss        start:0x00DCB194 end:0x00DCB974
 
 Black/WeatherRain.cpp:
 	.text       start:0x00773C30 end:0x00773E90
-	.rdata      start:0x0099BA00 end:0x0099BA4C
+	.rdata      start:0x0099BA40 end:0x0099BA4C
 	.CRT$XCU    start:0x009C7A90 end:0x009C7A9C align:4
 	.data       start:0x00C24988 end:0x00C24A5C
 	.bss        start:0x00DCB974 end:0x00DCB978

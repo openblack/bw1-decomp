@@ -28,7 +28,7 @@ int __cdecl LH3DRender::GetRenderState(D3DRENDERSTATETYPE type, uint32_t* value)
 
 	if (g_render_states[type] == 0xffffffff)
 	{
-		result = Direct3DDevice7->GetRenderState(D3DRENDERSTATE_ZWRITEENABLE, (LPDWORD)value);
+		result = Direct3DDevice7->GetRenderState(type, (LPDWORD)value);
 		if (result == S_OK)
 		{
 			g_render_states[type] = *value;

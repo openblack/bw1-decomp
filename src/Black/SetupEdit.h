@@ -52,7 +52,7 @@ public:
 	// Constructors
 
 	// BW1W120 0040c220 BW1M100 101bc370 SetupEdit::SetupEdit(int, int, int, int, int, wchar_t *, int)
-	SetupEdit(int id, int x, int y, int width, int height, const char16_t* label, bool editable);
+	SetupEdit(int id, int x, int y, int width, int height, const char16_t* label, int editable);
 
 	// Non-virtual methods
 
@@ -65,5 +65,7 @@ public:
 	// BW1W120 0040c090 BW1M100 103dc2c0 SetupEdit::CalcCharpos(int)
 	int CalcCharpos(int pos);
 };
+
+static_assert(sizeof(SetupEdit) == 0x468, "SetupEdit size is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_EDIT_INCLUDED_H */
