@@ -4,12 +4,25 @@
 #include "LHPoint.h"
 #include "WeatherInfo.h"
 
+struct LH3DMaterial;
+
 // BW1W120 00edd3a0. Original free callback; storage remains in the extracted LH3DAtmos TU.
 extern void(__stdcall* g_water_drop_cb)(LHPoint&, float, unsigned long);
 
 class LH3DAtmos
 {
 public:
+	// Descriptive names for original atmosphere-owned storage, initialized by 00835ad0.
+	// Declaration only: storage remains in the extracted LH3DAtmos unit.
+	static unsigned int  IsOpen;           // 00edd38c
+	static LH3DMaterial* AdditiveMaterial; // 00edc364, render mode 0xd
+	static LH3DMaterial* AtmosMaterial;    // 00edc368, render mode 6
+
+	// BW1W120 00834f80; Mac GetWeather__9LH3DAtmosFRC7LHPointi
+	static WeatherInfo GetWeather(const LHPoint& point, int recalc);
+	// BW1W120 00835180; Mac GetWeatherSmooth__9LH3DAtmosFRC7LHPointi
+	static WeatherInfo GetWeatherSmooth(const LHPoint& point, int recalc);
+
 	static void Update3D(float time); // 008357a0
 	static void DrawWindField();      // 008367a0
 	static void Render3D();           // 00836250

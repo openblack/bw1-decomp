@@ -14,6 +14,7 @@ struct LH3DMaterial;
 struct LHMatrix;
 struct LHPoint;
 struct InfoTransform;
+struct LHTimer;
 
 class LH3DTech
 {
@@ -22,7 +23,11 @@ public:
 	static InfoTransform g_info_transform; // 00e839e4
 	static LHPoint       g_camera;         // 00ea1db8
 	static uint32_t      g_delta_time;     // 00c38134
-	static float         GetValueForZSorter(const LHPoint& point)
+	// BW1W120 00ea1b78. Original Mac import g_timer__8LH3DTech; no timer storage here.
+	static LHTimer g_timer;
+	// BW1W120 00ea9e40. Projection-scaled world-to-camera matrix, including the depth row.
+	static LHMatrix g_world_to_clipping;
+	static float    GetValueForZSorter(const LHPoint& point)
 	{
 		float x = point.x - g_camera.x;
 		float y = point.y - g_camera.y;
@@ -48,8 +53,15 @@ public:
 	// BW1W120 00818c60 BW1M100 100c0a80 LH3DTech::RenderInitialization(long, long)
 	static void RenderInitialization(long width, long height);
 	// BW1W120 0081c5c0 BW1M100 100337d0 LH3DTech::Draw3DScreenTriangle(long, LHPoint *, LH3DColor *, float *, long, long *, LH3DMaterial *, int)
-	static void Draw3DScreenTriangle(long num_points, LHPoint* positions, LH3DColor* colors, float* uvs,
-	                                 long num_indices, long* indices, LH3DMaterial* material, int param_8);
+	// Windows: ECX=count, EDX=positions, six stack arguments, RET 0x18.
+	static void __fastcall Draw3DScreenTriangle(long num_points, LHPoint* positions, LH3DColor* colors, float* uvs,
+	                                            long num_indices, long* indices, LH3DMaterial* material, int param_8);
+	// BW1W120 0081c090. Mac Draw3DWorldTriangle__8LH3DTechFlP7LHPointP9LH3DColorPflPlP12LH3DMateriali.
+	// The source count is long; Windows internally narrows it to 16 bits. Same ABI as the screen variant.
+	static void __fastcall Draw3DWorldTriangle(long num_points, LHPoint* positions, LH3DColor* colors, float* uvs,
+	                                           long num_triangles, long* indices, LH3DMaterial* material, int param_8);
+	// BW1W120 0081b370 LH3DTech::Get3DPointFromScreen(LHCoord const &, LHPoint &, float)
+	static void __fastcall Get3DPointFromScreen(const LHCoord& screen, LHPoint& point, float distance);
 };
 
 struct InfoTransform
