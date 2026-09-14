@@ -11,6 +11,17 @@ block_relocations:
   - source: 0x007DBB1D
   - source: 0x007DCA45
   - source: 0x007DDDA9
+  - source: 0x009DDA94
+  - source: 0x009DDD18
+  - source: 0x009DDD58
+  - source: 0x009DDD94
+  - source: 0x009DE3D8
+  - source: 0x009DE418
+  - source: 0x009DE958
+  - source: 0x009DE9D8
+  - source: 0x009DEA98
+  - source: 0x009DEAD8
+  - source: 0x009DEB18
 
 # CMP EDX compares against PacketTimeHistory's one-past-end, not the next array.
 add_relocations:

@@ -4,6 +4,11 @@ object: ../../build/BW1W100/runblack-preprocessed.exe
 hash: d810fe43e2956f2b76533ab698632756ba99b44d
 symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
+
+# ASCII inside the Attribute ValueNames string tables that the /FIXED data scan
+# mistakes for pointers; blocking keeps the raw string bytes.
+block_relocations:
+  - source: 0x0090C06C
 dead_strip: true
 # The original 1.0 link used /OPT:REF, which only collects COMDATs. Until the
 # reference graph is fully recovered, keep function sections plain so it cannot
