@@ -407,6 +407,8 @@ public:
 	GPlayer* GetPlayer(PLAYER_NAME player_name);
 	// BW1W120 00550dd0 BW1M100 1055efd0 GGame::SetPacket(PACKET_TYPE)
 	void SetPacket(PACKET_TYPE type);
+	// BW1W120 005514d0 GGame::SetPacket(PACKET_TYPE, unsigned int, float)
+	void SetPacket(PACKET_TYPE type, uint32_t value, float amount);
 	// BW1W120 00551690 BW1M100 10008870 GGame::SendPacketCompressed(PACKET_TYPE, SETPACKET_FUNCTION_NUMBER)
 	void SendPacketCompressed(PACKET_TYPE type, SETPACKET_FUNCTION_NUMBER function_number);
 	// BW1W120 00552620 BW1M100 1005cfb0 GGame::GetTribe(TRIBE_TYPE)
