@@ -114,7 +114,7 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 006034d0 BW1M100 1002c570 MapCoords::GetFirstIterator(void) const
 	MapCellIterator GetFirstIterator() const;
 	// BW1W120 006035b0 BW1M100 10018e70 MapCoords::IsWater(void) const
-	bool32_t IsWater();
+	bool32_t IsWater() const;
 	// BW1W120 00603b30 BW1M100 1055e480 MapCoords::IsSuitableForFixed 9MESH_LISTff
 	void IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3);
 	// BW1W120 00603dc0 BW1M100 101c2c00 MapCoords::IsSuitableForFixed(Game3DObject *) const

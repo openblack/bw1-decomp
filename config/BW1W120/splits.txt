@@ -2461,19 +2461,20 @@ Black/Wallhug.cpp:
 
 Black/WayPoint.cpp:
 	.text       start:0x00770AD0 end:0x00770D60
+	.rdata      start:0x0099B4AC end:0x0099B9AC
 	.CRT$XCU    start:0x009C7A7C end:0x009C7A80 align:4
-	.data       start:0x00C24738 end:0x00C247B0
+	.data       start:0x00C24738 end:0x00C24758
 
 Black/Weather.cpp:
 	.text       start:0x00770D60 end:0x00773C30
-	.rdata      start:0x0099B4AC end:0x0099BA00
+	.rdata      start:0x0099B9AC end:0x0099BA40
 	.CRT$XCU    start:0x009C7A80 end:0x009C7A90 align:4
-	.data       start:0x00C247B0 end:0x00C24988
+	.data       start:0x00C24758 end:0x00C24988
 	.bss        start:0x00DCB194 end:0x00DCB974
 
 Black/WeatherRain.cpp:
 	.text       start:0x00773C30 end:0x00773E90
-	.rdata      start:0x0099BA00 end:0x0099BA4C
+	.rdata      start:0x0099BA40 end:0x0099BA4C
 	.CRT$XCU    start:0x009C7A90 end:0x009C7A9C align:4
 	.data       start:0x00C24988 end:0x00C24A5C
 	.bss        start:0x00DCB974 end:0x00DCB978

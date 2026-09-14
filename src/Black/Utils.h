@@ -8,6 +8,7 @@
 // Forward Declares
 
 struct JustMapXZ;
+struct LHPoint;
 struct MapCoords;
 
 struct GUtils
@@ -16,6 +17,9 @@ struct GUtils
 	static void SetupUtils();
 	// BW1W120 0074ccb0 BW1M100 100495f0 GUtils::GetDistance(MapCoords const &, MapCoords const &)
 	static void GetDistance(const MapCoords& param_1, const MapCoords& param_2);
+	// BW1W120 0074cde0; GUtils::GetDistance(LHPoint const &, LHPoint const &)
+	// Windows cdecl stack arguments, x87 float result; measures XZ distance.
+	static float GetDistance(const LHPoint& point, const LHPoint& other);
 	// BW1W120 0074cd70 BW1M100 10049550 GUtils::GetDistanceInMetres(MapCoords const &, MapCoords const &)
 	static float GetDistanceInMetres(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074d200 BW1M100 1004ed70 GUtils::GetAngleFromDXDZ(long, long)
