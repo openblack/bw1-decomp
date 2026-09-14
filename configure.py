@@ -306,7 +306,10 @@ cflags_base = [
 # and its counterpart DEBUG=1 compiles different code (zlib's Assert/Trace,
 # plus two extra deflate_state fields), shifting every address after src/zlib.
 # --debug adds debug *info* to the same bytes, so it only toggles /Zi vs /Zd.
-cflags_base.append("/DNDEBUG=1 /Zi")
+cflags_base.append("/DNDEBUG=1")
+# The original BW1W120 build has a debug directory in the PE header but it's stripped.
+# We can therefore unconditionally add /Zi to the build.
+cflags_base.append("/Zi")
 
 # ICC 5.0 for LH3DP3.cpp, from its .drectve banner. Dropped from the original line:
 # -nologo (the rule adds it), -Fa/-Fo/-Fd (the rule supplies /Fo), and
