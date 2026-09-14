@@ -53,6 +53,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00408100 SetupBox::FindControl(int, int)
+	SetupControl* FindControl(int x, int y);
 	// BW1W120 00408160 BW1M100 1043c330 SetupBox::FindControl(int)
 	SetupControl* FindControl(int id);
 	// BW1W120 00409140 BW1M100 10598ed0 SetupBox::SetFocusControl(SetupControl *)
