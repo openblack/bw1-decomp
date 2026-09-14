@@ -76,6 +76,9 @@ public:
 	GCamera(MapCoords& coords);
 
 	// Non-virtual methods
+	// BW1W120 00442b00. Descriptive name; restricts the point to the world-centred sphere.
+	// Callers supply ECX=camera and one stack reference; the current implementation does not read this.
+	void ConstrainPoint(LHPoint& point);
 
 	// BW1W120 00441b70 BW1M100 1019a650 GCamera::CantExitCurrentMode(void)
 	bool CantExitCurrentMode();
