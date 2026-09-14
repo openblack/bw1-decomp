@@ -111,26 +111,32 @@ struct CharRing
 	int Tail;       /* 0x44 */
 };
 
-struct Q24slim5TbIME
+namespace slim
+{
+// Original identity is established by Mac shared-library traceback names for
+// the constructor, ProcessMessage and both candidate-list methods. The Windows
+// object is a four-byte wrapper; its recovered Windows calling conventions follow.
+struct TbIME
 {
 	void* field_0x0;
-
-	// Non-virtual methods
-
-	// BW1W120 007f3d00 BW1M100 101704a0 slim::TbIME::Activate(void* )
+	// BW1W120 007f3b80. Mac __ct__Q24slim5TbIMEFv.
+	TbIME();
+	// BW1W120 007f3d00 BW1M100 101704a0 slim::TbIME::Activate(void*)
 	void Activate(HWND param_1);
 	// BW1W120 007f3d10 BW1M100 10170460 slim::TbIME::UnActivate(void)
 	void UnActivate();
-	// BW1W120 007f3d50 BW1M100 1061ec14 slim::TbIME::Composition_Get( (void))
+	// BW1W120 007f3d20. Thiscall; five stack arguments; original result is AL.
+	bool ProcessMessage(HWND wnd, UINT* msg, WPARAM* w, LPARAM* l, LRESULT* result);
+	// BW1W120 007f3d50 BW1M100 1061ec14 slim::TbIME::Composition_Get(void)
 	wchar_t* Composition_Get();
-	// BW1W120 007f3dc0 BW1M100 1061e884 slim::TbIME::CandidateList_GetSelectIdx( (void)
+	// BW1W120 007f3dc0 BW1M100 1061e884 slim::TbIME::CandidateList_GetSelectIdx(void)
 	uint32_t CandidateList_GetSelectIdx();
-	// BW1W120 007f3de0 BW1M100 1061e89c slim::TbIME::CandidateList_SetViewWindow( (unsigned int, unsigned int, unsigned int))
-	void CandidateList_SetViewWindow(uint32_t param_1, uint32_t param_2, uint32_t idx);
+	// BW1W120 007f3de0 BW1M100 1061e89c slim::TbIME::CandidateList_SetViewWindow(uint,uint,uint)
+	void CandidateList_SetViewWindow(uint32_t first, uint32_t last, uint32_t index);
 };
+} // namespace slim
 
-// The IME helper wrapper (slim::TbIME), constructed on window creation (LHSystem.cpp).
-struct TbIMEWrapper;
+static_assert(sizeof(slim::TbIME) == 4, "slim::TbIME size is incorrect");
 
 struct LHSys
 {
@@ -167,7 +173,7 @@ struct LHSys
 	uint8_t          AltTabPending;      /* 0x70bb */
 	int              AppMinimized;       /* 0x70bc */
 	int              AppMinimizedByUs;   /* 0x70c0 */
-	TbIMEWrapper*    TbIME;              /* 0x70c4 */
+	slim::TbIME*     TbIME;              /* 0x70c4 */
 	uint8_t          MouseThreadRunning; /* 0x70c8 */
 	uint8_t          TerminateRequested; /* 0x70c9 */
 	uint8_t          _pad70ca[2];
@@ -204,6 +210,7 @@ static_assert(offsetof(LHSys, draw) == 0x82c, "LHSys draw offset changed");
 static_assert(offsetof(LHSys, ScriptResources) == 0x924, "LHSys ScriptResources offset changed");
 static_assert(offsetof(LHSys, text) == 0x7044, "LHSys text offset changed");
 static_assert(offsetof(LHSys, Window) == 0x70b4, "LHSys Window offset changed");
+static_assert(offsetof(LHSys, TbIME) == 0x70c4, "LHSys TbIME offset changed");
 static_assert(offsetof(LHSys, LastKey) == 0x70d0, "LHSys LastKey offset changed");
 
 #endif /* BW1_DECOMP_LH_SYSTEM_INCLUDED_H */
