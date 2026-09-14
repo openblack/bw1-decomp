@@ -24,17 +24,9 @@ int TbIME_ConvertCHAR8toCHAR16(char c);
 // BW1W120 007de8d0 (LHScreen.cpp) per-message screen bookkeeping
 void sub_7DE8D0();
 
-// The IME helper wrapper (slim::TbIME), constructed on window creation.
-struct TbIMEWrapper
-{
-	void* field_0x0;
-	// BW1W120 007f3b80 TbIMEWrapper::TbIMEWrapper(void)
-	TbIMEWrapper();
-	// BW1W120 007f3d20 TbIMEWrapper::ProcessMessage(HWND, UINT*, WPARAM*, LPARAM*, LRESULT*)
-	// __thiscall: `this` (LHSys::TheSystem.TbIME) rides in ecx, only the 5 explicit args are pushed.
-	// Returns a byte (target tests al, not eax).
-	bool ProcessMessage(HWND wnd, UINT* msg, WPARAM* w, LPARAM* l, LRESULT* result);
-};
+// slim::TbIME is exposed by LHSystem.h. Preserve this established TU's
+// __LINE__ allocation tag when moving its declaration, without changing code.
+#line 38
 // BW1W120 00e85204 is TheSystem.mouse: LHSys embeds LHMouse at offset 0x1c4.
 static_assert(offsetof(LHSys, mouse) == 0x1c4, "LHSys mouse offset changed");
 
@@ -492,7 +484,7 @@ int RegisterGameWindowClass(HINSTANCE inst, WNDPROC proc)
 
 // BW1W120 007dba90 create the game's top-level window (800x600 windowed, or a full-screen
 // popup), start mouse-leave tracking, and construct the IME wrapper.
-// TODO: 81% — the C++ EH frame (from `new TbIMEWrapper()`, needs /GX) and body now match;
+// TODO: 81% — the C++ EH frame (from `new slim::TbIME()`, needs /GX) and body now match;
 // residual is MSVC caching the constant 1 in a register + a different callee-saved reg
 // choice in the CreateWindowEx branch. Optimizer-level.
 int CreateGameWindow(HINSTANCE inst, int cmd_show, int windowed)
@@ -531,7 +523,7 @@ int CreateGameWindow(HINSTANCE inst, int cmd_show, int windowed)
 	if (LHSys::GetMouse().AnimType == 3)
 		SendMessageA(LHSys::GetWindow(), 0x8005, 0, 0);
 	TurnOnMenu();
-	LHSys::TheSystem.TbIME = new (__FILE__, __LINE__) TbIMEWrapper();
+	LHSys::TheSystem.TbIME = new (__FILE__, __LINE__) slim::TbIME();
 	return 0;
 }
 

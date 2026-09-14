@@ -27,6 +27,12 @@ public:
 	char              ip[0x64];
 
 	// BW1W120 10001460
+	// TODO: This DLL constructor is not imported by the original EXE. Its EXE
+	// callers inline type=0, data_len=0 and a 102-byte clear from +0xc, while
+	// loading imported LHPacketisableObject/LHTransportInfo vtables (008a961c/20).
+	// Recover the base/derived inline construction and vtable import semantics
+	// together before linking these callers; do not invent an EXE constructor IAT
+	// mapping or replace the vptr with an unrelated manually cast table.
 	LH_MULTIPLAYER_API LHTransportInfo();
 	// BW1W120 10024360
 	virtual LH_MULTIPLAYER_API unsigned long GetEncodedLength(unsigned long options, void* context);
