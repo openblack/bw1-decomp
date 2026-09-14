@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int8_t, uint32_t, uint8_t */
 
+#include <chlasm/Enum.h>        /* For enum MAGIC_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_INTERFACE_LEVEL, enum SCRIPT_OBJECT_TYPE */
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
@@ -22,6 +23,7 @@ enum SCRIPT_FEATURE_COMMANDS
 
 class Abode;
 class GameOSFile;
+class GameThing;
 class GameThingWithPos;
 class Living;
 struct MapCoords;
@@ -76,6 +78,15 @@ public:
 
 	// BW1W120 006eb100 BW1M100 104de810 GScript::Create(void)
 	static GScript* Create();
+	// BW1W120 006ec780 GScript::StopHelpScripts(void)
+	// Windows passes script mask 0x4a with caller cleanup and consumes no instance.
+	static void StopHelpScripts();
+	// BW1W120 0070bd60 BW1M100 GScript::CastSpellAtPos(MapCoords const &, MAGIC_TYPE, MapCoords const &, GameThing *, int, float, float, float, LHPoint const &)
+	// Windows uses caller cleanup and returns the created object (or NULL), not void.
+	// TODO: The precise returned object class is unrecovered; GameThing is provisional.
+	static GameThing* CastSpellAtPos(const MapCoords& position, MAGIC_TYPE type, const MapCoords& source,
+	                                 GameThing* owner, int param_5, float param_6, float param_7, float param_8,
+	                                 const LHPoint& point);
 	// BW1W120 0070b220 BW1M100 10503f10 GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL)
 	static void SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL level);
 	// BW1W120 006ec8f0 BW1M100 104e2f90 GScript::SetCameraPos(void)
