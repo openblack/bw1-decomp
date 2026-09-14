@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include "Base.h" /* For struct Base */
+#include "Base.h"           /* For struct Base */
+#include "BindableAction.h" /* For BINDABLE_ACTIONS */
 
 enum HELP_SET_CATEGORY
 {
@@ -370,6 +371,9 @@ public:
 	void GetHelpQueryOnGameThingWithPos(GameThingWithPos* param_1);
 	// BW1W120 005c98e0 BW1M100 10353970 HelpSystem::HelpQuery(void)
 	void HelpQuery();
+	// BW1W120 005c5b50. Mac: SetTextIcon__10HelpSystemFQ210ControlMap16BINDABLE_ACTIONS.
+	// TODO: The shared enum is currently global; original ControlMap nesting needs parent integration.
+	void SetTextIcon(BINDABLE_ACTIONS action);
 };
 
 #endif /* BW1_DECOMP_HELP_SYSTEM_INCLUDED_H */
