@@ -945,14 +945,14 @@ Black/GameThing.cpp:
 	.text       start:0x0056F990 end:0x00570650
 	.rdata      start:0x008FFEE4 end:0x008FFF50
 	.CRT$XCU    start:0x009C6998 end:0x009C69A8 align:4
-	.bss        start:0x00D06070 end:0x00D0631C
+	.bss        start:0x00D06070 end:0x00D060EC
 
 Black/GatheringInterface.cpp:
 	.text       start:0x00570650 end:0x00575D70
 	.rdata      start:0x008FFF50 end:0x00900098
 	.CRT$XCU    start:0x009C69A8 end:0x009C69CC align:4
 	.data       start:0x00BEF1B8 end:0x00BEF29C
-	.bss        start:0x00D0631C end:0x00D06454
+	.bss        start:0x00D060EC end:0x00D06454
 
 Black/GenerateCreatureHTML.cpp:
 	.text       start:0x005773F0 end:0x00578540
