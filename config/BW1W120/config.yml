@@ -29,6 +29,10 @@ add_relocations:
     type: x86_abs32
     target: '?PacketTimeHistory@GGame@@2PAHA'
     addend: 0x28
+  # Indexed operands omitted by automatic extraction; checked against original PE DWORDs.
+  - source: 0x0053B4C1
+    type: x86_abs32
+    target: '?ConversionBuffer@FrontEnd@@2PADA'
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000
