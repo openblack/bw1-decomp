@@ -6,10 +6,16 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+class SetupButton;
+class SetupStaticText;
+
 class MainMenu : public DialogBoxBase
 {
 public:
-	uint8_t field_0x10[0x28];
+	// Descriptive member names recovered from Init.
+	SetupButton*     Buttons[5]; /* 0x10 */
+	SetupStaticText* TitleText;  /* 0x24 */
+	uint8_t          field_0x28[0x10];
 
 	// Override methods
 
@@ -23,5 +29,8 @@ public:
 	// BW1W120 0053fba0 BW1M100 105bff40 MainMenu::InitControls(void)
 	virtual void InitControls();
 };
+
+static_assert(sizeof(MainMenu) == 0x38, "MainMenu size is incorrect");
+static_assert(offsetof(MainMenu, TitleText) == 0x24, "MainMenu title offset is incorrect");
 
 #endif /* BW1_DECOMP_MAIN_MENU_INCLUDED_H */

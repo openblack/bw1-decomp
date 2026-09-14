@@ -2,6 +2,7 @@
 #define BW1_DECOMP_PLASMA_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h>
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
@@ -16,7 +17,7 @@ struct Plasma
 {
 	LHPoint       points[0x4f7];       /* 0x0 */
 	Point2D       uvs[0x4f7];          /* 0x3b94 */
-	uint32_t      indices[0x3][0x960]; /* 0x634c */
+	uint32_t      indices[0x960][0x3]; /* 0x634c; 2400 consecutive triangles */
 	LH3DColor     colors[0x4f7];       /* 0xd3cc */
 	LHPoint       field_0xe7a8[0x10];
 	LHPoint       field_0xe868[0x10];
@@ -32,5 +33,10 @@ struct Plasma
 	// BW1W120 inlined BW1M100 100c9220 Plasma::Close(void)
 	void Close();
 };
+
+static_assert(sizeof(Plasma) == 0xe930, "Plasma size is incorrect");
+static_assert(offsetof(Plasma, indices) == 0x634c, "Plasma index offset is incorrect");
+static_assert(offsetof(Plasma, colors) == 0xd3cc, "Plasma color offset is incorrect");
+static_assert(offsetof(Plasma, PinMaterial) == 0xe92c, "Plasma material offset is incorrect");
 
 #endif /* BW1_DECOMP_PLASMA_INCLUDED_H */
