@@ -72,9 +72,19 @@ The compilation with `.pdb` left traces in the released artifact and the default
 * build/BW1W120/runblack-linked.exe
 * build/BW1W120/runblack-linked.pdb
 
-Loading the exe for 1.1 and 1.2 into Ghidra or IDA will give the tool access to type, function name and line number information while having an exe that is very close to the original. The differences with the original are minor and do not have any offset differences.
+Use `runblack-linked.exe` and the pdb sitting next to it. Loading it into Ghidra or IDA gives function names across the whole image, plus the class layouts of every translation unit already matched and linked from source, so the types fill in as the decomp progresses. The exe is very close to the original: the differences are minor and do not have any offset differences.
 
 They should be good enough to use as a reference.
+
+Ghidra
+---
+
+In ghidra, pdb loading needs an experimental feature to be on. This option is only available in `Auto Analyze Options` under `PDB Universal` if you uncomment `VMARGS=-Dghidra.pdb.developerMode=true` in Ghidra's `launch.properties` file:
+
+* Windows: `<ghidra install>\support\launch.properties`
+* Linux and macOS: `<ghidra install>/support/launch.properties`
+
+![](https://github.com/user-attachments/assets/4ef4e69c-8a1d-4638-9e0d-cdd6395d4be3)
 
 
 Diffing
