@@ -27,6 +27,9 @@ class MusicMoodController
 public:
 	// BW1W120 00d06438. Descriptive name for the CreatureMusicMood option.
 	static unsigned int CreatureMusicMoodEnabled;
+	// BW1W120 00634370. Mac GetCurrentMusicEmotion__19MusicMoodControllerFv.
+	// Returns an existing two-float emotion or NULL; pointee constness is descriptive.
+	static const MusicEmotion* GetCurrentMusicEmotion();
 	// BW1W120 00634040 BW1M100 1010aa90 MusicMoodController::Close(void)
 	static void Close();
 	// BW1W120 00633ef0 BW1M100 1008eb20 MusicMoodController::UpdateOnGameTurn(float, bool)
