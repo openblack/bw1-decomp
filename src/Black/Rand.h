@@ -10,7 +10,7 @@ struct GRand
 	// BW1W120 006de530 BW1M100 104cc2c0 GRand::GameFloatRand(float)
 	static float GameFloatRand(float scale, const char* src_file, uint32_t src_line);
 	// BW1W120 006de570 BW1M100 10044b40 GRand::LocalRand(long)
-	uint32_t LocalRand(long param_1);
+	static uint32_t LocalRand(long param_1);
 	// BW1W120 006de590 BW1M100 10097f40 GRand::LocalFloatRand(float)
 	static float LocalFloatRand(float scale);
 };
