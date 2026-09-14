@@ -16,7 +16,7 @@ struct LH3DSprite
 	float    angle;
 	float    field_0x18;
 	float    field_0x1c;
-	float    field_0x20;
+	uint32_t field_0x20; // Packed diffuse ARGB, copied directly to Vertex3D+0x10 by Draw.
 	float    field_0x24;
 	uint32_t field_0x28;
 	float    field_0x2c;

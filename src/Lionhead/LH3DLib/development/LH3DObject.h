@@ -58,68 +58,73 @@ public:
 	// Virtual functions
 
 	virtual bool32_t IsPreSetup(); /* 0x0 */
-	// TODO: original name unrecovered; frees the object and takes no arguments.
-	virtual void                Release();
-	virtual float               GetU();
-	virtual float               GetV();
-	virtual void __fastcall     SetPaper(int param_1); /* 0x10 */
-	virtual bool32_t            IsPaper();
-	virtual void                SetNoSnow(int param_1);
-	virtual bool32_t            IsNoSnow();
-	virtual void                SetPosition_1(const LHPoint* point, float param_2, float param_3); /* 0x20 */
-	virtual void                SetPosition_2(float x, float y, float z);
-	virtual void                SetLinkedPosition(LH3DObject* linked_obj);
-	virtual void                SetColorSpecular(uint32_t param_1, uint32_t param_2);
-	virtual void                SetWindowColor(uint32_t color); /* 0x30 */
-	virtual void                SetSnowlevel_1(int level);
-	virtual void                SetSnowlevel_2(LHPoint* point);
-	virtual bool32_t            IsUseAlpha();
-	virtual void                SetNeedSorting(int value); /* 0x40 */
-	virtual bool32_t            IsNeedSorting();
-	virtual void                SetDrawWithGlobalAlpha(int param_1);
-	virtual bool32_t            IsDrawWithGlobalAlpha();
-	virtual void                SetLinked(int param_1); /* 0x50 */
-	virtual bool32_t            IsLinked();
-	virtual void __fastcall     SetDynamicLighting(int param_1);
-	virtual bool32_t            IsDynamicLighting();
-	virtual void                SetEnumFlag(int flag); /* 0x60 */
-	virtual int                 GetEnumFlag();
-	virtual void                SetSpecialLight(int param_1);
-	virtual int                 GetSpecialLight();
-	virtual void                SetDontDraw(int param_1); /* 0x70 */
-	virtual int                 GetDontDraw();
-	virtual void __fastcall     SetCastDynamicShadow(int param_1);
-	virtual bool32_t            IsCastDynamicShadow();
-	virtual void                SetShadowOnTexture(int param_1); /* 0x80 */
-	virtual bool32_t            IsShadowOnTexture();
-	virtual void                SetFootPrintOnTexture(int param_1);
-	virtual bool32_t            IsFootPrintOnTexture();
-	virtual void                SetShadowOnTextureChroma(int param_1); /* 0x90 */
-	virtual bool32_t            IsShadowOnTextureChroma();
-	virtual void __fastcall     SetDisappear(int param_1);
-	virtual bool32_t            IsDisappear();
-	virtual void                SetNeedClipping(int param_1); /* 0xa0 */
-	virtual bool32_t            IsNeedClipping();
-	virtual int                 GetVisageId();
-	virtual void                SetVisage(int visage_id);
-	virtual bool32_t            IsHuman(); /* 0xb0 */
-	virtual void                SetHuman();
-	virtual bool32_t            IsInBuild();
-	virtual void                SetInBuild(int param_1);
-	virtual bool32_t            IsHumanShadowed(); /* 0xc0 */
-	virtual void                SetHumanShadowed(int param_1);
-	virtual bool32_t            IsGlowing();
-	virtual void                SetIsGlowing(int param_1);
-	virtual bool32_t            IsSuperSortedPolys(); /* 0xd0 */
-	virtual void                SetSuperSortedPolys(int param_1);
-	virtual bool32_t            IsFastBlending();
-	virtual void                SetFastBlending(float param_1, LH3DMesh* mesh1, LH3DMesh* mesh2);
-	virtual void                SetNeedTilling(int param_1); /* 0xe0 */
-	virtual bool32_t            IsNeedTilling();
-	virtual void                SetAnimatedUV_1(float param_1, float param_2, float param_3);
-	virtual void                SetAnimatedUV_2(int param_1);
-	virtual bool32_t            IsAnimatedUV(); /* 0xf0 */
-	virtual uint32_t __fastcall SetMesh(LH3DMesh* param_1, LH3DMesh* param_2, LH3DMesh* param_3);
+	// Slot 0x04 is Release, not a deleting destructor: derived implementations destroy and free this.
+	// Base/Meshed tables contain _purecall; Static 00816560, Animated 00816580, Complex 00816710.
+	virtual void            Release() = 0;
+	virtual float           GetU();
+	virtual float           GetV();
+	virtual void __fastcall SetPaper(int param_1); /* 0x10 */
+	virtual bool32_t        IsPaper();
+	virtual void            SetNoSnow(int param_1);
+	virtual bool32_t        IsNoSnow();
+	virtual void            SetPosition_1(const LHPoint* point, float param_2, float param_3); /* 0x20 */
+	virtual void            SetPosition_2(float x, float y, float z);
+	virtual void            SetLinkedPosition(LH3DObject* linked_obj);
+	virtual void            SetColorSpecular(uint32_t param_1, uint32_t param_2);
+	virtual void            SetWindowColor(uint32_t color); /* 0x30 */
+	virtual void            SetSnowlevel_1(int level);
+	virtual void            SetSnowlevel_2(LHPoint* point);
+	virtual bool32_t        IsUseAlpha();
+	virtual void            SetNeedSorting(int value); /* 0x40 */
+	virtual bool32_t        IsNeedSorting();
+	virtual void            SetDrawWithGlobalAlpha(int param_1);
+	virtual bool32_t        IsDrawWithGlobalAlpha();
+	virtual void            SetLinked(int param_1); /* 0x50 */
+	virtual bool32_t        IsLinked();
+	virtual void __fastcall SetDynamicLighting(int param_1);
+	virtual bool32_t        IsDynamicLighting();
+	virtual void            SetEnumFlag(int flag); /* 0x60 */
+	virtual int             GetEnumFlag();
+	virtual void            SetSpecialLight(int param_1);
+	virtual int             GetSpecialLight();
+	virtual void            SetDontDraw(int param_1); /* 0x70 */
+	virtual int             GetDontDraw();
+	virtual void __fastcall SetCastDynamicShadow(int param_1);
+	virtual bool32_t        IsCastDynamicShadow();
+	virtual void            SetShadowOnTexture(int param_1); /* 0x80 */
+	virtual bool32_t        IsShadowOnTexture();
+	virtual void            SetFootPrintOnTexture(int param_1);
+	virtual bool32_t        IsFootPrintOnTexture();
+	virtual void            SetShadowOnTextureChroma(int param_1); /* 0x90 */
+	virtual bool32_t        IsShadowOnTextureChroma();
+	virtual void __fastcall SetDisappear(int param_1);
+	virtual bool32_t        IsDisappear();
+	virtual void __fastcall SetNeedClipping(int param_1); /* 0xa0 */
+	virtual bool32_t        IsNeedClipping();
+	virtual int             GetVisageId();
+	virtual void            SetVisage(int visage_id);
+	virtual bool32_t        IsHuman(); /* 0xb0 */
+	virtual void            SetHuman();
+	virtual bool32_t        IsInBuild();
+	virtual void            SetInBuild(int param_1);
+	virtual bool32_t        IsHumanShadowed(); /* 0xc0 */
+	virtual void            SetHumanShadowed(int param_1);
+	virtual bool32_t        IsGlowing();
+	virtual void            SetIsGlowing(int param_1);
+	virtual bool32_t        IsSuperSortedPolys(); /* 0xd0 */
+	virtual void            SetSuperSortedPolys(int param_1);
+	virtual bool32_t        IsFastBlending();
+	virtual void            SetFastBlending(float param_1, LH3DMesh* mesh1, LH3DMesh* mesh2);
+	virtual void            SetNeedTilling(int param_1); /* 0xe0 */
+	virtual bool32_t        IsNeedTilling();
+	// MSVC6 reverses overloaded virtuals: int belongs at 0xec, the float pair at 0xe8.
+	// 007f9b40: the flag is in EDX.
+	virtual void __fastcall SetAnimatedUV(int param_1);
+	// 007f9b70: two stack floats, RET 8; Mac SetAnimatedUV__10LH3DObjectFff.
+	virtual void __fastcall SetAnimatedUV(float u, float v);
+	virtual bool32_t        IsAnimatedUV(); /* 0xf0 */
+	// Base 00815650 is RET 8 with no result. Meshed/Animated receive the first mesh in EDX.
+	virtual void __fastcall     SetMesh(LH3DMesh* param_1, LH3DMesh* param_2, LH3DMesh* param_3);
 	virtual LH3DMesh*           GetMesh();
 	virtual void                DrawDebugInfo();
 	virtual void                AddDrawing(); /* 0x100 */
@@ -201,12 +206,15 @@ public:
 	// Static methods
 
 	// BW1W120 0080b4d0 BW1M100 10620204 LH3DObject::Create(LH3DObject::ObjectType)
-	static LH3DObject* Create(ObjectType object_type);
+	static LH3DObject* __fastcall Create(ObjectType object_type);
 
 	// Constructors
 
 	// BW1W120 inlined BW1M100 inlined LH3DObject::LH3DObject(void)
 	LH3DObject();
+	// Non-virtual destructor: explicit destruction occurs inside the concrete Release implementations.
+	// Mac __dt__10LH3DObjectFv; not an additional vtable slot.
+	~LH3DObject();
 
 	// Non-virtual functions
 
@@ -287,5 +295,8 @@ public:
 		this->y_angle = y_angle;
 	}
 };
+
+// BW1W120 00ea1ab4. Original free Mac import, created by LH3DObject::Open (0080bbd0).
+extern LH3DMaterial* g_cool_effect_mat;
 
 #endif /* BW1_DECOMP_LH3D_OBJECT_INCLUDED_H */
