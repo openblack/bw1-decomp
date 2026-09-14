@@ -182,22 +182,23 @@ Black/CreatureAction.cpp:
 Black/CreatureLessonChooser.cpp:
 	.data       start:0x0090BA90 end:0x0090BB5A
 
+Black/CreatureInitialLesson.cpp:
+	.rdata      start:0x0080E2C8 end:0x0080E630
+
+Black/CreatureMental.cpp:
+	.rdata      start:0x0080E718 end:0x0080E80C
+	.data       start:0x0090BC68 end:0x00B0CDA8
+
+Black/CreatureMentalAttributeTest.cpp:
+	.rdata      start:0x0080E850 end:0x0080EC50
+	.data       start:0x00B0CDC0 end:0x00B0D5DC
+
 Black/CreatureMentalBeliefs.cpp:
 	.text       start:0x004BC280 end:0x004BD3C0
 	.data       start:0x00B0D630 end:0x00B0D6FE
 
 Black/CreatureActionsKnownAbout.cpp:
 	.text       start:0x004C3920 end:0x004C42E0
-
-Black/CreatureInitialLesson.cpp:
-	.rdata      start:0x0080E2C8 end:0x0080E630
-
-Black/CreatureMental.cpp:
-	.rdata      start:0x0080E718 end:0x0080E80C
-	.data       start:0x0090BC58 end:0x00B0D160
-
-Black/CreatureMentalAttributeTest.cpp:
-	.rdata      start:0x0080E850 end:0x0080EC50
 
 Black/CreatureMentalBelief.cpp:
 	.rdata      start:0x0080EC50 end:0x0080ECF8

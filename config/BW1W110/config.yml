@@ -4,6 +4,15 @@ object: ../../build/BW1W110/runblack-preprocessed.exe
 hash: ef763f2b88488d1099ca50379a1b9c904c316c0c
 symbols: config/BW1W110/symbols.txt
 splits: config/BW1W110/splits.txt
+
+# ASCII inside the Attribute ValueNames string tables that the /FIXED data scan
+# mistakes for pointers; blocking keeps the raw string bytes.
+block_relocations:
+  - source: 0x009CD074
+  - source: 0x009CD338
+  - source: 0x009CD374
+  - source: 0x009CD9B8
+  - source: 0x009CD9F8
 # TODO: Unsure why we get 0x832000, probably because of decryptor
 force_size: 0x00902a0b
 linker_version: "6.0"
