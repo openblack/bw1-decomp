@@ -14,6 +14,9 @@ class Base;
 class GWeatherInfo : public GBaseInfo
 {
 public:
+	// Descriptive table name; original storage/lifetime is in Weather.cpp.
+	static GWeatherInfo Info[7]; // 00dcb5f8
+
 	// Seven 0x64-byte records constructed at 00770da0 and destroyed at 00770e00.
 	// TODO: Recover the individual weather preset fields.
 	uint8_t field_0x10[0x54];
