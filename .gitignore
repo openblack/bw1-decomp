@@ -45,3 +45,4 @@ compile_commands.json
 !/.claude/skills/
 /.claude/skills/*/__pycache__/
 !/.claude/agents/
+vc60.pdb
