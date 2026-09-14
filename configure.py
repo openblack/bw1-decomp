@@ -306,7 +306,7 @@ cflags_base = [
 # and its counterpart DEBUG=1 compiles different code (zlib's Assert/Trace,
 # plus two extra deflate_state fields), shifting every address after src/zlib.
 # --debug adds debug *info* to the same bytes, so it only toggles /Zi vs /Zd.
-cflags_base.append("/DNDEBUG=1")
+cflags_base.append("/DNDEBUG=1 /Zi")
 
 # ICC 5.0 for LH3DP3.cpp, from its .drectve banner. Dropped from the original line:
 # -nologo (the rule adds it), -Fa/-Fo/-Fd (the rule supplies /Fo), and
@@ -327,15 +327,6 @@ cflags_icc = [
     f"/DBUILD_VERSION={version_num}",
     f"/DVERSION_{config.version}",
 ]
-if args.debug:
-    # /Zi puts types in a per-object PDB 2.0 type server (.o.pdb) referenced from
-    # .debug$T; the openblack lld-link fork merges those into the program PDB for
-    # Ghidra. /Z7 would need a full inline C11 type-record reader and makes
-    # MSVC6's per-module debug-info limit (C1067) worse. /Zi supersedes /Zd, so
-    # /Zd is omitted rather than added alongside it (cl warns D4025 for both).
-    cflags_base.append("/Zi")
-else:
-    cflags_base.append("/Zd")
 
 # The game code (Black/) was compiled for Pentium Pro (/G6); the static
 # libraries (Lionhead/, zlib/) were not. Black/ objects are declared with

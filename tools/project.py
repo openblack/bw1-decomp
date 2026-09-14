@@ -892,21 +892,13 @@ def generate_build_ninja(
         cl_implicit: List[Optional[Path]] = [compilers_implicit or cl if compilers is not None else None, wrapper_implicit]
         cl_implicit += local_compiler_dirs
 
-        # In debug builds, give each object its own /Zi type server ($out.pdb)
-        # instead of a single shared vc60.pdb in the cwd, which 462 parallel
-        # compiles would race on (fatal error C1041). lld-link opens every
-        # referenced type server and merges their VC6 types into the program PDB.
-        fd_flag = " /Fd$out.pdb" if config.debug else ""
-        # In debug builds, wrap cl so a C1067 (debug-info module size exceeded)
-        # retries without /Zi: the oversized unit keeps its code and public
-        # symbols (function names) but drops its types, and the build completes.
-        cl_prefix = f"$python {Path('tools') / 'cl_pdb_fallback.py'} " if config.debug else ""
+        cl_prefix = ""
         n.variable("cl_exe", "cl.exe")
         n.newline()
         n.comment("CL build (MSVC / clang-cl)")
         n.rule(
             name="cl",
-            command=f"${{env}}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /c $in /Fo$out{fd_flag}",
+            command=f"${{env}}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /c $in /Fo$out /Fd$out.pdb",
             description="CL $out",
         )
         n.newline()
