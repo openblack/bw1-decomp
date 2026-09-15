@@ -121,7 +121,7 @@ public:
 	// BW1W120 00401730 BW1M100 1004fe30 Abode::GetTown(void)
 	virtual Town* GetTown();
 	// BW1W120 00404d40 BW1M100 10000f50 Abode::JustAddResource(RESOURCE_TYPE, unsigned long, bool)
-	virtual void JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3);
+	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3);
 	// BW1W120 00404d60 BW1M100 1034cdd0 Abode::JustRemoveResource(RESOURCE_TYPE, unsigned long, bool *)
 	virtual uint32_t JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3);
 	// BW1W120 00404d30 BW1M100 1006d300 Abode::GetResource(RESOURCE_TYPE)

@@ -48,7 +48,7 @@ public:
 	// BW1W120 0053acf0 BW1M100 100f07e0 Forest::GetNearestPathTo(MapCoords const &, float, int)
 	virtual uint32_t GetNearestPathTo(const MapCoords* param_1, float param_2, int param_3);
 	// BW1W120 0053ad60 BW1M100 100f05a0 Forest::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
-	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords* param_2, unsigned char param_3);
+	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3);
 	// BW1W120 0053ac50 BW1M100 100f08e0 Forest::AddFootpath(GFootpath *)
 	virtual uint32_t AddFootpath(GFootpath* param_1);
 	// BW1W120 0053acc0 BW1M100 100f0830 Forest::RemoveFootpath(GFootpath *)
