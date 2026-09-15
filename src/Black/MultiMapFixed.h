@@ -92,7 +92,7 @@ public:
 	// BW1W120 0052eeb0 BW1M100 100defc0 MultiMapFixed::GetNearestPathTo(MapCoords const &, float, int)
 	virtual uint32_t GetNearestPathTo(const MapCoords* param_1, float param_2, int param_3);
 	// BW1W120 0052eec0 BW1M100 1009b530 MultiMapFixed::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
-	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords* param_2, unsigned char param_3);
+	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3);
 	// BW1W120 0052ee10 BW1M100 100df0c0 MultiMapFixed::AddFootpath(GFootpath *)
 	virtual uint32_t AddFootpath(GFootpath* footpath);
 	// BW1W120 0052ee80 BW1M100 100df010 MultiMapFixed::RemoveFootpath(GFootpath *)

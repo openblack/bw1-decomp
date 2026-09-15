@@ -669,9 +669,10 @@ uint32_t Abode::GetResource(RESOURCE_TYPE type)
 	return resources[type];
 }
 
-void Abode::JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3)
+uint32_t Abode::JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3)
 {
 	resources[type] += amount;
+	return amount;
 }
 
 uint32_t Abode::JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3)

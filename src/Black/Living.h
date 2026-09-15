@@ -747,7 +747,7 @@ public:
 	// BW1W120 005f2830 BW1M100 10029240 Living::SetupMoveToPos(MapCoords const &, unsigned char)
 	bool32_t SetupMoveToPos(const MapCoords& coord, uint8_t end_state);
 	// BW1W120 005f2890 BW1M100 10010f60 Living::SetupMoveToWithHug(MapCoords const &, unsigned char)
-	bool32_t SetupMoveToWithHug(const MapCoords& coords, VILLAGER_STATES state);
+	bool32_t SetupMoveToWithHug(const MapCoords& coords, uint8_t state);
 	// BW1W120 006e44a0 BW1M100 101358c0 Living::SetReactionDoneWhen(REACTION)
 	void SetReactionDoneWhen(REACTION reaction);
 	// BW1W120 00768640 BW1M100 105975c0 Living::CannotExitState(unsigned char)

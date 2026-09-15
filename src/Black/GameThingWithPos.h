@@ -64,7 +64,7 @@ public:
 	// BW1W120 0056fe20 BW1M100 106fd140 GameThingWithPos::Get3DSoundPos(LHPoint*)
 	virtual int Get3DSoundPos(LHPoint* param_1);
 	// BW1W120 00570350 BW1M100 10005560 GameThingWithPos::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
-	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords* param_2, unsigned char param_3);
+	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3);
 	// BW1W120 004178f0 BW1M100 101bb350 GameThingWithPos::GetDebugText(void)
 	virtual char* GetDebugText();
 	// BW1W120 005704a0 BW1M100 1016a2c0 GameThingWithPos::Load(GameOSFile &)

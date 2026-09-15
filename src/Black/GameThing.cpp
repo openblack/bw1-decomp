@@ -126,3 +126,35 @@ bool32_t GameThing::CheckAndSetSaved()
 	}
 	return 0;
 }
+
+Town* GameThing::GetTown()
+{
+	return NULL;
+}
+
+GPlayer* GameThing::GetPlayer()
+{
+	return &GGame::g_game->players[GGame::g_game->NeutralPlayerIndex];
+}
+
+void GameThing::SetPlayer(GPlayer* player) {}
+
+void GameThing::UseFootpathIfNecessary(Living* living, const MapCoords& coords, uint8_t state)
+{
+	living->SetupMoveToWithHug(coords, state);
+}
+
+uint32_t GameThing::JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3)
+{
+	return 0;
+}
+
+uint32_t GameThing::JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3)
+{
+	return 0;
+}
+
+uint32_t GameThing::JustGetResource(RESOURCE_TYPE param_1, uint32_t amount, bool* param_3)
+{
+	return 0;
+}
