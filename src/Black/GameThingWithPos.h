@@ -600,6 +600,11 @@ public:
 	// BW1W120 004024e0 BW1M100 1015a1b0 GameThingWithPos::CleanUpBeforeReset(void)
 	virtual void CleanUpBeforeReset() {}
 
+	// Static methods
+
+	// BW1W120 0056ff80 BW1M100 1033c3d0 GameThingWithPos::IsThingMovingTowards(GameThingWithPos*, GameThingWithPos*)
+	static bool32_t IsThingMovingTowards(GameThingWithPos* target, GameThingWithPos* moving_thing);
+
 	// Constructors
 
 	// BW1W120 0055d050 BW1M100 101bb2c0 GameThingWithPos::GameThingWithPos(void)
@@ -616,6 +621,8 @@ public:
 	bool32_t IsInsideCreatureHome(Creature* creature);
 	// BW1W120 0056fe70 BW1M100 103793b0 GameThingWithPos::GetBoredomMultiplier(Reaction *)
 	float GetBoredomMultiplier(Reaction* param_1);
+	// BW1W120 00570160 BW1M100 101ba410 GameThingWithPos::SetPos(LHPoint const &)
+	void SetPos(const LHPoint& pos);
 	// BW1W120 005705d0 BW1M100 10098a30 GameThingWithPos::SetToZero(void)
 	void SetToZero();
 	// BW1W120 00768540 BW1M100 10594d20 GameThingWithPos::AttitudeToCreatureNone(void)

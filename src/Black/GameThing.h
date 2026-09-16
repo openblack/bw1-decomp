@@ -391,7 +391,7 @@ public:
 	// BW1W120 004018c0 BW1M100 101063a0 GameThing::AddFootpathLink(GFootpath *)
 	virtual uint32_t AddFootpathLink(GFootpath* footpath) { return 0; }
 	// BW1W120 00405180 BW1M100 104788b0 GameThing::GetNearestPathTo(MapCoords const &, float, int)
-	virtual uint32_t GetNearestPathTo(const MapCoords* param_1, float param_2, int param_3);
+	virtual uint32_t GetNearestPathTo(const MapCoords& param_1, float param_2, int param_3);
 	// BW1W120 00570330 BW1M100 100e4740 GameThing::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
 	virtual void UseFootpathIfNecessary(Living* living, const MapCoords& coords, uint8_t state);
 	// BW1W120 00405190 BW1M100 103dffc0 GameThing::AddFootpath(GFootpath *)
@@ -473,6 +473,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0056FA70 BW1M100 10148180 GameThing::GameThing::SetScriptNameOfCreate(char*)
+	void SetScriptNameOfCreate(char* name);
 	// BW1W120 0056faa0 BW1M100 10492500 GameThing::ProcessDead(int)
 	void ProcessDead(int param_1);
 	// BW1W120 0056fef0 BW1M100 103c2300 GameThing::CheckAndSetSaved(void)

@@ -2,6 +2,7 @@
 #define BW1_DECOMP_LH_POINT_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <math.h>   /* For sqrt */
 
 struct Point2D
 {
@@ -60,22 +61,30 @@ struct LHPoint
 	// BW1W120 inlined BW1M100 inlined LHPoint::LHPoint(void)
 	LHPoint() {}
 	// BW1W120 00442700 BW1M100 1004a260 LHPoint::LHPoint(float, float, float)
-	LHPoint(float x, float y, float z);
+	LHPoint(float x, float y, float z) : x(x), y(y), z(z) {}
 	// BW1W120 0044cfc0 BW1M100 1003a450 LHPoint::LHPoint(const LHPoint&)
 	LHPoint(LHPoint* other);
 
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M100 inlined LHPoint::operator*=(float)
-	LHPoint& operator*=(float rhs);
+	LHPoint& operator*=(float rhs)
+	{
+		x *= rhs;
+		y *= rhs;
+		z *= rhs;
+		return *this;
+	}
 	// BW1W120 inlined BW1M100 inlined LHPoint::operator+(LHPoint const &) const
-	LHPoint operator+(const LHPoint& rhs) const;
-	// BW1W120 inlined BW1M100 inlined LHPoint::operator-(LHPoint const &) const
-	LHPoint operator-(const LHPoint& rhs) const;
-	// BW1W120 inlined BW1M100 inlined LHPoint::GetNormSq(void)
-	float GetNormSq();
-	// BW1W120 inlined BW1M100 inlined LHPoint::GetNorm(void)
-	float GetNorm();
+	LHPoint operator+(const LHPoint& rhs) const { return LHPoint(x + rhs.x, y + rhs.y, z + rhs.z); }
+	// BW1W120 inlined BW1M100 100413c0 LHPoint::operator-(LHPoint const &) const
+	LHPoint operator-(const LHPoint& rhs) const { return LHPoint(x - rhs.x, y - rhs.y, z - rhs.z); }
+	// BW1W120 inlined BW1M100 inlined LHPoint::DotProductInline(LHPoint const &) const
+	float DotProductInline(const LHPoint& other) const { return z * other.z + y * other.y + x * other.x; }
+	// BW1W120 inlined BW1M100 inlined LHPoint::GetNormSq(void) const
+	float GetNormSq() const { return sqrt(GetNorm()); }
+	// BW1W120 inlined BW1M100 inlined LHPoint::GetNorm(void) const
+	float GetNorm() const { return DotProductInline(*this); }
 	// BW1W120 004a1ba0 BW1M100 10005db0 LHPoint::GetNorme(void)
 	float GetNorme();
 	// BW1W120 inlined BW1M100 inlined LHPoint::SetNull(void)
@@ -87,6 +96,17 @@ struct LHPoint
 	}
 	// BW1W120 0054e910 BW1M100 10037ce0 LHPoint::FastNormalize(void)
 	void FastNormalize();
+	// BW1W120 inline BW1M100 inline LHPoint::FastNormalizeInline(void)
+	void FastNormalizeInline()
+	{
+		if (x != 0.0f || y != 0.0f || z != 0.0f)
+		{
+			float invsqr = 1.0f / (float)sqrt(x * x + y * y + z * z);
+			x *= invsqr;
+			y *= invsqr;
+			z *= invsqr;
+		}
+	}
 };
 
 #endif /* BW1_DECOMP_LH_POINT_INCLUDED_H */

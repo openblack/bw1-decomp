@@ -1,17 +1,23 @@
 #include "GameThing.h"
-#include "GameThingWithPos.h"
 
 #include <stdint.h>
 
 #include <Lionhead/LH3DLib/development/LH3DRender.h>
+#include "Lionhead/LH3DLib/development/LHPoint.h"
 #include "re_common.h"
 
 #include "ColourConstants.h" /* For White */
+#include "GameThingWithPos.h"
 #include "FootpathLink.h"
 #include "Game.h"
 #include "GameOSFile.h"
-#include "LandscapeConstants.h" /* For CellSizeXGridDim */
+#include "Landscape.h"
+#include "MapCoords.h"
 #include "Utils.h"
+#include "LandscapeConstants.h" /* For CellSizeXGridDim */
+
+uint16_t GameThing::NumActiveGameThings;
+uint16_t GameThing::NumCreatedGameThings;
 
 GameThing::GameThing() : Base()
 {
@@ -21,43 +27,65 @@ GameThing::GameThing() : Base()
 	CurrentSaveCount = 0;
 }
 
-GameThing::~GameThing() {}
+void GameThing::SetScriptNameOfCreate(char* name) {}
+
+GameThing::~GameThing()
+{
+	--NumActiveGameThings;
+}
 
 void GameThing::ProcessDead(int param_1)
 {
-	GGame* game = GGame::g_game;
 	if ((Flags & 2) == 0 && param_1 == 0)
 	{
 		Flags |= 2;
 		return;
 	}
 
-	GameThing* prev_thing = GGame::g_game->GameLists.GameThings.head;
-	if (prev_thing == this)
+	LHListHead<GameThing>& list = GGame::g_game->GameLists.GameThings;
+	if (list.Get() == this)
 	{
-		GGame::g_game->GameLists.GameThings.head = next.value;
+		list.Set(next.Get());
+		list.count--;
+		next.Set(NULL);
 	}
 	else
 	{
-		prev_thing->next = next;
+		for (GameThing* thing = list.Get(); thing != NULL; thing = thing->next.Get())
+		{
+			if (thing->next.Get() == this)
+			{
+				thing->next.Set(next.Get());
+				list.count--;
+				next.Set(NULL);
+				break;
+			}
+		}
 	}
 
-	--game->GameLists.GameThings.count;
-
-	next.Set(NULL);
 	Flags |= 2;
 	Delete();
 }
 
 void GameThing::ProcessDeadList(int param_1)
 {
-	for (GameThing* g = GGame::g_game->GameLists.GameThings.head; g != NULL; g = g->next.value)
+	while (true)
 	{
-		if (dynamic_cast<GameThing*>(g))
+		GameThing* thing = GGame::g_game->GameLists.GameThings.Get();
+		while (thing != NULL)
 		{
-			g->ProcessDead(param_1);
+			GameThing* thingNext = thing->next.Get();
+			if (dynamic_cast<GameThing*>(thing))
+			{
+				thing->ProcessDead(param_1);
+			}
+			thing = thingNext;
 		}
-	}
+		if (param_1 == 0 || GGame::g_game->GameLists.GameThings.count == 0)
+		{
+			return;
+		}
+	};
 }
 
 void GameThing::ToBeDeleted(int param_1)
@@ -71,11 +99,15 @@ void GameThing::ToBeDeleted(int param_1)
 			return;
 		}
 
-		Flags = (Flags & ~2) | 1;
-
+		Flags &= ~2;
 		next.Set(NULL);
-		for (GameThing* g = GGame::g_game->GameLists.GameThings.head; g != NULL; g = g->next.value)
+
+		if (GGame::g_game->GameLists.GameThings.Find(this) == NULL)
 		{
+			LHListHead<GameThing>& list = GGame::g_game->GameLists.GameThings;
+			next.Set(list.Get());
+			list.Set(this);
+			list.count++;
 		}
 	}
 }
@@ -85,10 +117,14 @@ uint32_t GameThing::Save(GameOSFile& file)
 	uint32_t saveType = GetSaveType();
 	WRITE_SAFE(file, saveType);
 	SaveExtraData(file);
-	file.WriteCheckSum(this);
-	WRITE_SAFE(file, destroyed);
-	WRITE_SAFE(file, Flags);
-	return 1;
+	if (saveType != 0)
+	{
+		file.WriteCheckSum(this);
+		WRITE_SAFE(file, destroyed);
+		WRITE_SAFE(file, Flags);
+		return 1;
+	}
+	return 0;
 }
 
 uint32_t GameThing::Load(GameOSFile& file)
@@ -121,6 +157,7 @@ void GameThingWithPos::ToBeDeleted(int param_1)
 
 int GameThingWithPos::Get3DSoundPos(LHPoint* pos)
 {
+	GLandscape::ConvertMapCoordToLandscapePoint(Pos, *pos);
 	return 1;
 }
 
@@ -133,7 +170,9 @@ float GameThingWithPos::GetBoredomMultiplier(Reaction* param_1)
 {
 	if (GetTown() != NULL)
 	{
-		return GetTown()->belief.BeliefInPlayer[0];
+		REACTION index = param_1->GetFunctionIndex();
+		GBelief* belief = &GetTown()->belief;
+		return belief->BoredomMultiplier[index];
 	}
 	return 1.0f;
 }
@@ -198,7 +237,34 @@ GPlayer* GameThing::GetPlayer()
 	return &GGame::g_game->players[GGame::g_game->NeutralPlayerIndex];
 }
 
+bool32_t GameThingWithPos::IsThingMovingTowards(GameThingWithPos* target, GameThingWithPos* moving_thing)
+{
+	LHPoint target_pos;
+	LHPoint moving_pos;
+	GLandscape::ConvertMapCoordToLandscapePoint(target->Pos, target_pos);
+	GLandscape::ConvertMapCoordToLandscapePoint(moving_thing->Pos, moving_pos);
+	LHPoint target_to_moving = target_pos - moving_pos;
+
+	// Needed for 100%: Dead read of target_to_moving.x raises its x87 scheduling weight
+	float unused = target_to_moving.x;
+
+	target_to_moving.FastNormalizeInline();
+	LHPoint moving_direction;
+	moving_thing->GetMovementDirection(&moving_direction);
+	moving_direction.FastNormalizeInline();
+	return target_to_moving.DotProductInline(moving_direction) >= 0.0f;
+}
+
 void GameThing::SetPlayer(GPlayer* player) {}
+
+void GameThingWithPos::SetPos(const LHPoint& pos)
+{
+	MapCoords coords;
+	coords.SetX(pos.x);
+	coords.SetZ(pos.z);
+	coords.SetAltitude(0);
+	SetPos(coords);
+}
 
 bool32_t GameThingWithPos::IsInteractable()
 {
@@ -306,10 +372,8 @@ uint32_t GameThingWithPos::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
-
-		file.WriteSafe(Pos);
-		file.WriteSafe(Flags);
-
+		WRITE_SAFE(file, Pos);
+		WRITE_SAFE(file, Flags);
 		return 1;
 	}
 	return 0;

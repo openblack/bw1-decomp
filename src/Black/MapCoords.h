@@ -65,9 +65,6 @@ struct MapCoords
 	MapCoords(long x, long z, float altitude);
 	// BW1W120 006031d0 BW1M100 10324c60 MapCoords::MapCoords(char *)
 	MapCoords(const char* str);
-	// BW1W120 inlined BW1M100 inlined MapCoords::MapCoords(MapCoords const &)
-	// fabricated
-	MapCoords(const MapCoords& other) : x(other.x), z(other.z), altitude(other.altitude) {}
 	// BW1W120 00603030 MapCoords::MapCoords(JustWholeMapXZ *)
 	MapCoords(JustWholeMapXZ* xz);
 	// BW1W120 00603160 BW1M100 1006a450 MapCoords::MapCoords(LHPoint const &)
@@ -100,7 +97,17 @@ struct MapCoords
 	// BW1W120 00603280 BW1M100 10513100 MapCoords::Set(char *)
 	void Set(const char* str);
 	// BW1W120 00603340 BW1M100 1006a370 MapCoords::Set(LHPoint const &)
-	MapCoords* Set(const LHPoint* point);
+	MapCoords* Set(const LHPoint& point);
+	// BW1W120 inline BW1M100 inline MapCoords::SetX(float)
+	void SetX(float _x) { SetWholeX((long)(_x * (float)0x10000 / 10.0f)); }
+	// BW1W120 inline BW1M100 1004ae60 LH3DMapCoords::SetWholeX(long)
+	void SetWholeX(long _x) { x = _x; }
+	// BW1W120 inline BW1M100 inline MapCoords::SetZ(float)
+	void SetZ(float _z) { SetWholeZ((long)(_z * (float)0x10000 / 10.0f)); }
+	// BW1W120 inline BW1M100 1004aea0 LH3DMapCoords::SetWholeZ(long)
+	void SetWholeZ(long _z) { z = _z; }
+	// BW1W120 inline BW1M100 1004aee0 LH3DMapCoords::SetAltitude(long)
+	void SetAltitude(long _altitude) { altitude = _altitude; }
 	// BW1W120 00603430 BW1M100 10049b80 MapCoords::ToMap(void) const
 	MapCell* ToMap() const;
 	// BW1W120 006034b0 BW1M100 1002cb50 MapCoords::GetFirstObjectFixed(void) const
