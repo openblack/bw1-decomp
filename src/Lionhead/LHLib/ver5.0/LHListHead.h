@@ -22,6 +22,20 @@ struct LHListHead
 
 	inline LHListHead() : head(NULL), count(0) {}
 
+	// BW1W120 inlined BW1M100 1042a530 LHListHead<GameThing>::Get(void)
+	T* Get() { return head; }
+	// BW1W120 inlined BW1M100 100fd120 LHListHead<GameThing>::Set(GameThing *)
+	void Set(T* element) { head = element; }
+
+	T* Find(T* element)
+	{
+		T* walker;
+		for (walker = Get(); walker != NULL && walker != element; walker = walker->next.Get())
+		{
+		}
+		return walker;
+	}
+
 	void AddToFirst(T* element)
 	{
 		element->next = head;

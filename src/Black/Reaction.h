@@ -67,6 +67,8 @@ public:
 
 	// BW1W120 006e4700 BW1M100 1008c230 Reaction::GetInfo(void) const
 	ReactionInfo* GetInfo() const;
+	// BW1W120 inlined BW1M100 100bc340 Reaction::GetFunctionIndex(void) const
+	REACTION GetFunctionIndex() const { return type; }
 	// BW1W120 006e48a0 BW1M100 10134d90 Reaction::GetDefaultReactionMultiplier(Living *)
 	float GetDefaultReactionMultiplier(Living* param_1);
 };
