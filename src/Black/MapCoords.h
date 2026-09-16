@@ -77,6 +77,8 @@ struct MapCoords
 
 	// BW1W120 00602880 BW1M100 10569c60 MapCoords::ConvertToText(char *)
 	char* ConvertToText(char* buff);
+	// BW1W120 006041c0 BW1M100 101bffb0 MapCoords::ConvertToLHPoint(void) const
+	LHPoint ConvertToLHPoint() const;
 	// BW1W120 006042c0 BW1M100 100499f0 MapCoords::InBounds(void) const
 	bool32_t InBounds() const;
 	// BW1W120 006053c0 BW1M100 100028d0 MapCoords::IsCloseToEqual(const MapCoords&, float) const

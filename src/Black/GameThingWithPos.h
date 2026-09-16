@@ -62,9 +62,9 @@ public:
 	// BW1W120 0056fe00 BW1M100 100bc3e0 GameThingWithPos::ToBeDeleted(int)
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0056fe20 BW1M100 106fd140 GameThingWithPos::Get3DSoundPos(LHPoint*)
-	virtual int Get3DSoundPos(LHPoint* param_1);
+	virtual int Get3DSoundPos(LHPoint* pos);
 	// BW1W120 00570350 BW1M100 10005560 GameThingWithPos::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
-	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3);
+	virtual void UseFootpathIfNecessary(Living* living, const MapCoords& coords, uint8_t state);
 	// BW1W120 004178f0 BW1M100 101bb350 GameThingWithPos::GetDebugText(void)
 	virtual char* GetDebugText();
 	// BW1W120 005704a0 BW1M100 1016a2c0 GameThingWithPos::Load(GameOSFile &)
@@ -96,17 +96,17 @@ public:
 	// BW1W120 004247f0 BW1M100 103e31e0 GameThingWithPos::SetScale(float)
 	virtual void SetScale(float scale);
 	// BW1W120 0056fe60 BW1M100 100bbfe0 GameThingWithPos::GetPower( const(void))
-	virtual float GetPower();
+	virtual float GetPower() const;
 	// BW1W120 0056fec0 BW1M100 10513050 GameThingWithPos::GetPSysPower( const(void))
-	virtual float GetPSysPower();
+	virtual float GetPSysPower() const;
 	// BW1W120 00570220 BW1M100 103e3220 GameThingWithPos::GetSpeedInMetres( const(void))
-	virtual float GetSpeedInMetres();
+	virtual float GetSpeedInMetres() const;
 	// BW1W120 00570210 BW1M100 10357d80 GameThingWithPos::SetSpeedInMetres(float, int)
 	virtual void SetSpeedInMetres(float speed, int scale);
 	// BW1W120 00570230 BW1M100 10492670 GameThingWithPos::GetRunningSpeedInMetres(void)
 	virtual float GetRunningSpeedInMetres();
 	// BW1W120 005702b0 BW1M100 10172410 GameThingWithPos::GetDistanceFromObject(MapCoords const &)
-	virtual float GetDistanceFromObject(const MapCoords* target);
+	virtual float GetDistanceFromObject(const MapCoords& target);
 	// BW1W120 00570240 BW1M100 101473d0 GameThingWithPos::GetDefaultSpeedInMetres(void)
 	virtual float GetDefaultSpeedInMetres();
 	// BW1W120 004019b0 BW1M100 103e1140 GameThingWithPos::SetHeight(float)
@@ -118,7 +118,7 @@ public:
 	// BW1W120 005702e0 BW1M100 10110d20 GameThingWithPos::GetPSysBeamTargetPos(LHPoint *)
 	virtual void GetPSysBeamTargetPos(LHPoint* pos);
 	// BW1W120 00570260 BW1M100 1055f490 GameThingWithPos::GetSpeedInMetresPerSecond( const(void))
-	virtual float GetSpeedInMetresPerSecond();
+	virtual float GetSpeedInMetresPerSecond() const;
 	// BW1W120 00570250 BW1M100 101723c0 GameThingWithPos::SetSpeedInMetresPerSecond(float, int)
 	virtual void SetSpeedInMetresPerSecond(float speed, int scale);
 	// BW1W120 00570270 BW1M100 100bc060 GameThingWithPos::GetRunningSpeedInMetresPerSecond(void)
@@ -497,7 +497,7 @@ public:
 	// BW1W120 00570290 BW1M100 1036ad90 GameThingWithPos::ForDrawFXGetNumVertices(void)
 	virtual int ForDrawFXGetNumVertices();
 	// BW1W120 005702a0 BW1M100 1056f610 GameThingWithPos::ForDrawFXGetVertexPos(long, LHPoint *)
-	virtual void ForDrawFXGetVertexPos(int param_1, LHPoint* param_2);
+	virtual bool ForDrawFXGetVertexPos(int index, LHPoint* pos);
 	// BW1W120 00405510 BW1M100 10003460 GameThingWithPos::SetInScript(int)
 	virtual void SetInScript(int param_1);
 	// BW1W120 00402240 BW1M100 100552b0 GameThingWithPos::SetControlledByScript(int)
@@ -596,7 +596,7 @@ public:
 	// BW1W120 004024d0 BW1M100 100188b0 GameThingWithPos::GetReactionPower(void)
 	virtual float GetReactionPower() { return 1.0f; }
 	// BW1W120 00570570 BW1M100 10541fb0 GameThingWithPos::GetSpellCastPos(void)
-	virtual void GetSpellCastPos(MapCoords* outPos);
+	virtual MapCoords GetSpellCastPos();
 	// BW1W120 004024e0 BW1M100 1015a1b0 GameThingWithPos::CleanUpBeforeReset(void)
 	virtual void CleanUpBeforeReset() {}
 
@@ -615,7 +615,7 @@ public:
 	// BW1W120 004e3ee0 BW1M100 105e6600 GameThingWithPos::IsInsideCreatureHome(Creature *)
 	bool32_t IsInsideCreatureHome(Creature* creature);
 	// BW1W120 0056fe70 BW1M100 103793b0 GameThingWithPos::GetBoredomMultiplier(Reaction *)
-	int GetBoredomMultiplier(Reaction* param_1);
+	float GetBoredomMultiplier(Reaction* param_1);
 	// BW1W120 005705d0 BW1M100 10098a30 GameThingWithPos::SetToZero(void)
 	void SetToZero();
 	// BW1W120 00768540 BW1M100 10594d20 GameThingWithPos::AttitudeToCreatureNone(void)

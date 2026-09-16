@@ -68,7 +68,7 @@ public:
 	// BW1W120 007277b0 BW1M100 10522020 SpellSeedGraphic::ForDrawFXGetNumVertices(void)
 	virtual int ForDrawFXGetNumVertices();
 	// BW1W120 00727800 BW1M100 10521e20 SpellSeedGraphic::ForDrawFXGetVertexPos(long, LHPoint *)
-	virtual void ForDrawFXGetVertexPos(int param_1, LHPoint* param_2);
+	virtual bool ForDrawFXGetVertexPos(int index, LHPoint* pos);
 
 	// Static methods
 

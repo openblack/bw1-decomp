@@ -61,7 +61,7 @@ public:
 	// BW1W120 0070aa70 BW1M100 104faf70 ScriptHighlight::ForDrawFXGetNumVertices(void)
 	virtual int ForDrawFXGetNumVertices();
 	// BW1W120 0070aac0 BW1M100 104facf0 ScriptHighlight::ForDrawFXGetVertexPos(long, LHPoint *)
-	virtual void ForDrawFXGetVertexPos(int param_1, LHPoint* param_2);
+	virtual bool ForDrawFXGetVertexPos(int index, LHPoint* pos);
 	// BW1W120 00709740 BW1M100 104fa180 ScriptHighlight::IsScriptHighlight(void)
 	virtual uint32_t IsScriptHighlight();
 	// BW1W120 0070ae30 BW1M100 100083b0 ScriptHighlight::GetScriptObjectType(void)

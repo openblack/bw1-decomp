@@ -59,7 +59,7 @@ public:
 	// BW1W120 00780f00 BW1M100 105b7a00 WorshipTotem::ResolveLoad(void)
 	virtual void ResolveLoad();
 	// BW1W120 00780ad0 BW1M100 105b8160 WorshipTotem::GetPSysPower( const(void))
-	virtual float GetPSysPower();
+	virtual float GetPSysPower() const;
 	// BW1W120 00780a80 BW1M100 105b8330 WorshipTotem::CalculateDesireForFood(void)
 	virtual float CalculateDesireForFood();
 	// BW1W120 00780a90 BW1M100 105b82c0 WorshipTotem::CalculateDesireForRest(void)

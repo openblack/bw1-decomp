@@ -79,7 +79,12 @@ struct LHPoint
 	// BW1W120 004a1ba0 BW1M100 10005db0 LHPoint::GetNorme(void)
 	float GetNorme();
 	// BW1W120 inlined BW1M100 inlined LHPoint::SetNull(void)
-	void SetNull();
+	void SetNull()
+	{
+		z = 0.0f;
+		y = 0.0f;
+		x = 0.0f;
+	}
 	// BW1W120 0054e910 BW1M100 10037ce0 LHPoint::FastNormalize(void)
 	void FastNormalize();
 };

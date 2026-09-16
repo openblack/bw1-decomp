@@ -56,7 +56,7 @@ public:
 	GFootpath* GetNearestPathToQuick(const MapCoords* param_1, const MapCoords* param_2, float param_3, int* param_4,
 	                                 GFootpathNode** param_5);
 	// BW1W120 005362e0 BW1M100 100ebe90 GFootpathLink::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char, GameThingWithPos *)
-	uint32_t UseFootpathIfNecessary(Living* living, const MapCoords& coord, uint32_t param_4,
+	uint32_t UseFootpathIfNecessary(Living* living, const MapCoords& coord, uint8_t state,
 	                                GameThingWithPos* game_thing_with_pos);
 };
 
