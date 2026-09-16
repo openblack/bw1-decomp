@@ -46,9 +46,9 @@ public:
 	// BW1W120 00727f80 BW1M100 1052cd20 SpellSeed::GetOrigin(void)
 	virtual uint32_t GetOrigin();
 	// BW1W120 007298b0 BW1M100 10529040 SpellSeed::GetPower( const(void))
-	virtual float GetPower();
+	virtual float GetPower() const;
 	// BW1W120 007298f0 BW1M100 10529000 SpellSeed::GetPSysPower( const(void))
-	virtual float GetPSysPower();
+	virtual float GetPSysPower() const;
 	// BW1W120 00728a00 BW1M100 1052af90 SpellSeed::GetWorshipSite(void)
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 00727f50 BW1M100 1052cc60 SpellSeed::IsSpellSeed(void)

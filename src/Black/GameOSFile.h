@@ -120,6 +120,17 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
+	void ReadSafe(uint16_t& value)
+	{
+		if (ReadEnabled)
+		{
+			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				ReadEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
 	// BW1W120 inlined BW1M100 102ab2f0 GameOSFile::ReadSafe(unsigned long &)
 	void ReadSafe(uint32_t& value)
 	{
@@ -160,6 +171,17 @@ public:
 	}
 	// BW1W120 inlined BW1M100 102abca0 GameOSFile::WriteSafe(unsigned long &)
 	void WriteSafe(uint32_t& value)
+	{
+		if (WriteEnabled)
+		{
+			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				WriteEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	void WriteSafe(uint16_t& value)
 	{
 		if (WriteEnabled)
 		{

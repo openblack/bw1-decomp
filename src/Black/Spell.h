@@ -132,7 +132,7 @@ public:
 	// BW1W120 0055cf10 BW1M100 103b20d0 Spell::GetReactionPower(void)
 	virtual float GetReactionPower();
 	// BW1W120 0055cd80 BW1M100 inlined Spell::GetSpellCastPos(MapCoords *)
-	virtual void GetSpellCastPos(MapCoords* param_1);
+	virtual MapCoords GetSpellCastPos();
 	// BW1W120 00721370 BW1M100 10516a00 Spell::ProcessSpellSeed(void)
 	virtual void ProcessSpellSeed();
 	// BW1W120 00720130 BW1M100 105190d0 Spell::GetParticleType(void)
