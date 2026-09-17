@@ -617,7 +617,6 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/GameStatsFrontEnd.cpp"),
             GameCodeObject(NonMatching, "Black/GameStatsList.cpp"),
             GameCodeObject(NonMatching, "Black/GameThing.cpp"),
-            GameCodeObject(NonMatching, "Black/GameThingWithPos.cpp"),
             GameCodeObject(NonMatching, "Black/GatheringBox.cpp"),
             GameCodeObject(NonMatching, "Black/GatheringInterface.cpp"),
             GameCodeObject(NonMatching, "Black/GenerateCreatureHTML.cpp"),
