@@ -63,7 +63,7 @@ public:
 	// BW1W120 0077f0a0 BW1M100 10381d20 WorshipSpellIcon::GetWorshipSite(void)
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 0077f0e0 BW1M100 105b43b0 WorshipSpellIcon::ApplyEffect(EffectValues &, int)
-	virtual void ApplyEffect(EffectValues* param_1, int param_2);
+	virtual void ApplyEffect(EffectValues& param_1, int param_2);
 	// BW1W120 0077f390 BW1M100 105b6a70 WorshipSpellIcon::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 0077f290 BW1M100 105b6e40 WorshipSpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)

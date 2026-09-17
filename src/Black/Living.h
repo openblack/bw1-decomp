@@ -240,13 +240,13 @@ public:
 	// BW1W120 005ed5c0 BW1M100 1037fd10 Living::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
 	// BW1W120 005efd80 BW1M100 10385a30 Living::InitialisePhysicsFromHand(LHPoint &, LHPoint &, GInterfaceStatus *, Object *, int)
-	virtual uint32_t InitialisePhysicsFromHand(LHPoint* param_1, LHPoint* param_2, GInterfaceStatus* param_3,
+	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
 	                                           Object* param_4, int param_5);
 	// BW1W120 005efe10 BW1M100 10385900 Living::InitialisePhysics(LHPoint const &, LHPoint const &, Object *, bool, GInterfaceStatus *)
-	virtual uint32_t InitialisePhysics(const LHPoint* param_1, const LHPoint* param_2, Object* param_3, bool param_4,
+	virtual uint32_t InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3, bool param_4,
 	                                   GInterfaceStatus* param_5);
 	// BW1W120 005ed2f0 BW1M100 103804c0 Living::GetBoundingSphere(LHPoint &, float &)
-	virtual void GetBoundingSphere(LHPoint* param_1, float* param_2);
+	virtual void GetBoundingSphere(LHPoint& param_1, float& param_2);
 	// BW1W120 005ed3e0 BW1M100 10380210 Living::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 005ed4f0 BW1M100 103801d0 Living::CanBecomeAPhysicsObject(void)

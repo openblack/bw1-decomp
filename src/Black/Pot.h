@@ -115,7 +115,7 @@ public:
 	// BW1W120 0066d650 BW1M100 1011bcb0 Pot::IsEffectReceiver(EffectValues *)
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0066df00 BW1M100 1011a620 Pot::InitialisePhysicsFromHand(LHPoint &, LHPoint &, GInterfaceStatus *, Object *, int)
-	virtual uint32_t InitialisePhysicsFromHand(LHPoint* param_1, LHPoint* param_2, GInterfaceStatus* param_3,
+	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
 	                                           Object* param_4, int param_5);
 	// BW1W120 0066cef0 BW1M100 1011cd80 Pot::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();

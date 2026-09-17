@@ -513,7 +513,7 @@ ScriptFunctionEntry g_scriptFunctionTable[464] = {
 // BW1W120 006f9090 BW1M100 104fe414 GScript::SetFocusLoopFn(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong)
 int GScript::SetFocusLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t param_3)
 {
-	((Object*)thing)->SetFocus(&GGame::g_game->script->FocusPos);
+	((Object*)thing)->SetFocus(GGame::g_game->script->FocusPos);
 	return 0;
 }
 
@@ -553,7 +553,7 @@ void GScript::SetFocus()
 		{
 			object->SetControlledByScript(1);
 		}
-		object->SetFocus(&pos);
+		object->SetFocus(pos);
 		return;
 	}
 	ScriptErrorMessage("Jonty - Thing must be living to face position!");

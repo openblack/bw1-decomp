@@ -363,23 +363,23 @@ public:
 	// BW1W120 00477ec0 BW1M100 101da1c0 Creature::GetFacingDirection(void)
 	virtual float GetFacingDirection();
 	// BW1W120 004f6760 BW1M100 10289e50 Creature::SetFocus(LHPoint const &)
-	virtual void SetFocus(const LHPoint* param_1);
+	virtual void SetFocus(const LHPoint& param_1);
 	// BW1W120 00473f50 BW1M100 101e2d40 Creature::IsReachable(void)
 	virtual bool32_t IsReachable();
 	// BW1W120 00479e50 BW1M100 101d6990 Creature::MoveMapObject(MapCoords const &)
-	virtual int MoveMapObject(const MapCoords* param_1);
+	virtual int MoveMapObject(const MapCoords& param_1);
 	// BW1W120 0047dd00 BW1M100 101ce700 Creature::ReduceLife(float, GPlayer *)
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0047de20 BW1M100 101ce640 Creature::IncreaseLife(float)
 	virtual float IncreaseLife(float value);
 	// BW1W120 00478c00 BW1M100 101d8e40 Creature::FillInEffectDefenceMultiplier(EffectNumbers &)
-	virtual void FillInEffectDefenceMultiplier(EffectNumbers* param_1);
+	virtual void FillInEffectDefenceMultiplier(EffectNumbers& param_1);
 	// BW1W120 00478c80 BW1M100 101d89d0 Creature::ApplyEffect(EffectValues &, int)
-	virtual void ApplyEffect(EffectValues* param_1, int param_2);
+	virtual void ApplyEffect(EffectValues& param_1, int param_2);
 	// BW1W120 00476f70 BW1M100 101dbeb0 Creature::DestroyedByEffect(GPlayer *, float)
 	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
 	// BW1W120 00479020 BW1M100 101d8950 Creature::ApplySingleEffect(EFFECT_TYPE, float, GameThing *, MapCoords const &)
-	virtual void ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords* param_4);
+	virtual void ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords& param_4);
 	// BW1W120 00517910 BW1M100 100c9670 Creature::Draw(void)
 	virtual void Draw();
 	// BW1W120 00472dc0 BW1M100 101e16f0 Creature::ProcessState(void)
@@ -433,7 +433,7 @@ public:
 	// BW1W120 00479b90 BW1M100 101d6db0 Creature::SetUpPhysOb(PhysOb *)
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 00479970 BW1M100 101d72a0 Creature::GetBoundingSphere(LHPoint &, float &)
-	virtual void GetBoundingSphere(LHPoint* param_1, float* param_2);
+	virtual void GetBoundingSphere(LHPoint& param_1, float& param_2);
 	// BW1W120 00479d20 BW1M100 101d6d20 Creature::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00479990 BW1M100 101d6fd0 Creature::ReactToPhysicsImpact(PhysicsObject *, bool)

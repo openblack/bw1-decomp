@@ -136,7 +136,7 @@ public:
 	// BW1W120 004052b0 BW1M100 103efb80 GameThingWithPos::IsMoving( const(void))
 	virtual bool32_t IsMoving() const;
 	// BW1W120 004052c0 BW1M100 103f07b0 GameThingWithPos::IsObjectInMap(void)
-	virtual bool IsObjectInMap();
+	virtual bool32_t IsObjectInMap();
 	// BW1W120 004052d0 BW1M100 103ee440 GameThingWithPos::IsDrowning(void)
 	virtual bool32_t IsDrowning();
 	// BW1W120 00401a10 BW1M100 100cb2b0 GameThingWithPos::IsCannotBePickedUp( const(void))
@@ -632,5 +632,12 @@ public:
 	// BW1W120 00768560 BW1M100 10594c80 GameThingWithPos::AttitudeToCreatureRespect(void)
 	uint32_t AttitudeToCreatureRespect();
 };
+
+#pragma inline_depth(1)
+inline GameThingWithPos::GameThingWithPos() : Pos(), MapChild(NULL)
+{
+	SetToZero();
+}
+#pragma inline_depth()
 
 #endif /* BW1_DECOMP_GAME_THING_WITH_POS_INCLUDED_H */

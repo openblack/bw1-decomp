@@ -213,7 +213,7 @@ bool32_t Villager::FindTreeNearVillager(Tree** found_tree)
 		return 0;
 	*found_tree = bestTree;
 	MapCoords bp = bestTree->GetWorkingPos(this);
-	return IsTouching(&bp) ? 10 : 1;
+	return IsTouching(bp) ? 10 : 1;
 }
 
 // BW1W120 0075fe20 BW1M100 10584dc0 Villager::ExitForesting(unsigned char)

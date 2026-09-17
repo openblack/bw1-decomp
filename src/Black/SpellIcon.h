@@ -86,7 +86,7 @@ public:
 	// BW1W120 007261a0 BW1M100 105252a0 SpellIcon::Create3DObject(void)
 	virtual void Create3DObject();
 	// BW1W120 007265d0 BW1M100 10524600 SpellIcon::MoveMapObject(MapCoords const &)
-	virtual int MoveMapObject(const MapCoords* param_1);
+	virtual int MoveMapObject(const MapCoords& param_1);
 	// BW1W120 0055d380 BW1M100 inlined SpellIcon::SetSpecularColor(LH3DColor)
 	virtual void SetSpecularColor(LH3DColor param_1);
 	// BW1W120 0055d390 BW1M100 10525da0 SpellIcon::GetSpecularColor(void)

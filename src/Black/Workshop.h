@@ -77,7 +77,7 @@ public:
 	// BW1W120 00779f20 BW1M100 10162d40 Workshop::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
 	virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 0077a680 BW1M100 10161d90 Workshop::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-	virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus* param_2);
+	virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus& param_2);
 
 	// Static methods
 

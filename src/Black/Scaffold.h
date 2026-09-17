@@ -74,7 +74,7 @@ public:
 	// BW1W120 006eab60 BW1M100 1013f280 Scaffold::GetScriptObjectType(void)
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 006e9890 BW1M100 10141590 Scaffold::ActualMoveMapObject(MapCoords const &)
-	virtual void ActualMoveMapObject(const MapCoords* param_1);
+	virtual void ActualMoveMapObject(const MapCoords& param_1);
 	// BW1W120 006ea5c0 BW1M100 1013fd30 Scaffold::Draw(void)
 	virtual void Draw();
 	// BW1W120 006e8540 BW1M100 10143a70 Scaffold::CallVirtualFunctionsForCreation(MapCoords const &)
@@ -104,10 +104,10 @@ public:
 	// BW1W120 006eab70 BW1M100 1013f210 Scaffold::ThrowObjectFromHand(GInterfaceStatus *, int)
 	virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* param_1, int param_2);
 	// BW1W120 006ea8a0 BW1M100 1013f9a0 Scaffold::InitialisePhysicsFromHand(LHPoint &, LHPoint &, GInterfaceStatus *, Object *, int)
-	virtual uint32_t InitialisePhysicsFromHand(LHPoint* param_1, LHPoint* param_2, GInterfaceStatus* param_3,
+	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
 	                                           Object* param_4, int param_5);
 	// BW1W120 006ea840 BW1M100 1013faa0 Scaffold::InitialisePhysics(LHPoint const &, LHPoint const &, Object *, bool, GInterfaceStatus *)
-	virtual uint32_t InitialisePhysics(const LHPoint* param_1, const LHPoint* param_2, Object* param_3, bool param_4,
+	virtual uint32_t InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3, bool param_4,
 	                                   GInterfaceStatus* param_5);
 	// BW1W120 006e8770 BW1M100 10143680 Scaffold::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();

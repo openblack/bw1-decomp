@@ -922,7 +922,7 @@ SCRIPT_OBJECT_TYPE Villager::GetScriptObjectType()
 }
 
 // BW1W120 00753040
-bool Villager::IsTouching(MapCoords* coords)
+bool Villager::IsTouching(const MapCoords& coords)
 {
 	return false;
 }

@@ -111,7 +111,7 @@ public:
 	// BW1W120 00421fe0 BW1M100 105b8ff0 MultiMapFixed::GetArrivePos(void)
 	virtual MapCoords GetArrivePos();
 	// BW1W120 0052e480 BW1M100 100e0e80 MultiMapFixed::IsObjectInMap(void)
-	virtual bool IsObjectInMap();
+	virtual bool32_t IsObjectInMap();
 	// BW1W120 004e41c0 BW1M100 105e5c20 MultiMapFixed::IsBuildingWhichIsBeingBuilt(Creature *)
 	virtual bool32_t IsBuildingWhichIsBeingBuilt(Creature* creature);
 	// BW1W120 00422050 BW1M100 100a56e0 MultiMapFixed::IsWonder(void)
@@ -127,7 +127,7 @@ public:
 	// BW1W120 0052e7b0 BW1M100 100e0580 MultiMapFixed::RemoveMapObject(void)
 	virtual void RemoveMapObject();
 	// BW1W120 0052e4f0 BW1M100 100e0cd0 MultiMapFixed::MoveMapObject(MapCoords const &)
-	virtual int MoveMapObject(const MapCoords* param_2);
+	virtual int MoveMapObject(const MapCoords& param_2);
 	// BW1W120 0052f5e0 BW1M100 10099940 MultiMapFixed::ReduceLife(float, GPlayer *)
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0052f700 BW1M100 10050020 MultiMapFixed::Process(void)
@@ -143,7 +143,7 @@ public:
 	// BW1W120 0052f460 BW1M100 100de000 MultiMapFixed::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
 	virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 0052f210 BW1M100 100de5e0 MultiMapFixed::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-	virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus* status);
+	virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status);
 	// BW1W120 0052ec60 BW1M100 100dfd40 MultiMapFixed::StartOnFire(void)
 	virtual void StartOnFire();
 	// BW1W120 0052f3d0 BW1M100 100de230 MultiMapFixed::InteractsWithPhysicsObjects(void)
