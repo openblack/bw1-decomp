@@ -58,7 +58,8 @@ public:
 	// Virtual functions
 
 	virtual bool32_t IsPreSetup(); /* 0x0 */
-	virtual ~LH3DObject();
+	// TODO: original name unrecovered; frees the object and takes no arguments.
+	virtual void                Release();
 	virtual float               GetU();
 	virtual float               GetV();
 	virtual void                SetPaper(int param_1); /* 0x10 */
@@ -79,7 +80,7 @@ public:
 	virtual bool32_t            IsDrawWithGlobalAlpha();
 	virtual void                SetLinked(int param_1); /* 0x50 */
 	virtual bool32_t            IsLinked();
-	virtual void                SetDynamicLighting(int param_1);
+	virtual void __fastcall     SetDynamicLighting(int param_1);
 	virtual bool32_t            IsDynamicLighting();
 	virtual void                SetEnumFlag(int flag); /* 0x60 */
 	virtual int                 GetEnumFlag();
@@ -87,7 +88,7 @@ public:
 	virtual int                 GetSpecialLight();
 	virtual void                SetDontDraw(int param_1); /* 0x70 */
 	virtual int                 GetDontDraw();
-	virtual void                SetCastDynamicShadow(int param_1);
+	virtual void __fastcall     SetCastDynamicShadow(int param_1);
 	virtual bool32_t            IsCastDynamicShadow();
 	virtual void                SetShadowOnTexture(int param_1); /* 0x80 */
 	virtual bool32_t            IsShadowOnTexture();

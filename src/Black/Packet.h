@@ -30,15 +30,8 @@ public:
 		LHPoint Velocity;
 		LHPoint Direction;
 		LHPoint Rotation;
-		PhysicsData()
-		{
-			Velocity.z = 0.0f;
-			Velocity.y = 0.0f;
-			Velocity.x = 0.0f;
-			Rotation.z = 0.0f;
-			Rotation.y = 0.0f;
-			Rotation.x = 0.0f;
-		}
+		// BW1W120 0054b8f0 GPacket::PhysicsData::PhysicsData(void)
+		PhysicsData();
 	};
 	uint8_t  field_0x0;
 	uint8_t  Type;

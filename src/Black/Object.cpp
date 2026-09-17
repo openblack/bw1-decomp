@@ -12,6 +12,7 @@
 #include "LandscapeConstants.h" /* For CellSizeXGridDim */
 
 #include "FireEffect.h"
+#include "Game.h" /* For GGame */
 #include "Game3DObject.h"
 #include "GameThingWithPos.h"
 #include "Landscape.h" /* For GLandscape */
@@ -24,7 +25,14 @@ Object::Object() : info(NULL), coords()
 	Game3dObject = NULL;
 }
 
-Object::~Object() {}
+Object::~Object()
+{
+	if (Game3dObject != NULL)
+	{
+		Game3dObject->Release();
+		Game3dObject = NULL;
+	}
+}
 
 LH3DObject::ObjectType Object::Get3DType(MESH_LIST index)
 {
@@ -49,18 +57,27 @@ LH3DObject::ObjectType Object::Get3DType()
 	return (LH3DObject::ObjectType)((meshPack.Meshes[mesh]->flags >> 7) & 2);
 }
 
-Object::Object(const MapCoords& coords, const GObjectInfo* info)
+Object::Object(const MapCoords& _coords, const GObjectInfo* _info) : GameThingWithPos(_coords), info(NULL), coords()
 {
-
+	MapParent = NULL;
+	fire_effect = NULL;
+	Flags = 0;
+	Game3dObject = NULL;
+	SetPos(_coords);
+	coords = Pos;
 	SetLife(1.0f);
+	info = _info;
+	y_angle = 0.0f;
+	scale = 1.0f;
+	ObjectCreationIndex = GGame::g_game->data.NumCreatedObjects++;
 	InitialiseIsFixedForMapList();
 }
 
 void Object::Create3DObject()
 {
 	Game3dObject = Game3DObject::Create(Get3DType());
-	Game3dObject->SetDynamicLighting(0);
-	Game3dObject->SetCastDynamicShadow(0);
+	Game3dObject->SetDynamicLighting(1);
+	Game3dObject->SetCastDynamicShadow(1);
 	Game3dObject->importance = GetImportance();
 }
 
@@ -69,7 +86,7 @@ void Object::ToBeDeleted(int param_1)
 	GameThingWithPos::ToBeDeleted(param_1);
 	if (fire_effect != NULL)
 	{
-		fire_effect->ToBeDeleted(param_1);
+		fire_effect->ToBeDeleted(0);
 		fire_effect = NULL;
 	}
 }

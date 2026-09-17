@@ -38,7 +38,7 @@ Villager* Villager::FindImmediateNeighbour()
 			{
 				if (obj->info->type == OBJECT_TYPE_VILLAGER && obj != this)
 					return (Villager*)obj;
-				obj = obj->MapChild;
+				obj = obj->MapChild.Get();
 			}
 		}
 		coords += GUtils::Spiral(spiralVar1, spiralVar2);

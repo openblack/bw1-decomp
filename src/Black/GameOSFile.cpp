@@ -829,7 +829,7 @@ void GameOSFile::WriteSafe(GData& value)
 	{
 		return;
 	}
-	WriteIt(value.field_0x18);
+	WriteIt(value.NumCreatedObjects);
 	if (!WriteEnabled)
 	{
 		return;
@@ -854,7 +854,7 @@ void GameOSFile::ReadSafe(GData& value)
 	ReadIt(value.field_0xc);
 	ReadIt(value.GameTurn);
 	ReadIt(value.field_0x14);
-	ReadIt(value.field_0x18);
+	ReadIt(value.NumCreatedObjects);
 	ReadIt(value.field_0x1c);
 	ReadIt(value.field_0x20);
 	ReadIt(value.field_0x24);

@@ -55,15 +55,15 @@ class Villager;
 class Object : public GameThingWithPos
 {
 public:
-	const GObjectInfo* info; /* 0x28 */
-	MapCoords          coords;
-	Object*            MapParent; /* 0x38 */
-	uint32_t           field_0x3c;
-	Game3DObject*      Game3dObject; /* 0x40 */
-	FireEffect*        fire_effect;
-	float              life;
-	float              y_angle;
-	float              scale; /* 0x50 */
+	const GObjectInfo*    info; /* 0x28 */
+	MapCoords             coords;
+	LHFastPointer<Object> MapParent;           /* 0x38 */
+	uint32_t              ObjectCreationIndex; /* 0x3c */
+	Game3DObject*         Game3dObject;        /* 0x40 */
+	FireEffect*           fire_effect;
+	float                 life;
+	float                 y_angle;
+	float                 scale; /* 0x50 */
 
 	// Virtual methods
 

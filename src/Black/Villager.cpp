@@ -270,7 +270,7 @@ void Villager::SetSpeed(int base_speed, int scale_speed)
 	float factor = 1.0f;
 	if (scale_speed != 0)
 	{
-		factor = ((int)(field_0x3c * 47) % 31 - 16) * 0.01f + 1.0f;
+		factor = ((int)(ObjectCreationIndex * 47) % 31 - 16) * 0.01f + 1.0f;
 		if (GetAge() < ((const GVillagerInfo*)info)->TeenAge)
 		{
 			float slowDown = (((const GVillagerInfo*)info)->TeenAge - GetAge()) * 0.2f * 0.1f;

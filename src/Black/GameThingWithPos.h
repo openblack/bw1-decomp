@@ -14,6 +14,8 @@
 #include <chlasm/ScriptEnums.h>   /* For enum SCRIPT_OBJECT_TYPE */
 #include <re_common.h>            /* For bool32_t */
 
+#include <Lionhead/LHLib/ver5.0/LHFastPointer.h> /* For LHFastPointer */
+
 #include "GameThing.h" /* For struct GameThing, struct GameThingVftable */
 #include "MapCoords.h" /* For struct MapCoords */
 
@@ -52,10 +54,10 @@ enum GAME_THING_WITH_POS_FLAGS
 class GameThingWithPos : public GameThing
 {
 public:
-	MapCoords Pos;      /* 0x14 */
-	Object*   MapChild; /* 0x20 */
-	uint16_t  Flags;    /* 0x24 */
-	uint8_t   field_0x26;
+	MapCoords             Pos;      /* 0x14 */
+	LHFastPointer<Object> MapChild; /* 0x20 */
+	uint16_t              Flags;    /* 0x24 */
+	uint8_t               field_0x26;
 
 	// Override methods
 
@@ -609,11 +611,13 @@ public:
 
 	// BW1W120 0055d050 BW1M100 101bb2c0 GameThingWithPos::GameThingWithPos(void)
 	GameThingWithPos();
+	// BW1W120 inlined GameThingWithPos::GameThingWithPos(MapCoords const &)
+	GameThingWithPos(const MapCoords& pos);
 
 	// Non-virtual Destructors
 
-	// BW1W120 00424800 BW1M100 1015a100 GameThingWithPos::~GameThingWithPos(void)
-	~GameThingWithPos();
+	// BW1W120 inlined BW1M100 1015a100 GameThingWithPos::~GameThingWithPos(void)
+	// compiler-generated: no vtable restore before ~GameThing
 
 	// Non-virtual methods
 
@@ -633,11 +637,15 @@ public:
 	uint32_t AttitudeToCreatureRespect();
 };
 
-#pragma inline_depth(1)
-inline GameThingWithPos::GameThingWithPos() : Pos(), MapChild(NULL)
+inline GameThingWithPos::GameThingWithPos() : Pos()
 {
 	SetToZero();
 }
-#pragma inline_depth()
+
+inline GameThingWithPos::GameThingWithPos(const MapCoords& pos) : Pos()
+{
+	SetToZero();
+	SetPos(pos);
+}
 
 #endif /* BW1_DECOMP_GAME_THING_WITH_POS_INCLUDED_H */

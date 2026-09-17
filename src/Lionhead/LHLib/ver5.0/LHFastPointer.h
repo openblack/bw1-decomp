@@ -10,9 +10,14 @@ template <typename T> class LHFastPointer
 
 public:
 	LHFastPointer() : Pointer(NULL) {}
-	T*   Get() const { return Pointer; }
-	void Set(T* pointer) { Pointer = pointer; }
-	void Clear() { Pointer = NULL; }
+	T*            Get() const { return Pointer; }
+	void          Set(T* pointer) { Pointer = pointer; }
+	void          Clear() { Pointer = NULL; }
+	LHFastPointer operator=(T* pointer)
+	{
+		Pointer = pointer;
+		return *this;
+	}
 };
 
 #endif /* BW1_DECOMP_LH_FAST_POINTER_INCLUDED_H */

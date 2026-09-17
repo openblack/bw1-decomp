@@ -4,9 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int16_t, int32_t, uint16_t, uint32_t */
 
-#include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
-#include <chlasm/Enum.h>      /* For enum OBJECT_TYPE */
-#include <re_common.h>        /* For bool32_t */
+#include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
+#include <chlasm/AllMeshes.h>                           /* For enum MESH_LIST */
+#include <chlasm/Enum.h>                                /* For enum OBJECT_TYPE */
+#include <re_common.h>                                  /* For bool32_t */
 
 // Forward Declares
 
@@ -51,16 +52,12 @@ struct JustWholeMapXZ
 	void Init(const MapCoords& param_1);
 };
 
-struct MapCoords
+struct MapCoords : public LH3DMapCoords
 {
-	int   x; /* 0x0 */
-	int   z;
-	float altitude;
-
 	// Constructors
 
 	// BW1W120 inlined BW1M100 1006e040 MapCoords::MapCoords(void)
-	MapCoords() : x(0), z(0), altitude(0.0f) {}
+	MapCoords();
 	// BW1W120 006031b0 BW1M100 1004feb0 MapCoords::MapCoords(long, long, float)
 	MapCoords(long x, long z, float altitude);
 	// BW1W120 006031d0 BW1M100 10324c60 MapCoords::MapCoords(char *)
@@ -147,5 +144,9 @@ struct MapCoords
 	// BW1W120 00604fe0 BW1M100 10406220 MapCoords::CollideCollideWithFixe(void) const
 	int CollideCollideWithFixe();
 };
+
+#pragma inline_depth(2)
+inline MapCoords::MapCoords() {}
+#pragma inline_depth()
 
 #endif /* BW1_DECOMP_MAP_COORDS_INCLUDED_H */
