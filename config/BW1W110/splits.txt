@@ -442,9 +442,6 @@ Black/MagicWood.cpp:
 Black/Map.cpp:
 	.text       start:0x005FBA40 end:0x005FC900
 
-Black/GameThingWithPos.cpp:
-	.text       start:0x00600A00 end:0x006014B0
-
 Black/MobileObject.cpp:
 	.text       start:0x006014B0 end:0x00602DC0
 
