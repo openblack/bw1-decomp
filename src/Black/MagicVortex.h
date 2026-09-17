@@ -143,7 +143,7 @@ public:
 	// BW1W120 005fd8c0 BW1M100 103b8720 LandscapeVortexIn::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 005fd8d0 BW1M100 103b86b0 LandscapeVortexIn::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object *)
-	virtual void ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
+	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
 	// BW1W120 005fd8e0 BW1M100 103b8590 LandscapeVortexIn::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 005fd980 BW1M100 103b84a0 LandscapeVortexIn::CreatureMustAvoid(Creature *)

@@ -71,7 +71,7 @@ public:
 	// BW1W120 006e79e0 BW1M100 1000ef30 Rock::GetScriptObjectType(void)
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 006e7210 BW1M100 1013d710 Rock::ActualMoveMapObject(MapCoords const &)
-	virtual void ActualMoveMapObject(const MapCoords* param_1);
+	virtual void ActualMoveMapObject(const MapCoords& param_1);
 	// BW1W120 00517f10 BW1M100 10042fe0 Rock::Draw(void)
 	virtual void Draw();
 	// BW1W120 00439710 BW1M100 100b3f00 Rock::IsResourceStore(RESOURCE_TYPE)

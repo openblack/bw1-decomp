@@ -254,8 +254,8 @@ public:
 	virtual bool32_t IsABeliever();
 	// BW1W120 0076a4c0 BW1M100 1059a990 Villager::SetDying(void)
 	virtual bool32_t SetDying();
-	// BW1W120 00753040 BW1M100 inlined Villager::IsTouching(MapCoords *)
-	virtual bool IsTouching(MapCoords* coords);
+	// BW1W120 00753040 BW1M100 inlined Villager::IsTouching(MapCoords const &)
+	virtual bool IsTouching(const MapCoords& coords);
 	// BW1W120 0055c9a0 BW1M100 inlined Villager::IsTouching(Object *, float)
 	virtual bool IsTouching(Object* target, float epsilon);
 	// BW1W120 007564a0 BW1M100 105651b0 Villager::ValidForPlaceInHand(GInterfaceStatus *)
@@ -273,10 +273,10 @@ public:
 	// BW1W120 0076aa80 BW1M100 10599f40 Villager::GetImportance(void)
 	virtual float GetImportance();
 	// BW1W120 005efe90 BW1M100 10385750 Villager::InitialisePhysicsFromHand(LHPoint &, LHPoint &, GInterfaceStatus *, Object *, int)
-	virtual uint32_t InitialisePhysicsFromHand(LHPoint* param_1, LHPoint* param_2, GInterfaceStatus* param_3,
+	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
 	                                           Object* param_4, int param_5);
 	// BW1W120 005efef0 BW1M100 10385670 Villager::InitialisePhysics(LHPoint const &, LHPoint const &, Object *, bool, GInterfaceStatus *)
-	virtual uint32_t InitialisePhysics(const LHPoint* param_1, const LHPoint* param_2, Object* param_3, bool param_4,
+	virtual uint32_t InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3, bool param_4,
 	                                   GInterfaceStatus* param_5);
 	// BW1W120 005eff30 BW1M100 10385630 Villager::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();

@@ -43,7 +43,7 @@ public:
 	// BW1W120 0072d7f0 BW1M100 1052ee20 PhysicalShield::GetImpressiveValue(Living *, Reaction *)
 	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
 	// BW1W120 0072ce60 BW1M100 1052fe10 PhysicalShield::ApplyEffect(EffectValues &, int)
-	virtual void ApplyEffect(EffectValues* param_1, int param_2);
+	virtual void ApplyEffect(EffectValues& param_1, int param_2);
 	// BW1W120 0072ce80 BW1M100 1052fda0 PhysicalShield::DestroyedByEffect(GPlayer *, float)
 	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
 	// BW1W120 0072cea0 BW1M100 1052fd70 PhysicalShield::Draw(void)

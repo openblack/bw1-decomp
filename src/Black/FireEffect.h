@@ -64,6 +64,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00730ab0 BW1M100 1014c6d0 FireEffect::SetOutMagicHand(void)
+	void SetOutMagicHand();
 	// BW1W120 00730ad0 BW1M100 1014c5c0 FireEffect::CreateSprites(void)
 	FireGraphic* CreateSprites();
 	// BW1W120 00732ae0 BW1M100 10149240 FireEffect::GetFirstCaused(void)

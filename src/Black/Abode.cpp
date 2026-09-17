@@ -1,9 +1,3 @@
-// Limits inline expansion to direct calls only: WriteSafe/ReadSafe and the
-// list/counted-array templates inline into Save/Load, while the Read/WriteIt
-// calls inside those templates stay calls and land here as COMDATs -- exactly
-// what the original objects show (see GameOSFile.h). Without this, the
-// depth-2 Read/WriteIt sites inline too and Save/Load lose their 100% match.
-#pragma inline_depth(1)
 #include "Abode.h"
 
 #include "Lionhead/LH3DLib/development/LH3DSmoke.h"
@@ -1039,3 +1033,9 @@ float Abode::GetVillagerHealthTotal()
 {
 	return 0.0f;
 }
+
+// MSVC6 compiles template instantiations at the end of the translation unit, using the
+// inline_depth in effect there. Limiting it to direct calls lets WriteSafe/ReadSafe and the
+// list/counted-array templates inline into Save/Load while their Read/WriteIt calls stay
+// calls and land here as COMDATs -- exactly what the original objects show (see GameOSFile.h).
+#pragma inline_depth(1)

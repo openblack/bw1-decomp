@@ -94,7 +94,7 @@ public:
 	// BW1W120 00733750 BW1M100 10151c60 StoragePit::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
 	virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 00733810 BW1M100 101519d0 StoragePit::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-	virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus* param_2);
+	virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus& param_2);
 	// BW1W120 007335f0 BW1M100 10151f80 StoragePit::SetPoisonedResource(RESOURCE_TYPE, int)
 	virtual void SetPoisonedResource(RESOURCE_TYPE param_1, int param_2);
 	// BW1W120 007335d0 BW1M100 10152110 StoragePit::SetPoisoned(int)

@@ -67,7 +67,7 @@ public:
 	// BW1W120 0052c4d0 BW1M100 100dd5a0 FishFarm::GetCreatureBeliefType(void)
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 0052c980 BW1M100 100dc470 FishFarm::IsObjectInMap(void)
-	virtual bool IsObjectInMap();
+	virtual bool32_t IsObjectInMap();
 	// BW1W120 0052c550 BW1M100 100dd800 FishFarm::CanBeEatenByCreature(Creature *)
 	virtual uint32_t CanBeEatenByCreature(Creature* param_1);
 	// BW1W120 0052c560 BW1M100 100dd850 FishFarm::CanBeSleptNextToByCreature(Creature *)

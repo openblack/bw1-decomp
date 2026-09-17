@@ -65,7 +65,7 @@ public:
 	float              y_angle;
 	float              scale; /* 0x50 */
 
-	// Override methods
+	// Virtual methods
 
 	// BW1W120 006366a0 BW1M100 103d8e50 Object::Delete(void)
 	virtual void Delete();
@@ -180,7 +180,7 @@ public:
 	// BW1W120 00402510 BW1M100 10055b30 Object::GetZAngle(void)
 	virtual float GetZAngle() { return 0.0f; }
 	// BW1W120 006393a0 BW1M100 100299c0 Object::SetFocus(LHPoint const &)
-	virtual void SetFocus(const LHPoint* focus);
+	virtual void SetFocus(const LHPoint& focus);
 	// BW1W120 00638d00 BW1M100 10043070 Object::SetXYZAngles(float, float, float)
 	virtual void SetXYZAngles(float x, float y, float z);
 	// BW1W120 00638f80 BW1M100 103d3d70 Object::SetXYZAnglesAndScale(float, float, float, float)
@@ -214,13 +214,13 @@ public:
 	// BW1W120 006368d0 BW1M100 10053bc0 Object::RemoveMapObjectFromCell(MapCell *)
 	virtual void RemoveMapObjectFromCell(MapCell* cell);
 	// BW1W120 006367d0 BW1M100 10054140 Object::IsObjectInMap(MapCell *)
-	virtual bool IsObjectInMap(MapCell* cell);
+	virtual bool32_t IsObjectInMap(MapCell* cell);
 	// BW1W120 006366b0 BW1M100 103d8d10 Object::IsObjectInMapCheck(void)
-	virtual bool IsObjectInMapCheck();
+	virtual bool32_t IsObjectInMapCheck();
 	// BW1W120 00636a40 BW1M100 1004d070 Object::MoveMapObject(MapCoords const &)
-	virtual int MoveMapObject(const MapCoords* param_2);
+	virtual int MoveMapObject(const MapCoords& param_2);
 	// BW1W120 00638040 BW1M100 10055200 Object::ActualMoveMapObject(MapCoords const &)
-	virtual void ActualMoveMapObject(const MapCoords* param_2);
+	virtual void ActualMoveMapObject(const MapCoords& param_2);
 	// BW1W120 00402570 BW1M100 103dca60 Object::GetPtr(void)
 	virtual Object* GetPtr();
 	// BW1W120 00636bd0 BW1M100 103d8710 Object::GetMeshRadius( const(void))
@@ -232,7 +232,7 @@ public:
 	// BW1W120 00732770 BW1M100 10149520 Object::GetPSysFireLocalRndFlamePos(LHPoint *, long *)
 	virtual bool GetPSysFireLocalRndFlamePos(LHPoint* point, int* param_2);
 	// BW1W120 00732660 BW1M100 10149810 Object::GetPSysFireWorldFlamePos(LHPoint const &, long, LHPoint *)
-	virtual bool GetPSysFireWorldFlamePos(const LHPoint* param_1, int param_2, LHPoint* param_3);
+	virtual bool GetPSysFireWorldFlamePos(const LHPoint& param_1, int param_2, LHPoint* param_3);
 	// BW1W120 00732950 BW1M100 101493c0 Object::GetPSysFireLocalFlameScale(void)
 	virtual float GetPSysFireLocalFlameScale();
 	// BW1W120 00732a30 BW1M100 101492c0 Object::GetPSysFireMaxFlames(void)
@@ -272,13 +272,13 @@ public:
 	// BW1W120 00637c20 BW1M100 103d63c0 Object::ReduceLifeDueToBurning(float, GPlayer *)
 	virtual void ReduceLifeDueToBurning(float param_1, GPlayer* param_2);
 	// BW1W120 00637900 BW1M100 103d6a00 Object::FillInEffectDefenceMultiplier(EffectNumbers &)
-	virtual void FillInEffectDefenceMultiplier(EffectNumbers* param_1);
+	virtual void FillInEffectDefenceMultiplier(EffectNumbers& param_1);
 	// BW1W120 00637980 BW1M100 103d6510 Object::ApplyEffect(EffectValues &, int)
-	virtual void ApplyEffect(EffectValues* param_1, int param_2);
+	virtual void ApplyEffect(EffectValues& param_1, int param_2);
 	// BW1W120 00637d00 BW1M100 103d6120 Object::GetDamageEffect(EffectValues &)
-	virtual float GetDamageEffect(EffectValues* values);
+	virtual float GetDamageEffect(EffectValues& values);
 	// BW1W120 00637d80 BW1M100 103d6050 Object::GetHealEffect(EffectValues &)
-	virtual float GetHealEffect(EffectValues* values);
+	virtual float GetHealEffect(EffectValues& values);
 	// BW1W120 00637cf0 BW1M100 103d6220 Object::GetActualObjectToEffect(GPlayer *, bool)
 	virtual void* GetActualObjectToEffect(GPlayer* player, bool param_2);
 	// BW1W120 006392c0 BW1M100 103d38b0 Object::DrawValue(long, float)
@@ -302,7 +302,7 @@ public:
 	// BW1W120 00402650 BW1M100 10368aa0 Object::ProcessBySpell(Spell *)
 	virtual uint32_t ProcessBySpell(Spell* spell) { return 1; }
 	// BW1W120 00637ff0 BW1M100 103d57e0 Object::ApplySingleEffect(EFFECT_TYPE, float, GameThing *, MapCoords const &)
-	virtual void ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords* param_4);
+	virtual void ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords& param_4);
 	// BW1W120 00425340 BW1M100 10368d70 Object::GetMesh( const(void))
 	virtual MESH_LIST GetMesh();
 	// BW1W120 00402660 BW1M100 10368ae0 Object::GetDetailMesh( const(DETAIL_LEVEL))
@@ -378,7 +378,7 @@ public:
 	// BW1W120 0063aad0 BW1M100 103d0050 Object::GetRadiusMultiplierForApplyingPotToPos(void)
 	virtual float GetRadiusMultiplierForApplyingPotToPos();
 	// BW1W120 0063aae0 BW1M100 103cffe0 Object::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-	virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus* status);
+	virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status);
 	// BW1W120 00402750 BW1M100 1056ee10 Object::GetResourceType(void)
 	virtual RESOURCE_TYPE GetResourceType() { return RESOURCE_TYPE_NONE; }
 	// BW1W120 00402760 BW1M100 1035b020 Object::GetDefaultResource(void)
@@ -402,9 +402,9 @@ public:
 	// BW1W120 00637e00 BW1M100 103d5f70 Object::IsTouching(Object *, float)
 	virtual bool IsTouching(Object* target, float epsilon);
 	// BW1W120 00637e30 BW1M100 103d5ef0 Object::IsTouching(MapCoords const &)
-	virtual bool IsTouching(MapCoords* coords);
+	virtual bool IsTouching(const MapCoords& coords);
 	// BW1W120 00637e60 BW1M100 103d5970 Object::IsTouching(MapCoords const &, MapCoords const &)
-	virtual bool IsTouching(MapCoords* param_1, MapCoords* param_2);
+	virtual bool IsTouching(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 00419300 BW1M100 100a9e50 Object::StartOnFire(void)
 	virtual void StartOnFire();
 	// BW1W120 004027b0 BW1M100 100a8170 Object::EndOnFire(void)
@@ -446,7 +446,7 @@ public:
 	// BW1W120 00402880 BW1M100 1040fc60 Object::ValidToRemoveFromHand(GInterfaceStatus *, MapCoords const &)
 	virtual bool32_t ValidToRemoveFromHand(GInterfaceStatus* status, const MapCoords& coords) { return false; }
 	// BW1W120 00402890 BW1M100 100b16a0 Object::RemoveFromHand(GInterfaceStatus *, MapCoords const &)
-	virtual uint32_t RemoveFromHand(GInterfaceStatus* status, const MapCoords* param_2);
+	virtual uint32_t RemoveFromHand(GInterfaceStatus* status, const MapCoords& param_2);
 	// BW1W120 00636aa0 BW1M100 100933f0 Object::ValidToShakeFromHand(void)
 	virtual bool32_t ValidToShakeFromHand();
 	// BW1W120 004028a0 BW1M100 101ca2e0 Object::InterfaceMustBeInInfluenceForInteraction(void)
@@ -510,11 +510,11 @@ public:
 	virtual bool32_t CanBeDestroyedBySpell(Spell* param_1);
 	// BW1W120 00638cf0 BW1M100 103d3f30 Object::GetImportance(void)
 	virtual float GetImportance();
-	// BW1W120 00636f00 BW1M100 103d7760 Object::CanBeDestroyedBySpell_2(void)
-	virtual uint32_t InitialisePhysicsFromHand(LHPoint* param_1, LHPoint* param_2, GInterfaceStatus* param_3,
+	// BW1W120 00636f00 BW1M100 103d7760 Object::InitialisePhysicsFromHand(LHPoint &, LHPoint &, GInterfaceStatus *, Object *, int)
+	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
 	                                           Object* param_4, int param_5);
 	// BW1W120 00637480 BW1M100 103d74c0 Object::InitialisePhysics(LHPoint const &, LHPoint const &, Object *, bool, GInterfaceStatus *)
-	virtual uint32_t InitialisePhysics(const LHPoint* param_1, const LHPoint* param_2, Object* param_3, bool param_4,
+	virtual uint32_t InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3, bool param_4,
 	                                   GInterfaceStatus* param_5);
 	// BW1W120 006376a0 BW1M100 103d71b0 Object::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();
@@ -525,13 +525,13 @@ public:
 	// BW1W120 0063a7b0 BW1M100 103d07b0 Object::DropSfx(void)
 	virtual uint32_t DropSfx();
 	// BW1W120 00637730 BW1M100 103d6f80 Object::GetBoundingSphere(LHPoint &, float &)
-	virtual void GetBoundingSphere(LHPoint* center, float* radius);
+	virtual void GetBoundingSphere(LHPoint& center, float& radius);
 	// BW1W120 006377b0 BW1M100 103d6f30 Object::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00419890 BW1M100 100a9e80 Object::ChecksVerticesVObjects(void)
 	virtual bool ChecksVerticesVObjects();
 	// BW1W120 006377d0 BW1M100 103d6e50 Object::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object *)
-	virtual void ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
+	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
 	// BW1W120 00402a00 BW1M100 100b06b0 Object::PhysicallyDestroysAbodes(void)
 	virtual bool32_t PhysicallyDestroysAbodes() { return false; }
 	// BW1W120 006377c0 BW1M100 103d6ee0 Object::ReactToPhysicsImpact(PhysicsObject *, bool)
@@ -590,7 +590,7 @@ public:
 	// BW1W120 00402ae0 BW1M100 102fd140 Object::IsPushable(void)
 	virtual bool32_t IsPushable() { return false; }
 	// BW1W120 006397c0 BW1M100 103d2f90 Object::PushObject(Living *, MapCoords &)
-	virtual void PushObject(Living* param_1, MapCoords* param_2);
+	virtual void PushObject(Living* param_1, MapCoords& param_2);
 	// BW1W120 00639640 BW1M100 103d30f0 Object::PushObject(Living *)
 	virtual void PushObject(Living* param_1);
 	// BW1W120 00402af0 BW1M100 1016eb20 Object::GetCarriedTreeType(void)
@@ -626,6 +626,13 @@ public:
 	// BW1W120 00419b30 BW1M100 1009cd00 Object::GetCollideData(void)
 	virtual NewCollide* GetCollideData();
 
+	// Override methods
+
+	// BW1W120 006392b0 BW1M100 10037930 Object::IsObjectInMap(void)
+	virtual bool32_t IsObjectInMap();
+	// BW1W120 00639860 BW1M100 103d2e30 Object::GetImpressiveValue(Living *, Reaction *)
+	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
+
 	// Static methods
 
 	// BW1W120 006364c0 BW1M100 103d93a0 Object::Get3DType(MESH_LIST)
@@ -636,7 +643,7 @@ public:
 	// BW1W120 00636450 BW1M100 103d9480 Object::Object(void)
 	Object();
 	// BW1W120 00636520 BW1M100 103d90d0 Object::Object(MapCoords const &, GObjectInfo const *)
-	Object(const MapCoords* coords, const GObjectInfo* info);
+	Object(const MapCoords& coords, const GObjectInfo* info);
 
 	// Non-virtual Destructors
 
@@ -651,6 +658,27 @@ public:
 	Object* GetMapChild(const MapCoords& coord);
 	// BW1W120 0063a810 BW1M100 103d04b0 Object::CreateSmokyStuff(long, float, LH3DColor)
 	bool32_t CreateSmokyStuff(long param_1, float param_2, LH3DColor param_3);
+	// BW1W120 00637930 BW1M100 103d6910 Object::GetDefenseMultiplier(void)
+	float GetDefenseMultiplier();
+	// BW1W120 00638b00 BW1M100 103d4220 Object::SimpleAddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+	void SimpleAddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
+	                          void(__cdecl* param_4)(int, Point2D, float, int));
+	// BW1W120 00639410 BW1M100 103d3690 Object::IsActuallyInTheAir(void)
+	void IsActuallyInTheAir();
+	// BW1W120 00639a10 BW1M100 103d2aa0 Object::GetTemperature(void)
+	void GetTemperature();
+	// BW1W120 00639a40 BW1M100 103d29f0 Object::SetOnFire(float)
+	void SetOnFire(float param_1);
+	// BW1W120 00639a60 BW1M100 103d2990 Object::SetTemperature(float, GameThing *)
+	void SetTemperature(float param_1, GameThing* param_2);
+	// BW1W120 0063a1b0 BW1M100 10086f70 Object::GetInterfaceStatusHoldingThis(void)
+	void GetInterfaceStatusHoldingThis();
+	// BW1W120 0063a230 BW1M100 103d0ba0 Object::SetUpPhysObAsATree(PhysOb *, float, float, float, float)
+	void SetUpPhysObAsATree(PhysOb* param_1, float param_2, float param_3, float param_4, float param_5);
+	// BW1W120 0063a710 BW1M100 103d0870 Object::GetInterfaceStatusWhoLastDroppedMe(void)
+	void GetInterfaceStatusWhoLastDroppedMe();
+	// BW1W120 0063a940 BW1M100 103d00a0 Object::DoDeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
+	void DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 };
 
 #endif /* BW1_DECOMP_OBJECT_INCLUDED_H */

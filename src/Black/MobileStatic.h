@@ -134,7 +134,7 @@ public:
 	// BW1W120 00609270 BW1M100 103bee80 MobileStatic::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 00608f40 BW1M100 103bf9c0 MobileStatic::GetBoundingSphere(LHPoint &, float &)
-	virtual void GetBoundingSphere(LHPoint* param_1, float* param_2);
+	virtual void GetBoundingSphere(LHPoint& param_1, float& param_2);
 	// BW1W120 006090b0 BW1M100 103bf550 MobileStatic::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00609260 BW1M100 103beff0 MobileStatic::ChecksVerticesVObjects(void)

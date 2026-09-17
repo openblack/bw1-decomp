@@ -62,7 +62,7 @@ public:
 	// BW1W120 005fc0d0 BW1M100 103af020 MagicTeleport::CanActAsAContainer(Creature *)
 	virtual uint32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 005fc960 BW1M100 103af8d0 MagicTeleport::ActualMoveMapObject(MapCoords const &)
-	virtual void ActualMoveMapObject(const MapCoords* param_1);
+	virtual void ActualMoveMapObject(const MapCoords& param_1);
 	// BW1W120 005fccc0 BW1M100 103af280 MagicTeleport::Draw(void)
 	virtual void Draw();
 	// BW1W120 005fc260 BW1M100 103b0bf0 MagicTeleport::CallVirtualFunctionsForCreation(MapCoords const &)
