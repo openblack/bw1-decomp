@@ -143,8 +143,8 @@ public:
 	virtual RESOURCE_TYPE GetResourceType();
 	// BW1W120 00528050 BW1M100 100d64c0 Field::IsLockedInInteract(void)
 	virtual bool32_t IsLockedInInteract();
-	// BW1W120 00529290 BW1M100 inlined Field::IsTouching_2( const(MapCoords const &))
-	virtual bool IsTouching_2(const MapCoords& param_1);
+	// BW1W120 00529290 BW1M100 inlined Field::IsTouching(MapCoords const &)
+	virtual bool32_t IsTouching(const MapCoords& param_1);
 	// BW1W120 005299e0 BW1M100 100d2a40 Field::ValidForLockedSelectProcess(GInterfaceStatus *)
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
 	// BW1W120 00529900 BW1M100 100d2ac0 Field::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)

@@ -65,7 +65,7 @@ public:
 	// BW1W120 00608440 BW1M100 103baba0 FieldCrop::CreatureMustAvoid(Creature *)
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00608350 BW1M100 103baf40 FieldCrop::IsARootedObject(void)
-	virtual bool IsARootedObject();
+	virtual bool32_t IsARootedObject();
 };
 
 #endif /* BW1_DECOMP_FIELD_CROP_INCLUDED_H */

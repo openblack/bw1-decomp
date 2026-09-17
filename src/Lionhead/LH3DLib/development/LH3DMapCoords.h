@@ -9,9 +9,23 @@ typedef int32_t LH3DMapCoordsFull;
 
 struct LH3DMapCoords
 {
-	LH3DMapCoordsFull x; /* 0x0 */
-	LH3DMapCoordsFull z;
-	float             altitude;
+	union {
+		LH3DMapCoordsFull x; /* 0x0 */
+		struct
+		{
+			uint16_t FractionX;
+			uint16_t CellX;
+		};
+	};
+	union {
+		LH3DMapCoordsFull z; /* 0x4 */
+		struct
+		{
+			uint16_t FractionZ;
+			uint16_t CellZ;
+		};
+	};
+	float altitude; /* 0x8 */
 
 	// Constructors
 
@@ -31,9 +45,9 @@ struct LH3DMapCoords
 	// BW1W120 inlined BW1M100 inlined LH3DMapCoords::SetFractionZ(short)
 	void SetFractionZ(uint16_t z);
 	// BW1W120 inlined BW1M100 10049a90 LH3DMapCoords::MapX(void) const
-	uint16_t MapX();
+	uint16_t MapX() const { return CellX; }
 	// BW1W120 inlined BW1M100 100499b0 LH3DMapCoords::MapZ(void) const
-	uint16_t MapZ();
+	uint16_t MapZ() const { return CellZ; }
 	// BW1W120 inlined BW1M100 100456f0 LH3DMapCoords::WholeX(void) const
 	int32_t WholeX() const { return x; }
 	// BW1W120 inlined BW1M100 10045a60 LH3DMapCoords::WholeZ(void) const

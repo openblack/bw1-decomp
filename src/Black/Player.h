@@ -135,6 +135,8 @@ public:
 	static GPlayer* GetPlayerFromText(const char* str);
 
 	// Non-virtual methods
+	// BW1W120 0064d5d0 GPlayer::IsAllied(GPlayer *)
+	bool IsAllied(GPlayer* other);
 	// BW1W120 0064d280 BW1M100 10084180 GPlayer::SavePlayerAlignment(unsigned long)
 	void SavePlayerAlignment(uint32_t game_turn);
 	// BW1W120 0064d2d0 BW1M100 1048f630 GPlayer::LoadPlayerAlignment(void)

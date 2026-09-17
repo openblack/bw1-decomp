@@ -62,7 +62,7 @@ public:
 	virtual void                Release();
 	virtual float               GetU();
 	virtual float               GetV();
-	virtual void                SetPaper(int param_1); /* 0x10 */
+	virtual void __fastcall     SetPaper(int param_1); /* 0x10 */
 	virtual bool32_t            IsPaper();
 	virtual void                SetNoSnow(int param_1);
 	virtual bool32_t            IsNoSnow();
@@ -96,7 +96,7 @@ public:
 	virtual bool32_t            IsFootPrintOnTexture();
 	virtual void                SetShadowOnTextureChroma(int param_1); /* 0x90 */
 	virtual bool32_t            IsShadowOnTextureChroma();
-	virtual void                SetDisappear(int param_1);
+	virtual void __fastcall     SetDisappear(int param_1);
 	virtual bool32_t            IsDisappear();
 	virtual void                SetNeedClipping(int param_1); /* 0xa0 */
 	virtual bool32_t            IsNeedClipping();
@@ -119,7 +119,7 @@ public:
 	virtual void                SetAnimatedUV_1(float param_1, float param_2, float param_3);
 	virtual void                SetAnimatedUV_2(int param_1);
 	virtual bool32_t            IsAnimatedUV(); /* 0xf0 */
-	virtual uint32_t            SetMesh(LH3DMesh* param_1, LH3DMesh* param_2, LH3DMesh* param_3);
+	virtual uint32_t __fastcall SetMesh(LH3DMesh* param_1, LH3DMesh* param_2, LH3DMesh* param_3);
 	virtual LH3DMesh*           GetMesh();
 	virtual void                DrawDebugInfo();
 	virtual void                AddDrawing(); /* 0x100 */
@@ -172,8 +172,8 @@ public:
 	virtual bool32_t            ContainsThisBoundingBox(const LHBoundingBox* bbox);
 	virtual bool32_t __fastcall GetChimneyPos(LHPoint* point); /* 0x1c0 */
 	virtual bool32_t            GetDoorPos(LHPoint* point);
-	virtual bool32_t            GetExtraPos_1(int param_1, LHPoint* point);
-	virtual void                GetExtraPos_2(int param_1, LHMatrix* matrix);
+	virtual bool32_t            GetExtraPos(int param_1, LHPoint* point);
+	virtual void                GetExtraPos(int param_1, LHMatrix* matrix);
 	virtual void                SetLod(int lod); /* 0x1d0 */
 	virtual float               GetLod();
 	virtual void                SetStatus(int status);
