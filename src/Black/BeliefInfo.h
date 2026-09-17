@@ -13,6 +13,16 @@ class Base;
 class GBeliefInfo : public GBaseInfo
 {
 public:
+	float field_0x10;
+	float field_0x14;
+	float field_0x18;
+	float field_0x1c;
+	float UpdateOfBoredomValue;
+	float field_0x24;
+
+	// BW1W120 00c58640 BW1M100 10a335a0
+	static GBeliefInfo Info;
+
 	// Override methods
 
 	// BW1W120 00437db0 BW1M100 100b22b0 GBeliefInfo::_dt(void)
