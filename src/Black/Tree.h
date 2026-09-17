@@ -172,7 +172,7 @@ public:
 	// BW1W120 0074a140 BW1M100 10158d40 Tree::GetRoutePlanRadius(Creature *)
 	virtual float GetRoutePlanRadius(Creature* param_1);
 	// BW1W120 0074b720 BW1M100 10157800 Tree::IsARootedObject(void)
-	virtual bool IsARootedObject();
+	virtual bool32_t IsARootedObject();
 	// BW1W120 0055d900 BW1M100 10159670 Tree::GetCarriedTreeType(void)
 	virtual uint32_t GetCarriedTreeType();
 	// BW1W120 0074a9d0 BW1M100 10158260 Tree::SaveObject(LHOSFile &, MapCoords const &)

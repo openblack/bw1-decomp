@@ -64,6 +64,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00730360 BW1M100 10155d80 FireEffect::IsOnFire(void)
+	bool32_t IsOnFire();
 	// BW1W120 00730ab0 BW1M100 1014c6d0 FireEffect::SetOutMagicHand(void)
 	void SetOutMagicHand();
 	// BW1W120 00730ad0 BW1M100 1014c5c0 FireEffect::CreateSprites(void)

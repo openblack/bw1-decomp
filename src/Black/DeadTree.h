@@ -114,7 +114,7 @@ public:
 	// BW1W120 00510e30 BW1M100 100c2e50 DeadTree::CreatureMustAvoid(Creature *)
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00511200 BW1M100 100c2450 DeadTree::IsARootedObject(void)
-	virtual bool IsARootedObject();
+	virtual bool32_t IsARootedObject();
 	// BW1W120 00511130 BW1M100 100c2640 DeadTree::GetCollideSoundType(void)
 	virtual SOUND_COLLISION_TYPE GetCollideSoundType();
 	// BW1W120 00511a20 BW1M100 100c10e0 DeadTree::GetCarriedTreeType(void)

@@ -255,9 +255,9 @@ public:
 	// BW1W120 0076a4c0 BW1M100 1059a990 Villager::SetDying(void)
 	virtual bool32_t SetDying();
 	// BW1W120 00753040 BW1M100 inlined Villager::IsTouching(MapCoords const &)
-	virtual bool IsTouching(const MapCoords& coords);
+	virtual bool32_t IsTouching(const MapCoords& coords);
 	// BW1W120 0055c9a0 BW1M100 inlined Villager::IsTouching(Object *, float)
-	virtual bool IsTouching(Object* target, float epsilon);
+	virtual bool32_t IsTouching(Object* target, float epsilon);
 	// BW1W120 007564a0 BW1M100 105651b0 Villager::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00753080 BW1M100 1056a940 Villager::InterfaceSetInMagicHand(GInterfaceStatus *)
@@ -1213,7 +1213,7 @@ public:
 	// BW1W120 0075f060 BW1M100 1057c190 Villager::FootballGoaliePassPriority(Football *)
 	float FootballGoaliePassPriority(Football* param_1);
 	// BW1W120 0075f070 BW1M100 1057c0c0 Villager::FootballerIsTouchingBallPrecondition(Football *)
-	bool FootballerIsTouchingBallPrecondition(Football* param_1);
+	bool32_t FootballerIsTouchingBallPrecondition(Football* param_1);
 	// BW1W120 0075f0a0 BW1M100 1057bff0 Villager::FootballerIsNotTouchingBallPrecondition(Football *)
 	bool FootballerIsNotTouchingBallPrecondition(Football* param_1);
 	// BW1W120 0075f0d0 BW1M100 1057bf50 Villager::FootballerIsNearestBallPrecondition(Football *)

@@ -38,6 +38,9 @@ public:
 
 	// BW1W120 00803090 LH3DIsland::GetAltitude(LH3DMapCoords const &)
 	static float __fastcall GetAltitude(const LH3DMapCoords& coords);
+	// BW1W120 00803340 LH3DIsland::GetAltitudeAndSetColorSpecular(LH3DMapCoords const &, ulong *, ulong *)
+	static float __fastcall GetAltitudeAndSetColorSpecular(const LH3DMapCoords& coords, uint32_t* color,
+	                                                       uint32_t* specular);
 };
 
 #endif /* BW1_DECOMP_LH3D_ISLAND_INCLUDED_H */

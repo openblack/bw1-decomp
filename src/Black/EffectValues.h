@@ -37,7 +37,7 @@ public:
 	// Override methods
 
 	// BW1W120 00524f40 BW1M100 10412ff0 EffectValues::_dt(void)
-	virtual ~EffectValues();
+	// virtual ~EffectValues();
 
 	// Constructors
 

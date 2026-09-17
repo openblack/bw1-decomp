@@ -131,7 +131,7 @@ public:
 	// BW1W120 0077e480 BW1M100 105ab730 WorshipSite::GetRadiusMultiplierForApplyingPotToPos(void)
 	virtual float GetRadiusMultiplierForApplyingPotToPos();
 	// BW1W120 0077def0 BW1M100 105ac090 WorshipSite::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-	virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus& param_2);
+	virtual bool32_t DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus& param_2);
 	// BW1W120 0077de20 BW1M100 105ac330 WorshipSite::GetDistanceFromObject(Object *)
 	virtual float GetDistanceFromObject(Object* param_1);
 	// BW1W120 0055dc60 BW1M100 105b3dc0 WorshipSite::InteractsWithPhysicsObjects(void)

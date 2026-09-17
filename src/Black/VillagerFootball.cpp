@@ -458,7 +458,7 @@ float Villager::FootballGoaliePassPriority(Football* param_1)
 }
 
 // BW1W120 0075f070 Villager::FootballerIsTouchingBallPrecondition(Football *)
-bool Villager::FootballerIsTouchingBallPrecondition(Football* param_1)
+bool32_t Villager::FootballerIsTouchingBallPrecondition(Football* param_1)
 {
 	return IsTouching((Object*)param_1->GetBall(), GetHeight());
 }

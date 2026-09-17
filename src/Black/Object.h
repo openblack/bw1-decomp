@@ -201,6 +201,9 @@ public:
 	virtual bool BlocksTownClearArea();
 	// BW1W120 006365f0 BW1M100 103d9010 Object::Create3DObject(void)
 	virtual void Create3DObject();
+	// fabricated: nothing in either binary references BW1W120 00636b20, so its name is unrecoverable.
+	// TODO: creates the 3D object, gives it its meshes and places it at Pos.
+	void Create3DObjectAtPos();
 	// BW1W120 00418c90 BW1M100 100540e0 Object::GetMapChild(MapCell const &)
 	virtual Object* GetMapChild(const MapCell& cell);
 	// BW1W120 00418cc0 BW1M100 10053b70 Object::SetMapChild(Object *, MapCell *)
@@ -220,7 +223,7 @@ public:
 	// BW1W120 00636a40 BW1M100 1004d070 Object::MoveMapObject(MapCoords const &)
 	virtual int MoveMapObject(const MapCoords& param_2);
 	// BW1W120 00638040 BW1M100 10055200 Object::ActualMoveMapObject(MapCoords const &)
-	virtual void ActualMoveMapObject(const MapCoords& param_2);
+	virtual void ActualMoveMapObject(const MapCoords& coords);
 	// BW1W120 00402570 BW1M100 103dca60 Object::GetPtr(void)
 	virtual Object* GetPtr();
 	// BW1W120 00636bd0 BW1M100 103d8710 Object::GetMeshRadius( const(void))
@@ -378,7 +381,7 @@ public:
 	// BW1W120 0063aad0 BW1M100 103d0050 Object::GetRadiusMultiplierForApplyingPotToPos(void)
 	virtual float GetRadiusMultiplierForApplyingPotToPos();
 	// BW1W120 0063aae0 BW1M100 103cffe0 Object::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-	virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status);
+	virtual bool32_t DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status);
 	// BW1W120 00402750 BW1M100 1056ee10 Object::GetResourceType(void)
 	virtual RESOURCE_TYPE GetResourceType() { return RESOURCE_TYPE_NONE; }
 	// BW1W120 00402760 BW1M100 1035b020 Object::GetDefaultResource(void)
@@ -396,21 +399,23 @@ public:
 		return true;
 	}
 	// BW1W120 00636ab0 BW1M100 103d8820 Object::IsAttackable(Object *)
-	virtual bool IsAttackable(Object* param_1);
+	virtual bool32_t IsAttackable(Object* param_1);
 	// BW1W120 00636af0 BW1M100 103d8770 Object::IsAllied(Object *)
-	virtual bool IsAllied(Object* param_1);
+	virtual bool32_t IsAllied(Object* param_1);
 	// BW1W120 00637e00 BW1M100 103d5f70 Object::IsTouching(Object *, float)
-	virtual bool IsTouching(Object* target, float epsilon);
+	virtual bool32_t IsTouching(Object* target, float epsilon);
 	// BW1W120 00637e30 BW1M100 103d5ef0 Object::IsTouching(MapCoords const &)
-	virtual bool IsTouching(const MapCoords& coords);
+	virtual bool32_t IsTouching(const MapCoords& coords);
 	// BW1W120 00637e60 BW1M100 103d5970 Object::IsTouching(MapCoords const &, MapCoords const &)
-	virtual bool IsTouching(const MapCoords& param_1, const MapCoords& param_2);
+	virtual bool32_t IsTouching(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 00419300 BW1M100 100a9e50 Object::StartOnFire(void)
 	virtual void StartOnFire();
 	// BW1W120 004027b0 BW1M100 100a8170 Object::EndOnFire(void)
 	virtual void EndOnFire() {}
 	// BW1W120 00637fb0 BW1M100 103d58a0 Object::GetDistanceFromObject(Object *)
 	virtual float GetDistanceFromObject(Object* param_1);
+	// BW1W120 004027c0 Object::GetDistanceFromObject(MapCoords const &)
+	virtual float GetDistanceFromObject(const MapCoords& coords) { return 0.0f; }
 	// BW1W120 006399d0 BW1M100 10003b20 Object::GetTribalPower(TRIBE_TYPE)
 	virtual float GetTribalPower(TRIBE_TYPE param_1);
 	// BW1W120 00419330 BW1M100 100addd0 Object::ValidForLockedSelectProcess(GInterfaceStatus *)
@@ -554,7 +559,7 @@ public:
 	// BW1W120 00639a00 BW1M100 103d2b20 Object::IsFireMan(void)
 	virtual bool IsFireMan();
 	// BW1W120 00638730 BW1M100 10097740 Object::IsARootedObject(void)
-	virtual bool IsARootedObject();
+	virtual bool32_t IsARootedObject();
 	// BW1W120 00637690 BW1M100 103d7220 Object::GetCollideSoundType(void)
 	virtual SOUND_COLLISION_TYPE GetCollideSoundType();
 	// BW1W120 004198a0 BW1M100 101bd530 Object::IsSolidToNewAbode(void)
@@ -564,7 +569,7 @@ public:
 	// BW1W120 00638430 BW1M100 103d52a0 Object::GetLandingPointCount(void)
 	virtual int GetLandingPointCount();
 	// BW1W120 00638450 BW1M100 103d5230 Object::GetLandingPoint(unsigned char, LHPoint *)
-	virtual bool GetLandingPoint(uint8_t param_1, LHPoint* param_2);
+	virtual bool32_t GetLandingPoint(uint8_t param_1, LHPoint* param_2);
 	// BW1W120 00402ab0 BW1M100 103e2750 Object::GetTastiness(void)
 	virtual uint32_t GetTastiness() { return 0; }
 	// BW1W120 00402ac0 BW1M100 102fd110 Object::IsScary(void)
@@ -606,11 +611,11 @@ public:
 	// BW1W120 00636cd0 BW1M100 103d8340 Object::GetNearestEdgeOfObject(Object *)
 	virtual LHPoint GetNearestEdgeOfObject(Object* object);
 	// BW1W120 00636d30 BW1M100 103d8250 Object::GetNearestPosOfObject(Object *)
-	virtual void GetNearestPosOfObject(Object* param_1);
+	virtual MapCoords GetNearestPosOfObject(Object* param_1);
 	// BW1W120 00636da0 BW1M100 103d8190 Object::GetNearestEdgeToPos(MapCoords const &)
 	virtual MapCoords GetNearestEdgeToPos(const MapCoords& pos);
 	// BW1W120 00636df0 BW1M100 103d80e0 Object::GetNearestEdge(float, float)
-	virtual void GetNearestEdge(float param_1, float param_2);
+	virtual MapCoords GetNearestEdge(float angle, float extra_radius);
 	// BW1W120 0063a220 BW1M100 103d1140 Object::GetImmersionTexture(void)
 	virtual IMMERSION_EFFECT_TYPE GetImmersionTexture();
 	// BW1W120 0063a7c0 BW1M100 103d0770 Object::GetInHandImmersionTexture(void)
@@ -679,6 +684,8 @@ public:
 	void GetInterfaceStatusWhoLastDroppedMe();
 	// BW1W120 0063a940 BW1M100 103d00a0 Object::DoDeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
 	void DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	// BW1W120 004eaab0 Object::ConsiderCreatureMimickingWhenObjectLands(void)
+	void ConsiderCreatureMimickingWhenObjectLands();
 };
 
 #endif /* BW1_DECOMP_OBJECT_INCLUDED_H */
