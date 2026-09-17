@@ -1379,6 +1379,15 @@ void GGame::ClearMap()
 }
 
 // Constructors emitted in the original Game translation unit.
+GPacket::PhysicsData::PhysicsData()
+{
+	Velocity.z = 0.0f;
+	Velocity.y = 0.0f;
+	Velocity.x = 0.0f;
+	Rotation.z = 0.0f;
+	Rotation.y = 0.0f;
+	Rotation.x = 0.0f;
+}
 // BW1W120 0054b910 BW1M100 10018800 MusicMoodPacket::MusicMoodPacket(void)
 MusicMoodPacket::MusicMoodPacket()
 {

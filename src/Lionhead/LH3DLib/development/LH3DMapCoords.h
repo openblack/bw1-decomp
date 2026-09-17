@@ -13,6 +13,11 @@ struct LH3DMapCoords
 	LH3DMapCoordsFull z;
 	float             altitude;
 
+	// Constructors
+
+	// BW1W120 00441b60 LH3DMapCoords::LH3DMapCoords(void)
+	LH3DMapCoords() : x(0), z(0), altitude(0.0f) {}
+
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M100 1006a8c0 LH3DMapCoords::AddToMapX(void) const
