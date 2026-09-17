@@ -14,7 +14,11 @@
 #include "Landscape.h"
 #include "MapCoords.h"
 #include "Utils.h"
+#include "BeliefInfo.h"
 #include "LandscapeConstants.h" /* For CellSizeXGridDim */
+
+// fabricated: unreferenced 4-byte .bss slot at 0x00d0607c; real name unknown
+static float unused;
 
 uint16_t GameThing::NumActiveGameThings;
 uint16_t GameThing::NumCreatedGameThings;
@@ -179,8 +183,7 @@ float GameThingWithPos::GetBoredomMultiplier(Reaction* param_1)
 
 float GameThingWithPos::GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2)
 {
-	static float boredomValue;
-	return boredomValue;
+	return GBeliefInfo::Info.UpdateOfBoredomValue;
 }
 
 float GameThingWithPos::GetPSysPower() const
