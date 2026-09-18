@@ -283,7 +283,7 @@ public:
 	// BW1W120 005eff40 BW1M100 103850b0 Villager::SetUpPhysOb(PhysOb *)
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 005f0a60 BW1M100 103846d0 Villager::EndPhysics(PhysicsObject *, bool)
-	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 007564c0 BW1M100 10565140 Villager::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00750ab0 BW1M100 1056fb10 Villager::HasSunk(void)

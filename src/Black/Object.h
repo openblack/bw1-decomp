@@ -82,7 +82,7 @@ public:
 	// BW1W120 00639520 BW1M100 103d3550 Object::GetResource(RESOURCE_TYPE)
 	virtual uint32_t GetResource(RESOURCE_TYPE type);
 	// BW1W120 0063a7d0 BW1M100 103d06c0 Object::CanBecomeArtifact(void)
-	virtual bool CanBecomeArtifact();
+	virtual bool32_t CanBecomeArtifact();
 	// BW1W120 005190e0 BW1M100 1008d3a0 Object::DrawInHand(GInterfaceStatus *)
 	virtual void DrawInHand(GInterfaceStatus* param_1);
 	// BW1W120 00639eb0 BW1M100 103d1b20 Object::Load(GameOSFile &)
@@ -277,7 +277,7 @@ public:
 	// BW1W120 00637900 BW1M100 103d6a00 Object::FillInEffectDefenceMultiplier(EffectNumbers &)
 	virtual void FillInEffectDefenceMultiplier(EffectNumbers& param_1);
 	// BW1W120 00637980 BW1M100 103d6510 Object::ApplyEffect(EffectValues &, int)
-	virtual void ApplyEffect(EffectValues& param_1, int param_2);
+	virtual float ApplyEffect(EffectValues& param_1, int param_2);
 	// BW1W120 00637d00 BW1M100 103d6120 Object::GetDamageEffect(EffectValues &)
 	virtual float GetDamageEffect(EffectValues& values);
 	// BW1W120 00637d80 BW1M100 103d6050 Object::GetHealEffect(EffectValues &)
@@ -335,7 +335,7 @@ public:
 	// BW1W120 00638200 BW1M100 1007e8a0 Object::GetWorldMatrix(LHMatrix *)
 	virtual void GetWorldMatrix(LHMatrix* out);
 	// BW1W120 00639b60 BW1M100 103d21e0 Object::CanBeSuckedIntoVortex(LandscapeVortex *)
-	virtual bool CanBeSuckedIntoVortex(LandscapeVortex* param_1);
+	virtual bool32_t CanBeSuckedIntoVortex(LandscapeVortex* param_1);
 	// BW1W120 00639b80 BW1M100 103d2110 Object::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager);
 	// BW1W120 00639550 BW1M100 103d3460 Object::GetWorkingPos(Object *)
@@ -377,7 +377,7 @@ public:
 	// BW1W120 004192d0 BW1M100 100a9e00 Object::IsResourceStore(RESOURCE_TYPE)
 	virtual bool IsResourceStore(RESOURCE_TYPE type);
 	// BW1W120 0063a930 BW1M100 103d0360 Object::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-	virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 0063aad0 BW1M100 103d0050 Object::GetRadiusMultiplierForApplyingPotToPos(void)
 	virtual float GetRadiusMultiplierForApplyingPotToPos();
 	// BW1W120 0063aae0 BW1M100 103cffe0 Object::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
@@ -526,7 +526,7 @@ public:
 	// BW1W120 006376b0 BW1M100 103d70b0 Object::SetUpPhysOb(PhysOb *)
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 006375a0 BW1M100 103d7350 Object::EndPhysics(PhysicsObject *, bool)
-	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0063a7b0 BW1M100 103d07b0 Object::DropSfx(void)
 	virtual uint32_t DropSfx();
 	// BW1W120 00637730 BW1M100 103d6f80 Object::GetBoundingSphere(LHPoint &, float &)
@@ -684,7 +684,7 @@ public:
 	void GetInterfaceStatusWhoLastDroppedMe();
 	// BW1W120 0063a940 BW1M100 103d00a0 Object::DoDeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
 	void DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
-	// BW1W120 004eaab0 Object::ConsiderCreatureMimickingWhenObjectLands(void)
+	// BW1W120 004eaab0 BW1M100 1026e5f8 Object::ConsiderCreatureMimickingWhenObjectLands(void)
 	void ConsiderCreatureMimickingWhenObjectLands();
 };
 

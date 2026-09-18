@@ -215,7 +215,7 @@ Town* GameThing::GetTown()
 
 void GameThingWithPos::GetMovementDirection(LHPoint* pos)
 {
-	if ((this->Flags & 0x40) != 0)
+	if ((this->Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0)
 	{
 		GetPhysicsMovementDirection(pos);
 	}

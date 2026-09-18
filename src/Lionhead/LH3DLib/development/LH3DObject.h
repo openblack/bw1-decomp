@@ -172,7 +172,7 @@ public:
 	virtual bool32_t            ContainsThisBoundingBox(const LHBoundingBox* bbox);
 	virtual bool32_t __fastcall GetChimneyPos(LHPoint* point); /* 0x1c0 */
 	virtual bool32_t            GetDoorPos(LHPoint* point);
-	virtual bool32_t            GetExtraPos(int param_1, LHPoint* point);
+	virtual bool32_t __fastcall GetExtraPos(int param_1, LHPoint* point);
 	virtual void                GetExtraPos(int param_1, LHMatrix* matrix);
 	virtual void                SetLod(int lod); /* 0x1d0 */
 	virtual float               GetLod();

@@ -127,7 +127,7 @@ public:
 	// BW1W120 0077dec0 BW1M100 105ac190 WorshipSite::IsResourceStore(RESOURCE_TYPE)
 	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 0077e7b0 BW1M100 105ab190 WorshipSite::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-	virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 0077e480 BW1M100 105ab730 WorshipSite::GetRadiusMultiplierForApplyingPotToPos(void)
 	virtual float GetRadiusMultiplierForApplyingPotToPos();
 	// BW1W120 0077def0 BW1M100 105ac090 WorshipSite::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)

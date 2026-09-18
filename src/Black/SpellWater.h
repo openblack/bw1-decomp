@@ -11,11 +11,13 @@
 class Base;
 class GameOSFile;
 class GameThing;
+class Reaction;
 
 class SpellWater : public Spell
 {
 public:
-	uint8_t field_0xec[0x8];
+	uint8_t   field_0xec[0x4];
+	Reaction* PuttingOutFireReaction; /* 0xf0 */
 
 	// Override methods
 

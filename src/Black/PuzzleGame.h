@@ -350,7 +350,7 @@ public:
 	// BW1W120 005619e0 BW1M100 10131d00 PuzzleGrain::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 00561a40 BW1M100 10131ec0 PuzzleGrain::EndPhysics(PhysicsObject *, bool)
-	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00561a60 BW1M100 10131f20 PuzzleGrain::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 006dc550 BW1M100 10122550 PuzzleGrain::GetImmersionTexture(void)

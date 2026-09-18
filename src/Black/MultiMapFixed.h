@@ -141,7 +141,7 @@ public:
 	// BW1W120 0052f1f0 BW1M100 100de6f0 MultiMapFixed::IsResourceStore(RESOURCE_TYPE)
 	virtual bool IsResourceStore(RESOURCE_TYPE type);
 	// BW1W120 0052f460 BW1M100 100de000 MultiMapFixed::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-	virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 0052f210 BW1M100 100de5e0 MultiMapFixed::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
 	virtual bool32_t DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status);
 	// BW1W120 0052ec60 BW1M100 100dfd40 MultiMapFixed::StartOnFire(void)

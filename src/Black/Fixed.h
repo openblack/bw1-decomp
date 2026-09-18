@@ -74,7 +74,7 @@ public:
 	// BW1W120 0052e0e0 BW1M100 100e1840 FixedObject::InterfaceSetInMagicHand(GInterfaceStatus *)
 	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* status);
 	// BW1W120 0052df50 BW1M100 100e1950 FixedObject::EndPhysics(PhysicsObject *, bool)
-	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0052de50 BW1M100 100e1df0 FixedObject::GetSpecialPos(unsigned long, MapCoords *)
 	virtual bool32_t GetSpecialPos(uint32_t index, MapCoords* pos);
 	// BW1W120 0052dee0 BW1M100 100e1c70 FixedObject::InsertMapObjectToCellAssumeFixed(MapCell *)

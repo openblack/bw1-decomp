@@ -92,7 +92,7 @@ public:
 	// BW1W120 0055cd20 BW1M100 10151510 StoragePit::IsResourceStore(RESOURCE_TYPE)
 	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 00733750 BW1M100 10151c60 StoragePit::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-	virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 00733810 BW1M100 101519d0 StoragePit::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
 	virtual bool32_t DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus& param_2);
 	// BW1W120 007335f0 BW1M100 10151f80 StoragePit::SetPoisonedResource(RESOURCE_TYPE, int)

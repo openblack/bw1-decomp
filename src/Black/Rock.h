@@ -89,7 +89,7 @@ public:
 	// BW1W120 006e6ff0 BW1M100 1013dd60 Rock::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 006e7000 BW1M100 1013dd00 Rock::EndPhysics(PhysicsObject *, bool)
-	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00561370 BW1M100 100c41a0 Rock::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 006e7930 BW1M100 1013ce40 Rock::ReactToPhysicsImpact(PhysicsObject *, bool)

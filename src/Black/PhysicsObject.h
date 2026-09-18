@@ -4,7 +4,13 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+
 #include "Base.h" /* For struct Base */
+
+// Forward Declares
+
+class Object;
 
 class PhysicsObject : public Base
 {
@@ -14,8 +20,14 @@ public:
 	// BW1W120 00644fc0 BW1M100 10038e40 PhysicsObject::GameTurnUpdate(void)
 	static void GameTurnUpdate();
 	static void DrawAll(); // 00646de0
+	// BW1W120 00646950 BW1M100 10112550 PhysicsObject::SearchForPhysicsObject(Object *)
+	static PhysicsObject* SearchForPhysicsObject(Object* object);
 
-	uint8_t  field_0x8[0x1a0];
+	uint8_t  field_0x8[0xc4];
+	float    HeightAboveWater; /* 0xcc */
+	uint8_t  field_0xd0[0x34];
+	LHPoint  Velocity; /* 0x104 */
+	uint8_t  field_0x110[0x98];
 	float    field_0x1a8;
 	uint32_t field_0x1ac;
 	uint32_t field_0x1b0;

@@ -432,7 +432,7 @@ public:
 	// BW1W120 00405210 BW1M100 1019aa00 GameThing::GetTownArtifactValue(void)
 	virtual float GetTownArtifactValue();
 	// BW1W120 00405220 BW1M100 10199de0 GameThing::CanBecomeArtifact(void)
-	virtual bool CanBecomeArtifact();
+	virtual bool32_t CanBecomeArtifact();
 	// BW1W120 00405230 BW1M100 10199e20 GameThing::DrawInHand(GInterfaceStatus *)
 	virtual void DrawInHand(GInterfaceStatus* param_1);
 	// BW1W120 00405240 BW1M100 10067860 GameThing::IsFunctional(void)
