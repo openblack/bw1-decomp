@@ -31,10 +31,6 @@ class Object;
 class Reaction;
 class WorshipSite;
 
-// fabricated: bit meanings of GameThingWithPos::Flags. ON_STRUCTURE is set by the
-// MOVE_ON_STRUCTURE state handler (BW1W120 005ecd00) when a structure is found under the
-// position, together with snapping the altitude onto it. The rest are named after the accessor
-// that reads them; UNAVAILABLE_FOR_STATE_CHANGE is only ever read inverted.
 // fabricated: selector returned by GetCreatureBeliefListType, which picks which of a creature's
 // belief lists an object belongs in.
 enum CREATURE_BELIEF_LIST_TYPE
@@ -46,9 +42,11 @@ enum GAME_THING_WITH_POS_FLAGS
 {
 	GAME_THING_WITH_POS_FLAG_IN_MAP = 0x1,
 	GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE = 0x4,
+	GAME_THING_WITH_POS_FLAG_IN_PHYSICS = 0x40,
 	GAME_THING_WITH_POS_FLAG_ON_STRUCTURE = 0x80,
 	GAME_THING_WITH_POS_FLAG_IN_SCRIPT = 0x200,
 	GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT = 0x400,
+	GAME_THING_WITH_POS_FLAG_IMMOVABLE = 0x1000,
 	GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP = 0x2000,
 	GAME_THING_WITH_POS_FLAG_FIXED = 0x8000
 };

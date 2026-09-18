@@ -375,7 +375,7 @@ public:
 	// BW1W120 00478c00 BW1M100 101d8e40 Creature::FillInEffectDefenceMultiplier(EffectNumbers &)
 	virtual void FillInEffectDefenceMultiplier(EffectNumbers& param_1);
 	// BW1W120 00478c80 BW1M100 101d89d0 Creature::ApplyEffect(EffectValues &, int)
-	virtual void ApplyEffect(EffectValues& param_1, int param_2);
+	virtual float ApplyEffect(EffectValues& param_1, int param_2);
 	// BW1W120 00476f70 BW1M100 101dbeb0 Creature::DestroyedByEffect(GPlayer *, float)
 	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
 	// BW1W120 00479020 BW1M100 101d8950 Creature::ApplySingleEffect(EFFECT_TYPE, float, GameThing *, MapCoords const &)
@@ -391,7 +391,7 @@ public:
 	// BW1W120 0047cd60 BW1M100 101d06d0 Creature::GetWeight(void)
 	virtual float GetWeight();
 	// BW1W120 004f8a10 BW1M100 1028ac60 Creature::CanBeSuckedIntoVortex(LandscapeVortex *)
-	virtual bool CanBeSuckedIntoVortex(LandscapeVortex* param_1);
+	virtual bool32_t CanBeSuckedIntoVortex(LandscapeVortex* param_1);
 	// BW1W120 00476e10 BW1M100 101dc300 Creature::ValidForLockedSelectProcess(GInterfaceStatus *)
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
 	// BW1W120 00476e70 BW1M100 101dc260 Creature::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)

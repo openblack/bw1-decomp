@@ -20,6 +20,10 @@ class FireEffect : public GameThing
 public:
 	// BW1W120 00730760 BW1M100 1008f3e0 FireEffect::ProcessList(void)
 	static void ProcessList();
+	// BW1W120 0072ef60 BW1M100 1014fa50 FireEffect::SetOnFire(Object *, float)
+	static void SetOnFire(Object* object, float temperature);
+	// BW1W120 0072ef10 BW1M100 1014fb60 FireEffect::SetTemperature(Object *, float, GameThing *)
+	static void SetTemperature(Object* object, float temperature, GameThing* source);
 
 	float       temperature; /* 0x14 */
 	float       temperature2;

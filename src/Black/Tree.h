@@ -155,7 +155,7 @@ public:
 	// BW1W120 0074b650 BW1M100 101579a0 Tree::SetUpPhysOb(PhysOb *)
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 0074b830 BW1M100 10156f80 Tree::EndPhysics(PhysicsObject *, bool)
-	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0074bc60 BW1M100 10156df0 Tree::DropSfx(void)
 	virtual uint32_t DropSfx();
 	// BW1W120 0074b6a0 BW1M100 10157960 Tree::InteractsWithPhysicsObjects(void)

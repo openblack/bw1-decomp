@@ -116,7 +116,7 @@ public:
 	// BW1W120 005f04e0 BW1M100 10384ac0 Animal::SetUpPhysOb(PhysOb *)
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 005f0d80 BW1M100 10384510 Animal::EndPhysics(PhysicsObject *, bool)
-	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0041bc10 BW1M100 10164e30 Animal::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00417860 BW1M100 1012f430 Animal::GetTastiness(void)

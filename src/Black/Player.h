@@ -51,15 +51,7 @@ public:
 	uint32_t                    field_0x5c;
 	GAlignment*                 alignment; /* 0x60 */
 	uint32_t                    field_0x64;
-	float                       field_0x68;
-	float                       field_0x6c;
-	float                       field_0x70;
-	float                       field_0x74;
-	float                       field_0x78;
-	float                       field_0x7c;
-	float                       field_0x80;
-	float                       field_0x84;
-	float                       field_0x88;
+	float                       TribalPower[TRIBE_TYPE_LAST]; /* 0x68 */
 	float                       field_0x8c;
 	float                       field_0x90;
 	uint8_t                     field_0x94[0x20];

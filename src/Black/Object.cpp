@@ -25,7 +25,8 @@
 #include "Landscape.h"     /* For GLandscape */
 #include "Map.h"           /* For MapCell */
 #include "PhysicsObject.h" /* For class PhysicsObject */
-#include "Reaction.h"      /* For Reaction::RemoveAllReactionsOfTypeInitiatedByObject */
+#include "Reaction.h"      /* For Reaction::CreateReaction, Reaction::RemoveAllReactionsOfTypeInitiatedByObject */
+#include "SpellWater.h"    /* For class SpellWater */
 #include "Utils.h"         /* For GUtils */
 
 Object::Object() : info(NULL), coords()
@@ -401,14 +402,13 @@ uint32_t Object::InitialisePhysics(const LHPoint& param_1, const LHPoint& param_
 	return 0;
 }
 
-void Object::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map)
+Object* Object::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map)
 {
-	if (physics_object != NULL && (Flags & 0x40) == 0)
+	if (physics_object != NULL && (Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) == 0)
 	{
-		return;
+		return this;
 	}
-	// TODO: flag 0x40 is unnamed; it marks "currently owned by the physics system".
-	Flags &= ~0x40;
+	Flags &= ~GAME_THING_WITH_POS_FLAG_IN_PHYSICS;
 	coords = Pos;
 	if (Game3dObject != NULL && physics_object != NULL)
 	{
@@ -434,6 +434,7 @@ void Object::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map
 	}
 	Reaction::RemoveAllReactionsOfTypeInitiatedByObject(this, REACTION_REACT_TO_FLYING_OBJECT);
 	ConsiderCreatureMimickingWhenObjectLands();
+	return this;
 }
 
 bool32_t Object::InterfaceSetInMagicHand(GInterfaceStatus* status)
@@ -468,7 +469,10 @@ void Object::SetUpPhysOb(PhysOb* phys_ob)
 	{
 		mass = 0.01f;
 	}
-	phys_ob->SetUpConstants(mass, constants, CanBecomeAPhysicsObject() && (Flags & 0x1000) == 0);
+	// The PhysicsConstants displacement reads as a mismatch only because dtk bakes it into the
+	// extracted object as a literal instead of a relocation.
+	phys_ob->SetUpConstants(mass, constants,
+	                        CanBecomeAPhysicsObject() && (Flags & GAME_THING_WITH_POS_FLAG_IMMOVABLE) == 0);
 	phys_ob->BuildFromVertices();
 }
 
@@ -528,14 +532,23 @@ uint32_t Object::DestroyedByEffect(GPlayer* player, float param_2)
 	return 1;
 }
 
-void Object::FillInEffectDefenceMultiplier(EffectNumbers& param_1) {}
+void Object::FillInEffectDefenceMultiplier(EffectNumbers& param_1)
+{
+	for (int i = 0; i < EFFECT_TYPE_LAST; i++)
+	{
+		param_1.values[i] = (&info->DefenceMultiplierBurn)[i];
+	}
+}
 
 float Object::GetDefenseMultiplier()
 {
 	return 0.0f;
 }
 
-void Object::ApplyEffect(EffectValues& param_1, int param_2) {}
+float Object::ApplyEffect(EffectValues& param_1, int param_2)
+{
+	return 0.0f;
+}
 
 void Object::ReduceLifeDueToBurning(float param_1, GPlayer* param_2) {}
 
@@ -579,7 +592,7 @@ bool32_t Object::IsTouching(Object* target, float epsilon)
 
 bool32_t Object::IsTouching(const MapCoords& coords)
 {
-	if (GameThingWithPos::GetDistanceFromObject(coords) <= 0.0f)
+	if (GetDistanceFromObject(coords) <= 0.0f)
 	{
 		return true;
 	}
@@ -591,9 +604,9 @@ bool32_t Object::IsTouching(const MapCoords& param_1, const MapCoords& param_2)
 	return false;
 }
 
-float Object::GetDistanceFromObject(Object* param_1)
+float Object::GetDistanceFromObject(Object* other)
 {
-	return 0.0f;
+	return GUtils::GetDistanceInMetres(Pos, other->Pos) - (Get2DRadius() + other->Get2DRadius());
 }
 
 void Object::ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords& param_4)
@@ -626,7 +639,9 @@ float Object::GetHeight()
 		LH3DMesh* mesh = Game3dObject->GetMesh();
 		if (mesh != NULL)
 		{
-			return scale * mesh->BoundingBox.size.y;
+			// The bounding box is a half-extent, so the height is twice it.
+			float sizeY = mesh->BoundingBox.size.y;
+			return sizeY * scale * 2.0f;
 		}
 	}
 	return 0.0f;
@@ -721,9 +736,10 @@ bool32_t Object::IsARootedObject()
 	return false;
 }
 
-bool32_t Object::CreatureMustAvoid(Creature* param_1)
+bool32_t Object::CreatureMustAvoid(Creature* creature)
 {
-	return false;
+	// Creature is only forward declared here, so the upcast is spelled out; same vtable slot.
+	return creature == NULL || reinterpret_cast<Object*>(creature)->GetHeight() * 0.1f <= GetHeight() || IsOnFire();
 }
 
 void Object::AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
@@ -748,7 +764,11 @@ HOLD_TYPE Object::GetHoldType()
 
 float Object::GetHoldRadius()
 {
-	return 0.0f;
+	if (GetHoldType() == HOLD_TYPE_ABOVE)
+	{
+		return GetHeight() * 0.75f;
+	}
+	return Get2DRadius();
 }
 
 float Object::GetHoldLoweringMultiplier()
@@ -758,7 +778,8 @@ float Object::GetHoldLoweringMultiplier()
 
 bool32_t Object::GetInspectObjectPos(Villager* param_1, MapCoords* pos)
 {
-	return false;
+	*pos = Pos;
+	return true;
 }
 
 bool32_t Object::GetSpecialPos(uint32_t index, MapCoords* pos)
@@ -782,7 +803,7 @@ void Object::SetYAngle(float angle) {}
 
 bool32_t Object::IsObjectInMap()
 {
-	return false;
+	return Flags & GAME_THING_WITH_POS_FLAG_IN_MAP;
 }
 
 void Object::DrawValue(int param_1, float param_2) {}
@@ -804,10 +825,25 @@ void Object::SetFocus(const LHPoint& focus)
 
 void Object::IsActuallyInTheAir() {}
 
-void Object::GetPhysicsMovementDirection(LHPoint* pos) {}
+void Object::GetPhysicsMovementDirection(LHPoint* pos)
+{
+	PhysicsObject* physicsObject = PhysicsObject::SearchForPhysicsObject(this);
+	if (physicsObject != NULL)
+	{
+		*pos = physicsObject->Velocity;
+	}
+	else
+	{
+		pos->SetNull();
+	}
+}
 
 uint32_t Object::GetResource(RESOURCE_TYPE type)
 {
+	if (type == GetResourceType())
+	{
+		return GetDefaultResource();
+	}
 	return 0;
 }
 
@@ -818,17 +854,19 @@ MapCoords Object::GetWorkingPos(Object* param_1)
 
 float Object::GetWoodValue()
 {
-	return 0.0f;
+	float              objectScale = GetScale();
+	const GObjectInfo* objectInfo = info;
+	return GetLife() * objectInfo->WoodValue * objectScale * objectScale * objectScale;
 }
 
-float Object::GetAggressorValueFromDamage(float param_1)
+float Object::GetAggressorValueFromDamage(float damage)
 {
-	return 0.0f;
+	return damage * info->AggressorValue;
 }
 
 float Object::CalculateForceAppliedBy(Living* param_1)
 {
-	return 0.0f;
+	return GetWeight() * 9.81f;
 }
 
 void Object::PushObject(Living* param_1) {}
@@ -842,7 +880,7 @@ float Object::GetImpressiveValue(Living* param_1, Reaction* param_2)
 
 float Object::GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2)
 {
-	return 0.0f;
+	return GameThingWithPos::GetUpdateOfBoredomValue(param_1, param_2);
 }
 
 bool32_t Object::CanBeDestroyedBySpell(Spell* param_1)
@@ -850,9 +888,14 @@ bool32_t Object::CanBeDestroyedBySpell(Spell* param_1)
 	return false;
 }
 
-float Object::GetTribalPower(TRIBE_TYPE param_1)
+float Object::GetTribalPower(TRIBE_TYPE tribe)
 {
-	return 0.0f;
+	GPlayer* player = GetPlayer();
+	if (player != NULL)
+	{
+		return player->TribalPower[tribe];
+	}
+	return 1.0f;
 }
 
 bool Object::IsFireMan()
@@ -862,15 +905,21 @@ bool Object::IsFireMan()
 
 void Object::GetTemperature() {}
 
-void Object::SetOnFire(float param_1) {}
+void Object::SetOnFire(float temperature)
+{
+	FireEffect::SetOnFire(this, temperature);
+}
 
-void Object::SetTemperature(float param_1, GameThing* param_2) {}
+void Object::SetTemperature(float temperature, GameThing* source)
+{
+	FireEffect::SetTemperature(this, temperature, source);
+}
 
 void Object::GetFireGPHXDrawn(bool* param_1, bool* param_2, bool* param_3, bool* param_4) {}
 
 float Object::GetRainCoolingMultiplier()
 {
-	return 0.0f;
+	return 0.01f;
 }
 
 LHPoint* Object::GetDefaultFireCentrePos(LHPoint* pos)
@@ -880,7 +929,7 @@ LHPoint* Object::GetDefaultFireCentrePos(LHPoint* pos)
 
 float Object::GetDefaultFireRadius()
 {
-	return 0.0f;
+	return Get2DRadius();
 }
 
 bool Object::ProcessInHand()
@@ -890,24 +939,27 @@ bool Object::ProcessInHand()
 
 uint32_t Object::ProcessInInteract(GInterfaceStatus* status)
 {
-	return 0;
+	return 1;
 }
 
-void Object::SetInScript(int param_1) {}
+void Object::SetInScript(int param_1)
+{
+	Flags = (Flags & ~GAME_THING_WITH_POS_FLAG_IN_SCRIPT) | ((param_1 & 1) << 9);
+}
 
 uint32_t Object::RemoveFromGame()
 {
 	return 0;
 }
 
-bool Object::CanBeSuckedIntoVortex(LandscapeVortex* param_1)
+bool32_t Object::CanBeSuckedIntoVortex(LandscapeVortex* param_1)
 {
-	return false;
+	return CanBecomeAPhysicsObject();
 }
 
 float Object::GetDrawImportance()
 {
-	return 0.0f;
+	return info->DrawImportance;
 }
 
 uint32_t Object::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager)
@@ -933,17 +985,28 @@ void Object::GetInterfaceStatusHoldingThis() {}
 
 IMMERSION_EFFECT_TYPE Object::GetImmersionTexture()
 {
-	return (IMMERSION_EFFECT_TYPE)0;
+	return info->immersion;
 }
 
 void Object::SetUpPhysObAsATree(PhysOb* param_1, float param_2, float param_3, float param_4, float param_5) {}
 
-void Object::InitialiseIsFixedForMapList() {}
+void Object::InitialiseIsFixedForMapList()
+{
+	Flags = (Flags & ~GAME_THING_WITH_POS_FLAG_FIXED) | (MapCell::DoesObjectTypeCountAsFixed(info->type) << 15);
+}
 
 void Object::GetInterfaceStatusWhoLastDroppedMe() {}
 
 bool32_t Object::IsDrowning()
 {
+	if (Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS)
+	{
+		PhysicsObject* physicsObject = PhysicsObject::SearchForPhysicsObject(this);
+		if (physicsObject != NULL && physicsObject->HeightAboveWater < 0.0f)
+		{
+			return true;
+		}
+	}
 	return false;
 }
 
@@ -954,15 +1017,22 @@ uint32_t Object::DropSfx()
 
 IMMERSION_EFFECT_TYPE Object::GetInHandImmersionTexture()
 {
-	return (IMMERSION_EFFECT_TYPE)0;
+	return (IMMERSION_EFFECT_TYPE)-1;
 }
 
-bool Object::CanBecomeArtifact()
+bool32_t Object::CanBecomeArtifact()
 {
+	if (info->ArtifactMultiplier > 0.0f && !IsInScript())
+	{
+		return true;
+	}
 	return false;
 }
 
-void Object::SetYJustAngle(float angle) {}
+void Object::SetYJustAngle(float angle)
+{
+	y_angle = angle;
+}
 
 bool32_t Object::CreateSmokyStuff(long param_1, float param_2, LH3DColor param_3)
 {
@@ -971,6 +1041,11 @@ bool32_t Object::CreateSmokyStuff(long param_1, float param_2, LH3DColor param_3
 
 float Object::ApplyWaterSpell(SpellWater* spell)
 {
+	if (IsOnFire() && spell->PuttingOutFireReaction == NULL)
+	{
+		spell->PuttingOutFireReaction =
+			Reaction::CreateReaction(spell, REACTION_REACT_TO_MAGIC_WATER_PUTTING_OUT_FIRE, spell->GetPlayer(), 1);
+	}
 	return 0.0f;
 }
 
@@ -979,7 +1054,7 @@ bool Object::BlocksTownClearArea()
 	return false;
 }
 
-bool Object::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
+bool32_t Object::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
 {
 	return false;
 }
@@ -988,7 +1063,7 @@ void Object::DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* pa
 
 float Object::GetRadiusMultiplierForApplyingPotToPos()
 {
-	return 0.0f;
+	return 1.2f;
 }
 
 bool32_t Object::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status)
@@ -998,9 +1073,14 @@ bool32_t Object::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfa
 
 float Object::GetSacrificeValue()
 {
-	return 0.0f;
+	const GObjectInfo* objectInfo = info;
+	float              halfLife = GetLife() * 0.5f;
+	return (halfLife + 0.5f) * objectInfo->SacrificeValue;
 }
 
 void Object::DiscipleInHandNear(Villager& villager, GInterfaceStatus& status) {}
 
-void Object::DestroyedByBeam() {}
+void Object::DestroyedByBeam()
+{
+	ToBeDeleted(0);
+}

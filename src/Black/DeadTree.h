@@ -104,7 +104,7 @@ public:
 	// BW1W120 00511170 BW1M100 100c24e0 DeadTree::SetUpPhysOb(PhysOb *)
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 005113f0 BW1M100 100c1f10 DeadTree::EndPhysics(PhysicsObject *, bool)
-	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 005111f0 BW1M100 100c2490 DeadTree::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00510ca0 BW1M100 100c3670 DeadTree::ReactToPhysicsImpact(PhysicsObject *, bool)

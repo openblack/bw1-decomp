@@ -22,7 +22,7 @@ struct MapCell
 	// Static methods
 
 	// BW1W120 00601510 BW1M100 1000b040 MapCell::DoesObjectTypeCountAsFixed(OBJECT_TYPE)
-	static bool DoesObjectTypeCountAsFixed(OBJECT_TYPE type);
+	static bool32_t DoesObjectTypeCountAsFixed(OBJECT_TYPE type);
 
 	// Non-virtual methods
 

@@ -82,7 +82,7 @@ public:
 	// BW1W120 006eaea0 BW1M100 1013ec20 Scaffold::IsResourceStore(RESOURCE_TYPE)
 	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 006eaec0 BW1M100 1013eb90 Scaffold::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-	virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 0055e0f0 BW1M100 1013e590 Scaffold::GetResourceType(void)
 	virtual RESOURCE_TYPE GetResourceType();
 	// BW1W120 006e9d30 BW1M100 10140dd0 Scaffold::GetDefaultResource(void)
@@ -112,7 +112,7 @@ public:
 	// BW1W120 006e8770 BW1M100 10143680 Scaffold::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 006e8780 BW1M100 101434e0 Scaffold::EndPhysics(PhysicsObject *, bool)
-	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0055e110 BW1M100 1013e610 Scaffold::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 006ea940 BW1M100 1013f890 Scaffold::ReactToPhysicsImpact(PhysicsObject *, bool)

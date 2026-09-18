@@ -88,7 +88,7 @@ public:
 	// BW1W120 0066f560 BW1M100 10116710 Pot::IsResourceStore(RESOURCE_TYPE)
 	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 0066dd30 BW1M100 1011ac10 Pot::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-	virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 0066f520 BW1M100 10116810 Pot::GetRadiusMultiplierForApplyingPotToPos(void)
 	virtual float GetRadiusMultiplierForApplyingPotToPos();
 	// BW1W120 0055d4c0 BW1M100 100d32d0 Pot::GetResourceType(void)
@@ -120,7 +120,7 @@ public:
 	// BW1W120 0066cef0 BW1M100 1011cd80 Pot::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 0066dbd0 BW1M100 1011ae20 Pot::EndPhysics(PhysicsObject *, bool)
-	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0066ced0 BW1M100 1011ce10 Pot::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 0066dc90 BW1M100 1011ac90 Pot::ReactToPhysicsImpact(PhysicsObject *, bool)

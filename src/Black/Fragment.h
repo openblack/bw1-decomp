@@ -69,7 +69,7 @@ public:
 	// BW1W120 0076ec50 BW1M100 1015b540 Fragment::SetUpPhysOb(PhysOb *)
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 0076f3f0 BW1M100 1015b270 Fragment::EndPhysics(PhysicsObject *, bool)
-	virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0076f3d0 BW1M100 1015b4f0 Fragment::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 0076f3e0 BW1M100 1015b4a0 Fragment::ReactToPhysicsImpact(PhysicsObject *, bool)
