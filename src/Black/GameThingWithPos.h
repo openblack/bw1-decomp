@@ -4,7 +4,9 @@
 /* Unused here; emits the guarded atexit registration of std::ctype<wchar_t>::id
    (.CRT$XCU thunk -> mov cl,[0xFAC934]; push 0x407870; call atexit) that every
    object derived from this one ends with. */
+#ifdef VERSION_BW1W120
 #include <string>
+#endif
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */

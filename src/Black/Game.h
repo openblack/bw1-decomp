@@ -142,19 +142,21 @@ public:
 	// BW1W120 008df610
 	static char* const NetworkPassword;
 
-	uint32_t               field_0x14;
-	GPlayer                players[0x8];
-	uint8_t                field_0x5318[0x660];
-	uint8_t                field_0x5978;
-	uint8_t                field_0x5979;
-	uint8_t                field_0x597a[2];
-	StatsDatabase          stats_database;    /* 0x597c */
-	CreatureDatabase       creature_database; /* 0x598c */
-	bool                   field_0x599c;
-	uint8_t                field_0x599d;
-	uint8_t                field_0x599e;
-	uint8_t                field_0x599f;
-	uint32_t               field_0x59a0;
+	uint32_t         field_0x14;
+	GPlayer          players[0x8];
+	uint8_t          field_0x5318[0x660];
+	uint8_t          field_0x5978;
+	uint8_t          field_0x5979;
+	uint8_t          field_0x597a[2];
+	StatsDatabase    stats_database;    /* 0x597c */
+	CreatureDatabase creature_database; /* 0x598c */
+	bool             field_0x599c;
+	uint8_t          field_0x599d;
+	uint8_t          field_0x599e;
+	uint8_t          field_0x599f;
+#ifdef VERSION_BW1W120
+	uint32_t field_0x59a0;
+#endif
 	uint32_t               field_0x59a4;
 	uint32_t               field_0x59a8;
 	time_t                 field_0x59ac;

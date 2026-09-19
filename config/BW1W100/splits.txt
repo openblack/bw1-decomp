@@ -318,8 +318,43 @@ Black/GameArea.cpp:
 Black/GameStats.cpp:
 	.text       start:0x005343A0 end:0x0053A250
 
+Black/CreaturePhysical.cpp:
+	.rdata      start:0x0080FDD4 end:0x00810328
+
+Black/DanceKey.cpp:
+	.rdata      start:0x00812DC4 end:0x00812FE8
+
+Black/Debug.cpp:
+	.rdata      start:0x0081526C end:0x00816EE0
+
+Black/DialogBoxOptions.cpp:
+	.rdata      start:0x00816EE0 end:0x00816F88
+
+Black/EditorIconPlace.cpp:
+	.rdata      start:0x0081715C end:0x008172FC
+
+Black/fallingspell.cpp:
+	.rdata      start:0x008172FC end:0x0081791C
+
+Black/Fixed.cpp:
+	.rdata      start:0x0081950C end:0x0081AFE0
+
+Black/frontend.cpp:
+	.rdata      start:0x0081CB64 end:0x0081D390
+
+Black/Furniture.cpp:
+	.rdata      start:0x0081D434 end:0x0081D4C8
+
+Black/GameOptionsRoom.cpp:
+	.rdata      start:0x0081D790 end:0x0083DB04
+	.rdata$r    start:0x008E1EC8 end:0x008E1F14
+
 Black/GameThing.cpp:
 	.text       start:0x0053E6A0 end:0x0053EF40
+	.rdata      start:0x0083DD94 end:0x0083DEA0
+	.rdata$r    start:0x008E3F98 end:0x008E3FCC
+	.CRT$XCU    start:0x008F6660 end:0x008F666C align:4
+	.bss        start:0x00C273AC end:0x00C273C0
 
 Black/SetupStaticTextNoHit.cpp:
 	.text       start:0x0053EF40 end:0x00540DC0
@@ -407,36 +442,6 @@ Black/Language.cpp:
 
 Black/LHNetBase.cpp:
 	.text       start:0x005A98B0 end:0x005AA9B0
-
-Black/CreaturePhysical.cpp:
-	.rdata      start:0x0080FDD4 end:0x00810328
-
-Black/DanceKey.cpp:
-	.rdata      start:0x00812DC4 end:0x00812FE8
-
-Black/Debug.cpp:
-	.rdata      start:0x0081526C end:0x00816EE0
-
-Black/DialogBoxOptions.cpp:
-	.rdata      start:0x00816EE0 end:0x00816F88
-
-Black/EditorIconPlace.cpp:
-	.rdata      start:0x0081715C end:0x008172FC
-
-Black/fallingspell.cpp:
-	.rdata      start:0x008172FC end:0x0081791C
-
-Black/Fixed.cpp:
-	.rdata      start:0x0081950C end:0x0081AFE0
-
-Black/frontend.cpp:
-	.rdata      start:0x0081CB64 end:0x0081D390
-
-Black/Furniture.cpp:
-	.rdata      start:0x0081D434 end:0x0081D4C8
-
-Black/GameOptionsRoom.cpp:
-	.rdata      start:0x0081D790 end:0x0083DB04
 
 Black/GJProperty.cpp:
 	.rdata      start:0x0083E0B0 end:0x0083E1B4
@@ -789,7 +794,6 @@ Black/Town.cpp:
 Black/Villager.cpp:
 	.text       start:0x006DFB00 end:0x006E62C0
 	.rdata      start:0x008D134C end:0x008D1A64
-	.rdata$r    start:0x008E1EC8 end:0x008E1F14
 	.data       start:0x00B46420 end:0x00B46500
 	.bss        start:0x00CC7858 end:0x00CDAA58
 

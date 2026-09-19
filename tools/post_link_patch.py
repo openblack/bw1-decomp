@@ -507,6 +507,11 @@ BW1W120_GAMETHING_SAFEDISC = (
 )
 BW1W120_GAMETHING_TEXT = 0x0056F990
 
+BW1W100_GAMETHING_INCREMENTAL = (
+    (0x840, b'\x33\xc0\xc3\x90\x90', b'\xe9\x7b\x5f\xec\xff'),  # 0053eee0: jmp 0x404e60 (GameThing::GetSaveType)
+)
+BW1W100_GAMETHING_TEXT = 0x0053E6A0
+
 
 def substitute_code(pe, base, rows):
     for delta, linked, shipped in rows:
@@ -658,6 +663,7 @@ def write_exe_tail_tag(pe, build_field):
 
 
 def apply_BW1W100_patch(pe, cfg, out_dir, modules):
+    substitute_code(pe, BW1W100_GAMETHING_TEXT, BW1W100_GAMETHING_INCREMENTAL)
     apply_patch_safedisc(pe, cfg)
     apply_BW1W100_patch_safedisc_cleaner(pe)
     apply_BW1_common_patch(pe, cfg)

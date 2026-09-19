@@ -45,55 +45,57 @@ struct MPFEStartGameData;
 class GPlayer : public GameThing
 {
 public:
-	static void                 DrawPlayers();         // 0064c140
-	static void                 DrawComputerPlayers(); // 0064c1a0
-	GInterface*                 interfaces[18];        /* 0x14 */
-	uint32_t                    field_0x5c;
-	GAlignment*                 alignment; /* 0x60 */
-	uint32_t                    field_0x64;
-	float                       TribalPower[TRIBE_TYPE_LAST]; /* 0x68 */
-	float                       field_0x8c;
-	float                       field_0x90;
-	uint8_t                     field_0x94[0x20];
-	uint8_t                     field_0xb4;
-	uint8_t                     player_number;
-	uint8_t                     field_0xb6;
-	uint8_t                     field_0xb7;
-	float                       field_0xb8;
-	float                       field_0xbc;
-	float                       field_0xc0;
-	float                       field_0xc4;
-	float                       field_0xc8;
-	float                       field_0xcc;
-	float                       field_0xd0;
-	float                       field_0xd4;
-	float                       field_0xd8;
-	uint32_t                    field_0xdc;
-	uint32_t                    field_0xe0;
-	uint32_t                    field_0xe4;
-	uint32_t                    field_0xe8;
-	uint32_t                    field_0xec;
-	uint32_t                    field_0xf0;
-	MPFEStartGameData*          StartGameData; /* 0xf4 */
-	std::map<int, WinCondition> Conditions;    /* 0xf8; original key enum spelling is unrecovered. */
+	static void        DrawPlayers();         // 0064c140
+	static void        DrawComputerPlayers(); // 0064c1a0
+	GInterface*        interfaces[18];        /* 0x14 */
+	uint32_t           field_0x5c;
+	GAlignment*        alignment; /* 0x60 */
+	uint32_t           field_0x64;
+	float              TribalPower[TRIBE_TYPE_LAST]; /* 0x68 */
+	float              field_0x8c;
+	float              field_0x90;
+	uint8_t            field_0x94[0x20];
+	uint8_t            field_0xb4;
+	uint8_t            player_number;
+	uint8_t            field_0xb6;
+	uint8_t            field_0xb7;
+	float              field_0xb8;
+	float              field_0xbc;
+	float              field_0xc0;
+	float              field_0xc4;
+	float              field_0xc8;
+	float              field_0xcc;
+	float              field_0xd0;
+	float              field_0xd4;
+	float              field_0xd8;
+	uint32_t           field_0xdc;
+	uint32_t           field_0xe0;
+	uint32_t           field_0xe4;
+	uint32_t           field_0xe8;
+	uint32_t           field_0xec;
+	uint32_t           field_0xf0;
+	MPFEStartGameData* StartGameData; /* 0xf4 */
+#ifdef VERSION_BW1W120
+	std::map<int, WinCondition> Conditions; /* 0xf8; original key enum spelling is unrecovered. */
 	uint8_t                     field_0x108[0x7d8];
-	PLAYER_TYPE                 type; /* 0x8e0 */
-	char16_t                    name[0x1e];
-	uint32_t                    field_0x920;
-	uint32_t                    field_0x924;
-	uint32_t                    field_0x928;
-	int                         field_0x92c;
-	uint8_t                     field_0x930[0x14];
-	uintptr_t                   field_0x944;
-	uint8_t                     field_0x948[0x28];
-	int                         MagicRemainder[0x2a]; /* 0x970 */
-	bool                        MagicEnabled[0x2a];   /* 0xa18 */
-	GameStats*                  game_stats;           /* 0xa44 */
-	Citadel*                    citadel;
-	Creature*                   creature;
-	LHListHead<Town>            towns; /* 0xa50 */
-	uint32_t                    field_0xa58;
-	uint32_t                    field_0xa5c;
+#endif
+	PLAYER_TYPE      type; /* 0x8e0 */
+	char16_t         name[0x1e];
+	uint32_t         field_0x920;
+	uint32_t         field_0x924;
+	uint32_t         field_0x928;
+	int              field_0x92c;
+	uint8_t          field_0x930[0x14];
+	uintptr_t        field_0x944;
+	uint8_t          field_0x948[0x28];
+	int              MagicRemainder[0x2a]; /* 0x970 */
+	bool             MagicEnabled[0x2a];   /* 0xa18 */
+	GameStats*       game_stats;           /* 0xa44 */
+	Citadel*         citadel;
+	Creature*        creature;
+	LHListHead<Town> towns; /* 0xa50 */
+	uint32_t         field_0xa58;
+	uint32_t         field_0xa5c;
 
 	// BW1W120 00648da0 GPlayer::GPlayer(void)
 	GPlayer();

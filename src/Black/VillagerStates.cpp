@@ -465,11 +465,13 @@ bool32_t Villager::SetDying()
 		DeleteDependancys();
 		status |= 0x30;
 	}
+#ifndef VERSION_BW1W100 // Town::field_0x748 is taken to be a 1.10 addition; see Town.h.
 	if (town != NULL && town->field_0x748 != 0 && ((MultiMapFixed*)town->field_0x748)->IsFunctional())
 	{
 		TurnsUntilNextStateChange = (int16_t)((const GVillagerInfo*)info)->DyingTimeWithGraveyard;
 	}
 	else
+#endif
 	{
 		TurnsUntilNextStateChange = (int16_t)((const GVillagerInfo*)info)->DyingTimeWithoutGraveyard;
 	}
@@ -494,10 +496,12 @@ bool32_t Villager::Dying()
 	}
 	if ((Flags & 4) == 0)
 	{
+#ifndef VERSION_BW1W100 // Town::field_0x748 is taken to be a 1.10 addition; see Town.h.
 		if (GetTown() != NULL && GetTown()->field_0x748 != 0)
 		{
 			return true;
 		}
+#endif
 		Reaction::CreateReaction(this, REACTION_REACT_TO_DEATH, NULL, 0);
 	}
 	return true;

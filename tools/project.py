@@ -902,6 +902,13 @@ def generate_build_ninja(
             description="CL $out",
         )
         n.newline()
+        n.comment("Fold a recompiled unit's shared COMDATs onto the image's copies (see add_unit)")
+        n.rule(
+            name="fold",
+            command=f"{dtk} coff fold $in $config --unit $unit -o $out",
+            description="FOLD $out",
+        )
+        n.newline()
 
         if gnu_as_cmd:
             n.comment("Assemble asm")
@@ -1468,6 +1475,28 @@ def generate_build_ninja(
                 built_obj_path = asm_build(obj, obj.asm_path, obj.asm_obj_path)
 
             if link_built_obj and built_obj_path is not None:
+                if (
+                    config.platform == "pe"
+                    and link_step.module_id == 0
+                    and lib_member is None
+                    and obj.src_path is not None
+                    and file_is_c_cpp(obj.src_path)
+                ):
+                    # The shipped link resolved every shared COMDAT (inline functions,
+                    # __real@ constants, RTTI, and identical functions it folded) to one
+                    # copy, which the split objects carry at its shipped address. Fold the
+                    # recompiled unit's own copies onto them before linking; objdiff keeps
+                    # reading the unfolded object.
+                    folded = built_obj_path.with_suffix(".fold.o")
+                    config_dir = config.config_path.parent
+                    n.build(
+                        outputs=folded,
+                        rule="fold",
+                        inputs=built_obj_path,
+                        implicit=[dtk, config.config_path, config_dir / "symbols.txt", config_dir / "splits.txt"],
+                        variables={"unit": obj.name, "config": serialize_path(config.config_path)},
+                    )
+                    built_obj_path = folded
                 # Use the source-built object
                 link_step.add(built_obj_path)
             elif obj_path is not None:

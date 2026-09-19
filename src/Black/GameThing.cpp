@@ -20,6 +20,20 @@
 // fabricated: unreferenced 4-byte .bss slot at 0x00d0607c; real name unknown
 static float unused;
 
+#ifdef VERSION_BW1W100
+#define BW1W100_INLINE inline
+#else
+#define BW1W100_INLINE
+#endif
+
+#ifdef VERSION_BW1W120
+static_assert(offsetof(Town, belief) == 0x798, "Town belief offset is incorrect");
+#elif defined(VERSION_BW1W110)
+static_assert(offsetof(Town, belief) == 0x794, "Town belief offset is incorrect");
+#else
+static_assert(offsetof(Town, belief) == 0x790, "Town belief offset is incorrect");
+#endif
+
 uint16_t GameThing::NumActiveGameThings;
 uint16_t GameThing::NumCreatedGameThings;
 
@@ -31,7 +45,7 @@ GameThing::GameThing() : Base()
 	CurrentSaveCount = 0;
 }
 
-void GameThing::SetScriptNameOfCreate(char* name) {}
+BW1W100_INLINE void GameThing::SetScriptNameOfCreate(char* name) {}
 
 GameThing::~GameThing()
 {
@@ -142,7 +156,7 @@ uint32_t GameThing::Load(GameOSFile& file)
 	return 1;
 }
 
-uint32_t GameThing::GetSaveType()
+BW1W100_INLINE uint32_t GameThing::GetSaveType()
 {
 	return 0;
 }
@@ -159,7 +173,7 @@ void GameThingWithPos::ToBeDeleted(int param_1)
 	GameThing::ToBeDeleted(param_1);
 }
 
-int GameThingWithPos::Get3DSoundPos(LHPoint* pos)
+BW1W100_INLINE int GameThingWithPos::Get3DSoundPos(LHPoint* pos)
 {
 	GLandscape::ConvertMapCoordToLandscapePoint(Pos, *pos);
 	return 1;
@@ -186,7 +200,7 @@ float GameThingWithPos::GetUpdateOfBoredomValue(Reaction* param_1, GameThingWith
 	return GBeliefInfo::Info.UpdateOfBoredomValue;
 }
 
-float GameThingWithPos::GetPSysPower() const
+BW1W100_INLINE float GameThingWithPos::GetPSysPower() const
 {
 	return 1.0f;
 }
@@ -196,7 +210,7 @@ float GameThing::MaintainSpell(uint32_t param_1, float param_2)
 	return param_2;
 }
 
-void GameThing::UpdateSpellInfo(Spell* spell, PSysProcessInfo* info) {}
+BW1W100_INLINE void GameThing::UpdateSpellInfo(Spell* spell, PSysProcessInfo* info) {}
 
 bool32_t GameThing::CheckAndSetSaved()
 {
@@ -208,7 +222,7 @@ bool32_t GameThing::CheckAndSetSaved()
 	return 0;
 }
 
-Town* GameThing::GetTown()
+BW1W100_INLINE Town* GameThing::GetTown()
 {
 	return NULL;
 }
@@ -230,12 +244,12 @@ void GameThingWithPos::GetPhysicsMovementDirection(LHPoint* pos)
 	pos->SetNull();
 }
 
-IMPRESSIVE_TYPE GameThingWithPos::GetImpressiveType()
+BW1W100_INLINE IMPRESSIVE_TYPE GameThingWithPos::GetImpressiveType()
 {
 	return IMPRESSIVE_TYPE_NOT_IMPRESSIVE_AT_ALL;
 }
 
-bool32_t GameThingWithPos::IsThingMovingTowards(GameThingWithPos* target, GameThingWithPos* moving_thing)
+BW1W100_INLINE bool32_t GameThingWithPos::IsThingMovingTowards(GameThingWithPos* target, GameThingWithPos* moving_thing)
 {
 	LHPoint target_pos;
 	LHPoint moving_pos;
@@ -253,14 +267,14 @@ bool32_t GameThingWithPos::IsThingMovingTowards(GameThingWithPos* target, GameTh
 	return target_to_moving.DotProductInline(moving_direction) >= 0.0f;
 }
 
-GPlayer* GameThing::GetPlayer()
+BW1W100_INLINE GPlayer* GameThing::GetPlayer()
 {
 	return &GGame::g_game->players[GGame::g_game->NeutralPlayerIndex];
 }
 
-void GameThing::SetPlayer(GPlayer* player) {}
+BW1W100_INLINE void GameThing::SetPlayer(GPlayer* player) {}
 
-void GameThingWithPos::SetPos(const LHPoint& pos)
+BW1W100_INLINE void GameThingWithPos::SetPos(const LHPoint& pos)
 {
 	MapCoords coords;
 	coords.SetX(pos.x);
@@ -279,46 +293,46 @@ bool32_t GameThingWithPos::CanBeThrownByPlayer()
 	return IsMobileObject() || IsMobileStatic() || IsAnyKindOfTree();
 }
 
-SCRIPT_OBJECT_TYPE GameThingWithPos::GetScriptObjectType()
+BW1W100_INLINE SCRIPT_OBJECT_TYPE GameThingWithPos::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_NONE;
 }
 
-void GameThingWithPos::SetSpeedInMetres(float param_1, int param_2) {}
+BW1W100_INLINE void GameThingWithPos::SetSpeedInMetres(float param_1, int param_2) {}
 
-float GameThingWithPos::GetSpeedInMetres() const
+BW1W100_INLINE float GameThingWithPos::GetSpeedInMetres() const
 {
 	return 0.0f;
 }
 
-float GameThingWithPos::GetRunningSpeedInMetres()
+BW1W100_INLINE float GameThingWithPos::GetRunningSpeedInMetres()
 {
 	return 0.0f;
 }
 
-float GameThingWithPos::GetDefaultSpeedInMetres()
+BW1W100_INLINE float GameThingWithPos::GetDefaultSpeedInMetres()
 {
 	return 0.0f;
 }
 
-void GameThingWithPos::SetSpeedInMetresPerSecond(float speed, int scale) {}
+BW1W100_INLINE void GameThingWithPos::SetSpeedInMetresPerSecond(float speed, int scale) {}
 
-float GameThingWithPos::GetSpeedInMetresPerSecond() const
+BW1W100_INLINE float GameThingWithPos::GetSpeedInMetresPerSecond() const
 {
 	return 0.0f;
 }
 
-float GameThingWithPos::GetRunningSpeedInMetresPerSecond()
+BW1W100_INLINE float GameThingWithPos::GetRunningSpeedInMetresPerSecond()
 {
 	return 0.0f;
 }
 
-float GameThingWithPos::GetDefaultSpeedInMetresPerSecond()
+BW1W100_INLINE float GameThingWithPos::GetDefaultSpeedInMetresPerSecond()
 {
 	return 0.0f;
 }
 
-int GameThingWithPos::ForDrawFXGetNumVertices()
+BW1W100_INLINE int GameThingWithPos::ForDrawFXGetNumVertices()
 {
 	return 0;
 }
@@ -361,12 +375,12 @@ void GameThingWithPos::CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint
 	*outPos = Pos.ConvertToLHPoint();
 }
 
-uint32_t GameThingWithPos::GetFOVHelpMessageSet()
+BW1W100_INLINE uint32_t GameThingWithPos::GetFOVHelpMessageSet()
 {
 	return 0;
 }
 
-uint32_t GameThingWithPos::GetFOVHelpCondition()
+BW1W100_INLINE uint32_t GameThingWithPos::GetFOVHelpCondition()
 {
 	return 0;
 }
@@ -411,22 +425,22 @@ MapCoords GameThingWithPos::GetSpellCastPos()
 	return Pos;
 }
 
-uint32_t GameThingWithPos::GetOverwritePickUpToolTip()
+BW1W100_INLINE uint32_t GameThingWithPos::GetOverwritePickUpToolTip()
 {
 	return 0;
 }
 
-uint32_t GameThingWithPos::GetOverwriteInteractableToolTip()
+BW1W100_INLINE uint32_t GameThingWithPos::GetOverwriteInteractableToolTip()
 {
 	return 0;
 }
 
-uint32_t GameThingWithPos::GetOverwriteDropToolTip()
+BW1W100_INLINE uint32_t GameThingWithPos::GetOverwriteDropToolTip()
 {
 	return 0;
 }
 
-uint32_t GameThingWithPos::GetOverwriteTapToolTip()
+BW1W100_INLINE uint32_t GameThingWithPos::GetOverwriteTapToolTip()
 {
 	return 0;
 }
@@ -445,12 +459,12 @@ uint32_t GameThing::JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool pa
 	return 0;
 }
 
-uint32_t GameThing::JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3)
+BW1W100_INLINE uint32_t GameThing::JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3)
 {
 	return 0;
 }
 
-uint32_t GameThing::JustGetResource(RESOURCE_TYPE param_1, uint32_t amount, bool* param_3)
+BW1W100_INLINE uint32_t GameThing::JustGetResource(RESOURCE_TYPE param_1, uint32_t amount, bool* param_3)
 {
 	return 0;
 }
