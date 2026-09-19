@@ -1,12 +1,17 @@
 #ifndef BW1_DECOMP_LH3D_MATH_INCLUDED_H
 #define BW1_DECOMP_LH3D_MATH_INCLUDED_H
 
+const float PI = 3.14159265358979323846f;
+const float TWO_PI = 6.2831854820251465f;
+
+#include <stdint.h> /* For uint8_t */
+
 struct LHPoint;
 
 struct LH3DMath
 {
 	// BW1W120 00eea394 BW1M100 101bca74
-	static void* g_inverse_sqrt_lookup_table;
+	static uint8_t* g_inverse_sqrt_lookup_table;
 
 	// Static methods
 
