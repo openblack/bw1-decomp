@@ -11,7 +11,7 @@ struct LHPoint;
 struct LH3DMath
 {
 	// BW1W120 00eea394 BW1M100 101bca74
-	static uint8_t* g_inverse_sqrt_lookup_table;
+	static uint8_t (*g_inverse_sqrt_lookup_table)[0x80];
 
 	// Static methods
 

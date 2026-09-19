@@ -5,11 +5,8 @@
 #include "LH3DMem.h" /* For LH3DMem */
 #include "LHPoint.h" /* For struct LHPoint */
 
-// Lookup table entries; indexed by the top 7 mantissa bits of the input float.
-#define INVERSE_SQRT_TABLE_SIZE 0x80
-
 // BW1W120 00eea394 BW1M100 101bca74
-uint8_t* LH3DMath::g_inverse_sqrt_lookup_table;
+uint8_t (*LH3DMath::g_inverse_sqrt_lookup_table)[0x80];
 
 // BW1W120 00841230 BW1M100 10061ed0 LH3DMath::Open(void)
 void LH3DMath::Open()
@@ -32,9 +29,9 @@ void LH3DMath::MakeInverseSqrtLookupTable()
 		uint32_t bits;
 	};
 
-	uint8_t* table = (uint8_t*)LH3DMem::Alloc(INVERSE_SQRT_TABLE_SIZE);
-	g_inverse_sqrt_lookup_table = table;
-	for (int i = 0; i < INVERSE_SQRT_TABLE_SIZE; i++)
+	uint8_t* table = (uint8_t*)LH3DMem::Alloc(sizeof(*LH3DMath::g_inverse_sqrt_lookup_table));
+	g_inverse_sqrt_lookup_table = (uint8_t (*)[0x80])table;
+	for (int i = 0; i < (int)sizeof(*LH3DMath::g_inverse_sqrt_lookup_table); i++)
 	{
 		// Seed for the Newton step: the exponent bits put the value in [0.5, 2.0) and the
 		// index supplies the top mantissa bits, so the seed ramps one octave per 64 entries.
@@ -46,7 +43,7 @@ void LH3DMath::MakeInverseSqrtLookupTable()
 		// Pack the reciprocal's mantissa bits 15-22 into this entry's byte.
 		*table++ = (uint8_t)((inv.bits + 0x2000) >> 15);
 	}
-	g_inverse_sqrt_lookup_table[INVERSE_SQRT_TABLE_SIZE / 2] = 0xff;
+	(*g_inverse_sqrt_lookup_table)[sizeof(*LH3DMath::g_inverse_sqrt_lookup_table) / 2] = 0xff;
 }
 
 // BW1W120 00841290 LH3DMath::GetYAngle(LHPoint *)
@@ -61,7 +58,6 @@ float LH3DMath::GetYAngle(LHPoint* point)
 }
 
 // BW1W120 00841260 LH3DMath::GetYAngle(LHPoint *, LHPoint *)
-// TODO: cl6 hoists the `from` load ahead of the first fld; the target keeps it after.
 float LH3DMath::GetYAngle(LHPoint* from, LHPoint* to)
 {
 	float angle = (float)atan2(to->z - from->z, to->x - from->x);
