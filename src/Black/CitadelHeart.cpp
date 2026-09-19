@@ -2,7 +2,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include "GameOSFile.h"
-#include "LandscapeConstants.h" /* For CellSizeXGridDim */
+#include "LandscapeConstants.h" /* For LandscapeExtent */
 
 CitadelHeart::CitadelHeart() : CitadelPart(), field_0x90(0)
 {

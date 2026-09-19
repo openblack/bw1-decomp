@@ -1,3 +1,3 @@
 #include "EditorHug.h"
 
-#include "LandscapeConstants.h" /* For CellSizeXGridDim */
+#include "LandscapeConstants.h" /* For LandscapeExtent */

@@ -1,3 +1,3 @@
 #include "AnimatedStatic.h"
 
-#include "LandscapeConstants.h" /* For CellSizeXGridDim */
+#include "LandscapeConstants.h" /* For LandscapeExtent */

@@ -2,7 +2,7 @@
 
 #include "FootpathLink.h"       /* For struct GFootpathLink */
 #include "GameOSFile.h"         /* For struct GameOSFile */
-#include "LandscapeConstants.h" /* For CellSizeXGridDim */
+#include "LandscapeConstants.h" /* For LandscapeExtent */
 
 uint32_t GFootpathLink::Save(GameOSFile& file)
 {

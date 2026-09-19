@@ -15,7 +15,7 @@
 #include "MapCoords.h"
 #include "Utils.h"
 #include "BeliefInfo.h"
-#include "LandscapeConstants.h" /* For CellSizeXGridDim */
+#include "LandscapeConstants.h" /* For LandscapeExtent */
 
 // fabricated: unreferenced 4-byte .bss slot at 0x00d0607c; real name unknown
 static float unused;
@@ -235,11 +235,6 @@ IMPRESSIVE_TYPE GameThingWithPos::GetImpressiveType()
 	return IMPRESSIVE_TYPE_NOT_IMPRESSIVE_AT_ALL;
 }
 
-GPlayer* GameThing::GetPlayer()
-{
-	return &GGame::g_game->players[GGame::g_game->NeutralPlayerIndex];
-}
-
 bool32_t GameThingWithPos::IsThingMovingTowards(GameThingWithPos* target, GameThingWithPos* moving_thing)
 {
 	LHPoint target_pos;
@@ -256,6 +251,11 @@ bool32_t GameThingWithPos::IsThingMovingTowards(GameThingWithPos* target, GameTh
 	moving_thing->GetMovementDirection(&moving_direction);
 	moving_direction.FastNormalizeInline();
 	return target_to_moving.DotProductInline(moving_direction) >= 0.0f;
+}
+
+GPlayer* GameThing::GetPlayer()
+{
+	return &GGame::g_game->players[GGame::g_game->NeutralPlayerIndex];
 }
 
 void GameThing::SetPlayer(GPlayer* player) {}

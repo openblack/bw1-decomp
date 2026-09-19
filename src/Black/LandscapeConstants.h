@@ -11,6 +11,13 @@ const float CellSize = 10.0f;
 // address is what every initialiser and LH3DIsland's grid clipping reference.
 //
 // TODO: real filename unknown; this is not the header the original used.
-static float CellSizeXGridDim = 512.0f * CellSize;
+//
+// The name is a guess too, but not a free one. cl6 orders the header statics that only
+// their startup initialisers touch (this, White, SecondsPerYear) in .bss by a hash of the
+// symbol name, not by include or definition order. GameThing's target needs this one at
+// .bss+0, then White, then SecondsPerYear; "CellSizeXGridDim" sorted after White, and of
+// 22 descriptive candidates only "LandscapeExtent" sorted before it (512 cells x 10 = the
+// landscape edge length). Renaming it will move it: re-check GameThing's .bss first.
+static float LandscapeExtent = 512.0f * CellSize;
 
 #endif /* BW1_DECOMP_LANDSCAPE_CONSTANTS_INCLUDED_H */
