@@ -243,8 +243,8 @@ public:
 	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
 	                                           Object* param_4, int param_5);
 	// BW1W120 005efe10 BW1M100 10385900 Living::InitialisePhysics(LHPoint const &, LHPoint const &, Object *, bool, GInterfaceStatus *)
-	virtual uint32_t InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3, bool param_4,
-	                                   GInterfaceStatus* param_5);
+	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
+	                                                bool param_4, GInterfaceStatus* param_5);
 	// BW1W120 005ed2f0 BW1M100 103804c0 Living::GetBoundingSphere(LHPoint &, float &)
 	virtual void GetBoundingSphere(LHPoint& param_1, float& param_2);
 	// BW1W120 005ed3e0 BW1M100 10380210 Living::ReactToPhysicsImpact(PhysicsObject *, bool)

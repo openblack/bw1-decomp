@@ -52,6 +52,12 @@ class SpellWater;
 class Town;
 class Villager;
 
+struct PhysicsInitialisation
+{
+	PhysicsObject* Physics; /* 0x0 */
+	bool32_t       Started; /* 0x4 */
+};
+
 class Object : public GameThingWithPos
 {
 public:
@@ -198,7 +204,7 @@ public:
 	// BW1W120 00402560 BW1M100 1030b0c0 Object::IsReachable(void)
 	virtual bool32_t IsReachable() { return IsAvailable(); }
 	// BW1W120 0063a920 BW1M100 103d03c0 Object::BlocksTownClearArea( const(void))
-	virtual bool BlocksTownClearArea();
+	virtual bool32_t BlocksTownClearArea();
 	// BW1W120 006365f0 BW1M100 103d9010 Object::Create3DObject(void)
 	virtual void Create3DObject();
 	// fabricated: nothing in either binary references BW1W120 00636b20, so its name is unrecoverable.
@@ -273,7 +279,7 @@ public:
 	// BW1W120 0063aaf0 BW1M100 103cff40 Object::GetSacrificeValue(void)
 	virtual float GetSacrificeValue();
 	// BW1W120 00637c20 BW1M100 103d63c0 Object::ReduceLifeDueToBurning(float, GPlayer *)
-	virtual void ReduceLifeDueToBurning(float param_1, GPlayer* param_2);
+	virtual float ReduceLifeDueToBurning(float param_1, GPlayer* param_2);
 	// BW1W120 00637900 BW1M100 103d6a00 Object::FillInEffectDefenceMultiplier(EffectNumbers &)
 	virtual void FillInEffectDefenceMultiplier(EffectNumbers& param_1);
 	// BW1W120 00637980 BW1M100 103d6510 Object::ApplyEffect(EffectValues &, int)
@@ -295,7 +301,7 @@ public:
 	// BW1W120 00639a90 BW1M100 103d2900 Object::GetRainCoolingMultiplier(void)
 	virtual float GetRainCoolingMultiplier();
 	// BW1W120 00639aa0 BW1M100 1001a370 Object::GetDefaultFireCentrePos(MapCoords *)
-	virtual LHPoint* GetDefaultFireCentrePos(LHPoint* pos);
+	virtual void GetDefaultFireCentrePos(MapCoords* pos);
 	// BW1W120 00639ac0 BW1M100 103d2490 Object::GetDefaultFireRadius(void)
 	virtual float GetDefaultFireRadius();
 	// BW1W120 006378e0 BW1M100 103d6ad0 Object::DestroyedByEffect(GPlayer *, float)
@@ -519,8 +525,8 @@ public:
 	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
 	                                           Object* param_4, int param_5);
 	// BW1W120 00637480 BW1M100 103d74c0 Object::InitialisePhysics(LHPoint const &, LHPoint const &, Object *, bool, GInterfaceStatus *)
-	virtual uint32_t InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3, bool param_4,
-	                                   GInterfaceStatus* param_5);
+	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
+	                                                bool param_4, GInterfaceStatus* param_5);
 	// BW1W120 006376a0 BW1M100 103d71b0 Object::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 006376b0 BW1M100 103d70b0 Object::SetUpPhysOb(PhysOb *)
@@ -557,7 +563,7 @@ public:
 	// BW1W120 00638be0 BW1M100 103d41e0 Object::VillagerMustAvoid(Villager *)
 	virtual bool32_t VillagerMustAvoid(Villager* param_1);
 	// BW1W120 00639a00 BW1M100 103d2b20 Object::IsFireMan(void)
-	virtual bool IsFireMan();
+	virtual bool32_t IsFireMan();
 	// BW1W120 00638730 BW1M100 10097740 Object::IsARootedObject(void)
 	virtual bool32_t IsARootedObject();
 	// BW1W120 00637690 BW1M100 103d7220 Object::GetCollideSoundType(void)
@@ -664,14 +670,22 @@ public:
 	// BW1W120 0063a810 BW1M100 103d04b0 Object::CreateSmokyStuff(long, float, LH3DColor)
 	bool32_t CreateSmokyStuff(long param_1, float param_2, LH3DColor param_3);
 	// BW1W120 00637930 BW1M100 103d6910 Object::GetDefenseMultiplier(void)
-	float GetDefenseMultiplier();
+	EffectNumbers GetDefenseMultiplier();
 	// BW1W120 00638b00 BW1M100 103d4220 Object::SimpleAddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
 	void SimpleAddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                          void(__cdecl* param_4)(int, Point2D, float, int));
 	// BW1W120 00639410 BW1M100 103d3690 Object::IsActuallyInTheAir(void)
 	void IsActuallyInTheAir();
+	// BW1W120 00636e70 BW1M100 103dfe00 Object::RemoveDraggingCreatureByLeash(void)
+	void RemoveDraggingCreatureByLeash();
+	// BW1W120 006380c0 BW1M100 103dd600 Object::IsCitadelPart(void) const
+	bool32_t IsCitadelPart() const;
 	// BW1W120 00639a10 BW1M100 103d2aa0 Object::GetTemperature(void)
-	void GetTemperature();
+	float GetTemperature();
+	// BW1W120 00639a30 BW1M100 103da130 Object::GetCombustionTemperature(void)
+	float GetCombustionTemperature();
+	// BW1W120 00637dd0 BW1M100 103ddfa0 Object::DrawFireEffect(void)
+	void DrawFireEffect();
 	// BW1W120 00639a40 BW1M100 103d29f0 Object::SetOnFire(float)
 	void SetOnFire(float param_1);
 	// BW1W120 00639a60 BW1M100 103d2990 Object::SetTemperature(float, GameThing *)
@@ -682,6 +696,8 @@ public:
 	void SetUpPhysObAsATree(PhysOb* param_1, float param_2, float param_3, float param_4, float param_5);
 	// BW1W120 0063a710 BW1M100 103d0870 Object::GetInterfaceStatusWhoLastDroppedMe(void)
 	void GetInterfaceStatusWhoLastDroppedMe();
+	// BW1W120 0063a6a0 BW1M100 103d8c10 Object::GetInterfaceStatusWhoLastPickedMeUp(void)
+	void GetInterfaceStatusWhoLastPickedMeUp();
 	// BW1W120 0063a940 BW1M100 103d00a0 Object::DoDeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
 	void DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 004eaab0 BW1M100 1026e5f8 Object::ConsiderCreatureMimickingWhenObjectLands(void)

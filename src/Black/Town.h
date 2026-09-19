@@ -37,6 +37,7 @@ class GTownInfo;
 class GTribeInfo;
 class GameOSFile;
 class GameThing;
+class EffectValues;
 class GameThingWithPos;
 class MultiMapFixed;
 class StoragePit;
@@ -238,6 +239,8 @@ public:
 
 	// BW1W120 inlined BW1M100 inlined Town::GetInfo() const
 	inline GTownInfo* GetInfo() const { return (GTownInfo*)info; }
+	// BW1W120 0073c9b0 BW1M100 1055b500 Town::UpdateAggressor(EffectValues const &, float)
+	void UpdateAggressor(const EffectValues& values, float aggressor_value);
 	// BW1W120 007399a0 BW1M100 10556850 Town::AddStructureToTown(MultiMapFixed *)
 	void AddStructureToTown(MultiMapFixed* structure);
 	// BW1W120 00739a20 BW1M100 105567f0 Town::AddAbodeToTownStats(Abode *)

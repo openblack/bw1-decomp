@@ -124,7 +124,7 @@ public:
 	// BW1W120 0052a0a0 BW1M100 100d1b50 Field::ReduceLife(float, GPlayer *)
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0052a050 BW1M100 100d1c00 Field::ReduceLifeDueToBurning(float, GPlayer *)
-	virtual void ReduceLifeDueToBurning(float param_1, GPlayer* param_2);
+	virtual float ReduceLifeDueToBurning(float param_1, GPlayer* param_2);
 	// BW1W120 005288d0 BW1M100 100d4d30 Field::GetFireGPHXDrawn(bool *, bool *, bool *, bool *)
 	virtual void GetFireGPHXDrawn(bool* param_1, bool* param_2, bool* param_3, bool* param_4);
 	// BW1W120 0052a010 BW1M100 100d1c70 Field::DestroyedByEffect(GPlayer *, float)

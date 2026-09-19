@@ -30,7 +30,7 @@ public:
 	// BW1W120 00606c10 BW1M100 103ba5b0 Mobile::Save(GameOSFile &)
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00606cd0 BW1M100 103ba4a0 Mobile::BlocksTownClearArea( const(void))
-	virtual bool BlocksTownClearArea();
+	virtual bool32_t BlocksTownClearArea();
 	// BW1W120 00425b00 BW1M100 100adca0 Mobile::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00416f50 BW1M100 100adcf0 Mobile::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)

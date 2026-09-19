@@ -8,7 +8,8 @@
 #include <chlasm/Enum.h> /* For enum ALIGNMENT_TYPE, enum IMMERSION_EFFECT_TYPE, enum OBJECT_TYPE, enum SOUND_COLLISION_TYPE, enum TRIBE_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 
-#include "BaseInfo.h" /* For struct GBaseInfo, struct GBaseInfoVftable */
+#include "BaseInfo.h"      /* For struct GBaseInfo, struct GBaseInfoVftable */
+#include "EffectNumbers.h" /* For struct EffectNumbers */
 
 // Forward Declares
 
@@ -30,21 +31,9 @@ public:
 	uint32_t              HandCondition;
 	float                 FoodValue;
 	uint32_t              WoodValue;
-	FOOD_TYPE             FoodType; /* 0x70 */
-	float                 DefenceEffectBurn;
-	float                 DefenceEffectCrush;
-	float                 DefenceEffectHit;
-	float                 DefenceEffectHeal; /* 0x80 */
-	float                 DefenceEffectFlyAway;
-	float                 DefenceEffectAlignmentModification;
-	float                 DefenceEffectBeliefModification;
-	float                 DefenceMultiplierBurn; /* 0x90 */
-	float                 DefenceMultiplierCrush;
-	float                 DefenceMultiplierHit;
-	float                 DefenceMultiplierHeal;
-	float                 DefenceMultiplierFlyAway; /* 0xa0 */
-	float                 DefenceMultiplierAlignmentModification;
-	float                 DefenceMultiplierBeliefModification;
+	FOOD_TYPE             FoodType;          /* 0x70 */
+	EffectNumbers         DefenceEffect;     /* 0x74 */
+	EffectNumbers         DefenceMultiplier; /* 0x90 */
 	float                 weight;
 	float                 HeatCapacity; /* 0xb0 */
 	float                 CombustionTemperature;

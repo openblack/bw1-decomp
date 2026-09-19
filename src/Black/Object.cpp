@@ -16,18 +16,25 @@
 #include "LandscapeConstants.h" /* For CellSizeXGridDim */
 
 #include "EditorPhysics.h" /* For EditorPhysics::PhysicsConstants */
+#include "Creature.h"      /* For Creature::CheckAllCreaturesForCatching */
+#include "EffectValues.h"  /* For struct EffectNumbers, class EffectValues */
 #include "FireEffect.h"
 #include "Game.h" /* For GGame */
 #include "Game3DObject.h"
+#include "GameOSFile.h" /* For class GameOSFile, class PhysicsSaveInfo */
 #include "GameThingWithPos.h"
-#include "JCGameBlock.h"   /* For GameBlock */
-#include "LandFeature.h"   /* For RequestChangeTexture */
-#include "Landscape.h"     /* For GLandscape */
-#include "Map.h"           /* For MapCell */
-#include "PhysicsObject.h" /* For class PhysicsObject */
-#include "Reaction.h"      /* For Reaction::CreateReaction, Reaction::RemoveAllReactionsOfTypeInitiatedByObject */
-#include "SpellWater.h"    /* For class SpellWater */
-#include "Utils.h"         /* For GUtils */
+#include "InterfaceStatus.h"  /* For class GInterfaceStatus */
+#include "JCGameBlock.h"      /* For GameBlock */
+#include "LandFeature.h"      /* For RequestChangeTexture */
+#include "Landscape.h"        /* For GLandscape */
+#include "Map.h"              /* For MapCell */
+#include "PhysicsObject.h"    /* For class PhysicsObject */
+#include "PhysicsSaveInfo.h"  /* For class PhysicsSaveInfo */
+#include "Reaction.h"         /* For Reaction::CreateReaction, Reaction::RemoveAllReactionsOfTypeInitiatedByObject */
+#include "SpellWater.h"       /* For class SpellWater */
+#include "Town.h"             /* For Town::UpdateAggressor */
+#include "Utils.h"            /* For GUtils */
+#include "VirtualInfluence.h" /* For class GVirtualInfluence */
 
 Object::Object() : info(NULL), coords()
 {
@@ -385,6 +392,30 @@ MapCoords Object::GetNearestEdge(float angle, float extra_radius)
 	return Pos + GUtils::GetPosFromAngle(angle, Get2DRadius() + extra_radius);
 }
 
+void Object::RemoveDraggingCreatureByLeash()
+{
+	if ((Flags & GAME_THING_WITH_POS_FLAG_DRAGGED_BY_LEASH) == 0)
+	{
+		return;
+	}
+	Flags &= ~GAME_THING_WITH_POS_FLAG_DRAGGED_BY_LEASH;
+	// GetPlayer() is this object's owner, so the inner walk covers the same statuses on
+	// every pass of the outer loop. That is what the original does.
+	for (GPlayer* player = GGame::g_game->GetNextPlayer(NULL); player != NULL;
+	     player = GGame::g_game->GetNextPlayer(player))
+	{
+		for (GInterfaceStatus* status = GetPlayer()->GetNextInterfaceStatus(NULL); status != NULL;
+		     status = GetPlayer()->GetNextInterfaceStatus(status))
+		{
+			if (status->influence->field_0x24 == this)
+			{
+				status->influence->field_0x24 = NULL;
+				break;
+			}
+		}
+	}
+}
+
 uint32_t Object::InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
                                            Object* param_4, int param_5)
 {
@@ -396,10 +427,58 @@ bool32_t Object::HasSunk()
 	return false;
 }
 
-uint32_t Object::InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3, bool param_4,
-                                   GInterfaceStatus* param_5)
+PhysicsInitialisation Object::InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
+                                                bool param_4, GInterfaceStatus* param_5)
 {
-	return 0;
+	PhysicsInitialisation result;
+
+	if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 || (Flags & GAME_THING_WITH_POS_FLAG_IMMOVABLE) != 0)
+	{
+		result.Physics = NULL;
+		result.Started = false;
+		return result;
+	}
+	RemoveDraggingCreatureByLeash();
+	Flags |= GAME_THING_WITH_POS_FLAG_IN_PHYSICS;
+	Flags &= ~0x20;
+	if (IsObjectInMap())
+	{
+		RemoveMapObject();
+	}
+
+	PhysicsObject* physicsObject = NULL;
+	if (param_4)
+	{
+		GetWorldMatrix(&Game3dObject->matrix);
+		physicsObject = PhysicsObject::AddObject(this, param_1, param_2, param_3, param_5);
+		if (physicsObject == NULL)
+		{
+			result.Physics = NULL;
+			result.Started = false;
+			return result;
+		}
+		if (Game3dObject != NULL)
+		{
+			if (Game3dObject->IsPaper())
+			{
+				physicsObject->field_0x1d8 |= 0x20;
+				Game3dObject->SetPaper(0);
+			}
+			if (Game3dObject->IsDisappear() && (physicsObject->field_0x1d8 & 4) != 0)
+			{
+				physicsObject->field_0x1d8 |= 0x40;
+				Game3dObject->SetDisappear(0);
+			}
+			Creature::CheckAllCreaturesForCatching(this, physicsObject);
+		}
+	}
+	if (fire_effect != NULL && (GGame::g_game->field_0x14 & 0x8000) == 0)
+	{
+		fire_effect->StartedMoving(0);
+	}
+	result.Physics = physicsObject;
+	result.Started = true;
+	return result;
 }
 
 Object* Object::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map)
@@ -515,12 +594,29 @@ void Object::CleanupWhenDeleted(int param_1)
 
 float Object::ReduceLife(float value, GPlayer* player)
 {
-	return 0.0f;
+	float life = GetLife();
+	if (life < value)
+	{
+		SetLife(0.0f);
+	}
+	else
+	{
+		SetLife(life - value);
+	}
+	return GetLife();
 }
 
 float Object::IncreaseLife(float value)
 {
-	return 0.0f;
+	if (GetLife() + value > 1.0f)
+	{
+		value = 1.0f - GetLife();
+	}
+	if (value != 0.0f)
+	{
+		SetLife(GetLife() + value);
+	}
+	return GetLife();
 }
 
 uint32_t Object::DestroyedByEffect(GPlayer* player, float param_2)
@@ -536,13 +632,15 @@ void Object::FillInEffectDefenceMultiplier(EffectNumbers& param_1)
 {
 	for (int i = 0; i < EFFECT_TYPE_LAST; i++)
 	{
-		param_1.values[i] = (&info->DefenceMultiplierBurn)[i];
+		param_1.values[i] = info->DefenceMultiplier.values[i];
 	}
 }
 
-float Object::GetDefenseMultiplier()
+EffectNumbers Object::GetDefenseMultiplier()
 {
-	return 0.0f;
+	EffectNumbers multiplier;
+	multiplier = info->DefenceMultiplier;
+	return multiplier;
 }
 
 float Object::ApplyEffect(EffectValues& param_1, int param_2)
@@ -550,7 +648,30 @@ float Object::ApplyEffect(EffectValues& param_1, int param_2)
 	return 0.0f;
 }
 
-void Object::ReduceLifeDueToBurning(float param_1, GPlayer* param_2) {}
+float Object::ReduceLifeDueToBurning(float param_1, GPlayer* param_2)
+{
+	if ((GameThing::Flags & 4) == 0)
+	{
+		ReduceLife(param_1, param_2);
+		Town* town = GetTown();
+		if (town != NULL && param_1 != 0.0f)
+		{
+			town->UpdateAggressor(EffectValues(EFFECT_TYPE_BURN, GetTemperature(), NULL, 1.0f, param_2),
+			                      GetAggressorValueFromDamage(param_1));
+		}
+	}
+	return GetLife();
+}
+
+void Object::DrawFireEffect()
+{
+	fire_effect->Draw();
+}
+
+bool32_t Object::IsCitadelPart() const
+{
+	return info->type == OBJECT_TYPE_CITADEL;
+}
 
 bool32_t Object::IsOnFire()
 {
@@ -573,12 +694,32 @@ void* Object::GetActualObjectToEffect(GPlayer* player, bool param_2)
 
 float Object::GetDamageEffect(EffectValues& values)
 {
-	return 0.0f;
+	float         damage = 0.0f;
+	EffectNumbers defence;
+	FireEffect::ApplyEffectToFireEffectIfNecessary(this, values);
+	FillInEffectDefenceMultiplier(defence);
+	for (int i = EFFECT_TYPE_CRUSH; i <= EFFECT_TYPE_HIT; i++)
+	{
+		float effect = values.numbers.values[i] * defence.values[i];
+		if (effect > 0.0f)
+		{
+			damage += effect;
+		}
+	}
+	return damage;
 }
 
 float Object::GetHealEffect(EffectValues& values)
 {
-	return 0.0f;
+	float         heal = 0.0f;
+	EffectNumbers defence;
+	FillInEffectDefenceMultiplier(defence);
+	float effect = values.numbers.values[EFFECT_TYPE_HEAL] * defence.values[EFFECT_TYPE_HEAL];
+	if (effect > 0.0f)
+	{
+		heal = effect;
+	}
+	return heal;
 }
 
 bool32_t Object::IsTouching(Object* target, float epsilon)
@@ -599,9 +740,29 @@ bool32_t Object::IsTouching(const MapCoords& coords)
 	return false;
 }
 
-bool32_t Object::IsTouching(const MapCoords& param_1, const MapCoords& param_2)
+bool32_t Object::IsTouching(const MapCoords& corner1, const MapCoords& corner2)
 {
-	return false;
+	float x1 = corner1.WholeX() * CellSize * (1.0f / (float)0x10000);
+	float x2 = corner2.WholeX() * CellSize * (1.0f / (float)0x10000);
+	float minX = x1 < x2 ? x1 : x2;
+	float z1 = corner1.WholeZ() * CellSize * (1.0f / (float)0x10000);
+	float z2 = corner2.WholeZ() * CellSize * (1.0f / (float)0x10000);
+	float minZ = z1 < z2 ? z1 : z2;
+	float maxX = x1 > x2 ? x1 : x2;
+	float maxZ = z1 > z2 ? z1 : z2;
+
+	float radius = Get2DRadius();
+	float myX = Pos.WholeX() * CellSize * (1.0f / (float)0x10000);
+	if (myX + radius < minX || myX - radius > maxX)
+	{
+		return false;
+	}
+	float myZ = Pos.WholeZ() * CellSize * (1.0f / (float)0x10000);
+	if (myZ + radius < minZ || myZ - radius > maxZ)
+	{
+		return false;
+	}
+	return true;
 }
 
 float Object::GetDistanceFromObject(Object* other)
@@ -797,9 +958,21 @@ void Object::SetXYZAngles(float x, float y, float z) {}
 
 void Object::SetXYZAnglesAndScale(float x, float y, float z, float scale) {}
 
-void Object::SetScale(float scale) {}
+void Object::SetScale(float scale)
+{
+	if (GetScale() != scale)
+	{
+		SetXYZAnglesAndScale(GetXAngle(), GetYAngle(), GetZAngle(), scale);
+	}
+}
 
-void Object::SetYAngle(float angle) {}
+void Object::SetYAngle(float angle)
+{
+	if (GetYAngle() != angle)
+	{
+		SetXYZAngles(GetXAngle(), angle, GetZAngle());
+	}
+}
 
 bool32_t Object::IsObjectInMap()
 {
@@ -847,9 +1020,10 @@ uint32_t Object::GetResource(RESOURCE_TYPE type)
 	return 0;
 }
 
-MapCoords Object::GetWorkingPos(Object* param_1)
+MapCoords Object::GetWorkingPos(Object* object)
 {
-	return MapCoords();
+	float angle = GUtils::Get3DAngleFromXZ(Pos, object->Pos);
+	return Pos + GUtils::GetPosFromAngle(angle, GetRadius() + object->GetRadius());
 }
 
 float Object::GetWoodValue()
@@ -898,12 +1072,19 @@ float Object::GetTribalPower(TRIBE_TYPE tribe)
 	return 1.0f;
 }
 
-bool Object::IsFireMan()
+bool32_t Object::IsFireMan()
 {
 	return false;
 }
 
-void Object::GetTemperature() {}
+float Object::GetTemperature()
+{
+	if (fire_effect != NULL)
+	{
+		return fire_effect->GetObjectTemperature();
+	}
+	return Pos.GetTemperature();
+}
 
 void Object::SetOnFire(float temperature)
 {
@@ -922,9 +1103,9 @@ float Object::GetRainCoolingMultiplier()
 	return 0.01f;
 }
 
-LHPoint* Object::GetDefaultFireCentrePos(LHPoint* pos)
+void Object::GetDefaultFireCentrePos(MapCoords* pos)
 {
-	return NULL;
+	*pos = Pos;
 }
 
 float Object::GetDefaultFireRadius()
@@ -969,11 +1150,65 @@ uint32_t Object::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Vill
 
 uint32_t Object::Save(GameOSFile& file)
 {
+	if (GameThingWithPos::Save(file))
+	{
+		file.WriteInfo(info);
+		file.WriteSafe(coords);
+		file.WriteSafe(ObjectCreationIndex);
+		file.WriteSafe(reinterpret_cast<uint32_t&>(life));
+		file.WriteSafe(reinterpret_cast<uint32_t&>(scale));
+		file.WriteSafe(reinterpret_cast<uint32_t&>(y_angle));
+		file.WritePtr(fire_effect);
+		if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 && (GameThing::Flags & 0x10) == 0)
+		{
+			LHPoint  velocity;
+			LHPoint  point;
+			LHMatrix matrix;
+
+			PhysicsObject* physicsObject = PhysicsObject::SearchForPhysicsObject(this);
+			if (physicsObject != NULL)
+			{
+				matrix = physicsObject->Matrix;
+				velocity = physicsObject->Velocity;
+				point = physicsObject->field_0x90;
+			}
+			else
+			{
+				matrix.SetIdentityMatrix();
+				velocity.z = 0.0f;
+				velocity.y = 0.0f;
+				velocity.x = 0.0f;
+				point.z = 0.0f;
+				point.y = 0.0f;
+				point.x = 0.0f;
+			}
+			file.WriteSafe(matrix);
+			file.WriteSafe(velocity);
+			file.WriteSafe(point);
+		}
+		return 1;
+	}
 	return 0;
 }
 
 uint32_t Object::Load(GameOSFile& file)
 {
+	if (GameThingWithPos::Load(file))
+	{
+		file.ReadInfo(reinterpret_cast<const GBaseInfo**>(&info));
+		file.ReadSafe(coords);
+		file.ReadSafe(ObjectCreationIndex);
+		Game3dObject = NULL;
+		file.ReadSafe(reinterpret_cast<uint32_t&>(life));
+		file.ReadSafe(reinterpret_cast<uint32_t&>(scale));
+		file.ReadSafe(reinterpret_cast<uint32_t&>(y_angle));
+		file.ReadPtr(reinterpret_cast<GameThing**>(&fire_effect));
+		if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 && (GameThing::Flags & 0x10) == 0)
+		{
+			PhysicsSaveInfo::ReadInfo(file);
+		}
+		return 1;
+	}
 	return 0;
 }
 
@@ -1002,7 +1237,7 @@ bool32_t Object::IsDrowning()
 	if (Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS)
 	{
 		PhysicsObject* physicsObject = PhysicsObject::SearchForPhysicsObject(this);
-		if (physicsObject != NULL && physicsObject->HeightAboveWater < 0.0f)
+		if (physicsObject != NULL && physicsObject->Matrix.m[10] < 0.0f)
 		{
 			return true;
 		}
@@ -1049,9 +1284,9 @@ float Object::ApplyWaterSpell(SpellWater* spell)
 	return 0.0f;
 }
 
-bool Object::BlocksTownClearArea()
+bool32_t Object::BlocksTownClearArea()
 {
-	return false;
+	return true;
 }
 
 bool32_t Object::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)

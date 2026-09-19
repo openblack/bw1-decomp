@@ -75,6 +75,8 @@ struct MapCoords : public LH3DMapCoords
 	LHPoint ConvertToLHPoint() const;
 	// BW1W120 006042c0 BW1M100 100499f0 MapCoords::InBounds(void) const
 	bool32_t InBounds() const;
+	// BW1W120 00605cc0 BW1M100 103e5320 MapCoords::GetTemperature(void) const
+	float GetTemperature() const;
 	// BW1W120 006053c0 BW1M100 100028d0 MapCoords::IsCloseToEqual(const MapCoords&, float) const
 	bool32_t IsCloseToEqual(const MapCoords& other, float epsilon) const;
 	// BW1W120 00605410 BW1M100 1001fb00 MapCoords::operator+=(MapCoords const &)

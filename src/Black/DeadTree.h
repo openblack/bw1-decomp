@@ -68,8 +68,8 @@ public:
 	virtual float GetHoldLoweringMultiplier();
 	// BW1W120 005109c0 BW1M100 100c0fa0 DeadTree::HandShouldFeelWithMeshIntersect(void)
 	virtual uint32_t HandShouldFeelWithMeshIntersect();
-	// BW1W120 00510ce0 BW1M100 inlined DeadTree::GetDefaultFireCentrePos(LHPoint *)
-	virtual LHPoint* GetDefaultFireCentrePos(LHPoint* param_1);
+	// BW1W120 00510ce0 BW1M100 inlined DeadTree::GetDefaultFireCentrePos(MapCoords *)
+	virtual void GetDefaultFireCentrePos(MapCoords* param_1);
 	// BW1W120 00510e10 BW1M100 100c2f40 DeadTree::GetDefaultFireRadius(void)
 	virtual float GetDefaultFireRadius();
 	// BW1W120 005107f0 BW1M100 1002b5c0 DeadTree::Draw(void)
