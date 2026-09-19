@@ -103,7 +103,7 @@ struct NewCollideDescriptor
 	int      CurrentX;
 	int      CurrentZ;
 	int      ArrayIndex;
-	LH3DMem* array; /* 0x20 */
+	uint8_t* array; /* 0x20 */
 
 	// Constructors
 

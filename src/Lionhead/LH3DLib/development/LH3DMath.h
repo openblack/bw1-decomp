@@ -1,9 +1,6 @@
 #ifndef BW1_DECOMP_LH3D_MATH_INCLUDED_H
 #define BW1_DECOMP_LH3D_MATH_INCLUDED_H
 
-const float PI = 3.14159265358979323846f;
-const float TWO_PI = 6.2831854820251465f;
-
 struct LHPoint;
 
 struct LH3DMath
@@ -15,7 +12,7 @@ struct LH3DMath
 
 	// BW1W120 00841230 BW1M100 10061ed0 LH3DMath::Open(void)
 	static void Open();
-	// BW1W120 00841240 BW1M100 10061ed0 LH3DMath::Free(void)
+	// BW1W120 00841240 BW1M100 10061ed0 LH3DMath::Close(void)
 	static void Close();
 	// BW1W120 008411d0 LH3DMath::MakeInverseSqrtLookupTable(void)
 	static void MakeInverseSqrtLookupTable();

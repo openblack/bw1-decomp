@@ -29,7 +29,7 @@ NewCollideDescriptor::~NewCollideDescriptor()
 {
 	if (array != NULL)
 	{
-		array->Free();
+		LH3DMem::Free(array);
 	}
 	array = NULL;
 }
@@ -71,7 +71,7 @@ void NewCollideDescriptor::Init(Game3DObject* obj)
 	int      extent_x = MaxX - MinX + 1;
 	int      extent_z = MaxZ - MinZ + 1;
 	uint32_t size = (uint32_t)(extent_x * extent_z);
-	array = LH3DMem::Alloc(size);
+	array = (uint8_t*)LH3DMem::Alloc(size);
 	// memset(array, 0, size);
 
 	for (int x = 0; x < extent_x; ++x)
