@@ -980,8 +980,8 @@ int LHDraw::Sprite24(long x, long y, LHSprite* sprite)
 {
 	uint8_t* src = sprite->PixelData;
 	int      dst = LHSys::GetScreen().backAddress + 2 * (x + y * LHSys::GetScreen().backPixelPitch) + x +
-	          y * LHSys::GetScreen().backPixelPitch;
-	int rowGap = LHSys::GetScreen().backPixelPitch - sprite->Width;
+	               y * LHSys::GetScreen().backPixelPitch;
+	int      rowGap = LHSys::GetScreen().backPixelPitch - sprite->Width;
 	if (sprite->Height)
 	{
 		int h = sprite->Height;
