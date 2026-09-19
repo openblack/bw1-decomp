@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.25"
+config.dtk_tag = "v0.0.27"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
@@ -616,7 +616,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/GameStats.cpp"),
             GameCodeObject(NonMatching, "Black/GameStatsFrontEnd.cpp"),
             GameCodeObject(NonMatching, "Black/GameStatsList.cpp"),
-            GameCodeObject(NonMatching, "Black/GameThing.cpp"),
+            GameCodeObject(Matching, "Black/GameThing.cpp"),
             GameCodeObject(NonMatching, "Black/GatheringBox.cpp"),
             GameCodeObject(NonMatching, "Black/GatheringInterface.cpp"),
             GameCodeObject(NonMatching, "Black/GenerateCreatureHTML.cpp"),

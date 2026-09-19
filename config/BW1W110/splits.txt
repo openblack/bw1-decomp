@@ -324,8 +324,63 @@ Black/GameInfo.cpp:
 Black/GameStats.cpp:
 	.text       start:0x00561840 end:0x005677B0
 
+Black/CreatureMentalDesire.cpp:
+	.rdata      start:0x008BFE78 end:0x008BFF8C
+
+Black/CreatureMentalDesireSource.cpp:
+	.rdata      start:0x008BFF8C end:0x008C0020
+
+Black/CreatureMentalLearn.cpp:
+	.rdata      start:0x008C00D0 end:0x008C0440
+
+Black/CreatureMentalLearnAction.cpp:
+	.rdata      start:0x008C0440 end:0x008C048C
+
+Black/CreatureMentalMisc.cpp:
+	.rdata      start:0x008C048C end:0x008C0538
+
+Black/CreaturePhysical.cpp:
+	.rdata      start:0x008C0F8C end:0x008C14E0
+
+Black/DanceGroup.cpp:
+	.rdata      start:0x008C3E78 end:0x008C44C0
+
+Black/DanceKey.cpp:
+	.rdata      start:0x008C44C0 end:0x008C46E0
+
+Black/Debug.cpp:
+	.rdata      start:0x008C696C end:0x008C85E0
+
+Black/DialogBoxOptions.cpp:
+	.rdata      start:0x008C85E0 end:0x008C8688
+
+Black/EditorHug.cpp:
+	.rdata      start:0x008C8760 end:0x008C8950
+
+Black/EditorIconPlace.cpp:
+	.rdata      start:0x008C89F8 end:0x008C8B98
+
+Black/fallingspell.cpp:
+	.rdata      start:0x008C8B98 end:0x008C91B8
+
+Black/Fixed.cpp:
+	.rdata      start:0x008CADB0 end:0x008CC884
+
+Black/frontend.cpp:
+	.rdata      start:0x008CE40C end:0x008CECA0
+
+Black/Furniture.cpp:
+	.rdata      start:0x008CED04 end:0x008CED74
+
+Black/Game.cpp:
+	.rdata      start:0x008CED74 end:0x008CF880
+
 Black/GameThing.cpp:
 	.text       start:0x0056BC30 end:0x0056C8C0
+	.rdata      start:0x008EFF04 end:0x008F0010
+	.rdata$r    start:0x009A03C0 end:0x009A03F4
+	.CRT$XCU    start:0x009B66A4 end:0x009B66B0 align:4
+	.bss        start:0x00CF4E9C end:0x00CF4EB0
 
 Black/SetupMP3Button.cpp:
 	.text       start:0x0056C8C0 end:0x0056FFC0
@@ -508,59 +563,8 @@ Black/PrayerSite.cpp:
 Black/PSys3d.cpp:
 	.text       start:0x00668200 end:0x00668EB0
 
-Black/CreatureMentalDesire.cpp:
-	.rdata      start:0x008BFE78 end:0x008BFF8C
-
-Black/CreatureMentalDesireSource.cpp:
-	.rdata      start:0x008BFF8C end:0x008C0020
-
-Black/CreatureMentalLearn.cpp:
-	.rdata      start:0x008C00D0 end:0x008C0440
-
-Black/CreatureMentalLearnAction.cpp:
-	.rdata      start:0x008C0440 end:0x008C048C
-
-Black/CreatureMentalMisc.cpp:
-	.rdata      start:0x008C048C end:0x008C0538
-
-Black/CreaturePhysical.cpp:
-	.rdata      start:0x008C0F8C end:0x008C14E0
-
-Black/DanceGroup.cpp:
-	.rdata      start:0x008C3E78 end:0x008C44C0
-
-Black/DanceKey.cpp:
-	.rdata      start:0x008C44C0 end:0x008C46E0
-
-Black/Debug.cpp:
-	.rdata      start:0x008C696C end:0x008C85E0
-
-Black/DialogBoxOptions.cpp:
-	.rdata      start:0x008C85E0 end:0x008C8688
-
-Black/EditorHug.cpp:
-	.rdata      start:0x008C8760 end:0x008C8950
-
-Black/EditorIconPlace.cpp:
-	.rdata      start:0x008C89F8 end:0x008C8B98
-
-Black/fallingspell.cpp:
-	.rdata      start:0x008C8B98 end:0x008C91B8
-
-Black/Fixed.cpp:
-	.rdata      start:0x008CADB0 end:0x008CC884
-
-Black/frontend.cpp:
-	.rdata      start:0x008CE40C end:0x008CECA0
-
-Black/Furniture.cpp:
-	.rdata      start:0x008CED04 end:0x008CED74
-
-Black/Game.cpp:
-	.rdata      start:0x008CED74 end:0x008CF880
-
 Black/GatheringInterface.cpp:
-	.rdata      start:0x008EFF14 end:0x008F005C
+	.rdata      start:0x008F0010 end:0x008F005C
 
 Black/GJProperty.cpp:
 	.rdata      start:0x008F0258 end:0x008F035C

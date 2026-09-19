@@ -66,39 +66,43 @@ struct PlayerTownInteract
 class Town : public Container
 {
 public:
-	StoragePit*                      StoragePitList; /* 0x30 */
-	TownDesire                       desire;
-	uint8_t                          field_0x598[0x18];
-	char*                            field_0x5b0;
-	uint32_t                         field_0x5b4;
-	TRIBE_TYPE                       tribe_type;
-	uint8_t                          player_number;
-	float                            worship_percentage; /* 0x5c0 */
-	uint32_t                         WorshipCount;
-	float                            influence;
-	int                              field_0x5cc;
-	uint32_t                         field_0x5d0;
-	float                            Promiscuity; /* 0x5d4 */
-	float                            BeliefInNeutralPlayer;
-	float                            field_0x5dc;
-	uint32_t                         field_0x5e0;
-	uint32_t                         field_0x5e4;
-	uint32_t                         field_0x5e8;
-	uint32_t                         field_0x5ec;
-	uint32_t                         field_0x5f0;
-	uint32_t                         field_0x5f4;
-	uint32_t                         field_0x5f8;
-	uint32_t                         field_0x5fc;
-	uint32_t                         field_0x600;
-	uint32_t                         field_0x604;
-	uint32_t                         forests;
-	uint32_t                         field_0x60c;
-	TownStats                        stats; /* 0x610 */
-	MapCoords                        field_0x728;
-	MapCoords                        field_0x734;
-	uint32_t                         field_0x740;
-	Creche*                          creche;
-	uint32_t                         field_0x748;
+	StoragePit* StoragePitList; /* 0x30 */
+	TownDesire  desire;
+	uint8_t     field_0x598[0x18];
+	char*       field_0x5b0;
+	uint32_t    field_0x5b4;
+	TRIBE_TYPE  tribe_type;
+	uint8_t     player_number;
+	float       worship_percentage; /* 0x5c0 */
+	uint32_t    WorshipCount;
+	float       influence;
+	int         field_0x5cc;
+	uint32_t    field_0x5d0;
+	float       Promiscuity; /* 0x5d4 */
+	float       BeliefInNeutralPlayer;
+	float       field_0x5dc;
+	uint32_t    field_0x5e0;
+	uint32_t    field_0x5e4;
+	uint32_t    field_0x5e8;
+	uint32_t    field_0x5ec;
+	uint32_t    field_0x5f0;
+	uint32_t    field_0x5f4;
+	uint32_t    field_0x5f8;
+	uint32_t    field_0x5fc;
+	uint32_t    field_0x600;
+	uint32_t    field_0x604;
+	uint32_t    forests;
+	uint32_t    field_0x60c;
+	TownStats   stats; /* 0x610 */
+	MapCoords   field_0x728;
+	MapCoords   field_0x734;
+#ifdef VERSION_BW1W120
+	uint32_t field_0x740;
+#endif
+	Creche* creche;
+#ifndef VERSION_BW1W100
+	uint32_t field_0x748;
+#endif
 	Abode*                           Abode0x74c;
 	uint32_t                         field_0x750;
 	LHListHead<Abode>                AbodeList;
