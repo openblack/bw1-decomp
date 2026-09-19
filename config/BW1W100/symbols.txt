@@ -21289,7 +21289,7 @@ _?boredomValue@?1??GetUpdateOfBoredomValue@GameThingWithPos@@UAEMPAVReaction@@PA
 ?g_CreatureInitialDesireInfos@CreatureInitialDesireInfo@@2PAV1@A = .data:0x00B89710; // type:object size:0x4600 scope:global
 ?g_CreatureDesireDependency@CreatureDesireDependency@@2PAV1@A = .data:0x00BA7030; // type:object size:0x1B80 scope:global
 ?g_game@GGame@@2PAV1@A = .data:0x00C22CA4; // type:object size:0x4 scope:global
-_CellSizeXGridDim = .data:0x00C273AC; // type:object size:0x4 scope:local
+_LandscapeExtent = .data:0x00C273AC; // type:object size:0x4 scope:local
 _White = .data:0x00C273B0; // type:object size:0x4 scope:local
 _SecondsPerYear = .data:0x00C273B4; // type:object size:0x4 scope:local
 ?NumActiveGameThings@GameThing@@2GA = .data:0x00C273BC; // type:object size:0x2 scope:local

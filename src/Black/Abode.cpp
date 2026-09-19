@@ -24,7 +24,7 @@
 #include "GameStats.h"
 #include "GraveYard.h"
 #include "Landscape.h"          /* For GoolooGooloo */
-#include "LandscapeConstants.h" /* For CellSizeXGridDim */
+#include "LandscapeConstants.h" /* For LandscapeExtent */
 #include "PlannedAbode.h"
 #include "Rand.h"
 #include "SpellDispenser.h"

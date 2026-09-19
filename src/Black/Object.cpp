@@ -13,7 +13,7 @@
 #include "chlasm/AllMeshes.h"
 
 #include "ColourConstants.h"    /* For White */
-#include "LandscapeConstants.h" /* For CellSizeXGridDim */
+#include "LandscapeConstants.h" /* For LandscapeExtent */
 
 #include "EditorPhysics.h" /* For EditorPhysics::PhysicsConstants */
 #include "Creature.h"      /* For Creature::CheckAllCreaturesForCatching */

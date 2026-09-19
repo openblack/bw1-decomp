@@ -1,6 +1,6 @@
 #include "MobileWallHug.h"
 
-#include "LandscapeConstants.h" /* For CellSizeXGridDim */
+#include "LandscapeConstants.h" /* For LandscapeExtent */
 #include "Utils.h"
 
 static CircleHugStateInfoT g_CircleHugStateInfo;

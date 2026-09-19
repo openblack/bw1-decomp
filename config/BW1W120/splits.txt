@@ -919,6 +919,7 @@ Black/GameInfo.cpp:
 Black/GameOptionsRoom.cpp:
 	.text       start:0x00557C30 end:0x00557FF0
 	.rdata      start:0x008DF8F8 end:0x008FFCAC
+	.rdata$r    start:0x009AD530 end:0x009AD57C
 	.CRT$XCU    start:0x009C6964 end:0x009C6978 align:4
 	.bss        start:0x00D01A60 end:0x00D06034
 
@@ -944,6 +945,7 @@ Black/GameStatsFrontEnd.cpp:
 Black/GameThing.cpp:
 	.text       start:0x0056F990 end:0x00570650
 	.rdata      start:0x008FFF40 end:0x0090004C
+	.rdata$r    start:0x009B0510 end:0x009B0544
 	.CRT$XCU    start:0x009C6998 end:0x009C69A8 align:4
 	.bss        start:0x00D06070 end:0x00D06084
 
@@ -2286,7 +2288,6 @@ Black/Utils.cpp:
 Black/Villager.cpp:
 	.text       start:0x0074F7D0 end:0x00756CB0
 	.rdata      start:0x0099A1E4 end:0x0099A924
-	.rdata$r    start:0x009AD530 end:0x009AD57C
 	.CRT$XCU    start:0x009C7958 end:0x009C796C align:4
 	.data       start:0x00C234E0 end:0x00C23604
 	.bss        start:0x00DA6BC0 end:0x00DB9DC0
