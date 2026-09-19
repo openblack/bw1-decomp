@@ -99,7 +99,7 @@ public:
 	// BW1W120 00608d60 BW1M100 103bfd10 MobileStatic::SetXYZAnglesAndScale(float, float, float, float)
 	virtual void SetXYZAnglesAndScale(float param_1, float param_2, float param_3, float param_4);
 	// BW1W120 006096a0 BW1M100 103be560 MobileStatic::BlocksTownClearArea( const(void))
-	virtual bool BlocksTownClearArea();
+	virtual bool32_t BlocksTownClearArea();
 	// BW1W120 006091b0 BW1M100 10097420 MobileStatic::GetHoldType(void)
 	virtual HOLD_TYPE GetHoldType();
 	// BW1W120 00609230 BW1M100 10097510 MobileStatic::GetHoldLoweringMultiplier(void)

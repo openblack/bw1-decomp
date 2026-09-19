@@ -276,8 +276,8 @@ public:
 	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
 	                                           Object* param_4, int param_5);
 	// BW1W120 005efef0 BW1M100 10385670 Villager::InitialisePhysics(LHPoint const &, LHPoint const &, Object *, bool, GInterfaceStatus *)
-	virtual uint32_t InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3, bool param_4,
-	                                   GInterfaceStatus* param_5);
+	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
+	                                                bool param_4, GInterfaceStatus* param_5);
 	// BW1W120 005eff30 BW1M100 10385630 Villager::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 005eff40 BW1M100 103850b0 Villager::SetUpPhysOb(PhysOb *)
@@ -289,7 +289,7 @@ public:
 	// BW1W120 00750ab0 BW1M100 1056fb10 Villager::HasSunk(void)
 	virtual bool32_t HasSunk();
 	// BW1W120 0075b400 BW1M100 10578430 Villager::IsFireMan(void)
-	virtual bool IsFireMan();
+	virtual bool32_t IsFireMan();
 	// BW1W120 00753e00 BW1M100 10569a30 Villager::RemoveFromGame(void)
 	virtual uint32_t RemoveFromGame();
 	// BW1W120 0055ca30 BW1M100 10147f70 Villager::GetTastiness(void)

@@ -9,6 +9,7 @@
 // Forward Declares
 
 class GInterfaceStatus;
+class Object;
 
 class GVirtualInfluence : public Base
 {
@@ -20,7 +21,7 @@ public:
 	uint32_t          field_0x18;
 	uint32_t          field_0x1c;
 	uint32_t          field_0x20;
-	uint32_t          field_0x24;
+	Object*           field_0x24;
 	uint32_t          field_0x28;
 	uint32_t          field_0x2c;
 	float             field_0x30;

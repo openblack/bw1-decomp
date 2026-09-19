@@ -244,7 +244,7 @@ bool32_t Villager::FinishBeingOnFire()
 //      0x00db9e98. Logic: s = GetFinalState(); return (state_table[s].EntryFn==ExitPutOutFire
 //      && [s].next3 fields==0) || (uint8_t)s==VILLAGER_STATE_REACT_TO_FIRE (0xd7). Needs the
 //      globals named.
-bool Villager::IsFireMan()
+bool32_t Villager::IsFireMan()
 {
 	return true;
 }

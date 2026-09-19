@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
+#include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
+#include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint */
 #include <Lionhead/LHFile/ver3.0/LHFile.h>           /* For enum LH_FILE_MODE */
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>      /* For struct LHLinkedList */
@@ -195,6 +197,32 @@ public:
 	// fabricated: see ReadSafe(MapCoords &)
 	// BW1W120 inlined BW1M100 inlined GameOSFile::WriteSafe(MapCoords &)
 	void WriteSafe(MapCoords& value)
+	{
+		if (WriteEnabled)
+		{
+			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				WriteEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	// BW1W120 inlined BW1M100 10305e60 GameOSFile::WriteSafe(LHPoint &)
+	void WriteSafe(LHPoint& value)
+	{
+		if (WriteEnabled)
+		{
+			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				WriteEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	// fabricated: no LHMatrix overload survives in either binary, but Object::Save
+	// writes its 48-byte matrix through this shape.
+	// BW1W120 inlined BW1M100 inlined GameOSFile::WriteSafe(LHMatrix &)
+	void WriteSafe(LHMatrix& value)
 	{
 		if (WriteEnabled)
 		{

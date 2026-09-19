@@ -574,6 +574,8 @@ public:
 	static Creature* Create(const MapCoords* coords, const GCreatureInfo* info, GPlayer* player);
 	// BW1W120 00474b50 BW1M100 101dfb90 Creature::CreateCreature(MapCoords const &, CreatureInfo const *, GPlayer *)
 	static Creature* CreateCreature(const MapCoords* coords, const GCreatureInfo* info, GPlayer* player);
+	// BW1W120 0047cbd0 BW1M100 101d8360 Creature::CheckAllCreaturesForCatching(Object *, PhysicsObject *)
+	static void CheckAllCreaturesForCatching(Object* object, PhysicsObject* physics_object);
 
 	// Constructors
 

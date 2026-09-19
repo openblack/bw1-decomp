@@ -101,7 +101,7 @@ public:
 	// BW1W120 0055d8d0 BW1M100 10159590 Tree::GetReactionPower(void)
 	virtual float GetReactionPower();
 	// BW1W120 0074c7f0 BW1M100 10155720 Tree::BlocksTownClearArea( const(void))
-	virtual bool BlocksTownClearArea();
+	virtual bool32_t BlocksTownClearArea();
 	// BW1W120 0074b600 BW1M100 10157bd0 Tree::GetHoldType(void)
 	virtual HOLD_TYPE GetHoldType();
 	// BW1W120 0074b610 BW1M100 10157b60 Tree::GetHoldRadius(void)

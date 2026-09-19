@@ -110,8 +110,8 @@ public:
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0077d030 BW1M100 105ae820 WorshipSite::UpdateFrom3DPosition(void)
 	virtual void UpdateFrom3DPosition();
-	// BW1W120 0077dde0 BW1M100 inlined WorshipSite::GetDefaultFireCentrePos(LHPoint *)
-	virtual LHPoint* GetDefaultFireCentrePos(LHPoint* param_1);
+	// BW1W120 0077dde0 BW1M100 inlined WorshipSite::GetDefaultFireCentrePos(MapCoords *)
+	virtual void GetDefaultFireCentrePos(MapCoords* param_1);
 	// BW1W120 0077de10 BW1M100 105ac3e0 WorshipSite::GetDefaultFireRadius(void)
 	virtual float GetDefaultFireRadius();
 	// BW1W120 0077b1d0 BW1M100 105b2440 WorshipSite::Process(void)

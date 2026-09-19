@@ -107,8 +107,8 @@ public:
 	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
 	                                           Object* param_4, int param_5);
 	// BW1W120 006ea840 BW1M100 1013faa0 Scaffold::InitialisePhysics(LHPoint const &, LHPoint const &, Object *, bool, GInterfaceStatus *)
-	virtual uint32_t InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3, bool param_4,
-	                                   GInterfaceStatus* param_5);
+	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
+	                                                bool param_4, GInterfaceStatus* param_5);
 	// BW1W120 006e8770 BW1M100 10143680 Scaffold::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 006e8780 BW1M100 101434e0 Scaffold::EndPhysics(PhysicsObject *, bool)

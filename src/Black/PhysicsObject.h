@@ -4,12 +4,14 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
+#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
 
 #include "Base.h" /* For struct Base */
 
 // Forward Declares
 
+class GInterfaceStatus;
 class Object;
 
 class PhysicsObject : public Base
@@ -22,10 +24,15 @@ public:
 	static void DrawAll(); // 00646de0
 	// BW1W120 00646950 BW1M100 10112550 PhysicsObject::SearchForPhysicsObject(Object *)
 	static PhysicsObject* SearchForPhysicsObject(Object* object);
+	// BW1W120 006443a0 BW1M100 1011d510 PhysicsObject::AddObject(Object *, LHPoint const &, LHPoint const &, Object *, GInterfaceStatus *)
+	static PhysicsObject* AddObject(Object* object, const LHPoint& param_2, const LHPoint& param_3, Object* param_4,
+	                                GInterfaceStatus* param_5);
 
-	uint8_t  field_0x8[0xc4];
-	float    HeightAboveWater; /* 0xcc */
-	uint8_t  field_0xd0[0x34];
+	uint8_t  field_0x8[0x88];
+	LHPoint  field_0x90;
+	uint8_t  field_0x9c[0x8];
+	LHMatrix Matrix; /* 0xa4 */
+	uint8_t  field_0xd4[0x30];
 	LHPoint  Velocity; /* 0x104 */
 	uint8_t  field_0x110[0x98];
 	float    field_0x1a8;

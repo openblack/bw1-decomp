@@ -9,6 +9,7 @@
 // Forward Declares
 
 class Base;
+class EffectValues;
 class FireGraphic;
 class GPlayer;
 class GameOSFile;
@@ -20,6 +21,8 @@ class FireEffect : public GameThing
 public:
 	// BW1W120 00730760 BW1M100 1008f3e0 FireEffect::ProcessList(void)
 	static void ProcessList();
+	// BW1W120 00730670 BW1M100 10155470 FireEffect::ApplyEffectToFireEffectIfNecessary(Object *, EffectValues &)
+	static void ApplyEffectToFireEffectIfNecessary(Object* object, EffectValues& values);
 	// BW1W120 0072ef60 BW1M100 1014fa50 FireEffect::SetOnFire(Object *, float)
 	static void SetOnFire(Object* object, float temperature);
 	// BW1W120 0072ef10 BW1M100 1014fb60 FireEffect::SetTemperature(Object *, float, GameThing *)
@@ -68,8 +71,14 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00730330 BW1M100 10155e20 FireEffect::Draw(void)
+	void Draw();
+	// BW1W120 00730a60 BW1M100 101547b0 FireEffect::StartedMoving(int)
+	void StartedMoving(int param_1);
 	// BW1W120 00730360 BW1M100 10155d80 FireEffect::IsOnFire(void)
 	bool32_t IsOnFire();
+	// BW1W120 0072eeb0 BW1M100 10158050 FireEffect::GetObjectTemperature(void)
+	float GetObjectTemperature();
 	// BW1W120 00730ab0 BW1M100 1014c6d0 FireEffect::SetOutMagicHand(void)
 	void SetOutMagicHand();
 	// BW1W120 00730ad0 BW1M100 1014c5c0 FireEffect::CreateSprites(void)
