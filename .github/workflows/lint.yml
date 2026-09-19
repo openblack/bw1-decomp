@@ -23,7 +23,7 @@ jobs:
 
     - uses: jidicula/clang-format-action@v4.18.0
       with:
-        clang-format-version: '21'
+        clang-format-version: '22'
         fallback-style: 'none'
         # Only lint our own source tree; include/ holds vendor SDK headers
         # (ddraw.h, d3dtypes.h) and unformatted shared headers. zlib and two
