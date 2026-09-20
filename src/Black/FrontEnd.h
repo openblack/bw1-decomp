@@ -102,21 +102,21 @@ struct FrontEnd
 
 	// Static methods
 
-	// BW1W120 0053b4d0 BW1M100 105c4d10 void FrontEnd::Init(void)
+	// BW1W120 0053b4d0 BW1M100 105c4d10 FrontEnd::Init(void)
 	static void Init();
-	// BW1W120 0053c450 BW1M100 105c47d0 void FrontEnd::SetCursorOn(void)
+	// BW1W120 0053c450 BW1M100 105c47d0 FrontEnd::SetCursorOn(void)
 	static void SetCursorOn();
-	// BW1W120 0053c470 void FrontEnd::SetCursorOff(void)
+	// BW1W120 0053c470 BW1M100 105c4790 FrontEnd::SetCursorOff(void)
 	void SetCursorOff();
-	// BW1W120 00544f90 BW1M100 105b9c50 void FrontEnd::JustDoABox(DialogBoxBase *)
+	// BW1W120 00544f90 BW1M100 105b9c50 FrontEnd::JustDoABox(DialogBoxBase*)
 	static void JustDoABox(DialogBoxBase* box);
-	// BW1W120 0053ce70 BW1M100 105c3cf0 void FrontEnd::JustDoNewProfileBox(void)
+	// BW1W120 0053ce70 BW1M100 105c3cf0 FrontEnd::JustDoNewProfileBox(void)
 	void JustDoNewProfileBox();
-	// BW1W120 00544f80 BW1M100 105ba050 void FrontEnd::JustDoSkirmishGameBox(void)
+	// BW1W120 00544f80 BW1M100 105ba050 FrontEnd::JustDoSkirmishGameBox(void)
 	static void JustDoSkirmishGameBox();
 };
 
-// BW1W120 0053b4a0 char * WCHAR2CHAR(unsigned short *)
+// BW1W120 0053b4a0 BW1M100 105c5e00 WCHAR2CHAR(wchar_t*)
 char* WCHAR2CHAR(char16_t* text);
 
 #endif /* BW1_DECOMP_FRONT_END_INCLUDED_H */

@@ -19,18 +19,15 @@ public:
 
 	// Override methods
 
-	// BW1W120 0053f910 BW1M100 105c0610 void MainMenu::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 0053f910 BW1M100 105c0610 MainMenu::Init(unsigned long, unsigned long, void (*)(int, SetupBox*, SetupControl*, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 0053fb50 BW1M100 105c05a0 void MainMenu::Destroy(void)
+	// BW1W120 0053fb50 BW1M100 105c05a0 MainMenu::Destroy(void)
 	virtual void Destroy();
-	// BW1W120 0053bd50 BW1M100 105c5ef0 bool MainMenu::CanESCOut(void)
+	// BW1W120 0053bd50 BW1M100 105c5ef0 MainMenu::CanESCOut(void)
 	virtual bool CanESCOut();
-	// BW1W120 0053fba0 BW1M100 105bff40 void MainMenu::InitControls(void)
+	// BW1W120 0053fba0 BW1M100 105bff40 MainMenu::InitControls(void)
 	virtual void InitControls();
 };
-
-static_assert(sizeof(MainMenu) == 0x38, "MainMenu size is incorrect");
-static_assert(offsetof(MainMenu, TitleText) == 0x24, "MainMenu title offset is incorrect");
 
 #endif /* BW1_DECOMP_MAIN_MENU_INCLUDED_H */

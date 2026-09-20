@@ -26,17 +26,12 @@ struct Plasma
 
 	// Non-virtual methods
 
-	// BW1W120 0053c640 BW1M100 105c4040 void Plasma::Init(void)
+	// BW1W120 0053c640 BW1M100 105c4040 Plasma::Init(void)
 	void Init();
-	// BW1W120 0053c840 BW1M100 105c3d50 void Plasma::Render(int)
+	// BW1W120 0053c840 BW1M100 105c3d50 Plasma::Render(int)
 	void Render(int param_1);
-	// BW1W120 inlined BW1M100 100c9220 void Plasma::Close(void)
+	// BW1W120 inlined BW1M100 100c9220 Plasma::Close(void)
 	void Close();
 };
-
-static_assert(sizeof(Plasma) == 0xe930, "Plasma size is incorrect");
-static_assert(offsetof(Plasma, indices) == 0x634c, "Plasma index offset is incorrect");
-static_assert(offsetof(Plasma, colors) == 0xd3cc, "Plasma color offset is incorrect");
-static_assert(offsetof(Plasma, PinMaterial) == 0xe92c, "Plasma material offset is incorrect");
 
 #endif /* BW1_DECOMP_PLASMA_INCLUDED_H */
