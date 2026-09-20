@@ -79,7 +79,7 @@ public:
 #include <new>
 #include <string.h>
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
-#include "AlexMfc.h"
+#include <SetupThing/Setup.h>
 
 // BW1W120 0040da30 BW1M100 10501060 HLineData::SetNum(int)
 inline void HLineData::SetNum(int num)

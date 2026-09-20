@@ -12,8 +12,7 @@ class SetupButton;
 class HistoryBox : public DialogBoxBase
 {
 public:
-	// Descriptive member names recovered from Init.
-	SetupBigButton* PreviousButton; /* 0x10 */
+	SetupBigButton* PreviousButton;
 	SetupButton*    CloseButton;
 	SetupBigButton* NextButton;
 
