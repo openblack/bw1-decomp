@@ -24,6 +24,14 @@ struct LH3DRender
 	static int          g_started_frame; // 00eca644
 	static LH3DZSorter* g_zsorter;       // 00eca648
 	static int          g_mode_cleaning; // 00c3871c
+	// BW1W120 00eca640. Original Mac import g_frame__10LH3DRender.
+	static int g_frame;
+	// BW1W120 00c38714. Original Mac import g_b_do_update_material__10LH3DRender.
+	static int g_b_do_update_material;
+	// Descriptive names for the current material and depth-pass override state. Storage remains extracted.
+	static LH3DMaterial* CurrentMaterial;    // 00eca64c
+	static int           OverrideMaterial;   // 00eca658
+	static int           OverrideRenderMode; // 00eca65c
 	// BW1W120 00eca624 BW1M100 101bcd28
 	static bool32_t b_need_init;
 	// BW1W120 00ec7fd0 BW1M100 102ca938
@@ -43,13 +51,13 @@ struct LH3DRender
 	// BW1W120 00ecA638
 	static IDirect3DDevice7* Direct3DDevice7;
 
-	// BW1W120 0082f810 BW1M100 1002af30 LH3DRender::DrawTriangle(Vertex3D *, unsigned long, unsigned short *, unsigned long)
+	// BW1W120 0082f810 BW1M100 1002af30 LH3DRender::DrawTriangle(Vertex3D*, unsigned long, unsigned short*, unsigned long)
 	static void DrawTriangle(Vertex3D* vertices, uint32_t param_2, uint16_t* param_3, uint32_t param_4);
-	// BW1W120 00412940 BW1M100 10046ae0 LH3DRender::SetRenderState(D3DRENDERSTATETYPE, unsigned long)
+	// BW1W120 00412940 BW1M100 10046ae0 LH3DRender::SetRenderState(IndirectX::_D3DRENDERSTATETYPE, unsigned long)
 	static int SetRenderState(D3DRENDERSTATETYPE type, uint32_t value);
 	// BW1W120 inlined BW1M100 inlined LH3DRender::GetRenderState(D3DRENDERSTATETYPE, unsigned long&)
 	static int GetRenderState(D3DRENDERSTATETYPE type, uint32_t* value);
-	// BW1W120 0082b220 BW1M100 1003c460 LH3DRender::SetD3DMatrix(D3DMATRIX &, LHMatrix &)
+	// BW1W120 0082b220 BW1M100 1003c460 LH3DRender::SetD3DMatrix(IndirectX::_D3DMATRIX&, LHMatrix&)
 	static void SetD3DMatrix(D3DMATRIX* param_1, LHMatrix* param_2);
 	// BW1W120 0082b2d0 BW1M100 inlined LH3DRender::SetProjMatrix(D3DMATRIX *, D3DMATRIX *, float, float, float)
 	static void SetProjMatrix(D3DMATRIX* param_1, D3DMATRIX* projection, float near_plane, float far_plane, float fov);
@@ -57,7 +65,7 @@ struct LH3DRender
 	static bool32_t Open();
 	// BW1W120 0082b570 BW1M100 100a7970 LH3DRender::Close(void)
 	static bool32_t Close();
-	// BW1W120 0082b9c0 BW1M100 1002dbb0 LH3DRender::SetTextureStageState(unsigned long, D3DTEXTURESTAGESTATETYPE, unsigned long)
+	// BW1W120 0082b9c0 BW1M100 1002dbb0 LH3DRender::SetTextureStageState(unsigned long, IndirectX::_D3DTEXTURESTAGESTATETYPE, unsigned long)
 	static int SetTextureStageState(uint32_t index, D3DTEXTURESTAGESTATETYPE type, uint32_t value);
 	// BW1W120 0082cd80 BW1M100 100a4fe0 LH3DRender::OpenD3D(void)
 	static bool32_t OpenD3D();
@@ -65,18 +73,18 @@ struct LH3DRender
 	static bool32_t CloseD3D();
 	// BW1W120 0082f0e0 BW1M100 10013290 LH3DRender::StartFrame(void)
 	static void StartFrame();
-	// BW1W120 0082ff10 BW1M100 10046bbc LH3DRender::SetD3DTillingOn(int)
-	static void SetD3DTillingOn(uint32_t index);
-	// BW1W120 0082ff50 BW1M100 10046c4c LH3DRender::SetD3DTillingOff(int)
-	static void SetD3DTillingOff(uint32_t index);
-	// BW1W120 0082fd30 BW1M100 100a1d90 LH3DRender::CreateMaterial(LH3DMaterial::RenderMode, LH3DTexture *)
+	// BW1W120 0082ff10 BW1M100 1002b740 LH3DRender::SetD3DTillingOn(int)
+	static void SetD3DTillingOn(int index);
+	// BW1W120 0082ff50 BW1M100 1002ee30 LH3DRender::SetD3DTillingOff(int)
+	static void SetD3DTillingOff(int index);
+	// BW1W120 0082fd30 BW1M100 100a1d90 LH3DRender::CreateMaterial(LH3DMaterial::RenderMode, LH3DTexture*)
 	static LH3DMaterial* CreateMaterial(LH3DMaterial::RenderMode render_mode, LH3DTexture* texture);
-	// BW1W120 0082f2c0 BW1M100 100a27d0. Windows callbacks pop their one argument.
+	// BW1W120 0082f2c0 BW1M100 100a27d0 LH3DRender::RegisterFinishFrameCallback(unsigned long, bool, void (*)(void*), void*)
 	static void RegisterFinishFrameCallback(unsigned long param_1, bool                    param_2,
 	                                        void(__stdcall* param_3)(void* param_1), void* param_4);
-	// BW1W120 0082f3b0
+	// BW1W120 0082f3b0 BW1M100 100a26a0 LH3DRender::RemoveFinishFrameCallback(void (*)(void*), void*)
 	static void RemoveFinishFrameCallback(void(__stdcall* callback)(void*), void* context);
-	// BW1W120 0082f460 BW1M100 1003699c LH3DRender::FinishFrame(void)
+	// BW1W120 0082f460 BW1M100 1001f060 LH3DRender::FinishFrame(void)
 	static void FinishFrame();
 };
 
@@ -92,7 +100,7 @@ void __cdecl RenderLoadingFrame(bool param_1);
 // BW1W120 0082a500 BW1M100 10017228 DrawAndClip(D3DPRIMITIVETYPE, unsigned long, Vertex3D *, unsigned long, unsigned short *, unsigned long)
 void __cdecl DrawAndClip(D3DPRIMITIVETYPE primitive_type, uint32_t fvf, D3DTLVERTEX* vertices, uint32_t vertex_count,
                          uint16_t* indices, uint32_t index_count);
-// BW1W120 0082a5b0 BW1M100 1004fe98 DrawAndClip2D(D3DPRIMITIVETYPE, unsigned long, Vertex3D *, unsigned long, unsigned short *, unsigned long)
+// BW1W120 0082a5b0 BW1M100 10030420 DrawAndClip2D(IndirectX::_D3DPRIMITIVETYPE, unsigned long, Vertex3D*, unsigned long, unsigned short*, unsigned long)
 void __cdecl DrawAndClip2D(D3DPRIMITIVETYPE primitive_type, uint32_t fvf, D3DTLVERTEX* vertices, uint32_t vertex_count,
                            uint16_t* indices, uint32_t index_count);
 // BW1W120 006419f0 BW1M100 100d50d0 stop_draw_sprite_to_screen(void)
@@ -101,7 +109,7 @@ void __cdecl stop_draw_sprite_to_screen();
 void __cdecl RenderLoadingFrame(char* param_1);
 // BW1W120 00841c20 BW1M100 10063840 BMan_Display(void)
 void __cdecl BMan_Display();
-// BW1W120 008415a0 BW1M100 10091a28 BMan_Zero(void)
+// BW1W120 008415a0 BW1M100 1003c830 BMan_Zero(void)
 void __cdecl BMan_Zero();
 // BW1W120 0054d6f0 BW1M100 100a4900 DrawMouseCross(void)
 void __cdecl DrawMouseCross();

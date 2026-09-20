@@ -20,8 +20,8 @@ struct Zoomer
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 1056a120 Zoomer::Zoomer()
-	Zoomer();
+	// BW1W120 inlined BW1M100 1056a120 Zoomer::Zoomer(void)
+	Zoomer() {}
 
 	// Non-virtual methods
 
@@ -34,7 +34,21 @@ struct Zoomer
 	// BW1W120 00407d60 BW1M100 1004ee60 Zoomer::SetDestinationWithSpeedAndTime(float, float, float)
 	void SetDestinationWithSpeedAndTime(float destination, float speed, float time);
 	// BW1W120 00441ac0 BW1M100 1035b310 Zoomer::SetPosition(float)
-	void SetPosition(float position);
+	void SetPosition(float position)
+	{
+		destination = position;
+		StartValue = position;
+		CurrentValue = position;
+		duration = 0.0f;
+		CurrentTime = 0.0f;
+		NonLinearAcceleration.z = 0.0f;
+		NonLinearAcceleration.y = 0.0f;
+		TimeM2 = 0.0f;
+		NonLinearAcceleration.x = 0.0f;
+		CurrentSpeed = 0.0f;
+		StartSpeed = 0.0f;
+		DestinationSpeed = 0.0f;
+	}
 	// BW1W120 00442720 BW1M100 1002c480 Zoomer::Update(float)
 	void Update(float dt);
 };
@@ -57,7 +71,7 @@ struct Zoomer3d
 	void SetDestinationWithSpeedAndTime(const LHPoint* destination, float speed, float time);
 	// BW1W120 0044e760 BW1M100 inlined Zoomer3d::SetDestinationWithTime(LHPoint const &, float)
 	void SetDestinationWithTime(const LHPoint* destination, float time);
-	// BW1W120 inlined BW1M100 inlined Zoomer3d::SetPosition(LHPoint const &)
+	// BW1W120 inlined BW1M100 10198470 Zoomer3d::SetPosition(const LHPoint&)
 	void SetPosition(const LHPoint* destination);
 };
 

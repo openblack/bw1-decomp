@@ -3,6 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <stddef.h>
+#include <re_common.h> /* For bool32_t */
 
 // Forward Declares
 
@@ -23,7 +25,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 00513400 BW1M100 102b24c0 DialogBoxBase::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00513400 BW1M100 102b24c0 DialogBoxBase::Init(unsigned long, unsigned long, void (*)(int, SetupBox*, SetupControl*, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 00513590 BW1M100 102b23a0 DialogBoxBase::Destroy(void)
@@ -40,7 +42,7 @@ public:
 	virtual bool WantsMouseControl();
 	// BW1W120 00512810 BW1M100 103c4090 DialogBoxBase::CanESCOut(void)
 	virtual bool CanESCOut();
-	// BW1W120 vtable +0x20 points to __purecall.
+	// BW1W120 purecall DialogBoxBase::InitControls(void)
 	virtual void InitControls() = 0;
 
 	// Static methods
@@ -48,11 +50,15 @@ public:
 	// BW1W120 005136e0 BW1M100 102b1ff0 DialogBoxBase::HideAll(void)
 	static void HideAll();
 
+	// Non-virtual methods
+	// BW1W120 00513770 BW1M100 102b1f80 DialogBoxBase::IsVisible(void)
+	bool32_t IsVisible();
+
 	// Constructors
 
 	// BW1W120 005133a0 BW1M100 102b2750 DialogBoxBase::DialogBoxBase(void)
 	DialogBoxBase();
-	// BW1W120 005133c0. Nonvirtual: unlinks this dialog from First.
+	// BW1W120 005133c0 BW1M100 102b2680 DialogBoxBase::~DialogBoxBase(void)
 	~DialogBoxBase();
 };
 
