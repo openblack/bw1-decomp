@@ -12,7 +12,6 @@ class SetupButton;
 class RegisterBox : public DialogBoxBase
 {
 public:
-	// Descriptive member names, recovered from Init and InitControls.
 	SetupEdit*   NameEdit; /* 0x10 */
 	SetupEdit*   PasswordEdit;
 	SetupButton* RegisterButton;

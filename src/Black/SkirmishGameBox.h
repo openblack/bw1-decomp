@@ -14,7 +14,6 @@ class SetupBigButton;
 class SkirmishGameBox : public DialogBoxBase
 {
 public:
-	// Descriptive member names recovered from Init; keep the unrecovered state opaque.
 	SetupList*       MapList; /* 0x10 */
 	uint8_t          field_0x14[0x10];
 	SetupStaticText* TitleText; /* 0x24 */

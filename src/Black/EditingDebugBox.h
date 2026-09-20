@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
-#include <uchar.h>
+#include <stddef.h> /* For wchar_t */
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
@@ -14,14 +14,13 @@ class SetupBigButton;
 class EditingDebugBox : public DialogBoxBase
 {
 public:
-	// Descriptive fields recovered from 0053d520/0053d700. FrontEnd::Init allocates 0x228 bytes.
 	SetupStaticText* PromptText; /* 0x10 */
 	SetupEdit*       Edit;
 	SetupBigButton*  CancelButton;
 	SetupBigButton*  ContinueButton;
 	uint32_t         field_0x20;
-	char16_t         Prompt[0x100]; /* 0x24 */
-	char16_t*        InitialText;   /* 0x224 */
+	wchar_t          Prompt[0x100]; /* 0x24 */
+	wchar_t*         InitialText;   /* 0x224 */
 
 	// Override methods
 

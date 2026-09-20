@@ -44,11 +44,11 @@ struct FrontEnd
 	static SetupTabButton* MultiplayerTab;
 	// BW1W120 00cd0620 BW1M100 10bda738
 	static bool CursorOn;
-	// BW1W120 00cd065c
+	// BW1W120 00cd065c BW1M100 10bda728
 	static MainMenu* MainMenuDialog;
-	// BW1W120 00cd06e8
+	// BW1W120 00cd06e8 BW1M100 10bda8d4
 	static Plasma* Dat_00CD06E8;
-	// BW1W120 00cd0b03
+	// BW1W120 00cd0b03 BW1M100 10bda8ce
 	static bool StartupMenuActive;
 	// BW1W120 00cd3a18
 	static char16_t PreviousProfile[];

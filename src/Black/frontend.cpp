@@ -41,13 +41,10 @@
 
 Plasma* FrontEnd::Dat_00CD06E8;
 
-// BW1W120 007faaf0 float fn_007FAAF0(float)
-float fn_007FAAF0(float angle);
+// BW1W120 007faaf0 BW1M100 100304f0 angle_correct(float)
+float angle_correct(float angle);
 // BW1W120 0053f7b0 void AddMainMenuTabs(int)
 void AddMainMenuTabs(int selected);
-
-// TODO: FrontEnd::Init and the modal/render loop need the remaining dialog, input,
-// and rendering interfaces. See the frontend-surface handoff for the dependency audit.
 
 char* WCHAR2CHAR(char16_t* text)
 {
@@ -68,8 +65,7 @@ bool TattooEditor::CanESCOut()
 
 bool ProfileEditor::CanESCOut()
 {
-	// TODO: This override returns a full EAX Boolean, unlike the other AL-returning
-	// overrides. Preserve the existing virtual interface until the parent audits it.
+	// TODO: Resolve the full-EAX return here against the base and sibling AL-returning virtual methods.
 	if (FrontEnd::ActiveProfileEditor != NULL && FrontEnd::ProfileEditorActive)
 	{
 		return false;
@@ -100,7 +96,6 @@ void FrontEnd::SetCursorOn()
 
 void FrontEnd::SetCursorOff()
 {
-	// The existing Windows symbol is an instance method, but the body does not access this.
 	CursorOn = false;
 }
 
@@ -194,10 +189,9 @@ void Plasma::Render(int animate)
 					phase.x += step * velocity.x;
 					phase.y += step * velocity.y;
 					phase.z += step * velocity.z;
-					// One-step wrap to [-pi, pi]. TODO: Recover the original free-function name.
-					phase.x = fn_007FAAF0(phase.x);
-					phase.y = fn_007FAAF0(phase.y);
-					phase.z = fn_007FAAF0(phase.z);
+					phase.x = angle_correct(phase.x);
+					phase.y = angle_correct(phase.y);
+					phase.z = angle_correct(phase.z);
 				}
 				uvs[x * 31 + y].x = u;
 				uvs[x * 31 + y].y = v;
@@ -218,19 +212,19 @@ void NewProfileBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveNewProfileDialog = this;
-	SymbolPicture = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x218)
+	SymbolPicture = new ("C:\\dev\\MP\\Black\\frontend.cpp", 536)
 		SetupPicture(123, 368, 300, FrontEnd::PlayerSymbolsMaterial, 0, 4, true, 64, false);
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x21a) SetupStaticText(
+	new ("C:\\dev\\MP\\Black\\frontend.cpp", 538) SetupStaticText(
 		999, 100, 150, 600, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd7e), TEXTJUSTIFY_CENTRE);
-	ContinueButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x21c)
+	ContinueButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 540)
 		SetupBigButton(2, 610, 400, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 40, 1, BBSTYLE_RIGHT_ARROW);
-	CancelButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x21d)
+	CancelButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 541)
 		SetupBigButton(1, 150, 400, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa24), 40, 0, BBSTYLE_LEFT_ARROW);
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x222) SetupStaticText(
+	new ("C:\\dev\\MP\\Black\\frontend.cpp", 546) SetupStaticText(
 		999, 100, 300, 250, 64, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd7f), TEXTJUSTIFY_RIGHT);
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x223) SetupStaticText(
+	new ("C:\\dev\\MP\\Black\\frontend.cpp", 547) SetupStaticText(
 		999, 450, 300, 250, 64, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd80), TEXTJUSTIFY_LEFT);
-	NameEdit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x226) SetupEdit(3, 200, 230, 400, 50, L"", true);
+	NameEdit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 550) SetupEdit(3, 200, 230, 400, 50, L"", true);
 	NameEdit->field_0x240 = 29;
 	FrontEnd::ActiveNewProfileDialog->Completed = false;
 }
@@ -275,14 +269,14 @@ void EditingDebugBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveEditingDebugDialog = this;
-	Edit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x2c1) SetupEdit(1, 200, 300, 400, 30, L"", true);
+	Edit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 705) SetupEdit(1, 200, 300, 400, 30, L"", true);
 	Edit->text_size = GetMidTextSize();
 	PromptText =
-		new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x2c4) SetupStaticText(2, 200, 250, 400, 30, L"", TEXTJUSTIFY_CENTRE);
+		new ("C:\\dev\\MP\\Black\\frontend.cpp", 708) SetupStaticText(2, 200, 250, 400, 30, L"", TEXTJUSTIFY_CENTRE);
 	PromptText->text_size = GetMidTextSize();
-	ContinueButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x2c8)
+	ContinueButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 712)
 		SetupBigButton(3, 570, 350, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 30, 1, BBSTYLE_RIGHT_ARROW);
-	CancelButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x2c9)
+	CancelButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 713)
 		SetupBigButton(4, 200, 350, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa24), 30, 0, BBSTYLE_LEFT_ARROW);
 	field_0x20 = 0;
 	InitialText = NULL;
@@ -309,20 +303,20 @@ void RegisterBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveRegisterDialog = this;
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x308) SetupStaticText(
+	new ("C:\\dev\\MP\\Black\\frontend.cpp", 776) SetupStaticText(
 		999, 100, 150, 600, 250, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd82), TEXTJUSTIFY_CENTRE_BREAK);
-	LoginButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x309)
+	LoginButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 777)
 		SetupButton(2, 310, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd86), 0);
-	RegisterButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x30a)
+	RegisterButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 778)
 		SetupButton(1, 100, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd85), 0);
-	ContinueButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x30b)
+	ContinueButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 779)
 		SetupButton(3, 520, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 0);
-	NameEdit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x30d) SetupEdit(4, 250, 300, 300, 50, L"", true);
-	PasswordEdit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x30e) SetupEdit(5, 250, 360, 300, 50, L"", true);
+	NameEdit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 781) SetupEdit(4, 250, 300, 300, 50, L"", true);
+	PasswordEdit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 782) SetupEdit(5, 250, 360, 300, 50, L"", true);
 	PasswordEdit->MaskedText = true;
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x311) SetupStaticText(
+	new ("C:\\dev\\MP\\Black\\frontend.cpp", 785) SetupStaticText(
 		999, 50, 300, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd83), TEXTJUSTIFY_RIGHT);
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x312) SetupStaticText(
+	new ("C:\\dev\\MP\\Black\\frontend.cpp", 786) SetupStaticText(
 		999, 50, 360, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd84), TEXTJUSTIFY_RIGHT);
 	Completed = false;
 }
@@ -362,13 +356,13 @@ void MainMenu::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(i
 	FrontEnd::ActiveMainMenuDialog = this;
 	char16_t currentProfile[0x100];
 	PlayerProfile::GetCurrentProfile(currentProfile);
-	TitleText = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x675)
+	TitleText = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1653)
 		SetupStaticText(999, 50, 65, 700, 90, L"", TEXTJUSTIFY_CENTRE_BREAK);
-	Buttons[0] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x679) SetupButton(0, 180, 145, 440, 70, L"", 0);
-	Buttons[1] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x67a) SetupButton(1, 180, 225, 440, 70, L"", 0);
-	Buttons[2] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x67b) SetupButton(2, 180, 305, 440, 70, L"", 0);
-	Buttons[3] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x67c) SetupButton(3, 180, 385, 440, 70, L"", 0);
-	Buttons[4] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0x67d) SetupButton(4, 180, 465, 440, 70, L"", 0);
+	Buttons[0] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1657) SetupButton(0, 180, 145, 440, 70, L"", 0);
+	Buttons[1] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1658) SetupButton(1, 180, 225, 440, 70, L"", 0);
+	Buttons[2] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1659) SetupButton(2, 180, 305, 440, 70, L"", 0);
+	Buttons[3] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1660) SetupButton(3, 180, 385, 440, 70, L"", 0);
+	Buttons[4] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1661) SetupButton(4, 180, 465, 440, 70, L"", 0);
 	if (PlayerProfile::GetNumberOfProfiles() != 0)
 	{
 		PlayerProfile::SetCurrentProfile(LHNetGetCurrentProfileNameFromRegistry());
@@ -422,14 +416,14 @@ void StartGameBox::Init(uint32_t width, uint32_t height,
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveStartGameDialog = this;
 	setup_box->DefaultTextSize = GetBigTextSize();
-	text = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xdcd)
+	text = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3533)
 		SetupStaticText(1, 40, 30, 720, 40, L"", TEXTJUSTIFY_CENTRE_BREAK);
-	button = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xdcf)
+	button = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3535)
 		SetupButton(999, 320, 530, 160, 40, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a60), 1);
-	list = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xdd0) SetupList(0, 100, 110, 600, 380);
+	list = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3536) SetupList(0, 100, 110, 600, 380);
 	list->DrawHighlightBox = false;
 	BigButton =
-		new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xdd3) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
+		new ("C:\\dev\\MP\\Black\\frontend.cpp", 3539) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
 }
 
 void StartGameBox::Destroy()
@@ -449,13 +443,13 @@ void SkirmishGameBox::Init(uint32_t width, uint32_t height,
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveSkirmishDialog = this;
 	setup_box->DefaultTextSize = GetBigTextSize();
-	TitleText = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xe0c)
+	TitleText = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3596)
 		SetupStaticText(1, 40, 30, 720, 40, L"", TEXTJUSTIFY_CENTRE_BREAK);
 	BackButton =
-		new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xe0e) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
+		new ("C:\\dev\\MP\\Black\\frontend.cpp", 3598) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
 	StartButton =
-		new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xe0f) SetupBigButton(998, 730, 530, L"", 40, 1, BBSTYLE_RIGHT_ARROW);
-	MapList = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xe10) SetupList(0, 100, 110, 600, 380);
+		new ("C:\\dev\\MP\\Black\\frontend.cpp", 3599) SetupBigButton(998, 730, 530, L"", 40, 1, BBSTYLE_RIGHT_ARROW);
+	MapList = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3600) SetupList(0, 100, 110, 600, 380);
 	MapList->DrawHighlightBox = true;
 }
 
@@ -477,11 +471,11 @@ void HistoryBox::Init(uint32_t width, uint32_t height,
 	FrontEnd::ActiveHistoryDialog = this;
 	setup_box->field_0x94 = 0;
 	setup_box->DefaultTextSize = GetBigTextSize();
-	PreviousButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xef7)
+	PreviousButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3831)
 		SetupBigButton(1, 60, 500, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a10), 40, 0, BBSTYLE_LEFT_ARROW);
-	NextButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xef8)
+	NextButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3832)
 		SetupBigButton(2, 700, 500, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a0f), 40, 1, BBSTYLE_RIGHT_ARROW);
-	CloseButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xef9)
+	CloseButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3833)
 		SetupButton(999, 320, 500, 160, 40, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a73), 1);
 	CloseButton->text_size = GetMidTextSize();
 }
