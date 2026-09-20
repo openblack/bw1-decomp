@@ -319,7 +319,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 005c5430 BW1M100 10351450 HelpSystem::_dt(void)
+	// BW1W120 005c5680 BW1M100 10351450 HelpSystem::~HelpSystem(void)
 	virtual ~HelpSystem();
 
 	// Constructors
@@ -331,9 +331,9 @@ public:
 
 	// BW1W120 005c8fe0 BW1M100 1007d4f0 HelpSystem::Process(void)
 	void Process();
-	// BW1W120 005c6eb0 BW1M100 1034dd60 HelpSystem::Save(GameOSFile &)
+	// BW1W120 005c6eb0 BW1M100 1034dd60 HelpSystem::Save(GameOSFile&)
 	uint32_t Save(GameOSFile& file);
-	// BW1W120 005c73e0 BW1M100 1034cf90 HelpSystem::Load(GameOSFile &)
+	// BW1W120 005c73e0 BW1M100 1034cf90 HelpSystem::Load(GameOSFile&)
 	uint32_t Load(GameOSFile& file);
 	// BW1W120 005c78b0 BW1M100 1034cf40 HelpSystem::ResolveLoad(void)
 	void ResolveLoad();
@@ -353,25 +353,25 @@ public:
 	void Draw3D(); // 005c59a0
 	// BW1W120 005c67e0 BW1M100 1034f730 HelpSystem::ClearDialogueControl(void)
 	void ClearDialogueControl();
-	// BW1W120 005c6ad0 BW1M100 1034f2c0 HelpSystem::SetWideScreen(int, ulong)
+	// BW1W120 005c6ad0 BW1M100 1034f2c0 HelpSystem::SetWideScreen(int, unsigned long)
 	void SetWideScreen(int param_2, uint32_t param_3);
 	// BW1W120 005c6b60 BW1M100 1001d4b0 HelpSystem::GetWideScreenPercentage(void) const
 	float GetWideScreenPercentage();
 	// BW1W120 005c8280 BW1M100 10351b90 HelpSystem::TriggerCategory(HELP_SET_CATEGORY)
 	void TriggerCategory(HELP_SET_CATEGORY param_1);
-	// BW1W120 005c8b80 BW1M100 10353090 HelpSystem::RunMessageSet(HELP_SYSTEM_MESSAGE_SET, GameThingWithPos *)
+	// BW1W120 005c8b80 BW1M100 10353090 HelpSystem::RunMessageSet(HELP_SYSTEM_MESSAGE_SET, GameThingWithPos*)
 	uint32_t RunMessageSet(HELP_SYSTEM_MESSAGE_SET param_1, GameThingWithPos* param_2);
 	// BW1W120 005c8c40 BW1M100 10352f40 HelpSystem::StopHelpScriptsForNewHelp(void)
 	uint32_t StopHelpScriptsForNewHelp();
 	// BW1W120 005c8c80 BW1M100 10352ee0 HelpSystem::StopRunningScripts(void)
 	uint32_t StopRunningScripts();
-	// BW1W120 005c8ce0 BW1M100 10352cf0 HelpSystem::RunMessage(unsigned long, unsigned long, char *)
+	// BW1W120 005c8ce0 BW1M100 10352cf0 HelpSystem::RunMessage(unsigned long, unsigned long, char*)
 	uint32_t RunMessage(unsigned long param_1, unsigned long param_2, char* param_3);
-	// BW1W120 005c94a0 BW1M100 10353ce0 HelpSystem::GetHelpQueryOnGameThingWithPos(GameThingWithPos *)
+	// BW1W120 005c94a0 BW1M100 10353ce0 HelpSystem::GetHelpQueryOnGameThingWithPos(GameThingWithPos*)
 	void GetHelpQueryOnGameThingWithPos(GameThingWithPos* param_1);
 	// BW1W120 005c98e0 BW1M100 10353970 HelpSystem::HelpQuery(void)
 	void HelpQuery();
-	// BW1W120 005c5b50. Mac: SetTextIcon__10HelpSystemFQ210ControlMap16BINDABLE_ACTIONS.
+	// BW1W120 005c5b50 BW1M100 10350a20 HelpSystem::SetTextIcon(ControlMap::BINDABLE_ACTIONS)
 	// TODO: The shared enum is currently global; original ControlMap nesting needs parent integration.
 	void SetTextIcon(BINDABLE_ACTIONS action);
 };

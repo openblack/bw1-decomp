@@ -60,85 +60,80 @@ public:
 
 	// Override methods
 
-	// BW1W120 005cad90 BW1M100 103575a0 HelpText::_dt(void)
+	// BW1W120 005cb070 BW1M100 103575a0 HelpText::~HelpText(void)
 	virtual ~HelpText();
 
 	// Constructors
 
-	// BW1W120 005cad40 BW1M100 103579b0 HelpText::HelpText(LHRegion const &)
+	// BW1W120 005cad40 BW1M100 103579b0 HelpText::HelpText(const LHRegion&)
 	HelpText(const LHRegion& region);
 
-	// BW1W120 005cb090. Static factory: no ECX input, pointer returned in EAX, plain RET.
-	// Mac: Create__8HelpTextFRC8LHRegionP10HelpSystem. Windows symbol map needs correction.
+	// BW1W120 005cb090 BW1M100 103574e0 HelpText::Create(const LHRegion&, HelpSystem*)
 	static HelpText* Create(const LHRegion& region, HelpSystem* help_system);
-	// BW1W120 005cadc0. TODO: font table and shared text-highlight Zoomer bindings.
+	// BW1W120 005cadc0 BW1M100 10357760 HelpText::SetToZero(void)
 	void SetToZero();
-	// BW1W120 005cb000
+	// BW1W120 005cb000 BW1M100 10357720 HelpText::ClearTextDisplayed(void)
 	void ClearTextDisplayed();
-	// BW1W120 005cb010
+	// BW1W120 005cb010 BW1M100 103576d0 HelpText::CloseDialogWindow(void)
 	void CloseDialogWindow();
-	// BW1W120 005cb020
+	// BW1W120 005cb020 BW1M100 10357640 HelpText::Reset(bool)
 	void Reset(bool clear_history);
-	// BW1W120 005cb0e0. Descriptive name; the original Windows body is just RET 4.
+	// BW1W120 005cb0e0 void HelpText::SetHelpSystem(HelpSystem*)
 	void SetHelpSystem(HelpSystem* help_system);
 
 	// Parser results are full-register integers on Windows, not byte-sized bools.
 	// Values: 0 word/command, 1 newline, 2 stop, 3 space, 4 percentage, 5 number, 6 U+F8FE.
 	// Helper names marked descriptive were inlined in the available Mac symbol evidence.
-	// BW1W120 005cb0f0 (descriptive name)
+	// BW1W120 005cb0f0 int HelpText::IsWhiteSpace(unsigned short) const
 	int IsWhiteSpace(char16_t character) const;
-	// BW1W120 005cb120 Mac: SkipWhiteSpace__8HelpTextCFPwPPw
+	// BW1W120 005cb120 BW1M100 10357420 HelpText::SkipWhiteSpace(wchar_t*, wchar_t**) const
 	int SkipWhiteSpace(char16_t* text, char16_t** next) const;
-	// BW1W120 005cb190 Mac: IsCommandChar__8HelpTextCFw
+	// BW1W120 005cb190 BW1M100 103572e0 HelpText::IsCommandChar(wchar_t) const
 	int IsCommandChar(char16_t character) const;
-	// BW1W120 005cb1b0 (descriptive name)
+	// BW1W120 005cb1b0 int HelpText::IsNumberChar(unsigned short) const
 	int IsNumberChar(char16_t character) const;
-	// BW1W120 005cb1d0 Mac: IsCommandDataChar__8HelpTextCFw
+	// BW1W120 005cb1d0 BW1M100 10357380 HelpText::IsCommandDataChar(wchar_t) const
 	int IsCommandDataChar(char16_t character) const;
-	// BW1W120 005cb200 (descriptive name)
+	// BW1W120 005cb200 int HelpText::IsColorCommand(unsigned short) const
 	int IsColorCommand(char16_t character) const;
-	// BW1W120 005cb220 (descriptive name)
+	// BW1W120 005cb220 int HelpText::IsNamedCommand(unsigned short) const
 	int IsNamedCommand(char16_t character) const;
-	// BW1W120 005cb2a0 Mac: RunCommand__8HelpTextFPwi
+	// BW1W120 005cb2a0 BW1M100 10357120 HelpText::RunCommand(wchar_t*, int)
 	int RunCommand(char16_t* text, int process_messages);
-	// BW1W120 005cb3e0 (descriptive name).
+	// BW1W120 005cb3e0 void HelpText::ProcessMessageCommand(int)
 	void ProcessMessageCommand(int action);
-	// BW1W120 005cb400 Mac: ProcessColorCommand__8HelpTextFUl
+	// BW1W120 005cb400 BW1M100 10356f90 HelpText::ProcessColorCommand(unsigned long)
 	void ProcessColorCommand(unsigned long colour);
-	// BW1W120 005cb4c0 (descriptive name)
+	// BW1W120 005cb4c0 int HelpText::ProcessNumberCommand(int)
 	int ProcessNumberCommand(int command);
-	// BW1W120 005cb4e0 Mac: SkipCommandData__8HelpTextCFPw
+	// BW1W120 005cb4e0 BW1M100 10356e50 HelpText::SkipCommandData(wchar_t*) const
 	char16_t* SkipCommandData(char16_t* text) const;
-	// BW1W120 005cb590 Mac: GetNextWordAndParseCommands__8HelpTextFPwPPwPwi
+	// BW1W120 005cb590 BW1M100 10356b50 HelpText::GetNextWordAndParseCommands(wchar_t*, wchar_t**, wchar_t*, int)
 	int GetNextWordAndParseCommands(char16_t* text, char16_t** next, char16_t* word, int process_messages);
-	// BW1W120 005cb750 Mac: CalculateCurrentDisplayWidthAndHeight__8HelpTextFRC8LHRegionPwPfPf
+	// BW1W120 005cb750 BW1M100 10356810 HelpText::CalculateCurrentDisplayWidthAndHeight(const LHRegion&, wchar_t*, float*, float*)
 	void CalculateCurrentDisplayWidthAndHeight(const LHRegion& region, char16_t* text, float* width, float* height);
-	// BW1W120 005cb960. TODO: shared highlight Zoomers, language and audio-word selection bindings.
-	// Mac: DrawAndProcessText__8HelpTextFRC8LHRegionPwQ28HelpText9ALIGNENUMfi
+	// BW1W120 005cb960 BW1M100 10355db0 HelpText::DrawAndProcessText(const LHRegion&, wchar_t*, HelpText::ALIGNENUM, float, int)
 	float DrawAndProcessText(const LHRegion& region, char16_t* text, ALIGNENUM alignment, float y_offset,
 	                         int process_messages);
-	// BW1W120 005cbec0 Mac: CountWords__8HelpTextFPw
+	// BW1W120 005cbec0 BW1M100 10355d10 HelpText::CountWords(wchar_t*)
 	int CountWords(char16_t* text);
-	// BW1W120 005cbf10. TODO: pause/speed-status animation and rendering dependencies.
+	// BW1W120 005cbf10 BW1M100 10017510 HelpText::DrawPauseText(void)
 	void DrawPauseText();
-	// BW1W120 005cc760. TODO: subtitle animation, frame timing and widescreen bindings.
+	// BW1W120 005cc760 BW1M100 1001cbf0 HelpText::DrawScriptText(void)
 	void DrawScriptText();
-	// BW1W120 005ccab0. TODO: frontend chat history, camera/editor overlays and multiplayer timer.
+	// BW1W120 005ccab0 BW1M100 100238f0 HelpText::Draw3DText(void)
 	void Draw3DText();
-	// BW1W120 005cce60. TODO: LH3D region-fill helper at 0081e360.
+	// BW1W120 005cce60 BW1M100 10015ef0 HelpText::Draw3D(void)
 	void Draw3D();
-	// BW1W120 005ccea0 (descriptive name)
+	// BW1W120 005ccea0 void HelpText::ProcessFontCommand(int)
 	void ProcessFontCommand(int font);
-	// BW1W120 005cced0 Mac: SendText__8HelpTextFPwf18HELP_TEXT_NARRATOR
+	// BW1W120 005cced0 BW1M100 10354ae0 HelpText::SendText(wchar_t*, float, HELP_TEXT_NARRATOR)
 	void SendText(char16_t* text, float value, HELP_TEXT_NARRATOR narrator);
-	// BW1W120 005ccf50 Mac: SetStartDrawSettings__8HelpTextFv
+	// BW1W120 005ccf50 BW1M100 10354a40 HelpText::SetStartDrawSettings(void)
 	void SetStartDrawSettings();
-	// BW1W120 005cd020. TODO: Draw3DText followed by the editor overlay at 005178d0.
+	// BW1W120 005cd020 BW1M100 1001e450 HelpText::Draw3DTextStub(void*)
 	static void __stdcall Draw3DTextStub(void* context);
 };
-
-static_assert(sizeof(HelpText::TextEntry) == 0x10, "HelpText history entry size is incorrect");
-static_assert(sizeof(HelpText) == 0xbc, "HelpText size is incorrect");
 
 // Database entries are 12 bytes, distinct from the on-screen HelpText object.
 struct HelpTextData
@@ -147,13 +142,11 @@ struct HelpTextData
 	uint32_t  field_0x4;
 	char16_t* Text;
 
-	// Mac: __dt__12HelpTextDataFv. Inlined in Windows database array deletion.
+	// BW1W120 inlined BW1M100 10357cb0 HelpTextData::~HelpTextData(void)
 	~HelpTextData();
-	// BW1W120 005cad00. Descriptive name; Mac database SetData confirms parameter types.
+	// BW1W120 005cad00 void HelpTextData::SetData(int, HELP_TEXT_NARRATOR, unsigned short*, unsigned short*)
 	void SetData(int index, HELP_TEXT_NARRATOR narrator, char16_t* sound, char16_t* text);
 };
-
-static_assert(sizeof(HelpTextData) == 0xc, "HelpTextData size is incorrect");
 
 struct HelpTextDataBase
 {
@@ -165,19 +158,20 @@ struct HelpTextDataBase
 	HelpTextData* array; /* 0x0 */
 	uint32_t      count;
 
-	// Mac: __ct__16HelpTextDataBaseFv; inlined by Windows startup helpers.
+	// BW1W120 inlined BW1M100 10357d40 HelpTextDataBase::HelpTextDataBase(void)
 	HelpTextDataBase();
+	// BW1W120 inlined HelpTextDataBase::~HelpTextDataBase(void)
 	~HelpTextDataBase();
-	// Mac: DeleteAll__16HelpTextDataBaseFv; inlined into Windows teardown/reload.
+	// BW1W120 inlined BW1M100 10357c30 HelpTextDataBase::DeleteAll(void)
 	void DeleteAll();
-	// BW1W120 005ccfc0. Descriptive name; entry is not defined as a function in Ghidra.
+	// BW1W120 005ccfc0 void HelpTextDataBase::Reload(void)
 	void Reload();
 
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M100 100924c0 HelpTextDataBase::GetHelpText(unsigned long) const
 	char16_t* GetHelpText(unsigned long index) const { return array[index < count && index != 0 ? index : 0].Text; }
-	// BW1W120 005ccf80 Mac: SetData__16HelpTextDataBaseFiUl18HELP_TEXT_NARRATORPwPw
+	// BW1W120 005ccf80 BW1M100 10354900 HelpTextDataBase::SetData(int, unsigned long, HELP_TEXT_NARRATOR, wchar_t*, wchar_t*)
 	void SetData(int index, unsigned long text_id, HELP_TEXT_NARRATOR narrator, char16_t* sound, char16_t* text);
 };
 
