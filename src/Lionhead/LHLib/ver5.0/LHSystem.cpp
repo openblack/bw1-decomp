@@ -24,9 +24,6 @@ int TbIME_ConvertCHAR8toCHAR16(char c);
 // BW1W120 007de8d0 (LHScreen.cpp) per-message screen bookkeeping
 void sub_7DE8D0();
 
-// slim::TbIME is exposed by LHSystem.h. Preserve this established TU's
-// __LINE__ allocation tag when moving its declaration, without changing code.
-#line 38
 // BW1W120 00e85204 is TheSystem.mouse: LHSys embeds LHMouse at offset 0x1c4.
 static_assert(offsetof(LHSys, mouse) == 0x1c4, "LHSys mouse offset changed");
 
@@ -523,7 +520,7 @@ int CreateGameWindow(HINSTANCE inst, int cmd_show, int windowed)
 	if (LHSys::GetMouse().AnimType == 3)
 		SendMessageA(LHSys::GetWindow(), 0x8005, 0, 0);
 	TurnOnMenu();
-	LHSys::TheSystem.TbIME = new (__FILE__, __LINE__) slim::TbIME();
+	LHSys::TheSystem.TbIME = new ("C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHWin.cpp", 193) slim::TbIME();
 	return 0;
 }
 

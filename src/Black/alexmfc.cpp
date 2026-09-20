@@ -1,4 +1,4 @@
-#include "AlexMfc.h"
+#include <SetupThing/Setup.h>
 
 #include "Game.h"
 #include "SetupBigButton.h"
@@ -37,35 +37,4 @@ int GetSmallTextSize()
 int GetBigTextSize()
 {
 	return SETUP_TEXT_SIZE_BIG;
-}
-
-void SetupThing::DrawBox(int x_min, int y_min, int x_max, int y_max, unsigned long color_1, unsigned long color_2,
-                         unsigned long color_3, unsigned long color_4, unsigned long use_alpha, unsigned long adjust)
-{
-	if (x_max < x_min)
-	{
-		int x = x_min;
-		x_min = x_max;
-		x_max = x;
-		unsigned long color = color_1;
-		color_1 = color_2;
-		color_2 = color;
-		color = color_3;
-		color_3 = color_4;
-		color_4 = color;
-	}
-	if (y_max < y_min)
-	{
-		int y = y_min;
-		y_min = y_max;
-		y_max = y;
-		unsigned long color = color_1;
-		color_1 = color_3;
-		color_3 = color;
-		color = color_2;
-		color_2 = color_4;
-		color_4 = color;
-	}
-	DrawQuad(x_min, y_min, x_max, y_min, x_max, y_max, x_min, y_max, color_1, color_2, color_3, color_4, use_alpha,
-	         adjust);
 }

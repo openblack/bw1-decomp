@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <re_common.h>
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 #include "GatheringInterface.h"
@@ -27,7 +28,7 @@ public:
 	static const char16_t*           GatheringRecentPlayersText;  // 00d06314
 	static const char16_t*           GatheringFriendsText;        // 00d06318
 	static LHTimer                   GatheringPresenceTimer;      // 00d06320
-	static unsigned int              GatheringMusicPlayerEnabled; // 00d06434
+	static bool32_t                  GatheringMusicPlayerEnabled; // 00d06434
 	static GatheringBox*             GatheringActiveBox;          // 00d0643c
 	static bool                      GatheringMouseCaptured;      // 00d06440
 
@@ -47,7 +48,6 @@ public:
 	// BW1W120 00572540 BW1M100 10326610 GatheringBox::InitControls(void)
 	virtual void InitControls();
 
-	// Names corroborated by Mac traceback strings unless marked descriptive.
 	// BW1W120 005707f0 BW1M100 10328860 GatheringBox::GetMusicID(void)
 	uint32_t GetMusicID();
 	// BW1W120 00570890 BW1M100 103287a0 GatheringBox::MusicMoodActive(void)
@@ -75,8 +75,6 @@ public:
 	// BW1W120 00573840 BW1M100 10324ec0 GatheringBox::OpenDialog(bool)
 	void OpenDialog(bool close_after_send);
 
-	// Windows cdecl/caller cleanup establishes static methods. Mac traceback
-	// names establish GatheringBox ownership and LH_USER_ID by-value arguments.
 	// BW1W120 00573db0 BW1M100 10324720 GatheringBox::RemoveFromList(GBCategory*, LH_USER_ID)
 	static void RemoveFromList(GBCategory* group, LH_USER_ID user_id);
 	// BW1W120 00573e30 BW1M100 10324530 GatheringBox::AddToOtherList(wchar_t*, LH_USER_ID, LHTransportInfo*)

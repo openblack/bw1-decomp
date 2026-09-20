@@ -186,9 +186,7 @@ struct LHSys
 	// The one instance, at 0xE85040, built by LHSystem.cpp's static-init constructor.
 	static LHSys TheSystem;
 
-	// Static inline accessors — the binary has no getters (neighbour TUs compile to
-	// direct absolute loads), so these are source-level style only and must inline.
-	// NB /Ob0 TUs (LHScript.cpp) must use TheSystem.<member> directly instead.
+	// fabricated: source-level accessors, with no recovered Mac identities.
 	// BW1W120 inlined LHSys::Get(void)
 	static LHSys& Get() { return TheSystem; }
 	// BW1W120 inlined LHSys::GetSystem(void)

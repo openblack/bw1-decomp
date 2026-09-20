@@ -16,9 +16,9 @@
 #include <Lionhead/LHMultiplayer/ver4.0/LHNetUtils.h>
 #include <Lionhead/LHMultiplayer/ver4.0/LHPlayer.h>
 #include <Lionhead/LHMultiplayer/ver4.0/LHSession.h>
+#include <SetupThing/Setup.h>
 #include <zlib/zlib.h>
 
-#include "AlexMfc.h"
 #include "Game.h"
 #include "GatheringBox.h"
 #include "HelpSystem.h"
@@ -57,7 +57,7 @@ const char16_t*           GatheringBox::GatheringCurrentPlayersText;
 const char16_t*           GatheringBox::GatheringRecentPlayersText;
 const char16_t*           GatheringBox::GatheringFriendsText;
 GatheringBox*             GatheringBox::GatheringActiveBox;
-unsigned int              GatheringBox::GatheringMusicPlayerEnabled;
+bool32_t                  GatheringBox::GatheringMusicPlayerEnabled;
 
 // BW1W120 00d06320; its members at 00d06420..00d0642c identify LHTimer.
 // The original startup sequence constructs and then stops this timer again.

@@ -20,9 +20,7 @@ class SetupMP3Button;
 class LHPlayer;
 class SetupSlider;
 
-// GBPlayer/GBCategory and their Init/assignment names are recovered Mac names.
 // Member names are descriptive.
-// Windows allocations at 00573e30/00574400 establish the complete 0xf0/0x90 sizes.
 struct GBPlayer
 {
 	bool            IsFriend;  /* 0x0 */
@@ -61,7 +59,7 @@ struct GBCategory
 {
 	bool                    ReceiveMessages; /* 0x0 */
 	bool                    Expanded;
-	char16_t                Name[65]; /* 0x2 */
+	char16_t                Name[65]; /* 0x2; TODO: distinguish 64 characters plus alignment from 65 characters. */
 	uint32_t                Color;    /* 0x84 */
 	LHLinkedList<GBPlayer*> Players;  /* 0x88 */
 
@@ -81,9 +79,6 @@ struct GatheringMessage
 	uint32_t Time;
 };
 
-// Typed state replacing the former GatheringBox::field_0x10[0xe0].
-// Offsets below are relative to GatheringBox, not this member aggregate.
-// DLL exports are cdecl: 005707f0 explicitly restores the argument stack.
 struct GatheringBoxState
 {
 	SetupList*      PlayList; /* 0x10 */
@@ -143,10 +138,6 @@ struct GatheringBoxState
 	bool                            ShowInterface;
 	LHLinkedList<GatheringMessage*> Messages; /* 0xe8 */
 };
-
-// GatheringBox's static storage declarations are in GatheringBox.h.
-// The first globals (00d060ec..00d06318) are currently extracted into GameThing's
-// .bss; reconcile ownership before source linking instead of duplicating storage.
 
 // Windows-only helpers whose original names were not found in Mac traceback data.
 // BW1W120 00573cd0 LHPlayer * GatheringFindGamePlayer(unsigned int)
