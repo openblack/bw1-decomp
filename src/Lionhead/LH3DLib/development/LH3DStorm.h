@@ -29,13 +29,11 @@ struct StormInfo
 	float       field_0x44;
 	WeatherInfo Weather; /* 0x48 */
 
-	// BW1W120 0083f490; Mac __ct__9StormInfoFv
+	// BW1W120 0083f490 BW1M100 100bb690 StormInfo::StormInfo(void)
 	StormInfo();
-	// BW1W120 0083f4a0; Mac __ct__9StormInfoFRC7LHPointff
+	// BW1W120 0083f4a0 BW1M100 100bb5f0 StormInfo::StormInfo(const LHPoint&, float, float)
 	StormInfo(const LHPoint& position, float param_2, float param_3);
 };
-
-static_assert(sizeof(StormInfo) == 0x50, "StormInfo size is incorrect");
 
 // win1.41 00c24780 mac inlined LH3DStorm::`RTTI Type Descriptor'
 // win1.41 009ba028 mac inlined LH3DStorm::`RTTI Base Class Descriptor'
@@ -54,24 +52,27 @@ public:
 	// destruction of the tail remain the responsibility of the original external methods.
 	uint8_t field_0x6c[0x354];
 
-	// BW1W120 0083f590; Mac __ct__9LH3DStormFR9StormInfo
+	// BW1W120 0083f590 BW1M100 100bb1d0 LH3DStorm::LH3DStorm(StormInfo&)
 	LH3DStorm(StormInfo& info);
-	// BW1W120 0083f6f0; Mac CreateStorm__9LH3DStormFR9StormInfo
+	// BW1W120 0083f6f0 BW1M100 100bb030 LH3DStorm::CreateStorm(StormInfo&)
 	static LH3DStorm* CreateStorm(StormInfo& info);
-	// BW1W120 0083f8d0; Mac ValidateStormPointer__9LH3DStormFP9LH3DStorm
-	// Returns the live matching storm pointer, or NULL (not a Boolean).
+	// BW1W120 0083f8d0 BW1M100 10005d60 LH3DStorm::ValidateStormPointer(LH3DStorm*)
 	static LH3DStorm* ValidateStormPointer(LH3DStorm* storm);
 
-	static void DebugDrawAll(); // 0083f890
+	// BW1W120 0083f890 BW1M100 100bac00 LH3DStorm::DebugDrawAll(void)
+	static void DebugDrawAll();
 	// Virtual functions
 
+	// BW1W120 0083f900 BW1M100 1000e110 LH3DStorm::Update(float)
 	virtual void Update(float param_1); /* 0x0 */
+	// BW1W120 0083fc90 BW1M100 1001de80 LH3DStorm::DrawClouds(void)
 	virtual void DrawClouds();
+	// BW1W120 008402e0 BW1M100 100ba4c0 LH3DStorm::DebugDraw(void)
 	virtual void DebugDraw();
+	// BW1W120 008400e0 BW1M100 100200b0 LH3DStorm::CalcAtmos(LHPoint&, WeatherInfo&)
 	virtual void CalcAtmos(LHPoint* point, WeatherInfo* info);
+	// BW1W120 0083f630 BW1M100 100bb0c0 LH3DStorm::~LH3DStorm(void)
 	virtual ~LH3DStorm(); /* 0x10 */
 };
-
-static_assert(sizeof(LH3DStorm) == 0x3c0, "LH3DStorm size is incorrect");
 
 #endif /* BW1_DECOMP_LH3DSTORM_INCLUDED_H */

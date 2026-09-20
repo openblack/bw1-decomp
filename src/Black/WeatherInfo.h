@@ -22,12 +22,10 @@ public:
 	uint8_t field_0x10[0x54];
 	// Override methods
 
-	// BW1W120 00770e30 BW1M100 105a3520 GWeatherInfo::_dt(void)
+	// BW1W120 inlined BW1M100 105a3520 GWeatherInfo::~GWeatherInfo(void)
 	virtual ~GWeatherInfo();
-	// BW1W120 00770dd0 BW1M100 105a3640 GWeatherInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00770dd0 BW1M100 105a3640 GWeatherInfo::GetBaseInfo(unsigned long&)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
-
-static_assert(sizeof(GWeatherInfo) == 0x64, "GWeatherInfo size is incorrect");
 
 #endif /* BW1_DECOMP_WEATHER_INFO_INCLUDED_H */

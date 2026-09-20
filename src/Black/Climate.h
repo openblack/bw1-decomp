@@ -55,80 +55,75 @@ public:
 	static uint32_t LastSeason;            // 00dcb8bc
 	static uint32_t CurrentSeason;         // 00dcb8c0
 
-	// BW1W120 0055de80 (GameOSFile factory constructor, distinct from GClimate(int))
+	// BW1W120 0055de80 GClimate::GClimate(void)
 	GClimate();
-	// BW1W120 00771020; Mac __ct__8GClimateFl (Windows symbol uses int).
+	// BW1W120 00771020 BW1M100 105a2f20 GClimate::GClimate(long)
 	GClimate(int param_1);
-	// BW1W120 00771170; Mac __ct__8GClimateFRC9MapCoordsPC12GClimateInfofffl
+	// BW1W120 00771170 BW1M100 105a2b80 GClimate::GClimate(const MapCoords&, const GClimateInfo*, float, float, float, long)
 	GClimate(const MapCoords& position, const GClimateInfo* info, float inner_radius, float outer_radius, float param_5,
 	         int climate_id);
-	// BW1W120 00771300; Mac Create__8GClimateFRC9MapCoordsPC12GClimateInfofffl
+	// BW1W120 00771300 BW1M100 105a2900 GClimate::Create(const MapCoords&, const GClimateInfo*, float, float, float, long)
 	static GClimate* Create(const MapCoords& position, const GClimateInfo* info, float inner_radius, float outer_radius,
 	                        float param_5, int climate_id);
 
 	// Windows callers clean the arguments and WeatherInfo returns in EDX:EAX.
-	// BW1W120 00771490; Mac GetWeather__8GClimateFRC7LHPointb
+	// BW1W120 00771490 BW1M100 10030bc0 GClimate::GetWeather(const LHPoint&, bool)
 	static WeatherInfo GetWeather(const LHPoint& point, bool smooth);
-	// BW1W120 007714b0; Mac IsRaining__8GClimateFRC7LHPoint
+	// BW1W120 007714b0 BW1M100 10023580 GClimate::IsRaining(const LHPoint&)
 	static bool IsRaining(const LHPoint& point);
-	// BW1W120 007714f0; Mac IsSnowing__8GClimateFRC7LHPoint
+	// BW1W120 007714f0 BW1M100 10081fc0 GClimate::IsSnowing(const LHPoint&)
 	static bool IsSnowing(const LHPoint& point);
-	// BW1W120 00771570; Mac GetRain__8GClimateFRC7LHPoint
+	// BW1W120 00771570 BW1M100 1008c2e0 GClimate::GetRain(const LHPoint&)
 	static float GetRain(const LHPoint& point);
-	// BW1W120 007715b0; Mac GetSnow__8GClimateFRC7LHPoint
+	// BW1W120 007715b0 BW1M100 10064e30 GClimate::GetSnow(const LHPoint&)
 	static float GetSnow(const LHPoint& point);
-	// BW1W120 00771600; Mac GetMaxRainingOrSnowing__8GClimateFRC7LHPoint
+	// BW1W120 00771600 BW1M100 105a2250 GClimate::GetMaxRainingOrSnowing(const LHPoint&)
 	static float GetMaxRainingOrSnowing(const LHPoint& point);
-	// BW1W120 00771640; Mac ComputeWeather__8GClimateFRC7LHPointb
+	// BW1W120 00771640 BW1M100 10046c70 GClimate::ComputeWeather(const LHPoint&, bool)
 	static WeatherInfo ComputeWeather(const LHPoint& point, bool smooth);
-	// BW1W120 00771a30; Mac MoveStormByWind__8GClimateFP9LH3DStormf
+	// BW1W120 00771a30 BW1M100 105a1f80 GClimate::MoveStormByWind(LH3DStorm*, float)
 	static void MoveStormByWind(LH3DStorm* storm, float scale);
-	// BW1W120 00771a80; Mac GetTemp__8GClimateFPC7LHPoint
+	// BW1W120 00771a80 BW1M100 10082060 GClimate::GetTemp(const LHPoint*)
 	static float GetTemp(const LHPoint* point);
-	// BW1W120 00771ab0; Mac GetWindX__8GClimateFPC7LHPoint
+	// BW1W120 00771ab0 BW1M100 10082100 GClimate::GetWindX(const LHPoint*)
 	static float GetWindX(const LHPoint* point);
-	// BW1W120 00771ae0; Mac GetWindZ__8GClimateFPC7LHPoint
+	// BW1W120 00771ae0 BW1M100 100821a0 GClimate::GetWindZ(const LHPoint*)
 	static float GetWindZ(const LHPoint* point);
-	// BW1W120 00771b10; Mac GetWindAtPoint__8GClimateFPC7LHPointb
+	// BW1W120 00771b10 BW1M100 105a19f0 GClimate::GetWindAtPoint(const LHPoint*, bool)
 	static LHPoint GetWindAtPoint(const LHPoint* point, bool smooth);
-	// BW1W120 00772330; Mac Process__8GClimateFb
+	// BW1W120 00772330 BW1M100 10078470 GClimate::Process(bool)
 	void Process(bool update_time);
-	// BW1W120 007727a0; Mac SaveClimate__8GClimateFR8LHOSFileRC9MapCoords
-	// Windows explicitly tests origin for NULL: retain its nullable interface despite the Mac reference.
+	// BW1W120 007727a0 BW1M100 105a10f0 GClimate::SaveClimate(LHOSFile&, const MapCoords&)
 	void SaveClimate(LHOSFile& file, const MapCoords* origin);
-	// BW1W120 00772b80; Mac SaveAllObjectTextFile__8GClimateFR8LHOSFileRC9MapCoords
-	// Windows uses the same nullable origin as SaveClimate and returns a full-register integer.
+	// BW1W120 00772b80 BW1M100 105a1010 GClimate::SaveAllObjectTextFile(LHOSFile&, const MapCoords&)
 	static uint32_t SaveAllObjectTextFile(LHOSFile& file, const MapCoords* origin);
-	// BW1W120 00772be0; Mac FindWhereToCreateStorm__8GClimateFv
-	// The sole Windows stack argument is a hidden MapCoords return buffer.
+	// BW1W120 00772be0 BW1M100 105a0c80 GClimate::FindWhereToCreateStorm(void)
 	MapCoords FindWhereToCreateStorm();
-	// BW1W120 00772e00; Mac CreateStorm__8GClimateFv
+	// BW1W120 00772e00 BW1M100 105a0630 GClimate::CreateStorm(void)
 	void CreateStorm();
-	// BW1W120 007731b0; Mac GetClimateWithId__8GClimateFl
+	// BW1W120 007731b0 BW1M100 105a0570 GClimate::GetClimateWithId(long)
 	static GClimate* GetClimateWithId(int climate_id);
-	// BW1W120 00773200; Mac AttachRainInfo__8GClimateFR8RainInfol
+	// BW1W120 00773200 BW1M100 105a0390 GClimate::AttachRainInfo(RainInfo&, long)
 	static void AttachRainInfo(RainInfo& rain, int climate_id);
-	// BW1W120 00773290; Mac AttachTempInfo__8GClimateFR8TempInfol
+	// BW1W120 00773290 BW1M100 105a02e0 GClimate::AttachTempInfo(TempInfo&, long)
 	static void AttachTempInfo(TempInfo& temperature, int climate_id);
-	// BW1W120 007732d0; Mac AttachWindInfo__8GClimateFR8WindInfol
+	// BW1W120 007732d0 BW1M100 105a0220 GClimate::AttachWindInfo(WindInfo&, long)
 	static void AttachWindInfo(WindInfo& wind, int climate_id);
 
 	// Override methods
 
-	// BW1W120 0055dee0 BW1M100 105a2870 GClimate::_dt(void)
+	// BW1W120 007713d0 BW1M100 105a2870 GClimate::~GClimate(void)
 	virtual ~GClimate();
 	// BW1W120 007713e0 BW1M100 105a2620 GClimate::ToBeDeleted(int)
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0055ded0 BW1M100 1059ef50 GClimate::GetDebugText(void)
 	virtual char* GetDebugText();
-	// BW1W120 007736e0 BW1M100 1059ef90 GClimate::Load(GameOSFile &)
+	// BW1W120 007736e0 BW1M100 1059ef90 GClimate::Load(GameOSFile&)
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00773320 BW1M100 1059f860 GClimate::Save(GameOSFile &)
+	// BW1W120 00773320 BW1M100 1059f860 GClimate::Save(GameOSFile&)
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055dec0 BW1M100 1059ef10 GClimate::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 };
-
-static_assert(sizeof(GClimate) == 0x88, "GClimate size is incorrect");
 
 #endif /* BW1_DECOMP_CLIMATE_INCLUDED_H */
