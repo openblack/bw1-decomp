@@ -22,14 +22,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 0053ce80 BW1M100 105c3a30 NewProfileBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 0053ce80 BW1M100 105c3a30 void NewProfileBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 0053d150 BW1M100 105c39d0 NewProfileBox::Destroy(void)
+	// BW1W120 0053d150 BW1M100 105c39d0 void NewProfileBox::Destroy(void)
 	virtual void Destroy();
-	// BW1W120 0053bd10 BW1M100 105c5f90 NewProfileBox::CanESCOut(void)
+	// BW1W120 0053bd10 BW1M100 105c5f90 bool NewProfileBox::CanESCOut(void)
 	virtual bool CanESCOut();
-	// BW1W120 0053d160 BW1M100 105c3890 NewProfileBox::InitControls(void)
+	// BW1W120 0053d160 BW1M100 105c3890 void NewProfileBox::InitControls(void)
 	virtual void InitControls();
 };
 

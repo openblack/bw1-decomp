@@ -25,12 +25,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 00544820 BW1M100 105baab0 SkirmishGameBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00544820 BW1M100 105baab0 void SkirmishGameBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 00544b90 BW1M100 105ba740 SkirmishGameBox::Destroy(void)
+	// BW1W120 00544b90 BW1M100 105ba740 void SkirmishGameBox::Destroy(void)
 	virtual void Destroy();
-	// BW1W120 00544bd0 BW1M100 105ba3e0 SkirmishGameBox::InitControls(void)
+	// BW1W120 00544bd0 BW1M100 105ba3e0 void SkirmishGameBox::InitControls(void)
 	virtual void InitControls();
 };
 

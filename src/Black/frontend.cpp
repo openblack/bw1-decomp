@@ -41,16 +41,15 @@
 
 Plasma* FrontEnd::Dat_00CD06E8;
 
-// BW1W120 007faaf0: one-step wrap to [-pi, pi]. TODO: Original free-function
-// name is unrecovered; the current GVillagerStateTableInfo symbol is incorrect.
+// BW1W120 007faaf0 float fn_007FAAF0(float)
 float fn_007FAAF0(float angle);
-// BW1W120 0053f7b0; implementation still extracted while tab state is recovered.
+// BW1W120 0053f7b0 void AddMainMenuTabs(int)
 void AddMainMenuTabs(int selected);
 
 // TODO: FrontEnd::Init and the modal/render loop need the remaining dialog, input,
 // and rendering interfaces. See the frontend-surface handoff for the dependency audit.
 
-// BW1W120 0053b4a0
+// BW1W120 0053b4a0 char * WCHAR2CHAR(unsigned short *)
 char* WCHAR2CHAR(char16_t* text)
 {
 	int length = WideCharToMultiByte(CP_ACP, 0, text, -1, FrontEnd::ConversionBuffer, 0x3ff, NULL, NULL);
@@ -58,19 +57,19 @@ char* WCHAR2CHAR(char16_t* text)
 	return FrontEnd::ConversionBuffer;
 }
 
-// BW1W120 0053bd10
+// BW1W120 0053bd10 BW1M100 105c5f90 bool NewProfileBox::CanESCOut(void)
 bool NewProfileBox::CanESCOut()
 {
 	return false;
 }
 
-// BW1W120 0053bd20
+// BW1W120 0053bd20 BW1M100 105c5eb0 bool TattooEditor::CanESCOut(void)
 bool TattooEditor::CanESCOut()
 {
 	return false;
 }
 
-// BW1W120 0053bd30
+// BW1W120 0053bd30 BW1M100 105c5f30 bool ProfileEditor::CanESCOut(void)
 bool ProfileEditor::CanESCOut()
 {
 	// TODO: This override returns a full EAX Boolean, unlike the other AL-returning
@@ -82,38 +81,39 @@ bool ProfileEditor::CanESCOut()
 	return true;
 }
 
-// BW1W120 0053bd50
+// BW1W120 0053bd50 BW1M100 105c5ef0 bool MainMenu::CanESCOut(void)
 bool MainMenu::CanESCOut()
 {
 	return false;
 }
 
-// BW1W120 0053bd60
+// BW1W120 0053bd60 BW1M100 105c5e80 bool SkipBox::CanESCOut(void)
 bool SkipBox::CanESCOut()
 {
 	return false;
 }
 
-// BW1W120 0053be30
+// BW1W120 0053be30 BW1M100 1031ba50 bool EndGameBox::CanESCOut(void)
 bool EndGameBox::CanESCOut()
 {
 	return false;
 }
 
-// BW1W120 0053c450
+// BW1W120 0053c450 BW1M100 105c47d0 void FrontEnd::SetCursorOn(void)
 void FrontEnd::SetCursorOn()
 {
 	CursorOn = true;
 	LHSys::TheSystem.mouse.SetCursor(NULL, LH_MOUSE_IMAGE_TYPE_0x01, 0);
 }
 
-// BW1W120 0053c470
+// BW1W120 0053c470 void FrontEnd::SetCursorOff(void)
 void FrontEnd::SetCursorOff()
 {
+	// The existing Windows symbol is an instance method, but the body does not access this.
 	CursorOn = false;
 }
 
-// BW1W120 0053c640
+// BW1W120 0053c640 BW1M100 105c4040 void Plasma::Init(void)
 void Plasma::Init()
 {
 	PinTexture = LH3DTexture::Create("data\\textures\\pin.raw", 0x41, 0, NULL);
@@ -170,7 +170,7 @@ void Plasma::Init()
 	}
 }
 
-// BW1W120 0053c840
+// BW1W120 0053c840 BW1M100 105c3d50 void Plasma::Render(int)
 void Plasma::Render(int animate)
 {
 	float step = (int)LH3DTech::g_delta_time * 0.0000001f;
@@ -205,6 +205,7 @@ void Plasma::Render(int animate)
 					phase.x += step * velocity.x;
 					phase.y += step * velocity.y;
 					phase.z += step * velocity.z;
+					// One-step wrap to [-pi, pi]. TODO: Recover the original free-function name.
 					phase.x = fn_007FAAF0(phase.x);
 					phase.y = fn_007FAAF0(phase.y);
 					phase.z = fn_007FAAF0(phase.z);
@@ -218,13 +219,13 @@ void Plasma::Render(int animate)
 	}
 }
 
-// BW1W120 0053ce70
+// BW1W120 0053ce70 BW1M100 105c3cf0 void FrontEnd::JustDoNewProfileBox(void)
 void FrontEnd::JustDoNewProfileBox()
 {
 	JustDoABox(NewProfileDialog);
 }
 
-// BW1W120 0053ce80
+// BW1W120 0053ce80 BW1M100 105c3a30 void NewProfileBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void NewProfileBox::Init(uint32_t width, uint32_t height,
                          void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -247,14 +248,14 @@ void NewProfileBox::Init(uint32_t width, uint32_t height,
 	FrontEnd::ActiveNewProfileDialog->Completed = false;
 }
 
-// BW1W120 0053d150
+// BW1W120 0053d150 BW1M100 105c39d0 void NewProfileBox::Destroy(void)
 void NewProfileBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::ActiveNewProfileDialog = NULL;
 }
 
-// BW1W120 0053d160
+// BW1W120 0053d160 BW1M100 105c3890 void NewProfileBox::InitControls(void)
 void NewProfileBox::InitControls()
 {
 	setup_box->SetFocusControl(NameEdit);
@@ -269,7 +270,7 @@ void NewProfileBox::InitControls()
 	FrontEnd::ActiveNewProfileDialog->Completed = false;
 }
 
-// BW1W120 0053d4c0
+// BW1W120 0053d4c0 BW1M100 105c34f0 void LoadingBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void LoadingBox::Init(uint32_t width, uint32_t height,
                       void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -277,17 +278,17 @@ void LoadingBox::Init(uint32_t width, uint32_t height,
 	FrontEnd::ActiveLoadingDialog = this;
 }
 
-// BW1W120 0053d4f0
+// BW1W120 0053d4f0 BW1M100 105c3490 void LoadingBox::Destroy(void)
 void LoadingBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::ActiveLoadingDialog = NULL;
 }
 
-// BW1W120 0053d500: the original body is a single RET.
+// BW1W120 0053d500 BW1M100 105c3450 void LoadingBox::InitControls(void)
 void LoadingBox::InitControls() {}
 
-// BW1W120 0053d520
+// BW1W120 0053d520 BW1M100 105c3250 void EditingDebugBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void EditingDebugBox::Init(uint32_t width, uint32_t height,
                            void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -307,14 +308,14 @@ void EditingDebugBox::Init(uint32_t width, uint32_t height,
 	wcscpy(Prompt, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a84));
 }
 
-// BW1W120 0053d6f0
+// BW1W120 0053d6f0 BW1M100 105c31f0 void EditingDebugBox::Destroy(void)
 void EditingDebugBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::ActiveEditingDebugDialog = NULL;
 }
 
-// BW1W120 0053d700
+// BW1W120 0053d700 BW1M100 105c3130 void EditingDebugBox::InitControls(void)
 void EditingDebugBox::InitControls()
 {
 	wcsncpy(Edit->label, InitialText, 0xff);
@@ -324,7 +325,7 @@ void EditingDebugBox::InitControls()
 	wcscpy(PromptText->label, Prompt);
 }
 
-// BW1W120 0053d7d0
+// BW1W120 0053d7d0 BW1M100 105c2d30 void RegisterBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void RegisterBox::Init(uint32_t width, uint32_t height,
                        void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -348,14 +349,14 @@ void RegisterBox::Init(uint32_t width, uint32_t height,
 	Completed = false;
 }
 
-// BW1W120 0053db00
+// BW1W120 0053db00 BW1M100 105c2cd0 void RegisterBox::Destroy(void)
 void RegisterBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::ActiveRegisterDialog = NULL;
 }
 
-// BW1W120 0053db10
+// BW1W120 0053db10 BW1M100 105c2bd0 void RegisterBox::InitControls(void)
 void RegisterBox::InitControls()
 {
 	setup_box->SetFocusControl(NameEdit);
@@ -370,7 +371,7 @@ void RegisterBox::InitControls()
 	Completed = false;
 }
 
-// BW1W120 0053e210
+// BW1W120 0053e210 BW1M100 105c2500 void ProfileEditor::Destroy(void)
 void ProfileEditor::Destroy()
 {
 	DialogBoxBase::Destroy();
@@ -380,7 +381,7 @@ void ProfileEditor::Destroy()
 // TODO: ProfileEditor/LoginBox initialization and callbacks depend on registry,
 // IME selection, and the remaining frontend state globals.
 
-// BW1W120 0053f910
+// BW1W120 0053f910 BW1M100 105c0610 void MainMenu::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void MainMenu::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
 	DialogBoxBase::Init(width, height, callback);
@@ -402,25 +403,26 @@ void MainMenu::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(i
 		PlayerProfile::GetCurrentProfile(selectedProfile);
 		PlayerProfile::GetProfileByName(selectedProfile, PlayerProfile::Profile);
 	}
+	// The tab implementation remains extracted while its state is recovered.
 	AddMainMenuTabs(0);
 }
 
-// BW1W120 005427e0
+// BW1W120 005427e0 BW1M100 105bda80 void TattooEditor::Destroy(void)
 void TattooEditor::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::ActiveTattooEditor = NULL;
 }
 
-// BW1W120 00544040
-// TODO: CDBox's track-query controls and callback need the Redbook helper signatures.
+// BW1W120 00544040 BW1M100 105bb910 void CDBox::Destroy(void)
 void CDBox::Destroy()
 {
+	// TODO: CDBox's track-query controls and callback need the Redbook helper signatures.
 	DialogBoxBase::Destroy();
 	FrontEnd::ActiveCDDialog = NULL;
 }
 
-// BW1W120 00544440
+// BW1W120 00544440 BW1M100 105bb270 void SkipBox::InitControls(void)
 void SkipBox::InitControls()
 {
 	if (SelectedOption < 1)
@@ -437,14 +439,14 @@ void SkipBox::InitControls()
 	}
 }
 
-// BW1W120 00544430
+// BW1W120 00544430 BW1M100 105bb330 void SkipBox::Destroy(void)
 void SkipBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::ActiveSkipDialog = NULL;
 }
 
-// BW1W120 005445b0
+// BW1W120 005445b0 BW1M100 105bae70 void StartGameBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void StartGameBox::Init(uint32_t width, uint32_t height,
                         void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -461,20 +463,20 @@ void StartGameBox::Init(uint32_t width, uint32_t height,
 		new ("C:\\dev\\MP\\Black\\frontend.cpp", 0xdd3) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
 }
 
-// BW1W120 00544730
+// BW1W120 00544730 BW1M100 105bae10 void StartGameBox::Destroy(void)
 void StartGameBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::ActiveStartGameDialog = NULL;
 }
 
-// BW1W120 00544740
+// BW1W120 00544740 BW1M100 105bad90 void StartGameBox::InitControls(void)
 void StartGameBox::InitControls()
 {
 	wcscpy(BigButton->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd7a));
 }
 
-// BW1W120 00544820
+// BW1W120 00544820 BW1M100 105baab0 void SkirmishGameBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void SkirmishGameBox::Init(uint32_t width, uint32_t height,
                            void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -491,20 +493,20 @@ void SkirmishGameBox::Init(uint32_t width, uint32_t height,
 	MapList->DrawHighlightBox = true;
 }
 
-// BW1W120 00544b90
+// BW1W120 00544b90 BW1M100 105ba740 void SkirmishGameBox::Destroy(void)
 void SkirmishGameBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::ActiveSkirmishDialog = NULL;
 }
 
-// BW1W120 00544f80
+// BW1W120 00544f80 BW1M100 105ba050 void FrontEnd::JustDoSkirmishGameBox(void)
 void FrontEnd::JustDoSkirmishGameBox()
 {
 	JustDoABox(SkirmishDialog);
 }
 
-// BW1W120 00545230
+// BW1W120 00545230 BW1M100 105b9ac0 void HistoryBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void HistoryBox::Init(uint32_t width, uint32_t height,
                       void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -521,23 +523,23 @@ void HistoryBox::Init(uint32_t width, uint32_t height,
 	CloseButton->text_size = GetMidTextSize();
 }
 
-// BW1W120 005453b0
+// BW1W120 005453b0 BW1M100 105b9a60 void HistoryBox::Destroy(void)
 void HistoryBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::ActiveHistoryDialog = NULL;
 }
 
-// BW1W120 005453c0: the original body is a single RET.
+// BW1W120 005453c0 BW1M100 105b9a20 void HistoryBox::InitControls(void)
 void HistoryBox::InitControls() {}
 
-// BW1W120 00545460
+// BW1W120 00545460 BW1M100 105b98b0 bool HistoryBox::WantsKeyControl(void)
 bool HistoryBox::WantsKeyControl()
 {
 	return false;
 }
 
-// BW1W120 00545470
+// BW1W120 00545470 BW1M100 105b97c0 bool HistoryBox::WantsMouseControl(void)
 bool HistoryBox::WantsMouseControl()
 {
 	if (!IsVisible())
@@ -554,7 +556,7 @@ bool HistoryBox::WantsMouseControl()
 	return SetupThing::MouseCaptured != 0;
 }
 
-// BW1W120 005454f0
+// BW1W120 005454f0 BW1M100 105b9780 bool HistoryBox::CanESCOut(void)
 bool HistoryBox::CanESCOut()
 {
 	return false;

@@ -22,12 +22,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 0053d7d0 BW1M100 105c2d30 RegisterBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 0053d7d0 BW1M100 105c2d30 void RegisterBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 0053db00 BW1M100 105c2cd0 RegisterBox::Destroy(void)
+	// BW1W120 0053db00 BW1M100 105c2cd0 void RegisterBox::Destroy(void)
 	virtual void Destroy();
-	// BW1W120 0053db10 BW1M100 105c2bd0 RegisterBox::InitControls(void)
+	// BW1W120 0053db10 BW1M100 105c2bd0 void RegisterBox::InitControls(void)
 	virtual void InitControls();
 };
 
