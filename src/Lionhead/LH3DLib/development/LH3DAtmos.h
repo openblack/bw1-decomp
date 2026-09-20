@@ -18,15 +18,19 @@ public:
 	static LH3DMaterial* AdditiveMaterial; // 00edc364, render mode 0xd
 	static LH3DMaterial* AtmosMaterial;    // 00edc368, render mode 6
 
-	// BW1W120 00834f80 WeatherInfo LH3DAtmos::GetWeather(LHPoint const &, int)
+	// BW1W120 00834f80 BW1M100 10023130 LH3DAtmos::GetWeather(const LHPoint&, int)
 	static WeatherInfo GetWeather(const LHPoint& point, int recalc);
-	// BW1W120 00835180 WeatherInfo LH3DAtmos::GetWeatherSmooth(LHPoint const &, int)
+	// BW1W120 00835180 BW1M100 10012600 LH3DAtmos::GetWeatherSmooth(const LHPoint&, int)
 	static WeatherInfo GetWeatherSmooth(const LHPoint& point, int recalc);
 
-	static void Update3D(float time); // 008357a0
-	static void DrawWindField();      // 008367a0
-	static void Render3D();           // 00836250
-	static void Render2D();           // 008366a0
+	// BW1W120 008357a0 BW1M100 1000ca40 LH3DAtmos::Update3D(float)
+	static void Update3D(float time);
+	// BW1W120 008367a0 BW1M100 100d5ad0 LH3DAtmos::DrawWindField(void)
+	static void DrawWindField();
+	// BW1W120 00836250 BW1M100 100232d0 LH3DAtmos::Render3D(void)
+	static void Render3D();
+	// BW1W120 008366a0 BW1M100 10009dd0 LH3DAtmos::Render2D(void)
+	static void Render2D();
 	// BW1W120 00edc348. Original Mac symbol: ambient__9LH3DAtmos.
 	static WeatherInfo ambient;
 	// BW1W120 inlined BW1M100 1008ed70 LH3DAtmos::GetWind(const WeatherInfo&)
@@ -38,7 +42,7 @@ public:
 		wind.z = (float)weather.WindZ * 0.125f;
 		return wind;
 	}
-	// BW1W120 008356e0 BW1M100 10078dbc LH3DAtmos::UpdateGame(float, float)
+	// BW1W120 008356e0 BW1M100 10036b20 LH3DAtmos::UpdateGame(float, float)
 	static void UpdateGame(float visual_time, float delta_time);
 };
 

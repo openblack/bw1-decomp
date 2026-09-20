@@ -20,7 +20,7 @@ struct Zoomer
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 1056a120 Zoomer::Zoomer()
+	// BW1W120 inlined BW1M100 1056a120 Zoomer::Zoomer(void)
 	Zoomer() {}
 
 	// Non-virtual methods
@@ -33,7 +33,7 @@ struct Zoomer
 	float GetDestination();
 	// BW1W120 00407d60 BW1M100 1004ee60 Zoomer::SetDestinationWithSpeedAndTime(float, float, float)
 	void SetDestinationWithSpeedAndTime(float destination, float speed, float time);
-	// BW1W120 00441ac0 BW1M100 1035b310 void Zoomer::SetPosition(float)
+	// BW1W120 00441ac0 BW1M100 1035b310 Zoomer::SetPosition(float)
 	void SetPosition(float position)
 	{
 		destination = position;
@@ -53,8 +53,6 @@ struct Zoomer
 	void Update(float dt);
 };
 
-static_assert(sizeof(Zoomer) == 0x30, "Zoomer size is incorrect");
-
 struct Zoomer3d
 {
 	Zoomer x; /* 0x0 */
@@ -73,7 +71,7 @@ struct Zoomer3d
 	void SetDestinationWithSpeedAndTime(const LHPoint* destination, float speed, float time);
 	// BW1W120 0044e760 BW1M100 inlined Zoomer3d::SetDestinationWithTime(LHPoint const &, float)
 	void SetDestinationWithTime(const LHPoint* destination, float time);
-	// BW1W120 inlined BW1M100 inlined Zoomer3d::SetPosition(LHPoint const &)
+	// BW1W120 inlined BW1M100 10198470 Zoomer3d::SetPosition(const LHPoint&)
 	void SetPosition(const LHPoint* destination);
 };
 

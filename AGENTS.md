@@ -280,17 +280,19 @@ Maps each source file to its section address ranges, telling dtk how to split th
 
 ### Comments & annotations in the code
 
-Function declaration comments must contain only version/address pairs followed by the
-demangled C++ signature, including the return type (except for constructors/destructors)
-and any trailing qualifiers:
+Every function in a header must have a comment immediately above it in this exact form:
 
 ```cpp
-// BW1W120 00512340 BW1M100 10234560 void Foo::Bar(int) const
+// BW1W120 <w> BW1M100 <m> <sig>
 ```
 
-- Use eight-digit hexadecimal addresses without `0x`; omit a version when its address is unknown. Retain `inlined` only where inlining is established.
+- Search for both the Windows and Mac entries. `<w>` and `<m>` must be lowercase, zero-padded eight-digit hexadecimal addresses (`08x`), without `0x`.
+- Use `inlined` only when inlining is proved, and `purecall` when the entry is proved to be a pure-call slot. Absence from a symbol search does not prove inlining.
+- `<sig>` must be the precise, verbatim demangling of the function's **BW1M100** mangled name, preserving parameter types, overloads and qualifiers. Do not substitute a Windows-derived signature or add return types that the Mac mangled name does not encode. If the Mac function was inlined, its signature may be reconstructed from corroborating evidence.
+- If a search finds no Mac identity/address, omit the entire `BW1M100 <m>` pair rather than guessing. Retain an explicit-unknown notation only where an established, evidenced convention already exists. Keep unresolved or provisional identities documented in the investigation record.
 - Do not add commentary, ABI explanations, mangled-name notes, or TODOs to the declaration comment or append explanatory comment lines to it. Keep implementation notes with the implementation and detailed evidence in the disassembly investigation records.
-- Use the function's own address, not an import-table entry or vtable-slot offset. A pure virtual declaration with no implementation needs no address comment; do not attribute the shared `__purecall` handler's address to it.
+- Use the function's own address, not an import-table entry or vtable-slot offset. Pure virtual declarations also need comments: use `purecall` for the proven pure-call entry, never the shared runtime handler's numeric address.
+- Avoid redundant `static_assert(sizeof(...))` and `static_assert(offsetof(...))` checks added merely to restate recovered class layouts. Keep layout evidence in the investigation records; add such assertions only when a specific compiler/layout invariant genuinely needs enforcement.
 
 Other code comments may use these annotations:
 

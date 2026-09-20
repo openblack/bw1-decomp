@@ -78,9 +78,9 @@ public:
 
 	// BW1W120 006eb100 BW1M100 104de810 GScript::Create(void)
 	static GScript* Create();
-	// BW1W120 006ec780 void GScript::StopHelpScripts(void)
+	// BW1W120 006ec780 BW1M100 104d61c0 GScript::StopHelpScripts(void)
 	static void StopHelpScripts();
-	// BW1W120 0070bd60 GameThing * GScript::CastSpellAtPos(MapCoords const &, MAGIC_TYPE, MapCoords const &, GameThing *, int, float, float, float, LHPoint const &)
+	// BW1W120 0070bd60 BW1M100 104ff970 GScript::CastSpellAtPos(const MapCoords&, MAGIC_TYPE, const MapCoords&, GameThing*, int, float, float, float, const LHPoint&)
 	static GameThing* CastSpellAtPos(const MapCoords& position, MAGIC_TYPE type, const MapCoords& source,
 	                                 GameThing* owner, int param_5, float param_6, float param_7, float param_8,
 	                                 const LHPoint& point);

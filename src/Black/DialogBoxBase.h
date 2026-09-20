@@ -25,7 +25,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 00513400 BW1M100 102b24c0 DialogBoxBase::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00513400 BW1M100 102b24c0 DialogBoxBase::Init(unsigned long, unsigned long, void (*)(int, SetupBox*, SetupControl*, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 00513590 BW1M100 102b23a0 DialogBoxBase::Destroy(void)
@@ -42,6 +42,7 @@ public:
 	virtual bool WantsMouseControl();
 	// BW1W120 00512810 BW1M100 103c4090 DialogBoxBase::CanESCOut(void)
 	virtual bool CanESCOut();
+	// BW1W120 purecall DialogBoxBase::InitControls(void)
 	virtual void InitControls() = 0;
 
 	// Static methods
@@ -50,18 +51,15 @@ public:
 	static void HideAll();
 
 	// Non-virtual methods
-	// BW1W120 00513770 unsigned int DialogBoxBase::IsVisible(void)
+	// BW1W120 00513770 BW1M100 102b1f80 DialogBoxBase::IsVisible(void)
 	bool32_t IsVisible();
 
 	// Constructors
 
 	// BW1W120 005133a0 BW1M100 102b2750 DialogBoxBase::DialogBoxBase(void)
 	DialogBoxBase();
-	// BW1W120 005133c0 DialogBoxBase::~DialogBoxBase(void)
+	// BW1W120 005133c0 BW1M100 102b2680 DialogBoxBase::~DialogBoxBase(void)
 	~DialogBoxBase();
 };
-
-static_assert(sizeof(DialogBoxBase) == 0x10, "DialogBoxBase size is incorrect");
-static_assert(offsetof(DialogBoxBase, setup_box) == 0x4, "DialogBoxBase setup box offset is incorrect");
 
 #endif /* BW1_DECOMP_DIALOG_BOX_BASE_INCLUDED_H */
