@@ -1,12 +1,14 @@
 #include "FrontEndSetupGame.h"
 
 #include <math.h>
+#include <stdlib.h>
 #include <wchar.h>
 #include <Lionhead/LH3DLib/development/LH3DMaterial.h>
+#include <Lionhead/LH3DLib/development/LH3DMath.h>
 #include <Lionhead/LH3DLib/development/LH3DTexture.h>
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
 
-#include "AlexMfc.h" /* For GetSmallTextSize and GetMidTextSize */
+#include <SetupThing/Setup.h>
 #include "FrontEnd.h"
 #include "FrontEndSetupMultiplayer.h"
 #include "HelpText.h"
@@ -23,19 +25,18 @@
 #include "SetupStaticText.h"
 #include "SpellSetupBox.h"
 
+#define THUMBNAIL_ANGLE_STEP 0.06981317f // Four degrees in radians.
+
 // FrontEnd scope and these singleton names are descriptive; the Init/Destroy pairs establish ownership.
 SetupLandscapeBox*     FrontEnd::LandscapeDialog;        // 00cd1664
 SpellSetupBox*         FrontEnd::SpellDialog;            // 00cd1668
 SetupOnlineLandscapes* FrontEnd::OnlineLandscapesDialog; // 00cd1670
 
-// BW1W120 00546d00 void OpenSpellSetup(SetupBox *, SetupControl *)
-static void OpenSpellSetup(SetupBox* box, SetupControl* control)
+static void OnSetupSpells(SetupBox* box, SetupControl* control)
 {
-	// Descriptive callback name; two cdecl arguments supplied by 0054744e.
 	FrontEnd::LandscapeDialog->SpellDialog->Show();
 }
 
-// BW1W120 00546280 BW1M100 105cd3c0 void SetupLandscapeBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void SetupLandscapeBox::Init(uint32_t width, uint32_t height,
                              void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -100,11 +101,10 @@ void SetupLandscapeBox::Init(uint32_t width, uint32_t height,
 	List0x4ac = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x7a) SetupList(15, 320, 350, 200, 60);
 	SpellButton = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x7c)
 		SetupButton(17, 320, 440, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x12c0), 0);
-	SpellButton->ContinueButtonCallback = (void*)OpenSpellSetup;
+	SpellButton->ContinueButtonCallback = (void*)OnSetupSpells;
 }
 
-// BW1W120 00546c30 unsigned short * get_type_string(float)
-char16_t* get_type_string(float value)
+wchar_t* get_type_string(float value)
 {
 	// Returns shared frontend scratch storage, not the database entry itself.
 	if (value < 0.3f)
@@ -121,7 +121,6 @@ char16_t* get_type_string(float value)
 	return FrontEnd::TypeString;
 }
 
-// BW1W120 00546d10 BW1M100 105cd360 void SetupLandscapeBox::Destroy(void)
 void SetupLandscapeBox::Destroy()
 {
 	DialogBoxBase::Destroy();
@@ -130,19 +129,9 @@ void SetupLandscapeBox::Destroy()
 
 static inline void SetSliderValue(SetupSlider* slider, float value)
 {
-	// Source-level helper for the repeated inlined slider clamp.
-	// Operand order preserves unordered comparisons.
-	if (value > 0.0f)
-	{
-		if (value >= 1.0f)
-			value = 1.0f;
-	}
-	else
-		value = 0.0f;
-	slider->value = value;
+	slider->value = value > 0.0f ? __min(value, 1.0f) : 0.0f;
 }
 
-// BW1W120 00546d20 BW1M100 105cce40 void SetupLandscapeBox::InitControls(void)
 void SetupLandscapeBox::InitControls()
 {
 	FrontEnd::LandscapeDialog->setup_box->DefaultTextSize = GetSmallTextSize();
@@ -181,14 +170,12 @@ void SetupLandscapeBox::InitControls()
 	List0x4a8->fn_00547150(Settings.field_0x424);
 }
 
-// BW1W120 005471c0 void SetupList::SetCol(int, unsigned int)
 void SetupList::SetCol(int index, uint32_t value)
 {
 	if (index >= 0 && index < NumItems)
 		color[index] = LH3DColor(value);
 }
 
-// BW1W120 00547970 BW1M100 105cc310 void SpellSetupBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void SpellSetupBox::Init(uint32_t width, uint32_t height,
                          void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -209,14 +196,12 @@ void SpellSetupBox::Init(uint32_t width, uint32_t height,
 	SpellList = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x153) SetupMultiList(2, 330, 140, 200, 200, 10);
 }
 
-// BW1W120 00547c30 BW1M100 105cc2b0 void SpellSetupBox::Destroy(void)
 void SpellSetupBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::SpellDialog = NULL;
 }
 
-// BW1W120 00547c40 BW1M100 105cc120 void SpellSetupBox::InitControls(void)
 void SpellSetupBox::InitControls()
 {
 	FrontEnd::SpellDialog->setup_box->DefaultTextSize = GetMidTextSize();
@@ -240,7 +225,6 @@ void SpellSetupBox::InitControls()
 	}
 }
 
-// BW1W120 00547ff0 BW1M100 105cbb10 void SetupOnlineLandscapes::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void SetupOnlineLandscapes::Init(uint32_t width, uint32_t height,
                                  void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -267,14 +251,12 @@ void SetupOnlineLandscapes::Init(uint32_t width, uint32_t height,
 	Download->text_size = 20;
 }
 
-// BW1W120 005482a0 BW1M100 105cbaa0 void SetupOnlineLandscapes::Destroy(void)
 void SetupOnlineLandscapes::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::OnlineLandscapesDialog = NULL;
 }
 
-// BW1W120 005482b0 BW1M100 105cba40 void SetupOnlineLandscapes::InitControls(void)
 void SetupOnlineLandscapes::InitControls()
 {
 	FrontEnd::OnlineLandscapesDialog->setup_box->DefaultTextSize = 16;
@@ -282,12 +264,9 @@ void SetupOnlineLandscapes::InitControls()
 	ThumbnailMaterial = NULL;
 }
 
-// BW1W120 00548860 ServerLandscapeMap::Point * FindThumbnailPoint(LHLinkedList<ServerLandscapeMap::Point *> const &, int, int)
-ServerLandscapeMap::Point* FindThumbnailPoint(const LHLinkedList<ServerLandscapeMap::Point*>& points, int x, int y)
+ServerLandscapeMap::Point* IsThereAPoint(LHLinkedList<ServerLandscapeMap::Point*>* points, int x, int y)
 {
-	// TODO: Recover the original name/signature. The list/point shapes agree with
-	// ServerLandscapeMap::Point and its existing LHLinkedList storage; no allocation is performed here.
-	for (LHLinkedNode<ServerLandscapeMap::Point*>* node = points.GetStart(); node != NULL; node = node->next.Get())
+	for (LHLinkedNode<ServerLandscapeMap::Point*>* node = points->GetStart(); node != NULL; node = node->next.Get())
 	{
 		if (node->payload->field_0x0 == (uint32_t)x && node->payload->field_0x4 == (uint32_t)y)
 			return node->payload;
@@ -295,28 +274,25 @@ ServerLandscapeMap::Point* FindThumbnailPoint(const LHLinkedList<ServerLandscape
 	return NULL;
 }
 
-// BW1W120 00548890 void DrawThumbnailPoint(unsigned short *, int, int, int, unsigned short)
 void DrawThumbnailPoint(uint16_t* pixels, int x, int y, int radius, uint16_t color)
 {
 	// Descriptive name. The original draws concentric rings into a 256-pixel stride.
 	// TODO: x87 keeps the angular recurrence in extended precision; verify its source type/codegen.
 	for (; radius != -1; --radius)
 	{
-		float angle = 6.2831855f;
+		float angle = TWO_PI;
 		do
 		{
 			int row = (int)(cos(angle) * radius + y + 0.5f);
 			int column = (int)(sin(angle) * radius + x + 0.5f);
 			pixels[row * 256 + column] = color;
-			angle -= 0.06981317f;
+			angle -= THUMBNAIL_ANGLE_STEP;
 		} while (angle > 0.0f);
 	}
 }
 
-// BW1W120 00548920 void SetupOnlineLandscapes::ReleaseThumbnail(void)
 void SetupOnlineLandscapes::ReleaseThumbnail()
 {
-	// Descriptive method name, ECX instance and no stack arguments.
 	if (Thumbnail != NULL)
 	{
 		Thumbnail->Release();
@@ -332,16 +308,8 @@ void SetupOnlineLandscapes::ReleaseThumbnail()
 	FrontEnd::OnlineLandscapesDialog->Download->Hide(true);
 }
 
-// BW1W120 00549910 BW1M100 105c9f10 void SetupOnlineLandscapes::Show(void)
 void SetupOnlineLandscapes::Show()
 {
 	FrontEnd::OnlineLandscapesDialog->Download->Hide(false);
 	DialogBoxBase::Show();
 }
-
-// TODO: 005471e0 landscape callback and 00547dc0 spell callback need the parent dialog refresh
-// flags, dialog close API and setupgamedata spell setters. Do not replace them with partial dispatchers.
-// TODO: 005482e0..0054990f also contains thumbnail loading, online-list scanning,
-// the download state machine and progress-text formatting. Download/texture
-// layouts and original names remain incomplete; retain extracted implementations pending recovery.
-// TODO: Recover the CRT sentinel/ctype initializers and shared data ownership before TU linking.

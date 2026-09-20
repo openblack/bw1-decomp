@@ -10,7 +10,7 @@
 
 #include "Lionhead/LH3DLib/development/LH3DText.h" /* For enum TEXTJUSTIFY */
 #include "SetupRect.h"                             /* For struct SetupRect */
-#include "AlexMfc.h"                               /* Text-size helper declarations */
+#include <SetupThing/Setup.h>                      /* Text-size helper declarations */
 
 enum BBSTYLE
 {
@@ -121,7 +121,37 @@ struct SetupThing
 	                       uint32_t horizontal_outline, LH3DColor color);
 };
 
-// BW1W120 00407a20 BW1M100 105133e0 GetBigTextSize(void)
-int GetBigTextSize();
+// BW1W120 004132c0 BW1M100 1035b610 SetupThing::DrawBox(int, int, int, int, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long)
+inline void SetupThing::DrawBox(int x_min, int y_min, int x_max, int y_max, unsigned long color_1,
+                                unsigned long color_2, unsigned long color_3, unsigned long color_4,
+                                unsigned long use_alpha, unsigned long adjust)
+{
+	if (x_max < x_min)
+	{
+		x_min ^= x_max;
+		x_max ^= x_min;
+		x_min ^= x_max;
+		color_1 ^= color_2;
+		color_2 ^= color_1;
+		color_1 ^= color_2;
+		color_3 ^= color_4;
+		color_4 ^= color_3;
+		color_3 ^= color_4;
+	}
+	if (y_max < y_min)
+	{
+		y_min ^= y_max;
+		y_max ^= y_min;
+		y_min ^= y_max;
+		color_1 ^= color_3;
+		color_3 ^= color_1;
+		color_1 ^= color_3;
+		color_2 ^= color_4;
+		color_4 ^= color_2;
+		color_2 ^= color_4;
+	}
+	DrawQuad(x_min, y_min, x_max, y_min, x_max, y_max, x_min, y_max, color_1, color_2, color_3, color_4, use_alpha,
+	         adjust);
+}
 
 #endif /* BW1_DECOMP_SETUP_THING_INCLUDED_H */

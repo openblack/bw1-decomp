@@ -4,11 +4,8 @@
 #include <assert.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <uchar.h>
+#include <wchar.h>
 
-// Original type name: ??0setupgamedata@@QAE@XZ at 00719750.
-// Member names are descriptive; the settings copy in both dialogs is exactly 0x42c bytes.
-// The opaque area is retained from the constructor's 0xcb-DWORD clear at +0xc8.
 struct setupgamedata
 {
 	char    Name[200];
@@ -37,6 +34,6 @@ struct setupgamedata
 };
 
 // BW1W120 00546c30 BW1M100 105cdca0 get_type_string(float)
-char16_t* get_type_string(float value);
+wchar_t* get_type_string(float value);
 
 #endif /* BW1_DECOMP_FRONT_END_SETUP_GAME_INCLUDED_H */

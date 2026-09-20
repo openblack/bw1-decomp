@@ -38,66 +38,61 @@ class SetupTabButton;
 
 struct FrontEnd
 {
-	// Descriptive names; pointers assigned by frontend dialog/tab creation.
-	// BW1W120 00cd0b1c
+	// BW1W120 00cd0b1c BW1M100 10bda878
 	static SkirmishGameBox* SkirmishDialog;
 	// BW1W120 00cd0698
 	static SetupTabButton* MultiplayerTab;
-	// These are independent globals, not an instance layout. Names and subsystem scope are descriptive.
-	// BW1W120 00cd0620
+	// BW1W120 00cd0620 BW1M100 10bda738
 	static bool CursorOn;
 	// BW1W120 00cd065c
 	static MainMenu* MainMenuDialog;
-	// BW1W120 00cd06e8. TODO: Original name unknown; created by JustDoABox.
+	// BW1W120 00cd06e8
 	static Plasma* Dat_00CD06E8;
-	// BW1W120 00cd0b03. Cleared by MainMenu's close callback.
+	// BW1W120 00cd0b03
 	static bool StartupMenuActive;
-	// BW1W120 00cd3a18. Original array extent is not established; extracted storage only.
+	// BW1W120 00cd3a18
 	static char16_t PreviousProfile[];
 
-	// Descriptive names recovered from Init/Destroy and their callers. Storage remains extracted.
-	// Owned dialogs and the active-dialog callback pointers are distinct globals.
-	// BW1W120 00cd0658
+	// BW1W120 00cd0658 BW1M100 10bda724
 	static NewProfileBox* NewProfileDialog;
-	// BW1W120 00cd06f4
+	// BW1W120 00cd06f4 BW1M100 10bda8e0
 	static LH3DMaterial* PlayerSymbolsMaterial;
-	// BW1W120 00cd06f8; WCHAR2CHAR reserves one byte beyond the conversion limit.
+	// BW1W120 00cd06f8 BW1M100 10bda8e4
 	static char ConversionBuffer[0x400];
-	// BW1W120 00cd0b04
+	// BW1W120 00cd0b04 BW1M100 10bda8cd
 	static bool ProfileEditorActive;
-	// BW1W120 00cd0b24
+	// BW1W120 00cd0b24 BW1M100 10bda6f4
 	static NewProfileBox* ActiveNewProfileDialog;
-	// BW1W120 00cd0b28
+	// BW1W120 00cd0b28 BW1M100 10bda6f0
 	static LoadingBox* ActiveLoadingDialog;
-	// BW1W120 00cd0b2c
+	// BW1W120 00cd0b2c BW1M100 10bda6ec
 	static EditingDebugBox* ActiveEditingDebugDialog;
-	// BW1W120 00cd0b30
+	// BW1W120 00cd0b30 BW1M100 10bda6e8
 	static RegisterBox* ActiveRegisterDialog;
-	// BW1W120 00cd0b34
+	// BW1W120 00cd0b34 BW1M100 10bda6e4
 	static ProfileEditor* ActiveProfileEditor;
-	// BW1W120 00cd0b60
+	// BW1W120 00cd0b60 BW1M100 10bda6e0
 	static MainMenu* ActiveMainMenuDialog;
-	// BW1W120 00cd0b70
+	// BW1W120 00cd0b70 BW1M100 10bda6d4
 	static TattooEditor* ActiveTattooEditor;
-	// BW1W120 00cd0b7c
+	// BW1W120 00cd0b7c BW1M100 10bda6b8
 	static CDBox* ActiveCDDialog;
-	// BW1W120 00cd0b80
+	// BW1W120 00cd0b80 BW1M100 10bda6b4
 	static SkipBox* ActiveSkipDialog;
-	// BW1W120 00cd0b84
+	// BW1W120 00cd0b84 BW1M100 10bda6b0
 	static StartGameBox* ActiveStartGameDialog;
-	// BW1W120 00cd0b88
+	// BW1W120 00cd0b88 BW1M100 10bda6ac
 	static SkirmishGameBox* ActiveSkirmishDialog;
-	// BW1W120 00cd0b90
+	// BW1W120 00cd0b90 BW1M100 10bda6a8
 	static HistoryBox* ActiveHistoryDialog;
 
-	// Descriptive globals defined by FrontEndSetupGame.cpp.
-	// BW1W120 00cd1664
+	// BW1W120 00cd1664 BW1M100 10bdb1c0
 	static SetupLandscapeBox* LandscapeDialog;
-	// BW1W120 00cd1668
+	// BW1W120 00cd1668 BW1M100 10bdb1bc
 	static SpellSetupBox* SpellDialog;
-	// BW1W120 00cd1670
+	// BW1W120 00cd1670 BW1M100 10bdb1b4
 	static SetupOnlineLandscapes* OnlineLandscapesDialog;
-	// BW1W120 00cd125c. Shared scratch storage remains extracted; extent is unproven.
+	// BW1W120 00cd125c
 	static char16_t TypeString[];
 
 	// Static methods
@@ -115,8 +110,5 @@ struct FrontEnd
 	// BW1W120 00544f80 BW1M100 105ba050 FrontEnd::JustDoSkirmishGameBox(void)
 	static void JustDoSkirmishGameBox();
 };
-
-// BW1W120 0053b4a0 BW1M100 105c5e00 WCHAR2CHAR(wchar_t*)
-char* WCHAR2CHAR(char16_t* text);
 
 #endif /* BW1_DECOMP_FRONT_END_INCLUDED_H */

@@ -15,8 +15,6 @@ class SetupStaticText;
 class SpellSetupBox : public DialogBoxBase
 {
 public:
-	// Recovered prefix only; complete allocation size and constructor still need corroboration.
-	// These names describe the fields used by the recovered Init/InitControls bodies.
 	setupgamedata*   OriginalSettings; /* 0x10 */
 	setupgamedata    Settings;         /* 0x14 */
 	SetupEdit*       Help;             /* 0x440 */
