@@ -222,6 +222,8 @@ LH_FILE_RESULT LHOSFile::DirFindFirst(const char* pattern, LHDir* dir, uint32_t 
 			if (!FindNextFileA(dir->FindHandle, &dir->FindData))
 				return LH_FILE_RESULT_ERROR;
 			attr = dir->FindData.dwFileAttributes;
+			// TODO: target encodes this test as `test eax, ecx`; all source orders/types tried
+			// emit `test ecx, eax` (identical semantics, operand order only)
 		} while ((dir->SearchAttributes & attr) == 0);
 	}
 	ConvertDirInfo(dir);
@@ -267,11 +269,15 @@ void LHOSFile::ConvertDirInfo(LHDir* dir)
 	dir->size = dir->FindData.nFileSizeLow;
 	dir->attributes = attributes;
 
-	unsigned int creation_date =
-		CoFileTimeToDosDateTime(&dir->FindData.ftCreationTime, (LPWORD)&dos_date, (LPWORD)&dos_time);
+	unsigned int creation_date;
 	unsigned int CreationTime;
-	if (!creation_date)
+	BOOL         creation_converted =
+		CoFileTimeToDosDateTime(&dir->FindData.ftCreationTime, (LPWORD)&dos_date, (LPWORD)&dos_time);
+	if (!creation_converted)
 	{
+		// TODO: target stores both zeros from live registers (`mov [dos_date], eax` /
+		// `mov [dos_time], ecx`); every statement order/type form tried emits `..., ebx`
+		creation_date = 0;
 		CreationTime = 0;
 		dos_date = 0;
 		dos_time = 0;
@@ -290,11 +296,13 @@ void LHOSFile::ConvertDirInfo(LHDir* dir)
 	dir->CreationTime.minute = (CreationTime >> 5) & 0x3F;
 	dir->CreationTime.hour = (CreationTime >> 11) & 0x1F;
 
-	unsigned int write_date =
-		CoFileTimeToDosDateTime(&dir->FindData.ftLastWriteTime, (LPWORD)&dos_date, (LPWORD)&dos_time);
+	unsigned int write_date;
 	unsigned int WriteTime;
-	if (!write_date)
+	BOOL         write_converted =
+		CoFileTimeToDosDateTime(&dir->FindData.ftLastWriteTime, (LPWORD)&dos_date, (LPWORD)&dos_time);
+	if (!write_converted)
 	{
+		write_date = 0;
 		WriteTime = 0;
 	}
 	else
