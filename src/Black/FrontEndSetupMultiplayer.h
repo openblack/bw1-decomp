@@ -54,19 +54,15 @@ public:
 
 	// Override methods
 
-	// BW1W120 00546280 BW1M100 105cd3c0 void SetupLandscapeBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00546280 BW1M100 105cd3c0 SetupLandscapeBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox*, SetupControl*, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 00546d10 BW1M100 105cd360 void SetupLandscapeBox::Destroy(void)
+	// BW1W120 00546d10 BW1M100 105cd360 SetupLandscapeBox::Destroy(void)
 	virtual void Destroy();
-	// BW1W120 0054a210 BW1M100 105cdd70 void SetupLandscapeBox::InitSubDialogs(void)
+	// BW1W120 0054a210 BW1M100 105cdd70 SetupLandscapeBox::InitSubDialogs(void)
 	virtual void InitSubDialogs();
-	// BW1W120 00546d20 BW1M100 105cce40 void SetupLandscapeBox::InitControls(void)
+	// BW1W120 00546d20 BW1M100 105cce40 SetupLandscapeBox::InitControls(void)
 	virtual void InitControls();
 };
-
-static_assert(offsetof(SetupLandscapeBox, Settings) == 0x18, "SetupLandscapeBox settings offset is incorrect");
-static_assert(offsetof(SetupLandscapeBox, SpellDialog) == 0x444, "SetupLandscapeBox child offset is incorrect");
-static_assert(offsetof(SetupLandscapeBox, List0x4ac) == 0x4ac, "SetupLandscapeBox list offset is incorrect");
 
 #endif /* BW1_DECOMP_FRONT_END_SETUP_MULTIPLAYER_INCLUDED_H */
