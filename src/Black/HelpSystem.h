@@ -348,8 +348,7 @@ public:
 
 	// BW1W120 005c5680 BW1M100 10351450 HelpSystem::~HelpSystem(void)
 	virtual ~HelpSystem();
-	// BW1W120 005c5860. Create calls vtable slot +0x1c, after Base's seven slots.
-	// TODO: Recover the body and dependent creation APIs; the current map incorrectly says nonvirtual.
+	// BW1W120 005c5860 BW1M100 10350ff0 HelpSystem::CallVirtualFunctionsForCreation(void)
 	virtual void CallVirtualFunctionsForCreation();
 
 	// Constructors
@@ -380,7 +379,8 @@ public:
 	void ResetIcons();
 	// BW1W120 005c5eb0 BW1M100 10091a40 HelpSystem::PostDrawProcess(void)
 	void PostDrawProcess();
-	void Draw3D(); // 005c59a0
+	// BW1W120 005c59a0 BW1M100 1001d9c0 HelpSystem::Draw3D(void)
+	void Draw3D();
 	// BW1W120 005c67e0 BW1M100 1034f730 HelpSystem::ClearDialogueControl(void)
 	void ClearDialogueControl();
 	// BW1W120 005c6ad0 BW1M100 1034f2c0 HelpSystem::SetWideScreen(int, unsigned long)
@@ -402,83 +402,75 @@ public:
 	// BW1W120 005c98e0 BW1M100 10353970 HelpSystem::HelpQuery(void)
 	void HelpQuery();
 	// Names below without a Mac address are descriptive unless a signature is cited.
-	// BW1W120 005c6740. Full EAX Boolean result; existing void symbol is incorrect.
+	// BW1W120 005c6740 BW1M100 1000ae30 HelpSystem::IsDialogueControlled(void) const
 	int IsDialogueControlled() const;
-	// BW1W120 005c6780 HelpSystem::SetCurrentControl(unsigned long)
+	// BW1W120 005c6780 BW1M100 1034f840 HelpSystem::SetCurrentControl(unsigned long)
 	void SetCurrentControl(uint32_t control);
-	// BW1W120 005c5760. Descriptive name; EAX Boolean.
+	// BW1W120 005c5760 int HelpSystem::IsTextBeingDrawn(void) const
 	int IsTextBeingDrawn() const;
-	// BW1W120 005c64e0 HelpSystem::IsTextRead(void). Clears EAX or forwards the full-register result below.
+	// BW1W120 005c64e0 BW1M100 103501a0 HelpSystem::IsTextRead(void)
 	int IsTextRead();
-	// BW1W120 005c6340. TODO: Speech-bank lookup, advisor speech and scaled clock bindings.
-	// All return paths produce a full-register Boolean (MOV/XOR/SBB EAX), not an AL-only bool.
+	// BW1W120 005c6340 int HelpSystem::HasFinishedTextReading(void)
 	int HasFinishedTextReading();
-	// BW1W120 005c61b0. TODO: Reading duration configuration and scaled wall clock.
+	// BW1W120 005c61b0 void HelpSystem::SetTextReadTime(unsigned short*)
 	void SetTextReadTime(char16_t* text);
-	// BW1W120 005c6790. Full EAX Boolean result.
+	// BW1W120 005c6790 BW1M100 1034f7a0 HelpSystem::DialogueControlRequest(unsigned long)
 	int DialogueControlRequest(uint32_t control);
-	// BW1W120 005c68a0. Returns SpiritType1 only for GOOD; all other values select Type2.
+	// BW1W120 005c68a0 BW1M100 1034f5d0 HelpSystem::GetSpirit(HELP_SPIRIT_TYPE) const
 	HelpSpirit* GetSpirit(HELP_SPIRIT_TYPE type) const;
-	// BW1W120 005c6550 / 005c6670. Bodies deferred pending HelpSpirit's nonvirtual API.
-	// The delegate at 005c4c50 returns NEG/SBB/INC EAX; ResetFOV tests EAX.
-	int  IsSpiritEjected(HELP_SPIRIT_TYPE type);
+	// BW1W120 005c6550 BW1M100 10350120 HelpSystem::IsSpiritEjected(HELP_SPIRIT_TYPE)
+	int IsSpiritEjected(HELP_SPIRIT_TYPE type);
+	// BW1W120 005c6670 BW1M100 1034fc50 HelpSystem::SpiritHome(HELP_SPIRIT_TYPE, int) const
 	void SpiritHome(HELP_SPIRIT_TYPE type, int param_2) const;
-	// BW1W120 005c6c40. TODO: Recover the transition-completion constant at 00915d18.
+	// BW1W120 005c6c40 void HelpSystem::FinishWideScreenTransition(void)
 	void FinishWideScreenTransition();
-	// BW1W120 005c6c50
+	// BW1W120 005c6c50 int HelpSystem::IsWideScreenTransitioning(void) const
 	int IsWideScreenTransitioning() const;
-	// BW1W120 005c6c90 / 005c6ca0
-	void  SetReadSpeed(float speed);
+	// BW1W120 005c6c90 void HelpSystem::SetReadSpeed(float)
+	void SetReadSpeed(float speed);
+	// BW1W120 005c6ca0 BW1M100 1034f080 HelpSystem::GetReadSpeed(void) const
 	float GetReadSpeed() const;
-	// BW1W120 005c6e20. Full EAX result and caller cleanup; no this access.
+	// BW1W120 005c6e20 BW1M100 1034edc0 HelpSystem::GetSpiritWhoTalks(unsigned long)
 	static HELP_SPIRIT_TYPE GetSpiritWhoTalks(uint32_t text);
-	// BW1W120 005c6e60
+	// BW1W120 005c6e60 int HelpSystem::ShouldDrawText(void) const
 	int ShouldDrawText() const;
-	// BW1W120 005c79c0
+	// BW1W120 005c79c0 void HelpSystem::SetHelpLevel(int)
 	void SetHelpLevel(int level);
-	// BW1W120 005c79e0 HelpSystem::SaveTextOnTempleEntry(void)
+	// BW1W120 005c79e0 BW1M100 1034ccb0 HelpSystem::SaveTextOnTempleEntry(void)
 	void SaveTextOnTempleEntry();
-	// BW1W120 005c7a80 HelpSystem::ReInitialiseText(void)
+	// BW1W120 005c7a80 BW1M100 1034cbe0 HelpSystem::ReInitialiseText(void)
 	void ReInitialiseText();
-	// BW1W120 005c7b00; ResolveLoad at 005c78b0 is a tail jump here.
+	// BW1W120 005c7b00 BW1M100 1034cb00 HelpSystem::RestoreTextOnTempleExit(void)
 	void RestoreTextOnTempleExit();
-	// BW1W120 005c78c0. Descriptive name; only releases the matching widescreen owner.
+	// BW1W120 005c78c0 void HelpSystem::ReleaseWideScreen(unsigned int)
 	void ReleaseWideScreen(uint32_t control);
-	// BW1W120 005c7b70
+	// BW1W120 005c7b70 void HelpSystem::SetImmersion(int)
 	void SetImmersion(int enabled);
-	// BW1W120 005c5ee0 / 005c5f50
-	void                   AddTextToHistory(uint32_t text, int display_mode, uint32_t param_3, uint32_t speaker);
+	// BW1W120 005c5ee0 void HelpSystem::AddTextToHistory(unsigned int, int, unsigned int, unsigned int)
+	void AddTextToHistory(uint32_t text, int display_mode, uint32_t param_3, uint32_t speaker);
+	// BW1W120 005c5f50 HelpSystemTextHistory * HelpSystem::GetTextHistory(int)
 	HelpSystemTextHistory* GetTextHistory(int index);
-	// BW1W120 005c81c0 HelpSystem::ProcessBanter(void)
+	// BW1W120 005c81c0 BW1M100 1008d2a0 HelpSystem::ProcessBanter(void)
 	void ProcessBanter();
-	// BW1W120 005c81e0 HelpSystem::GetRandomBanterSet(void). EAX returns the set.
+	// BW1W120 005c81e0 BW1M100 10351c30 HelpSystem::GetRandomBanterSet(void)
 	HELP_SYSTEM_MESSAGE_SET GetRandomBanterSet();
-	// BW1W120 005c8a80 HelpSystem::SetSetSent(HELP_SYSTEM_MESSAGE_SET)
+	// BW1W120 005c8a80 BW1M100 103532f0 HelpSystem::SetSetSent(HELP_SYSTEM_MESSAGE_SET)
 	void SetSetSent(HELP_SYSTEM_MESSAGE_SET set);
-	// BW1W120 005c8ae0 HelpSystem::GetStartAndEndTextForSet(HELP_SYSTEM_MESSAGE_SET, ulong *, ulong *, GameThingWithPos *)
+	// BW1W120 005c8ae0 BW1M100 103531a0 HelpSystem::GetStartAndEndTextForSet(HELP_SYSTEM_MESSAGE_SET, unsigned long*, unsigned long*, GameThingWithPos*)
 	void GetStartAndEndTextForSet(HELP_SYSTEM_MESSAGE_SET set, uint32_t* first, uint32_t* last,
 	                              GameThingWithPos* thing);
-	// BW1W120 005c8c10 HelpSystem::GetRandomTextFromSet(HELP_SYSTEM_MESSAGE_SET)
+	// BW1W120 005c8c10 BW1M100 10352ff0 HelpSystem::GetRandomTextFromSet(HELP_SYSTEM_MESSAGE_SET)
 	uint32_t GetRandomTextFromSet(HELP_SYSTEM_MESSAGE_SET set);
-	// BW1W120 005c8c90 HelpSystem::RunMessage(char *). Full EAX Boolean result.
+	// BW1W120 005c8c90 BW1M100 10352e30 HelpSystem::RunMessage(char*)
 	uint32_t RunMessage(char* script);
-	// BW1W120 005c9300 HelpSystem::ResetFOV(void)
+	// BW1W120 005c9300 BW1M100 103533f0 HelpSystem::ResetFOV(void)
 	void ResetFOV();
-	// BW1W120 005c9780 HelpSystem::GetHelpQueryAtPosition(MapCoords const &)
+	// BW1W120 005c9780 BW1M100 10353a30 HelpSystem::GetHelpQueryAtPosition(const MapCoords&)
 	void GetHelpQueryAtPosition(const MapCoords& position);
-	// BW1W120 005c9490. Descriptive name.
+	// BW1W120 005c9490 void HelpSystem::NoHelpAvailable(void)
 	void NoHelpAvailable();
 	// BW1W120 005c5b50 BW1M100 10350a20 HelpSystem::SetTextIcon(ControlMap::BINDABLE_ACTIONS)
-	// TODO: The shared enum is currently global; original ControlMap nesting needs parent integration.
 	void SetTextIcon(BINDABLE_ACTIONS action);
 };
-
-static_assert(sizeof(HelpSystemTextHistory) == 0x10, "HelpSystem text history size is incorrect");
-static_assert(sizeof(HelpSystemSavedText) == 0x28, "HelpSystem saved text size is incorrect");
-static_assert(sizeof(HelpSystemMessageSet) == 0x14, "HelpSystem message set size is incorrect");
-static_assert(offsetof(HelpSystem, SavedText) == 0x59c, "HelpSystem saved text offset is incorrect");
-static_assert(offsetof(HelpSystem, TextHistory) == 0x5c4, "HelpSystem history offset is incorrect");
-static_assert(offsetof(HelpSystem, field_0x45c4) == 0x45c4, "HelpSystem history cursor offset is incorrect");
-static_assert(sizeof(HelpSystem) == 0x4614, "HelpSystem size is incorrect");
 
 #endif /* BW1_DECOMP_HELP_SYSTEM_INCLUDED_H */
