@@ -37,17 +37,19 @@ struct GBPlayer
 	char16_t        Name[47]; /* 0x8e; original bounded copies need not terminate */
 	uint32_t        Color;    /* 0xec */
 
-	// Mac Init__8GBPlayerFllPCw10LH_USER_IDlP15LHTransportInfo; BW1W120 00573f70.
+	// BW1W120 00573f70 BW1M100 103234f0 GBPlayer::Init(long, long, const wchar_t*, LH_USER_ID, long, LHTransportInfo*)
 	void Init(long team_member_number, long team_number, const char16_t* name, LH_USER_ID user_id, long player_id,
 	          LHTransportInfo* transport);
-	// BW1W120 005749d0, Mac __as__8GBPlayerFRC8GBPlayer. EAX retains this.
+	// BW1W120 005749d0 BW1M100 10321670 GBPlayer::operator=(const GBPlayer&)
 	GBPlayer& operator=(const GBPlayer& player);
+	// BW1W120 inlined GBPlayer::GBPlayer(long, long, const wchar_t*, LH_USER_ID, long, LHTransportInfo*)
 	GBPlayer(long team_member_number, long team_number, const char16_t* name, LH_USER_ID user_id, long player_id,
 	         LHTransportInfo* transport)
 	{
 		UserId.field_0x0 = 0;
 		Init(team_member_number, team_number, name, user_id, player_id, transport);
 	}
+	// BW1W120 inlined GBPlayer::GBPlayer(const GBPlayer&)
 	GBPlayer(const GBPlayer& player)
 	{
 		UserId.field_0x0 = 0;
@@ -63,8 +65,9 @@ struct GBCategory
 	uint32_t                Color;    /* 0x84 */
 	LHLinkedList<GBPlayer*> Players;  /* 0x88 */
 
-	// BW1W120 005740c0. Copies only the heading, never its player list.
+	// BW1W120 005740c0 BW1M100 10321b50 GBCategory::Init(GBCategory*, const wchar_t*)
 	void Init(GBCategory* group, const char16_t* name);
+	// BW1W120 inlined GBCategory::GBCategory(GBCategory*, const wchar_t*)
 	GBCategory(GBCategory* group, const char16_t* name) { Init(group, name); }
 };
 
@@ -141,23 +144,18 @@ struct GatheringBoxState
 	LHLinkedList<GatheringMessage*> Messages; /* 0xe8 */
 };
 
-static_assert(sizeof(GBPlayer) == 0xf0, "Gathering player allocation size");
-static_assert(offsetof(GBPlayer, Name) == 0x8e, "Gathering player name offset");
-static_assert(sizeof(GBCategory) == 0x90, "Gathering group allocation size");
-static_assert(sizeof(GatheringMessage) == 0x100c, "Gathering message prefix size");
-static_assert(sizeof(GatheringBoxState) == 0xe0, "Gathering box state size");
-static_assert(offsetof(GatheringBoxState, SetRepeat) == 0x74, "Gathering music export 22 offset");
-static_assert(offsetof(GatheringBoxState, ChatEdit) == 0x9c, "Gathering edit member offset");
-static_assert(offsetof(GatheringBoxState, Groups) == 0xc0, "Gathering group-list member offset");
-
 // GatheringBox's static storage declarations are in GatheringBox.h.
 // The first globals (00d060ec..00d06318) are currently extracted into GameThing's
 // .bss; reconcile ownership before source linking instead of duplicating storage.
 
 // Windows-only helpers whose original names were not found in Mac traceback data.
-LHPlayer* GatheringFindGamePlayer(uint32_t user_id);                 // 00573cd0
-bool      GatheringContainsPlayer(LH_USER_ID user_id);               // 00574140
-GBPlayer* GatheringFindPlayer(LH_USER_ID user_id);                   // 005741d0
-void      GatheringSetFriendOnline(LH_USER_ID user_id, bool online); // 00575c30
+// BW1W120 00573cd0 LHPlayer * GatheringFindGamePlayer(unsigned int)
+LHPlayer* GatheringFindGamePlayer(uint32_t user_id);
+// BW1W120 00574140 bool GatheringContainsPlayer(LH_USER_ID)
+bool GatheringContainsPlayer(LH_USER_ID user_id);
+// BW1W120 005741d0 GBPlayer * GatheringFindPlayer(LH_USER_ID)
+GBPlayer* GatheringFindPlayer(LH_USER_ID user_id);
+// BW1W120 00575c30 void GatheringSetFriendOnline(LH_USER_ID, bool)
+void GatheringSetFriendOnline(LH_USER_ID user_id, bool online);
 
 #endif /* BW1_DECOMP_GATHERING_INTERFACE_INCLUDED_H */

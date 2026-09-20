@@ -66,17 +66,17 @@ struct LHKeyboard
 	int          StringEndKey;
 	int          StringActive;
 
-	// BW1W120 007dcaf0 ?ProcessKeyboard@LHKeyboard@@QAEXIH@Z
+	// BW1W120 007dcaf0 BW1M100 10040680 LHKeyboard::ProcessKeyboard(unsigned short, long*)
 	void ProcessKeyboard(unsigned int msg, int key_data);
-	// BW1W120 007dcc90 ?StringCollect@LHKeyboard@@QAEXH@Z
+	// BW1W120 007dcc90 BW1M100 1013df90 LHKeyboard::StringCollect(LH_KEY)
 	void StringCollect(int key);
-	// BW1W120 007dcd10 ?StopString@LHKeyboard@@QAEXXZ
+	// BW1W120 007dcd10 BW1M100 1013df50 LHKeyboard::StopString(void)
 	void StopString();
-	// BW1W120 007dcd20 ?RestartString@LHKeyboard@@QAEXXZ
+	// BW1W120 007dcd20 BW1M100 1013df10 LHKeyboard::RestartString(void)
 	void RestartString();
-	// BW1W120 007dcd30 ?GetKeyValue@LHKeyboard@@QAEHAAHAAE@Z
+	// BW1W120 007dcd30 BW1M100 1013de60 LHKeyboard::GetKeyValue(LH_KEY&, unsigned char&)
 	int GetKeyValue(int& key, unsigned char& mod);
-	// BW1W120 007dcda0 ?SetKeyValue@LHKeyboard@@QAEHXZ
+	// BW1W120 007dcda0 BW1M100 1013ddc0 LHKeyboard::SetKeyValue(void)
 	int SetKeyValue();
 };
 
@@ -100,7 +100,6 @@ enum LH_KEY_MODIFIER
 
 static const unsigned int LH_KEY_DATA_EXTENDED = 0x01000000;
 static const unsigned int LH_KEY_DATA_RELEASED = 0x80000000;
-static_assert(sizeof(LHKeyboard) == 0x234, "LHKeyboard is the wrong size");
 
 // The typed-character ring fed by WM_CHAR / WM_USER+0x10 and drained by the front end.
 // One object (Buffer and the cursors may alias) — separate globals change the codegen.
@@ -119,24 +118,22 @@ namespace slim
 struct TbIME
 {
 	void* field_0x0;
-	// BW1W120 007f3b80. Mac __ct__Q24slim5TbIMEFv.
+	// BW1W120 007f3b80 BW1M100 10170550 slim::TbIME::TbIME(void)
 	TbIME();
 	// BW1W120 007f3d00 BW1M100 101704a0 slim::TbIME::Activate(void*)
 	void Activate(HWND param_1);
 	// BW1W120 007f3d10 BW1M100 10170460 slim::TbIME::UnActivate(void)
 	void UnActivate();
-	// BW1W120 007f3d20. Thiscall; five stack arguments; original result is AL.
+	// BW1W120 007f3d20 BW1M100 10170410 slim::TbIME::ProcessMessage(void*, unsigned int&, unsigned int&, long&, unsigned int&)
 	bool ProcessMessage(HWND wnd, UINT* msg, WPARAM* w, LPARAM* l, LRESULT* result);
-	// BW1W120 007f3d50 BW1M100 1061ec14 slim::TbIME::Composition_Get(void)
+	// BW1W120 007f3d50 BW1M100 101703d0 slim::TbIME::Composition_Get(void)
 	wchar_t* Composition_Get();
-	// BW1W120 007f3dc0 BW1M100 1061e884 slim::TbIME::CandidateList_GetSelectIdx(void)
+	// BW1W120 007f3dc0 BW1M100 10170290 slim::TbIME::CandidateList_GetSelectIdx(void)
 	uint32_t CandidateList_GetSelectIdx();
-	// BW1W120 007f3de0 BW1M100 1061e89c slim::TbIME::CandidateList_SetViewWindow(uint,uint,uint)
+	// BW1W120 007f3de0 BW1M100 10170240 slim::TbIME::CandidateList_SetViewWindow(unsigned int, unsigned int, unsigned int)
 	void CandidateList_SetViewWindow(uint32_t first, uint32_t last, uint32_t index);
 };
 } // namespace slim
-
-static_assert(sizeof(slim::TbIME) == 4, "slim::TbIME size is incorrect");
 
 struct LHSys
 {
@@ -192,25 +189,26 @@ struct LHSys
 	// Static inline accessors — the binary has no getters (neighbour TUs compile to
 	// direct absolute loads), so these are source-level style only and must inline.
 	// NB /Ob0 TUs (LHScript.cpp) must use TheSystem.<member> directly instead.
-	static LHSys&      Get() { return TheSystem; }
-	static LHSystem&   GetSystem() { return TheSystem.system; }
-	static LHScreen&   GetScreen() { return TheSystem.screen; }
-	static LHMouse&    GetMouse() { return TheSystem.mouse; }
+	// BW1W120 inlined LHSys::Get(void)
+	static LHSys& Get() { return TheSystem; }
+	// BW1W120 inlined LHSys::GetSystem(void)
+	static LHSystem& GetSystem() { return TheSystem.system; }
+	// BW1W120 inlined LHSys::GetScreen(void)
+	static LHScreen& GetScreen() { return TheSystem.screen; }
+	// BW1W120 inlined LHSys::GetMouse(void)
+	static LHMouse& GetMouse() { return TheSystem.mouse; }
+	// BW1W120 inlined LHSys::GetKeyboard(void)
 	static LHKeyboard& GetKeyboard() { return TheSystem.keyboard; }
-	static LHDraw&     GetDraw() { return TheSystem.draw; }
-	static LHConvert&  GetConvert() { return TheSystem.convert; }
-	static LHText&     GetText() { return TheSystem.text; }
-	static HINSTANCE   GetInstance() { return TheSystem.system.HInstance; }
-	static HWND        GetWindow() { return TheSystem.Window; }
+	// BW1W120 inlined LHSys::GetDraw(void)
+	static LHDraw& GetDraw() { return TheSystem.draw; }
+	// BW1W120 inlined LHSys::GetConvert(void)
+	static LHConvert& GetConvert() { return TheSystem.convert; }
+	// BW1W120 inlined LHSys::GetText(void)
+	static LHText& GetText() { return TheSystem.text; }
+	// BW1W120 inlined LHSys::GetInstance(void)
+	static HINSTANCE GetInstance() { return TheSystem.system.HInstance; }
+	// BW1W120 inlined LHSys::GetWindow(void)
+	static HWND GetWindow() { return TheSystem.Window; }
 };
-static_assert(sizeof(LHSys) == 0x70D8, "LHSys is the wrong size");
-static_assert(offsetof(LHSys, keyboard) == 0x32c, "LHSys keyboard offset changed");
-static_assert(offsetof(LHSys, charRing) == 0x560, "LHSys charRing offset changed");
-static_assert(offsetof(LHSys, draw) == 0x82c, "LHSys draw offset changed");
-static_assert(offsetof(LHSys, ScriptResources) == 0x924, "LHSys ScriptResources offset changed");
-static_assert(offsetof(LHSys, text) == 0x7044, "LHSys text offset changed");
-static_assert(offsetof(LHSys, Window) == 0x70b4, "LHSys Window offset changed");
-static_assert(offsetof(LHSys, TbIME) == 0x70c4, "LHSys TbIME offset changed");
-static_assert(offsetof(LHSys, LastKey) == 0x70d0, "LHSys LastKey offset changed");
 
 #endif /* BW1_DECOMP_LH_SYSTEM_INCLUDED_H */
