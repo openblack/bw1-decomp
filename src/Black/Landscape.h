@@ -46,14 +46,14 @@ struct GLandscape
 	static uint8_t* HandLightMap;
 	// BW1W120 00d20190
 	static uint32_t IsOpen;
-	// BW1W120 00bf357c. Storage is in the preceding data split; original name unknown.
+	// BW1W120 00bf357c. Original name unknown.
 	static int HandLightMapSize;
 	// BW1W120 00d20194 / 00d201a0
 	static LandscapeEffect* Effects;
 	static int              EffectCount;
-	// BW1W120 00bf3588. Storage is in the preceding data split; initialized to 500.
+	// BW1W120 00bf3588. Initialized to 500.
 	static int EffectDuration;
-	// BW1W120 005e5280 BW1M100 1037a310 GLandscape::Close(void)
+	// BW1W120 005e5280 BW1M100 1037a310 void GLandscape::Close(void)
 	void Close();
 
 	LH3DTexture*  texture; /* 0x0 */
@@ -63,23 +63,23 @@ struct GLandscape
 
 	// Static methods
 
-	// BW1W120 inlined BW1M100 100198f0 GLandscape::ConvertLandscapePointToMapCoord(LHPoint const &, MapCoords &)
+	// BW1W120 inlined BW1M100 100198f0 void GLandscape::ConvertLandscapePointToMapCoord(LHPoint const &, MapCoords &)
 	static void ConvertLandscapePointToMapCoord(const LHPoint* point, MapCoords* coords);
-	// BW1W120 inlined BW1M100 106f5c34 GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(MapCoords const &, LHPoint &)
+	// BW1W120 inlined BW1M100 106f5c34 void GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(MapCoords const &, LHPoint &)
 	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords* coords, LHPoint* point);
-	// BW1W120 005e3f60 BW1M100 1001d960 GLandscape::PreDraw(void)
+	// BW1W120 005e3f60 BW1M100 1001d960 unsigned int GLandscape::PreDraw(void)
 	uint32_t PreDraw();
-	// BW1W120 00613750 BW1M100 1004aef0 GLandscape::ConvertMapCoordToLandscapePoint(MapCoords const &, LHPoint &)
-	// MSVC 6 inlines this. Inlined uses look like (esi=coords, eax=point):
-	//     call LH3DIsland::GetAltitude
-	//     fadds <spilled altitude>          fstps [point+4]
-	//     fild [coords]     fmul __real@4@3ff2a000000000000000   fstps [point]
-	//     fild [coords+4]   fmul __real@4@3ff2a000000000000000   fstps [point+8]
-	// The scale must stay literal/literal: MSVC 6 folds it to one constant,
-	// but `CellSize / ...` is not folded and emits a runtime fld+fmul.
-	// LHPoint& is an out-param, not a Rule 2 retbuf; by-value costs a copy.
+	// BW1W120 00613750 BW1M100 1004aef0 LHPoint * GLandscape::ConvertMapCoordToLandscapePoint(MapCoords const &, LHPoint &)
 	static LHPoint* ConvertMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point)
 	{
+		// MSVC 6 inlines this. Inlined uses look like (esi=coords, eax=point):
+		//     call LH3DIsland::GetAltitude
+		//     fadds <spilled altitude>          fstps [point+4]
+		//     fild [coords]     fmul __real@4@3ff2a000000000000000   fstps [point]
+		//     fild [coords+4]   fmul __real@4@3ff2a000000000000000   fstps [point+8]
+		// The scale must stay literal/literal: MSVC 6 folds it to one constant,
+		// but `CellSize / ...` is not folded and emits a runtime fld+fmul.
+		// LHPoint& is an out-param, not a Rule 2 retbuf; by-value costs a copy.
 		float altitude;
 
 		altitude = coords.Altitude();
@@ -91,23 +91,20 @@ struct GLandscape
 
 	// Non-virtual methods
 
-	// BW1W120 005e42e0 BW1M100 1004d770 GLandscape::Draw(void)
+	// BW1W120 005e42e0 BW1M100 1004d770 void GLandscape::Draw(void)
 	void Draw();
-	// BW1W120 005e52e0 BW1M100 10379f50 GLandscape::Open(char *)
+	// BW1W120 005e52e0 BW1M100 10379f50 void GLandscape::Open(char *)
 	void Open(char* path);
 
-	// Provisional names/ownership: Windows calling sequences support these signatures;
-	// the corresponding Mac method names have not yet been recovered.
-	// BW1W120 005e5620: ECX=this (unused), EDX=screen, two stack outputs, RET 8.
+	// BW1W120 005e5620 unsigned int GLandscape::PickPoint(LHCoord const &, LHPoint &, float *)
 	uint32_t __fastcall PickPoint(const LHCoord& screen, LHPoint& point, float* depth);
-	// BW1W120 005e5740
+	// BW1W120 005e5740 unsigned int GLandscape::PickMapCoords(LHCoord const &, MapCoords &, float *)
 	uint32_t __fastcall PickMapCoords(const LHCoord& screen, MapCoords& coords, float* depth);
-	// BW1W120 005e5b90: converts the floating screen coordinates to integers first.
+	// BW1W120 005e5b90 unsigned int GLandscape::PickPoint(Point2D const &, LHPoint &, float *)
 	uint32_t __fastcall PickPoint(const Point2D& screen, LHPoint& point, float* depth);
-	// BW1W120 005e5bd0
+	// BW1W120 005e5bd0 void GLandscape::ConvertCellToLandscapePoint(JustMapXZ const &, LHPoint &)
 	static void ConvertCellToLandscapePoint(const JustMapXZ& cell, LHPoint& point);
-	// BW1W120 005e5c90. The existing ProcessAllObjectsOnCells symbol is incorrect:
-	// the body copies Centre to the hidden return buffer and returns that buffer in EAX.
+	// BW1W120 005e5c90 LHPoint GLandscape::GetCentre(void)
 	static LHPoint GetCentre();
 };
 
@@ -119,29 +116,31 @@ struct LandscapeEffect
 	LH3DObject*      Object3D;      // 0x4
 	int              TimeRemaining; // 0x8
 
-	// BW1W120 005e6350. Unlinks the node and releases its 3D object through virtual slot 0x04.
+	// BW1W120 005e6350 LandscapeEffect::~LandscapeEffect(void)
 	~LandscapeEffect();
-	// BW1W120 005e6390. Two passes: animated UV material, then depth-equal override.
+	// BW1W120 005e6390 void LandscapeEffect::Draw(void)
 	void Draw();
 };
 static_assert(sizeof(LandscapeEffect) == 0xc, "Data type is of wrong size");
 
 struct LandscapeDebugText
 {
+	// Prefix used at 00d45630; do not allocate a global instance until its owning type is identified.
 	uint32_t Active;         // 0x0
 	char     Lines[20][256]; // 0x4
 	float    TimeRemaining;  // 0x1404
 	uint32_t DisplayAll;     // 0x1408
 
-	// BW1W120 005e6630 / 005e66a0. This is the prefix used at 00d45630;
-	// do not allocate a global instance until its owning type is identified.
+	// BW1W120 005e6630 void LandscapeDebugText::Draw(void)
 	void Draw();
+	// BW1W120 005e66a0 void LandscapeDebugText::AddDrawing(void)
 	void AddDrawing();
 };
 static_assert(sizeof(LandscapeDebugText) == 0x140c, "Data type is of wrong size");
 
 struct LandscapeWaterCircle
 {
+	// Original class name is not yet known; GWater owns the pool.
 	LHPoint  Position; // 0x0
 	uint32_t Flags;    // 0xc, bit 0 is active
 	uint32_t Age;      // 0x10
@@ -155,34 +154,32 @@ struct LandscapeWaterCircle
 	uint32_t SpriteFlags;  // 0x30
 	uint32_t Colour;       // 0x34
 
-	// BW1W120 005e5100. Original class name is not yet known; GWater owns the pool.
+	// BW1W120 005e5100 void LandscapeWaterCircle::Draw(void)
 	void Draw();
 };
 static_assert(sizeof(LandscapeWaterCircle) == 0x38, "Data type is of wrong size");
 
 // Free functions
 
-void ClearLight(); // 005e57b0
+// BW1W120 005e57b0 void ClearLight(void)
+void ClearLight();
 
-// BW1W120 005e55d0. Descriptive name; intersects a downward ray with y=0.
-// Deliberately does not constrain the intersection to the supplied segment.
+// BW1W120 005e55d0 unsigned int IntersectLandscapeWaterPlane(LHPoint const &, LHPoint const &, LHPoint &)
 uint32_t IntersectLandscapeWaterPlane(const LHPoint& from, const LHPoint& to, LHPoint& point);
 
-// BW1W120 005e6310. Same calculation as LH3DTech::GetValueForZSorter; original
-// out-of-line owner/name is not established. ECX carries the point address.
+// BW1W120 005e6310 float LandscapeDistanceToCameraSquared(LHPoint const &)
 float __fastcall LandscapeDistanceToCameraSquared(const LHPoint& point);
 
-// BW1W120 005e5cb0. Descriptive name; stores the packed colour 0xffff0000.
+// BW1W120 005e5cb0 void SetLandscapeDebugColour(LHColor &)
 void SetLandscapeDebugColour(LHColor& colour);
 
-// BW1W120 005e3f70. Descriptive name; draws the hand-light quad at water level
-// only when the covered cells include missing terrain or altitude bytes below 5.
+// BW1W120 005e3f70 void DrawLandscapeWaterLight(LHPoint, unsigned int)
 void DrawLandscapeWaterLight(LHPoint point, uint32_t colour);
 
-// BW1W120 005e57a0. The original callback is genuinely empty (RET 8).
+// BW1W120 005e57a0 void LandscapeTextureUpdated(void *, int, int, int)
 void __fastcall LandscapeTextureUpdated(void* pixels, int size, int block_x, int block_z);
 
-// BW1W120 005e6540 BW1M100 10378b00 GoolooGooloo(Object *)
+// BW1W120 005e6540 BW1M100 10378b00 void GoolooGooloo(Object *)
 void GoolooGooloo(Object* object);
 
 #endif /* BW1_DECOMP_LANDSCAPE_INCLUDED_H */

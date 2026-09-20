@@ -47,9 +47,10 @@ struct LH3DMaterial
 	LH3DTexture* texture;
 	LH3DColor    color;
 
-	// Inlined in GLandscape::Close and other material owners. The material does not own the texture.
+	// BW1W120 inlined LH3DMaterial::~LH3DMaterial(void)
 	~LH3DMaterial()
 	{
+		// Inlined in GLandscape::Close and other material owners; the material does not own the texture.
 		--g_count;
 		texture = 0;
 	}

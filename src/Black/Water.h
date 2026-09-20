@@ -12,8 +12,7 @@ public:
 	static int g_count_activated_circle;
 	// BW1W120 00eb9ab0. Descriptive name for the per-frame ambient-wind displacement scale.
 	static float CircleWindStep;
-	// BW1W120 0054ba40. TODO: Descriptive name; Mac inlines initialization of g_circle,
-	// g_sprite_circle and g_count_activated_circle into GGame's constructor.
+	// BW1W120 0054ba40 BW1M100 inlined void GWater::InitialiseCircles(void)
 	static void InitialiseCircles();
 };
 

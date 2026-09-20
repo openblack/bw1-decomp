@@ -57,9 +57,7 @@ public:
 
 	// Virtual functions
 
-	virtual bool32_t IsPreSetup(); /* 0x0 */
-	// Slot 0x04 is Release, not a deleting destructor: derived implementations destroy and free this.
-	// Base/Meshed tables contain _purecall; Static 00816560, Animated 00816580, Complex 00816710.
+	virtual bool32_t        IsPreSetup(); /* 0x0 */
 	virtual void            Release() = 0;
 	virtual float           GetU();
 	virtual float           GetV();
@@ -117,13 +115,12 @@ public:
 	virtual void            SetFastBlending(float param_1, LH3DMesh* mesh1, LH3DMesh* mesh2);
 	virtual void            SetNeedTilling(int param_1); /* 0xe0 */
 	virtual bool32_t        IsNeedTilling();
-	// MSVC6 reverses overloaded virtuals: int belongs at 0xec, the float pair at 0xe8.
-	// 007f9b40: the flag is in EDX.
+	// BW1W120 007f9b40 void LH3DObject::SetAnimatedUV(int)
 	virtual void __fastcall SetAnimatedUV(int param_1);
-	// 007f9b70: two stack floats, RET 8; Mac SetAnimatedUV__10LH3DObjectFff.
+	// BW1W120 007f9b70 void LH3DObject::SetAnimatedUV(float, float)
 	virtual void __fastcall SetAnimatedUV(float u, float v);
 	virtual bool32_t        IsAnimatedUV(); /* 0xf0 */
-	// Base 00815650 is RET 8 with no result. Meshed/Animated receive the first mesh in EDX.
+	// BW1W120 00815650 void LH3DObject::SetMesh(LH3DMesh *, LH3DMesh *, LH3DMesh *)
 	virtual void __fastcall     SetMesh(LH3DMesh* param_1, LH3DMesh* param_2, LH3DMesh* param_3);
 	virtual LH3DMesh*           GetMesh();
 	virtual void                DrawDebugInfo();
@@ -205,20 +202,18 @@ public:
 
 	// Static methods
 
-	// BW1W120 0080b4d0 BW1M100 10620204 LH3DObject::Create(LH3DObject::ObjectType)
+	// BW1W120 0080b4d0 BW1M100 10620204 LH3DObject * LH3DObject::Create(LH3DObject::ObjectType)
 	static LH3DObject* __fastcall Create(ObjectType object_type);
 
 	// Constructors
 
 	// BW1W120 inlined BW1M100 inlined LH3DObject::LH3DObject(void)
 	LH3DObject();
-	// Non-virtual destructor: explicit destruction occurs inside the concrete Release implementations.
-	// Mac __dt__10LH3DObjectFv; not an additional vtable slot.
 	~LH3DObject();
 
 	// Non-virtual functions
 
-	// BW1W120 00423140 BW1M100 10041480 LH3DObject::SetPosition(const LHPoint&, float, float)
+	// BW1W120 00423140 BW1M100 10041480 void LH3DObject::SetPosition(LHPoint const &, float, float)
 	void SetPosition(const LHPoint& point, float y_angle, float scale)
 	{
 		if (y_angle != 0.0f)

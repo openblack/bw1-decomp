@@ -11,7 +11,7 @@ class Object;
 
 struct GameBlock
 {
-	// BW1W120 005dded0 BW1M100 105e8020 GameBlock::Clean(void)
+	// BW1W120 005dded0 BW1M100 105e8020 void GameBlock::Clean(void)
 	static void Clean();
 	uint32_t    size; /* 0x0 */
 	uint32_t    capacity;
@@ -20,20 +20,21 @@ struct GameBlock
 	Object*     LastRemoved; /* 0x10 */
 
 	// Static methods
-	// BW1W120 005ddc00 / 005ddc90. Descriptive names for grid creation/release; no instance argument.
+	// BW1W120 005ddc00 void GameBlock::Init(void)
 	static void Init();
+	// BW1W120 005ddc90 void GameBlock::Release(void)
 	static void Release();
 
-	// BW1W120 005ddce0 BW1M100 10054520 GameBlock::Insert(Object *, MapCell *)
+	// BW1W120 005ddce0 BW1M100 10054520 void GameBlock::Insert(Object *, MapCell *)
 	static void Insert(Object* param_1, MapCell* param_2);
-	// BW1W120 005ddd50 BW1M100 100543b0 GameBlock::Remove(Object*)
+	// BW1W120 005ddd50 BW1M100 100543b0 void GameBlock::Remove(Object *, MapCell *)
 	static void Remove(Object* obj, MapCell* cell);
 
 	// Non-virtual methods
 
-	// BW1W120 005dddc0 BW1M100 10054690 GameBlock::Insert(Object*)
+	// BW1W120 005dddc0 BW1M100 10054690 void GameBlock::Insert(Object *)
 	void Insert(Object* obj);
-	// BW1W120 005dde60 BW1M100 10054790 GameBlock::Remove(Object *, MapCell *)
+	// BW1W120 005dde60 BW1M100 10054790 void GameBlock::Remove(Object *)
 	void Remove(Object* obj);
 };
 

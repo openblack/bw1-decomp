@@ -27,7 +27,7 @@ struct LandCell
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 1000cd10 LandCell::IsWater(void)
+	// BW1W120 inlined BW1M100 1000cd10 bool LandCell::IsWater(void)
 	bool IsWater();
 };
 
@@ -40,22 +40,22 @@ public:
 	static float      g_height_unit;         // 00c3720c
 
 	// Static methods
-	// BW1W120 007ff2d0 BW1M100 LH Combined Release Shared 00022e10
+	// BW1W120 007ff2d0 void LH3DIsland::PreDraw(void)
 	static void PreDraw();
-	// BW1W120 00803c00 LH3DIsland::Create(void)
+	// BW1W120 00803c00 unsigned int LH3DIsland::Create(void)
 	static bool32_t Create();
-	// BW1W120 00800c10 LH3DIsland::SetFileToLoad(char *)
+	// BW1W120 00800c10 void LH3DIsland::SetFileToLoad(char *)
 	static void SetFileToLoad(char* path);
-	// BW1W120 00516aa0 LH3DIsland::GetCell(long, long)
+	// BW1W120 00516aa0 LandCell * LH3DIsland::GetCell(long, long)
 	static LandCell* GetCell(long x, long z);
-	// BW1W120 00802550. ECX/EDX are the points; the two output pointers are on the stack.
+	// BW1W120 00802550 unsigned int LH3DIsland::RayCast(LHPoint const &, LHPoint const &, float *, float *)
 	static bool32_t __fastcall RayCast(const LHPoint& from, const LHPoint& to, float* x, float* z);
-	// BW1W120 00804790 BW1M100 1061cc34 LH3DIsland::Release(void)
+	// BW1W120 00804790 BW1M100 1061cc34 unsigned int LH3DIsland::Release(void)
 	static bool32_t Release();
 
-	// BW1W120 00803090 LH3DIsland::GetAltitude(LH3DMapCoords const &)
+	// BW1W120 00803090 float LH3DIsland::GetAltitude(LH3DMapCoords const &)
 	static float __fastcall GetAltitude(const LH3DMapCoords& coords);
-	// BW1W120 00803340 LH3DIsland::GetAltitudeAndSetColorSpecular(LH3DMapCoords const &, ulong *, ulong *)
+	// BW1W120 00803340 float LH3DIsland::GetAltitudeAndSetColorSpecular(LH3DMapCoords const &, unsigned long *, unsigned long *)
 	static float __fastcall GetAltitudeAndSetColorSpecular(const LH3DMapCoords& coords, uint32_t* color,
 	                                                       uint32_t* specular);
 };
