@@ -44,7 +44,7 @@ public:
 	// BW1W120 004050c0 BW1M100 1017d1b0 PlannedMultiMapFixed::GetScale(void)
 	virtual float GetScale();
 	// BW1W120 004050d0 BW1M100 103509e0 PlannedMultiMapFixed::SetScale(float)
-	virtual void SetScale(float scale);
+	virtual void SetScale(float scale) { this->scale = scale; }
 	// BW1W120 00648940 BW1M100 10115200 PlannedMultiMapFixed::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 00465560 BW1M100 100d17b0 PlannedMultiMapFixed::IsWonder(void)
