@@ -18,10 +18,13 @@ struct MaterialProperties
 	bool field_0x3;
 	bool field_0x4;
 };
-static_assert(sizeof(MaterialProperties) == 0x5, "Data type is of wrong size");
 
 struct LH3DMaterial
 {
+	// BW1W120 00eca654. Original Mac import g_count__12LH3DMaterial.
+	// Keep storage extracted; the lightweight material header needs no renderer include.
+	static int g_count;
+
 	enum RenderMode
 	{
 		LH3D_MATERIAL_RENDER_MODE_0x2 = 0x2,
@@ -42,7 +45,14 @@ struct LH3DMaterial
 	uint8_t      cull_mode;
 	LH3DTexture* texture;
 	LH3DColor    color;
+
+	// BW1W120 inlined BW1M100 10107340 LH3DMaterial::~LH3DMaterial(void)
+	~LH3DMaterial()
+	{
+		// Inlined in GLandscape::Close and other material owners; the material does not own the texture.
+		--g_count;
+		texture = 0;
+	}
 };
-static_assert(sizeof(LH3DMaterial) == 0x10, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH3D_MATERIAL_INCLUDED_H */

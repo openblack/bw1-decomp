@@ -41,19 +41,19 @@ public:
 
 	// Override methods
 
-	// BW1W120 00441b30 BW1M100 10378450 GCamera::_dt(void)
+	// BW1W120 inlined BW1M100 10378450 GCamera::~GCamera(void)
 	virtual ~GCamera();
 	// BW1W120 00441ee0 BW1M100 1019a0f0 GCamera::ToBeDeleted(int)
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00443840 BW1M100 10198640 GCamera::GetDebugText(void)
 	virtual char* GetDebugText();
-	// BW1W120 004433a0 BW1M100 10198870 GCamera::Load(GameOSFile &)
+	// BW1W120 004433a0 BW1M100 10198870 GCamera::Load(GameOSFile&)
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 004430e0 BW1M100 10198d40 GCamera::Save(GameOSFile &)
+	// BW1W120 004430e0 BW1M100 10198d40 GCamera::Save(GameOSFile&)
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00441b20 BW1M100 101982e0 GCamera::GetSaveType(void)
 	virtual uint32_t GetSaveType();
-	// BW1W120 00441b00 BW1M100 10086270 GCamera::IsMoving( const(void))
+	// BW1W120 00441b00 BW1M100 10086270 GCamera::IsMoving(void) const
 	virtual bool32_t IsMoving() const;
 	// BW1W120 00441af0 BW1M100 101980f0 GCamera::GetText(void)
 	virtual const char* GetText();
@@ -62,24 +62,26 @@ public:
 
 	// Static methods
 
-	// BW1W120 00441f20 BW1M100 1019a070 GCamera::GetThingViewingDistance(GameThingWithPos *)
+	// BW1W120 00441f20 BW1M100 1019a070 GCamera::GetThingViewingDistance(GameThingWithPos*)
 	static float GetThingViewingDistance(GameThingWithPos* target);
-	// BW1W120 00442810 BW1M100 10032670 GCamera::SetPointFromPointDistanceHeadingAndPitch(LHPoint *, LHPoint const &, float, float, float)
+	// BW1W120 00442810 BW1M100 10032670 GCamera::SetPointFromPointDistanceHeadingAndPitch(LHPoint*, const LHPoint&, float, float, float)
 	static void SetPointFromPointDistanceHeadingAndPitch(LHPoint* param_1, const LHPoint* point, float distance,
 	                                                     float heading, float pitch);
-	// BW1W120 004428d0 BW1M100 1007dbf0 GCamera::GetHeadingAndPitchFromPoints(LHPoint const &, LHPoint const &, float *, float *)
+	// BW1W120 004428d0 BW1M100 1007dbf0 GCamera::GetHeadingAndPitchFromPoints(const LHPoint&, const LHPoint&, float*, float*)
 	static void GetHeadingAndPitchFromPoints(LHPoint* origin, LHPoint* heading, float* pitch, float* yaw);
 
 	// Constructors
 
-	// BW1W120 00441870 BW1M100 1019a720 GCamera::Camera(MapCoords&)
+	// BW1W120 00441870 BW1M100 1019a720 GCamera::GCamera(MapCoords&)
 	GCamera(MapCoords& coords);
 
 	// Non-virtual methods
+	// BW1W120 00442b00 BW1M100 10023fd0 GCamera::ClipToCameraRadius(LHPoint*)
+	void ConstrainPoint(LHPoint& point);
 
 	// BW1W120 00441b70 BW1M100 1019a650 GCamera::CantExitCurrentMode(void)
 	bool CantExitCurrentMode();
-	// BW1W120 00441cd0 BW1M100 1019a420 GCamera::SwitchToViewMode(CameraMode *)
+	// BW1W120 00441cd0 BW1M100 1019a420 GCamera::SwitchToViewMode(CameraMode*)
 	void SwitchToViewMode(CameraMode* mode);
 	// BW1W120 00441d40 BW1M100 1008de30 GCamera::CheckStackedModesForValidity(void)
 	void CheckStackedModesForValidity();

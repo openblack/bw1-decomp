@@ -6,10 +6,13 @@ struct LH3DSprite;
 class GWater
 {
 public:
-	// BW1W120 00eb9ab4. Original Mac member name.
+	// BW1W120 00eb9ab4 GWater::g_sprite_circle
 	static LH3DSprite* g_sprite_circle;
-	// BW1W120 0054ba40. TODO: Descriptive name; Mac inlines initialization of g_circle,
-	// g_sprite_circle and g_count_activated_circle into GGame's constructor.
+	// BW1W120 00eb9ab8 GWater::g_count_activated_circle
+	static int g_count_activated_circle;
+	// BW1W120 00eb9ab0
+	static float CircleWindStep;
+	// BW1W120 0054ba40 BW1M100 inlined GWater::InitialiseCircles(void)
 	static void InitialiseCircles();
 };
 

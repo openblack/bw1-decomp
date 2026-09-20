@@ -16,7 +16,7 @@ struct LH3DSprite
 	float    angle;
 	float    field_0x18;
 	float    field_0x1c;
-	float    field_0x20;
+	uint32_t DiffuseColour; /* 0x20 */
 	float    field_0x24;
 	uint32_t field_0x28;
 	float    field_0x2c;
@@ -38,9 +38,9 @@ struct LH3DSprite
 	void Release();
 	// BW1W120 00840530 BW1M100 1002a870 LH3DSprite::Draw(void)
 	void Draw();
-	// BW1W120 00840c70 BW1M100 10142ac0 LH3DSprite::AddDrawing(void)
+	// BW1W120 00840c70 BW1M100 1001bdd0 LH3DSprite::AddDrawing(void)
 	void AddDrawing();
-	// BW1W120 00840cc0 BW1M100 10142b40 LH3DSprite::DrawSpecial1(LHMatrix *)
+	// BW1W120 00840cc0 BW1M100 100b5c10 LH3DSprite::DrawSpecial1(LHMatrix*)
 	void DrawSpecial1(LHMatrix* matrix);
 };
 
