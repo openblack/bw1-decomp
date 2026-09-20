@@ -12,7 +12,7 @@ public:
 	static int g_count_activated_circle;
 	// BW1W120 00eb9ab0. Descriptive name for the per-frame ambient-wind displacement scale.
 	static float CircleWindStep;
-	// BW1W120 0054ba40 BW1M100 inlined void GWater::InitialiseCircles(void)
+	// BW1W120 0054ba40 BW1M100 inlined GWater::InitialiseCircles(void)
 	static void InitialiseCircles();
 };
 

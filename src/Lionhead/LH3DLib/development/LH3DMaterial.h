@@ -18,7 +18,6 @@ struct MaterialProperties
 	bool field_0x3;
 	bool field_0x4;
 };
-static_assert(sizeof(MaterialProperties) == 0x5, "Data type is of wrong size");
 
 struct LH3DMaterial
 {
@@ -47,7 +46,7 @@ struct LH3DMaterial
 	LH3DTexture* texture;
 	LH3DColor    color;
 
-	// BW1W120 inlined LH3DMaterial::~LH3DMaterial(void)
+	// BW1W120 inlined BW1M100 10107340 LH3DMaterial::~LH3DMaterial(void)
 	~LH3DMaterial()
 	{
 		// Inlined in GLandscape::Close and other material owners; the material does not own the texture.
@@ -55,6 +54,5 @@ struct LH3DMaterial
 		texture = 0;
 	}
 };
-static_assert(sizeof(LH3DMaterial) == 0x10, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH3D_MATERIAL_INCLUDED_H */

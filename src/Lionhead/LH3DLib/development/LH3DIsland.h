@@ -27,7 +27,7 @@ struct LandCell
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 1000cd10 bool LandCell::IsWater(void)
+	// BW1W120 inlined BW1M100 1000cd10 LandCell::IsWater(void)
 	bool IsWater();
 };
 
@@ -40,22 +40,22 @@ public:
 	static float      g_height_unit;         // 00c3720c
 
 	// Static methods
-	// BW1W120 007ff2d0 void LH3DIsland::PreDraw(void)
+	// BW1W120 007ff2d0 BW1M100 10022e10 LH3DIsland::PreDraw(void)
 	static void PreDraw();
-	// BW1W120 00803c00 unsigned int LH3DIsland::Create(void)
+	// BW1W120 00803c00 BW1M100 10046910 LH3DIsland::Create(void)
 	static bool32_t Create();
-	// BW1W120 00800c10 void LH3DIsland::SetFileToLoad(char *)
+	// BW1W120 00800c10 BW1M100 1004a860 LH3DIsland::SetFileToLoad(char*)
 	static void SetFileToLoad(char* path);
-	// BW1W120 00516aa0 LandCell * LH3DIsland::GetCell(long, long)
+	// BW1W120 00516aa0 BW1M100 100484b0 LH3DIsland::GetCell(long, long)
 	static LandCell* GetCell(long x, long z);
-	// BW1W120 00802550 unsigned int LH3DIsland::RayCast(LHPoint const &, LHPoint const &, float *, float *)
+	// BW1W120 00802550 BW1M100 10019550 LH3DIsland::RayCast(const LHPoint&, const LHPoint&, float*, float*)
 	static bool32_t __fastcall RayCast(const LHPoint& from, const LHPoint& to, float* x, float* z);
-	// BW1W120 00804790 BW1M100 1061cc34 unsigned int LH3DIsland::Release(void)
+	// BW1W120 00804790 BW1M100 100466a0 LH3DIsland::Release(void)
 	static bool32_t Release();
 
-	// BW1W120 00803090 float LH3DIsland::GetAltitude(LH3DMapCoords const &)
+	// BW1W120 00803090 BW1M100 1002f150 LH3DIsland::GetAltitude(const LH3DMapCoords&)
 	static float __fastcall GetAltitude(const LH3DMapCoords& coords);
-	// BW1W120 00803340 float LH3DIsland::GetAltitudeAndSetColorSpecular(LH3DMapCoords const &, unsigned long *, unsigned long *)
+	// BW1W120 00803340 BW1M100 10048110 LH3DIsland::GetAltitudeAndSetColorSpecular(const LH3DMapCoords&, unsigned long*, unsigned long*)
 	static float __fastcall GetAltitudeAndSetColorSpecular(const LH3DMapCoords& coords, uint32_t* color,
 	                                                       uint32_t* specular);
 };

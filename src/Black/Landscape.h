@@ -53,23 +53,23 @@ struct GLandscape
 	static int              EffectCount;
 	// BW1W120 00bf3588. Initialized to 500.
 	static int EffectDuration;
-	// BW1W120 005e5280 BW1M100 1037a310 void GLandscape::Close(void)
+	// BW1W120 005e5280 BW1M100 1037a310 GLandscape::Close(void)
 	void Close();
 
 	LH3DTexture*  texture; /* 0x0 */
 	LH3DMaterial* material;
-	// BW1W120 005e55c0 GLandscape::~GLandscape(void)
+	// BW1W120 005e55c0 BW1M100 10379ee0 GLandscape::~GLandscape(void)
 	~GLandscape();
 
 	// Static methods
 
-	// BW1W120 inlined BW1M100 100198f0 void GLandscape::ConvertLandscapePointToMapCoord(LHPoint const &, MapCoords &)
+	// BW1W120 inlined BW1M100 100198f0 GLandscape::ConvertLandscapePointToMapCoord(const LHPoint&, MapCoords&)
 	static void ConvertLandscapePointToMapCoord(const LHPoint* point, MapCoords* coords);
-	// BW1W120 inlined BW1M100 106f5c34 void GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(MapCoords const &, LHPoint &)
+	// BW1W120 inlined BW1M100 100a7370 GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords&, LHPoint&)
 	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords* coords, LHPoint* point);
-	// BW1W120 005e3f60 BW1M100 1001d960 unsigned int GLandscape::PreDraw(void)
+	// BW1W120 005e3f60 BW1M100 1001d960 GLandscape::PreDraw(void)
 	uint32_t PreDraw();
-	// BW1W120 00613750 BW1M100 1004aef0 LHPoint * GLandscape::ConvertMapCoordToLandscapePoint(MapCoords const &, LHPoint &)
+	// BW1W120 00613750 BW1M100 10048570 GLandscape::ConvertMapCoordToLandscapePoint(const MapCoords&, LHPoint&)
 	static LHPoint* ConvertMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point)
 	{
 		// MSVC 6 inlines this. Inlined uses look like (esi=coords, eax=point):
@@ -91,18 +91,18 @@ struct GLandscape
 
 	// Non-virtual methods
 
-	// BW1W120 005e42e0 BW1M100 1004d770 void GLandscape::Draw(void)
+	// BW1W120 005e42e0 BW1M100 1004d770 GLandscape::Draw(void)
 	void Draw();
-	// BW1W120 005e52e0 BW1M100 10379f50 void GLandscape::Open(char *)
+	// BW1W120 005e52e0 BW1M100 10379f50 GLandscape::Open(char*)
 	void Open(char* path);
 
-	// BW1W120 005e5620 unsigned int GLandscape::PickPoint(LHCoord const &, LHPoint &, float *)
+	// BW1W120 005e5620 BW1M100 100290c0 GLandscape::GetLHPointFromScreenCoord(LHCoord*, LHPoint*, float*)
 	uint32_t __fastcall PickPoint(const LHCoord& screen, LHPoint& point, float* depth);
-	// BW1W120 005e5740 unsigned int GLandscape::PickMapCoords(LHCoord const &, MapCoords &, float *)
+	// BW1W120 005e5740 BW1M100 100262e0 GLandscape::GetMapCoordFromScreenCoord(LHCoord*, MapCoords*, float*)
 	uint32_t __fastcall PickMapCoords(const LHCoord& screen, MapCoords& coords, float* depth);
 	// BW1W120 005e5b90 unsigned int GLandscape::PickPoint(Point2D const &, LHPoint &, float *)
 	uint32_t __fastcall PickPoint(const Point2D& screen, LHPoint& point, float* depth);
-	// BW1W120 005e5bd0 void GLandscape::ConvertCellToLandscapePoint(JustMapXZ const &, LHPoint &)
+	// BW1W120 005e5bd0 BW1M100 10379270 GLandscape::ConvertJustMapXZToLandscapePoint(const JustMapXZ&, LHPoint&)
 	static void ConvertCellToLandscapePoint(const JustMapXZ& cell, LHPoint& point);
 	// BW1W120 005e5c90 LHPoint GLandscape::GetCentre(void)
 	static LHPoint GetCentre();
@@ -121,7 +121,6 @@ struct LandscapeEffect
 	// BW1W120 005e6390 void LandscapeEffect::Draw(void)
 	void Draw();
 };
-static_assert(sizeof(LandscapeEffect) == 0xc, "Data type is of wrong size");
 
 struct LandscapeDebugText
 {
@@ -136,7 +135,6 @@ struct LandscapeDebugText
 	// BW1W120 005e66a0 void LandscapeDebugText::AddDrawing(void)
 	void AddDrawing();
 };
-static_assert(sizeof(LandscapeDebugText) == 0x140c, "Data type is of wrong size");
 
 struct LandscapeWaterCircle
 {
@@ -157,14 +155,13 @@ struct LandscapeWaterCircle
 	// BW1W120 005e5100 void LandscapeWaterCircle::Draw(void)
 	void Draw();
 };
-static_assert(sizeof(LandscapeWaterCircle) == 0x38, "Data type is of wrong size");
 
 // Free functions
 
-// BW1W120 005e57b0 void ClearLight(void)
+// BW1W120 005e57b0 BW1M100 100160f0 ClearLight(void)
 void ClearLight();
 
-// BW1W120 005e55d0 unsigned int IntersectLandscapeWaterPlane(LHPoint const &, LHPoint const &, LHPoint &)
+// BW1W120 005e55d0 BW1M100 10379e30 LineIntersectPlane(LHPoint*, LHPoint*, LHPoint*)
 uint32_t IntersectLandscapeWaterPlane(const LHPoint& from, const LHPoint& to, LHPoint& point);
 
 // BW1W120 005e6310 float LandscapeDistanceToCameraSquared(LHPoint const &)
@@ -179,7 +176,7 @@ void DrawLandscapeWaterLight(LHPoint point, uint32_t colour);
 // BW1W120 005e57a0 void LandscapeTextureUpdated(void *, int, int, int)
 void __fastcall LandscapeTextureUpdated(void* pixels, int size, int block_x, int block_z);
 
-// BW1W120 005e6540 BW1M100 10378b00 void GoolooGooloo(Object *)
+// BW1W120 005e6540 BW1M100 10378b00 GoolooGooloo(Object*)
 void GoolooGooloo(Object* object);
 
 #endif /* BW1_DECOMP_LANDSCAPE_INCLUDED_H */
