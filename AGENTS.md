@@ -280,6 +280,20 @@ Maps each source file to its section address ranges, telling dtk how to split th
 
 ### Comments & annotations in the code
 
+Function declaration comments must contain only version/address pairs followed by the
+demangled C++ signature, including the return type (except for constructors/destructors)
+and any trailing qualifiers:
+
+```cpp
+// BW1W120 00512340 BW1M100 10234560 void Foo::Bar(int) const
+```
+
+- Use eight-digit hexadecimal addresses without `0x`; omit a version when its address is unknown. Retain `inlined` only where inlining is established.
+- Do not add commentary, ABI explanations, mangled-name notes, or TODOs to the declaration comment or append explanatory comment lines to it. Keep implementation notes with the implementation and detailed evidence in the disassembly investigation records.
+- Use the function's own address, not an import-table entry or vtable-slot offset. A pure virtual declaration with no implementation needs no address comment; do not attribute the shared `__purecall` handler's address to it.
+
+Other code comments may use these annotations:
+
 - `// fabricated` — the code is not from the original binary; it was invented/guessed to make things compile. May be incorrect.
 - `// TODO:` — known issues, suspected inaccuracies, or incomplete understanding.
 - `// Tiny size mismatch` / `// TODO: incorrect size` — for functions which were completely inlined and not emitted to the original binary, but are present in the symbol map as UNUSED symbols and their size is available. That size can be compared against the size in our code using tools/decomp-diff.py and if it's different, then the guess for the function's contents is not correct yet.
@@ -305,8 +319,8 @@ Verify affected header consumers after layout, virtual-interface or include-boun
 
 ### Signatures, function boundaries and layouts
 
-The comments above function declarations show the mangled name from the
-original BW1 binary, which encodes the true C++ signature. When the header
+The comments above function declarations show the demangled C++ signature recovered
+from the original binary's symbols. When the header
 signature disagrees with the comment, the header needs fixing.
 
 Treat decompiler signatures and function boundaries as hypotheses. Corroborate Windows
@@ -324,7 +338,7 @@ If the comment says `Type&` or `Type const &` but the header has `Type*`,
 the header should use `Type&` or `const Type&` instead.
 
 ```cpp
-// BW1W120 005ef9c0 Living::CalculateDancePosition(MapCoords const &, MapCoords *)
+// BW1W120 005ef9c0 bool Living::CalculateDancePosition(MapCoords const &, MapCoords *)
 bool CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2);
 //                                        ^ should be const MapCoords&
 ```
