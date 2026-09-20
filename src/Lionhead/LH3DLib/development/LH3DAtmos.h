@@ -18,9 +18,9 @@ public:
 	static LH3DMaterial* AdditiveMaterial; // 00edc364, render mode 0xd
 	static LH3DMaterial* AtmosMaterial;    // 00edc368, render mode 6
 
-	// BW1W120 00834f80; Mac GetWeather__9LH3DAtmosFRC7LHPointi
+	// BW1W120 00834f80 WeatherInfo LH3DAtmos::GetWeather(LHPoint const &, int)
 	static WeatherInfo GetWeather(const LHPoint& point, int recalc);
-	// BW1W120 00835180; Mac GetWeatherSmooth__9LH3DAtmosFRC7LHPointi
+	// BW1W120 00835180 WeatherInfo LH3DAtmos::GetWeatherSmooth(LHPoint const &, int)
 	static WeatherInfo GetWeatherSmooth(const LHPoint& point, int recalc);
 
 	static void Update3D(float time); // 008357a0

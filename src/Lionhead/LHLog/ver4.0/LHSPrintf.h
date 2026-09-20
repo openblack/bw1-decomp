@@ -3,8 +3,7 @@
 
 #include <assert.h>
 
-// BW1W120 LHLogR import 008a9360: ?UNICODE_sprintf@@YAHPAG0ZZ.
-// Original UTF-16 formatting helper; keep its unsigned-short, cdecl variadic ABI.
+// BW1W120 007aee08 int UNICODE_sprintf(unsigned short *, unsigned short *, ...)
 __declspec(dllimport) int __cdecl UNICODE_sprintf(unsigned short* output, unsigned short* format, ...);
 
 class LHSPrintf

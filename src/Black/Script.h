@@ -78,12 +78,9 @@ public:
 
 	// BW1W120 006eb100 BW1M100 104de810 GScript::Create(void)
 	static GScript* Create();
-	// BW1W120 006ec780 GScript::StopHelpScripts(void)
-	// Windows passes script mask 0x4a with caller cleanup and consumes no instance.
+	// BW1W120 006ec780 void GScript::StopHelpScripts(void)
 	static void StopHelpScripts();
-	// BW1W120 0070bd60 BW1M100 GScript::CastSpellAtPos(MapCoords const &, MAGIC_TYPE, MapCoords const &, GameThing *, int, float, float, float, LHPoint const &)
-	// Windows uses caller cleanup and returns the created object (or NULL), not void.
-	// TODO: The precise returned object class is unrecovered; GameThing is provisional.
+	// BW1W120 0070bd60 GameThing * GScript::CastSpellAtPos(MapCoords const &, MAGIC_TYPE, MapCoords const &, GameThing *, int, float, float, float, LHPoint const &)
 	static GameThing* CastSpellAtPos(const MapCoords& position, MAGIC_TYPE type, const MapCoords& source,
 	                                 GameThing* owner, int param_5, float param_6, float param_7, float param_8,
 	                                 const LHPoint& point);

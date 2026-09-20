@@ -52,15 +52,13 @@ public:
 	static void UpdateCamera(const LHPoint& position, const LHPoint& focus);
 	// BW1W120 00818c60 BW1M100 100c0a80 LH3DTech::RenderInitialization(long, long)
 	static void RenderInitialization(long width, long height);
-	// BW1W120 0081c5c0 BW1M100 100337d0 LH3DTech::Draw3DScreenTriangle(long, LHPoint *, LH3DColor *, float *, long, long *, LH3DMaterial *, int)
-	// Windows: ECX=count, EDX=positions, six stack arguments, RET 0x18.
+	// BW1W120 0081c5c0 BW1M100 100337d0 void LH3DTech::Draw3DScreenTriangle(long, LHPoint *, LH3DColor *, float *, long, long *, LH3DMaterial *, int)
 	static void __fastcall Draw3DScreenTriangle(long num_points, LHPoint* positions, LH3DColor* colors, float* uvs,
 	                                            long num_indices, long* indices, LH3DMaterial* material, int param_8);
-	// BW1W120 0081c090. Mac Draw3DWorldTriangle__8LH3DTechFlP7LHPointP9LH3DColorPflPlP12LH3DMateriali.
-	// The source count is long; Windows internally narrows it to 16 bits. Same ABI as the screen variant.
+	// BW1W120 0081c090 void LH3DTech::Draw3DWorldTriangle(long, LHPoint *, LH3DColor *, float *, long, long *, LH3DMaterial *, int)
 	static void __fastcall Draw3DWorldTriangle(long num_points, LHPoint* positions, LH3DColor* colors, float* uvs,
 	                                           long num_triangles, long* indices, LH3DMaterial* material, int param_8);
-	// BW1W120 0081b370 LH3DTech::Get3DPointFromScreen(LHCoord const &, LHPoint &, float)
+	// BW1W120 0081b370 void LH3DTech::Get3DPointFromScreen(LHCoord const &, LHPoint &, float)
 	static void __fastcall Get3DPointFromScreen(const LHCoord& screen, LHPoint& point, float distance);
 };
 

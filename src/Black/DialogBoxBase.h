@@ -42,7 +42,6 @@ public:
 	virtual bool WantsMouseControl();
 	// BW1W120 00512810 BW1M100 103c4090 DialogBoxBase::CanESCOut(void)
 	virtual bool CanESCOut();
-	// BW1W120 vtable +0x20 points to __purecall.
 	virtual void InitControls() = 0;
 
 	// Static methods
@@ -51,14 +50,14 @@ public:
 	static void HideAll();
 
 	// Non-virtual methods
-	// BW1W120 00513770. Callers test the full EAX Boolean result.
+	// BW1W120 00513770 unsigned int DialogBoxBase::IsVisible(void)
 	bool32_t IsVisible();
 
 	// Constructors
 
 	// BW1W120 005133a0 BW1M100 102b2750 DialogBoxBase::DialogBoxBase(void)
 	DialogBoxBase();
-	// BW1W120 005133c0. Nonvirtual: unlinks this dialog from First.
+	// BW1W120 005133c0 DialogBoxBase::~DialogBoxBase(void)
 	~DialogBoxBase();
 };
 

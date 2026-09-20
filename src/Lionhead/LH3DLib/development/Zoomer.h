@@ -21,9 +21,6 @@ struct Zoomer
 	// Constructors
 
 	// BW1W120 inlined BW1M100 1056a120 Zoomer::Zoomer()
-	// The Windows SetupVBarGraph ctor (0040ef00) leaves the complete embedded
-	// Zoomer untouched until its explicit Reset call. Default construction is empty.
-	// Mac traceback __ct__6ZoomerFv has only BLR (file 005a83e0).
 	Zoomer() {}
 
 	// Non-virtual methods
@@ -36,8 +33,7 @@ struct Zoomer
 	float GetDestination();
 	// BW1W120 00407d60 BW1M100 1004ee60 Zoomer::SetDestinationWithSpeedAndTime(float, float, float)
 	void SetDestinationWithSpeedAndTime(float destination, float speed, float time);
-	// BW1W120 00441ac0 BW1M100 1035b310 Zoomer::SetPosition(float)
-	// Also inlined in Config, HelpDude and UI reset paths in BW1W120.
+	// BW1W120 00441ac0 BW1M100 1035b310 void Zoomer::SetPosition(float)
 	void SetPosition(float position)
 	{
 		destination = position;

@@ -79,10 +79,10 @@ struct LH3DRender
 	static void SetD3DTillingOff(int index);
 	// BW1W120 0082fd30 BW1M100 100a1d90 LH3DRender::CreateMaterial(LH3DMaterial::RenderMode, LH3DTexture *)
 	static LH3DMaterial* CreateMaterial(LH3DMaterial::RenderMode render_mode, LH3DTexture* texture);
-	// BW1W120 0082f2c0 BW1M100 100a27d0. Windows callbacks pop their one argument.
+	// BW1W120 0082f2c0 BW1M100 100a27d0 void LH3DRender::RegisterFinishFrameCallback(unsigned long, bool, void (*)(void *), void *)
 	static void RegisterFinishFrameCallback(unsigned long param_1, bool                    param_2,
 	                                        void(__stdcall* param_3)(void* param_1), void* param_4);
-	// BW1W120 0082f3b0
+	// BW1W120 0082f3b0 void LH3DRender::RemoveFinishFrameCallback(void (*)(void *), void *)
 	static void RemoveFinishFrameCallback(void(__stdcall* callback)(void*), void* context);
 	// BW1W120 0082f460 BW1M100 1003699c LH3DRender::FinishFrame(void)
 	static void FinishFrame();
