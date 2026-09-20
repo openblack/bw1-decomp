@@ -30,4 +30,7 @@ public:
 	virtual ~SetupStaticText();
 };
 
+// BW1W120 inlined BW1M100 100cb300 SetupStaticText::~SetupStaticText(void)
+inline SetupStaticText::~SetupStaticText() {}
+
 #endif /* BW1_DECOMP_SETUP_STATIC_TEXT_INCLUDED_H */

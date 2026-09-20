@@ -66,4 +66,64 @@ public:
 	int CalcCharpos(int pos);
 };
 
+#include <wchar.h>
+
+// BW1W120 0040c150 BW1M100 103dc010 SetupEdit::Drag(int, int)
+inline void SetupEdit::Drag(int x, int y)
+{
+	CursorPosition = CalcCharpos(x);
+	SelectStart = CursorPosition;
+}
+
+// BW1W120 0040c170 BW1M100 10430180 SetupEdit::MouseDown(int, int, bool)
+inline void SetupEdit::MouseDown(int x, int y, bool param_3)
+{
+	if (param_3)
+	{
+		CursorPosition = CalcCharpos(x);
+		SelectEnd = CursorPosition;
+		SelectStart = CursorPosition;
+	}
+}
+
+// BW1W120 0040c1a0 BW1M100 101178b0 SetupEdit::MouseUp(int, int, bool)
+inline void SetupEdit::MouseUp(int x, int y, bool param_3)
+{
+	if (param_3)
+	{
+		CursorPosition = CalcCharpos(x);
+		SelectStart = CursorPosition;
+		if (SelectStart > SelectEnd)
+		{
+			int position = SelectStart;
+			SelectStart = SelectEnd;
+			SelectEnd = position;
+		}
+		if (SelectStart == SelectEnd && field_0x464 != 0)
+		{
+			SelectStart = 0;
+			CursorPosition = wcslen(label);
+			SelectEnd = CursorPosition;
+		}
+		field_0x464 = 0;
+	}
+}
+
+// BW1W120 0040c500 BW1M100 100c1900 SetupEdit::SetFocus(bool)
+inline void SetupEdit::SetFocus(bool focus)
+{
+	if (focus && !this->focus)
+		field_0x464 = 1;
+	SetupControl::SetFocus(focus);
+	CursorPosition = wcslen(label);
+	SelectEnd = CursorPosition;
+	SelectStart = CursorPosition;
+	field_0x258 = 0;
+	if (focus)
+		SelectStart = 0;
+}
+
+// BW1W120 inlined BW1M100 1035a3a0 SetupEdit::~SetupEdit(void)
+inline SetupEdit::~SetupEdit() {}
+
 #endif /* BW1_DECOMP_SETUP_EDIT_INCLUDED_H */
