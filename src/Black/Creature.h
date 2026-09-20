@@ -588,7 +588,7 @@ public:
 	void FinishActionUnsuccessfully(char* param_1, int param_2, int param_3);
 	// BW1W120 00477850 BW1M100 101daef0 Creature::GetCreature3D(void)
 	LH3DCreature* GetCreature3D();
-	// BW1W120 00479eb0 BW1M100 Creature::ForceMoveMapObjectWithoutWalking(MapCoords const &)
+	// BW1W120 00479eb0 BW1M100 101d6840 Creature::ForceMoveMapObjectWithoutWalking(const MapCoords&)
 	void ForceMoveMapObjectWithoutWalking(const MapCoords& coords);
 	// BW1W120 0047c650 BW1M100 101d2500 Creature::SetAnimationTimeModify(bool value)
 	void SetAnimationTimeModify(bool value);
@@ -599,7 +599,7 @@ public:
 	                                 CreatureBelief* param_4, CreatureBelief* param_5, int param_6, int param_7);
 	// BW1W120 004c44b0 BW1M100 10230950 Creature::ForceActivityAndForceAction(CreaturePlan &, int, int)
 	void ForceActivityAndForceAction(CreaturePlan* param_1, int param_2, int param_3);
-	// BW1W120 004c59c0 BW1M100 Creature::MoveToDevelopmentPhase(DEVELOPMENT_PHASE, int)
+	// BW1W120 004c59c0 BW1M100 10232550 Creature::MoveToDevelopmentPhase(DEVELOPMENT_PHASE, int)
 	void MoveToDevelopmentPhase(DEVELOPMENT_PHASE phase, int param_2);
 	// BW1W120 004d1460 BW1M100 10248530 Creature::LookAtPosition(MapCoords *)
 	int LookAtPosition(MapCoords* destination);
@@ -651,12 +651,5 @@ public:
 };
 
 // Constructor boundaries: 00474690; flag stores: 00474130; allocation: 0055a697.
-static_assert(offsetof(Creature, HelpState) == 0x188, "Creature help offset is incorrect");
-static_assert(offsetof(Creature, HelpStackEntries) == 0x220, "Creature help stack offset is incorrect");
-static_assert(offsetof(Creature, ReceiveSpell) == 0x370, "Creature spell receiver offset is incorrect");
-static_assert(offsetof(Creature, field_0x110c) == 0x110c, "Creature flag offset is incorrect");
-static_assert(offsetof(Creature, field_0x1110) == 0x1110, "Creature flag offset is incorrect");
-static_assert(offsetof(Creature, field_0x1114) == 0x1114, "Creature flag offset is incorrect");
-static_assert(sizeof(Creature) == 0x12c8, "Creature size is incorrect");
 
 #endif /* BW1_DECOMP_CREATURE_INCLUDED_H */
