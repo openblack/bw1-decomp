@@ -1,0 +1,11 @@
+#ifndef BW1_DECOMP_DYNAMIC_LIGHT_AND_SHADOW_INCLUDED_H
+#define BW1_DECOMP_DYNAMIC_LIGHT_AND_SHADOW_INCLUDED_H
+
+class DynamicLightAndShadow
+{
+public:
+	// BW1W120 0086d460 BW1M100 1003b570 DynamicLightAndShadow::Clear(void)
+	static void Clear();
+};
+
+#endif /* BW1_DECOMP_DYNAMIC_LIGHT_AND_SHADOW_INCLUDED_H */

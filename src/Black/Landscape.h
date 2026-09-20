@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_LANDSCAPE_INCLUDED_H
 #define BW1_DECOMP_LANDSCAPE_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
+#include <assert.h>    /* For static_assert */
+#include <stdint.h>    /* For uint32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "MapCoords.h" /* For struct MapCoords */
 
@@ -25,33 +26,33 @@ struct LandscapeEffect;
 
 struct GLandscape
 {
-	// BW1W120 00d99580. Set by Open; TODO: original global name unknown.
+	// BW1W120 00d99580
 	static char Filename[];
-	// Original names unrecovered. Paired draw arrays hold 3000 entries; insertion stops at 2999.
 	// BW1W120 00d1a3ac
 	static uint32_t DrawObjectActive[3000];
 	// BW1W120 00d1d28c
 	static Object* DrawObjects[3000];
 	// BW1W120 00d20198
 	static int DrawObjectCount;
-	// BW1W120 00bf358c. Descriptive name; decremented when rebuilding the draw list.
+	// BW1W120 00bf358c
 	static int DrawListRebuildCount;
-	// Descriptive names recovered from the Windows users of these globals.
-	// BW1W120 00d1a360. Open computes the centre of the occupied block origins.
+	// BW1W120 00d1a360
 	static LHPoint Centre;
-	// BW1W120 00d1a370 / 00d20184
+	// BW1W120 00d1a370
 	static LHPoint HandLightPosition;
-	static float   HandLightIntensity;
-	// BW1W120 00d20180. Open loads and rescales the 12x12 hand-light bitmap.
+	// BW1W120 00d20184
+	static float HandLightIntensity;
+	// BW1W120 00d20180
 	static uint8_t* HandLightMap;
 	// BW1W120 00d20190
-	static uint32_t IsOpen;
-	// BW1W120 00bf357c. Original name unknown.
+	static bool32_t IsOpen;
+	// BW1W120 00bf357c
 	static int HandLightMapSize;
-	// BW1W120 00d20194 / 00d201a0
+	// BW1W120 00d20194
 	static LandscapeEffect* Effects;
-	static int              EffectCount;
-	// BW1W120 00bf3588. Initialized to 500.
+	// BW1W120 00d201a0
+	static int EffectCount;
+	// BW1W120 00bf3588
 	static int EffectDuration;
 	// BW1W120 005e5280 BW1M100 1037a310 GLandscape::Close(void)
 	void Close();
@@ -64,22 +65,14 @@ struct GLandscape
 	// Static methods
 
 	// BW1W120 inlined BW1M100 100198f0 GLandscape::ConvertLandscapePointToMapCoord(const LHPoint&, MapCoords&)
-	static void ConvertLandscapePointToMapCoord(const LHPoint* point, MapCoords* coords);
+	static void ConvertLandscapePointToMapCoord(const LHPoint& point, MapCoords& coords);
 	// BW1W120 inlined BW1M100 100a7370 GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords&, LHPoint&)
-	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords* coords, LHPoint* point);
+	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point);
 	// BW1W120 005e3f60 BW1M100 1001d960 GLandscape::PreDraw(void)
 	uint32_t PreDraw();
 	// BW1W120 00613750 BW1M100 10048570 GLandscape::ConvertMapCoordToLandscapePoint(const MapCoords&, LHPoint&)
 	static LHPoint* ConvertMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point)
 	{
-		// MSVC 6 inlines this. Inlined uses look like (esi=coords, eax=point):
-		//     call LH3DIsland::GetAltitude
-		//     fadds <spilled altitude>          fstps [point+4]
-		//     fild [coords]     fmul __real@4@3ff2a000000000000000   fstps [point]
-		//     fild [coords+4]   fmul __real@4@3ff2a000000000000000   fstps [point+8]
-		// The scale must stay literal/literal: MSVC 6 folds it to one constant,
-		// but `CellSize / ...` is not folded and emits a runtime fld+fmul.
-		// LHPoint& is an out-param, not a Rule 2 retbuf; by-value costs a copy.
 		float altitude;
 
 		altitude = coords.Altitude();

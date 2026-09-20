@@ -5,9 +5,11 @@
 
 struct vec2u16
 {
-  uint16_t x, y;
+	uint16_t x, y;
 };
 
 typedef uint32_t bool32_t;
+
+#define MIN(a, b) (((a) < (b)) ? (a) : (b))
 
 #endif /* BW1_DECOMP_REVERSING_UTILS_COMMON_INCLUDED_H */

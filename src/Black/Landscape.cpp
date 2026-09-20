@@ -19,6 +19,7 @@
 #include <string.h>
 #include <math.h>
 
+#include <Lionhead/LH3DLib/development/DynamicLightAndShadow.h>
 #include <Lionhead/LH3DLib/development/LH3DAtmos.h>
 #include <Lionhead/LH3DLib/development/LH3DComplexObject.h>
 #include <Lionhead/LH3DLib/development/LH3DLandscape.h>
@@ -36,19 +37,10 @@
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>
 
-// Unknown function/global names below are explicitly provisional; see RE/Landscape-surface.md
-// for their assembly evidence and the outstanding extracted-symbol integration.
-
-// BW1W120 005e2a90 void fn_005E2A90(int, int)
 void __fastcall fn_005E2A90(int block_x, int block_z);
-// BW1W120 005e2c30 LH3DObject * fn_005E2C30(void)
-LH3DObject* fn_005E2C30();
-// BW1W120 00822f90 void fn_00822F90(int, float, float)
+LH3DObject*     fn_005E2C30();
 void __fastcall fn_00822F90(int size, float x, float z);
-// BW1W120 00823780 void fn_00823780(void)
-void fn_00823780();
-// BW1W120 0086d460 void fn_0086D460(void)
-void fn_0086D460();
+void            fn_00823780();
 
 uint32_t GLandscape::DrawObjectActive[3000];
 Object*  GLandscape::DrawObjects[3000];
@@ -59,18 +51,16 @@ LHPoint          GLandscape::Centre;
 LHPoint          GLandscape::HandLightPosition;
 float            GLandscape::HandLightIntensity;
 uint8_t*         GLandscape::HandLightMap;
-uint32_t         GLandscape::IsOpen;
+bool32_t         GLandscape::IsOpen;
 LandscapeEffect* GLandscape::Effects;
 int              GLandscape::EffectCount;
 
-// BW1W120 005e3f60 BW1M100 1001d960 unsigned int GLandscape::PreDraw(void)
 uint32_t GLandscape::PreDraw()
 {
 	LH3DIsland::PreDraw();
 	return 1;
 }
 
-// BW1W120 005e3f70 void DrawLandscapeWaterLight(LHPoint, unsigned int)
 void DrawLandscapeWaterLight(LHPoint point, uint32_t colour)
 {
 	// Descriptive name; draws the hand-light quad at water level only when the
@@ -88,17 +78,17 @@ void DrawLandscapeWaterLight(LHPoint point, uint32_t colour)
 	{
 		minX = 0;
 	}
-	else if (minX >= 511)
+	else
 	{
-		minX = 511;
+		minX = MIN(minX, 511);
 	}
 	if (minZ <= 0)
 	{
 		minZ = 0;
 	}
-	else if (minZ >= 511)
+	else
 	{
-		minZ = 511;
+		minZ = MIN(minZ, 511);
 	}
 
 	bool       touchesWater = false;
@@ -164,10 +154,9 @@ void DrawLandscapeWaterLight(LHPoint point, uint32_t colour)
 	LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, oldZFunc);
 }
 
-// BW1W120 005e5280 BW1M100 1037a310 void GLandscape::Close(void)
 void GLandscape::Close()
 {
-	IsOpen = 0;
+	IsOpen = false;
 	GLandAlignement::Close();
 	LH3DLandscape::Release();
 	LH3DIsland::Release();
@@ -178,12 +167,11 @@ void GLandscape::Close()
 	GameBlock::Release();
 }
 
-// BW1W120 005e52e0 BW1M100 10379f50 void GLandscape::Open(char *)
 void GLandscape::Open(char* path)
 {
 	fn_007DEE00();
 	HandLightIntensity = 0.0f;
-	IsOpen = 1;
+	IsOpen = true;
 	strcpy(Filename, path);
 	LH3DLandscape::Release();
 	LH3DIsland::Release();
@@ -260,19 +248,16 @@ void GLandscape::Open(char* path)
 	fn_007DEE00();
 }
 
-// BW1W120 005e55c0 GLandscape::~GLandscape(void)
 GLandscape::~GLandscape()
 {
 	fn_007DEE00();
 }
 
-// BW1W120 005e57a0 void LandscapeTextureUpdated(void *, int, int, int)
 void __fastcall LandscapeTextureUpdated(void* pixels, int size, int block_x, int block_z)
 {
 	// The original installed callback consists solely of RET 8.
 }
 
-// BW1W120 005e57b0 void ClearLight(void)
 void ClearLight()
 {
 	if (GLandscape::HandLightIntensity > 0.0f)
@@ -288,10 +273,9 @@ void ClearLight()
 		fn_00823780();
 	}
 	// Clear the dynamic lights and reset their count.
-	fn_0086D460();
+	DynamicLightAndShadow::Clear();
 }
 
-// BW1W120 005e55d0 unsigned int IntersectLandscapeWaterPlane(LHPoint const &, LHPoint const &, LHPoint &)
 uint32_t IntersectLandscapeWaterPlane(const LHPoint& from, const LHPoint& to, LHPoint& point)
 {
 	// Descriptive name; intersects a downward ray with y=0 without constraining it to the segment.
@@ -309,7 +293,6 @@ uint32_t IntersectLandscapeWaterPlane(const LHPoint& from, const LHPoint& to, LH
 	return 1;
 }
 
-// BW1W120 005e5620 unsigned int GLandscape::PickPoint(LHCoord const &, LHPoint &, float *)
 uint32_t __fastcall GLandscape::PickPoint(const LHCoord& screen, LHPoint& point, float* depth)
 {
 	// Provisional name/ownership: ECX=this (unused), EDX=screen, two stack outputs, RET 8.
@@ -342,7 +325,6 @@ uint32_t __fastcall GLandscape::PickPoint(const LHCoord& screen, LHPoint& point,
 	return 1;
 }
 
-// BW1W120 005e5740 unsigned int GLandscape::PickMapCoords(LHCoord const &, MapCoords &, float *)
 uint32_t __fastcall GLandscape::PickMapCoords(const LHCoord& screen, MapCoords& coords, float* depth)
 {
 	LHPoint point;
@@ -356,7 +338,6 @@ uint32_t __fastcall GLandscape::PickMapCoords(const LHCoord& screen, MapCoords& 
 	return 1;
 }
 
-// BW1W120 005e5b90 unsigned int GLandscape::PickPoint(Point2D const &, LHPoint &, float *)
 uint32_t __fastcall GLandscape::PickPoint(const Point2D& screen, LHPoint& point, float* depth)
 {
 	LHCoord integerScreen;
@@ -365,7 +346,6 @@ uint32_t __fastcall GLandscape::PickPoint(const Point2D& screen, LHPoint& point,
 	return PickPoint(integerScreen, point, depth);
 }
 
-// BW1W120 005e5bd0 void GLandscape::ConvertCellToLandscapePoint(JustMapXZ const &, LHPoint &)
 void GLandscape::ConvertCellToLandscapePoint(const JustMapXZ& cell, LHPoint& point)
 {
 	point.x = (float)((int)cell.x * 65536) * CellSize * (1.0f / 65536.0f);
@@ -381,13 +361,11 @@ void GLandscape::ConvertCellToLandscapePoint(const JustMapXZ& cell, LHPoint& poi
 	}
 }
 
-// BW1W120 005e5c90 LHPoint GLandscape::GetCentre(void)
 LHPoint GLandscape::GetCentre()
 {
 	return Centre;
 }
 
-// BW1W120 005e6310 float LandscapeDistanceToCameraSquared(LHPoint const &)
 float __fastcall LandscapeDistanceToCameraSquared(const LHPoint& point)
 {
 	// Same calculation as LH3DTech::GetValueForZSorter; original out-of-line owner/name is unknown.
@@ -398,7 +376,6 @@ float __fastcall LandscapeDistanceToCameraSquared(const LHPoint& point)
 	return x * x + y * y + z * z;
 }
 
-// BW1W120 005e5cb0 void SetLandscapeDebugColour(LHColor &)
 void SetLandscapeDebugColour(LHColor& colour)
 {
 	colour.b = 0;
@@ -407,7 +384,6 @@ void SetLandscapeDebugColour(LHColor& colour)
 	colour.a = 255;
 }
 
-// BW1W120 005e6350 LandscapeEffect::~LandscapeEffect(void)
 LandscapeEffect::~LandscapeEffect()
 {
 	if (GLandscape::Effects == this)
@@ -431,7 +407,6 @@ LandscapeEffect::~LandscapeEffect()
 	}
 }
 
-// BW1W120 005e6390 void LandscapeEffect::Draw(void)
 void LandscapeEffect::Draw()
 {
 	// Two passes: animated UV material, then depth-equal override.
@@ -482,7 +457,6 @@ void LandscapeEffect::Draw()
 	}
 }
 
-// BW1W120 005e6540 BW1M100 10378b00 void GoolooGooloo(Object *)
 void GoolooGooloo(Object* object)
 {
 	if (object == NULL || object->Game3dObject == NULL)
@@ -514,7 +488,6 @@ void GoolooGooloo(Object* object)
 	effect->TimeRemaining = GLandscape::EffectDuration;
 }
 
-// BW1W120 005e6630 void LandscapeDebugText::Draw(void)
 void LandscapeDebugText::Draw()
 {
 	LHColor colour;
@@ -532,7 +505,6 @@ void LandscapeDebugText::Draw()
 	}
 }
 
-// BW1W120 005e66a0 void LandscapeDebugText::AddDrawing(void)
 void LandscapeDebugText::AddDrawing()
 {
 	LH3DRender::g_zsorter->NewZObject(this, (LH3DZSorter::DrawCallback)&LandscapeDebugText::Draw, 0.0f, 0);
@@ -547,7 +519,6 @@ void LandscapeDebugText::AddDrawing()
 	}
 }
 
-// BW1W120 005e5100 void LandscapeWaterCircle::Draw(void)
 void LandscapeWaterCircle::Draw()
 {
 	if (MoveWithWind)
@@ -576,7 +547,7 @@ void LandscapeWaterCircle::Draw()
 	GWater::g_sprite_circle->field_0xc = radius;
 	int      alpha = (int)((255.0f - (Age % 700) * (255.0f / 700.0f)) * (int)(Colour >> 24)) >> 8;
 	uint32_t colour = (Colour & 0x00ffffff) | (alpha << 24);
-	GWater::g_sprite_circle->field_0x20 = colour;
+	GWater::g_sprite_circle->DiffuseColour = colour;
 	GWater::g_sprite_circle->angle = Angle;
 	GWater::g_sprite_circle->field_0x28 = (GWater::g_sprite_circle->field_0x28 & ~0x3f) | (SpriteFlags & 0x3f);
 	GWater::g_sprite_circle->Draw();
