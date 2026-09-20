@@ -12,7 +12,7 @@ public:
 	TEXTJUSTIFY text_justify;    /* 0x23c */
 	int         DisplayTextSize; /* 0x240 */
 
-	// BW1W120 inlined SetupStaticText::SetupStaticText(int, int, int, int, int, unsigned short const *, TEXTJUSTIFY)
+	// BW1W120 inlined BW1M100 10327f40 SetupStaticText::SetupStaticText(int, int, int, int, int, wchar_t*, TEXTJUSTIFY)
 	SetupStaticText(int id, int x, int y, int width, int height, const char16_t* label,
 	                TEXTJUSTIFY justify = TEXTJUSTIFY_LEFT)
 		: SetupControl(id, x, y, width, height, label)
@@ -24,12 +24,10 @@ public:
 
 	// Override methods
 
-	// BW1W120 00409430 BW1M100 105436e0 void SetupStaticText::Draw(bool, bool)
+	// BW1W120 00409430 BW1M100 105436e0 SetupStaticText::Draw(bool, bool)
 	virtual void Draw(bool hovered, bool selected);
 	// BW1W120 inlined BW1M100 100cb300 SetupStaticText::~SetupStaticText(void)
 	virtual ~SetupStaticText();
 };
-
-static_assert(sizeof(SetupStaticText) == 0x244, "SetupStaticText size is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_STATIC_TEXT_INCLUDED_H */

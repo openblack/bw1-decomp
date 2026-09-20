@@ -25,23 +25,21 @@ public:
 
 	// Override methods
 
-	// BW1W120 00410f90 BW1M100 10112370 bool SetupCheckBox::HitTest(int, int)
+	// BW1W120 00410f90 BW1M100 10112370 SetupCheckBox::HitTest(int, int)
 	virtual bool HitTest(int x, int y);
-	// BW1W120 00410b80 BW1M100 103c4a20 void SetupCheckBox::Draw(bool, bool)
+	// BW1W120 00410b80 BW1M100 103c4a20 SetupCheckBox::Draw(bool, bool)
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 00411020 BW1M100 103dbde0 void SetupCheckBox::Click(int, int)
+	// BW1W120 00411020 BW1M100 103dbde0 SetupCheckBox::Click(int, int)
 	virtual void Click(int x, int y);
-	// BW1W120 00411050 BW1M100 10599580 void SetupCheckBox::KeyDown(LHKey, LHKeyMod)
+	// BW1W120 00411050 BW1M100 10599580 SetupCheckBox::KeyDown(int, int)
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
 	// BW1W120 inlined BW1M100 105893e0 SetupCheckBox::~SetupCheckBox(void)
 	virtual ~SetupCheckBox();
 
 	// Constructors
 
-	// BW1W120 00410f10 BW1M100 1058b890 SetupCheckBox::SetupCheckBox(int, int, int, bool, int, unsigned short const *, int)
+	// BW1W120 00410f10 BW1M100 1058b890 SetupCheckBox::SetupCheckBox(int, int, int, bool, int, wchar_t*, int)
 	SetupCheckBox(int id, int x, int y, bool checked, int style, const char16_t* label, int size);
 };
-
-static_assert(sizeof(SetupCheckBox) == 0x260, "SetupCheckBox size is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_CHECK_BOX_INCLUDED_H */

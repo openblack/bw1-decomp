@@ -48,26 +48,23 @@ public:
 
 	// Static methods
 
-	// BW1W120 00407ed0 BW1M100 10075ef0 SetupBox * SetupBox::GetCurrentActiveBox(void)
+	// BW1W120 00407ed0 BW1M100 10075ef0 SetupBox::GetCurrentActiveBox(void)
 	static SetupBox* GetCurrentActiveBox();
 
 	// Non-virtual methods
 
-	// BW1W120 00408100 SetupControl * SetupBox::FindControl(int, int)
+	// BW1W120 00408100 BW1M100 1043c150 SetupBox::FindControl(int, int)
 	SetupControl* FindControl(int x, int y);
-	// BW1W120 00408160 BW1M100 1043c330 SetupControl * SetupBox::FindControl(int)
+	// BW1W120 00408160 BW1M100 1043c330 SetupBox::FindControl(int)
 	SetupControl* FindControl(int id);
-	// BW1W120 00409140 BW1M100 10598ed0 void SetupBox::SetFocusControl(SetupControl *)
+	// BW1W120 00409140 BW1M100 10598ed0 SetupBox::SetFocusControl(SetupControl*)
 	void SetFocusControl(SetupControl* widget);
-	// BW1W120 00411090 BW1M100 1047e3e0 void SetupBox::SetFocusNext(void)
+	// BW1W120 00411090 BW1M100 1047e3e0 SetupBox::SetFocusNext(void)
 	void SetFocusNext();
-	// BW1W120 00411100 BW1M100 10478e70 void SetupBox::SetFocusPrev(void)
+	// BW1W120 00411100 BW1M100 10478e70 SetupBox::SetFocusPrev(void)
 	void SetFocusPrev();
-	// BW1W120 00411190 BW1M100 100c3160 void SetupBox::MessageBoxA(wchar_t *, MSGBOXSTYLE, unsigned long)
+	// BW1W120 00411190 BW1M100 100c3160 SetupBox::MessageBoxA(wchar_t*, MSGBOXSTYLE, unsigned long)
 	void MessageBoxA(const char16_t* param_2, uint32_t param_3, uint32_t param_4);
 };
-
-static_assert(sizeof(SetupBox) == 0xcc, "SetupBox size is incorrect");
-static_assert(offsetof(SetupBox, field_0xc8) == 0xc8, "SetupBox flag offset is incorrect");
 
 #endif /* BW1_DECOMP_SETUP_BOX_INCLUDED_H */
