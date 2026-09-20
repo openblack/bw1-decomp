@@ -1,0 +1,11 @@
+#ifndef BW1_DECOMP_TEMPORARY_SHADOW_INCLUDED_H
+#define BW1_DECOMP_TEMPORARY_SHADOW_INCLUDED_H
+
+class TemporaryShadow
+{
+public:
+	// BW1W120 00825190 BW1M100 imported
+	static void UpdateAll();
+};
+
+#endif /* BW1_DECOMP_TEMPORARY_SHADOW_INCLUDED_H */

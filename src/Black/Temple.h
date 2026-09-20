@@ -10,42 +10,55 @@ class TempleRoom;
 
 struct Temple
 {
-    TempleRoom* rooms[0x7]; /* 0x0 */
-    TempleRoom* active_room; /* 0x1c */
-    uintptr_t field_0x20;
-    uint32_t field_0x24;
-    float fov;
-    float field_0x2c;
-    float field_0x30;
-    float field_0x34;
-    float field_0x38;
-    float field_0x3c;
-    float field_0x40;
-    uint32_t field_0x44;
-    uint8_t field_0x48;
-    uint8_t field_0x49;
-    uint8_t field_0x4a;
-    uint8_t field_0x4b;
-    uint8_t field_0x4c;
-    uint8_t field_0x4d;
-    uint8_t field_0x4e;
-    uint8_t field_0x4f;
-    uint32_t field_0x50;
+	static void UpdateFade(); // 00794280
+	// TODO: Original names/static scope unrecovered; shared state maintained by Temple::UpdateFade.
+	// BW1W120 00c2a150
+	static float Dat_00C2A150;
+	// BW1W120 00e06020
+	static float Dat_00E06020;
 
-    // Static methods
+	TempleRoom* rooms[0x7]; /* 0x0 */
+	TempleRoom* ActiveRoom; /* 0x1c */
+	uintptr_t   field_0x20;
+	uint32_t    field_0x24;
+	float       fov;
+	float       field_0x2c;
+	float       field_0x30;
+	float       field_0x34;
+	float       field_0x38;
+	float       field_0x3c;
+	float       field_0x40;
+	uint32_t    field_0x44;
+	uint8_t     field_0x48;
+	uint8_t     field_0x49;
+	uint8_t     field_0x4a;
+	uint8_t     field_0x4b;
+	uint8_t     field_0x4c;
+	uint8_t     field_0x4d;
+	uint8_t     field_0x4e;
+	uint8_t     field_0x4f;
+	uint32_t    field_0x50;
 
-    // BW1W120 00794a30 BW1M100 105362a0 Temple::ProcessGameTurn(void)
-    static void ProcessGameTurn();
+	// Static methods
 
-    // Constructors
+	// BW1W120 00794a30 BW1M100 105362a0 Temple::ProcessGameTurn(void)
+	void ProcessGameTurn();
 
-    // BW1W120 00793ac0 BW1M100 10537d50 Temple::Temple(void)
-    Temple();
+	// Constructors
 
-    // Non-virtual methods
+	// BW1W120 00793ac0 BW1M100 10537d50 Temple::Temple(void)
+	Temple();
+	// BW1W120 00793c30 BW1M100 10537ca0 Temple::~Temple(void)
+	~Temple();
 
-    // BW1W120 00794a20 BW1M100 10536350 Temple::StartScript(unsigned long)
-    bool StartScript(unsigned long param_1);
+	// Non-virtual methods
+
+	// BW1W120 00793ee0 BW1M100 1053fe70 Temple::Update(void)
+	void Update();
+	// BW1W120 00794370 BW1M100 1053f7c0 Temple::Draw(void)
+	void Draw();
+	// BW1W120 00794a20 BW1M100 10536350 Temple::StartScript(unsigned long)
+	bool StartScript(unsigned long param_1);
 };
 
 #endif /* BW1_DECOMP_TEMPLE_INCLUDED_H */

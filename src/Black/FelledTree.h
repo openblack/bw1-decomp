@@ -11,18 +11,17 @@
 class Base;
 class GameThing;
 
-class FelledTree: public DeadTree
+class FelledTree : public DeadTree
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 005118e0 BW1M100 100c0cc0 FelledTree::_dt(void)
-    virtual ~FelledTree();
-    // BW1W120 005118d0 BW1M100 100c0de0 FelledTree::GetDebugText(void)
-    virtual char* GetDebugText();
-    // BW1W120 005118c0 BW1M100 100c0da0 FelledTree::GetSaveType(void)
-    virtual uint32_t GetSaveType();
+	// BW1W120 005118e0 BW1M100 100c0cc0 FelledTree::_dt(void)
+	virtual ~FelledTree();
+	// BW1W120 005118d0 BW1M100 100c0de0 FelledTree::GetDebugText(void)
+	virtual char* GetDebugText();
+	// BW1W120 005118c0 BW1M100 100c0da0 FelledTree::GetSaveType(void)
+	virtual uint32_t GetSaveType();
 };
 
 #endif /* BW1_DECOMP_FELLED_TREE_INCLUDED_H */

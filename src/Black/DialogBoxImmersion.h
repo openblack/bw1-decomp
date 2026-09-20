@@ -12,31 +12,32 @@ class SetupBigButton;
 class SetupButton;
 class SetupStaticText;
 
-class DialogBoxImmersion: public DialogBoxBase
+class DialogBoxImmersion : public DialogBoxBase
 {
 public:
-    SetupStaticText* field_0x10;
-    SetupStaticText* field_0x14;
-    SetupBigButton* field_0x18;
-    SetupBigButton* field_0x1c;
-    SetupButton* field_0x20;
-    SetupBigButton* field_0x24;
-    uint32_t field_0x28;
-    uint32_t field_0x2c;
+	SetupStaticText* field_0x10;
+	SetupStaticText* field_0x14;
+	SetupBigButton*  field_0x18;
+	SetupBigButton*  field_0x1c;
+	SetupButton*     field_0x20;
+	SetupBigButton*  field_0x24;
+	uint32_t         field_0x28;
+	uint32_t         field_0x2c;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 00514a80 BW1M100 102b39f0 DialogBoxImmersion::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // BW1W120 00514d70 BW1M100 102b3990 DialogBoxImmersion::Destroy(void)
-    virtual void Destroy();
-    // BW1W120 00514d80 BW1M100 102b3920 DialogBoxImmersion::InitControls(void)
-    virtual void InitControls();
+	// BW1W120 00514a80 BW1M100 102b39f0 DialogBoxImmersion::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	virtual void Init(uint32_t param_1, uint32_t param_2,
+	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	// BW1W120 00514d70 BW1M100 102b3990 DialogBoxImmersion::Destroy(void)
+	virtual void Destroy();
+	// BW1W120 00514d80 BW1M100 102b3920 DialogBoxImmersion::InitControls(void)
+	virtual void InitControls();
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 005149d0 BW1M100 inlined DialogBoxImmersion::DialogBoxImmersion(void)
-    DialogBoxImmersion();
+	// BW1W120 005149d0 BW1M100 inlined DialogBoxImmersion::DialogBoxImmersion(void)
+	DialogBoxImmersion();
 };
 
 #endif /* BW1_DECOMP_DIALOG_BOX_IMMERSION_INCLUDED_H */

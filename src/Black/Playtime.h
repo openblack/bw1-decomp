@@ -10,14 +10,13 @@
 
 class Base;
 
-class Playtime: public GameThing
+class Playtime : public GameThing
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0066c410 BW1M100 inlined Playtime::_dt(void)
-    virtual ~Playtime();
+	// BW1W120 0066c410 BW1M100 inlined Playtime::_dt(void)
+	virtual ~Playtime();
 };
 
 #endif /* BW1_DECOMP_PLAYTIME_INCLUDED_H */

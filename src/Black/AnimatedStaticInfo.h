@@ -10,14 +10,13 @@
 
 class Base;
 
-class GAnimatedStaticInfo: public GFeatureInfo
+class GAnimatedStaticInfo : public GFeatureInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00421f20 BW1M100 100a67f0 GAnimatedStaticInfo::_dt(void)
-    virtual ~GAnimatedStaticInfo();
+	// BW1W120 00421f20 BW1M100 100a67f0 GAnimatedStaticInfo::_dt(void)
+	virtual ~GAnimatedStaticInfo();
 };
 
 #endif /* BW1_DECOMP_ANIMATED_STATIC_INFO_INCLUDED_H */

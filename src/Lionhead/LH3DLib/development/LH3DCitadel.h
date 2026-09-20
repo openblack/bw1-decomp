@@ -6,10 +6,10 @@
 
 #include "LH3DStaticMorphableObject.h" /* For struct LH3DStaticMorphableObject */
 
-class LH3DCitadel: public LH3DStaticMorphableObject
+class LH3DCitadel : public LH3DStaticMorphableObject
 {
 public:
-    uint8_t field_0x84[0x3c];
+	uint8_t field_0x84[0x3c];
 };
 
 #endif /* BW1_DECOMP_LH3D_CITADEL_INCLUDED_H */

@@ -1,0 +1,1 @@
+#include "MobileObjectInfo.h"

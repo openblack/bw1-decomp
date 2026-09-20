@@ -14,22 +14,25 @@ struct LHPoint;
 
 struct LH3DPrimitive
 {
-    LH3DMaterial material_; /* 0x0 */
-    int num_vertices_; /* 0x10 */
-    LH3DVertex* vertices_;
-    int num_triangles_;
-    uint8_t* triangles_;
-    int num_vertex_groups_; /* 0x20 */
-    LH3DVertexGroup* vertex_groups_;
-    int num_blends_;
-    uint8_t* blends_;
+	LH3DMaterial     Material;    /* 0x0 */
+	int              NumVertices; /* 0x10 */
+	LH3DVertex*      Vertices;
+	int              NumTriangles;
+	uint8_t*         Triangles;
+	int              NumVertexGroups; /* 0x20 */
+	LH3DVertexGroup* VertexGroups;
+	int              NumBlends;
+	uint8_t*         Blends;
 
-    // Static methods
+	// Static methods
 
-    // BW1W120 00807f30 BW1M100 1006ad00 LH3DPrimitive::ComputeBoundingBox(LHPoint&, LHPoint&, int&)
-    static void ComputeBoundingBox(LH3DPrimitive* this, LHPoint* maxima, LHPoint* minima, int* initialized);
-    // BW1W120 0084ab50 BW1M100 100a01f0 LH3DPrimitive::Create(unsigned char *, LH3DPrimitive *)
-    static void Create(const uint8_t* buffer, LH3DPrimitive* primitive);
+	// BW1W120 0084ab50 BW1M100 100a01f0 LH3DPrimitive::Create(unsigned char *, LH3DPrimitive *)
+	static void Create(const uint8_t* buffer, LH3DPrimitive* primitive);
+
+	// Non-virtual methods
+
+	// BW1W120 00807f30 BW1M100 1006ad00 LH3DPrimitive::ComputeBoundingBox(LHPoint&, LHPoint&, int&)
+	void ComputeBoundingBox(LHPoint& maxima, LHPoint& minima, int& initialized);
 };
 
 #endif /* BW1_DECOMP_LH3D_PRIMITIVE_INCLUDED_H */

@@ -11,16 +11,15 @@
 class Base;
 class GameThingWithPos;
 
-class PlannedCreaturePen: public PlannedCitadelPart
+class PlannedCreaturePen : public PlannedCitadelPart
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 004ef050 BW1M100 102748a0 PlannedCreaturePen::_dt(void)
-    virtual ~PlannedCreaturePen();
-    // BW1W120 004ef040 BW1M100 10274940 PlannedCreaturePen::GetText(void)
-    virtual const char* GetText();
+	// BW1W120 004ef050 BW1M100 102748a0 PlannedCreaturePen::_dt(void)
+	virtual ~PlannedCreaturePen();
+	// BW1W120 004ef040 BW1M100 10274940 PlannedCreaturePen::GetText(void)
+	virtual const char* GetText();
 };
 
 #endif /* BW1_DECOMP_PLANNED_CREATURE_PEN_INCLUDED_H */

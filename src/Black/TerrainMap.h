@@ -4,19 +4,25 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include "Base.h" /* For struct Base */
+#include "Base.h"           /* For struct Base */
 #include "TerrainMapInfo.h" /* For struct TerrainMapInfo */
 
-class GTerrainMap: public Base
+class GTerrainMap : public Base
 {
 public:
-    TerrainMapInfo list[0x400]; /* 0x8 */
-    TerrainMapInfo map_info; /* 0x4a008 */
+	// BW1W120 00735540 BW1M100 10542460 GTerrainMap::Clear(void)
+	void Clear();
+	// BW1W120 0054bcd0 GTerrainMap::GTerrainMap(void)
+	GTerrainMap();
+	// BW1W120 00735500 BW1M100 10542500 GTerrainMap::Init(void)
+	void           Init();
+	TerrainMapInfo list[0x400]; /* 0x8 */
+	TerrainMapInfo MapInfo;     /* 0x4a008 */
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 0054bd90 BW1M100 1040fcc0 GTerrainMap::_dt(void)
-    virtual ~GTerrainMap();
+	// BW1W120 0054bd90 BW1M100 1040fcc0 GTerrainMap::_dt(void)
+	virtual ~GTerrainMap() {}
 };
 
 #endif /* BW1_DECOMP_TERRAIN_MAP_INCLUDED_H */

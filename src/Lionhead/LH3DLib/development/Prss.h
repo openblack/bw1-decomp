@@ -13,20 +13,29 @@ struct MouseInput;
 class Prss
 {
 public:
-    uint32_t field_0x4;
-    uint32_t field_0x8;
-    uint32_t field_0xc;
+	uint32_t field_0x4;
+	uint32_t field_0x8;
+	uint32_t field_0xc;
 
-    // Override methods
+	// Virtual methods, in Windows vtable order (there is no virtual destructor).
 
-    // BW1W120 00842130 BW1M100 10063270 Prss::Terminate(void)
-    virtual void Terminate();
-    // BW1W120 00842160 BW1M100 100631e0 Prss::PrssKey(LH_KEY, unsigned short)
-    virtual void PrssKey(LH_KEY key, uint16_t param_2);
-    // BW1W120 00842170 BW1M100 10063170 Prss::PrssMouse(MouseInput *)
-    virtual void PrssMouse(MouseInput* param_1);
-    // BW1W120 004f7200 BW1M100 10062140 Prss::StringFunction(long, char *, int)
-    virtual void StringFunction(int param_1, char* param_2, int param_3);
+	virtual Prss* ProcessTurn() = 0;
+	virtual void  Display() = 0;
+
+	// BW1W120 00842130 BW1M100 10063270 Prss::Terminate(void)
+	virtual void Terminate();
+	// BW1W120 00842160 BW1M100 100631e0 Prss::PrssKey(LH_KEY, unsigned short)
+	virtual void PrssKey(LH_KEY key, uint16_t param_2);
+	// BW1W120 00842170 BW1M100 10063170 Prss::PrssMouse(MouseInput *)
+	virtual void PrssMouse(MouseInput* param_1);
+	virtual void ClickFunction(int param_1, int param_2, int param_3) = 0;
+	// BW1W120 004f7200 BW1M100 10062140 Prss::StringFunction(long, char *, int)
+	virtual void StringFunction(int param_1, char* param_2, int param_3);
 };
+
+// BW1W120 00842030 BW1M100 imported EditorProcessKey(LH_KEY, unsigned short)
+void EditorProcessKey(LH_KEY key, unsigned short modifier);
+// BW1W120 00842050 BW1M100 imported EditorProcessInputs(void)
+void EditorProcessInputs();
 
 #endif /* BW1_DECOMP_PRSS_INCLUDED_H */

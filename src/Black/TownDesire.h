@@ -16,54 +16,58 @@ class Villager;
 
 struct DesireSort
 {
-  uint32_t field_0x0;
-  float field_0x4;
-  enum TOWN_DESIRE_INFO field_0x8;
+	uint32_t              field_0x0;
+	float                 field_0x4;
+	enum TOWN_DESIRE_INFO field_0x8;
 };
 
-class TownDesire: public Base
+class TownDesire : public Base
 {
 public:
-    struct field_0x8_t
-    {
-        uint8_t field_0x0[0x8];
-    };
+	// Mac GameOSFile::ReadSafe (10301420) exposes these as separate float arrays.
+	float      field_0x8[TOWN_DESIRE_INFO_LAST];
+	float      field_0x4c[TOWN_DESIRE_INFO_LAST];
+	float      field_0x90[TOWN_DESIRE_INFO_LAST];
+	float      field_0xd4[TOWN_DESIRE_INFO_LAST];
+	float      field_0x118[TOWN_DESIRE_INFO_LAST];
+	uint32_t   field_0x15fc; /* 0x15c */
+	Town*      town;         /* 0x160 */
+	float      field_0x164;
+	float      field_0x168[TOWN_DESIRE_INFO_LAST];
+	float      field_0x1ac[TOWN_DESIRE_INFO_LAST];
+	float      field_0x1f0[TOWN_DESIRE_INFO_LAST];
+	float      field_0x234[TOWN_DESIRE_INFO_LAST];
+	DesireSort sorts[TOWN_DESIRE_INFO_LAST];  /* 0x278 */
+	DesireSort sorts2[TOWN_DESIRE_INFO_LAST]; /* 0x344 */
+	long       field_0x410[TOWN_DESIRE_INFO_LAST];
+	float      field_0x454[TOWN_DESIRE_INFO_LAST];
+	float      field_0x498[TOWN_DESIRE_INFO_LAST];
+	float      field_0x4dc[TOWN_DESIRE_INFO_LAST];
+	float      field_0x520[TOWN_DESIRE_INFO_LAST];
 
-    field_0x8_t field_0x8[TOWN_DESIRE_INFO_LAST];
-    float field_0x90[TOWN_DESIRE_INFO_LAST];
-    float field_0xd4[TOWN_DESIRE_INFO_LAST];
-    float field_0x118[TOWN_DESIRE_INFO_LAST];
-    uint32_t field_0x15fc; /* 0x15c */
-    Town* town; /* 0x160 */
-    float field_0x164;
-    float field_0x168[TOWN_DESIRE_INFO_LAST];
-    uint32_t field_0x1ac[TOWN_DESIRE_INFO_LAST];
-    uint32_t field_0x1f0[TOWN_DESIRE_INFO_LAST];
-    uint32_t field_0x234[TOWN_DESIRE_INFO_LAST];
-    DesireSort sorts[TOWN_DESIRE_INFO_LAST]; /* 0x278 */
-    DesireSort sorts2[TOWN_DESIRE_INFO_LAST]; /* 0x344 */
-    uint32_t field_0x410[TOWN_DESIRE_INFO_LAST];
-    float field_0x454[TOWN_DESIRE_INFO_LAST];
-    uint32_t field_0x498[TOWN_DESIRE_INFO_LAST];
-    float field_0x4dc[TOWN_DESIRE_INFO_LAST];
-    uint32_t field_0x520[TOWN_DESIRE_INFO_LAST];
+	// Override methods
 
-    // Override methods
+	// BW1W120 00745730 BW1M100 1055ea40 TownDesire::_dt(void)
+	virtual ~TownDesire();
 
-    // BW1W120 00745730 BW1M100 1055ea40 TownDesire::_dt(void)
-    virtual ~TownDesire();
+	// Constructors
 
-    // Constructors
+	// BW1W120 00745710 BW1M100 1055ead0 TownDesire::TownDesire(void)
+	TownDesire();
 
-    // BW1W120 00745710 BW1M100 1055ead0 TownDesire::TownDesire(void)
-    TownDesire();
+	// Non-virtual methods
 
-    // Non-virtual methods
-
-    // BW1W120 00745ae0 BW1M100 1005c8d0 TownDesire::Process(void)
-    void Process();
-    // BW1W120 00745f80 BW1M100 1005d280 TownDesire::GetInfo(unsigned long) const
-    GTownDesireInfo* GetInfo(unsigned long param_1);
+	// BW1W120 00745ae0 BW1M100 1005c8d0 TownDesire::Process(void)
+	void Process();
+	// BW1W120 00745d80 BW1M100 1005d130 TownDesire::CallDesireFunction(unsigned long)
+	void CallDesireFunction(uint32_t param_1);
+	// BW1W120 00745ff0 TownDesire::CheckVillagerNeededForTownDesire(Villager *, float)
+	// TODO: incorrect return type
+	void CheckVillagerNeededForTownDesire(Villager* villager, float trigger);
+	// BW1W120 00745f80 BW1M100 1005d280 TownDesire::GetInfo(unsigned long) const
+	GTownDesireInfo* GetInfo(unsigned long desire) const;
+	// BW1W120 007465d0 BW1M100 1055dee0 TownDesire::GetSortedDesire(unsigned long)
+	DesireSort* GetSortedDesire(uint32_t index);
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INCLUDED_H */

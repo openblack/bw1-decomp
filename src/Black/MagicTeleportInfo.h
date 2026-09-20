@@ -10,14 +10,13 @@
 
 class Base;
 
-class GMagicTeleportInfo: public GMagicInfo
+class GMagicTeleportInfo : public GMagicInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 004356c0 BW1M100 103b2190 GMagicTeleportInfo::_dt(void)
-    virtual ~GMagicTeleportInfo();
+	// BW1W120 004356c0 BW1M100 103b2190 GMagicTeleportInfo::_dt(void)
+	virtual ~GMagicTeleportInfo();
 };
 
 #endif /* BW1_DECOMP_MAGIC_TELEPORT_INFO_INCLUDED_H */

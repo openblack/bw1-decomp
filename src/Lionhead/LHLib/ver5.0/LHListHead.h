@@ -3,18 +3,120 @@
 
 #include <stdint.h> // For uint32_t
 
-template<typename T> // Must have T.next and must be T*
-struct LHListHead {
-    T* head;
-    uint32_t count;
+// Plain iteration; the body must not unlink the element it is given.
+// Cursor advances in place, successor read after the body:
+//   mov <r>,[<r>+next] / test <r>,<r> / jne     8b b6 dd dd dd dd  85 f6  75 xx   (esi)
+#define FOREACH_LH_LIST_HEAD(T, var, list) for (T* var = (list).head; var != NULL; var = var->next)
 
-    inline LHListHead()
-      : head(NULL)
-      , count(0)
-    {
-    }
+// Reads the successor before running the body, which may unlink the element it is given.
+// Successor cached ahead of the call, then moved into the cursor:
+//   mov esi,[ecx+next] / call / test esi,esi / mov ecx,esi / jne     85 f6  8b ce  75 xx
+#define FOREACH_LH_LIST_HEAD_SAFE(T, var, list)                                                                        \
+	for (T* var = (list).head, *var##Next; var != NULL && ((var##Next = var->next), 1); var = var##Next)
 
-    void AddToLast(T* element);
+template <typename T> // Must have T.next and must be T*
+struct LHListHead
+{
+	T*       head;
+	uint32_t count;
+
+	inline LHListHead() : head(NULL), count(0) {}
+
+	// BW1W120 inlined BW1M100 1042a530 LHListHead<GameThing>::Get(void)
+	T* Get() { return head; }
+	// BW1W120 inlined BW1M100 100fd120 LHListHead<GameThing>::Set(GameThing *)
+	void Set(T* element) { head = element; }
+
+	T* Find(T* element)
+	{
+		T* walker;
+		for (walker = Get(); walker != NULL && walker != element; walker = walker->next.Get())
+		{
+		}
+		return walker;
+	}
+
+	void AddToFirst(T* element)
+	{
+		element->next = head;
+		head = element;
+		++count;
+	}
+
+	void AddToLast(T* element);
+
+	T* Get(uint32_t index) const
+	{
+		T* walker = head;
+		for (uint32_t i = 0; i < index && walker != NULL; ++i)
+		{
+			walker = walker->next;
+		}
+		return walker;
+	}
+
+	// NULL means "before the first", so a walk seeded with NULL needs only one call
+	// site:  for (T* v = NULL; (v = list.GetNext(v)) != NULL;)
+	// Confirmed against BW1M100 .GetNext__21LHListHead<8Villager>FP8Villager:
+	//   if (param_2 == 0) return *param_1; return *(param_2 + 0xe4);
+	T* GetNext(T* element) const { return element == NULL ? head : element->next; }
+
+	T* GetLast() const
+	{
+		T* walker = head;
+		while (walker != NULL && walker->next != NULL)
+		{
+			walker = walker->next;
+		}
+		return walker;
+	}
+
+	void Remove(T* element)
+	{
+		if (head == element)
+		{
+			head = element->next;
+		}
+		else
+		{
+			T* walker = head;
+			while (true)
+			{
+				if (walker == NULL)
+				{
+					return;
+				}
+				T* next = walker->next;
+				if (next == element)
+				{
+					break;
+				}
+				walker = next;
+			}
+			walker->next = element->next;
+		}
+		count--;
+		element->next = NULL;
+	}
 };
+
+template <typename T> void LHListHead<T>::AddToLast(T* element)
+{
+	T* walker = head;
+	if (walker != NULL)
+	{
+		for (T* next = walker->next; next != NULL; next = walker->next)
+		{
+			walker = next;
+		}
+		walker->next = element;
+		element->next = NULL;
+		++count;
+		return;
+	}
+	head = element;
+	element->next = NULL;
+	++count;
+}
 
 #endif /* BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H */

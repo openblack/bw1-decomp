@@ -10,14 +10,13 @@
 
 class Base;
 
-class GMagicFlockGroundInfo: public GMagicInfo
+class GMagicFlockGroundInfo : public GMagicInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 004357e0 BW1M100 1051ece0 GMagicFlockGroundInfo::_dt(void)
-    virtual ~GMagicFlockGroundInfo();
+	// BW1W120 004357e0 BW1M100 1051ece0 GMagicFlockGroundInfo::_dt(void)
+	virtual ~GMagicFlockGroundInfo();
 };
 
 #endif /* BW1_DECOMP_MAGIC_FLOCK_GROUND_INFO_INCLUDED_H */

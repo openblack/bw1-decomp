@@ -10,14 +10,13 @@
 
 class Base;
 
-class GLeashSelectorInfo: public GObjectInfo
+class GLeashSelectorInfo : public GObjectInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0042b3d0 BW1M100 10182f90 GLeashSelectorInfo::_dt(void)
-    virtual ~GLeashSelectorInfo();
+	// BW1W120 0042b3d0 BW1M100 10182f90 GLeashSelectorInfo::_dt(void)
+	virtual ~GLeashSelectorInfo();
 };
 
 #endif /* BW1_DECOMP_LEASH_SELECTOR_INFO_INCLUDED_H */

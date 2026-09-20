@@ -6,7 +6,7 @@
 
 struct EarthQuake
 {
-  uint8_t field_0x0;
+	uint8_t field_0x0;
 };
 static_assert(sizeof(EarthQuake) == 0x1, "Data type is of wrong size");
 

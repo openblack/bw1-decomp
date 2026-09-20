@@ -12,20 +12,19 @@ class Base;
 class GameThing;
 class Object;
 
-class Seagull: public Dove
+class Seagull : public Dove
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0041ee60 BW1M100 101716c0 Seagull::_dt(void)
-    virtual ~Seagull();
-    // BW1W120 0041ee50 BW1M100 10171790 Seagull::GetDebugText(void)
-    virtual char* GetDebugText();
-    // BW1W120 0041ee40 BW1M100 10171750 Seagull::GetSaveType(void)
-    virtual uint32_t GetSaveType();
-    // BW1W120 0041bff0 BW1M100 10170260 Seagull::StandAnimation(void)
-    virtual uint32_t StandAnimation();
+	// BW1W120 0041ee60 BW1M100 101716c0 Seagull::_dt(void)
+	virtual ~Seagull();
+	// BW1W120 0041ee50 BW1M100 10171790 Seagull::GetDebugText(void)
+	virtual char* GetDebugText();
+	// BW1W120 0041ee40 BW1M100 10171750 Seagull::GetSaveType(void)
+	virtual uint32_t GetSaveType();
+	// BW1W120 0041bff0 BW1M100 10170260 Seagull::StandAnimation(void)
+	virtual uint32_t StandAnimation();
 };
 
 #endif /* BW1_DECOMP_ANIMAL_SEAGULL_INCLUDED_H */

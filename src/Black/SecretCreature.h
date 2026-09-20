@@ -6,11 +6,10 @@
 class SecretCreature
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00711d60 BW1M100 101441a0 SecretCreature::_dt(void)
-    virtual ~SecretCreature();
+	// BW1W120 00711d60 BW1M100 101441a0 SecretCreature::_dt(void)
+	virtual ~SecretCreature();
 };
 
 #endif /* BW1_DECOMP_SECRET_CREATURE_INCLUDED_H */

@@ -12,20 +12,19 @@ class Base;
 class GameThing;
 class Object;
 
-class Zebra: public Cow
+class Zebra : public Cow
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0041d920 BW1M100 10170f30 Zebra::_dt(void)
-    virtual ~Zebra();
-    // BW1W120 0041d910 BW1M100 10170ff0 Zebra::GetDebugText(void)
-    virtual char* GetDebugText();
-    // BW1W120 0041d900 BW1M100 10170fc0 Zebra::GetSaveType(void)
-    virtual uint32_t GetSaveType();
-    // BW1W120 0041cc30 BW1M100 1016df70 Zebra::StandAnimation(void)
-    virtual uint32_t StandAnimation();
+	// BW1W120 0041d920 BW1M100 10170f30 Zebra::_dt(void)
+	virtual ~Zebra();
+	// BW1W120 0041d910 BW1M100 10170ff0 Zebra::GetDebugText(void)
+	virtual char* GetDebugText();
+	// BW1W120 0041d900 BW1M100 10170fc0 Zebra::GetSaveType(void)
+	virtual uint32_t GetSaveType();
+	// BW1W120 0041cc30 BW1M100 1016df70 Zebra::StandAnimation(void)
+	virtual uint32_t StandAnimation();
 };
 
 #endif /* BW1_DECOMP_ANIMAL_ZEBRA_INCLUDED_H */

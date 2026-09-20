@@ -1,29 +1,30 @@
 #ifndef BW1_DECOMP_CAMERA_MODE_INCLUDED_H
 #define BW1_DECOMP_CAMERA_MODE_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint16_t, uint32_t */
+#include <assert.h>    /* For static_assert */
+#include <stdint.h>    /* For uint16_t, uint32_t */
+#include <re_common.h> /* For bool32_t */
 
 enum CAMERA_MODE_HAND_STATUS
 {
-  CAMERA_MODE_HAND_STATUS_NORMAL = 0x0,
-  CAMERA_MODE_HAND_STATUS_ZOOMING = 0x1,
-  CAMERA_MODE_HAND_STATUS_TILT_ON = 0x2,
-  CAMERA_MODE_HAND_STATUS_GRABBING_LAND = 0x3,
-  CAMERA_MODE_HAND_STATUS_PANNING = 0x4,
-  CAMERA_MODE_HAND_STATUS_TILTING = 0x5,
-  CAMERA_MODE_HAND_STATUS_0x6 = 0x6,
-  CAMERA_MODE_HAND_STATUS_0x7 = 0x7,
-  CAMERA_MODE_HAND_STATUS_0x8 = 0x8,
-  _CAMERA_MODE_HAND_STATUS_COUNT = 0x9
+	CAMERA_MODE_HAND_STATUS_NORMAL = 0x0,
+	CAMERA_MODE_HAND_STATUS_ZOOMING = 0x1,
+	CAMERA_MODE_HAND_STATUS_TILT_ON = 0x2,
+	CAMERA_MODE_HAND_STATUS_GRABBING_LAND = 0x3,
+	CAMERA_MODE_HAND_STATUS_PANNING = 0x4,
+	CAMERA_MODE_HAND_STATUS_TILTING = 0x5,
+	CAMERA_MODE_HAND_STATUS_0x6 = 0x6,
+	CAMERA_MODE_HAND_STATUS_0x7 = 0x7,
+	CAMERA_MODE_HAND_STATUS_0x8 = 0x8,
+	_CAMERA_MODE_HAND_STATUS_COUNT = 0x9
 };
 
 enum CAMERA_MODE_MOUSE_STATUS
 {
-  CAMERA_MODE_MOUSE_STATUS_NONE = 0x0,
-  CAMERA_MODE_MOUSE_STATUS_LEFT = 0x1,
-  CAMERA_MODE_MOUSE_STATUS_MIDDLE = 0x2,
-  _CAMERA_MODE_MOUSE_STATUS_COUNT = 0x3
+	CAMERA_MODE_MOUSE_STATUS_NONE = 0x0,
+	CAMERA_MODE_MOUSE_STATUS_LEFT = 0x1,
+	CAMERA_MODE_MOUSE_STATUS_MIDDLE = 0x2,
+	_CAMERA_MODE_MOUSE_STATUS_COUNT = 0x3
 };
 
 // Forward Declares
@@ -35,7 +36,14 @@ struct LHCoord;
 class CameraMode
 {
 public:
-    GCamera* camera; /* 0x4 */
+	// BW1W120 0044a3c0 (deleting wrapper), BW1M100 10199460 CameraMode::~CameraMode()
+	// First three slots at 008c76e0; the remaining virtual interface is unrecovered.
+	virtual ~CameraMode();
+	// BW1W120 0044a290, shared with CameraModeTwoObjects.
+	virtual bool32_t CanPlayerGestureWhenCameraMoving() { return 0; }
+	// BW1W120 0044a2a0
+	virtual void Update() {}
+	GCamera*     camera; /* 0x4 */
 };
 
 #endif /* BW1_DECOMP_CAMERA_MODE_INCLUDED_H */

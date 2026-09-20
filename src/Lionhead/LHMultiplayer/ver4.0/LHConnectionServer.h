@@ -10,12 +10,12 @@ class LHConnection;
 
 struct LHConnectionServer
 {
-    uint32_t field_0x0;
+	uint32_t field_0x0;
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 inlined BW1M100 100e09b0 LHConnectionServer::ConnectToConnection(LHConnection *)
-    uint32_t ConnectToConnection(LHConnection* connection);
+	// BW1W120 inlined BW1M100 100e09b0 LHConnectionServer::ConnectToConnection(LHConnection *)
+	uint32_t ConnectToConnection(LHConnection* connection);
 };
 
 #endif /* BW1_DECOMP_LH_CONNECTION_SERVER_INCLUDED_H */

@@ -10,14 +10,13 @@
 
 class Base;
 
-class GForestInfo: public GContainerInfo
+class GForestInfo : public GContainerInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 005399c0 BW1M100 100f2980 GForestInfo::_dt(void)
-    virtual ~GForestInfo();
+	// BW1W120 005399c0 BW1M100 100f2980 GForestInfo::_dt(void)
+	virtual ~GForestInfo();
 };
 
 #endif /* BW1_DECOMP_FOREST_INFO_INCLUDED_H */

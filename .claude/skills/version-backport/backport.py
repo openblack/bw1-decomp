@@ -1,0 +1,755 @@
+#!/usr/bin/env python3
+"""backport.py — propose config/<TARGET>/splits.txt + symbols.txt updates for
+BW1W110 / BW1W100, derived from BW1W120's more complete file organization.
+
+BW1W120 is the primary matching target: it has ~462 game-code source files
+carved out of its splits.txt vs. ~169 (BW1W110) / ~183 (BW1W100). Roughly
+93%+ of symbols are already named identically across all three versions (an
+earlier bulk naming pass keyed off the Mac PPC symbol map) — only the
+per-file *splits* (address-range -> source-file assignment) lag behind on
+110/100.
+
+This script does NOT touch any files by itself except in `apply` mode (and
+even then, only the target version's splits.txt/symbols.txt — BW1W120 is
+never written). `report`/`show`/`diff-file` are read-only.
+
+Method
+------
+For every BW1W120 splits.txt game-code file not yet present (by name) in the
+target's splits.txt, translate its `.text` / `.rdata` / `.rdata$r` / `.data`
+ranges into the target's address space using ONLY mangled-name evidence:
+
+  - Every symbol name inside the BW1W120 [start,end) range is looked up by
+    exact name in the target's symbols.txt. Most already resolve (same bulk
+    naming pass). The lowest/highest resolved target address bounds the
+    range.
+  - For a tighter, exact start/end: if the symbol *at the BW1W120 unit's own
+    start* (resp. the first symbol of the *next* BW1W120 unit, for the end)
+    is itself named in the target, use its exact target address — no
+    guessing. Otherwise fall back to the lowest/highest matched address
+    inside the range (an undershoot — safe, since it only leaves a few
+    bytes at the edge unclaimed rather than risking an incorrect overlap).
+  - Requires >=2 matches and strictly monotonic target addresses (in
+    BW1W120 order) before trusting the range at all. Non-monotonic means
+    the code was reordered/reorganized between versions (or dead-stripped)
+    — flagged for manual attention, never guessed.
+
+IMPORTANT — deliberately out of scope: `.bss` and `.CRT$XCU`. Both are
+almost entirely unlabeled by individual symbol in *every* version (bss
+variables and static-initializer table slivers aren't named individually),
+so there is no name evidence to anchor on, and BW1W110/BW1W100 currently
+have near-zero bss granularity anyway (0 and 23 of ~170-180 files, vs 331
+of 462 in BW1W120). Address adjacency between neighboring files is NOT a
+safe substitute anchor: link order can and does shift between game
+versions, so a "neighboring file already split in target" does not
+guarantee it is still adjacent to this one in that target. (This was tried
+and produced silently wrong ranges — see git history of this file.) Treat
+.bss/.CRT$XCU backporting as a separate follow-up problem.
+
+Symbol renaming
+---------------
+`apply`'s per-batch renaming and the standalone `rename` subcommand both use
+`align_and_rename()`: a longest-increasing-subsequence alignment (the same
+idea as a text diff) over the *real* (non-placeholder, non-`_pef_`) name
+matches between a BW1W120 range and the corresponding target range. Those
+matches are the anchors. Between two consecutive anchors, if both sides have
+exactly the same number of symbols, they're paired up positionally and any
+target placeholder is renamed to the BW1W120 name.
+
+Requiring a single *global* exact count match across the whole range (the
+first version of this tool) turned out to almost never fire — compiler
+differences (inlining, dead-stripping) mean the raw symbol count in a given
+file/section legitimately differs between versions almost everywhere, even
+when the vast majority of functions correspond 1:1. Anchoring locally and
+only trusting *equal-length gaps between confirmed matches* keeps the same
+safety property (no guessing without corroborating evidence) while actually
+producing renames in practice.
+
+Subcommands
+-----------
+  report <version>            JSON summary: counts per status.
+  show <version> [--status S] Full per-file JSON (optionally filtered).
+  diff-file <version> <file>  Detailed single-file report (for investigating
+                               a 'manual'/'conflict' case by hand).
+  apply <version> [--limit N] [--only file1,file2]
+                               WRITE. Inserts splits.txt blocks (clean files
+                               only, unless --only names a specific file) and
+                               backports placeholder->named symbol renames
+                               within the newly-added ranges. Idempotent;
+                               skips files already present in target.
+  rename <version> [--only file1,file2]
+                               WRITE (symbols.txt only). Re-runs the same
+                               alignment-based renaming across *every* file
+                               already present in both BW1W120's and the
+                               target's splits.txt (not just newly-applied
+                               ones) — the sweep worth re-running any time
+                               either side gains more splits or names.
+"""
+
+import argparse
+import bisect
+import json
+import re
+import sys
+from pathlib import Path
+
+SELF_DIR = Path(__file__).resolve().parent
+ROOT = SELF_DIR.parents[2]
+SRC_VERSION = "BW1W120"
+TARGET_VERSIONS = ["BW1W110", "BW1W100"]
+
+# Sections with real per-symbol evidence to anchor on. .bss / .CRT$XCU are
+# deliberately excluded — see module docstring.
+PRIMARY_SECTIONS = {".text", ".rdata", ".rdata$r", ".data", ".data1"}
+
+# fn_/sub_/lbl_/data_/func_ + hex: dtk's own auto-generated fallback names
+# (raw Windows-binary hex offset — matching one across versions by pure
+# numeric coincidence is meaningless, see name_anchor()).
+# _pef_ + hex: "this Windows function is cross-referenced to Mac PEF address
+# <hex>, but no real C++ name has been assigned yet" — also not a real,
+# backportable name, but for a different reason (known correspondence,
+# pending naming, rather than an unresolved stub).
+PLACEHOLDER_RE = re.compile(r"^(fn|sub|lbl|data|func)_[0-9A-Fa-f]+$|^_pef_[0-9A-Fa-f]+$")
+
+SYM_LINE_RE = re.compile(
+    r"^(?P<name>\S+)\s*=\s*\.(?P<sec>[\w$]+):0x(?P<addr>[0-9A-Fa-f]+);"
+    r"\s*(?://\s*(?P<attrs>.*))?$"
+)
+SIZE_ATTR_RE = re.compile(r"\bsize:0x([0-9A-Fa-f]+)")
+
+UNIT_HEADER_RE = re.compile(r"^(.+):\s*$")
+SEC_LINE_RE = re.compile(
+    r"^\s+(\S+)\s+start:0x([0-9A-Fa-f]+)\s+end:0x([0-9A-Fa-f]+)(.*)$"
+)
+
+
+def symbols_path(v):
+    return ROOT / "config" / v / "symbols.txt"
+
+
+def splits_path(v):
+    return ROOT / "config" / v / "splits.txt"
+
+
+def is_placeholder(name):
+    return bool(PLACEHOLDER_RE.match(name))
+
+
+# --------------------------------------------------------------------------- #
+# parsing                                                                     #
+# --------------------------------------------------------------------------- #
+def load_symbols(version):
+    """-> (entries list, name->entry dict, sec->addr-sorted-entries dict)
+
+    `by_name` deliberately omits any name that occurs more than once in this
+    version's symbols.txt at all. Found in practice: `_$E1`/`_$E2` (MSVC's
+    per-function EH scope-table labels, NOT unique — 240 occurrences each in
+    BW1W120) silently matched via `setdefault`'s first-wins semantics,
+    pointing `name_anchor()` at a random unrelated function's label and
+    producing a nonsense (often zero-width) candidate range. Same failure
+    class as the fn_/sub_ numeric-coincidence bug, different name pattern —
+    so the fix is general (global uniqueness within a version), not another
+    hardcoded prefix."""
+    entries = []
+    for line in symbols_path(version).read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or line.startswith("//"):
+            continue
+        m = SYM_LINE_RE.match(line)
+        if not m:
+            continue
+        attrs = (m.group("attrs") or "").strip()
+        sm = SIZE_ATTR_RE.search(attrs)
+        entries.append(
+            {
+                "name": m.group("name"),
+                "sec": "." + m.group("sec"),
+                "addr": int(m.group("addr"), 16),
+                "size": int(sm.group(1), 16) if sm else 0,
+                "attrs": attrs,
+                "raw": line,
+            }
+        )
+    name_counts = {}
+    for e in entries:
+        name_counts[e["name"]] = name_counts.get(e["name"], 0) + 1
+    by_name = {}
+    for e in entries:
+        if name_counts[e["name"]] == 1:
+            by_name[e["name"]] = e
+    by_sec = {}
+    for e in entries:
+        by_sec.setdefault(e["sec"], []).append(e)
+    for lst in by_sec.values():
+        lst.sort(key=lambda e: e["addr"])
+    return entries, by_name, by_sec
+
+
+def load_splits(version):
+    """-> ordered list of {name, secs: {sec: (start,end)}, is_lib}, in
+    splits.txt declaration order (which tracks address order per section by
+    project convention, but see the docstring — never assume adjacency is
+    preserved *across versions*)."""
+    units = []
+    cur = None
+    for raw in splits_path(version).read_text().splitlines():
+        if not raw.strip():
+            continue
+        if raw == "Sections:":
+            cur = None
+            continue
+        if not raw[0].isspace():
+            m = UNIT_HEADER_RE.match(raw)
+            if m:
+                cur = {
+                    "name": m.group(1),
+                    "secs": {},
+                    "is_lib": m.group(1).startswith("lib/"),
+                }
+                units.append(cur)
+                continue
+        if cur is not None:
+            m2 = SEC_LINE_RE.match(raw)
+            if m2:
+                sec, s, e = m2.group(1), int(m2.group(2), 16), int(m2.group(3), 16)
+                cur["secs"][sec] = (s, e)
+    return units
+
+
+# --------------------------------------------------------------------------- #
+# core translation                                                            #
+# --------------------------------------------------------------------------- #
+class VersionData:
+    def __init__(self, version):
+        self.version = version
+        self.units = load_splits(version)
+        self.entries, self.by_name, self.by_sec = load_symbols(version)
+        self.names_present = {u["name"] for u in self.units}
+        self.game_units = [u for u in self.units if not u["is_lib"]]
+
+
+def name_anchor(src, tgt, idx, sec, s, e):
+    """Translate [s,e) via mangled-name lookup. Returns (matched pairs in
+    BW1W120 order, precise_start_or_None, precise_end_or_None).
+
+    Placeholder names (fn_/sub_/lbl_/data_/func_ + hex address) are excluded
+    from consideration on the BW1W120 side. A placeholder can only ever
+    "match" into tgt.by_name if the target has an unnamed symbol at the
+    *exact same hex offset* as BW1W120's — since the two binaries have
+    completely different, independently-linked layouts, this is a numeric
+    coincidence, not name evidence (like matching two people because they
+    both live at "123 Main St" in different cities). Found in practice: e.g.
+    Black/CameraModeNew1.cpp had a real, coherent, monotonic run of 14 named
+    vtable-func anchors, but got flagged 'conflict'/'reordered' because two
+    coincidental fn_XXXXXXXX collisions (same literal hex offset in both
+    versions, otherwise unrelated) pulled cand_start far below the true
+    start and briefly broke monotonicity. Filtering these out is a stricter
+    evidence requirement, not a loosened one.
+
+    Also requires the name be globally unique within BW1W120 itself, i.e.
+    present in `src.by_name` (which load_symbols() already excludes non-
+    unique names from) — not just unique within this narrow [s,e) slice.
+    A name can look like a fine anchor locally yet be one of a few hundred
+    identical, non-unique compiler-generated labels elsewhere in the same
+    binary (MSVC's per-function `_$E1`/`_$E2` EH scope-table labels: 240
+    occurrences each in BW1W120) — `x["name"] in tgt.by_name` alone can't
+    tell the two cases apart, since by_name's first-wins insertion would
+    otherwise silently pick some unrelated function's occurrence."""
+    syms_in_range = [x for x in src.by_sec.get(sec, []) if s <= x["addr"] < e]
+
+    def usable(x):
+        return (
+            not is_placeholder(x["name"])
+            and x["name"] in src.by_name
+            and x["name"] in tgt.by_name
+        )
+
+    matched = [(x["name"], tgt.by_name[x["name"]]["addr"]) for x in syms_in_range if usable(x)]
+
+    precise_start = None
+    first_syms = [x for x in syms_in_range if x["addr"] == s]
+    for x in first_syms:
+        if usable(x):
+            precise_start = tgt.by_name[x["name"]]["addr"]
+            break
+
+    precise_end = None
+    for nxt in src.game_units[idx + 1 :]:
+        if sec in nxt["secs"]:
+            ns, _ = nxt["secs"][sec]
+            for x in src.by_sec.get(sec, []):
+                if x["addr"] == ns and usable(x):
+                    precise_end = tgt.by_name[x["name"]]["addr"]
+            break
+
+    return matched, precise_start, precise_end
+
+
+def find_overlap(tgt_occ, sec, s, e):
+    for os_, oe_, name in tgt_occ.get(sec, []):
+        if os_ < e and s < oe_:
+            return name
+    return None
+
+
+def build_occupancy(tgt):
+    occ = {}
+    for u in tgt.units:
+        for sec, (s, e) in u["secs"].items():
+            occ.setdefault(sec, []).append((s, e, u["name"]))
+    for lst in occ.values():
+        lst.sort()
+    return occ
+
+
+def bisects_symbol(tgt, sec, addr):
+    """True if `addr` falls strictly inside an existing target symbol's
+    [addr, addr+size) — i.e. placing a split boundary there would slice a
+    real symbol in half, which dtk rejects ('ends within symbol ...'). Only
+    checked against symbols with a known size; zero-size/unsized entries
+    can't be validated this way and are skipped."""
+    syms = tgt.by_sec.get(sec, [])
+    addrs = [x["addr"] for x in syms]
+    i = bisect.bisect_right(addrs, addr) - 1
+    while i >= 0:
+        x = syms[i]
+        if x["addr"] + x.get("size", 0) <= addr:
+            break
+        if x["size"] and x["addr"] < addr < x["addr"] + x["size"]:
+            return x["name"]
+        i -= 1
+    return None
+
+
+def _longest_increasing_subsequence(js):
+    """Standard O(n log n) patience-sort LIS. Returns the list of *indices
+    into js* (not values) making up one longest strictly-increasing
+    subsequence, in order."""
+    tails = []  # tails[k] = index into js of the smallest tail of an
+    # increasing run of length k+1 found so far
+    prev = [-1] * len(js)
+    for idx, j in enumerate(js):
+        lo, hi = 0, len(tails)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if js[tails[mid]] < j:
+                lo = mid + 1
+            else:
+                hi = mid
+        if lo > 0:
+            prev[idx] = tails[lo - 1]
+        if lo == len(tails):
+            tails.append(idx)
+        else:
+            tails[lo] = idx
+    if not tails:
+        return []
+    seq = []
+    k = tails[-1]
+    while k != -1:
+        seq.append(k)
+        k = prev[k]
+    seq.reverse()
+    return seq
+
+
+def align_and_rename(src_syms, tgt_syms, src_by_name=None, tgt_by_name=None):
+    """Positionally align two already-address-filtered, addr-sorted symbol
+    lists via an LIS of real (non-placeholder) name matches, then propose
+    renames for target placeholders in any inter-anchor gap where both sides
+    hold exactly the same number of symbols. See the module docstring's
+    "Symbol renaming" section for why local, anchor-bounded matching is used
+    instead of a single global count check.
+
+    `src_by_name`/`tgt_by_name` should be the *global*, already-uniqueness-
+    filtered `by_name` dicts from `load_symbols()` (names occurring more than
+    once anywhere in that version are absent). A name can look unique within
+    this one address range yet still be a generic, repeated label elsewhere
+    in the binary (e.g. MSVC's per-function `_$E1`/`_$E2` EH scope-table
+    labels — 240 occurrences each in BW1W120) — checking against the global
+    dict, not just this slice, is what catches that."""
+    tgt_idx_by_name = {}
+    ambiguous = set()
+    for j, x in enumerate(tgt_syms):
+        if is_placeholder(x["name"]):
+            continue
+        if tgt_by_name is not None and tgt_by_name.get(x["name"], {}).get("addr") != x["addr"]:
+            continue  # globally ambiguous or stale — not a safe anchor
+        if x["name"] in tgt_idx_by_name:
+            ambiguous.add(x["name"])
+        else:
+            tgt_idx_by_name[x["name"]] = j
+    for name in ambiguous:
+        del tgt_idx_by_name[name]  # duplicate name in range — not a safe anchor
+
+    pairs = []  # (src_index, tgt_index) for every real name match
+    for i, x in enumerate(src_syms):
+        if is_placeholder(x["name"]):
+            continue
+        if src_by_name is not None and src_by_name.get(x["name"], {}).get("addr") != x["addr"]:
+            continue  # globally ambiguous in BW1W120 itself
+        j = tgt_idx_by_name.get(x["name"])
+        if j is not None:
+            pairs.append((i, j))
+
+    lis_idx = _longest_increasing_subsequence([j for _, j in pairs])
+    anchors = [pairs[k] for k in lis_idx]
+
+    renames = []
+    bounds = [(-1, -1)] + anchors + [(len(src_syms), len(tgt_syms))]
+    for (pi, pj), (ni, nj) in zip(bounds, bounds[1:]):
+        src_gap = src_syms[pi + 1 : ni]
+        tgt_gap = tgt_syms[pj + 1 : nj]
+        if not src_gap or len(src_gap) != len(tgt_gap):
+            continue
+        for a, b in zip(src_gap, tgt_gap):
+            if is_placeholder(b["name"]) and not is_placeholder(a["name"]):
+                renames.append({"from": b["name"], "to": a["name"], "addr": b["addr"]})
+    return renames
+
+
+def write_symbol_renames(target_version, renamed):
+    """Apply a list of {"from","to",...} renames to a target's symbols.txt,
+    skipping any whose target name already exists elsewhere (would create a
+    duplicate symbol name) and any duplicate 'from' entries."""
+    if not renamed:
+        return []
+    _, tgt_by_name, _ = load_symbols(target_version)
+    seen_from = set()
+    seen_to = set()
+    rename_map = {}
+    applied = []
+    for r in renamed:
+        if r["from"] in seen_from or r["to"] in seen_to:
+            continue
+        if r["to"] in tgt_by_name:
+            continue
+        seen_from.add(r["from"])
+        seen_to.add(r["to"])
+        rename_map[r["from"]] = r["to"]
+        applied.append(r)
+    if not rename_map:
+        return []
+    lines = symbols_path(target_version).read_text().splitlines()
+    out_lines = []
+    for line in lines:
+        m = SYM_LINE_RE.match(line.strip())
+        if m and m.group("name") in rename_map:
+            line = line.replace(m.group("name"), rename_map[m.group("name")], 1)
+        out_lines.append(line)
+    symbols_path(target_version).write_text("\n".join(out_lines) + "\n")
+    return applied
+
+
+def run_rename(target_version, only=None):
+    """Sweep every file present in both BW1W120's and the target's
+    splits.txt and propose+apply alignment-based renames across all of
+    PRIMARY_SECTIONS. Independent of `apply` — safe to re-run any time
+    either side gains more splits or names."""
+    src = VersionData(SRC_VERSION)
+    tgt = VersionData(target_version)
+    tgt_units_by_name = {u["name"]: u for u in tgt.units}
+
+    all_renames = []
+    per_file = []
+    for u in src.game_units:
+        if only and u["name"] not in only:
+            continue
+        tu = tgt_units_by_name.get(u["name"])
+        if not tu:
+            continue
+        file_renames = []
+        for sec, (s, e) in u["secs"].items():
+            if sec not in PRIMARY_SECTIONS or sec not in tu["secs"]:
+                continue
+            ts, te = tu["secs"][sec]
+            src_syms = [x for x in src.by_sec.get(sec, []) if s <= x["addr"] < e]
+            tgt_syms = [x for x in tgt.by_sec.get(sec, []) if ts <= x["addr"] < te]
+            if not src_syms or not tgt_syms:
+                continue
+            for r in align_and_rename(src_syms, tgt_syms, src.by_name, tgt.by_name):
+                r["file"] = u["name"]
+                file_renames.append(r)
+        if file_renames:
+            per_file.append({"file": u["name"], "count": len(file_renames)})
+            all_renames.extend(file_renames)
+
+    applied = write_symbol_renames(target_version, all_renames)
+    return {"proposed": len(all_renames), "applied": len(applied), "renamed": applied, "per_file": per_file}
+
+
+def analyze_file(src, tgt, idx, tgt_occ):
+    u = src.game_units[idx]
+    entry = {"file": u["name"], "sections": {}}
+    statuses = []
+    for sec, (s, e) in u["secs"].items():
+        if sec not in PRIMARY_SECTIONS:
+            continue
+        sr = {"src_start": s, "src_end": e}
+        matched, precise_start, precise_end = name_anchor(src, tgt, idx, sec, s, e)
+        addrs = [a for _, a in matched]
+        sr["n_symbols"] = e and sum(1 for x in src.by_sec.get(sec, []) if s <= x["addr"] < e)
+        sr["n_matched"] = len(matched)
+        sr["precise_start"] = precise_start
+        sr["precise_end"] = precise_end
+
+        monotonic = all(addrs[i] < addrs[i + 1] for i in range(len(addrs) - 1))
+        sr["monotonic"] = monotonic
+
+        cand_start = precise_start if precise_start is not None else (addrs[0] if addrs else None)
+        cand_end = precise_end if precise_end is not None else (addrs[-1] if addrs else None)
+        sr["cand_start"] = cand_start
+        sr["cand_end"] = cand_end
+        sr["exact"] = precise_start is not None and precise_end is not None
+
+        # A single mismatched/stray name match (duplicate short body, stale
+        # rename, etc.) can badly skew a min/max-of-matched fallback boundary
+        # — this happened in practice (see git history) and silently produced
+        # an overlapping range. When we don't have both exact edges (i.e. we
+        # are trusting the min/max of a handful of matches rather than a
+        # literal boundary-symbol translation), require more evidence and a
+        # tight size match vs. the BW1W120 range (same source, same
+        # compiler/flags -> sizes should be close) before ever calling it
+        # 'clean'. `exact` ranges are a real translation, not a guess, so
+        # they're trusted without a size check.
+        size_ok = True
+        if not sr["exact"] and cand_start is not None and cand_end is not None:
+            src_len = e - s
+            tgt_len = cand_end - cand_start
+            size_ok = (
+                len(matched) >= 4
+                and src_len > 0
+                and 0.6 <= (tgt_len / src_len) <= 1.6
+            )
+        sr["size_ok"] = size_ok
+
+        bisected = None
+        if cand_start is not None and cand_end is not None:
+            bisected = bisects_symbol(tgt, sec, cand_start) or bisects_symbol(tgt, sec, cand_end)
+        sr["bisects_symbol"] = bisected
+
+        # A non-exact (fallback min/max-of-matched) boundary is just wherever
+        # some matched symbol happens to sit — dtk requires split boundaries
+        # to be 4-byte aligned (its own default unit alignment), but a real
+        # function's address has no such guarantee, especially when it isn't
+        # actually the file's first/last symbol (most of the file's symbols
+        # went unmatched, so the fallback undershoots further than usual).
+        # Found in practice: Black/GameOSFile.cpp's fallback cand_start
+        # landed exactly on `?LoadInstance@GameOSFile@@...` at 0x557265 (odd
+        # address — packed with zero padding after the previous function),
+        # 9% symbol match rate in range, and dtk rejected it at the SPLIT
+        # step ("Invalid alignment for split ... expected 4"). `exact`
+        # boundaries (precise_start/precise_end, taken from a literal
+        # boundary-symbol translation) are trusted regardless — if that's
+        # really where the linker put the next file, that's the boundary,
+        # aligned or not.
+        misaligned = False
+        if not sr["exact"] and cand_start is not None and cand_end is not None:
+            misaligned = (cand_start % 4 != 0) or (cand_end % 4 != 0)
+        sr["misaligned"] = misaligned
+
+        if len(matched) < 2 or cand_start is None or cand_end is None or cand_start >= cand_end:
+            sr["status"] = "no_anchor"
+        elif not monotonic:
+            sr["status"] = "reordered"
+        elif not size_ok or bisected or misaligned:
+            sr["status"] = "conflict"
+        else:
+            overlap = find_overlap(tgt_occ, sec, cand_start, cand_end)
+            sr["overlaps_existing"] = overlap
+            sr["status"] = "subdivide" if overlap else "clean"
+
+        entry["sections"][sec] = sr
+        statuses.append(sr["status"])
+
+    if not statuses:
+        entry["status"] = "empty"
+    elif all(st == "clean" for st in statuses):
+        entry["status"] = "clean"
+    elif any(st == "reordered" for st in statuses):
+        entry["status"] = "reordered"
+    elif any(st == "conflict" for st in statuses):
+        entry["status"] = "conflict" if all(st in ("clean", "conflict") for st in statuses) else "mixed"
+    elif any(st == "subdivide" for st in statuses):
+        entry["status"] = "subdivide" if all(st in ("clean", "subdivide") for st in statuses) else "mixed"
+    elif any(st == "no_anchor" for st in statuses):
+        entry["status"] = "no_anchor" if all(st == "no_anchor" for st in statuses) else "mixed"
+    else:
+        entry["status"] = "mixed"
+    return entry
+
+
+def run_report(target_version):
+    src = VersionData(SRC_VERSION)
+    tgt = VersionData(target_version)
+    tgt_occ = build_occupancy(tgt)
+    results = []
+    for idx, u in enumerate(src.game_units):
+        if u["name"] in tgt.names_present:
+            continue
+        results.append(analyze_file(src, tgt, idx, tgt_occ))
+    return results
+
+
+def summarize(results):
+    from collections import Counter
+
+    c = Counter(r["status"] for r in results)
+    return dict(c)
+
+
+# --------------------------------------------------------------------------- #
+# apply                                                                       #
+# --------------------------------------------------------------------------- #
+def format_split_block(name, sections):
+    lines = [f"{name}:"]
+    for sec, (s, e) in sections:
+        lines.append(f"\t{sec:<11} start:0x{s:08X} end:0x{e:08X}")
+    return "\n".join(lines) + "\n"
+
+
+def insert_at_end(text, block):
+    return text.rstrip("\n") + "\n\n" + block
+
+
+def run_apply(target_version, limit, only, partial=True):
+    """Adds a splits.txt block per queued file using only its individually
+    'clean' sections (partial=True, the default): a file with .text clean but
+    .data no_anchor still gets its .text backported, leaving .data for a
+    later pass. Pass partial=False to require every section in the file be
+    clean (used by --only for a fully-manual, all-or-nothing add).
+
+    'clean' in the per-file report is only checked against splits.txt as it
+    stood at report time. Two *newly proposed* ranges in the same batch can
+    still collide with each other (this happened in practice — see git
+    history), so acceptance here is greedy or by increasing start address,
+    per section, against a running occupancy map seeded from the real
+    pre-existing splits."""
+    src = VersionData(SRC_VERSION)
+    tgt = VersionData(target_version)
+    results = run_report(target_version)
+    if only:
+        queue = [r for r in results if r["file"] in only]
+    else:
+        queue = [r for r in results if any(sr["status"] == "clean" for sr in r["sections"].values())]
+    if limit:
+        queue = queue[:limit]
+
+    occ = build_occupancy(tgt)
+
+    candidates = []  # (sec, start, end, file)
+    for r in queue:
+        for sec, sr in r["sections"].items():
+            if sr["status"] == "clean":
+                candidates.append((sec, sr["cand_start"], sr["cand_end"], r["file"]))
+            elif not partial:
+                candidates = [c for c in candidates if c[3] != r["file"]]
+    candidates.sort(key=lambda c: (c[0], c[1]))
+
+    accepted_by_file = {}
+    skipped = []
+    for sec, s, e, name in candidates:
+        overlap = find_overlap(occ, sec, s, e)
+        if overlap:
+            skipped.append({"file": name, "section": sec, "reason": f"collides with '{overlap}' (batch or pre-existing)"})
+            continue
+        occ.setdefault(sec, []).append((s, e, name))
+        occ[sec].sort()
+        accepted_by_file.setdefault(name, []).append((sec, (s, e)))
+
+    if not partial:
+        # all-or-nothing: drop files where some section got skipped
+        wanted_secs = {r["file"]: {sec for sec, sr in r["sections"].items() if sr["status"] == "clean"} for r in queue}
+        accepted_by_file = {
+            f: secs for f, secs in accepted_by_file.items() if len(secs) == len(wanted_secs.get(f, secs))
+        }
+
+    splits_text = splits_path(target_version).read_text()
+    applied = []
+    applied_sections = {}
+    for name, sections in accepted_by_file.items():
+        sections.sort(key=lambda x: x[1][0])
+        block = format_split_block(name, sections)
+        splits_text = insert_at_end(splits_text, block)
+        applied.append(name)
+        applied_sections[name] = [sec for sec, _ in sections]
+
+    splits_path(target_version).write_text(splits_text)
+
+    # symbol backport: within each newly-added range, align_and_rename()'s
+    # LIS-anchored positional pairing (see module docstring).
+    proposed = []
+    if applied:
+        _, tgt_by_name, tgt_by_sec = load_symbols(target_version)
+        for r in queue:
+            if r["file"] not in applied:
+                continue
+            for sec in applied_sections[r["file"]]:
+                sr = r["sections"][sec]
+                s, e = sr["src_start"], sr["src_end"]
+                ts, te = sr["cand_start"], sr["cand_end"]
+                src_syms = [x for x in src.by_sec.get(sec, []) if s <= x["addr"] < e]
+                tgt_syms = [x for x in tgt_by_sec.get(sec, []) if ts <= x["addr"] < te]
+                if not src_syms or not tgt_syms:
+                    continue
+                for rn in align_and_rename(src_syms, tgt_syms, src.by_name, tgt_by_name):
+                    rn["file"] = r["file"]
+                    proposed.append(rn)
+
+    renamed = write_symbol_renames(target_version, proposed)
+    return {"applied": applied, "skipped": skipped, "renamed": renamed, "count": len(applied)}
+
+
+# --------------------------------------------------------------------------- #
+# CLI                                                                         #
+# --------------------------------------------------------------------------- #
+def main(argv=None):
+    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    pr = sub.add_parser("report")
+    pr.add_argument("version", choices=TARGET_VERSIONS)
+
+    ps = sub.add_parser("show")
+    ps.add_argument("version", choices=TARGET_VERSIONS)
+    ps.add_argument("--status", default=None)
+
+    pd = sub.add_parser("diff-file")
+    pd.add_argument("version", choices=TARGET_VERSIONS)
+    pd.add_argument("file")
+
+    pa = sub.add_parser("apply")
+    pa.add_argument("version", choices=TARGET_VERSIONS)
+    pa.add_argument("--limit", type=int, default=None)
+    pa.add_argument("--only", default=None)
+
+    pn = sub.add_parser("rename")
+    pn.add_argument("version", choices=TARGET_VERSIONS)
+    pn.add_argument("--only", default=None)
+
+    args = p.parse_args(argv)
+
+    if args.cmd == "report":
+        results = run_report(args.version)
+        print(json.dumps({"summary": summarize(results), "total": len(results)}, indent=2))
+    elif args.cmd == "show":
+        results = run_report(args.version)
+        if args.status:
+            results = [r for r in results if r["status"] == args.status]
+        print(json.dumps(results, indent=2))
+    elif args.cmd == "diff-file":
+        results = run_report(args.version)
+        match = [r for r in results if r["file"] == args.file]
+        print(json.dumps(match, indent=2))
+    elif args.cmd == "apply":
+        only = set(args.only.split(",")) if args.only else None
+        out = run_apply(args.version, args.limit, only)
+        print(json.dumps(out, indent=2))
+    elif args.cmd == "rename":
+        only = set(args.only.split(",")) if args.only else None
+        out = run_rename(args.version, only)
+        print(json.dumps(out, indent=2))
+
+
+if __name__ == "__main__":
+    sys.exit(main())

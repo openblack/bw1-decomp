@@ -5,14 +5,13 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-class MPFEFileTransferMessage: public MPFEMessageObject
+class MPFEFileTransferMessage : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0062f4a0 BW1M100 103a5220 MPFEFileTransferMessage::_dt(void)
-    virtual ~MPFEFileTransferMessage();
+	// BW1W120 0062f4a0 BW1M100 103a5220 MPFEFileTransferMessage::_dt(void)
+	virtual ~MPFEFileTransferMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_FILE_TRANSFER_MESSAGE_INCLUDED_H */

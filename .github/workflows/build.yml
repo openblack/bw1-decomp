@@ -2,6 +2,8 @@ name: Build
 
 on:
   push:
+    branches:
+      - main
   pull_request:
 
 jobs:
@@ -38,24 +40,24 @@ jobs:
     - name: Prepare
       run: cp -a /orig .
 
-    # Restore cached files
-    - name: Cache build
-      uses: actions/cache@v4
-      with:
-        path: |
-          build
-          .ninja_deps
-          .ninja_log
-        key: ${{ runner.os }}-${{ matrix.version }}-${{ github.sha }}
-        restore-keys: ${{ runner.os }}-${{ matrix.version }}-
+    # Caching doesn't same much time and breaks some changesets such as inline header definitions
+    # # Restore cached files
+    # - name: Cache build
+    #   uses: actions/cache@v4
+    #   with:
+    #     path: |
+    #       build
+    #       .ninja_deps
+    #       .ninja_log
+    #     key: ${{ runner.os }}-${{ matrix.version }}-${{ github.sha }}
+    #     restore-keys: ${{ runner.os }}-${{ matrix.version }}-
 
     # Build the project. Static libs ship in the build container under
-    # orig/libs (copied above via /orig), so --static-libs-dir uses them
-    # verbatim and the SP5 disc is never downloaded.
+    # orig/libs (copied above via /orig), where configure.py reads them
+    # verbatim.
     - name: Build
       run: |
-        python configure.py --map --version ${{ matrix.version }} \
-            --static-libs-dir orig/libs
+        python configure.py --map --version ${{ matrix.version }}
         ninja all_source progress build/${{ matrix.version }}/report.json
 
     # Upload map files

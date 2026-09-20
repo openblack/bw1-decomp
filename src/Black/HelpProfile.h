@@ -4,49 +4,57 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include "Base.h" /* For struct Base */
+#include "Base.h"       /* For struct Base */
 #include "HelpSystem.h" /* For enum HELP_EVENT_TYPE */
 
 struct CameraHelpAccumulator
 {
-    uint32_t total_trigger_count;
-    uint32_t field_0x4;
-    uint8_t trigger_time_head;
-    uint8_t trigger_time_count;
-    uint8_t triggered_this_frame;
-    uint8_t field_0xb;
-    uint32_t trigger_times[0x40];
+	uint32_t TotalTriggerCount;
+	uint32_t field_0x4;
+	uint8_t  TriggerTimeHead;
+	uint8_t  TriggerTimeCount;
+	uint8_t  TriggeredThisFrame;
+	uint8_t  field_0xb;
+	uint32_t TriggerTimes[0x40];
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 00448f20 BW1M100 1019cd90 CameraHelpAccumulator::Reset(void)
-    void Reset();
+	// BW1W120 00448f20 BW1M100 1019cd90 CameraHelpAccumulator::Reset(void)
+	void Reset();
 };
 
 static_assert(sizeof(CameraHelpAccumulator) == 0x10c, "Data type is of wrong size");
 
-class HelpProfile: public Base
+class HelpProfile : public Base
 {
 public:
-    CameraHelpAccumulator accumulators[0x31]; /* 0x8 */
-    uint32_t field_0x3354;
+	// BW1W120 00c5afd8. Descriptive clock name, advanced by Process.
+	static unsigned int AccumulatedTime;
+	// BW1W120 005c4660 BW1M100 10089270 HelpProfile::Process(void)
+	void Process();
+	// BW1W120 005c4820 BW1M100 1034adf0 HelpProfile::Save(GameOSFile &)
+	uint32_t Save(GameOSFile& file);
+	// BW1W120 005c4830 BW1M100 1034ad20 HelpProfile::Load(GameOSFile &)
+	uint32_t              Load(GameOSFile& file);
+	CameraHelpAccumulator accumulators[0x31]; /* 0x8 */
+	uint32_t              field_0x3354;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 005c4560 BW1M100 1034b480 HelpProfile::_dt(void)
-    virtual ~HelpProfile();
+	// BW1W120 005c4560 BW1M100 1034b480 HelpProfile::_dt(void)
+	virtual ~HelpProfile();
 
-    // Static methods
+	// Static methods
 
-    // BW1W120 005c4500 BW1M100 1034b3b0 HelpProfile::Create(void)
-    static HelpProfile* Create();
+	// BW1W120 005c4500 BW1M100 1034b3b0 HelpProfile::Create(void)
+	static HelpProfile* Create();
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 005c46e0 BW1M100 100895a0 HelpProfile::Trigger(HELP_EVENT_TYPE)
-    void Trigger(HELP_EVENT_TYPE param_1);
-    // BW1W120 005c4770 BW1M100 1034b310 HelpProfile::SetToZero(void)
-    void SetToZero();
+	// BW1W120 005c46e0 BW1M100 100895a0 HelpProfile::Trigger(HELP_EVENT_TYPE)
+	void Trigger(HELP_EVENT_TYPE param_1);
+	// BW1W120 005c4770 BW1M100 1034b310 HelpProfile::SetToZero(void)
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_HELP_PROFILE_INCLUDED_H */

@@ -6,22 +6,27 @@
 
 struct LH3DColor
 {
-    uint8_t b; /* 0x0 */
-    uint8_t g;
-    uint8_t r;
-    uint8_t a;
+	uint8_t b; /* 0x0 */
+	uint8_t g;
+	uint8_t r;
+	uint8_t a;
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 inlined BW1M100 10083c40 LH3DColor::LH3DColor(uint)
-    LH3DColor(uint32_t color);
-    // BW1W120 inlined BW1M100 100530b0 LH3DColor::LH3DColor(LH3DColor const &)
-    LH3DColor(const LH3DColor* other);
+	// BW1W120 inlined BW1M100 10147d00 LH3DColor::LH3DColor(void)
+	LH3DColor() {}
+	// BW1W120 inlined BW1M100 10083c40 LH3DColor::LH3DColor(uint)
+	// White's per-TU startup initialisers store the packed color as one DWORD.
+	LH3DColor(uint32_t color) { *(uint32_t*)this = color; }
+	// BW1W120 inlined BW1M100 100530b0 LH3DColor::LH3DColor(LH3DColor const &)
+	// fabricated
+	LH3DColor(const LH3DColor& other) { *(uint32_t*)this = *(uint32_t*)&other; }
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 inlined BW1M100 1047dc00 LH3DColor::operator=(LH3DColor const &)
-    void operator=(const LH3DColor* other);
+	// BW1W120 inlined BW1M100 1047dc00 LH3DColor::operator=(LH3DColor const &)
+	// fabricated
+	void operator=(const LH3DColor& other) { *(uint32_t*)this = *(uint32_t*)&other; }
 };
 
 #endif /* BW1_DECOMP_LH3D_COLOR_INCLUDED_H */

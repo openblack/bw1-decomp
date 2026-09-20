@@ -1,20 +1,28 @@
 Sections:
 	.text       type:code align:4096
+	.text$x     type:code vaddr:0x007E9310 end:0x007EA1CD
 	.rdata      type:rodata align:4096
+	.idata$5    type:rodata vaddr:0x007EB000 end:0x007EB8FC
 	.rdata$r    type:rodata vaddr:0x008DA598 end:0x008EE238
-	.xdata$x    type:rodata vaddr:0x008EE238 end:0x008F52DE
+	.xdata$x    type:rodata vaddr:0x008EE238 end:0x008EFA40
+	.idata$2    type:rodata vaddr:0x008EFA40 end:0x008EFBBC
+	.idata$3    type:rodata vaddr:0x008EFBBC end:0x008EFBD0
+	.idata$4    type:rodata vaddr:0x008EFBD0 end:0x008F04CC
+	.idata$6    type:rodata vaddr:0x008F04CC end:0x008F4F60
+	.edata      type:rodata vaddr:0x008F4F60 end:0x008F52DE
 	.data       type:data align:4096
 	.CRT$XCA    type:data vaddr:0x008F6000 end:0x008F6004
 	.CRT$XCU    type:data vaddr:0x008F6004 end:0x008F755C
 	.CRT$XCZ    type:data vaddr:0x008F755C end:0x008F7560
 	.CRT$XIA    type:data vaddr:0x008F7560 end:0x008F7564
-	.CRT$XIC    type:data vaddr:0x008F7564 end:0x008F7578
+	.CRT$XIC    type:data vaddr:0x008F7564 end:0x008F7574
+	.CRT$XIY    type:data vaddr:0x008F7574 end:0x008F7578
 	.CRT$XIZ    type:data vaddr:0x008F7578 end:0x008F757C
 	.CRT$XPA    type:data vaddr:0x008F757C end:0x008F7580
 	.CRT$XPX    type:data vaddr:0x008F7580 end:0x008F7584
 	.CRT$XPZ    type:data vaddr:0x008F7584 end:0x008F7588
 	.CRT$XTA    type:data vaddr:0x008F7588 end:0x008F758C
-	.CRT$XTX    type:data vaddr:0x008F758C end:0x008F7590
+	.CRT$XTB    type:data vaddr:0x008F758C end:0x008F7590
 	.CRT$XTZ    type:data vaddr:0x008F7590 end:0x008F7594
 	.bss        type:data vaddr:0x00B5E000 end:0x00EDFB00
 	SELFMOD     type:data align:4096
@@ -40,10 +48,40 @@ Black/AlignmentInfo.cpp:
 	.text       start:0x00411F70 end:0x00412680
 
 Black/Animal.cpp:
-	.text       start:0x00413AE0 end:0x004189B0
+	.text       start:0x00413AE0 end:0x00418080
+
+Black/AnimalAnimation.cpp:
+	.text       start:0x00418080 end:0x00418990
+
+Black/alexmfc.cpp:
+	.rdata      start:0x007ED1A4 end:0x007ED4E8
+	.data       start:0x008F7820 end:0x008F7AD0
+
+Black/AnimalCow.cpp:
+	.rdata      start:0x007EE2F8 end:0x007F4440
+	.data       start:0x008F7D98 end:0x008F7F18
+
+Black/AnimalDove.cpp:
+	.text       start:0x00419280 end:0x0041A900
+	.rdata      start:0x007F5080 end:0x007FB200
+	.data       start:0x008F7F58 end:0x008F80B8
+
+Black/AnimalSpellWolf.cpp:
+	.text       start:0x0041B860 end:0x0041C180
+
+Black/AnimalLion.cpp:
+	.rdata      start:0x007FBE38 end:0x007FD694
+
+Black/AnimalWolf.cpp:
+	.text       start:0x0041C4F0 end:0x0041CA00
+	.rdata      start:0x007FEF20 end:0x0080077C
+	.data       start:0x008F8258 end:0x008F82E8
 
 Black/AnimatedStatic.cpp:
 	.text       start:0x0041CA90 end:0x0041DE20
+
+Black/Artifact.cpp:
+	.text       start:0x004201A0 end:0x00420C30
 
 Black/Audio.cpp:
 	.text       start:0x00420D30 end:0x00423C10
@@ -73,13 +111,29 @@ Black/CameraModeCtrInteract.cpp:
 	.text       start:0x0043E6C0 end:0x0043EAB0
 
 Black/CameraModeFollow.cpp:
-	.text       start:0x0043EAB0 end:0x00441EE0
+	.text       start:0x0043EAB0 end:0x00441170
+
+Black/CameraModeFree.cpp:
+	.text       start:0x00441170 end:0x00441EA0
+
+Black/CameraModeNew3.cpp:
+	.text       start:0x00442050 end:0x0044C500
 
 Black/CameraModePath.cpp:
 	.text       start:0x0044C890 end:0x0044CB30
 
 Black/CameraModeScript.cpp:
-	.text       start:0x0044CB30 end:0x0044E280
+	.text       start:0x0044CB30 end:0x0044D600
+
+Black/Belief.cpp:
+	.data       start:0x008FBE60 end:0x008FBE98
+
+Black/BuildingSite.cpp:
+	.data       start:0x008FBFE8 end:0x008FC1B0
+
+Black/CameraModeTwoObjects.cpp:
+	.text       start:0x0044D600 end:0x0044DE90
+	.data       start:0x008FCE98 end:0x008FCF06
 
 Black/Citadel.cpp:
 	.text       start:0x0044E280 end:0x0044F810
@@ -90,8 +144,20 @@ Black/CitadelHeart.cpp:
 Black/CitadelPart.cpp:
 	.text       start:0x004545B0 end:0x004558D0
 
+Black/Collide.cpp:
+	.text       start:0x004558F0 end:0x00455EE0
+
+Black/Config.cpp:
+	.text       start:0x00456290 end:0x00456750
+
 Black/CPUCheck.cpp:
 	.text       start:0x00459B70 end:0x0045D510
+
+Black/Creature.cpp:
+	.text       start:0x0045D8A0 end:0x00467190
+
+Black/CreatureAttitudeToCreature.cpp:
+	.text       start:0x004ABC30 end:0x004AC240
 
 Black/CreatureAttitudeToPlayer.cpp:
 	.text       start:0x004AE6D0 end:0x004AED00
@@ -99,8 +165,62 @@ Black/CreatureAttitudeToPlayer.cpp:
 Black/CreatureVisionState.cpp:
 	.text       start:0x004B3B00 end:0x004B5A70
 
+Black/Arena.cpp:
+	.rdata      start:0x00802680 end:0x00803900
+
+Black/Balance.cpp:
+	.rdata      start:0x00803B94 end:0x00804064
+
+Black/ControlHand.cpp:
+	.rdata      start:0x0080A850 end:0x0080AE04
+	.data       start:0x008FD528 end:0x008FE078
+
+Black/CreatureAction.cpp:
+	.rdata      start:0x0080DF64 end:0x0080E198
+	.data       start:0x008FF718 end:0x00907D98
+
+Black/CreatureLessonChooser.cpp:
+	.data       start:0x0090BA90 end:0x0090BB5A
+
+Black/CreatureInitialLesson.cpp:
+	.rdata      start:0x0080E2C8 end:0x0080E630
+
+Black/CreatureMental.cpp:
+	.rdata      start:0x0080E718 end:0x0080E80C
+	.data       start:0x0090BC68 end:0x00B0CDA8
+
+Black/CreatureMentalAttributeTest.cpp:
+	.rdata      start:0x0080E850 end:0x0080EC50
+	.data       start:0x00B0CDC0 end:0x00B0D5DC
+
+Black/CreatureMentalBeliefs.cpp:
+	.text       start:0x004BC280 end:0x004BD3C0
+	.data       start:0x00B0D630 end:0x00B0D6FE
+
 Black/CreatureActionsKnownAbout.cpp:
 	.text       start:0x004C3920 end:0x004C42E0
+
+Black/CreatureMentalBelief.cpp:
+	.rdata      start:0x0080EC50 end:0x0080ECF8
+
+Black/CreatureMentalDesire.cpp:
+	.rdata      start:0x0080ED34 end:0x0080EDF4
+
+Black/CreatureMentalDesireSource.cpp:
+	.rdata      start:0x0080EDF4 end:0x0080EE88
+
+Black/CreatureMentalExploration.cpp:
+	.rdata      start:0x0080EEF8 end:0x0080EF38
+
+Black/CreatureMentalLearn.cpp:
+	.rdata      start:0x0080EF38 end:0x0080F2A8
+
+Black/CreatureMentalLearnAction.cpp:
+	.rdata      start:0x0080F2A8 end:0x0080F2F4
+
+Black/CreatureMentalMisc.cpp:
+	.text       start:0x004C4E00 end:0x004C5920
+	.rdata      start:0x0080F2F4 end:0x0080F3F8
 
 Black/Alignment.cpp:
 	.text       start:0x004C60F0 end:0x004CA4E0
@@ -108,8 +228,17 @@ Black/Alignment.cpp:
 Black/CreatureMimicInfo.cpp:
 	.text       start:0x004CA7E0 end:0x004CB7B0
 
+Black/CreatureMorph.cpp:
+	.text       start:0x004CB830 end:0x004CE110
+
 Black/CreaturePen.cpp:
 	.text       start:0x004CF220 end:0x004CF710
+
+Black/CreaturePlan.cpp:
+	.text       start:0x004D0D70 end:0x004D2320
+
+Black/CreatureReaction.cpp:
+	.text       start:0x004D25E0 end:0x004D3A50
 
 Black/Creche.cpp:
 	.text       start:0x004E9190 end:0x004E93B0
@@ -119,6 +248,9 @@ Black/Dance.cpp:
 
 Black/DanceGroup.cpp:
 	.text       start:0x004EAF20 end:0x004EC220
+
+Black/DanceShape.cpp:
+	.text       start:0x004ED320 end:0x004EDB70
 
 Black/Data.cpp:
 	.text       start:0x004EDC20 end:0x004EDE90
@@ -132,6 +264,9 @@ Black/DialogBoxKeyBinding.cpp:
 Black/DialogBoxBase.cpp:
 	.text       start:0x004EFE40 end:0x004F02D0
 
+Black/DrawingObject.cpp:
+	.text       start:0x004F3180 end:0x004F8CB0
+
 Black/EditorIconBase.cpp:
 	.text       start:0x004F9EE0 end:0x004FA5E0
 
@@ -144,8 +279,8 @@ Black/EffectValues.cpp:
 Black/Feature.cpp:
 	.text       start:0x004FE110 end:0x004FE630
 
-Black/Flowers.cpp:
-	.text       start:0x004FE630 end:0x004FE8F0
+Black/Field.cpp:
+	.text       start:0x004FE630 end:0x005009A0
 
 Black/FireFly.cpp:
 	.text       start:0x005009A0 end:0x00502890
@@ -159,7 +294,7 @@ Black/MultiMapFixed.cpp:
 Black/Flock.cpp:
 	.text       start:0x005058C0 end:0x00506D10
 
-Black/Football.cpp:
+Black/FootBall.cpp:
 	.text       start:0x00506D10 end:0x005093C0
 
 Black/Footpath.cpp:
@@ -183,14 +318,52 @@ Black/GameArea.cpp:
 Black/GameStats.cpp:
 	.text       start:0x005343A0 end:0x0053A250
 
+Black/CreaturePhysical.cpp:
+	.rdata      start:0x0080FDD4 end:0x00810328
+
+Black/DanceKey.cpp:
+	.rdata      start:0x00812DC4 end:0x00812FE8
+
+Black/Debug.cpp:
+	.rdata      start:0x0081526C end:0x00816EE0
+
+Black/DialogBoxOptions.cpp:
+	.rdata      start:0x00816EE0 end:0x00816F88
+
+Black/EditorIconPlace.cpp:
+	.rdata      start:0x0081715C end:0x008172FC
+
+Black/fallingspell.cpp:
+	.rdata      start:0x008172FC end:0x0081791C
+
+Black/Fixed.cpp:
+	.rdata      start:0x0081950C end:0x0081AFE0
+
+Black/frontend.cpp:
+	.rdata      start:0x0081CB64 end:0x0081D390
+
+Black/Furniture.cpp:
+	.rdata      start:0x0081D434 end:0x0081D4C8
+
+Black/GameOptionsRoom.cpp:
+	.rdata      start:0x0081D790 end:0x0083DB04
+	.rdata$r    start:0x008E1EC8 end:0x008E1F14
+
 Black/GameThing.cpp:
 	.text       start:0x0053E6A0 end:0x0053EF40
+	.rdata      start:0x0083DD94 end:0x0083DEA0
+	.rdata$r    start:0x008E3F98 end:0x008E3FCC
+	.CRT$XCU    start:0x008F6660 end:0x008F666C align:4
+	.bss        start:0x00C273AC end:0x00C273C0
 
 Black/SetupStaticTextNoHit.cpp:
 	.text       start:0x0053EF40 end:0x00540DC0
 
 Black/GestureSystemData.cpp:
 	.text       start:0x005458D0 end:0x00545C50
+
+Black/GJVnoise.cpp:
+	.text       start:0x005598C0 end:0x00559BB0
 
 Black/GraveYard.cpp:
 	.text       start:0x0055CD80 end:0x0055CFD0
@@ -240,17 +413,48 @@ Black/HelpText.cpp:
 Black/Interface.cpp:
 	.text       start:0x0058E870 end:0x00591000
 
+Black/InterfaceImmersion.cpp:
+	.text       start:0x00598810 end:0x00599800
+
+Black/InterfaceMessage.cpp:
+	.text       start:0x0059A0B0 end:0x0059B7F0
+
 Black/InterfaceStatus.cpp:
 	.text       start:0x0059B7F0 end:0x0059D1B0
 
-Black/IPSpecialDialog.cpp:
+Black/IpSpecialDialog.cpp:
 	.text       start:0x0059D1B0 end:0x0059D980
+
+Black/JCMisc.cpp:
+	.text       start:0x0059E400 end:0x005A13C0
+
+Black/LandAlignement.cpp:
+	.text       start:0x005A18A0 end:0x005A20E0
+
+Black/LandFeature.cpp:
+	.text       start:0x005A2830 end:0x005A3940
+
+Black/Landscape.cpp:
+	.text       start:0x005A4DB0 end:0x005A6090
 
 Black/Language.cpp:
 	.text       start:0x005A6160 end:0x005A7020
 
-Black/DataPath.cpp:
-	.text       start:0x005AB220 end:0x005AE060
+Black/LHNetBase.cpp:
+	.text       start:0x005A98B0 end:0x005AA9B0
+
+Black/GJProperty.cpp:
+	.rdata      start:0x0083E0B0 end:0x0083E1B4
+
+Black/Living.cpp:
+	.text       start:0x005AAAE0 end:0x005AD9D0
+	.rdata      start:0x008691DC end:0x00869314
+
+Black/LivingReaction.cpp:
+	.text       start:0x005AF860 end:0x005B1000
+
+Black/LoadingScreen.cpp:
+	.text       start:0x005B22A0 end:0x005B34D0
 
 Black/MagicFood.cpp:
 	.text       start:0x005B8020 end:0x005B84D0
@@ -276,14 +480,17 @@ Black/Map.cpp:
 Black/Mist.cpp:
 	.text       start:0x005C1950 end:0x005C20A0
 
-Black/FieldCrop.cpp:
+Black/MobileObject.cpp:
 	.text       start:0x005C20A0 end:0x005C33B0
 
 Black/MobileStatic.cpp:
 	.text       start:0x005C33B0 end:0x005C4450
 
-Black/Morphable.cpp:
+Black/MorphableObject.cpp:
 	.text       start:0x005CF950 end:0x005D27E0
+
+Black/MPFEChannelSelector.cpp:
+	.text       start:0x005DD670 end:0x005DE550
 
 Black/MPFEChooseConnection.cpp:
 	.text       start:0x005DE9F0 end:0x005DF650
@@ -306,6 +513,9 @@ Black/MPFEChangedMapMessage.cpp:
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x005E5CB0 end:0x005E6390
 
+Black/MusicMood.cpp:
+	.text       start:0x005E6460 end:0x005E6C70
+
 Black/InterfaceFlags.cpp:
 	.text       start:0x005E7020 end:0x005E8810
 
@@ -324,20 +534,112 @@ Black/PlannedMultiMapFixed.cpp:
 Black/Player.cpp:
 	.text       start:0x005F6E10 end:0x005FAC60
 
-Black/PileFood.cpp:
+Black/PlayerComputer.cpp:
+	.text       start:0x00602430 end:0x00603540
+
+Black/Pot.cpp:
 	.text       start:0x00616590 end:0x0061A120
 
 Black/PrayerSiteInfo.cpp:
 	.text       start:0x0061A120 end:0x0061B9F0
 
-Black/PSysManager.cpp:
+Black/PSys3d.cpp:
 	.text       start:0x0061C110 end:0x0061CCC0
 
-Black/MagicFireBall.cpp:
+Black/PSysDraw.cpp:
+	.text       start:0x006227C0 end:0x00625C50
+
+Black/PSysEvents.cpp:
+	.text       start:0x00626590 end:0x00626BC0
+
+Black/PSysFlock.cpp:
 	.text       start:0x0062B2A0 end:0x0062BCC0
 
-Black/JPSysInterface.cpp:
+Black/DialogBoxSaveMessage.cpp:
+	.data       start:0x00B169E8 end:0x00B16A76
+
+Black/FrontEndSetupMultiplayer.cpp:
+	.data       start:0x00B17A88 end:0x00B17AE5
+
+Black/GJPersistent.cpp:
+	.data       start:0x00B1C908 end:0x00B1CA78
+
+Black/helpdude.cpp:
+	.data       start:0x00B1D198 end:0x00B1D697
+
+Black/MagicVortex.cpp:
+	.rdata      start:0x0086A7FC end:0x0086D570
+	.data       start:0x00B20C90 end:0x00B20DA8
+
+Black/MPFEChannelMessages.cpp:
+	.rdata      start:0x0086DF7C end:0x0086E010
+	.data       start:0x00B211B0 end:0x00B213D0
+
+Black/MPFEFileTransfer.cpp:
+	.data       start:0x00B21730 end:0x00B21773
+
+Black/MPFEClanDetails.cpp:
+	.rdata      start:0x0086E07C end:0x0086E0CC
+
+Black/MPFEDatabase.cpp:
+	.rdata      start:0x0086E0F0 end:0x0086E12C
+
+Black/MPFEGameStartMessages.cpp:
+	.rdata      start:0x0086E164 end:0x0086E1D8
+	.data       start:0x00B217F0 end:0x00B218E0
+
+Black/MPFEPlayerDetails.cpp:
+	.data       start:0x00B21A50 end:0x00B21AF8
+
+Black/PowerSpin.cpp:
+	.data       start:0x00B257F0 end:0x00B258F0
+
+Black/MPFELogin.cpp:
+	.rdata      start:0x0086E1D8 end:0x0086E214
+
+Black/MPFEMapMessages.cpp:
+	.rdata      start:0x0086E214 end:0x0086E250
+
+Black/Packet.cpp:
+	.rdata      start:0x0086EBB8 end:0x0086ECBC
+
+Black/PrayerSite.cpp:
+	.rdata      start:0x008700F4 end:0x008701EC
+
+Black/PSysAtomCore.cpp:
+	.rdata      start:0x008701EC end:0x008704FC
+	.data       start:0x00B25988 end:0x00B25A28
+
+Black/PSysBaseModifiers.cpp:
+	.rdata      start:0x008704FC end:0x0087054C
+
+Black/PSysCreature.cpp:
+	.rdata      start:0x0087054C end:0x008705A4
+
+Black/PSysGeom.cpp:
+	.text       start:0x0062BE30 end:0x0062FD80
+	.rdata      start:0x00870788 end:0x0087149C
+
+Black/PSysInterface.cpp:
 	.text       start:0x00636A40 end:0x00637E60
+
+Black/PSysGesture.cpp:
+	.rdata      start:0x0087149C end:0x008717FC
+
+Black/PSysHandFX.cpp:
+	.rdata      start:0x008717FC end:0x00871A4C
+
+Black/PSysLightning.cpp:
+	.rdata      start:0x00871AA0 end:0x00871CF0
+
+Black/PSysMagicSystem.cpp:
+	.text       start:0x0063C9B0 end:0x006442B0
+	.rdata      start:0x00871CF0 end:0x00872244
+	.data       start:0x00B27AC0 end:0x00B27BA8
+
+Black/PSysModifiers.cpp:
+	.text       start:0x00644500 end:0x0064E1B0
+	.rdata      start:0x008722D4 end:0x00872770
 
 Black/DefensiveSphere.cpp:
 	.text       start:0x0066EF20 end:0x0066F460
@@ -387,6 +689,9 @@ Black/Spell.cpp:
 Black/SpellDispenser.cpp:
 	.text       start:0x006B95D0 end:0x006B9FB0
 
+Black/SpellFlock.cpp:
+	.text       start:0x006BA010 end:0x006BB120
+
 Black/SpellIcon.cpp:
 	.text       start:0x006BCAF0 end:0x006BD8D0
 
@@ -415,7 +720,10 @@ Black/StoragePit.cpp:
 	.text       start:0x006C8DB0 end:0x006CAD70
 
 Black/TerrainMaterialInfo.cpp:
-	.text       start:0x006CAD70 end:0x006CB2F0
+	.text       start:0x006CAD70 end:0x006CAF80
+
+Black/TerrainMapInfo.cpp:
+	.text       start:0x006CAF80 end:0x006CB000
 
 Black/Totem.cpp:
 	.text       start:0x006CB2F0 end:0x006CB860
@@ -438,10 +746,54 @@ Black/Tree.cpp:
 Black/TribeInfo.cpp:
 	.text       start:0x006DDC00 end:0x006DEBC0
 
+Black/PSysPCreator.cpp:
+	.rdata      start:0x00872770 end:0x00872AC0
+	.data       start:0x00B27F18 end:0x00B29CB8
+
+Black/PSysProperties.cpp:
+	.rdata      start:0x00872AC0 end:0x00873BCC
+	.data       start:0x00B2ACF0 end:0x00B2CC40
+
+Black/PSysRenderParticle.cpp:
+	.rdata      start:0x00873BCC end:0x00874E30
+	.data       start:0x00B2CC90 end:0x00B2CDE8
+
+Black/Reaction.cpp:
+	.data       start:0x00B2F368 end:0x00B2F3BD
+
+Black/SoundConfirmation.cpp:
+	.data       start:0x00B452A0 end:0x00B452E0
+
+Black/SpecialVillager.cpp:
+	.data       start:0x00B45658 end:0x00B456A5
+
+Black/PSysSave.cpp:
+	.rdata      start:0x00874E30 end:0x0087507C
+
+Black/PSysTornado.cpp:
+	.rdata      start:0x00875198 end:0x00875440
+
+Black/puzzlegame.cpp:
+	.rdata      start:0x00875440 end:0x008788F8
+
+Black/RandomBuildingPlacementDefence.cpp:
+	.rdata      start:0x008788F8 end:0x00878968
+
+Black/SoundGuidance.cpp:
+	.rdata      start:0x008A2B84 end:0x008B7624
+
+Black/SpellWater.cpp:
+	.rdata      start:0x008BB954 end:0x008D0770
+
+Black/SpreadEffect.cpp:
+	.rdata      start:0x008D0770 end:0x008D0A4C
+
+Black/Town.cpp:
+	.rdata      start:0x008D0BC0 end:0x008D1184
+
 Black/Villager.cpp:
 	.text       start:0x006DFB00 end:0x006E62C0
 	.rdata      start:0x008D134C end:0x008D1A64
-	.rdata$r    start:0x008E1EC8 end:0x008E1F14
 	.data       start:0x00B46420 end:0x00B46500
 	.bss        start:0x00CC7858 end:0x00CDAA58
 
@@ -599,14 +951,59 @@ Black/ChallengeRoom.cpp:
 Black/SubOptionEntry.cpp:
 	.text       start:0x00714B90 end:0x00715A00
 
+Black/PathCreator.cpp:
+	.text       start:0x00715B00 end:0x00716020
+
 Black/InnerCamera.cpp:
 	.text       start:0x0071A480 end:0x0071EB60
 
 Black/TempleRoom.cpp:
 	.text       start:0x0071EB60 end:0x00720F90
 
+Black/TempleRoomAddText.cpp:
+	.text       start:0x007211A0 end:0x00723400
+	.data       start:0x00B4CE90 end:0x00B4D0F6
+
 Black/WorldRoom.cpp:
 	.text       start:0x007237C0 end:0x00725F30
+
+Lionhead/LHDLL/ver1.0/LHDLL.cpp:
+	.text       start:0x00727B50 end:0x00727C86
+
+lib/libcpmt/delop.obj:
+	.text       start:0x007290DE end:0x007290E9 align:1
+
+lib/libcpmt/xlock.obj:
+	.text       start:0x007290E9 end:0x0072919A align:1
+	.bss        start:0x00D5ABB8 end:0x00D5ABD4 align:8
+
+lib/libcpmt/_tolower.obj:
+	.text       start:0x0072B5D8 end:0x0072B7E7 align:1
+
+lib/libcpmt/_toupper.obj:
+	.text       start:0x0072B7E7 end:0x0072B947 align:1
+
+zlib/compress.c:
+	.text       start:0x0072D460 end:0x0072D530
+	.data       start:0x00B4DF74 end:0x00B4DF7A
+
+zlib/uncompr.c:
+	.text       start:0x0072D530 end:0x0072D5D0
+
+Black/ViscousLiquid.cpp:
+	.rdata      start:0x008D1BB0 end:0x008D25EC
+
+Black/Weather.cpp:
+	.rdata      start:0x008D25EC end:0x008D2B40
+
+Black/Worship.cpp:
+	.rdata      start:0x008D2BF0 end:0x008D3AC4
+
+Black/CreatureRoom.cpp:
+	.rdata      start:0x008D4D78 end:0x008D4E70
+
+Black/CreatureRoomCamera.cpp:
+	.rdata      start:0x008D4E70 end:0x008D505C
 
 zlib/deflate.c:
 	.text       start:0x0072E3E0 end:0x0072F720
@@ -615,11 +1012,11 @@ zlib/deflate.c:
 
 zlib/inflate.c:
 	.text       start:0x0072F720 end:0x0072FD20
-	.rdata      start:0x008D5750 end:0x008D5754
+	.data       start:0x00B4E460 end:0x00B4E4D0
 
 zlib/zutil.c:
 	.text       start:0x0072FD20 end:0x0072FD40
-	.data       start:0x00B4E460 end:0x00B4E568
+	.data       start:0x00B4E4D0 end:0x00B4E568
 
 zlib/adler32.c:
 	.text       start:0x0072FD40 end:0x0072FE70
@@ -653,13 +1050,13 @@ zlib/inffast.c:
 lib/libcmt/fpinit.obj:
 	.text       start:0x00733CA4 end:0x00733CF4 align:1
 	.data       start:0x00B4F894 end:0x00B4F8A8 align:1
-	.bss        start:0x00D5B240 end:0x00D5B248 align:4
+	.bss        start:0x00D5B240 end:0x00D5B248
 
 lib/libcmt/typinfo.obj:
 	.text       start:0x00733CF4 end:0x00733D58 align:1
-	.rdata      start:0x008D63E8 end:0x008D63F0 align:4
-	.rdata$r    start:0x008EDFC8 end:0x008EE010 align:4
-	.data       start:0x00B4F8A8 end:0x00B4F8C0 align:4
+	.rdata      start:0x008D63E8 end:0x008D63F0
+	.rdata$r    start:0x008EDFC8 end:0x008EE010
+	.data       start:0x00B4F8A8 end:0x00B4F8C0
 
 lib/libcmt/onexit.obj:
 	.text       start:0x00733D58 end:0x00733E17 align:1
@@ -678,7 +1075,7 @@ lib/libcmt/xtow.obj:
 	.text       start:0x0073401D end:0x0073404F align:1
 
 lib/libcmt/purevirt.obj:
-	.text       start:0x0073404F end:0x00734058 align:1
+	.text       start:0x0073404F end:0x00734060 align:1
 
 lib/libcmt/memmove.obj:
 	.text       start:0x00734060 end:0x00734395 align:1
@@ -700,11 +1097,11 @@ lib/libcmt/atox.obj:
 
 lib/libcmt/malloc.obj:
 	.text       start:0x00734984 end:0x00734ABE align:1
-	.rdata      start:0x008D6458 end:0x008D6470 align:4
+	.rdata      start:0x008D6458 end:0x008D6470
 
 lib/libcmt/free.obj:
 	.text       start:0x00734ABE end:0x00734BA7 align:1
-	.rdata      start:0x008D6470 end:0x008D6488 align:4
+	.rdata      start:0x008D6470 end:0x008D6488
 
 lib/libcmt/_ctype.obj:
 	.text       start:0x00734BA7 end:0x00734C81 align:1
@@ -722,7 +1119,7 @@ lib/libcmt/unlink.obj:
 	.text       start:0x00734CFF end:0x00734D34 align:1
 
 lib/libcmt/getenv.obj:
-	.text       start:0x00734D34 end:0x00734DD2 align:1
+	.text       start:0x00734D34 end:0x00734DE0 align:1
 
 lib/libcmt/stricmp.obj:
 	.text       start:0x00734DE0 end:0x00734EB0 align:1
@@ -734,7 +1131,7 @@ lib/libcmt/fopen.obj:
 	.text       start:0x00734EEC end:0x00734F30 align:1
 
 lib/libcmt/fclose.obj:
-	.text       start:0x00734F30 end:0x00734FAD align:1
+	.text       start:0x00734F30 end:0x00734FB0 align:1
 
 lib/libcmt/chkstk.obj:
 	.text       start:0x00734FB0 end:0x00734FDF align:1
@@ -742,20 +1139,50 @@ lib/libcmt/chkstk.obj:
 lib/libcmt/wcscmp.obj:
 	.text       start:0x00734FDF end:0x00735014 align:1
 
+lib/libcmt/asin.obj:
+	.text       start:0x007350E0 end:0x007351AB align:1
+	.data       start:0x00B4F920 end:0x00B4F928
+
+lib/libcmt/fwrite.obj:
+	.text       start:0x007352C2 end:0x00735400 align:1
+
+lib/libcmt/acos.obj:
+	.text       start:0x00735400 end:0x007354CB align:1
+	.data       start:0x00B4F930 end:0x00B4F938
+
+lib/libcmt/asctime.obj:
+	.text       start:0x007354CB end:0x007355BD align:1
+	.bss        start:0x00D5B248 end:0x00D5B262
+
+lib/libcmt/localtim.obj:
+	.text       start:0x007355BD end:0x0073571D align:1
+
+lib/libcmt/time.obj:
+	.text       start:0x0073571D end:0x00735800 align:1
+	.bss        start:0x00D5B268 end:0x00D5B280
+
+lib/libcmt/pow.obj:
+	.text       start:0x00735800 end:0x00735A20 align:1
+	.data       start:0x00B4F940 end:0x00B4F950
+
 lib/libcmt/lldiv.obj:
 	.text       start:0x00735A20 end:0x00735ACA align:1
 
 lib/libcmt/fscanf.obj:
 	.text       start:0x00735ACA end:0x00735AF7 align:1
 
+lib/libcmt/fgetc.obj:
+	.text       start:0x00735AF7 end:0x00735B28 align:1
+
 lib/libcmt/vsprintf.obj:
 	.text       start:0x00735B28 end:0x00735B79 align:1
 
 lib/libcmt/qsort.obj:
-	.text       start:0x00735B79 end:0x00735D47 align:1
+	.text       start:0x00735B79 end:0x00735D50 align:1
 
-lib_fragment_00735D47:
-	.text       start:0x00735D47 end:0x00735D5A align:1
+lib/libcmt/87fmod.obj:
+	.text       start:0x00735D50 end:0x00735D82 align:1
+	.data       start:0x00B4F950 end:0x00B4F9A0
 
 lib/libcmt/ceil.obj:
 	.text       start:0x00735D82 end:0x00735E51 align:1
@@ -777,11 +1204,20 @@ lib/libcmt/exsup.obj:
 lib/libcmt/fgets.obj:
 	.text       start:0x007362F2 end:0x00736354 align:1
 
+lib/libcmt/splitpat.obj:
+	.text       start:0x00736354 end:0x0073649B align:1
+
+lib/libcmt/wtox.obj:
+	.text       start:0x0073649B end:0x007364C4 align:1
+
 lib/libcmt/rand.obj:
 	.text       start:0x007364C4 end:0x007364F3 align:1
 
 lib/libcmt/fseek.obj:
 	.text       start:0x007364F3 end:0x007365AC align:1
+
+lib/libcmt/ftell.obj:
+	.text       start:0x007365AC end:0x0073672F align:1
 
 lib/libcmt/fputs.obj:
 	.text       start:0x0073672F end:0x0073677D align:1
@@ -793,15 +1229,57 @@ lib/libcmt/floor.obj:
 lib/libcmt/stdexcpt.obj:
 	.text       start:0x0073684C end:0x00736912 align:1
 	.rdata      start:0x008D6488 end:0x008D64A8
-	.rdata$r    start:0x008EE0FC end:0x008EE12C align:4
+	.rdata$r    start:0x008EE0FC end:0x008EE12C
 
 lib/libcmt/throw.obj:
-	.text       start:0x00736912 end:0x0073694C align:1
-	.rdata      start:0x008D64A8 end:0x008D64C8 align:4
-	.data       start:0x00B4F9B8 end:0x00B4F9BC align:4
+	.text       start:0x00736912 end:0x00736950 align:1
+	.rdata      start:0x008D64A8 end:0x008D64C8
+	.data       start:0x00B4F9B8 end:0x00B4F9BC
+
+lib/libcmt/strcspn.obj:
+	.text       start:0x00736950 end:0x00736990 align:1
+	.data       start:0x00B4F9BC end:0x00B4F9C0
+
+lib/libcmt/memchr.obj:
+	.text       start:0x00736990 end:0x00736A35 align:1
+
+lib/libcmt/lconv.obj:
+	.text       start:0x00736A35 end:0x00736A3B align:1
+	.data       start:0x00B4F9C0 end:0x00B4F9FC
+	.bss        start:0x00D5B280 end:0x00D5B281
+
+lib/libcmt/strtol.obj:
+	.text       start:0x00736A3B end:0x00736C6E align:1
+
+lib/libcmt/dosmap.obj:
+	.text       start:0x00736C6E end:0x00736D00 align:1
+	.data       start:0x00B4FA00 end:0x00B4FB68
+
+lib/libcmt/strncpy.obj:
+	.text       start:0x00736D00 end:0x00736E00 align:1
+	.data       start:0x00B4FB68 end:0x00B4FB70
+
+lib/libcmt/strncmp.obj:
+	.text       start:0x00736E00 end:0x00736E40 align:1
+
+lib/libcmt/strchr.obj:
+	.text       start:0x00736E40 end:0x00736F0C align:1
+
+lib/libcmt/calloc.obj:
+	.text       start:0x00736F0C end:0x00737049 align:1
+	.rdata      start:0x008D64C8 end:0x008D64E0
 
 lib/libcmt/strtok.obj:
 	.text       start:0x00737049 end:0x007370ED align:1
+
+lib/libcmt/atof.obj:
+	.text       start:0x007370ED end:0x00737144 align:1
+
+lib/libcmt/strstr.obj:
+	.text       start:0x00737180 end:0x00737200 align:1
+
+lib/libcmt/tolower.obj:
+	.text       start:0x00737200 end:0x0073733A align:1
 
 lib/libcmt/abort.obj:
 	.text       start:0x0073733A end:0x00737351 align:1
@@ -809,14 +1287,66 @@ lib/libcmt/abort.obj:
 lib/libcmt/chmod.obj:
 	.text       start:0x00737351 end:0x00737390 align:1
 
+lib/libcmt/realloc.obj:
+	.text       start:0x00737390 end:0x007376C0 align:1
+	.rdata      start:0x008D64E0 end:0x008D64F8
+
+lib/libcmt/strrchr.obj:
+	.text       start:0x007376C0 end:0x007376E7 align:1
+
+lib/libcmt/ulldiv.obj:
+	.text       start:0x00737850 end:0x007378C0 align:1
+
+lib/libcmt/llmul.obj:
+	.text       start:0x007378C0 end:0x007378F4 align:1
+
+lib/libcmt/crt0dat.obj:
+	.text       start:0x007378F4 end:0x00737A20 align:1
+	.bss        start:0x00D5B284 end:0x00D5B2C8
+
+lib/libcmt/llshr.obj:
+	.text       start:0x00737A20 end:0x00737A50 align:1
+
+lib/libcmt/llshl.obj:
+	.text       start:0x00737A50 end:0x00737A70 align:1
+
+lib/libcmt/llrem.obj:
+	.text       start:0x00737A70 end:0x00737B22 align:1
+
 lib/libcmt/mkdir.obj:
 	.text       start:0x00737B22 end:0x00737B4E align:1
 
 lib/libcmt/wcsncat.obj:
 	.text       start:0x00737B4E end:0x00737B8E align:1
 
+lib/libcmt/wincrt0.obj:
+	.text       start:0x00737B8E end:0x00737CE0 align:1
+	.rdata      start:0x008D64F8 end:0x008D6504
+	.data       start:0x00B4FB70 end:0x00B4FB78
+	.bss        start:0x00D5B2C8 end:0x00D5B2D4
+
+lib/libcmt/strlen.obj:
+	.text       start:0x00737CE0 end:0x00737D5C align:1
+	.data       start:0x00B4FB78 end:0x00B4FB80
+
 lib/libcmt/ehprolog.obj:
-	.text       start:0x00737D5C end:0x00737D7B align:1
+	.text       start:0x00737D5C end:0x00737D80 align:1
+
+lib/libcmt/memcpy.obj:
+	.text       start:0x00737D80 end:0x007380C0 align:1
+
+lib/libcmt/memcmp.obj:
+	.text       start:0x007380C0 end:0x0073816C align:1
+
+lib/libcmt/memset.obj:
+	.text       start:0x007387F0 end:0x00738848 align:1
+
+lib/libcmt/_file.obj:
+	.text       start:0x00738848 end:0x007389A8 align:1
+	.CRT$XIC    start:0x008F7568 end:0x008F756C align:4
+	.CRT$XPX    start:0x008F7580 end:0x008F7584 align:4
+	.data       start:0x00B4FCE0 end:0x00B4FF60
+	.bss        start:0x00D5B2E0 end:0x00D5B2E4
 
 lib/libcmt/ungetc.obj:
 	.text       start:0x007389E3 end:0x00738A7A align:1
@@ -827,6 +1357,29 @@ lib/libcmt/fgetpos.obj:
 lib/libcmt/fsetpos.obj:
 	.text       start:0x00738A9C end:0x00738AB4 align:1
 
+lib/libcmt/setvbuf.obj:
+	.text       start:0x00738AB4 end:0x00738B63 align:1
+
+lib/libcmt/fflush.obj:
+	.text       start:0x00738B63 end:0x00738CC9 align:1
+
+lib/libcmt/ungetwc.obj:
+	.text       start:0x00738DEC end:0x00738F03 align:1
+
+lib/libcmt/nlsdata2.obj:
+	.bss        start:0x00D5B348 end:0x00D5B368 align:8
+
+lib/libcmt/a_map.obj:
+	.text       start:0x007390B6 end:0x00739305 align:1
+	.rdata      start:0x008D6554 end:0x008D6578
+	.bss        start:0x00D5B368 end:0x00D5B36C
+
+lib/libcmt/isctype.obj:
+	.text       start:0x00739305 end:0x0073937A align:1
+
+lib/libcmt/strtod.obj:
+	.text       start:0x0073937A end:0x00739424 align:1
+
 lib/libcmt/fp8.obj:
 	.text       start:0x007396A1 end:0x007396B3 align:1
 
@@ -835,14 +1388,8 @@ lib/libcmt/testfdiv.obj:
 	.rdata      start:0x008D66B8 end:0x008D66ED
 
 lib/libcmt/cvt.obj:
-	.text       start:0x0073971A end:0x0073971C align:1
-	.rdata      start:0x008D66ED end:0x008D66F0 align:1
-
-lib/libcmt/xtoa.obj:
-	.text       start:0x0073A5B7 end:0x0073A640 align:1
-
-lib/libcmt/_freebuf.obj:
-	.text       start:0x0073D294 end:0x0073D2BF align:1
+	.text       start:0x0073971A end:0x00739B40 align:1
+	.rdata      start:0x008D66ED end:0x008D66F8 align:1
 
 lib/libcmt/ctype.obj:
 	.data       start:0x00B50020 end:0x00B5022A align:1
@@ -850,27 +1397,133 @@ lib/libcmt/ctype.obj:
 lib/libcmt/nlsdata1.obj:
 	.data       start:0x00B5022C end:0x00B50238 align:1
 
+lib/libcmt/cmiscdat.obj:
+	.data       start:0x00B502EC end:0x00B50304
+
+lib/libcmt/strcmp.obj:
+	.text       start:0x00739B40 end:0x00739BC4 align:1
+	.data       start:0x00B50304 end:0x00B50310
+
+lib/libcmt/msize.obj:
+	.text       start:0x00739BC4 end:0x00739CB2 align:1
+	.rdata      start:0x008D66F8 end:0x008D6710
+
+lib/libcmt/_flsbuf.obj:
+	.text       start:0x00739CB2 end:0x00739DCA align:1
+
+lib/libcmt/xtoa.obj:
+	.text       start:0x0073A5B7 end:0x0073A640 align:1
+
+lib/libcmt/woutput.obj:
+	.text       start:0x0073A640 end:0x0073AE34 align:1
+
+lib/libcmt/exsup3.obj:
+	.text       start:0x0073AE34 end:0x0073AF14 align:1
+
+lib/libcmt/handler.obj:
+	.text       start:0x0073AF14 end:0x0073AF2F align:1
+	.bss        start:0x00D5B374 end:0x00D5B378
+
+lib/libcmt/heapinit.obj:
+	.text       start:0x0073AF2F end:0x0073B101 align:1
+	.rdata      start:0x008D677C end:0x008D67AC
+	.data       start:0x00B50318 end:0x00B50320
+
+lib/libcmt/input.obj:
+	.text       start:0x0073C315 end:0x0073CDC6 align:1
+	.data       start:0x00B52348 end:0x00B52358
+
+lib/libcmt/iswctype.obj:
+	.text       start:0x0073CDC6 end:0x0073CE18 align:1
+
+lib/libcmt/mbsnbico.obj:
+	.text       start:0x0073CE18 end:0x0073CE57 align:1
+
+lib/libcmt/wtombenv.obj:
+	.text       start:0x0073CE57 end:0x0073CEC5 align:1
+
+lib/libcmt/_sftbuf.obj:
+	.text       start:0x0073CEC5 end:0x0073CF7C align:1
+	.bss        start:0x00D5B37C end:0x00D5B384
+
+lib/libcmt/_open.obj:
+	.text       start:0x0073CF7C end:0x0073D0EC align:1
+
+lib/libcmt/stream.obj:
+	.text       start:0x0073D0EC end:0x0073D1B4 align:1
+
+lib/libcmt/close.obj:
+	.text       start:0x0073D1B4 end:0x0073D294 align:1
+
+lib/libcmt/_freebuf.obj:
+	.text       start:0x0073D294 end:0x0073D2BF align:1
+
 lib/libcmt/util.obj:
 	.text       start:0x0073D2BF end:0x0073D403 align:1
 	.data       start:0x00B52358 end:0x00B52380
 
+lib/libcmt/fpexcept.obj:
+	.text       start:0x0073D403 end:0x0073DABB align:1
+	.rdata      start:0x008D67AC end:0x008D6860
+	.data       start:0x00B52380 end:0x00B52458 align:1
+
 lib/libcmt/fpctrl.obj:
-	.text       start:0x0073DABB end:0x0073DB51 align:1
+	.text       start:0x0073DABB end:0x0073DB60 align:1
 	.data       start:0x00B52458 end:0x00B52470 align:1
 
 lib/libcmt/87disp.obj:
-	.text       start:0x0073DB60 end:0x0073DD2A align:1
+	.text       start:0x0073DB60 end:0x0073DD30 align:1
 	.data       start:0x00B52470 end:0x00B5249C align:1
 
-lib/libcmt/powhlp.obj:
-	.text       start:0x0073EE97 end:0x0073F02C align:1
+lib/libcmt/genexcep.obj:
+	.text       start:0x0073DD30 end:0x0073DD90 align:1
+	.data       start:0x00B5249C end:0x00B524A0
+
+lib/libcmt/common.obj:
+	.text       start:0x0073DD90 end:0x0073DF1C align:1
+	.rdata      start:0x008D6860 end:0x008D68A4
+
+lib/libcmt/_filbuf.obj:
+	.text       start:0x0073DF1C end:0x0073DFF8 align:1
+
+lib/libcmt/read.obj:
+	.text       start:0x0073DFF8 end:0x0073E236 align:1
+
+lib/libcmt/write.obj:
+	.text       start:0x0073E236 end:0x0073E426 align:1
 
 lib/libcmt/timeset.obj:
-	.rdata      start:0x008D68A4 end:0x008D68E4 align:4
-	.data       start:0x00B524A0 end:0x00B52534 align:4
+	.rdata      start:0x008D68A4 end:0x008D68E4
+	.data       start:0x00B524A0 end:0x00B52534
 
-lib_fragment_00B52534:
+lib/libcmt/tidtable.obj:
+	.text       start:0x0073E426 end:0x0073E4F4 align:1
 	.data       start:0x00B52534 end:0x00B52538 align:1
+
+lib/libcmt/tzset.obj:
+	.text       start:0x0073E4F4 end:0x0073EAB6 align:1
+	.rdata      start:0x008D68E4 end:0x008D68E7 align:1
+	.data       start:0x00B52538 end:0x00B52554 align:1
+	.bss        start:0x00D5B388 end:0x00D5B444
+
+lib/libcmt/gmtime.obj:
+	.text       start:0x0073EAB6 end:0x0073EBC0 align:1
+	.bss        start:0x00D5B448 end:0x00D5B46C
+
+lib/libcmt/dtoxtime.obj:
+	.text       start:0x0073EBC0 end:0x0073EC90 align:1
+
+lib/libcmt/87tran.obj:
+	.text       start:0x0073EC90 end:0x0073EE97 align:1
+	.data       start:0x00B52560 end:0x00B525BA align:1
+
+lib/libcmt/powhlp.obj:
+	.text       start:0x0073EE97 end:0x0073F030 align:1
+
+lib/libcmt/87cdisp.obj:
+	.text       start:0x0073F030 end:0x0073F2A0 align:1
+	.rdata      start:0x008D68F0 end:0x008D6920
+	.data       start:0x00B525BA end:0x00B525C0 align:1
 
 lib/libcmt/adj_fdiv.obj:
 	.text       start:0x0073F2A0 end:0x0074002B align:1
@@ -881,21 +1534,54 @@ lib/libcmt/frnd.obj:
 
 lib/libcmt/frame.obj:
 	.text       start:0x0074003D end:0x00740840 align:1
-	.rdata      start:0x008D6920 end:0x008D6968 align:4
-	.data       start:0x00B52720 end:0x00B52730 align:4
+	.rdata      start:0x008D6920 end:0x008D6968
+	.data       start:0x00B52720 end:0x00B52730
 
 lib/libcmt/lowhelpr.obj:
 	.text       start:0x00740840 end:0x0074088C align:1
+
+lib/libcmt/hooks.obj:
+	.text       start:0x0074088C end:0x00740943 align:1
+	.rdata      start:0x008D6968 end:0x008D6998 align:8
+	.data       start:0x00B52730 end:0x00B52734 align:4
+
+lib/libcmt/mbctype.obj:
+	.text       start:0x00740943 end:0x00740D37 align:1
+	.CRT$XIC    start:0x008F756C end:0x008F7570 align:4
+	.data       start:0x00B52738 end:0x00B52830 align:8
+	.bss        start:0x00D5B46C end:0x00D5B470
+
+lib/libcmt/mbsnbcpy.obj:
+	.text       start:0x00740D37 end:0x00740DD1 align:1
+
+lib/libcmt/lseek.obj:
+	.text       start:0x00740DD1 end:0x00740EA9 align:1
+
+lib/libcmt/ioinit.obj:
+	.text       start:0x00740EA9 end:0x00741070 align:1
+	.data       start:0x00B52830 end:0x00B52860 align:8
+
+lib/libcmt/strcat.obj:
+	.text       start:0x00741070 end:0x00741160 align:16
+
+lib/libcmt/unhandld.obj:
+	.text       start:0x00741160 end:0x007411C4 align:1
+	.CRT$XIY    start:0x008F7574 end:0x008F7578 align:4
+	.CRT$XTB    start:0x008F758C end:0x008F7590 align:4
+	.bss        start:0x00D5B470 end:0x00D5B474
 
 lib/libcmt/cfin.obj:
 	.text       start:0x007411C4 end:0x00741243 align:1
 
 lib/libcmt/winput.obj:
 	.text       start:0x00741243 end:0x00741DB5 align:1
-	.data       start:0x00B52860 end:0x00B52870 align:4
+	.data       start:0x00B52860 end:0x00B52870
 
 lib/libcmt/crt0msg.obj:
+	.text       start:0x00741F74 end:0x00742100 align:1
+	.rdata      start:0x008D6998 end:0x008D6C88
 	.data       start:0x00B52870 end:0x00B52900 align:1
+	.bss        start:0x00D5B488 end:0x00D5B48C
 
 lib/libcmt/winxfltr.obj:
 	.text       start:0x00742100 end:0x00742278 align:1
@@ -904,18 +1590,74 @@ lib/libcmt/winxfltr.obj:
 lib/libcmt/wincmdln.obj:
 	.text       start:0x00742278 end:0x007422D0 align:1
 
-lib/libcmt/nlsdata2.obj:
-	.bss        start:0x00D5B348 end:0x00D5B368
+lib/libcmt/stdenvp.obj:
+	.text       start:0x007422D0 end:0x00742389 align:1
+
+lib/libcmt/stdargv.obj:
+	.text       start:0x00742389 end:0x007425D6 align:1
+	.bss        start:0x00D5B48C end:0x00D5B590
 
 lib/libcmt/a_env.obj:
 	.text       start:0x007425D6 end:0x00742708 align:1
 	.bss        start:0x00D5B590 end:0x00D5B594 align:1
 
 lib/libcmt/inittime.obj:
-	.text       start:0x00742708 end:0x00742799 align:1
+	.text       start:0x00742708 end:0x00742C77 align:1
+	.bss        start:0x00D5B594 end:0x00D5B598
+
+lib/libcmt/initnum.obj:
+	.text       start:0x00742C77 end:0x00742E4C align:1
+	.bss        start:0x00D5B598 end:0x00D5B5A4
+
+lib/libcmt/initmon.obj:
+	.text       start:0x00742E4C end:0x007430BE align:1
+	.bss        start:0x00D5B5A4 end:0x00D5B5A8
+
+lib/libcmt/initctyp.obj:
+	.text       start:0x007430BE end:0x00743310 align:1
+	.bss        start:0x00D5B5A8 end:0x00D5B5B0
+
+lib/libcmt/strpbrk.obj:
+	.text       start:0x00743310 end:0x0074334A align:1
+	.data       start:0x00B52988 end:0x00B52990 align:1
+
+lib/libcmt/closeall.obj:
+	.text       start:0x00743BF1 end:0x00743C72 align:1
+
+lib/libcmt/_getbuf.obj:
+	.text       start:0x00743C72 end:0x00743CB6 align:1
+
+lib/libcmt/ftelli64.obj:
+	.text       start:0x00743CB6 end:0x00743E6E align:1
 
 lib/libcmt/fseeki64.obj:
 	.text       start:0x00743E6E end:0x00743F2E align:1
+
+lib/libcmt/commit.obj:
+	.text       start:0x00743F2E end:0x00743FC1 align:1
+
+lib/libcmt/_flswbuf.obj:
+	.text       start:0x00743FC1 end:0x007440E8 align:1
+
+lib/libcmt/wctomb.obj:
+	.text       start:0x007440E8 end:0x007441AA align:1
+
+lib/libcmt/_filwbuf.obj:
+	.text       start:0x007441AA end:0x00744291 align:1
+
+lib/libcmt/mbtowc.obj:
+	.text       start:0x00744291 end:0x007443B7 align:1
+
+lib/libcmt/nlsdata3.obj:
+	.bss        start:0x00D5B5B0 end:0x00D5B5D4
+
+lib/libcmt/a_str.obj:
+	.text       start:0x007443B7 end:0x00744500 align:1
+	.rdata      start:0x008D7310 end:0x008D731C align:1
+	.bss        start:0x00D5B5F8 end:0x00D5B5FC
+
+lib/libcmt/huge.obj:
+	.data       start:0x00B53108 end:0x00B53110 align:1
 
 lib/libcmt/intrncvt.obj:
 	.text       start:0x00744500 end:0x007448EC align:1
@@ -925,10 +1667,33 @@ lib/libcmt/_fptostr.obj:
 	.text       start:0x007448EC end:0x00744963 align:1
 
 lib/libcmt/cfout.obj:
-	.text       start:0x00744963 end:0x00744964 align:1
+	.text       start:0x00744963 end:0x00744A75 align:1
+
+lib/libcmt/crt0fp.obj:
+	.text       start:0x00744A75 end:0x00744A7E align:1
+
+lib/libcmt/isatty.obj:
+	.text       start:0x00744A7E end:0x00744AB0 align:1
 
 lib/libcmt/ullrem.obj:
 	.text       start:0x00744AB0 end:0x00744B25 align:1
+
+lib/libcmt/w_str.obj:
+	.text       start:0x00744B25 end:0x00744CEA align:1
+	.rdata      start:0x008D7320 end:0x008D7338
+	.bss        start:0x00D5B5FC end:0x00D5B600
+
+lib/libcmt/setenv.obj:
+	.text       start:0x00744CEA end:0x00744F30 align:1
+
+lib/libcmt/open.obj:
+	.text       start:0x00744F30 end:0x007451FF align:1
+
+lib/libcmt/osfinfo.obj:
+	.text       start:0x007451FF end:0x007454E0 align:1
+
+lib/libcmt/87except.obj:
+	.text       start:0x007454E0 end:0x007455B0 align:1
 
 lib/libcmt/validate.obj:
 	.text       start:0x007455B0 end:0x00745600 align:1
@@ -941,14 +1706,14 @@ lib/libcmt/wcstombs.obj:
 
 lib/libcmt/crtmbox.obj:
 	.text       start:0x00745D0C end:0x00745D95 align:1
-	.rdata      start:0x008D7338 end:0x008D7374 align:4
-	.bss        start:0x00D5B604 end:0x00D5B610 align:4
+	.rdata      start:0x008D7338 end:0x008D7374
+	.bss        start:0x00D5B604 end:0x00D5B610
 
 lib/libcmt/ismbbyte.obj:
 	.text       start:0x00745D95 end:0x00745DD7 align:1
 
 lib/libcmt/inithelp.obj:
-	.text       start:0x00745DD7 end:0x00745F0F align:1
+	.text       start:0x00745DD7 end:0x00745F10 align:1
 	.bss        start:0x00D5B610 end:0x00D5B618
 
 lib/libcmt/strnicmp.obj:
@@ -960,11 +1725,79 @@ lib/libcmt/lseeki64.obj:
 lib/libcmt/mantold.obj:
 	.text       start:0x00746107 end:0x007462A8 align:1
 
+lib/libcmt/x10fout.obj:
+	.text       start:0x007462A8 end:0x0074653B align:1
+	.rdata      start:0x008D7374 end:0x008D7394 align:4
+
+lib/libcmt/mbschr.obj:
+	.text       start:0x0074653B end:0x007465D2 align:1
+
+lib/libcmt/chsize.obj:
+	.text       start:0x007465FD end:0x00746722 align:1
+
+lib/libcmt/tenpow.obj:
+	.text       start:0x00746722 end:0x007469BE align:1
+
+lib/libcmt/txtmode.obj:
+	.bss        start:0x00D5B618 end:0x00D5B61C align:4
+
+lib/libcmt/w_loc.obj:
+	.text       start:0x007469BE end:0x00746AD1 align:1
+	.rdata      start:0x008D7398 end:0x008D73A4 align:4
+	.bss        start:0x00D5B61C end:0x00D5B620 align:4
+
+lib/libcmt/a_loc.obj:
+	.text       start:0x00746AD1 end:0x00746BEF align:1
+	.rdata      start:0x008D73A8 end:0x008D73B4 align:4
+	.bss        start:0x00D5B620 end:0x00D5B624 align:4
+
+lib/libcmt/setmode.obj:
+	.text       start:0x00746BEF end:0x00746C50 align:1
+
+Lionhead/LHLib/ver5.0/LHHeap2.cpp:
+	.text       start:0x0074A5D0 end:0x0074AA60
+
+Lionhead/LH3DLib/development/LH3DSmoke.cpp:
+	.text       start:0x00757420 end:0x007575F0
+
+Lionhead/LH3DLib/development/LH3DIsland.cpp:
+	.text       start:0x00760FD0 end:0x00761570
+
+Lionhead/LH3DLib/development/LH3DMesh.cpp:
+	.text       start:0x00763B50 end:0x00764EA0
+
+Lionhead/LH3DLib/development/LH3DTech.cpp:
+	.text       start:0x007747B0 end:0x00776AB0
+
+Black/WorshipSiteUpgrade.cpp:
+	.text       start:0x0077EBF0 end:0x0077F030
+
+Lionhead/LHLib/ver5.0/LHCollide.cpp:
+	.text       start:0x00782BF0 end:0x00784380
+
+Lionhead/LHLib/ver5.0/Route.cpp:
+	.text       start:0x00790250 end:0x007911F2
+
+Lionhead/LH3DLib/development/LH3DSprite.cpp:
+	.text       start:0x007950F0 end:0x00795170
+
+Lionhead/LH3DLib/development/LH3DWay.cpp:
+	.text       start:0x0079A470 end:0x0079B040
+
+Lionhead/LH3DLib/development/LH3DHair.cpp:
+	.text       start:0x0079DFB0 end:0x0079E500
+
+Lionhead/LH3DLib/development/CAnim.cpp:
+	.text       start:0x007B4F30 end:0x007B53D0
+
 lib/libcmt/wcsdup.obj:
 	.text       start:0x007E894E end:0x007E897C align:1
 
 lib/libcmt/wcsicmp.obj:
 	.text       start:0x007E897C end:0x007E8A5B align:1
+
+lib/libcmt/flength.obj:
+	.text       start:0x007E8A5B end:0x007E8AE5 align:1
 
 lib/libcmt/fileno.obj:
 	.text       start:0x007E8AE5 end:0x007E8AED align:1
@@ -972,8 +1805,38 @@ lib/libcmt/fileno.obj:
 lib/libcmt/wcsnicmp.obj:
 	.text       start:0x007E8AED end:0x007E8BE5 align:1
 
+lib/libcmt/chdir.obj:
+	.text       start:0x007E8BE5 end:0x007E8C6B align:1
+
+lib/libcmt/strlwr.obj:
+	.text       start:0x007E8C6B end:0x007E8D9F align:1
+
+lib/libcmt/ehvecdtr.obj:
+	.text       start:0x007E8D9F end:0x007E8EA0 align:1
+	.rdata      start:0x008DA550 end:0x008DA570
+
+lib/libcmt/strspn.obj:
+	.text       start:0x007E8EA0 end:0x007E8EDE align:1
+
+lib/libcmt/ehvecctr.obj:
+	.text       start:0x007E8EDE end:0x007E8F60 align:1
+	.rdata      start:0x008DA570 end:0x008DA580
+
+lib/libcmt/clock.obj:
+	.text       start:0x007E8F60 end:0x007E8FD8 align:1
+	.CRT$XIC    start:0x008F7570 end:0x008F7574 align:4
+	.bss        start:0x00ECC698 end:0x00ECC6A0
+
 lib/libcmt/towlower.obj:
 	.text       start:0x007E8FD8 end:0x007E904D align:1
+
+lib/libcmt/mbtoupr.obj:
+	.text       start:0x007E904D end:0x007E90C8 align:1
+
+lib/libcmt/w_map.obj:
+	.text       start:0x007E90C8 end:0x007E9301 align:1
+	.rdata      start:0x008DA580 end:0x008DA598
+	.bss        start:0x00ECC6A0 end:0x00ECC6A4
 
 lib/libcmt/days.obj:
 	.data       start:0x00B53144 end:0x00B531AC align:1

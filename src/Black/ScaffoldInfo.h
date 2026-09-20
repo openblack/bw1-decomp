@@ -10,14 +10,13 @@
 
 class Base;
 
-class GScaffoldInfo: public GMobileObjectInfo
+class GScaffoldInfo : public GMobileObjectInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006e8360 BW1M100 10144060 GScaffoldInfo::_dt(void)
-    virtual ~GScaffoldInfo();
+	// BW1W120 006e8360 BW1M100 10144060 GScaffoldInfo::_dt(void)
+	virtual ~GScaffoldInfo();
 };
 
 #endif /* BW1_DECOMP_SCAFFOLD_INFO_INCLUDED_H */

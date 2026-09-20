@@ -6,7 +6,7 @@
 
 struct LHPixel
 {
-  uint32_t field_0x0;
+	uint32_t field_0x0;
 };
 static_assert(sizeof(LHPixel) == 0x4, "Data type is of wrong size");
 

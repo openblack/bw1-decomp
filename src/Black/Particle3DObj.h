@@ -11,16 +11,15 @@
 class Base;
 class GameThing;
 
-class Particle3DObj: public RenderParticle
+class Particle3DObj : public RenderParticle
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006c7a60 BW1M100 inlined Particle3DObj::_dt(void)
-    virtual ~Particle3DObj();
-    // BW1W120 006c7a50 BW1M100 inlined Particle3DObj::GetDebugText(void)
-    virtual char* GetDebugText();
+	// BW1W120 006c7a60 BW1M100 inlined Particle3DObj::_dt(void)
+	virtual ~Particle3DObj();
+	// BW1W120 006c7a50 BW1M100 inlined Particle3DObj::GetDebugText(void)
+	virtual char* GetDebugText();
 };
 
 #endif /* BW1_DECOMP_PARTICLE_3D_OBJ_INCLUDED_H */

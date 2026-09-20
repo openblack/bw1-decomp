@@ -1,0 +1,11 @@
+#ifndef BW1_DECOMP_P_SYS_LIGHT_MAPS_INCLUDED_H
+#define BW1_DECOMP_P_SYS_LIGHT_MAPS_INCLUDED_H
+
+class PSysLightMaps
+{
+public:
+	// BW1W120 006ca6e0 BW1M100 10012970
+	static void AddDrawing();
+};
+
+#endif /* BW1_DECOMP_P_SYS_LIGHT_MAPS_INCLUDED_H */

@@ -6,17 +6,17 @@
 
 #include "Base.h" /* For struct Base */
 
-class GInterfaceFlags: public Base
+class GInterfaceFlags : public Base
 {
 public:
-    int field_0x8;
-    uint32_t field_0xc;
-    uint32_t field_0x10;
+	int      field_0x8;
+	uint32_t field_0xc;
+	uint32_t field_0x10;
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 005ce340 BW1M100 1035c820 GInterfaceFlags::_dt(void)
-    virtual ~GInterfaceFlags();
+	// BW1W120 005ce340 BW1M100 1035c820 GInterfaceFlags::_dt(void)
+	virtual ~GInterfaceFlags();
 };
 
 #endif /* BW1_DECOMP_INTERFACE_FLAGS_INCLUDED_H */

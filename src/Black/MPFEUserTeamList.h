@@ -9,16 +9,15 @@
 
 struct MPFEPlayerDetails;
 
-class MPFEUserTeamList: public MPFEMessageObject
+class MPFEUserTeamList : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00633050 BW1M100 10396090 MPFEUserTeamList::_dt(void)
-    virtual ~MPFEUserTeamList();
-    // BW1W120 00626a00 BW1M100 inlined MPFEUserTeamList::Send(MPFEPlayerDetails *)
-    virtual void Send(MPFEPlayerDetails* param_1);
+	// BW1W120 00633050 BW1M100 10396090 MPFEUserTeamList::_dt(void)
+	virtual ~MPFEUserTeamList();
+	// BW1W120 00626a00 BW1M100 inlined MPFEUserTeamList::Send(MPFEPlayerDetails *)
+	virtual void Send(MPFEPlayerDetails* param_1);
 };
 
 #endif /* BW1_DECOMP_MPFE_USER_TEAM_LIST_INCLUDED_H */

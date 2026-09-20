@@ -11,7 +11,8 @@ void* __cdecl __nw__FUl(size_t size, const char* file_name, uint32_t line);
 // BW1W120 007aee98 BW1M100 1061fbd4 operator delete(void* )
 void __cdecl __dl__FPv(void* address);
 // BW1W120 008a6187 BW1M100 101a84e4 operator new[](void *,unsigned int,int,void (__thiscall*)(void *),void (__thiscall*)(void *))
-void __cdecl __construct_new_array(void* address, size_t stride, int len, void* constructor) asm("??_L@YGXPAXIHP6EX0@Z1@Z");
+void __cdecl __construct_new_array(void* address, size_t stride, int len,
+                                   void* constructor) asm("??_L@YGXPAXIHP6EX0@Z1@Z");
 // BW1W120 008a5f63 BW1M100 101a7d90 operator delete[](void *,unsigned int,int,void (__thiscall*)(void *))
 void __cdecl __destroy_new_array(void* address, size_t stride, int len, void* destructor) asm("??_M@YGXPAXIHP6EX0@Z@Z");
 // BW1W120 007c60db BW1M100 00000000 _purecall(void)

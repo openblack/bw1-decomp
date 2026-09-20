@@ -11,16 +11,15 @@
 class Base;
 class GameThing;
 
-class Particle3DAnim: public RenderParticle
+class Particle3DAnim : public RenderParticle
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006c85a0 BW1M100 inlined Particle3DAnim::_dt(void)
-    virtual ~Particle3DAnim();
-    // BW1W120 006c8580 BW1M100 inlined Particle3DAnim::GetDebugText(void)
-    virtual char* GetDebugText();
+	// BW1W120 006c85a0 BW1M100 inlined Particle3DAnim::_dt(void)
+	virtual ~Particle3DAnim();
+	// BW1W120 006c8580 BW1M100 inlined Particle3DAnim::GetDebugText(void)
+	virtual char* GetDebugText();
 };
 
 #endif /* BW1_DECOMP_PARTICLE_3D_ANIM_INCLUDED_H */

@@ -11,10 +11,6 @@ Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp:
 	.text       start:0x10001440 end:0x100019C0
 	.rdata      start:0x100502AC end:0x100502BC
 
-Lionhead/LHMultiplayer/ver4.0/LHChannel.cpp:
-	.text       start:0x10004120 end:0x10004610
-	.rdata      start:0x100502DC end:0x100502F0
-
 Lionhead/LHMultiplayer/ver4.0/LHConnection.cpp:
 	.text       start:0x10004670 end:0x100054B0
 	.data       start:0x10061294 end:0x100612AC
@@ -28,17 +24,11 @@ Lionhead/LHMultiplayer/ver4.0/LHLobby.cpp:
 	.rdata      start:0x10050300 end:0x10050324
 	.data       start:0x10068D20 end:0x10068E80
 
-Lionhead/LHMultiplayer/ver4.0/LHMail.cpp:
-	.text       start:0x10011A70 end:0x100138B0
-
 Lionhead/LHMultiplayer/ver4.0/LHPacket.cpp:
 	.text       start:0x10015990 end:0x10016070
 
 Lionhead/LHMultiplayer/ver4.0/LHNetEvent.cpp:
 	.text       start:0x100160E0 end:0x10017000
-
-Lionhead/LHMultiplayer/ver4.0/LHNetLocalLobbyInfo.cpp:
-	.text       start:0x100171C0 end:0x10017880
 
 Lionhead/LHMultiplayer/ver4.0/LHNetUser.cpp:
 	.text       start:0x100178E0 end:0x10018220

@@ -2,5 +2,5 @@
 
 bool MPFEConnectionStatus::IsInternetLobby()
 {
-    return type == LOBBY_TYPE_INTERNET;
+	return type == LOBBY_TYPE_INTERNET;
 }

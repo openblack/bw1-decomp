@@ -10,14 +10,13 @@
 
 class Base;
 
-class GMagicHealInfo: public GMagicInfo
+class GMagicHealInfo : public GMagicInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 004356a0 BW1M100 103ae460 GMagicHealInfo::_dt(void)
-    virtual ~GMagicHealInfo();
+	// BW1W120 004356a0 BW1M100 103ae460 GMagicHealInfo::_dt(void)
+	virtual ~GMagicHealInfo();
 };
 
 #endif /* BW1_DECOMP_MAGIC_HEAL_INFO_INCLUDED_H */

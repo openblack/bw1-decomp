@@ -1,0 +1,1 @@
+#include "MagicHealInfo.h"

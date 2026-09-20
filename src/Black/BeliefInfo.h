@@ -10,16 +10,25 @@
 
 class Base;
 
-class GBeliefInfo: public GBaseInfo
+class GBeliefInfo : public GBaseInfo
 {
 public:
+	float field_0x10;
+	float field_0x14;
+	float field_0x18;
+	float field_0x1c;
+	float UpdateOfBoredomValue;
+	float field_0x24;
 
-    // Override methods
+	// BW1W120 00c58640 BW1M100 10a335a0
+	static GBeliefInfo Info;
 
-    // BW1W120 00437db0 BW1M100 100b22b0 GBeliefInfo::_dt(void)
-    virtual ~GBeliefInfo();
-    // BW1W120 00437d60 BW1M100 100b2260 GBeliefInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+	// Override methods
+
+	// BW1W120 00437db0 BW1M100 100b22b0 GBeliefInfo::_dt(void)
+	virtual ~GBeliefInfo();
+	// BW1W120 00437d60 BW1M100 100b2260 GBeliefInfo::GetBaseInfo(unsigned long &)
+	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #endif /* BW1_DECOMP_BELIEF_INFO_INCLUDED_H */

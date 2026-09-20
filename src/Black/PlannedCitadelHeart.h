@@ -13,18 +13,17 @@ class GameThingWithPos;
 class MultiMapFixed;
 class PlannedMultiMapFixed;
 
-class PlannedCitadelHeart: public PlannedCitadelPart
+class PlannedCitadelHeart : public PlannedCitadelPart
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 004655a0 BW1M100 101c2050 PlannedCitadelHeart::_dt(void)
-    virtual ~PlannedCitadelHeart();
-    // BW1W120 00468df0 BW1M100 101bbe50 PlannedCitadelHeart::CreateBuildingSite(void)
-    virtual uint32_t CreateBuildingSite();
-    // BW1W120 00465a20 BW1M100 101bf550 PlannedCitadelHeart::CreatePlanned(float)
-    virtual MultiMapFixed* CreatePlanned(float param_1);
+	// BW1W120 004655a0 BW1M100 101c2050 PlannedCitadelHeart::_dt(void)
+	virtual ~PlannedCitadelHeart();
+	// BW1W120 00468df0 BW1M100 101bbe50 PlannedCitadelHeart::CreateBuildingSite(void)
+	virtual uint32_t CreateBuildingSite();
+	// BW1W120 00465a20 BW1M100 101bf550 PlannedCitadelHeart::CreatePlanned(float)
+	virtual MultiMapFixed* CreatePlanned(float param_1);
 };
 
 #endif /* BW1_DECOMP_PLANNED_CITADEL_HEART_INCLUDED_H */

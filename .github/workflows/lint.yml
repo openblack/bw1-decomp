@@ -1,0 +1,31 @@
+name: lint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.hpp'
+      - '**.cpp'
+      - '**.h'
+      - '**.c'
+      - '**.clang-format'
+
+permissions:
+  contents: read
+
+jobs:
+  check-format:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: jidicula/clang-format-action@v4.18.0
+      with:
+        clang-format-version: '22'
+        fallback-style: 'none'
+        # Only lint our own source tree; include/ holds vendor SDK headers
+        # (ddraw.h, d3dtypes.h) and unformatted shared headers. zlib and two
+        # ObjC-misdetected headers are skipped via .clang-format-ignore.
+        check-path: 'src'

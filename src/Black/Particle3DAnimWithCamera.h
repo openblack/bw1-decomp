@@ -10,14 +10,13 @@
 
 class Base;
 
-class Particle3DAnimWithCamera: public Particle3DAnim
+class Particle3DAnimWithCamera : public Particle3DAnim
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006c8680 BW1M100 inlined Particle3DAnimWithCamera::_dt(void)
-    virtual ~Particle3DAnimWithCamera();
+	// BW1W120 006c8680 BW1M100 inlined Particle3DAnimWithCamera::_dt(void)
+	virtual ~Particle3DAnimWithCamera();
 };
 
 #endif /* BW1_DECOMP_PARTICLE_3D_ANIM_WITH_CAMERA_INCLUDED_H */

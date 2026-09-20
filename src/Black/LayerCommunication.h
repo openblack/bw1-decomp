@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
-#include <wchar.h> /* For wchar_t */
+#include <wchar.h>  /* For wchar_t */
 
 // Forward Declares
 

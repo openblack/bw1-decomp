@@ -28,6 +28,7 @@ against configure.py's object list.
 
 import argparse
 import json
+import os
 import re
 import struct
 import subprocess
@@ -38,8 +39,9 @@ SELF_DIR = Path(__file__).resolve().parent     # the skill directory
 ROOT = SELF_DIR.parents[2]                      # repo root (.claude/skills/<x>/..)
 CONFIGURE = ROOT / "configure.py"
 LIB_DIR = ROOT / "build" / "lib"
-LLVM_AR = ROOT / "build" / "tools" / "llvm" / "bin" / "llvm-ar"
-DTK = ROOT / "build" / "tools" / "dtk"
+EXE = ".exe" if sys.platform == "win32" else ""
+LLVM_AR = ROOT / "build" / "tools" / "llvm" / "bin" / f"llvm-ar{EXE}"
+DTK = ROOT / "build" / "tools" / f"dtk{EXE}"
 NINJA = "ninja"
 VERSIONS = ["BW1W100", "BW1W110", "BW1W120"]
 IMAGE_BASE = 0x400000
@@ -1048,10 +1050,17 @@ LINK_ERR_PATTERNS = [
 ]
 
 
+_ANSI_RE = re.compile(r"\x1b\[[0-9;]*m")
+
+
 def _run(cmd, cwd=ROOT, timeout=1800):
+    # Force plain output: dtk (and others) colorize "OK"/WARN with ANSI escapes
+    # when stdout is a pipe on some platforms, which breaks substring checks and
+    # line parsing below. NO_COLOR is honored by dtk; strip escapes as a backstop.
+    env = dict(os.environ, NO_COLOR="1")
     p = subprocess.run(cmd, cwd=str(cwd), capture_output=True,
-                       text=True, timeout=timeout)
-    return p.returncode, (p.stdout or "") + (p.stderr or "")
+                       text=True, timeout=timeout, env=env)
+    return p.returncode, _ANSI_RE.sub("", (p.stdout or "") + (p.stderr or ""))
 
 
 def verify_one(version, dtk, py):

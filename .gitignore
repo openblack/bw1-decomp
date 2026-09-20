@@ -8,12 +8,14 @@ __pycache__
 .cache/
 
 # Original files
+orig
 orig/*/*
-!orig/*/.gitkeep
-*.dol
-*.rel
-*.elf
 *.o
+*.obj
+*.exe
+*.EXE
+*.lib
+*.LIB
 *.map
 *.MAP
 
@@ -33,6 +35,7 @@ compile_commands.json
 # Miscellaneous
 /*.txt
 *.exe
+/tmp/
 
 # VSCode settings
 .vscode/
@@ -40,3 +43,6 @@ compile_commands.json
 # Claude
 /.claude/*
 !/.claude/skills/
+/.claude/skills/*/__pycache__/
+!/.claude/agents/
+vc60.pdb

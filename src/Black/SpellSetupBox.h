@@ -6,18 +6,18 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
-class SpellSetupBox: public DialogBoxBase
+class SpellSetupBox : public DialogBoxBase
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00547970 BW1M100 105cc310 SpellSetupBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // BW1W120 00547c30 BW1M100 105cc2b0 SpellSetupBox::Destroy(void)
-    virtual void Destroy();
-    // BW1W120 00547c40 BW1M100 105cc120 SpellSetupBox::InitControls(void)
-    virtual void InitControls();
+	// BW1W120 00547970 BW1M100 105cc310 SpellSetupBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	virtual void Init(uint32_t param_1, uint32_t param_2,
+	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	// BW1W120 00547c30 BW1M100 105cc2b0 SpellSetupBox::Destroy(void)
+	virtual void Destroy();
+	// BW1W120 00547c40 BW1M100 105cc120 SpellSetupBox::InitControls(void)
+	virtual void InitControls();
 };
 
 #endif /* BW1_DECOMP_SPELL_SETUP_BOX_INCLUDED_H */

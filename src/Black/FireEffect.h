@@ -9,62 +9,82 @@
 // Forward Declares
 
 class Base;
+class EffectValues;
 class FireGraphic;
 class GPlayer;
 class GameOSFile;
 struct LHPoint;
 class Object;
 
-class FireEffect: public GameThing
+class FireEffect : public GameThing
 {
 public:
-    float temperature; /* 0x14 */
-    float temperature2;
-    Object* source;
-    GPlayer* player; /* 0x20 */
-    GameThing* thing;
-    uint32_t field_0x28;
-    uint32_t field_0x2c;
-    uint32_t field_0x30;
-    uint32_t field_0x34;
-    uint8_t field_0x38;
-    FireEffect* next;
-    uint8_t field_0x40[0x8];
-    uint32_t field_0x48;
-    uint32_t field_0x4c;
+	// BW1W120 00730760 BW1M100 1008f3e0 FireEffect::ProcessList(void)
+	static void ProcessList();
+	// BW1W120 00730670 BW1M100 10155470 FireEffect::ApplyEffectToFireEffectIfNecessary(Object *, EffectValues &)
+	static void ApplyEffectToFireEffectIfNecessary(Object* object, EffectValues& values);
+	// BW1W120 0072ef60 BW1M100 1014fa50 FireEffect::SetOnFire(Object *, float)
+	static void SetOnFire(Object* object, float temperature);
+	// BW1W120 0072ef10 BW1M100 1014fb60 FireEffect::SetTemperature(Object *, float, GameThing *)
+	static void SetTemperature(Object* object, float temperature, GameThing* source);
 
-    // Override methods
+	float       temperature; /* 0x14 */
+	float       temperature2;
+	Object*     source;
+	GPlayer*    player; /* 0x20 */
+	GameThing*  thing;
+	uint32_t    field_0x28;
+	uint32_t    field_0x2c;
+	uint32_t    field_0x30;
+	uint32_t    field_0x34;
+	uint8_t     field_0x38;
+	FireEffect* next;
+	uint8_t     field_0x40[0x8];
+	uint32_t    field_0x48;
+	uint32_t    field_0x4c;
 
-    // BW1W120 0072eae0 BW1M100 10150470 FireEffect::_dt(void)
-    virtual ~FireEffect();
-    // BW1W120 0072ebe0 BW1M100 101500c0 FireEffect::ToBeDeleted(int)
-    virtual void ToBeDeleted(int param_1);
-    // BW1W120 0072ee70 BW1M100 1014fd50 FireEffect::Get3DSoundPos(LHPoint *)
-    virtual int Get3DSoundPos(LHPoint* param_1);
-    // BW1W120 0072eab0 BW1M100 1014cc60 FireEffect::GetPlayer(void)
-    virtual GPlayer* GetPlayer();
-    // BW1W120 0072ead0 BW1M100 10150910 FireEffect::GetDebugText(void)
-    virtual char* GetDebugText();
-    // BW1W120 00730df0 BW1M100 1014bcc0 FireEffect::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
-    // BW1W120 00730b00 BW1M100 1014c110 FireEffect::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
-    // BW1W120 0072eac0 BW1M100 101508d0 FireEffect::GetSaveType(void)
-    virtual uint32_t GetSaveType();
-    // BW1W120 007310d0 BW1M100 1014bc70 FireEffect::ResolveLoad(void)
-    virtual void ResolveLoad();
+	// Override methods
 
-    // Constructors
+	// BW1W120 0072eae0 BW1M100 10150470 FireEffect::_dt(void)
+	virtual ~FireEffect();
+	// BW1W120 0072ebe0 BW1M100 101500c0 FireEffect::ToBeDeleted(int)
+	virtual void ToBeDeleted(int param_1);
+	// BW1W120 0072ee70 BW1M100 1014fd50 FireEffect::Get3DSoundPos(LHPoint *)
+	virtual int Get3DSoundPos(LHPoint* param_1);
+	// BW1W120 0072eab0 BW1M100 1014cc60 FireEffect::GetPlayer(void)
+	virtual GPlayer* GetPlayer();
+	// BW1W120 0072ead0 BW1M100 10150910 FireEffect::GetDebugText(void)
+	virtual char* GetDebugText();
+	// BW1W120 00730df0 BW1M100 1014bcc0 FireEffect::Load(GameOSFile &)
+	virtual uint32_t Load(GameOSFile& file);
+	// BW1W120 00730b00 BW1M100 1014c110 FireEffect::Save(GameOSFile &)
+	virtual uint32_t Save(GameOSFile& file);
+	// BW1W120 0072eac0 BW1M100 101508d0 FireEffect::GetSaveType(void)
+	virtual uint32_t GetSaveType();
+	// BW1W120 007310d0 BW1M100 1014bc70 FireEffect::ResolveLoad(void)
+	virtual void ResolveLoad();
 
-    // BW1W120 0072ea80 BW1M100 10150740 FireEffect::FireEffect(void)
-    FireEffect();
+	// Constructors
 
-    // Non-virtual methods
+	// BW1W120 0072ea80 BW1M100 10150740 FireEffect::FireEffect(void)
+	FireEffect();
 
-    // BW1W120 00730ad0 BW1M100 1014c5c0 FireEffect::CreateSprites(void)
-    FireGraphic* CreateSprites();
-    // BW1W120 00732ae0 BW1M100 10149240 FireEffect::GetFirstCaused(void)
-    uint32_t GetFirstCaused();
+	// Non-virtual methods
+
+	// BW1W120 00730330 BW1M100 10155e20 FireEffect::Draw(void)
+	void Draw();
+	// BW1W120 00730a60 BW1M100 101547b0 FireEffect::StartedMoving(int)
+	void StartedMoving(int param_1);
+	// BW1W120 00730360 BW1M100 10155d80 FireEffect::IsOnFire(void)
+	bool32_t IsOnFire();
+	// BW1W120 0072eeb0 BW1M100 10158050 FireEffect::GetObjectTemperature(void)
+	float GetObjectTemperature();
+	// BW1W120 00730ab0 BW1M100 1014c6d0 FireEffect::SetOutMagicHand(void)
+	void SetOutMagicHand();
+	// BW1W120 00730ad0 BW1M100 1014c5c0 FireEffect::CreateSprites(void)
+	FireGraphic* CreateSprites();
+	// BW1W120 00732ae0 BW1M100 10149240 FireEffect::GetFirstCaused(void)
+	uint32_t GetFirstCaused();
 };
 
 #endif /* BW1_DECOMP_FIRE_EFFECT_INCLUDED_H */

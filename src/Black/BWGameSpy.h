@@ -6,14 +6,13 @@
 
 #include "LayerCommunication.h" /* For struct LayerCommunication */
 
-class BWGameSpy: public LayerCommunication
+class BWGameSpy : public LayerCommunication
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0043e290 BW1M100 105d1460 BWGameSpy::Connect(void)
-    virtual uint32_t Connect();
+	// BW1W120 0043e290 BW1M100 105d1460 BWGameSpy::Connect(void)
+	virtual uint32_t Connect();
 };
 
 #endif /* BW1_DECOMP_BW_GAME_SPY_INCLUDED_H */

@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_LH3D_ISLAND_INCLUDED_H
 #define BW1_DECOMP_LH3D_ISLAND_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <assert.h>    /* For static_assert */
+#include <stdint.h>    /* For uint32_t, uint8_t */
+#include <re_common.h> /* For bool32_t */
 
 // Forward Declares
 
@@ -13,19 +14,33 @@ struct LH3DTexture;
 
 struct LandCell
 {
-    uint8_t r; /* 0x0 */
-    uint8_t g;
-    uint8_t b;
-    uint8_t luminosity;
-    uint8_t altitude;
-    uint8_t saveColor;
-    uint8_t properties;
-    uint8_t flags;
+	uint8_t r; /* 0x0 */
+	uint8_t g;
+	uint8_t b;
+	uint8_t luminosity;
+	uint8_t altitude;
+	uint8_t SaveColor;
+	uint8_t properties;
+	uint8_t flags;
 
-    // Non-virtual methods
+	// Non-virtual methods
 
-    // BW1W120 inlined BW1M100 1000cd10 LandCell::IsWater(void)
-    bool IsWater();
+	// BW1W120 inlined BW1M100 1000cd10 LandCell::IsWater(void)
+	bool IsWater();
+};
+
+class LH3DIsland
+{
+public:
+	// Static methods
+	// BW1W120 00804790 BW1M100 1061cc34 LH3DIsland::Release(void)
+	static bool32_t Release();
+
+	// BW1W120 00803090 LH3DIsland::GetAltitude(LH3DMapCoords const &)
+	static float __fastcall GetAltitude(const LH3DMapCoords& coords);
+	// BW1W120 00803340 LH3DIsland::GetAltitudeAndSetColorSpecular(LH3DMapCoords const &, ulong *, ulong *)
+	static float __fastcall GetAltitudeAndSetColorSpecular(const LH3DMapCoords& coords, uint32_t* color,
+	                                                       uint32_t* specular);
 };
 
 #endif /* BW1_DECOMP_LH3D_ISLAND_INCLUDED_H */

@@ -10,14 +10,13 @@
 
 class Base;
 
-class GMagicWaterInfo: public GMagicInfo
+class GMagicWaterInfo : public GMagicInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 004357a0 BW1M100 103ac480 GMagicWaterInfo::_dt(void)
-    virtual ~GMagicWaterInfo();
+	// BW1W120 004357a0 BW1M100 103ac480 GMagicWaterInfo::_dt(void)
+	virtual ~GMagicWaterInfo();
 };
 
 #endif /* BW1_DECOMP_MAGIC_WATER_INFO_INCLUDED_H */

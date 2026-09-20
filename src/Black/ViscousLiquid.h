@@ -9,47 +9,71 @@
 class GameOSFile;
 struct LH3DMesh;
 struct LH3DPrimitive;
+struct LHPoint;
 
 struct FragVertex
 {
-    uint8_t field_0x0[0x14];
+	uint8_t field_0x0[0x14];
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 0076d970 BW1M100 1015ce60 FragVertex::FragVertex(void)
-    FragVertex();
+	// BW1W120 0076d970 BW1M100 1015ce60 FragVertex::FragVertex(void)
+	FragVertex();
+};
+
+struct FragTriangle
+{
+	uint32_t   field_0x0;
+	FragVertex vertices[0x3];
+	uint8_t    field_0x40[0x18];
 };
 
 struct FragPrimitive
 {
-    LH3DPrimitive* lh3d_primitive; /* 0x0 */
-    uint32_t field_0x4[0x3];
-    FragTriangle* triangle; /* 0x10 */
+	LH3DPrimitive* Lh3dPrimitive; /* 0x0 */
+	uint32_t       field_0x4[0x3];
+	FragTriangle*  triangle; /* 0x10 */
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 0076d7a0 BW1M100 1015de30 FragPrimitive::FragPrimitive(GameOSFile &, LH3DMesh *)
-    FragPrimitive(GameOSFile* file, LH3DMesh* mesh);
+	// BW1W120 0076d7a0 BW1M100 1015de30 FragPrimitive::FragPrimitive(GameOSFile &, LH3DMesh *)
+	FragPrimitive(GameOSFile* file, LH3DMesh* mesh);
+
+	// Non-virtual methods
+
+	// BW1W120 0076dae0 BW1M100 1015d920 FragPrimitive::GetRandomSurfacePos(LHPoint *, float (*)(float))
+	bool GetRandomSurfacePos(LHPoint* pos, float (*rand_func)(float));
 };
 
 struct FragMesh
 {
-    uint32_t field_0x0;
-    uint32_t count;
-    uint32_t field_0x8;
-    FragPrimitive* primitives;
-    uint32_t field_0x10;
-    uint8_t field_0x14[0x14];
+	uint32_t        field_0x0;
+	uint32_t        count;
+	uint32_t        field_0x8;
+	FragPrimitive** primitives;
+	uint32_t        field_0x10;
+	uint8_t         field_0x14[0x4];
+	float           field_0x18;
+	uint8_t         field_0x1c[0xc];
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 0076d520 BW1M100 1015e3a0 FragMesh::FragMesh(GameOSFile &, LH3DMesh *)
-    FragMesh(GameOSFile* file, LH3DMesh* mesh);
+	// BW1W120 0076d520 BW1M100 1015e3a0 FragMesh::FragMesh(GameOSFile &, LH3DMesh *)
+	FragMesh(GameOSFile& file, LH3DMesh* mesh);
 
-    // Non-virtual methods
+	// Destructors
 
-    // BW1W120 007f70e0 BW1M100 1015e8f0 FragMesh::_dt(void)
-    void _dt();
+	// BW1W120 007f70e0 BW1M100 1061c0dc FragMesh::~FragMesh()
+	~FragMesh();
+
+	// Non-virtual methods
+
+	// BW1W120 007f70e0 BW1M100 1015e8f0 FragMesh::_dt(void)
+	void _dt();
+	// BW1W120 0076d4c0 BW1M100 1015e5a0 FragMesh::GetRandomSurfacePos(LHPoint *, float (*)(float))
+	bool GetRandomSurfacePos(LHPoint* pos, float (*rand_func)(float));
+	// BW1W120 0076d680 BW1M100 1015e1b0 FragMesh::WriteToFile(GameOSFile &)
+	void WriteToFile(GameOSFile& file);
 };
 
 #endif /* BW1_DECOMP_VISCOUS_LIQUID_INCLUDED_H */

@@ -21,6 +21,7 @@ root_dir = os.path.abspath(os.path.join(script_dir, ".."))
 src_dir = os.path.join(root_dir, "src")
 include_dirs: List[str] = []  # Set with -I flag
 exclude_globs: List[str] = []  # Set with -x flag
+keep_dirs: List[str] = []  # Set with -k flag
 
 include_pattern = re.compile(r'^#\s*include\s*[<"](.+?)[>"]')
 guard_pattern = re.compile(r"^#\s*ifndef\s+(.*)$")
@@ -47,17 +48,28 @@ def generate_prelude(defines) -> str:
     return out_text
 
 
-def import_h_file(in_file: str, r_path: str) -> str:
+def resolve_h_file(in_file: str, r_path: str) -> str:
+    """Return the path the include resolves to, or "" if not found."""
     rel_path = os.path.join(root_dir, r_path, in_file)
     if os.path.exists(rel_path):
-        return import_c_file(rel_path)
+        return rel_path
     for include_dir in include_dirs:
         inc_path = os.path.join(include_dir, in_file)
         if os.path.exists(inc_path):
-            return import_c_file(inc_path)
-    else:
-        print("Failed to locate", in_file)
-        return ""
+            return inc_path
+    return ""
+
+
+def is_kept(path: str) -> bool:
+    """True if path lives under one of the -k directories."""
+    abs_path = os.path.abspath(path)
+    for keep_dir in keep_dirs:
+        try:
+            if os.path.commonpath([abs_path, keep_dir]) == keep_dir:
+                return True
+        except ValueError:  # different drives on Windows
+            continue
+    return False
 
 
 def import_c_file(in_file: str) -> str:
@@ -98,11 +110,19 @@ def process_file(in_file: str, lines: List[str]) -> str:
                     excluded = True
                     break
 
+            resolved = resolve_h_file(include_match[1], os.path.dirname(in_file))
+            if not excluded and resolved and is_kept(resolved):
+                # Keep the directive verbatim; the target dir is not to be inlined
+                out_text += line
+                continue
+
             out_text += f'/* "{in_file}" line {idx} "{include_match[1]}" */\n'
             if excluded:
                 out_text += "/* Skipped excluded file */\n"
+            elif resolved:
+                out_text += import_c_file(resolved)
             else:
-                out_text += import_h_file(include_match[1], os.path.dirname(in_file))
+                print("Failed to locate", include_match[1])
             out_text += f'/* end "{include_match[1]}" */\n'
         else:
             out_text += line
@@ -146,6 +166,12 @@ def main():
         action="append",
     )
     parser.add_argument(
+        "-k",
+        "--keep",
+        help="""Directory whose headers are not inlined; the #include is kept as-is""",
+        action="append",
+    )
+    parser.add_argument(
         "-D",
         "--define",
         help="""Macro definition""",
@@ -159,6 +185,8 @@ def main():
     include_dirs = args.include
     global exclude_globs
     exclude_globs = args.exclude or []
+    global keep_dirs
+    keep_dirs = [os.path.abspath(d) for d in (args.keep or [])]
     prelude_defines = args.define or []
     output = generate_prelude(prelude_defines)
     output += import_c_file(args.c_file)

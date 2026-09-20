@@ -6,19 +6,18 @@
 
 #include "MultiplayerDatabase.h" /* For struct MultiplayerDatabase */
 
-class StatsDatabase: public MultiplayerDatabase
+class StatsDatabase : public MultiplayerDatabase
 {
 public:
+	// Override methods
 
-    // Override methods
+	// BW1W120 006338f0 BW1M100 10109920 StatsDatabase::Send(void)
+	virtual uint32_t Send();
 
-    // BW1W120 006338f0 BW1M100 10109920 StatsDatabase::Send(void)
-    virtual uint32_t Send();
+	// Constructors
 
-    // Constructors
-
-    // BW1W120 006338d0 BW1M100 10109a30 StatsDatabase::StatsDatabase(void)
-    StatsDatabase();
+	// BW1W120 006338d0 BW1M100 10109a30 StatsDatabase::StatsDatabase(void)
+	StatsDatabase();
 };
 
 #endif /* BW1_DECOMP_STATS_DATABASE_INCLUDED_H */

@@ -6,14 +6,20 @@
 
 #include "Base.h" /* For struct Base */
 
-class GSpookyVoices: public Base
+class GSpookyVoices : public Base
 {
 public:
+	// BW1W120 0072e870 BW1M100 10148480
+	static void GetPlayerName();
+	// BW1W120 0072e2a0 BW1M100 10148d00
+	static void Init();
+	// BW1W120 0072e310 BW1M100 1008f120 GSpookyVoices::Process(void)
+	static void Process();
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 0072e250 BW1M100 10148e30 GSpookyVoices::_dt(void)
-    virtual ~GSpookyVoices();
+	// BW1W120 0072e250 BW1M100 10148e30 GSpookyVoices::_dt(void)
+	virtual ~GSpookyVoices();
 };
 
 #endif /* BW1_DECOMP_SPOOKY_VOICES_INCLUDED_H */

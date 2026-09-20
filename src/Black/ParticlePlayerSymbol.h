@@ -10,14 +10,13 @@
 
 class Base;
 
-class ParticlePlayerSymbol: public RenderParticle
+class ParticlePlayerSymbol : public RenderParticle
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 006c9d50 BW1M100 1047a0b0 ParticlePlayerSymbol::_dt(void)
-    virtual ~ParticlePlayerSymbol();
+	// BW1W120 006c9d50 BW1M100 1047a0b0 ParticlePlayerSymbol::_dt(void)
+	virtual ~ParticlePlayerSymbol();
 };
 
 #endif /* BW1_DECOMP_PARTICLE_PLAYER_SYMBOL_INCLUDED_H */

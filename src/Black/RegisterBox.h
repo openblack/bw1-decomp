@@ -6,19 +6,20 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
-class RegisterBox: public DialogBoxBase
+class RegisterBox : public DialogBoxBase
 {
 public:
-    uint8_t field_0x10[0x18];
+	uint8_t field_0x10[0x18];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 0053d7d0 BW1M100 105c2d30 RegisterBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // BW1W120 0053db00 BW1M100 105c2cd0 RegisterBox::Destroy(void)
-    virtual void Destroy();
-    // BW1W120 0053db10 BW1M100 105c2bd0 RegisterBox::InitControls(void)
-    virtual void InitControls();
+	// BW1W120 0053d7d0 BW1M100 105c2d30 RegisterBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	virtual void Init(uint32_t param_1, uint32_t param_2,
+	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	// BW1W120 0053db00 BW1M100 105c2cd0 RegisterBox::Destroy(void)
+	virtual void Destroy();
+	// BW1W120 0053db10 BW1M100 105c2bd0 RegisterBox::InitControls(void)
+	virtual void InitControls();
 };
 
 #endif /* BW1_DECOMP_REGISTER_BOX_INCLUDED_H */

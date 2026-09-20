@@ -10,8 +10,19 @@ Everything else is downloaded automatically by `configure.py` on first run:
 
 - `dtk` — [openblack/decomp-toolkit](https://github.com/openblack/decomp-toolkit) build (split + link verification)
 - `lld-link` — [openblack/llvm-project](https://github.com/openblack/llvm-project) release (PE linker)
-- MSVC 6.0 SP5 compilers — pulled at the version pinned in `configure.py`
+- MSVC 6.0 compilers (SP5 for BW1W120, SP4 for BW1W100/BW1W110) — pulled at the version pinned in `configure.py`
+- Intel C++ 5.0.1 compiler (BW1W120) — [bwrsandman/icc5.0.1.010525Z](https://github.com/bwrsandman/icc5.0.1.010525Z), which builds `LH3DP3.cpp`, the one translation unit not built with MSVC. The package also carries the Intel runtime libs, so `libircmt.lib` below can be copied out of it once fetched.
 - `objdiff-cli` — diff report generator
+
+These are **not** downloaded and must be supplied by hand under `orig/` (see [Getting Started](getting_started.md)):
+
+- MSVC 6.0 SP5 static CRT libs (BW1W120) — `orig/libs/msvc6.5/libcmt.lib`, `orig/libs/msvc6.5/libcpmt.lib` (from `VC98\Lib`)
+- MSVC 6.0 SP4 `libcmt.lib` (BW1W100/BW1W110) — `orig/libs/msvc6.4/libcmt.lib`
+- MSVC 6.0 RTM `libcpmt.lib` (also BW1W100/BW1W110; SP4 never shipped its own) — `orig/libs/msvc6.0/libcpmt.lib`
+- MSVC 6.0 RTM `libcimt.lib` (BW1W110/BW1W120; the old iostreams, never updated by any service pack) — `orig/libs/msvc6.0/libcimt.lib`
+- DirectX 7.0 DDK — headers in `orig/directx7.0/include/` and libs in `orig/directx7.0/lib/`
+- Intel Approximate Math Library — `orig/libs/amaths-2.0/amaths.lib` (linked verbatim for SSE `sin`/`cos`/`tan`/`atan`/`exp`/`log`/`pow`)
+- Intel C++ 5.0 runtime `libircmt.lib` (BW1W110/BW1W120) — `orig/libs/icc-5.0.115/libircmt.lib` (supplies `cpu_disp_mt.obj`, the CPU-dispatch init behind the SSE paths); copy it out of `build/compilers/ICC/5.0.1/lib/` after the first build
 
 Windows
 -------

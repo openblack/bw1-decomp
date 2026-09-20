@@ -12,16 +12,15 @@ class Base;
 class MultiMapFixed;
 class PlannedMultiMapFixed;
 
-class PlannedWorshipSiteUpgrade: public PlannedFeature
+class PlannedWorshipSiteUpgrade : public PlannedFeature
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 0077ee70 BW1M100 inlined PlannedWorshipSiteUpgrade::_dt(void)
-    virtual ~PlannedWorshipSiteUpgrade();
-    // BW1W120 0077eea0 BW1M100 inlined PlannedWorshipSiteUpgrade::CreatePlanned(float)
-    virtual MultiMapFixed* CreatePlanned(float param_1);
+	// BW1W120 0077ee70 BW1M100 inlined PlannedWorshipSiteUpgrade::_dt(void)
+	virtual ~PlannedWorshipSiteUpgrade();
+	// BW1W120 0077eea0 BW1M100 inlined PlannedWorshipSiteUpgrade::CreatePlanned(float)
+	virtual MultiMapFixed* CreatePlanned(float param_1);
 };
 
 #endif /* BW1_DECOMP_PLANNED_WORSHIP_SITE_UPGRADE_INCLUDED_H */

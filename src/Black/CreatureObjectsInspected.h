@@ -6,15 +6,15 @@
 
 #include "Base.h" /* For struct Base */
 
-class CreatureObjectsInspected: public Base
+class CreatureObjectsInspected : public Base
 {
 public:
-    uint32_t field_0x8[0x18];
+	uint32_t field_0x8[0x18];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 004e3520 BW1M100 102466c0 CreatureObjectsInspected::_dt(void)
-    virtual ~CreatureObjectsInspected();
+	// BW1W120 004e3520 BW1M100 102466c0 CreatureObjectsInspected::_dt(void)
+	virtual ~CreatureObjectsInspected();
 };
 
 #endif /* BW1_DECOMP_CREATURE_OBJECTS_INSPECTED_INCLUDED_H */

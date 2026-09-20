@@ -10,20 +10,20 @@
 
 class CHand;
 
-class HandStateCreature: public HandState
+class HandStateCreature : public HandState
 {
 public:
-    uint8_t field_0x8[0x118];
+	uint8_t field_0x8[0x118];
 
-    // Override methods
+	// Override methods
 
-    // BW1W120 005b13f0 BW1M100 10338c40 HandStateCreature::Enter(void)
-    virtual void Enter();
+	// BW1W120 005b13f0 BW1M100 10338c40 HandStateCreature::Enter(void)
+	virtual void Enter();
 
-    // Constructors
+	// Constructors
 
-    // BW1W120 005b13d0 BW1M100 10338f00 HandStateCreature::HandStateCreature(CHand*)
-    HandStateCreature(CHand* hand);
+	// BW1W120 005b13d0 BW1M100 10338f00 HandStateCreature::HandStateCreature(CHand*)
+	HandStateCreature(CHand* hand);
 };
 
 #endif /* BW1_DECOMP_HAND_STATE_CREATURE_INCLUDED_H */

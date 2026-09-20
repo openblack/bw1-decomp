@@ -10,14 +10,13 @@
 
 class Base;
 
-class GMagicResourceInfo: public GMagicObjectInfo
+class GMagicResourceInfo : public GMagicObjectInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00435700 BW1M100 103ac8f0 GMagicResourceInfo::_dt(void)
-    virtual ~GMagicResourceInfo();
+	// BW1W120 00435700 BW1M100 103ac8f0 GMagicResourceInfo::_dt(void)
+	virtual ~GMagicResourceInfo();
 };
 
 #endif /* BW1_DECOMP_MAGIC_RESOURCE_INFO_INCLUDED_H */

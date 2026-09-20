@@ -5,14 +5,13 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
-class MPFEPublicChatMessage: public MPFEMessageObject
+class MPFEPublicChatMessage : public MPFEMessageObject
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00626e00 BW1M100 10398090 MPFEPublicChatMessage::_dt(void)
-    virtual ~MPFEPublicChatMessage();
+	// BW1W120 00626e00 BW1M100 10398090 MPFEPublicChatMessage::_dt(void)
+	virtual ~MPFEPublicChatMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_PUBLIC_CHAT_MESSAGE_INCLUDED_H */

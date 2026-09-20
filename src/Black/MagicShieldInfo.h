@@ -10,14 +10,13 @@
 
 class Base;
 
-class GMagicShieldInfo: public GMagicRadiusSpellInfo
+class GMagicShieldInfo : public GMagicRadiusSpellInfo
 {
 public:
+	// Override methods
 
-    // Override methods
-
-    // BW1W120 00435780 BW1M100 103aeca0 GMagicShieldInfo::_dt(void)
-    virtual ~GMagicShieldInfo();
+	// BW1W120 00435780 BW1M100 103aeca0 GMagicShieldInfo::_dt(void)
+	virtual ~GMagicShieldInfo();
 };
 
 #endif /* BW1_DECOMP_MAGIC_SHIELD_INFO_INCLUDED_H */
