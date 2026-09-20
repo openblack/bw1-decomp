@@ -6,17 +6,18 @@
 
 struct LH3DMaterial;
 
-// BW1W120 00edd3a0. Original free callback; storage remains in the extracted LH3DAtmos TU.
+// BW1W120 00edd3a0
 extern void(__stdcall* g_water_drop_cb)(LHPoint&, float, unsigned long);
 
 class LH3DAtmos
 {
 public:
-	// Descriptive names for original atmosphere-owned storage, initialized by 00835ad0.
-	// Declaration only: storage remains in the extracted LH3DAtmos unit.
-	static unsigned int  IsOpen;           // 00edd38c
-	static LH3DMaterial* AdditiveMaterial; // 00edc364, render mode 0xd
-	static LH3DMaterial* AtmosMaterial;    // 00edc368, render mode 6
+	// BW1W120 00edd38c
+	static unsigned int IsOpen;
+	// BW1W120 00edc364
+	static LH3DMaterial* AdditiveMaterial;
+	// BW1W120 00edc368
+	static LH3DMaterial* AtmosMaterial;
 
 	// BW1W120 00834f80 BW1M100 10023130 LH3DAtmos::GetWeather(const LHPoint&, int)
 	static WeatherInfo GetWeather(const LHPoint& point, int recalc);
@@ -31,7 +32,7 @@ public:
 	static void Render3D();
 	// BW1W120 008366a0 BW1M100 10009dd0 LH3DAtmos::Render2D(void)
 	static void Render2D();
-	// BW1W120 00edc348. Original Mac symbol: ambient__9LH3DAtmos.
+	// BW1W120 00edc348 LH3DAtmos::ambient
 	static WeatherInfo ambient;
 	// BW1W120 inlined BW1M100 1008ed70 LH3DAtmos::GetWind(const WeatherInfo&)
 	static LHPoint GetWind(const WeatherInfo& weather)

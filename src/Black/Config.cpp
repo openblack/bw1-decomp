@@ -1,7 +1,6 @@
 #include "Config.h"
 
-#include <cstdio>  /* For sprintf */
-#include <cstring> /* For strlen */
+#include <cstdio> /* For sprintf */
 
 #include <windows.h> /* For GetTickCount */
 
@@ -18,11 +17,19 @@
 #include "CreatureMorph.h"
 #include "CreaturePhysical.h"
 #include "Game.h"
-#include "LandscapeConstants.h" /* For CellSize */
+#include "LandscapeConstants.h"
 #include "MapCoords.h"
 #include "Script.h"
 
 LHReleasedOSFile Config::CloseDownFile;
+
+enum CONFIG_TEST_TURN
+{
+	CONFIG_TEST_TURN_CAST_SHIELD = 200,
+	CONFIG_TEST_TURN_CREATE_CREATURE = 300,
+	CONFIG_TEST_TURN_MOVE_CAMERA = 600,
+	CONFIG_TEST_TURN_QUIT = 1200
+};
 
 // TODO: Init (0046af20) is deferred until CPUCheck's complete stack layout is recovered.
 // The unlabelled 0046b050 routine writes the renderer's camera/mode globals; its ownership
@@ -80,18 +87,12 @@ void Config::Process()
 
 void Config::ProcessOneGameTurn()
 {
-	// TODO: The target inlines LHPoint construction and registers empty destructors for
-	// these statics. The shared LHPoint declarations do not yet express those inlines.
 	static LHPoint cameraOrigin(1942.0f, 141.0f, 2377.0f);
 	static LHPoint cameraHeading(1993.0f, 118.0f, 2387.0f);
 
-	uint32_t gameTurn = GGame::g_game->data.GameTurn;
-	LHPoint  creaturePosition(2193.0f, 0.0f, 2359.0f);
-	// Inlined world-to-map conversion: (2193, 2359) metres at 65536/10 units per metre.
-	LH3DMapCoords terrainCoords;
-	terrainCoords.x = 0x00db4ccc;
-	terrainCoords.z = 0x00ebe666;
-	terrainCoords.altitude = 0.0f;
+	uint32_t      gameTurn = GGame::g_game->data.GameTurn;
+	LHPoint       creaturePosition(2193.0f, 0.0f, 2359.0f);
+	LH3DMapCoords terrainCoords(creaturePosition.x, creaturePosition.z);
 	creaturePosition.y = LH3DIsland::GetAltitude(terrainCoords);
 
 	Zoomer3d& originZoomer = GGame::g_game->GetCamera()->CameraOriginZoomer;
@@ -105,14 +106,14 @@ void Config::ProcessOneGameTurn()
 
 	switch (gameTurn)
 	{
-	case 200: {
+	case CONFIG_TEST_TURN_CAST_SHIELD: {
 		MapCoords coords(creaturePosition);
 		GScript::CastSpellAtPos(coords, MAGIC_TYPE_SHIELD, coords, NULL, 0, 45.0f, 10.0f, 0.0f,
 		                        LHPoint(0.0f, 0.0f, 0.0f));
 		Record("Cast Shied", coords);
 		break;
 	}
-	case 300: {
+	case CONFIG_TEST_TURN_CREATE_CREATURE: {
 		MapCoords coords(creaturePosition);
 		GPlayer*  player = &GGame::g_game->players[GGame::g_game->PlayerIndex];
 		Creature* creature = player->creature;
@@ -129,14 +130,14 @@ void Config::ProcessOneGameTurn()
 		Record("Create Creature", coords);
 		break;
 	}
-	case 600:
+	case CONFIG_TEST_TURN_MOVE_CAMERA:
 		cameraOrigin.x = creaturePosition.x + 50.0f;
 		cameraOrigin.y = creaturePosition.y + 50.0f;
 		cameraOrigin.z = creaturePosition.z + 50.0f;
 		cameraHeading = creaturePosition;
 		Record("Create Creature", cameraOrigin);
 		break;
-	case 1200:
+	case CONFIG_TEST_TURN_QUIT:
 		GGame::g_game->GameMode = GAME_MODE_QUITTING;
 		Record("Quit:");
 		break;
@@ -153,9 +154,7 @@ void Config::Record(char* text)
 void Config::Record(char* text, MapCoords& coords)
 {
 	char buffer[250];
-	// Inlined map-to-world conversion. Keep the two multiplications in target order.
-	sprintf(buffer, "%s[%.2f,%.2f]@%d\n", text, (float)coords.x * CellSize * (1.0f / 65536.0f),
-	        (float)coords.z * CellSize * (1.0f / 65536.0f), GGame::g_game->data.GameTurn);
+	sprintf(buffer, "%s[%.2f,%.2f]@%d\n", text, coords.MetersX(), coords.MetersZ(), GGame::g_game->data.GameTurn);
 	file.Write(buffer);
 }
 
@@ -164,13 +163,6 @@ void Config::Record(char* text, LHPoint& point)
 	char buffer[250];
 	sprintf(buffer, "%s[%.2f,%.2f,%.2f]@%d\n", text, point.x, point.y, point.z, GGame::g_game->data.GameTurn);
 	file.Write(buffer);
-}
-
-// This overload is emitted in Config's target object. Its return type follows LHOSFile.h;
-// the Windows implementation forwards the result of the length-taking Write unchanged.
-LH_FILE_RESULT LHOSFile::Write(const char* str)
-{
-	return Write(str, strlen(str), NULL);
 }
 
 void Config::CloseDown()

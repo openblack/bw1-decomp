@@ -1,9 +1,6 @@
 #ifndef BW1_DECOMP_CONFIG_INCLUDED_H
 #define BW1_DECOMP_CONFIG_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stddef.h> /* For offsetof */
-
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h>
 
 class CameraModeNew3;
@@ -12,15 +9,11 @@ struct MapCoords;
 
 struct Config
 {
-	// GSetup::MapCommandProcess allocates 0x114 bytes and installs the LHReleasedOSFile
-	// vtable at +0 before Init (00714fa3-00714fb0). Init's virtual Open alone is insufficient evidence.
-	// Its implicitly generated destructor preserves the original direct LHOSFile teardown.
 	LHReleasedOSFile file; /* 0x0 */
 	int              field_0x10c;
-	CameraModeNew3*  CameraMode; /* 0x110; descriptive member name, written by Init. */
+	CameraModeNew3*  CameraMode; /* 0x110 */
 
-	// BW1W120 00c5e4c0. CloseDown uses this separate file, not the instance member.
-	// TODO: Original name/scope unrecovered; Config's startup and CloseDown establish ownership.
+	// BW1W120 00c5e4c0
 	static LHReleasedOSFile CloseDownFile;
 
 	// BW1W120 inlined Config::~Config(void)

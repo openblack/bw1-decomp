@@ -31,6 +31,12 @@ struct LH3DMapCoords
 
 	// BW1W120 00441b60 LH3DMapCoords::LH3DMapCoords(void)
 	LH3DMapCoords() : x(0), z(0), altitude(0.0f) {}
+	// BW1W120 inlined BW1M100 10041930 LH3DMapCoords::LH3DMapCoords(float, float)
+	LH3DMapCoords(float world_x, float world_z)
+		: x((LH3DMapCoordsFull)(world_x * 65536.0f / 10.0f)), z((LH3DMapCoordsFull)(world_z * 65536.0f / 10.0f)),
+		  altitude(0.0f)
+	{
+	}
 
 	// Non-virtual methods
 

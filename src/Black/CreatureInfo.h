@@ -14,9 +14,12 @@ class GBaseInfo;
 class CreatureInfo : public GLivingInfo
 {
 public:
-	// BW1W120 00c60460. GetBaseInfo returns this table and reports 17 entries.
-	// TODO: Descriptive name/provisional class ownership; storage remains extracted.
-	static CreatureInfo CreatureInfos[17];
+	enum
+	{
+		CREATURE_INFO_COUNT = 17
+	};
+	// BW1W120 00c60460
+	static CreatureInfo CreatureInfos[CREATURE_INFO_COUNT];
 
 	uint32_t CreatureType; /* 0x1f4 */
 	float    field_0x1f8[0x4];

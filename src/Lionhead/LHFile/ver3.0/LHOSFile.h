@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
+#include <string.h> /* For strlen */
 
 #include "LHFile.h" /* For enum LH_FILE_MODE, enum LH_SEEK_MODE */
 
@@ -39,8 +40,8 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 0046b720 BW1M100 inlined LHOSFile::Write(char *const)
-	LH_FILE_RESULT Write(const char* str);
+	// BW1W120 0046b720 LHOSFile::Write(const char*)
+	LH_FILE_RESULT Write(const char* str) { return Write(str, strlen(str), NULL); }
 	// BW1W120 007bc860 BW1M100 1061b68c LHOSFile::Close(void)
 	LH_FILE_RESULT Close();
 	// BW1W120 007bc880 BW1M100 1061beb4 LHOSFile::Seek(long, LH_SEEK_MODE, unsigned long *)
