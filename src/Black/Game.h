@@ -345,8 +345,8 @@ public:
 	void FinishedVideo();
 	// BW1W120 005533b0 BW1M100 100140b0 GGame::Draw(void)
 	void Draw();
-	// BW1W120 00553a60 void GGame::fn_00553A60(void)
-	void fn_00553A60();
+	// BW1W120 00553a60 GGame::UpdateFallingSpellVideo(void)
+	void UpdateFallingSpellVideo();
 	// BW1W120 00553a10 BW1M100 100d45b0 GGame::EndFallingSpellVideo(void)
 	void EndFallingSpellVideo();
 	// BW1W120 0054e4f0 BW1M100 10083c70 GGame::StartTurn(void)

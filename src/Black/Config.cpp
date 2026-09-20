@@ -45,26 +45,23 @@ int ConfigGetFPS()
 	LHTimer& timer = LH3DTech::g_timer;
 	if (lastTime == -1)
 	{
-		lastTime =
-			(int)((float)(GetTickCount() - timer.TickCount) * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+		lastTime = (GetTickCount() - timer.TickCount) * timer.SpeedUpFactor + (uint32_t)timer.ElapsedTime;
 		lastFrame = LH3DRender::g_frame;
 		return 0;
 	}
 
 	int elapsed =
-		(int)((float)(GetTickCount() - timer.TickCount) * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime) -
-		lastTime;
+		(int)((GetTickCount() - timer.TickCount) * timer.SpeedUpFactor + (uint32_t)timer.ElapsedTime) - lastTime;
 	if (elapsed < 1000)
 	{
-		return (int)lastFPS;
+		return lastFPS;
 	}
 
-	float fps = (float)(LH3DRender::g_frame - lastFrame) * 1000.0f / elapsed;
-	lastTime =
-		(int)((float)(GetTickCount() - timer.TickCount) * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
+	float fps = (LH3DRender::g_frame - lastFrame) * 1000.0f / elapsed;
+	lastTime = (GetTickCount() - timer.TickCount) * timer.SpeedUpFactor + (uint32_t)timer.ElapsedTime;
 	lastFrame = LH3DRender::g_frame;
 	lastFPS = fps;
-	return (int)fps;
+	return fps;
 }
 
 void Config::Process()
@@ -131,9 +128,7 @@ void Config::ProcessOneGameTurn()
 		break;
 	}
 	case CONFIG_TEST_TURN_MOVE_CAMERA:
-		cameraOrigin.x = creaturePosition.x + 50.0f;
-		cameraOrigin.y = creaturePosition.y + 50.0f;
-		cameraOrigin.z = creaturePosition.z + 50.0f;
+		cameraOrigin = creaturePosition + LHPoint(50.0f, 50.0f, 50.0f);
 		cameraHeading = creaturePosition;
 		Record("Create Creature", cameraOrigin);
 		break;

@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/CreatureEnum.h>
+
 #include "LivingInfo.h" /* For struct GLivingInfo */
 
 // Forward Declares
@@ -14,12 +16,8 @@ class GBaseInfo;
 class CreatureInfo : public GLivingInfo
 {
 public:
-	enum
-	{
-		CREATURE_INFO_COUNT = 17
-	};
 	// BW1W120 00c60460
-	static CreatureInfo CreatureInfos[CREATURE_INFO_COUNT];
+	static CreatureInfo CreatureInfos[CREATURE_TYPE_LAST];
 
 	uint32_t CreatureType; /* 0x1f4 */
 	float    field_0x1f8[0x4];

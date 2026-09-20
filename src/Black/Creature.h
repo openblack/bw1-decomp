@@ -650,6 +650,4 @@ public:
 	virtual bool32_t CanBecomeAPhysicsObject();
 };
 
-// Constructor boundaries: 00474690; flag stores: 00474130; allocation: 0055a697.
-
 #endif /* BW1_DECOMP_CREATURE_INCLUDED_H */
