@@ -75,4 +75,58 @@ struct Zoomer3d
 	void SetPosition(const LHPoint* destination);
 };
 
+#include "LHMatrix.h"
+
+// BW1W120 00407d60 BW1M100 1004ee60 Zoomer::SetDestinationWithSpeedAndTime(float, float, float)
+inline void Zoomer::SetDestinationWithSpeedAndTime(float destination, float speed, float time)
+{
+	// Ghidra misses the stack-built matrix passed in EDX; its coefficients and
+	// the reversed acceleration components are from target assembly.
+	if (time < 0.001f)
+	{
+		this->destination = destination;
+		CurrentValue = destination;
+		StartValue = destination;
+		duration = 0.0f;
+		CurrentTime = 0.0f;
+		NonLinearAcceleration.z = 0.0f;
+		NonLinearAcceleration.y = 0.0f;
+		TimeM2 = 0.0f;
+		NonLinearAcceleration.x = 0.0f;
+		CurrentSpeed = 0.0f;
+		StartSpeed = 0.0f;
+		DestinationSpeed = 0.0f;
+		return;
+	}
+	StartSpeed = CurrentSpeed;
+	StartValue = CurrentValue;
+	this->destination = destination;
+	DestinationSpeed = speed;
+	duration = time;
+	CurrentTime = 0.0f;
+	float    halfTimeSquared = time * time * 0.5f;
+	float    sixthTimeCubed = halfTimeSquared * time * (1.0f / 3.0f);
+	LHMatrix coefficients;
+	coefficients.m[0] = halfTimeSquared * halfTimeSquared * (1.0f / 6.0f);
+	coefficients.m[1] = sixthTimeCubed;
+	coefficients.m[2] = halfTimeSquared;
+	coefficients.m[3] = sixthTimeCubed;
+	coefficients.m[4] = halfTimeSquared;
+	coefficients.m[5] = time;
+	coefficients.m[6] = halfTimeSquared;
+	coefficients.m[7] = time;
+	coefficients.m[8] = 1.0f;
+	coefficients.m[11] = 0.0f;
+	coefficients.m[10] = 0.0f;
+	coefficients.m[9] = 0.0f;
+	LHMatrix inverse;
+	inverse.SetInverse(coefficients);
+	float distance = this->destination - StartValue - duration * StartSpeed;
+	float speedChange = DestinationSpeed - StartSpeed;
+	float accelerationZ = inverse.m[0] * distance + inverse.m[3] * speedChange + inverse.m[9];
+	NonLinearAcceleration.y = inverse.m[1] * distance + inverse.m[4] * speedChange + inverse.m[10];
+	NonLinearAcceleration.x = inverse.m[2] * distance + inverse.m[5] * speedChange + inverse.m[11];
+	NonLinearAcceleration.z = accelerationZ;
+}
+
 #endif /* BW1_DECOMP_ZOOMER_INCLUDED_H */

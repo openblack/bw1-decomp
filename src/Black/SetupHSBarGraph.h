@@ -28,4 +28,20 @@ public:
 	SetupHSBarGraph(int id, int x, int y, int width, int height, const char16_t* label);
 };
 
+#include <math.h>
+
+// BW1W120 0040d9a0 BW1M100 10130720 SetupHSBarGraph::SetScale(float)
+inline void SetupHSBarGraph::SetScale(float scale)
+{
+	if (scale <= 0.0f)
+	{
+		scale = 0.0f;
+		for (VBarData* bar = BarDataList.FindNext(NULL); bar != NULL; bar = BarDataList.FindNext(bar))
+			scale += (float)fabs(bar->value);
+		if (scale <= 0.0f)
+			scale = 1.0f;
+	}
+	max_point = scale;
+}
+
 #endif /* BW1_DECOMP_SETUP_HS_BAR_GRAPH_INCLUDED_H */

@@ -44,7 +44,7 @@ public:
 	virtual void Click(int x, int y);
 	// BW1W120 004106f0 BW1M100 100fe9d0 SetupPicture::KeyDown(int, int)
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 00410720 BW1M100 1034f1b0 SetupPicture::~SetupPicture(void)
+	// BW1W120 inlined BW1M100 1034f1b0 SetupPicture::~SetupPicture(void)
 	virtual ~SetupPicture();
 
 	// Constructors
@@ -53,5 +53,54 @@ public:
 	SetupPicture(int id, int x, int y, LH3DMaterial* material, int picture_index, int num_rows, bool clickable,
 	             int size, bool draggable);
 };
+
+// BW1W120 0040fa10 BW1M100 100e47c0 SetupPicture::Drag(int, int)
+inline void SetupPicture::Drag(int x, int y) {}
+
+// BW1W120 00410710 BW1M100 10351210 SetupPicture::Click(int, int)
+inline void SetupPicture::Click(int x, int y) {}
+
+// BW1W120 004105d0 BW1M100 101a6a00 SetupPicture::SetupPicture(int, int, int, LH3DMaterial *, int, int, bool, int, bool)
+inline SetupPicture::SetupPicture(int id, int x, int y, LH3DMaterial* material, int picture_index, int num_rows,
+                                  bool clickable, int size, bool draggable)
+	: SetupButton(id, x, y, size, size, L"", 0)
+{
+	HoveredPictureIndex = -1;
+	// Two identical reset expansions are present in the target.
+	zoomer.SetPosition(0.0f);
+	zoomer.SetPosition(0.0f);
+	this->picture_index = picture_index;
+	this->num_rows = num_rows;
+	this->material = material;
+	this->clickable = clickable;
+	pressed = false;
+	tint = LH3DColor(0);
+	dragging = false;
+	NumPictures = num_rows * num_rows;
+	this->draggable = draggable;
+}
+
+// BW1W120 004106f0 BW1M100 100fe9d0 SetupPicture::KeyDown(int, int)
+inline void SetupPicture::KeyDown(LHKey key, LHKeyMod mod)
+{
+	if (setup_box != NULL)
+		setup_box->fn_00409170(key, mod);
+}
+
+// BW1W120 inlined BW1M100 1034f1b0 SetupPicture::~SetupPicture(void)
+inline SetupPicture::~SetupPicture() {}
+
+// BW1W120 00410740 BW1M100 102410c0 SetupPicture::SetFocus(bool)
+inline void SetupPicture::SetFocus(bool focus)
+{
+	// This override deliberately does not call SetupControl::SetFocus.
+	if (!focus)
+	{
+		HoveredPictureIndex = -1;
+		// Target expands two identical position resets here.
+		zoomer.SetPosition(0.0f);
+		zoomer.SetPosition(0.0f);
+	}
+}
 
 #endif /* BW1_DECOMP_SETUP_PICTURE_INCLUDED_H */
