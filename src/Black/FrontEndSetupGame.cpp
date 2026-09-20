@@ -28,13 +28,14 @@ SetupLandscapeBox*     FrontEnd::LandscapeDialog;        // 00cd1664
 SpellSetupBox*         FrontEnd::SpellDialog;            // 00cd1668
 SetupOnlineLandscapes* FrontEnd::OnlineLandscapesDialog; // 00cd1670
 
-// BW1W120 00546d00. Descriptive callback name; two cdecl arguments supplied by 0054744e.
+// BW1W120 00546d00 void OpenSpellSetup(SetupBox *, SetupControl *)
 static void OpenSpellSetup(SetupBox* box, SetupControl* control)
 {
+	// Descriptive callback name; two cdecl arguments supplied by 0054744e.
 	FrontEnd::LandscapeDialog->SpellDialog->Show();
 }
 
-// BW1W120 00546280 BW1M100 105cd3c0
+// BW1W120 00546280 BW1M100 105cd3c0 void SetupLandscapeBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void SetupLandscapeBox::Init(uint32_t width, uint32_t height,
                              void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -102,9 +103,10 @@ void SetupLandscapeBox::Init(uint32_t width, uint32_t height,
 	SpellButton->ContinueButtonCallback = (void*)OpenSpellSetup;
 }
 
-// BW1W120 00546c30. Returns shared frontend scratch storage, not the database entry itself.
+// BW1W120 00546c30 unsigned short * get_type_string(float)
 char16_t* get_type_string(float value)
 {
+	// Returns shared frontend scratch storage, not the database entry itself.
 	if (value < 0.3f)
 	{
 		wcscpy(FrontEnd::TypeString, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1156));
@@ -119,16 +121,17 @@ char16_t* get_type_string(float value)
 	return FrontEnd::TypeString;
 }
 
-// BW1W120 00546d10 BW1M100 105cd360
+// BW1W120 00546d10 BW1M100 105cd360 void SetupLandscapeBox::Destroy(void)
 void SetupLandscapeBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::LandscapeDialog = NULL;
 }
 
-// Source-level form of the repeated inlined slider clamp. Operand order preserves unordered comparisons.
 static inline void SetSliderValue(SetupSlider* slider, float value)
 {
+	// Source-level helper for the repeated inlined slider clamp.
+	// Operand order preserves unordered comparisons.
 	if (value > 0.0f)
 	{
 		if (value >= 1.0f)
@@ -139,7 +142,7 @@ static inline void SetSliderValue(SetupSlider* slider, float value)
 	slider->value = value;
 }
 
-// BW1W120 00546d20 BW1M100 105cce40
+// BW1W120 00546d20 BW1M100 105cce40 void SetupLandscapeBox::InitControls(void)
 void SetupLandscapeBox::InitControls()
 {
 	FrontEnd::LandscapeDialog->setup_box->DefaultTextSize = GetSmallTextSize();
@@ -178,14 +181,14 @@ void SetupLandscapeBox::InitControls()
 	List0x4a8->fn_00547150(Settings.field_0x424);
 }
 
-// BW1W120 005471c0. Original method name recovered in symbols.txt.
+// BW1W120 005471c0 void SetupList::SetCol(int, unsigned int)
 void SetupList::SetCol(int index, uint32_t value)
 {
 	if (index >= 0 && index < NumItems)
 		color[index] = LH3DColor(value);
 }
 
-// BW1W120 00547970 BW1M100 105cc310
+// BW1W120 00547970 BW1M100 105cc310 void SpellSetupBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void SpellSetupBox::Init(uint32_t width, uint32_t height,
                          void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -206,14 +209,14 @@ void SpellSetupBox::Init(uint32_t width, uint32_t height,
 	SpellList = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x153) SetupMultiList(2, 330, 140, 200, 200, 10);
 }
 
-// BW1W120 00547c30 BW1M100 105cc2b0
+// BW1W120 00547c30 BW1M100 105cc2b0 void SpellSetupBox::Destroy(void)
 void SpellSetupBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::SpellDialog = NULL;
 }
 
-// BW1W120 00547c40 BW1M100 105cc120
+// BW1W120 00547c40 BW1M100 105cc120 void SpellSetupBox::InitControls(void)
 void SpellSetupBox::InitControls()
 {
 	FrontEnd::SpellDialog->setup_box->DefaultTextSize = GetMidTextSize();
@@ -237,7 +240,7 @@ void SpellSetupBox::InitControls()
 	}
 }
 
-// BW1W120 00547ff0 BW1M100 105cbb10
+// BW1W120 00547ff0 BW1M100 105cbb10 void SetupOnlineLandscapes::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 void SetupOnlineLandscapes::Init(uint32_t width, uint32_t height,
                                  void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int))
 {
@@ -264,14 +267,14 @@ void SetupOnlineLandscapes::Init(uint32_t width, uint32_t height,
 	Download->text_size = 20;
 }
 
-// BW1W120 005482a0 BW1M100 105cbaa0
+// BW1W120 005482a0 BW1M100 105cbaa0 void SetupOnlineLandscapes::Destroy(void)
 void SetupOnlineLandscapes::Destroy()
 {
 	DialogBoxBase::Destroy();
 	FrontEnd::OnlineLandscapesDialog = NULL;
 }
 
-// BW1W120 005482b0 BW1M100 105cba40
+// BW1W120 005482b0 BW1M100 105cba40 void SetupOnlineLandscapes::InitControls(void)
 void SetupOnlineLandscapes::InitControls()
 {
 	FrontEnd::OnlineLandscapesDialog->setup_box->DefaultTextSize = 16;
@@ -279,10 +282,11 @@ void SetupOnlineLandscapes::InitControls()
 	ThumbnailMaterial = NULL;
 }
 
-// BW1W120 00548860. Original name/signature unrecovered; the list/point shapes agree with
-// ServerLandscapeMap::Point and its existing LHLinkedList storage. No allocation is performed here.
+// BW1W120 00548860 ServerLandscapeMap::Point * FindThumbnailPoint(LHLinkedList<ServerLandscapeMap::Point *> const &, int, int)
 ServerLandscapeMap::Point* FindThumbnailPoint(const LHLinkedList<ServerLandscapeMap::Point*>& points, int x, int y)
 {
+	// TODO: Recover the original name/signature. The list/point shapes agree with
+	// ServerLandscapeMap::Point and its existing LHLinkedList storage; no allocation is performed here.
 	for (LHLinkedNode<ServerLandscapeMap::Point*>* node = points.GetStart(); node != NULL; node = node->next.Get())
 	{
 		if (node->payload->field_0x0 == (uint32_t)x && node->payload->field_0x4 == (uint32_t)y)
@@ -291,10 +295,11 @@ ServerLandscapeMap::Point* FindThumbnailPoint(const LHLinkedList<ServerLandscape
 	return NULL;
 }
 
-// BW1W120 00548890. Descriptive name. The original draws concentric rings into a 256-pixel stride.
-// TODO: x87 keeps the angular recurrence in extended precision; verify its source type/codegen.
+// BW1W120 00548890 void DrawThumbnailPoint(unsigned short *, int, int, int, unsigned short)
 void DrawThumbnailPoint(uint16_t* pixels, int x, int y, int radius, uint16_t color)
 {
+	// Descriptive name. The original draws concentric rings into a 256-pixel stride.
+	// TODO: x87 keeps the angular recurrence in extended precision; verify its source type/codegen.
 	for (; radius != -1; --radius)
 	{
 		float angle = 6.2831855f;
@@ -308,9 +313,10 @@ void DrawThumbnailPoint(uint16_t* pixels, int x, int y, int radius, uint16_t col
 	}
 }
 
-// BW1W120 00548920. Descriptive method name, ECX instance and no stack arguments.
+// BW1W120 00548920 void SetupOnlineLandscapes::ReleaseThumbnail(void)
 void SetupOnlineLandscapes::ReleaseThumbnail()
 {
+	// Descriptive method name, ECX instance and no stack arguments.
 	if (Thumbnail != NULL)
 	{
 		Thumbnail->Release();
@@ -326,7 +332,7 @@ void SetupOnlineLandscapes::ReleaseThumbnail()
 	FrontEnd::OnlineLandscapesDialog->Download->Hide(true);
 }
 
-// BW1W120 00549910 BW1M100 105c9f10
+// BW1W120 00549910 BW1M100 105c9f10 void SetupOnlineLandscapes::Show(void)
 void SetupOnlineLandscapes::Show()
 {
 	FrontEnd::OnlineLandscapesDialog->Download->Hide(false);

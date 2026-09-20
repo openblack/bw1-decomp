@@ -32,7 +32,7 @@ struct setupgamedata
 	int     field_0x424;
 	int     field_0x428;
 
-	// BW1W120 00719750. Implementation belongs to Setup.cpp.
+	// BW1W120 00719750 setupgamedata::setupgamedata(void)
 	setupgamedata();
 };
 
@@ -40,7 +40,7 @@ static_assert(offsetof(setupgamedata, Spells) == 0x3f7, "setupgamedata spell off
 static_assert(offsetof(setupgamedata, GuaranteedPlayers) == 0x414, "setupgamedata player offset is incorrect");
 static_assert(sizeof(setupgamedata) == 0x42c, "setupgamedata size is incorrect");
 
-// BW1W120 00546c30. The original free-function name is recovered in symbols.txt.
+// BW1W120 00546c30 unsigned short * get_type_string(float)
 char16_t* get_type_string(float value);
 
 #endif /* BW1_DECOMP_FRONT_END_SETUP_GAME_INCLUDED_H */

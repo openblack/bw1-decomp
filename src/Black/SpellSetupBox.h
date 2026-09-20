@@ -29,12 +29,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 00547970 BW1M100 105cc310 SpellSetupBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00547970 BW1M100 105cc310 void SpellSetupBox::Init(unsigned int, unsigned int, void (*)(int, SetupBox *, SetupControl *, int, int))
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 00547c30 BW1M100 105cc2b0 SpellSetupBox::Destroy(void)
+	// BW1W120 00547c30 BW1M100 105cc2b0 void SpellSetupBox::Destroy(void)
 	virtual void Destroy();
-	// BW1W120 00547c40 BW1M100 105cc120 SpellSetupBox::InitControls(void)
+	// BW1W120 00547c40 BW1M100 105cc120 void SpellSetupBox::InitControls(void)
 	virtual void InitControls();
 };
 
