@@ -23,12 +23,12 @@ struct VBarData
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined VBarData::VBarData(const VBarData &)
+	// BW1W120 inlined BW1M100 inlined VBarData::VBarData(VBarData const &)
 	VBarData(const VBarData& bar) : color(bar.color), value(bar.value) {}
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 inlined VBarData::operator=(const VBarData &)
+	// BW1W120 inlined BW1M100 inlined VBarData & VBarData::operator=(VBarData const &)
 	VBarData& operator=(const VBarData& bar)
 	{
 		color = bar.color;
@@ -47,29 +47,29 @@ public:
 
 	// Override methods
 
-	// BW1W120 0040e8b0 BW1M100 10379480 SetupVBarGraph::Draw(bool, bool)
+	// BW1W120 0040e8b0 BW1M100 10379480 void SetupVBarGraph::Draw(bool, bool)
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 0040ef70 BW1M100 10350e50 SetupVBarGraph::KeyDown(int, int)
+	// BW1W120 0040ef70 BW1M100 10350e50 void SetupVBarGraph::KeyDown(LHKey, LHKeyMod)
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 0040ef90 BW1M100 103de920 SetupVBarGraph::~SetupVBarGraph(void)
+	// BW1W120 inlined BW1M100 103de920 SetupVBarGraph::~SetupVBarGraph(void)
 	virtual ~SetupVBarGraph();
-	// BW1W120 0040efb0 BW1M100 inlined SetupVBarGraph::Reset(vfoid)
+	// BW1W120 0040efb0 BW1M100 inlined void SetupVBarGraph::Reset(void)
 	virtual void Reset();
-	// BW1W120 0040f1b0 BW1M100 10351240 SetupVBarGraph::SetScale(float)
+	// BW1W120 0040f1b0 BW1M100 10351240 void SetupVBarGraph::SetScale(float)
 	virtual void SetScale(float scale);
 
 	// Constructors
 
-	// BW1W120 0040ef00 BW1M100 10354bc0 SetupVBarGraph::SetupVBarGraph(int, int, int, int, int, wchar_t *)
+	// BW1W120 0040ef00 BW1M100 10354bc0 SetupVBarGraph::SetupVBarGraph(int, int, int, int, int, unsigned short const *)
 	SetupVBarGraph(int id, int x, int y, int width, int height, const char16_t* label);
 
-	// Remaining virtual slots, confirmed by BW1W120 vtable +0x3c..+0x44.
+	// Virtual methods
 
-	// BW1W120 0040f280 BW1M100 103fccd0 SetupVBarGraph::AddBar(const VBarData &)
+	// BW1W120 0040f280 BW1M100 103fccd0 void SetupVBarGraph::AddBar(VBarData const &)
 	virtual void AddBar(const VBarData& bar);
-	// BW1W120 0040f300 BW1M100 10352240 SetupVBarGraph::SetBar(int, const VBarData &)
+	// BW1W120 0040f300 BW1M100 10352240 void SetupVBarGraph::SetBar(int, VBarData const &)
 	virtual void SetBar(int index, const VBarData& bar);
-	// BW1W120 0040f350 BW1M100 103f1500 SetupVBarGraph::GetBar(int, VBarData &)
+	// BW1W120 0040f350 BW1M100 103f1500 void SetupVBarGraph::GetBar(int, VBarData &)
 	virtual void GetBar(int index, VBarData& result);
 };
 

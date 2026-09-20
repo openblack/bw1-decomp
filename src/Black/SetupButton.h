@@ -16,20 +16,20 @@ public:
 
 	// Override methods
 
-	// BW1W120 004097a0 BW1M100 100c7c90 SetupButton::Draw(bool, bool)
+	// BW1W120 004097a0 BW1M100 100c7c90 void SetupButton::Draw(bool, bool)
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 00409900 BW1M100 101104d0 SetupButton::MouseDown(int, int, bool)
+	// BW1W120 00409900 BW1M100 101104d0 void SetupButton::MouseDown(int, int, bool)
 	virtual void MouseDown(int x, int y, bool param_3);
-	// BW1W120 00409910 BW1M100 10172660 SetupButton::MouseUp(int, int, bool)
+	// BW1W120 00409910 BW1M100 10172660 void SetupButton::MouseUp(int, int, bool)
 	virtual void MouseUp(int x, int y, bool param_3);
-	// BW1W120 00409920 BW1M100 1034a2d0 SetupButton::KeyDown(int, int)
+	// BW1W120 00409920 BW1M100 1034a2d0 void SetupButton::KeyDown(LHKey, LHKeyMod)
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 00409940 BW1M100 10594240 SetupButton::~SetupButton(void)
+	// BW1W120 inlined BW1M100 10594240 SetupButton::~SetupButton(void)
 	virtual ~SetupButton();
 
 	// Constructors
 
-	// BW1W120 004098b0 BW1M100 103dd710 SetupButton::SetupButton(int, int, int, int, int, wchar_t *, int)
+	// BW1W120 004098b0 BW1M100 103dd710 SetupButton::SetupButton(int, int, int, int, int, unsigned short const *, int)
 	SetupButton(int id, int x, int y, int width, int height, const char16_t* label, int param_8);
 };
 

@@ -30,7 +30,7 @@
 // SetupControl's constructor/IME focus handling and SetupBox's activation machinery.
 // TODO: Rendering, edit/IME processing and graph animation still need reconstruction.
 
-// BW1W120 004079c0
+// BW1W120 004079c0 bool NeedsBiggerText(void)
 bool NeedsBiggerText()
 {
 	if (GGame::g_game == NULL)
@@ -39,28 +39,29 @@ bool NeedsBiggerText()
 	return language == 6 || language == 10 || language == 11 || language == 13 || language == 14;
 }
 
-// BW1W120 00407a00
+// BW1W120 00407a00 int GetMidTextSize(void)
 int GetMidTextSize()
 {
 	return NeedsBiggerText() ? 23 : 22;
 }
 
-// BW1W120 00407a10
+// BW1W120 00407a10 int GetSmallTextSize(void)
 int GetSmallTextSize()
 {
 	return NeedsBiggerText() ? 21 : 20;
 }
 
-// BW1W120 00407a20
+// BW1W120 00407a20 BW1M100 105133e0 int GetBigTextSize(void)
 int GetBigTextSize()
 {
 	return 35;
 }
 
-// BW1W120 00407d60. Ghidra misses the stack-built matrix passed in EDX;
-// its coefficients and the reversed acceleration components are from target assembly.
+// BW1W120 00407d60 BW1M100 1004ee60 void Zoomer::SetDestinationWithSpeedAndTime(float, float, float)
 void Zoomer::SetDestinationWithSpeedAndTime(float destination, float speed, float time)
 {
+	// Ghidra misses the stack-built matrix passed in EDX; its coefficients and
+	// the reversed acceleration components are from target assembly.
 	if (time < 0.001f)
 	{
 		this->destination = destination;
@@ -108,10 +109,11 @@ void Zoomer::SetDestinationWithSpeedAndTime(float destination, float speed, floa
 	NonLinearAcceleration.z = accelerationZ;
 }
 
-// BW1W120 00408100. The IME candidate list and flagged controls can supersede
-// an earlier hit; hidden controls are still hit-tested before being excluded.
+// BW1W120 00408100 SetupControl * SetupBox::FindControl(int, int)
 SetupControl* SetupBox::FindControl(int x, int y)
 {
+	// The IME candidate list and flagged controls can supersede an earlier hit;
+	// hidden controls are still hit-tested before being excluded.
 	SetupControl* hit = NULL;
 	for (SetupControl* control = WidgetList; control != NULL; control = control->next)
 	{
@@ -122,7 +124,7 @@ SetupControl* SetupBox::FindControl(int x, int y)
 	return hit;
 }
 
-// BW1W120 00408160
+// BW1W120 00408160 BW1M100 1043c330 SetupControl * SetupBox::FindControl(int)
 SetupControl* SetupBox::FindControl(int id)
 {
 	SetupControl* control;
@@ -139,7 +141,7 @@ SetupControl* SetupBox::FindControl(int id)
 	return NULL;
 }
 
-// BW1W120 00409140
+// BW1W120 00409140 BW1M100 10598ed0 void SetupBox::SetFocusControl(SetupControl *)
 void SetupBox::SetFocusControl(SetupControl* widget)
 {
 	if (FocusedWidget != widget)
@@ -152,12 +154,17 @@ void SetupBox::SetFocusControl(SetupControl* widget)
 	}
 }
 
-// BW1W120 00409170: genuine empty virtual, RET 8.
-void SetupBox::fn_00409170(uint32_t param_1, uint32_t param_2) {}
+// BW1W120 00409170 void SetupBox::fn_00409170(unsigned int, unsigned int)
+void SetupBox::fn_00409170(uint32_t param_1, uint32_t param_2)
+{
+	// Genuine empty virtual, RET 8.
+	// TODO: Recover the original name and two argument types.
+}
 
-// BW1W120 00411090. Controls are inserted at the head, so Next walks backwards.
+// BW1W120 00411090 BW1M100 1047e3e0 void SetupBox::SetFocusNext(void)
 void SetupBox::SetFocusNext()
 {
+	// Controls are inserted at the head, so Next walks backwards.
 	SetupControl* control = FocusedWidget;
 	SetupControl* original = control;
 	do
@@ -182,7 +189,7 @@ void SetupBox::SetFocusNext()
 	} while (!control->field_0x22a || control->hidden);
 }
 
-// BW1W120 00411100
+// BW1W120 00411100 BW1M100 10478e70 void SetupBox::SetFocusPrev(void)
 void SetupBox::SetFocusPrev()
 {
 	SetupControl* original = FocusedWidget;
@@ -201,7 +208,7 @@ void SetupBox::SetFocusPrev()
 	} while (!control->field_0x22a || control->hidden);
 }
 
-// BW1W120 inlined in the drawing and text measurement routines.
+// BW1W120 inlined BW1M100 inlined int SetupControl::GetTextSize(void)
 inline int SetupControl::GetTextSize()
 {
 	if (text_size != 0)
@@ -209,44 +216,50 @@ inline int SetupControl::GetTextSize()
 	return setup_box != NULL ? setup_box->DefaultTextSize : 10;
 }
 
-// BW1W120 00409210
+// BW1W120 00409210 BW1M100 1057a320 void SetupControl::SetToolTip(unsigned int)
 void SetupControl::SetToolTip(uint32_t tooltip_id)
 {
 	tooltip = HelpTextDataBase::HelpTextDatabase.GetHelpText(tooltip_id);
 }
 
-// BW1W120 004092f0
+// BW1W120 004092f0 BW1M100 100c4fd0 void SetupControl::SetToolTip(unsigned short const *)
 void SetupControl::SetToolTip(const char16_t* tooltip)
 {
 	this->tooltip = tooltip;
 }
 
-// BW1W120 00409300
+// BW1W120 00409300 BW1M100 105a3830 void SetupControl::Hide(bool)
 void SetupControl::Hide(bool hidden)
 {
 	this->hidden = hidden;
 }
 
-// BW1W120 00409310. TODO: Verify full-EAX Boolean codegen before changing the virtual return type.
+// BW1W120 00409310 BW1M100 10310540 bool SetupControl::HitTest(int, int)
 bool SetupControl::HitTest(int x, int y)
 {
+	// TODO: Verify full-EAX Boolean codegen before changing the virtual return type.
 	return x >= rect.p0.x && y >= rect.p0.y && x < rect.p1.x && y < rect.p1.y;
 }
 
-// BW1W120 00409340..00409390: genuine empty base event handlers (RET n).
+// BW1W120 00409340 BW1M100 inlined void SetupControl::Drag(int, int)
 void SetupControl::Drag(int x, int y) {}
 
+// BW1W120 00409350 BW1M100 100a6190 void SetupControl::MouseDown(int, int, bool)
 void SetupControl::MouseDown(int x, int y, bool param_3) {}
 
+// BW1W120 00409360 BW1M100 104faf30 void SetupControl::MouseUp(int, int, bool)
 void SetupControl::MouseUp(int x, int y, bool param_3) {}
 
+// BW1W120 00409370 BW1M100 103e3120 void SetupControl::Click(int, int)
 void SetupControl::Click(int x, int y) {}
 
+// BW1W120 00409380 BW1M100 100d4e40 void SetupControl::KeyDown(LHKey, LHKeyMod)
 void SetupControl::KeyDown(LHKey key, LHKeyMod mod) {}
 
+// BW1W120 00409390 BW1M100 105049b0 void SetupControl::Char(int)
 void SetupControl::Char(int character) {}
 
-// BW1W120 004093c0
+// BW1W120 004093c0 BW1M100 100c48e0 SetupControl::~SetupControl(void)
 SetupControl::~SetupControl()
 {
 	if (setup_box->FocusedWidget == this)
@@ -270,7 +283,7 @@ SetupControl::~SetupControl()
 	}
 }
 
-// BW1W120 004098b0
+// BW1W120 004098b0 BW1M100 103dd710 SetupButton::SetupButton(int, int, int, int, int, unsigned short const *, int)
 SetupButton::SetupButton(int id, int x, int y, int width, int height, const char16_t* label, int param_8)
 	: SetupControl(id, x, y, width, height, label)
 {
@@ -278,28 +291,29 @@ SetupButton::SetupButton(int id, int x, int y, int width, int height, const char
 	pressed = false;
 }
 
-// BW1W120 00409900 / 00409910: pressed is a DWORD in the target.
+// BW1W120 00409900 BW1M100 101104d0 void SetupButton::MouseDown(int, int, bool)
 void SetupButton::MouseDown(int x, int y, bool param_3)
 {
 	pressed = true;
 }
 
+// BW1W120 00409910 BW1M100 10172660 void SetupButton::MouseUp(int, int, bool)
 void SetupButton::MouseUp(int x, int y, bool param_3)
 {
 	pressed = false;
 }
 
-// BW1W120 00409920
+// BW1W120 00409920 BW1M100 1034a2d0 void SetupButton::KeyDown(LHKey, LHKeyMod)
 void SetupButton::KeyDown(LHKey key, LHKeyMod mod)
 {
 	if (setup_box != NULL)
 		setup_box->fn_00409170(key, mod);
 }
 
-// BW1W120 00409940: deleting destructor calls only SetupControl's destructor.
+// BW1W120 inlined BW1M100 10594240 SetupButton::~SetupButton(void)
 SetupButton::~SetupButton() {}
 
-// BW1W120 00409960
+// BW1W120 00409960 void SetupSlider::KeyDown(LHKey, LHKeyMod)
 void SetupSlider::KeyDown(LHKey key, LHKeyMod mod)
 {
 	bool changed = false;
@@ -328,7 +342,7 @@ void SetupSlider::KeyDown(LHKey key, LHKeyMod mod)
 		setup_box->field_0xb0(4, setup_box, this, 0, 0);
 }
 
-// BW1W120 00409bf0
+// BW1W120 00409bf0 SetupSlider::SetupSlider(int, int, int, int, int, float, unsigned short *)
 SetupSlider::SetupSlider(int id, int x, int y, int width, int height, float value, char16_t* label)
 	: SetupControl(id, x, y, width, height, label)
 {
@@ -337,10 +351,10 @@ SetupSlider::SetupSlider(int id, int x, int y, int width, int height, float valu
 	this->height = rect.p1.y - y;
 }
 
-// BW1W120 00409c50
+// BW1W120 inlined SetupSlider::~SetupSlider(void)
 SetupSlider::~SetupSlider() {}
 
-// BW1W120 00409c70
+// BW1W120 00409c70 void SetupSlider::Drag(int, int)
 void SetupSlider::Drag(int x, int y)
 {
 	float travel = (float)(rect.p1.x - rect.p0.x - height);
@@ -357,7 +371,7 @@ void SetupSlider::Drag(int x, int y)
 	value = value > 0.0f ? (value < 1.0f ? value : 1.0f) : 0.0f;
 }
 
-// BW1W120 00409d60
+// BW1W120 00409d60 void SetupSlider::MouseDown(int, int, bool)
 void SetupSlider::MouseDown(int x, int y, bool param_3)
 {
 	if (param_3)
@@ -368,7 +382,7 @@ void SetupSlider::MouseDown(int x, int y, bool param_3)
 	}
 }
 
-// BW1W120 00409d90
+// BW1W120 00409d90 void SetupSlider::MouseUp(int, int, bool)
 void SetupSlider::MouseUp(int x, int y, bool param_3)
 {
 	if (setup_box->field_0xb0 != NULL)
@@ -376,7 +390,7 @@ void SetupSlider::MouseUp(int x, int y, bool param_3)
 	Click(x, y);
 }
 
-// BW1W120 00409dd0
+// BW1W120 00409dd0 BW1M100 10594000 void SetupList::AutoScroll(bool)
 void SetupList::AutoScroll(bool param_1)
 {
 	if (param_1 || SelectedIndex < 0)
@@ -406,10 +420,10 @@ void SetupList::AutoScroll(bool param_1)
 	}
 }
 
-// BW1W120 0040a360: genuine empty override.
+// BW1W120 0040a360 BW1M100 100b7170 void SetupList::Click(int, int)
 void SetupList::Click(int x, int y) {}
 
-// BW1W120 0040a370
+// BW1W120 0040a370 BW1M100 10478900 void SetupList::MouseDown(int, int, bool)
 void SetupList::MouseDown(int x, int y, bool param_3)
 {
 	if (field_0x4 == 0 && param_3)
@@ -425,7 +439,7 @@ void SetupList::MouseDown(int x, int y, bool param_3)
 	}
 }
 
-// BW1W120 0040a3f0
+// BW1W120 0040a3f0 BW1M100 100c7610 void SetupList::MouseUp(int, int, bool)
 void SetupList::MouseUp(int x, int y, bool param_3)
 {
 	if (field_0x4 != 0)
@@ -445,9 +459,10 @@ void SetupList::MouseUp(int x, int y, bool param_3)
 		SelectedIndex = field_0x24c;
 }
 
-// BW1W120 0040a450. TODO: Empty label originally resides at 00c4cd30.
+// BW1W120 0040a450 BW1M100 10494bc0 SetupList::SetupList(int, int, int, int, int)
 SetupList::SetupList(int id, int x, int y, int width, int height) : SetupControl(id, x, y, width, height, L"")
 {
+	// TODO: Empty label originally resides at 00c4cd30.
 	field_0x23c = false;
 	field_0x29c = 0;
 	field_0x284 = false;
@@ -474,15 +489,17 @@ SetupList::SetupList(int id, int x, int y, int width, int height) : SetupControl
 	BoxOutlineColor = LH3DColor(0xffffffff);
 }
 
-// BW1W120 0040a520. TODO: Target clears all of EAX before SETE AL.
+// BW1W120 0040a520 BW1M100 104e2bb0 bool SetupList::IsSelected(int)
 bool SetupList::IsSelected(int index)
 {
+	// TODO: Target clears all of EAX before SETE AL.
 	return index == SelectedIndex;
 }
 
-// BW1W120 0040a540: body inlined into the deleting destructor.
+// BW1W120 inlined BW1M100 1056c3d0 SetupList::~SetupList(void)
 SetupList::~SetupList()
 {
+	// Body inlined into the deleting destructor at 0040a540.
 	delete[] color;
 	delete[] ListBoxDraw;
 	delete[] field_0x264;
@@ -491,7 +508,7 @@ SetupList::~SetupList()
 	delete[] field_0x260;
 }
 
-// BW1W120 0040ad60
+// BW1W120 0040ad60 BW1M100 10169200 void SetupList::DeleteString(int)
 void SetupList::DeleteString(int index)
 {
 	if (index >= 0 && index < NumItems)
@@ -507,7 +524,7 @@ void SetupList::DeleteString(int index)
 	}
 }
 
-// BW1W120 0040ae70
+// BW1W120 0040ae70 BW1M100 10112d20 void SetupList::InsertString(int, unsigned short const *)
 void SetupList::InsertString(int index, const char16_t* text)
 {
 	if (index >= 0 && index <= NumItems)
@@ -540,9 +557,10 @@ void SetupList::InsertString(int index, const char16_t* text)
 	}
 }
 
-// BW1W120 0040b050. Capacity is intentionally retained between half-full and full.
+// BW1W120 0040b050 BW1M100 104ea7a0 void SetupList::SetNum(int)
 void SetupList::SetNum(int num)
 {
+	// Capacity is intentionally retained between half-full and full.
 	if (num < 0)
 		num = 0;
 	if (num < field_0x254 / 2 || num > field_0x254)
@@ -601,7 +619,7 @@ void SetupList::SetNum(int num)
 	UpdateHeights();
 }
 
-// BW1W120 0040b420
+// BW1W120 0040b420 SetupMultiList::SetupMultiList(int, int, int, int, int, int)
 SetupMultiList::SetupMultiList(int id, int x, int y, int width, int height, int size)
 	: SetupList(id, x, y, width, height)
 {
@@ -612,21 +630,22 @@ SetupMultiList::SetupMultiList(int id, int x, int y, int width, int height, int 
 		list[index] = false;
 }
 
-// BW1W120 0040b4c0 (called by deleting destructor at 0040b4a0).
+// BW1W120 0040b4c0 SetupMultiList::~SetupMultiList(void)
 SetupMultiList::~SetupMultiList()
 {
 	delete[] list;
 }
 
-// BW1W120 0040b530. The inclusive upper bound is present in the original.
+// BW1W120 0040b530 bool SetupMultiList::IsSelected(int)
 bool SetupMultiList::IsSelected(int index)
 {
+	// The inclusive upper bound is present in the original.
 	if (index < 0 || index > size)
 		return false;
 	return list[index];
 }
 
-// BW1W120 0040b560
+// BW1W120 0040b560 void SetupMultiList::Click(int, int)
 void SetupMultiList::Click(int x, int y)
 {
 	int top = rect.p0.y - ScrollPosition;
@@ -650,14 +669,14 @@ void SetupMultiList::Click(int x, int y)
 	}
 }
 
-// BW1W120 0040c150
+// BW1W120 0040c150 BW1M100 103dc010 void SetupEdit::Drag(int, int)
 void SetupEdit::Drag(int x, int y)
 {
 	CursorPosition = CalcCharpos(x);
 	SelectStart = CursorPosition;
 }
 
-// BW1W120 0040c170
+// BW1W120 0040c170 BW1M100 10430180 void SetupEdit::MouseDown(int, int, bool)
 void SetupEdit::MouseDown(int x, int y, bool param_3)
 {
 	if (param_3)
@@ -668,7 +687,7 @@ void SetupEdit::MouseDown(int x, int y, bool param_3)
 	}
 }
 
-// BW1W120 0040c1a0
+// BW1W120 0040c1a0 BW1M100 101178b0 void SetupEdit::MouseUp(int, int, bool)
 void SetupEdit::MouseUp(int x, int y, bool param_3)
 {
 	if (param_3)
@@ -691,7 +710,7 @@ void SetupEdit::MouseUp(int x, int y, bool param_3)
 	}
 }
 
-// BW1W120 0040c500
+// BW1W120 0040c500 BW1M100 100c1900 void SetupEdit::SetFocus(bool)
 void SetupEdit::SetFocus(bool focus)
 {
 	if (focus && !this->focus)
@@ -705,10 +724,10 @@ void SetupEdit::SetFocus(bool focus)
 		SelectStart = 0;
 }
 
-// BW1W120 0040c560: only the base destructor is called; the candidate list belongs to the box.
+// BW1W120 inlined BW1M100 1035a3a0 SetupEdit::~SetupEdit(void)
 SetupEdit::~SetupEdit() {}
 
-// BW1W120 0040d260
+// BW1W120 0040d260 BW1M100 100fd210 SetupBigButton::SetupBigButton(int, int, int, unsigned short const *, int, int, int)
 SetupBigButton::SetupBigButton(int id, int x, int y, const char16_t* label, int size, int text_position, int style)
 	: SetupButton(id, x, y, size, size, label, 0)
 {
@@ -725,42 +744,43 @@ SetupBigButton::SetupBigButton(int id, int x, int y, const char16_t* label, int 
 	this->style = (BBSTYLE)style;
 }
 
-// BW1W120 0040d2f0
+// BW1W120 0040d2f0 BW1M100 101689f0 void SetupBigButton::KeyDown(LHKey, LHKeyMod)
 void SetupBigButton::KeyDown(LHKey key, LHKeyMod mod)
 {
 	if (setup_box != NULL)
 		setup_box->fn_00409170(key, mod);
 }
 
-// BW1W120 0040d310
+// BW1W120 0040d310 BW1M100 101670b0 bool SetupBigButton::HitTest(int, int)
 bool SetupBigButton::HitTest(int x, int y)
 {
 	return (x >= rect.p0.x && y >= rect.p0.y && x < rect.p1.x && y < rect.p1.y) ||
 	       (x >= InnerRect.p0.x && y >= InnerRect.p0.y && x < InnerRect.p1.x && y < InnerRect.p1.y);
 }
 
-// BW1W120 0040d360
+// BW1W120 inlined BW1M100 1010fca0 SetupBigButton::~SetupBigButton(void)
 SetupBigButton::~SetupBigButton() {}
 
-// BW1W120 004107f0 / 00410800
+// BW1W120 004107f0 BW1M100 1030b070 void SetupColourPicker::MouseDown(int, int, bool)
 void SetupColourPicker::MouseDown(int x, int y, bool param_3)
 {
 	pressed = true;
 }
 
+// BW1W120 00410800 BW1M100 101119a0 void SetupColourPicker::MouseUp(int, int, bool)
 void SetupColourPicker::MouseUp(int x, int y, bool param_3)
 {
 	pressed = false;
 }
 
-// BW1W120 00410810
+// BW1W120 00410810 BW1M100 1023f300 void SetupColourPicker::Drag(int, int)
 void SetupColourPicker::Drag(int x, int y)
 {
 	SliderPosition = (float)(y - rect.p0.y) / (float)(rect.p1.y - rect.p0.y);
 	SliderPosition = SliderPosition > 0.0f ? (SliderPosition < 1.0f ? SliderPosition : 1.0f) : 0.0f;
 }
 
-// BW1W120 00410ac0: brightness_slider is stored as an int in the target.
+// BW1W120 00410ac0 BW1M100 103c6130 SetupColourPicker::SetupColourPicker(int, int, int, int, int, int, LH3DMaterial *)
 SetupColourPicker::SetupColourPicker(int id, int x, int y, int width, int height, int brightness_slider,
                                      LH3DMaterial* material)
 	: SetupButton(id, x, y, width, height, L"", 0)
@@ -772,24 +792,25 @@ SetupColourPicker::SetupColourPicker(int id, int x, int y, int width, int height
 	SliderPosition = 0.5f;
 }
 
-// BW1W120 00410b30
+// BW1W120 00410b30 BW1M100 1034f250 void SetupColourPicker::KeyDown(LHKey, LHKeyMod)
 void SetupColourPicker::KeyDown(LHKey key, LHKeyMod mod)
 {
 	if (setup_box != NULL)
 		setup_box->fn_00409170(key, mod);
 }
 
-// BW1W120 00410b50: genuine empty override.
+// BW1W120 00410b50 BW1M100 100c8de0 void SetupColourPicker::Click(int, int)
 void SetupColourPicker::Click(int x, int y) {}
 
-// BW1W120 00410b60
+// BW1W120 inlined BW1M100 10571d70 SetupColourPicker::~SetupColourPicker(void)
 SetupColourPicker::~SetupColourPicker() {}
 
-// BW1W120 00410f10. Existing names are misleading: checked is the radio-mode flag,
-// while style holds the checked state. Both meanings are confirmed by Click below.
+// BW1W120 00410f10 BW1M100 1058b890 SetupCheckBox::SetupCheckBox(int, int, int, bool, int, unsigned short const *, int)
 SetupCheckBox::SetupCheckBox(int id, int x, int y, bool checked, int style, const char16_t* label, int size)
 	: SetupButton(id, x, y, size, size, label, 0)
 {
+	// Existing names are misleading: checked is the radio-mode flag, while style
+	// holds the checked state. Both meanings are confirmed by Click below.
 	InnerRect.p1.y = 0;
 	InnerRect.p1.x = 0;
 	InnerRect.p0.y = 0;
@@ -801,7 +822,7 @@ SetupCheckBox::SetupCheckBox(int id, int x, int y, bool checked, int style, cons
 	text_position = 2;
 }
 
-// BW1W120 00410f90
+// BW1W120 00410f90 BW1M100 10112370 bool SetupCheckBox::HitTest(int, int)
 bool SetupCheckBox::HitTest(int x, int y)
 {
 	int dy = y - (rect.p1.y + rect.p0.y) / 2;
@@ -811,7 +832,7 @@ bool SetupCheckBox::HitTest(int x, int y)
 	       (x >= InnerRect.p0.x && y >= InnerRect.p0.y && x < InnerRect.p1.x && y < InnerRect.p1.y);
 }
 
-// BW1W120 00411020
+// BW1W120 00411020 BW1M100 103dbde0 void SetupCheckBox::Click(int, int)
 void SetupCheckBox::Click(int x, int y)
 {
 	if (checked)
@@ -820,17 +841,17 @@ void SetupCheckBox::Click(int x, int y)
 		style = style == BBSTYLE_CHECK_BOX_OFF ? BBSTYLE_CHECK_BOX_ON : BBSTYLE_CHECK_BOX_OFF;
 }
 
-// BW1W120 00411050
+// BW1W120 00411050 BW1M100 10599580 void SetupCheckBox::KeyDown(LHKey, LHKeyMod)
 void SetupCheckBox::KeyDown(LHKey key, LHKeyMod mod)
 {
 	if (setup_box != NULL)
 		setup_box->fn_00409170(key, mod);
 }
 
-// BW1W120 00411070
+// BW1W120 inlined BW1M100 105893e0 SetupCheckBox::~SetupCheckBox(void)
 SetupCheckBox::~SetupCheckBox() {}
 
-// BW1W120 0040f5e0. The three trailing arguments are full-width ints in the target.
+// BW1W120 0040f5e0 BW1M100 101995b0 SetupTabButton::SetupTabButton(int, int, int, int, int, unsigned short const *, int, int, int)
 SetupTabButton::SetupTabButton(int id, int x, int y, int width, int height, const char16_t* label, int selected,
                                int first_in_row, int last_in_row)
 	: SetupButton(id, x, y, width, height, label, 0)
@@ -845,22 +866,23 @@ SetupTabButton::SetupTabButton(int id, int x, int y, int width, int height, cons
 		setup_box->field_0x94 = 2;
 }
 
-// BW1W120 0040f670
+// BW1W120 0040f670 BW1M100 1037abd0 void SetupTabButton::KeyDown(LHKey, LHKeyMod)
 void SetupTabButton::KeyDown(LHKey key, LHKeyMod mod)
 {
 	if (setup_box != NULL)
 		setup_box->fn_00409170(key, mod);
 }
 
-// BW1W120 0040f690
+// BW1W120 inlined BW1M100 10369440 SetupTabButton::~SetupTabButton(void)
 SetupTabButton::~SetupTabButton() {}
 
-// BW1W120 0040fa10 / 00410710: genuine empty overrides.
+// BW1W120 0040fa10 void SetupPicture::Drag(int, int)
 void SetupPicture::Drag(int x, int y) {}
 
+// BW1W120 00410710 void SetupPicture::Click(int, int)
 void SetupPicture::Click(int x, int y) {}
 
-// BW1W120 004105d0
+// BW1W120 004105d0 SetupPicture::SetupPicture(int, int, int, LH3DMaterial *, int, int, bool, int, bool)
 SetupPicture::SetupPicture(int id, int x, int y, LH3DMaterial* material, int picture_index, int num_rows,
                            bool clickable, int size, bool draggable)
 	: SetupButton(id, x, y, size, size, L"", 0)
@@ -880,19 +902,20 @@ SetupPicture::SetupPicture(int id, int x, int y, LH3DMaterial* material, int pic
 	this->draggable = draggable;
 }
 
-// BW1W120 004106f0
+// BW1W120 004106f0 void SetupPicture::KeyDown(LHKey, LHKeyMod)
 void SetupPicture::KeyDown(LHKey key, LHKeyMod mod)
 {
 	if (setup_box != NULL)
 		setup_box->fn_00409170(key, mod);
 }
 
-// BW1W120 00410720
+// BW1W120 inlined SetupPicture::~SetupPicture(void)
 SetupPicture::~SetupPicture() {}
 
-// BW1W120 00410740. This override deliberately does not call SetupControl::SetFocus.
+// BW1W120 00410740 void SetupPicture::SetFocus(bool)
 void SetupPicture::SetFocus(bool focus)
 {
+	// This override deliberately does not call SetupControl::SetFocus.
 	if (!focus)
 	{
 		HoveredPictureIndex = -1;
@@ -902,10 +925,10 @@ void SetupPicture::SetFocus(bool focus)
 	}
 }
 
-// BW1W120 00411670: deleting destructor calls only the base destructor.
+// BW1W120 inlined BW1M100 100cb300 SetupStaticText::~SetupStaticText(void)
 SetupStaticText::~SetupStaticText() {}
 
-// BW1W120 0040da30
+// BW1W120 0040da30 BW1M100 10501060 void HLineData::SetNum(int)
 void HLineData::SetNum(int num)
 {
 	if (num < 0)
@@ -918,7 +941,7 @@ void HLineData::SetNum(int num)
 	points = newPoints;
 }
 
-// BW1W120 0040e510
+// BW1W120 0040e510 BW1M100 103dcbb0 SetupHLineGraph::SetupHLineGraph(int, int, int, int, int, unsigned short const *, bool)
 SetupHLineGraph::SetupHLineGraph(int id, int x, int y, int width, int height, const char16_t* label, bool percent_mode)
 	: SetupButton(id, x, y, width, height, label, 0)
 {
@@ -928,24 +951,24 @@ SetupHLineGraph::SetupHLineGraph(int id, int x, int y, int width, int height, co
 	Reset();
 }
 
-// BW1W120 0040e580
+// BW1W120 0040e580 BW1M100 10518860 void SetupHLineGraph::KeyDown(LHKey, LHKeyMod)
 void SetupHLineGraph::KeyDown(LHKey key, LHKeyMod mod)
 {
 	if (setup_box != NULL)
 		setup_box->fn_00409170(key, mod);
 }
 
-// BW1W120 0040e5a0
+// BW1W120 0040e5a0 BW1M100 101585b0 void SetupHLineGraph::MouseUp(int, int, bool)
 void SetupHLineGraph::MouseUp(int x, int y, bool param_3)
 {
 	if (param_3)
 		percent_mode = !percent_mode;
 }
 
-// BW1W120 0040e5c0. Reset is explicitly invoked elsewhere, not by this destructor.
+// BW1W120 inlined SetupHLineGraph::~SetupHLineGraph(void)
 SetupHLineGraph::~SetupHLineGraph() {}
 
-// BW1W120 0040e5e0
+// BW1W120 0040e5e0 BW1M100 102a7a10 void SetupHLineGraph::Reset(void)
 void SetupHLineGraph::Reset()
 {
 	while (LineDataList.GetStart() != NULL)
@@ -960,10 +983,11 @@ void SetupHLineGraph::Reset()
 	}
 }
 
-// BW1W120 0040e650. The -1e10 constant is the four bytes after the graph's
-// actual vtable, currently included in its inferred objdiff symbol extent.
+// BW1W120 0040e650 BW1M100 10211b80 void SetupHLineGraph::SetScale(float, float, bool)
 void SetupHLineGraph::SetScale(float max_point, float min_point, bool centered_at_zero)
 {
+	// The -1e10 constant is the four bytes after the graph's actual vtable,
+	// currently included in its inferred objdiff symbol extent.
 	if (max_point <= 0.0f)
 	{
 		max_point = -1.0e10f;
@@ -987,9 +1011,10 @@ void SetupHLineGraph::SetScale(float max_point, float min_point, bool centered_a
 	this->min_point = min_point;
 }
 
-// BW1W120 0040e730. AddLine deep-copies samples; SetLine/GetLine below are shallow.
+// BW1W120 0040e730 BW1M100 1010ccb0 void SetupHLineGraph::AddLine(HLineData &)
 void SetupHLineGraph::AddLine(HLineData& line)
 {
+	// AddLine deep-copies samples; SetLine/GetLine below are shallow.
 	HLineData* copy = new ("C:\\dev\\MP\\Black\\alexmfc.cpp", 0x824) HLineData;
 	if (copy != NULL)
 	{
@@ -1000,7 +1025,7 @@ void SetupHLineGraph::AddLine(HLineData& line)
 	LineDataList.AddToEnd(copy);
 }
 
-// BW1W120 0040e7f0
+// BW1W120 0040e7f0 BW1M100 100c9eb0 void SetupHLineGraph::SetLine(int, HLineData &)
 void SetupHLineGraph::SetLine(int index, HLineData& line)
 {
 	if (index >= 0 && index < (int)LineDataList.count)
@@ -1020,7 +1045,7 @@ void SetupHLineGraph::SetLine(int index, HLineData& line)
 	}
 }
 
-// BW1W120 0040e850
+// BW1W120 0040e850 BW1M100 10372050 void SetupHLineGraph::GetLine(int, HLineData &)
 void SetupHLineGraph::GetLine(int index, HLineData& result)
 {
 	if (index >= 0 && index < (int)LineDataList.count)
@@ -1040,7 +1065,7 @@ void SetupHLineGraph::GetLine(int index, HLineData& result)
 	}
 }
 
-// BW1W120 0040d9a0
+// BW1W120 0040d9a0 void SetupHSBarGraph::SetScale(float)
 void SetupHSBarGraph::SetScale(float scale)
 {
 	if (scale <= 0.0f)
@@ -1054,7 +1079,7 @@ void SetupHSBarGraph::SetScale(float scale)
 	max_point = scale;
 }
 
-// BW1W120 0040ef00
+// BW1W120 0040ef00 BW1M100 10354bc0 SetupVBarGraph::SetupVBarGraph(int, int, int, int, int, unsigned short const *)
 SetupVBarGraph::SetupVBarGraph(int id, int x, int y, int width, int height, const char16_t* label)
 	: SetupButton(id, x, y, width, height, label, 0)
 {
@@ -1065,17 +1090,17 @@ SetupVBarGraph::SetupVBarGraph(int id, int x, int y, int width, int height, cons
 	Reset();
 }
 
-// BW1W120 0040ef70
+// BW1W120 0040ef70 BW1M100 10350e50 void SetupVBarGraph::KeyDown(LHKey, LHKeyMod)
 void SetupVBarGraph::KeyDown(LHKey key, LHKeyMod mod)
 {
 	if (setup_box != NULL)
 		setup_box->fn_00409170(key, mod);
 }
 
-// BW1W120 0040ef90: the target does not reset/free the bar list here.
+// BW1W120 inlined BW1M100 103de920 SetupVBarGraph::~SetupVBarGraph(void)
 SetupVBarGraph::~SetupVBarGraph() {}
 
-// BW1W120 0040efb0
+// BW1W120 0040efb0 BW1M100 inlined void SetupVBarGraph::Reset(void)
 void SetupVBarGraph::Reset()
 {
 	while (BarDataList.GetStart() != NULL)
@@ -1091,7 +1116,7 @@ void SetupVBarGraph::Reset()
 	max_point = 0.0f;
 }
 
-// BW1W120 0040f1b0
+// BW1W120 0040f1b0 BW1M100 10351240 void SetupVBarGraph::SetScale(float)
 void SetupVBarGraph::SetScale(float scale)
 {
 	VBarData* bar;
@@ -1115,13 +1140,13 @@ void SetupVBarGraph::SetScale(float scale)
 	}
 }
 
-// BW1W120 0040f280
+// BW1W120 0040f280 BW1M100 103fccd0 void SetupVBarGraph::AddBar(VBarData const &)
 void SetupVBarGraph::AddBar(const VBarData& bar)
 {
 	BarDataList.AddToEnd(new ("C:\\dev\\MP\\Black\\alexmfc.cpp", 0x890) VBarData(bar));
 }
 
-// BW1W120 0040f300
+// BW1W120 0040f300 BW1M100 10352240 void SetupVBarGraph::SetBar(int, VBarData const &)
 void SetupVBarGraph::SetBar(int index, const VBarData& bar)
 {
 	if (index >= 0 && index < (int)BarDataList.count)
@@ -1140,7 +1165,7 @@ void SetupVBarGraph::SetBar(int index, const VBarData& bar)
 	}
 }
 
-// BW1W120 0040f350
+// BW1W120 0040f350 BW1M100 103f1500 void SetupVBarGraph::GetBar(int, VBarData &)
 void SetupVBarGraph::GetBar(int index, VBarData& result)
 {
 	if (index >= 0 && index < (int)BarDataList.count)
@@ -1159,7 +1184,7 @@ void SetupVBarGraph::GetBar(int index, VBarData& result)
 	}
 }
 
-// BW1W120 004132c0
+// BW1W120 004132c0 BW1M100 1035b610 void SetupThing::DrawBox(int, int, int, int, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long)
 void SetupThing::DrawBox(int x_min, int y_min, int x_max, int y_max, unsigned long color_1, unsigned long color_2,
                          unsigned long color_3, unsigned long color_4, unsigned long use_alpha, unsigned long adjust)
 {

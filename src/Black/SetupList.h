@@ -13,7 +13,7 @@
 #include "SetupRect.h"    /* For struct SetupRect */
 
 class SetupList;
-// BW1W120 CatDraw 005706a0 / PlayerDraw 00570710 return EAX=1 and RET 20h.
+// CatDraw (BW1W120 005706a0) and PlayerDraw (BW1W120 00570710) return EAX=1 and RET 20h.
 // Typedef name is retained from the existing decompiler-derived declaration.
 typedef uint32_t(__stdcall* SetupList__ListBoxDraw_t)(SetupList* list, int index, int x_min, int y_min, int x_max,
                                                       int y_max, int clip_min, int clip_max);
@@ -53,21 +53,21 @@ public:
 
 	// Override methods
 
-	// BW1W120 0040a5c0 BW1M100 10388e60 SetupList::Draw(bool, bool)
+	// BW1W120 0040a5c0 BW1M100 10388e60 void SetupList::Draw(bool, bool)
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 0040a110 BW1M100 101c7fc0 SetupList::Drag(int, int)
+	// BW1W120 0040a110 BW1M100 101c7fc0 void SetupList::Drag(int, int)
 	virtual void Drag(int x, int y);
-	// BW1W120 0040a370 BW1M100 10478900 SetupList::MouseDown(int, int, bool)
+	// BW1W120 0040a370 BW1M100 10478900 void SetupList::MouseDown(int, int, bool)
 	virtual void MouseDown(int x, int y, bool param_3);
-	// BW1W120 0040a3f0 BW1M100 100c7610 SetupList::MouseUp(int, int, bool)
+	// BW1W120 0040a3f0 BW1M100 100c7610 void SetupList::MouseUp(int, int, bool)
 	virtual void MouseUp(int x, int y, bool param_3);
-	// BW1W120 0040a360 BW1M100 100b7170 SetupList::Click(int, int)
+	// BW1W120 0040a360 BW1M100 100b7170 void SetupList::Click(int, int)
 	virtual void Click(int x, int y);
-	// BW1W120 00409eb0 BW1M100 103d24f0 SetupList::KeyDown(int, int)
+	// BW1W120 00409eb0 BW1M100 103d24f0 void SetupList::KeyDown(LHKey, LHKeyMod)
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 0040a540 BW1M100 1056c3d0 SetupList::~SetupList(void)
+	// BW1W120 inlined BW1M100 1056c3d0 SetupList::~SetupList(void)
 	virtual ~SetupList();
-	// BW1W120 0040a520 BW1M100 104e2bb0 SetupList::IsSelected(int)
+	// BW1W120 0040a520 BW1M100 104e2bb0 bool SetupList::IsSelected(int)
 	virtual bool IsSelected(int index);
 
 	// Constructors
@@ -77,20 +77,19 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 00409dd0 BW1M100 10594000 SetupList::AutoScroll(bool)
+	// BW1W120 00409dd0 BW1M100 10594000 void SetupList::AutoScroll(bool)
 	void AutoScroll(bool param_1);
-	// BW1W120 0040aaf0 BW1M100 1056d710 SetupList::UpdateHeights(void)
+	// BW1W120 0040aaf0 BW1M100 1056d710 void SetupList::UpdateHeights(void)
 	void UpdateHeights();
-	// BW1W120 0040ad60 BW1M100 10169200 SetupList::DeleteString(int)
+	// BW1W120 0040ad60 BW1M100 10169200 void SetupList::DeleteString(int)
 	void DeleteString(int index);
-	// BW1W120 0040ae70 BW1M100 10112d20 SetupList::InsertString(int, wchar_t *)
+	// BW1W120 0040ae70 BW1M100 10112d20 void SetupList::InsertString(int, unsigned short const *)
 	void InsertString(int index, const char16_t* text);
-	// BW1W120 0040b050 BW1M100 104ea7a0 SetupList::SetNum(int)
+	// BW1W120 0040b050 BW1M100 104ea7a0 void SetupList::SetNum(int)
 	void SetNum(int num);
-	// BW1W120 005471c0; implemented in FrontEndSetupGame.cpp.
+	// BW1W120 005471c0 void SetupList::SetCol(int, unsigned int)
 	void SetCol(int index, uint32_t value);
-	// BW1W120 00547150. Selection setter also synchronizes IME candidates.
-	// TODO: Recover the original method name; implementation remains extracted.
+	// BW1W120 00547150 void SetupList::fn_00547150(int)
 	void fn_00547150(int index);
 };
 

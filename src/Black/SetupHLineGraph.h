@@ -28,16 +28,16 @@ struct HLineData
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 inlined HLineData::operator=(const HLineData&)
-	// Shallow assignment is visible in SetLine/GetLine; AddLine explicitly deep-copies.
+	// BW1W120 inlined BW1M100 inlined HLineData & HLineData::operator=(HLineData const &)
 	HLineData& operator=(const HLineData& other)
 	{
+		// SetLine/GetLine use shallow assignment; AddLine explicitly deep-copies.
 		color = other.color;
 		PointCount = other.PointCount;
 		points = other.points;
 		return *this;
 	}
-	// BW1W120 0040da30 BW1M100 10501060 HLineData::SetNum()
+	// BW1W120 0040da30 BW1M100 10501060 void HLineData::SetNum(int)
 	void SetNum(int num);
 };
 
@@ -51,29 +51,28 @@ public:
 
 	// Override methods
 
-	// BW1W120 0040dab0 BW1M100 101180e0 SetupHLineGraph::Draw(bool, bool)
+	// BW1W120 0040dab0 BW1M100 101180e0 void SetupHLineGraph::Draw(bool, bool)
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 0040e5a0 BW1M100 101585b0 SetupHLineGraph::MouseUp(int, int, bool)
+	// BW1W120 0040e5a0 BW1M100 101585b0 void SetupHLineGraph::MouseUp(int, int, bool)
 	virtual void MouseUp(int x, int y, bool param_3);
-	// BW1W120 0040e580 BW1M100 10518860 SetupHLineGraph::KeyDown(int, int)
+	// BW1W120 0040e580 BW1M100 10518860 void SetupHLineGraph::KeyDown(LHKey, LHKeyMod)
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 0040e5c0 BW1M100 0040e5c0 SetupHLineGraph::~SetupHLineGraph(void)
+	// BW1W120 inlined SetupHLineGraph::~SetupHLineGraph(void)
 	virtual ~SetupHLineGraph();
-	// BW1W120 0040e5e0 BW1M100 102a7a10 SetupHLineGraph::Reset(void)
+	// BW1W120 0040e5e0 BW1M100 102a7a10 void SetupHLineGraph::Reset(void)
 	virtual void Reset();
-	// BW1W120 0040e650 BW1M100 10211b80 SetupHLineGraph::SetScale(float, float, bool)
+	// BW1W120 0040e650 BW1M100 10211b80 void SetupHLineGraph::SetScale(float, float, bool)
 	virtual void SetScale(float max_point, float min_point, bool centered_at_zero);
-	// BW1W120 0040e730 BW1M100 1010ccb0 SetupHLineGraph::AddLine(HLineData &)
+	// BW1W120 0040e730 BW1M100 1010ccb0 void SetupHLineGraph::AddLine(HLineData &)
 	virtual void AddLine(HLineData& line);
-	// BW1W120 0040e7f0 BW1M100 100c9eb0 SetupHLineGraph::SetLine(int, HLineData &)
-	// Raw Mac traceback SetLine__15SetupHLineGraphFiR9HLineData confirms non-const.
+	// BW1W120 0040e7f0 BW1M100 100c9eb0 void SetupHLineGraph::SetLine(int, HLineData &)
 	virtual void SetLine(int index, HLineData& line);
-	// BW1W120 0040e850 BW1M100 10372050 SetupHLineGraph::GetLine(int, HLineData &)
+	// BW1W120 0040e850 BW1M100 10372050 void SetupHLineGraph::GetLine(int, HLineData &)
 	virtual void GetLine(int index, HLineData& result);
 
 	// Constructors
 
-	// BW1W120 0040e510 BW1M100 103dcbb0 SetupHLineGraph::SetupHLineGraph(int, int, int, int, int, wchar_t *, bool)
+	// BW1W120 0040e510 BW1M100 103dcbb0 SetupHLineGraph::SetupHLineGraph(int, int, int, int, int, unsigned short const *, bool)
 	SetupHLineGraph(int id, int x, int y, int width, int height, const char16_t* label, bool percent_mode);
 };
 
