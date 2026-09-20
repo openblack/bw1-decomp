@@ -20,7 +20,6 @@
 #include "KeyBuffer.h"        /* For struct GKeyBuffer */
 #include "Landscape.h"        /* For struct GLandscape */
 #include "Language.h"         /* For struct GLanguage */
-#include "GameLanguage.h"     /* For GAME_LANGUAGE */
 #include "Map.h"              /* For struct GMap */
 #include "MapCoords.h"        /* For struct MapCoords */
 #include "Network.h"          /* For struct GNetwork */
@@ -32,6 +31,25 @@
 #include "StatsDatabase.h"       /* For struct StatsDatabase */
 #include "Setup.h"
 #include "TerrainMap.h" /* For struct GTerrainMap */
+
+enum GAME_LANGUAGE
+{
+	GAME_LANGUAGE_UK_ENGLISH = 0,
+	GAME_LANGUAGE_US_ENGLISH = 1,
+	GAME_LANGUAGE_FRENCH = 2,
+	GAME_LANGUAGE_GERMAN = 3,
+	GAME_LANGUAGE_SWEDISH = 4,
+	GAME_LANGUAGE_SPANISH = 5,
+	GAME_LANGUAGE_JAPANESE = 6,
+	GAME_LANGUAGE_DUTCH = 7,
+	GAME_LANGUAGE_BRAZILIAN_PORTUGUESE = 8,
+	GAME_LANGUAGE_ITALIAN = 9,
+	GAME_LANGUAGE_SIMPLIFIED_CHINESE = 10,
+	GAME_LANGUAGE_TRADITIONAL_CHINESE = 11,
+	GAME_LANGUAGE_POLISH = 12,
+	GAME_LANGUAGE_KOREAN = 13,
+	GAME_LANGUAGE_THAI = 14
+};
 
 enum GAME_MODE
 {

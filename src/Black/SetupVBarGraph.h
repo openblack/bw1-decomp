@@ -75,7 +75,7 @@ public:
 
 #include <new>
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
-#include "AlexMfc.h"
+#include <SetupThing/Setup.h>
 
 // BW1W120 0040ef00 BW1M100 10354bc0 SetupVBarGraph::SetupVBarGraph(int, int, int, int, int, wchar_t*)
 inline SetupVBarGraph::SetupVBarGraph(int id, int x, int y, int width, int height, const char16_t* label)

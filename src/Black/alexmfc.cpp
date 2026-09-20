@@ -1,4 +1,4 @@
-#include "AlexMfc.h"
+#include <SetupThing/Setup.h>
 
 #include "Game.h"
 #include "SetupBigButton.h"

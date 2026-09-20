@@ -75,7 +75,7 @@ public:
 
 #include "SetupBox.h"
 #include "HelpText.h"
-#include "AlexMfc.h"
+#include <SetupThing/Setup.h>
 
 // BW1W120 inlined BW1M100 inlined SetupControl::GetTextSize(void)
 inline int SetupControl::GetTextSize()

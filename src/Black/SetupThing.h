@@ -10,7 +10,7 @@
 
 #include "Lionhead/LH3DLib/development/LH3DText.h" /* For enum TEXTJUSTIFY */
 #include "SetupRect.h"                             /* For struct SetupRect */
-#include "AlexMfc.h"                               /* Text-size helper declarations */
+#include <SetupThing/Setup.h>                      /* Text-size helper declarations */
 
 enum BBSTYLE
 {
@@ -120,9 +120,6 @@ struct SetupThing
 	static void DrawBevBox(int x_min, int y_min, int x_max, int y_max, uint32_t style, uint32_t outline_thickness,
 	                       uint32_t horizontal_outline, LH3DColor color);
 };
-
-// BW1W120 00407a20 BW1M100 105133e0 GetBigTextSize(void)
-int GetBigTextSize();
 
 // BW1W120 004132c0 BW1M100 1035b610 SetupThing::DrawBox(int, int, int, int, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long)
 inline void SetupThing::DrawBox(int x_min, int y_min, int x_max, int y_max, unsigned long color_1,
