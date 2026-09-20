@@ -14,17 +14,18 @@ class Base;
 class GWeatherInfo : public GBaseInfo
 {
 public:
+	// Descriptive table name; original storage/lifetime is in Weather.cpp.
+	static GWeatherInfo Info[7]; // 00dcb5f8
+
 	// Seven 0x64-byte records constructed at 00770da0 and destroyed at 00770e00.
 	// TODO: Recover the individual weather preset fields.
 	uint8_t field_0x10[0x54];
 	// Override methods
 
-	// BW1W120 00770e30 BW1M100 105a3520 GWeatherInfo::_dt(void)
+	// BW1W120 inlined BW1M100 105a3520 GWeatherInfo::~GWeatherInfo(void)
 	virtual ~GWeatherInfo();
-	// BW1W120 00770dd0 BW1M100 105a3640 GWeatherInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00770dd0 BW1M100 105a3640 GWeatherInfo::GetBaseInfo(unsigned long&)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
-
-static_assert(sizeof(GWeatherInfo) == 0x64, "GWeatherInfo size is incorrect");
 
 #endif /* BW1_DECOMP_WEATHER_INFO_INCLUDED_H */
