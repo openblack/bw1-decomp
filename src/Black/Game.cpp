@@ -2204,7 +2204,8 @@ void GGame::Process3dEngine()
 		case 2:
 			LH3DAtmos::Update3D((int)LH3DTech::g_delta_time * 0.001f);
 			LH3DRender::g_mode_cleaning = 0;
-			fn_00553A60();
+			// Descriptive name: the helper updates FallingSpellVideo when it exists.
+			UpdateFallingSpellVideo();
 			if (!VideoPlayer || FallingSpellVideo->field_0x20 == 4)
 			{
 				EndFallingSpellVideo();

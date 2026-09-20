@@ -276,9 +276,9 @@ public:
 	virtual bool32_t IsAvailable();
 	// BW1W120 0054b9c0 BW1M100 10496160 GGame::GetDebugText(void)
 	virtual char* GetDebugText();
-	// BW1W120 00554830 BW1M100 10354cc0 GGame::Load(GameOSFile &)
+	// BW1W120 00554830 BW1M100 10354cc0 GGame::Load(GameOSFile&)
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00554090 BW1M100 104935a0 GGame::Save(GameOSFile &)
+	// BW1W120 00554090 BW1M100 104935a0 GGame::Save(GameOSFile&)
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0054b9b0 BW1M100 10512c00 GGame::GetSaveType(void)
 	virtual uint32_t GetSaveType();
@@ -294,8 +294,7 @@ public:
 
 	// BW1W120 0054b240 BW1M100 104fda10 GGame::GGame(void)
 	GGame();
-	// BW1W120 0054bba0 (scalar deleting destructor)
-	// Allocated resources are owned by ToBeDeleted; only embedded members are destroyed here.
+	// BW1W120 0054bba0 BW1M100 10363d00 GGame::~GGame(void)
 	virtual ~GGame() {}
 
 	// Non-virtual methods
@@ -305,7 +304,6 @@ public:
 	// BW1W120 0054bf20 BW1M100 104eff40 GGame::ClearVariables(void)
 	void ClearVariables();
 	// BW1W120 0054ec80 BW1M100 105b94a0 GGame::Close(void)
-	// Both targets return 1 in the full result register; original Boolean spelling is unknown.
 	bool32_t Close();
 	// BW1W120 005557a0 BW1M100 101bf310 GGame::ResetState(void)
 	void ResetState();
@@ -329,11 +327,11 @@ public:
 	void Loop();
 	// BW1W120 0054d800 BW1M100 1048f9d0 GGame::FlipScreen(void)
 	void FlipScreen();
-	// BW1W120 0054d7f0. Original name unrecovered; increments rendered-frame count.
+	// BW1W120 0054d7f0 void GGame::fn_0054D7F0(void)
 	void fn_0054D7F0();
-	// BW1W120 00555400. Original name unrecovered; selects online game mode.
+	// BW1W120 00555400 void GGame::fn_00555400(void)
 	void fn_00555400();
-	// BW1W120 005525e0. Original name unrecovered; flushes packed network data.
+	// BW1W120 005525e0 void GGame::fn_005525E0(void)
 	void fn_005525E0();
 	// BW1W120 0054d620 BW1M100 1001e2f0 GGame::ProcessOneGameTurn(void)
 	void ProcessOneGameTurn();
@@ -343,10 +341,14 @@ public:
 	void ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2);
 	// BW1W120 0054da80 BW1M100 10033dd0 GGame::Process3dEngine(void)
 	void Process3dEngine();
-	void FinishedVideo();        // 0054d8d0 BW1M100 1037cbd0
-	void Draw();                 // 005533b0 BW1M100 100140b0
-	void fn_00553A60();          // 00553a60, original helper name unknown
-	void EndFallingSpellVideo(); // 00553a10 BW1M100 100d45b0
+	// BW1W120 0054d8d0 BW1M100 1037cbd0 GGame::FinishedVideo(void)
+	void FinishedVideo();
+	// BW1W120 005533b0 BW1M100 100140b0 GGame::Draw(void)
+	void Draw();
+	// BW1W120 00553a60 GGame::UpdateFallingSpellVideo(void)
+	void UpdateFallingSpellVideo();
+	// BW1W120 00553a10 BW1M100 100d45b0 GGame::EndFallingSpellVideo(void)
+	void EndFallingSpellVideo();
 	// BW1W120 0054e4f0 BW1M100 10083c70 GGame::StartTurn(void)
 	void StartTurn();
 	// BW1W120 0054e5c0 BW1M100 100665c0 GGame::ProcessTurn(void)
@@ -356,18 +358,17 @@ public:
 	// BW1W120 0054ef40 BW1M100 10514230 GGame::InitOneTimeOnly(void)
 	uint32_t InitOneTimeOnly();
 	// BW1W120 0054f3b0 BW1M100 101b9770 GGame::Init(void)
-	// 0054f421 is a continuation in this function's exception frame, not another entry.
 	bool32_t Init();
-	// BW1W120 005550f0
+	// BW1W120 005550f0 BW1M100 105a2530 GGame::ReadRegistrySettings(void)
 	void ReadRegistrySettings();
-	// BW1W120 00555a80 BW1M100 1057af10
+	// BW1W120 00555a80 BW1M100 1057af10 GGame::SetUnusedCitadelComputerPlayers(void)
 	void SetUnusedCitadelComputerPlayers();
-	// BW1W120 00550ba0 BW1M100 103dd850
+	// BW1W120 00550ba0 BW1M100 103dd850 GGame::SetPacket(PACKET_TYPE, short, short, long)
 	void SetPacket(PACKET_TYPE type, short x, short z, long value);
-	// BW1W120 0054ff80 BW1M100 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
+	// BW1W120 0054ff80 BW1M100 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void*)
 	static void KeyHandler(unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4,
 	                       void* param_5);
-	// BW1W120 0054ffe0 BW1M100 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
+	// BW1W120 0054ffe0 BW1M100 100982b0 GGame::MouseHandler(void*, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
 	static uint32_t MouseHandler(void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3,
 	                             unsigned long param_4);
 	// BW1W120 00550080 BW1M100 101c6850 GGame::UnfinishInitialisation(void)
@@ -386,13 +387,13 @@ public:
 	void Birthday();
 	// BW1W120 00550820 BW1M100 inlined GGame::MyPlayerID(unsigned long)
 	int MyPlayerID(unsigned long param_1);
-	// BW1W120 005508a0 BW1M100 10064420 GGame::GetNextPlayer(GPlayer *)
+	// BW1W120 005508a0 BW1M100 10064420 GGame::GetNextPlayer(GPlayer*)
 	GPlayer* GetNextPlayer(GPlayer* player);
-	// BW1W120 005508d0 BW1M100 100c0950 GGame::GetNextActivePlayer(GPlayer *)
+	// BW1W120 005508d0 BW1M100 100c0950 GGame::GetNextActivePlayer(GPlayer*)
 	GPlayer* GetNextActivePlayer(GPlayer* player);
-	// BW1W120 00550930 BW1M100 10095d40 GGame::GetNextActivePlayerAndNeutral(GPlayer *)
+	// BW1W120 00550930 BW1M100 10095d40 GGame::GetNextActivePlayerAndNeutral(GPlayer*)
 	GPlayer* GetNextActivePlayerAndNeutral(GPlayer* player);
-	// BW1W120 00550980 BW1M100 1005c2a0 GGame::GetNextPlayerAndNeutral(GPlayer *)
+	// BW1W120 00550980 BW1M100 1005c2a0 GGame::GetNextPlayerAndNeutral(GPlayer*)
 	GPlayer* GetNextPlayerAndNeutral(GPlayer* player);
 	// BW1W120 005509b0 BW1M100 100586e0 GGame::GetPlayer(unsigned long)
 	GPlayer* GetPlayer(uint32_t player_index);
@@ -401,12 +402,13 @@ public:
 	// BW1W120 00550a10 BW1M100 inlined GGame::GetPlayerInterfaceFromReal(unsigned long)
 	GInterface* GetPlayerInterfaceFromReal(unsigned long param_1);
 	// BW1W120 00550a30 BW1M100 inlined GGame::GetNextPlayerWithNoCreature(GPlayer *)
-	// TODO: Windows takes no argument; recover the original Mac signature before implementing.
 	GPlayer* GetNextPlayerWithNoCreature(GPlayer* param_1);
 	// BW1W120 00550a60 BW1M100 inlined GGame::GetPlayer(PLAYER_NAME)
 	GPlayer* GetPlayer(PLAYER_NAME player_name);
 	// BW1W120 00550dd0 BW1M100 1055efd0 GGame::SetPacket(PACKET_TYPE)
 	void SetPacket(PACKET_TYPE type);
+	// BW1W120 005514d0 BW1M100 101bedc0 GGame::SetPacket(PACKET_TYPE, unsigned long, float)
+	void SetPacket(PACKET_TYPE type, uint32_t value, float amount);
 	// BW1W120 00551690 BW1M100 10008870 GGame::SendPacketCompressed(PACKET_TYPE, SETPACKET_FUNCTION_NUMBER)
 	void SendPacketCompressed(PACKET_TYPE type, SETPACKET_FUNCTION_NUMBER function_number);
 	// BW1W120 00552620 BW1M100 1005cfb0 GGame::GetTribe(TRIBE_TYPE)
@@ -415,7 +417,7 @@ public:
 	void AddPlayerSparkles();
 	// BW1W120 00552bb0 BW1M100 10424170 GGame::ClearMap(void)
 	void ClearMap();
-	// BW1W120 00552f40 BW1M100 1056f520 GGame::StartPlaygroundGame(char *)
+	// BW1W120 00552f40 BW1M100 1056f520 GGame::StartPlaygroundGame(char*)
 	void StartPlaygroundGame(char* map_path);
 	// BW1W120 00552f80 BW1M100 100369c0 GGame::IsMultiplayerGame(void) const
 	bool32_t IsMultiplayerGame() const;
@@ -433,7 +435,7 @@ public:
 	GInterface* MyInterface();
 	// BW1W120 00555880 BW1M100 1005fec0 GGame::MyInterfaceStatus(void)
 	GInterfaceStatus* MyInterfaceStatus();
-	// BW1W120 00555890 BW1M100 105996f0 GGame::SetLandBalance(unsigned long, float, GPlayer *)
+	// BW1W120 00555890 BW1M100 105996f0 GGame::SetLandBalance(unsigned long, float, GPlayer*)
 	void SetLandBalance(int index, float balance, GPlayer* player);
 	// BW1W120 00555990 BW1M100 inlined GGame::ResetAndStartPlaygroundGame(char *)
 	void ResetAndStartPlaygroundGame(char* path);
@@ -443,7 +445,7 @@ public:
 	void ProcessKey(LH_KEY key, unsigned short modifier);
 	// BW1W120 0063f710 BW1M100 100283d0 GGame::ProcessMapKeys(void)
 	void ProcessMapKeys();
-	// BW1W120 005557d0. TODO: Original name unknown; callers supply this, callee selects LHInetWeather singleton.
+	// BW1W120 005557d0 void GGame::fn_005557D0(void)
 	void fn_005557D0();
 	// BW1W120 0063f830 BW1M100 1009f340 GGame::ProcessBindableKeys(LH_KEY, LH_KEY, unsigned long)
 	uint32_t ProcessBindableKeys(LH_KEY param_1, LH_KEY param_2, unsigned long param_3);

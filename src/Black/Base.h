@@ -46,12 +46,12 @@ public:
 	virtual int Get3DSoundPos(LHPoint* param_1) { return 0; }
 	// BW1W120 004011f0 BW1M100 1032cbf0 Base::CleanUpForSerialisation(void)
 	virtual void CleanUpForSerialisation() {}
-	// BW1W120 00401200 BW1M100 106fc7f0 Base::Dump(void)
+	// BW1W120 00401200 BW1M100 1008e9d0 Base::Dump(void)
 	virtual void Dump() {}
 
 	// Static methods
 
-	// BW1W120 004366f0 BW1M100 1009ebc0 Base::operator new(unsigned long, char const*, unsigned long)
+	// BW1W120 004366f0 BW1M100 1009ebc0 Base::operator new(unsigned long)
 	static void* operator new(size_t size, const char* file_name, uint32_t line);
 	// BW1W120 00436970 BW1M100 10425a80 Base::operator delete(void*, unsigned long)
 	static void operator delete(void* ptr, size_t size);
@@ -63,6 +63,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00436a70 BW1M100 104855c0 Base::GetIndexOffset(void) const
+	uint32_t GetIndexOffset() const;
 	// BW1W120 00436b20 BW1M100 10001480 Base::SetInfo(BaseInfo*) const
 	void SetInfo(BaseInfo* info);
 };

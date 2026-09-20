@@ -73,6 +73,10 @@ struct MapCoords : public LH3DMapCoords
 	char* ConvertToText(char* buff);
 	// BW1W120 006041c0 BW1M100 101bffb0 MapCoords::ConvertToLHPoint(void) const
 	LHPoint ConvertToLHPoint() const;
+	// BW1W120 inlined BW1M100 10021b90 MapCoords::MetersX(void) const
+	float MetersX() const { return (float)x * 10.0f * (1.0f / 65536.0f); }
+	// BW1W120 inlined BW1M100 10021c00 MapCoords::MetersZ(void) const
+	float MetersZ() const { return (float)z * 10.0f * (1.0f / 65536.0f); }
 	// BW1W120 006042c0 BW1M100 100499f0 MapCoords::InBounds(void) const
 	bool32_t InBounds() const;
 	// BW1W120 00605cc0 BW1M100 103e5320 MapCoords::GetTemperature(void) const

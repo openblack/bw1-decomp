@@ -20,18 +20,22 @@ class LH3DZSorter;
 
 struct LH3DRender
 {
-	// Original Mac imported names; storage remains extracted.
-	static int          g_started_frame; // 00eca644
-	static LH3DZSorter* g_zsorter;       // 00eca648
-	static int          g_mode_cleaning; // 00c3871c
-	// BW1W120 00eca640. Original Mac import g_frame__10LH3DRender.
+	// BW1W120 00eca644 LH3DRender::g_started_frame
+	static int g_started_frame;
+	// BW1W120 00eca648 LH3DRender::g_zsorter
+	static LH3DZSorter* g_zsorter;
+	// BW1W120 00c3871c LH3DRender::g_mode_cleaning
+	static int g_mode_cleaning;
+	// BW1W120 00eca640 LH3DRender::g_frame
 	static int g_frame;
-	// BW1W120 00c38714. Original Mac import g_b_do_update_material__10LH3DRender.
+	// BW1W120 00c38714 LH3DRender::g_b_do_update_material
 	static int g_b_do_update_material;
-	// Descriptive names for the current material and depth-pass override state. Storage remains extracted.
-	static LH3DMaterial* CurrentMaterial;    // 00eca64c
-	static int           OverrideMaterial;   // 00eca658
-	static int           OverrideRenderMode; // 00eca65c
+	// BW1W120 00eca64c
+	static LH3DMaterial* CurrentMaterial;
+	// BW1W120 00eca658
+	static int OverrideMaterial;
+	// BW1W120 00eca65c
+	static int OverrideRenderMode;
 	// BW1W120 00eca624 BW1M100 101bcd28
 	static bool32_t b_need_init;
 	// BW1W120 00ec7fd0 BW1M100 102ca938

@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/CreatureEnum.h>
+
 #include "LivingInfo.h" /* For struct GLivingInfo */
 
 // Forward Declares
@@ -14,6 +16,9 @@ class GBaseInfo;
 class CreatureInfo : public GLivingInfo
 {
 public:
+	// BW1W120 00c60460
+	static CreatureInfo CreatureInfos[CREATURE_TYPE_LAST];
+
 	uint32_t CreatureType; /* 0x1f4 */
 	float    field_0x1f8[0x4];
 	uint32_t field_0x208;
@@ -34,9 +39,9 @@ public:
 
 	// Override methods
 
-	// BW1W120 00472c80 BW1M100 101d2300 CreatureInfo::_dt(void)
+	// BW1W120 inlined BW1M100 101d2300 CreatureInfo::~CreatureInfo(void)
 	virtual ~CreatureInfo();
-	// BW1W120 00472c10 BW1M100 101e2980 CreatureInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00472c10 BW1M100 101e2980 CreatureInfo::GetBaseInfo(unsigned long&)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
