@@ -29,7 +29,7 @@ public:
 	virtual void MouseUp(int x, int y, bool param_3);
 	// BW1W120 00409960 BW1M100 10103d10 SetupSlider::KeyDown(int, int)
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 00409c50 BW1M100 101c8450 SetupSlider::~SetupSlider(void)
+	// BW1W120 inlined BW1M100 101c8450 SetupSlider::~SetupSlider(void)
 	virtual ~SetupSlider();
 
 	// Constructors
@@ -37,5 +37,82 @@ public:
 	// BW1W120 00409bf0 BW1M100 1043fbc0 SetupSlider::SetupSlider(int, int, int, int, int, float, wchar_t *)
 	SetupSlider(int id, int x, int y, int width, int height, float value, char16_t* label);
 };
+
+// BW1W120 00409960 BW1M100 10103d10 SetupSlider::KeyDown(int, int)
+inline void SetupSlider::KeyDown(LHKey key, LHKeyMod mod)
+{
+	bool changed = false;
+	switch (key)
+	{
+	case LHKEY_HOME:
+		value = 0.0f;
+		changed = true;
+		break;
+	case LHKEY_END:
+		value = 1.0f;
+		changed = true;
+		break;
+	case LHKEY_LEFT:
+		value -= 0.1f;
+		changed = true;
+		break;
+	case LHKEY_RIGHT:
+		value += 0.1f;
+		changed = true;
+		break;
+	}
+	value = value > 0.0f ? (value < 1.0f ? value : 1.0f) : 0.0f;
+	DragStartValue = value;
+	if (changed && setup_box->field_0xb0 != NULL)
+		setup_box->field_0xb0(4, setup_box, this, 0, 0);
+}
+
+// BW1W120 00409bf0 BW1M100 1043fbc0 SetupSlider::SetupSlider(int, int, int, int, int, float, wchar_t *)
+inline SetupSlider::SetupSlider(int id, int x, int y, int width, int height, float value, char16_t* label)
+	: SetupControl(id, x, y, width, height, label)
+{
+	this->value = value;
+	DragStartValue = value;
+	this->height = rect.p1.y - y;
+}
+
+// BW1W120 inlined BW1M100 101c8450 SetupSlider::~SetupSlider(void)
+inline SetupSlider::~SetupSlider() {}
+
+// BW1W120 00409c70 BW1M100 1043ff90 SetupSlider::Drag(int, int)
+inline void SetupSlider::Drag(int x, int y)
+{
+	float travel = (float)(rect.p1.x - rect.p0.x - height);
+	int   thumbLeft = rect.p0.x + (int)(travel * DragStartValue);
+	if (DragStart.x >= thumbLeft && DragStart.x < thumbLeft + height)
+		value = (float)(x - DragStart.x) / travel + DragStartValue;
+	else
+	{
+		if (DragStart.x < thumbLeft)
+			value = DragStartValue - 0.1f;
+		if (DragStart.x >= thumbLeft + height)
+			value = DragStartValue + 0.1f;
+	}
+	value = value > 0.0f ? (value < 1.0f ? value : 1.0f) : 0.0f;
+}
+
+// BW1W120 00409d60 BW1M100 1043c240 SetupSlider::MouseDown(int, int, bool)
+inline void SetupSlider::MouseDown(int x, int y, bool param_3)
+{
+	if (param_3)
+	{
+		DragStart.x = x;
+		DragStart.y = y;
+		DragStartValue = value;
+	}
+}
+
+// BW1W120 00409d90 BW1M100 100b4690 SetupSlider::MouseUp(int, int, bool)
+inline void SetupSlider::MouseUp(int x, int y, bool param_3)
+{
+	if (setup_box->field_0xb0 != NULL)
+		setup_box->field_0xb0(1, setup_box, this, x, y);
+	Click(x, y);
+}
 
 #endif /* BW1_DECOMP_SETUP_SLIDER_INCLUDED_H */

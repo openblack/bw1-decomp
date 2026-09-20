@@ -20,6 +20,7 @@
 #include "KeyBuffer.h"        /* For struct GKeyBuffer */
 #include "Landscape.h"        /* For struct GLandscape */
 #include "Language.h"         /* For struct GLanguage */
+#include "GameLanguage.h"     /* For GAME_LANGUAGE */
 #include "Map.h"              /* For struct GMap */
 #include "MapCoords.h"        /* For struct MapCoords */
 #include "Network.h"          /* For struct GNetwork */
@@ -214,7 +215,7 @@ public:
 	Settings*              settings;
 	float                  TownInfluenceMultiplier;
 	float                  PlayerInfluenceMultiplier;
-	uint32_t               field_0x250080;
+	GAME_LANGUAGE          CurrentLanguage;
 	ScriptCreatureCurse    script_creature_curse;
 	GScript*               script; /* 0x250090 */
 	HelpEditor*            field_0x250094;
