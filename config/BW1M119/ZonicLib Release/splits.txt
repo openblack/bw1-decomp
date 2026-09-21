@@ -1,0 +1,3 @@
+Sections:
+	.code0      type:code align:16
+	.pidata1    type:data align:16

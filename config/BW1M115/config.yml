@@ -1,0 +1,55 @@
+object: orig/BW1M115/Black & White
+hash: dbc41cc1d26b4b3c5283a0679004331e60764d54
+symbols: config/BW1M115/symbols.txt
+splits: config/BW1M115/splits.txt
+modules:
+- name: zlib shared carb HM
+  object: orig/BW1M115/Black & White:zlib shared carb HM
+  hash: 54913f1ad849ab0991285019bb1bd4b8eeafc601
+  symbols: config/BW1M115/zlib shared carb HM/symbols.txt
+  splits: config/BW1M115/zlib shared carb HM/splits.txt
+- name: more files shd carb HM
+  object: orig/BW1M115/Black & White:more files shd carb HM
+  hash: 9f5215031e060a700161ff365043f5a7de0b0cf3
+  symbols: config/BW1M115/more files shd carb HM/symbols.txt
+  splits: config/BW1M115/more files shd carb HM/splits.txt
+- name: support shared carbon HM
+  object: orig/BW1M115/Black & White:support shared carbon HM
+  hash: 56e99f0c3ac871327d5a7afb45549d0307c1b179
+  symbols: config/BW1M115/support shared carbon HM/symbols.txt
+  splits: config/BW1M115/support shared carbon HM/splits.txt
+- name: sams utils shared HM
+  object: orig/BW1M115/Black & White:sams utils shared HM
+  hash: d978860a644962ce023ee756f656262f5f44bf68
+  symbols: config/BW1M115/sams utils shared HM/symbols.txt
+  splits: config/BW1M115/sams utils shared HM/splits.txt
+- name: macdoze shared carb HM
+  object: orig/BW1M115/Black & White:macdoze shared carb HM
+  hash: ce55822b074946e0f2674b1e241e14d8edc8b8fe
+  symbols: config/BW1M115/macdoze shared carb HM/symbols.txt
+  splits: config/BW1M115/macdoze shared carb HM/splits.txt
+- name: indirectx sh carb HM
+  object: orig/BW1M115/Black & White:indirectx sh carb HM
+  hash: 2e8d7bafcab033cd71c4f885387607572f947137
+  symbols: config/BW1M115/indirectx sh carb HM/symbols.txt
+  splits: config/BW1M115/indirectx sh carb HM/splits.txt
+- name: LH Combined Release Shared
+  object: orig/BW1M115/Black & White:LH Combined Release Shared
+  hash: 39586a67be04d7140c4e3243aec50fb190a7b411
+  symbols: config/BW1M115/LH Combined Release Shared/symbols.txt
+  splits: config/BW1M115/LH Combined Release Shared/splits.txt
+- name: FindErrorLib1
+  object: orig/BW1M115/Black & White:FindErrorLib1
+  hash: 05198c2e089e5adf2894b7073a3ae96f08f0a3f9
+  symbols: config/BW1M115/FindErrorLib1/symbols.txt
+  splits: config/BW1M115/FindErrorLib1/splits.txt
+- name: Black & White Support
+  object: orig/BW1M115/Black & White:Black & White Support
+  hash: 70ce55a7027d55a62d7af2b5a68d3b0d680da2cd
+  symbols: config/BW1M115/Black & White Support/symbols.txt
+  splits: config/BW1M115/Black & White Support/splits.txt
+- name: RezLib
+  object: orig/BW1M115/Black & White:RezLib
+  hash: 9a276d427d8b3f528876d66a986e18d1ab551331
+  symbols: config/BW1M115/RezLib/symbols.txt
+  splits: config/BW1M115/RezLib/splits.txt
