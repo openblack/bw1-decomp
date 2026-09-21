@@ -38,34 +38,25 @@
 #include "SetupStaticTextNoHit.h"
 #include "SetupThing.h"
 
-// Broad surface recovery; integration evidence and remaining dependencies are in
-// Disassembly/RE/GatheringInterface-surface.md. No source-linking claim.
 // TODO: Recover Init, the main event handler, and message dispatch.
-// In particular, do not infer a LH_USER_ID operator from the incorrect label at
-// 00573e30: its three stack arguments and allocations implement recent contacts.
 
-// Descriptive static names; ownership follows the recovered GatheringBox methods
-// which initialize, mutate, and destroy this storage. See the handoff for addresses.
+// TODO: Recover the original static layout; compiled .bss order still differs.
 GBCategory*               GatheringBox::GatheringCurrentPlayers;
 GBCategory*               GatheringBox::GatheringRecentPlayers;
 GBCategory*               GatheringBox::GatheringFriends;
 LHLinkedList<GBCategory*> GatheringBox::GatheringGroups;
-char16_t                  GatheringBox::GatheringTimeText[256];
-const char16_t*           GatheringBox::GatheringAddFriendText;
-const char16_t*           GatheringBox::GatheringRemoveFriendText;
-const char16_t*           GatheringBox::GatheringCurrentPlayersText;
-const char16_t*           GatheringBox::GatheringRecentPlayersText;
-const char16_t*           GatheringBox::GatheringFriendsText;
+wchar_t                   GatheringBox::GatheringTimeText[256];
+const wchar_t*            GatheringBox::GatheringAddFriendText;
+const wchar_t*            GatheringBox::GatheringRemoveFriendText;
+const wchar_t*            GatheringBox::GatheringCurrentPlayersText;
+const wchar_t*            GatheringBox::GatheringRecentPlayersText;
+const wchar_t*            GatheringBox::GatheringFriendsText;
 GatheringBox*             GatheringBox::GatheringActiveBox;
 bool32_t                  GatheringBox::GatheringMusicPlayerEnabled;
 
-// BW1W120 00d06320; its members at 00d06420..00d0642c identify LHTimer.
-// The original startup sequence constructs and then stops this timer again.
 LHTimer GatheringBox::GatheringPresenceTimer;
-// BW1W120 00d06440. Carries mouse ownership across a drag outside the controls.
-bool GatheringBox::GatheringMouseCaptured;
+bool    GatheringBox::GatheringMouseCaptured;
 
-// BW1W120 00d06438. Definition belongs to this TU, declaration is in MusicMood.h.
 unsigned int MusicMoodController::CreatureMusicMoodEnabled;
 
 // Copy only the live transport payload. The compiler-generated copy constructor
@@ -77,9 +68,7 @@ static void CopyGatheringTransport(LHTransportInfo& destination, const LHTranspo
 	memcpy(&destination.port, &source.port, source.data_len);
 }
 
-// BW1W120 00573f70. MPFEData::TeamColors is a provisional name/scope for the
-// shared MPFE team palette, also read by 0061ad20/0061e7c0/00620410/006207c0.
-void GBPlayer::Init(long team_member_number, long team_number, const char16_t* name, LH_USER_ID user_id, long player_id,
+void GBPlayer::Init(long team_member_number, long team_number, const wchar_t* name, LH_USER_ID user_id, long player_id,
                     LHTransportInfo* transport)
 {
 	PlayerId = player_id;
@@ -106,7 +95,6 @@ void GBPlayer::Init(long team_member_number, long team_number, const char16_t* n
 	}
 }
 
-// BW1W120 005749d0
 GBPlayer& GBPlayer::operator=(const GBPlayer& player)
 {
 	IsFriend = player.IsFriend;
@@ -124,8 +112,7 @@ GBPlayer& GBPlayer::operator=(const GBPlayer& player)
 	return *this;
 }
 
-// BW1W120 005740c0
-void GBCategory::Init(GBCategory* group, const char16_t* name)
+void GBCategory::Init(GBCategory* group, const wchar_t* name)
 {
 	if (group == NULL)
 	{
@@ -148,8 +135,6 @@ void GBCategory::Init(GBCategory* group, const char16_t* name)
 	Players.count = 0;
 }
 
-// BW1W120 005707f0. Signed characters and the wrapping byte multiplier are
-// visible in MOVSX and INC AL respectively; this is not a standard string hash.
 uint32_t GatheringBox::GetMusicID()
 {
 	if (State.GetPlaybackState() != 1)
@@ -164,7 +149,6 @@ uint32_t GatheringBox::GetMusicID()
 	return hash | 1;
 }
 
-// BW1W120 00570890
 bool GatheringBox::MusicMoodActive()
 {
 	if (GGame::g_game->IsMultiplayerGame())
@@ -174,7 +158,6 @@ bool GatheringBox::MusicMoodActive()
 	return State.MusicAvailable() != 0;
 }
 
-// BW1W120 005708d0
 void GatheringBox::HideMusicControls(int hidden)
 {
 	bool playlistHidden = State.PlayList->hidden;
@@ -188,8 +171,6 @@ void GatheringBox::HideMusicControls(int hidden)
 		State.PlayList->Hide(playlistHidden);
 }
 
-// Shared inline seen in 00570930 and 00570b40. The selection remains invalid
-// when index is out of range, but the IME test still uses the requested index.
 static void SelectGatheringListIndex(SetupList* list, int index)
 {
 	list->SelectedIndex = index >= 0 && index < list->NumItems ? index : -1;
@@ -201,7 +182,6 @@ static void SelectGatheringListIndex(SetupList* list, int index)
 	}
 }
 
-// BW1W120 00570930
 void GatheringBox::UpdatePlayList()
 {
 	if (State.MusicModule == NULL || !State.MusicAvailable())
@@ -229,8 +209,7 @@ void GatheringBox::UpdatePlayList()
 	}
 }
 
-// BW1W120 00570ae0
-const char16_t* GatheringBox::FormatTime(int milliseconds)
+const wchar_t* GatheringBox::FormatTime(int milliseconds)
 {
 	int seconds = milliseconds / 1000;
 	if (seconds < 0)
@@ -239,7 +218,6 @@ const char16_t* GatheringBox::FormatTime(int milliseconds)
 	return GatheringTimeText;
 }
 
-// BW1W120 00570b40
 void GatheringBox::UpdateMP3()
 {
 	if (State.MusicModule == NULL)
@@ -300,8 +278,6 @@ void GatheringBox::UpdateMP3()
 		State.MusicButton->color = SetupThing::DefaultColor;
 }
 
-// BW1W120 005706a0 / 00570710. Both callbacks end RET 20h, matching the shared
-// SetupList__ListBoxDraw_t stdcall ABI.
 static uint32_t __stdcall CatDraw(SetupList* list, int index, int x_min, int y_min, int x_max, int y_max, int clip_min,
                                   int clip_max)
 {
@@ -328,17 +304,14 @@ static uint32_t __stdcall PlayerDraw(SetupList* list, int index, int x_min, int 
 	return 1;
 }
 
-// BW1W120 00571f00. This is the real constant-return body, not a placeholder.
 bool SetupStaticTextNoHit::HitTest(int x, int y)
 {
 	return false;
 }
 
-// BW1W120 00571f10 / 00571f30, compiler-generated deleting wrappers.
 SetupStaticTextNoHit::~SetupStaticTextNoHit() {}
 SetupMP3Button::~SetupMP3Button() {}
 
-// BW1W120 00571f50
 void GatheringBox::ClearSelection(bool rebuild)
 {
 	for (GBCategory* group = State.Groups->FindNext(NULL); group != NULL; group = State.Groups->FindNext(group))
@@ -350,8 +323,6 @@ void GatheringBox::ClearSelection(bool rebuild)
 	UpdateFriendButton();
 }
 
-// BW1W120 00571ff0. Toggle a range to the opposite of the last entry's state;
-// group headings inside the range are skipped by testing the drawing callback.
 void GatheringBox::Select(int first, int last)
 {
 	if (last < 0)
@@ -375,7 +346,6 @@ void GatheringBox::Select(int first, int last)
 	}
 }
 
-// BW1W120 00572090
 void GatheringBox::RebuildList()
 {
 	SetupList* list = State.PlayerList;
@@ -385,7 +355,7 @@ void GatheringBox::RebuildList()
 	State.PlayerList->SelectedIndex = -1;
 	if (State.Groups == NULL)
 		return;
-	char16_t text[128];
+	wchar_t text[128];
 	for (GBCategory* group = State.Groups->FindNext(NULL); group != NULL; group = State.Groups->FindNext(group))
 	{
 		if (group->Expanded)
@@ -437,8 +407,6 @@ void GatheringBox::RebuildList()
 	UpdateFriendButton();
 }
 
-// BW1W120 00572460. A mixed friend/nonfriend selection disables the operation;
-// its caption still reflects the first selected entry, as in the original.
 void GatheringBox::UpdateFriendButton()
 {
 	bool isFriend = false;
@@ -468,14 +436,12 @@ void GatheringBox::UpdateFriendButton()
 	wcscpy(State.FriendButton->label, isFriend ? GatheringRemoveFriendText : GatheringAddFriendText);
 }
 
-// BW1W120 00572530 BW1M100 103266d0
 void GatheringBox::Destroy()
 {
 	DialogBoxBase::Destroy();
 	GatheringActiveBox = NULL;
 }
 
-// BW1W120 00572540
 void GatheringBox::InitControls()
 {
 	RebuildList();
@@ -489,8 +455,6 @@ void GatheringBox::InitControls()
 	setup_box->SetFocusControl(edit);
 }
 
-// The repeated caption copy in 005725b0 and the main callback is an inline in
-// the target. It does not remove a message or update the edit cursor.
 static void UpdateGatheringMessageCaption(GatheringBoxState& state)
 {
 	state.MessageCount = state.Messages.count;
@@ -501,7 +465,6 @@ static void UpdateGatheringMessageCaption(GatheringBoxState& state)
 	}
 }
 
-// BW1W120 005725b0
 void GatheringBox::UpdateShow()
 {
 	UpdateGatheringMessageCaption(State);
@@ -558,8 +521,6 @@ void GatheringBox::UpdateShow()
 	}
 }
 
-// BW1W120 005729e0. Five explicit callback arguments, RET 14h. The event and
-// control ID values come from the target switch, not a guessed enum.
 void GatheringBox::MP3Callback(int event, SetupBox* box, SetupControl* control, int x, int y)
 {
 	if (event == 0)
@@ -655,7 +616,6 @@ void GatheringBox::MP3Callback(int event, SetupBox* box, SetupControl* control, 
 	UpdateMP3();
 }
 
-// BW1W120 00573840
 void GatheringBox::OpenDialog(bool close_after_send)
 {
 	State.CloseAfterSend = close_after_send;
@@ -666,7 +626,6 @@ void GatheringBox::OpenDialog(bool close_after_send)
 	setup_box->SetFocusControl(State.ChatEdit);
 }
 
-// BW1W120 00573b90. The result is AL, despite the provisional void symbol.
 bool GatheringBox::WantsKeyControl()
 {
 	if (GGame::g_game->help_system != NULL && GGame::g_game->help_system->field_0x45e8 != 0)
@@ -674,7 +633,6 @@ bool GatheringBox::WantsKeyControl()
 	return IsVisible() && State.ChatOpen && setup_box->FocusedWidget == State.ChatEdit && !State.ChatEdit->hidden;
 }
 
-// BW1W120 00573bf0
 bool GatheringBox::WantsMouseControl()
 {
 	if (IsVisible() && (GGame::g_game->help_system == NULL || GGame::g_game->help_system->field_0x45e8 == 0))
@@ -695,13 +653,11 @@ bool GatheringBox::WantsMouseControl()
 	return false;
 }
 
-// BW1W120 00573cc0
 bool GatheringBox::CanESCOut()
 {
 	return false;
 }
 
-// BW1W120 00573cd0
 LHPlayer* GatheringFindGamePlayer(uint32_t user_id)
 {
 	for (GPlayer* player = GGame::g_game->GetNextActivePlayer(NULL); player != NULL;
@@ -717,8 +673,6 @@ LHPlayer* GatheringFindGamePlayer(uint32_t user_id)
 	return NULL;
 }
 
-// BW1W120 00573db0. Detaches all nodes for the first matching payload; the
-// payload is intentionally retained so that callers can move it between groups.
 void GatheringBox::RemoveFromList(GBCategory* group, LH_USER_ID user_id)
 {
 	for (LHLinkedNode<GBPlayer*>* node = group->Players.GetStart(); node != NULL; node = node->next.Get())
@@ -731,8 +685,7 @@ void GatheringBox::RemoveFromList(GBCategory* group, LH_USER_ID user_id)
 	}
 }
 
-// BW1W120 00573e30 (incorrectly named LH_USER_ID::operator== in symbols.txt).
-void GatheringBox::AddToOtherList(char16_t* name, LH_USER_ID user_id, LHTransportInfo* transport)
+void GatheringBox::AddToOtherList(wchar_t* name, LH_USER_ID user_id, LHTransportInfo* transport)
 {
 	if (LHNetBase::Instance.User != NULL &&
 	    ((LHNetBase::Instance.User->id.field_0x0 ^ user_id.field_0x0) & 0x1fffffff) == 0)
@@ -750,7 +703,6 @@ void GatheringBox::AddToOtherList(char16_t* name, LH_USER_ID user_id, LHTranspor
 	RelinkPeopleList();
 }
 
-// BW1W120 00574140
 bool GatheringContainsPlayer(LH_USER_ID user_id)
 {
 	return GatheringBox::IsUserInList(GatheringBox::GatheringRecentPlayers, user_id) ||
@@ -758,7 +710,6 @@ bool GatheringContainsPlayer(LH_USER_ID user_id)
 	       GatheringBox::IsUserInList(GatheringBox::GatheringCurrentPlayers, user_id);
 }
 
-// BW1W120 00574190
 bool GatheringBox::IsUserInList(GBCategory* group, LH_USER_ID user_id)
 {
 	if (group != NULL)
@@ -768,7 +719,6 @@ bool GatheringBox::IsUserInList(GBCategory* group, LH_USER_ID user_id)
 	return false;
 }
 
-// BW1W120 005741d0
 GBPlayer* GatheringFindPlayer(LH_USER_ID user_id)
 {
 	GBPlayer* player = GatheringBox::FindUserInList(GatheringBox::GatheringCurrentPlayers, user_id);
@@ -779,8 +729,7 @@ GBPlayer* GatheringFindPlayer(LH_USER_ID user_id)
 	return player;
 }
 
-// BW1W120 00574210
-void GatheringBox::UpdatePlayerOnlineInAllLists(LHTransportInfo* transport, char16_t* name, LH_USER_ID user_id)
+void GatheringBox::UpdatePlayerOnlineInAllLists(LHTransportInfo* transport, wchar_t* name, LH_USER_ID user_id)
 {
 	GBPlayer* player = FindUserInList(GatheringCurrentPlayers, user_id);
 	if (player != NULL)
@@ -824,7 +773,6 @@ void GatheringBox::UpdatePlayerOnlineInAllLists(LHTransportInfo* transport, char
 	}
 }
 
-// BW1W120 005743c0
 GBPlayer* GatheringBox::FindUserInList(GBCategory* group, LH_USER_ID user_id)
 {
 	if (group != NULL)
@@ -844,7 +792,6 @@ static void DeleteGatheringPlayers(GBCategory* group)
 	}
 }
 
-// BW1W120 00574ab0
 void GatheringBox::RebuildPlayerList()
 {
 	RebuildList(&GGame::g_game->network.session->Players, &GatheringCurrentPlayers, GatheringCurrentPlayersText);
@@ -859,13 +806,12 @@ void GatheringBox::RebuildPlayerList()
 struct GatheringFriendRecord
 {
 	LH_USER_ID      UserId;
-	char16_t        Name[64];
+	wchar_t         Name[64];
 	LHTransportInfo Transport;
 	GatheringFriendRecord() { UserId.field_0x0 = 0; }
 };
 static_assert(sizeof(GatheringFriendRecord) == 0xf8, "Gathering friend record size");
 
-// BW1W120 00574b00; currently swallowed by fn_00574AB0's symbol range.
 void GatheringBox::WriteFriendListToRegistry()
 {
 	if (GatheringFriends == NULL)
@@ -888,7 +834,6 @@ void GatheringBox::WriteFriendListToRegistry()
 		LHNetSetCurrentProfileData("friendlist", compressed, compressedSize);
 }
 
-// BW1W120 00574c90. Static/cdecl: no this use and RET, not RET n.
 void GatheringBox::ReadFriendListFromRegistry()
 {
 	GBCategory* friends;
@@ -926,7 +871,6 @@ void GatheringBox::ReadFriendListFromRegistry()
 	}
 }
 
-// BW1W120 00574f10
 void GatheringBox::RelinkPeopleList()
 {
 	while (GatheringGroups.GetStart() != NULL)
@@ -942,8 +886,6 @@ void GatheringBox::RelinkPeopleList()
 	GatheringActiveBox->RebuildList();
 }
 
-// BW1W120 00575040. Repeated maximum extraction followed by prepend produces
-// ascending team/member order. Keep the original tie behavior and node ownership.
 void GatheringBox::SortPlayerList()
 {
 	if (GatheringCurrentPlayers == NULL || GatheringCurrentPlayers->Players.count == 0)
@@ -966,7 +908,6 @@ void GatheringBox::SortPlayerList()
 	GatheringCurrentPlayers->Players = sorted;
 }
 
-// BW1W120 00575140
 void GatheringBox::SetFriendFlags()
 {
 	if (GatheringFriends != NULL)
@@ -982,7 +923,6 @@ void GatheringBox::SetFriendFlags()
 	}
 }
 
-// BW1W120 00575190
 void GatheringBox::SetFriendFlags(GBCategory* group, LH_USER_ID user_id)
 {
 	if (group != NULL)
@@ -998,7 +938,6 @@ void GatheringBox::SetFriendFlags(GBCategory* group, LH_USER_ID user_id)
 	}
 }
 
-// BW1W120 005751d0 BW1M100 103227e0
 void GatheringBox::InitialiseForCurrentGame()
 {
 	if (GatheringRecentPlayers != NULL)
@@ -1008,7 +947,6 @@ void GatheringBox::InitialiseForCurrentGame()
 	GatheringActiveBox->State.ShowInterface = !GGame::g_game->network.session->IsSinglePlayer();
 }
 
-// BW1W120 00575670. Static/cdecl, despite the provisional thiscall map label.
 void GatheringBox::UpdateOnlineStatus(long* status, long count)
 {
 	for (int i = 0; i < count * 2; i += 2)
@@ -1037,7 +975,6 @@ void GatheringBox::UpdateOnlineStatus(long* status, long count)
 	}
 }
 
-// BW1W120 00575880
 int GatheringBox::GetFriendArray(long* user_ids)
 {
 	int count = 0;
@@ -1049,7 +986,6 @@ int GatheringBox::GetFriendArray(long* user_ids)
 	return count;
 }
 
-// BW1W120 005758f0. Recent entries move; current-session entries are copied.
 void GatheringBox::MakeFriends(GBCategory* group)
 {
 	if (group == NULL)
@@ -1089,13 +1025,11 @@ void GatheringBox::MakeFriends(GBCategory* group)
 	}
 }
 
-// BW1W120 00575ad0
 GBPlayer* GatheringBox::FindFriend(GBPlayer* player)
 {
 	return FindUserInList(GatheringFriends, player->UserId);
 }
 
-// BW1W120 00575b80
 bool GatheringBox::IsUserInAnyEnabledList(LH_USER_ID user_id)
 {
 	if (IsUserInList(GatheringCurrentPlayers, user_id) && GatheringCurrentPlayers->ReceiveMessages)
@@ -1105,7 +1039,6 @@ bool GatheringBox::IsUserInAnyEnabledList(LH_USER_ID user_id)
 	return IsUserInList(GatheringFriends, user_id) && GatheringFriends->ReceiveMessages;
 }
 
-// BW1W120 00575bf0
 bool GatheringBox::IsAtLeastOnePlayerSelected()
 {
 	for (LHLinkedNode<GBCategory*>* group = GatheringGroups.GetStart(); group != NULL; group = group->next.Get())
@@ -1116,7 +1049,6 @@ bool GatheringBox::IsAtLeastOnePlayerSelected()
 	return false;
 }
 
-// BW1W120 00575c30
 void GatheringSetFriendOnline(LH_USER_ID user_id, bool online)
 {
 	if (GatheringBox::GatheringFriends != NULL)
@@ -1129,8 +1061,6 @@ void GatheringSetFriendOnline(LH_USER_ID user_id, bool online)
 			}
 }
 
-// BW1W120 00575b10. Restart after deletion because rebuilding the display can
-// change group nodes. Only the current-session counterpart is unmarked here.
 void GatheringBox::RemoveUnlovedFriends()
 {
 	if (GatheringFriends == NULL)
@@ -1157,7 +1087,6 @@ void GatheringBox::RemoveUnlovedFriends()
 	}
 }
 
-// BW1W120 005754b0
 void GatheringBox::MakeFriends()
 {
 	MakeFriends(GatheringCurrentPlayers);

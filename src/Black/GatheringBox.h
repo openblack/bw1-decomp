@@ -15,18 +15,16 @@ class GatheringBox : public DialogBoxBase
 public:
 	GatheringBoxState State; /* 0x10 */
 
-	// Descriptive static names. Some storage is currently split into GameThing;
-	// reconcile extracted ownership before linking this source replacement.
 	static GBCategory*               GatheringCurrentPlayers;     // 00d060ec
 	static GBCategory*               GatheringRecentPlayers;      // 00d060f4
 	static GBCategory*               GatheringFriends;            // 00d060f8
 	static LHLinkedList<GBCategory*> GatheringGroups;             // 00d06100
-	static char16_t                  GatheringTimeText[256];      // 00d06108
-	static const char16_t*           GatheringAddFriendText;      // 00d06308
-	static const char16_t*           GatheringRemoveFriendText;   // 00d0630c
-	static const char16_t*           GatheringCurrentPlayersText; // 00d06310
-	static const char16_t*           GatheringRecentPlayersText;  // 00d06314
-	static const char16_t*           GatheringFriendsText;        // 00d06318
+	static wchar_t                   GatheringTimeText[256];      // 00d06108
+	static const wchar_t*            GatheringAddFriendText;      // 00d06308
+	static const wchar_t*            GatheringRemoveFriendText;   // 00d0630c
+	static const wchar_t*            GatheringCurrentPlayersText; // 00d06310
+	static const wchar_t*            GatheringRecentPlayersText;  // 00d06314
+	static const wchar_t*            GatheringFriendsText;        // 00d06318
 	static LHTimer                   GatheringPresenceTimer;      // 00d06320
 	static bool32_t                  GatheringMusicPlayerEnabled; // 00d06434
 	static GatheringBox*             GatheringActiveBox;          // 00d0643c
@@ -47,7 +45,6 @@ public:
 	virtual bool CanESCOut();
 	// BW1W120 00572540 BW1M100 10326610 GatheringBox::InitControls(void)
 	virtual void InitControls();
-
 	// BW1W120 005707f0 BW1M100 10328860 GatheringBox::GetMusicID(void)
 	uint32_t GetMusicID();
 	// BW1W120 00570890 BW1M100 103287a0 GatheringBox::MusicMoodActive(void)
@@ -57,7 +54,7 @@ public:
 	// BW1W120 00570930 BW1M100 10328580 GatheringBox::UpdatePlayList(void)
 	void UpdatePlayList();
 	// BW1W120 00570ae0 unsigned short const * GatheringBox::FormatTime(int)
-	const char16_t* FormatTime(int milliseconds);
+	const wchar_t* FormatTime(int milliseconds);
 	// BW1W120 00570b40 BW1M100 10327fe0 GatheringBox::UpdateMP3(void)
 	void UpdateMP3();
 	// BW1W120 00571f50 BW1M100 10326d90 GatheringBox::ClearSelection(bool)
@@ -74,19 +71,18 @@ public:
 	void MP3Callback(int event, SetupBox* box, SetupControl* control, int x, int y);
 	// BW1W120 00573840 BW1M100 10324ec0 GatheringBox::OpenDialog(bool)
 	void OpenDialog(bool close_after_send);
-
 	// BW1W120 00573db0 BW1M100 10324720 GatheringBox::RemoveFromList(GBCategory*, LH_USER_ID)
 	static void RemoveFromList(GBCategory* group, LH_USER_ID user_id);
 	// BW1W120 00573e30 BW1M100 10324530 GatheringBox::AddToOtherList(wchar_t*, LH_USER_ID, LHTransportInfo*)
-	static void AddToOtherList(char16_t* name, LH_USER_ID user_id, LHTransportInfo* transport);
+	static void AddToOtherList(wchar_t* name, LH_USER_ID user_id, LHTransportInfo* transport);
 	// BW1W120 00574190 BW1M100 10324450 GatheringBox::IsUserInList(GBCategory*, LH_USER_ID)
 	static bool IsUserInList(GBCategory* group, LH_USER_ID user_id);
 	// BW1W120 00574210 BW1M100 103241d0 GatheringBox::UpdatePlayerOnlineInAllLists(LHTransportInfo*, wchar_t*, LH_USER_ID)
-	static void UpdatePlayerOnlineInAllLists(LHTransportInfo* transport, char16_t* name, LH_USER_ID user_id);
+	static void UpdatePlayerOnlineInAllLists(LHTransportInfo* transport, wchar_t* name, LH_USER_ID user_id);
 	// BW1W120 005743c0 BW1M100 103240f0 GatheringBox::FindUserInList(GBCategory*, LH_USER_ID)
 	static GBPlayer* FindUserInList(GBCategory* group, LH_USER_ID user_id);
 	// BW1W120 00574400 BW1M100 103239f0 GatheringBox::RebuildList(LHLinkedList<LHPlayer*>*, GBCategory**, const wchar_t*)
-	static void RebuildList(LHLinkedList<LHPlayer*>* players, GBCategory** group, const char16_t* name);
+	static void RebuildList(LHLinkedList<LHPlayer*>* players, GBCategory** group, const wchar_t* name);
 	// BW1W120 00574ab0 BW1M100 10323920 GatheringBox::RebuildPlayerList(void)
 	static void RebuildPlayerList();
 	// BW1W120 00574b00 BW1M100 10323760 GatheringBox::WriteFriendListToRegistry(void)

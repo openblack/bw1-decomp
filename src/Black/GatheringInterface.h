@@ -4,7 +4,6 @@
 #include <assert.h>
 #include <stddef.h>
 #include <stdint.h>
-#include <uchar.h>
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 #include <Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.h>
@@ -32,16 +31,16 @@ struct GBPlayer
 	long            TeamMemberNumber;
 	bool            Online; /* 0x8c */
 	bool            Selected;
-	char16_t        Name[47]; /* 0x8e; original bounded copies need not terminate */
+	wchar_t         Name[47]; /* 0x8e; original bounded copies need not terminate */
 	uint32_t        Color;    /* 0xec */
 
 	// BW1W120 00573f70 BW1M100 103234f0 GBPlayer::Init(long, long, const wchar_t*, LH_USER_ID, long, LHTransportInfo*)
-	void Init(long team_member_number, long team_number, const char16_t* name, LH_USER_ID user_id, long player_id,
+	void Init(long team_member_number, long team_number, const wchar_t* name, LH_USER_ID user_id, long player_id,
 	          LHTransportInfo* transport);
 	// BW1W120 005749d0 BW1M100 10321670 GBPlayer::operator=(const GBPlayer&)
 	GBPlayer& operator=(const GBPlayer& player);
 	// BW1W120 inlined GBPlayer::GBPlayer(long, long, const wchar_t*, LH_USER_ID, long, LHTransportInfo*)
-	GBPlayer(long team_member_number, long team_number, const char16_t* name, LH_USER_ID user_id, long player_id,
+	GBPlayer(long team_member_number, long team_number, const wchar_t* name, LH_USER_ID user_id, long player_id,
 	         LHTransportInfo* transport)
 	{
 		UserId.field_0x0 = 0;
@@ -59,14 +58,14 @@ struct GBCategory
 {
 	bool                    ReceiveMessages; /* 0x0 */
 	bool                    Expanded;
-	char16_t                Name[65]; /* 0x2; TODO: distinguish 64 characters plus alignment from 65 characters. */
+	wchar_t                 Name[65]; /* 0x2; TODO: distinguish 64 characters plus alignment from 65 characters. */
 	uint32_t                Color;    /* 0x84 */
 	LHLinkedList<GBPlayer*> Players;  /* 0x88 */
 
 	// BW1W120 005740c0 BW1M100 10321b50 GBCategory::Init(GBCategory*, const wchar_t*)
-	void Init(GBCategory* group, const char16_t* name);
+	void Init(GBCategory* group, const wchar_t* name);
 	// BW1W120 inlined GBCategory::GBCategory(GBCategory*, const wchar_t*)
-	GBCategory(GBCategory* group, const char16_t* name) { Init(group, name); }
+	GBCategory(GBCategory* group, const wchar_t* name) { Init(group, name); }
 };
 
 // Recovered message prefix only; do not allocate using this sizeof until its
@@ -74,7 +73,7 @@ struct GBCategory
 struct GatheringMessage
 {
 	int      Type;
-	char16_t Text[0x800];
+	wchar_t  Text[0x800];
 	int      field_0x1004;
 	uint32_t Time;
 };
@@ -101,7 +100,8 @@ struct GatheringBoxState
 	int(__cdecl* GetTrackPosition)();
 	int(__cdecl* GetTrackLength)();
 	void(__cdecl* SetTrackPosition)(int); /* 0x5c */
-	void(__cdecl* field_0x60)();          // TODO: Recover the DLL's original command names.
+	// TODO: Recover ordinal 13..19 names from the missing BWAudioDLL plugins.
+	void(__cdecl* field_0x60)();
 	void(__cdecl* field_0x64)();
 	void(__cdecl* field_0x68)();
 	void(__cdecl* field_0x6c)();
