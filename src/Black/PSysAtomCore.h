@@ -35,9 +35,9 @@ struct UR_GesturingRecognised
 	// Non-virtual methods
 
 	// BW1W120 006884f0 BW1M100 1007c960 UR_GesturingRecognised::ModifyAtomCollection(AtomCollection *) const
-	uint32_t ModifyAtomCollection(AtomCollection* collection);
+	uint32_t ModifyAtomCollection(AtomCollection* collection) const;
 	// BW1W120 00688910 BW1M100 10406f90 UR_GesturingRecognised::ModifySubCollection(AtomCollection *, UR_GesturingRecognised::AtomData *) const
-	void ModifySubCollection(AtomCollection* collection, Q222UR_GesturingRecognised8AtomData* data);
+	void ModifySubCollection(AtomCollection* collection, Q222UR_GesturingRecognised8AtomData* data) const;
 };
 
 class AtomCore : public PSysBase

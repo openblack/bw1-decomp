@@ -37,7 +37,7 @@ struct FragPrimitive
 	// Constructors
 
 	// BW1W120 0076d7a0 BW1M100 1015de30 FragPrimitive::FragPrimitive(GameOSFile &, LH3DMesh *)
-	FragPrimitive(GameOSFile* file, LH3DMesh* mesh);
+	FragPrimitive(GameOSFile& file, LH3DMesh* mesh);
 
 	// Non-virtual methods
 

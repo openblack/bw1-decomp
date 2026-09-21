@@ -65,13 +65,13 @@ public:
 	// BW1W120 004256c0 BW1M100 100aa250 ArenaSpellIcon::Draw(void)
 	virtual void Draw();
 	// BW1W120 00425420 BW1M100 100aa4a0 ArenaSpellIcon::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 004256d0 BW1M100 100aa200 ArenaSpellIcon::IsEffectReceiver(EffectValues *)
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 00425310 BW1M100 100a9c00 ArenaSpellIcon::CreatureMustAvoid(Creature *)
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00425300 BW1M100 100a9bb0 ArenaSpellIcon::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 #endif /* BW1_DECOMP_ARENA_INCLUDED_H */

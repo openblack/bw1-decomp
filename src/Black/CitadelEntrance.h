@@ -39,7 +39,7 @@ public:
 	// BW1W120 00468ef0 BW1M100 101bbce0 CitadelEntrance::InterfaceTap(GInterfaceStatus *)
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 00468e50 BW1M100 101bb520 CitadelEntrance::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 #endif /* BW1_DECOMP_CITADEL_ENTRANCE_INCLUDED_H */

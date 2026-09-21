@@ -43,7 +43,7 @@ public:
 	// BW1W120 004e4a20 BW1M100 105e43b0 MagicFood::IsAFoodPileOutsideStoragePit(Creature *)
 	virtual uint32_t IsAFoodPileOutsideStoragePit(Creature* param_1);
 	// BW1W120 005faab0 BW1M100 103ac020 MagicFood::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 };
 
 #endif /* BW1_DECOMP_MAGIC_FOOD_INCLUDED_H */

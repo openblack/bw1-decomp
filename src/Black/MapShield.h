@@ -47,7 +47,7 @@ public:
 	// BW1W120 0072c010 BW1M100 10534010 MapShield::HandShouldFeelWithMeshIntersect(void)
 	virtual uint32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 0072c1b0 BW1M100 10531700 MapShield::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 0072c1c0 BW1M100 105316c0 MapShield::GetTopPos(void)
 	virtual float GetTopPos();
 	// BW1W120 0072c000 BW1M100 10533fc0 MapShield::ValidForPlaceInHand(GInterfaceStatus *)
@@ -59,7 +59,7 @@ public:
 	// BW1W120 0072c170 BW1M100 10531740 MapShield::CreatureMustAvoid(Creature *)
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0072c020 BW1M100 10534060 MapShield::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Constructors
 

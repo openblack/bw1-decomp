@@ -49,7 +49,7 @@ public:
 	// BW1W120 0072cea0 BW1M100 1052fd70 PhysicalShield::Draw(void)
 	virtual void Draw();
 	// BW1W120 0072ccb0 BW1M100 10530110 PhysicalShield::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0072ce50 BW1M100 1052fe80 PhysicalShield::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 0072d170 BW1M100 1052f8a0 PhysicalShield::SetDying(void)
@@ -71,7 +71,7 @@ public:
 	// BW1W120 0072ced0 BW1M100 1052f980 PhysicalShield::DrawShield(void)
 	virtual void DrawShield();
 	// BW1W120 0072b8e0 BW1M100 10532c50 PhysicalShield::IsPointDefinietlyWithinShieldVolume(MapCoords const &)
-	virtual bool IsPointDefinietlyWithinShieldVolume(const MapCoords* param_1);
+	virtual bool IsPointDefinietlyWithinShieldVolume(const MapCoords& param_1);
 };
 
 #endif /* BW1_DECOMP_PHYSICAL_SHIELD_INCLUDED_H */

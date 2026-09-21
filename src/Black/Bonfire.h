@@ -43,7 +43,7 @@ public:
 	// BW1W120 00439a90 BW1M100 1001a450 Bonfire::Draw(void)
 	virtual void Draw();
 	// BW1W120 00439840 BW1M100 100b4c70 Bonfire::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00439790 BW1M100 100b3cf0 Bonfire::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00439780 BW1M100 100b3ca0 Bonfire::InterfaceValidToTap(GInterfaceStatus *)
@@ -55,7 +55,7 @@ public:
 	// BW1W120 004397a0 BW1M100 100b3d40 Bonfire::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 004398a0 BW1M100 100b49b0 Bonfire::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 004397d0 BW1M100 100b3e20 Bonfire::GetInHandImmersionTexture(void)
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 };

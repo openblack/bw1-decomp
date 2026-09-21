@@ -423,7 +423,7 @@ bool32_t Villager::ArrivesAtWorkshopForDropOff()
 	// states). DISPATCHER: MobileWallHug::AreWeThere is really `bool AreWeThere(const
 	// MapCoords&, float)` (symbol ABUMapCoords, Rule 1), which lets the inline temp
 	// `AreWeThere(workshop->GetArrivePos(), 0.0f)` share ONE retbuf with the else-branch
-	// GetArrivePos (sub esp,0xc). But VillagerStates.cpp calls `AreWeThere(&storePos,..)`
+	// GetArrivePos (sub esp,0xc). But VillagerStates.cpp calls `AreWeThere(storePos,..)`
 	// with a pointer, so the header can't be flipped without also fixing that unit -- a
 	// coordinated cross-TU change. With the pointer header, the named-local `&arrivePos`
 	// forces a 2nd buffer (sub esp,0x18), costing the frame-offset match. Residual after
@@ -435,7 +435,7 @@ bool32_t Villager::ArrivesAtWorkshopForDropOff()
 	if (workshop != NULL)
 	{
 		MapCoords arrivePos = workshop->GetArrivePos();
-		if (AreWeThere(&arrivePos, 0.0f))
+		if (AreWeThere(arrivePos, 0.0f))
 		{
 			int amount = ResourceHeld[RESOURCE_TYPE_WOOD];
 			DropWood(amount);

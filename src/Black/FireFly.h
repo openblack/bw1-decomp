@@ -66,7 +66,7 @@ public:
 	// BW1W120 0052aa90 BW1M100 100d9130 FireFly::Draw(void)
 	virtual void Draw();
 	// BW1W120 0052a510 BW1M100 100d9950 FireFly::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0052a1a0 BW1M100 100da240 FireFly::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 0052a1b0 BW1M100 100da1f0 FireFly::ReactToPhysicsImpact(PhysicsObject *, bool)
@@ -74,17 +74,17 @@ public:
 	// BW1W120 0052a1c0 BW1M100 100da1b0 FireFly::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0052bf10 BW1M100 100d6710 FireFly::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Static methods
 
 	// BW1W120 0052a200 BW1M100 100d9f20 FireFly::Create(MapCoords const &)
-	static FireFly* Create(MapCoords* coord);
+	static FireFly* Create(const MapCoords& coord);
 
 	// Constructors
 
 	// BW1W120 0052a280 BW1M100 100d9e20 FireFly::FireFly(const MapCoords&)
-	FireFly(MapCoords* coords);
+	FireFly(const MapCoords& coords);
 	// BW1W120 0052a340 BW1M100 100d9e04 FireFly::FireFly(void)
 	FireFly();
 };

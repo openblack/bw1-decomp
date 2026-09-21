@@ -70,7 +70,7 @@ public:
 	// BW1W120 00727f60 BW1M100 1052cc90 SpellSeed::HandShouldFeelWithMeshIntersect(void)
 	virtual uint32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 00729850 BW1M100 10529210 SpellSeed::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00518710 BW1M100 100c8c10 SpellSeed::Draw(void)
 	virtual void Draw();
 	// BW1W120 005190a0 BW1M100 100c7ef0 SpellSeed::DrawOutOfMap(bool)
@@ -78,7 +78,7 @@ public:
 	// BW1W120 00728600 BW1M100 1052bac0 SpellSeed::IsG3DObjectDrawnInHand(void)
 	virtual bool IsG3DObjectDrawnInHand();
 	// BW1W120 00728360 BW1M100 1052bef0 SpellSeed::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00728580 BW1M100 1052bba0 SpellSeed::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00728810 BW1M100 1052b1f0 SpellSeed::InterfaceSetInMagicHand(GInterfaceStatus *)
@@ -115,7 +115,7 @@ public:
 	// BW1W120 00729930 BW1M100 10528d60 SpellSeed::ProcessInHand(void)
 	virtual bool ProcessInHand();
 	// BW1W120 00727f90 BW1M100 1052cd60 SpellSeed::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 0072a2d0 BW1M100 10527cc0 SpellSeed::GetInHandImmersionTexture(void)
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 };

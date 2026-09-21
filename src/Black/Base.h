@@ -64,7 +64,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00436b20 BW1M100 10001480 Base::SetInfo(BaseInfo*) const
-	void SetInfo(BaseInfo* info);
+	void SetInfo(BaseInfo* info) const;
 };
 
 #endif /* BW1_DECOMP_BASE_INCLUDED_H */

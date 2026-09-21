@@ -64,9 +64,9 @@ public:
 	// BW1W120 00469490 BW1M100 101ba510 CitadelPart::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00464a90 BW1M100 101c2400 CitadelPart::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00469760 BW1M100 101c2b70 CitadelPart::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 004694b0 BW1M100 101c3720 CitadelPart::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 004695d0 BW1M100 inlined CitadelPart::CanBeDestroyedBySpell_1(Spell *)
@@ -74,7 +74,7 @@ public:
 	// BW1W120 004697f0 BW1M100 101c2970 CitadelPart::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 004694c0 BW1M100 101c3760 CitadelPart::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 004694f0 BW1M100 101c3830 CitadelPart::ShouldFootpathsGoRound(void)
 	virtual bool32_t ShouldFootpathsGoRound();
 	// BW1W120 00464ab0 BW1M100 101c08e0 CitadelPart::IsRepaired(void)

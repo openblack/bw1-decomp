@@ -22,7 +22,7 @@ public:
 	// BW1W120 00416d30 BW1M100 1016cc70 GAnimalInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00416d20 BW1M100 1016cc30 GAnimalInfo::GetMesh( const(void))
-	virtual uint32_t GetMesh();
+	virtual MESH_LIST GetMesh() const;
 };
 
 #endif /* BW1_DECOMP_ANIMAL_INFO_INCLUDED_H */

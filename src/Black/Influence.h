@@ -48,7 +48,7 @@ public:
 	// BW1W120 0055ec50 BW1M100 100fbe30 InfluenceRing::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 0055ebf0 BW1M100 100fbcc0 InfluenceRing::SetPos(MapCoords const &)
-	virtual void SetPos(const MapCoords* param_1);
+	virtual void SetPos(const MapCoords& param_1);
 	// BW1W120 0055ec30 BW1M100 100fbda0 InfluenceRing::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 0055ec20 BW1M100 100fbd60 InfluenceRing::IsInfluenceRing(void)
@@ -59,7 +59,7 @@ public:
 	// Constructors
 
 	// BW1W120 005cd760 BW1M100 100fd0a4 InfluenceRing::InfluenceRing(MapCoords const &, GPlayer *, float, int)
-	InfluenceRing(const MapCoords* coords, GPlayer* player, float param_4, int param_5);
+	InfluenceRing(const MapCoords& coords, GPlayer* player, float param_4, int param_5);
 	// BW1W120 005cd800 BW1M100 100fce54 InfluenceRing::InfluenceRing(GameThingWithPos *, GPlayer *, float, int)
 	InfluenceRing(GameThingWithPos* thing, GPlayer* player, float param_4, int param_5);
 };

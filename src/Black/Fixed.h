@@ -113,11 +113,11 @@ public:
 	// BW1W120 0052f450 BW1M100 100de0a0 SingleMapFixed::RemoveMapObjectFromCell(MapCell *)
 	virtual void RemoveMapObjectFromCell(MapCell* param_1);
 	// BW1W120 0052eb10 BW1M100 100e32e0 SingleMapFixed::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00518100 BW1M100 10038230 SingleMapFixed::Draw(void)
 	virtual void Draw();
 	// BW1W120 0052e880 BW1M100 100e0470 SingleMapFixed::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0052eaf0 BW1M100 100e3210 SingleMapFixed::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 0052eb00 BW1M100 100e3270 SingleMapFixed::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)

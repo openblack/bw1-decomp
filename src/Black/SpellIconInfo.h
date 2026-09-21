@@ -26,7 +26,7 @@ public:
 	// BW1W120 00725f40 BW1M100 10525c70 GSpellIconInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00725f30 BW1M100 10524c10 GSpellIconInfo::GetMesh( const(void))
-	virtual uint32_t GetMesh();
+	virtual MESH_LIST GetMesh() const;
 };
 
 #endif /* BW1_DECOMP_SPELL_ICON_INFO_INCLUDED_H */

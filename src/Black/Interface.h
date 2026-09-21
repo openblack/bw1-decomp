@@ -118,7 +118,7 @@ public:
 	// BW1W120 005ce2f0 BW1M100 10357e00 GInterface::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 005d0590 BW1M100 103581e0 GInterface::SaveExtraData(GameOSFile &)
-	virtual void SaveExtraData(GameOSFile* param_1);
+	virtual void SaveExtraData(GameOSFile& param_1);
 	// BW1W120 005d0510 BW1M100 10358340 GInterface::ResolveLoad(void)
 	virtual void ResolveLoad();
 	// BW1W120 005ce2e0 BW1M100 10074680 GInterface::IsActive( const(void))

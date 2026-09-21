@@ -156,15 +156,15 @@ public:
 	// BW1W120 00720710 BW1M100 10518300 Spell::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00720f40 BW1M100 105172a0 Spell::SpellEvent(SpellEventInfo const &)
-	virtual void SpellEvent(const SpellEventInfo* param_1);
+	virtual void SpellEvent(const SpellEventInfo& param_1);
 	// BW1W120 0055ce40 BW1M100 10280a00 Spell::CloseDown(void)
 	virtual void CloseDown();
 	// BW1W120 0071fe50 BW1M100 10519200 Spell::InitWithPos(GameThing *, MapCoords const &, SpellCastData *, PSysProcessInfo const &)
-	virtual int InitWithPos(GameThing* param_1, const MapCoords* param_2, SpellCastData* param_3,
-	                        const PSysProcessInfo* param_4);
+	virtual int InitWithPos(GameThing* param_1, const MapCoords& param_2, SpellCastData* param_3,
+	                        const PSysProcessInfo& param_4);
 	// BW1W120 007200e0 BW1M100 10519120 Spell::InitWithObject(GameThing *, Object *, SpellCastData *, PSysProcessInfo const &)
 	virtual int InitWithObject(GameThing* param_1, Object* param_2, SpellCastData* param_3,
-	                           const PSysProcessInfo* param_4);
+	                           const PSysProcessInfo& param_4);
 	// BW1W120 00720810 BW1M100 10518100 Spell::CalculateCostToMaintain(void)
 	virtual float CalculateCostToMaintain();
 	// BW1W120 0055ce60 BW1M100 103b1e20 Spell::AdjustSpellSeedPos(MapCoords *)

@@ -56,9 +56,9 @@ struct LH3DRender
 	// BW1W120 00412940 BW1M100 10046ae0 LH3DRender::SetRenderState(IndirectX::_D3DRENDERSTATETYPE, unsigned long)
 	static int SetRenderState(D3DRENDERSTATETYPE type, uint32_t value);
 	// BW1W120 inlined BW1M100 inlined LH3DRender::GetRenderState(D3DRENDERSTATETYPE, unsigned long&)
-	static int GetRenderState(D3DRENDERSTATETYPE type, uint32_t* value);
-	// BW1W120 0082b220 BW1M100 1003c460 LH3DRender::SetD3DMatrix(IndirectX::_D3DMATRIX&, LHMatrix&)
-	static void SetD3DMatrix(D3DMATRIX* param_1, LHMatrix* param_2);
+	static int GetRenderState(D3DRENDERSTATETYPE type, uint32_t& value);
+	// BW1W120 0082b220 BW1M100 1003c460 LH3DRender::SetD3DMatrix(D3DMATRIX &, LHMatrix &)
+	static void SetD3DMatrix(D3DMATRIX& param_1, LHMatrix& param_2);
 	// BW1W120 0082b2d0 BW1M100 inlined LH3DRender::SetProjMatrix(D3DMATRIX *, D3DMATRIX *, float, float, float)
 	static void SetProjMatrix(D3DMATRIX* param_1, D3DMATRIX* projection, float near_plane, float far_plane, float fov);
 	// BW1W120 0082b3c0 BW1M100 100a7b00 LH3DRender::Open(void)

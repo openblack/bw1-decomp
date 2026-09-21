@@ -68,11 +68,11 @@ struct Zoomer3d
 	// BW1W120 inlined BW1M100 inlined Zoomer3d::Update(float)
 	void Update(float dt);
 	// BW1W120 inlined BW1M100 inlined Zoomer3d::SetDestinationWithSpeedAndTime(LHPoint const &, float, float)
-	void SetDestinationWithSpeedAndTime(const LHPoint* destination, float speed, float time);
+	void SetDestinationWithSpeedAndTime(const LHPoint& destination, float speed, float time);
 	// BW1W120 0044e760 BW1M100 inlined Zoomer3d::SetDestinationWithTime(LHPoint const &, float)
-	void SetDestinationWithTime(const LHPoint* destination, float time);
+	void SetDestinationWithTime(const LHPoint& destination, float time);
 	// BW1W120 inlined BW1M100 10198470 Zoomer3d::SetPosition(const LHPoint&)
-	void SetPosition(const LHPoint* destination);
+	void SetPosition(const LHPoint& destination);
 };
 
 #endif /* BW1_DECOMP_ZOOMER_INCLUDED_H */

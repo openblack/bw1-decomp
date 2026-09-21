@@ -101,7 +101,7 @@ public:
 	// BW1W120 0055d8d0 BW1M100 10159590 Tree::GetReactionPower(void)
 	virtual float GetReactionPower();
 	// BW1W120 0074c7f0 BW1M100 10155720 Tree::BlocksTownClearArea( const(void))
-	virtual bool32_t BlocksTownClearArea();
+	virtual bool32_t BlocksTownClearArea() const;
 	// BW1W120 0074b600 BW1M100 10157bd0 Tree::GetHoldType(void)
 	virtual HOLD_TYPE GetHoldType();
 	// BW1W120 0074b610 BW1M100 10157b60 Tree::GetHoldRadius(void)
@@ -115,7 +115,7 @@ public:
 	// BW1W120 0074a290 BW1M100 10158860 Tree::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 0055d8a0 BW1M100 101594d0 Tree::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 0074ab00 BW1M100 10044ce0 Tree::Draw(void)
 	virtual void Draw();
 	// BW1W120 0074b270 BW1M100 10157fc0 Tree::DrawOutOfMap(bool)
@@ -130,7 +130,7 @@ public:
 	// Rule 2 (hidden retbuf): overrides Object::GetWorkingPos, returns MapCoords by value.
 	virtual MapCoords GetWorkingPos(Object* param_1);
 	// BW1W120 00749f70 BW1M100 10158e00 Tree::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0074b7b0 BW1M100 10157590 Tree::GetWoodValue(void)
 	virtual float GetWoodValue();
 	// BW1W120 0074c390 BW1M100 10155bd0 Tree::ApplyWaterSpell(SpellWater *)
@@ -176,7 +176,7 @@ public:
 	// BW1W120 0055d900 BW1M100 10159670 Tree::GetCarriedTreeType(void)
 	virtual uint32_t GetCarriedTreeType();
 	// BW1W120 0074a9d0 BW1M100 10158260 Tree::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 0074c5f0 BW1M100 101559c0 Tree::CreateCollideData(void)
 	virtual void CreateCollideData();
 	// BW1W120 0074b810 BW1M100 10157550 Tree::GetWoodValueMultiplier(void)
@@ -189,13 +189,13 @@ public:
 	// Static methods
 
 	// BW1W120 00749ee0 BW1M100 10158ff0 Tree::Create(MapCoords const &, GTreeInfo const *, Forest *, float, float, float)
-	static Tree* Create(MapCoords* coords, const GTreeInfo* info, Forest* forest, float param_4, float param_5,
+	static Tree* Create(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float param_4, float param_5,
 	                    float param_6);
 
 	// Constructors
 
 	// BW1W120 00749e00 BW1M100 101591d0 Tree::Tree(MapCoords const &, GTreeInfo const *, Forest *, float, float, float)
-	Tree(const MapCoords* coords, const GTreeInfo* info, Forest* forest, float param_4, float param_5, float param_6);
+	Tree(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float param_4, float param_5, float param_6);
 };
 
 #endif /* BW1_DECOMP_TREE_INCLUDED_H */

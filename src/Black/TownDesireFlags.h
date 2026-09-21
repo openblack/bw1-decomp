@@ -54,11 +54,11 @@ public:
 	// BW1W120 00746a20 BW1M100 100550f0 TownDesireFlags::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 0055da80 BW1M100 1055bf60 TownDesireFlags::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00746a30 BW1M100 100364a0 TownDesireFlags::Draw(void)
 	virtual void Draw();
 	// BW1W120 00746dc0 BW1M100 1055d830 TownDesireFlags::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055dab0 BW1M100 1055c030 TownDesireFlags::IsEffectReceiver(EffectValues *)
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 00746a10 BW1M100 1055dae0 TownDesireFlags::InteractsWithPhysicsObjects(void)
@@ -66,7 +66,7 @@ public:
 	// BW1W120 00746de0 BW1M100 1055d7e0 TownDesireFlags::CreatureMustAvoid(Creature *)
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0055da90 BW1M100 1055bfa0 TownDesireFlags::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_FLAGS_INCLUDED_H */

@@ -35,9 +35,9 @@ struct LH3DMapCoords
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M100 1006a8c0 LH3DMapCoords::AddToMapX(void) const
-	void AddToMapX(uint16_t x);
+	void AddToMapX(uint16_t x) const;
 	// BW1W120 inlined BW1M100 1006a880 LH3DMapCoords::AddToMapZ(void) const
-	void AddToMapZ(uint16_t z);
+	void AddToMapZ(uint16_t z) const;
 	// BW1W120 inlined BW1M100 inlined LH3DMapCoords::CentreOnMap(void)
 	void CentreOnMap();
 	// BW1W120 inlined BW1M100 inlined LH3DMapCoords::SetFractionX(short)
@@ -53,9 +53,9 @@ struct LH3DMapCoords
 	// BW1W120 inlined BW1M100 10045a60 LH3DMapCoords::WholeZ(void) const
 	int32_t WholeZ() const { return z; }
 	// BW1W120 inlined BW1M100 inlined LH3DMapCoords::SetMapX(short) const
-	void SetMapX(uint16_t x);
+	void SetMapX(uint16_t x) const;
 	// BW1W120 inlined BW1M100 inlined LH3DMapCoords::SetMapZ(short) const
-	void SetMapZ(uint16_t z);
+	void SetMapZ(uint16_t z) const;
 	// BW1W120 inlined BW1M100 1004ae60 LH3DMapCoords::SetWholeX(int)
 	void SetWholeX(int x);
 	// BW1W120 inlined BW1M100 1004aea0 LH3DMapCoords::SetWholeZ(int)

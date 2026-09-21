@@ -77,9 +77,9 @@ struct SetupThing
 	static float DrawText(int x, int y, int width, TEXTJUSTIFY justify, const char16_t* text, int size,
 	                      const LH3DColor* p_color, int param_8);
 	// BW1W120 00411b40 BW1M100 103e4a50 SetupThing::adjust(int &, int &)
-	static float adjust(int* x, int* y);
+	static float adjust(int& x, int& y);
 	// BW1W120 00411c30 BW1M100 104f62a0 SetupThing::unadjust(int &, int &)
-	static float unadjust(int* x, int* y);
+	static float unadjust(int& x, int& y);
 	// BW1W120 00411e70 BW1M100 104f2b70 SetupThing::adjusty(int)
 	static int adjusty(int y);
 	// BW1W120 00412030 BW1M100 10174f00 SetupThing::unadjustsize(float)

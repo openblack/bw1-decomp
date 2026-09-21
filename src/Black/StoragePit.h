@@ -48,7 +48,7 @@ public:
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00732f60 BW1M100 10003d60 StoragePit::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             MapCoords* param_5, int param_6);
+	                             const MapCoords* param_5, int param_6);
 	// BW1W120 007332a0 BW1M100 10152550 StoragePit::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 0055cd40 BW1M100 101515a0 StoragePit::GetDebugText(void)
@@ -86,7 +86,7 @@ public:
 	// BW1W120 00733a20 BW1M100 101515e0 StoragePit::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
 	// BW1W120 00732e80 BW1M100 10152d50 StoragePit::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0055ccd0 BW1M100 101513a0 StoragePit::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 0055cd20 BW1M100 10151510 StoragePit::IsResourceStore(RESOURCE_TYPE)

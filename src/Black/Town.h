@@ -254,7 +254,7 @@ public:
 	// BW1W120 0073a090 BW1M100 10556400 Town::AddVillagerToTown(Villager *)
 	bool AddVillagerToTown(Villager* villager);
 	// BW1W120 0073a140 BW1M100 10007ca0 Town::GetBestPlanned(float &, ABODE_TYPE)
-	PlannedMultiMapFixed* GetBestPlanned(float* param_1, ABODE_TYPE param_2);
+	PlannedMultiMapFixed* GetBestPlanned(float& param_1, ABODE_TYPE param_2);
 	// BW1W120 0073a1a0 BW1M100 100896c0 Town::GetDesireToBeBuilt(GMultiMapFixedInfo const *, unsigned long)
 	float GetDesireToBeBuilt(const GMultiMapFixedInfo* param_1, unsigned long param_2);
 	// BW1W120 0073a650 BW1M100 105561f0 Town::RequestBestPlanned(void)

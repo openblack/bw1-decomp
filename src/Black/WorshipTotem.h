@@ -73,11 +73,11 @@ public:
 	// BW1W120 007807c0 BW1M100 105b7650 WorshipTotem::GetSpecularColor(void)
 	virtual LH3DColor GetSpecularColor();
 	// BW1W120 00780a70 BW1M100 105b83a0 WorshipTotem::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00519360 BW1M100 100c7bd0 WorshipTotem::Draw(void)
 	virtual void Draw();
 	// BW1W120 00780ab0 BW1M100 105b81d0 WorshipTotem::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 007807d0 BW1M100 105b7690 WorshipTotem::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 00780790 BW1M100 105b7570 WorshipTotem::IsSpellSeedReturnPoint( const(void))

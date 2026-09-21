@@ -39,7 +39,7 @@ public:
 
 	// BW1W120 0050eb60 BW1M100 102ae450 DanceKeyFrame::DanceKeyFrame(long, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
 	DanceKeyFrame(int param_1, LHDynamicStack<uint32_t>* stack, DANCE_GROUP_ACTION_TYPE action_type,
-	              const DanceGroupActionArgument* arguments);
+	              const DanceGroupActionArgument& arguments);
 };
 
 #endif /* BW1_DECOMP_DANCE_KEY_INCLUDED_H */

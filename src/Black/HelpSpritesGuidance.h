@@ -23,7 +23,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 0071d300 BW1M100 1050d290 GHelpSpritesGuidance::GetRandomSample(void) const
-	uint32_t GetRandomSample();
+	uint32_t GetRandomSample() const;
 };
 
 #endif /* BW1_DECOMP_HELP_SPRITES_GUIDANCE_INCLUDED_H */

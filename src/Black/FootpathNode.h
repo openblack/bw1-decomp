@@ -45,7 +45,7 @@ public:
 	// BW1W120 inlined BW1M100 inlined GFootpathNode::GFootpathNode(void)
 	GFootpathNode();
 	// BW1W120 00534cf0 BW1M100 100eed50 GFootpathNode::GFootpathNode(MapCoords const &, int, int)
-	GFootpathNode(MapCoords* coords, int param_2, int param_3);
+	GFootpathNode(const MapCoords& coords, int param_2, int param_3);
 
 	// Non-virtual methods
 

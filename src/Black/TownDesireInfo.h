@@ -52,7 +52,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00746580 BW1M100 1005ebc0 GTownDesireInfo::GetDesireFunctions(void) const
-	GTownDesireFunction* GetDesireFunctions();
+	GTownDesireFunction* GetDesireFunctions() const;
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INFO_INCLUDED_H */

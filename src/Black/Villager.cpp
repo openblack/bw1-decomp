@@ -45,9 +45,7 @@ static const DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST] = {
 };
 // clang-format on
 
-// TODO: GVillagerInfo::GetMesh (0x74f880, returns StdDetail) cannot be defined yet — its
-// return type conflicts with the base GObjectInfo::GetMesh() const across the *Info
-// classes; unify those first (GAnimalInfo has the same conflict).
+// TODO: GVillagerInfo::GetMesh (0x74f880, returns StdDetail) not yet defined.
 
 // BW1W120 0074f890 BW1M100 10571e90 GVillagerInfo::GetBaseInfo(unsigned long &)
 GBaseInfo* GVillagerInfo::GetBaseInfo(uint32_t& count)
@@ -606,7 +604,7 @@ Citadel* Villager::GetCitadel()
 }
 
 // BW1W120 00751dd0
-VILLAGER_STATES Villager::GetFinalState()
+VILLAGER_STATES Villager::GetFinalState() const
 {
 	return VILLAGER_STATE_INVALID_STATE;
 }
@@ -1597,7 +1595,7 @@ bool32_t Villager::CanBecomeAPhysicsObject()
 
 // BW1W120 007564d0
 uint32_t Villager::AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-                               MapCoords* param_5, int param_6)
+                               const MapCoords* param_5, int param_6)
 {
 	return 0;
 }

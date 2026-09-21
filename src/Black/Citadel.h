@@ -79,8 +79,8 @@ public:
 	// Static methods
 
 	// BW1W120 00463240 BW1M100 101b9230 Citadel::CreateCitadel(MapCoords const &, GCitadelHeartInfo const *, unsigned char, float, float)
-	static Citadel* CreateCitadel(MapCoords* coords, GCitadelHeartInfo* info, uint8_t param_3, float param_4,
-	                              float param_5);
+	static Citadel* CreateCitadel(const MapCoords& coords, const GCitadelHeartInfo* info, uint8_t param_3,
+	                              float param_4, float param_5);
 
 	// Non-virtual methods
 

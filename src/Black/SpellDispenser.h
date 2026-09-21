@@ -45,7 +45,7 @@ public:
 	// BW1W120 00722940 BW1M100 1051b6d0 SpellDispenser::Draw(void)
 	virtual void Draw();
 	// BW1W120 007227d0 BW1M100 1051ba80 SpellDispenser::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 007226e0 BW1M100 1051a9f0 SpellDispenser::IsSpellSeedReturnPoint( const(void))
 	virtual bool32_t IsSpellSeedReturnPoint() const;
 

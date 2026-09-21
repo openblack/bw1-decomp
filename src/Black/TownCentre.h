@@ -77,7 +77,7 @@ public:
 	// BW1W120 007448e0 BW1M100 10559c20 TownCentre::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
 	// BW1W120 00743cf0 BW1M100 1055b3c0 TownCentre::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055db20 BW1M100 1055bd00 TownCentre::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 0055db10 BW1M100 1055bcb0 TownCentre::InterfaceValidToTap(GInterfaceStatus *)
@@ -87,7 +87,7 @@ public:
 	// BW1W120 00744380 BW1M100 1055a500 TownCentre::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00744140 BW1M100 1055a800 TownCentre::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 00744940 BW1M100 inlined TownCentre::GetDoorPos(MapCoords *)
 	virtual MapCoords* GetDoorPos(MapCoords* param_1);
 	// BW1W120 007443a0 BW1M100 1055a470 TownCentre::AddToPlayer(void)
@@ -107,16 +107,13 @@ public:
 
 	// Static methods
 
-	// BW1W120 00743c90 BW1M100 1055b520 TownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-	static TownCentre* Create(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
-	                          float food, int wood);
 	// BW1W120 007447f0 BW1M100 1006eae0 TownCentre::DrawAll(void)
 	static void DrawAll();
 
 	// Constructors
 
 	// BW1W120 00743a60 BW1M100 1055bb20 TownCentre::TownCentre(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-	TownCentre(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
+	TownCentre(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
 	           int wood);
 
 	// Static methods

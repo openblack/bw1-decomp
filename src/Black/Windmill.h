@@ -29,7 +29,7 @@ public:
 	// BW1W120 00516320 BW1M100 100cb390 Windmill::Draw(void)
 	virtual void Draw();
 	// BW1W120 00405950 BW1M100 102aa970 Windmill::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 
 	// Static methods
 

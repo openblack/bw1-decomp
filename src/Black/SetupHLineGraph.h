@@ -6,6 +6,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <Lionhead/LHLib/ver5.0/LHKey.h>            /* For enum LHKey, enum LHKeyMod */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>     /* For struct LHLinkedList */
 
 #include "SetupButton.h"  /* For struct SetupButton */
 #include "SetupControl.h" /* For struct SetupControlVftable */
@@ -36,7 +37,7 @@ struct HLineData
 class SetupHLineGraph : public SetupButton
 {
 public:
-	LHLinkedList__HLineData LineDataList; /* 0x244 */
+	LHLinkedList<HLineData> LineDataList; /* 0x244 */
 	float                   max_point;
 	float                   min_point; /* 0x250 */
 	bool                    percent_mode;
@@ -56,11 +57,11 @@ public:
 	// BW1W120 0040e650 BW1M100 10211b80 SetupHLineGraph::SetScale(float, float, bool)
 	virtual void SetScale(float max_point, float min_point, bool centered_at_zero);
 	// BW1W120 0040e730 BW1M100 1010ccb0 SetupHLineGraph::AddLine(HLineData &)
-	virtual void AddLine(const HLineData* line);
+	virtual void AddLine(const HLineData& line);
 	// BW1W120 0040e7f0 BW1M100 100c9eb0 SetupHLineGraph::SetLine(int, const HLineData &)
-	virtual void SetLine(int index, const HLineData* line);
+	virtual void SetLine(int index, const HLineData& line);
 	// BW1W120 0040e850 BW1M100 10372050 SetupHLineGraph::GetLine(int, HLineData &)
-	virtual void GetLine(int index, HLineData* result);
+	virtual void GetLine(int index, HLineData& result);
 
 	// Constructors
 

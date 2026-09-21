@@ -31,16 +31,16 @@ public:
 	// BW1W120 005c5270 BW1M100 10083340 HelpSpirit::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 005c4b90 BW1M100 1034c540 HelpSpirit::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 005c4af0 BW1M100 1034b5f0 HelpSpirit::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 005c4ae0 BW1M100 1034b5a0 HelpSpirit::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Constructors
 
 	// BW1W120 005c4aa0 BW1M100 1034c700 HelpSpirit::HelpSpirit(MapCoords const &, HELP_SPIRIT_TYPE)
-	HelpSpirit(const MapCoords* coords, HELP_SPIRIT_TYPE type);
+	HelpSpirit(const MapCoords& coords, HELP_SPIRIT_TYPE type);
 };
 
 #endif /* BW1_DECOMP_HELP_SPIRIT_INCLUDED_H */

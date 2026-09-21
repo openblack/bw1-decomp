@@ -96,11 +96,11 @@ public:
 	// BW1W120 005fd600 BW1M100 103b9350 LandscapeVortex::HandShouldFeelWithMeshIntersect(void)
 	virtual uint32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 005fee20 BW1M100 103b5d10 LandscapeVortex::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 005ffdc0 BW1M100 103b4900 LandscapeVortex::Draw(void)
 	virtual void Draw();
 	// BW1W120 005fee30 BW1M100 103b5770 LandscapeVortex::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 005ff300 BW1M100 103b5710 LandscapeVortex::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 005fffa0 BW1M100 103b4580 LandscapeVortex::IsEffectReceiver(EffectValues *)

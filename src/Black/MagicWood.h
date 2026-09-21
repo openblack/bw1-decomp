@@ -41,7 +41,7 @@ public:
 	// BW1W120 00600dc0 BW1M100 103b9f50 MagicWood::IsAWoodPileOutsideStoragePit(Creature *)
 	virtual uint32_t IsAWoodPileOutsideStoragePit(Creature* param_1);
 	// BW1W120 00600f10 BW1M100 103ba140 MagicWood::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 };
 
 #endif /* BW1_DECOMP_MAGIC_WOOD_INCLUDED_H */

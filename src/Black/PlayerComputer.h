@@ -52,7 +52,7 @@ public:
 	// BW1W120 0055e370 BW1M100 104abeb0 GComputerPlayer::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 00657cd0 BW1M100 104a6f30 GComputerPlayer::SaveExtraData(GameOSFile &)
-	virtual void SaveExtraData(GameOSFile* param_1);
+	virtual void SaveExtraData(GameOSFile& param_1);
 	// BW1W120 0055e390 BW1M100 104abf30 GComputerPlayer::SetSpeedInMetres(float, int)
 	virtual void SetSpeedInMetres(float param_1, int param_2);
 	// BW1W120 0055e3a0 BW1M100 104abf90 GComputerPlayer::GetText(void)
@@ -132,7 +132,7 @@ public:
 	// BW1W120 0055e290 BW1M100 1049d660 PlayerActionState::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 00651d20 BW1M100 10498c00 PlayerActionState::SaveExtraData(GameOSFile &)
-	virtual void SaveExtraData(GameOSFile* param_1);
+	virtual void SaveExtraData(GameOSFile& param_1);
 	// BW1W120 0055e280 BW1M100 1049d620 PlayerActionState::GetText(void)
 	virtual const char* GetText();
 };

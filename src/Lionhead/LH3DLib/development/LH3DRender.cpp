@@ -22,16 +22,16 @@ int __cdecl LH3DRender::SetRenderState(D3DRENDERSTATETYPE type, uint32_t value)
 	return result;
 }
 
-int __cdecl LH3DRender::GetRenderState(D3DRENDERSTATETYPE type, uint32_t* value)
+int __cdecl LH3DRender::GetRenderState(D3DRENDERSTATETYPE type, uint32_t& value)
 {
 	HRESULT result = S_OK;
 
 	if (g_render_states[type] == 0xffffffff)
 	{
-		result = Direct3DDevice7->GetRenderState(type, (LPDWORD)value);
+		result = Direct3DDevice7->GetRenderState(type, (LPDWORD)&value);
 		if (result == S_OK)
 		{
-			g_render_states[type] = *value;
+			g_render_states[type] = value;
 		}
 		else
 		{
@@ -40,7 +40,7 @@ int __cdecl LH3DRender::GetRenderState(D3DRENDERSTATETYPE type, uint32_t* value)
 	}
 	else
 	{
-		*value = g_render_states[type];
+		value = g_render_states[type];
 	}
 	return result;
 }

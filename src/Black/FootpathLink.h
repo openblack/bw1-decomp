@@ -50,10 +50,10 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00536110 BW1M100 100ec590 GFootpathLink::GetNearestPathTo(MapCoords const &, MapCoords const &, float, int &, GFootpathNode **)
-	GFootpath* GetNearestPathTo(const MapCoords* param_1, const MapCoords* param_2, float param_3, int* param_4,
+	GFootpath* GetNearestPathTo(const MapCoords& param_1, const MapCoords& param_2, float param_3, int& param_4,
 	                            GFootpathNode** param_5);
 	// BW1W120 005361f0 BW1M100 100ec3e0 GFootpathLink::GetNearestPathToQuick(MapCoords const &, MapCoords const &, float, int &, GFootpathNode **)
-	GFootpath* GetNearestPathToQuick(const MapCoords* param_1, const MapCoords* param_2, float param_3, int* param_4,
+	GFootpath* GetNearestPathToQuick(const MapCoords& param_1, const MapCoords& param_2, float param_3, int& param_4,
 	                                 GFootpathNode** param_5);
 	// BW1W120 005362e0 BW1M100 100ebe90 GFootpathLink::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char, GameThingWithPos *)
 	uint32_t UseFootpathIfNecessary(Living* living, const MapCoords& coord, uint8_t state,

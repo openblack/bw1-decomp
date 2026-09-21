@@ -45,13 +45,13 @@ public:
 	// BW1W120 00734a70 BW1M100 1002d8c0 GStreetLantern::Draw(void)
 	virtual void Draw();
 	// BW1W120 00734810 BW1M100 105350a0 GStreetLantern::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 007349d0 BW1M100 10535050 GStreetLantern::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00734d50 BW1M100 10534800 GStreetLantern::CreatureMustAvoid(Creature *)
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00734b10 BW1M100 10534be0 GStreetLantern::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Static methods
 

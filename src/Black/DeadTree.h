@@ -77,7 +77,7 @@ public:
 	// BW1W120 00511590 BW1M100 100c1c50 DeadTree::GetWeight(void)
 	virtual float GetWeight();
 	// BW1W120 00510a90 BW1M100 100c3b20 DeadTree::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00511ad0 BW1M100 100c1020 DeadTree::GetWoodValue(void)
 	virtual float GetWoodValue();
 	// BW1W120 005110c0 BW1M100 100c28d0 DeadTree::GetResourceType(void)
@@ -120,7 +120,7 @@ public:
 	// BW1W120 00511a20 BW1M100 100c10e0 DeadTree::GetCarriedTreeType(void)
 	virtual uint32_t GetCarriedTreeType();
 	// BW1W120 00511430 BW1M100 100c1cd0 DeadTree::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 00510970 BW1M100 100c0e20 DeadTree::GetInHandImmersionTexture(void)
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 };

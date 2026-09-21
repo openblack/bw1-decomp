@@ -7,6 +7,7 @@
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <Lionhead/LH3DLib/development/Zoomer.h>    /* For struct Zoomer */
 #include <Lionhead/LHLib/ver5.0/LHKey.h>            /* For enum LHKey, enum LHKeyMod */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>     /* For struct LHLinkedList */
 
 #include "SetupButton.h"  /* For struct SetupButton */
 #include "SetupControl.h" /* For struct SetupControlVftable */
@@ -35,7 +36,7 @@ class SetupVBarGraph : public SetupButton
 {
 public:
 	Zoomer                 zoomer;      /* 0x244 */
-	LHLinkedList__VBarData BarDataList; /* 0x274 */
+	LHLinkedList<VBarData> BarDataList; /* 0x274 */
 	float                  max_point;
 	float                  min_point; /* 0x280 */
 
@@ -60,11 +61,11 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 0040f280 BW1M100 103fccd0 SetupVBarGraph::AddBar(const VBarData &)
-	void AddBar(const VBarData* bar);
+	void AddBar(const VBarData& bar);
 	// BW1W120 0040f300 BW1M100 10352240 SetupVBarGraph::SetBar(int, const VBarData &)
-	void SetBar(int index, const VBarData* bar);
+	void SetBar(int index, const VBarData& bar);
 	// BW1W120 0040f350 BW1M100 103f1500 SetupVBarGraph::GetBar(int, VBarData &)
-	void GetBar(int index, VBarData* result);
+	void GetBar(int index, VBarData& result);
 };
 
 #endif /* BW1_DECOMP_SETUP_V_BAR_GRAPH_INCLUDED_H */

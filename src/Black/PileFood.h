@@ -54,7 +54,7 @@ public:
 	// BW1W120 0051bf80 BW1M100 10030810 PileFood::Draw(void)
 	virtual void Draw();
 	// BW1W120 0066e1a0 BW1M100 10119ea0 PileFood::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0066e380 BW1M100 10119a40 PileFood::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 0066ec50 BW1M100 10117fe0 PileFood::GetResourceType(void)
@@ -67,8 +67,8 @@ public:
 	// BW1W120 0066dfe0 BW1M100 1011a450 PileFood::PileFood(void)
 	PileFood();
 	// BW1W120 0066e070 BW1M100 1011a2b0 PileFood::PileFood(MapCoords const &, GPotInfo const *, unsigned long, MultiMapFixed *, Town *, int, float, float)
-	PileFood(MapCoords* coords, GPotInfo* param_2, uint32_t param_3, MultiMapFixed* param_4, Town* param_5, int param_6,
-	         float param_7, float param_8);
+	PileFood(const MapCoords& coords, const GPotInfo* param_2, uint32_t param_3, MultiMapFixed* param_4, Town* param_5,
+	         int param_6, float param_7, float param_8);
 };
 
 #endif /* BW1_DECOMP_PILE_FOOD_INCLUDED_H */

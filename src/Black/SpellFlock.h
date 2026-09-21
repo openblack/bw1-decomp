@@ -35,8 +35,8 @@ public:
 	// BW1W120 00723270 BW1M100 1051e760 SpellFlock::CloseDown(void)
 	virtual void CloseDown();
 	// BW1W120 007232d0 BW1M100 1051e4a0 SpellFlock::InitWithPos(GameThing *, MapCoords const &, SpellCastData *, PSysProcessInfo const &)
-	virtual int InitWithPos(GameThing* param_1, const MapCoords* param_2, SpellCastData* param_3,
-	                        const PSysProcessInfo* param_4);
+	virtual int InitWithPos(GameThing* param_1, const MapCoords& param_2, SpellCastData* param_3,
+	                        const PSysProcessInfo& param_4);
 	// BW1W120 00723240 BW1M100 1051e7b0 SpellFlock::CalculateCostToMaintain(void)
 	virtual float CalculateCostToMaintain();
 };

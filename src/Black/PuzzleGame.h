@@ -139,7 +139,7 @@ public:
 	// BW1W120 00422770 BW1M100 inlined ChessPion::Draw(void)
 	virtual void Draw();
 	// BW1W120 006dde50 BW1M100 inlined ChessPion::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00422210 BW1M100 inlined ChessPion::SetUpPhysOb(PhysOb *)
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 004221e0 BW1M100 inlined ChessPion::InteractsWithPhysicsObjects(void)
@@ -152,7 +152,7 @@ public:
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));
 	// BW1W120 006de260 BW1M100 inlined ChessPion::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 class ChessQueen : public ChessPiece
@@ -320,7 +320,7 @@ public:
 	// BW1W120 00561a20 BW1M100 10131e70 PuzzleGrain::Draw(void)
 	virtual void Draw();
 	// BW1W120 00561a30 BW1M100 10122f40 PuzzleGrain::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00561a10 BW1M100 10131e20 PuzzleGrain::GetFoodValue(FOOD_TYPE)
 	virtual float GetFoodValue(FOOD_TYPE param_1);
 	// BW1W120 00561940 BW1M100 10131970 PuzzleGrain::ValidForLockedSelectProcess(GInterfaceStatus *)

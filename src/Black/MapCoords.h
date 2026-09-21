@@ -92,7 +92,7 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 006055c0 BW1M100 inlined MapCoords::operator-(MapCoords const &) const
 	MapCoords operator-(const MapCoords& other) const;
 	// BW1W120 006020e0 BW1M100 1048f050 MapCoords::GetNearestTown(float) const
-	Town* GetNearestTown(float t_max);
+	Town* GetNearestTown(float t_max) const;
 	// BW1W120 00603280 BW1M100 10513100 MapCoords::Set(char *)
 	void Set(const char* str);
 	// BW1W120 00603340 BW1M100 1006a370 MapCoords::Set(LHPoint const &)
@@ -110,15 +110,15 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 00603430 BW1M100 10049b80 MapCoords::ToMap(void) const
 	MapCell* ToMap() const;
 	// BW1W120 006034b0 BW1M100 1002cb50 MapCoords::GetFirstObjectFixed(void) const
-	Object* GetFirstObjectFixed();
+	Object* GetFirstObjectFixed() const;
 	// BW1W120 006034d0 BW1M100 1002c570 MapCoords::GetFirstIterator(void) const
 	MapCellIterator GetFirstIterator() const;
 	// BW1W120 006035b0 BW1M100 10018e70 MapCoords::IsWater(void) const
-	bool32_t IsWater();
+	bool32_t IsWater() const;
 	// BW1W120 00603b30 BW1M100 1055e480 MapCoords::IsSuitableForFixed 9MESH_LISTff
 	void IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3);
 	// BW1W120 00603dc0 BW1M100 101c2c00 MapCoords::IsSuitableForFixed(Game3DObject *) const
-	void IsSuitableForFixed(Game3DObject* object);
+	void IsSuitableForFixed(Game3DObject* object) const;
 	// BW1W120 006045c0 BW1M100 100195c0 MapCoords::FindType(OBJECT_TYPE, Object *) const
 	Object* FindType(OBJECT_TYPE type, Object* object) const;
 	// BW1W120 00605660 BW1M100 10087b50 MapCoords::operator==(MapCoords const &) const
@@ -131,20 +131,20 @@ struct MapCoords : public LH3DMapCoords
 	// TODO: fabricated name
 	float GetDistanceInMetres(const MapCoords& other) const;
 	// BW1W120 00605fb0 BW1M100 10032290 MapCoords::GetMetresDistanceSq(MapCoords const &) const
-	float GetMetresDistanceSq(MapCoords* param_2);
+	float GetMetresDistanceSq(const MapCoords& param_2) const;
 	// BW1W120 inlined BW1M100 100e62c0 MapCoords::operator=(MapCoords const &)
 	MapCoords* operator=(const MapCoords* other);
 	// BW1W120 inlined BW1M100 1004a1d0 MapCoords::Altitude(void) const
 	float Altitude() const { return altitude; }
 	// BW1W120 00603490 BW1M100 105a3bb0 MapCoords::GetFirstObjectMobile(void) const
-	Object* GetFirstObjectMobile();
+	Object* GetFirstObjectMobile() const;
 	// BW1W120 006056b0 BW1M100 10557130 MapCoords::__ne(MapCoords const &) const
 	// NOTE: mangled ??9MapCoords@@QBEIABU0@@Z is the real operator!= (??9), not a plain "__ne"
 	// method -- the plain-name form can never produce this relocation. Renamed + fixed to
 	// const MapCoords& / const method (Rule 1); zero existing call sites depended on the old form.
 	bool32_t operator!=(const MapCoords& other) const;
 	// BW1W120 00604fe0 BW1M100 10406220 MapCoords::CollideCollideWithFixe(void) const
-	int CollideCollideWithFixe();
+	int CollideCollideWithFixe() const;
 };
 
 #pragma inline_depth(2)

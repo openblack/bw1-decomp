@@ -65,10 +65,10 @@ public:
 	// BW1W120 00441f20 BW1M100 1019a070 GCamera::GetThingViewingDistance(GameThingWithPos *)
 	static float GetThingViewingDistance(GameThingWithPos* target);
 	// BW1W120 00442810 BW1M100 10032670 GCamera::SetPointFromPointDistanceHeadingAndPitch(LHPoint *, LHPoint const &, float, float, float)
-	static void SetPointFromPointDistanceHeadingAndPitch(LHPoint* param_1, const LHPoint* point, float distance,
+	static void SetPointFromPointDistanceHeadingAndPitch(LHPoint* param_1, const LHPoint& point, float distance,
 	                                                     float heading, float pitch);
 	// BW1W120 004428d0 BW1M100 1007dbf0 GCamera::GetHeadingAndPitchFromPoints(LHPoint const &, LHPoint const &, float *, float *)
-	static void GetHeadingAndPitchFromPoints(LHPoint* origin, LHPoint* heading, float* pitch, float* yaw);
+	static void GetHeadingAndPitchFromPoints(const LHPoint& origin, const LHPoint& heading, float* pitch, float* yaw);
 
 	// Constructors
 

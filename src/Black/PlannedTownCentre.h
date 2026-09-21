@@ -30,7 +30,7 @@ public:
 	// Static methods
 
 	// BW1W120 007444d0 BW1M100 1055a160 PlannedTownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float)
-	static PlannedTownCentre* Create(const MapCoords* coords, const GAbodeInfo* info, Town* town, float param_4,
+	static PlannedTownCentre* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float param_4,
 	                                 float param_5);
 
 	// Constructors

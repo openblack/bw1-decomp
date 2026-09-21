@@ -23,7 +23,7 @@ public:
 	// BW1W120 00719a10 BW1M100 101461f0 GShowNeedsInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00719a00 BW1M100 10144960 GShowNeedsInfo::GetMesh( const(void))
-	virtual uint32_t GetMesh();
+	virtual MESH_LIST GetMesh() const;
 };
 
 #endif /* BW1_DECOMP_SHOW_NEEDS_INFO_INCLUDED_H */

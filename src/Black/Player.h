@@ -171,7 +171,7 @@ public:
 	// BW1W120 0064d750 BW1M100 10033320 GPlayer::IsMemberOfThisPlayer(GInterfaceStatus *)
 	bool IsMemberOfThisPlayer(GInterfaceStatus* param_1);
 	// BW1W120 0064d800 BW1M100 10021970 GPlayer::GetPlayerColour(void) const
-	LH3DColor GetPlayerColour();
+	LH3DColor GetPlayerColour() const;
 	// BW1W120 004c80f0 GPlayer::MakeCreatureEmpathiseWithPlayerTownDesire(TOWN_DESIRE_INFO, float, MapCoords const &)
 	// TODO: the binary mangles the first param as a CLASS (VTOWN_DESIRE_INFO@@) but our headers
 	// define TOWN_DESIRE_INFO as an enum (W4...), so callers currently reloc a W4-mangled symbol

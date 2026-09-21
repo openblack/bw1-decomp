@@ -24,9 +24,9 @@ public:
 	// BW1W120 0042e600 BW1M100 10429820 GBaseInfo::~GBaseInfo(void)
 	virtual ~GBaseInfo() {}
 	// BW1W120 004140b0 BW1M100 10578110 GBaseInfo::GetDebugText(void) const
-	virtual const char* GetDebugText();
+	virtual const char* GetDebugText() const;
 	// BW1W120 00436c60 BW1M100 1055df70 GBaseInfo::GetDebugColor(void) const
-	virtual LHColor* GetDebugColor(LHColor* color);
+	virtual LHColor* GetDebugColor(LHColor* color) const;
 	// BW1W120 purecall BW1M100 purecall GBaseInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos) = 0;
 	// BW1W120 00401230 BW1M100 101228b0 GBaseInfo::UpdateValue(void)
@@ -59,7 +59,7 @@ public:
 	// Override methods
 
 	// BW1W120 0055c770 BW1M100 10043c50 BaseInfo::IsClear(void) const
-	virtual bool IsClear();
+	virtual bool IsClear() const;
 
 	// Constructors
 

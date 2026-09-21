@@ -67,22 +67,23 @@ public:
 	// BW1W120 0077f390 BW1M100 105b6a70 WorshipSpellIcon::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 0077f290 BW1M100 105b6e40 WorshipSpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0077f0b0 BW1M100 105b42c0 WorshipSpellIcon::IsEffectReceiver(EffectValues *)
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0077f0d0 BW1M100 105b4360 WorshipSpellIcon::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Static methods
 
 	// BW1W120 0077f2b0 BW1M100 105b6cf0 WorshipSpellIcon::Create(MapCoords const &, GSpellIconInfo const *, GSpellSeedInfo const *, WorshipSite *, short, float, int)
-	static WorshipSpellIcon* Create(MapCoords* coords, GSpellIconInfo* icon_info, GSpellSeedInfo* seed_info,
-	                                WorshipSite* site, int16_t slot, float param_6, int param_7);
+	static WorshipSpellIcon* Create(const MapCoords& coords, const GSpellIconInfo* icon_info,
+	                                const GSpellSeedInfo* seed_info, WorshipSite* site, int16_t slot, float param_6,
+	                                int param_7);
 
 	// Constructors
 
 	// BW1W120 0077f140 BW1M100 105b7070 WorshipSpellIcon::WorshipSpellIcon(MapCoords const &, GSpellIconInfo const *, GSpellSeedInfo const *, WorshipSite *, short, float, int)
-	WorshipSpellIcon(const MapCoords* coords, const GSpellIconInfo* icon_info, const GSpellSeedInfo* seed_info,
+	WorshipSpellIcon(const MapCoords& coords, const GSpellIconInfo* icon_info, const GSpellSeedInfo* seed_info,
 	                 WorshipSite* site, int16_t slot, float param_6, int param_7);
 
 	// Non-virtual methods
@@ -115,7 +116,7 @@ public:
 	// BW1W120 006709d0 BW1M100 inlined PrayerIcon::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00670950 BW1M100 inlined PrayerIcon::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 006709f0 BW1M100 inlined PrayerIcon::Draw(void)
 	virtual void Draw();
 };

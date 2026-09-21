@@ -40,7 +40,7 @@ public:
 	// BW1W120 005db930 BW1M100 1037ad30 GLeashStatus::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 005e71d0 BW1M100 1037b4b0 GLeashStatus::SaveExtraData(GameOSFile &)
-	virtual void SaveExtraData(GameOSFile* param_1);
+	virtual void SaveExtraData(GameOSFile& param_1);
 	// BW1W120 005e7650 BW1M100 1037ae10 GLeashStatus::ResolveLoad(void)
 	virtual void ResolveLoad();
 };

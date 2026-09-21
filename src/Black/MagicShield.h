@@ -35,7 +35,7 @@ public:
 	// BW1W120 0072c300 BW1M100 10531370 MagicShield::Draw(void)
 	virtual void Draw();
 	// BW1W120 0072c2a0 BW1M100 10531420 MagicShield::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0072c340 BW1M100 10531220 MagicShield::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 0072c320 BW1M100 105312c0 MagicShield::SetDying(void)
@@ -49,7 +49,7 @@ public:
 	// BW1W120 0072c2f0 BW1M100 105313a0 MagicShield::DrawShield(void)
 	virtual void DrawShield();
 	// BW1W120 0072b850 BW1M100 10532df0 MagicShield::IsPointDefinietlyWithinShieldVolume(MapCoords const &)
-	virtual bool IsPointDefinietlyWithinShieldVolume(const MapCoords* param_1);
+	virtual bool IsPointDefinietlyWithinShieldVolume(const MapCoords& param_1);
 };
 
 #endif /* BW1_DECOMP_MAGIC_SHIELD_INCLUDED_H */

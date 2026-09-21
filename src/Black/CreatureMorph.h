@@ -152,7 +152,7 @@ public:
 	// Constructors
 
 	// BW1W120 0047f770 BW1M100 101fb470 LH3DCreature::LH3DCreature(Creature *, LHPoint const &, void *)
-	LH3DCreature(Creature* creature, LHPoint* pos, void* param_3);
+	LH3DCreature(Creature* creature, const LHPoint& pos, void* param_3);
 
 	// Non-virtual methods
 

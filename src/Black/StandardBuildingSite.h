@@ -38,7 +38,7 @@ public:
 	// BW1W120 0043c5e0 BW1M100 inlined StandardBuildingSite::GetWoodForStats(void)
 	virtual uint32_t GetWoodForStats();
 	// BW1W120 0043d6e0 BW1M100 100b8180 StandardBuildingSite::GetPileWood(MapCoords const &)
-	virtual Pot* GetPileWood(const MapCoords* param_1);
+	virtual Pot* GetPileWood(const MapCoords& param_1);
 	// BW1W120 0043d6f0 BW1M100 100b8130 StandardBuildingSite::SetPileWood(Pot *)
 	virtual void SetPileWood(Pot* param_1);
 	// BW1W120 0043d760 BW1M100 100b81d0 StandardBuildingSite::CreatePileWood(void)

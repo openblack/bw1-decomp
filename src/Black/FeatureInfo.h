@@ -24,11 +24,11 @@ public:
 	// BW1W120 00421eb0 BW1M100 100a7c10 GFeatureInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00421ea0 BW1M100 100a5310 GFeatureInfo::GetMesh( const(void))
-	virtual uint32_t GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00421e80 BW1M100 inlined GFeatureInfo::GetAbodeType( const(void))
-	virtual ABODE_TYPE GetAbodeType();
+	virtual ABODE_TYPE GetAbodeType() const;
 	// BW1W120 00421e90 BW1M100 inlined GFeatureInfo::GetAbodeNumber( const(void))
-	virtual ABODE_NUMBER GetAbodeNumber();
+	virtual ABODE_NUMBER GetAbodeNumber() const;
 };
 
 #endif /* BW1_DECOMP_FEATURE_INFO_INCLUDED_H */

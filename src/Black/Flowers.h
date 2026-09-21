@@ -28,11 +28,11 @@ public:
 	// BW1W120 00527990 BW1M100 100d00f0 Flowers::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 00527a30 BW1M100 100d0310 Flowers::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00527980 BW1M100 100d00c0 Flowers::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 00527a80 BW1M100 100d0170 Flowers::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 #endif /* BW1_DECOMP_FLOWERS_INCLUDED_H */

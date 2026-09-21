@@ -249,7 +249,7 @@ uint32_t Villager::ArrivesHome()
 	Abode* abode = GetAbode();
 	if (abode != NULL)
 	{
-		if (AreWeThere(&abode->GetArrivePos(), 0.0f))
+		if (AreWeThere(abode->GetArrivePos(), 0.0f))
 		{
 			if (abode->IsBuilt() == 0 || abode->IsRepaired() == 0)
 			{
@@ -801,7 +801,7 @@ bool32_t Villager::ArtifactDance()
 			return true;
 		}
 	}
-	PerformDance(&dance_group->behaviour->Pos, VILLAGER_STATE_ARTIFACT_DANCE, dance_group->field_0x5c);
+	PerformDance(dance_group->behaviour->Pos, VILLAGER_STATE_ARTIFACT_DANCE, dance_group->field_0x5c);
 	return true;
 }
 
@@ -820,7 +820,7 @@ bool32_t Villager::GoHomeAndChange()
 	if (abode != NULL)
 	{
 		const MapCoords* pos = &abode->GetArrivePos();
-		if (AreWeThere(pos, 0.0f) == 0)
+		if (AreWeThere(*pos, 0.0f) == 0)
 		{
 			SetupMoveToWithHug(*pos, VILLAGER_STATE_GO_HOME_AND_CHANGE);
 			return true;

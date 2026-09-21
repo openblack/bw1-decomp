@@ -128,7 +128,7 @@ public:
 	virtual uint32_t GetResource(RESOURCE_TYPE type);
 	// BW1W120 00404d90 BW1M100 101c95e0 Abode::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             MapCoords* coords, int param_6);
+	                             const MapCoords* coords, int param_6);
 	// BW1W120 00404f10 BW1M100 101c9a10 Abode::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* param_4);
 	// BW1W120 00401640 BW1M100 105602b0 Abode::CastAbode(void)
@@ -170,7 +170,7 @@ public:
 	// BW1W120 00404440 BW1M100 1004fcb0 Abode::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00404aa0 BW1M100 100ac700 Abode::GetMesh(void) const
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00515f70 BW1M100 10036a60 Abode::Draw(void)
 	virtual void Draw();
 	// BW1W120 00407170 BW1M100 1034ec40 Abode::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
@@ -221,7 +221,7 @@ public:
 	virtual float GetDesireToBeRepaired();
 	// BW1W120 00404df0 BW1M100 10002b90 Abode::DoResourceAdding(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool param_4,
-	                                  MapCoords* coords, int param_6);
+	                                  const MapCoords& coords, int param_6);
 	// BW1W120 00404f60 BW1M100 104f7960 Abode::DoResourceRemoving(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool* param_4);
 	// BW1W120 00405050 BW1M100 100a3330 Abode::ConvertToPlanned(void)

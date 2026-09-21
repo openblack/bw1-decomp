@@ -75,7 +75,7 @@ public:
 	// BW1W120 00725ea0 BW1M100 10101da0 SpellSeedGraphic::operator new(unsigned long)
 	static SpellSeedGraphic* __nw(uint32_t size);
 	// BW1W120 00726f60 BW1M100 10523670 SpellSeedGraphic::Create(MapCoords const &, SPELL_SEED_TYPE, GPlayer *, float, POWER_UP_TYPE)
-	static SpellSeedGraphic* Create(const MapCoords* coords, SPELL_SEED_TYPE type, GPlayer* player, float param_4,
+	static SpellSeedGraphic* Create(const MapCoords& coords, SPELL_SEED_TYPE type, GPlayer* player, float param_4,
 	                                POWER_UP_TYPE effect);
 
 	// Non-virtual methods

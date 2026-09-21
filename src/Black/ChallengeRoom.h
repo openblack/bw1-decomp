@@ -18,14 +18,14 @@ struct TempleChallenge
 	// Constructors
 
 	// BW1W120 00781210 BW1M100 101b5750 TempleChallenge::TempleChallenge(GameOSFile &)
-	TempleChallenge(GameOSFile* param_1);
+	TempleChallenge(GameOSFile& param_1);
 
 	// Non-virtual methods
 
 	// BW1W120 00781460 BW1M100 101b51f0 TempleChallenge::StartScript(int)
 	void StartScript(int param_1);
 	// BW1W120 007817a0 BW1M100 101b4310 TempleChallenge::LoadChallenge(GameOSFile &)
-	void LoadChallenge(GameOSFile* param_1);
+	void LoadChallenge(GameOSFile& param_1);
 };
 
 class ChallengeRoom : public PictureRoomBase

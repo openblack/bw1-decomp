@@ -88,7 +88,7 @@ public:
 	// BW1W120 0076e900 BW1M100 1015c440 Fragment::Fragment(void)
 	Fragment();
 	// BW1W120 0076e9d0 BW1M100 1015c250 Fragment::Fragment(MapCoords const &, FragMesh *, GPlayer *)
-	Fragment(MapCoords* coords, FragMesh* frag_mesh, GPlayer* player);
+	Fragment(const MapCoords& coords, FragMesh* frag_mesh, GPlayer* player);
 };
 
 #endif /* BW1_DECOMP_FRAGMENT_INCLUDED_H */

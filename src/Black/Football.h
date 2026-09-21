@@ -102,7 +102,7 @@ public:
 	// BW1W120 00531610 BW1M100 102bccb0 Football::Draw(void)
 	virtual void Draw();
 	// BW1W120 00530f80 BW1M100 102bd510 Football::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 005312e0 BW1M100 102b8760 Football::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 00531930 BW1M100 102bcad0 Football::InteractsWithPhysicsObjects(void)

@@ -54,13 +54,13 @@ public:
 	// Constructors
 
 	// BW1W120 0071e300 BW1M100 10514c30 SoundTag::SoundTag(GameThingWithPos *, LHPoint const &, unsigned long, bool, unsigned long, unsigned long, int, int, AUDIO_SFX_BANK_TYPE, int)
-	SoundTag(GameThingWithPos* param_1, LHPoint* param_2, uint32_t param_3, bool param_4, uint32_t param_5,
+	SoundTag(GameThingWithPos* param_1, const LHPoint& param_2, uint32_t param_3, bool param_4, uint32_t param_5,
 	         uint32_t param_6, int param_7, int param_8, AUDIO_SFX_BANK_TYPE param_9, int param_10);
 
 	// Non-virtual methods
 
 	// BW1W120 0071e4f0 BW1M100 100a0490 SoundTag::Set(GameThingWithPos *, LHPoint const &, LHPoint const &, unsigned long, bool, unsigned long, unsigned long, int, int, unsigned long, int, int)
-	void Set(GameThingWithPos* param_1, LHPoint* param_2, LHPoint* param_3, uint32_t param_4, bool param_5,
+	void Set(GameThingWithPos* param_1, const LHPoint& param_2, const LHPoint& param_3, uint32_t param_4, bool param_5,
 	         uint32_t param_6, uint32_t param_7, int param_8, int param_9, uint32_t param_10, int param_11,
 	         int param_12);
 };

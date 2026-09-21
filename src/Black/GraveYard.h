@@ -42,7 +42,7 @@ public:
 	// BW1W120 0055dfe0 BW1M100 100f44d0 Graveyard::IsStoragePit(Creature *)
 	virtual uint32_t IsStoragePit(Creature* param_1);
 	// BW1W120 00595dd0 BW1M100 100f4a40 Graveyard::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0055dfb0 BW1M100 100f4400 Graveyard::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 00595cd0 BW1M100 100f4d60 Graveyard::InteractsWithPhysicsObjects(void)

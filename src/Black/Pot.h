@@ -52,7 +52,7 @@ public:
 	virtual uint32_t GetResource(RESOURCE_TYPE param_1);
 	// BW1W120 0066d290 BW1M100 1011c770 Pot::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             MapCoords* param_5, int param_6);
+	                             const MapCoords* param_5, int param_6);
 	// BW1W120 0066d3f0 BW1M100 1011c180 Pot::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 0055d5b0 BW1M100 10116380 Pot::GetDebugText(void)
@@ -82,7 +82,7 @@ public:
 	// BW1W120 0051bbc0 BW1M100 100c5150 Pot::DrawOutOfMap(bool)
 	virtual void DrawOutOfMap(bool param_1);
 	// BW1W120 0066d130 BW1M100 1011c840 Pot::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0066f570 BW1M100 10116690 Pot::GetFoodValue(FOOD_TYPE)
 	virtual float GetFoodValue(FOOD_TYPE param_1);
 	// BW1W120 0066f560 BW1M100 10116710 Pot::IsResourceStore(RESOURCE_TYPE)
@@ -128,7 +128,7 @@ public:
 	// BW1W120 0066e8f0 BW1M100 10118e10 Pot::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0066d550 BW1M100 1011bd00 Pot::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 0055d590 BW1M100 10116310 Pot::IsAPotFromABuildingSite(void)
 	virtual bool32_t IsAPotFromABuildingSite();
 
@@ -137,7 +137,8 @@ public:
 	// BW1W120 inlined BW1M100 1030c590 Pot::Pot(void)
 	Pot();
 	// BW1W120 0066ce60 BW1M100 1011cef0 Pot::Pot(MapCoords const &, GPotInfo const *, unsigned long, Town *, float, float)
-	Pot(MapCoords* param_1, GPotInfo* param_2, uint32_t param_3, Town* param_4, float param_5, float param_6);
+	Pot(const MapCoords& param_1, const GPotInfo* param_2, uint32_t param_3, Town* param_4, float param_5,
+	    float param_6);
 
 	// Non-virtual methods
 

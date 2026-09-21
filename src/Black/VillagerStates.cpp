@@ -84,7 +84,7 @@ bool32_t Villager::ArrivesAtStoragePitForDropOff()
 			Object*   pot = (Object*)GetTown()->GetTemporaryResourceStorePotOrPos(Pos, storePos, resourceHeld);
 			if (pot != NULL)
 			{
-				if (AreWeThere(&storePos, 0.0f))
+				if (AreWeThere(storePos, 0.0f))
 				{
 					pot->AddResource(resourceHeld, held, NULL, false, NULL, 0);
 					if (resourceHeld == RESOURCE_TYPE_FOOD)
@@ -179,7 +179,7 @@ bool32_t Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE resourceType, un
 				lh3dCoords.z = (int)(fixedZ * 0.001f);
 				lh3dCoords.altitude = 0.0f;
 				storePos.altitude = edgePos.y - LH3DIsland::GetAltitude(lh3dCoords);
-				if (AreWeThere(&storePos, 0.0f))
+				if (AreWeThere(storePos, 0.0f))
 				{
 					pot->RemoveResource(resourceType, amount, NULL, NULL);
 					PickupResource(resourceType, (short)amount, (unsigned char)pot->GetCarriedTreeType());

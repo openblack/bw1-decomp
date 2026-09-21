@@ -21,7 +21,7 @@ public:
 	// BW1W120 0052dce0 BW1M100 100e3150 GSingleMapFixedInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 0052dcd0 BW1M100 100c3840 GSingleMapFixedInfo::GetMesh( const(void))
-	virtual uint32_t GetMesh();
+	virtual MESH_LIST GetMesh() const;
 };
 
 #endif /* BW1_DECOMP_SINGLE_MAP_FIXED_INFO_INCLUDED_H */

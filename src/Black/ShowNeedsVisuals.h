@@ -62,16 +62,16 @@ public:
 	// BW1W120 0055dd90 BW1M100 10144a20 ShowNeedsVisuals::GetText(void)
 	virtual const char* GetText();
 	// BW1W120 0055dd60 BW1M100 101448f0 ShowNeedsVisuals::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00719e00 BW1M100 10145510 ShowNeedsVisuals::CallVirtualFunctionsForCreation(const MapCoords &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055dda0 BW1M100 10144a60 ShowNeedsVisuals::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Constructors
 
 	// BW1W120 00719d60 BW1M100 10145700 ShowNeedsVisuals::ShowNeedsVisuals(const MapCoords&, GameThing*, const GShowNeedsInfo *)
-	ShowNeedsVisuals(MapCoords* coords, GameThing* game_thing, GShowNeedsInfo* info);
+	ShowNeedsVisuals(const MapCoords& coords, GameThing* game_thing, const GShowNeedsInfo* info);
 };
 
 #endif /* BW1_DECOMP_SHOW_NEEDS_VISUALS_INCLUDED_H */

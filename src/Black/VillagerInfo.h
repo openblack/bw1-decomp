@@ -118,7 +118,7 @@ public:
 	// BW1W120 0074f890 BW1M100 10571e90 GVillagerInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 0074f880 BW1M100 10571e50 GVillagerInfo::GetMesh( const(void))
-	virtual uint32_t GetMesh();
+	virtual MESH_LIST GetMesh() const;
 
 	// Static methods
 

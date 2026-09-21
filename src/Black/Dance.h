@@ -73,8 +73,8 @@ public:
 	// Constructors
 
 	// BW1W120 0050b6a0 BW1M100 102aa620 Dance::Dance(MapCoords const &, GDanceInfo const *, GameThingWithPos *, unsigned long, int, Town *)
-	Dance(const MapCoords* param_1, GDanceInfo* info, const GameThingWithPos* param_3, uint32_t param_4, int param_5,
-	      Town* town);
+	Dance(const MapCoords& param_1, const GDanceInfo* info, const GameThingWithPos* param_3, uint32_t param_4,
+	      int param_5, Town* town);
 
 	// Non-virtual methods
 

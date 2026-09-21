@@ -45,7 +45,7 @@ public:
 	// BW1W120 00673700 BW1M100 inlined GJPSysInterface::Draw(bool)
 	virtual void Draw_2(bool param_1);
 	// BW1W120 0055edc0 BW1M100 10026de0 GJPSysInterface::AddDrawing(float, LHPoint const &)
-	virtual void AddDrawing(float param_1, const LHPoint* param_2);
+	virtual void AddDrawing(float param_1, const LHPoint& param_2);
 	// BW1W120 0055ed80 BW1M100 inlined GJPSysInterface::AddTarget__1(LHPoint const &)
 	virtual void AddTarget_1(const LHPoint* param_1);
 	// BW1W120 0055ed60 BW1M100 inlined GJPSysInterface::AddTarget(GameThing *)
@@ -57,9 +57,9 @@ public:
 	// BW1W120 0055ed40 BW1M100 10424080 GJPSysInterface::SetAge(float)
 	virtual void SetAge(float param_1);
 	// BW1W120 0055ecf0 BW1M100 100722f0 GJPSysInterface::SetOrigin(LHPoint const &)
-	virtual void SetOrigin(const LHPoint* param_1);
+	virtual void SetOrigin(const LHPoint& param_1);
 	// BW1W120 0055ed00 BW1M100 10423f20 GJPSysInterface::SetOriginAndMoveAllAtoms(LHPoint const &)
-	virtual void SetOriginAndMoveAllAtoms(const LHPoint* param_1);
+	virtual void SetOriginAndMoveAllAtoms(const LHPoint& param_1);
 	// BW1W120 0055ed50 BW1M100 104240c0 GJPSysInterface::SetAlpha(unsigned char)
 	virtual void SetAlpha(uint8_t param_1);
 	// BW1W120 0055ed10 BW1M100 10026c40 GJPSysInterface::GetOrigin(void)

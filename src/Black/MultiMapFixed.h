@@ -99,7 +99,7 @@ public:
 	virtual uint32_t RemoveFootpath(GFootpath* param_1);
 	// BW1W120 0052f180 BW1M100 100de800 MultiMapFixed::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool param_4,
-	                             MapCoords* coords, int param_6);
+	                             const MapCoords* coords, int param_6);
 	// BW1W120 0052f1c0 BW1M100 100de760 MultiMapFixed::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* param_4);
 	// BW1W120 0052ef70 BW1M100 1005fb60 MultiMapFixed::IsFunctional(void)
@@ -228,7 +228,7 @@ public:
 	virtual void RemoveFromPlayer() {}
 	// BW1W120 00422070 BW1M100 100a5760 MultiMapFixed::DoResourceAdding(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool param_4,
-	                                  MapCoords* coords, int param_6);
+	                                  const MapCoords& coords, int param_6);
 	// BW1W120 00422080 BW1M100 100a57d0 MultiMapFixed::DoResourceRemoving(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool* param_4);
 	// BW1W120 004015d0 BW1M100 101aa2d0 MultiMapFixed::CalulateAmountOverMaximum(RESOURCE_TYPE)
@@ -271,7 +271,7 @@ public:
 	// BW1W120 0052dc10 BW1M100 inlined MultiMapFixed::SortChildren(void)
 	void SortChildren();
 	// BW1W120 0052dc30 BW1M100 100380f0 MultiMapFixed::SortedMultiChildFind(MapCell const &)
-	MultiChild* SortedMultiChildFind(const MapCell* cell);
+	MultiChild* SortedMultiChildFind(const MapCell& cell);
 	// BW1W120 0052ea50 BW1M100 100e0160 MultiMapFixed::AllocateMultiChild(void)
 	void AllocateMultiChild();
 	// BW1W120 0052f6d0 BW1M100 100ddab0 MultiMapFixed::ReleaseCollideData(void)

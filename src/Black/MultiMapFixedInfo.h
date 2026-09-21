@@ -28,7 +28,7 @@ public:
 	// Override methods
 
 	// BW1W120 0052eb60 BW1M100 100dffe0 GMultiMapFixedInfo::IsOkToCreateAtPos(const MapCoords&, float, float) const
-	virtual bool IsOkToCreateAtPos(const MapCoords* pos, float param_2, float param_3);
+	virtual bool IsOkToCreateAtPos(const MapCoords& pos, float param_2, float param_3) const;
 };
 
 #endif /* BW1_DECOMP_MULTI_MAP_FIXED_INFO_INCLUDED_H */

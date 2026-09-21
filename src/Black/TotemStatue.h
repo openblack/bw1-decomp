@@ -95,11 +95,11 @@ public:
 	// BW1W120 00737f40 BW1M100 10077f00 TotemStatue::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 005610e0 BW1M100 10543c30 TotemStatue::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00738960 BW1M100 10024bb0 TotemStatue::Draw(void)
 	virtual void Draw();
 	// BW1W120 00737d60 BW1M100 10544f40 TotemStatue::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 00738500 BW1M100 105447e0 TotemStatue::ValidForLockedSelectProcess(GInterfaceStatus *)
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
 	// BW1W120 00738590 BW1M100 10544700 TotemStatue::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
@@ -119,7 +119,7 @@ public:
 	// BW1W120 00737d50 BW1M100 10545170 TotemStatue::ReactToPhysicsImpact(PhysicsObject *, bool)
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00561140 BW1M100 10543e60 TotemStatue::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 00561090 BW1M100 10543660 TotemStatue::IsRepaired(void)
 	virtual bool32_t IsRepaired();
 	// BW1W120 005610b0 BW1M100 1001a9a0 TotemStatue::IsBuilt(void)
@@ -135,7 +135,7 @@ public:
 	// Constructors
 
 	// BW1W120 00737b20 BW1M100 10545880 TotemStatue::TotemStatue(TownCentre *, GTotemStatueInfo const *)
-	TotemStatue(TownCentre* tc, GTotemStatueInfo* info);
+	TotemStatue(TownCentre* tc, const GTotemStatueInfo* info);
 
 	// Non-virtual methods
 
