@@ -2,6 +2,7 @@
 #define BW1_DECOMP_PLASMA_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h>
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
@@ -16,7 +17,7 @@ struct Plasma
 {
 	LHPoint       points[0x4f7];       /* 0x0 */
 	Point2D       uvs[0x4f7];          /* 0x3b94 */
-	uint32_t      indices[0x3][0x960]; /* 0x634c */
+	uint32_t      indices[0x960][0x3]; /* 0x634c; 2400 consecutive triangles */
 	LH3DColor     colors[0x4f7];       /* 0xd3cc */
 	LHPoint       field_0xe7a8[0x10];
 	LHPoint       field_0xe868[0x10];
