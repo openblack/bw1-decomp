@@ -39,7 +39,7 @@
 #include "StartGameBox.h"
 #include "TattooEditor.h"
 
-#define FRONT_END_SOURCE "C:\\dev\\MP\\Black\\frontend.cpp"
+#define FILEPATH "C:\\dev\\MP\\Black\\frontend.cpp"
 
 static const int PlasmaColumns = 40;
 static const int PlasmaRows = 30;
@@ -70,12 +70,7 @@ bool TattooEditor::CanESCOut()
 
 bool ProfileEditor::CanESCOut()
 {
-	// TODO: Resolve the full-EAX return here against the base and sibling AL-returning virtual methods.
-	if (FrontEnd::ActiveProfileEditor != NULL && FrontEnd::ProfileEditorActive)
-	{
-		return false;
-	}
-	return true;
+	return (FrontEnd::ActiveProfileEditor != NULL && FrontEnd::ProfileEditorActive) ? 0 : 1;
 }
 
 bool MainMenu::CanESCOut()
@@ -219,18 +214,18 @@ void NewProfileBox::Init(uint32_t width, uint32_t height,
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveNewProfileDialog = this;
 	SymbolPicture =
-		new (FRONT_END_SOURCE, 536) SetupPicture(123, 368, 300, FrontEnd::PlayerSymbolsMaterial, 0, 4, true, 64, false);
-	new (FRONT_END_SOURCE, 538) SetupStaticText(
-		999, 100, 150, 600, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd7e), TEXTJUSTIFY_CENTRE);
-	ContinueButton = new (FRONT_END_SOURCE, 540)
+		new (FILEPATH, 536) SetupPicture(123, 368, 300, FrontEnd::PlayerSymbolsMaterial, 0, 4, true, 64, false);
+	new (FILEPATH, 538) SetupStaticText(999, 100, 150, 600, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd7e),
+	                                    TEXTJUSTIFY_CENTRE);
+	ContinueButton = new (FILEPATH, 540)
 		SetupBigButton(2, 610, 400, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 40, 1, BBSTYLE_RIGHT_ARROW);
-	CancelButton = new (FRONT_END_SOURCE, 541)
+	CancelButton = new (FILEPATH, 541)
 		SetupBigButton(1, 150, 400, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa24), 40, 0, BBSTYLE_LEFT_ARROW);
-	new (FRONT_END_SOURCE, 546) SetupStaticText(
-		999, 100, 300, 250, 64, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd7f), TEXTJUSTIFY_RIGHT);
-	new (FRONT_END_SOURCE, 547) SetupStaticText(
-		999, 450, 300, 250, 64, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd80), TEXTJUSTIFY_LEFT);
-	NameEdit = new (FRONT_END_SOURCE, 550) SetupEdit(3, 200, 230, 400, 50, L"", true);
+	new (FILEPATH, 546) SetupStaticText(999, 100, 300, 250, 64, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd7f),
+	                                    TEXTJUSTIFY_RIGHT);
+	new (FILEPATH, 547) SetupStaticText(999, 450, 300, 250, 64, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd80),
+	                                    TEXTJUSTIFY_LEFT);
+	NameEdit = new (FILEPATH, 550) SetupEdit(3, 200, 230, 400, 50, L"", true);
 	NameEdit->field_0x240 = 29;
 	FrontEnd::ActiveNewProfileDialog->Completed = false;
 }
@@ -275,13 +270,13 @@ void EditingDebugBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveEditingDebugDialog = this;
-	Edit = new (FRONT_END_SOURCE, 705) SetupEdit(1, 200, 300, 400, 30, L"", true);
+	Edit = new (FILEPATH, 705) SetupEdit(1, 200, 300, 400, 30, L"", true);
 	Edit->text_size = GetMidTextSize();
-	PromptText = new (FRONT_END_SOURCE, 708) SetupStaticText(2, 200, 250, 400, 30, L"", TEXTJUSTIFY_CENTRE);
+	PromptText = new (FILEPATH, 708) SetupStaticText(2, 200, 250, 400, 30, L"", TEXTJUSTIFY_CENTRE);
 	PromptText->text_size = GetMidTextSize();
-	ContinueButton = new (FRONT_END_SOURCE, 712)
+	ContinueButton = new (FILEPATH, 712)
 		SetupBigButton(3, 570, 350, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 30, 1, BBSTYLE_RIGHT_ARROW);
-	CancelButton = new (FRONT_END_SOURCE, 713)
+	CancelButton = new (FILEPATH, 713)
 		SetupBigButton(4, 200, 350, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa24), 30, 0, BBSTYLE_LEFT_ARROW);
 	field_0x20 = 0;
 	InitialText = NULL;
@@ -308,21 +303,21 @@ void RegisterBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveRegisterDialog = this;
-	new (FRONT_END_SOURCE, 776) SetupStaticText(
-		999, 100, 150, 600, 250, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd82), TEXTJUSTIFY_CENTRE_BREAK);
-	LoginButton = new (FRONT_END_SOURCE, 777)
-		SetupButton(2, 310, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd86), 0);
-	RegisterButton = new (FRONT_END_SOURCE, 778)
-		SetupButton(1, 100, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd85), 0);
-	ContinueButton = new (FRONT_END_SOURCE, 779)
-		SetupButton(3, 520, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 0);
-	NameEdit = new (FRONT_END_SOURCE, 781) SetupEdit(4, 250, 300, 300, 50, L"", true);
-	PasswordEdit = new (FRONT_END_SOURCE, 782) SetupEdit(5, 250, 360, 300, 50, L"", true);
+	new (FILEPATH, 776) SetupStaticText(999, 100, 150, 600, 250, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd82),
+	                                    TEXTJUSTIFY_CENTRE_BREAK);
+	LoginButton =
+		new (FILEPATH, 777) SetupButton(2, 310, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd86), 0);
+	RegisterButton =
+		new (FILEPATH, 778) SetupButton(1, 100, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd85), 0);
+	ContinueButton =
+		new (FILEPATH, 779) SetupButton(3, 520, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 0);
+	NameEdit = new (FILEPATH, 781) SetupEdit(4, 250, 300, 300, 50, L"", true);
+	PasswordEdit = new (FILEPATH, 782) SetupEdit(5, 250, 360, 300, 50, L"", true);
 	PasswordEdit->MaskedText = true;
-	new (FRONT_END_SOURCE, 785) SetupStaticText(
-		999, 50, 300, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd83), TEXTJUSTIFY_RIGHT);
-	new (FRONT_END_SOURCE, 786) SetupStaticText(
-		999, 50, 360, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd84), TEXTJUSTIFY_RIGHT);
+	new (FILEPATH, 785) SetupStaticText(999, 50, 300, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd83),
+	                                    TEXTJUSTIFY_RIGHT);
+	new (FILEPATH, 786) SetupStaticText(999, 50, 360, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd84),
+	                                    TEXTJUSTIFY_RIGHT);
 	Completed = false;
 }
 
@@ -361,12 +356,12 @@ void MainMenu::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(i
 	FrontEnd::ActiveMainMenuDialog = this;
 	wchar_t currentProfile[0x100];
 	PlayerProfile::GetCurrentProfile(currentProfile);
-	TitleText = new (FRONT_END_SOURCE, 1653) SetupStaticText(999, 50, 65, 700, 90, L"", TEXTJUSTIFY_CENTRE_BREAK);
-	Buttons[0] = new (FRONT_END_SOURCE, 1657) SetupButton(0, 180, 145, 440, 70, L"", 0);
-	Buttons[1] = new (FRONT_END_SOURCE, 1658) SetupButton(1, 180, 225, 440, 70, L"", 0);
-	Buttons[2] = new (FRONT_END_SOURCE, 1659) SetupButton(2, 180, 305, 440, 70, L"", 0);
-	Buttons[3] = new (FRONT_END_SOURCE, 1660) SetupButton(3, 180, 385, 440, 70, L"", 0);
-	Buttons[4] = new (FRONT_END_SOURCE, 1661) SetupButton(4, 180, 465, 440, 70, L"", 0);
+	TitleText = new (FILEPATH, 1653) SetupStaticText(999, 50, 65, 700, 90, L"", TEXTJUSTIFY_CENTRE_BREAK);
+	Buttons[0] = new (FILEPATH, 1657) SetupButton(0, 180, 145, 440, 70, L"", 0);
+	Buttons[1] = new (FILEPATH, 1658) SetupButton(1, 180, 225, 440, 70, L"", 0);
+	Buttons[2] = new (FILEPATH, 1659) SetupButton(2, 180, 305, 440, 70, L"", 0);
+	Buttons[3] = new (FILEPATH, 1660) SetupButton(3, 180, 385, 440, 70, L"", 0);
+	Buttons[4] = new (FILEPATH, 1661) SetupButton(4, 180, 465, 440, 70, L"", 0);
 	if (PlayerProfile::GetNumberOfProfiles() != 0)
 	{
 		PlayerProfile::SetCurrentProfile(LHNetGetCurrentProfileNameFromRegistry());
@@ -420,12 +415,12 @@ void StartGameBox::Init(uint32_t width, uint32_t height,
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveStartGameDialog = this;
 	setup_box->DefaultTextSize = GetBigTextSize();
-	text = new (FRONT_END_SOURCE, 3533) SetupStaticText(1, 40, 30, 720, 40, L"", TEXTJUSTIFY_CENTRE_BREAK);
-	button = new (FRONT_END_SOURCE, 3535)
+	text = new (FILEPATH, 3533) SetupStaticText(1, 40, 30, 720, 40, L"", TEXTJUSTIFY_CENTRE_BREAK);
+	button = new (FILEPATH, 3535)
 		SetupButton(999, 320, 530, 160, 40, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a60), 1);
-	list = new (FRONT_END_SOURCE, 3536) SetupList(0, 100, 110, 600, 380);
+	list = new (FILEPATH, 3536) SetupList(0, 100, 110, 600, 380);
 	list->DrawHighlightBox = false;
-	BigButton = new (FRONT_END_SOURCE, 3539) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
+	BigButton = new (FILEPATH, 3539) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
 }
 
 void StartGameBox::Destroy()
@@ -445,10 +440,10 @@ void SkirmishGameBox::Init(uint32_t width, uint32_t height,
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveSkirmishDialog = this;
 	setup_box->DefaultTextSize = GetBigTextSize();
-	TitleText = new (FRONT_END_SOURCE, 3596) SetupStaticText(1, 40, 30, 720, 40, L"", TEXTJUSTIFY_CENTRE_BREAK);
-	BackButton = new (FRONT_END_SOURCE, 3598) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
-	StartButton = new (FRONT_END_SOURCE, 3599) SetupBigButton(998, 730, 530, L"", 40, 1, BBSTYLE_RIGHT_ARROW);
-	MapList = new (FRONT_END_SOURCE, 3600) SetupList(0, 100, 110, 600, 380);
+	TitleText = new (FILEPATH, 3596) SetupStaticText(1, 40, 30, 720, 40, L"", TEXTJUSTIFY_CENTRE_BREAK);
+	BackButton = new (FILEPATH, 3598) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
+	StartButton = new (FILEPATH, 3599) SetupBigButton(998, 730, 530, L"", 40, 1, BBSTYLE_RIGHT_ARROW);
+	MapList = new (FILEPATH, 3600) SetupList(0, 100, 110, 600, 380);
 	MapList->DrawHighlightBox = true;
 }
 
@@ -470,11 +465,11 @@ void HistoryBox::Init(uint32_t width, uint32_t height,
 	FrontEnd::ActiveHistoryDialog = this;
 	setup_box->field_0x94 = 0;
 	setup_box->DefaultTextSize = GetBigTextSize();
-	PreviousButton = new (FRONT_END_SOURCE, 3831)
+	PreviousButton = new (FILEPATH, 3831)
 		SetupBigButton(1, 60, 500, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a10), 40, 0, BBSTYLE_LEFT_ARROW);
-	NextButton = new (FRONT_END_SOURCE, 3832)
+	NextButton = new (FILEPATH, 3832)
 		SetupBigButton(2, 700, 500, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a0f), 40, 1, BBSTYLE_RIGHT_ARROW);
-	CloseButton = new (FRONT_END_SOURCE, 3833)
+	CloseButton = new (FILEPATH, 3833)
 		SetupButton(999, 320, 500, 160, 40, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a73), 1);
 	CloseButton->text_size = GetMidTextSize();
 }
@@ -513,4 +508,4 @@ bool HistoryBox::CanESCOut()
 	return false;
 }
 
-#undef FRONT_END_SOURCE
+#undef FILEPATH
