@@ -12,7 +12,7 @@ struct LHMatrix
 
 	// Non-virtual methods
 
-	// BW1W120 00403500 BW1M100 100417d0 LHMatrix::SetIdentityMatrix(void)
+	// BW1W120 00403500
 	void SetIdentityMatrix()
 	{
 		m[11] = 0.0f;
@@ -28,7 +28,7 @@ struct LHMatrix
 		m[4] = 1.0f;
 		m[0] = 1.0f;
 	}
-	// BW1W120 00403530 BW1M100 inlined LHMatrix::Translation(const LHPoint&)
+	// BW1W120 00403530 BW1M119 inlined
 	void __fastcall Translation(const LHPoint& translation)
 	{
 		SetIdentityMatrix();
@@ -36,16 +36,16 @@ struct LHMatrix
 		m[10] = translation.y;
 		m[11] = translation.z;
 	}
-	// BW1W120 00403570 BW1M100 inlined LHMatrix::PostTranslation(const LHPoint&)
+	// BW1W120 00403570 BW1M119 inlined
 	void __fastcall PostTranslation(const LHPoint& translation)
 	{
 		m[9] = translation.x + m[9];
 		m[10] = translation.y + m[10];
 		m[11] = translation.z + m[11];
 	}
-	// BW1W120 007fb290 BW1M100 1004f05c LHMatrix::SetInverse(LHMatrix const &)
+	// BW1W120 007fb290 BW1M119 0102fff0 (LHCombined Release)
 	void __fastcall SetInverse(const LHMatrix& r);
-	// BW1W120 inlined BW1M100 10027e00 LHMatrix::TransformPoint(LHPoint &) const
+	// BW1W120 inlined BW1M119 0102a970
 	void TransformPoint(LHPoint& point) const
 	{
 		float x = point.x;

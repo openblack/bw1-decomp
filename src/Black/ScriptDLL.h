@@ -61,16 +61,16 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 006f6bc0 BW1M100 100457b0 ScriptDLL::POP(VMType *)
+	// BW1W120 006f6bc0 BW1M119 010457b0
 	uint32_t POP(VMType* type);
-	// BW1W120 inlined BW1M100 10045810 ScriptDLL::COORD_POP(void)
+	// BW1W120 inlined BW1M119 01045810
 	float COORD_POP()
 	{
 		VMType   type;
 		uint32_t value = POP(&type);
 		return *(float*)&value;
 	}
-	// BW1W120 inlined BW1M100 10045620 ScriptDLL::THING_OR_NULL_POP(void)
+	// BW1W120 inlined BW1M119 01045620
 	uint32_t THING_OR_NULL_POP()
 	{
 		VMType type;
@@ -98,27 +98,27 @@ public:
 
 	// Static methods
 
-	// BW1W120 006f6320 BW1M100 104e8e70 ScriptDLL::Create(char const *)
+	// BW1W120 006f6320 BW1M119 014f0630
 	static ScriptDLL* Create(const char* library_path);
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined ScriptDLL::ScriptDLL(const char*)
+	// BW1W120 inlined BW1M119 inlined
 	ScriptDLL(const char* library_path) : LHDLL(library_path) { field_0x28 = 0; }
 
 	// Non-virtual methods
 
-	// BW1W120 006f68c0 BW1M100 104e8480 ScriptDLL::AutoStart(void)
+	// BW1W120 006f68c0 BW1M119 014efc20
 	void AutoStart();
-	// BW1W120 006f68f0 BW1M100 104e8410 ScriptDLL::StopTasksOfType(VMScriptType)
+	// BW1W120 006f68f0 BW1M119 014efbb0
 	void StopTasksOfType(VMScriptType param_1);
-	// BW1W120 006f6910 BW1M100 104e83b0 ScriptDLL::StopAllTasks(void)
+	// BW1W120 006f6910 BW1M119 014efb50
 	void StopAllTasks();
-	// BW1W120 006f6920 BW1M100 104e8350 ScriptDLL::LoadBinary(char const *)
+	// BW1W120 006f6920 BW1M119 014efaf0
 	int LoadBinary(const char* path);
-	// BW1W120 006f6ba0 BW1M100 10042e90 ScriptDLL::PUSH(void *, VMType)
+	// BW1W120 006f6ba0 BW1M119 010458d0
 	void PUSH(void* param_1, VMType param_2);
-	// BW1W120 006f6c50 BW1M100 104e7d70 ScriptDLL::GetScriptType(unsigned long)
+	// BW1W120 006f6c50 BW1M119 014ef510
 	void* GetScriptType(unsigned long param_1);
 
 	virtual void GetAPI();

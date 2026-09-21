@@ -15,9 +15,9 @@ class GSpotVisualInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 0063e070 BW1M100 101102f0 GSpotVisualInfo::_dt(void)
+	// BW1W120 0063e070 BW1M119 01119ad0
 	virtual ~GSpotVisualInfo();
-	// BW1W120 0063e020 BW1M100 10110f10 GSpotVisualInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0063e020 BW1M119 0111a740
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

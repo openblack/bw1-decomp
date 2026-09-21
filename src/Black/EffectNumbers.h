@@ -11,12 +11,12 @@ struct EffectNumbers
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 1051f0e0 EffectNumbers::EffectNumbers(void)
+	// BW1W120 inlined BW1M119 0151f0e0
 	EffectNumbers() { memset(values, 0, sizeof(values)); }
 
 	// Non-virtual methods
 
-	// BW1W120 00525720 BW1M100 100cba20 EffectNumbers::operator*=(const float&)
+	// BW1W120 00525720 BW1M119 010cfd50
 	EffectNumbers& operator*=(const float& rhs);
 };
 

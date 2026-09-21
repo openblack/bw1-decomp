@@ -21,17 +21,17 @@ class Flowers : public Feature
 public:
 	// Override methods
 
-	// BW1W120 005279b0 BW1M100 100d0030 Flowers::_dt(void)
+	// BW1W120 005279b0 BW1M119 010d4570
 	virtual ~Flowers();
-	// BW1W120 005279a0 BW1M100 100d0130 Flowers::GetDebugText(void)
+	// BW1W120 005279a0 BW1M119 010d4670
 	virtual char* GetDebugText();
-	// BW1W120 00527990 BW1M100 100d00f0 Flowers::GetSaveType(void)
+	// BW1W120 00527990 BW1M119 010d4630
 	virtual uint32_t GetSaveType();
-	// BW1W120 00527a30 BW1M100 100d0310 Flowers::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00527a30 BW1M119 010d4850
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 00527980 BW1M100 100d00c0 Flowers::Get3DType(void)
+	// BW1W120 00527980 BW1M119 010d4600
 	virtual LH3DObject::ObjectType Get3DType();
-	// BW1W120 00527a80 BW1M100 100d0170 Flowers::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 00527a80 BW1M119 010d46b0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 

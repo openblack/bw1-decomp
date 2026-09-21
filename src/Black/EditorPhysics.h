@@ -24,7 +24,7 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 005249d0 EditorPhysics::Load(void)
+	// BW1W120 005249d0 BW1M119 012bbcb0
 	static void Load();
 };
 

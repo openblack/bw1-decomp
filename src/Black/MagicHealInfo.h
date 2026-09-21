@@ -15,7 +15,7 @@ class GMagicHealInfo : public GMagicInfo
 public:
 	// Override methods
 
-	// BW1W120 004356a0 BW1M100 103ae460 GMagicHealInfo::_dt(void)
+	// BW1W120 004356a0 BW1M119 013b6460
 	virtual ~GMagicHealInfo();
 };
 

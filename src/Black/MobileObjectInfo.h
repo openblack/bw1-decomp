@@ -19,16 +19,16 @@ public:
 
 	// Override methods
 
-	// BW1W120 00606e10 BW1M100 100ad680 GMobileObjectInfo::_dt(void)
+	// BW1W120 00606e10 BW1M119 010b0200
 	virtual ~GMobileObjectInfo();
-	// BW1W120 00606da0 BW1M100 100ad7d0 GMobileObjectInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00606da0 BW1M119 010b0350
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-	// BW1W120 00425920 BW1M100 100ad790 GMobileObjectInfo::GetMesh( const(void))
+	// BW1W120 00425920 BW1M119 010b0310
 	virtual MESH_LIST GetMesh() const;
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 100ad720 GMobileObjectInfo::GMobileObjectInfo(void)
+	// BW1W120 inlined BW1M119 010b02a0
 	GMobileObjectInfo();
 };
 

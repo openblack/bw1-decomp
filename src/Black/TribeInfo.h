@@ -21,19 +21,19 @@ public:
 
 	// Override methods
 
-	// BW1W120 0074c920 BW1M100 10159d30 GTribeInfo::_dt(void)
+	// BW1W120 0074c920 BW1M119 01161f80
 	virtual ~GTribeInfo();
-	// BW1W120 0074c8c0 BW1M100 10159ef0 GTribeInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0074c8c0 BW1M119 01162120
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Static methods
 
-	// BW1W120 0074c940 BW1M100 10159bc0 GTribeInfo::GetTribeFromText(char const *)
+	// BW1W120 0074c940 BW1M119 01161e10
 	static GTribeInfo* GetTribeFromText(const char* str);
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 10159e50 GTribeInfo::GetTribeTextArray(void)
+	// BW1W120 inlined BW1M119 01162090
 	inline static char** GetTribeTextArray()
 	{
 		static char* TribeTextArray[] = {

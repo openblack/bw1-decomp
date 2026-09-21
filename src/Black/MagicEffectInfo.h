@@ -64,14 +64,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 00524ea0 BW1M100 100cca30 GMagicEffectInfo::_dt(void)
+	// BW1W120 00524ea0 BW1M119 010d0ca0
 	virtual ~GMagicEffectInfo();
-	// BW1W120 00524e30 BW1M100 100ccbe0 GMagicEffectInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00524e30 BW1M119 010d0e50
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Constructors
 
-	// BW1W120 00524e00 BW1M100 100ccad0 GMagicEffectInfo::GMagicEffectInfo(void)
+	// BW1W120 00524e00 BW1M119 010d0d40
 	GMagicEffectInfo();
 };
 

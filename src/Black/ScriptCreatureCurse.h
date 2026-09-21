@@ -22,9 +22,9 @@ struct ScriptCreatureCurse
 
 	// Non-virtual methods
 
-	// BW1W120 006f6190 BW1M100 105e86b0 ScriptCreatureCurse::Init(Creature *)
+	// BW1W120 006f6190 BW1M119 015f04a0
 	void Init(Creature* creature);
-	// BW1W120 006f61e0 BW1M100 105e85d0 ScriptCreatureCurse::ResolveLoad(Creature *)
+	// BW1W120 006f61e0 BW1M119 015f03c0
 	void ResolveLoad(Creature* creature);
 };
 

@@ -7,7 +7,7 @@ template <typename T> struct LHListNode
 {
 	T* value;
 
-	// BW1W120 inlined BW1M100 100e0950 LHListNode<GameThing>::Get(void)
+	// BW1W120 inlined BW1M119 01375f40
 	T*   Get() { return value; }
 	void Set(T* v) { value = v; }
 

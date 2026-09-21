@@ -22,7 +22,8 @@ class GroupBehaviour;
 class DanceGroup : public GameThing
 {
 public:
-	// BW1W120 00be8290. Descriptive name; constructor formats "Untitled %d".
+	// Descriptive name; constructor formats "Untitled %d".
+	// BW1W120 00be8290
 	static int NextUntitledNumber;
 	// Pointer to the object being danced around (the dancer/target). Its MapCoords
 	// base member is at +0x14 (GameThingWithPos::Pos); it also has a flag at +0x100
@@ -35,15 +36,15 @@ public:
 
 	// Override methods
 
-	// BW1W120 0050cf00 BW1M100 102aa590 DanceGroup::_dt(void)
+	// BW1W120 0050cf00 BW1M119 012ad510
 	virtual ~DanceGroup();
-	// BW1W120 0050cef0 BW1M100 102aaa60 DanceGroup::GetDebugText(void)
+	// BW1W120 0050cef0 BW1M119 012adc80
 	virtual char* GetDebugText();
-	// BW1W120 0050d9c0 BW1M100 102aab20 DanceGroup::Load(GameOSFile &)
+	// BW1W120 0050d9c0 BW1M119 012add40
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0050d640 BW1M100 102ab450 DanceGroup::Save(GameOSFile &)
+	// BW1W120 0050d640 BW1M119 012ae700
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0050cee0 BW1M100 102aaa20 DanceGroup::GetSaveType(void)
+	// BW1W120 0050cee0 BW1M119 012adc40
 	virtual uint32_t GetSaveType();
 };
 

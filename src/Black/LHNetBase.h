@@ -12,10 +12,12 @@ class SetupBox;
 class LHNetBase
 {
 public:
-	// BW1W120 00d204a8. Descriptive name; original constructor at 005ea7b0.
+	// Descriptive name; original constructor at 005ea7b0.
 	// Declaration only until the original full storage extent/split is verified.
+	// BW1W120 00d204a8
 	static LHNetBase Instance;
-	// BW1W120 00d2054c. Separate allocation used by LHMessageBox; descriptive name.
+	// Separate allocation used by LHMessageBox; descriptive name.
+	// BW1W120 00d2054c
 	static SetupBox* MessageBox;
 
 	LHLobby*     Lobby; /* 0x0 */

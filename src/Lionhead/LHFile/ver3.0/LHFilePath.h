@@ -3,7 +3,8 @@
 
 #include <stdio.h> /* For sprintf */
 
-// BW1W120 00c2b9e8 the drive letter the game was launched from ('D' by default)
+// The drive letter the game was launched from ('D' by default)
+// BW1W120 00c2b9e8
 extern char g_GameDriveCharacter;
 
 // Builds a game drive rooted copy of a path ("<drive>:\<path>") into an inline

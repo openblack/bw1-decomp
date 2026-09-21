@@ -11,14 +11,14 @@ class LHReleasedFile : public LHFile
 public:
 	// Override methods
 
-	// BW1W120 007bd730 BW1M100 1061c784 LHReleasedFile::Open(LH_FILE_MODE)
+	// BW1W120 007bd730 BW1M119 0116a290 (LHCombined Release)
 	virtual uint32_t Open(LH_FILE_MODE mode);
 
 	// Constructors
 
-	// BW1W120 0047f6d0 BW1M100 101c9350 LHReleasedFile::LHReleasedFile
+	// BW1W120 0047f6d0 BW1M119 011d1110
 	LHReleasedFile();
-	// BW1W120 00837350 BW1M100 inlined LHReleasedFile::LHReleasedFile(char const *)
+	// BW1W120 00837350 BW1M119 inlined
 	LHReleasedFile(const char* name);
 };
 

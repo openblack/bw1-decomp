@@ -13,12 +13,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 00543d80 BW1M100 105bb960 CDBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00543d80 BW1M119 015c27c0
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
-	// BW1W120 00544040 BW1M100 105bb910 CDBox::Destroy(void)
+	// BW1W120 00544040 BW1M119 015c2770
 	virtual void Destroy();
-	// BW1W120 00544050 BW1M100 105bb850 CDBox::InitControls(void)
+	// BW1W120 00544050 BW1M119 015c26b0
 	virtual void InitControls();
 };
 

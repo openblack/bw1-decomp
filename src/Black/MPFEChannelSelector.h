@@ -39,24 +39,24 @@ public:
 
 	// Override methods
 
-	// BW1W120 00628450 BW1M100 1039e270 MPFEChannelSelector::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00628450 BW1M119 013a5da0
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 00628e20 BW1M100 1039e230 MPFEChannelSelector::Destroy(void)
+	// BW1W120 00628e20 BW1M119 013a5d60
 	virtual void Destroy();
-	// BW1W120 00628430 BW1M100 1039e800 MPFEChannelSelector::Show(void)
+	// BW1W120 00628430 BW1M119 013a6330
 	virtual void Show();
-	// BW1W120 00628e30 BW1M100 1039df20 MPFEChannelSelector::InitControls(void)
+	// BW1W120 00628e30 BW1M119 013a59d0
 	virtual void InitControls();
 
 	// Constructors
 
-	// BW1W120 00628330 BW1M100 1039f0c0 MPFEChannelSelector::MPFEChannelSelector(void)
+	// BW1W120 00628330 BW1M119 013a6bc0
 	MPFEChannelSelector();
 
 	// Non-virtual methods
 
-	// BW1W120 00629c50 BW1M100 1039cab0 MPFEChannelSelector::RefreshChannelList(void)
+	// BW1W120 00629c50 BW1M119 013a43e0
 	void RefreshChannelList();
 };
 

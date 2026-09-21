@@ -15,9 +15,9 @@ class DifferentCreatureInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 00472d50 BW1M100 101d2170 DifferentCreatureInfo::_dt(void)
+	// BW1W120 00472d50 BW1M119 011d9c40
 	virtual ~DifferentCreatureInfo();
-	// BW1W120 00472cf0 BW1M100 101e2a50 DifferentCreatureInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00472cf0 BW1M119 011ea060
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

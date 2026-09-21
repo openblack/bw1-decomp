@@ -1,6 +1,6 @@
 #include "Script.h"
 
-// BW1W120 00c0c740 BW1M100 1099bea4
+// BW1W120 00c0c740
 // Indexed by SCRIPT_OBJECT_TYPE - 1.
 ScriptObjectDispatch GScript::g_scriptObjectDispatch[SCRIPT_OBJECT_TYPE_LAST - 1] = {
 	{NULL, NULL, NULL, NULL, NULL, NULL},                                                      /* MARKER */

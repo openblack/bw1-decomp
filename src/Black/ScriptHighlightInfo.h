@@ -16,9 +16,9 @@ class GScriptHighlightInfo : public GSingleMapFixedInfo
 public:
 	// Override methods
 
-	// BW1W120 007096b0 BW1M100 104fb990 GScriptHighlightInfo::_dt(void)
+	// BW1W120 007096b0 BW1M119 01502b60
 	virtual ~GScriptHighlightInfo();
-	// BW1W120 00709640 BW1M100 104fc510 GScriptHighlightInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00709640 BW1M119 01503690
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

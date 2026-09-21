@@ -1,6 +1,6 @@
 #include "DialogBoxSaveMessage.h"
 
-// BW1W120 00515990
+// BW1W120 00515990 BW1M119 012b99d0
 DialogBoxSaveMessage::DialogBoxSaveMessage()
 {
 	field_0x10 = 0;

@@ -16,15 +16,15 @@ class VortexSave : public GameThing
 public:
 	// Override methods
 
-	// BW1W120 0076f870 BW1M100 1015f3f0 VortexSave::_dt(void)
+	// BW1W120 0076f870 BW1M119 01167650
 	virtual ~VortexSave();
-	// BW1W120 0076fdc0 BW1M100 1015e890 VortexSave::Load(GameOSFile &)
+	// BW1W120 0076fdc0 BW1M119 01166a80
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0076fb40 BW1M100 1015ed90 VortexSave::Save(GameOSFile &)
+	// BW1W120 0076fb40 BW1M119 01166ff0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0076f860 BW1M100 1015e730 VortexSave::GetSaveType(void)
+	// BW1W120 0076f860 BW1M119 01166920
 	virtual uint32_t GetSaveType();
-	// BW1W120 0076ffe0 BW1M100 1015e770 VortexSave::ResolveLoad(void)
+	// BW1W120 0076ffe0 BW1M119 01166960
 	virtual void ResolveLoad();
 };
 

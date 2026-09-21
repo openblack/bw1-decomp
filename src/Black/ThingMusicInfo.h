@@ -16,15 +16,15 @@ class ThingMusicInfo : public GameThing
 public:
 	// Override methods
 
-	// BW1W120 00429320 BW1M100 1017c8b0 ThingMusicInfo::_dt(void)
+	// BW1W120 00429320 BW1M119 01185c80
 	virtual ~ThingMusicInfo();
-	// BW1W120 00429310 BW1M100 1017c980 ThingMusicInfo::GetDebugText(void)
+	// BW1W120 00429310 BW1M119 01185d50
 	virtual char* GetDebugText();
-	// BW1W120 00429ae0 BW1M100 1017c9c0 ThingMusicInfo::Load(GameOSFile &)
+	// BW1W120 00429ae0 BW1M119 01185d90
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00429950 BW1M100 1017cc10 ThingMusicInfo::Save(GameOSFile &)
+	// BW1W120 00429950 BW1M119 01185fe0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00429300 BW1M100 1017c940 ThingMusicInfo::GetSaveType(void)
+	// BW1W120 00429300 BW1M119 01185d10
 	virtual uint32_t GetSaveType();
 };
 

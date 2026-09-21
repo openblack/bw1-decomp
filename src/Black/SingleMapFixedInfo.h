@@ -16,11 +16,11 @@ class GSingleMapFixedInfo : public GObjectInfo
 public:
 	// Override methods
 
-	// BW1W120 0052dd50 BW1M100 100e2210 GSingleMapFixedInfo::_dt(void)
+	// BW1W120 0052dd50 BW1M119 010e7160
 	virtual ~GSingleMapFixedInfo();
-	// BW1W120 0052dce0 BW1M100 100e3150 GSingleMapFixedInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0052dce0 BW1M119 010e75b0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-	// BW1W120 0052dcd0 BW1M100 100c3840 GSingleMapFixedInfo::GetMesh( const(void))
+	// BW1W120 0052dcd0 BW1M119 010c68e0
 	virtual MESH_LIST GetMesh() const;
 };
 

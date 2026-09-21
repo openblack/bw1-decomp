@@ -15,7 +15,7 @@ class GMagicFlockFlyingInfo : public GMagicInfo
 public:
 	// Override methods
 
-	// BW1W120 004357c0 BW1M100 1051ed80 GMagicFlockFlyingInfo::_dt(void)
+	// BW1W120 004357c0 BW1M119 015264f0
 	virtual ~GMagicFlockFlyingInfo();
 };
 

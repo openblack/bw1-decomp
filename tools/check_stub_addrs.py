@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Validate `// BW1W120 <w> BW1M100 <m> <sig>` stub comments in .cpp files against
-the authoritative header declarations.
+"""Validate `// BW1W120 <w> BW1M119 <m> [(<module>)]` stub comments in .cpp files
+against the authoritative header declarations.
 
 The headers under src/ and include/ carry the canonical per-symbol comment (both the
-Windows BW1W120 address and the Mac BW1M100 address). When a stub is added to a .cpp,
+Windows BW1W120 address and the Mac BW1M119 address). When a stub is added to a .cpp,
 its comment must be copied verbatim from the header; retyping the Mac address is an easy
 copy error that silently corrupts the Mac address map. This script keys on the reliable
-BW1W120 address and reports any .cpp stub whose BW1M100 address (or demangled signature)
+BW1W120 address and reports any .cpp stub whose BW1M119 address (or module tag)
 disagrees with the header.
 
 Usage:
@@ -21,11 +21,12 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RX = re.compile(r'BW1W120\s+([0-9a-fA-F]+)\s+BW1M100\s+([0-9a-fA-F]+)\s+(.*?)\s*$')
+# group 2 is the whole Mac part: an address or keyword plus any `(<module>)` tag.
+RX = re.compile(r'BW1W120\s+([0-9a-fA-F]+)\s+BW1M119\s+([0-9a-fA-F]+(?:\s+\([^)]*\))?|\w+)')
 
 
 def load_headers():
-    """BW1W120 addr (lower) -> (BW1M100 addr, signature, header path)."""
+    """BW1W120 addr (lower) -> (BW1M119 part, header path)."""
     hdr = {}
     pats = [os.path.join(ROOT, "src", "**", "*.h"),
             os.path.join(ROOT, "include", "**", "*.h")]
@@ -34,8 +35,7 @@ def load_headers():
             for line in open(h, errors="ignore"):
                 m = RX.search(line)
                 if m:
-                    hdr.setdefault(m.group(1).lower(),
-                                   (m.group(2).lower(), m.group(3).strip(), h))
+                    hdr.setdefault(m.group(1).lower(), (m.group(2), h))
     return hdr
 
 
@@ -47,7 +47,7 @@ def main(argv):
 
     hdr = load_headers()
     if not hdr:
-        print("no BW1W120/BW1M100 header comments found — nothing to check against")
+        print("no BW1W120/BW1M119 header comments found — nothing to check against")
         return 1
 
     bad = 0
@@ -62,17 +62,18 @@ def main(argv):
             m = RX.search(line)
             if not m:
                 continue
-            w, mac = m.group(1).lower(), m.group(2).lower()
+            w, mac = m.group(1).lower(), m.group(2)
             if w not in hdr:
                 # Not necessarily wrong (local helper, non-symbol), but worth flagging.
                 continue
-            hmac, hsig, hh = hdr[w]
+            hmac, hh = hdr[w]
             if mac != hmac:
                 bad += 1
                 rel = os.path.relpath(path, ROOT)
-                print(f"{rel}:{i + 1}  BW1W120 {w}: BW1M100 {mac} != header {hmac}  ({hsig})")
+                print(f"{rel}:{i + 1}  BW1W120 {w}: BW1M119 {mac} != header {hmac}  "
+                      f"({os.path.relpath(hh, ROOT)})")
                 if fix:
-                    lines[i] = line.replace(f"BW1M100 {mac}", f"BW1M100 {hmac}", 1)
+                    lines[i] = line.replace(f"BW1M119 {mac}", f"BW1M119 {hmac}", 1)
                     changed = True
         if fix and changed:
             open(path, "w").writelines(lines)

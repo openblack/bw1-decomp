@@ -35,7 +35,7 @@ struct CFrame
 
 	// Non-virtual methods
 
-	// BW1W120 00860c30 BW1M100 100dc860 CFrame::ReadBinary(LHFile *, long, long)
+	// BW1W120 00860c30 BW1M119 010dbac0 (LHCombined Release)
 	void ReadBinary(LHFile* file, long param_3, long param_4);
 };
 
@@ -54,21 +54,21 @@ struct CAnim
 
 	// Constructors
 
-	// BW1W120 0085e480 BW1M100 1061ff4c CAnim::CAnim(void)
+	// BW1W120 0085e480 BW1M119 011c2c38 (LHCombined Release)
 	CAnim();
-	// BW1W120 0085e4c0 BW1M100 1061bb54 CAnim::CAnim(CAnim *)
+	// BW1W120 0085e4c0 BW1M119 0112eff0 (LHCombined Release)
 	CAnim(CAnim* param_2);
-	// BW1W120 0085ef40 BW1M100 1061e2fc CAnim::CAnim(CAnim *, CFrame *, CAnim *, CFrame *, float, CAnim *, CFrame *, float)
+	// BW1W120 0085ef40 BW1M119 010b9180 (LHCombined Release)
 	CAnim(CAnim* param_2, CFrame* param_3, CAnim* param_4, CFrame* param_5, float param_6, CAnim* param_7,
 	      CFrame* param_8, float param_9);
 
 	// Non-virtual methods
 
-	// BW1W120 0085e4a0 BW1M100 1061b7c4 CAnim::~CAnim(void)
+	// BW1W120 0085e4a0 BW1M119 011299e0 (LHCombined Release)
 	~CAnim();
-	// BW1W120 00861a00 BW1M100 1061fa9c CAnim::AdjustForNewBasedOnStand(CAnim *, CAnim *)
+	// BW1W120 00861a00 BW1M119 010fbf90 (LHCombined Release)
 	void AdjustForNewBasedOnStand(CAnim* param_2, CAnim* param_3);
-	// BW1W120 00860860 BW1M100 106200cc CAnim::ReadBinary(LHFile *)
+	// BW1W120 00860860 BW1M119 010950e0 (LHCombined Release)
 	void ReadBinary(LHFile* file);
 };
 
@@ -80,12 +80,12 @@ struct LH3DAnimSet
 
 	// Constructors
 
-	// BW1W120 006170e0 BW1M100 10109260 LH3DAnimSet::LH3DAnimSet(void)
+	// BW1W120 006170e0 BW1M119 01112980
 	LH3DAnimSet();
 
 	// Non-virtual methods
 
-	// BW1W120 00619b80 BW1M100 101059e0 LH3DAnimSet::ReadBinaryNew
+	// BW1W120 00619b80 BW1M119 0110f440
 	uint32_t ReadBinaryNew(LHFile* param_2, AnimInfo* param_3, AnimInfo* param_4);
 };
 
@@ -97,7 +97,7 @@ struct CatInfo
 
 	// Non-virtual methods
 
-	// BW1W120 004c4970 BW1M100 10230ed0 CatInfo::Read(std::_FILE *)
+	// BW1W120 004c4970 BW1M119 01235db0
 	char Read(LHFilePath* path);
 };
 
@@ -110,7 +110,7 @@ struct AnimInfo
 
 	// Non-virtual methods
 
-	// BW1W120 004c4ab0 BW1M100 10230d20 AnimInfo::Read(char *)
+	// BW1W120 004c4ab0 BW1M119 01235c00
 	uint32_t Read(char* spec_filename);
 };
 
@@ -155,14 +155,14 @@ struct LH3DAnim
 
 	// Static methods
 
-	// BW1W120 0083a1d0 BW1M100 10129570 LH3DAnim::SetTransform(LH3DMatrix*, LH3DMesh*, LH3DMatrix*)
+	// BW1W120 0083a1d0 BW1M119 01129510 (LHCombined Release)
 	static float SetTransform(LHMatrix* param_1, LH3DMesh* param_2, LHMatrix* param_3);
-	// BW1W120 0083aa30 BW1M100 1061eac4 LH3DAnim::CreatePack(void)
+	// BW1W120 0083aa30 BW1M119 01128810 (LHCombined Release)
 	static void CreatePack();
 
 	// Non-virtual methods
 
-	// BW1W120 0083a6a0 BW1M100 1001f930 LH3DAnim::GetListPtrFrames
+	// BW1W120 0083a6a0 BW1M119 0101f950 (LHCombined Release)
 	int GetListPtrFrames();
 };
 

@@ -15,7 +15,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 005ce340 BW1M100 1035c820 GInterfaceFlags::_dt(void)
+	// BW1W120 005ce340 BW1M119 01364290
 	virtual ~GInterfaceFlags();
 };
 

@@ -19,27 +19,27 @@ class ScriptMarker : public GameThingWithPos
 public:
 	// Override methods
 
-	// BW1W120 00561070 BW1M100 10501430 ScriptMarker::_dt(void)
+	// BW1W120 00561070 BW1M119 01507dc0
 	virtual ~ScriptMarker();
-	// BW1W120 0070d970 BW1M100 10501740 ScriptMarker::ToBeDeleted(int)
+	// BW1W120 0070d970 BW1M119 015080d0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00561060 BW1M100 10501620 ScriptMarker::GetDebugText(void)
+	// BW1W120 00561060 BW1M119 01507fb0
 	virtual char* GetDebugText();
-	// BW1W120 0070d9f0 BW1M100 10501660 ScriptMarker::Load(GameOSFile &)
+	// BW1W120 0070d9f0 BW1M119 01507ff0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0070d9d0 BW1M100 105016d0 ScriptMarker::Save(GameOSFile &)
+	// BW1W120 0070d9d0 BW1M119 01508060
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00561050 BW1M100 105015e0 ScriptMarker::GetSaveType(void)
+	// BW1W120 00561050 BW1M119 01507f70
 	virtual uint32_t GetSaveType();
-	// BW1W120 00561030 BW1M100 10501550 ScriptMarker::PhysicsEditorCreate(int)
+	// BW1W120 00561030 BW1M119 01507ee0
 	virtual void PhysicsEditorCreate(int param_1);
-	// BW1W120 00561040 BW1M100 10501590 ScriptMarker::IsDeletedWhenReleasedFromScript(void)
+	// BW1W120 00561040 BW1M119 01507f20
 	virtual uint32_t IsDeletedWhenReleasedFromScript();
-	// BW1W120 00561010 BW1M100 105014d0 ScriptMarker::GetText(void)
+	// BW1W120 00561010 BW1M119 01507e60
 	virtual const char* GetText();
-	// BW1W120 00561020 BW1M100 10501510 ScriptMarker::IsScriptMarker(void)
+	// BW1W120 00561020 BW1M119 01507ea0
 	virtual uint32_t IsScriptMarker();
-	// BW1W120 0070d960 BW1M100 10501850 ScriptMarker::GetScriptObjectType(void)
+	// BW1W120 0070d960 BW1M119 015081e0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 };
 

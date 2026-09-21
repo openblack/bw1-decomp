@@ -4,7 +4,7 @@
 #include "CreatureInitialDesireInfo.h" /* For struct CreatureInitialDesireInfo */
 #include "CreatureMentalDesire.h"      /* For struct CreatureDesires */
 
-// BW1W120 004de270 BW1M100 1025d410 CreatureDesires::InitialiseSources(void)
+// BW1W120 004de270 BW1M119 012618c0
 void CreatureDesires::InitialiseSources()
 {
 	for (int i = 0; i < NUM_CREATURE_DESIRES; i++)

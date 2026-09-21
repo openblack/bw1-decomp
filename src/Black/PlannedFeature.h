@@ -18,17 +18,17 @@ class PlannedFeature : public PlannedMultiMapFixed
 public:
 	// Override methods
 
-	// BW1W120 005274a0 BW1M100 100d1600 PlannedFeature::_dt(void)
+	// BW1W120 005274a0 BW1M119 010d6100
 	virtual ~PlannedFeature();
-	// BW1W120 00527490 BW1M100 100d16e0 PlannedFeature::GetDebugText(void)
+	// BW1W120 00527490 BW1M119 010d61e0
 	virtual char* GetDebugText();
-	// BW1W120 00527580 BW1M100 100d0f60 PlannedFeature::Load(GameOSFile &)
+	// BW1W120 00527580 BW1M119 010d5980
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00527550 BW1M100 100d0ff0 PlannedFeature::Save(GameOSFile &)
+	// BW1W120 00527550 BW1M119 010d5a10
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00527480 BW1M100 100d16a0 PlannedFeature::GetSaveType(void)
+	// BW1W120 00527480 BW1M119 010d61a0
 	virtual uint32_t GetSaveType();
-	// BW1W120 005274d0 BW1M100 100d1080 PlannedFeature::CreatePlanned(float)
+	// BW1W120 005274d0 BW1M119 010d5aa0
 	virtual MultiMapFixed* CreatePlanned(float param_1);
 };
 

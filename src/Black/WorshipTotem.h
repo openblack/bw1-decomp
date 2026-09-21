@@ -31,7 +31,7 @@ struct Q212WorshipTotem13TChargingData
 
 	// Constructors
 
-	// BW1W120 00780af0 BW1M100 inlined WorshipTotem::TChargingData::TChargingData(void)
+	// BW1W120 00780af0 BW1M119 inlined
 	Q212WorshipTotem13TChargingData();
 };
 
@@ -44,55 +44,55 @@ public:
 
 	// Override methods
 
-	// BW1W120 00780810 BW1M100 105b74d0 WorshipTotem::_dt(void)
+	// BW1W120 00780810 BW1M119 015be3e0
 	virtual ~WorshipTotem();
-	// BW1W120 007808e0 BW1M100 105b8520 WorshipTotem::ToBeDeleted(int)
+	// BW1W120 007808e0 BW1M119 015bf440
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00780800 BW1M100 105b7760 WorshipTotem::GetDebugText(void)
+	// BW1W120 00780800 BW1M119 015be670
 	virtual char* GetDebugText();
-	// BW1W120 00780f10 BW1M100 105b7910 WorshipTotem::Load(GameOSFile &)
+	// BW1W120 00780f10 BW1M119 015be820
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00780f90 BW1M100 105b7820 WorshipTotem::Save(GameOSFile &)
+	// BW1W120 00780f90 BW1M119 015be730
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 007807f0 BW1M100 105b7720 WorshipTotem::GetSaveType(void)
+	// BW1W120 007807f0 BW1M119 015be630
 	virtual uint32_t GetSaveType();
-	// BW1W120 00780f00 BW1M100 105b7a00 WorshipTotem::ResolveLoad(void)
+	// BW1W120 00780f00 BW1M119 015be910
 	virtual void ResolveLoad();
-	// BW1W120 00780ad0 BW1M100 105b8160 WorshipTotem::GetPSysPower( const(void))
+	// BW1W120 00780ad0 BW1M119 015bf080
 	virtual float GetPSysPower() const;
-	// BW1W120 00780a80 BW1M100 105b8330 WorshipTotem::CalculateDesireForFood(void)
+	// BW1W120 00780a80 BW1M119 015bf250
 	virtual float CalculateDesireForFood();
-	// BW1W120 00780a90 BW1M100 105b82c0 WorshipTotem::CalculateDesireForRest(void)
+	// BW1W120 00780a90 BW1M119 015bf1e0
 	virtual float CalculateDesireForRest();
-	// BW1W120 00780aa0 BW1M100 105b8240 WorshipTotem::CalculatePeopleHidingIndicator(void)
+	// BW1W120 00780aa0 BW1M119 015bf160
 	virtual float CalculatePeopleHidingIndicator();
-	// BW1W120 007807e0 BW1M100 105b76e0 WorshipTotem::IsSacrificeAltar(void)
+	// BW1W120 007807e0 BW1M119 015be5f0
 	virtual uint32_t IsSacrificeAltar();
-	// BW1W120 007807b0 BW1M100 inlined WorshipTotem::SetSpecularColor(LH3DColor)
+	// BW1W120 007807b0 BW1M119 inlined
 	virtual void SetSpecularColor(LH3DColor param_1);
-	// BW1W120 007807c0 BW1M100 105b7650 WorshipTotem::GetSpecularColor(void)
+	// BW1W120 007807c0 BW1M119 015be560
 	virtual LH3DColor GetSpecularColor();
-	// BW1W120 00780a70 BW1M100 105b83a0 WorshipTotem::GetMesh( const(void))
+	// BW1W120 00780a70 BW1M119 015bf2c0
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00519360 BW1M100 100c7bd0 WorshipTotem::Draw(void)
+	// BW1W120 00519360 BW1M119 010cb170
 	virtual void Draw();
-	// BW1W120 00780ab0 BW1M100 105b81d0 WorshipTotem::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00780ab0 BW1M119 015bf0f0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1W120 007807d0 BW1M100 105b7690 WorshipTotem::Get3DType(void)
+	// BW1W120 007807d0 BW1M119 015be5a0
 	virtual LH3DObject::ObjectType Get3DType();
-	// BW1W120 00780790 BW1M100 105b7570 WorshipTotem::IsSpellSeedReturnPoint( const(void))
+	// BW1W120 00780790 BW1M119 015be480
 	virtual bool32_t IsSpellSeedReturnPoint() const;
-	// BW1W120 007807a0 BW1M100 105b75c0 WorshipTotem::IsEffectReceiver(EffectValues *)
+	// BW1W120 007807a0 BW1M119 015be4d0
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
 
 	// Static methods
 
-	// BW1W120 00780930 BW1M100 105b8440 WorshipTotem::Create(WorshipSite *)
+	// BW1W120 00780930 BW1M119 015bf360
 	static WorshipTotem* Create(WorshipSite* site);
 
 	// Constructors
 
-	// BW1W120 00780840 BW1M100 105b8640 WorshipTotem::WorshipTotem(WorshipSite *)
+	// BW1W120 00780840 BW1M119 015bf560
 	WorshipTotem(WorshipSite* site);
 };
 

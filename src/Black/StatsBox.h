@@ -13,12 +13,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 0056d370 BW1M100 1031d8a0 StatsBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 0056d370 BW1M119 01325f50
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
-	// BW1W120 0056d980 BW1M100 1031d840 StatsBox::Destroy(void)
+	// BW1W120 0056d980 BW1M119 01325ef0
 	virtual void Destroy();
-	// BW1W120 0056d990 BW1M100 1031d780 StatsBox::InitControls(void)
+	// BW1W120 0056d990 BW1M119 01325e30
 	virtual void InitControls();
 };
 

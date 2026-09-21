@@ -27,12 +27,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 00524f40 BW1M100 10412ff0 EffectValues::_dt(void)
+	// BW1W120 00524f40 BW1M119 014821b0
 	// virtual ~EffectValues();
 
 	// Constructors
 
-	// BW1W120 00525040 BW1M100 100cc350 EffectValues::EffectValues(EFFECT_TYPE, float, GameThing *, float, GPlayer *)
+	// BW1W120 00525040 BW1M119 010d0680
 	EffectValues(EFFECT_TYPE type, float value, GameThing* source, float param_4, GPlayer* player);
 };
 

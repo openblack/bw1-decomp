@@ -12,7 +12,7 @@ struct LHSegmentDesc
 
 	// Constructors
 
-	// BW1W120 007bd350 LHSegmentDesc::LHSegmentDesc(char *, int, int)
+	// BW1W120 007bd350 BW1M119 0116ac80 (LHCombined Release)
 	LHSegmentDesc(char* name, int size, int offset);
 };
 static_assert(sizeof(LHSegmentDesc) == 0x2c, "Data type is of wrong size");

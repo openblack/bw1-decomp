@@ -4,7 +4,7 @@
 class PSysLightMaps
 {
 public:
-	// BW1W120 006ca6e0 BW1M100 10012970
+	// BW1W120 006ca6e0 BW1M119 01015540
 	static void AddDrawing();
 };
 

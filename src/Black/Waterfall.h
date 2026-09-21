@@ -21,21 +21,21 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055de60 BW1M100 10154270 GWaterfall::_dt(void)
+	// BW1W120 0055de60 BW1M119 0115c610
 	virtual ~GWaterfall();
-	// BW1W120 00734170 BW1M100 10154230 GWaterfall::ToBeDeleted(int)
+	// BW1W120 00734170 BW1M119 0115c5d0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0055de50 BW1M100 10153430 GWaterfall::GetDebugText(void)
+	// BW1W120 0055de50 BW1M119 0115b770
 	virtual char* GetDebugText();
-	// BW1W120 00734660 BW1M100 10153470 GWaterfall::Load(GameOSFile &)
+	// BW1W120 00734660 BW1M119 0115b7b0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00734650 BW1M100 101534b0 GWaterfall::Save(GameOSFile &)
+	// BW1W120 00734650 BW1M119 0115b7f0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055de40 BW1M100 101533f0 GWaterfall::GetSaveType(void)
+	// BW1W120 0055de40 BW1M119 0115b730
 	virtual uint32_t GetSaveType();
-	// BW1W120 007341b0 BW1M100 10154110 GWaterfall::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 007341b0 BW1M119 0115c4b0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 007341d0 BW1M100 10154080 GWaterfall::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 007341d0 BW1M119 0115c420
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 

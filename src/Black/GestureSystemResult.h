@@ -14,12 +14,12 @@ struct GestureSystemResult
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined GestureSystemResult::GestureSystemResult(void)
+	// BW1W120 inlined BW1M119 inlined
 	GestureSystemResult() { SetToZero(); }
 
 	// Non-virtual methods
 
-	// BW1W120 0054bb90 BW1M100 100938a0 GestureSystemResult::SetToZero(void)
+	// BW1W120 0054bb90 BW1M119 01095b00
 	void SetToZero();
 };
 

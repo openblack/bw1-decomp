@@ -10,11 +10,11 @@ class PlayerMessage : public Prss
 public:
 	// Override methods
 
-	// BW1W120 0066b5e0 BW1M100 inlined PlayerMessage::ProcessTurn(void)
+	// BW1W120 0066b5e0 BW1M119 inlined
 	virtual Prss* ProcessTurn();
-	// BW1W120 0066b610 BW1M100 inlined PlayerMessage::Display(void)
+	// BW1W120 0066b610 BW1M119 inlined
 	virtual void Display();
-	// BW1W120 0066b620 PlayerMessage::ClickFunction(int, int, int)
+	// BW1W120 0066b620
 	virtual void ClickFunction(int param_1, int param_2, int param_3);
 };
 

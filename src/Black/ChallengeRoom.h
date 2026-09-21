@@ -17,39 +17,39 @@ struct TempleChallenge
 
 	// Constructors
 
-	// BW1W120 00781210 BW1M100 101b5750 TempleChallenge::TempleChallenge(GameOSFile &)
+	// BW1W120 00781210 BW1M119 011be570
 	TempleChallenge(GameOSFile& param_1);
 
 	// Non-virtual methods
 
-	// BW1W120 00781460 BW1M100 101b51f0 TempleChallenge::StartScript(int)
+	// BW1W120 00781460 BW1M119 011be010
 	void StartScript(int param_1);
-	// BW1W120 007817a0 BW1M100 101b4310 TempleChallenge::LoadChallenge(GameOSFile &)
+	// BW1W120 007817a0 BW1M119 011bd0c0
 	void LoadChallenge(GameOSFile& param_1);
 };
 
 class ChallengeRoom : public PictureRoomBase
 {
 public:
-	// BW1W120 00784de0 BW1M100 101ab830 ChallengeRoom::ChallengeClear(void)
+	// BW1W120 00784de0 BW1M119 011b4630
 	static void ChallengeClear();
 	// Static methods
 
-	// BW1W120 00784b30 BW1M100 101abfe0 ChallengeRoom::CreateChallengeFiles(char*)
+	// BW1W120 00784b30 BW1M119 011b4de0
 	static bool32_t CreateChallengeFiles(char* path);
 
 	// Constructors
 
-	// BW1W120 00781a60 BW1M100 101b4180 ChallengeRoom::ChallengeRoom(void)
+	// BW1W120 00781a60 BW1M119 011bcf60
 	ChallengeRoom();
 
 	// Non-virtual methods
 
-	// BW1W120 00784c10 BW1M100 101abd90 ChallengeRoom::StartScript(unsigned long)
+	// BW1W120 00784c10 BW1M119 011b4b90
 	bool StartScript(unsigned long param_1);
-	// BW1W120 00784d10 BW1M100 101aba10 ChallengeRoom::ChallengeLoad(GameOSFile &)
+	// BW1W120 00784d10 BW1M119 011b4810
 	void ChallengeLoad(GameOSFile& file);
-	// BW1W120 00784c70 BW1M100 101abc70 ChallengeRoom::ChallengeSave(GameOSFile &)
+	// BW1W120 00784c70 BW1M119 011b4a70
 	void ChallengeSave(GameOSFile& file);
 };
 

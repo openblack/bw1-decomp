@@ -13,14 +13,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 0056e160 BW1M100 1031c660 EndGameBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 0056e160 BW1M119 01324d10
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
-	// BW1W120 0056e730 BW1M100 1031c600 EndGameBox::Destroy(void)
+	// BW1W120 0056e730 BW1M119 01324cb0
 	virtual void Destroy();
-	// BW1W120 0053be30 BW1M100 1031ba50 EndGameBox::CanESCOut(void)
+	// BW1W120 0053be30 BW1M119 01324100
 	virtual bool CanESCOut();
-	// BW1W120 0056e740 BW1M100 1031c100 EndGameBox::InitControls(void)
+	// BW1W120 0056e740 BW1M119 013247b0
 	virtual void InitControls();
 };
 

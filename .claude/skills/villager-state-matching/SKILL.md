@@ -30,10 +30,14 @@ python3 .claude/skills/villager-state-matching/vsm.py next --unit VillagerStates
 # 3. write the body in the unit's .cpp at the stub marked  // BW1W120 00769830
 #    (if the file has no stub yet, add the function in ADDRESS ORDER with that comment;
 #     the declaration already exists in src/Black/Villager.h)
-#    STUB COMMENT: copy the ENTIRE `// BW1W120 <w> BW1M100 <m> <sig>` line VERBATIM from
-#    the header — never retype the BW1M100 (Mac) address. Retyping corrupts the Mac
-#    address map (9 such copy errors were found and fixed in the pilot). Validate with:
-#      python3 tools/check_stub_addrs.py src/Black/<Unit>.cpp
+#    STUB COMMENT: `// BW1W120 <w> BW1M119 <m> [(<module>)]` — copy it VERBATIM from
+#    the header; never retype the Mac address (retyping corrupts the address map).
+#    Validate with:  python3 tools/check_stub_addrs.py src/Black/<Unit>.cpp
+#    SIGNATURE: ground truth is the demangled CodeWarrior symbol in config/BW1M119
+#    (name, class, args, const). Look it up before writing the body:
+#      python3 tools/mac_symbol_version.py --find 'Villager::GotoStoragePitForFood'
+#      python3 tools/cwdemangle.py '<mangled name from that output>'
+#    It carries no return type / calling convention — take those from the Windows code.
 #    PARAMS: name parameters meaningfully (snake_case, from Ghidra/callsites) as you
 #    write each body — don't leave param_1/param_2 in code you author (only when the
 #    meaning is truly unknown). Rename in the .cpp definition; header sync is dispatcher work.
@@ -122,9 +126,10 @@ unit with match %.
     or nothing. Where a field's meaning is established, RENAME it (PascalCase)
     instead of commenting on `field_0xNN`.
   - Every declaration you add or touch keeps its full
-    `// BW1W120 <addr> BW1M100 <addr> <sig>` line and named parameters.
+    `// BW1W120 <addr> BW1M119 <addr> [(<module>)]` line and named parameters.
   - Never invent types/enums from a mangling you constructed yourself — real
-    names come from the Mac symbols; use the simplest expressible type instead.
+    names come from demangling the config/BW1M119 symbols; use the simplest
+    expressible type instead.
   - Don't invent public container types (check src/Lionhead for existing ones);
     never name anything "DLL".
 - Log **every** attempt (`matched` / `improved` / `deferred`). The ledger is the

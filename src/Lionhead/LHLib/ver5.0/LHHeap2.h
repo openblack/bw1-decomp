@@ -22,11 +22,11 @@ struct FreeList
 
 	// Non-virtual methods
 
-	// BW1W120 007e1620 FreeList::Init(unsigned long)
+	// BW1W120 007e1620 BW1M119 0113a700 (LHCombined Release)
 	FreeList* Init(unsigned int size);
-	// BW1W120 007e1630 FreeList::ExtendSizeIfAddressNextTo(unsigned char const *, unsigned long)
+	// BW1W120 007e1630 BW1M119 0113a690 (LHCombined Release)
 	int ExtendSizeIfAddressNextTo(const unsigned char* addr, unsigned int size);
-	// BW1W120 007e1660 FreeList::UseMemory(unsigned long)
+	// BW1W120 007e1660 BW1M119 0113a640 (LHCombined Release)
 	void* UseMemory(unsigned int size);
 };
 static_assert(sizeof(FreeList) == 0xc, "Data type is of wrong size");
@@ -40,13 +40,13 @@ struct LHPool
 
 	// Static methods
 
-	// BW1W120 007e1f70 LHPool::AllocateFromPool(LHPool *&, int, Heap *)
+	// BW1W120 007e1f70 BW1M119 0103fc70 (LHCombined Release)
 	static void* AllocateFromPool(LHPool*& slot, int blockSize, Heap* heap);
-	// BW1W120 007e2010 LHPool::ReleaseFromPool(LHPool *&, void *, int, Heap *)
+	// BW1W120 007e2010 BW1M119 01138250 (LHCombined Release)
 	static int ReleaseFromPool(LHPool*& slot, void* ptr, int blockSize, Heap* heap);
-	// BW1W120 007e2170 LHPool::GetCapacity(int)
+	// BW1W120 007e2170 BW1M119 01138010 (LHCombined Release)
 	static int GetCapacity(int blockSize);
-	// BW1W120 inlined LHPool::GetSize(int)
+	// BW1W120 inlined BW1M119 011383c0 (LHCombined Release)
 	static int GetSize(int blockSize);
 };
 static_assert(sizeof(LHPool) == 0x8, "Data type is of wrong size");
@@ -86,19 +86,19 @@ struct Heap
 
 	// Constructors
 
-	// BW1W120 007e0fa0 Heap::Heap(unsigned char *, unsigned long, unsigned long)
+	// BW1W120 007e0fa0 BW1M119 0113b8c0 (LHCombined Release)
 	Heap(unsigned char* base, unsigned int size, unsigned int a4);
 
 	// Static methods
 
-	// BW1W120 007e10e0 Heap::Create(unsigned long, unsigned long)
+	// BW1W120 007e10e0 BW1M119 0113b580 (LHCombined Release)
 	static Heap* Create(unsigned int size, unsigned int a2);
 
 	// Virtual methods
 
-	// BW1W120 007e1020 Heap::SetToZero(void)
+	// BW1W120 007e1020 BW1M119 0113b7c0 (LHCombined Release)
 	virtual void SetToZero();
-	// BW1W120 00643400 Heap::GetActualMemoryRequired(unsigned long)
+	// BW1W120 00643400
 	// TODO: symbols.txt records this as ?GetActualMemoryRequired@Heap@@UBEXI@Z
 	// (void return), but the code returns the size unchanged. Out of the
 	// LHHeap2.cpp split (COMDAT-placed at 0x643400).
@@ -106,39 +106,39 @@ struct Heap
 
 	// Non-virtual methods
 
-	// BW1W120 007e1160 Heap::New(int)
+	// BW1W120 007e1160 BW1M119 0113b4b0 (LHCombined Release)
 	void* New(int size);
-	// BW1W120 007e11d0 Heap::NewArray(unsigned long)
+	// BW1W120 007e11d0 BW1M119 0113b440 (LHCombined Release)
 	void* NewArray(unsigned int size);
-	// BW1W120 007e1200 Heap::Delete(void *, unsigned long)
+	// BW1W120 007e1200 BW1M119 0113b3e0 (LHCombined Release)
 	int Delete(void* ptr, unsigned int size);
-	// BW1W120 007e1220 Heap::DeleteArray(void *)
+	// BW1W120 007e1220 BW1M119 0113b390 (LHCombined Release)
 	int DeleteArray(void* ptr);
-	// BW1W120 007e1240 Heap::NewFreeList(unsigned char const *, unsigned long)
+	// BW1W120 007e1240 BW1M119 0113b2c0 (LHCombined Release)
 	FreeList* NewFreeList(const unsigned char* addr, unsigned int size);
-	// BW1W120 007e12a0 Heap::DeleteFreeList(FreeList *)
+	// BW1W120 007e12a0 BW1M119 0113b140 (LHCombined Release)
 	FreeList* DeleteFreeList(FreeList* node);
-	// BW1W120 007e12f0 Heap::FindFreeInFreeList(unsigned long)
+	// BW1W120 007e12f0 BW1M119 0113b070 (LHCombined Release)
 	FreeList* FindFreeInFreeList(unsigned int size) const;
-	// BW1W120 007e1330 Heap::ExtendFreeList(unsigned char *, unsigned long)
+	// BW1W120 007e1330 BW1M119 0113afa0 (LHCombined Release)
 	int ExtendFreeList(unsigned char* addr, unsigned int size);
-	// BW1W120 007e1380 Heap::IsAddressInMemoryPool(void const *)
+	// BW1W120 007e1380 BW1M119 01023bb0 (LHCombined Release)
 	int IsAddressInMemoryPool(const void* addr) const;
-	// BW1W120 007e13b0 Heap::GetOffsetFromAddress(void const *)
+	// BW1W120 007e13b0 BW1M119 010008c0 (LHCombined Release)
 	int GetOffsetFromAddress(const void* addr) const;
-	// BW1W120 007e13c0 Heap::Defragment(void)
+	// BW1W120 007e13c0 BW1M119 0113ac50 (LHCombined Release)
 	void Defragment();
-	// BW1W120 007e1420 Heap::GetFreeMemory(void)
+	// BW1W120 007e1420 BW1M119 0113abb0 (LHCombined Release)
 	int GetFreeMemory() const;
-	// BW1W120 007e1440 Heap::GetMemoryUsed(void)
+	// BW1W120 007e1440 BW1M119 0113ab50 (LHCombined Release)
 	int GetMemoryUsed() const;
-	// BW1W120 007e1450 Heap::GetAddressFromOffset(unsigned long)
+	// BW1W120 007e1450 BW1M119 01023c20 (LHCombined Release)
 	void* GetAddressFromOffset(unsigned int offset) const;
-	// BW1W120 007e1460 Heap::GetDesireToDefragment(void)
+	// BW1W120 007e1460 BW1M119 0113a980 (LHCombined Release)
 	double GetDesireToDefragment() const;
-	// BW1W120 007e1480 Heap::GetLargestMemoryFragment(void)
+	// BW1W120 007e1480 BW1M119 0113a850 (LHCombined Release)
 	unsigned int GetLargestMemoryFragment() const;
-	// BW1W120 007e14b0 Heap::GetDebugText(char *)
+	// BW1W120 007e14b0 BW1M119 0113a790 (LHCombined Release)
 	char* GetDebugText(char* buf) const;
 };
 static_assert(sizeof(Heap) == 0x2c, "Data type is of wrong size");
@@ -153,14 +153,14 @@ struct HeapWithPools : Heap
 
 	// Constructors
 
-	// BW1W120 inlined HeapWithPools::HeapWithPools(unsigned char *, unsigned long, unsigned long)
+	// BW1W120 inlined
 	HeapWithPools(unsigned char* base, unsigned int size, unsigned int a4);
 
 	// Non-virtual methods
 
-	// BW1W120 007e20d0 HeapWithPools::New(int)
+	// BW1W120 007e20d0 BW1M119 0103fdd0 (LHCombined Release)
 	void* New(int size);
-	// BW1W120 007e2110 HeapWithPools::Delete(void *, unsigned long)
+	// BW1W120 007e2110 BW1M119 011380e0 (LHCombined Release)
 	int Delete(void* ptr, unsigned int size);
 };
 static_assert(sizeof(HeapWithPools) == 0xbc, "Data type is of wrong size");
@@ -174,52 +174,52 @@ struct UniqueKeyHeap : HeapWithPools
 
 	// Constructors
 
-	// BW1W120 007e1670 UniqueKeyHeap::UniqueKeyHeap(unsigned char *, unsigned long, unsigned long)
+	// BW1W120 007e1670 BW1M119 01139ed0 (LHCombined Release)
 	UniqueKeyHeap(unsigned char* base, unsigned int size, unsigned int a4);
 
 	// Static methods
 
-	// BW1W120 007e17a0 UniqueKeyHeap::Create(unsigned long, unsigned long)
+	// BW1W120 007e17a0 BW1M119 01139d90 (LHCombined Release)
 	static UniqueKeyHeap* Create(unsigned int size, unsigned int a2);
 
 	// Virtual methods
 
-	// BW1W120 007e1780 UniqueKeyHeap::SetToZero(void)
+	// BW1W120 007e1780 BW1M119 01139e60 (LHCombined Release)
 	virtual void SetToZero();
-	// BW1W120 00643410 UniqueKeyHeap::GetActualMemoryRequired(unsigned long)
+	// BW1W120 00643410
 	virtual unsigned int GetActualMemoryRequired(unsigned int size) const;
 
 	// Non-virtual methods
 
-	// BW1W120 007e1830 UniqueKeyHeap::New(int)
+	// BW1W120 007e1830 BW1M119 0103fea0 (LHCombined Release)
 	void* New(int size);
-	// BW1W120 007e1860 UniqueKeyHeap::NewArray(unsigned long)
+	// BW1W120 007e1860 BW1M119 01139cc0 (LHCombined Release)
 	void* NewArray(unsigned int size);
-	// BW1W120 007e1890 UniqueKeyHeap::Delete(void *, unsigned long)
+	// BW1W120 007e1890 BW1M119 01139c20 (LHCombined Release)
 	int Delete(void* ptr, unsigned int size);
-	// BW1W120 007e18d0 UniqueKeyHeap::DeleteArray(void *)
+	// BW1W120 007e18d0 BW1M119 01139b90 (LHCombined Release)
 	int DeleteArray(void* ptr);
-	// BW1W120 007e1900 UniqueKeyHeap::UseUniqueId(void *)
+	// BW1W120 007e1900 BW1M119 0103ff20 (LHCombined Release)
 	void* UseUniqueId(HeapKey* key);
-	// BW1W120 007e1920 UniqueKeyHeap::GetDebugText(char *)
+	// BW1W120 007e1920 BW1M119 01139920 (LHCombined Release)
 	char* GetDebugText(char* buf) const;
-	// BW1W120 007e1960 UniqueKeyHeap::CheckKeyIsValid(HeapKey const *)
+	// BW1W120 007e1960 BW1M119 01023b00 (LHCombined Release)
 	int CheckKeyIsValid(const HeapKey* key) const;
-	// BW1W120 007e19a0 UniqueKeyHeap::GetUniqueIdFromAddress(void *)
+	// BW1W120 007e19a0 BW1M119 0101e970 (LHCombined Release)
 	int GetUniqueIdFromAddress(void* addr) const;
-	// BW1W120 007e19b0 UniqueKeyHeap::GetUniqueIdFromAddressNoCheck(void *)
+	// BW1W120 007e19b0 BW1M119 01023a70 (LHCombined Release)
 	int GetUniqueIdFromAddressNoCheck(void* addr) const;
-	// BW1W120 007e19e0 UniqueKeyHeap::GetKeyFromAddress(void *)
+	// BW1W120 007e19e0 BW1M119 01139200 (LHCombined Release)
 	HeapKey* GetKeyFromAddress(void* addr) const;
-	// BW1W120 007e19f0 UniqueKeyHeap::IsUniqueIdAtAddressTheSame(void *, unsigned long)
+	// BW1W120 007e19f0 BW1M119 010239f0 (LHCombined Release)
 	int IsUniqueIdAtAddressTheSame(void* addr, unsigned int id) const;
-	// BW1W120 007e1a10 UniqueKeyHeap::GetDebugTextAtAddress(void *, char *)
+	// BW1W120 007e1a10 BW1M119 01139090 (LHCombined Release)
 	char* GetDebugTextAtAddress(void* addr, char* buf) const;
-	// BW1W120 007e1a50 UniqueKeyHeap::Check(timcheck *)
+	// BW1W120 007e1a50 BW1M119 01138fa0 (LHCombined Release)
 	int Check(timcheck* rec);
-	// BW1W120 007e1a80 UniqueKeyHeap::Alloc(timcheck *)
+	// BW1W120 007e1a80 BW1M119 01138e10 (LHCombined Release)
 	int Alloc(timcheck* rec);
-	// BW1W120 007e1b20 UniqueKeyHeap::Test(void)
+	// BW1W120 007e1b20 BW1M119 01138c60 (LHCombined Release)
 	void Test();
 };
 static_assert(sizeof(UniqueKeyHeap) == 0xc0, "Data type is of wrong size");
@@ -234,11 +234,11 @@ struct HeapStore : UniqueKeyHeap
 
 	// Non-virtual methods
 
-	// BW1W120 007e1bc0 HeapStore::Init(UniqueKeyHeap *)
+	// BW1W120 007e1bc0 BW1M119 01138b90 (LHCombined Release)
 	int Init(UniqueKeyHeap* heap);
-	// BW1W120 007e1be0 HeapStore::Store(void)
+	// BW1W120 007e1be0 BW1M119 01138960 (LHCombined Release)
 	void Store();
-	// BW1W120 007e1df0 HeapStore::Restore(void)
+	// BW1W120 007e1df0 BW1M119 011386c0 (LHCombined Release)
 	void* Restore();
 };
 static_assert(sizeof(HeapStore) == 0xc8, "Data type is of wrong size");

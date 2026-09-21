@@ -13,13 +13,13 @@
 
 extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
 
-// BW1W120 00761c00 BW1M100 1058ad30 Villager::HousewifeLookForWork(void)
+// BW1W120 00761c00 BW1M119 01592550
 bool32_t Villager::HousewifeLookForWork()
 {
 	return GetAbode() != NULL;
 }
 
-// BW1W120 00761c10 BW1M100 1058ac90 Villager::HousewifeAtHome(void)
+// BW1W120 00761c10 BW1M119 015924b0
 bool32_t Villager::HousewifeAtHome()
 {
 	if (Flags & 4)
@@ -36,7 +36,7 @@ bool32_t Villager::HousewifeAtHome()
 	return false;
 }
 
-// BW1W120 00761c40 BW1M100 1058abc0 Villager::CheckNeededForHouseWork(void)
+// BW1W120 00761c40 BW1M119 015923e0
 bool32_t Villager::CheckNeededForHouseWork()
 {
 	if (GetAbode()->IsEnoughFoodForDinner() != 1)
@@ -53,7 +53,7 @@ bool32_t Villager::CheckNeededForHouseWork()
 	return false;
 }
 
-// BW1W120 00761c90 BW1M100 1058aac0 Villager::CheckNeededToMakeDinner(void)
+// BW1W120 00761c90 BW1M119 015922e0
 bool32_t Villager::CheckNeededToMakeDinner()
 {
 	Villager* villager = GetAbode()->villagers.head;
@@ -72,7 +72,7 @@ bool32_t Villager::CheckNeededToMakeDinner()
 	return false;
 }
 
-// BW1W120 00761ce0 BW1M100 1058a9d0 Villager::HousewifeGotoStoragePit(void)
+// BW1W120 00761ce0 BW1M119 015921f0
 bool32_t Villager::HousewifeGotoStoragePit()
 {
 	if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional() && GetAbode()->IsEnoughFoodForDinner() != 1)
@@ -85,7 +85,7 @@ bool32_t Villager::HousewifeGotoStoragePit()
 	return true;
 }
 
-// BW1W120 00761d60 BW1M100 1058a7e0 Villager::HousewifeArrivesAtStoragePit(void)
+// BW1W120 00761d60 BW1M119 01592000
 bool32_t Villager::HousewifeArrivesAtStoragePit()
 {
 	// TODO: deferred — best-effort structure; food-required/CalculateFoodNeededForDinner clamp,
@@ -129,7 +129,7 @@ bool32_t Villager::HousewifeArrivesAtStoragePit()
 	return true;
 }
 
-// BW1W120 00761ea0 BW1M100 1058a700 Villager::HousewifePickupFromStoragePit(void)
+// BW1W120 00761ea0 BW1M119 01591f20
 bool32_t Villager::HousewifePickupFromStoragePit()
 {
 	if (ResourceHeld[RESOURCE_TYPE_FOOD] != 0 && GetAbode() != NULL)
@@ -141,7 +141,7 @@ bool32_t Villager::HousewifePickupFromStoragePit()
 	return true;
 }
 
-// BW1W120 00761f10 BW1M100 1058a630 Villager::HousewifeReturnHomeWithFood(void)
+// BW1W120 00761f10 BW1M119 01591e50
 bool32_t Villager::HousewifeReturnHomeWithFood()
 {
 	if (ArrivesHome() == 1)
@@ -151,7 +151,7 @@ bool32_t Villager::HousewifeReturnHomeWithFood()
 	return true;
 }
 
-// BW1W120 00761f60 BW1M100 1058a580 Villager::HousewifeMakeDinner(void)
+// BW1W120 00761f60 BW1M119 01591da0
 bool32_t Villager::HousewifeMakeDinner()
 {
 	if (GetAbode()->IsEnoughFoodForDinner() == 1)
@@ -163,7 +163,7 @@ bool32_t Villager::HousewifeMakeDinner()
 	return true;
 }
 
-// BW1W120 00761fa0 BW1M100 1058a4f0 Villager::HousewifeServesDinner(void)
+// BW1W120 00761fa0 BW1M119 01591d10
 bool32_t Villager::HousewifeServesDinner()
 {
 	TurnsUntilNextStateChange = (int16_t)((const GVillagerInfo*)info)->HousewifeWaits;
@@ -171,7 +171,7 @@ bool32_t Villager::HousewifeServesDinner()
 	return true;
 }
 
-// BW1W120 00761fc0 BW1M100 1058a450 Villager::HousewifeClearsAwayDinner(void)
+// BW1W120 00761fc0 BW1M119 01591c70
 bool32_t Villager::HousewifeClearsAwayDinner()
 {
 	TurnsUntilNextStateChange--;
@@ -183,7 +183,7 @@ bool32_t Villager::HousewifeClearsAwayDinner()
 	return true;
 }
 
-// BW1W120 00761ff0 BW1M100 1058a3b0 Villager::HousewifeDoesHousework(void)
+// BW1W120 00761ff0 BW1M119 01591bd0
 bool32_t Villager::HousewifeDoesHousework()
 {
 	if (CheckNeededForSpecial() != 1)
@@ -197,7 +197,7 @@ bool32_t Villager::HousewifeDoesHousework()
 	return true;
 }
 
-// BW1W120 00762020 BW1M100 1058a0d0 Villager::HousewifeGossipsAroundStoragePit(void)
+// BW1W120 00762020 BW1M119 015918f0
 bool32_t Villager::HousewifeGossipsAroundStoragePit()
 {
 	// TODO: deferred — float math (HousewifeGossipTime), GameFloatRand __FILE__/__LINE__
@@ -224,7 +224,7 @@ bool32_t Villager::HousewifeGossipsAroundStoragePit()
 	return true;
 }
 
-// BW1W120 007621a0 BW1M100 10589f60 Villager::HousewifeStartsGivingBirth(void)
+// BW1W120 007621a0 BW1M119 01591780
 bool32_t Villager::HousewifeStartsGivingBirth()
 {
 	// TODO: deferred — float global (0x00d01a0c) * constant, GameRand __FILE__/__LINE__ split-TU
@@ -234,7 +234,7 @@ bool32_t Villager::HousewifeStartsGivingBirth()
 	return HousewifeGivingBirth();
 }
 
-// BW1W120 00762430 BW1M100 10589bf0 Villager::HousewifeGivingBirth(void)
+// BW1W120 00762430 BW1M119 01591410
 bool32_t Villager::HousewifeGivingBirth()
 {
 	// TODO: deferred — calls free function ChildBorn (mangled ?ChildBorn@@YE... — the ONLY @@YE
@@ -248,14 +248,14 @@ bool32_t Villager::HousewifeGivingBirth()
 	return true;
 }
 
-// BW1W120 007624a0 BW1M100 10589b90 Villager::HousewifeGivenBirth(void)
+// BW1W120 007624a0 BW1M119 015913b0
 bool32_t Villager::HousewifeGivenBirth()
 {
 	is_pregnant = 0;
 	return GoHome();
 }
 
-// BW1W120 007624c0 BW1M100 105899e0 Villager::WillHousewifeGetPregnant(Villager *)
+// BW1W120 007624c0 BW1M119 01591200
 bool32_t Villager::WillHousewifeGetPregnant(Villager* param_1)
 {
 	// TODO: deferred — TownDesire::GetDesireSignificanceToVillager leaks a float on ST0 (void
@@ -272,7 +272,7 @@ bool32_t Villager::WillHousewifeGetPregnant(Villager* param_1)
 	return 0;
 }
 
-// BW1W120 00762570 BW1M100 10589950 Villager::HousewifeGetsPregnant(Villager *)
+// BW1W120 00762570 BW1M119 01591170
 bool32_t Villager::HousewifeGetsPregnant(Villager* param_1)
 {
 	// void-call-eax-probed: on the (Flags & 4) path the original falls off the end leaving the
@@ -285,7 +285,7 @@ bool32_t Villager::HousewifeGetsPregnant(Villager* param_1)
 	}
 }
 
-// BW1W120 007625a0 BW1M100 10589870 Villager::HousewifeCalledToMakeDinner(void)
+// BW1W120 007625a0 BW1M119 01591090
 bool32_t Villager::HousewifeCalledToMakeDinner()
 {
 	uint32_t result = g_GVillagerStateTableInfos[(uint8_t)GetFinalState()].field_0xc4;
@@ -303,7 +303,7 @@ bool32_t Villager::HousewifeCalledToMakeDinner()
 	return result;
 }
 
-// BW1W120 00762600 BW1M100 10589780 Villager::HousewifeAskForMeal(void)
+// BW1W120 00762600 BW1M119 01590fa0
 bool32_t Villager::HousewifeAskForMeal()
 {
 	Villager* villager = GetAbode()->villagers.head;
@@ -324,7 +324,7 @@ bool32_t Villager::HousewifeAskForMeal()
 	return false;
 }
 
-// BW1W120 00762670 BW1M100 10589740 Villager::CheckSatisfyForChildren(void)
+// BW1W120 00762670 BW1M119 01590f60
 bool32_t Villager::CheckSatisfyForChildren()
 {
 	return 0;

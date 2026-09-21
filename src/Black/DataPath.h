@@ -25,20 +25,20 @@ public:
 
 	// Override methods
 
-	// BW1W120 005ef090 BW1M100 1037d2b0 DataPath::_dt(void)
+	// BW1W120 005ef090 BW1M119 01385280
 	virtual ~DataPath();
-	// BW1W120 005ef080 BW1M100 10383880 DataPath::GetDebugText(void)
+	// BW1W120 005ef080 BW1M119 0138ba60
 	virtual char* GetDebugText();
-	// BW1W120 005eeec0 BW1M100 1037d3e0 DataPath::Load(GameOSFile &)
+	// BW1W120 005eeec0 BW1M119 013853b0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 005eed30 BW1M100 1037d620 DataPath::Save(GameOSFile &)
+	// BW1W120 005eed30 BW1M119 013855f0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 005ef070 BW1M100 10383840 DataPath::GetSaveType(void)
+	// BW1W120 005ef070 BW1M119 0138ba20
 	virtual uint32_t GetSaveType();
 
 	// Constructors
 
-	// BW1W120 005ef040 BW1M100 1037d350 DataPath::DataPath(void)
+	// BW1W120 005ef040 BW1M119 01385320
 	DataPath();
 };
 

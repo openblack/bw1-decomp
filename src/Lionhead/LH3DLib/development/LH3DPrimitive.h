@@ -26,12 +26,12 @@ struct LH3DPrimitive
 
 	// Static methods
 
-	// BW1W120 0084ab50 BW1M100 100a01f0 LH3DPrimitive::Create(unsigned char *, LH3DPrimitive *)
+	// BW1W120 0084ab50 BW1M119 0109e410 (LHCombined Release)
 	static void Create(const uint8_t* buffer, LH3DPrimitive* primitive);
 
 	// Non-virtual methods
 
-	// BW1W120 00807f30 BW1M100 1006ad00 LH3DPrimitive::ComputeBoundingBox(LHPoint&, LHPoint&, int&)
+	// BW1W120 00807f30 BW1M119 01068ba0 (LHCombined Release)
 	void ComputeBoundingBox(LHPoint& maxima, LHPoint& minima, int& initialized);
 };
 

@@ -31,7 +31,7 @@ class CHand;
 class CHand : public Morphable
 {
 public:
-	// BW1W120 0046e8c0 BW1M100 101c5c70 CHand::OnClearMap(void)
+	// BW1W120 0046e8c0 BW1M119 011cd410
 	void OnClearMap();
 	struct State
 	{
@@ -215,43 +215,43 @@ public:
 
 	// Override methods
 
-	// BW1W120 0046c4a0 BW1M100 101c85f0 CHand::SetSize(float)
+	// BW1W120 0046c4a0 BW1M119 011d0470
 	virtual void SetSize(float size);
-	// BW1W120 0046bf80 BW1M100 101c8cf0 CHand::MorphTexture(void)
+	// BW1W120 0046bf80 BW1M119 011d0be0
 	virtual void MorphTexture();
-	// BW1W120 0046c350 BW1M100 101c8670 CHand::UpdateTime(long)
+	// BW1W120 0046c350 BW1M119 011d04f0
 	virtual void UpdateTime(int param_1);
-	// BW1W120 0046c550 BW1M100 10029b00 CHand::PrepareForDrawing(void)
+	// BW1W120 0046c550 BW1M119 0102c680
 	virtual void PrepareForDrawing();
-	// BW1W120 0046d0f0 BW1M100 101c7f70 CHand::AddForDrawing(void)
+	// BW1W120 0046d0f0 BW1M119 011cfe30
 	virtual uint32_t AddForDrawing();
-	// BW1W120 0046d5f0 BW1M100 101c7500 CHand::SaveBinary(char *)
+	// BW1W120 0046d5f0 BW1M119 011cf660
 	virtual uint32_t SaveBinary(char* filename);
 
 	// Constructors
 
-	// BW1W120 0046ba80 BW1M100 101c8e00 CHand::CHand(LHPoint, GInterfaceStatus *)
+	// BW1W120 0046ba80 BW1M119 011d0ce0
 	CHand(LHPoint point, GInterfaceStatus* status);
 
 	// Non-virtual methods
-	// BW1W120 0046eb10 BW1M100 101c56d0 CHand::Save(GameOSFile &)
+	// BW1W120 0046eb10 BW1M119 011cce70
 	uint32_t Save(GameOSFile& file);
-	// BW1W120 0046e930 BW1M100 101c59a0 CHand::Load(GameOSFile &)
+	// BW1W120 0046e930 BW1M119 011cd140
 	uint32_t Load(GameOSFile& file);
-	// BW1W120 0046ecf0 BW1M100 101c55c0 CHand::ResolveLoad(void)
+	// BW1W120 0046ecf0 BW1M119 011ccd60
 	void ResolveLoad();
 
-	// BW1W120 0046c260 BW1M100 101c86d0 CHand::ToggleLeftRight(void)
+	// BW1W120 0046c260 BW1M119 011d0550
 	void ToggleLeftRight();
-	// BW1W120 0046d2c0 BW1M100 101c76b0 CHand::LoadBinary(char *, int)
+	// BW1W120 0046d2c0 BW1M119 011cf800
 	virtual uint32_t LoadBinary(char* filename, int param_1);
-	// BW1W120 0046ddd0 BW1M100 101c6b10 CHand::ThrowObject(void)
+	// BW1W120 0046ddd0 BW1M119 011cec70
 	void ThrowObject();
-	// BW1W120 0046e4e0 BW1M100 10081dd0 CHand::GameTurnUpdate()
+	// BW1W120 0046e4e0 BW1M119 010841c0
 	void GameTurnUpdate();
-	// BW1W120 0046e490 BW1M100 10014040 CHand::UpdateHeldObject(void)
+	// BW1W120 0046e490 BW1M119 01016be0
 	void UpdateHeldObject();
-	// BW1W120 0046d100 BW1M100 10021f00 CHand::AddDrawing(void)
+	// BW1W120 0046d100 BW1M119 01024a70
 	void AddDrawing();
 };
 

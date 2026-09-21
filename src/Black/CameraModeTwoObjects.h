@@ -11,21 +11,21 @@ class CameraModeTwoObjects : public CameraMode
 public:
 	// Override methods
 
-	// BW1W120 00461c70 BW1M100 101aa520 CameraModeTwoObjects::_dt(void)
+	// BW1W120 00461c70 BW1M119 011b3400
 	virtual ~CameraModeTwoObjects();
-	// BW1W120 0044a290 BW1M100 inlined CameraModeTwoObjects::CanPlayerGestureWhenCameraMoving(void)
+	// BW1W120 0044a290 BW1M119 inlined
 	virtual bool32_t CanPlayerGestureWhenCameraMoving();
-	// BW1W120 00461de0 BW1M100 101aa880 CameraModeTwoObjects::Update(void)
+	// BW1W120 00461de0 BW1M119 011b3760
 	virtual void Update();
-	// BW1W120 0044a2b0 BW1M100 inlined CameraModeTwoObjects::Validate(void)
+	// BW1W120 0044a2b0 BW1M119 inlined
 	virtual void Validate();
-	// BW1W120 0044a390 BW1M100 inlined CameraModeTwoObjects::Restart(void)
+	// BW1W120 0044a390 BW1M119 inlined
 	virtual void Restart();
-	// BW1W120 00461d90 BW1M100 101aac60 CameraModeTwoObjects::IsStillValid(void)
+	// BW1W120 00461d90 BW1M119 011b3b40
 	virtual bool IsStillValid();
-	// BW1W120 0044a2d0 BW1M100 inlined CameraModeTwoObjects::Cleanup(void)
+	// BW1W120 0044a2d0 BW1M119 inlined
 	virtual void Cleanup();
-	// BW1W120 0044a2e0 BW1M100 inlined CameraModeTwoObjects::CanExist(void)
+	// BW1W120 0044a2e0 BW1M119 inlined
 	virtual bool CanExist();
 };
 

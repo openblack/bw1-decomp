@@ -16,9 +16,9 @@ class HelpSpiritInfo : public GLivingInfo
 public:
 	// Override methods
 
-	// BW1W120 005c4a70 BW1M100 1034c8b0 HelpSpiritInfo::_dt(void)
+	// BW1W120 005c4a70 BW1M119 01354ff0
 	virtual ~HelpSpiritInfo();
-	// BW1W120 005c4a00 BW1M100 1034c9c0 HelpSpiritInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 005c4a00 BW1M119 01355100
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

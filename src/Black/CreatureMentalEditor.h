@@ -9,7 +9,7 @@ public:
 	// Mac calls this DrawText; the Windows SDK macro gives the emitted DrawTextA spelling.
 	static void DrawTextA(const char* text, unsigned long x, unsigned long y, float size, unsigned long red,
 	                      unsigned long green, unsigned long blue); // 004df310
-	// BW1W120 004df340 BW1M100 100919f0 CreatureMentalEditor::Update(void)
+	// BW1W120 004df340 BW1M119 01093c10
 	static void Update();
 };
 

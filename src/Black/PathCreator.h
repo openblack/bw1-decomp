@@ -21,24 +21,24 @@ struct PathCreator
 
 	// Constructors
 
-	// BW1W120 0078e8c0 BW1M100 1017a270 PathCreator::PathCreator(void)
+	// BW1W120 0078e8c0 BW1M119 0153ec70
 	PathCreator();
-	// BW1W120 0078e9a0 PathCreator::~PathCreator(void)
+	// BW1W120 0078e9a0 BW1M119 010b4590
 	~PathCreator();
 
 	// Non-virtual methods
-	// BW1W120 0078e9b0 BW1M100 100b6de0
+	// BW1W120 0078e9b0 BW1M119 01173b00
 	void UpdateCurrentProfile();
-	// BW1W120 0078ea20 BW1M100 10170e10
+	// BW1W120 0078ea20 BW1M119 010e0520
 	void GetCurrentUserPath(char* path);
 
-	// BW1W120 0078eaa0 BW1M100 1035b570 PathCreator::GetSaveGamePicturesPath(char*)
+	// BW1W120 0078eaa0 BW1M119 014de1d0
 	void GetSaveGamePicturesPath(char* path);
-	// BW1W120 0078eae0 BW1M100 101ca330 PathCreator::GetCurrentGamePath(char*)
+	// BW1W120 0078eae0 BW1M119 011d06f0
 	void GetCurrentGamePath(char* path);
-	// BW1W120 0078eb20 BW1M100 100d7860 PathCreator::GetAutoSavePath(char*)
+	// BW1W120 0078eb20 BW1M119 012a8040
 	void GetAutoSavePath(char* path);
-	// BW1W120 0078efc0 BW1M100 103655d0 PathCreator::CheckAndRecreateSaveGamePaths(void)
+	// BW1W120 0078efc0 BW1M119 011a2b10
 	bool CheckAndRecreateSaveGamePaths();
 };
 

@@ -16,11 +16,11 @@ class PSysBase : public GameThing
 public:
 	// Override methods
 
-	// BW1W120 00466500 BW1M100 10086ed0 PSysBase::_dt(void)
+	// BW1W120 00466500 BW1M119 010892a0
 	virtual ~PSysBase();
-	// BW1W120 004664f0 BW1M100 10110ed0 PSysBase::GetDebugText(void)
+	// BW1W120 004664f0 BW1M119 0111a700
 	virtual char* GetDebugText();
-	// BW1W120 006944b0 BW1M100 1041db80 PSysBase::Load(GameOSFile &)
+	// BW1W120 006944b0 BW1M119 01426b80
 	virtual uint32_t Load(GameOSFile& file);
 };
 

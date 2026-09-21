@@ -13,7 +13,8 @@ public:
 	bool Completed;
 	// BW1W120 00775370
 	WinCondition();
-	// BW1W120 00775380. Real emitted RET destructor; preserves insertion temporaries.
+	// Real emitted RET destructor; preserves insertion temporaries.
+	// BW1W120 00775380
 	~WinCondition();
 };
 static_assert(sizeof(WinCondition) == 0x10, "WinCondition size is incorrect");

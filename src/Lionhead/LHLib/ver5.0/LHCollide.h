@@ -35,7 +35,7 @@ public:
 
 		// Non-virtual methods
 
-		// BW1W120 inlined BW1M100 inlined NewCollide::List::Collide(NewCollide::List)
+		// BW1W120 inlined BW1M119 inlined
 		bool Collide(const List* other) const;
 	};
 
@@ -50,23 +50,23 @@ public:
 
 		// Constructors
 
-		// BW1W120 0082ad90 BW1M100 1061bfd4 NewCollide::Obj::Obj(float, LHPoint*)
+		// BW1W120 0082ad90 BW1M119 0107a5c0 (LHCombined Release)
 		Obj(float radius, LHPoint* position);
-		// BW1W120 0082add0 BW1M100 100d9da0 NewCollide::Obj::Obj(LHPoint*,float,float,float)
+		// BW1W120 0082add0 BW1M119 0107f620 (LHCombined Release)
 		Obj(LHPoint* position, float bb_x, float bb_z, float angle);
 
 		// Non-virtual methods
 
-		// BW1W120 00828f40 BW1M100 100befb0 NewCollide::Obj::CreateList(void)
+		// BW1W120 00828f40 BW1M119 01083ef0 (LHCombined Release)
 		void CreateList();
-		// BW1W120 inlined BW1M100 inlined NewCollide::Obj::Collide(NewCollide::List)
+		// BW1W120 inlined BW1M119 inlined
 		bool Collide(const List* other) const;
-		// BW1W120 00829140 BW1M100 1061b32c NewCollide::Obj::Collide(float, NewCollide::Obj*)
+		// BW1W120 00829140 BW1M119 0104bbf0 (LHCombined Release)
 		bool32_t Collide(const Obj* other) const;
 
 		// Destructors
 
-		// BW1W120 0082ae60 BW1M100 1061b344 NewCollide::Obj::~Obj(void)
+		// BW1W120 0082ae60 BW1M119 010649b0 (LHCombined Release)
 		~Obj();
 	};
 
@@ -74,12 +74,12 @@ public:
 
 	// Constructors
 
-	// BW1W120 00829390 BW1M100 100d9080 NewCollide::NewCollide(LH3DObject*)
+	// BW1W120 00829390 BW1M119 0112f210 (LHCombined Release)
 	NewCollide(LH3DObject* obj);
 
 	// Destructors
 
-	// BW1W120 0082aea0 BW1M100 1061b35c NewCollide::~NewCollide(void)
+	// BW1W120 0082aea0 BW1M119 010a23a0 (LHCombined Release)
 	~NewCollide();
 };
 

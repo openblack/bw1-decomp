@@ -17,7 +17,7 @@ extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_ST
 // load_variables is still small enough that the compiler otherwise would.
 #pragma inline_depth(0)
 
-// BW1W120 0042b460 BW1M100 10181840 load_variables(void)
+// BW1W120 0042b460 BW1M119 0118ad30
 // TODO: partial. The original loads every info table in the game (~130 loader calls between the
 // LoaderAnon construction and file.Close()), each one line of the same shape as the two below.
 // Also still missing: the scripts\info*.txt vs scripts\info.tmp timestamp scan that computes

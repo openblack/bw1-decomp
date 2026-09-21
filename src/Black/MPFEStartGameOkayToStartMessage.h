@@ -10,7 +10,7 @@ class MPFEStartGameOkayToStartMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 0062fb90 BW1M100 10393eb0 MPFEStartGameOkayToStartMessage::_dt(void)
+	// BW1W120 0062fb90 BW1M119 0139b7e0
 	virtual ~MPFEStartGameOkayToStartMessage();
 };
 

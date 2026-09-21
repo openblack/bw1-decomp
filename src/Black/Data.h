@@ -20,21 +20,21 @@ public:
 
 	// Override methods
 
-	// BW1W120 00510610 BW1M100 1056c340 GData::_dt(void)
+	// BW1W120 00510610 BW1M119 01419130
 	virtual ~GData() {}
 
 	// Constructors
 
-	// BW1W120 00510500 BW1M100 100c0a70 GData::GData(void)
+	// BW1W120 00510500 BW1M119 010c3f70
 	GData();
 
 	// Non-virtual methods
 
-	// BW1W120 00510650 BW1M100 1002adb0 GData::Rand(long)
+	// BW1W120 00510650 BW1M119 0102d930
 	uint32_t Rand(uint32_t max, const char* src_file, uint32_t src_line);
-	// BW1W120 00510750 BW1M100 100c08f0 GData::Reset(void)
+	// BW1W120 00510750 BW1M119 010c3dd0
 	void Reset();
-	// BW1W120 0050f960 GData::InitialiseShapes(void)
+	// BW1W120 0050f960 BW1M119 012b4010
 	void InitialiseShapes();
 };
 

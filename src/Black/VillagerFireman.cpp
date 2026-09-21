@@ -31,7 +31,7 @@
 //   fn_0075ABA0 (0x0075ABA0, in THIS unit, 0xB0B): unnamed helper for PutOutFireByBeating.
 // ============================================================================
 
-// BW1W120 0075a3d0 BW1M100 1057a120 Villager::DecideHowToPutOutFire(FireEffect *)
+// BW1W120 0075a3d0 BW1M119 015822b0
 // TODO: deferred — blocked on UNNAMED fn_0073006E (see file-header cluster). Logic:
 //   MapCoords pos;   // {0,0,0}
 //   fire_effect = param_1->fn_0073006E(((GameThingWithPos*)this)->Pos);   // nearest safe fire to my pos
@@ -46,10 +46,10 @@ bool32_t Villager::DecideHowToPutOutFire(FireEffect* param_1)
 	return true;
 }
 
-// BW1W120 0075a760 Villager::FUN_0075a760(void)
+// BW1W120 0075a760
 void Villager::FUN_0075a760() {}
 
-// BW1W120 0075a770 BW1M100 10579a00 Villager::SetupMoveAroundFire(MapCoords const &, VILLAGER_STATES)
+// BW1W120 0075a770 BW1M119 01581b70
 // TODO: 94.9% — the only diff is a scheduler tie-break at the entry SetTopState call: target
 // emits `mov eax,[esi]` (vtable load) BEFORE `push 0xdc` (the state arg); ours pushes the const
 // first. Correct semantics; setup-addreaction-field-sched family (see CHEATSHEET.md). The
@@ -74,7 +74,7 @@ bool32_t Villager::SetupMoveAroundFire(const MapCoords& pos, VILLAGER_STATES sta
 	return false;
 }
 
-// BW1W120 0075a7e0 BW1M100 105796c0 Villager::MoveAroundFire(void)
+// BW1W120 0075a7e0 BW1M119 01581830
 // TODO: deferred (675B) — blocked on UNNAMED fn_00603260 (MapCoords=JustWholeMapXZ assign at
 // this+0x80, see file header) plus other helpers. Large state-tick function; write after naming.
 uint32_t Villager::MoveAroundFire()
@@ -82,7 +82,7 @@ uint32_t Villager::MoveAroundFire()
 	return true;
 }
 
-// BW1W120 0075aa90 BW1M100 10579520 Villager::GetFireFightingPos(FireEffect *, MapCoords *)
+// BW1W120 0075aa90 BW1M119 01581690
 // TODO: deferred — blocked on UNNAMED fn_0072FEF0 (see file-header cluster) + capped by the
 // GameFloatRand file/line split-TU issue (gamerand-file-line-split-tu). Logic:
 //   if (param_1 == NULL) return false;
@@ -101,7 +101,7 @@ bool32_t Villager::GetFireFightingPos(FireEffect* param_1, MapCoords* param_2)
 	return true;
 }
 
-// BW1W120 0075ac50 BW1M100 10579150 Villager::PutOutFireByBeating(void)
+// BW1W120 0075ac50 BW1M119 015812c0
 // TODO: deferred (313B) — blocked on UNNAMED fn_0075ABA0 (in-unit helper, 0xB0B) plus
 // GetFireFightingPos/SetupMoveAroundFire (also blocked). Uses GetObjectA, LookAtObject,
 // IsReadyForNewAnimation, IsAboveReactionTemperature, EffectValues ctor +
@@ -111,7 +111,7 @@ bool32_t Villager::PutOutFireByBeating()
 	return true;
 }
 
-// BW1W120 0075ad90 BW1M100 105790d0 Villager::IsValidFire(FireEffect *)
+// BW1W120 0075ad90 BW1M119 01581240
 bool32_t Villager::IsValidFire(FireEffect* fire_effect)
 {
 	FOREACH_LH_LIST_HEAD(FireEffect, fire, GGame::g_game->GameLists.FireEffects)
@@ -122,7 +122,7 @@ bool32_t Villager::IsValidFire(FireEffect* fire_effect)
 	return false;
 }
 
-// BW1W120 0075adc0 BW1M100 10578f40 Villager::EnterPutOutFire(unsigned char, unsigned char)
+// BW1W120 0075adc0 BW1M119 015810b0
 // TODO: deferred — blocked on UNNAMED fn_007309A0 (add-to-participant-list, see file header).
 // Guarded by IsStateEntryFunctionSameAs(param_1,param_2); validates fire_effect (IsValidFire,
 // fire_effect->vf, reaction@0x94 checks), walks GetFirstCaused list, calls fn_007309A0(this);
@@ -132,7 +132,7 @@ bool32_t Villager::EnterPutOutFire(unsigned char param_1, unsigned char param_2)
 	return true;
 }
 
-// BW1W120 0075ae80 BW1M100 10578da0 Villager::ExitPutOutFire(unsigned char)
+// BW1W120 0075ae80 BW1M119 01580f10
 // TODO: deferred — blocked on UNNAMED fn_007309E0 (remove-from-participant-list, see file header).
 // vtable+0x96c guard; walks GetFirstCaused list to remove self via fn_007309E0; clears fire_effect;
 // GetTown()->RemoveVillagerOnWayToWorshipSite(this) walking town list at +0xdf4; vtable+0x910.
@@ -141,7 +141,7 @@ bool32_t Villager::ExitPutOutFire(unsigned char param_1)
 	return true;
 }
 
-// BW1W120 0075af30 BW1M100 10578cc0 Villager::EnterOnFire(unsigned char, unsigned char)
+// BW1W120 0075af30 BW1M119 01580e30
 // TODO: deferred — blocked on UNNAMED fn_007309A0 (see file header). Logic:
 //   if (fire_effect && fire_effect->vf0x2c()) {   // fire still valid/burning
 //       walk GetFirstCaused() list (+0x48, ->next via *node, node->villager at [1]);
@@ -154,7 +154,7 @@ bool32_t Villager::EnterOnFire(unsigned char param_1, unsigned char param_2)
 	return true;
 }
 
-// BW1W120 0075af80 BW1M100 10578bd0 Villager::ExitOnFire(unsigned char)
+// BW1W120 0075af80 BW1M119 01580d40
 // TODO: deferred — blocked on UNNAMED fn_007309E0 (see file header). Logic:
 //   if (fire_effect) {
 //       walk GetFirstCaused() list; if a node->villager == this: fn_007309E0(this); (remove)
@@ -167,21 +167,21 @@ bool32_t Villager::ExitOnFire(unsigned char param_1)
 	return true;
 }
 
-// BW1W120 0075afe0 BW1M100 10578b60 Villager::PutOutFireWithWater(void)
+// BW1W120 0075afe0 BW1M119 01580cd0
 bool32_t Villager::PutOutFireWithWater()
 {
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 	return true;
 }
 
-// BW1W120 0075b000 BW1M100 10578af0 Villager::GetWaterToPutOutFire(void)
+// BW1W120 0075b000 BW1M119 01580c60
 bool32_t Villager::GetWaterToPutOutFire()
 {
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 	return true;
 }
 
-// BW1W120 0075b020 BW1M100 10578900 Villager::StopFireFighting(void)
+// BW1W120 0075b020 BW1M119 01580a70
 // TODO: deferred (331B) — blocked on an UNNAMED FireEffect helper at ~0x730c20 (relocless call)
 // plus state-table logic (global 0xdb9e98/0xd091b8, vtable ExitPutOutFire@0xb04, +0x904/+0x938).
 // Uses LivingAction::SetState. Write after the FireEffect helper is named.
@@ -190,7 +190,7 @@ bool32_t Villager::StopFireFighting()
 	return true;
 }
 
-// BW1W120 0075b170 BW1M100 105787c0 Villager::SetupOnFire(FireEffect *)
+// BW1W120 0075b170 BW1M119 01580930
 // TODO: 97.0% — declared bool32_t but the target NEVER sets a clean return value: all paths fall
 // through to one shared pop/ret, leaking whatever eax held (the last SetTopState(0xdb) result on
 // the body path, the failed-condition value on the skip paths). MSVC6 hard-errors (C4716) on a
@@ -211,7 +211,7 @@ bool32_t Villager::SetupOnFire(FireEffect* new_fire_effect)
 	return true;
 }
 
-// BW1W120 0075b1e0 BW1M100 105785a0 Villager::OnFire(void)
+// BW1W120 0075b1e0 BW1M119 01580710
 // TODO: deferred (489B) — blocked on an UNNAMED FireEffect helper (relocless call) + calls the
 // deferred FinishBeingOnFire, and has float consts / GameFloatRand (gamerand-file-line-split-tu).
 // Uses GetObjectA, IsOnFire, GetMaxFireRadius, GetFireRadius, GUtils::GetPosFromAngle,
@@ -221,7 +221,7 @@ bool32_t Villager::OnFire()
 	return true;
 }
 
-// BW1W120 0075b3d0 BW1M100 105784e0 Villager::FinishBeingOnFire(void)
+// BW1W120 0075b3d0 BW1M119 01580650
 // TODO: deferred — the target first calls the UNNAMED fn_00603260 (0x00603260) as a thiscall on
 // the MapCoords at this+0x80 with &field_0x10c as the arg: it copies x,z (two int32) and zeroes
 // altitude, i.e. a MapCoords = JustWholeMapXZ assignment (likely MapCoords::operator=(const
@@ -234,7 +234,7 @@ bool32_t Villager::FinishBeingOnFire()
 	return true;
 }
 
-// BW1W120 0075b400 BW1M100 10578430 Villager::IsFireMan(void)
+// BW1W120 0075b400 BW1M119 015805a0
 // TODO: deferred — double-blocked (dispatcher):
 //  (1) RETURN TYPE: symbols.txt has ?IsFireMan@Villager@@UAEIXZ and ?IsFireMan@Object@@UAEIXZ
 //      (both `I` = bool32_t), but Villager.h:285 and Object.h:533 both declare `virtual bool`.

@@ -16,9 +16,9 @@ class GFlowersInfo : public GFeatureInfo
 public:
 	// Override methods
 
-	// BW1W120 00527910 BW1M100 100d06a0 GFlowersInfo::_dt(void)
+	// BW1W120 00527910 BW1M119 010d4be0
 	virtual ~GFlowersInfo();
-	// BW1W120 005278b0 BW1M100 100d15c0 GFlowersInfo::GetMesh( const(void))
+	// BW1W120 005278b0 BW1M119 010d60c0
 	virtual MESH_LIST GetMesh() const;
 };
 

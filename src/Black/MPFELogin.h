@@ -29,17 +29,17 @@ public:
 
 	// Override methods
 
-	// BW1W120 006307f0 BW1M100 103a7750 MPFELogin::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 006307f0 BW1M119 013af520
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 00630d60 BW1M100 103a7720 MPFELogin::Destroy(void)
+	// BW1W120 00630d60 BW1M119 013af4f0
 	virtual void Destroy();
-	// BW1W120 00630610 BW1M100 103a7d90 MPFELogin::InitControls(void)
+	// BW1W120 00630610 BW1M119 013afbc0
 	virtual void InitControls();
 
 	// Constructors
 
-	// BW1W120 00630580 BW1M100 103a80e0 MPFELogin::MPFELogin(void)
+	// BW1W120 00630580 BW1M119 013afdf0
 	MPFELogin();
 };
 
@@ -48,7 +48,7 @@ class MPFELoginDatabase : public MPFEDatabase
 public:
 	// Constructors
 
-	// BW1W120 00631050 BW1M100 103a7490 MPFELoginDatabase::MPFELoginDatabase(void)
+	// BW1W120 00631050 BW1M119 013af260
 	MPFELoginDatabase();
 };
 

@@ -16,11 +16,11 @@ class PBall : public MobileObject
 public:
 	// Override methods
 
-	// BW1W120 0063e950 BW1M100 inlined PBall::_dt(void)
+	// BW1W120 0063e950 BW1M119 inlined
 	virtual ~PBall();
-	// BW1W120 0063e990 BW1M100 inlined PBall::Process(void)
+	// BW1W120 0063e990 BW1M119 inlined
 	virtual uint32_t Process();
-	// BW1W120 0063e980 BW1M100 inlined PBall::Draw(void)
+	// BW1W120 0063e980 BW1M119 inlined
 	virtual void Draw();
 };
 

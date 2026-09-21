@@ -19,14 +19,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 00633610 BW1M100 10109f20 MultiplayerDatabase::ReceiveReturnData(void)
+	// BW1W120 00633610 BW1M119 01113730
 	virtual uint32_t ReceiveReturnData();
 
 	// Constructors
 
-	// BW1W120 00633400 BW1M100 1010a230 MultiplayerDatabase::MultiplayerDatabase(void)
+	// BW1W120 00633400 BW1M119 01113a40
 	MultiplayerDatabase();
-	// BW1W120 00633480 MultiplayerDatabase::~MultiplayerDatabase(void)
+	// BW1W120 00633480 BW1M119 01113960
 	~MultiplayerDatabase();
 };
 

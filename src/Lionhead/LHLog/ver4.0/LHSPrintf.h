@@ -3,14 +3,14 @@
 
 #include <assert.h>
 
-// BW1W120 007aee08 BW1M100 1016cbb0 UNICODE_sprintf(wchar_t*, wchar_t*, ...)
+// BW1W120 007aee08 BW1M119 0116e4c0 (LHCombined Release)
 __declspec(dllimport) int __cdecl UNICODE_sprintf(unsigned short* output, unsigned short* format, ...);
 
 class LHSPrintf
 {
 public:
 	char Text[0x401]; // GetBufSize excludes the terminator; the DLL assignment copies all 0x401 bytes.
-	// BW1W120 100029d0 BW1M100 1016c830 LHSPrintf::LHSPrintf(const char*, ...)
+	// BW1W120 100029d0 BW1M119 0116e140 (LHCombined Release)
 	__declspec(dllimport) LHSPrintf(char* format, ...);
 };
 

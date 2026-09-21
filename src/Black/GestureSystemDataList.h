@@ -16,17 +16,17 @@ public:
 
 	// Override methods
 
-	// BW1W120 0054bac0 BW1M100 100d4da0 GestureSystemDataList::_dt(void)
+	// BW1W120 0054bac0 BW1M119 013dd2b0
 	virtual ~GestureSystemDataList();
 
 	// Constructors
 
-	// BW1W120 0054baa0 BW1M100 inlined GestureSystemDataList::GestureSystemDataList(void)
+	// BW1W120 0054baa0 BW1M119 inlined
 	GestureSystemDataList();
 
 	// Non-virtual methods
 
-	// BW1W120 00579af0 BW1M100 1032b530 GestureSystemDataList::Load(char *)
+	// BW1W120 00579af0 BW1M119 01333600
 	bool32_t Load(char* param_1);
 };
 

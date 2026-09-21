@@ -15,7 +15,7 @@ class GPlayer;
 class GBelief : public Base
 {
 public:
-	// BW1W120 004380b0 BW1M100 1007f1c0 GBelief::ProcessOncePerTurn(void)
+	// BW1W120 004380b0 BW1M119 01081680
 	static void ProcessOncePerTurn();
 
 	float    BeliefInPlayer[0x8]; /* 0x8 */
@@ -30,18 +30,18 @@ public:
 
 	// Override methods
 
-	// BW1W120 00739320 BW1M100 105581c0 GBelief::_dt(void)
+	// BW1W120 00739320 BW1M119 01561820
 	virtual ~GBelief();
 
 	// Non-virtual methods
 
-	// BW1W120 00437e70 BW1M100 00437e70 GBelief::GetBeliefInPlayer(unsigned long)
+	// BW1W120 00437e70 BW1M119 010b4910
 	float GetBeliefInPlayer(unsigned long param_1);
-	// BW1W120 00438770 BW1M100 100b1810 GBelief::DistanceChangeToBelief(float, float)
+	// BW1W120 00438770 BW1M119 010b4310
 	float DistanceChangeToBelief(float param_1, float param_2);
-	// BW1W120 004387d0 BW1M100 100b1700 GBelief::SetBelief(unsigned long, float)
+	// BW1W120 004387d0 BW1M119 010b4200
 	void SetBelief(int index, float value);
-	// BW1W120 00438a00 BW1M100 100b13e0 GBelief::SetBeliefInPlayerCap(GPlayer *, float)
+	// BW1W120 00438a00 BW1M119 010b3ec0
 	void SetBeliefInPlayerCap(GPlayer* player, float cap);
 };
 

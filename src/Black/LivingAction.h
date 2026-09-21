@@ -26,14 +26,14 @@ struct LivingAction
 
 	// Constructors
 
-	// BW1W120 005ecc70 BW1M100 10381350 LivingAction::LivingAction(void)
+	// BW1W120 005ecc70 BW1M119 01389490
 	LivingAction();
 
 	// Non-virtual methods
 
-	// BW1W120 005ecc90 BW1M100 10072200 LivingAction::SetState(unsigned long, unsigned char)
+	// BW1W120 005ecc90 BW1M119 010749a0
 	void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
-	// BW1W120 inlined BW1M100 1004c420 LivingAction::GetState(unsigned long) const
+	// BW1W120 inlined BW1M119 0104edb0
 	VILLAGER_STATES GetState(LIVING_ACTION_INDEX index) const;
 };
 

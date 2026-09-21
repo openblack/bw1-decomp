@@ -18,12 +18,12 @@ class LHConvert
 public:
 	uint8_t field_0x0[0x90];
 
-	// BW1W120 007efcf0 LHConvert::ToSprites(char*, LHSpriteList*, LHColor*, unsigned long, long*, FlicHeader*, unsigned long*)
+	// BW1W120 007efcf0 BW1M119 011341c0 (LHCombined Release)
 	LH_RETURN ToSprites(char* file_name, LHSpriteList* sprite_list, LHColor* colors, unsigned long flags, long* param_5,
 	                    FlicHeader* flic_header, unsigned long* param_7);
 };
 
-// BW1W120 007efb60 LHLoadABMP(char*, LHSprite*, unsigned long)
+// BW1W120 007efb60 BW1M119 011346d0 (LHCombined Release)
 LH_RETURN LHLoadABMP(char* file_name, LHSprite* sprite, unsigned long param_3);
 
 #endif /* BW1_DECOMP_LHCONVERT_INCLUDED_H */

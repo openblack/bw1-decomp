@@ -52,9 +52,9 @@ struct CMouse
 
 	// Non-virtual methods
 
-	// BW1W120 0061a150 BW1M100 10090d20 CMouse::ProcessButtons(void)
+	// BW1W120 0061a150 BW1M119 01092f50
 	void ProcessButtons();
-	// BW1W120 0061a110 BW1M100 10007d80 CMouse::ProcessPosition(void)
+	// BW1W120 0061a110 BW1M119 01007c90
 	void ProcessPosition();
 };
 
@@ -67,7 +67,7 @@ struct ControlKey
 
 	// Non-virtual methods
 
-	// BW1W120 0046efe0 BW1M100 inlined ControlKey::GetDisplayText(wchar_t*)
+	// BW1W120 0046efe0 BW1M119 inlined
 	void GetDisplayText(char16_t* out_text);
 };
 
@@ -78,7 +78,7 @@ struct ControlMouse
 
 	// Non-virtual methods
 
-	// BW1W120 0046f180 BW1M100 101cc260 ControlMouse::GetDisplayText(wchar_t*)
+	// BW1W120 0046f180 BW1M119 011d4130
 	void GetDisplayText(char16_t* out_text);
 };
 
@@ -90,17 +90,17 @@ struct BindableAction
 
 	// Static methods
 
-	// BW1W120 0046f3c0 BW1M100 10090c30 BindableAction::IsKeyDown(LH_KEY)
+	// BW1W120 0046f3c0 BW1M119 01092e60
 	static bool IsKeyDown(LH_KEY key);
 
 	// Constructors
 
-	// BW1W120 0046f1a0 BW1M100 101cc4d0 BindableAction::BindableAction(void)
+	// BW1W120 0046f1a0 BW1M119 011d40a0
 	BindableAction();
 
 	// Non-virtual methods
 
-	// BW1W120 0046f4c0 BW1M100 10090b80 BindableAction::IsKeyBeingPressed(void)
+	// BW1W120 0046f4c0 BW1M119 01092db0
 	bool IsKeyBeingPressed();
 };
 

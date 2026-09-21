@@ -57,58 +57,58 @@ public:
 
 	// Override methods
 
-	// BW1W120 0052f920 BW1M100 100e3420 Flock::_dt(void)
+	// BW1W120 0052f920 BW1M119 010e7890
 	virtual ~Flock();
-	// BW1W120 0052ffb0 BW1M100 100e5630 Flock::ToBeDeleted(int)
+	// BW1W120 0052ffb0 BW1M119 010e9bf0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0052f870 BW1M100 100e34e0 Flock::GetTown(void)
+	// BW1W120 0052f870 BW1M119 010e7950
 	virtual Town* GetTown();
-	// BW1W120 0052f910 BW1M100 100e37a0 Flock::GetDebugText(void)
+	// BW1W120 0052f910 BW1M119 010e7c10
 	virtual char* GetDebugText();
-	// BW1W120 00530930 BW1M100 100e3880 Flock::Load(GameOSFile &)
+	// BW1W120 00530930 BW1M119 010e7cf0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 005305a0 BW1M100 100e40b0 Flock::Save(GameOSFile &)
+	// BW1W120 005305a0 BW1M119 010e8590
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0052f900 BW1M100 100e3770 Flock::GetSaveType(void)
+	// BW1W120 0052f900 BW1M119 010e7be0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0052f8a0 BW1M100 100e3580 Flock::GetCreatureBeliefType(void)
+	// BW1W120 0052f8a0 BW1M119 010e79f0
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 0052f8b0 BW1M100 100e35c0 Flock::GetCreatureBeliefListType(void)
+	// BW1W120 0052f8b0 BW1M119 010e7a30
 	virtual uint32_t GetCreatureBeliefListType();
-	// BW1W120 0052f8d0 BW1M100 100e3650 Flock::IsActivityObjectWhichAngerAppliesTo(Creature *)
+	// BW1W120 0052f8d0 BW1M119 010e7ac0
 	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* creature);
-	// BW1W120 0052f8e0 BW1M100 100e36b0 Flock::IsActivityObjectWhichCompassionAppliesTo(Creature *)
+	// BW1W120 0052f8e0 BW1M119 010e7b20
 	virtual bool32_t IsActivityObjectWhichCompassionAppliesTo(Creature* creature);
-	// BW1W120 0052f8f0 BW1M100 100e3710 Flock::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
+	// BW1W120 0052f8f0 BW1M119 010e7b80
 	virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature);
-	// BW1W120 0052f8c0 BW1M100 100e3600 Flock::IsSuitableForCreatureActivity(void)
+	// BW1W120 0052f8c0 BW1M119 010e7a70
 	virtual uint32_t IsSuitableForCreatureActivity();
-	// BW1W120 0052f860 BW1M100 100e34b0 Flock::IsFlock( const(void))
+	// BW1W120 0052f860 BW1M119 010e7920
 	virtual uint32_t IsFlock() const;
-	// BW1W120 0052f880 BW1M100 100e3510 Flock::IsScriptContainer( const(void))
+	// BW1W120 0052f880 BW1M119 010e7980
 	virtual uint32_t IsScriptContainer() const;
-	// BW1W120 0052f890 BW1M100 100e3550 Flock::GetText(void)
+	// BW1W120 0052f890 BW1M119 010e79c0
 	virtual const char* GetText();
-	// BW1W120 00530490 BW1M100 100e4a70 Flock::GetScriptObjectType(void)
+	// BW1W120 00530490 BW1M119 010e8ff0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 
 	// Constructors
 
-	// BW1W120 0052f780 BW1M100 100e6ec0 Flock::Flock(MapCoords const &, GFlockInfo const *, GPlayer *, unsigned long)
+	// BW1W120 0052f780 BW1M119 010eb000
 	Flock(const MapCoords& coords, const GFlockInfo* info, GPlayer* player, uint32_t param_4);
-	// BW1W120 100e6be0 BW1M100 0052f950 Flock::Flock(Living*)
+	// BW1W120 100e6be0 BW1M119 010ead80
 	Flock(Living* param_1);
 
 	// Non-virtual methods
 
-	// BW1W120 0052fb50 Flock::RemoveLivingFromFlock(Living *, int)
+	// BW1W120 0052fb50 BW1M119 010ea6c0
 	void RemoveLivingFromFlock(Living* living, int update);
-	// BW1W120 0052fc20 BW1M100 100e6220 Flock::SetDomainCentrePos(MapCoords const &)
+	// BW1W120 0052fc20 BW1M119 010ea580
 	void SetDomainCentrePos(const MapCoords& param_1);
-	// BW1W120 0052fe10 Flock::SeperateLivingIntoNewFlock(Living *, int)
+	// BW1W120 0052fe10 BW1M119 010ea170
 	// TODO: incorrect return type
 	void SeperateLivingIntoNewFlock(Living* living, int update);
-	// BW1W120 00530570 BW1M100 100684b0 Flock::GetFlockPos(void)
+	// BW1W120 00530570 BW1M119 0106ac10
 	// TODO: incorrect return type
 	MapCoords GetFlockPos();
 };

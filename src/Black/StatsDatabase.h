@@ -11,12 +11,12 @@ class StatsDatabase : public MultiplayerDatabase
 public:
 	// Override methods
 
-	// BW1W120 006338f0 BW1M100 10109920 StatsDatabase::Send(void)
+	// BW1W120 006338f0 BW1M119 01113130
 	virtual uint32_t Send();
 
 	// Constructors
 
-	// BW1W120 006338d0 BW1M100 10109a30 StatsDatabase::StatsDatabase(void)
+	// BW1W120 006338d0 BW1M119 01113240
 	StatsDatabase();
 };
 

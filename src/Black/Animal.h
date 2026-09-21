@@ -53,294 +53,294 @@ public:
 
 	// Override methods
 
-	// BW1W120 004178a0 BW1M100 1016c000 Animal::_dt(void)
+	// BW1W120 004178a0 BW1M119 01174cd0
 	virtual ~Animal();
-	// BW1W120 00417b60 BW1M100 1016c0a0 Animal::ToBeDeleted(int)
+	// BW1W120 00417b60 BW1M119 01174d70
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0071be10 BW1M100 1050fbb0 Animal::GetGuidanceResourceType(void)
+	// BW1W120 0071be10 BW1M119 01517730
 	virtual uint32_t GetGuidanceResourceType();
-	// BW1W120 0041b710 BW1M100 10165620 Animal::Load(GameOSFile &)
+	// BW1W120 0041b710 BW1M119 0116daa0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0041b460 BW1M100 101659a0 Animal::Save(GameOSFile &)
+	// BW1W120 0041b460 BW1M119 0116de20
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0041b9a0 BW1M100 101655d0 Animal::ResolveLoad(void)
+	// BW1W120 0041b9a0 BW1M119 0116da50
 	virtual void ResolveLoad();
-	// BW1W120 00417840 BW1M100 1012f3a0 Animal::GetCreatureBeliefType(void)
+	// BW1W120 00417840 BW1M119 01138230
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 00417870 BW1M100 1012f470 Animal::CanBeGivenToTown(Creature *)
+	// BW1W120 00417870 BW1M119 01138300
 	virtual uint32_t CanBeGivenToTown(Creature* param_1);
-	// BW1W120 004e4ae0 BW1M100 105e41a0 Animal::IsAnimalBelongingToOtherPlayer(Creature *)
+	// BW1W120 004e4ae0 BW1M119 015ebea0
 	virtual uint32_t IsAnimalBelongingToOtherPlayer(Creature* param_1);
-	// BW1W120 004eabd0 BW1M100 1026e380 Animal::GetCreatureMimicType(void)
+	// BW1W120 004eabd0 BW1M119 012721e0
 	virtual uint32_t GetCreatureMimicType();
-	// BW1W120 004d1b20 BW1M100 102430c0 Animal::GetHowMuchCreatureWantsToLookAtMe(void)
+	// BW1W120 004d1b20 BW1M119 012479b0
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
-	// BW1W120 00417890 BW1M100 1012f720 Animal::GetDeathReason(void)
+	// BW1W120 00417890 BW1M119 011383c0
 	virtual DEATH_REASON GetDeathReason();
-	// BW1W120 00417880 BW1M100 1004f080 Animal::IsAnimal(void)
+	// BW1W120 00417880 BW1M119 01051a00
 	virtual uint32_t IsAnimal();
-	// BW1W120 0041b200 BW1M100 101662b0 Animal::GetScriptObjectType(void)
+	// BW1W120 0041b200 BW1M119 0116e640
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 00419310 BW1M100 101696e0 Animal::GetHoldType(void)
+	// BW1W120 00419310 BW1M119 01172060
 	virtual HOLD_TYPE GetHoldType();
-	// BW1W120 00419320 BW1M100 10169690 Animal::GetHoldLoweringMultiplier(void)
+	// BW1W120 00419320 BW1M119 01172010
 	virtual float GetHoldLoweringMultiplier();
-	// BW1W120 0041b1b0 BW1M100 101666a0 Animal::DestroyedByEffect(GPlayer *, float)
+	// BW1W120 0041b1b0 BW1M119 0116e810
 	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
-	// BW1W120 00417700 BW1M100 1012eed0 Animal::ProcessBySpell(Spell *)
+	// BW1W120 00417700 BW1M119 01137df0
 	virtual uint32_t ProcessBySpell(Spell* param_1);
-	// BW1W120 00417540 BW1M100 1012e540 Animal::GetMesh( const(void))
+	// BW1W120 00417540 BW1M119 011374c0
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00417550 BW1M100 inlined Animal::GetDetailMesh(int)
+	// BW1W120 00417550 BW1M119 inlined
 	virtual int GetDetailMesh(int param_1);
-	// BW1W120 0051c310 BW1M100 100419a0 Animal::Draw(void)
+	// BW1W120 0051c310 BW1M119 010443e0
 	virtual void Draw();
-	// BW1W120 00417ee0 BW1M100 1004c150 Animal::ProcessState(void)
+	// BW1W120 00417ee0 BW1M119 0104eae0
 	virtual uint32_t ProcessState();
-	// BW1W120 0041a040 BW1M100 10168030 Animal::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 0041a040 BW1M119 011704d0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 00417530 BW1M100 1012e500 Animal::GetResourceType(void)
+	// BW1W120 00417530 BW1M119 01137480
 	virtual RESOURCE_TYPE GetResourceType();
-	// BW1W120 0041bc80 BW1M100 10164dc0 Animal::GetDefaultResource(void)
+	// BW1W120 0041bc80 BW1M119 0116d110
 	virtual int GetDefaultResource();
-	// BW1W120 00419b40 BW1M100 10168830 Animal::ValidForPlaceInHand(GInterfaceStatus *)
+	// BW1W120 00419b40 BW1M119 01170cd0
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-	// BW1W120 00419b60 BW1M100 10168730 Animal::InterfaceSetInMagicHand(GInterfaceStatus *)
+	// BW1W120 00419b60 BW1M119 01170bd0
 	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
-	// BW1W120 0041b320 BW1M100 10166000 Animal::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
+	// BW1W120 0041b320 BW1M119 0116e480
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
-	// BW1W120 0041b360 BW1M100 10165e60 Animal::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
+	// BW1W120 0041b360 BW1M119 0116e2e0
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
-	// BW1W120 005f04d0 BW1M100 10385070 Animal::GetPhysicsConstantsType(void)
+	// BW1W120 005f04d0 BW1M119 0138d240
 	virtual uint32_t GetPhysicsConstantsType();
-	// BW1W120 005f04e0 BW1M100 10384ac0 Animal::SetUpPhysOb(PhysOb *)
+	// BW1W120 005f04e0 BW1M119 0138ccb0
 	virtual void SetUpPhysOb(PhysOb* param_1);
-	// BW1W120 005f0d80 BW1M100 10384510 Animal::EndPhysics(PhysicsObject *, bool)
+	// BW1W120 005f0d80 BW1M119 0138c700
 	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
-	// BW1W120 0041bc10 BW1M100 10164e30 Animal::ReactToPhysicsImpact(PhysicsObject *, bool)
+	// BW1W120 0041bc10 BW1M119 0116d180
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-	// BW1W120 00417860 BW1M100 1012f430 Animal::GetTastiness(void)
+	// BW1W120 00417860 BW1M119 011382c0
 	virtual uint32_t GetTastiness();
-	// BW1W120 0041a130 BW1M100 10167d20 Animal::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 0041a130 BW1M119 011701c0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
-	// BW1W120 00417780 BW1M100 1012f0d0 Animal::StandAnimation(void)
+	// BW1W120 00417780 BW1M119 01137fe0
 	virtual uint32_t StandAnimation();
-	// BW1W120 00417fe0 BW1M100 10084290 Animal::SetSpeed(long)
+	// BW1W120 00417fe0 BW1M119 01086670
 	virtual void SetSpeed(int param_1);
-	// BW1W120 00418560 BW1M100 10049170 Animal::SetTowardsAngle(unsigned short)
+	// BW1W120 00418560 BW1M119 0104bb20
 	virtual void SetTowardsAngle(uint16_t param_1);
-	// BW1W120 00418aa0 BW1M100 100482e0 Animal::MoveTo3D(void)
+	// BW1W120 00418aa0 BW1M119 0104ac50
 	virtual void MoveTo3D();
-	// BW1W120 00417c90 BW1M100 100966b0 Animal::StartWander(void)
+	// BW1W120 00417c90 BW1M119 01098600
 	virtual uint32_t StartWander();
-	// BW1W120 00418010 BW1M100 1016b170 Animal::Wander(void)
+	// BW1W120 00418010 BW1M119 01173ed0
 	virtual uint32_t Wander();
-	// BW1W120 004182d0 BW1M100 10012390 Animal::Eat(void)
+	// BW1W120 004182d0 BW1M119 01014f60
 	virtual uint32_t Eat();
-	// BW1W120 004180d0 BW1M100 1016afc0 Animal::SeekSleep(void)
+	// BW1W120 004180d0 BW1M119 01173d20
 	virtual uint32_t SeekSleep();
-	// BW1W120 00418330 BW1M100 1007e4a0 Animal::Sleeps(void)
+	// BW1W120 00418330 BW1M119 01080970
 	virtual uint32_t Sleeps();
-	// BW1W120 004181b0 BW1M100 1016ae90 Animal::SeekEnvironment(void)
+	// BW1W120 004181b0 BW1M119 01173bf0
 	virtual uint32_t SeekEnvironment();
-	// BW1W120 00418370 BW1M100 1016a8c0 Animal::StandardAction(void)
+	// BW1W120 00418370 BW1M119 01173720
 	virtual uint32_t StandardAction();
-	// BW1W120 00418280 BW1M100 1016ac10 Animal::StartToEat(void)
+	// BW1W120 00418280 BW1M119 01173980
 	virtual uint32_t StartToEat();
-	// BW1W120 00418320 BW1M100 1009ee40 Animal::FinishEating(void)
+	// BW1W120 00418320 BW1M119 010a0b70
 	virtual uint32_t FinishEating();
-	// BW1W120 00419010 BW1M100 10169ab0 Animal::TargetPounce(void)
+	// BW1W120 00419010 BW1M119 01172460
 	virtual uint32_t TargetPounce();
-	// BW1W120 00418db0 BW1M100 10169d70 Animal::HuntingMoveToPos(void)
+	// BW1W120 00418db0 BW1M119 01172720
 	virtual uint32_t HuntingMoveToPos();
-	// BW1W120 00417d40 BW1M100 101746f0 Animal::MoveToPosAndLookAround(void)
+	// BW1W120 00417d40 BW1M119 011746f0
 	virtual uint32_t MoveToPosAndLookAround();
-	// BW1W120 0041ad10 BW1M100 1016ed20 Animal::SpecialMoveToPos(void)
+	// BW1W120 0041ad10 BW1M119 0116ed20
 	virtual uint32_t SpecialMoveToPos();
-	// BW1W120 0041ad00 BW1M100 1016ed60 Animal::FollowFlock(void)
+	// BW1W120 0041ad00 BW1M119 0116ed60
 	virtual uint32_t FollowFlock();
-	// BW1W120 0041ad20 BW1M100 1016ece0 Animal::LandOnObject(void)
+	// BW1W120 0041ad20 BW1M119 0116ece0
 	virtual uint32_t LandOnObject();
-	// BW1W120 0041ad30 BW1M100 1016ecb0 Animal::LandAtPos(void)
+	// BW1W120 0041ad30 BW1M119 0116ecb0
 	virtual uint32_t LandAtPos();
-	// BW1W120 00417d80 BW1M100 101745a0 Animal::InteractDecideWhatToDo(void)
+	// BW1W120 00417d80 BW1M119 011745a0
 	virtual uint32_t InteractDecideWhatToDo();
-	// BW1W120 004201f0 BW1M100 1017f6b0 Animal::FleeingFromPredatorReaction(void)
+	// BW1W120 004201f0 BW1M119 0117f6b0
 	virtual uint32_t FleeingFromPredatorReaction();
-	// BW1W120 00418230 BW1M100 10173a20 Animal::GivesBirth(void)
+	// BW1W120 00418230 BW1M119 01173a20
 	virtual uint32_t GivesBirth();
-	// BW1W120 0041b450 BW1M100 1016e1d0 Animal::HideInLair(void)
+	// BW1W120 0041b450 BW1M119 0116e1d0
 	virtual uint32_t HideInLair();
-	// BW1W120 004180a0 BW1M100 10173e30 Animal::SeekFood(void)
+	// BW1W120 004180a0 BW1M119 01173e30
 	virtual uint32_t SeekFood();
-	// BW1W120 00417dc0 BW1M100 1004e720 Animal::ProcessNeeds(void)
+	// BW1W120 00417dc0 BW1M119 0104e720
 	virtual uint32_t ProcessNeeds();
-	// BW1W120 00418450 BW1M100 100060e0 Animal::CheckNeeds(void)
+	// BW1W120 00418450 BW1M119 010060e0
 	virtual uint32_t CheckNeeds();
-	// BW1W120 00417520 BW1M100 1013bc20 Animal::IsOkToBeShepherd(void)
+	// BW1W120 00417520 BW1M119 0113bc20
 	virtual uint32_t IsOkToBeShepherd();
-	// BW1W120 0041a3e0 BW1M100 1016fcf0 Animal::AddToFlock(void)
+	// BW1W120 0041a3e0 BW1M119 0116fcf0
 	virtual uint32_t AddToFlock();
-	// BW1W120 0041b0f0 BW1M100 1016ea00 Animal::GetPositionInFlock(void)
+	// BW1W120 0041b0f0 BW1M119 0116ea00
 	virtual uint32_t GetPositionInFlock();
-	// BW1W120 00419120 BW1M100 10172110 Animal::FinishPouncing(void)
+	// BW1W120 00419120 BW1M119 01172110
 	virtual uint32_t FinishPouncing();
-	// BW1W120 00418da0 BW1M100 10172b10 Animal::IsHuntingTargetValid(void)
+	// BW1W120 00418da0 BW1M119 01172b10
 	virtual uint32_t IsHuntingTargetValid();
-	// BW1W120 00418fd0 BW1M100 10172660 Animal::HuntingMoveToPosAbaondon(void)
+	// BW1W120 00418fd0 BW1M119 01172660
 	virtual uint32_t HuntingMoveToPosAbaondon();
-	// BW1W120 004183c0 BW1M100 101735e0 Animal::ReactToAnimalNeeds(void)
+	// BW1W120 004183c0 BW1M119 011735e0
 	virtual uint32_t ReactToAnimalNeeds();
-	// BW1W120 004184d0 BW1M100 101732e0 Animal::ReactToAnimalFoodNeeds(void)
+	// BW1W120 004184d0 BW1M119 011732e0
 	virtual uint32_t ReactToAnimalFoodNeeds();
-	// BW1W120 0041ad50 BW1M100 1016ec70 Animal::LookForFoodPos(void)
+	// BW1W120 0041ad50 BW1M119 0116ec70
 	virtual uint32_t LookForFoodPos();
-	// BW1W120 0041ad60 BW1M100 1016ec30 Animal::LookForSleepPos(void)
+	// BW1W120 0041ad60 BW1M119 0116ec30
 	virtual uint32_t LookForSleepPos();
-	// BW1W120 004175b0 BW1M100 101376e0 Animal::IAmABird(void)
+	// BW1W120 004175b0 BW1M119 011376e0
 	virtual uint32_t IAmABird();
-	// BW1W120 0041b420 BW1M100 1016e270 Animal::CalculeLairPos(void)
+	// BW1W120 0041b420 BW1M119 0116e270
 	virtual uint32_t CalculeLairPos();
-	// BW1W120 004192e0 Animal::FUN_004192E0(void)
+	// BW1W120 004192e0
 	virtual uint32_t FUN_004192E0();
-	// BW1W120 004192f0 BW1M100 101720a0 Animal::ProcessFadeOut(void)
+	// BW1W120 004192f0 BW1M119 011720a0
 	virtual uint32_t ProcessFadeOut();
-	// BW1W120 0041b1d0 BW1M100 100337b0 Animal::GetTimeToBank(void)
+	// BW1W120 0041b1d0 BW1M119 010337b0
 	virtual uint32_t GetTimeToBank();
-	// BW1W120 0041b1e0 BW1M100 10022a10 Animal::GetBankAngle(void)
+	// BW1W120 0041b1e0 BW1M119 01022a10
 	virtual uint32_t GetBankAngle(float param_1, float param_2);
-	// BW1W120 00417710 BW1M100 10175ca0 Animal::MoveAnimation(void)
+	// BW1W120 00417710 BW1M119 01175ca0
 	virtual uint32_t MoveAnimation();
-	// BW1W120 00417720 BW1M100 10175ce0 Animal::DyingAnimation(void)
+	// BW1W120 00417720 BW1M119 01175ce0
 	virtual uint32_t DyingAnimation();
-	// BW1W120 00417730 BW1M100 10175d20 Animal::DeadAnimation(void)
+	// BW1W120 00417730 BW1M119 01175d20
 	virtual uint32_t DeadAnimation();
-	// BW1W120 00417740 BW1M100 10175d60 Animal::EatAnimation(void)
+	// BW1W120 00417740 BW1M119 01175d60
 	virtual uint32_t EatAnimation();
-	// BW1W120 00417750 BW1M100 10175da0 Animal::StartToEatAnimation(void)
+	// BW1W120 00417750 BW1M119 01175da0
 	virtual uint32_t StartToEatAnimation();
-	// BW1W120 00417760 BW1M100 10175de0 Animal::FinishEatingAnimation(void)
+	// BW1W120 00417760 BW1M119 01175de0
 	virtual uint32_t FinishEatingAnimation();
-	// BW1W120 00417770 BW1M100 10175e20 Animal::SleepAnimation(void)
+	// BW1W120 00417770 BW1M119 01175e20
 	virtual uint32_t SleepAnimation();
-	// BW1W120 00417790 BW1M100 10137e50 Animal::LayDownAnimation(void)
+	// BW1W120 00417790 BW1M119 01137e50
 	virtual uint32_t LayDownAnimation();
-	// BW1W120 004177a0 BW1M100 10137e90 Animal::PounceAnimation(void)
+	// BW1W120 004177a0 BW1M119 01137e90
 	virtual uint32_t PounceAnimation();
-	// BW1W120 004177b0 BW1M100 10137ed0 Animal::HideAnimation(void)
+	// BW1W120 004177b0 BW1M119 01137ed0
 	virtual uint32_t HideAnimation();
-	// BW1W120 004177c0 BW1M100 10137f10 Animal::StalkAnimation(void)
+	// BW1W120 004177c0 BW1M119 01137f10
 	virtual uint32_t StalkAnimation();
-	// BW1W120 004177d0 BW1M100 10137f50 Animal::StandardAnimation(void)
+	// BW1W120 004177d0 BW1M119 01137f50
 	virtual uint32_t StandardAnimation();
-	// BW1W120 004177e0 BW1M100 10175e60 Animal::InHandAnimation(void)
+	// BW1W120 004177e0 BW1M119 01175e60
 	virtual uint32_t InHandAnimation();
-	// BW1W120 004177f0 BW1M100 10175ea0 Animal::LandedAnimation(void)
+	// BW1W120 004177f0 BW1M119 01175ea0
 	virtual uint32_t LandedAnimation();
-	// BW1W120 00417800 BW1M100 10175ee0 Animal::ThrownAnimation(void)
+	// BW1W120 00417800 BW1M119 01175ee0
 	virtual uint32_t ThrownAnimation();
-	// BW1W120 00417810 BW1M100 1009e9f0 Animal::DecideAnimation(void)
+	// BW1W120 00417810 BW1M119 0109e9f0
 	virtual uint32_t DecideAnimation();
-	// BW1W120 0041a3f0 BW1M100 1000bfc0 Animal::SetNewWander(MapCoords const &, long, long)
+	// BW1W120 0041a3f0 BW1M119 0100eaf0
 	virtual void SetNewWander(const MapCoords& param_1, int param_2, int param_3);
-	// BW1W120 0041acc0 BW1M100 10166b90 Animal::DecideWhatToDo(void)
+	// BW1W120 0041acc0 BW1M119 0116eda0
 	virtual bool32_t DecideWhatToDo();
-	// BW1W120 0041a2b0 BW1M100 1007c6d0 Animal::SetStateSpeed(void)
+	// BW1W120 0041a2b0 BW1M119 016da754
 	virtual void SetStateSpeed();
-	// BW1W120 0041b430 BW1M100 inlined Animal::IsFinalState(VILLAGER_STATES)
+	// BW1W120 0041b430 BW1M119 inlined
 	virtual bool IsFinalState(uint8_t state);
-	// BW1W120 00417fa0 BW1M100 10054d90 Animal::GetAnimId(void)
+	// BW1W120 00417fa0 BW1M119 01057730
 	virtual ANIM_LIST GetAnimId();
-	// BW1W120 0041a2c0 BW1M100 inlined Animal::CallExitStateFunction(VILLAGER_STATES)
+	// BW1W120 0041a2c0 BW1M119 inlined
 	virtual uint32_t CallExitStateFunction(uint8_t state);
-	// BW1W120 0041a370 BW1M100 inlined Animal::CallEntryStateFunctionUcUc(VILLAGER_STATES, VILLAGER_STATES)
+	// BW1W120 0041a370 BW1M119 inlined
 	virtual uint32_t CallEntryStateFunction(uint8_t current, uint8_t destination);
-	// BW1W120 0041a310 BW1M100 inlined Animal::CallEntryStateFunctionUc(VILLAGER_STATES)
+	// BW1W120 0041a310 BW1M119 inlined
 	virtual uint32_t CallEntryStateFunction(uint8_t state);
-	// BW1W120 0041b170 BW1M100 inlined Animal::ExitReaction(unsigned char)
+	// BW1W120 0041b170 BW1M119 inlined
 	virtual uint32_t ExitReaction(uint8_t state);
-	// BW1W120 00417570 BW1M100 inlined Animal::IsScriptState( const(VILLAGER_STATES))
+	// BW1W120 00417570 BW1M119 inlined
 	virtual bool IsScriptState(uint8_t state) const;
-	// BW1W120 00417590 BW1M100 inlined Animal::IsScriptInterruptableState( const(VILLAGER_STATES))
+	// BW1W120 00417590 BW1M119 inlined
 	virtual bool IsScriptInterruptableState(uint8_t state) const;
-	// BW1W120 0041b100 BW1M100 inlined Animal::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
+	// BW1W120 0041b100 BW1M119 inlined
 	virtual bool32_t IsStateExitFunctionSameAs(uint8_t state) const;
-	// BW1W120 0041b1c0 BW1M100 101665d0 Animal::DebugShowTime(unsigned long, unsigned char, unsigned char)
+	// BW1W120 0041b1c0 BW1M119 0116e740
 	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
-	// BW1W120 00419bc0 BW1M100 10168630 Animal::IsInterestedInFoodObject(Object *)
+	// BW1W120 00419bc0 BW1M119 01170ad0
 	virtual bool IsInterestedInFoodObject(Object* param_1);
-	// BW1W120 0041a280 BW1M100 10167c30 Animal::ResetStateAfterReacting(void)
+	// BW1W120 0041a280 BW1M119 0116fe90
 	virtual void ResetStateAfterReacting();
-	// BW1W120 00420440 BW1M100 10176350 Animal::SetupReactToCreature(GameThingWithPos *, Reaction *)
+	// BW1W120 00420440 BW1M119 0117f3b0
 	virtual void SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2);
-	// BW1W120 004204a0 BW1M100 101760c0 Animal::SetupReactToFlyingObject(GameThingWithPos *, Reaction *)
+	// BW1W120 004204a0 BW1M119 0117f120
 	virtual void SetupReactToFlyingObject(GameThingWithPos* param_1, Reaction* param_2);
-	// BW1W120 00420460 BW1M100 101762d0 Animal::SetupReactToFire(GameThingWithPos *, Reaction *)
+	// BW1W120 00420460 BW1M119 0117f330
 	virtual void SetupReactToFire(GameThingWithPos* param_1, Reaction* param_2);
-	// BW1W120 00420480 BW1M100 10176250 Animal::SetupReactToFallingTree(GameThingWithPos *, Reaction *)
+	// BW1W120 00420480 BW1M119 0117f2b0
 	virtual void SetupReactToFallingTree(GameThingWithPos* param_1, Reaction* param_2);
-	// BW1W120 00420410 BW1M100 101763d0 Animal::SetupFleeFromPredator(GameThingWithPos *, Reaction *)
+	// BW1W120 00420410 BW1M119 0117f430
 	virtual void SetupFleeFromPredator(GameThingWithPos* param_1, Reaction* param_2);
-	// BW1W120 004175c0 BW1M100 1012e7f0 Animal::FollowObjectPriority(Reaction *, Reaction *)
+	// BW1W120 004175c0 BW1M119 01137710
 	virtual uint8_t FollowObjectPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 004175d0 BW1M100 1012e840 Animal::LookAtSpellPriority(Reaction *, Reaction *)
+	// BW1W120 004175d0 BW1M119 01137760
 	virtual uint8_t LookAtSpellPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 004175e0 BW1M100 1012e890 Animal::LookAtNiceSpellPriority(Reaction *, Reaction *)
+	// BW1W120 004175e0 BW1M119 011377b0
 	virtual uint8_t LookAtNiceSpellPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 004175f0 BW1M100 1012e8e0 Animal::FollowSpellPriority(Reaction *, Reaction *)
+	// BW1W120 004175f0 BW1M119 01137800
 	virtual uint8_t FollowSpellPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 00417600 BW1M100 1012e930 Animal::ReactToWoodPriority(Reaction *, Reaction *)
+	// BW1W120 00417600 BW1M119 01137850
 	virtual uint8_t ReactToWoodPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 00417610 BW1M100 1012e980 Animal::ReactToMagicTreePriority(Reaction *, Reaction *)
+	// BW1W120 00417610 BW1M119 011378a0
 	virtual uint8_t ReactToMagicTreePriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 00417620 BW1M100 1012e9e0 Animal::ReactToBallPriority(Reaction *, Reaction *)
+	// BW1W120 00417620 BW1M119 01137900
 	virtual uint8_t ReactToBallPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 004203a0 BW1M100 101765e0 Animal::ReactToFirePriority(Reaction *, Reaction *)
+	// BW1W120 004203a0 BW1M119 0117f640
 	virtual uint8_t ReactToFirePriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 00417630 BW1M100 1012ea30 Animal::ReactToMagicShieldPriority(Reaction *, Reaction *)
+	// BW1W120 00417630 BW1M119 01137950
 	virtual uint8_t ReactToMagicShieldPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 00417640 BW1M100 1012ea90 Animal::ReactToCreatureGiftPriority(Reaction *, Reaction *)
+	// BW1W120 00417640 BW1M119 011379b0
 	virtual uint8_t ReactToCreatureGiftPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 00417650 BW1M100 1012eaf0 Animal::ReactToNewBuildingPriority(Reaction *, Reaction *)
+	// BW1W120 00417650 BW1M119 01137a10
 	virtual uint8_t ReactToNewBuildingPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 00417660 BW1M100 1012eb50 Animal::ReactToHandPickUpPriority(Reaction *, Reaction *)
+	// BW1W120 00417660 BW1M119 01137a70
 	virtual uint8_t ReactToHandPickUpPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 00417670 BW1M100 1012ebb0 Animal::ReactToHandUsingTotemPriority(Reaction *, Reaction *)
+	// BW1W120 00417670 BW1M119 01137ad0
 	virtual uint8_t ReactToHandUsingTotemPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 00417680 BW1M100 1012ec10 Animal::ReactToObjectCrushedPriority(Reaction *, Reaction *)
+	// BW1W120 00417680 BW1M119 01137b30
 	virtual uint8_t ReactToObjectCrushedPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 00417690 BW1M100 1012ec70 Animal::ReactToFightPriority(Reaction *, Reaction *)
+	// BW1W120 00417690 BW1M119 01137b90
 	virtual uint8_t ReactToFightPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 004176a0 BW1M100 1012ecc0 Animal::ReactToTeleportPriority(Reaction *, Reaction *)
+	// BW1W120 004176a0 BW1M119 01137be0
 	virtual uint8_t ReactToTeleportPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 004176b0 BW1M100 1012ed10 Animal::ReactToHandPuttingStuffInStoragePitPriority(Reaction *, Reaction *)
+	// BW1W120 004176b0 BW1M119 01137c30
 	virtual uint8_t ReactToHandPuttingStuffInStoragePitPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 004176c0 BW1M100 1012ed80 Animal::ReactToDeathPriority(Reaction *, Reaction *)
+	// BW1W120 004176c0 BW1M119 01137ca0
 	virtual uint8_t ReactToDeathPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 004176d0 BW1M100 1012edd0 Animal::ReactToDroppedByHandPriority(Reaction *, Reaction *)
+	// BW1W120 004176d0 BW1M119 01137cf0
 	virtual uint8_t ReactToDroppedByHandPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 004176e0 BW1M100 1012ee30 Animal::ReactToFaintingPriority(Reaction *, Reaction *)
+	// BW1W120 004176e0 BW1M119 01137d50
 	virtual uint8_t ReactToFaintingPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 004176f0 BW1M100 1012ee80 Animal::ReactToConfusedPriority(Reaction *, Reaction *)
+	// BW1W120 004176f0 BW1M119 01137da0
 	virtual uint8_t ReactToConfusedPriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 004203b0 BW1M100 10176560 Animal::ReactToFallingTreePriority(Reaction *, Reaction *)
+	// BW1W120 004203b0 BW1M119 0117f5c0
 	virtual uint8_t ReactToFallingTreePriority(Reaction* param_1, Reaction* param_2);
-	// BW1W120 0041bb00 BW1M100 101650c0 Animal::IsChild(void)
+	// BW1W120 0041bb00 BW1M119 0116d410
 	virtual bool32_t IsChild();
-	// BW1W120 00420550 BW1M100 10175d80 Animal::GetFleeingPositionFromMovingObject(MapCoords *, GameThingWithPos *, float)
+	// BW1W120 00420550 BW1M119 0117edd0
 	virtual void GetFleeingPositionFromMovingObject(MapCoords* param_1, GameThingWithPos* param_2, float param_3);
-	// BW1W120 0041a240 BW1M100 1007c570 Animal::GetFinalState( const(void))
+	// BW1W120 0041a240 BW1M119 0107eb10
 	virtual VILLAGER_STATES GetFinalState() const;
-	// BW1W120 0041b210 BW1M100 10055c50 Animal::IsPosValidForTurnAngle(MapCoords const &)
+	// BW1W120 0041b210 BW1M119 010585e0
 	virtual bool IsPosValidForTurnAngle(const MapCoords& param_1);
 
 	// Non-virtual methods
 
-	// BW1W120 0041abb0 BW1M100 10087bd0 Animal::KeepFlockMemberWithinFlockArea(void)
+	// BW1W120 0041abb0 BW1M119 01089fb0
 	uint32_t KeepFlockMemberWithinFlockArea();
-	// BW1W120 005AFE70 BW1M100 1004ed00 Animal::MoveToPos(void)
+	// BW1W120 005afe70 BW1M119 01051680
 	uint32_t MoveToPos();
-	// BW1W120 005AFEF0 BW1M100 1016b990 Animal::Landed(void)
+	// BW1W120 005afef0 BW1M119 01174660
 	uint32_t Landed();
 
 	// State-table handlers reached only through the villager/animal state
@@ -348,13 +348,13 @@ public:
 	// the signature of each is fixed by the table slot it is stored in.
 
 	// EntryState slot
-	// BW1W120 0041bab0 BW1M100 100a0590 Animal::EnterWandering(unsigned char, unsigned char)
+	// BW1W120 0041bab0 BW1M119 010a0590
 	uint32_t EnterWandering(uint8_t param_1, uint8_t param_2);
-	// BW1W120 0041bac0 BW1M100 1016d720 Animal::EnterSleep(unsigned char, unsigned char)
+	// BW1W120 0041bac0 BW1M119 0116d720
 	uint32_t EnterSleep(uint8_t param_1, uint8_t param_2);
-	// BW1W120 0041bad0 BW1M100 1016d6e0 Animal::EnterHideInLair(unsigned char, unsigned char)
+	// BW1W120 0041bad0 BW1M119 0116d6e0
 	uint32_t EnterHideInLair(uint8_t param_1, uint8_t param_2);
-	// BW1W120 0041bae0 BW1M100 1016d6a0 Animal::EnterSeekFood(unsigned char, unsigned char)
+	// BW1W120 0041bae0 BW1M119 0116d6a0
 	uint32_t EnterSeekFood(uint8_t param_1, uint8_t param_2);
 };
 

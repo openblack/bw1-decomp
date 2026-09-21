@@ -33,12 +33,12 @@ public:
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined LH3DComplexObject::LH3DComplexObject(void)
+	// BW1W120 inlined BW1M119 inlined
 	LH3DComplexObject();
 
 	// Non-virtual methods
 
-	// BW1W120 0080c020 BW1M100 10081d10 LH3DComplexObject::CreateDynamicShadow
+	// BW1W120 0080c020 BW1M119 0107f450 (LHCombined Release)
 	void CreateDynamicShadow();
 };
 

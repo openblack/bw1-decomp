@@ -17,9 +17,9 @@ class Arrow : public MobileObject
 public:
 	// Override methods
 
-	// BW1W120 00425c00 BW1M100 inlined Arrow::_dt(void)
+	// BW1W120 00425c00 BW1M119 inlined
 	virtual ~Arrow();
-	// BW1W120 00425bf0 BW1M100 inlined Arrow::GetPlayer(void)
+	// BW1W120 00425bf0 BW1M119 inlined
 	virtual GPlayer* GetPlayer();
 };
 

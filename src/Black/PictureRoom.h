@@ -13,7 +13,7 @@ public:
 
 	// Constructors
 
-	// BW1W120 0078f110 BW1M100 10114a00 PictureRoomBase::PictureRoomBase(char const *)
+	// BW1W120 0078f110 BW1M119 0111e5a0
 	PictureRoomBase(const char* param_1);
 };
 

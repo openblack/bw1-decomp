@@ -34,7 +34,7 @@ public:
 	virtual LH_MULTIPLAYER_API unsigned char* EncodeToBuffer(unsigned char* buffer, unsigned long options,
 	                                                         void* context);
 
-	// BW1W120 100243b0 BW1M100 1011b9e0 LHTransportInfo::DecodeFromBuffer(unsigned char *)
+	// BW1W120 100243b0 BW1M119 0111b620 (LHCombined Release)
 	virtual LH_MULTIPLAYER_API uint8_t* DecodeFromBuffer(uint8_t* data);
 	// BW1W120 10024420
 	virtual LH_MULTIPLAYER_API void ClearObject();

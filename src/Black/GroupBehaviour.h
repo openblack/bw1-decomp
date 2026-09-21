@@ -58,40 +58,40 @@ public:
 
 	// Override methods
 
-	// BW1W120 00596190 BW1M100 100fa600 GroupBehaviour::_dt(void)
+	// BW1W120 00596190 BW1M119 01103890
 	virtual ~GroupBehaviour();
-	// BW1W120 00596320 BW1M100 100fa080 GroupBehaviour::ToBeDeleted(int)
+	// BW1W120 00596320 BW1M119 01103310
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 005985c0 BW1M100 100f4e70 GroupBehaviour::Load(GameOSFile &)
+	// BW1W120 005985c0 BW1M119 010fe130
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00598240 BW1M100 100f5a80 GroupBehaviour::Save(GameOSFile &)
+	// BW1W120 00598240 BW1M119 010fee10
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 005964a0 BW1M100 106ffb98 GroupBehaviour::Process(void)
+	// BW1W120 005964a0 BW1M119 01103120
 	virtual void Process();
-	// BW1W120 00596700 BW1M100 100f90b0 GroupBehaviour::UpdateGroupBasedOnAction(DanceGroup *, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &, unsigned long)
+	// BW1W120 00596700 BW1M119 01102350
 	virtual void UpdateGroupBasedOnAction(DanceGroup* dance_group, DANCE_GROUP_ACTION_TYPE action_type,
 	                                      const DanceGroupActionArgument& argument, uint32_t param_4);
-	// BW1W120 00597300 BW1M100 100f8760 GroupBehaviour::AddAction(float, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
+	// BW1W120 00597300 BW1M119 01101ac0
 	virtual void AddAction(float param_1, LHDynamicStack<uint32_t>& stack, DANCE_GROUP_ACTION_TYPE action_type,
 	                       const DanceGroupActionArgument& argument);
-	// BW1W120 00597270 BW1M100 100f8990 GroupBehaviour::AddAction(float, unsigned long, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
+	// BW1W120 00597270 BW1M119 01101cf0
 	virtual void AddAction(float param_1, uint32_t param_2, DANCE_GROUP_ACTION_TYPE action_type,
 	                       const DanceGroupActionArgument& arguments);
-	// BW1W120 005978e0 BW1M100 100f6eb0 GroupBehaviour::LoadDance(char const *)
+	// BW1W120 005978e0 BW1M119 01100230
 	virtual void LoadDance(const char* param_1);
-	// BW1W120 0050cc40 BW1M100 100f4e30 GroupBehaviour::GetAngle(void)
+	// BW1W120 0050cc40 BW1M119 010fe0f0
 	virtual float GetAngle();
 
 	// Constructors
 
-	// BW1W120 00596070 BW1M100 100fad20 GroupBehaviour::GroupBehaviour(void)
+	// BW1W120 00596070 BW1M119 01103fc0
 	GroupBehaviour();
 
 	// Non-virtual methods
 
-	// BW1W120 00597400 BW1M100 100f8550 GroupBehaviour::FindDanceGroup(Living *)
+	// BW1W120 00597400 BW1M119 011018b0
 	bool FindDanceGroup(Living* param_1);
-	// BW1W120 00597f20 BW1M100 100f68a0 GroupBehaviour::CalculateDancePosition(MapCoords const &, MapCoords *, DanceGroup *, unsigned long)
+	// BW1W120 00597f20 BW1M119 010ffc30
 	void CalculateDancePosition(const MapCoords& param_1, MapCoords* param_2, DanceGroup* param_3,
 	                            unsigned long param_4);
 };
@@ -99,14 +99,14 @@ public:
 class DanceEditState : public GroupBehaviour
 {
 public:
-	// BW1W120 0050ccc0 BW1M100 10091910 DanceEditState::UpdateEveryRender(void)
+	// BW1W120 0050ccc0 BW1M119 01093b30
 	static void UpdateEveryRender();
 
 	// Override methods
 
-	// BW1W120 0050cc50 BW1M100 inlined DanceEditState::_dt(void)
+	// BW1W120 0050cc50 BW1M119 inlined
 	virtual ~DanceEditState();
-	// BW1W120 0050cc90 BW1M100 inlined DanceEditState::ToBeDeleted(int)
+	// BW1W120 0050cc90 BW1M119 inlined
 	virtual void ToBeDeleted(int param_1);
 };
 
@@ -115,15 +115,15 @@ class DanceKeyAction : public GameThing
 public:
 	// Override methods
 
-	// BW1W120 0050e3a0 BW1M100 102aed30 DanceKeyAction::_dt(void)
+	// BW1W120 0050e3a0 BW1M119 012b1dd0
 	virtual ~DanceKeyAction();
-	// BW1W120 0050e390 BW1M100 102aee40 DanceKeyAction::GetDebugText(void)
+	// BW1W120 0050e390 BW1M119 012b1ee0
 	virtual char* GetDebugText();
-	// BW1W120 0050ea00 BW1M100 102ae600 DanceKeyAction::Load(GameOSFile &)
+	// BW1W120 0050ea00 BW1M119 012b16f0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0050e880 BW1M100 102ae810 DanceKeyAction::Save(GameOSFile &)
+	// BW1W120 0050e880 BW1M119 012b1920
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0050e380 BW1M100 102aee00 DanceKeyAction::GetSaveType(void)
+	// BW1W120 0050e380 BW1M119 012b1ea0
 	virtual uint32_t GetSaveType();
 };
 

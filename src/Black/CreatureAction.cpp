@@ -5,10 +5,10 @@
 #include "ColourConstants.h"           /* For White */
 #include "CreatureInitialDesireInfo.h" /* For struct CreatureInitialDesireInfo */
 
-// BW1W120 0x00c67e90 BW1M100 0x10a856b8
+// BW1W120 00c67e90
 CreatureInitialDesireInfo CreatureInitialDesireInfo::g_CreatureInitialDesireInfos[NUM_CREATURE_DESIRES];
 
-// BW1W120 00491830 BW1M100 1022ec70 CreatureInitialDesireInfo::GetBaseInfo(unsigned long &)
+// BW1W120 00491830 BW1M119 01233b60
 GBaseInfo* CreatureInitialDesireInfo::GetBaseInfo(uint32_t& count)
 {
 	count = sizeof(g_CreatureInitialDesireInfos) / sizeof(g_CreatureInitialDesireInfos[0]);

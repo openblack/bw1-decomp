@@ -31,19 +31,19 @@ public:
 	uint32_t             field_0x42c;
 	LHLinkedList<Point*> Points0;
 	LHLinkedList<Point*> Points1;
-	// BW1W120 00712f20 BW1M100 10198120
+	// BW1W120 00712f20 BW1M119 01183730
 	ServerLandscapeMap(char* path);
-	// BW1W120 00712fe0 BW1M100 10354220
+	// BW1W120 00712fe0 BW1M119 0135c9d0
 	~ServerLandscapeMap();
-	// BW1W120 007132b0 BW1M100 103669b0
+	// BW1W120 007132b0 BW1M119 0130d870
 	bool LoadMap(char* path);
-	// BW1W120 00713660 BW1M100 10573b40
+	// BW1W120 00713660 BW1M119 014a09c0
 	bool SaveLND(char* path);
-	// BW1W120 00713710 BW1M100 10105ec0
+	// BW1W120 00713710 BW1M119 01383c40
 	bool SaveMAP(char* path);
-	// BW1W120 007139e0 BW1M100 10105e10
+	// BW1W120 007139e0 BW1M119 013ed7e0
 	char* GetMAPFilename(char* path);
-	// BW1W120 00713a30 BW1M100 102f6680
+	// BW1W120 00713a30 BW1M119 011798a0
 	char* GetLNDFilename(char* path);
 };
 // MPFEData constructs this at +c10 and its next member at +1050.

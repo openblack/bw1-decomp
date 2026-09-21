@@ -17,9 +17,9 @@ class PlannedWorshipSiteUpgrade : public PlannedFeature
 public:
 	// Override methods
 
-	// BW1W120 0077ee70 BW1M100 inlined PlannedWorshipSiteUpgrade::_dt(void)
+	// BW1W120 0077ee70 BW1M119 inlined
 	virtual ~PlannedWorshipSiteUpgrade();
-	// BW1W120 0077eea0 BW1M100 inlined PlannedWorshipSiteUpgrade::CreatePlanned(float)
+	// BW1W120 0077eea0 BW1M119 inlined
 	virtual MultiMapFixed* CreatePlanned(float param_1);
 };
 

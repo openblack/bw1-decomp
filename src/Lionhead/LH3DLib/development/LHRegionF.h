@@ -12,11 +12,11 @@ struct LHRegionF
 
 	// Non-virtual methods
 
-	// BW1W120 007deb70 LHRegionF::CoordInRegion(LHCoordF const &) const
+	// BW1W120 007deb70 BW1M119 0114c9c0 (LHCombined Release)
 	int CoordInRegion(const LHCoordF& coord) const;
-	// BW1W120 007debc0 LHRegionF::CentreCoord(LHCoordF *) const
+	// BW1W120 007debc0 BW1M119 0114c870 (LHCombined Release)
 	void CentreCoord(LHCoordF* out) const;
-	// BW1W120 007dec00 LHRegionF::BoundWithRegion(LHRegionF *)
+	// BW1W120 007dec00 BW1M119 0114c7c0 (LHCombined Release)
 	void BoundWithRegion(LHRegionF* other);
 };
 static_assert(sizeof(LHRegionF) == 0x10, "Data type is of wrong size");

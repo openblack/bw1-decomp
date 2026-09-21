@@ -16,11 +16,13 @@ public:
 	ChannelBox*  ActiveDialog;
 	uint8_t      field_0xa68[0xb6c];
 	WinCondition Conditions[15]; /* 0x15d4 */
-	// BW1W120 00d3f038. Descriptive singleton name.
+	// Descriptive singleton name.
+	// BW1W120 00d3f038
 	static MPFEData Data;
-	// BW1W120 00d408b0. TODO: Original declaration scope is unrecovered.
+	// TODO: Original declaration scope is unrecovered.
+	// BW1W120 00d408b0
 	static uint64_t CreatureFileChecksum;
-	// BW1W120 006227c0 BW1M100 103989b0 MPFEData::Reset(void)
+	// BW1W120 006227c0 BW1M119 013a02f0
 	void Reset();
 };
 

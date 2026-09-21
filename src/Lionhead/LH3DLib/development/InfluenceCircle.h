@@ -7,9 +7,9 @@ class InfluenceCircle
 {
 public:
 	static void Draw(int mode); // 00826c90
-	// BW1W120 00826c50 BW1M100 imported InfluenceCircle::Reset(void)
+	// BW1W120 00826c50 BW1M119 imported
 	static void Reset();
-	// BW1W120 00826fa0 BW1M100 imported InfluenceCircle::Add(long, LHPoint const &, float)
+	// BW1W120 00826fa0 BW1M119 imported
 	static void Add(long player, const LHPoint& position, float influence);
 };
 

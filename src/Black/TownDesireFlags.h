@@ -27,45 +27,45 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055dae0 BW1M100 1055db90 TownDesireFlags::_dt(void)
+	// BW1W120 0055dae0 BW1M119 015669f0
 	virtual ~TownDesireFlags();
-	// BW1W120 00746a00 BW1M100 1055db30 TownDesireFlags::ToBeDeleted(int)
+	// BW1W120 00746a00 BW1M119 01566990
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0055da70 BW1M100 103540e0 TownDesireFlags::GetTown(void)
+	// BW1W120 0055da70 BW1M119 0135c610
 	virtual Town* GetTown();
-	// BW1W120 0055dad0 BW1M100 1055c0c0 TownDesireFlags::GetDebugText(void)
+	// BW1W120 0055dad0 BW1M119 01565810
 	virtual char* GetDebugText();
-	// BW1W120 00747030 BW1M100 1055c440 TownDesireFlags::Load(GameOSFile &)
+	// BW1W120 00747030 BW1M119 01565b30
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00746f10 BW1M100 1055c600 TownDesireFlags::Save(GameOSFile &)
+	// BW1W120 00746f10 BW1M119 01565cf0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055dac0 BW1M100 1055c080 TownDesireFlags::GetSaveType(void)
+	// BW1W120 0055dac0 BW1M119 015657d0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0055daa0 BW1M100 1055bff0 TownDesireFlags::IsTownDesireFlag(void)
+	// BW1W120 0055daa0 BW1M119 01565740
 	virtual uint32_t IsTownDesireFlag();
-	// BW1W120 00746ec0 BW1M100 1055d420 TownDesireFlags::GetQueryFirstEnumText(void)
+	// BW1W120 00746ec0 BW1M119 01566050
 	virtual HELP_TEXT GetQueryFirstEnumText();
-	// BW1W120 00746ed0 BW1M100 1055d3c0 TownDesireFlags::GetQueryLastEnumText(void)
+	// BW1W120 00746ed0 BW1M119 01565ff0
 	virtual HELP_TEXT GetQueryLastEnumText();
-	// BW1W120 00746ef0 BW1M100 10018a10 TownDesireFlags::GetFOVHelpMessageSet(void)
+	// BW1W120 00746ef0 BW1M119 0101b5b0
 	virtual uint32_t GetFOVHelpMessageSet();
-	// BW1W120 00746f00 BW1M100 1055c7e0 TownDesireFlags::GetFOVHelpCondition(void)
+	// BW1W120 00746f00 BW1M119 01565ed0
 	virtual uint32_t GetFOVHelpCondition();
-	// BW1W120 00746a20 BW1M100 100550f0 TownDesireFlags::Process(void)
+	// BW1W120 00746a20 BW1M119 01057a80
 	virtual uint32_t Process();
-	// BW1W120 0055da80 BW1M100 1055bf60 TownDesireFlags::GetMesh( const(void))
+	// BW1W120 0055da80 BW1M119 015656b0
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00746a30 BW1M100 100364a0 TownDesireFlags::Draw(void)
+	// BW1W120 00746a30 BW1M119 01038e10
 	virtual void Draw();
-	// BW1W120 00746dc0 BW1M100 1055d830 TownDesireFlags::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00746dc0 BW1M119 01566460
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1W120 0055dab0 BW1M100 1055c030 TownDesireFlags::IsEffectReceiver(EffectValues *)
+	// BW1W120 0055dab0 BW1M119 01565780
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
-	// BW1W120 00746a10 BW1M100 1055dae0 TownDesireFlags::InteractsWithPhysicsObjects(void)
+	// BW1W120 00746a10 BW1M119 01566940
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 00746de0 BW1M100 1055d7e0 TownDesireFlags::CreatureMustAvoid(Creature *)
+	// BW1W120 00746de0 BW1M119 01566410
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
-	// BW1W120 0055da90 BW1M100 1055bfa0 TownDesireFlags::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 0055da90 BW1M119 015656f0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 

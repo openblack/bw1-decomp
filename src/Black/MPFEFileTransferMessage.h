@@ -10,7 +10,7 @@ class MPFEFileTransferMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 0062f4a0 BW1M100 103a5220 MPFEFileTransferMessage::_dt(void)
+	// BW1W120 0062f4a0 BW1M119 013acfb0
 	virtual ~MPFEFileTransferMessage();
 };
 

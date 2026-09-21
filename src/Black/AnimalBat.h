@@ -19,15 +19,15 @@ class Bat : public Dove
 public:
 	// Override methods
 
-	// BW1W120 0041ef30 BW1M100 10171c00 Bat::_dt(void)
+	// BW1W120 0041ef30 BW1M119 0117ac20
 	virtual ~Bat();
-	// BW1W120 0041ef10 BW1M100 10171cc0 Bat::GetDebugText(void)
+	// BW1W120 0041ef10 BW1M119 0117ace0
 	virtual char* GetDebugText();
-	// BW1W120 0041ef00 BW1M100 10171c90 Bat::GetSaveType(void)
+	// BW1W120 0041ef00 BW1M119 0117acb0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041ef20 BW1M100 10171d00 Bat::CanBeFrighteningToCreature(Creature *)
+	// BW1W120 0041ef20 BW1M119 0117ad20
 	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
-	// BW1W120 0041be40 BW1M100 101708a0 Bat::StandAnimation(void)
+	// BW1W120 0041be40 BW1M119 011797c0
 	virtual uint32_t StandAnimation();
 };
 
@@ -36,15 +36,15 @@ class SpellBat : public SpellDove
 public:
 	// Override methods
 
-	// BW1W120 0041f010 BW1M100 101719e0 SpellBat::_dt(void)
+	// BW1W120 0041f010 BW1M119 0117aa00
 	virtual ~SpellBat();
-	// BW1W120 0041eff0 BW1M100 10171b30 SpellBat::GetDebugText(void)
+	// BW1W120 0041eff0 BW1M119 0117ab50
 	virtual char* GetDebugText();
-	// BW1W120 0041efe0 BW1M100 10171af0 SpellBat::GetSaveType(void)
+	// BW1W120 0041efe0 BW1M119 0117ab10
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041f000 BW1M100 10171b70 SpellBat::CanBeFrighteningToCreature(Creature *)
+	// BW1W120 0041f000 BW1M119 0117ab90
 	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
-	// BW1W120 0041bea0 BW1M100 10170720 SpellBat::StandAnimation(void)
+	// BW1W120 0041bea0 BW1M119 01179640
 	virtual uint32_t StandAnimation();
 };
 

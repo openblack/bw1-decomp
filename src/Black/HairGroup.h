@@ -31,11 +31,11 @@ struct HairGroup
 
 	// Non-virtual methods
 
-	// BW1W120 00847b50 BW1M100 10041060 HairGroup::DeleteHair(long)
+	// BW1W120 00847b50 BW1M119 01040650 (LHCombined Release)
 	void DeleteHair(int param_1);
-	// BW1W120 008479e0 BW1M100 10041400 HairGroup::Init(long)
+	// BW1W120 008479e0 BW1M119 01040980 (LHCombined Release)
 	void Init(long param_1);
-	// BW1W120 00848180 BW1M100 101376f0 HairGroup::ReadBinary(LHFile *)
+	// BW1W120 00848180 BW1M119 01138420 (LHCombined Release)
 	void ReadBinary(LHFile* param_1);
 };
 

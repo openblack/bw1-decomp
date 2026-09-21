@@ -15,7 +15,7 @@ class Playtime : public GameThing
 public:
 	// Override methods
 
-	// BW1W120 0066c410 BW1M100 inlined Playtime::_dt(void)
+	// BW1W120 0066c410 BW1M119 inlined
 	virtual ~Playtime();
 };
 

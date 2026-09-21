@@ -23,40 +23,40 @@ class Graveyard : public Abode
 public:
 	// Override methods
 
-	// BW1W120 0055e010 BW1M100 100f42d0 Graveyard::_dt(void)
+	// BW1W120 0055e010 BW1M119 010fd5a0
 	virtual ~Graveyard();
-	// BW1W120 00595cb0 BW1M100 100f4db0 Graveyard::ToBeDeleted(int)
+	// BW1W120 00595cb0 BW1M119 010fe070
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0055e000 BW1M100 100f4550 Graveyard::GetDebugText(void)
+	// BW1W120 0055e000 BW1M119 010fd820
 	virtual char* GetDebugText();
-	// BW1W120 00595f50 BW1M100 100f4590 Graveyard::Load(GameOSFile &)
+	// BW1W120 00595f50 BW1M119 010fd860
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00595ee0 BW1M100 100f4670 Graveyard::Save(GameOSFile &)
+	// BW1W120 00595ee0 BW1M119 010fd940
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055dff0 BW1M100 100f4510 Graveyard::GetSaveType(void)
+	// BW1W120 0055dff0 BW1M119 010fd7e0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0055df90 BW1M100 inlined Graveyard::GetArrivePos(MapCoords *)
+	// BW1W120 0055df90 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
-	// BW1W120 0055dfd0 BW1M100 100f4480 Graveyard::CanActAsAContainer(Creature *)
+	// BW1W120 0055dfd0 BW1M119 010fd750
 	virtual uint32_t CanActAsAContainer(Creature* param_1);
-	// BW1W120 0055dfe0 BW1M100 100f44d0 Graveyard::IsStoragePit(Creature *)
+	// BW1W120 0055dfe0 BW1M119 010fd7a0
 	virtual uint32_t IsStoragePit(Creature* param_1);
-	// BW1W120 00595dd0 BW1M100 100f4a40 Graveyard::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00595dd0 BW1M119 010fdd00
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 0055dfb0 BW1M100 100f4400 Graveyard::Get3DType(void)
+	// BW1W120 0055dfb0 BW1M119 010fd6d0
 	virtual LH3DObject::ObjectType Get3DType();
-	// BW1W120 00595cd0 BW1M100 100f4d60 Graveyard::InteractsWithPhysicsObjects(void)
+	// BW1W120 00595cd0 BW1M119 010fe020
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 00595ce0 BW1M100 100f4c10 Graveyard::DeleteDependancys(void)
+	// BW1W120 00595ce0 BW1M119 010fded0
 	virtual void DeleteDependancys();
-	// BW1W120 00595e00 BW1M100 100f4870 Graveyard::MakeFunctional(void)
+	// BW1W120 00595e00 BW1M119 010fdb40
 	virtual void MakeFunctional();
-	// BW1W120 0055dfc0 BW1M100 100f4440 Graveyard::CanBeHiddenIn(void)
+	// BW1W120 0055dfc0 BW1M119 010fd710
 	virtual bool32_t CanBeHiddenIn();
 
 	// Static methods
 
-	// BW1W120 00595d70 BW1M100 100f4ad0 Graveyard::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+	// BW1W120 00595d70 BW1M119 010fdd90
 	static Graveyard* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
 	                         float food, int wood);
 };

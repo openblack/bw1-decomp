@@ -10,7 +10,7 @@ class MPFECondtionUpdateMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 0062c860 BW1M100 inlined MPFECondtionUpdateMessage::_dt(void)
+	// BW1W120 0062c860 BW1M119 inlined
 	virtual ~MPFECondtionUpdateMessage();
 };
 

@@ -17,15 +17,15 @@ class SpellPointInf : public PSysBase
 public:
 	// Override methods
 
-	// BW1W120 0055f450 BW1M100 1041f870 SpellPointInf::_dt(void)
+	// BW1W120 0055f450 BW1M119 01428870
 	virtual ~SpellPointInf();
-	// BW1W120 0055f440 BW1M100 1041f940 SpellPointInf::GetDebugText(void)
+	// BW1W120 0055f440 BW1M119 01428940
 	virtual char* GetDebugText();
-	// BW1W120 00698240 BW1M100 104192e0 SpellPointInf::Load(GameOSFile &)
+	// BW1W120 00698240 BW1M119 014222f0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 006ced60 BW1M100 10480d70 SpellPointInf::Save(GameOSFile &)
+	// BW1W120 006ced60 BW1M119 014893f0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055f430 BW1M100 1041f900 SpellPointInf::GetSaveType(void)
+	// BW1W120 0055f430 BW1M119 01428900
 	virtual uint32_t GetSaveType();
 };
 

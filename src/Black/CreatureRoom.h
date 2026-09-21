@@ -9,9 +9,10 @@
 class CreatureRoom : public TempleRoom
 {
 public:
-	// BW1W120 007899f0 BW1M100 10091a80
+	// BW1W120 007899f0 BW1M119 01093ca0
 	static void ProcessScreenShot();
-	// BW1W120 00d96270. TODO: Original static member name is unrecovered.
+	// TODO: Original static member name is unrecovered.
+	// BW1W120 00d96270
 	static int CreatureInTemple;
 	uint8_t    field_0xec[0x380];
 	uint32_t   field_0x46c;
@@ -19,12 +20,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 007878e0 BW1M100 10284d70 CreatureRoom::InitEngine(void)
+	// BW1W120 007878e0 BW1M119 01288b10
 	virtual void InitEngine();
 
 	// Constructors
 
-	// BW1W120 007865e0 BW1M100 10287800 CreatureRoom::CreatureRoom(void)
+	// BW1W120 007865e0 BW1M119 0128b530
 	CreatureRoom();
 };
 

@@ -15,7 +15,7 @@ class GMagicRadiusSpellInfo : public GMagicInfo
 public:
 	// Override methods
 
-	// BW1W120 00435850 BW1M100 10190190 GMagicRadiusSpellInfo::_dt(void)
+	// BW1W120 00435850 BW1M119 01199350
 	virtual ~GMagicRadiusSpellInfo();
 };
 

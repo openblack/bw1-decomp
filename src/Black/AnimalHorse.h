@@ -17,13 +17,13 @@ class Horse : public Cow
 public:
 	// Override methods
 
-	// BW1W120 0041d790 BW1M100 10120c80 Horse::_dt(void)
+	// BW1W120 0041d790 BW1M119 01129eb0
 	virtual ~Horse();
-	// BW1W120 0041d780 BW1M100 10171060 Horse::GetDebugText(void)
+	// BW1W120 0041d780 BW1M119 0117a080
 	virtual char* GetDebugText();
-	// BW1W120 0041d770 BW1M100 10171030 Horse::GetSaveType(void)
+	// BW1W120 0041d770 BW1M119 0117a050
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041cb40 BW1M100 1016e1f0 Horse::StandAnimation(void)
+	// BW1W120 0041cb40 BW1M119 01177020
 	virtual uint32_t StandAnimation();
 };
 

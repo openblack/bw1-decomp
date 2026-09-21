@@ -15,9 +15,9 @@ class GRankInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 006e0870 BW1M100 10133c10 GRankInfo::_dt(void)
+	// BW1W120 006e0870 BW1M119 0113c7b0
 	virtual ~GRankInfo();
-	// BW1W120 006e0810 BW1M100 101340a0 GRankInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 006e0810 BW1M119 0113cc20
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

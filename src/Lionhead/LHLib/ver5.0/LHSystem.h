@@ -16,7 +16,7 @@ struct LHSystem
 
 	// Non-virtual methods
 
-	// BW1W120 007db8a0 BW1M100 1015cc80 LHSystem::SetTerminate(void)
+	// BW1W120 007db8a0 BW1M119 0115d9b0 (LHCombined Release)
 	LRESULT SetTerminate();
 };
 
@@ -47,8 +47,9 @@ struct LHKeyEvent
 
 struct LHKeyboard
 {
-	// BW1W120 00e8c118. Same lock formerly named gKeyboardCritSec in LHSystem.cpp.
+	// Same lock formerly named gKeyboardCritSec in LHSystem.cpp.
 	// TODO: Descriptive name; original class/file scope is unknown.
+	// BW1W120 00e8c118
 	static CRITICAL_SECTION CriticalSection;
 
 	void(__cdecl* Callback)(unsigned short, LH_KEY, unsigned short, unsigned short, void*);
@@ -66,17 +67,17 @@ struct LHKeyboard
 	int          StringEndKey;
 	int          StringActive;
 
-	// BW1W120 007dcaf0 ?ProcessKeyboard@LHKeyboard@@QAEXIH@Z
+	// BW1W120 007dcaf0 BW1M119 0113ed60 (LHCombined Release)
 	void ProcessKeyboard(unsigned int msg, int key_data);
-	// BW1W120 007dcc90 ?StringCollect@LHKeyboard@@QAEXH@Z
+	// BW1W120 007dcc90 BW1M119 0113ebc0 (LHCombined Release)
 	void StringCollect(int key);
-	// BW1W120 007dcd10 ?StopString@LHKeyboard@@QAEXXZ
+	// BW1W120 007dcd10 BW1M119 0113eb80 (LHCombined Release)
 	void StopString();
-	// BW1W120 007dcd20 ?RestartString@LHKeyboard@@QAEXXZ
+	// BW1W120 007dcd20 BW1M119 0113eb40 (LHCombined Release)
 	void RestartString();
-	// BW1W120 007dcd30 ?GetKeyValue@LHKeyboard@@QAEHAAHAAE@Z
+	// BW1W120 007dcd30 BW1M119 0113ea90 (LHCombined Release)
 	int GetKeyValue(int& key, unsigned char& mod);
-	// BW1W120 007dcda0 ?SetKeyValue@LHKeyboard@@QAEHXZ
+	// BW1W120 007dcda0 BW1M119 0113e9f0 (LHCombined Release)
 	int SetKeyValue();
 };
 
@@ -117,15 +118,15 @@ struct Q24slim5TbIME
 
 	// Non-virtual methods
 
-	// BW1W120 007f3d00 BW1M100 101704a0 slim::TbIME::Activate(void* )
+	// BW1W120 007f3d00 BW1M119 01172070 (LHCombined Release)
 	void Activate(HWND param_1);
-	// BW1W120 007f3d10 BW1M100 10170460 slim::TbIME::UnActivate(void)
+	// BW1W120 007f3d10 BW1M119 011ca6c0 (LHCombined Release)
 	void UnActivate();
-	// BW1W120 007f3d50 BW1M100 1061ec14 slim::TbIME::Composition_Get( (void))
+	// BW1W120 007f3d50 BW1M119 01171fa0 (LHCombined Release)
 	wchar_t* Composition_Get();
-	// BW1W120 007f3dc0 BW1M100 1061e884 slim::TbIME::CandidateList_GetSelectIdx( (void)
+	// BW1W120 007f3dc0 BW1M119 01171e60 (LHCombined Release)
 	uint32_t CandidateList_GetSelectIdx();
-	// BW1W120 007f3de0 BW1M100 1061e89c slim::TbIME::CandidateList_SetViewWindow( (unsigned int, unsigned int, unsigned int))
+	// BW1W120 007f3de0 BW1M119 011ca6f8 (LHCombined Release)
 	void CandidateList_SetViewWindow(uint32_t param_1, uint32_t param_2, uint32_t idx);
 };
 
@@ -177,7 +178,7 @@ struct LHSys
 
 	// Constructors
 
-	// BW1W120 007db800 BW1M100 inlined LHSys::LHSys(void)
+	// BW1W120 007db800 BW1M119 inlined
 	LHSys();
 
 	// The one instance, at 0xE85040, built by LHSystem.cpp's static-init constructor.

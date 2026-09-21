@@ -4,7 +4,7 @@
 
 IPSpecialDialog* IPSpecialDialog::Instance;
 
-// BW1W120 005dd460
+// BW1W120 005dd460 BW1M119 01107f20
 IPSpecialDialog::IPSpecialDialog()
 {
 	field_0x14 = 0;

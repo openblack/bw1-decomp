@@ -30,36 +30,36 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055ebd0 BW1M100 101045f0 Mist::_dt(void)
+	// BW1W120 0055ebd0 BW1M119 0110e060
 	virtual ~Mist();
-	// BW1W120 00606300 BW1M100 10105480 Mist::ToBeDeleted(int)
+	// BW1W120 00606300 BW1M119 0110ef00
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0055eb70 BW1M100 10104680 Mist::GetPlayer(void)
+	// BW1W120 0055eb70 BW1M119 0110e0f0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 0055ebc0 BW1M100 10104780 Mist::GetDebugText(void)
+	// BW1W120 0055ebc0 BW1M119 0110e1f0
 	virtual char* GetDebugText();
-	// BW1W120 00606a10 BW1M100 10104820 Mist::Load(GameOSFile &)
+	// BW1W120 00606a10 BW1M119 0110e290
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00606920 BW1M100 10104980 Mist::Save(GameOSFile &)
+	// BW1W120 00606920 BW1M119 0110e3f0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055ebb0 BW1M100 10104750 Mist::GetSaveType(void)
+	// BW1W120 0055ebb0 BW1M119 0110e1c0
 	virtual uint32_t GetSaveType();
-	// BW1W120 00606af0 BW1M100 101047c0 Mist::ResolveLoad(void)
+	// BW1W120 00606af0 BW1M119 0110e230
 	virtual void ResolveLoad();
-	// BW1W120 0055eba0 BW1M100 10104710 Mist::GetCreatureBeliefType(void)
+	// BW1W120 0055eba0 BW1M119 0110e180
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 006067d0 BW1M100 10104c90 Mist::GetDistanceFromObject(MapCoords const &)
+	// BW1W120 006067d0 BW1M119 0110e710
 	virtual float GetDistanceFromObject(const MapCoords& param_1);
-	// BW1W120 0055eb90 BW1M100 101046e0 Mist::IsMist(void)
+	// BW1W120 0055eb90 BW1M119 0110e150
 	virtual uint32_t IsMist();
-	// BW1W120 0055eb80 BW1M100 101046b0 Mist::GetText(void)
+	// BW1W120 0055eb80 BW1M119 0110e120
 	virtual const char* GetText();
-	// BW1W120 00606910 BW1M100 10104af0 Mist::GetScriptObjectType(void)
+	// BW1W120 00606910 BW1M119 0110e560
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 
 	// Constructors
 
-	// BW1W120 00606270 BW1M100 101056c0 Mist::Mist(MapCoords const &, float, unsigned long, float)
+	// BW1W120 00606270 BW1M119 0110f140
 	Mist(const MapCoords& coords, float param_3, uint32_t param_4, float param_5);
 };
 

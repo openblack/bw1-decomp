@@ -15,11 +15,11 @@ struct LH3DWay
 
 	// Non-virtual methods
 
-	// BW1W120 00842f10 BW1M100 100d49e0 LH3DWay::Release(void)
+	// BW1W120 00842f10 BW1M119 010d4100 (LHCombined Release)
 	void Release();
-	// BW1W120 00843500 BW1M100 100d3ea0 LH3DWay::Draw(void)
+	// BW1W120 00843500 BW1M119 010d35c0 (LHCombined Release)
 	void Draw();
-	// BW1W120 00844570 BW1M100 100d2ad0 LH3DWay::AdjustPtr(void)
+	// BW1W120 00844570 BW1M119 010d2200 (LHCombined Release)
 	void AdjustPtr();
 };
 
@@ -32,7 +32,7 @@ struct Q27LH3DWay7Running
 
 	// Constructors
 
-	// BW1W120 00843ed0 BW1M100 1061ce2c LH3DWay::Running::Running(LH3DWay *)
+	// BW1W120 00843ed0 BW1M119 010d2c70 (LHCombined Release)
 	Q27LH3DWay7Running(LH3DWay* param_2);
 };
 

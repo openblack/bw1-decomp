@@ -30,31 +30,31 @@ public:
 
 	// Override methods
 
-	// BW1W120 00538ff0 BW1M100 100e7f30 GFootpathFinder::_dt(void)
+	// BW1W120 00538ff0 BW1M119 010ebed0
 	virtual ~GFootpathFinder();
-	// BW1W120 005391c0 BW1M100 100e78e0 GFootpathFinder::ToBeDeleted(int)
+	// BW1W120 005391c0 BW1M119 010eb9b0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00538fe0 BW1M100 100e7110 GFootpathFinder::GetDebugText(void)
+	// BW1W120 00538fe0 BW1M119 010eb1e0
 	virtual char* GetDebugText();
-	// BW1W120 005390e0 BW1M100 100e7ce0 GFootpathFinder::Load(GameOSFile &)
+	// BW1W120 005390e0 BW1M119 010ebc90
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00539150 BW1M100 100e7c00 GFootpathFinder::Save(GameOSFile &)
+	// BW1W120 00539150 BW1M119 010ebbd0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00538fd0 BW1M100 100e70d0 GFootpathFinder::GetSaveType(void)
+	// BW1W120 00538fd0 BW1M119 010eb1a0
 	virtual uint32_t GetSaveType();
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined GFootpathFinder::GFootpathFinder(void)
+	// BW1W120 inlined BW1M119 inlined
 	GFootpathFinder();
 
 	// Non-virtual methods
 
-	// BW1W120 00539040 BW1M100 100e7dc0 GFootpathFinder::GameTurnProcess(void)
+	// BW1W120 00539040 BW1M119 010ebd60
 	void GameTurnProcess();
-	// BW1W120 00539240 BW1M100 100e7760 GFootpathFinder::Done(void)
+	// BW1W120 00539240 BW1M119 010eb850
 	void Done();
-	// BW1W120 005392f0 BW1M100 100e7150 GFootpathFinder::Init(void)
+	// BW1W120 005392f0 BW1M119 010eb220
 	void Init();
 };
 

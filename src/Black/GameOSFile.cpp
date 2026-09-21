@@ -59,26 +59,26 @@ PhysicsSaveInfo* PhysicsSaveInfo::Buffer;
 uint32_t         PhysicsSaveInfo::Count;
 uint32_t         PhysicsSaveInfo::ReadIndex;
 
-// BW1W120 00557f90 BW1M100 103100f0 GameLoadingBox(bool)
+// BW1W120 00557f90 BW1M119 01312b40
 void GameLoadingBox(bool finished);
 
-// BW1W120 00557fc0 BW1M100 10310090 GameSavingBox(bool)
+// BW1W120 00557fc0 BW1M119 01312ae0
 void GameSavingBox(bool finished);
-// BW1W120 005580f0 BW1M100 1030fbd0 ResetCameraIfNecessary(void)
+// BW1W120 005580f0 BW1M119 01312550
 void ResetCameraIfNecessary();
-// BW1W120 005fa000 BW1M100 101021e0 InputReset(void)
+// BW1W120 005fa000 BW1M119 0110bf80
 void InputReset();
-// BW1W120 0054ca90 BW1M100 1055f760 DoSaveProblemRequestor(wchar_t*)
+// BW1W120 0054ca90 BW1M119 014367c0
 void DoSaveProblemRequestor(char16_t* message);
 
-// BW1W120 00557ff0 BW1M100 1030fde0 GameOSFile::GameOSFile(void)
+// BW1W120 00557ff0 BW1M119 01312760
 GameOSFile::GameOSFile()
 {
 	Checksum = 0;
 	field_0x10c = 0;
 }
 
-// BW1W120 00558050 BW1M100 1030fcb0 GameOSFile::~GameOSFile(void)
+// BW1W120 00558050 BW1M119 01312630
 GameOSFile::~GameOSFile()
 {
 	while (SaveLoadPtrList.GetStart())
@@ -95,7 +95,7 @@ GameOSFile::~GameOSFile()
 	}
 }
 
-// BW1W120 00558160 BW1M100 1030f6f0 GameOSFile::SaveAllGame(char *)
+// BW1W120 00558160 BW1M119 01312040
 int GameOSFile::SaveAllGame(char* filename)
 {
 	GameSavingBox(false);
@@ -186,7 +186,7 @@ int GameOSFile::SaveAllGame(char* filename)
 	return 1;
 }
 
-// BW1W120 005587b0 BW1M100 1030ef00 GameOSFile::LoadAllGame(char *)
+// BW1W120 005587b0 BW1M119 01311810
 int GameOSFile::LoadAllGame(char* filename)
 {
 	GameLoadingBox(false);
@@ -309,7 +309,7 @@ int GameOSFile::LoadAllGame(char* filename)
 	return true;
 }
 
-// BW1W120 00561c60 BW1M100 103049e0 GameOSFile::ResolveAllLoads(void)
+// BW1W120 00561c60 BW1M119 01307010
 void GameOSFile::ResolveAllLoads()
 {
 	LHLinkedNode<GameThing*>* node;
@@ -349,7 +349,7 @@ void GameOSFile::ResolveAllLoads()
 	}
 }
 
-// BW1W120 00561e10 BW1M100 10304650 GameOSFile::WritePtr(GameThing *)
+// BW1W120 00561e10 BW1M119 01306750
 void GameOSFile::WritePtr(GameThing* ptr)
 {
 	uint32_t index = 0;
@@ -420,7 +420,7 @@ void GameOSFile::WritePtr(GameThing* ptr)
 	WriteIt(index);
 }
 
-// BW1W120 00562180 BW1M100 10304470 GameOSFile::ReadPtr(GameThing **)
+// BW1W120 00562180 BW1M119 013061b0
 void GameOSFile::ReadPtr(GameThing** ptr)
 {
 	uint32_t index = 0;
@@ -454,13 +454,13 @@ void GameOSFile::ReadPtr(GameThing** ptr)
 	}
 }
 
-// BW1W120 00562320 BW1M100 inlined GSaveLoadPtr::GSaveLoadPtr(void*)
+// BW1W120 00562320 BW1M119 inlined
 GSaveLoadPtr::GSaveLoadPtr(void* ptr)
 {
 	this->ptr = (uintptr_t)ptr;
 }
 
-// BW1W120 00562240 BW1M100 10304370 GameOSFile::WritePtrArray(GameThing **, unsigned long)
+// BW1W120 00562240 BW1M119 013060b0
 void GameOSFile::WritePtrArray(GameThing** ptr, uint32_t count)
 {
 	if (WriteEnabled)
@@ -473,7 +473,7 @@ void GameOSFile::WritePtrArray(GameThing** ptr, uint32_t count)
 	}
 }
 
-// BW1W120 005622b0 BW1M100 10304270 GameOSFile::ReadPtrArray(GameThing **)
+// BW1W120 005622b0 BW1M119 01305fc0
 void GameOSFile::ReadPtrArray(GameThing** ptr)
 {
 	// The original leaves count uninitialized when reads are disabled.
@@ -485,7 +485,7 @@ void GameOSFile::ReadPtrArray(GameThing** ptr)
 	}
 }
 
-// BW1W120 00562330 BW1M100 10303fb0 GameOSFile::WriteSafe(SpellTargets &)
+// BW1W120 00562330 BW1M119 01305d00
 void GameOSFile::WriteSafe(SpellTargets& value)
 {
 	if (!WriteEnabled)
@@ -520,7 +520,7 @@ void GameOSFile::WriteSafe(SpellTargets& value)
 	WriteIt(value.CurrentTarget);
 }
 
-// BW1W120 005624e0 BW1M100 10303cc0 GameOSFile::ReadSafe(SpellTargets &)
+// BW1W120 005624e0 BW1M119 01305a10
 void GameOSFile::ReadSafe(SpellTargets& value)
 {
 	// The original appends, and does not stop an element loop after a failed read.
@@ -553,7 +553,7 @@ void GameOSFile::ReadSafe(SpellTargets& value)
 	ReadIt(value.CurrentTarget);
 }
 
-// BW1W120 005626c0 BW1M100 10303c20 GameOSFile::WriteSafe(CollectionAndOwnership &)
+// BW1W120 005626c0 BW1M119 01305970
 void GameOSFile::WriteSafe(CollectionAndOwnership& value)
 {
 	if (!WriteEnabled)
@@ -568,14 +568,14 @@ void GameOSFile::WriteSafe(CollectionAndOwnership& value)
 	WriteIt(value.OwnsCollection);
 }
 
-// BW1W120 00562720 BW1M100 10303b90 GameOSFile::ReadSafe(CollectionAndOwnership &)
+// BW1W120 00562720 BW1M119 013058e0
 void GameOSFile::ReadSafe(CollectionAndOwnership& value)
 {
 	ReadSafe(value.Collection);
 	ReadIt(value.OwnsCollection);
 }
 
-// BW1W120 00562770 BW1M100 103038e0 GameOSFile::WriteSafe(LightningObjectInfo &)
+// BW1W120 00562770 BW1M119 01305630
 void GameOSFile::WriteSafe(LightningObjectInfo& value)
 {
 	if (!WriteEnabled)
@@ -612,7 +612,7 @@ void GameOSFile::WriteSafe(LightningObjectInfo& value)
 	WriteIt(value.field_0x18);
 }
 
-// BW1W120 005628c0 BW1M100 10303640 GameOSFile::ReadSafe(LightningObjectInfo &)
+// BW1W120 005628c0 BW1M119 01305390
 void GameOSFile::ReadSafe(LightningObjectInfo& value)
 {
 	if (ReadEnabled)
@@ -628,7 +628,7 @@ void GameOSFile::ReadSafe(LightningObjectInfo& value)
 	ReadIt(value.field_0x18);
 }
 
-// BW1W120 00562a00 GameOSFile::WriteSafe(CreatureReceiveSpell_TPerSpellData &)
+// BW1W120 00562a00 BW1M119 01305170
 void GameOSFile::WriteSafe(CreatureReceiveSpell_TPerSpellData& value)
 {
 	if (WriteEnabled)
@@ -642,7 +642,7 @@ void GameOSFile::WriteSafe(CreatureReceiveSpell_TPerSpellData& value)
 	}
 }
 
-// BW1W120 00562b40 GameOSFile::ReadSafe(CreatureReceiveSpell_TPerSpellData &)
+// BW1W120 00562b40 BW1M119 01304f70
 void GameOSFile::ReadSafe(CreatureReceiveSpell_TPerSpellData& value)
 {
 	ReadIt(value.field_0x0);
@@ -653,7 +653,7 @@ void GameOSFile::ReadSafe(CreatureReceiveSpell_TPerSpellData& value)
 	ReadPtr(&value.field_0x14);
 }
 
-// BW1W120 00562c70 GameOSFile::WriteSafe(CreatureReceiveSpell_QueueData &)
+// BW1W120 00562c70 BW1M119 01304e40
 void GameOSFile::WriteSafe(CreatureReceiveSpell_QueueData& value)
 {
 	if (WriteEnabled)
@@ -664,7 +664,7 @@ void GameOSFile::WriteSafe(CreatureReceiveSpell_QueueData& value)
 	}
 }
 
-// BW1W120 00562d00 GameOSFile::ReadSafe(CreatureReceiveSpell_QueueData &)
+// BW1W120 00562d00 BW1M119 01304d20
 void GameOSFile::ReadSafe(CreatureReceiveSpell_QueueData& value)
 {
 	ReadIt(value.field_0x0);
@@ -672,7 +672,7 @@ void GameOSFile::ReadSafe(CreatureReceiveSpell_QueueData& value)
 	ReadPtr(&value.field_0x8);
 }
 
-// BW1W120 00562d90 BW1M100 10302eb0 GameOSFile::WriteSafe(Persistent * const &)
+// BW1W120 00562d90 BW1M119 01304c00
 void GameOSFile::WriteSafe(Persistent* const& ptr)
 {
 	if (WriteEnabled)
@@ -684,7 +684,7 @@ void GameOSFile::WriteSafe(Persistent* const& ptr)
 	}
 }
 
-// BW1W120 00562e50 BW1M100 10302d90 GameOSFile::ReadSafe(Persistent *&)
+// BW1W120 00562e50 BW1M119 01304ae0
 void GameOSFile::ReadSafe(Persistent*& ptr)
 {
 	// The original resolves the IDs even after a read failure, without initializing them.
@@ -694,115 +694,115 @@ void GameOSFile::ReadSafe(Persistent*& ptr)
 	ptr = Persistent::GetFromSaveID(fileId, index);
 }
 
-// BW1W120 00562f00 BW1M100 10302cd0 GameOSFile::WriteSafe(PSysSoundAction &)
+// BW1W120 00562f00 BW1M119 01304a20
 void GameOSFile::WriteSafe(PSysSoundAction& value)
 {
 	WriteIt(value);
 }
 
-// BW1W120 00562f50 BW1M100 10302c10 GameOSFile::WriteSafe(PosScaleRotation &)
+// BW1W120 00562f50 BW1M119 01304960
 void GameOSFile::WriteSafe(PosScaleRotation& value)
 {
 	WriteIt(value);
 }
 
-// BW1W120 00562ff0 BW1M100 10302a90 GameOSFile::WriteSafe(ChainJoint &)
+// BW1W120 00562ff0 BW1M119 013047e0
 void GameOSFile::WriteSafe(ChainJoint& value)
 {
 	WriteIt(value);
 }
 
-// BW1W120 00563090 BW1M100 103029c0 GameOSFile::WriteSafe(CalculateDrawPosInfo &)
+// BW1W120 00563090 BW1M119 01304710
 void GameOSFile::WriteSafe(CalculateDrawPosInfo& value)
 {
 	WriteIt(value);
 }
 
-// BW1W120 00563130 BW1M100 10302840 GameOSFile::WriteSafe(PSysAnimInfo &)
+// BW1W120 00563130 BW1M119 01304590
 void GameOSFile::WriteSafe(PSysAnimInfo& value)
 {
 	WriteIt(value);
 }
 
-// BW1W120 00563180 BW1M100 10302780 GameOSFile::ReadSafe(PSysSoundAction &)
+// BW1W120 00563180 BW1M119 013044d0
 void GameOSFile::ReadSafe(PSysSoundAction& value)
 {
 	ReadIt(value);
 }
 
-// BW1W120 005631d0 BW1M100 103026c0 GameOSFile::ReadSafe(PosScaleRotation &)
+// BW1W120 005631d0 BW1M119 01304410
 void GameOSFile::ReadSafe(PosScaleRotation& value)
 {
 	ReadIt(value);
 }
 
-// BW1W120 00563270 BW1M100 10302540 GameOSFile::ReadSafe(ChainJoint &)
+// BW1W120 00563270 BW1M119 01304290
 void GameOSFile::ReadSafe(ChainJoint& value)
 {
 	ReadIt(value);
 }
 
-// BW1W120 00563310 BW1M100 10302470 GameOSFile::ReadSafe(CalculateDrawPosInfo &)
+// BW1W120 00563310 BW1M119 013041c0
 void GameOSFile::ReadSafe(CalculateDrawPosInfo& value)
 {
 	ReadIt(value);
 }
 
-// BW1W120 005633b0 BW1M100 103022f0 GameOSFile::ReadSafe(PSysAnimInfo &)
+// BW1W120 005633b0 BW1M119 01304040
 void GameOSFile::ReadSafe(PSysAnimInfo& value)
 {
 	ReadIt(value);
 }
 
-// BW1W120 00562fa0 BW1M100 10302b50 GameOSFile::WriteSafe(TSphere &)
+// BW1W120 00562fa0 BW1M119 013048a0
 void GameOSFile::WriteSafe(TSphere& value)
 {
 	WriteIt(value);
 }
 
-// BW1W120 005630e0 BW1M100 10302900 GameOSFile::WriteSafe(PSysProcessInfo &)
+// BW1W120 005630e0 BW1M119 01304650
 void GameOSFile::WriteSafe(PSysProcessInfo& value)
 {
 	WriteIt(value);
 }
 
-// BW1W120 00563220 BW1M100 10302600 GameOSFile::ReadSafe(TSphere &)
+// BW1W120 00563220 BW1M119 01304350
 void GameOSFile::ReadSafe(TSphere& value)
 {
 	ReadIt(value);
 }
 
-// BW1W120 00563360 BW1M100 103023b0 GameOSFile::ReadSafe(PSysProcessInfo &)
+// BW1W120 00563360 BW1M119 01304100
 void GameOSFile::ReadSafe(PSysProcessInfo& value)
 {
 	ReadIt(value);
 }
 
-// BW1W120 00563400 BW1M100 10302290 GameOSFile::ReadSafe(PSysBase *&)
+// BW1W120 00563400 BW1M119 01303fe0
 void GameOSFile::ReadSafe(PSysBase*& ptr)
 {
 	ReadPtr((GameThing**)&ptr);
 }
 
-// BW1W120 00563410 BW1M100 10302230 GameOSFile::WriteSafe(PSysBase * const &)
+// BW1W120 00563410 BW1M119 01303f80
 void GameOSFile::WriteSafe(PSysBase* const& ptr)
 {
 	WritePtr(ptr);
 }
 
-// BW1W120 00563420 BW1M100 103021d0 GameOSFile::ReadSafe(GameThing *&)
+// BW1W120 00563420 BW1M119 01303f20
 void GameOSFile::ReadSafe(GameThing*& ptr)
 {
 	ReadPtr(&ptr);
 }
 
-// BW1W120 00563430 BW1M100 10302170 GameOSFile::WriteSafe(GameThing * const &)
+// BW1W120 00563430 BW1M119 01303ec0
 void GameOSFile::WriteSafe(GameThing* const& ptr)
 {
 	WritePtr(ptr);
 }
 
-// BW1W120 00563440 BW1M100 10301e90 GameOSFile::WriteSafe(GData &)
+// BW1W120 00563440 BW1M119 01303be0
 void GameOSFile::WriteSafe(GData& value)
 {
 	if (!WriteEnabled)
@@ -847,7 +847,7 @@ void GameOSFile::WriteSafe(GData& value)
 	WriteIt(value.field_0x24);
 }
 
-// BW1W120 00563620 BW1M100 10301be0 GameOSFile::ReadSafe(GData &)
+// BW1W120 00563620 BW1M119 01303930
 void GameOSFile::ReadSafe(GData& value)
 {
 	ReadIt(value.RandSeed);
@@ -860,7 +860,7 @@ void GameOSFile::ReadSafe(GData& value)
 	ReadIt(value.field_0x24);
 }
 
-// BW1W120 005637f0 BW1M100 10301420 GameOSFile::ReadSafe(TownDesire &)
+// BW1W120 005637f0 BW1M119 01303070
 void GameOSFile::ReadSafe(TownDesire& value)
 {
 	ReadCountedArray(*this, value.field_0x8);
@@ -884,7 +884,7 @@ void GameOSFile::ReadSafe(TownDesire& value)
 	ReadCountedArray(*this, value.field_0x520);
 }
 
-// BW1W120 00563b30 BW1M100 10300a30 GameOSFile::WriteSafe(TownDesire &)
+// BW1W120 00563b30 BW1M119 01302700
 void GameOSFile::WriteSafe(TownDesire& value)
 {
 	WriteCountedArray(*this, value.field_0x8, TOWN_DESIRE_INFO_LAST);
@@ -908,14 +908,14 @@ void GameOSFile::WriteSafe(TownDesire& value)
 	WriteCountedArray(*this, value.field_0x520, TOWN_DESIRE_INFO_LAST);
 }
 
-// BW1W120 00563ea0 BW1M100 10300970 GameOSFile::WriteInfo(GBaseInfo const *)
+// BW1W120 00563ea0 BW1M119 01302640
 void GameOSFile::WriteInfo(const GBaseInfo* info)
 {
 	unsigned long index = info->GetInfoID();
 	WriteIt(index);
 }
 
-// BW1W120 00563f00 BW1M100 103008a0 GameOSFile::ReadInfo(GBaseInfo const **)
+// BW1W120 00563f00 BW1M119 01302570
 void GameOSFile::ReadInfo(const GBaseInfo** info)
 {
 	unsigned long index;
@@ -923,7 +923,7 @@ void GameOSFile::ReadInfo(const GBaseInfo** info)
 	*info = GBaseInfo::GetInfoPtr(index);
 }
 
-// BW1W120 00563f60 BW1M100 103007e0 GameOSFile::WriteCheckSum(GameThing *)
+// BW1W120 00563f60 BW1M119 013024b0
 void GameOSFile::WriteCheckSum(GameThing* thing)
 {
 	if (WriteEnabled)
@@ -932,7 +932,7 @@ void GameOSFile::WriteCheckSum(GameThing* thing)
 	}
 }
 
-// BW1W120 00563fa0 BW1M100 10300720 GameOSFile::ReadCheckSum(GameThing *)
+// BW1W120 00563fa0 BW1M119 013023e0
 void GameOSFile::ReadCheckSum(GameThing* thing)
 {
 	// The release build does not compare the saved checksum.
@@ -940,7 +940,7 @@ void GameOSFile::ReadCheckSum(GameThing* thing)
 	ReadIt(checksum);
 }
 
-// BW1W120 00563ff0 BW1M100 10300680 GameOSFile::AutoLoad(void)
+// BW1W120 00563ff0 BW1M119 01302340
 int GameOSFile::AutoLoad()
 {
 	char filename[260];
@@ -950,7 +950,7 @@ int GameOSFile::AutoLoad()
 	return LoadAllGame(filename);
 }
 
-// BW1W120 00564050 BW1M100 1007dfa0 GameOSFile::AutoSave(int)
+// BW1W120 00564050 BW1M119 01080520
 int GameOSFile::AutoSave(int force)
 {
 	if ((!GGame::g_game->help_system->field_0x45e8 || !GGame::g_game->help_system->field_0x45ec) &&
@@ -975,7 +975,7 @@ int GameOSFile::AutoSave(int force)
 	return 0;
 }
 
-// BW1W120 00564160 BW1M100 103003f0 GameOSFile::IsAutoSaveValid(void)
+// BW1W120 00564160 BW1M119 01302120
 int GameOSFile::IsAutoSaveValid()
 {
 	char filename[260];
@@ -1009,10 +1009,11 @@ int GameOSFile::IsAutoSaveValid()
 	return 1;
 }
 
-// BW1W120 00558db0. Placeholder name; see the declaration above.
+// Placeholder name; see the declaration above.
+// BW1W120 00558db0
 void fn00558db0(const char* message) {}
 
-// BW1W120 005586c0 BW1M100 1030f570 PhysicsSaveInfo::ReadInfo(GameOSFile &)
+// BW1W120 005586c0 BW1M119 01311ec0
 void PhysicsSaveInfo::ReadInfo(GameOSFile& file)
 {
 	// The original capacity check is signed; a full buffer consumes no input.

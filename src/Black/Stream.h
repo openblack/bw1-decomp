@@ -18,24 +18,24 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055de20 BW1M100 101549b0 GStream::_dt(void)
+	// BW1W120 0055de20 BW1M119 0115cd50
 	virtual ~GStream();
-	// BW1W120 00733b10 BW1M100 10154cf0 GStream::ToBeDeleted(int)
+	// BW1W120 00733b10 BW1M119 0115d090
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0055de10 BW1M100 10155220 GStream::GetDebugText(void)
+	// BW1W120 0055de10 BW1M119 0115d5b0
 	virtual char* GetDebugText();
-	// BW1W120 007344e0 BW1M100 10153560 GStream::Load(GameOSFile &)
+	// BW1W120 007344e0 BW1M119 0115b8a0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00734380 BW1M100 10153ac0 GStream::Save(GameOSFile &)
+	// BW1W120 00734380 BW1M119 0115be60
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055de00 BW1M100 101551e0 GStream::GetSaveType(void)
+	// BW1W120 0055de00 BW1M119 0115d570
 	virtual uint32_t GetSaveType();
-	// BW1W120 00734640 BW1M100 101534f0 GStream::ResolveLoad(void)
+	// BW1W120 00734640 BW1M119 0115b830
 	virtual void ResolveLoad();
 
 	// Static methods
 
-	// BW1W120 00733ff0 BW1M100 10154580 GStream::CreateAll(void)
+	// BW1W120 00733ff0 BW1M119 0115c920
 	static void CreateAll();
 };
 

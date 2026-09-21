@@ -10,7 +10,7 @@ class MPFEReplyToInviteMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 006274f0 BW1M100 10397500 MPFEReplyToInviteMessage::_dt(void)
+	// BW1W120 006274f0 BW1M119 0139eee0
 	virtual ~MPFEReplyToInviteMessage();
 };
 

@@ -24,23 +24,23 @@ class MagicWood : public PileWood
 public:
 	// Override methods
 
-	// BW1W120 00600df0 BW1M100 103ba240 MagicWood::_dt(void)
+	// BW1W120 00600df0 BW1M119 013c2440
 	virtual ~MagicWood();
-	// BW1W120 00600da0 BW1M100 103b9ed0 MagicWood::GetPlayer(void)
+	// BW1W120 00600da0 BW1M119 013c20d0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 00600de0 BW1M100 103b9fe0 MagicWood::GetDebugText(void)
+	// BW1W120 00600de0 BW1M119 013c21e0
 	virtual char* GetDebugText();
-	// BW1W120 00600f60 BW1M100 103ba020 MagicWood::Load(GameOSFile &)
+	// BW1W120 00600f60 BW1M119 013c2220
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00600f20 BW1M100 103ba0b0 MagicWood::Save(GameOSFile &)
+	// BW1W120 00600f20 BW1M119 013c22b0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00600dd0 BW1M100 103b9fa0 MagicWood::GetSaveType(void)
+	// BW1W120 00600dd0 BW1M119 013c21a0
 	virtual uint32_t GetSaveType();
-	// BW1W120 00600db0 BW1M100 103b9f10 MagicWood::GetImpressiveType(void)
+	// BW1W120 00600db0 BW1M119 013c2110
 	virtual IMPRESSIVE_TYPE GetImpressiveType();
-	// BW1W120 00600dc0 BW1M100 103b9f50 MagicWood::IsAWoodPileOutsideStoragePit(Creature *)
+	// BW1W120 00600dc0 BW1M119 013c2150
 	virtual uint32_t IsAWoodPileOutsideStoragePit(Creature* param_1);
-	// BW1W120 00600f10 BW1M100 103ba140 MagicWood::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00600f10 BW1M119 013c2340
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 };
 

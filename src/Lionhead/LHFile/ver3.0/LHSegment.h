@@ -12,7 +12,7 @@ struct LHSegment
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 1005c5c0 LHSegment::LHSegment(void)
+	// BW1W120 inlined BW1M119 010d1550
 	LHSegment();
 };
 

@@ -18,9 +18,9 @@ public:
 	uint8_t       field_0xc90;
 	uint32_t      field_0xc94;
 
-	// BW1W120 inlined BW1M100 10087fb0 GestureSystem::ClearSamples(void)
+	// BW1W120 inlined BW1M119 0108a3b0
 	void ClearSamples() { memset(Samples, 0, sizeof(Samples)); }
-	// BW1W120 inlined BW1M100 1032d200 GestureSystem::Reset(void)
+	// BW1W120 inlined BW1M119 01335240
 	void Reset()
 	{
 		field_0xc88 = 0;
@@ -31,12 +31,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 0054bb60 BW1M100 1042dc00 GestureSystem::_dt(void)
+	// BW1W120 0054bb60 BW1M119 01550d80
 	virtual ~GestureSystem();
 
 	// Constructors
 
-	// BW1W120 0054bb40 BW1M100 inlined GestureSystem::GestureSystem(void)
+	// BW1W120 0054bb40 BW1M119 inlined
 	GestureSystem();
 };
 

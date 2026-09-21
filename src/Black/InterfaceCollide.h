@@ -25,7 +25,8 @@ public:
 	Leash*    leash;
 	float     LeashDistance;
 
-	// BW1W120 005ce380 BW1M100 1017a1d0: implicit destructor, only Base is destroyed.
+	// Implicit destructor, only Base is destroyed.
+	// BW1W120 005ce380
 };
 
 #endif /* BW1_DECOMP_INTERFACE_COLLIDE_INCLUDED_H */

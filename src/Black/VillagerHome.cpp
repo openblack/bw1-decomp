@@ -17,10 +17,10 @@ extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_ST
 // must have had external linkage; reconcile with Villager.cpp.
 extern "C" const DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST];
 
-// BW1W120 0075bb60 POWER(float)
+// BW1W120 0075bb60
 float __stdcall POWER(float base);
 
-// BW1W120 0075fea0 BW1M100 10097120 Villager::HomeDecideWhatToDo(void)
+// BW1W120 0075fea0 BW1M119 01099070
 bool32_t Villager::HomeDecideWhatToDo()
 {
 	if (GetAbode() != NULL && GetTown() != NULL && GetTown()->IsInStateOfEmergency() != 0)
@@ -61,7 +61,7 @@ bool32_t Villager::HomeDecideWhatToDo()
 	return 0;
 }
 
-// BW1W120 0075ff80 BW1M100 1000a8c0 Villager::CheckNeededForSomething(void)
+// BW1W120 0075ff80 BW1M119 0100c3e0
 bool32_t Villager::CheckNeededForSomething()
 {
 	if (GetAbode() == NULL)
@@ -74,7 +74,7 @@ bool32_t Villager::CheckNeededForSomething()
 	return CheckNeededForSpecial() == 1;
 }
 
-// BW1W120 0075ffb0 BW1M100 105894c0 Villager::HomeNothingToDo(void)
+// BW1W120 0075ffb0 BW1M119 01590d80
 bool32_t Villager::HomeNothingToDo()
 {
 	if (Flags & 4)
@@ -92,13 +92,13 @@ bool32_t Villager::HomeNothingToDo()
 	return true;
 }
 
-// BW1W120 00760000 BW1M100 10589480 Villager::NothingToDo(void)
+// BW1W120 00760000 BW1M119 01590d40
 bool32_t Villager::NothingToDo()
 {
 	return true;
 }
 
-// BW1W120 00760010 BW1M100 10096ee0 Villager::CheckNeededForSpecial(void)
+// BW1W120 00760010 BW1M119 01098e30
 bool32_t Villager::CheckNeededForSpecial()
 {
 	if (CheckNeededForWorship() == 1)
@@ -112,7 +112,7 @@ bool32_t Villager::CheckNeededForSpecial()
 	return CheckSatisfyOwnDesire(((const GVillagerInfo*)info)->OwnDesireThreshold) == 1;
 }
 
-// BW1W120 00760110 BW1M100 1000c610 Villager::CheckNeedsAtHome(void)
+// BW1W120 00760110 BW1M119 0100f140
 bool32_t Villager::CheckNeedsAtHome()
 {
 	if (IsWoman())
@@ -155,13 +155,13 @@ bool32_t Villager::CheckNeedsAtHome()
 	return false;
 }
 
-// BW1W120 00760240 BW1M100 105892c0 Villager::CheckIllAtHome(void)
+// BW1W120 00760240 BW1M119 01590af0
 bool32_t Villager::CheckIllAtHome()
 {
 	return false;
 }
 
-// BW1W120 00760250 BW1M100 10589160 Villager::GoHomeDropResource(void)
+// BW1W120 00760250 BW1M119 01590990
 bool32_t Villager::GoHomeDropResource()
 {
 	// TODO: 87.5% - target lays out the GotoStoragePit tail-jmp block before the
@@ -174,13 +174,13 @@ bool32_t Villager::GoHomeDropResource()
 	return GoHome();
 }
 
-// BW1W120 00760270 BW1M100 1009edb0 Villager::GoHome(void)
+// BW1W120 00760270 BW1M119 010a0ae0
 bool32_t Villager::GoHome()
 {
 	return DoGoingHome(VILLAGER_STATE_ARRIVES_HOME, VILLAGER_STATE_SLEEP_IN_TENT);
 }
 
-// BW1W120 00760280 BW1M100 1009a4b0 Villager::DoGoingHome(VILLAGER_STATES, VILLAGER_STATES)
+// BW1W120 00760280 BW1M119 0109c2d0
 bool32_t Villager::DoGoingHome(VILLAGER_STATES arrive_state, VILLAGER_STATES tent_state)
 {
 	if (IsDancing() != 0)
@@ -240,7 +240,7 @@ bool32_t Villager::DoGoingHome(VILLAGER_STATES arrive_state, VILLAGER_STATES ten
 	return true;
 }
 
-// BW1W120 00760930 BW1M100 1000c320 Villager::ArrivesHome(void)
+// BW1W120 00760930 BW1M119 0100ee50
 uint32_t Villager::ArrivesHome()
 {
 	// TODO: IsBuilt/IsRepaired dispatch through the wrong Abode vtable slots (the Abode
@@ -291,20 +291,20 @@ uint32_t Villager::ArrivesHome()
 	return false;
 }
 
-// BW1W120 00760b10 BW1M100 10004a80 Villager::AtHome(void)
+// BW1W120 00760b10 BW1M119 01004990
 bool32_t Villager::AtHome()
 {
 	HomeDecideWhatToDo();
 	return true;
 }
 
-// BW1W120 00760b20 BW1M100 10588720 Villager::SitsDownToDinner(void)
+// BW1W120 00760b20 BW1M119 0158fff0
 bool32_t Villager::SitsDownToDinner()
 {
 	return true;
 }
 
-// BW1W120 00760b30 BW1M100 10003aa0 Villager::GotoBedAtHome(void)
+// BW1W120 00760b30 BW1M119 01003a90
 bool32_t Villager::GotoBedAtHome()
 {
 	SetTopState(VILLAGER_STATE_SLEEPING_AT_HOME);
@@ -312,7 +312,7 @@ bool32_t Villager::GotoBedAtHome()
 	return true;
 }
 
-// BW1W120 00760b60 BW1M100 1009af60 Villager::CheckWhenGoingToBed(void)
+// BW1W120 00760b60 BW1M119 0109cd80
 bool32_t Villager::CheckWhenGoingToBed()
 {
 	uint32_t flags = Flags;
@@ -356,7 +356,7 @@ bool32_t Villager::CheckWhenGoingToBed()
 	return true;
 }
 
-// BW1W120 00760c80 BW1M100 10588200 Villager::CheckGetPregnantAtHome(void)
+// BW1W120 00760c80 BW1M119 0158f9b0
 bool32_t Villager::CheckGetPregnantAtHome()
 {
 	bool32_t r = WillHousewifeGetPregnant(NULL);
@@ -367,7 +367,7 @@ bool32_t Villager::CheckGetPregnantAtHome()
 	return r;
 }
 
-// BW1W120 00760ca0 BW1M100 1000d140 Villager::CheckDeathFromOldAge(void)
+// BW1W120 00760ca0 BW1M119 0100fc80
 bool32_t Villager::CheckDeathFromOldAge()
 {
 	const GVillagerInfo* vi = (const GVillagerInfo*)info;
@@ -395,7 +395,7 @@ bool32_t Villager::CheckDeathFromOldAge()
 	return false;
 }
 
-// BW1W120 00760d70 BW1M100 10023200 Villager::SleepingAtHome(void)
+// BW1W120 00760d70 BW1M119 01025d90
 bool32_t Villager::SleepingAtHome()
 {
 	if (GetTown() != NULL)
@@ -412,7 +412,7 @@ bool32_t Villager::SleepingAtHome()
 	return true;
 }
 
-// BW1W120 00760db0 BW1M100 10587f40 Villager::DoSleeping(float)
+// BW1W120 00760db0 BW1M119 0158f780
 bool32_t Villager::DoSleeping(float rest_multiplier)
 {
 	if ((uint8_t)IsPoisoned() == 0)
@@ -439,13 +439,13 @@ bool32_t Villager::DoSleeping(float rest_multiplier)
 	return false;
 }
 
-// BW1W120 00760e50 BW1M100 10587ee0 Villager::WakeUpAtHome(void)
+// BW1W120 00760e50 BW1M119 0158f720
 bool32_t Villager::WakeUpAtHome()
 {
 	return GoHome();
 }
 
-// BW1W120 00760e60 BW1M100 10587dc0 Villager::StartHavingSex(void)
+// BW1W120 00760e60 BW1M119 0158f600
 bool32_t Villager::StartHavingSex()
 {
 	Villager* mate = (Villager*)TargetThing;
@@ -470,7 +470,7 @@ bool32_t Villager::StartHavingSex()
 	return true;
 }
 
-// BW1W120 00760ee0 BW1M100 10587cd0 Villager::HavingSex(void)
+// BW1W120 00760ee0 BW1M119 0158f510
 bool32_t Villager::HavingSex()
 {
 	if (IsReadyForNewAnimation(1) != 0)
@@ -488,7 +488,7 @@ bool32_t Villager::HavingSex()
 	return true;
 }
 
-// BW1W120 00760f50 BW1M100 10587c50 Villager::StopHavingSex(void)
+// BW1W120 00760f50 BW1M119 0158f490
 bool32_t Villager::StopHavingSex()
 {
 	if (Flags & 4)
@@ -499,13 +499,13 @@ bool32_t Villager::StopHavingSex()
 	return true;
 }
 
-// BW1W120 00760f80 BW1M100 10587c10 Villager::StartHavingSexAtHome(void)
+// BW1W120 00760f80 BW1M119 0158f450
 bool32_t Villager::StartHavingSexAtHome()
 {
 	return true;
 }
 
-// BW1W120 00760f90 BW1M100 10587ac0 Villager::StartHavingSex(Villager *, VILLAGER_STATES)
+// BW1W120 00760f90 BW1M119 0158f300
 bool32_t Villager::StartHavingSex(Villager* mate, VILLAGER_STATES state)
 {
 	uint32_t time = ((const GVillagerInfo*)info)->HavingSexTime;
@@ -530,25 +530,25 @@ bool32_t Villager::StartHavingSex(Villager* mate, VILLAGER_STATES state)
 	return true;
 }
 
-// BW1W120 00761010 BW1M100 10587a80 Villager::HavingSexAtHome(void)
+// BW1W120 00761010 BW1M119 0158f2c0
 bool32_t Villager::HavingSexAtHome()
 {
 	return true;
 }
 
-// BW1W120 00761020 BW1M100 10587a40 Villager::StopHavingSexAtHome(void)
+// BW1W120 00761020 BW1M119 0158f280
 bool32_t Villager::StopHavingSexAtHome()
 {
 	return true;
 }
 
-// BW1W120 00761030 BW1M100 10587a00 Villager::WaitForDinner(void)
+// BW1W120 00761030 BW1M119 0158f240
 bool32_t Villager::WaitForDinner()
 {
 	return true;
 }
 
-// BW1W120 00761040 BW1M100 10587960 Villager::GetPromiscuity(void)
+// BW1W120 00761040 BW1M119 0158f1a0
 float Villager::GetPromiscuity()
 {
 	if (GetTown() != NULL)
@@ -558,7 +558,7 @@ float Villager::GetPromiscuity()
 	return 0.5f;
 }
 
-// BW1W120 00761070 BW1M100 105878e0 Villager::IsAvailableForSex(void)
+// BW1W120 00761070 BW1M119 0158f120
 bool32_t Villager::IsAvailableForSex()
 {
 	if (GetVillagerAvailableState() & 1)
@@ -568,7 +568,7 @@ bool32_t Villager::IsAvailableForSex()
 	return 0;
 }
 
-// BW1W120 00761090 BW1M100 10587810 Villager::IsSexuallyActive(void)
+// BW1W120 00761090 BW1M119 0158f050
 bool32_t Villager::IsSexuallyActive()
 {
 	const GVillagerInfo* vi = (const GVillagerInfo*)info;
@@ -585,7 +585,7 @@ bool32_t Villager::IsSexuallyActive()
 	return false;
 }
 
-// BW1W120 007610d0 BW1M100 10587790 Villager::IsPromiscious(void)
+// BW1W120 007610d0 BW1M119 0158efd0
 bool32_t Villager::IsPromiscious()
 {
 	// TODO: GameFloatRand __FILE__/__LINE__ cannot match in a split TU
@@ -596,7 +596,7 @@ bool32_t Villager::IsPromiscious()
 	return false;
 }
 
-// BW1W120 00761110 BW1M100 105876a0 Villager::FindAMateAtHome(void)
+// BW1W120 00761110 BW1M119 0158eee0
 bool32_t Villager::FindAMateAtHome()
 {
 	if (IsPromiscious() != 0)
@@ -615,7 +615,7 @@ bool32_t Villager::FindAMateAtHome()
 	return 0;
 }
 
-// BW1W120 00761180 BW1M100 10587620 Villager::CheckForSexAtHome(void)
+// BW1W120 00761180 BW1M119 0158ee60
 bool32_t Villager::CheckForSexAtHome()
 {
 	if ((Flags & 4) && IsSexuallyActive() != 0)
@@ -625,7 +625,7 @@ bool32_t Villager::CheckForSexAtHome()
 	return 0;
 }
 
-// BW1W120 007611b0 BW1M100 10587570 Villager::ShallIWaitForDinner(void)
+// BW1W120 007611b0 BW1M119 0158edb0
 bool32_t Villager::ShallIWaitForDinner()
 {
 	if (IsHungry() != 0 && HousewifeAskForMeal() == 0)
@@ -637,7 +637,7 @@ bool32_t Villager::ShallIWaitForDinner()
 	return true;
 }
 
-// BW1W120 007611f0 BW1M100 105874c0 Villager::HomeDeleted(void)
+// BW1W120 007611f0 BW1M119 0158ed00
 void Villager::HomeDeleted()
 {
 	if (target == GetAbode())
@@ -654,7 +654,7 @@ void Villager::HomeDeleted()
 	}
 }
 
-// BW1W120 00761220 BW1M100 10587440 Villager::MakeHomeless(void)
+// BW1W120 00761220 BW1M119 0158ec80
 bool Villager::MakeHomeless()
 {
 	// TODO: 96.9% - target saves MakeHomelessNoStateChange()'s bool result full-width
@@ -665,7 +665,7 @@ bool Villager::MakeHomeless()
 	return result;
 }
 
-// BW1W120 00761240 BW1M100 10587220 Villager::MakeHomelessNoStateChange(void)
+// BW1W120 00761240 BW1M119 0158ea60
 bool Villager::MakeHomelessNoStateChange()
 {
 	Town* town = GetTown();
@@ -694,7 +694,7 @@ bool Villager::MakeHomelessNoStateChange()
 	return true;
 }
 
-// BW1W120 00761320 BW1M100 10587160 Villager::HomelessStart(void)
+// BW1W120 00761320 BW1M119 0158e9a0
 bool32_t Villager::HomelessStart()
 {
 	GetTown();
@@ -709,7 +709,7 @@ bool32_t Villager::HomelessStart()
 	return true;
 }
 
-// BW1W120 00761360 BW1M100 10586fd0 Villager::CheckHomelessMoveIntoAbode(void)
+// BW1W120 00761360 BW1M119 0158e810
 bool32_t Villager::CheckHomelessMoveIntoAbode()
 {
 	Town*  town = GetTown();
@@ -724,13 +724,13 @@ bool32_t Villager::CheckHomelessMoveIntoAbode()
 	return 1;
 }
 
-// BW1W120 007613f0 BW1M100 10586f90 Villager::VillagerGossips(void)
+// BW1W120 007613f0 BW1M119 0158e7d0
 bool32_t Villager::VillagerGossips()
 {
 	return true;
 }
 
-// BW1W120 00761400 BW1M100 10586ed0 Villager::SetupAfterTapOnAbode(MapCoords &, VILLAGER_STATES)
+// BW1W120 00761400 BW1M119 0158e710
 void Villager::SetupAfterTapOnAbode(MapCoords& pos, VILLAGER_STATES previous_state)
 {
 	action.SetState(LIVING_ACTION_INDEX_PREVIOUS, previous_state);
@@ -738,7 +738,7 @@ void Villager::SetupAfterTapOnAbode(MapCoords& pos, VILLAGER_STATES previous_sta
 	Flags |= 1;
 }
 
-// BW1W120 00761440 BW1M100 10586e70 Villager::AfterTapOnAbode(void)
+// BW1W120 00761440 BW1M119 0158e6b0
 bool32_t Villager::AfterTapOnAbode()
 {
 	// TODO: 85.7% - target zero-extends the byte arg (`xor eax,eax; mov al,[..]`);
@@ -749,7 +749,7 @@ bool32_t Villager::AfterTapOnAbode()
 	return true;
 }
 
-// BW1W120 00761460 BW1M100 100955e0 Villager::CheckSatisfyRelaxation(void)
+// BW1W120 00761460 BW1M119 01097530
 bool32_t Villager::CheckSatisfyRelaxation()
 {
 	if (GetTown() != NULL && GetTown()->SetVillagerActivity(this) != 0)
@@ -759,7 +759,7 @@ bool32_t Villager::CheckSatisfyRelaxation()
 	return false;
 }
 
-// BW1W120 00761490 BW1M100 1009cb70 Villager::CheckSatisfySleep(void)
+// BW1W120 00761490 BW1M119 0109e8c0
 bool32_t Villager::CheckSatisfySleep()
 {
 	if ((Flags & 1) == 0 || ((const GVillagerInfo*)info)->DamageThresholdToGoHome > GetLife())
@@ -786,7 +786,7 @@ bool32_t Villager::CheckSatisfySleep()
 	return false;
 }
 
-// BW1W120 00761510 BW1M100 10586c80 Villager::ArtifactDance(void)
+// BW1W120 00761510 BW1M119 0158e530
 bool32_t Villager::ArtifactDance()
 {
 	MapCoords dancePos;
@@ -805,14 +805,14 @@ bool32_t Villager::ArtifactDance()
 	return true;
 }
 
-// BW1W120 00761800 BW1M100 10586960 Villager::EnterWaitForArtifactDance(unsigned char, unsigned char)
+// BW1W120 00761800 BW1M119 0158e210
 bool32_t Villager::EnterWaitForArtifactDance(unsigned char param_1, unsigned char param_2)
 {
 	TurnsUntilNextStateChange = 0;
 	return true;
 }
 
-// BW1W120 00761810 BW1M100 105867e0 Villager::GoHomeAndChange(void)
+// BW1W120 00761810 BW1M119 0158e090
 bool32_t Villager::GoHomeAndChange()
 {
 	Abode*          abode = GetAbode();
@@ -839,7 +839,7 @@ bool32_t Villager::GoHomeAndChange()
 	return true;
 }
 
-// BW1W120 007618c0 BW1M100 10586680 Villager::ChangeTribeIfRequired(TRIBE_TYPE, int)
+// BW1W120 007618c0 BW1M119 0158df30
 bool32_t Villager::ChangeTribeIfRequired(TRIBE_TYPE tribe, int show_effect)
 {
 	const GVillagerInfo* vi = (const GVillagerInfo*)info;
@@ -863,7 +863,7 @@ bool32_t Villager::ChangeTribeIfRequired(TRIBE_TYPE tribe, int show_effect)
 	// target never writes eax on them — the original likely returned void.
 }
 
-// BW1W120 00761980 BW1M100 10586570 Villager::ExitGoHomeAndChange(unsigned char)
+// BW1W120 00761980 BW1M119 0158de20
 bool32_t Villager::ExitGoHomeAndChange(unsigned char state)
 {
 	if (IsStateExitFunctionSameAs((VILLAGER_STATES)state) == 0)
@@ -881,7 +881,7 @@ bool32_t Villager::ExitGoHomeAndChange(unsigned char state)
 	return true;
 }
 
-// BW1W120 00761ae0 BW1M100 10586240 Villager::SleepInTent(void)
+// BW1W120 00761ae0 BW1M119 0158daf0
 bool32_t Villager::SleepInTent()
 {
 	if (TurnsUntilNextStateChange == 0)
@@ -907,7 +907,7 @@ bool32_t Villager::SleepInTent()
 	return true;
 }
 
-// BW1W120 00761b40 BW1M100 100957f0 Villager::ExitAtHome(unsigned char)
+// BW1W120 00761b40 BW1M119 01097740
 bool32_t Villager::ExitAtHome(unsigned char state)
 {
 	if (g_GVillagerStateTableInfos[state].field_0xd0 == 0)
@@ -917,7 +917,7 @@ bool32_t Villager::ExitAtHome(unsigned char state)
 	return true;
 }
 
-// BW1W120 00761b70 BW1M100 10586150 Villager::GoHomeFromWorship(void)
+// BW1W120 00761b70 BW1M119 0158da50
 bool32_t Villager::GoHomeFromWorship()
 {
 	return DoGoingHome(VILLAGER_STATE_ARRIVES_HOME_FROM_WORSHIP, VILLAGER_STATE_SLEEP_IN_TENT_FROM_WORSHIP);

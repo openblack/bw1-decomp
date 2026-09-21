@@ -15,14 +15,14 @@ class TerrainMapTypeInfo : public GBaseInfo
 public:
 	float Value;
 
-	// BW1W120 0054bed0 TerrainMapTypeInfo::TerrainMapTypeInfo(void)
+	// BW1W120 0054bed0 BW1M119 010e1450
 	TerrainMapTypeInfo() {}
 
 	// Override methods
 
-	// BW1W120 0054bf00 BW1M100 10512cc0 TerrainMapTypeInfo::_dt(void)
+	// BW1W120 0054bf00 BW1M119 013d1880
 	virtual ~TerrainMapTypeInfo() {}
-	// BW1W120 0054bd70 BW1M100 10588760 TerrainMapTypeInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0054bd70 BW1M119 01580270
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

@@ -20,13 +20,13 @@ enum DECISION_TREE_TYPE
 
 struct AttributeTest
 {
-	// BW1W120 004d52b0 BW1M100 1024dfc0
+	// BW1W120 004d52b0 BW1M119 012526c0
 	static void CreateAttributeArray();
-	// BW1W120 004d60e0 BW1M100 1024de70
+	// BW1W120 004d60e0 BW1M119 01252570
 	static void CreateBeliefArray();
-	// BW1W120 004d60b0 BW1M100 1024df00 AttributeTest::DeleteAttributeArray(void)
+	// BW1W120 004d60b0 BW1M119 01252600
 	static void DeleteAttributeArray();
-	// BW1W120 004d6110 BW1M100 1024ddd0 AttributeTest::DeleteBeliefArray(void)
+	// BW1W120 004d6110 BW1M119 012524d0
 	static void                            DeleteBeliefArray();
 	LHLinkedList<CreatureLearningEpisode*> episodes; /* 0x0 */
 	uint32_t                               field_0x8;
@@ -44,7 +44,7 @@ struct AttributeTest
 
 	// Constructors
 
-	// BW1W120 004d4c20 BW1M100 1024fa20 AttributeTest::AttributeTest(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
+	// BW1W120 004d4c20 BW1M119 01254050
 	AttributeTest(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
 };
 
@@ -59,7 +59,7 @@ struct DecisionTree
 
 	// Constructors
 
-	// BW1W120 004d4380 BW1M100 102506c0 DecisionTree::DecisionTree(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
+	// BW1W120 004d4380 BW1M119 01254c90
 	DecisionTree(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
 };
 
@@ -74,7 +74,7 @@ struct DecisionTreeAgenda
 
 	// Constructors
 
-	// BW1W120 004d43f0 BW1M100 102505c0 DecisionTreeAgenda::DecisionTreeAgenda(DECISION_TREE_TYPE, CREATURE_DESIRES)
+	// BW1W120 004d43f0 BW1M119 01254ba0
 	DecisionTreeAgenda(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire);
 };
 
@@ -89,7 +89,7 @@ struct DecisionTreeCollection
 
 	// Constructors
 
-	// BW1W120 004d7220 BW1M100 1024c150 DecisionTreeCollection::DecisionTreeCollection(void)
+	// BW1W120 004d7220 BW1M119 01250860
 	DecisionTreeCollection();
 };
 
@@ -98,7 +98,7 @@ class Attribute : public Base
 public:
 	// Override methods
 
-	// BW1W120 004cb750 BW1M100 1023cc80 Attribute::_dt(void)
+	// BW1W120 004cb750 BW1M119 012412e0
 	virtual ~Attribute();
 };
 
@@ -111,7 +111,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d6090 BW1M100 10249c80 AttributeAbodeBeingBuilt::_dt(void)
+	// BW1W120 004d6090 BW1M119 0124e390
 	virtual ~AttributeAbodeBeingBuilt();
 };
 
@@ -124,7 +124,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d6020 BW1M100 10249e60 AttributeAbodeType::_dt(void)
+	// BW1W120 004d6020 BW1M119 0124e570
 	virtual ~AttributeAbodeType();
 };
 
@@ -137,7 +137,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cb7c0 BW1M100 1024bad0 AttributeAllegiance::_dt(void)
+	// BW1W120 004cb7c0 BW1M119 012501e0
 	virtual ~AttributeAllegiance();
 };
 
@@ -146,7 +146,7 @@ class AttributeAnimate : public Attribute
 public:
 	// Override methods
 
-	// BW1W120 004cb8b0 BW1M100 1024b770 AttributeAnimate::_dt(void)
+	// BW1W120 004cb8b0 BW1M119 0124fe80
 	virtual ~AttributeAnimate();
 };
 
@@ -155,7 +155,7 @@ class AttributeCreatureDominantDesire : public Attribute
 public:
 	// Override methods
 
-	// BW1W120 004d5da0 BW1M100 1024abd0 AttributeCreatureDominantDesire::_dt(void)
+	// BW1W120 004d5da0 BW1M119 0124f2e0
 	virtual ~AttributeCreatureDominantDesire();
 };
 
@@ -168,7 +168,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d5e10 BW1M100 1024aa00 AttributeCreatureHeight::_dt(void)
+	// BW1W120 004d5e10 BW1M119 0124f110
 	virtual ~AttributeCreatureHeight();
 };
 
@@ -177,7 +177,7 @@ class AttributeCreatureSpellKnowledge : public Attribute
 public:
 	// Override methods
 
-	// BW1W120 004d5e70 BW1M100 1024a860 AttributeCreatureSpellKnowledge::_dt(void)
+	// BW1W120 004d5e70 BW1M119 0124ef70
 	virtual ~AttributeCreatureSpellKnowledge();
 };
 
@@ -186,7 +186,7 @@ class AttributeCreatureType : public Attribute
 public:
 	// Override methods
 
-	// BW1W120 004cbbe0 BW1M100 10247480 AttributeCreatureType::_dt(void)
+	// BW1W120 004cbbe0 BW1M119 0124bb90
 	virtual ~AttributeCreatureType();
 };
 
@@ -195,7 +195,7 @@ class AttributeCreatureWhatHeIsCarrying : public Attribute
 public:
 	// Override methods
 
-	// BW1W120 004d5ed0 BW1M100 1024a6c0 AttributeCreatureWhatHeIsCarrying::_dt(void)
+	// BW1W120 004d5ed0 BW1M119 0124edd0
 	virtual ~AttributeCreatureWhatHeIsCarrying();
 };
 
@@ -208,7 +208,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d5f40 BW1M100 1024a510 AttributeForestSize::_dt(void)
+	// BW1W120 004d5f40 BW1M119 0124ec20
 	virtual ~AttributeForestSize();
 };
 
@@ -217,7 +217,7 @@ class AttributeIsHarderThanMe : public Attribute
 public:
 	// Override methods
 
-	// BW1W120 004cbb80 BW1M100 102497e0 AttributeIsHarderThanMe::_dt(void)
+	// BW1W120 004cbb80 BW1M119 0124def0
 	virtual ~AttributeIsHarderThanMe();
 };
 
@@ -230,7 +230,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cb980 BW1M100 1024b470 AttributeLife::_dt(void)
+	// BW1W120 004cb980 BW1M119 0124fb80
 	virtual ~AttributeLife();
 };
 
@@ -243,7 +243,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d5fb0 BW1M100 1024a010 AttributeMobileObjectType::_dt(void)
+	// BW1W120 004d5fb0 BW1M119 0124e720
 	virtual ~AttributeMobileObjectType();
 };
 
@@ -256,7 +256,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cbac0 BW1M100 10249ad0 AttributeOnFire::_dt(void)
+	// BW1W120 004cbac0 BW1M119 0124e1e0
 	virtual ~AttributeOnFire();
 };
 
@@ -269,7 +269,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cb830 BW1M100 1024b920 AttributeOrigin::_dt(void)
+	// BW1W120 004cb830 BW1M119 01250030
 	virtual ~AttributeOrigin();
 };
 
@@ -278,7 +278,7 @@ class AttributePlayerNumber : public Attribute
 public:
 	// Override methods
 
-	// BW1W120 004cbb20 BW1M100 10249960 AttributePlayerNumber::_dt(void)
+	// BW1W120 004cbb20 BW1M119 0124e070
 	virtual ~AttributePlayerNumber();
 };
 
@@ -291,7 +291,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cba50 BW1M100 1024a200 AttributeSex::_dt(void)
+	// BW1W120 004cba50 BW1M119 0124e910
 	virtual ~AttributeSex();
 };
 
@@ -304,7 +304,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cd710 BW1M100 1024b0c0 AttributeTownReligiousBeliefInYou::_dt(void)
+	// BW1W120 004cd710 BW1M119 0124f7d0
 	virtual ~AttributeTownReligiousBeliefInYou();
 };
 
@@ -317,7 +317,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cd7e0 BW1M100 1024ad70 AttributeTownSize::_dt(void)
+	// BW1W120 004cd7e0 BW1M119 0124f480
 	virtual ~AttributeTownSize();
 };
 
@@ -330,7 +330,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cd6a0 BW1M100 1024b2c0 AttributeTribe::_dt(void)
+	// BW1W120 004cd6a0 BW1M119 0124f9d0
 	virtual ~AttributeTribe();
 };
 
@@ -339,7 +339,7 @@ class AttributeType : public Attribute
 public:
 	// Override methods
 
-	// BW1W120 004cb910 BW1M100 1024b610 AttributeType::_dt(void)
+	// BW1W120 004cb910 BW1M119 0124fd20
 	virtual ~AttributeType();
 };
 
@@ -348,7 +348,7 @@ class AttributeVillagerJob : public Attribute
 public:
 	// Override methods
 
-	// BW1W120 004cb9e0 BW1M100 1024a3a0 AttributeVillagerJob::_dt(void)
+	// BW1W120 004cb9e0 BW1M119 0124eab0
 	virtual ~AttributeVillagerJob();
 };
 
@@ -357,7 +357,7 @@ class AttributeWhatTownNeedsMost : public Attribute
 public:
 	// Override methods
 
-	// BW1W120 004cd770 BW1M100 1024af20 AttributeWhatTownNeedsMost::_dt(void)
+	// BW1W120 004cd770 BW1M119 0124f630
 	virtual ~AttributeWhatTownNeedsMost();
 };
 

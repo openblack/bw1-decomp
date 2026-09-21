@@ -21,11 +21,15 @@ Seeded from AGENTS.md rules and the matched `Villager::DecideWhatToDo` session
 
 ## Mangled-name decoder (MSVC 6, 32-bit)
 
-The `// BW1W120 <addr> BW1M100 <addr> <demangled>` comment is **ground truth for the
-signature**, but the demangling can be wrong/incomplete — decode the raw mangled
-symbol from `config/BW1W120/symbols.txt` yourself. Signature disputes (const, ref vs
-ptr, `bool` vs `bool32_t`, static/virtual) are settled here, not by guessing. This is
-the single most-reused lookup in the campaign; keep it handy.
+**Ground truth for the signature is the demangled CodeWarrior symbol in
+`config/BW1M119`**: name, class, argument list, ref vs ptr, and `const`. Find it with
+`python3 tools/mac_symbol_version.py --find 'Class::Method'`, then demangle with
+`python3 tools/cwdemangle.py '<mangled>'` (objdiff's `cwdemangle` gives the same result).
+Use the `.`-prefixed `.code0` symbol. The Mac mangling encodes **no return type,
+calling convention or static-ness**. The `config/BW1W120/symbols.txt` manglings below
+were reconstructed from it, so their `_N`/`I` returns and `QAE`/`SA`/`YA` conventions are
+guesses. Settle those from the Windows codegen (see `mangled-return-mislabel-vs-codegen`),
+and use this decoder to read what the Windows symbol *currently* claims.
 
 A member symbol is `?Name@Class@@` then `<access><cv><callconv><ret><args>Z`:
 
@@ -96,8 +100,8 @@ fakematches (negative progress). They resolve at the campaign level, not per-fun
 ---
 
 ### ptr-vs-ref
-Rule: the mangled name in the `// BW1W120` comment encodes the true signature — `Type const &` there beats `Type*` in the header (AGENTS.md Rule 1).
-Diff signature: header disagrees with comment → fix the header, not the caller.
+Rule: the demangled config/BW1M119 symbol encodes the true argument types — `Type const &` there beats `Type*` in the header (AGENTS.md "Pointer vs reference").
+Diff signature: header disagrees with the demangled BW1M119 signature → fix the header, not the caller.
 
 ### ptr-vs-ref-blocked-by-existing-caller
 Rule: before applying `ptr-vs-ref` to a SHARED method (declared in `Living.h`/a base class, called from multiple `.cpp`s), grep the whole `src/` tree for existing call sites first. If even one already-written `.cpp` in ANOTHER unit calls it with the current (wrong-per-mangling) pointer form (`Func(&expr, ...)`), fixing the header to the mangled-true reference form breaks that unit's compile — cross-TU blast radius, not yours to take. Proven on `Living::PerformDance` (mangled `ABUMapCoords@@` = `const MapCoords&`, header has `const MapCoords*`): VillagerWorshipper.cpp already calls it 3x (`RestartWorshippingCreature`, `WorshippingCreature`, `WorshippingAtWorshipSite`) with `&dance_group->Dancer->Pos`-style args matching the pointer form. Contrast with a clean `ptr-vs-ref` fix (e.g. `MapCoords::operator==`/`operator!=`/`operator+=(JustMapXZ)`): grep first — if there are ZERO existing callers anywhere in `src/`, the fix is safe and required (do it); if there are existing callers elsewhere, defer instead and log the specific caller(s) that block you.

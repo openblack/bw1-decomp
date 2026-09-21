@@ -15,7 +15,7 @@ class GForestInfo : public GContainerInfo
 public:
 	// Override methods
 
-	// BW1W120 005399c0 BW1M100 100f2980 GForestInfo::_dt(void)
+	// BW1W120 005399c0 BW1M119 010fbc00
 	virtual ~GForestInfo();
 };
 

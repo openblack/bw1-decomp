@@ -15,9 +15,9 @@ class TownCreatureInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 007437d0 BW1M100 10557190 TownCreatureInfo::_dt(void)
+	// BW1W120 007437d0 BW1M119 015609c0
 	virtual ~TownCreatureInfo();
-	// BW1W120 007437c0 BW1M100 10558ea0 TownCreatureInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 007437c0 BW1M119 015623e0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

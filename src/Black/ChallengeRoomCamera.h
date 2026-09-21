@@ -10,11 +10,11 @@ class ChallengeRoomCamera : public InnerCamera
 public:
 	// Override methods
 
-	// BW1W120 00785300 BW1M100 101b6a80 ChallengeRoomCamera::Init(char *)
+	// BW1W120 00785300 BW1M119 011bf8a0
 	virtual void Init(char* param_1);
-	// BW1W120 00785250 BW1M100 101b6c30 ChallengeRoomCamera::Reinit(void)
+	// BW1W120 00785250 BW1M119 011bfa50
 	virtual void Reinit();
-	// BW1W120 007854c0 BW1M100 101b6a20 ChallengeRoomCamera::Close(void)
+	// BW1W120 007854c0 BW1M119 011bf840
 	virtual void Close();
 };
 

@@ -38,37 +38,37 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 100046c0 BW1M100 100df730 LHConnection::SetNetUser(LHNetUser *)
+	// BW1W120 100046c0 BW1M119 010deab0 (LHCombined Release)
 	void SetNetUser(LHNetUser* net_user);
-	// BW1W120 100046e0 BW1M100 100df6d0 LHConnection::GetTransportType(void)
+	// BW1W120 100046e0 BW1M119 010dea50 (LHCombined Release)
 	LH_TRANSPORT_TYPE GetTransportType();
-	// BW1W120 10004760 BW1M100 1000f630 LHConnection::GetIncomingEventQSize(void)
+	// BW1W120 10004760 BW1M119 0100f6d0 (LHCombined Release)
 	LH_MULTIPLAYER_API unsigned long GetIncomingEventQSize();
-	// BW1W120 100047f0 BW1M100 100df100 LHConnection::RawRead(unsigned long, LH_NETEVENT_TYPE)
+	// BW1W120 100047f0 BW1M119 010de480 (LHCombined Release)
 	LHNetEvent* RawRead(uint32_t param_1, LH_NETEVENT_TYPE type);
-	// BW1W120 10004840 BW1M100 100df070 LHConnection::RawPeek(unsigned long, LH_NETEVENT_TYPE)
+	// BW1W120 10004840 BW1M119 010de3f0 (LHCombined Release)
 	LH_MULTIPLAYER_API LHNetEvent* RawPeek(unsigned long param_1, LH_NETEVENT_TYPE param_2);
-	// BW1W120 10004870 BW1M100 100095c0 LHConnection::Peek(ulong)
+	// BW1W120 10004870 BW1M119 01009680 (LHCombined Release)
 	LH_MULTIPLAYER_API LHNetEvent* Peek(unsigned long param_1);
-	// BW1W120 100048b0 BW1M100 100ded90 LHConnection::BaseProcessEvent(LHNetEvent *)
+	// BW1W120 100048b0 BW1M119 010de110 (LHCombined Release)
 	LH_RETURN BaseProcessEvent(LHNetEvent* net_event);
-	// BW1W120 10004d70 BW1M100 100de0c0 LHConnection::Write(LHNetEvent *)
+	// BW1W120 10004d70 BW1M119 010dd360 (LHCombined Release)
 	LH_RETURN Write(LHNetEvent* net_event);
-	// BW1W120 10004e50 BW1M100 100ddf50 LHConnection::OpenClientConnection(LHNetUser *, LHTransportInfo *)
+	// BW1W120 10004e50 BW1M119 010dd1f0 (LHCombined Release)
 	LH_RETURN OpenClientConnection(LHNetUser* user, LHTransportInfo* transport_info);
-	// BW1W120 10004e80 BW1M100 100dddd0 LHConnection::SendClientProtocol(void)
+	// BW1W120 10004e80 BW1M119 010dd070 (LHCombined Release)
 	LH_RETURN SendClientProtocol();
-	// BW1W120 10004ee0 BW1M100 100ddc70 LHConnection::RawOpen(LHNetUser *, LHTransportInfo *)
+	// BW1W120 10004ee0 BW1M119 010dcf10 (LHCombined Release)
 	LH_RETURN RawOpen(LHNetUser* user, LHTransportInfo* transport_info);
-	// BW1W120 10004f80 BW1M100 100ddc10 LHConnection::ConnectionOriented(void)
+	// BW1W120 10004f80 BW1M119 010dceb0 (LHCombined Release)
 	bool32_t ConnectionOriented();
-	// BW1W120 100051b0 BW1M100 100dd710 LHConnection::ClearTransport(void)
+	// BW1W120 100051b0 BW1M119 010dc9b0 (LHCombined Release)
 	void ClearTransport();
-	// BW1W120 10005270 BW1M100 10010210 LHConnection::IsDisconnected(void)
+	// BW1W120 10005270 BW1M119 010102b0 (LHCombined Release)
 	LH_MULTIPLAYER_API int IsDisconnected();
-	// BW1W120 100052d0 BW1M100 100dd3b0 LHConnection::CheckForEvents(void)
+	// BW1W120 100052d0 BW1M119 010dc610 (LHCombined Release)
 	LH_MULTIPLAYER_API int CheckForEvents();
-	// BW1W120 10005330 BW1M100 100dd1e0 LHConnection::GetProtocolVersion(void)
+	// BW1W120 10005330 BW1M119 010dc440 (LHCombined Release)
 	uint32_t GetProtocolVersion();
 };
 static_assert(sizeof(LHConnection) == 0x90, "LHConnection size is incorrect");

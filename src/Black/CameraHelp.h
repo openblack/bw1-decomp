@@ -238,7 +238,7 @@ public:
 	static float AutoPitchParam2;
 	// BW1W120 009cdd6c
 	static int EnabledFeatures;
-	// BW1W120 00449140 BW1M100 100018f0 CameraHelp::CameraHelpCallback(CameraHelpReason, LHPoint &, unsigned long)
+	// BW1W120 00449140 BW1M119 010018f0
 	static void CameraHelpCallback(CameraHelpReason reason, LHPoint& point, unsigned long param_3);
 };
 

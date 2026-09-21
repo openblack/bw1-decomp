@@ -15,7 +15,7 @@ class GMagicStormAndTornadoInfo : public GMagicRadiusSpellInfo
 public:
 	// Override methods
 
-	// BW1W120 00435740 BW1M100 103aebf0 GMagicStormAndTornadoInfo::_dt(void)
+	// BW1W120 00435740 BW1M119 013b6bf0
 	virtual ~GMagicStormAndTornadoInfo();
 };
 

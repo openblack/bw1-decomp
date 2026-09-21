@@ -54,23 +54,23 @@ public:
 
 	// Override methods
 
-	// BW1W120 00464890 BW1M100 101c0f00 LeashObj::_dt(void)
+	// BW1W120 00464890 BW1M119 011c88e0
 	virtual ~LeashObj();
-	// BW1W120 00464580 BW1M100 101c1870 LeashObj::GetOverwriteInteractableToolTip(void)
+	// BW1W120 00464580 BW1M119 011c9230
 	virtual uint32_t GetOverwriteInteractableToolTip();
-	// BW1W120 00464860 BW1M100 101c25e0 LeashObj::GetText(void)
+	// BW1W120 00464860 BW1M119 011c9fc0
 	virtual const char* GetText();
-	// BW1W120 00464870 BW1M100 101c2620 LeashObj::GetQueryFirstEnumText(void)
+	// BW1W120 00464870 BW1M119 011ca000
 	virtual HELP_TEXT GetQueryFirstEnumText();
-	// BW1W120 00464880 BW1M100 101c2690 LeashObj::GetQueryLastEnumText(void)
+	// BW1W120 00464880 BW1M119 011ca070
 	virtual HELP_TEXT GetQueryLastEnumText();
-	// BW1W120 00464850 BW1M100 101c2590 LeashObj::ValidAsInterfaceLeashTarget(void)
+	// BW1W120 00464850 BW1M119 011c9f70
 	virtual uint32_t ValidAsInterfaceLeashTarget();
-	// BW1W120 00464450 BW1M100 101c1a60 LeashObj::InterfaceValidToTap(GInterfaceStatus *)
+	// BW1W120 00464450 BW1M119 011c9420
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
-	// BW1W120 00464490 BW1M100 101c18f0 LeashObj::InterfaceTap(GInterfaceStatus *)
+	// BW1W120 00464490 BW1M119 011c92b0
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
-	// BW1W120 00464840 BW1M100 101c2540 LeashObj::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 00464840 BW1M119 011c9f20
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
@@ -81,7 +81,7 @@ struct TempleLeash
 
 	// Constructors
 
-	// BW1W120 00464650 BW1M100 101c1350 TempleLeash::TempleLeash(LH3DObject *, unsigned long)
+	// BW1W120 00464650 BW1M119 011c8d20
 	TempleLeash(LH3DObject* param_1, uint32_t param_2);
 };
 
@@ -114,99 +114,99 @@ public:
 
 	// Override methods
 
-	// BW1W120 00464bc0 BW1M100 101c0df0 CitadelHeart::_dt(void)
+	// BW1W120 00464bc0 BW1M119 011c87d0
 	virtual ~CitadelHeart();
-	// BW1W120 00464c50 BW1M100 101c0b90 CitadelHeart::ToBeDeleted(int)
+	// BW1W120 00464c50 BW1M119 011c8570
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00468020 BW1M100 10075fd0 CitadelHeart::GetPlayer(void)
+	// BW1W120 00468020 BW1M119 01078550
 	virtual GPlayer* GetPlayer();
-	// BW1W120 00464bb0 BW1M100 101c23c0 CitadelHeart::GetDebugText(void)
+	// BW1W120 00464bb0 BW1M119 011c9da0
 	virtual char* GetDebugText();
-	// BW1W120 004657f0 BW1M100 101bf6e0 CitadelHeart::Load(GameOSFile &)
+	// BW1W120 004657f0 BW1M119 011c70e0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 004655c0 BW1M100 101bf9c0 CitadelHeart::Save(GameOSFile &)
+	// BW1W120 004655c0 BW1M119 011c73c0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00464ba0 BW1M100 101c2380 CitadelHeart::GetSaveType(void)
+	// BW1W120 00464ba0 BW1M119 011c9d60
 	virtual uint32_t GetSaveType();
-	// BW1W120 00465a10 BW1M100 101bf690 CitadelHeart::ResolveLoad(void)
+	// BW1W120 00465a10 BW1M119 011c7090
 	virtual void ResolveLoad();
-	// BW1W120 00464b80 BW1M100 101c2250 CitadelHeart::IsCitadelHeart(void)
+	// BW1W120 00464b80 BW1M119 011c9c10
 	virtual uint32_t IsCitadelHeart();
-	// BW1W120 00468dc0 BW1M100 101bbf10 CitadelHeart::CreateBuildingSite(void)
+	// BW1W120 00468dc0 BW1M119 011c41c0
 	virtual uint32_t CreateBuildingSite();
-	// BW1W120 004680b0 BW1M100 101bd410 CitadelHeart::GetScriptObjectType(void)
+	// BW1W120 004680b0 BW1M119 011c5260
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 00464b20 BW1M100 inlined CitadelHeart::SetSpecularColor(LH3DColor)
+	// BW1W120 00464b20 BW1M119 inlined
 	virtual void SetSpecularColor(LH3DColor param_1);
-	// BW1W120 00464b30 BW1M100 100173c0 CitadelHeart::GetSpecularColor(void)
+	// BW1W120 00464b30 BW1M119 01019f70
 	virtual LH3DColor GetSpecularColor();
-	// BW1W120 00468c30 BW1M100 101bc080 CitadelHeart::GetActualObjectToEffect(GPlayer *, bool)
+	// BW1W120 00468c30 BW1M119 011c4330
 	virtual void* GetActualObjectToEffect(GPlayer* param_1, bool param_2);
-	// BW1W120 00468da0 BW1M100 101bc010 CitadelHeart::DestroyedByEffect(GPlayer *, float)
+	// BW1W120 00468da0 BW1M119 011c42c0
 	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
-	// BW1W120 004665a0 BW1M100 1008a6f0 CitadelHeart::Process(void)
+	// BW1W120 004665a0 BW1M119 0108ca30
 	virtual uint32_t Process();
-	// BW1W120 00464b90 BW1M100 10011680 CitadelHeart::Draw(void)
+	// BW1W120 00464b90 BW1M119 01014250
 	virtual void Draw();
-	// BW1W120 00467870 BW1M100 101be3b0 CitadelHeart::GetWorldMatrix(LHMatrix *)
+	// BW1W120 00467870 BW1M119 011c6230
 	virtual void GetWorldMatrix(LHMatrix* param_1);
-	// BW1W120 004675a0 BW1M100 101be430 CitadelHeart::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 004675a0 BW1M119 011c62b0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1W120 00464b40 BW1M100 101be8a0 CitadelHeart::Get3DType(void)
+	// BW1W120 00464b40 BW1M119 011c6720
 	virtual LH3DObject::ObjectType Get3DType();
-	// BW1W120 00467b60 BW1M100 101bdef0 CitadelHeart::GetPhysicsConstantsType(void)
+	// BW1W120 00467b60 BW1M119 011c5d70
 	virtual uint32_t GetPhysicsConstantsType();
-	// BW1W120 00467b70 BW1M100 101bde40 CitadelHeart::SetUpPhysOb(PhysOb *)
+	// BW1W120 00467b70 BW1M119 011c5cc0
 	virtual void SetUpPhysOb(PhysOb* param_1);
-	// BW1W120 00467b40 BW1M100 101bdf40 CitadelHeart::InteractsWithPhysicsObjects(void)
+	// BW1W120 00467b40 BW1M119 011c5dc0
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 00467b30 BW1M100 101bdfc0 CitadelHeart::ChecksVerticesVObjects(void)
+	// BW1W120 00467b30 BW1M119 011c5e40
 	virtual bool ChecksVerticesVObjects();
-	// BW1W120 00467bb0 BW1M100 101bdc10 CitadelHeart::ReactToPhysicsImpact(PhysicsObject *, bool)
+	// BW1W120 00467bb0 BW1M119 011c5a90
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-	// BW1W120 004680d0 BW1M100 101bceb0 CitadelHeart::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+	// BW1W120 004680d0 BW1M119 011c4d00
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));
-	// BW1W120 004680c0 BW1M100 101bd390 CitadelHeart::GetRoutePlanRadius(Creature *)
+	// BW1W120 004680c0 BW1M119 011c51e0
 	virtual float GetRoutePlanRadius(Creature* param_1);
-	// BW1W120 00464b50 BW1M100 101c2180 CitadelHeart::GetObjectCollide(void)
+	// BW1W120 00464b50 BW1M119 011c9b40
 	virtual uint32_t GetObjectCollide();
-	// BW1W120 004673a0 BW1M100 101be8e0 CitadelHeart::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 004673a0 BW1M119 011c6760
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
-	// BW1W120 00464b70 BW1M100 101c2200 CitadelHeart::ShouldFootpathsGoRound(void)
+	// BW1W120 00464b70 BW1M119 011c9bc0
 	virtual bool32_t ShouldFootpathsGoRound();
-	// BW1W120 00467d10 BW1M100 inlined CitadelHeart::GetDoorPos(MapCoords *)
+	// BW1W120 00467d10 BW1M119 inlined
 	virtual MapCoords* GetDoorPos(MapCoords* param_1);
-	// BW1W120 00465000 BW1M100 101c0570 CitadelHeart::Built(void)
+	// BW1W120 00465000 BW1M119 011c7f50
 	virtual bool32_t Built();
-	// BW1W120 00464b60 BW1M100 101c21c0 CitadelHeart::GetAbodeType(void)
+	// BW1W120 00464b60 BW1M119 011c9b80
 	virtual ABODE_TYPE GetAbodeType();
-	// BW1W120 00465430 BW1M100 101bfcc0 CitadelHeart::ConvertToPlanned(void)
+	// BW1W120 00465430 BW1M119 011c76c0
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
-	// BW1W120 00468fb0 BW1M100 101bb6e0 CitadelHeart::CreateCollideData(void)
+	// BW1W120 00468fb0 BW1M119 011c39a0
 	virtual void CreateCollideData();
 
 	// Static methods
 
-	// BW1W120 00464e20 BW1M100 101c0960 CitadelHeart::Create(MapCoords const &, GCitadelHeartInfo const *, Citadel *, float, float, float, int)
+	// BW1W120 00464e20 BW1M119 011c8340
 	static CitadelHeart* Create(const MapCoords& coords, const GCitadelHeartInfo* info, Citadel* citadel, float param_4,
 	                            float param_5, float param_6, int param_7);
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined CitadelHeart::CitadelHeart(void)
+	// BW1W120 inlined BW1M119 inlined
 	CitadelHeart();
-	// BW1W120 004649b0 BW1M100 101c0f90 CitadelHeart::__ct(MapCoords const &, GCitadelHeartInfo const *, Citadel *, float, float, float, int)
+	// BW1W120 004649b0 BW1M119 011c8970
 	CitadelHeart(MapCoords* coords, GCitadelHeartInfo* info, Citadel* citadel, float param_4, float param_5,
 	             float param_6, int param_7);
 
 	// Non-virtual methods
 
-	// BW1W120 00464950 BW1M100 101c1180 CitadelHeart::CreateLeashes(void)
+	// BW1W120 00464950 BW1M119 011c8b50
 	void CreateLeashes();
-	// BW1W120 00464da0 BW1M100 101c0af0 CitadelHeart::SetToZero(void)
+	// BW1W120 00464da0 BW1M119 011c84d0
 	void SetToZero();
-	// BW1W120 00465110 BW1M100 101c03b0 CitadelHeart::CreateBuiltWorshipSite(MapCoords const &, GWorshipSiteInfo const *, Citadel *, GTribeInfo const *)
+	// BW1W120 00465110 BW1M119 011c7d90
 	WorshipSite* CreateBuiltWorshipSite(const MapCoords& coords, const GWorshipSiteInfo* info, const Citadel* citadel,
 	                                    const GTribeInfo* tribe_info);
 };

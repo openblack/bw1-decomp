@@ -17,14 +17,14 @@ public:
 
 	// Static methods
 
-	// BW1W120 007f9d60 BW1M100 10029180 LH3DMeshedObject::SetDrawWithGlobalAlpha(int) (this is fastcall, not thiscall)
+	// BW1W120 007f9d60 BW1M119 01029300 (LHCombined Release)
 	void SetDrawWithGlobalAlpha(int value);
-	// BW1W120 007f9fb0 BW1M100 1000bf70 LH3DMeshedObject::GetDoorPos(LHPoint *) const (this is fastcall, not thiscall)
+	// BW1W120 007f9fb0 BW1M119 0100bff0 (LHCombined Release)
 	bool32_t GetDoorPos(LHPoint* out_point);
 
 	// Constructors
 
-	// BW1W120 008164b0 BW1M100 10076460 LH3DMeshedObject::LH3DMeshedObject(void)
+	// BW1W120 008164b0 BW1M119 010734b0 (LHCombined Release)
 	LH3DMeshedObject();
 };
 

@@ -27,12 +27,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 004918a0 BW1M100 1022e850 CreatureInitialDesireInfo::~CreatureInitialDesireInfo(void)
+	// BW1W120 004918a0 BW1M119 01233750
 	virtual ~CreatureInitialDesireInfo() {}
-	// BW1W120 00491830 BW1M100 1022ec70 CreatureInitialDesireInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00491830 BW1M119 01233b60
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 
-	// BW1W120 0x00c67e90 BW1M100 0x10a856b8
+	// BW1W120 00c67e90
 	static CreatureInitialDesireInfo g_CreatureInitialDesireInfos[NUM_CREATURE_DESIRES];
 };
 static_assert(sizeof(CreatureInitialDesireInfo) == 0x1c0, "Data type is of wrong size");

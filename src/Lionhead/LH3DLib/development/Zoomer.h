@@ -20,20 +20,20 @@ struct Zoomer
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 1056a120 Zoomer::Zoomer(void)
+	// BW1W120 inlined
 	Zoomer() {}
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 inlined Zoomer::SetDestination(float)
+	// BW1W120 inlined BW1M119 inlined
 	void SetDestination(float destination);
-	// BW1W120 inlined BW1M100 10038020 Zoomer::GetCurrentValue(void)
+	// BW1W120 inlined BW1M119 0103a990
 	float GetCurrentValue();
-	// BW1W120 inlined BW1M100 10020df0 Zoomer::GetDestination(void)
+	// BW1W120 inlined BW1M119 01023960
 	float GetDestination();
-	// BW1W120 00407d60 BW1M100 1004ee60 Zoomer::SetDestinationWithSpeedAndTime(float, float, float)
+	// BW1W120 00407d60 BW1M119 010517e0
 	void SetDestinationWithSpeedAndTime(float destination, float speed, float time);
-	// BW1W120 00441ac0 BW1M100 1035b310 Zoomer::SetPosition(float)
+	// BW1W120 00441ac0 BW1M119 01550e10
 	void SetPosition(float position)
 	{
 		destination = position;
@@ -49,7 +49,7 @@ struct Zoomer
 		StartSpeed = 0.0f;
 		DestinationSpeed = 0.0f;
 	}
-	// BW1W120 00442720 BW1M100 1002c480 Zoomer::Update(float)
+	// BW1W120 00442720 BW1M119 0102eff0
 	void Update(float dt);
 };
 
@@ -61,17 +61,17 @@ struct Zoomer3d
 
 	// Non-virtual methods
 
-	// BW1W120 004605d0 BW1M100 10031e60 Zoomer3d::GetCurrentValue(void)
+	// BW1W120 004605d0 BW1M119 010347d0
 	LHPoint* GetCurrentValue(LHPoint* out_point);
-	// BW1W120 inlined BW1M100 10020d50 Zoomer3d::GetDestination(void)
+	// BW1W120 inlined BW1M119 010238c0
 	LHPoint* GetDestination(LHPoint* out_point);
-	// BW1W120 inlined BW1M100 inlined Zoomer3d::Update(float)
+	// BW1W120 inlined BW1M119 inlined
 	void Update(float dt);
-	// BW1W120 inlined BW1M100 inlined Zoomer3d::SetDestinationWithSpeedAndTime(LHPoint const &, float, float)
+	// BW1W120 inlined BW1M119 inlined
 	void SetDestinationWithSpeedAndTime(const LHPoint& destination, float speed, float time);
-	// BW1W120 0044e760 BW1M100 inlined Zoomer3d::SetDestinationWithTime(LHPoint const &, float)
+	// BW1W120 0044e760 BW1M119 inlined
 	void SetDestinationWithTime(const LHPoint& destination, float time);
-	// BW1W120 inlined BW1M100 10198470 Zoomer3d::SetPosition(const LHPoint&)
+	// BW1W120 inlined BW1M119 011a1520
 	void SetPosition(const LHPoint& destination);
 };
 

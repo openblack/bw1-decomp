@@ -8,15 +8,16 @@ class GameOSFile;
 class WorldRoom : public TempleRoom
 {
 public:
-	// BW1W120 0079d260 WorldRoom::IsAvailable(void)
+	// BW1W120 0079d260 BW1M119 015ac2a0
 	virtual uint32_t IsAvailable();
 	static int       ShowInfluence; // 00c2a478; descriptive name, button-config state
 	// TODO: Instance members are not recovered. Do not instantiate using this partial declaration.
-	// BW1W120 00e3a1b0. TODO: Original static member name is unrecovered.
+	// TODO: Original static member name is unrecovered.
+	// BW1W120 00e3a1b0
 	static int RoomsAvailable;
-	// BW1W120 0079f640 BW1M100 105a5630 WorldRoom::SaveButtonConfig(GameOSFile &)
+	// BW1W120 0079f640 BW1M119 015ac4d0
 	static void SaveButtonConfig(GameOSFile& file);
-	// BW1W120 0079f790 BW1M100 105a5440 WorldRoom::LoadButtonConfig(GameOSFile &)
+	// BW1W120 0079f790 BW1M119 015ac2e0
 	static void LoadButtonConfig(GameOSFile& file);
 };
 

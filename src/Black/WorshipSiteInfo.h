@@ -32,13 +32,13 @@ public:
 
 	// Override methods
 
-	// BW1W120 0077a920 BW1M100 105b0900 GWorshipSiteInfo::_dt(void)
+	// BW1W120 0077a920 BW1M119 015b7870
 	virtual ~GWorshipSiteInfo();
-	// BW1W120 0077a8b0 BW1M100 105b3c70 GWorshipSiteInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0077a8b0 BW1M119 015bab80
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-	// BW1W120 00464370 BW1M100 inlined GWorshipSiteInfo::GetMesh( const(void))
+	// BW1W120 00464370 BW1M119 inlined
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00464380 BW1M100 inlined GWorshipSiteInfo::GetAbodeType( const(void))
+	// BW1W120 00464380 BW1M119 inlined
 	virtual ABODE_TYPE GetAbodeType() const;
 };
 

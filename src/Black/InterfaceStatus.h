@@ -65,49 +65,49 @@ public:
 
 	// Override methods
 
-	// BW1W120 005db990 BW1M100 1036f480 GInterfaceStatus::_dt(void)
+	// BW1W120 005db990 BW1M119 01377020
 	virtual ~GInterfaceStatus();
-	// BW1W120 005dbb00 BW1M100 1036f260 GInterfaceStatus::ToBeDeleted(int)
+	// BW1W120 005dbb00 BW1M119 01376e00
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 005dbc20 BW1M100 10058730 GInterfaceStatus::GetPlayer(void)
+	// BW1W120 005dbc20 BW1M119 0105b400
 	virtual GPlayer* GetPlayer();
-	// BW1W120 005dc8f0 BW1M100 1036d0e0 GInterfaceStatus::UpdateSpellInfo(Spell *, PSysProcessInfo *)
+	// BW1W120 005dc8f0 BW1M119 01375780
 	virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
-	// BW1W120 005db980 BW1M100 1036be40 GInterfaceStatus::GetDebugText(void)
+	// BW1W120 005db980 BW1M119 013745c0
 	virtual char* GetDebugText();
-	// BW1W120 005dcdc0 BW1M100 1036c160 GInterfaceStatus::Load(GameOSFile &)
+	// BW1W120 005dcdc0 BW1M119 013748e0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 005dca50 BW1M100 1036c810 GInterfaceStatus::Save(GameOSFile &)
+	// BW1W120 005dca50 BW1M119 01374f90
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 005db970 BW1M100 1036be00 GInterfaceStatus::GetSaveType(void)
+	// BW1W120 005db970 BW1M119 01374580
 	virtual uint32_t GetSaveType();
-	// BW1W120 005dd130 BW1M100 1036c080 GInterfaceStatus::SaveExtraData(GameOSFile &)
+	// BW1W120 005dd130 BW1M119 01374800
 	virtual void SaveExtraData(GameOSFile& param_1);
-	// BW1W120 005dd190 BW1M100 1036c020 GInterfaceStatus::ResolveLoad(void)
+	// BW1W120 005dd190 BW1M119 013747a0
 	virtual void ResolveLoad();
-	// BW1W120 005db960 BW1M100 1036bdc0 GInterfaceStatus::GetText(void)
+	// BW1W120 005db960 BW1M119 01374540
 	virtual const char* GetText();
 
 	// Constructors
 
-	// BW1W120 005db860 BW1M100 1036f590 GInterfaceStatus::GInterfaceStatus(void)
+	// BW1W120 005db860 BW1M119 01377130
 	GInterfaceStatus();
 
 	// Non-virtual methods
 
-	// BW1W120 005cedc0 BW1M100 1035acc0 GInterfaceStatus::SetActive(int)
+	// BW1W120 005cedc0 BW1M119 01362540
 	void SetActive(int param_1);
-	// BW1W120 005d29c0 BW1M100 10026ad0 GInterfaceStatus::ResetActionState(void)
+	// BW1W120 005d29c0 BW1M119 01029660
 	void ResetActionState();
-	// BW1W120 005dba00 BW1M100 1036f310 GInterfaceStatus::SetToZero(GInterface *)
+	// BW1W120 005dba00 BW1M119 01376eb0
 	void SetToZero(GInterface* param_1);
-	// BW1W120 005dc130 BW1M100 100755c0 GInterfaceStatus::GetFirstObjectInCurrentHand(void)
+	// BW1W120 005dc130 BW1M119 01077b40
 	Object* GetFirstObjectInCurrentHand();
-	// BW1W120 005dc2f0 BW1M100 1007b2f0 GInterfaceStatus::IsSpaceInHands(void)
+	// BW1W120 005dc2f0 BW1M119 0107d890
 	bool IsSpaceInHands();
-	// BW1W120 005dc8b0 BW1M100 10035b20 GInterfaceStatus::GetInterface(void)
+	// BW1W120 005dc8b0 BW1M119 010384a0
 	GInterface* GetInterface();
-	// BW1W120 005dd1a0 BW1M100 1036bf20 GInterfaceStatus::Init(unsigned char, GInterface *)
+	// BW1W120 005dd1a0 BW1M119 013746a0
 	void Init(uint8_t player_number, GInterface* iface);
 };
 

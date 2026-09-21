@@ -15,7 +15,7 @@ class GAnimatedStaticInfo : public GFeatureInfo
 public:
 	// Override methods
 
-	// BW1W120 00421f20 BW1M100 100a67f0 GAnimatedStaticInfo::_dt(void)
+	// BW1W120 00421f20 BW1M119 010a9ff0
 	virtual ~GAnimatedStaticInfo();
 };
 

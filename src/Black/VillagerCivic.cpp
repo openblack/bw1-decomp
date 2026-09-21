@@ -17,7 +17,7 @@ const float VillagerCivicFloat1000p0 = 1000.0f;
 // CheckForClearArea's iteration step.
 const float VillagerCivicFloat10p0 = 10.0f;
 
-// BW1W120 00758180 BW1M100 10096f90 Villager::CheckNeededForCivic(void)
+// BW1W120 00758180 BW1M119 01098ee0
 bool32_t Villager::CheckNeededForCivic()
 {
 	if (GetTown() != NULL && CheckNeededForTownDesire() == 1)
@@ -25,7 +25,7 @@ bool32_t Villager::CheckNeededForCivic()
 	return false;
 }
 
-// BW1W120 007581a0 BW1M100 1007dae0 Villager::CheckNeededForTownDesire(void)
+// BW1W120 007581a0 BW1M119 01080060
 uint32_t Villager::CheckNeededForTownDesire()
 {
 	// TODO: the success path deliberately falls off the end (C4715): the target returns
@@ -41,7 +41,7 @@ uint32_t Villager::CheckNeededForTownDesire()
 		return 0;
 }
 
-// BW1W120 007582f0 BW1M100 10576e60 Villager::CheckNeededForHarvest(void)
+// BW1W120 007582f0 BW1M119 0157eeb0
 bool32_t Villager::CheckNeededForHarvest()
 {
 	// TODO: 99.7% -- target does `test eax,eax` on IsHarvestTime()'s result, ours
@@ -57,7 +57,7 @@ bool32_t Villager::CheckNeededForHarvest()
 	return false;
 }
 
-// BW1W120 00758390 BW1M100 10576a80 Villager::RunAwayFromObjectReaction(void)
+// BW1W120 00758390 BW1M119 0157ec70
 // TODO: operand scheduling differs on the Pos compare and the X/Z adds; the distance callee
 // is the unnamed twin of GUtils::GetDistanceInMetres at 0x74cd50.
 bool32_t Villager::RunAwayFromObjectReaction()
@@ -89,7 +89,7 @@ bool32_t Villager::RunAwayFromObjectReaction()
 	return true;
 }
 
-// BW1W120 007584b0 BW1M100 10576950 Villager::SetupBuildingObject(BuildingSite *)
+// BW1W120 007584b0 BW1M119 0157eb40
 bool32_t Villager::SetupBuildingObject(BuildingSite* building_site)
 {
 	if (GetTown() != NULL)
@@ -112,7 +112,7 @@ bool32_t Villager::SetupBuildingObject(BuildingSite* building_site)
 	return false;
 }
 
-// BW1W120 007586b0 BW1M100 10576590 Villager::WaitForWood(void)
+// BW1W120 007586b0 BW1M119 0157e780
 bool32_t Villager::WaitForWood()
 {
 	if (IsReadyForNewAnimation(1) && ResourceHeld[RESOURCE_TYPE_WOOD] != 0)
@@ -120,7 +120,7 @@ bool32_t Villager::WaitForWood()
 	return true;
 }
 
-// BW1W120 007586e0 BW1M100 105763c0 Villager::SetupGetBuildingSupplies(BuildingSite *)
+// BW1W120 007586e0 BW1M119 0157e5b0
 // TODO: push/lea scheduling differs around the retbuf calls; BigForest::GetArrivePos needs
 // its return type corrected (declared void, returns MapCoords by value).
 bool32_t Villager::SetupGetBuildingSupplies(BuildingSite* building_site)
@@ -151,7 +151,7 @@ bool32_t Villager::SetupGetBuildingSupplies(BuildingSite* building_site)
 	return false;
 }
 
-// BW1W120 00758960 BW1M100 10576080 Villager::GotoWorkshopForBuildingMaterials(BuildingSite *)
+// BW1W120 00758960 BW1M119 0157e270
 bool32_t Villager::GotoWorkshopForBuildingMaterials(BuildingSite* building_site)
 {
 	if (GetTown() != NULL)
@@ -159,7 +159,7 @@ bool32_t Villager::GotoWorkshopForBuildingMaterials(BuildingSite* building_site)
 	return false;
 }
 
-// BW1W120 00758990 BW1M100 10575f70 Villager::ArrivesAtStoragePitForBuildingMaterials(void)
+// BW1W120 00758990 BW1M119 0157e160
 // TODO: needs a function symbol carved at 0x758990 (currently an unsplit gap) before it can
 // pair; the body already matches the target bytes.
 uint32_t Villager::ArrivesAtStoragePitForBuildingMaterials()
@@ -182,7 +182,7 @@ uint32_t Villager::ArrivesAtStoragePitForBuildingMaterials()
 	return 1;
 }
 
-// BW1W120 00758af0 BW1M100 10575ab0 Villager::ArrivesAtBuildingSite(void)
+// BW1W120 00758af0 BW1M119 0157dca0
 // TODO: needs a function symbol carved at 0x758af0 (currently an unsplit gap) before it can
 // pair; the 6553.6f/0.2f constants are unnamed .rdata copies.
 uint32_t Villager::ArrivesAtBuildingSite()
@@ -222,13 +222,13 @@ uint32_t Villager::ArrivesAtBuildingSite()
 	return 1;
 }
 
-// BW1W120 00758e20 BW1M100 10575700 Villager::GetWoodUsedPerBuild(void)
+// BW1W120 00758e20 BW1M119 0157d8f0
 float Villager::GetWoodUsedPerBuild()
 {
 	return ((const GVillagerInfo*)info)->WoodUsedPerBuildCycle;
 }
 
-// BW1W120 00758e30 BW1M100 10098500 Villager::CheckSatisfyAbodesDesire(void)
+// BW1W120 00758e30 BW1M119 0109a440
 bool32_t Villager::CheckSatisfyAbodesDesire()
 {
 	if (CheckNeededForBuilding() == 1)
@@ -242,7 +242,7 @@ bool32_t Villager::CheckSatisfyAbodesDesire()
 	return false;
 }
 
-// BW1W120 00758e90 BW1M100 105755c0 Villager::CheckSatisfyCivicBuildings(void)
+// BW1W120 00758e90 BW1M119 0157d760
 bool32_t Villager::CheckSatisfyCivicBuildings()
 {
 	if (CheckNeededForBuilding() == 1)
@@ -256,13 +256,13 @@ bool32_t Villager::CheckSatisfyCivicBuildings()
 	return false;
 }
 
-// BW1W120 00758ef0 BW1M100 10575580 Villager::ArrivesAtRockForWood(void)
+// BW1W120 00758ef0 BW1M119 0157d720
 bool32_t Villager::ArrivesAtRockForWood()
 {
 	return true;
 }
 
-// BW1W120 00758f00 BW1M100 10575420 Villager::GotWoodFromRock(void)
+// BW1W120 00758f00 BW1M119 0157d5c0
 bool32_t Villager::GotWoodFromRock()
 {
 	BuildingSite* site = building_site;
@@ -278,7 +278,7 @@ bool32_t Villager::GotWoodFromRock()
 // TODO: needs the .bss object at 0xdb9dd8 named so the relocs here can pair.
 static ClearAreaPoint g_ClearAreaPoint;
 
-// BW1W120 007591e0 BW1M100 10575000 ClearAreaPoint::ProcessPoint(LHPoint const &)
+// BW1W120 007591e0 BW1M119 0157d1a0
 // TODO: the target body never touches `this` and reads through the file-static global —
 // this should be a static member function once the symbol is corrected.
 bool32_t ClearAreaPoint::ProcessPoint(const LHPoint& point)
@@ -304,7 +304,7 @@ bool32_t ClearAreaPoint::ProcessPoint(const LHPoint& point)
 	return 1;
 }
 
-// BW1W120 007592e0 BW1M100 10574d90 Villager::ArriveAtPushObject(void)
+// BW1W120 007592e0 BW1M119 0157cf30
 bool32_t Villager::ArriveAtPushObject()
 {
 	// TODO: the wander area really spans 0x118..0x123 (JustWholeMapXZ at 0x118, float radius
@@ -316,7 +316,7 @@ bool32_t Villager::ArriveAtPushObject()
 	return ReenterBuildingState();
 }
 
-// BW1W120 00759330 BW1M100 10574c20 Villager::CheckSatisfyToBuild(void)
+// BW1W120 00759330 BW1M119 0157cdc0
 bool32_t Villager::CheckSatisfyToBuild()
 {
 	Town* town = GetTown();
@@ -330,7 +330,7 @@ bool32_t Villager::CheckSatisfyToBuild()
 	return false;
 }
 
-// BW1W120 00759370 BW1M100 10574ad0 Villager::CheckSatisfyToRepair(void)
+// BW1W120 00759370 BW1M119 0157cc70
 bool32_t Villager::CheckSatisfyToRepair()
 {
 	Town* town = GetTown();
@@ -343,7 +343,7 @@ bool32_t Villager::CheckSatisfyToRepair()
 	return false;
 }
 
-// BW1W120 007593a0 BW1M100 10574980 Villager::CheckSatisfySupplyWorkshop(void)
+// BW1W120 007593a0 BW1M119 0157cb10
 bool32_t Villager::CheckSatisfySupplyWorkshop()
 {
 	// TODO: 87.7% -- semantics/vtable slots (GetResource@0x98, GetArrivePos@0x104)/states
@@ -375,7 +375,7 @@ bool32_t Villager::CheckSatisfySupplyWorkshop()
 	return false;
 }
 
-// BW1W120 00759450 BW1M100 10574800 Villager::ArrivesAtStoragePitForWorkshopMaterials(void)
+// BW1W120 00759450 BW1M119 0157c990
 bool32_t Villager::ArrivesAtStoragePitForWorkshopMaterials()
 {
 	// TODO: 92.6% -- all semantics correct (IsFunctional@0xd4, AreWeThere(float),
@@ -415,7 +415,7 @@ bool32_t Villager::ArrivesAtStoragePitForWorkshopMaterials()
 	return true;
 }
 
-// BW1W120 00759520 BW1M100 10574670 Villager::ArrivesAtWorkshopForDropOff(void)
+// BW1W120 00759520 BW1M119 0157c800
 bool32_t Villager::ArrivesAtWorkshopForDropOff()
 {
 	// TODO: 73.4% here, but 89.1% with the correct signature (semantics all verified:
@@ -451,13 +451,13 @@ bool32_t Villager::ArrivesAtWorkshopForDropOff()
 	return true;
 }
 
-// BW1W120 007595e0 BW1M100 10574610 Villager::CheckForScaffoldForBuildingSite(BuildingSite *)
+// BW1W120 007595e0 BW1M119 0157c7a0
 uint32_t Villager::CheckForScaffoldForBuildingSite(BuildingSite* param_1)
 {
 	return 0x2b;
 }
 
-// BW1W120 007595f0 BW1M100 105745d0 Villager::IsScaffoldValid(void)
+// BW1W120 007595f0 BW1M119 0157c760
 bool32_t Villager::IsScaffoldValid()
 {
 	// TODO: target emits narrow `xor al,al` (byte) but this uint-mangled (?..@@QAEIXZ)
@@ -466,7 +466,7 @@ bool32_t Villager::IsScaffoldValid()
 	return false;
 }
 
-// BW1W120 00759600 BW1M100 10574580 Villager::ExitBringScaffoldToBuildingSite(unsigned char)
+// BW1W120 00759600 BW1M119 0157c710
 bool32_t Villager::ExitBringScaffoldToBuildingSite(unsigned char param_1)
 {
 	return true;

@@ -15,9 +15,9 @@ class GInfluenceInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 005cd150 BW1M100 100fd4f0 GInfluenceInfo::_dt(void)
+	// BW1W120 005cd150 BW1M119 011071f0
 	virtual ~GInfluenceInfo();
-	// BW1W120 005cd110 BW1M100 100fd4a0 GInfluenceInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 005cd110 BW1M119 011071a0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

@@ -19,15 +19,15 @@ class GFeatureInfo : public GMultiMapFixedInfo
 public:
 	// Override methods
 
-	// BW1W120 00527320 BW1M100 100a6900 GFeatureInfo::_dt(void)
+	// BW1W120 00527320 BW1M119 010aa100
 	virtual ~GFeatureInfo();
-	// BW1W120 00421eb0 BW1M100 100a7c10 GFeatureInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00421eb0 BW1M119 010ab420
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-	// BW1W120 00421ea0 BW1M100 100a5310 GFeatureInfo::GetMesh( const(void))
+	// BW1W120 00421ea0 BW1M119 010a8550
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00421e80 BW1M100 inlined GFeatureInfo::GetAbodeType( const(void))
+	// BW1W120 00421e80 BW1M119 inlined
 	virtual ABODE_TYPE GetAbodeType() const;
-	// BW1W120 00421e90 BW1M100 inlined GFeatureInfo::GetAbodeNumber( const(void))
+	// BW1W120 00421e90 BW1M119 inlined
 	virtual ABODE_NUMBER GetAbodeNumber() const;
 };
 

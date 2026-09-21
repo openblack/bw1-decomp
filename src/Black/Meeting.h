@@ -18,15 +18,15 @@ class Meeting : public GameThingWithPos
 public:
 	// Override methods
 
-	// BW1W120 00606160 BW1M100 inlined Meeting::_dt(void)
+	// BW1W120 00606160 BW1M119 inlined
 	virtual ~Meeting();
-	// BW1W120 00606180 BW1M100 inlined Meeting::ToBeDeleted(int)
+	// BW1W120 00606180 BW1M119 inlined
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00606230 BW1M100 inlined Meeting::GetPlayer(void)
+	// BW1W120 00606230 BW1M119 inlined
 	virtual GPlayer* GetPlayer();
-	// BW1W120 00606150 BW1M100 inlined Meeting::RemoveDance(void)
+	// BW1W120 00606150 BW1M119 inlined
 	virtual void RemoveDance();
-	// BW1W120 00606140 BW1M100 inlined Meeting::GetTown(void)
+	// BW1W120 00606140 BW1M119 inlined
 	virtual Town* GetTown();
 };
 

@@ -33,7 +33,7 @@ struct LiquidParticleGroup;
 class GInterface : public GameThingWithPos
 {
 public:
-	// BW1W120 005d05f0 BW1M100 10358180 GInterface::Validate(void)
+	// BW1W120 005d05f0 BW1M119 01360150
 	void                    Validate();
 	uint32_t                field_0x28;
 	LiquidParticleGroup*    liquid_particle_group;
@@ -101,68 +101,68 @@ public:
 
 	// Override methods
 
-	// BW1W120 005ce310 BW1M100 1035c380 GInterface::_dt(void)
+	// BW1W120 005ce310 BW1M119 01363e50
 	virtual ~GInterface();
-	// BW1W120 005ce480 BW1M100 1035c0e0 GInterface::ToBeDeleted(int)
+	// BW1W120 005ce480 BW1M119 01363bb0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 005cec50 BW1M100 1035b240 GInterface::Get3DSoundPos(LHPoint *)
+	// BW1W120 005cec50 BW1M119 01362d00
 	virtual int Get3DSoundPos(LHPoint* param_1);
-	// BW1W120 005ce2c0 BW1M100 10069130 GInterface::GetPlayer(void)
+	// BW1W120 005ce2c0 BW1M119 0106b890
 	virtual GPlayer* GetPlayer();
-	// BW1W120 005ce300 BW1M100 10357e40 GInterface::GetDebugText(void)
+	// BW1W120 005ce300 BW1M119 0135fe70
 	virtual char* GetDebugText();
-	// BW1W120 005d04d0 BW1M100 10358550 GInterface::Load(GameOSFile &)
+	// BW1W120 005d04d0 BW1M119 01360520
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 005d0490 BW1M100 103585e0 GInterface::Save(GameOSFile &)
+	// BW1W120 005d0490 BW1M119 013605b0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 005ce2f0 BW1M100 10357e00 GInterface::GetSaveType(void)
+	// BW1W120 005ce2f0 BW1M119 0135fe30
 	virtual uint32_t GetSaveType();
-	// BW1W120 005d0590 BW1M100 103581e0 GInterface::SaveExtraData(GameOSFile &)
+	// BW1W120 005d0590 BW1M119 013601b0
 	virtual void SaveExtraData(GameOSFile& param_1);
-	// BW1W120 005d0510 BW1M100 10358340 GInterface::ResolveLoad(void)
+	// BW1W120 005d0510 BW1M119 01360310
 	virtual void ResolveLoad();
-	// BW1W120 005ce2e0 BW1M100 10074680 GInterface::IsActive( const(void))
+	// BW1W120 005ce2e0 BW1M119 01076df0
 	virtual uint32_t IsActive() const;
-	// BW1W120 005ce2d0 BW1M100 10357dc0 GInterface::GetText(void)
+	// BW1W120 005ce2d0 BW1M119 0135fdf0
 	virtual const char* GetText();
 
 	// Non-virtual methods
 
-	// BW1W120 005d8af0 BW1M100 103678e0 GInterface::StopAllImmersion(void)
+	// BW1W120 005d8af0 BW1M119 0136f110
 	void StopAllImmersion();
 
-	// BW1W120 005d0560 BW1M100 103582b0 GInterface::ResolveLoadForCreature(void)
+	// BW1W120 005d0560 BW1M119 01360280
 	void ResolveLoadForCreature();
 
-	// BW1W120 005ce4d0 BW1M100 1035be80 GInterface::SetToZero(void)
+	// BW1W120 005ce4d0 BW1M119 01363950
 	void SetToZero();
-	// BW1W120 005ce670 BW1M100 1035bd00 GInterface::Init(unsigned char)
+	// BW1W120 005ce670 BW1M119 013637d0
 	void Init(uint8_t player_number);
-	// BW1W120 005ce7f0 BW1M100 1035ba90 GInterface::InitLeash(void)
+	// BW1W120 005ce7f0 BW1M119 01363560
 	void InitLeash();
-	// BW1W120 005ce920 BW1M100 1035b8b0 GInterface::SetupHand(void)
+	// BW1W120 005ce920 BW1M119 01363380
 	void SetupHand();
-	// BW1W120 005ce9e0 BW1M100 1007b8b0 GInterface::PreDrawProcess(void)
+	// BW1W120 005ce9e0 BW1M119 0107de50
 	void PreDrawProcess();
-	// BW1W120 005ceab0 BW1M100 1007d9b0 GInterface::PostDrawProcess(void)
+	// BW1W120 005ceab0 BW1M119 0107ff30
 	void        PostDrawProcess();
 	void        Draw();           // 00518640
 	static void DrawAllLeashes(); // 005d9310
-	// BW1W120 005cec10 BW1M100 100254c0 GInterface::Process(void)
+	// BW1W120 005cec10 BW1M119 01028060
 	void Process();
-	// BW1W120 005cedb0 BW1M100 10084120 GInterface::ProcessFrameUpdates(void)
+	// BW1W120 005cedb0 BW1M119 01086500
 	void ProcessFrameUpdates();
-	// BW1W120 005db710 BW1M100 10072560 GInterface::IsPlayBack(unsigned long) const
+	// BW1W120 005db710 BW1M119 01074d00
 	bool32_t IsPlayBack(uint32_t playback) const;
-	// BW1W120 005d0610 BW1M100 10084060 GInterface::UpdateHandRenderCollide(void)
+	// BW1W120 005d0610 BW1M119 01086440
 	void UpdateHandRenderCollide();
-	// BW1W120 005ce3f0 BW1M100 1035c310
+	// BW1W120 005ce3f0 BW1M119 01363de0
 	static void SetupStatics();
-	// BW1W120 005ceba0 BW1M100 1035b4e0
+	// BW1W120 005ceba0 BW1M119 01362e80
 	bool32_t LoadFiles();
-	// BW1W120 005d9130 BW1M100 100315f0 GInterface::UpdateAllLeashes(void)
+	// BW1W120 005d9130 BW1M119 01033f60
 	void UpdateAllLeashes();
-	// BW1W120 005d9d80 BW1M100 10004300 GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES, LHCoord *)
+	// BW1W120 005d9d80 BW1M119 010042e0
 	bool SendMessageA(INTERFACE_MESSAGE_TYPES param_1, LHCoord* param_2);
 };
 

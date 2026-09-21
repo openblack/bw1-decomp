@@ -13,7 +13,8 @@ class SetupStaticText;
 class IPSpecialDialog : public DialogBoxBase
 {
 public:
-	// BW1W120 00d189c8. Descriptive singleton name.
+	// Descriptive singleton name.
+	// BW1W120 00d189c8
 	static IPSpecialDialog* Instance;
 	int                     field_0x10;
 	SetupButton*            field_0x14;
@@ -22,20 +23,22 @@ public:
 	SetupStaticText*        field_0x20;
 	bool                    field_0x24;
 
-	// BW1W120 005dd460 BW1M100 100fe200
+	// BW1W120 005dd460 BW1M119 01107f20
 	IPSpecialDialog();
-	// BW1W120 005dd490. Nonvirtual; implementation remains extracted.
+	// Nonvirtual; implementation remains extracted.
+	// BW1W120 005dd490 BW1M119 01107e90
 	~IPSpecialDialog();
-	// BW1W120 005dd670 BW1M100 100fd680
+	// BW1W120 005dd670 BW1M119 01107380
 	static void __stdcall ControlCallback(int event, SetupBox* box, SetupControl* control, int x, int y);
 	// Override methods
 
-	// BW1W120 005dd4a0 BW1M100 100fdfa0 IPSpecialDialog::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 005dd4a0 BW1M119 01107cc0
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 005dd620 BW1M100 100fdf50 IPSpecialDialog::Destroy(void)
+	// BW1W120 005dd620 BW1M119 01107c70
 	virtual void Destroy();
-	// BW1W120 005dd630 BW1M100 100fdeb0. Ninth vtable slot.
+	// Ninth vtable slot.
+	// BW1W120 005dd630 BW1M119 01107bd0
 	virtual void InitControls();
 };
 

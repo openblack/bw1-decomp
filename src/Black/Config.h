@@ -12,18 +12,18 @@ struct Config
 	uint8_t  field_0x8[0x104];
 	int      field_0x10c;
 	~Config() { CloseDown(); }
-	// BW1W120 0046b750 BW1M100 Config::CloseDown(void)
+	// BW1W120 0046b750 BW1M119 010c2170
 	void CloseDown();
 
 	// Non-virtual methods
 
-	// BW1W120 0046b1f0 BW1M100 100bf310 Config::Process(void)
+	// BW1W120 0046b1f0 BW1M119 010c2810
 	void Process();
-	// BW1W120 0046b290 BW1M100 100befa0 Config::ProcessOneGameTurn(void)
+	// BW1W120 0046b290 BW1M119 010c24b0
 	void ProcessOneGameTurn();
 };
 
-// BW1W120 0046b0b0 BW1M100 100bf450 ConfigGetFPS(void)
+// BW1W120 0046b0b0 BW1M119 010c2950
 int ConfigGetFPS();
 
 #endif /* BW1_DECOMP_CONFIG_INCLUDED_H */

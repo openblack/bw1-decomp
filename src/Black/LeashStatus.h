@@ -29,19 +29,19 @@ public:
 
 	// Override methods
 
-	// BW1W120 005db940 BW1M100 1037aca0 GLeashStatus::_dt(void)
+	// BW1W120 005db940 BW1M119 01382a70
 	virtual ~GLeashStatus();
-	// BW1W120 005e7630 BW1M100 1037ae50 GLeashStatus::GetPlayer(void)
+	// BW1W120 005e7630 BW1M119 01382c20
 	virtual GPlayer* GetPlayer();
-	// BW1W120 005e7430 BW1M100 1037aeb0 GLeashStatus::Load(GameOSFile &)
+	// BW1W120 005e7430 BW1M119 01382c80
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 005e7230 BW1M100 1037b1a0 GLeashStatus::Save(GameOSFile &)
+	// BW1W120 005e7230 BW1M119 01382f70
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 005db930 BW1M100 1037ad30 GLeashStatus::GetSaveType(void)
+	// BW1W120 005db930 BW1M119 01382b00
 	virtual uint32_t GetSaveType();
-	// BW1W120 005e71d0 BW1M100 1037b4b0 GLeashStatus::SaveExtraData(GameOSFile &)
+	// BW1W120 005e71d0 BW1M119 01383280
 	virtual void SaveExtraData(GameOSFile& param_1);
-	// BW1W120 005e7650 BW1M100 1037ae10 GLeashStatus::ResolveLoad(void)
+	// BW1W120 005e7650 BW1M119 01382be0
 	virtual void ResolveLoad();
 };
 

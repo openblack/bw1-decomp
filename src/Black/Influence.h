@@ -20,7 +20,7 @@ struct MapCoords;
 class InfluenceRing : public GameThingWithPos
 {
 public:
-	// BW1W120 005cdb90 BW1M100 10059380 InfluenceRing::ProcessRings(void)
+	// BW1W120 005cdb90 BW1M119 0105c050
 	static void ProcessRings();
 
 	BaseInfo info;   /* 0x28 */
@@ -31,36 +31,36 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055ec70 BW1M100 100fbc20 InfluenceRing::_dt(void)
+	// BW1W120 0055ec70 BW1M119 01104e10
 	virtual ~InfluenceRing();
-	// BW1W120 005cd8a0 BW1M100 100fcac0 InfluenceRing::ToBeDeleted(int)
+	// BW1W120 005cd8a0 BW1M119 01105da0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0055ec40 BW1M100 10043da0 InfluenceRing::GetPlayer(void)
+	// BW1W120 0055ec40 BW1M119 010467f0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 0055ec10 BW1M100 100fbd20 InfluenceRing::SetPlayer(GPlayer *)
+	// BW1W120 0055ec10 BW1M119 01104f10
 	virtual void SetPlayer(GPlayer* param_1);
-	// BW1W120 0055ec60 BW1M100 100fbe70 InfluenceRing::GetDebugText(void)
+	// BW1W120 0055ec60 BW1M119 011050f0
 	virtual char* GetDebugText();
-	// BW1W120 005cdd40 BW1M100 100fbeb0 InfluenceRing::Load(GameOSFile &)
+	// BW1W120 005cdd40 BW1M119 01105130
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 005cdc60 BW1M100 100fc000 InfluenceRing::Save(GameOSFile &)
+	// BW1W120 005cdc60 BW1M119 01105280
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055ec50 BW1M100 100fbe30 InfluenceRing::GetSaveType(void)
+	// BW1W120 0055ec50 BW1M119 011050b0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0055ebf0 BW1M100 100fbcc0 InfluenceRing::SetPos(MapCoords const &)
+	// BW1W120 0055ebf0 BW1M119 01104eb0
 	virtual void SetPos(const MapCoords& param_1);
-	// BW1W120 0055ec30 BW1M100 100fbda0 InfluenceRing::GetText(void)
+	// BW1W120 0055ec30 BW1M119 01104f90
 	virtual const char* GetText();
-	// BW1W120 0055ec20 BW1M100 100fbd60 InfluenceRing::IsInfluenceRing(void)
+	// BW1W120 0055ec20 BW1M119 01104f50
 	virtual uint32_t IsInfluenceRing();
-	// BW1W120 005cdc50 BW1M100 100fc170 InfluenceRing::GetScriptObjectType(void)
+	// BW1W120 005cdc50 BW1M119 011053f0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 
 	// Constructors
 
-	// BW1W120 005cd760 BW1M100 100fd0a4 InfluenceRing::InfluenceRing(MapCoords const &, GPlayer *, float, int)
+	// BW1W120 005cd760 BW1M119 011061e0
 	InfluenceRing(const MapCoords& coords, GPlayer* player, float param_4, int param_5);
-	// BW1W120 005cd800 BW1M100 100fce54 InfluenceRing::InfluenceRing(GameThingWithPos *, GPlayer *, float, int)
+	// BW1W120 005cd800 BW1M119 01105fd0
 	InfluenceRing(GameThingWithPos* thing, GPlayer* player, float param_4, int param_5);
 };
 

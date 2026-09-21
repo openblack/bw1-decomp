@@ -14,14 +14,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 0042fd40 BW1M100 1012d3f0 LHReleasedOSFile::~LHReleasedOSFile(void)
+	// BW1W120 0042fd40 BW1M119 01553860
 	virtual ~LHReleasedOSFile() {}
-	// BW1W120 007bc7e0 BW1M100 10164a30 LHReleasedOSFile::Open(const char*, LH_FILE_MODE)
+	// BW1W120 007bc7e0 BW1M119 01165b70 (LHCombined Release)
 	virtual LH_FILE_RESULT Open(const char* path, LH_FILE_MODE mode);
 
 	// Constructors
 
-	// BW1W120 007e6d10 BW1M100 inlined LHReleasedOSFile::LHReleasedOSFile(void)
+	// BW1W120 007e6d10 BW1M119 inlined
 	LHReleasedOSFile() {}
 };
 

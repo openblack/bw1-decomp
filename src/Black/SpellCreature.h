@@ -20,25 +20,25 @@ class SpellCreature : public Spell
 public:
 	// Override methods
 
-	// BW1W120 00722240 BW1M100 10519e90 SpellCreature::_dt(void)
+	// BW1W120 00722240 BW1M119 01521620
 	virtual ~SpellCreature();
-	// BW1W120 00722230 BW1M100 10519fb0 SpellCreature::GetDebugText(void)
+	// BW1W120 00722230 BW1M119 01521740
 	virtual char* GetDebugText();
-	// BW1W120 00722520 BW1M100 1051a0e0 SpellCreature::Load(GameOSFile &)
+	// BW1W120 00722520 BW1M119 01521870
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00722590 BW1M100 10519ff0 SpellCreature::Save(GameOSFile &)
+	// BW1W120 00722590 BW1M119 01521780
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00722220 BW1M100 10519f70 SpellCreature::GetSaveType(void)
+	// BW1W120 00722220 BW1M119 01521700
 	virtual uint32_t GetSaveType();
-	// BW1W120 00722490 BW1M100 1051a2e0 SpellCreature::ProcessSpellSeed(void)
+	// BW1W120 00722490 BW1M119 01521a70
 	virtual void ProcessSpellSeed();
-	// BW1W120 007222c0 BW1M100 1051a7a0 SpellCreature::GetCreatureCastOn(void)
+	// BW1W120 007222c0 BW1M119 01521f40
 	virtual uint32_t GetCreatureCastOn();
-	// BW1W120 00722380 BW1M100 1051a4c0 SpellCreature::Process(void)
+	// BW1W120 00722380 BW1M119 01521c60
 	virtual uint32_t Process();
-	// BW1W120 007224f0 BW1M100 1051a290 SpellCreature::CloseDown(void)
+	// BW1W120 007224f0 BW1M119 01521a20
 	virtual void CloseDown();
-	// BW1W120 007222d0 BW1M100 1051a5f0 SpellCreature::InitWithObject(GameThing *, Object *, SpellCastData *, PSysProcessInfo const &)
+	// BW1W120 007222d0 BW1M119 01521d90
 	virtual int InitWithObject(GameThing* param_1, Object* param_2, SpellCastData* param_3,
 	                           const PSysProcessInfo& param_4);
 };

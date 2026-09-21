@@ -19,9 +19,9 @@ public:
 
 	// Override methods
 
-	// BW1W120 00670770 BW1M100 1011e8e0 GPrayerIconInfo::_dt(void)
+	// BW1W120 00670770 BW1M119 01127b40
 	virtual ~GPrayerIconInfo();
-	// BW1W120 00670720 BW1M100 1011eb60 GPrayerIconInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00670720 BW1M119 01127dc0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

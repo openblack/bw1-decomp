@@ -16,9 +16,9 @@ class GRewardInfo : public GMobileObjectInfo
 public:
 	// Override methods
 
-	// BW1W120 006e54b0 BW1M100 1013b160 GRewardInfo::_dt(void)
+	// BW1W120 006e54b0 BW1M119 01143e80
 	virtual ~GRewardInfo();
-	// BW1W120 006e5440 BW1M100 1013c260 GRewardInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 006e5440 BW1M119 01144f60
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

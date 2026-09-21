@@ -9,7 +9,8 @@
 class GGameInfo : public Base
 {
 public:
-	// BW1W120 00d019f8. TODO: Original singleton name is unrecovered. Storage is emitted in Game.
+	// TODO: Original singleton name is unrecovered. Storage is emitted in Game.
+	// BW1W120 00d019f8
 	static GGameInfo Info;
 	uint8_t          field_0x8;
 	uint8_t          field_0x9;
@@ -36,39 +37,39 @@ public:
 
 	// Override methods
 
-	// BW1W120 005577b0 BW1M100 102ffc00 GGameInfo::_dt(void)
+	// BW1W120 005577b0 BW1M119 01301950
 	virtual ~GGameInfo() {}
 
 	// Constructors
 
-	// BW1W120 00557730 BW1M100 102ff6c0 GGameInfo::GGameInfo(void)
+	// BW1W120 00557730 BW1M119 01301460
 	GGameInfo();
 
 	// Non-virtual methods
-	// BW1W120 005575a0 BW1M100 10066e30 GGameInfo::GetVisualTime(void)
+	// BW1W120 005575a0 BW1M119 010695d0
 	float GetVisualTime();
-	// BW1W120 005575d0 BW1M100 102ffb10 GGameInfo::ForceVisualTime(float)
+	// BW1W120 005575d0 BW1M119 01301870
 	void ForceVisualTime(float time);
-	// BW1W120 00557610 BW1M100 102ffa50 GGameInfo::SetVisualTimeScale(float)
+	// BW1W120 00557610 BW1M119 013017e0
 	void SetVisualTimeScale(float scale);
 
-	// BW1W120 00557620 BW1M100 102ff910 GGameInfo::SetVisualTimeCycle(float, float, float)
+	// BW1W120 00557620 BW1M119 013016a0
 	void SetVisualTimeCycle(float param_1, float param_2, float param_3);
-	// BW1W120 005577d0 BW1M100 102ff520 GGameInfo::SetStartDate(long, long, long)
+	// BW1W120 005577d0 BW1M119 013012c0
 	void SetStartDate(int year, int month, int day);
-	// BW1W120 005577f0 BW1M100 102ff380 GGameInfo::SetStartTime(long, long, long)
+	// BW1W120 005577f0 BW1M119 01301120
 	void SetStartTime(int hour, int minute, int second);
-	// BW1W120 00557940 BW1M100 100789f0 GGameInfo::GetDaysFromStart(void)
+	// BW1W120 00557940 BW1M119 0107afc0
 	float GetDaysFromStart();
-	// BW1W120 00557950 BW1M100 1008c390 GGameInfo::GetYear(void)
+	// BW1W120 00557950 BW1M119 0108e6d0
 	float GetYear();
-	// BW1W120 00557a80 BW1M100 10099e70 GGameInfo::GetSeason(void)
+	// BW1W120 00557a80 BW1M119 0109bc90
 	uint32_t GetSeason();
-	// BW1W120 00557b60 BW1M100 1008c3f0 GGameInfo::Process(void)
+	// BW1W120 00557b60 BW1M119 0108e730
 	void Process();
-	// BW1W120 00557ba0 BW1M100 1008ea00 GGameInfo::Debug(void)
+	// BW1W120 00557ba0 BW1M119 01090ca0
 	void Debug();
-	// BW1W120 00557bb0 BW1M100 102fecf0 GGameInfo::SetVisualTimeCycleFromMapEditor(float, float, float)
+	// BW1W120 00557bb0 BW1M119 01300b40
 	void SetVisualTimeCycleFromMapEditor(float param_1, float param_2, float param_3);
 };
 

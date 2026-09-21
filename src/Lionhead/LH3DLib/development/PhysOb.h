@@ -35,11 +35,11 @@ struct PhysOb
 
 	// Non-virtual methods
 
-	// BW1W120 007fb780 BW1M100 10088820 PhysOb::Initialise(LH3DObject *, float)
+	// BW1W120 007fb780 BW1M119 01086460 (LHCombined Release)
 	void Initialise(LH3DObject* obj, float param_3);
-	// BW1W120 007fb810 BW1M100 1061b44c PhysOb::SetUpConstants(float, PhysicsData *, int)
+	// BW1W120 007fb810 BW1M119 01086390 (LHCombined Release)
 	void SetUpConstants(float mass, PhysicsData* data, int param_3);
-	// BW1W120 007fbac0 BW1M100 1061b464 PhysOb::BuildFromVertices(void)
+	// BW1W120 007fbac0 BW1M119 01086040 (LHCombined Release)
 	void BuildFromVertices();
 };
 

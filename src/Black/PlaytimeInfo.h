@@ -15,9 +15,9 @@ class GPlaytimeInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 0066c330 BW1M100 10115d70 GPlaytimeInfo::_dt(void)
+	// BW1W120 0066c330 BW1M119 0111f7f0
 	virtual ~GPlaytimeInfo();
-	// BW1W120 0066c2d0 BW1M100 10115f30 GPlaytimeInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0066c2d0 BW1M119 0111f9b0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

@@ -43,46 +43,46 @@ public:
 
 	// Override methods
 
-	// BW1W120 00726e50 BW1M100 10521480 SpellSeedGraphic::_dt(void)
+	// BW1W120 00726e50 BW1M119 01528be0
 	virtual ~SpellSeedGraphic();
-	// BW1W120 00726fe0 BW1M100 10523290 SpellSeedGraphic::ToBeDeleted(int)
+	// BW1W120 00726fe0 BW1M119 0152a830
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 007276a0 BW1M100 10522450 SpellSeedGraphic::GetPlayer(void)
+	// BW1W120 007276a0 BW1M119 01529ba0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 007276b0 BW1M100 105223a0 SpellSeedGraphic::SetPlayer(GPlayer *)
+	// BW1W120 007276b0 BW1M119 01529af0
 	virtual void SetPlayer(GPlayer* param_1);
-	// BW1W120 00726e40 BW1M100 105215a0 SpellSeedGraphic::GetDebugText(void)
+	// BW1W120 00726e40 BW1M119 01528d00
 	virtual char* GetDebugText();
-	// BW1W120 00727ac0 BW1M100 10521910 SpellSeedGraphic::Load(GameOSFile &)
+	// BW1W120 00727ac0 BW1M119 01529070
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00727c70 BW1M100 10521650 SpellSeedGraphic::Save(GameOSFile &)
+	// BW1W120 00727c70 BW1M119 01528db0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00726e30 BW1M100 10521560 SpellSeedGraphic::GetSaveType(void)
+	// BW1W120 00726e30 BW1M119 01528cc0
 	virtual uint32_t GetSaveType();
-	// BW1W120 00727e30 BW1M100 105215f0 SpellSeedGraphic::ResolveLoad(void)
+	// BW1W120 00727e30 BW1M119 01528d50
 	virtual void ResolveLoad();
-	// BW1W120 00727340 BW1M100 10522ce0 SpellSeedGraphic::GetScale(void)
+	// BW1W120 00727340 BW1M119 0152a280
 	virtual float GetScale();
-	// BW1W120 00726e20 BW1M100 10521520 SpellSeedGraphic::GetText(void)
+	// BW1W120 00726e20 BW1M119 01528c80
 	virtual const char* GetText();
-	// BW1W120 007277b0 BW1M100 10522020 SpellSeedGraphic::ForDrawFXGetNumVertices(void)
+	// BW1W120 007277b0 BW1M119 01529770
 	virtual int ForDrawFXGetNumVertices();
-	// BW1W120 00727800 BW1M100 10521e20 SpellSeedGraphic::ForDrawFXGetVertexPos(long, LHPoint *)
+	// BW1W120 00727800 BW1M119 01529580
 	virtual bool ForDrawFXGetVertexPos(int index, LHPoint* pos);
 
 	// Static methods
 
-	// BW1W120 00725ea0 BW1M100 10101da0 SpellSeedGraphic::operator new(unsigned long)
+	// BW1W120 00725ea0 BW1M119 0110bb30
 	static SpellSeedGraphic* __nw(uint32_t size);
-	// BW1W120 00726f60 BW1M100 10523670 SpellSeedGraphic::Create(MapCoords const &, SPELL_SEED_TYPE, GPlayer *, float, POWER_UP_TYPE)
+	// BW1W120 00726f60 BW1M119 0152ac10
 	static SpellSeedGraphic* Create(const MapCoords& coords, SPELL_SEED_TYPE type, GPlayer* player, float param_4,
 	                                POWER_UP_TYPE effect);
 
 	// Non-virtual methods
 
-	// BW1W120 00727060 BW1M100 10523210 SpellSeedGraphic::SetPowerUpType(POWER_UP_TYPE)
+	// BW1W120 00727060 BW1M119 0152a7b0
 	void SetPowerUpType(POWER_UP_TYPE type);
-	// BW1W120 00727080 BW1M100 10523130 SpellSeedGraphic::CreatePUBand(void)
+	// BW1W120 00727080 BW1M119 0152a6d0
 	void CreatePUBand();
 };
 

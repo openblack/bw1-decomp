@@ -19,15 +19,15 @@
 // decompiled yet.
 // -----------------------------------------------------------------------------
 
-// BW1W120 007aedea RegistryRetrieveULong(char const*, char const*, int*)
+// BW1W120 007aedea BW1M119 011715b0 (LHCombined Release)
 __declspec(dllimport) int RegistryRetrieveULong(const char* key, const char* value, int* out);
 
-// BW1W120 0081bbd0 Report3D(char const*, ...)
+// BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)
 void Report3D(const char* fmt, ...);
 
 // LHGetBits(mask, &scale, &shift): scale = 8 - popcount(mask),
 // shift = bitpos - popcount, returns max = 2^popcount - 1.
-// BW1W120 007ddba0 ?LHGetBits@@YAHKPAE0@Z
+// BW1W120 007ddba0 BW1M119 0114df70 (LHCombined Release)
 int LHGetBits(unsigned long mask, unsigned char* scale, unsigned char* shift);
 
 // Peer LH subsystems (not yet decompiled).
@@ -93,7 +93,8 @@ void                      sub_7E69B0(); // pre-mode-switch teardown
 // AltTab().
 extern ScreenModeCallback   unk_E8C5D0; // alt-tab callback
 extern IDirectDrawSurface7* unk_ECA63C; // extra surface restored on reactivate
-// BW1W120 00e8c5e0 defined here: it sits in this TU's screen-state .data cluster.
+// Defined here: it sits in this TU's screen-state .data cluster.
+// BW1W120 00e8c5e0
 int LHScreen::AltTabbedAway;
 
 // SaveBitmap().
@@ -101,7 +102,7 @@ void sub_8A5440(char* scopeGuard);
 int  sub_8A5590(const char* fileName, uint32_t backAddress);
 void nullsub_203(char* scopeGuard);
 
-// BW1W120 007dce20 BW1M100 1014e500 LHScreen::LHScreen(void)
+// BW1W120 007dce20 BW1M119 0114f160 (LHCombined Release)
 LHScreen::LHScreen()
 {
 	frameTimerSpeed = 1.0f;
@@ -164,7 +165,7 @@ LHScreen::LHScreen()
 	DirectDrawCreateEx(NULL, (LPVOID*)&PDirectDraw, IID_IDirectDraw7, NULL);
 }
 
-// BW1W120 007dd850 LHScreen::~LHScreen(void)
+// BW1W120 007dd850 BW1M119 0114e510 (LHCombined Release)
 LHScreen::~LHScreen()
 {
 	// LH3DMem leak check on teardown.
@@ -199,7 +200,7 @@ LHScreen::~LHScreen()
 	}
 }
 
-// BW1W120 007dd020 LHScreen::ResetDisplay(void)
+// BW1W120 007dd020 BW1M119 011c9768 (LHCombined Release)
 void LHScreen::ResetDisplay()
 {
 	DEVMODEA dm;
@@ -224,7 +225,7 @@ void LHScreen::ResetDisplay()
 	}
 }
 
-// BW1W120 007dd0d0 BW1M100 1014e420 LHScreen::SetFullscreenMode(int)
+// BW1W120 007dd0d0 BW1M119 0114f080 (LHCombined Release)
 void LHScreen::SetFullscreenMode(int mode)
 {
 	if (mode)
@@ -241,7 +242,7 @@ void LHScreen::SetFullscreenMode(int mode)
 	}
 }
 
-// BW1W120 007dd130 LHScreen::DDrawInitialise(void)
+// BW1W120 007dd130 BW1M119 0114f000 (LHCombined Release)
 int LHScreen::DDrawInitialise()
 {
 	int result = DDrawInitialiseDevices();
@@ -249,7 +250,7 @@ int LHScreen::DDrawInitialise()
 	return result;
 }
 
-// BW1W120 007dd160 CheckDescForVoodoo(char *)
+// BW1W120 007dd160 BW1M119 0114eef0 (LHCombined Release)
 int CheckDescForVoodoo(char* deviceIdentifier)
 {
 	char buf[1024];
@@ -261,7 +262,7 @@ int CheckDescForVoodoo(char* deviceIdentifier)
 	return 0;
 }
 
-// BW1W120 007dd210 CheckDescForBanshee(char *)
+// BW1W120 007dd210 BW1M119 0114ee10 (LHCombined Release)
 int CheckDescForBanshee(char* deviceIdentifier)
 {
 	char buf[1024];
@@ -271,7 +272,7 @@ int CheckDescForBanshee(char* deviceIdentifier)
 	return strstr(buf, "banshee") != 0;
 }
 
-// BW1W120 007dd2a0 CheckDescForPowerVRKYRO(char *)
+// BW1W120 007dd2a0 BW1M119 0114ecf0 (LHCombined Release)
 int CheckDescForPowerVRKYRO(char* deviceIdentifier)
 {
 	char buf[1024];
@@ -284,7 +285,7 @@ int CheckDescForPowerVRKYRO(char* deviceIdentifier)
 	return 0;
 }
 
-// BW1W120 007dd5c0 DDEnumCallback(_GUID *, char *, char *, void *)
+// BW1W120 007dd5c0 BW1M119 0114e730 (LHCombined Release)
 // NOTE: the Report3D debug-string contents are best-guess placeholders (real
 // .rdata text not yet confirmed); the call structure matches the target.
 int __stdcall DDEnumCallback(GUID* guid, char* driverDesc, char* driverName, void* ctx)
@@ -356,7 +357,7 @@ int __stdcall DDEnumCallback(GUID* guid, char* driverDesc, char* driverName, voi
 	return 1;
 }
 
-// BW1W120 007dd360 LHScreen::DDrawInitialiseDevices(void)
+// BW1W120 007dd360 BW1M119 0114ea10 (LHCombined Release)
 int LHScreen::DDrawInitialiseDevices()
 {
 	char deviceIdentifierA[512];
@@ -418,7 +419,7 @@ int LHScreen::DDrawInitialiseDevices()
 	return 0;
 }
 
-// BW1W120 007dd930 LHScreen::SetMSTitle(char *)
+// BW1W120 007dd930 BW1M119 0114e4a0 (LHCombined Release)
 int LHScreen::SetMSTitle(char* title)
 {
 	int result = 0;
@@ -427,7 +428,7 @@ int LHScreen::SetMSTitle(char* title)
 	return result;
 }
 
-// BW1W120 007dd960 LHScreen::DirectDrawReleaseSurface(void)
+// BW1W120 007dd960 BW1M119 0114e380 (LHCombined Release)
 int LHScreen::DirectDrawReleaseSurface()
 {
 	if (PBackSurface)
@@ -457,7 +458,7 @@ int LHScreen::DirectDrawReleaseSurface()
 	return 0;
 }
 
-// BW1W120 007dd9c0 LHScreen::Lock(unsigned long)
+// BW1W120 007dd9c0 BW1M119 0114e310 (LHCombined Release)
 int LHScreen::Lock(unsigned long param_1)
 {
 	if (isLocked)
@@ -489,7 +490,7 @@ int LHScreen::Lock(unsigned long param_1)
 	return 0;
 }
 
-// BW1W120 007dda90 LHScreen::Unlock(void)
+// BW1W120 007dda90 BW1M119 0114e250 (LHCombined Release)
 int LHScreen::Unlock()
 {
 	if (!isLocked)
@@ -503,7 +504,7 @@ int LHScreen::Unlock()
 	return 0;
 }
 
-// BW1W120 007ddad0 LHScreen::Close(void)
+// BW1W120 007ddad0 BW1M119 0114e1c0 (LHCombined Release)
 int LHScreen::Close()
 {
 	if (opened)
@@ -519,14 +520,14 @@ int LHScreen::Close()
 	return 0;
 }
 
-// BW1W120 007ddb00 EnumModesCallback(_DDSURFACEDESC2 *, void *)
+// BW1W120 007ddb00 BW1M119 0114e170 (LHCombined Release)
 // DirectDraw mode-enumeration callback; always continue (DDENUMRET_OK).
 long __stdcall EnumModesCallback(DDSURFACEDESC2* desc, void* ctx)
 {
 	return 1;
 }
 
-// BW1W120 007ddb10 LHScreen::SetRGBInfo(_DDPIXELFORMAT *)
+// BW1W120 007ddb10 BW1M119 0114e080 (LHCombined Release)
 void LHScreen::SetRGBInfo(_DDPIXELFORMAT* pixel_format)
 {
 	RedMask = pixel_format->dwRBitMask;
@@ -539,7 +540,7 @@ void LHScreen::SetRGBInfo(_DDPIXELFORMAT* pixel_format)
 	ColorLSBMask = ~((1 << GreenShift) + (1 << RedShift) + (1 << BlueShift));
 }
 
-// BW1W120 007ddba0 ?LHGetBits@@YAHKPAE0@Z
+// BW1W120 007ddba0 BW1M119 0114df70 (LHCombined Release)
 // Scans the 32 bits of a channel mask: counts set bits (n), records the run-edge
 // positions, then writes *scale = 8 - n, *shift = <start pos> - n, and returns
 // the maximum channel value 2^n - 1.
@@ -577,7 +578,7 @@ int LHGetBits(unsigned long mask, unsigned char* scale, unsigned char* shift)
 	return (2 << (n - 1)) - 1;
 }
 
-// BW1W120 007ddc40 LHScreen::Open(unsigned short, unsigned short, unsigned char)
+// BW1W120 007ddc40 BW1M119 0114de50 (LHCombined Release)
 int LHScreen::Open(uint16_t width, uint16_t height, uint8_t depth)
 {
 	if (dword_C3132C)
@@ -601,7 +602,7 @@ int LHScreen::Open(uint16_t width, uint16_t height, uint8_t depth)
 	return result;
 }
 
-// BW1W120 007ddcb0 LHScreen::ChangeMode(unsigned short, unsigned short, unsigned char)
+// BW1W120 007ddcb0 BW1M119 0114d850 (LHCombined Release)
 int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 {
 	if (LH3DRender::b_open)
@@ -745,7 +746,7 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 	return 0;
 }
 
-// BW1W120 007de090 LHScreen::Flip(int)
+// BW1W120 007de090 BW1M119 0114d6c0 (LHCombined Release)
 int LHScreen::Flip(int param_1)
 {
 	++flipCount;
@@ -782,7 +783,7 @@ int LHScreen::Flip(int param_1)
 	return flipResult;
 }
 
-// BW1W120 007de200 LHScreen::Clear(LHColor *, LHRegion *)
+// BW1W120 007de200 BW1M119 0114d500 (LHCombined Release)
 int LHScreen::Clear(LHColor* colour, LHRegion* region)
 {
 	if (LH3DRenderIsInit())
@@ -820,7 +821,7 @@ int LHScreen::Clear(LHColor* colour, LHRegion* region)
 	return 0;
 }
 
-// BW1W120 007de2f0 LHScreen::SetMSWindowHandle(OpaqueWindowPtr *)
+// BW1W120 007de2f0 BW1M119 0114d470 (LHCombined Release)
 void LHScreen::SetMSWindowHandle(OpaqueWindowPtr* window)
 {
 	IDirectDrawClipper* clipper = PClipper;
@@ -829,7 +830,7 @@ void LHScreen::SetMSWindowHandle(OpaqueWindowPtr* window)
 	SetMSOffset();
 }
 
-// BW1W120 007de320 LHScreen::SetTimingStats(void)
+// BW1W120 007de320 BW1M119 01009bf0 (LHCombined Release)
 uint16_t LHScreen::SetTimingStats()
 {
 	if (frameTimerSpeed == 0.0f)
@@ -880,7 +881,7 @@ uint16_t LHScreen::SetTimingStats()
 	return 1;
 }
 
-// BW1W120 007de580 LHScreen::LHFlip(int)
+// BW1W120 007de580 BW1M119 0114d2f0 (LHCombined Release)
 int LHScreen::LHFlip(int param_1)
 {
 	if (windowed)
@@ -915,7 +916,7 @@ int LHScreen::LHFlip(int param_1)
 	return 0;
 }
 
-// BW1W120 007de630 LHScreen::BlitToMSWindow(LHRegion *, LHCoord *, int)
+// BW1W120 007de630 BW1M119 0114d1d0 (LHCombined Release)
 int LHScreen::BlitToMSWindow(LHRegion* region, LHCoord* coord, int param_3)
 {
 	RECT src;
@@ -931,13 +932,13 @@ int LHScreen::BlitToMSWindow(LHRegion* region, LHCoord* coord, int param_3)
 	return 0;
 }
 
-// BW1W120 007de6c0 LHScreen::GetMSDesktopParams(unsigned short *, unsigned short *, unsigned char *)
+// BW1W120 007de6c0 BW1M119 0114d180 (LHCombined Release)
 int LHScreen::GetMSDesktopParams(uint16_t* width, uint16_t* height, uint8_t* depth)
 {
 	return 0;
 }
 
-// BW1W120 007de6d0 LHScreen::AltTabDeactivate(void)
+// BW1W120 007de6d0 BW1M119 0114d100 (LHCombined Release)
 void LHScreen::AltTabDeactivate()
 {
 	if (unk_E8C5D0)
@@ -946,7 +947,7 @@ void LHScreen::AltTabDeactivate()
 	AltTabbedAway = 1;
 }
 
-// BW1W120 007de6f0 LHScreen::AltTabReactivate(void)
+// BW1W120 007de6f0 BW1M119 0114d050 (LHCombined Release)
 void LHScreen::AltTabReactivate()
 {
 	PPrimarySurface->Restore();
@@ -958,7 +959,7 @@ void LHScreen::AltTabReactivate()
 	AltTabbedAway = 0;
 }
 
-// BW1W120 007de730 LHScreen::RunInMSWindow(int)
+// BW1W120 007de730 BW1M119 0114cef0 (LHCombined Release)
 int LHScreen::RunInMSWindow(int param_1)
 {
 	if (unk_EDD450)
@@ -988,7 +989,7 @@ int LHScreen::RunInMSWindow(int param_1)
 	return result;
 }
 
-// BW1W120 007de820 LHScreen::SetMSOffset(void)
+// BW1W120 007de820 BW1M119 0114ce00 (LHCombined Release)
 int LHScreen::SetMSOffset()
 {
 	POINT point;
@@ -1011,7 +1012,7 @@ int LHScreen::SetMSOffset()
 	return 0;
 }
 
-// BW1W120 007de930 LHScreen::SaveBitmap(void)
+// BW1W120 007de930 BW1M119 0114cc60 (LHCombined Release)
 int LHScreen::SaveBitmap()
 {
 	char fileName[260];
@@ -1063,7 +1064,7 @@ int LHScreen::SaveBitmap()
 	return result;
 }
 
-// BW1W120 007dec80 LHScreen::GetAvailableVidMem(void)
+// BW1W120 007dec80 BW1M119 0114c650 (LHCombined Release)
 uint32_t LHScreen::GetAvailableVidMem()
 {
 	IDirectDraw2* dd2;
@@ -1076,13 +1077,13 @@ uint32_t LHScreen::GetAvailableVidMem()
 	return freeMem;
 }
 
-// BW1W120 007decc0 LHScreen::WaitForVerticalBlank(void)
+// BW1W120 007decc0 BW1M119 0114c5d0 (LHCombined Release)
 int LHScreen::WaitForVerticalBlank()
 {
 	return PDirectDraw->WaitForVerticalBlank(DDWAITVB_BLOCKBEGIN, 0) != 0 ? 2 : 0;
 }
 
-// BW1W120 007ded50 LHScreen::IsAppMinimized(void)
+// BW1W120 007ded50 BW1M119 0103d180 (LHCombined Release)
 int LHScreen::IsAppMinimized()
 {
 	return LHSys::TheSystem.AppMinimized;

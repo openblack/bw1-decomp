@@ -34,9 +34,9 @@ public:
 
 	// Override methods
 
-	// BW1W120 00472c80 BW1M100 101d2300 CreatureInfo::_dt(void)
+	// BW1W120 00472c80 BW1M119 011d9dd0
 	virtual ~CreatureInfo();
-	// BW1W120 00472c10 BW1M100 101e2980 CreatureInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00472c10 BW1M119 011e9f90
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

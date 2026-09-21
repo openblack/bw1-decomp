@@ -5,7 +5,7 @@
 #include "Reaction.h"
 #include "Utils.h"
 
-// BW1W120 00767630 BW1M100 10596820 Villager::SetupReactToCreature(GameThingWithPos *, Reaction *)
+// BW1W120 00767630 BW1M119 0159db60
 void Villager::SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2)
 {
 	// TODO: deferred — void-call-eax-probed-by-caller blocker. The body switches on
@@ -30,7 +30,7 @@ void Villager::SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2
 	//  add them, and resolve the void-return-type contradiction.)
 }
 
-// BW1W120 007676e0 BW1M100 10596540 Villager::ReactToCreaturePriority(Reaction *, Reaction *)
+// BW1W120 007676e0 BW1M119 0159d880
 uint8_t Villager::ReactToCreaturePriority(Reaction* param_1, Reaction* param_2)
 {
 	// TODO: deferred — void-call-eax-probed-by-caller blocker: switches on
@@ -39,7 +39,7 @@ uint8_t Villager::ReactToCreaturePriority(Reaction* param_1, Reaction* param_2)
 	return 0;
 }
 
-// BW1W120 007678a0 BW1M100 10596410 Villager::InspectCreatureReaction(void)
+// BW1W120 007678a0 BW1M119 0159d750
 bool32_t Villager::InspectCreatureReaction()
 {
 	// TODO: deferred — blocked on two things outside this unit:
@@ -56,7 +56,7 @@ bool32_t Villager::InspectCreatureReaction()
 	return 0;
 }
 
-// BW1W120 00767970 BW1M100 105962d0 Villager::PerformInspectCreatureReaction(void)
+// BW1W120 00767970 BW1M119 0159d610
 bool32_t Villager::PerformInspectCreatureReaction()
 {
 	// TODO: 95.7% — sole diff is FPU scheduling: target places FCOMP after the counter
@@ -90,7 +90,7 @@ bool32_t Villager::PerformInspectCreatureReaction()
 	return 1;
 }
 
-// BW1W120 00767a00 BW1M100 10596080 Villager::ApproachCreatureReaction(void)
+// BW1W120 00767a00 BW1M119 0159d3c0
 bool32_t Villager::ApproachCreatureReaction()
 {
 	// TODO: deferred — triple-blocked: (1) unnamed global 0x00d01a38 (1000/global tick math);
@@ -100,7 +100,7 @@ bool32_t Villager::ApproachCreatureReaction()
 	return 0;
 }
 
-// BW1W120 00767ba0 BW1M100 10595f40 Villager::InitialiseRespectCreatureReaction(void)
+// BW1W120 00767ba0 BW1M119 0159d280
 bool32_t Villager::InitialiseRespectCreatureReaction()
 {
 	// TODO: deferred — hidden-retbuf signature blocker (cross-unit, dispatcher). The body calls
@@ -120,7 +120,7 @@ bool32_t Villager::InitialiseRespectCreatureReaction()
 	return 0;
 }
 
-// BW1W120 00767c80 BW1M100 10595e50 Villager::TurnToFaceCreatureReaction(void)
+// BW1W120 00767c80 BW1M119 0159d190
 bool32_t Villager::TurnToFaceCreatureReaction()
 {
 	// TODO: 99.7% — sole diff is the scratch register for the reloaded field_0xbc passed to
@@ -140,7 +140,7 @@ bool32_t Villager::TurnToFaceCreatureReaction()
 	return 1;
 }
 
-// BW1W120 00767ce0 BW1M100 10595cf0 Villager::PerformRespectCreatureReaction(void)
+// BW1W120 00767ce0 BW1M119 0159d030
 bool32_t Villager::PerformRespectCreatureReaction()
 {
 	// TODO: deferred — blocked on the same UNNAMED global 0x00d01a38 (divisor in `1000/global`)
@@ -158,7 +158,7 @@ bool32_t Villager::PerformRespectCreatureReaction()
 	return 0;
 }
 
-// BW1W120 00767dc0 BW1M100 10595c30 Villager::FinishRespectCreatureReaction(void)
+// BW1W120 00767dc0 BW1M119 0159cf70
 bool32_t Villager::FinishRespectCreatureReaction()
 {
 	if (field_0xbc != NULL && field_0xbc->IsAvailable())
@@ -170,7 +170,7 @@ bool32_t Villager::FinishRespectCreatureReaction()
 	return 1;
 }
 
-// BW1W120 00767e00 BW1M100 10595a30 Villager::FleeingFromCreatureReaction(void)
+// BW1W120 00767e00 BW1M119 0159cd60
 bool32_t Villager::FleeingFromCreatureReaction()
 {
 	// TODO: deferred — blocked by: GRand::GameRand(0xa, __FILE__, __LINE__) at line 0x161 (string
@@ -180,7 +180,7 @@ bool32_t Villager::FleeingFromCreatureReaction()
 	return 0;
 }
 
-// BW1W120 00767f70 BW1M100 10595930 Villager::MoveTowardsCreatureReaction(void)
+// BW1W120 00767f70 BW1M119 0159cc60
 bool32_t Villager::MoveTowardsCreatureReaction()
 {
 	if (field_0xbc != NULL && field_0xbc->IsAvailable())
@@ -200,7 +200,7 @@ bool32_t Villager::MoveTowardsCreatureReaction()
 	return 1;
 }
 
-// BW1W120 00767fe0 BW1M100 10595660 LivingMapCell::LivingMapCell(JustMapXZ &)
+// BW1W120 00767fe0 BW1M119 0159ca00
 // TODO: deferred — struct-layout blocker (dispatcher). LivingMapCell is declared as a single
 // uint8_t in Living.h but is really a ~40-byte occupancy bitmap (ctor zeroes 10 dwords via
 // rep stosd, then ORs one bit per fixed object on the map at its grid cell). Cannot be matched
@@ -208,14 +208,14 @@ bool32_t Villager::MoveTowardsCreatureReaction()
 // map->ToMap() fixed objects, for each set bit [x*2 + z/8] |= 1<<(z&7) using the float->grid math.
 LivingMapCell::LivingMapCell(JustMapXZ& param_1) {}
 
-// BW1W120 007680d0 BW1M100 105953b0 LivingMapCell::FindFreePosition(JustMapXZ &, MapCoords const &, MapCoords *)
+// BW1W120 007680d0 BW1M119 0159c740
 // TODO: deferred — same LivingMapCell 40-byte layout blocker; reads the occupancy bitmap.
 bool32_t LivingMapCell::FindFreePosition(JustMapXZ& param_1, const MapCoords& param_2, MapCoords* param_3)
 {
 	return 0;
 }
 
-// BW1W120 007682a0 BW1M100 10595080 Villager::CalculateNearestFreeDestination(MapCoords *)
+// BW1W120 007682a0 BW1M119 0159c3d0
 // TODO: deferred — blocked on undefined helper types/symbols (dispatcher):
 //  * LHStack__JustMapXZ (a fixed stack: short pairs array + `current` count at +0x20) — undefined;
 //  * fn_007685A0 is its push method (unnamed symbol, blocker #4);
@@ -225,13 +225,13 @@ bool32_t LivingMapCell::FindFreePosition(JustMapXZ& param_1, const MapCoords& pa
 // building a LivingMapCell per candidate and calling FindFreePosition until one succeeds.
 void Villager::CalculateNearestFreeDestination(MapCoords* param_1) {}
 
-// BW1W120 007683f0 BW1M100 10595020 Villager::UpdateAttitudeToCreature(void)
+// BW1W120 007683f0 BW1M119 0159c370
 void Villager::UpdateAttitudeToCreature()
 {
 	UpdateReactiveStateFromAttitudeToCreature();
 }
 
-// BW1W120 00768400 BW1M100 10594e00 Villager::UpdateReactiveStateFromAttitudeToCreature(void)
+// BW1W120 00768400 BW1M119 0159c150
 bool32_t Villager::UpdateReactiveStateFromAttitudeToCreature()
 {
 	// TODO: deferred — void-call-eax-probed-by-caller blocker: the arena==0 path switches on
@@ -257,7 +257,7 @@ bool32_t Villager::UpdateReactiveStateFromAttitudeToCreature()
 	return 0;
 }
 
-// BW1W120 00768510 BW1M100 10594d70 Villager::SetupMoveToCreatureReaction(MapCoords const &, unsigned char)
+// BW1W120 00768510 BW1M119 0159c0c0
 void Villager::SetupMoveToCreatureReaction(const MapCoords& destination, unsigned char state)
 {
 	// TODO: 92.5% — target passes state (unsigned char) to SetupMoveToWithHug's
@@ -268,31 +268,31 @@ void Villager::SetupMoveToCreatureReaction(const MapCoords& destination, unsigne
 	action.SetState(LIVING_ACTION_INDEX_TOP, VILLAGER_STATE_MOVE_TOWARDS_CREATURE_REACTION);
 }
 
-// BW1W120 00768540 BW1M100 10594d20 GameThingWithPos::AttitudeToCreatureNone(void)
+// BW1W120 00768540 BW1M119 0159c070
 uint32_t GameThingWithPos::AttitudeToCreatureNone()
 {
 	return 1;
 }
 
-// BW1W120 00768550 BW1M100 00768550 GameThingWithPos::AttitudeToCreatureFear(void)
+// BW1W120 00768550 BW1M119 0159c020
 uint32_t GameThingWithPos::AttitudeToCreatureFear()
 {
 	return 3;
 }
 
-// BW1W120 00768560 BW1M100 10594c80 GameThingWithPos::AttitudeToCreatureRespect(void)
+// BW1W120 00768560 BW1M119 0159bfd0
 uint32_t GameThingWithPos::AttitudeToCreatureRespect()
 {
 	return 4;
 }
 
-// BW1W120 00768570 BW1M100 10594c30 GameThingWithPos::AttitudeToCreatureEating(void)
+// BW1W120 00768570 BW1M119 0159bf80
 uint32_t GameThingWithPos::AttitudeToCreatureEating()
 {
 	return 1;
 }
 
-// BW1W120 00768580 BW1M100 10594bb0 Living::AttitudeToCreatureEating(void)
+// BW1W120 00768580 BW1M119 0159bf00
 uint32_t Living::AttitudeToCreatureEating()
 {
 	return IsVillager(NULL) ? 3 : 1;

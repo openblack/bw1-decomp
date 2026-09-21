@@ -9,18 +9,19 @@
 class GatheringBox : public DialogBoxBase
 {
 public:
-	// BW1W120 005751d0 BW1M100 103227e0
+	// BW1W120 005751d0 BW1M119 0132ac40
 	static void InitialiseForCurrentGame();
 	uint8_t     field_0x10[0xe0];
 
 	// Override methods
 
-	// BW1W120 00570e90 BW1M100 10326ea0 GatheringBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00570e90 BW1M119 0132f410
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 00572530 BW1M100 103266d0 GatheringBox::Destroy(void)
+	// BW1W120 00572530 BW1M119 0132ec50
 	virtual void Destroy();
-	// BW1W120 00572540. Vtable +0x20 at 008deb4c.
+	// Vtable +0x20 at 008deb4c.
+	// BW1W120 00572540 BW1M119 0132ebd0
 	virtual void InitControls();
 };
 

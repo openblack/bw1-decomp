@@ -7,7 +7,8 @@
 
 struct PlayerProfile
 {
-	// BW1W120 00d4bd38. Descriptive singleton name.
+	// Descriptive singleton name.
+	// BW1W120 00d4bd38
 	static PlayerProfile Profile;
 	char16_t             CreatureName[0x100];   /* 0x0 */
 	char16_t             CurrentProfile[0x100]; /* 0x200 */
@@ -25,19 +26,19 @@ struct PlayerProfile
 	uint32_t             field_0x824;   // Flags copied by LHNetBase::UpdateUserData.
 
 	// Static methods
-	// BW1W120 0066b9c0 BW1M100 104cbbb0
+	// BW1W120 0066b9c0 BW1M119 014d2020
 	static int GetNumberOfProfiles();
 
-	// BW1W120 0066b7a0 BW1M100 104cbec0 PlayerProfile::SetCurrentProfile(wchar_t *)
+	// BW1W120 0066b7a0 BW1M119 014d2330
 	static void SetCurrentProfile(char16_t* name);
-	// BW1W120 0066bfb0 BW1M100 104cb130 PlayerProfile::ProfileExists(wchar_t *)
+	// BW1W120 0066bfb0 BW1M119 014d1590
 	// Both Windows callers consume AL; the DLL int result is normalized by this bool wrapper.
 	static bool ProfileExists(char16_t* name);
-	// BW1W120 0066b900 BW1M100 104cbe40
+	// BW1W120 0066b900 BW1M119 014d22b0
 	static void GetCurrentProfile(char16_t* name);
-	// BW1W120 0066bad0 BW1M100 104cb610
+	// BW1W120 0066bad0 BW1M119 014d1a80
 	static void GetProfileByName(char16_t* name, PlayerProfile& profile);
-	// BW1W120 0066bcd0 BW1M100 104cb2e0
+	// BW1W120 0066bcd0 BW1M119 014d1750
 	static void WriteBackToRegistry(PlayerProfile& profile);
 };
 static_assert(sizeof(PlayerProfile) == 0x828, "PlayerProfile size is incorrect");

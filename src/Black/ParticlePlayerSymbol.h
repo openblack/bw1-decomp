@@ -15,7 +15,7 @@ class ParticlePlayerSymbol : public RenderParticle
 public:
 	// Override methods
 
-	// BW1W120 006c9d50 BW1M100 1047a0b0 ParticlePlayerSymbol::_dt(void)
+	// BW1W120 006c9d50 BW1M119 01482240
 	virtual ~ParticlePlayerSymbol();
 };
 

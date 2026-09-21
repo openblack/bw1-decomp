@@ -24,8 +24,10 @@ public:
 	uint32_t        TeamNumber;       // +1f8; zero is unassigned.
 	uint32_t        field_0x1fc;
 
-	// BW1W120 100019c0 / 10019eb0. Destructor is nonvirtual.
+	// BW1W120 100019c0
 	LH_MULTIPLAYER_API LHPlayer();
+	// Nonvirtual.
+	// BW1W120 10019eb0
 	LH_MULTIPLAYER_API ~LHPlayer();
 	// BW1W120 1001a0f0
 	virtual LH_MULTIPLAYER_API unsigned long GetEncodedLength(unsigned long options, void* context);

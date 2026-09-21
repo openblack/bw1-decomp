@@ -16,9 +16,9 @@ class Particle3DObj : public RenderParticle
 public:
 	// Override methods
 
-	// BW1W120 006c7a60 BW1M100 inlined Particle3DObj::_dt(void)
+	// BW1W120 006c7a60 BW1M119 inlined
 	virtual ~Particle3DObj();
-	// BW1W120 006c7a50 BW1M100 inlined Particle3DObj::GetDebugText(void)
+	// BW1W120 006c7a50 BW1M119 inlined
 	virtual char* GetDebugText();
 };
 

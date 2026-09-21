@@ -10,7 +10,7 @@ class MPFEStartGameNowMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00630170 BW1M100 10396930 MPFEStartGameNowMessage::_dt(void)
+	// BW1W120 00630170 BW1M119 0139e310
 	virtual ~MPFEStartGameNowMessage();
 };
 

@@ -18,14 +18,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 0054be80 BW1M100 101522e0 TerrainMapInfo::_dt(void)
+	// BW1W120 0054be80 BW1M119 0115a520
 	virtual ~TerrainMapInfo() {}
-	// BW1W120 0054bd80 BW1M100 1032d1b0 TerrainMapInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0054bd80 BW1M119 0136d370
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 100c9280 TerrainMapInfo::TerrainMapInfo(void)
+	// BW1W120 inlined BW1M119 0149b1b0
 	TerrainMapInfo() {}
 };
 

@@ -10,7 +10,7 @@ class LH3DStaticObject : public LH3DMeshedObject
 public:
 	// Constructors
 
-	// BW1W120 00816540 BW1M100 100763e0 LH3DStaticObject::LH3DStaticObject(void)
+	// BW1W120 00816540 BW1M119 01073430 (LHCombined Release)
 	LH3DStaticObject();
 };
 

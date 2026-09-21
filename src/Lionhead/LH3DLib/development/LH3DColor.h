@@ -13,18 +13,18 @@ struct LH3DColor
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 10147d00 LH3DColor::LH3DColor(void)
+	// BW1W120 inlined BW1M119 011c3178 (LHCombined Release)
 	LH3DColor() {}
-	// BW1W120 inlined BW1M100 10083c40 LH3DColor::LH3DColor(uint)
+	// BW1W120 inlined BW1M119 01086020
 	// White's per-TU startup initialisers store the packed color as one DWORD.
 	LH3DColor(uint32_t color) { *(uint32_t*)this = color; }
-	// BW1W120 inlined BW1M100 100530b0 LH3DColor::LH3DColor(LH3DColor const &)
+	// BW1W120 inlined BW1M119 01055a40
 	// fabricated
 	LH3DColor(const LH3DColor& other) { *(uint32_t*)this = *(uint32_t*)&other; }
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 1047dc00 LH3DColor::operator=(LH3DColor const &)
+	// BW1W120 inlined BW1M119 01352630
 	// fabricated
 	void operator=(const LH3DColor& other) { *(uint32_t*)this = *(uint32_t*)&other; }
 };

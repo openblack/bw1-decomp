@@ -13,7 +13,7 @@ public:
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 100826b0 LH3DStaticMorphableObject::LH3DStaticMorphableObject(void)
+	// BW1W120 inlined BW1M119 0107fe50 (LHCombined Release)
 	LH3DStaticMorphableObject();
 };
 

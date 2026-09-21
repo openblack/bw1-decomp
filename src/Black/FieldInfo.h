@@ -15,7 +15,7 @@ class GFieldInfo : public GMultiMapFixedInfo
 public:
 	// Override methods
 
-	// BW1W120 00527cc0 BW1M100 100d5dc0 GFieldInfo::_dt(void)
+	// BW1W120 00527cc0 BW1M119 010da9e0
 	virtual ~GFieldInfo();
 };
 

@@ -11,12 +11,12 @@ class CreatureDatabase : public MultiplayerDatabase
 public:
 	// Override methods
 
-	// BW1W120 006336d0 BW1M100 10109aa0 CreatureDatabase::Send(void)
+	// BW1W120 006336d0 BW1M119 011132b0
 	virtual uint32_t Send();
 
 	// Constructors
 
-	// BW1W120 006336b0 BW1M100 10109d30 CreatureDatabase::CreatureDatabase(void)
+	// BW1W120 006336b0 BW1M119 01113540
 	CreatureDatabase();
 };
 

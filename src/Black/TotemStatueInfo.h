@@ -19,11 +19,11 @@ public:
 
 	// Override methods
 
-	// BW1W120 00737af0 BW1M100 10545400 GTotemStatueInfo::_dt(void)
+	// BW1W120 00737af0 BW1M119 0154ee40
 	virtual ~GTotemStatueInfo();
-	// BW1W120 00737a80 BW1M100 10545af0 GTotemStatueInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00737a80 BW1M119 0154f530
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-	// BW1W120 00737a70 BW1M100 10543c90 GTotemStatueInfo::GetMesh( const(void))
+	// BW1W120 00737a70 BW1M119 0154c6e0
 	virtual MESH_LIST GetMesh() const;
 };
 

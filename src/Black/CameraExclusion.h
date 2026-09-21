@@ -20,18 +20,18 @@ struct CameraExclusion
 	uint32_t         field_0x24;
 
 	// Static methods
-	// BW1W120 00454a70 BW1M100 101a89f0 CameraExclusion::RemoveAll(void)
+	// BW1W120 00454a70 BW1M119 011b1970
 	static void RemoveAll();
-	// BW1W120 00455320 BW1M100 101a7dc0 CameraExclusion::ResetExclusionFile(unsigned long)
+	// BW1W120 00455320 BW1M119 011b0d50
 	static void ResetExclusionFile(unsigned long index);
-	// BW1W120 00455a10 BW1M100 101a6cf0 CameraExclusion::SaveExclusionFile(GameOSFile &)
+	// BW1W120 00455a10 BW1M119 011afbf0
 	static void SaveExclusionFile(GameOSFile& file);
-	// BW1W120 00455660 BW1M100 101a72e0 CameraExclusion::LoadExclusionFile(GameOSFile &)
+	// BW1W120 00455660 BW1M119 011b01e0
 	static void LoadExclusionFile(GameOSFile& file);
 
-	// BW1W120 00455d50 BW1M100 10000050 CameraExclusion::InsideExclusion(LHPoint)
+	// BW1W120 00455d50 BW1M119 01000050
 	static bool InsideExclusion(LHPoint point);
-	// BW1W120 00455e20 BW1M100 1004f140 CameraExclusion::InsideInclusion(LHPoint, LHPoint, LHPoint *, LHPoint *)
+	// BW1W120 00455e20 BW1M119 01051ac0
 	static bool InsideInclusion(LHPoint param_1, LHPoint param_2, LHPoint* param_3, LHPoint* param_4);
 };
 

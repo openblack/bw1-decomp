@@ -6,22 +6,22 @@
 
 struct LH3DMem
 {
-	// BW1W120 00ef6540 BW1M100 101bc42c
+	// BW1W120 00ef6540 BW1M119 011e36cc (LHCombined Release)
 	static uint32_t g_total_count;
-	// BW1W120 00ef6544 BW1M100 101bc428
+	// BW1W120 00ef6544 BW1M119 011e36c8 (LHCombined Release)
 	static uint32_t g_total_amount;
-	// BW1W120 00ef6548 BW1M100 101bc434
+	// BW1W120 00ef6548 BW1M119 011e36c4 (LHCombined Release)
 	static uint32_t g_current_count;
-	// BW1W120 00ef654c BW1M100 101bc430
+	// BW1W120 00ef654c BW1M119 011e36c0 (LHCombined Release)
 	static uint32_t g_current_amount;
-	// BW1W120 00EF6550 BW1M100 101bc438
+	// BW1W120 00ef6550 BW1M119 011e36bc (LHCombined Release)
 	static bool32_t g_open;
 
 	// Static methods
 
-	// BW1W120 00842ce0 BW1M100 10139fb0 LH3DMem::Alloc(long)
+	// BW1W120 00842ce0 BW1M119 0113ad10 (LHCombined Release)
 	static void* Alloc(long size);
-	// BW1W120 00842d60 BW1M100 100c8720 LH3DMem::Free(void*)
+	// BW1W120 00842d60 BW1M119 010c86b0 (LHCombined Release)
 	static void Free(void* ptr);
 };
 

@@ -10,7 +10,7 @@ class MPFEPublicChatMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00626e00 BW1M100 10398090 MPFEPublicChatMessage::_dt(void)
+	// BW1W120 00626e00 BW1M119 0139fa90
 	virtual ~MPFEPublicChatMessage();
 };
 

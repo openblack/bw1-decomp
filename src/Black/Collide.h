@@ -25,14 +25,14 @@ template <bool clockwise> struct Point2DCompare
 
 	// Non-virtual methods
 
-	// BW1W120 0060f740 BW1M100 inlined Point2DCompare<0>::operator=(const Point2DCompare<0>*)
-	// BW1W120 0060f720 BW1M100 inlined Point2DCompare<1>::operator=(const Point2DCompare<1>*)
+	// BW1W120 0060f740 BW1M119 inlined
+	// BW1W120 0060f720 BW1M119 inlined
 	Point2DCompare* operator=(Point2DCompare* other);
-	// BW1W120 006101f0 BW1M100 inlined Point2DCompare<0>::operator<(const Point2DCompare<0>*)
-	// BW1W120 00610180 BW1M100 inlined Point2DCompare<1>::operator<(const Point2DCompare<1>*)
+	// BW1W120 006101f0 BW1M119 inlined
+	// BW1W120 00610180 BW1M119 inlined
 	bool operator<(Point2DCompare* other);
-	// BW1W120 00610230 BW1M100 inlined Point2DCompare<0>::Resolve()
-	// BW1W120 006101c0 BW1M100 inlined Point2DCompare<1>::Resolve()
+	// BW1W120 00610230 BW1M119 inlined
+	// BW1W120 006101c0 BW1M119 inlined
 	void Resolve();
 };
 
@@ -47,8 +47,8 @@ template <bool clockwise> struct IntersectIntervalCircle
 
 	// Non-virtual methods
 
-	// BW1W120 006169f0 BW1M100 inlined IntersectIntervalCircle<0>::Resolve(void)
-	// BW1W120 00616c70 BW1M100 inlined IntersectIntervalCircle<1>::Resolve(void)
+	// BW1W120 006169f0 BW1M119 inlined
+	// BW1W120 00616c70 BW1M119 inlined
 	void Resolve();
 };
 
@@ -61,18 +61,18 @@ struct CircleHugInfo
 
 	// Constructors
 
-	// BW1W120 0060a640 BW1M100 103c45d0 CircleHugInfo::CircleHugInfo(void)
+	// BW1W120 0060a640 BW1M119 013cc970
 	CircleHugInfo();
 
 	// Non-virtual methods
 
-	// BW1W120 0060a660 BW1M100 103c4590 CircleHugInfo::GetObjectPtr(void)
+	// BW1W120 0060a660 BW1M119 013cc930
 	NewCollide::Obj* GetObjectPtr();
-	// BW1W120 0060a770 BW1M100 100260e0 CircleHugInfo::SetObjectPtr(NewCollide::Obj*, MobileWallHug*, bool)
+	// BW1W120 0060a770 BW1M119 01028c80
 	void SetObjectPtr(NewCollide::Obj* param_2, MobileWallHug* param_3, bool param_4);
-	// BW1W120 0060a9f0 BW1M100 10029be0 CircleHugInfo::Reset(MobileWallHug *)
+	// BW1W120 0060a9f0 BW1M119 01029be0
 	void Reset(MobileWallHug* mwh);
-	// BW1W120 0060c200 BW1M100 103c2d60 CircleHugInfo::ResolveLoad(MobileWallHug *)
+	// BW1W120 0060c200 BW1M119 013cacf0
 	void ResolveLoad(MobileWallHug* mwh);
 };
 
@@ -85,11 +85,11 @@ struct ObjectCircleIterator
 
 	// Non-virtual methods
 
-	// BW1W120 006159a0 BW1M100 1005f630 ObjectCircleIterator::operator NewCollide::Obj
+	// BW1W120 006159a0 BW1M119 01061db0
 	operator NewCollide::Obj();
-	// BW1W120 0060d0a0 BW1M100 100644a0 ObjectCircleIterator::Init(int, MapCoords const &)
+	// BW1W120 0060d0a0 BW1M119 01066c60
 	void Init(ObjectCircleIteratorDirection direction, const MapCoords& coords);
-	// BW1W120 0060d280 BW1M100 100649d0 ObjectCircleIterator::Init(Object *, MapCoords const &)
+	// BW1W120 0060d280 BW1M119 01067190
 	void Init(Object* obj, const MapCoords& coords);
 };
 
@@ -107,16 +107,16 @@ struct NewCollideDescriptor
 
 	// Constructors
 
-	// BW1W120 0046a860 BW1M100 101c5420 NewCollideDescriptor::NewCollideDescriptor(Object*)
+	// BW1W120 0046a860 BW1M119 011ccbc0
 	NewCollideDescriptor(Object* obj);
 
 	// Non-virtual methods
 
-	// BW1W120 0046aaf0 BW1M100 101c5310 NewCollideDescriptor::~NewCollideDescriptor(void)
+	// BW1W120 0046aaf0 BW1M119 011ccab0
 	~NewCollideDescriptor();
-	// BW1W120 0046ab10 BW1M100 101c4f70 NewCollideDescriptor::Init(Game3DObject*)
+	// BW1W120 0046ab10 BW1M119 011cc710
 	void Init(Game3DObject* obj);
-	// BW1W120 0046ad80 BW1M100 101c4db0 NewCollideDescriptor::GetNext(void)
+	// BW1W120 0046ad80 BW1M119 011cc550
 	MapCell* GetNext();
 };
 

@@ -14,7 +14,7 @@ class HandStateMultiPickUp : public HandState
 public:
 	// Constructors
 
-	// BW1W120 005b5730 BW1M100 1033c330 HandStateMultiPickUp::HandStateMultiPickUp(CHand*)
+	// BW1W120 005b5730 BW1M119 01344870
 	HandStateMultiPickUp(CHand* hand);
 };
 

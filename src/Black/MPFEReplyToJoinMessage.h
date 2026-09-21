@@ -10,7 +10,7 @@ class MPFEReplyToJoinMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 006270a0 BW1M100 10394150 MPFEReplyToJoinMessage::_dt(void)
+	// BW1W120 006270a0 BW1M119 0139ba80
 	virtual ~MPFEReplyToJoinMessage();
 };
 

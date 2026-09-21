@@ -44,7 +44,8 @@ struct LH3DMaterial;
 
 struct SetupThing
 {
-	// BW1W120 009c8078. Descriptive name; original signed alpha word.
+	// Descriptive name; original signed alpha word.
+	// BW1W120 009c8078
 	static int     DrawAlpha;
 	LH3DMaterial*  UiShadowMaterial; /* 0x0 */
 	uint8_t        field_0x4[0x34];
@@ -62,53 +63,53 @@ struct SetupThing
 	char16_t       WCHAR_00c4cd30[0x4]; /* 0xb0 */
 
 	// Static methods
-	// BW1W120 00413960 BW1M100 1036d6d0 SetupThing::DrawBg(int, int, int, int, int, int, int)
+	// BW1W120 00413960 BW1M119 011ab460
 	static void DrawBg(int x_min, int y_min, int x_max, int y_max, int color, int opaque, int top_border);
 
-	// BW1W120 00411690 BW1M100 10135530 SetupThing::GetTextHeight(int, int, int, int, int, bool, wchar_t *, int)
+	// BW1W120 00411690 BW1M119 0159bad0
 	static float GetTextHeight(int param_1, int param_2, int param_3, int param_4, int param_5, bool param_6,
 	                           const char16_t* text, int param_8);
-	// BW1W120 00411720 BW1M100 1016ab60 SetupThing::GetTextWidth(wchar_t *, float, int, float)
+	// BW1W120 00411720 BW1M119 01593080
 	static float GetTextWidth(const char16_t* text, float size, int param_3, float param_4);
-	// BW1W120 00411750 BW1M100 1016d490 SetupThing::DrawTextWrap(int, int, int, int, int, bool, wchar_t *, int, LH3DColor *, bool, bool)
+	// BW1W120 00411750 BW1M119 01486690
 	static float DrawTextWrap(int x_min, int y_min, int x_max, int y_max, int param_5, bool param_6,
 	                          const char16_t* text, int param_8, const LH3DColor* color, bool param_10, bool param_11);
-	// BW1W120 004119b0 BW1M100 103e1a40 SetupThing::DrawText(int, int, int, TEXTJUSTIFY, wchar_t *, int, LH3DColor *, int)
+	// BW1W120 004119b0
 	static float DrawText(int x, int y, int width, TEXTJUSTIFY justify, const char16_t* text, int size,
 	                      const LH3DColor* p_color, int param_8);
-	// BW1W120 00411b40 BW1M100 103e4a50 SetupThing::adjust(int &, int &)
+	// BW1W120 00411b40 BW1M119 01486aa0
 	static float adjust(int& x, int& y);
-	// BW1W120 00411c30 BW1M100 104f62a0 SetupThing::unadjust(int &, int &)
+	// BW1W120 00411c30 BW1M119 012bb270
 	static float unadjust(int& x, int& y);
-	// BW1W120 00411e70 BW1M100 104f2b70 SetupThing::adjusty(int)
+	// BW1W120 00411e70 BW1M119 010dc610
 	static int adjusty(int y);
-	// BW1W120 00412030 BW1M100 10174f00 SetupThing::unadjustsize(float)
+	// BW1W120 00412030 BW1M119 0113e350
 	static float unadjustsize(float size);
-	// BW1W120 00412150 BW1M100 105882d0 SetupThing::DrawBigButton(int, int, bool, bool, int, BBSTYLE, bool, int, int)
+	// BW1W120 00412150 BW1M119 013ea5a0
 	static void DrawBigButton(int x, int y, bool centered, bool interacted, int size, BBSTYLE style, bool shadowed,
 	                          int clip_y_start, int clip_y_end);
-	// BW1W120 004125a0 BW1M100 101a2290 SetupThing::DrawLine(int, int, int, int, unsigned long, int, float, float)
+	// BW1W120 004125a0 BW1M119 013ed8d0
 	static void DrawLine(int param_1, int param_2, int param_3, int param_4, LH3DColor color, int adjust, float param_7,
 	                     float inv_w);
-	// BW1W120 00412980 BW1M100 10048980 SetupThing::DrawBox(int, int, int, int, float, float, float, float, LH3DMaterial *, LH3DColor *, int, int, int, bool, float)
+	// BW1W120 00412980 BW1M119 0104b340
 	static void DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max,
 	                    LH3DMaterial* material, const LH3DColor* color, int adjust, int clip_y_start, int clip_y_end,
 	                    bool depth_test, float inv_w);
-	// BW1W120 00412eb0 BW1M100 1010f3e0 SetupThing::DrawQuad(int, int, int, int, int, int, int, int, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long)
+	// BW1W120 00412eb0 BW1M119 011cd6d0
 	static void DrawQuad(int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, LH3DColor color_1,
 	                     LH3DColor color_2, LH3DColor color_3, LH3DColor color_4, uint32_t use_alpha, uint32_t adjust);
-	// BW1W120 004132c0 BW1M100 1035b610 SetupThing::DrawBox(int, int, int, int, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long)
+	// BW1W120 004132c0 BW1M119 011c9c50
 	static void DrawBox(int x_min, int y_min, int x_max, int y_max, unsigned long color_1, unsigned long color_2,
 	                    unsigned long color_3, unsigned long color_4, unsigned long use_alpha, unsigned long adjust);
-	// BW1W120 00413360 BW1M100 1013c530 SetupThing::DrawTab(int, int, int, int, int, int, int, wchar_t *, int, int)
+	// BW1W120 00413360 BW1M119 013da240
 	static void DrawTab(int x_min, int y_min, int x_max, int y_max, bool selected, bool first_in_row, bool last_in_row,
 	                    const char16_t* label, LH3DColor color, bool no_blend);
-	// BW1W120 00413c20 BW1M100 10594590 SetupThing::DrawBevBox(int, int, int, int, int, int, int, unsigned long)
+	// BW1W120 00413c20 BW1M119 0158faa0
 	static void DrawBevBox(int x_min, int y_min, int x_max, int y_max, uint32_t style, uint32_t outline_thickness,
 	                       uint32_t horizontal_outline, LH3DColor color);
 };
 
-// BW1W120 00407a20 BW1M100 105133e0
+// BW1W120 00407a20 BW1M119 013596e0
 int GetBigTextSize();
 
 #endif /* BW1_DECOMP_SETUP_THING_INCLUDED_H */

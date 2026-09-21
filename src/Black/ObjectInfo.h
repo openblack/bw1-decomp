@@ -59,19 +59,19 @@ public:
 
 	// Override methods
 
-	// BW1W120 006363c0 BW1M100 101cbbe0 GObjectInfo::_dt(void)
+	// BW1W120 006363c0 BW1M119 01334480
 	virtual ~GObjectInfo();
-	// BW1W120 004012c0 BW1M100 10511e08 GObjectInfo::GetDebugText(void) const
+	// BW1W120 004012c0 BW1M119 013e51c0
 	virtual const char* GetDebugText() const { return DebugString; }
-	// BW1W120 0042b380 BW1M100 104cc120 GObjectInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0042b380 BW1M119 013e4f50
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-	// BW1W120 0042b370 BW1M100 1016ddf0 GObjectInfo::GetMesh( const(void))
+	// BW1W120 0042b370 BW1M119 0157f860
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00401290 BW1M100 1016e3a0 GObjectInfo::GetMesh(TRIBE_TYPE) const
+	// BW1W120 00401290 BW1M119 010e45f0
 	virtual MESH_LIST GetMesh2(TRIBE_TYPE tribe) const { return MSH_DUMMY; }
-	// BW1W120 004012a0 BW1M100 1016de30 GObjectInfo::GetAlignmentType(void) const
+	// BW1W120 004012a0 BW1M119 012fef20
 	virtual ALIGNMENT_TYPE GetAlignmentType() const { return AlignmentType; }
-	// BW1W120 004012b0 BW1M100 100627a0 GObjectInfo::GetFoodType(void) const
+	// BW1W120 004012b0 BW1M119 01064f20
 	virtual FOOD_TYPE GetFoodType() const { return FoodType; }
 };
 

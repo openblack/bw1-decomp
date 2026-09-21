@@ -10,7 +10,7 @@ class MPFEChangedTeamRequestMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00632d20 BW1M100 10397440 MPFEChangedTeamRequestMessage::_dt(void)
+	// BW1W120 00632d20 BW1M119 0139ee20
 	virtual ~MPFEChangedTeamRequestMessage();
 };
 

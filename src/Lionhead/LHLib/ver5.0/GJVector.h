@@ -5,7 +5,7 @@
 #include <stddef.h> /* For offsetof */
 #include <new>
 
-// BW1M100 10419d60 indexes GJArray<GJVector<long> > with a 0x14 stride.
+// On Mac, BW1M119 01422d70 indexes GJArray<GJVector<long> > with a 0x14 stride.
 // The empty allocator is a member, not a base: BW1W120 00562654 passes this + 0x10.
 template <typename T> class GJVector
 {
@@ -13,10 +13,11 @@ public:
 	class Allocator
 	{
 	public:
-		// BW1M100 1040a0d0 / 1040a150 (DisplayGesture* specialization).
+		// DisplayGesture* specialization: BW1M119 014145e0 / 01414664.
 		T*   Allocate(long count) { return count ? (T*)new char[count * sizeof(T)] : NULL; }
 		void DeAllocate(T* data, long count) { delete[] (char*)data; }
-		// BW1W120 00564900 (LHPoint); method name reconstructed.
+		// (LHPoint); method name reconstructed.
+		// BW1W120 00564900
 		void Construct(T* destination, const T& value) { new (destination) T(value); }
 	};
 
@@ -26,10 +27,10 @@ public:
 	long      GrowthIncrement; /* 0xc */
 	Allocator MemoryAllocator; /* 0x10 */
 
-	// BW1M100 10002fc0 (GTPointer<GameThing>), 10002f70 (LHPoint).
+	// Instantiations: BW1M119 01002fb0 (GTPointer<GameThing>), 01002f64 (LHPoint).
 	GJVector() : Data(NULL), Capacity(0), Size(0), GrowthIncrement(10) {}
 
-	// BW1M100 103e0710 (GTPointer<GameThing>), 103e03d0 (LHPoint).
+	// Instantiations: BW1M119 013e8780 (GTPointer<GameThing>), 013e8444 (LHPoint).
 	~GJVector()
 	{
 		for (T* entry = Data; entry < Data + Size; ++entry)
@@ -39,7 +40,7 @@ public:
 		MemoryAllocator.DeAllocate(Data, Capacity);
 	}
 
-	// BW1M100 10002da0 / 10002e10 (GTPointer<GameThing>).
+	// Instantiations: BW1M119 01002d90 / 01002e04 (GTPointer<GameThing>).
 	void Clear()
 	{
 		for (T* entry = Data; entry < Data + Size; ++entry)
@@ -49,7 +50,8 @@ public:
 		Size = 0;
 	}
 
-	// BW1W120 005647e0 BW1M100 103105f0 (GTPointer<GameThing>).
+	// (GTPointer<GameThing>).
+	// BW1W120 005647e0
 	void PushBack(const T& value)
 	{
 		if (Capacity == Size)
@@ -60,7 +62,8 @@ public:
 		++Size;
 	}
 
-	// BW1W120 00564920 (LHPoint), BW1M100 10310840 (GTPointer<GameThing>).
+	// (LHPoint), BW1M119 01317390 (GTPointer<GameThing>).
+	// BW1W120 00564920
 	void Grow(long capacity)
 	{
 		if (capacity > Capacity)
@@ -70,7 +73,7 @@ public:
 			for (T* entry = Data; entry < Data + Size; ++entry, ++destination)
 			{
 				MemoryAllocator.Construct(destination, *entry);
-				// BW1M100 103fa7e0 (TEdgeInfo) proves destruction after each copy.
+				// The TEdgeInfo instantiation (BW1M119 01405090) proves destruction after each copy.
 				entry->~T();
 			}
 			MemoryAllocator.DeAllocate(Data, Capacity);

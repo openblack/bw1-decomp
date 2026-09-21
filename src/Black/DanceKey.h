@@ -22,22 +22,22 @@ public:
 
 	// Override methods
 
-	// BW1W120 0050ebd0 BW1M100 100f7ab0 DanceKeyFrame::_dt(void)
+	// BW1W120 0050ebd0 BW1M119 01100e10
 	virtual ~DanceKeyFrame();
-	// BW1W120 0050ebf0 BW1M100 102ae1e0 DanceKeyFrame::ToBeDeleted(int)
+	// BW1W120 0050ebf0 BW1M119 012b1300
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0050ebc0 BW1M100 102ace60 DanceKeyFrame::GetDebugText(void)
+	// BW1W120 0050ebc0 BW1M119 012b00e0
 	virtual char* GetDebugText();
-	// BW1W120 0050f2f0 BW1M100 102acea0 DanceKeyFrame::Load(GameOSFile &)
+	// BW1W120 0050f2f0 BW1M119 012b0120
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0050f1c0 BW1M100 102ad2b0 DanceKeyFrame::Save(GameOSFile &)
+	// BW1W120 0050f1c0 BW1M119 012b05a0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0050ebb0 BW1M100 102ace20 DanceKeyFrame::GetSaveType(void)
+	// BW1W120 0050ebb0 BW1M119 012b00a0
 	virtual uint32_t GetSaveType();
 
 	// Constructors
 
-	// BW1W120 0050eb60 BW1M100 102ae450 DanceKeyFrame::DanceKeyFrame(long, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
+	// BW1W120 0050eb60 BW1M119 012b1570
 	DanceKeyFrame(int param_1, LHDynamicStack<uint32_t>* stack, DANCE_GROUP_ACTION_TYPE action_type,
 	              const DanceGroupActionArgument& arguments);
 };

@@ -200,17 +200,17 @@ public:
 
 	// Static methods
 
-	// BW1W120 0080b4d0 BW1M100 10620204 LH3DObject::Create(LH3DObject::ObjectType)
+	// BW1W120 0080b4d0 BW1M119 0107fb80 (LHCombined Release)
 	static LH3DObject* Create(ObjectType object_type);
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined LH3DObject::LH3DObject(void)
+	// BW1W120 inlined BW1M119 inlined
 	LH3DObject();
 
 	// Non-virtual functions
 
-	// BW1W120 00423140 BW1M100 10041480 LH3DObject::SetPosition(const LHPoint&, float, float)
+	// BW1W120 00423140 BW1M119 01043ec0
 	void SetPosition(const LHPoint& point, float y_angle, float scale)
 	{
 		if (y_angle != 0.0f)

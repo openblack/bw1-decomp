@@ -15,9 +15,9 @@ class GClimateRainInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 00773ce0 BW1M100 105a3a30 GClimateRainInfo::_dt(void)
+	// BW1W120 00773ce0 BW1M119 015aa730
 	virtual ~GClimateRainInfo();
-	// BW1W120 00773c90 BW1M100 105a39e0 GClimateRainInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00773c90 BW1M119 015aa6e0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

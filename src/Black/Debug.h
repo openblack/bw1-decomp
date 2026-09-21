@@ -47,12 +47,12 @@ struct GDebug
 	// TODO: Original member name is unrecovered. Mac constructor establishes the list type.
 	LHLinkedList<CellBox*> CellBoxes; /* 0x2d2a0 */
 
-	// BW1W120 00511f50 BW1M100 1008e810 GDebug::ClearMessages(long)
+	// BW1W120 00511f50 BW1M119 01090b10
 	void ClearMessages(long category);
 
 	// Static methods
 
-	// BW1W120 00511da0 BW1M100 1002c710 GDebug::SetMessage(unsigned short, char *,...)
+	// BW1W120 00511da0 BW1M119 0102f280
 	static void SetMessage(GDebug* debug, uint16_t param_2, char* fmt, ...);
 };
 

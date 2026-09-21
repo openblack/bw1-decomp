@@ -11,7 +11,7 @@ class GameArea : public Base
 public:
 	// Override methods
 
-	// BW1W120 00557220 BW1M100 102fe950 GameArea::_dt(void)
+	// BW1W120 00557220 BW1M119 013007c0
 	virtual ~GameArea();
 };
 

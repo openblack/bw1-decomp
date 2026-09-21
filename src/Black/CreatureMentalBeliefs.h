@@ -20,14 +20,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d24f0 BW1M100 10246b60 CreatureBeliefList::_dt(void)
+	// BW1W120 004d24f0 BW1M119 0124b2f0
 	virtual ~CreatureBeliefList();
 
 	// Non-virtual methods
 
-	// BW1W120 004d7bb0 BW1M100 10253e30 CreatureBeliefList::GetBeliefAboutObject(GameThingWithPos *)
+	// BW1W120 004d7bb0 BW1M119 012583f0
 	void* GetBeliefAboutObject(GameThingWithPos* param_1);
-	// BW1W120 004d7ce0 BW1M100 10253b10 CreatureBeliefList::AddBeliefAboutObject(Creature *, GameThingWithPos *)
+	// BW1W120 004d7ce0 BW1M119 012580d0
 	void* AddBeliefAboutObject(Creature* param_1, GameThingWithPos* param_2);
 };
 
@@ -41,7 +41,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d7910 BW1M100 10246ad0 AllocatedBeliefList::_dt(void)
+	// BW1W120 004d7910 BW1M119 0124b260
 	virtual ~AllocatedBeliefList();
 };
 
@@ -54,12 +54,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d2510 BW1M100 10252390 CreatureBeliefs::_dt(void)
+	// BW1W120 004d2510 BW1M119 01256960
 	virtual ~CreatureBeliefs();
 
 	// Non-virtual methods
 
-	// BW1W120 004d8ea0 BW1M100 10250c70 CreatureBeliefs::Initialise(void)
+	// BW1W120 004d8ea0 BW1M119 01255240
 	void Initialise();
 };
 

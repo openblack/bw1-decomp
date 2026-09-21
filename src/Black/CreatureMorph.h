@@ -118,53 +118,53 @@ public:
 
 	// Override methods
 
-	// BW1W120 004eac90 BW1M100 10274660 LH3DCreature::LoadBase(char *)
+	// BW1W120 004eac90 BW1M119 01278470
 	virtual uint32_t LoadBase(char* path);
 	// Windows vtable entries shared with CreatureFalling.
-	// BW1W120 004803d0 BW1M100 101fa480 LH3DCreature::SetAnimTime(long,long)
+	// BW1W120 004803d0 BW1M119 01201a70
 	virtual void SetAnimTime(int time, int anim);
-	// BW1W120 00480530 BW1M100 101fa2d0 LH3DCreature::SetSize(float)
+	// BW1W120 00480530 BW1M119 012018c0
 	virtual void SetSize(float size);
-	// BW1W120 0048d790 BW1M100 101e85e0 LH3DCreature::MorphAnims(void)
+	// BW1W120 0048d790 BW1M119 011efbe0
 	virtual void MorphAnims();
-	// BW1W120 0048d540 BW1M100 101e8670 LH3DCreature::MorphTexture(void)
+	// BW1W120 0048d540 BW1M119 011efc70
 	virtual void MorphTexture();
-	// BW1W120 00481df0 LH3DCreature::UpdateTime(long)
+	// BW1W120 00481df0 BW1M119 011fe0e0
 	virtual void UpdateTime(int time);
-	// BW1W120 004ed320 BW1M100 10271a60 LH3DCreature::PrepareForDrawing(void)
+	// BW1W120 004ed320 BW1M119 012758a0
 	virtual void PrepareForDrawing();
-	// BW1W120 0048e1c0 BW1M100 101e7880 LH3DCreature::AddForDrawing(void)
+	// BW1W120 0048e1c0 BW1M119 011eee90
 	virtual uint32_t AddForDrawing();
-	// BW1W120 004eb430 BW1M100 102738a0 LH3DCreature::LoadBinary(char*,int)
+	// BW1W120 004eb430 BW1M119 012776d0
 	virtual uint32_t LoadBinary(char* filename, int param_1);
-	// BW1W120 004ed640 BW1M100 10271330 LH3DCreature::SaveBinary(char*)
+	// BW1W120 004ed640 BW1M119 012751a0
 	virtual uint32_t SaveBinary(char* filename);
 
 	// Static methods
 
-	// BW1W120 0047f1f0 BW1M100 101fc320 LH3DCreature::FollowerCallbackFunction(int, int)
+	// BW1W120 0047f1f0 BW1M119 012037d0
 	static void FollowerCallbackFunction(int param_1, int param_2);
-	// BW1W120 0047f260 BW1M100 101fc1b0 LH3DCreature::FollowerCallbackPrepareAnims(int, float, float)
+	// BW1W120 0047f260 BW1M119 01203660
 	static void FollowerCallbackPrepareAnims(Creature* param_1, float param_2, float param_3);
-	// BW1W120 0047f280 BW1M100 101fc130 LH3DCreature::FollowerCallbackGetStopDist(int)
+	// BW1W120 0047f280 BW1M119 012035e0
 	static float FollowerCallbackGetStopDist(Creature* param_1);
 
 	// Constructors
 
-	// BW1W120 0047f770 BW1M100 101fb470 LH3DCreature::LH3DCreature(Creature *, LHPoint const &, void *)
+	// BW1W120 0047f770 BW1M119 01202a40
 	LH3DCreature(Creature* creature, const LHPoint& pos, void* param_3);
 
 	// Non-virtual methods
 
-	// BW1W120 004813f0 BW1M100 101f8ba0 LH3DCreature::GetBonePos(long)
+	// BW1W120 004813f0 BW1M119 01200130
 	LHPoint* GetBonePos(int index);
-	// BW1W120 004842b0 BW1M100 101f4ce0 LH3DCreature::GetSafeBuffer(void)
+	// BW1W120 004842b0 BW1M119 011fc210
 	uint8_t* GetSafeBuffer();
-	// BW1W120 004842d0 BW1M100 101f4c90 LH3DCreature::IsPerformingBodyAction(void)
+	// BW1W120 004842d0 BW1M119 011fc1c0
 	bool IsPerformingBodyAction();
-	// BW1W120 0048b780 BW1M100 101eb040 LH3DCreature::GetObjectActionStatus(void)
+	// BW1W120 0048b780 BW1M119 011f2640
 	uint32_t GetObjectActionStatus();
-	// BW1W120 0048dd70 BW1M100 101e79a0 LH3DCreature::DrawFightSparkles(void)
+	// BW1W120 0048dd70 BW1M119 011eefb0
 	void DrawFightSparkles();
 };
 static_assert(sizeof(LH3DCreature) == 0x57b8, "LH3DCreature size is incorrect");

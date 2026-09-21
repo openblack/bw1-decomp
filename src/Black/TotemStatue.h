@@ -50,98 +50,98 @@ public:
 
 	// Override methods
 
-	// BW1W120 00561180 BW1M100 105457d0 TotemStatue::_dt(void)
+	// BW1W120 00561180 BW1M119 0154f210
 	virtual ~TotemStatue();
-	// BW1W120 00737c20 BW1M100 10545750 TotemStatue::ToBeDeleted(int)
+	// BW1W120 00737c20 BW1M119 0154f190
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00738490 BW1M100 10544a00 TotemStatue::GetPlayer(void)
+	// BW1W120 00738490 BW1M119 0154e1c0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 00738480 BW1M100 10544ac0 TotemStatue::GetTown(void)
+	// BW1W120 00738480 BW1M119 0154e280
 	virtual Town* GetTown();
-	// BW1W120 00561170 BW1M100 10543f30 TotemStatue::GetDebugText(void)
+	// BW1W120 00561170 BW1M119 0154c980
 	virtual char* GetDebugText();
-	// BW1W120 00738800 BW1M100 10544120 TotemStatue::Load(GameOSFile &)
+	// BW1W120 00738800 BW1M119 0154d8f0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00738700 BW1M100 105442e0 TotemStatue::Save(GameOSFile &)
+	// BW1W120 00738700 BW1M119 0154dab0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00561160 BW1M100 10543ef0 TotemStatue::GetSaveType(void)
+	// BW1W120 00561160 BW1M119 0154c940
 	virtual uint32_t GetSaveType();
-	// BW1W120 00738940 BW1M100 105440b0 TotemStatue::ResolveLoad(void)
+	// BW1W120 00738940 BW1M119 0154d880
 	virtual void ResolveLoad();
-	// BW1W120 005610f0 BW1M100 10543cd0 TotemStatue::GetCreatureBeliefType(void)
+	// BW1W120 005610f0 BW1M119 0154c720
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 00561150 BW1M100 10543eb0 TotemStatue::IsTotemStatue(void)
+	// BW1W120 00561150 BW1M119 0154c900
 	virtual uint32_t IsTotemStatue();
-	// BW1W120 00561110 BW1M100 10543d70 TotemStatue::CanBePlayedWithByCreature(Creature *)
+	// BW1W120 00561110 BW1M119 0154c7c0
 	virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
-	// BW1W120 00561100 BW1M100 10543d20 TotemStatue::CanBeImpressedByCreature(Creature *)
+	// BW1W120 00561100 BW1M119 0154c770
 	virtual uint32_t CanBeImpressedByCreature(Creature* param_1);
-	// BW1W120 004e3e70 BW1M100 105e6740 TotemStatue::DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature *)
+	// BW1W120 004e3e70 BW1M119 015ee440
 	virtual uint32_t DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature* param_1);
-	// BW1W120 007384d0 BW1M100 10544960 TotemStatue::GetWorshipSite(void)
+	// BW1W120 007384d0 BW1M119 0154e120
 	virtual WorshipSite* GetWorshipSite();
-	// BW1W120 004e4110 BW1M100 105e5eb0 TotemStatue::CanBeStolenByCreature(Creature *)
+	// BW1W120 004e4110 BW1M119 015edbb0
 	virtual uint32_t CanBeStolenByCreature(Creature* param_1);
-	// BW1W120 004e4170 BW1M100 105e5d00 TotemStatue::IsTotemWithStealableSpell(Creature *)
+	// BW1W120 004e4170 BW1M119 015eda00
 	virtual uint32_t IsTotemWithStealableSpell(Creature* param_1);
-	// BW1W120 00738eb0 BW1M100 10543f70 TotemStatue::GetScriptObjectType(void)
+	// BW1W120 00738eb0 BW1M119 0154c9c0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 00561120 BW1M100 10543dc0 TotemStatue::HandShouldFeelWithMeshIntersect(void)
+	// BW1W120 00561120 BW1M119 0154c810
 	virtual uint32_t HandShouldFeelWithMeshIntersect();
-	// BW1W120 00737c90 BW1M100 10545510 TotemStatue::ReduceLife(float, GPlayer *)
+	// BW1W120 00737c90 BW1M119 0154ef50
 	virtual float ReduceLife(float value, GPlayer* player);
-	// BW1W120 00737c60 BW1M100 105455d0 TotemStatue::IncreaseLife(float)
+	// BW1W120 00737c60 BW1M119 0154f010
 	virtual float IncreaseLife(float value);
-	// BW1W120 00737f40 BW1M100 10077f00 TotemStatue::Process(void)
+	// BW1W120 00737f40 BW1M119 0107a4d0
 	virtual uint32_t Process();
-	// BW1W120 005610e0 BW1M100 10543c30 TotemStatue::GetMesh( const(void))
+	// BW1W120 005610e0 BW1M119 0154c680
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00738960 BW1M100 10024bb0 TotemStatue::Draw(void)
+	// BW1W120 00738960 BW1M119 01027750
 	virtual void Draw();
-	// BW1W120 00737d60 BW1M100 10544f40 TotemStatue::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00737d60 BW1M119 0154e980
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1W120 00738500 BW1M100 105447e0 TotemStatue::ValidForLockedSelectProcess(GInterfaceStatus *)
+	// BW1W120 00738500 BW1M119 0154dfa0
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
-	// BW1W120 00738590 BW1M100 10544700 TotemStatue::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
+	// BW1W120 00738590 BW1M119 0154dec0
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
-	// BW1W120 007385e0 BW1M100 10544640 TotemStatue::NetworkUnfriendlyStartLockedSelect(void)
+	// BW1W120 007385e0 BW1M119 0154de10
 	virtual uint32_t NetworkUnfriendlyStartLockedSelect();
-	// BW1W120 007386a0 BW1M100 10544470 TotemStatue::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
+	// BW1W120 007386a0 BW1M119 0154dc40
 	virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
-	// BW1W120 00738630 BW1M100 10544580 TotemStatue::NetworkUnfriendlyEndLockedSelect(void)
+	// BW1W120 00738630 BW1M119 0154dd50
 	virtual uint32_t NetworkUnfriendlyEndLockedSelect();
-	// BW1W120 00738690 BW1M100 10544520 TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
+	// BW1W120 00738690 BW1M119 0154dcf0
 	virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
-	// BW1W120 00561130 BW1M100 10543e10 TotemStatue::IsEffectReceiver(EffectValues *)
+	// BW1W120 00561130 BW1M119 0154c860
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
-	// BW1W120 00737d40 BW1M100 105451c0 TotemStatue::InteractsWithPhysicsObjects(void)
+	// BW1W120 00737d40 BW1M119 0154ec00
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 00737d50 BW1M100 10545170 TotemStatue::ReactToPhysicsImpact(PhysicsObject *, bool)
+	// BW1W120 00737d50 BW1M119 0154ebb0
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-	// BW1W120 00561140 BW1M100 10543e60 TotemStatue::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 00561140 BW1M119 0154c8b0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
-	// BW1W120 00561090 BW1M100 10543660 TotemStatue::IsRepaired(void)
+	// BW1W120 00561090 BW1M119 0154c590
 	virtual bool32_t IsRepaired();
-	// BW1W120 005610b0 BW1M100 1001a9a0 TotemStatue::IsBuilt(void)
+	// BW1W120 005610b0 BW1M119 0101d550
 	virtual bool32_t IsBuilt();
-	// BW1W120 00738130 BW1M100 10544dd0 TotemStatue::AddToPlayer(void)
+	// BW1W120 00738130 BW1M119 0154e590
 	virtual void AddToPlayer();
 
 	// Static methods
 
-	// BW1W120 00737cc0 BW1M100 10545210 TotemStatue::Create(TownCentre *)
+	// BW1W120 00737cc0 BW1M119 0154ec50
 	static TotemStatue* Create(TownCentre* town_centre);
 
 	// Constructors
 
-	// BW1W120 00737b20 BW1M100 10545880 TotemStatue::TotemStatue(TownCentre *, GTotemStatueInfo const *)
+	// BW1W120 00737b20 BW1M119 0154f2c0
 	TotemStatue(TownCentre* tc, const GTotemStatueInfo* info);
 
 	// Non-virtual methods
 
-	// BW1W120 00738260 BW1M100 10544c70 TotemStatue::GetWorshipSpeed(void)
+	// BW1W120 00738260 BW1M119 0154e430
 	float GetWorshipSpeed();
-	// BW1W120 00738270 BW1M100 10544b90 TotemStatue::SetWorshipPercentage(float)
+	// BW1W120 00738270 BW1M119 0154e350
 	void SetWorshipPercentage(float percentage);
 };
 

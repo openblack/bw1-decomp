@@ -24,31 +24,31 @@ class Feature : public MultiMapFixed
 public:
 	// Override methods
 
-	// BW1W120 00422e90 BW1M100 100a7a50 Feature::_dt(void)
+	// BW1W120 00422e90 BW1M119 010ab260
 	virtual ~Feature();
-	// BW1W120 00422e80 BW1M100 100d1880 Feature::GetDebugText(void)
+	// BW1W120 00422e80 BW1M119 010d6380
 	virtual char* GetDebugText();
-	// BW1W120 00422e70 BW1M100 100d1840 Feature::GetSaveType(void)
+	// BW1W120 00422e70 BW1M119 010d6340
 	virtual uint32_t GetSaveType();
-	// BW1W120 00422140 BW1M100 100a5490 Feature::GetCreatureBeliefType(void)
+	// BW1W120 00422140 BW1M119 010a86d0
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 00422150 BW1M100 100a54d0 Feature::CanBePickedUpByCreature(Creature *)
+	// BW1W120 00422150 BW1M119 010a8710
 	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
-	// BW1W120 005276d0 BW1M100 100d0c30 Feature::IsMushroom(Creature *)
+	// BW1W120 005276d0 BW1M119 010d5220
 	virtual uint32_t IsMushroom(Creature* param_1);
-	// BW1W120 004220e0 BW1M100 100a5350 Feature::IsFeature(void)
+	// BW1W120 004220e0 BW1M119 010a8590
 	virtual uint32_t IsFeature();
-	// BW1W120 005277d0 BW1M100 100d0890 Feature::GetQueryFirstEnumText(void)
+	// BW1W120 005277d0 BW1M119 010d4dd0
 	virtual HELP_TEXT GetQueryFirstEnumText();
-	// BW1W120 00527820 BW1M100 100d07b0 Feature::GetQueryLastEnumText(void)
+	// BW1W120 00527820 BW1M119 010d4cf0
 	virtual HELP_TEXT GetQueryLastEnumText();
-	// BW1W120 005276c0 BW1M100 10008370 Feature::GetScriptObjectType(void)
+	// BW1W120 005276c0 BW1M119 01008280
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 004220d0 BW1M100 100a52b0 Feature::GetMesh( const(void))
+	// BW1W120 004220d0 BW1M119 010a84f0
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00518690 BW1M100 100238a0 Feature::Draw(void)
+	// BW1W120 00518690 BW1M119 01026430
 	virtual void Draw();
-	// BW1W120 005275b0 BW1M100 100d0dc0 Feature::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 005275b0 BW1M119 010d57e0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 

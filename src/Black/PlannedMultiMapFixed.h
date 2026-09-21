@@ -33,47 +33,47 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055cbe0 BW1M100 10111890 PlannedMultiMapFixed::GetDebugText(void)
+	// BW1W120 0055cbe0 BW1M119 0111b0b0
 	virtual char* GetDebugText();
-	// BW1W120 00648af0 BW1M100 10114cd0 PlannedMultiMapFixed::Load(GameOSFile &)
+	// BW1W120 00648af0 BW1M119 0111e820
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00648990 BW1M100 10114ef0 PlannedMultiMapFixed::Save(GameOSFile &)
+	// BW1W120 00648990 BW1M119 0111ea40
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055cbd0 BW1M100 inlined PlannedMultiMapFixed::GetSaveType(void)
+	// BW1W120 0055cbd0 BW1M119 inlined
 	virtual uint32_t GetSaveType();
-	// BW1W120 004050c0 BW1M100 1017d1b0 PlannedMultiMapFixed::GetScale(void)
+	// BW1W120 004050c0 BW1M119 01150d50
 	virtual float GetScale();
-	// BW1W120 004050d0 BW1M100 103509e0 PlannedMultiMapFixed::SetScale(float)
+	// BW1W120 004050d0 BW1M119 01155290
 	virtual void SetScale(float scale);
-	// BW1W120 00648940 BW1M100 10115200 PlannedMultiMapFixed::GetText(void)
+	// BW1W120 00648940 BW1M119 0111ed50
 	virtual const char* GetText();
-	// BW1W120 00465560 BW1M100 100d17b0 PlannedMultiMapFixed::IsWonder(void)
+	// BW1W120 00465560 BW1M119 010d62b0
 	virtual bool32_t IsWonder();
-	// BW1W120 00648950 BW1M100 inlined PlannedMultiMapFixed::CreateBuildingSite(void)
+	// BW1W120 00648950 BW1M119 inlined
 	virtual bool32_t CreateBuildingSite();
-	// BW1W120 00469660 BW1M100 100bd510 PlannedMultiMapFixed::CreatePlanned(float)
+	// BW1W120 00469660 BW1M119 010c09d0
 	virtual MultiMapFixed* CreatePlanned(float param_1);
-	// BW1W120 00465540 BW1M100 100d1720 PlannedMultiMapFixed::CreatePlannedNoFixedCheck(float)
+	// BW1W120 00465540 BW1M119 010d6220
 	virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1);
-	// BW1W120 00648c50 BW1M100 10114bf0 PlannedMultiMapFixed::PostCreatePlanned(MultiMapFixed&)
+	// BW1W120 00648c50 BW1M119 0111e740
 	virtual void PostCreatePlanned(MultiMapFixed& param_1);
-	// BW1W120 00465550 BW1M100 100d1770 PlannedMultiMapFixed::IsCivic(void)
+	// BW1W120 00465550 BW1M119 010d6270
 	virtual bool32_t IsCivic();
-	// BW1W120 00465570 BW1M100 100d17f0 PlannedMultiMapFixed::GetAbodeType(void)
+	// BW1W120 00465570 BW1M119 010d62f0
 	virtual ABODE_TYPE GetAbodeType();
-	// BW1W120 00648910 BW1M100 1006f570 PlannedMultiMapFixed::GetDesireToBeRepaired(void)
+	// BW1W120 00648910 BW1M119 01071cf0
 	virtual float GetDesireToBeRepaired();
-	// BW1W120 00648930 BW1M100 10115260 PlannedMultiMapFixed::Draw(void)
+	// BW1W120 00648930 BW1M119 0111edb0
 	virtual void Draw();
 
 	// Constructors
 
-	// BW1W120 00648780 BW1M100 10115620 PlannedMultiMapFixed::PlannedMultiMapFixed(MapCoords const &, GMultiMapFixedInfo const *, float, float)
+	// BW1W120 00648780 BW1M119 0111f0f0
 	PlannedMultiMapFixed(const MapCoords& coords, const GMultiMapFixedInfo* info, float param_3, float param_4);
 
 	// Non-virtual Destructors
 
-	// BW1W120 0055cbf0 BW1M100 103e4400 PlannedMultiMapFixed::~PlannedMultiMapFixed(void)
+	// BW1W120 0055cbf0 BW1M119 01174730
 	~PlannedMultiMapFixed();
 };
 

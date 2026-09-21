@@ -10,7 +10,7 @@ class MPFEStartGameReadyMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 0062fd00 BW1M100 103a7130 MPFEStartGameReadyMessage::_dt(void)
+	// BW1W120 0062fd00 BW1M119 013aef10
 	virtual ~MPFEStartGameReadyMessage();
 };
 

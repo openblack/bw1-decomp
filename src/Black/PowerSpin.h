@@ -15,13 +15,13 @@ public:
 	LHPoint       Position; // 0x9a8, written by PowerSpin::Update
 	// Declaration-only view: do not allocate before recovering the drawing data layout.
 	// TODO: These real vtable entries are established, but original base-class placement is not.
-	// BW1W120 0066fcb0 BW1M100 1011dee0 PowerSpin::Init(wchar_t*, LHPoint const&, LHPoint const&, float, float, int)
+	// BW1W120 0066fcb0 BW1M119 01127140
 	virtual void Init(char16_t* text, const LHPoint& pos, const LHPoint& direction, float param_4, float param_5,
 	                  int param_6);
-	// BW1W120 0066fd80 BW1M100 1011ddb0 PowerSpin::Update(LHPoint const&, LHPoint const&, float, float, int, float)
+	// BW1W120 0066fd80 BW1M119 01127000
 	virtual void Update(const LHPoint& pos, const LHPoint& direction, float param_3, float param_4, int param_5,
 	                    float time);
-	// BW1W120 0066fe80 PowerSpin::Draw(void)
+	// BW1W120 0066fe80 BW1M119 011268e0
 	virtual void Draw();
 };
 
@@ -29,15 +29,16 @@ class PowerSpinRunner : public PowerSpin
 {
 public:
 	PowerSpinRunner* Next; // 0x9b4; do not allocate this partial type using sizeof
-	// BW1W120 00d4de74. Descriptive list-head name; destructor unlinks itself.
+	// Descriptive list-head name; destructor unlinks itself.
+	// BW1W120 00d4de74
 	static PowerSpinRunner* First;
-	// BW1W120 0066f890 BW1M100 1011e000 PowerSpinRunner::Update(LHMatrix, float)
+	// BW1W120 0066f890 BW1M119 01127260
 	// Returns this or NULL and may delete itself.
 	virtual PowerSpinRunner* Update(LHMatrix matrix, float time);
-	// BW1W120 0066f840 BW1M100 1011e4c0 PowerSpinRunner::~PowerSpinRunner(void)
+	// BW1W120 0066f840 BW1M119 01127720
 	// Scalar deleting destructor at 0066f820 occupies vtable slot +0x10.
 	virtual ~PowerSpinRunner();
-	// BW1W120 0066f790 BW1M100 1011e670 PowerSpinRunner::Init(wchar_t*, LHPoint const&)
+	// BW1W120 0066f790 BW1M119 011278d0
 	virtual void Init(char16_t* text, const LHPoint& pos);
 };
 

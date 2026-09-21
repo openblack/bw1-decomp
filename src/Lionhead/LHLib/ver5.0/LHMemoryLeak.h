@@ -38,7 +38,8 @@ public:
 
 		// Constructors
 
-		// BW1W120 inlined (built by LogAllocation via operator new(0x12C))
+		// (built by LogAllocation via operator new(0x12C))
+		// BW1W120 inlined
 		inline LeakNode(const char* file, int line, int size, unsigned char shouldLog, int tag)
 		{
 			AllocStack.count = 0;
@@ -56,11 +57,11 @@ public:
 
 		// Non-virtual methods
 
-		// BW1W120 007e0490 LHMemoryLeak::LeakNode::LogError(char *, bool, bool)
+		// BW1W120 007e0490 BW1M119 01142fc0 (LHCombined Release)
 		void LogError(const char* msg, bool logStack, bool allocStack);
-		// BW1W120 007e04d0 LHMemoryLeak::LeakNode::LogCallStack(bool)
+		// BW1W120 007e04d0 BW1M119 01142e90 (LHCombined Release)
 		void LogCallStack(bool allocStack);
-		// BW1W120 007e0550 LHMemoryLeak::LeakNode::GrabFunctionNamesFromDebugStack(LHDebugStack *, bool)
+		// BW1W120 007e0550 BW1M119 01142c60 (LHCombined Release)
 		void GrabFunctionNamesFromDebugStack(LHDebugStack* debugStack, bool allocStack);
 	};
 
@@ -71,11 +72,11 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 007e0620 LHMemoryLeak::LogAllocation(char *, int, void *, int)
+	// BW1W120 007e0620 BW1M119 01142b50 (LHCombined Release)
 	void LogAllocation(const char* file, int line, void* ptr, int size);
-	// BW1W120 007e0730 LHMemoryLeak::LogDeletion(char *, int, void *)
+	// BW1W120 007e0730 BW1M119 01142900 (LHCombined Release)
 	void LogDeletion(const char* file, int line, void* ptr);
-	// BW1W120 007e0870 LHMemoryLeak::DumpLeaks(void)
+	// BW1W120 007e0870 BW1M119 01141df0 (LHCombined Release)
 	void DumpLeaks();
 };
 

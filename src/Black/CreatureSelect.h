@@ -10,11 +10,11 @@ class CreatureSelect : public Prss
 public:
 	// Override methods
 
-	// BW1W120 004f7210 BW1M100 inlined CreatureSelect::ProcessTurn(void)
+	// BW1W120 004f7210 BW1M119 inlined
 	virtual Prss* ProcessTurn();
-	// BW1W120 004f7250 BW1M100 inlined CreatureSelect::Display(void)
+	// BW1W120 004f7250 BW1M119 inlined
 	virtual void Display();
-	// BW1W120 004f74d0 BW1M100 inlined CreatureSelect::ClickFunction(int, int, int)
+	// BW1W120 004f74d0 BW1M119 inlined
 	virtual void ClickFunction(int param_1, int param_2, int param_3);
 };
 

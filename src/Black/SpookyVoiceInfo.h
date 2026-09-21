@@ -15,9 +15,9 @@ class GSpookyVoiceInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 0072e220 BW1M100 10149010 GSpookyVoiceInfo::_dt(void)
+	// BW1W120 0072e220 BW1M119 01151080
 	virtual ~GSpookyVoiceInfo();
-	// BW1W120 0072e1c0 BW1M100 10149130 GSpookyVoiceInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0072e1c0 BW1M119 011511a0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

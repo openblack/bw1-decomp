@@ -22,17 +22,17 @@ public:
 
 	// Static methods
 
-	// BW1W120 007ad230 BW1M100 100db740 LHDLL::AddToInternalList(LHDLL*)
+	// BW1W120 007ad230 BW1M119 010da950 (LHCombined Release)
 	static LHDLL* AddToInternalList(LHDLL* dll);
 
 	// Constructors
 
-	// BW1W120 007ad370 BW1M100 1061e11c LHDLL::LHDLL(const char*)
+	// BW1W120 007ad370 BW1M119 010da550 (LHCombined Release)
 	LHDLL(const char* library_path);
 
 	// Non-virtual Destructors
 
-	// BW1W120 007ad4c0 BW1M100 1061e14c LHDLL::~LHDLL(void)
+	// BW1W120 007ad4c0 BW1M119 010da420 (LHCombined Release)
 	~LHDLL();
 
 	virtual void GetAPI() = 0;

@@ -79,84 +79,88 @@ struct LHScreen
 
 	// Constructors
 
-	// BW1W120 007dce20 BW1M100 1014e500 LHScreen::LHScreen(void)
+	// BW1W120 007dce20 BW1M119 0114f160 (LHCombined Release)
 	LHScreen();
 
 	// Non-virtual methods
 
-	// BW1W120 007dd850 LHScreen::~LHScreen(void)
-	// BW1W120 007dd8f0 BW1M100 1014d890 LHScreen::`vbase destructor'(void)
+	// BW1W120 007dd850 BW1M119 0114e510 (LHCombined Release)
+	// LHScreen::`vbase destructor'(void)
+	// BW1W120 007dd8f0
 	~LHScreen();
-	// BW1W120 007dd020 LHScreen::ResetDisplay(void)
+	// BW1W120 007dd020 BW1M119 011c9768 (LHCombined Release)
 	void ResetDisplay();
-	// BW1W120 007dd0d0 BW1M100 1014e420 LHScreen::SetFullscreenMode(int)
+	// BW1W120 007dd0d0 BW1M119 0114f080 (LHCombined Release)
 	void SetFullscreenMode(int mode);
-	// BW1W120 007dd130 LHScreen::DDrawInitialise(void)
+	// BW1W120 007dd130 BW1M119 0114f000 (LHCombined Release)
 	int DDrawInitialise();
-	// BW1W120 007dd360 LHScreen::DDrawInitialiseDevices(void)
+	// BW1W120 007dd360 BW1M119 0114ea10 (LHCombined Release)
 	int DDrawInitialiseDevices();
-	// BW1W120 007dd930 LHScreen::SetMSTitle(char *)
+	// BW1W120 007dd930 BW1M119 0114e4a0 (LHCombined Release)
 	int SetMSTitle(char* title);
-	// BW1W120 007dd960 LHScreen::DirectDrawReleaseSurface(void)
+	// BW1W120 007dd960 BW1M119 0114e380 (LHCombined Release)
 	int DirectDrawReleaseSurface();
-	// BW1W120 007dd9c0 LHScreen::Lock(unsigned long)
+	// BW1W120 007dd9c0 BW1M119 0114e310 (LHCombined Release)
 	int Lock(unsigned long param_1);
-	// BW1W120 007dda90 LHScreen::Unlock(void)
+	// BW1W120 007dda90 BW1M119 0114e250 (LHCombined Release)
 	int Unlock();
-	// BW1W120 007ddad0 LHScreen::Close(void)
+	// BW1W120 007ddad0 BW1M119 0114e1c0 (LHCombined Release)
 	int Close();
-	// BW1W120 007ddb10 LHScreen::SetRGBInfo(_DDPIXELFORMAT *)
+	// BW1W120 007ddb10 BW1M119 0114e080 (LHCombined Release)
 	void SetRGBInfo(_DDPIXELFORMAT* pixel_format);
-	// BW1W120 007ddc40 LHScreen::Open(unsigned short, unsigned short, unsigned char)
+	// BW1W120 007ddc40 BW1M119 0114de50 (LHCombined Release)
 	int Open(uint16_t width, uint16_t height, uint8_t depth);
-	// BW1W120 007ddcb0 LHScreen::ChangeMode(unsigned short, unsigned short, unsigned char)
+	// BW1W120 007ddcb0 BW1M119 0114d850 (LHCombined Release)
 	int ChangeMode(uint16_t width, uint16_t height, uint8_t depth);
-	// BW1W120 007de090 LHScreen::Flip(int)
+	// BW1W120 007de090 BW1M119 0114d6c0 (LHCombined Release)
 	int Flip(int param_1);
-	// BW1W120 007de200 LHScreen::Clear(LHColor *, LHRegion *)
+	// BW1W120 007de200 BW1M119 0114d500 (LHCombined Release)
 	int Clear(LHColor* colour, LHRegion* region);
-	// BW1W120 007de2f0 LHScreen::SetMSWindowHandle(OpaqueWindowPtr *)
+	// BW1W120 007de2f0 BW1M119 0114d470 (LHCombined Release)
 	void SetMSWindowHandle(OpaqueWindowPtr* window);
-	// BW1W120 007de320 LHScreen::SetTimingStats(void)
+	// BW1W120 007de320 BW1M119 01009bf0 (LHCombined Release)
 	uint16_t SetTimingStats();
-	// BW1W120 007de580 LHScreen::LHFlip(int)
+	// BW1W120 007de580 BW1M119 0114d2f0 (LHCombined Release)
 	int LHFlip(int param_1);
-	// BW1W120 007de630 LHScreen::BlitToMSWindow(LHRegion *, LHCoord *, int)
+	// BW1W120 007de630 BW1M119 0114d1d0 (LHCombined Release)
 	int BlitToMSWindow(LHRegion* region, LHCoord* coord, int param_3);
-	// BW1W120 007de6c0 LHScreen::GetMSDesktopParams(unsigned short *, unsigned short *, unsigned char *)
+	// BW1W120 007de6c0 BW1M119 0114d180 (LHCombined Release)
 	int GetMSDesktopParams(uint16_t* width, uint16_t* height, uint8_t* depth);
-	// BW1W120 007de6d0 LHScreen::AltTabDeactivate(void)
+	// BW1W120 007de6d0 BW1M119 0114d100 (LHCombined Release)
 	void AltTabDeactivate();
-	// BW1W120 007de6f0 LHScreen::AltTabReactivate(void)
+	// BW1W120 007de6f0 BW1M119 0114d050 (LHCombined Release)
 	void AltTabReactivate();
-	// BW1W120 007de730 LHScreen::RunInMSWindow(int)
+	// BW1W120 007de730 BW1M119 0114cef0 (LHCombined Release)
 	int RunInMSWindow(int param_1);
-	// BW1W120 007de820 LHScreen::SetMSOffset(void)
+	// BW1W120 007de820 BW1M119 0114ce00 (LHCombined Release)
 	int SetMSOffset();
-	// BW1W120 007de930 LHScreen::SaveBitmap(void)
+	// BW1W120 007de930 BW1M119 0114cc60 (LHCombined Release)
 	int SaveBitmap();
-	// BW1W120 007dec80 LHScreen::GetAvailableVidMem(void)
+	// BW1W120 007dec80 BW1M119 0114c650 (LHCombined Release)
 	uint32_t GetAvailableVidMem();
-	// BW1W120 007decc0 LHScreen::WaitForVerticalBlank(void)
+	// BW1W120 007decc0 BW1M119 0114c5d0 (LHCombined Release)
 	int WaitForVerticalBlank();
-	// BW1W120 007ded50 LHScreen::IsAppMinimized(void)
+	// BW1W120 007ded50 BW1M119 0103d180 (LHCombined Release)
 	int IsAppMinimized();
-	// BW1W120 007e8a20 LHScreen::Depth(void)
+	// BW1W120 007e8a20 BW1M119 01145980 (LHCombined Release)
 	uint8_t Depth() { return depth; }
-	// BW1W120 007e9df0 LHScreen::MaxDepth(void)
+	// BW1W120 007e9df0
 	uint8_t MaxDepth() { return 32; }
 
 	// Static members
 
-	// BW1W120 00e90650 guards all screen/mouse drawing (initialized by LHMouse::LHMouse)
+	// Guards all screen/mouse drawing (initialized by LHMouse::LHMouse)
+	// BW1W120 00e90650
 	static CRITICAL_SECTION CriticalSection;
-	// BW1W120 00e8c5e0 set by AltTabDeactivate, cleared by AltTabReactivate; the message
+	// Set by AltTabDeactivate, cleared by AltTabReactivate; the message
 	// pump (ProcessWindowMessages) spins while it is set. TODO: fabricated name.
+	// BW1W120 00e8c5e0
 	static int AltTabbedAway;
 };
 static_assert(sizeof(LHScreen) == 0x1b4, "Data type is of wrong size");
 
-// BW1W120 007dee00. Resets x87 state and selects single precision; original name unrecovered.
+// Resets x87 state and selects single precision; original name unrecovered.
+// BW1W120 007dee00
 void fn_007DEE00();
 
 #endif /* BW1_DECOMP_LH_SCREEN_INCLUDED_H */

@@ -40,89 +40,89 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055cd50 BW1M100 10153360 StoragePit::_dt(void)
+	// BW1W120 0055cd50 BW1M119 0115b6a0
 	virtual ~StoragePit();
-	// BW1W120 00732c10 BW1M100 101532f0 StoragePit::Delete(void)
+	// BW1W120 00732c10 BW1M119 0115b630
 	virtual void Delete();
-	// BW1W120 00732c30 BW1M100 101531a0 StoragePit::ToBeDeleted(int)
+	// BW1W120 00732c30 BW1M119 0115b4d0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00732f60 BW1M100 10003d60 StoragePit::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
+	// BW1W120 00732f60 BW1M119 01003d50
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
 	                             const MapCoords* param_5, int param_6);
-	// BW1W120 007332a0 BW1M100 10152550 StoragePit::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
+	// BW1W120 007332a0 BW1M119 0115a790
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
-	// BW1W120 0055cd40 BW1M100 101515a0 StoragePit::GetDebugText(void)
+	// BW1W120 0055cd40 BW1M119 01159850
 	virtual char* GetDebugText();
-	// BW1W120 00733920 BW1M100 10151890 StoragePit::Load(GameOSFile &)
+	// BW1W120 00733920 BW1M119 01159b00
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 007338d0 BW1M100 10151930 StoragePit::Save(GameOSFile &)
+	// BW1W120 007338d0 BW1M119 01159ba0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055cd30 BW1M100 10151560 StoragePit::GetSaveType(void)
+	// BW1W120 0055cd30 BW1M119 01159810
 	virtual uint32_t GetSaveType();
-	// BW1W120 0055ccb0 BW1M100 inlined StoragePit::GetArrivePos(void)
+	// BW1W120 0055ccb0 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
-	// BW1W120 0055ccf0 BW1M100 10151430 StoragePit::IsCastShadowAtNight(void)
+	// BW1W120 0055ccf0 BW1M119 011596e0
 	virtual uint32_t IsCastShadowAtNight();
-	// BW1W120 0055cd10 BW1M100 101514c0 StoragePit::CanBeEatenByCreature(Creature *)
+	// BW1W120 0055cd10 BW1M119 01159770
 	virtual uint32_t CanBeEatenByCreature(Creature* param_1);
-	// BW1W120 0055cd00 BW1M100 10151470 StoragePit::CanActAsAContainer(Creature *)
+	// BW1W120 0055cd00 BW1M119 01159720
 	virtual uint32_t CanActAsAContainer(Creature* param_1);
-	// BW1W120 004e4b50 BW1M100 105e4020 StoragePit::CanHaveMagicFoodCastOnMe(Creature *)
+	// BW1W120 004e4b50 BW1M119 015ebd20
 	virtual uint32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
-	// BW1W120 004e4b70 BW1M100 105e3f50 StoragePit::CanHaveMagicWoodCastOnMe(Creature *)
+	// BW1W120 004e4b70 BW1M119 015ebc50
 	virtual uint32_t CanHaveMagicWoodCastOnMe(Creature* param_1);
-	// BW1W120 004e4990 BW1M100 105e4670 StoragePit::IsStoragePit(Creature *)
+	// BW1W120 004e4990 BW1M119 015ec370
 	virtual uint32_t IsStoragePit(Creature* param_1);
-	// BW1W120 004e4d90 BW1M100 105e3860 StoragePit::IsStoragePitWithFoodInIt(Creature *)
+	// BW1W120 004e4d90 BW1M119 015eb560
 	virtual uint32_t IsStoragePitWithFoodInIt(Creature* param_1);
-	// BW1W120 004e49a0 BW1M100 105e4580 StoragePit::IsStoragePitBelongingToAnotherPlayer(Creature *)
+	// BW1W120 004e49a0 BW1M119 015ec280
 	virtual uint32_t IsStoragePitBelongingToAnotherPlayer(Creature* param_1);
-	// BW1W120 004e49e0 BW1M100 105e44a0 StoragePit::IsStoragePitBelongingToMyPlayer(Creature *)
+	// BW1W120 004e49e0 BW1M119 015ec1a0
 	virtual uint32_t IsStoragePitBelongingToMyPlayer(Creature* param_1);
-	// BW1W120 007336b0 BW1M100 10151ed0 StoragePit::IsPoisoned(void)
+	// BW1W120 007336b0 BW1M119 0115a140
 	virtual uint32_t IsPoisoned();
-	// BW1W120 00519350 BW1M100 1001a950 StoragePit::Draw(void)
+	// BW1W120 00519350 BW1M119 0101d500
 	virtual void Draw();
-	// BW1W120 00733a20 BW1M100 101515e0 StoragePit::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
+	// BW1W120 00733a20 BW1M119 01159890
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
-	// BW1W120 00732e80 BW1M100 10152d50 StoragePit::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00732e80 BW1M119 0115b080
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 0055ccd0 BW1M100 101513a0 StoragePit::Get3DType(void)
+	// BW1W120 0055ccd0 BW1M119 01159650
 	virtual LH3DObject::ObjectType Get3DType();
-	// BW1W120 0055cd20 BW1M100 10151510 StoragePit::IsResourceStore(RESOURCE_TYPE)
+	// BW1W120 0055cd20 BW1M119 011597c0
 	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
-	// BW1W120 00733750 BW1M100 10151c60 StoragePit::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
+	// BW1W120 00733750 BW1M119 01159ed0
 	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
-	// BW1W120 00733810 BW1M100 101519d0 StoragePit::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
+	// BW1W120 00733810 BW1M119 01159c40
 	virtual bool32_t DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus& param_2);
-	// BW1W120 007335f0 BW1M100 10151f80 StoragePit::SetPoisonedResource(RESOURCE_TYPE, int)
+	// BW1W120 007335f0 BW1M119 0115a1f0
 	virtual void SetPoisonedResource(RESOURCE_TYPE param_1, int param_2);
-	// BW1W120 007335d0 BW1M100 10152110 StoragePit::SetPoisoned(int)
+	// BW1W120 007335d0 BW1M119 0115a370
 	virtual void SetPoisoned(int param_1);
-	// BW1W120 00733730 BW1M100 10151d80 StoragePit::ReactToPhysicsImpact(PhysicsObject *, bool)
+	// BW1W120 00733730 BW1M119 01159ff0
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-	// BW1W120 00733550 BW1M100 inlined StoragePit::IsPoisonedResource(void)
+	// BW1W120 00733550 BW1M119 inlined
 	virtual bool IsPoisonedResource();
-	// BW1W120 00733400 BW1M100 10002840 StoragePit::GetResourceNearestEdge(RESOURCE_TYPE, Object *, int)
+	// BW1W120 00733400 BW1M119 01002830
 	virtual MapCoords GetResourceNearestEdge(RESOURCE_TYPE type, Object* object, int index);
-	// BW1W120 00733260 BW1M100 101526e0 StoragePit::CalulateAmountOverMaximum(RESOURCE_TYPE)
+	// BW1W120 00733260 BW1M119 0115a910
 	virtual int CalulateAmountOverMaximum(RESOURCE_TYPE param_1);
-	// BW1W120 007331d0 BW1M100 101527b0 StoragePit::RemovePotFromStructure(PotStructure *)
+	// BW1W120 007331d0 BW1M119 0115a9e0
 	virtual void RemovePotFromStructure(PotStructure* param_1);
-	// BW1W120 00732cd0 BW1M100 10153060 StoragePit::DeleteDependancys(void)
+	// BW1W120 00732cd0 BW1M119 0115b390
 	virtual void DeleteDependancys();
-	// BW1W120 00732f30 BW1M100 10152b90 StoragePit::MakeFunctional(void)
+	// BW1W120 00732f30 BW1M119 0115aeb0
 	virtual void MakeFunctional();
-	// BW1W120 00733960 BW1M100 10151770 StoragePit::StopBeingFunctional(GPlayer *)
+	// BW1W120 00733960 BW1M119 01159a00
 	virtual void StopBeingFunctional(GPlayer* param_1);
-	// BW1W120 007339d0 BW1M100 10151670 StoragePit::RestartBeingFunctional(void)
+	// BW1W120 007339d0 BW1M119 01159920
 	virtual void RestartBeingFunctional();
-	// BW1W120 0055cce0 BW1M100 101513e0 StoragePit::CausesTownEmergencyIfDamaged(void)
+	// BW1W120 0055cce0 BW1M119 01159690
 	virtual bool32_t CausesTownEmergencyIfDamaged();
 
 	// Static methods
 
-	// BW1W120 00732d60 BW1M100 10152df0 StoragePit::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+	// BW1W120 00732d60 BW1M119 0115b120
 	static StoragePit* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
 	                          float food, int wood);
 };

@@ -31,47 +31,47 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055d650 BW1M100 101160f0 PotStructure::_dt(void)
+	// BW1W120 0055d650 BW1M119 0111fb70
 	virtual ~PotStructure();
-	// BW1W120 0066d960 BW1M100 1011b560 PotStructure::ToBeDeleted(int)
+	// BW1W120 0066d960 BW1M119 01124420
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0066f230 BW1M100 10116cf0 PotStructure::GetPlayer(void)
+	// BW1W120 0066f230 BW1M119 01120770
 	virtual GPlayer* GetPlayer();
-	// BW1W120 0055d620 BW1M100 10115fe0 PotStructure::SetPlayer(GPlayer *)
+	// BW1W120 0055d620 BW1M119 0111fa60
 	virtual void SetPlayer(GPlayer* param_1);
-	// BW1W120 0066ef60 BW1M100 10117830 PotStructure::GetTown(void)
+	// BW1W120 0066ef60 BW1M119 011212b0
 	virtual Town* GetTown();
-	// BW1W120 0066d9b0 BW1M100 1011b3d0 PotStructure::JustRemoveResource(RESOURCE_TYPE, unsigned long, bool *)
+	// BW1W120 0066d9b0 BW1M119 01124290
 	virtual uint32_t JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3);
-	// BW1W120 0066ef00 BW1M100 10077c70 PotStructure::GetResource(RESOURCE_TYPE)
+	// BW1W120 0066ef00 BW1M119 0107a240
 	virtual uint32_t GetResource(RESOURCE_TYPE param_1);
-	// BW1W120 0066ed70 BW1M100 10117b70 PotStructure::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
+	// BW1W120 0066ed70 BW1M119 011215c0
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
 	                             const MapCoords* param_5, int param_6);
-	// BW1W120 0066ee10 BW1M100 10117970 PotStructure::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
+	// BW1W120 0066ee10 BW1M119 011213c0
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
-	// BW1W120 0066db10 BW1M100 1011b060 PotStructure::Load(GameOSFile &)
+	// BW1W120 0066db10 BW1M119 01123f10
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0066da90 BW1M100 1011b150 PotStructure::Save(GameOSFile &)
+	// BW1W120 0066da90 BW1M119 01124000
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055d640 BW1M100 101160a0 PotStructure::CanBeThrownByPlayer(void)
+	// BW1W120 0055d640 BW1M119 0111fb20
 	virtual uint32_t CanBeThrownByPlayer();
-	// BW1W120 0066db90 BW1M100 1011afa0 PotStructure::CallVirtualFunctionsForCreation(const MapCoords&)
+	// BW1W120 0066db90 BW1M119 01123e50
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1W120 0066da30 BW1M100 1011b250 PotStructure::IsResourceStore(RESOURCE_TYPE)
+	// BW1W120 0066da30 BW1M119 01124100
 	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
-	// BW1W120 0066d480 BW1M100 inlined PotStructure::SetSize(void)
+	// BW1W120 0066d480 BW1M119 inlined
 	virtual void SetSize();
-	// BW1W120 0066da00 BW1M100 10077bc0 PotStructure::IsPartOfStructure(void)
+	// BW1W120 0066da00 BW1M119 0107a190
 	virtual bool IsPartOfStructure();
-	// BW1W120 0055d530 BW1M100 inlined PotStructure::SetSpeedUp(int)
+	// BW1W120 0055d530 BW1M119 inlined
 	virtual void SetSpeedUp(int param_1);
-	// BW1W120 0055d630 BW1M100 10116020 PotStructure::SetMultiMapFixed(MultiMapFixed *)
+	// BW1W120 0055d630 BW1M119 0111faa0
 	virtual void SetMultiMapFixed(MultiMapFixed* param_1);
 
 	// Constructors
 
-	// BW1W120 0066d910 BW1M100 1011b5e0 PotStructure::PotStructure(MapCoords const &, GPotInfo const *, unsigned long, MultiMapFixed *, Town *, int, float, float)
+	// BW1W120 0066d910 BW1M119 011244a0
 	PotStructure(const MapCoords& coords, const GPotInfo* param_2, uint32_t param_3, MultiMapFixed* param_4,
 	             Town* param_5, int param_6, float param_7, float param_8);
 };

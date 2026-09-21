@@ -27,11 +27,14 @@ extern int g_NoBackfaceCull; // fabricated
 //   float InvHalfW, InvHalfH; }.
 // BW1W120 00e839e0
 extern float g_NearClip; // fabricated
-// BW1W120 00e839f0  { Width / 2, Height / 2 }
+// { Width / 2, Height / 2 }
+// BW1W120 00e839f0
 extern float g_HalfScreen[2]; // fabricated
-// BW1W120 00e839f8  { 1 / g_HalfScreen[0], 1 / g_HalfScreen[1] }
+// { 1 / g_HalfScreen[0], 1 / g_HalfScreen[1] }
+// BW1W120 00e839f8
 extern float g_InvHalfScreen[2]; // fabricated
-// BW1W120 00c2ab00  { Width - 1, Height - 1 }
+// { Width - 1, Height - 1 }
+// BW1W120 00c2ab00
 extern float g_MaxScreen[2]; // fabricated
 
 // Pentium III / SSE fast paths for LH3DLib, built with Intel C++ 5.0. The
@@ -42,12 +45,14 @@ struct LH3DP3
 	// TODO: Table0's extent is a guess -- it is read and written from several
 	// other translation units (380 references) and the surrounding range holds
 	// many other unnamed globals, so it is probably smaller than declared.
-	// BW1W120 00e3b5e0  one clip-flag word per vertex; bits 0x02..0x20 are one plane each
+	// One clip-flag word per vertex; bits 0x02..0x20 are one plane each
+	// BW1W120 00e3b5e0
 	static int Table0[0x2080]; // fabricated
 	// Table1 runs to 0x00e839e0, where the viewport globals start: 0x40200 bytes.
 	// The 32-byte stride is confirmed independently from ClipEdge and ClipTriangle
 	// (`[esi+eax*8+0xe437e0]` with esi = 16*i).
-	// BW1W120 00e437e0  transformed vertices: D3DTLVERTEX (sx, sy, sz, rhw, colour, specular, tu, tv)
+	// Transformed vertices: D3DTLVERTEX (sx, sy, sz, rhw, colour, specular, tu, tv)
+	// BW1W120 00e437e0
 	static float Table1[0x2010][8];
 
 	// Runtime CPU capability flags written by CheckCPU. No initialiser, so ICC

@@ -28,7 +28,7 @@ class WorshipSite;
 class Citadel : public Container
 {
 public:
-	// BW1W120 00463a30 BW1M100 101b8550 Citadel::GetCreatureHomePos(void)
+	// BW1W120 00463a30 BW1M119 011c1380
 	MapCoords               GetCreatureHomePos();
 	CitadelHeart*           heart; /* 0x30 */
 	WorshipSite*            WorshipSites[0x6];
@@ -47,55 +47,55 @@ public:
 
 	// Override methods
 
-	// BW1W120 00462ae0 BW1M100 101b6d30 Citadel::_dt(void)
+	// BW1W120 00462ae0 BW1M119 011bfb50
 	virtual ~Citadel();
-	// BW1W120 00462b90 BW1M100 101ba6a0 Citadel::ToBeDeleted(int)
+	// BW1W120 00462b90 BW1M119 011c2960
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00462ad0 BW1M100 101b6ff0 Citadel::GetDebugText(void)
+	// BW1W120 00462ad0 BW1M119 011bfe10
 	virtual char* GetDebugText();
-	// BW1W120 00463dc0 BW1M100 101b71d0 Citadel::Load(GameOSFile &)
+	// BW1W120 00463dc0 BW1M119 011bff50
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00463b00 BW1M100 101b7db0 Citadel::Save(GameOSFile &)
+	// BW1W120 00463b00 BW1M119 011c0bf0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00462ac0 BW1M100 101b6fb0 Citadel::GetSaveType(void)
+	// BW1W120 00462ac0 BW1M119 011bfdd0
 	virtual uint32_t GetSaveType();
-	// BW1W120 00462a60 BW1M100 101b6e50 Citadel::GetCreatureBeliefType(void)
+	// BW1W120 00462a60 BW1M119 011bfc70
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 00462a70 BW1M100 101b6e90 Citadel::GetCreatureBeliefListType(void)
+	// BW1W120 00462a70 BW1M119 011bfcb0
 	virtual uint32_t GetCreatureBeliefListType();
-	// BW1W120 00462a80 BW1M100 101b6ed0 Citadel::GetOrigin(void)
+	// BW1W120 00462a80 BW1M119 011bfcf0
 	virtual uint32_t GetOrigin();
-	// BW1W120 004e40e0 BW1M100 105e5f60 Citadel::IsActivityObjectWhichAngerAppliesTo(Creature *)
+	// BW1W120 004e40e0 BW1M119 015edc60
 	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
-	// BW1W120 00462a90 BW1M100 101b6f00 Citadel::IsSuitableForCreatureActivity(void)
+	// BW1W120 00462a90 BW1M119 011bfd20
 	virtual uint32_t IsSuitableForCreatureActivity();
-	// BW1W120 004d1b50 BW1M100 10242fd0 Citadel::GetHowMuchCreatureWantsToLookAtMe(void)
+	// BW1W120 004d1b50 BW1M119 012478c0
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
-	// BW1W120 00462aa0 BW1M100 101b6f50 Citadel::GetText(void)
+	// BW1W120 00462aa0 BW1M119 011bfd70
 	virtual const char* GetText();
-	// BW1W120 00462ab0 BW1M100 101b6f80 Citadel::IsCitadel(void)
+	// BW1W120 00462ab0 BW1M119 011bfda0
 	virtual uint32_t IsCitadel();
 
 	// Static methods
 
-	// BW1W120 00463240 BW1M100 101b9230 Citadel::CreateCitadel(MapCoords const &, GCitadelHeartInfo const *, unsigned char, float, float)
+	// BW1W120 00463240 BW1M119 011c2110
 	static Citadel* CreateCitadel(const MapCoords& coords, const GCitadelHeartInfo* info, uint8_t param_3,
 	                              float param_4, float param_5);
 
 	// Non-virtual methods
 
-	// BW1W120 00464090 BW1M100 1002dc30 Citadel::GetInfluence(void)
+	// BW1W120 00464090 BW1M119 01030680
 	float GetInfluence();
 
-	// BW1W120 00463130 BW1M100 101b9680 Citadel::AddTown(Town*)
+	// BW1W120 00463130 BW1M119 011c2570
 	void* AddTown(Town* town);
-	// BW1W120 00463190 BW1M100 101b9570 Citadel::FindTribeWorshipSite(const GTribeInfo*)
+	// BW1W120 00463190 BW1M119 011c2460
 	WorshipSite* FindTribeWorshipSite(const GTribeInfo* tribe_info);
-	// BW1W120 004631d0 Citadel::FindOrCreateWorshipSite(Town *)
+	// BW1W120 004631d0 BW1M119 011c2390
 	WorshipSite* FindOrCreateWorshipSite(Town* town);
-	// BW1W120 00463220 BW1M100 101b9420 Citadel::FindOrCreateWorshipSite(GTribeInfo const *)
+	// BW1W120 00463220 BW1M119 011c2300
 	WorshipSite* FindOrCreateWorshipSite(const GTribeInfo* tribe_info);
-	// BW1W120 004633f0 BW1M100 101b9070 Citadel::RequestANewWorshipSite(GTribeInfo const *)
+	// BW1W120 004633f0 BW1M119 011c1f50
 	WorshipSite* RequestANewWorshipSite(const GTribeInfo* tribe_info);
 };
 

@@ -7,12 +7,13 @@ class LH3DAnimatedObject;
 class SuperVillager
 {
 public:
-	// BW1W120 00eb9a08. Original Mac symbol g_first__13SuperVillager.
+	// Original Mac symbol g_first__13SuperVillager.
+	// BW1W120 00eb9a08 BW1M119 011f1e30 (LHCombined Release)
 	static SuperVillager* g_first;
 	unsigned int          field_0x0;
 	LH3DAnimatedObject*   Object;
 	SuperVillager*        Next; /* 0x8 */
-	// BW1W120 00826180 BW1M100 imported SuperVillager::Release(void)
+	// BW1W120 00826180 BW1M119 imported
 	void Release();
 };
 

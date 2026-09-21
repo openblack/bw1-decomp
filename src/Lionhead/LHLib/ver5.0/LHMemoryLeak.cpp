@@ -16,26 +16,28 @@ public:
 	char          Frames[32][512]; /* 0x0000 one 512-byte name slot per frame */
 	unsigned char Depth;           /* 0x4000 number of active frames */
 
-	// BW1W120 imported (LHLogR) LHDebugStack::Initialise(void)
+	// Imported from LHLogR.
+	// BW1W120 10002160
 	static __declspec(dllimport) int Initialise();
-	// BW1W120 imported (LHLogR) LHDebugStack::UpdateStackInformation(void)
+	// Imported from LHLogR.
+	// BW1W120 100024d0
 	__declspec(dllimport) void UpdateStackInformation();
 
 	inline unsigned char GetDepth() const { return Depth; }
 	inline const char*   GetFunctionName(int i) { return (unsigned char)i < Depth ? Frames[(unsigned char)i] : NULL; }
 };
 
-// BW1W120 00e8c5e8 gDebugStack
+// BW1W120 00e8c5e8
 extern LHDebugStack gDebugStack;
-// BW1W120 00e905e8 gDebugStackDepth (= gDebugStack + 0x4000)
+// BW1W120 00e905e8
 extern int gDebugStackDepth;
 
-// BW1W120 00e905ec gMemoryLeakLogFile
+// BW1W120 00e905ec
 // Global (not static): also referenced directly from Black/BaseInfo.cpp (Base::operator new/delete).
 FILE* gMemoryLeakLogFile;
-// BW1W120 00e905f8 gDebugStackInitialised
+// BW1W120 00e905f8
 static bool gDebugStackInitialised;
-// BW1W120 00e905ea gMemoryLeakList_Cleaned
+// BW1W120 00e905ea
 static unsigned char gMemoryLeakListCleaned;
 
 class MemoryLeakRegistry
@@ -60,8 +62,9 @@ MemoryLeakRegistry::MemoryLeakRegistry()
 	Head = NULL;
 }
 
-// BW1W120 00e905f0/f4 gMemoryLeakList_Head/_Count
+// Head at 00e905f0, count at 00e905f4.
 // Global (not static): also referenced directly from Black/BaseInfo.cpp (Base::operator new/delete).
+// BW1W120 00e905f0
 MemoryLeakRegistry gMemoryLeakList;
 
 template <> int LHLinkedList<char*>::AddToEnd(char* val)

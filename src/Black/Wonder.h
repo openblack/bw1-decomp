@@ -28,52 +28,52 @@ public:
 
 	// Override methods
 
-	// BW1W120 00561220 BW1M100 10161090 Wonder::_dt(void)
+	// BW1W120 00561220 BW1M119 01169330
 	virtual ~Wonder();
-	// BW1W120 00778e40 BW1M100 10161bc0 Wonder::ToBeDeleted(int)
+	// BW1W120 00778e40 BW1M119 01169e60
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00561210 BW1M100 101612d0 Wonder::GetDebugText(void)
+	// BW1W120 00561210 BW1M119 01169570
 	virtual char* GetDebugText();
-	// BW1W120 007790f0 BW1M100 10161470 Wonder::Load(GameOSFile &)
+	// BW1W120 007790f0 BW1M119 01169710
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00779080 BW1M100 10161540 Wonder::Save(GameOSFile &)
+	// BW1W120 00779080 BW1M119 011697e0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00561200 BW1M100 10161290 Wonder::GetSaveType(void)
+	// BW1W120 00561200 BW1M119 01169530
 	virtual uint32_t GetSaveType();
-	// BW1W120 005611b0 BW1M100 inlined Wonder::GetArrivePos(MapCoords *)
+	// BW1W120 005611b0 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
-	// BW1W120 005611e0 BW1M100 10161200 Wonder::CanActAsAContainer(Creature *)
+	// BW1W120 005611e0 BW1M119 011694a0
 	virtual uint32_t CanActAsAContainer(Creature* param_1);
-	// BW1W120 005611f0 BW1M100 10161250 Wonder::IsStoragePit(Creature *)
+	// BW1W120 005611f0 BW1M119 011694f0
 	virtual uint32_t IsStoragePit(Creature* param_1);
-	// BW1W120 00779160 BW1M100 101613c0 Wonder::CallVirtualFunctionsForCreation(const MapCoords&)
+	// BW1W120 00779160 BW1M119 01169660
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1W120 00779190 BW1M100 10161310 Wonder::Get3DType(void)
+	// BW1W120 00779190 BW1M119 011695b0
 	virtual LH3DObject::ObjectType Get3DType();
-	// BW1W120 00778f30 BW1M100 10161920 Wonder::Built(void)
+	// BW1W120 00778f30 BW1M119 01169bc0
 	virtual bool32_t Built();
-	// BW1W120 00779070 BW1M100 10161620 Wonder::SetPower(float)
+	// BW1W120 00779070 BW1M119 011698c0
 	virtual void SetPower(float param_1);
-	// BW1W120 00778fc0 BW1M100 10161700 Wonder::AddToPlayer(void)
+	// BW1W120 00778fc0 BW1M119 011699a0
 	virtual void AddToPlayer();
-	// BW1W120 00778f50 BW1M100 10161810 Wonder::RemoveFromPlayer(void)
+	// BW1W120 00778f50 BW1M119 01169ab0
 	virtual void RemoveFromPlayer();
 
 	// Static methods
 
-	// BW1W120 00778e80 BW1M100 101619e0 Wonder::Create(const MapCoords&, const GAbodeInfo*, Town*, float, float, float, int)
+	// BW1W120 00778e80 BW1M119 01169c80
 	static Wonder* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
 	                      float food, int wood);
 
 	// Constructors
 
-	// BW1W120 00778e00 BW1M100 10161c40 Wonder::Wonder(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+	// BW1W120 00778e00 BW1M119 01169ee0
 	Wonder(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
 	       int wood);
 
 	// Non-virtual methods
 
-	// BW1W120 00779060 BW1M100 inlined Wonder::SetToZero(void)
+	// BW1W120 00779060 BW1M119 inlined
 	void SetToZero();
 };
 

@@ -25,7 +25,7 @@ extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_ST
 // loads it from .rdata rather than folding the literal, so it must be a variable).
 const float VillagerReactionFloat10p0 = 10.0f;
 
-// BW1W120 00763390
+// BW1W120 00763390 BW1M119 01023dd0
 bool32_t Villager::IsAvailableForReaction(REACTION reaction)
 {
 	VILLAGER_STATES state = (VILLAGER_STATES)(GetFinalState() & VILLAGER_STATE_LAST_STATE);
@@ -41,20 +41,20 @@ bool32_t Villager::IsAvailableForReaction(REACTION reaction)
 	return 0;
 }
 
-// BW1W120 00763410
+// BW1W120 00763410 BW1M119 01011930
 bool32_t Villager::IsAvailableForBeliefButNotReaction(REACTION param_1)
 {
 	return false;
 }
 
-// BW1W120 00763440
+// BW1W120 00763440 BW1M119 inlined
 void Villager::AddReaction(Reaction* reaction, VILLAGER_STATES state)
 {
 	UpdateHowImpressed(reaction, 1);
 	Living::AddReaction(reaction, state);
 }
 
-// BW1W120 00763470
+// BW1W120 00763470 BW1M119 0159bd20
 void Villager::StorePreviousState()
 {
 	// TODO: 92.5% - semantically exact; only eax/ecx allocation swap between the state value
@@ -68,10 +68,10 @@ void Villager::StorePreviousState()
 	this->action.SetState(LIVING_ACTION_INDEX_PREVIOUS, stateToStore);
 }
 
-// BW1W120 007634c0
+// BW1W120 007634c0 BW1M119 010071b0
 void Villager::UpdateHowImpressed(Reaction* param_1, int param_2) {}
 
-// BW1W120 007637d0
+// BW1W120 007637d0 BW1M119 0159ba30
 void Villager::StopReacting()
 {
 	if ((uint8_t)Living::GetTopState() == VILLAGER_STATE_DANCE_WHILE_REACTING)
@@ -84,32 +84,32 @@ void Villager::StopReacting()
 	Living::StopReacting();
 }
 
-// BW1W120 00763800
+// BW1W120 00763800 BW1M119 0101cf90
 bool32_t Villager::SetupMoveToPos(const MapCoords& coord, VILLAGER_STATES end_state)
 {
 	return Living::SetupMoveToPos(coord, end_state);
 }
 
-// BW1W120 00763820
+// BW1W120 00763820 BW1M119 0159b750
 void Villager::SetupReactToMagicTree(GameThingWithPos* thing, Reaction* reaction)
 {
 	AddReaction(reaction, VILLAGER_STATE_INITIALISE_BEWILDERED_BY_MAGIC_TREE_REACTION);
 	this->field_0xbc = thing;
 }
 
-// BW1W120 00763850
+// BW1W120 00763850 BW1M119 0159b510
 uint8_t Villager::FleeFromPredatorPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 00763980
+// BW1W120 00763980 BW1M119 0159b490
 uint8_t Villager::ReactToScaffoldPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 00763990
+// BW1W120 00763990 BW1M119 0159b390
 void Villager::SetupFleeFromPredator(GameThingWithPos* thing, Reaction* reaction)
 {
 	if ((uint8_t)GetFinalState() == VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING)
@@ -121,34 +121,34 @@ void Villager::SetupFleeFromPredator(GameThingWithPos* thing, Reaction* reaction
 	this->field_0xbc = thing;
 }
 
-// BW1W120 007639d0
+// BW1W120 007639d0 BW1M119 0159b240
 void Villager::SetupReactToFlyingObject(GameThingWithPos* param_1, Reaction* param_2) {}
 
-// BW1W120 00763aa0
+// BW1W120 00763aa0 BW1M119 0159b1d0
 void Villager::SetupLookAtObject(GameThingWithPos* thing, Reaction* reaction)
 {
 	Living::SetupLookAtObject(thing, reaction);
 }
 
-// BW1W120 00763ac0
+// BW1W120 00763ac0 BW1M119 0159b160
 void Villager::SetupLookAtSpell(GameThingWithPos* thing, Reaction* reaction)
 {
 	Living::SetupLookAtObject(thing, reaction);
 }
 
-// BW1W120 00763ae0
+// BW1W120 00763ae0 BW1M119 0159b0e0
 void Villager::SetupLookAtNiceSpell(GameThingWithPos* thing, Reaction* reaction)
 {
 	SetupLookAtSpell(thing, reaction);
 }
 
-// BW1W120 00763b00
+// BW1W120 00763b00 BW1M119 0159b010
 bool32_t Villager::FleeingFromObjectReaction()
 {
 	return 0;
 }
 
-// BW1W120 00763b40
+// BW1W120 00763b40 BW1M119 0159ade0
 bool32_t Villager::FleeingFromPredatorReaction()
 {
 	// TODO: needs the coming-towards-me helper at 0x5f1e60 named (its leg of the hide
@@ -191,7 +191,7 @@ bool32_t Villager::FleeingFromPredatorReaction()
 	return 1;
 }
 
-// BW1W120 00763cb0
+// BW1W120 00763cb0 BW1M119 0159ac30
 bool32_t Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos* thing)
 {
 	// TODO: the distance callee is the unnamed GetDistanceInMetres copy at 0x74cd70;
@@ -229,7 +229,7 @@ bool32_t Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos* thing)
 	return 0;
 }
 
-// BW1W120 00763d90
+// BW1W120 00763d90 BW1M119 0159a9d0
 bool32_t Villager::GoAndHideInNearbyBuilding()
 {
 	// TODO: the distance callee is the unnamed 2D twin of GetDistanceInMetres at 0x74cd50;
@@ -274,7 +274,7 @@ bool32_t Villager::GoAndHideInNearbyBuilding()
 	return 1;
 }
 
-// BW1W120 00763f00
+// BW1W120 00763f00 BW1M119 0159a8b0
 Abode* Villager::GetAbodeToHideInAtPos(const MapCoords& pos)
 {
 	// TODO: body is structurally exact. Remaining diffs are Abode vtable/return-type issues
@@ -294,7 +294,7 @@ Abode* Villager::GetAbodeToHideInAtPos(const MapCoords& pos)
 	return NULL;
 }
 
-// BW1W120 00763f80
+// BW1W120 00763f80 BW1M119 0159a700
 bool32_t Villager::LookToSeeIfItIsSafe()
 {
 	// TODO: the distance callee is the unnamed 2D twin of GetDistanceInMetres at 0x74cd50;
@@ -330,7 +330,7 @@ bool32_t Villager::LookToSeeIfItIsSafe()
 	return 1;
 }
 
-// BW1W120 007640a0
+// BW1W120 007640a0 BW1M119 0159a610
 uint32_t Villager::NumGameTurnsToReactToPredatorFunction(GameThingWithPos* thing, uint32_t param_2, float param_3)
 {
 	VILLAGER_STATES state = GetFinalState();
@@ -342,7 +342,7 @@ uint32_t Villager::NumGameTurnsToReactToPredatorFunction(GameThingWithPos* thing
 	return 0x7fffffff;
 }
 
-// BW1W120 007640e0
+// BW1W120 007640e0 BW1M119 0159a520
 uint32_t Villager::NumGameTurnsBeforeReactingAgainToPredatorFunction(GameThingWithPos* thing, uint32_t param_2,
                                                                      float param_3)
 {
@@ -353,51 +353,51 @@ uint32_t Villager::NumGameTurnsBeforeReactingAgainToPredatorFunction(GameThingWi
 	return Living::NumGameTurnsBeforeReactingAgainToPredatorFunction(thing, param_2, param_3);
 }
 
-// BW1W120 00764110
+// BW1W120 00764110 BW1M119 0159a490
 uint32_t Villager::NumGameTurnsToReactToBurningObjectFunction(GameThingWithPos* thing, uint32_t param_2, float param_3)
 {
 	return StandardNumGameTurnsToReactFunction(thing, param_2, param_3);
 }
 
-// BW1W120 00764130
+// BW1W120 00764130 BW1M119 0159a360
 uint32_t Villager::NumGameTurnsBeforeReactingAgainToBurningObjectFunction(GameThingWithPos* param_1, uint32_t param_2,
                                                                           float param_3)
 {
 	return 0;
 }
 
-// BW1W120 007641a0
+// BW1W120 007641a0 BW1M119 0159a220
 uint32_t Villager::NumGameTurnsToReactToShieldFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3)
 {
 	return 0;
 }
 
-// BW1W120 00764230
+// BW1W120 00764230 BW1M119 0159a0b0
 uint32_t Villager::NumGameTurnsBeforeReactingToShieldAgainFunction(GameThingWithPos* param_1, uint32_t param_2,
                                                                    float param_3)
 {
 	return 0;
 }
 
-// BW1W120 007642c0
+// BW1W120 007642c0 BW1M119 01599fd0
 bool32_t Villager::LookingAtObjectReaction()
 {
 	return false;
 }
 
-// BW1W120 00764310
+// BW1W120 00764310 BW1M119 01599f60
 bool32_t Villager::FleeingAndLookingAtObjectReaction()
 {
 	return LookingAtObjectReaction();
 }
 
-// BW1W120 00764320
+// BW1W120 00764320 BW1M119 01599ec0
 bool32_t Villager::FollowingObjectReaction()
 {
 	return false;
 }
 
-// BW1W120 00764350
+// BW1W120 00764350 BW1M119 01599da0
 bool32_t Villager::InspectObjectReaction()
 {
 	// TODO: needs the game-turns-per-second global at 0xd01a38 named (it drives the
@@ -405,7 +405,7 @@ bool32_t Villager::InspectObjectReaction()
 	return false;
 }
 
-// BW1W120 00764410
+// BW1W120 00764410 BW1M119 01599c90
 bool32_t Villager::PerformInspectionReaction()
 {
 	if (!this->field_0xbc->IsAvailable())
@@ -427,7 +427,7 @@ bool32_t Villager::PerformInspectionReaction()
 	return 1;
 }
 
-// BW1W120 00764490
+// BW1W120 00764490 BW1M119 01599a10
 bool32_t Villager::ApproachObjectReaction()
 {
 	// TODO: needs the helpers at 0x74d3e0/0x74d400 (X/Z offset from angle), 0x74e1d0/0x74e200
@@ -435,7 +435,7 @@ bool32_t Villager::ApproachObjectReaction()
 	return false;
 }
 
-// BW1W120 00764610
+// BW1W120 00764610 BW1M119 01599940
 bool32_t Villager::InitialiseTellOthersAboutObject()
 {
 	if (!this->field_0xbc->IsAvailable())
@@ -448,55 +448,55 @@ bool32_t Villager::InitialiseTellOthersAboutObject()
 	return true;
 }
 
-// BW1W120 00764650
+// BW1W120 00764650 BW1M119 015998f0
 bool32_t Villager::TellOthersAboutInterestingObject()
 {
 	return false;
 }
 
-// BW1W120 00764660
+// BW1W120 00764660 BW1M119 015998a0
 bool32_t Villager::InitialiseLookAroundForVillagerToTell()
 {
 	return false;
 }
 
-// BW1W120 00764670
+// BW1W120 00764670 BW1M119 01599850
 bool32_t Villager::LookAroundForVillagerToTell()
 {
 	return false;
 }
 
-// BW1W120 00764680
+// BW1W120 00764680 BW1M119 01599810
 bool32_t Villager::ApproachVillagerToTalkTo()
 {
 	return false;
 }
 
-// BW1W120 00764690
+// BW1W120 00764690 BW1M119 015997c0
 bool32_t Villager::TellParticularVillagerAboutObject()
 {
 	return false;
 }
 
-// BW1W120 007646a0
+// BW1W120 007646a0 BW1M119 01599710
 bool32_t Villager::GotoFoodReaction()
 {
 	return false;
 }
 
-// BW1W120 007646d0
+// BW1W120 007646d0 BW1M119 01599630
 bool32_t Villager::GotoWoodReaction()
 {
 	return false;
 }
 
-// BW1W120 00764720
+// BW1W120 00764720 BW1M119 01599340
 bool32_t Villager::ArrivesAtWoodReaction()
 {
 	return false;
 }
 
-// BW1W120 007648d0
+// BW1W120 007648d0 BW1M119 01599220
 uint32_t Villager::StandardNumGameTurnsBeforeReactingToWoodAgainFunction(GameThingWithPos* thing, uint32_t param_2,
                                                                          float param_3)
 {
@@ -509,13 +509,13 @@ uint32_t Villager::StandardNumGameTurnsBeforeReactingToWoodAgainFunction(GameThi
 	return StandardNumGameTurnsBeforeReactingAgainFunction(thing, param_2, param_3);
 }
 
-// BW1W120 00764920
+// BW1W120 00764920 BW1M119 01598f50
 bool32_t Villager::ArrivesAtFoodReaction()
 {
 	return false;
 }
 
-// BW1W120 00764aa0
+// BW1W120 00764aa0 BW1M119 01598de0
 bool32_t Villager::InitialiseBewilderedByMagicTreeReaction()
 {
 	// TODO: the tail needs Tree::GetForest fixed — it is declared void and non-virtual, but
@@ -534,13 +534,13 @@ bool32_t Villager::InitialiseBewilderedByMagicTreeReaction()
 	return 1;
 }
 
-// BW1W120 00764b50
+// BW1W120 00764b50 BW1M119 01598b10
 bool32_t Villager::PerformBewilderedByMagicTreeReaction()
 {
 	return false;
 }
 
-// BW1W120 00764d10
+// BW1W120 00764d10 BW1M119 01598a30
 bool32_t Villager::TurnToFaceMagicTree()
 {
 	if (this->field_0xbc == NULL || !this->field_0xbc->IsAvailable())
@@ -556,7 +556,7 @@ bool32_t Villager::TurnToFaceMagicTree()
 	return true;
 }
 
-// BW1W120 00764d70
+// BW1W120 00764d70 BW1M119 01598910
 bool32_t Villager::LookAtMagicTree()
 {
 	if (this->field_0xbc != NULL && this->field_0xbc->IsAvailable())
@@ -582,19 +582,19 @@ bool32_t Villager::LookAtMagicTree()
 	return 1;
 }
 
-// BW1W120 00764df0
+// BW1W120 00764df0 BW1M119 01598700
 bool Villager::IsInterestedInFoodObject(Object* param_1)
 {
 	return false;
 }
 
-// BW1W120 00764f60
+// BW1W120 00764f60 BW1M119 01598410
 bool Villager::IsInterestedInWoodObject(Object* param_1)
 {
 	return false;
 }
 
-// BW1W120 00765140
+// BW1W120 00765140 BW1M119 01598350
 bool32_t Villager::ApproachHandReaction()
 {
 	if (!this->field_0xbc->IsAvailable())
@@ -608,52 +608,52 @@ bool32_t Villager::ApproachHandReaction()
 	return true;
 }
 
-// BW1W120 007651a0
+// BW1W120 007651a0 BW1M119 015981d0
 bool32_t Villager::FindNearbyVillagerWhoIsntReacting()
 {
 	return false;
 }
 
-// BW1W120 00765260
+// BW1W120 00765260 BW1M119 01598070
 uint8_t Villager::ReactToFlyingObjectPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 00765320
+// BW1W120 00765320 BW1M119 01597ef0
 bool32_t Villager::ArrivesAtPickupBallReaction()
 {
 	return false;
 }
 
-// BW1W120 007653f0
+// BW1W120 007653f0 BW1M119 01597e20
 bool32_t Villager::WatchFlyingObjectReaction()
 {
 	return false;
 }
 
-// BW1W120 00765450
+// BW1W120 00765450 BW1M119 01597cf0
 bool32_t Villager::PointAtFlyingObjectReaction()
 {
 	return false;
 }
 
-// BW1W120 00765540
+// BW1W120 00765540 BW1M119 01597b60
 void Villager::SetupReactToFire(GameThingWithPos* param_1, Reaction* param_2) {}
 
-// BW1W120 00765610
+// BW1W120 00765610 BW1M119 01597830
 uint8_t Villager::ReactToFirePriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 00765870
+// BW1W120 00765870 BW1M119 015974b0
 bool32_t Villager::ReactToFire()
 {
 	return false;
 }
 
-// BW1W120 00765b70
+// BW1W120 00765b70 BW1M119 015973d0
 void Villager::SetupReactToWood(GameThingWithPos* thing, Reaction* reaction)
 {
 	Object* wood = dynamic_cast<Object*>(thing);
@@ -661,25 +661,25 @@ void Villager::SetupReactToWood(GameThingWithPos* thing, Reaction* reaction)
 	this->field_0xbc = wood;
 }
 
-// BW1W120 00765bb0
+// BW1W120 00765bb0 BW1M119 01597250
 uint8_t Villager::ReactToMagicShieldPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 00765c60
+// BW1W120 00765c60 BW1M119 01596ff0
 void Villager::SetupReactToMagicShield(GameThingWithPos* param_1, Reaction* param_2) {}
 
-// BW1W120 00765e00
+// BW1W120 00765e00 BW1M119 01596d20
 bool32_t Villager::AmazedByMagicShieldReaction()
 {
 	return false;
 }
 
-// BW1W120 00766010
+// BW1W120 00766010 BW1M119 01596b30
 void Villager::SetupReactToNewBuilding(GameThingWithPos* param_1, Reaction* param_2) {}
 
-// BW1W120 00766130
+// BW1W120 00766130 BW1M119 01596a00
 bool32_t Villager::DanceWhileReacting()
 {
 	MapCoords dancePos;
@@ -697,7 +697,7 @@ bool32_t Villager::DanceWhileReacting()
 	return 1;
 }
 
-// BW1W120 00766200
+// BW1W120 00766200 BW1M119 01596920
 uint8_t Villager::ReactToTeleportPriority(Reaction* reaction_1, Reaction* reaction_2)
 {
 	// TODO: tail deferred — MagicTeleport::ShouldLivingThingReact is declared void but the
@@ -709,7 +709,7 @@ uint8_t Villager::ReactToTeleportPriority(Reaction* reaction_1, Reaction* reacti
 	return 0;
 }
 
-// BW1W120 00766250
+// BW1W120 00766250 BW1M119 015967f0
 void Villager::SetupReactToTeleport(GameThingWithPos* thing, Reaction* reaction)
 {
 	// TODO: after GetFinalDestPos the target calls the MagicTeleport helper at 0x5fc6a0 with
@@ -726,7 +726,7 @@ void Villager::SetupReactToTeleport(GameThingWithPos* thing, Reaction* reaction)
 	}
 }
 
-// BW1W120 007662f0
+// BW1W120 007662f0 BW1M119 01596690
 bool32_t Villager::GoToTeleportReaction()
 {
 	// TODO: target materialises &teleport->Pos mid-copy where ours folds it into
@@ -745,13 +745,13 @@ bool32_t Villager::GoToTeleportReaction()
 	return true;
 }
 
-// BW1W120 00766380
+// BW1W120 00766380 BW1M119 01596630
 bool32_t Villager::GoToTeleportReactionQuickly()
 {
 	return GoToTeleportReaction();
 }
 
-// BW1W120 00766390
+// BW1W120 00766390 BW1M119 01596540
 bool32_t Villager::ExitReactToTeleport(unsigned char state)
 {
 	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state))
@@ -765,7 +765,7 @@ bool32_t Villager::ExitReactToTeleport(unsigned char state)
 	return ExitReaction(state);
 }
 
-// BW1W120 007663f0
+// BW1W120 007663f0 BW1M119 01596470
 bool32_t Villager::TeleportReaction()
 {
 	Reaction* reaction = GetReaction();
@@ -783,19 +783,19 @@ bool32_t Villager::TeleportReaction()
 	return 1;
 }
 
-// BW1W120 00766440
+// BW1W120 00766440 BW1M119 01596330
 uint8_t Villager::ReactToDeathPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 007664b0
+// BW1W120 007664b0 BW1M119 015960d0
 uint8_t Villager::ReactToDroppedByHandPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 007665b0
+// BW1W120 007665b0 BW1M119 01595f90
 void Villager::SetupReactToDeath(GameThingWithPos* thing, Reaction* reaction)
 {
 	if (reaction->target != NULL && reaction->target->IsCreature())
@@ -814,7 +814,7 @@ void Villager::SetupReactToDeath(GameThingWithPos* thing, Reaction* reaction)
 	this->field_0xbc = thing;
 }
 
-// BW1W120 00766620
+// BW1W120 00766620 BW1M119 01595eb0
 void Villager::SetupReactToDroppedByHand(GameThingWithPos* thing, Reaction* reaction)
 {
 	GameThingWithPos* target = reaction->target;
@@ -825,13 +825,13 @@ void Villager::SetupReactToDroppedByHand(GameThingWithPos* thing, Reaction* reac
 	}
 }
 
-// BW1W120 00766680
+// BW1W120 00766680 BW1M119 01595db0
 bool32_t Villager::PointAtDeadPerson()
 {
 	return false;
 }
 
-// BW1W120 00766700
+// BW1W120 00766700 BW1M119 01595be0
 bool32_t Villager::GoTowardsDeadPerson()
 {
 	// TODO: needs the same unnamed helpers as ApproachObjectReaction (2D distance, cos/sin,
@@ -839,7 +839,7 @@ bool32_t Villager::GoTowardsDeadPerson()
 	return false;
 }
 
-// BW1W120 00766810
+// BW1W120 00766810 BW1M119 01595b50
 bool32_t Villager::LookAtDeadPerson()
 {
 	GameThingWithPos* target = this->field_0xbc;
@@ -851,33 +851,33 @@ bool32_t Villager::LookAtDeadPerson()
 	return true;
 }
 
-// BW1W120 00766850
+// BW1W120 00766850 BW1M119 01595a70
 bool32_t Villager::MournDeadPerson()
 {
 	return false;
 }
 
-// BW1W120 007668c0
+// BW1W120 007668c0 BW1M119 015959c0
 void Villager::SetupReactToFainting(GameThingWithPos* thing, Reaction* reaction)
 {
 	this->field_0xbc = this;
 	AddReaction(reaction, VILLAGER_STATE_FAINTING_REACTION);
 }
 
-// BW1W120 007668e0
+// BW1W120 007668e0 BW1M119 01595980
 bool32_t Villager::FaintingReaction()
 {
 	return true;
 }
 
-// BW1W120 007668f0
+// BW1W120 007668f0 BW1M119 015958d0
 void Villager::SetupReactToConfused(GameThingWithPos* thing, Reaction* reaction)
 {
 	this->field_0xbc = this;
 	AddReaction(reaction, VILLAGER_STATE_START_CONFUSED_REACTION);
 }
 
-// BW1W120 00766910
+// BW1W120 00766910 BW1M119 01595850
 bool32_t Villager::StartConfusedReaction()
 {
 	this->action.TurnsSinceStateChange = 0;
@@ -885,7 +885,7 @@ bool32_t Villager::StartConfusedReaction()
 	return true;
 }
 
-// BW1W120 00766930
+// BW1W120 00766930 BW1M119 015956f0
 bool32_t Villager::ConfusedReaction()
 {
 	action.TurnsSinceStateChange++;
@@ -907,39 +907,39 @@ bool32_t Villager::ConfusedReaction()
 	return 1;
 }
 
-// BW1W120 00766a10
+// BW1W120 00766a10 BW1M119 01595670
 uint8_t Villager::ReactToFallingTreePriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 00766a20
+// BW1W120 00766a20 BW1M119 015955c0
 void Villager::SetupReactToFallingTree(GameThingWithPos* thing, Reaction* reaction)
 {
 	AddReaction(reaction, VILLAGER_STATE_FLEEING_FROM_OBJECT_REACTION);
 	this->field_0xbc = thing;
 }
 
-// BW1W120 00766a50
+// BW1W120 00766a50 BW1M119 01595550
 uint8_t Villager::ReactToCrowdPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 00766a60
+// BW1W120 00766a60 BW1M119 015954a0
 void Villager::SetupReactToCrowd(GameThingWithPos* thing, Reaction* reaction)
 {
 	AddReaction(reaction, VILLAGER_STATE_CROWD_REACTION);
 	this->field_0xbc = thing;
 }
 
-// BW1W120 00766a90
+// BW1W120 00766a90 BW1M119 01595280
 bool32_t Villager::CrowdReaction()
 {
 	return false;
 }
 
-// BW1W120 00766c60
+// BW1W120 00766c60 BW1M119 01595130
 bool32_t Villager::MoveTowardsObjectToLookAt()
 {
 	if (!this->field_0xbc->IsAvailable())
@@ -960,7 +960,7 @@ bool32_t Villager::MoveTowardsObjectToLookAt()
 	return MoveToPos();
 }
 
-// BW1W120 00766d00
+// BW1W120 00766d00 BW1M119 01595050
 bool32_t Villager::InitialiseImpressedReaction()
 {
 	if (this->field_0xbc == NULL || !this->field_0xbc->IsAvailable())
@@ -977,55 +977,55 @@ bool32_t Villager::InitialiseImpressedReaction()
 	return true;
 }
 
-// BW1W120 00766d60
+// BW1W120 00766d60 BW1M119 01594f40
 bool32_t Villager::PerformImpressedReaction()
 {
 	// TODO: needs the game-turns-per-second global at 0xd01a38 named
 	return false;
 }
 
-// BW1W120 00766df0
+// BW1W120 00766df0 BW1M119 01594e90
 uint8_t Villager::ReactToFightPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 00766e30
+// BW1W120 00766e30 BW1M119 01594de0
 void Villager::SetupReactToFight(GameThingWithPos* thing, Reaction* reaction)
 {
 	this->field_0xbc = thing;
 	AddReaction(reaction, VILLAGER_STATE_INITIALISE_FIGHT_REACTION);
 }
 
-// BW1W120 00766e50
+// BW1W120 00766e50 BW1M119 01594b80
 bool32_t Villager::InitialiseFightReaction()
 {
 	return false;
 }
 
-// BW1W120 00766fd0
+// BW1W120 00766fd0 BW1M119 01594790
 void Villager::SetupReactToTownCelebration(GameThingWithPos* param_1, Reaction* param_2) {}
 
-// BW1W120 00767180
+// BW1W120 00767180 BW1M119 01594690
 uint8_t Villager::ReactToTownCelebrationPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 007671e0
+// BW1W120 007671e0 BW1M119 015945e0
 void Villager::SetupReactToBreeder(GameThingWithPos* thing, Reaction* reaction)
 {
 	AddReaction(reaction, VILLAGER_STATE_REACT_TO_BREEDER);
 	this->field_0xbc = thing;
 }
 
-// BW1W120 00767210
+// BW1W120 00767210 BW1M119 015944b0
 uint8_t Villager::ReactToBreederPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 00767280
+// BW1W120 00767280 BW1M119 01594410
 bool32_t Villager::ReactToBreeder()
 {
 	if (this->field_0xbc != NULL && this->field_0xbc->IsVillager(NULL))
@@ -1036,7 +1036,7 @@ bool32_t Villager::ReactToBreeder()
 	return false;
 }
 
-// BW1W120 007672c0
+// BW1W120 007672c0 BW1M119 01594360
 bool32_t Villager::GoAndHaveSexWith(Villager* mate)
 {
 	// TODO: target returns MakeVillagesMeet's bool result raw (no widening); our
@@ -1047,67 +1047,67 @@ bool32_t Villager::GoAndHaveSexWith(Villager* mate)
 	return result;
 }
 
-// BW1W120 007672f0
+// BW1W120 007672f0 BW1M119 015942a0
 void Villager::SetupReactToVillagerInHand(GameThingWithPos* thing, Reaction* reaction)
 {
 	AddReaction(reaction, VILLAGER_STATE_WAIT_FOR_MATE);
 	this->field_0xbc = thing;
 }
 
-// BW1W120 00767320
+// BW1W120 00767320 BW1M119 01594130
 uint8_t Villager::ReactToVillagerInHandPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 007673a0
+// BW1W120 007673a0 BW1M119 01594050
 bool32_t Villager::WaitForMate()
 {
 	// TODO: needs the mate-wait distance global at 0xd5035c named
 	return false;
 }
 
-// BW1W120 00767410
+// BW1W120 00767410 BW1M119 01594010
 bool32_t Villager::EnterDrowning(unsigned char param_1, unsigned char param_2)
 {
 	return true;
 }
 
-// BW1W120 00767420
+// BW1W120 00767420 BW1M119 01593fd0
 bool32_t Villager::ExitDrowning(unsigned char param_1)
 {
 	return true;
 }
 
-// BW1W120 00767430
+// BW1W120 00767430 BW1M119 01593ed0
 uint8_t Villager::ReactToBurningObjectInHandPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 00767490
+// BW1W120 00767490 BW1M119 01593e10
 void Villager::SetupReactToBurningObjectInHand(GameThingWithPos* thing, Reaction* reaction)
 {
 	this->field_0xbc = thing;
 	AddReaction(reaction, VILLAGER_STATE_FLEEING_FROM_OBJECT_REACTION);
 }
 
-// BW1W120 007674b0
+// BW1W120 007674b0 BW1M119 01593cb0
 void Villager::SetupReactToMagicShieldStruck(GameThingWithPos* param_1, Reaction* param_2) {}
 
-// BW1W120 00767520
+// BW1W120 00767520 BW1M119 01593c20
 void Villager::SetupReactToMagicShieldDestroyed(GameThingWithPos* thing, Reaction* reaction)
 {
 	SetupPanicReaction(reaction, thing->Pos);
 }
 
-// BW1W120 00767540
+// BW1W120 00767540 BW1M119 01593a70
 uint8_t Villager::ReactToMagicShieldStruckPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
 
-// BW1W120 007675a0
+// BW1W120 007675a0 BW1M119 015939f0
 uint8_t Villager::ReactToMagicShieldDestroyedPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;

@@ -29,33 +29,33 @@ public:
 	uint16_t WordLength;  /* 0x2b6 */
 	uint32_t field_0x2b8;
 
-	// BW1W120 007be480 LHParseFile::Open(void)
+	// BW1W120 007be480 BW1M119 01167750 (LHCombined Release)
 	uint32_t Open();
-	// BW1W120 007be4b0 LHParseFile::Close(void)
+	// BW1W120 007be4b0 BW1M119 01167640 (LHCombined Release)
 	uint32_t Close();
-	// BW1W120 007be510 LHParseFile::GetNextTokenIgnoreComments(int *)
+	// BW1W120 007be510 BW1M119 011675a0 (LHCombined Release)
 	uint32_t GetNextTokenIgnoreComments(int* token_out);
-	// BW1W120 007be530 LHParseFile::FindEnumVal(void *, unsigned int *)
+	// BW1W120 007be530 BW1M119 01167500 (LHCombined Release)
 	uint32_t FindEnumVal(void* key, uint32_t* out_value);
-	// BW1W120 007be570 LHParseFile::FindEnumValLinear(char const *, unsigned int *)
+	// BW1W120 007be570 BW1M119 01167430 (LHCombined Release)
 	uint32_t FindEnumValLinear(const char* key, uint32_t* out_value);
-	// BW1W120 007be5f0 LHParseFile::FreeEnumList(void)
+	// BW1W120 007be5f0 BW1M119 01167350 (LHCombined Release)
 	void FreeEnumList();
-	// BW1W120 007be670 LHParseFile::ParseEnumList(void)
+	// BW1W120 007be670 BW1M119 011672b0 (LHCombined Release)
 	uint32_t ParseEnumList();
-	// BW1W120 007be6a0 LHParseFile::ParseEnumListInternal(void)
+	// BW1W120 007be6a0
 	uint32_t ParseEnumListInternal();
-	// BW1W120 007bea70 LHParseFile::GetNextToken(int *)
+	// BW1W120 007bea70 BW1M119 011664a0 (LHCombined Release)
 	uint32_t GetNextToken(int* token_out);
-	// BW1W120 007befb6 LHParseFile::GetNextLine(void)
+	// BW1W120 007befb6 BW1M119 01166340 (LHCombined Release)
 	uint32_t GetNextLine();
-	// BW1W120 007bf030 LHParseFile::GetNextWord(void)
+	// BW1W120 007bf030 BW1M119 01166130 (LHCombined Release)
 	uint32_t GetNextWord();
 };
 
-// BW1W120 007be400 LHEnumPairCompare(char const **, char const **)
+// BW1W120 007be400 BW1M119 01167850 (LHCombined Release)
 int LHEnumPairCompare(const char** a, const char** b);
-// BW1W120 007be440 LHEnumPairCompareWithString(char const *, char const **)
+// BW1W120 007be440 BW1M119 011677f0 (LHCombined Release)
 int LHEnumPairCompareWithString(const char* a, const char** b);
 
 #endif /* BW1_DECOMP_LH_PARSE_FILE_INCLUDED_H */

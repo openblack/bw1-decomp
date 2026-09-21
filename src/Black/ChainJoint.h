@@ -7,7 +7,7 @@
 #include <Lionhead/LH3DLib/development/LH3DColor.h>
 #include <Lionhead/LH3DLib/development/LHPoint.h>
 
-// BW1M100 103efa30 ParticleChainJoint::DrawAt sets all these fields, including
+// ParticleChainJoint::DrawAt (BW1M119 013f92d0) sets all these fields, including
 // an explicit LH3DColor construction at +0x14. Constructor: BW1W120 00695f00.
 // fabricated class tag: the nonpolymorphic Mac symbols do not distinguish class/struct.
 class ChainJoint

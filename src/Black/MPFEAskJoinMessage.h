@@ -10,7 +10,7 @@ class MPFEAskJoinMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00626f90 BW1M100 10397e50 MPFEAskJoinMessage::_dt(void)
+	// BW1W120 00626f90 BW1M119 0139f840
 	virtual ~MPFEAskJoinMessage();
 };
 

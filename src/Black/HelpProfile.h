@@ -19,7 +19,7 @@ struct CameraHelpAccumulator
 
 	// Non-virtual methods
 
-	// BW1W120 00448f20 BW1M100 1019cd90 CameraHelpAccumulator::Reset(void)
+	// BW1W120 00448f20 BW1M119 011a5e10
 	void Reset();
 };
 
@@ -28,32 +28,33 @@ static_assert(sizeof(CameraHelpAccumulator) == 0x10c, "Data type is of wrong siz
 class HelpProfile : public Base
 {
 public:
-	// BW1W120 00c5afd8. Descriptive clock name, advanced by Process.
+	// Descriptive clock name, advanced by Process.
+	// BW1W120 00c5afd8
 	static unsigned int AccumulatedTime;
-	// BW1W120 005c4660 BW1M100 10089270 HelpProfile::Process(void)
+	// BW1W120 005c4660 BW1M119 0108b5e0
 	void Process();
-	// BW1W120 005c4820 BW1M100 1034adf0 HelpProfile::Save(GameOSFile &)
+	// BW1W120 005c4820 BW1M119 01353010
 	uint32_t Save(GameOSFile& file);
-	// BW1W120 005c4830 BW1M100 1034ad20 HelpProfile::Load(GameOSFile &)
+	// BW1W120 005c4830 BW1M119 01352f40
 	uint32_t              Load(GameOSFile& file);
 	CameraHelpAccumulator accumulators[0x31]; /* 0x8 */
 	uint32_t              field_0x3354;
 
 	// Override methods
 
-	// BW1W120 005c4560 BW1M100 1034b480 HelpProfile::_dt(void)
+	// BW1W120 005c4560 BW1M119 01353a00
 	virtual ~HelpProfile();
 
 	// Static methods
 
-	// BW1W120 005c4500 BW1M100 1034b3b0 HelpProfile::Create(void)
+	// BW1W120 005c4500 BW1M119 01353930
 	static HelpProfile* Create();
 
 	// Non-virtual methods
 
-	// BW1W120 005c46e0 BW1M100 100895a0 HelpProfile::Trigger(HELP_EVENT_TYPE)
+	// BW1W120 005c46e0 BW1M119 0108b900
 	void Trigger(HELP_EVENT_TYPE param_1);
-	// BW1W120 005c4770 BW1M100 1034b310 HelpProfile::SetToZero(void)
+	// BW1W120 005c4770 BW1M119 013538a0
 	void SetToZero();
 };
 

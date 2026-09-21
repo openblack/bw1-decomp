@@ -32,16 +32,16 @@ public:
 	// Override methods
 
 	virtual void Enter();
-	// BW1W120 0046e5e0 BW1M100 101c6110 HandState::DrawTheHeldObject(void)
+	// BW1W120 0046e5e0 BW1M119 011cde50
 	virtual void DrawTheHeldObject();
-	// BW1W120 005b02d0 BW1M100 101c5590 HandState::Exit(void)
+	// BW1W120 005b02d0 BW1M119 011ccd30
 	virtual void Exit();
-	// BW1W120 0046be80 BW1M100 101a6900 HandState::AllowCameraTricons(void)
+	// BW1W120 0046be80 BW1M119 011af760
 	virtual bool AllowCameraTricons();
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined HandState::HandState(CHand*)
+	// BW1W120 inlined BW1M119 inlined
 	HandState(CHand* hand);
 };
 

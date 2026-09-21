@@ -25,7 +25,7 @@ struct LandCell
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 1000cd10 LandCell::IsWater(void)
+	// BW1W120 inlined BW1M119 0100f850
 	bool IsWater();
 };
 
@@ -33,12 +33,12 @@ class LH3DIsland
 {
 public:
 	// Static methods
-	// BW1W120 00804790 BW1M100 1061cc34 LH3DIsland::Release(void)
+	// BW1W120 00804790 BW1M119 01045ba0 (LHCombined Release)
 	static bool32_t Release();
 
-	// BW1W120 00803090 LH3DIsland::GetAltitude(LH3DMapCoords const &)
+	// BW1W120 00803090 BW1M119 0102f1e0 (LHCombined Release)
 	static float __fastcall GetAltitude(const LH3DMapCoords& coords);
-	// BW1W120 00803340 LH3DIsland::GetAltitudeAndSetColorSpecular(LH3DMapCoords const &, ulong *, ulong *)
+	// BW1W120 00803340 BW1M119 01047430 (LHCombined Release)
 	static float __fastcall GetAltitudeAndSetColorSpecular(const LH3DMapCoords& coords, uint32_t* color,
 	                                                       uint32_t* specular);
 };

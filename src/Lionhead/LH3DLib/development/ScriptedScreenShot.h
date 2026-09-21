@@ -4,7 +4,8 @@
 class ScriptedScreenShot
 {
 public:
-	// BW1W120 00821750 BW1M100 10091b6c (library import)
+	// (library import)
+	// BW1W120 00821750 BW1M119 0103ca80 (LHCombined Release)
 	static void Process();
 };
 

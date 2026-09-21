@@ -11,7 +11,7 @@ class Rank : public Base
 public:
 	// Override methods
 
-	// BW1W120 006e0b80 BW1M100 inlined Rank::_dt(void)
+	// BW1W120 006e0b80 BW1M119 inlined
 	virtual ~Rank();
 };
 

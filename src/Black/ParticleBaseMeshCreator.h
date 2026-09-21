@@ -15,9 +15,9 @@ class ParticleBaseMeshCreator : public ParticleCreator
 public:
 	// Override methods
 
-	// BW1W120 006a8900 BW1M100 1043f270 ParticleBaseMeshCreator::_dt(void)
+	// BW1W120 006a8900 BW1M119 014484c0
 	virtual ~ParticleBaseMeshCreator();
-	// BW1W120 006b37a0 BW1M100 10457110 ParticleBaseMeshCreator::DefineProperties(PropertyList *)
+	// BW1W120 006b37a0 BW1M119 01460250
 	virtual void DefineProperties(PropertyList* param_1);
 };
 

@@ -23,31 +23,31 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055dd40 BW1M100 101462a0 ShowNeeds::_dt(void)
+	// BW1W120 0055dd40 BW1M119 0114e4a0
 	virtual ~ShowNeeds();
-	// BW1W120 00719b20 BW1M100 10145da0 ShowNeeds::ToBeDeleted(int)
+	// BW1W120 00719b20 BW1M119 0114dfc0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00719c30 BW1M100 10145a10 ShowNeeds::GetPlayer(void)
+	// BW1W120 00719c30 BW1M119 0114dc40
 	virtual GPlayer* GetPlayer();
-	// BW1W120 0055dd30 BW1M100 10146370 ShowNeeds::GetDebugText(void)
+	// BW1W120 0055dd30 BW1M119 0114e570
 	virtual char* GetDebugText();
-	// BW1W120 00719d30 BW1M100 10145850 ShowNeeds::GetShowNeedsPos(unsigned long, MapCoords *)
+	// BW1W120 00719d30 BW1M119 0114da80
 	virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
-	// BW1W120 00719cf0 BW1M100 101458d0 ShowNeeds::Load(GameOSFile &)
+	// BW1W120 00719cf0 BW1M119 0114db00
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00719cb0 BW1M100 10145970 ShowNeeds::Save(GameOSFile &)
+	// BW1W120 00719cb0 BW1M119 0114dba0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055dd20 BW1M100 10146330 ShowNeeds::GetSaveType(void)
+	// BW1W120 0055dd20 BW1M119 0114e530
 	virtual uint32_t GetSaveType();
 
 	// Static methods
 
-	// BW1W120 00719b60 BW1M100 10145cd0 ShowNeeds::Create(GameThingWithPos *)
+	// BW1W120 00719b60 BW1M119 0114def0
 	static ShowNeeds* Create(GameThingWithPos* game_thing);
 
 	// Constructors
 
-	// BW1W120 00719ab0 BW1M100 10145e60 ShowNeeds::ShowNeeds(GameThingWithPos *)
+	// BW1W120 00719ab0 BW1M119 0114e080
 	ShowNeeds(GameThingWithPos* game_thing);
 };
 

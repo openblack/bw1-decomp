@@ -24,31 +24,31 @@ class Dove : public Animal
 public:
 	// Override methods
 
-	// BW1W120 0041dda0 BW1M100 10171a70 Dove::_dt(void)
+	// BW1W120 0041dda0 BW1M119 0117aa90
 	virtual ~Dove();
-	// BW1W120 0041dd90 BW1M100 10172860 Dove::GetDebugText(void)
+	// BW1W120 0041dd90 BW1M119 0117b7b0
 	virtual char* GetDebugText();
-	// BW1W120 0041f130 BW1M100 10173580 Dove::Load(GameOSFile &)
+	// BW1W120 0041f130 BW1M119 0117c910
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0041f110 BW1M100 101735e0 Dove::Save(GameOSFile &)
+	// BW1W120 0041f110 BW1M119 0117c970
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0041dd80 BW1M100 10172830 Dove::GetSaveType(void)
+	// BW1W120 0041dd80 BW1M119 0117b780
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041f190 BW1M100 10173450 Dove::CanBePickedUpByCreature(Creature *)
+	// BW1W120 0041f190 BW1M119 0117c7e0
 	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
-	// BW1W120 0041f150 BW1M100 101734d0 Dove::CanBeStompedOnByCreature(Creature *)
+	// BW1W120 0041f150 BW1M119 0117c860
 	virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
-	// BW1W120 0041dd70 BW1M100 10171570 Dove::CanBePoodOn(Creature *)
+	// BW1W120 0041dd70 BW1M119 0117a590
 	virtual uint32_t CanBePoodOn(Creature* param_1);
-	// BW1W120 004d1b10 BW1M100 10243110 Dove::GetHowMuchCreatureWantsToLookAtMe(void)
+	// BW1W120 004d1b10 BW1M119 01247a00
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
-	// BW1W120 0041eaa0 BW1M100 10173fb0 Dove::GetScriptObjectType(void)
+	// BW1W120 0041eaa0 BW1M119 0117d340
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 0041f680 BW1M100 10037cf0 Dove::Draw(void)
+	// BW1W120 0041f680 BW1M119 0103a660
 	virtual void Draw();
-	// BW1W120 0041f240 BW1M100 101732a0 Dove::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 0041f240 BW1M119 0117c630
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 0041bd80 BW1M100 10170ba0 Dove::StandAnimation(void)
+	// BW1W120 0041bd80 BW1M119 01179b50
 	virtual uint32_t StandAnimation();
 };
 
@@ -57,21 +57,21 @@ class SpellDove : public Dove
 public:
 	// Override methods
 
-	// BW1W120 0041eb60 BW1M100 10173770 SpellDove::_dt(void)
+	// BW1W120 0041eb60 BW1M119 0117cb00
 	virtual ~SpellDove();
-	// BW1W120 0041eb50 BW1M100 10175210 SpellDove::GetDebugText(void)
+	// BW1W120 0041eb50 BW1M119 0117e260
 	virtual char* GetDebugText();
-	// BW1W120 0041fad0 BW1M100 10172970 SpellDove::Load(GameOSFile &)
+	// BW1W120 0041fad0 BW1M119 0117b8c0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0041fb40 BW1M100 10172890 SpellDove::Save(GameOSFile &)
+	// BW1W120 0041fb40 BW1M119 0117b7e0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0041eb40 BW1M100 101751d0 SpellDove::GetSaveType(void)
+	// BW1W120 0041eb40 BW1M119 0117e220
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041f5c0 BW1M100 10172e20 SpellDove::SetDying(void)
+	// BW1W120 0041f5c0 BW1M119 0117bff0
 	virtual bool32_t SetDying();
-	// BW1W120 0041bde0 BW1M100 10170a20 SpellDove::StandAnimation(void)
+	// BW1W120 0041bde0 BW1M119 011799d0
 	virtual uint32_t StandAnimation();
-	// BW1W120 0041f620 BW1M100 10172de0 SpellDove::GetNumTurnsToDieOver(void)
+	// BW1W120 0041f620 BW1M119 0117bfb0
 	virtual uint32_t GetNumTurnsToDieOver();
 };
 

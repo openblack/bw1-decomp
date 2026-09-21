@@ -15,7 +15,7 @@ class GMagicFlockGroundInfo : public GMagicInfo
 public:
 	// Override methods
 
-	// BW1W120 004357e0 BW1M100 1051ece0 GMagicFlockGroundInfo::_dt(void)
+	// BW1W120 004357e0 BW1M119 01526450
 	virtual ~GMagicFlockGroundInfo();
 };
 

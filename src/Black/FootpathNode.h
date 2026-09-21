@@ -25,33 +25,33 @@ public:
 
 	// Override methods
 
-	// BW1W120 00534d70 BW1M100 100eef60 GFootpathNode::_dt(void)
+	// BW1W120 00534d70 BW1M119 010f4090
 	virtual ~GFootpathNode();
-	// BW1W120 00538970 BW1M100 100e91f0 GFootpathNode::ToBeDeleted(int)
+	// BW1W120 00538970 BW1M119 010ed310
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00534d60 BW1M100 100ef030 GFootpathNode::GetDebugText(void)
+	// BW1W120 00534d60 BW1M119 010f4160
 	virtual char* GetDebugText();
-	// BW1W120 00538c10 BW1M100 100e86f0 GFootpathNode::Load(GameOSFile &)
+	// BW1W120 00538c10 BW1M119 010ec6c0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00538d70 BW1M100 100e83f0 GFootpathNode::Save(GameOSFile &)
+	// BW1W120 00538d70 BW1M119 010ec3c0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00534d50 BW1M100 100eeff0 GFootpathNode::GetSaveType(void)
+	// BW1W120 00534d50 BW1M119 010f4120
 	virtual uint32_t GetSaveType();
-	// BW1W120 00538ea0 BW1M100 100e83b0 GFootpathNode::ResolveLoad(void)
+	// BW1W120 00538ea0 BW1M119 010ec380
 	virtual void ResolveLoad();
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined GFootpathNode::GFootpathNode(void)
+	// BW1W120 inlined BW1M119 inlined
 	GFootpathNode();
-	// BW1W120 00534cf0 BW1M100 100eed50 GFootpathNode::GFootpathNode(MapCoords const &, int, int)
+	// BW1W120 00534cf0 BW1M119 010f3ea0
 	GFootpathNode(const MapCoords& coords, int param_2, int param_3);
 
 	// Non-virtual methods
 
-	// BW1W120 005389d0 BW1M100 100e90a0 GFootpathNode::PurgeFollowerList(void)
+	// BW1W120 005389d0 BW1M119 010ed1c0
 	void PurgeFollowerList();
-	// BW1W120 00538b10 BW1M100 100e8d10 GFootpathNode::ClearFromPreviousNode(void)
+	// BW1W120 00538b10 BW1M119 010ece30
 	void ClearFromPreviousNode();
 };
 

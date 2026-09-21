@@ -25,11 +25,11 @@ struct Plasma
 
 	// Non-virtual methods
 
-	// BW1W120 0053c640 BW1M100 105c4040 Plasma::Init(void)
+	// BW1W120 0053c640 BW1M119 015cadd0
 	void Init();
-	// BW1W120 0053c840 BW1M100 105c3d50 Plasma::Render(int)
+	// BW1W120 0053c840 BW1M119 015caad0
 	void Render(int param_1);
-	// BW1W120 inlined BW1M100 100c9220 Plasma::Close(void)
+	// BW1W120 inlined BW1M119 012fb970
 	void Close();
 };
 

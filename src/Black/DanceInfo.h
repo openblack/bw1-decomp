@@ -17,9 +17,9 @@ public:
 
 	// Override methods
 
-	// BW1W120 0050b670 BW1M100 102a8e60 GDanceInfo::_dt(void)
+	// BW1W120 0050b670 BW1M119 012abf40
 	virtual ~GDanceInfo();
-	// BW1W120 0050b600 BW1M100 102aa810 GDanceInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0050b600 BW1M119 012ad780
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

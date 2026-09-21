@@ -15,7 +15,7 @@ class GMagicCreatureSpellInfo : public GMagicInfo
 public:
 	// Override methods
 
-	// BW1W120 00435800 BW1M100 103aba10 GMagicCreatureSpellInfo::_dt(void)
+	// BW1W120 00435800 BW1M119 013b38e0
 	virtual ~GMagicCreatureSpellInfo();
 };
 

@@ -17,13 +17,13 @@ class Tiger : public Lion
 public:
 	// Override methods
 
-	// BW1W120 00421440 BW1M100 10177fa0 Tiger::_dt(void)
+	// BW1W120 00421440 BW1M119 01181090
 	virtual ~Tiger();
-	// BW1W120 00421430 BW1M100 10178060 Tiger::GetDebugText(void)
+	// BW1W120 00421430 BW1M119 01181150
 	virtual char* GetDebugText();
-	// BW1W120 00421420 BW1M100 10178030 Tiger::GetSaveType(void)
+	// BW1W120 00421420 BW1M119 01181120
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041c430 BW1M100 1016f530 Tiger::StandAnimation(void)
+	// BW1W120 0041c430 BW1M119 011783d0
 	virtual uint32_t StandAnimation();
 };
 

@@ -41,12 +41,12 @@ struct LightSheet
 
 	// Constructors
 
-	// BW1W120 0083e690 BW1M100 100cddd0 LightSheet::LightSheet(void)
+	// BW1W120 0083e690 BW1M119 010cd9e0 (LHCombined Release)
 	LightSheet();
 
 	// Non-virtual methods
 
-	// BW1W120 0083e610 BW1M100 100cde20 LightSheet::PulseForceField(LHPoint, float)
+	// BW1W120 0083e610 BW1M119 010cda30 (LHCombined Release)
 	void PulseForceField(LHPoint param_1, float param_2);
 };
 

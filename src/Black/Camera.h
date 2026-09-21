@@ -20,7 +20,7 @@ struct MapCoords;
 class GCamera : public GameThingWithPos
 {
 public:
-	// BW1W120 00442fe0 BW1M100 10199360 GCamera::ClearCameraStack(void)
+	// BW1W120 00442fe0 BW1M119 011a2410
 	void        ClearCameraStack();
 	CameraMode* modes[0xc];       /* 0x28 */
 	int         ModeCurrentIndex; /* 0x58 */
@@ -41,55 +41,55 @@ public:
 
 	// Override methods
 
-	// BW1W120 00441b30 BW1M100 10378450 GCamera::_dt(void)
+	// BW1W120 00441b30 BW1M119 013e96b0
 	virtual ~GCamera();
-	// BW1W120 00441ee0 BW1M100 1019a0f0 GCamera::ToBeDeleted(int)
+	// BW1W120 00441ee0 BW1M119 011a32e0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00443840 BW1M100 10198640 GCamera::GetDebugText(void)
+	// BW1W120 00443840 BW1M119 011a16f0
 	virtual char* GetDebugText();
-	// BW1W120 004433a0 BW1M100 10198870 GCamera::Load(GameOSFile &)
+	// BW1W120 004433a0 BW1M119 011a1920
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 004430e0 BW1M100 10198d40 GCamera::Save(GameOSFile &)
+	// BW1W120 004430e0 BW1M119 011a1df0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00441b20 BW1M100 101982e0 GCamera::GetSaveType(void)
+	// BW1W120 00441b20 BW1M119 011a1390
 	virtual uint32_t GetSaveType();
-	// BW1W120 00441b00 BW1M100 10086270 GCamera::IsMoving( const(void))
+	// BW1W120 00441b00 BW1M119 01088650
 	virtual bool32_t IsMoving() const;
-	// BW1W120 00441af0 BW1M100 101980f0 GCamera::GetText(void)
+	// BW1W120 00441af0 BW1M119 011a12d0
 	virtual const char* GetText();
-	// BW1W120 00441b10 BW1M100 101982b0 GCamera::GetHeight(void)
+	// BW1W120 00441b10 BW1M119 011a1360
 	virtual float GetHeight();
 
 	// Static methods
 
-	// BW1W120 00441f20 BW1M100 1019a070 GCamera::GetThingViewingDistance(GameThingWithPos *)
+	// BW1W120 00441f20 BW1M119 011a3260
 	static float GetThingViewingDistance(GameThingWithPos* target);
-	// BW1W120 00442810 BW1M100 10032670 GCamera::SetPointFromPointDistanceHeadingAndPitch(LHPoint *, LHPoint const &, float, float, float)
+	// BW1W120 00442810 BW1M119 01034fe0
 	static void SetPointFromPointDistanceHeadingAndPitch(LHPoint* param_1, const LHPoint& point, float distance,
 	                                                     float heading, float pitch);
-	// BW1W120 004428d0 BW1M100 1007dbf0 GCamera::GetHeadingAndPitchFromPoints(LHPoint const &, LHPoint const &, float *, float *)
+	// BW1W120 004428d0 BW1M119 01080170
 	static void GetHeadingAndPitchFromPoints(const LHPoint& origin, const LHPoint& heading, float* pitch, float* yaw);
 
 	// Constructors
 
-	// BW1W120 00441870 BW1M100 1019a720 GCamera::Camera(MapCoords&)
+	// BW1W120 00441870 BW1M119 011a3950
 	GCamera(MapCoords& coords);
 
 	// Non-virtual methods
 
-	// BW1W120 00441b70 BW1M100 1019a650 GCamera::CantExitCurrentMode(void)
+	// BW1W120 00441b70 BW1M119 011a3880
 	bool CantExitCurrentMode();
-	// BW1W120 00441cd0 BW1M100 1019a420 GCamera::SwitchToViewMode(CameraMode *)
+	// BW1W120 00441cd0 BW1M119 011a3650
 	void SwitchToViewMode(CameraMode* mode);
-	// BW1W120 00441d40 BW1M100 1008de30 GCamera::CheckStackedModesForValidity(void)
+	// BW1W120 00441d40 BW1M119 01090140
 	void CheckStackedModesForValidity();
-	// BW1W120 00441f50 BW1M100 1008f7f0 GCamera::Validate(void)
+	// BW1W120 00441f50 BW1M119 01091a90
 	void Validate();
-	// BW1W120 00441f80 BW1M100 1002cbd0 GCamera::Update(void)
+	// BW1W120 00441f80 BW1M119 0102f680
 	void Update();
-	// BW1W120 00442ef0 BW1M100 1002b280 GCamera::UpdateGameThingWithPosData(void)
+	// BW1W120 00442ef0 BW1M119 0102ddf0
 	void UpdateGameThingWithPosData();
-	// BW1W120 00443680 BW1M100 10198790 GCamera::SetCameraFov(float, float)
+	// BW1W120 00443680 BW1M119 011a1840
 	void SetCameraFov(float fov, float time);
 };
 

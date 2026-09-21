@@ -2,7 +2,7 @@
 
 #include "GameThing.h"
 
-// BW1W120 0071f0c0 BW1M100 101477e0 SpecialVillager::ToBeDeleted(int)
+// BW1W120 0071f0c0 BW1M119 0114f770
 // TODO: 79.5% (body correct; ~90% once wchar_t enabled) — blocked on the native-wchar_t
 // build issue. The callee's true symbol is
 // ?MakeHimSpeak@SpecialVillager@@QAEXPA_W@Z (PA_W == native wchar_t*), but this MSVC6.5
@@ -17,7 +17,7 @@ void SpecialVillager::ToBeDeleted(int param_1)
 	Villager::ToBeDeleted(param_1);
 }
 
-// BW1W120 0071f470 BW1M100 101470a0 SpecialVillager::CanShowName(void)
+// BW1W120 0071f470 BW1M119 0114f270
 // TODO: 86% — 3 residual diffs are MSVC6.5 codegen limits, not source-shape. Target does
 // the bit test entirely byte-wide (`not al; shr al,6; and al,1`) and pops esi last; our
 // build widens the shift/mask to eax (`not al; shr eax,6; and eax,1`) and pops esi early.

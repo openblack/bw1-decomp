@@ -8,7 +8,7 @@ class SecretCreature
 public:
 	// Override methods
 
-	// BW1W120 00711d60 BW1M100 101441a0 SecretCreature::_dt(void)
+	// BW1W120 00711d60 BW1M119 0114c410
 	virtual ~SecretCreature();
 };
 

@@ -12,17 +12,17 @@ class LocalBase : public Base
 public:
 	// Override methods
 
-	// BW1W120 005c2150 BW1M100 1033f600 LocalBase::_dt(void)
+	// BW1W120 005c2150 BW1M119 013478f0
 	virtual ~LocalBase();
 
 	// Static methods
 
-	// BW1W120 005f8790 BW1M100 1009eb9c LocalBase::operator new(unsigned long)
+	// BW1W120 005f8790 BW1M119 010a09e0
 	static LocalBase* __nw(size_t size, const char* file_name, uint32_t line);
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 1034ab30 LocalBase::LocalBase(void)
+	// BW1W120 inlined BW1M119 01352d50
 	LocalBase();
 };
 
