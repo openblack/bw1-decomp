@@ -92,7 +92,7 @@ public:
 	// BW1W120 00682a70 BW1M100 103fd000 MagicFireBall::CanBecomeAPhysicsObject(void)
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00682b20 BW1M100 103fd380 MagicFireBall::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Constructors
 

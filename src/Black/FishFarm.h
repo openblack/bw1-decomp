@@ -99,7 +99,7 @@ public:
 	// BW1W120 0052ca70 BW1M100 100dc310 FishFarm::RemoveMapObject(void)
 	virtual void RemoveMapObject();
 	// BW1W120 0052c480 BW1M100 100dd430 FishFarm::GetMeshRadius( const(void))
-	virtual float GetMeshRadius();
+	virtual float GetMeshRadius() const;
 	// BW1W120 0052d130 BW1M100 1005f370 FishFarm::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 0052c830 BW1M100 10025a30 FishFarm::Draw(void)
@@ -109,7 +109,7 @@ public:
 	// BW1W120 0052c840 BW1M100 100dc810 FishFarm::GetHeightForHandAboveInteractObject(void)
 	virtual float GetHeightForHandAboveInteractObject();
 	// BW1W120 0052cc10 BW1M100 100dbd10 FishFarm::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0052d1e0 BW1M100 100626c0 FishFarm::GetFoodValue(FOOD_TYPE)
 	virtual float GetFoodValue(FOOD_TYPE param_1);
 	// BW1W120 0052d760 BW1M100 100dac50 FishFarm::GetResourceType(void)
@@ -137,7 +137,7 @@ public:
 	// BW1W120 0052d950 BW1M100 100da4d0 FishFarm::ProcessInInteract(GInterfaceStatus *)
 	virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
 	// BW1W120 0052cf90 BW1M100 100db980 FishFarm::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 0052cf40 BW1M100 inlined FishFarm::GetDoorPos(MapCoords *)
 	virtual MapCoords* GetDoorPos(MapCoords* param_1);
 	// BW1W120 0052c4c0 BW1M100 100dd560 FishFarm::ConvertToPlanned(void)
@@ -153,7 +153,7 @@ public:
 	// Constructors
 
 	// BW1W120 0052c360 BW1M100 100dd070 FishFarm::FishFarm(MapCoords const &, GFishFarmInfo const *, Town *)
-	FishFarm(MapCoords* coords, GFishFarmInfo* info, Town* town);
+	FishFarm(const MapCoords& coords, const GFishFarmInfo* info, Town* town);
 };
 
 #endif /* BW1_DECOMP_FISH_FARM_INCLUDED_H */

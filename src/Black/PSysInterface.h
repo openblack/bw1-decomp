@@ -33,8 +33,8 @@ public:
 	// Static methods
 
 	// BW1W120 0068e910 BW1M100 100053c0 PSysInterface::Create(Spell *, PARTICLE_TYPE, LHPoint const &, LHPoint const &, float, PSysInterface::NET_GAME_TYPE)
-	static PSysInterface* Create(Spell* spell, PARTICLE_TYPE particle_type, LHPoint* param_3, LHPoint* param_4,
-	                             float param_5, NET_GAME_TYPE game_type);
+	static PSysInterface* Create(Spell* spell, PARTICLE_TYPE particle_type, const LHPoint& param_3,
+	                             const LHPoint& param_4, float param_5, NET_GAME_TYPE game_type);
 };
 
 #endif /* BW1_DECOMP_P_SYS_INTERFACE_INCLUDED_H */

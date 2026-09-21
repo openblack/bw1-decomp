@@ -382,11 +382,11 @@ public:
 	// BW1W120 00473e70 BW1M100 inlined Living::IsScriptInterruptableState( const(VILLAGER_STATES))
 	virtual bool IsScriptInterruptableState(VILLAGER_STATES state) const;
 	// BW1W120 00417070 BW1M100 inlined Living::IsStateForInterface( const(VILLAGER_STATES))
-	virtual bool IsStateForInterface(VILLAGER_STATES state);
+	virtual bool IsStateForInterface(VILLAGER_STATES state) const;
 	// BW1W120 00473e80 BW1M100 inlined Living::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
 	virtual bool32_t IsStateExitFunctionSameAs(VILLAGER_STATES state) const;
 	// BW1W120 005ecaa0 BW1M100 inlined Living::IsDeathState( const(VILLAGER_STATES))
-	virtual bool IsDeathState(VILLAGER_STATES state);
+	virtual bool IsDeathState(VILLAGER_STATES state) const;
 	// BW1W120 005ed2b0 BW1M100 10380650 Living::DebugShowTime(unsigned long, unsigned char, unsigned char)
 	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 005ecc10 BW1M100 10084310 Living::IsDancing(void)
@@ -583,9 +583,9 @@ public:
 	virtual uint32_t NumGameTurnsBeforeReactingToShieldAgainFunction(GameThingWithPos* param_1, uint32_t param_2,
 	                                                                 float param_3);
 	// BW1W120 00417260 BW1M100 100026a0 Living::IsPosValidForMapCellExistance(MapCoords const &)
-	virtual uint32_t IsPosValidForMapCellExistance(const MapCoords* param_1);
+	virtual uint32_t IsPosValidForMapCellExistance(const MapCoords& param_1);
 	// BW1W120 005ec340 BW1M100 10382c10 Living::MoveByTeleport(MapCoords const &)
-	virtual void MoveByTeleport(const MapCoords* param_1);
+	virtual void MoveByTeleport(const MapCoords& param_1);
 	// BW1W120 00417270 BW1M100 10130570 Living::IsDead(void)
 	virtual bool32_t IsDead();
 	// BW1W120 00473ed0 BW1M100 101e36f0 Living::IsChild(void)
@@ -595,7 +595,7 @@ public:
 	// BW1W120 005f2010 BW1M100 10386800 Living::GetFleeingPositionFromStationaryObject(MapCoords *, GameThingWithPos *, float)
 	virtual void GetFleeingPositionFromStationaryObject(MapCoords* param_1, GameThingWithPos* param_2, float param_3);
 	// BW1W120 004749e0 BW1M100 1012f950 Living::GetFinalState( const(void))
-	virtual VILLAGER_STATES GetFinalState();
+	virtual VILLAGER_STATES GetFinalState() const;
 	// BW1W120 005ef930 BW1M100 103841e0 Living::RemoveFromDance(int)
 	virtual void RemoveFromDance(int param_1);
 	// BW1W120 00417300 BW1M100 10130810 Living::SetStateAfterFinishingDance(void)
@@ -635,7 +635,7 @@ public:
 	// BW1W120 0055c820 BW1M100 1030ed90 Living::Living(void)
 	Living();
 	// BW1W120 005ebec0 BW1M100 10383560 Living::Living(MapCoords const &, GLivingInfo const *)
-	Living(MapCoords* coords, GLivingInfo* info);
+	Living(const MapCoords& coords, const GLivingInfo* info);
 
 	// Non-virtual methods
 
@@ -688,7 +688,7 @@ public:
 	// BW1W120 005ec520 BW1M100 103826a0 Living::LookAtObject(GameThingWithPos *, unsigned long)
 	uint32_t LookAtObject(GameThingWithPos* param_1, unsigned long param_2);
 	// BW1W120 005ec550 BW1M100 10382540 Living::LookAtPos(MapCoords const &, ulong)
-	bool LookAtPos(MapCoords* pos, int param_2);
+	bool LookAtPos(const MapCoords& pos, int param_2);
 	// BW1W120 005ec960 BW1M100 1004eb50 Living::IsReadyForNewAnimation(unsigned long)
 	bool32_t IsReadyForNewAnimation(uint32_t index);
 	// BW1W120 005ec990 BW1M100 10054e20 Living::WaitForAnimation(void)
@@ -732,7 +732,7 @@ public:
 	// BW1W120 005ef9c0 BW1M100 10384160 Living::CalculateDancePosition(MapCoords const &, MapCoords *)
 	bool CalculateDancePosition(const MapCoords& param_1, MapCoords* param_2);
 	// BW1W120 005ef9f0 BW1M100 10383ce0 Living::PerformDance(MapCoords const &, unsigned char, unsigned long)
-	bool32_t PerformDance(const MapCoords* param_1, unsigned char param_2, unsigned long param_3);
+	bool32_t PerformDance(const MapCoords& param_1, unsigned char param_2, unsigned long param_3);
 	// BW1W120 005f1270 BW1M100 1004b9b0 Living::ProcessReaction(void)
 	void ProcessReaction();
 	// BW1W120 005f1d90 BW1M100 10386bd0 Living::FleeFromObjectIfComingTowardsMe(GameThingWithPos *, VILLAGER_STATES, VILLAGER_STATES)

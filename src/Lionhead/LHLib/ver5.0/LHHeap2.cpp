@@ -125,7 +125,7 @@ int Heap::DeleteArray(void* ptr)
 	return Delete((char*)ptr - 4, *((unsigned int*)ptr - 1));
 }
 
-FreeList* Heap::NewFreeList(unsigned char* addr, unsigned int size)
+FreeList* Heap::NewFreeList(const unsigned char* addr, unsigned int size)
 {
 	++Allocates;
 	((FreeList*)addr)->Init(size);

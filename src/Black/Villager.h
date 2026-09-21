@@ -137,7 +137,7 @@ public:
 	virtual Town* GetTown();
 	// BW1W120 007564d0 BW1M100 10565060 Villager::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             MapCoords* param_5, int param_6);
+	                             const MapCoords* param_5, int param_6);
 	// BW1W120 00751cf0 BW1M100 100199f0 Villager::IsFunctional(void)
 	virtual bool32_t IsFunctional();
 	// BW1W120 0055cb30 BW1M100 10571f80 Villager::GetDebugText(void)
@@ -237,7 +237,7 @@ public:
 	// BW1W120 007502d0 BW1M100 10570c30 Villager::DestroyedByEffect(GPlayer *, float)
 	virtual uint32_t DestroyedByEffect(GPlayer* player, float damage);
 	// BW1W120 0055c9c0 BW1M100 10147dd0 Villager::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 0055c9d0 BW1M100 inlined Villager::GetDetailMesh(int)
 	virtual int GetDetailMesh(int param_1);
 	// BW1W120 0051b940 BW1M100 1004c6c0 Villager::Draw(void)
@@ -500,7 +500,7 @@ public:
 	// BW1W120 0055c970 BW1M100 10064ef0 Villager::IsChild(void)
 	virtual bool32_t IsChild();
 	// BW1W120 00751dd0 BW1M100 1004ec00 Villager::GetFinalState(void) const
-	virtual VILLAGER_STATES GetFinalState();
+	virtual VILLAGER_STATES GetFinalState() const;
 	// BW1W120 00751510 BW1M100 1056ec00 Villager::RemoveFromDance(int)
 	virtual void RemoveFromDance(int param_1);
 	// BW1W120 00759b80 BW1M100 10577060 Villager::SetStateAfterFinishingDance(void)
@@ -524,7 +524,7 @@ public:
 	// BW1W120 00417510 BW1M100 inlined Villager::GetTeamForChessGame(void)
 	virtual uint32_t GetTeamForChessGame();
 	// BW1W120 00473ee0 BW1M100 inlined Villager::IsPosValidForTurnAngle(MapCoords const &)
-	virtual bool IsPosValidForTurnAngle(const MapCoords* param_1);
+	virtual bool IsPosValidForTurnAngle(const MapCoords& param_1);
 	// BW1W120 0055ca40 BW1M100 100c54f0 Villager::GetVillagerName(void)
 	const char* GetVillagerName();
 	// BW1W120 0051b510 BW1M100 10057c40 Villager::DrawVillagerInfo(void)
@@ -542,7 +542,7 @@ public:
 	// BW1W120 0055c8a0 BW1M100 1030baa0 Villager::Villager(void)
 	Villager();
 	// BW1W120 0074f950 BW1M100 10571a90 Villager::Villager(MapCoords const &, GVillagerInfo const *, unsigned long, int)
-	Villager(MapCoords* coords, GVillagerInfo* info, uint32_t age, bool skeleton);
+	Villager(const MapCoords& coords, const GVillagerInfo* info, uint32_t age, bool skeleton);
 
 	// Non-virtual methods
 
@@ -989,7 +989,7 @@ public:
 	// BW1W120 00759600 BW1M100 10574580 Villager::ExitBringScaffoldToBuildingSite(unsigned char)
 	bool32_t ExitBringScaffoldToBuildingSite(unsigned char param_1);
 	// BW1W120 00759610 BW1M100 10574300 Villager::GetPosForPushObject(Object *, MapCoords &)
-	MapCoords* GetPosForPushObject(Object* param_1, MapCoords* param_2);
+	MapCoords* GetPosForPushObject(Object* param_1, MapCoords& param_2);
 	// BW1W120 00759750 BW1M100 10574220 Villager::EnterBuilding(unsigned char, unsigned char)
 	bool32_t EnterBuilding(unsigned char param_1, unsigned char param_2);
 	// BW1W120 007597b0 BW1M100 10574130 Villager::ExitBuilding(unsigned char)

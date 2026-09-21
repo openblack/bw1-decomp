@@ -38,7 +38,7 @@ public:
 	// BW1W120 0055df40 BW1M100 105a3f60 WeatherThing::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 007742e0 BW1M100 105a4be0 WeatherThing::SetPos(MapCoords const &)
-	virtual void SetPos(const MapCoords* param_1);
+	virtual void SetPos(const MapCoords& param_1);
 	// BW1W120 00774580 BW1M100 105a4680 WeatherThing::SetSpeedInMetres(float, int)
 	virtual void SetSpeedInMetres(float param_1, int param_2);
 	// BW1W120 0055df10 BW1M100 105a3ea0 WeatherThing::IsWeather( const(void))

@@ -19,7 +19,7 @@ extern bool Dat_00D46AC1;
 void stop_draw_sprite_to_screen();
 
 // BW1W120 00641a10 BW1M100 1011c650 IsACmdLineString(char*, const char*)
-bool __cdecl IsACmdLineString(char* cmd_line, char* cmd);
+bool __cdecl IsACmdLineString(char* cmd_line, const char* cmd);
 // BW1W120 00641aa0 BW1M100 101528f0 ScanParameters(void)
 void __stdcall ScanParameters(void);
 // BW1W120 007dee50 BW1M100 inlined WinMain

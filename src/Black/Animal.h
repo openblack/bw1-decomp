@@ -90,7 +90,7 @@ public:
 	// BW1W120 00417700 BW1M100 1012eed0 Animal::ProcessBySpell(Spell *)
 	virtual uint32_t ProcessBySpell(Spell* param_1);
 	// BW1W120 00417540 BW1M100 1012e540 Animal::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00417550 BW1M100 inlined Animal::GetDetailMesh(int)
 	virtual int GetDetailMesh(int param_1);
 	// BW1W120 0051c310 BW1M100 100419a0 Animal::Draw(void)
@@ -98,7 +98,7 @@ public:
 	// BW1W120 00417ee0 BW1M100 1004c150 Animal::ProcessState(void)
 	virtual uint32_t ProcessState();
 	// BW1W120 0041a040 BW1M100 10168030 Animal::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00417530 BW1M100 1012e500 Animal::GetResourceType(void)
 	virtual RESOURCE_TYPE GetResourceType();
 	// BW1W120 0041bc80 BW1M100 10164dc0 Animal::GetDefaultResource(void)
@@ -122,7 +122,7 @@ public:
 	// BW1W120 00417860 BW1M100 1012f430 Animal::GetTastiness(void)
 	virtual uint32_t GetTastiness();
 	// BW1W120 0041a130 BW1M100 10167d20 Animal::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 00417780 BW1M100 1012f0d0 Animal::StandAnimation(void)
 	virtual uint32_t StandAnimation();
 	// BW1W120 00417fe0 BW1M100 10084290 Animal::SetSpeed(long)
@@ -242,7 +242,7 @@ public:
 	// BW1W120 00417810 BW1M100 1009e9f0 Animal::DecideAnimation(void)
 	virtual uint32_t DecideAnimation();
 	// BW1W120 0041a3f0 BW1M100 1000bfc0 Animal::SetNewWander(MapCoords const &, long, long)
-	virtual void SetNewWander(const MapCoords* param_1, int param_2, int param_3);
+	virtual void SetNewWander(const MapCoords& param_1, int param_2, int param_3);
 	// BW1W120 0041acc0 BW1M100 10166b90 Animal::DecideWhatToDo(void)
 	virtual bool32_t DecideWhatToDo();
 	// BW1W120 0041a2b0 BW1M100 1007c6d0 Animal::SetStateSpeed(void)
@@ -260,11 +260,11 @@ public:
 	// BW1W120 0041b170 BW1M100 inlined Animal::ExitReaction(unsigned char)
 	virtual uint32_t ExitReaction(uint8_t state);
 	// BW1W120 00417570 BW1M100 inlined Animal::IsScriptState( const(VILLAGER_STATES))
-	virtual bool IsScriptState(uint8_t state);
+	virtual bool IsScriptState(uint8_t state) const;
 	// BW1W120 00417590 BW1M100 inlined Animal::IsScriptInterruptableState( const(VILLAGER_STATES))
-	virtual bool IsScriptInterruptableState(uint8_t state);
+	virtual bool IsScriptInterruptableState(uint8_t state) const;
 	// BW1W120 0041b100 BW1M100 inlined Animal::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
-	virtual bool32_t IsStateExitFunctionSameAs(uint8_t state);
+	virtual bool32_t IsStateExitFunctionSameAs(uint8_t state) const;
 	// BW1W120 0041b1c0 BW1M100 101665d0 Animal::DebugShowTime(unsigned long, unsigned char, unsigned char)
 	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 00419bc0 BW1M100 10168630 Animal::IsInterestedInFoodObject(Object *)
@@ -330,9 +330,9 @@ public:
 	// BW1W120 00420550 BW1M100 10175d80 Animal::GetFleeingPositionFromMovingObject(MapCoords *, GameThingWithPos *, float)
 	virtual void GetFleeingPositionFromMovingObject(MapCoords* param_1, GameThingWithPos* param_2, float param_3);
 	// BW1W120 0041a240 BW1M100 1007c570 Animal::GetFinalState( const(void))
-	virtual VILLAGER_STATES GetFinalState();
+	virtual VILLAGER_STATES GetFinalState() const;
 	// BW1W120 0041b210 BW1M100 10055c50 Animal::IsPosValidForTurnAngle(MapCoords const &)
-	virtual bool IsPosValidForTurnAngle(const MapCoords* param_1);
+	virtual bool IsPosValidForTurnAngle(const MapCoords& param_1);
 
 	// Non-virtual methods
 

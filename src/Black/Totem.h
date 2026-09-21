@@ -58,7 +58,7 @@ public:
 	// BW1W120 0051aba0 BW1M100 100c5910 Totem::Draw(void)
 	virtual void Draw();
 	// BW1W120 00737490 BW1M100 10543360 Totem::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00737520 BW1M100 10543140 Totem::ValidForLockedSelectProcess(GInterfaceStatus *)
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
 	// BW1W120 00737570 BW1M100 10543060 Totem::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
@@ -77,7 +77,7 @@ public:
 	// Constructors
 
 	// BW1W120 00737390 BW1M100 105435b0 Totem::Totem(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-	Totem(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
+	Totem(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
 	      int wood);
 
 	// Static methods

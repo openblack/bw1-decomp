@@ -61,7 +61,7 @@ public:
 	// BW1W120 0066e400 BW1M100 101196c0 PileResource::SetLife(float)
 	virtual void SetLife(float param_1);
 	// BW1W120 0066e300 BW1M100 10119a80 PileResource::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055d680 BW1M100 1011d530 PileResource::IsLockedInInteract(void)
 	virtual bool32_t IsLockedInInteract();
 	// BW1W120 0066e4f0 BW1M100 10119600 PileResource::ValidForLockedSelectProcess(GInterfaceStatus *)
@@ -86,8 +86,8 @@ public:
 	// Constructors
 
 	// BW1W120 0066ec70 BW1M100 10117e50 PileResource::PileResource(MapCoords const &, GPotInfo const *, unsigned long, MultiMapFixed *, Town *, int, float, float)
-	PileResource(MapCoords* param_1, GPotInfo* info, uint32_t param_3, MultiMapFixed* param_4, Town* param_5,
-	             int param_6, float param_7, float param_8);
+	PileResource(const MapCoords& param_1, const GPotInfo* info, uint32_t param_3, MultiMapFixed* param_4,
+	             Town* param_5, int param_6, float param_7, float param_8);
 };
 
 #endif /* BW1_DECOMP_PILE_RESOURCE_INCLUDED_H */

@@ -40,7 +40,7 @@ public:
 	virtual void CloseDown();
 	// BW1W120 007222d0 BW1M100 1051a5f0 SpellCreature::InitWithObject(GameThing *, Object *, SpellCastData *, PSysProcessInfo const &)
 	virtual int InitWithObject(GameThing* param_1, Object* param_2, SpellCastData* param_3,
-	                           const PSysProcessInfo* param_4);
+	                           const PSysProcessInfo& param_4);
 };
 
 #endif /* BW1_DECOMP_SPELL_CREATURE_INCLUDED_H */

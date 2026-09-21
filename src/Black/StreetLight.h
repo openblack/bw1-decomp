@@ -38,7 +38,7 @@ public:
 	// BW1W120 00735180 BW1M100 10535840 GStreetLight::ResolveLoad(void)
 	virtual void ResolveLoad();
 	// BW1W120 00735110 BW1M100 10535980 GStreetLight::GetDistanceFromObject(MapCoords const &)
-	virtual float GetDistanceFromObject(const MapCoords* param_1);
+	virtual float GetDistanceFromObject(const MapCoords& param_1);
 	// BW1W120 005613f0 BW1M100 10535780 GStreetLight::IsStreetLight(void)
 	virtual uint32_t IsStreetLight();
 	// BW1W120 005613e0 BW1M100 10535740 GStreetLight::GetText(void)

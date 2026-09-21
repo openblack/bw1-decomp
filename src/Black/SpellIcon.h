@@ -94,11 +94,11 @@ public:
 	// BW1W120 007265c0 BW1M100 10524740 SpellIcon::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 0055d440 BW1M100 10525f70 SpellIcon::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00519650 BW1M100 100c77b0 SpellIcon::Draw(void)
 	virtual void Draw();
 	// BW1W120 00726160 BW1M100 105253c0 SpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055d400 BW1M100 10525e50 SpellIcon::IsSpellSeedReturnPoint( const(void))
 	virtual bool32_t IsSpellSeedReturnPoint() const;
 	// BW1W120 0055d410 BW1M100 10525e90 SpellIcon::ValidAsInterfaceLeashTarget(void)
@@ -117,7 +117,7 @@ public:
 	// Constructors
 
 	// BW1W120 00725ff0 BW1M100 105257f0 SpellIcon::SpellIcon(const MapCoords &, const GSpellIconInfo *, const GSpellSeedInfo *, float, float, float, int)
-	SpellIcon(const MapCoords* coords, const GSpellIconInfo* icon_info, const GSpellSeedInfo* seed_info, float y_angle,
+	SpellIcon(const MapCoords& coords, const GSpellIconInfo* icon_info, const GSpellSeedInfo* seed_info, float y_angle,
 	          float scale, float param_6, int param_7);
 
 	// Non-virtual methods
@@ -127,7 +127,7 @@ public:
 	// BW1W120 00726310 BW1M100 10524d40 SpellIcon::IsSpellSeed(SPELL_SEED_TYPE)
 	bool32_t IsSpellSeed(SPELL_SEED_TYPE type);
 	// BW1W120 00726350 BW1M100 10524e60 SpellIcon::GetSpellSeedInfo(void) const
-	GSpellSeedInfo* GetSpellSeedInfo();
+	GSpellSeedInfo* GetSpellSeedInfo() const;
 	// BW1W120 00726360 BW1M100 10524cb0 SpellIcon::GetSpellSeedType(void)
 	SPELL_SEED_TYPE GetSpellSeedType();
 };

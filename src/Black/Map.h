@@ -33,11 +33,11 @@ struct MapCell
 	// BW1W120 00601380 BW1M100 101cbfc0 MapCell::Clean(void)
 	void Clean();
 	// BW1W120 006015e0 BW1M100 100121f0 MapCell::FindTypeOnMap(OBJECT_TYPE, Object *) const
-	Object* FindTypeOnMap(OBJECT_TYPE type, Object* object);
+	Object* FindTypeOnMap(OBJECT_TYPE type, Object* object) const;
 	// BW1W120 00601b80 BW1M100 100544d0 MapCell::GetX(void) const
-	uint32_t GetX();
+	uint32_t GetX() const;
 	// BW1W120 00601ba0 BW1M100 10054640 MapCell::GetZ(void) const
-	uint32_t GetZ();
+	uint32_t GetZ() const;
 	// BW1W120 00601690 BW1M100 10570500 MapCell::FindFixedOnMap(Object *)
 	Fixed* FindFixedOnMap(Object* param_1);
 	// BW1W120 inlined BW1M100 10388dc0 MapCell::GetFirstIterator(void) const

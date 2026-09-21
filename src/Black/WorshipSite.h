@@ -71,7 +71,7 @@ public:
 	virtual uint32_t GetResource(RESOURCE_TYPE param_1);
 	// BW1W120 0077c5f0 BW1M100 105afd80 WorshipSite::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             MapCoords* param_5, int param_6);
+	                             const MapCoords* param_5, int param_6);
 	// BW1W120 0077c670 BW1M100 105afca0 WorshipSite::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 0055dce0 BW1M100 105b4000 WorshipSite::GetDebugText(void)
@@ -117,13 +117,13 @@ public:
 	// BW1W120 0077b1d0 BW1M100 105b2440 WorshipSite::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 0055dcc0 BW1M100 105b3f70 WorshipSite::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 005193d0 BW1M100 100c7a80 WorshipSite::Draw(void)
 	virtual void Draw();
 	// BW1W120 0077de70 BW1M100 105ac230 WorshipSite::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
 	// BW1W120 0077b9d0 BW1M100 105b16a0 WorshipSite::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0077dec0 BW1M100 105ac190 WorshipSite::IsResourceStore(RESOURCE_TYPE)
 	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 0077e7b0 BW1M100 105ab190 WorshipSite::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
@@ -143,7 +143,7 @@ public:
 	// BW1W120 0077d000 BW1M100 105ae860 WorshipSite::GetObjectCollide(void)
 	virtual uint32_t GetObjectCollide();
 	// BW1W120 0077c120 BW1M100 105b0620 WorshipSite::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 0077dc90 BW1M100 105ac5f0 WorshipSite::GetNearestEdgeOfObject(Object *)
 	virtual LHPoint GetNearestEdgeOfObject(Object* object);
 	// BW1W120 0077e460 BW1M100 inlined WorshipSite::GetResourceDropPosForComputerPlayer(MapCoords *)

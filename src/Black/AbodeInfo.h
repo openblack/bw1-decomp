@@ -81,7 +81,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00404b10 BW1M100 1015a260 GAbodeInfo::IsOkToCreateAtPos(MapCoords const &, float, float, Town *) const
-	bool IsOkToCreateAtPos(const MapCoords* coords, float param_2, float param_3, Town* town);
+	bool IsOkToCreateAtPos(const MapCoords& coords, float param_2, float param_3, Town* town) const;
 	// BW1W120 00405a60 BW1M100 inlined GAbodeInfo::GetDescription(void)
 	const char* GetDescription();
 	// BW1W120 0042e520 BW1M100 inlined GAbodeInfo::LoadBinary(LHFile *)

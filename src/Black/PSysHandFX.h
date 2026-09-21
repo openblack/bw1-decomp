@@ -22,7 +22,7 @@ public:
 	// BW1W120 0068c9d0 BW1M100 1040e720 PSysHandFX::CreateHandFX(void)
 	static HandFX* CreateHandFX();
 	// BW1W120 0068def0 BW1M100 1040c1a0 PSysHandFX::CreateTribalPowerColumn(TRIBE_TYPE, LHPoint const &, unsigned long)
-	static void CreateTribalPowerColumn(TRIBE_TYPE type, LHPoint* param_2, uint32_t param_3);
+	static void CreateTribalPowerColumn(TRIBE_TYPE type, const LHPoint& param_2, uint32_t param_3);
 };
 
 class PHandFX : public PSysHandFX

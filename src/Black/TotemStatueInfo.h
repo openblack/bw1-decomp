@@ -24,7 +24,7 @@ public:
 	// BW1W120 00737a80 BW1M100 10545af0 GTotemStatueInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00737a70 BW1M100 10543c90 GTotemStatueInfo::GetMesh( const(void))
-	virtual uint32_t GetMesh();
+	virtual MESH_LIST GetMesh() const;
 };
 
 #endif /* BW1_DECOMP_TOTEM_STATUE_INFO_INCLUDED_H */

@@ -204,7 +204,7 @@ public:
 	// BW1W120 00402560 BW1M100 1030b0c0 Object::IsReachable(void)
 	virtual bool32_t IsReachable() { return IsAvailable(); }
 	// BW1W120 0063a920 BW1M100 103d03c0 Object::BlocksTownClearArea( const(void))
-	virtual bool32_t BlocksTownClearArea();
+	virtual bool32_t BlocksTownClearArea() const;
 	// BW1W120 006365f0 BW1M100 103d9010 Object::Create3DObject(void)
 	virtual void Create3DObject();
 	// fabricated: nothing in either binary references BW1W120 00636b20, so its name is unrecoverable.
@@ -233,7 +233,7 @@ public:
 	// BW1W120 00402570 BW1M100 103dca60 Object::GetPtr(void)
 	virtual Object* GetPtr();
 	// BW1W120 00636bd0 BW1M100 103d8710 Object::GetMeshRadius( const(void))
-	virtual float GetMeshRadius();
+	virtual float GetMeshRadius() const;
 	// BW1W120 00402580 BW1M100 103dc890 Object::Get3DObjectForPSys(void)
 	virtual Game3DObject* Get3DObjectForPSys() { return Game3dObject; }
 	// BW1W120 00732630 BW1M100 101499d0 Object::GetPSysFireFlameMatrix(LHMatrix *)
@@ -313,9 +313,9 @@ public:
 	// BW1W120 00637ff0 BW1M100 103d57e0 Object::ApplySingleEffect(EFFECT_TYPE, float, GameThing *, MapCoords const &)
 	virtual void ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords& param_4);
 	// BW1W120 00425340 BW1M100 10368d70 Object::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00402660 BW1M100 10368ae0 Object::GetDetailMesh( const(DETAIL_LEVEL))
-	virtual int GetDetailMesh(int detail) { return GetMesh(); }
+	virtual int GetDetailMesh(int detail) const { return GetMesh(); }
 	// BW1W120 004648b0 BW1M100 100e33f0 Object::Draw(void)
 	virtual void Draw();
 	// BW1W120 0051c820 BW1M100 1001aa40 Object::DrawOutOfMap(bool)

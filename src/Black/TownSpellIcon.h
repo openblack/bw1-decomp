@@ -48,7 +48,7 @@ public:
 	// BW1W120 00748f00 BW1M100 10561170 TownSpellIcon::GetWorshipSite(void)
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 00748be0 BW1M100 105619b0 TownSpellIcon::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 class TownCentreSpellIcon : public TownSpellIcon
@@ -74,7 +74,7 @@ public:
 	// BW1W120 00519640 BW1M100 100c7a30 TownCentreSpellIcon::Draw(void)
 	virtual void Draw();
 	// BW1W120 00748d20 BW1M100 105613d0 TownCentreSpellIcon::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 
 	// Non-virtual methods
 

@@ -115,7 +115,7 @@ struct Heap
 	// BW1W120 007e1220 Heap::DeleteArray(void *)
 	int DeleteArray(void* ptr);
 	// BW1W120 007e1240 Heap::NewFreeList(unsigned char const *, unsigned long)
-	FreeList* NewFreeList(unsigned char* addr, unsigned int size);
+	FreeList* NewFreeList(const unsigned char* addr, unsigned int size);
 	// BW1W120 007e12a0 Heap::DeleteFreeList(FreeList *)
 	FreeList* DeleteFreeList(FreeList* node);
 	// BW1W120 007e12f0 Heap::FindFreeInFreeList(unsigned long)

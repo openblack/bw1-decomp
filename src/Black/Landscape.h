@@ -42,9 +42,9 @@ struct GLandscape
 	// Static methods
 
 	// BW1W120 inlined BW1M100 100198f0 GLandscape::ConvertLandscapePointToMapCoord(LHPoint const &, MapCoords &)
-	static void ConvertLandscapePointToMapCoord(const LHPoint* point, MapCoords* coords);
+	static void ConvertLandscapePointToMapCoord(const LHPoint& point, MapCoords& coords);
 	// BW1W120 inlined BW1M100 106f5c34 GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(MapCoords const &, LHPoint &)
-	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords* coords, LHPoint* point);
+	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point);
 	// BW1W120 005e3f60 BW1M100 1001d960 GLandscape::PreDraw(void)
 	uint32_t PreDraw();
 	// BW1W120 00613750 BW1M100 1004aef0 GLandscape::ConvertMapCoordToLandscapePoint(MapCoords const &, LHPoint &)

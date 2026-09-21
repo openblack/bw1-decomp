@@ -47,13 +47,13 @@ public:
 	// BW1W120 00438e00 BW1M100 100b2570 BigForest::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 00438df0 BW1M100 100b24d0 BigForest::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00438f60 BW1M100 10020e40 BigForest::Draw(void)
 	virtual void Draw();
 	// BW1W120 00439550 BW1M100 100b2690 BigForest::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
 	// BW1W120 00439050 BW1M100 100b30a0 BigForest::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00438da0 BW1M100 100b2350 BigForest::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 004390b0 BW1M100 100b2fe0 BigForest::GetWoodValue(void)
@@ -73,7 +73,7 @@ public:
 	// BW1W120 00438de0 BW1M100 100b2470 BigForest::GetCarriedTreeType(void)
 	virtual uint32_t GetCarriedTreeType();
 	// BW1W120 00438f70 BW1M100 100b3190 BigForest::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Non-virtual methods
 
@@ -86,12 +86,13 @@ public:
 	// Static methods
 
 	// BW1W120 00438ec0 BW1M100 100b3590 BigForest::Create(MapCoords const &, GBigForestInfo const *, unsigned long, float, float)
-	static BigForest* Create(MapCoords* coords, GBigForestInfo* info, uint32_t param_3, float param_4, float param_5);
+	static BigForest* Create(const MapCoords& coords, const GBigForestInfo* info, uint32_t param_3, float param_4,
+	                         float param_5);
 
 	// Constructors
 
 	// BW1W120 00438ce0 BW1M100 100b3a20 BigForest::BigForest(MapCoords const &, GBigForestInfo const *, unsigned long, float, float)
-	BigForest(const MapCoords* coords, const GBigForestInfo* info, uint32_t param_3, float param_4, float param_5);
+	BigForest(const MapCoords& coords, const GBigForestInfo* info, uint32_t param_3, float param_4, float param_5);
 };
 
 #endif /* BW1_DECOMP_BIG_FOREST_INCLUDED_H */

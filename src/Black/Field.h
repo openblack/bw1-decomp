@@ -120,7 +120,7 @@ public:
 	// BW1W120 00527f50 BW1M100 100d6050 Field::BenefitsFromHavingWaterSprinkledOnIt(Creature *)
 	virtual uint32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1);
 	// BW1W120 00528a30 BW1M100 100d4a10 Field::GetMeshRadius( const(void))
-	virtual float GetMeshRadius();
+	virtual float GetMeshRadius() const;
 	// BW1W120 0052a0a0 BW1M100 100d1b50 Field::ReduceLife(float, GPlayer *)
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0052a050 BW1M100 100d1c00 Field::ReduceLifeDueToBurning(float, GPlayer *)
@@ -136,7 +136,7 @@ public:
 	// BW1W120 00529fb0 BW1M100 100d1db0 Field::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
 	// BW1W120 00528a40 BW1M100 100d47b0 Field::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00528f30 BW1M100 100d3f10 Field::ApplyWaterSpell(SpellWater *)
 	virtual float ApplyWaterSpell(SpellWater* param_1);
 	// BW1W120 00528010 BW1M100 100d2c60 Field::GetResourceType(void)
@@ -174,7 +174,7 @@ public:
 	// BW1W120 00529730 BW1M100 100d3050 Field::ProcessInInteract(GInterfaceStatus *)
 	virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
 	// BW1W120 00528ce0 BW1M100 100d4250 Field::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 00528c80 BW1M100 inlined Field::GetDoorPos(MapCoords *)
 	virtual MapCoords* GetDoorPos(MapCoords* param_1);
 

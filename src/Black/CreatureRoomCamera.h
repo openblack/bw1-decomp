@@ -23,13 +23,13 @@ public:
 	// BW1W120 00789e00 BW1M100 10288de0 CreatureRoomCamera::Close(void)
 	virtual void Close();
 	// BW1W120 00789e10 BW1M100 10288d70 CreatureRoomCamera::Update(InnerRoom *, float, int, int, LHCoord const &, bool)
-	virtual void Update(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord* param_5,
+	virtual void Update(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord& param_5,
 	                    bool param_6);
 	// BW1W120 0078a3e0 BW1M100 10287ad0 CreatureRoomCamera::UpdateMain(InnerRoom *, float, int, int, LHCoord const &, bool)
-	virtual void UpdateMain(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord* param_5,
+	virtual void UpdateMain(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord& param_5,
 	                        bool param_6);
 	// BW1W120 00789e40 BW1M100 10288c00 CreatureRoomCamera::UpdateState(InnerRoom *, float, int, int, LHCoord const &, bool)
-	virtual void UpdateState(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord* param_5,
+	virtual void UpdateState(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord& param_5,
 	                         bool param_6);
 };
 

@@ -22,7 +22,7 @@ public:
 	// BW1W120 006435d0 BW1M100 10111730 GPFootballInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 006435c0 BW1M100 10111320 GPFootballInfo::GetMesh( const(void))
-	virtual uint32_t GetMesh();
+	virtual MESH_LIST GetMesh() const;
 };
 
 #endif /* BW1_DECOMP_FOOTBALL_INFO_INCLUDED_H */

@@ -63,7 +63,7 @@ public:
 	// BW1W120 006e6880 BW1M100 10139bc0 Reward::GetWeight(void)
 	virtual float GetWeight();
 	// BW1W120 006e59b0 BW1M100 1013b570 Reward::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 006e69a0 BW1M100 10139770 Reward::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 006e5cc0 BW1M100 1013b270 Reward::InterfaceValidToTap(GInterfaceStatus *)

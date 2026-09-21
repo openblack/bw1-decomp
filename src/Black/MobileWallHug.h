@@ -92,7 +92,7 @@ public:
 	// BW1W120 0060dac0 BW1M100 103c1a50 MobileWallHug::SetYAngle(float)
 	virtual void SetYAngle(float param_1);
 	// BW1W120 0060ad60 BW1M100 1004abe0 MobileWallHug::AreWeThere(MapCoords const &, float)
-	virtual bool AreWeThere(const MapCoords* param_1, float param_2);
+	virtual bool AreWeThere(const MapCoords& param_1, float param_2);
 	// BW1W120 00416f70 BW1M100 100482a0 MobileWallHug::GetDestPos(void)
 	virtual MapCoords* GetDestPos();
 	// BW1W120 0060fc50 BW1M100 10084230 MobileWallHug::SetSpeed(long)
@@ -102,12 +102,12 @@ public:
 	// BW1W120 0060aee0 BW1M100 103c3b10 MobileWallHug::MoveTo3D(void)
 	virtual void MoveTo3D();
 	// BW1W120 0060bc40 BW1M100 103c3780 MobileWallHug::SetNewWander(MapCoords const &, long, long)
-	virtual void SetNewWander(const MapCoords* param_1, int param_2, int param_3);
+	virtual void SetNewWander(const MapCoords& param_1, int param_2, int param_3);
 
 	// Constructors
 
 	// BW1W120 inlined BW1M100 inlined MobileWallHug::MobileWallHug(MapCoords const &, GMobileWallHugInfo const *)
-	MobileWallHug(MapCoords* coords, GMobileWallHugInfo* info);
+	MobileWallHug(const MapCoords& coords, const GMobileWallHugInfo* info);
 	// BW1W120 00474890 BW1M100 101e0bb0 MobileWallHug::MobileWallHug(void)
 	MobileWallHug();
 

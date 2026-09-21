@@ -63,7 +63,7 @@ public:
 	// Constructors
 
 	// BW1W120 004ef2c0 BW1M100 102767c0 CreaturePhysical::CreaturePhysical(MapCoords const &, unsigned short, CreatureInfo const *, Creature *)
-	CreaturePhysical(const MapCoords* coords, uint16_t param_2, const CreatureInfo* info, Creature* creature);
+	CreaturePhysical(const MapCoords& coords, uint16_t param_2, const CreatureInfo* info, Creature* creature);
 };
 
 #endif /* BW1_DECOMP_CREATURE_PHYSICAL_INCLUDED_H */

@@ -581,7 +581,7 @@ void Abode::MakeFunctional()
 	}
 }
 
-MESH_LIST Abode::GetMesh()
+MESH_LIST Abode::GetMesh() const
 {
 	return GetInfo()->GetMesh();
 }
@@ -677,17 +677,17 @@ uint32_t Abode::JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* pa
 }
 
 uint32_t Abode::AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool param_4,
-                            MapCoords* coords, int param_6)
+                            const MapCoords* coords, int param_6)
 {
 	if (building_site != NULL && (type == RESOURCE_TYPE_WOOD || type == RESOURCE_TYPE_ANY))
 	{
 		return building_site->AddResource(type, amount, status, param_4, 0, 0);
 	}
-	return DoResourceAdding(type, amount, status, param_4, coords, param_6);
+	return DoResourceAdding(type, amount, status, param_4, *coords, param_6);
 }
 
 uint32_t Abode::DoResourceAdding(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool param_4,
-                                 MapCoords* coords, int param_6)
+                                 const MapCoords& coords, int param_6)
 {
 	Town* town = GetTown();
 	if (param_4 && town != NULL)

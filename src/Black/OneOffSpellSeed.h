@@ -68,13 +68,13 @@ public:
 	// BW1W120 0072acb0 BW1M100 105264c0 OneOffSpellSeed::GetQueryLastEnumText(void)
 	virtual HELP_TEXT GetQueryLastEnumText();
 	// BW1W120 0072a910 BW1M100 10526db0 OneOffSpellSeed::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00518e90 BW1M100 100c7fc0 OneOffSpellSeed::Draw(void)
 	virtual void Draw();
 	// BW1W120 00518c50 BW1M100 100c8340 OneOffSpellSeed::DrawOutOfMap(bool)
 	virtual void DrawOutOfMap(bool param_1);
 	// BW1W120 0072a450 BW1M100 105276e0 OneOffSpellSeed::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0072a530 BW1M100 105275c0 OneOffSpellSeed::InterfaceSetInMagicHand(GInterfaceStatus *)
 	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 0072a630 BW1M100 10527330 OneOffSpellSeed::InterfaceValidToTap(GInterfaceStatus *)
@@ -86,7 +86,7 @@ public:
 	// BW1W120 0072a920 BW1M100 10526d60 OneOffSpellSeed::GetPhysicsConstantsType(void)
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 0072ab80 BW1M100 105266e0 OneOffSpellSeed::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 #endif /* BW1_DECOMP_ONE_OFF_SPELL_SEED_INCLUDED_H */

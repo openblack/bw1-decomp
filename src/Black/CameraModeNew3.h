@@ -142,9 +142,9 @@ public:
 	// Static methods
 
 	// BW1W120 00458db0 BW1M100 1007c250 CameraModeNew3::CalcPerpDistance(LHPoint &, LHPoint &, LHPoint &)
-	static float CalcPerpDistance(LHPoint* param_1, LHPoint* param_2, LHPoint* param_3);
+	static float CalcPerpDistance(LHPoint& param_1, LHPoint& param_2, LHPoint& param_3);
 	// BW1W120 00458f40 BW1M100 10062a70 CameraModeNew3::FindBestAngle(float, float, LHPoint &, float &, float *)
-	static float FindBestAngle(float param_1, float param_2, float* param_3, float* param_4, float* param_5);
+	static float FindBestAngle(float param_1, float param_2, float* param_3, float& param_4, float* param_5);
 
 	// Constructors
 
@@ -156,15 +156,15 @@ public:
 	// BW1W120 00459230 BW1M100 10025a60 CameraModeNew3::UpdateTricons(void)
 	void UpdateTricons();
 	// BW1W120 00459610 BW1M100 101a4670 CameraModeNew3::UpdateClickParams(LHPoint &, LHPoint &, bool)
-	void UpdateClickParams(const LHPoint* param_1, const LHPoint* param_2, bool param_3);
+	void UpdateClickParams(const LHPoint& param_1, const LHPoint& param_2, bool param_3);
 	// BW1W120 00459c30 BW1M100 10037970 CameraModeNew3::
 	float GetAltitude(LHPoint* param_1);
 	// BW1W120 00459d20 BW1M100 101a4380 CameraModeNew3::SetAltitudeAndNormal(LHPoint &, LHPoint &)
-	void SetAltitudeAndNormal(LHPoint* param_1, LHPoint* normal);
+	void SetAltitudeAndNormal(LHPoint& param_1, LHPoint& normal);
 	// BW1W120 00459f10 BW1M100 1007e670 CameraModeNew3::DragFocusOntoLand(LHPoint &, LHPoint &)
-	void DragFocusOntoLand(LHPoint* param_1, LHPoint* param_2);
+	void DragFocusOntoLand(LHPoint& param_1, LHPoint& param_2);
 	// BW1W120 0045a080 BW1M100 101a3db0 CameraModeNew3::UpdateStrafe(LHPoint &, LHPoint &, float &, float &, float, unsigned long)
-	bool UpdateStrafe(LHPoint* param_1, LHPoint* param_2, float* param_3, float* param_4, float param_5,
+	bool UpdateStrafe(LHPoint& param_1, LHPoint& param_2, float& param_3, float& param_4, float param_5,
 	                  uint32_t param_6);
 	// BW1W120 0045a390 BW1M100 100098e0 CameraModeNew3::WantToQuitFight(LHPoint, LHPoint, float)
 	bool WantToQuitFight(LHPoint param_1, LHPoint param_2, float param_3);

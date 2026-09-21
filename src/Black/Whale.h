@@ -46,7 +46,7 @@ public:
 	// BW1W120 00774e10 BW1M100 101609a0 Whale::Draw(void)
 	virtual void Draw();
 	// BW1W120 00774ca0 BW1M100 10160a20 Whale::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00561270 BW1M100 1015ff50 Whale::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00561290 BW1M100 1015ff10 Whale::CanBecomeAPhysicsObject(void)

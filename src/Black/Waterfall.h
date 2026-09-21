@@ -34,9 +34,9 @@ public:
 	// BW1W120 0055de40 BW1M100 101533f0 GWaterfall::GetSaveType(void)
 	virtual uint32_t GetSaveType();
 	// BW1W120 007341b0 BW1M100 10154110 GWaterfall::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 007341d0 BW1M100 10154080 GWaterfall::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 #endif /* BW1_DECOMP_WATERFALL_INCLUDED_H */

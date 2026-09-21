@@ -27,13 +27,13 @@ public:
 	// BW1W120 006438e0 BW1M100 inlined PFootball::GetPlayer(void)
 	virtual GPlayer* GetPlayer();
 	// BW1W120 00643940 BW1M100 inlined PFootball::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00643fd0 BW1M100 inlined PFootball::Draw(void)
 	virtual void Draw();
 	// BW1W120 00644030 BW1M100 inlined PFootball::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00643980 BW1M100 inlined PFootball::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 00643950 BW1M100 inlined PFootball::IsPlaytimeStructure(void)
 	virtual bool32_t IsPlaytimeStructure();
 	// BW1W120 00643960 BW1M100 inlined PFootball::IsPlaytimeStarted(void)

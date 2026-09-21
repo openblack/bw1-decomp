@@ -39,9 +39,9 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 005fb3f0 BW1M100 103ae2c0 GMagicInfo::GetMagicInfoText(void) const
-	const char* GetMagicInfoText();
+	const char* GetMagicInfoText() const;
 	// BW1W120 005fb680 BW1M100 103adc30 GMagicInfo::GetMagicEffectInfo(void) const
-	GMagicEffectInfo* GetMagicEffectInfo();
+	GMagicEffectInfo* GetMagicEffectInfo() const;
 };
 
 #endif /* BW1_DECOMP_MAGIC_INFO_INCLUDED_H */

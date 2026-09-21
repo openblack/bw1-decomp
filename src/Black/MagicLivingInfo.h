@@ -22,7 +22,7 @@ public:
 	// BW1W120 005fb910 BW1M100 inlined GMagicLivingInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 005fb900 BW1M100 inlined GMagicLivingInfo::GetMesh( const(void))
-	virtual uint32_t GetMesh();
+	virtual MESH_LIST GetMesh() const;
 };
 
 #endif /* BW1_DECOMP_MAGIC_LIVING_INFO_INCLUDED_H */

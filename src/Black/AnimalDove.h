@@ -47,7 +47,7 @@ public:
 	// BW1W120 0041f680 BW1M100 10037cf0 Dove::Draw(void)
 	virtual void Draw();
 	// BW1W120 0041f240 BW1M100 101732a0 Dove::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0041bd80 BW1M100 10170ba0 Dove::StandAnimation(void)
 	virtual uint32_t StandAnimation();
 };

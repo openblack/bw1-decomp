@@ -33,7 +33,7 @@ public:
 	// BW1W120 0077ec60 BW1M100 inlined WorshipSiteUpgrade::GetWorshipSite(void)
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 0077ef30 BW1M100 inlined WorshipSiteUpgrade::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 004220f0 BW1M100 inlined WorshipSiteUpgrade::IsRepaired(void)
 	virtual bool32_t IsRepaired();
 	// BW1W120 00422110 BW1M100 inlined WorshipSiteUpgrade::IsBuilt(void)

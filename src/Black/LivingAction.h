@@ -34,7 +34,7 @@ struct LivingAction
 	// BW1W120 005ecc90 BW1M100 10072200 LivingAction::SetState(unsigned long, unsigned char)
 	void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
 	// BW1W120 inlined BW1M100 1004c420 LivingAction::GetState(unsigned long) const
-	VILLAGER_STATES GetState(LIVING_ACTION_INDEX index);
+	VILLAGER_STATES GetState(LIVING_ACTION_INDEX index) const;
 };
 
 #endif /* BW1_DECOMP_LIVING_ACTION_INCLUDED_H */

@@ -70,13 +70,13 @@ public:
 	virtual void Process();
 	// BW1W120 00596700 BW1M100 100f90b0 GroupBehaviour::UpdateGroupBasedOnAction(DanceGroup *, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &, unsigned long)
 	virtual void UpdateGroupBasedOnAction(DanceGroup* dance_group, DANCE_GROUP_ACTION_TYPE action_type,
-	                                      const DanceGroupActionArgument* argument, uint32_t param_4);
+	                                      const DanceGroupActionArgument& argument, uint32_t param_4);
 	// BW1W120 00597300 BW1M100 100f8760 GroupBehaviour::AddAction(float, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
 	virtual void AddAction(float param_1, LHDynamicStack<uint32_t>& stack, DANCE_GROUP_ACTION_TYPE action_type,
-	                       const DanceGroupActionArgument* argument);
+	                       const DanceGroupActionArgument& argument);
 	// BW1W120 00597270 BW1M100 100f8990 GroupBehaviour::AddAction(float, unsigned long, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
 	virtual void AddAction(float param_1, uint32_t param_2, DANCE_GROUP_ACTION_TYPE action_type,
-	                       DanceGroupActionArgument* arguments);
+	                       const DanceGroupActionArgument& arguments);
 	// BW1W120 005978e0 BW1M100 100f6eb0 GroupBehaviour::LoadDance(char const *)
 	virtual void LoadDance(const char* param_1);
 	// BW1W120 0050cc40 BW1M100 100f4e30 GroupBehaviour::GetAngle(void)
@@ -92,7 +92,7 @@ public:
 	// BW1W120 00597400 BW1M100 100f8550 GroupBehaviour::FindDanceGroup(Living *)
 	bool FindDanceGroup(Living* param_1);
 	// BW1W120 00597f20 BW1M100 100f68a0 GroupBehaviour::CalculateDancePosition(MapCoords const &, MapCoords *, DanceGroup *, unsigned long)
-	void CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2, DanceGroup* param_3,
+	void CalculateDancePosition(const MapCoords& param_1, MapCoords* param_2, DanceGroup* param_3,
 	                            unsigned long param_4);
 };
 

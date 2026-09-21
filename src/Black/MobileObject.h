@@ -96,7 +96,7 @@ public:
 	// BW1W120 00607130 BW1M100 103bd3f0 MobileObject::GetHoldLoweringMultiplier(void)
 	virtual float GetHoldLoweringMultiplier();
 	// BW1W120 00425b40 BW1M100 100ad960 MobileObject::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00518150 BW1M100 10036400 MobileObject::Draw(void)
 	virtual void Draw();
 	// BW1W120 00425b30 BW1M100 100ad910 MobileObject::CanBePickedUp(void)
@@ -104,7 +104,7 @@ public:
 	// BW1W120 00607560 BW1M100 103bc790 MobileObject::GetWorldMatrix(LHMatrix *)
 	virtual void GetWorldMatrix(LHMatrix* param_1);
 	// BW1W120 00607150 BW1M100 103bd200 MobileObject::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00607c20 BW1M100 103bb8f0 MobileObject::GetResourceType(void)
 	virtual RESOURCE_TYPE GetResourceType();
 	// BW1W120 00607bf0 BW1M100 103bb9a0 MobileObject::GetDefaultResource(void)
@@ -125,7 +125,7 @@ public:
 	// BW1W120 00425b50 BW1M100 100ad9d0 MobileObject::GetTastiness(void)
 	virtual uint32_t GetTastiness();
 	// BW1W120 00607270 BW1M100 103bcd10 MobileObject::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Static methods
 
@@ -137,7 +137,7 @@ public:
 	// BW1W120 00600d80 BW1M100 1011a5a0 MobileObject::MobileObject(void)
 	MobileObject();
 	// BW1W120 00606e40 BW1M100 103bde00 MobileObject::MobileObject(MapCoords const &, GMobileObjectInfo const *, Object *, float, float)
-	MobileObject(MapCoords* coords, const GMobileObjectInfo* info, Object* param_4, float param_5, float param_6);
+	MobileObject(const MapCoords& coords, const GMobileObjectInfo* info, Object* param_4, float param_5, float param_6);
 };
 
 class GSpeedThreshold : public GBaseInfo

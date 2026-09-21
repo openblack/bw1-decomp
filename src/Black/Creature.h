@@ -452,7 +452,7 @@ public:
 	// BW1W120 004770d0 BW1M100 101dbbc0 Creature::SetHeadPos(MapCoords *)
 	virtual void SetHeadPos(MapCoords* param_1);
 	// BW1W120 00477f70 BW1M100 101d9d60 Creature::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 00477860 BW1M100 101dae90 Creature::GetNearestEdgeOfObject(Object *)
 	virtual LHPoint GetNearestEdgeOfObject(Object* object);
 	// BW1W120 004753c0 BW1M100 101de710 Creature::GetDestPos(void)
@@ -571,9 +571,9 @@ public:
 	// Static methods
 
 	// BW1W120 00474a20 BW1M100 101dfc60 Creature::Create(MapCoords const &, CreatureInfo const *, GPlayer *)
-	static Creature* Create(const MapCoords* coords, const GCreatureInfo* info, GPlayer* player);
+	static Creature* Create(const MapCoords& coords, const GCreatureInfo* info, GPlayer* player);
 	// BW1W120 00474b50 BW1M100 101dfb90 Creature::CreateCreature(MapCoords const &, CreatureInfo const *, GPlayer *)
-	static Creature* CreateCreature(const MapCoords* coords, const GCreatureInfo* info, GPlayer* player);
+	static Creature* CreateCreature(const MapCoords& coords, const GCreatureInfo* info, GPlayer* player);
 	// BW1W120 0047cbd0 BW1M100 101d8360 Creature::CheckAllCreaturesForCatching(Object *, PhysicsObject *)
 	static void CheckAllCreaturesForCatching(Object* object, PhysicsObject* physics_object);
 
@@ -596,11 +596,11 @@ public:
 	void ForceActivityAndForceAction(CREATURE_DESIRES param_1, CreatureBelief* param_2, CREATURE_ACTION param_3,
 	                                 CreatureBelief* param_4, CreatureBelief* param_5, int param_6, int param_7);
 	// BW1W120 004c44b0 BW1M100 10230950 Creature::ForceActivityAndForceAction(CreaturePlan &, int, int)
-	void ForceActivityAndForceAction(CreaturePlan* param_1, int param_2, int param_3);
+	void ForceActivityAndForceAction(CreaturePlan& param_1, int param_2, int param_3);
 	// BW1W120 004d1460 BW1M100 10248530 Creature::LookAtPosition(MapCoords *)
 	int LookAtPosition(MapCoords* destination);
 	// BW1W120 004ea670 BW1M100 10279d20 Creature::DecideOnNewPlan(CreaturePlan &)
-	void DecideOnNewPlan(CreaturePlan* param_1);
+	void DecideOnNewPlan(CreaturePlan& param_1);
 	// BW1W120 004f6a90 BW1M100 1028d560 Creature::PrepareCreatureForScriptedAction(int)
 	void PrepareCreatureForScriptedAction(int stop_moving);
 	// BW1W120 004f8b80 BW1M100 1028a7b0 Creature::ProcessSpells(void)
@@ -639,7 +639,7 @@ public:
 	// BW1W120 005186d0 BW1M100 100c8c40 Creed::DrawOutOfMap(bool)
 	virtual void DrawOutOfMap(bool param_1);
 	// BW1W120 0050b3a0 BW1M100 100c06a0 Creed::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0050b330 BW1M100 100c0270 Creed::InteractsWithPhysicsObjects(void)
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 0050b340 BW1M100 100c02b0 Creed::CanBecomeAPhysicsObject(void)

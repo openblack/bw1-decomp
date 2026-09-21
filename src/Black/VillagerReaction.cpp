@@ -244,7 +244,7 @@ bool32_t Villager::GoAndHideInNearbyBuilding()
 	if (abode != NULL && abode->CanBeHiddenIn())
 	{
 		MapCoords arrivePos = abode->GetArrivePos();
-		if (AreWeThere(&arrivePos, 0.0f))
+		if (AreWeThere(arrivePos, 0.0f))
 		{
 			if (this->field_0xbc != NULL)
 			{
@@ -693,7 +693,7 @@ bool32_t Villager::DanceWhileReacting()
 	{
 		return DecideWhatToDo();
 	}
-	PerformDance(&dance_group->behaviour->Pos, VILLAGER_STATE_DANCE_WHILE_REACTING, dance_group->field_0x5c);
+	PerformDance(dance_group->behaviour->Pos, VILLAGER_STATE_DANCE_WHILE_REACTING, dance_group->field_0x5c);
 	return 1;
 }
 
@@ -736,7 +736,7 @@ bool32_t Villager::GoToTeleportReaction()
 	coords.x = teleport->Pos.x;
 	coords.z = teleport->Pos.z;
 	coords.altitude = teleport->Pos.Altitude();
-	if (AreWeThere(&coords, 0.0f))
+	if (AreWeThere(coords, 0.0f))
 	{
 		SetTopState(VILLAGER_STATE_TELEPORT_REACTION);
 		return true;

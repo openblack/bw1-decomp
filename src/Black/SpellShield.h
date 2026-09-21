@@ -56,15 +56,15 @@ public:
 	// BW1W120 0072b840 BW1M100 10532f10 SpellShield::CloseDown(void)
 	virtual void CloseDown();
 	// BW1W120 0072b5f0 BW1M100 10533230 SpellShield::InitWithPos(GameThing *, MapCoords const &, SpellCastData *, PSysProcessInfo const &)
-	virtual int InitWithPos(GameThing* param_1, const MapCoords* param_2, SpellCastData* param_3,
-	                        const PSysProcessInfo* param_4);
+	virtual int InitWithPos(GameThing* param_1, const MapCoords& param_2, SpellCastData* param_3,
+	                        const PSysProcessInfo& param_4);
 	// BW1W120 0072b7f0 BW1M100 10532fb0 SpellShield::CalculateCostToMaintain(void)
 	virtual float CalculateCostToMaintain();
 
 	// Non-virtual methods
 
 	// BW1W120 0072b820 BW1M100 10532f60 SpellShield::GetMagicInfo(void) const
-	GMagicInfo* GetMagicInfo();
+	GMagicInfo* GetMagicInfo() const;
 };
 
 #endif /* BW1_DECOMP_SPELL_SHIELD_INCLUDED_H */

@@ -61,7 +61,7 @@ bool32_t Villager::FarmerArrivesAtFarm()
 	{
 	case 1:
 		field_0xf1 = 1;
-		if (AreWeThere((MapCoords*)&football, 0.0f))
+		if (AreWeThere(*(MapCoords*)&football, 0.0f))
 		{
 			*(MapCoords*)&football = field->GetArrivePos(); // fabricated -- real value from unnamed fn_00528970
 			PlayAnimThenSetState(VILLAGER_STATE_FARMER_PLANTS_CROP, 1);

@@ -84,13 +84,13 @@ public:
 	// BW1W120 007969e0 BW1M100 10539ae0 InnerCamera::CalcDoorHit(InnerRoom *, LHCoord, float, bool)
 	virtual uint32_t CalcDoorHit(InnerRoom* param_1, LHCoord param_2, float param_3, bool param_4);
 	// BW1W120 00796b60 BW1M100 10539710 InnerCamera::Update(InnerRoom *, float, int, int, LHCoord const &, bool)
-	virtual void Update(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord* param_5,
+	virtual void Update(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord& param_5,
 	                    bool param_6);
 	// BW1W120 00795ce0 BW1M100 10539fe0 InnerCamera::UpdateMain(InnerRoom *, float, int, int, LHCoord const &, bool)
-	virtual void UpdateMain(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord* param_5,
+	virtual void UpdateMain(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord& param_5,
 	                        bool param_6);
 	// BW1W120 007965f0 BW1M100 10539e30 InnerCamera::UpdateState(InnerRoom *, float, int, int, LHCoord const &, bool)
-	virtual void UpdateState(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord* param_5,
+	virtual void UpdateState(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord& param_5,
 	                         bool param_6);
 	// BW1W120 00795570 BW1M100 1053b120 InnerCamera::FocusOnSubMesh(LH3DMesh *, int, float, float, float)
 	virtual void FocusOnSubMesh(LH3DMesh* param_1, int param_2, float param_3, float param_4, float param_5);

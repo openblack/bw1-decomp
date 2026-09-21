@@ -40,7 +40,7 @@ struct CreatureActionContext
 	// Constructors
 
 	// BW1W120 004c3960 BW1M100 10230320 CreatureActionContext::CreatureActionContext(CreatureContext &, float)
-	CreatureActionContext(CreatureContext* context, float param_2);
+	CreatureActionContext(CreatureContext& context, float param_2);
 };
 
 struct PreviousActionContextStack

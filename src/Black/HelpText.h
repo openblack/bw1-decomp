@@ -41,7 +41,7 @@ public:
 	// Constructors
 
 	// BW1W120 005cad40 BW1M100 103579b0 HelpText::HelpText(LHRegion const &)
-	HelpText(LHRegion* region);
+	HelpText(const LHRegion& region);
 };
 
 // Database entries are 12 bytes, distinct from the on-screen HelpText object.

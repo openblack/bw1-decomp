@@ -37,9 +37,9 @@ public:
 	// BW1W120 0077a8b0 BW1M100 105b3c70 GWorshipSiteInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00464370 BW1M100 inlined GWorshipSiteInfo::GetMesh( const(void))
-	virtual uint32_t GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00464380 BW1M100 inlined GWorshipSiteInfo::GetAbodeType( const(void))
-	virtual ABODE_TYPE GetAbodeType();
+	virtual ABODE_TYPE GetAbodeType() const;
 };
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_INFO_INCLUDED_H */

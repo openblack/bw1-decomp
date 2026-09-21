@@ -71,7 +71,7 @@ public:
 	// BW1W120 00464490 BW1M100 101c18f0 LeashObj::InterfaceTap(GInterfaceStatus *)
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 00464840 BW1M100 101c2540 LeashObj::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 struct TempleLeash
@@ -151,7 +151,7 @@ public:
 	// BW1W120 00467870 BW1M100 101be3b0 CitadelHeart::GetWorldMatrix(LHMatrix *)
 	virtual void GetWorldMatrix(LHMatrix* param_1);
 	// BW1W120 004675a0 BW1M100 101be430 CitadelHeart::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 00464b40 BW1M100 101be8a0 CitadelHeart::Get3DType(void)
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 00467b60 BW1M100 101bdef0 CitadelHeart::GetPhysicsConstantsType(void)
@@ -172,7 +172,7 @@ public:
 	// BW1W120 00464b50 BW1M100 101c2180 CitadelHeart::GetObjectCollide(void)
 	virtual uint32_t GetObjectCollide();
 	// BW1W120 004673a0 BW1M100 101be8e0 CitadelHeart::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 	// BW1W120 00464b70 BW1M100 101c2200 CitadelHeart::ShouldFootpathsGoRound(void)
 	virtual bool32_t ShouldFootpathsGoRound();
 	// BW1W120 00467d10 BW1M100 inlined CitadelHeart::GetDoorPos(MapCoords *)
@@ -189,7 +189,7 @@ public:
 	// Static methods
 
 	// BW1W120 00464e20 BW1M100 101c0960 CitadelHeart::Create(MapCoords const &, GCitadelHeartInfo const *, Citadel *, float, float, float, int)
-	static CitadelHeart* Create(MapCoords* coords, GCitadelHeartInfo* info, Citadel* citadel, float param_4,
+	static CitadelHeart* Create(const MapCoords& coords, const GCitadelHeartInfo* info, Citadel* citadel, float param_4,
 	                            float param_5, float param_6, int param_7);
 
 	// Constructors
@@ -207,7 +207,7 @@ public:
 	// BW1W120 00464da0 BW1M100 101c0af0 CitadelHeart::SetToZero(void)
 	void SetToZero();
 	// BW1W120 00465110 BW1M100 101c03b0 CitadelHeart::CreateBuiltWorshipSite(MapCoords const &, GWorshipSiteInfo const *, Citadel *, GTribeInfo const *)
-	WorshipSite* CreateBuiltWorshipSite(const MapCoords* coords, const GWorshipSiteInfo* info, const Citadel* citadel,
+	WorshipSite* CreateBuiltWorshipSite(const MapCoords& coords, const GWorshipSiteInfo* info, const Citadel* citadel,
 	                                    const GTribeInfo* tribe_info);
 };
 

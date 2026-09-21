@@ -24,7 +24,7 @@ public:
 	// BW1W120 00527d30 BW1M100 100d18c0 GFieldTypeInfo::GetBaseInfo(unsigned long &)
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00528e50 BW1M100 100d4190 GFieldTypeInfo::IsOkToCreateAtPos( const(MapCoords const &, float, float))
-	virtual bool IsOkToCreateAtPos(const MapCoords* param_1, float param_2, float param_3);
+	virtual bool IsOkToCreateAtPos(const MapCoords& param_1, float param_2, float param_3) const;
 };
 
 #endif /* BW1_DECOMP_FIELD_TYPE_INFO_INCLUDED_H */

@@ -346,7 +346,7 @@ void Object::Create3DObjectAtPos()
 	Game3dObject->y_angle = 0.0f;
 }
 
-float Object::GetMeshRadius()
+float Object::GetMeshRadius() const
 {
 	return Game3dObject->GetMesh()->BoundingBox.DiagonalLength;
 }
@@ -1284,7 +1284,7 @@ float Object::ApplyWaterSpell(SpellWater* spell)
 	return 0.0f;
 }
 
-bool32_t Object::BlocksTownClearArea()
+bool32_t Object::BlocksTownClearArea() const
 {
 	return true;
 }

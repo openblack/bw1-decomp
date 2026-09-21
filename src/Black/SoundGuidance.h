@@ -67,9 +67,9 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 0071ac70 BW1M100 105122a0 GGuidance::Init(GInterfaceStatus&)
-	void Init(GInterfaceStatus* status);
+	void Init(GInterfaceStatus& status);
 	// BW1W120 0071cbe0 BW1M100 1050e610 GGuidance::HelpSpritesLowOnPeople(Town &)
-	void HelpSpritesLowOnPeople(Town* param_1);
+	void HelpSpritesLowOnPeople(Town& param_1);
 };
 
 #endif /* BW1_DECOMP_SOUND_GUIDANCE_INCLUDED_H */

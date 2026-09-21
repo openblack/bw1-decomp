@@ -38,12 +38,12 @@ public:
 	// BW1W120 007259c0 BW1M100 10520820 SpellForest::Process(void)
 	virtual uint32_t Process();
 	// BW1W120 00725830 BW1M100 10520880 SpellForest::SpellEvent(SpellEventInfo const &)
-	virtual void SpellEvent(const SpellEventInfo* param_1);
+	virtual void SpellEvent(const SpellEventInfo& param_1);
 	// BW1W120 0055d1e0 BW1M100 1051ff90 SpellForest::CloseDown(void)
 	virtual void CloseDown();
 	// BW1W120 00725540 BW1M100 10521300 SpellForest::InitWithPos(GameThing *, MapCoords const &, SpellCastData *, PSysProcessInfo const &)
-	virtual int InitWithPos(GameThing* param_1, const MapCoords* param_2, SpellCastData* param_3,
-	                        const PSysProcessInfo* param_4);
+	virtual int InitWithPos(GameThing* param_1, const MapCoords& param_2, SpellCastData* param_3,
+	                        const PSysProcessInfo& param_4);
 	// BW1W120 007259e0 BW1M100 10520730 SpellForest::CalculateCostToMaintain(void)
 	virtual float CalculateCostToMaintain();
 	// BW1W120 00725750 BW1M100 10520cc0 SpellForest::AdjustSpellSeedPos(MapCoords *)

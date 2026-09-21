@@ -408,7 +408,7 @@ public:
 	virtual uint32_t GetResource(RESOURCE_TYPE type);
 	// BW1W120 004051c0 BW1M100 1056c9a0 GameThing::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             MapCoords* coords, int param_6);
+	                             const MapCoords* coords, int param_6);
 	// BW1W120 004051d0 BW1M100 104f8b20 GameThing::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
 	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 004018d0 BW1M100 103dd790 GameThing::CastCreature(void)

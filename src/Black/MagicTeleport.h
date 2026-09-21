@@ -66,7 +66,7 @@ public:
 	// BW1W120 005fccc0 BW1M100 103af280 MagicTeleport::Draw(void)
 	virtual void Draw();
 	// BW1W120 005fc260 BW1M100 103b0bf0 MagicTeleport::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 005fc440 BW1M100 103b05b0 MagicTeleport::ValidForPlaceInHand(GInterfaceStatus *)
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 005fc470 BW1M100 103b0500 MagicTeleport::InterfaceSetInMagicHand(GInterfaceStatus *)

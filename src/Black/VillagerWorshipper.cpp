@@ -384,7 +384,7 @@ bool32_t Villager::RestartWorshippingCreature()
 {
 	if (dance_group != NULL)
 	{
-		PerformDance(&dance_group->Dancer->Pos, VILLAGER_STATE_WORSHIPPING_CREATURE, 9);
+		PerformDance(dance_group->Dancer->Pos, VILLAGER_STATE_WORSHIPPING_CREATURE, 9);
 		return 1;
 	}
 	GoHome();
@@ -475,7 +475,7 @@ bool32_t Villager::HidingAtWorshipSite()
 	{
 		MapCoords pos;
 		pos = worshipSite->GetDoorPos();
-		if (AreWeThere(&pos, 1.0f))
+		if (AreWeThere(pos, 1.0f))
 			return ProcessInWorship();
 		SetupMoveToWithHug(pos, VILLAGER_STATE_HIDING_AT_WORSHIP_SITE);
 		return 1;
@@ -500,8 +500,8 @@ bool32_t Villager::WorshippingAtWorshipSite()
 	}
 	bool32_t result = ProcessInWorship();
 	if (result == 1)
-		result = PerformDance(&dance_group->Dancer->Pos, VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE,
-		                      dance_group->field_0x5c);
+		result =
+			PerformDance(dance_group->Dancer->Pos, VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE, dance_group->field_0x5c);
 	return result;
 }
 
@@ -542,7 +542,7 @@ bool32_t Villager::WorshippingCreature()
 		// TODO: +0x100 is a flag on the (unidentified) dancer type; keep the raw offset.
 		if (*(int*)((char*)p + 0x100) == 0)
 		{
-			PerformDance(&p->Pos, VILLAGER_STATE_WORSHIPPING_CREATURE, dance_group->field_0x5c);
+			PerformDance(p->Pos, VILLAGER_STATE_WORSHIPPING_CREATURE, dance_group->field_0x5c);
 			return 1;
 		}
 		GoHome();
@@ -669,7 +669,7 @@ bool32_t Villager::GetFoodAtWorshipSite()
 	if (worshipSite != NULL)
 	{
 		MapCoords pos = worshipSite->GetResourceNearestEdge(RESOURCE_TYPE_FOOD, this, 1);
-		if (AreWeThere(&pos, 0.0f))
+		if (AreWeThere(pos, 0.0f))
 		{
 			int amount = GetAmountOfFoodRequiredForMeal();
 			if (amount != 0)

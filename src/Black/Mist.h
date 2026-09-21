@@ -49,7 +49,7 @@ public:
 	// BW1W120 0055eba0 BW1M100 10104710 Mist::GetCreatureBeliefType(void)
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 006067d0 BW1M100 10104c90 Mist::GetDistanceFromObject(MapCoords const &)
-	virtual float GetDistanceFromObject(const MapCoords* param_1);
+	virtual float GetDistanceFromObject(const MapCoords& param_1);
 	// BW1W120 0055eb90 BW1M100 101046e0 Mist::IsMist(void)
 	virtual uint32_t IsMist();
 	// BW1W120 0055eb80 BW1M100 101046b0 Mist::GetText(void)
@@ -60,7 +60,7 @@ public:
 	// Constructors
 
 	// BW1W120 00606270 BW1M100 101056c0 Mist::Mist(MapCoords const &, float, unsigned long, float)
-	Mist(MapCoords* coords, float param_3, uint32_t param_4, float param_5);
+	Mist(const MapCoords& coords, float param_3, uint32_t param_4, float param_5);
 };
 
 #endif /* BW1_DECOMP_MIST_INCLUDED_H */

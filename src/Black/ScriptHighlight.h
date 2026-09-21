@@ -73,7 +73,7 @@ public:
 	// BW1W120 007097d0 BW1M100 104fa470 ScriptHighlight::CanBeCrushed(void)
 	virtual uint32_t CanBeCrushed();
 	// BW1W120 00709aa0 BW1M100 104fbb00 ScriptHighlight::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00709800 BW1M100 104fa550 ScriptHighlight::ValidAsInterfaceTarget(void)
 	virtual uint32_t ValidAsInterfaceTarget();
 	// BW1W120 00709770 BW1M100 104fa250 ScriptHighlight::ValidForPlaceInHand(GInterfaceStatus *)

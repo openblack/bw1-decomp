@@ -49,14 +49,14 @@ Villager* Villager::FindImmediateNeighbour()
 // BW1W120 00759930 BW1M100 10577560 Villager::DanceForEditingPurposes(void)
 bool32_t Villager::DanceForEditingPurposes()
 {
-	PerformDance(&dance_group->behaviour->Pos, VILLAGER_STATE_DANCE_FOR_EDITING_PURPOSES, dance_group->field_0x5c);
+	PerformDance(dance_group->behaviour->Pos, VILLAGER_STATE_DANCE_FOR_EDITING_PURPOSES, dance_group->field_0x5c);
 	return 1;
 }
 
 // BW1W120 00759960 BW1M100 105774f0 Villager::DanceButNotWorship(void)
 bool32_t Villager::DanceButNotWorship()
 {
-	PerformDance(&dance_group->behaviour->Pos, VILLAGER_STATE_DANCE_BUT_NOT_WORSHIP, dance_group->field_0x5c);
+	PerformDance(dance_group->behaviour->Pos, VILLAGER_STATE_DANCE_BUT_NOT_WORSHIP, dance_group->field_0x5c);
 	return 1;
 }
 

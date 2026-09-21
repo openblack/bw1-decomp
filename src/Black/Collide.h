@@ -88,9 +88,9 @@ struct ObjectCircleIterator
 	// BW1W120 006159a0 BW1M100 1005f630 ObjectCircleIterator::operator NewCollide::Obj
 	operator NewCollide::Obj();
 	// BW1W120 0060d0a0 BW1M100 100644a0 ObjectCircleIterator::Init(int, MapCoords const &)
-	void Init(ObjectCircleIteratorDirection direction, const MapCoords* coords);
+	void Init(ObjectCircleIteratorDirection direction, const MapCoords& coords);
 	// BW1W120 0060d280 BW1M100 100649d0 ObjectCircleIterator::Init(Object *, MapCoords const &)
-	void Init(Object* obj, const MapCoords* coords);
+	void Init(Object* obj, const MapCoords& coords);
 };
 
 struct NewCollideDescriptor

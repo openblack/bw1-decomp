@@ -35,19 +35,19 @@ struct Point2D
 	// BW1W120 inlined BW1M100 inlined Point2D::operator-=(Point2D const &)
 	Point2D& operator-=(const Point2D& other);
 	// BW1W120 00611240 BW1M100 inlined Point2D::Cross(const Point2D&) const
-	float Cross(const Point2D& other);
+	float Cross(const Point2D& other) const;
 	// BW1W120 00611330 BW1M100 100e7550 Point2D::Normalize(void)
 	float Normalize();
 	// BW1W120 006115f0 BW1M100 1005ba40 Point2D::GetNormSq(void) const
-	float GetNormSq();
+	float GetNormSq() const;
 	// BW1W120 006159c0 BW1M100 inlined Point2D::operator==(const Point2D&)
-	bool operator==(const Point2D* other);
+	bool operator==(const Point2D& other);
 	// BW1W120 0086fd00 BW1M100 10089260 Point2D::GetHeading(void) const
-	float GetHeading();
+	float GetHeading() const;
 	// BW1W120 0086fd70 BW1M100 10089100 Point2D::SetSize(float)
 	void SetSize(float size);
 	// BW1W120 0086fdc0 BW1M100 10089000 Point2D::GetRange(Point2D const &) const
-	float GetRange(const Point2D* param_1);
+	float GetRange(const Point2D& param_1) const;
 };
 
 struct LHPoint

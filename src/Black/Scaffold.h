@@ -42,7 +42,7 @@ public:
 	virtual Town* GetTown();
 	// BW1W120 006eaef0 BW1M100 1013eaf0 Scaffold::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             MapCoords* param_5, int param_6);
+	                             const MapCoords* param_5, int param_6);
 	// BW1W120 005181a0 BW1M100 100c8e20 Scaffold::DrawInHand(GInterfaceStatus *)
 	virtual void DrawInHand(GInterfaceStatus* param_1);
 	// BW1W120 0055e140 BW1M100 1013e6d0 Scaffold::GetDebugText(void)
@@ -78,7 +78,7 @@ public:
 	// BW1W120 006ea5c0 BW1M100 1013fd30 Scaffold::Draw(void)
 	virtual void Draw();
 	// BW1W120 006e8540 BW1M100 10143a70 Scaffold::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 006eaea0 BW1M100 1013ec20 Scaffold::IsResourceStore(RESOURCE_TYPE)
 	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 006eaec0 BW1M100 1013eb90 Scaffold::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
@@ -122,7 +122,7 @@ public:
 	// BW1W120 006e8570 BW1M100 101436c0 Scaffold::ProcessInHand(void)
 	virtual bool ProcessInHand();
 	// BW1W120 006eaf30 BW1M100 1013e710 Scaffold::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Non-virtual methods
 

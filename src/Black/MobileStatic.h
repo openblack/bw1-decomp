@@ -99,13 +99,13 @@ public:
 	// BW1W120 00608d60 BW1M100 103bfd10 MobileStatic::SetXYZAnglesAndScale(float, float, float, float)
 	virtual void SetXYZAnglesAndScale(float param_1, float param_2, float param_3, float param_4);
 	// BW1W120 006096a0 BW1M100 103be560 MobileStatic::BlocksTownClearArea( const(void))
-	virtual bool32_t BlocksTownClearArea();
+	virtual bool32_t BlocksTownClearArea() const;
 	// BW1W120 006091b0 BW1M100 10097420 MobileStatic::GetHoldType(void)
 	virtual HOLD_TYPE GetHoldType();
 	// BW1W120 00609230 BW1M100 10097510 MobileStatic::GetHoldLoweringMultiplier(void)
 	virtual float GetHoldLoweringMultiplier();
 	// BW1W120 00439680 BW1M100 100b42d0 MobileStatic::GetMesh( const(void))
-	virtual MESH_LIST GetMesh();
+	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00517f60 BW1M100 10042f50 MobileStatic::Draw(void)
 	virtual void Draw();
 	// BW1W120 00439670 BW1M100 100b4280 MobileStatic::CanBePickedUp(void)
@@ -113,7 +113,7 @@ public:
 	// BW1W120 00608de0 BW1M100 103bfb00 MobileStatic::GetWorldMatrix(LHMatrix *)
 	virtual void GetWorldMatrix(LHMatrix* param_1);
 	// BW1W120 00609700 BW1M100 103be330 MobileStatic::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 006096b0 BW1M100 103be4f0 MobileStatic::GetResourceType(void)
 	virtual RESOURCE_TYPE GetResourceType();
 	// BW1W120 006096d0 BW1M100 103be450 MobileStatic::GetDefaultResource(void)
@@ -155,12 +155,12 @@ public:
 	// BW1W120 00439660 BW1M100 100b4240 MobileStatic::GetTastiness(void)
 	virtual uint32_t GetTastiness();
 	// BW1W120 006088e0 BW1M100 103c0530 MobileStatic::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Constructors
 
 	// BW1W120 00608710 BW1M100 103c0e60 MobileStatic::MobileStatic(MapCoords const &, GMobileStaticInfo const *, Object *, float, float)
-	MobileStatic(MapCoords* coords, GMobileStaticInfo* info, Object* param_3, float param_4, float param_5);
+	MobileStatic(const MapCoords& coords, const GMobileStaticInfo* info, Object* param_3, float param_4, float param_5);
 };
 
 class GBaseOnly : public Object
@@ -181,9 +181,9 @@ public:
 	// BW1W120 00609540 BW1M100 103be980 GBaseOnly::Draw(void)
 	virtual void Draw();
 	// BW1W120 006093a0 BW1M100 103beb00 GBaseOnly::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 006095e0 BW1M100 103be5b0 GBaseOnly::SaveObject(LHOSFile &, MapCoords const &)
-	virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 #endif /* BW1_DECOMP_MOBILE_STATIC_INCLUDED_H */

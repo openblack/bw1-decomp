@@ -39,7 +39,7 @@ public:
 	// BW1W120 0051c560 BW1M100 100c4a10 SpellWolf::Draw(void)
 	virtual void Draw();
 	// BW1W120 00420910 BW1M100 10177d60 SpellWolf::CallVirtualFunctionsForCreation(MapCoords const &)
-	virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00420cf0 BW1M100 101777b0 SpellWolf::SetDying(void)
 	virtual bool32_t SetDying();
 	// BW1W120 0041c6a0 BW1M100 1016ee70 SpellWolf::StandAnimation(void)

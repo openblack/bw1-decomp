@@ -79,7 +79,7 @@ public:
 	// Constructors
 
 	// BW1W120 00539bd0 BW1M100 100f2620 Forest::Forest(MapCoords const&, unsigned long)
-	Forest(const MapCoords* coords, uint32_t param_2);
+	Forest(const MapCoords& coords, uint32_t param_2);
 
 	// Non-virtual methods
 
