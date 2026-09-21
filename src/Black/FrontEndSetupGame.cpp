@@ -29,7 +29,7 @@
 
 #define THUMBNAIL_ANGLE_STEP 0.06981317f // Four degrees in radians.
 #define THUMBNAIL_FULL_TURN  6.2831854820251465f
-#define FILE_PATH            "C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp"
+#define FILEPATH             "C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp"
 
 // FrontEnd scope and these singleton names are descriptive; the Init/Destroy pairs establish ownership.
 SetupLandscapeBox*     FrontEnd::LandscapeDialog;        // 00cd1664
@@ -46,71 +46,71 @@ void SetupLandscapeBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::LandscapeDialog = this;
-	Help = new (FILE_PATH, 66) SetupEdit(1006, 150, 525, 500, 30, L" ", false);
+	Help = new (FILEPATH, 66) SetupEdit(1006, 150, 525, 500, 30, L" ", false);
 	Help->text_size = GetSmallTextSize();
-	Accept = new (FILE_PATH, 71)
+	Accept = new (FILEPATH, 71)
 		SetupBigButton(0, 40, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FOOD_01), 40,
 	                   0, BBSTYLE_LEFT_ARROW);
-	Cancel = new (FILE_PATH, 72)
+	Cancel = new (FILEPATH, 72)
 		SetupBigButton(1, 720, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FIRE_01), 40,
 	                   1, BBSTYLE_RIGHT_ARROW);
-	Name = new (FILE_PATH, 79) SetupEdit(2, 100, 440, 100, 30, L"", true);
-	NameLabel = new (FILE_PATH, 80) SetupStaticText(
+	Name = new (FILEPATH, 79) SetupEdit(2, 100, 440, 100, 30, L"", true);
+	NameLabel = new (FILEPATH, 80) SetupStaticText(
 		999, 100, 410, 110, 40, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_11),
 		TEXTJUSTIFY_LEFT);
-	PlayerCountLabel = new (FILE_PATH, 81) SetupStaticText(999, 100, 80, 210, 40, L"", TEXTJUSTIFY_LEFT);
+	PlayerCountLabel = new (FILEPATH, 81) SetupStaticText(999, 100, 80, 210, 40, L"", TEXTJUSTIFY_LEFT);
 	swprintf(PlayerCountLabel->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_10),
 	         Settings.GuaranteedPlayers);
-	PlayerCount = new (FILE_PATH, 85) SetupSlider(3, 100, 100, 100, 20, 0.0f, L"");
+	PlayerCount = new (FILEPATH, 85) SetupSlider(3, 100, 100, 100, 20, 0.0f, L"");
 	CitadelTowns =
-		new (FILE_PATH, 87) SetupCheckBox(4, 100, 130, false, BBSTYLE_CHECK_BOX_OFF,
-	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_08), 20);
+		new (FILEPATH, 87) SetupCheckBox(4, 100, 130, false, BBSTYLE_CHECK_BOX_OFF,
+	                                     HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_08), 20);
 	CitadelTowns->checked = false;
 	NeutralTowns =
-		new (FILE_PATH, 89) SetupCheckBox(5, 400, 130, false, BBSTYLE_CHECK_BOX_OFF,
-	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_09), 20);
+		new (FILEPATH, 89) SetupCheckBox(5, 400, 130, false, BBSTYLE_CHECK_BOX_OFF,
+	                                     HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_09), 20);
 	NeutralTowns->checked = false;
 	Creatures =
-		new (FILE_PATH, 91) SetupCheckBox(6, 100, 160, false, BBSTYLE_CHECK_BOX_OFF,
-	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_11), 20);
+		new (FILEPATH, 91) SetupCheckBox(6, 100, 160, false, BBSTYLE_CHECK_BOX_OFF,
+	                                     HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_11), 20);
 	Creatures->checked = false;
 	Rocks =
-		new (FILE_PATH, 93) SetupCheckBox(7, 400, 160, false, BBSTYLE_CHECK_BOX_OFF,
-	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_12), 20);
+		new (FILEPATH, 93) SetupCheckBox(7, 400, 160, false, BBSTYLE_CHECK_BOX_OFF,
+	                                     HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_12), 20);
 	Rocks->checked = false;
 	Trees =
-		new (FILE_PATH, 95) SetupCheckBox(8, 100, 190, false, BBSTYLE_CHECK_BOX_OFF,
-	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_13), 20);
+		new (FILEPATH, 95) SetupCheckBox(8, 100, 190, false, BBSTYLE_CHECK_BOX_OFF,
+	                                     HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_13), 20);
 	Trees->checked = false;
 	Fields =
-		new (FILE_PATH, 97) SetupCheckBox(9, 400, 190, false, BBSTYLE_CHECK_BOX_OFF,
-	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_14), 20);
+		new (FILEPATH, 97) SetupCheckBox(9, 400, 190, false, BBSTYLE_CHECK_BOX_OFF,
+	                                     HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_14), 20);
 	Fields->checked = false;
 	Fish =
-		new (FILE_PATH, 99) SetupCheckBox(10, 100, 220, false, BBSTYLE_CHECK_BOX_OFF,
-	                                      HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_15), 20);
+		new (FILEPATH, 99) SetupCheckBox(10, 100, 220, false, BBSTYLE_CHECK_BOX_OFF,
+	                                     HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_15), 20);
 	Fish->checked = false;
-	Slider0x478 = new (FILE_PATH, 105) SetupSlider(12, 100, 290, 100, 20, 0.0f, L"");
-	Label0x460 = new (FILE_PATH, 106) SetupStaticText(999, 100, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
+	Slider0x478 = new (FILEPATH, 105) SetupSlider(12, 100, 290, 100, 20, 0.0f, L"");
+	Label0x460 = new (FILEPATH, 106) SetupStaticText(999, 100, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
 	swprintf(Label0x460->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_08),
 	         get_type_string(Settings.field_0x41c));
-	Slider0x47c = new (FILE_PATH, 109) SetupSlider(11, 320, 290, 100, 20, 0.0f, L"");
-	Label0x464 = new (FILE_PATH, 110) SetupStaticText(999, 320, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
+	Slider0x47c = new (FILEPATH, 109) SetupSlider(11, 320, 290, 100, 20, 0.0f, L"");
+	Label0x464 = new (FILEPATH, 110) SetupStaticText(999, 320, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
 	swprintf(Label0x464->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_09),
 	         get_type_string(Settings.field_0x418));
-	Slider0x480 = new (FILE_PATH, 112) SetupSlider(13, 540, 290, 100, 20, 0.0f, L"");
-	Label0x468 = new (FILE_PATH, 113) SetupStaticText(999, 540, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
+	Slider0x480 = new (FILEPATH, 112) SetupSlider(13, 540, 290, 100, 20, 0.0f, L"");
+	Label0x468 = new (FILEPATH, 113) SetupStaticText(999, 540, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
 	swprintf(Label0x468->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_10),
 	         get_type_string(Settings.field_0x418));
-	ListLabel0x46c = new (FILE_PATH, 117) SetupStaticText(
+	ListLabel0x46c = new (FILEPATH, 117) SetupStaticText(
 		999, 100, 310, 250, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MISSIONARY_SONG_VERSE1_12),
 		TEXTJUSTIFY_LEFT);
-	List0x4a8 = new (FILE_PATH, 118) SetupList(14, 100, 350, 200, 60);
-	ListLabel0x470 = new (FILE_PATH, 121) SetupStaticText(
+	List0x4a8 = new (FILEPATH, 118) SetupList(14, 100, 350, 200, 60);
+	ListLabel0x470 = new (FILEPATH, 121) SetupStaticText(
 		999, 320, 310, 250, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MISSIONARY_SONG_VERSE2_01),
 		TEXTJUSTIFY_LEFT);
-	List0x4ac = new (FILE_PATH, 122) SetupList(15, 320, 350, 200, 60);
-	SpellButton = new (FILE_PATH, 124) SetupButton(
+	List0x4ac = new (FILEPATH, 122) SetupList(15, 320, 350, 200, 60);
+	SpellButton = new (FILEPATH, 124) SetupButton(
 		17, 320, 440, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MISSIONARY_SONG_VERSE2_02), 0);
 	SpellButton->ContinueButtonCallback = (void*)OnSetupSpells;
 }
@@ -208,23 +208,23 @@ void SpellSetupBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::SpellDialog = this;
-	Help = new (FILE_PATH, 325) SetupEdit(1006, 150, 525, 500, 30, L" ", false);
+	Help = new (FILEPATH, 325) SetupEdit(1006, 150, 525, 500, 30, L" ", false);
 	Help->text_size = GetSmallTextSize();
-	Accept = new (FILE_PATH, 330)
+	Accept = new (FILEPATH, 330)
 		SetupBigButton(0, 40, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FOOD_01), 40,
 	                   0, BBSTYLE_LEFT_ARROW);
-	Cancel = new (FILE_PATH, 331)
+	Cancel = new (FILEPATH, 331)
 		SetupBigButton(1, 720, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FIRE_01), 40,
 	                   1, BBSTYLE_RIGHT_ARROW);
-	OneShotLabel = new (FILE_PATH, 336)
+	OneShotLabel = new (FILEPATH, 336)
 		SetupStaticText(999, 90, 100, 200, 30,
 	                    HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_BETTER_01), TEXTJUSTIFY_LEFT);
-	SpellLabel = new (FILE_PATH, 337)
+	SpellLabel = new (FILEPATH, 337)
 		SetupStaticText(999, 330, 100, 200, 30,
 	                    HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_BETTER_13), TEXTJUSTIFY_LEFT);
-	OneShotList = new (FILE_PATH, 338) SetupMultiList(3, 90, 140, 230, 200, 10);
+	OneShotList = new (FILEPATH, 338) SetupMultiList(3, 90, 140, 230, 200, 10);
 	// Both constructors really receive 10, although the second InitControls loop inserts eleven rows.
-	SpellList = new (FILE_PATH, 339) SetupMultiList(2, 330, 140, 200, 200, 10);
+	SpellList = new (FILEPATH, 339) SetupMultiList(2, 330, 140, 200, 200, 10);
 }
 
 void SpellSetupBox::Destroy()
@@ -263,23 +263,23 @@ void SetupOnlineLandscapes::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::OnlineLandscapesDialog = this;
-	Help = new (FILE_PATH, 460) SetupEdit(1006, 150, 525, 500, 30, L"", false);
+	Help = new (FILEPATH, 460) SetupEdit(1006, 150, 525, 500, 30, L"", false);
 	Help->text_size = 16;
-	Back = new (FILE_PATH, 464)
+	Back = new (FILEPATH, 464)
 		SetupBigButton(0, 720, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FOOD_01), 40,
 	                   1, BBSTYLE_RIGHT_ARROW);
-	LandscapeLabel = new (FILE_PATH, 468) SetupStaticText(
+	LandscapeLabel = new (FILEPATH, 468) SetupStaticText(
 		3, 80, 60, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MISSIONARY_SONG_VERSE2_12),
 		TEXTJUSTIFY_LEFT);
 	LandscapeLabel->text_size = 20;
-	LandscapeList = new (FILE_PATH, 470) SetupList(2, 80, 90, 250, 420);
+	LandscapeList = new (FILEPATH, 470) SetupList(2, 80, 90, 250, 420);
 	LandscapeList->text_size = 20;
-	DescriptionLabel = new (FILE_PATH, 472) SetupStaticText(6, 350, 350, 400, 30, L"", TEXTJUSTIFY_LEFT);
+	DescriptionLabel = new (FILEPATH, 472) SetupStaticText(6, 350, 350, 400, 30, L"", TEXTJUSTIFY_LEFT);
 	DescriptionLabel->text_size = 20;
-	DescriptionList = new (FILE_PATH, 474) SetupList(5, 350, 375, 400, 100);
+	DescriptionList = new (FILEPATH, 474) SetupList(5, 350, 375, 400, 100);
 	DescriptionList->text_size = 20;
 	DescriptionList->Hide(true);
-	Download = new (FILE_PATH, 478) SetupButton(
+	Download = new (FILEPATH, 478) SetupButton(
 		4, 350, 480, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MISSIONARY_SONG_VERSE3_02), 0);
 	Download->Hide(true);
 	Download->text_size = 20;
