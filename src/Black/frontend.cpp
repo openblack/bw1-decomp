@@ -382,7 +382,6 @@ void TattooEditor::Destroy()
 
 void CDBox::Destroy()
 {
-	// TODO: CDBox's track-query controls and callback need the Redbook helper signatures.
 	DialogBoxBase::Destroy();
 	FrontEnd::ActiveCDDialog = NULL;
 }
