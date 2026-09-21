@@ -3,6 +3,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <wchar.h>
+#include <chlasm/HelpTextEnums.h>
 #include <Lionhead/LH3DLib/development/LH3DMaterial.h>
 #include <Lionhead/LH3DLib/development/LH3DMath.h>
 #include <Lionhead/LH3DLib/development/LH3DTexture.h>
@@ -25,7 +26,8 @@
 #include "SetupStaticText.h"
 #include "SpellSetupBox.h"
 
-#define THUMBNAIL_ANGLE_STEP 0.06981317f // Four degrees in radians.
+#define THUMBNAIL_ANGLE_STEP        0.06981317f // Four degrees in radians.
+#define FRONT_END_SETUP_GAME_SOURCE "C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp"
 
 // FrontEnd scope and these singleton names are descriptive; the Init/Destroy pairs establish ownership.
 SetupLandscapeBox*     FrontEnd::LandscapeDialog;        // 00cd1664
@@ -42,65 +44,74 @@ void SetupLandscapeBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::LandscapeDialog = this;
-	Help = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x42) SetupEdit(1006, 150, 525, 500, 30, L" ", false);
+	Help = new (FRONT_END_SETUP_GAME_SOURCE, 66) SetupEdit(1006, 150, 525, 500, 30, L" ", false);
 	Help->text_size = GetSmallTextSize();
-	Accept = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x47)
-		SetupBigButton(0, 40, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa24), 40, 0, BBSTYLE_LEFT_ARROW);
-	Cancel = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x48)
-		SetupBigButton(1, 720, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 40, 1, BBSTYLE_RIGHT_ARROW);
-	Name = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x4f) SetupEdit(2, 100, 440, 100, 30, L"", true);
-	NameLabel = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x50) SetupStaticText(
-		999, 100, 410, 110, 40, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x115e), TEXTJUSTIFY_LEFT);
-	PlayerCountLabel = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x51)
-		SetupStaticText(999, 100, 80, 210, 40, L"", TEXTJUSTIFY_LEFT);
-	swprintf(PlayerCountLabel->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10e7),
+	Accept = new (FRONT_END_SETUP_GAME_SOURCE, 71)
+		SetupBigButton(0, 40, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FOOD_01), 40,
+	                   0, BBSTYLE_LEFT_ARROW);
+	Cancel = new (FRONT_END_SETUP_GAME_SOURCE, 72)
+		SetupBigButton(1, 720, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FIRE_01), 40,
+	                   1, BBSTYLE_RIGHT_ARROW);
+	Name = new (FRONT_END_SETUP_GAME_SOURCE, 79) SetupEdit(2, 100, 440, 100, 30, L"", true);
+	NameLabel = new (FRONT_END_SETUP_GAME_SOURCE, 80) SetupStaticText(
+		999, 100, 410, 110, 40, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_11),
+		TEXTJUSTIFY_LEFT);
+	PlayerCountLabel =
+		new (FRONT_END_SETUP_GAME_SOURCE, 81) SetupStaticText(999, 100, 80, 210, 40, L"", TEXTJUSTIFY_LEFT);
+	swprintf(PlayerCountLabel->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_10),
 	         Settings.GuaranteedPlayers);
-	PlayerCount = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x55) SetupSlider(3, 100, 100, 100, 20, 0.0f, L"");
-	CitadelTowns = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x57) SetupCheckBox(
-		4, 100, 130, false, BBSTYLE_CHECK_BOX_OFF, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10e5), 20);
+	PlayerCount = new (FRONT_END_SETUP_GAME_SOURCE, 85) SetupSlider(3, 100, 100, 100, 20, 0.0f, L"");
+	CitadelTowns = new (FRONT_END_SETUP_GAME_SOURCE, 87)
+		SetupCheckBox(4, 100, 130, false, BBSTYLE_CHECK_BOX_OFF,
+	                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_08), 20);
 	CitadelTowns->checked = false;
-	NeutralTowns = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x59) SetupCheckBox(
-		5, 400, 130, false, BBSTYLE_CHECK_BOX_OFF, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10e6), 20);
+	NeutralTowns = new (FRONT_END_SETUP_GAME_SOURCE, 89)
+		SetupCheckBox(5, 400, 130, false, BBSTYLE_CHECK_BOX_OFF,
+	                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_09), 20);
 	NeutralTowns->checked = false;
-	Creatures = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x5b) SetupCheckBox(
-		6, 100, 160, false, BBSTYLE_CHECK_BOX_OFF, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10e8), 20);
+	Creatures = new (FRONT_END_SETUP_GAME_SOURCE, 91)
+		SetupCheckBox(6, 100, 160, false, BBSTYLE_CHECK_BOX_OFF,
+	                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_11), 20);
 	Creatures->checked = false;
-	Rocks = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x5d) SetupCheckBox(
-		7, 400, 160, false, BBSTYLE_CHECK_BOX_OFF, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10e9), 20);
+	Rocks = new (FRONT_END_SETUP_GAME_SOURCE, 93)
+		SetupCheckBox(7, 400, 160, false, BBSTYLE_CHECK_BOX_OFF,
+	                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_12), 20);
 	Rocks->checked = false;
-	Trees = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x5f) SetupCheckBox(
-		8, 100, 190, false, BBSTYLE_CHECK_BOX_OFF, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10ea), 20);
+	Trees = new (FRONT_END_SETUP_GAME_SOURCE, 95)
+		SetupCheckBox(8, 100, 190, false, BBSTYLE_CHECK_BOX_OFF,
+	                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_13), 20);
 	Trees->checked = false;
-	Fields = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x61) SetupCheckBox(
-		9, 400, 190, false, BBSTYLE_CHECK_BOX_OFF, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10eb), 20);
+	Fields = new (FRONT_END_SETUP_GAME_SOURCE, 97)
+		SetupCheckBox(9, 400, 190, false, BBSTYLE_CHECK_BOX_OFF,
+	                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_14), 20);
 	Fields->checked = false;
-	Fish = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x63) SetupCheckBox(
-		10, 100, 220, false, BBSTYLE_CHECK_BOX_OFF, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10ec), 20);
+	Fish = new (FRONT_END_SETUP_GAME_SOURCE, 99)
+		SetupCheckBox(10, 100, 220, false, BBSTYLE_CHECK_BOX_OFF,
+	                  HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_NO_15), 20);
 	Fish->checked = false;
-	Slider0x478 = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x69) SetupSlider(12, 100, 290, 100, 20, 0.0f, L"");
-	Label0x460 = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x6a)
-		SetupStaticText(999, 100, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
-	swprintf(Label0x460->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x115b),
+	Slider0x478 = new (FRONT_END_SETUP_GAME_SOURCE, 105) SetupSlider(12, 100, 290, 100, 20, 0.0f, L"");
+	Label0x460 = new (FRONT_END_SETUP_GAME_SOURCE, 106) SetupStaticText(999, 100, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
+	swprintf(Label0x460->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_08),
 	         get_type_string(Settings.field_0x41c));
-	Slider0x47c = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x6d) SetupSlider(11, 320, 290, 100, 20, 0.0f, L"");
-	Label0x464 = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x6e)
-		SetupStaticText(999, 320, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
-	swprintf(Label0x464->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x115c),
+	Slider0x47c = new (FRONT_END_SETUP_GAME_SOURCE, 109) SetupSlider(11, 320, 290, 100, 20, 0.0f, L"");
+	Label0x464 = new (FRONT_END_SETUP_GAME_SOURCE, 110) SetupStaticText(999, 320, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
+	swprintf(Label0x464->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_09),
 	         get_type_string(Settings.field_0x418));
-	Slider0x480 = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x70) SetupSlider(13, 540, 290, 100, 20, 0.0f, L"");
-	Label0x468 = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x71)
-		SetupStaticText(999, 540, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
+	Slider0x480 = new (FRONT_END_SETUP_GAME_SOURCE, 112) SetupSlider(13, 540, 290, 100, 20, 0.0f, L"");
+	Label0x468 = new (FRONT_END_SETUP_GAME_SOURCE, 113) SetupStaticText(999, 540, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
 	// The original initialization uses +0x430 here, although slider 13 subsequently edits +0x438.
-	swprintf(Label0x468->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x115d),
+	swprintf(Label0x468->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_10),
 	         get_type_string(Settings.field_0x418));
-	ListLabel0x46c = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x75) SetupStaticText(
-		999, 100, 310, 250, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x12be), TEXTJUSTIFY_LEFT);
-	List0x4a8 = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x76) SetupList(14, 100, 350, 200, 60);
-	ListLabel0x470 = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x79) SetupStaticText(
-		999, 320, 310, 250, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x12bf), TEXTJUSTIFY_LEFT);
-	List0x4ac = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x7a) SetupList(15, 320, 350, 200, 60);
-	SpellButton = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x7c)
-		SetupButton(17, 320, 440, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x12c0), 0);
+	ListLabel0x46c = new (FRONT_END_SETUP_GAME_SOURCE, 117) SetupStaticText(
+		999, 100, 310, 250, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MISSIONARY_SONG_VERSE1_12),
+		TEXTJUSTIFY_LEFT);
+	List0x4a8 = new (FRONT_END_SETUP_GAME_SOURCE, 118) SetupList(14, 100, 350, 200, 60);
+	ListLabel0x470 = new (FRONT_END_SETUP_GAME_SOURCE, 121) SetupStaticText(
+		999, 320, 310, 250, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MISSIONARY_SONG_VERSE2_01),
+		TEXTJUSTIFY_LEFT);
+	List0x4ac = new (FRONT_END_SETUP_GAME_SOURCE, 122) SetupList(15, 320, 350, 200, 60);
+	SpellButton = new (FRONT_END_SETUP_GAME_SOURCE, 124) SetupButton(
+		17, 320, 440, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MISSIONARY_SONG_VERSE2_02), 0);
 	SpellButton->ContinueButtonCallback = (void*)OnSetupSpells;
 }
 
@@ -109,15 +120,17 @@ wchar_t* get_type_string(float value)
 	// Returns shared frontend scratch storage, not the database entry itself.
 	if (value < 0.3f)
 	{
-		wcscpy(FrontEnd::TypeString, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1156));
+		wcscpy(FrontEnd::TypeString,
+		       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_03));
 		return FrontEnd::TypeString;
 	}
 	if (value > 0.6f)
 	{
-		wcscpy(FrontEnd::TypeString, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1158));
+		wcscpy(FrontEnd::TypeString,
+		       HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_05));
 		return FrontEnd::TypeString;
 	}
-	wcscpy(FrontEnd::TypeString, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1157));
+	wcscpy(FrontEnd::TypeString, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_04));
 	return FrontEnd::TypeString;
 }
 
@@ -154,14 +167,14 @@ void SetupLandscapeBox::InitControls()
 	// TODO: The original expands the list appends individually and calls GetTextL at 004707f0.
 	// GetHelpText has the same verified bounds semantics; retain this readable surface implementation.
 	int text;
-	for (text = 0x12c1; text <= 0x12c5; ++text)
+	for (text = HELP_TEXT_MISSIONARY_SONG_VERSE2_03; text <= HELP_TEXT_MISSIONARY_SONG_VERSE2_07; ++text)
 	{
 		List0x4a8->InsertString(List0x4a8->NumItems, HelpTextDataBase::HelpTextDatabase.GetHelpText(text));
 		List0x4a8->SetCol(List0x4a8->NumItems - 1, 0);
 	}
 	while (List0x4ac->NumItems > 0)
 		List0x4ac->DeleteString(List0x4ac->NumItems - 1);
-	for (text = 0x12c6; text <= 0x12c9; ++text)
+	for (text = HELP_TEXT_MISSIONARY_SONG_VERSE2_08; text <= HELP_TEXT_MISSIONARY_SONG_VERSE2_11; ++text)
 	{
 		List0x4ac->InsertString(List0x4ac->NumItems, HelpTextDataBase::HelpTextDatabase.GetHelpText(text));
 		List0x4ac->SetCol(List0x4ac->NumItems - 1, 0);
@@ -181,19 +194,23 @@ void SpellSetupBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::SpellDialog = this;
-	Help = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x145) SetupEdit(1006, 150, 525, 500, 30, L" ", false);
+	Help = new (FRONT_END_SETUP_GAME_SOURCE, 325) SetupEdit(1006, 150, 525, 500, 30, L" ", false);
 	Help->text_size = GetSmallTextSize();
-	Accept = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x14a)
-		SetupBigButton(0, 40, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa24), 40, 0, BBSTYLE_LEFT_ARROW);
-	Cancel = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x14b)
-		SetupBigButton(1, 720, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 40, 1, BBSTYLE_RIGHT_ARROW);
-	OneShotLabel = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x150) SetupStaticText(
-		999, 90, 100, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10ed), TEXTJUSTIFY_LEFT);
-	SpellLabel = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x151) SetupStaticText(
-		999, 330, 100, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10f9), TEXTJUSTIFY_LEFT);
-	OneShotList = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x152) SetupMultiList(3, 90, 140, 230, 200, 10);
+	Accept = new (FRONT_END_SETUP_GAME_SOURCE, 330)
+		SetupBigButton(0, 40, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FOOD_01), 40,
+	                   0, BBSTYLE_LEFT_ARROW);
+	Cancel = new (FRONT_END_SETUP_GAME_SOURCE, 331)
+		SetupBigButton(1, 720, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FIRE_01), 40,
+	                   1, BBSTYLE_RIGHT_ARROW);
+	OneShotLabel = new (FRONT_END_SETUP_GAME_SOURCE, 336)
+		SetupStaticText(999, 90, 100, 200, 30,
+	                    HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_BETTER_01), TEXTJUSTIFY_LEFT);
+	SpellLabel = new (FRONT_END_SETUP_GAME_SOURCE, 337)
+		SetupStaticText(999, 330, 100, 200, 30,
+	                    HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_BETTER_13), TEXTJUSTIFY_LEFT);
+	OneShotList = new (FRONT_END_SETUP_GAME_SOURCE, 338) SetupMultiList(3, 90, 140, 230, 200, 10);
 	// Both constructors really receive 10, although the second InitControls loop inserts eleven rows.
-	SpellList = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x153) SetupMultiList(2, 330, 140, 200, 200, 10);
+	SpellList = new (FRONT_END_SETUP_GAME_SOURCE, 339) SetupMultiList(2, 330, 140, 200, 200, 10);
 }
 
 void SpellSetupBox::Destroy()
@@ -213,13 +230,15 @@ void SpellSetupBox::InitControls()
 	int i;
 	for (i = 0; i < 10; ++i)
 	{
-		OneShotList->InsertString(OneShotList->NumItems, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10ee + i));
+		OneShotList->InsertString(OneShotList->NumItems,
+		                          HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_BETTER_02 + i));
 		OneShotList->SetCol(OneShotList->NumItems - 1, 0);
 		OneShotList->list[i] = Settings.OneShotSpells[i];
 	}
 	for (i = 0; i < 11; ++i)
 	{
-		SpellList->InsertString(SpellList->NumItems, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x10ee + i));
+		SpellList->InsertString(SpellList->NumItems,
+		                        HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_ROTATION_BETTER_02 + i));
 		SpellList->SetCol(SpellList->NumItems - 1, 0);
 		SpellList->list[i] = Settings.Spells[i];
 	}
@@ -230,23 +249,25 @@ void SetupOnlineLandscapes::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::OnlineLandscapesDialog = this;
-	Help = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x1cc) SetupEdit(1006, 150, 525, 500, 30, L"", false);
+	Help = new (FRONT_END_SETUP_GAME_SOURCE, 460) SetupEdit(1006, 150, 525, 500, 30, L"", false);
 	Help->text_size = 16;
-	Back = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x1d0)
-		SetupBigButton(0, 720, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa24), 40, 1, BBSTYLE_RIGHT_ARROW);
-	LandscapeLabel = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x1d4)
-		SetupStaticText(3, 80, 60, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x12ca), TEXTJUSTIFY_LEFT);
+	Back = new (FRONT_END_SETUP_GAME_SOURCE, 464)
+		SetupBigButton(0, 720, 520, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_QUESTION_MORE_FOOD_01), 40,
+	                   1, BBSTYLE_RIGHT_ARROW);
+	LandscapeLabel = new (FRONT_END_SETUP_GAME_SOURCE, 468) SetupStaticText(
+		3, 80, 60, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MISSIONARY_SONG_VERSE2_12),
+		TEXTJUSTIFY_LEFT);
 	LandscapeLabel->text_size = 20;
-	LandscapeList = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x1d6) SetupList(2, 80, 90, 250, 420);
+	LandscapeList = new (FRONT_END_SETUP_GAME_SOURCE, 470) SetupList(2, 80, 90, 250, 420);
 	LandscapeList->text_size = 20;
-	DescriptionLabel = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x1d8)
-		SetupStaticText(6, 350, 350, 400, 30, L"", TEXTJUSTIFY_LEFT);
+	DescriptionLabel =
+		new (FRONT_END_SETUP_GAME_SOURCE, 472) SetupStaticText(6, 350, 350, 400, 30, L"", TEXTJUSTIFY_LEFT);
 	DescriptionLabel->text_size = 20;
-	DescriptionList = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x1da) SetupList(5, 350, 375, 400, 100);
+	DescriptionList = new (FRONT_END_SETUP_GAME_SOURCE, 474) SetupList(5, 350, 375, 400, 100);
 	DescriptionList->text_size = 20;
 	DescriptionList->Hide(true);
-	Download = new ("C:\\dev\\MP\\Black\\FrontEndSetupGame.cpp", 0x1de)
-		SetupButton(4, 350, 480, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x12cc), 0);
+	Download = new (FRONT_END_SETUP_GAME_SOURCE, 478) SetupButton(
+		4, 350, 480, 200, 30, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_MISSIONARY_SONG_VERSE3_02), 0);
 	Download->Hide(true);
 	Download->text_size = 20;
 }
