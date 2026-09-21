@@ -1,0 +1,53 @@
+object: orig/BW1M110/Black & White
+hash: e2303573abf06d36dcf2d16620d94c02f14fc8fc
+symbols: config/BW1M110/symbols.txt
+splits: config/BW1M110/splits.txt
+modules:
+- object: orig/BW1M110/Black & White Support
+  hash: e6eef220fd45780b53a6c59d60d161ea3f8b4328
+  symbols: config/BW1M110/Black & White Support/symbols.txt
+  splits: config/BW1M110/Black & White Support/splits.txt
+- object: orig/BW1M110/CarbonLib
+  hash: 9a276d427d8b3f528876d66a986e18d1ab551331
+  symbols: config/BW1M110/CarbonLib/symbols.txt
+  splits: config/BW1M110/CarbonLib/splits.txt
+- object: orig/BW1M110/indirectx sh carb HM
+  hash: 808cf54559e9143c514001d43cf4cf1ad6cb5ad9
+  symbols: config/BW1M110/indirectx sh carb HM/symbols.txt
+  splits: config/BW1M110/indirectx sh carb HM/splits.txt
+- object: orig/BW1M110/LH Combined Release Shared
+  hash: 3795e1b690d1e84a1deca84b07ee5a0d0761438c
+  symbols: config/BW1M110/LH Combined Release Shared/symbols.txt
+  splits: config/BW1M110/LH Combined Release Shared/splits.txt
+- object: orig/BW1M110/Lib8
+  hash: 8447b2c8021fee79dc01656ef943a7f2e2a91bc2
+  symbols: config/BW1M110/Lib8/symbols.txt
+  splits: config/BW1M110/Lib8/splits.txt
+- object: orig/BW1M110/macdoze shared carb HM
+  hash: e43edb9f54bf7f26b1f0528b8d47afd82dfb1207
+  symbols: config/BW1M110/macdoze shared carb HM/symbols.txt
+  splits: config/BW1M110/macdoze shared carb HM/splits.txt
+- object: orig/BW1M110/more files shd carb HM
+  hash: 0545eefe1d9e5b7fc3333d875f393220c4b48476
+  symbols: config/BW1M110/more files shd carb HM/symbols.txt
+  splits: config/BW1M110/more files shd carb HM/splits.txt
+- object: orig/BW1M110/sams utils shared HM
+  hash: 89fb012aa299db2ac86cc6989790a9b716e0be38
+  symbols: config/BW1M110/sams utils shared HM/symbols.txt
+  splits: config/BW1M110/sams utils shared HM/splits.txt
+- object: orig/BW1M110/ScriptLibrary
+  hash: 7edc023fcaf428e2c022c660c894f9dc753d074e
+  symbols: config/BW1M110/ScriptLibrary/symbols.txt
+  splits: config/BW1M110/ScriptLibrary/splits.txt
+- object: orig/BW1M110/ScriptLibraryCI
+  hash: 6c3840e4e423970b9f6d6d5fd6348c5e07238eec
+  symbols: config/BW1M110/ScriptLibraryCI/symbols.txt
+  splits: config/BW1M110/ScriptLibraryCI/splits.txt
+- object: orig/BW1M110/support shared carbon HM
+  hash: e968f1d5b64bc2dd5e5d57b7a48b3cbcc2c78a02
+  symbols: config/BW1M110/support shared carbon HM/symbols.txt
+  splits: config/BW1M110/support shared carbon HM/splits.txt
+- object: orig/BW1M110/zlib shared carb HM
+  hash: b31dbb2165e2c2733b7245c3ec6b1a044449162e
+  symbols: config/BW1M110/zlib shared carb HM/symbols.txt
+  splits: config/BW1M110/zlib shared carb HM/splits.txt

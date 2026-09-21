@@ -9,7 +9,6 @@ See [Dependencies](dependencies.md) first.
    - `orig/BW1W100/runblack-decrypted.exe` — Windows v1.0 (decrypted)
    - `orig/BW1W110/runblack-decrypted.exe` — Windows v1.1 (decrypted)
    - `orig/BW1W120/runblack-decrypted.exe` — Windows v1.2 (decrypted)
-   - `orig/BW1M100/Black & White` — Classic Mac OS v1.0.0 PEF binary
 
    The Windows builds also need the four DLLs shipped alongside the exe, in the same directory: `LHaudiodllR.dll`, `LHLogR.dll`, `LHMultiplayerR.dll`, `LHDialogLib.dll` (copy these from your own install — the build checks all five files' hashes against `config/<VERSION>/build.sha1` and fails at the split step with a clear "not found" message naming whichever one is missing).
 
@@ -111,7 +110,7 @@ See [Dependencies](dependencies.md) first.
    python configure.py --version BW1W100
    ```
 
-   Pass `--version BW1W120` or `--version BW1M100` for the other targets. Default is `BW1W120`.
+   Pass `--version BW1W100`, or `--version BW1W110` for the other targets. Default is `BW1W120`.
 
 5. Build:
 

@@ -25,7 +25,7 @@ elsewhere, retain the clearest supported implementation and document the unresol
 ## Repository Layout
 
 - `configure.py`        — Project configuration and generator script.
-- `config/[VERSION]`    — Configuration files for each game version (`BW1W100`, `BW1W110`, `BW1W120`, `BW1M100`).
+- `config/[VERSION]`    — Configuration files for each game version (`BW1W100`, `BW1W110`, `BW1W120`, `BW1M119`).
     - `config.yml`      — decomp-toolkit project config
     - `symbols.txt`     — layout of the binaries, addresses, sizes, names etc for every symbol present
     - `splits.txt`      — per-TU section address ranges

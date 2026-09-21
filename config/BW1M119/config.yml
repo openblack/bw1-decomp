@@ -1,0 +1,60 @@
+object: orig/BW1M119/Black & White
+hash: 7904455be146dd3efd9f7b21c38fb56b0365edf8
+symbols: config/BW1M119/symbols.txt
+splits: config/BW1M119/splits.txt
+modules:
+- name: ZonicLib Release
+  object: orig/BW1M119/Black & White:ZonicLib Release
+  hash: 8696a2af767ac2c36665847fb6a47ddeb62a7593
+  symbols: config/BW1M119/ZonicLib Release/symbols.txt
+  splits: config/BW1M119/ZonicLib Release/splits.txt
+- name: LHCombined Release
+  object: orig/BW1M119/Black & White:LHCombined Release
+  hash: 2453cd845e6c71bad0fe32bf627db11b931c58be
+  symbols: config/BW1M119/LHCombined Release/symbols.txt
+  splits: config/BW1M119/LHCombined Release/splits.txt
+- name: FindErrorLib1
+  object: orig/BW1M119/Black & White:FindErrorLib1
+  hash: 05198c2e089e5adf2894b7073a3ae96f08f0a3f9
+  symbols: config/BW1M119/FindErrorLib1/symbols.txt
+  splits: config/BW1M119/FindErrorLib1/splits.txt
+- name: Black & White Support
+  object: orig/BW1M119/Black & White:Black & White Support
+  hash: 994cd44cf69609e1ce375db52dddddf285f1a9b0
+  symbols: config/BW1M119/Black & White Support/symbols.txt
+  splits: config/BW1M119/Black & White Support/splits.txt
+- name: RezLib
+  object: orig/BW1M119/Black & White:RezLib
+  hash: 9a276d427d8b3f528876d66a986e18d1ab551331
+  symbols: config/BW1M119/RezLib/symbols.txt
+  splits: config/BW1M119/RezLib/splits.txt
+- name: Macdoze Release
+  object: orig/BW1M119/Black & White:Macdoze Release
+  hash: eb92fbb4e9091ab11c154a5c330d3eb4476ab05f
+  symbols: config/BW1M119/Macdoze Release/symbols.txt
+  splits: config/BW1M119/Macdoze Release/splits.txt
+- name: Sam's Utilities Release
+  object: orig/BW1M119/Black & White:Sam's Utilities Release
+  hash: e93269cde524ab14eaf72a22fa990c05a0bd5cdd
+  symbols: config/BW1M119/Sam's Utilities Release/symbols.txt
+  splits: config/BW1M119/Sam's Utilities Release/splits.txt
+- name: HMRuntimeMSL Release
+  object: orig/BW1M119/Black & White:HMRuntimeMSL Release
+  hash: 8b6f6eb7addd5bd2c03ff53e8c06b19e5bfb0274
+  symbols: config/BW1M119/HMRuntimeMSL Release/symbols.txt
+  splits: config/BW1M119/HMRuntimeMSL Release/splits.txt
+- name: MoreFiles Release
+  object: orig/BW1M119/Black & White:MoreFiles Release
+  hash: 5fb00d422291dcc858b02f204072506a94e15e5f
+  symbols: config/BW1M119/MoreFiles Release/symbols.txt
+  splits: config/BW1M119/MoreFiles Release/splits.txt
+- name: ZLib Release
+  object: orig/BW1M119/Black & White:ZLib Release
+  hash: 3b8181073fda11a506a245b9908b372b08577709
+  symbols: config/BW1M119/ZLib Release/symbols.txt
+  splits: config/BW1M119/ZLib Release/splits.txt
+- name: IndirectX 7 Release
+  object: orig/BW1M119/Black & White:IndirectX 7 Release
+  hash: 52ae968aca49a84d7e9ac6565a1d891c5c410f9e
+  symbols: config/BW1M119/IndirectX 7 Release/symbols.txt
+  splits: config/BW1M119/IndirectX 7 Release/splits.txt
