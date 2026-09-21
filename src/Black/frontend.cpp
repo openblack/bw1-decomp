@@ -39,6 +39,11 @@
 #include "StartGameBox.h"
 #include "TattooEditor.h"
 
+#define FRONT_END_SOURCE "C:\\dev\\MP\\Black\\frontend.cpp"
+
+static const int PlasmaColumns = 40;
+static const int PlasmaRows = 30;
+
 Plasma* FrontEnd::Dat_00CD06E8;
 
 // BW1W120 007faaf0 BW1M100 100304f0 angle_correct(float)
@@ -106,31 +111,31 @@ void Plasma::Init()
 	PinMaterial->cull_mode |= 4;
 	int x;
 	int y;
-	for (x = 0; x < 41; ++x)
+	for (x = 0; x < PlasmaColumns + 1; ++x)
 	{
-		for (y = 0; y < 31; ++y)
+		for (y = 0; y < PlasmaRows + 1; ++y)
 		{
-			int index = x * 31 + y;
-			points[index].x = (LHSys::TheSystem.screen.width * x) / 40;
-			points[index].y = (LHSys::TheSystem.screen.height * y) / 30;
+			int index = x * (PlasmaRows + 1) + y;
+			points[index].x = (LHSys::TheSystem.screen.width * x) / PlasmaColumns;
+			points[index].y = (LHSys::TheSystem.screen.height * y) / PlasmaRows;
 			points[index].z = 10000.0f;
-			uvs[index].x = x * 0.025f;
-			uvs[index].y = y * (1.0f / 30.0f);
+			uvs[index].x = x * (1.0f / PlasmaColumns);
+			uvs[index].y = y * (1.0f / PlasmaRows);
 			colors[index] = LH3DColor(0xffffffff);
 		}
 	}
-	// Two triangles for every cell in the column-major 41 by 31 point grid.
+	// Two triangles for every cell in the column-major point grid.
 	int triangle = 0;
-	for (x = 0; x < 40; ++x)
+	for (x = 0; x < PlasmaColumns; ++x)
 	{
-		for (y = 0; y < 30; ++y)
+		for (y = 0; y < PlasmaRows; ++y)
 		{
-			int index = x * 31 + y;
+			int index = x * (PlasmaRows + 1) + y;
 			indices[triangle][0] = index;
-			indices[triangle][1] = index + 31;
-			indices[triangle][2] = index + 32;
+			indices[triangle][1] = index + PlasmaRows + 1;
+			indices[triangle][2] = index + PlasmaRows + 2;
 			++triangle;
-			indices[triangle][0] = index + 32;
+			indices[triangle][0] = index + PlasmaRows + 2;
 			indices[triangle][1] = index + 1;
 			indices[triangle][2] = index;
 			++triangle;
@@ -164,9 +169,9 @@ void Plasma::Render(int animate)
 	}
 	for (int pass = 0; pass < 2; ++pass)
 	{
-		for (int x = 0; x < 41; ++x)
+		for (int x = 0; x < PlasmaColumns + 1; ++x)
 		{
-			for (int y = 0; y < 31; ++y)
+			for (int y = 0; y < PlasmaRows + 1; ++y)
 			{
 				float u = 0.0f;
 				float v = 0.0f;
@@ -193,12 +198,13 @@ void Plasma::Render(int animate)
 					phase.y = angle_correct(phase.y);
 					phase.z = angle_correct(phase.z);
 				}
-				uvs[x * 31 + y].x = u;
-				uvs[x * 31 + y].y = v;
+				uvs[x * (PlasmaRows + 1) + y].x = u;
+				uvs[x * (PlasmaRows + 1) + y].y = v;
 			}
 		}
 		// The Windows __fastcall interface passes point count/positions in ECX/EDX.
-		LH3DTech::Draw3DScreenTriangle(0x4f7, points, colors, &uvs[0].x, 0x960, (long*)indices, PinMaterial, 0);
+		LH3DTech::Draw3DScreenTriangle((PlasmaColumns + 1) * (PlasmaRows + 1), points, colors, &uvs[0].x,
+		                               PlasmaColumns * PlasmaRows * 2, (long*)indices, PinMaterial, 0);
 	}
 }
 
@@ -212,19 +218,19 @@ void NewProfileBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveNewProfileDialog = this;
-	SymbolPicture = new ("C:\\dev\\MP\\Black\\frontend.cpp", 536)
-		SetupPicture(123, 368, 300, FrontEnd::PlayerSymbolsMaterial, 0, 4, true, 64, false);
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 538) SetupStaticText(
+	SymbolPicture =
+		new (FRONT_END_SOURCE, 536) SetupPicture(123, 368, 300, FrontEnd::PlayerSymbolsMaterial, 0, 4, true, 64, false);
+	new (FRONT_END_SOURCE, 538) SetupStaticText(
 		999, 100, 150, 600, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd7e), TEXTJUSTIFY_CENTRE);
-	ContinueButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 540)
+	ContinueButton = new (FRONT_END_SOURCE, 540)
 		SetupBigButton(2, 610, 400, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 40, 1, BBSTYLE_RIGHT_ARROW);
-	CancelButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 541)
+	CancelButton = new (FRONT_END_SOURCE, 541)
 		SetupBigButton(1, 150, 400, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa24), 40, 0, BBSTYLE_LEFT_ARROW);
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 546) SetupStaticText(
+	new (FRONT_END_SOURCE, 546) SetupStaticText(
 		999, 100, 300, 250, 64, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd7f), TEXTJUSTIFY_RIGHT);
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 547) SetupStaticText(
+	new (FRONT_END_SOURCE, 547) SetupStaticText(
 		999, 450, 300, 250, 64, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd80), TEXTJUSTIFY_LEFT);
-	NameEdit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 550) SetupEdit(3, 200, 230, 400, 50, L"", true);
+	NameEdit = new (FRONT_END_SOURCE, 550) SetupEdit(3, 200, 230, 400, 50, L"", true);
 	NameEdit->field_0x240 = 29;
 	FrontEnd::ActiveNewProfileDialog->Completed = false;
 }
@@ -238,8 +244,8 @@ void NewProfileBox::Destroy()
 void NewProfileBox::InitControls()
 {
 	setup_box->SetFocusControl(NameEdit);
-	wcsncpy(NameEdit->label, L"", 0xff);
-	NameEdit->label[0xff] = 0;
+	wcsncpy(NameEdit->label, L"", sizeof(NameEdit->label) / sizeof(NameEdit->label[0]) - 1);
+	NameEdit->label[sizeof(NameEdit->label) / sizeof(NameEdit->label[0]) - 1] = 0;
 	NameEdit->CursorPosition = NameEdit->SelectEnd = NameEdit->SelectStart = wcslen(NameEdit->label);
 	NameEdit->field_0x258 = 0;
 	ContinueButton->Hide(PlayerProfile::GetNumberOfProfiles() == 0);
@@ -269,14 +275,13 @@ void EditingDebugBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveEditingDebugDialog = this;
-	Edit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 705) SetupEdit(1, 200, 300, 400, 30, L"", true);
+	Edit = new (FRONT_END_SOURCE, 705) SetupEdit(1, 200, 300, 400, 30, L"", true);
 	Edit->text_size = GetMidTextSize();
-	PromptText =
-		new ("C:\\dev\\MP\\Black\\frontend.cpp", 708) SetupStaticText(2, 200, 250, 400, 30, L"", TEXTJUSTIFY_CENTRE);
+	PromptText = new (FRONT_END_SOURCE, 708) SetupStaticText(2, 200, 250, 400, 30, L"", TEXTJUSTIFY_CENTRE);
 	PromptText->text_size = GetMidTextSize();
-	ContinueButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 712)
+	ContinueButton = new (FRONT_END_SOURCE, 712)
 		SetupBigButton(3, 570, 350, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 30, 1, BBSTYLE_RIGHT_ARROW);
-	CancelButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 713)
+	CancelButton = new (FRONT_END_SOURCE, 713)
 		SetupBigButton(4, 200, 350, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa24), 30, 0, BBSTYLE_LEFT_ARROW);
 	field_0x20 = 0;
 	InitialText = NULL;
@@ -291,8 +296,8 @@ void EditingDebugBox::Destroy()
 
 void EditingDebugBox::InitControls()
 {
-	wcsncpy(Edit->label, InitialText, 0xff);
-	Edit->label[0xff] = 0;
+	wcsncpy(Edit->label, InitialText, sizeof(Edit->label) / sizeof(Edit->label[0]) - 1);
+	Edit->label[sizeof(Edit->label) / sizeof(Edit->label[0]) - 1] = 0;
 	Edit->CursorPosition = Edit->SelectEnd = Edit->SelectStart = wcslen(Edit->label);
 	Edit->field_0x258 = 0;
 	wcscpy(PromptText->label, Prompt);
@@ -303,20 +308,20 @@ void RegisterBox::Init(uint32_t width, uint32_t height,
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveRegisterDialog = this;
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 776) SetupStaticText(
+	new (FRONT_END_SOURCE, 776) SetupStaticText(
 		999, 100, 150, 600, 250, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd82), TEXTJUSTIFY_CENTRE_BREAK);
-	LoginButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 777)
+	LoginButton = new (FRONT_END_SOURCE, 777)
 		SetupButton(2, 310, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd86), 0);
-	RegisterButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 778)
+	RegisterButton = new (FRONT_END_SOURCE, 778)
 		SetupButton(1, 100, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd85), 0);
-	ContinueButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 779)
+	ContinueButton = new (FRONT_END_SOURCE, 779)
 		SetupButton(3, 520, 430, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xa23), 0);
-	NameEdit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 781) SetupEdit(4, 250, 300, 300, 50, L"", true);
-	PasswordEdit = new ("C:\\dev\\MP\\Black\\frontend.cpp", 782) SetupEdit(5, 250, 360, 300, 50, L"", true);
+	NameEdit = new (FRONT_END_SOURCE, 781) SetupEdit(4, 250, 300, 300, 50, L"", true);
+	PasswordEdit = new (FRONT_END_SOURCE, 782) SetupEdit(5, 250, 360, 300, 50, L"", true);
 	PasswordEdit->MaskedText = true;
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 785) SetupStaticText(
+	new (FRONT_END_SOURCE, 785) SetupStaticText(
 		999, 50, 300, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd83), TEXTJUSTIFY_RIGHT);
-	new ("C:\\dev\\MP\\Black\\frontend.cpp", 786) SetupStaticText(
+	new (FRONT_END_SOURCE, 786) SetupStaticText(
 		999, 50, 360, 200, 50, HelpTextDataBase::HelpTextDatabase.GetHelpText(0xd84), TEXTJUSTIFY_RIGHT);
 	Completed = false;
 }
@@ -330,12 +335,12 @@ void RegisterBox::Destroy()
 void RegisterBox::InitControls()
 {
 	setup_box->SetFocusControl(NameEdit);
-	wcsncpy(NameEdit->label, L"", 0xff);
-	NameEdit->label[0xff] = 0;
+	wcsncpy(NameEdit->label, L"", sizeof(NameEdit->label) / sizeof(NameEdit->label[0]) - 1);
+	NameEdit->label[sizeof(NameEdit->label) / sizeof(NameEdit->label[0]) - 1] = 0;
 	NameEdit->CursorPosition = NameEdit->SelectEnd = NameEdit->SelectStart = wcslen(NameEdit->label);
 	NameEdit->field_0x258 = 0;
-	wcsncpy(PasswordEdit->label, L"", 0xff);
-	PasswordEdit->label[0xff] = 0;
+	wcsncpy(PasswordEdit->label, L"", sizeof(PasswordEdit->label) / sizeof(PasswordEdit->label[0]) - 1);
+	PasswordEdit->label[sizeof(PasswordEdit->label) / sizeof(PasswordEdit->label[0]) - 1] = 0;
 	PasswordEdit->CursorPosition = PasswordEdit->SelectEnd = PasswordEdit->SelectStart = wcslen(PasswordEdit->label);
 	PasswordEdit->field_0x258 = 0;
 	Completed = false;
@@ -356,13 +361,12 @@ void MainMenu::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(i
 	FrontEnd::ActiveMainMenuDialog = this;
 	wchar_t currentProfile[0x100];
 	PlayerProfile::GetCurrentProfile(currentProfile);
-	TitleText = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1653)
-		SetupStaticText(999, 50, 65, 700, 90, L"", TEXTJUSTIFY_CENTRE_BREAK);
-	Buttons[0] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1657) SetupButton(0, 180, 145, 440, 70, L"", 0);
-	Buttons[1] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1658) SetupButton(1, 180, 225, 440, 70, L"", 0);
-	Buttons[2] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1659) SetupButton(2, 180, 305, 440, 70, L"", 0);
-	Buttons[3] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1660) SetupButton(3, 180, 385, 440, 70, L"", 0);
-	Buttons[4] = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1661) SetupButton(4, 180, 465, 440, 70, L"", 0);
+	TitleText = new (FRONT_END_SOURCE, 1653) SetupStaticText(999, 50, 65, 700, 90, L"", TEXTJUSTIFY_CENTRE_BREAK);
+	Buttons[0] = new (FRONT_END_SOURCE, 1657) SetupButton(0, 180, 145, 440, 70, L"", 0);
+	Buttons[1] = new (FRONT_END_SOURCE, 1658) SetupButton(1, 180, 225, 440, 70, L"", 0);
+	Buttons[2] = new (FRONT_END_SOURCE, 1659) SetupButton(2, 180, 305, 440, 70, L"", 0);
+	Buttons[3] = new (FRONT_END_SOURCE, 1660) SetupButton(3, 180, 385, 440, 70, L"", 0);
+	Buttons[4] = new (FRONT_END_SOURCE, 1661) SetupButton(4, 180, 465, 440, 70, L"", 0);
 	if (PlayerProfile::GetNumberOfProfiles() != 0)
 	{
 		PlayerProfile::SetCurrentProfile(LHNetGetCurrentProfileNameFromRegistry());
@@ -416,14 +420,12 @@ void StartGameBox::Init(uint32_t width, uint32_t height,
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveStartGameDialog = this;
 	setup_box->DefaultTextSize = GetBigTextSize();
-	text = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3533)
-		SetupStaticText(1, 40, 30, 720, 40, L"", TEXTJUSTIFY_CENTRE_BREAK);
-	button = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3535)
+	text = new (FRONT_END_SOURCE, 3533) SetupStaticText(1, 40, 30, 720, 40, L"", TEXTJUSTIFY_CENTRE_BREAK);
+	button = new (FRONT_END_SOURCE, 3535)
 		SetupButton(999, 320, 530, 160, 40, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a60), 1);
-	list = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3536) SetupList(0, 100, 110, 600, 380);
+	list = new (FRONT_END_SOURCE, 3536) SetupList(0, 100, 110, 600, 380);
 	list->DrawHighlightBox = false;
-	BigButton =
-		new ("C:\\dev\\MP\\Black\\frontend.cpp", 3539) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
+	BigButton = new (FRONT_END_SOURCE, 3539) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
 }
 
 void StartGameBox::Destroy()
@@ -443,13 +445,10 @@ void SkirmishGameBox::Init(uint32_t width, uint32_t height,
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveSkirmishDialog = this;
 	setup_box->DefaultTextSize = GetBigTextSize();
-	TitleText = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3596)
-		SetupStaticText(1, 40, 30, 720, 40, L"", TEXTJUSTIFY_CENTRE_BREAK);
-	BackButton =
-		new ("C:\\dev\\MP\\Black\\frontend.cpp", 3598) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
-	StartButton =
-		new ("C:\\dev\\MP\\Black\\frontend.cpp", 3599) SetupBigButton(998, 730, 530, L"", 40, 1, BBSTYLE_RIGHT_ARROW);
-	MapList = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3600) SetupList(0, 100, 110, 600, 380);
+	TitleText = new (FRONT_END_SOURCE, 3596) SetupStaticText(1, 40, 30, 720, 40, L"", TEXTJUSTIFY_CENTRE_BREAK);
+	BackButton = new (FRONT_END_SOURCE, 3598) SetupBigButton(999, 30, 530, L"", 40, 0, BBSTYLE_LEFT_ARROW);
+	StartButton = new (FRONT_END_SOURCE, 3599) SetupBigButton(998, 730, 530, L"", 40, 1, BBSTYLE_RIGHT_ARROW);
+	MapList = new (FRONT_END_SOURCE, 3600) SetupList(0, 100, 110, 600, 380);
 	MapList->DrawHighlightBox = true;
 }
 
@@ -471,11 +470,11 @@ void HistoryBox::Init(uint32_t width, uint32_t height,
 	FrontEnd::ActiveHistoryDialog = this;
 	setup_box->field_0x94 = 0;
 	setup_box->DefaultTextSize = GetBigTextSize();
-	PreviousButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3831)
+	PreviousButton = new (FRONT_END_SOURCE, 3831)
 		SetupBigButton(1, 60, 500, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a10), 40, 0, BBSTYLE_LEFT_ARROW);
-	NextButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3832)
+	NextButton = new (FRONT_END_SOURCE, 3832)
 		SetupBigButton(2, 700, 500, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a0f), 40, 1, BBSTYLE_RIGHT_ARROW);
-	CloseButton = new ("C:\\dev\\MP\\Black\\frontend.cpp", 3833)
+	CloseButton = new (FRONT_END_SOURCE, 3833)
 		SetupButton(999, 320, 500, 160, 40, HelpTextDataBase::HelpTextDatabase.GetHelpText(0x1a73), 1);
 	CloseButton->text_size = GetMidTextSize();
 }
@@ -513,3 +512,5 @@ bool HistoryBox::CanESCOut()
 {
 	return false;
 }
+
+#undef FRONT_END_SOURCE
