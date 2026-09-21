@@ -19,8 +19,6 @@ class SetupList;
 class SetupLandscapeBox : public DialogBoxBase
 {
 public:
-	// Recovered prefix only. Do not allocate until the complete layout and constructor are established.
-	// Member names are descriptive; InitSubDialogs remains owned by FrontEndSetupMultiplayer.cpp.
 	bool             ReloadSettings;   /* 0x10 */
 	setupgamedata*   OriginalSettings; /* 0x14 */
 	setupgamedata    Settings;         /* 0x18 */

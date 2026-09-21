@@ -1,6 +1,7 @@
 #include "FrontEndSetupGame.h"
 
 #include <math.h>
+#include <minmax.h>
 #include <stdlib.h>
 #include <wchar.h>
 #include <chlasm/HelpTextEnums.h>
@@ -99,7 +100,6 @@ void SetupLandscapeBox::Init(uint32_t width, uint32_t height,
 	         get_type_string(Settings.field_0x418));
 	Slider0x480 = new (FILE_PATH, 112) SetupSlider(13, 540, 290, 100, 20, 0.0f, L"");
 	Label0x468 = new (FILE_PATH, 113) SetupStaticText(999, 540, 260, 250, 30, L"", TEXTJUSTIFY_LEFT);
-	// The original initialization uses +0x430 here, although slider 13 subsequently edits +0x438.
 	swprintf(Label0x468->label, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DEFINITELY_NEWEST_INTRO_10),
 	         get_type_string(Settings.field_0x418));
 	ListLabel0x46c = new (FILE_PATH, 117) SetupStaticText(
@@ -141,7 +141,7 @@ void SetupLandscapeBox::Destroy()
 
 static inline void SetSliderValue(SetupSlider* slider, float value)
 {
-	slider->value = value > 0.0f ? __min(value, 1.0f) : 0.0f;
+	slider->value = min(max(value, 0.0f), 1.0f);
 }
 
 void SetupLandscapeBox::InitControls()
