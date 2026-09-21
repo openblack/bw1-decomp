@@ -46,7 +46,7 @@ float angle_correct(float angle);
 // BW1W120 0053f7b0 void AddMainMenuTabs(int)
 void AddMainMenuTabs(int selected);
 
-char* WCHAR2CHAR(char16_t* text)
+char* WCHAR2CHAR(wchar_t* text)
 {
 	int length = WideCharToMultiByte(CP_ACP, 0, text, -1, FrontEnd::ConversionBuffer, 0x3ff, NULL, NULL);
 	FrontEnd::ConversionBuffer[length] = '\0';
@@ -354,7 +354,7 @@ void MainMenu::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(i
 {
 	DialogBoxBase::Init(width, height, callback);
 	FrontEnd::ActiveMainMenuDialog = this;
-	char16_t currentProfile[0x100];
+	wchar_t currentProfile[0x100];
 	PlayerProfile::GetCurrentProfile(currentProfile);
 	TitleText = new ("C:\\dev\\MP\\Black\\frontend.cpp", 1653)
 		SetupStaticText(999, 50, 65, 700, 90, L"", TEXTJUSTIFY_CENTRE_BREAK);
@@ -367,7 +367,7 @@ void MainMenu::Init(uint32_t width, uint32_t height, void(__stdcall* callback)(i
 	{
 		PlayerProfile::SetCurrentProfile(LHNetGetCurrentProfileNameFromRegistry());
 		LHNetUseProfile(LHNetGetCurrentProfileNameFromRegistry());
-		char16_t selectedProfile[0x100];
+		wchar_t selectedProfile[0x100];
 		PlayerProfile::GetCurrentProfile(selectedProfile);
 		PlayerProfile::GetProfileByName(selectedProfile, PlayerProfile::Profile);
 	}

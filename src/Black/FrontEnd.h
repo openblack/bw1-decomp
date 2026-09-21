@@ -2,8 +2,8 @@
 #define BW1_DECOMP_FRONT_END_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For wchar_t */
 #include <stdint.h> /* For uint32_t, uint8_t */
-#include <uchar.h>
 
 // Forward Declares
 
@@ -51,8 +51,7 @@ struct FrontEnd
 	// BW1W120 00cd0b03 BW1M100 10bda8ce
 	static bool StartupMenuActive;
 	// BW1W120 00cd3a18
-	static char16_t PreviousProfile[];
-
+	static wchar_t PreviousProfile[];
 	// BW1W120 00cd0658 BW1M100 10bda724
 	static NewProfileBox* NewProfileDialog;
 	// BW1W120 00cd06f4 BW1M100 10bda8e0
@@ -85,15 +84,14 @@ struct FrontEnd
 	static SkirmishGameBox* ActiveSkirmishDialog;
 	// BW1W120 00cd0b90 BW1M100 10bda6a8
 	static HistoryBox* ActiveHistoryDialog;
-
 	// BW1W120 00cd1664 BW1M100 10bdb1c0
 	static SetupLandscapeBox* LandscapeDialog;
 	// BW1W120 00cd1668 BW1M100 10bdb1bc
 	static SpellSetupBox* SpellDialog;
 	// BW1W120 00cd1670 BW1M100 10bdb1b4
 	static SetupOnlineLandscapes* OnlineLandscapesDialog;
-	// BW1W120 00cd125c
-	static char16_t TypeString[];
+	// BW1W120 00cd125c BW1M100 10bdb1c4
+	static wchar_t TypeString[];
 
 	// Static methods
 
