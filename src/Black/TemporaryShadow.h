@@ -4,7 +4,7 @@
 class TemporaryShadow
 {
 public:
-	// BW1W120 00825190 BW1M119 imported
+	// BW1W120 00825190 BW1M119 01009930 (LHCombined Release)
 	static void UpdateAll();
 };
 

@@ -96,7 +96,7 @@ struct LHPoint
 	}
 	// BW1W120 0054e910 BW1M119 01084bc0
 	void FastNormalize();
-	// BW1W120 inline BW1M119 inline
+	// BW1W120 inlined BW1M119 inlined
 	void FastNormalizeInline()
 	{
 		if (x != 0.0f || y != 0.0f || z != 0.0f)

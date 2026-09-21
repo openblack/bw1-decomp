@@ -97,15 +97,15 @@ struct MapCoords : public LH3DMapCoords
 	void Set(const char* str);
 	// BW1W120 00603340 BW1M119 0106cad0
 	MapCoords* Set(const LHPoint& point);
-	// BW1W120 inline BW1M119 inline
+	// BW1W120 inlined BW1M119 inlined
 	void SetX(float _x) { SetWholeX((long)(_x * (float)0x10000 / 10.0f)); }
-	// BW1W120 inline BW1M119 0104d810
+	// BW1W120 inlined BW1M119 0104d810
 	void SetWholeX(long _x) { x = _x; }
-	// BW1W120 inline BW1M119 inline
+	// BW1W120 inlined BW1M119 inlined
 	void SetZ(float _z) { SetWholeZ((long)(_z * (float)0x10000 / 10.0f)); }
-	// BW1W120 inline BW1M119 0104d850
+	// BW1W120 inlined BW1M119 0104d850
 	void SetWholeZ(long _z) { z = _z; }
-	// BW1W120 inline BW1M119 0104d890
+	// BW1W120 inlined BW1M119 0104d890
 	void SetAltitude(long _altitude) { altitude = _altitude; }
 	// BW1W120 00603430 BW1M119 0104c540
 	MapCell* ToMap() const;

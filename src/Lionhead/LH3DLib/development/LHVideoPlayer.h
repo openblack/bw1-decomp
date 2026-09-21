@@ -24,7 +24,7 @@ public:
 	// Windows callback uses RET 4.
 	// BW1W120 00844e30 BW1M119 0100a470 (LHCombined Release)
 	static void __stdcall thedraw(void* context);
-	// BW1W120 008456c0 BW1M119 imported
+	// BW1W120 008456c0 BW1M119 010cbc60 (LHCombined Release)
 	void DrawToScreen(LH3DColor color, int x, int y, int width, int height, bool z_write, bool alpha);
 };
 

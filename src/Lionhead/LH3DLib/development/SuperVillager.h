@@ -13,7 +13,7 @@ public:
 	unsigned int          field_0x0;
 	LH3DAnimatedObject*   Object;
 	SuperVillager*        Next; /* 0x8 */
-	// BW1W120 00826180 BW1M119 imported
+	// BW1W120 00826180 BW1M119 010b39b0 (LHCombined Release)
 	void Release();
 };
 

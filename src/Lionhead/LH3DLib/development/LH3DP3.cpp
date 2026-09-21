@@ -1,5 +1,7 @@
 #include "LH3DP3.h"
 
+#include "LH3DTech.h" /* For LH3DTech::g_info_transform */
+
 #include <emmintrin.h>
 #include <xmmintrin.h>
 
@@ -179,9 +181,10 @@ void __fastcall LH3DP3::ClipEdge(uint32_t mask, uint16_t inside, uint16_t outsid
 		__m128 vw = _mm_shuffle_ps(ipos, ipos, 0xff);
 		__m128 r = _mm_rcp_ps(vw);
 		__m128 w = _mm_mul_ps(_mm_sub_ps(_mm_add_ps(r, r), _mm_mul_ps(_mm_mul_ps(vw, r), r)), vnear);
-		__m128 half = _mm_loadl_pi(_mm_setzero_ps(), (const __m64*)g_HalfScreen);
+		__m128 half = _mm_loadl_pi(_mm_setzero_ps(), (const __m64*)&LH3DTech::g_info_transform.HalfRes);
 		ipos = _mm_add_ps(_mm_xor_ps(ipos, kNegY), _mm_xor_ps(half, _mm_set_ss(-0.0f)));
-		ipos = _mm_mul_ps(ipos, _mm_mul_ps(_mm_loadl_pi(_mm_setzero_ps(), (const __m64*)g_InvHalfScreen), w));
+		ipos = _mm_mul_ps(
+			ipos, _mm_mul_ps(_mm_loadl_pi(_mm_setzero_ps(), (const __m64*)&LH3DTech::g_info_transform.InvHalfRes), w));
 		ipos = _mm_or_ps(ipos, _mm_and_ps(w, maskW));
 	}
 
@@ -268,7 +271,7 @@ void __fastcall LH3DP3::ClipEdge(uint32_t mask, uint16_t inside, uint16_t outsid
 		// rhw = NearClip / w and sz = 1 - rhw.
 		__m128 r = _mm_rcp_ps(vw);
 		__m128 rw = _mm_sub_ps(_mm_add_ps(r, r), _mm_mul_ps(_mm_mul_ps(vw, r), r));
-		__m128 half = _mm_loadl_pi(_mm_setzero_ps(), (const __m64*)g_HalfScreen);
+		__m128 half = _mm_loadl_pi(_mm_setzero_ps(), (const __m64*)&LH3DTech::g_info_transform.HalfRes);
 		__m128 maxs = _mm_loadl_pi(_mm_setzero_ps(), (const __m64*)g_MaxScreen);
 		pos = _mm_add_ps(_mm_mul_ps(_mm_mul_ps(_mm_xor_ps(pos, kNegY), rw), half), half);
 		pos = _mm_min_ps(_mm_max_ps(pos, _mm_setzero_ps()), maxs);

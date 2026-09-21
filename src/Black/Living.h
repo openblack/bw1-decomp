@@ -307,15 +307,15 @@ public:
 	virtual void Birthday();
 	// BW1W120 005ecaf0 BW1M119 0104eed0
 	virtual uint32_t GetAge();
-	// BW1W120 unknown BW1M119 01388800
+	// BW1W120 005ed2c0 BW1M119 01388800
 	virtual void SetAge(uint32_t age);
 	// BW1W120 005f26d0 BW1M119 0138de80
 	virtual bool LookAtFlyingObjectReaction();
 	// BW1W120 005f2980 BW1M119 01078700
 	virtual int SetCurrentAndDestinationState(uint8_t current, uint8_t destination);
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual int CallIntoAnimationFunction(uint8_t state) = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual int CallOutofAnimationFunction(uint8_t state) = 0;
 	// BW1W120 005f28e0 BW1M119 01077ec0
 	virtual int SetTopState(uint8_t state);
@@ -323,19 +323,19 @@ public:
 	virtual void StorePreviousState();
 	// BW1W120 00473e50 BW1M119 011eaa80
 	virtual void SetStateSpeed();
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual bool IsFinalState(VILLAGER_STATES state) = 0;
 	// BW1W120 005ecba0 BW1M119 inlined
 	virtual void SetAnim(int anim, int flags);
 	// BW1W120 005ecb80 BW1M119 inlined
 	virtual void SetAnim(int anim);
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual ANIM_LIST GetAnimId() = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual uint32_t CallExitStateFunction(uint8_t state) = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual uint32_t CallEntryStateFunction(uint8_t current, uint8_t destination) = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual uint32_t CallEntryStateFunction(uint8_t state) = 0;
 	// BW1W120 005eccd0 BW1M119 inlined
 	virtual uint32_t ExitReaction(uint8_t state);
@@ -409,7 +409,7 @@ public:
 	virtual void StopReacting();
 	// BW1W120 005f11c0 BW1M119 01391290
 	virtual void StopReactingAndSetState();
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual void ResetStateAfterReacting() = 0;
 	// BW1W120 005f1360 BW1M119 01390e50
 	virtual void SetupFleeFromObject(GameThingWithPos* param_1, Reaction* param_2);
@@ -606,23 +606,23 @@ public:
 	virtual uint32_t DanceType();
 	// BW1W120 005ee550 BW1M119 01386470
 	virtual bool CanBeHealedByHealSpell();
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual bool MoveAllowedForChessGame() = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual bool AttackAllowedForChessGame() = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual void AddToBoxPositionForChessGame(int param_1, int param_2) = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual int GetBoxXForChessGame() = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual int GetBoxZForChessGame() = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual void SetBoxXForChessGame(int param_1) = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual void SetBoxZForChessGame(int param_1) = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual uint32_t GetTeamForChessGame() = 0;
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual bool IsPosValidForTurnAngle(const MapCoords* param_1) = 0;
 
 	// Static methods
@@ -727,7 +727,7 @@ public:
 	uint32_t MoveOnFootpath();
 	// BW1W120 005ee5f0 BW1M119 01386270
 	void SetFlock(Flock* param_1);
-	// BW1W120 005ef010 BW1M119 01067d10
+	// BW1W120 005ed010 BW1M119 01067d10
 	uint32_t PosWithinDomain(const MapCoords& param_1, float param_2);
 	// BW1W120 005ef9c0 BW1M119 0138c340
 	bool CalculateDancePosition(const MapCoords& param_1, MapCoords* param_2);

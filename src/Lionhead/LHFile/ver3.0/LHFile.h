@@ -113,7 +113,7 @@ public:
 	                          void* user_data);
 	// BW1W120 007be1f0 BW1M119 011679c0 (LHCombined Release)
 	uint32_t TruncateFromSegment(const char* segment_name);
-	// BW1W120 007bffff BW1M119 01167940 (LHCombined Release)
+	// BW1W120 null BW1M119 01167940 (LHCombined Release)
 	void FlushCache();
 };
 

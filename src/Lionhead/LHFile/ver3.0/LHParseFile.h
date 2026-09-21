@@ -47,9 +47,9 @@ public:
 	uint32_t ParseEnumListInternal();
 	// BW1W120 007bea70 BW1M119 011664a0 (LHCombined Release)
 	uint32_t GetNextToken(int* token_out);
-	// BW1W120 007befb6 BW1M119 01166340 (LHCombined Release)
+	// BW1W120 007bf030 BW1M119 01166340 (LHCombined Release)
 	uint32_t GetNextLine();
-	// BW1W120 007bf030 BW1M119 01166130 (LHCombined Release)
+	// BW1W120 007bf0d0 BW1M119 01166130 (LHCombined Release)
 	uint32_t GetNextWord();
 };
 

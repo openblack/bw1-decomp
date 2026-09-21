@@ -96,7 +96,7 @@ public:
 
 	// BW1W120 0052f780 BW1M119 010eb000
 	Flock(const MapCoords& coords, const GFlockInfo* info, GPlayer* player, uint32_t param_4);
-	// BW1W120 100e6be0 BW1M119 010ead80
+	// BW1W120 0052f950 BW1M119 010ead80
 	Flock(Living* param_1);
 
 	// Non-virtual methods
