@@ -10,7 +10,7 @@ class MPFEChangedMapMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00631270 BW1M100 103969e0 MPFEChangedMapMessage::_dt(void)
+	// BW1W120 00631270 BW1M119 0139e3c0
 	virtual ~MPFEChangedMapMessage();
 };
 

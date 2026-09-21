@@ -60,17 +60,17 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d3600 BW1M100 10246c50 CreatureAgenda::_dt(void)
+	// BW1W120 004d3600 BW1M119 0124b3e0
 	virtual ~CreatureAgenda();
 
 	// Constructors
 
-	// BW1W120 004d34b0 BW1M100 102471c0 CreatureAgenda::CreatureAgenda(Creature *, CreatureInfo const *)
+	// BW1W120 004d34b0 BW1M119 0124b950
 	CreatureAgenda(CreatureInfo* info);
 
 	// Non-virtual methods
 
-	// BW1W120 004aca70 BW1M100 10217d60 CreatureAgenda::ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long)
+	// BW1W120 004aca70 BW1M119 0121dd10
 	bool ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long param_1);
 };
 

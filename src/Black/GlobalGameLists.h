@@ -58,7 +58,7 @@
 class GlobalGameLists : public Base
 {
 public:
-	// BW1W120 00591520 BW1M100 10334690 GlobalGameLists::ClearMap(void)
+	// BW1W120 00591520 BW1M119 0133cb30
 	void ClearMap();
 	GlobalGameLists() {}
 	LHListHead<Ball>                balls;   /* 0x8 */
@@ -113,18 +113,18 @@ public:
 
 	// Override methods
 
-	// BW1W120 0054b970 BW1M100 10547350 GlobalGameLists::_dt(void)
+	// BW1W120 0054b970 BW1M119 010d5300
 	virtual ~GlobalGameLists();
-	// BW1W120 005914d0 BW1M100 10336280 GlobalGameLists::Dump(void)
+	// BW1W120 005914d0 BW1M119 0133e730
 	virtual void Dump();
 
 	// Non-virtual methods
-	// BW1W120 00591ac0 BW1M100 10332360 GlobalGameLists::Save(GameOSFile &)
+	// BW1W120 00591ac0 BW1M119 0133a800
 	uint32_t Save(GameOSFile& file);
-	// BW1W120 00592040 BW1M100 1032d950 GlobalGameLists::Load(GameOSFile &)
+	// BW1W120 00592040 BW1M119 01335a60
 	uint32_t Load(GameOSFile& file);
 
-	// BW1W120 00591370 BW1M100 10059120 GlobalGameLists::Process(void)
+	// BW1W120 00591370 BW1M119 0105bdf0
 	void Process();
 };
 

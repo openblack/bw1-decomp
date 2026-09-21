@@ -41,23 +41,23 @@ struct Temple
 
 	// Static methods
 
-	// BW1W120 00794a30 BW1M100 105362a0 Temple::ProcessGameTurn(void)
+	// BW1W120 00794a30 BW1M119 0153ef60
 	void ProcessGameTurn();
 
 	// Constructors
 
-	// BW1W120 00793ac0 BW1M100 10537d50 Temple::Temple(void)
+	// BW1W120 00793ac0 BW1M119 01540a00
 	Temple();
-	// BW1W120 00793c30 BW1M100 10537ca0 Temple::~Temple(void)
+	// BW1W120 00793c30 BW1M119 01540950
 	~Temple();
 
 	// Non-virtual methods
 
-	// BW1W120 00793ee0 BW1M100 1053fe70 Temple::Update(void)
+	// BW1W120 00793ee0 BW1M119 0153fe70
 	void Update();
-	// BW1W120 00794370 BW1M100 1053f7c0 Temple::Draw(void)
+	// BW1W120 00794370 BW1M119 0153f7c0
 	void Draw();
-	// BW1W120 00794a20 BW1M100 10536350 Temple::StartScript(unsigned long)
+	// BW1W120 00794a20 BW1M119 0153f010
 	bool StartScript(unsigned long param_1);
 };
 

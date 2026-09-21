@@ -15,7 +15,7 @@ class GMagicWaterInfo : public GMagicInfo
 public:
 	// Override methods
 
-	// BW1W120 004357a0 BW1M100 103ac480 GMagicWaterInfo::_dt(void)
+	// BW1W120 004357a0 BW1M119 013b4350
 	virtual ~GMagicWaterInfo();
 };
 

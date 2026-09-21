@@ -35,12 +35,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 005cad90 BW1M100 103575a0 HelpText::_dt(void)
+	// BW1W120 005cad90 BW1M119 0135f5d0
 	virtual ~HelpText();
 
 	// Constructors
 
-	// BW1W120 005cad40 BW1M100 103579b0 HelpText::HelpText(LHRegion const &)
+	// BW1W120 005cad40 BW1M119 0135f9e0
 	HelpText(const LHRegion& region);
 };
 
@@ -56,9 +56,11 @@ static_assert(sizeof(HelpTextData) == 0xc, "HelpTextData size is incorrect");
 
 struct HelpTextDataBase
 {
-	// BW1W120 00d17ca8. TODO: Original global name unknown.
+	// TODO: Original global name unknown.
+	// BW1W120 00d17ca8
 	static HelpTextDataBase HelpTextDatabase;
-	// BW1W120 00d17c98. Descriptive name; filled from InfoScriptMultiplayer2.txt.
+	// Descriptive name; filled from InfoScriptMultiplayer2.txt.
+	// BW1W120 00d17c98
 	static HelpTextDataBase MultiplayerTextDatabase;
 
 	HelpTextData* array; /* 0x0 */
@@ -66,7 +68,7 @@ struct HelpTextDataBase
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 100924c0 HelpTextDataBase::GetHelpText(unsigned long) const
+	// BW1W120 inlined BW1M119 010946e0
 	char16_t* GetHelpText(unsigned long index) const { return array[index < count && index != 0 ? index : 0].Text; }
 };
 

@@ -10,18 +10,18 @@
 class GTerrainMap : public Base
 {
 public:
-	// BW1W120 00735540 BW1M100 10542460 GTerrainMap::Clear(void)
+	// BW1W120 00735540 BW1M119 0154b390
 	void Clear();
-	// BW1W120 0054bcd0 GTerrainMap::GTerrainMap(void)
+	// BW1W120 0054bcd0
 	GTerrainMap();
-	// BW1W120 00735500 BW1M100 10542500 GTerrainMap::Init(void)
+	// BW1W120 00735500 BW1M119 0154b430
 	void           Init();
 	TerrainMapInfo list[0x400]; /* 0x8 */
 	TerrainMapInfo MapInfo;     /* 0x4a008 */
 
 	// Override methods
 
-	// BW1W120 0054bd90 BW1M100 1040fcc0 GTerrainMap::_dt(void)
+	// BW1W120 0054bd90 BW1M119 010b4600
 	virtual ~GTerrainMap() {}
 };
 

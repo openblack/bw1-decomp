@@ -16,17 +16,17 @@ class SpellStormAndTornado : public Spell
 public:
 	// Override methods
 
-	// BW1W120 0072d990 BW1M100 1052dff0 SpellStormAndTornado::_dt(void)
+	// BW1W120 0072d990 BW1M119 01536890
 	virtual ~SpellStormAndTornado();
-	// BW1W120 0072da20 BW1M100 1052e7f0 SpellStormAndTornado::ToBeDeleted(int)
+	// BW1W120 0072da20 BW1M119 01537090
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0072d960 BW1M100 1052e140 SpellStormAndTornado::GetRadius(void)
+	// BW1W120 0072d960 BW1M119 015369e0
 	virtual float GetRadius();
-	// BW1W120 0072d950 BW1M100 1052e0e0 SpellStormAndTornado::Get2DRadius(void)
+	// BW1W120 0072d950 BW1M119 01536980
 	virtual float Get2DRadius();
-	// BW1W120 0072d980 BW1M100 1052e1f0 SpellStormAndTornado::GetDebugText(void)
+	// BW1W120 0072d980 BW1M119 01536a90
 	virtual char* GetDebugText();
-	// BW1W120 0072d970 BW1M100 1052e1b0 SpellStormAndTornado::GetSaveType(void)
+	// BW1W120 0072d970 BW1M119 01536a50
 	virtual uint32_t GetSaveType();
 };
 

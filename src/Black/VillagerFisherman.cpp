@@ -3,7 +3,7 @@
 #include "FishFarm.h"
 #include "Rand.h"
 
-// BW1W120 0075b4c0 BW1M100 1057a800 Villager::FishermanLookForWater(void)
+// BW1W120 0075b4c0 BW1M119 01582a20
 // TODO: deferred -- blocked on the UNNAMED global fn_0073E750 (systemic blocker #4: no symbols.txt
 // name). Reverse-engineered structure (from raw target disasm, confirmed via manual byte-level
 // re-derivation -- Ghidra's own auto-decompile mis-read the two GetTown() calls as one call with a
@@ -33,7 +33,7 @@ bool32_t Villager::FishermanLookForWater()
 	return false;
 }
 
-// BW1W120 0075b510 BW1M100 1057a710 Villager::VillagerBecomesFisherman(void)
+// BW1W120 0075b510 BW1M119 01582930
 // TODO: deferred -- blocked on the UNNAMED helper fn_0052C870 (systemic blocker #4). Confirmed
 // structure (from raw target disasm; the `FishermanLookForWater() == 1` prefix and the final
 // return/false path are believed correct, the middle is not):
@@ -65,7 +65,7 @@ bool32_t Villager::VillagerBecomesFisherman()
 	return false;
 }
 
-// BW1W120 0075b560 BW1M100 1057a5b0 Villager::VillagerBecomesFisherman(FishFarm *)
+// BW1W120 0075b560 BW1M119 015827d0
 // TODO: 54.8% -- confirmed instance of the cheat-sheet's retbuf-arg-order OPEN idiom (don't chase):
 // target materialises fish_farm->GetArrivePos()'s by-value MapCoords into a SEPARATE zero-inited,
 // piecewise-copied stack temp (xor+3 stores, then an int/int/float field copy) positioned around the
@@ -83,7 +83,7 @@ bool32_t Villager::VillagerBecomesFisherman(FishFarm* fish_farm)
 	return true;
 }
 
-// BW1W120 0075b5d0 BW1M100 1057a410 Villager::FishermanArrivesAtFishing(void)
+// BW1W120 0075b5d0 BW1M119 01582630
 // TODO: 77.5% -- two stacked issues:
 //  1) the "exactly at the arrive pos" branch is deferred -- blocked on the UNNAMED helper
 //     fn_0052C870 (see VillagerBecomesFisherman(void) above for its reverse-engineered shape). The
@@ -114,7 +114,7 @@ bool32_t Villager::FishermanArrivesAtFishing()
 	return true;
 }
 
-// BW1W120 0075b670 BW1M100 1057a390 Villager::IsAtValidFishingPos(void)
+// BW1W120 0075b670 BW1M119 015825b0
 // Compares only the high halfword of each MapCoords int field (Pos.x/Pos.z are fixed-point: the top
 // 16 bits are the whole/cell part) -- proven via a wibo/cl.exe toy: a `>> 16` shift compiles to an
 // actual `sar` (does not match), while a raw `((short*)&Pos.x)[1]` pointer-cast reproduces the
@@ -129,7 +129,7 @@ bool32_t Villager::IsAtValidFishingPos()
 	return false;
 }
 
-// BW1W120 0075b6a0 BW1M100 1001b120 Villager::Fishing(void)
+// BW1W120 0075b6a0 BW1M119 0101dcd0
 // TODO: deferred (376B, largest/most complex function in this unit; lowest ranked-queue score).
 // Reverse-engineered structure, fully traced from raw target disasm + relocations/vtable dumps:
 //     if (!IsReadyForNewAnimation(1)) return true;
@@ -203,7 +203,7 @@ bool32_t Villager::Fishing()
 	return true;
 }
 
-// BW1W120 0075b820 BW1M100 1057a240 Villager::EnterFishing(unsigned char, unsigned char)
+// BW1W120 0075b820 BW1M119 01582410
 // TODO: 79.8% -- deferred, several stacked issues:
 //  1) the "add self to the fish farm's villager list" call is blocked on the UNNAMED helper
 //     fn_0052D250 (systemic blocker #4; likely FishFarm::AddFisherman(Villager*), a sibling of the
@@ -229,7 +229,7 @@ bool32_t Villager::EnterFishing(unsigned char new_state, unsigned char old_state
 	return true;
 }
 
-// BW1W120 0075b880 BW1M100 1009acc0 Villager::ExitFishing(unsigned char)
+// BW1W120 0075b880 BW1M119 0109cae0
 // TODO: 99.6% -- one-instruction cross-TU codegen quirk (bool-return-mask-needs-callee-defined
 // family, "caller-side mirror" per the getbestworkshop-getarrivepos-sched idiom writeup): target
 // does `test eax,eax` on the IsStateExitFunctionSameAs (a virtual, `_N`/bool-mangled) vtable-call

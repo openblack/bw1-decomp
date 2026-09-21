@@ -20,19 +20,19 @@ struct LHEnumPair
 	int   value;
 };
 
-// BW1W120 007be400 LHEnumPairCompare(char const **, char const **)
+// BW1W120 007be400 BW1M119 01167850 (LHCombined Release)
 int LHEnumPairCompare(const char** a, const char** b)
 {
 	return strcmp(*a, *b);
 }
 
-// BW1W120 007be440 LHEnumPairCompareWithString(char const *, char const **)
+// BW1W120 007be440 BW1M119 011677f0 (LHCombined Release)
 int LHEnumPairCompareWithString(const char* a, const char** b)
 {
 	return strcmp(a, *b);
 }
 
-// BW1W120 007be480 LHParseFile::Open(void)
+// BW1W120 007be480 BW1M119 01167750 (LHCombined Release)
 uint32_t LHParseFile::Open()
 {
 	Close();
@@ -40,7 +40,7 @@ uint32_t LHParseFile::Open()
 	return file != 0;
 }
 
-// BW1W120 007be4b0 LHParseFile::Close(void)
+// BW1W120 007be4b0 BW1M119 01167640 (LHCombined Release)
 uint32_t LHParseFile::Close()
 {
 	uint32_t result;
@@ -59,7 +59,7 @@ uint32_t LHParseFile::Close()
 	return result;
 }
 
-// BW1W120 007be510 LHParseFile::GetNextTokenIgnoreComments(int *)
+// BW1W120 007be510 BW1M119 011675a0 (LHCombined Release)
 uint32_t LHParseFile::GetNextTokenIgnoreComments(int* token_out)
 {
 	uint32_t result;
@@ -70,7 +70,7 @@ uint32_t LHParseFile::GetNextTokenIgnoreComments(int* token_out)
 	return result;
 }
 
-// BW1W120 007be530 LHParseFile::FindEnumVal(void *, unsigned int *)
+// BW1W120 007be530 BW1M119 01167500 (LHCombined Release)
 uint32_t LHParseFile::FindEnumVal(void* key, uint32_t* out_value)
 {
 	LHEnumPair* v3 = (LHEnumPair*)bsearch(key, EnumSorted, EnumCount, 8,
@@ -80,7 +80,7 @@ uint32_t LHParseFile::FindEnumVal(void* key, uint32_t* out_value)
 	return v3 != 0;
 }
 
-// BW1W120 007be570 LHParseFile::FindEnumValLinear(char const *, unsigned int *)
+// BW1W120 007be570 BW1M119 01167430 (LHCombined Release)
 uint32_t LHParseFile::FindEnumValLinear(const char* key, uint32_t* out_value)
 {
 	int v3 = 0;
@@ -98,7 +98,7 @@ uint32_t LHParseFile::FindEnumValLinear(const char* key, uint32_t* out_value)
 	return 1;
 }
 
-// BW1W120 007be5f0 LHParseFile::FreeEnumList(void)
+// BW1W120 007be5f0 BW1M119 01167350 (LHCombined Release)
 void LHParseFile::FreeEnumList()
 {
 	unsigned int i;
@@ -115,7 +115,7 @@ void LHParseFile::FreeEnumList()
 	EnumCount = 0;
 }
 
-// BW1W120 007be670 LHParseFile::ParseEnumList(void)
+// BW1W120 007be670 BW1M119 011672b0 (LHCombined Release)
 uint32_t LHParseFile::ParseEnumList()
 {
 	LHSyslog.ClearError();
@@ -125,7 +125,7 @@ uint32_t LHParseFile::ParseEnumList()
 	return 0;
 }
 
-// BW1W120 007be6a0 LHParseFile::ParseEnumListInternal(void)
+// BW1W120 007be6a0
 uint32_t LHParseFile::ParseEnumListInternal()
 {
 	int         v1;
@@ -266,7 +266,7 @@ uint32_t LHParseFile::ParseEnumListInternal()
 	return 0;
 }
 
-// BW1W120 007bea70 LHParseFile::GetNextToken(int *)
+// BW1W120 007bea70 BW1M119 011664a0 (LHCombined Release)
 uint32_t LHParseFile::GetNextToken(int* token_out)
 {
 	char*          v4;
@@ -478,7 +478,7 @@ uint32_t LHParseFile::GetNextToken(int* token_out)
 	}
 }
 
-// BW1W120 007befb6 LHParseFile::GetNextLine(void)
+// BW1W120 007befb6 BW1M119 01166340 (LHCombined Release)
 uint32_t LHParseFile::GetNextLine()
 {
 	unsigned int v2;
@@ -500,7 +500,7 @@ uint32_t LHParseFile::GetNextLine()
 	return 0;
 }
 
-// BW1W120 007bf030 LHParseFile::GetNextWord(void)
+// BW1W120 007bf030 BW1M119 01166130 (LHCombined Release)
 uint32_t LHParseFile::GetNextWord()
 {
 	char*          v3;

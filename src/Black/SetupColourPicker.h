@@ -24,24 +24,24 @@ public:
 
 	// Override methods
 
-	// BW1W120 00410880 BW1M100 10103e40 SetupColourPicker::Draw(bool, bool)
+	// BW1W120 00410880 BW1M119 0149d2c0
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 00410810 BW1M100 1023f300 SetupColourPicker::Drag(int, int)
+	// BW1W120 00410810 BW1M119 013760a0
 	virtual void Drag(int x, int y);
-	// BW1W120 004107f0 BW1M100 1030b070 SetupColourPicker::MouseDown(int, int, bool)
+	// BW1W120 004107f0 BW1M119 011a2660
 	virtual void MouseDown(int x, int y, bool param_3);
-	// BW1W120 00410800 BW1M100 101119a0 SetupColourPicker::MouseUp(int, int, bool)
+	// BW1W120 00410800 BW1M119 0142f970
 	virtual void MouseUp(int x, int y, bool param_3);
-	// BW1W120 00410b50 BW1M100 100c8de0 SetupColourPicker::Click(int, int)
+	// BW1W120 00410b50 BW1M119 0156c5a0
 	virtual void Click(int x, int y);
-	// BW1W120 00410b30 BW1M100 1034f250 SetupColourPicker::KeyDown(int, int)
+	// BW1W120 00410b30 BW1M119 0117bea0
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 00410b60 BW1M100 10571d70 SetupColourPicker::~SetupColourPicker(void)
+	// BW1W120 00410b60 BW1M119 01119480
 	virtual ~SetupColourPicker();
 
 	// Constructors
 
-	// BW1W120 00410ac0 BW1M100 103c6130 SetupColourPicker::SetupColourPicker(int, int, int, int, int, int, LH3DMaterial *)
+	// BW1W120 00410ac0 BW1M119 010af1b0
 	SetupColourPicker(int id, int x, int y, int width, int height, bool brightness_slider, LH3DMaterial* material);
 };
 

@@ -4,9 +4,9 @@
 class DanceLight
 {
 public:
-	// BW1W120 0050f780 DanceLight::CloseBitmaps(void)
+	// BW1W120 0050f780 BW1M119 012b2060
 	static void CloseBitmaps();
-	// BW1W120 0050f7b0 BW1M100 102aeee0 DanceLight::InitialiseBitmaps(void)
+	// BW1W120 0050f7b0 BW1M119 012b1f80
 	static void InitialiseBitmaps();
 };
 

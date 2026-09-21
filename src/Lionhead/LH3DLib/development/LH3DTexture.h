@@ -30,16 +30,16 @@ struct LH3DTexture
 
 	// Static methods
 
-	// BW1W120 008379e0 BW1M100 1061afb4 LH3DTexture::Create
+	// BW1W120 008379e0 BW1M119 010c9310 (LHCombined Release)
 	static LH3DTexture* Create(void* param_0, unsigned long param_1, unsigned long param_2, TextureFormat* param_3);
-	// BW1W120 008377e0 BW1M100 inlined LH3DTexture::SetPackedTexture(void)
+	// BW1W120 008377e0 BW1M119 inlined
 	static void SetPackedTexture();
-	// BW1W120 00838480 BW1M100 100c9060 LH3DTexture::GetThisTexture
+	// BW1W120 00838480 BW1M119 010c8ce0 (LHCombined Release)
 	static LH3DTexture* GetThisTexture(unsigned long id);
 
 	// Non-virtual methods
 
-	// BW1W120 00837d40 BW1M100 1061b614 LH3DTexture::Release(void)
+	// BW1W120 00837d40 BW1M119 010c9130 (LHCombined Release)
 	void Release();
 };
 

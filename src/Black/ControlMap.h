@@ -12,8 +12,9 @@
 
 struct ControlMap
 {
-	// BW1W120 00c5e8d0. Shared delta returned by ControlMap::DeltaPos on Mac.
+	// Shared delta returned by ControlMap::DeltaPos on Mac.
 	// Original member spelling unrecovered; storage remains extracted.
+	// BW1W120 00c5e8d0
 	static LHCoord MouseDelta;
 	BindableAction BindableActions[_BINDABLE_ACTION_SIZE];      /* 0x0 */
 	bool32_t       BindableActionStates[_BINDABLE_ACTION_SIZE]; /* 0x648c */
@@ -29,16 +30,16 @@ struct ControlMap
 
 	// Constructors
 
-	// BW1W120 0046f6c0 BW1M100 101cbaa0 ControlMap::ControlMap(void)
+	// BW1W120 0046f6c0 BW1M119 011d3320
 	ControlMap();
-	// BW1W120 0046f890 BW1M100 101cae30
+	// BW1W120 0046f890 BW1M119 011d26a0
 	void LoadDefaults();
 
 	// Non-virtual methods
 
-	// BW1W120 00470910 BW1M100 101caba0 ControlMap::GetText(ulong, wchar_t*)
+	// BW1W120 00470910 BW1M119 011d2410
 	void GetText(LH_KEY key, char16_t* out_text);
-	// BW1W120 00470ab0 BW1M100 10090ab0 ControlMap::ProcessActionsPerformed(void)
+	// BW1W120 00470ab0 BW1M119 01092cf0
 	void ProcessActionsPerformed();
 };
 

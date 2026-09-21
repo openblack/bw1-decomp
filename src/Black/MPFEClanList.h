@@ -10,7 +10,7 @@ class MPFEClanList : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 0062bf30 BW1M100 10396a90 MPFEClanList::_dt(void)
+	// BW1W120 0062bf30 BW1M119 0139e470
 	virtual ~MPFEClanList();
 };
 

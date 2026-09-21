@@ -17,11 +17,11 @@ class GPrayerSiteInfo : public GMultiMapFixedInfo
 public:
 	// Override methods
 
-	// BW1W120 006706c0 BW1M100 1011ea20 GPrayerSiteInfo::_dt(void)
+	// BW1W120 006706c0 BW1M119 01127c80
 	virtual ~GPrayerSiteInfo();
-	// BW1W120 00670670 BW1M100 1011eb00 GPrayerSiteInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00670670 BW1M119 01127d60
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-	// BW1W120 00670660 BW1M100 1011eac0 GPrayerSiteInfo::GetMesh( const(void))
+	// BW1W120 00670660 BW1M119 01127d20
 	virtual MESH_LIST GetMesh() const;
 };
 

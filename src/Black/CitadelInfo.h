@@ -16,9 +16,9 @@ class GCitadelInfo : public GContainerInfo
 public:
 	// Override methods
 
-	// BW1W120 004629d0 BW1M100 101bb390 GCitadelInfo::_dt(void)
+	// BW1W120 004629d0 BW1M119 011c3650
 	virtual ~GCitadelInfo();
-	// BW1W120 00462980 BW1M100 101bb430 GCitadelInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00462980 BW1M119 011c36f0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

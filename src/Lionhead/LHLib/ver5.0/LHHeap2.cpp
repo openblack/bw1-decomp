@@ -10,7 +10,7 @@
 
 // When set, HeapWithPools bypasses the LHPool buckets and routes every request
 // straight to the underlying Heap free-list allocator. Defaults to true (pools off).
-// BW1W120 00c34098 DoNotUsePools
+// BW1W120 00c34098 BW1M119 011da730 (LHCombined Release)
 bool DoNotUsePools = true;
 
 // =============================================================================
@@ -608,9 +608,10 @@ char* UniqueKeyHeap::GetDebugTextAtAddress(void* addr, char* buf) const
 // =============================================================================
 
 // Win32 heap and failure counter used by the Test/Alloc/Check diagnostic.
-// BW1W120 00e90600 / 00e905fc
+// BW1W120 00e90600
 static HANDLE gTestHeap;
-static int    gTestFailures;
+// BW1W120 00e905fc
+static int gTestFailures;
 
 int UniqueKeyHeap::Check(timcheck* rec)
 {

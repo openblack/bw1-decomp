@@ -15,7 +15,7 @@ class GMagicForestInfo : public GMagicInfo
 public:
 	// Override methods
 
-	// BW1W120 004356e0 BW1M100 103ac990 GMagicForestInfo::_dt(void)
+	// BW1W120 004356e0 BW1M119 013b4860
 	virtual ~GMagicForestInfo();
 };
 

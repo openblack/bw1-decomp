@@ -60,31 +60,31 @@ public:
 
 	// Override methods
 
-	// BW1W120 00401320 BW1M100 101ca240 GAbodeInfo::~GAbodeInfo(unsigned int)
+	// BW1W120 00401320 BW1M119 013ce3a0
 	virtual ~GAbodeInfo();
-	// BW1W120 00401270 BW1M100 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
+	// BW1W120 00401270 BW1M119 010a4850
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
-	// BW1W120 00401240 BW1M100 1019a370 GAbodeInfo::GetMesh() const
+	// BW1W120 00401240 BW1M119 01112ea0
 	virtual MESH_LIST GetMesh() const { return MeshId; }
-	// BW1W120 00401250 BW1M100 106fde70 GAbodeInfo::GetAbodeType() const
+	// BW1W120 00401250 BW1M119 0109a3c0
 	virtual ABODE_TYPE GetAbodeType() const { return AbodeType; }
-	// BW1W120 00401260 BW1M100 100984c0 GAbodeInfo::GetAbodeNumber() const
+	// BW1W120 00401260 BW1M119 0109a400
 	virtual ABODE_NUMBER GetAbodeNumber() const { return AbodeNumber; }
 
 	// Static methods
 
-	// BW1W120 00405a70 BW1M100 101ca0c0 GAbodeInfo::GetInfoFromText(char *)
+	// BW1W120 00405a70 BW1M119 015513d0
 	static int GetInfoFromText(const char* text);
-	// BW1W120 00405b30 BW1M100 1006f680 GAbodeInfo::Find(TRIBE_TYPE, ABODE_NUMBER)
+	// BW1W120 00405b30 BW1M119 01071e00
 	static GAbodeInfo* Find(TRIBE_TYPE tribe_type, ABODE_NUMBER abode_number);
 
 	// Non-virtual methods
 
-	// BW1W120 00404b10 BW1M100 1015a260 GAbodeInfo::IsOkToCreateAtPos(MapCoords const &, float, float, Town *) const
+	// BW1W120 00404b10 BW1M119 01590e90
 	bool IsOkToCreateAtPos(const MapCoords& coords, float param_2, float param_3, Town* town) const;
-	// BW1W120 00405a60 BW1M100 inlined GAbodeInfo::GetDescription(void)
+	// BW1W120 00405a60 BW1M119 inlined
 	const char* GetDescription();
-	// BW1W120 0042e520 BW1M100 inlined GAbodeInfo::LoadBinary(LHFile *)
+	// BW1W120 0042e520 BW1M119 inlined
 	void LoadBinary(LHFile* file)
 	{
 		file->GetSegmentData(&type, sizeof(type), -1);

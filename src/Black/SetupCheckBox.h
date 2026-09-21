@@ -25,20 +25,20 @@ public:
 
 	// Override methods
 
-	// BW1W120 00410f90 BW1M100 10112370 SetupCheckBox::HitTest(int, int)
+	// BW1W120 00410f90 BW1M119 015ac130
 	virtual bool HitTest(int x, int y);
-	// BW1W120 00410b80 BW1M100 103c4a20 SetupCheckBox::Draw(bool, bool)
+	// BW1W120 00410b80 BW1M119 010ae920
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 00411020 BW1M100 103dbde0 SetupCheckBox::Click(int, int)
+	// BW1W120 00411020 BW1M119 01160800
 	virtual void Click(int x, int y);
-	// BW1W120 00411050 BW1M100 10599580 SetupCheckBox::KeyDown(int, int)
+	// BW1W120 00411050 BW1M119 0150c300
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 00411070 BW1M100 105893e0 SetupCheckBox::~SetupCheckBox(void)
+	// BW1W120 00411070 BW1M119 01150480
 	virtual ~SetupCheckBox();
 
 	// Constructors
 
-	// BW1W120 00410f10 BW1M100 1058b890 SetupCheckBox::SetupCheckBox(int, int, int, bool, int, wchar_t *, int)
+	// BW1W120 00410f10 BW1M119 0111a4f0
 	SetupCheckBox(int id, int x, int y, bool checked, BBSTYLE style, const char16_t* label, int size);
 };
 

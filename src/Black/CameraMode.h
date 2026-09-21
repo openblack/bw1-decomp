@@ -36,12 +36,14 @@ struct LHCoord;
 class CameraMode
 {
 public:
-	// BW1W120 0044a3c0 (deleting wrapper), BW1M100 10199460 CameraMode::~CameraMode()
+	// (deleting wrapper), BW1M119 011a2510 CameraMode::~CameraMode()
 	// First three slots at 008c76e0; the remaining virtual interface is unrecovered.
+	// BW1W120 0044a3c0
 	virtual ~CameraMode();
-	// BW1W120 0044a290, shared with CameraModeTwoObjects.
+	// Shared with CameraModeTwoObjects.
+	// BW1W120 0044a290
 	virtual bool32_t CanPlayerGestureWhenCameraMoving() { return 0; }
-	// BW1W120 0044a2a0
+	// BW1W120 0044a2a0 BW1M119 011a30a0
 	virtual void Update() {}
 	GCamera*     camera; /* 0x4 */
 };

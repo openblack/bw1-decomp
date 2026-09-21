@@ -22,22 +22,22 @@ class SpellFlock : public SpellWithObjects
 public:
 	// Override methods
 
-	// BW1W120 0055d250 BW1M100 1030e480 SpellFlock::_dt(void)
+	// BW1W120 0055d250 BW1M119 01310dc0
 	virtual ~SpellFlock();
-	// BW1W120 00724780 BW1M100 1051c560 SpellFlock::Load(GameOSFile &)
+	// BW1W120 00724780 BW1M119 01523ce0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 007248a0 BW1M100 1051c390 SpellFlock::Save(GameOSFile &)
+	// BW1W120 007248a0 BW1M119 01523b10
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00723280 BW1M100 1051e660 SpellFlock::NeedsContinualPackets(GInterfaceStatus *)
+	// BW1W120 00723280 BW1M119 01525dd0
 	virtual bool NeedsContinualPackets(GInterfaceStatus* param_1);
-	// BW1W120 007233d0 BW1M100 1051e2b0 SpellFlock::Process(void)
+	// BW1W120 007233d0 BW1M119 01525a20
 	virtual uint32_t Process();
-	// BW1W120 00723270 BW1M100 1051e760 SpellFlock::CloseDown(void)
+	// BW1W120 00723270 BW1M119 01525ed0
 	virtual void CloseDown();
-	// BW1W120 007232d0 BW1M100 1051e4a0 SpellFlock::InitWithPos(GameThing *, MapCoords const &, SpellCastData *, PSysProcessInfo const &)
+	// BW1W120 007232d0 BW1M119 01525c10
 	virtual int InitWithPos(GameThing* param_1, const MapCoords& param_2, SpellCastData* param_3,
 	                        const PSysProcessInfo& param_4);
-	// BW1W120 00723240 BW1M100 1051e7b0 SpellFlock::CalculateCostToMaintain(void)
+	// BW1W120 00723240 BW1M119 01525f20
 	virtual float CalculateCostToMaintain();
 };
 

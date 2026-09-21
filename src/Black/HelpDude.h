@@ -16,9 +16,9 @@ class HelpDude : public LocalBase
 public:
 	// Override methods
 
-	// BW1W120 005c2110 BW1M100 10348c90 HelpDude::_dt(void)
+	// BW1W120 005c2110 BW1M119 01350ea0
 	virtual ~HelpDude();
-	// BW1W120 005c20e0 BW1M100 10348c40 HelpDude::Get3DSoundPos(LHPoint *)
+	// BW1W120 005c20e0 BW1M119 01350e50
 	virtual int Get3DSoundPos(LHPoint* param_1);
 };
 

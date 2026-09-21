@@ -11,7 +11,7 @@ class CreatureCommand : public Base
 public:
 	// Override methods
 
-	// BW1W120 004c7420 BW1M100 inlined CreatureCommand::_dt(void)
+	// BW1W120 004c7420 BW1M119 inlined
 	virtual ~CreatureCommand();
 };
 

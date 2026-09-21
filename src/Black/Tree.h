@@ -40,161 +40,161 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055da40 BW1M100 10159150 Tree::_dt(void)
+	// BW1W120 0055da40 BW1M119 011613d0
 	virtual ~Tree();
-	// BW1W120 0074a210 BW1M100 10158a10 Tree::ToBeDeleted(int)
+	// BW1W120 0074a210 BW1M119 01160c90
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0055d8c0 BW1M100 10159560 Tree::GetPlayer(void)
+	// BW1W120 0055d8c0 BW1M119 011617b0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 0055d9f0 BW1M100 10159a80 Tree::GetComputerSeen(void)
+	// BW1W120 0055d9f0 BW1M119 01161cd0
 	virtual GComputerSeen* GetComputerSeen();
-	// BW1W120 0055d8e0 BW1M100 101595f0 Tree::CastTree(void)
+	// BW1W120 0055d8e0 BW1M119 01161840
 	virtual Tree* CastTree();
-	// BW1W120 0055da30 BW1M100 10159b80 Tree::GetDebugText(void)
+	// BW1W120 0055da30 BW1M119 01161dd0
 	virtual char* GetDebugText();
-	// BW1W120 0071be20 BW1M100 1050fb70 Tree::GetGuidanceResourceType(void)
+	// BW1W120 0071be20 BW1M119 015176f0
 	virtual uint32_t GetGuidanceResourceType();
-	// BW1W120 0074c2a0 BW1M100 10155f10 Tree::Load(GameOSFile &)
+	// BW1W120 0074c2a0 BW1M119 0115e2b0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0074c1b0 BW1M100 10156080 Tree::Save(GameOSFile &)
+	// BW1W120 0074c1b0 BW1M119 0115e420
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055da20 BW1M100 10159b50 Tree::GetSaveType(void)
+	// BW1W120 0055da20 BW1M119 01161da0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0055d950 BW1M100 101597f0 Tree::GetCreatureBeliefType(void)
+	// BW1W120 0055d950 BW1M119 01161a40
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 0074b790 BW1M100 101576d0 Tree::GetOverwriteDropToolTip(void)
+	// BW1W120 0074b790 BW1M119 0115f9b0
 	virtual uint32_t GetOverwriteDropToolTip();
-	// BW1W120 0055da10 BW1M100 10159b10 Tree::IsCastShadowAtNight(void)
+	// BW1W120 0055da10 BW1M119 01161d60
 	virtual uint32_t IsCastShadowAtNight();
-	// BW1W120 0055d9a0 BW1M100 10159950 Tree::CanBeAttackedByCreature(Creature *)
+	// BW1W120 0055d9a0 BW1M119 01161ba0
 	virtual uint32_t CanBeAttackedByCreature(Creature* param_1);
-	// BW1W120 0055d930 BW1M100 10159740 Tree::CanBePlayedWithByCreature(Creature *)
+	// BW1W120 0055d930 BW1M119 01161990
 	virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
-	// BW1W120 004e4a80 BW1M100 105e4320 Tree::CanBePickedUpByCreature(Creature *)
+	// BW1W120 004e4a80 BW1M119 015ec020
 	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
-	// BW1W120 0055d990 BW1M100 10159900 Tree::CanBeDestroyedByStoning(Creature *)
+	// BW1W120 0055d990 BW1M119 01161b50
 	virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
-	// BW1W120 0055d970 BW1M100 10159870 Tree::CanBeUsedForBuilding(Creature *)
+	// BW1W120 0055d970 BW1M119 01161ac0
 	virtual uint32_t CanBeUsedForBuilding(Creature* param_1);
-	// BW1W120 0055d980 BW1M100 101598c0 Tree::CanBeUsedForRepair(Creature *)
+	// BW1W120 0055d980 BW1M119 01161b10
 	virtual uint32_t CanBeUsedForRepair(Creature* param_1);
-	// BW1W120 0055d940 BW1M100 10159790 Tree::BenefitsFromHavingWaterSprinkledOnIt(Creature *)
+	// BW1W120 0055d940 BW1M119 011619e0
 	virtual uint32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1);
-	// BW1W120 0055d9d0 BW1M100 inlined Tree::IsTree_1(void)
+	// BW1W120 0055d9d0 BW1M119 inlined
 	virtual uint32_t IsTree_1();
-	// BW1W120 0055d920 BW1M100 inlined Tree::IsTree_0(Creature *)
+	// BW1W120 0055d920 BW1M119 inlined
 	virtual uint32_t IsTree_0(Creature* param_1);
-	// BW1W120 004e46e0 BW1M100 105e4dc0 Tree::IsTreeNotTooNearPlannedForest(Creature *)
+	// BW1W120 004e46e0 BW1M119 015ecac0
 	virtual uint32_t IsTreeNotTooNearPlannedForest(Creature* param_1);
-	// BW1W120 0074c0a0 BW1M100 10156670 Tree::IsTreeBigEnoughForCreature(Creature *)
+	// BW1W120 0074c0a0 BW1M119 0115e970
 	virtual uint32_t IsTreeBigEnoughForCreature(Creature* param_1);
-	// BW1W120 0055d9b0 BW1M100 101599a0 Tree::CanBeThrownInTheSeaPlayfully(Creature *)
+	// BW1W120 0055d9b0 BW1M119 01161bf0
 	virtual uint32_t CanBeThrownInTheSeaPlayfully(Creature* param_1);
-	// BW1W120 0055d960 BW1M100 10159830 Tree::GetCreatureMimicType(void)
+	// BW1W120 0055d960 BW1M119 01161a80
 	virtual uint32_t GetCreatureMimicType();
-	// BW1W120 004d1b70 BW1M100 10242f30 Tree::GetHowMuchCreatureWantsToLookAtMe(void)
+	// BW1W120 004d1b70 BW1M119 01247820
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
-	// BW1W120 0055d9c0 BW1M100 101599f0 Tree::IsAnyKindOfTree(void)
+	// BW1W120 0055d9c0 BW1M119 01161c40
 	virtual uint32_t IsAnyKindOfTree();
-	// BW1W120 0074c130 BW1M100 100036d0 Tree::GetScriptObjectType(void)
+	// BW1W120 0074c130 BW1M119 010036c0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 0055d8d0 BW1M100 10159590 Tree::GetReactionPower(void)
+	// BW1W120 0055d8d0 BW1M119 011617e0
 	virtual float GetReactionPower();
-	// BW1W120 0074c7f0 BW1M100 10155720 Tree::BlocksTownClearArea( const(void))
+	// BW1W120 0074c7f0 BW1M119 0115dab0
 	virtual bool32_t BlocksTownClearArea() const;
-	// BW1W120 0074b600 BW1M100 10157bd0 Tree::GetHoldType(void)
+	// BW1W120 0074b600 BW1M119 0115feb0
 	virtual HOLD_TYPE GetHoldType();
-	// BW1W120 0074b610 BW1M100 10157b60 Tree::GetHoldRadius(void)
+	// BW1W120 0074b610 BW1M119 0115fe40
 	virtual float GetHoldRadius();
-	// BW1W120 0074b620 BW1M100 10157b10 Tree::GetHoldLoweringMultiplier(void)
+	// BW1W120 0074b620 BW1M119 0115fdf0
 	virtual float GetHoldLoweringMultiplier();
-	// BW1W120 0055d9e0 BW1M100 10159a30 Tree::HandShouldFeelWithMeshIntersect(void)
+	// BW1W120 0055d9e0 BW1M119 01161c80
 	virtual uint32_t HandShouldFeelWithMeshIntersect();
-	// BW1W120 0074a1e0 BW1M100 10158bb0 Tree::SetLife(float)
+	// BW1W120 0074a1e0 BW1M119 01160e30
 	virtual void SetLife(float param_1);
-	// BW1W120 0074a290 BW1M100 10158860 Tree::Process(void)
+	// BW1W120 0074a290 BW1M119 01160ae0
 	virtual uint32_t Process();
-	// BW1W120 0055d8a0 BW1M100 101594d0 Tree::GetMesh( const(void))
+	// BW1W120 0055d8a0 BW1M119 01161720
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 0074ab00 BW1M100 10044ce0 Tree::Draw(void)
+	// BW1W120 0074ab00 BW1M119 01047730
 	virtual void Draw();
-	// BW1W120 0074b270 BW1M100 10157fc0 Tree::DrawOutOfMap(bool)
+	// BW1W120 0074b270 BW1M119 011602a0
 	virtual void DrawOutOfMap(bool param_1);
-	// BW1W120 0055d8b0 BW1M100 10159520 Tree::CanBePickedUp(void)
+	// BW1W120 0055d8b0 BW1M119 01161770
 	virtual bool32_t CanBePickedUp();
-	// BW1W120 0074a1a0 BW1M100 10158c20 Tree::GetVillagerHugRadius(void)
+	// BW1W120 0074a1a0 BW1M119 01160ea0
 	virtual float GetVillagerHugRadius();
-	// BW1W120 0074c150 BW1M100 101562a0 Tree::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
+	// BW1W120 0074c150 BW1M119 0115e640
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
-	// BW1W120 0074c040 BW1M100 inlined Tree::GetWorkingPos(MapCoords *, Object *)
+	// BW1W120 0074c040 BW1M119 inlined
 	// Rule 2 (hidden retbuf): overrides Object::GetWorkingPos, returns MapCoords by value.
 	virtual MapCoords GetWorkingPos(Object* param_1);
-	// BW1W120 00749f70 BW1M100 10158e00 Tree::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00749f70 BW1M119 01161080
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 0074b7b0 BW1M100 10157590 Tree::GetWoodValue(void)
+	// BW1W120 0074b7b0 BW1M119 0115f870
 	virtual float GetWoodValue();
-	// BW1W120 0074c390 BW1M100 10155bd0 Tree::ApplyWaterSpell(SpellWater *)
+	// BW1W120 0074c390 BW1M119 0115df70
 	virtual float ApplyWaterSpell(SpellWater* param_1);
-	// BW1W120 0055d8f0 BW1M100 10159620 Tree::IsResourceStore(RESOURCE_TYPE)
+	// BW1W120 0055d8f0 BW1M119 01161870
 	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
-	// BW1W120 0074b820 BW1M100 10157510 Tree::GetResourceType(void)
+	// BW1W120 0074b820 BW1M119 0115f7f0
 	virtual RESOURCE_TYPE GetResourceType();
-	// BW1W120 0074b7a0 BW1M100 10157670 Tree::GetDefaultResource(void)
+	// BW1W120 0074b7a0 BW1M119 0115f950
 	virtual int GetDefaultResource();
-	// BW1W120 0074b730 BW1M100 10157710 Tree::InterfaceSetInMagicHand(GInterfaceStatus *)
+	// BW1W120 0074b730 BW1M119 0115f9f0
 	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
-	// BW1W120 0074bd50 BW1M100 10156c80 Tree::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
+	// BW1W120 0074bd50 BW1M119 0115ef60
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
-	// BW1W120 0074bda0 BW1M100 10156910 Tree::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
+	// BW1W120 0074bda0 BW1M119 0115ec10
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
-	// BW1W120 0074bfd0 BW1M100 101567f0 Tree::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
+	// BW1W120 0074bfd0 BW1M119 0115eaf0
 	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
-	// BW1W120 0074b640 BW1M100 10157a90 Tree::GetPhysicsConstantsType(void)
+	// BW1W120 0074b640 BW1M119 0115fd70
 	virtual uint32_t GetPhysicsConstantsType();
-	// BW1W120 0074b650 BW1M100 101579a0 Tree::SetUpPhysOb(PhysOb *)
+	// BW1W120 0074b650 BW1M119 0115fc80
 	virtual void SetUpPhysOb(PhysOb* param_1);
-	// BW1W120 0074b830 BW1M100 10156f80 Tree::EndPhysics(PhysicsObject *, bool)
+	// BW1W120 0074b830 BW1M119 0115f260
 	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
-	// BW1W120 0074bc60 BW1M100 10156df0 Tree::DropSfx(void)
+	// BW1W120 0074bc60 BW1M119 0115f0d0
 	virtual uint32_t DropSfx();
-	// BW1W120 0074b6a0 BW1M100 10157960 Tree::InteractsWithPhysicsObjects(void)
+	// BW1W120 0074b6a0 BW1M119 0115fc40
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 0074b6b0 BW1M100 10157840 Tree::ReactToPhysicsImpact(PhysicsObject *, bool)
+	// BW1W120 0074b6b0 BW1M119 0115fb20
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-	// BW1W120 0074b630 BW1M100 10157ad0 Tree::CanBecomeAPhysicsObject(void)
+	// BW1W120 0074b630 BW1M119 0115fdb0
 	virtual bool32_t CanBecomeAPhysicsObject();
-	// BW1W120 0074c0e0 BW1M100 10156590 Tree::CreatureMustAvoid(Creature *)
+	// BW1W120 0074c0e0 BW1M119 0115e890
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
-	// BW1W120 0074a180 BW1M100 10158cd0 Tree::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+	// BW1W120 0074a180 BW1M119 01160f50
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));
-	// BW1W120 0074a140 BW1M100 10158d40 Tree::GetRoutePlanRadius(Creature *)
+	// BW1W120 0074a140 BW1M119 01160fc0
 	virtual float GetRoutePlanRadius(Creature* param_1);
-	// BW1W120 0074b720 BW1M100 10157800 Tree::IsARootedObject(void)
+	// BW1W120 0074b720 BW1M119 0115fae0
 	virtual bool32_t IsARootedObject();
-	// BW1W120 0055d900 BW1M100 10159670 Tree::GetCarriedTreeType(void)
+	// BW1W120 0055d900 BW1M119 011618c0
 	virtual uint32_t GetCarriedTreeType();
-	// BW1W120 0074a9d0 BW1M100 10158260 Tree::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 0074a9d0 BW1M119 01160510
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
-	// BW1W120 0074c5f0 BW1M100 101559c0 Tree::CreateCollideData(void)
+	// BW1W120 0074c5f0 BW1M119 0115dd60
 	virtual void CreateCollideData();
-	// BW1W120 0074b810 BW1M100 10157550 Tree::GetWoodValueMultiplier(void)
+	// BW1W120 0074b810 BW1M119 0115f830
 	virtual float GetWoodValueMultiplier();
-	// BW1W120 0055d910 BW1M100 100f0c30 Tree::GetForest(void)
+	// BW1W120 0055d910 BW1M119 010fa030
 	virtual Forest* GetForest();
-	// BW1W120 0074c140 BW1M100 10156370 Tree::SetOnFire(float)
+	// BW1W120 0074c140 BW1M119 0115e710
 	virtual void SetOnFire(float param_1);
 
 	// Static methods
 
-	// BW1W120 00749ee0 BW1M100 10158ff0 Tree::Create(MapCoords const &, GTreeInfo const *, Forest *, float, float, float)
+	// BW1W120 00749ee0 BW1M119 01161270
 	static Tree* Create(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float param_4, float param_5,
 	                    float param_6);
 
 	// Constructors
 
-	// BW1W120 00749e00 BW1M100 101591d0 Tree::Tree(MapCoords const &, GTreeInfo const *, Forest *, float, float, float)
+	// BW1W120 00749e00 BW1M119 01161450
 	Tree(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float param_4, float param_5, float param_6);
 };
 

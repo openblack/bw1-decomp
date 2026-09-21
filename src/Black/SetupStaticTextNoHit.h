@@ -16,14 +16,14 @@ class SetupStaticTextNoHit : public SetupStaticText
 public:
 	// Override methods
 
-	// BW1W120 00571f00 BW1M100 10328c60 SetupStaticTextNoHit::HitTest(int, int)
+	// BW1W120 00571f00 BW1M119 013311d0
 	virtual bool HitTest(int x, int y);
-	// BW1W120 00571f10 BW1M100 10328bc0 SetupStaticTextNoHit::~SetupStaticTextNoHit(void)
+	// BW1W120 00571f10 BW1M119 01331130
 	virtual ~SetupStaticTextNoHit();
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 10327f40 SetupStaticTextNoHit::SetupStaticTextNoHit(int, int, int, int, int, wchar_t *, TEXTJUSTIFY)
+	// BW1W120 inlined
 	SetupStaticTextNoHit(int id, int x, int y, int width, int height, const char16_t* label, TEXTJUSTIFY text_justify);
 };
 

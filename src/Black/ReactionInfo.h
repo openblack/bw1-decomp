@@ -39,9 +39,9 @@ public:
 
 	// Override methods
 
-	// BW1W120 006e0e60 BW1M100 10135410 ReactionInfo::_dt(void)
+	// BW1W120 006e0e60 BW1M119 0113e230
 	virtual ~ReactionInfo();
-	// BW1W120 006e0e00 BW1M100 101368d0 ReactionInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 006e0e00 BW1M119 0113f4c0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

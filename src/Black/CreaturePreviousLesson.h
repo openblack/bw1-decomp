@@ -14,7 +14,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004e03a0 BW1M100 10245f80 CreaturePreviousLesson::_dt(void)
+	// BW1W120 004e03a0 BW1M119 0124a880
 	virtual ~CreaturePreviousLesson();
 };
 

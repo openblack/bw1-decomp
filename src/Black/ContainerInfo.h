@@ -23,9 +23,9 @@ public:
 
 	// Override methods
 
-	// BW1W120 0046b880 BW1M100 100bfd60 GContainerInfo::_dt(void)
+	// BW1W120 0046b880 BW1M119 010c3240
 	virtual ~GContainerInfo();
-	// BW1W120 0046b820 BW1M100 100bfe80 GContainerInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0046b820 BW1M119 010c3360
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

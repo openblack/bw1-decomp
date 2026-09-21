@@ -16,15 +16,15 @@ class EditorHug : public Prss
 public:
 	// Override methods
 
-	// BW1W120 0051f180 BW1M100 inlined EditorHug::ProcessTurn(void)
+	// BW1W120 0051f180 BW1M119 inlined
 	virtual Prss* ProcessTurn();
-	// BW1W120 0051f200 BW1M100 inlined EditorHug::Display(void)
+	// BW1W120 0051f200 BW1M119 inlined
 	virtual void Display();
-	// BW1W120 0060db30 BW1M100 inlined EditorHug::PrssKey(LH_KEY, unsigned short)
+	// BW1W120 0060db30 BW1M119 inlined
 	virtual void PrssKey(LH_KEY param_1, uint16_t param_2);
-	// BW1W120 0051f3b0 BW1M100 inlined EditorHug::PrssMouse(MouseInput *)
+	// BW1W120 0051f3b0 BW1M119 inlined
 	virtual void PrssMouse(MouseInput* param_1);
-	// BW1W120 0051f5b0 BW1M100 inlined EditorHug::ClickFunction(int, int, int)
+	// BW1W120 0051f5b0 BW1M119 inlined
 	virtual void ClickFunction(int param_1, int param_2, int param_3);
 };
 

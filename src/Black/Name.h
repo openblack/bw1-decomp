@@ -9,7 +9,7 @@ struct Name
 
 	// Constructors
 
-	// BW1W120 0046d5e0 BW1M100 101c7b50 Name::Name(void)
+	// BW1W120 0046d5e0 BW1M119 011cfca0
 	Name();
 };
 

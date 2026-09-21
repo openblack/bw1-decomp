@@ -2,44 +2,44 @@
 
 #include "Football.h"
 
-// BW1W120 007630e0 BW1M100 1058c1c0 Villager::IsPlaytime(void)
+// BW1W120 007630e0 BW1M119 01593980
 bool Villager::IsPlaytime()
 {
 	return GetTown() != NULL;
 }
 
-// BW1W120 007630f0 BW1M100 1058c170 Villager::CheckPlaytimeAvailableToPlayPFootball(void)
+// BW1W120 007630f0 BW1M119 01593930
 bool32_t Villager::CheckPlaytimeAvailableToPlayPFootball()
 {
 	return 1;
 }
 
-// BW1W120 00763100 BW1M100 1058c120 Villager::CheckPlaytimeSettingUpPlayPFootball(void)
+// BW1W120 00763100 BW1M119 015938e0
 bool32_t Villager::CheckPlaytimeSettingUpPlayPFootball()
 {
 	return 1;
 }
 
-// BW1W120 00763110 BW1M100 1058c0d0 Villager::MoveToFootballPitchConstruction(void)
+// BW1W120 00763110 BW1M119 01593890
 bool32_t Villager::MoveToFootballPitchConstruction()
 {
 	return 1;
 }
 
-// BW1W120 00763120 BW1M100 1058c070 Villager::FootballWalkToPosition(void)
+// BW1W120 00763120 BW1M119 01593830
 bool32_t Villager::FootballWalkToPosition()
 {
 	MoveTo();
 	return 1;
 }
 
-// BW1W120 00763130 BW1M100 100a0100 Villager::CheckSatisfyPlaytimeDesire(void)
+// BW1W120 00763130 BW1M119 010a1e70
 bool32_t Villager::CheckSatisfyPlaytimeDesire()
 {
 	return 0;
 }
 
-// BW1W120 00763140 BW1M100 1058bf80 Villager::WaitForKickOff(void)
+// BW1W120 00763140 BW1M119 01593750
 bool32_t Villager::WaitForKickOff()
 {
 	// TODO: +0x200 is a match-phase field on the opaque Football blob (field_0xc4); compared for
@@ -49,7 +49,7 @@ bool32_t Villager::WaitForKickOff()
 	return 1;
 }
 
-// BW1W120 00763170 BW1M100 1058bee0 Villager::FootballMatchPaused(void)
+// BW1W120 00763170 BW1M119 015936b0
 bool32_t Villager::FootballMatchPaused()
 {
 	if (GetFootball() != NULL && GetFootball()->GetBall() != NULL)
@@ -57,7 +57,7 @@ bool32_t Villager::FootballMatchPaused()
 	return 1;
 }
 
-// BW1W120 007631b0 BW1M100 1058be20 Villager::FootballMexicanWave(void)
+// BW1W120 007631b0 BW1M119 015935f0
 bool32_t Villager::FootballMexicanWave()
 {
 	if (GetTown() == NULL)
@@ -68,7 +68,7 @@ bool32_t Villager::FootballMexicanWave()
 	return 1;
 }
 
-// BW1W120 007631f0 BW1M100 1058bce0 Villager::FootballWatchMatch(void)
+// BW1W120 007631f0 BW1M119 015934b0
 bool32_t Villager::FootballWatchMatch()
 {
 	if (GetTown() == NULL)
@@ -93,7 +93,7 @@ bool32_t Villager::FootballWatchMatch()
 	return 1;
 }
 
-// BW1W120 00763280 BW1M100 1058bbe0 Villager::ExitFootball(unsigned char)
+// BW1W120 00763280 BW1M119 015933b0
 bool32_t Villager::ExitFootball(unsigned char exit_state)
 {
 	circle_hug_info.Reset(this);

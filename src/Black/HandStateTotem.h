@@ -18,16 +18,16 @@ public:
 
 	// Override methods
 
-	// BW1W120 005b7690 BW1M100 1033d350 HandStateTotem::Enter(void)
+	// BW1W120 005b7690 BW1M119 01345630
 	virtual void Enter();
-	// BW1W120 005b7790 BW1M100 1033d310 HandStateTotem::Exit(void)
+	// BW1W120 005b7790 BW1M119 013455f0
 	virtual void Exit();
-	// BW1W120 005b77a0 BW1M100 1033cd20 HandStateTotem::Update(float, LHMatrix *)
+	// BW1W120 005b77a0 BW1M119 01345000
 	virtual void Update(float param_1, LHMatrix* param_2);
 
 	// Constructors
 
-	// BW1W120 005b7670 BW1M100 1033d4c0 HandStateTotem::HandStateTotem(CHand*)
+	// BW1W120 005b7670 BW1M119 013457a0
 	HandStateTotem(CHand* hand);
 };
 

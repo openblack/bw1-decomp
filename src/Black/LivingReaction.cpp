@@ -5,7 +5,7 @@
 #include "LivingInfo.h"
 #include "MapCoords.h"
 
-// BW1W120 005f2830 BW1M100 10029240 Living::SetupMoveToPos(MapCoords const &, unsigned char)
+// BW1W120 005f2830 BW1M119 0102bdb0
 bool32_t Living::SetupMoveToPos(const MapCoords& coord, uint8_t end_state)
 {
 	uint8_t state = ((const GLivingInfo*)info)->move_to_state;
@@ -21,7 +21,7 @@ bool32_t Living::SetupMoveToPos(const MapCoords& coord, uint8_t end_state)
 	return false;
 }
 
-// BW1W120 005f28e0 BW1M100 10075940 Living::SetTopState(unsigned char)
+// BW1W120 005f28e0 BW1M119 01077ec0
 int Living::SetTopState(uint8_t state)
 {
 	int result = LIVING_SET_STATE_EXIT_REFUSED;
@@ -49,7 +49,7 @@ int Living::SetTopState(uint8_t state)
 	return result;
 }
 
-// BW1W120 005f2980 BW1M100 10076180 Living::SetCurrentAndDestinationState(unsigned char, unsigned char)
+// BW1W120 005f2980 BW1M119 01078700
 int Living::SetCurrentAndDestinationState(uint8_t current, uint8_t destination)
 {
 	if (CallExitStateFunction(destination) != 0)

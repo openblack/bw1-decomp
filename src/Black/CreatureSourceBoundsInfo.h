@@ -15,9 +15,9 @@ class CreatureSourceBoundsInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 004dd400 BW1M100 1025eab0 CreatureSourceBoundsInfo::_dt(void)
+	// BW1W120 004dd400 BW1M119 012629a0
 	virtual ~CreatureSourceBoundsInfo();
-	// BW1W120 004dd3a0 BW1M100 1025ee20 CreatureSourceBoundsInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 004dd3a0 BW1M119 01262d00
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

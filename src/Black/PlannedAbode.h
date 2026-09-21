@@ -29,37 +29,37 @@ public:
 
 	// Override methods
 
-	// BW1W120 00405110 BW1M100 1017d1f0 PlannedAbode::_dt(unsigned int)
+	// BW1W120 00405110 BW1M119 010b3160
 	virtual ~PlannedAbode();
-	// BW1W120 004056b0 BW1M100 100c5460 PlannedAbode::ToBeDeleted(int)
+	// BW1W120 004056b0 BW1M119 013448c0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 004050e0 BW1M100 10352440 PlannedAbode::GetTown(void)
+	// BW1W120 004050e0 BW1M119 0141c550
 	virtual Town* GetTown();
-	// BW1W120 00405100 BW1M100 10179a00 PlannedAbode::GetDebugText(void)
+	// BW1W120 00405100 BW1M119 014afde0
 	virtual char* GetDebugText();
-	// BW1W120 00405860 BW1M100 10260310 PlannedAbode::Load(GameOSFile &)
+	// BW1W120 00405860 BW1M119 013dc0f0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00405830 BW1M100 10350950 PlannedAbode::Save(GameOSFile &)
+	// BW1W120 00405830 BW1M119 013434f0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 004050f0 BW1M100 10531c20 PlannedAbode::GetSaveType(void)
+	// BW1W120 004050f0 BW1M119 01418a20
 	virtual uint32_t GetSaveType();
-	// BW1W120 004061a0 BW1M100 104333f0 PlannedAbode::IsWonder(void)
+	// BW1W120 004061a0 BW1M119 011d16f0
 	virtual bool32_t IsWonder();
-	// BW1W120 00405710 BW1M100 10570d80 PlannedAbode::CreatePlanned(float)
+	// BW1W120 00405710 BW1M119 0157bb20
 	virtual MultiMapFixed* CreatePlanned(float param_1);
-	// BW1W120 00405770 BW1M100 10282ed0 PlannedAbode::CreatePlannedNoFixedCheck(float)
+	// BW1W120 00405770 BW1M119 010d7810
 	virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1);
-	// BW1W120 004060c0 BW1M100 101a36e0 PlannedAbode::IsCivic(void)
+	// BW1W120 004060c0 BW1M119 011d1450
 	virtual bool32_t IsCivic();
-	// BW1W120 004061e0 BW1M100 10007c40 PlannedAbode::GetAbodeType(void)
+	// BW1W120 004061e0 BW1M119 01007b50
 	virtual ABODE_TYPE GetAbodeType();
 
 	// Static methods
 
-	// BW1W120 004055c0 BW1M100 103e4530 PlannedAbode::CreateNoInit(MapCoords const &, GAbodeInfo const *, Town *, float, float)
+	// BW1W120 004055c0 BW1M119 01376860
 	static PlannedAbode* CreateNoInit(const MapCoords& coords, const GAbodeInfo* info, Town* town, float param_4,
 	                                  float param_5);
-	// BW1W120 00405600 BW1M100 10479fb0 PlannedAbode::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float)
+	// BW1W120 00405600 BW1M119 01590b90
 	static PlannedAbode* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float param_4,
 	                            float param_5)
 	{
@@ -67,28 +67,28 @@ public:
 		abode->Init(town);
 		return abode;
 	}
-	// BW1W120 00405660 BW1M100 1043fad0 PlannedAbode::Create(Abode*)
+	// BW1W120 00405660 BW1M119 013d1920
 	static PlannedAbode* Create(Abode* abode);
-	// BW1W120 004056d0 BW1M100 10007bf0 PlannedAbode::GetInfo(void)
+	// BW1W120 004056d0 BW1M119 01007b00
 	static GPlannedAbodeInfo* GetInfo();
 
 	// Constructors
 
-	// BW1W120 00405080 BW1M100 103e51a0 PlannedAbode::PlannedAbode(MapCoords const &, GAbodeInfo const *, Town *, float, float)
+	// BW1W120 00405080 BW1M119 01370320
 	PlannedAbode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale)
 		: PlannedMultiMapFixed(coords, info, y_angle, scale), town(NULL)
 	{
 	}
-	// BW1W120 00405580 BW1M100 103e4ca0 PlannedAbode::PlannedAbode(Abode*)
+	// BW1W120 00405580 BW1M119 01368800
 	PlannedAbode(Abode* abode);
 
 	// Non-virtual methods
 
-	// BW1W120 004055a0 BW1M100 103e5560 PlannedAbode::Init(Town *)
+	// BW1W120 004055a0 BW1M119 0149c170
 	void Init(Town* town);
-	// BW1W120 004056f0 BW1M100 inlined PlannedAbode::FUN_004056f0(int)
+	// BW1W120 004056f0 BW1M119 inlined
 	bool32_t FUN_004056f0(int param_1);
-	// BW1W120 004057f0 BW1M100 inlined PlannedAbode::IsOkToBuild(void)
+	// BW1W120 004057f0 BW1M119 inlined
 	bool32_t IsOkToBuild();
 };
 

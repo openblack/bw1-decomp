@@ -18,11 +18,11 @@ public:
 	void* Parts;
 	int   NoParts;
 
-	// BW1W120 007f1170 LHSpriteFrame::GetBoundingRegion(LHRegion *, long, long)
+	// BW1W120 007f1170 BW1M119 0115b0b0 (LHCombined Release)
 	void GetBoundingRegion(LHRegion* out, long dx, long dy);
-	// BW1W120 007f12b0 LHSpriteFrame::GetSpritePtrOffsets(long *, long *, long)
+	// BW1W120 007f12b0 BW1M119 0115ae40 (LHCombined Release)
 	void GetSpritePtrOffsets(long* outX, long* outY, long part);
-	// BW1W120 007f12a0 LHSpriteFrame::GetSpritePtr(long)
+	// BW1W120 007f12a0 BW1M119 0115aea0 (LHCombined Release)
 	LHSprite* GetSpritePtr(long part);
 };
 

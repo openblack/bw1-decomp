@@ -10,7 +10,7 @@ struct GSaveLoadPtr
 
 	// Constructors
 
-	// BW1W120 00562320 BW1M100 inlined GSaveLoadPtr::GSaveLoadPtr(void*)
+	// BW1W120 00562320 BW1M119 inlined
 	GSaveLoadPtr(void* ptr);
 };
 

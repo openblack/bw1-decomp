@@ -35,60 +35,60 @@ public:
 
 	// Override methods
 
-	// BW1W120 00469500 BW1M100 101c3520 CitadelPart::_dt(void)
+	// BW1W120 00469500 BW1M119 011cad30
 	virtual ~CitadelPart();
-	// BW1W120 00469540 BW1M100 101c3320 CitadelPart::ToBeDeleted(int)
+	// BW1W120 00469540 BW1M119 011cab30
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00469750 BW1M100 10075f70 CitadelPart::GetPlayer(void)
+	// BW1W120 00469750 BW1M119 010784f0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 004694e0 BW1M100 101c37f0 CitadelPart::GetDebugText(void)
+	// BW1W120 004694e0 BW1M119 011cafe0
 	virtual char* GetDebugText();
-	// BW1W120 004698b0 BW1M100 101c2780 CitadelPart::Load(GameOSFile &)
+	// BW1W120 004698b0 BW1M119 011ca160
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00469830 BW1M100 101c2870 CitadelPart::Save(GameOSFile &)
+	// BW1W120 00469830 BW1M119 011ca250
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 004694d0 BW1M100 101c37b0 CitadelPart::GetSaveType(void)
+	// BW1W120 004694d0 BW1M119 011cafa0
 	virtual uint32_t GetSaveType();
-	// BW1W120 00464aa0 BW1M100 101c2460 CitadelPart::GetCreatureBeliefType(void)
+	// BW1W120 00464aa0 BW1M119 011c9e40
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 00464a80 BW1M100 1008aa80 CitadelPart::GetCitadel(void)
+	// BW1W120 00464a80 BW1M119 0108cdc0
 	virtual Citadel* GetCitadel();
-	// BW1W120 00464b00 BW1M100 inlined CitadelPart::IsCitadelPart_0(void)
+	// BW1W120 00464b00 BW1M119 inlined
 	virtual uint32_t IsCitadelPart_0();
-	// BW1W120 00464b10 BW1M100 inlined CitadelPart::IsCitadelPart_1(Creature *)
+	// BW1W120 00464b10 BW1M119 inlined
 	virtual uint32_t IsCitadelPart_1(Creature* param_1);
-	// BW1W120 00469780 BW1M100 101c2a50 CitadelPart::GetActualObjectToEffect(GPlayer *, bool)
+	// BW1W120 00469780 BW1M119 011ca430
 	virtual void* GetActualObjectToEffect(GPlayer* param_1, bool param_2);
-	// BW1W120 004695c0 BW1M100 101c32d0 CitadelPart::DestroyedByEffect(GPlayer *, float)
+	// BW1W120 004695c0 BW1M119 011caae0
 	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
-	// BW1W120 00469490 BW1M100 101ba510 CitadelPart::Process(void)
+	// BW1W120 00469490 BW1M119 011c27d0
 	virtual uint32_t Process();
-	// BW1W120 00464a90 BW1M100 101c2400 CitadelPart::GetMesh( const(void))
+	// BW1W120 00464a90 BW1M119 011c9de0
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00469760 BW1M100 101c2b70 CitadelPart::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00469760 BW1M119 011ca550
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 004694b0 BW1M100 101c3720 CitadelPart::Get3DType(void)
+	// BW1W120 004694b0 BW1M119 011caf10
 	virtual LH3DObject::ObjectType Get3DType();
-	// BW1W120 004695d0 BW1M100 inlined CitadelPart::CanBeDestroyedBySpell_1(Spell *)
+	// BW1W120 004695d0 BW1M119 inlined
 	virtual uint32_t CanBeDestroyedBySpell_1(Spell* param_1);
-	// BW1W120 004697f0 BW1M100 101c2970 CitadelPart::ReactToPhysicsImpact(PhysicsObject *, bool)
+	// BW1W120 004697f0 BW1M119 011ca350
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-	// BW1W120 004694c0 BW1M100 101c3760 CitadelPart::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 004694c0 BW1M119 011caf50
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
-	// BW1W120 004694f0 BW1M100 101c3830 CitadelPart::ShouldFootpathsGoRound(void)
+	// BW1W120 004694f0 BW1M119 011cb020
 	virtual bool32_t ShouldFootpathsGoRound();
-	// BW1W120 00464ab0 BW1M100 101c08e0 CitadelPart::IsRepaired(void)
+	// BW1W120 00464ab0 BW1M119 011c82c0
 	virtual bool32_t IsRepaired();
-	// BW1W120 00464ad0 BW1M100 10081060 CitadelPart::IsBuilt(void)
+	// BW1W120 00464ad0 BW1M119 010834a0
 	virtual bool32_t IsBuilt();
-	// BW1W120 004694a0 BW1M100 101b91f0 CitadelPart::ConvertToPlanned(void)
+	// BW1W120 004694a0 BW1M119 011c20d0
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 1030de40 CitadelPart::CitadelPart(void)
+	// BW1W120 inlined BW1M119 01310780
 	CitadelPart();
-	// BW1W120 004693f0 BW1M100 101c35b0 CitadelPart::CitadelPart(MapCoords const &, GCitadelPartInfo const *, Citadel *, float, float, float, int)
+	// BW1W120 004693f0 BW1M119 011cadc0
 	CitadelPart(const MapCoords& coords, const GCitadelPartInfo* info, Citadel* citadel, float y_angle, float scale,
 	            float param_6, int param_7);
 };

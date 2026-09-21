@@ -17,12 +17,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 005b13f0 BW1M100 10338c40 HandStateCreature::Enter(void)
+	// BW1W120 005b13f0 BW1M119 013411c0
 	virtual void Enter();
 
 	// Constructors
 
-	// BW1W120 005b13d0 BW1M100 10338f00 HandStateCreature::HandStateCreature(CHand*)
+	// BW1W120 005b13d0 BW1M119 01341490
 	HandStateCreature(CHand* hand);
 };
 

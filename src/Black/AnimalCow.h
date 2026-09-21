@@ -19,15 +19,15 @@ class Cow : public Animal
 public:
 	// Override methods
 
-	// BW1W120 0041d120 BW1M100 101206f0 Cow::_dt(void)
+	// BW1W120 0041d120 BW1M119 01129920
 	virtual ~Cow();
-	// BW1W120 0041d100 BW1M100 10171d80 Cow::GetDebugText(void)
+	// BW1W120 0041d100 BW1M119 0117ada0
 	virtual char* GetDebugText();
-	// BW1W120 0041d0f0 BW1M100 10171d50 Cow::GetSaveType(void)
+	// BW1W120 0041d0f0 BW1M119 0117ad70
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041d110 BW1M100 1012e4c0 Cow::IsCow(Creature *)
+	// BW1W120 0041d110 BW1M119 01137440
 	virtual uint32_t IsCow(Creature* param_1);
-	// BW1W120 0041d1b0 BW1M100 1000e870 Cow::DecideWhatToDo(void)
+	// BW1W120 0041d1b0 BW1M119 010113b0
 	virtual bool32_t DecideWhatToDo();
 };
 

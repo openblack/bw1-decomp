@@ -15,7 +15,7 @@ class GScaffoldInfo : public GMobileObjectInfo
 public:
 	// Override methods
 
-	// BW1W120 006e8360 BW1M100 10144060 GScaffoldInfo::_dt(void)
+	// BW1W120 006e8360 BW1M119 0114c310
 	virtual ~GScaffoldInfo();
 };
 

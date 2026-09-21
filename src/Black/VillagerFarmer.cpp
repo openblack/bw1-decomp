@@ -3,13 +3,13 @@
 #include "Field.h"
 #include "Game.h"
 
-// BW1W120 00759bf0 BW1M100 105783f0 Villager::FarmerLookForField(void)
+// BW1W120 00759bf0 BW1M119 01580560
 bool32_t Villager::FarmerLookForField()
 {
 	return false;
 }
 
-// BW1W120 00759c00 BW1M100 10578330 Villager::VillagerBecomesFarmer(Field *)
+// BW1W120 00759c00 BW1M119 015804a0
 // TODO: deferred -- when field==NULL, target calls GetTown() then Town::FindBestField(this,
 // &outDist) to find one. FindBestField is mangled void (?FindBestField@Town@@QAEXPAVVillager@@PAM@Z)
 // but the caller tests its Field* return in eax (mangled-void-returns-value); needs a dispatcher
@@ -21,7 +21,7 @@ bool32_t Villager::VillagerBecomesFarmer(Field* field)
 	return false;
 }
 
-// BW1W120 00759c40 BW1M100 10578150 Villager::SetFarmerGotoField(Field *, int)
+// BW1W120 00759c40 BW1M119 015802c0
 // TODO: deferred (tail) -- after picking the state, target calls the UNNAMED fn_00528970 (a Field
 // member, thiscall, returns MapCoords by value) and stores it into the football/field_0x120/
 // field_0x124 union (same union-as-MapCoords idiom as WanderArea in VillagerScript.cpp). Needs
@@ -48,7 +48,7 @@ bool32_t Villager::SetFarmerGotoField(Field* field, int activity)
 	return true;
 }
 
-// BW1W120 00759d20 BW1M100 10004ad0 Villager::FarmerArrivesAtFarm(void)
+// BW1W120 00759d20 BW1M119 010049e0
 // TODO: deferred (activity==2, and the "arrived" sub-branch of activity==1) -- target calls two
 // UNNAMED Field members: fn_00529240 (capacity check + position-generate; gates activity==2) and
 // fn_00528970 (position generator, same one SetFarmerGotoField needs) to refill football before
@@ -78,7 +78,7 @@ bool32_t Villager::FarmerArrivesAtFarm()
 	return true;
 }
 
-// BW1W120 00759e40 BW1M100 10578000 Villager::FarmerDigsUpCrop(void)
+// BW1W120 00759e40 BW1M119 01580160
 // TODO: deferred -- Field::RemoveFood (cross-unit, Field.cpp @0x5295a0) is mangled `float` via
 // ST0, but its own compiled body also leaves an integer "amount removed" in EAX on every path,
 // which THIS caller reads directly as PickupFood's argument (fpu-leak family, but the leak is in
@@ -99,7 +99,7 @@ bool32_t Villager::FarmerDigsUpCrop()
 	return true;
 }
 
-// BW1W120 00759ec0 BW1M100 10577f20 Villager::FarmerPlantsCrop(void)
+// BW1W120 00759ec0 BW1M119 01580080
 bool32_t Villager::FarmerPlantsCrop()
 {
 	if (((Field*)TargetThing)->PlantCrop(Pos))
@@ -116,7 +116,7 @@ bool32_t Villager::FarmerPlantsCrop()
 	return true;
 }
 
-// BW1W120 00759f30 BW1M100 105777f0 Villager::CheckSatisfyFoodDesire(void)
+// BW1W120 00759f30 BW1M119 0157f950
 // TODO: deferred -- builds a 3-candidate desire-priority list (kinds 0/1/2, each from a
 // different unnamed/blocked Town|Field query), then picks storage-pit-dropoff vs. becoming a
 // farmer/shepherd/fisherman off the winner. Every path out of the list-building is blocked
@@ -130,7 +130,7 @@ bool32_t Villager::CheckSatisfyFoodDesire()
 	return false;
 }
 
-// BW1W120 0075a250 BW1M100 1009d580 Villager::EnterFarming(unsigned char, unsigned char)
+// BW1W120 0075a250 BW1M119 0109f2c0
 bool32_t Villager::EnterFarming(unsigned char current_state, unsigned char previous_state)
 {
 	if (TargetThing == NULL)
@@ -143,7 +143,7 @@ bool32_t Villager::EnterFarming(unsigned char current_state, unsigned char previ
 	return true;
 }
 
-// BW1W120 0075a2a0 BW1M100 1009b430 Villager::ExitFarming(unsigned char)
+// BW1W120 0075a2a0 BW1M119 0109d250
 // TODO: deferred, two blockers. (1) IsStateExitFunctionSameAs (Living vtable slot 0x96c): same
 // cross-hierarchy bool/int mismatch already logged against VillagerScript.cpp's
 // Living::CannotExitState (target treats it as int-returning, Living.h/Villager.h declare
@@ -168,7 +168,7 @@ bool32_t Villager::ExitFarming(unsigned char state)
 	return true;
 }
 
-// BW1W120 0075a310 fn_0075A310
+// BW1W120 0075a310
 // TODO: deferred -- genuinely thiscall-shaped (ECX = list-head {Node* head; int count}, ONE
 // stack arg = int key, `ret 4`, confirmed via raw disassembly) yet has NO class-scoped C++ name
 // in symbols.txt. `extern "C"` can't reproduce it (MSVC hard-errors on explicit __thiscall for a

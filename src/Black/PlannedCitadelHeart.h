@@ -18,11 +18,11 @@ class PlannedCitadelHeart : public PlannedCitadelPart
 public:
 	// Override methods
 
-	// BW1W120 004655a0 BW1M100 101c2050 PlannedCitadelHeart::_dt(void)
+	// BW1W120 004655a0 BW1M119 011c9a10
 	virtual ~PlannedCitadelHeart();
-	// BW1W120 00468df0 BW1M100 101bbe50 PlannedCitadelHeart::CreateBuildingSite(void)
+	// BW1W120 00468df0 BW1M119 011c4100
 	virtual uint32_t CreateBuildingSite();
-	// BW1W120 00465a20 BW1M100 101bf550 PlannedCitadelHeart::CreatePlanned(float)
+	// BW1W120 00465a20 BW1M119 011c6f50
 	virtual MultiMapFixed* CreatePlanned(float param_1);
 };
 

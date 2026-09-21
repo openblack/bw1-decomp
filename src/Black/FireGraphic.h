@@ -17,7 +17,7 @@ class FireGraphic : public PSysBase
 public:
 	// Override methods
 
-	// BW1W120 00731390 BW1M100 1014b860 FireGraphic::_dt(void)
+	// BW1W120 00731390 BW1M119 01153890
 	virtual ~FireGraphic();
 };
 
@@ -26,11 +26,11 @@ class FireGraphic__SpritePos : public PSysBase
 public:
 	// Override methods
 
-	// BW1W120 00731a90 BW1M100 inlined FireGraphic::SpritePos::_dt( (void))
+	// BW1W120 00731a90 BW1M119 inlined
 	virtual ~FireGraphic__SpritePos();
-	// BW1W120 006cb040 BW1M100 inlined FireGraphic::SpritePos::Save( (GameOSFile &))
+	// BW1W120 006cb040 BW1M119 inlined
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 004664e0 BW1M100 inlined FireGraphic::SpritePos::GetSaveType( (void))
+	// BW1W120 004664e0 BW1M119 inlined
 	virtual uint32_t GetSaveType();
 };
 

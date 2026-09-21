@@ -43,23 +43,24 @@ public:
 
 	// Override methods
 
-	// BW1W120 00513860 BW1M100 102b5130 DialogBoxOptions::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00513860 BW1M119 012b8bb0
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 00513da0 BW1M100 102b50c0 DialogBoxOptions::Destroy(void)
+	// BW1W120 00513da0 BW1M119 012b8b40
 	virtual void Destroy();
-	// BW1W120 00513830 BW1M100 102b5900 DialogBoxOptions::CanESCOut(void)
+	// BW1W120 00513830 BW1M119 012b9230
 	virtual bool CanESCOut();
-	// BW1W120 00513dc0 BW1M100 102b4ff0 DialogBoxOptions::InitControls(void)
+	// BW1W120 00513dc0 BW1M119 012b8a70
 	virtual void InitControls();
 
 	// Constructors
 
-	// BW1W120 00513810 BW1M100 102b5740 DialogBoxOptions::DialogBoxOptions(void)
+	// BW1W120 00513810 BW1M119 012b91c0
 	DialogBoxOptions();
-	// BW1W120 00513850. Nonvirtual; implementation remains extracted.
+	// Nonvirtual; implementation remains extracted.
+	// BW1W120 00513850 BW1M119 012b9130
 	~DialogBoxOptions();
-	// BW1W120 005140c0 BW1M100 102b44b0
+	// BW1W120 005140c0 BW1M119 012b7c10
 	static void __stdcall ControlCallback(int event, SetupBox* box, SetupControl* control, int x, int y);
 };
 

@@ -17,15 +17,15 @@ class DefensiveSphere : public DefensiveShield
 public:
 	// Override methods
 
-	// BW1W120 006d0d00 BW1M100 10417570 DefensiveSphere::_dt(void)
+	// BW1W120 006d0d00 BW1M119 01420580
 	virtual ~DefensiveSphere();
-	// BW1W120 006d0cf0 BW1M100 10417650 DefensiveSphere::GetDebugText(void)
+	// BW1W120 006d0cf0 BW1M119 01420660
 	virtual char* GetDebugText();
-	// BW1W120 00699cd0 BW1M100 104179f0 DefensiveSphere::Load(GameOSFile &)
+	// BW1W120 00699cd0 BW1M119 01420a00
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 006d06b0 BW1M100 1047f3d0 DefensiveSphere::Save(GameOSFile &)
+	// BW1W120 006d06b0 BW1M119 01487a50
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 006d0ce0 BW1M100 10417610 DefensiveSphere::GetSaveType(void)
+	// BW1W120 006d0ce0 BW1M119 01420620
 	virtual uint32_t GetSaveType();
 };
 

@@ -20,14 +20,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 004740e0 BW1M100 101debf0 GAlignment::_dt(void)
+	// BW1W120 004740e0 BW1M119 011e63d0
 	virtual ~GAlignment();
 
 	// Non-virtual methods
 
-	// BW1W120 00414520 BW1M100 100a3e80 GAlignment::Update(Abode *, RESOURCE_TYPE, long, float)
+	// BW1W120 00414520 BW1M119 010a7210
 	void Update(Abode* abode, RESOURCE_TYPE type, int amount, float param_4);
-	// BW1W120 004146f0 BW1M100 100a33c0 GAlignment::CrudeSet(float)
+	// BW1W120 004146f0 BW1M119 010a6e70
 	void CrudeSet(float value);
 };
 

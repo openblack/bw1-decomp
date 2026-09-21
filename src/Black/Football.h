@@ -75,72 +75,72 @@ public:
 
 	// Override methods
 
-	// BW1W120 00531330 BW1M100 102b8570 Football::_dt(void)
+	// BW1W120 00531330 BW1M119 012bbf00
 	virtual ~Football();
-	// BW1W120 00531360 BW1M100 102bd250 Football::ToBeDeleted(int)
+	// BW1W120 00531360 BW1M119 012c0c20
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00532220 BW1M100 102bb880 Football::GetVillagerActivityDesire(Villager *)
+	// BW1W120 00532220 BW1M119 012bf2b0
 	virtual float GetVillagerActivityDesire(Villager* param_1);
-	// BW1W120 00532190 BW1M100 102bb9b0 Football::SetVillagerActivity(Villager *)
+	// BW1W120 00532190 BW1M119 012bf3e0
 	virtual uint32_t SetVillagerActivity(Villager* param_1);
-	// BW1W120 00531320 BW1M100 102b8870 Football::GetDebugText(void)
+	// BW1W120 00531320 BW1M119 012bc200
 	virtual char* GetDebugText();
-	// BW1W120 005336e0 BW1M100 102b89e0 Football::Load(GameOSFile &)
+	// BW1W120 005336e0 BW1M119 012bc370
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 005332a0 BW1M100 102b9230 Football::Save(GameOSFile &)
+	// BW1W120 005332a0 BW1M119 012bcc70
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00531310 BW1M100 102b8830 Football::GetSaveType(void)
+	// BW1W120 00531310 BW1M119 012bc1c0
 	virtual uint32_t GetSaveType();
-	// BW1W120 00531180 BW1M100 102bd4d0 Football::GetCreatureBeliefType(void)
+	// BW1W120 00531180 BW1M119 012c0e50
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 00531280 BW1M100 102b8610 Football::IsFootball(void)
+	// BW1W120 00531280 BW1M119 012bbfa0
 	virtual uint32_t IsFootball();
-	// BW1W120 00531e40 BW1M100 102bc020 Football::ReduceLife(float, GPlayer *)
+	// BW1W120 00531e40 BW1M119 012bfa40
 	virtual float ReduceLife(float value, GPlayer* player);
-	// BW1W120 00533e40 BW1M100 102be320 Football::Process(void)
+	// BW1W120 00533e40 BW1M119 012c1cc0
 	virtual uint32_t Process();
-	// BW1W120 00531610 BW1M100 102bccb0 Football::Draw(void)
+	// BW1W120 00531610 BW1M119 012c0660
 	virtual void Draw();
-	// BW1W120 00530f80 BW1M100 102bd510 Football::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00530f80 BW1M119 012c0e90
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 005312e0 BW1M100 102b8760 Football::Get3DType(void)
+	// BW1W120 005312e0 BW1M119 012bc0f0
 	virtual LH3DObject::ObjectType Get3DType();
-	// BW1W120 00531930 BW1M100 102bcad0 Football::InteractsWithPhysicsObjects(void)
+	// BW1W120 00531930 BW1M119 012c0490
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 005312f0 BW1M100 102b87a0 Football::CreatureMustAvoid(Creature *)
+	// BW1W120 005312f0 BW1M119 012bc130
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
-	// BW1W120 00533b30 BW1M100 inlined Football::GetDoorPos(MapCoords *)
+	// BW1W120 00533b30 BW1M119 inlined
 	virtual MapCoords* GetDoorPos(MapCoords* param_1);
-	// BW1W120 00531290 BW1M100 102b8650 Football::IsRepaired(void)
+	// BW1W120 00531290 BW1M119 012bbfe0
 	virtual bool32_t IsRepaired();
-	// BW1W120 005312b0 BW1M100 102b86c0 Football::IsBuilt(void)
+	// BW1W120 005312b0 BW1M119 012bc050
 	virtual bool32_t IsBuilt();
 
 	// Static methods
 
-	// BW1W120 005315a0 BW1M100 102bcd00 Football::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+	// BW1W120 005315a0 BW1M119 012c06b0
 	static Football* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
 	                        float food, int wood);
 
 	// Non-virtual methods
 
-	// BW1W120 00531410 BW1M100 102bd040 Football::GetBall(void)
+	// BW1W120 00531410 BW1M119 012c0a10
 	void* GetBall();
-	// BW1W120 005325d0 Football::RemoveVillagerFromTeam(Villager *)
+	// BW1W120 005325d0 BW1M119 012bebf0
 	bool32_t RemoveVillagerFromTeam(Villager* villager);
-	// BW1W120 005326e0 Football::RemoveVillagerFromMexicanWave(Villager *)
+	// BW1W120 005326e0 BW1M119 012be9e0
 	bool32_t RemoveVillagerFromMexicanWave(Villager* villager);
-	// BW1W120 00532eb0 Football::PerturbTarget(MapCoords *, Villager *)
+	// BW1W120 00532eb0 BW1M119 012bdc40
 	void PerturbTarget(MapCoords* target, Villager* player);
-	// BW1W120 00532960 BW1M100 102baa80 Football::IsPlayerOnHomeTeam(Villager *)
+	// BW1W120 00532960 BW1M119 012be4d0
 	bool32_t IsPlayerOnHomeTeam(Villager* villager);
-	// BW1W120 00532c80 BW1M100 102ba570 Football::GetGoalPosition(unsigned long)
+	// BW1W120 00532c80 BW1M119 012bdfa0
 	MapCoords GetGoalPosition(unsigned long home_team);
-	// BW1W120 005347c0 Football::GetHowCloseToBallIndex(Villager *)
+	// BW1W120 005347c0 BW1M119 012c19c0
 	int GetHowCloseToBallIndex(Villager* villager);
-	// BW1W120 00534820 Football::GetHowCloseToGoalIndex(Villager *)
+	// BW1W120 00534820 BW1M119 012c18f0
 	int GetHowCloseToGoalIndex(Villager* villager);
-	// BW1W120 00534860 Football::SetPlayState(Football::FOOTBALL_STATES)
+	// BW1W120 00534860 BW1M119 012c1840
 	void SetPlayState(FOOTBALL_STATES state);
 };
 

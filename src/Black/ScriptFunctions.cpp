@@ -510,14 +510,14 @@ ScriptFunctionEntry g_scriptFunctionTable[464] = {
 	{GScript::CurrentProfileHasCreature, 0, 1, 0, "CURRENT_PROFILE_HAS_CREATURE"},
 };
 
-// BW1W120 006f9090 BW1M100 104fe414 GScript::SetFocusLoopFn(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong)
+// BW1W120 006f9090 BW1M119 014fe420
 int GScript::SetFocusLoopFn(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t param_3)
 {
 	((Object*)thing)->SetFocus(GGame::g_game->script->FocusPos);
 	return 0;
 }
 
-// BW1W120 006f90b0 BW1M100 1002e4a0 GScript::SetFocus(void)
+// BW1W120 006f90b0 BW1M119 0102e4a0
 void GScript::SetFocus()
 {
 	ScriptDLL*         dll = g_scriptDLL;

@@ -30,10 +30,11 @@ public:
 	static LHPoint       ForceFieldPoints[];   // 00c5b130, extent unknown
 	static LH3DMaterial* ForceFieldMaterial;   // 00c5b0fc
 	// TODO: Original shared constant names/scope unrecovered; also read by GPlayer.
-	// BW1W120 009ce694 / 009ce698
+	// BW1W120 009ce694
 	static const float CitadelDistance;
+	// BW1W120 009ce698
 	static const float CitadelPitch;
-	// BW1W120 00457b60 BW1M100 101a59d0 CameraModeNew3::ZoomToCitadel(float,float,float,float,int)
+	// BW1W120 00457b60 BW1M119 011ae710
 	void ZoomToCitadel(float x, float z, float distance, float pitch, int param_5);
 	enum fight_status_t
 	{
@@ -134,43 +135,43 @@ public:
 
 	// Override methods
 
-	// BW1W120 0045a860 CameraModeNew3::CanPlayerGestureWhenCameraMoving(void)
+	// BW1W120 0045a860 BW1M119 0108c150
 	virtual bool32_t CanPlayerGestureWhenCameraMoving();
-	// BW1W120 0045a960 BW1M100 1003a4f0 CameraModeNew3::Update(void)
+	// BW1W120 0045a960 BW1M119 0103ce70
 	virtual void Update();
 
 	// Static methods
 
-	// BW1W120 00458db0 BW1M100 1007c250 CameraModeNew3::CalcPerpDistance(LHPoint &, LHPoint &, LHPoint &)
+	// BW1W120 00458db0 BW1M119 0107e7f0
 	static float CalcPerpDistance(LHPoint& param_1, LHPoint& param_2, LHPoint& param_3);
-	// BW1W120 00458f40 BW1M100 10062a70 CameraModeNew3::FindBestAngle(float, float, LHPoint &, float &, float *)
+	// BW1W120 00458f40 BW1M119 010651f0
 	static float FindBestAngle(float param_1, float param_2, float* param_3, float& param_4, float* param_5);
 
 	// Constructors
 
-	// BW1W120 004572e0 BW1M100 101a6040 CameraModeNew3::CameraModeNew3(GCamera *)
+	// BW1W120 004572e0 BW1M119 011aed60
 	CameraModeNew3(GCamera* camera);
 
 	// Non-virtual methods
 
-	// BW1W120 00459230 BW1M100 10025a60 CameraModeNew3::UpdateTricons(void)
+	// BW1W120 00459230 BW1M119 01028600
 	void UpdateTricons();
-	// BW1W120 00459610 BW1M100 101a4670 CameraModeNew3::UpdateClickParams(LHPoint &, LHPoint &, bool)
+	// BW1W120 00459610 BW1M119 011ad2e0
 	void UpdateClickParams(const LHPoint& param_1, const LHPoint& param_2, bool param_3);
-	// BW1W120 00459c30 BW1M100 10037970 CameraModeNew3::
+	// BW1W120 00459c30 BW1M119 0103a2e0
 	float GetAltitude(LHPoint* param_1);
-	// BW1W120 00459d20 BW1M100 101a4380 CameraModeNew3::SetAltitudeAndNormal(LHPoint &, LHPoint &)
+	// BW1W120 00459d20 BW1M119 011acf00
 	void SetAltitudeAndNormal(LHPoint& param_1, LHPoint& normal);
-	// BW1W120 00459f10 BW1M100 1007e670 CameraModeNew3::DragFocusOntoLand(LHPoint &, LHPoint &)
+	// BW1W120 00459f10 BW1M119 01080b40
 	void DragFocusOntoLand(LHPoint& param_1, LHPoint& param_2);
-	// BW1W120 0045a080 BW1M100 101a3db0 CameraModeNew3::UpdateStrafe(LHPoint &, LHPoint &, float &, float &, float, unsigned long)
+	// BW1W120 0045a080 BW1M119 011aca20
 	bool UpdateStrafe(LHPoint& param_1, LHPoint& param_2, float& param_3, float& param_4, float param_5,
 	                  uint32_t param_6);
-	// BW1W120 0045a390 BW1M100 100098e0 CameraModeNew3::WantToQuitFight(LHPoint, LHPoint, float)
+	// BW1W120 0045a390 BW1M119 0100b400
 	bool WantToQuitFight(LHPoint param_1, LHPoint param_2, float param_3);
-	// BW1W120 0045a4d0 BW1M100 101a3910 CameraModeNew3::StartFight(GArena *)
+	// BW1W120 0045a4d0 BW1M119 011ac4f0
 	void StartFight(GArena* arena);
-	// BW1W120 0045a830 BW1M100 inlined CameraModeNew3::EndFightNow(int)
+	// BW1W120 0045a830 BW1M119 inlined
 	void EndFightNow(int param_1);
 };
 

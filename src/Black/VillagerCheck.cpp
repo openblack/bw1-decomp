@@ -13,19 +13,19 @@
 #include "Tree.h"
 #include "VillagerInfo.h"
 
-// BW1W120 00756d30 BW1M100 10573250 Villager::InteractDecideWhatToDoForOtherVillager(void)
+// BW1W120 00756d30 BW1M119 0157b5f0
 uint32_t Villager::InteractDecideWhatToDoForOtherVillager()
 {
 	return 0;
 }
 
-// BW1W120 00756e10 BW1M100 105731e0 Villager::InteractDecideWhatToDo(void)
+// BW1W120 00756e10 BW1M119 0157b580
 uint32_t Villager::InteractDecideWhatToDo()
 {
 	return DecideWhatToDo();
 }
 
-// BW1W120 00757180 BW1M100 10572de0 Villager::CheckMoveHouse(Object *)
+// BW1W120 00757180 BW1M119 0157b170
 bool32_t Villager::CheckMoveHouse(Object* object)
 {
 	Abode* abode = dynamic_cast<Abode*>(object);
@@ -48,7 +48,7 @@ bool32_t Villager::CheckMoveHouse(Object* object)
 	return false;
 }
 
-// BW1W120 00757210 BW1M100 10572cf0 Villager::CheckMoveIntoTown(Town &)
+// BW1W120 00757210 BW1M119 0157b080
 bool32_t Villager::CheckMoveIntoTown(Town& target_town)
 {
 	// TODO: ~6% (diff-alignment artifact) — tail-duplication-asymmetry (OPEN). Logic verified
@@ -75,19 +75,19 @@ bool32_t Villager::CheckMoveIntoTown(Town& target_town)
 	return true;
 }
 
-// BW1W120 00757260 BW1M100 10572cb0 Villager::CheckInteractWithAnimal(void)
+// BW1W120 00757260 BW1M119 0157b040
 bool32_t Villager::CheckInteractWithAnimal()
 {
 	return false;
 }
 
-// BW1W120 00757270 BW1M100 105729e0 Villager::CheckInteractWithWorshipSite(void)
+// BW1W120 00757270 BW1M119 0157ad60
 bool32_t Villager::CheckInteractWithWorshipSite()
 {
 	return false;
 }
 
-// BW1W120 00757420 BW1M100 10572700 Villager::CheckInteractWithAbode(void)
+// BW1W120 00757420 BW1M119 0157aa80
 bool32_t Villager::CheckInteractWithAbode()
 {
 	MultiMapFixed* mmf = dynamic_cast<MultiMapFixed*>((Object*)TargetThing);
@@ -124,7 +124,7 @@ bool32_t Villager::CheckInteractWithAbode()
 	return false;
 }
 
-// BW1W120 00757590 BW1M100 105725c0 Villager::CheckInteractWithField(void)
+// BW1W120 00757590 BW1M119 0157a940
 bool32_t Villager::CheckInteractWithField()
 {
 	Field* field = dynamic_cast<Field*>((Object*)TargetThing);
@@ -140,7 +140,7 @@ bool32_t Villager::CheckInteractWithField()
 	return false;
 }
 
-// BW1W120 00757610 BW1M100 10572480 Villager::CheckInteractWithFishFarm(void)
+// BW1W120 00757610 BW1M119 0157a800
 bool32_t Villager::CheckInteractWithFishFarm()
 {
 	FishFarm* fishFarm = dynamic_cast<FishFarm*>((Object*)TargetThing);
@@ -156,7 +156,7 @@ bool32_t Villager::CheckInteractWithFishFarm()
 	return false;
 }
 
-// BW1W120 00757690 BW1M100 10572350 Villager::CheckInteractWithTree(void)
+// BW1W120 00757690 BW1M119 0157a6d0
 bool32_t Villager::CheckInteractWithTree()
 {
 	Tree* tree = dynamic_cast<Tree*>((Object*)TargetThing);
@@ -171,31 +171,31 @@ bool32_t Villager::CheckInteractWithTree()
 	return true;
 }
 
-// BW1W120 00757720 BW1M100 10572310 Villager::CheckInteractWithBall(void)
+// BW1W120 00757720 BW1M119 0157a690
 bool32_t Villager::CheckInteractWithBall()
 {
 	return false;
 }
 
-// BW1W120 00757730 BW1M100 105722d0 Villager::CheckInteractWithPot(void)
+// BW1W120 00757730 BW1M119 0157a650
 bool32_t Villager::CheckInteractWithPot()
 {
 	return true;
 }
 
-// BW1W120 00757740 BW1M100 10572290 Villager::CheckInteractWithRock(void)
+// BW1W120 00757740 BW1M119 0157a610
 bool32_t Villager::CheckInteractWithRock()
 {
 	return true;
 }
 
-// BW1W120 00757750 BW1M100 10572240 Villager::CheckInteractWithFootBall(void)
+// BW1W120 00757750 BW1M119 0157a5c0
 bool32_t Villager::CheckInteractWithFootBall()
 {
 	return false;
 }
 
-// BW1W120 00757760 BW1M100 105720a0 Villager::CheckInteractWithVillager(void)
+// BW1W120 00757760 BW1M119 0157a420
 bool32_t Villager::CheckInteractWithVillager()
 {
 	Villager* other = dynamic_cast<Villager*>((Object*)TargetThing);
@@ -215,7 +215,7 @@ bool32_t Villager::CheckInteractWithVillager()
 	return false;
 }
 
-// BW1W120 00757820 BW1M100 10572010 Villager::SetDiscipleFollower(VILLAGER_DISCIPLE)
+// BW1W120 00757820 BW1M119 0157a390
 void Villager::SetDiscipleFollower(VILLAGER_DISCIPLE disciple_type)
 {
 	Flags |= 0x400;
@@ -223,7 +223,7 @@ void Villager::SetDiscipleFollower(VILLAGER_DISCIPLE disciple_type)
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 }
 
-// BW1W120 00757850 BW1M100 10571fc0 Villager::CheckInteractWithMagicLiving(void)
+// BW1W120 00757850 BW1M119 0157a340
 bool32_t Villager::CheckInteractWithMagicLiving()
 {
 	return false;

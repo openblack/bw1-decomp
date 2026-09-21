@@ -21,7 +21,7 @@ struct LHLinkedNode
 	LHSegmentDesc* desc;
 };
 
-// BW1W120 007bd350 LHSegmentDesc::LHSegmentDesc(char *, int, int)
+// BW1W120 007bd350 BW1M119 0116ac80 (LHCombined Release)
 LHSegmentDesc::LHSegmentDesc(char* name, int size, int offset)
 {
 	memset(this, 0, 0x21);
@@ -30,7 +30,7 @@ LHSegmentDesc::LHSegmentDesc(char* name, int size, int offset)
 	this->offset = offset;
 }
 
-// BW1W120 007bd390 LHFile::SetName(char const *)
+// BW1W120 007bd390 BW1M119 0116aba0 (LHCombined Release)
 uint32_t LHFile::SetName(const char* name)
 {
 	if (opened)
@@ -45,7 +45,7 @@ uint32_t LHFile::SetName(const char* name)
 	return 0;
 }
 
-// BW1W120 007bd420 LHFile::GetSegmentDataInChunks(char *, char *, unsigned int, unsigned int, void (*)(void), int)
+// BW1W120 007bd420 BW1M119 0116aaa0 (LHCombined Release)
 uint32_t LHFile::GetSegmentDataInChunks(char* segment_name, char* data, uint32_t total_size, uint32_t chunk_size,
                                         void (*callback)(void), int offset)
 {
@@ -65,7 +65,7 @@ uint32_t LHFile::GetSegmentDataInChunks(char* segment_name, char* data, uint32_t
 	return 0;
 }
 
-// BW1W120 007bd490 LHFile::GetSegmentData(char *, void *, unsigned int, int)
+// BW1W120 007bd490
 uint32_t LHFile::GetSegmentData(char* segment_name, void* data, uint32_t data_size, int offset)
 {
 	if (!opened)
@@ -79,7 +79,7 @@ uint32_t LHFile::GetSegmentData(char* segment_name, void* data, uint32_t data_si
 	return CloseSegment() != 0 ? 3 : 0;
 }
 
-// BW1W120 007bd500 LHFile::Open(LH_FILE_MODE)
+// BW1W120 007bd500 BW1M119 0116a3b0 (LHCombined Release)
 uint32_t LHFile::Open(LH_FILE_MODE mode)
 {
 	DWORD    creation_disposition;
@@ -143,7 +143,7 @@ uint32_t LHFile::Open(LH_FILE_MODE mode)
 	return 0;
 }
 
-// BW1W120 007bd730 LHReleasedFile::Open(LH_FILE_MODE)
+// BW1W120 007bd730 BW1M119 0116a290 (LHCombined Release)
 uint32_t LHReleasedFile::Open(LH_FILE_MODE mode)
 {
 	char v4[256];
@@ -162,7 +162,7 @@ uint32_t LHReleasedFile::Open(LH_FILE_MODE mode)
 	return result;
 }
 
-// BW1W120 007bd7d0 LHFile::VerifyFile(void)
+// BW1W120 007bd7d0 BW1M119 01169eb0 (LHCombined Release)
 uint32_t LHFile::VerifyFile()
 {
 	char Buffer[36];
@@ -219,7 +219,7 @@ uint32_t LHFile::VerifyFile()
 	return 0;
 }
 
-// BW1W120 007bd930 LHFile::GetNextSegment(LHSegment *, int)
+// BW1W120 007bd930 BW1M119 01169d40 (LHCombined Release)
 uint32_t LHFile::GetNextSegment(LHSegment* segment, int allocate_memory)
 {
 	char Buffer[36];
@@ -237,7 +237,7 @@ uint32_t LHFile::GetNextSegment(LHSegment* segment, int allocate_memory)
 	return GetSegment(Buffer, segment, allocate_memory);
 }
 
-// BW1W120 007bd9d0 LHFile::AllocSegDataMem(LHSegment *)
+// BW1W120 007bd9d0 BW1M119 01169c50 (LHCombined Release)
 uint32_t LHFile::AllocSegDataMem(LHSegment* segment)
 {
 	if (segment->size >= 0x4C4B400)
@@ -250,14 +250,14 @@ uint32_t LHFile::AllocSegDataMem(LHSegment* segment)
 	return 0;
 }
 
-// BW1W120 007bda20 LHFile::~LHFile(void)
+// BW1W120 007bda20 BW1M119 01169bc0 (LHCombined Release)
 LHFile::~LHFile()
 {
 	free(file_name);
 	Close();
 }
 
-// BW1W120 007bda70 LHFile::FreeLastSeg(void)
+// BW1W120 007bda70 BW1M119 01169b50 (LHCombined Release)
 void LHFile::FreeLastSeg()
 {
 	if (field_0x3c)
@@ -267,7 +267,7 @@ void LHFile::FreeLastSeg()
 	}
 }
 
-// BW1W120 007bda90 LHFile::WriteSegment(char *)
+// BW1W120 007bda90 BW1M119 01169a50 (LHCombined Release)
 uint32_t LHFile::WriteSegment(char* segment)
 {
 	if (!opened)
@@ -283,7 +283,7 @@ uint32_t LHFile::WriteSegment(char* segment)
 	return CloseSegment() != 0 ? 3 : 0;
 }
 
-// BW1W120 007bdb20 LHFile::WriteSegmentHeader(char *)
+// BW1W120 007bdb20 BW1M119 01169810 (LHCombined Release)
 uint32_t LHFile::WriteSegmentHeader(char* segment_name)
 {
 	uint32_t v3[2];
@@ -310,7 +310,7 @@ fail:
 	return 3;
 }
 
-// BW1W120 007bdbc0 LHFile::Close(void)
+// BW1W120 007bdbc0 BW1M119 011695e0 (LHCombined Release)
 uint32_t LHFile::Close()
 {
 	if (!opened)
@@ -358,7 +358,7 @@ uint32_t LHFile::Close()
 	return 0;
 }
 
-// BW1W120 007bdc60 LHFile::Lookup(char *)
+// BW1W120 007bdc60 BW1M119 01005200 (LHCombined Release)
 LHSegmentDesc* LHFile::Lookup(char* segment_name)
 {
 	LHLinkedNode* v2;
@@ -370,7 +370,7 @@ LHSegmentDesc* LHFile::Lookup(char* segment_name)
 	return v2 ? v2->desc : 0;
 }
 
-// BW1W120 007bdcd0 LHFile::SetLHFilePointer(char *, long)
+// BW1W120 007bdcd0 BW1M119 010050d0 (LHCombined Release)
 uint32_t LHFile::SetLHFilePointer(char* segment_name, int offset)
 {
 	int   v4 = 0;
@@ -399,7 +399,7 @@ ok:
 	return 0;
 }
 
-// BW1W120 007bddd0 LHFile::GetSegment(char *, LHSegment *, int)
+// BW1W120 007bddd0 BW1M119 01168df0 (LHCombined Release)
 uint32_t LHFile::GetSegment(char* segment, LHSegment* dataOut, int bAllocMemory)
 {
 	if (!opened)
@@ -428,7 +428,7 @@ uint32_t LHFile::GetSegment(char* segment, LHSegment* dataOut, int bAllocMemory)
 	return ReadData(dataOut->buffer, segmentLocation->offset);
 }
 
-// BW1W120 007bdec0 LHFile::OpenSegment(char *)
+// BW1W120 007bdec0 BW1M119 01004fd0 (LHCombined Release)
 uint32_t LHFile::OpenSegment(char* name)
 {
 	if (!opened)
@@ -452,7 +452,7 @@ uint32_t LHFile::OpenSegment(char* name)
 	return WriteSegmentHeader(name);
 }
 
-// BW1W120 007bdf50 LHFile::CloseSegment(void)
+// BW1W120 007bdf50 BW1M119 01004d80 (LHCombined Release)
 uint32_t LHFile::CloseSegment()
 {
 	if (SegmentOpened)
@@ -473,7 +473,7 @@ uint32_t LHFile::CloseSegment()
 	return 0;
 }
 
-// BW1W120 007bdfc0 LHFile::WriteSegmentData(void const *, unsigned int)
+// BW1W120 007bdfc0 BW1M119 01168460 (LHCombined Release)
 uint32_t LHFile::WriteSegmentData(const void* data, uint32_t length)
 {
 	if (!SegmentOpened)
@@ -485,7 +485,7 @@ uint32_t LHFile::WriteSegmentData(const void* data, uint32_t length)
 	return 0;
 }
 
-// BW1W120 007be040 LHFile::GetSegmentData(void *, unsigned int, int)
+// BW1W120 007be040
 uint32_t LHFile::GetSegmentData(void* data, uint32_t data_size, int offset)
 {
 	if (!SegmentOpened)
@@ -495,7 +495,7 @@ uint32_t LHFile::GetSegmentData(void* data, uint32_t data_size, int offset)
 	return 3;
 }
 
-// BW1W120 007be090 LHFile::WriteData(void const *, unsigned int)
+// BW1W120 007be090 BW1M119 01168120 (LHCombined Release)
 uint32_t LHFile::WriteData(const void* lpBuffer, uint32_t nNumberOfBytesToWrite)
 {
 	if (!opened)
@@ -518,7 +518,7 @@ uint32_t LHFile::WriteData(const void* lpBuffer, uint32_t nNumberOfBytesToWrite)
 	return 0;
 }
 
-// BW1W120 007be120 LHFile::ReadData(void *, unsigned int)
+// BW1W120 007be120 BW1M119 01004c80 (LHCombined Release)
 uint32_t LHFile::ReadData(void* lpBuffer, uint32_t nNumberOfBytesToRead)
 {
 	if (!opened)
@@ -542,7 +542,7 @@ uint32_t LHFile::ReadData(void* lpBuffer, uint32_t nNumberOfBytesToRead)
 	return 0;
 }
 
-// BW1W120 007be1b0 LHFile::SetFileFunctions(void *, void *, void *, void *)
+// BW1W120 007be1b0 BW1M119 01167ad0 (LHCombined Release)
 uint32_t LHFile::SetFileFunctions(void* read_function, void* write_function, void* set_file_pointer_function,
                                   void* user_data)
 {
@@ -561,7 +561,7 @@ uint32_t LHFile::SetFileFunctions(void* read_function, void* write_function, voi
 	return result;
 }
 
-// BW1W120 007be1f0 LHFile::TruncateFromSegment(char const *)
+// BW1W120 007be1f0 BW1M119 011679c0 (LHCombined Release)
 uint32_t LHFile::TruncateFromSegment(const char* segment_name)
 {
 	if (opened)
@@ -579,5 +579,5 @@ uint32_t LHFile::TruncateFromSegment(const char* segment_name)
 	return 0;
 }
 
-// BW1W120 LHFile::FlushCache(void)
+// BW1W120 inlined
 void LHFile::FlushCache() {}

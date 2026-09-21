@@ -17,15 +17,15 @@ class DefensiveShield : public PSysBase
 public:
 	// Override methods
 
-	// BW1W120 006d0ad0 BW1M100 1041dc60 DefensiveShield::_dt(void)
+	// BW1W120 006d0ad0 BW1M119 01426c60
 	virtual ~DefensiveShield();
-	// BW1W120 006d0ac0 BW1M100 1041dc20 DefensiveShield::GetDebugText(void)
+	// BW1W120 006d0ac0 BW1M119 01426c20
 	virtual char* GetDebugText();
-	// BW1W120 00699ca0 BW1M100 10417a80 DefensiveShield::Load(GameOSFile &)
+	// BW1W120 00699ca0 BW1M119 01420a90
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 006d0680 BW1M100 1047f460 DefensiveShield::Save(GameOSFile &)
+	// BW1W120 006d0680 BW1M119 01487ae0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 006d0ab0 BW1M100 1041dbe0 DefensiveShield::GetSaveType(void)
+	// BW1W120 006d0ab0 BW1M119 01426be0
 	virtual uint32_t GetSaveType();
 };
 

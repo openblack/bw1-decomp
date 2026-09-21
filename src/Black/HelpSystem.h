@@ -250,7 +250,7 @@ class HelpSpirit;
 class HelpSystem : public Base
 {
 public:
-	// BW1W120 005c5710 BW1M100 10351380 HelpSystem::Create(void)
+	// BW1W120 005c5710 BW1M119 01359b70
 	static HelpSystem* Create();
 	HelpSpirit*        SpiritType2; /* 0x8 */
 	HelpSpirit*        SpiritType1;
@@ -318,57 +318,57 @@ public:
 
 	// Override methods
 
-	// BW1W120 005c5430 BW1M100 10351450 HelpSystem::_dt(void)
+	// BW1W120 005c5430 BW1M119 01359c40
 	virtual ~HelpSystem();
 
 	// Constructors
 
-	// BW1W120 005c5410 BW1M100 103519a0 HelpSystem::HelpSystem(void)
+	// BW1W120 005c5410 BW1M119 0135a190
 	HelpSystem();
 
 	// Non-virtual methods
 
-	// BW1W120 005c8fe0 BW1M100 1007d4f0 HelpSystem::Process(void)
+	// BW1W120 005c8fe0 BW1M119 0107fa70
 	void Process();
-	// BW1W120 005c6eb0 BW1M100 1034dd60 HelpSystem::Save(GameOSFile &)
+	// BW1W120 005c6eb0 BW1M119 013564b0
 	uint32_t Save(GameOSFile& file);
-	// BW1W120 005c73e0 BW1M100 1034cf90 HelpSystem::Load(GameOSFile &)
+	// BW1W120 005c73e0 BW1M119 01355620
 	uint32_t Load(GameOSFile& file);
-	// BW1W120 005c78b0 BW1M100 1034cf40 HelpSystem::ResolveLoad(void)
+	// BW1W120 005c78b0 BW1M119 013555d0
 	void ResolveLoad();
 
-	// BW1W120 005c5460 BW1M100 103518b0 HelpSystem::SetToZero(void)
+	// BW1W120 005c5460 BW1M119 0135a0a0
 	void SetToZero();
-	// BW1W120 005c54e0 BW1M100 103517f0 HelpSystem::ClearTextDisplayed(void)
+	// BW1W120 005c54e0 BW1M119 01359fe0
 	void ClearTextDisplayed();
-	// BW1W120 005c5550 BW1M100 10351760 HelpSystem::ClearAllText(void)
+	// BW1W120 005c5550 BW1M119 01359f50
 	void ClearAllText();
-	// BW1W120 005c5580 BW1M100 10351660 HelpSystem::Reset(void)
+	// BW1W120 005c5580 BW1M119 01359e50
 	void Reset();
-	// BW1W120 005c5610 BW1M100 103515b0 HelpSystem::ResetIcons(void)
+	// BW1W120 005c5610 BW1M119 01359da0
 	void ResetIcons();
-	// BW1W120 005c5eb0 BW1M100 10091a40 HelpSystem::PostDrawProcess(void)
+	// BW1W120 005c5eb0 BW1M119 01093c60
 	void PostDrawProcess();
 	void Draw3D(); // 005c59a0
-	// BW1W120 005c67e0 BW1M100 1034f730 HelpSystem::ClearDialogueControl(void)
+	// BW1W120 005c67e0 BW1M119 01357fe0
 	void ClearDialogueControl();
-	// BW1W120 005c6ad0 BW1M100 1034f2c0 HelpSystem::SetWideScreen(int, ulong)
+	// BW1W120 005c6ad0 BW1M119 01357c40
 	void SetWideScreen(int param_2, uint32_t param_3);
-	// BW1W120 005c6b60 BW1M100 1001d4b0 HelpSystem::GetWideScreenPercentage(void) const
+	// BW1W120 005c6b60 BW1M119 01020020
 	float GetWideScreenPercentage() const;
-	// BW1W120 005c8280 BW1M100 10351b90 HelpSystem::TriggerCategory(HELP_SET_CATEGORY)
+	// BW1W120 005c8280 BW1M119 0135a370
 	void TriggerCategory(HELP_SET_CATEGORY param_1);
-	// BW1W120 005c8b80 BW1M100 10353090 HelpSystem::RunMessageSet(HELP_SYSTEM_MESSAGE_SET, GameThingWithPos *)
+	// BW1W120 005c8b80 BW1M119 0135b8c0
 	uint32_t RunMessageSet(HELP_SYSTEM_MESSAGE_SET param_1, GameThingWithPos* param_2);
-	// BW1W120 005c8c40 BW1M100 10352f40 HelpSystem::StopHelpScriptsForNewHelp(void)
+	// BW1W120 005c8c40 BW1M119 0135b770
 	uint32_t StopHelpScriptsForNewHelp();
-	// BW1W120 005c8c80 BW1M100 10352ee0 HelpSystem::StopRunningScripts(void)
+	// BW1W120 005c8c80 BW1M119 0135b710
 	uint32_t StopRunningScripts();
-	// BW1W120 005c8ce0 BW1M100 10352cf0 HelpSystem::RunMessage(unsigned long, unsigned long, char *)
+	// BW1W120 005c8ce0 BW1M119 0135b520
 	uint32_t RunMessage(unsigned long param_1, unsigned long param_2, char* param_3);
-	// BW1W120 005c94a0 BW1M100 10353ce0 HelpSystem::GetHelpQueryOnGameThingWithPos(GameThingWithPos *)
+	// BW1W120 005c94a0 BW1M119 0135c210
 	void GetHelpQueryOnGameThingWithPos(GameThingWithPos* param_1);
-	// BW1W120 005c98e0 BW1M100 10353970 HelpSystem::HelpQuery(void)
+	// BW1W120 005c98e0 BW1M119 0135bea0
 	void HelpQuery();
 };
 

@@ -46,24 +46,27 @@ struct FrontEnd
 	static bool CursorOn;
 	// BW1W120 00cd065c
 	static MainMenu* MainMenuDialog;
-	// BW1W120 00cd06e8. TODO: Original name unknown; created by JustDoABox.
+	// TODO: Original name unknown; created by JustDoABox.
+	// BW1W120 00cd06e8
 	static Plasma* Dat_00CD06E8;
-	// BW1W120 00cd0b03. Cleared by MainMenu's close callback.
+	// Cleared by MainMenu's close callback.
+	// BW1W120 00cd0b03
 	static bool StartupMenuActive;
-	// BW1W120 00cd3a18. Original array extent is not established; extracted storage only.
+	// Original array extent is not established; extracted storage only.
+	// BW1W120 00cd3a18
 	static char16_t PreviousProfile[];
 
 	// Static methods
 
-	// BW1W120 0053b4d0 BW1M100 105c4d10 FrontEnd::Init(void)
+	// BW1W120 0053b4d0 BW1M119 015cba60
 	static void Init();
-	// BW1W120 0053c450 BW1M100 105c47d0 FrontEnd::SetCursorOn(void)
+	// BW1W120 0053c450 BW1M119 015cb4f0
 	static void SetCursorOn();
-	// BW1W120 00544f90 BW1M100 105b9c50 FrontEnd::JustDoABox(DialogBoxBase *)
+	// BW1W120 00544f90 BW1M119 015c0ab0
 	static void JustDoABox(DialogBoxBase* box);
-	// BW1W120 0053ce70 BW1M100 105c3cf0 FrontEnd::JustDoNewProfileBox(void)
+	// BW1W120 0053ce70 BW1M119 015caa70
 	void JustDoNewProfileBox();
-	// BW1W120 00544f80 BW1M100 105ba050 FrontEnd::JustDoSkirmishGameBox(void)
+	// BW1W120 00544f80 BW1M119 015c0eb0
 	static void JustDoSkirmishGameBox();
 };
 

@@ -21,7 +21,7 @@ public:
 	// Original GetSuperPacketGameTurn at 10003170 reads this signed long.
 	long SuperPacketGameTurn; /* 0xac */
 
-	// BW1W120 1001dab0 BW1M100 10036a3c LHSession::IsSinglePlayer(void)
+	// BW1W120 1001dab0 BW1M119 0101f490 (LHCombined Release)
 	LH_MULTIPLAYER_API int IsSinglePlayer();
 	// BW1W120 1001e5e0
 	LH_MULTIPLAYER_API int NextPacketIsSuperpacket();
@@ -29,11 +29,14 @@ public:
 	LH_MULTIPLAYER_API void SetupGamePlayerInfo();
 	// BW1W120 1001e170
 	LH_MULTIPLAYER_API LH_RETURN SyncAllAndStartSession(unsigned long timeout);
-	// BW1W120 import 008a9484
+	// IAT 008a9484.
+	// BW1W120 1001cc50
 	LH_MULTIPLAYER_API LH_RETURN Write(void* packet, unsigned long length);
-	// BW1W120 1001e2b0, import 008a945c
+	// IAT 008a945c.
+	// BW1W120 1001e2b0
 	LH_MULTIPLAYER_API LH_RETURN SetIdlePeriod(unsigned long period);
-	// BW1W120 1001e6b0, import 008a9460
+	// IAT 008a9460.
+	// BW1W120 1001e6b0
 	LH_MULTIPLAYER_API void EmptyEventQ();
 };
 

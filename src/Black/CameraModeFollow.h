@@ -28,12 +28,12 @@ public:
 
 	// Constructors
 
-	// BW1W120 0044b800 BW1M100 101a00c0 CameraModeFollow::CameraModeFollow(GCamera *, GameThingWithPos *, float, int, int)
+	// BW1W120 0044b800 BW1M119 011a9210
 	CameraModeFollow(GCamera* camera, GameThingWithPos* target, float param_3, int param_4, int param_5);
 
 	// Non-virtual methods
 
-	// BW1W120 0044ba00 BW1M100 1019ff80 CameraModeFollow::Set(GameThingWithPos *)
+	// BW1W120 0044ba00 BW1M119 011a90d0
 	void Set(GameThingWithPos* target);
 };
 

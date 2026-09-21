@@ -18,12 +18,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 005b02f0 BW1M100 10336de0 HandStateCamera::Enter(void)
+	// BW1W120 005b02f0 BW1M119 0133f280
 	virtual void Enter();
 
 	// Constructors
 
-	// BW1W120 005b02b0 BW1M100 10336ec0 HandStateCamera::HandStateCamera(CHand*)
+	// BW1W120 005b02b0 BW1M119 0133f360
 	HandStateCamera(CHand* hand);
 };
 

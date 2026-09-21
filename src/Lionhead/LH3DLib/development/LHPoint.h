@@ -11,42 +11,42 @@ struct Point2D
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined Point2D::Point2D(float, float)
+	// BW1W120 inlined BW1M119 inlined
 	Point2D(float x, float y) : x(x), y(y) {}
-	// BW1W120 inlined BW1M100 inlined Point2D::Point2D(long, long)
+	// BW1W120 inlined BW1M119 inlined
 	Point2D(int x, int y);
 
 	// Non-virtual methods
 
-	// BW1W120 00468480 BW1M100 100a8d60 Point2D::operator=(const Point2D&)
+	// BW1W120 00468480 BW1M119 010eb7d0
 	Point2D& operator=(const Point2D& other);
-	// BW1W120 00611170 BW1M100 inlined Point2D::DotProduct(Point2D&)
+	// BW1W120 00611170 BW1M119 inlined
 	float DotProduct(const Point2D& other);
-	// BW1W120 00611310 BW1M100 inlined Point2D::DotProduct(Point2D*)
+	// BW1W120 00611310 BW1M119 inlined
 	float DotProduct(const Point2D* other) const;
-	// BW1W120 00611190 BW1M100 10033740 Point2D::operator*(float) const
+	// BW1W120 00611190 BW1M119 010621c0
 	Point2D& operator*(float rhs) const;
-	// BW1W120 inlined BW1M100 100a9540 Point2D::operator+( const(Point2D const &))
+	// BW1W120 inlined BW1M119 010f29a0
 	Point2D& operator+(const Point2D& rhs) const;
-	// BW1W120 inlined BW1M100 inlined Point2D::operator+=(Point2D const &)
+	// BW1W120 inlined BW1M119 inlined
 	Point2D& operator+=(const Point2D& other);
-	// BW1W120 inlined BW1M100 10088c10 Point2D::operator-( const(Point2D const &))
+	// BW1W120 inlined BW1M119 010eb710
 	Point2D& operator-(const Point2D& rhs) const;
-	// BW1W120 inlined BW1M100 inlined Point2D::operator-=(Point2D const &)
+	// BW1W120 inlined BW1M119 inlined
 	Point2D& operator-=(const Point2D& other);
-	// BW1W120 00611240 BW1M100 inlined Point2D::Cross(const Point2D&) const
+	// BW1W120 00611240 BW1M119 inlined
 	float Cross(const Point2D& other) const;
-	// BW1W120 00611330 BW1M100 100e7550 Point2D::Normalize(void)
+	// BW1W120 00611330 BW1M119 010eb640
 	float Normalize();
-	// BW1W120 006115f0 BW1M100 1005ba40 Point2D::GetNormSq(void) const
+	// BW1W120 006115f0 BW1M119 0105e6f0
 	float GetNormSq() const;
-	// BW1W120 006159c0 BW1M100 inlined Point2D::operator==(const Point2D&)
+	// BW1W120 006159c0 BW1M119 inlined
 	bool operator==(const Point2D& other);
-	// BW1W120 0086fd00 BW1M100 10089260 Point2D::GetHeading(void) const
+	// BW1W120 0086fd00 BW1M119 01086c70 (LHCombined Release)
 	float GetHeading() const;
-	// BW1W120 0086fd70 BW1M100 10089100 Point2D::SetSize(float)
+	// BW1W120 0086fd70 BW1M119 01086b10 (LHCombined Release)
 	void SetSize(float size);
-	// BW1W120 0086fdc0 BW1M100 10089000 Point2D::GetRange(Point2D const &) const
+	// BW1W120 0086fdc0 BW1M119 01086a00 (LHCombined Release)
 	float GetRange(const Point2D& param_1) const;
 };
 
@@ -58,16 +58,16 @@ struct LHPoint
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined LHPoint::LHPoint(void)
+	// BW1W120 inlined BW1M119 inlined
 	LHPoint() {}
-	// BW1W120 00442700 BW1M100 1004a260 LHPoint::LHPoint(float, float, float)
+	// BW1W120 00442700 BW1M119 0104cc10
 	LHPoint(float x, float y, float z) : x(x), y(y), z(z) {}
-	// BW1W120 0044cfc0 BW1M100 1003a450 LHPoint::LHPoint(const LHPoint&)
+	// BW1W120 0044cfc0 BW1M119 0103cdd0
 	LHPoint(LHPoint* other);
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 inlined LHPoint::operator*=(float)
+	// BW1W120 inlined BW1M119 inlined
 	LHPoint& operator*=(float rhs)
 	{
 		x *= rhs;
@@ -75,28 +75,28 @@ struct LHPoint
 		z *= rhs;
 		return *this;
 	}
-	// BW1W120 inlined BW1M100 inlined LHPoint::operator+(LHPoint const &) const
+	// BW1W120 inlined BW1M119 inlined
 	LHPoint operator+(const LHPoint& rhs) const { return LHPoint(x + rhs.x, y + rhs.y, z + rhs.z); }
-	// BW1W120 inlined BW1M100 100413c0 LHPoint::operator-(LHPoint const &) const
+	// BW1W120 inlined BW1M119 01043e00
 	LHPoint operator-(const LHPoint& rhs) const { return LHPoint(x - rhs.x, y - rhs.y, z - rhs.z); }
-	// BW1W120 inlined BW1M100 inlined LHPoint::DotProductInline(LHPoint const &) const
+	// BW1W120 inlined BW1M119 inlined
 	float DotProductInline(const LHPoint& other) const { return z * other.z + y * other.y + x * other.x; }
-	// BW1W120 inlined BW1M100 inlined LHPoint::GetNormSq(void) const
+	// BW1W120 inlined BW1M119 inlined
 	float GetNormSq() const { return sqrt(GetNorm()); }
-	// BW1W120 inlined BW1M100 inlined LHPoint::GetNorm(void) const
+	// BW1W120 inlined BW1M119 inlined
 	float GetNorm() const { return DotProductInline(*this); }
-	// BW1W120 004a1ba0 BW1M100 10005db0 LHPoint::GetNorme(void)
+	// BW1W120 004a1ba0 BW1M119 01005cc0
 	float GetNorme();
-	// BW1W120 inlined BW1M100 inlined LHPoint::SetNull(void)
+	// BW1W120 inlined BW1M119 inlined
 	void SetNull()
 	{
 		z = 0.0f;
 		y = 0.0f;
 		x = 0.0f;
 	}
-	// BW1W120 0054e910 BW1M100 10037ce0 LHPoint::FastNormalize(void)
+	// BW1W120 0054e910 BW1M119 01084bc0
 	void FastNormalize();
-	// BW1W120 inline BW1M100 inline LHPoint::FastNormalizeInline(void)
+	// BW1W120 inline BW1M119 inline
 	void FastNormalizeInline()
 	{
 		if (x != 0.0f || y != 0.0f || z != 0.0f)

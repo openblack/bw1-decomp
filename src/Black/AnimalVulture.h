@@ -18,13 +18,13 @@ class Vulture : public Dove
 public:
 	// Override methods
 
-	// BW1W120 0041f0e0 BW1M100 10171370 Vulture::_dt(void)
+	// BW1W120 0041f0e0 BW1M119 0117a390
 	virtual ~Vulture();
-	// BW1W120 0041f0c0 BW1M100 10171440 Vulture::GetDebugText(void)
+	// BW1W120 0041f0c0 BW1M119 0117a460
 	virtual char* GetDebugText();
-	// BW1W120 0041f0b0 BW1M100 10171400 Vulture::GetSaveType(void)
+	// BW1W120 0041f0b0 BW1M119 0117a420
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041f0d0 BW1M100 10171480 Vulture::CanBeFrighteningToCreature(Creature *)
+	// BW1W120 0041f0d0 BW1M119 0117a4a0
 	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
 };
 

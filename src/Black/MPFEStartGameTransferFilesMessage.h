@@ -10,7 +10,7 @@ class MPFEStartGameTransferFilesMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00630050 BW1M100 103a6e30 MPFEStartGameTransferFilesMessage::_dt(void)
+	// BW1W120 00630050 BW1M119 013aec30
 	virtual ~MPFEStartGameTransferFilesMessage();
 };
 

@@ -91,9 +91,10 @@ public:
 	}
 
 	int AddToEnd(T val);
-	// BW1M100 10251ef0 for CreatureBelief*: returns the matching node, not its payload.
+	// Returns the matching node, not its payload (BW1M119 012564c0 for CreatureBelief*).
 	LHLinkedNode<T>* Find(T value);
-	// BW1W120 00555cc0 for LHPlayer*. NULL starts at the head.
+	// For LHPlayer*. NULL starts at the head.
+	// BW1W120 00555cc0
 	T FindNext(T value)
 	{
 		if (value == NULL)

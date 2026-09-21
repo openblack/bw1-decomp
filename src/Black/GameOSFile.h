@@ -75,42 +75,44 @@ public:
 	// BW1W120 00bec994
 	static int ReadEnabled;
 	// TODO: Original names unknown; shared state for loading and pointer reconstruction.
-	// BW1W120 00d01a7c (read by GGame::Load)
+	// (read by GGame::Load)
+	// BW1W120 00d01a7c
 	static unsigned char LoadedCreatureFlags;
 	// BW1W120 00d01a88
 	static uint32_t LoadCount;
-	// BW1W120 00d01aa0 (also tested by footpath and circle-hug code)
+	// (also tested by footpath and circle-hug code)
+	// BW1W120 00d01aa0
 	static int Loading;
 
 	// Override methods
 
-	// BW1W120 00558050 BW1M100 1030fcb0 GameOSFile::~GameOSFile(void)
+	// BW1W120 00558050 BW1M119 01312630
 	// Scalar-deleting wrapper: BW1W120 00558030.
 	virtual ~GameOSFile();
 	// Static methods
 
-	// BW1W120 00558160 BW1M100 1030f6f0 GameOSFile::SaveAllGame(char *)
+	// BW1W120 00558160 BW1M119 01312040
 	static int SaveAllGame(char* filename);
-	// BW1W120 005587b0 BW1M100 1030ef00 GameOSFile::LoadAllGame(char *)
+	// BW1W120 005587b0 BW1M119 01311810
 	static int LoadAllGame(char* filename);
-	// BW1W120 00563ff0 BW1M100 10300680 GameOSFile::AutoLoad(void)
+	// BW1W120 00563ff0 BW1M119 01302340
 	// The caller at 0054f77c tests the full result; original integer signedness is unknown.
 	static int AutoLoad();
-	// BW1W120 00564050 BW1M100 1007dfa0 GameOSFile::AutoSave(int)
+	// BW1W120 00564050 BW1M119 01080520
 	static int AutoSave(int force);
-	// BW1W120 00564160 BW1M100 103003f0 GameOSFile::IsAutoSaveValid(void)
+	// BW1W120 00564160 BW1M119 01302120
 	static int IsAutoSaveValid();
 
 	// Constructors
 
-	// BW1W120 00557ff0 BW1M100 1030fde0 GameOSFile::GameOSFile(void)
+	// BW1W120 00557ff0 BW1M119 01312760
 	GameOSFile();
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 inlined GameOSFile::ReadIt<MapCoords>(MapCoords*)
+	// BW1W120 inlined BW1M119 inlined
 	void ReadIt_MapCoords_(MapCoords* out);
-	// BW1W120 inlined BW1M100 103b3ef0 GameOSFile::ReadSafe(unsigned char &)
+	// BW1W120 inlined BW1M119 013bbf00
 	void ReadSafe(uint8_t& value)
 	{
 		if (ReadEnabled)
@@ -133,7 +135,7 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
-	// BW1W120 inlined BW1M100 102ab2f0 GameOSFile::ReadSafe(unsigned long &)
+	// BW1W120 inlined BW1M119 012ae550
 	void ReadSafe(uint32_t& value)
 	{
 		if (ReadEnabled)
@@ -147,7 +149,7 @@ public:
 	}
 	// fabricated: no MapCoords overload survives in either binary, but Abode::Load
 	// reads its 12-byte MapCoords through this shape.
-	// BW1W120 inlined BW1M100 inlined GameOSFile::ReadSafe(MapCoords &)
+	// BW1W120 inlined BW1M119 inlined
 	void ReadSafe(MapCoords& value)
 	{
 		if (ReadEnabled)
@@ -159,7 +161,7 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
-	// BW1W120 inlined BW1M100 103b4290 GameOSFile::WriteSafe(unsigned char &)
+	// BW1W120 inlined BW1M119 013bc2a0
 	void WriteSafe(uint8_t& value)
 	{
 		if (WriteEnabled)
@@ -171,7 +173,7 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
-	// BW1W120 inlined BW1M100 102abca0 GameOSFile::WriteSafe(unsigned long &)
+	// BW1W120 inlined BW1M119 012aef50
 	void WriteSafe(uint32_t& value)
 	{
 		if (WriteEnabled)
@@ -195,7 +197,7 @@ public:
 		}
 	}
 	// fabricated: see ReadSafe(MapCoords &)
-	// BW1W120 inlined BW1M100 inlined GameOSFile::WriteSafe(MapCoords &)
+	// BW1W120 inlined BW1M119 inlined
 	void WriteSafe(MapCoords& value)
 	{
 		if (WriteEnabled)
@@ -207,7 +209,7 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
-	// BW1W120 inlined BW1M100 10305e60 GameOSFile::WriteSafe(LHPoint &)
+	// BW1W120 inlined BW1M119 01305e60
 	void WriteSafe(LHPoint& value)
 	{
 		if (WriteEnabled)
@@ -221,7 +223,7 @@ public:
 	}
 	// fabricated: no LHMatrix overload survives in either binary, but Object::Save
 	// writes its 48-byte matrix through this shape.
-	// BW1W120 inlined BW1M100 inlined GameOSFile::WriteSafe(LHMatrix &)
+	// BW1W120 inlined BW1M119 inlined
 	void WriteSafe(LHMatrix& value)
 	{
 		if (WriteEnabled)
@@ -242,7 +244,7 @@ public:
 	// instead. Seeding the cursor with NULL keeps the first element and the
 	// successors in one expression, which the compiler emits as a single
 	// next-or-head dispatcher.
-	// BW1W120 inlined BW1M100 inlined GameOSFile::ReadSafe<T>(LHListHead<T> &)
+	// BW1W120 inlined BW1M119 inlined
 	template <typename T> void ReadSafe(LHListHead<T>& list)
 	{
 		if (ReadEnabled)
@@ -259,7 +261,7 @@ public:
 			}
 		}
 	}
-	// BW1W120 inlined BW1M100 inlined GameOSFile::WriteSafe<T>(LHListHead<T> &)
+	// BW1W120 inlined BW1M119 inlined
 	// Declaring written/element inside the guarded block is load-bearing: hoisting
 	// them out swaps the ebx/edi/ebp assignment in Abode::Save (see its 100% match).
 	template <typename T> void WriteSafe(LHListHead<T>& list)
@@ -285,7 +287,7 @@ public:
 		}
 	}
 
-	// BW1W120 00407750 BW1M100 100ba3d0 GameOSFile::ReadIt<T>(T &)
+	// BW1W120 00407750 BW1M119 010bd770
 	template <typename T> void ReadIt(T& out)
 	{
 		if (ReadEnabled)
@@ -298,7 +300,7 @@ public:
 		}
 	}
 
-	// BW1W120 00407700 BW1M100 100ba920 GameOSFile::WriteIt<T>(T &)
+	// BW1W120 00407700 BW1M119 010a9e00
 	template <typename T> void WriteIt(T& value)
 	{
 		if (WriteEnabled)
@@ -310,96 +312,96 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
-	// BW1W120 00558dc0 BW1M100 10304ef0 GameOSFile::LoadInstance(GameThing **)
+	// BW1W120 00558dc0 BW1M119 01307600
 	// TODO: Integrate the recovered factory after fixing constructed class layouts,
 	// particle nested scopes, and class-specific allocation functions.
 	void LoadInstance(GameThing** out_thing);
-	// BW1W120 00561c60 BW1M100 103049e0 GameOSFile::ResolveAllLoads(void)
+	// BW1W120 00561c60 BW1M119 01307010
 	void ResolveAllLoads();
-	// BW1W120 00561e10 BW1M100 10304650 GameOSFile::WritePtr(GameThing *)
+	// BW1W120 00561e10 BW1M119 01306750
 	void WritePtr(GameThing* param_1);
-	// BW1W120 00562180 BW1M100 10304470 GameOSFile::ReadPtr(GameThing **)
+	// BW1W120 00562180 BW1M119 013061b0
 	void ReadPtr(GameThing** ptr);
-	// BW1W120 00562240 BW1M100 10304370 GameOSFile::WritePtrArray(GameThing **, unsigned long)
+	// BW1W120 00562240 BW1M119 013060b0
 	void WritePtrArray(GameThing** ptr, uint32_t count);
-	// BW1W120 005622b0 BW1M100 10304270 GameOSFile::ReadPtrArray(GameThing **)
+	// BW1W120 005622b0 BW1M119 01305fc0
 	void ReadPtrArray(GameThing** ptr);
-	// BW1W120 00562330 BW1M100 10303fb0 GameOSFile::WriteSafe(SpellTargets &)
+	// BW1W120 00562330 BW1M119 01305d00
 	void WriteSafe(SpellTargets& value);
-	// BW1W120 005624e0 BW1M100 10303cc0 GameOSFile::ReadSafe(SpellTargets &)
+	// BW1W120 005624e0 BW1M119 01305a10
 	void ReadSafe(SpellTargets& value);
 	// TODO: Other verified serializers still need their type tags and scope resolved.
-	// BW1W120 005626c0 BW1M100 10303c20 GameOSFile::WriteSafe(CollectionAndOwnership &)
+	// BW1W120 005626c0 BW1M119 01305970
 	void WriteSafe(CollectionAndOwnership& value);
-	// BW1W120 00562720 BW1M100 10303b90 GameOSFile::ReadSafe(CollectionAndOwnership &)
+	// BW1W120 00562720 BW1M119 013058e0
 	void ReadSafe(CollectionAndOwnership& value);
-	// BW1W120 00562770 BW1M100 103038e0 GameOSFile::WriteSafe(LightningObjectInfo &)
+	// BW1W120 00562770 BW1M119 01305630
 	void WriteSafe(LightningObjectInfo& value);
-	// BW1W120 005628c0 BW1M100 10303640 GameOSFile::ReadSafe(LightningObjectInfo &)
+	// BW1W120 005628c0 BW1M119 01305390
 	void ReadSafe(LightningObjectInfo& value);
-	// BW1W120 00562a00 GameOSFile::WriteSafe(CreatureReceiveSpell_TPerSpellData &)
+	// BW1W120 00562a00 BW1M119 01305170
 	void WriteSafe(CreatureReceiveSpell_TPerSpellData& value);
-	// BW1W120 00562b40 GameOSFile::ReadSafe(CreatureReceiveSpell_TPerSpellData &)
+	// BW1W120 00562b40 BW1M119 01304f70
 	void ReadSafe(CreatureReceiveSpell_TPerSpellData& value);
-	// BW1W120 00562c70 GameOSFile::WriteSafe(CreatureReceiveSpell_QueueData &)
+	// BW1W120 00562c70 BW1M119 01304e40
 	void WriteSafe(CreatureReceiveSpell_QueueData& value);
-	// BW1W120 00562d00 GameOSFile::ReadSafe(CreatureReceiveSpell_QueueData &)
+	// BW1W120 00562d00 BW1M119 01304d20
 	void ReadSafe(CreatureReceiveSpell_QueueData& value);
-	// BW1W120 00562d90 BW1M100 10302eb0 GameOSFile::WriteSafe(Persistent * const &)
+	// BW1W120 00562d90 BW1M119 01304c00
 	void WriteSafe(Persistent* const& ptr);
-	// BW1W120 00562e50 BW1M100 10302d90 GameOSFile::ReadSafe(Persistent *&)
+	// BW1W120 00562e50 BW1M119 01304ae0
 	void ReadSafe(Persistent*& ptr);
-	// BW1W120 00562f00 BW1M100 10302cd0 GameOSFile::WriteSafe(PSysSoundAction &)
+	// BW1W120 00562f00 BW1M119 01304a20
 	void WriteSafe(PSysSoundAction& value);
-	// BW1W120 00563180 BW1M100 10302780 GameOSFile::ReadSafe(PSysSoundAction &)
+	// BW1W120 00563180 BW1M119 013044d0
 	void ReadSafe(PSysSoundAction& value);
-	// BW1W120 00562f50 BW1M100 10302c10 GameOSFile::WriteSafe(PosScaleRotation &)
+	// BW1W120 00562f50 BW1M119 01304960
 	void WriteSafe(PosScaleRotation& value);
-	// BW1W120 005631d0 BW1M100 103026c0 GameOSFile::ReadSafe(PosScaleRotation &)
+	// BW1W120 005631d0 BW1M119 01304410
 	void ReadSafe(PosScaleRotation& value);
-	// BW1W120 00562ff0 BW1M100 10302a90 GameOSFile::WriteSafe(ChainJoint &)
+	// BW1W120 00562ff0 BW1M119 013047e0
 	void WriteSafe(ChainJoint& value);
-	// BW1W120 00563270 BW1M100 10302540 GameOSFile::ReadSafe(ChainJoint &)
+	// BW1W120 00563270 BW1M119 01304290
 	void ReadSafe(ChainJoint& value);
-	// BW1W120 00563090 BW1M100 103029c0 GameOSFile::WriteSafe(CalculateDrawPosInfo &)
+	// BW1W120 00563090 BW1M119 01304710
 	void WriteSafe(CalculateDrawPosInfo& value);
-	// BW1W120 00563310 BW1M100 10302470 GameOSFile::ReadSafe(CalculateDrawPosInfo &)
+	// BW1W120 00563310 BW1M119 013041c0
 	void ReadSafe(CalculateDrawPosInfo& value);
-	// BW1W120 00563130 BW1M100 10302840 GameOSFile::WriteSafe(PSysAnimInfo &)
+	// BW1W120 00563130 BW1M119 01304590
 	void WriteSafe(PSysAnimInfo& value);
-	// BW1W120 005633b0 BW1M100 103022f0 GameOSFile::ReadSafe(PSysAnimInfo &)
+	// BW1W120 005633b0 BW1M119 01304040
 	void ReadSafe(PSysAnimInfo& value);
-	// BW1W120 00562fa0 BW1M100 10302b50 GameOSFile::WriteSafe(TSphere &)
+	// BW1W120 00562fa0 BW1M119 013048a0
 	void WriteSafe(TSphere& value);
-	// BW1W120 00563220 BW1M100 10302600 GameOSFile::ReadSafe(TSphere &)
+	// BW1W120 00563220 BW1M119 01304350
 	void ReadSafe(TSphere& value);
-	// BW1W120 005630e0 BW1M100 10302900 GameOSFile::WriteSafe(PSysProcessInfo &)
+	// BW1W120 005630e0 BW1M119 01304650
 	void WriteSafe(PSysProcessInfo& value);
-	// BW1W120 00563360 BW1M100 103023b0 GameOSFile::ReadSafe(PSysProcessInfo &)
+	// BW1W120 00563360 BW1M119 01304100
 	void ReadSafe(PSysProcessInfo& value);
-	// BW1W120 00563400 BW1M100 10302290 GameOSFile::ReadSafe(PSysBase *&)
+	// BW1W120 00563400 BW1M119 01303fe0
 	void ReadSafe(PSysBase*& ptr);
-	// BW1W120 00563410 BW1M100 10302230 GameOSFile::WriteSafe(PSysBase * const &)
+	// BW1W120 00563410 BW1M119 01303f80
 	void WriteSafe(PSysBase* const& ptr);
-	// BW1W120 00563420 BW1M100 103021d0 GameOSFile::ReadSafe(GameThing *&)
+	// BW1W120 00563420 BW1M119 01303f20
 	void ReadSafe(GameThing*& ptr);
-	// BW1W120 00563430 BW1M100 10302170 GameOSFile::WriteSafe(GameThing * const &)
+	// BW1W120 00563430 BW1M119 01303ec0
 	void WriteSafe(GameThing* const& ptr);
-	// BW1W120 00563440 BW1M100 10301e90 GameOSFile::WriteSafe(GData &)
+	// BW1W120 00563440 BW1M119 01303be0
 	void WriteSafe(GData& value);
-	// BW1W120 00563620 BW1M100 10301be0 GameOSFile::ReadSafe(GData &)
+	// BW1W120 00563620 BW1M119 01303930
 	void ReadSafe(GData& value);
-	// BW1W120 005637f0 BW1M100 10301420 GameOSFile::ReadSafe(TownDesire &)
+	// BW1W120 005637f0 BW1M119 01303070
 	void ReadSafe(TownDesire& value);
-	// BW1W120 00563b30 BW1M100 10300a30 GameOSFile::WriteSafe(TownDesire &)
+	// BW1W120 00563b30 BW1M119 01302700
 	void WriteSafe(TownDesire& value);
-	// BW1W120 00563ea0 BW1M100 10300970 GameOSFile::WriteInfo(GBaseInfo const *)
+	// BW1W120 00563ea0 BW1M119 01302640
 	void WriteInfo(const GBaseInfo* info);
-	// BW1W120 00563f00 BW1M100 103008a0 GameOSFile::ReadInfo(GBaseInfo const **)
+	// BW1W120 00563f00 BW1M119 01302570
 	void ReadInfo(const GBaseInfo** info);
-	// BW1W120 00563f60 BW1M100 103007e0 GameOSFile::WriteCheckSum(GameThing *)
+	// BW1W120 00563f60 BW1M119 013024b0
 	void WriteCheckSum(GameThing* thing);
-	// BW1W120 00563fa0 BW1M100 10300720 GameOSFile::ReadCheckSum(GameThing *)
+	// BW1W120 00563fa0 BW1M119 013023e0
 	void ReadCheckSum(GameThing* thing);
 };
 

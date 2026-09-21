@@ -15,7 +15,7 @@ class Particle3DAnimWithCamera : public Particle3DAnim
 public:
 	// Override methods
 
-	// BW1W120 006c8680 BW1M100 inlined Particle3DAnimWithCamera::_dt(void)
+	// BW1W120 006c8680 BW1M119 inlined
 	virtual ~Particle3DAnimWithCamera();
 };
 

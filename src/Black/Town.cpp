@@ -6,7 +6,7 @@
 #include "TribeInfo.h"
 #include "Utils.h"
 
-// BW1W120 0073b170 BW1M100 10554ef0 Town::GetNearestTownToPos(MapCoords const &, TRIBE_TYPE, ABODE_TYPE, float)
+// BW1W120 0073b170 BW1M119 0155e720
 Town* Town::GetNearestTownToPos(const MapCoords& coords, TRIBE_TYPE tribe_type, ABODE_TYPE abode_type,
                                 float max_distance)
 {

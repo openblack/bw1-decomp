@@ -14,7 +14,8 @@ class SetupControl;
 class DialogBoxBase
 {
 public:
-	// BW1W120 00cc6298. Descriptive name for the intrusive dialog list.
+	// Descriptive name for the intrusive dialog list.
+	// BW1W120 00cc6298
 	static DialogBoxBase* First;
 	SetupBox*             setup_box; /* 0x4 */
 	uint8_t               field_0x8;
@@ -25,40 +26,40 @@ public:
 
 	// Override methods
 
-	// BW1W120 00513400 BW1M100 102b24c0 DialogBoxBase::Init(unsigned long, unsigned long, void (*)(int, SetupBox*, SetupControl*, int, int))
+	// BW1W120 00513400 BW1M119 012b55a0
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 00513590 BW1M100 102b23a0 DialogBoxBase::Destroy(void)
+	// BW1W120 00513590 BW1M119 012b5480
 	virtual void Destroy();
-	// BW1W120 005127d0 BW1M100 100fd590 DialogBoxBase::InitSubDialogs(void)
+	// BW1W120 005127d0 BW1M119 01107290
 	virtual void InitSubDialogs();
-	// BW1W120 005135f0 BW1M100 102b22e0 DialogBoxBase::Show(void)
+	// BW1W120 005135f0 BW1M119 012b53c0
 	virtual void Show();
-	// BW1W120 005127e0 BW1M100 100fd5d0 DialogBoxBase::CloseNotification(void)
+	// BW1W120 005127e0 BW1M119 011072d0
 	virtual void CloseNotification();
-	// BW1W120 005127f0 BW1M100 10504080 DialogBoxBase::WantsKeyControl(void)
+	// BW1W120 005127f0 BW1M119 010b7fc0
 	virtual bool WantsKeyControl();
-	// BW1W120 00512800 BW1M100 100fd610 DialogBoxBase::WantsMouseControl(void)
+	// BW1W120 00512800 BW1M119 01107310
 	virtual bool WantsMouseControl();
-	// BW1W120 00512810 BW1M100 103c4090 DialogBoxBase::CanESCOut(void)
+	// BW1W120 00512810 BW1M119 01357800
 	virtual bool CanESCOut();
-	// BW1W120 purecall DialogBoxBase::InitControls(void)
+	// BW1W120 purecall
 	virtual void InitControls() = 0;
 
 	// Static methods
 
-	// BW1W120 005136e0 BW1M100 102b1ff0 DialogBoxBase::HideAll(void)
+	// BW1W120 005136e0 BW1M119 012b50d0
 	static void HideAll();
 
 	// Non-virtual methods
-	// BW1W120 00513770 BW1M100 102b1f80 DialogBoxBase::IsVisible(void)
+	// BW1W120 00513770 BW1M119 012b5060
 	bool32_t IsVisible();
 
 	// Constructors
 
-	// BW1W120 005133a0 BW1M100 102b2750 DialogBoxBase::DialogBoxBase(void)
+	// BW1W120 005133a0 BW1M119 012b5830
 	DialogBoxBase();
-	// BW1W120 005133c0 BW1M100 102b2680 DialogBoxBase::~DialogBoxBase(void)
+	// BW1W120 005133c0 BW1M119 012b5760
 	~DialogBoxBase();
 };
 

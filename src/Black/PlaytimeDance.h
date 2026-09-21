@@ -16,13 +16,13 @@ class PlaytimeElement : public GameThing
 public:
 	// Override methods
 
-	// BW1W120 0066c3f0 BW1M100 inlined PlaytimeElement::_dt(void)
+	// BW1W120 0066c3f0 BW1M119 inlined
 	virtual ~PlaytimeElement();
-	// BW1W120 0066c6b0 BW1M100 inlined PlaytimeElement::ToBeDeleted(int)
+	// BW1W120 0066c6b0 BW1M119 inlined
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0066c3e0 BW1M100 inlined PlaytimeElement::GetTown(void)
+	// BW1W120 0066c3e0 BW1M119 inlined
 	virtual Town* GetTown();
-	// BW1W120 0066c810 BW1M100 inlined PlaytimeElement::IsFunctional(void)
+	// BW1W120 0066c810 BW1M119 inlined
 	virtual bool32_t IsFunctional();
 };
 

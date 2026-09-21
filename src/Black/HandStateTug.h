@@ -19,16 +19,16 @@ public:
 
 	// Override methods
 
-	// BW1W120 005b7df0 BW1M100 1033e740 HandStateTug::Enter(void)
+	// BW1W120 005b7df0 BW1M119 01346a30
 	virtual void Enter();
-	// BW1W120 005b8e40 BW1M100 1033d5e0 HandStateTug::DrawTheHeldObject(void)
+	// BW1W120 005b8e40 BW1M119 013458c0
 	virtual void DrawTheHeldObject();
-	// BW1W120 005b8070 BW1M100 1033d650 HandStateTug::Update(float, LHMatrix *)
+	// BW1W120 005b8070 BW1M119 01345930
 	virtual void Update(float param_1, LHMatrix* param_2);
 
 	// Constructors
 
-	// BW1W120 005b7dd0 BW1M100 1033e9e0 HandStateTug::HandStateTug(CHand*)
+	// BW1W120 005b7dd0 BW1M119 01346cd0
 	HandStateTug(CHand* hand);
 };
 

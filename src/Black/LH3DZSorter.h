@@ -8,7 +8,8 @@ class LH3DZSorter
 {
 public:
 	typedef void (DrawingObject::*DrawCallback)();
-	// BW1W120 0083f310. ECX=this, EDX=object; three stack arguments, RET 0x0c.
+	// ECX=this, EDX=object; three stack arguments, RET 0x0c.
+	// BW1W120 0083f310 BW1M119 0101bf70 (LHCombined Release)
 	void __fastcall NewZObject(void* object, DrawCallback draw, float distance, unsigned long flags);
 };
 

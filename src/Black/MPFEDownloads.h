@@ -11,14 +11,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 0062e740 BW1M100 103a49b0 MPFEDownloads::FileCompleted(void)
+	// BW1W120 0062e740 BW1M119 013ac730
 	virtual void FileCompleted();
-	// BW1W120 0062e750 BW1M100 103a4970 MPFEDownloads::FileError(void)
+	// BW1W120 0062e750 BW1M119 013ac6f0
 	virtual void FileError();
 
 	// Constructors
 
-	// BW1W120 0062e580 BW1M100 103a4cc0 MPFEDownloads::MPFEDownloads(void)
+	// BW1W120 0062e580 BW1M119 013aca60
 	MPFEDownloads();
 };
 

@@ -19,16 +19,16 @@ public:
 
 	// Override methods
 
-	// BW1W120 0054b950 BW1M100 10167a10 GKeyBuffer::_dt(void)
+	// BW1W120 0054b950 BW1M119 01362f40
 	virtual ~GKeyBuffer();
 
 	// Constructors
 
-	// BW1W120 0054b930 BW1M100 inlined GKeyBuffer::GKeyBuffer(void)
+	// BW1W120 0054b930 BW1M119 inlined
 	GKeyBuffer();
-	// BW1W120 005e1ac0 BW1M100 1056cd50
+	// BW1W120 005e1ac0 BW1M119 01520220
 	bool32_t Init(unsigned short capacity);
-	// BW1W120 005e1bf0 BW1M100 1019d7a0 GKeyBuffer::AddKeyIfDifferentToPrevious(LH_KEY, unsigned short)
+	// BW1W120 005e1bf0 BW1M119 011843b0
 	void AddKeyIfDifferentToPrevious(LH_KEY key, unsigned short modifier);
 };
 
@@ -40,7 +40,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 005e1b40 BW1M100 1016c7e0 GKeyInput::_dt(void)
+	// BW1W120 005e1b40 BW1M119 010dc500
 	virtual ~GKeyInput();
 };
 

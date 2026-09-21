@@ -17,11 +17,11 @@ class Particle3DSprite : public RenderParticle
 public:
 	// Override methods
 
-	// BW1W120 0055f070 BW1M100 inlined Particle3DSprite::_dt(void)
+	// BW1W120 0055f070 BW1M119 inlined
 	virtual ~Particle3DSprite();
-	// BW1W120 0055f050 BW1M100 inlined Particle3DSprite::GetDebugText(void)
+	// BW1W120 0055f050 BW1M119 inlined
 	virtual char* GetDebugText();
-	// BW1W120 00695ac0 BW1M100 inlined Particle3DSprite::Load(GameOSFile &)
+	// BW1W120 00695ac0 BW1M119 inlined
 	virtual uint32_t Load(GameOSFile& file);
 };
 

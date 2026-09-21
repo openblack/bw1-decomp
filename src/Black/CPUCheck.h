@@ -9,7 +9,7 @@ class CPUCheck
 public:
 	// Override methods
 
-	// BW1W120 00471a80 BW1M100 100c00a0 CPUCheck::~CPUCheck(void)
+	// BW1W120 00471a80 BW1M119 010c3580
 	virtual ~CPUCheck();
 };
 

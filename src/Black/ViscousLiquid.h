@@ -17,7 +17,7 @@ struct FragVertex
 
 	// Constructors
 
-	// BW1W120 0076d970 BW1M100 1015ce60 FragVertex::FragVertex(void)
+	// BW1W120 0076d970 BW1M119 011c39b8 (LHCombined Release)
 	FragVertex();
 };
 
@@ -36,12 +36,12 @@ struct FragPrimitive
 
 	// Constructors
 
-	// BW1W120 0076d7a0 BW1M100 1015de30 FragPrimitive::FragPrimitive(GameOSFile &, LH3DMesh *)
+	// BW1W120 0076d7a0 BW1M119 01165fa0
 	FragPrimitive(GameOSFile& file, LH3DMesh* mesh);
 
 	// Non-virtual methods
 
-	// BW1W120 0076dae0 BW1M100 1015d920 FragPrimitive::GetRandomSurfacePos(LHPoint *, float (*)(float))
+	// BW1W120 0076dae0 BW1M119 01165a70
 	bool GetRandomSurfacePos(LHPoint* pos, float (*rand_func)(float));
 };
 
@@ -58,21 +58,21 @@ struct FragMesh
 
 	// Constructors
 
-	// BW1W120 0076d520 BW1M100 1015e3a0 FragMesh::FragMesh(GameOSFile &, LH3DMesh *)
+	// BW1W120 0076d520 BW1M119 01166590
 	FragMesh(GameOSFile& file, LH3DMesh* mesh);
 
 	// Destructors
 
-	// BW1W120 007f70e0 BW1M100 1061c0dc FragMesh::~FragMesh()
+	// BW1W120 007f70e0 BW1M119 0110fa40 (LHCombined Release)
 	~FragMesh();
 
 	// Non-virtual methods
 
-	// BW1W120 007f70e0 BW1M100 1015e8f0 FragMesh::_dt(void)
+	// BW1W120 007f70e0 BW1M119 0110fa40 (LHCombined Release)
 	void _dt();
-	// BW1W120 0076d4c0 BW1M100 1015e5a0 FragMesh::GetRandomSurfacePos(LHPoint *, float (*)(float))
+	// BW1W120 0076d4c0 BW1M119 01166790
 	bool GetRandomSurfacePos(LHPoint* pos, float (*rand_func)(float));
-	// BW1W120 0076d680 BW1M100 1015e1b0 FragMesh::WriteToFile(GameOSFile &)
+	// BW1W120 0076d680 BW1M119 011663a0
 	void WriteToFile(GameOSFile& file);
 };
 

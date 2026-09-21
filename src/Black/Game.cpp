@@ -215,7 +215,8 @@ char* const             GGame::NetworkApplication = "Lionhead";
 char* const             GGame::NetworkChannel = "Channel";
 char* const             GGame::NetworkPassword = "Password";
 
-// BW1W120 0054d610. TODO: Original name unknown; tail-jumps to fn_007DEE00, not an empty function.
+// TODO: Original name unknown; tail-jumps to fn_007DEE00, not an empty function.
+// BW1W120 0054d610
 void             fn_0054D610();
 void             CheckSquareFunction(int x, int z, RPHolder* holder);
 void             AddSpecialRPObjects(RPHolder* holder);
@@ -253,7 +254,7 @@ struct LHPlayerPointer_less
 	}
 };
 
-// BW1W120 0054f3b0 BW1M100 101b9770 GGame::Init(void)
+// BW1W120 0054f3b0 BW1M119 014e1990
 // 0054f421 is a continuation in this same frame. Only the internet check is caught.
 // TODO: Nonmatching switch/local scheduling and std::map insertion inlining.
 bool32_t GGame::Init()
@@ -504,7 +505,7 @@ bool32_t GGame::Init()
 	return 1;
 }
 
-// BW1W120 0054c190 BW1M100 101c8360 GGame::StartGame(void)
+// BW1W120 0054c190 BW1M119 010e7270
 void GGame::StartGame()
 {
 	g_game->GameMode = GAME_MODE_RUNNING;
@@ -542,7 +543,8 @@ void GGame::StartGame()
 	}
 }
 
-// BW1W120 00552f40. Mac 1056f520 includes the Reset performed by the Windows wrapper.
+// Mac 1056f520 includes the Reset performed by the Windows wrapper.
+// BW1W120 00552f40 BW1M119 01115890
 void GGame::StartPlaygroundGame(char* map_path)
 {
 	if (map_path != NULL)
@@ -556,14 +558,15 @@ void GGame::StartPlaygroundGame(char* map_path)
 	}
 }
 
-// BW1W120 00555990. Combined with StartPlaygroundGame in the Mac binary.
+// Combined with StartPlaygroundGame in the Mac binary.
+// BW1W120 00555990
 void GGame::ResetAndStartPlaygroundGame(char* path)
 {
 	script->Reset(1);
 	StartPlaygroundGame(path);
 }
 
-// BW1W120 005538e0 BW1M100 10166f50 GGame::OnNewGame(void)
+// BW1W120 005538e0 BW1M119 010e8430
 void GGame::OnNewGame()
 {
 	char path[260];
@@ -590,13 +593,13 @@ void GGame::OnNewGame()
 	}
 }
 
-// BW1W120 00555270 BW1M100 10173ff0 GGame::ForceNeedUpdateInfluence(void)
+// BW1W120 00555270 BW1M119 0151aec0
 void GGame::ForceNeedUpdateInfluence()
 {
 	field_0x250174 = 1;
 }
 
-// BW1W120 00555280 BW1M100 1008f570 GGame::Update3DInfluence(void)
+// BW1W120 00555280 BW1M119 01091800
 void GGame::Update3DInfluence()
 {
 	if (field_0x250174 && data.GameTurn % 10 == 0)
@@ -632,7 +635,7 @@ void GGame::Update3DInfluence()
 	}
 }
 
-// BW1W120 0054ae20 BW1M100 1016b7c0 PauseGame(int)
+// BW1W120 0054ae20 BW1M119 015a07b0
 void PauseGame(int pause)
 {
 	// Mac confirms unsigned-to-float conversion; MSVC optimizes the elapsed add to signed FIADD.
@@ -668,7 +671,7 @@ void PauseGame(int pause)
 	}
 }
 
-// BW1W120 005537f0 BW1M100 1035f700 GGame::SetSpeed(float)
+// BW1W120 005537f0 BW1M119 01367db0
 void GGame::SetSpeed(float speed)
 {
 	// As in PauseGame, unsigned source conversion produces signed FIADD with the original MSVC.
@@ -695,7 +698,7 @@ void GGame::SetSpeed(float speed)
 	}
 }
 
-// BW1W120 0054af60 BW1M100 100e4d00 AddSpecialRPObjects(RPHolder*)
+// BW1W120 0054af60 BW1M119 013c9950
 void AddSpecialRPObjects(RPHolder* holder)
 {
 	if (holder->field_0x50024 != NULL)
@@ -711,7 +714,7 @@ void AddSpecialRPObjects(RPHolder* holder)
 	}
 }
 
-// BW1W120 0054afb0 BW1M100 105705d0 CheckSquareFunction(int,int,RPHolder*)
+// BW1W120 0054afb0 BW1M119 01286b00
 void CheckSquareFunction(int x, int z, RPHolder* holder)
 {
 	if (x >= 0 && x < 512 && z >= 0 && z < 512)
@@ -757,7 +760,7 @@ void CheckSquareFunction(int x, int z, RPHolder* holder)
 	}
 }
 
-// BW1W120 0054ef40 BW1M100 10514230 GGame::InitOneTimeOnly(void)
+// BW1W120 0054ef40 BW1M119 0117b9a0
 uint32_t GGame::InitOneTimeOnly()
 {
 	Report3D__FPCce("InitOneTimeOnly\n");
@@ -875,7 +878,7 @@ uint32_t GGame::InitOneTimeOnly()
 	return 1;
 }
 
-// BW1W120 0054ff80 BW1M100 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void*)
+// BW1W120 0054ff80 BW1M119 010a2a00
 void GGame::KeyHandler(unsigned short message, LH_KEY key, unsigned short modifier, unsigned short param_4,
                        void* context)
 {
@@ -892,7 +895,7 @@ void GGame::KeyHandler(unsigned short message, LH_KEY key, unsigned short modifi
 	}
 }
 
-// BW1W120 00550080 BW1M100 101c6850 GGame::UnfinishInitialisation(void)
+// BW1W120 00550080 BW1M119 0149ac40
 void GGame::UnfinishInitialisation()
 {
 	GGlobal::Global.audio->ReleaseAtmosSoundBanks();
@@ -907,7 +910,7 @@ void GGame::UnfinishInitialisation()
 	}
 }
 
-// BW1W120 00550110 BW1M100 10505500 GGame::FinishInitialisation(void)
+// BW1W120 00550110 BW1M119 010d8f80
 void GGame::FinishInitialisation()
 {
 	if (MyInterface() != NULL)
@@ -923,7 +926,7 @@ void GGame::FinishInitialisation()
 	GGlobal::Global.audio->InitAtmos();
 }
 
-// BW1W120 00550390 BW1M100 10427340 GGame::LoadFiles(void)
+// BW1W120 00550390 BW1M119 01509420
 bool32_t GGame::LoadFiles()
 {
 	RenderLoadingFrame("loading animations");
@@ -944,7 +947,7 @@ bool32_t GGame::LoadFiles()
 	return 1;
 }
 
-// BW1W120 00550820 GGame::MyPlayerID(unsigned long)
+// BW1W120 00550820
 int GGame::MyPlayerID(unsigned long user_id)
 {
 	// TODO: MSVC assigns the user ID and player counter to opposite registers in the original.
@@ -962,7 +965,7 @@ int GGame::MyPlayerID(unsigned long user_id)
 	return -1;
 }
 
-// BW1W120 00550780 BW1M100 10560930 GGame::Dump(void)
+// BW1W120 00550780 BW1M119 010c8970
 void GGame::Dump()
 {
 	for (unsigned int i = 0; i < 8; ++i)
@@ -973,7 +976,7 @@ void GGame::Dump()
 	GameLists.Dump();
 }
 
-// BW1W120 005507d0 GGame::LoopThroughPlayers(void)
+// BW1W120 005507d0
 void GGame::LoopThroughPlayers()
 {
 	for (GPlayer* player = GetNextPlayer(NULL); player != NULL; player = GetNextPlayer(player))
@@ -981,7 +984,7 @@ void GGame::LoopThroughPlayers()
 	}
 }
 
-// BW1W120 005509e0 BW1M100 1000be00 GGame::GetPlayerFromReal(unsigned long)
+// BW1W120 005509e0 BW1M119 0100e8b0
 GPlayer* GGame::GetPlayerFromReal(unsigned long player_id)
 {
 	if (player_id >= 8)
@@ -991,7 +994,7 @@ GPlayer* GGame::GetPlayerFromReal(unsigned long player_id)
 	return &players[RealPlayerMap[player_id]];
 }
 
-// BW1W120 00550a10 GGame::GetPlayerInterfaceFromReal(unsigned long)
+// BW1W120 00550a10
 GInterface* GGame::GetPlayerInterfaceFromReal(unsigned long player_id)
 {
 	if (player_id >= 8)
@@ -1001,7 +1004,7 @@ GInterface* GGame::GetPlayerInterfaceFromReal(unsigned long player_id)
 	return GetPlayerFromReal(player_id)->GetRealInterface(player_id);
 }
 
-// BW1W120 005557a0 BW1M100 101bf310 GGame::ResetState(void)
+// BW1W120 005557a0 BW1M119 010cc4c0
 void GGame::ResetState()
 {
 	data.Reset();
@@ -1014,7 +1017,7 @@ void GGame::ResetState()
 	fn_0054B190();
 }
 
-// BW1W120 00550410 BW1M100 1054a080 GGame::SetupPlayers(void)
+// BW1W120 00550410 BW1M119 01567850
 void GGame::SetupPlayers()
 {
 	// TODO: FindNext still inlines here, and STL cleanup outlines more than the original.
@@ -1092,7 +1095,7 @@ static_assert(offsetof(LHConnection, NetUser) == 0x88, "LHConnection user offset
 static_assert(offsetof(GPlayerInfo, NetworkName) == 0x50, "GPlayerInfo network name offset");
 static_assert(offsetof(LHSys, MessageHook) == 0x70cc, "LHWin message callback offset");
 
-// BW1W120 0054b240 BW1M100 104fda10 GGame::GGame(void)
+// BW1W120 0054b240 BW1M119 010ccb00
 GGame::GGame()
 {
 	config = NULL;
@@ -1138,7 +1141,7 @@ GGame::GGame()
 	field_0x205d34 = 50;
 }
 
-// BW1W120 0054bf20 BW1M100 104eff40 GGame::ClearVariables(void)
+// BW1W120 0054bf20 BW1M119 0111c2b0
 void GGame::ClearVariables()
 {
 	field_0x250174 = 0;
@@ -1171,7 +1174,7 @@ void GGame::ClearVariables()
 	field_0x205a1c = 0;
 }
 
-// BW1W120 0054bfd0 BW1M100 103dcca0 GGame::ToBeDeleted(int)
+// BW1W120 0054bfd0 BW1M119 013c9a40
 void GGame::ToBeDeleted(int param_1)
 {
 	DanceLight::CloseBitmaps();
@@ -1209,7 +1212,7 @@ void GGame::ToBeDeleted(int param_1)
 	}
 }
 
-// BW1W120 0054ec80 BW1M100 105b94a0 GGame::Close(void)
+// BW1W120 0054ec80 BW1M119 013bd6a0
 bool32_t GGame::Close()
 {
 	ClearMap();
@@ -1286,7 +1289,7 @@ bool32_t GGame::Close()
 	return 1;
 }
 
-// BW1W120 00552bb0 BW1M100 10424170 GGame::ClearMap(void)
+// BW1W120 00552bb0 BW1M119 01172c70
 void GGame::ClearMap()
 {
 	fn_007DEE00();
@@ -1400,7 +1403,7 @@ GPacket::PhysicsData::PhysicsData()
 	Rotation.y = 0.0f;
 	Rotation.x = 0.0f;
 }
-// BW1W120 0054b910 BW1M100 10018800 MusicMoodPacket::MusicMoodPacket(void)
+// BW1W120 0054b910 BW1M119 0101b3a0
 MusicMoodPacket::MusicMoodPacket()
 {
 	Emotion.Reset();
@@ -1408,38 +1411,38 @@ MusicMoodPacket::MusicMoodPacket()
 	field_0x4 = 0;
 	field_0x0 = 0;
 }
-// BW1W120 0054bcd0 GTerrainMap::GTerrainMap(void)
+// BW1W120 0054bcd0
 GTerrainMap::GTerrainMap() {}
-// BW1W120 0054b930 GKeyBuffer::GKeyBuffer(void)
+// BW1W120 0054b930
 GKeyBuffer::GKeyBuffer()
 {
 	Inputs = NULL;
 	BufferedKeys = 0;
 	field_0xc = 0;
 }
-// BW1W120 0054b9d0 GSoundMap::GSoundMap(void)
+// BW1W120 0054b9d0
 GSoundMap::GSoundMap()
 {
 	Reset();
 	memset(field_0xb4, 0, sizeof(field_0xb4));
 }
-// BW1W120 0054baa0 GestureSystemDataList::GestureSystemDataList(void)
+// BW1W120 0054baa0
 GestureSystemDataList::GestureSystemDataList()
 {
 	Data = NULL;
 	Count = 0;
 }
-// BW1W120 0054baf0 GestureSystemData::GestureSystemData(void)
+// BW1W120 0054baf0 BW1M119 inlined
 GestureSystemData::GestureSystemData()
 {
 	SetToZero();
 }
-// BW1W120 0054bb40 GestureSystem::GestureSystem(void)
+// BW1W120 0054bb40
 GestureSystem::GestureSystem()
 {
 	field_0xc94 = 1;
 }
-// BW1W120 0054bb90 BW1M100 100938a0 GestureSystemResult::SetToZero(void)
+// BW1W120 0054bb90 BW1M119 01095b00
 void GestureSystemResult::SetToZero()
 {
 	field_0x0 = 0;
@@ -1551,34 +1554,34 @@ static_assert(offsetof(GGame, GameLists) + offsetof(GlobalGameLists, LivingList)
 static_assert(offsetof(Living, next) == 0xa4, "Living link offset is incorrect");
 static_assert(offsetof(Villager, mother) == 0x100, "Villager mother offset is incorrect");
 
-// BW1W120 0054b9a0 BW1M100 1009d100 GGame::IsAvailable(void)
+// BW1W120 0054b9a0 BW1M119 0109ee50
 bool32_t GGame::IsAvailable()
 {
 	return (Flags & GAME_THING_FLAG_UNAVAILABLE) == 0;
 }
 
-// BW1W120 0054b9b0 BW1M100 10512c00 GGame::GetSaveType(void)
+// BW1W120 0054b9b0 BW1M119 01357d50
 uint32_t GGame::GetSaveType()
 {
 	return 0x6a;
 }
 
-// BW1W120 0054b9c0 BW1M100 10496160 GGame::GetDebugText(void)
+// BW1W120 0054b9c0 BW1M119 0116e6c0
 char* GGame::GetDebugText()
 {
 	return "Game:";
 }
 
-// BW1W120 0054c180 BW1M100 1003a410 GGame::GetCamera(void)
+// BW1W120 0054c180 BW1M119 0103cd90
 GCamera* GGame::GetCamera()
 {
 	return camera;
 }
 
-// BW1W120 0054c330 BW1M100 10496be0 GGame::Delete(void)
+// BW1W120 0054c330 BW1M119 010e7580
 void GGame::Delete() {}
 
-// BW1W120 0054c340 BW1M100 10079850 GGame::ProcessFrameInputs(void)
+// BW1W120 0054c340 BW1M119 0107be10
 void GGame::ProcessFrameInputs()
 {
 	DanceEditState::UpdateEveryRender();
@@ -1603,7 +1606,7 @@ void GGame::ProcessFrameInputs()
 	LeaveCriticalSection(&LHScreen::CriticalSection);
 }
 
-// BW1W120 0054c3d0 BW1M100 1001e260 GGame::ProcessGameInputs(void)
+// BW1W120 0054c3d0 BW1M119 01020dd0
 void GGame::ProcessGameInputs()
 {
 	EnterCriticalSection(&LHKeyboard::CriticalSection);
@@ -1615,7 +1618,7 @@ void GGame::ProcessGameInputs()
 	LeaveCriticalSection(&LHScreen::CriticalSection);
 }
 
-// BW1W120 0054c420 BW1M100 10083f50 GGame::ProcessBufferedKeys(void)
+// BW1W120 0054c420 BW1M119 01086330
 void GGame::ProcessBufferedKeys()
 {
 	int count = key_buffer.BufferedKeys;
@@ -1634,7 +1637,7 @@ void GGame::ProcessBufferedKeys()
 	key_buffer.BufferedKeys = 0;
 }
 
-// BW1W120 0054c4a0 BW1M100 10029760 GGame::LocalTimerSaysDoATurn(void)
+// BW1W120 0054c4a0 BW1M119 0102c2e0
 bool32_t GGame::LocalTimerSaysDoATurn()
 {
 	// MSeconds converts both tick values as unsigned floats (also visible in the PPC implementation).
@@ -1657,7 +1660,7 @@ bool32_t GGame::LocalTimerSaysDoATurn()
 	return elapsed >= gameTime;
 }
 
-// BW1W120 0054c570 BW1M100 100015c0 ResetLocalGameTimer(void)
+// BW1W120 0054c570 BW1M119 010015c0
 void ResetLocalGameTimer()
 {
 	// Stop, Reset and Start are fully inlined here in the original, unlike Loop startup.
@@ -1697,7 +1700,7 @@ void ResetLocalGameTimer()
 	}
 }
 
-// BW1W120 0054cc30 BW1M100 10029320 GGame::ProcessNetworkPackets(void)
+// BW1W120 0054cc30 BW1M119 0102be90
 void GGame::ProcessNetworkPackets()
 {
 	if (network.session->field_0x4 == 0)
@@ -1784,7 +1787,7 @@ void GGame::ProcessNetworkPackets()
 	}
 }
 
-// BW1W120 0054ced0 BW1M100 100dc070 GGame::DoNetworkStart(void)
+// BW1W120 0054ced0 BW1M119 0149e1d0
 void GGame::DoNetworkStart()
 {
 	RenderLoadingFrame("Waiting for completion of user data transer...");
@@ -1795,7 +1798,7 @@ void GGame::DoNetworkStart()
 	GatheringBox::InitialiseForCurrentGame();
 }
 
-// BW1W120 0054cf20 BW1M100 100e23b0 GGame::Loop(void)
+// BW1W120 0054cf20 BW1M119 01106610
 void GGame::Loop()
 {
 	bool32_t showMainMenu = 0;
@@ -2030,13 +2033,14 @@ void GGame::Loop()
 	}
 }
 
-// BW1W120 0054d7f0. Original name unrecovered.
+// Original name unrecovered.
+// BW1W120 0054d7f0
 void GGame::fn_0054D7F0()
 {
 	++field_0x205d44;
 }
 
-// BW1W120 0054d800 BW1M100 1048f9d0 GGame::FlipScreen(void)
+// BW1W120 0054d800 BW1M119 010e5f60
 void GGame::FlipScreen()
 {
 	if (RenderLoopEnabled)
@@ -2045,7 +2049,8 @@ void GGame::FlipScreen()
 	}
 }
 
-// BW1W120 005525e0. Original name unrecovered.
+// Original name unrecovered.
+// BW1W120 005525e0
 void GGame::fn_005525E0()
 {
 	if (field_0x5318[0] != 0)
@@ -2056,13 +2061,14 @@ void GGame::fn_005525E0()
 	}
 }
 
-// BW1W120 00555400. Original name unrecovered.
+// Original name unrecovered.
+// BW1W120 00555400
 void GGame::fn_00555400()
 {
 	GameMode = GAME_MODE_ONLINE;
 }
 
-// BW1W120 0054d620 BW1M100 1001e2f0 GGame::ProcessOneGameTurn(void)
+// BW1W120 0054d620 BW1M119 01020e60
 void GGame::ProcessOneGameTurn()
 {
 	fn_0054D610();
@@ -2095,7 +2101,7 @@ void GGame::ProcessOneGameTurn()
 	}
 }
 
-// BW1W120 0054d850 BW1M100 10079980
+// BW1W120 0054d850 BW1M119 0107bf40
 void GGame::ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2)
 {
 	LHSys::GetMouse().UpdateDeltaPos();
@@ -2113,7 +2119,7 @@ void GGame::ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2)
 	help_system->PostDrawProcess();
 }
 
-// BW1W120 0054da80 BW1M100 10033dd0
+// BW1W120 0054da80 BW1M119 01036750
 void GGame::Process3dEngine()
 {
 	bool32_t drewLandscape = false;
@@ -2392,7 +2398,7 @@ void GGame::Process3dEngine()
 	fn_007DEE00();
 }
 
-// BW1W120 0054d820 BW1M100 10083dd0 GGame::ProcessGameCode(void)
+// BW1W120 0054d820 BW1M119 010861b0
 void GGame::ProcessGameCode()
 {
 	StartTurn();
@@ -2403,7 +2409,7 @@ void GGame::ProcessGameCode()
 	EndTurn();
 }
 
-// BW1W120 0054e4f0 BW1M100 10083c70 GGame::StartTurn(void)
+// BW1W120 0054e4f0 BW1M119 01086050
 void GGame::StartTurn()
 {
 	++data.field_0x14;
@@ -2428,7 +2434,7 @@ void GGame::StartTurn()
 	}
 }
 
-// BW1W120 0054e5c0 BW1M100 100665c0 GGame::ProcessTurn(void)
+// BW1W120 0054e5c0 BW1M119 01068d80
 void GGame::ProcessTurn()
 {
 	Whale::ProcessAll();
@@ -2517,7 +2523,7 @@ void GGame::ProcessTurn()
 	}
 }
 
-// BW1W120 0054e960 BW1M100 10070430 GGame::EndTurn(void)
+// BW1W120 0054e960 BW1M119 01072bb0
 void GGame::EndTurn()
 {
 	// These calls reset x87 state and select single precision; they are not no-ops.
@@ -2593,7 +2599,7 @@ void GGame::EndTurn()
 	}
 }
 
-// BW1W120 005507f0 BW1M100 10506220 GGame::Birthday(void)
+// BW1W120 005507f0 BW1M119 010c8560
 void GGame::Birthday()
 {
 	for (GPlayer* player = GetNextPlayerAndNeutral(NULL); player != NULL; player = GetNextPlayerAndNeutral(player))
@@ -2602,7 +2608,7 @@ void GGame::Birthday()
 	}
 }
 
-// BW1W120 005508a0 BW1M100 10064420 GGame::GetNextPlayer(GPlayer *)
+// BW1W120 005508a0 BW1M119 01066be0
 GPlayer* GGame::GetNextPlayer(GPlayer* player)
 {
 	if (player == NULL)
@@ -2616,7 +2622,7 @@ GPlayer* GGame::GetNextPlayer(GPlayer* player)
 	return player < &players[7] ? player : NULL;
 }
 
-// BW1W120 005508d0 BW1M100 100c0950 GGame::GetNextActivePlayer(GPlayer *)
+// BW1W120 005508d0 BW1M119 014ffa10
 GPlayer* GGame::GetNextActivePlayer(GPlayer* player)
 {
 	if (player == NULL)
@@ -2635,7 +2641,7 @@ GPlayer* GGame::GetNextActivePlayer(GPlayer* player)
 	return player < &players[7] ? player : NULL;
 }
 
-// BW1W120 00550930 BW1M100 10095d40 GGame::GetNextActivePlayerAndNeutral(GPlayer *)
+// BW1W120 00550930 BW1M119 01097c90
 GPlayer* GGame::GetNextActivePlayerAndNeutral(GPlayer* player)
 {
 	if (player == NULL)
@@ -2653,7 +2659,7 @@ GPlayer* GGame::GetNextActivePlayerAndNeutral(GPlayer* player)
 	return player < &players[8] ? player : NULL;
 }
 
-// BW1W120 00550980 BW1M100 1005c2a0 GGame::GetNextPlayerAndNeutral(GPlayer *)
+// BW1W120 00550980 BW1M119 0105ef60
 GPlayer* GGame::GetNextPlayerAndNeutral(GPlayer* player)
 {
 	if (player == NULL)
@@ -2667,7 +2673,7 @@ GPlayer* GGame::GetNextPlayerAndNeutral(GPlayer* player)
 	return player < &players[8] ? player : NULL;
 }
 
-// BW1W120 005509b0 BW1M100 100586e0 GGame::GetPlayer(unsigned long)
+// BW1W120 005509b0 BW1M119 0105b3b0
 GPlayer* GGame::GetPlayer(uint32_t player_index)
 {
 	if (player_index >= 8)
@@ -2677,20 +2683,20 @@ GPlayer* GGame::GetPlayer(uint32_t player_index)
 	return &players[player_index];
 }
 
-// BW1W120 00550a60 BW1M100 inlined GGame::GetPlayer(PLAYER_NAME)
+// BW1W120 00550a60 BW1M119 inlined
 GPlayer* GGame::GetPlayer(PLAYER_NAME player_name)
 {
 	return &players[player_name];
 }
 
-// BW1W120 00550dd0 BW1M100 1055efd0 GGame::SetPacket(PACKET_TYPE)
+// BW1W120 00550dd0 BW1M119 0157b2a0
 void GGame::SetPacket(PACKET_TYPE type)
 {
 	Packet.Type = (uint8_t)type;
 	SendPacketCompressed(type, SETPACKET_FUNCTION_NUMBER_0xc);
 }
 
-// BW1W120 00552f80 BW1M100 100369c0 GGame::IsMultiplayerGame(void) const
+// BW1W120 00552f80 BW1M119 01039330
 bool32_t GGame::IsMultiplayerGame() const
 {
 	if (network.session == NULL)
@@ -2700,7 +2706,7 @@ bool32_t GGame::IsMultiplayerGame() const
 	return !network.session->IsSinglePlayer();
 }
 
-// BW1W120 00552fa0 BW1M100 10423f90 GGame::FindTownWithID(unsigned long)
+// BW1W120 00552fa0 BW1M119 010adff0
 Town* GGame::FindTownWithID(unsigned long id)
 {
 	for (GPlayer* player = GetNextPlayerAndNeutral(NULL); player != NULL; player = GetNextPlayerAndNeutral(player))
@@ -2716,7 +2722,7 @@ Town* GGame::FindTownWithID(unsigned long id)
 	return NULL;
 }
 
-// BW1W120 00554090 BW1M100 104935a0 GGame::Save(GameOSFile &)
+// BW1W120 00554090 BW1M119 01366f90
 uint32_t GGame::Save(GameOSFile& file)
 {
 	if (!GameThing::Save(file))
@@ -2849,7 +2855,7 @@ uint32_t GGame::Save(GameOSFile& file)
 	return 1;
 }
 
-// BW1W120 00554830 BW1M100 10354cc0 GGame::Load(GameOSFile &)
+// BW1W120 00554830 BW1M119 0154ca00
 uint32_t GGame::Load(GameOSFile& file)
 {
 	if (!GameThing::Load(file))
@@ -2974,7 +2980,7 @@ uint32_t GGame::Load(GameOSFile& file)
 	return 1;
 }
 
-// BW1W120 00555080 BW1M100 100c76b0 GGame::ResolveLoad(void)
+// BW1W120 00555080 BW1M119 01367ec0
 void GGame::ResolveLoad()
 {
 	GInterface& playerInterface = *GGame::g_game->MyInterface();
@@ -2992,13 +2998,13 @@ void GGame::ResolveLoad()
 	help_system->ResolveLoad();
 }
 
-// BW1W120 00555850 BW1M100 10051560 GGame::MyInterface(void)
+// BW1W120 00555850 BW1M119 01053ef0
 GInterface* GGame::MyInterface()
 {
 	return players[PlayerIndex].GetRealInterface(field_0x205a5a);
 }
 
-// BW1W120 00555880 BW1M100 1005fec0 GGame::MyInterfaceStatus(void)
+// BW1W120 00555880 BW1M119 01062630
 GInterfaceStatus* GGame::MyInterfaceStatus()
 {
 	return MyInterface()->status;

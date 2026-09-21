@@ -23,11 +23,13 @@ public:
 	static InfoTransform g_info_transform; // 00e839e4
 	static LHPoint       g_camera;         // 00ea1db8
 	static uint32_t      g_delta_time;     // 00c38134
-	// BW1W120 00ea1b78. Original Mac import g_timer__8LH3DTech; no timer storage here.
+	// Original Mac import g_timer__8LH3DTech; no timer storage here.
+	// BW1W120 00ea1b78 BW1M119 012d3e80 (LHCombined Release)
 	static LHTimer g_timer;
-	// BW1W120 00ea9e40. Projection-scaled world-to-camera matrix, including the depth row.
+	// Projection-scaled world-to-camera matrix, including the depth row.
+	// BW1W120 00ea9e40 BW1M119 012dc144 (LHCombined Release)
 	static LHMatrix g_world_to_clipping;
-	// BW1W120 inlined BW1M100 100c7e50 LH3DTech::GetValueForZSorter(const LHPoint&)
+	// BW1W120 inlined BW1M119 010e7360
 	static float GetValueForZSorter(const LHPoint& point)
 	{
 		float x = point.x - g_camera.x;
@@ -35,31 +37,33 @@ public:
 		float z = point.z - g_camera.z;
 		return x * x + y * y + z * z;
 	}
-	// BW1W120 00ea9e70. Original Mac symbol: g_ambient_wind_direction__8LH3DTech.
+	// Original Mac symbol: g_ambient_wind_direction__8LH3DTech.
+	// BW1W120 00ea9e70 BW1M119 012d3f90 (LHCombined Release)
 	static LHPoint g_ambient_wind_direction;
-	// BW1W120 00ea9ec0. Original Mac symbol: g_game_time_inc__8LH3DTech.
+	// Original Mac symbol: g_game_time_inc__8LH3DTech.
+	// BW1W120 00ea9ec0 BW1M119 012d3e68 (LHCombined Release)
 	static uint32_t g_game_time_inc;
-	// BW1W120 00819030 BW1M100 100c0920 LH3DTech::UpdateViewPort(long, long)
+	// BW1W120 00819030 BW1M119 010bfe40 (LHCombined Release)
 	static void UpdateViewPort(long width, long height);
-	// BW1W120 00819390 BW1M100 100376f0 LH3DTech::ProjectPoint(LHPoint*, int*, int*, float*)
+	// BW1W120 00819390 BW1M119 01037930 (LHCombined Release)
 	static uint32_t ProjectPoint(LHPoint* point, int* x, int* y, float* depth);
-	// BW1W120 008195b0 BW1M100 10011b20 LH3DTech::ChangeFov(float)
+	// BW1W120 008195b0 BW1M119 01011be0 (LHCombined Release)
 	static void ChangeFov(float fov);
-	// BW1W120 00819690 BW1M100 10011d80 LH3DTech::UpdateWorldToCamera(LHMatrix&, LHPoint&, LHPoint&, bool)
+	// BW1W120 00819690 BW1M119 01011e40 (LHCombined Release)
 	static void UpdateWorldToCamera(LHMatrix& matrix, LHPoint& position, LHPoint& focus, bool param_4);
-	// BW1W120 inlined BW1M100 10093230 LH3DTech::GetDeltaTime(void)
+	// BW1W120 inlined BW1M119 01095480
 	static uint32_t GetDeltaTime();
-	// BW1W120 00819920 BW1M100 10034c10 LH3DTech::UpdateCamera(const LHPoint&, const LHPoint&)
+	// BW1W120 00819920 BW1M119 01034f90 (LHCombined Release)
 	static void UpdateCamera(const LHPoint& position, const LHPoint& focus);
-	// BW1W120 00818c60 BW1M100 100c0a80 LH3DTech::RenderInitialization(long, long)
+	// BW1W120 00818c60 BW1M119 010bffa0 (LHCombined Release)
 	static void RenderInitialization(long width, long height);
-	// BW1W120 0081c5c0 BW1M100 100337d0 LH3DTech::Draw3DScreenTriangle(long, LHPoint*, LH3DColor*, float*, long, long*, LH3DMaterial*, int)
+	// BW1W120 0081c5c0 BW1M119 010337e0 (LHCombined Release)
 	static void __fastcall Draw3DScreenTriangle(long num_points, LHPoint* positions, LH3DColor* colors, float* uvs,
 	                                            long num_indices, long* indices, LH3DMaterial* material, int param_8);
-	// BW1W120 0081c090 BW1M100 1002e9a0 LH3DTech::Draw3DWorldTriangle(long, LHPoint*, LH3DColor*, float*, long, long*, LH3DMaterial*, int)
+	// BW1W120 0081c090 BW1M119 0102ea40 (LHCombined Release)
 	static void __fastcall Draw3DWorldTriangle(long num_points, LHPoint* positions, LH3DColor* colors, float* uvs,
 	                                           long num_triangles, long* indices, LH3DMaterial* material, int param_8);
-	// BW1W120 0081b370 BW1M100 1001b740 LH3DTech::Get3DPointFromScreen(const LHCoord&, LHPoint&, float)
+	// BW1W120 0081b370 BW1M119 0101b840 (LHCombined Release)
 	static void __fastcall Get3DPointFromScreen(const LHCoord& screen, LHPoint& point, float distance);
 };
 
@@ -80,7 +84,7 @@ struct InfoTransform
 };
 static_assert(sizeof(InfoTransform) == 0x3c, "Data type is of wrong size");
 
-// BW1W120 0081bbd0 BW1M100 100be300 Report3D(const char*, ...)
+// BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)
 void __cdecl Report3D__FPCce(const char* fmt, ...);
 
 #endif /* BW1_DECOMP_LH3D_TECH_INCLUDED_H */

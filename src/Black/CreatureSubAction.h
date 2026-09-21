@@ -28,12 +28,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 00473dd0 BW1M100 101deb60 CreatureSubAction::_dt(void)
+	// BW1W120 00473dd0 BW1M119 011e6340
 	virtual ~CreatureSubAction();
 
 	// Constructors
 
-	// BW1W120 00473db0 BW1M100 101e0720 CreatureSubAction::CreatureSubAction(void)
+	// BW1W120 00473db0 BW1M119 011e7e10
 	CreatureSubAction();
 };
 
@@ -62,21 +62,21 @@ public:
 
 	// Override methods
 
-	// BW1W120 00473df0 BW1M100 101e0670 CreatureSubActionAgenda::_dt(void)
+	// BW1W120 00473df0 BW1M119 011e7d60
 	virtual ~CreatureSubActionAgenda();
 
 	// Constructors
 
-	// BW1W120 004ff1b0 BW1M100 1028cea0 CreatureSubActionAgenda::CreatureSubActionAgenda(Creature*)
+	// BW1W120 004ff1b0 BW1M119 01290b00
 	CreatureSubActionAgenda(Creature* creature);
 
 	// Non-virtual methods
 
-	// BW1W120 004ff240 BW1M100 1028cc30 CreatureSubActionAgenda::AddSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
+	// BW1W120 004ff240 BW1M119 012908a0
 	void AddSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2,
 	                  int (Creature::*param_3)(const void*, void*, MapCoords*),
 	                  void (Creature::*param_4)(const void*, void*));
-	// BW1W120 004ff3a0 BW1M100 1028cb10 CreatureSubActionAgenda::AddMainSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
+	// BW1W120 004ff3a0 BW1M119 012907a0
 	void AddMainSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2,
 	                      int (Creature::*param_3)(const void*, void*, MapCoords*),
 	                      void (Creature::*param_4)(const void*, void*));

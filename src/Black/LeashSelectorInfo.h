@@ -15,7 +15,7 @@ class GLeashSelectorInfo : public GObjectInfo
 public:
 	// Override methods
 
-	// BW1W120 0042b3d0 BW1M100 10182f90 GLeashSelectorInfo::_dt(void)
+	// BW1W120 0042b3d0 BW1M119 0118c570
 	virtual ~GLeashSelectorInfo();
 };
 

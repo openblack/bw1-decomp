@@ -21,9 +21,9 @@ class BoolProperty : public Property
 public:
 	// Override methods
 
-	// BW1W120 00586220 BW1M100 102dc140 BoolProperty::GetAsString(void)
+	// BW1W120 00586220 BW1M119 012ddf50
 	virtual const char* GetAsString();
-	// BW1W120 00586350 BW1M100 inlined BoolProperty::ReadProperty(istream *, PersistenceStreamer *)
+	// BW1W120 00586350 BW1M119 inlined
 	virtual uint32_t ReadProperty(istream* param_1, PersistenceStreamer* param_2);
 };
 
@@ -32,9 +32,9 @@ class SoundActionProperty : public Property
 public:
 	// Override methods
 
-	// BW1W120 00585740 BW1M100 102dcd30 SoundActionProperty::GetAsString(void)
+	// BW1W120 00585740 BW1M119 012deb30
 	virtual const char* GetAsString();
-	// BW1W120 00585a70 BW1M100 inlined SoundActionProperty::ReadProperty(istream *, PersistenceStreamer *)
+	// BW1W120 00585a70 BW1M119 inlined
 	virtual uint32_t ReadProperty(istream* param_1, PersistenceStreamer* param_2);
 };
 
@@ -43,9 +43,9 @@ class StringProperty : public Property
 public:
 	// Override methods
 
-	// BW1W120 005850d0 BW1M100 102dd630 StringProperty::GetAsString(void)
+	// BW1W120 005850d0 BW1M119 012df420
 	virtual const char* GetAsString();
-	// BW1W120 00585200 BW1M100 inlined StringProperty::ReadProperty(istream *, PersistenceStreamer *)
+	// BW1W120 00585200 BW1M119 inlined
 	virtual uint32_t ReadProperty(istream* param_1, PersistenceStreamer* param_2);
 };
 
@@ -54,7 +54,7 @@ class TPointerProperty : public Property
 public:
 	// Override methods
 
-	// BW1W120 00584630 BW1M100 inlined TPointerProperty::GetAsUserReadableString(void)
+	// BW1W120 00584630 BW1M119 inlined
 	virtual const char* GetAsUserReadableString();
 };
 

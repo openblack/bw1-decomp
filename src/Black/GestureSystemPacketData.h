@@ -10,7 +10,7 @@ struct GestureSystemPacketData
 	uint32_t field_0x4;
 	LHPoint  Position;
 
-	// BW1M100 100189c0 GestureSystemPacketData::Clear(void)
+	// BW1W120 inlined BW1M119 0101b560
 	void Clear()
 	{
 		Gesture = 0;

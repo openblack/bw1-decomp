@@ -17,11 +17,11 @@ class GPFootballInfo : public GMultiMapFixedInfo
 public:
 	// Override methods
 
-	// BW1W120 00643620 BW1M100 10111690 GPFootballInfo::_dt(void)
+	// BW1W120 00643620 BW1M119 0111aeb0
 	virtual ~GPFootballInfo();
-	// BW1W120 006435d0 BW1M100 10111730 GPFootballInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 006435d0 BW1M119 0111af50
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-	// BW1W120 006435c0 BW1M100 10111320 GPFootballInfo::GetMesh( const(void))
+	// BW1W120 006435c0 BW1M119 0111ab50
 	virtual MESH_LIST GetMesh() const;
 };
 

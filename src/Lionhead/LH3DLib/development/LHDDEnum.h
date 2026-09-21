@@ -11,7 +11,7 @@ struct LHDDEnum
 
 	// Non-virtual methods
 
-	// BW1W120 007dd010 BW1M100 1014d920 LHDDEnum::~LHDDEnum(void)
+	// BW1W120 007dd010 BW1M119 0114e5a0 (LHCombined Release)
 	~LHDDEnum();
 };
 

@@ -12,7 +12,7 @@
 
 static int VillagerDanceSentinel = -1;
 
-// BW1W120 00759890 BW1M100 105775d0 Villager::FindImmediateNeighbour(void)
+// BW1W120 00759890 BW1M119 0157f720
 // TODO: ~unknown% — blocked on a cross-TU return-type contradiction (mangled-void-returns-value
 // family, dispatcher-owned). GUtils::Spiral is declared in Utils.h as returning `JustMapXZ` BY
 // VALUE, but its real mangled signature (?Spiral@GUtils@@SAPBUJustMapXZ@@AAJ0@Z) proves it
@@ -46,21 +46,21 @@ Villager* Villager::FindImmediateNeighbour()
 	return NULL;
 }
 
-// BW1W120 00759930 BW1M100 10577560 Villager::DanceForEditingPurposes(void)
+// BW1W120 00759930 BW1M119 0157f6b0
 bool32_t Villager::DanceForEditingPurposes()
 {
 	PerformDance(dance_group->behaviour->Pos, VILLAGER_STATE_DANCE_FOR_EDITING_PURPOSES, dance_group->field_0x5c);
 	return 1;
 }
 
-// BW1W120 00759960 BW1M100 105774f0 Villager::DanceButNotWorship(void)
+// BW1W120 00759960 BW1M119 0157f640
 bool32_t Villager::DanceButNotWorship()
 {
 	PerformDance(dance_group->behaviour->Pos, VILLAGER_STATE_DANCE_BUT_NOT_WORSHIP, dance_group->field_0x5c);
 	return 1;
 }
 
-// BW1W120 00759990 BW1M100 10577430 Villager::MoveToDancePos(void)
+// BW1W120 00759990 BW1M119 0157f580
 // TODO: blocked on an UNNAMED helper — the target computes `&dance_group->behaviour->Pos` via an
 // out-of-line thiscall (symbols.txt: `fn_0050D5F0`, size 0x10, body `mov eax,[ecx+0x18]; add
 // eax,0x14; ret`; ecx=dance_group), rather than inlining the two-instruction field access as
@@ -82,7 +82,7 @@ bool32_t Villager::MoveToDancePos()
 	return MoveToPos();
 }
 
-// BW1W120 00759a00 BW1M100 105772e0 Villager::ControlledByCreature(void)
+// BW1W120 00759a00 BW1M119 0157f430
 bool32_t Villager::ControlledByCreature()
 {
 	if (dance_group != NULL && dance_group->Dancer != NULL)
@@ -101,7 +101,7 @@ bool32_t Villager::ControlledByCreature()
 	return 1;
 }
 
-// BW1W120 00759a90 BW1M100 105770d0 Villager::ExitControlledByCreature(unsigned char)
+// BW1W120 00759a90 BW1M119 0157f220
 // TODO: deferred — blocked on an UNNAMED global (symbols.txt has NO entry at all, not even a
 // placeholder, for the absolute load at 0xc5fcf8 that the target uses as a creature-list head)
 // plus loosely-typed cross-unit fields (Creature::field_0x1090/field_0x1094 in Creature.h are
@@ -133,7 +133,7 @@ bool32_t Villager::ExitControlledByCreature(unsigned char state)
 	return true;
 }
 
-// BW1W120 00759b80 BW1M100 10577060 Villager::SetStateAfterFinishingDance(void)
+// BW1W120 00759b80 BW1M119 0157f1b0
 void Villager::SetStateAfterFinishingDance()
 {
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);

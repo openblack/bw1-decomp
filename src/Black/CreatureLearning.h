@@ -42,12 +42,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 004e03d0 BW1M100 10246a10 CreatureLearning::_dt(void)
+	// BW1W120 004e03d0 BW1M119 0124b1a0
 	virtual ~CreatureLearning();
 
 	// Constructors
 
-	// BW1W120 004e0290 BW1M100 10265060 CreatureLearning::CreatureLearning(Creature *)
+	// BW1W120 004e0290 BW1M119 01268fd0
 	CreatureLearning(Creature* creature);
 };
 
@@ -58,7 +58,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cbc00 BW1M100 10250410 CreatureLearningEpisode::_dt(void)
+	// BW1W120 004cbc00 BW1M119 012549f0
 	virtual ~CreatureLearningEpisode();
 };
 
@@ -67,7 +67,7 @@ class CreatureLearningContext : public Base
 public:
 	// Override methods
 
-	// BW1W120 004e1d30 BW1M100 10262750 CreatureLearningContext::_dt(void)
+	// BW1W120 004e1d30 BW1M119 01266760
 	virtual ~CreatureLearningContext();
 };
 

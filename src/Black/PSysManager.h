@@ -20,17 +20,17 @@ public:
 
 	// Override methods
 
-	// BW1W120 00672cb0 BW1M100 103dcfb0 PSysManager::_dt(void)
+	// BW1W120 00672cb0 BW1M119 013e5410
 	virtual ~PSysManager();
-	// BW1W120 006735c0 BW1M100 103dc100 PSysManager::GetPlayer(void)
+	// BW1W120 006735c0 BW1M119 013e40d0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 00672ca0 BW1M100 10423d00 PSysManager::GetDebugText(void)
+	// BW1W120 00672ca0 BW1M119 0142cc40
 	virtual char* GetDebugText();
-	// BW1W120 00694500 BW1M100 1041d6f0 PSysManager::Load(GameOSFile &)
+	// BW1W120 00694500 BW1M119 01426700
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 006cb090 BW1M100 104858d0 PSysManager::Save(GameOSFile &)
+	// BW1W120 006cb090 BW1M119 0148dd50
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00672c90 BW1M100 10423cc0 PSysManager::GetSaveType(void)
+	// BW1W120 00672c90 BW1M119 0142cc00
 	virtual uint32_t GetSaveType();
 };
 

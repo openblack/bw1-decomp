@@ -17,14 +17,14 @@ class Object;
 class PhysicsObject : public Base
 {
 public:
-	// BW1W120 006442b0 BW1M100 10114020 PhysicsObject::DeleteAll(void)
+	// BW1W120 006442b0 BW1M119 0111dbd0
 	static void DeleteAll();
-	// BW1W120 00644fc0 BW1M100 10038e40 PhysicsObject::GameTurnUpdate(void)
+	// BW1W120 00644fc0 BW1M119 0103b7a0
 	static void GameTurnUpdate();
 	static void DrawAll(); // 00646de0
-	// BW1W120 00646950 BW1M100 10112550 PhysicsObject::SearchForPhysicsObject(Object *)
+	// BW1W120 00646950 BW1M119 0111bc70
 	static PhysicsObject* SearchForPhysicsObject(Object* object);
-	// BW1W120 006443a0 BW1M100 1011d510 PhysicsObject::AddObject(Object *, LHPoint const &, LHPoint const &, Object *, GInterfaceStatus *)
+	// BW1W120 006443a0 BW1M119 0111d510
 	static PhysicsObject* AddObject(Object* object, const LHPoint& param_2, const LHPoint& param_3, Object* param_4,
 	                                GInterfaceStatus* param_5);
 
@@ -51,12 +51,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 00644d70 BW1M100 10113d90 PhysicsObject::_dt(void)
+	// BW1W120 00644d70 BW1M119 0111d940
 	virtual ~PhysicsObject();
 
 	// Constructors
 
-	// BW1W120 00644330 BW1M100 10113e20 PhysicsObject::PhysicsObject(void)
+	// BW1W120 00644330 BW1M119 0111d9d0
 	PhysicsObject();
 };
 

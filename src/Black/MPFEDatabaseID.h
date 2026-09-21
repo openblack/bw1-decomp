@@ -10,7 +10,7 @@ class MPFEDatabaseID : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00627b00 BW1M100 1039bb00 MPFEDatabaseID::_dt(void)
+	// BW1W120 00627b00 BW1M119 013a3520
 	virtual ~MPFEDatabaseID();
 };
 

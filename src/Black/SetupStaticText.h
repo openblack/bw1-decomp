@@ -14,9 +14,9 @@ public:
 
 	// Override methods
 
-	// BW1W120 00409430 BW1M100 105436e0 SetupStaticText::Draw(bool, bool)
+	// BW1W120 00409430 BW1M119 010a9370
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 00411670 BW1M100 100cb300 SetupStaticText::~SetupStaticText(void)
+	// BW1W120 00411670 BW1M119 01162390
 	virtual ~SetupStaticText();
 };
 

@@ -18,18 +18,19 @@ struct MusicMoodPacket
 	unsigned int field_0x4;
 	unsigned int field_0x8;
 	MusicEmotion Emotion;
-	// BW1W120 0054b910 BW1M100 10018800 MusicMoodPacket::MusicMoodPacket(void)
+	// BW1W120 0054b910 BW1M119 0101b3a0
 	MusicMoodPacket();
 };
 
 class MusicMoodController
 {
 public:
-	// BW1W120 00d06438. Descriptive name for the CreatureMusicMood option.
+	// Descriptive name for the CreatureMusicMood option.
+	// BW1W120 00d06438
 	static unsigned int CreatureMusicMoodEnabled;
-	// BW1W120 00634040 BW1M100 1010aa90 MusicMoodController::Close(void)
+	// BW1W120 00634040 BW1M119 011142a0
 	static void Close();
-	// BW1W120 00633ef0 BW1M100 1008eb20 MusicMoodController::UpdateOnGameTurn(float, bool)
+	// BW1W120 00633ef0 BW1M119 01090dc0
 	static void UpdateOnGameTurn(float delta_time, bool reset);
 };
 

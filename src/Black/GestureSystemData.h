@@ -21,14 +21,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 00579690 BW1M100 1042dc90 GestureSystemData::_dt(void)
+	// BW1W120 00579690 BW1M119 010c8600
 	virtual ~GestureSystemData();
 
 	// Constructors
 
-	// BW1W120 0054baf0 BW1M100 inlined GestureSystemData::GestureSystemData(void)
+	// BW1W120 0054baf0 BW1M119 inlined
 	GestureSystemData();
-	// BW1W120 00578be0 BW1M100 10093810 GestureSystemData::SetToZero(void)
+	// BW1W120 00578be0 BW1M119 01095a70
 	void SetToZero();
 };
 

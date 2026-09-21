@@ -25,12 +25,12 @@ struct LH_SamplePlayOptions
 
 	// Constructors
 
-	// BW1W120 10010e90 BW1M100 100397c0 LH_SamplePlayOptions::LH_SamplePlayOptions(void)
+	// BW1W120 10010e90 BW1M119 010399f0 (LHCombined Release)
 	LH_AUDIO_OPTIONS_API LH_SamplePlayOptions();
 
 	// Non-virtual methods
 
-	// BW1W120 10011010 BW1M100 1003a2c0 LH_SamplePlayOptions::~LH_SamplePlayOptions(void)
+	// BW1W120 10011010 BW1M119 0103a500 (LHCombined Release)
 	LH_AUDIO_OPTIONS_API ~LH_SamplePlayOptions();
 };
 static_assert(sizeof(LH_SamplePlayOptions) == 0x168, "Sample options size is incorrect");

@@ -22,25 +22,25 @@ class MagicTree : public Tree
 public:
 	// Override methods
 
-	// BW1W120 005fcf30 BW1M100 103b22a0 MagicTree::_dt(void)
+	// BW1W120 005fcf30 BW1M119 013ba1f0
 	virtual ~MagicTree();
-	// BW1W120 005fd070 BW1M100 103b2760 MagicTree::ToBeDeleted(int)
+	// BW1W120 005fd070 BW1M119 013ba6b0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 005fd060 BW1M100 103b2840 MagicTree::GetPlayer(void)
+	// BW1W120 005fd060 BW1M119 013ba790
 	virtual GPlayer* GetPlayer();
-	// BW1W120 005fcf20 BW1M100 103b23b0 MagicTree::GetDebugText(void)
+	// BW1W120 005fcf20 BW1M119 013ba300
 	virtual char* GetDebugText();
-	// BW1W120 005fd1c0 BW1M100 103b23f0 MagicTree::Load(GameOSFile &)
+	// BW1W120 005fd1c0 BW1M119 013ba340
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 005fd110 BW1M100 103b2510 MagicTree::Save(GameOSFile &)
+	// BW1W120 005fd110 BW1M119 013ba460
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 005fcf10 BW1M100 103b2370 MagicTree::GetSaveType(void)
+	// BW1W120 005fcf10 BW1M119 013ba2c0
 	virtual uint32_t GetSaveType();
-	// BW1W120 005fcf00 BW1M100 103b2330 MagicTree::GetImpressiveType(void)
+	// BW1W120 005fcf00 BW1M119 013ba280
 	virtual IMPRESSIVE_TYPE GetImpressiveType();
-	// BW1W120 005fd0d0 BW1M100 103b26d0 MagicTree::StartOnFire(void)
+	// BW1W120 005fd0d0 BW1M119 013ba620
 	virtual void StartOnFire();
-	// BW1W120 005fd0e0 BW1M100 103b2640 MagicTree::EndOnFire(void)
+	// BW1W120 005fd0e0 BW1M119 013ba590
 	virtual void EndOnFire();
 };
 

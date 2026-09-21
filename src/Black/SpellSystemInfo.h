@@ -15,9 +15,9 @@ class GSpellSystemInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 0072ae00 BW1M100 1052de00 GSpellSystemInfo::_dt(void)
+	// BW1W120 0072ae00 BW1M119 015366a0
 	virtual ~GSpellSystemInfo();
-	// BW1W120 0072adb0 BW1M100 1052dea0 GSpellSystemInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0072adb0 BW1M119 01536740
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

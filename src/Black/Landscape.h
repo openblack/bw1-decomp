@@ -20,7 +20,8 @@ class Object;
 
 struct GLandscape
 {
-	// BW1W120 00d99580. Set by Open; TODO: original global name unknown.
+	// Set by Open; TODO: original global name unknown.
+	// BW1W120 00d99580
 	static char Filename[];
 	// Original names unrecovered. Paired draw arrays hold 3000 entries; insertion stops at 2999.
 	// BW1W120 00d1a3ac
@@ -29,25 +30,26 @@ struct GLandscape
 	static Object* DrawObjects[3000];
 	// BW1W120 00d20198
 	static int DrawObjectCount;
-	// BW1W120 00bf358c. Descriptive name; decremented when rebuilding the draw list.
+	// Descriptive name; decremented when rebuilding the draw list.
+	// BW1W120 00bf358c
 	static int DrawListRebuildCount;
-	// BW1W120 005e5280 BW1M100 1037a310 GLandscape::Close(void)
+	// BW1W120 005e5280 BW1M119 01381d10
 	void Close();
 
 	LH3DTexture*  texture; /* 0x0 */
 	LH3DMaterial* material;
-	// BW1W120 005e55c0 GLandscape::~GLandscape(void)
+	// BW1W120 005e55c0 BW1M119 013818e0
 	~GLandscape();
 
 	// Static methods
 
-	// BW1W120 inlined BW1M100 100198f0 GLandscape::ConvertLandscapePointToMapCoord(LHPoint const &, MapCoords &)
+	// BW1W120 inlined BW1M119 0101c4a0
 	static void ConvertLandscapePointToMapCoord(const LHPoint& point, MapCoords& coords);
-	// BW1W120 inlined BW1M100 106f5c34 GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(MapCoords const &, LHPoint &)
+	// BW1W120 inlined BW1M119 010aab80
 	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point);
-	// BW1W120 005e3f60 BW1M100 1001d960 GLandscape::PreDraw(void)
+	// BW1W120 005e3f60 BW1M119 010204d0
 	uint32_t PreDraw();
-	// BW1W120 00613750 BW1M100 1004aef0 GLandscape::ConvertMapCoordToLandscapePoint(MapCoords const &, LHPoint &)
+	// BW1W120 00613750 BW1M119 0104aef0
 	// MSVC 6 inlines this. Inlined uses look like (esi=coords, eax=point):
 	//     call LH3DIsland::GetAltitude
 	//     fadds <spilled altitude>          fstps [point+4]
@@ -69,9 +71,9 @@ struct GLandscape
 
 	// Non-virtual methods
 
-	// BW1W120 005e42e0 BW1M100 1004d770 GLandscape::Draw(void)
+	// BW1W120 005e42e0 BW1M119 01050100
 	void Draw();
-	// BW1W120 005e52e0 BW1M100 10379f50 GLandscape::Open(char *)
+	// BW1W120 005e52e0 BW1M119 01381950
 	void Open(char* path);
 };
 
@@ -79,7 +81,7 @@ struct GLandscape
 
 void ClearLight(); // 005e57b0
 
-// BW1W120 005e6540 BW1M100 10378b00 GoolooGooloo(Object *)
+// BW1W120 005e6540 BW1M119 01380c10
 void GoolooGooloo(Object* object);
 
 #endif /* BW1_DECOMP_LANDSCAPE_INCLUDED_H */

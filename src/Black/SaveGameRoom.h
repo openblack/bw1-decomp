@@ -9,20 +9,21 @@
 class SaveGameRoom : public PictureRoomBase
 {
 public:
-	// BW1W120 00e05fc0. TODO: Original global name unknown.
+	// TODO: Original global name unknown.
+	// BW1W120 00e05fc0
 	static long CurrentSlot;
 
 	// Static methods
 
-	// BW1W120 00792fb0 BW1M100 104cd530 SaveGameRoom::InstantSaveGame(long)
+	// BW1W120 00792fb0 BW1M119 014d38b0
 	static void InstantSaveGame(long slot);
 
-	// BW1W120 007923a0 BW1M100 104ce930 SaveGameRoom::CreateSaveGameFiles(char*)
+	// BW1W120 007923a0 BW1M119 014d4ca0
 	static bool32_t CreateSaveGameFiles(char* path);
 
 	// Constructors
 
-	// BW1W120 0078f960 BW1M100 104d5aa0 SaveGameRoom::SaveGameRoom(void)
+	// BW1W120 0078f960 BW1M119 014dbe00
 	SaveGameRoom();
 };
 

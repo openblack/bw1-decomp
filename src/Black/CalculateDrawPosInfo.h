@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <Lionhead/LH3DLib/development/LHMatrix.h>
 
-// AtomCore::CalculateDrawPos (BW1M100 10051bb0) premultiplies the matrix,
+// AtomCore::CalculateDrawPos (BW1M119 01054540) premultiplies the matrix,
 // multiplies Scale and combines Alpha. AtomCore construction at 00673830 agrees.
 // TODO: The original also aliases the matrix as four points in an anonymous union.
 // fabricated class tag: the nonpolymorphic Mac symbols do not distinguish class/struct.

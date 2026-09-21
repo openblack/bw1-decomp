@@ -21,9 +21,9 @@ class FireFly : public Object
 {
 public:
 	static void DrawAll(); // 0052b790
-	// BW1W120 0052a1e0 BW1M100 100da080 FireFly::OnClearMap(void)
+	// BW1W120 0052a1e0 BW1M119 010deda0
 	static void OnClearMap();
-	// BW1W120 0052b7a0 BW1M100 1007d730 FireFly::ProcessAll(void)
+	// BW1W120 0052b7a0 BW1M119 0107fcb0
 	static void ProcessAll();
 
 	uint32_t    field_0x54;
@@ -49,43 +49,43 @@ public:
 
 	// Override methods
 
-	// BW1W120 0052a310 BW1M100 100d9be0 FireFly::_dt(void)
+	// BW1W120 0052a310 BW1M119 010de920
 	virtual ~FireFly();
-	// BW1W120 0052a4c0 BW1M100 100d9ab0 FireFly::ToBeDeleted(int)
+	// BW1W120 0052a4c0 BW1M119 010de7f0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0052a300 BW1M100 100d66d0 FireFly::GetDebugText(void)
+	// BW1W120 0052a300 BW1M119 010db2f0
 	virtual char* GetDebugText();
-	// BW1W120 0052bbc0 BW1M100 100d6850 FireFly::Load(GameOSFile &)
+	// BW1W120 0052bbc0 BW1M119 010db470
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0052b870 BW1M100 100d7020 FireFly::Save(GameOSFile &)
+	// BW1W120 0052b870 BW1M119 010dbcb0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0052a2f0 BW1M100 100d6690 FireFly::GetSaveType(void)
+	// BW1W120 0052a2f0 BW1M119 010db2b0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0052a1d0 BW1M100 100da180 FireFly::IsMoving( const(void))
+	// BW1W120 0052a1d0 BW1M119 010deeb0
 	virtual bool32_t IsMoving() const;
-	// BW1W120 0052aa90 BW1M100 100d9130 FireFly::Draw(void)
+	// BW1W120 0052aa90 BW1M119 010dde70
 	virtual void Draw();
-	// BW1W120 0052a510 BW1M100 100d9950 FireFly::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 0052a510 BW1M119 010de690
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 0052a1a0 BW1M100 100da240 FireFly::InteractsWithPhysicsObjects(void)
+	// BW1W120 0052a1a0 BW1M119 010def70
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 0052a1b0 BW1M100 100da1f0 FireFly::ReactToPhysicsImpact(PhysicsObject *, bool)
+	// BW1W120 0052a1b0 BW1M119 010def20
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-	// BW1W120 0052a1c0 BW1M100 100da1b0 FireFly::CanBecomeAPhysicsObject(void)
+	// BW1W120 0052a1c0 BW1M119 010deee0
 	virtual bool32_t CanBecomeAPhysicsObject();
-	// BW1W120 0052bf10 BW1M100 100d6710 FireFly::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 0052bf10 BW1M119 010db330
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Static methods
 
-	// BW1W120 0052a200 BW1M100 100d9f20 FireFly::Create(MapCoords const &)
+	// BW1W120 0052a200 BW1M119 010dec40
 	static FireFly* Create(const MapCoords& coord);
 
 	// Constructors
 
-	// BW1W120 0052a280 BW1M100 100d9e20 FireFly::FireFly(const MapCoords&)
+	// BW1W120 0052a280 BW1M119 010deb50
 	FireFly(const MapCoords& coords);
-	// BW1W120 0052a340 BW1M100 100d9e04 FireFly::FireFly(void)
+	// BW1W120 0052a340 BW1M119 010deac0
 	FireFly();
 };
 

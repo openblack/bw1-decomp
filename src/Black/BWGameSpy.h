@@ -11,7 +11,7 @@ class BWGameSpy : public LayerCommunication
 public:
 	// Override methods
 
-	// BW1W120 0043e290 BW1M100 105d1460 BWGameSpy::Connect(void)
+	// BW1W120 0043e290 BW1M119 015d8080
 	virtual uint32_t Connect();
 };
 

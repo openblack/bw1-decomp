@@ -34,19 +34,19 @@ public:
 
 	// Override methods
 
-	// BW1W120 00514f50 BW1M100 102b2b00 MiniDialogBoxOptions::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00514f50 BW1M119 012b5bd0
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
-	// BW1W120 00515680 BW1M100 102b2aa0 MiniDialogBoxOptions::Destroy(void)
+	// BW1W120 00515680 BW1M119 012b5b70
 	virtual void Destroy();
-	// BW1W120 00515810 BW1M100 102b27a0 MiniDialogBoxOptions::CanESCOut(void)
+	// BW1W120 00515810 BW1M119 012b5880
 	virtual bool CanESCOut();
-	// BW1W120 00515690 BW1M100 102b2800 MiniDialogBoxOptions::InitControls(void)
+	// BW1W120 00515690 BW1M119 012b58e0
 	virtual void InitControls();
 
 	// Constructors
 
-	// BW1W120 00514f20 BW1M100 inlined MiniDialogBoxOptions::MiniDialogBoxOptions(void)
+	// BW1W120 00514f20 BW1M119 inlined
 	MiniDialogBoxOptions();
 };
 

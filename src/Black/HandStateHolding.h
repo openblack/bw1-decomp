@@ -19,7 +19,7 @@ public:
 
 	// Constructors
 
-	// BW1W120 005b3aa0 BW1M100 1033bba0 HandStateHolding::HandStateHolding(CHand*)
+	// BW1W120 005b3aa0 BW1M119 01343b80
 	HandStateHolding(CHand* hand);
 };
 

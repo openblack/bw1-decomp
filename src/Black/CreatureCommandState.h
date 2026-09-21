@@ -17,7 +17,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d35e0 BW1M100 10245e50 CreatureCommandState::_dt(void)
+	// BW1W120 004d35e0 BW1M119 0124a750
 	virtual ~CreatureCommandState();
 };
 

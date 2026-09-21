@@ -14,7 +14,7 @@ struct LH3DObjectHair
 
 	// Non-virtual methods
 
-	// BW1W120 00848340 BW1M100 10137b70 LH3DObjectHair::Init(long, HairGroup **)
+	// BW1W120 00848340 BW1M119 0104db10 (LHCombined Release)
 	void Init(long param_2, HairGroup** param_3);
 };
 

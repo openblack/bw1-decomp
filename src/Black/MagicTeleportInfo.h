@@ -15,7 +15,7 @@ class GMagicTeleportInfo : public GMagicInfo
 public:
 	// Override methods
 
-	// BW1W120 004356c0 BW1M100 103b2190 GMagicTeleportInfo::_dt(void)
+	// BW1W120 004356c0 BW1M119 013ba0e0
 	virtual ~GMagicTeleportInfo();
 };
 

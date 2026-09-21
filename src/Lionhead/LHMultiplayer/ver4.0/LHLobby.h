@@ -29,15 +29,15 @@ struct LHLobby
 
 	// Non-virtual methods
 
-	// BW1W120 1000cb00 BW1M100 100f0d70 LHLobby::OpenLocalLobby(LHMPServerStartInfo *)
+	// BW1W120 1000cb00 BW1M119 010efc50 (LHCombined Release)
 	LH_RETURN OpenLocalLobby(LHMPServerStartInfo* info);
-	// BW1W120 1000d440 BW1M100 100efe80 LHLobby::ProcessLobbyPlayerList(LHNetEvent *)
+	// BW1W120 1000d440 BW1M119 010eedb0 (LHCombined Release)
 	LH_RETURN ProcessLobbyPlayerList(LHNetEvent* net_event);
-	// BW1W120 005ea900 BW1M100 100ed350 LHLobby::_dt(void)
+	// BW1W120 005ea900 BW1M119 010eccb0 (LHCombined Release)
 	void _dt();
-	// BW1W120 007c549c BW1M100 100eced0 LHLobby::Close(void)
+	// BW1W120 007c549c BW1M119 010ec830 (LHCombined Release)
 	void Close();
-	// BW1W120 007c54a2 BW1M100 100f05c0 LHLobby::ProcessEvent(LHNetEvent *)
+	// BW1W120 007c54a2 BW1M119 010ef4a0 (LHCombined Release)
 	LH_RETURN ProcessEvent(LHNetEvent* param_1);
 };
 

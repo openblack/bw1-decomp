@@ -20,14 +20,14 @@ public:
 	float UpdateOfBoredomValue;
 	float field_0x24;
 
-	// BW1W120 00c58640 BW1M100 10a335a0
+	// BW1W120 00c58640
 	static GBeliefInfo Info;
 
 	// Override methods
 
-	// BW1W120 00437db0 BW1M100 100b22b0 GBeliefInfo::_dt(void)
+	// BW1W120 00437db0 BW1M119 010b4e10
 	virtual ~GBeliefInfo();
-	// BW1W120 00437d60 BW1M100 100b2260 GBeliefInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00437d60 BW1M119 010b4dc0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

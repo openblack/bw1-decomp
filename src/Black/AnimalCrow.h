@@ -17,13 +17,13 @@ class Crow : public Dove
 public:
 	// Override methods
 
-	// BW1W120 0041ec20 BW1M100 101718e0 Crow::_dt(void)
+	// BW1W120 0041ec20 BW1M119 0117a900
 	virtual ~Crow();
-	// BW1W120 0041ec10 BW1M100 101719a0 Crow::GetDebugText(void)
+	// BW1W120 0041ec10 BW1M119 0117a9c0
 	virtual char* GetDebugText();
-	// BW1W120 0041ec00 BW1M100 10171970 Crow::GetSaveType(void)
+	// BW1W120 0041ec00 BW1M119 0117a990
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041bf10 BW1M100 10170590 Crow::StandAnimation(void)
+	// BW1W120 0041bf10 BW1M119 011794b0
 	virtual uint32_t StandAnimation();
 };
 

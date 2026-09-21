@@ -4,9 +4,9 @@
 class CPController
 {
 public:
-	// BW1W120 00469990 BW1M100 101c4ca0 CPController::Init(void)
+	// BW1W120 00469990 BW1M119 011cc440
 	static void Init();
-	// BW1W120 00469960 CPController::Close(void)
+	// BW1W120 00469960 BW1M119 011cc4c0
 	static void Close();
 };
 

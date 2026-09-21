@@ -13,12 +13,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 005e6770 BW1M100 1017a5a0 GLanguage::_dt(void)
+	// BW1W120 005e6770 BW1M119 01516d40
 	virtual ~GLanguage();
 
 	// Constructors
 
-	// BW1W120 005e6750 BW1M100 1019cef0 GLanguage::GLanguage(void)
+	// BW1W120 005e6750 BW1M119 0113ed40
 	GLanguage();
 };
 

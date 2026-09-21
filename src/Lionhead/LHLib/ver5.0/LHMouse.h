@@ -169,57 +169,58 @@ struct LHMouse
 
 	// Constructors
 
-	// BW1W120 007e4f20 BW1M100 10145820 LHMouse::LHMouse(void)
+	// BW1W120 007e4f20 BW1M119 01146690 (LHCombined Release)
 	LHMouse();
 
 	// Non-virtual methods
 
-	// BW1W120 007e4810 LHMouse::UpdateDeltaPos(void)
+	// BW1W120 007e4810 BW1M119 011c9478 (LHCombined Release)
 	int UpdateDeltaPos();
-	// BW1W120 007e48c0 LHMouse::InitDirectInput(void)
+	// BW1W120 007e48c0 BW1M119 01146b10 (LHCombined Release)
 	int InitDirectInput();
-	// BW1W120 007e49a0 BW1M100 10006f30 LHMouse::UpdateCurrentPos(LHCoord)
+	// BW1W120 007e49a0 BW1M119 01007030 (LHCombined Release)
 	int UpdateCurrentPos(LHCoord coord);
-	// BW1W120 007e4b40 LHMouse::SetMouseMargin(LHCoord)
+	// BW1W120 007e4b40 BW1M119 01146a60 (LHCombined Release)
 	void SetMouseMargin(LHCoord margin);
-	// BW1W120 007e4b80 LHMouse::SetButtons(unsigned char)
+	// BW1W120 007e4b80 BW1M119 0103fa00 (LHCombined Release)
 	void SetButtons(uint8_t button);
-	// BW1W120 007e4e40 BW1M100 10145990 LHMouse::SetPosition(LHCoord *)
+	// BW1W120 007e4e40 BW1M119 01146850 (LHCombined Release)
 	int SetPosition(LHCoord* position);
-	// BW1W120 007e4ed0 LHMouse::SetPositionRel(LHCoord *)
+	// BW1W120 007e4ed0 BW1M119 01146790 (LHCombined Release)
 	int SetPositionRel(LHCoord* delta);
-	// BW1W120 007e4f90 LHMouse::SetWorkingArea(unsigned short, unsigned short)
+	// BW1W120 007e4f90 BW1M119 011462b0 (LHCombined Release)
 	int SetWorkingArea(uint16_t width, uint16_t height);
-	// BW1W120 007e5330 LHMouse::SetSpriteFlags(unsigned long)
+	// BW1W120 007e5330 BW1M119 011461d0 (LHCombined Release)
 	int SetSpriteFlags(unsigned long flags);
-	// BW1W120 007e53b0 LHMouse::SetCursor(void *, LH_MOUSE_IMAGE_TYPE, int)
+	// BW1W120 007e53b0 BW1M119 01146000 (LHCombined Release)
 	int SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, int reallocSurface);
-	// BW1W120 007e5550 LHMouse::PinImage(short, short)
+	// BW1W120 007e5550 BW1M119 01145fa0 (LHCombined Release)
 	void PinImage(int16_t x, int16_t y);
-	// BW1W120 007e55c0 LHMouse::UpdateDrawRegions(LHSurface *)
+	// BW1W120 007e55c0 BW1M119 01145a30 (LHCombined Release)
 	void UpdateDrawRegions(LHSurface* surface);
-	// BW1W120 007e57c0 BW1M100 1003fb90 LHMouse::Draw(LH_SCREEN_BUFFER, LH_MOUSE_EVENT_TYPE)
+	// BW1W120 007e57c0 BW1M119 0103f460 (LHCombined Release)
 	void Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType);
-	// BW1W120 007e5b20 LHMouse::SetCurrentCursorAnimFrame(unsigned long)
+	// BW1W120 007e5b20 BW1M119 01145690 (LHCombined Release)
 	void SetCurrentCursorAnimFrame(unsigned long frame);
-	// BW1W120 007e5b30 LHMouse::SetAnimFrame(void)
+	// BW1W120 007e5b30 BW1M119 011454e0 (LHCombined Release)
 	int SetAnimFrame();
-	// BW1W120 007e5bf0 LHMouse::SetAnimateImages(LH_ANIMATE_IMAGE_TYPE, void *, unsigned long)
+	// BW1W120 007e5bf0 BW1M119 011451b0 (LHCombined Release)
 	void SetAnimateImages(LH_ANIMATE_IMAGE_TYPE imageType, void* images, unsigned long index);
-	// BW1W120 007e5ea0 LHMouse::Animate(LH_ANIMATE_TYPE, unsigned short, unsigned long)
+	// BW1W120 007e5ea0 BW1M119 01144d10 (LHCombined Release)
 	void Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long frameCount);
-	// BW1W120 007e6070 LHMouse::GetScreenUnderCursorNoSetup(LHSurface *, LHSurface *)
+	// BW1W120 007e6070 BW1M119 01144740 (LHCombined Release)
 	int GetScreenUnderCursorNoSetup(LHSurface* surface, LHSurface* prevSurface);
 
 	// Static methods
 
-	// BW1W120 007e4960 LHMouse::ShutdownDirectInput(void)
+	// BW1W120 007e4960
 	static int ShutdownDirectInput();
 
 	// Static members
 
-	// BW1W120 00c311a4 set on WM_ACTIVATEAPP so UpdateDeltaPos skips the stale wheel
+	// Set on WM_ACTIVATEAPP so UpdateDeltaPos skips the stale wheel
 	// delta accumulated while the app was inactive. TODO: fabricated name.
+	// BW1W120 00c311a4
 	static uint8_t MouseWheelSkip;
 };
 static_assert(sizeof(LHMouse) == 360, "Data type is of wrong size");

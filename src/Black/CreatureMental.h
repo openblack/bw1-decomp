@@ -40,7 +40,7 @@ struct CreatureInnatePersonality
 class CreatureMental : public Base
 {
 public:
-	// BW1W120 004e7820 BW1M100 1026a130 CreatureMental::SaveMind(char*)
+	// BW1W120 004e7820 BW1M119 0126dfb0
 	void                      SaveMind(char* path);
 	CreatureDesires           desires;                  /* 0x8 */
 	CreatureAgenda            agenda;                   /* 0x710 */
@@ -79,12 +79,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d2560 BW1M100 10245b60 CreatureMental::_dt(void)
+	// BW1W120 004d2560 BW1M119 0124a460
 	virtual ~CreatureMental();
 
 	// Non-virtual methods
 
-	// BW1W120 004d7bd0 BW1M100 10253c90 CreatureMental::AddBeliefAboutObject(Creature *, GameThingWithPos *)
+	// BW1W120 004d7bd0 BW1M119 01258250
 	void* AddBeliefAboutObject(Creature* param_1, GameThingWithPos* param_2);
 };
 

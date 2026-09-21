@@ -25,21 +25,21 @@ public:
 
 	// Override methods
 
-	// BW1W120 004247c0 BW1M100 100ad310 GArena::_dt(void)
+	// BW1W120 004247c0 BW1M119 010afe60
 	virtual ~GArena();
-	// BW1W120 00424960 BW1M100 100ac760 GArena::ToBeDeleted(int)
+	// BW1W120 00424960 BW1M119 010af2a0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00424780 BW1M100 10027dd0 GArena::GetRadius(void)
+	// BW1W120 00424780 BW1M119 0102a940
 	virtual float GetRadius();
-	// BW1W120 004247b0 BW1M100 100ad420 GArena::GetDebugText(void)
+	// BW1W120 004247b0 BW1M119 010aff70
 	virtual char* GetDebugText();
-	// BW1W120 004251d0 BW1M100 100aa860 GArena::Load(GameOSFile &)
+	// BW1W120 004251d0 BW1M119 010ae160
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 004250d0 BW1M100 100aa9e0 GArena::Save(GameOSFile &)
+	// BW1W120 004250d0 BW1M119 010ae2e0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 004247a0 BW1M100 100ad3e0 GArena::GetSaveType(void)
+	// BW1W120 004247a0 BW1M119 010aff30
 	virtual uint32_t GetSaveType();
-	// BW1W120 00424790 BW1M100 100ad3a0 GArena::GetText(void)
+	// BW1W120 00424790 BW1M119 010afef0
 	virtual const char* GetText();
 };
 
@@ -48,29 +48,29 @@ class ArenaSpellIcon : public Fixed
 public:
 	// Override methods
 
-	// BW1W120 00425350 BW1M100 100aa680 ArenaSpellIcon::_dt(void)
+	// BW1W120 00425350 BW1M119 010adf60
 	virtual ~ArenaSpellIcon();
-	// BW1W120 00425600 BW1M100 100aa280 ArenaSpellIcon::ToBeDeleted(int)
+	// BW1W120 00425600 BW1M119 010adb60
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00425330 BW1M100 100a9c90 ArenaSpellIcon::GetDebugText(void)
+	// BW1W120 00425330 BW1M119 010ad580
 	virtual char* GetDebugText();
-	// BW1W120 004257d0 BW1M100 100a9ef0 ArenaSpellIcon::Load(GameOSFile &)
+	// BW1W120 004257d0 BW1M119 010ad7d0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 004256e0 BW1M100 100aa070 ArenaSpellIcon::Save(GameOSFile &)
+	// BW1W120 004256e0 BW1M119 010ad950
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00425320 BW1M100 100a9c50 ArenaSpellIcon::GetSaveType(void)
+	// BW1W120 00425320 BW1M119 010ad540
 	virtual uint32_t GetSaveType();
-	// BW1W120 00425540 BW1M100 100aa340 ArenaSpellIcon::Create3DObject(void)
+	// BW1W120 00425540 BW1M119 010adc20
 	virtual void Create3DObject();
-	// BW1W120 004256c0 BW1M100 100aa250 ArenaSpellIcon::Draw(void)
+	// BW1W120 004256c0 BW1M119 010adb30
 	virtual void Draw();
-	// BW1W120 00425420 BW1M100 100aa4a0 ArenaSpellIcon::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00425420 BW1M119 010add80
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 004256d0 BW1M100 100aa200 ArenaSpellIcon::IsEffectReceiver(EffectValues *)
+	// BW1W120 004256d0 BW1M119 010adae0
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
-	// BW1W120 00425310 BW1M100 100a9c00 ArenaSpellIcon::CreatureMustAvoid(Creature *)
+	// BW1W120 00425310 BW1M119 010ad4f0
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
-	// BW1W120 00425300 BW1M100 100a9bb0 ArenaSpellIcon::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 00425300 BW1M119 010ad4a0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 

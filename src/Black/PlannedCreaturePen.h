@@ -16,9 +16,9 @@ class PlannedCreaturePen : public PlannedCitadelPart
 public:
 	// Override methods
 
-	// BW1W120 004ef050 BW1M100 102748a0 PlannedCreaturePen::_dt(void)
+	// BW1W120 004ef050 BW1M119 012786b0
 	virtual ~PlannedCreaturePen();
-	// BW1W120 004ef040 BW1M100 10274940 PlannedCreaturePen::GetText(void)
+	// BW1W120 004ef040 BW1M119 01278750
 	virtual const char* GetText();
 };
 

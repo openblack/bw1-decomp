@@ -86,14 +86,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 00617eb0 BW1M100 10107d70 Morphable::SetAnimTime(long, long)
+	// BW1W120 00617eb0 BW1M119 01111500
 	virtual void SetAnimTime(int param_1, int param_2);
-	// BW1W120 00618360 BW1M100 101073d0 Morphable::LoadBase(char *)
+	// BW1W120 00618360 BW1M119 01110b70
 	virtual uint32_t LoadBase(char* param_1);
 	virtual void     SetSize(float size) = 0;
-	// BW1W120 00619100 BW1M100 101063f0 Morphable::MorphAnims(void)
+	// BW1W120 00619100 BW1M119 0110fba0
 	virtual void MorphAnims();
-	// BW1W120 00619500 BW1M100 101061c0 Morphable::MorphTexture(void)
+	// BW1W120 00619500 BW1M119 0110f960
 	virtual void     MorphTexture();
 	virtual void     UpdateTime(int time) = 0;
 	virtual void     PrepareForDrawing() = 0;
@@ -103,26 +103,26 @@ public:
 
 	// Static methods
 
-	// BW1W120 006186b0 BW1M100 10107250 Morphable::LoadExtraTexture(void)
+	// BW1W120 006186b0 BW1M119 011109f0
 	static uint32_t LoadExtraTexture();
 
 	// Non-virtual methods
 
-	// BW1W120 00617310 BW1M100 10108d10 Morphable::MorphInit(LHPoint &, long, void* )
+	// BW1W120 00617310 BW1M119 01112440
 	void MorphInit(LHPoint& point, long param_3, void* param_4);
-	// BW1W120 00617470 BW1M100 10108c30 Morphable::AddHairGroup()
+	// BW1W120 00617470 BW1M119 01112360
 	uint32_t AddHairGroup();
-	// BW1W120 00617620 BW1M100 10108960 Morphable::SelectMesh(long)
+	// BW1W120 00617620 BW1M119 01112090
 	void SelectMesh(int param_1);
-	// BW1W120 00617ae0 BW1M100 10107f50 Morphable::ReadBinary(LHFile *, AnimInfo *, AnimInfo *)
+	// BW1W120 00617ae0 BW1M119 011116d0
 	uint32_t ReadBinary(LHFile* file, AnimInfo* info_1, AnimInfo* info_2);
-	// BW1W120 00617ee0 BW1M100 10107a90 Morphable::ReadExtraDataBinary
+	// BW1W120 00617ee0 BW1M119 01111220
 	void ReadExtraDataBinary(LHFile* param_1, AnimInfo* param_2, AnimInfo* param_3, long param_4);
-	// BW1W120 00618720 BW1M100 10106d80 Morphable::LoadMesh(char*, long)
+	// BW1W120 00618720 BW1M119 01110510
 	uint32_t LoadMesh(char* param_2, int param_3);
-	// BW1W120 00619650 BW1M100 10084860 Morphable::GetAnim(long, long)
+	// BW1W120 00619650 BW1M119 01086c40
 	CAnim* GetAnim(long anim_index, long param_3);
-	// BW1W120 00619690 BW1M100 10084450 Morphable::GetSetAnim(long, long, long)
+	// BW1W120 00619690 BW1M119 01086830
 	CAnim* GetSetAnim(long param_1, long param_2, long param_3);
 };
 

@@ -18,16 +18,16 @@ public:
 
 	// Override methods
 
-	// BW1W120 0040b560 BW1M100 103e0950 SetupMultiList::Click(int, int)
+	// BW1W120 0040b560 BW1M119 014ea2d0
 	virtual void Click(int x, int y);
-	// BW1W120 0040b4a0 BW1M100 103f18b0 SetupMultiList::~SetupMultiList(void)
+	// BW1W120 0040b4a0 BW1M119 010caba0
 	virtual ~SetupMultiList();
-	// BW1W120 0040b530 BW1M100 1047e020 SetupMultiList::IsSelected(int)
+	// BW1W120 0040b530 BW1M119 0149c200
 	virtual bool IsSelected(int index);
 
 	// Constructors
 
-	// BW1W120 0040b420 BW1M100 1014cca0 SetupMultiList::SetupMultiList(int, int, int, int, int, int)
+	// BW1W120 0040b420 BW1M119 01480980
 	SetupMultiList(int id, int x, int y, int width, int height, int size);
 };
 

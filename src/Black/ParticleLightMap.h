@@ -17,11 +17,11 @@ class ParticleLightMap : public RenderParticle
 public:
 	// Override methods
 
-	// BW1W120 006ca450 BW1M100 10423560 ParticleLightMap::_dt(void)
+	// BW1W120 006ca450 BW1M119 0142c560
 	virtual ~ParticleLightMap();
-	// BW1W120 006ca440 BW1M100 10423650 ParticleLightMap::GetDebugText(void)
+	// BW1W120 006ca440 BW1M119 0142c650
 	virtual char* GetDebugText();
-	// BW1W120 00695180 BW1M100 1041c890 ParticleLightMap::Load(GameOSFile &)
+	// BW1W120 00695180 BW1M119 014258a0
 	virtual uint32_t Load(GameOSFile& file);
 };
 

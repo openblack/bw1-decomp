@@ -39,38 +39,38 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055ddd0 BW1M100 10144860 ShowNeedsVisuals::_dt(void)
+	// BW1W120 0055ddd0 BW1M119 0114cad0
 	virtual ~ShowNeedsVisuals();
-	// BW1W120 00719dd0 BW1M100 10145660 ShowNeedsVisuals::ToBeDeleted(int)
+	// BW1W120 00719dd0 BW1M119 0114d8d0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0071a1b0 BW1M100 10144f70 ShowNeedsVisuals::GetPlayer(void)
+	// BW1W120 0071a1b0 BW1M119 0114d1e0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 0055ddc0 BW1M100 10144af0 ShowNeedsVisuals::GetDebugText(void)
+	// BW1W120 0055ddc0 BW1M119 0114cd60
 	virtual char* GetDebugText();
-	// BW1W120 0071a320 BW1M100 10144bb0 ShowNeedsVisuals::Load(GameOSFile &)
+	// BW1W120 0071a320 BW1M119 0114ce20
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0071a230 BW1M100 10144d30 ShowNeedsVisuals::Save(GameOSFile &)
+	// BW1W120 0071a230 BW1M119 0114cfa0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055ddb0 BW1M100 10144ab0 ShowNeedsVisuals::GetSaveType(void)
+	// BW1W120 0055ddb0 BW1M119 0114cd20
 	virtual uint32_t GetSaveType();
-	// BW1W120 0071a410 BW1M100 10144b40 ShowNeedsVisuals::ResolveLoad(void)
+	// BW1W120 0071a410 BW1M119 0114cdb0
 	virtual void ResolveLoad();
-	// BW1W120 0055dd80 BW1M100 101449e0 ShowNeedsVisuals::GetScale(void)
+	// BW1W120 0055dd80 BW1M119 0114cc50
 	virtual float GetScale();
-	// BW1W120 0055dd70 BW1M100 101449a0 ShowNeedsVisuals::SetScale(float)
+	// BW1W120 0055dd70 BW1M119 0114cc10
 	virtual void SetScale(float param_1);
-	// BW1W120 0055dd90 BW1M100 10144a20 ShowNeedsVisuals::GetText(void)
+	// BW1W120 0055dd90 BW1M119 0114cc90
 	virtual const char* GetText();
-	// BW1W120 0055dd60 BW1M100 101448f0 ShowNeedsVisuals::GetMesh( const(void))
+	// BW1W120 0055dd60 BW1M119 0114cb60
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00719e00 BW1M100 10145510 ShowNeedsVisuals::CallVirtualFunctionsForCreation(const MapCoords &)
+	// BW1W120 00719e00 BW1M119 0114d780
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1W120 0055dda0 BW1M100 10144a60 ShowNeedsVisuals::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 0055dda0 BW1M119 0114ccd0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Constructors
 
-	// BW1W120 00719d60 BW1M100 10145700 ShowNeedsVisuals::ShowNeedsVisuals(const MapCoords&, GameThing*, const GShowNeedsInfo *)
+	// BW1W120 00719d60 BW1M119 0114d970
 	ShowNeedsVisuals(const MapCoords& coords, GameThing* game_thing, const GShowNeedsInfo* info);
 };
 

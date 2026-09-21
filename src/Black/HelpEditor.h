@@ -6,7 +6,8 @@
 class HelpEditor
 {
 public:
-	// BW1W120 005c4410. Destroys the PDMStrip at +8, then frees it.
+	// Destroys the PDMStrip at +8, then frees it.
+	// BW1W120 005c4410
 	~HelpEditor();
 };
 

@@ -21,11 +21,12 @@ public:
 	                                                         void* context);
 	virtual LH_MULTIPLAYER_API unsigned char* DecodeFromBuffer(unsigned char* buffer);
 	virtual LH_MULTIPLAYER_API void           ClearObject();
-	// BW1W120 10004350, fifth vtable slot (100502ec).
+	// Fifth vtable slot (100502ec).
+	// BW1W120 10004350
 	virtual LH_MULTIPLAYER_API ~LHChannel();
-	// BW1W120 100023a0 BW1M100 104f3fc0 LHChannel::GetGameData(void)
+	// BW1W120 100023a0 BW1M119 014fd580
 	void* GetGameData() { return GameData; }
-	// BW1W120 100023b0 BW1M100 100a6750 LHChannel::GetGameDataLength(void)
+	// BW1W120 100023b0 BW1M119 0116e700
 	unsigned long GetGameDataLength() { return GameDataLength; }
 };
 static_assert(offsetof(LHChannel, GameData) == 0x68, "LHChannel game data offset is incorrect");

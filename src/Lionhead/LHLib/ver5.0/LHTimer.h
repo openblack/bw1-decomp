@@ -20,19 +20,19 @@ struct LHTimer
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 10001570 LHTimer::Running(void)
+	// BW1W120 inlined BW1M119 01001570
 	bool32_t Running();
-	// BW1W120 inlined BW1M100 10005790 LHTimer::Start(void)
+	// BW1W120 inlined BW1M119 010056a0
 	void Start();
-	// BW1W120 0043e9c0 BW1M100 10001820 LHTimer::Stop(void)
+	// BW1W120 0043e9c0 BW1M119 01001820
 	void Stop();
-	// BW1W120 0043eb70 BW1M100 100056e0 LHTimer::MSeconds(void)
+	// BW1W120 0043eb70 BW1M119 010055f0
 	int MSeconds();
-	// BW1W120 inlined BW1M100 100017b0 LHTimer::GetSpeedUpFactor(void)
+	// BW1W120 inlined BW1M119 010017b0
 	float GetSpeedUpFactor();
-	// BW1W120 0043ebc0 BW1M100 100016c0 LHTimer::SetSpeedUpFactor(float)
+	// BW1W120 0043ebc0 BW1M119 010016c0
 	void SetSpeedUpFactor(float factor);
-	// BW1W120 0054b850 BW1M100 10005830 LHTimer::Reset(unsigned long)
+	// BW1W120 0054b850 BW1M119 01005740
 	void Reset(uint32_t value);
 };
 

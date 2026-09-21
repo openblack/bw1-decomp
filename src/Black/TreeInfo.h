@@ -17,7 +17,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 00749dd0 BW1M100 10155680 GTreeInfo::_dt(void)
+	// BW1W120 00749dd0 BW1M119 0115da10
 	virtual ~GTreeInfo();
 };
 

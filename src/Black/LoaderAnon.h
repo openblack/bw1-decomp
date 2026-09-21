@@ -16,15 +16,15 @@ struct LoaderAnon
 	uint32_t ErrorCount;         /* 0x211c, fabricated name */
 	uint32_t field_0x2120;
 
-	// BW1W120 005f2af0 BW1M100 101009b0 LoaderAnon::LoaderAnon(char *, char *, char *)
+	// BW1W120 005f2af0 BW1M119 01109ea0
 	LoaderAnon(char* detail_prefix, char* enum_prefix, char* load_id);
-	// BW1W120 005f3120 BW1M100 10100140 LoaderAnon::LoadData(char *, unsigned long, unsigned long *)
+	// BW1W120 005f3120 BW1M119 01109630
 	unsigned long LoadData(char* info_str, unsigned long index, unsigned long* buffer);
 };
 static_assert(sizeof(LoaderAnon) == 0x2124, "Data type is of wrong size");
 
-// BW1W120 00432ab0 BW1M100 10187980 LoadIt<CreatureDesireDependency>(LoaderAnon *, char *, CreatureDesireDependency *, unsigned long, bool, LHFile *)
-// BW1W120 00433f00 BW1M100 10185870 LoadIt<GVillagerStateTableInfo>(LoaderAnon *, char *, GVillagerStateTableInfo *, unsigned long, bool, LHFile *)
+// BW1W120 00432ab0
+// BW1W120 00433f00 BW1M119 0118ed60
 template <typename T>
 void __cdecl LoadIt(LoaderAnon* loader, char* info_str, T* info_array, unsigned long count, bool use_binary,
                     LHFile* file)

@@ -27,12 +27,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055ee30 BW1M100 101109b0 PSysInterface::_dt(void)
+	// BW1W120 0055ee30 BW1M119 0111a250
 	virtual ~PSysInterface();
 
 	// Static methods
 
-	// BW1W120 0068e910 BW1M100 100053c0 PSysInterface::Create(Spell *, PARTICLE_TYPE, LHPoint const &, LHPoint const &, float, PSysInterface::NET_GAME_TYPE)
+	// BW1W120 0068e910 BW1M119 010052d0
 	static PSysInterface* Create(Spell* spell, PARTICLE_TYPE particle_type, const LHPoint& param_3,
 	                             const LHPoint& param_4, float param_5, NET_GAME_TYPE game_type);
 };

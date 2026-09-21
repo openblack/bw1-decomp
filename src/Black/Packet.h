@@ -30,7 +30,7 @@ public:
 		LHPoint Velocity;
 		LHPoint Direction;
 		LHPoint Rotation;
-		// BW1W120 0054b8f0 GPacket::PhysicsData::PhysicsData(void)
+		// BW1W120 0054b8f0
 		PhysicsData();
 	};
 	uint8_t  field_0x0;

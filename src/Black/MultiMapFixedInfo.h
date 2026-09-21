@@ -27,7 +27,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 0052eb60 BW1M100 100dffe0 GMultiMapFixedInfo::IsOkToCreateAtPos(const MapCoords&, float, float) const
+	// BW1W120 0052eb60 BW1M119 010e4fa0
 	virtual bool IsOkToCreateAtPos(const MapCoords& pos, float param_2, float param_3) const;
 };
 

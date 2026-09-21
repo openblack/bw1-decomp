@@ -17,13 +17,13 @@ class Pig : public Cow
 public:
 	// Override methods
 
-	// BW1W120 0041d9d0 BW1M100 101207f0 Pig::_dt(void)
+	// BW1W120 0041d9d0 BW1M119 01129a20
 	virtual ~Pig();
-	// BW1W120 0041d9c0 BW1M100 10170ef0 Pig::GetDebugText(void)
+	// BW1W120 0041d9c0 BW1M119 01179f10
 	virtual char* GetDebugText();
-	// BW1W120 0041d9b0 BW1M100 10170ec0 Pig::GetSaveType(void)
+	// BW1W120 0041d9b0 BW1M119 01179ee0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041cd90 BW1M100 100a0190 Pig::StandAnimation(void)
+	// BW1W120 0041cd90 BW1M119 010a1f00
 	virtual uint32_t StandAnimation();
 };
 

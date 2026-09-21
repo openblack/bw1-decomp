@@ -6,7 +6,7 @@
 #include "Tree.h"
 #include "Utils.h"
 
-// BW1W120 0075f4a0 BW1M100 10586060 Villager::CheckSatisfyWoodDesire(void)
+// BW1W120 0075f4a0 BW1M119 0158d960
 bool32_t Villager::CheckSatisfyWoodDesire()
 {
 	BigForest* bigForest;
@@ -26,7 +26,7 @@ bool32_t Villager::CheckSatisfyWoodDesire()
 	return 0;
 }
 
-// BW1W120 0075f510 BW1M100 10585d60 Villager::DecideHowToGetWood(int, BigForest * *, Forest * *)
+// BW1W120 0075f510 BW1M119 0158d660
 uint32_t Villager::DecideHowToGetWood(int param_1, BigForest** param_2, Forest** param_3)
 {
 	// TODO: deferred — calls the UNNAMED global fn_0053A1A0 (nearest-forest-with-trees
@@ -34,13 +34,13 @@ uint32_t Villager::DecideHowToGetWood(int param_1, BigForest** param_2, Forest**
 	return 0;
 }
 
-// BW1W120 0075f710 BW1M100 10585d00 Villager::ForesterGotoForest(void)
+// BW1W120 0075f710 BW1M119 0158d600
 bool32_t Villager::ForesterGotoForest()
 {
 	return CheckSatisfyWoodDesire();
 }
 
-// BW1W120 0075f720 BW1M100 10585be0 Villager::VillagerGotoForest(Forest *, VILLAGER_STATES)
+// BW1W120 0075f720 BW1M119 0158d4e0
 bool32_t Villager::VillagerGotoForest(Forest* forest, VILLAGER_STATES state)
 {
 	Tree*     centre = forest->GetForestCentreTree();
@@ -57,7 +57,7 @@ bool32_t Villager::VillagerGotoForest(Forest* forest, VILLAGER_STATES state)
 	return 0;
 }
 
-// BW1W120 0075f7d0 BW1M100 105859d0 Villager::ForesterMoveToForest(void)
+// BW1W120 0075f7d0 BW1M119 0158d2d0
 bool32_t Villager::ForesterMoveToForest()
 {
 	// TODO: deferred — calls the UNNAMED global fn_0074D6A0 (build MapCoords from angle) and
@@ -65,7 +65,7 @@ bool32_t Villager::ForesterMoveToForest()
 	return 1;
 }
 
-// BW1W120 0075f930 BW1M100 10585830 Villager::ForesterArrivesAtForest(void)
+// BW1W120 0075f930 BW1M119 0158d130
 bool32_t Villager::ForesterArrivesAtForest()
 {
 	Tree* tree;
@@ -86,7 +86,7 @@ bool32_t Villager::ForesterArrivesAtForest()
 	return ForesterFinishedForestering();
 }
 
-// BW1W120 0075f9e0 BW1M100 10585660 Villager::ArrivesAtBigForest(void)
+// BW1W120 0075f9e0 BW1M119 0158cf60
 bool32_t Villager::ArrivesAtBigForest()
 {
 	// TODO: deferred — two void-mangled-but-returning symbol blockers (dispatcher, Rule 2):
@@ -100,13 +100,13 @@ bool32_t Villager::ArrivesAtBigForest()
 	return 1;
 }
 
-// BW1W120 0075fab0 BW1M100 10585610 Villager::ArrivesAtBigForestForBuilding(void)
+// BW1W120 0075fab0 BW1M119 0158cf10
 bool32_t Villager::ArrivesAtBigForestForBuilding()
 {
 	return 1;
 }
 
-// BW1W120 0075fac0 BW1M100 105854f0 Villager::ForesterChopsTree(void)
+// BW1W120 0075fac0 BW1M119 0158cdf0
 bool32_t Villager::ForesterChopsTree()
 {
 	// TODO: deferred — FelledTree::Create symbol mismatch. Body (from target asm):
@@ -120,14 +120,14 @@ bool32_t Villager::ForesterChopsTree()
 	return 1;
 }
 
-// BW1W120 0075fb40 BW1M100 10585480 Villager::ForesterChopsTreeForBuilding(void)
+// BW1W120 0075fb40 BW1M119 0158cd80
 bool32_t Villager::ForesterChopsTreeForBuilding()
 {
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 	return 1;
 }
 
-// BW1W120 0075fb60 BW1M100 105853f0 Villager::ForesterFinishedForestering(void)
+// BW1W120 0075fb60 BW1M119 0158ccf0
 bool32_t Villager::ForesterFinishedForestering()
 {
 	if (ResourceHeld[RESOURCE_TYPE_WOOD] > 0)
@@ -136,25 +136,25 @@ bool32_t Villager::ForesterFinishedForestering()
 	return 1;
 }
 
-// BW1W120 0075fb90 BW1M100 10585390 Villager::TakeWoodFromTreeForBuilding(void)
+// BW1W120 0075fb90 BW1M119 0158cc90
 bool32_t Villager::TakeWoodFromTreeForBuilding()
 {
 	return TakeWoodFromTree();
 }
 
-// BW1W120 0075fba0 BW1M100 10585340 Villager::TakeWoodFromPotForBuilding(void)
+// BW1W120 0075fba0 BW1M119 0158cc40
 bool32_t Villager::TakeWoodFromPotForBuilding()
 {
 	return TakeWoodFromPot();
 }
 
-// BW1W120 0075fbb0 BW1M100 10585300 Villager::TakeWoodFromPot(void)
+// BW1W120 0075fbb0 BW1M119 0158cc00
 bool32_t Villager::TakeWoodFromPot()
 {
 	return 1;
 }
 
-// BW1W120 0075fbc0 BW1M100 10585210 Villager::TakeWoodFromTree(void)
+// BW1W120 0075fbc0 BW1M119 0158cb10
 bool32_t Villager::TakeWoodFromTree()
 {
 	Tree* tree;
@@ -169,7 +169,7 @@ bool32_t Villager::TakeWoodFromTree()
 	return 1;
 }
 
-// BW1W120 0075fc30 BW1M100 10585080 Villager::GotWoodDecideWhatToDo(void)
+// BW1W120 0075fc30 BW1M119 0158c980
 bool32_t Villager::GotWoodDecideWhatToDo()
 {
 	// TODO: deferred — one UNNAMED callee. Body (from target asm) is:
@@ -184,7 +184,7 @@ bool32_t Villager::GotWoodDecideWhatToDo()
 	return 1;
 }
 
-// BW1W120 0075fd00 BW1M100 10584e30 Villager::FindTreeNearVillager(Tree * *)
+// BW1W120 0075fd00 BW1M119 0158c730
 bool32_t Villager::FindTreeNearVillager(Tree** found_tree)
 {
 	MapCoords searchCoords = Pos;
@@ -216,7 +216,7 @@ bool32_t Villager::FindTreeNearVillager(Tree** found_tree)
 	return IsTouching(bp) ? 10 : 1;
 }
 
-// BW1W120 0075fe20 BW1M100 10584dc0 Villager::ExitForesting(unsigned char)
+// BW1W120 0075fe20 BW1M119 0158c6c0
 bool32_t Villager::ExitForesting(unsigned char state)
 {
 	TargetThing = NULL;

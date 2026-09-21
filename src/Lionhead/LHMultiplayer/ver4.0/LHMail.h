@@ -16,7 +16,8 @@ public:
 	virtual bool      CallInitDriver() = 0;
 	virtual LH_RETURN DriverCheckMails() = 0;
 	virtual bool      DriverGetContactNames() = 0;
-	// BW1W120 10012e10, import 008a9450
+	// IAT 008a9450.
+	// BW1W120 10012e10
 	LH_MULTIPLAYER_API bool InitDriver();
 };
 

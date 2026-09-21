@@ -56,7 +56,7 @@ struct CreatureReceiveSpell
 
 	// Constructors
 
-	// BW1W120 004f5240 BW1M100 102802a0 CreatureReceiveSpell::CreatureReceiveSpell(Creature *)
+	// BW1W120 004f5240 BW1M119 01284020
 	CreatureReceiveSpell(Creature* creature);
 };
 

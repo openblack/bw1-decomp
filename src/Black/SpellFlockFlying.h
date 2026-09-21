@@ -18,21 +18,21 @@ class SpellFlockFlying : public SpellFlock
 public:
 	// Override methods
 
-	// BW1W120 0055d2a0 BW1M100 1051dac0 SpellFlockFlying::_dt(void)
+	// BW1W120 0055d2a0 BW1M119 01525230
 	virtual ~SpellFlockFlying();
-	// BW1W120 0055d290 BW1M100 1051ec90 SpellFlockFlying::GetDebugText(void)
+	// BW1W120 0055d290 BW1M119 01526400
 	virtual char* GetDebugText();
-	// BW1W120 007249d0 BW1M100 1051c220 SpellFlockFlying::Load(GameOSFile &)
+	// BW1W120 007249d0 BW1M119 015239a0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00724ac0 BW1M100 1051c0a0 SpellFlockFlying::Save(GameOSFile &)
+	// BW1W120 00724ac0 BW1M119 01523820
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055d280 BW1M100 1051ec50 SpellFlockFlying::GetSaveType(void)
+	// BW1W120 0055d280 BW1M119 015263c0
 	virtual uint32_t GetSaveType();
-	// BW1W120 00723a30 BW1M100 1051d940 SpellFlockFlying::GetParticleType(void)
+	// BW1W120 00723a30 BW1M119 015250b0
 	virtual void GetParticleType();
-	// BW1W120 00724100 BW1M100 1051cea0 SpellFlockFlying::Draw(void)
+	// BW1W120 00724100 BW1M119 01524610
 	virtual void Draw();
-	// BW1W120 00723bc0 BW1M100 1051d040 SpellFlockFlying::Process(void)
+	// BW1W120 00723bc0 BW1M119 015247b0
 	virtual uint32_t Process();
 };
 

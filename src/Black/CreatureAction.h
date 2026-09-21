@@ -39,7 +39,7 @@ struct CreatureActionContext
 
 	// Constructors
 
-	// BW1W120 004c3960 BW1M100 10230320 CreatureActionContext::CreatureActionContext(CreatureContext &, float)
+	// BW1W120 004c3960 BW1M119 01235210
 	CreatureActionContext(CreatureContext& context, float param_2);
 };
 
@@ -55,7 +55,7 @@ struct CreatureActionOpinions
 
 	// Constructors
 
-	// BW1W120 004c3930 BW1M100 102303a0 CreatureActionOpinions::CreatureActionOpinions(CreatureInfo const *)
+	// BW1W120 004c3930 BW1M119 01235290
 	CreatureActionOpinions();
 };
 
@@ -66,7 +66,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004f2040 BW1M100 10246760 CreaturePreviousActions::_dt(void)
+	// BW1W120 004f2040 BW1M119 0124aef0
 	virtual ~CreaturePreviousActions();
 };
 
@@ -75,7 +75,7 @@ class CreatureActionKnownAbout : public Base
 public:
 	// Override methods
 
-	// BW1W120 004e29b0 BW1M100 10266bf0 CreatureActionKnownAbout::_dt(void)
+	// BW1W120 004e29b0 BW1M119 0126a9e0
 	virtual ~CreatureActionKnownAbout();
 };
 
@@ -84,9 +84,9 @@ class CreatureActionKnownAboutEntry : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 004e2db0 BW1M100 102676b0 CreatureActionKnownAboutEntry::_dt(void)
+	// BW1W120 004e2db0 BW1M119 0126b4a0
 	virtual ~CreatureActionKnownAboutEntry();
-	// BW1W120 004e2d50 BW1M100 10267920 CreatureActionKnownAboutEntry::GetBaseInfo(unsigned long &)
+	// BW1W120 004e2d50 BW1M119 0126b710
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
@@ -103,7 +103,7 @@ class CreatureMagicActionKnownAboutEntry : public CreatureActionKnownAboutEntry
 public:
 	// Override methods
 
-	// BW1W120 004e2e50 BW1M100 10267580 CreatureMagicActionKnownAboutEntry::_dt(void)
+	// BW1W120 004e2e50 BW1M119 0126b370
 	virtual ~CreatureMagicActionKnownAboutEntry();
 };
 

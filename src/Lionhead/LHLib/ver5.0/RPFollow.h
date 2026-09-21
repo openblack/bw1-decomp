@@ -40,9 +40,9 @@ public:
 	int        field_0x640b8;
 	int        field_0x640bc;
 
-	// BW1W120 008639e0 BW1M100 1061c964 RPFollow::RPFollow(void)
+	// BW1W120 008639e0 BW1M119 010a9040 (LHCombined Release)
 	RPFollow();
-	// BW1W120 00863ac0 BW1M100 1061c97c RPFollow::Init(int, void (*)(int, int), void (*)(int, float, float), float (*)(int), int)
+	// BW1W120 00863ac0 BW1M119 010a8ea0 (LHCombined Release)
 	void Init(int context, void(__cdecl* status)(int, int), void(__cdecl* movement)(int, float, float),
 	          float(__cdecl* range)(int), int mode);
 };

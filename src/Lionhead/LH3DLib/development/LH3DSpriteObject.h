@@ -16,7 +16,7 @@ public:
 
 	// Constructors
 
-	// BW1W120 00815380 BW1M100 10078250 LH3DSpriteObject::LH3DSpriteObject(long)
+	// BW1W120 00815380 BW1M119 01075020 (LHCombined Release)
 	LH3DSpriteObject(int type);
 };
 

@@ -21,19 +21,19 @@ class Poo : public MobileObject
 public:
 	// Override methods
 
-	// BW1W120 0055d0c0 BW1M100 103be130 Poo::_dt(void)
+	// BW1W120 0055d0c0 BW1M119 013c5ef0
 	virtual ~Poo();
-	// BW1W120 0055d0b0 BW1M100 103be1e0 Poo::GetDebugText(void)
+	// BW1W120 0055d0b0 BW1M119 013c5fa0
 	virtual char* GetDebugText();
-	// BW1W120 0055d0a0 BW1M100 103be1b0 Poo::GetSaveType(void)
+	// BW1W120 0055d0a0 BW1M119 013c5f70
 	virtual uint32_t GetSaveType();
-	// BW1W120 006083c0 BW1M100 103bad80 Poo::GetScriptObjectType(void)
+	// BW1W120 006083c0 BW1M119 013c2e80
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 006079d0 BW1M100 103bc130 Poo::InsertMapObject(void)
+	// BW1W120 006079d0 BW1M119 013c41d0
 	virtual void InsertMapObject();
-	// BW1W120 006083d0 BW1M100 103bad50 Poo::GetHoldType(void)
+	// BW1W120 006083d0 BW1M119 013c2e50
 	virtual HOLD_TYPE GetHoldType();
-	// BW1W120 006079c0 BW1M100 103bc180 Poo::GetPhysicsConstantsType(void)
+	// BW1W120 006079c0 BW1M119 013c4220
 	virtual uint32_t GetPhysicsConstantsType();
 };
 

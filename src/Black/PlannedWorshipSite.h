@@ -17,15 +17,15 @@ class PlannedWorshipSite : public PlannedCitadelPart
 public:
 	// Override methods
 
-	// BW1W120 0077bf10 BW1M100 105ab030 PlannedWorshipSite::_dt(void)
+	// BW1W120 0077bf10 BW1M119 015b1ea0
 	virtual ~PlannedWorshipSite();
-	// BW1W120 0077bf00 BW1M100 105ab150 PlannedWorshipSite::GetDebugText(void)
+	// BW1W120 0077bf00 BW1M119 015b1fc0
 	virtual char* GetDebugText();
-	// BW1W120 0077bf90 BW1M100 105b0dc0 PlannedWorshipSite::Load(GameOSFile &)
+	// BW1W120 0077bf90 BW1M119 015b7d30
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0077bf30 BW1M100 105b0ea0 PlannedWorshipSite::Save(GameOSFile &)
+	// BW1W120 0077bf30 BW1M119 015b7e10
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0077bef0 BW1M100 105ab110 PlannedWorshipSite::GetSaveType(void)
+	// BW1W120 0077bef0 BW1M119 015b1f80
 	virtual uint32_t GetSaveType();
 };
 

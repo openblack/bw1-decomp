@@ -19,14 +19,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 005b0c10 BW1M100 10337710 HandStateCitadel::Enter(void)
+	// BW1W120 005b0c10 BW1M119 0133fbc0
 	virtual void Enter();
-	// BW1W120 005b0d00 BW1M100 10336f60 HandStateCitadel::Update(float, LHMatrix *)
+	// BW1W120 005b0d00 BW1M119 0133f400
 	virtual void Update(float param_1, LHMatrix* param_2);
 
 	// Constructors
 
-	// BW1W120 005b0bf0 BW1M100 103377e0 HandStateCitadel::HandStateCitadel(CHand*)
+	// BW1W120 005b0bf0 BW1M119 0133fc90
 	HandStateCitadel(CHand* hand);
 };
 

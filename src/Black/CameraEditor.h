@@ -15,20 +15,21 @@ struct LH3DWay;
 class GCameraEditor : public Prss
 {
 public:
-	// BW1W120 00c59cf8. TODO: Original singleton name is unrecovered.
+	// TODO: Original singleton name is unrecovered.
+	// BW1W120 00c59cf8
 	static GCameraEditor* Instance;
 	uint32_t              field_0x10;
 	uint8_t               field_0x14[0x14];
 
 	// Static methods
 
-	// BW1W120 00445050 BW1M100 1019bdb0 GCameraEditor::FinalDraw(void)
+	// BW1W120 00445050 BW1M119 011a4ef0
 	static void FinalDraw();
-	// BW1W120 00445530 BW1M100 1019b6c0 GCameraEditor::CreateSegFile(void)
+	// BW1W120 00445530 BW1M119 011a4880
 	static void CreateSegFile();
-	// BW1W120 00445e10 BW1M100 1019b440 GCameraEditor::Draw3DPart(void)
+	// BW1W120 00445e10 BW1M119 011a4600
 	static void Draw3DPart();
-	// BW1W120 00446fe0 BW1M100 1019adf0 GCameraEditor::LoadCameraFromHD(long, GCameraEditor::CameraBin &)
+	// BW1W120 00446fe0 BW1M119 011a3fb0
 	static void LoadCameraFromHD(int param_1, GCameraEditor__CameraBin* param_2);
 };
 
@@ -48,7 +49,7 @@ struct Q213GCameraEditor9InfoTrack
 
 	// Non-virtual methods
 
-	// BW1W120 00446450 BW1M100 1019b070 GCameraEditor::InfoTrack::Draw(void)
+	// BW1W120 00446450 BW1M119 011a4230
 	void Draw();
 };
 

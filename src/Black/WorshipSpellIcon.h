@@ -44,55 +44,55 @@ public:
 
 	// Override methods
 
-	// BW1W120 0077f110 BW1M100 105b6fb0 WorshipSpellIcon::_dt(void)
+	// BW1W120 0077f110 BW1M119 015bdf30
 	virtual ~WorshipSpellIcon();
-	// BW1W120 0077f230 BW1M100 105b6ed0 WorshipSpellIcon::ToBeDeleted(int)
+	// BW1W120 0077f230 BW1M119 015bde50
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0077f6f0 BW1M100 inlined WorshipSpellIcon::MaintainSpell(unsigned int, float)
+	// BW1W120 0077f6f0 BW1M119 inlined
 	virtual float MaintainSpell(uint32_t param_1, float param_2);
-	// BW1W120 0077f750 BW1M100 105b64c0 WorshipSpellIcon::UpdateSpellInfo(Spell *, PSysProcessInfo *)
+	// BW1W120 0077f750 BW1M119 015bd440
 	virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
-	// BW1W120 0077f100 BW1M100 105b4440 WorshipSpellIcon::GetDebugText(void)
+	// BW1W120 0077f100 BW1M119 015bb350
 	virtual char* GetDebugText();
-	// BW1W120 007801f0 BW1M100 105b4690 WorshipSpellIcon::Load(GameOSFile &)
+	// BW1W120 007801f0 BW1M119 015bb5a0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0077ff80 BW1M100 105b4bc0 WorshipSpellIcon::Save(GameOSFile &)
+	// BW1W120 0077ff80 BW1M119 015bbb40
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0077f0f0 BW1M100 105b4400 WorshipSpellIcon::GetSaveType(void)
+	// BW1W120 0077f0f0 BW1M119 015bb310
 	virtual uint32_t GetSaveType();
-	// BW1W120 0077f0a0 BW1M100 10381d20 WorshipSpellIcon::GetWorshipSite(void)
+	// BW1W120 0077f0a0 BW1M119 01575730
 	virtual WorshipSite* GetWorshipSite();
-	// BW1W120 0077f0e0 BW1M100 105b43b0 WorshipSpellIcon::ApplyEffect(EffectValues &, int)
+	// BW1W120 0077f0e0 BW1M119 015bb2c0
 	virtual float ApplyEffect(EffectValues& param_1, int param_2);
-	// BW1W120 0077f390 BW1M100 105b6a70 WorshipSpellIcon::Process(void)
+	// BW1W120 0077f390 BW1M119 015bd9f0
 	virtual uint32_t Process();
-	// BW1W120 0077f290 BW1M100 105b6e40 WorshipSpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
+	// BW1W120 0077f290 BW1M119 015bddc0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1W120 0077f0b0 BW1M100 105b42c0 WorshipSpellIcon::IsEffectReceiver(EffectValues *)
+	// BW1W120 0077f0b0 BW1M119 015bb1d0
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
-	// BW1W120 0077f0d0 BW1M100 105b4360 WorshipSpellIcon::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 0077f0d0 BW1M119 015bb270
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Static methods
 
-	// BW1W120 0077f2b0 BW1M100 105b6cf0 WorshipSpellIcon::Create(MapCoords const &, GSpellIconInfo const *, GSpellSeedInfo const *, WorshipSite *, short, float, int)
+	// BW1W120 0077f2b0 BW1M119 015bdc70
 	static WorshipSpellIcon* Create(const MapCoords& coords, const GSpellIconInfo* icon_info,
 	                                const GSpellSeedInfo* seed_info, WorshipSite* site, int16_t slot, float param_6,
 	                                int param_7);
 
 	// Constructors
 
-	// BW1W120 0077f140 BW1M100 105b7070 WorshipSpellIcon::WorshipSpellIcon(MapCoords const &, GSpellIconInfo const *, GSpellSeedInfo const *, WorshipSite *, short, float, int)
+	// BW1W120 0077f140 BW1M119 015bdff0
 	WorshipSpellIcon(const MapCoords& coords, const GSpellIconInfo* icon_info, const GSpellSeedInfo* seed_info,
 	                 WorshipSite* site, int16_t slot, float param_6, int param_7);
 
 	// Non-virtual methods
 
-	// BW1W120 0077f1f0 BW1M100 inlined WorshipSpellIcon::SetToZero(void)
+	// BW1W120 0077f1f0 BW1M119 inlined
 	void SetToZero();
-	// BW1W120 0077f320 BW1M100 105b6bf0 WorshipSpellIcon::UpdateGraphicsWithPULevels(void)
+	// BW1W120 0077f320 BW1M119 015bdb70
 	void UpdateGraphicsWithPULevels();
-	// BW1W120 0077ff40 BW1M100 105b4ff0 WorshipSpellIcon::StopRemoveFromPlayer(void)
+	// BW1W120 0077ff40 BW1M119 015bbf70
 	void StopRemoveFromPlayer();
 };
 
@@ -101,23 +101,23 @@ class PrayerIcon : public SingleMapFixed
 public:
 	// Override methods
 
-	// BW1W120 00670960 BW1M100 inlined PrayerIcon::_dt(void)
+	// BW1W120 00670960 BW1M119 inlined
 	virtual ~PrayerIcon();
-	// BW1W120 00670980 BW1M100 inlined PrayerIcon::ToBeDeleted(int)
+	// BW1W120 00670980 BW1M119 inlined
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 006709a0 BW1M100 inlined PrayerIcon::GetPlayer(void)
+	// BW1W120 006709a0 BW1M119 inlined
 	virtual GPlayer* GetPlayer();
-	// BW1W120 006709b0 BW1M100 inlined PrayerIcon::GetTown(void)
+	// BW1W120 006709b0 BW1M119 inlined
 	virtual Town* GetTown();
-	// BW1W120 00670940 BW1M100 inlined PrayerIcon::GetCreatureBeliefType(void)
+	// BW1W120 00670940 BW1M119 inlined
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 006709e0 BW1M100 inlined PrayerIcon::GetCitadel(void)
+	// BW1W120 006709e0 BW1M119 inlined
 	virtual Citadel* GetCitadel();
-	// BW1W120 006709d0 BW1M100 inlined PrayerIcon::Process(void)
+	// BW1W120 006709d0 BW1M119 inlined
 	virtual uint32_t Process();
-	// BW1W120 00670950 BW1M100 inlined PrayerIcon::GetMesh( const(void))
+	// BW1W120 00670950 BW1M119 inlined
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 006709f0 BW1M100 inlined PrayerIcon::Draw(void)
+	// BW1W120 006709f0 BW1M119 inlined
 	virtual void Draw();
 };
 

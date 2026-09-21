@@ -17,13 +17,13 @@ class Seagull : public Dove
 public:
 	// Override methods
 
-	// BW1W120 0041ee60 BW1M100 101716c0 Seagull::_dt(void)
+	// BW1W120 0041ee60 BW1M119 0117a6e0
 	virtual ~Seagull();
-	// BW1W120 0041ee50 BW1M100 10171790 Seagull::GetDebugText(void)
+	// BW1W120 0041ee50 BW1M119 0117a7b0
 	virtual char* GetDebugText();
-	// BW1W120 0041ee40 BW1M100 10171750 Seagull::GetSaveType(void)
+	// BW1W120 0041ee40 BW1M119 0117a770
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041bff0 BW1M100 10170260 Seagull::StandAnimation(void)
+	// BW1W120 0041bff0 BW1M119 011790f0
 	virtual uint32_t StandAnimation();
 };
 

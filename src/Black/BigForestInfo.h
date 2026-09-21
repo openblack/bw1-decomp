@@ -18,9 +18,9 @@ public:
 
 	// Override methods
 
-	// BW1W120 00438cb0 BW1M100 100b33d0 GBigForestInfo::_dt(void)
+	// BW1W120 00438cb0 BW1M119 010b5f30
 	virtual ~GBigForestInfo();
-	// BW1W120 00438c50 BW1M100 100b2530 GBigForestInfo::GetMesh( const(void))
+	// BW1W120 00438c50 BW1M119 010b5090
 	virtual MESH_LIST GetMesh() const;
 };
 

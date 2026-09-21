@@ -63,77 +63,77 @@ public:
 
 	// Override methods
 
-	// BW1W120 00474910 BW1M100 103c19a0 MobileWallHug::_dt(void)
+	// BW1W120 00474910 BW1M119 013c9820
 	virtual ~MobileWallHug();
-	// BW1W120 0060c740 BW1M100 103c23a0 MobileWallHug::Load(GameOSFile &)
+	// BW1W120 0060c740 BW1M119 013ca370
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0060c420 BW1M100 103c28c0 MobileWallHug::Save(GameOSFile &)
+	// BW1W120 0060c420 BW1M119 013ca860
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0060c070 BW1M100 100321c0 MobileWallHug::GetSpeedInMetres( const(void))
+	// BW1W120 0060c070 BW1M119 01034b30
 	virtual float GetSpeedInMetres() const;
-	// BW1W120 0060c080 BW1M100 103c3320 MobileWallHug::SetSpeedInMetres(float, int)
+	// BW1W120 0060c080 BW1M119 013cb2b0
 	virtual void SetSpeedInMetres(float param_1, int param_2);
-	// BW1W120 0060c0b0 BW1M100 103c32b0 MobileWallHug::GetRunningSpeedInMetres(void)
+	// BW1W120 0060c0b0 BW1M119 013cb240
 	virtual float GetRunningSpeedInMetres();
-	// BW1W120 0060c0d0 BW1M100 103c3240 MobileWallHug::GetDefaultSpeedInMetres(void)
+	// BW1W120 0060c0d0 BW1M119 013cb1d0
 	virtual float GetDefaultSpeedInMetres();
-	// BW1W120 0060c0f0 BW1M100 103c31d0 MobileWallHug::GetSpeedInMetresPerSecond( const(void))
+	// BW1W120 0060c0f0 BW1M119 013cb160
 	virtual float GetSpeedInMetresPerSecond() const;
-	// BW1W120 0060c140 BW1M100 103c30c0 MobileWallHug::GetRunningSpeedInMetresPerSecond(void)
+	// BW1W120 0060c140 BW1M119 013cb050
 	virtual float GetRunningSpeedInMetresPerSecond();
-	// BW1W120 0060c160 BW1M100 103c3040 MobileWallHug::GetDefaultSpeedInMetresPerSecond(void)
+	// BW1W120 0060c160 BW1M119 013cafd0
 	virtual float GetDefaultSpeedInMetresPerSecond();
-	// BW1W120 0060c040 BW1M100 103c3450 MobileWallHug::GetMovementDirection(LHPoint *)
+	// BW1W120 0060c040 BW1M119 013cb370
 	virtual void GetMovementDirection(LHPoint* param_1);
-	// BW1W120 00416f80 BW1M100 1002c440 MobileWallHug::IsMobileWallHug( const(void))
+	// BW1W120 00416f80 BW1M119 0102efb0
 	virtual uint32_t IsMobileWallHug() const;
-	// BW1W120 0060c020 BW1M100 103c3520 MobileWallHug::GetFacingDirection(void)
+	// BW1W120 0060c020 BW1M119 013cb440
 	virtual float GetFacingDirection();
-	// BW1W120 0060dac0 BW1M100 103c1a50 MobileWallHug::SetYAngle(float)
+	// BW1W120 0060dac0 BW1M119 013c98d0
 	virtual void SetYAngle(float param_1);
-	// BW1W120 0060ad60 BW1M100 1004abe0 MobileWallHug::AreWeThere(MapCoords const &, float)
+	// BW1W120 0060ad60 BW1M119 0104d590
 	virtual bool AreWeThere(const MapCoords& param_1, float param_2);
-	// BW1W120 00416f70 BW1M100 100482a0 MobileWallHug::GetDestPos(void)
+	// BW1W120 00416f70 BW1M119 0104ac10
 	virtual MapCoords* GetDestPos();
-	// BW1W120 0060fc50 BW1M100 10084230 MobileWallHug::SetSpeed(long)
+	// BW1W120 0060fc50 BW1M119 01086610
 	virtual void SetSpeed(int param_1);
-	// BW1W120 00473e40 BW1M100 10079ab0 MobileWallHug::SetTowardsAngle(unsigned short)
+	// BW1W120 00473e40 BW1M119 0107c070
 	virtual void SetTowardsAngle(uint16_t param_1);
-	// BW1W120 0060aee0 BW1M100 103c3b10 MobileWallHug::MoveTo3D(void)
+	// BW1W120 0060aee0 BW1M119 013cbad0
 	virtual void MoveTo3D();
-	// BW1W120 0060bc40 BW1M100 103c3780 MobileWallHug::SetNewWander(MapCoords const &, long, long)
+	// BW1W120 0060bc40 BW1M119 013cb7e0
 	virtual void SetNewWander(const MapCoords& param_1, int param_2, int param_3);
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined MobileWallHug::MobileWallHug(MapCoords const &, GMobileWallHugInfo const *)
+	// BW1W120 inlined BW1M119 inlined
 	MobileWallHug(const MapCoords& coords, const GMobileWallHugInfo* info);
-	// BW1W120 00474890 BW1M100 101e0bb0 MobileWallHug::MobileWallHug(void)
+	// BW1W120 00474890 BW1M119 011e82a0
 	MobileWallHug();
 
 	// Non-virtual methods
 
-	// BW1W120 00609d10 BW1M100 inlined MobileWallHug::RebuildMoveByStep(void)
+	// BW1W120 00609d10 BW1M119 inlined
 	void RebuildMoveByStep();
-	// BW1W120 0060aad0 BW1M100 inlined MobileWallHug::SetupMobileMoveToPos(MapCoords const &)
+	// BW1W120 0060aad0 BW1M119 inlined
 	void SetupMobileMoveToPos(const MapCoords& coords);
-	// BW1W120 0060abc0 BW1M100 1001c770 MobileWallHug::SetupMobileMoveToPos(MapCoords const &, MOVE_TO_STATES)
+	// BW1W120 0060abc0 BW1M119 0101f330
 	void SetupMobileMoveToPos(const MapCoords& coords, MOVE_TO_STATES move_to_state);
-	// BW1W120 0060acd0 BW1M100 103c3ee0 MobileWallHug::SetupMobileMoveToObject(Object *)
+	// BW1W120 0060acd0 BW1M119 013cbeb0
 	void SetupMobileMoveToObject(Object* param_1);
-	// BW1W120 0060ad40 BW1M100 1005f4a0 MobileWallHug::AreWeThere(float)
+	// BW1W120 0060ad40 BW1M119 01061c20
 	bool32_t AreWeThere(float param_1);
-	// BW1W120 0060af20 BW1M100 10047250 MobileWallHug::MoveTo(void)
+	// BW1W120 0060af20 BW1M119 01049c90
 	int MoveTo();
-	// BW1W120 0060bfa0 BW1M100 103c3600 MobileWallHug::InitStepsXZ(void)
+	// BW1W120 0060bfa0 BW1M119 013cb600
 	void InitStepsXZ();
-	// BW1W120 0060ca50 BW1M100 10076600 MobileWallHug::MoveToCircleHugLinearSquareSweep(MapCoords const &)
+	// BW1W120 0060ca50 BW1M119 01078b80
 	uint32_t MoveToCircleHugLinearSquareSweep(const MapCoords& dest);
-	// BW1W120 0060d800 BW1M100 100382d0 MobileWallHug::MoveToCircleHug(void)
+	// BW1W120 0060d800 BW1M119 0103ac40
 	int MoveToCircleHug();
-	// BW1W120 0060da90 BW1M100 1004cce0 MobileWallHug::SetGameAngle(unsigned short)
+	// BW1W120 0060da90 BW1M119 0104f670
 	void SetGameAngle(uint16_t angle);
-	// BW1W120 0060f760 BW1M100 103c1910 MobileWallHug::SetToZero(void)
+	// BW1W120 0060f760 BW1M119 013c9790
 	void SetToZero();
 };
 
@@ -144,7 +144,7 @@ struct SubCollideBlockPos
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 inlined SubCollideBlockPos::operator<( const(SubCollideBlockPos const &))
+	// BW1W120 inlined BW1M119 inlined
 	bool operator<(const SubCollideBlockPos& other) const;
 };
 
@@ -160,7 +160,7 @@ struct CircleHugStateInfoT
 
 	// Non-virtual methods
 
-	// BW1W120 0060d410 BW1M100 10093270 CircleHugStateInfoT::fetch(MapCoords)
+	// BW1W120 0060d410 BW1M119 010954c0
 	NewCollide::Obj* fetch(MapCoords coords);
 };
 
@@ -173,13 +173,13 @@ struct LinearSquareSweepStruct
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 inlined LinearSquareSweepStruct::Reset(void) Guessed
+	// BW1W120 inlined BW1M119 inlined
 	void Reset();
-	// BW1W120 inlined BW1M100 inlined LinearSquareSweepStruct::operator<(LinearSquareSweepStruct *) Guessed
+	// BW1W120 inlined BW1M119 inlined
 	bool operator<(LinearSquareSweepStruct* other);
 };
 
-// BW1W120 00609a50 BW1M100 10013020 DoWallHuggerLookahead(void)
+// BW1W120 00609a50 BW1M119 01015bf0
 void DoWallHuggerLookahead();
 
 #endif /* BW1_DECOMP_MOBILE_WALL_HUG_INCLUDED_H */

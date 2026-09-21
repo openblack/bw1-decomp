@@ -15,7 +15,7 @@
 class GVillagerStateTableInfo : public GBaseInfo
 {
 public:
-	// BW1W120 inlined BW1M100 inlined GVillagerStateTableInfo::LoadBinary(LHFile *)
+	// BW1W120 inlined BW1M119 inlined
 	void LoadBinary(LHFile* file)
 	{
 		uint8_t* temp = new ("C:\\dev\\MP\\Black\\VillagerStates.h", 23) uint8_t[get_size()];
@@ -25,7 +25,7 @@ public:
 		SetInfoID();
 	}
 
-	// BW1W120 inlined BW1M100 inlined GVillagerStateTableInfo::LoadTextAndCache(char **, LHFile *)
+	// BW1W120 inlined BW1M119 inlined
 	uint32_t LoadTextAndCache(char** cursor, LHFile* file)
 	{
 		file->WriteSegmentData(*cursor, get_size());
@@ -35,9 +35,9 @@ public:
 		return get_size();
 	}
 
-	// BW1W120 inlined BW1M100 101966c0 GVillagerStateTableInfo::get_start(void)
+	// BW1W120 inlined BW1M119 0119fbb0
 	char* get_start() { return (char*)&field_0x10; }
-	// BW1W120 inlined BW1M100 10196710 GVillagerStateTableInfo::get_size(void)
+	// BW1W120 inlined BW1M119 0119fc00
 	unsigned long get_size() { return sizeof(GVillagerStateTableInfo) - sizeof(GBaseInfo); }
 
 	uint32_t field_0x10;
@@ -77,14 +77,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 007695f0 BW1M100 1059c500 GVillagerStateTableInfo::_dt(void)
+	// BW1W120 007695f0 BW1M119 015a3490
 	virtual ~GVillagerStateTableInfo();
-	// BW1W120 00769580 BW1M100 1059c630 GVillagerStateTableInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00769580 BW1M119 015a35b0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& count);
 
 	// Static methods
 
-	// BW1W120 inlined BW1M100 1004aff0 GVillagerStateTableInfo::GetInfo(void)
+	// BW1W120 inlined BW1M119 0104d9a0
 	static GVillagerStateTableInfo* GetInfo();
 };
 

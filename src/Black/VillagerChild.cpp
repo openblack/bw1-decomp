@@ -6,7 +6,7 @@
 #include "Town.h"
 #include "VillagerInfo.h"
 
-// BW1W120 007579f0 BW1M100 10573ed0 Villager::ChildGotoCreche(void)
+// BW1W120 007579f0 BW1M119 0157c060
 // TODO: 94.7% match. Two blocking diffs, both outside this unit:
 // (1) retbuf-arg-order (OPEN): target pushes the constant state 0x71 before materialising
 //     GetDoorPos' hidden retbuf temp; our build hoists the retbuf lea/push ahead of the push 0x71.
@@ -28,13 +28,13 @@ uint32_t Villager::ChildGotoCreche()
 	return false;
 }
 
-// BW1W120 00757c80 BW1M100 1006d8c0 Villager::ChildAtCreche(void)
+// BW1W120 00757c80 BW1M119 01070040
 bool32_t Villager::ChildAtCreche()
 {
 	return CheckNeededForTownDesire();
 }
 
-// BW1W120 00757e80 BW1M100 10084940 Villager::CheckChild(void)
+// BW1W120 00757e80 BW1M119 01086d20
 uint32_t Villager::CheckChild()
 {
 	if (IsChild() == false)
@@ -52,7 +52,7 @@ uint32_t Villager::CheckChild()
 	return 0;
 }
 
-// BW1W120 00757ec0 BW1M100 10573a80 Villager::ChildDecideWhatToDo(void)
+// BW1W120 00757ec0 BW1M119 0157bd20
 bool32_t Villager::ChildDecideWhatToDo()
 {
 	if (CheckChild() != true && ChildAtCreche() != true && ChildGotoCreche() == false)
@@ -62,14 +62,14 @@ bool32_t Villager::ChildDecideWhatToDo()
 	return true;
 }
 
-// BW1W120 00757f00 BW1M100 10573a20 Villager::CheckChildActivity(void)
+// BW1W120 00757f00 BW1M119 0157bcc0
 bool32_t Villager::CheckChildActivity()
 {
 	ChildDecideWhatToDo();
 	return 1;
 }
 
-// BW1W120 00757f10 BW1M100 10573990 Villager::ChildBecomesAdult(void)
+// BW1W120 00757f10 BW1M119 0157bc30
 uint32_t Villager::ChildBecomesAdult()
 {
 	mother = NULL;
@@ -82,7 +82,7 @@ uint32_t Villager::ChildBecomesAdult()
 	return 1;
 }
 
-// BW1W120 00757f40 BW1M100 10095500 Villager::IsMotherAlive(void)
+// BW1W120 00757f40 BW1M119 01097450
 bool32_t Villager::IsMotherAlive()
 {
 	// TODO: 94.8% match. Target keeps this->info->TribeType as a direct memory operand in the
@@ -99,7 +99,7 @@ bool32_t Villager::IsMotherAlive()
 	return false;
 }
 
-// BW1W120 00758080 BW1M100 105734a0 Villager::MoveVillagerToAbode(Abode*)
+// BW1W120 00758080 BW1M119 0157b850
 // TODO: 59.3% match. ROOT CAUSE (confirmed via target objdump): this is the void-call-eax-probed-
 // by-caller OPEN research case (cheatsheet names this exact function). The mangling QAEX makes it
 // void, yet the target body loads a return value on every path -- `xor eax,eax` (=0) in BOTH
@@ -129,7 +129,7 @@ void Villager::MoveVillagerToAbode(Abode* abode)
 	ForceMoveVillagerToAbode(abode);
 }
 
-// BW1W120 007580d0 BW1M100 105733f0 Villager::MakeChildOrphaned(Villager *)
+// BW1W120 007580d0 BW1M119 0157b7a0
 uint32_t Villager::MakeChildOrphaned(Villager* dead_villager)
 {
 	// TODO: 91% match. Target loads `mother` into eax and compares directly against the

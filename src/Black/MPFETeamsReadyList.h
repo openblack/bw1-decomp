@@ -10,7 +10,7 @@ class MPFETeamsReadyList : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00627ee0 BW1M100 inlined MPFETeamsReadyList::_dt(void)
+	// BW1W120 00627ee0 BW1M119 inlined
 	virtual ~MPFETeamsReadyList();
 };
 

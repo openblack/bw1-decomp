@@ -16,7 +16,7 @@ class GameThing;
 class GParticleContainer : public GameThingWithPos
 {
 public:
-	// BW1W120 0063e090 BW1M100 10068530 GParticleContainer::ProcessParticleContainers(void)
+	// BW1W120 0063e090 BW1M119 0106ac90
 	static void ProcessParticleContainers();
 	static void DrawParticleContainers(); // 0063e0d0
 
@@ -29,25 +29,25 @@ public:
 
 	// Override methods
 
-	// BW1W120 00560f80 BW1M100 1010fd40 GParticleContainer::_dt(void)
+	// BW1W120 00560f80 BW1M119 01119520
 	virtual ~GParticleContainer();
-	// BW1W120 0063e1d0 BW1M100 10110830 GParticleContainer::ToBeDeleted(int)
+	// BW1W120 0063e1d0 BW1M119 0111a0d0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0063e3c0 BW1M100 10000fb0 GParticleContainer::SetPlayer(GPlayer *)
+	// BW1W120 0063e3c0 BW1M119 01000fb0
 	virtual void SetPlayer(GPlayer* param_1);
-	// BW1W120 00560f70 BW1M100 1010feb0 GParticleContainer::GetDebugText(void)
+	// BW1W120 00560f70 BW1M119 01119690
 	virtual char* GetDebugText();
-	// BW1W120 0063e6d0 BW1M100 1010ff00 GParticleContainer::Load(GameOSFile &)
+	// BW1W120 0063e6d0 BW1M119 011196e0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0063e5d0 BW1M100 101100b0 GParticleContainer::Save(GameOSFile &)
+	// BW1W120 0063e5d0 BW1M119 01119890
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00560f60 BW1M100 1010fe70 GParticleContainer::GetSaveType(void)
+	// BW1W120 00560f60 BW1M119 01119650
 	virtual uint32_t GetSaveType();
-	// BW1W120 0063e3f0 BW1M100 10110510 GParticleContainer::SetScale(float)
+	// BW1W120 0063e3f0 BW1M119 01119d70
 	virtual void SetScale(float param_1);
-	// BW1W120 00560f40 BW1M100 1010fde0 GParticleContainer::GetText(void)
+	// BW1W120 00560f40 BW1M119 011195c0
 	virtual const char* GetText();
-	// BW1W120 00560f50 BW1M100 1010fe20 GParticleContainer::IsParticleContainer(void)
+	// BW1W120 00560f50 BW1M119 01119600
 	virtual uint32_t IsParticleContainer();
 };
 

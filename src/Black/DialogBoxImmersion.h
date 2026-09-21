@@ -26,17 +26,17 @@ public:
 
 	// Override methods
 
-	// BW1W120 00514a80 BW1M100 102b39f0 DialogBoxImmersion::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00514a80 BW1M119 012b6f30
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
-	// BW1W120 00514d70 BW1M100 102b3990 DialogBoxImmersion::Destroy(void)
+	// BW1W120 00514d70 BW1M119 012b6ed0
 	virtual void Destroy();
-	// BW1W120 00514d80 BW1M100 102b3920 DialogBoxImmersion::InitControls(void)
+	// BW1W120 00514d80 BW1M119 012b6e60
 	virtual void InitControls();
 
 	// Constructors
 
-	// BW1W120 005149d0 BW1M100 inlined DialogBoxImmersion::DialogBoxImmersion(void)
+	// BW1W120 005149d0 BW1M119 inlined
 	DialogBoxImmersion();
 };
 

@@ -33,56 +33,56 @@ public:
 
 	// Override methods
 
-	// BW1W120 00561580 BW1M100 10126730 Totem::_dt(void)
+	// BW1W120 00561580 BW1M119 0112f890
 	virtual ~Totem();
-	// BW1W120 00737410 BW1M100 10543540 Totem::Delete(void)
+	// BW1W120 00737410 BW1M119 0154c480
 	virtual void Delete();
-	// BW1W120 00737430 BW1M100 105434c0 Totem::ToBeDeleted(int)
+	// BW1W120 00737430 BW1M119 0154c400
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00561570 BW1M100 105427e0 Totem::GetDebugText(void)
+	// BW1W120 00561570 BW1M119 0154b720
 	virtual char* GetDebugText();
-	// BW1W120 00737800 BW1M100 10542950 Totem::Load(GameOSFile &)
+	// BW1W120 00737800 BW1M119 0154b890
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 007378b0 BW1M100 10542820 Totem::Save(GameOSFile &)
+	// BW1W120 007378b0 BW1M119 0154b760
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00561560 BW1M100 105427b0 Totem::GetSaveType(void)
+	// BW1W120 00561560 BW1M119 0154b6f0
 	virtual uint32_t GetSaveType();
-	// BW1W120 00561530 BW1M100 101337e0 Totem::IsCastShadowAtNight(void)
+	// BW1W120 00561530 BW1M119 0113c380
 	virtual uint32_t IsCastShadowAtNight();
-	// BW1W120 00561510 BW1M100 10133740 Totem::CanBePlayedWithByCreature(Creature *)
+	// BW1W120 00561510 BW1M119 0113c2e0
 	virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
-	// BW1W120 00561500 BW1M100 101336f0 Totem::CanBeImpressedByCreature(Creature *)
+	// BW1W120 00561500 BW1M119 0113c290
 	virtual uint32_t CanBeImpressedByCreature(Creature* param_1);
-	// BW1W120 004e3e60 BW1M100 105e6830 Totem::DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature *)
+	// BW1W120 004e3e60 BW1M119 015ee530
 	virtual uint32_t DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature* param_1);
-	// BW1W120 0051aba0 BW1M100 100c5910 Totem::Draw(void)
+	// BW1W120 0051aba0 BW1M119 010c8ea0
 	virtual void Draw();
-	// BW1W120 00737490 BW1M100 10543360 Totem::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00737490 BW1M119 0154c2a0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 00737520 BW1M100 10543140 Totem::ValidForLockedSelectProcess(GInterfaceStatus *)
+	// BW1W120 00737520 BW1M119 0154c080
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
-	// BW1W120 00737570 BW1M100 10543060 Totem::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
+	// BW1W120 00737570 BW1M119 0154bfa0
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
-	// BW1W120 007375c0 BW1M100 10542ff0 Totem::NetworkUnfriendlyStartLockedSelect(void)
+	// BW1W120 007375c0 BW1M119 0154bf30
 	virtual uint32_t NetworkUnfriendlyStartLockedSelect();
-	// BW1W120 00737610 BW1M100 10542df0 Totem::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
+	// BW1W120 00737610 BW1M119 0154bd30
 	virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
-	// BW1W120 007375e0 BW1M100 10542f60 Totem::NetworkUnfriendlyEndLockedSelect(void)
+	// BW1W120 007375e0 BW1M119 0154bea0
 	virtual uint32_t NetworkUnfriendlyEndLockedSelect();
-	// BW1W120 00737600 BW1M100 10542f00 Totem::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
+	// BW1W120 00737600 BW1M119 0154be40
 	virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
-	// BW1W120 00561520 BW1M100 10133790 Totem::IsEffectReceiver(EffectValues *)
+	// BW1W120 00561520 BW1M119 0113c330
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
 
 	// Constructors
 
-	// BW1W120 00737390 BW1M100 105435b0 Totem::Totem(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+	// BW1W120 00737390 BW1M119 0154c4f0
 	Totem(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
 	      int wood);
 
 	// Static methods
 
-	// BW1W120 007374c0 BW1M100 10543240 Totem::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+	// BW1W120 007374c0 BW1M119 0154c180
 	static Totem* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
 	                     float food, int wood);
 };

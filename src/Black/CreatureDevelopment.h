@@ -19,14 +19,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 004db5c0 BW1M100 1025bfd0 CreatureDevelopmentDurationEntry::CreatureDevelopmentDurationEntry(void)
+	// BW1W120 004db5c0 BW1M119 012601f0
 	virtual ~CreatureDevelopmentDurationEntry() {}
-	// BW1W120 004db560 BW1M100 1025c590 CreatureDevelopmentDurationEntry::GetBaseInfo(unsigned long &)
+	// BW1W120 004db560 BW1M119 01260700
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Non-virtual methods
 
-	// BW1W120 0042e0c0 BW1M100 inlined CreatureDevelopmentDurationEntry::LoadBinary(LHFile *)
+	// BW1W120 0042e0c0 BW1M119 inlined
 	void LoadBinary(LHFile* file)
 	{
 		uint32_t* temp = new uint32_t[0xe];
@@ -45,14 +45,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 004db4f0 BW1M100 1025c220 CreatureDevelopmentPhaseEntry::_dt(void)
+	// BW1W120 004db4f0 BW1M119 01260390
 	virtual ~CreatureDevelopmentPhaseEntry() {}
-	// BW1W120 004db480 BW1M100 1025c4d0 CreatureDevelopmentPhaseEntry::GetBaseInfo(unsigned long &)
+	// BW1W120 004db480 BW1M119 01260640
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Non-virtual methods
 
-	// BW1W120 0042e030 BW1M100 inlined CreatureDevelopmentPhaseEntry::LoadBinary(LHFile *)
+	// BW1W120 0042e030 BW1M119 inlined
 	void LoadBinary(LHFile* file)
 	{
 		uint32_t* temp = new uint32_t[0x1d];

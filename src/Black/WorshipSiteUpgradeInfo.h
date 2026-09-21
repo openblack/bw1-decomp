@@ -16,9 +16,9 @@ class GWorshipSiteUpgradeInfo : public GFeatureInfo
 public:
 	// Override methods
 
-	// BW1W120 0077ebc0 BW1M100 105b4170 GWorshipSiteUpgradeInfo::_dt(void)
+	// BW1W120 0077ebc0 BW1M119 015bb080
 	virtual ~GWorshipSiteUpgradeInfo();
-	// BW1W120 0077eb70 BW1M100 105b4210 GWorshipSiteUpgradeInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0077eb70 BW1M119 015bb120
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

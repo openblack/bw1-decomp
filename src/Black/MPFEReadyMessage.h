@@ -10,7 +10,7 @@ class MPFEReadyMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00627d80 BW1M100 inlined MPFEReadyMessage::_dt(void)
+	// BW1W120 00627d80 BW1M119 inlined
 	virtual ~MPFEReadyMessage();
 };
 

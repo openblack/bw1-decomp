@@ -17,13 +17,13 @@ class Zebra : public Cow
 public:
 	// Override methods
 
-	// BW1W120 0041d920 BW1M100 10170f30 Zebra::_dt(void)
+	// BW1W120 0041d920 BW1M119 01179f50
 	virtual ~Zebra();
-	// BW1W120 0041d910 BW1M100 10170ff0 Zebra::GetDebugText(void)
+	// BW1W120 0041d910 BW1M119 0117a010
 	virtual char* GetDebugText();
-	// BW1W120 0041d900 BW1M100 10170fc0 Zebra::GetSaveType(void)
+	// BW1W120 0041d900 BW1M119 01179fe0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041cc30 BW1M100 1016df70 Zebra::StandAnimation(void)
+	// BW1W120 0041cc30 BW1M119 01176da0
 	virtual uint32_t StandAnimation();
 };
 

@@ -34,39 +34,39 @@ public:
 
 	// Override methods
 
-	// BW1W120 00409300 BW1M100 105a3830 SetupControl::Hide(bool)
+	// BW1W120 00409300 BW1M119 013b74a0
 	virtual void Hide(bool hidden);
-	// BW1W120 00409180 BW1M100 1032c7e0 SetupControl::SetFocus(bool)
+	// BW1W120 00409180 BW1M119 01389d10
 	virtual void SetFocus(bool focus);
-	// BW1W120 00409310 BW1M100 10310540 SetupControl::HitTest(int, int)
+	// BW1W120 00409310 BW1M119 0154c610
 	virtual bool HitTest(int x, int y);
-	// BW1W120 00409340 BW1M100 inlined SetupControl::Drag(int, int)
+	// BW1W120 00409340 BW1M119 inlined
 	virtual void Drag(int x, int y);
-	// BW1W120 00409350 BW1M100 100a6190 SetupControl::MouseDown(int, int, bool)
+	// BW1W120 00409350 BW1M119 0135d4b0
 	virtual void MouseDown(int x, int y, bool param_3);
-	// BW1W120 00409360 BW1M100 104faf30 SetupControl::MouseUp(int, int, bool)
+	// BW1W120 00409360 BW1M119 01357370
 	virtual void MouseUp(int x, int y, bool param_3);
-	// BW1W120 00409370 BW1M100 103e3120 SetupControl::Click(int, int)
+	// BW1W120 00409370 BW1M119 0138a080
 	virtual void Click(int x, int y);
-	// BW1W120 00409380 BW1M100 100d4e40 SetupControl::KeyDown(int, int)
+	// BW1W120 00409380 BW1M119 013cc040
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 00409390 BW1M100 105049b0 SetupControl::Char(int)
+	// BW1W120 00409390 BW1M119 01391ae0
 	virtual void Char(int character);
-	// BW1W120 004093a0 BW1M100 100c48e0 SetupControl::~SetupControl(bool)
+	// BW1W120 004093a0 BW1M119 010d5f90
 	virtual ~SetupControl();
 
 	// Constructors
 
-	// BW1W120 00409250 BW1M100 101668d0 SetupControl::SetupControl(int, int, int, int, int, wchar_t *)
+	// BW1W120 00409250 BW1M119 013576b0
 	SetupControl(int id, int x, int y, int width, int height, const char16_t* label);
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 inlined SetupControl::GetTextSize(void)
+	// BW1W120 inlined BW1M119 inlined
 	int GetTextSize();
-	// BW1W120 00409210 BW1M100 1057a320 SetupControl::SetToolTip(unsigned long)
+	// BW1W120 00409210 BW1M119 014ddb40
 	void SetToolTip(uint32_t tooltip_id);
-	// BW1W120 004092f0 BW1M100 100c4fd0 SetupControl::SetToolTip(wchar_t *)
+	// BW1W120 004092f0 BW1M119 01145230
 	void SetToolTip(const char16_t* tooltip);
 };
 

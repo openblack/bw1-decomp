@@ -9,13 +9,13 @@
 #include "Utils.h"
 #include "chlasm/GStates.h"
 
-// BW1W120 00768bc0 Villager::FUN_00768bc0(void)
+// BW1W120 00768bc0
 
 // TODO: the shepherd states reuse the TargetThing slot (0x118) as two uint16 fields
 // { int16 turns-countdown @0x118, uint16 pending-state @0x11a }, hence the casts below;
 // needs proper union members in Villager.h.
 
-// BW1W120 00768be0 BW1M100 10598820 Villager::VillagerBecomesShepherd(Flock *)
+// BW1W120 00768be0 BW1M119 0159f940
 // TODO: early-out block ordering differs from the target; Town::GetFlock's recorded symbol
 // still returns bool, so the call reloc cannot bind
 bool32_t Villager::VillagerBecomesShepherd(Flock* new_flock)
@@ -35,7 +35,7 @@ bool32_t Villager::VillagerBecomesShepherd(Flock* new_flock)
 	return ShepherdGotoFlock();
 }
 
-// BW1W120 00768c30 BW1M100 105986f0 Villager::ShepherdLookForFlock(void)
+// BW1W120 00768c30 BW1M119 0159f810
 // TODO: Town::GetFlock's recorded symbol still returns bool, so the call reloc cannot bind
 bool32_t Villager::ShepherdLookForFlock()
 {
@@ -54,7 +54,7 @@ bool32_t Villager::ShepherdLookForFlock()
 	return false;
 }
 
-// BW1W120 00768c90 BW1M100 10598650 Villager::FindClosestFlockAnimal(void)
+// BW1W120 00768c90 BW1M119 0159f770
 // TODO: needs the nearest-flock helper at 0x52ffd0 and the nearest-flock-member helper at
 // 0x530050 named
 bool32_t Villager::FindClosestFlockAnimal()
@@ -62,7 +62,7 @@ bool32_t Villager::FindClosestFlockAnimal()
 	return 0;
 }
 
-// BW1W120 00768cc0 BW1M100 105984c0 Villager::ShepherdMoveFlockToWater(void)
+// BW1W120 00768cc0 BW1M119 0159f5d0
 // TODO: Abode::FindNearestDrinkingWater is declared void but the target tests its eax result;
 // the original was surely `|| (FindNearestDrinkingWater(400.0f) && GetNearestWaterPos(waterPos))`
 // and the comma form below is the closest legal shape until the return type is fixed.
@@ -96,7 +96,7 @@ uint32_t Villager::ShepherdMoveFlockToWater()
 	return false;
 }
 
-// BW1W120 00768dd0 BW1M100 10006020 Villager::ShepherdWaitForFlock(void)
+// BW1W120 00768dd0 BW1M119 01005f20
 bool32_t Villager::ShepherdWaitForFlock()
 {
 	((int16_t*)&TargetThing)[0]--;
@@ -115,7 +115,7 @@ bool32_t Villager::ShepherdWaitForFlock()
 	return 1;
 }
 
-// BW1W120 00768e30 BW1M100 105981b0 Villager::ShepherdGotoFlock(void)
+// BW1W120 00768e30 BW1M119 0159f480
 // TODO: Flock::GetFlockPos really returns MapCoords*, not MapCoords by value (see Flock.h)
 uint32_t Villager::ShepherdGotoFlock()
 {
@@ -135,7 +135,7 @@ uint32_t Villager::ShepherdGotoFlock()
 	return false;
 }
 
-// BW1W120 00768ec0 BW1M100 105980a0 Villager::ShepherdTakesControlOfFlock(void)
+// BW1W120 00768ec0 BW1M119 0159f370
 // TODO: after picking the leader the target also calls the add-living-to-flock helper at
 // 0x52fa50 on the flock; needs that helper named
 bool32_t Villager::ShepherdTakesControlOfFlock()
@@ -156,7 +156,7 @@ bool32_t Villager::ShepherdTakesControlOfFlock()
 	return 0;
 }
 
-// BW1W120 00768f20 BW1M100 10597fd0 Villager::ShepherdReleasesControlOfFlock(void)
+// BW1W120 00768f20 BW1M119 0159f2a0
 bool32_t Villager::ShepherdReleasesControlOfFlock()
 {
 	if (flock != NULL)
@@ -169,7 +169,7 @@ bool32_t Villager::ShepherdReleasesControlOfFlock()
 	return 0;
 }
 
-// BW1W120 00768f50 BW1M100 10597f10 Villager::ExitShepherding(unsigned char)
+// BW1W120 00768f50 BW1M119 0159f1e0
 bool32_t Villager::ExitShepherding(unsigned char state)
 {
 	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state))
@@ -186,7 +186,7 @@ bool32_t Villager::ExitShepherding(unsigned char state)
 	return 1;
 }
 
-// BW1W120 00768fb0 BW1M100 10597d80 Villager::ShepherdDecideWhatToDoWithFlock(void)
+// BW1W120 00768fb0 BW1M119 0159f050
 bool32_t Villager::ShepherdDecideWhatToDoWithFlock()
 {
 	((int16_t*)&TargetThing)[0]--;
@@ -209,7 +209,7 @@ bool32_t Villager::ShepherdDecideWhatToDoWithFlock()
 	return 1;
 }
 
-// BW1W120 00769070 BW1M100 10597cc0 Villager::ShepherdMoveFlockBack(void)
+// BW1W120 00769070 BW1M119 0159ef90
 bool32_t Villager::ShepherdMoveFlockBack()
 {
 	Flock* my_flock = flock;
@@ -229,13 +229,13 @@ bool32_t Villager::ShepherdMoveFlockBack()
 	return 0;
 }
 
-// BW1W120 007690d0 BW1M100 10597c80 Villager::ShepherdMoveFlockToFood(void)
+// BW1W120 007690d0 BW1M119 0159ef50
 bool32_t Villager::ShepherdMoveFlockToFood()
 {
 	return 1;
 }
 
-// BW1W120 007690e0 BW1M100 10597ae0 Villager::ShepherdTakeAnimalForSlaughter(void)
+// BW1W120 007690e0 BW1M119 0159edb0
 // TODO: needs the helpers at 0x530050 (nearest flock member) and 0x52fa50 (add living to
 // flock) named, and Flock::SeperateLivingIntoNewFlock should return the new Flock* which
 // the target continues to set up (see Flock.h)
@@ -263,7 +263,7 @@ bool32_t Villager::ShepherdTakeAnimalForSlaughter()
 	return 0;
 }
 
-// BW1W120 007691a0 BW1M100 10026690 Villager::ShepherdCheckAnimalForSlaughter(void)
+// BW1W120 007691a0 BW1M119 01029220
 // TODO: needs the step-towards-position helpers at 0x74ed60 and 0x74ee20 named (both compute
 // the movePos below, which is passed zero-initialized for now); the GetDoorPos virtual also
 // dispatches through the wrong vtable slot (extra virtuals declared below MultiMapFixed).
@@ -326,7 +326,7 @@ bool32_t Villager::ShepherdCheckAnimalForSlaughter()
 	return 0;
 }
 
-// BW1W120 00769390 BW1M100 10597830 Villager::ShepherdSlaughterAnimal(void)
+// BW1W120 00769390 BW1M119 0159eaf0
 bool32_t Villager::ShepherdSlaughterAnimal()
 {
 	((int16_t*)&TargetThing)[0]--;
@@ -348,7 +348,7 @@ bool32_t Villager::ShepherdSlaughterAnimal()
 	return 1;
 }
 
-// BW1W120 00769430 BW1M100 10006770 Villager::SlaughterAnimalIsClose(float, Living *)
+// BW1W120 00769430 BW1M119 01006670
 // TODO: passthrough of the nearest-flock-member helper at 0x530050; needs it named
 bool32_t Villager::SlaughterAnimalIsClose(float max_dist, Living* exclude)
 {
@@ -358,7 +358,7 @@ bool32_t Villager::SlaughterAnimalIsClose(float max_dist, Living* exclude)
 	return 0;
 }
 
-// BW1W120 00769460 BW1M100 105976d0 Villager::ShepherdFetchStray(void)
+// BW1W120 00769460 BW1M119 0159e970
 bool32_t Villager::ShepherdFetchStray()
 {
 	return 1;

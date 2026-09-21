@@ -17,13 +17,13 @@ class Goat : public Cow
 public:
 	// Override methods
 
-	// BW1W120 0041d6e0 BW1M100 101710a0 Goat::_dt(void)
+	// BW1W120 0041d6e0 BW1M119 0117a0c0
 	virtual ~Goat();
-	// BW1W120 0041d6d0 BW1M100 10171160 Goat::GetDebugText(void)
+	// BW1W120 0041d6d0 BW1M119 0117a180
 	virtual char* GetDebugText();
-	// BW1W120 0041d6c0 BW1M100 10171130 Goat::GetSaveType(void)
+	// BW1W120 0041d6c0 BW1M119 0117a150
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041c9d0 BW1M100 1016e580 Goat::StandAnimation(void)
+	// BW1W120 0041c9d0 BW1M119 01177440
 	virtual uint32_t StandAnimation();
 };
 

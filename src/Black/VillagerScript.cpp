@@ -5,7 +5,7 @@
 
 const float VillagerScriptFloat0p7 = 0.7f;
 
-// BW1W120 00768630 BW1M100 10597660 Villager::IsReadyForNewScriptAction(void)
+// BW1W120 00768630 BW1M119 0159e900
 uint32_t Villager::IsReadyForNewScriptAction()
 {
 	// == IN_SCRIPT, written as a byte subtraction so MSVC6 emits the original's
@@ -14,7 +14,7 @@ uint32_t Villager::IsReadyForNewScriptAction()
 	return (unsigned char)((uint8_t)GetTopState() - VILLAGER_STATE_IN_SCRIPT) == 0;
 }
 
-// BW1W120 00768640 BW1M100 105975c0 Living::CannotExitState(unsigned char)
+// BW1W120 00768640 BW1M119 0159e860
 // TODO: 93.9% — blocked on a shared-header return-type decision (dispatcher). The target treats
 // IsStateExitFunctionSameAs (Living vtable slot 0x96c) as INT-returning at the call site
 // (`test eax,eax`, then reuses the clean eax=0 for the false `return 0`), but Living.h declares it
@@ -30,7 +30,7 @@ bool32_t Living::CannotExitState(unsigned char state)
 	       state == VILLAGER_STATE_FLYING;
 }
 
-// BW1W120 00768680 BW1M100 105974b0 Villager::SetupScriptWanderToPos(MapCoords const &, float, unsigned short, unsigned short)
+// BW1W120 00768680 BW1M119 0159e750
 // TODO: 90.9% — one-instruction scheduler tie-break. Semantics + regalloc all match; the only diff
 // is the `and eax,0xffff` (max_turns 16-bit mask) floats one slot: target does `and ecx (min); lea
 // edx,[ecx+1]; and eax (max); cmp`, ours does `and ecx; and eax; lea edx; cmp`. max_turns is loaded
@@ -50,7 +50,7 @@ bool32_t Villager::SetupScriptWanderToPos(const MapCoords& pos, float radius, un
 	return SetupNewScriptWander();
 }
 
-// BW1W120 007686d0 BW1M100 10597370 Villager::SetupNewScriptWander(void)
+// BW1W120 007686d0 BW1M119 0159e610
 // TODO: deferred (multiple blockers). Reverse-engineered structure (from 0x7686d0 asm):
 //     MapCoords coords(*(JustWholeMapXZ*)&field_0x10c);              // wander centre @0x10c/0x110
 //     float angle = GRand::GameFloatRand(6.2831855f, __FILE__, __LINE__);   // 0x40c90fdb = 2*pi
@@ -77,7 +77,7 @@ bool32_t Villager::SetupNewScriptWander()
 	return true;
 }
 
-// BW1W120 00768780 BW1M100 inlined Living::ExitNoChangeState(VILLAGER_STATES)
+// BW1W120 00768780 BW1M119 inlined
 // TODO: 88.6% — same shared-header bool-return-width blocker as CannotExitState: the three state
 // predicates at vtable 0x964/0x968/0x96c are declared `bool` (`_N`) so we emit `test al,al` + a
 // trailing `xor eax,eax`, but the target uses `test eax,eax` and reuses eax=0 (int-returning form).
@@ -94,13 +94,13 @@ uint32_t Living::ExitNoChangeState(uint8_t state)
 	return 1;
 }
 
-// BW1W120 007687d0 BW1M100 inlined Living::EnterScriptWander(VILLAGER_STATES, VILLAGER_STATES)
+// BW1W120 007687d0 BW1M119 inlined
 uint32_t Living::EnterScriptWander(uint8_t param_1, uint8_t param_2)
 {
 	return EnterInScript(param_1, param_2);
 }
 
-// BW1W120 007687f0 BW1M100 105971a0 Villager::ScriptWanderAroundPos(void)
+// BW1W120 007687f0 BW1M119 0159e440
 bool32_t Villager::ScriptWanderAroundPos()
 {
 	if (data_for_script_remind == NULL)
@@ -116,13 +116,13 @@ bool32_t Villager::ScriptWanderAroundPos()
 	return 1;
 }
 
-// BW1W120 00768830 BW1M100 inlined Living::ExitScriptWander(VILLAGER_STATES)
+// BW1W120 00768830 BW1M119 inlined
 uint32_t Living::ExitScriptWander(uint8_t state)
 {
 	return ExitInScript(state);
 }
 
-// BW1W120 00768840 BW1M100 inlined Living::EnterPlayAnim(VILLAGER_STATES, VILLAGER_STATES)
+// BW1W120 00768840 BW1M119 inlined
 // TODO: deferred (300B, complex). Reverse-engineered structure (from 0x768840 decompile):
 //     Villager* v = dynamic_cast<Villager*>(this);   // ___RTDynamicCast to Villager::RTTI
 //     if (v != NULL &&
@@ -145,7 +145,7 @@ uint32_t Living::EnterPlayAnim(uint8_t param_1, uint8_t param_2)
 	return 1;
 }
 
-// BW1W120 00768970 BW1M100 10005f50 Villager::ScriptPlayAnim(void)
+// BW1W120 00768970 BW1M119 01005e50
 // TODO: 84.3% — scheduler tie-break (save-across-call-spill family). Semantics correct: decrement
 // the SCRIPT_PLAY_ANIM frame counter at WanderArea.z (0x120), pick SCRIPT_PLAY_ANIM (0xc8) while
 // >0 else IN_SCRIPT (4), lazily create data_for_script_remind. The two-call if/else below is
@@ -177,13 +177,13 @@ bool32_t Villager::ScriptPlayAnim()
 	return 1;
 }
 
-// BW1W120 007689c0 BW1M100 inlined Living::ExitPlayAnim(VILLAGER_STATES)
+// BW1W120 007689c0 BW1M119 inlined
 uint32_t Living::ExitPlayAnim(uint8_t state)
 {
 	return ExitInScript(state);
 }
 
-// BW1W120 007689d0 BW1M100 1000afa0 Villager::IsScriptAnimationComplete(void)
+// BW1W120 007689d0 BW1M119 0100cac0
 bool32_t Villager::IsScriptAnimationComplete()
 {
 	VILLAGER_STATES state = GetTopState();
@@ -198,20 +198,20 @@ bool32_t Villager::IsScriptAnimationComplete()
 	return true;
 }
 
-// BW1W120 00768a00 BW1M100 10596c60 Villager::ScriptAnimation(void)
+// BW1W120 00768a00 BW1M119 0159dfa0
 // TODO: returns the raw dword at the WanderArea union (0x11c); the semantic union member is a guess.
 bool32_t Villager::ScriptAnimation()
 {
 	return WanderArea.x;
 }
 
-// BW1W120 00768a10 BW1M100 10596c20 Villager::WeakOnGround(void)
+// BW1W120 00768a10 BW1M119 0159df60
 bool32_t Villager::WeakOnGround()
 {
 	return true;
 }
 
-// BW1W120 00768a20 BW1M100 105969d0 Villager::ScriptGoAndMoveAlongPath(void)
+// BW1W120 00768a20 BW1M119 0159dd10
 // TODO: deferred (346B, complex). Reverse-engineered structure (from 0x768a20 decompile):
 //     if (AreWeThere(0.0f)) {                       // MobileWallHug::AreWeThere @ 0x5ee520-ish
 //         // path finished: notify the DataPath's track (data_path->track_no) and return

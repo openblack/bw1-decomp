@@ -13,14 +13,14 @@ class GameOSFile;
 class Bookmark
 {
 public:
-	// BW1W120 00439d60 BW1M100 100b6f70 Bookmark::ClearAll(void)
+	// BW1W120 00439d60 BW1M119 010b9ea0
 	static void ClearAll();
-	// BW1W120 00439dd0 BW1M100 10082d20 Bookmark::ProcessAll(void)
+	// BW1W120 00439dd0 BW1M119 01085110
 	static void ProcessAll();
 	// TODO: Instance layout is not recovered; only the static serialization interface is declared.
-	// BW1W120 0043a3f0 BW1M100 100b5d90 Bookmark::SaveAll(GameOSFile &)
+	// BW1W120 0043a3f0 BW1M119 010b8990
 	static unsigned int SaveAll(GameOSFile& file);
-	// BW1W120 0043a5e0 BW1M100 100b5a00 Bookmark::LoadAll(GameOSFile &)
+	// BW1W120 0043a5e0 BW1M119 010b8600
 	static unsigned int LoadAll(GameOSFile& file);
 };
 
@@ -31,7 +31,7 @@ struct BookmarkGraphic
 
 	// Static methods
 
-	// BW1W120 0043a7d0 BW1M100 100b5760 BookmarkGraphic::Create(long, CREATURE_TYPE)
+	// BW1W120 0043a7d0 BW1M119 010b8360
 	static BookmarkGraphic* Create(int param_1, CREATURE_TYPE type);
 };
 

@@ -4,7 +4,7 @@
 #include "Town.h"
 #include "VillagerInfo.h"
 
-// BW1W120 0075b940
+// BW1W120 0075b940 BW1M119 01583810
 // TODO: 46% — blocked on a cross-unit Rule 2 (hidden-retbuf) signature fix I can't make.
 // The true structure (from the target asm) is:
 //     if (Flags & 4) {
@@ -41,19 +41,19 @@ uint32_t Villager::ShowPoisoned()
 template <int T> float __stdcall POWER(float base);
 template <> float __stdcall POWER<2>(float base);
 
-// BW1W120 0075bae0
+// BW1W120 0075bae0 BW1M119 01583630
 float Villager::CalculateLifeDesire()
 {
 	return 1.0 - GetLife();
 }
 
-// BW1W120 0075baf0
+// BW1W120 0075baf0 BW1M119 015835f0
 bool32_t Villager::CheckHungryAtHome()
 {
 	return true;
 }
 
-// BW1W120 0075bb00
+// BW1W120 0075bb00 BW1M119 01583500
 float Villager::GetDesireToPickupFood()
 {
 	const GVillagerInfo* villagerInfo = (const GVillagerInfo*)info;
@@ -62,7 +62,7 @@ float Villager::GetDesireToPickupFood()
 	return 0.0f;
 }
 
-// BW1W120 0075bb50
+// BW1W120 0075bb50 BW1M119 01089d20
 float Villager::GetDesireForFood()
 {
 	return POWER<2>(food);
@@ -81,13 +81,13 @@ template <> float __stdcall POWER<2>(float base)
 	return 1.0f - result;
 }
 
-// BW1W120 0075bba0
+// BW1W120 0075bba0 BW1M119 01024060
 float Villager::GetDesireForLife()
 {
 	return GetLifeDesireFromLife(GetLife());
 }
 
-// BW1W120 0075bbc0
+// BW1W120 0075bbc0 BW1M119 0102b110
 float Villager::GetLifeDesireFromLife(float life)
 {
 	const GVillagerInfo* villagerInfo = (const GVillagerInfo*)info;
@@ -96,7 +96,7 @@ float Villager::GetLifeDesireFromLife(float life)
 	return 1.0f - t * t;
 }
 
-// BW1W120 0075bc00
+// BW1W120 0075bc00 BW1M119 010035e0
 uint32_t Villager::GetAmountOfFoodRequiredForMeal()
 {
 	// TODO: 83.3% — pure scheduler tie-break. Target emits
@@ -110,7 +110,7 @@ uint32_t Villager::GetAmountOfFoodRequiredForMeal()
 	return required > 0 ? required : 0;
 }
 
-// BW1W120 0075bc20
+// BW1W120 0075bc20 BW1M119 0109cc60
 uint32_t Villager::GetAmountOfFoodToEat()
 {
 	const GVillagerInfo* villagerInfo = (const GVillagerInfo*)info;
@@ -133,7 +133,7 @@ uint32_t Villager::GetAmountOfFoodToEat()
 	return (uint32_t)foodWanted;
 }
 
-// BW1W120 0075bf00
+// BW1W120 0075bf00 BW1M119 01098ca0
 // TODO: 91.7% — only diff is a `> and eax,0xff` after the ChangeStateToFindFoodToEat call.
 // ChangeStateToFindFoodToEat is `_N` (real C++ bool); returning it as unsigned int widens the
 // byte. In the original TU ChangeStateToFindFoodToEat is DEFINED (0x0075b990, same unit), so
@@ -147,7 +147,7 @@ uint32_t Villager::CheckSatisfyOwnFoodDesire()
 	return 0;
 }
 
-// BW1W120 0075bf20
+// BW1W120 0075bf20 BW1M119 01582d50
 // TODO: 87.5% — three residual diffs, all scheduler/fpu-leak, not source-shape:
 //  (1) trailing `fld [this->food]` returns food as a leaked float; ours adds `call __ftol`
 //      to honor the `unsigned int` (?EatFoodHeld@Villager@@QAEIXZ) return. fpu-leak-void-return
@@ -175,7 +175,7 @@ uint32_t Villager::EatFoodHeld()
 	return (uint32_t)food;
 }
 
-// BW1W120 0075c000
+// BW1W120 0075c000 BW1M119 01582cc0
 uint32_t Villager::EatFood()
 {
 	// TODO: 71% — three residual diffs, none cleanly fixable from source:
@@ -197,7 +197,7 @@ uint32_t Villager::EatFood()
 	return 1;
 }
 
-// BW1W120 0075c040
+// BW1W120 0075c040 BW1M119 01582be0
 // TODO: 77.8% — three residual diffs:
 //  (1) mangled return is unsigned int (?GetFoodFromHome@Villager@@QAEIK@Z) but the target
 //      never sets EAX on either path (null early-out via `je 0x7a4`, or fallthrough after the
@@ -222,7 +222,7 @@ bool32_t Villager::GetFoodFromHome(unsigned long food_amount)
 	return 0;
 }
 
-// BW1W120 0075c090
+// BW1W120 0075c090 BW1M119 01582b20
 uint32_t Villager::EatFoodAtHome()
 {
 	int16_t held = ResourceHeld[RESOURCE_TYPE_FOOD];
@@ -240,7 +240,7 @@ uint32_t Villager::EatFoodAtHome()
 	return 1;
 }
 
-// BW1W120 0075c0f0
+// BW1W120 0075c0f0 BW1M119 01582ae0
 bool32_t Villager::HomelessEatDinner()
 {
 	return true;

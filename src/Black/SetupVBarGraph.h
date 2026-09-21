@@ -23,12 +23,12 @@ struct VBarData
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined VBarData::VBarData(const VBarData &)
+	// BW1W120 inlined BW1M119 inlined
 	VBarData(const VBarData* bar);
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 inlined VBarData::operator=(const VBarData &)
+	// BW1W120 inlined BW1M119 inlined
 	VBarData* operator=(const VBarData* bar);
 };
 
@@ -42,29 +42,29 @@ public:
 
 	// Override methods
 
-	// BW1W120 0040e8b0 BW1M100 10379480 SetupVBarGraph::Draw(bool, bool)
+	// BW1W120 0040e8b0 BW1M119 0135d4f0
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 0040ef70 BW1M100 10350e50 SetupVBarGraph::KeyDown(int, int)
+	// BW1W120 0040ef70 BW1M119 010cf650
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 0040ef90 BW1M100 103de920 SetupVBarGraph::~SetupVBarGraph(void)
+	// BW1W120 0040ef90 BW1M119 01361cd0
 	virtual ~SetupVBarGraph();
-	// BW1W120 0040efb0 BW1M100 inlined SetupVBarGraph::Reset(vfoid)
+	// BW1W120 0040efb0 BW1M119 inlined
 	virtual void Reset();
-	// BW1W120 0040f1b0 BW1M100 10351240 SetupVBarGraph::SetScale(float)
+	// BW1W120 0040f1b0 BW1M119 01142e70
 	virtual void SetScale(float scale);
 
 	// Constructors
 
-	// BW1W120 0040ef00 BW1M100 10354bc0 SetupVBarGraph::SetupVBarGraph(int, int, int, int, int, wchar_t *)
+	// BW1W120 0040ef00 BW1M119 01142980
 	SetupVBarGraph(int id, int x, int y, int width, int height, const char16_t* label);
 
 	// Non-virtual methods
 
-	// BW1W120 0040f280 BW1M100 103fccd0 SetupVBarGraph::AddBar(const VBarData &)
+	// BW1W120 0040f280 BW1M119 0134f610
 	void AddBar(const VBarData& bar);
-	// BW1W120 0040f300 BW1M100 10352240 SetupVBarGraph::SetBar(int, const VBarData &)
+	// BW1W120 0040f300 BW1M119 01351140
 	void SetBar(int index, const VBarData& bar);
-	// BW1W120 0040f350 BW1M100 103f1500 SetupVBarGraph::GetBar(int, VBarData &)
+	// BW1W120 0040f350 BW1M119 01359ab0
 	void GetBar(int index, VBarData& result);
 };
 

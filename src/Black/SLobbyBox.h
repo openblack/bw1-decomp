@@ -13,12 +13,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 00599740 BW1M100 105d3580 GSLobbyBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00599740 BW1M119 015da130
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
-	// BW1W120 0059a250 BW1M100 105d3340 GSLobbyBox::Destroy(void)
+	// BW1W120 0059a250 BW1M119 015d9f10
 	virtual void Destroy();
-	// BW1W120 0059a0a0 BW1M100 105d33a0 GSLobbyBox::InitControls(void)
+	// BW1W120 0059a0a0 BW1M119 015d9f70
 	virtual void InitControls();
 };
 

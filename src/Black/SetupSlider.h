@@ -19,22 +19,22 @@ public:
 
 	// Override methods
 
-	// BW1W120 00409a40 BW1M100 10440200 SetupSlider::Draw(bool, bool)
+	// BW1W120 00409a40 BW1M119 010d1200
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 00409c70 BW1M100 1043ff90 SetupSlider::Drag(int, int)
+	// BW1W120 00409c70 BW1M119 0159ff50
 	virtual void Drag(int x, int y);
-	// BW1W120 00409d60 BW1M100 1043c240 SetupSlider::MouseDown(int, int, bool)
+	// BW1W120 00409d60 BW1M119 011109a0
 	virtual void MouseDown(int x, int y, bool param_3);
-	// BW1W120 00409d90 BW1M100 100b4690 SetupSlider::MouseUp(int, int, bool)
+	// BW1W120 00409d90 BW1M119 015824f0
 	virtual void MouseUp(int x, int y, bool param_3);
-	// BW1W120 00409960 BW1M100 10103d10 SetupSlider::KeyDown(int, int)
+	// BW1W120 00409960 BW1M119 010d97f0
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 00409c50 BW1M100 101c8450 SetupSlider::~SetupSlider(void)
+	// BW1W120 00409c50 BW1M119 013faec0
 	virtual ~SetupSlider();
 
 	// Constructors
 
-	// BW1W120 00409bf0 BW1M100 1043fbc0 SetupSlider::SetupSlider(int, int, int, int, int, float, wchar_t *)
+	// BW1W120 00409bf0 BW1M119 013c2910
 	SetupSlider(int id, int x, int y, int width, int height, float value, char16_t* label);
 };
 

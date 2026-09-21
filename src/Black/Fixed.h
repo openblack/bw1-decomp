@@ -33,65 +33,65 @@ public:
 
 	// Override methods
 
-	// BW1W120 0052df20 BW1M100 100e1bd0 FixedObject::GetTownArtifactValue(void)
+	// BW1W120 0052df20 BW1M119 010e6b20
 	virtual float GetTownArtifactValue();
-	// BW1W120 0052e170 BW1M100 inlined FixedObject::Load(GameOSFile &)
+	// BW1W120 0052e170 BW1M119 inlined
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0052e140 BW1M100 100e17b0 FixedObject::Save(GameOSFile &)
+	// BW1W120 0052e140 BW1M119 010e6700
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00401400 BW1M100 10513b00 FixedObject::CanBeFrighteningToCreature(Creature *)
+	// BW1W120 00401400 BW1M119 013eb100
 	virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return false; }
-	// BW1W120 00401410 BW1M100 10570f10 FixedObject::CanBeSleptNextToByCreature(Creature *)
+	// BW1W120 00401410 BW1M119 014269b0
 	virtual bool32_t CanBeSleptNextToByCreature(Creature* creature) { return true; }
-	// BW1W120 00401420 BW1M100 105e81f0 FixedObject::CanBeDestroyedByStoning(Creature *)
+	// BW1W120 00401420 BW1M119 010a3e90
 	virtual bool32_t CanBeDestroyedByStoning(Creature* creature) { return true; }
-	// BW1W120 00401430 BW1M100 100b19c0 FixedObject::CanBeSetOnFire(Creature *)
+	// BW1W120 00401430 BW1M119 01176870
 	virtual bool32_t CanBeSetOnFire(Creature* creature) { return (GameThing::Flags & GAME_THING_FLAG_FIREPROOF) == 0; }
-	// BW1W120 00401440 BW1M100 1056c2a0 FixedObject::CanBePickedUpByCreature(Creature *)
+	// BW1W120 00401440 BW1M119 013e9040
 	virtual bool32_t CanBePickedUpByCreature(Creature* creature) { return false; }
-	// BW1W120 00401450 BW1M100 1057a200 FixedObject::CanBeCrushed(void)
+	// BW1W120 00401450 BW1M119 015a06c0
 	virtual bool32_t CanBeCrushed() { return true; }
-	// BW1W120 00401460 BW1M100 10554e40 FixedObject::VillagerMustAvoid(Villager *)
+	// BW1W120 00401460 BW1M119 014190e0
 	virtual bool32_t VillagerMustAvoid(Villager* param_1) { return true; }
-	// BW1W120 00401470 BW1M100 1057ad40 FixedObject::GetTownArtifact(void)
+	// BW1W120 00401470 BW1M119 010b41c0
 	virtual GameThing* GetTownArtifact() { return town_artifact; }
-	// BW1W120 00401480 BW1M100 10588280 FixedObject::IsTownArtifact(void)
+	// BW1W120 00401480 BW1M119 013e07d0
 	virtual bool32_t IsTownArtifact() { return town_artifact != NULL; }
-	// BW1W120 004d1b80 BW1M100 10242ed0 FixedObject::GetHowMuchCreatureWantsToLookAtMe(void)
+	// BW1W120 004d1b80 BW1M119 012477c0
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
-	// BW1W120 0052de30 BW1M100 100e1ea0 FixedObject::Create3DObject(void)
+	// BW1W120 0052de30 BW1M119 010e6df0
 	virtual void Create3DObject();
-	// BW1W120 0052e530 BW1M100 100e0b90 FixedObject::InsertMapObject(void)
+	// BW1W120 0052e530 BW1M119 010e5b40
 	virtual void InsertMapObject();
-	// BW1W120 0052e5c0 BW1M100 100e0af0 FixedObject::RemoveMapObject(void)
+	// BW1W120 0052e5c0 BW1M119 010e5aa0
 	virtual void RemoveMapObject();
-	// BW1W120 0052dea0 BW1M100 100e1d30 FixedObject::InsertMapObjectToCell(MapCell *)
+	// BW1W120 0052dea0 BW1M119 010e6c80
 	virtual void InsertMapObjectToCell(MapCell* cell);
-	// BW1W120 0052eb90 BW1M100 100dff80 FixedObject::ValidForLockedSelectProcess(GInterfaceStatus *)
+	// BW1W120 0052eb90 BW1M119 010e4f40
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* status);
-	// BW1W120 0052eba0 BW1M100 100dff20 FixedObject::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
+	// BW1W120 0052eba0 BW1M119 010e4ee0
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* status);
-	// BW1W120 0052e0e0 BW1M100 100e1840 FixedObject::InterfaceSetInMagicHand(GInterfaceStatus *)
+	// BW1W120 0052e0e0 BW1M119 010e6790
 	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* status);
-	// BW1W120 0052df50 BW1M100 100e1950 FixedObject::EndPhysics(PhysicsObject *, bool)
+	// BW1W120 0052df50 BW1M119 010e68a0
 	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
-	// BW1W120 0052de50 BW1M100 100e1df0 FixedObject::GetSpecialPos(unsigned long, MapCoords *)
+	// BW1W120 0052de50 BW1M119 010e6d40
 	virtual bool32_t GetSpecialPos(uint32_t index, MapCoords* pos);
-	// BW1W120 0052dee0 BW1M100 100e1c70 FixedObject::InsertMapObjectToCellAssumeFixed(MapCell *)
+	// BW1W120 0052dee0 BW1M119 010e6bc0
 	virtual void InsertMapObjectToCellAssumeFixed(MapCell* cell);
-	// BW1W120 004252f0 BW1M100 100a9cd0 FixedObject::IsObjectFullyInMap(void)
+	// BW1W120 004252f0 BW1M119 010ad5c0
 	virtual bool IsObjectFullyInMap();
 
 	// Constructors
 
-	// BW1W120 0052dd80 BW1M100 inlined FixedObject::FixedObject(void)
+	// BW1W120 0052dd80 BW1M119 inlined
 	Fixed();
-	// BW1W120 0052ddc0 BW1M100 100e1fb0 FixedObject::FixedObject(MapCoords const &, GObjectInfo const *, float, float)
+	// BW1W120 0052ddc0 BW1M119 010e6f00
 	Fixed(const MapCoords* coords, const GObjectInfo* info, float y_angle, float scale);
 
 	// Non-virtual Destructors
 
-	// BW1W120 0052dda0 BW1M100 100e1f20 FixedObject::_dt(void)
+	// BW1W120 0052dda0 BW1M119 010e6e70
 	~Fixed();
 };
 
@@ -102,34 +102,34 @@ public:
 
 	// Override methods
 
-	// BW1W120 0052eb40 BW1M100 100e00a0 SingleMapFixed::_dt(void)
+	// BW1W120 0052eb40 BW1M119 010e5060
 	virtual ~SingleMapFixed();
-	// BW1W120 0052e620 BW1M100 100e0990 SingleMapFixed::InsertMapObject(void)
+	// BW1W120 0052e620 BW1M119 010e5940
 	virtual void InsertMapObject();
-	// BW1W120 0052e600 BW1M100 100e0a30 SingleMapFixed::RemoveMapObject(void)
+	// BW1W120 0052e600 BW1M119 010e59e0
 	virtual void RemoveMapObject();
-	// BW1W120 0052f440 BW1M100 100de110 SingleMapFixed::InsertMapObjectToCell(MapCell *)
+	// BW1W120 0052f440 BW1M119 010e3790
 	virtual void InsertMapObjectToCell(MapCell* param_1);
-	// BW1W120 0052f450 BW1M100 100de0a0 SingleMapFixed::RemoveMapObjectFromCell(MapCell *)
+	// BW1W120 0052f450 BW1M119 010e3720
 	virtual void RemoveMapObjectFromCell(MapCell* param_1);
-	// BW1W120 0052eb10 BW1M100 100e32e0 SingleMapFixed::GetMesh( const(void))
+	// BW1W120 0052eb10 BW1M119 010e7740
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00518100 BW1M100 10038230 SingleMapFixed::Draw(void)
+	// BW1W120 00518100 BW1M119 0103aba0
 	virtual void Draw();
-	// BW1W120 0052e880 BW1M100 100e0470 SingleMapFixed::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 0052e880 BW1M119 010e5430
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 0052eaf0 BW1M100 100e3210 SingleMapFixed::ValidForPlaceInHand(GInterfaceStatus *)
+	// BW1W120 0052eaf0 BW1M119 010e7670
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-	// BW1W120 0052eb00 BW1M100 100e3270 SingleMapFixed::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+	// BW1W120 0052eb00 BW1M119 010e76d0
 	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
-	// BW1W120 0052f420 BW1M100 100de180 SingleMapFixed::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
+	// BW1W120 0052f420 BW1M119 010e3800
 	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
-	// BW1W120 0052eb20 BW1M100 100e3350 SingleMapFixed::ApplyOnlyAfterReleased(void)
+	// BW1W120 0052eb20 BW1M119 010e77b0
 	virtual uint32_t ApplyOnlyAfterReleased();
-	// BW1W120 0052eb30 BW1M100 10095a30 SingleMapFixed::GetCollideData(void)
+	// BW1W120 0052eb30 BW1M119 01097980
 	virtual NewCollide* GetCollideData();
-	// BW1W120 0052f510 BW1M100 100dde20 SingleMapFixed::CreateCollideData(void)
+	// BW1W120 0052f510 BW1M119 010e34a0
 	virtual void CreateCollideData();
 };
 

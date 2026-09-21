@@ -16,15 +16,15 @@ class WayPoint : public GameThingWithPos
 public:
 	// Override methods
 
-	// BW1W120 00770b50 BW1M100 1015fc80 WayPoint::_dt(void)
+	// BW1W120 00770b50 BW1M119 01167ec0
 	virtual ~WayPoint();
-	// BW1W120 00770c00 BW1M100 1015fa00 WayPoint::ToBeDeleted(int)
+	// BW1W120 00770c00 BW1M119 01167c40
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00770b30 BW1M100 1015f750 WayPoint::GetDebugText(void)
+	// BW1W120 00770b30 BW1M119 01167990
 	virtual char* GetDebugText();
-	// BW1W120 00770b20 BW1M100 1015f710 WayPoint::GetSaveType(void)
+	// BW1W120 00770b20 BW1M119 01167950
 	virtual uint32_t GetSaveType();
-	// BW1W120 00770b40 BW1M100 1015f790 WayPoint::GetText(void)
+	// BW1W120 00770b40 BW1M119 011679d0
 	virtual const char* GetText();
 };
 

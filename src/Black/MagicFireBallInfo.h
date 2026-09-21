@@ -16,9 +16,9 @@ class GMagicFireBallInfo : public GObjectInfo
 public:
 	// Override methods
 
-	// BW1W120 00682910 BW1M100 103fbe00 GMagicFireBallInfo::_dt(void)
+	// BW1W120 00682910 BW1M119 014066a0
 	virtual ~GMagicFireBallInfo();
-	// BW1W120 006828a0 BW1M100 103fce80 GMagicFireBallInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 006828a0 BW1M119 01407650
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

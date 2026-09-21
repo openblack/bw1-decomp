@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-// PSysSound construction (BW1M100 104870b0) copies five words and one flag byte.
+// PSysSound construction (BW1M119 0148f550) copies five words and one flag byte.
 // SoundActionProperty::ReadProperty passes Action to FindEnumVal(long*).
 // The other scalar meanings/types remain unknown; these are not opaque storage.
 class PSysSoundAction

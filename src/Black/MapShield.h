@@ -30,40 +30,40 @@ public:
 
 	// Override methods
 
-	// BW1W120 0072c050 BW1M100 105304c0 MapShield::_dt(void)
+	// BW1W120 0072c050 BW1M119 01538d40
 	virtual ~MapShield();
-	// BW1W120 0072c0f0 BW1M100 10531870 MapShield::ToBeDeleted(int)
+	// BW1W120 0072c0f0 BW1M119 0153a0c0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0072c150 BW1M100 10531800 MapShield::GetPlayer(void)
+	// BW1W120 0072c150 BW1M119 0153a050
 	virtual GPlayer* GetPlayer();
-	// BW1W120 0072c040 BW1M100 10534210 MapShield::GetDebugText(void)
+	// BW1W120 0072c040 BW1M119 0153ccf0
 	virtual char* GetDebugText();
-	// BW1W120 0072c350 BW1M100 10531180 MapShield::Load(GameOSFile &)
+	// BW1W120 0072c350 BW1M119 015399e0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0072c390 BW1M100 105310e0 MapShield::Save(GameOSFile &)
+	// BW1W120 0072c390 BW1M119 01539940
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0072c030 BW1M100 105341d0 MapShield::GetSaveType(void)
+	// BW1W120 0072c030 BW1M119 0153ccb0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0072c010 BW1M100 10534010 MapShield::HandShouldFeelWithMeshIntersect(void)
+	// BW1W120 0072c010 BW1M119 0153caf0
 	virtual uint32_t HandShouldFeelWithMeshIntersect();
-	// BW1W120 0072c1b0 BW1M100 10531700 MapShield::GetMesh( const(void))
+	// BW1W120 0072c1b0 BW1M119 01539f50
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 0072c1c0 BW1M100 105316c0 MapShield::GetTopPos(void)
+	// BW1W120 0072c1c0 BW1M119 01539f10
 	virtual float GetTopPos();
-	// BW1W120 0072c000 BW1M100 10533fc0 MapShield::ValidForPlaceInHand(GInterfaceStatus *)
+	// BW1W120 0072c000 BW1M119 0153caa0
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-	// BW1W120 0072c1e0 BW1M100 10531620 MapShield::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object *)
+	// BW1W120 0072c1e0 BW1M119 01539e70
 	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
-	// BW1W120 0072c1d0 BW1M100 10531680 MapShield::CanBecomeAPhysicsObject(void)
+	// BW1W120 0072c1d0 BW1M119 01539ed0
 	virtual bool32_t CanBecomeAPhysicsObject();
-	// BW1W120 0072c170 BW1M100 10531740 MapShield::CreatureMustAvoid(Creature *)
+	// BW1W120 0072c170 BW1M119 01539f90
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
-	// BW1W120 0072c020 BW1M100 10534060 MapShield::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 0072c020 BW1M119 0153cb40
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Constructors
 
-	// BW1W120 0072c070 BW1M100 10531a30 MapShield::__ct(MapCoords const &, GMapShieldInfo *, SpellShield *)
+	// BW1W120 0072c070 BW1M119 0153a280
 	MapShield(MapCoords* coords, GMapShieldInfo* info, SpellShield* spell);
 };
 

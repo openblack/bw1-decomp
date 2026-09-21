@@ -11,7 +11,7 @@ public:
 	unsigned long GameTurnValidated; /* 0x0 */
 	T*            Pointer;           /* 0x4 */
 
-	// BW1M100 10303f70 (GameThing): deliberately leaves the turn uninitialized.
+	// Deliberately leaves the turn uninitialized (BW1M119 01305cc0 for GameThing).
 	GTPointer() : Pointer(0) {}
 };
 

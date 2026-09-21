@@ -11,12 +11,13 @@ class MPFEFindGame : public DialogBoxBase
 public:
 	// Override methods
 
-	// BW1W120 0062f650 BW1M100 103a5d40 MPFEFindGame::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 0062f650 BW1M119 013adb40
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 0062f8c0 BW1M100 103a5d10 MPFEFindGame::Destroy(void)
+	// BW1W120 0062f8c0 BW1M119 013adb10
 	virtual void Destroy();
-	// BW1W120 0062f8d0. Vtable +0x20 at 00930900.
+	// Vtable +0x20 at 00930900.
+	// BW1W120 0062f8d0 BW1M119 013ad9c0
 	virtual void InitControls();
 };
 

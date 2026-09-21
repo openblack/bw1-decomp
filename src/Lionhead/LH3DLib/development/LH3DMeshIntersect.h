@@ -10,7 +10,7 @@ class LHFile;
 
 struct MeshIntersect
 {
-	// BW1W120 00865000 BW1M100 1061fd6c MeshIntersect::InitialiseMeshIntersect(void)
+	// BW1W120 00865000 BW1M119 01070130 (LHCombined Release)
 	static void InitialiseMeshIntersect();
 	uint32_t    field_0x0;
 	uint32_t    field_0x4;
@@ -25,7 +25,7 @@ struct MeshIntersect
 
 	// Non-virtual methods
 
-	// BW1W120 00867c20 BW1M100 1061c70c MeshIntersect::ReadBinary(LHFile *)
+	// BW1W120 00867c20 BW1M119 0106d370 (LHCombined Release)
 	void ReadBinary(LHFile* file);
 };
 

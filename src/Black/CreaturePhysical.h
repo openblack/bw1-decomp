@@ -21,7 +21,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004ef4a0 BW1M100 101e28f0 CreatureDamageMap::_dt(void)
+	// BW1W120 004ef4a0 BW1M119 011e9f00
 	virtual ~CreatureDamageMap();
 };
 
@@ -57,12 +57,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 004ef4c0 BW1M100 101defb0 CreaturePhysical::_dt(void)
+	// BW1W120 004ef4c0 BW1M119 011e6790
 	virtual ~CreaturePhysical();
 
 	// Constructors
 
-	// BW1W120 004ef2c0 BW1M100 102767c0 CreaturePhysical::CreaturePhysical(MapCoords const &, unsigned short, CreatureInfo const *, Creature *)
+	// BW1W120 004ef2c0 BW1M119 0127a5d0
 	CreaturePhysical(const MapCoords& coords, uint16_t param_2, const CreatureInfo* info, Creature* creature);
 };
 

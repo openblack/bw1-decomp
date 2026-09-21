@@ -12,11 +12,11 @@ struct LandFeature
 
 	// Static methods
 
-	// BW1W120 005e2f30 BW1M100 10021e20 LandFeature::GetNearClipping(void)
+	// BW1W120 005e2f30 BW1M119 01024990
 	static float GetNearClipping();
 };
 
-// BW1W120 005e2ff0 RequestChangeTexture(Object *)
+// BW1W120 005e2ff0 BW1M119 01380310
 void RequestChangeTexture(Object* object);
 
 #endif /* BW1_DECOMP_LAND_FEATURE_INCLUDED_H */

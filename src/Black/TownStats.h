@@ -62,26 +62,26 @@ public:
 
 	// Override methods
 
-	// BW1W120 007391a0 BW1M100 10558800 TownStats::_dt(void)
+	// BW1W120 007391a0 BW1M119 01561e60
 	virtual ~TownStats();
 
 	// Non-virtual methods
 
-	// BW1W120 007493c0 BW1M100 10562b60 TownStats::Remove(Villager *)
+	// BW1W120 007493c0 BW1M119 0156ba80
 	void Remove(Villager* villager);
-	// BW1W120 00749490 BW1M100 10562ac0 TownStats::ChildToAdult(Villager *)
+	// BW1W120 00749490 BW1M119 0156b9e0
 	void ChildToAdult(Villager* param_1);
-	// BW1W120 007494c0 BW1M100 10562a10 TownStats::VillagerMoveOutOfAbode(Villager *)
+	// BW1W120 007494c0 BW1M119 0156b930
 	void VillagerMoveOutOfAbode(Villager* villager);
-	// BW1W120 00749500 BW1M100 10562960 TownStats::VillagerMoveIntoAbode(Villager *)
+	// BW1W120 00749500 BW1M119 0156b880
 	void VillagerMoveIntoAbode(Villager* villager);
-	// BW1W120 00749a60 BW1M100 10562330 TownStats::Add(PlannedMultiMapFixed *)
+	// BW1W120 00749a60 BW1M119 0156b250
 	void Add(PlannedMultiMapFixed* planned);
-	// BW1W120 00749aa0 BW1M100 10562220 TownStats::Add(BuildingSite *)
+	// BW1W120 00749aa0 BW1M119 0156b140
 	void Add(BuildingSite* param_1);
-	// BW1W120 00749c60 BW1M100 10561dd0 TownStats::IncrementNumOfDisciples(VILLAGER_DISCIPLE)
+	// BW1W120 00749c60 BW1M119 0156ae50
 	void IncrementNumOfDisciples(VILLAGER_DISCIPLE param_1);
-	// BW1W120 00749c80 BW1M100 10561d60 TownStats::DecrementNumOfDisciples(VILLAGER_DISCIPLE)
+	// BW1W120 00749c80 BW1M119 0156ade0
 	void DecrementNumOfDisciples(VILLAGER_DISCIPLE param_1);
 };
 

@@ -59,7 +59,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004c81a0 BW1M100 10235cc0 CreatureAttitudeToPlayer::_dt(void)
+	// BW1W120 004c81a0 BW1M119 0123a9d0
 	virtual ~CreatureAttitudeToPlayer();
 };
 

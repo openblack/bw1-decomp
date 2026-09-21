@@ -97,89 +97,89 @@ public:
 	uint32_t         field_0xa58;
 	uint32_t         field_0xa5c;
 
-	// BW1W120 00648da0 GPlayer::GPlayer(void)
+	// BW1W120 00648da0 BW1M119 0149ed20
 	GPlayer();
 
 	// Override methods
 
-	// BW1W120 00648eb0 BW1M100 10497380 GPlayer::_dt(void)
+	// BW1W120 00648eb0 BW1M119 0149e9f0
 	virtual ~GPlayer();
-	// BW1W120 006490b0 BW1M100 10497310 GPlayer::ToBeDeleted(int)
+	// BW1W120 006490b0 BW1M119 0149e980
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0064a6d0 BW1M100 10496550 GPlayer::Dump(void)
+	// BW1W120 0064a6d0 BW1M119 0149dd10
 	virtual void Dump();
-	// BW1W120 00648e70 BW1M100 1048ea90 GPlayer::GetPlayer(void)
+	// BW1W120 00648e70 BW1M119 01496ee0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 0064b670 BW1M100 1002b8e0 GPlayer::GetMaxAlignmentChangePerGameTurn(void)
+	// BW1W120 0064b670 BW1M119 0102e450
 	virtual float GetMaxAlignmentChangePerGameTurn();
-	// BW1W120 0064c430 BW1M100 inlined GPlayer::MaintainSpell(unsigned int, float)
+	// BW1W120 0064c430 BW1M119 inlined
 	virtual float MaintainSpell(uint32_t param_1, float param_2);
-	// BW1W120 0064c470 BW1M100 10491f30 GPlayer::UpdateSpellInfo(Spell *, PSysProcessInfo *)
+	// BW1W120 0064c470 BW1M119 0149a4e0
 	virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
-	// BW1W120 00648e80 BW1M100 1048eac0 GPlayer::CastPlayer(void)
+	// BW1W120 00648e80 BW1M119 01496f10
 	virtual GPlayer* CastPlayer();
 
 	// Static methods
 
-	// BW1W120 00649a20 BW1M100 100620c0 GPlayer::ProcessPlayers(void)
+	// BW1W120 00649a20 BW1M119 01064840
 	static void ProcessPlayers();
-	// BW1W120 0064ab90 BW1M100 10495bf0 GPlayer::PostLoadCleanup(void)
+	// BW1W120 0064ab90 BW1M119 0149d180
 	static void PostLoadCleanup();
-	// BW1W120 0064b5e0 BW1M100 10494e00 GPlayer::GetPlayerFromText(char *)
+	// BW1W120 0064b5e0 BW1M119 0149c340
 	static GPlayer* GetPlayerFromText(const char* str);
 
 	// Non-virtual methods
-	// BW1W120 0064d5d0 GPlayer::IsAllied(GPlayer *)
+	// BW1W120 0064d5d0 BW1M119 0105f0d0
 	bool IsAllied(GPlayer* other);
-	// BW1W120 0064d280 BW1M100 10084180 GPlayer::SavePlayerAlignment(unsigned long)
+	// BW1W120 0064d280 BW1M119 01086560
 	void SavePlayerAlignment(uint32_t game_turn);
-	// BW1W120 0064d2d0 BW1M100 1048f630 GPlayer::LoadPlayerAlignment(void)
+	// BW1W120 0064d2d0 BW1M119 01497bc0
 	void LoadPlayerAlignment();
 
-	// BW1W120 00649190 BW1M100 10497020 GPlayer::Init(PLAYER_TYPE, unsigned char, wchar_t *, unsigned char)
+	// BW1W120 00649190 BW1M119 0149e680
 	void Init(PLAYER_TYPE type, uint8_t player_number, char16_t* param_3, unsigned char param_4);
-	// BW1W120 00649110 BW1M100 104971f0 GPlayer::InitReal(LHPlayer*, unsigned char)
+	// BW1W120 00649110 BW1M119 0149e850
 	void InitReal(LHPlayer* player, unsigned char player_number);
-	// BW1W120 006492b0 BW1M100 10496f00 GPlayer::Uninit(void)
+	// BW1W120 006492b0 BW1M119 0149e570
 	void Uninit();
-	// BW1W120 00649340 BW1M100 10496c10 GPlayer::SetToZero(void)
+	// BW1W120 00649340 BW1M119 0149e280
 	void SetToZero();
-	// BW1W120 0064cd00 BW1M100 10490080 GPlayer::OnEndOfClearMap(void)
+	// BW1W120 0064cd00 BW1M119 01498500
 	void OnEndOfClearMap();
-	// BW1W120 006494e0 BW1M100 10036020 GPlayer::Process(void)
+	// BW1W120 006494e0 BW1M119 010389b0
 	void Process();
-	// BW1W120 0064a6b0 BW1M100 104965e0 GPlayer::Birthday(void)
+	// BW1W120 0064a6b0 BW1M119 0149dda0
 	void Birthday();
-	// BW1W120 0064a790 BW1M100 1005c3d0 GPlayer::GetPlayerNumber(void) const
+	// BW1W120 0064a790 BW1M119 0105f090
 	uint8_t GetPlayerNumber() const;
-	// BW1W120 0055da60 BW1M100 10031c50 GPlayer::GetStats(void)
+	// BW1W120 0055da60 BW1M119 010345c0
 	GameStats* GetStats();
-	// BW1W120 0064a9f0 BW1M100 10496090 GPlayer::GetLeaderInterfaceStatus(void)
+	// BW1W120 0064a9f0 BW1M119 0149d870
 	GInterfaceStatus* GetLeaderInterfaceStatus();
-	// BW1W120 0064aac0 BW1M100 10035b60 GPlayer::GetNextInterfaceStatus(GInterfaceStatus *)
+	// BW1W120 0064aac0 BW1M119 010384e0
 	GInterfaceStatus* GetNextInterfaceStatus(GInterfaceStatus* param_1);
-	// BW1W120 0064ac00 BW1M100 100306d0 GPlayer::IsNeutral(void)
+	// BW1W120 0064ac00 BW1M119 01033050
 	bool IsNeutral();
-	// BW1W120 0064ad00 BW1M100 1004d120 GPlayer::CalculateInfluencePower(void)
+	// BW1W120 0064ad00 BW1M119 0104fab0
 	float CalculateInfluencePower();
-	// BW1W120 0064b590 BW1M100 10494ee0 GPlayer::GetPlayer3DColor(void)
+	// BW1W120 0064b590 BW1M119 0149c420
 	LH3DColor* GetPlayer3DColor(LH3DColor* color);
-	// BW1W120 0064c220 BW1M100 10492490 GPlayer::IsMagicTypeEnabled(MAGIC_TYPE)
+	// BW1W120 0064c220 BW1M119 0149aa30
 	bool32_t IsMagicTypeEnabled(MAGIC_TYPE type);
-	// BW1W120 0064d120 BW1M100 10051520 GPlayer::GetRealInterface(unsigned long)
+	// BW1W120 0064d120 BW1M119 01053eb0
 	GInterface* GetRealInterface(unsigned long interface_index);
-	// BW1W120 0064d750 BW1M100 10033320 GPlayer::IsMemberOfThisPlayer(GInterfaceStatus *)
+	// BW1W120 0064d750 BW1M119 01035c90
 	bool IsMemberOfThisPlayer(GInterfaceStatus* param_1);
-	// BW1W120 0064d800 BW1M100 10021970 GPlayer::GetPlayerColour(void) const
+	// BW1W120 0064d800 BW1M119 010244e0
 	LH3DColor GetPlayerColour() const;
-	// BW1W120 004c80f0 GPlayer::MakeCreatureEmpathiseWithPlayerTownDesire(TOWN_DESIRE_INFO, float, MapCoords const &)
+	// BW1W120 004c80f0 BW1M119 0123a2b0
 	// TODO: the binary mangles the first param as a CLASS (VTOWN_DESIRE_INFO@@) but our headers
 	// define TOWN_DESIRE_INFO as an enum (W4...), so callers currently reloc a W4-mangled symbol
 	// that the target lacks. Dispatcher: reconcile TOWN_DESIRE_INFO's kind (class vs enum) game-wide.
 	void MakeCreatureEmpathiseWithPlayerTownDesire(TOWN_DESIRE_INFO param_1, float param_2, const MapCoords& param_3);
 };
 
-// BW1W120 0064d790 BW1M100 100218a0 GetRemapedPlayer(unsigned long)
+// BW1W120 0064d790 BW1M119 01024410
 // TODO: Integer result is a remapped player ID; original return-type spelling is unrecovered.
 long GetRemapedPlayer(unsigned long player);
 

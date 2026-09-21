@@ -27,7 +27,7 @@ class PhysicsObject;
 class Fragment : public Rock
 {
 public:
-	// BW1W120 0076eaf0 BW1M100 1015c000 Fragment::ProcessTimer(void)
+	// BW1W120 0076eaf0 BW1M119 011641b0
 	void ProcessTimer();
 
 	FragMesh* frag_mesh; /* 0x94 */
@@ -38,56 +38,56 @@ public:
 
 	// Override methods
 
-	// BW1W120 0076e9a0 BW1M100 1015aa20 Fragment::_dt(void)
+	// BW1W120 0076e9a0 BW1M119 01162c00
 	virtual ~Fragment();
-	// BW1W120 0076ea70 BW1M100 1015c0b0 Fragment::ToBeDeleted(int)
+	// BW1W120 0076ea70 BW1M119 01164260
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0076e990 BW1M100 1015ac80 Fragment::GetDebugText(void)
+	// BW1W120 0076e990 BW1M119 01162e60
 	virtual char* GetDebugText();
-	// BW1W120 0076f6a0 BW1M100 1015afa0 Fragment::Load(GameOSFile &)
+	// BW1W120 0076f6a0 BW1M119 01163180
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0076f5d0 BW1M100 1015b130 Fragment::Save(GameOSFile &)
+	// BW1W120 0076f5d0 BW1M119 01163310
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0076e980 BW1M100 1015ac40 Fragment::GetSaveType(void)
+	// BW1W120 0076e980 BW1M119 01162e20
 	virtual uint32_t GetSaveType();
-	// BW1W120 0076f7b0 BW1M100 1015af50 Fragment::ResolveLoad(void)
+	// BW1W120 0076f7b0 BW1M119 01163130
 	virtual void ResolveLoad();
-	// BW1W120 0076e930 BW1M100 1015aab0 Fragment::CanBePickedUpByCreature(Creature *)
+	// BW1W120 0076e930 BW1M119 01162c90
 	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
-	// BW1W120 0076e960 BW1M100 1015aba0 Fragment::CanBeThrownByPlayer(void)
+	// BW1W120 0076e960 BW1M119 01162d80
 	virtual uint32_t CanBeThrownByPlayer();
-	// BW1W120 0076f7c0 BW1M100 1015aef0 Fragment::GetScriptObjectType(void)
+	// BW1W120 0076f7c0 BW1M119 011630d0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 0076ec00 BW1M100 1015be10 Fragment::Draw(void)
+	// BW1W120 0076ec00 BW1M119 01163fc0
 	virtual void Draw();
-	// BW1W120 0076e940 BW1M100 1015ab00 Fragment::ValidForPlaceInHand(GInterfaceStatus *)
+	// BW1W120 0076e940 BW1M119 01162ce0
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-	// BW1W120 0076e950 BW1M100 1015ab50 Fragment::InterfaceValidToTap(GInterfaceStatus *)
+	// BW1W120 0076e950 BW1M119 01162d30
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
-	// BW1W120 0076ec40 BW1M100 1015bdd0 Fragment::GetPhysicsConstantsType(void)
+	// BW1W120 0076ec40 BW1M119 01163f80
 	virtual uint32_t GetPhysicsConstantsType();
-	// BW1W120 0076ec50 BW1M100 1015b540 Fragment::SetUpPhysOb(PhysOb *)
+	// BW1W120 0076ec50 BW1M119 01163710
 	virtual void SetUpPhysOb(PhysOb* param_1);
-	// BW1W120 0076f3f0 BW1M100 1015b270 Fragment::EndPhysics(PhysicsObject *, bool)
+	// BW1W120 0076f3f0 BW1M119 01163450
 	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
-	// BW1W120 0076f3d0 BW1M100 1015b4f0 Fragment::InteractsWithPhysicsObjects(void)
+	// BW1W120 0076f3d0 BW1M119 011636c0
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 0076f3e0 BW1M100 1015b4a0 Fragment::ReactToPhysicsImpact(PhysicsObject *, bool)
+	// BW1W120 0076f3e0 BW1M119 01163670
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-	// BW1W120 0076f7f0 BW1M100 1015ae00 Fragment::CreatureMustAvoid(Creature *)
+	// BW1W120 0076f7f0 BW1M119 01162fe0
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
-	// BW1W120 0076f7d0 BW1M100 1015aeb0 Fragment::GetCollideSoundType(void)
+	// BW1W120 0076f7d0 BW1M119 01163090
 	virtual SOUND_COLLISION_TYPE GetCollideSoundType();
-	// BW1W120 0076e970 BW1M100 1015abe0 Fragment::GetInHandImmersionTexture(void)
+	// BW1W120 0076e970 BW1M119 01162dc0
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
-	// BW1W120 0076f7e0 BW1M100 1015ae70 Fragment::ShouldFootpathsGoRound(void)
+	// BW1W120 0076f7e0 BW1M119 01163050
 	virtual bool32_t ShouldFootpathsGoRound();
 
 	// Constructors
 
-	// BW1W120 0076e900 BW1M100 1015c440 Fragment::Fragment(void)
+	// BW1W120 0076e900 BW1M119 011645c0
 	Fragment();
-	// BW1W120 0076e9d0 BW1M100 1015c250 Fragment::Fragment(MapCoords const &, FragMesh *, GPlayer *)
+	// BW1W120 0076e9d0 BW1M119 01164400
 	Fragment(const MapCoords& coords, FragMesh* frag_mesh, GPlayer* player);
 };
 

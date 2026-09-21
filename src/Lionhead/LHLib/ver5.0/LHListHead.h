@@ -22,9 +22,9 @@ struct LHListHead
 
 	inline LHListHead() : head(NULL), count(0) {}
 
-	// BW1W120 inlined BW1M100 1042a530 LHListHead<GameThing>::Get(void)
+	// BW1W120 inlined BW1M119 014af430
 	T* Get() { return head; }
-	// BW1W120 inlined BW1M100 100fd120 LHListHead<GameThing>::Set(GameThing *)
+	// BW1W120 inlined BW1M119 010cd520
 	void Set(T* element) { head = element; }
 
 	T* Find(T* element)
@@ -57,7 +57,7 @@ struct LHListHead
 
 	// NULL means "before the first", so a walk seeded with NULL needs only one call
 	// site:  for (T* v = NULL; (v = list.GetNext(v)) != NULL;)
-	// Confirmed against BW1M100 .GetNext__21LHListHead<8Villager>FP8Villager:
+	// Confirmed against BW1M119 .GetNext__21LHListHead<8Villager>FP8Villager:
 	//   if (param_2 == 0) return *param_1; return *(param_2 + 0xe4);
 	T* GetNext(T* element) const { return element == NULL ? head : element->next; }
 

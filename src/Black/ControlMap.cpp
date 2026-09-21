@@ -4,7 +4,7 @@
 
 #include <string.h>
 
-// BW1W120 0046f6c0
+// BW1W120 0046f6c0 BW1M119 011d3320
 ControlMap::ControlMap()
 {
 	Field70x6528 = 250;

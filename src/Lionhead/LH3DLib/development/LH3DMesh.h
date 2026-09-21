@@ -58,7 +58,7 @@ struct LH3DMesh
 
 	// Static methods
 
-	// BW1W120 inlined BW1M100 103d9410 LH3DMesh::GetPackedMesh(long)
+	// BW1W120 inlined BW1M119 013e1290
 	static LH3DMesh* GetPackedMesh(int index)
 	{
 		if (index < 0 || index >= MeshPack->MeshCount)
@@ -67,40 +67,40 @@ struct LH3DMesh
 		}
 		return MeshPack->Meshes[index];
 	}
-	// BW1W120 00806460 BW1M100 1006c720 LH3DMesh::Create(void* , int)
+	// BW1W120 00806460 BW1M119 0106a510 (LHCombined Release)
 	static LH3DMesh* Create(const void* buf, bool dont_care_about_texture);
-	// BW1W120 008067f0 BW1M100 1006c640 LH3DMesh::CreateFromHD(char *, int)
+	// BW1W120 008067f0 BW1M119 0106a430 (LHCombined Release)
 	static LH3DMesh* CreateFromHD(const char* filename, bool dont_care_about_textures);
-	// BW1W120 00807be0 BW1M100 1006b210 LH3DMesh::CreatePackInternal(void*)
+	// BW1W120 00807be0 BW1M119 010690b0 (LHCombined Release)
 	static void CreatePackInternal(const void* data);
-	// BW1W120 00807c60 BW1M100 1006b160 LH3DMesh::CreatePack(void)
+	// BW1W120 00807c60 BW1M119 01069000 (LHCombined Release)
 	static void CreatePack();
 
 	// Non-virtual methods
 
-	// BW1W120 00403730 BW1M100 1000e400 LH3DMesh::GetSizeFootprintData(void)
+	// BW1W120 00403730 BW1M119 01010f40
 	uint32_t GetSizeFootprintData();
-	// BW1W120 00403740 BW1M100 1000e360 LH3DMesh::GetSizeUV2Data(void)
+	// BW1W120 00403740 BW1M119 01010ea0
 	uint32_t GetSizeUV2Data();
-	// BW1W120 00403770 BW1M100 1000e2b0 LH3DMesh::GetSizeNameData(void)
+	// BW1W120 00403770 BW1M119 01010df0
 	uint32_t GetSizeNameData();
-	// BW1W120 004037e0 BW1M100 100242d0 LH3DMesh::GetSizeEMetricsData(void)
+	// BW1W120 004037e0 BW1M119 01026e70
 	uint32_t GetSizeEMetricsData();
-	// BW1W120 004038e0 BW1M100 1059c260 LH3DMesh::GetSizeEBone(void)
+	// BW1W120 004038e0 BW1M119 01387dc0
 	uint32_t GetSizeEBone();
-	// BW1W120 00403a30 BW1M100 103689c0 LH3DMesh::GetSizeTnLData(void)
+	// BW1W120 00403a30 BW1M119 013e4e70
 	uint32_t GetSizeTnLData();
-	// BW1W120 00403b90 BW1M100 inlined LH3DMesh::GetSizeFootprintData_dup1(void)
+	// BW1W120 00403b90 BW1M119 inlined
 	uint32_t GetSizeFootprintData_dup1();
-	// BW1W120 00403bb0 BW1M100 inlined LH3DMesh::GetSizeUV2Data_dup1(void)
+	// BW1W120 00403bb0 BW1M119 inlined
 	uint32_t GetSizeUV2Data_dup1();
-	// BW1W120 00403be0 BW1M100 inlined LH3DMesh::GetSizeNameData_dup1(void)
+	// BW1W120 00403be0 BW1M119 inlined
 	uint32_t GetSizeNameData_dup1();
-	// BW1W120 00403c50 BW1M100 inlined LH3DMesh::GetSizeEMetricsData_dup1(void)
+	// BW1W120 00403c50 BW1M119 inlined
 	uint32_t GetSizeEMetricsData_dup1();
-	// BW1W120 00806d00 BW1M100 1001165c LH3DMesh::Release(void)
+	// BW1W120 00806d00 BW1M119 01007590 (LHCombined Release)
 	void Release();
-	// BW1W120 008081b0 BW1M100 1006aad0 LH3DMesh::ComputeBoundingBox(void)
+	// BW1W120 008081b0 BW1M119 01068970 (LHCombined Release)
 	void ComputeBoundingBox();
 };
 

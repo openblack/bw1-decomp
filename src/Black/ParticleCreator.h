@@ -14,9 +14,9 @@ class ParticleCreator : public Persistent
 public:
 	// Override methods
 
-	// BW1W120 006a9400 BW1M100 103dfee0 ParticleCreator::_dt(void)
+	// BW1W120 006a9400 BW1M119 013e7f60
 	virtual ~ParticleCreator();
-	// BW1W120 006b34c0 BW1M100 10457740 ParticleCreator::DefineProperties(PropertyList *)
+	// BW1W120 006b34c0 BW1M119 01460880
 	virtual void DefineProperties(PropertyList* param_1);
 };
 

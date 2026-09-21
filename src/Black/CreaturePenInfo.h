@@ -16,9 +16,9 @@ class GCreaturePenInfo : public GCitadelPartInfo
 public:
 	// Override methods
 
-	// BW1W120 004eee30 BW1M100 10274c20 GCreaturePenInfo::_dt(void)
+	// BW1W120 004eee30 BW1M119 01278a30
 	virtual ~GCreaturePenInfo();
-	// BW1W120 004eedc0 BW1M100 102755a0 GCreaturePenInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 004eedc0 BW1M119 012793a0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

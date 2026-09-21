@@ -13,14 +13,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 0062e4f0 BW1M100 103a35b0 MPFEDatabase::DatabaseError(void)
+	// BW1W120 0062e4f0 BW1M119 013ab330
 	virtual void DatabaseError();
-	// BW1W120 0062e510 BW1M100 103a3520 MPFEDatabase::DatabaseComplete(void)
+	// BW1W120 0062e510 BW1M119 013ab270
 	virtual void DatabaseComplete();
 
 	// Constructors
 
-	// BW1W120 0062e100 BW1M100 103a3ce0 MPFEDatabase::MPFEDatabase(void)
+	// BW1W120 0062e100 BW1M119 013aba60
 	MPFEDatabase();
 };
 

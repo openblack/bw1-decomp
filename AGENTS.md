@@ -280,22 +280,6 @@ Maps each source file to its section address ranges, telling dtk how to split th
 
 ### Comments & annotations in the code
 
-Every function in a header must have a comment immediately above it in this exact form:
-
-```cpp
-// BW1W120 <w> BW1M100 <m> <sig>
-```
-
-- Search for both the Windows and Mac entries. `<w>` and `<m>` must be lowercase, zero-padded eight-digit hexadecimal addresses (`08x`), without `0x`.
-- Use `inlined` only when inlining is proved, and `purecall` when the entry is proved to be a pure-call slot. Absence from a symbol search does not prove inlining.
-- `<sig>` must be the precise, verbatim demangling of the function's **BW1M100** mangled name, preserving parameter types, overloads and qualifiers. Do not substitute a Windows-derived signature or add return types that the Mac mangled name does not encode. If the Mac function was inlined, its signature may be reconstructed from corroborating evidence.
-- If a search finds no Mac identity/address, omit the entire `BW1M100 <m>` pair rather than guessing. Retain an explicit-unknown notation only where an established, evidenced convention already exists. Keep unresolved or provisional identities documented in the investigation record.
-- Do not add commentary, ABI explanations, mangled-name notes, or TODOs to the declaration comment or append explanatory comment lines to it. Keep implementation notes with the implementation and detailed evidence in the disassembly investigation records.
-- Use the function's own address, not an import-table entry or vtable-slot offset. Pure virtual declarations also need comments: use `purecall` for the proven pure-call entry, never the shared runtime handler's numeric address.
-- Avoid redundant `static_assert(sizeof(...))` and `static_assert(offsetof(...))` checks added merely to restate recovered class layouts. Keep layout evidence in the investigation records; add such assertions only when a specific compiler/layout invariant genuinely needs enforcement.
-
-Other code comments may use these annotations:
-
 - `// fabricated` — the code is not from the original binary; it was invented/guessed to make things compile. May be incorrect.
 - `// TODO:` — known issues, suspected inaccuracies, or incomplete understanding.
 - `// Tiny size mismatch` / `// TODO: incorrect size` — for functions which were completely inlined and not emitted to the original binary, but are present in the symbol map as UNUSED symbols and their size is available. That size can be compared against the size in our code using tools/decomp-diff.py and if it's different, then the guess for the function's contents is not correct yet.
@@ -321,9 +305,39 @@ Verify affected header consumers after layout, virtual-interface or include-boun
 
 ### Signatures, function boundaries and layouts
 
-The comments above function declarations show the demangled C++ signature recovered
-from the original binary's symbols. When the header
-signature disagrees with the comment, the header needs fixing.
+Each function and global declaration in a header carries an address comment:
+
+```cpp
+// BW1W120 <windows addr> BW1M119 <mac addr> [(<module>)]
+// BW1W120 0054cbd0 BW1M119 010cca14
+// BW1W120 00c386e0 BW1M119 001ccfe0 (LHCombined Release)
+// BW1W120 0051f180 BW1M119 inlined
+```
+
+The Mac address comes from `config/BW1M119/symbols.txt`, or from a module's own
+`config/BW1M119/<module>/symbols.txt`; a module symbol is tagged with that directory
+name. `inlined`, `imported` or `null` replace the address when 1.1.9 has no such symbol.
+Older comments with `BW1M100` (actually 1.1.0 or 1.1.9 addresses at base 0x10000000)
+and a trailing function name are historical. Use `tools/mac_symbol_version.py` to audit them.
+
+**Ground truth for a function's name, class, argument list and `const`-ness is the
+demangled CodeWarrior symbol in `config/BW1M119`.** The Mac binary kept its real
+symbols. The Windows names in `config/BW1W120/symbols.txt` were reconstructed from
+them, so where the two disagree, trust the Mac symbol. Look the symbol up, then demangle
+it with objdiff's demangler (`cwdemangle`) or the local port:
+
+```sh
+grep 'CalculateDancePosition__6Living' config/BW1M119/symbols.txt
+python3 tools/cwdemangle.py '.CalculateDancePosition__6LivingFRC9MapCoordsP9MapCoords'
+#   -> Living::CalculateDancePosition(MapCoords const &, MapCoords *)
+python3 tools/mac_symbol_version.py --find 'Living::CalculateDancePosition'
+```
+
+Use the `.`-prefixed `.code0` symbol; the unprefixed `.pidata1` object is its transition
+vector. A CodeWarrior mangling encodes no return type, calling convention or
+static-ness. Establish those from the Windows code (`ret N`, `this` in ECX, `al` vs
+`eax`). The BW1W120 mangling for them is a hypothesis. When the header disagrees with the
+demangled Mac signature, fix the header.
 
 Treat decompiler signatures and function boundaries as hypotheses. Corroborate Windows
 assembly with Mac symbols and call sites; neither platform alone establishes every detail
@@ -336,11 +350,12 @@ layouts; do not allocate using an unproven `sizeof` or define undersized singlet
 
 #### Pointer vs reference
 
-If the comment says `Type&` or `Type const &` but the header has `Type*`,
-the header should use `Type&` or `const Type&` instead.
+If the demangled BW1M119 signature says `Type&` or `Type const &` but the header has
+`Type*`, the header should use `Type&` or `const Type&` instead.
 
 ```cpp
-// BW1W120 005ef9c0 bool Living::CalculateDancePosition(MapCoords const &, MapCoords *)
+// BW1M119: Living::CalculateDancePosition(MapCoords const &, MapCoords *)
+// BW1W120 005ef9c0 BW1M119 0138c344
 bool CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2);
 //                                        ^ should be const MapCoords&
 ```
@@ -350,12 +365,12 @@ This applies to any type, not just `MapCoords`.
 #### Hidden output parameter returned as pointer
 
 If a function is declared as `Type* Func(Type* first_param, ...)` but the
-comment omits `first_param` (showing fewer params), then `first_param` is
-a hidden output buffer. The function should return `Type` by value instead
-of `Type*`, and the first parameter should be removed.
+demangled BW1M119 signature omits `first_param` (showing fewer params), then
+`first_param` is a hidden output buffer. The function should return `Type` by value
+instead of `Type*`, and the first parameter should be removed.
 
 ```cpp
-// Comment:  Living::CalcRandomPos(MapCoords const &, float, float)
+// BW1M119:  Living::CalcRandomPos(MapCoords const &, float, float)
 // Current:  MapCoords* CalcRandomPos(MapCoords* param_1, MapCoords* param_2, float, float)
 // Fix:      MapCoords CalcRandomPos(MapCoords* param_2, float, float)
 //                            ^^ return by value, remove first param

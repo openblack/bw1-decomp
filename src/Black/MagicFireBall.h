@@ -27,76 +27,76 @@ public:
 
 	// Override methods
 
-	// BW1W120 00682b50 BW1M100 103fca00 MagicFireBall::_dt(void)
+	// BW1W120 00682b50 BW1M119 014072a0
 	virtual ~MagicFireBall();
-	// BW1W120 00682c30 BW1M100 103fc750 MagicFireBall::ToBeDeleted(int)
+	// BW1W120 00682c30 BW1M119 01406ff0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00682bf0 BW1M100 103fc970 MagicFireBall::GetPlayer(void)
+	// BW1W120 00682bf0 BW1M119 01407210
 	virtual GPlayer* GetPlayer();
-	// BW1W120 00682d20 BW1M100 103fc6b0 MagicFireBall::Get2DRadius(void)
+	// BW1W120 00682d20 BW1M119 01406f50
 	virtual float Get2DRadius();
-	// BW1W120 00682b40 BW1M100 103fd410 MagicFireBall::GetDebugText(void)
+	// BW1W120 00682b40 BW1M119 01407be0
 	virtual char* GetDebugText();
-	// BW1W120 00683320 BW1M100 103fb710 MagicFireBall::Load(GameOSFile &)
+	// BW1W120 00683320 BW1M119 01405fc0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 006832b0 BW1M100 103fb800 MagicFireBall::Save(GameOSFile &)
+	// BW1W120 006832b0 BW1M119 014060b0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00682b30 BW1M100 103fd3d0 MagicFireBall::GetSaveType(void)
+	// BW1W120 00682b30 BW1M119 01407ba0
 	virtual uint32_t GetSaveType();
-	// BW1W120 00682a50 BW1M100 103fcf70 MagicFireBall::IsMagicFireBall(void)
+	// BW1W120 00682a50 BW1M119 01407740
 	virtual uint32_t IsMagicFireBall();
-	// BW1W120 00682a80 BW1M100 103fd050 MagicFireBall::CanBePickedUpByCreature(Creature *)
+	// BW1W120 00682a80 BW1M119 01407820
 	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
-	// BW1W120 00682a90 BW1M100 103fd0a0 MagicFireBall::CanBeSetOnFire(Creature *)
+	// BW1W120 00682a90 BW1M119 01407870
 	virtual uint32_t CanBeSetOnFire(Creature* param_1);
-	// BW1W120 00682aa0 BW1M100 103fd0f0 MagicFireBall::CanBeStompedOnByCreature(Creature *)
+	// BW1W120 00682aa0 BW1M119 014078c0
 	virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
-	// BW1W120 00682ab0 BW1M100 103fd140 MagicFireBall::CanBeThrownByCreature(Creature *)
+	// BW1W120 00682ab0 BW1M119 01407910
 	virtual uint32_t CanBeThrownByCreature(Creature* param_1);
-	// BW1W120 00682ac0 BW1M100 103fd190 MagicFireBall::CanBePutInAStoragePit(Creature *)
+	// BW1W120 00682ac0 BW1M119 01407960
 	virtual uint32_t CanBePutInAStoragePit(Creature* param_1);
-	// BW1W120 00682ad0 BW1M100 103fd1e0 MagicFireBall::CanBeDestroyedByStoning(Creature *)
+	// BW1W120 00682ad0 BW1M119 014079b0
 	virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
-	// BW1W120 00682ae0 BW1M100 103fd230 MagicFireBall::CanBeStonedAndEatenByCreature(Creature *)
+	// BW1W120 00682ae0 BW1M119 01407a00
 	virtual uint32_t CanBeStonedAndEatenByCreature(Creature* param_1);
-	// BW1W120 00682af0 BW1M100 103fd290 MagicFireBall::CanBeExaminedByCreature(Creature *)
+	// BW1W120 00682af0 BW1M119 01407a60
 	virtual uint32_t CanBeExaminedByCreature(Creature* param_1);
-	// BW1W120 00682b00 BW1M100 103fd2e0 MagicFireBall::CanBeFoughtByCreature(Creature *)
+	// BW1W120 00682b00 BW1M119 01407ab0
 	virtual uint32_t CanBeFoughtByCreature(Creature* param_1);
-	// BW1W120 00682b10 BW1M100 103fd330 MagicFireBall::CanActAsAContainer(Creature *)
+	// BW1W120 00682b10 BW1M119 01407b00
 	virtual uint32_t CanActAsAContainer(Creature* param_1);
-	// BW1W120 00682d30 BW1M100 103fc650 MagicFireBall::GetHeight(void)
+	// BW1W120 00682d30 BW1M119 01406ef0
 	virtual float GetHeight();
-	// BW1W120 00682d10 BW1M100 103fc710 MagicFireBall::InsertMapObject(void)
+	// BW1W120 00682d10 BW1M119 01406fb0
 	virtual void InsertMapObject();
-	// BW1W120 00682d40 BW1M100 103fc580 MagicFireBall::GetHeatCapacity(void)
+	// BW1W120 00682d40 BW1M119 01406e20
 	virtual float GetHeatCapacity();
-	// BW1W120 00682d90 BW1M100 103fc520 MagicFireBall::GetFireGPHXDrawn(bool *, bool *, bool *, bool *)
+	// BW1W120 00682d90 BW1M119 01406dc0
 	virtual void GetFireGPHXDrawn(bool* param_1, bool* param_2, bool* param_3, bool* param_4);
-	// BW1W120 00682db0 BW1M100 103fc4a0 MagicFireBall::GetRainCoolingMultiplier(void)
+	// BW1W120 00682db0 BW1M119 01406d40
 	virtual float GetRainCoolingMultiplier();
-	// BW1W120 00682f20 BW1M100 103fc010 MagicFireBall::Draw(void)
+	// BW1W120 00682f20 BW1M119 014068b0
 	virtual void Draw();
-	// BW1W120 00682dd0 BW1M100 103fc3d0 MagicFireBall::ValidForPlaceInHand(GInterfaceStatus *)
+	// BW1W120 00682dd0 BW1M119 01406c70
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-	// BW1W120 00682e80 BW1M100 103fc040 MagicFireBall::InterfaceSetInMagicHand(GInterfaceStatus *)
+	// BW1W120 00682e80 BW1M119 014068e0
 	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
-	// BW1W120 00682a40 BW1M100 103fcf30 MagicFireBall::IsTuggable(void)
+	// BW1W120 00682a40 BW1M119 01407700
 	virtual uint32_t IsTuggable();
-	// BW1W120 00682e40 BW1M100 103fc2d0 MagicFireBall::InterfaceValidToTap(GInterfaceStatus *)
+	// BW1W120 00682e40 BW1M119 01406b70
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
-	// BW1W120 00682e50 BW1M100 103fc190 MagicFireBall::InterfaceTap(GInterfaceStatus *)
+	// BW1W120 00682e50 BW1M119 01406a30
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
-	// BW1W120 00682a60 BW1M100 103fcfb0 MagicFireBall::InteractsWithPhysicsObjects(void)
+	// BW1W120 00682a60 BW1M119 01407780
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 00682a70 BW1M100 103fd000 MagicFireBall::CanBecomeAPhysicsObject(void)
+	// BW1W120 00682a70 BW1M119 014077d0
 	virtual bool32_t CanBecomeAPhysicsObject();
-	// BW1W120 00682b20 BW1M100 103fd380 MagicFireBall::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 00682b20 BW1M119 01407b50
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Constructors
 
-	// BW1W120 00682a20 BW1M100 103fca90 MagicFireBall::MagicFireBall(void)
+	// BW1W120 00682a20 BW1M119 01407330
 	MagicFireBall();
 };
 

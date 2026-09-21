@@ -24,7 +24,7 @@ class Town;
 class Dance : public GroupBehaviour
 {
 public:
-	// BW1W120 0050bb60 BW1M100 1008dc50 Dance::ProcessDances(void)
+	// BW1W120 0050bb60 BW1M119 0108ff50
 	static void ProcessDances();
 
 	uint32_t field_0xe8;
@@ -33,52 +33,52 @@ public:
 
 	// Override methods
 
-	// BW1W120 0050b770 BW1M100 102aa200 Dance::_dt(void)
+	// BW1W120 0050b770 BW1M119 012ad180
 	virtual ~Dance();
-	// BW1W120 0050b970 BW1M100 102a9e90 Dance::ToBeDeleted(int)
+	// BW1W120 0050b970 BW1M119 012ace10
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0050c250 BW1M100 102a9370 Dance::Get3DSoundPos(LHPoint *)
+	// BW1W120 0050c250 BW1M119 012ac440
 	virtual int Get3DSoundPos(LHPoint* param_1);
-	// BW1W120 0050b720 BW1M100 102a8120 Dance::GetFootpathLink(void)
+	// BW1W120 0050b720 BW1M119 012ab210
 	virtual GFootpathLink* GetFootpathLink();
-	// BW1W120 0050ca60 BW1M100 102a83d0 Dance::AddFootpath(GFootpath *)
+	// BW1W120 0050ca60 BW1M119 012ab4c0
 	virtual uint32_t AddFootpath(GFootpath* param_1);
-	// BW1W120 0050cb10 BW1M100 102a8330 Dance::RemoveFootpath(GFootpath *)
+	// BW1W120 0050cb10 BW1M119 012ab420
 	virtual uint32_t RemoveFootpath(GFootpath* param_1);
-	// BW1W120 0050b760 BW1M100 102a81f0 Dance::GetDebugText(void)
+	// BW1W120 0050b760 BW1M119 012ab2e0
 	virtual char* GetDebugText();
-	// BW1W120 0050c760 BW1M100 102a85a0 Dance::Load(GameOSFile &)
+	// BW1W120 0050c760 BW1M119 012ab680
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0050c480 BW1M100 102a8960 Dance::Save(GameOSFile &)
+	// BW1W120 0050c480 BW1M119 012aba40
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0050b750 BW1M100 102a81c0 Dance::GetSaveType(void)
+	// BW1W120 0050b750 BW1M119 012ab2b0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0050cb40 BW1M100 inlined Dance::GetArrivePos(MapCoords *)
+	// BW1W120 0050cb40 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
-	// BW1W120 0050b730 BW1M100 102a8160 Dance::IsDance( const(void))
+	// BW1W120 0050b730 BW1M119 012ab250
 	virtual uint32_t IsDance() const;
-	// BW1W120 0050b710 BW1M100 102a80e0 Dance::IsScriptContainer( const(void))
+	// BW1W120 0050b710 BW1M119 012ab1d0
 	virtual uint32_t IsScriptContainer() const;
-	// BW1W120 0050b740 BW1M100 102a8190 Dance::GetText(void)
+	// BW1W120 0050b740 BW1M119 012ab280
 	virtual const char* GetText();
-	// BW1W120 0050c3c0 BW1M100 102a9110 Dance::GetScriptObjectType(void)
+	// BW1W120 0050c3c0 BW1M119 012ac1e0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 0050bb30 BW1M100 102a9db0 Dance::CleanUpBeforeReset(void)
+	// BW1W120 0050bb30 BW1M119 012acd30
 	virtual void CleanUpBeforeReset();
-	// BW1W120 0050bb90 BW1M100 102a9810 Dance::Process(void)
+	// BW1W120 0050bb90 BW1M119 012ac8e0
 	virtual void Process();
-	// BW1W120 0050c310 BW1M100 102a9230 Dance::GetAngle(void)
+	// BW1W120 0050c310 BW1M119 012ac300
 	virtual float GetAngle();
 
 	// Constructors
 
-	// BW1W120 0050b6a0 BW1M100 102aa620 Dance::Dance(MapCoords const &, GDanceInfo const *, GameThingWithPos *, unsigned long, int, Town *)
+	// BW1W120 0050b6a0 BW1M119 012ad5a0
 	Dance(const MapCoords& param_1, const GDanceInfo* info, const GameThingWithPos* param_3, uint32_t param_4,
 	      int param_5, Town* town);
 
 	// Non-virtual methods
 
-	// BW1W120 0050bb40 BW1M100 102a9d60 Dance::StartDance(void)
+	// BW1W120 0050bb40 BW1M119 012acce0
 	void StartDance();
 };
 

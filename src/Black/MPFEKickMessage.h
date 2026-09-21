@@ -10,7 +10,7 @@ class MPFEKickMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00627980 BW1M100 1039a1a0 MPFEKickMessage::_dt(void)
+	// BW1W120 00627980 BW1M119 013a1a60
 	virtual ~MPFEKickMessage();
 };
 

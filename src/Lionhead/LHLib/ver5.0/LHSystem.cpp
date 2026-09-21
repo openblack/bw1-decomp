@@ -19,39 +19,46 @@
 WINUSERAPI BOOL WINAPI TrackMouseEvent(LPTRACKMOUSEEVENT);
 
 // slim::TbIME helpers implemented in another TU.
-// BW1W120 007f42b0 slim::TbIME::ConvertCHAR8toCHAR16(char)
+// BW1W120 007f42b0 BW1M119 01171cb0 (LHCombined Release)
 int TbIME_ConvertCHAR8toCHAR16(char c);
-// BW1W120 007de8d0 (LHScreen.cpp) per-message screen bookkeeping
+// (LHScreen.cpp) per-message screen bookkeeping
+// BW1W120 007de8d0
 void sub_7DE8D0();
 
 // The IME helper wrapper (slim::TbIME), constructed on window creation.
 struct TbIMEWrapper
 {
 	void* field_0x0;
-	// BW1W120 007f3b80 TbIMEWrapper::TbIMEWrapper(void)
+	// BW1W120 007f3b80
 	TbIMEWrapper();
-	// BW1W120 007f3d20 TbIMEWrapper::ProcessMessage(HWND, UINT*, WPARAM*, LPARAM*, LRESULT*)
+	// BW1W120 007f3d20
 	// __thiscall: `this` (LHSys::TheSystem.TbIME) rides in ecx, only the 5 explicit args are pushed.
 	// Returns a byte (target tests al, not eax).
 	bool ProcessMessage(HWND wnd, UINT* msg, WPARAM* w, LPARAM* l, LRESULT* result);
 };
-// BW1W120 00e85204 is TheSystem.mouse: LHSys embeds LHMouse at offset 0x1c4.
+// 00e85204 is TheSystem.mouse: LHSys embeds LHMouse at offset 0x1c4.
 static_assert(offsetof(LHSys, mouse) == 0x1c4, "LHSys mouse offset changed");
 
 // This TU's own file-scope state, outside the LHSys aggregate.
-// BW1W120 008a9338 imported from LHLogR: nonzero while the assert dialog is up.
+// Imported from LHLogR (IAT 008a9338): nonzero while the assert dialog is up.
+// BW1W120 10022db0
 __declspec(dllimport) bool InAssertDialog;
-// BW1W120 00e8c118 guards the key-event ring; the first object after TheSystem.
+// Guards the key-event ring; the first object after TheSystem.
+// BW1W120 00e8c118
 CRITICAL_SECTION LHKeyboard::CriticalSection;
-// BW1W120 00c311a4 defined here: it heads this TU's initialized-data cluster
+// Defined here: it heads this TU's initialized-data cluster
 // (gWindowActive/gTrackingMouse/the class-name strings follow it).
+// BW1W120 00c311a4
 uint8_t LHMouse::MouseWheelSkip = 1;
-// BW1W120 00c311a8 whether the game window is the active application (WM_ACTIVATEAPP).
+// Whether the game window is the active application (WM_ACTIVATEAPP).
+// BW1W120 00c311a8
 static int gWindowActive = 1;
-// BW1W120 00c311ac whether a TrackMouseEvent request is armed (rearmed on WM_*MOUSEMOVE).
+// Whether a TrackMouseEvent request is armed (rearmed on WM_*MOUSEMOVE).
+// BW1W120 00c311ac
 static int gTrackingMouse = 1;
-// BW1W120 00c3122c UK-layout scancode -> ASCII; low half unshifted, high half shifted
+// UK-layout scancode -> ASCII; low half unshifted, high half shifted
 // (0x9C = 'GBP'). Zero rows cover keypad/function/extended scancodes with no character.
+// BW1W120 00c3122c
 static unsigned char gKeyToAsciiTable[0x100] = {
 	0x00, 0x00, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x30, 0x2D, 0x3D, 0x08, 0x09, 0x71, 0x77, 0x65,
 	0x72, 0x74, 0x79, 0x75, 0x69, 0x6F, 0x70, 0x5B, 0x5D, 0x00, 0x00, 0x61, 0x73, 0x64, 0x66, 0x67, 0x68, 0x6A, 0x6B,
@@ -69,7 +76,8 @@ static unsigned char gKeyToAsciiTable[0x100] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-// BW1W120 007db800 construct TheSystem's embedded screen, mouse, input, and text state.
+// Construct TheSystem's embedded screen, mouse, input, and text state.
+// BW1W120 007db800
 LHSys::LHSys()
 {
 	InitializeCriticalSection(&LHKeyboard::CriticalSection);
@@ -84,16 +92,20 @@ LHSys::LHSys()
 	joypads.count = 0;
 }
 
-// BW1W120 00e85040 the one LHSys instance; its static-init thunk is this TU's .CRT$XCU
+// The one LHSys instance; its static-init thunk is this TU's .CRT$XCU
 // entry (0x9C7CF4), and the registered atexit dtor tail-jumps into LHScreen::~LHScreen.
+// BW1W120 00e85040
 LHSys LHSys::TheSystem;
 
 // Assert force-callbacks, provided by LHLogR (imported).
-// BW1W120 008a9358 / 008a93d0
+// IAT 008a9358 / 008a93d0.
+// BW1W120 10022da8
 __declspec(dllimport) void(__cdecl* LHAssertBeforeForceCallback)();
+// BW1W120 10022da4
 __declspec(dllimport) void(__cdecl* LHAssertAfterForceCallback)();
 
-// BW1W120 imported LHLogR: spawn a named worker thread.
+// Imported from LHLogR: spawn a named worker thread.
+// BW1W120 10003b00
 __declspec(dllimport) unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), unsigned int stack,
                                                    void* arg, long priority);
 
@@ -185,8 +197,9 @@ int ResizeWindow(unsigned short width, unsigned short height)
 	return 0;
 }
 
-// BW1W120 007dbed0 the app-terminate handler (called from WinMain and pc_main).
+// The app-terminate handler (called from WinMain and pc_main).
 // Named for its raw address until its true name is recovered.
+// BW1W120 007dbed0
 void jmp_addr_0x007dbed0()
 {
 	if (!LHSys::TheSystem.TerminateRequested)
@@ -202,11 +215,12 @@ void jmp_addr_0x007dbed0()
 static bool AnyWindowMessages();
 static int  GetCursorPosClient(int hwnd, POINT* point);
 
-// BW1W120 007dbd10 the mouse-input worker thread. When the WndProc hasn't fed us a
+// The mouse-input worker thread. When the WndProc hasn't fed us a
 // mouse message (the event times out) it polls the async button/modifier state and the
 // cursor position itself and posts a synthetic 0x8009 message to the window.
 // TODO: 90% — logic faithful. Residual: MSVC hoists the GetAsyncKeyState import ptr into a
 // different callee-saved reg + caches the "1" constant. Optimizer-level, not logic.
+// BW1W120 007dbd10
 void MouseInputThreadProc(void* arg)
 {
 	if (!LHSys::TheSystem.MouseThreadRunning)
@@ -262,8 +276,9 @@ void MouseInputThreadProc(void* arg)
 	LHSys::TheSystem.MouseThreadRunning = 0;
 }
 
-// BW1W120 007dc920 handle a mouse-move: track the inter-move delta, pick the cursor,
+// Handle a mouse-move: track the inter-move delta, pick the cursor,
 // and forward the new position to the mouse.
+// BW1W120 007dc920
 void MouseMoveHandler(int hwnd, int lparam, int msg_time)
 {
 	int prev = LHSys::TheSystem.LastMouseMsgTime;
@@ -287,7 +302,8 @@ void MouseMoveHandler(int hwnd, int lparam, int msg_time)
 	LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_0x4);
 }
 
-// BW1W120 007dcab0 reset all key-down state and the modifier flags.
+// Reset all key-down state and the modifier flags.
+// BW1W120 007dcab0
 void ClearKeyboardState()
 {
 	memset(LHSys::GetKeyboard().KeyState, 0, 0xFF);
@@ -297,9 +313,10 @@ void ClearKeyboardState()
 // TODO: 75% — logic faithful (all struct offsets + the up/down/modifier flow match).
 // Residual is register scheduling: MSVC orders the reported-key `and edi,0xff`, the
 // ModifierFlags=0 store, and callee-saved usage differently. Iterative reg-alloc work.
-// BW1W120 007dcaf0 process a raw WM_KEY* message: update the key-down state and the
+// Process a raw WM_KEY* message: update the key-down state and the
 // ctrl/alt/shift modifier bits, feed string-collection / the key-event ring, and invoke
 // the registered key callback. `key_data` is the WM_KEY lParam (scan code + flags).
+// BW1W120 007dcaf0 BW1M119 0113ed60 (LHCombined Release)
 void LHKeyboard::ProcessKeyboard(unsigned int msg, int key_data)
 {
 	unsigned char scancode = (unsigned char)(key_data >> 16);
@@ -362,7 +379,8 @@ invoke:
 		         (unsigned short)(((unsigned int)key_data >> 30) & 1), CallbackContext);
 }
 
-// BW1W120 007dcc90 feed a key into the active string-collection buffer.
+// Feed a key into the active string-collection buffer.
+// BW1W120 007dcc90 BW1M119 0113ebc0 (LHCombined Release)
 void LHKeyboard::StringCollect(int key)
 {
 	if (key == StringEndKey)
@@ -381,20 +399,23 @@ void LHKeyboard::StringCollect(int key)
 	}
 }
 
-// BW1W120 007dcd10 stop the active string collection.
+// Stop the active string collection.
+// BW1W120 007dcd10 BW1M119 0113eb80 (LHCombined Release)
 void LHKeyboard::StopString()
 {
 	StringActive = 0;
 }
 
-// BW1W120 007dcd20 (re)start string collection.
+// (re)start string collection.
+// BW1W120 007dcd20 BW1M119 0113eb40 (LHCombined Release)
 void LHKeyboard::RestartString()
 {
 	StringActive = 1;
 }
 
-// BW1W120 007dcd30 pop the oldest key+modifiers off the key-event ring; returns 2 (and
+// Pop the oldest key+modifiers off the key-event ring; returns 2 (and
 // zeroes the outputs) when the ring is empty, else 0.
+// BW1W120 007dcd30 BW1M119 0113ea90 (LHCombined Release)
 int LHKeyboard::GetKeyValue(int& key, unsigned char& mod)
 {
 	unsigned int read = RingRead;
@@ -410,8 +431,9 @@ int LHKeyboard::GetKeyValue(int& key, unsigned char& mod)
 	return 2;
 }
 
-// BW1W120 007dcda0 push the current key+modifiers into the key-event ring; returns the
+// Push the current key+modifiers into the key-event ring; returns the
 // read cursor, resetting the ring if it just filled up.
+// BW1W120 007dcda0 BW1M119 0113e9f0 (LHCombined Release)
 int LHKeyboard::SetKeyValue()
 {
 	KeyEventRing[RingWrite].Key = CurrentKey;
@@ -428,8 +450,9 @@ int LHKeyboard::SetKeyValue()
 	return result;
 }
 
-// BW1W120 007dbc30 the LH platform entry point (WinMain-shaped; called from _WinMain@16).
+// The LH platform entry point (WinMain-shaped; called from _WinMain@16).
 // Named for its raw address until its true name is recovered.
+// BW1W120 007dbc30
 int __stdcall jmp_addr_0x007dbc30(HINSTANCE hInstance, HINSTANCE prev_instance, char* cmd_line, int cmd_show)
 {
 	LHAssertBeforeForceCallback = (void(__cdecl*)())LHAssertBeforeForce;
@@ -455,22 +478,25 @@ static bool AnyWindowMessages()
 	return PeekMessageA(&msg, LHSys::GetWindow(), 0, 0, 0) == TRUE;
 }
 
-// BW1W120 007dbcf0 / 007dbd00 — installed as the LHLog assert force-callbacks by WinMain.
+// Installed as the LHLog assert force-callbacks by WinMain.
 // When running fullscreen (windowed == 0) they flip DirectDraw's cooperative level so the
 // assert dialog can appear over/under the game.
+// BW1W120 007dbcf0
 void LHAssertBeforeForce()
 {
 	if (!LHSys::GetScreen().windowed)
 		sub_7DECE0();
 }
 
+// BW1W120 007dbd00
 void LHAssertAfterForce()
 {
 	if (!LHSys::GetScreen().windowed)
 		sub_7DED10();
 }
 
-// BW1W120 007dba00 register the game's top-level window class + load its accelerators.
+// Register the game's top-level window class + load its accelerators.
+// BW1W120 007dba00
 int RegisterGameWindowClass(HINSTANCE inst, WNDPROC proc)
 {
 	WNDCLASSA wc;
@@ -490,11 +516,12 @@ int RegisterGameWindowClass(HINSTANCE inst, WNDPROC proc)
 	return 0;
 }
 
-// BW1W120 007dba90 create the game's top-level window (800x600 windowed, or a full-screen
+// Create the game's top-level window (800x600 windowed, or a full-screen
 // popup), start mouse-leave tracking, and construct the IME wrapper.
 // TODO: 81% — the C++ EH frame (from `new TbIMEWrapper()`, needs /GX) and body now match;
 // residual is MSVC caching the constant 1 in a register + a different callee-saved reg
 // choice in the CreateWindowEx branch. Optimizer-level.
+// BW1W120 007dba90
 int CreateGameWindow(HINSTANCE inst, int cmd_show, int windowed)
 {
 	memset(LHSys::GetKeyboard().KeyState, 0, 0xFF);
@@ -808,9 +835,10 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 	return DefWindowProcA(hWnd, msg, wParam, lParam);
 }
 
-// BW1W120 007e5af0 add the windowed-mode client offset to a coordinate. Inlined into
+// Add the windowed-mode client offset to a coordinate. Inlined into
 // CopyRegionFromScreen; the local LHCoord temp (not scalars, which MSVC would DCE) is what
 // produces the target's extra 8-byte stack slot.
+// BW1W120 007e5af0
 inline void LHCoord::AddMSWindowOffset()
 {
 	LHCoord offset;
@@ -820,8 +848,9 @@ inline void LHCoord::AddMSWindowOffset()
 	y += offset.y;
 }
 
-// BW1W120 007dc8b0 blit a saved region back onto the screen (primary or back buffer),
+// Blit a saved region back onto the screen (primary or back buffer),
 // applying the windowed-mode client offset when copying to the primary surface.
+// BW1W120 007dc8b0
 int LHSurface::CopyRegionFromScreen(LHRegion* region, LHCoord* pos, int from_primary)
 {
 	LHCoord coord;

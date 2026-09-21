@@ -21,21 +21,23 @@ public:
 
 	// Override methods
 
-	// BW1W120 005159d0 BW1M100 102b5db0 DialogBoxSaveMessage::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 005159d0 BW1M119 012b9670
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
-	// BW1W120 00515b80 BW1M100 102b5d50 DialogBoxSaveMessage::Destroy(void)
+	// BW1W120 00515b80 BW1M119 012b9610
 	virtual void Destroy();
-	// BW1W120 00515b90. Ninth vtable slot at 008d86b8.
+	// Ninth vtable slot at 008d86b8.
+	// BW1W120 00515b90 BW1M119 012b94c0
 	virtual void InitControls();
 
 	// Constructors
 
-	// BW1W120 00515990 BW1M100 102b6020 DialogBoxSaveMessage::DialogBoxSaveMessage(void)
+	// BW1W120 00515990 BW1M119 012b99d0
 	DialogBoxSaveMessage();
-	// BW1W120 005159c0. Nonvirtual; implementation remains extracted.
+	// Nonvirtual; implementation remains extracted.
+	// BW1W120 005159c0 BW1M119 012b9930
 	~DialogBoxSaveMessage();
-	// BW1W120 00515cb0 BW1M100 102b5960
+	// BW1W120 00515cb0 BW1M119 012b9290
 	static void __stdcall ControlCallback(int event, SetupBox* box, SetupControl* control, int x, int y);
 };
 

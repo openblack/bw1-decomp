@@ -15,9 +15,9 @@ class GAnimalStateTableInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 00416e80 BW1M100 1016b620 GAnimalStateTableInfo::_dt(void)
+	// BW1W120 00416e80 BW1M119 01174300
 	virtual ~GAnimalStateTableInfo();
-	// BW1W120 00416e10 BW1M100 1016cd20 GAnimalStateTableInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00416e10 BW1M119 01175be0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

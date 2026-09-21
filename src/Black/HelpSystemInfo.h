@@ -15,9 +15,9 @@ class HelpSystemInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 005c53f0 BW1M100 10351af0 HelpSystemInfo::_dt(void)
+	// BW1W120 005c53f0 BW1M119 0135a2d0
 	virtual ~HelpSystemInfo();
-	// BW1W120 005c53a0 BW1M100 10351aa0 HelpSystemInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 005c53a0 BW1M119 0135a280
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

@@ -15,7 +15,7 @@ class GMapShieldInfo : public GSingleMapFixedInfo
 public:
 	// Override methods
 
-	// BW1W120 0072bdf0 BW1M100 10531f60 GMapShieldInfo::_dt(void)
+	// BW1W120 0072bdf0 BW1M119 0153aa00
 	virtual ~GMapShieldInfo();
 };
 

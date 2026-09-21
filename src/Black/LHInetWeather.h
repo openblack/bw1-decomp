@@ -6,13 +6,14 @@
 
 struct LHInetWeather
 {
-	// BW1W120 00d01600. Descriptive singleton name; declaration only, incomplete layout.
+	// Descriptive singleton name; declaration only, incomplete layout.
+	// BW1W120 00d01600
 	static LHInetWeather Weather;
 	uint32_t             field_0x0;
 
 	// Non-virtual methods
 
-	// BW1W120 005e98b0 BW1M100 10352780 LHInetWeather::InitForGame(void)
+	// BW1W120 005e98b0 BW1M119 011cde90
 	void InitForGame();
 };
 

@@ -16,9 +16,9 @@ class GFurnitureInfo : public GObjectInfo
 public:
 	// Override methods
 
-	// BW1W120 0054a3c0 BW1M100 100f2b20 GFurnitureInfo::_dt(void)
+	// BW1W120 0054a3c0 BW1M119 010fbda0
 	virtual ~GFurnitureInfo();
-	// BW1W120 0054a350 BW1M100 100f2c30 GFurnitureInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0054a350 BW1M119 010fbeb0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

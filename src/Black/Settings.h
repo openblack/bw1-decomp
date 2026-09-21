@@ -11,9 +11,9 @@ struct Settings
 
 	// Non-virtual methods
 
-	// BW1W120 00714af0 BW1M100 105e8db0 Settings::ParseConfigFile(char*)
+	// BW1W120 00714af0 BW1M119 015f0bc0
 	void ParseConfigFile(char* path);
-	// BW1W120 00714c20 BW1M100 105e8d50 Settings::InitialiseToDefaults(void)
+	// BW1W120 00714c20 BW1M119 015f0b60
 	void InitialiseToDefaults();
 };
 

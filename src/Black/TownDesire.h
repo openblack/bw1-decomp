@@ -47,26 +47,26 @@ public:
 
 	// Override methods
 
-	// BW1W120 00745730 BW1M100 1055ea40 TownDesire::_dt(void)
+	// BW1W120 00745730 BW1M119 01567d80
 	virtual ~TownDesire();
 
 	// Constructors
 
-	// BW1W120 00745710 BW1M100 1055ead0 TownDesire::TownDesire(void)
+	// BW1W120 00745710 BW1M119 01567e10
 	TownDesire();
 
 	// Non-virtual methods
 
-	// BW1W120 00745ae0 BW1M100 1005c8d0 TownDesire::Process(void)
+	// BW1W120 00745ae0 BW1M119 0105f590
 	void Process();
-	// BW1W120 00745d80 BW1M100 1005d130 TownDesire::CallDesireFunction(unsigned long)
+	// BW1W120 00745d80 BW1M119 0105fde0
 	void CallDesireFunction(uint32_t param_1);
-	// BW1W120 00745ff0 TownDesire::CheckVillagerNeededForTownDesire(Villager *, float)
+	// BW1W120 00745ff0 BW1M119 010789f0
 	// TODO: incorrect return type
 	void CheckVillagerNeededForTownDesire(Villager* villager, float trigger);
-	// BW1W120 00745f80 BW1M100 1005d280 TownDesire::GetInfo(unsigned long) const
+	// BW1W120 00745f80 BW1M119 0105ff30
 	GTownDesireInfo* GetInfo(unsigned long desire) const;
-	// BW1W120 007465d0 BW1M100 1055dee0 TownDesire::GetSortedDesire(unsigned long)
+	// BW1W120 007465d0 BW1M119 01566d00
 	DesireSort* GetSortedDesire(uint32_t index);
 };
 

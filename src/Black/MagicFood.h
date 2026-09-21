@@ -24,25 +24,25 @@ class MagicFood : public PileFood
 public:
 	// Override methods
 
-	// BW1W120 005fa9c0 BW1M100 103ac0d0 MagicFood::_dt(void)
+	// BW1W120 005fa9c0 BW1M119 013b3fa0
 	virtual ~MagicFood();
-	// BW1W120 005fa980 BW1M100 103abe00 MagicFood::GetPlayer(void)
+	// BW1W120 005fa980 BW1M119 013b3cd0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 005fa970 BW1M100 103abdc0 MagicFood::SetPlayer(GPlayer *)
+	// BW1W120 005fa970 BW1M119 013b3c90
 	virtual void SetPlayer(GPlayer* param_1);
-	// BW1W120 005fa9b0 BW1M100 103abec0 MagicFood::GetDebugText(void)
+	// BW1W120 005fa9b0 BW1M119 013b3d90
 	virtual char* GetDebugText();
-	// BW1W120 005fab40 BW1M100 103abf00 MagicFood::Load(GameOSFile &)
+	// BW1W120 005fab40 BW1M119 013b3dd0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 005fab00 BW1M100 103abf90 MagicFood::Save(GameOSFile &)
+	// BW1W120 005fab00 BW1M119 013b3e60
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 005fa9a0 BW1M100 103abe80 MagicFood::GetSaveType(void)
+	// BW1W120 005fa9a0 BW1M119 013b3d50
 	virtual uint32_t GetSaveType();
-	// BW1W120 005fa990 BW1M100 103abe40 MagicFood::GetImpressiveType(void)
+	// BW1W120 005fa990 BW1M119 013b3d10
 	virtual IMPRESSIVE_TYPE GetImpressiveType();
-	// BW1W120 004e4a20 BW1M100 105e43b0 MagicFood::IsAFoodPileOutsideStoragePit(Creature *)
+	// BW1W120 004e4a20 BW1M119 015ec0b0
 	virtual uint32_t IsAFoodPileOutsideStoragePit(Creature* param_1);
-	// BW1W120 005faab0 BW1M100 103ac020 MagicFood::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 005faab0 BW1M119 013b3ef0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 };
 

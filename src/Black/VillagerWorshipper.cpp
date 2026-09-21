@@ -20,7 +20,7 @@
 
 extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
 
-// BW1W120 0076ba60 BW1M100 10096dd0 Villager::CheckNeededForWorship(void)
+// BW1W120 0076ba60 BW1M119 01098d20
 // TODO: the true return type is float — the target tail-returns CheckWorshipActivity's
 // float in ST0 with no __ftol; as bool32_t our tail emits one
 bool32_t Villager::CheckNeededForWorship()
@@ -43,7 +43,7 @@ bool32_t Villager::CheckNeededForWorship()
 	return 0;
 }
 
-// BW1W120 0076bae0 BW1M100 1059ec20 Villager::CheckWorshipActivity(int)
+// BW1W120 0076bae0 BW1M119 015a5bb0
 // TODO: the target never sets an explicit return value (every path leaves the last callee's
 // ST0), and it inlines removal of `this` from the reaction's follower node list before
 // StartReacting — the node type and the Reaction* field at MagicTeleport+0x94 are unnamed
@@ -74,7 +74,7 @@ float Villager::CheckWorshipActivity(int num_needed)
 	return 0.0f;
 }
 
-// BW1W120 0076bc20 BW1M100 1059eaf0 Villager::CanIGetToTheWorshipSite(MagicTeleport * &)
+// BW1W120 0076bc20 BW1M119 015a5a80
 // TODO: the distance callee at 0x605cd0 is really a thiscall MapCoords method, not the
 // static GUtils form; the teleport lookup is the unnamed GPlayer helper at 0x64d6b0
 bool32_t Villager::CanIGetToTheWorshipSite(MagicTeleport*& teleport)
@@ -103,7 +103,7 @@ bool32_t Villager::CanIGetToTheWorshipSite(MagicTeleport*& teleport)
 	return 1;
 }
 
-// BW1W120 0076bcc0 BW1M100 1059e8f0 Villager::GotoWorshipSiteForWorship(void)
+// BW1W120 0076bcc0 BW1M119 015a5880
 // TODO: needs the WorshipSite wrapper at 0x77ceb0 named (wraps GetSpecialPos(9), which is
 // called directly below); the int at Dance+0x114 is also unnamed
 bool32_t Villager::GotoWorshipSiteForWorship()
@@ -134,7 +134,7 @@ bool32_t Villager::GotoWorshipSiteForWorship()
 	return result;
 }
 
-// BW1W120 0076bda0 BW1M100 1059e810 Villager::SetGotoWorshipSpeed(void)
+// BW1W120 0076bda0 BW1M119 015a57a0
 // TODO: needs the dance-speed helper at 0x77c100 named; the target also loads info+0x118 as
 // an int where the header declares float, and it has no return value on any path (`return 1`
 // stands in — no return statement at all breaks MSVC6 codegen)
@@ -154,7 +154,7 @@ bool32_t Villager::SetGotoWorshipSpeed()
 	return 1;
 }
 
-// BW1W120 0076be00 BW1M100 1059e6f0 Villager::ArrivesAtWorshipSiteForWorship(void)
+// BW1W120 0076be00 BW1M119 015a5680
 // TODO: needs the GetSpecialPos(9) wrapper at 0x77ceb0, the 2D distance twin at 0x74cd50
 // and the 10.0f threshold at 0x8ab414 named; the worshipper count at Dance+0x90 is also
 // unnamed, hence the raw offset
@@ -178,7 +178,7 @@ bool32_t Villager::ArrivesAtWorshipSiteForWorship()
 	return 1;
 }
 
-// BW1W120 0076bec0 BW1M100 1059e520 Villager::CheckVillagerGoBackToTownFromWorship(void)
+// BW1W120 0076bec0 BW1M119 015a54b0
 // TODO: needs the WorshipSite go-home-request-list helper at 0x77e0a0 named — it guards the
 // SetTopState below, currently written without that check
 bool32_t Villager::CheckVillagerGoBackToTownFromWorship()
@@ -210,14 +210,14 @@ bool32_t Villager::CheckVillagerGoBackToTownFromWorship()
 	return 0;
 }
 
-// BW1W120 0076bf90 BW1M100 1059e4b0 Villager::CheckNeededForSupplyWorship(void)
+// BW1W120 0076bf90 BW1M119 015a5440
 bool32_t Villager::CheckNeededForSupplyWorship()
 {
 	GetWorshipSite();
 	return 0;
 }
 
-// BW1W120 0076bfa0 BW1M100 1059e310 Villager::GotoStoragePitForWorshipSupplies(void)
+// BW1W120 0076bfa0 BW1M119 015a52a0
 // TODO: Town::GetFoodForWorshipSiteIfEnough is declared void but returns the amount of food
 // the worship site needs (see Town.h)
 bool32_t Villager::GotoStoragePitForWorshipSupplies()
@@ -246,7 +246,7 @@ bool32_t Villager::GotoStoragePitForWorshipSupplies()
 	return 0;
 }
 
-// BW1W120 0076c080 BW1M100 1059e1e0 Villager::ArrivesAtStoragePitForWorshipSupplies(void)
+// BW1W120 0076c080 BW1M119 015a5170
 // TODO: same GetFoodForWorshipSiteIfEnough return-type issue as GotoStoragePitForWorshipSupplies
 bool32_t Villager::ArrivesAtStoragePitForWorshipSupplies()
 {
@@ -267,19 +267,19 @@ bool32_t Villager::ArrivesAtStoragePitForWorshipSupplies()
 	return DecideWhatToDo();
 }
 
-// BW1W120 0076c100 BW1M100 1059e190 Villager::GotoWorshipSiteWithSupplies(void)
+// BW1W120 0076c100 BW1M119 015a5120
 bool32_t Villager::GotoWorshipSiteWithSupplies()
 {
 	return 0;
 }
 
-// BW1W120 0076c110 BW1M100 1059e140 Villager::MoveToWorshipSiteWithSupplies(void)
+// BW1W120 0076c110 BW1M119 015a50d0
 bool32_t Villager::MoveToWorshipSiteWithSupplies()
 {
 	return 1;
 }
 
-// BW1W120 0076c120 BW1M100 1059e070 Villager::ExitMoveToWorshipSiteWithSupplies(unsigned char)
+// BW1W120 0076c120 BW1M119 015a5000
 bool32_t Villager::ExitMoveToWorshipSiteWithSupplies(unsigned char state)
 {
 	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state))
@@ -290,7 +290,7 @@ bool32_t Villager::ExitMoveToWorshipSiteWithSupplies(unsigned char state)
 	return 1;
 }
 
-// BW1W120 0076c170 BW1M100 1059df70 Villager::ExitMoveToWorshipSite(unsigned char)
+// BW1W120 0076c170 BW1M119 015a4f00
 // TODO: the target also skips the block below when the state's exit function is
 // ExitReactToTeleport — needs the state-function table at 0xd09198 named
 bool32_t Villager::ExitMoveToWorshipSite(unsigned char state)
@@ -304,7 +304,7 @@ bool32_t Villager::ExitMoveToWorshipSite(unsigned char state)
 	return 1;
 }
 
-// BW1W120 0076c1f0 BW1M100 1059de40 Villager::ExitAtWorshipSite(unsigned char)
+// BW1W120 0076c1f0 BW1M119 015a4dd0
 // TODO: 88.5% — structure/semantics correct. Residual diffs are all bool-width scheduler tie-breaks:
 // target tests full `eax` and ends `mov eax,1` where ours uses `al` (bool-return-full-eax-epilogue,
 // documented open idiom), plus a prologue reg-move reorder. == 0 vs ! forms give identical asm.
@@ -330,7 +330,7 @@ uint32_t Villager::ExitAtWorshipSite(unsigned char state)
 	return true;
 }
 
-// BW1W120 0076c280 BW1M100 1059dd90 Villager::ExitGetFoodAtWorship(unsigned char)
+// BW1W120 0076c280 BW1M119 015a4d20
 // TODO: only a reloc-form diff remains (raw address vs g_GVillagerStateTableInfos symbol);
 // byte-identical after link
 bool32_t Villager::ExitGetFoodAtWorship(unsigned char state)
@@ -340,7 +340,7 @@ bool32_t Villager::ExitGetFoodAtWorship(unsigned char state)
 	return 1;
 }
 
-// BW1W120 0076c2d0 BW1M100 1059dc80 Villager::ArrivesAtWorshipSiteWithSupplies(void)
+// BW1W120 0076c2d0 BW1M119 015a4c10
 bool32_t Villager::ArrivesAtWorshipSiteWithSupplies()
 {
 	if (GetWorshipSite() != NULL)
@@ -358,7 +358,7 @@ bool32_t Villager::ArrivesAtWorshipSiteWithSupplies()
 	return 1;
 }
 
-// BW1W120 0076c340 BW1M100 1059db90 Villager::GetWorshipSite(void)
+// BW1W120 0076c340 BW1M119 015a4b20
 WorshipSite* Villager::GetWorshipSite()
 {
 	if (GetTown() != NULL)
@@ -368,7 +368,7 @@ WorshipSite* Villager::GetWorshipSite()
 	return NULL;
 }
 
-// BW1W120 0076c390 BW1M100 1059daf0 Villager::RestartWorshippingAtWorshipSite(void)
+// BW1W120 0076c390 BW1M119 015a4a80
 bool32_t Villager::RestartWorshippingAtWorshipSite()
 {
 	if (StartWorshippingAtWorshipSite() != 1)
@@ -376,7 +376,7 @@ bool32_t Villager::RestartWorshippingAtWorshipSite()
 	return 1;
 }
 
-// BW1W120 0076c3c0 BW1M100 1059da60 Villager::RestartWorshippingCreature(void)
+// BW1W120 0076c3c0 BW1M119 015a49f0
 // TODO: 85% — dance_group->Dancer's MapCoords base is at +0x14 (type unknown beyond GameThingWithPos).
 // Only diff is `add eax,0x14` (arg1 address) scheduled before `push 0x5a` instead of after
 // — an arg-evaluation scheduler tie-break (named-local variant gives identical asm). Semantics correct.
@@ -391,7 +391,7 @@ bool32_t Villager::RestartWorshippingCreature()
 	return 1;
 }
 
-// BW1W120 0076c3f0 BW1M100 1059d990 Villager::AddVillagerToWorshipSite(void)
+// BW1W120 0076c3f0 BW1M119 015a4920
 // TODO: needs the Town worship-count helper at 0x73e3e0 (open-coded below) and the
 // WorshipSite add-worshipper helper at 0x77d040 named
 bool32_t Villager::AddVillagerToWorshipSite()
@@ -406,7 +406,7 @@ bool32_t Villager::AddVillagerToWorshipSite()
 	return 1;
 }
 
-// BW1W120 0076c440 BW1M100 1059d850 Villager::RemoveVillagerFromWorshipSite(void)
+// BW1W120 0076c440 BW1M119 015a47e0
 // TODO: needs the Town worship-count helper at 0x73e3f0 (open-coded below) and the
 // WorshipSite list-contains helper at 0x77d110 named
 bool Villager::RemoveVillagerFromWorshipSite()
@@ -429,7 +429,7 @@ bool Villager::RemoveVillagerFromWorshipSite()
 	return true;
 }
 
-// BW1W120 0076c4c0 BW1M100 1059d740 Villager::StartWorshippingAtWorshipSite(void)
+// BW1W120 0076c4c0 BW1M119 015a46d0
 // TODO: push edi prologue timing and the pos lea scheduling differ; FindDanceGroup should
 // return bool32_t (target compares full eax)
 bool32_t Villager::StartWorshippingAtWorshipSite()
@@ -451,7 +451,7 @@ bool32_t Villager::StartWorshippingAtWorshipSite()
 	return 0;
 }
 
-// BW1W120 0076c550 BW1M100 1059d640 Villager::StartHidingAtWorshipSite(void)
+// BW1W120 0076c550 BW1M119 015a45d0
 // TODO: the target branches on SetupMoveToOnFootpath's result (declared void; failure
 // returns 0 without adding the villager) — success path taken unconditionally until its
 // return type is fixed
@@ -467,7 +467,7 @@ bool32_t Villager::StartHidingAtWorshipSite()
 	return 1;
 }
 
-// BW1W120 0076c5e0 BW1M100 1059d530 Villager::HidingAtWorshipSite(void)
+// BW1W120 0076c5e0 BW1M119 015a44c0
 bool32_t Villager::HidingAtWorshipSite()
 {
 	WorshipSite* worshipSite = GetWorshipSite();
@@ -484,7 +484,7 @@ bool32_t Villager::HidingAtWorshipSite()
 	return 1;
 }
 
-// BW1W120 0076c680 BW1M100 1059d470 Villager::WorshippingAtWorshipSite(void)
+// BW1W120 0076c680 BW1M119 015a4400
 // TODO: 91.7% — dance_group->Dancer has a counter at +0x114 and its MapCoords base at +0x14 (the
 // containing type beyond GameThingWithPos is unknown, hence the raw +0x114 cast). Only diff is the
 // arg1 pointer landing in edx instead of ecx — a register-allocation tie-break (scheduling and
@@ -505,7 +505,7 @@ bool32_t Villager::WorshippingAtWorshipSite()
 	return result;
 }
 
-// BW1W120 0076c6e0 BW1M100 1059d310 Villager::StartWorshippingCreature(Creature *)
+// BW1W120 0076c6e0 BW1M119 015a42a0
 // TODO: the target only overwrites the current state when its exit function is ExitDance —
 // needs the state-function table at 0xd09198 named
 bool Villager::StartWorshippingCreature(Creature* creature)
@@ -529,7 +529,7 @@ bool Villager::StartWorshippingCreature(Creature* creature)
 	return false;
 }
 
-// BW1W120 0076c7c0 BW1M100 1059d280 Villager::WorshippingCreature(void)
+// BW1W120 0076c7c0 BW1M119 015a4210
 // TODO: 79.5% — same arg-eval scheduler tie-break as RestartWorshippingCreature on the PerformDance
 // call (`add edx,0x14` for arg1 address floats before the const pushes instead of after). Everything
 // else — including the push/pop esi flag test at +0x100 — matches. dance_group->Dancer has a flag at
@@ -550,7 +550,7 @@ bool32_t Villager::WorshippingCreature()
 	return 1;
 }
 
-// BW1W120 0076c800 BW1M100 1059d130 Villager::ReduceVillagerLifeByChant(void)
+// BW1W120 0076c800 BW1M119 015a40c0
 bool32_t Villager::ReduceVillagerLifeByChant()
 {
 	WorshipSite* worshipSite = GetWorshipSite();
@@ -573,7 +573,7 @@ bool32_t Villager::ReduceVillagerLifeByChant()
 	return 1;
 }
 
-// BW1W120 0076c890 BW1M100 1059d090 Villager::ProcessInWorship(void)
+// BW1W120 0076c890 BW1M119 015a4020
 // TODO: 91.7% — semantics correct; only diff is `pop esi` floating one slot inside the
 // branchless `cond ? 0x23 : 1` tail (target: neg;sbb;and;inc;pop;ret — ours: neg;sbb;pop;and;inc;ret).
 // Pure epilogue callee-save restore scheduler tie-break; if/else and ternary forms give identical asm.
@@ -587,7 +587,7 @@ bool32_t Villager::ProcessInWorship()
 	return CheckAllowedToRestAtWorshipSite(1) ? 0x23 : 1;
 }
 
-// BW1W120 0076c8d0 BW1M100 1059cfa0 Villager::CheckRequestGoHome(void)
+// BW1W120 0076c8d0 BW1M119 015a3f30
 // TODO: needs the WorshipSite request-to-go-home helper at 0x77e0c0 named; the target also
 // has no return value on any path (`return 1` stands in)
 bool32_t Villager::CheckRequestGoHome()
@@ -611,7 +611,7 @@ bool32_t Villager::CheckRequestGoHome()
 	return 1;
 }
 
-// BW1W120 0076c930 BW1M100 1059ce60 Villager::CheckNeededForWorshipSiteBuilding(void)
+// BW1W120 0076c930 BW1M119 015a3df0
 // TODO: Citadel::FindOrCreateWorshipSite and Town::GetBuildingSiteInList are declared void
 // but return the pointers used below; their call relocs cannot match until fixed
 bool32_t Villager::CheckNeededForWorshipSiteBuilding()
@@ -636,7 +636,7 @@ bool32_t Villager::CheckNeededForWorshipSiteBuilding()
 	return 0;
 }
 
-// BW1W120 0076c9a0 BW1M100 1059cd40 Villager::CheckAllowedToRestAtWorshipSite(int)
+// BW1W120 0076c9a0 BW1M119 015a3cc0
 // TODO: WorshipSite::GetFood is declared void but returns the available food compared below
 // (see WorshipSite.h)
 bool32_t Villager::CheckAllowedToRestAtWorshipSite(int move_to_food)
@@ -660,7 +660,7 @@ bool32_t Villager::CheckAllowedToRestAtWorshipSite(int move_to_food)
 	return 0;
 }
 
-// BW1W120 0076ca30 BW1M100 1059cbd0 Villager::GetFoodAtWorshipSite(void)
+// BW1W120 0076ca30 BW1M119 015a3b50
 // TODO: EatFoodHeld really returns float — the target discards it with `fstp st(0)` after
 // the call
 bool32_t Villager::GetFoodAtWorshipSite()
@@ -686,14 +686,14 @@ bool32_t Villager::GetFoodAtWorshipSite()
 	return 1;
 }
 
-// BW1W120 0076caf0 BW1M100 1059cb80 Villager::GetFoodDesireAtWorshipSite(void)
+// BW1W120 0076caf0 BW1M119 015a3b00
 // TODO: the true return type is float (the target body is `fld 1.0; ret`)
 bool32_t Villager::GetFoodDesireAtWorshipSite()
 {
 	return 1;
 }
 
-// BW1W120 0076cb00 BW1M100 1059caa0 Villager::GotoAltarForRest(void)
+// BW1W120 0076cb00 BW1M119 015a3a20
 // TODO: needs the WorshipSite wrapper at 0x77ce70 named (wraps GetSpecialPos(7), which is
 // called directly below)
 bool32_t Villager::GotoAltarForRest()
@@ -709,7 +709,7 @@ bool32_t Villager::GotoAltarForRest()
 	return 1;
 }
 
-// BW1W120 0076cb80 BW1M100 1059ca10 Villager::ArrivesAtAltarForRest(void)
+// BW1W120 0076cb80 BW1M119 015a3990
 bool32_t Villager::ArrivesAtAltarForRest()
 {
 	if (CheckAllowedToRestAtWorshipSite(0) != 1)
@@ -718,7 +718,7 @@ bool32_t Villager::ArrivesAtAltarForRest()
 	return 1;
 }
 
-// BW1W120 0076cbb0 BW1M100 1059c980 Villager::AtAltarRest(void)
+// BW1W120 0076cbb0 BW1M119 015a3900
 bool32_t Villager::AtAltarRest()
 {
 	if (CheckAllowedToRestAtWorshipSite(0) != 1)
@@ -727,7 +727,7 @@ bool32_t Villager::AtAltarRest()
 	return 1;
 }
 
-// BW1W120 0076cbe0 BW1M100 1059c8f0 Villager::AtAltarFinishedRest(void)
+// BW1W120 0076cbe0 BW1M119 015a3870
 bool32_t Villager::AtAltarFinishedRest()
 {
 	bool32_t r = StartWorshippingAtWorshipSite();
@@ -736,7 +736,7 @@ bool32_t Villager::AtAltarFinishedRest()
 	return DecideWhatToDo();
 }
 
-// BW1W120 0076cc00 BW1M100 1059c880 Villager::CheckSatisfySuppyWorship(void)
+// BW1W120 0076cc00 BW1M119 015a3800
 bool32_t Villager::CheckSatisfySuppyWorship()
 {
 	return GotoStoragePitForWorshipSupplies() == 1;

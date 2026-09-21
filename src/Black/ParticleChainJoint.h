@@ -17,15 +17,15 @@ class ParticleChainJoint : public RenderParticle
 public:
 	// Override methods
 
-	// BW1W120 0055f0e0 BW1M100 10422de0 ParticleChainJoint::_dt(void)
+	// BW1W120 0055f0e0 BW1M119 0142bde0
 	virtual ~ParticleChainJoint();
-	// BW1W120 0055f0d0 BW1M100 10422da0 ParticleChainJoint::GetDebugText(void)
+	// BW1W120 0055f0d0 BW1M119 0142bda0
 	virtual char* GetDebugText();
-	// BW1W120 006959d0 BW1M100 1041c0e0 ParticleChainJoint::Load(GameOSFile &)
+	// BW1W120 006959d0 BW1M119 014250f0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 006cc540 BW1M100 10483800 ParticleChainJoint::Save(GameOSFile &)
+	// BW1W120 006cc540 BW1M119 0148be80
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055f0c0 BW1M100 10422d60 ParticleChainJoint::GetSaveType(void)
+	// BW1W120 0055f0c0 BW1M119 0142bd60
 	virtual uint32_t GetSaveType();
 };
 

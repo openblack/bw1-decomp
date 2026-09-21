@@ -30,26 +30,26 @@ public:
 
 	// Override methods
 
-	// BW1W120 00410740 BW1M100 102410c0 SetupPicture::SetFocus(bool)
+	// BW1W120 00410740 BW1M119 01412940
 	virtual void SetFocus(bool focus);
-	// BW1W120 0040fa20 BW1M100 100ab020 SetupPicture::Draw(bool, bool)
+	// BW1W120 0040fa20 BW1M119 0152ceb0
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 0040fa10 BW1M100 100e47c0 SetupPicture::Drag(int, int)
+	// BW1W120 0040fa10 BW1M119 01407570
 	virtual void Drag(int x, int y);
-	// BW1W120 0040f6b0 BW1M100 inlined SetupPicture::MouseDown(int, int, bool)
+	// BW1W120 0040f6b0 BW1M119 inlined
 	virtual void MouseDown(int x, int y, bool param_3);
-	// BW1W120 0040f840 BW1M100 1036e5b0 SetupPicture::MouseUp(int, int, bool)
+	// BW1W120 0040f840 BW1M119 0142ea20
 	virtual void MouseUp(int x, int y, bool param_3);
-	// BW1W120 00410710 BW1M100 10351210 SetupPicture::Click(int, int)
+	// BW1W120 00410710 BW1M119 01361d70
 	virtual void Click(int x, int y);
-	// BW1W120 004106f0 BW1M100 100fe9d0 SetupPicture::KeyDown(int, int)
+	// BW1W120 004106f0 BW1M119 013525c0
 	virtual void KeyDown(LHKey key, LHKeyMod mod);
-	// BW1W120 00410720 BW1M100 1034f1b0 SetupPicture::~SetupPicture(void)
+	// BW1W120 00410720 BW1M119 0135cbb0
 	virtual ~SetupPicture();
 
 	// Constructors
 
-	// BW1W120 004105d0 BW1M100 101a6a00 SetupPicture::SetupPicture(int, int, int, LH3DMaterial *, int, int, bool, int, bool)
+	// BW1W120 004105d0 BW1M119 01485d50
 	SetupPicture(int id, int x, int y, LH3DMaterial* material, int picture_index, int num_rows, bool clickable,
 	             int size, bool draggable);
 };

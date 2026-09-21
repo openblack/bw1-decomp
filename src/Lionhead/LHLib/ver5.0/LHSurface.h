@@ -52,54 +52,54 @@ struct LHSurface
 
 	// Constructors
 
-	// BW1W120 007e6290 LHSurface::LHSurface(LHSprite *, unsigned long)
+	// BW1W120 007e6290 BW1M119 0115d950 (LHCombined Release)
 	LHSurface(LHSprite* sprite, unsigned long flags);
-	// BW1W120 007e62d0 LHSurface::LHSurface(LHSpriteFrame *, unsigned long)
+	// BW1W120 007e62d0 BW1M119 0115d840 (LHCombined Release)
 	LHSurface(LHSpriteFrame* frame, unsigned long flags);
 
 	// Non-virtual methods
 
-	// BW1W120 007e6330 LHSurface::Initialise(void)
+	// BW1W120 007e6330 BW1M119 0115d790 (LHCombined Release)
 	int Initialise();
-	// BW1W120 007e6350 LHSurface::InitialiseSurface(void)
+	// BW1W120 007e6350 BW1M119 0115d6d0 (LHCombined Release)
 	int InitialiseSurface();
-	// BW1W120 007e63b0 LHSurface::Reset(void)
+	// BW1W120 007e63b0 BW1M119 0115d5c0 (LHCombined Release)
 	int Reset();
-	// BW1W120 007e6450 LHSurface::Lock(void)
+	// BW1W120 007e6450 BW1M119 0115d500 (LHCombined Release)
 	int Lock();
-	// BW1W120 007e64a0 LHSurface::Unlock(void)
+	// BW1W120 007e64a0 BW1M119 0115d490 (LHCombined Release)
 	int Unlock();
-	// BW1W120 007e64c0 LHSurface::Clear(void)
+	// BW1W120 007e64c0 BW1M119 0115d3f0 (LHCombined Release)
 	int Clear();
-	// BW1W120 007e6500 LHSurface::SetTransparentColor(LHColor *)
+	// BW1W120 007e6500 BW1M119 0115d370 (LHCombined Release)
 	int SetTransparentColor(LHColor* color);
-	// BW1W120 007e6530 LHSurface::SetTransparentColorSurface(void)
+	// BW1W120 007e6530 BW1M119 0115d290 (LHCombined Release)
 	int SetTransparentColorSurface();
-	// BW1W120 007e6590 LHSurface::CopyImageIn(void)
+	// BW1W120 007e6590 BW1M119 0115d010 (LHCombined Release)
 	int CopyImageIn();
-	// BW1W120 007e66e0 LHSurface::SetSpriteFlags(unsigned long)
+	// BW1W120 007e66e0 BW1M119 0115cfa0 (LHCombined Release)
 	int SetSpriteFlags(unsigned long flags);
-	// BW1W120 007e6700 LHSurface::SetImage(void *, LH_SURFACE_IMAGE_TYPE)
+	// BW1W120 007e6700 BW1M119 0115cf30 (LHCombined Release)
 	int SetImage(void* image, LH_SURFACE_IMAGE_TYPE imageType);
-	// BW1W120 007e6720 LHSurface::GetScreenSurface(LHRegion *, LHCoord *, LH_SCREEN_BUFFER)
+	// BW1W120 007e6720 BW1M119 0115ce40 (LHCombined Release)
 	int GetScreenSurface(LHRegion* rect, LHCoord* coord, LH_SCREEN_BUFFER screenBuffer);
-	// BW1W120 007e67c0 LHSurface::~LHSurface(void)
+	// BW1W120 007e67c0 BW1M119 0115cd60 (LHCombined Release)
 	~LHSurface();
-	// BW1W120 007e67e0 LHSurface::CopySurface(LHRegion *, LHCoord *, IndirectX::IDirectDrawSurface7 *, LH_COPY_DIRECTION, int)
+	// BW1W120 007e67e0 BW1M119 0115cb60 (LHCombined Release)
 	int CopySurface(LHRegion* region, LHCoord* coord, IDirectDrawSurface7* dest, LH_COPY_DIRECTION direction,
 	                int useColorKey);
-	// BW1W120 007dc8b0 LHSurface::CopyRegionFromScreen(LHRegion *, LHCoord *, int)
+	// BW1W120 007dc8b0
 	int CopyRegionFromScreen(LHRegion* region, LHCoord* pos, int from_primary);
-	// BW1W120 007e68e0 LHSurface::Add(void)
+	// BW1W120 007e68e0 BW1M119 0115caf0 (LHCombined Release)
 	void Add();
-	// BW1W120 007e6920 LHSurface::Remove(void)
+	// BW1W120 007e6920 BW1M119 0115ca70 (LHCombined Release)
 	LHSurface* Remove();
 
 	// Static methods
 
-	// BW1W120 007e6960 LHSurface::RestoreAll(int)
+	// BW1W120 007e6960 BW1M119 0115c9b0 (LHCombined Release)
 	static int RestoreAll(int recreate);
-	// BW1W120 007e69b0 LHSurface::InvalidateAll(void)
+	// BW1W120 007e69b0 BW1M119 0115c950 (LHCombined Release)
 	static void InvalidateAll();
 };
 

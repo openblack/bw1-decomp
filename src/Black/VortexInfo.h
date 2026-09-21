@@ -15,9 +15,9 @@ class GVortexInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 005fd3f0 BW1M100 103b8d80 GVortexInfo::_dt(void)
+	// BW1W120 005fd3f0 BW1M119 013c0fa0
 	virtual ~GVortexInfo();
-	// BW1W120 005fd390 BW1M100 103b9150 GVortexInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 005fd390 BW1M119 013c1360
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

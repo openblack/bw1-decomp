@@ -16,9 +16,9 @@ class GPotInfo : public GMobileObjectInfo
 public:
 	// Override methods
 
-	// BW1W120 0066cc40 BW1M100 10117210 GPotInfo::_dt(void)
+	// BW1W120 0066cc40 BW1M119 01120c90
 	virtual ~GPotInfo();
-	// BW1W120 0066cbd0 BW1M100 1011d400 GPotInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0066cbd0 BW1M119 01126640
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

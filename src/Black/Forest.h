@@ -24,9 +24,9 @@ struct MapCoords;
 class Forest : public Container
 {
 public:
-	// BW1W120 0053b2f0 BW1M100 100ef810 Forest::OnClearMap(void)
+	// BW1W120 0053b2f0 BW1M119 010f8ba0
 	static void OnClearMap();
-	// BW1W120 00539d70 BW1M100 10025440 Forest::ProcessForests(void)
+	// BW1W120 00539d70 BW1M119 01027fe0
 	static void ProcessForests();
 
 	uint8_t             field_0x30[0x10];
@@ -37,55 +37,55 @@ public:
 
 	// Override methods
 
-	// BW1W120 00539b20 BW1M100 100ef2f0 Forest::_dt(void)
+	// BW1W120 00539b20 BW1M119 010f8680
 	virtual ~Forest();
-	// BW1W120 00539c60 BW1M100 100f2300 Forest::ToBeDeleted(int)
+	// BW1W120 00539c60 BW1M119 010fb5d0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00539ae0 BW1M100 100ef710 Forest::IsFootpathLink(void)
+	// BW1W120 00539ae0 BW1M119 010f8aa0
 	virtual uint32_t IsFootpathLink();
-	// BW1W120 00539af0 BW1M100 100ef750 Forest::GetFootpathLink(void)
+	// BW1W120 00539af0 BW1M119 010f8ae0
 	virtual GFootpathLink* GetFootpathLink();
-	// BW1W120 0053acf0 BW1M100 100f07e0 Forest::GetNearestPathTo(MapCoords const &, float, int)
+	// BW1W120 0053acf0 BW1M119 010f9bf0
 	virtual uint32_t GetNearestPathTo(const MapCoords& param_1, float param_2, int param_3);
-	// BW1W120 0053ad60 BW1M100 100f05a0 Forest::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
+	// BW1W120 0053ad60 BW1M119 010f99b0
 	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3);
-	// BW1W120 0053ac50 BW1M100 100f08e0 Forest::AddFootpath(GFootpath *)
+	// BW1W120 0053ac50 BW1M119 010f9cf0
 	virtual uint32_t AddFootpath(GFootpath* param_1);
-	// BW1W120 0053acc0 BW1M100 100f0830 Forest::RemoveFootpath(GFootpath *)
+	// BW1W120 0053acc0 BW1M119 010f9c40
 	virtual uint32_t RemoveFootpath(GFootpath* param_1);
-	// BW1W120 00539a60 BW1M100 100ef4a0 Forest::IsFunctional(void)
+	// BW1W120 00539a60 BW1M119 010f8830
 	virtual bool32_t IsFunctional();
-	// BW1W120 00539b10 BW1M100 100ef7d0 Forest::GetDebugText(void)
+	// BW1W120 00539b10 BW1M119 010f8b60
 	virtual char* GetDebugText();
-	// BW1W120 0053b070 BW1M100 100ef950 Forest::Load(GameOSFile &)
+	// BW1W120 0053b070 BW1M119 010f8ce0
 	virtual bool32_t Load(GameOSFile& file);
-	// BW1W120 0053ae40 BW1M100 100efda0 Forest::Save(GameOSFile &)
+	// BW1W120 0053ae40 BW1M119 010f91b0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00539b00 BW1M100 100ef790 Forest::GetSaveType(void)
+	// BW1W120 00539b00 BW1M119 010f8b20
 	virtual uint32_t GetSaveType();
-	// BW1W120 00539a80 BW1M100 100ef580 Forest::GetCreatureBeliefType(void)
+	// BW1W120 00539a80 BW1M119 010f8910
 	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 00539a90 BW1M100 100ef5c0 Forest::GetCreatureBeliefListType(void)
+	// BW1W120 00539a90 BW1M119 010f8950
 	virtual uint32_t GetCreatureBeliefListType();
-	// BW1W120 00539ab0 BW1M100 100ef650 Forest::IsActivityObjectWhichAngerAppliesTo(Creature *)
+	// BW1W120 00539ab0 BW1M119 010f89e0
 	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* creature);
-	// BW1W120 00539aa0 BW1M100 100ef600 Forest::IsSuitableForCreatureActivity(void)
+	// BW1W120 00539aa0 BW1M119 010f8990
 	virtual uint32_t IsSuitableForCreatureActivity();
-	// BW1W120 00539ac0 BW1M100 100ef6b0 Forest::GetText(void)
+	// BW1W120 00539ac0 BW1M119 010f8a40
 	virtual const char* GetText();
-	// BW1W120 00539ad0 BW1M100 100ef6e0 Forest::IsForest(void)
+	// BW1W120 00539ad0 BW1M119 010f8a70
 	virtual uint32_t IsForest();
 
 	// Constructors
 
-	// BW1W120 00539bd0 BW1M100 100f2620 Forest::Forest(MapCoords const&, unsigned long)
+	// BW1W120 00539bd0 BW1M119 010fb8f0
 	Forest(const MapCoords& coords, uint32_t param_2);
 
 	// Non-virtual methods
 
-	// BW1W120 0053a310 BW1M100 100f16f0 Forest::AddTree(Tree*)
+	// BW1W120 0053a310 BW1M119 010fab00
 	void AddTree(Tree* tree);
-	// BW1W120 0053abf0 BW1M100 100f0a00 Forest::GetForestCentreTree(void)
+	// BW1W120 0053abf0 BW1M119 010f9e00
 	Tree* GetForestCentreTree();
 };
 

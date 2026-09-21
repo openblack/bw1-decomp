@@ -73,291 +73,291 @@ public:
 
 	// Virtual methods
 
-	// BW1W120 006366a0 BW1M100 103d8e50 Object::Delete(void)
+	// BW1W120 006366a0 BW1M119 013e0d20
 	virtual void Delete();
-	// BW1W120 00636670 BW1M100 103d8eb0 Object::ToBeDeleted(int)
+	// BW1W120 00636670 BW1M119 013e0d80
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00639b70 BW1M100 103d2180 Object::GetDrawImportance(void)
+	// BW1W120 00639b70 BW1M119 013d9d30
 	virtual float GetDrawImportance();
-	// BW1W120 00419950 BW1M100 100a9ec0 Object::GetTown(void)
+	// BW1W120 00419950 BW1M119 010ad7a0
 	virtual Town* GetTown();
-	// BW1W120 00638110 BW1M100 103d55b0 Object::GetRadius(void)
+	// BW1W120 00638110 BW1M119 013dd4d0
 	virtual float GetRadius();
-	// BW1W120 00638180 BW1M100 10038d20 Object::Get2DRadius(void)
+	// BW1W120 00638180 BW1M119 0103b680
 	virtual float Get2DRadius();
-	// BW1W120 00639520 BW1M100 103d3550 Object::GetResource(RESOURCE_TYPE)
+	// BW1W120 00639520 BW1M119 013db4f0
 	virtual uint32_t GetResource(RESOURCE_TYPE type);
-	// BW1W120 0063a7d0 BW1M100 103d06c0 Object::CanBecomeArtifact(void)
+	// BW1W120 0063a7d0 BW1M119 013d8960
 	virtual bool32_t CanBecomeArtifact();
-	// BW1W120 005190e0 BW1M100 1008d3a0 Object::DrawInHand(GInterfaceStatus *)
+	// BW1W120 005190e0 BW1M119 0108f6b0
 	virtual void DrawInHand(GInterfaceStatus* param_1);
-	// BW1W120 00639eb0 BW1M100 103d1b20 Object::Load(GameOSFile &)
+	// BW1W120 00639eb0 BW1M119 013d96d0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00639b90 BW1M100 103d1d50 Object::Save(GameOSFile &)
+	// BW1W120 00639b90 BW1M119 013d9900
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0063a020 BW1M100 103d1940 Object::ResolveLoad(void)
+	// BW1W120 0063a020 BW1M119 013d94f0
 	virtual void ResolveLoad();
-	// BW1W120 00402600 BW1M100 1004b110 Object::GetLife(void)
+	// BW1W120 00402600 BW1M119 0104dac0
 	virtual float GetLife() { return life; }
-	// BW1W120 00402520 BW1M100 10044cb0 Object::GetScale(void)
+	// BW1W120 00402520 BW1M119 01047700
 	virtual float GetScale() { return scale; }
-	// BW1W120 00639200 BW1M100 103d3c80 Object::SetScale(float)
+	// BW1W120 00639200 BW1M119 013dbbd0
 	virtual void SetScale(float scale);
-	// BW1W120 006394e0 BW1M100 103d35f0 Object::GetPhysicsMovementDirection(LHPoint *)
+	// BW1W120 006394e0 BW1M119 013db590
 	virtual void GetPhysicsMovementDirection(LHPoint* pos);
-	// BW1W120 00402710 BW1M100 10032610 Object::IsMoving( const(void))
+	// BW1W120 00402710 BW1M119 01034f80
 	virtual bool32_t IsMoving() const { return Pos.x != coords.x || Pos.z != coords.z; }
-	// BW1W120 0063a780 BW1M100 103d07e0 Object::IsDrowning(void)
+	// BW1W120 0063a780 BW1M119 013d8a80
 	virtual bool32_t IsDrowning();
-	// BW1W120 006377f0 BW1M100 103d6d80 Object::CleanupWhenDeleted(int)
+	// BW1W120 006377f0 BW1M119 013dec60
 	virtual void CleanupWhenDeleted(int param_1);
-	// BW1W120 00639940 BW1M100 103d2cf0 Object::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
+	// BW1W120 00639940 BW1M119 013dac90
 	virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
-	// BW1W120 00638550 BW1M100 103d5010 Object::IsBuildingMaterial(void)
+	// BW1W120 00638550 BW1M119 013dced0
 	virtual bool32_t IsBuildingMaterial();
-	// BW1W120 00402a20 BW1M100 103db180 Object::IsSuitableForCreatureAction(void)
+	// BW1W120 00402a20 BW1M119 010a3100
 	virtual bool32_t IsSuitableForCreatureAction() { return info->CanCreatureInteractWithMe; }
-	// BW1W120 004e48c0 BW1M100 105e4960 Object::CanBeEatenByCreature(Creature *)
+	// BW1W120 004e48c0 BW1M119 015ec660
 	virtual bool32_t CanBeEatenByCreature(Creature* creature);
-	// BW1W120 00402a40 BW1M100 100db5e0 Object::CanBeAttackedByCreature(Creature *)
+	// BW1W120 00402a40 BW1M119 010a31b0
 	virtual bool32_t CanBeAttackedByCreature(Creature* creature)
 	{
 		// Creature is only forward declared in this header, so the upcast has to be spelled out.
 		return info->CanCreatureAttackMe && reinterpret_cast<Object*>(creature) != this;
 	}
-	// BW1W120 00425c60 BW1M100 100ade90 Object::CanBeFrighteningToCreature(Creature *)
+	// BW1W120 00425c60 BW1M119 010b0a10
 	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
-	// BW1W120 00402a80 BW1M100 1056cf30 Object::CanBeHelpedByCreature(Creature *)
+	// BW1W120 00402a80 BW1M119 010a3320
 	virtual bool32_t CanBeHelpedByCreature(Creature* creature) { return true; }
-	// BW1W120 00402a60 BW1M100 100b95a0 Object::CanBePlayedWithByCreature(Creature *)
+	// BW1W120 00402a60 BW1M119 010a3260
 	virtual bool32_t CanBePlayedWithByCreature(Creature* creature) { return info->CanCreaturePlayWithMe; }
-	// BW1W120 00402a70 BW1M100 105a25d0 Object::CanBeImpressedByCreature(Creature *)
+	// BW1W120 00402a70 BW1M119 010a32d0
 	virtual bool32_t CanBeImpressedByCreature(Creature* creature) { return false; }
-	// BW1W120 004e3b40 BW1M100 105e70f0 Object::CanBeInspectedByCreature(Creature *)
+	// BW1W120 004e3b40 BW1M119 015eedf0
 	virtual bool32_t CanBeInspectedByCreature(Creature* creature);
-	// BW1W120 004e3eb0 BW1M100 105e66c0 Object::CanBePoodUponByCreature(Creature *)
+	// BW1W120 004e3eb0 BW1M119 015ee3c0
 	virtual bool32_t CanBePoodUponByCreature(Creature* creature);
-	// BW1W120 004e3a20 BW1M100 105e7240 Object::CanBePickedUpByCreature(Creature *)
+	// BW1W120 004e3a20 BW1M119 015eef40
 	virtual bool32_t CanBePickedUpByCreature(Creature* creature);
-	// BW1W120 004e3b00 BW1M100 105e7170 Object::CanBeStrokedByCreature(Creature *)
+	// BW1W120 004e3b00 BW1M119 015eee70
 	virtual bool32_t CanBeStrokedByCreature(Creature* creature);
-	// BW1W120 004e3c10 BW1M100 105e6e70 Object::CanBeStompedOnByCreature(Creature *)
+	// BW1W120 004e3c10 BW1M119 015eeb70
 	virtual bool32_t CanBeStompedOnByCreature(Creature* creature);
-	// BW1W120 004e3cf0 BW1M100 105e6cb0 Object::CanBeThrownByCreature(Creature *)
+	// BW1W120 004e3cf0 BW1M119 015ee9b0
 	virtual bool32_t CanBeThrownByCreature(Creature* creature);
-	// BW1W120 004e3d40 BW1M100 105e6b50 Object::CanBePutInAStoragePit(Creature *)
+	// BW1W120 004e3d40 BW1M119 015ee850
 	virtual bool32_t CanBePutInAStoragePit(Creature* creature);
-	// BW1W120 00402a90 BW1M100 103e4d10 Object::CanBeExaminedByCreature(Creature *)
+	// BW1W120 00402a90 BW1M119 010a3370
 	virtual bool32_t CanBeExaminedByCreature(Creature* creature) { return true; }
-	// BW1W120 00402aa0 BW1M100 1054f410 Object::IsOnFire(Creature *)
+	// BW1W120 00402aa0 BW1M119 015937e0
 	virtual bool32_t IsOnFire(Creature* creature) { return IsOnFire(); }
-	// BW1W120 004e3d90 BW1M100 105e6a70 Object::CanBePutInFoodPile(Creature *)
+	// BW1W120 004e3d90 BW1M119 015ee770
 	virtual bool32_t CanBePutInFoodPile(Creature* creature);
-	// BW1W120 004e3dd0 BW1M100 105e69a0 Object::CanBePutInWoodPile(Creature *)
+	// BW1W120 004e3dd0 BW1M119 015ee6a0
 	virtual bool32_t CanBePutInWoodPile(Creature* creature);
-	// BW1W120 004e3bb0 BW1M100 105e6f50 Object::CanBeBroughtBackToCitadel(Creature *)
+	// BW1W120 004e3bb0 BW1M119 015eec50
 	virtual bool32_t CanBeBroughtBackToCitadel(Creature* creature);
-	// BW1W120 00402a30 BW1M100 100ba330 Object::CanBePoodOn(Creature *)
+	// BW1W120 00402a30 BW1M119 010a3170
 	virtual bool32_t CanBePoodOn(Creature* creature) { return true; }
-	// BW1W120 004e4320 BW1M100 105e56c0 Object::CanBeKickedByCreature(Creature *)
+	// BW1W120 004e4320 BW1M119 015ed3c0
 	virtual bool32_t CanBeKickedByCreature(Creature* creature);
-	// BW1W120 0063b8d0 BW1M100 103da7f0 Object::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
+	// BW1W120 0063b8d0 BW1M119 013e2770
 	virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
-	// BW1W120 00638120 BW1M100 10030760 Object::GetHeight(void)
+	// BW1W120 00638120 BW1M119 010330e0
 	virtual float GetHeight();
-	// BW1W120 00639b20 BW1M100 103d2290 Object::SetInScript(int)
+	// BW1W120 00639b20 BW1M119 013d9e40
 	virtual void SetInScript(int param_1);
-	// BW1W120 004029f0 BW1M100 100219d0 Object::IsObject( const(void))
+	// BW1W120 004029f0 BW1M119 01024540
 	virtual bool32_t IsObject() const { return true; }
-	// BW1W120 00638580 BW1M100 103d4f70 Object::GetQueryFirstEnumText(void)
+	// BW1W120 00638580 BW1M119 013dce10
 	virtual HELP_TEXT GetQueryFirstEnumText();
-	// BW1W120 00638590 BW1M100 103d4f10 Object::GetQueryLastEnumText(void)
+	// BW1W120 00638590 BW1M119 013dcdb0
 	virtual HELP_TEXT GetQueryLastEnumText();
-	// BW1W120 006385a0 BW1M100 1004c960 Object::GetFOVHelpMessageSet(void)
+	// BW1W120 006385a0 BW1M119 0104f2f0
 	virtual uint32_t GetFOVHelpMessageSet();
-	// BW1W120 006385b0 BW1M100 103d4d50 Object::GetFOVHelpCondition(void)
+	// BW1W120 006385b0 BW1M119 013dccb0
 	virtual uint32_t GetFOVHelpCondition();
-	// BW1W120 0063ab20 BW1M100 103cfe90 Object::DestroyedByBeam(void)
+	// BW1W120 0063ab20 BW1M119 013d80e0
 	virtual void DestroyedByBeam();
-	// BW1W120 004024f0 BW1M100 10055b70 Object::GetXAngle(void)
+	// BW1W120 004024f0 BW1M119 01058500
 	virtual float GetXAngle() { return 0.0f; }
-	// BW1W120 00402500 BW1M100 1004c930 Object::GetYAngle(void)
+	// BW1W120 00402500 BW1M119 0104f2c0
 	virtual float GetYAngle() { return y_angle; }
-	// BW1W120 00402510 BW1M100 10055b30 Object::GetZAngle(void)
+	// BW1W120 00402510 BW1M119 010584c0
 	virtual float GetZAngle() { return 0.0f; }
-	// BW1W120 006393a0 BW1M100 100299c0 Object::SetFocus(LHPoint const &)
+	// BW1W120 006393a0 BW1M119 0102c540
 	virtual void SetFocus(const LHPoint& focus);
-	// BW1W120 00638d00 BW1M100 10043070 Object::SetXYZAngles(float, float, float)
+	// BW1W120 00638d00 BW1M119 01045ab0
 	virtual void SetXYZAngles(float x, float y, float z);
-	// BW1W120 00638f80 BW1M100 103d3d70 Object::SetXYZAnglesAndScale(float, float, float, float)
+	// BW1W120 00638f80 BW1M119 013dbcc0
 	virtual void SetXYZAnglesAndScale(float x, float y, float z, float scale);
-	// BW1W120 00402530 BW1M100 10577710 Object::SetJustScale(float)
+	// BW1W120 00402530 BW1M119 0111a460
 	virtual void SetJustScale(float _scale) { scale = _scale; }
-	// BW1W120 0063a800 BW1M100 10038850 Object::SetYJustAngle(float)
+	// BW1W120 0063a800 BW1M119 0103b1b0
 	virtual void SetYJustAngle(float angle);
-	// BW1W120 00639260 BW1M100 1004cc10 Object::SetYAngle(float)
+	// BW1W120 00639260 BW1M119 0104f5a0
 	virtual void SetYAngle(float angle);
-	// BW1W120 00402540 BW1M100 100def80 Object::UpdateFrom3DPosition(void)
+	// BW1W120 00402540 BW1M119 0111a420
 	virtual void UpdateFrom3DPosition() {}
-	// BW1W120 00402550 BW1M100 105890b0 Object::MoveAlongPath(void)
+	// BW1W120 00402550 BW1M119 015a33f0
 	virtual uint32_t MoveAlongPath() { return 1; }
-	// BW1W120 00402560 BW1M100 1030b0c0 Object::IsReachable(void)
+	// BW1W120 00402560 BW1M119 01174810
 	virtual bool32_t IsReachable() { return IsAvailable(); }
-	// BW1W120 0063a920 BW1M100 103d03c0 Object::BlocksTownClearArea( const(void))
+	// BW1W120 0063a920 BW1M119 013d8610
 	virtual bool32_t BlocksTownClearArea() const;
-	// BW1W120 006365f0 BW1M100 103d9010 Object::Create3DObject(void)
+	// BW1W120 006365f0 BW1M119 013e0ee0
 	virtual void Create3DObject();
 	// fabricated: nothing in either binary references BW1W120 00636b20, so its name is unrecoverable.
 	// TODO: creates the 3D object, gives it its meshes and places it at Pos.
 	void Create3DObjectAtPos();
-	// BW1W120 00418c90 BW1M100 100540e0 Object::GetMapChild(MapCell const &)
+	// BW1W120 00418c90 BW1M119 01056a80
 	virtual Object* GetMapChild(const MapCell& cell);
-	// BW1W120 00418cc0 BW1M100 10053b70 Object::SetMapChild(Object *, MapCell *)
+	// BW1W120 00418cc0 BW1M119 01056500
 	virtual void SetMapChild(Object* child, MapCell* cell);
-	// BW1W120 00636740 BW1M100 1004ad80 Object::InsertMapObject(void)
+	// BW1W120 00636740 BW1M119 0104d730
 	virtual void InsertMapObject();
-	// BW1W120 006367a0 BW1M100 1004ace0 Object::RemoveMapObject(void)
+	// BW1W120 006367a0 BW1M119 0104d690
 	virtual void RemoveMapObject();
-	// BW1W120 00636830 BW1M100 10053ed0 Object::InsertMapObjectToCell(MapCell *)
+	// BW1W120 00636830 BW1M119 01056870
 	virtual void InsertMapObjectToCell(MapCell* cell);
-	// BW1W120 006368d0 BW1M100 10053bc0 Object::RemoveMapObjectFromCell(MapCell *)
+	// BW1W120 006368d0 BW1M119 01056550
 	virtual void RemoveMapObjectFromCell(MapCell* cell);
-	// BW1W120 006367d0 BW1M100 10054140 Object::IsObjectInMap(MapCell *)
+	// BW1W120 006367d0 BW1M119 01056ae0
 	virtual bool32_t IsObjectInMap(MapCell* cell);
-	// BW1W120 006366b0 BW1M100 103d8d10 Object::IsObjectInMapCheck(void)
+	// BW1W120 006366b0 BW1M119 013e0be0
 	virtual bool32_t IsObjectInMapCheck();
-	// BW1W120 00636a40 BW1M100 1004d070 Object::MoveMapObject(MapCoords const &)
+	// BW1W120 00636a40 BW1M119 0104fa00
 	virtual int MoveMapObject(const MapCoords& param_2);
-	// BW1W120 00638040 BW1M100 10055200 Object::ActualMoveMapObject(MapCoords const &)
+	// BW1W120 00638040 BW1M119 01057b90
 	virtual void ActualMoveMapObject(const MapCoords& coords);
-	// BW1W120 00402570 BW1M100 103dca60 Object::GetPtr(void)
+	// BW1W120 00402570 BW1M119 0136d060
 	virtual Object* GetPtr();
-	// BW1W120 00636bd0 BW1M100 103d8710 Object::GetMeshRadius( const(void))
+	// BW1W120 00636bd0 BW1M119 013e0600
 	virtual float GetMeshRadius() const;
-	// BW1W120 00402580 BW1M100 103dc890 Object::Get3DObjectForPSys(void)
+	// BW1W120 00402580 BW1M119 01353d20
 	virtual Game3DObject* Get3DObjectForPSys() { return Game3dObject; }
-	// BW1W120 00732630 BW1M100 101499d0 Object::GetPSysFireFlameMatrix(LHMatrix *)
+	// BW1W120 00732630 BW1M119 01151a40
 	virtual bool GetPSysFireFlameMatrix(LHMatrix* matrix);
-	// BW1W120 00732770 BW1M100 10149520 Object::GetPSysFireLocalRndFlamePos(LHPoint *, long *)
+	// BW1W120 00732770 BW1M119 01151590
 	virtual bool GetPSysFireLocalRndFlamePos(LHPoint* point, int* param_2);
-	// BW1W120 00732660 BW1M100 10149810 Object::GetPSysFireWorldFlamePos(LHPoint const &, long, LHPoint *)
+	// BW1W120 00732660 BW1M119 01151880
 	virtual bool GetPSysFireWorldFlamePos(const LHPoint& param_1, int param_2, LHPoint* param_3);
-	// BW1W120 00732950 BW1M100 101493c0 Object::GetPSysFireLocalFlameScale(void)
+	// BW1W120 00732950 BW1M119 01151430
 	virtual float GetPSysFireLocalFlameScale();
-	// BW1W120 00732a30 BW1M100 101492c0 Object::GetPSysFireMaxFlames(void)
+	// BW1W120 00732a30 BW1M119 01151330
 	virtual uint32_t GetPSysFireMaxFlames();
-	// BW1W120 00402590 BW1M100 1011c800 Object::GetSpotEffectPower(void)
+	// BW1W120 00402590 BW1M119 0110bbf0
 	virtual float GetSpotEffectPower() { return 0.0f; }
-	// BW1W120 00639610 BW1M100 103d3310 Object::GetAggressorValueFromDamage(float)
+	// BW1W120 00639610 BW1M119 013db2b0
 	virtual float GetAggressorValueFromDamage(float param_1);
-	// BW1W120 00638bf0 BW1M100 103d41a0 Object::GetHoldType(void)
+	// BW1W120 00638bf0 BW1M119 013dc180
 	virtual HOLD_TYPE GetHoldType();
-	// BW1W120 00638c00 BW1M100 100953b0 Object::GetHoldRadius(void)
+	// BW1W120 00638c00 BW1M119 01097300
 	virtual float GetHoldRadius();
-	// BW1W120 00638c30 BW1M100 103d4110 Object::GetHoldLoweringMultiplier(void)
+	// BW1W120 00638c30 BW1M119 013dc0a0
 	virtual float GetHoldLoweringMultiplier();
-	// BW1W120 004025a0 BW1M100 10097700 Object::GetHoldYRotate(void)
+	// BW1W120 004025a0 BW1M119 01099650
 	virtual float GetHoldYRotate() { return 0.0f; }
-	// BW1W120 004025b0 BW1M100 100a0df0 Object::HandShouldFeelWithMeshIntersect(void)
+	// BW1W120 004025b0 BW1M119 011d0c30
 	virtual bool32_t HandShouldFeelWithMeshIntersect() { return true; }
-	// BW1W120 004025c0 BW1M100 10513b50 Object::SetSpecularColor(unsigned long)
+	// BW1W120 004025c0 BW1M119 01590950
 	virtual void SetSpecularColor(LH3DColor color) {}
-	// BW1W120 004025d0 BW1M100 10110ae0 Object::GetSpecularColor(void)
+	// BW1W120 004025d0 BW1M119 011748d0
 	virtual LH3DColor GetSpecularColor() { return LH3DColor(0); }
-	// BW1W120 004025e0 BW1M100 10110490 Object::SetBeliefSprite(BeliefSprite *)
+	// BW1W120 004025e0 BW1M119 01173850
 	virtual void SetBeliefSprite(LH3DSprite* sprite) {}
-	// BW1W120 004025f0 BW1M100 1016bab0 Object::GetBeliefSprite(void)
+	// BW1W120 004025f0 BW1M119 0151b4a0
 	virtual LH3DSprite* GetBeliefSprite() { return NULL; }
-	// BW1W120 0063a140 BW1M100 100515d0 Object::SetLife(float)
+	// BW1W120 0063a140 BW1M119 01053f60
 	virtual void SetLife(float life);
-	// BW1W120 00402610 BW1M100 1005f530 Object::IsAlive(void)
+	// BW1W120 00402610 BW1M119 01061cb0
 	virtual bool32_t IsAlive() { return GetLife() > 0.0f && IsAvailable(); }
-	// BW1W120 00637810 BW1M100 1004b140 Object::ReduceLife(float, GPlayer *)
+	// BW1W120 00637810 BW1M119 0104daf0
 	virtual float ReduceLife(float value, GPlayer* player);
-	// BW1W120 00637870 BW1M100 103d6b50 Object::IncreaseLife(float)
+	// BW1W120 00637870 BW1M119 013dea80
 	virtual float IncreaseLife(float value);
-	// BW1W120 0063aaf0 BW1M100 103cff40 Object::GetSacrificeValue(void)
+	// BW1W120 0063aaf0 BW1M119 013d8190
 	virtual float GetSacrificeValue();
-	// BW1W120 00637c20 BW1M100 103d63c0 Object::ReduceLifeDueToBurning(float, GPlayer *)
+	// BW1W120 00637c20 BW1M119 013de2f0
 	virtual float ReduceLifeDueToBurning(float param_1, GPlayer* param_2);
-	// BW1W120 00637900 BW1M100 103d6a00 Object::FillInEffectDefenceMultiplier(EffectNumbers &)
+	// BW1W120 00637900 BW1M119 013de930
 	virtual void FillInEffectDefenceMultiplier(EffectNumbers& param_1);
-	// BW1W120 00637980 BW1M100 103d6510 Object::ApplyEffect(EffectValues &, int)
+	// BW1W120 00637980 BW1M119 013de440
 	virtual float ApplyEffect(EffectValues& param_1, int param_2);
-	// BW1W120 00637d00 BW1M100 103d6120 Object::GetDamageEffect(EffectValues &)
+	// BW1W120 00637d00 BW1M119 013de0d0
 	virtual float GetDamageEffect(EffectValues& values);
-	// BW1W120 00637d80 BW1M100 103d6050 Object::GetHealEffect(EffectValues &)
+	// BW1W120 00637d80 BW1M119 013de000
 	virtual float GetHealEffect(EffectValues& values);
-	// BW1W120 00637cf0 BW1M100 103d6220 Object::GetActualObjectToEffect(GPlayer *, bool)
+	// BW1W120 00637cf0 BW1M119 013de1d0
 	virtual void* GetActualObjectToEffect(GPlayer* player, bool param_2);
-	// BW1W120 006392c0 BW1M100 103d38b0 Object::DrawValue(long, float)
+	// BW1W120 006392c0 BW1M119 013db820
 	virtual void DrawValue(int param_1, float param_2);
-	// BW1W120 00402640 BW1M100 10368980 Object::ScaffoldMoved(Scaffold *)
+	// BW1W120 00402640 BW1M119 01370bf0
 	virtual void ScaffoldMoved(Scaffold* scaffold) {}
-	// BW1W120 00637ce0 BW1M100 103d6270 Object::GetHeatCapacity(void)
+	// BW1W120 00637ce0 BW1M119 013de220
 	virtual float GetHeatCapacity();
-	// BW1W120 00639a80 BW1M100 103d2950 Object::GetFireGPHXDrawn(bool *, bool *, bool *, bool *)
+	// BW1W120 00639a80 BW1M119 013da040
 	virtual void GetFireGPHXDrawn(bool* param_1, bool* param_2, bool* param_3, bool* param_4);
-	// BW1W120 00639a90 BW1M100 103d2900 Object::GetRainCoolingMultiplier(void)
+	// BW1W120 00639a90 BW1M119 013d9ff0
 	virtual float GetRainCoolingMultiplier();
-	// BW1W120 00639aa0 BW1M100 1001a370 Object::GetDefaultFireCentrePos(MapCoords *)
+	// BW1W120 00639aa0 BW1M119 0101cf20
 	virtual void GetDefaultFireCentrePos(MapCoords* pos);
-	// BW1W120 00639ac0 BW1M100 103d2490 Object::GetDefaultFireRadius(void)
+	// BW1W120 00639ac0 BW1M119 013d9f30
 	virtual float GetDefaultFireRadius();
-	// BW1W120 006378e0 BW1M100 103d6ad0 Object::DestroyedByEffect(GPlayer *, float)
+	// BW1W120 006378e0 BW1M119 013dea00
 	virtual uint32_t DestroyedByEffect(GPlayer* player, float param_2);
-	// BW1W120 00418fc0 BW1M100 100a9d90 Object::Process(void)
+	// BW1W120 00418fc0 BW1M119 010ad670
 	virtual uint32_t Process();
-	// BW1W120 00402650 BW1M100 10368aa0 Object::ProcessBySpell(Spell *)
+	// BW1W120 00402650 BW1M119 01370d40
 	virtual uint32_t ProcessBySpell(Spell* spell) { return 1; }
-	// BW1W120 00637ff0 BW1M100 103d57e0 Object::ApplySingleEffect(EFFECT_TYPE, float, GameThing *, MapCoords const &)
+	// BW1W120 00637ff0 BW1M119 013dd790
 	virtual void ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords& param_4);
-	// BW1W120 00425340 BW1M100 10368d70 Object::GetMesh( const(void))
+	// BW1W120 00425340 BW1M119 011d37e0
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00402660 BW1M100 10368ae0 Object::GetDetailMesh( const(DETAIL_LEVEL))
+	// BW1W120 00402660 BW1M119 011d33d0
 	virtual int GetDetailMesh(int detail) const { return GetMesh(); }
-	// BW1W120 004648b0 BW1M100 100e33f0 Object::Draw(void)
+	// BW1W120 004648b0 BW1M119 010e7860
 	virtual void Draw();
-	// BW1W120 0051c820 BW1M100 1001aa40 Object::DrawOutOfMap(bool)
+	// BW1W120 0051c820 BW1M119 0101d5f0
 	virtual void DrawOutOfMap(bool param_1);
-	// BW1W120 00402670 BW1M100 10109540 Object::IsG3DObjectDrawnInHand(void)
+	// BW1W120 00402670 BW1M119 011d2250
 	virtual bool IsG3DObjectDrawnInHand() { return true; }
-	// BW1W120 00402680 BW1M100 100a83e0 Object::GetDrawRegion(LHRegion *)
+	// BW1W120 00402680 BW1M119 013e3140
 	virtual void GetDrawRegion(LHRegion* region) {}
-	// BW1W120 00402690 BW1M100 103e4e10 Object::ProcessState(void)
+	// BW1W120 00402690 BW1M119 013e3100
 	virtual uint32_t ProcessState() { return 0; }
-	// BW1W120 006380b0 BW1M100 103d5740 Object::GetProjectileSpeed(void)
+	// BW1W120 006380b0 BW1M119 013dd660
 	virtual float GetProjectileSpeed();
-	// BW1W120 004026a0 BW1M100 103e4940 Object::CanBePickedUp(void)
+	// BW1W120 004026a0 BW1M119 010bd680
 	virtual bool32_t CanBePickedUp() { return false; }
-	// BW1W120 00425c50 BW1M100 100add90 Object::CanBeCrushed(void)
+	// BW1W120 00425c50 BW1M119 010b0910
 	virtual bool32_t CanBeCrushed();
-	// BW1W120 00638160 BW1M100 103d5490 Object::GetTopPos(void)
+	// BW1W120 00638160 BW1M119 013dd350
 	virtual float GetTopPos();
-	// BW1W120 004026b0 BW1M100 100a7df0 Object::GetVillagerHugRadius(void)
+	// BW1W120 004026b0 BW1M119 010e0380
 	virtual float GetVillagerHugRadius() { return Get2DRadius() * 1.05f + 0.0005f; }
-	// BW1W120 00638480 BW1M100 103d51a0 Object::GetWeight(void)
+	// BW1W120 00638480 BW1M119 013dd060
 	virtual float GetWeight();
-	// BW1W120 00638200 BW1M100 1007e8a0 Object::GetWorldMatrix(LHMatrix *)
+	// BW1W120 00638200 BW1M119 01080d70
 	virtual void GetWorldMatrix(LHMatrix* out);
-	// BW1W120 00639b60 BW1M100 103d21e0 Object::CanBeSuckedIntoVortex(LandscapeVortex *)
+	// BW1W120 00639b60 BW1M119 013d9d90
 	virtual bool32_t CanBeSuckedIntoVortex(LandscapeVortex* param_1);
-	// BW1W120 00639b80 BW1M100 103d2110 Object::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
+	// BW1W120 00639b80 BW1M119 013d9cc0
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager);
-	// BW1W120 00639550 BW1M100 103d3460 Object::GetWorkingPos(Object *)
+	// BW1W120 00639550 BW1M119 013db400
 	// Rule 2 (hidden retbuf): comment shows one param (Object*), so returns MapCoords by value.
 	virtual MapCoords GetWorkingPos(Object* param_1);
-	// BW1W120 00638150 BW1M100 103d5500 Object::GetHeightForHandAboveInteractObject(void)
+	// BW1W120 00638150 BW1M119 013dd3c0
 	virtual float GetHeightForHandAboveInteractObject();
-	// BW1W120 006385c0 BW1M100 103d4cf0 Object::GetHandHelpMessageSet(void)
+	// BW1W120 006385c0 BW1M119 013dcc50
 	virtual uint32_t GetHandHelpMessageSet();
-	// BW1W120 006385d0 BW1M100 103d4c90 Object::GetHandHelpCondition(void)
+	// BW1W120 006385d0 BW1M119 013dcbf0
 	virtual uint32_t GetHandHelpCondition();
-	// BW1W120 00636be0 BW1M100 103d84b0 Object::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 00636be0 BW1M119 013e03a0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
-	// BW1W120 006364f0 BW1M100 103d92f0 Object::Get3DType(void)
+	// BW1W120 006364f0 BW1M119 013e1170
 	virtual LH3DObject::ObjectType Get3DType();
-	// BW1W120 004026d0 BW1M100 10586d80 Object::GetFoodValue(FOOD_TYPE)
+	// BW1W120 004026d0 BW1M119 010bc860
 	virtual float GetFoodValue(FOOD_TYPE type)
 	{
 		if ((type & GetFoodType()) != 0)
@@ -366,341 +366,341 @@ public:
 		}
 		return 0.0f;
 	}
-	// BW1W120 006395c0 BW1M100 103d3390 Object::GetWoodValue(void)
+	// BW1W120 006395c0 BW1M119 013db330
 	virtual float GetWoodValue();
-	// BW1W120 00402700 BW1M100 10062630 Object::GetFoodType(void)
+	// BW1W120 00402700 BW1M119 01064db0
 	virtual FOOD_TYPE GetFoodType() { return info->GetFoodType(); }
-	// BW1W120 00639390 BW1M100 103d3840 Object::GetImpressiveValue(void)
+	// BW1W120 00639390 BW1M119 013db7b0
 	virtual float GetImpressiveValue();
-	// BW1W120 00402730 BW1M100 1056f400 Object::IsSpellSeedReturnPoint( const(void))
+	// BW1W120 00402730 BW1M119 013ee160
 	virtual bool32_t IsSpellSeedReturnPoint() const { return false; }
-	// BW1W120 00402740 BW1M100 104d62b0 Object::IsABeliever(void)
+	// BW1W120 00402740 BW1M119 013eb470
 	virtual bool32_t IsABeliever() { return false; }
-	// BW1W120 004192c0 BW1M100 100a9dc0 Object::AsMultiMapFixed(void)
+	// BW1W120 004192c0 BW1M119 010ad6a0
 	virtual MultiMapFixed* AsMultiMapFixed();
-	// BW1W120 0063a8e0 BW1M100 103d0400 Object::ApplyWaterSpell(SpellWater *)
+	// BW1W120 0063a8e0 BW1M119 013d8650
 	virtual float ApplyWaterSpell(SpellWater* spell);
-	// BW1W120 004192d0 BW1M100 100a9e00 Object::IsResourceStore(RESOURCE_TYPE)
+	// BW1W120 004192d0 BW1M119 010ad6e0
 	virtual bool IsResourceStore(RESOURCE_TYPE type);
-	// BW1W120 0063a930 BW1M100 103d0360 Object::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
+	// BW1W120 0063a930 BW1M119 013d85b0
 	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
-	// BW1W120 0063aad0 BW1M100 103d0050 Object::GetRadiusMultiplierForApplyingPotToPos(void)
+	// BW1W120 0063aad0 BW1M119 013d82a0
 	virtual float GetRadiusMultiplierForApplyingPotToPos();
-	// BW1W120 0063aae0 BW1M100 103cffe0 Object::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
+	// BW1W120 0063aae0 BW1M119 013d8230
 	virtual bool32_t DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status);
-	// BW1W120 00402750 BW1M100 1056ee10 Object::GetResourceType(void)
+	// BW1W120 00402750 BW1M119 012fef60
 	virtual RESOURCE_TYPE GetResourceType() { return RESOURCE_TYPE_NONE; }
-	// BW1W120 00402760 BW1M100 1035b020 Object::GetDefaultResource(void)
+	// BW1W120 00402760 BW1M119 012feff0
 	virtual int GetDefaultResource() { return 0; }
-	// BW1W120 00402770 BW1M100 105a4d20 Object::SetPoisonedResource(RESOURCE_TYPE, int)
+	// BW1W120 00402770 BW1M119 012fefa0
 	virtual void SetPoisonedResource(RESOURCE_TYPE type, int poisoned) {}
-	// BW1W120 00402780 BW1M100 10552240 Object::SetPoisoned(int)
+	// BW1W120 00402780 BW1M119 015a30b0
 	virtual void SetPoisoned(int poisoned) {}
-	// BW1W120 00402790 BW1M100 10109690 Object::IsLockedInInteract(void)
+	// BW1W120 00402790 BW1M119 011779b0
 	virtual bool32_t IsLockedInInteract() { return false; }
-	// BW1W120 004027a0 BW1M100 10109580 Object::SetDying(void)
+	// BW1W120 004027a0 BW1M119 0150e1d0
 	virtual bool32_t SetDying()
 	{
 		ToBeDeleted(0);
 		return true;
 	}
-	// BW1W120 00636ab0 BW1M100 103d8820 Object::IsAttackable(Object *)
+	// BW1W120 00636ab0 BW1M119 013e0710
 	virtual bool32_t IsAttackable(Object* param_1);
-	// BW1W120 00636af0 BW1M100 103d8770 Object::IsAllied(Object *)
+	// BW1W120 00636af0 BW1M119 013e0660
 	virtual bool32_t IsAllied(Object* param_1);
-	// BW1W120 00637e00 BW1M100 103d5f70 Object::IsTouching(Object *, float)
+	// BW1W120 00637e00 BW1M119 013ddf20
 	virtual bool32_t IsTouching(Object* target, float epsilon);
-	// BW1W120 00637e30 BW1M100 103d5ef0 Object::IsTouching(MapCoords const &)
+	// BW1W120 00637e30 BW1M119 013ddea0
 	virtual bool32_t IsTouching(const MapCoords& coords);
-	// BW1W120 00637e60 BW1M100 103d5970 Object::IsTouching(MapCoords const &, MapCoords const &)
+	// BW1W120 00637e60 BW1M119 013dd920
 	virtual bool32_t IsTouching(const MapCoords& param_1, const MapCoords& param_2);
-	// BW1W120 00419300 BW1M100 100a9e50 Object::StartOnFire(void)
+	// BW1W120 00419300 BW1M119 010ad730
 	virtual void StartOnFire();
-	// BW1W120 004027b0 BW1M100 100a8170 Object::EndOnFire(void)
+	// BW1W120 004027b0 BW1M119 011776b0
 	virtual void EndOnFire() {}
-	// BW1W120 00637fb0 BW1M100 103d58a0 Object::GetDistanceFromObject(Object *)
+	// BW1W120 00637fb0 BW1M119 013dd850
 	virtual float GetDistanceFromObject(Object* param_1);
-	// BW1W120 004027c0 Object::GetDistanceFromObject(MapCoords const &)
+	// BW1W120 004027c0 BW1M119 01176a00
 	virtual float GetDistanceFromObject(const MapCoords& coords) { return 0.0f; }
-	// BW1W120 006399d0 BW1M100 10003b20 Object::GetTribalPower(TRIBE_TYPE)
+	// BW1W120 006399d0 BW1M119 01003b10
 	virtual float GetTribalPower(TRIBE_TYPE param_1);
-	// BW1W120 00419330 BW1M100 100addd0 Object::ValidForLockedSelectProcess(GInterfaceStatus *)
+	// BW1W120 00419330 BW1M119 010b0950
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* status);
-	// BW1W120 004193d0 BW1M100 100ade30 Object::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
+	// BW1W120 004193d0 BW1M119 010b09b0
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* status);
-	// BW1W120 004027d0 BW1M100 1016eda0 Object::NetworkUnfriendlyStartLockedSelect(void)
+	// BW1W120 004027d0 BW1M119 0133e3c0
 	virtual bool32_t NetworkUnfriendlyStartLockedSelect() { return true; }
-	// BW1W120 004027e0 BW1M100 1056c2f0 Object::IsReadyForNetworkUnfriendlyLockedSelect(void)
+	// BW1W120 004027e0 BW1M119 011ada60
 	virtual bool32_t IsReadyForNetworkUnfriendlyLockedSelect() { return true; }
-	// BW1W120 004027f0 BW1M100 10577790 Object::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
+	// BW1W120 004027f0 BW1M119 0151c320
 	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1) { return true; }
-	// BW1W120 00402800 BW1M100 1037fcb0 Object::GetReadyForNetworkUnfriendlyEndLockedSelect(void)
+	// BW1W120 00402800 BW1M119 0151c520
 	virtual bool32_t GetReadyForNetworkUnfriendlyEndLockedSelect() { return true; }
-	// BW1W120 00402810 BW1M100 102fd0c0 Object::IsReadyForNetworkUnfriendlyEndLockedSelect(void)
+	// BW1W120 00402810 BW1M119 0113eb10
 	virtual bool32_t IsReadyForNetworkUnfriendlyEndLockedSelect() { return true; }
-	// BW1W120 00402820 BW1M100 103e2470 Object::NetworkUnfriendlyEndLockedSelect(void)
+	// BW1W120 00402820 BW1M119 0151c380
 	virtual bool32_t NetworkUnfriendlyEndLockedSelect() { return true; }
-	// BW1W120 00402830 BW1M100 1041d9a0 Object::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
+	// BW1W120 00402830 BW1M119 014fbfc0
 	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* status) { return true; }
-	// BW1W120 00402840 BW1M100 1017df80 Object::ValidAsInterfaceTarget(void)
+	// BW1W120 00402840 BW1M119 01355590
 	virtual bool32_t ValidAsInterfaceTarget() { return true; }
-	// BW1W120 00402850 BW1M100 1016daa0 Object::ValidAsInterfaceLeashTarget(void)
+	// BW1W120 00402850 BW1M119 014e2700
 	virtual bool32_t ValidAsInterfaceLeashTarget() { return true; }
-	// BW1W120 00402860 BW1M100 103e0d10 Object::SelectOnlyAfterRecSystem(void)
+	// BW1W120 00402860 BW1M119 01357fa0
 	virtual bool32_t SelectOnlyAfterRecSystem() { return false; }
-	// BW1W120 00402870 BW1M100 105995f0 Object::ValidForPlaceInHand(GInterfaceStatus *)
+	// BW1W120 00402870 BW1M119 01187350
 	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* status) { return false; }
-	// BW1W120 00637660 BW1M100 103d7300 Object::InterfaceSetInMagicHand(GInterfaceStatus *)
+	// BW1W120 00637660 BW1M119 013df1f0
 	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* status);
-	// BW1W120 00637670 BW1M100 103d7280 Object::InterfaceSetOutMagicHand(GInterfaceStatus *)
+	// BW1W120 00637670 BW1M119 013df170
 	virtual bool32_t InterfaceSetOutMagicHand(GInterfaceStatus* status);
-	// BW1W120 00402880 BW1M100 1040fc60 Object::ValidToRemoveFromHand(GInterfaceStatus *, MapCoords const &)
+	// BW1W120 00402880 BW1M119 010b4ce0
 	virtual bool32_t ValidToRemoveFromHand(GInterfaceStatus* status, const MapCoords& coords) { return false; }
-	// BW1W120 00402890 BW1M100 100b16a0 Object::RemoveFromHand(GInterfaceStatus *, MapCoords const &)
+	// BW1W120 00402890 BW1M119 010a2bd0
 	virtual uint32_t RemoveFromHand(GInterfaceStatus* status, const MapCoords& param_2);
-	// BW1W120 00636aa0 BW1M100 100933f0 Object::ValidToShakeFromHand(void)
+	// BW1W120 00636aa0 BW1M119 01095640
 	virtual bool32_t ValidToShakeFromHand();
-	// BW1W120 004028a0 BW1M100 101ca2e0 Object::InterfaceMustBeInInfluenceForInteraction(void)
+	// BW1W120 004028a0 BW1M119 01573f80
 	virtual bool32_t InterfaceMustBeInInfluenceForInteraction() { return true; }
-	// BW1W120 00636a90 BW1M100 103d8920 Object::IsTuggable(void)
+	// BW1W120 00636a90 BW1M119 013e0820
 	virtual bool32_t IsTuggable();
-	// BW1W120 004028b0 BW1M100 101652d0 Object::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
+	// BW1W120 004028b0 BW1M119 014971c0
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* status, Object* target) { return 0; }
-	// BW1W120 004028c0 BW1M100 10513670 Object::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
+	// BW1W120 004028c0 BW1M119 0136d5e0
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* status, Object* target, GestureSystemPacketData* packet)
 	{
 		return 0;
 	}
-	// BW1W120 004028d0 BW1M100 10110bf0 Object::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+	// BW1W120 004028d0 BW1M119 013e5160
 	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords) { return 0; }
-	// BW1W120 004028e0 BW1M100 10110b70 Object::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
+	// BW1W120 004028e0 BW1M119 0142cd00
 	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* packet)
 	{
 		return 0;
 	}
-	// BW1W120 004028f0 BW1M100 1055f210 Object::ValidForLockedApplyProcess(GInterfaceStatus *)
+	// BW1W120 004028f0 BW1M119 0136d1e0
 	virtual uint32_t ValidForLockedApplyProcess(GInterfaceStatus* status) { return 0; }
-	// BW1W120 00402900 BW1M100 1016baf0 Object::ApplyUnlockProcess(GInterfaceStatus *)
+	// BW1W120 00402900 BW1M119 015a93c0
 	virtual uint32_t ApplyUnlockProcess(GInterfaceStatus* status) { return 1; }
-	// BW1W120 00402910 BW1M100 10364e10 Object::IsInterfacePowerUpWhenInHand( const(void))
+	// BW1W120 00402910 BW1M119 010a2b00
 	virtual uint32_t IsInterfacePowerUpWhenInHand() const { return 0; }
-	// BW1W120 00402920 BW1M100 103ad050 Object::ApplyOnlyAfterRecSystem(void)
+	// BW1W120 00402920 BW1M119 010a2b50
 	virtual uint32_t ApplyOnlyAfterRecSystem() { return 0; }
-	// BW1W120 00402930 BW1M100 10101e60 Object::ApplyOnlyAfterReleased(void)
+	// BW1W120 00402930 BW1M119 010a2b90
 	virtual uint32_t ApplyOnlyAfterReleased() { return 0; }
-	// BW1W120 004196b0 BW1M100 100a5960 Object::InterfaceValidToTap(GInterfaceStatus *)
+	// BW1W120 004196b0 BW1M119 010a8ba0
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* status);
-	// BW1W120 004196c0 BW1M100 100a59b0 Object::InterfaceTap(GInterfaceStatus *)
+	// BW1W120 004196c0 BW1M119 010a8bf0
 	virtual uint32_t InterfaceTap(GInterfaceStatus* status);
-	// BW1W120 00402940 BW1M100 100a0900 Object::InterfaceValidToGiveObject(GInterfaceStatus *, Object *)
+	// BW1W120 00402940 BW1M119 010a2650
 	virtual uint32_t InterfaceValidToGiveObject(GInterfaceStatus* status, Object* param_2);
-	// BW1W120 00402950 BW1M100 101c8d40 Object::InterfaceGiveObject(GInterfaceStatus *, Object *)
+	// BW1W120 00402950 BW1M119 010a2c30
 	virtual uint32_t InterfaceGiveObject(GInterfaceStatus* status, Object* param_2);
-	// BW1W120 00402960 BW1M100 105890f0 Object::InterfaceValidToInteractAsMapCoordsObject(GInterfaceStatus *)
+	// BW1W120 00402960 BW1M119 010a2c90
 	virtual uint32_t InterfaceValidToInteractAsMapCoordsObject(GInterfaceStatus* status) { return 0; }
-	// BW1W120 00402970 BW1M100 1016bbe0 Object::InterfaceInteractAsMapCoordsObject(GInterfaceStatus *)
+	// BW1W120 00402970 BW1M119 010a2d00
 	virtual uint32_t InterfaceInteractAsMapCoordsObject(GInterfaceStatus* status) { return 1; }
-	// BW1W120 006385e0 BW1M100 103d4a70 Object::ThrowObjectFromHand(GInterfaceStatus *, int)
+	// BW1W120 006385e0 BW1M119 013dc9d0
 	virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* status, int param_2);
-	// BW1W120 00402980 BW1M100 1016aaf0 Object::ValidToSelectFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+	// BW1W120 00402980 BW1M119 010a2d60
 	virtual uint32_t ValidToSelectFightThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords) { return 0; }
-	// BW1W120 00402990 BW1M100 1056d5f0 Object::ValidToApplyFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+	// BW1W120 00402990 BW1M119 010a2dd0
 	virtual uint32_t ValidToApplyFightThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords) { return 0; }
-	// BW1W120 004029a0 BW1M100 103692a0 Object::SelectFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+	// BW1W120 004029a0 BW1M119 010a2e40
 	virtual uint32_t SelectFightThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords) { return 1; }
-	// BW1W120 004029b0 BW1M100 103690d0 Object::ApplyFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+	// BW1W120 004029b0 BW1M119 010a2ea0
 	virtual uint32_t ApplyFightThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords) { return 1; }
-	// BW1W120 004029c0 BW1M100 10369240 Object::ValidToFightThisToObject(GInterfaceStatus *, MapCoords const &)
+	// BW1W120 004029c0 BW1M119 010a2f00
 	virtual uint32_t ValidToFightThisToObject(GInterfaceStatus* status, const MapCoords& coords) { return 0; }
-	// BW1W120 004029d0 BW1M100 101cbb80 Object::FightThisToObject(GInterfaceStatus *, Object *)
+	// BW1W120 004029d0 BW1M119 010a2f60
 	virtual uint32_t FightThisToObject(GInterfaceStatus* status, Object* target) { return 1; }
-	// BW1W120 004029e0 BW1M100 100068d0 Object::IsEffectReceiver(EffectValues *)
+	// BW1W120 004029e0 BW1M119 010067d0
 	virtual bool32_t IsEffectReceiver(EffectValues* values) { return true; }
-	// BW1W120 00639960 BW1M100 103d2ba0 Object::CanBeDestroyedBySpell(Spell *)
+	// BW1W120 00639960 BW1M119 013dab40
 	virtual bool32_t CanBeDestroyedBySpell(Spell* param_1);
-	// BW1W120 00638cf0 BW1M100 103d3f30 Object::GetImportance(void)
+	// BW1W120 00638cf0 BW1M119 013dbec0
 	virtual float GetImportance();
-	// BW1W120 00636f00 BW1M100 103d7760 Object::InitialisePhysicsFromHand(LHPoint &, LHPoint &, GInterfaceStatus *, Object *, int)
+	// BW1W120 00636f00 BW1M119 013df650
 	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
 	                                           Object* param_4, int param_5);
-	// BW1W120 00637480 BW1M100 103d74c0 Object::InitialisePhysics(LHPoint const &, LHPoint const &, Object *, bool, GInterfaceStatus *)
+	// BW1W120 00637480 BW1M119 013df3b0
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);
-	// BW1W120 006376a0 BW1M100 103d71b0 Object::GetPhysicsConstantsType(void)
+	// BW1W120 006376a0 BW1M119 013df0a0
 	virtual uint32_t GetPhysicsConstantsType();
-	// BW1W120 006376b0 BW1M100 103d70b0 Object::SetUpPhysOb(PhysOb *)
+	// BW1W120 006376b0 BW1M119 013defa0
 	virtual void SetUpPhysOb(PhysOb* param_1);
-	// BW1W120 006375a0 BW1M100 103d7350 Object::EndPhysics(PhysicsObject *, bool)
+	// BW1W120 006375a0 BW1M119 013df240
 	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
-	// BW1W120 0063a7b0 BW1M100 103d07b0 Object::DropSfx(void)
+	// BW1W120 0063a7b0 BW1M119 013d8a50
 	virtual uint32_t DropSfx();
-	// BW1W120 00637730 BW1M100 103d6f80 Object::GetBoundingSphere(LHPoint &, float &)
+	// BW1W120 00637730 BW1M119 013dee60
 	virtual void GetBoundingSphere(LHPoint& center, float& radius);
-	// BW1W120 006377b0 BW1M100 103d6f30 Object::InteractsWithPhysicsObjects(void)
+	// BW1W120 006377b0 BW1M119 013dee10
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 00419890 BW1M100 100a9e80 Object::ChecksVerticesVObjects(void)
+	// BW1W120 00419890 BW1M119 010ad760
 	virtual bool ChecksVerticesVObjects();
-	// BW1W120 006377d0 BW1M100 103d6e50 Object::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object *)
+	// BW1W120 006377d0 BW1M119 013ded30
 	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
-	// BW1W120 00402a00 BW1M100 100b06b0 Object::PhysicallyDestroysAbodes(void)
+	// BW1W120 00402a00 BW1M119 013ed5b0
 	virtual bool32_t PhysicallyDestroysAbodes() { return false; }
-	// BW1W120 006377c0 BW1M100 103d6ee0 Object::ReactToPhysicsImpact(PhysicsObject *, bool)
+	// BW1W120 006377c0 BW1M119 013dedc0
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-	// BW1W120 006377e0 BW1M100 103d6e10 Object::CanBecomeAPhysicsObject(void)
+	// BW1W120 006377e0 BW1M119 013decf0
 	virtual bool32_t CanBecomeAPhysicsObject();
-	// BW1W120 00402a10 BW1M100 103db1f0 Object::GetAlwaysRemainsInPhysicsInternalSystem(void)
+	// BW1W120 00402a10 BW1M119 010a30b0
 	virtual bool32_t GetAlwaysRemainsInPhysicsInternalSystem() { return false; }
-	// BW1W120 00637470 BW1M100 103d7730 Object::HasSunk(void)
+	// BW1W120 00637470 BW1M119 013df620
 	virtual bool32_t HasSunk();
-	// BW1W120 00638740 BW1M100 103d48a0 Object::CreatureMustAvoid(Creature *)
+	// BW1W120 00638740 BW1M119 013dc880
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
-	// BW1W120 00638790 BW1M100 103d43b0 Object::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+	// BW1W120 00638790 BW1M119 013dc390
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));
-	// BW1W120 006384c0 BW1M100 103d5070 Object::GetRoutePlanRadius(Creature *)
+	// BW1W120 006384c0 BW1M119 013dcf30
 	virtual float GetRoutePlanRadius(Creature* param_1);
-	// BW1W120 00638be0 BW1M100 103d41e0 Object::VillagerMustAvoid(Villager *)
+	// BW1W120 00638be0 BW1M119 013dc1c0
 	virtual bool32_t VillagerMustAvoid(Villager* param_1);
-	// BW1W120 00639a00 BW1M100 103d2b20 Object::IsFireMan(void)
+	// BW1W120 00639a00 BW1M119 013da210
 	virtual bool32_t IsFireMan();
-	// BW1W120 00638730 BW1M100 10097740 Object::IsARootedObject(void)
+	// BW1W120 00638730 BW1M119 01099690
 	virtual bool32_t IsARootedObject();
-	// BW1W120 00637690 BW1M100 103d7220 Object::GetCollideSoundType(void)
+	// BW1W120 00637690 BW1M119 013df110
 	virtual SOUND_COLLISION_TYPE GetCollideSoundType();
-	// BW1W120 004198a0 BW1M100 101bd530 Object::IsSolidToNewAbode(void)
+	// BW1W120 004198a0 BW1M119 01125130
 	virtual bool32_t IsSolidToNewAbode();
-	// BW1W120 00639b50 BW1M100 103d2250 Object::RemoveFromGame(void)
+	// BW1W120 00639b50 BW1M119 013d9e00
 	virtual uint32_t RemoveFromGame();
-	// BW1W120 00638430 BW1M100 103d52a0 Object::GetLandingPointCount(void)
+	// BW1W120 00638430 BW1M119 013dd160
 	virtual int GetLandingPointCount();
-	// BW1W120 00638450 BW1M100 103d5230 Object::GetLandingPoint(unsigned char, LHPoint *)
+	// BW1W120 00638450 BW1M119 013dd0f0
 	virtual bool32_t GetLandingPoint(uint8_t param_1, LHPoint* param_2);
-	// BW1W120 00402ab0 BW1M100 103e2750 Object::GetTastiness(void)
+	// BW1W120 00402ab0 BW1M119 010a33c0
 	virtual uint32_t GetTastiness() { return 0; }
-	// BW1W120 00402ac0 BW1M100 102fd110 Object::IsScary(void)
+	// BW1W120 00402ac0 BW1M119 010a3400
 	virtual bool32_t IsScary() { return false; }
-	// BW1W120 00638cb0 BW1M100 103d3fe0 Object::GetInspectObjectPos(Villager *, MapCoords *)
+	// BW1W120 00638cb0 BW1M119 013dbf70
 	virtual bool32_t GetInspectObjectPos(Villager* param_1, MapCoords* pos);
-	// BW1W120 0063ab10 BW1M100 103cfef0 Object::DiscipleInHandNear(Villager &, GInterfaceStatus &)
+	// BW1W120 0063ab10 BW1M119 013d8140
 	virtual void DiscipleInHandNear(Villager& villager, GInterfaceStatus& status);
-	// BW1W120 00638cd0 BW1M100 103d3f70 Object::GetSpecialPos(unsigned long, MapCoords *)
+	// BW1W120 00638cd0 BW1M119 013dbf00
 	virtual bool32_t GetSpecialPos(uint32_t index, MapCoords* pos);
-	// BW1W120 00419960 BW1M100 100adee0 Object::GetTownArtifact(void)
+	// BW1W120 00419960 BW1M119 010b0a60
 	virtual GameThing* GetTownArtifact();
-	// BW1W120 00419970 BW1M100 100adf20 Object::IsTownArtifact(void)
+	// BW1W120 00419970 BW1M119 010b0aa0
 	virtual bool32_t IsTownArtifact();
-	// BW1W120 00639ad0 BW1M100 1008a4c0 Object::ProcessInHand(void)
+	// BW1W120 00639ad0 BW1M119 0108c800
 	virtual bool ProcessInHand();
-	// BW1W120 00639b10 BW1M100 103d22d0 Object::ProcessInInteract(GInterfaceStatus *)
+	// BW1W120 00639b10 BW1M119 013d9e80
 	virtual uint32_t ProcessInInteract(GInterfaceStatus* status);
-	// BW1W120 00402ad0 BW1M100 102fd170 Object::GetObjectCollide(void)
+	// BW1W120 00402ad0 BW1M119 010a3430
 	virtual uint32_t GetObjectCollide() { return 0; }
-	// BW1W120 00639620 BW1M100 103d3290 Object::CalculateForceAppliedBy(Living *)
+	// BW1W120 00639620 BW1M119 013db230
 	virtual float CalculateForceAppliedBy(Living* param_1);
-	// BW1W120 00402ae0 BW1M100 102fd140 Object::IsPushable(void)
+	// BW1W120 00402ae0 BW1M119 010a3470
 	virtual bool32_t IsPushable() { return false; }
-	// BW1W120 006397c0 BW1M100 103d2f90 Object::PushObject(Living *, MapCoords &)
+	// BW1W120 006397c0 BW1M119 013daf30
 	virtual void PushObject(Living* param_1, MapCoords& param_2);
-	// BW1W120 00639640 BW1M100 103d30f0 Object::PushObject(Living *)
+	// BW1W120 00639640 BW1M119 013db090
 	virtual void PushObject(Living* param_1);
-	// BW1W120 00402af0 BW1M100 1016eb20 Object::GetCarriedTreeType(void)
+	// BW1W120 00402af0 BW1M119 010a34a0
 	virtual uint32_t GetCarriedTreeType() { return 0; }
-	// BW1W120 00402b00 BW1M100 105069f0 Object::GetFacingPitch(void)
+	// BW1W120 00402b00 BW1M119 010a34e0
 	virtual float GetFacingPitch() { return 0.0f; }
-	// BW1W120 00402b10 BW1M100 1058c010 Object::SetHeadPos(MapCoords *)
+	// BW1W120 00402b10 BW1M119 010a3520
 	virtual void SetHeadPos(MapCoords* pos) { *pos = Pos; }
-	// BW1W120 __purecall BW1M100 null Object::SaveObject(const MapCoords& )
+	// BW1W120 __purecall BW1M119 null
 	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords) = 0;
-	// BW1W120 00402b30 BW1M100 1016e7f0 Object::IsAPotFromABuildingSite(void)
+	// BW1W120 00402b30 BW1M119 010a3580
 	virtual bool32_t IsAPotFromABuildingSite() { return false; }
-	// BW1W120 00636cd0 BW1M100 103d8340 Object::GetNearestEdgeOfObject(Object *)
+	// BW1W120 00636cd0 BW1M119 013e0230
 	virtual LHPoint GetNearestEdgeOfObject(Object* object);
-	// BW1W120 00636d30 BW1M100 103d8250 Object::GetNearestPosOfObject(Object *)
+	// BW1W120 00636d30 BW1M119 013e0140
 	virtual MapCoords GetNearestPosOfObject(Object* param_1);
-	// BW1W120 00636da0 BW1M100 103d8190 Object::GetNearestEdgeToPos(MapCoords const &)
+	// BW1W120 00636da0 BW1M119 013e0080
 	virtual MapCoords GetNearestEdgeToPos(const MapCoords& pos);
-	// BW1W120 00636df0 BW1M100 103d80e0 Object::GetNearestEdge(float, float)
+	// BW1W120 00636df0 BW1M119 013dffd0
 	virtual MapCoords GetNearestEdge(float angle, float extra_radius);
-	// BW1W120 0063a220 BW1M100 103d1140 Object::GetImmersionTexture(void)
+	// BW1W120 0063a220 BW1M119 013d93c0
 	virtual IMMERSION_EFFECT_TYPE GetImmersionTexture();
-	// BW1W120 0063a7c0 BW1M100 103d0770 Object::GetInHandImmersionTexture(void)
+	// BW1W120 0063a7c0 BW1M119 013d8a10
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
-	// BW1W120 00419a50 BW1M100 100a5a00 Object::ShouldFootpathsGoRound(void)
+	// BW1W120 00419a50 BW1M119 010a8c40
 	virtual bool32_t ShouldFootpathsGoRound();
-	// BW1W120 0063a640 BW1M100 103d0b20 Object::InitialiseIsFixedForMapList(void)
+	// BW1W120 0063a640 BW1M119 013d8dc0
 	virtual void InitialiseIsFixedForMapList();
-	// BW1W120 00402b40 BW1M100 1016dc30 Object::GetText(void)
+	// BW1W120 00402b40 BW1M119 010a35c0
 	virtual const char* GetText() { return info->DebugString; }
-	// BW1W120 00402b50 BW1M100 10335f20 Object::StandAnimation(void)
+	// BW1W120 00402b50 BW1M119 010a3610
 	virtual uint32_t StandAnimation() { return ANM_INVALID; }
-	// BW1W120 00419b30 BW1M100 1009cd00 Object::GetCollideData(void)
+	// BW1W120 00419b30 BW1M119 0109ea50
 	virtual NewCollide* GetCollideData();
 
 	// Override methods
 
-	// BW1W120 006392b0 BW1M100 10037930 Object::IsObjectInMap(void)
+	// BW1W120 006392b0 BW1M119 0103a2a0
 	virtual bool32_t IsObjectInMap();
-	// BW1W120 00639860 BW1M100 103d2e30 Object::GetImpressiveValue(Living *, Reaction *)
+	// BW1W120 00639860 BW1M119 013dadd0
 	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
 
 	// Static methods
 
-	// BW1W120 006364c0 BW1M100 103d93a0 Object::Get3DType(MESH_LIST)
+	// BW1W120 006364c0 BW1M119 013e1220
 	static LH3DObject::ObjectType Get3DType(MESH_LIST index);
 
 	// Constructors
 
-	// BW1W120 00636450 BW1M100 103d9480 Object::Object(void)
+	// BW1W120 00636450 BW1M119 013e1300
 	Object();
-	// BW1W120 00636520 BW1M100 103d90d0 Object::Object(MapCoords const &, GObjectInfo const *)
+	// BW1W120 00636520 BW1M119 013e0fa0
 	Object(const MapCoords& coords, const GObjectInfo* info);
 
 	// Non-virtual Destructors
 
-	// BW1W120 006364a0 BW1M100 103d8f50 Object::_dt(void)
+	// BW1W120 006364a0 BW1M119 013e0e20
 	~Object();
 
 	// Non-virtual methods
 
-	// BW1W120 00637cc0 BW1M100 103d6210 Object::IsOnFire(void)
+	// BW1W120 00637cc0 BW1M119 0102dd80
 	bool32_t IsOnFire();
-	// BW1W120 00638560 BW1M100 1005ba80 Object::GetMapChild(MapCoords const &)
+	// BW1W120 00638560 BW1M119 0105e730
 	Object* GetMapChild(const MapCoords& coord);
-	// BW1W120 0063a810 BW1M100 103d04b0 Object::CreateSmokyStuff(long, float, LH3DColor)
+	// BW1W120 0063a810 BW1M119 013d8700
 	bool32_t CreateSmokyStuff(long param_1, float param_2, LH3DColor param_3);
-	// BW1W120 00637930 BW1M100 103d6910 Object::GetDefenseMultiplier(void)
+	// BW1W120 00637930 BW1M119 013de840
 	EffectNumbers GetDefenseMultiplier();
-	// BW1W120 00638b00 BW1M100 103d4220 Object::SimpleAddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+	// BW1W120 00638b00 BW1M119 013dc200
 	void SimpleAddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                          void(__cdecl* param_4)(int, Point2D, float, int));
-	// BW1W120 00639410 BW1M100 103d3690 Object::IsActuallyInTheAir(void)
+	// BW1W120 00639410 BW1M119 013db630
 	void IsActuallyInTheAir();
-	// BW1W120 00636e70 BW1M100 103dfe00 Object::RemoveDraggingCreatureByLeash(void)
+	// BW1W120 00636e70 BW1M119 013dfe00
 	void RemoveDraggingCreatureByLeash();
-	// BW1W120 006380c0 BW1M100 103dd600 Object::IsCitadelPart(void) const
+	// BW1W120 006380c0 BW1M119 013dd600
 	bool32_t IsCitadelPart() const;
-	// BW1W120 00639a10 BW1M100 103d2aa0 Object::GetTemperature(void)
+	// BW1W120 00639a10 BW1M119 013da190
 	float GetTemperature();
-	// BW1W120 00639a30 BW1M100 103da130 Object::GetCombustionTemperature(void)
+	// BW1W120 00639a30 BW1M119 013da130
 	float GetCombustionTemperature();
-	// BW1W120 00637dd0 BW1M100 103ddfa0 Object::DrawFireEffect(void)
+	// BW1W120 00637dd0 BW1M119 013ddfa0
 	void DrawFireEffect();
-	// BW1W120 00639a40 BW1M100 103d29f0 Object::SetOnFire(float)
+	// BW1W120 00639a40 BW1M119 013da0e0
 	void SetOnFire(float param_1);
-	// BW1W120 00639a60 BW1M100 103d2990 Object::SetTemperature(float, GameThing *)
+	// BW1W120 00639a60 BW1M119 013da080
 	void SetTemperature(float param_1, GameThing* param_2);
-	// BW1W120 0063a1b0 BW1M100 10086f70 Object::GetInterfaceStatusHoldingThis(void)
+	// BW1W120 0063a1b0 BW1M119 01089340
 	void GetInterfaceStatusHoldingThis();
-	// BW1W120 0063a230 BW1M100 103d0ba0 Object::SetUpPhysObAsATree(PhysOb *, float, float, float, float)
+	// BW1W120 0063a230 BW1M119 013d8e40
 	void SetUpPhysObAsATree(PhysOb* param_1, float param_2, float param_3, float param_4, float param_5);
-	// BW1W120 0063a710 BW1M100 103d0870 Object::GetInterfaceStatusWhoLastDroppedMe(void)
+	// BW1W120 0063a710 BW1M119 013d8b10
 	void GetInterfaceStatusWhoLastDroppedMe();
-	// BW1W120 0063a6a0 BW1M100 103d8c10 Object::GetInterfaceStatusWhoLastPickedMeUp(void)
+	// BW1W120 0063a6a0 BW1M119 013d8c10
 	void GetInterfaceStatusWhoLastPickedMeUp();
-	// BW1W120 0063a940 BW1M100 103d00a0 Object::DoDeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
+	// BW1W120 0063a940 BW1M119 013d82f0
 	void DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
-	// BW1W120 004eaab0 BW1M100 1026e5f8 Object::ConsiderCreatureMimickingWhenObjectLands(void)
+	// BW1W120 004eaab0 BW1M119 012722f0
 	void ConsiderCreatureMimickingWhenObjectLands();
 };
 

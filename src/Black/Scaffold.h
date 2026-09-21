@@ -34,101 +34,101 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055e150 BW1M100 10143e00 Scaffold::_dt(void)
+	// BW1W120 0055e150 BW1M119 0114c0b0
 	virtual ~Scaffold();
-	// BW1W120 006e83e0 BW1M100 10143cd0 Scaffold::ToBeDeleted(int)
+	// BW1W120 006e83e0 BW1M119 0114bf80
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 0055e120 BW1M100 1013e660 Scaffold::GetTown(void)
+	// BW1W120 0055e120 BW1M119 01146a60
 	virtual Town* GetTown();
-	// BW1W120 006eaef0 BW1M100 1013eaf0 Scaffold::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
+	// BW1W120 006eaef0 BW1M119 01146dc0
 	virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
 	                             const MapCoords* param_5, int param_6);
-	// BW1W120 005181a0 BW1M100 100c8e20 Scaffold::DrawInHand(GInterfaceStatus *)
+	// BW1W120 005181a0 BW1M119 010cc610
 	virtual void DrawInHand(GInterfaceStatus* param_1);
-	// BW1W120 0055e140 BW1M100 1013e6d0 Scaffold::GetDebugText(void)
+	// BW1W120 0055e140 BW1M119 01146ad0
 	virtual char* GetDebugText();
-	// BW1W120 006ea3d0 BW1M100 10140100 Scaffold::Load(GameOSFile &)
+	// BW1W120 006ea3d0 BW1M119 011483d0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 006ea240 BW1M100 10140340 Scaffold::Save(GameOSFile &)
+	// BW1W120 006ea240 BW1M119 01148610
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055e130 BW1M100 1013e690 Scaffold::GetSaveType(void)
+	// BW1W120 0055e130 BW1M119 01146a90
 	virtual uint32_t GetSaveType();
-	// BW1W120 006ea560 BW1M100 1013ffc0 Scaffold::ResolveLoad(void)
+	// BW1W120 006ea560 BW1M119 01148290
 	virtual void ResolveLoad();
-	// BW1W120 006ea9d0 BW1M100 1013f6d0 Scaffold::GetOverwritePickUpToolTip(void)
+	// BW1W120 006ea9d0 BW1M119 011479a0
 	virtual uint32_t GetOverwritePickUpToolTip();
-	// BW1W120 006e9860 BW1M100 10141650 Scaffold::GetOverwriteDropToolTip(void)
+	// BW1W120 006e9860 BW1M119 01149920
 	virtual uint32_t GetOverwriteDropToolTip();
-	// BW1W120 006ea770 BW1M100 1013fba0 Scaffold::GetImpressiveValue(Living *, Reaction *)
+	// BW1W120 006ea770 BW1M119 01147e70
 	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
-	// BW1W120 006ea9e0 BW1M100 1013f670 Scaffold::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
+	// BW1W120 006ea9e0 BW1M119 01147940
 	virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
-	// BW1W120 004e3fc0 BW1M100 105e6330 Scaffold::CanBePickedUpByCreature(Creature *)
+	// BW1W120 004e3fc0 BW1M119 015ee030
 	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
-	// BW1W120 004e3ff0 BW1M100 105e6220 Scaffold::CanBeStolenByCreature(Creature *)
+	// BW1W120 004e3ff0 BW1M119 015edf20
 	virtual uint32_t CanBeStolenByCreature(Creature* param_1);
-	// BW1W120 004e4070 BW1M100 105e6100 Scaffold::IsStealableScaffold(Creature *)
+	// BW1W120 004e4070 BW1M119 015ede00
 	virtual uint32_t IsStealableScaffold(Creature* param_1);
-	// BW1W120 0055e100 BW1M100 1013e5d0 Scaffold::IsScaffold(void)
+	// BW1W120 0055e100 BW1M119 011469d0
 	virtual uint32_t IsScaffold();
-	// BW1W120 006eab60 BW1M100 1013f280 Scaffold::GetScriptObjectType(void)
+	// BW1W120 006eab60 BW1M119 01147550
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 006e9890 BW1M100 10141590 Scaffold::ActualMoveMapObject(MapCoords const &)
+	// BW1W120 006e9890 BW1M119 01149860
 	virtual void ActualMoveMapObject(const MapCoords& param_1);
-	// BW1W120 006ea5c0 BW1M100 1013fd30 Scaffold::Draw(void)
+	// BW1W120 006ea5c0 BW1M119 01148000
 	virtual void Draw();
-	// BW1W120 006e8540 BW1M100 10143a70 Scaffold::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 006e8540 BW1M119 0114bd20
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 006eaea0 BW1M100 1013ec20 Scaffold::IsResourceStore(RESOURCE_TYPE)
+	// BW1W120 006eaea0 BW1M119 01146ef0
 	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
-	// BW1W120 006eaec0 BW1M100 1013eb90 Scaffold::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
+	// BW1W120 006eaec0 BW1M119 01146e60
 	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
-	// BW1W120 0055e0f0 BW1M100 1013e590 Scaffold::GetResourceType(void)
+	// BW1W120 0055e0f0 BW1M119 01146990
 	virtual RESOURCE_TYPE GetResourceType();
-	// BW1W120 006e9d30 BW1M100 10140dd0 Scaffold::GetDefaultResource(void)
+	// BW1W120 006e9d30 BW1M119 011490a0
 	virtual int GetDefaultResource();
-	// BW1W120 006e96a0 BW1M100 10141b10 Scaffold::ValidForPlaceInHand(GInterfaceStatus *)
+	// BW1W120 006e96a0 BW1M119 01149de0
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-	// BW1W120 006e96e0 BW1M100 101419a0 Scaffold::InterfaceSetInMagicHand(GInterfaceStatus *)
+	// BW1W120 006e96e0 BW1M119 01149c70
 	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
-	// BW1W120 006e9770 BW1M100 10141720 Scaffold::InterfaceSetOutMagicHand(GInterfaceStatus *)
+	// BW1W120 006e9770 BW1M119 011499f0
 	virtual uint32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
-	// BW1W120 006e9900 BW1M100 101413a0 Scaffold::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
+	// BW1W120 006e9900 BW1M119 01149670
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
-	// BW1W120 006e99e0 BW1M100 10141130 Scaffold::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
+	// BW1W120 006e99e0 BW1M119 01149400
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
-	// BW1W120 006e9d80 BW1M100 10140c50 Scaffold::InterfaceValidToTap(GInterfaceStatus *)
+	// BW1W120 006e9d80 BW1M119 01148f20
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
-	// BW1W120 006e9dd0 BW1M100 10140af0 Scaffold::InterfaceTap(GInterfaceStatus *)
+	// BW1W120 006e9dd0 BW1M119 01148dc0
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
-	// BW1W120 006eab70 BW1M100 1013f210 Scaffold::ThrowObjectFromHand(GInterfaceStatus *, int)
+	// BW1W120 006eab70 BW1M119 011474e0
 	virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* param_1, int param_2);
-	// BW1W120 006ea8a0 BW1M100 1013f9a0 Scaffold::InitialisePhysicsFromHand(LHPoint &, LHPoint &, GInterfaceStatus *, Object *, int)
+	// BW1W120 006ea8a0 BW1M119 01147c70
 	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
 	                                           Object* param_4, int param_5);
-	// BW1W120 006ea840 BW1M100 1013faa0 Scaffold::InitialisePhysics(LHPoint const &, LHPoint const &, Object *, bool, GInterfaceStatus *)
+	// BW1W120 006ea840 BW1M119 01147d70
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);
-	// BW1W120 006e8770 BW1M100 10143680 Scaffold::GetPhysicsConstantsType(void)
+	// BW1W120 006e8770 BW1M119 0114b930
 	virtual uint32_t GetPhysicsConstantsType();
-	// BW1W120 006e8780 BW1M100 101434e0 Scaffold::EndPhysics(PhysicsObject *, bool)
+	// BW1W120 006e8780 BW1M119 0114b790
 	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
-	// BW1W120 0055e110 BW1M100 1013e610 Scaffold::InteractsWithPhysicsObjects(void)
+	// BW1W120 0055e110 BW1M119 01146a10
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 006ea940 BW1M100 1013f890 Scaffold::ReactToPhysicsImpact(PhysicsObject *, bool)
+	// BW1W120 006ea940 BW1M119 01147b60
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-	// BW1W120 006ea910 BW1M100 1013f8e0 Scaffold::CanBecomeAPhysicsObject(void)
+	// BW1W120 006ea910 BW1M119 01147bb0
 	virtual bool32_t CanBecomeAPhysicsObject();
-	// BW1W120 006e8570 BW1M100 101436c0 Scaffold::ProcessInHand(void)
+	// BW1W120 006e8570 BW1M119 0114b970
 	virtual bool ProcessInHand();
-	// BW1W120 006eaf30 BW1M100 1013e710 Scaffold::SaveObject(LHOSFile &, MapCoords const &)
+	// BW1W120 006eaf30 BW1M119 01146b10
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
 	// Non-virtual methods
 
-	// BW1W120 006e8860 BW1M100 10143450 Scaffold::ForceBuildBuilding(GPlayer *)
+	// BW1W120 006e8860 BW1M119 0114b700
 	void ForceBuildBuilding(GPlayer* player);
-	// BW1W120 006e9610 BW1M100 10141bc0 Scaffold::RemoveOldBuildingSite(void)
+	// BW1W120 006e9610 BW1M119 01149e90
 	void RemoveOldBuildingSite();
 };
 

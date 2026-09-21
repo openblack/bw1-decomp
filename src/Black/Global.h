@@ -13,9 +13,10 @@ class Prss;
 
 struct GGlobal
 {
-	// BW1W120 00cd3b20. TODO: Original singleton name is unrecovered; this is an object, not a pointer.
+	// TODO: Original singleton name is unrecovered; this is an object, not a pointer.
+	// BW1W120 00cd3b20
 	static GGlobal Global;
-	// BW1W120 00590f00 BW1M100 1032d8b0 GGlobal::GGlobal(void)
+	// BW1W120 00590f00 BW1M119 013359c0
 	GGlobal();
 	GAudio*  audio; /* 0x0 */
 	GDebug   debug;
@@ -40,7 +41,7 @@ struct GGlobal
 
 	// Non-virtual methods
 
-	// BW1W120 005910f0 BW1M100 1032d3a0 GGlobal::DisplayPlayerTextMessages(void)
+	// BW1W120 005910f0 BW1M119 013353e0
 	void DisplayPlayerTextMessages();
 };
 

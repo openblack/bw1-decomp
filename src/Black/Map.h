@@ -21,26 +21,26 @@ struct MapCell
 
 	// Static methods
 
-	// BW1W120 00601510 BW1M100 1000b040 MapCell::DoesObjectTypeCountAsFixed(OBJECT_TYPE)
+	// BW1W120 00601510 BW1M119 0100cb60
 	static bool32_t DoesObjectTypeCountAsFixed(OBJECT_TYPE type);
 
 	// Non-virtual methods
 
-	// BW1W120 00601b60 BW1M100 10054090 MapCell::SetFirstObjectMobile(Object *)
+	// BW1W120 00601b60 BW1M119 01056a30
 	void SetFirstObjectMobile(Object* object);
-	// BW1W120 00601b70 BW1M100 104a6ee0 MapCell::SetFirstObjectFixed(Object *)
+	// BW1W120 00601b70 BW1M119 015c0530
 	void SetFirstObjectFixed(Object* object);
-	// BW1W120 00601380 BW1M100 101cbfc0 MapCell::Clean(void)
+	// BW1W120 00601380 BW1M119 0156aec0
 	void Clean();
-	// BW1W120 006015e0 BW1M100 100121f0 MapCell::FindTypeOnMap(OBJECT_TYPE, Object *) const
+	// BW1W120 006015e0 BW1M119 01014dc0
 	Object* FindTypeOnMap(OBJECT_TYPE type, Object* object) const;
-	// BW1W120 00601b80 BW1M100 100544d0 MapCell::GetX(void) const
+	// BW1W120 00601b80 BW1M119 01056e70
 	uint32_t GetX() const;
-	// BW1W120 00601ba0 BW1M100 10054640 MapCell::GetZ(void) const
+	// BW1W120 00601ba0 BW1M119 01056fe0
 	uint32_t GetZ() const;
-	// BW1W120 00601690 BW1M100 10570500 MapCell::FindFixedOnMap(Object *)
+	// BW1W120 00601690 BW1M119 01568c20
 	Fixed* FindFixedOnMap(Object* param_1);
-	// BW1W120 inlined BW1M100 10388dc0 MapCell::GetFirstIterator(void) const
+	// BW1W120 inlined BW1M119 013dcd10
 	MapCellIterator GetFirstIterator() const;
 };
 
@@ -52,7 +52,7 @@ struct MapCellIterator
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 1002c620 MapCellIterator::MoveToMobileObsIfNeededAndPoss(void)
+	// BW1W120 inlined BW1M119 0102f190
 	void MoveToMobileObsIfNeededAndPoss()
 	{
 		if (object == NULL && IsFixed)
@@ -78,9 +78,9 @@ static_assert(sizeof(MapCellIterator) == 0xc, "MapCellIterator size is incorrect
 class GMap : public Base
 {
 public:
-	// BW1W120 006014c0 BW1M100 101a6180
+	// BW1W120 006014c0 BW1M119 011c6cb0
 	bool32_t Init(unsigned long x_size, unsigned long z_size, unsigned long flags);
-	// BW1W120 00601820 BW1M100 102ffa90
+	// BW1W120 00601820 BW1M119 01568560
 	void     CalculateMapInfluence();
 	uint8_t  field_0x8;
 	uint8_t  field_0x9;
@@ -117,23 +117,23 @@ public:
 
 	// Override methods
 
-	// BW1W120 006010c0 BW1M100 1055f620 GMap::_dt(void)
+	// BW1W120 006010c0 BW1M119 01568da0
 	virtual ~GMap();
 
 	// Constructors
 
-	// BW1W120 00601080 BW1M100 10552040 GMap::GMap(void)
+	// BW1W120 00601080 BW1M119 015697d0
 	GMap();
 
 	// Non-virtual methods
 
-	// BW1W120 006016d0 BW1M100 1055e8f0 GMap::UpdateControlMap(void)
+	// BW1W120 006016d0 BW1M119 0155b770
 	void UpdateControlMap();
-	// BW1W120 00601850 BW1M100 1008eac0 GMap::CalculateMapInfluenceX(void)
+	// BW1W120 00601850 BW1M119 01090d60
 	void CalculateMapInfluenceX();
-	// BW1W120 00612660 BW1M100 100fddf0 GMap::ToMap(long, long)
+	// BW1W120 00612660 BW1M119 0150df10
 	MapCell* ToMap(uint32_t cell_x, uint32_t cell_z);
-	// BW1W120 00612690 BW1M100 10049c10 GMap::InBounds(long, long)
+	// BW1W120 00612690 BW1M119 0104c5d0
 	bool InBounds(uint32_t x, uint32_t z);
 };
 

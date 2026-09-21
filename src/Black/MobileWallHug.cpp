@@ -16,7 +16,7 @@ inline void EraseFromCircleHugSet(std::set<MobileWallHug*>& s, MobileWallHug* mw
 	}
 }
 
-// BW1W120 0060a9f0 BW1M100 10029be0 CircleHugInfo::Reset(MobileWallHug *)
+// BW1W120 0060a9f0 BW1M119 01029be0
 void CircleHugInfo::Reset(MobileWallHug* mwh)
 {
 	if (mwh != NULL)
@@ -39,7 +39,7 @@ void CircleHugInfo::Reset(MobileWallHug* mwh)
 // lower_bound; likely needs this TU's other container users to match
 #pragma inline_depth(1)
 
-// BW1W120 0060aad0 BW1M100 inlined MobileWallHug::SetupMobileMoveToPos(MapCoords const &)
+// BW1W120 0060aad0 BW1M119 inlined
 void MobileWallHug::SetupMobileMoveToPos(const MapCoords& coords)
 {
 	goal = coords;
@@ -64,7 +64,7 @@ void MobileWallHug::SetupMobileMoveToPos(const MapCoords& coords)
 	MoveState = MOVE_TO_STATES_STEP_THROUGH;
 }
 
-// BW1W120 0060abc0 BW1M100 1001c770 MobileWallHug::SetupMobileMoveToPos(MapCoords const &, MOVE_TO_STATES)
+// BW1W120 0060abc0 BW1M119 0101f330
 void MobileWallHug::SetupMobileMoveToPos(const MapCoords& coords, MOVE_TO_STATES move_to_state)
 {
 	goal = coords;
@@ -99,14 +99,14 @@ void MobileWallHug::SetupMobileMoveToPos(const MapCoords& coords, MOVE_TO_STATES
 
 #pragma inline_depth()
 
-// BW1W120 0060da90 BW1M100 1004cce0 MobileWallHug::SetGameAngle(unsigned short)
+// BW1W120 0060da90 BW1M119 0104f670
 void MobileWallHug::SetGameAngle(uint16_t angle)
 {
 	GameAngle = angle;
 	Object::SetYAngle(GUtils::ConvertGameAngleTo3D(angle));
 }
 
-// BW1W120 0060f760 BW1M100 103c1910 MobileWallHug::SetToZero(void)
+// BW1W120 0060f760 BW1M119 013c9790
 void MobileWallHug::SetToZero()
 {
 	speed = 0;

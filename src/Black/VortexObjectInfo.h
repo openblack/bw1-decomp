@@ -17,15 +17,15 @@ class VortexObjectInfo : public PSysBase
 public:
 	// Override methods
 
-	// BW1W120 0055d830 BW1M100 103b2be0 VortexObjectInfo::_dt(void)
+	// BW1W120 0055d830 BW1M119 013bab20
 	virtual ~VortexObjectInfo();
-	// BW1W120 0055d820 BW1M100 103b2cb0 VortexObjectInfo::GetDebugText(void)
+	// BW1W120 0055d820 BW1M119 013babf0
 	virtual char* GetDebugText();
-	// BW1W120 00600bf0 BW1M100 103b2d00 VortexObjectInfo::Load(GameOSFile &)
+	// BW1W120 00600bf0 BW1M119 013bac40
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00600ad0 BW1M100 103b3000 VortexObjectInfo::Save(GameOSFile &)
+	// BW1W120 00600ad0 BW1M119 013baf40
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0055d810 BW1M100 103b2c70 VortexObjectInfo::GetSaveType(void)
+	// BW1W120 0055d810 BW1M119 013babb0
 	virtual uint32_t GetSaveType();
 };
 

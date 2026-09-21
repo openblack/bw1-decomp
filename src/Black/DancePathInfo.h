@@ -20,7 +20,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 005961c0 BW1M100 100fafe0 DancePathInfo::_dt(void)
+	// BW1W120 005961c0 BW1M119 011041d0
 	virtual ~DancePathInfo();
 };
 

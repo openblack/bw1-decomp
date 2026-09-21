@@ -17,7 +17,7 @@ public:
 
 	// Constructors
 
-	// BW1W120 005b2b80 BW1M100 10339d60 HandStateGrain::HandStateGrain(CHand*)
+	// BW1W120 005b2b80 BW1M119 013421b0
 	HandStateGrain(CHand* hand);
 };
 

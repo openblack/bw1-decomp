@@ -4,9 +4,9 @@
 class CarriedObject
 {
 public:
-	// BW1W120 00462530 BW1M100 100be550 CarriedObject::Init(void)
+	// BW1W120 00462530 BW1M119 010c1a60
 	static void Init();
-	// BW1W120 004628d0 BW1M100 100be4b0 CarriedObject::Reset(void)
+	// BW1W120 004628d0 BW1M119 010c19c0
 	static void Reset();
 };
 

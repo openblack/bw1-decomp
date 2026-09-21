@@ -13,14 +13,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 00542510 BW1M100 105bdae0 TattooEditor::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+	// BW1W120 00542510 BW1M119 015c4900
 	virtual void Init(uint32_t param_1, uint32_t param_2,
 	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
-	// BW1W120 005427e0 BW1M100 105bda80 TattooEditor::Destroy(void)
+	// BW1W120 005427e0 BW1M119 015c48a0
 	virtual void Destroy();
-	// BW1W120 0053bd20 BW1M100 105c5eb0 TattooEditor::CanESCOut(void)
+	// BW1W120 0053bd20 BW1M119 015ccbc0
 	virtual bool CanESCOut();
-	// BW1W120 005433e0 BW1M100 105bc900 TattooEditor::InitControls(void)
+	// BW1W120 005433e0 BW1M119 015c3740
 	virtual void InitControls();
 };
 

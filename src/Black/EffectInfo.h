@@ -25,14 +25,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 00524dd0 BW1M100 100cc6a0 GEffectInfo::_dt(void)
+	// BW1W120 00524dd0 BW1M119 010d0950
 	virtual ~GEffectInfo();
-	// BW1W120 00524d70 BW1M100 100ccc90 GEffectInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00524d70 BW1M119 010d0f00
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Constructors
 
-	// BW1W120 00524d40 BW1M100 100cc740 GEffectInfo::GEffectInfo(void)
+	// BW1W120 00524d40 BW1M119 010d09f0
 	GEffectInfo();
 };
 

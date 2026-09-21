@@ -21,11 +21,11 @@ public:
 
 	// Override methods
 
-	// BW1W120 00725fb0 BW1M100 10525b60 GSpellIconInfo::_dt(void)
+	// BW1W120 00725fb0 BW1M119 0152e340
 	virtual ~GSpellIconInfo();
-	// BW1W120 00725f40 BW1M100 10525c70 GSpellIconInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00725f40 BW1M119 0152e450
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-	// BW1W120 00725f30 BW1M100 10524c10 GSpellIconInfo::GetMesh( const(void))
+	// BW1W120 00725f30 BW1M119 0152c180
 	virtual MESH_LIST GetMesh() const;
 };
 

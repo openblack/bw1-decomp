@@ -22,25 +22,25 @@ public:
 
 	// Override methods
 
-	// BW1W120 0072aee0 BW1M100 1052d120 GSpellSeedInfo::_dt(void)
+	// BW1W120 0072aee0 BW1M119 01535870
 	virtual ~GSpellSeedInfo();
-	// BW1W120 0072ae70 BW1M100 1052df40 GSpellSeedInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0072ae70 BW1M119 015367e0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-	// BW1W120 0072ae60 BW1M100 1052df00 GSpellSeedInfo::GetMesh( const(void))
+	// BW1W120 0072ae60 BW1M119 015367a0
 	virtual MESH_LIST GetMesh() const;
 
 	// Static methods
 
-	// BW1W120 0072b090 BW1M100 1052d6f0 GSpellSeedInfo::GetFirstSpellSeedForMagicType(MAGIC_TYPE)
+	// BW1W120 0072b090 BW1M119 01535e30
 	static SPELL_SEED_TYPE GetFirstSpellSeedForMagicType(MAGIC_TYPE magic_type);
 
 	// Non-virtual methods
 
-	// BW1W120 0072af70 BW1M100 1052dac0 GSpellSeedInfo::GetPowerUpFromMagicType(MAGIC_TYPE) const
+	// BW1W120 0072af70 BW1M119 01536200
 	POWER_UP_TYPE GetPowerUpFromMagicType(MAGIC_TYPE magic_type) const;
-	// BW1W120 0072afc0 BW1M100 1052d9d0 GSpellSeedInfo::GetMagicTypeFromPULevel(POWER_UP_TYPE) const
+	// BW1W120 0072afc0 BW1M119 01536110
 	MAGIC_TYPE GetMagicTypeFromPULevel(POWER_UP_TYPE power_type) const;
-	// BW1W120 0072b060 BW1M100 inlined GSpellSeedInfo::SpellSeedIsOfMagicType(MAGIC_TYPE) const
+	// BW1W120 0072b060 BW1M119 inlined
 	bool SpellSeedIsOfMagicType(MAGIC_TYPE type) const;
 };
 

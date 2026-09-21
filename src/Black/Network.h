@@ -38,26 +38,27 @@ struct GNetwork
 		field_0x28 = 0;
 		field_0x2c = 0;
 	}
-	// BW1W120 00635430 GNetwork::~GNetwork(void)
+	// BW1W120 00635430 BW1M119 01390f00
 	~GNetwork();
-	// BW1W120 00635450. TODO: Original method name is unrecovered.
+	// TODO: Original method name is unrecovered.
+	// BW1W120 00635450
 	LH_RETURN fn_00635450(void* packet, unsigned long size);
 
 	// Static methods
 
-	// BW1W120 006345e0 BW1M100 10017240 GNetwork::ResetStateDebug(void)
+	// BW1W120 006345e0 BW1M119 01019df0
 	static void ResetStateDebug();
 
 	// Non-virtual methods
-	// BW1W120 00634640 BW1M100 1010cb00
+	// BW1W120 00634640 BW1M119 011166c0
 	LH_RETURN Open(char* name, char* application, char* channel, char* password);
 
-	// BW1W120 006360b0 BW1M100 1008e350 GNetwork::UpdateDebug(void)
+	// BW1W120 006360b0 BW1M119 01090650
 	void UpdateDebug();
 
-	// BW1W120 006349f0 BW1M100 1010bff0 GNetwork::ProcessOnePacket(void)
+	// BW1W120 006349f0 BW1M119 01115a20
 	void ProcessOnePacket();
-	// BW1W120 00635290 BW1M100 100229f0 GNetwork::ProcessOneSuperpacket(void)
+	// BW1W120 00635290 BW1M119 01025570
 	uint32_t ProcessOneSuperpacket();
 };
 

@@ -20,21 +20,21 @@ class GameOptionsRoom : public PictureRoomBase
 public:
 	// Override methods
 
-	// BW1W120 0078d8f0 BW1M100 102ffdb0 GameOptionsRoom::IsAvailable(void)
+	// BW1W120 0078d8f0 BW1M119 01301b00
 	virtual bool32_t IsAvailable();
-	// BW1W120 0079a230 BW1M100 inlined GameOptionsRoom::DrawAdditional(bool)
+	// BW1W120 0079a230 BW1M119 inlined
 	virtual void DrawAdditional(bool param_1);
-	// BW1W120 00799f80 BW1M100 inlined GameOptionsRoom::PreDraw(void)
+	// BW1W120 00799f80 BW1M119 inlined
 	virtual void PreDraw();
-	// BW1W120 0078d810 BW1M100 10300060 GameOptionsRoom::Draw(void)
+	// BW1W120 0078d810 BW1M119 01301da0
 	virtual void Draw();
-	// BW1W120 00799ed0 BW1M100 inlined GameOptionsRoom::DrawHand(void)
+	// BW1W120 00799ed0 BW1M119 inlined
 	virtual void DrawHand();
-	// BW1W120 0078d860 BW1M100 102ffe70 GameOptionsRoom::Update(void)
+	// BW1W120 0078d860 BW1M119 01301bc0
 	virtual void Update();
-	// BW1W120 0078d820 BW1M100 102fffd0 GameOptionsRoom::UpdateMouse(LHCoord, INTERFACE_MESSAGE_TYPES)
+	// BW1W120 0078d820 BW1M119 01301d20
 	virtual void UpdateMouse(LHCoord param_1, INTERFACE_MESSAGE_TYPES param_2);
-	// BW1W120 0078d840 BW1M100 102fff70 GameOptionsRoom::UpdateKeyboard(LH_KEY, unsigned short)
+	// BW1W120 0078d840 BW1M119 01301cc0
 	virtual void UpdateKeyboard(LH_KEY param_1, uint16_t param_2);
 };
 

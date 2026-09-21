@@ -10,28 +10,28 @@ struct LHPoint;
 
 struct LH3DMath
 {
-	// BW1W120 00eea394 BW1M100 101bca74
+	// BW1W120 00eea394
 	static uint8_t (*g_inverse_sqrt_lookup_table)[0x80];
 
 	// Static methods
 
-	// BW1W120 00841230 BW1M100 10061ed0 LH3DMath::Open(void)
+	// BW1W120 00841230 BW1M119 010609f0 (LHCombined Release)
 	static void Open();
-	// BW1W120 00841240 BW1M100 10061ed0 LH3DMath::Close(void)
+	// BW1W120 00841240 BW1M119 01060990 (LHCombined Release)
 	static void Close();
-	// BW1W120 008411d0 LH3DMath::MakeInverseSqrtLookupTable(void)
+	// BW1W120 008411d0 BW1M119 01060a40 (LHCombined Release)
 	static void MakeInverseSqrtLookupTable();
-	// BW1W120 00841290 LH3DMath::GetYAngle(LHPoint *)
+	// BW1W120 00841290 BW1M119 01060850 (LHCombined Release)
 	static float GetYAngle(LHPoint* point);
-	// BW1W120 00841260 LH3DMath::GetYAngle(LHPoint *, LHPoint *)
+	// BW1W120 00841260 BW1M119 01012630 (LHCombined Release)
 	static float GetYAngle(LHPoint* from, LHPoint* to);
 };
 
 // TODO: Judging by the function address, this is the wrong TU for this:
 
-// BW1W120 0074f680 BW1M100 10049670 hypotenuse(long, long)
+// BW1W120 0074f680 BW1M119 0104c020
 int __cdecl hypotenuse(int param_1, int param_2);
-// BW1W120 0074d0c0 BW1M100 1004ed4c LHArcTan(long, long)
+// BW1W120 0074d0c0 BW1M119 0102fd80 (LHCombined Release)
 long __cdecl LHArcTan(long param_1, long param_2);
 
 #endif /* BW1_DECOMP_LH3D_MATH_INCLUDED_H */

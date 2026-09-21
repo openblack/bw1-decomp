@@ -14,9 +14,11 @@ union LH3DP3Mask {
 	__m128 v;
 };
 
-// BW1W120 00fc0020  keeps w only
+// Keeps w only
+// BW1W120 00fc0020
 static const LH3DP3Mask kMaskW = {{0, 0, 0, -1}};
-// BW1W120 00fc0030  keeps x, y and w; clears z
+// Keeps x, y and w; clears z
+// BW1W120 00fc0030
 static const LH3DP3Mask kMaskXYW = {{-1, -1, 0, -1}};
 
 // = {0} rather than a bare definition: without an initialiser ICC emits these

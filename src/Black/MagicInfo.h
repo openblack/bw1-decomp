@@ -21,26 +21,26 @@ public:
 
 	// Override methods
 
-	// BW1W120 00435680 BW1M100 1018ee20 GMagicInfo::_dt(void)
+	// BW1W120 00435680 BW1M119 01197ff0
 	virtual ~GMagicInfo();
-	// BW1W120 0042d700 BW1M100 101980a0 GMagicInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0042d700 BW1M119 011a1280
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Static methods
 
-	// BW1W120 005fb3b0 BW1M100 103ae320 GMagicInfo::GetInfoFromText(char const *)
+	// BW1W120 005fb3b0 BW1M119 013b6320
 	static MAGIC_TYPE GetInfoFromText(const char* text);
 
 	// Constructors
 
-	// BW1W120 00435520 BW1M100 1018eec0 GMagicInfo::GMagicInfo(void)
+	// BW1W120 00435520 BW1M119 01198090
 	GMagicInfo();
 
 	// Non-virtual methods
 
-	// BW1W120 005fb3f0 BW1M100 103ae2c0 GMagicInfo::GetMagicInfoText(void) const
+	// BW1W120 005fb3f0 BW1M119 013b62c0
 	const char* GetMagicInfoText() const;
-	// BW1W120 005fb680 BW1M100 103adc30 GMagicInfo::GetMagicEffectInfo(void) const
+	// BW1W120 005fb680 BW1M119 013b5c30
 	GMagicEffectInfo* GetMagicEffectInfo() const;
 };
 

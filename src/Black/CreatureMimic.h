@@ -31,12 +31,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 004e9d40 BW1M100 10245ef0 CreatureMimicState::_dt(void)
+	// BW1W120 004e9d40 BW1M119 0124a7f0
 	virtual ~CreatureMimicState();
 
 	// Constructors
 
-	// BW1W120 004e9d20 BW1M100 1026fe50 CreatureMimicState::CreatureMimicState(void)
+	// BW1W120 004e9d20 BW1M119 01273cb0
 	CreatureMimicState();
 };
 

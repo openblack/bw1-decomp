@@ -88,7 +88,8 @@ public:
 	// Single-reader globals: original names/scope unknown, provisional Game association.
 	static float VideoLetterboxScale; // 00bec16c, initial 1.0f
 	static char  VideoStatistics[];   // 00cd3618, extent unknown
-	// BW1W120 00d019a9. TODO: Original static member name is unrecovered.
+	// TODO: Original static member name is unrecovered.
+	// BW1W120 00d019a9
 	static bool ScriptRebootRequested;
 	// TODO: Original names are unrecovered; shared with tutorial and packet processing.
 	// BW1W120 00d019a4
@@ -97,7 +98,8 @@ public:
 	static uint32_t StartTime;
 	// BW1W120 00d019b0
 	static uint32_t MemoryState;
-	// BW1W120 00d0197c. TODO: Descriptive name and provisional scope; no writer found in either target.
+	// TODO: Descriptive name and provisional scope; no writer found in either target.
+	// BW1W120 00d0197c
 	static uint32_t RepairMissingMothers;
 	// TODO: Descriptive names/scope for game lifecycle globals, confirmed by constructor and teardown.
 	// BW1W120 00cd3af8
@@ -115,7 +117,8 @@ public:
 	static uint32_t NetworkTurnsThisFrame;
 	// BW1W120 00bec280
 	static bool RenderLoopEnabled;
-	// BW1W120 00d01964. Descriptive name for the Windows-only line-input object.
+	// Descriptive name for the Windows-only line-input object.
+	// BW1W120 00d01964
 	static CreatureDanceLineInput* CreatureDanceLineIn;
 	// Descriptive shared lifecycle names; original spellings are unrecovered.
 	// BW1W120 00d01970
@@ -129,11 +132,14 @@ public:
 	static int LoadingFrameEnabled;
 	// BW1W120 00d0196c
 	static int FootballEnabled;
-	// BW1W120 00d01838. Extracted filename storage; full extent not established.
+	// Extracted filename storage; full extent not established.
+	// BW1W120 00d01838
 	static char LoadGameFilename[];
-	// BW1W120 00d318d4. Loading-screen video; descriptive name and provisional scope.
+	// Loading-screen video; descriptive name and provisional scope.
+	// BW1W120 00d318d4
 	static LHVideoPlayer* TipVideo;
-	// BW1W120 00bea9a0. Extracted storage; full array extent is not established.
+	// Extracted storage; full array extent is not established.
+	// BW1W120 00bea9a0
 	static uint8_t RealPlayerMap[];
 	// BW1W120 008df608
 	static char* const NetworkApplication;
@@ -266,188 +272,196 @@ public:
 
 	// Override methods
 
-	// BW1W120 0054c330 BW1M100 10496be0 GGame::Delete(void)
+	// BW1W120 0054c330 BW1M119 010e7580
 	virtual void Delete();
-	// BW1W120 0054bfd0 BW1M100 103dcca0 GGame::ToBeDeleted(int)
+	// BW1W120 0054bfd0 BW1M119 013c9a40
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00550780 BW1M100 10560930 GGame::Dump(void)
+	// BW1W120 00550780 BW1M119 010c8970
 	virtual void Dump();
-	// BW1W120 0054b9a0 BW1M100 1009d100 GGame::IsAvailable(void)
+	// BW1W120 0054b9a0 BW1M119 0109ee50
 	virtual bool32_t IsAvailable();
-	// BW1W120 0054b9c0 BW1M100 10496160 GGame::GetDebugText(void)
+	// BW1W120 0054b9c0 BW1M119 0116e6c0
 	virtual char* GetDebugText();
-	// BW1W120 00554830 BW1M100 10354cc0 GGame::Load(GameOSFile &)
+	// BW1W120 00554830 BW1M119 0154ca00
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00554090 BW1M100 104935a0 GGame::Save(GameOSFile &)
+	// BW1W120 00554090 BW1M119 01366f90
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0054b9b0 BW1M100 10512c00 GGame::GetSaveType(void)
+	// BW1W120 0054b9b0 BW1M119 01357d50
 	virtual uint32_t GetSaveType();
-	// BW1W120 00555080 BW1M100 100c76b0 GGame::ResolveLoad(void)
+	// BW1W120 00555080 BW1M119 01367ec0
 	virtual void ResolveLoad();
 
 	// Static methods
 
-	// BW1W120 0054cbd0 BW1M100 101584c0 GGame::DoYesNoSkipTutorialRequestersIfNecessary(void)
+	// BW1W120 0054cbd0 BW1M119 010cca10
 	static void DoYesNoSkipTutorialRequestersIfNecessary();
 
 	// Constructors
 
-	// BW1W120 0054b240 BW1M100 104fda10 GGame::GGame(void)
+	// BW1W120 0054b240 BW1M119 010ccb00
 	GGame();
-	// BW1W120 0054bba0 (scalar deleting destructor)
+	// (scalar deleting destructor)
 	// Allocated resources are owned by ToBeDeleted; only embedded members are destroyed here.
+	// BW1W120 0054bba0
 	virtual ~GGame() {}
 
 	// Non-virtual methods
 
-	// BW1W120 00510630 BW1M100 100c09f0 GGame::SetupDataTables(void)
+	// BW1W120 00510630 BW1M119 010c3ef0
 	void SetupDataTables();
-	// BW1W120 0054bf20 BW1M100 104eff40 GGame::ClearVariables(void)
+	// BW1W120 0054bf20 BW1M119 0111c2b0
 	void ClearVariables();
-	// BW1W120 0054ec80 BW1M100 105b94a0 GGame::Close(void)
+	// BW1W120 0054ec80 BW1M119 013bd6a0
 	// Both targets return 1 in the full result register; original Boolean spelling is unknown.
 	bool32_t Close();
-	// BW1W120 005557a0 BW1M100 101bf310 GGame::ResetState(void)
+	// BW1W120 005557a0 BW1M119 010cc4c0
 	void ResetState();
-	// BW1W120 0054c180 BW1M100 1003a410 GGame::GetCamera(void)
+	// BW1W120 0054c180 BW1M119 0103cd90
 	GCamera* GetCamera();
-	// BW1W120 0054c190 BW1M100 101c8360 GGame::StartGame(void)
+	// BW1W120 0054c190 BW1M119 010e7270
 	void StartGame();
-	// BW1W120 0054c340 BW1M100 10079850 GGame::ProcessFrameInputs(void)
+	// BW1W120 0054c340 BW1M119 0107be10
 	void ProcessFrameInputs();
-	// BW1W120 0054c3d0 BW1M100 1001e260 GGame::ProcessGameInputs(void)
+	// BW1W120 0054c3d0 BW1M119 01020dd0
 	void ProcessGameInputs();
-	// BW1W120 0054c420 BW1M100 10083f50 GGame::ProcessBufferedKeys(void)
+	// BW1W120 0054c420 BW1M119 01086330
 	void ProcessBufferedKeys();
-	// BW1W120 0054c4a0 BW1M100 10029760 GGame::LocalTimerSaysDoATurn(void)
+	// BW1W120 0054c4a0 BW1M119 0102c2e0
 	bool32_t LocalTimerSaysDoATurn();
-	// BW1W120 0054cc30 BW1M100 10029320 GGame::ProcessNetworkPackets(void)
+	// BW1W120 0054cc30 BW1M119 0102be90
 	void ProcessNetworkPackets();
-	// BW1W120 0054ced0 BW1M100 100dc070 GGame::DoNetworkStart(void)
+	// BW1W120 0054ced0 BW1M119 0149e1d0
 	void DoNetworkStart();
-	// BW1W120 0054cf20 BW1M100 100e23b0 GGame::Loop(void)
+	// BW1W120 0054cf20 BW1M119 01106610
 	void Loop();
-	// BW1W120 0054d800 BW1M100 1048f9d0 GGame::FlipScreen(void)
+	// BW1W120 0054d800 BW1M119 010e5f60
 	void FlipScreen();
-	// BW1W120 0054d7f0. Original name unrecovered; increments rendered-frame count.
+	// Original name unrecovered; increments rendered-frame count.
+	// BW1W120 0054d7f0
 	void fn_0054D7F0();
-	// BW1W120 00555400. Original name unrecovered; selects online game mode.
+	// Original name unrecovered; selects online game mode.
+	// BW1W120 00555400
 	void fn_00555400();
-	// BW1W120 005525e0. Original name unrecovered; flushes packed network data.
+	// Original name unrecovered; flushes packed network data.
+	// BW1W120 005525e0
 	void fn_005525E0();
-	// BW1W120 0054d620 BW1M100 1001e2f0 GGame::ProcessOneGameTurn(void)
+	// BW1W120 0054d620 BW1M119 01020e60
 	void ProcessOneGameTurn();
-	// BW1W120 0054d820 BW1M100 10083dd0 GGame::ProcessGameCode(void)
+	// BW1W120 0054d820 BW1M119 010861b0
 	void ProcessGameCode();
-	// BW1W120 0054d850 BW1M100 10079980 GGame::ProcessGraphicsEngine(unsigned long, unsigned long)
+	// BW1W120 0054d850 BW1M119 0107bf40
 	void ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2);
-	// BW1W120 0054da80 BW1M100 10033dd0 GGame::Process3dEngine(void)
+	// BW1W120 0054da80 BW1M119 01036750
 	void Process3dEngine();
-	void FinishedVideo();        // 0054d8d0 BW1M100 1037cbd0
-	void Draw();                 // 005533b0 BW1M100 100140b0
-	void fn_00553A60();          // 00553a60, original helper name unknown
-	void EndFallingSpellVideo(); // 00553a10 BW1M100 100d45b0
-	// BW1W120 0054e4f0 BW1M100 10083c70 GGame::StartTurn(void)
+	// BW1W120 0054d8d0 BW1M119 0117c3a0
+	void FinishedVideo();
+	// BW1W120 005533b0 BW1M119 01016c50
+	void Draw();
+	void fn_00553A60(); // 00553a60, original helper name unknown
+	// BW1W120 00553a10 BW1M119 0159ec40
+	void EndFallingSpellVideo();
+	// BW1W120 0054e4f0 BW1M119 01086050
 	void StartTurn();
-	// BW1W120 0054e5c0 BW1M100 100665c0 GGame::ProcessTurn(void)
+	// BW1W120 0054e5c0 BW1M119 01068d80
 	void ProcessTurn();
-	// BW1W120 0054e960 BW1M100 10070430 GGame::EndTurn(void)
+	// BW1W120 0054e960 BW1M119 01072bb0
 	void EndTurn();
-	// BW1W120 0054ef40 BW1M100 10514230 GGame::InitOneTimeOnly(void)
+	// BW1W120 0054ef40 BW1M119 0117b9a0
 	uint32_t InitOneTimeOnly();
-	// BW1W120 0054f3b0 BW1M100 101b9770 GGame::Init(void)
+	// BW1W120 0054f3b0 BW1M119 014e1990
 	// 0054f421 is a continuation in this function's exception frame, not another entry.
 	bool32_t Init();
-	// BW1W120 005550f0
+	// BW1W120 005550f0 BW1M119 013ecea0
 	void ReadRegistrySettings();
-	// BW1W120 00555a80 BW1M100 1057af10
+	// BW1W120 00555a80 BW1M119 013ca140
 	void SetUnusedCitadelComputerPlayers();
-	// BW1W120 00550ba0 BW1M100 103dd850
+	// BW1W120 00550ba0 BW1M119 0142e3c0
 	void SetPacket(PACKET_TYPE type, short x, short z, long value);
-	// BW1W120 0054ff80 BW1M100 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
+	// BW1W120 0054ff80 BW1M119 010a2a00
 	static void KeyHandler(unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4,
 	                       void* param_5);
-	// BW1W120 0054ffe0 BW1M100 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
+	// BW1W120 0054ffe0 BW1M119 0109a1f0
 	static uint32_t MouseHandler(void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3,
 	                             unsigned long param_4);
-	// BW1W120 00550080 BW1M100 101c6850 GGame::UnfinishInitialisation(void)
+	// BW1W120 00550080 BW1M119 0149ac40
 	void UnfinishInitialisation();
-	// BW1W120 00550110 BW1M100 10505500 GGame::FinishInitialisation(void)
+	// BW1W120 00550110 BW1M119 010d8f80
 	void FinishInitialisation();
-	// BW1W120 00550170 BW1M100 inlined GGame::CreateMeshPack(void)
+	// BW1W120 00550170 BW1M119 inlined
 	static void CreateMeshPack();
-	// BW1W120 00550390 BW1M100 10427340 GGame::LoadFiles(void)
+	// BW1W120 00550390 BW1M119 01509420
 	bool32_t LoadFiles();
-	// BW1W120 00550410 BW1M100 1054a080 GGame::SetupPlayers(void)
+	// BW1W120 00550410 BW1M119 01567850
 	void SetupPlayers();
-	// BW1W120 005507d0 BW1M100 inlined GGame::LoopThroughPlayers(void)
+	// BW1W120 005507d0 BW1M119 inlined
 	void LoopThroughPlayers();
-	// BW1W120 005507f0 BW1M100 10506220 GGame::Birthday(void)
+	// BW1W120 005507f0 BW1M119 010c8560
 	void Birthday();
-	// BW1W120 00550820 BW1M100 inlined GGame::MyPlayerID(unsigned long)
+	// BW1W120 00550820 BW1M119 inlined
 	int MyPlayerID(unsigned long param_1);
-	// BW1W120 005508a0 BW1M100 10064420 GGame::GetNextPlayer(GPlayer *)
+	// BW1W120 005508a0 BW1M119 01066be0
 	GPlayer* GetNextPlayer(GPlayer* player);
-	// BW1W120 005508d0 BW1M100 100c0950 GGame::GetNextActivePlayer(GPlayer *)
+	// BW1W120 005508d0 BW1M119 014ffa10
 	GPlayer* GetNextActivePlayer(GPlayer* player);
-	// BW1W120 00550930 BW1M100 10095d40 GGame::GetNextActivePlayerAndNeutral(GPlayer *)
+	// BW1W120 00550930 BW1M119 01097c90
 	GPlayer* GetNextActivePlayerAndNeutral(GPlayer* player);
-	// BW1W120 00550980 BW1M100 1005c2a0 GGame::GetNextPlayerAndNeutral(GPlayer *)
+	// BW1W120 00550980 BW1M119 0105ef60
 	GPlayer* GetNextPlayerAndNeutral(GPlayer* player);
-	// BW1W120 005509b0 BW1M100 100586e0 GGame::GetPlayer(unsigned long)
+	// BW1W120 005509b0 BW1M119 0105b3b0
 	GPlayer* GetPlayer(uint32_t player_index);
-	// BW1W120 005509e0 BW1M100 1000be00 GGame::GetPlayerFromReal(unsigned long)
+	// BW1W120 005509e0 BW1M119 0100e8b0
 	GPlayer* GetPlayerFromReal(unsigned long param_1);
-	// BW1W120 00550a10 BW1M100 inlined GGame::GetPlayerInterfaceFromReal(unsigned long)
+	// BW1W120 00550a10 BW1M119 inlined
 	GInterface* GetPlayerInterfaceFromReal(unsigned long param_1);
-	// BW1W120 00550a30 BW1M100 inlined GGame::GetNextPlayerWithNoCreature(GPlayer *)
+	// BW1W120 00550a30 BW1M119 inlined
 	// TODO: Windows takes no argument; recover the original Mac signature before implementing.
 	GPlayer* GetNextPlayerWithNoCreature(GPlayer* param_1);
-	// BW1W120 00550a60 BW1M100 inlined GGame::GetPlayer(PLAYER_NAME)
+	// BW1W120 00550a60 BW1M119 inlined
 	GPlayer* GetPlayer(PLAYER_NAME player_name);
-	// BW1W120 00550dd0 BW1M100 1055efd0 GGame::SetPacket(PACKET_TYPE)
+	// BW1W120 00550dd0 BW1M119 0157b2a0
 	void SetPacket(PACKET_TYPE type);
-	// BW1W120 00551690 BW1M100 10008870 GGame::SendPacketCompressed(PACKET_TYPE, SETPACKET_FUNCTION_NUMBER)
+	// BW1W120 00551690 BW1M119 010086d0
 	void SendPacketCompressed(PACKET_TYPE type, SETPACKET_FUNCTION_NUMBER function_number);
-	// BW1W120 00552620 BW1M100 1005cfb0 GGame::GetTribe(TRIBE_TYPE)
+	// BW1W120 00552620 BW1M119 0105fc60
 	GTribeInfo* GetTribe(TRIBE_TYPE type);
-	// BW1W120 00552640 BW1M100 10073d30 GGame::AddPlayerSparkles(void)
+	// BW1W120 00552640 BW1M119 010764a0
 	void AddPlayerSparkles();
-	// BW1W120 00552bb0 BW1M100 10424170 GGame::ClearMap(void)
+	// BW1W120 00552bb0 BW1M119 01172c70
 	void ClearMap();
-	// BW1W120 00552f40 BW1M100 1056f520 GGame::StartPlaygroundGame(char *)
+	// BW1W120 00552f40 BW1M119 01115890
 	void StartPlaygroundGame(char* map_path);
-	// BW1W120 00552f80 BW1M100 100369c0 GGame::IsMultiplayerGame(void) const
+	// BW1W120 00552f80 BW1M119 01039330
 	bool32_t IsMultiplayerGame() const;
-	// BW1W120 00552fa0 BW1M100 10423f90 GGame::FindTownWithID(unsigned long)
+	// BW1W120 00552fa0 BW1M119 010adff0
 	Town* FindTownWithID(unsigned long id);
-	// BW1W120 005538e0 BW1M100 10166f50 GGame::OnNewGame(void)
+	// BW1W120 005538e0 BW1M119 010e8430
 	void OnNewGame();
-	// BW1W120 005537f0 BW1M100 1035f700 GGame::SetSpeed(float)
+	// BW1W120 005537f0 BW1M119 01367db0
 	void SetSpeed(float speed);
-	// BW1W120 00555280 BW1M100 1008f570 GGame::Update3DInfluence(void)
+	// BW1W120 00555280 BW1M119 01091800
 	void Update3DInfluence();
-	// BW1W120 00555270 BW1M100 10173ff0 GGame::ForceNeedUpdateInfluence(void)
+	// BW1W120 00555270 BW1M119 0151aec0
 	void ForceNeedUpdateInfluence();
-	// BW1W120 00555850 BW1M100 10051560 GGame::MyInterface(void)
+	// BW1W120 00555850 BW1M119 01053ef0
 	GInterface* MyInterface();
-	// BW1W120 00555880 BW1M100 1005fec0 GGame::MyInterfaceStatus(void)
+	// BW1W120 00555880 BW1M119 01062630
 	GInterfaceStatus* MyInterfaceStatus();
-	// BW1W120 00555890 BW1M100 105996f0 GGame::SetLandBalance(unsigned long, float, GPlayer *)
+	// BW1W120 00555890 BW1M119 0117d380
 	void SetLandBalance(int index, float balance, GPlayer* player);
-	// BW1W120 00555990 BW1M100 inlined GGame::ResetAndStartPlaygroundGame(char *)
+	// BW1W120 00555990 BW1M119 inlined
 	void ResetAndStartPlaygroundGame(char* path);
-	// BW1W120 0063c3d0 BW1M100 1001e1e0 GGame::ProcessOneSuperpacket(void)
+	// BW1W120 0063c3d0 BW1M119 01020d50
 	void ProcessOneSuperpacket();
-	// BW1W120 0063ef20 BW1M100 103db300 GGame::ProcessKey(LH_KEY, unsigned short)
+	// BW1W120 0063ef20 BW1M119 013e32d0
 	void ProcessKey(LH_KEY key, unsigned short modifier);
-	// BW1W120 0063f710 BW1M100 100283d0 GGame::ProcessMapKeys(void)
+	// BW1W120 0063f710 BW1M119 0102af40
 	void ProcessMapKeys();
-	// BW1W120 005557d0. TODO: Original name unknown; callers supply this, callee selects LHInetWeather singleton.
+	// TODO: Original name unknown; callers supply this, callee selects LHInetWeather singleton.
+	// BW1W120 005557d0
 	void fn_005557D0();
-	// BW1W120 0063f830 BW1M100 1009f340 GGame::ProcessBindableKeys(LH_KEY, LH_KEY, unsigned long)
+	// BW1W120 0063f830 BW1M119 010a1090
 	uint32_t ProcessBindableKeys(LH_KEY param_1, LH_KEY param_2, unsigned long param_3);
-	// BW1W120 0063f940 BW1M100 1009f4b0 GGame::DoAction(unsigned long)
+	// BW1W120 0063f940 BW1M119 010a1200
 	uint32_t DoAction(unsigned long param_1);
 };
 

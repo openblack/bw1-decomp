@@ -26,7 +26,7 @@ class CPDesireNodeInfo
 public:
 	// Override methods
 
-	// BW1W120 00655b70 BW1M100 104ab970 CPDesireNodeInfo::GetNumChildren(void)
+	// BW1W120 00655b70 BW1M119 014b2f20
 	virtual int GetNumChildren();
 };
 
@@ -53,9 +53,9 @@ public:
 
 	// Override methods
 
-	// BW1W120 0054be50 BW1M100 104e7bd0 GPlayerInfo::_dt(void)
+	// BW1W120 0054be50 BW1M119 014fc8b0
 	virtual ~GPlayerInfo() {}
-	// BW1W120 0054b830 BW1M100 1058eb00 GPlayerInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0054b830 BW1M119 014ef3b0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
@@ -65,7 +65,7 @@ struct PlayerInfo
 
 	// Constructors
 
-	// BW1W120 00648d50 BW1M100 10375150 PlayerInfo::PlayerInfo(void)
+	// BW1W120 00648d50 BW1M119 0137cfa0
 	PlayerInfo();
 };
 

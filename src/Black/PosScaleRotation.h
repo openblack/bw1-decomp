@@ -6,7 +6,7 @@
 #include <Lionhead/LH3DLib/development/LHMatrix.h>
 
 // UR_Trail at 006a4280 copies AtomCore's position, scale and orientation here.
-// BW1M100 10418080 initializes the matrix to identity; 10439d90 interpolates it.
+// On Mac, BW1M119 01421090 initializes the matrix to identity; 01442c24 interpolates it.
 // fabricated class tag: the nonpolymorphic Mac symbols do not distinguish class/struct.
 class PosScaleRotation
 {

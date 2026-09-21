@@ -15,7 +15,7 @@ class GMagicResourceInfo : public GMagicObjectInfo
 public:
 	// Override methods
 
-	// BW1W120 00435700 BW1M100 103ac8f0 GMagicResourceInfo::_dt(void)
+	// BW1W120 00435700 BW1M119 013b47c0
 	virtual ~GMagicResourceInfo();
 };
 

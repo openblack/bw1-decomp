@@ -21,7 +21,7 @@ public:
 	// BW1W120 00d01a98
 	static uint32_t ReadIndex;
 
-	// BW1W120 005586c0 BW1M100 1030f570 PhysicsSaveInfo::ReadInfo(GameOSFile &)
+	// BW1W120 005586c0 BW1M119 01311ec0
 	static void ReadInfo(GameOSFile& file);
 };
 

@@ -10,7 +10,7 @@ class MPFEChangeClanRequest : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 0062c160 BW1M100 10397200 MPFEChangeClanRequest::_dt(void)
+	// BW1W120 0062c160 BW1M119 0139ebe0
 	virtual ~MPFEChangeClanRequest();
 };
 

@@ -43,7 +43,7 @@ void __stdcall D3DSetup(long value);                 // 0x007DED40 empty stub in
 // instantiations (see LoadOneLine). TODO: fabricated name.
 static char LastLineParsed[512] = "no line parsed yet";
 
-// BW1W120 00c343c0 LHScriptX<c>::Commands
+// BW1W120 00c343c0 BW1M119 011dbaa4 (LHCombined Release)
 LHScriptCommandX<char> LHScriptX<char>::Commands[] = {
 	{"OPEN_SCREEN", "NNNN    "},
 	{"BUILD_ALL_MNT_TEXTURE", "N       "},
@@ -78,7 +78,7 @@ LHScriptCommandX<char> LHScriptX<char>::Commands[] = {
 	{NULL, ""},
 };
 
-// BW1W120 00c345b0 LHScriptX<w>::Commands
+// BW1W120 00c345b0 BW1M119 011dbc94 (LHCombined Release)
 LHScriptCommandX<wchar_t> LHScriptX<wchar_t>::Commands[] = {
 	{L"OPEN_SCREEN", "NNNN    "},
 	{L"BUILD_ALL_MNT_TEXTURE", "N       "},
@@ -113,24 +113,24 @@ LHScriptCommandX<wchar_t> LHScriptX<wchar_t>::Commands[] = {
 	{NULL, ""},
 };
 
-// BW1W120 00c347a0 LHScriptX<c>::Conditions
+// BW1W120 00c347a0 BW1M119 011dbe84 (LHCombined Release)
 char* LHScriptX<char>::Conditions[] = {"MAX_DEPTH", "LH_OK", "LH_FAIL", "LH_ERROR", "LH_NO_MEMORY", NULL};
 
-// BW1W120 00c347b8 LHScriptX<w>::Conditions
+// BW1W120 00c347b8 BW1M119 011dbe9c (LHCombined Release)
 wchar_t* LHScriptX<wchar_t>::Conditions[] = {L"MAX_DEPTH", L"LH_OK", L"LH_FAIL", L"LH_ERROR", L"LH_NO_MEMORY", NULL};
 
-// BW1W120 00c347d0 LHScriptX<c>::NamesToCondition
+// BW1W120 00c347d0 BW1M119 011dbeb4 (LHCombined Release)
 char* LHScriptX<char>::NamesToCondition[] = {"=", "==", "<>", "!=", "<", ">", "<=", ">=", NULL};
 
-// BW1W120 00c347f4 LHScriptX<w>::NamesToCondition
+// BW1W120 00c347f4 BW1M119 011dbed8 (LHCombined Release)
 wchar_t* LHScriptX<wchar_t>::NamesToCondition[] = {L"=", L"==", L"<>", L"!=", L"<", L">", L"<=", L">=", NULL};
 
-// BW1W120 00fadce0 LHScriptX<w>::Pram
+// BW1W120 00fadce0
 LHScriptPramX<wchar_t> LHScriptX<wchar_t>::Pram;
-// BW1W120 00fb9d40 LHScriptX<c>::Pram
+// BW1W120 00fb9d40
 LHScriptPramX<char> LHScriptX<char>::Pram;
 
-// BW1W120 007e7380 BW1M100 1061e4c8 LHScriptX<c>::Load(char*, long*)
+// BW1W120 007e7380 BW1M119 011531f0 (LHCombined Release)
 template <class T> LH_RETURN LHScriptX<T>::Load(char* file_name, long* param_2)
 {
 	DestroyVariables();
@@ -142,7 +142,7 @@ template <class T> LH_RETURN LHScriptX<T>::Load(char* file_name, long* param_2)
 	return result;
 }
 
-// BW1W120 007e72c0 BW1M100 1061e38c LHScriptX<c>::Load(char*, LHScriptCommandX<c>*, LH_RETURN (*)(long, LHScriptPramX<c>*), long*)
+// BW1W120 007e72c0 BW1M119 01152e90 (LHCombined Release)
 template <class T>
 LH_RETURN LHScriptX<T>::Load(char* file_name, LHScriptCommandX<T>*                                new_commands,
                              LH_RETURN(__cdecl* command_callback)(long, LHScriptPramX<T>*), long* param_4)
@@ -157,7 +157,7 @@ LH_RETURN LHScriptX<T>::Load(char* file_name, LHScriptCommandX<T>*              
 	return result;
 }
 
-// BW1W120 007e7260 LHScriptX<c>::Load(char*, char**, LH_RETURN (*)(long, long*), long*)
+// BW1W120 007e7260 BW1M119 01152d10 (LHCombined Release)
 template <class T>
 LH_RETURN LHScriptX<T>::Load(char* file_name, T** condition_names, LH_RETURN(__cdecl* condition_callback)(long, long*),
                              long* param_4)
@@ -172,7 +172,7 @@ LH_RETURN LHScriptX<T>::Load(char* file_name, T** condition_names, LH_RETURN(__c
 	return result;
 }
 
-// BW1W120 007e7320 LHScriptX<c>::Load(char*, LHScriptCommandX<c>*, LH_RETURN (*)(long, LHScriptPramX<c>*), char**, LH_RETURN (*)(long, long*), long*)
+// BW1W120 007e7320 BW1M119 01153030 (LHCombined Release)
 template <class T>
 LH_RETURN LHScriptX<T>::Load(char* file_name, LHScriptCommandX<T>*                              new_commands,
                              LH_RETURN(__cdecl* command_callback)(long, LHScriptPramX<T>*), T** condition_names,
@@ -189,7 +189,7 @@ LH_RETURN LHScriptX<T>::Load(char* file_name, LHScriptCommandX<T>*              
 	return result;
 }
 
-// BW1W120 007e73d0 LHScriptX<c>::SetVariables(LHScriptCommandX<c>*, LH_RETURN (*)(long, LHScriptPramX<c>*), long*)
+// BW1W120 007e73d0 BW1M119 01152c40 (LHCombined Release)
 template <class T>
 LH_RETURN LHScriptX<T>::SetVariables(LHScriptCommandX<T>* new_commands,
                                      LH_RETURN(__cdecl* command_callback)(long, LHScriptPramX<T>*), long* param_3)
@@ -203,7 +203,7 @@ LH_RETURN LHScriptX<T>::SetVariables(LHScriptCommandX<T>* new_commands,
 	return LH_OK;
 }
 
-// BW1W120 007e8240 LHScriptX<c>::ProcessCommand(long, LHScriptPramX<c>*)
+// BW1W120 007e8240 BW1M119 01151940 (LHCombined Release)
 // Dispatches the built-in front-end setup command set; indices <= 0 are
 // forwarded to the host command callback as command -1 - index.
 template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScriptPramX<T>* pram)
@@ -364,7 +364,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 	return commandCallback(-1 - command, pram);
 }
 
-// BW1W120 007e7fb0 LHScriptCommandX<c>::GetCommandAsText(char*)
+// BW1W120 007e7fb0 BW1M119 01152920 (LHCombined Release)
 // Renders "NAME(%d, %s, ...)\n" style prototype text for this command.
 template <class T> T* LHScriptCommandX<T>::GetCommandAsText(T* text)
 {
@@ -395,10 +395,10 @@ template <class T> T* LHScriptCommandX<T>::GetCommandAsText(T* text)
 	return text;
 }
 
-// BW1W120 007e9ad0 LHScriptX<c>::PostFileOpenStuff(LHReleasedOSFile&)
+// BW1W120 007e9ad0 BW1M119 011c98f8 (LHCombined Release)
 void LHScriptX<char>::PostFileOpenStuff(LHOSFile& file) {}
 
-// BW1W120 007e6b40 LHScriptX<w>::PostFileOpenStuff(LHReleasedOSFile&)
+// BW1W120 007e6b40 BW1M119 0114fc00 (LHCombined Release)
 // Reads and discards the UTF-16 byte-order mark at the head of the file.
 void LHScriptX<wchar_t>::PostFileOpenStuff(LHOSFile& file)
 {
@@ -407,7 +407,7 @@ void LHScriptX<wchar_t>::PostFileOpenStuff(LHOSFile& file)
 	file.Read(&byteOrderMark, 2, &bytesRead);
 }
 
-// BW1W120 007e8170 BW1M100 10153040 LHScriptX<c>::LoadFile(char*, long*)
+// BW1W120 007e8170 BW1M119 01154080 (LHCombined Release)
 template <class T> LH_RETURN LHScriptX<T>::LoadFile(char* file_name, long* param_2)
 {
 	LHReleasedOSFile file;
@@ -425,7 +425,7 @@ template <class T> LH_RETURN LHScriptX<T>::LoadFile(char* file_name, long* param
 	return LH_OK;
 }
 
-// BW1W120 007e7400 BW1M100 1061cd3c LHScriptX<c>::LoadOneLine(LHReleasedOSFile&, char*)
+// BW1W120 007e7400 BW1M119 01152ac0 (LHCombined Release)
 // Reads one '\n'-terminated line character by character, then ScanLine()s it.
 // Returns false at end of file or on error.
 template <class T> bool LHScriptX<T>::LoadOneLine(LHOSFile& file, T* line)
@@ -466,7 +466,7 @@ template <class T> bool LHScriptX<T>::LoadOneLine(LHOSFile& file, T* line)
 	return result == LH_OK;
 }
 
-// BW1W120 007e74c0 LHScriptX<c>::DontProcessNumLines(LHReleasedOSFile&, char*, unsigned long)
+// BW1W120 007e74c0 BW1M119 01151360 (LHCombined Release)
 // Skips num_lines '\n'-terminated lines without processing them.
 template <class T> bool LHScriptX<T>::DontProcessNumLines(LHOSFile& file, T* line, unsigned long num_lines)
 {
@@ -488,13 +488,13 @@ template <class T> bool LHScriptX<T>::DontProcessNumLines(LHOSFile& file, T* lin
 	return result == LH_OK;
 }
 
-// BW1W120 007e7530 LHScriptX<c>::InitIfLevel(void)
+// BW1W120 007e7530 BW1M119 01151460 (LHCombined Release)
 template <class T> void LHScriptX<T>::InitIfLevel()
 {
 	ifLevel = -1;
 }
 
-// BW1W120 007e7540 BW1M100 10150830 LHScriptX<c>::ScanLine(char*)
+// BW1W120 007e7540 BW1M119 011514a0 (LHCombined Release)
 // Core per-line tokeniser/executor: reads words with GetNextWord, handles
 // IF/ENDIF/REM and variable assignment, parses command arguments into Pram
 // per the command's parameter type string, and dispatches ProcessCommand.
@@ -645,7 +645,7 @@ template <class T> LH_RETURN LHScriptX<T>::ScanLine(T* line)
 	}
 }
 
-// BW1W120 007e8a90 LHScriptX<c>::GetNextWord(char**, char*, unsigned char*)
+// BW1W120 007e8a90 BW1M119 01151f20 (LHCombined Release)
 // Extracts the next word/quoted string/operator token, upper-casing bare
 // words, and classifies it: 1..30 = built-in Commands index + 1,
 // -1 - index = host command table index, 30 = existing variable, 0 = none.
@@ -748,7 +748,7 @@ template <class T> long LHScriptX<T>::GetNextWord(T** cursor, T* word, unsigned 
 	return 30;
 }
 
-// BW1W120 007e8cb0 BW1M100 101533a0 LHScriptX<c>::DestroyVariables(void)
+// BW1W120 007e8cb0 BW1M119 011543d0 (LHCombined Release)
 template <class T> void LHScriptX<T>::DestroyVariables()
 {
 	LHScriptVariable<T>* variable = variables;
@@ -774,7 +774,7 @@ template <class T> void LHScriptX<T>::DestroyVariables()
 	variables = NULL;
 }
 
-// BW1W120 007e8d10 LHScriptX<c>::FindVariable(char*)
+// BW1W120 007e8d10 BW1M119 011526d0 (LHCombined Release)
 template <class T> LHScriptVariable<T>* LHScriptX<T>::FindVariable(T* name)
 {
 	LHScriptVariable<T>* variable;
@@ -796,7 +796,7 @@ fail:
 	return NULL;
 }
 
-// BW1W120 007e9910 LHScriptX<c>::CommandIf(char*, char*, char*)
+// BW1W120 007e9910 BW1M119 01152310 (LHCombined Release)
 // Evaluates "value1 <condition> value2" and pushes the result on the if stack.
 template <class T> LH_RETURN LHScriptX<T>::CommandIf(T* value1, T* condition, T* value2)
 {
@@ -830,7 +830,7 @@ template <class T> LH_RETURN LHScriptX<T>::CommandIf(T* value1, T* condition, T*
 	return LH_OK;
 }
 
-// BW1W120 007e9a10 LHScriptX<c>::CreateVariable(long, LHScriptPramX<c>*)
+// BW1W120 007e9a10 BW1M119 01152570 (LHCombined Release)
 // command 23 = SLONG (number), 24 = FLOAT, 25 = CBYTE (string).
 template <class T> LH_RETURN LHScriptX<T>::CreateVariable(long command, LHScriptPramX<T>* pram)
 {
@@ -867,7 +867,7 @@ template <class T> LH_RETURN LHScriptX<T>::CreateVariable(long command, LHScript
 	return LH_ERROR;
 }
 
-// BW1W120 007e9ca0 LHScriptX<c>::GetConditionValue(char*, long*)
+// BW1W120 007e9ca0 BW1M119 01154220 (LHCombined Release)
 // Resolves a condition operand: numeric literal, built-in condition name,
 // or a host condition resolved through the condition callback.
 template <class T> LH_RETURN LHScriptX<T>::GetConditionValue(T* name, long* value)
@@ -933,7 +933,7 @@ fail:
 	return LH_ERROR;
 }
 
-// BW1W120 007e9e00 LHScriptX<c>::GetConditionState(long, unsigned char, long)
+// BW1W120 007e9e00 BW1M119 01152450 (LHCombined Release)
 // Applies the comparison operator (index into NamesToCondition).
 template <class T> char LHScriptX<T>::GetConditionState(long value1, unsigned char condition, long value2)
 {
@@ -958,7 +958,7 @@ template <class T> char LHScriptX<T>::GetConditionState(long value1, unsigned ch
 	}
 }
 
-// BW1W120 007e6b70 bodge_to_force_compilation_of_versions(void)
+// BW1W120 007e6b70
 // Forces the compiler to instantiate every member of both template versions.
 void bodge_to_force_compilation_of_versions()
 {

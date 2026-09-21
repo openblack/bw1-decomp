@@ -17,13 +17,13 @@ class Sheep : public Cow
 public:
 	// Override methods
 
-	// BW1W120 0041d550 BW1M100 10120ff0 Sheep::_dt(void)
+	// BW1W120 0041d550 BW1M119 0112a220
 	virtual ~Sheep();
-	// BW1W120 0041d540 BW1M100 101711d0 Sheep::GetDebugText(void)
+	// BW1W120 0041d540 BW1M119 0117a1f0
 	virtual char* GetDebugText();
-	// BW1W120 0041d530 BW1M100 101711a0 Sheep::GetSaveType(void)
+	// BW1W120 0041d530 BW1M119 0117a1c0
 	virtual uint32_t GetSaveType();
-	// BW1W120 0041c8e0 BW1M100 100a0150 Sheep::StandAnimation(void)
+	// BW1W120 0041c8e0 BW1M119 010a1ec0
 	virtual uint32_t StandAnimation();
 };
 

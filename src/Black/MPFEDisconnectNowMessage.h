@@ -10,7 +10,7 @@ class MPFEDisconnectNowMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 006302c0 BW1M100 10393c20 MPFEDisconnectNowMessage::_dt(void)
+	// BW1W120 006302c0 BW1M119 0139b550
 	virtual ~MPFEDisconnectNowMessage();
 };
 

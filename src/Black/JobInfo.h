@@ -15,14 +15,14 @@ class GJobInfo : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 005e1720 BW1M100 100fe5c0 GJobInfo::_dt(void)
+	// BW1W120 005e1720 BW1M119 011082e0
 	virtual ~GJobInfo();
-	// BW1W120 005e16c0 BW1M100 100fe6d0 GJobInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 005e16c0 BW1M119 011083e0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
 	// Non-virtual methods
 
-	// BW1W120 005e1740 BW1M100 100fe450 GJobInfo::GetJobActivity(void) const
+	// BW1W120 005e1740 BW1M119 01108170
 	uint32_t GetJobActivity() const;
 };
 

@@ -18,7 +18,7 @@ struct CreatureInterestingThingToLookAt
 
 	// Constructors
 
-	// BW1W120 004d1b90 BW1M100 10242e40 CreatureInterestingThingToLookAt::CreatureInterestingThingToLookAt(void)
+	// BW1W120 004d1b90 BW1M119 01247730
 	CreatureInterestingThingToLookAt();
 };
 
@@ -37,7 +37,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d0370 BW1M100 10245880 CreatureVisionState::_dt(void)
+	// BW1W120 004d0370 BW1M119 0124a180
 	virtual ~CreatureVisionState();
 };
 

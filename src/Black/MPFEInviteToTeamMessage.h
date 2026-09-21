@@ -10,7 +10,7 @@ class MPFEInviteToTeamMessage : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00627410 BW1M100 103977c0 MPFEInviteToTeamMessage::_dt(void)
+	// BW1W120 00627410 BW1M119 0139f1a0
 	virtual ~MPFEInviteToTeamMessage();
 };
 

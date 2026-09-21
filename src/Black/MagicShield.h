@@ -22,33 +22,33 @@ class MagicShield : public MapShield
 public:
 	// Override methods
 
-	// BW1W120 0072c230 BW1M100 105340b0 MagicShield::_dt(void)
+	// BW1W120 0072c230 BW1M119 0153cb90
 	virtual ~MagicShield();
-	// BW1W120 0072c220 BW1M100 10534190 MagicShield::GetDebugText(void)
+	// BW1W120 0072c220 BW1M119 0153cc70
 	virtual char* GetDebugText();
-	// BW1W120 0072c3d0 BW1M100 10531080 MagicShield::Load(GameOSFile &)
+	// BW1W120 0072c3d0 BW1M119 015398e0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0072c3f0 BW1M100 10531020 MagicShield::Save(GameOSFile &)
+	// BW1W120 0072c3f0 BW1M119 01539880
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0072c210 BW1M100 10534150 MagicShield::GetSaveType(void)
+	// BW1W120 0072c210 BW1M119 0153cc30
 	virtual uint32_t GetSaveType();
-	// BW1W120 0072c300 BW1M100 10531370 MagicShield::Draw(void)
+	// BW1W120 0072c300 BW1M119 01539bd0
 	virtual void Draw();
-	// BW1W120 0072c2a0 BW1M100 10531420 MagicShield::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 0072c2a0 BW1M119 01539c80
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 0072c340 BW1M100 10531220 MagicShield::Get3DType(void)
+	// BW1W120 0072c340 BW1M119 01539a80
 	virtual LH3DObject::ObjectType Get3DType();
-	// BW1W120 0072c320 BW1M100 105312c0 MagicShield::SetDying(void)
+	// BW1W120 0072c320 BW1M119 01539b20
 	virtual bool32_t SetDying();
-	// BW1W120 0072c310 BW1M100 10531320 MagicShield::IsEffectReceiver(EffectValues *)
+	// BW1W120 0072c310 BW1M119 01539b80
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
-	// BW1W120 0072c330 BW1M100 10531270 MagicShield::InteractsWithPhysicsObjects(void)
+	// BW1W120 0072c330 BW1M119 01539ad0
 	virtual bool InteractsWithPhysicsObjects();
-	// BW1W120 0072c2e0 BW1M100 105313e0 MagicShield::ProcessShield(void)
+	// BW1W120 0072c2e0 BW1M119 01539c40
 	virtual void ProcessShield();
-	// BW1W120 0072c2f0 BW1M100 105313a0 MagicShield::DrawShield(void)
+	// BW1W120 0072c2f0 BW1M119 01539c00
 	virtual void DrawShield();
-	// BW1W120 0072b850 BW1M100 10532df0 MagicShield::IsPointDefinietlyWithinShieldVolume(MapCoords const &)
+	// BW1W120 0072b850 BW1M119 0153b8e0
 	virtual bool IsPointDefinietlyWithinShieldVolume(const MapCoords& param_1);
 };
 

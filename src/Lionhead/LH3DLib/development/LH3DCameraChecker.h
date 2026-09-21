@@ -8,7 +8,7 @@
 
 struct LH3DCameraChecker
 {
-	// BW1W120 0x00eb99a8 BW1M100 0x106f4814 LH3DCameraChecker::g_first
+	// BW1W120 00eb99a8 BW1M119 011f20ac (LHCombined Release)
 	static LH3DCameraChecker* g_first;
 
 	LH3DCameraChecker* next; /* 0x0 */
@@ -21,12 +21,12 @@ struct LH3DCameraChecker
 
 	// Static methods
 
-	// BW1W120 00821050 BW1M100 100c4df0 LH3DCameraChecker::Create(float, LHPoint, float, long, bool)
+	// BW1W120 00821050 BW1M119 010d9180 (LHCombined Release)
 	static void Create(float max_distance, LHPoint point, float param_3, long param_4, bool y_only);
 
 	// Non-virtual methods
 
-	// BW1W120 00437e70 BW1M100 00437e70 LH3DCameraChecker::AdjustCameraPosTarget(LHPoint*, LHPoint*)
+	// BW1W120 00437e70 BW1M119 0103c750 (LHCombined Release)
 	void AdjustCameraPosTarget(LHPoint* pos, LHPoint* target);
 };
 

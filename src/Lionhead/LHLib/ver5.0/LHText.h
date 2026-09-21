@@ -24,25 +24,26 @@ struct LHSpriteList
 
 	// Constructors
 
-	// BW1W120 007e89f0 LHSpriteList::LHSpriteList(void) (comdat, emitted from LHScript.cpp)
+	// BW1W120 007e89f0
 	LHSpriteList() { Set(NULL, 0); }
 
 	// Non-virtual methods
 
-	// BW1W120 007e8a00 (comdat, emitted from LHScript.cpp) TODO: fabricated name
+	// (comdat, emitted from LHScript.cpp) TODO: fabricated name
+	// BW1W120 007e8a00
 	void Set(LHSprite* sprites, long count)
 	{
 		Sprites = sprites;
 		Count = count;
 		OwnsSprites = 1;
 	}
-	// BW1W120 007ee540 LHSpriteList::FreeSpriteList(int)
+	// BW1W120 007ee540 BW1M119 011547c0 (LHCombined Release)
 	int FreeSpriteList(int keepPixelData);
-	// BW1W120 007ee5b0 LHSpriteList::FreeSprite(long)
+	// BW1W120 007ee5b0 BW1M119 011546a0 (LHCombined Release)
 	int FreeSprite(long index);
-	// BW1W120 007ee620 LHSpriteList::FreeSpriteRange(long, long)
+	// BW1W120 007ee620 BW1M119 011545c0 (LHCombined Release)
 	int FreeSpriteRange(long first, long last);
-	// BW1W120 007ee6a0 LHSpriteList::GetSize(unsigned long)
+	// BW1W120 007ee6a0 BW1M119 01154500 (LHCombined Release)
 	int GetSize(unsigned long index);
 };
 static_assert(sizeof(LHSpriteList) == 0xc, "Data type is of wrong size");
@@ -65,21 +66,21 @@ struct LHText : LHSpriteList
 
 	// Non-virtual methods
 
-	// BW1W120 007e3c20 LHText::LoadFont(char*, unsigned long)
+	// BW1W120 007e3c20 BW1M119 0115e4a0 (LHCombined Release)
 	LH_RETURN LoadFont(char* file_name, unsigned long flags);
-	// BW1W120 007e3d00 LHText::FreeFont(void)
+	// BW1W120 007e3d00 BW1M119 0115e430 (LHCombined Release)
 	int FreeFont();
-	// BW1W120 007e3d20 LHText::StringWidth(char *, char *)
+	// BW1W120 007e3d20 BW1M119 0115e2f0 (LHCombined Release)
 	int StringWidth(char* start, char* end);
-	// BW1W120 007e3db0 LHText::StringHeight(char *, char *)
+	// BW1W120 007e3db0 BW1M119 0115e220 (LHCombined Release)
 	int StringHeight(char* start, char* end);
-	// BW1W120 007e3e00 LHText::WordWidth(char *)
+	// BW1W120 007e3e00 BW1M119 0115e180 (LHCombined Release)
 	int WordWidth(char* text);
-	// BW1W120 007e3e60 LHText::DrawActualTextSprites(long, long, char *, char *, unsigned long)
+	// BW1W120 007e3e60 BW1M119 0115dfe0 (LHCombined Release)
 	int DrawActualTextSprites(long x, long y, char* start, char* end, unsigned long extraSpacing);
-	// BW1W120 007e41b0 LHText::Draw(long, long, char *, unsigned long)
+	// BW1W120 007e41b0 BW1M119 0115dee0 (LHCombined Release)
 	int Draw(long x, long y, char* text, unsigned long flags);
-	// BW1W120 007e45f0 LHText::DrawSimple(long, long, char *, LHColor *, int)
+	// BW1W120 007e45f0 BW1M119 0115dd60 (LHCombined Release)
 	int DrawSimple(long x, long y, char* text, LHColor* color, int mode);
 };
 static_assert(sizeof(LHText) == 0x28, "Data type is of wrong size");

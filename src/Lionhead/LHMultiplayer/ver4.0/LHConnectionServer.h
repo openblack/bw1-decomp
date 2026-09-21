@@ -14,7 +14,7 @@ struct LHConnectionServer
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M100 100e09b0 LHConnectionServer::ConnectToConnection(LHConnection *)
+	// BW1W120 inlined BW1M119 010dfff0 (LHCombined Release)
 	uint32_t ConnectToConnection(LHConnection* connection);
 };
 

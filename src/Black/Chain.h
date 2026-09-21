@@ -17,15 +17,15 @@ class Chain : public PSysBase
 public:
 	// Override methods
 
-	// BW1W120 006c8810 BW1M100 1047b970 Chain::_dt(void)
+	// BW1W120 006c8810 BW1M119 01483af0
 	virtual ~Chain();
-	// BW1W120 006c8800 BW1M100 10422b00 Chain::GetDebugText(void)
+	// BW1W120 006c8800 BW1M119 0142bb00
 	virtual char* GetDebugText();
-	// BW1W120 00695c10 BW1M100 1041bda0 Chain::Load(GameOSFile &)
+	// BW1W120 00695c10 BW1M119 01424db0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 006cc780 BW1M100 10483590 Chain::Save(GameOSFile &)
+	// BW1W120 006cc780 BW1M119 0148bc10
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 006c87f0 BW1M100 10422ad0 Chain::GetSaveType(void)
+	// BW1W120 006c87f0 BW1M119 0142bad0
 	virtual uint32_t GetSaveType();
 };
 

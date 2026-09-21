@@ -17,17 +17,17 @@ class PlannedCitadelPart : public PlannedMultiMapFixed
 public:
 	// Override methods
 
-	// BW1W120 00469670 BW1M100 101bff10 PlannedCitadelPart::_dt(void)
+	// BW1W120 00469670 BW1M119 011c7900
 	virtual ~PlannedCitadelPart();
-	// BW1W120 00469690 BW1M100 101c2f70 PlannedCitadelPart::ToBeDeleted(int)
+	// BW1W120 00469690 BW1M119 011ca790
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 00465590 BW1M100 101c2130 PlannedCitadelPart::GetDebugText(void)
+	// BW1W120 00465590 BW1M119 011c9af0
 	virtual char* GetDebugText();
-	// BW1W120 00469720 BW1M100 101c2e30 PlannedCitadelPart::Load(GameOSFile &)
+	// BW1W120 00469720 BW1M119 011ca650
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 004696f0 BW1M100 101c2ed0 PlannedCitadelPart::Save(GameOSFile &)
+	// BW1W120 004696f0 BW1M119 011ca6f0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00465580 BW1M100 101c20f0 PlannedCitadelPart::GetSaveType(void)
+	// BW1W120 00465580 BW1M119 011c9ab0
 	virtual uint32_t GetSaveType();
 };
 

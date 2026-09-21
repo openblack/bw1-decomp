@@ -20,14 +20,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 005b7510 BW1M100 1033cb10 HandStatePlayAnim::Enter(void)
+	// BW1W120 005b7510 BW1M119 01344df0
 	virtual void Enter();
-	// BW1W120 005b7520 BW1M100 1033c970 HandStatePlayAnim::Update(float, LHMatrix *)
+	// BW1W120 005b7520 BW1M119 01344c50
 	virtual void Update(float param_1, LHMatrix* param_2);
 
 	// Constructors
 
-	// BW1W120 005b74f0 BW1M100 1033cb50 HandStatePlayAnim::HandStatePlayAnim(CHand*)
+	// BW1W120 005b74f0 BW1M119 01344e30
 	HandStatePlayAnim(CHand* hand);
 };
 

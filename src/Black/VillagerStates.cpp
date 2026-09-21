@@ -27,17 +27,17 @@
 // BW1W120 00db9e68
 GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
 
-// BW1W120 00769580
+// BW1W120 00769580 BW1M119 015a35b0
 GBaseInfo* GVillagerStateTableInfo::GetBaseInfo(uint32_t& count)
 {
 	count = sizeof(g_GVillagerStateTableInfos) / sizeof(g_GVillagerStateTableInfos[0]);
 	return (GBaseInfo*)g_GVillagerStateTableInfos;
 }
 
-// BW1W120 007695f0 ~GVillagerStateTableInfo()
+// BW1W120 007695f0
 GVillagerStateTableInfo::~GVillagerStateTableInfo() {}
 
-// BW1W120 00769620
+// BW1W120 00769620 BW1M119 01098850
 bool32_t Villager::GotoStoragePitForDropOff()
 {
 	if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional())
@@ -58,7 +58,7 @@ bool32_t Villager::GotoStoragePitForDropOff()
 	return false;
 }
 
-// BW1W120 007696d0
+// BW1W120 007696d0 BW1M119 010061f0
 // TODO: GetResourceHeld should return a 32-bit type (target stores raw eax with no
 // widening); AreWeThere should return bool32_t (target tests full eax); push/lea
 // scheduling also differs
@@ -108,7 +108,7 @@ bool32_t Villager::ArrivesAtStoragePitForDropOff()
 	return true;
 }
 
-// BW1W120 00769830
+// BW1W120 00769830 BW1M119 01098a10
 bool32_t Villager::GotoStoragePitForFood()
 {
 	if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional())
@@ -125,14 +125,14 @@ bool32_t Villager::GotoStoragePitForFood()
 	}
 }
 
-// BW1W120 007698b0
+// BW1W120 007698b0 BW1M119 015a3030
 bool32_t Villager::ArrivesAtStoragePitForFood()
 {
 	return ArrivesAtStoragePitForResource(RESOURCE_TYPE_FOOD, GetAmountOfFoodRequiredForMeal(),
 	                                      VILLAGER_STATE_DECIDE_WHAT_TO_DO, VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 }
 
-// BW1W120 007698d0
+// BW1W120 007698d0 BW1M119 015a2c50
 // TODO: the shared 0.001f constant is pooled in another unit's .rdata (byte-identical after
 // link); AreWeThere should return bool32_t (target tests full eax); push/lea scheduling
 // also differs
@@ -200,7 +200,7 @@ bool32_t Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE resourceType, un
 	return true;
 }
 
-// BW1W120 00769b30
+// BW1W120 00769b30 BW1M119 015a2b80
 // TODO: 86% — semantics verified, but the 8966 scheduler places `mov esi,eax` (save Abode*) and
 // `mov ebx,[esi]` (vtable load) later among the constant arg pushes than our source produces.
 // Pure scheduler tie-break, not a semantic bug (see CHEATSHEET save-across-call-spill).
@@ -213,7 +213,7 @@ bool32_t Villager::ArrivesAtHomeWithFood()
 	return ArrivesHome();
 }
 
-// BW1W120 00769b80
+// BW1W120 00769b80 BW1M119 015a2a60
 bool32_t Villager::CheckTrader()
 {
 	if (TradeTown == NULL)
@@ -243,13 +243,13 @@ bool32_t Villager::CheckTrader()
 	return SetTraderNothingToDo();
 }
 
-// BW1W120 00769c10
+// BW1W120 00769c10 BW1M119 015a2a20
 bool32_t Villager::CheckMissionary()
 {
 	return false;
 }
 
-// BW1W120 00769c20
+// BW1W120 00769c20 BW1M119 015a2810
 // TODO: our build computes `remainder` after the distance calls (target stores it first);
 // the target's distance calls land on the unnamed GetDistanceInMetres copy at 0x74cd70;
 // GetResourceHeld should return a 32-bit type
@@ -271,7 +271,7 @@ bool32_t Villager::CheckTraderPickUpOrDropOff(RESOURCE_TYPE resourceType)
 	                              : VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_TRADER_PICK_UP;
 }
 
-// BW1W120 00769d20
+// BW1W120 00769d20 BW1M119 015a26e0
 // TODO: GetResourceHeld should return a 32-bit type (the widening it forces perturbs the
 // float-conversion tails)
 bool32_t Villager::ArrivesAtStoragePitForTraderPickUp()
@@ -301,7 +301,7 @@ bool32_t Villager::ArrivesAtStoragePitForTraderPickUp()
 	return result;
 }
 
-// BW1W120 00769dc0
+// BW1W120 00769dc0 BW1M119 015a2540
 // TODO: register allocation differs — target keeps the held counts in memory slots, ours
 // registerizes them
 bool32_t Villager::ArrivesAtStoragePitForTraderDropOff()
@@ -328,7 +328,7 @@ bool32_t Villager::ArrivesAtStoragePitForTraderDropOff()
 	return result;
 }
 
-// BW1W120 00769ea0
+// BW1W120 00769ea0 BW1M119 015a2470
 bool32_t Villager::SetTraderNothingToDo()
 {
 	Town* town = GetTown();
@@ -346,13 +346,13 @@ bool32_t Villager::SetTraderNothingToDo()
 	return true;
 }
 
-// BW1W120 00769ee0
+// BW1W120 00769ee0 BW1M119 015a2140
 bool32_t Villager::SetupBreederDisciple()
 {
 	return false;
 }
 
-// BW1W120 0076a1b0
+// BW1W120 0076a1b0 BW1M119 015a1fd0
 bool32_t Villager::BreederDisciple()
 {
 	if (!IsPregnant())
@@ -371,7 +371,7 @@ bool32_t Villager::BreederDisciple()
 	return true;
 }
 
-// BW1W120 0076a220
+// BW1W120 0076a220 BW1M119 015a1eb0
 // TODO: needs GUtils::FindClosestAbode's declaration fixed (declared thiscall/void; really
 // cdecl returning Abode*) and Town::AddMissionary declared
 bool32_t Villager::MissionaryDisciple()
@@ -379,7 +379,7 @@ bool32_t Villager::MissionaryDisciple()
 	return false;
 }
 
-// BW1W120 0076a2a0
+// BW1W120 0076a2a0 BW1M119 015a1e10
 bool32_t Villager::EnterBreeder(unsigned char param_1, unsigned char param_2)
 {
 	if ((GGame::g_game->field_0x14 & 0x8000) == 0)
@@ -389,14 +389,14 @@ bool32_t Villager::EnterBreeder(unsigned char param_1, unsigned char param_2)
 	return true;
 }
 
-// BW1W120 0076a2d0
+// BW1W120 0076a2d0 BW1M119 015a1db0
 bool32_t Villager::ExitBreeder(unsigned char state)
 {
 	Reaction::RemoveAllReactionsOfTypeInitiatedByObject(this, REACTION_REACT_TO_BREEDER);
 	return true;
 }
 
-// BW1W120 0076a2f0
+// BW1W120 0076a2f0 BW1M119 015a1c40
 // TODO: GetResourceNearestEdge dispatches through the wrong vtable slot (the Object.h
 // virtual list ends short of the real vtable); push/lea scheduling also differs
 uint32_t Villager::AtStructureRemoveResource(MultiMapFixed* structure, RESOURCE_TYPE resourceType, unsigned long amount,
@@ -417,7 +417,7 @@ uint32_t Villager::AtStructureRemoveResource(MultiMapFixed* structure, RESOURCE_
 	return VILLAGER_STATE_GO_HOME;
 }
 
-// BW1W120 0076a3b0
+// BW1W120 0076a3b0 BW1M119 0100b000
 // TODO: needs the GPlayer helper at 0x64a9c0 (returns a GInterfaceStatus*) named and a
 // GPlayer class header — without it the player branch below is dead and collapses; same
 // GetResourceNearestEdge vtable-slot issue as AtStructureRemoveResource
@@ -453,7 +453,7 @@ uint32_t Villager::AtStructureAddResource(MultiMapFixed* structure, RESOURCE_TYP
 	return VILLAGER_STATE_GO_HOME;
 }
 
-// BW1W120 0076a4c0
+// BW1W120 0076a4c0 BW1M119 015a1a80
 bool32_t Villager::SetDying()
 {
 	Town* town = GetTown();
@@ -483,7 +483,7 @@ bool32_t Villager::SetDying()
 	return true;
 }
 
-// BW1W120 0076a570
+// BW1W120 0076a570 BW1M119 015a1980
 bool32_t Villager::Dying()
 {
 	if (GetDeathReason() != DEATH_REASON_SACRIFICE)
@@ -507,19 +507,19 @@ bool32_t Villager::Dying()
 	return true;
 }
 
-// BW1W120 0076a5e0
+// BW1W120 0076a5e0 BW1M119 015a1670
 bool32_t Villager::Dead()
 {
 	return false;
 }
 
-// BW1W120 0076a780
+// BW1W120 0076a780 BW1M119 015a1580
 bool32_t Villager::Drowning()
 {
 	return false;
 }
 
-// BW1W120 0076a7e0
+// BW1W120 0076a7e0 BW1M119 015a1430
 // TODO: the max() macro double-evaluates both arms, baking GameRand __FILE__/__LINE__ into
 // several calls — cannot match in a split TU
 bool32_t Villager::MakeScaredStiff()
@@ -532,7 +532,7 @@ bool32_t Villager::MakeScaredStiff()
 	return true;
 }
 
-// BW1W120 0076a8b0
+// BW1W120 0076a8b0 BW1M119 015a13c0
 bool32_t Villager::ScaredStiff()
 {
 	if (--TurnsUntilNextStateChange == 0)
@@ -542,37 +542,37 @@ bool32_t Villager::ScaredStiff()
 	return true;
 }
 
-// BW1W120 0076a8d0
+// BW1W120 0076a8d0 BW1M119 015a1150
 bool32_t Villager::VagrantStart()
 {
 	return false;
 }
 
-// BW1W120 0076aa60
+// BW1W120 0076aa60 BW1M119 015a1100
 bool32_t Villager::MornDeath()
 {
 	return GoHome();
 }
 
-// BW1W120 0076aa70
+// BW1W120 0076aa70 BW1M119 015a10c0
 bool32_t Villager::EatOutside()
 {
 	return true;
 }
 
-// BW1W120 0076aa80
+// BW1W120 0076aa80 BW1M119 015a1030
 float Villager::GetImportance()
 {
 	return (float)GetAge() * 0.001f;
 }
 
-// BW1W120 0076aab0
+// BW1W120 0076aab0 BW1M119 015a0e00
 bool32_t Villager::SetupInspectObject(Object* param_1)
 {
 	return false;
 }
 
-// BW1W120 0076ac40
+// BW1W120 0076ac40 BW1M119 015a0cf0
 // TODO: IsReadyForNewAnimation is mangled void (QAEXI) but Living.h declares it bool;
 // caller does `test eax,eax` on a void call (void-call-eax-probed-by-caller idiom). Costs the
 // al-vs-eax test until the shared header return type is fixed (dispatcher). Rest matches.
@@ -601,7 +601,7 @@ bool32_t Villager::InspectObject()
 	return true;
 }
 
-// BW1W120 0076acb0
+// BW1W120 0076acb0 BW1M119 inlined
 uint32_t Villager::ExitInFlying(uint8_t state)
 {
 	return (uint8_t)state == VILLAGER_STATE_IN_HAND || (uint8_t)state == VILLAGER_STATE_LANDED ||
@@ -609,13 +609,13 @@ uint32_t Villager::ExitInFlying(uint8_t state)
 	       (uint8_t)state == VILLAGER_STATE_DROWNING;
 }
 
-// BW1W120 0076ace0
+// BW1W120 0076ace0 BW1M119 015a0c40
 bool32_t Villager::EnterSex(unsigned char param_1, unsigned char param_2)
 {
 	return true;
 }
 
-// BW1W120 0076acf0
+// BW1W120 0076acf0 BW1M119 015a0b50
 // TODO: needs GUtils::AddDistanceFromAngle declared (its target symbol is thiscall but the
 // body is cdecl) and the JustWholeMapXZ class/struct keyword reconciled with the MapCoords
 // ctor; GameRand __FILE__/__LINE__ cannot match in a split TU (same blockers as
@@ -625,19 +625,19 @@ bool32_t Villager::SetupWander(JustWholeMapXZ& wander_area, VILLAGER_STATES stat
 	return false;
 }
 
-// BW1W120 0076ad80
+// BW1W120 0076ad80 BW1M119 015a0a50
 bool32_t Villager::ExitSex(unsigned char param_1)
 {
 	return false;
 }
 
-// BW1W120 0076ade0
+// BW1W120 0076ade0 BW1M119 0100c700
 bool32_t Villager::InHand()
 {
 	return false;
 }
 
-// BW1W120 0076afe0
+// BW1W120 0076afe0 BW1M119 inlined
 uint32_t Villager::EnterInHand(uint8_t param_1, uint8_t param_2)
 {
 	// field_0x10c is a float slot elsewhere; this state stashes the (remapped) disciple
@@ -651,7 +651,7 @@ uint32_t Villager::EnterInHand(uint8_t param_1, uint8_t param_2)
 	return 1;
 }
 
-// BW1W120 0076b000
+// BW1W120 0076b000 BW1M119 inlined
 // TODO: 88.9% — semantics verified. Only diff is the epilogue: target sandwiches
 // `mov eax,esi` between `pop edi` and `pop esi`; ours emits it before both pops.
 // Toy-tested (named-result, !=0 test, early-return) — the result/if/return-result form
@@ -671,13 +671,13 @@ uint32_t Villager::ExitInHand(uint8_t state)
 	return result;
 }
 
-// BW1W120 0076b030
+// BW1W120 0076b030 BW1M119 0100c660
 bool32_t Villager::IsInACreaturesHand()
 {
 	return false;
 }
 
-// BW1W120 0076b060
+// BW1W120 0076b060 BW1M119 015a0700
 bool32_t Villager::SetupWaitForCounter(unsigned short counter, VILLAGER_STATES state)
 {
 	if (SetCurrentAndDestinationState(VILLAGER_STATE_WAIT_FOR_COUNTER, state) == 1)
@@ -688,13 +688,13 @@ bool32_t Villager::SetupWaitForCounter(unsigned short counter, VILLAGER_STATES s
 	return false;
 }
 
-// BW1W120 0076b090
+// BW1W120 0076b090 BW1M119 0109fbb0
 uint32_t Villager::SetupPauseForASecond(VILLAGER_STATES state)
 {
 	return SetCurrentAndDestinationState(VILLAGER_STATE_PAUSE_FOR_A_SECOND, state) == 1;
 }
 
-// BW1W120 0076b0b0
+// BW1W120 0076b0b0 BW1M119 01011190
 // TODO: 98.6% — semantics verified. Residual: target calls Living::IsReadyForNewAnimation
 // as the void-mangled symbol (?...@QAEXI@Z) and does `test eax,eax`; ours calls the
 // bool-mangled symbol (Living.h declares it `bool`) and does `test al,al`. Target's 32-bit
@@ -710,25 +710,25 @@ bool32_t Villager::PauseForASecond()
 	return true;
 }
 
-// BW1W120 0076b0d0
+// BW1W120 0076b0d0 BW1M119 015a04e0
 bool32_t Villager::SetupPanicReaction(Reaction* param_1, MapCoords& param_2)
 {
 	return false;
 }
 
-// BW1W120 0076b1c0
+// BW1W120 0076b1c0 BW1M119 015a0450
 bool32_t Villager::PanicReaction()
 {
 	return false;
 }
 
-// BW1W120 0076b200
+// BW1W120 0076b200 BW1M119 015a0280
 bool32_t Villager::GotoCongregateInTownAfterEmergency()
 {
 	return false;
 }
 
-// BW1W120 0076b300
+// BW1W120 0076b300 BW1M119 015a0190
 // TODO: GameRand's __FILE__/__LINE__ default args can't match the original line numbers
 // in a split TU (costs the file-string + line-number arg pushes per call). Rest matches.
 bool32_t Villager::CongregateInTownAfterEmergency()
@@ -746,19 +746,19 @@ bool32_t Villager::CongregateInTownAfterEmergency()
 	return true;
 }
 
-// BW1W120 0076b380
+// BW1W120 0076b380 BW1M119 015a0090
 bool32_t Villager::BeingEaten()
 {
 	return false;
 }
 
-// BW1W120 0076b3f0
+// BW1W120 0076b3f0 BW1M119 0101dfc0
 bool32_t Villager::GoAndChilloutOutsideHome()
 {
 	return false;
 }
 
-// BW1W120 0076b4e0
+// BW1W120 0076b4e0 BW1M119 010623b0
 bool32_t Villager::SitAndChillout()
 {
 	uint32_t turns = (uint16_t)TurnsUntilNextStateChange;
@@ -787,7 +787,7 @@ bool32_t Villager::SitAndChillout()
 	return true;
 }
 
-// BW1W120 0076b570
+// BW1W120 0076b570 BW1M119 01005570
 // TODO: 76% — semantics verified (2 loads + store + `mov eax,1`). Target schedules the
 // `mov [ecx+0x58],dx` store BEFORE `mov eax,1`; ours emits `mov eax,1` first. Toy-tested
 // (return 1/true, value-local, ptr-local, this-> forms) all reproduce our order under the
@@ -798,7 +798,7 @@ bool32_t Villager::EnterSitAndChillOut(unsigned char param_1, unsigned char para
 	return true;
 }
 
-// BW1W120 0076b590
+// BW1W120 0076b590 BW1M119 0159fd20
 // TODO: the target passes the member-function pointer in the 16-byte general representation
 // (/vmg); our build uses the 4-byte single-inheritance one. The cast bridges
 // GetChillOutPos's int/uint return mismatch.
@@ -816,25 +816,25 @@ bool32_t Villager::GoAndChilloutInTown()
 	return true;
 }
 
-// BW1W120 0076b610
+// BW1W120 0076b610 BW1M119 010144b0
 void Villager::GetMeToMyChillOutPos(int (Villager::*callback)(MapCoords&), MapCoords& param_5, float param_6,
                                     const MapCoords& param_7)
 {
 }
 
-// BW1W120 0076b7e0
+// BW1W120 0076b7e0 BW1M119 0159fc60
 bool32_t Villager::ArrivesHomeFromWorship()
 {
 	return ArrivesHome();
 }
 
-// BW1W120 0076b7f0
+// BW1W120 0076b7f0 BW1M119 0159fc00
 bool32_t Villager::SleepInTentFromWorship()
 {
 	return SleepInTent();
 }
 
-// BW1W120 0076b800
+// BW1W120 0076b800 BW1M119 0159fa50
 bool32_t Villager::BreederJustLanded()
 {
 	return false;

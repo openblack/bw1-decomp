@@ -15,41 +15,41 @@ static CreatureDesireForType            g_CreatureDesireForType[NUM_CREATURE_DES
 
 CreatureDesireDependency CreatureDesireDependency::g_CreatureDesireDependency[NUM_CREATURE_DESIRES]; // fabricated name
 
-// BW1W120 004db560 BW1M100 1025c590 CreatureDevelopmentDurationEntry::GetBaseInfo(unsigned long &)
+// BW1W120 004db560 BW1M119 01260700
 GBaseInfo* CreatureDevelopmentDurationEntry::GetBaseInfo(uint32_t& num_infos)
 {
 	num_infos = sizeof(g_CreatureDevelopmentDurationEntry) / sizeof(g_CreatureDevelopmentDurationEntry[0]);
 	return g_CreatureDevelopmentDurationEntry;
 }
 
-// BW1W120 004db480 BW1M100 1025c4d0 CreatureDevelopmentPhaseEntry::GetBaseInfo(unsigned long &)
+// BW1W120 004db480 BW1M119 01260640
 GBaseInfo* CreatureDevelopmentPhaseEntry::GetBaseInfo(uint32_t& num_infos)
 {
 	num_infos = sizeof(g_CreatureDevelopmentPhaseEntry) / sizeof(g_CreatureDevelopmentPhaseEntry[0]);
 	return g_CreatureDevelopmentPhaseEntry;
 }
 
-// BW1W120 004db3c0 BW1M100 1025c650 CreatureDesireForType::GetBaseInfo(unsigned long &)
+// BW1W120 004db3c0 BW1M119 012607c0
 GBaseInfo* CreatureDesireForType::GetBaseInfo(uint32_t& num_infos)
 {
 	num_infos = sizeof(g_CreatureDesireForType) / sizeof(g_CreatureDesireForType[0]);
 	return g_CreatureDesireForType;
 }
 
-// BW1W120 004db2e0 BW1M100 1025c710 CreatureDesireDependency::GetBaseInfo(unsigned long &)
+// BW1W120 004db2e0 BW1M119 01260880
 GBaseInfo* CreatureDesireDependency::GetBaseInfo(uint32_t& num_infos)
 {
 	num_infos = sizeof(g_CreatureDesireDependency) / sizeof(g_CreatureDesireDependency[0]);
 	return g_CreatureDesireDependency;
 }
 
-// BW1W120 004dbff0 BW1M100 1025b030 CreatureDesires::CreatureDesires(Creature *, CreatureInfo const *)
+// BW1W120 004dbff0 BW1M119 0125f4e0
 CreatureDesires::CreatureDesires(Creature* creature, const CreatureInfo* info)
 {
 	Initialise(creature, info);
 }
 
-// BW1W120 004dc100 BW1M100 1025a980 CreatureDesires::Initialise(Creature *, CreatureInfo const *)
+// BW1W120 004dc100 BW1M119 0125ee30
 void CreatureDesires::Initialise(Creature* creature, const CreatureInfo* info)
 {
 	for (int i = 0; i < NUM_CREATURE_DESIRES; i++)
@@ -79,7 +79,7 @@ void CreatureDesires::Initialise(Creature* creature, const CreatureInfo* info)
 	field_0x6f8 = NUM_CREATURE_DESIRES;
 }
 
-// BW1W120 004dc7b0 BW1M100 10259de0 CreatureDesires::FindWeakestDesire(void)
+// BW1W120 004dc7b0 BW1M119 0125e290
 uint32_t CreatureDesires::FindWeakestDesire()
 {
 	uint32_t weakest = 0;

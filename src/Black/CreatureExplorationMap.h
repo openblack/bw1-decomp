@@ -16,7 +16,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 004df5c0 BW1M100 10246800 CreatureExplorationMap::_dt(void)
+	// BW1W120 004df5c0 BW1M119 0124af90
 	virtual ~CreatureExplorationMap();
 };
 
@@ -25,22 +25,23 @@ class CreatureExplorationRegionEntry : public Base
 public:
 	// Override methods
 
-	// BW1W120 004df430 BW1M100 10260660 CreatureExplorationRegionEntry::_dt(void)
+	// BW1W120 004df430 BW1M119 012645d0
 	virtual ~CreatureExplorationRegionEntry();
 };
 
 class CreatureGlobalExplorationMap : public Base
 {
 public:
-	// BW1W120 00c8dc40. Descriptive name; declaration only, full layout unrecovered.
+	// Descriptive name; declaration only, full layout unrecovered.
+	// BW1W120 00c8dc40
 	static CreatureGlobalExplorationMap GlobalMap;
-	// BW1W120 004df9c0 BW1M100 10261260
+	// BW1W120 004df9c0 BW1M119 01265230
 	void PrecalculateMap();
 	// Override methods
 
-	// BW1W120 004df450 BW1M100 102605a0 CreatureGlobalExplorationMap::_dt(void)
+	// BW1W120 004df450 BW1M119 01264510
 	virtual ~CreatureGlobalExplorationMap();
-	// BW1W120 004dfbd0 BW1M100 10260d20 CreatureGlobalExplorationMap::Dump(void)
+	// BW1W120 004dfbd0 BW1M119 01264c90
 	virtual void Dump();
 };
 

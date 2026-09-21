@@ -37,12 +37,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 0076cd10 BW1M100 1015a660 GVirtualInfluence::_dt(void)
+	// BW1W120 0076cd10 BW1M119 01162840
 	virtual ~GVirtualInfluence();
 
 	// Constructors
 
-	// BW1W120 0076cca0 BW1M100 1015a6f0 GVirtualInfluence::GVirtualInfluence(GInterfaceStatus *)
+	// BW1W120 0076cca0 BW1M119 011628d0
 	GVirtualInfluence(GInterfaceStatus* status);
 };
 

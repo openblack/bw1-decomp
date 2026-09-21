@@ -34,7 +34,7 @@ enum
 #include "Villager.h"
 
 // clang-format off
-// BW1W120 00D09198 BW1M100 
+// BW1W120 00d09198
 LivingStateTableEntry<Villager> g_VillagerStateTable[VILLAGER_STATE_LAST_STATE] = {
 	{&Living::InvalidState, 0, 0, 0, 0, 0, 0, 0, 0},
 	{&Living::MoveToPos, 0, &Living::ExitMoveToPos, 0, 0, &Villager::AlwaysReactToTownEmergency, &Villager::MoveToPosAnimation, &Villager::MoveToPosIntoOutofAnimation, &Villager::WallhugValidate},

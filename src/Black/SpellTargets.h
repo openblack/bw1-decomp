@@ -18,14 +18,16 @@ public:
 	GJVector<LHPoint>               Points;        /* 0x14 */
 	long                            CurrentTarget; /* 0x28 */
 
-	// BW1W120 00670b60; also inlined in BW1M100 PSysManager constructors.
+	// Also inlined in BW1M119 PSysManager constructors.
+	// BW1W120 00670b60
 	SpellTargets() : CurrentTarget(0)
 	{
 		Points.Clear();
 		Objects.Clear();
 	}
 
-	// BW1W120 00670bc0; vector destructors release storage after the clears.
+	// Vector destructors release storage after the clears.
+	// BW1W120 00670bc0
 	~SpellTargets()
 	{
 		Points.Clear();

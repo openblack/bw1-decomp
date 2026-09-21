@@ -16,9 +16,9 @@ class Particle3DAnim : public RenderParticle
 public:
 	// Override methods
 
-	// BW1W120 006c85a0 BW1M100 inlined Particle3DAnim::_dt(void)
+	// BW1W120 006c85a0 BW1M119 inlined
 	virtual ~Particle3DAnim();
-	// BW1W120 006c8580 BW1M100 inlined Particle3DAnim::GetDebugText(void)
+	// BW1W120 006c8580 BW1M119 inlined
 	virtual char* GetDebugText();
 };
 

@@ -25,7 +25,7 @@ public:
 
 		// Constructors
 
-		// BW1W120 0071aec0 BW1M100 10511e30 GGuidance::LastThings::LastThings(GameThingWithPos *)
+		// BW1W120 0071aec0 BW1M119 01519920
 		LastThings(GameThingWithPos* thing);
 	};
 	LH_SamplePlayOptions*     PlayOptions; /* 0x8 */
@@ -49,26 +49,26 @@ public:
 
 	// Override methods
 
-	// BW1W120 0071ab30 BW1M100 10512620 GGuidance::_dt(void)
+	// BW1W120 0071ab30 BW1M119 0151a100
 	virtual ~GGuidance();
 
 	// Static methods
 
-	// BW1W120 0071b020 BW1M100 10082330 GGuidance::ProcessTownDesireSFX(GInterfaceStatus &)
+	// BW1W120 0071b020 BW1M119 01084710
 	static void ProcessTownDesireSFX(GInterfaceStatus& status);
-	// BW1W120 0071d1c0 BW1M100 10082f00 GGuidance::HelpSpritesCheckMoonPhase(void)
+	// BW1W120 0071d1c0 BW1M119 010852f0
 	static void HelpSpritesCheckMoonPhase();
 
 	// Constructors
 
-	// BW1W120 0071ab10 BW1M100 105126b0 GGuidance::GGuidance(void)
+	// BW1W120 0071ab10 BW1M119 0151a190
 	GGuidance();
 
 	// Non-virtual methods
 
-	// BW1W120 0071ac70 BW1M100 105122a0 GGuidance::Init(GInterfaceStatus&)
+	// BW1W120 0071ac70 BW1M119 01519d90
 	void Init(GInterfaceStatus& status);
-	// BW1W120 0071cbe0 BW1M100 1050e610 GGuidance::HelpSpritesLowOnPeople(Town &)
+	// BW1W120 0071cbe0 BW1M119 01516150
 	void HelpSpritesLowOnPeople(Town& param_1);
 };
 

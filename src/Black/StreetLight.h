@@ -21,27 +21,27 @@ public:
 
 	// Override methods
 
-	// BW1W120 00561420 BW1M100 10535660 GStreetLight::_dt(void)
+	// BW1W120 00561420 BW1M119 0153e310
 	virtual ~GStreetLight();
-	// BW1W120 00734e00 BW1M100 10535d70 GStreetLight::ToBeDeleted(int)
+	// BW1W120 00734e00 BW1M119 0153ea20
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 005613d0 BW1M100 10535700 GStreetLight::GetPlayer(void)
+	// BW1W120 005613d0 BW1M119 0153e3b0
 	virtual GPlayer* GetPlayer();
-	// BW1W120 00561410 BW1M100 10535800 GStreetLight::GetDebugText(void)
+	// BW1W120 00561410 BW1M119 0153e4b0
 	virtual char* GetDebugText();
-	// BW1W120 00735160 BW1M100 105358a0 GStreetLight::Load(GameOSFile &)
+	// BW1W120 00735160 BW1M119 0153e550
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00735140 BW1M100 10535910 GStreetLight::Save(GameOSFile &)
+	// BW1W120 00735140 BW1M119 0153e5c0
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00561400 BW1M100 105357c0 GStreetLight::GetSaveType(void)
+	// BW1W120 00561400 BW1M119 0153e470
 	virtual uint32_t GetSaveType();
-	// BW1W120 00735180 BW1M100 10535840 GStreetLight::ResolveLoad(void)
+	// BW1W120 00735180 BW1M119 0153e4f0
 	virtual void ResolveLoad();
-	// BW1W120 00735110 BW1M100 10535980 GStreetLight::GetDistanceFromObject(MapCoords const &)
+	// BW1W120 00735110 BW1M119 0153e630
 	virtual float GetDistanceFromObject(const MapCoords& param_1);
-	// BW1W120 005613f0 BW1M100 10535780 GStreetLight::IsStreetLight(void)
+	// BW1W120 005613f0 BW1M119 0153e430
 	virtual uint32_t IsStreetLight();
-	// BW1W120 005613e0 BW1M100 10535740 GStreetLight::GetText(void)
+	// BW1W120 005613e0 BW1M119 0153e3f0
 	virtual const char* GetText();
 };
 

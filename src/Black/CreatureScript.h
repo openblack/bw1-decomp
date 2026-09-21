@@ -18,7 +18,7 @@ class SubArgumentInteger : public SubArgument
 public:
 	// Override methods
 
-	// BW1W120 004ff6f0 BW1M100 10290fd0 SubArgumentInteger::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
+	// BW1W120 004ff6f0 BW1M119 01294080
 	virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* param_1, uint32_t param_2);
 };
 
@@ -27,11 +27,11 @@ class SubArgumentObjectAndInteger : public SubArgument
 public:
 	// Override methods
 
-	// BW1W120 004ff6d0 BW1M100 10291050 SubArgumentObjectAndInteger::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
+	// BW1W120 004ff6d0 BW1M119 01294100
 	virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* param_1, uint32_t param_2);
-	// BW1W120 0047c880 BW1M100 inlined SubArgumentObjectAndInteger::HasDestination(void)
+	// BW1W120 0047c880 BW1M119 inlined
 	virtual uint32_t HasDestination();
-	// BW1W120 0047c890 BW1M100 inlined SubArgumentObjectAndInteger::GetDestination(void)
+	// BW1W120 0047c890 BW1M119 inlined
 	virtual LHPoint* GetDestination();
 };
 
@@ -42,18 +42,18 @@ public:
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 inlined SubArgumentPoint::SubArgumentPoint(LHPoint const &)
+	// BW1W120 inlined BW1M119 inlined
 	SubArgumentPoint(const LHPoint& point);
 
 	// Override methods
 
-	// BW1W120 004ff780 BW1M100 10290e40 SubArgumentPoint::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
+	// BW1W120 004ff780 BW1M119 01293ef0
 	virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* param_1, uint32_t param_2);
-	// BW1W120 004791c0 BW1M100 102914c0 SubArgumentPoint::HasDestination(void)
+	// BW1W120 004791c0 BW1M119 01294570
 	virtual uint32_t HasDestination();
-	// BW1W120 004791d0 BW1M100 10291500 SubArgumentPoint::GetDestination(void)
+	// BW1W120 004791d0 BW1M119 012945b0
 	virtual LHPoint* GetDestination();
-	// BW1W120 004791b0 BW1M100 inlined SubArgumentPoint::GetObject(void)
+	// BW1W120 004791b0 BW1M119 inlined
 	virtual Object* GetObject();
 };
 

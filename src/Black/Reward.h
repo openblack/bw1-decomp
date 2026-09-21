@@ -23,54 +23,54 @@ class Object;
 class Reward : public MobileObject
 {
 public:
-	// BW1W120 006e6890 BW1M100 1008e000 Reward::ProcessList(void)
+	// BW1W120 006e6890 BW1M119 01090310
 	static void ProcessList();
 
 	uint8_t field_0x68[0x40];
 
 	// Override methods
 
-	// BW1W120 006e5690 BW1M100 1013bef0 Reward::_dt(void)
+	// BW1W120 006e5690 BW1M119 01144bf0
 	virtual ~Reward();
-	// BW1W120 006e5c10 BW1M100 1013b3b0 Reward::ToBeDeleted(int)
+	// BW1W120 006e5c10 BW1M119 011440d0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 006e5cb0 BW1M100 1013b340 Reward::GetPlayer(void)
+	// BW1W120 006e5cb0 BW1M119 01144060
 	virtual GPlayer* GetPlayer();
-	// BW1W120 006e5680 BW1M100 10138f70 Reward::GetDebugText(void)
+	// BW1W120 006e5680 BW1M119 01141c20
 	virtual char* GetDebugText();
-	// BW1W120 006e6c70 BW1M100 10139000 Reward::Load(GameOSFile &)
+	// BW1W120 006e6c70 BW1M119 01141cb0
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 006e69c0 BW1M100 10139380 Reward::Save(GameOSFile &)
+	// BW1W120 006e69c0 BW1M119 01142030
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 006e5670 BW1M100 10138f30 Reward::GetSaveType(void)
+	// BW1W120 006e5670 BW1M119 01141be0
 	virtual uint32_t GetSaveType();
-	// BW1W120 006e6f00 BW1M100 10138fb0 Reward::ResolveLoad(void)
+	// BW1W120 006e6f00 BW1M119 01141c60
 	virtual void ResolveLoad();
-	// BW1W120 006e6990 BW1M100 101397c0 Reward::PhysicsEditorCreate(int)
+	// BW1W120 006e6990 BW1M119 01142470
 	virtual void PhysicsEditorCreate(int param_1);
-	// BW1W120 006e69b0 BW1M100 10139730 Reward::GetOverwriteTapToolTip(void)
+	// BW1W120 006e69b0 BW1M119 011423e0
 	virtual uint32_t GetOverwriteTapToolTip();
-	// BW1W120 006e5650 BW1M100 10138ed0 Reward::IsReward( const(void))
+	// BW1W120 006e5650 BW1M119 01141b80
 	virtual uint32_t IsReward() const;
-	// BW1W120 006e5660 BW1M100 10138f00 Reward::IsActive( const(void))
+	// BW1W120 006e5660 BW1M119 01141bb0
 	virtual uint32_t IsActive() const;
-	// BW1W120 006e5ca0 BW1M100 1013b370 Reward::GetScriptObjectType(void)
+	// BW1W120 006e5ca0 BW1M119 01144090
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 006e68f0 BW1M100 10139850 Reward::Process(void)
+	// BW1W120 006e68f0 BW1M119 01142500
 	virtual uint32_t Process();
-	// BW1W120 006e6380 BW1M100 1013a430 Reward::Draw(void)
+	// BW1W120 006e6380 BW1M119 01143150
 	virtual void Draw();
-	// BW1W120 006e6880 BW1M100 10139bc0 Reward::GetWeight(void)
+	// BW1W120 006e6880 BW1M119 01142780
 	virtual float GetWeight();
-	// BW1W120 006e59b0 BW1M100 1013b570 Reward::CallVirtualFunctionsForCreation(MapCoords const &)
+	// BW1W120 006e59b0 BW1M119 01144290
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
-	// BW1W120 006e69a0 BW1M100 10139770 Reward::ValidForPlaceInHand(GInterfaceStatus *)
+	// BW1W120 006e69a0 BW1M119 01142420
 	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-	// BW1W120 006e5cc0 BW1M100 1013b270 Reward::InterfaceValidToTap(GInterfaceStatus *)
+	// BW1W120 006e5cc0 BW1M119 01143f90
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
-	// BW1W120 006e5d00 BW1M100 1013a480 Reward::InterfaceTap(GInterfaceStatus *)
+	// BW1W120 006e5d00 BW1M119 011431a0
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
-	// BW1W120 006e6980 BW1M100 10139800 Reward::CanBecomeAPhysicsObject(void)
+	// BW1W120 006e6980 BW1M119 011424b0
 	virtual bool32_t CanBecomeAPhysicsObject();
 };
 
@@ -79,9 +79,9 @@ class GRewardProgress : public GBaseInfo
 public:
 	// Override methods
 
-	// BW1W120 006e5580 BW1M100 1013afe0 GRewardProgress::_dt(void)
+	// BW1W120 006e5580 BW1M119 01143d00
 	virtual ~GRewardProgress();
-	// BW1W120 006e5520 BW1M100 1013c310 GRewardProgress::GetBaseInfo(unsigned long &)
+	// BW1W120 006e5520 BW1M119 01145010
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 

@@ -18,7 +18,7 @@ struct CreatureDesireSource
 
 	// Constructors
 
-	// BW1W120 004de150 BW1M100 1025dac0 CreatureDesireSource::CreatureDesireSource(CREATURE_DESIRE_SOURCE, Creature* )
+	// BW1W120 004de150 BW1M119 01261c00
 	CreatureDesireSource(CREATURE_DESIRE_SOURCE type, Creature* creature);
 };
 

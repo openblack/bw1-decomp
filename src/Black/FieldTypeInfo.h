@@ -19,11 +19,11 @@ public:
 
 	// Override methods
 
-	// BW1W120 00527da0 BW1M100 100d1a40 GFieldTypeInfo::_dt(void)
+	// BW1W120 00527da0 BW1M119 010d6540
 	virtual ~GFieldTypeInfo();
-	// BW1W120 00527d30 BW1M100 100d18c0 GFieldTypeInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00527d30 BW1M119 010d63c0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-	// BW1W120 00528e50 BW1M100 100d4190 GFieldTypeInfo::IsOkToCreateAtPos( const(MapCoords const &, float, float))
+	// BW1W120 00528e50 BW1M119 010d8a90
 	virtual bool IsOkToCreateAtPos(const MapCoords& param_1, float param_2, float param_3) const;
 };
 

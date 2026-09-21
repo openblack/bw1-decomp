@@ -19,23 +19,23 @@ class ScriptTimer : public GameThingWithPos
 public:
 	// Override methods
 
-	// BW1W120 00561330 BW1M100 10506140 ScriptTimer::_dt(void)
+	// BW1W120 00561330 BW1M119 0150d9c0
 	virtual ~ScriptTimer();
-	// BW1W120 00561320 BW1M100 10506350 ScriptTimer::GetDebugText(void)
+	// BW1W120 00561320 BW1M119 0150dbd0
 	virtual char* GetDebugText();
-	// BW1W120 007117b0 BW1M100 10506390 ScriptTimer::Load(GameOSFile &)
+	// BW1W120 007117b0 BW1M119 0150dc10
 	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 00711700 BW1M100 105064b0 ScriptTimer::Save(GameOSFile &)
+	// BW1W120 00711700 BW1M119 0150dd30
 	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 00561310 BW1M100 10506310 ScriptTimer::GetSaveType(void)
+	// BW1W120 00561310 BW1M119 0150db90
 	virtual uint32_t GetSaveType();
-	// BW1W120 00561300 BW1M100 105062c0 ScriptTimer::IsDeletedWhenReleasedFromScript(void)
+	// BW1W120 00561300 BW1M119 0150db40
 	virtual uint32_t IsDeletedWhenReleasedFromScript();
-	// BW1W120 005612e0 BW1M100 105061e0 ScriptTimer::GetText(void)
+	// BW1W120 005612e0 BW1M119 0150da60
 	virtual const char* GetText();
-	// BW1W120 005612f0 BW1M100 1002b150 ScriptTimer::IsScriptTimer(void)
+	// BW1W120 005612f0 BW1M119 0102dcc0
 	virtual uint32_t IsScriptTimer();
-	// BW1W120 00711600 BW1M100 10506a30 ScriptTimer::GetScriptObjectType(void)
+	// BW1W120 00711600 BW1M119 0150e230
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 };
 

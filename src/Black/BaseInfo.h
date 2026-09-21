@@ -16,37 +16,37 @@ public:
 	GBaseInfo* next; /* 0x8 */
 	int        index;
 
-	// BW1W120 0x00c58604
+	// BW1W120 00c58604
 	static uint32_t InfoCount;
 
 	// Override methods
 
-	// BW1W120 0042e600 BW1M100 10429820 GBaseInfo::~GBaseInfo(void)
+	// BW1W120 0042e600 BW1M119 011a6300
 	virtual ~GBaseInfo() {}
-	// BW1W120 004140b0 BW1M100 10578110 GBaseInfo::GetDebugText(void) const
+	// BW1W120 004140b0 BW1M119 0112ba50
 	virtual const char* GetDebugText() const;
-	// BW1W120 00436c60 BW1M100 1055df70 GBaseInfo::GetDebugColor(void) const
+	// BW1W120 00436c60 BW1M119 0142e670
 	virtual LHColor* GetDebugColor(LHColor* color) const;
-	// BW1W120 purecall BW1M100 purecall GBaseInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 purecall BW1M119 purecall
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos) = 0;
-	// BW1W120 00401230 BW1M100 101228b0 GBaseInfo::UpdateValue(void)
+	// BW1W120 00401230 BW1M119 0112ba90
 	virtual void UpdateValue(float param_1, uint32_t param_2, uint32_t param_3) {}
 
 	// Static methods
 
-	// BW1W120 00436c30 BW1M100 103e4630 GBaseInfo::GetInfoPtr(unsigned long)
+	// BW1W120 00436c30 BW1M119 0142e530
 	static GBaseInfo* GetInfoPtr(unsigned long index);
 
 	// Constructors
 
-	// BW1W120 0042e5e0 BW1M100 102f9af0 GBaseInfo::GBaseInfo(void)
+	// BW1W120 0042e5e0 BW1M119 010affb0
 	GBaseInfo() : next(NULL) {}
 
 	// Non-virtual methods
 
-	// BW1W120 00436bd0 BW1M100 1035b720 GBaseInfo::SetInfoID(void)
+	// BW1W120 00436bd0 BW1M119 01519580
 	void SetInfoID();
-	// BW1W120 00436c00 BW1M100 1017e040 GBaseInfo::GetInfoID(void) const
+	// BW1W120 00436c00 BW1M119 01342090
 	unsigned long GetInfoID() const;
 };
 
@@ -58,17 +58,17 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055c770 BW1M100 10043c50 BaseInfo::IsClear(void) const
+	// BW1W120 0055c770 BW1M119 010466a0
 	virtual bool IsClear() const;
 
 	// Constructors
 
-	// BW1W120 inlined BW1M100 1030cbf0 BaseInfo::BaseInfo(void)
+	// BW1W120 inlined BW1M119 0130f570
 	BaseInfo();
 
 	// Non-virtual methods
 
-	// BW1W120 00436bb0 BW1M100 10001410 BaseInfo::Set(Base*)
+	// BW1W120 00436bb0 BW1M119 01001410
 	void Set(Base* base);
 };
 

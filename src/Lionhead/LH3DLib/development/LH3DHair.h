@@ -25,12 +25,12 @@ struct LH3DHair
 
 	// Constructors
 
-	// BW1W120 00846680 BW1M100 inlined LH3DHair::LH3DHair(void)
+	// BW1W120 00846680 BW1M119 inlined
 	LH3DHair();
 
 	// Non-virtual methods
 
-	// BW1W120 00847890 BW1M100 100415b0 LH3DHair::ReadBinary(LHFile *, long, long, HairGroup *)
+	// BW1W120 00847890 BW1M119 01040b30 (LHCombined Release)
 	void ReadBinary(LHFile* param_2, uint32_t param_3, uint32_t param_4, HairGroup* param_5);
 };
 

@@ -5,23 +5,23 @@
 #include "LH3DMem.h" /* For LH3DMem */
 #include "LHPoint.h" /* For struct LHPoint */
 
-// BW1W120 00eea394 BW1M100 101bca74
+// BW1W120 00eea394
 uint8_t (*LH3DMath::g_inverse_sqrt_lookup_table)[0x80];
 
-// BW1W120 00841230 BW1M100 10061ed0 LH3DMath::Open(void)
+// BW1W120 00841230 BW1M119 010609f0 (LHCombined Release)
 void LH3DMath::Open()
 {
 	MakeInverseSqrtLookupTable();
 }
 
-// BW1W120 00841240 BW1M100 10061ed0 LH3DMath::Close(void)
+// BW1W120 00841240 BW1M119 01060990 (LHCombined Release)
 void LH3DMath::Close()
 {
 	LH3DMem::Free(g_inverse_sqrt_lookup_table);
 	g_inverse_sqrt_lookup_table = NULL;
 }
 
-// BW1W120 008411d0 LH3DMath::MakeInverseSqrtLookupTable(void)
+// BW1W120 008411d0 BW1M119 01060a40 (LHCombined Release)
 void LH3DMath::MakeInverseSqrtLookupTable()
 {
 	union FloatBits {
@@ -46,7 +46,7 @@ void LH3DMath::MakeInverseSqrtLookupTable()
 	(*g_inverse_sqrt_lookup_table)[sizeof(*LH3DMath::g_inverse_sqrt_lookup_table) / 2] = 0xff;
 }
 
-// BW1W120 00841290 LH3DMath::GetYAngle(LHPoint *)
+// BW1W120 00841290 BW1M119 01060850 (LHCombined Release)
 float LH3DMath::GetYAngle(LHPoint* point)
 {
 	float angle = (float)atan2(point->z, point->x);
@@ -57,7 +57,7 @@ float LH3DMath::GetYAngle(LHPoint* point)
 	return angle;
 }
 
-// BW1W120 00841260 LH3DMath::GetYAngle(LHPoint *, LHPoint *)
+// BW1W120 00841260 BW1M119 01012630 (LHCombined Release)
 float LH3DMath::GetYAngle(LHPoint* from, LHPoint* to)
 {
 	float angle = (float)atan2(to->z - from->z, to->x - from->x);

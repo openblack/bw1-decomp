@@ -2,7 +2,7 @@
 
 DialogBoxBase* DialogBoxBase::First;
 
-// BW1W120 005133a0
+// BW1W120 005133a0 BW1M119 012b5830
 DialogBoxBase::DialogBoxBase()
 {
 	setup_box = 0;
@@ -10,7 +10,7 @@ DialogBoxBase::DialogBoxBase()
 	First = this;
 }
 
-// BW1W120 005133c0
+// BW1W120 005133c0 BW1M119 012b5760
 DialogBoxBase::~DialogBoxBase()
 {
 	if (First == this)

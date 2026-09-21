@@ -12,7 +12,7 @@ template <class T> struct LHScriptCommandX
 	T*   name;
 	char params[12];
 
-	// BW1W120 007e7fb0 LHScriptCommandX<c>::GetCommandAsText(char*)
+	// BW1W120 007e7fb0 BW1M119 01152920 (LHCombined Release)
 	T* GetCommandAsText(T* text);
 };
 
@@ -55,64 +55,64 @@ public:
 	T** conditionNames;
 	LH_RETURN(__cdecl* conditionCallback)(long condition, long* value);
 
-	// BW1W120 00c343c0 (<c>) 00c345b0 (<w>) built-in front-end setup command table
+	// Built-in front-end setup command table: BW1W120 00c343c0 (<c>), 00c345b0 (<w>).
 	static LHScriptCommandX<T> Commands[];
-	// BW1W120 00c347a0 (<c>) 00c347b8 (<w>) built-in condition names
+	// Built-in condition names: BW1W120 00c347a0 (<c>), 00c347b8 (<w>).
 	static T* Conditions[];
-	// BW1W120 00c347d0 (<c>) 00c347f4 (<w>) comparison operator tokens
+	// Comparison operator tokens: BW1W120 00c347d0 (<c>), 00c347f4 (<w>).
 	static T* NamesToCondition[];
-	// BW1W120 00fb9d40 (<c>) 00fadce0 (<w>) shared parameter buffer
+	// Shared parameter buffer: BW1W120 00fb9d40 (<c>), 00fadce0 (<w>).
 	static LHScriptPramX<T> Pram;
 
 	// Non-virtual methods
 
-	// BW1W120 007e7380 BW1M100 1061e4c8 LHScriptX<c>::Load(char*, long*)
+	// BW1W120 007e7380 BW1M119 011531f0 (LHCombined Release)
 	LH_RETURN Load(char* file_name, long* param_2);
-	// BW1W120 007e72c0 BW1M100 1061e38c LHScriptX<c>::Load(char*, LHScriptCommandX<c>*, LH_RETURN (*)(long, LHScriptPramX<c>*), long*)
+	// BW1W120 007e72c0 BW1M119 01152e90 (LHCombined Release)
 	LH_RETURN Load(char* file_name, LHScriptCommandX<T>*                                new_commands,
 	               LH_RETURN(__cdecl* command_callback)(long, LHScriptPramX<T>*), long* param_4);
-	// BW1W120 007e7260 LHScriptX<c>::Load(char*, char**, LH_RETURN (*)(long, long*), char**)
+	// BW1W120 007e7260
 	LH_RETURN Load(char* file_name, T** condition_names, LH_RETURN(__cdecl* condition_callback)(long, long*),
 	               long* param_4);
-	// BW1W120 007e7320 LHScriptX<c>::Load(char*, LHScriptCommandX<c>*, LH_RETURN (*)(long, LHScriptPramX<c>*), char**, LH_RETURN (*)(long, long*), long*)
+	// BW1W120 007e7320 BW1M119 01153030 (LHCombined Release)
 	LH_RETURN Load(char* file_name, LHScriptCommandX<T>*                              new_commands,
 	               LH_RETURN(__cdecl* command_callback)(long, LHScriptPramX<T>*), T** condition_names,
 	               LH_RETURN(__cdecl* condition_callback)(long, long*), long*         param_6);
-	// BW1W120 007e73d0 LHScriptX<c>::SetVariables(LHScriptCommandX<c>*, LH_RETURN (*)(long, LHScriptPramX<c>*), long*)
+	// BW1W120 007e73d0 BW1M119 01152c40 (LHCombined Release)
 	LH_RETURN SetVariables(LHScriptCommandX<T>* new_commands,
 	                       LH_RETURN(__cdecl* command_callback)(long, LHScriptPramX<T>*), long* param_3);
-	// BW1W120 007e7400 BW1M100 1061cd3c LHScriptX<c>::LoadOneLine(LHReleasedOSFile&, char*)
+	// BW1W120 007e7400 BW1M119 01152ac0 (LHCombined Release)
 	bool LoadOneLine(LHOSFile& file, T* line);
-	// BW1W120 007e74c0 LHScriptX<c>::DontProcessNumLines(LHReleasedOSFile&, char*, unsigned long)
+	// BW1W120 007e74c0 BW1M119 01151360 (LHCombined Release)
 	bool DontProcessNumLines(LHOSFile& file, T* line, unsigned long num_lines);
-	// BW1W120 007e7530 LHScriptX<c>::InitIfLevel(void)
+	// BW1W120 007e7530 BW1M119 01151460 (LHCombined Release)
 	void InitIfLevel();
-	// BW1W120 007e7540 BW1M100 10150830 LHScriptX<c>::ScanLine(char*)
+	// BW1W120 007e7540 BW1M119 011514a0 (LHCombined Release)
 	LH_RETURN ScanLine(T* line);
-	// BW1W120 007e8170 BW1M100 10153040 LHScriptX<c>::LoadFile(char*, long*)
+	// BW1W120 007e8170 BW1M119 01154080 (LHCombined Release)
 	LH_RETURN LoadFile(char* file_name, long* param_2);
-	// BW1W120 007e8240 LHScriptX<c>::ProcessCommand(long, LHScriptPramX<c>*)
+	// BW1W120 007e8240 BW1M119 01151940 (LHCombined Release)
 	LH_RETURN ProcessCommand(long command, LHScriptPramX<T>* pram);
-	// BW1W120 007e8a90 LHScriptX<c>::GetNextWord(char**, char*, unsigned char*)
+	// BW1W120 007e8a90 BW1M119 01151f20 (LHCombined Release)
 	long GetNextWord(T** cursor, T* word, unsigned char* end_of_line);
-	// BW1W120 007e8cb0 BW1M100 101533a0 LHScriptX<c>::DestroyVariables(void)
+	// BW1W120 007e8cb0 BW1M119 011543d0 (LHCombined Release)
 	void DestroyVariables();
-	// BW1W120 007e8d10 LHScriptX<c>::FindVariable(char*)
+	// BW1W120 007e8d10 BW1M119 011526d0 (LHCombined Release)
 	LHScriptVariable<T>* FindVariable(T* name);
-	// BW1W120 007e9910 LHScriptX<c>::CommandIf(char*, char*, char*)
+	// BW1W120 007e9910 BW1M119 01152310 (LHCombined Release)
 	LH_RETURN CommandIf(T* value1, T* condition, T* value2);
-	// BW1W120 007e9a10 LHScriptX<c>::CreateVariable(long, LHScriptPramX<c>*)
+	// BW1W120 007e9a10 BW1M119 01152570 (LHCombined Release)
 	LH_RETURN CreateVariable(long command, LHScriptPramX<T>* pram);
-	// BW1W120 007e9ad0 LHScriptX<c>::PostFileOpenStuff(LHReleasedOSFile&)
+	// BW1W120 007e9ad0 BW1M119 011c98f8 (LHCombined Release)
 	// no-op for <c>; the <w> specialisation skips the UTF-16 byte-order mark
 	void PostFileOpenStuff(LHOSFile& file);
-	// BW1W120 007e9ca0 LHScriptX<c>::GetConditionValue(char*, long*)
+	// BW1W120 007e9ca0 BW1M119 01154220 (LHCombined Release)
 	LH_RETURN GetConditionValue(T* name, long* value);
-	// BW1W120 007e9e00 LHScriptX<c>::GetConditionState(long, unsigned char, long)
+	// BW1W120 007e9e00 BW1M119 01152450 (LHCombined Release)
 	char GetConditionState(long value1, unsigned char condition, long value2);
 };
 
-// BW1W120 007e6b70 bodge_to_force_compilation_of_versions(void)
+// BW1W120 007e6b70
 void bodge_to_force_compilation_of_versions();
 
 #endif /* BW1_DECOMP_LH_SCRIPT_INCLUDED_H */

@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <stddef.h>
 
-// AtomCore +0x110: construction at 00673830, BW1M100 CalculateDrawPos at 10051bb0.
+// AtomCore +0x110: construction at 00673830, BW1M119 CalculateDrawPos at 01054544.
 // InitAnimParticle (1043d980) copies both bools from AddBoolProperty-backed fields.
 // fabricated class tag: the nonpolymorphic Mac symbols do not distinguish class/struct.
 class PSysAnimInfo

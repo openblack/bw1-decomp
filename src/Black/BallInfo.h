@@ -18,9 +18,9 @@ public:
 
 	// Override methods
 
-	// BW1W120 00435980 BW1M100 100b0ff0 GBallInfo::_dt(void)
+	// BW1W120 00435980 BW1M119 010b3ad0
 	virtual ~GBallInfo();
-	// BW1W120 00435930 BW1M100 100b1090 GBallInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 00435930 BW1M119 010b3b70
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
@@ -29,9 +29,9 @@ class GPBallInfo : public GMobileObjectInfo
 public:
 	// Override methods
 
-	// BW1W120 0063e8c0 BW1M100 10110ff0 GPBallInfo::_dt(void)
+	// BW1W120 0063e8c0 BW1M119 0111a820
 	virtual ~GPBallInfo();
-	// BW1W120 0063e870 BW1M100 10111090 GPBallInfo::GetBaseInfo(unsigned long &)
+	// BW1W120 0063e870 BW1M119 0111a8c0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
