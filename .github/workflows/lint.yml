@@ -11,6 +11,8 @@ on:
       - '**.h'
       - '**.c'
       - '**.clang-format'
+      - 'config/**/symbols.txt'
+      - 'tools/check_addr_comments.py'
 
 permissions:
   contents: read
@@ -29,3 +31,16 @@ jobs:
         # (ddraw.h, d3dtypes.h) and unformatted shared headers. zlib and two
         # ObjC-misdetected headers are skipped via .clang-format-ignore.
         check-path: 'src'
+
+  check-address-comments:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    # Every `// BW1W120 ...` comment must be `// BW1W120 <w> [BW1M119 <m> [(<module>)]]`
+    # on its own line, with a Mac address that exists in config/BW1M119.
+    - run: python tools/check_addr_comments.py

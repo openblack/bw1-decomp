@@ -27,12 +27,6 @@ extern int g_NoBackfaceCull; // fabricated
 //   float InvHalfW, InvHalfH; }.
 // BW1W120 00e839e0
 extern float g_NearClip; // fabricated
-// { Width / 2, Height / 2 }
-// BW1W120 00e839f0
-extern float g_HalfScreen[2]; // fabricated
-// { 1 / g_HalfScreen[0], 1 / g_HalfScreen[1] }
-// BW1W120 00e839f8
-extern float g_InvHalfScreen[2]; // fabricated
 // { Width - 1, Height - 1 }
 // BW1W120 00c2ab00
 extern float g_MaxScreen[2]; // fabricated

@@ -610,7 +610,7 @@ public:
 	virtual float GetFacingPitch() { return 0.0f; }
 	// BW1W120 00402b10 BW1M119 010a3520
 	virtual void SetHeadPos(MapCoords* pos) { *pos = Pos; }
-	// BW1W120 __purecall BW1M119 null
+	// BW1W120 purecall BW1M119 null
 	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords) = 0;
 	// BW1W120 00402b30 BW1M119 010a3580
 	virtual bool32_t IsAPotFromABuildingSite() { return false; }

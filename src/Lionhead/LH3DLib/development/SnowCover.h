@@ -15,11 +15,11 @@ public:
 	// Original Mac symbol: g_snowcover__9SnowCover.
 	// BW1W120 00fa2918 BW1M119 012d3690 (LHCombined Release)
 	static SnowCover* g_snowcover;
-	// BW1W120 0086c960 BW1M119 imported
+	// BW1W120 0086c960 BW1M119 010b3c30 (LHCombined Release)
 	void Init();
-	// BW1W120 0086ca40 BW1M119 imported
+	// BW1W120 0086ca40 BW1M119 010b3b80 (LHCombined Release)
 	void Close();
-	// BW1W120 0086c560 BW1M119 imported
+	// BW1W120 0086c560 BW1M119 010b4160 (LHCombined Release)
 	static void Reset();
 };
 

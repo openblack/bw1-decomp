@@ -309,14 +309,19 @@ Each function and global declaration in a header carries an address comment:
 
 ```cpp
 // BW1W120 <windows addr> BW1M119 <mac addr> [(<module>)]
-// BW1W120 0054cbd0 BW1M119 010cca14
-// BW1W120 00c386e0 BW1M119 001ccfe0 (LHCombined Release)
+// BW1W120 0054cbd0 BW1M119 010cca10
+// BW1W120 00c386e0 BW1M119 011d0df8 (LHCombined Release)
 // BW1W120 0051f180 BW1M119 inlined
 ```
 
 The Mac address comes from `config/BW1M119/symbols.txt`, or from a module's own
 `config/BW1M119/<module>/symbols.txt`; a module symbol is tagged with that directory
-name. `inlined`, `imported` or `null` replace the address when 1.1.9 has no such symbol.
+name. In either slot, `inlined` (no out-of-line copy), `null` (not in that binary) or
+`purecall` (pure virtual slot) replace an address; nothing else does.
+Symbols exported from the game's DLLs use their DLL address (e.g. LHMultiplayerR `1001e2b0`).
+The line holds nothing else: notes go on a comment line of their own above it, and it
+never trails code. CI runs `python3 tools/check_addr_comments.py`, which also checks that
+the Mac address is a real BW1M119 symbol.
 Older comments with `BW1M100` (actually 1.1.0 or 1.1.9 addresses at base 0x10000000)
 and a trailing function name are historical. Use `tools/mac_symbol_version.py` to audit them.
 
@@ -355,7 +360,7 @@ If the demangled BW1M119 signature says `Type&` or `Type const &` but the header
 
 ```cpp
 // BW1M119: Living::CalculateDancePosition(MapCoords const &, MapCoords *)
-// BW1W120 005ef9c0 BW1M119 0138c344
+// BW1W120 005ef9c0 BW1M119 0138c340
 bool CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2);
 //                                        ^ should be const MapCoords&
 ```
