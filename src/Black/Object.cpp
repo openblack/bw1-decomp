@@ -17,12 +17,14 @@
 
 #include "EditorPhysics.h" /* For EditorPhysics::PhysicsConstants */
 #include "Creature.h"      /* For Creature::CheckAllCreaturesForCatching */
+#include "CreatureMorph.h" /* For LH3DCreature::GetNavRadius */
 #include "EffectValues.h"  /* For struct EffectNumbers, class EffectValues */
 #include "FireEffect.h"
 #include "Game.h" /* For GGame */
 #include "Game3DObject.h"
 #include "GameOSFile.h" /* For class GameOSFile, class PhysicsSaveInfo */
 #include "GameThingWithPos.h"
+#include "HelpSystem.h"       /* For class HelpSystem */
 #include "InterfaceStatus.h"  /* For class GInterfaceStatus */
 #include "JCGameBlock.h"      /* For GameBlock */
 #include "LandFeature.h"      /* For RequestChangeTexture */
@@ -440,7 +442,7 @@ PhysicsInitialisation Object::InitialisePhysics(const LHPoint& param_1, const LH
 	}
 	RemoveDraggingCreatureByLeash();
 	Flags |= GAME_THING_WITH_POS_FLAG_IN_PHYSICS;
-	Flags &= ~0x20;
+	Flags &= ~GAME_THING_WITH_POS_FLAG_LOCKED_SELECT;
 	if (IsObjectInMap())
 	{
 		RemoveMapObject();
@@ -638,11 +640,16 @@ void Object::FillInEffectDefenceMultiplier(EffectNumbers& param_1)
 
 EffectNumbers Object::GetDefenseMultiplier()
 {
+	// TODO: 59.1%. The target zero-fills the local (rep stosd) before copying over it;
+	// MSVC6 dead-stores that away here however it is spelled -- zeroing ctor, explicit
+	// memset, aggregate `= {0}`, and a local const reference to the source all produce
+	// byte-identical output. Everything from `add esi, 0x90` onwards already matches.
 	EffectNumbers multiplier;
 	multiplier = info->DefenceMultiplier;
 	return multiplier;
 }
 
+// TODO: unimplemented.
 float Object::ApplyEffect(EffectValues& param_1, int param_2)
 {
 	return 0.0f;
@@ -650,7 +657,7 @@ float Object::ApplyEffect(EffectValues& param_1, int param_2)
 
 float Object::ReduceLifeDueToBurning(float param_1, GPlayer* param_2)
 {
-	if ((GameThing::Flags & 4) == 0)
+	if ((GameThing::Flags & GAME_THING_FLAG_NO_BURN_DAMAGE) == 0)
 	{
 		ReduceLife(param_1, param_2);
 		Town* town = GetTown();
@@ -820,6 +827,16 @@ float Object::GetTopPos()
 
 float Object::Get2DRadius()
 {
+	if (Game3dObject != NULL)
+	{
+		float         objectScale = GetScale();
+		Game3DObject* object3d = Game3dObject;
+		if (object3d->GetMesh()->BoundingBox.size.x > object3d->GetMesh()->BoundingBox.size.z)
+		{
+			return object3d->GetMesh()->BoundingBox.size.x * objectScale;
+		}
+		return object3d->GetMesh()->BoundingBox.size.z * objectScale;
+	}
 	return 0.0f;
 }
 
@@ -842,9 +859,24 @@ float Object::GetWeight()
 	return (scale * scale * scale) * ((GObjectInfo*)info)->weight;
 }
 
-float Object::GetRoutePlanRadius(Creature* param_1)
+float Object::GetRoutePlanRadius(Creature* creature)
 {
-	return 0.0f;
+	if (creature == NULL)
+	{
+		return Get2DRadius();
+	}
+	float height = GetHeight();
+	float limit = creature->GetHeight() * 0.8f;
+	float factor;
+	if (height > limit)
+	{
+		factor = 0.4f;
+	}
+	else
+	{
+		factor = 0.7f - (height / limit) * 0.3f;
+	}
+	return Get2DRadius() - creature->GetCreature3D()->GetNavRadius() * factor;
 }
 
 bool32_t Object::IsBuildingMaterial()
@@ -954,9 +986,48 @@ float Object::GetImportance()
 	return 0.0f;
 }
 
-void Object::SetXYZAngles(float x, float y, float z) {}
+void Object::SetXYZAngles(float x, float y, float z)
+{
+	bool32_t inMap = IsObjectInMap();
+	if (inMap)
+	{
+		RemoveMapObject();
+	}
+	SetYJustAngle(y);
+	if (Game3dObject != NULL)
+	{
+		float   scale = GetScale();
+		float   yAngle = GetYAngle();
+		LHPoint position;
+		Game3dObject->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
+	}
+	if (inMap)
+	{
+		InsertMapObject();
+	}
+}
 
-void Object::SetXYZAnglesAndScale(float x, float y, float z, float scale) {}
+void Object::SetXYZAnglesAndScale(float x, float y, float z, float scale)
+{
+	bool32_t inMap = IsObjectInMap();
+	if (inMap)
+	{
+		RemoveMapObject();
+	}
+	SetYJustAngle(y);
+	SetJustScale(scale);
+	if (Game3dObject != NULL)
+	{
+		float   objectScale = GetScale();
+		float   yAngle = GetYAngle();
+		LHPoint position;
+		Game3dObject->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, objectScale);
+	}
+	if (inMap)
+	{
+		InsertMapObject();
+	}
+}
 
 void Object::SetScale(float scale)
 {
@@ -1057,9 +1128,20 @@ float Object::GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param
 	return GameThingWithPos::GetUpdateOfBoredomValue(param_1, param_2);
 }
 
-bool32_t Object::CanBeDestroyedBySpell(Spell* param_1)
+bool32_t Object::CanBeDestroyedBySpell(Spell* spell)
 {
-	return false;
+	if (IsEffectReceiver(NULL) != 1 || (Flags & GAME_THING_WITH_POS_FLAG_INDESTRUCTIBLE) != 0)
+	{
+		return false;
+	}
+	if (IsInScript() && GGame::g_game->help_system->field_0x45e8 != 0 && GGame::g_game->help_system->field_0x45ec != 0)
+	{
+		if (spell == NULL || (spell->Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) == 0)
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 float Object::GetTribalPower(TRIBE_TYPE tribe)
@@ -1159,7 +1241,7 @@ uint32_t Object::Save(GameOSFile& file)
 		file.WriteSafe(reinterpret_cast<uint32_t&>(scale));
 		file.WriteSafe(reinterpret_cast<uint32_t&>(y_angle));
 		file.WritePtr(fire_effect);
-		if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 && (GameThing::Flags & 0x10) == 0)
+		if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 && (GameThing::Flags & GAME_THING_FLAG_PSYS_FLYING) == 0)
 		{
 			LHPoint  velocity;
 			LHPoint  point;
@@ -1203,7 +1285,7 @@ uint32_t Object::Load(GameOSFile& file)
 		file.ReadSafe(reinterpret_cast<uint32_t&>(scale));
 		file.ReadSafe(reinterpret_cast<uint32_t&>(y_angle));
 		file.ReadPtr(reinterpret_cast<GameThing**>(&fire_effect));
-		if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 && (GameThing::Flags & 0x10) == 0)
+		if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 && (GameThing::Flags & GAME_THING_FLAG_PSYS_FLYING) == 0)
 		{
 			PhysicsSaveInfo::ReadInfo(file);
 		}
@@ -1212,9 +1294,50 @@ uint32_t Object::Load(GameOSFile& file)
 	return 0;
 }
 
-void Object::ResolveLoad() {}
+void Object::ResolveLoad()
+{
+	CallVirtualFunctionsForCreation(Pos);
+	if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 && (GameThing::Flags & GAME_THING_FLAG_PSYS_FLYING) == 0 &&
+	    PhysicsSaveInfo::ReadIndex < PhysicsSaveInfo::Count)
+	{
+		Flags &= ~GAME_THING_WITH_POS_FLAG_IN_PHYSICS;
+		LHPoint        zero(0.0f, 0.0f, 0.0f);
+		PhysicsObject* physicsObject = InitialisePhysics(zero, zero, NULL, true, NULL).Physics;
+		if (physicsObject != NULL)
+		{
+			PhysicsSaveInfo& info = PhysicsSaveInfo::Buffer[PhysicsSaveInfo::ReadIndex];
+			physicsObject->Matrix = info.Matrix;
+			physicsObject->Velocity = info.field_0x30;
+			physicsObject->field_0x90 = info.field_0x3c;
+			PhysicsSaveInfo::ReadIndex++;
+		}
+		else
+		{
+			PhysicsSaveInfo::ReadIndex++;
+		}
+	}
+	if (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE)
+	{
+		if (Flags & GAME_THING_WITH_POS_FLAG_IN_MAP)
+		{
+			RemoveMapObject();
+		}
+		Flags &= ~GAME_THING_WITH_POS_FLAG_IN_MAP;
+	}
+	Flags &= ~(GAME_THING_WITH_POS_FLAG_INTERACTING | GAME_THING_WITH_POS_FLAG_LOCKED_SELECT);
+}
 
-void Object::SetLife(float life) {}
+void Object::SetLife(float life)
+{
+	if ((((Flags & GAME_THING_WITH_POS_FLAG_IN_SCRIPT) != 0 && GGame::g_game->help_system->field_0x45e8 != 0 &&
+	      GGame::g_game->help_system->field_0x45ec != 0) ||
+	     (Flags & GAME_THING_WITH_POS_FLAG_INDESTRUCTIBLE) != 0) &&
+	    life <= 0.01f)
+	{
+		return;
+	}
+	this->life = life;
+}
 
 void Object::GetInterfaceStatusHoldingThis() {}
 

@@ -17,9 +17,9 @@ public:
 	// BW1W120 00d01a90
 	static PhysicsSaveInfo* Buffer;
 	// BW1W120 00d01a94
-	static uint32_t Count;
+	static int Count;
 	// BW1W120 00d01a98
-	static uint32_t ReadIndex;
+	static int ReadIndex;
 
 	// BW1W120 005586c0 BW1M119 01311ec0
 	static void ReadInfo(GameOSFile& file);

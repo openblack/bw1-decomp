@@ -54,9 +54,9 @@ GameThing::~GameThing()
 
 void GameThing::ProcessDead(int param_1)
 {
-	if ((Flags & 2) == 0 && param_1 == 0)
+	if ((Flags & GAME_THING_FLAG_0x00000002) == 0 && param_1 == 0)
 	{
-		Flags |= 2;
+		Flags |= GAME_THING_FLAG_0x00000002;
 		return;
 	}
 
@@ -81,7 +81,7 @@ void GameThing::ProcessDead(int param_1)
 		}
 	}
 
-	Flags |= 2;
+	Flags |= GAME_THING_FLAG_0x00000002;
 	Delete();
 }
 
@@ -108,16 +108,16 @@ void GameThing::ProcessDeadList(int param_1)
 
 void GameThing::ToBeDeleted(int param_1)
 {
-	if ((Flags & 1) == 0)
+	if ((Flags & GAME_THING_FLAG_UNAVAILABLE) == 0)
 	{
-		Flags |= 1;
+		Flags |= GAME_THING_FLAG_UNAVAILABLE;
 		if (param_1)
 		{
 			Delete();
 			return;
 		}
 
-		Flags &= ~2;
+		Flags &= ~GAME_THING_FLAG_0x00000002;
 		next.Set(NULL);
 
 		if (GGame::g_game->GameLists.GameThings.Find(this) == NULL)
@@ -404,10 +404,10 @@ uint32_t GameThingWithPos::Load(GameOSFile& file)
 		file.ReadSafe(Pos);
 		file.ReadSafe(Flags);
 
-		Flags &= ~0x100;
-		if ((Flags & 1) != 0)
+		Flags &= ~GAME_THING_WITH_POS_FLAG_0x00000200;
+		if ((Flags & GAME_THING_WITH_POS_FLAG_IN_MAP) != 0)
 		{
-			Flags &= ~1;
+			Flags &= ~GAME_THING_WITH_POS_FLAG_IN_MAP;
 		}
 
 		return 1;

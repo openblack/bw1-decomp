@@ -312,11 +312,18 @@ class Villager;
 // fabricated: bit meanings of GameThing::Flags. Both bits are only ever read inverted, so they
 // are named for the state that having them set denotes. The enum cannot be used as the member's
 // type because MSVC6 makes every enum int-sized and the field is one byte.
+// fabricated: PSYS_FLYING is set by RenderParticleGameObject::InitialisePSysFlying when it
+// starts physics on the object and cleared by StopFlying. NO_BURN_DAMAGE is named after its
+// only reader, Object::ReduceLifeDueToBurning; nothing in the Windows binary sets it.
 enum GAME_THING_FLAGS
 {
-	GAME_THING_FLAG_UNAVAILABLE = 0x1,
-	GAME_THING_FLAG_FIREPROOF = 0x8,
-	GAME_THING_FLAG_NAME_HIDDEN = 0x40,
+	GAME_THING_FLAG_UNAVAILABLE = 1 << 0,
+	GAME_THING_FLAG_0x00000002 = 1 << 1, // TODO(#343)
+	GAME_THING_FLAG_NO_BURN_DAMAGE = 1 << 2,
+	GAME_THING_FLAG_FIREPROOF = 1 << 3,
+	GAME_THING_FLAG_PSYS_FLYING = 1 << 4,
+	GAME_THING_FLAG_0x0000020 = 1 << 5, // TODO(#343)
+	GAME_THING_FLAG_NAME_HIDDEN = 1 << 6,
 };
 
 class GameThing : public Base

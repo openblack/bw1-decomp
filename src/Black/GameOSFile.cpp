@@ -56,8 +56,8 @@ unsigned char    GameOSFile::LoadedCreatureFlags;
 uint32_t         GameOSFile::LoadCount;
 int              GameOSFile::Loading;
 PhysicsSaveInfo* PhysicsSaveInfo::Buffer;
-uint32_t         PhysicsSaveInfo::Count;
-uint32_t         PhysicsSaveInfo::ReadIndex;
+int              PhysicsSaveInfo::Count;
+int              PhysicsSaveInfo::ReadIndex;
 
 // BW1W120 00557f90 BW1M119 01312b40
 void GameLoadingBox(bool finished);
@@ -1016,8 +1016,7 @@ void fn00558db0(const char* message) {}
 // BW1W120 005586c0 BW1M119 01311ec0
 void PhysicsSaveInfo::ReadInfo(GameOSFile& file)
 {
-	// The original capacity check is signed; a full buffer consumes no input.
-	if ((int32_t)Count < 256)
+	if (Count < 256)
 	{
 		PhysicsSaveInfo& info = Buffer[Count];
 		file.ReadIt(info.Matrix);
