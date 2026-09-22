@@ -156,6 +156,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00480a60 BW1M119 012011a0
+	float GetNavRadius();
 	// BW1W120 004813f0 BW1M119 01200130
 	LHPoint* GetBonePos(int index);
 	// BW1W120 004842b0 BW1M119 011fc210

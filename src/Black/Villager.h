@@ -95,7 +95,7 @@ struct DiscipleInfo
 class Villager : public Living
 {
 public:
-	uint16_t      Flags;
+	uint16_t      Flags; // TODO(#343)
 	Villager*     next;
 	float         food;
 	int           LastCheckTurn;
