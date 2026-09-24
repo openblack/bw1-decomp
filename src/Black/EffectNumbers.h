@@ -18,6 +18,8 @@ struct EffectNumbers
 
 	// BW1W120 00525720 BW1M119 010cfd50
 	EffectNumbers& operator*=(const float& rhs);
+	// BW1W120 005258c0 BW1M119 010cfcd0
+	int IsDestructive();
 };
 
 #endif /* BW1_DECOMP_EFFECT_NUMBERS_INCLUDED_H */

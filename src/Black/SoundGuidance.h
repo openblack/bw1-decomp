@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+#include <chlasm/Enum.h>                        /* For enum VILLAGER_DISCIPLE */
 
 #include "Base.h" /* For struct Base */
 
@@ -58,6 +59,8 @@ public:
 	static void ProcessTownDesireSFX(GInterfaceStatus& status);
 	// BW1W120 0071d1c0 BW1M119 010852f0
 	static void HelpSpritesCheckMoonPhase();
+	// BW1W120 0071bf10 BW1M119 01517210
+	static void MakeDiscipleSFX(GInterfaceStatus& status, VILLAGER_DISCIPLE disciple);
 
 	// Constructors
 

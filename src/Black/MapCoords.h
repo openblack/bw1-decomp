@@ -115,6 +115,10 @@ struct MapCoords : public LH3DMapCoords
 	MapCellIterator GetFirstIterator() const;
 	// BW1W120 006035b0 BW1M119 0101ba20
 	bool32_t IsWater() const;
+	// BW1W120 00603620 BW1M119 0151adc0
+	bool32_t IsDryLand() const;
+	// BW1W120 00603720 BW1M119 0106a480
+	bool32_t IsLand() const;
 	// MapCoords::IsSuitableForFixed 9MESH_LISTff
 	// BW1W120 00603b30
 	void IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3);

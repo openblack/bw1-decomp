@@ -273,8 +273,8 @@ public:
 	// BW1W120 0076aa80 BW1M119 015a1030
 	virtual float GetImportance();
 	// BW1W120 005efe90 BW1M119 0138d8f0
-	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
-	                                           Object* param_4, int param_5);
+	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
+	                                                 GInterfaceStatus* status, Object* thrower, int dont_replant);
 	// BW1W120 005efef0 BW1M119 0138d810
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);

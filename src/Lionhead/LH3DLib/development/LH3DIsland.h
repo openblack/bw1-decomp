@@ -2,6 +2,7 @@
 #define BW1_DECOMP_LH3D_ISLAND_INCLUDED_H
 
 #include <assert.h>    /* For static_assert */
+#include <stddef.h>    /* For NULL */
 #include <stdint.h>    /* For uint32_t, uint8_t */
 #include <re_common.h> /* For bool32_t */
 
@@ -11,6 +12,7 @@ struct LH3DColor;
 struct LH3DMapCoords;
 struct LH3DMaterial;
 struct LH3DTexture;
+struct LHPoint;
 
 struct LandCell
 {
@@ -29,10 +31,34 @@ struct LandCell
 	bool IsWater();
 };
 
+struct LandBlock
+{
+	LandCell Cells[17][17];
+};
+
 class LH3DIsland
 {
 public:
+	static uint8_t    BlockIndex[32][32];
+	static LandBlock* Blocks[0x100];
+
 	// Static methods
+
+	// BW1W120 inlined BW1M119 0102f130 (LHCombined Release)
+	static LandCell* GetCell(long x, long z)
+	{
+		if (x < 0 || x > 511 || z < 0 || z > 511)
+		{
+			return NULL;
+		}
+		uint32_t block = BlockIndex[x >> 4][z >> 4];
+		if (block == 0)
+		{
+			return NULL;
+		}
+		return &Blocks[block]->Cells[x & 0xf][z & 0xf];
+	}
+
 	// BW1W120 00804790 BW1M119 01045ba0 (LHCombined Release)
 	static bool32_t Release();
 
@@ -41,6 +67,8 @@ public:
 	// BW1W120 00803340 BW1M119 01047430 (LHCombined Release)
 	static float __fastcall GetAltitudeAndSetColorSpecular(const LH3DMapCoords& coords, uint32_t* color,
 	                                                       uint32_t* specular);
+	// BW1W120 00803630 BW1M119 0101c2c0 (LHCombined Release)
+	static void __fastcall GetNormal(const LH3DMapCoords& coords, LHPoint* normal);
 };
 
 #endif /* BW1_DECOMP_LH3D_ISLAND_INCLUDED_H */

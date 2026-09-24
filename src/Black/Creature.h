@@ -181,7 +181,7 @@ public:
 	uint32_t                              field_0x11b4;
 	uint32_t                              field_0x11b8;
 	uint32_t                              field_0x11bc;
-	uint32_t                              field_0x11c0;
+	float                                 ObjectsDestroyed;
 	uint32_t                              field_0x11c4;
 	uint32_t                              field_0x11c8;
 	MapCoords                             field_0x11cc;

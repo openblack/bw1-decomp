@@ -9,9 +9,11 @@
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/PhysOb.h>  /* For struct PhysOb */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>          /* For operator new(size_t, const char*, uint32_t) */
 #include "re_common.h"
 #include "chlasm/AllMeshes.h"
 
+#include "Alignment.h"          /* For GAlignment::Update */
 #include "ColourConstants.h"    /* For White */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 
@@ -32,11 +34,15 @@
 #include "Map.h"              /* For MapCell */
 #include "PhysicsObject.h"    /* For class PhysicsObject */
 #include "PhysicsSaveInfo.h"  /* For class PhysicsSaveInfo */
+#include "Player.h"           /* For class GPlayer */
 #include "Reaction.h"         /* For Reaction::CreateReaction, Reaction::RemoveAllReactionsOfTypeInitiatedByObject */
+#include "SoundGuidance.h"    /* For class GGuidance */
 #include "SpellWater.h"       /* For class SpellWater */
 #include "Town.h"             /* For Town::UpdateAggressor */
 #include "Utils.h"            /* For GUtils */
 #include "VirtualInfluence.h" /* For class GVirtualInfluence */
+
+static const float RouteMinRadius = 0.05f;
 
 Object::Object() : info(NULL), coords()
 {
@@ -418,10 +424,168 @@ void Object::RemoveDraggingCreatureByLeash()
 	}
 }
 
-uint32_t Object::InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
-                                           Object* param_4, int param_5)
+PhysicsObject* Object::InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity, GInterfaceStatus* status,
+                                                 Object* thrower, int dont_replant)
 {
-	return 0;
+	if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0)
+	{
+		return 0;
+	}
+	RemoveDraggingCreatureByLeash();
+	Flags |= GAME_THING_WITH_POS_FLAG_IN_PHYSICS;
+	Flags &= ~GAME_THING_WITH_POS_FLAG_LOCKED_SELECT;
+	bool fromThrower = thrower != NULL;
+	if (!fromThrower && status != NULL)
+	{
+		status->LastThrownObject = this;
+	}
+	if (IsObjectInMap())
+	{
+		RemoveMapObject();
+	}
+	if (PhysicsObject::PredictionActive && PhysicsObject::PredictionObject == this)
+	{
+		PhysicsObject::PredictionActive = false;
+		PhysicsObject::PredictionPhysOb.DeInitialise();
+	}
+
+	LHPoint        zero(0.0f, 0.0f, 0.0f);
+	PhysicsObject* physicsObject = PhysicsObject::AddObject(this, velocity, zero, thrower, status);
+	if (physicsObject == NULL)
+	{
+		return 0;
+	}
+	if (Game3dObject != NULL)
+	{
+		if (Game3dObject->IsPaper())
+		{
+			physicsObject->Flags |= PHYSICS_OBJECT_FLAG_WAS_PAPER;
+			Game3dObject->SetPaper(0);
+		}
+		if (Game3dObject->IsDisappear())
+		{
+			physicsObject->Flags |= PHYSICS_OBJECT_FLAG_WAS_DISAPPEARING;
+			Game3dObject->SetDisappear(0);
+		}
+	}
+	physicsObject->Physics.AngularVelocity = angular_velocity;
+
+	float oldAltitude;
+	bool  thrown;
+	if (fromThrower)
+	{
+		thrown = velocity.x * velocity.x + velocity.z * velocity.z > 1.0f;
+		if (thrown)
+		{
+			oldAltitude = physicsObject->Physics.Matrix.GetPos().y;
+		}
+		else
+		{
+			physicsObject->Physics.AdjustToGroundLevel(thrown, !IsAnyKindOfTree());
+			oldAltitude = physicsObject->Physics.Matrix.GetPos().y;
+			physicsObject->Physics.ZeroForces();
+			PhysicsObject::RaiseUntilNotIntersecting(&physicsObject);
+		}
+	}
+	else
+	{
+		thrown = velocity.x * velocity.x + velocity.z * velocity.z > 4.0f;
+		physicsObject->Physics.AdjustToGroundLevel(thrown, !IsAnyKindOfTree());
+		oldAltitude = physicsObject->Physics.Matrix.GetPos().y;
+		physicsObject->Physics.ZeroForces();
+		PhysicsObject::RaiseUntilNotIntersecting(&physicsObject);
+		physicsObject->Flags |= PHYSICS_OBJECT_FLAG_FROM_HAND;
+	}
+
+	MapCoords coords(physicsObject->Physics.Matrix.GetPos());
+	bool      landed = false;
+	if (!thrown && (oldAltitude == physicsObject->Physics.Matrix.GetPos().y ||
+	                (IsVillager(NULL) && status != NULL && status->GetPlayer()->type == PLAYER_TYPE_COMPUTER)))
+	{
+		if (coords.IsDryLand())
+		{
+			landed = true;
+		}
+		else
+		{
+			LandCell* cell = LH3DIsland::GetCell((int)(physicsObject->Physics.Matrix.GetPos().x / 10.0f),
+			                                     (int)(physicsObject->Physics.Matrix.GetPos().z / 10.0f));
+			if (cell != NULL && cell->altitude > 1)
+			{
+				landed = true;
+			}
+		}
+	}
+	if (landed && (IsLiving() || IsFence()))
+	{
+		LH3DMapCoords landCoords(physicsObject->Physics.Matrix.GetPos().x, physicsObject->Physics.Matrix.GetPos().z);
+		LHPoint       normal;
+		LH3DIsland::GetNormal(landCoords, &normal);
+		if (normal.y < 0.7f)
+		{
+			landed = false;
+		}
+	}
+
+	if (landed)
+	{
+		if (IsVillager(NULL))
+		{
+			GInterfaceStatus* myStatus = GGame::g_game->MyInterfaceStatus();
+			Villager*         villager = (Villager*)this;
+			// TODO: field_0x10c doubles as the last disciple type here; see VillagerStates.cpp.
+			if (myStatus == status && *(uint32_t*)&villager->field_0x10c != villager->DiscipleType)
+			{
+				GGuidance::MakeDiscipleSFX(*myStatus, (VILLAGER_DISCIPLE)villager->DiscipleType);
+			}
+		}
+		physicsObject->Flags |= PHYSICS_OBJECT_FLAG_LANDED;
+		ConsiderCreatureMimickingWhenObjectLands();
+		if (IsLiving() || IsFence() || (IsTree() && GetFireEffect() == NULL && coords.IsLand()))
+		{
+			bool remove = true;
+			if (IsTree() && !fromThrower)
+			{
+				float xAngle = 0.0f;
+				float yAngle = 0.0f;
+				float zAngle = 0.0f;
+				Game3dObject->matrix.GetYXZ(&yAngle, &xAngle, &zAngle);
+				if (dont_replant != 0 || (float)fabs(xAngle) > 0.2f || (float)fabs(zAngle) > 0.2f)
+				{
+					remove = false;
+				}
+			}
+			if (remove)
+			{
+				PhysicsObject::RemoveObject(this, true, true);
+			}
+			else
+			{
+				physicsObject->Flags &= ~PHYSICS_OBJECT_FLAG_LANDED;
+			}
+		}
+	}
+	else
+	{
+		if (IsVillager(NULL))
+		{
+			((Villager*)this)->CreateDroppedResource(&velocity, NULL, &angular_velocity);
+		}
+		GPlayer* player = NULL;
+		if (status != NULL)
+		{
+			player = status->GetPlayer();
+		}
+		Reaction::CreateReaction(this, 9, player, 0);
+		Creature::CheckAllCreaturesForCatching(this, physicsObject);
+	}
+
+	if (status != NULL && IsToy(NULL) && (thrower == NULL || !thrower->IsCreature()))
+	{
+		status->GetPlayer()->ConsiderMakingCreatureMimicPlayer(status, DETECTED_PLAYER_ACTION_PLAY_WITH_TOY, this,
+		                                                       MAGIC_TYPE_NONE);
+	}
+	return physicsObject;
 }
 
 bool32_t Object::HasSunk()
@@ -463,12 +627,12 @@ PhysicsInitialisation Object::InitialisePhysics(const LHPoint& param_1, const LH
 		{
 			if (Game3dObject->IsPaper())
 			{
-				physicsObject->field_0x1d8 |= 0x20;
+				physicsObject->Flags |= PHYSICS_OBJECT_FLAG_WAS_PAPER;
 				Game3dObject->SetPaper(0);
 			}
-			if (Game3dObject->IsDisappear() && (physicsObject->field_0x1d8 & 4) != 0)
+			if (Game3dObject->IsDisappear() && (physicsObject->Flags & PHYSICS_OBJECT_FLAG_FROM_HAND) != 0)
 			{
-				physicsObject->field_0x1d8 |= 0x40;
+				physicsObject->Flags |= PHYSICS_OBJECT_FLAG_WAS_DISAPPEARING;
 				Game3dObject->SetDisappear(0);
 			}
 			Creature::CheckAllCreaturesForCatching(this, physicsObject);
@@ -493,11 +657,11 @@ Object* Object::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_
 	coords = Pos;
 	if (Game3dObject != NULL && physics_object != NULL)
 	{
-		if (physics_object->field_0x1d8 & 0x20)
+		if (physics_object->Flags & PHYSICS_OBJECT_FLAG_WAS_PAPER)
 		{
 			Game3dObject->SetPaper(1);
 		}
-		if (physics_object->field_0x1d8 & 0x40)
+		if (physics_object->Flags & PHYSICS_OBJECT_FLAG_WAS_DISAPPEARING)
 		{
 			Game3dObject->SetDisappear(1);
 		}
@@ -649,10 +813,71 @@ EffectNumbers Object::GetDefenseMultiplier()
 	return multiplier;
 }
 
-// TODO: unimplemented.
-float Object::ApplyEffect(EffectValues& param_1, int param_2)
+float Object::ApplyEffect(EffectValues& values, int param_2)
 {
-	return 0.0f;
+	float life = GetLife();
+	float damage = GetDamageEffect(values);
+	float heal = GetHealEffect(values);
+	float result = 0.0f;
+	if (heal > 0.0f)
+	{
+		result += (1.0f - life) / heal;
+		IncreaseLife(heal);
+	}
+	if (damage > 0.0f)
+	{
+		result += life / damage;
+		ReduceLife(damage, values.GetPlayer());
+	}
+	if (GetLife() == 0.0f && life != 0.0f)
+	{
+		if (values.AppliedBy != NULL)
+		{
+			Creature* creature = values.AppliedBy->CastCreature();
+			if (creature != NULL)
+			{
+				creature->ObjectsDestroyed += 1.0f;
+			}
+		}
+		DestroyedByEffect(values.GetPlayer(), life);
+	}
+	GetLife();
+	if (values.numbers.values[EFFECT_TYPE_CRUSH] > 0.01f && CanBeCrushed() &&
+	    Reaction::GetReactionInitiatedByObject(this) == NULL)
+	{
+		GameThingWithPos* crusher = dynamic_cast<GameThingWithPos*>(values.AppliedBy);
+		Reaction::CreateReaction(crusher != NULL ? crusher : this, REACTION_REACT_TO_OBJECT_CRUSHED, GetPlayer(), 1);
+	}
+	float temperature = values.numbers.values[EFFECT_TYPE_BURN];
+	float totalDamage = damage + FireEffect::ConvertTemperatureToDamage(this, temperature);
+	if (values.numbers.IsDestructive())
+	{
+		Town* town = GetTown();
+		if (town != NULL && values.AppliedBy != NULL && totalDamage != 0.0f &&
+		    dynamic_cast<GameThingWithPos*>(values.AppliedBy) != NULL)
+		{
+			town->UpdateAggressor(values, GetAggressorValueFromDamage(totalDamage));
+		}
+	}
+	GAlignment* alignment = NULL;
+	if (values.AppliedBy != NULL && values.AppliedBy->IsCreature())
+	{
+		alignment = values.AppliedBy->CastCreature()->alignment;
+	}
+	else if (values.GetPlayer() != NULL)
+	{
+		alignment = values.GetPlayer()->alignment;
+		if (GetPlayer() != NULL)
+		{
+			GPlayer* attacker = values.GetPlayer();
+			GetPlayer()->DamageFromPlayer[attacker->player_number] += totalDamage;
+		}
+	}
+	if (alignment != NULL)
+	{
+		alignment->Update(this, values, life);
+	}
+	return result;
 }
 
 float Object::ReduceLifeDueToBurning(float param_1, GPlayer* param_2)
@@ -840,7 +1065,61 @@ float Object::Get2DRadius()
 	return 0.0f;
 }
 
-void Object::GetWorldMatrix(LHMatrix* out) {}
+void Object::GetWorldMatrix(LHMatrix* out)
+{
+	LHPoint position;
+	GLandscape::ConvertMapCoordToLandscapePoint(Pos, position);
+	float scale = GetScale();
+	float yAngle = GetYAngle();
+	if (yAngle != 0.0f)
+	{
+		if (scale != 1.0f)
+		{
+			out->m[11] = 0.0f;
+			out->m[10] = 0.0f;
+			out->m[9] = 0.0f;
+			out->m[7] = 0.0f;
+			out->m[6] = 0.0f;
+			out->m[5] = 0.0f;
+			out->m[3] = 0.0f;
+			out->m[2] = 0.0f;
+			out->m[1] = 0.0f;
+			out->m[8] = scale;
+			out->m[4] = scale;
+			out->m[0] = scale;
+			out->PostTranslation(position);
+			out->RotateY(yAngle);
+		}
+		else
+		{
+			out->Translation(position);
+			out->RotateY(yAngle);
+		}
+	}
+	else
+	{
+		if (scale != 1.0f)
+		{
+			out->m[11] = 0.0f;
+			out->m[10] = 0.0f;
+			out->m[9] = 0.0f;
+			out->m[7] = 0.0f;
+			out->m[6] = 0.0f;
+			out->m[5] = 0.0f;
+			out->m[3] = 0.0f;
+			out->m[2] = 0.0f;
+			out->m[1] = 0.0f;
+			out->m[8] = scale;
+			out->m[4] = scale;
+			out->m[0] = scale;
+			out->PostTranslation(position);
+		}
+		else
+		{
+			out->Translation(position);
+		}
+	}
+}
 
 int Object::GetLandingPointCount()
 {
@@ -935,14 +1214,140 @@ bool32_t Object::CreatureMustAvoid(Creature* creature)
 	return creature == NULL || reinterpret_cast<Object*>(creature)->GetHeight() * 0.1f <= GetHeight() || IsOnFire();
 }
 
-void Object::AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
-                            void(__cdecl* param_4)(int, Point2D, float, int))
+void Object::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
+                            void(__cdecl* add_function)(int, Point2D, float, int))
 {
+	bool onFire = false;
+	if (GetFireEffect() != NULL && creature != NULL)
+	{
+		onFire = true;
+	}
+	float         fireMargin = onFire ? 5.0f : 0.0f;
+	Game3DObject* object3d = Game3dObject;
+	float         margin = holder->ObjectMargin;
+	if (creature != NULL)
+	{
+		float height = GetHeight();
+		float creatureHeight = reinterpret_cast<Object*>(creature)->GetHeight();
+		float factor;
+		if (height > creatureHeight * 0.8f)
+		{
+			factor = 0.4f;
+		}
+		else
+		{
+			factor = 0.7f - 0.3f * (height / (creatureHeight * 0.8f));
+		}
+		margin -= factor * holder->ObjectMargin;
+	}
+	if (object3d != NULL)
+	{
+		LHMatrix matrix;
+		GetWorldMatrix(&matrix);
+		LHPoint worldCentre = matrix * object3d->GetMesh()->BoundingBox.centre;
+		Point2D pos(worldCentre.x, worldCentre.z);
+		LHPoint size = object3d->GetMesh()->BoundingBox.size * GetScale();
+		size.x = size.x + margin + fireMargin;
+		size.z = size.z + margin + fireMargin;
+		int      count = 1;
+		bool32_t alongX = true;
+		float    spacing;
+		float    width;
+		if (size.x > size.z * 1.2f)
+		{
+			count = (int)(size.x / size.z) + 1;
+			if (count > 5)
+			{
+				count = 5;
+				size.z = size.x * 0.2f;
+			}
+			alongX = true;
+			spacing = size.x / count;
+			width = size.z;
+		}
+		else if (size.x * 1.2f < size.z)
+		{
+			count = (int)(size.z / size.x) + 1;
+			if (count > 5)
+			{
+				count = 5;
+				size.x = size.z * 0.2f;
+			}
+			alongX = false;
+			spacing = size.z / count;
+			width = size.x;
+		}
+		if (count == 1)
+		{
+			float radius = Get2DRadius() + margin + fireMargin;
+			if (radius < RouteMinRadius)
+			{
+				radius = RouteMinRadius;
+			}
+			if (add_function != NULL)
+			{
+				add_function((int)this, pos, radius, update);
+			}
+			else
+			{
+				holder->AddObject((int)this, pos, radius, update);
+			}
+		}
+		else
+		{
+			float   angleOffset = alongX ? 1.5707964f : 0.0f;
+			float   angle = GetYAngle() + angleOffset;
+			Point2D step((float)(sin(angle) * spacing), (float)-(cos(angle) * spacing));
+			pos -= step * (float)(count - 1);
+			step.x *= 2.0f;
+			step.y *= 2.0f;
+			float radius = width * 1.15;
+			if (radius < RouteMinRadius)
+			{
+				radius = RouteMinRadius;
+			}
+			for (int i = 0; i < count; i++)
+			{
+				if (add_function != NULL)
+				{
+					add_function((int)this, pos, radius, update);
+				}
+				else
+				{
+					holder->AddObject((int)this, pos, radius, update);
+				}
+				pos += step;
+			}
+		}
+	}
 }
 
-void Object::SimpleAddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
-                                  void(__cdecl* param_4)(int, Point2D, float, int))
+void Object::SimpleAddToRoutePlan(RPHolder* holder, Creature* creature, int update,
+                                  void(__cdecl* add_function)(int, Point2D, float, int))
 {
+	bool onFire = false;
+	if (GetFireEffect() != NULL && creature != NULL)
+	{
+		onFire = true;
+	}
+	float fireMargin = onFire ? 5.0f : 0.0f;
+	float margin = holder->ObjectMargin;
+	float radius = GetRoutePlanRadius(creature) + margin + fireMargin;
+	if (radius < RouteMinRadius)
+	{
+		radius = RouteMinRadius;
+	}
+	LHPoint point;
+	GLandscape::ConvertMapCoordToLandscapePoint(Pos, point);
+	Point2D pos(point.x, point.z);
+	if (add_function != NULL)
+	{
+		add_function((int)this, pos, radius, update);
+	}
+	else
+	{
+		holder->AddObject((int)this, pos, radius, update);
+	}
 }
 
 bool32_t Object::VillagerMustAvoid(Villager* param_1)
@@ -1074,7 +1479,7 @@ void Object::GetPhysicsMovementDirection(LHPoint* pos)
 	PhysicsObject* physicsObject = PhysicsObject::SearchForPhysicsObject(this);
 	if (physicsObject != NULL)
 	{
-		*pos = physicsObject->Velocity;
+		*pos = physicsObject->Physics.Velocity;
 	}
 	else
 	{
@@ -1250,19 +1655,15 @@ uint32_t Object::Save(GameOSFile& file)
 			PhysicsObject* physicsObject = PhysicsObject::SearchForPhysicsObject(this);
 			if (physicsObject != NULL)
 			{
-				matrix = physicsObject->Matrix;
-				velocity = physicsObject->Velocity;
-				point = physicsObject->field_0x90;
+				matrix = physicsObject->Physics.Matrix;
+				velocity = physicsObject->Physics.Velocity;
+				point = physicsObject->Physics.AngularVelocity;
 			}
 			else
 			{
-				matrix.SetIdentityMatrix();
-				velocity.z = 0.0f;
-				velocity.y = 0.0f;
-				velocity.x = 0.0f;
-				point.z = 0.0f;
-				point.y = 0.0f;
-				point.x = 0.0f;
+				matrix.SetIdentity();
+				velocity.SetNull();
+				point.SetNull();
 			}
 			file.WriteSafe(matrix);
 			file.WriteSafe(velocity);
@@ -1306,9 +1707,9 @@ void Object::ResolveLoad()
 		if (physicsObject != NULL)
 		{
 			PhysicsSaveInfo& info = PhysicsSaveInfo::Buffer[PhysicsSaveInfo::ReadIndex];
-			physicsObject->Matrix = info.Matrix;
-			physicsObject->Velocity = info.field_0x30;
-			physicsObject->field_0x90 = info.field_0x3c;
+			physicsObject->Physics.Matrix = info.Matrix;
+			physicsObject->Physics.Velocity = info.Velocity;
+			physicsObject->Physics.AngularVelocity = info.AngularVelocity;
 			PhysicsSaveInfo::ReadIndex++;
 		}
 		else
@@ -1346,7 +1747,120 @@ IMMERSION_EFFECT_TYPE Object::GetImmersionTexture()
 	return info->immersion;
 }
 
-void Object::SetUpPhysObAsATree(PhysOb* param_1, float param_2, float param_3, float param_4, float param_5) {}
+void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, float radius, float scale)
+{
+	// Row 6 of physicsconstants.txt.
+	phys_ob->SetUpConstants(weight, &EditorPhysics::PhysicsConstants[6], 1);
+	phys_ob->NumVertices = 16;
+	phys_ob->Vertices = new ("C:\\dev\\MP\\Black\\Object.cpp", 2491) PhysOb::Vertex[phys_ob->NumVertices];
+
+	float halfHeight;
+	if (IsARootedObject())
+	{
+		phys_ob->CentreOfMass.Set(0.0f, 0.4f / scale * height, 0.0f);
+		halfHeight = height * 0.6f;
+	}
+	else
+	{
+		phys_ob->CentreOfMass.Set(0.0f, 0.5f / scale * height, 0.0f);
+		halfHeight = height * 0.5f;
+	}
+
+	PhysOb::Vertex* vertex = phys_ob->Vertices;
+	for (int ring = 1; ring < 4; ring++)
+	{
+		float ringRadius;
+		float y;
+		switch (ring)
+		{
+		case 0:
+			ringRadius = radius * 0.2f;
+			y = -halfHeight;
+			break;
+		case 1:
+			ringRadius = radius * 0.65f;
+			y = halfHeight * -0.6f;
+			break;
+		case 2:
+			ringRadius = radius;
+			y = 0.0f;
+			break;
+		case 3:
+			ringRadius = radius * 0.65f;
+			y = halfHeight * 0.6f;
+			break;
+		case 4:
+			ringRadius = radius * 0.2f;
+			y = halfHeight;
+			break;
+		}
+		for (int corner = 0; corner < 4; corner++)
+		{
+			vertex->Clear();
+			switch (corner)
+			{
+			case 0:
+				vertex->Pos.Set(ringRadius, y, 0.0f);
+				break;
+			case 1:
+				vertex->Pos.Set(0.0f, y, -ringRadius);
+				break;
+			case 2:
+				vertex->Pos.Set(-ringRadius, y, 0.0f);
+				break;
+			case 3:
+				vertex->Pos.Set(0.0f, y, ringRadius);
+				break;
+			}
+			vertex++;
+		}
+	}
+
+	float baseRadius = radius * 0.1f;
+	vertex->Clear();
+	vertex->Pos.Set(baseRadius, -halfHeight, 0.0f);
+	vertex++;
+	vertex->Clear();
+	vertex->Pos.Set(0.0f, halfHeight, 0.0f);
+	vertex++;
+	vertex->Clear();
+	vertex->Pos.Set(baseRadius, -halfHeight, 0.0f);
+	vertex++;
+	vertex->Clear();
+	vertex->Pos.Set(baseRadius, -halfHeight, 0.0f);
+
+	phys_ob->Radius = halfHeight > radius ? halfHeight : radius;
+
+	phys_ob->NumFaces = 24;
+	phys_ob->Faces = new ("C:\\dev\\MP\\Black\\Object.cpp", 2591) PhysOb::Face[phys_ob->NumFaces];
+	PhysOb::Face* face = phys_ob->Faces;
+	// The two bands between the rings, two triangles per quad.
+	for (int band = 0; band < 2; band++)
+	{
+		face[0].Set(band * 4 + 0, band * 4 + 1, band * 4 + 5);
+		face[1].Set(band * 4 + 0, band * 4 + 5, band * 4 + 4);
+		face[2].Set(band * 4 + 1, band * 4 + 2, band * 4 + 6);
+		face[3].Set(band * 4 + 1, band * 4 + 6, band * 4 + 5);
+		face[4].Set(band * 4 + 2, band * 4 + 3, band * 4 + 7);
+		face[5].Set(band * 4 + 2, band * 4 + 7, band * 4 + 6);
+		face[6].Set(band * 4 + 3, band * 4 + 0, band * 4 + 4);
+		face[7].Set(band * 4 + 3, band * 4 + 4, band * 4 + 7);
+		face += 8;
+	}
+	// Fans closing the bottom ring onto vertex 12 and the top ring onto vertex 13.
+	face[0].Set(12, 1, 0);
+	face[1].Set(12, 2, 1);
+	face[2].Set(12, 3, 2);
+	face[3].Set(12, 0, 3);
+	face[4].Set(13, 8, 9);
+	face[5].Set(13, 9, 10);
+	face[6].Set(13, 10, 11);
+	face[7].Set(13, 11, 8);
+
+	phys_ob->SetUpMoi();
+	phys_ob->Inertia *= 0.3f;
+	phys_ob->SetUpPos();
+}
 
 void Object::InitialiseIsFixedForMapList()
 {
@@ -1360,7 +1874,7 @@ bool32_t Object::IsDrowning()
 	if (Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS)
 	{
 		PhysicsObject* physicsObject = PhysicsObject::SearchForPhysicsObject(this);
-		if (physicsObject != NULL && physicsObject->Matrix.m[10] < 0.0f)
+		if (physicsObject != NULL && physicsObject->Physics.Matrix.m[10] < 0.0f)
 		{
 			return true;
 		}
@@ -1441,4 +1955,59 @@ void Object::DiscipleInHandNear(Villager& villager, GInterfaceStatus& status) {}
 void Object::DestroyedByBeam()
 {
 	ToBeDeleted(0);
+}
+
+Game3DObject* Game3DObject::Create(LH3DObject::ObjectType type)
+{
+	return (Game3DObject*)LH3DObject::Create(type);
+}
+
+Game3DObject* Game3DObject::Create(const MapCoords& coords, LH3DObject::ObjectType type, MESH_LIST mesh, float y_angle,
+                                   float scale)
+{
+	Game3DObject* object = Create(type);
+	if (object != NULL)
+	{
+		object->SetMesh(LH3DMesh::GetPackedMesh(mesh), NULL, NULL);
+		LHPoint point;
+		GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
+		object->SetPosition(point, y_angle, scale);
+	}
+	return object;
+}
+
+bool32_t Game3DObject::IsPointInsideXZ(const LHPoint& point)
+{
+	LHPoint local;
+	local.x = point.x;
+	local.z = point.z;
+	const LH3DBoundingBox& box = GetMesh()->BoundingBox;
+	local.x -= matrix.GetPos().x;
+	local.z -= matrix.GetPos().z;
+	local.x -= box.centre.x;
+	local.z -= box.centre.z;
+	if (local.x <= box.size.x && local.x >= -box.size.x && local.z <= box.size.z && -box.size.z <= local.z)
+	{
+		return true;
+	}
+	return false;
+}
+
+void __fastcall Game3DObject::SetPositionAndXZYScale(const MapCoords& coords, float y_angle, float scale,
+                                                     float xz_scale, float y_scale)
+{
+	LHPoint point;
+	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
+	SetPositionAndXZYScale(point, y_angle, scale, xz_scale, y_scale);
+}
+
+void __fastcall Game3DObject::SetPositionAndXZYScale(const LHPoint& point, float y_angle, float scale, float xz_scale,
+                                                     float y_scale)
+{
+	scale *= xz_scale;
+	SetPosition(point, y_angle, scale);
+	float ratio = y_scale / xz_scale;
+	matrix.m[3] *= ratio;
+	matrix.m[4] *= ratio;
+	matrix.m[5] *= ratio;
 }

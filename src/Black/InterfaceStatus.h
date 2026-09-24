@@ -27,21 +27,21 @@ class Spell;
 class GInterfaceStatus : public GameThingWithPos
 {
 public:
-	uint8_t            player_number; /* 0x28 */
+	uint8_t            player_number;
 	GInterface*        iface;
-	GGuidance*         guidance; /* 0x30 */
+	GGuidance*         guidance;
 	uint32_t           field_0x34;
 	uint32_t           field_0x38;
 	uint32_t           field_0x3c;
 	uint32_t           field_0x40;
 	uint8_t            field_0x44[0x14];
-	GMagicHand         magic_hand[0x2];      /* 0x58 */
-	bool               HandHoldingSomething; /* 0x90 */
+	GMagicHand         magic_hand[0x2];
+	bool               HandHoldingSomething;
 	LHCoord            field_0x94;
 	uint32_t           field_0x9c;
 	uint32_t           field_0xa0;
 	LHPoint            field_0xa4;
-	LHPoint            CameraPos; /* 0xb0 */
+	LHPoint            CameraPos;
 	LHPoint            CameraFoc;
 	LHPoint            field_0xc8;
 	LHPoint            field_0xd4;
@@ -57,8 +57,8 @@ public:
 	LHPoint            HandVelocity;
 	float              field_0x118;
 	uint32_t           field_0x11c;
-	Object*            LastDroppedObject; /* 0x120 */
-	uint32_t           field_0x124;
+	Object*            LastDroppedObject;
+	Object*            LastThrownObject;
 	GLeashStatus*      LeashStatus;
 	GVirtualInfluence* influence;
 	float              field_0x130;

@@ -115,8 +115,8 @@ public:
 	// BW1W120 0066d650 BW1M119 01124b70
 	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0066df00 BW1M119 011234d0
-	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
-	                                           Object* param_4, int param_5);
+	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
+	                                                 GInterfaceStatus* status, Object* thrower, int dont_replant);
 	// BW1W120 0066cef0 BW1M119 01125fc0
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 0066dbd0 BW1M119 01123cd0

@@ -15,13 +15,13 @@ class RPFollow;
 
 struct RPHolder
 {
-	RPAvoid   AvoidArray[0x4000]; /* 0x0 */
-	int       AvoidCount;         /* 0x50000 */
+	RPAvoid   AvoidArray[0x4000];
+	int       AvoidCount;
 	Point2D*  field_0x50004;
 	Point2D*  field_0x50008;
 	uint32_t  field_0x5000c[0x4];
 	uint8_t   field_0x5001c;
-	float     field_0x50020;
+	float     ObjectMargin;
 	RPFollow* field_0x50024;
 	vec2u16   field_0x50028[0x1000];
 	vec2u16   field_0x54028[0x4000];

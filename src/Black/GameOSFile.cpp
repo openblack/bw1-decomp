@@ -1020,8 +1020,8 @@ void PhysicsSaveInfo::ReadInfo(GameOSFile& file)
 	{
 		PhysicsSaveInfo& info = Buffer[Count];
 		file.ReadIt(info.Matrix);
-		file.ReadIt(info.field_0x30);
-		file.ReadIt(info.field_0x3c);
+		file.ReadIt(info.Velocity);
+		file.ReadIt(info.AngularVelocity);
 		++Count;
 	}
 }
