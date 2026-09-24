@@ -15,6 +15,8 @@ struct Point2D
 	Point2D(float x, float y) : x(x), y(y) {}
 	// BW1W120 inlined BW1M119 inlined
 	Point2D(int x, int y);
+	// BW1W120 00468480 BW1M119 010eb810
+	Point2D(const Point2D& other) : x(other.x), y(other.y) {}
 
 	// Non-virtual methods
 
@@ -25,15 +27,25 @@ struct Point2D
 	// BW1W120 00611310 BW1M119 inlined
 	float DotProduct(const Point2D* other) const;
 	// BW1W120 00611190 BW1M119 010621c0
-	Point2D& operator*(float rhs) const;
+	Point2D operator*(float rhs) const { return Point2D(x * rhs, y * rhs); }
 	// BW1W120 inlined BW1M119 010f29a0
 	Point2D& operator+(const Point2D& rhs) const;
 	// BW1W120 inlined BW1M119 inlined
-	Point2D& operator+=(const Point2D& other);
+	Point2D& operator+=(const Point2D& other)
+	{
+		x += other.x;
+		y += other.y;
+		return *this;
+	}
 	// BW1W120 inlined BW1M119 010eb710
 	Point2D& operator-(const Point2D& rhs) const;
 	// BW1W120 inlined BW1M119 inlined
-	Point2D& operator-=(const Point2D& other);
+	Point2D& operator-=(const Point2D& other)
+	{
+		x -= other.x;
+		y -= other.y;
+		return *this;
+	}
 	// BW1W120 00611240 BW1M119 inlined
 	float Cross(const Point2D& other) const;
 	// BW1W120 00611330 BW1M119 010eb640
@@ -75,6 +87,8 @@ struct LHPoint
 		z *= rhs;
 		return *this;
 	}
+	// BW1W120 inlined BW1M119 01043e70
+	LHPoint operator*(float rhs) const { return LHPoint(x * rhs, y * rhs, z * rhs); }
 	// BW1W120 inlined BW1M119 inlined
 	LHPoint operator+(const LHPoint& rhs) const { return LHPoint(x + rhs.x, y + rhs.y, z + rhs.z); }
 	// BW1W120 inlined BW1M119 01043e00
@@ -87,7 +101,14 @@ struct LHPoint
 	float GetNorm() const { return DotProductInline(*this); }
 	// BW1W120 004a1ba0 BW1M119 01005cc0
 	float GetNorme();
-	// BW1W120 inlined BW1M119 inlined
+	// BW1W120 inlined BW1M119 0101fdf0
+	void Set(float _x, float _y, float _z)
+	{
+		x = _x;
+		y = _y;
+		z = _z;
+	}
+	// BW1W120 inlined BW1M119 0101b360
 	void SetNull()
 	{
 		z = 0.0f;

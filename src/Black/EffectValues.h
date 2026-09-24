@@ -34,6 +34,11 @@ public:
 
 	// BW1W120 00525040 BW1M119 010d0680
 	EffectValues(EFFECT_TYPE type, float value, GameThing* source, float param_4, GPlayer* player);
+
+	// Non-virtual methods
+
+	// BW1W120 005254c0 BW1M119 010d0070
+	GPlayer* GetPlayer() const;
 };
 
 #endif /* BW1_DECOMP_EFFECT_VALUES_INCLUDED_H */

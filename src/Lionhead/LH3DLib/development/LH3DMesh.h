@@ -78,6 +78,8 @@ struct LH3DMesh
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 0102dc80
+	LH3DBoundingBox& GetBoundingBox() { return BoundingBox; }
 	// BW1W120 00403730 BW1M119 01010f40
 	uint32_t GetSizeFootprintData();
 	// BW1W120 00403740 BW1M119 01010ea0

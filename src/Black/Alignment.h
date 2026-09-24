@@ -11,6 +11,8 @@
 // Forward Declares
 
 class Abode;
+class EffectValues;
+class Object;
 
 class GAlignment : public Base
 {
@@ -25,6 +27,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00414410 BW1M119 010a7380
+	void Update(Object* object, EffectValues& values, float param_3);
 	// BW1W120 00414520 BW1M119 010a7210
 	void Update(Abode* abode, RESOURCE_TYPE type, int amount, float param_4);
 	// BW1W120 004146f0 BW1M119 010a6e70

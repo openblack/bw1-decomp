@@ -10,8 +10,8 @@ class PhysicsSaveInfo
 {
 public:
 	LHMatrix Matrix;
-	LHPoint  field_0x30;
-	LHPoint  field_0x3c;
+	LHPoint  Velocity;
+	LHPoint  AngularVelocity;
 
 	// TODO: Original member names unknown. ReadInfo appends; Object::ResolveLoad consumes.
 	// BW1W120 00d01a90

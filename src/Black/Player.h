@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
 #include <uchar.h>  /* For char16_t */
 
+#include <chlasm/CreatureEnum.h>                    /* For enum DETECTED_PLAYER_ACTION */
 #include <chlasm/Enum.h>                            /* For enum MAGIC_TYPE */
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <re_common.h>                              /* For bool32_t */
@@ -36,6 +37,7 @@ class Creature;
 class GAlignment;
 class GInterface;
 class GInterfaceStatus;
+class GameThingWithPos;
 class GameStats;
 class LHPlayer;
 struct PSysProcessInfo;
@@ -45,16 +47,14 @@ struct MPFEStartGameData;
 class GPlayer : public GameThing
 {
 public:
-	static void        DrawPlayers();         // 0064c140
-	static void        DrawComputerPlayers(); // 0064c1a0
-	GInterface*        interfaces[18];        /* 0x14 */
+	GInterface*        interfaces[18];
 	uint32_t           field_0x5c;
-	GAlignment*        alignment; /* 0x60 */
+	GAlignment*        alignment;
 	uint32_t           field_0x64;
-	float              TribalPower[TRIBE_TYPE_LAST]; /* 0x68 */
+	float              TribalPower[TRIBE_TYPE_LAST];
 	float              field_0x8c;
 	float              field_0x90;
-	uint8_t            field_0x94[0x20];
+	float              DamageFromPlayer[_PLAYER_NAME_COUNT];
 	uint8_t            field_0xb4;
 	uint8_t            player_number;
 	uint8_t            field_0xb6;
@@ -127,6 +127,10 @@ public:
 	static void PostLoadCleanup();
 	// BW1W120 0064b5e0 BW1M119 0149c340
 	static GPlayer* GetPlayerFromText(const char* str);
+	// BW1W120 0064c140 BW1M119 01067c40
+	static void DrawPlayers();
+	// BW1W120 0064c1a0 BW1M119 0106b7c0
+	static void DrawComputerPlayers();
 
 	// Non-virtual methods
 	// BW1W120 0064d5d0 BW1M119 0105f0d0
@@ -154,6 +158,9 @@ public:
 	uint8_t GetPlayerNumber() const;
 	// BW1W120 0055da60 BW1M119 010345c0
 	GameStats* GetStats();
+	// BW1W120 004ea900 BW1M119 012724c0
+	void ConsiderMakingCreatureMimicPlayer(GInterfaceStatus* status, DETECTED_PLAYER_ACTION action,
+	                                       GameThingWithPos* thing, MAGIC_TYPE magic);
 	// BW1W120 0064a9f0 BW1M119 0149d870
 	GInterfaceStatus* GetLeaderInterfaceStatus();
 	// BW1W120 0064aac0 BW1M119 010384e0

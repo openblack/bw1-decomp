@@ -31,6 +31,12 @@ struct LH3DMapCoords
 
 	// BW1W120 00441b60 BW1M119 0104cbc0
 	LH3DMapCoords() : x(0), z(0), altitude(0.0f) {}
+	// World units to 16.16 fixed point: a cell is 10 units across.
+	LH3DMapCoords(float _x, float _z)
+		: x((LH3DMapCoordsFull)((float)(_x * (float)0x10000) / 10.0f)),
+		  z((LH3DMapCoordsFull)((float)(_z * (float)0x10000) / 10.0f)), altitude(0.0f)
+	{
+	}
 
 	// Non-virtual methods
 

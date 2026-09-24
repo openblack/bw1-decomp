@@ -27,6 +27,8 @@ public:
 	static void SetOnFire(Object* object, float temperature);
 	// BW1W120 0072ef10 BW1M119 01157ea0
 	static void SetTemperature(Object* object, float temperature, GameThing* source);
+	// BW1W120 0072eec0 BW1M119 01157f80
+	static float ConvertTemperatureToDamage(Object* object, float temperature);
 
 	float       temperature; /* 0x14 */
 	float       temperature2;

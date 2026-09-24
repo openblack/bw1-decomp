@@ -201,7 +201,7 @@ public:
 	// Static methods
 
 	// BW1W120 0080b4d0 BW1M119 0107fb80 (LHCombined Release)
-	static LH3DObject* Create(ObjectType object_type);
+	static LH3DObject* __fastcall Create(ObjectType object_type);
 
 	// Constructors
 
@@ -217,65 +217,21 @@ public:
 		{
 			if (scale != 1.0f)
 			{
-				matrix.m[11] = 0.0f;
-				matrix.m[10] = 0.0f;
-				matrix.m[9] = 0.0f;
-				matrix.m[7] = 0.0f;
-				matrix.m[6] = 0.0f;
-				matrix.m[5] = 0.0f;
-				matrix.m[3] = 0.0f;
-				matrix.m[2] = 0.0f;
-				matrix.m[1] = 0.0f;
-				matrix.m[8] = scale;
-				matrix.m[4] = scale;
-				matrix.m[0] = scale;
+				matrix.SetScale(scale);
 				matrix.PostTranslation(point);
-				float c = cos(y_angle);
-				float s = sin(y_angle);
-				float t;
-				t = s * matrix.m[0];
-				matrix.m[0] = c * matrix.m[0] + s * matrix.m[6];
-				matrix.m[6] = c * matrix.m[6] - t;
-				t = s * matrix.m[1];
-				matrix.m[1] = c * matrix.m[1] + s * matrix.m[7];
-				matrix.m[7] = c * matrix.m[7] - t;
-				t = s * matrix.m[2];
-				matrix.m[2] = c * matrix.m[2] + s * matrix.m[8];
-				matrix.m[8] = c * matrix.m[8] - t;
+				matrix.RotateY(y_angle);
 			}
 			else
 			{
 				matrix.Translation(point);
-				float c = cos(y_angle);
-				float s = sin(y_angle);
-				float t;
-				t = s * matrix.m[0];
-				matrix.m[0] = c * matrix.m[0] + s * matrix.m[6];
-				matrix.m[6] = c * matrix.m[6] - t;
-				t = s * matrix.m[1];
-				matrix.m[1] = c * matrix.m[1] + s * matrix.m[7];
-				matrix.m[7] = c * matrix.m[7] - t;
-				t = s * matrix.m[2];
-				matrix.m[2] = c * matrix.m[2] + s * matrix.m[8];
-				matrix.m[8] = c * matrix.m[8] - t;
+				matrix.RotateY(y_angle);
 			}
 		}
 		else
 		{
 			if (scale != 1.0f)
 			{
-				matrix.m[11] = 0.0f;
-				matrix.m[10] = 0.0f;
-				matrix.m[9] = 0.0f;
-				matrix.m[7] = 0.0f;
-				matrix.m[6] = 0.0f;
-				matrix.m[5] = 0.0f;
-				matrix.m[3] = 0.0f;
-				matrix.m[2] = 0.0f;
-				matrix.m[1] = 0.0f;
-				matrix.m[8] = scale;
-				matrix.m[4] = scale;
-				matrix.m[0] = scale;
+				matrix.SetScale(scale);
 				matrix.PostTranslation(point);
 			}
 			else

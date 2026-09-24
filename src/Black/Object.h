@@ -522,8 +522,8 @@ public:
 	// BW1W120 00638cf0 BW1M119 013dbec0
 	virtual float GetImportance();
 	// BW1W120 00636f00 BW1M119 013df650
-	virtual uint32_t InitialisePhysicsFromHand(LHPoint& param_1, LHPoint& param_2, GInterfaceStatus* param_3,
-	                                           Object* param_4, int param_5);
+	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
+	                                                 GInterfaceStatus* status, Object* thrower, int dont_replant);
 	// BW1W120 00637480 BW1M119 013df3b0
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);
@@ -556,8 +556,8 @@ public:
 	// BW1W120 00638740 BW1M119 013dc880
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00638790 BW1M119 013dc390
-	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
-	                            void(__cdecl* param_4)(int, Point2D, float, int));
+	virtual void AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
+	                            void(__cdecl* add_function)(int, Point2D, float, int));
 	// BW1W120 006384c0 BW1M119 013dcf30
 	virtual float GetRoutePlanRadius(Creature* param_1);
 	// BW1W120 00638be0 BW1M119 013dc1c0
@@ -663,6 +663,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 01047620
+	FireEffect* GetFireEffect() { return fire_effect; }
 	// BW1W120 00637cc0 BW1M119 0102dd80
 	bool32_t IsOnFire();
 	// BW1W120 00638560 BW1M119 0105e730
@@ -672,8 +674,8 @@ public:
 	// BW1W120 00637930 BW1M119 013de840
 	EffectNumbers GetDefenseMultiplier();
 	// BW1W120 00638b00 BW1M119 013dc200
-	void SimpleAddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
-	                          void(__cdecl* param_4)(int, Point2D, float, int));
+	void SimpleAddToRoutePlan(RPHolder* holder, Creature* creature, int update,
+	                          void(__cdecl* add_function)(int, Point2D, float, int));
 	// BW1W120 00639410 BW1M119 013db630
 	void IsActuallyInTheAir();
 	// BW1W120 00636e70 BW1M119 013dfe00
@@ -693,7 +695,7 @@ public:
 	// BW1W120 0063a1b0 BW1M119 01089340
 	void GetInterfaceStatusHoldingThis();
 	// BW1W120 0063a230 BW1M119 013d8e40
-	void SetUpPhysObAsATree(PhysOb* param_1, float param_2, float param_3, float param_4, float param_5);
+	void SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, float radius, float scale);
 	// BW1W120 0063a710 BW1M119 013d8b10
 	void GetInterfaceStatusWhoLastDroppedMe();
 	// BW1W120 0063a6a0 BW1M119 013d8c10
