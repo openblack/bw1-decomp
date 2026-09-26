@@ -51,9 +51,9 @@ public:
 	// BW1W120 006e69b0 BW1M119 011423e0
 	virtual uint32_t GetOverwriteTapToolTip();
 	// BW1W120 006e5650 BW1M119 01141b80
-	virtual uint32_t IsReward() const;
+	virtual bool32_t IsReward() const;
 	// BW1W120 006e5660 BW1M119 01141bb0
-	virtual uint32_t IsActive() const;
+	virtual bool32_t IsActive() const;
 	// BW1W120 006e5ca0 BW1M119 01144090
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 006e68f0 BW1M119 01142500
@@ -65,7 +65,7 @@ public:
 	// BW1W120 006e59b0 BW1M119 01144290
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 006e69a0 BW1M119 01142420
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 006e5cc0 BW1M119 01143f90
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
 	// BW1W120 006e5d00 BW1M119 011431a0

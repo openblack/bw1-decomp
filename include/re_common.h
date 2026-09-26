@@ -5,9 +5,9 @@
 
 struct vec2u16
 {
-  uint16_t x, y;
+	uint16_t x, y;
 };
 
-typedef uint32_t bool32_t;
+typedef int32_t bool32_t;
 
 #endif /* BW1_DECOMP_REVERSING_UTILS_COMMON_INCLUDED_H */

@@ -52,7 +52,7 @@ public:
 	// BW1W120 00728a00 BW1M119 01533790
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 00727f50 BW1M119 015353b0
-	virtual uint32_t IsSpellSeed();
+	virtual bool32_t IsSpellSeed();
 	// BW1W120 00729c90 BW1M119 01530f80
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00728f30 BW1M119 01532c20
@@ -68,7 +68,7 @@ public:
 	// BW1W120 00728670 BW1M119 015340f0
 	virtual float GetHoldYRotate();
 	// BW1W120 00727f60 BW1M119 015353e0
-	virtual uint32_t HandShouldFeelWithMeshIntersect();
+	virtual bool32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 00729850 BW1M119 01531a10
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00518710 BW1M119 010cc360
@@ -80,13 +80,13 @@ public:
 	// BW1W120 00728360 BW1M119 015346f0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00728580 BW1M119 015343a0
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00728810 BW1M119 015339f0
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 00728940 BW1M119 015338d0
-	virtual uint32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 00728760 BW1M119 01533cf0
-	virtual uint32_t ValidToRemoveFromHand(GInterfaceStatus* status, const MapCoords& coords);
+	virtual bool32_t ValidToRemoveFromHand(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 00728f00 BW1M119 01532c60
 	virtual uint32_t RemoveFromHand(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 007286d0 BW1M119 01533ed0
@@ -109,7 +109,7 @@ public:
 	// BW1W120 0072acd0 BW1M119 0152ebf0
 	virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* param_1, int param_2);
 	// BW1W120 00728f50 BW1M119 01532b90
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 00728570 BW1M119 015344a0
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00729930 BW1M119 01531560

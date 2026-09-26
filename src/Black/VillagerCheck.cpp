@@ -14,13 +14,13 @@
 #include "VillagerInfo.h"
 
 // BW1W120 00756d30 BW1M119 0157b5f0
-uint32_t Villager::InteractDecideWhatToDoForOtherVillager()
+bool32_t Villager::InteractDecideWhatToDoForOtherVillager()
 {
 	return 0;
 }
 
 // BW1W120 00756e10 BW1M119 0157b580
-uint32_t Villager::InteractDecideWhatToDo()
+bool32_t Villager::InteractDecideWhatToDo()
 {
 	return DecideWhatToDo();
 }

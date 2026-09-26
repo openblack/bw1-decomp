@@ -845,7 +845,7 @@ SCRIPT_OBJECT_TYPE Abode::GetScriptObjectType()
 	return SCRIPT_OBJECT_TYPE_ABODE;
 }
 
-bool32_t Abode::InterfaceValidToTap(GInterfaceStatus* status)
+uint32_t Abode::InterfaceValidToTap(GInterfaceStatus* status)
 {
 	return true;
 }

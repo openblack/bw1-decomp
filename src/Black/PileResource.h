@@ -55,9 +55,9 @@ public:
 	// BW1W120 0066e3c0 BW1M119 inlined
 	virtual uint32_t IsField_1(Creature* param_1);
 	// BW1W120 0066e390 BW1M119 01122890
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 0066ed60 BW1M119 01121730
-	virtual uint32_t IsPileResource();
+	virtual bool32_t IsPileResource();
 	// BW1W120 0066e400 BW1M119 011225b0
 	virtual void SetLife(float param_1);
 	// BW1W120 0066e300 BW1M119 01122970
@@ -69,17 +69,17 @@ public:
 	// BW1W120 0066e710 BW1M119 01121f50
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 0066e830 BW1M119 01121ee0
-	virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
 	// BW1W120 0066e840 BW1M119 01121e90
-	virtual uint32_t NetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t NetworkUnfriendlyEndLockedSelect();
 	// BW1W120 0066e850 BW1M119 01121d60
-	virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 0066ece0 BW1M119 011217b0
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 0066ef80 BW1M119 01120e00
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 0066e3b0 BW1M119 01122850
-	virtual uint32_t IsTuggable();
+	virtual bool32_t IsTuggable();
 	// BW1W120 0066e520 BW1M119 011221b0
 	virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
 

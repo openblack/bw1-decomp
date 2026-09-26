@@ -55,9 +55,9 @@ public:
 	// BW1W120 005109d0 BW1M119 inlined
 	virtual uint32_t IsRock_0();
 	// BW1W120 00510980 BW1M119 010c4360
-	virtual uint32_t IsAnyKindOfTree();
+	virtual bool32_t IsAnyKindOfTree();
 	// BW1W120 00510990 BW1M119 010c43a0
-	virtual uint32_t IsDeadTree();
+	virtual bool32_t IsDeadTree();
 	// BW1W120 005115b0 BW1M119 010c50a0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 005110d0 BW1M119 010c5d20
@@ -67,7 +67,7 @@ public:
 	// BW1W120 005110f0 BW1M119 010c5c60
 	virtual float GetHoldLoweringMultiplier();
 	// BW1W120 005109c0 BW1M119 010c4480
-	virtual uint32_t HandShouldFeelWithMeshIntersect();
+	virtual bool32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 00510ce0 BW1M119 inlined
 	virtual void GetDefaultFireCentrePos(MapCoords* param_1);
 	// BW1W120 00510e10 BW1M119 010c63d0

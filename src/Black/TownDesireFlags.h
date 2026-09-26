@@ -42,7 +42,7 @@ public:
 	// BW1W120 0055dac0 BW1M119 015657d0
 	virtual uint32_t GetSaveType();
 	// BW1W120 0055daa0 BW1M119 01565740
-	virtual uint32_t IsTownDesireFlag();
+	virtual bool32_t IsTownDesireFlag();
 	// BW1W120 00746ec0 BW1M119 01566050
 	virtual HELP_TEXT GetQueryFirstEnumText();
 	// BW1W120 00746ed0 BW1M119 01565ff0
@@ -60,7 +60,7 @@ public:
 	// BW1W120 00746dc0 BW1M119 01566460
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055dab0 BW1M119 01565780
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 00746a10 BW1M119 01566940
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00746de0 BW1M119 01566410

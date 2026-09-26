@@ -162,7 +162,7 @@ bool32_t Villager::GotoWorkshopForBuildingMaterials(BuildingSite* building_site)
 // BW1W120 00758990 BW1M119 0157e160
 // TODO: needs a function symbol carved at 0x758990 (currently an unsplit gap) before it can
 // pair; the body already matches the target bytes.
-uint32_t Villager::ArrivesAtStoragePitForBuildingMaterials()
+bool32_t Villager::ArrivesAtStoragePitForBuildingMaterials()
 {
 	BuildingSite* site = building_site;
 	if (site != NULL && GetTown()->IsBuildingSiteValid(site))
@@ -185,7 +185,7 @@ uint32_t Villager::ArrivesAtStoragePitForBuildingMaterials()
 // BW1W120 00758af0 BW1M119 0157dca0
 // TODO: needs a function symbol carved at 0x758af0 (currently an unsplit gap) before it can
 // pair; the 6553.6f/0.2f constants are unnamed .rdata copies.
-uint32_t Villager::ArrivesAtBuildingSite()
+bool32_t Villager::ArrivesAtBuildingSite()
 {
 	if (GetTown()->IsBuildingSiteValid(building_site))
 	{

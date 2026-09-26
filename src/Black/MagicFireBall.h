@@ -44,27 +44,27 @@ public:
 	// BW1W120 00682b30 BW1M119 01407ba0
 	virtual uint32_t GetSaveType();
 	// BW1W120 00682a50 BW1M119 01407740
-	virtual uint32_t IsMagicFireBall();
+	virtual bool32_t IsMagicFireBall();
 	// BW1W120 00682a80 BW1M119 01407820
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 00682a90 BW1M119 01407870
-	virtual uint32_t CanBeSetOnFire(Creature* param_1);
+	virtual bool32_t CanBeSetOnFire(Creature* param_1);
 	// BW1W120 00682aa0 BW1M119 014078c0
-	virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
+	virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
 	// BW1W120 00682ab0 BW1M119 01407910
-	virtual uint32_t CanBeThrownByCreature(Creature* param_1);
+	virtual bool32_t CanBeThrownByCreature(Creature* param_1);
 	// BW1W120 00682ac0 BW1M119 01407960
-	virtual uint32_t CanBePutInAStoragePit(Creature* param_1);
+	virtual bool32_t CanBePutInAStoragePit(Creature* param_1);
 	// BW1W120 00682ad0 BW1M119 014079b0
-	virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
+	virtual bool32_t CanBeDestroyedByStoning(Creature* param_1);
 	// BW1W120 00682ae0 BW1M119 01407a00
-	virtual uint32_t CanBeStonedAndEatenByCreature(Creature* param_1);
+	virtual bool32_t CanBeStonedAndEatenByCreature(Creature* param_1);
 	// BW1W120 00682af0 BW1M119 01407a60
-	virtual uint32_t CanBeExaminedByCreature(Creature* param_1);
+	virtual bool32_t CanBeExaminedByCreature(Creature* param_1);
 	// BW1W120 00682b00 BW1M119 01407ab0
-	virtual uint32_t CanBeFoughtByCreature(Creature* param_1);
+	virtual bool32_t CanBeFoughtByCreature(Creature* param_1);
 	// BW1W120 00682b10 BW1M119 01407b00
-	virtual uint32_t CanActAsAContainer(Creature* param_1);
+	virtual bool32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 00682d30 BW1M119 01406ef0
 	virtual float GetHeight();
 	// BW1W120 00682d10 BW1M119 01406fb0
@@ -78,11 +78,11 @@ public:
 	// BW1W120 00682f20 BW1M119 014068b0
 	virtual void Draw();
 	// BW1W120 00682dd0 BW1M119 01406c70
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00682e80 BW1M119 014068e0
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 00682a40 BW1M119 01407700
-	virtual uint32_t IsTuggable();
+	virtual bool32_t IsTuggable();
 	// BW1W120 00682e40 BW1M119 01406b70
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
 	// BW1W120 00682e50 BW1M119 01406a30

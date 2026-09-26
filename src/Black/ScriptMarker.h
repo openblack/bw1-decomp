@@ -34,11 +34,11 @@ public:
 	// BW1W120 00561030 BW1M119 01507ee0
 	virtual void PhysicsEditorCreate(int param_1);
 	// BW1W120 00561040 BW1M119 01507f20
-	virtual uint32_t IsDeletedWhenReleasedFromScript();
+	virtual bool32_t IsDeletedWhenReleasedFromScript();
 	// BW1W120 00561010 BW1M119 01507e60
 	virtual const char* GetText();
 	// BW1W120 00561020 BW1M119 01507ea0
-	virtual uint32_t IsScriptMarker();
+	virtual bool32_t IsScriptMarker();
 	// BW1W120 0070d960 BW1M119 015081e0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 };

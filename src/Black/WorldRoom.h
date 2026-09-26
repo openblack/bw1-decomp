@@ -9,7 +9,7 @@ class WorldRoom : public TempleRoom
 {
 public:
 	// BW1W120 0079d260 BW1M119 015ac2a0
-	virtual uint32_t IsAvailable();
+	virtual bool32_t IsAvailable();
 	static int       ShowInfluence; // 00c2a478; descriptive name, button-config state
 	// TODO: Instance members are not recovered. Do not instantiate using this partial declaration.
 	// TODO: Original static member name is unrecovered.

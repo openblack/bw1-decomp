@@ -56,9 +56,9 @@ public:
 	// BW1W120 0050cb40 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
 	// BW1W120 0050b730 BW1M119 012ab250
-	virtual uint32_t IsDance() const;
+	virtual bool32_t IsDance() const;
 	// BW1W120 0050b710 BW1M119 012ab1d0
-	virtual uint32_t IsScriptContainer() const;
+	virtual bool32_t IsScriptContainer() const;
 	// BW1W120 0050b740 BW1M119 012ab280
 	virtual const char* GetText();
 	// BW1W120 0050c3c0 BW1M119 012ac1e0

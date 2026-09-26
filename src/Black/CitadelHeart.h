@@ -65,7 +65,7 @@ public:
 	// BW1W120 00464880 BW1M119 011ca070
 	virtual HELP_TEXT GetQueryLastEnumText();
 	// BW1W120 00464850 BW1M119 011c9f70
-	virtual uint32_t ValidAsInterfaceLeashTarget();
+	virtual bool32_t ValidAsInterfaceLeashTarget();
 	// BW1W120 00464450 BW1M119 011c9420
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
 	// BW1W120 00464490 BW1M119 011c92b0
@@ -131,9 +131,9 @@ public:
 	// BW1W120 00465a10 BW1M119 011c7090
 	virtual void ResolveLoad();
 	// BW1W120 00464b80 BW1M119 011c9c10
-	virtual uint32_t IsCitadelHeart();
+	virtual bool32_t IsCitadelHeart();
 	// BW1W120 00468dc0 BW1M119 011c41c0
-	virtual uint32_t CreateBuildingSite();
+	virtual bool32_t CreateBuildingSite();
 	// BW1W120 004680b0 BW1M119 011c5260
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00464b20 BW1M119 inlined

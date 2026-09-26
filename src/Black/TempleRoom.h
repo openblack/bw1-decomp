@@ -6,6 +6,7 @@
 
 #include <chlasm/LHKeyBoard.h>                    /* For enum LH_KEY */
 #include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
+#include <re_common.h>
 
 #include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
 
@@ -33,7 +34,7 @@ class TempleRoom
 public:
 	// First slot is __purecall in the Windows table; derived rooms supply IsAvailable.
 	// Other virtual slots remain unrecovered. This establishes the real vptr for RTTI.
-	virtual uint32_t IsAvailable() = 0;
+	virtual bool32_t IsAvailable() = 0;
 	char             name[0x20]; /* 0x4 */
 	uint32_t         field_0x24;
 	uint32_t         field_0x28;

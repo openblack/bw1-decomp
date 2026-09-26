@@ -67,7 +67,7 @@ public:
 	// BW1W120 00780aa0 BW1M119 015bf160
 	virtual float CalculatePeopleHidingIndicator();
 	// BW1W120 007807e0 BW1M119 015be5f0
-	virtual uint32_t IsSacrificeAltar();
+	virtual bool32_t IsSacrificeAltar();
 	// BW1W120 007807b0 BW1M119 inlined
 	virtual void SetSpecularColor(LH3DColor param_1);
 	// BW1W120 007807c0 BW1M119 015be560
@@ -83,7 +83,7 @@ public:
 	// BW1W120 00780790 BW1M119 015be480
 	virtual bool32_t IsSpellSeedReturnPoint() const;
 	// BW1W120 007807a0 BW1M119 015be4d0
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 
 	// Static methods
 

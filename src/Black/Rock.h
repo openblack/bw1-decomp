@@ -61,13 +61,13 @@ public:
 	// BW1W120 00439730 BW1M119 inlined
 	virtual uint32_t IsRock_0();
 	// BW1W120 00439760 BW1M119 010b6ba0
-	virtual uint32_t CanBeAttackedByCreature(Creature* param_1);
+	virtual bool32_t CanBeAttackedByCreature(Creature* param_1);
 	// BW1W120 006e7a70 BW1M119 011450c0
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 00439750 BW1M119 010b6b60
 	virtual uint32_t GetCreatureMimicType();
 	// BW1W120 006e7070 BW1M119 01145fe0
-	virtual uint32_t CanBeThrownByPlayer();
+	virtual bool32_t CanBeThrownByPlayer();
 	// BW1W120 006e79e0 BW1M119 01011a70
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 006e7210 BW1M119 01145b30
@@ -81,7 +81,7 @@ public:
 	// BW1W120 006e7090 BW1M119 01145f30
 	virtual int GetDefaultResource();
 	// BW1W120 006e7030 BW1M119 01146060
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 006e7450 BW1M119 01145aa0
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
 	// BW1W120 006e7480 BW1M119 01145900

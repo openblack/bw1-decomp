@@ -48,13 +48,13 @@ public:
 	// BW1W120 00561560 BW1M119 0154b6f0
 	virtual uint32_t GetSaveType();
 	// BW1W120 00561530 BW1M119 0113c380
-	virtual uint32_t IsCastShadowAtNight();
+	virtual bool32_t IsCastShadowAtNight();
 	// BW1W120 00561510 BW1M119 0113c2e0
-	virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
+	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
 	// BW1W120 00561500 BW1M119 0113c290
-	virtual uint32_t CanBeImpressedByCreature(Creature* param_1);
+	virtual bool32_t CanBeImpressedByCreature(Creature* param_1);
 	// BW1W120 004e3e60 BW1M119 015ee530
-	virtual uint32_t DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature* param_1);
+	virtual bool32_t DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature* param_1);
 	// BW1W120 0051aba0 BW1M119 010c8ea0
 	virtual void Draw();
 	// BW1W120 00737490 BW1M119 0154c2a0
@@ -64,15 +64,15 @@ public:
 	// BW1W120 00737570 BW1M119 0154bfa0
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 007375c0 BW1M119 0154bf30
-	virtual uint32_t NetworkUnfriendlyStartLockedSelect();
+	virtual bool32_t NetworkUnfriendlyStartLockedSelect();
 	// BW1W120 00737610 BW1M119 0154bd30
-	virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
 	// BW1W120 007375e0 BW1M119 0154bea0
-	virtual uint32_t NetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t NetworkUnfriendlyEndLockedSelect();
 	// BW1W120 00737600 BW1M119 0154be40
-	virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 00561520 BW1M119 0113c330
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 
 	// Constructors
 

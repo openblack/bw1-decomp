@@ -70,11 +70,11 @@ public:
 	// BW1W120 0066f540 BW1M119 011201d0
 	virtual uint32_t GetOverwriteInteractableToolTip();
 	// BW1W120 0055d4e0 BW1M119 01011560
-	virtual uint32_t IsPoisoned();
+	virtual bool32_t IsPoisoned();
 	// BW1W120 0055d4f0 BW1M119 0111fc50
-	virtual uint32_t IsSpeedUp();
+	virtual bool32_t IsSpeedUp();
 	// BW1W120 0055d500 BW1M119 0111fc90
-	virtual uint32_t IsPot();
+	virtual bool32_t IsPot();
 	// BW1W120 0066f530 BW1M119 01120250
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0051bb70 BW1M119 010c87e0
@@ -104,7 +104,7 @@ public:
 	// BW1W120 0066d6d0 BW1M119 01124920
 	virtual void EndOnFire();
 	// BW1W120 0066d710 BW1M119 01124870
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 0066dd50 BW1M119 01123990
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 0066ddd0 BW1M119 011237e0
@@ -113,7 +113,7 @@ public:
 	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 0066d650 BW1M119 01124b70
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0066df00 BW1M119 011234d0
 	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
 	                                                 GInterfaceStatus* status, Object* thrower, bool32_t dont_replant);

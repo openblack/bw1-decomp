@@ -46,7 +46,7 @@ public:
 	// BW1W120 0066e020 BW1M119 011267f0
 	virtual uint32_t GetSaveType();
 	// BW1W120 0055d690 BW1M119 011267b0
-	virtual uint32_t IsPileFood();
+	virtual bool32_t IsPileFood();
 	// BW1W120 0066e2a0 BW1M119 01122af0
 	virtual HELP_TEXT GetQueryFirstEnumText();
 	// BW1W120 0066e2d0 BW1M119 01122a50

@@ -307,51 +307,51 @@ public:
 	// BW1W120 00474030 BW1M119 011ea710
 	virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature);
 	// BW1W120 004c5e50 BW1M119 01236990
-	virtual uint32_t FalseFunction();
+	virtual bool32_t FalseFunction();
 	// BW1W120 00473fd0 BW1M119 011ea560
-	virtual uint32_t IsSuitableForCreatureActivity();
+	virtual bool32_t IsSuitableForCreatureActivity();
 	// BW1W120 00474050 BW1M119 011ea7c0
-	virtual uint32_t CanBeEatenByCreature(Creature* param_1);
+	virtual bool32_t CanBeEatenByCreature(Creature* param_1);
 	// BW1W120 004e4280 BW1M119 015ed600
-	virtual uint32_t CanBeAttackedByCreature(Creature* param_1);
+	virtual bool32_t CanBeAttackedByCreature(Creature* param_1);
 	// BW1W120 004740b0 BW1M119 011ea9b0
-	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
 	// BW1W120 00474070 BW1M119 011ea860
-	virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
+	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
 	// BW1W120 00474060 BW1M119 011ea810
-	virtual uint32_t CanBeBefriendedByCreature(Creature* param_1);
+	virtual bool32_t CanBeBefriendedByCreature(Creature* param_1);
 	// BW1W120 00474040 BW1M119 011ea770
-	virtual uint32_t CanBeSleptNextToByCreature(Creature* param_1);
+	virtual bool32_t CanBeSleptNextToByCreature(Creature* param_1);
 	// BW1W120 004e4cd0 BW1M119 015eb870
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 004e3f10 BW1M119 015ee280
-	virtual uint32_t CanBeKissedByCreature(Creature* param_1);
+	virtual bool32_t CanBeKissedByCreature(Creature* param_1);
 	// BW1W120 004e3c70 BW1M119 015eea70
-	virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
+	virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
 	// BW1W120 00473ff0 BW1M119 011ea5f0
-	virtual uint32_t CanBeExaminedByCreature(Creature* param_1);
+	virtual bool32_t CanBeExaminedByCreature(Creature* param_1);
 	// BW1W120 004740a0 BW1M119 011ea930
-	virtual uint32_t CanBeFoughtByCreature(Creature* param_1);
+	virtual bool32_t CanBeFoughtByCreature(Creature* param_1);
 	// BW1W120 004792f0 BW1M119 011dfba0
-	virtual uint32_t IsDominantCreature(Creature* param_1);
+	virtual bool32_t IsDominantCreature(Creature* param_1);
 	// BW1W120 004e4430 BW1M119 015ed2b0
-	virtual uint32_t IsCreatureAvailableForJointActivity(Creature* param_1);
+	virtual bool32_t IsCreatureAvailableForJointActivity(Creature* param_1);
 	// BW1W120 004e4450 BW1M119 015ed230
-	virtual uint32_t IsCreatureNotAvailableForJointActivity(Creature* param_1);
+	virtual bool32_t IsCreatureNotAvailableForJointActivity(Creature* param_1);
 	// BW1W120 004e45e0 BW1M119 015ecd00
-	virtual uint32_t IsCreatureWhoSeemsFriendly(Creature* param_1);
+	virtual bool32_t IsCreatureWhoSeemsFriendly(Creature* param_1);
 	// BW1W120 00473f80 BW1M119 011ea420
 	virtual uint32_t GetCreatureMimicType();
 	// BW1W120 004d1b30 BW1M119 01247960
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
 	// BW1W120 00477e30 BW1M119 011e19e0
-	virtual uint32_t IsObjectTurningTooFastForCameraToFollowSmoothly();
+	virtual bool32_t IsObjectTurningTooFastForCameraToFollowSmoothly();
 	// BW1W120 0063bad0 BW1M119 013e22b0
 	virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
 	// BW1W120 00477f50 BW1M119 011e1710
 	virtual float GetHeight();
 	// BW1W120 004794a0 BW1M119 011df790
-	virtual uint32_t IsReadyForNewScriptAction();
+	virtual bool32_t IsReadyForNewScriptAction();
 	// BW1W120 0047d2c0 BW1M119 011d7890
 	virtual void SetControlledByScript(int param_1);
 	// BW1W120 0047d8f0 BW1M119 011d6a20
@@ -397,19 +397,19 @@ public:
 	// BW1W120 00476e70 BW1M119 011e3a30
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 00476eb0 BW1M119 011e3930
-	virtual uint32_t IsReadyForNetworkUnfriendlyLockedSelect();
+	virtual bool32_t IsReadyForNetworkUnfriendlyLockedSelect();
 	// BW1W120 00476ec0 BW1M119 011e38d0
-	virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
 	// BW1W120 00476ed0 BW1M119 011e3830
-	virtual uint32_t GetReadyForNetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t GetReadyForNetworkUnfriendlyEndLockedSelect();
 	// BW1W120 00476f00 BW1M119 011e3760
-	virtual uint32_t IsReadyForNetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t IsReadyForNetworkUnfriendlyEndLockedSelect();
 	// BW1W120 00476f60 BW1M119 011e3710
-	virtual uint32_t NetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t NetworkUnfriendlyEndLockedSelect();
 	// BW1W120 00476e90 BW1M119 011e3990
-	virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 00473f60 BW1M119 011ea390
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 0047a330 BW1M119 011dda40
 	virtual uint32_t InterfaceValidToGiveObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 0047a320 BW1M119 011ddbd0
@@ -631,7 +631,7 @@ public:
 	// BW1W120 0050b4a0 BW1M119 010c3950
 	virtual void SetScale(float param_1);
 	// BW1W120 0050b500 BW1M119 010c3840
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 0050b420 BW1M119 010c39b0
 	virtual void Create3DObject();
 	// BW1W120 005186a0 BW1M119 010cc440

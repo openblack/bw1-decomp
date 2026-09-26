@@ -26,7 +26,7 @@ public:
 	// BW1W120 0041fd70 BW1M119 0117ed60
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041fc70 BW1M119 0117a340
-	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
 	// BW1W120 0041c1a0 BW1M119 01178af0
 	virtual uint32_t StandAnimation();
 };

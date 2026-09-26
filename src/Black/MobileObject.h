@@ -58,21 +58,21 @@ public:
 	// BW1W120 00607430 BW1M119 013c4ca0
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 00425bb0 BW1M119 010b0710
-	virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
+	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
 	// BW1W120 00425b90 BW1M119 010b0660
-	virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
+	virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
 	// BW1W120 004e4ce0 BW1M119 015eb7d0
-	virtual uint32_t IsMushroom(Creature* param_1);
+	virtual bool32_t IsMushroom(Creature* param_1);
 	// BW1W120 00425b70 BW1M119 010b05e0
-	virtual uint32_t CanBeUsedToHoldWater(Creature* param_1);
+	virtual bool32_t CanBeUsedToHoldWater(Creature* param_1);
 	// BW1W120 00425ba0 BW1M119 010b06b0
-	virtual uint32_t CanBeThrownInTheSeaPlayfully(Creature* param_1);
+	virtual bool32_t CanBeThrownInTheSeaPlayfully(Creature* param_1);
 	// BW1W120 00425b60 BW1M119 010b0590
 	virtual uint32_t GetCreatureMimicType();
 	// BW1W120 00425bc0 BW1M119 010b0760
-	virtual uint32_t IsMobileObject();
+	virtual bool32_t IsMobileObject();
 	// BW1W120 006079e0 BW1M119 013c4150
-	virtual uint32_t IsPoisoned();
+	virtual bool32_t IsPoisoned();
 	// BW1W120 00607b60 BW1M119 013c3d40
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00425b10 BW1M119 010b0410

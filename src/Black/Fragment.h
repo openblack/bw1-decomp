@@ -53,15 +53,15 @@ public:
 	// BW1W120 0076f7b0 BW1M119 01163130
 	virtual void ResolveLoad();
 	// BW1W120 0076e930 BW1M119 01162c90
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 0076e960 BW1M119 01162d80
-	virtual uint32_t CanBeThrownByPlayer();
+	virtual bool32_t CanBeThrownByPlayer();
 	// BW1W120 0076f7c0 BW1M119 011630d0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0076ec00 BW1M119 01163fc0
 	virtual void Draw();
 	// BW1W120 0076e940 BW1M119 01162ce0
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 0076e950 BW1M119 01162d30
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
 	// BW1W120 0076ec40 BW1M119 01163f80

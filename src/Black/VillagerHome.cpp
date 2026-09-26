@@ -241,7 +241,7 @@ bool32_t Villager::DoGoingHome(VILLAGER_STATES arrive_state, VILLAGER_STATES ten
 }
 
 // BW1W120 00760930 BW1M119 0100ee50
-uint32_t Villager::ArrivesHome()
+bool32_t Villager::ArrivesHome()
 {
 	// TODO: IsBuilt/IsRepaired dispatch through the wrong Abode vtable slots (the Abode
 	// hierarchy headers declare 10 extra virtuals before them); AreWeThere should return

@@ -48,7 +48,7 @@ public:
 	// BW1W120 00560f40 BW1M119 011195c0
 	virtual const char* GetText();
 	// BW1W120 00560f50 BW1M119 01119600
-	virtual uint32_t IsParticleContainer();
+	virtual bool32_t IsParticleContainer();
 };
 
 #endif /* BW1_DECOMP_PARTICLE_CONTAINER_INCLUDED_H */

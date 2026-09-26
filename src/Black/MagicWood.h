@@ -39,7 +39,7 @@ public:
 	// BW1W120 00600db0 BW1M119 013c2110
 	virtual IMPRESSIVE_TYPE GetImpressiveType();
 	// BW1W120 00600dc0 BW1M119 013c2150
-	virtual uint32_t IsAWoodPileOutsideStoragePit(Creature* param_1);
+	virtual bool32_t IsAWoodPileOutsideStoragePit(Creature* param_1);
 	// BW1W120 00600f10 BW1M119 013c2340
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 };

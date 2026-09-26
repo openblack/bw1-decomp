@@ -45,13 +45,13 @@ public:
 	// BW1W120 0072c030 BW1M119 0153ccb0
 	virtual uint32_t GetSaveType();
 	// BW1W120 0072c010 BW1M119 0153caf0
-	virtual uint32_t HandShouldFeelWithMeshIntersect();
+	virtual bool32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 0072c1b0 BW1M119 01539f50
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 0072c1c0 BW1M119 01539f10
 	virtual float GetTopPos();
 	// BW1W120 0072c000 BW1M119 0153caa0
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 0072c1e0 BW1M119 01539e70
 	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
 	// BW1W120 0072c1d0 BW1M119 01539ed0

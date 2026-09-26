@@ -35,11 +35,11 @@ public:
 	// BW1W120 0041dd80 BW1M119 0117b780
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041f190 BW1M119 0117c7e0
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 0041f150 BW1M119 0117c860
-	virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
+	virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
 	// BW1W120 0041dd70 BW1M119 0117a590
-	virtual uint32_t CanBePoodOn(Creature* param_1);
+	virtual bool32_t CanBePoodOn(Creature* param_1);
 	// BW1W120 004d1b10 BW1M119 01247a00
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
 	// BW1W120 0041eaa0 BW1M119 0117d340

@@ -91,9 +91,9 @@ public:
 	// BW1W120 0055dc30 BW1M119 inlined
 	virtual void GetInteractPos(LHPoint* param_1);
 	// BW1W120 0055dc80 BW1M119 015bad60
-	virtual uint32_t IsSuitableForCreatureAction();
+	virtual bool32_t IsSuitableForCreatureAction();
 	// BW1W120 004e4b60 BW1M119 015ebca0
-	virtual uint32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
+	virtual bool32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
 	// BW1W120 0055dca0 BW1M119 inlined
 	virtual uint32_t IsWorshipSite_1();
 	// BW1W120 0055dc90 BW1M119 inlined
@@ -139,7 +139,7 @@ public:
 	// BW1W120 0077ae30 BW1M119 015b9c70
 	virtual bool32_t GetInspectObjectPos(Villager* param_1, MapCoords* param_2);
 	// BW1W120 0077cc90 BW1M119 015b5f40
-	virtual uint32_t GetSpecialPos(uint32_t param_1, MapCoords* param_2);
+	virtual bool32_t GetSpecialPos(uint32_t param_1, MapCoords* param_2);
 	// BW1W120 0077d000 BW1M119 015b57e0
 	virtual uint32_t GetObjectCollide();
 	// BW1W120 0077c120 BW1M119 015b7590

@@ -68,9 +68,9 @@ public:
 	// BW1W120 00417840 BW1M119 01138230
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 00417870 BW1M119 01138300
-	virtual uint32_t CanBeGivenToTown(Creature* param_1);
+	virtual bool32_t CanBeGivenToTown(Creature* param_1);
 	// BW1W120 004e4ae0 BW1M119 015ebea0
-	virtual uint32_t IsAnimalBelongingToOtherPlayer(Creature* param_1);
+	virtual bool32_t IsAnimalBelongingToOtherPlayer(Creature* param_1);
 	// BW1W120 004eabd0 BW1M119 012721e0
 	virtual uint32_t GetCreatureMimicType();
 	// BW1W120 004d1b20 BW1M119 012479b0
@@ -78,7 +78,7 @@ public:
 	// BW1W120 00417890 BW1M119 011383c0
 	virtual DEATH_REASON GetDeathReason();
 	// BW1W120 00417880 BW1M119 01051a00
-	virtual uint32_t IsAnimal();
+	virtual bool32_t IsAnimal();
 	// BW1W120 0041b200 BW1M119 0116e640
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00419310 BW1M119 01172060
@@ -104,9 +104,9 @@ public:
 	// BW1W120 0041bc80 BW1M119 0116d110
 	virtual int GetDefaultResource();
 	// BW1W120 00419b40 BW1M119 01170cd0
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00419b60 BW1M119 01170bd0
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 0041b320 BW1M119 0116e480
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 0041b360 BW1M119 0116e2e0
@@ -132,47 +132,47 @@ public:
 	// BW1W120 00418aa0 BW1M119 0104ac50
 	virtual void MoveTo3D();
 	// BW1W120 00417c90 BW1M119 01098600
-	virtual uint32_t StartWander();
+	virtual bool32_t StartWander();
 	// BW1W120 00418010 BW1M119 01173ed0
-	virtual uint32_t Wander();
+	virtual bool32_t Wander();
 	// BW1W120 004182d0 BW1M119 01014f60
-	virtual uint32_t Eat();
+	virtual bool32_t Eat();
 	// BW1W120 004180d0 BW1M119 01173d20
-	virtual uint32_t SeekSleep();
+	virtual bool32_t SeekSleep();
 	// BW1W120 00418330 BW1M119 01080970
-	virtual uint32_t Sleeps();
+	virtual bool32_t Sleeps();
 	// BW1W120 004181b0 BW1M119 01173bf0
-	virtual uint32_t SeekEnvironment();
+	virtual bool32_t SeekEnvironment();
 	// BW1W120 00418370 BW1M119 01173720
-	virtual uint32_t StandardAction();
+	virtual bool32_t StandardAction();
 	// BW1W120 00418280 BW1M119 01173980
-	virtual uint32_t StartToEat();
+	virtual bool32_t StartToEat();
 	// BW1W120 00418320 BW1M119 010a0b70
-	virtual uint32_t FinishEating();
+	virtual bool32_t FinishEating();
 	// BW1W120 00419010 BW1M119 01172460
-	virtual uint32_t TargetPounce();
+	virtual bool32_t TargetPounce();
 	// BW1W120 00418db0 BW1M119 01172720
-	virtual uint32_t HuntingMoveToPos();
+	virtual bool32_t HuntingMoveToPos();
 	// BW1W120 00417d40 BW1M119 011746f0
-	virtual uint32_t MoveToPosAndLookAround();
+	virtual bool32_t MoveToPosAndLookAround();
 	// BW1W120 0041ad10 BW1M119 0116ed20
-	virtual uint32_t SpecialMoveToPos();
+	virtual bool32_t SpecialMoveToPos();
 	// BW1W120 0041ad00 BW1M119 0116ed60
-	virtual uint32_t FollowFlock();
+	virtual bool32_t FollowFlock();
 	// BW1W120 0041ad20 BW1M119 0116ece0
-	virtual uint32_t LandOnObject();
+	virtual bool32_t LandOnObject();
 	// BW1W120 0041ad30 BW1M119 0116ecb0
-	virtual uint32_t LandAtPos();
+	virtual bool32_t LandAtPos();
 	// BW1W120 00417d80 BW1M119 011745a0
-	virtual uint32_t InteractDecideWhatToDo();
+	virtual bool32_t InteractDecideWhatToDo();
 	// BW1W120 004201f0 BW1M119 0117f6b0
-	virtual uint32_t FleeingFromPredatorReaction();
+	virtual bool32_t FleeingFromPredatorReaction();
 	// BW1W120 00418230 BW1M119 01173a20
-	virtual uint32_t GivesBirth();
+	virtual bool32_t GivesBirth();
 	// BW1W120 0041b450 BW1M119 0116e1d0
-	virtual uint32_t HideInLair();
+	virtual bool32_t HideInLair();
 	// BW1W120 004180a0 BW1M119 01173e30
-	virtual uint32_t SeekFood();
+	virtual bool32_t SeekFood();
 	// BW1W120 00417dc0 BW1M119 0104e720
 	virtual uint32_t ProcessNeeds();
 	// BW1W120 00418450 BW1M119 010060e0
@@ -258,7 +258,7 @@ public:
 	// BW1W120 0041a310 BW1M119 inlined
 	virtual uint32_t CallEntryStateFunction(uint8_t state);
 	// BW1W120 0041b170 BW1M119 inlined
-	virtual uint32_t ExitReaction(uint8_t state);
+	virtual bool32_t ExitReaction(uint8_t state);
 	// BW1W120 00417570 BW1M119 inlined
 	virtual bool IsScriptState(uint8_t state) const;
 	// BW1W120 00417590 BW1M119 inlined
@@ -339,9 +339,9 @@ public:
 	// BW1W120 0041abb0 BW1M119 01089fb0
 	uint32_t KeepFlockMemberWithinFlockArea();
 	// BW1W120 005afe70 BW1M119 01051680
-	uint32_t MoveToPos();
+	bool32_t MoveToPos();
 	// BW1W120 005afef0 BW1M119 01174660
-	uint32_t Landed();
+	bool32_t Landed();
 
 	// State-table handlers reached only through the villager/animal state
 	// tables in GStates.cpp. Names are placeholders keyed on the address;
@@ -349,13 +349,13 @@ public:
 
 	// EntryState slot
 	// BW1W120 0041bab0 BW1M119 010a0590
-	uint32_t EnterWandering(uint8_t param_1, uint8_t param_2);
+	bool32_t EnterWandering(uint8_t param_1, uint8_t param_2);
 	// BW1W120 0041bac0 BW1M119 0116d720
-	uint32_t EnterSleep(uint8_t param_1, uint8_t param_2);
+	bool32_t EnterSleep(uint8_t param_1, uint8_t param_2);
 	// BW1W120 0041bad0 BW1M119 0116d6e0
-	uint32_t EnterHideInLair(uint8_t param_1, uint8_t param_2);
+	bool32_t EnterHideInLair(uint8_t param_1, uint8_t param_2);
 	// BW1W120 0041bae0 BW1M119 0116d6a0
-	uint32_t EnterSeekFood(uint8_t param_1, uint8_t param_2);
+	bool32_t EnterSeekFood(uint8_t param_1, uint8_t param_2);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_INCLUDED_H */

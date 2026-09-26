@@ -90,35 +90,35 @@ public:
 	// BW1W120 00527f40 BW1M119 inlined
 	virtual uint32_t IsField_0();
 	// BW1W120 00527fd0 BW1M119 010daf10
-	virtual uint32_t CanBeEatenByCreature(Creature* param_1);
+	virtual bool32_t CanBeEatenByCreature(Creature* param_1);
 	// BW1W120 00527fe0 BW1M119 010daf60
-	virtual uint32_t CanBeSleptNextToByCreature(Creature* param_1);
+	virtual bool32_t CanBeSleptNextToByCreature(Creature* param_1);
 	// BW1W120 00527f70 BW1M119 010dad30
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 00527f80 BW1M119 010dad80
-	virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
+	virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
 	// BW1W120 00527f90 BW1M119 010dadd0
-	virtual uint32_t CanBeGivenToVillager(Creature* param_1);
+	virtual bool32_t CanBeGivenToVillager(Creature* param_1);
 	// BW1W120 00527fa0 BW1M119 010dae20
-	virtual uint32_t CanBePutInAStoragePit(Creature* param_1);
+	virtual bool32_t CanBePutInAStoragePit(Creature* param_1);
 	// BW1W120 00527fb0 BW1M119 010dae70
-	virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
+	virtual bool32_t CanBeDestroyedByStoning(Creature* param_1);
 	// BW1W120 00527fc0 BW1M119 010daec0
-	virtual uint32_t CanBeExaminedByCreature(Creature* param_1);
+	virtual bool32_t CanBeExaminedByCreature(Creature* param_1);
 	// BW1W120 00527ff0 BW1M119 010dafb0
-	virtual uint32_t IsBeingBuilt(Creature* param_1);
+	virtual bool32_t IsBeingBuilt(Creature* param_1);
 	// BW1W120 00528000 BW1M119 010daff0
-	virtual uint32_t NeedsRepair(Creature* param_1);
+	virtual bool32_t NeedsRepair(Creature* param_1);
 	// BW1W120 00527f60 BW1M119 010dacf0
-	virtual uint32_t CanBePoodOn(Creature* param_1);
+	virtual bool32_t CanBePoodOn(Creature* param_1);
 	// BW1W120 004e4970 BW1M119 015ec3e0
-	virtual uint32_t IsFieldWhichNeedsWatering(Creature* param_1);
+	virtual bool32_t IsFieldWhichNeedsWatering(Creature* param_1);
 	// BW1W120 004e4930 BW1M119 015ec460
-	virtual uint32_t IsFieldWithFoodInIt(Creature* param_1);
+	virtual bool32_t IsFieldWithFoodInIt(Creature* param_1);
 	// BW1W120 004e4900 BW1M119 015ec4d0
-	virtual uint32_t IsFieldBelongingToAnotherPlayer(Creature* param_1);
+	virtual bool32_t IsFieldBelongingToAnotherPlayer(Creature* param_1);
 	// BW1W120 00527f50 BW1M119 010dac70
-	virtual uint32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1);
+	virtual bool32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1);
 	// BW1W120 00528a30 BW1M119 010d92d0
 	virtual float GetMeshRadius() const;
 	// BW1W120 0052a0a0 BW1M119 010d6650
@@ -150,19 +150,19 @@ public:
 	// BW1W120 00529900 BW1M119 010d7630
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 00529a20 BW1M119 010d7520
-	virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
 	// BW1W120 00529a60 BW1M119 010d7420
-	virtual uint32_t NetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t NetworkUnfriendlyEndLockedSelect();
 	// BW1W120 00529af0 BW1M119 010d73a0
-	virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 00528ef0 BW1M119 010d89d0
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00529520 BW1M119 010d7e60
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 00528040 BW1M119 010db0b0
-	virtual uint32_t IsTuggable();
+	virtual bool32_t IsTuggable();
 	// BW1W120 00528900 BW1M119 010d9550
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 00529ff0 BW1M119 inlined
 	virtual uint32_t CanBeDestroyedBySpell_1(Spell* param_1);
 	// BW1W120 00528020 BW1M119 010db030

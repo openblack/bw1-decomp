@@ -69,7 +69,7 @@ public:
 	// BW1W120 0077f290 BW1M119 015bddc0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0077f0b0 BW1M119 015bb1d0
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0077f0d0 BW1M119 015bb270
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 

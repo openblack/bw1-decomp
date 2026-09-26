@@ -78,11 +78,11 @@ public:
 	// BW1W120 00726420 BW1M119 0152c010
 	virtual uint32_t GetOverwriteTapToolTip();
 	// BW1W120 0055d430 BW1M119 0152e700
-	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
 	// BW1W120 0055d3a0 BW1M119 014a5e20
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 0055d450 BW1M119 0152e7b0
-	virtual uint32_t IsSpellIcon();
+	virtual bool32_t IsSpellIcon();
 	// BW1W120 007261a0 BW1M119 0152c800
 	virtual void Create3DObject();
 	// BW1W120 007265d0 BW1M119 0152bb70
@@ -102,7 +102,7 @@ public:
 	// BW1W120 0055d400 BW1M119 0152e630
 	virtual bool32_t IsSpellSeedReturnPoint() const;
 	// BW1W120 0055d410 BW1M119 0152e670
-	virtual uint32_t ValidAsInterfaceLeashTarget();
+	virtual bool32_t ValidAsInterfaceLeashTarget();
 	// BW1W120 007263c0 BW1M119 0152c070
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
 	// BW1W120 00726430 BW1M119 0152bf30

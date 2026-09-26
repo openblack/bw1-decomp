@@ -41,7 +41,7 @@ public:
 	// BW1W120 005fa990 BW1M119 013b3d10
 	virtual IMPRESSIVE_TYPE GetImpressiveType();
 	// BW1W120 004e4a20 BW1M119 015ec0b0
-	virtual uint32_t IsAFoodPileOutsideStoragePit(Creature* param_1);
+	virtual bool32_t IsAFoodPileOutsideStoragePit(Creature* param_1);
 	// BW1W120 005faab0 BW1M119 013b3ef0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 };

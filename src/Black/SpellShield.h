@@ -46,7 +46,7 @@ public:
 	// BW1W120 0072ba80 BW1M119 0153b430
 	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
 	// BW1W120 0072b430 BW1M119 0153cde0
-	virtual uint32_t IsSpellShield();
+	virtual bool32_t IsSpellShield();
 	// BW1W120 0072b780 BW1M119 0153bbe0
 	virtual void UpdateStruckReaction();
 	// BW1W120 0072b7c0 BW1M119 0153bb40

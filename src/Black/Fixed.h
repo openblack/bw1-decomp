@@ -119,7 +119,7 @@ public:
 	// BW1W120 0052e880 BW1M119 010e5430
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0052eaf0 BW1M119 010e7670
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 0052eb00 BW1M119 010e76d0
 	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 0052f420 BW1M119 010e3800

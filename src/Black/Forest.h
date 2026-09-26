@@ -42,7 +42,7 @@ public:
 	// BW1W120 00539c60 BW1M119 010fb5d0
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00539ae0 BW1M119 010f8aa0
-	virtual uint32_t IsFootpathLink();
+	virtual bool32_t IsFootpathLink();
 	// BW1W120 00539af0 BW1M119 010f8ae0
 	virtual GFootpathLink* GetFootpathLink();
 	// BW1W120 0053acf0 BW1M119 010f9bf0
@@ -58,7 +58,7 @@ public:
 	// BW1W120 00539b10 BW1M119 010f8b60
 	virtual char* GetDebugText();
 	// BW1W120 0053b070 BW1M119 010f8ce0
-	virtual bool32_t Load(GameOSFile& file);
+	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 0053ae40 BW1M119 010f91b0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00539b00 BW1M119 010f8b20
@@ -70,11 +70,11 @@ public:
 	// BW1W120 00539ab0 BW1M119 010f89e0
 	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* creature);
 	// BW1W120 00539aa0 BW1M119 010f8990
-	virtual uint32_t IsSuitableForCreatureActivity();
+	virtual bool32_t IsSuitableForCreatureActivity();
 	// BW1W120 00539ac0 BW1M119 010f8a40
 	virtual const char* GetText();
 	// BW1W120 00539ad0 BW1M119 010f8a70
-	virtual uint32_t IsForest();
+	virtual bool32_t IsForest();
 
 	// Constructors
 
