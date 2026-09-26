@@ -94,7 +94,7 @@ public:
 	// BW1W120 00531180 BW1M119 012c0e50
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 00531280 BW1M119 012bbfa0
-	virtual uint32_t IsFootball();
+	virtual bool32_t IsFootball();
 	// BW1W120 00531e40 BW1M119 012bfa40
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00533e40 BW1M119 012c1cc0

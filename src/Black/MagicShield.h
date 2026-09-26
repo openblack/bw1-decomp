@@ -41,7 +41,7 @@ public:
 	// BW1W120 0072c320 BW1M119 01539b20
 	virtual bool32_t SetDying();
 	// BW1W120 0072c310 BW1M119 01539b80
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0072c330 BW1M119 01539ad0
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 0072c2e0 BW1M119 01539c40

@@ -62,25 +62,25 @@ public:
 	// BW1W120 0055ccb0 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
 	// BW1W120 0055ccf0 BW1M119 011596e0
-	virtual uint32_t IsCastShadowAtNight();
+	virtual bool32_t IsCastShadowAtNight();
 	// BW1W120 0055cd10 BW1M119 01159770
-	virtual uint32_t CanBeEatenByCreature(Creature* param_1);
+	virtual bool32_t CanBeEatenByCreature(Creature* param_1);
 	// BW1W120 0055cd00 BW1M119 01159720
-	virtual uint32_t CanActAsAContainer(Creature* param_1);
+	virtual bool32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 004e4b50 BW1M119 015ebd20
-	virtual uint32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
+	virtual bool32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
 	// BW1W120 004e4b70 BW1M119 015ebc50
-	virtual uint32_t CanHaveMagicWoodCastOnMe(Creature* param_1);
+	virtual bool32_t CanHaveMagicWoodCastOnMe(Creature* param_1);
 	// BW1W120 004e4990 BW1M119 015ec370
-	virtual uint32_t IsStoragePit(Creature* param_1);
+	virtual bool32_t IsStoragePit(Creature* param_1);
 	// BW1W120 004e4d90 BW1M119 015eb560
-	virtual uint32_t IsStoragePitWithFoodInIt(Creature* param_1);
+	virtual bool32_t IsStoragePitWithFoodInIt(Creature* param_1);
 	// BW1W120 004e49a0 BW1M119 015ec280
-	virtual uint32_t IsStoragePitBelongingToAnotherPlayer(Creature* param_1);
+	virtual bool32_t IsStoragePitBelongingToAnotherPlayer(Creature* param_1);
 	// BW1W120 004e49e0 BW1M119 015ec1a0
-	virtual uint32_t IsStoragePitBelongingToMyPlayer(Creature* param_1);
+	virtual bool32_t IsStoragePitBelongingToMyPlayer(Creature* param_1);
 	// BW1W120 007336b0 BW1M119 0115a140
-	virtual uint32_t IsPoisoned();
+	virtual bool32_t IsPoisoned();
 	// BW1W120 00519350 BW1M119 0101d500
 	virtual void Draw();
 	// BW1W120 00733a20 BW1M119 01159890

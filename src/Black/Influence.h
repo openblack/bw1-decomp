@@ -65,7 +65,7 @@ public:
 	// BW1W120 0055ec30 BW1M119 01104f90
 	virtual const char* GetText();
 	// BW1W120 0055ec20 BW1M119 01104f50
-	virtual uint32_t IsInfluenceRing();
+	virtual bool32_t IsInfluenceRing();
 	// BW1W120 005cdc50 BW1M119 011053f0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 

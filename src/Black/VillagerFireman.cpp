@@ -77,7 +77,7 @@ bool32_t Villager::SetupMoveAroundFire(const MapCoords& pos, VILLAGER_STATES sta
 // BW1W120 0075a7e0 BW1M119 01581830
 // TODO: deferred (675B) — blocked on UNNAMED fn_00603260 (MapCoords=JustWholeMapXZ assign at
 // this+0x80, see file header) plus other helpers. Large state-tick function; write after naming.
-uint32_t Villager::MoveAroundFire()
+bool32_t Villager::MoveAroundFire()
 {
 	return true;
 }

@@ -59,13 +59,13 @@ public:
 	// BW1W120 007449e0 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
 	// BW1W120 0055db60 BW1M119 01565570
-	virtual uint32_t IsCastShadowAtNight();
+	virtual bool32_t IsCastShadowAtNight();
 	// BW1W120 0055db70 BW1M119 015655b0
-	virtual uint32_t IsTownCentre();
+	virtual bool32_t IsTownCentre();
 	// BW1W120 0055db40 BW1M119 015654e0
-	virtual uint32_t CanActAsAContainer(Creature* param_1);
+	virtual bool32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 0055db50 BW1M119 01565530
-	virtual uint32_t IsStoragePit(Creature* param_1);
+	virtual bool32_t IsStoragePit(Creature* param_1);
 	// BW1W120 007445d0 BW1M119 01563570
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00744320 BW1M119 01563cf0

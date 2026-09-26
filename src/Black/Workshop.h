@@ -51,15 +51,15 @@ public:
 	// BW1W120 0077a330 BW1M119 0116a830
 	virtual void ResolveLoad();
 	// BW1W120 007792e0 BW1M119 0116cbc0
-	virtual uint32_t CanActAsAContainer(Creature* param_1);
+	virtual bool32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 007792f0 BW1M119 0116cc10
-	virtual uint32_t IsStoragePit(Creature* param_1);
+	virtual bool32_t IsStoragePit(Creature* param_1);
 	// BW1W120 007792c0 BW1M119 inlined
 	virtual uint32_t IsWorkshop_0();
 	// BW1W120 007792d0 BW1M119 inlined
 	virtual uint32_t IsWorkshop_1(Creature* param_1);
 	// BW1W120 0077a6d0 BW1M119 01169f70
-	virtual uint32_t CreateBuildingSite();
+	virtual bool32_t CreateBuildingSite();
 	// BW1W120 0077a610 BW1M119 0116a230
 	virtual void ScaffoldMoved(Scaffold* param_1);
 	// BW1W120 007797f0 BW1M119 0116bd90

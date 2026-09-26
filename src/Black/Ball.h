@@ -61,11 +61,11 @@ public:
 	// BW1W120 00435ac0 BW1M119 010b2a50
 	virtual uint32_t GetSaveType();
 	// BW1W120 00435ab0 BW1M119 010b2a00
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 004363b0 BW1M119 010b2af0
-	virtual uint32_t IsToy(Creature* param_1);
+	virtual bool32_t IsToy(Creature* param_1);
 	// BW1W120 004363c0 BW1M119 010b2ab0
-	virtual uint32_t IsToyBall(Creature* param_1);
+	virtual bool32_t IsToyBall(Creature* param_1);
 	// BW1W120 00436100 BW1M119 010b2f00
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00435c30 BW1M119 010b3480

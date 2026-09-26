@@ -583,7 +583,7 @@ bool32_t Villager::IsAvailable()
 }
 
 // BW1W120 00751d70 BW1M119 0100ca10
-uint32_t Villager::IsEffectReceiver(EffectValues* effect)
+bool32_t Villager::IsEffectReceiver(EffectValues* effect)
 {
 	if (effect != NULL && effect->numbers.values[EFFECT_TYPE_HEAL] > 0.0f)
 	{
@@ -753,13 +753,13 @@ uint32_t Villager::CallExitStateFunction(uint8_t state)
 }
 
 // BW1W120 007523d0
-bool32_t Villager::CallEntryStateFunction(uint8_t state)
+uint32_t Villager::CallEntryStateFunction(uint8_t state)
 {
 	return false;
 }
 
 // BW1W120 00752440
-bool32_t Villager::CallEntryStateFunction(uint8_t current, uint8_t destination)
+uint32_t Villager::CallEntryStateFunction(uint8_t current, uint8_t destination)
 {
 	return false;
 }
@@ -845,13 +845,13 @@ bool Villager::MakeVillagerFaceObject(Object* object)
 }
 
 // BW1W120 007527a0 BW1M119 inlined
-uint32_t Villager::ExitReaction(uint8_t state)
+bool32_t Villager::ExitReaction(uint8_t state)
 {
 	return 0;
 }
 
 // BW1W120 007527e0 BW1M119 01574800
-uint32_t Villager::ExitDance(unsigned char param_1)
+bool32_t Villager::ExitDance(unsigned char param_1)
 {
 	return false;
 }
@@ -926,7 +926,7 @@ bool32_t Villager::IsTouching(const MapCoords& coords)
 }
 
 // BW1W120 00753080 BW1M119 01573730
-uint32_t Villager::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t Villager::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
 	return 0;
 }
@@ -1068,7 +1068,7 @@ uint32_t Villager::GetChillOutPos(MapCoords& coords)
 }
 
 // BW1W120 00753dd0 BW1M119 01572850
-uint32_t Villager::VillagerCreated()
+bool32_t Villager::VillagerCreated()
 {
 	return 0;
 }
@@ -1470,25 +1470,25 @@ bool32_t Villager::LoadMagicTreeReaction(GameOSFile& param_1)
 }
 
 // BW1W120 00755e00 BW1M119 0156eaf0
-uint32_t Villager::SaveHideInBuilding(GameOSFile& param_1)
+bool32_t Villager::SaveHideInBuilding(GameOSFile& param_1)
 {
 	return 0;
 }
 
 // BW1W120 00755ea0 BW1M119 0156e9d0
-uint32_t Villager::LoadHideInBuilding(GameOSFile& param_1)
+bool32_t Villager::LoadHideInBuilding(GameOSFile& param_1)
 {
 	return 0;
 }
 
 // BW1W120 00755f40 BW1M119 0156e900
-uint32_t Villager::SaveShieldReaction(GameOSFile& param_1)
+bool32_t Villager::SaveShieldReaction(GameOSFile& param_1)
 {
 	return 0;
 }
 
 // BW1W120 00755fa0 BW1M119 0156e830
-uint32_t Villager::LoadShieldReaction(GameOSFile& param_1)
+bool32_t Villager::LoadShieldReaction(GameOSFile& param_1)
 {
 	return 0;
 }
@@ -1582,7 +1582,7 @@ bool32_t Villager::IsReachable()
 }
 
 // BW1W120 007564a0 BW1M119 0156dfa0
-uint32_t Villager::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t Villager::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
 	return 0;
 }

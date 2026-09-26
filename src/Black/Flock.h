@@ -82,11 +82,11 @@ public:
 	// BW1W120 0052f8f0 BW1M119 010e7b80
 	virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature);
 	// BW1W120 0052f8c0 BW1M119 010e7a70
-	virtual uint32_t IsSuitableForCreatureActivity();
+	virtual bool32_t IsSuitableForCreatureActivity();
 	// BW1W120 0052f860 BW1M119 010e7920
-	virtual uint32_t IsFlock() const;
+	virtual bool32_t IsFlock() const;
 	// BW1W120 0052f880 BW1M119 010e7980
-	virtual uint32_t IsScriptContainer() const;
+	virtual bool32_t IsScriptContainer() const;
 	// BW1W120 0052f890 BW1M119 010e79c0
 	virtual const char* GetText();
 	// BW1W120 00530490 BW1M119 010e8ff0

@@ -32,7 +32,7 @@ public:
 	// BW1W120 00606cd0 BW1M119 013c2680
 	virtual bool32_t BlocksTownClearArea() const;
 	// BW1W120 00425b00 BW1M119 010b0820
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00416f50 BW1M119 010b0870
 	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 00606bf0 BW1M119 013c2870

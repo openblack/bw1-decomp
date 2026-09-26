@@ -71,23 +71,23 @@ public:
 	// BW1W120 005610f0 BW1M119 0154c720
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 00561150 BW1M119 0154c900
-	virtual uint32_t IsTotemStatue();
+	virtual bool32_t IsTotemStatue();
 	// BW1W120 00561110 BW1M119 0154c7c0
-	virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
+	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
 	// BW1W120 00561100 BW1M119 0154c770
-	virtual uint32_t CanBeImpressedByCreature(Creature* param_1);
+	virtual bool32_t CanBeImpressedByCreature(Creature* param_1);
 	// BW1W120 004e3e70 BW1M119 015ee440
-	virtual uint32_t DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature* param_1);
+	virtual bool32_t DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature* param_1);
 	// BW1W120 007384d0 BW1M119 0154e120
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 004e4110 BW1M119 015edbb0
-	virtual uint32_t CanBeStolenByCreature(Creature* param_1);
+	virtual bool32_t CanBeStolenByCreature(Creature* param_1);
 	// BW1W120 004e4170 BW1M119 015eda00
-	virtual uint32_t IsTotemWithStealableSpell(Creature* param_1);
+	virtual bool32_t IsTotemWithStealableSpell(Creature* param_1);
 	// BW1W120 00738eb0 BW1M119 0154c9c0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00561120 BW1M119 0154c810
-	virtual uint32_t HandShouldFeelWithMeshIntersect();
+	virtual bool32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 00737c90 BW1M119 0154ef50
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00737c60 BW1M119 0154f010
@@ -105,15 +105,15 @@ public:
 	// BW1W120 00738590 BW1M119 0154dec0
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 007385e0 BW1M119 0154de10
-	virtual uint32_t NetworkUnfriendlyStartLockedSelect();
+	virtual bool32_t NetworkUnfriendlyStartLockedSelect();
 	// BW1W120 007386a0 BW1M119 0154dc40
-	virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
 	// BW1W120 00738630 BW1M119 0154dd50
-	virtual uint32_t NetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t NetworkUnfriendlyEndLockedSelect();
 	// BW1W120 00738690 BW1M119 0154dcf0
-	virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 00561130 BW1M119 0154c860
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 00737d40 BW1M119 0154ec00
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00737d50 BW1M119 0154ebb0

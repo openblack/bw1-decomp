@@ -68,13 +68,13 @@ public:
 	// BW1W120 004e40e0 BW1M119 015edc60
 	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
 	// BW1W120 00462a90 BW1M119 011bfd20
-	virtual uint32_t IsSuitableForCreatureActivity();
+	virtual bool32_t IsSuitableForCreatureActivity();
 	// BW1W120 004d1b50 BW1M119 012478c0
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
 	// BW1W120 00462aa0 BW1M119 011bfd70
 	virtual const char* GetText();
 	// BW1W120 00462ab0 BW1M119 011bfda0
-	virtual uint32_t IsCitadel();
+	virtual bool32_t IsCitadel();
 
 	// Static methods
 

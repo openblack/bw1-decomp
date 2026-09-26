@@ -178,7 +178,7 @@ public:
 	// BW1W120 00403200 BW1M119 011a8dc0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 00406820 BW1M119 0155d740
-	virtual bool32_t InterfaceValidToTap(GInterfaceStatus* status);
+	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* status);
 	// BW1W120 00406830 BW1M119 01112a30
 	virtual uint32_t InterfaceTap(GInterfaceStatus* status);
 	// BW1W120 00402dc0 BW1M119 01590910

@@ -33,11 +33,11 @@ public:
 	// BW1W120 00422140 BW1M119 010a86d0
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 00422150 BW1M119 010a8710
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 005276d0 BW1M119 010d5220
-	virtual uint32_t IsMushroom(Creature* param_1);
+	virtual bool32_t IsMushroom(Creature* param_1);
 	// BW1W120 004220e0 BW1M119 010a8590
-	virtual uint32_t IsFeature();
+	virtual bool32_t IsFeature();
 	// BW1W120 005277d0 BW1M119 010d4dd0
 	virtual HELP_TEXT GetQueryFirstEnumText();
 	// BW1W120 00527820 BW1M119 010d4cf0

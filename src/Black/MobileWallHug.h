@@ -86,7 +86,7 @@ public:
 	// BW1W120 0060c040 BW1M119 013cb370
 	virtual void GetMovementDirection(LHPoint* param_1);
 	// BW1W120 00416f80 BW1M119 0102efb0
-	virtual uint32_t IsMobileWallHug() const;
+	virtual bool32_t IsMobileWallHug() const;
 	// BW1W120 0060c020 BW1M119 013cb440
 	virtual float GetFacingDirection();
 	// BW1W120 0060dac0 BW1M119 013c98d0

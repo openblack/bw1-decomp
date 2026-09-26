@@ -182,37 +182,37 @@ public:
 	// BW1W120 004172c0 BW1M119 01139360
 	virtual bool32_t IsStompable();
 	// BW1W120 00417470 BW1M119 01139a60
-	virtual uint32_t IsNotLiving();
+	virtual bool32_t IsNotLiving();
 	// BW1W120 00417330 BW1M119 011394f0
-	virtual uint32_t IsSuitableForCreatureAction();
+	virtual bool32_t IsSuitableForCreatureAction();
 	// BW1W120 00417350 BW1M119 01139590
-	virtual uint32_t CanBeAttackedByCreature(Creature* param_1);
+	virtual bool32_t CanBeAttackedByCreature(Creature* param_1);
 	// BW1W120 004173d0 BW1M119 01139750
-	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
 	// BW1W120 00417390 BW1M119 01139670
-	virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
+	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
 	// BW1W120 004173e0 BW1M119 011397a0
-	virtual uint32_t CanBeInspectedByCreature(Creature* param_1);
+	virtual bool32_t CanBeInspectedByCreature(Creature* param_1);
 	// BW1W120 00417410 BW1M119 01139860
-	virtual uint32_t CanBePoodUponByCreature(Creature* param_1);
+	virtual bool32_t CanBePoodUponByCreature(Creature* param_1);
 	// BW1W120 00417430 BW1M119 01139930
-	virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
+	virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
 	// BW1W120 00417340 BW1M119 01139540
-	virtual uint32_t CanBeThrownByCreature(Creature* param_1);
+	virtual bool32_t CanBeThrownByCreature(Creature* param_1);
 	// BW1W120 00417420 BW1M119 011398b0
-	virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
+	virtual bool32_t CanBeDestroyedByStoning(Creature* param_1);
 	// BW1W120 00417440 BW1M119 011399b0
-	virtual uint32_t CanBeDancedWith(Creature* param_1);
+	virtual bool32_t CanBeDancedWith(Creature* param_1);
 	// BW1W120 00417450 BW1M119 01139a20
-	virtual uint32_t IsAggressive(Creature* param_1);
+	virtual bool32_t IsAggressive(Creature* param_1);
 	// BW1W120 00417460 BW1M119 01006820
 	virtual bool32_t IsLiving();
 	// BW1W120 00768580 BW1M119 0159bf00
 	virtual uint32_t AttitudeToCreatureEating();
 	// BW1W120 00416ff0 BW1M119 011384b0
-	virtual uint32_t IsSkeleton() const;
+	virtual bool32_t IsSkeleton() const;
 	// BW1W120 00416f90 BW1M119 0105a140
-	virtual uint32_t IsPoisoned();
+	virtual bool32_t IsPoisoned();
 	// BW1W120 00417000 BW1M119 011384f0
 	virtual void SetSkeleton(int param_1);
 	// BW1W120 005ee230 BW1M119 013866d0
@@ -226,7 +226,7 @@ public:
 	// BW1W120 004172a0 BW1M119 011392e0
 	virtual bool32_t CanBePickedUp();
 	// BW1W120 004172b0 BW1M119 01139320
-	virtual uint32_t CanBeCrushed();
+	virtual bool32_t CanBeCrushed();
 	// BW1W120 005ec9b0 BW1M119 0138a3a0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 00416fa0 BW1M119 01138400
@@ -234,7 +234,7 @@ public:
 	// BW1W120 005ec390 BW1M119 0138ad10
 	virtual bool32_t SetDying();
 	// BW1W120 005eccb0 BW1M119 01389390
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 005ed590 BW1M119 013881b0
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 005ed5c0 BW1M119 01387f10
@@ -338,45 +338,45 @@ public:
 	// BW1W120 purecall BW1M119 null
 	virtual uint32_t CallEntryStateFunction(uint8_t state) = 0;
 	// BW1W120 005eccd0 BW1M119 inlined
-	virtual uint32_t ExitReaction(uint8_t state);
+	virtual bool32_t ExitReaction(uint8_t state);
 	// BW1W120 005ed9c0 BW1M119 inlined
-	virtual uint32_t ExitInScript(uint8_t state);
+	virtual bool32_t ExitInScript(uint8_t state);
 	// BW1W120 005edb10 BW1M119 inlined
-	virtual uint32_t ExitDanceInScript(uint8_t state);
+	virtual bool32_t ExitDanceInScript(uint8_t state);
 	// BW1W120 005ed500 BW1M119 inlined
-	virtual uint32_t ExitInHand(uint8_t state);
+	virtual bool32_t ExitInHand(uint8_t state);
 	// BW1W120 005ed540 BW1M119 inlined
-	virtual uint32_t ExitInFlying(uint8_t state);
+	virtual bool32_t ExitInFlying(uint8_t state);
 	// BW1W120 005ed580 BW1M119 inlined
-	virtual uint32_t ExitInLanded(uint8_t state);
+	virtual bool32_t ExitInLanded(uint8_t state);
 	// BW1W120 00768780 BW1M119 inlined
-	virtual uint32_t ExitNoChangeState(uint8_t state);
+	virtual bool32_t ExitNoChangeState(uint8_t state);
 	// BW1W120 005ee090 BW1M119 inlined
-	virtual uint32_t ExitMoveOnPath(uint8_t state);
+	virtual bool32_t ExitMoveOnPath(uint8_t state);
 	// BW1W120 005edda0 BW1M119 010226e0
-	virtual uint32_t ExitMoveToPos(uint8_t state);
+	virtual bool32_t ExitMoveToPos(uint8_t state);
 	// BW1W120 005eddc0 BW1M119 01387270
-	virtual uint32_t ExitBeingEaten(uint8_t state);
+	virtual bool32_t ExitBeingEaten(uint8_t state);
 	// BW1W120 005f2a80 BW1M119 010749f0
 	virtual void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
 	// BW1W120 005edd90 BW1M119 inlined
 	virtual uint32_t EnterMoveToPos(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
 	// BW1W120 005ed7e0 BW1M119 inlined
-	virtual uint32_t EnterInScript(uint8_t current, uint8_t destination);
+	virtual bool32_t EnterInScript(uint8_t current, uint8_t destination);
 	// BW1W120 00417060 BW1M119 inlined
-	virtual uint32_t EnterInHand(uint8_t current, uint8_t destination);
+	virtual bool32_t EnterInHand(uint8_t current, uint8_t destination);
 	// BW1W120 005eddd0 BW1M119 01387230
-	virtual uint32_t EnterMoveOnPath(uint8_t current, uint8_t destination);
+	virtual bool32_t EnterMoveOnPath(uint8_t current, uint8_t destination);
 	// BW1W120 005eda50 BW1M119 inlined
-	virtual uint32_t EnterDanceInScript(uint8_t current, uint8_t destination);
+	virtual bool32_t EnterDanceInScript(uint8_t current, uint8_t destination);
 	// BW1W120 007687d0 BW1M119 inlined
-	virtual uint32_t EnterScriptWander(uint8_t current, uint8_t destination);
+	virtual bool32_t EnterScriptWander(uint8_t current, uint8_t destination);
 	// BW1W120 00768830 BW1M119 inlined
-	virtual uint32_t ExitScriptWander(uint8_t state);
+	virtual bool32_t ExitScriptWander(uint8_t state);
 	// BW1W120 00768840 BW1M119 inlined
-	virtual uint32_t EnterPlayAnim(uint8_t current, uint8_t destination);
+	virtual bool32_t EnterPlayAnim(uint8_t current, uint8_t destination);
 	// BW1W120 007689c0 BW1M119 inlined
-	virtual uint32_t ExitPlayAnim(uint8_t state);
+	virtual bool32_t ExitPlayAnim(uint8_t state);
 	// BW1W120 00473e60 BW1M119 inlined
 	virtual bool IsScriptState(VILLAGER_STATES state) const;
 	// BW1W120 00473e70 BW1M119 inlined
@@ -640,51 +640,51 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 005afe20 BW1M119 inlined
-	uint32_t StateArrivesAtFoodReaction();
+	bool32_t StateArrivesAtFoodReaction();
 	// BW1W120 005afe30 BW1M119 inlined
-	uint32_t StateDying();
+	bool32_t StateDying();
 	// BW1W120 005afe80 BW1M119 inlined
-	uint32_t StateArrivesAtWoodReaction();
+	bool32_t StateArrivesAtWoodReaction();
 	// BW1W120 005afe90 BW1M119 inlined
-	uint32_t StateDead();
+	bool32_t StateDead();
 	// BW1W120 005aff20 BW1M119 inlined
-	uint32_t StateInHand();
+	bool32_t StateInHand();
 	// BW1W120 005aff30 BW1M119 inlined
-	uint32_t StateDowned();
+	bool32_t StateDowned();
 	// BW1W120 005aff40 BW1M119 inlined
-	uint32_t StateSetDying();
+	bool32_t StateSetDying();
 	// BW1W120 005affd0 BW1M119 inlined
-	uint32_t StateBeingEaten();
+	bool32_t StateBeingEaten();
 	// BW1W120 005affe0 BW1M119 inlined
-	uint32_t StateFleeingFromObjectReaction();
+	bool32_t StateFleeingFromObjectReaction();
 	// BW1W120 005b0040 BW1M119 inlined
-	uint32_t StateAlongPath();
+	bool32_t StateAlongPath();
 	// BW1W120 005b0050 BW1M119 inlined
-	uint32_t StateGoToFoodReaction();
+	bool32_t StateGoToFoodReaction();
 	// BW1W120 005b0060 BW1M119 inlined
-	uint32_t StateLookingAtObjectReaction();
+	bool32_t StateLookingAtObjectReaction();
 	// BW1W120 005b00e0 BW1M119 inlined
-	uint32_t StateFleeingAndLookingAtObjectReaction();
+	bool32_t StateFleeingAndLookingAtObjectReaction();
 	// BW1W120 005b00f0 BW1M119 inlined
-	uint32_t StateGoToWoodReaction();
+	bool32_t StateGoToWoodReaction();
 	// BW1W120 005b0190 BW1M119 inlined
-	uint32_t StateMoveInFlock();
+	bool32_t StateMoveInFlock();
 	// BW1W120 005b01b0 BW1M119 inlined
-	uint32_t StateFollowingObjectReaction();
+	bool32_t StateFollowingObjectReaction();
 	// BW1W120 005b0230 BW1M119 inlined
-	uint32_t StateLookingAtFlyingObjectReaction();
+	bool32_t StateLookingAtFlyingObjectReaction();
 	// BW1W120 005b0240 BW1M119 inlined
-	uint32_t StateInspectObjectReaction();
+	bool32_t StateInspectObjectReaction();
 	// BW1W120 005ec030 BW1M119 0138b700
 	void SetToZero();
 	// BW1W120 005ec1d0 BW1M119 0138b420
 	bool32_t InvalidState();
 	// BW1W120 005ec270 BW1M119 0104f900
-	uint32_t MoveToPos();
+	bool32_t MoveToPos();
 	// BW1W120 005ec2c0 BW1M119 0138af80
-	uint32_t MoveToObject();
+	bool32_t MoveToObject();
 	// BW1W120 005ec330 BW1M119 0138aed0
-	uint32_t Flying();
+	bool32_t Flying();
 	// BW1W120 005ec520 BW1M119 0138a880
 	uint32_t LookAtObject(GameThingWithPos* param_1, unsigned long param_2);
 	// BW1W120 005ec550 BW1M119 0138a720
@@ -692,7 +692,7 @@ public:
 	// BW1W120 005ec960 BW1M119 010514d0
 	bool32_t IsReadyForNewAnimation(uint32_t index);
 	// BW1W120 005ec990 BW1M119 010577c0
-	uint32_t WaitForAnimation();
+	bool32_t WaitForAnimation();
 	// BW1W120 005eca60 BW1M119 0138a170
 	Reaction* GetReaction();
 	// BW1W120 005eca80 BW1M119 inlined
@@ -702,7 +702,7 @@ public:
 	// BW1W120 005ecb10 BW1M119 010560e0
 	void SetStateAnim();
 	// BW1W120 005ecd00 BW1M119 01389140
-	uint32_t MoveOnStructure();
+	bool32_t MoveOnStructure();
 	// BW1W120 005ecf60 BW1M119 0106f650
 	MapCoords GetFlockPos();
 	// BW1W120 005ecf70 BW1M119 0104e920
@@ -716,15 +716,15 @@ public:
 	// BW1W120 005ed2c0 BW1M119 01388800
 	void SetAge(int age);
 	// BW1W120 005ed9a0 BW1M119 0106f6c0
-	uint32_t StateInScript();
+	bool32_t StateInScript();
 	// BW1W120 005edad0 BW1M119 01387b80
-	uint32_t StateInDance();
+	bool32_t StateInDance();
 	// BW1W120 005edc10 BW1M119 01387610
 	int SetupMoveOnFootpath(GFootpath* param_1, uint32_t param_2, uint32_t param_3, GFootpathNode* param_4);
 	// BW1W120 005edd20 BW1M119 0109a030
 	void SetupMoveToOnFootpath(GameThingWithPos& destination, const MapCoords& arrive_position, uint8_t state);
 	// BW1W120 005edde0 BW1M119 01386ec0
-	uint32_t MoveOnFootpath();
+	bool32_t MoveOnFootpath();
 	// BW1W120 005ee5f0 BW1M119 01386270
 	void SetFlock(Flock* param_1);
 	// BW1W120 005ed010 BW1M119 01067d10
@@ -739,7 +739,7 @@ public:
 	bool32_t FleeFromObjectIfComingTowardsMe(GameThingWithPos* param_1, VILLAGER_STATES param_2,
 	                                         VILLAGER_STATES param_3);
 	// BW1W120 005f2640 BW1M119 0138dfa0
-	uint32_t GotoPickupBallReaction();
+	bool32_t GotoPickupBallReaction();
 	// BW1W120 005f27f0 BW1M119 01058aa0
 	VILLAGER_STATES GetTopState() const;
 	// BW1W120 005f2800 BW1M119 01391b50
@@ -758,9 +758,9 @@ public:
 	// slot it is stored in.
 
 	// BW1W120 005ec310 BW1M119 0138af00
-	uint32_t WaitForCounter();
+	bool32_t WaitForCounter();
 	// BW1W120 005f26a0 BW1M119 0138df10
-	uint32_t ArrivesAtPickupBallReaction();
+	bool32_t ArrivesAtPickupBallReaction();
 };
 
 #endif /* BW1_DECOMP_LIVING_INCLUDED_H */
