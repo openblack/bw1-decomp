@@ -64,8 +64,10 @@ enum     OBJECT_TYPE
     OBJECT_TYPE_FIREFLY                             =  42 ,
     OBJECT_TYPE_ARENA_SPELL_ICON                    =  43 ,
     OBJECT_TYPE_MAP_SHIELD                          =  44 ,
-    OBJECT_TYPE_CREATURE_ISLES_BUILDING             =  45 ,
-    OBJECT_TYPE_LAST                                =  46 ,
+#ifdef VERSION_BW1WCI
+	OBJECT_TYPE_CREATURE_ISLES_BUILDING             =  45 ,
+#endif // VERSION_BW1WCI
+	OBJECT_TYPE_LAST
 };
 
 //*****************************************************************************

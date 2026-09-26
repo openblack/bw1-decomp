@@ -24,14 +24,13 @@
 #include "Utils.h"
 #include "Villager.h"
 
-// BW1W120 00db9e68
-GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
+GVillagerStateTableInfo GVillagerStateTableInfo::Infos[VILLAGER_STATE_LAST_STATE];
 
 // BW1W120 00769580 BW1M119 015a35b0
 GBaseInfo* GVillagerStateTableInfo::GetBaseInfo(uint32_t& count)
 {
-	count = sizeof(g_GVillagerStateTableInfos) / sizeof(g_GVillagerStateTableInfos[0]);
-	return (GBaseInfo*)g_GVillagerStateTableInfos;
+	count = sizeof(Infos) / sizeof(Infos[0]);
+	return (GBaseInfo*)Infos;
 }
 
 // BW1W120 007695f0

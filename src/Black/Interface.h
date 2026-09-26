@@ -25,8 +25,10 @@ class GPlayer;
 class GameOSFile;
 class GameThing;
 struct LHCoord;
+class LH3DObject;
 class LHPlayer;
 struct LHPoint;
+class Object;
 struct Leash;
 struct LiquidParticleGroup;
 
@@ -130,6 +132,8 @@ public:
 
 	// BW1W120 005d8af0 BW1M119 0136f110
 	void StopAllImmersion();
+	// BW1W120 005d56c0 BW1M119 0107d9c0
+	void SendObjectDrawCollision(Object* object, float distance, LH3DObject* lh3d_object);
 
 	// BW1W120 005d0560 BW1M119 01360280
 	void ResolveLoadForCreature();

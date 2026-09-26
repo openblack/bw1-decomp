@@ -7,6 +7,8 @@
 
 #include <re_common.h> /* For bool32_t */
 
+#include <chlasm/GStates.h> /* For VILLAGER_STATE_LAST_STATE */
+
 #include <Lionhead/LHFile/ver3.0/LHFile.h> /* For struct LHFile */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>   /* For operator new(size_t, const char*, uint32_t) */
 
@@ -15,6 +17,11 @@
 class GVillagerStateTableInfo : public GBaseInfo
 {
 public:
+	// Static data
+
+	// BW1W120 00db9e68 BW1M119 01b9a988
+	static GVillagerStateTableInfo Infos[VILLAGER_STATE_LAST_STATE];
+
 	// BW1W120 inlined BW1M119 inlined
 	void LoadBinary(LHFile* file)
 	{
@@ -85,7 +92,7 @@ public:
 	// Static methods
 
 	// BW1W120 inlined BW1M119 0104d9a0
-	static GVillagerStateTableInfo* GetInfo();
+	static GVillagerStateTableInfo* GetInfo() { return Infos; }
 };
 
 #endif /* BW1_DECOMP_VILLAGER_STATE_TABLE_INFO_INCLUDED_H */

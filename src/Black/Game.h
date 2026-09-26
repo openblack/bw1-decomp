@@ -194,7 +194,7 @@ public:
 	uint32_t               field_0x205d34;
 	int                    Fps0x205d38;
 	uint32_t               field_0x205d3c;
-	int                    field_0x205d40;
+	int                    GameTimeMilliseconds;
 	uint32_t               field_0x205d44;
 	int                    field_0x205d48;
 	uint32_t               field_0x205d4c;
@@ -442,6 +442,8 @@ public:
 	void Update3DInfluence();
 	// BW1W120 00555270 BW1M119 0151aec0
 	void ForceNeedUpdateInfluence();
+	// BW1W120 inlined BW1M119 0107b840
+	GPlayer* MyPlayer() { return &players[PlayerIndex]; }
 	// BW1W120 00555850 BW1M119 01053ef0
 	GInterface* MyInterface();
 	// BW1W120 00555880 BW1M119 01062630

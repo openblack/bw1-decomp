@@ -33,17 +33,14 @@ public:
 	uint8_t                   field_0xa;
 	uint8_t                   field_0xb;
 	LHReleasedFile            file;
-	LHPoint                   position; /* 0x78 */
-	uint8_t                   field_0x84;
-	uint8_t                   field_0x85;
-	uint8_t                   field_0x86;
-	uint8_t                   field_0x87;
+	LHPoint                   position;
+	float                     Heading;
 	uint8_t                   field_0x88;
 	uint8_t                   field_0x89;
 	uint8_t                   field_0x8a;
 	uint8_t                   field_0x8b;
 	float                     field_0x8c;
-	float                     Size1; /* 0x90 */
+	float                     Size1;
 	float                     Size2;
 	int                       CurrentMesh;
 	uint8_t                   field_0x9c;
@@ -124,6 +121,10 @@ public:
 	CAnim* GetAnim(long anim_index, long param_3);
 	// BW1W120 00619690 BW1M119 01086830
 	CAnim* GetSetAnim(long param_1, long param_2, long param_3);
+	// BW1W120 inlined BW1M119 01095450
+	LHPoint& GetPos() { return position; }
+	// BW1W120 inlined BW1M119 013e2420
+	float GetHeading() { return Heading; }
 };
 
 #endif /* BW1_DECOMP_MORPHABLE_INCLUDED_H */

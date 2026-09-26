@@ -28,7 +28,7 @@ public:
 	int32_t          StartHour;
 	int32_t          StartMinute;
 	int32_t          StartSecond;
-	uint32_t         field_0x40;
+	uint32_t         MillisecondsPerGameTurn;
 	float            VisualTimeScale;
 	float            field_0x48;
 	float            field_0x4c;
@@ -46,6 +46,8 @@ public:
 	GGameInfo();
 
 	// Non-virtual methods
+	// BW1W120 inlined BW1M119 01001310
+	uint32_t NumGameTicksPerSecond() { return 1000 / MillisecondsPerGameTurn; }
 	// BW1W120 005575a0 BW1M119 010695d0
 	float GetVisualTime();
 	// BW1W120 005575d0 BW1M119 01301870

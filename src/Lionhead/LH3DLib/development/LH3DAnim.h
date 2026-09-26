@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
+#include <chlasm/AllMeshes.h> /* For MAX_COUNT_3D_ANIMS */
+
 #include "LHPoint.h" /* For struct LHPoint */
 
 enum AnimInfoType
@@ -114,6 +116,14 @@ struct AnimInfo
 	uint32_t Read(char* spec_filename);
 };
 
+struct LH3DAnim;
+
+struct LH3DAnimPack
+{
+	int       AnimCount; /* 0x0 */
+	LH3DAnim* Anims[MAX_COUNT_3D_ANIMS];
+};
+
 struct LH3DAnim
 {
 	ANM_Name name; /* 0x0 */
@@ -153,8 +163,22 @@ struct LH3DAnim
 	uint32_t field_0x58;
 	uint32_t PackIndex2;
 
+	// Static data
+
+	// BW1W120 00edd508
+	static LH3DAnimPack* AnimPack;
+
 	// Static methods
 
+	// BW1W120 inlined BW1M119 inlined
+	static LH3DAnim* GetPackedAnim(int index)
+	{
+		if (index < AnimPack->AnimCount && index >= 0)
+		{
+			return AnimPack->Anims[index];
+		}
+		return AnimPack->Anims[0];
+	}
 	// BW1W120 0083a1d0 BW1M119 01129510 (LHCombined Release)
 	static float SetTransform(LHMatrix* param_1, LH3DMesh* param_2, LHMatrix* param_3);
 	// BW1W120 0083aa30 BW1M119 01128810 (LHCombined Release)

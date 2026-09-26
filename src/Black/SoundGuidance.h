@@ -14,7 +14,13 @@
 class GInterfaceStatus;
 class GameThingWithPos;
 struct LH_SamplePlayOptions;
+struct MapCoords;
 class Town;
+
+enum RESOURCE_RAIN_TYPE
+{
+	RESOURCE_RAIN_TYPE_0 = 0
+};
 
 class GGuidance : public Base
 {
@@ -57,6 +63,8 @@ public:
 
 	// BW1W120 0071b020 BW1M119 01084710
 	static void ProcessTownDesireSFX(GInterfaceStatus& status);
+	// BW1W120 0071b570 BW1M119 01518d40
+	static void ResourceDropSFX(GInterfaceStatus& status, const MapCoords& pos, RESOURCE_RAIN_TYPE type);
 	// BW1W120 0071d1c0 BW1M119 010852f0
 	static void HelpSpritesCheckMoonPhase();
 	// BW1W120 0071bf10 BW1M119 01517210

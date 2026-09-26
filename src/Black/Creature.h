@@ -347,7 +347,7 @@ public:
 	// BW1W120 00477e30 BW1M119 011e19e0
 	virtual uint32_t IsObjectTurningTooFastForCameraToFollowSmoothly();
 	// BW1W120 0063bad0 BW1M119 013e22b0
-	virtual void CalculateWhereIWillBeAfterNSeconds(float param_1, LHPoint* param_2);
+	virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
 	// BW1W120 00477f50 BW1M119 011e1710
 	virtual float GetHeight();
 	// BW1W120 004794a0 BW1M119 011df790
@@ -373,7 +373,7 @@ public:
 	// BW1W120 0047de20 BW1M119 011d60d0
 	virtual float IncreaseLife(float value);
 	// BW1W120 00478c00 BW1M119 011e0610
-	virtual void FillInEffectDefenceMultiplier(EffectNumbers& param_1);
+	virtual void FillInEffectDefenceMultiplier(EffectNumbers& numbers);
 	// BW1W120 00478c80 BW1M119 011e01a0
 	virtual float ApplyEffect(EffectValues& param_1, int param_2);
 	// BW1W120 00476f70 BW1M119 011e3680

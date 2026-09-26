@@ -59,6 +59,34 @@ struct LHMatrix
 		m[10] = translation.y + m[10];
 		m[11] = translation.z + m[11];
 	}
+	// BW1W120 004607b0 BW1M119 013eb4b0
+	void __fastcall SetTranslateOnly(const LHPoint& translation)
+	{
+		m[9] = translation.x;
+		m[10] = translation.y;
+		m[11] = translation.z;
+	}
+	// BW1W120 inlined BW1M119 013eb510
+	void PreScale(float x, float y, float z)
+	{
+		m[0] *= x;
+		m[1] *= x;
+		m[2] *= x;
+		m[3] *= y;
+		m[4] *= y;
+		m[5] *= y;
+		m[6] *= z;
+		m[7] *= z;
+		m[8] *= z;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	void SetRotationY(float angle)
+	{
+		SetIdentity();
+		m[0] = m[8] = cos(angle);
+		m[2] = sin(angle);
+		m[6] = -m[2];
+	}
 	// BW1W120 inlined BW1M119 01043dd0
 	const LHPoint& GetPos() const { return *(const LHPoint*)&m[9]; }
 	// BW1W120 005198f0 BW1M119 inlined
@@ -87,6 +115,8 @@ struct LHMatrix
 	void __fastcall SetInverse(const LHMatrix& r);
 	// BW1W120 007fab30 BW1M119 0100ee90 (LHCombined Release)
 	void GetYXZ(float* y, float* x, float* z) const;
+	// BW1W120 007fac10 BW1M119 01032770 (LHCombined Release)
+	void SetYXZMatrixOnly(float y, float x, float z);
 	// BW1W120 inlined BW1M119 inlined
 	LHPoint operator*(const LHPoint& point) const
 	{

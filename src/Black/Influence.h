@@ -17,6 +17,19 @@ class GameOSFile;
 class GameThing;
 struct MapCoords;
 
+enum INFL_CALC_TYPE
+{
+	INFL_CALC_TYPE_0 = 0
+};
+
+class Influence
+{
+public:
+	// BW1W120 005cd170 BW1M119 010386b0
+	static float CalculatePlayerInfluence(const MapCoords& pos, GPlayer* player, int param_3, INFL_CALC_TYPE type,
+	                                      int param_5);
+};
+
 class InfluenceRing : public GameThingWithPos
 {
 public:
