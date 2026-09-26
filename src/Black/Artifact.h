@@ -41,6 +41,11 @@ public:
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00425d70 BW1M119 010b0c30
 	virtual uint32_t GetSaveType();
+
+	// Non-virtual methods
+
+	// BW1W120 004267f0 BW1M119 010b1220
+	bool IsReadyForParticleEffect();
 };
 
 #endif /* BW1_DECOMP_ARTIFACT_INCLUDED_H */

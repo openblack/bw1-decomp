@@ -246,6 +246,7 @@ class GameThingWithPos;
 class GameOSFile;
 struct HelpDudeControl;
 class HelpSpirit;
+class Object;
 
 class HelpSystem : public Base
 {
@@ -330,6 +331,8 @@ public:
 
 	// BW1W120 005c8fe0 BW1M119 0107fa70
 	void Process();
+	// BW1W120 005c9090 BW1M119 01048fc0
+	void SendFOVObject(Object* object, float distance);
 	// BW1W120 005c6eb0 BW1M119 013564b0
 	uint32_t Save(GameOSFile& file);
 	// BW1W120 005c73e0 BW1M119 01355620

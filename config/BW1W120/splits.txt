@@ -1568,14 +1568,26 @@ Black/Network.cpp:
 	.rdata      start:0x00930A24 end:0x00930A48
 	.CRT$XCU    start:0x009C70AC end:0x009C70C4 align:4
 	.data       start:0x00BFDE34 end:0x00BFDF30
-	.bss        start:0x00D41320 end:0x00D44368
+	.bss        start:0x00D41320 end:0x00D414A4
 
 Black/Object.cpp:
-	.text       start:0x006362B0 end:0x0063BBD0
-	.rdata      start:0x00930A48 end:0x00931324
-	.CRT$XCU    start:0x009C70C4 end:0x009C70F4 align:4
+	.text       start:0x006362B0 end:0x0063AB60
+	.rdata      start:0x00930A48 end:0x0093130C
+	.CRT$XCU    start:0x009C70C4 end:0x009C70DC align:4
 	.data       start:0x00BFDF30 end:0x00BFDF4C
-	.bss        start:0x00D44368 end:0x00D443A0
+	.bss        start:0x00D414A4 end:0x00D44384
+
+Black/Object3D.cpp:
+	.text       start:0x0063AB60 end:0x0063B880
+	.rdata      start:0x0093130C end:0x00931310
+	.CRT$XCU    start:0x009C70DC end:0x009C70E8 align:4
+	.bss        start:0x00D44384 end:0x00D44390
+
+Black/OnMapTrajectory.cpp:
+	.text       start:0x0063B880 end:0x0063BBD0
+	.rdata      start:0x00931310 end:0x00931324
+	.CRT$XCU    start:0x009C70E8 end:0x009C70F4 align:4
+	.bss        start:0x00D44390 end:0x00D443A0
 
 Black/OOSDebug.cpp:
 	.text       start:0x0063BBD0 end:0x0063C380

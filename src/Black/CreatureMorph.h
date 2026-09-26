@@ -20,7 +20,7 @@ class LH3DCreature : public Morphable
 {
 public:
 	Creature* creature; /* 0x4834 */
-	float     field_0x4838;
+	float     WalkSpeed;
 	float     RequiredSpeed;
 	float     field_0x4840;
 	uint32_t  field_0x4844;

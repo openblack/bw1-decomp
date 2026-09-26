@@ -25,6 +25,8 @@ public:
 	static void ApplyEffectToFireEffectIfNecessary(Object* object, EffectValues& values);
 	// BW1W120 0072ef60 BW1M119 01157d90
 	static void SetOnFire(Object* object, float temperature);
+	// BW1W120 00730860 BW1M119 0101c060
+	static void CheckToSeeIfObjectIsNearOnFireObject(Object* object);
 	// BW1W120 0072ef10 BW1M119 01157ea0
 	static void SetTemperature(Object* object, float temperature, GameThing* source);
 	// BW1W120 0072eec0 BW1M119 01157f80

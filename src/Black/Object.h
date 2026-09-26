@@ -47,6 +47,7 @@ struct Point2D;
 struct RPHolder;
 class Reaction;
 class Scaffold;
+struct SmokyStuff;
 class Spell;
 class SpellWater;
 class Town;
@@ -281,7 +282,7 @@ public:
 	// BW1W120 00637c20 BW1M119 013de2f0
 	virtual float ReduceLifeDueToBurning(float param_1, GPlayer* param_2);
 	// BW1W120 00637900 BW1M119 013de930
-	virtual void FillInEffectDefenceMultiplier(EffectNumbers& param_1);
+	virtual void FillInEffectDefenceMultiplier(EffectNumbers& numbers);
 	// BW1W120 00637980 BW1M119 013de440
 	virtual float ApplyEffect(EffectValues& param_1, int param_2);
 	// BW1W120 00637d00 BW1M119 013de0d0
@@ -502,7 +503,7 @@ public:
 	// BW1W120 00402970 BW1M119 010a2d00
 	virtual uint32_t InterfaceInteractAsMapCoordsObject(GInterfaceStatus* status) { return 1; }
 	// BW1W120 006385e0 BW1M119 013dc9d0
-	virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* status, int param_2);
+	virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* status, bool32_t dont_replant);
 	// BW1W120 00402980 BW1M119 010a2d60
 	virtual uint32_t ValidToSelectFightThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords) { return 0; }
 	// BW1W120 00402990 BW1M119 010a2dd0
@@ -523,7 +524,7 @@ public:
 	virtual float GetImportance();
 	// BW1W120 00636f00 BW1M119 013df650
 	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
-	                                                 GInterfaceStatus* status, Object* thrower, int dont_replant);
+	                                                 GInterfaceStatus* status, Object* thrower, bool32_t dont_replant);
 	// BW1W120 00637480 BW1M119 013df3b0
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);
@@ -591,7 +592,7 @@ public:
 	// BW1W120 00419970 BW1M119 010b0aa0
 	virtual bool32_t IsTownArtifact();
 	// BW1W120 00639ad0 BW1M119 0108c800
-	virtual bool ProcessInHand();
+	virtual uint32_t ProcessInHand();
 	// BW1W120 00639b10 BW1M119 013d9e80
 	virtual uint32_t ProcessInInteract(GInterfaceStatus* status);
 	// BW1W120 00402ad0 BW1M119 010a3430
@@ -665,12 +666,14 @@ public:
 
 	// BW1W120 inlined BW1M119 01047620
 	FireEffect* GetFireEffect() { return fire_effect; }
+	// BW1W120 00639900 BW1M119 013dad10
+	float GetArtifactImpressiveModifier();
 	// BW1W120 00637cc0 BW1M119 0102dd80
 	bool32_t IsOnFire();
 	// BW1W120 00638560 BW1M119 0105e730
 	Object* GetMapChild(const MapCoords& coord);
 	// BW1W120 0063a810 BW1M119 013d8700
-	bool32_t CreateSmokyStuff(long param_1, float param_2, LH3DColor param_3);
+	SmokyStuff* CreateSmokyStuff(long param_1, float param_2, LH3DColor color);
 	// BW1W120 00637930 BW1M119 013de840
 	EffectNumbers GetDefenseMultiplier();
 	// BW1W120 00638b00 BW1M119 013dc200
@@ -682,6 +685,16 @@ public:
 	void RemoveDraggingCreatureByLeash();
 	// BW1W120 006380c0 BW1M119 013dd600
 	bool32_t IsCitadelPart() const;
+	// BW1W120 006380e0 BW1M119 013dd5a0
+	bool32_t IsPartOfTown() const;
+	// BW1W120 006380f0 BW1M119 013dd530
+	bool32_t IsPartOfForest() const;
+	// BW1W120 00638070 BW1M119 null
+	bool32_t IsCitadelPartOfPlayer(GPlayer* player);
+	// BW1W120 006384a0 BW1M119 null
+	float GetWeightForce(Living* param_1);
+	// BW1W120 00638c70 BW1M119 null
+	void SetPackedAnim(int anim);
 	// BW1W120 00639a10 BW1M119 013da190
 	float GetTemperature();
 	// BW1W120 00639a30 BW1M119 013da130
@@ -693,13 +706,19 @@ public:
 	// BW1W120 00639a60 BW1M119 013da080
 	void SetTemperature(float param_1, GameThing* param_2);
 	// BW1W120 0063a1b0 BW1M119 01089340
-	void GetInterfaceStatusHoldingThis();
+	GInterfaceStatus* GetInterfaceStatusHoldingThis();
+	// BW1W120 0063a190 BW1M119 0108c890
+	GPlayer* GetPlayerHoldingThis();
 	// BW1W120 0063a230 BW1M119 013d8e40
 	void SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, float radius, float scale);
+	// BW1W120 0063a670 BW1M119 013d8d10
+	bool32_t IsSuitableForArtifact();
 	// BW1W120 0063a710 BW1M119 013d8b10
-	void GetInterfaceStatusWhoLastDroppedMe();
+	GInterfaceStatus* GetInterfaceStatusWhoLastDroppedMe();
 	// BW1W120 0063a6a0 BW1M119 013d8c10
-	void GetInterfaceStatusWhoLastPickedMeUp();
+	GInterfaceStatus* GetInterfaceStatusWhoLastPickedMeUp();
+	// BW1W120 006399f0 BW1M119 null
+	const char* GetInfoDebugString();
 	// BW1W120 0063a940 BW1M119 013d82f0
 	void DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 004eaab0 BW1M119 012722f0

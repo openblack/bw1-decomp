@@ -21,8 +21,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 0042e600 BW1M119 011a6300
-	virtual ~GBaseInfo() {}
 	// BW1W120 004140b0 BW1M119 0112ba50
 	virtual const char* GetDebugText() const;
 	// BW1W120 00436c60 BW1M119 0142e670

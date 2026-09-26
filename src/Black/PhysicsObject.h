@@ -47,9 +47,12 @@ public:
 	// BW1W120 00644800 BW1M119 0111d080
 	static void RaiseUntilNotIntersecting(PhysicsObject** physics_object);
 
-	static PhysOb   PredictionPhysOb;
+	// BW1W120 00d47088 BW1M119 01a202b4
+	static PhysOb PredictionPhysOb;
+	// BW1W120 00d47824 BW1M119 01a20430
 	static uint32_t PredictionActive;
-	static Object*  PredictionObject;
+	// BW1W120 00d47828 BW1M119 01a202b0
+	static Object* PredictionObject;
 
 	uint8_t  field_0x8[0x20];
 	PhysOb   Physics; /* 0x28 */

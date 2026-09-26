@@ -14,6 +14,7 @@
 // Forward Declares
 
 class Base;
+struct MapCoords;
 
 class GObjectInfo : public GBaseInfo
 {
@@ -31,9 +32,9 @@ public:
 	uint32_t              HandCondition;
 	float                 FoodValue;
 	uint32_t              WoodValue;
-	FOOD_TYPE             FoodType;          /* 0x70 */
-	EffectNumbers         DefenceEffect;     /* 0x74 */
-	EffectNumbers         DefenceMultiplier; /* 0x90 */
+	FOOD_TYPE             FoodType;
+	float                 DefenceEffect[EFFECT_TYPE_LAST];
+	float                 DefenceMultiplier[EFFECT_TYPE_LAST];
 	float                 weight;
 	float                 HeatCapacity; /* 0xb0 */
 	float                 CombustionTemperature;
@@ -57,10 +58,15 @@ public:
 	float                 DrawImportance;
 	float                 ComputerAttackDesire;
 
+	// Static data
+
+	// BW1W120 00d41668 BW1M119 01b3dd40
+	static GObjectInfo Infos[OBJECT_TYPE_LAST];
+	// BW1W120 00d41560 BW1M119 01b3dc28
+	static GObjectInfo ComputerPlayerInfo; // fabricated
+
 	// Override methods
 
-	// BW1W120 006363c0 BW1M119 01334480
-	virtual ~GObjectInfo();
 	// BW1W120 004012c0 BW1M119 013e51c0
 	virtual const char* GetDebugText() const { return DebugString; }
 	// BW1W120 0042b380 BW1M119 013e4f50
@@ -73,6 +79,13 @@ public:
 	virtual ALIGNMENT_TYPE GetAlignmentType() const { return AlignmentType; }
 	// BW1W120 004012b0 BW1M119 01064f20
 	virtual FOOD_TYPE GetFoodType() const { return FoodType; }
+
+	// Non-virtual methods
+
+	// BW1W120 00638c40 BW1M119 013dbff0
+	bool32_t IsOkToCreateAtPos(const MapCoords& coords, float param_2, float param_3) const;
+	// BW1W120 00636e30 BW1M119 013dff10
+	float GetMesh2DRadius(float scale) const;
 };
 
 #endif /* BW1_DECOMP_OBJECT_INFO_INCLUDED_H */

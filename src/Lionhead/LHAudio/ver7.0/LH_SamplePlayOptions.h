@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
 
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+
 class Base;
 struct LH_AudioBank;
 
@@ -16,12 +18,15 @@ struct LH_AudioBank;
 struct LH_SamplePlayOptions
 {
 	uint32_t      field_0x0;
-	LH_AudioBank* Bank; /* 0x4 */
+	LH_AudioBank* Bank;
 	uint32_t      field_0x8;
-	uint8_t       field_0xc[0x14];
-	Base*         AttachedObject; /* 0x20 */
-	unsigned long SampleNumber;   /* 0x24 */
-	uint8_t       field_0x28[0x140];
+	uint32_t      field_0xc;
+	uint8_t       field_0x10[0x10];
+	Base*         AttachedObject;
+	uint32_t      SampleNumber;
+	uint8_t       field_0x28[0x8];
+	LHPoint       Pos;
+	uint8_t       field_0x3c[0x12c];
 
 	// Constructors
 

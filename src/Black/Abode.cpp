@@ -249,7 +249,8 @@ void Abode::CallVirtualFunctionsForCreation(const MapCoords& coords_)
 	float   scale = GetScale();
 	float   yAngle = GetYAngle();
 	LHPoint position;
-	Game3dObject->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
+	static_cast<LH3DObject*>(Game3dObject)
+		->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
 }
 
 bool32_t Abode::GetNewEp(ABODE_EPP index, LHPoint* point)

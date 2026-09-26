@@ -241,7 +241,7 @@ public:
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
 	// BW1W120 005efd80 BW1M119 0138dbd0
 	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
-	                                                 GInterfaceStatus* status, Object* thrower, int dont_replant);
+	                                                 GInterfaceStatus* status, Object* thrower, bool32_t dont_replant);
 	// BW1W120 005efe10 BW1M119 0138daa0
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);

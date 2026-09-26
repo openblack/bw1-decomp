@@ -105,7 +105,7 @@ public:
 	virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* param_1, int param_2);
 	// BW1W120 006ea8a0 BW1M119 01147c70
 	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
-	                                                 GInterfaceStatus* status, Object* thrower, int dont_replant);
+	                                                 GInterfaceStatus* status, Object* thrower, bool32_t dont_replant);
 	// BW1W120 006ea840 BW1M119 01147d70
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);
@@ -120,7 +120,7 @@ public:
 	// BW1W120 006ea910 BW1M119 01147bb0
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 006e8570 BW1M119 0114b970
-	virtual bool ProcessInHand();
+	virtual uint32_t ProcessInHand();
 	// BW1W120 006eaf30 BW1M119 01146b10
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 

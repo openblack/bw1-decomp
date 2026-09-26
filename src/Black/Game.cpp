@@ -289,7 +289,7 @@ bool32_t GGame::Init()
 	remove("physlog.txt");
 	InitialiseLiquidParticles();
 	DeadTree::Init();
-	GGameInfo::Info.field_0x40 = 100;
+	GGameInfo::Info.MillisecondsPerGameTurn = 100;
 	data.field_0xc = 0x88f89f;
 	data.RandSeed = 0x88f89f;
 	fn_0054D610();
@@ -454,7 +454,7 @@ bool32_t GGame::Init()
 	RenderLoadingFrame(true);
 	CarriedObject::Init();
 	BMan_Zero();
-	field_0x205d40 = 0;
+	GameTimeMilliseconds = 0;
 	field_0x2502bc = 0;
 	field_0x205e78 = 0;
 	FinishInitialisation();
@@ -2078,7 +2078,7 @@ void GGame::ProcessOneGameTurn()
 		config->Process();
 	}
 	field_0x205d44 = 0;
-	field_0x205d40 += GGameInfo::Info.field_0x40;
+	GameTimeMilliseconds += GGameInfo::Info.MillisecondsPerGameTurn;
 	ProcessGameInputs();
 	if (!g_game->field_0x599c)
 	{
@@ -2266,7 +2266,7 @@ void GGame::Process3dEngine()
 					if (status != MyInterface()->status)
 					{
 						GMagicHand* magicHand =
-							status->HandHoldingSomething ? &status->magic_hand[status->HandHoldingSomething] : NULL;
+							status->HandHoldingSomething ? &status->magic_hand[status->HandHoldingSomething - 1] : NULL;
 						if (magicHand)
 						{
 							Object* object = magicHand->GetObjectFromHand();

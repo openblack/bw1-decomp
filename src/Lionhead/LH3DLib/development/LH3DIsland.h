@@ -39,8 +39,10 @@ struct LandBlock
 class LH3DIsland
 {
 public:
-	static uint8_t    BlockIndex[32][32];
-	static LandBlock* Blocks[0x100];
+	// BW1W120 00e9c964 BW1M119 01202288 (LHCombined Release)
+	static uint8_t g_index_block[32][32];
+	// BW1W120 00e9c564 BW1M119 011ffed8 (LHCombined Release)
+	static LandBlock* g_ptr_blocks[0x100];
 
 	// Static methods
 
@@ -51,12 +53,12 @@ public:
 		{
 			return NULL;
 		}
-		uint32_t block = BlockIndex[x >> 4][z >> 4];
+		uint32_t block = g_index_block[x >> 4][z >> 4];
 		if (block == 0)
 		{
 			return NULL;
 		}
-		return &Blocks[block]->Cells[x & 0xf][z & 0xf];
+		return &g_ptr_blocks[block]->Cells[x & 0xf][z & 0xf];
 	}
 
 	// BW1W120 00804790 BW1M119 01045ba0 (LHCombined Release)

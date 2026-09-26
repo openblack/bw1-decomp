@@ -199,7 +199,7 @@ public:
 	// BW1W120 004d1b40 BW1M119 01247910
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
 	// BW1W120 0063b9b0 BW1M119 013e2460
-	virtual void CalculateWhereIWillBeAfterNSeconds(float param_1, LHPoint* param_2);
+	virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
 	// BW1W120 00768630 BW1M119 0159e900
 	virtual uint32_t IsReadyForNewScriptAction();
 	// BW1W120 0055cb10 BW1M119 01150260
@@ -274,7 +274,7 @@ public:
 	virtual float GetImportance();
 	// BW1W120 005efe90 BW1M119 0138d8f0
 	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
-	                                                 GInterfaceStatus* status, Object* thrower, int dont_replant);
+	                                                 GInterfaceStatus* status, Object* thrower, bool32_t dont_replant);
 	// BW1W120 005efef0 BW1M119 0138d810
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);
@@ -1379,7 +1379,7 @@ public:
 	// BW1W120 00761810 BW1M119 0158e090
 	bool32_t GoHomeAndChange();
 	// BW1W120 007618c0 BW1M119 0158df30
-	bool32_t ChangeTribeIfRequired(TRIBE_TYPE param_1, int param_2);
+	void ChangeTribeIfRequired(TRIBE_TYPE param_1, int param_2);
 	// BW1W120 00761980 BW1M119 0158de20
 	bool32_t ExitGoHomeAndChange(unsigned char state);
 	// BW1W120 00761a00 BW1M119 0158dbf0

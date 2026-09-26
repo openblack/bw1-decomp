@@ -55,6 +55,15 @@ public:
 	uint32_t    field_0x74;
 	uint8_t     field_0x78;
 
+	// Static data
+
+	// BW1W120 00ea1ad0 BW1M119 012b1ef8 (LHCombined Release)
+	static bool32_t g_last_selected_box;
+	// BW1W120 00ea1af0 BW1M119 012b1ed8 (LHCombined Release)
+	static bool32_t g_b_last_on_screen;
+	// BW1W120 00ea1af4 BW1M119 012b1ed4 (LHCombined Release)
+	static float g_last_distance;
+
 	// Virtual functions
 
 	virtual bool32_t IsPreSetup(); /* 0x0 */
@@ -71,8 +80,8 @@ public:
 	virtual void                SetLinkedPosition(LH3DObject* linked_obj);
 	virtual void                SetColorSpecular(uint32_t param_1, uint32_t param_2);
 	virtual void                SetWindowColor(uint32_t color); /* 0x30 */
-	virtual void                SetSnowlevel_1(int level);
-	virtual void                SetSnowlevel_2(LHPoint* point);
+	virtual void __fastcall     SetSnowlevel(int level);
+	virtual void                SetSnowlevel(LHPoint& point);
 	virtual bool32_t            IsUseAlpha();
 	virtual void                SetNeedSorting(int value); /* 0x40 */
 	virtual bool32_t            IsNeedSorting();
@@ -120,7 +129,7 @@ public:
 	virtual void                SetAnimatedUV_2(int param_1);
 	virtual bool32_t            IsAnimatedUV(); /* 0xf0 */
 	virtual uint32_t __fastcall SetMesh(LH3DMesh* param_1, LH3DMesh* param_2, LH3DMesh* param_3);
-	virtual LH3DMesh*           GetMesh();
+	virtual LH3DMesh*           GetMesh() const;
 	virtual void                DrawDebugInfo();
 	virtual void                AddDrawing(); /* 0x100 */
 	virtual void                DrawWithClipping();
@@ -154,7 +163,7 @@ public:
 	virtual void                DrawIntoSprite(void* sprite_data);
 	virtual void                DrawForMouse();
 	virtual void                Blend(LH3DObject* obj1, LH3DObject* obj2);
-	virtual void                SetCurrentAnim(LH3DAnim* anim); /* 0x180 */
+	virtual void __fastcall     SetCurrentAnim(LH3DAnim* anim); /* 0x180 */
 	virtual int                 GetCurrentAnim();
 	virtual void                SetCurrentCycleTime(int time);
 	virtual float               GetCurrentCycleTime();
@@ -171,9 +180,9 @@ public:
 	virtual void*               GetShadowInfo();
 	virtual bool32_t            ContainsThisBoundingBox(const LHBoundingBox* bbox);
 	virtual bool32_t __fastcall GetChimneyPos(LHPoint* point); /* 0x1c0 */
-	virtual bool32_t            GetDoorPos(LHPoint* point);
-	virtual bool32_t __fastcall GetExtraPos(int param_1, LHPoint* point);
-	virtual void                GetExtraPos(int param_1, LHMatrix* matrix);
+	virtual bool32_t __fastcall GetDoorPos(LHPoint* point) const;
+	virtual bool32_t __fastcall GetExtraPos(int param_1, LHPoint* point) const;
+	virtual bool32_t __fastcall GetExtraPos(int param_1, LHMatrix* matrix);
 	virtual void                SetLod(int lod); /* 0x1d0 */
 	virtual float               GetLod();
 	virtual void                SetStatus(int status);
@@ -183,7 +192,7 @@ public:
 	virtual void                UpdateMelting();
 	virtual void                MeltBorder();
 	virtual bool32_t            IsMorphWithLand(); /* 0x1f0 */
-	virtual bool32_t            IsStaticMorphable();
+	virtual bool32_t            IsStaticMorphable() const;
 	virtual bool32_t            IsTemple();
 	virtual bool32_t            IsChangedSize();
 	virtual void                SetTempleLife(float life); /* 0x200 */

@@ -44,7 +44,12 @@ struct GLandscape
 	// Static methods
 
 	// BW1W120 inlined BW1M119 0101c4a0
-	static void ConvertLandscapePointToMapCoord(const LHPoint& point, MapCoords& coords);
+	static void ConvertLandscapePointToMapCoord(const LHPoint& point, MapCoords& coords)
+	{
+		coords.x = (LH3DMapCoordsFull)(point.x / (10.0f / (float)0x10000));
+		coords.z = (LH3DMapCoordsFull)(point.z / (10.0f / (float)0x10000));
+		coords.altitude = 0.0f;
+	}
 	// BW1W120 inlined BW1M119 010aab80
 	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point);
 	// BW1W120 005e3f60 BW1M119 010204d0

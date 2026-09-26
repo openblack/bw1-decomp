@@ -3,32 +3,44 @@
 #include <math.h>  /* For sqrt */
 #include <stdio.h> /* For sprintf */
 
+#include <Lionhead/LH3DLib/development/LH3DAnim.h>      /* For LH3DAnim::GetPackedAnim */
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>    /* For LH3DIsland */
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>      /* For LH3DMath */
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <Lionhead/LH3DLib/development/PhysOb.h>  /* For struct PhysOb */
-#include <Lionhead/LHLib/ver5.0/LHWin.h>          /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LH3DLib/development/LHPoint.h>         /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/PhysOb.h>          /* For struct PhysOb */
+#include <Lionhead/LH3DLib/development/SmokyStuff.h>      /* For SmokyStuff::Create */
+#include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h> /* For struct LH_SamplePlayOptions */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>                  /* For operator new(size_t, const char*, uint32_t) */
 #include "re_common.h"
 #include "chlasm/AllMeshes.h"
+#include <chlasm/LHSample.h> /* For LH_SAMPLE_G_TREEMULCH_01 */
 
 #include "Alignment.h"          /* For GAlignment::Update */
 #include "ColourConstants.h"    /* For White */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 
-#include "EditorPhysics.h" /* For EditorPhysics::PhysicsConstants */
+#include "Artifact.h"      /* For TownArtifact::IsReadyForParticleEffect */
+#include "Audio.h"         /* For GAudio::PlaySoundEffect */
+#include "CitadelPart.h"   /* For class CitadelPart */
 #include "Creature.h"      /* For Creature::CheckAllCreaturesForCatching */
 #include "CreatureMorph.h" /* For LH3DCreature::GetNavRadius */
+#include "EditorPhysics.h" /* For EditorPhysics::PhysicsConstants */
 #include "EffectValues.h"  /* For struct EffectNumbers, class EffectValues */
 #include "FireEffect.h"
 #include "Game.h" /* For GGame */
 #include "Game3DObject.h"
 #include "GameOSFile.h" /* For class GameOSFile, class PhysicsSaveInfo */
 #include "GameThingWithPos.h"
+#include "Global.h"           /* For GGlobal::Global */
+#include "HelpProfile.h"      /* For HelpProfile::Trigger */
 #include "HelpSystem.h"       /* For class HelpSystem */
+#include "Influence.h"        /* For Influence::CalculatePlayerInfluence */
+#include "Interface.h"        /* For class GInterface */
 #include "InterfaceStatus.h"  /* For class GInterfaceStatus */
 #include "JCGameBlock.h"      /* For GameBlock */
+#include "LandBalance.h"      /* For GLandBalance::GetValue */
 #include "LandFeature.h"      /* For RequestChangeTexture */
 #include "Landscape.h"        /* For GLandscape */
 #include "Map.h"              /* For MapCell */
@@ -43,6 +55,9 @@
 #include "VirtualInfluence.h" /* For class GVirtualInfluence */
 
 static const float RouteMinRadius = 0.05f;
+
+GObjectInfo GObjectInfo::Infos[OBJECT_TYPE_LAST];
+GObjectInfo GObjectInfo::ComputerPlayerInfo;
 
 Object::Object() : info(NULL), coords()
 {
@@ -349,9 +364,8 @@ void Object::Create3DObjectAtPos()
 	position.z = Pos.WholeZ() * (10.0f / (float)0x10000);
 	position.y = Pos.Altitude() + LH3DIsland::GetAltitudeAndSetColorSpecular(Pos, (uint32_t*)&Game3dObject->color,
 	                                                                         (uint32_t*)&Game3dObject->specular);
-	Game3dObject->matrix.Translation(position);
-	Game3dObject->scale = 1.0f;
-	Game3dObject->y_angle = 0.0f;
+	LH3DObject* object3d = Game3dObject;
+	object3d->SetPosition(position, 0.0f, 1.0f);
 }
 
 float Object::GetMeshRadius() const
@@ -400,6 +414,12 @@ MapCoords Object::GetNearestEdge(float angle, float extra_radius)
 	return Pos + GUtils::GetPosFromAngle(angle, Get2DRadius() + extra_radius);
 }
 
+float GObjectInfo::GetMesh2DRadius(float scale) const
+{
+	const LHPoint& size = LH3DMesh::GetPackedMesh(GetMesh())->BoundingBox.size;
+	return (size.z < size.x ? size.x : size.z) * scale;
+}
+
 void Object::RemoveDraggingCreatureByLeash()
 {
 	if ((Flags & GAME_THING_WITH_POS_FLAG_DRAGGED_BY_LEASH) == 0)
@@ -425,7 +445,7 @@ void Object::RemoveDraggingCreatureByLeash()
 }
 
 PhysicsObject* Object::InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity, GInterfaceStatus* status,
-                                                 Object* thrower, int dont_replant)
+                                                 Object* thrower, bool32_t dont_replant)
 {
 	if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0)
 	{
@@ -437,7 +457,7 @@ PhysicsObject* Object::InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& ang
 	bool fromThrower = thrower != NULL;
 	if (!fromThrower && status != NULL)
 	{
-		status->LastThrownObject = this;
+		status->LastDroppedObject = this;
 	}
 	if (IsObjectInMap())
 	{
@@ -794,22 +814,21 @@ uint32_t Object::DestroyedByEffect(GPlayer* player, float param_2)
 	return 1;
 }
 
-void Object::FillInEffectDefenceMultiplier(EffectNumbers& param_1)
+void Object::FillInEffectDefenceMultiplier(EffectNumbers& numbers)
 {
 	for (int i = 0; i < EFFECT_TYPE_LAST; i++)
 	{
-		param_1.values[i] = info->DefenceMultiplier.values[i];
+		numbers.values[i] = info->DefenceMultiplier[i];
 	}
 }
 
 EffectNumbers Object::GetDefenseMultiplier()
 {
-	// TODO: 59.1%. The target zero-fills the local (rep stosd) before copying over it;
-	// MSVC6 dead-stores that away here however it is spelled -- zeroing ctor, explicit
-	// memset, aggregate `= {0}`, and a local const reference to the source all produce
-	// byte-identical output. Everything from `add esi, 0x90` onwards already matches.
 	EffectNumbers multiplier;
-	multiplier = info->DefenceMultiplier;
+	for (int i = 0; i < EFFECT_TYPE_LAST; i++)
+	{
+		multiplier.values[i] = info->DefenceMultiplier[i];
+	}
 	return multiplier;
 }
 
@@ -903,6 +922,16 @@ void Object::DrawFireEffect()
 bool32_t Object::IsCitadelPart() const
 {
 	return info->type == OBJECT_TYPE_CITADEL;
+}
+
+bool32_t Object::IsPartOfTown() const
+{
+	return info->type == OBJECT_TYPE_ABODE;
+}
+
+bool32_t Object::IsPartOfForest() const
+{
+	return info->type == OBJECT_TYPE_FOREST_TREE;
 }
 
 bool32_t Object::IsOnFire()
@@ -1015,6 +1044,16 @@ void Object::ActualMoveMapObject(const MapCoords& coords)
 	InsertMapObject();
 }
 
+bool32_t Object::IsCitadelPartOfPlayer(GPlayer* player)
+{
+	CitadelPart* part = dynamic_cast<CitadelPart*>(this);
+	if (part != NULL && part->GetPlayer() == player)
+	{
+		return true;
+	}
+	return false;
+}
+
 float Object::GetProjectileSpeed()
 {
 	return 0.0f;
@@ -1056,11 +1095,11 @@ float Object::Get2DRadius()
 	{
 		float         objectScale = GetScale();
 		Game3DObject* object3d = Game3dObject;
-		if (object3d->GetMesh()->BoundingBox.size.x > object3d->GetMesh()->BoundingBox.size.z)
+		if (object3d->GetMesh()->BoundingBox.size.z < object3d->GetMesh()->BoundingBox.size.x)
 		{
-			return object3d->GetMesh()->BoundingBox.size.x * objectScale;
+			return objectScale * object3d->GetMesh()->BoundingBox.size.x;
 		}
-		return object3d->GetMesh()->BoundingBox.size.z * objectScale;
+		return objectScale * object3d->GetMesh()->BoundingBox.size.z;
 	}
 	return 0.0f;
 }
@@ -1138,6 +1177,11 @@ float Object::GetWeight()
 	return (scale * scale * scale) * ((GObjectInfo*)info)->weight;
 }
 
+float Object::GetWeightForce(Living* param_1)
+{
+	return GetWeight() * 9.81f;
+}
+
 float Object::GetRoutePlanRadius(Creature* creature)
 {
 	if (creature == NULL)
@@ -1198,9 +1242,25 @@ uint32_t Object::GetHandHelpCondition()
 	return info->HandCondition;
 }
 
-uint32_t Object::ThrowObjectFromHand(GInterfaceStatus* status, int param_2)
+uint32_t Object::ThrowObjectFromHand(GInterfaceStatus* status, bool32_t dont_replant)
 {
-	return 0;
+	if (status->GetPlayer() == GGame::g_game->MyPlayer())
+	{
+		GGame::g_game->help_profile->Trigger(HELP_EVENT_TYPE_4);
+	}
+	LHPoint angularVelocity = status->ThrowAngularVelocity;
+	LHPoint velocity = status->ThrowVelocity;
+	Flags &= ~GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE;
+	Game3dObject->matrix.SetYXZMatrixOnly(status->HandAngles.y, status->HandAngles.x, status->HandAngles.z);
+	Game3dObject->matrix.SetTranslateOnly(status->HandPos);
+	float scale = GetScale();
+	Game3dObject->matrix.PreScale(scale, scale, scale);
+	PhysicsObject* physicsObject = InitialisePhysicsFromHand(velocity, angularVelocity, status, NULL, dont_replant);
+	if (status->GetPlayer()->WindResistance && physicsObject != NULL)
+	{
+		physicsObject->Physics.Inertia = 0.0f;
+	}
+	return 0x16;
 }
 
 bool32_t Object::IsARootedObject()
@@ -1210,8 +1270,12 @@ bool32_t Object::IsARootedObject()
 
 bool32_t Object::CreatureMustAvoid(Creature* creature)
 {
-	// Creature is only forward declared here, so the upcast is spelled out; same vtable slot.
-	return creature == NULL || reinterpret_cast<Object*>(creature)->GetHeight() * 0.1f <= GetHeight() || IsOnFire();
+	if (creature == NULL)
+	{
+		return true;
+	}
+	float height = GetHeight();
+	return creature->GetHeight() * 0.1f <= height || IsOnFire();
 }
 
 void Object::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
@@ -1374,6 +1438,20 @@ float Object::GetHoldLoweringMultiplier()
 	return 0.0f;
 }
 
+bool32_t GObjectInfo::IsOkToCreateAtPos(const MapCoords& coords, float param_2, float param_3) const
+{
+	if ((coords.CollideCollideWithFixe() & 8) && !coords.IsWater())
+	{
+		return false;
+	}
+	return true;
+}
+
+void Object::SetPackedAnim(int anim)
+{
+	Game3dObject->SetCurrentAnim(LH3DAnim::GetPackedAnim(anim));
+}
+
 bool32_t Object::GetInspectObjectPos(Villager* param_1, MapCoords* pos)
 {
 	*pos = Pos;
@@ -1401,10 +1479,11 @@ void Object::SetXYZAngles(float x, float y, float z)
 	SetYJustAngle(y);
 	if (Game3dObject != NULL)
 	{
-		float   scale = GetScale();
-		float   yAngle = GetYAngle();
-		LHPoint position;
-		Game3dObject->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
+		float       scale = GetScale();
+		float       yAngle = GetYAngle();
+		LHPoint     position;
+		LH3DObject* object3d = Game3dObject;
+		object3d->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
 	}
 	if (inMap)
 	{
@@ -1423,10 +1502,11 @@ void Object::SetXYZAnglesAndScale(float x, float y, float z, float scale)
 	SetJustScale(scale);
 	if (Game3dObject != NULL)
 	{
-		float   objectScale = GetScale();
-		float   yAngle = GetYAngle();
-		LHPoint position;
-		Game3dObject->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, objectScale);
+		float       objectScale = GetScale();
+		float       yAngle = GetYAngle();
+		LHPoint     position;
+		LH3DObject* object3d = Game3dObject;
+		object3d->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, objectScale);
 	}
 	if (inMap)
 	{
@@ -1459,7 +1539,7 @@ void Object::DrawValue(int param_1, float param_2) {}
 
 float Object::GetImpressiveValue()
 {
-	return 0.0f;
+	return GLandBalance::GetValue(GLandBalance::LAND_BALANCE_IMPRESSIVE) * info->ImpressiveValue;
 }
 
 void Object::SetFocus(const LHPoint& focus)
@@ -1499,7 +1579,7 @@ uint32_t Object::GetResource(RESOURCE_TYPE type)
 MapCoords Object::GetWorkingPos(Object* object)
 {
 	float angle = GUtils::Get3DAngleFromXZ(Pos, object->Pos);
-	return Pos + GUtils::GetPosFromAngle(angle, GetRadius() + object->GetRadius());
+	return Pos + GUtils::GetPosFromAngle(angle, object->GetRadius() + GetRadius());
 }
 
 float Object::GetWoodValue()
@@ -1526,6 +1606,17 @@ void Object::PushObject(Living* param_1, MapCoords& param_2) {}
 float Object::GetImpressiveValue(Living* param_1, Reaction* param_2)
 {
 	return 0.0f;
+}
+
+float Object::GetArtifactImpressiveModifier()
+{
+	float         modifier = 1.0f;
+	TownArtifact* artifact = static_cast<TownArtifact*>(GetTownArtifact());
+	if (artifact != NULL && artifact->IsReadyForParticleEffect())
+	{
+		return GetTownArtifactValue() + 1.0f;
+	}
+	return modifier;
 }
 
 float Object::GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2)
@@ -1559,6 +1650,11 @@ float Object::GetTribalPower(TRIBE_TYPE tribe)
 	return 1.0f;
 }
 
+const char* Object::GetInfoDebugString()
+{
+	return info->DebugString;
+}
+
 bool32_t Object::IsFireMan()
 {
 	return false;
@@ -1571,6 +1667,11 @@ float Object::GetTemperature()
 		return fire_effect->GetObjectTemperature();
 	}
 	return Pos.GetTemperature();
+}
+
+float Object::GetCombustionTemperature()
+{
+	return info->CombustionTemperature;
 }
 
 void Object::SetOnFire(float temperature)
@@ -1600,9 +1701,13 @@ float Object::GetDefaultFireRadius()
 	return Get2DRadius();
 }
 
-bool Object::ProcessInHand()
+uint32_t Object::ProcessInHand()
 {
-	return false;
+	if (Influence::CalculatePlayerInfluence(Pos, GetPlayerHoldingThis(), 0, INFL_CALC_TYPE_0, 1) > 0.0f)
+	{
+		FireEffect::CheckToSeeIfObjectIsNearOnFireObject(this);
+	}
+	return 1;
 }
 
 uint32_t Object::ProcessInInteract(GInterfaceStatus* status)
@@ -1740,7 +1845,32 @@ void Object::SetLife(float life)
 	this->life = life;
 }
 
-void Object::GetInterfaceStatusHoldingThis() {}
+GPlayer* Object::GetPlayerHoldingThis()
+{
+	GInterfaceStatus* status = GetInterfaceStatusHoldingThis();
+	if (status != NULL)
+	{
+		return status->GetPlayer();
+	}
+	return NULL;
+}
+
+GInterfaceStatus* Object::GetInterfaceStatusHoldingThis()
+{
+	for (GPlayer* player = GGame::g_game->GetNextActivePlayerAndNeutral(NULL); player != NULL;
+	     player = GGame::g_game->GetNextActivePlayerAndNeutral(player))
+	{
+		for (uint32_t i = 0; i < 18; i++)
+		{
+			if (player->GetRealInterface(i) != NULL &&
+			    player->GetRealInterface(i)->status->GetFirstObjectInCurrentHand() == this)
+			{
+				return player->GetRealInterface(i)->status;
+			}
+		}
+	}
+	return NULL;
+}
 
 IMMERSION_EFFECT_TYPE Object::GetImmersionTexture()
 {
@@ -1867,7 +1997,42 @@ void Object::InitialiseIsFixedForMapList()
 	Flags = (Flags & ~GAME_THING_WITH_POS_FLAG_FIXED) | (MapCell::DoesObjectTypeCountAsFixed(info->type) << 15);
 }
 
-void Object::GetInterfaceStatusWhoLastDroppedMe() {}
+bool32_t Object::IsSuitableForArtifact()
+{
+	return IsAbode() || IsWorshipSite();
+}
+
+GInterfaceStatus* Object::GetInterfaceStatusWhoLastPickedMeUp()
+{
+	for (GPlayer* player = GGame::g_game->GetNextPlayer(NULL); player != NULL;
+	     player = GGame::g_game->GetNextPlayer(player))
+	{
+		for (uint32_t i = 0; i < 18; i++)
+		{
+			if (player->GetRealInterface(i) != NULL && player->GetRealInterface(i)->status->LastPickedUpObject == this)
+			{
+				return player->GetRealInterface(i)->status;
+			}
+		}
+	}
+	return NULL;
+}
+
+GInterfaceStatus* Object::GetInterfaceStatusWhoLastDroppedMe()
+{
+	for (GPlayer* player = GGame::g_game->GetNextPlayer(NULL); player != NULL;
+	     player = GGame::g_game->GetNextPlayer(player))
+	{
+		for (uint32_t i = 0; i < 18; i++)
+		{
+			if (player->GetRealInterface(i) != NULL && player->GetRealInterface(i)->status->LastDroppedObject == this)
+			{
+				return player->GetRealInterface(i)->status;
+			}
+		}
+	}
+	return NULL;
+}
 
 bool32_t Object::IsDrowning()
 {
@@ -1906,9 +2071,14 @@ void Object::SetYJustAngle(float angle)
 	y_angle = angle;
 }
 
-bool32_t Object::CreateSmokyStuff(long param_1, float param_2, LH3DColor param_3)
+SmokyStuff* Object::CreateSmokyStuff(long param_1, float param_2, LH3DColor color)
 {
-	return false;
+	LHPoint  pos(GetHeight() * 0.5f, 0.0f, 0.0f);
+	LHMatrix rotation;
+	rotation.SetRotationY(GetYAngle());
+	rotation.TransformPoint(pos);
+	pos.Add(Game3dObject->matrix.GetPos());
+	return SmokyStuff::Create(&pos, param_1, param_2, color);
 }
 
 float Object::ApplyWaterSpell(SpellWater* spell)
@@ -1931,7 +2101,39 @@ bool32_t Object::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* 
 	return false;
 }
 
-void Object::DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2) {}
+void Object::DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
+{
+	if (param_2 != NULL)
+	{
+		param_2->GetPlayer();
+	}
+	if (AddResource(param_1->GetResourceType(), param_1->GetResource(param_1->GetResourceType()), param_2,
+	                param_1->IsPoisoned(), &param_1->Pos, 0) &&
+	    param_2 != NULL)
+	{
+		DoCreatureMimicAfterAddingResource(param_1->GetResourceType(), *param_2);
+		if (param_2 == GGame::g_game->MyInterfaceStatus())
+		{
+			GGuidance::ResourceDropSFX(*param_2, Pos, (RESOURCE_RAIN_TYPE)GetGuidanceResourceType());
+		}
+	}
+	if (param_1->GetResourceType() == RESOURCE_TYPE_WOOD && !param_1->IsPot())
+	{
+		LH_SamplePlayOptions options;
+		LHPoint              pos = param_1->GetPos().GetLHPoint();
+		static uint32_t      mulchSample = 0;
+		mulchSample = (mulchSample + 1) & 3;
+		options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
+		options.SampleNumber = LH_SAMPLE_G_TREEMULCH_01 + mulchSample;
+		options.Pos = pos;
+		options.AttachedObject = param_1;
+		options.field_0x8 = 1;
+		options.field_0xc = 0;
+		GGlobal::Global.audio->PlaySoundEffect(&options);
+	}
+	GoolooGooloo(param_1);
+	param_1->ToBeDeleted(0);
+}
 
 float Object::GetRadiusMultiplierForApplyingPotToPos()
 {
@@ -1955,59 +2157,4 @@ void Object::DiscipleInHandNear(Villager& villager, GInterfaceStatus& status) {}
 void Object::DestroyedByBeam()
 {
 	ToBeDeleted(0);
-}
-
-Game3DObject* Game3DObject::Create(LH3DObject::ObjectType type)
-{
-	return (Game3DObject*)LH3DObject::Create(type);
-}
-
-Game3DObject* Game3DObject::Create(const MapCoords& coords, LH3DObject::ObjectType type, MESH_LIST mesh, float y_angle,
-                                   float scale)
-{
-	Game3DObject* object = Create(type);
-	if (object != NULL)
-	{
-		object->SetMesh(LH3DMesh::GetPackedMesh(mesh), NULL, NULL);
-		LHPoint point;
-		GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
-		object->SetPosition(point, y_angle, scale);
-	}
-	return object;
-}
-
-bool32_t Game3DObject::IsPointInsideXZ(const LHPoint& point)
-{
-	LHPoint local;
-	local.x = point.x;
-	local.z = point.z;
-	const LH3DBoundingBox& box = GetMesh()->BoundingBox;
-	local.x -= matrix.GetPos().x;
-	local.z -= matrix.GetPos().z;
-	local.x -= box.centre.x;
-	local.z -= box.centre.z;
-	if (local.x <= box.size.x && local.x >= -box.size.x && local.z <= box.size.z && -box.size.z <= local.z)
-	{
-		return true;
-	}
-	return false;
-}
-
-void __fastcall Game3DObject::SetPositionAndXZYScale(const MapCoords& coords, float y_angle, float scale,
-                                                     float xz_scale, float y_scale)
-{
-	LHPoint point;
-	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
-	SetPositionAndXZYScale(point, y_angle, scale, xz_scale, y_scale);
-}
-
-void __fastcall Game3DObject::SetPositionAndXZYScale(const LHPoint& point, float y_angle, float scale, float xz_scale,
-                                                     float y_scale)
-{
-	scale *= xz_scale;
-	SetPosition(point, y_angle, scale);
-	float ratio = y_scale / xz_scale;
-	matrix.m[3] *= ratio;
-	matrix.m[4] *= ratio;
-	matrix.m[5] *= ratio;
 }

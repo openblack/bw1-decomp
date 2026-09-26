@@ -840,7 +840,7 @@ bool32_t Villager::GoHomeAndChange()
 }
 
 // BW1W120 007618c0 BW1M119 0158df30
-bool32_t Villager::ChangeTribeIfRequired(TRIBE_TYPE tribe, int show_effect)
+void Villager::ChangeTribeIfRequired(TRIBE_TYPE tribe, int show_effect)
 {
 	const GVillagerInfo* vi = (const GVillagerInfo*)info;
 	if (vi->KeepMeshWhenChangeTown == 0)
@@ -856,11 +856,9 @@ bool32_t Villager::ChangeTribeIfRequired(TRIBE_TYPE tribe, int show_effect)
 		ChangeInfo(new_info);
 		if (show_effect != 0)
 		{
-			return CreateSmokyStuff(1, 1.0f, LH3DColor(0xffffffff));
+			CreateSmokyStuff(1, 1.0f, LH3DColor(0xffffffff));
 		}
 	}
-	// TODO: the other paths deliberately fall off with no return statement (C4715): the
-	// target never writes eax on them — the original likely returned void.
 }
 
 // BW1W120 00761980 BW1M119 0158de20

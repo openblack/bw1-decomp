@@ -85,7 +85,8 @@ public:
 	uint32_t         field_0x924;
 	uint32_t         field_0x928;
 	int              field_0x92c;
-	uint8_t          field_0x930[0x14];
+	uint8_t          field_0x930[0x10];
+	uint32_t         WindResistance;
 	uintptr_t        field_0x944;
 	uint8_t          field_0x948[0x28];
 	int              MagicRemainder[0x2a]; /* 0x970 */
