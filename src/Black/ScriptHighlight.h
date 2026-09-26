@@ -49,21 +49,21 @@ public:
 	// BW1W120 0070ae10 BW1M119 01501800
 	virtual uint32_t GetOverwriteTapToolTip();
 	// BW1W120 007097a0 BW1M119 015012f0
-	virtual uint32_t CanBeSleptNextToByCreature(Creature* param_1);
+	virtual bool32_t CanBeSleptNextToByCreature(Creature* param_1);
 	// BW1W120 00709830 BW1M119 015015c0
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 007097c0 BW1M119 015013a0
-	virtual uint32_t CanBeSetOnFire(Creature* param_1);
+	virtual bool32_t CanBeSetOnFire(Creature* param_1);
 	// BW1W120 007097b0 BW1M119 01501350
-	virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
+	virtual bool32_t CanBeDestroyedByStoning(Creature* param_1);
 	// BW1W120 00709750 BW1M119 01501150
-	virtual uint32_t IsActive() const;
+	virtual bool32_t IsActive() const;
 	// BW1W120 0070aa70 BW1M119 01502180
 	virtual int ForDrawFXGetNumVertices();
 	// BW1W120 0070aac0 BW1M119 01501d90
 	virtual bool ForDrawFXGetVertexPos(int index, LHPoint* pos);
 	// BW1W120 00709740 BW1M119 01501100
-	virtual uint32_t IsScriptHighlight();
+	virtual bool32_t IsScriptHighlight();
 	// BW1W120 0070ae30 BW1M119 010082c0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0070a580 BW1M119 010587a0
@@ -71,15 +71,15 @@ public:
 	// BW1W120 00709c60 BW1M119 01046910
 	virtual void Draw();
 	// BW1W120 007097d0 BW1M119 015013f0
-	virtual uint32_t CanBeCrushed();
+	virtual bool32_t CanBeCrushed();
 	// BW1W120 00709aa0 BW1M119 01502cd0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00709800 BW1M119 015014d0
-	virtual uint32_t ValidAsInterfaceTarget();
+	virtual bool32_t ValidAsInterfaceTarget();
 	// BW1W120 00709770 BW1M119 015011d0
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00709840 BW1M119 01501610
-	virtual uint32_t InterfaceMustBeInInfluenceForInteraction();
+	virtual bool32_t InterfaceMustBeInInfluenceForInteraction();
 	// BW1W120 00709790 BW1M119 01501280
 	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
 	// BW1W120 00709780 BW1M119 01501230
@@ -89,7 +89,7 @@ public:
 	// BW1W120 0070ac70 BW1M119 01501950
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 007097e0 BW1M119 01501430
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 00709820 BW1M119 01501570
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00709810 BW1M119 01501520

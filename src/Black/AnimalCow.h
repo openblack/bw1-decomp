@@ -26,7 +26,7 @@ public:
 	// BW1W120 0041d0f0 BW1M119 0117ad70
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041d110 BW1M119 01137440
-	virtual uint32_t IsCow(Creature* param_1);
+	virtual bool32_t IsCow(Creature* param_1);
 	// BW1W120 0041d1b0 BW1M119 010113b0
 	virtual bool32_t DecideWhatToDo();
 };

@@ -55,7 +55,7 @@ public:
 	// BW1W120 0066da90 BW1M119 01124000
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055d640 BW1M119 0111fb20
-	virtual uint32_t CanBeThrownByPlayer();
+	virtual bool32_t CanBeThrownByPlayer();
 	// BW1W120 0066db90 BW1M119 01123e50
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0066da30 BW1M119 01124100

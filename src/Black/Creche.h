@@ -34,9 +34,9 @@ public:
 	// BW1W120 0050a990 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
 	// BW1W120 0050a9b0 BW1M119 012a6c50
-	virtual uint32_t CanActAsAContainer(Creature* param_1);
+	virtual bool32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 0050a9c0 BW1M119 012a6ca0
-	virtual uint32_t IsStoragePit(Creature* param_1);
+	virtual bool32_t IsStoragePit(Creature* param_1);
 	// BW1W120 0050ab90 BW1M119 012a6d90
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 0050a9d0 BW1M119 012a6ce0

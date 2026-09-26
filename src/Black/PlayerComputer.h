@@ -58,7 +58,7 @@ public:
 	// BW1W120 0055e3a0 BW1M119 014b34e0
 	virtual const char* GetText();
 	// BW1W120 0055e3c0 BW1M119 014b3540
-	virtual uint32_t IsComputerPlayer();
+	virtual bool32_t IsComputerPlayer();
 	// BW1W120 006587b0 BW1M119 014ad090
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 };

@@ -35,9 +35,9 @@ public:
 	// BW1W120 007226f0 BW1M119 015221e0
 	virtual uint32_t GetSaveType();
 	// BW1W120 007226d0 BW1M119 01522150
-	virtual uint32_t IsSpellDispenser();
+	virtual bool32_t IsSpellDispenser();
 	// BW1W120 007226c0 BW1M119 01522110
-	virtual uint32_t IsActive() const;
+	virtual bool32_t IsActive() const;
 	// BW1W120 00722fb0 BW1M119 015223e0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00722a70 BW1M119 01522d30

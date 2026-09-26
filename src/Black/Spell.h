@@ -112,13 +112,13 @@ public:
 	// BW1W120 007216d0 BW1M119 0151dc10
 	virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
 	// BW1W120 0055cee0 BW1M119 013b9f80
-	virtual uint32_t IsSuitableForCreatureAction();
+	virtual bool32_t IsSuitableForCreatureAction();
 	// BW1W120 0055ced0 BW1M119 013b9f30
-	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
 	// BW1W120 00720240 BW1M119 015204d0
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 0055ce50 BW1M119 013b9d40
-	virtual uint32_t IsSpell() const;
+	virtual bool32_t IsSpell() const;
 	// BW1W120 0055cf00 BW1M119 013b9ff0
 	virtual const char* GetText();
 	// BW1W120 007218a0 BW1M119 0151d8f0

@@ -8,11 +8,11 @@ class Villager;
 
 template <typename T> struct LivingStateTableEntry
 {
-	uint32_t (T::*state)();
-	uint32_t (T::*EntryState)(uint8_t, uint8_t);
-	uint32_t (T::*ExitState)(uint8_t);
-	uint32_t (T::*SaveState)(GameOSFile&);
-	uint32_t (T::*LoadState)(GameOSFile&);
+	bool32_t (T::*state)();
+	bool32_t (T::*EntryState)(uint8_t, uint8_t);
+	bool32_t (T::*ExitState)(uint8_t);
+	bool32_t (T::*SaveState)(GameOSFile&);
+	bool32_t (T::*LoadState)(GameOSFile&);
 	uint32_t (T::*ReactToTownEmergency)();
 	uint32_t (T::*Animation)();
 	uint32_t (T::*TransitionAnimation)(uint8_t, uint8_t);

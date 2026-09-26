@@ -159,41 +159,41 @@ public:
 	// BW1W120 00756b30 BW1M119 0156ce00
 	virtual bool32_t IsDrowning();
 	// BW1W120 004e4c90 BW1M119 015eb940
-	virtual uint32_t CanBeHealedByCreature(Creature* param_1);
+	virtual bool32_t CanBeHealedByCreature(Creature* param_1);
 	// BW1W120 0055caa0 BW1M119 011500f0
-	virtual uint32_t CanBeHelpedByCreature(Creature* param_1);
+	virtual bool32_t CanBeHelpedByCreature(Creature* param_1);
 	// BW1W120 0055ca80 BW1M119 01150030
-	virtual uint32_t CanBeImpressedByCreature(Creature* param_1);
+	virtual bool32_t CanBeImpressedByCreature(Creature* param_1);
 	// BW1W120 0055ca90 BW1M119 011500b0
-	virtual uint32_t CanReceiveGifts(Creature* param_1);
+	virtual bool32_t CanReceiveGifts(Creature* param_1);
 	// BW1W120 004e4b40 BW1M119 015ebd90
-	virtual uint32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
+	virtual bool32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
 	// BW1W120 0055cab0 BW1M119 0106ff80
-	virtual uint32_t IsVillager(Creature* param_1);
+	virtual bool32_t IsVillager(Creature* param_1);
 	// BW1W120 004e4d50 BW1M119 015eb650
-	virtual uint32_t IsVillagerFarFromHome(Creature* param_1);
+	virtual bool32_t IsVillagerFarFromHome(Creature* param_1);
 	// BW1W120 004e4510 BW1M119 015ece00
-	virtual uint32_t IsVillagerInTownWithoutManyBreeders(Creature* param_1);
+	virtual bool32_t IsVillagerInTownWithoutManyBreeders(Creature* param_1);
 	// BW1W120 004e46d0 BW1M119 015ecb90
-	virtual uint32_t IsVillagerNotWorshipping(Creature* param_1);
+	virtual bool32_t IsVillagerNotWorshipping(Creature* param_1);
 	// BW1W120 004e4b10 BW1M119 015ebde0
-	virtual uint32_t IsVillagerBelongingToOtherPlayer(Creature* param_1);
+	virtual bool32_t IsVillagerBelongingToOtherPlayer(Creature* param_1);
 	// BW1W120 004e4840 BW1M119 015ec770
-	virtual uint32_t IsVillagerWhoHasNotBeenImpressedRecently(Creature* param_1);
+	virtual bool32_t IsVillagerWhoHasNotBeenImpressedRecently(Creature* param_1);
 	// BW1W120 004e4890 BW1M119 015ec6d0
-	virtual uint32_t IsVillagerWhoHasNotBeenDancedWithRecently(Creature* param_1);
+	virtual bool32_t IsVillagerWhoHasNotBeenDancedWithRecently(Creature* param_1);
 	// BW1W120 004e3e20 BW1M119 015ee5c0
-	virtual uint32_t DoesVillagerBelongToATownWhichIsAlreadyImpressed(Creature* param_1);
+	virtual bool32_t DoesVillagerBelongToATownWhichIsAlreadyImpressed(Creature* param_1);
 	// BW1W120 0076c340 BW1M119 015a4b20
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 004e3b60 BW1M119 015eed30
-	virtual uint32_t IsDoingSomethingInteresting(Creature* param_1);
+	virtual bool32_t IsDoingSomethingInteresting(Creature* param_1);
 	// BW1W120 00532db0 BW1M119 012bdf00
-	virtual uint32_t IsPlayingFootball(Creature* param_1);
+	virtual bool32_t IsPlayingFootball(Creature* param_1);
 	// BW1W120 00532e00 BW1M119 012bde20
-	virtual uint32_t IsPlayingFootballAndMySideHasJustScored(Creature* param_1);
+	virtual bool32_t IsPlayingFootballAndMySideHasJustScored(Creature* param_1);
 	// BW1W120 00532e50 BW1M119 012bdd30
-	virtual uint32_t IsPlayingFootballAndOtherSideHasJustScored(Creature* param_1);
+	virtual bool32_t IsPlayingFootballAndOtherSideHasJustScored(Creature* param_1);
 	// BW1W120 004eaba0 BW1M119 01272250
 	virtual uint32_t GetCreatureMimicType();
 	// BW1W120 004d1b40 BW1M119 01247910
@@ -201,15 +201,15 @@ public:
 	// BW1W120 0063b9b0 BW1M119 013e2460
 	virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
 	// BW1W120 00768630 BW1M119 0159e900
-	virtual uint32_t IsReadyForNewScriptAction();
+	virtual bool32_t IsReadyForNewScriptAction();
 	// BW1W120 0055cb10 BW1M119 01150260
 	virtual DEATH_REASON GetDeathReason();
 	// BW1W120 0055cac0 BW1M119 011a28e0
-	virtual uint32_t IsMaleVillager();
+	virtual bool32_t IsMaleVillager();
 	// BW1W120 0055cae0 BW1M119 01155400
-	virtual uint32_t IsFemaleVillager();
+	virtual bool32_t IsFemaleVillager();
 	// BW1W120 0055cb00 BW1M119 0109c270
-	virtual uint32_t IsAChild();
+	virtual bool32_t IsAChild();
 	// BW1W120 007562c0 BW1M119 0156e0e0
 	virtual void SetSkeleton(int index);
 	// BW1W120 00753f20 BW1M119 015724c0
@@ -259,9 +259,9 @@ public:
 	// BW1W120 0055c9a0 BW1M119 inlined
 	virtual bool32_t IsTouching(Object* target, float epsilon);
 	// BW1W120 007564a0 BW1M119 0156dfa0
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00753080 BW1M119 01573730
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 00752bd0 BW1M119 010a26b0
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 00752c40 BW1M119 01573a80
@@ -269,7 +269,7 @@ public:
 	// BW1W120 00756ae0 BW1M119 0156ce70
 	virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* param_1, int param_2);
 	// BW1W120 00751d70 BW1M119 0100ca10
-	virtual uint32_t IsEffectReceiver(EffectValues* effect);
+	virtual bool32_t IsEffectReceiver(EffectValues* effect);
 	// BW1W120 0076aa80 BW1M119 015a1030
 	virtual float GetImportance();
 	// BW1W120 005efe90 BW1M119 0138d8f0
@@ -359,15 +359,15 @@ public:
 	// BW1W120 007523d0 BW1M119 010781d0
 	virtual uint32_t CallEntryStateFunction(uint8_t state);
 	// BW1W120 007527a0 BW1M119 inlined
-	virtual uint32_t ExitReaction(uint8_t state);
+	virtual bool32_t ExitReaction(uint8_t state);
 	// BW1W120 0076b000 BW1M119 inlined
-	virtual uint32_t ExitInHand(uint8_t state);
+	virtual bool32_t ExitInHand(uint8_t state);
 	// BW1W120 0076acb0 BW1M119 inlined
-	virtual uint32_t ExitInFlying(uint8_t state);
+	virtual bool32_t ExitInFlying(uint8_t state);
 	// BW1W120 00753690 BW1M119 0106cc30
 	virtual void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
 	// BW1W120 0076afe0 BW1M119 inlined
-	virtual uint32_t EnterInHand(uint8_t current, uint8_t destination);
+	virtual bool32_t EnterInHand(uint8_t current, uint8_t destination);
 	// BW1W120 0055c9f0 BW1M119 inlined
 	virtual bool IsScriptState(VILLAGER_STATES state) const;
 	// BW1W120 0055ca10 BW1M119 inlined
@@ -679,7 +679,7 @@ public:
 	// BW1W120 00752760 BW1M119 01574960
 	bool MakeVillagerFaceObject(Object* object);
 	// BW1W120 007527e0 BW1M119 01574800
-	uint32_t ExitDance(unsigned char param_1);
+	bool32_t ExitDance(unsigned char param_1);
 	// BW1W120 00752820 BW1M119 01574750
 	bool32_t IsAvailableForWorshipSite(int param_1);
 	// BW1W120 00752860 BW1M119 01574690
@@ -715,7 +715,7 @@ public:
 	// BW1W120 00753d50 BW1M119 0100b1f0
 	int GetPosOutsideMyHouse(MapCoords& coords);
 	// BW1W120 00753dd0 BW1M119 01572850
-	uint32_t VillagerCreated();
+	bool32_t VillagerCreated();
 	// BW1W120 00753e20 BW1M119 01572620
 	MapCoords GetResourceDropoffPos(RESOURCE_TYPE resource_type);
 	// BW1W120 00754070 BW1M119 01572220
@@ -821,15 +821,15 @@ public:
 	// BW1W120 00755cc0 BW1M119 0156ed40
 	bool32_t SaveMagicTreeReaction(GameOSFile& param_1);
 	// BW1W120 00755d60 BW1M119 0156ec20
-	uint32_t LoadMagicTreeReaction(GameOSFile& param_1);
+	bool32_t LoadMagicTreeReaction(GameOSFile& param_1);
 	// BW1W120 00755e00 BW1M119 0156eaf0
-	uint32_t SaveHideInBuilding(GameOSFile& param_1);
+	bool32_t SaveHideInBuilding(GameOSFile& param_1);
 	// BW1W120 00755ea0 BW1M119 0156e9d0
-	uint32_t LoadHideInBuilding(GameOSFile& param_1);
+	bool32_t LoadHideInBuilding(GameOSFile& param_1);
 	// BW1W120 00755f40 BW1M119 0156e900
-	uint32_t SaveShieldReaction(GameOSFile& param_1);
+	bool32_t SaveShieldReaction(GameOSFile& param_1);
 	// BW1W120 00755fa0 BW1M119 0156e830
-	uint32_t LoadShieldReaction(GameOSFile& param_1);
+	bool32_t LoadShieldReaction(GameOSFile& param_1);
 	// BW1W120 00756000 BW1M119 0100c4b0
 	uint32_t SetVillagerDisciple(GameThing* interacted_thing, VILLAGER_DISCIPLE disciple, int unused);
 	// BW1W120 00756170 BW1M119 0156e570
@@ -865,9 +865,9 @@ public:
 	// BW1W120 00756be0 BW1M119 0156cb60
 	void FindChildrenAndOrphanThem();
 	// BW1W120 00756d30 BW1M119 0157b5f0
-	uint32_t InteractDecideWhatToDoForOtherVillager();
+	bool32_t InteractDecideWhatToDoForOtherVillager();
 	// BW1W120 00756e10 BW1M119 0157b580
-	uint32_t InteractDecideWhatToDo();
+	bool32_t InteractDecideWhatToDo();
 	// BW1W120 00756e20 BW1M119 0157b4d0
 	uint32_t GetDiscipleInteractState();
 	// BW1W120 00756e80 BW1M119 0102d9a0
@@ -913,7 +913,7 @@ public:
 	// BW1W120 00757f00 BW1M119 0157bcc0
 	bool32_t CheckChildActivity();
 	// BW1W120 00757f10 BW1M119 0157bc30
-	uint32_t ChildBecomesAdult();
+	bool32_t ChildBecomesAdult();
 	// BW1W120 00757f40 BW1M119 01097450
 	bool32_t IsMotherAlive();
 	// BW1W120 00757f90 BW1M119 0157b920
@@ -949,11 +949,11 @@ public:
 	// BW1W120 00758960 BW1M119 0157e270
 	bool32_t GotoWorkshopForBuildingMaterials(BuildingSite* building_site);
 	// BW1W120 00758990 BW1M119 0157e160
-	uint32_t ArrivesAtStoragePitForBuildingMaterials();
+	bool32_t ArrivesAtStoragePitForBuildingMaterials();
 	// BW1W120 00758a00 BW1M119 0157df60
 	bool32_t GotoBuildingSite(BuildingSite* param_1);
 	// BW1W120 00758af0 BW1M119 0157dca0
-	uint32_t ArrivesAtBuildingSite();
+	bool32_t ArrivesAtBuildingSite();
 	// BW1W120 00758c40 BW1M119 0157d950
 	bool32_t Building();
 	// BW1W120 00758e20 BW1M119 0157d8f0
@@ -1031,7 +1031,7 @@ public:
 	// BW1W120 0075a770 BW1M119 01581b70
 	bool32_t SetupMoveAroundFire(const MapCoords& pos, VILLAGER_STATES state);
 	// BW1W120 0075a7e0 BW1M119 01581830
-	uint32_t MoveAroundFire();
+	bool32_t MoveAroundFire();
 	// BW1W120 0075aa90 BW1M119 01581690
 	bool32_t GetFireFightingPos(FireEffect* param_1, MapCoords* param_2);
 	// BW1W120 0075ac50 BW1M119 015812c0
@@ -1075,7 +1075,7 @@ public:
 	// BW1W120 0075b880 BW1M119 0109cae0
 	bool32_t ExitFishing(unsigned char state);
 	// BW1W120 0075b940 BW1M119 01583810
-	uint32_t ShowPoisoned();
+	bool32_t ShowPoisoned();
 	// BW1W120 0075b990 BW1M119 0100c160
 	bool ChangeStateToFindFoodToEat();
 	// BW1W120 0075baf0 BW1M119 015835f0
@@ -1301,7 +1301,7 @@ public:
 	// BW1W120 007606e0 BW1M119 015900e0
 	bool32_t Landed();
 	// BW1W120 00760930 BW1M119 0100ee50
-	uint32_t ArrivesHome();
+	bool32_t ArrivesHome();
 	// BW1W120 00760b10 BW1M119 01004990
 	bool32_t AtHome();
 	// BW1W120 00760b20 BW1M119 0158fff0
@@ -1588,7 +1588,7 @@ public:
 	// BW1W120 007689d0 BW1M119 0100cac0
 	bool32_t IsScriptAnimationComplete();
 	// BW1W120 00768a00 BW1M119 0159dfa0
-	bool32_t ScriptAnimation();
+	uint32_t ScriptAnimation();
 	// BW1W120 00768a10 BW1M119 0159df60
 	bool32_t WeakOnGround();
 	// BW1W120 00768a20 BW1M119 0159dd10
@@ -1600,11 +1600,11 @@ public:
 	// BW1W120 00768c90 BW1M119 0159f770
 	bool32_t FindClosestFlockAnimal();
 	// BW1W120 00768cc0 BW1M119 0159f5d0
-	uint32_t ShepherdMoveFlockToWater();
+	bool32_t ShepherdMoveFlockToWater();
 	// BW1W120 00768dd0 BW1M119 01005f20
 	bool32_t ShepherdWaitForFlock();
 	// BW1W120 00768e30 BW1M119 0159f480
-	uint32_t ShepherdGotoFlock();
+	bool32_t ShepherdGotoFlock();
 	// BW1W120 00768ec0 BW1M119 0159f370
 	bool32_t ShepherdTakesControlOfFlock();
 	// BW1W120 00768f20 BW1M119 0159f2a0
@@ -1764,7 +1764,7 @@ public:
 	// BW1W120 0076c170 BW1M119 015a4f00
 	bool32_t ExitMoveToWorshipSite(unsigned char state);
 	// BW1W120 0076c1f0 BW1M119 015a4dd0
-	uint32_t ExitAtWorshipSite(unsigned char state);
+	bool32_t ExitAtWorshipSite(unsigned char state);
 	// BW1W120 0076c280 BW1M119 015a4d20
 	bool32_t ExitGetFoodAtWorship(unsigned char state);
 	// BW1W120 0076c2d0 BW1M119 015a4c10
@@ -1826,23 +1826,23 @@ public:
 
 	// save_state slot
 	// BW1W120 005ac9a0 BW1M119 inlined
-	uint32_t SaveInFlying(GameOSFile& file) { return 1; }
+	bool32_t SaveInFlying(GameOSFile& file) { return 1; }
 	// BW1W120 005ac9b0 BW1M119 inlined
-	uint32_t LoadInFlying(GameOSFile& file) { return 1; }
+	bool32_t LoadInFlying(GameOSFile& file) { return 1; }
 	// BW1W120 005ac9c0 BW1M119 inlined
-	uint32_t SaveWaitForAnim(GameOSFile& file) { return 1; }
+	bool32_t SaveWaitForAnim(GameOSFile& file) { return 1; }
 	// BW1W120 005ac9d0 BW1M119 inlined
-	uint32_t LoadWaitForAnim(GameOSFile& file) { return 1; }
+	bool32_t LoadWaitForAnim(GameOSFile& file) { return 1; }
 	// BW1W120 005ac990 BW1M119 inlined
 	uint32_t AlwaysReactToTownEmergency() { return VILLAGER_STATE_MOVE_TO_POS; }
 	// BW1W120 005319c0 BW1M119 012c0330
-	uint32_t FootballWonGoal();
+	bool32_t FootballWonGoal();
 	// BW1W120 005319d0 BW1M119 012c02f0
-	uint32_t FootballLostGoal();
+	bool32_t FootballLostGoal();
 	// BW1W120 00757c90 BW1M119 01070040
-	uint32_t ChildAtCreche();
+	bool32_t ChildAtCreche();
 	// BW1W120 00766fb0 BW1M119 01594b10
-	uint32_t PerformFightReaction();
+	bool32_t PerformFightReaction();
 
 	// field_0x60 slot
 	// BW1W120 00423400 BW1M119 0102aa20

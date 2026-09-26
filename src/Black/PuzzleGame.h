@@ -67,7 +67,7 @@ public:
 	// BW1W120 00561b30 BW1M119 0113c520
 	virtual const char* GetText();
 	// BW1W120 00561b40 BW1M119 0113c560
-	virtual uint32_t IsPuzzleGame();
+	virtual bool32_t IsPuzzleGame();
 };
 
 class ChessGamePuzzle : public GameThingWithPos
@@ -198,7 +198,7 @@ public:
 	// BW1W120 004200c0 BW1M119 0117e4d0
 	virtual uint32_t GetSaveType();
 	// BW1W120 004200e0 BW1M119 0117e550
-	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
 };
 
 class PiecePig : public Pig
@@ -254,7 +254,7 @@ public:
 	// BW1W120 0041bba0 BW1M119 0116d090
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041bbc0 BW1M119 0113c040
-	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
 	// BW1W120 0041cfd0 BW1M119 01176020
 	virtual uint32_t StandAnimation();
 };
@@ -271,7 +271,7 @@ public:
 	// BW1W120 00421d70 BW1M119 01181410
 	virtual uint32_t GetSaveType();
 	// BW1W120 00421d90 BW1M119 0113bbd0
-	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
 };
 
 class PieceCow : public Cow
@@ -291,7 +291,7 @@ public:
 	// BW1W120 006dd670 BW1M119 0113aeb0
 	virtual uint32_t GetSaveType();
 	// BW1W120 006dd4b0 BW1M119 inlined
-	virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
 	// BW1W120 006dd690 BW1M119 0113af30
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0041c7e0 BW1M119 inlined
@@ -314,9 +314,9 @@ public:
 	// BW1W120 00561900 BW1M119 0113a3f0
 	virtual uint32_t GetSaveType();
 	// BW1W120 00561920 BW1M119 0113a470
-	virtual uint32_t CanBeEatenByCreature(Creature* param_1);
+	virtual bool32_t CanBeEatenByCreature(Creature* param_1);
 	// BW1W120 00561930 BW1M119 0113a4c0
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 00561a20 BW1M119 0113aa10
 	virtual void Draw();
 	// BW1W120 00561a30 BW1M119 0112c0e0
@@ -328,25 +328,25 @@ public:
 	// BW1W120 00561950 BW1M119 0113a570
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 00561960 BW1M119 0113a5d0
-	virtual uint32_t NetworkUnfriendlyStartLockedSelect();
+	virtual bool32_t NetworkUnfriendlyStartLockedSelect();
 	// BW1W120 00561970 BW1M119 0113a620
-	virtual uint32_t IsReadyForNetworkUnfriendlyLockedSelect();
+	virtual bool32_t IsReadyForNetworkUnfriendlyLockedSelect();
 	// BW1W120 00561980 BW1M119 0113a680
-	virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
 	// BW1W120 00561990 BW1M119 0113a6e0
-	virtual uint32_t GetReadyForNetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t GetReadyForNetworkUnfriendlyEndLockedSelect();
 	// BW1W120 005619a0 BW1M119 0113a740
-	virtual uint32_t IsReadyForNetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t IsReadyForNetworkUnfriendlyEndLockedSelect();
 	// BW1W120 005619b0 BW1M119 0113a7a0
-	virtual uint32_t NetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t NetworkUnfriendlyEndLockedSelect();
 	// BW1W120 005619c0 BW1M119 0113a7f0
-	virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 005619d0 BW1M119 0113a850
-	virtual uint32_t ValidAsInterfaceTarget();
+	virtual bool32_t ValidAsInterfaceTarget();
 	// BW1W120 005619f0 BW1M119 0113a900
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 00561a00 BW1M119 0113a960
-	virtual uint32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 005619e0 BW1M119 0113a8a0
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 00561a40 BW1M119 0113aa60
@@ -523,13 +523,13 @@ public:
 	// BW1W120 006da8a0 BW1M119 0112f0c0
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 006da8e0 BW1M119 0112f010
-	virtual uint32_t NetworkUnfriendlyStartLockedSelect();
+	virtual bool32_t NetworkUnfriendlyStartLockedSelect();
 	// BW1W120 006da970 BW1M119 0112ed00
-	virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
 	// BW1W120 006da920 BW1M119 0112ef60
-	virtual uint32_t NetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t NetworkUnfriendlyEndLockedSelect();
 	// BW1W120 006da960 BW1M119 0112ef00
-	virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 006da5f0 BW1M119 0112f640
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
 	// BW1W120 006da610 BW1M119 0112f580

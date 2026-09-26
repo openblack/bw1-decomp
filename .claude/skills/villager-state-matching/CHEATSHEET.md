@@ -51,7 +51,7 @@ Worked examples (all validated against the binary this campaign):
 - `?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ` → `public`,`const`,`__thiscall`, returns enum `VILLAGER_STATES`, `void` args ⇒ `VILLAGER_STATES GetTopState() const;`
 - `?IsDancing@Living@@UAEIXZ` → public **virtual**, non-const, returns `I`=unsigned int ⇒ `virtual bool32_t IsDancing();` (**not** `bool` — that would be `_N`)
 - `?MakeHomeless@Villager@@QAE_NXZ` → `_N` return ⇒ `bool MakeHomeless();` (**not** `bool32_t`)
-- `?CheckForClearArea@Villager@@QAEIABUMapCoords@@M@Z` → `ABUMapCoords`=`const MapCoords&`, `M`=float ⇒ `bool32_t CheckForClearArea(const MapCoords&, float);` (AGENTS Rule 1: ref, not ptr)
+- `?CheckForClearArea@Villager@@QAEHABUMapCoords@@M@Z` → `ABUMapCoords`=`const MapCoords&`, `M`=float ⇒ `bool32_t CheckForClearArea(const MapCoords&, float);` (AGENTS Rule 1: ref, not ptr)
 - `?SetupAfterTapOnAbode@Villager@@QAEXAAUMapCoords@@W4VILLAGER_STATES@@@Z` → `AAUMapCoords`=`MapCoords&` (non-const ref), returns void.
 
 **`bool` (`_N`, 1 byte) vs `bool32_t` (`I`, 4 bytes)** decides `al` vs `eax` codegen and

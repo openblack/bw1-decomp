@@ -43,9 +43,9 @@ public:
 	// BW1W120 005611b0 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
 	// BW1W120 005611e0 BW1M119 011694a0
-	virtual uint32_t CanActAsAContainer(Creature* param_1);
+	virtual bool32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 005611f0 BW1M119 011694f0
-	virtual uint32_t IsStoragePit(Creature* param_1);
+	virtual bool32_t IsStoragePit(Creature* param_1);
 	// BW1W120 00779160 BW1M119 01169660
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 00779190 BW1M119 011695b0

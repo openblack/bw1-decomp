@@ -57,37 +57,37 @@ public:
 	// BW1W120 00608b10 BW1M119 013c8190
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 00439700 BW1M119 010b71c0
-	virtual uint32_t IsCastShadowAtNight();
+	virtual bool32_t IsCastShadowAtNight();
 	// BW1W120 004e48d0 BW1M119 015ec5e0
-	virtual uint32_t CanBeEatenByCreature(Creature* param_1);
+	virtual bool32_t CanBeEatenByCreature(Creature* param_1);
 	// BW1W120 00439640 BW1M119 010b6d00
-	virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
+	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
 	// BW1W120 004e4cc0 BW1M119 015eb8c0
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 00439630 BW1M119 010b6cb0
-	virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
+	virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
 	// BW1W120 004e4c40 BW1M119 015eb9d0
-	virtual uint32_t IsToyAwayFromHome(Creature* param_1);
+	virtual bool32_t IsToyAwayFromHome(Creature* param_1);
 	// BW1W120 00609020 BW1M119 013c7590
-	virtual uint32_t IsToy(Creature* param_1);
+	virtual bool32_t IsToy(Creature* param_1);
 	// BW1W120 00609050 BW1M119 013c7510
-	virtual uint32_t IsToyBall(Creature* param_1);
+	virtual bool32_t IsToyBall(Creature* param_1);
 	// BW1W120 00609070 BW1M119 013c7490
-	virtual uint32_t IsToyDie(Creature* param_1);
+	virtual bool32_t IsToyDie(Creature* param_1);
 	// BW1W120 00609090 BW1M119 013c7410
-	virtual uint32_t IsToyCuddly(Creature* param_1);
+	virtual bool32_t IsToyCuddly(Creature* param_1);
 	// BW1W120 00609110 BW1M119 0104fe20
-	virtual uint32_t IsFence();
+	virtual bool32_t IsFence();
 	// BW1W120 004396d0 BW1M119 010b70f0
-	virtual uint32_t CanBeUsedForThrowingDamageByCreature(Creature* param_1);
+	virtual bool32_t CanBeUsedForThrowingDamageByCreature(Creature* param_1);
 	// BW1W120 00439650 BW1M119 010b6d50
-	virtual uint32_t CanBeThrownInTheSeaPlayfully(Creature* param_1);
+	virtual bool32_t CanBeThrownInTheSeaPlayfully(Creature* param_1);
 	// BW1W120 0055d710 BW1M119 013b70f0
 	virtual uint32_t GetCreatureMimicType();
 	// BW1W120 004d1af0 BW1M119 01247a50
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
 	// BW1W120 004396f0 BW1M119 010b7180
-	virtual uint32_t IsMobileStatic();
+	virtual bool32_t IsMobileStatic();
 	// BW1W120 00609330 BW1M119 01008370
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00439610 BW1M119 010b6c30
@@ -119,7 +119,7 @@ public:
 	// BW1W120 006096d0 BW1M119 013c6210
 	virtual int GetDefaultResource();
 	// BW1W120 0055d730 BW1M119 013c90b0
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00608bb0 BW1M119 013c7ee0
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 00608c30 BW1M119 013c7d30
@@ -140,7 +140,7 @@ public:
 	// BW1W120 00609260 BW1M119 013c6d90
 	virtual bool ChecksVerticesVObjects();
 	// BW1W120 00609210 BW1M119 013c6e20
-	virtual uint32_t PhysicallyDestroysAbodes();
+	virtual bool32_t PhysicallyDestroysAbodes();
 	// BW1W120 00608fc0 BW1M119 013c7680
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00609320 BW1M119 013c6bd0
@@ -151,7 +151,7 @@ public:
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));
 	// BW1W120 00439690 BW1M119 010b6f90
-	virtual uint32_t IsSolidToNewAbode();
+	virtual bool32_t IsSolidToNewAbode();
 	// BW1W120 00439660 BW1M119 010b6db0
 	virtual uint32_t GetTastiness();
 	// BW1W120 006088e0 BW1M119 013c82f0

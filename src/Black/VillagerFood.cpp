@@ -20,7 +20,7 @@
 // definition in Villager.cpp:678 (`void Villager::FindPosOutsideAbode(Abode*) {}`), which is
 // ANOTHER unit — dispatcher-owned. Once FindPosOutsideAbode returns MapCoords, the body above
 // should match. Left as-is (early-return in the if-block) until then to keep it compiling.
-uint32_t Villager::ShowPoisoned()
+bool32_t Villager::ShowPoisoned()
 {
 	if (Flags & 4)
 	{
@@ -140,7 +140,7 @@ uint32_t Villager::GetAmountOfFoodToEat()
 // MSVC6 sees the clean 0/1 bool and elides the mask. Our build only has an extern decl (callee
 // still `missing`) so it masks conservatively. This will match automatically once
 // ChangeStateToFindFoodToEat is implemented in this unit. See bool-return-mask-needs-callee-defined.
-uint32_t Villager::CheckSatisfyOwnFoodDesire()
+bool32_t Villager::CheckSatisfyOwnFoodDesire()
 {
 	if (IsHungry())
 		return ChangeStateToFindFoodToEat();
@@ -155,7 +155,7 @@ uint32_t Villager::CheckSatisfyOwnFoodDesire()
 //  (2) the (float)foodToEat conversion block (fild qword/fstp [esp+8]) schedules early in ours,
 //      after the ResourceHeld int setup in target — scheduler tie-break.
 //  (3) DropFood arg: target emits `mov ecx,esi; push eax`, ours `push eax; mov ecx,esi`.
-uint32_t Villager::EatFoodHeld()
+bool32_t Villager::EatFoodHeld()
 {
 	uint32_t foodToEat = GetAmountOfFoodToEat();
 	float    foodToEatF = (float)foodToEat;
@@ -176,7 +176,7 @@ uint32_t Villager::EatFoodHeld()
 }
 
 // BW1W120 0075c000 BW1M119 01582cc0
-uint32_t Villager::EatFood()
+bool32_t Villager::EatFood()
 {
 	// TODO: 71% — three residual diffs, none cleanly fixable from source:
 	//  (1) target discards EatFoodHeld's leaked float via `fstp st(0)`; our EatFoodHeld returns a
@@ -223,7 +223,7 @@ bool32_t Villager::GetFoodFromHome(unsigned long food_amount)
 }
 
 // BW1W120 0075c090 BW1M119 01582b20
-uint32_t Villager::EatFoodAtHome()
+bool32_t Villager::EatFoodAtHome()
 {
 	int16_t held = ResourceHeld[RESOURCE_TYPE_FOOD];
 	int     required = GetAmountOfFoodToEat() - held;

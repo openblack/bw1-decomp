@@ -40,7 +40,7 @@ public:
 	// BW1W120 00735110 BW1M119 0153e630
 	virtual float GetDistanceFromObject(const MapCoords& param_1);
 	// BW1W120 005613f0 BW1M119 0153e430
-	virtual uint32_t IsStreetLight();
+	virtual bool32_t IsStreetLight();
 	// BW1W120 005613e0 BW1M119 0153e3f0
 	virtual const char* GetText();
 };

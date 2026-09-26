@@ -51,7 +51,7 @@ public:
 	// BW1W120 006067d0 BW1M119 0110e710
 	virtual float GetDistanceFromObject(const MapCoords& param_1);
 	// BW1W120 0055eb90 BW1M119 0110e150
-	virtual uint32_t IsMist();
+	virtual bool32_t IsMist();
 	// BW1W120 0055eb80 BW1M119 0110e120
 	virtual const char* GetText();
 	// BW1W120 00606910 BW1M119 0110e560

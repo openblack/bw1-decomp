@@ -202,15 +202,15 @@ public:
 	// BW1W120 004e4750 BW1M119 015ec940
 	virtual bool32_t IsTownBelongingToAnotherPlayer(Creature* creature);
 	// BW1W120 00739260 BW1M119 015628e0
-	virtual uint32_t IsSuitableForCreatureActivity();
+	virtual bool32_t IsSuitableForCreatureActivity();
 	// BW1W120 00739270 BW1M119 01562930
-	virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
+	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
 	// BW1W120 0073c940 BW1M119 01072210
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 004e4140 BW1M119 015edb00
-	virtual uint32_t IsTownBelongingToOtherPlayer(Creature* param_1);
+	virtual bool32_t IsTownBelongingToOtherPlayer(Creature* param_1);
 	// BW1W120 00739210 BW1M119 015626f0
-	virtual uint32_t IsScriptContainer() const;
+	virtual bool32_t IsScriptContainer() const;
 	// BW1W120 00739280 BW1M119 01562980
 	virtual const char* GetText();
 	// BW1W120 00747f00 BW1M119 01067940

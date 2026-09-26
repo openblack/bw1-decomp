@@ -70,31 +70,31 @@ public:
 	// BW1W120 005fd610 BW1M119 013c15b0
 	virtual void PhysicsEditorCreate(int param_1);
 	// BW1W120 005fd620 BW1M119 013c15f0
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 005fd630 BW1M119 013c1640
-	virtual uint32_t CanBeSetOnFire(Creature* param_1);
+	virtual bool32_t CanBeSetOnFire(Creature* param_1);
 	// BW1W120 005fd640 BW1M119 013c1690
-	virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
+	virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
 	// BW1W120 005fd650 BW1M119 013c16f0
-	virtual uint32_t CanBeThrownByCreature(Creature* param_1);
+	virtual bool32_t CanBeThrownByCreature(Creature* param_1);
 	// BW1W120 005fd660 BW1M119 013c1740
-	virtual uint32_t CanBePutInAStoragePit(Creature* param_1);
+	virtual bool32_t CanBePutInAStoragePit(Creature* param_1);
 	// BW1W120 005fd670 BW1M119 013c1790
-	virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
+	virtual bool32_t CanBeDestroyedByStoning(Creature* param_1);
 	// BW1W120 005fd680 BW1M119 013c17e0
-	virtual uint32_t CanBeStonedAndEatenByCreature(Creature* param_1);
+	virtual bool32_t CanBeStonedAndEatenByCreature(Creature* param_1);
 	// BW1W120 005fd690 BW1M119 013c1840
-	virtual uint32_t CanBeExaminedByCreature(Creature* param_1);
+	virtual bool32_t CanBeExaminedByCreature(Creature* param_1);
 	// BW1W120 005fd6a0 BW1M119 013c1890
-	virtual uint32_t CanBeFoughtByCreature(Creature* param_1);
+	virtual bool32_t CanBeFoughtByCreature(Creature* param_1);
 	// BW1W120 005fd6b0 BW1M119 013c18e0
-	virtual uint32_t CanActAsAContainer(Creature* param_1);
+	virtual bool32_t CanActAsAContainer(Creature* param_1);
 	// BW1W120 005ffff0 BW1M119 013bc440
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 005fedf0 BW1M119 013bdfc0
 	virtual void Create3DObject();
 	// BW1W120 005fd600 BW1M119 013c1560
-	virtual uint32_t HandShouldFeelWithMeshIntersect();
+	virtual bool32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 005fee20 BW1M119 013bdf80
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 005ffdc0 BW1M119 013bc910
@@ -102,9 +102,9 @@ public:
 	// BW1W120 005fee30 BW1M119 013bd9e0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 005ff300 BW1M119 013bd980
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 005fffa0 BW1M119 013bc590
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 005fff80 BW1M119 013bc630
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 005fff90 BW1M119 013bc5e0

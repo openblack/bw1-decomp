@@ -39,7 +39,7 @@ public:
 	// BW1W120 00561450 BW1M119 0153d250
 	virtual uint32_t GetSaveType();
 	// BW1W120 00561440 BW1M119 0153d210
-	virtual uint32_t IsStreetLantern();
+	virtual bool32_t IsStreetLantern();
 	// BW1W120 00734d40 BW1M119 01003670
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00734a70 BW1M119 01030370

@@ -124,7 +124,7 @@ public:
 	// BW1W120 005d0510 BW1M119 01360310
 	virtual void ResolveLoad();
 	// BW1W120 005ce2e0 BW1M119 01076df0
-	virtual uint32_t IsActive() const;
+	virtual bool32_t IsActive() const;
 	// BW1W120 005ce2d0 BW1M119 0135fdf0
 	virtual const char* GetText();
 

@@ -147,6 +147,17 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
+	void ReadSafe(int32_t& value)
+	{
+		if (ReadEnabled)
+		{
+			if (Read(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				ReadEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
 	// fabricated: no MapCoords overload survives in either binary, but Abode::Load
 	// reads its 12-byte MapCoords through this shape.
 	// BW1W120 inlined BW1M119 inlined
@@ -175,6 +186,17 @@ public:
 	}
 	// BW1W120 inlined BW1M119 012aef50
 	void WriteSafe(uint32_t& value)
+	{
+		if (WriteEnabled)
+		{
+			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				WriteEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	void WriteSafe(int32_t& value)
 	{
 		if (WriteEnabled)
 		{

@@ -64,13 +64,13 @@ public:
 	// BW1W120 006ea9e0 BW1M119 01147940
 	virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
 	// BW1W120 004e3fc0 BW1M119 015ee030
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 004e3ff0 BW1M119 015edf20
-	virtual uint32_t CanBeStolenByCreature(Creature* param_1);
+	virtual bool32_t CanBeStolenByCreature(Creature* param_1);
 	// BW1W120 004e4070 BW1M119 015ede00
-	virtual uint32_t IsStealableScaffold(Creature* param_1);
+	virtual bool32_t IsStealableScaffold(Creature* param_1);
 	// BW1W120 0055e100 BW1M119 011469d0
-	virtual uint32_t IsScaffold();
+	virtual bool32_t IsScaffold();
 	// BW1W120 006eab60 BW1M119 01147550
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 006e9890 BW1M119 01149860
@@ -88,11 +88,11 @@ public:
 	// BW1W120 006e9d30 BW1M119 011490a0
 	virtual int GetDefaultResource();
 	// BW1W120 006e96a0 BW1M119 01149de0
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 006e96e0 BW1M119 01149c70
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 006e9770 BW1M119 011499f0
-	virtual uint32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 006e9900 BW1M119 01149670
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 006e99e0 BW1M119 01149400

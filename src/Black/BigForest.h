@@ -41,7 +41,7 @@ public:
 	// BW1W120 00438e10 BW1M119 010b5110
 	virtual char* GetDebugText();
 	// BW1W120 004394e0 BW1M119 010b52c0
-	virtual bool32_t Load(GameOSFile& file);
+	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00439470 BW1M119 010b53a0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00438e00 BW1M119 010b50d0
@@ -59,17 +59,17 @@ public:
 	// BW1W120 004390b0 BW1M119 010b5b40
 	virtual float GetWoodValue();
 	// BW1W120 00438db0 BW1M119 010b4ef0
-	virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 004393c0 BW1M119 010b5550
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 00438dc0 BW1M119 010b4f40
-	virtual uint32_t IsTuggable();
+	virtual bool32_t IsTuggable();
 	// BW1W120 004390a0 BW1M119 010b5bb0
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00438f50 BW1M119 010b60b0
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00438dd0 BW1M119 010b4f80
-	virtual uint32_t VillagerMustAvoid(Villager* param_1);
+	virtual bool32_t VillagerMustAvoid(Villager* param_1);
 	// BW1W120 00438de0 BW1M119 010b4fd0
 	virtual uint32_t GetCarriedTreeType();
 	// BW1W120 00438f70 BW1M119 010b5cf0

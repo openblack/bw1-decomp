@@ -65,37 +65,37 @@ public:
 	// BW1W120 0074b790 BW1M119 0115f9b0
 	virtual uint32_t GetOverwriteDropToolTip();
 	// BW1W120 0055da10 BW1M119 01161d60
-	virtual uint32_t IsCastShadowAtNight();
+	virtual bool32_t IsCastShadowAtNight();
 	// BW1W120 0055d9a0 BW1M119 01161ba0
-	virtual uint32_t CanBeAttackedByCreature(Creature* param_1);
+	virtual bool32_t CanBeAttackedByCreature(Creature* param_1);
 	// BW1W120 0055d930 BW1M119 01161990
-	virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
+	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
 	// BW1W120 004e4a80 BW1M119 015ec020
-	virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 0055d990 BW1M119 01161b50
-	virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
+	virtual bool32_t CanBeDestroyedByStoning(Creature* param_1);
 	// BW1W120 0055d970 BW1M119 01161ac0
-	virtual uint32_t CanBeUsedForBuilding(Creature* param_1);
+	virtual bool32_t CanBeUsedForBuilding(Creature* param_1);
 	// BW1W120 0055d980 BW1M119 01161b10
-	virtual uint32_t CanBeUsedForRepair(Creature* param_1);
+	virtual bool32_t CanBeUsedForRepair(Creature* param_1);
 	// BW1W120 0055d940 BW1M119 011619e0
-	virtual uint32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1);
+	virtual bool32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1);
 	// BW1W120 0055d9d0 BW1M119 inlined
 	virtual uint32_t IsTree_1();
 	// BW1W120 0055d920 BW1M119 inlined
 	virtual uint32_t IsTree_0(Creature* param_1);
 	// BW1W120 004e46e0 BW1M119 015ecac0
-	virtual uint32_t IsTreeNotTooNearPlannedForest(Creature* param_1);
+	virtual bool32_t IsTreeNotTooNearPlannedForest(Creature* param_1);
 	// BW1W120 0074c0a0 BW1M119 0115e970
-	virtual uint32_t IsTreeBigEnoughForCreature(Creature* param_1);
+	virtual bool32_t IsTreeBigEnoughForCreature(Creature* param_1);
 	// BW1W120 0055d9b0 BW1M119 01161bf0
-	virtual uint32_t CanBeThrownInTheSeaPlayfully(Creature* param_1);
+	virtual bool32_t CanBeThrownInTheSeaPlayfully(Creature* param_1);
 	// BW1W120 0055d960 BW1M119 01161a80
 	virtual uint32_t GetCreatureMimicType();
 	// BW1W120 004d1b70 BW1M119 01247820
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
 	// BW1W120 0055d9c0 BW1M119 01161c40
-	virtual uint32_t IsAnyKindOfTree();
+	virtual bool32_t IsAnyKindOfTree();
 	// BW1W120 0074c130 BW1M119 010036c0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0055d8d0 BW1M119 011617e0
@@ -109,7 +109,7 @@ public:
 	// BW1W120 0074b620 BW1M119 0115fdf0
 	virtual float GetHoldLoweringMultiplier();
 	// BW1W120 0055d9e0 BW1M119 01161c80
-	virtual uint32_t HandShouldFeelWithMeshIntersect();
+	virtual bool32_t HandShouldFeelWithMeshIntersect();
 	// BW1W120 0074a1e0 BW1M119 01160e30
 	virtual void SetLife(float param_1);
 	// BW1W120 0074a290 BW1M119 01160ae0
@@ -142,7 +142,7 @@ public:
 	// BW1W120 0074b7a0 BW1M119 0115f950
 	virtual int GetDefaultResource();
 	// BW1W120 0074b730 BW1M119 0115f9f0
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 0074bd50 BW1M119 0115ef60
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 0074bda0 BW1M119 0115ec10
