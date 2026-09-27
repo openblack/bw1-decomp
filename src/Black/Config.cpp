@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "ColourConstants.h" /* For White */
 #include "Game.h"
+#include "CellSize.h"
 
 void Config::Process()
 {

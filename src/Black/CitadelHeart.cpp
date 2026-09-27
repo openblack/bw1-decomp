@@ -3,6 +3,7 @@
 #include "ColourConstants.h" /* For White */
 #include "GameOSFile.h"
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "GameConstants.h"
 
 CitadelHeart::CitadelHeart() : CitadelPart(), field_0x90(0)
 {

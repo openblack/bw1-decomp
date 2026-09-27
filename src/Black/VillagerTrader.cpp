@@ -1,7 +1,5 @@
 #include "Villager.h"
-
-// extern: an unreferenced internal-linkage const float is dropped from .rdata.
-extern const float VillagerTraderFloat0p7 = 0.7f;
+#include "GameConstants.h"
 
 // BW1W120 0076b960
 

@@ -8,6 +8,7 @@
 #include "ScriptDLL.h"
 
 #include <Lionhead/LH3DLib/development/LHPoint.h>
+#include "GameConstants.h"
 
 // The Mac build names the type -- ScriptDLL::Initialise(ScriptFunctionTable *,
 // ...) -- and it is POD there, so on Mac this table is plain static data.

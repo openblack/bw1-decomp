@@ -2,8 +2,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include "MapCoords.h"
-
-const float VillagerScriptFloat0p7 = 0.7f;
+#include "GameConstants.h"
 
 // BW1W120 00768630 BW1M119 0159e900
 bool32_t Villager::IsReadyForNewScriptAction()

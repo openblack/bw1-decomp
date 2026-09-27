@@ -1,3 +1,4 @@
+#include "GameConstants.h"
 #include "HandStateCitadel.h"
 
 #include "ColourConstants.h" /* For White */
