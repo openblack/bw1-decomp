@@ -1,3 +1,4 @@
+#include "GameConstants.h"
 #include "DanceGroup.h"
 
 int DanceGroup::NextUntitledNumber = 1;

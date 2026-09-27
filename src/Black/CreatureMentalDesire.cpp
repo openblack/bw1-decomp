@@ -1,3 +1,4 @@
+#include "GameConstants.h"
 #include "CreatureMentalDesire.h"
 
 #include "ColourConstants.h"     /* For White */

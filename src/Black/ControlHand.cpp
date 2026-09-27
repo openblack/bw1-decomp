@@ -1,3 +1,4 @@
+#include "GameConstants.h"
 #include "ControlHand.h"
 
 #include <cstdio> /* For sprintf */

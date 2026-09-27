@@ -1,3 +1,4 @@
+#include "GameConstants.h"
 #include "CreatureRoom.h"
 
 #include "ColourConstants.h" /* For White */

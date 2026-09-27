@@ -1,3 +1,4 @@
+#include "GameConstants.h"
 #include "CreatureAction.h"
 
 #include <chlasm/Enum.h> /* For NUM_CREATURE_DESIRES */

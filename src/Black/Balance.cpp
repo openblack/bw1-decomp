@@ -1,3 +1,4 @@
+#include "GameConstants.h"
 #include "LoaderAnon.h"
 
 #include <stdlib.h> /* For getenv */
