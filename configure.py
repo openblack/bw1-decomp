@@ -803,7 +803,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/NewProfileBox.cpp"),
             GameCodeObject(NonMatching, "Black/Object.cpp"),
             GameCodeObject(NonMatching, "Black/Object3D.cpp"),
-            GameCodeObject(NonMatching, "Black/OnMapTrajectory.cpp"),
+            GameCodeObject(Matching, "Black/OnMapTrajectory.cpp"),
             GameCodeObject(NonMatching, "Black/OOSDebug.cpp"),
             GameCodeObject(NonMatching, "Black/Packet.cpp"),
             GameCodeObject(NonMatching, "Black/Particle3DAnim.cpp"),

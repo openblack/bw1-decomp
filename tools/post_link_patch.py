@@ -499,13 +499,14 @@ BW1W110_CPU_DISP_TEXT = 0x008923C0
 BW1W120_CPU_DISP_TEXT = 0x008A25B0
 
 # SafeDisc left `call` stubs in inter-function padding that cl6 fills with nops.
-# Per unit: offsets from the unit's .text start.
-BW1W120_GAMETHING_SAFEDISC = (
-    (0x04B, b'\x90' * 5, b'\xe8\x19\x1e\xe9\xff'),      # 0056f9db: call 0x4017f9
-    (0x17B, b'\x90' * 5, b'\xe8\xe9\x1c\xe9\xff'),      # 0056fb0b: call 0x4017f9
-    (0xA3A, b'\x90' * 6, b'\xff\x15\xe4\x96\x8a\x00'),  # 005703ca: call [__imp__LHSampleSetVolume...]
+# Absolute addresses; rows are skipped where the shipped bytes are already present
+# (the owning unit is still linked from its split object).
+BW1W120_SAFEDISC_PADDING = (
+    (0x0056F9DB, b'\x90' * 5, b'\xe8\x19\x1e\xe9\xff'),      # GameThing: call 0x4017f9
+    (0x0056FB0B, b'\x90' * 5, b'\xe8\xe9\x1c\xe9\xff'),      # GameThing: call 0x4017f9
+    (0x005703CA, b'\x90' * 6, b'\xff\x15\xe4\x96\x8a\x00'),  # GameThing: call [__imp__LHSampleSetVolume...]
+    (0x0063B8CB, b'\x90' * 5, b'\xe8\x29\x5f\xdc\xff'),      # OnMapTrajectory: call 0x4017f9
 )
-BW1W120_GAMETHING_TEXT = 0x0056F990
 
 BW1W100_GAMETHING_INCREMENTAL = (
     (0x840, b'\x33\xc0\xc3\x90\x90', b'\xe9\x7b\x5f\xec\xff'),  # 0053eee0: jmp 0x404e60 (GameThing::GetSaveType)
@@ -694,7 +695,7 @@ def apply_BW1W110_patch(pe, cfg, out_dir, modules):
 
 def apply_BW1W120_patch(pe, cfg, out_dir, modules):
     substitute_code(pe, BW1W120_CPU_DISP_TEXT, CPU_DISP_CODEGEN)
-    substitute_code(pe, BW1W120_GAMETHING_TEXT, BW1W120_GAMETHING_SAFEDISC)
+    substitute_code(pe, 0, BW1W120_SAFEDISC_PADDING)
     substitute_exestr(pe, *CPU_DISP_EXESTR_SUBSTITUTION)
 
     # Bump the exestr comments past SafeDisc's section headers, then re-apply the
