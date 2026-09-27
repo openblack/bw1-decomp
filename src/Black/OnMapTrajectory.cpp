@@ -1,3 +1,4 @@
+#include "GameConstants.h" /* For MetresPerMapCell */
 #include "Abode.h"
 #include "Creature.h"
 #include "Object.h"
@@ -11,8 +12,10 @@
 #include "VillagerStateTableInfo.h" /* For GVillagerStateTableInfo */
 
 #include "ColourConstants.h" // rogue include needed for matching sinit & bss
+#include "CellSize.h"        // rogue include needed for matching .rdata
 
-static const float CellSize = 10.0f;
+// fabricated: unreferenced 4-byte .bss slot at 0x00d44398; real name unknown
+static float unused;
 
 void Object::CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos)
 {
@@ -39,8 +42,8 @@ void Villager::CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, *outPos);
 	if (!GVillagerStateTableInfo::Infos[action.states[LIVING_ACTION_INDEX_TOP]].isFinalState)
 	{
-		float stepX = step.x * CellSize / (float)0x10000;
-		float stepZ = step.z * CellSize / (float)0x10000;
+		float stepX = step.x * MetresPerMapCell / (float)0x10000;
+		float stepZ = step.z * MetresPerMapCell / (float)0x10000;
 		outPos->x += stepX * (uint32_t)(seconds * GGameInfo::Info.NumGameTicksPerSecond());
 		outPos->z += stepZ * (uint32_t)(seconds * GGameInfo::Info.NumGameTicksPerSecond());
 	}
