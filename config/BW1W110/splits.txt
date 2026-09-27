@@ -530,6 +530,42 @@ Black/MultiplayerDatabase.cpp:
 Black/Object.cpp:
 	.text       start:0x0062D380 end:0x00631C00
 
+Black/GatheringInterface.cpp:
+	.rdata      start:0x008F0010 end:0x008F005C
+
+Black/GJProperty.cpp:
+	.rdata      start:0x008F0258 end:0x008F035C
+
+Black/LHNetBase.cpp:
+	.rdata      start:0x0091B350 end:0x0091B3B0
+
+Black/MagicVortex.cpp:
+	.rdata      start:0x0091C9F8 end:0x0091F76C
+	.data       start:0x00BE3428 end:0x00BE3540
+
+Black/MPFEChannelMessages.cpp:
+	.rdata      start:0x0092067C end:0x00920710
+	.data       start:0x00BE3B30 end:0x00BE3D50
+
+Black/MPFEClanDetails.cpp:
+	.rdata      start:0x0092077C end:0x009207CC
+
+Black/MPFEGameStartMessages.cpp:
+	.rdata      start:0x00920864 end:0x009208D8
+	.data       start:0x00BECBC8 end:0x00BECCB8
+
+Black/MPFELogin.cpp:
+	.rdata      start:0x009208D8 end:0x00920914
+
+Black/MPFEMapMessages.cpp:
+	.rdata      start:0x00920914 end:0x00920950
+
+Black/OnMapTrajectory.cpp:
+	.text       start:0x006328F0 end:0x00632C10
+	.rdata      start:0x00921288 end:0x0092129C
+	.CRT$XCU    start:0x009B6BDC end:0x009B6BE4 align:4
+	.bss        start:0x00D33070 end:0x00D3307C
+
 Black/ParticleContainer.cpp:
 	.text       start:0x00634FA0 end:0x00635790
 
@@ -563,30 +599,6 @@ Black/PrayerSite.cpp:
 Black/PSys3d.cpp:
 	.text       start:0x00668200 end:0x00668EB0
 
-Black/GatheringInterface.cpp:
-	.rdata      start:0x008F0010 end:0x008F005C
-
-Black/GJProperty.cpp:
-	.rdata      start:0x008F0258 end:0x008F035C
-
-Black/LHNetBase.cpp:
-	.rdata      start:0x0091B350 end:0x0091B3B0
-
-Black/MagicVortex.cpp:
-	.rdata      start:0x0091C9F8 end:0x0091F76C
-	.data       start:0x00BE3428 end:0x00BE3540
-
-Black/MPFEChannelMessages.cpp:
-	.rdata      start:0x0092067C end:0x00920710
-	.data       start:0x00BE3B30 end:0x00BE3D50
-
-Black/MPFEClanDetails.cpp:
-	.rdata      start:0x0092077C end:0x009207CC
-
-Black/MPFEGameStartMessages.cpp:
-	.rdata      start:0x00920864 end:0x009208D8
-	.data       start:0x00BECBC8 end:0x00BECCB8
-
 Black/MPFEPlayerDetails.cpp:
 	.data       start:0x00BECE28 end:0x00BECED0
 
@@ -595,12 +607,6 @@ Black/PCMain.cpp:
 
 Black/PowerSpin.cpp:
 	.data       start:0x00BF1218 end:0x00BF1350
-
-Black/MPFELogin.cpp:
-	.rdata      start:0x009208D8 end:0x00920914
-
-Black/MPFEMapMessages.cpp:
-	.rdata      start:0x00920914 end:0x00920950
 
 Black/PSysAtomCore.cpp:
 	.text       start:0x00668F50 end:0x0066AB70

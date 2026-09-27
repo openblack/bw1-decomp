@@ -522,39 +522,6 @@ Black/InterfaceFlags.cpp:
 Black/Object.cpp:
 	.text       start:0x005E8810 end:0x005ECD40
 
-Black/ParticleContainer.cpp:
-	.text       start:0x005EF6C0 end:0x005EFE90
-
-Black/PhysicsObject.cpp:
-	.text       start:0x005F2DF0 end:0x005F6180
-
-Black/PlannedMultiMapFixed.cpp:
-	.text       start:0x005F68E0 end:0x005F6E10
-
-Black/Player.cpp:
-	.text       start:0x005F6E10 end:0x005FAC60
-
-Black/PlayerComputer.cpp:
-	.text       start:0x00602430 end:0x00603540
-
-Black/Pot.cpp:
-	.text       start:0x00616590 end:0x0061A120
-
-Black/PrayerSiteInfo.cpp:
-	.text       start:0x0061A120 end:0x0061B9F0
-
-Black/PSys3d.cpp:
-	.text       start:0x0061C110 end:0x0061CCC0
-
-Black/PSysDraw.cpp:
-	.text       start:0x006227C0 end:0x00625C50
-
-Black/PSysEvents.cpp:
-	.text       start:0x00626590 end:0x00626BC0
-
-Black/PSysFlock.cpp:
-	.text       start:0x0062B2A0 end:0x0062BCC0
-
 Black/DialogBoxSaveMessage.cpp:
 	.data       start:0x00B169E8 end:0x00B16A76
 
@@ -588,17 +555,56 @@ Black/MPFEGameStartMessages.cpp:
 	.rdata      start:0x0086E164 end:0x0086E1D8
 	.data       start:0x00B217F0 end:0x00B218E0
 
-Black/MPFEPlayerDetails.cpp:
-	.data       start:0x00B21A50 end:0x00B21AF8
-
-Black/PowerSpin.cpp:
-	.data       start:0x00B257F0 end:0x00B258F0
-
 Black/MPFELogin.cpp:
 	.rdata      start:0x0086E1D8 end:0x0086E214
 
 Black/MPFEMapMessages.cpp:
 	.rdata      start:0x0086E214 end:0x0086E250
+
+Black/OnMapTrajectory.cpp:
+	.text       start:0x005ED6F0 end:0x005ED9A0
+	.rdata      start:0x0086EB88 end:0x0086EB9C
+	.CRT$XCU    start:0x008F6B94 end:0x008F6B9C align:4
+	.bss        start:0x00C65140 end:0x00C6514C
+
+Black/ParticleContainer.cpp:
+	.text       start:0x005EF6C0 end:0x005EFE90
+
+Black/PhysicsObject.cpp:
+	.text       start:0x005F2DF0 end:0x005F6180
+
+Black/PlannedMultiMapFixed.cpp:
+	.text       start:0x005F68E0 end:0x005F6E10
+
+Black/Player.cpp:
+	.text       start:0x005F6E10 end:0x005FAC60
+
+Black/PlayerComputer.cpp:
+	.text       start:0x00602430 end:0x00603540
+
+Black/Pot.cpp:
+	.text       start:0x00616590 end:0x0061A120
+
+Black/PrayerSiteInfo.cpp:
+	.text       start:0x0061A120 end:0x0061B9F0
+
+Black/PSys3d.cpp:
+	.text       start:0x0061C110 end:0x0061CCC0
+
+Black/PSysDraw.cpp:
+	.text       start:0x006227C0 end:0x00625C50
+
+Black/PSysEvents.cpp:
+	.text       start:0x00626590 end:0x00626BC0
+
+Black/PSysFlock.cpp:
+	.text       start:0x0062B2A0 end:0x0062BCC0
+
+Black/MPFEPlayerDetails.cpp:
+	.data       start:0x00B21A50 end:0x00B21AF8
+
+Black/PowerSpin.cpp:
+	.data       start:0x00B257F0 end:0x00B258F0
 
 Black/Packet.cpp:
 	.rdata      start:0x0086EBB8 end:0x0086ECBC

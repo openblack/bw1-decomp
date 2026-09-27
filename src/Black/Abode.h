@@ -149,8 +149,10 @@ public:
 	virtual bool32_t CanBeKickedByCreature(Creature* creature);
 	// BW1W120 004d1b60 BW1M119 01247870
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
+#ifndef VERSION_BW1W100
 	// BW1W120 0063b940 BW1M119 013e2680
 	virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
+#endif
 	// BW1W120 004061c0 BW1M119 0155b990
 	virtual bool32_t IsWonder();
 	// BW1W120 00406810 BW1M119 0101df30

@@ -25,6 +25,7 @@ void Object::CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos)
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, *outPos);
 }
 
+#ifndef VERSION_BW1W100
 void Abode::CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos)
 {
 	MapCoords coords;
@@ -33,6 +34,7 @@ void Abode::CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos)
 	coords.altitude = height;
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, *outPos);
 }
+#endif
 
 void Villager::CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos)
 {
