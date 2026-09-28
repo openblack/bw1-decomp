@@ -86,7 +86,8 @@ Triage table — what a mismatch usually means:
 | `test ah, N` / `test byte [mem+1], N` in target | folded bit-test — write the natural `flags & 0x200` form, MSVC folds it (see cheat-sheet `bittest-fold`) |
 | `mov ecx,eax; shr ecx,9; test cl,1` in target | the *unfolded* byte-truncation idiom — `uint8_t b = f >> 9; if (b & 1)` (cheat-sheet `bittest-byte-local`) |
 | `xor eax,eax; mov ax,[mem]` in target | member copied to a `uint32_t` local (zext); direct member access emits no `xor` (cheat-sheet `local-copy-zext`) |
-| extra/missing `call` to a small getter | inlining difference — try calling the getter vs open-coding it; last resort `#pragma dont_inline` |
+| extra/missing `call` to a small getter | inlining difference. For an *inline* helper this is the c2 budget: run `tools/inline-budget.py callsets`/`size`/`sim` (skill `inline-budget-matching`) before editing, and never change shared helper bodies yourself — log the needed IL-size change for the dispatcher. For a non-inline function, try calling vs open-coding it; last resort `#pragma dont_inline` |
+| only operand order differs in inlined x87 math (`fld st(1)` vs `st(2)`, swapped `fmul` operands) | c2 tie-break (cheat-sheet `x87-inline-tiebreak`): run `tools/tiebreak-probe.py --dummies` once to confirm, then defer — do not hunt |
 | operand is `__real@...` | float constant from .rdata — never invent a literal; the reloc name IS the bit pattern |
 | identical % and identical diff across your edits | **stale object** — an earlier `ninja` died on another TU; rerun step 4 and check it succeeded |
 

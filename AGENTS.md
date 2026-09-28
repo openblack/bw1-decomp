@@ -22,6 +22,22 @@ Before trying another source variant, identify the assembly difference it is int
 to explain. If repeated experiments merely shuffle registers or move mismatches
 elsewhere, retain the clearest supported implementation and document the unresolved cause.
 
+Experiment discipline, learned the expensive way:
+
+- **Classify the difference before experimenting.** A helper inlined on one side only is an
+  inline-budget problem; the same calls in a different operand or register order is a
+  tie-break or scheduling problem; anything else is a real source difference. Each class
+  has its own procedure.
+- **Prove that a knob moves the output before you sweep it.** A 5,000-build sweep over knobs
+  that never touch the differing instructions finds nothing.
+- **Rank assumptions by evidence.** Mac bodies and signatures, and target call sets across
+  all units, outrank guessed shapes of fabricated or hand-expanded functions. When a model
+  can't fit every caller, doubt the weakest-evidence caller before rewriting shared headers.
+- **Bound the search and escalate early.** Once a residual is shown to be a compiler
+  tie-break (see [Inline expansion](#inline-expansion)), stop hunting and ask the human
+  whether to accept a fakematch. Reverse-engineering the compiler's tie-break rule has not
+  paid off.
+
 ## Repository Layout
 
 - `configure.py`        — Project configuration and generator script.
@@ -286,6 +302,8 @@ Maps each source file to its section address ranges, telling dtk how to split th
 - `// correct but X is incorrect` — the function itself matches, but a called function does not.
 - `// rogue includes needed for matching sinit & bss` — includes added purely for BSS/static-init ordering.
 - `#pragma dont_inline on/off` — forces the compiler to not inline a function (required for matching in specific cases).
+- `// Inliner IL size: N` — above an inline helper's address comment: its exact IL size, as measured by `tools/inline-budget.py size`
+  (`<= 40` means never charged). Update it whenever the body changes.
 
 Don't be afraid to leave notes that would be useful to the next person trying to match the code, figure it out, or in the far future, write mods for the game.
 
@@ -302,6 +320,34 @@ An include can change generated code even when its declarations are unused: TU-l
 constants, dynamic initializers, template storage/helpers and inlining can all be affected.
 Keep enum-only headers lightweight and place complete types where consumers need them.
 Verify affected header consumers after layout, virtual-interface or include-boundary changes.
+
+### Inline expansion
+
+When the target inlines a different subset of calls than our build (a helper stays a `call`
+on one side only), the cause is the compiler's inline budget, not optimization flags. Use the
+`inline-budget-matching` skill. Its reference is [`docs/msvc6_inliner.md`](docs/msvc6_inliner.md):
+the c2.dll inliner rules (per-function budget, the 40-unit free threshold, nested budget
+shares), measured sizes, and per-construct costs.
+
+- `tools/inline-budget.py size` measures an inline call's exact IL size with the unit's real
+  compile command.
+- `tools/inline-budget.py sim` replays the budget algorithm on a call tree. It must reproduce
+  our object's call set before you trust it for the target.
+- `tools/inline-budget.py callsets --all --target-only` lists which helpers stay calls in every
+  target function. Callers that share a body but get different target patterns show which
+  helper cost differs.
+- Change a helper's IL size without changing its bytes: a ternary instead of `if`, compound or
+  chained assignment. Do not reach for `__forceinline` or invented layouts.
+
+When the only remaining difference is the operand order of equal-cost x87 operations inside
+inlined bodies, it is a c2 tie-break. It depends on how much IL the inliner has built earlier
+in the same function, not on anything the source means. `tools/tiebreak-probe.py --dummies`
+confirms this in one batch: some counts of unused locals match and others do not. Don't hunt
+further; leave the function nonmatching or ask the human about a fakematch.
+
+The Ninja `cl` rule has no header dependencies. After editing a header, delete the objects
+you rely on before rebuilding. For shared headers, delete every object, then compare full
+reports (`decomp-regress.py --refresh --baseline <saved report>`) before keeping the change.
 
 ### Signatures, function boundaries and layouts
 
