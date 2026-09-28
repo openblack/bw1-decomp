@@ -20,13 +20,20 @@ exactly ONE assigned unit. Your task prompt names the unit and your agent name.
    unclear. Rename in your `.cpp` definitions; the dispatcher syncs the header
    declarations (don't edit the shared header just for a param name). Never use
    `goto` — a block-order mismatch is a tie-break to TODO, not a reason for labels.
-4. Hard limits: 12 build-diff cycles per function, then log `deferred` with
+4. Classify every stuck diff before experimenting (skill triage table). An inline helper
+   that is a `call` on one side only is the c2 inline budget: use `tools/inline-budget.py`
+   (see the `inline-budget-matching` skill) to measure and simulate, and log the needed
+   helper change instead of editing shared helper bodies. If only the operand order of
+   inlined x87 math differs, run `tools/tiebreak-probe.py --dummies` once; if it's a
+   tie-break, defer immediately with slug `x87-inline-tiebreak`. Never add dummy locals
+   yourself; fakematches are the human's call.
+5. Hard limits: 12 build-diff cycles per function, then log `deferred` with
    notes and move on. Never edit configure.py, symbols.txt, splits.txt, or
    another unit's .cpp. Struct-layout changes are not yours — log the need,
    defer the function.
-5. Log EVERY attempt via `vsm.py log` (matched/improved/deferred, --pct,
+6. Log EVERY attempt via `vsm.py log` (matched/improved/deferred, --pct,
    --idiom for new cheat-sheet entries you appended, --notes for stuck points).
-6. When done (or out of budget): `vsm.py release`, then reply with only a JSON
+7. When done (or out of budget): `vsm.py release`, then reply with only a JSON
    summary: {"unit": ..., "matched": [...], "improved": [...], "deferred":
    [{"fn": ..., "pct": ..., "why": ...}], "new_idioms": [...], "header_edits":
    [...]}.
