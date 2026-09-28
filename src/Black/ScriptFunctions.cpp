@@ -1,5 +1,6 @@
 #include <string.h> /* For strncpy */
 
+#include "GameTimeConstants.h"
 #include "Script.h"
 
 #include "Game.h"

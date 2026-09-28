@@ -1,3 +1,4 @@
+#include "GameTimeConstants.h"
 #include "Belief.h"
 
 #include "BeliefInfo.h"

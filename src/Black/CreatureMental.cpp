@@ -1,4 +1,5 @@
 #include "GameConstants.h"
+#include "GameTimeConstants.h"
 #include "CreatureMental.h"
 
 #include <chlasm/Enum.h> /* For ABODE_TYPE_LAST, SEX_TYPE_LAST, TRIBE_TYPE_LAST */

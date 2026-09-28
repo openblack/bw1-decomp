@@ -29,6 +29,38 @@ add_relocations:
     type: x86_abs32
     target: '?PacketTimeHistory@GGame@@2PAHA'
     addend: 0x28
+  - source: 0x0063AC28
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x1A4
+  - source: 0x0063AD64
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x6C
+  - source: 0x0063AD68
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x7A
+  - source: 0x0063AD6C
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x88
+  - source: 0x0063AD70
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xA0
+  - source: 0x0063AD74
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xA8
+  - source: 0x0063AD78
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xC0
+  - source: 0x0063AD7C
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xC8
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000

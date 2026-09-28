@@ -1,4 +1,5 @@
 #include <stddef.h> /* For NULL in intrusive-list templates */
+#include "GameTimeConstants.h"
 #include "Citadel.h"
 #include "Game.h"
 

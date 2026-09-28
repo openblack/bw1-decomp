@@ -1,4 +1,5 @@
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "GameTimeConstants.h"
 #include "Living.h"
 
 #include "ColourConstants.h" /* For White */

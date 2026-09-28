@@ -1,4 +1,5 @@
 #include "GameConstants.h" /* For MetresPerMapCell */
+#include "GameTimeConstants.h"
 #include "Abode.h"
 #include "Creature.h"
 #include "Object.h"

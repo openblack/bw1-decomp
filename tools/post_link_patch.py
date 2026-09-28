@@ -505,6 +505,8 @@ BW1W120_SAFEDISC_PADDING = (
     (0x0056F9DB, b'\x90' * 5, b'\xe8\x19\x1e\xe9\xff'),      # GameThing: call 0x4017f9
     (0x0056FB0B, b'\x90' * 5, b'\xe8\xe9\x1c\xe9\xff'),      # GameThing: call 0x4017f9
     (0x005703CA, b'\x90' * 6, b'\xff\x15\xe4\x96\x8a\x00'),  # GameThing: call [__imp__LHSampleSetVolume...]
+    (0x0063AB7B, b'\x90' * 5, b'\xe8\x79\x6c\xdc\xff'),      # Object3D: call 0x4017f9
+    (0x0063B0AB, b'\x90' * 5, b'\xe8\x49\x67\xdc\xff'),      # Object3D: call 0x4017f9
     (0x0063B8CB, b'\x90' * 5, b'\xe8\x29\x5f\xdc\xff'),      # OnMapTrajectory: call 0x4017f9
 )
 

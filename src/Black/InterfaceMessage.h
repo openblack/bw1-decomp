@@ -10,8 +10,4 @@ enum INTERFACE_MESSAGE_TYPES
 };
 static_assert(sizeof(enum INTERFACE_MESSAGE_TYPES) == 0x4, "Data type is of wrong size");
 
-static const char* INTERFACE_MESSAGE_TYPES_strs[_INTERFACE_MESSAGE_TYPES_COUNT] = {
-	"INTERFACE_MESSAGE_TYPES_0",
-};
-
 #endif /* BW1_DECOMP_INTERFACE_MESSAGE_INCLUDED_H */

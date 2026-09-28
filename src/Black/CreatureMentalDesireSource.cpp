@@ -1,7 +1,8 @@
 #include "GameConstants.h"
 #include "CreatureMentalDesireSource.h"
 
-#include "ColourConstants.h"           /* For White */
+#include "ColourConstants.h" /* For White */
+#include "GameTimeConstants.h"
 #include "CreatureInitialDesireInfo.h" /* For struct CreatureInitialDesireInfo */
 #include "CreatureMentalDesire.h"      /* For struct CreatureDesires */
 

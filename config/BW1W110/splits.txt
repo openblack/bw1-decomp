@@ -560,6 +560,12 @@ Black/MPFELogin.cpp:
 Black/MPFEMapMessages.cpp:
 	.rdata      start:0x00920914 end:0x00920950
 
+Black/Object3D.cpp:
+	.text       start:0x00631C00 end:0x006328F0
+	.rdata      start:0x00921284 end:0x00921288
+	.CRT$XCU    start:0x009B6BD4 end:0x009B6BDC align:4
+	.bss        start:0x00D33064 end:0x00D33070
+
 Black/OnMapTrajectory.cpp:
 	.text       start:0x006328F0 end:0x00632C10
 	.rdata      start:0x00921288 end:0x0092129C

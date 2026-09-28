@@ -1,3 +1,4 @@
+#include "GameTimeConstants.h"
 #include "Abode.h"
 
 #include "Lionhead/LH3DLib/development/LH3DSmoke.h"
