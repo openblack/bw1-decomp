@@ -1,3 +1,4 @@
+#include "GameTimeConstants.h"
 #include "SpecialVillager.h"
 
 #include "GameThing.h"

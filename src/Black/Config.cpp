@@ -2,6 +2,7 @@
 
 #include <cstdio> /* For sprintf */
 
+#include "GameTimeConstants.h"
 #include "Camera.h"
 #include "ColourConstants.h" /* For White */
 #include "Game.h"

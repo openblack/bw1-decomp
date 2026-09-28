@@ -1,3 +1,4 @@
+#include "GameTimeConstants.h"
 #include "Villager.h"
 
 const float VillagerLeaderFloat1000p0 = 1000.0f;

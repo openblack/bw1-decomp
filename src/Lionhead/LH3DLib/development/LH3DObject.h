@@ -219,6 +219,7 @@ public:
 
 	// Non-virtual functions
 
+	// Inliner IL size: 194
 	// BW1W120 00423140 BW1M119 01043ec0
 	void SetPosition(const LHPoint& point, float y_angle, float scale)
 	{

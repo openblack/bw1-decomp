@@ -13,6 +13,40 @@ block_relocations:
   - source: 0x009CD374
   - source: 0x009CD9B8
   - source: 0x009CD9F8
+add_relocations:
+  - source: 0x00631CC8
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x1A4
+  - source: 0x00631E04
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x6C
+  - source: 0x00631E08
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x7A
+  - source: 0x00631E0C
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x88
+  - source: 0x00631E10
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xA0
+  - source: 0x00631E14
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xA8
+  - source: 0x00631E18
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xC0
+  - source: 0x00631E1C
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xC8
+
 # TODO: Unsure why we get 0x832000, probably because of decryptor
 force_size: 0x00902a0b
 linker_version: "6.0"

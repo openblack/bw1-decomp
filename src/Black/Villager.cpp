@@ -1,3 +1,4 @@
+#include "GameTimeConstants.h"
 #include "Villager.h"
 
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>

@@ -1,3 +1,4 @@
+#include "GameTimeConstants.h"
 #include "CitadelHeart.h"
 
 #include "ColourConstants.h" /* For White */

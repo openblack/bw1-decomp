@@ -18,6 +18,40 @@ function_comdat: false
 force_size: 0x0081b58f
 linker_version: "6.0"
 safe_disc_version: "2.10.30"
+add_relocations:
+  - source: 0x005ECE08
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x1A4
+  - source: 0x005ECF44
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x6C
+  - source: 0x005ECF48
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x7A
+  - source: 0x005ECF4C
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0x88
+  - source: 0x005ECF50
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xA0
+  - source: 0x005ECF54
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xA8
+  - source: 0x005ECF58
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xC0
+  - source: 0x005ECF5C
+    type: x86_abs32
+    target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
+    addend: 0xC8
+
 # TODO: Unsure why we get 0x3EA000
 size_of_code: 0x3EE800
 # TODO: Unsure why we get 0x378000

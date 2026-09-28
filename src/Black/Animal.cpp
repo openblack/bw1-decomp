@@ -1,3 +1,4 @@
+#include "GameTimeConstants.h"
 #include "Animal.h"
 
 #include "ColourConstants.h" /* For White */

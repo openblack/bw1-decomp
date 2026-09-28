@@ -802,7 +802,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Network.cpp"),
             GameCodeObject(NonMatching, "Black/NewProfileBox.cpp"),
             GameCodeObject(NonMatching, "Black/Object.cpp"),
-            GameCodeObject(NonMatching, "Black/Object3D.cpp"),
+            GameCodeObject(Matching, "Black/Object3D.cpp"),
             GameCodeObject(Matching, "Black/OnMapTrajectory.cpp"),
             GameCodeObject(NonMatching, "Black/OOSDebug.cpp"),
             GameCodeObject(NonMatching, "Black/Packet.cpp"),

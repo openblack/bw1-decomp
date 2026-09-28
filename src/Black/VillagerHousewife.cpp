@@ -1,4 +1,5 @@
 #include "MapCoords.h"
+#include "GameTimeConstants.h"
 #include "Villager.h"
 
 #include "chlasm/GStates.h"

@@ -54,6 +54,7 @@ struct GLandscape
 	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point);
 	// BW1W120 005e3f60 BW1M119 010204d0
 	uint32_t PreDraw();
+	// Inliner IL size: 81
 	// BW1W120 00613750 BW1M119 0104aef0
 	// MSVC 6 inlines this. Inlined uses look like (esi=coords, eax=point):
 	//     call LH3DIsland::GetAltitude

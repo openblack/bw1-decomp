@@ -7,6 +7,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include "HandState.h"
+#include "GameTimeConstants.h"
 #include "PSysHandFX.h"
 
 CHand::CHand(LHPoint point, GInterfaceStatus* status)

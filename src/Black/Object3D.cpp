@@ -1,3 +1,5 @@
+#include <Lionhead/LH3DLib/development/LH3DScaleConstants.h>
+#include <Lionhead/LH3DLib/development/LH3DMathConstants.h>
 #include "Game3DObject.h"
 
 #include <Lionhead/LH3DLib/development/LH3DMesh.h> /* For LH3DMesh::GetPackedMesh */
@@ -12,6 +14,8 @@
 #include "Interface.h"  /* For GInterface::SendObjectDrawCollision */
 #include "Landscape.h"  /* For GLandscape::ConvertMapCoordToLandscapePoint */
 #include "MapCoords.h"  /* For struct MapCoords */
+
+static float unused;
 
 Game3DObject* Game3DObject::Create(LH3DObject::ObjectType type)
 {
@@ -29,32 +33,48 @@ float Game3DObject::GetAltitudeFondation() const
 		switch (i)
 		{
 		case 0:
-			corner = LHPoint(box.centre.x + box.size.x, box.centre.y + box.size.y, box.centre.z + box.size.z);
+			corner.x = box.centre.x + box.size.x;
+			corner.y = box.centre.y + box.size.y;
+			corner.z = box.centre.z + box.size.z;
 			break;
 		case 1:
-			corner = LHPoint(box.centre.x - box.size.x, box.centre.y + box.size.y, box.centre.z + box.size.z);
+			corner.x = box.centre.x - box.size.x;
+			corner.y = box.centre.y + box.size.y;
+			corner.z = box.centre.z + box.size.z;
 			break;
 		case 2:
-			corner = LHPoint(box.centre.x + box.size.x, box.centre.y + box.size.y, box.centre.z - box.size.z);
+			corner.x = box.centre.x + box.size.x;
+			corner.y = box.centre.y + box.size.y;
+			corner.z = box.centre.z - box.size.z;
 			break;
 		case 3:
-			corner = LHPoint(box.centre.x + box.size.x, box.centre.y - box.size.y, box.centre.z + box.size.z);
+			corner.x = box.centre.x + box.size.x;
+			corner.y = box.centre.y - box.size.y;
+			corner.z = box.centre.z + box.size.z;
 			break;
 		case 4:
-			corner = LHPoint(box.centre.x - box.size.x, box.centre.y + box.size.y, box.centre.z - box.size.z);
+			corner.x = box.centre.x - box.size.x;
+			corner.y = box.centre.y + box.size.y;
+			corner.z = box.centre.z - box.size.z;
 			break;
 		case 5:
-			corner = LHPoint(box.centre.x + box.size.x, box.centre.y - box.size.y, box.centre.z - box.size.z);
+			corner.x = box.centre.x + box.size.x;
+			corner.y = box.centre.y - box.size.y;
+			corner.z = box.centre.z - box.size.z;
 			break;
 		case 6:
-			corner = LHPoint(box.centre.x - box.size.x, box.centre.y - box.size.y, box.centre.z - box.size.z);
+			corner.x = box.centre.x - box.size.x;
+			corner.y = box.centre.y - box.size.y;
+			corner.z = box.centre.z - box.size.z;
 			break;
 		default:
-			corner = LHPoint(box.centre.x - box.size.x, box.centre.y - box.size.y, box.centre.z + box.size.z);
+			corner.x = box.centre.x - box.size.x;
+			corner.y = box.centre.y - box.size.y;
+			corner.z = box.centre.z + box.size.z;
 			break;
 		}
-		LHPoint world = matrix * corner;
-		float   altitude = LH3DIsland::GetAltitude(LH3DMapCoords(world.x, world.z));
+		matrix.TransformPoint(corner);
+		float altitude = LH3DIsland::GetAltitude(LH3DMapCoords(corner.x, corner.z));
 		if (altitude < minAltitude)
 		{
 			minAltitude = altitude;
@@ -71,6 +91,8 @@ Game3DObject* Game3DObject::Create(const MapCoords& coords, LH3DObject::ObjectTy
 	{
 		object->SetMesh(LH3DMesh::GetPackedMesh(mesh), NULL, NULL);
 		LHPoint point;
+		LHPoint unused0;
+		LHPoint unused1;
 		GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
 		LH3DObject* object3d = object;
 		object3d->SetPosition(point, y_angle, scale);
@@ -113,40 +135,41 @@ bool32_t Game3DObject::GetSpecialPos(unsigned long index, MapCoords& coords) con
 bool32_t Game3DObject::GetSpecialPos(unsigned long index, MapCoords& coords, float& y_angle)
 {
 	LHMatrix extra;
-	if (!GetExtraPos(index, &extra))
+	float    xAngle;
+	float    zAngle;
+	if (GetExtraPos(index, &extra))
 	{
-		return FALSE;
+		LHPoint pos(extra.m[9], extra.m[10], extra.m[11]);
+		extra.GetYXZ(&y_angle, &xAngle, &zAngle);
+		coords = MapCoords(pos);
+		if (IsStaticMorphable())
+		{
+			coords.altitude += LH3DIsland::GetAltitude(LH3DMapCoords(pos.x, pos.z)) - matrix.GetPos().y;
+		}
+		return TRUE;
 	}
-	LHPoint pos = extra.GetPos();
-	float   xAngle;
-	float   zAngle;
-	extra.GetYXZ(&y_angle, &xAngle, &zAngle);
-	coords = MapCoords(pos);
-	if (IsStaticMorphable())
-	{
-		coords.altitude += LH3DIsland::GetAltitude(LH3DMapCoords(pos.x, pos.z)) - matrix.GetPos().y;
-	}
-	return TRUE;
+	return FALSE;
 }
 
 bool32_t Game3DObject::GetSpecialPos(unsigned long index, MapCoords& coords, float& y_angle, float& x_angle,
                                      float& z_angle)
 {
 	LHMatrix extra;
-	if (!GetExtraPos(index, &extra))
+	if (GetExtraPos(index, &extra))
 	{
-		return FALSE;
+		LHPoint pos(extra.m[9], extra.m[10], extra.m[11]);
+		extra.GetYXZ(&y_angle, &x_angle, &z_angle);
+		coords = MapCoords(pos);
+		if (IsStaticMorphable())
+		{
+			coords.altitude += LH3DIsland::GetAltitude(LH3DMapCoords(pos.x, pos.z)) - matrix.GetPos().y;
+		}
+		return TRUE;
 	}
-	LHPoint pos = extra.GetPos();
-	extra.GetYXZ(&y_angle, &x_angle, &z_angle);
-	coords = MapCoords(pos);
-	if (IsStaticMorphable())
-	{
-		coords.altitude += LH3DIsland::GetAltitude(LH3DMapCoords(pos.x, pos.z)) - matrix.GetPos().y;
-	}
-	return TRUE;
+	return FALSE;
 }
 
+#ifndef VERSION_BW1W100
 bool32_t Game3DObject::IsPointInsideXZ(const LHPoint& point)
 {
 	LHPoint local;
@@ -175,13 +198,54 @@ void __fastcall Game3DObject::SetPositionAndXZYScale(const MapCoords& coords, fl
 void __fastcall Game3DObject::SetPositionAndXZYScale(const LHPoint& point, float y_angle, float scale, float xz_scale,
                                                      float y_scale)
 {
+	LHPoint unused0;
+	LHPoint unused1;
+	LHPoint unused2;
+	LHPoint unused3;
+	LHPoint unused4;
+	LHPoint unused5;
+	LHPoint unused6;
+	LHPoint unused7;
 	scale *= xz_scale;
-	LH3DObject::SetPosition(point, y_angle, scale);
+	if (y_angle != 0.0f)
+	{
+		if (scale != 1.0f)
+		{
+			matrix.SetScale(scale);
+			matrix.PostTranslation(point);
+			matrix.RotateY(y_angle);
+		}
+		else
+		{
+			matrix.SetIdentity();
+			matrix.m[9] = point.x;
+			matrix.m[10] = point.y;
+			matrix.m[11] = point.z;
+			matrix.RotateY(y_angle);
+		}
+	}
+	else
+	{
+		if (scale != 1.0f)
+		{
+			matrix.SetScale(scale);
+			matrix.PostTranslation(point);
+		}
+		else
+		{
+			matrix.Translation(point);
+		}
+	}
+	this->scale = scale;
+	this->y_angle = y_angle;
 	float ratio = y_scale / xz_scale;
 	matrix.m[3] *= ratio;
 	matrix.m[4] *= ratio;
 	matrix.m[5] *= ratio;
 }
+
+void Game3DObject::FUN_0063b5c0(int param_1) {}
+#endif
 
 void __fastcall Game3DObject::AddForDrawing(Object* object)
 {
@@ -225,15 +289,7 @@ void __fastcall Game3DObject::SetPosition(const MapCoords& coords, float x_angle
 	this->y_angle = y_angle;
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, *(LHPoint*)&matrix.m[9]);
 	matrix.SetYXZMatrixOnly(y_angle, x_angle, z_angle);
-	matrix.m[0] *= scale;
-	matrix.m[1] *= scale;
-	matrix.m[2] *= scale;
-	matrix.m[3] *= scale;
-	matrix.m[4] *= scale;
-	matrix.m[5] *= scale;
-	matrix.m[6] *= scale;
-	matrix.m[7] *= scale;
-	matrix.m[8] *= scale;
+	matrix.PreScale(scale, scale, scale);
 }
 
 void __fastcall Game3DObject::SetPosition(LHPoint& point, float x_angle, float y_angle, float z_angle, float scale)
@@ -242,21 +298,14 @@ void __fastcall Game3DObject::SetPosition(LHPoint& point, float x_angle, float y
 	this->y_angle = y_angle;
 	*(LHPoint*)&matrix.m[9] = point;
 	matrix.SetYXZMatrixOnly(y_angle, x_angle, z_angle);
-	matrix.m[0] *= scale;
-	matrix.m[1] *= scale;
-	matrix.m[2] *= scale;
-	matrix.m[3] *= scale;
-	matrix.m[4] *= scale;
-	matrix.m[5] *= scale;
-	matrix.m[6] *= scale;
-	matrix.m[7] *= scale;
-	matrix.m[8] *= scale;
+	matrix.PreScale(scale, scale, scale);
 }
 
 void __fastcall Game3DObject::AddJustForCollide(Object* object)
 {
 	g_last_selected_box = FALSE;
-	GetMesh()->BoundingBox.CheckRegionOnScreen(this);
+	LH3DMesh* mesh = GetMesh();
+	mesh->BoundingBox.CheckRegionOnScreen(this);
 	if (g_b_last_on_screen && object != NULL)
 	{
 		GGame::g_game->help_system->SendFOVObject(object, g_last_distance);

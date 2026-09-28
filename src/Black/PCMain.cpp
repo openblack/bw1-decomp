@@ -1,4 +1,5 @@
 #include "PCMain.h"
+#include "GameTimeConstants.h"
 #include "Base.h"
 
 // The heap checkpoint is constructed and attached to ObjectHeap by start_system.

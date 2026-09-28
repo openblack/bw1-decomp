@@ -58,14 +58,11 @@ struct LH3DMesh
 
 	// Static methods
 
+	// Inliner IL size: <= 40, always inlined and never charged
 	// BW1W120 inlined BW1M119 013e1290
 	static LH3DMesh* GetPackedMesh(int index)
 	{
-		if (index < 0 || index >= MeshPack->MeshCount)
-		{
-			index = 0;
-		}
-		return MeshPack->Meshes[index];
+		return MeshPack->Meshes[(index < 0 || index >= MeshPack->MeshCount) ? 0 : index];
 	}
 	// BW1W120 00806460 BW1M119 0106a510 (LHCombined Release)
 	static LH3DMesh* Create(const void* buf, bool dont_care_about_texture);

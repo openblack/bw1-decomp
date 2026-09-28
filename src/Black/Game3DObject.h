@@ -53,6 +53,8 @@ public:
 	// BW1W120 0063b390 BW1M119 null
 	void __fastcall SetPositionAndXZYScale(const LHPoint& point, float y_angle, float scale, float xz_scale,
 	                                       float y_scale);
+	// BW1W120 0063b5c0 BW1M119 null
+	void FUN_0063b5c0(int param_1);
 	// BW1W120 0063b5d0 BW1M119 01048e30
 	void __fastcall AddForDrawing(Object* object);
 	// BW1W120 0063b680 BW1M119 013e16f0

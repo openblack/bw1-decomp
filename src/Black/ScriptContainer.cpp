@@ -1,3 +1,4 @@
+#include "GameTimeConstants.h"
 #include "Script.h"
 
 // BW1W120 00c0c740

@@ -1,3 +1,4 @@
+#include "GameTimeConstants.h"
 #include "CitadelPart.h"
 
 #include "Citadel.h"
