@@ -75,7 +75,7 @@ struct LHPoint
 	// BW1W120 00442700 BW1M119 0104cc10
 	LHPoint(float x, float y, float z) : x(x), y(y), z(z) {}
 	// BW1W120 0044cfc0 BW1M119 0103cdd0
-	LHPoint(LHPoint* other);
+	LHPoint(const LHPoint& other) : x(other.x), y(other.y), z(other.z) {}
 
 	// Non-virtual methods
 
@@ -127,6 +127,14 @@ struct LHPoint
 		z = 0.0f;
 		y = 0.0f;
 		x = 0.0f;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	void SetSize(float size)
+	{
+		if (x != 0.0f || y != 0.0f || z != 0.0f)
+		{
+			*this *= size / (float)sqrt(x * x + y * y + z * z);
+		}
 	}
 	// BW1W120 0054e910 BW1M119 01084bc0
 	void FastNormalize();

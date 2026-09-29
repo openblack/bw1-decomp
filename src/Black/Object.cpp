@@ -58,6 +58,19 @@
 #include "ValueSpinner.h"
 #include "VirtualInfluence.h"
 
+static inline int RoundPhysicsCell(float value)
+{
+	int  result;
+	int* resultPtr = &result;
+	__asm
+	{
+		fld value
+		mov edx, resultPtr
+		fistp dword ptr [edx]
+	}
+	return result;
+}
+
 static const float RouteMinRadius = 0.05f;
 
 GObjectInfo GObjectInfo::Infos[OBJECT_TYPE_LAST];
@@ -422,8 +435,7 @@ MapCoords Object::GetNearestEdge(float angle, float extra_radius)
 float GObjectInfo::GetMesh2DRadius(float scale) const
 {
 	LH3DMesh* mesh = LH3DMesh::GetPackedMesh(GetMesh());
-	return (mesh->BoundingBox.size.z < mesh->BoundingBox.size.x ? mesh->BoundingBox.size.x : mesh->BoundingBox.size.z) *
-	       scale;
+	return max(mesh->BoundingBox.size.x, mesh->BoundingBox.size.z) * scale;
 }
 
 void Object::RemoveDraggingCreatureByLeash()
@@ -534,8 +546,8 @@ PhysicsObject* Object::InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& ang
 		}
 		else
 		{
-			LandCell* cell = LH3DIsland::GetCell((int)(physicsObject->Physics.Matrix.GetPos().x / 10.0f),
-			                                     (int)(physicsObject->Physics.Matrix.GetPos().z / 10.0f));
+			LandCell* cell = LH3DIsland::GetCell(RoundPhysicsCell(physicsObject->Physics.Matrix.GetPos().x / 10.0f),
+			                                     RoundPhysicsCell(physicsObject->Physics.Matrix.GetPos().z / 10.0f));
 			if (cell != NULL && cell->altitude > 1)
 			{
 				landed = true;
@@ -544,6 +556,7 @@ PhysicsObject* Object::InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& ang
 	}
 	if (landed && (IsLiving() || IsFence()))
 	{
+		// TODO: The target loads z after converting x; this constructor currently preloads both components.
 		LH3DMapCoords landCoords(physicsObject->Physics.Matrix.GetPos().x, physicsObject->Physics.Matrix.GetPos().z);
 		LHPoint       normal;
 		LH3DIsland::GetNormal(landCoords, &normal);
@@ -622,7 +635,11 @@ bool32_t Object::HasSunk()
 PhysicsInitialisation Object::InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
                                                 bool param_4, GInterfaceStatus* param_5)
 {
-	if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 || (Flags & GAME_THING_WITH_POS_FLAG_IMMOVABLE) != 0)
+	if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0)
+	{
+		return PhysicsInitialisation(NULL, false);
+	}
+	if ((Flags & GAME_THING_WITH_POS_FLAG_IMMOVABLE) != 0)
 	{
 		return PhysicsInitialisation(NULL, false);
 	}
@@ -979,7 +996,7 @@ float Object::GetHealEffect(EffectValues& values)
 	float         heal = 0.0f;
 	EffectNumbers defence;
 	FillInEffectDefenceMultiplier(defence);
-	float effect = values.numbers.values[EFFECT_TYPE_HEAL] * defence.values[EFFECT_TYPE_HEAL];
+	float effect = (double)values.numbers.values[EFFECT_TYPE_HEAL] * defence.values[EFFECT_TYPE_HEAL];
 	if (effect > 0.0f)
 	{
 		heal = effect;
@@ -1099,9 +1116,8 @@ float Object::Get2DRadius()
 	{
 		float         objectScale = GetScale();
 		Game3DObject* object3d = Game3dObject;
-		return objectScale * (object3d->GetMesh()->BoundingBox.size.z < object3d->GetMesh()->BoundingBox.size.x
-		                          ? object3d->GetMesh()->BoundingBox.size.x
-		                          : object3d->GetMesh()->BoundingBox.size.z);
+		return objectScale *
+		       max(object3d->GetMesh()->GetBoundingBox().size.x, object3d->GetMesh()->GetBoundingBox().size.z);
 	}
 	return 0.0f;
 }
@@ -1310,7 +1326,7 @@ void Object::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
 	{
 		LHMatrix matrix;
 		GetWorldMatrix(&matrix);
-		LHPoint worldCentre = matrix * object3d->GetMesh()->BoundingBox.centre;
+		LHPoint worldCentre = matrix * object3d->GetMesh()->GetBoundingBox().centre;
 		Point2D pos(worldCentre.x, worldCentre.z);
 		LHPoint size = object3d->GetMesh()->BoundingBox.size * GetScale();
 		size.x = size.x + margin + fireMargin;
@@ -1364,10 +1380,10 @@ void Object::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
 			float   angleOffset = alongX ? 1.5707964f : 0.0f;
 			float   angle = GetYAngle() + angleOffset;
 			Point2D step((float)(sin(angle) * spacing), (float)-(cos(angle) * spacing));
-			pos -= step * (float)(count - 1);
-			step.x *= 2.0f;
-			step.y *= 2.0f;
-			float radius = width * 1.15;
+			float   stepsBack = (float)(count - 1);
+			pos -= step * stepsBack;
+			Point2D increment(step.x * 2.0f, step.y * 2.0f);
+			float   radius = width * 1.15;
 			if (radius < RouteMinRadius)
 			{
 				radius = RouteMinRadius;
@@ -1382,7 +1398,7 @@ void Object::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
 				{
 					holder->AddObject((int)this, pos, radius, update);
 				}
-				pos += step;
+				pos += increment;
 			}
 		}
 	}
@@ -1483,9 +1499,10 @@ void Object::SetXYZAngles(float x, float y, float z)
 	{
 		float       scale = GetScale();
 		float       yAngle = GetYAngle();
-		LHPoint     position;
 		LH3DObject* object3d = Game3dObject;
-		object3d->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
+		LHPoint     position;
+		GLandscape::ConvertMapCoordToLandscapePoint(Pos, position);
+		object3d->SetPosition(position, yAngle, scale);
 	}
 	if (inMap)
 	{
@@ -1506,9 +1523,10 @@ void Object::SetXYZAnglesAndScale(float x, float y, float z, float scale)
 	{
 		float       objectScale = GetScale();
 		float       yAngle = GetYAngle();
-		LHPoint     position;
 		LH3DObject* object3d = Game3dObject;
-		object3d->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, objectScale);
+		LHPoint     position;
+		GLandscape::ConvertMapCoordToLandscapePoint(Pos, position);
+		object3d->SetPosition(position, yAngle, objectScale);
 	}
 	if (inMap)
 	{
@@ -1649,17 +1667,10 @@ float Object::PushObject(Living* param_1)
 	if (physicsObject != NULL)
 	{
 		physicsObject->Flags |= 2;
-		const MapCoords& pos = Pos;
-		LHPoint          point;
-		point.y = pos.Altitude() + LH3DIsland::GetAltitude(pos);
-		point.x = pos.WholeX() * (10.0f / (float)0x10000);
-		point.z = pos.WholeZ() * (10.0f / (float)0x10000);
+		LHPoint point;
+		GLandscape::ConvertMapCoordToLandscapePoint(Pos, point);
 		LHPoint direction = physicsObject->Physics.Matrix.GetPos() - point;
-		if (direction.x != 0.0f || direction.y != 0.0f || direction.z != 0.0f)
-		{
-			float scale = force / (float)sqrt(direction.GetNorm());
-			direction *= scale;
-		}
+		direction.SetSize(force);
 		physicsObject->Physics.Force.Add(direction);
 	}
 	return 0.0f;
@@ -2195,12 +2206,15 @@ void Object::DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* pa
 	{
 		param_2->GetPlayer();
 	}
-	if (AddResource(param_1->GetResourceType(), param_1->GetResource(param_1->GetResourceType()), param_2,
-	                param_1->IsPoisoned(), &param_1->Pos, 0) &&
-	    param_2 != NULL)
+	uint32_t added = AddResource(param_1->GetResourceType(), param_1->GetResource(param_1->GetResourceType()), param_2,
+	                             param_1->IsPoisoned(), &param_1->Pos, 0);
+	if (added)
 	{
-		DoCreatureMimicAfterAddingResource(param_1->GetResourceType(), *param_2);
-		if (param_2 == GGame::g_game->MyInterfaceStatus())
+		if (param_2 != NULL)
+		{
+			DoCreatureMimicAfterAddingResource(param_1->GetResourceType(), *param_2);
+		}
+		if (param_2 != NULL && param_2 == GGame::g_game->MyInterfaceStatus())
 		{
 			GGuidance::ResourceDropSFX(*param_2, Pos, (RESOURCE_RAIN_TYPE)GetGuidanceResourceType());
 		}
@@ -2213,9 +2227,9 @@ void Object::DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* pa
 		mulchSample = (mulchSample + 1) & 3;
 		options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
 		options.SampleNumber = LH_SAMPLE_G_TREEMULCH_01 + mulchSample;
-		options.Pos = pos;
 		options.AttachedObject = param_1;
 		options.field_0x8 = 1;
+		options.Pos = pos;
 		options.field_0xc = 0;
 		GGlobal::Global.audio->PlaySoundEffect(&options);
 	}

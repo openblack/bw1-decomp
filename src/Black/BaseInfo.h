@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For LHListNode */
+
 #include "Base.h" /* For struct Base, struct BaseVftable */
 
 // Forward Declares
@@ -13,8 +15,8 @@ struct LHColor;
 class GBaseInfo : public Base
 {
 public:
-	GBaseInfo* next; /* 0x8 */
-	int        index;
+	LHListNode<GBaseInfo> next; /* 0x8 */
+	int                   index;
 
 	// BW1W120 00c58604
 	static uint32_t InfoCount;
@@ -38,7 +40,7 @@ public:
 	// Constructors
 
 	// BW1W120 0042e5e0 BW1M119 010affb0
-	GBaseInfo() : next(NULL) {}
+	GBaseInfo() {}
 
 	// Non-virtual methods
 
