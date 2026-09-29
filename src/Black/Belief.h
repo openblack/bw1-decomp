@@ -38,7 +38,7 @@ public:
 	// BW1W120 00437e70 BW1M119 010b4910
 	float GetBeliefInPlayer(unsigned long param_1);
 	// BW1W120 00438770 BW1M119 010b4310
-	float DistanceChangeToBelief(float param_1, float param_2);
+	static float DistanceChangeToBelief(float param_1, float param_2);
 	// BW1W120 004387d0 BW1M119 010b4200
 	void SetBelief(int index, float value);
 	// BW1W120 00438a00 BW1M119 010b3ec0

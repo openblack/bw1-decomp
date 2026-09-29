@@ -166,6 +166,15 @@
 #include <string.h>
 #include <wchar.h>
 
+inline void ValueSpinner::AddDrawing()
+{
+	if (LH3DRender::g_started_frame)
+	{
+		LH3DRender::g_zsorter->NewZObject(this, (LH3DZSorter::DrawCallback)&ValueSpinner::Draw,
+		                                  LH3DTech::GetValueForZSorter(point), 0);
+	}
+}
+
 static_assert(sizeof(GSetup) == 1, "GSetup must remain an empty utility member");
 static_assert(sizeof(BINKREALTIME) == 0x38, "Bink realtime ABI is incorrect");
 static_assert(sizeof(LH3DZSorter::DrawCallback) == 4, "Windows drawing callback must be one word");

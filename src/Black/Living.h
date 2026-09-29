@@ -212,7 +212,7 @@ public:
 	// BW1W120 00416ff0 BW1M119 011384b0
 	virtual bool32_t IsSkeleton() const;
 	// BW1W120 00416f90 BW1M119 0105a140
-	virtual bool32_t IsPoisoned();
+	virtual bool IsPoisoned();
 	// BW1W120 00417000 BW1M119 011384f0
 	virtual void SetSkeleton(int param_1);
 	// BW1W120 005ee230 BW1M119 013866d0

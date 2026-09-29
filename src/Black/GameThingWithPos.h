@@ -574,7 +574,7 @@ public:
 	// BW1W120 004023f0 BW1M119 01568cf0
 	virtual bool32_t IsSkeleton() const { return false; }
 	// BW1W120 00402400 BW1M119 01106540
-	virtual bool32_t IsPoisoned() { return false; }
+	virtual bool IsPoisoned() { return false; }
 	// BW1W120 00402410 BW1M119 01162350
 	virtual bool32_t IsSpeedUp() { return false; }
 	// BW1W120 00402420 BW1M119 011c3600

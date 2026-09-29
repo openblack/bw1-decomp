@@ -1565,14 +1565,14 @@ Black/MusicMood.cpp:
 
 Black/Network.cpp:
 	.text       start:0x00634400 end:0x006362B0
-	.rdata      start:0x00930A24 end:0x00930A48
+	.rdata      start:0x00930A24 end:0x00930A44
 	.CRT$XCU    start:0x009C70AC end:0x009C70C4 align:4
 	.data       start:0x00BFDE34 end:0x00BFDF30
 	.bss        start:0x00D41320 end:0x00D414A4
 
 Black/Object.cpp:
 	.text       start:0x006362B0 end:0x0063AB60
-	.rdata      start:0x00930A48 end:0x0093130C
+	.rdata      start:0x00930A44 end:0x0093130C
 	.CRT$XCU    start:0x009C70C4 end:0x009C70DC align:4
 	.data       start:0x00BFDF30 end:0x00BFDF4C
 	.bss        start:0x00D414A4 end:0x00D44384

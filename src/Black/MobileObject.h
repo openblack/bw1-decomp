@@ -72,7 +72,7 @@ public:
 	// BW1W120 00425bc0 BW1M119 010b0760
 	virtual bool32_t IsMobileObject();
 	// BW1W120 006079e0 BW1M119 013c4150
-	virtual bool32_t IsPoisoned();
+	virtual bool IsPoisoned();
 	// BW1W120 00607b60 BW1M119 013c3d40
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00425b10 BW1M119 010b0410

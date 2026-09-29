@@ -4,56 +4,59 @@
 #include <math.h>  /* For sqrt */
 #include <stdio.h> /* For sprintf */
 
-#include <Lionhead/LH3DLib/development/LH3DAnim.h>      /* For LH3DAnim::GetPackedAnim */
-#include <Lionhead/LH3DLib/development/LH3DIsland.h>    /* For LH3DIsland */
-#include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
-#include <Lionhead/LH3DLib/development/LH3DMath.h>      /* For LH3DMath */
+#include <Lionhead/LH3DLib/development/LH3DAnim.h>
+#include <Lionhead/LH3DLib/development/LH3DIsland.h>
+#include <Lionhead/LH3DLib/development/LH3DMapCoords.h>
+#include <Lionhead/LH3DLib/development/LH3DMath.h>
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
-#include <Lionhead/LH3DLib/development/LHPoint.h>         /* For struct LHPoint */
-#include <Lionhead/LH3DLib/development/PhysOb.h>          /* For struct PhysOb */
-#include <Lionhead/LH3DLib/development/SmokyStuff.h>      /* For SmokyStuff::Create */
-#include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h> /* For struct LH_SamplePlayOptions */
-#include <Lionhead/LHLib/ver5.0/LHWin.h>                  /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LH3DLib/development/LHPoint.h>
+#include <Lionhead/LH3DLib/development/PhysOb.h>
+#include <Lionhead/LH3DLib/development/SmokyStuff.h>
+#include <Lionhead/LHAudio/ver7.0/LH_SamplePlayOptions.h>
+#include <Lionhead/LHLib/ver5.0/LHWin.h>
 #include "re_common.h"
 #include "chlasm/AllMeshes.h"
-#include <chlasm/LHSample.h> /* For LH_SAMPLE_G_TREEMULCH_01 */
+#include <chlasm/LHSample.h>
 
-#include "Alignment.h"          /* For GAlignment::Update */
-#include "ColourConstants.h"    /* For White */
-#include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "ColourConstants.h"
+#include "LandscapeConstants.h"
 
-#include "Artifact.h"      /* For TownArtifact::IsReadyForParticleEffect */
-#include "Audio.h"         /* For GAudio::PlaySoundEffect */
-#include "CitadelPart.h"   /* For class CitadelPart */
-#include "Creature.h"      /* For Creature::CheckAllCreaturesForCatching */
-#include "CreatureMorph.h" /* For LH3DCreature::GetNavRadius */
-#include "EditorPhysics.h" /* For EditorPhysics::PhysicsConstants */
-#include "EffectValues.h"  /* For struct EffectNumbers, class EffectValues */
+#include "Alignment.h"
+#include "Artifact.h"
+#include "Audio.h"
+#include "Belief.h"
+#include "CitadelPart.h"
+#include "Creature.h"
+#include "CreatureMorph.h"
+#include "EditorPhysics.h"
+#include "EffectValues.h"
 #include "FireEffect.h"
-#include "Game.h" /* For GGame */
+#include "Game.h"
 #include "Game3DObject.h"
-#include "GameOSFile.h" /* For class GameOSFile, class PhysicsSaveInfo */
+#include "GameOSFile.h"
 #include "GameThingWithPos.h"
-#include "Global.h"           /* For GGlobal::Global */
-#include "HelpProfile.h"      /* For HelpProfile::Trigger */
-#include "HelpSystem.h"       /* For class HelpSystem */
-#include "Influence.h"        /* For Influence::CalculatePlayerInfluence */
-#include "Interface.h"        /* For class GInterface */
-#include "InterfaceStatus.h"  /* For class GInterfaceStatus */
-#include "JCGameBlock.h"      /* For GameBlock */
-#include "LandBalance.h"      /* For GLandBalance::GetValue */
-#include "LandFeature.h"      /* For RequestChangeTexture */
-#include "Landscape.h"        /* For GLandscape */
-#include "Map.h"              /* For MapCell */
-#include "PhysicsObject.h"    /* For class PhysicsObject */
-#include "PhysicsSaveInfo.h"  /* For class PhysicsSaveInfo */
-#include "Player.h"           /* For class GPlayer */
-#include "Reaction.h"         /* For Reaction::CreateReaction, Reaction::RemoveAllReactionsOfTypeInitiatedByObject */
-#include "SoundGuidance.h"    /* For class GGuidance */
-#include "SpellWater.h"       /* For class SpellWater */
-#include "Town.h"             /* For Town::UpdateAggressor */
-#include "Utils.h"            /* For GUtils */
-#include "VirtualInfluence.h" /* For class GVirtualInfluence */
+#include "Global.h"
+#include "HelpProfile.h"
+#include "HelpSystem.h"
+#include "Influence.h"
+#include "Interface.h"
+#include "InterfaceStatus.h"
+#include "JCGameBlock.h"
+#include "LandBalance.h"
+#include "LandFeature.h"
+#include "Landscape.h"
+#include "Map.h"
+#include "PhysicsObject.h"
+#include "PhysicsSaveInfo.h"
+#include "Player.h"
+#include "Reaction.h"
+#include "ReactionInfo.h"
+#include "SoundGuidance.h"
+#include "SpellWater.h"
+#include "Town.h"
+#include "Utils.h"
+#include "ValueSpinner.h"
+#include "VirtualInfluence.h"
 
 static const float RouteMinRadius = 0.05f;
 
@@ -359,13 +362,14 @@ void Object::Create3DObjectAtPos()
 	Game3dObject = Game3DObject::Create(Get3DType());
 	Game3dObject->SetDynamicLighting(1);
 	Game3dObject->SetMesh(LH3DMesh::GetPackedMesh(GetMesh()), NULL, NULL);
-
-	LHPoint position;
-	position.x = Pos.WholeX() * (10.0f / (float)0x10000);
-	position.z = Pos.WholeZ() * (10.0f / (float)0x10000);
-	position.y = Pos.Altitude() + LH3DIsland::GetAltitudeAndSetColorSpecular(Pos, (uint32_t*)&Game3dObject->color,
-	                                                                         (uint32_t*)&Game3dObject->specular);
-	LH3DObject* object3d = Game3dObject;
+	const MapCoords& pos = Pos;
+	LH3DObject*      object3d = Game3dObject;
+	LHPoint          position;
+	position.x = pos.WholeX() * (10.0f / (float)0x10000);
+	position.z = pos.WholeZ() * (10.0f / (float)0x10000);
+	position.y = pos.Altitude();
+	position.y += LH3DIsland::GetAltitudeAndSetColorSpecular(pos, (unsigned long*)&object3d->color,
+	                                                         (unsigned long*)&object3d->specular);
 	object3d->SetPosition(position, 0.0f, 1.0f);
 }
 
@@ -417,8 +421,9 @@ MapCoords Object::GetNearestEdge(float angle, float extra_radius)
 
 float GObjectInfo::GetMesh2DRadius(float scale) const
 {
-	const LHPoint& size = LH3DMesh::GetPackedMesh(GetMesh())->BoundingBox.size;
-	return (size.z < size.x ? size.x : size.z) * scale;
+	LH3DMesh* mesh = LH3DMesh::GetPackedMesh(GetMesh());
+	return (mesh->BoundingBox.size.z < mesh->BoundingBox.size.x ? mesh->BoundingBox.size.x : mesh->BoundingBox.size.z) *
+	       scale;
 }
 
 void Object::RemoveDraggingCreatureByLeash()
@@ -617,13 +622,9 @@ bool32_t Object::HasSunk()
 PhysicsInitialisation Object::InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
                                                 bool param_4, GInterfaceStatus* param_5)
 {
-	PhysicsInitialisation result;
-
 	if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 || (Flags & GAME_THING_WITH_POS_FLAG_IMMOVABLE) != 0)
 	{
-		result.Physics = NULL;
-		result.Started = false;
-		return result;
+		return PhysicsInitialisation(NULL, false);
 	}
 	RemoveDraggingCreatureByLeash();
 	Flags |= GAME_THING_WITH_POS_FLAG_IN_PHYSICS;
@@ -640,9 +641,7 @@ PhysicsInitialisation Object::InitialisePhysics(const LHPoint& param_1, const LH
 		physicsObject = PhysicsObject::AddObject(this, param_1, param_2, param_3, param_5);
 		if (physicsObject == NULL)
 		{
-			result.Physics = NULL;
-			result.Started = false;
-			return result;
+			return PhysicsInitialisation(NULL, false);
 		}
 		if (Game3dObject != NULL)
 		{
@@ -663,9 +662,7 @@ PhysicsInitialisation Object::InitialisePhysics(const LHPoint& param_1, const LH
 	{
 		fire_effect->StartedMoving(0);
 	}
-	result.Physics = physicsObject;
-	result.Started = true;
-	return result;
+	return PhysicsInitialisation(physicsObject, true);
 }
 
 Object* Object::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map)
@@ -865,7 +862,8 @@ float Object::ApplyEffect(EffectValues& values, int param_2)
 	if (values.numbers.values[EFFECT_TYPE_CRUSH] > 0.01f && CanBeCrushed() &&
 	    Reaction::GetReactionInitiatedByObject(this) == NULL)
 	{
-		GameThingWithPos* crusher = dynamic_cast<GameThingWithPos*>(values.AppliedBy);
+		GameThing*        appliedBy = values.AppliedBy;
+		GameThingWithPos* crusher = dynamic_cast<GameThingWithPos*>(appliedBy);
 		Reaction::CreateReaction(crusher != NULL ? crusher : this, REACTION_REACT_TO_OBJECT_CRUSHED, GetPlayer(), 1);
 	}
 	float temperature = values.numbers.values[EFFECT_TYPE_BURN];
@@ -918,6 +916,11 @@ float Object::ReduceLifeDueToBurning(float param_1, GPlayer* param_2)
 void Object::DrawFireEffect()
 {
 	fire_effect->Draw();
+}
+
+void Object::SendDrawCollision()
+{
+	GGame::g_game->MyInterface()->SendObjectDrawCollision(this, 0.0f, NULL);
 }
 
 bool32_t Object::IsCitadelPart() const
@@ -1096,11 +1099,9 @@ float Object::Get2DRadius()
 	{
 		float         objectScale = GetScale();
 		Game3DObject* object3d = Game3dObject;
-		if (object3d->GetMesh()->BoundingBox.size.z < object3d->GetMesh()->BoundingBox.size.x)
-		{
-			return objectScale * object3d->GetMesh()->BoundingBox.size.x;
-		}
-		return objectScale * object3d->GetMesh()->BoundingBox.size.z;
+		return objectScale * (object3d->GetMesh()->BoundingBox.size.z < object3d->GetMesh()->BoundingBox.size.x
+		                          ? object3d->GetMesh()->BoundingBox.size.x
+		                          : object3d->GetMesh()->BoundingBox.size.z);
 	}
 	return 0.0f;
 }
@@ -1324,7 +1325,7 @@ void Object::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
 			if (count > 5)
 			{
 				count = 5;
-				size.z = size.x * 0.2f;
+				size.z = size.x / 5.0f;
 			}
 			alongX = true;
 			spacing = size.x / count;
@@ -1336,7 +1337,7 @@ void Object::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
 			if (count > 5)
 			{
 				count = 5;
-				size.x = size.z * 0.2f;
+				size.x = size.z / 5.0f;
 			}
 			alongX = false;
 			spacing = size.z / count;
@@ -1536,7 +1537,23 @@ bool32_t Object::IsObjectInMap()
 	return Flags & GAME_THING_WITH_POS_FLAG_IN_MAP;
 }
 
-void Object::DrawValue(int param_1, float param_2) {}
+void Object::DrawValue(int param_1, float param_2)
+{
+	if (param_2 != 0.0f)
+	{
+		const MapCoords& pos = Pos;
+		LHPoint          point;
+		point.y = pos.Altitude() + LH3DIsland::GetAltitude(pos);
+		point.x = pos.WholeX() * (10.0f / (float)0x10000);
+		point.z = pos.WholeZ() * (10.0f / (float)0x10000);
+		point.y += GetHeight();
+		if (GGame::g_game->field_0x14 & 0x4000)
+		{
+			ValueSpinner* spinner = new ("C:\\dev\\MP\\Black\\Object.cpp", 1950) ValueSpinner;
+			spinner->Init(point, param_2, (ValueSpinner::TEXTTYPE_ENUM)param_1);
+		}
+	}
+}
 
 float Object::GetImpressiveValue()
 {
@@ -1553,7 +1570,22 @@ void Object::SetFocus(const LHPoint& focus)
 	SetYAngle(angle);
 }
 
-void Object::IsActuallyInTheAir() {}
+bool32_t Object::IsActuallyInTheAir()
+{
+	if (Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS)
+	{
+		PhysicsObject* physicsObject = PhysicsObject::SearchForPhysicsObject(this);
+		if (physicsObject != NULL)
+		{
+			float height = physicsObject->Physics.Matrix.GetPos().y -
+			               LH3DIsland::GetAltitude(LH3DMapCoords(physicsObject->Physics.Matrix.GetPos().x,
+			                                                     physicsObject->Physics.Matrix.GetPos().z)) +
+			               physicsObject->Physics.Radius;
+			return physicsObject->Physics.Velocity.GetNorme() > 3.0f || height > 0.2f;
+		}
+	}
+	return false;
+}
 
 void Object::GetPhysicsMovementDirection(LHPoint* pos)
 {
@@ -1580,7 +1612,8 @@ uint32_t Object::GetResource(RESOURCE_TYPE type)
 MapCoords Object::GetWorkingPos(Object* object)
 {
 	float angle = GUtils::Get3DAngleFromXZ(Pos, object->Pos);
-	return Pos + GUtils::GetPosFromAngle(angle, object->GetRadius() + GetRadius());
+	float radius = GetRadius();
+	return Pos + GUtils::GetPosFromAngle(angle, radius + object->GetRadius());
 }
 
 float Object::GetWoodValue()
@@ -1600,13 +1633,61 @@ float Object::CalculateForceAppliedBy(Living* param_1)
 	return GetWeight() * 9.81f;
 }
 
-void Object::PushObject(Living* param_1) {}
+float Object::PushObject(Living* param_1)
+{
+	float          force = CalculateForceAppliedBy(param_1);
+	LHPoint        zero(0.0f, 0.0f, 0.0f);
+	PhysicsObject* physicsObject;
+	if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 && (GameThing::Flags & GAME_THING_FLAG_PSYS_FLYING) == 0)
+	{
+		physicsObject = PhysicsObject::SearchForPhysicsObject(this);
+	}
+	else
+	{
+		physicsObject = InitialisePhysics(zero, zero, NULL, true, NULL).Physics;
+	}
+	if (physicsObject != NULL)
+	{
+		physicsObject->Flags |= 2;
+		const MapCoords& pos = Pos;
+		LHPoint          point;
+		point.y = pos.Altitude() + LH3DIsland::GetAltitude(pos);
+		point.x = pos.WholeX() * (10.0f / (float)0x10000);
+		point.z = pos.WholeZ() * (10.0f / (float)0x10000);
+		LHPoint direction = physicsObject->Physics.Matrix.GetPos() - point;
+		if (direction.x != 0.0f || direction.y != 0.0f || direction.z != 0.0f)
+		{
+			float scale = force / (float)sqrt(direction.GetNorm());
+			direction *= scale;
+		}
+		physicsObject->Physics.Force.Add(direction);
+	}
+	return 0.0f;
+}
 
-void Object::PushObject(Living* param_1, MapCoords& param_2) {}
+float Object::PushObject(Living* param_1, MapCoords& param_2)
+{
+	float angle = GUtils::Get3DAngleFromXZ(Pos, param_2);
+	float distance = param_1->GetSpeedInMetres() + 0.5f;
+	float actualDistance = GUtils::GetDistanceInMetres(Pos, param_2);
+	if (distance > actualDistance)
+	{
+		distance = actualDistance;
+	}
+	MapCoords newPos = Pos + GUtils::GetPosFromAngle(angle, distance);
+	ActualMoveMapObject(newPos);
+	return 0.0f;
+}
 
 float Object::GetImpressiveValue(Living* param_1, Reaction* param_2)
 {
-	return 0.0f;
+	float multiplier = param_2->GetDefaultReactionMultiplier(param_1);
+	float value = GetImpressiveValue() * multiplier;
+	float distance = GUtils::GetDistanceInMetres(param_1->Pos, Pos);
+	float belief = GBelief::DistanceChangeToBelief(distance, param_2->GetInfo()->MaxReactionDistance);
+	float power = GetPower();
+	float boredom = param_1->GetBoredomMultiplier(param_2);
+	return GetArtifactImpressiveModifier() * boredom * power * belief * value;
 }
 
 float Object::GetArtifactImpressiveModifier()
@@ -1615,7 +1696,7 @@ float Object::GetArtifactImpressiveModifier()
 	TownArtifact* artifact = static_cast<TownArtifact*>(GetTownArtifact());
 	if (artifact != NULL && artifact->IsReadyForParticleEffect())
 	{
-		return GetTownArtifactValue() + 1.0f;
+		modifier = GetTownArtifactValue() + 1.0f;
 	}
 	return modifier;
 }
@@ -1704,7 +1785,8 @@ float Object::GetDefaultFireRadius()
 
 uint32_t Object::ProcessInHand()
 {
-	if (Influence::CalculatePlayerInfluence(Pos, GetPlayerHoldingThis(), 0, INFL_CALC_TYPE_0, 1) > 0.0f)
+	GPlayer* player = GetPlayerHoldingThis();
+	if (Influence::CalculatePlayerInfluence(Pos, player, 0, INFL_CALC_TYPE_0, 1) > 0.0f)
 	{
 		FireEffect::CheckToSeeIfObjectIsNearOnFireObject(this);
 	}
@@ -1746,11 +1828,11 @@ uint32_t Object::Save(GameOSFile& file)
 	if (GameThingWithPos::Save(file))
 	{
 		file.WriteInfo(info);
-		file.WriteSafe(coords);
-		file.WriteSafe(ObjectCreationIndex);
-		file.WriteSafe(reinterpret_cast<uint32_t&>(life));
-		file.WriteSafe(reinterpret_cast<uint32_t&>(scale));
-		file.WriteSafe(reinterpret_cast<uint32_t&>(y_angle));
+		WRITE_SAFE(file, coords);
+		WRITE_SAFE(file, ObjectCreationIndex);
+		WRITE_SAFE(file, reinterpret_cast<uint32_t&>(life));
+		WRITE_SAFE(file, reinterpret_cast<uint32_t&>(scale));
+		WRITE_SAFE(file, reinterpret_cast<uint32_t&>(y_angle));
 		file.WritePtr(fire_effect);
 		if ((Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) != 0 && (GameThing::Flags & GAME_THING_FLAG_PSYS_FLYING) == 0)
 		{
@@ -1771,9 +1853,9 @@ uint32_t Object::Save(GameOSFile& file)
 				velocity.SetNull();
 				point.SetNull();
 			}
-			file.WriteSafe(matrix);
-			file.WriteSafe(velocity);
-			file.WriteSafe(point);
+			WRITE_SAFE(file, matrix);
+			WRITE_SAFE(file, velocity);
+			WRITE_SAFE(file, point);
 		}
 		return 1;
 	}
@@ -1966,16 +2048,18 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 	phys_ob->Faces = new ("C:\\dev\\MP\\Black\\Object.cpp", 2591) PhysOb::Face[phys_ob->NumFaces];
 	PhysOb::Face* face = phys_ob->Faces;
 	// The two bands between the rings, two triangles per quad.
+	int first = 0;
 	for (int band = 0; band < 2; band++)
 	{
-		face[0].Set(band * 4 + 0, band * 4 + 1, band * 4 + 5);
-		face[1].Set(band * 4 + 0, band * 4 + 5, band * 4 + 4);
-		face[2].Set(band * 4 + 1, band * 4 + 2, band * 4 + 6);
-		face[3].Set(band * 4 + 1, band * 4 + 6, band * 4 + 5);
-		face[4].Set(band * 4 + 2, band * 4 + 3, band * 4 + 7);
-		face[5].Set(band * 4 + 2, band * 4 + 7, band * 4 + 6);
-		face[6].Set(band * 4 + 3, band * 4 + 0, band * 4 + 4);
-		face[7].Set(band * 4 + 3, band * 4 + 4, band * 4 + 7);
+		face[0].Set(first + 0, first + 1, first + 5);
+		face[1].Set(first + 0, first + 5, first + 4);
+		face[2].Set(first + 1, first + 2, first + 6);
+		face[3].Set(first + 1, first + 6, first + 5);
+		face[4].Set(first + 2, first + 3, first + 7);
+		face[5].Set(first + 2, first + 7, first + 6);
+		face[6].Set(first + 3, first + 0, first + 4);
+		face[7].Set(first + 3, first + 4, first + 7);
+		first += 4;
 		face += 8;
 	}
 	// Fans closing the bottom ring onto vertex 12 and the top ring onto vertex 13.
@@ -1983,10 +2067,11 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 	face[1].Set(12, 2, 1);
 	face[2].Set(12, 3, 2);
 	face[3].Set(12, 0, 3);
-	face[4].Set(13, 8, 9);
-	face[5].Set(13, 9, 10);
-	face[6].Set(13, 10, 11);
-	face[7].Set(13, 11, 8);
+	face += 4;
+	face[0].Set(13, 8, 9);
+	face[1].Set(13, 9, 10);
+	face[2].Set(13, 10, 11);
+	face[3].Set(13, 11, 8);
 
 	phys_ob->SetUpMoi();
 	phys_ob->Inertia *= 0.3f;
@@ -1995,7 +2080,9 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 
 void Object::InitialiseIsFixedForMapList()
 {
-	Flags = (Flags & ~GAME_THING_WITH_POS_FLAG_FIXED) | (MapCell::DoesObjectTypeCountAsFixed(info->type) << 15);
+	OBJECT_TYPE type = info->type;
+	uint32_t    fixed = MapCell::DoesObjectTypeCountAsFixed(type);
+	Flags = (Flags & ~GAME_THING_WITH_POS_FLAG_FIXED) | (fixed << 15);
 }
 
 bool32_t Object::IsSuitableForArtifact()

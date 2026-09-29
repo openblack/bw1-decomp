@@ -67,8 +67,8 @@ public:
 	// BW1W120 00803090 BW1M119 0102f1e0 (LHCombined Release)
 	static float __fastcall GetAltitude(const LH3DMapCoords& coords);
 	// BW1W120 00803340 BW1M119 01047430 (LHCombined Release)
-	static float __fastcall GetAltitudeAndSetColorSpecular(const LH3DMapCoords& coords, uint32_t* color,
-	                                                       uint32_t* specular);
+	static float __fastcall GetAltitudeAndSetColorSpecular(const LH3DMapCoords& coords, unsigned long* color,
+	                                                       unsigned long* specular);
 	// BW1W120 00803630 BW1M119 0101c2c0 (LHCombined Release)
 	static void __fastcall GetNormal(const LH3DMapCoords& coords, LHPoint* normal);
 };

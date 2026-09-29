@@ -107,7 +107,13 @@ struct LHPoint
 	// BW1W120 inlined BW1M119 inlined
 	float GetNorm() const { return DotProductInline(*this); }
 	// BW1W120 004a1ba0 BW1M119 01005cc0
-	float GetNorme();
+	float GetNorme() const
+	{
+		float px = x;
+		float py = y;
+		float pz = z;
+		return sqrt(px * px + py * py + pz * pz);
+	}
 	// BW1W120 inlined BW1M119 0101fdf0
 	void Set(float _x, float _y, float _z)
 	{

@@ -56,7 +56,9 @@ struct PhysOb
 	uint8_t     field_0xe8[0xc];
 	uint32_t    field_0xf4;
 	LHPoint     CentreOfMass;
-	uint8_t     field_0x104[0x30];
+	uint8_t     field_0x104[0x18];
+	LHPoint     Force;
+	uint8_t     field_0x128[0xc];
 	float       Mass;
 	uint8_t     field_0x138[0x14];
 	float       Inertia;

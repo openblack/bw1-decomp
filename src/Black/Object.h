@@ -57,6 +57,8 @@ struct PhysicsInitialisation
 {
 	PhysicsObject* Physics; /* 0x0 */
 	bool32_t       Started; /* 0x4 */
+
+	PhysicsInitialisation(PhysicsObject* physics, bool32_t started) : Physics(physics), Started(started) {}
 };
 
 class Object : public GameThingWithPos
@@ -602,9 +604,9 @@ public:
 	// BW1W120 00402ae0 BW1M119 010a3470
 	virtual bool32_t IsPushable() { return false; }
 	// BW1W120 006397c0 BW1M119 013daf30
-	virtual void PushObject(Living* param_1, MapCoords& param_2);
+	virtual float PushObject(Living* param_1, MapCoords& param_2);
 	// BW1W120 00639640 BW1M119 013db090
-	virtual void PushObject(Living* param_1);
+	virtual float PushObject(Living* param_1);
 	// BW1W120 00402af0 BW1M119 010a34a0
 	virtual uint32_t GetCarriedTreeType() { return 0; }
 	// BW1W120 00402b00 BW1M119 010a34e0
@@ -680,7 +682,7 @@ public:
 	void SimpleAddToRoutePlan(RPHolder* holder, Creature* creature, int update,
 	                          void(__cdecl* add_function)(int, Point2D, float, int));
 	// BW1W120 00639410 BW1M119 013db630
-	void IsActuallyInTheAir();
+	bool32_t IsActuallyInTheAir();
 	// BW1W120 00636e70 BW1M119 013dfe00
 	void RemoveDraggingCreatureByLeash();
 	// BW1W120 006380c0 BW1M119 013dd600
@@ -701,6 +703,8 @@ public:
 	float GetCombustionTemperature();
 	// BW1W120 00637dd0 BW1M119 013ddfa0
 	void DrawFireEffect();
+	// BW1W120 00637de0 BW1M119 null
+	void SendDrawCollision();
 	// BW1W120 00639a40 BW1M119 013da0e0
 	void SetOnFire(float param_1);
 	// BW1W120 00639a60 BW1M119 013da080
