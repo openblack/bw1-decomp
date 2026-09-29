@@ -80,7 +80,7 @@ public:
 	// BW1W120 004e49e0 BW1M119 015ec1a0
 	virtual bool32_t IsStoragePitBelongingToMyPlayer(Creature* param_1);
 	// BW1W120 007336b0 BW1M119 0115a140
-	virtual bool32_t IsPoisoned();
+	virtual bool IsPoisoned();
 	// BW1W120 00519350 BW1M119 0101d500
 	virtual void Draw();
 	// BW1W120 00733a20 BW1M119 01159890

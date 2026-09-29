@@ -70,7 +70,7 @@ public:
 	// BW1W120 0066f540 BW1M119 011201d0
 	virtual uint32_t GetOverwriteInteractableToolTip();
 	// BW1W120 0055d4e0 BW1M119 01011560
-	virtual bool32_t IsPoisoned();
+	virtual bool IsPoisoned();
 	// BW1W120 0055d4f0 BW1M119 0111fc50
 	virtual bool32_t IsSpeedUp();
 	// BW1W120 0055d500 BW1M119 0111fc90

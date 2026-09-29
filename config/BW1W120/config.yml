@@ -61,6 +61,74 @@ add_relocations:
     type: x86_abs32
     target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
     addend: 0xC8
+  - source: 0x0063A316
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x3E0
+  - source: 0x0063A396
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x3F4
+  - source: 0x0063A610
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0xEA
+  - source: 0x0063A614
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0xFE
+  - source: 0x0063A618
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x116
+  - source: 0x0063A61C
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x126
+  - source: 0x0063A620
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x13E
+  - source: 0x0063A624
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x16A
+  - source: 0x0063A628
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x176
+  - source: 0x0063A62C
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x181
+  - source: 0x0063A630
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x18F
+  - source: 0x006376C5
+    type: x86_abs32
+    target: '?PhysicsConstants@EditorPhysics@@2PAUPhysicsData@@A'
+  - source: 0x0063A2D1
+    type: x86_abs32
+    target: '__real@4@3ffe99999a0000000000'
+  - source: 0x0063A338
+    type: x86_abs32
+    target: '__real@4@3ffea666660000000000'
+  - source: 0x0063A340
+    type: x86_abs32
+    target: '__real@4@bffe99999a0000000000'
+  - source: 0x0063A350
+    type: x86_abs32
+    target: '__real@4@00000000000000000000'
+  - source: 0x0063A360
+    type: x86_abs32
+    target: '__real@4@3ffea666660000000000'
+  - source: 0x0063A368
+    type: x86_abs32
+    target: '__real@4@3ffe99999a0000000000'
+  - source: 0x0063A378
+    type: x86_abs32
+    target: '__real@4@3ffccccccd0000000000'
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000
