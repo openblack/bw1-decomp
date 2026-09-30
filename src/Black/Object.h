@@ -603,10 +603,10 @@ public:
 	virtual float CalculateForceAppliedBy(Living* param_1);
 	// BW1W120 00402ae0 BW1M119 010a3470
 	virtual bool32_t IsPushable() { return false; }
-	// BW1W120 006397c0 BW1M119 013daf30
-	virtual float PushObject(Living* param_1, MapCoords& param_2);
 	// BW1W120 00639640 BW1M119 013db090
 	virtual float PushObject(Living* param_1);
+	// BW1W120 006397c0 BW1M119 013daf30
+	virtual float PushObject(Living* param_1, MapCoords& param_2);
 	// BW1W120 00402af0 BW1M119 010a34a0
 	virtual uint32_t GetCarriedTreeType() { return 0; }
 	// BW1W120 00402b00 BW1M119 010a34e0

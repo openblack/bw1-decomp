@@ -71,10 +71,10 @@ public:
 	virtual const char* GetDebugText() const { return DebugString; }
 	// BW1W120 0042b380 BW1M119 013e4f50
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	// BW1W120 00401290 BW1M119 010e45f0
+	virtual MESH_LIST GetMesh(TRIBE_TYPE tribe) const { return MSH_DUMMY; }
 	// BW1W120 0042b370 BW1M119 0157f860
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00401290 BW1M119 010e45f0
-	virtual MESH_LIST GetMesh2(TRIBE_TYPE tribe) const { return MSH_DUMMY; }
 	// BW1W120 004012a0 BW1M119 012fef20
 	virtual ALIGNMENT_TYPE GetAlignmentType() const { return AlignmentType; }
 	// BW1W120 004012b0 BW1M119 01064f20

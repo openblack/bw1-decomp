@@ -1,3 +1,4 @@
+#include "GameConstants.h"
 #include "GameTimeConstants.h"
 #include "Object.h"
 
@@ -70,6 +71,12 @@ static inline int RoundPhysicsCell(float value)
 	}
 	return result;
 }
+
+#ifdef VERSION_BW1W100
+#define OBJECT_SOURCE_FILE "C:\\dev\\black\\Object.cpp"
+#else
+#define OBJECT_SOURCE_FILE "C:\\dev\\MP\\Black\\Object.cpp"
+#endif
 
 static const float RouteMinRadius = 0.05f;
 
@@ -196,7 +203,7 @@ void Object::InsertMapObject()
 	{
 		if ((GGame::g_game->field_0x14 & 0x8000) == 0x8000)
 		{
-			static char text[256];
+			static char text[128];
 			sprintf(text, "JEREMY: very bad, object: %s inserted in map during clearmap!!!", GetDebugText());
 		}
 		InsertMapObjectToCell(Pos.ToMap());
@@ -556,10 +563,8 @@ PhysicsObject* Object::InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& ang
 	}
 	if (landed && (IsLiving() || IsFence()))
 	{
-		// TODO: The target loads z after converting x; this constructor currently preloads both components.
-		LH3DMapCoords landCoords(physicsObject->Physics.Matrix.GetPos().x, physicsObject->Physics.Matrix.GetPos().z);
-		LHPoint       normal;
-		LH3DIsland::GetNormal(landCoords, &normal);
+		LHPoint normal;
+		LH3DIsland::GetNormal(physicsObject->Physics.Matrix.GetPos(), &normal);
 		if (normal.y < 0.7f)
 		{
 			landed = false;
@@ -1024,22 +1029,22 @@ bool32_t Object::IsTouching(const MapCoords& coords)
 
 bool32_t Object::IsTouching(const MapCoords& corner1, const MapCoords& corner2)
 {
-	float x1 = corner1.WholeX() * CellSize * (1.0f / (float)0x10000);
-	float x2 = corner2.WholeX() * CellSize * (1.0f / (float)0x10000);
+	float x1 = corner1.WholeX() * MetresPerMapCell * (1.0f / (float)0x10000);
+	float x2 = corner2.WholeX() * MetresPerMapCell * (1.0f / (float)0x10000);
 	float minX = x1 < x2 ? x1 : x2;
-	float z1 = corner1.WholeZ() * CellSize * (1.0f / (float)0x10000);
-	float z2 = corner2.WholeZ() * CellSize * (1.0f / (float)0x10000);
+	float z1 = corner1.WholeZ() * MetresPerMapCell * (1.0f / (float)0x10000);
+	float z2 = corner2.WholeZ() * MetresPerMapCell * (1.0f / (float)0x10000);
 	float minZ = z1 < z2 ? z1 : z2;
 	float maxX = x1 > x2 ? x1 : x2;
 	float maxZ = z1 > z2 ? z1 : z2;
 
 	float radius = Get2DRadius();
-	float myX = Pos.WholeX() * CellSize * (1.0f / (float)0x10000);
+	float myX = Pos.WholeX() * MetresPerMapCell * (1.0f / (float)0x10000);
 	if (myX + radius < minX || myX - radius > maxX)
 	{
 		return false;
 	}
-	float myZ = Pos.WholeZ() * CellSize * (1.0f / (float)0x10000);
+	float myZ = Pos.WholeZ() * MetresPerMapCell * (1.0f / (float)0x10000);
 	if (myZ + radius < minZ || myZ - radius > maxZ)
 	{
 		return false;
@@ -1500,9 +1505,11 @@ void Object::SetXYZAngles(float x, float y, float z)
 		float       scale = GetScale();
 		float       yAngle = GetYAngle();
 		LH3DObject* object3d = Game3dObject;
-		LHPoint     position;
-		GLandscape::ConvertMapCoordToLandscapePoint(Pos, position);
-		object3d->SetPosition(position, yAngle, scale);
+		{
+			LHPoint position;
+			GLandscape::ConvertMapCoordToLandscapePoint(Pos, position);
+			object3d->SetPosition(position, yAngle, scale);
+		}
 	}
 	if (inMap)
 	{
@@ -1524,9 +1531,11 @@ void Object::SetXYZAnglesAndScale(float x, float y, float z, float scale)
 		float       objectScale = GetScale();
 		float       yAngle = GetYAngle();
 		LH3DObject* object3d = Game3dObject;
-		LHPoint     position;
-		GLandscape::ConvertMapCoordToLandscapePoint(Pos, position);
-		object3d->SetPosition(position, yAngle, objectScale);
+		{
+			LHPoint position;
+			GLandscape::ConvertMapCoordToLandscapePoint(Pos, position);
+			object3d->SetPosition(position, yAngle, objectScale);
+		}
 	}
 	if (inMap)
 	{
@@ -1567,7 +1576,7 @@ void Object::DrawValue(int param_1, float param_2)
 		point.y += GetHeight();
 		if (GGame::g_game->field_0x14 & 0x4000)
 		{
-			ValueSpinner* spinner = new ("C:\\dev\\MP\\Black\\Object.cpp", 1950) ValueSpinner;
+			ValueSpinner* spinner = new (OBJECT_SOURCE_FILE, 1950) ValueSpinner;
 			spinner->Init(point, param_2, (ValueSpinner::TEXTTYPE_ENUM)param_1);
 		}
 	}
@@ -1976,7 +1985,7 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 	// Row 6 of physicsconstants.txt.
 	phys_ob->SetUpConstants(weight, &EditorPhysics::PhysicsConstants[6], 1);
 	phys_ob->NumVertices = 16;
-	phys_ob->Vertices = new ("C:\\dev\\MP\\Black\\Object.cpp", 2491) PhysOb::Vertex[phys_ob->NumVertices];
+	phys_ob->Vertices = new (OBJECT_SOURCE_FILE, 2491) PhysOb::Vertex[phys_ob->NumVertices];
 
 	float halfHeight;
 	if (IsARootedObject())
@@ -2056,7 +2065,7 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 	phys_ob->Radius = halfHeight > radius ? halfHeight : radius;
 
 	phys_ob->NumFaces = 24;
-	phys_ob->Faces = new ("C:\\dev\\MP\\Black\\Object.cpp", 2591) PhysOb::Face[phys_ob->NumFaces];
+	phys_ob->Faces = new (OBJECT_SOURCE_FILE, 2591) PhysOb::Face[phys_ob->NumFaces];
 	PhysOb::Face* face = phys_ob->Faces;
 	// The two bands between the rings, two triangles per quad.
 	int first = 0;

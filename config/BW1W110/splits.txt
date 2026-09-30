@@ -527,9 +527,6 @@ Black/MPFEFindGame.cpp:
 Black/MultiplayerDatabase.cpp:
 	.text       start:0x0062A550 end:0x0062AC40
 
-Black/Object.cpp:
-	.text       start:0x0062D380 end:0x00631C00
-
 Black/GatheringInterface.cpp:
 	.rdata      start:0x008F0010 end:0x008F005C
 
@@ -554,11 +551,21 @@ Black/MPFEGameStartMessages.cpp:
 	.rdata      start:0x00920864 end:0x009208D8
 	.data       start:0x00BECBC8 end:0x00BECCB8
 
+Black/MPFEPlayerDetails.cpp:
+	.data       start:0x00BECE28 end:0x00BECED0
+
 Black/MPFELogin.cpp:
 	.rdata      start:0x009208D8 end:0x00920914
 
 Black/MPFEMapMessages.cpp:
 	.rdata      start:0x00920914 end:0x00920950
+
+Black/Object.cpp:
+	.text       start:0x0062D380 end:0x00631C00
+	.rdata      start:0x009209C0 end:0x00921284
+	.CRT$XCU    start:0x009B6BC0 end:0x009B6BD4 align:4
+	.data       start:0x00BED0B0 end:0x00BED0C8
+	.bss        start:0x00D30184 end:0x00D33064
 
 Black/Object3D.cpp:
 	.text       start:0x00631C00 end:0x006328F0
@@ -604,9 +611,6 @@ Black/PrayerSite.cpp:
 
 Black/PSys3d.cpp:
 	.text       start:0x00668200 end:0x00668EB0
-
-Black/MPFEPlayerDetails.cpp:
-	.data       start:0x00BECE28 end:0x00BECED0
 
 Black/PCMain.cpp:
 	.data       start:0x00BEDDA0 end:0x00BEDF48

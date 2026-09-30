@@ -69,8 +69,12 @@ void Villager::SetToZero()
 	town = NULL;
 	LastCheckTurn = 0;
 	mother = NULL;
+#ifndef VERSION_BW1W100
 	LastPlayerToInteract = NULL;
+#endif
+#ifdef VERSION_BW1W120
 	field_0x108 = 0.0f;
+#endif
 }
 
 // BW1W120 0074fb80 BW1M119 01579cb0
