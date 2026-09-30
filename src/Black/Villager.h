@@ -108,12 +108,16 @@ public:
 	int16_t       field_0xfa;
 	BuildingSite* building_site;
 	Villager*     mother; /* 0x100 */
-	GPlayer*      LastPlayerToInteract;
-	float         field_0x108;
-	float         field_0x10c;
-	uint32_t      field_0x110;
-	FireEffect*   fire_effect;
-	GameThing*    TargetThing;
+#ifndef VERSION_BW1W100
+	GPlayer* LastPlayerToInteract;
+#endif
+#ifdef VERSION_BW1W120
+	float field_0x108;
+#endif
+	float       field_0x10c;
+	uint32_t    field_0x110;
+	FireEffect* fire_effect;
+	GameThing*  TargetThing;
 	union { /* 0x11c */
 		Football*      football;
 		Town*          TradeTown;

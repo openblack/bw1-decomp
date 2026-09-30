@@ -51,6 +51,80 @@ add_relocations:
     type: x86_abs32
     target: '?GetAltitudeFondation@Game3DObject@@QBEMXZ'
     addend: 0xC8
+  - source: 0x005E9692
+    type: x86_abs32
+    target: '?g_index_block@LH3DIsland@@2PAY0CA@EA'
+  - source: 0x005E96B2
+    type: x86_abs32
+    target: '?g_ptr_blocks@LH3DIsland@@2PAPAULandBlock@@A'
+  - source: 0x005EC586
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x3E0
+  - source: 0x005EC606
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x3F4
+  - source: 0x005EC880
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0xEA
+  - source: 0x005EC884
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0xFE
+  - source: 0x005EC888
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x116
+  - source: 0x005EC88C
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x126
+  - source: 0x005EC890
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x13E
+  - source: 0x005EC894
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x16A
+  - source: 0x005EC898
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x176
+  - source: 0x005EC89C
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x181
+  - source: 0x005EC8A0
+    type: x86_abs32
+    target: '?SetUpPhysObAsATree@Object@@QAEXPAUPhysOb@@MMMM@Z'
+    addend: 0x18F
+  - source: 0x005E9B35
+    type: x86_abs32
+    target: '?PhysicsConstants@EditorPhysics@@2PAUPhysicsData@@A'
+  - source: 0x005EC541
+    type: x86_abs32
+    target: '__real@4@3ffe99999a0000000000'
+  - source: 0x005EC5A8
+    type: x86_abs32
+    target: '__real@4@3ffea666660000000000'
+  - source: 0x005EC5B0
+    type: x86_abs32
+    target: '__real@4@bffe99999a0000000000'
+  - source: 0x005EC5C0
+    type: x86_abs32
+    target: '__real@4@00000000000000000000'
+  - source: 0x005EC5D0
+    type: x86_abs32
+    target: '__real@4@3ffea666660000000000'
+  - source: 0x005EC5D8
+    type: x86_abs32
+    target: '__real@4@3ffe99999a0000000000'
+  - source: 0x005EC5E8
+    type: x86_abs32
+    target: '__real@4@3ffccccccd0000000000'
 
 # TODO: Unsure why we get 0x3EA000
 size_of_code: 0x3EE800

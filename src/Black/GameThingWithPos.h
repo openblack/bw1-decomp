@@ -467,7 +467,7 @@ public:
 	// BW1W120 00402120 BW1M119 0130daf0
 	virtual bool32_t IsSpellIcon() { return false; }
 	// BW1W120 004e4480 BW1M119 015ed1b0
-	virtual bool32_t NothingScareyNearMe();
+	virtual bool32_t NothingScareyNearMe(Creature* creature);
 	// BW1W120 00402130 BW1M119 010e05d0
 	virtual bool32_t CanBeUsedForThrowingDamageByCreature(Creature* creature) { return false; }
 	// BW1W120 00402140 BW1M119 010b4450

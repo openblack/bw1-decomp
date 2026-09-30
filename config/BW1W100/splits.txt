@@ -519,9 +519,6 @@ Black/MusicMood.cpp:
 Black/InterfaceFlags.cpp:
 	.text       start:0x005E7020 end:0x005E8810
 
-Black/Object.cpp:
-	.text       start:0x005E8810 end:0x005ECD40
-
 Black/DialogBoxSaveMessage.cpp:
 	.data       start:0x00B169E8 end:0x00B16A76
 
@@ -555,11 +552,21 @@ Black/MPFEGameStartMessages.cpp:
 	.rdata      start:0x0086E164 end:0x0086E1D8
 	.data       start:0x00B217F0 end:0x00B218E0
 
+Black/MPFEPlayerDetails.cpp:
+	.data       start:0x00B21A50 end:0x00B21AF8
+
 Black/MPFELogin.cpp:
 	.rdata      start:0x0086E1D8 end:0x0086E214
 
 Black/MPFEMapMessages.cpp:
 	.rdata      start:0x0086E214 end:0x0086E250
+
+Black/Object.cpp:
+	.text       start:0x005E8810 end:0x005ECD40
+	.rdata      start:0x0086E2C0 end:0x0086EB84
+	.CRT$XCU    start:0x008F6B78 end:0x008F6B8C align:4
+	.data       start:0x00B21C98 end:0x00B21CF0
+	.bss        start:0x00C62254 end:0x00C65134
 
 Black/Object3D.cpp:
 	.text       start:0x005ECD40 end:0x005ED6F0
@@ -605,9 +612,6 @@ Black/PSysEvents.cpp:
 
 Black/PSysFlock.cpp:
 	.text       start:0x0062B2A0 end:0x0062BCC0
-
-Black/MPFEPlayerDetails.cpp:
-	.data       start:0x00B21A50 end:0x00B21AF8
 
 Black/PowerSpin.cpp:
 	.data       start:0x00B257F0 end:0x00B258F0

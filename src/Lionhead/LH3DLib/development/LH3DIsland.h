@@ -6,13 +6,14 @@
 #include <stdint.h>    /* For uint32_t, uint8_t */
 #include <re_common.h> /* For bool32_t */
 
+#include "LH3DMapCoords.h"
+#include "LHPoint.h"
+
 // Forward Declares
 
 struct LH3DColor;
-struct LH3DMapCoords;
 struct LH3DMaterial;
 struct LH3DTexture;
-struct LHPoint;
 
 struct LandCell
 {
@@ -71,6 +72,12 @@ public:
 	                                                       unsigned long* specular);
 	// BW1W120 00803630 BW1M119 0101c2c0 (LHCombined Release)
 	static void __fastcall GetNormal(const LH3DMapCoords& coords, LHPoint* normal);
+	// BW1W120 inlined BW1M119 inlined
+	static void GetNormal(const LHPoint& pos, LHPoint* normal)
+	{
+		LH3DMapCoords coords(pos.x, pos.z);
+		GetNormal(coords, normal);
+	}
 };
 
 #endif /* BW1_DECOMP_LH3D_ISLAND_INCLUDED_H */
