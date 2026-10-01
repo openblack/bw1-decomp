@@ -1,4 +1,5 @@
-#include "GameConstants.h"
+#include "MapCellConstants.h"
+#include "CreatureAttitudeConstants.h"
 #include "HandStateHolding.h"
 
 #include "ColourConstants.h" /* For White */

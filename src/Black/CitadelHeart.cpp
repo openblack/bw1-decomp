@@ -4,7 +4,8 @@
 #include "ColourConstants.h" /* For White */
 #include "GameOSFile.h"
 #include "LandscapeConstants.h" /* For LandscapeExtent */
-#include "GameConstants.h"
+#include "MapCellConstants.h"
+#include "CreatureAttitudeConstants.h"
 
 CitadelHeart::CitadelHeart() : CitadelPart(), field_0x90(0)
 {

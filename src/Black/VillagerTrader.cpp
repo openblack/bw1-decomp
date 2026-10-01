@@ -1,6 +1,7 @@
 #include "GameTimeConstants.h"
 #include "Villager.h"
-#include "GameConstants.h"
+#include "MapCellConstants.h"
+#include "CreatureAttitudeConstants.h"
 
 // BW1W120 0076b960
 

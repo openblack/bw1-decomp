@@ -2,4 +2,5 @@
 #include "PlayerComputer.h"
 
 #include "ColourConstants.h" /* For White */
-#include "GameConstants.h"
+#include "MapCellConstants.h"
+#include "CreatureAttitudeConstants.h"

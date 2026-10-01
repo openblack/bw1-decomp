@@ -5,7 +5,8 @@
 #include "MapCoords.h"
 #include "Reaction.h"
 #include "Utils.h"
-#include "GameConstants.h"
+#include "MapCellConstants.h"
+#include "CreatureAttitudeConstants.h"
 
 // BW1W120 00767630 BW1M119 0159db60
 void Villager::SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2)

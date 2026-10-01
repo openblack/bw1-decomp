@@ -1,5 +1,6 @@
-#include "GameConstants.h"
-#include "GameTimeConstants.h"
+#include "MapCellConstants.h"           /* For MetresPerMapCell */
+#include "GameTimeConstants.h"          /* For SecondsPerYear */
+#include "CreatureAttitudeConstants.h" /* For AttitudeFeedbackDecay */
 #include "Object.h"
 
 #include <math.h>  /* For sqrt */

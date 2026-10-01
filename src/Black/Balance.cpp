@@ -1,4 +1,5 @@
-#include "GameConstants.h"
+#include "MapCellConstants.h"
+#include "CreatureAttitudeConstants.h"
 #include "LoaderAnon.h"
 
 #include <stdlib.h> /* For getenv */
