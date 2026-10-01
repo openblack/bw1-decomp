@@ -26,7 +26,7 @@ public:
 	// BW1W120 004140b0 BW1M119 0112ba50
 	virtual const char* GetDebugText() const;
 	// BW1W120 00436c60 BW1M119 0142e670
-	virtual LHColor* GetDebugColor(LHColor* color) const;
+	virtual LHColor GetDebugColor() const;
 	// BW1W120 purecall BW1M119 purecall
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos) = 0;
 	// BW1W120 00401230 BW1M119 0112ba90

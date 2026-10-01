@@ -38,7 +38,7 @@ public:
 	// BW1W120 00738fc0 BW1M119 0154f640
 	virtual ~GTownInfo();
 	// BW1W120 0073fd80 BW1M119 inlined
-	virtual LHColor* GetDebugColor(LHColor* param_1) const;
+	virtual LHColor GetDebugColor() const;
 	// BW1W120 00738f70 BW1M119 0154f5e0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
