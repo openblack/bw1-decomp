@@ -1137,24 +1137,16 @@ void Object::GetWorldMatrix(LHMatrix* out)
 	{
 		if (scale != 1.0f)
 		{
-			out->m[11] = 0.0f;
-			out->m[10] = 0.0f;
-			out->m[9] = 0.0f;
-			out->m[7] = 0.0f;
-			out->m[6] = 0.0f;
-			out->m[5] = 0.0f;
-			out->m[3] = 0.0f;
-			out->m[2] = 0.0f;
-			out->m[1] = 0.0f;
-			out->m[8] = scale;
-			out->m[4] = scale;
-			out->m[0] = scale;
+			out->SetScale(scale);
 			out->PostTranslation(position);
 			out->RotateY(yAngle);
 		}
 		else
 		{
-			out->Translation(position);
+			out->SetIdentity();
+			out->m[9] = position.x;
+			out->m[10] = position.y;
+			out->m[11] = position.z;
 			out->RotateY(yAngle);
 		}
 	}
@@ -1162,18 +1154,7 @@ void Object::GetWorldMatrix(LHMatrix* out)
 	{
 		if (scale != 1.0f)
 		{
-			out->m[11] = 0.0f;
-			out->m[10] = 0.0f;
-			out->m[9] = 0.0f;
-			out->m[7] = 0.0f;
-			out->m[6] = 0.0f;
-			out->m[5] = 0.0f;
-			out->m[3] = 0.0f;
-			out->m[2] = 0.0f;
-			out->m[1] = 0.0f;
-			out->m[8] = scale;
-			out->m[4] = scale;
-			out->m[0] = scale;
+			out->SetScale(scale);
 			out->PostTranslation(position);
 		}
 		else
@@ -1315,7 +1296,7 @@ void Object::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
 	if (creature != NULL)
 	{
 		float height = GetHeight();
-		float creatureHeight = reinterpret_cast<Object*>(creature)->GetHeight();
+		float creatureHeight = creature->GetHeight();
 		float factor;
 		if (height > creatureHeight * 0.8f)
 		{
@@ -1333,6 +1314,7 @@ void Object::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
 		GetWorldMatrix(&matrix);
 		LHPoint worldCentre = matrix * object3d->GetMesh()->GetBoundingBox().centre;
 		Point2D pos(worldCentre.x, worldCentre.z);
+		LHPoint unused = matrix * (matrix * (matrix * (matrix * worldCentre)));
 		LHPoint size = object3d->GetMesh()->BoundingBox.size * GetScale();
 		size.x = size.x + margin + fireMargin;
 		size.z = size.z + margin + fireMargin;
@@ -1387,8 +1369,8 @@ void Object::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
 			Point2D step((float)(sin(angle) * spacing), (float)-(cos(angle) * spacing));
 			float   stepsBack = (float)(count - 1);
 			pos -= step * stepsBack;
-			Point2D increment(step.x * 2.0f, step.y * 2.0f);
-			float   radius = width * 1.15;
+			step *= 2.0f;
+			float radius = width * 1.15;
 			if (radius < RouteMinRadius)
 			{
 				radius = RouteMinRadius;
@@ -1403,7 +1385,7 @@ void Object::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
 				{
 					holder->AddObject((int)this, pos, radius, update);
 				}
-				pos += increment;
+				pos += step;
 			}
 		}
 	}
@@ -2217,13 +2199,10 @@ void Object::DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* pa
 	}
 	uint32_t added = AddResource(param_1->GetResourceType(), param_1->GetResource(param_1->GetResourceType()), param_2,
 	                             param_1->IsPoisoned(), &param_1->Pos, 0);
-	if (added)
+	if (added && param_2 != NULL)
 	{
-		if (param_2 != NULL)
-		{
-			DoCreatureMimicAfterAddingResource(param_1->GetResourceType(), *param_2);
-		}
-		if (param_2 != NULL && param_2 == GGame::g_game->MyInterfaceStatus())
+		DoCreatureMimicAfterAddingResource(param_1->GetResourceType(), *param_2);
+		if (param_2 == GGame::g_game->MyInterfaceStatus())
 		{
 			GGuidance::ResourceDropSFX(*param_2, Pos, (RESOURCE_RAIN_TYPE)GetGuidanceResourceType());
 		}

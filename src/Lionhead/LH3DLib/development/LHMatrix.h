@@ -6,45 +6,61 @@
 
 #include "LHPoint.h" /* For struct LHPoint */
 
+// The element names are fabricated, after D3DMATRIX (DirectX 7): the Mac build's GetVectorX/Y/Z and GetPos
+// accessors return the rows at 0x0, 0xc, 0x18 and 0x24.
+// The union is inferred from MSVC6 inliner costs, not from symbols: a store to a named float member costs
+// less IL than a store to m[i]. The helpers written against the named members (SetIdentity, SetScale,
+// PostTranslation, RotateY) give inline sizes that reproduce the target's inlining decisions in every
+// LH3DObject::SetPosition caller (Object::SetXYZAngles, Abode::CallVirtualFunctionsForCreation, ...), while
+// Translation's cost fits only with m[] stores. See docs/msvc6_inliner.md.
 struct LHMatrix
 {
-	float m[0xc]; /* 0x0 */
+	union {
+		struct
+		{
+			float _11, _12, _13; /* 0x0 */
+			float _21, _22, _23; /* 0xc */
+			float _31, _32, _33; /* 0x18 */
+			float _41, _42, _43; /* 0x24 */
+		};
+		float m[0xc]; /* 0x0 */
+	};
 
 	// Non-virtual methods
 
-	// Inliner IL size: 125
+	// Inliner IL size: 101
 	// BW1W120 00403500 BW1M119 01044210
 	void SetIdentity()
 	{
-		m[11] = 0.0f;
-		m[10] = 0.0f;
-		m[9] = 0.0f;
-		m[7] = 0.0f;
-		m[6] = 0.0f;
-		m[5] = 0.0f;
-		m[3] = 0.0f;
-		m[2] = 0.0f;
-		m[1] = 0.0f;
-		m[8] = 1.0f;
-		m[4] = 1.0f;
-		m[0] = 1.0f;
+		_43 = 0.0f;
+		_42 = 0.0f;
+		_41 = 0.0f;
+		_32 = 0.0f;
+		_31 = 0.0f;
+		_23 = 0.0f;
+		_21 = 0.0f;
+		_13 = 0.0f;
+		_12 = 0.0f;
+		_33 = 1.0f;
+		_22 = 1.0f;
+		_11 = 1.0f;
 	}
-	// Inliner IL size: 129
+	// Inliner IL size: 105
 	// BW1W120 00519320 BW1M119 inlined
 	void SetScale(float scale)
 	{
-		m[11] = 0.0f;
-		m[10] = 0.0f;
-		m[9] = 0.0f;
-		m[7] = 0.0f;
-		m[6] = 0.0f;
-		m[5] = 0.0f;
-		m[3] = 0.0f;
-		m[2] = 0.0f;
-		m[1] = 0.0f;
-		m[8] = scale;
-		m[4] = scale;
-		m[0] = scale;
+		_43 = 0.0f;
+		_42 = 0.0f;
+		_41 = 0.0f;
+		_32 = 0.0f;
+		_31 = 0.0f;
+		_23 = 0.0f;
+		_21 = 0.0f;
+		_13 = 0.0f;
+		_12 = 0.0f;
+		_33 = scale;
+		_22 = scale;
+		_11 = scale;
 	}
 	// Inliner IL size: 68, plus the nested SetIdentity
 	// BW1W120 00403530 BW1M119 inlined
@@ -55,13 +71,14 @@ struct LHMatrix
 		m[10] = translation.y;
 		m[11] = translation.z;
 	}
-	// Inliner IL size: 81
+	// Inliner IL size: 69
 	// BW1W120 00403570 BW1M119 inlined
 	void __fastcall PostTranslation(const LHPoint& translation)
 	{
-		m[9] = translation.x + m[9];
-		m[10] = translation.y + m[10];
-		m[11] = translation.z + m[11];
+		// Mac loads _41 first.
+		_41 = _41 + translation.x;
+		_42 = _42 + translation.y;
+		_43 = _43 + translation.z;
 	}
 	// Inliner IL size: 60
 	// BW1W120 004607b0 BW1M119 013eb4b0
@@ -97,28 +114,28 @@ struct LHMatrix
 	// Inliner IL size: <= 40, always inlined and never charged
 	// BW1W120 inlined BW1M119 01043dd0
 	const LHPoint& GetPos() const { return *(const LHPoint*)&m[9]; }
-	// Inliner IL size: 223
+	// Inliner IL size: 187
 	// BW1W120 005198f0 BW1M119 inlined
 	void RotateY(float angle)
 	{
 		float c = cos(angle);
 		float s = sin(angle);
 		float t;
-		t = m[0] * s;
-		m[0] *= c;
-		m[0] += m[6] * s;
-		m[6] *= c;
-		m[6] -= t;
-		t = m[1] * s;
-		m[1] *= c;
-		m[1] += m[7] * s;
-		m[7] *= c;
-		m[7] -= t;
-		t = m[2] * s;
-		m[2] *= c;
-		m[2] += m[8] * s;
-		m[8] *= c;
-		m[8] -= t;
+		t = _11 * s;
+		_11 *= c;
+		_11 += _31 * s;
+		_31 *= c;
+		_31 -= t;
+		t = _12 * s;
+		_12 *= c;
+		_12 += _32 * s;
+		_32 *= c;
+		_32 -= t;
+		t = _13 * s;
+		_13 *= c;
+		_13 += _33 * s;
+		_33 *= c;
+		_33 -= t;
 	}
 	// BW1W120 007fb290 BW1M119 0102fff0 (LHCombined Release)
 	void __fastcall SetInverse(const LHMatrix& r);

@@ -198,14 +198,7 @@ void __fastcall Game3DObject::SetPositionAndXZYScale(const MapCoords& coords, fl
 void __fastcall Game3DObject::SetPositionAndXZYScale(const LHPoint& point, float y_angle, float scale, float xz_scale,
                                                      float y_scale)
 {
-	LHPoint unused0;
-	LHPoint unused1;
-	LHPoint unused2;
-	LHPoint unused3;
-	LHPoint unused4;
-	LHPoint unused5;
-	LHPoint unused6;
-	LHPoint unused7;
+	LH3DMesh::GetPackedMesh(0);
 	scale *= xz_scale;
 	if (y_angle != 0.0f)
 	{
@@ -217,10 +210,7 @@ void __fastcall Game3DObject::SetPositionAndXZYScale(const LHPoint& point, float
 		}
 		else
 		{
-			matrix.SetIdentity();
-			matrix.m[9] = point.x;
-			matrix.m[10] = point.y;
-			matrix.m[11] = point.z;
+			matrix.Translation(point);
 			matrix.RotateY(y_angle);
 		}
 	}
