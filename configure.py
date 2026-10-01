@@ -357,9 +357,13 @@ def MatchingFor(*versions):
 
 # An object linked verbatim from a downloaded static library (e.g. LIBCMT.LIB).
 # `archive` is the library id (see config.libcmt_tag); `member` is the path of
-# the object inside the archive. The unit name is derived as lib/<archive>/<obj>.
-def LibObject(completed, archive, member, **options):
+# the object inside the archive. The unit name is derived as lib/<archive>/<obj>,
+# prefixed with the module name for objects linked into a module DLL (unit names
+# are unique project-wide, and the DLLs link many of the same CRT objects).
+def LibObject(completed, archive, member, module=None, **options):
     name = "lib/" + archive + "/" + member.replace("\\", "/").rsplit("/", 1)[-1]
+    if module is not None:
+        name = module + "/" + name
     return Object(completed, name, lib_archive=archive, lib_member=member, **options)
 
 
