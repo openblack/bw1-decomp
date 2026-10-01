@@ -8,6 +8,8 @@ void* __stdcall LHMem::Alloc(size_t size)
 	return malloc(size);
 }
 
+#ifndef VERSION_BW1W100
+
 void* __stdcall LHMem::AllocFilled(size_t size, int fill)
 {
 	void* mem = malloc(size);
@@ -17,6 +19,8 @@ void* __stdcall LHMem::AllocFilled(size_t size, int fill)
 	}
 	return mem;
 }
+
+#endif // VERSION_BW1W100
 
 int __stdcall LHMem::Free(void* mem)
 {
