@@ -40,6 +40,13 @@ struct Point2D
 	// BW1W120 inlined BW1M119 010eb710
 	Point2D& operator-(const Point2D& rhs) const;
 	// BW1W120 inlined BW1M119 inlined
+	Point2D& operator*=(float rhs)
+	{
+		x *= rhs;
+		y *= rhs;
+		return *this;
+	}
+	// BW1W120 inlined BW1M119 inlined
 	Point2D& operator-=(const Point2D& other)
 	{
 		x -= other.x;
