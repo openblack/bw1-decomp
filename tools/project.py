@@ -795,10 +795,13 @@ def generate_build_ninja(
             # member-extraction source and the sha-checked build artifact.
             archive = config.build_dir / "lib" / f"{lib_id}.lib"
             lib_archives[lib_id] = archive
-            local = Path("orig") / "libs" / package / f"{lib_id}.lib"
+            # "<package>:<lib>" reads another file name than the lib id
+            package, _, lib_file = package.partition(":")
+            lib_file = lib_file or lib_id
+            local = Path("orig") / "libs" / package / f"{lib_file}.lib"
             if not local.exists():
                 sys.exit(
-                    f"Static library {local} not found. Place {lib_id}.lib "
+                    f"Static library {local} not found. Place {lib_file}.lib "
                     f"under orig/libs/{package}/ (see docs/getting_started.md)."
                 )
             n.build(outputs=archive, rule="copy_lib", inputs=local)
