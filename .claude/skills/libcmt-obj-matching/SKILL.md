@@ -1,6 +1,6 @@
 ---
 name: libcmt-obj-matching
-description: Make CRT objects from the downloaded LIBCMT.LIB / LIBCPMT.LIB link byte-exact into all three BW1 versions (BW1W100, BW1W110, BW1W120). Script-driven loop (.claude/skills/libcmt-obj-matching/libobj.py) that auto-matches clean objects with no agent judgement and flags the hard ones (E100 /OPT:REF dead-strip, trailing-alignment, __real@8 comdat fold) for hand work. Covers the worked numbers, the verify/recover cycle, and the manual symbol edits.
+description: Make CRT objects from the downloaded LIBCMT.LIB / LIBCPMT.LIB link byte-exact into all three BW1 versions (BW1W100, BW1W110, BW1W120). Script-driven loop (.claude/skills/libcmt-obj-matching/libobj.py) that auto-matches clean objects with no agent judgement and flags the hard ones (E100 /OPT:REF dead-strip, trailing-alignment, __real@8 comdat fold) for hand work. Covers the worked numbers, the verify/recover cycle, and the manual symbol edits. The module DLLs (LHAudio, LHMultiplayer) use modlib.py instead, which places a whole DLL's CRT at once.
 ---
 
 # Match a LIBCMT.LIB object — all 3 versions, script-driven
@@ -203,6 +203,84 @@ After labelling many objects (e.g. from a map), `ninja` can fail with
 
    Check identical-vs-different by reading both ranges from the exe before choosing
    `comdat` (fold) vs rename (distinct).
+
+## Module DLLs: `modlib.py`
+
+The module DLLs link their own static CRT, and their splits start out empty, so
+`modlib.py` (same directory) places every archive member of one DLL at once and
+writes the whole set: `config/<VER>/<Module>/splits.txt` and `symbols.txt`, plus
+`LibObject(..., module="<Module>")` lines in `configure.py`. Units are named
+`<Module>/lib/<archive>/<obj>`, because unit names are project-wide.
+
+```
+python3 configure.py --version BW1W120 <usual tool flags>
+ninja build/lib/libcmt.lib build/lib/libcmt64.lib        # this version's copies
+python3 .claude/skills/libcmt-obj-matching/modlib.py locate --version BW1W120 --module LHAudio --archive libcmt64 --summary
+python3 .claude/skills/libcmt-obj-matching/modlib.py apply  --version BW1W120 --module LHAudio --archive libcmt64
+ninja; ninja                                             # dtk rewrites symbols.txt on the first run
+build/tools/dtk shasum -c config/BW1W120/build.sha1
+```
+
+Always `apply` onto the module's *original* splits/symbols (check them out from
+the branch base first). Rerunning it over a dtk-rewritten file is not idempotent.
+
+Which libcmt each DLL used comes from its Rich header (`@comp.id` build numbers:
+8797 = SP4 / `msvc6.4`, 8047 = SP5 / `msvc6.5`):
+
+| DLL | 1.00 | 1.10 | 1.20 | archive id |
+|---|---|---|---|---|
+| LHAudio (one binary in all three) | SP4 | SP4 | SP4 | `libcmt64` (`"msvc6.4:libcmt"`) |
+| LHMultiplayer | SP4 | SP4 | SP5 | `libcmt` |
+| LHLog | SP4, `/OPT:REF` | SP4, `/OPT:REF` | VC7 linker | skipped |
+| LHDialog | MSVCRTD.dll (dynamic) | same | same | nothing to do |
+
+LHLog 1.00/1.10 drop unreferenced COMDATs (dozens of members are partial:
+`crt0msg`, `crt0dat`, `mlock`, `sbheap`...). Placing only the complete members
+breaks link order: a partial member's data becomes a pure-data auto unit that
+dtk cannot tie to its code. That needs module `dead_strip` and partial-member
+placement. It isn't done.
+
+What the tool does, and why (each one cost a failed link):
+
+- **Placement.** `.text` uses a reloc-masked search over all of a member's code
+  sections, including COMDATs (`/Gy`). Every other section is derived from
+  relocations, then from a reverse byte search (CRT$X* entries, pointer
+  tables), then from link order (`.data` contributions follow `.text` object
+  order). Identical members (`strdup`/`mbsdup`, `fopen`/`wfopen`) are told apart
+  by whether their call targets agree with the other placements.
+- **`lib_objects` must sit in the module's block** (`project.py` does this).
+  With it, dtk flags interior labels `stripped` and folds references into
+  symbol+addend. When *only* non-lib code points inside a global obj symbol,
+  dtk does not flag the label, so `apply` writes the `stripped` label itself. A
+  unit is excluded when outside code points at one of its statics.
+- **Addend targets.** dtk names a relocation's raw target after its symbol
+  (`__lpdays-4` becomes `__lpdays`), then demotes the real symbol as a duplicate.
+  Outside lib units, `apply` puts an `unk_<addr>` placeholder there; dtk keeps
+  any non-`lbl_`/`data_`/`fn_` name.
+- **Shared COMDAT data** (`__real@8@...`, string literals) lives in the first
+  object in link order. A copy below the lib region, or out of link order, is
+  *foreign*: excluded from the unit, and labelled `comdat` in symbols.txt.
+- **Padding.** An empty but aligned section (masm objects' 16-aligned `.data`)
+  pads at its object's position, so it gets the padding range, as runblack's
+  splits do. A data range swallows trailing zero padding to the next 8/4
+  boundary, or dtk emits the next auto unit with a leading `pad_` and shifts it.
+  `.text` ranges are not extended.
+- **COMMON symbols** are laid out consecutively in reverse symbol-table order.
+  The ones no relocation reaches (sbheap's `___sbh_initialized`) are inferred
+  from that order, otherwise lld allocates them mid-`.bss`.
+- **`.bss`** starts at the first 8-aligned address after the last non-zero
+  `.data` byte. Existing units' `.data` ranges past it are relabelled `.bss`
+  (1.00 LHLobby's static members).
+- `__fltused` is referenced without a relocation. If `fpinit.obj` is not a unit,
+  the `0x9875` marker word gets the name.
+- `build/lib/<id>.lib` and the extracted members are shared by every version.
+  `modlib.py` refuses to run on another version's copy, and dtk silently skips
+  importing lib objects that don't match the image.
+
+Debug a hash mismatch by relinking with `/MAP` (the `link` command plus
+`/MAP:x.map`) and comparing each obj symbol's linked address with its expected
+one. The first shifted symbol points at the culprit, almost always a
+link-order or padding problem just before it.
 
 ## Worked examples (real numbers)
 
