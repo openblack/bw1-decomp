@@ -19,7 +19,8 @@
 #include "Utils.h"
 #include "VillagerInfo.h"
 #include "VillagerStateTableInfo.h"
-#include "GameConstants.h"
+#include "MapCellConstants.h"
+#include "CreatureAttitudeConstants.h"
 
 extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
 

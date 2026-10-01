@@ -3,7 +3,8 @@
 
 #include "ColourConstants.h" /* For White */
 #include "MapCoords.h"
-#include "GameConstants.h"
+#include "MapCellConstants.h"
+#include "CreatureAttitudeConstants.h"
 
 // BW1W120 00768630 BW1M119 0159e900
 bool32_t Villager::IsReadyForNewScriptAction()
