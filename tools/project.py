@@ -676,7 +676,12 @@ def generate_build_ninja(
 
     compilers: Optional[Path] = config.compilers()
     compilers_implicit: Optional[Path] = None
-    if compilers is not None and config.compilers_path is None and config.compilers_tag is not None:
+    if config.compilers_path is not None:
+        # A local compilers directory: depend on it as a whole. The per-rule
+        # compiler paths contain ninja variables ($compiler_version, ${cl_exe})
+        # that would be escaped, not expanded, in an implicit dependency.
+        compilers_implicit = config.compilers_path
+    elif compilers is not None and config.compilers_tag is not None:
         if config.platform == "pe":
             # For PE, download MSVC to compilers/<linker_version>/ so cl.exe
             # ends up at build/compilers/<linker_version>/cl.exe
