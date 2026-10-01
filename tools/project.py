@@ -1968,7 +1968,11 @@ def generate_build_ninja(
     new_text = "".join(lines)
     split_config_path = build_path / "config.yml"
     split_config_path.parent.mkdir(parents=True, exist_ok=True)
-    split_config_path.write_text(new_text, encoding="utf-8")
+    # Only touch it on a change: the split depends on this file, and the
+    # reconfigure that follows every split would otherwise rewrite it with a
+    # newer mtime and run the whole split a second time.
+    if not split_config_path.is_file() or split_config_path.read_text(encoding="utf-8") != new_text:
+        split_config_path.write_text(new_text, encoding="utf-8")
     n.build(
         inputs=split_config_path,
         outputs=build_config_path,
