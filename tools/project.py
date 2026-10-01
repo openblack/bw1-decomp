@@ -1929,7 +1929,7 @@ def generate_build_ninja(
         # dtk skips any whose unit isn't present in the splits before opening it.
         if extracted is None or obj.options["lib_archive"] not in static_libs:
             continue
-        lib_object_entries.append((obj.name, extracted.as_posix()))
+        lib_object_entries.append((obj.options["lib"], obj.name, extracted.as_posix()))
         # Only depend on objects that actually have an extraction rule (units in
         # the link); the rest are skipped by dtk and never opened. lib_extracted_added
         # only exists when build_config is set (the link section ran).
@@ -1958,16 +1958,35 @@ def generate_build_ninja(
         rewritten.append(line)
     lines = rewritten
 
-    if lib_object_entries:
-        block = ["lib_objects:"]
-        for unit, path in lib_object_entries:
-            block.append(f"- unit: {unit}")
-            block.append(f"  object: {path}")
+    # `lib_objects` is a per-module setting: entries for a module DLL's units
+    # go inside that module's block (matched by its `name:`), the rest at the
+    # top level for the base image.
+    module_starts = {}
+    for i, line in enumerate(lines):
+        m = re.match(r"  name:\s*(\S+)", line)
+        if m and any(l.startswith("- ") for l in lines[max(0, i - 4):i]):
+            module_starts[m.group(1)] = i
+    by_module: Dict[Optional[str], List[Tuple[str, str]]] = {}
+    for lib_name, unit, path in lib_object_entries:
+        key = lib_name if lib_name in module_starts else None
+        by_module.setdefault(key, []).append((unit, path))
+    inserts = []
+    for key, entries in by_module.items():
+        indent = "" if key is None else "  "
+        block = [f"{indent}lib_objects:"]
+        for unit, path in entries:
+            block.append(f"{indent}- unit: {unit}")
+            block.append(f"{indent}  object: {path}")
         block_text = "\n".join(block) + "\n"
-        insert_at = next(
-            (i for i, line in enumerate(lines) if line.startswith("modules:")),
-            len(lines),
-        )
+        if key is None:
+            insert_at = next(
+                (i for i, line in enumerate(lines) if line.startswith("modules:")),
+                len(lines),
+            )
+        else:
+            insert_at = module_starts[key] + 1
+        inserts.append((insert_at, block_text))
+    for insert_at, block_text in sorted(inserts, reverse=True):
         lines = lines[:insert_at] + [block_text] + lines[insert_at:]
 
     new_text = "".join(lines)
