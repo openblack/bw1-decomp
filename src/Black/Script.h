@@ -68,7 +68,9 @@ public:
 	uint32_t CountDownTimerVisible;   // +10
 	uint8_t  field_0x14[0x2c];
 	LHPoint  FocusPos; /* 0x40 */
-	uint8_t  field_0x4c[0x70];
+	uint8_t  field_0x4c[0x54];
+	uint32_t CitadelInteract; /* 0xa0 */
+	uint8_t  field_0xa4[0x18];
 
 	// Override methods
 
