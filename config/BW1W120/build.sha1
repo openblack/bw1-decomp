@@ -12,3 +12,4 @@ bccccbd3a08fe9a5d6cf59cd114e916401abfb51  build/BW1W120/runblack.exe
 05f7c53a28401bfa36cf3367142cde169aba330a  build/lib/libcmt64.lib
 792e20d86eb741bc6f111f3ca439620f7b2cf566  build/lib/libcpmt.lib
 7719e690647a3168b4ceff977848e1fe822252ec  build/lib/amaths.lib
+ef4fbf0eba7b3b91febb5aec91138c7517d0757d  build/lib/msvcrtd.lib

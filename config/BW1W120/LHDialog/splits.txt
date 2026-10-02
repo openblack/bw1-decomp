@@ -2,5 +2,14 @@ Sections:
 	.text       type:code align:4096
 	.rdata      type:rodata align:4096
 	.data       type:data align:4096
+	.bss        type:bss vaddr:0x1001B928 end:0x1001CDE4
 	.idata      type:data align:4096
 	.rsrc       type:rodata align:4096
+
+LHDialog/lib/msvcrtd/atonexit.obj:
+	.text       start:0x100059C0 end:0x10005A18 align:1
+
+LHDialog/lib/msvcrtd/crtdll.obj:
+	.text       start:0x10005A30 end:0x10005C33 align:1
+	.rdata      start:0x10019A08 end:0x10019A14
+	.bss        start:0x1001CDC0 end:0x1001CDC4

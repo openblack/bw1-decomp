@@ -232,7 +232,7 @@ Which libcmt each DLL used comes from its Rich header (`@comp.id` build numbers:
 | LHAudio (one binary in all three) | SP4 | SP4 | SP4 | `libcmt64` (`"msvc6.4:libcmt"`) |
 | LHMultiplayer | SP4 | SP4 | SP5 | `libcmt` |
 | LHLog | SP4, `/OPT:REF` | SP4, `/OPT:REF` | VC7 linker | skipped |
-| LHDialog | MSVCRTD.dll (dynamic) | same | same | nothing to do |
+| LHDialog | MSVCRTD.dll (dynamic), but the DLL startup objects `atonexit.obj` + `crtdll.obj` are static (identical in all three) | same | same | `msvcrtd` (`msvc6.5`'s msvcrtd.lib) |
 
 LHLog 1.00/1.10 drop unreferenced COMDATs (dozens of members are partial:
 `crt0msg`, `crt0dat`, `mlock`, `sbheap`...). Placing only the complete members
