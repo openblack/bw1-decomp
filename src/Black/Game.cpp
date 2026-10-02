@@ -1769,14 +1769,8 @@ void GGame::ProcessNetworkPackets()
 				{
 					int value = PacketTimeHistory[j];
 					sum += value;
-					if (minTime >= value)
-					{
-						minTime = value;
-					}
-					if (maxTime <= value)
-					{
-						maxTime = value;
-					}
+					minTime = min(minTime, value);
+					maxTime = max(maxTime, value);
 				}
 				timer.TickCount -= (sum / 10 - ((maxTime - minTime) >> 1)) >> 2;
 			}
@@ -1942,10 +1936,7 @@ void GGame::Loop()
 				}
 				if (LoopTimeRemainder > 0)
 				{
-					if (LoopTimeRemainder >= 99)
-					{
-						LoopTimeRemainder = 99;
-					}
+					LoopTimeRemainder = min(LoopTimeRemainder, 99);
 				}
 				else
 				{
@@ -2193,11 +2184,9 @@ void GGame::Process3dEngine()
 				BINKREALTIME realtime;
 				BinkGetRealtime(VideoPlayer->Bink, &realtime, 1);
 				unsigned long frameTime = realtime.FramesTime;
-				if (frameTime < 1)
-					frameTime = 1;
+				frameTime = max(1, frameTime);
 				unsigned long bufferSize = realtime.ReadBufferSize;
-				if (bufferSize < 1)
-					bufferSize = 1;
+				bufferSize = max(1, bufferSize);
 				sprintf(
 					VideoStatistics,
 					"frame %d, video=%d%% audio=%d%% readfore=%d%% readback=%d%% readidle=%d%% blit=%d%% buffer=%d%% datarate=%dk",
