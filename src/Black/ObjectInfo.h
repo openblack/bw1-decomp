@@ -60,10 +60,16 @@ public:
 
 	// Static data
 
+	// fabricated name: no name survives in any build. cl6 lays out .bss in the order of a
+	// hash of each symbol's name; this one hashes ahead of LandscapeExtent, as Object.cpp's
+	// original layout requires.
 	// BW1W120 00d41668 BW1M119 01b3dd40
-	static GObjectInfo Infos[OBJECT_TYPE_LAST];
+	static GObjectInfo Definitions[OBJECT_TYPE_LAST];
+	// fabricated name: the info for OBJECT_TYPE_COMPUTER_PLAYER, which load_variables() fills
+	// in. No name survives; .bss needs this one's hash bucket to equal its init guard's
+	// ($S140), and this is the clearest name found that does.
 	// BW1W120 00d41560 BW1M119 01b3dc28
-	static GObjectInfo ComputerPlayerInfo; // fabricated
+	static GObjectInfo DefaultAIPlayerObjectInfo;
 
 	// Override methods
 

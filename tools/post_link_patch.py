@@ -498,16 +498,37 @@ CPU_DISP_CODEGEN = (
 BW1W110_CPU_DISP_TEXT = 0x008923C0
 BW1W120_CPU_DISP_TEXT = 0x008A25B0
 
-# SafeDisc left `call` stubs in inter-function padding that cl6 fills with nops.
-# Absolute addresses; rows are skipped where the shipped bytes are already present
-# (the owning unit is still linked from its split object).
-BW1W120_SAFEDISC_PADDING = (
-    (0x0056F9DB, b'\x90' * 5, b'\xe8\x19\x1e\xe9\xff'),      # GameThing: call 0x4017f9
-    (0x0056FB0B, b'\x90' * 5, b'\xe8\xe9\x1c\xe9\xff'),      # GameThing: call 0x4017f9
-    (0x005703CA, b'\x90' * 6, b'\xff\x15\xe4\x96\x8a\x00'),  # GameThing: call [__imp__LHSampleSetVolume...]
-    (0x0063AB7B, b'\x90' * 5, b'\xe8\x79\x6c\xdc\xff'),      # Object3D: call 0x4017f9
-    (0x0063B0AB, b'\x90' * 5, b'\xe8\x49\x67\xdc\xff'),      # Object3D: call 0x4017f9
-    (0x0063B8CB, b'\x90' * 5, b'\xe8\x29\x5f\xdc\xff'),      # OnMapTrajectory: call 0x4017f9
+
+def call_rel32(target):
+    """`call target`, encoded for the address it is placed at."""
+    return lambda address: b'\xe8' + ((target - (address + 5)) & 0xFFFFFFFF).to_bytes(4, 'little')
+
+
+def call_indirect(slot):
+    """`call [slot]`, an absolute indirect call such as through an import slot."""
+    return lambda address: b'\xff\x15' + slot.to_bytes(4, 'little')
+
+
+# SafeDisc left calls in inter-function padding that cl6 fills with nops. Absolute
+# addresses; each call is restored over nops of its own length, and rows are skipped
+# where it is already present (the owning unit is still linked from its split object).
+BW1W120_SAFEDISC_CALLS = (
+    (0x0056F9DB, call_rel32(0x004017F9)),  # GameThing
+    (0x0056FB0B, call_rel32(0x004017F9)),  # GameThing
+    (0x005703CA, call_indirect(0x008A96E4)),  # GameThing: __imp__LHSampleSetVolume...
+    (0x006362FB, call_rel32(0x004017F9)),  # Object
+    (0x0063673B, call_rel32(0x004017F9)),  # Object
+    (0x006377BB, call_rel32(0x004017F9)),  # Object
+    (0x006377DB, call_rel32(0x004017F9)),  # Object
+    (0x006378DB, call_rel32(0x004017F9)),  # Object
+    (0x00638AFB, call_rel32(0x004017F9)),  # Object
+    (0x00638C2B, call_rel32(0x004017F9)),  # Object
+    (0x00639B6B, call_rel32(0x004017F9)),  # Object
+    (0x00639EAB, call_rel32(0x004017F9)),  # Object
+    (0x0063A7FB, call_rel32(0x004017F9)),  # Object
+    (0x0063AB7B, call_rel32(0x004017F9)),  # Object3D
+    (0x0063B0AB, call_rel32(0x004017F9)),  # Object3D
+    (0x0063B8CB, call_rel32(0x004017F9)),  # OnMapTrajectory
 )
 
 BW1W100_GAMETHING_INCREMENTAL = (
@@ -526,6 +547,14 @@ def substitute_code(pe, base, rows):
         if found != linked:
             raise SystemExit(f"{address:#010x}: found {found.hex()}, expected {linked.hex()}")
         write_bytes(pe, offset, shipped)
+
+
+def restore_calls(pe, rows):
+    code = []
+    for address, call in rows:
+        shipped = call(address)
+        code.append((address, b'\x90' * len(shipped), shipped))
+    substitute_code(pe, 0, code)
 
 
 def insert_header_padding(pe, at, count):
@@ -697,7 +726,7 @@ def apply_BW1W110_patch(pe, cfg, out_dir, modules):
 
 def apply_BW1W120_patch(pe, cfg, out_dir, modules):
     substitute_code(pe, BW1W120_CPU_DISP_TEXT, CPU_DISP_CODEGEN)
-    substitute_code(pe, 0, BW1W120_SAFEDISC_PADDING)
+    restore_calls(pe, BW1W120_SAFEDISC_CALLS)
     substitute_exestr(pe, *CPU_DISP_EXESTR_SUBSTITUTION)
 
     # Bump the exestr comments past SafeDisc's section headers, then re-apply the

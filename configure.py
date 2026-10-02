@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.28"
+config.dtk_tag = "v0.0.29"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
@@ -335,6 +335,11 @@ cflags_icc = [
 # libraries (Lionhead/, zlib/) were not. Black/ objects are declared with
 # GameCodeObject (below), which compiles them with these flags.
 cflags_gamecode = [*cflags_base, "/G6"]
+# 1.00 was built with function-level linking: every function is its own COMDAT,
+# so the link folds identical bodies (/OPT:ICF) and drops unreferenced ones
+# (/OPT:REF, lld's default without /debug).
+if config.version == "BW1W100":
+    cflags_gamecode.append("/Gy")
 
 # Optional numeric ID for decomp.me preset. A preset dictates the compiler.
 config.scratch_preset_id = 208 if config.compilers_tag == "6.5" else None
@@ -801,7 +806,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Name.cpp"),
             GameCodeObject(NonMatching, "Black/Network.cpp"),
             GameCodeObject(NonMatching, "Black/NewProfileBox.cpp"),
-            GameCodeObject(NonMatching, "Black/Object.cpp"),
+            GameCodeObject(Matching, "Black/Object.cpp"),
             GameCodeObject(Matching, "Black/Object3D.cpp"),
             GameCodeObject(Matching, "Black/OnMapTrajectory.cpp"),
             GameCodeObject(NonMatching, "Black/OOSDebug.cpp"),

@@ -105,6 +105,11 @@ enum LIVING_SET_STATE_RESULT
 class Living : public MobileWallHug
 {
 public:
+#ifndef VERSION_BW1W120
+	// BW1W120 null BW1M119 01730978
+	static void* ReactionFunctionArray[0x668];
+#endif
+
 	struct StateTableSubEntry
 	{
 		bool (Living::*function)(); /* 0x0 */
