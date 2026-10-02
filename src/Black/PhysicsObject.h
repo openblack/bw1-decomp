@@ -14,6 +14,7 @@
 // Forward Declares
 
 class GInterfaceStatus;
+class GPlayer;
 class Object;
 
 // fabricated names, from how Object uses them.
@@ -80,6 +81,11 @@ public:
 
 	// BW1W120 00644330 BW1M119 0111d9d0
 	PhysicsObject();
+
+	// Non-virtual methods
+
+	// BW1W120 00647460 BW1M119 0111b100
+	GPlayer* GetPlayer();
 };
 
 #endif /* BW1_DECOMP_PHYSICS_OBJECT_INCLUDED_H */

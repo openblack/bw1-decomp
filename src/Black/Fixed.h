@@ -35,7 +35,7 @@ public:
 
 	// BW1W120 0052df20 BW1M119 010e6b20
 	virtual float GetTownArtifactValue();
-	// BW1W120 0052e170 BW1M119 inlined
+	// BW1W120 0052e170 BW1M119 010e6670
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 0052e140 BW1M119 010e6700
 	virtual uint32_t Save(GameOSFile& file);
@@ -80,19 +80,24 @@ public:
 	// BW1W120 0052dee0 BW1M119 010e6bc0
 	virtual void InsertMapObjectToCellAssumeFixed(MapCell* cell);
 	// BW1W120 004252f0 BW1M119 010ad5c0
-	virtual bool IsObjectFullyInMap();
+	virtual bool32_t IsObjectFullyInMap();
 
 	// Constructors
 
-	// BW1W120 0052dd80 BW1M119 inlined
+	// BW1W120 0052dd80 BW1M119 010e6ff0
 	Fixed();
 	// BW1W120 0052ddc0 BW1M119 010e6f00
-	Fixed(const MapCoords* coords, const GObjectInfo* info, float y_angle, float scale);
+	Fixed(const MapCoords& coords, const GObjectInfo* info, float y_angle, float scale);
 
 	// Non-virtual Destructors
 
-	// BW1W120 0052dda0 BW1M119 010e6e70
+	// BW1W120 0052de20 BW1M119 010e6e70
 	~Fixed();
+
+	// Non-virtual methods
+
+	// BW1W120 0052f690 BW1M119 010e3220
+	void SetToZero();
 };
 
 class SingleMapFixed : public Fixed
@@ -102,7 +107,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 0052eb40 BW1M119 010e5060
+	// BW1W120 0052eac0 BW1M119 010e5060
 	virtual ~SingleMapFixed();
 	// BW1W120 0052e620 BW1M119 010e5940
 	virtual void InsertMapObject();
@@ -112,25 +117,30 @@ public:
 	virtual void InsertMapObjectToCell(MapCell* param_1);
 	// BW1W120 0052f450 BW1M119 010e3720
 	virtual void RemoveMapObjectFromCell(MapCell* param_1);
-	// BW1W120 0052eb10 BW1M119 010e7740
-	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00518100 BW1M119 0103aba0
 	virtual void Draw();
 	// BW1W120 0052e880 BW1M119 010e5430
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0052eaf0 BW1M119 010e7670
-	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1) { return true; }
 	// BW1W120 0052eb00 BW1M119 010e76d0
-	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
+	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords) { return true; }
+	// BW1W120 0052eb10 BW1M119 010e7740
+	virtual MESH_LIST GetMesh() const { return info->GetMesh(); }
 	// BW1W120 0052f420 BW1M119 010e3800
 	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 0052eb20 BW1M119 010e77b0
-	virtual uint32_t ApplyOnlyAfterReleased();
+	virtual uint32_t ApplyOnlyAfterReleased() { return true; }
 	// BW1W120 0052eb30 BW1M119 01097980
-	virtual NewCollide* GetCollideData();
+	virtual NewCollide* GetCollideData() { return CollideData; }
 	// BW1W120 0052f510 BW1M119 010e34a0
 	virtual void CreateCollideData();
+
+	// Non-virtual methods
+
+	// BW1W120 0052f6a0 BW1M119 010e3190
+	void ReleaseCollideData();
 };
 
 #endif /* BW1_DECOMP_FIXED_INCLUDED_H */

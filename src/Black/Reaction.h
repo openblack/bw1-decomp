@@ -60,6 +60,8 @@ public:
 	static void ProcessReactions();
 	// BW1W120 006e3d70 BW1M119 0113ec00
 	static Reaction* CreateReaction(GameThingWithPos* target, uint8_t param_2, GPlayer* player, int param_4);
+	// BW1W120 006e4750 BW1M119 0113df40
+	static void RemoveAllReactionsInitiatedByObject(GameThingWithPos* target);
 	// BW1W120 006e4780 BW1M119 0113de50
 	static Reaction* RemoveAllReactionsOfTypeInitiatedByObject(GameThingWithPos* target, REACTION reaction);
 	// BW1W120 006e4870 BW1M119 0113dbd0

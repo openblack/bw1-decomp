@@ -831,23 +831,23 @@ Black/FireFly.cpp:
 
 Black/FishFarm.cpp:
 	.text       start:0x0052C250 end:0x0052DB40
-	.rdata      start:0x008DA4F8 end:0x008DADC0
+	.rdata      start:0x008DA4F8 end:0x008DB6CC
 	.CRT$XCU    start:0x009C686C end:0x009C687C align:4
-	.data       start:0x00BE9E30 end:0x00BE9EAC
-	.bss        start:0x00CCFC70 end:0x00CCFDAC
+	.data       start:0x00BE9E30 end:0x00BE9E88
+	.bss        start:0x00CCFC70 end:0x00CCFDA8
 
 Black/Fixed.cpp:
 	.text       start:0x0052DB40 end:0x0052F750
-	.rdata      start:0x008DADC0 end:0x008DC894
+	.rdata      start:0x008DB6CC end:0x008DD0FC
 	.CRT$XCU    start:0x009C687C end:0x009C6890 align:4
-	.data       start:0x00BE9EAC end:0x00BE9F2C
-	.bss        start:0x00CCFDAC end:0x00CD01C8
+	.data       start:0x00BE9E88 end:0x00BE9EE8
+	.bss        start:0x00CCFDA8 end:0x00CD01C8
 
 Black/Flock.cpp:
 	.text       start:0x0052F750 end:0x00530E70
-	.rdata      start:0x008DC894 end:0x008DD108
+	.rdata      start:0x008DD0FC end:0x008DD108
 	.CRT$XCU    start:0x009C6890 end:0x009C6898 align:4
-	.data       start:0x00BE9F2C end:0x00BE9FA4
+	.data       start:0x00BE9EE8 end:0x00BE9FA4
 	.bss        start:0x00CD01C8 end:0x00CD01D8
 
 Black/FootBall.cpp:

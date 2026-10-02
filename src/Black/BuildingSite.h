@@ -64,6 +64,23 @@ public:
 	// BW1W120 0043b950 BW1M119 010c02a0
 	virtual void Init();
 
+	// Virtual methods
+
+	// BW1W120 purecall BW1M119 purecall
+	virtual void Process() = 0;
+	// BW1W120 0043c5e0 BW1M119 010be190
+	virtual uint32_t GetWoodForStats();
+	// BW1W120 purecall BW1M119 purecall
+	virtual Pot* GetPileWood(const MapCoords& coords) = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual void SetPileWood(Pot* pot) = 0;
+	// BW1W120 0043b780 BW1M119 010be5c0
+	virtual void CreatePileWood();
+	// BW1W120 0043c220 BW1M119 010be600
+	virtual void GetResourcePosAndYAngle(uint32_t param_1, uint32_t param_2, float* param_3);
+	// BW1W120 0043b790 BW1M119 010c18d0
+	virtual void RemovePotFromStructure(PotStructure* structure);
+
 	// Constructors
 
 	// BW1W120 0043b700 BW1M119 010c0860

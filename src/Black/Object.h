@@ -91,7 +91,7 @@ public:
 	// BW1W120 00639520 BW1M119 013db4f0
 	virtual uint32_t GetResource(RESOURCE_TYPE type);
 	// BW1W120 0063a7d0 BW1M119 013d8960
-	virtual bool32_t CanBecomeArtifact();
+	virtual bool CanBecomeArtifact();
 	// BW1W120 005190e0 BW1M119 0108f6b0
 	virtual void DrawInHand(GInterfaceStatus* param_1);
 	// BW1W120 00639eb0 BW1M119 013d96d0

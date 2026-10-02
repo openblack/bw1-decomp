@@ -14,7 +14,6 @@ class GBaseInfo;
 class GPrayerIconInfo : public GSingleMapFixedInfo
 {
 public:
-	uint32_t field_0x100;
 	uint32_t field_0x104;
 
 	// Override methods

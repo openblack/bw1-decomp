@@ -2166,13 +2166,9 @@ IMMERSION_EFFECT_TYPE Object::GetInHandImmersionTexture()
 	return (IMMERSION_EFFECT_TYPE)-1;
 }
 
-bool32_t Object::CanBecomeArtifact()
+bool Object::CanBecomeArtifact()
 {
-	if (info->ArtifactMultiplier > 0.0f && !IsInScript())
-	{
-		return true;
-	}
-	return false;
+	return info->ArtifactMultiplier > 0.0f && !IsInScript();
 }
 
 void Object::SetYJustAngle(float angle)

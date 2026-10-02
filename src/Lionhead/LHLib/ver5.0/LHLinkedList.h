@@ -28,10 +28,9 @@ public:
 	{
 		if (!val)
 			return false;
-		LHLinkedNode<T>* node = new LHLinkedNode<T>(val, NULL);
+		LHLinkedNode<T>* node = new LHLinkedNode<T>(val, head.Get());
 		if (node)
 		{
-			node->next.Set(head.Get());
 			head.Set(node);
 			++count;
 		}
