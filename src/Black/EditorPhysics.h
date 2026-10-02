@@ -3,6 +3,15 @@
 
 #include <assert.h> /* For static_assert */
 
+enum PHYSICS_CONSTANTS_TYPE
+{
+	PHYSICS_CONSTANTS_TYPE_CROP = 6,
+	PHYSICS_CONSTANTS_TYPE_POO = 12,
+	PHYSICS_CONSTANTS_TYPE_CHAMPI = 21,
+	PHYSICS_CONSTANTS_TYPE_MAGIC_MUSHROOM = 22,
+	PHYSICS_CONSTANTS_TYPE_TOADSTOOL = 23
+};
+
 // One row of data/physicsconstants.txt, indexed by Object::GetPhysicsConstantsType().
 struct PhysicsData
 {

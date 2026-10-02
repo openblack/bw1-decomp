@@ -1084,7 +1084,8 @@ enum     MOBILE_OBJECT_INFO
     MOBILE_OBJECT_HANOI_PUZZLE_PART3                =  29 ,
     MOBILE_OBJECT_HANOI_PUZZLE_PART4                =  30 ,
     MOBILE_OBJECT_CAULDRON                          =  31 ,
-    MOBILE_OBJECT_DOLPHIN                           =  32 ,
+#ifdef VERSION_BW1WCI
+	MOBILE_OBJECT_DOLPHIN                           =  32 ,
     MOBILE_OBJECT_CROC_1                            =  33 ,
     MOBILE_OBJECT_CROC_2                            =  34 ,
     MOBILE_OBJECT_CROC_3                            =  35 ,
@@ -1093,7 +1094,8 @@ enum     MOBILE_OBJECT_INFO
     MOBILE_OBJECT_BROTHERHOOD_RING_3                =  38 ,
     MOBILE_OBJECT_MOSES_BASKET                      =  39 ,
     MOBILE_OBJECT_BROTHERHOOD_PUCK                  =  40 ,
-    MOBILE_OBJECT_INFO_LAST                         =  41 ,
+#endif // VERSION_BW1WCI
+	MOBILE_OBJECT_INFO_LAST
 };
 
 //*****************************************************************************

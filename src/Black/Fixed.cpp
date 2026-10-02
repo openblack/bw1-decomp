@@ -778,7 +778,7 @@ uint32_t MultiMapFixed::RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInt
 	return 0;
 }
 
-bool MultiMapFixed::IsResourceStore(RESOURCE_TYPE type)
+bool32_t MultiMapFixed::IsResourceStore(RESOURCE_TYPE type)
 {
 	return type == RESOURCE_TYPE_WOOD && building_site != NULL;
 }

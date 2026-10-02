@@ -59,7 +59,7 @@ public:
 	// BW1W120 0066db90 BW1M119 01123e50
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0066da30 BW1M119 01124100
-	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
+	virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 0066d480 BW1M119 inlined
 	virtual void SetSize();
 	// BW1W120 0066da00 BW1M119 0107a190

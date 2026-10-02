@@ -40,6 +40,15 @@ enum CREATURE_BELIEF_LIST_TYPE
 	CREATURE_BELIEF_LIST_TYPE_OBJECT = 1
 };
 
+// The enum name survives in the Mac signatures. These enumerator names are descriptive,
+// recovered from MobileObject::GetCreatureBeliefType; the remaining values are not recovered.
+enum CREATURE_BELIEF_TYPE
+{
+	CREATURE_BELIEF_TYPE_POO = 13,
+	CREATURE_BELIEF_TYPE_MAGIC_FOOD = 14,
+	CREATURE_BELIEF_TYPE_MOBILE_OBJECT = 19
+};
+
 // fabricated: bit meanings of GameThingWithPos::Flags. ON_STRUCTURE is set by the
 // MOVE_ON_STRUCTURE state handler (BW1W120 005ecd00) when a structure is found under the
 // position, together with snapping the altitude onto it. IN_PHYSICS tracks ownership by the

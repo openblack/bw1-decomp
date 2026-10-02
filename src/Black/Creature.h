@@ -644,6 +644,16 @@ public:
 class Creed : public MobileObject
 {
 public:
+	uint32_t field_0x68;
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	Creed(const MapCoords& coords, const GMobileObjectInfo* info, Object* param_3, float param_4, float param_5)
+		: MobileObject(coords, info, param_3, param_4, param_5)
+	{
+	}
+
 	// Override methods
 
 	// BW1W120 0050b370 BW1M119 010c36c0

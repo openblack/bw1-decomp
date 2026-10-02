@@ -1192,11 +1192,12 @@ Black/MobileObject.cpp:
 	.text       start:0x00601660 end:0x00602DC0
 	.rdata      start:0x00920588 end:0x009205D4
 	.data       start:0x00BE3600 end:0x00BE3604
-	.bss        start:0x00D27250 end:0x00D2DC78
+	.bss        start:0x00D27250 end:0x00D294E4
 
 Black/MobileStatic.cpp:
 	.text       start:0x00602DC0 end:0x00604080
 	.CRT$XCU    start:0x009B6AAC end:0x009B6AB0 align:4
+	.bss        start:0x00D294E4 end:0x00D2DC78
 
 Black/MobileWallHug.cpp:
 	.text       start:0x006040C0 end:0x00611870
