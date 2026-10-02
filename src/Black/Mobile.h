@@ -4,13 +4,13 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t */
 
-#include "Object.h" /* For struct Object, struct ObjectVftable */
+#include "MobileInfo.h" /* For class GMobileInfo */
+#include "Object.h"     /* For struct Object, struct ObjectVftable */
 
 // Forward Declares
 
 class Base;
 class GInterfaceStatus;
-class GMobileInfo;
 class GameOSFile;
 class GameThing;
 struct GestureSystemPacketData;
@@ -23,8 +23,8 @@ public:
 
 	// Override methods
 
-	// BW1W120 004748e0 BW1M119 010c3ce0
-	virtual ~Mobile();
+	// BW1W120 inlined BW1M119 010c3ce0
+	virtual ~Mobile() {}
 	// BW1W120 00606c70 BW1M119 013c26c0
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00606c10 BW1M119 013c2790
@@ -32,21 +32,21 @@ public:
 	// BW1W120 00606cd0 BW1M119 013c2680
 	virtual bool32_t BlocksTownClearArea() const;
 	// BW1W120 00425b00 BW1M119 010b0820
-	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1) { return true; }
 	// BW1W120 00416f50 BW1M119 010b0870
-	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords);
+	virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords) { return 1; }
 	// BW1W120 00606bf0 BW1M119 013c2870
 	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 00416f60 BW1M119 010b08d0
-	virtual uint32_t ApplyOnlyAfterReleased();
+	virtual uint32_t ApplyOnlyAfterReleased() { return 1; }
 
 	// Constructors
 
 	// BW1W120 0055c790 BW1M119 010c3d70
-	Mobile();
+	Mobile() {}
 	// BW1W120 005ec000 BW1M119 inlined
-	Mobile(const MapCoords& coords, const GMobileInfo* info);
+	Mobile(const MapCoords& coords, const GMobileInfo* info) : Object(coords, info) { SetScale(1.0f); }
 };
 
 #endif /* BW1_DECOMP_MOBILE_INCLUDED_H */

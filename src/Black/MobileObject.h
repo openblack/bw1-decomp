@@ -140,15 +140,4 @@ public:
 	MobileObject(const MapCoords& coords, const GMobileObjectInfo* info, Object* param_4, float param_5, float param_6);
 };
 
-class GSpeedThreshold : public GBaseInfo
-{
-public:
-	// Override methods
-
-	// BW1W120 00606bd0 BW1M119 013c2a10
-	virtual ~GSpeedThreshold();
-	// BW1W120 00606b70 BW1M119 013c2b30
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-};
-
 #endif /* BW1_DECOMP_MOBILE_OBJECT_INCLUDED_H */

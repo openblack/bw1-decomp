@@ -1079,17 +1079,21 @@ Black/MapCoords.cpp:
 Black/Mist.cpp:
 	.text       start:0x005C1950 end:0x005C20A0
 
+Black/Meeting.cpp:
+	.bss        start:0x00C59244 end:0x00C59248
+
 Black/Mobile.cpp:
 	.text       start:0x005C20A0 end:0x005C2220
-
-Black/Meeting.cpp:
-	.rdata      start:0x0086DE58 end:0x0086DE5C
-	.bss        start:0x00C59244 end:0x00C59344
+	.rdata      start:0x0086DE58 end:0x0086DE88
+	.rdata$r    start:0x008E5928 end:0x008E5974
+	.CRT$XCU    start:0x008F6A54 end:0x008F6A58 align:4
+	.data       start:0x00B20DF0 end:0x00B20E10
+	.bss        start:0x00C59248 end:0x00C59340
 
 Black/MobileObject.cpp:
 	.text       start:0x005C2220 end:0x005C33B0
-	.rdata      start:0x0086DE5C end:0x0086DED4
-	.bss        start:0x00C59344 end:0x00C5FD68
+	.rdata      start:0x0086DE88 end:0x0086DED4
+	.bss        start:0x00C59340 end:0x00C5FD68
 
 Black/MobileStatic.cpp:
 	.text       start:0x005C33B0 end:0x005C4450

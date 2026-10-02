@@ -751,7 +751,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Meeting.cpp"),
             GameCodeObject(NonMatching, "Black/MiniDialogBoxOptions.cpp"),
             GameCodeObject(NonMatching, "Black/Mist.cpp"),
-            GameCodeObject(NonMatching, "Black/Mobile.cpp"),
+            GameCodeObject(Matching, "Black/Mobile.cpp"),
             GameCodeObject(NonMatching, "Black/MobileInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MobileObject.cpp"),
             GameCodeObject(NonMatching, "Black/MobileObjectInfo.cpp"),
