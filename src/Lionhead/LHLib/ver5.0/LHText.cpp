@@ -58,7 +58,7 @@ int LHText::StringWidth(char* start, char* end)
 		break;
 		}
 	}
-	return maxWidth > width ? maxWidth : width;
+	return max(maxWidth, width);
 }
 
 int LHText::StringHeight(char* start, char* end)

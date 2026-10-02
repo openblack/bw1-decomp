@@ -1035,12 +1035,12 @@ bool32_t Object::IsTouching(const MapCoords& corner1, const MapCoords& corner2)
 {
 	float x1 = corner1.WholeX() * MetresPerMapCell * (1.0f / (float)0x10000);
 	float x2 = corner2.WholeX() * MetresPerMapCell * (1.0f / (float)0x10000);
-	float minX = x1 < x2 ? x1 : x2;
+	float minX = min(x1, x2);
 	float z1 = corner1.WholeZ() * MetresPerMapCell * (1.0f / (float)0x10000);
 	float z2 = corner2.WholeZ() * MetresPerMapCell * (1.0f / (float)0x10000);
-	float minZ = z1 < z2 ? z1 : z2;
-	float maxX = x1 > x2 ? x1 : x2;
-	float maxZ = z1 > z2 ? z1 : z2;
+	float minZ = min(z1, z2);
+	float maxX = max(x1, x2);
+	float maxZ = max(z1, z2);
 
 	float radius = Get2DRadius();
 	float myX = Pos.WholeX() * MetresPerMapCell * (1.0f / (float)0x10000);
@@ -2063,7 +2063,7 @@ void Object::SetUpPhysObAsATree(PhysOb* phys_ob, float weight, float height, flo
 	vertex->Clear();
 	vertex->Pos.Set(baseRadius, -halfHeight, 0.0f);
 
-	phys_ob->Radius = halfHeight > radius ? halfHeight : radius;
+	phys_ob->Radius = max(halfHeight, radius);
 
 	phys_ob->NumFaces = 24;
 	phys_ob->Faces = new (OBJECT_SOURCE_FILE, 2591) PhysOb::Face[phys_ob->NumFaces];

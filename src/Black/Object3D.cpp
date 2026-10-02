@@ -76,10 +76,7 @@ float Game3DObject::GetAltitudeFondation() const
 		}
 		matrix.TransformPoint(corner);
 		float altitude = LH3DIsland::GetAltitude(LH3DMapCoords(corner.x, corner.z));
-		if (altitude < minAltitude)
-		{
-			minAltitude = altitude;
-		}
+		minAltitude = min(altitude, minAltitude);
 	}
 	return minAltitude - baseAltitude;
 }

@@ -313,6 +313,8 @@ Don't be afraid to leave notes that would be useful to the next person trying to
 - Apply whole-file clang-format to touched C++ files before final verification and commits, not just changed lines.
 - Pre-C++11 style (`.clang-format` sets `Standard: c++03`; the compiler is MSVC 6.0): no `auto`, no range-for, no lambdas, no `nullptr` (use `NULL` or `0`).
 - Header guards use the `#ifndef BW1_DECOMP_<NAME>_INCLUDED_H` / `#define` / `#endif` pattern (e.g. `BW1_DECOMP_ABODE_INCLUDED_H`).
+- Use windef.h's `min`/`max` where the original did. `tools/minmax-scan.py --verify --apply <file>` finds
+  hand-expanded selects and clamps and keeps only rewrites that compile byte-identical (`minmax-macros` skill).
 
 ### Header dependencies
 
