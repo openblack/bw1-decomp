@@ -5,6 +5,8 @@
 #include "Flock.h"
 #include "Utils.h"
 
+void Animal::SetStateSpeed() {}
+
 uint32_t Animal::KeepFlockMemberWithinFlockArea()
 {
 	MapCoords flockPos = flock->GetFlockPos();

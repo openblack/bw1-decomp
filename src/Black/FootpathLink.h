@@ -15,8 +15,10 @@ class Base;
 class GFootpathNode;
 class GameOSFile;
 class GameThingWithPos;
+class LHOSFile;
 class Living;
 struct MapCoords;
+class MultiMapFixed;
 
 class GFootpathLink : public GameThing
 {
@@ -25,8 +27,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 0050caf0 BW1M119 010f4230
-	virtual ~GFootpathLink();
 	// BW1W120 00536010 BW1M119 010f1aa0
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00536070 BW1M119 010f1960
@@ -45,7 +45,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	GFootpathLink();
+	GFootpathLink() {}
 
 	// Non-virtual methods
 
@@ -58,6 +58,10 @@ public:
 	// BW1W120 005362e0 BW1M119 010f1190
 	uint32_t UseFootpathIfNecessary(Living* living, const MapCoords& coord, uint8_t state,
 	                                GameThingWithPos* game_thing_with_pos);
+	// BW1W120 00536440 BW1M119 010f1060
+	void SaveObject(LHOSFile& file, const MapCoords& coords);
+	// BW1W120 005364e0 BW1M119 null
+	void Update(MultiMapFixed* structure);
 };
 
 #endif /* BW1_DECOMP_FOOTPATH_LINK_INCLUDED_H */

@@ -513,6 +513,13 @@ def call_indirect(slot):
 # addresses; each call is restored over nops of its own length, and rows are skipped
 # where it is already present (the owning unit is still linked from its split object).
 BW1W120_SAFEDISC_CALLS = (
+    (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
+    (0x0052E3FA, call_indirect(0x008A901C)),  # Fixed: __imp__TrackMouseEvent@4
+    (0x0052EE0A, call_indirect(0x008A97AC)),  # Fixed: __imp__ShellExecuteA@4
+    (0x0052EFBB, call_rel32(0x00401879)),  # Fixed
+    (0x0052F0CB, call_rel32(0x00401879)),  # Fixed
+    (0x0052F1EB, call_rel32(0x00401879)),  # Fixed
+    (0x0052F50B, call_rel32(0x00401879)),  # Fixed
     (0x0056F9DB, call_rel32(0x004017F9)),  # GameThing
     (0x0056FB0B, call_rel32(0x004017F9)),  # GameThing
     (0x005703CA, call_indirect(0x008A96E4)),  # GameThing: __imp__LHSampleSetVolume...

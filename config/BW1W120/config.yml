@@ -18,6 +18,11 @@ add_relocations:
     type: x86_abs32
     target: '?PacketTimeHistory@GGame@@2PAHA'
     addend: 0x28
+# MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
+  - source: 0x0052DD27
+    type: x86_abs32
+    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
+    addend: 0x410
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000

@@ -245,7 +245,7 @@ public:
 	virtual void SetNewWander(const MapCoords& param_1, int param_2, int param_3);
 	// BW1W120 0041acc0 BW1M119 0116eda0
 	virtual bool32_t DecideWhatToDo();
-	// BW1W120 0041a2b0 BW1M119 016da754
+	// BW1W120 0041a2b0 BW1M119 0107ec70
 	virtual void SetStateSpeed();
 	// BW1W120 0041b430 BW1M119 inlined
 	virtual bool IsFinalState(uint8_t state);

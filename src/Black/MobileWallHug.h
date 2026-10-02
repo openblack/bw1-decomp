@@ -38,6 +38,7 @@ class GameThing;
 struct GameThingVftable;
 struct GameThingWithPosVftable;
 struct LHPoint;
+class MultiMapFixed;
 struct ObjectVftable;
 
 struct GMoveBy
@@ -110,6 +111,11 @@ public:
 	MobileWallHug(const MapCoords& coords, const GMobileWallHugInfo* info);
 	// BW1W120 00474890 BW1M119 011e82a0
 	MobileWallHug();
+
+	// Static methods
+
+	// BW1W120 0060f850 BW1M119 013c9240
+	static void ProcessRemoveFromMap(MultiMapFixed* structure);
 
 	// Non-virtual methods
 

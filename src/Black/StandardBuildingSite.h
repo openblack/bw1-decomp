@@ -12,6 +12,7 @@ class Base;
 class GameOSFile;
 class GameThing;
 struct MapCoords;
+class MultiMapFixed;
 class Object;
 class Pot;
 class PotStructure;
@@ -55,6 +56,16 @@ public:
 	virtual void GetNextPosFromIndex(int* param_1);
 	// BW1W120 0043cde0 BW1M119 inlined
 	virtual void GetRandomBuildPos(Object* param_1, int* param_2);
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	StandardBuildingSite(MultiMapFixed* building) : BuildingSite(building) { SetToZero(); }
+
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 010e33a0
+	void SetToZero() { WoodPile = NULL; }
 };
 
 #endif /* BW1_DECOMP_STANDARD_BUILDING_SITE_INCLUDED_H */

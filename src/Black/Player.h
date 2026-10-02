@@ -167,7 +167,7 @@ public:
 	// BW1W120 0064aac0 BW1M119 010384e0
 	GInterfaceStatus* GetNextInterfaceStatus(GInterfaceStatus* param_1);
 	// BW1W120 0064ac00 BW1M119 01033050
-	bool IsNeutral();
+	bool32_t IsNeutral();
 	// BW1W120 0064ad00 BW1M119 0104fab0
 	float CalculateInfluencePower();
 	// BW1W120 0064b590 BW1M119 0149c420

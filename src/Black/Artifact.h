@@ -13,11 +13,14 @@ class GPlayer;
 class GameOSFile;
 class Town;
 class Villager;
+class WorshipSite;
 
 class TownArtifact : public GameThing
 {
 public:
-	uint8_t field_0x14[0x2c];
+	uint8_t field_0x14[0x14];
+	float   Value; /* 0x28 */
+	uint8_t field_0x2c[0x14];
 
 	// Override methods
 
@@ -46,6 +49,12 @@ public:
 
 	// BW1W120 004267f0 BW1M119 010b1220
 	bool IsReadyForParticleEffect();
+	// BW1W120 00426230 BW1M119 010b1af0
+	void RemoveFromTown();
+	// BW1W120 00426880 BW1M119 010b1070
+	bool32_t WillImpress(Town* town);
+	// BW1W120 004268b0 BW1M119 010b1000
+	bool32_t WillImpress(WorshipSite* site);
 };
 
 #endif /* BW1_DECOMP_ARTIFACT_INCLUDED_H */

@@ -597,7 +597,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/FireGraphic.cpp"),
             GameCodeObject(NonMatching, "Black/FishFarm.cpp"),
             GameCodeObject(NonMatching, "Black/FishFarmInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/Fixed.cpp"),
+            GameCodeObject(Matching, "Black/Fixed.cpp"),
             GameCodeObject(NonMatching, "Black/Flock.cpp"),
             GameCodeObject(NonMatching, "Black/Flower.cpp"),
             GameCodeObject(NonMatching, "Black/FlowersInfo.cpp"),

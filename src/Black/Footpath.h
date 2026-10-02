@@ -48,6 +48,8 @@ public:
 	static void FUN_00535a80(Point2D* param_1, MultiMapFixed* param_2, float point_x, float point_y);
 	// BW1W120 00537290 BW1M119 010ee810
 	static void SendFootpathsAroundObsticle(float radius, const MapCoords& coords);
+	// BW1W120 00537df0 BW1M119 010edd30
+	static void StopGoingRoundObsticle(float radius, const MapCoords& coords);
 	// BW1W120 00538340 BW1M119 010ed6d0
 	static void ConvertCreaturePlanToFootpath(RPHolder& holder, RPlan& plan, GFootpathNode* start, GFootpathNode* end,
 	                                          const MapCoords& coord);

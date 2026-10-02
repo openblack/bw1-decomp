@@ -99,9 +99,9 @@ public:
 	virtual int                 GetDontDraw();
 	virtual void __fastcall     SetCastDynamicShadow(int param_1);
 	virtual bool32_t            IsCastDynamicShadow();
-	virtual void                SetShadowOnTexture(int param_1); /* 0x80 */
+	virtual void __fastcall     SetShadowOnTexture(int param_1); /* 0x80 */
 	virtual bool32_t            IsShadowOnTexture();
-	virtual void                SetFootPrintOnTexture(int param_1);
+	virtual void __fastcall     SetFootPrintOnTexture(int param_1);
 	virtual bool32_t            IsFootPrintOnTexture();
 	virtual void                SetShadowOnTextureChroma(int param_1); /* 0x90 */
 	virtual bool32_t            IsShadowOnTextureChroma();

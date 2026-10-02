@@ -439,7 +439,7 @@ public:
 	// BW1W120 00405210 BW1M119 015832d0
 	virtual float GetTownArtifactValue();
 	// BW1W120 00405220 BW1M119 0116fb50
-	virtual bool32_t CanBecomeArtifact();
+	virtual bool CanBecomeArtifact();
 	// BW1W120 00405230 BW1M119 0116ebe0
 	virtual void DrawInHand(GInterfaceStatus* param_1);
 	// BW1W120 00405240 BW1M119 0106a010
@@ -486,6 +486,11 @@ public:
 	void ProcessDead(int param_1);
 	// BW1W120 0056fef0 BW1M119 011a5db0
 	bool32_t CheckAndSetSaved();
+	// BW1W120 inlined BW1M119 inlined
+	bool32_t IsUnavailableOrFlying() const
+	{
+		return (Flags & (GAME_THING_FLAG_UNAVAILABLE | GAME_THING_FLAG_PSYS_FLYING)) != 0;
+	}
 };
 
 #endif /* BW1_DECOMP_GAME_THING_INCLUDED_H */

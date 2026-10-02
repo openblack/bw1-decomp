@@ -30,6 +30,7 @@ class Base;
 class Citadel;
 class Creature;
 class Creche;
+class Fixed;
 class Flock;
 class GMultiMapFixedInfo;
 class GPlayer;
@@ -247,6 +248,8 @@ public:
 	void UpdateAggressor(const EffectValues& values, float aggressor_value);
 	// BW1W120 007399a0 BW1M119 015600a0
 	void AddStructureToTown(MultiMapFixed* structure);
+	// BW1W120 0073fda0 BW1M119 01553c50
+	TownArtifact* AddArtifact(Fixed* artifact, GPlayer* player);
 	// BW1W120 00739a20 BW1M119 01560040
 	void AddAbodeToTownStats(Abode* abode);
 	// BW1W120 00739a60 BW1M119 0155fd70

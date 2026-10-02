@@ -42,13 +42,17 @@ class Villager;
 
 struct MultiChild
 {
-	Object*   object; /* 0x0 */
-	JustMapXZ coords;
+	LHFastPointer<Object> object; /* 0x0 */
+	JustMapXZ             coords;
 
 	// Constructors
 
 	// BW1W120 inlined BW1M119 010e0e70
-	MultiChild();
+	MultiChild()
+	{
+		coords.Init(0, 0);
+		object.Clear();
+	}
 };
 
 struct MultiChildList
@@ -61,7 +65,19 @@ struct MultiChildList
 class MultiMapFixed : public Fixed
 {
 public:
-	uint8_t        field_0x58;
+	union {
+		uint8_t field_0x58;
+		struct
+		{
+			uint8_t Flag0x01 : 1;
+			// Created as a building site, cleared by Built.
+			uint8_t UnderConstruction : 1;
+			// Cleared by Repaired.
+			uint8_t Damaged : 1;
+			// Set by Built, or on creation when not a building site.
+			uint8_t Constructed : 1;
+		};
+	};
 	float          PercentBuilt;
 	uint32_t       field_0x60;
 	GFootpathLink* FootpathLink;
@@ -153,7 +169,7 @@ public:
 	// BW1W120 0052ef10 BW1M119 010e4500
 	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 	// BW1W120 0052e490 BW1M119 010e5d30
-	virtual bool IsObjectFullyInMap();
+	virtual bool32_t IsObjectFullyInMap();
 
 	// Virtual methods
 
@@ -251,7 +267,7 @@ public:
 	// Static methods
 
 	// BW1W120 0052dbc0 BW1M119 0103a9d0
-	static int CompareMultiChilds(MultiChild* param_1, MultiChild* param_2);
+	static int CompareMultiChilds(const void* param_1, const void* param_2);
 
 	// Constructors
 
@@ -263,7 +279,7 @@ public:
 
 	// Non-virtual Destructors
 
-	// BW1W120 0052e1c0 BW1M119 010e6330
+	// BW1W120 0052e280 BW1M119 010e6330
 	~MultiMapFixed();
 
 	// Non-virtual methods
@@ -276,6 +292,12 @@ public:
 	void AllocateMultiChild();
 	// BW1W120 0052f6d0 BW1M119 010e3110
 	void ReleaseCollideData();
+	// BW1W120 0052e3f0 BW1M119 010e6030
+	void SetBuildingSite(BuildingSite* site);
+	// BW1W120 0052edd0 BW1M119 010e48a0
+	void SetPercentBuilt(float percent);
+	// BW1W120 0052ef50 BW1M119 null
+	void UpdateFootpathLink();
 };
 
 #endif /* BW1_DECOMP_MULTI_MAP_FIXED_INCLUDED_H */

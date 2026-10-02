@@ -51,7 +51,12 @@ struct GLandscape
 		coords.altitude = 0.0f;
 	}
 	// BW1W120 inlined BW1M119 010aab80
-	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point);
+	static void ConvertAbsoluteMapCoordToLandscapePoint(const MapCoords& coords, LHPoint& point)
+	{
+		point.x = ((const LH3DMapCoords&)coords).WholeX() * (10.0f / (float)0x10000);
+		point.z = ((const LH3DMapCoords&)coords).WholeZ() * (10.0f / (float)0x10000);
+		point.y = coords.Altitude();
+	}
 	// BW1W120 005e3f60 BW1M119 010204d0
 	uint32_t PreDraw();
 	// Inliner IL size: 81

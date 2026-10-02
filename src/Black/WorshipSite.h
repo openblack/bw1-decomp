@@ -17,6 +17,8 @@
 class Base;
 class Creature;
 class Dance;
+class Fixed;
+class GPlayer;
 class GInterfaceStatus;
 class GTribeInfo;
 class GameOSFile;
@@ -169,6 +171,8 @@ public:
 	MapCoords* GetSpellIconPos(MapCoords* coords, int16_t* slot);
 	// BW1W120 0077bdb0 BW1M119 015b8130
 	int GetFood();
+	// BW1W120 0077db00 BW1M119 015b38b0
+	void AddArtifact(Fixed* artifact, GPlayer* player);
 	// BW1W120 0077c4d0 BW1M119 015b6fd0
 	void RemoveFromFoodOnTheWay(uint32_t amount);
 	// BW1W120 0077c430 BW1M119 015b7150

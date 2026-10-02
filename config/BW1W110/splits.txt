@@ -700,18 +700,20 @@ Black/FireFly.cpp:
 
 Black/FishFarm.cpp:
 	.text       start:0x00529DA0 end:0x0052B650
-	.rdata      start:0x008CA4E8 end:0x008CADB0
+	.rdata      start:0x008CA4E8 end:0x008CB6BC
 	.data       start:0x00BD9360 end:0x00BD9364
-	.bss        start:0x00CBEAA8 end:0x00CBEBE4
+	.bss        start:0x00CBEAA8 end:0x00CBEBE0
 
 Black/Fixed.cpp:
-	.text       start:0x0052B720 end:0x0052D230
-	.rdata      start:0x008CADB0 end:0x008CC884
-	.bss        start:0x00CBEBE4 end:0x00CBF000
+	.text       start:0x0052B650 end:0x0052D230
+	.rdata      start:0x008CB6BC end:0x008CD0EC
+	.CRT$XCU    start:0x009B65C8 end:0x009B65D8 align:4
+	.data       start:0x00BD93B0 end:0x00BD9410
+	.bss        start:0x00CBEBE0 end:0x00CBF000
 
 Black/Flock.cpp:
 	.text       start:0x0052D230 end:0x0052E910
-	.rdata      start:0x008CC884 end:0x008CD0F8
+	.rdata      start:0x008CD0EC end:0x008CD0F8
 	.bss        start:0x00CBF000 end:0x00CBF010
 
 Black/FootBall.cpp:

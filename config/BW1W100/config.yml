@@ -5,6 +5,13 @@ hash: d810fe43e2956f2b76533ab698632756ba99b44d
 symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 
+# MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
+add_relocations:
+  - source: 0x00504097
+    type: x86_abs32
+    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
+    addend: 0x410
+
 dead_strip: true
 # The original 1.0 link used /OPT:REF, which only collects COMDATs. Until the
 # reference graph is fully recovered, keep function sections plain so it cannot

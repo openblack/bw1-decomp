@@ -25,6 +25,15 @@ struct JustMapXZ
 	int16_t x; /* 0x0 */
 	int16_t z;
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 010358d0
+	JustMapXZ()
+	{
+		x = 0;
+		z = 0;
+	}
+
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 01035890
@@ -119,13 +128,14 @@ struct MapCoords : public LH3DMapCoords
 	bool32_t IsDryLand() const;
 	// BW1W120 00603720 BW1M119 0106a480
 	bool32_t IsLand() const;
-	// MapCoords::IsSuitableForFixed 9MESH_LISTff
-	// BW1W120 00603b30
-	void IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3);
+	// BW1W120 006038b0 BW1M119 015aa7d0
+	bool32_t IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3) const;
 	// BW1W120 00603dc0 BW1M119 01121940
 	void IsSuitableForFixed(Game3DObject* object) const;
 	// BW1W120 006045c0 BW1M119 0101c170
 	Object* FindType(OBJECT_TYPE type, Object* object) const;
+	// BW1W120 00604af0 BW1M119 013c9d50
+	Object* FindObject(bool32_t (Object::*is_suitable)(), float radius, Object* exclude) const;
 	// BW1W120 00605660 BW1M119 01089f30
 	// NOTE: mangled ??8MapCoords@@QBEIABU0@@Z proves const MapCoords& + const method (Rule 1);
 	// zero existing call sites depend on the old (wrong) pointer signature.

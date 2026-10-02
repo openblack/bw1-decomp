@@ -5,6 +5,12 @@ hash: ef763f2b88488d1099ca50379a1b9c904c316c0c
 symbols: config/BW1W110/symbols.txt
 splits: config/BW1W110/splits.txt
 
+# MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
+add_relocations:
+  - source: 0x0052B837
+    type: x86_abs32
+    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
+    addend: 0x410
 
 # TODO: Unsure why we get 0x832000, probably because of decryptor
 force_size: 0x00902a0b

@@ -647,6 +647,8 @@ public:
 	void SetPos(const LHPoint& pos);
 	// BW1W120 005705d0 BW1M119 0109a960
 	void SetToZero();
+	// BW1W120 inlined BW1M119 01032e80
+	bool32_t IsInMagicHand() const { return (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE) != 0; }
 	// BW1W120 00768540 BW1M119 0159c070
 	uint32_t AttitudeToCreatureNone();
 	// BW1W120 00768550 BW1M119 0159c020
