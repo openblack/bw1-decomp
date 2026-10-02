@@ -11,6 +11,11 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
     addend: 0x410
+# MOV ESI is the end of GMobileObjectInfo::InfoList for its destructor loop, not g_MobileObjectCheckSum.
+  - source: 0x005C22F7
+    type: x86_abs32
+    target: '?InfoList@GMobileObjectInfo@@2PAV1@A'
+    addend: 0x2280
 
 dead_strip: true
 # The original 1.0 link used /OPT:REF, which only collects COMDATs. Until the

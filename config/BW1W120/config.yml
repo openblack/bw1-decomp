@@ -23,6 +23,11 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
     addend: 0x410
+# MOV ESI is the end of GMobileObjectInfo::InfoList for its destructor loop, not g_MobileObjectCheckSum.
+  - source: 0x00606DE7
+    type: x86_abs32
+    target: '?InfoList@GMobileObjectInfo@@2PAV1@A'
+    addend: 0x2280
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000

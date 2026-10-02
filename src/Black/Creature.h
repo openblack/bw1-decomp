@@ -656,8 +656,8 @@ public:
 
 	// Override methods
 
-	// BW1W120 0050b370 BW1M119 010c36c0
-	virtual ~Creed();
+	// BW1W120 inlined BW1M119 010c36c0
+	virtual ~Creed() {}
 	// BW1W120 0050b3d0 BW1M119 010c3ae0
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0050b360 BW1M119 010c3800

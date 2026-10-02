@@ -754,7 +754,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Mist.cpp"),
             GameCodeObject(Matching, "Black/Mobile.cpp"),
             GameCodeObject(NonMatching, "Black/MobileInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/MobileObject.cpp"),
+            GameCodeObject(Matching, "Black/MobileObject.cpp"),
             GameCodeObject(NonMatching, "Black/MobileObjectInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MobileStatic.cpp"),
             GameCodeObject(NonMatching, "Black/MobileStaticInfo.cpp"),

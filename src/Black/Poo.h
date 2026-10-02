@@ -29,8 +29,8 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055d0c0 BW1M119 013c5ef0
-	virtual ~Poo();
+	// BW1W120 inlined BW1M119 013c5ef0
+	virtual ~Poo() {}
 	// BW1W120 0055d0b0 BW1M119 013c5fa0
 	virtual char* GetDebugText();
 	// BW1W120 0055d0a0 BW1M119 013c5f70
