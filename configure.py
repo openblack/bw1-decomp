@@ -184,9 +184,9 @@ config.lld_link_tag = "bw1-decomp-024"
 # LHAudio was linked against the SP4 libcmt (Rich header build 8797) in every
 # version, including 1.20 whose runblack and LHMultiplayer use SP5's.
 config.static_libs = {
-    "BW1W100": {"libcmt": "msvc6.4", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.0", "amaths": "amaths-2.0"},
-    "BW1W110": {"libcmt": "msvc6.4", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.0", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
-    "BW1W120": {"libcmt": "msvc6.5", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
+    "BW1W100": {"msvcrtd": "msvc6.5", "libcmt": "msvc6.4", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.0", "amaths": "amaths-2.0"},
+    "BW1W110": {"msvcrtd": "msvc6.5", "libcmt": "msvc6.4", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.0", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
+    "BW1W120": {"msvcrtd": "msvc6.5", "libcmt": "msvc6.5", "libcmt64": "msvc6.4:libcmt", "libcpmt": "msvc6.5", "libcimt": "msvc6.0", "amaths": "amaths-2.0", "libircmt": "icc-5.0.115"},
 }[config.version]
 
 config.context_keep_dirs = [
@@ -1864,6 +1864,8 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHDialogLib/version 1.0/LHProgressDialog.cpp"),
             Object(NonMatching, "Lionhead/LHDialogLib/version 1.0/LHSystemSpecDialog.cpp"),
             Object(NonMatching, "Lionhead/LHDialogLib/version 1.0/LHSystemSpecSummaryDialog.cpp"),
+            LibObject(Matching, "msvcrtd", "build\\intel\\xdll_obj\\atonexit.obj", module="LHDialog", progress_category="sdk"),
+            LibObject(Matching, "msvcrtd", "build\\intel\\xdll_obj\\crtdll.obj", module="LHDialog", progress_category="sdk"),
         ],
     },
 ]

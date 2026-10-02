@@ -10,4 +10,5 @@ ef08506f38ea430b9c8348e0f9d44385964ff4d6  build/BW1W100/LHMultiplayer.dll
 64a22b88a51adc4bc119777642263e419ea8d09e  build/BW1W100/LHDialog.dll
 05f7c53a28401bfa36cf3367142cde169aba330a  build/lib/libcmt.lib
 05f7c53a28401bfa36cf3367142cde169aba330a  build/lib/libcmt64.lib
+ef4fbf0eba7b3b91febb5aec91138c7517d0757d  build/lib/msvcrtd.lib
 bffeaaf36e3b656efb924d46eb11ae04b2fae5d1  build/lib/libcpmt.lib
