@@ -475,7 +475,6 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/ChannelBox.cpp"),
             GameCodeObject(NonMatching, "Black/Citadel.cpp"),
             GameCodeObject(NonMatching, "Black/CitadelBuildingSite.cpp"),
-            GameCodeObject(NonMatching, "Black/CitadelEntrance.cpp"),
             GameCodeObject(NonMatching, "Black/CitadelHeart.cpp"),
             GameCodeObject(NonMatching, "Black/CitadelHeartInfo.cpp"),
             GameCodeObject(NonMatching, "Black/CitadelInfo.cpp"),

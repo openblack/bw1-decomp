@@ -356,14 +356,14 @@ Black/Citadel.cpp:
 
 Black/CitadelHeart.cpp:
 	.text       start:0x00464290 end:0x004693C0
-	.rdata      start:0x008C7E68 end:0x008CA294
+	.rdata      start:0x008C7E68 end:0x008CAAF0
 	.CRT$XCU    start:0x009C629C end:0x009C62D0 align:4
 	.data       start:0x009CE9D0 end:0x009CEB68
 	.bss        start:0x00C5E26C end:0x00C5E3EC
 
 Black/CitadelPart.cpp:
 	.text       start:0x004693C0 end:0x00469960
-	.rdata      start:0x008CA294 end:0x008CB410
+	.rdata      start:0x008CAAF0 end:0x008CB410
 	.CRT$XCU    start:0x009C62D0 end:0x009C62D8 align:4
 	.bss        start:0x00C5E3EC end:0x00C5E494
 
