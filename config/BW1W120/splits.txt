@@ -1406,26 +1406,30 @@ Black/MapCoords.cpp:
 
 Black/Meeting.cpp:
 	.text       start:0x00606020 end:0x00606270
-	.rdata      start:0x00930084 end:0x00930594
+	.rdata      start:0x00930084 end:0x00930590
 	.CRT$XCU    start:0x009C6F14 end:0x009C6F1C align:4
 	.data       start:0x00BF41E0 end:0x00BF41FC
-	.bss        start:0x00D3833C end:0x00D3843C
+	.bss        start:0x00D3833C end:0x00D38340
 
 Black/Mist.cpp:
 	.text       start:0x00606270 end:0x00606B30
 	.CRT$XCU    start:0x009C6F1C end:0x009C6F20 align:4
-	.data       start:0x00BF41FC end:0x00BF4238
+	.data       start:0x00BF41FC end:0x00BF4218
 
 Black/Mobile.cpp:
 	.text       start:0x00606B30 end:0x00606D10
+	.rdata      start:0x00930590 end:0x009305C0
+	.rdata$r    start:0x009B1F98 end:0x009B1FE4
 	.CRT$XCU    start:0x009C6F20 end:0x009C6F28 align:4
+	.data       start:0x00BF4218 end:0x00BF4238
+	.bss        start:0x00D38340 end:0x00D38438
 
 Black/MobileObject.cpp:
 	.text       start:0x00606D10 end:0x006084A0
-	.rdata      start:0x00930594 end:0x0093060C
+	.rdata      start:0x009305C0 end:0x0093060C
 	.CRT$XCU    start:0x009C6F28 end:0x009C6F38 align:4
 	.data       start:0x00BF4238 end:0x00BF4280
-	.bss        start:0x00D3843C end:0x00D3EE60
+	.bss        start:0x00D38438 end:0x00D3EE60
 
 Black/MobileStatic.cpp:
 	.text       start:0x006084A0 end:0x00609790
