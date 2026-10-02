@@ -81,7 +81,7 @@ public:
 	// BW1W120 006014c0 BW1M119 011c6cb0
 	bool32_t Init(unsigned long x_size, unsigned long z_size, unsigned long flags);
 	// BW1W120 00601820 BW1M119 01568560
-	void CalculateMapInfluence();
+	void     CalculateMapInfluence();
 	uint8_t  Dirty : 1; /* 0x8 */
 	uint8_t  Initialised : 1;
 	uint8_t  field_0x9;
