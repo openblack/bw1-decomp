@@ -331,7 +331,7 @@ bool32_t GGame::Init()
 		Initialising = false;
 		return 0;
 	}
-	map.field_0x8 |= 2;
+	map.Initialised = true;
 	RenderLoadingFrame("Loading map script...");
 	PlayerInfluenceMultiplier = 1.0f;
 	TownInfluenceMultiplier = 1.0f;

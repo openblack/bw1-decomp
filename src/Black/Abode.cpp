@@ -65,7 +65,7 @@ Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* _town, float
 		_town->AddStructureToTown(this);
 		index = town->AbodeList.count - 1;
 	}
-	GGame::g_game->map.field_0x8 |= 1;
+	GGame::g_game->map.Dirty = true;
 	FindNearestDrinkingWater(200.0f);
 }
 

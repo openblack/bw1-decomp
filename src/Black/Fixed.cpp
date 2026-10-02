@@ -91,7 +91,7 @@ Fixed::Fixed(const MapCoords& coords, const GObjectInfo* info, float y_angle, fl
 {
 	SetToZero();
 	town_artifact = NULL;
-	GGame::g_game->map.field_0x8 |= 1;
+	GGame::g_game->map.Dirty = true;
 	SetYAngle(y_angle);
 	SetScale(scale);
 }
@@ -262,7 +262,7 @@ void MultiMapFixed::ToBeDeleted(int param_1)
 	GGame::g_game->GameLists.multi_map_fixed.Remove(this);
 	if (IsObjectInMap())
 	{
-		GGame::g_game->map.field_0x8 |= 1;
+		GGame::g_game->map.Dirty = true;
 	}
 	if (building_site != NULL)
 	{
