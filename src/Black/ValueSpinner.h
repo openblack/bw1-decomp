@@ -2,6 +2,7 @@
 #define BW1_DECOMP_VALUE_SPINNER_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t */
 #include <uchar.h>  /* For char16_t */
 
@@ -10,9 +11,8 @@
 
 #include "DrawingObject.h" /* For struct DrawingObject */
 
-class ValueSpinner : public DrawingObject
+struct ValueSpinner : public DrawingObject
 {
-public:
 	enum TEXTTYPE_ENUM
 	{
 	};
@@ -31,8 +31,27 @@ public:
 
 	// BW1W120 004382d0
 	virtual void UpdatePosition(float time);
-	// BW1W120 004382f0
-	virtual ~ValueSpinner();
+	// Inlined into ??_GValueSpinner@@UAEPAXI@Z (BW1W120 004382f0).
+	// BW1W120 inlined BW1M119 010b4c10
+	virtual ~ValueSpinner()
+	{
+		ValueSpinner* spinner = first;
+		if (spinner == this)
+		{
+			first = next;
+		}
+		else
+		{
+			for (; spinner->next != NULL; spinner = spinner->next)
+			{
+				if (spinner->next == this)
+				{
+					spinner->next = next;
+					break;
+				}
+			}
+		}
+	}
 	// BW1W120 00833cb0 BW1M119 01001120 (LHCombined Release)
 	ValueSpinner* Update(float time);
 	// BW1W120 00833ae0 BW1M119 010c1ca0 (LHCombined Release)

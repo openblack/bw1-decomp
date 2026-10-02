@@ -1,5 +1,5 @@
-#include "MapCellConstants.h"           /* For MetresPerMapCell */
-#include "GameTimeConstants.h"          /* For SecondsPerYear */
+#include "MapCellConstants.h"          /* For MetresPerMapCell */
+#include "GameTimeConstants.h"         /* For SecondsPerYear */
 #include "CreatureAttitudeConstants.h" /* For AttitudeFeedbackDecay */
 #include "Object.h"
 
@@ -73,16 +73,33 @@ static inline int RoundPhysicsCell(float value)
 	return result;
 }
 
-#ifdef VERSION_BW1W100
+#if defined(VERSION_BW1W100)
 #define OBJECT_SOURCE_FILE "C:\\dev\\black\\Object.cpp"
+#elif defined(VERSION_BW1W110)
+#define OBJECT_SOURCE_FILE "C:\\dev\\Black\\Object.cpp"
 #else
 #define OBJECT_SOURCE_FILE "C:\\dev\\MP\\Black\\Object.cpp"
 #endif
 
 static const float RouteMinRadius = 0.05f;
 
-GObjectInfo GObjectInfo::Infos[OBJECT_TYPE_LAST];
-GObjectInfo GObjectInfo::ComputerPlayerInfo;
+LHMatrix Object::StoredMatrix;
+
+// fabricated: unreferenced, zero-initialised 4-byte statics that only the Windows builds
+// have (BW1W120 00d44374 and 00d44378). As explicitly initialised statics, cl6 places them
+// after the hash-ordered .bss in declaration order, ahead of mulchSample.
+static uint32_t UnusedStatic0 = 0;
+static uint32_t UnusedStatic1 = 0;
+
+GObjectInfo GObjectInfo::Definitions[OBJECT_TYPE_LAST];
+
+// TODO: fabricated; five unrecovered counter slots so DefaultAIPlayerObjectInfo's guard lands on $S140.
+struct ObjectCounterPadBetween
+{
+	static int Pad0, Pad1, Pad2, Pad3, Pad4;
+};
+
+GObjectInfo GObjectInfo::DefaultAIPlayerObjectInfo;
 
 Object::Object() : info(NULL), coords()
 {
@@ -90,15 +107,6 @@ Object::Object() : info(NULL), coords()
 	fire_effect = NULL;
 	Flags = 0;
 	Game3dObject = NULL;
-}
-
-Object::~Object()
-{
-	if (Game3dObject != NULL)
-	{
-		Game3dObject->Release();
-		Game3dObject = NULL;
-	}
 }
 
 LH3DObject::ObjectType Object::Get3DType(MESH_LIST index)
@@ -146,6 +154,15 @@ void Object::Create3DObject()
 	Game3dObject->SetDynamicLighting(1);
 	Game3dObject->SetCastDynamicShadow(1);
 	Game3dObject->importance = GetImportance();
+}
+
+Object::~Object()
+{
+	if (Game3dObject != NULL)
+	{
+		Game3dObject->Release();
+		Game3dObject = NULL;
+	}
 }
 
 void Object::ToBeDeleted(int param_1)
@@ -204,8 +221,9 @@ void Object::InsertMapObject()
 	{
 		if ((GGame::g_game->field_0x14 & 0x8000) == 0x8000)
 		{
-			static char text[128];
-			sprintf(text, "JEREMY: very bad, object: %s inserted in map during clearmap!!!", GetDebugText());
+			// fabricated name: chosen to hash after Object::StoredMatrix in .bss.
+			static char message[128];
+			sprintf(message, "JEREMY: very bad, object: %s inserted in map during clearmap!!!", GetDebugText());
 		}
 		InsertMapObjectToCell(Pos.ToMap());
 		Flags |= GAME_THING_WITH_POS_FLAG_IN_MAP;
@@ -936,31 +954,6 @@ float Object::ReduceLifeDueToBurning(float param_1, GPlayer* param_2)
 	return GetLife();
 }
 
-void Object::DrawFireEffect()
-{
-	fire_effect->Draw();
-}
-
-void Object::SendDrawCollision()
-{
-	GGame::g_game->MyInterface()->SendObjectDrawCollision(this, 0.0f, NULL);
-}
-
-bool32_t Object::IsCitadelPart() const
-{
-	return info->type == OBJECT_TYPE_CITADEL;
-}
-
-bool32_t Object::IsPartOfTown() const
-{
-	return info->type == OBJECT_TYPE_ABODE;
-}
-
-bool32_t Object::IsPartOfForest() const
-{
-	return info->type == OBJECT_TYPE_FOREST_TREE;
-}
-
 bool32_t Object::IsOnFire()
 {
 	if (fire_effect != NULL)
@@ -1008,6 +1001,16 @@ float Object::GetHealEffect(EffectValues& values)
 		heal = effect;
 	}
 	return heal;
+}
+
+void Object::DrawFireEffect()
+{
+	fire_effect->Draw();
+}
+
+void Object::SendDrawCollision()
+{
+	GGame::g_game->MyInterface()->SendObjectDrawCollision(this, 0.0f, NULL);
 }
 
 bool32_t Object::IsTouching(Object* target, float epsilon)
@@ -1084,6 +1087,21 @@ bool32_t Object::IsCitadelPartOfPlayer(GPlayer* player)
 float Object::GetProjectileSpeed()
 {
 	return 0.0f;
+}
+
+bool32_t Object::IsCitadelPart() const
+{
+	return info->type == OBJECT_TYPE_CITADEL;
+}
+
+bool32_t Object::IsPartOfTown() const
+{
+	return info->type == OBJECT_TYPE_ABODE;
+}
+
+bool32_t Object::IsPartOfForest() const
+{
+	return info->type == OBJECT_TYPE_FOREST_TREE;
 }
 
 float Object::GetRadius()
@@ -2225,6 +2243,10 @@ void Object::DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* pa
 	GoolooGooloo(param_1);
 	param_1->ToBeDeleted(0);
 }
+
+// fabricated: unreferenced, zero-initialised Windows-only static (BW1W120 00d44380),
+// declared after mulchSample.
+static uint32_t UnusedStatic2 = 0;
 
 float Object::GetRadiusMultiplierForApplyingPotToPos()
 {

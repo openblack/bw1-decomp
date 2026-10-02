@@ -1208,14 +1208,14 @@ Black/Network.cpp:
 
 Black/Object.cpp:
 	.text       start:0x005E8810 end:0x005ECD40
-	.rdata      start:0x0086E2C0 end:0x0086EB84
+	.rdata      start:0x0086E2C0 end:0x0086EB80
 	.CRT$XCU    start:0x008F6B78 end:0x008F6B8C align:4
 	.data       start:0x00B21C98 end:0x00B21CF0
 	.bss        start:0x00C62254 end:0x00C65134
 
 Black/Object3D.cpp:
 	.text       start:0x005ECD40 end:0x005ED6F0
-	.rdata      start:0x0086EB84 end:0x0086EB88
+	.rdata      start:0x0086EB80 end:0x0086EB88
 	.CRT$XCU    start:0x008F6B8C end:0x008F6B94 align:4
 	.bss        start:0x00C65134 end:0x00C65140
 

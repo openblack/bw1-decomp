@@ -75,6 +75,36 @@ public:
 	static void OnClearMap();
 	// BW1W120 00c5fcf8 BW1M119 01a7e57c
 	static LHLinkedList<Creature*> CreatureList;
+#ifndef VERSION_BW1W120
+	// BW1W120 null BW1M119 01756bac
+	static uint32_t ImpressiveSpellDoneWhen[5];
+	// BW1W120 null BW1M119 01756cf0
+	static char FileName[0x88];
+	// BW1W120 null BW1M119 01a7e554
+	static uint32_t CheckSum3D;
+	// BW1W120 null BW1M119 01a7e558
+	static uint32_t DestPosCheckSum;
+	// BW1W120 null BW1M119 01a7e55c
+	static uint32_t PosCheckSum;
+	// BW1W120 null BW1M119 01a7e560
+	static uint32_t MentalMiscCheckSum;
+	// BW1W120 null BW1M119 01a7e564
+	static uint32_t MentalValueSystemCheckSum;
+	// BW1W120 null BW1M119 01a7e568
+	static uint32_t MentalDesiresCheckSum;
+	// BW1W120 null BW1M119 01a7e56c
+	static uint32_t MentalBeliefsCheckSum;
+	// BW1W120 null BW1M119 01a7e570
+	static uint32_t MentalAgendaCheckSum;
+	// BW1W120 null BW1M119 01a7e574
+	static bool32_t LeashOverridesScript;
+	// BW1W120 null BW1M119 01a7e578
+	static bool32_t CheatAgreeToAllRequests;
+	// BW1W120 null BW1M119 01a7e590
+	static Creature* CreatureBeingLogged;
+	// BW1W120 null BW1M119 01aa0944
+	static uint32_t CreatureActionIndex[0x40];
+#endif
 
 	char16_t                              name[0x40]; /* 0xe0 */
 	CreaturePhysical*                     physical;   /* 0x160 */

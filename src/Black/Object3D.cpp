@@ -1,3 +1,4 @@
+#include "CellSize.h" /* For CellSize, ahead of PI in .rdata */
 #include <Lionhead/LH3DLib/development/LH3DScaleConstants.h>
 #include <Lionhead/LH3DLib/development/LH3DMathConstants.h>
 #include "Game3DObject.h"

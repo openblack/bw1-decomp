@@ -502,8 +502,8 @@ public:
 	virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
 	// BW1W120 00768570 BW1M119 0159bf80
 	virtual uint32_t AttitudeToCreatureEating();
-	// BW1W120 inlined
-	virtual const char* GetText();
+	// BW1W120 purecall
+	virtual const char* GetText() = 0;
 	// BW1W120 00402200 BW1M119 011621d0
 	virtual float CalculateDesireForFood() { return 0.0f; }
 	// BW1W120 00402210 BW1M119 01106350

@@ -647,6 +647,14 @@ public:
 	// BW1W120 00639860 BW1M119 013dadd0
 	virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
 
+	// Static data
+
+	// fabricated name: write-only copy of a thrown tree's PhysicsObject matrix, taken by
+	// Tree::ReactToPhysicsImpact just before a wood store deletes the tree; nothing reads it
+	// in any shipped build. Its .bss hash has to sort ahead of InsertMapObject's message.
+	// BW1W120 00d414a8 BW1M119 01b3db78
+	static LHMatrix StoredMatrix;
+
 	// Static methods
 
 	// BW1W120 006364c0 BW1M119 013e1220
