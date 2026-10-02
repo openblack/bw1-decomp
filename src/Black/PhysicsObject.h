@@ -30,6 +30,14 @@ enum PHYSICS_OBJECT_FLAG
 	PHYSICS_OBJECT_FLAG_WAS_DISAPPEARING = 0x40,
 };
 
+struct PhysicsObjectHit
+{
+	uint8_t           field_0x0[0x18];
+	Object*           object; /* 0x18 */
+	uint8_t           field_0x1c[0x8];
+	GInterfaceStatus* status; /* 0x24 */
+};
+
 class PhysicsObject : public Base
 {
 public:
@@ -48,6 +56,9 @@ public:
 	// BW1W120 00644800 BW1M119 0111d080
 	static void RaiseUntilNotIntersecting(PhysicsObject** physics_object);
 
+	// BW1W120 00644f00 BW1M119 0111ccf0
+	Object* GetGameObjectWhoHitMe();
+
 	// BW1W120 00d47088 BW1M119 01a202b4
 	static PhysOb PredictionPhysOb;
 	// BW1W120 00d47824 BW1M119 01a20430
@@ -55,22 +66,24 @@ public:
 	// BW1W120 00d47828 BW1M119 01a202b0
 	static Object* PredictionObject;
 
-	uint8_t  field_0x8[0x20];
-	PhysOb   Physics; /* 0x28 */
-	uint8_t  field_0x1a4[0x4];
-	float    field_0x1a8;
-	uint32_t field_0x1ac;
-	uint32_t field_0x1b0;
-	uint32_t field_0x1b4;
-	float    field_0x1b8;
-	uint32_t field_0x1bc;
-	uint32_t field_0x1c0;
-	uint32_t field_0x1c4;
-	float    field_0x1c8;
-	uint32_t field_0x1cc;
-	uint32_t field_0x1d0;
-	uint32_t field_0x1d4;
-	uint32_t Flags;
+	uint8_t           field_0x8[0x18];
+	PhysicsObjectHit* field_0x20;
+	uint32_t          field_0x24;
+	PhysOb            Physics; /* 0x28 */
+	uint8_t           field_0x1a4[0x4];
+	float             field_0x1a8;
+	uint32_t          field_0x1ac;
+	uint32_t          field_0x1b0;
+	uint32_t          field_0x1b4;
+	float             field_0x1b8;
+	uint32_t          field_0x1bc;
+	uint32_t          field_0x1c0;
+	uint32_t          field_0x1c4;
+	float             field_0x1c8;
+	uint32_t          field_0x1cc;
+	uint32_t          field_0x1d0;
+	uint32_t          field_0x1d4;
+	uint32_t          Flags;
 
 	// Override methods
 

@@ -1096,10 +1096,11 @@ Black/Mobile.cpp:
 Black/MobileObject.cpp:
 	.text       start:0x005C2220 end:0x005C33B0
 	.rdata      start:0x0086DE88 end:0x0086DED4
-	.bss        start:0x00C59340 end:0x00C5FD68
+	.bss        start:0x00C59340 end:0x00C5B5D4
 
 Black/MobileStatic.cpp:
 	.text       start:0x005C33B0 end:0x005C4450
+	.bss        start:0x00C5B5D4 end:0x00C5FD68
 
 Black/MobileWallHug.cpp:
 	.text       start:0x005C4490 end:0x005CF950

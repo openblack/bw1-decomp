@@ -136,7 +136,7 @@ public:
 	// BW1W120 0074c390 BW1M119 0115df70
 	virtual float ApplyWaterSpell(SpellWater* param_1);
 	// BW1W120 0055d8f0 BW1M119 01161870
-	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
+	virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 0074b820 BW1M119 0115f7f0
 	virtual RESOURCE_TYPE GetResourceType();
 	// BW1W120 0074b7a0 BW1M119 0115f950

@@ -90,7 +90,7 @@ public:
 	// BW1W120 0055ccd0 BW1M119 01159650
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 0055cd20 BW1M119 011597c0
-	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
+	virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 00733750 BW1M119 01159ed0
 	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 00733810 BW1M119 01159c40

@@ -112,6 +112,8 @@ public:
 	GInterface* GetInterface();
 	// BW1W120 005dd1a0 BW1M119 013746a0
 	void Init(uint8_t player_number, GInterface* iface);
+	// BW1W120 005dc870 BW1M119 01375b90
+	void PlaceObjectInMagicHand(Object* object);
 };
 
 #endif /* BW1_DECOMP_INTERFACE_STATUS_INCLUDED_H */

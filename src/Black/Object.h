@@ -53,6 +53,15 @@ class SpellWater;
 class Town;
 class Villager;
 
+// fabricated names: results observed in MobileObject and FieldCrop's ApplyThisTo... methods.
+// TODO: recover the full result protocol and whether these values encode separate flags.
+enum OBJECT_APPLY_RESULT
+{
+	OBJECT_APPLY_RESULT_NONE = 0,
+	OBJECT_APPLY_RESULT_RESOURCE_TAKEN = 3,
+	OBJECT_APPLY_RESULT_THROWN = 0x16
+};
+
 struct PhysicsInitialisation
 {
 	PhysicsObject* Physics; /* 0x0 */
@@ -384,7 +393,7 @@ public:
 	// BW1W120 0063a8e0 BW1M119 013d8650
 	virtual float ApplyWaterSpell(SpellWater* spell);
 	// BW1W120 004192d0 BW1M119 010ad6e0
-	virtual bool IsResourceStore(RESOURCE_TYPE type);
+	virtual bool32_t IsResourceStore(RESOURCE_TYPE type);
 	// BW1W120 0063a930 BW1M119 013d85b0
 	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 0063aad0 BW1M119 013d82a0

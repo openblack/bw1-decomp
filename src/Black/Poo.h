@@ -19,6 +19,14 @@ class Object;
 class Poo : public MobileObject
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	Poo(const MapCoords& coords, const GMobileObjectInfo* info, Object* parent, float y_angle, float scale)
+		: MobileObject(coords, info, parent, y_angle, scale)
+	{
+	}
+
 	// Override methods
 
 	// BW1W120 0055d0c0 BW1M119 013c5ef0

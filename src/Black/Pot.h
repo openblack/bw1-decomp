@@ -86,7 +86,7 @@ public:
 	// BW1W120 0066f570 BW1M119 01120110
 	virtual float GetFoodValue(FOOD_TYPE param_1);
 	// BW1W120 0066f560 BW1M119 01120190
-	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
+	virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 0066dd30 BW1M119 01123ac0
 	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 0066f520 BW1M119 01120290
@@ -139,6 +139,12 @@ public:
 	// BW1W120 0066ce60 BW1M119 01126130
 	Pot(const MapCoords& param_1, const GPotInfo* param_2, uint32_t param_3, Town* param_4, float param_5,
 	    float param_6);
+
+	// Static methods
+
+	// BW1W120 0066cf10 BW1M119 01125c80
+	static Pot* Create(const MapCoords& coords, const GPotInfo* info, unsigned long resource, MultiMapFixed* param_4,
+	                   Town* town, int param_6, float param_7, float param_8, int param_9);
 
 	// Non-virtual methods
 

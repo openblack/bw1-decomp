@@ -103,7 +103,7 @@ public:
 	virtual bool32_t            IsShadowOnTexture();
 	virtual void __fastcall     SetFootPrintOnTexture(int param_1);
 	virtual bool32_t            IsFootPrintOnTexture();
-	virtual void                SetShadowOnTextureChroma(int param_1); /* 0x90 */
+	virtual void __fastcall     SetShadowOnTextureChroma(int param_1); /* 0x90 */
 	virtual bool32_t            IsShadowOnTextureChroma();
 	virtual void __fastcall     SetDisappear(int param_1);
 	virtual bool32_t            IsDisappear();

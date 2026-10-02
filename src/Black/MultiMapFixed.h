@@ -155,7 +155,7 @@ public:
 	// BW1W120 0052e890 BW1M119 010e5200
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0052f1f0 BW1M119 010e3d70
-	virtual bool IsResourceStore(RESOURCE_TYPE type);
+	virtual bool32_t IsResourceStore(RESOURCE_TYPE type);
 	// BW1W120 0052f460 BW1M119 010e3680
 	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 0052f210 BW1M119 010e3c60

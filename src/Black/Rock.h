@@ -75,7 +75,7 @@ public:
 	// BW1W120 00517f10 BW1M119 01045a20
 	virtual void Draw();
 	// BW1W120 00439710 BW1M119 010b6a70
-	virtual bool IsResourceStore(RESOURCE_TYPE param_1);
+	virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
 	// BW1W120 006e70c0 BW1M119 01145ef0
 	virtual RESOURCE_TYPE GetResourceType();
 	// BW1W120 006e7090 BW1M119 01145f30
