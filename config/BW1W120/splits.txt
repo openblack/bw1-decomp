@@ -1426,14 +1426,14 @@ Black/Mobile.cpp:
 
 Black/MobileObject.cpp:
 	.text       start:0x00606D10 end:0x006084A0
-	.rdata      start:0x009305C0 end:0x0093060C
+	.rdata      start:0x009305C0 end:0x00930608
 	.CRT$XCU    start:0x009C6F28 end:0x009C6F38 align:4
 	.data       start:0x00BF4238 end:0x00BF4260
 	.bss        start:0x00D38438 end:0x00D3A6CC
 
 Black/MobileStatic.cpp:
 	.text       start:0x006084A0 end:0x00609790
-	.rdata      start:0x0093060C end:0x00930658
+	.rdata      start:0x00930608 end:0x00930658
 	.CRT$XCU    start:0x009C6F38 end:0x009C6F40 align:4
 	.data       start:0x00BF4260 end:0x00BF42A4
 	.bss        start:0x00D3A6CC end:0x00D3EE60

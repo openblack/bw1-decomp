@@ -29,9 +29,17 @@
 #include "Setup.h"
 #include "re_common.h"
 
+#if defined(VERSION_BW1W100)
+#define MOBILE_OBJECT_SOURCE_FILE "C:\\dev\\black\\MobileObject.cpp"
+#elif defined(VERSION_BW1W110)
+#define MOBILE_OBJECT_SOURCE_FILE "C:\\dev\\Black\\MobileObject.cpp"
+#else
+#define MOBILE_OBJECT_SOURCE_FILE "C:\\dev\\MP\\Black\\MobileObject.cpp"
+#endif
+
 GMobileObjectInfo GMobileObjectInfo::InfoList[MOBILE_OBJECT_INFO_LAST];
 
-static uint32_t g_MobileObjectCheckSum;
+uint32_t g_MobileObjectCheckSum = 0;
 
 MobileObject::MobileObject(const MapCoords& coords, const GMobileObjectInfo* info, Object* parent, float y_angle,
                            float scale)
@@ -81,21 +89,19 @@ MobileObject* MobileObject::Create(const MapCoords& coords, const GMobileObjectI
 	MobileObject* mobileObject;
 	if (info == &GMobileObjectInfo::GetInfo()[MOBILE_OBJECT_INFO_LUMP_OF_POO])
 	{
-		mobileObject = new ("C:\\dev\\MP\\Black\\MobileObject.cpp", 97) Poo(coords, info, parent, y_angle, scale);
+		mobileObject = new (MOBILE_OBJECT_SOURCE_FILE, 97) Poo(coords, info, parent, y_angle, scale);
 	}
 	else if (info->MobileObjectType == MOBILE_OBJECT_INFO_CROP)
 	{
-		mobileObject =
-			new ("C:\\dev\\MP\\Black\\MobileObject.cpp", 101) FieldCrop(coords, info, parent, y_angle, scale);
+		mobileObject = new (MOBILE_OBJECT_SOURCE_FILE, 101) FieldCrop(coords, info, parent, y_angle, scale);
 	}
 	else if (info->MobileObjectType == MOBILE_OBJECT_INFO_CREED)
 	{
-		mobileObject = new ("C:\\dev\\MP\\Black\\MobileObject.cpp", 105) Creed(coords, info, parent, y_angle, scale);
+		mobileObject = new (MOBILE_OBJECT_SOURCE_FILE, 105) Creed(coords, info, parent, y_angle, scale);
 	}
 	else
 	{
-		mobileObject =
-			new ("C:\\dev\\MP\\Black\\MobileObject.cpp", 109) MobileObject(coords, info, parent, y_angle, scale);
+		mobileObject = new (MOBILE_OBJECT_SOURCE_FILE, 109) MobileObject(coords, info, parent, y_angle, scale);
 	}
 	if (mobileObject != NULL)
 	{
@@ -164,7 +170,6 @@ uint32_t MobileObject::SaveObject(LHOSFile& file, const MapCoords& origin)
 	char          text[0xc8];
 	char          coordText[0x64];
 	MobileObject* other;
-	float         scale;
 
 	uint32_t saved = CheckAndSetSaved();
 	if (saved)
@@ -172,7 +177,7 @@ uint32_t MobileObject::SaveObject(LHOSFile& file, const MapCoords& origin)
 		MapCoords relative = (&origin != NULL) ? (Pos - origin) : Pos;
 		if (object.Get() == NULL)
 		{
-			scale = GetScale();
+			float scale = GetScale();
 			float yAngle = GetYAngle();
 			sprintf(text, GSetup::GetCommandAsText(SCRIPT_FEATURE_COMMANDS_CREATE_MOBILEOBJECT),
 			        relative.ConvertToText(coordText), GetInfo() - GMobileObjectInfo::GetInfo(),
@@ -190,7 +195,7 @@ uint32_t MobileObject::SaveObject(LHOSFile& file, const MapCoords& origin)
 		}
 		else
 		{
-			return 0;
+			saved = 0;
 		}
 	}
 	return saved;
@@ -278,7 +283,7 @@ int MobileObject::SetupMoveAlongPath(SCRIPT_PATH path, float start, float end, i
 	{
 		GGame::g_game->GameLists.objects.Add(this);
 	}
-	Path = new ("C:\\dev\\MP\\Black\\MobileObject.cpp", 312) DataPath();
+	Path = new (MOBILE_OBJECT_SOURCE_FILE, 312) DataPath();
 	Path->scripted_camera = ScriptedCamera::Create(path);
 	Path->field_0x1c = end;
 	Path->field_0x20 = reverse;
@@ -560,7 +565,7 @@ void FieldCrop::ToBeDeleted(int delete_now)
 FieldCrop* FieldCrop::Create(const MapCoords& coords, const GMobileObjectInfo* info, Object* field, float y_angle,
                              float scale)
 {
-	FieldCrop* crop = new ("C:\\dev\\MP\\Black\\MobileObject.cpp", 634) FieldCrop(coords, info, field, y_angle, scale);
+	FieldCrop* crop = new (MOBILE_OBJECT_SOURCE_FILE, 634) FieldCrop(coords, info, field, y_angle, scale);
 	if (crop != NULL)
 	{
 		crop->CallVirtualFunctionsForCreation(coords);
@@ -571,9 +576,15 @@ FieldCrop* FieldCrop::Create(const MapCoords& coords, const GMobileObjectInfo* i
 		scale = crop->GetScale();
 		y_angle = crop->GetYAngle();
 		LH3DObject* object3d = crop->Game3dObject;
-		LHPoint     pos;
-		GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
-		object3d->SetPosition(pos, y_angle, scale);
+		LHPoint     unused0;
+		LHPoint     unused1;
+		LHPoint     unused2;
+		// The block scope lets pos.x load ahead of the inlined SetScale stores, as in Object::SetXYZAngles.
+		{
+			LHPoint pos;
+			GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
+			object3d->SetPosition(pos, y_angle, scale);
+		}
 		crop->Game3dObject->SetPaper(1);
 	}
 	return crop;

@@ -1095,7 +1095,9 @@ Black/Mobile.cpp:
 
 Black/MobileObject.cpp:
 	.text       start:0x005C2220 end:0x005C33B0
-	.rdata      start:0x0086DE88 end:0x0086DED4
+	.rdata      start:0x0086DE88 end:0x0086DED0
+	.CRT$XCU    start:0x008F6A58 end:0x008F6A64 align:4
+	.data       start:0x00B20E10 end:0x00B20E30
 	.bss        start:0x00C59340 end:0x00C5B5D4
 
 Black/MobileStatic.cpp:

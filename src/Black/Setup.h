@@ -34,7 +34,7 @@ public:
 	// win1.41 00715130 mac 1050c350 GSetup::GetCommandAsText(SCRIPT_FEATURE_COMMANDS)
 	static char* GetCommandAsText(SCRIPT_FEATURE_COMMANDS param_1);
 	// win1.41 00719610 mac 10507c70 GSetup::WriteToFile(void *, LHOSFile &, void *, unsigned long)
-	static uint32_t WriteToFile(void* param_1, LHOSFile& param_2, void* param_3, uint32_t param_4);
+	static uint32_t WriteToFile(void* param_1, LHOSFile& param_2, void* param_3, unsigned long param_4);
 	// win1.41 00719280 mac 10507ce0 GSetup::LoadTextScripts(void)
 	static int LoadTextScripts();
 	// win1.41 00715080 mac 1050c3d0 GSetup::LoadMapScript(void)

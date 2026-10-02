@@ -523,6 +523,15 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0056F9DB, call_rel32(0x004017F9)),  # GameThing
     (0x0056FB0B, call_rel32(0x004017F9)),  # GameThing
     (0x005703CA, call_indirect(0x008A96E4)),  # GameThing: __imp__LHSampleSetVolume...
+    (0x00606D5B, call_rel32(0x004017F9)),  # MobileObject
+    (0x00606ECA, call_indirect(0x008A9260)),  # MobileObject: __imp__GetLocaleInfoW@16
+    (0x0060714B, call_rel32(0x004017F9)),  # MobileObject
+    (0x0060755A, call_indirect(0x008A9774)),  # MobileObject: __imp__LHGlobalSwitch_LH_AudioSystem...
+    (0x006079EB, call_rel32(0x004017F9)),  # MobileObject
+    (0x00607BEB, call_rel32(0x004017F9)),  # MobileObject
+    (0x0060812B, call_rel32(0x004017F9)),  # MobileObject
+    (0x006083BB, call_rel32(0x004017F9)),  # MobileObject
+    (0x0060843A, call_indirect(0x008A9960)),  # MobileObject: __imp__BinkGetSummary@8
     (0x006362FB, call_rel32(0x004017F9)),  # Object
     (0x0063673B, call_rel32(0x004017F9)),  # Object
     (0x006377BB, call_rel32(0x004017F9)),  # Object
