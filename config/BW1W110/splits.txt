@@ -707,6 +707,7 @@ Black/FishFarm.cpp:
 Black/Fixed.cpp:
 	.text       start:0x0052B650 end:0x0052D230
 	.rdata      start:0x008CB6BC end:0x008CD0EC
+	.rdata$r    start:0x0099C2A0 end:0x0099C3DC
 	.CRT$XCU    start:0x009B65C8 end:0x009B65D8 align:4
 	.data       start:0x00BD93B0 end:0x00BD9410
 	.bss        start:0x00CBEBE0 end:0x00CBF000

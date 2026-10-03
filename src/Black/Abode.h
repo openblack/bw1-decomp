@@ -76,7 +76,7 @@ public:
 	// BW1W120 00401650 BW1M119 01176c50
 	virtual bool32_t GetShouldNotBeAddedToPlanned() { return (field_0x7c & 4) >> 2; }
 	// BW1W120 00401660 BW1M119 0111a380
-	virtual void SetShouldNotBeAddedToPlanned(bool value) { field_0x7c = (value & 1) << 2 | field_0x7c & ~4; }
+	virtual void SetShouldNotBeAddedToPlanned(bool32_t value) { field_0x7c = (value & 1) << 2 | field_0x7c & ~4; }
 	// BW1W120 00401690 BW1M119 01119c70
 	virtual void SetTown(Town* _town) { town = _town; }
 	// BW1W120 004016a0 BW1M119 01069320

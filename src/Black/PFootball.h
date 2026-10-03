@@ -39,7 +39,7 @@ public:
 	// BW1W120 00643960 BW1M119 inlined
 	virtual bool32_t IsPlaytimeStarted();
 	// BW1W120 00644200 BW1M119 inlined
-	virtual bool AddPlaytimeVillager(Villager* param_1);
+	virtual bool32_t AddPlaytimeVillager(Villager* param_1);
 	// BW1W120 006438f0 BW1M119 inlined
 	virtual bool32_t IsRepaired();
 	// BW1W120 00643910 BW1M119 inlined

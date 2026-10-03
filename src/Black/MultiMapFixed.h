@@ -25,6 +25,7 @@ class GMultiMapFixedInfo;
 class GPlayer;
 class GameOSFile;
 class GameThing;
+class Game3DObject;
 struct GameThingVftable;
 struct GameThingWithPosVftable;
 struct FragMesh;
@@ -92,7 +93,7 @@ public:
 	// BW1W120 00401540 BW1M119 01362a90
 	virtual MultiMapFixed* CastMultiMapFixed() { return this; }
 	// BW1W120 004015e0 BW1M119 015750f0
-	virtual bool32_t IsBeingBuilt(Creature* creature) { return !IsBuilt(); }
+	virtual bool32_t IsBeingBuilt(Creature* creature) { return IsBuilt() != true; }
 	// BW1W120 00401600 BW1M119 0157f8e0
 	virtual bool32_t NeedsRepair(Creature* creature) { return !IsRepaired(); }
 	// BW1W120 00401610 BW1M119 01387ed0
@@ -104,7 +105,7 @@ public:
 	// BW1W120 0052e2b0 BW1M119 010e60f0
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 004220a0 BW1M119 010a8ac0
-	virtual Town* GetTown();
+	virtual Town* GetTown() { return NULL; }
 	// BW1W120 0052eeb0 BW1M119 010e4630
 	virtual uint32_t GetNearestPathTo(const MapCoords& param_1, float param_2, int param_3);
 	// BW1W120 0052eec0 BW1M119 0109d350
@@ -125,13 +126,13 @@ public:
 	// BW1W120 0052f250 BW1M119 010e3af0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00421fe0 BW1M119 011ce950
-	virtual MapCoords GetArrivePos();
+	virtual MapCoords GetArrivePos() { return GetDoorPos(); }
 	// BW1W120 0052e480 BW1M119 010e5e30
 	virtual bool32_t IsObjectInMap();
 	// BW1W120 004e41c0 BW1M119 015ed920
 	virtual bool32_t IsBuildingWhichIsBeingBuilt(Creature* creature);
 	// BW1W120 00422050 BW1M119 010a8920
-	virtual bool32_t IsWonder();
+	virtual bool32_t IsWonder() { return false; }
 	// BW1W120 0052f590 BW1M119 010e32d0
 	virtual bool32_t CreateBuildingSite();
 	// BW1W120 0052e400 BW1M119 01036580
@@ -184,7 +185,7 @@ public:
 	// BW1W120 004014b0 BW1M119 0158e630
 	virtual bool32_t IsPlaytimeStarted() { return false; }
 	// BW1W120 004014c0 BW1M119 01137f90
-	virtual bool AddPlaytimeVillager(Villager* villager) { return false; }
+	virtual bool32_t AddPlaytimeVillager(Villager* villager) { return false; }
 	// BW1W120 0052e840 BW1M119 010e54b0
 	virtual void CheckMapObject();
 	// BW1W120 004014d0 BW1M119 01578a10
@@ -196,17 +197,17 @@ public:
 	// BW1W120 0052f010 BW1M119 010e41c0
 	virtual float GetPercentRepairedFromWhenDamaged();
 	// BW1W120 00438d70 BW1M119 0136d690
-	virtual bool32_t IsRepaired();
+	virtual bool32_t IsRepaired() { return true; }
 	// BW1W120 00438d80 BW1M119 0136d650
-	virtual bool32_t IsBuilt();
+	virtual bool32_t IsBuilt() { return true; }
 	// BW1W120 0052efc0 BW1M119 010e43d0
 	virtual float GetPercentRepairedForNonFunctional();
 	// BW1W120 0052efd0 BW1M119 010e4300
 	virtual float GetPercentForDrawBuilding();
 	// BW1W120 00422000 BW1M119 010a87b0
-	virtual float GetPercentAbodeFullWithAdults();
+	virtual float GetPercentAbodeFullWithAdults() { return 1.0f; }
 	// BW1W120 00422010 BW1M119 010a8800
-	virtual float GetPercentAbodeFullWithChildren();
+	virtual float GetPercentAbodeFullWithChildren() { return 1.0f; }
 	// BW1W120 0052f0c0 BW1M119 01043940
 	virtual bool IsDrawBuilding();
 	// BW1W120 0052ebb0 BW1M119 010e4d60
@@ -216,25 +217,25 @@ public:
 	// BW1W120 00401510 BW1M119 01577a00
 	virtual uint32_t GetBuildingSiteWood(uint32_t* param_1) { return 0; }
 	// BW1W120 00422020 BW1M119 010a8860
-	virtual FragMesh* GetDestructionMesh();
+	virtual FragMesh* GetDestructionMesh() { return NULL; }
 	// BW1W120 00422030 BW1M119 010a88a0
-	virtual float RemoveDamage();
+	virtual float RemoveDamage() { return 0.0f; }
 	// BW1W120 00401520 BW1M119 010625f0
 	virtual void* GetBuildingObject() { return this; }
 	// BW1W120 00422040 BW1M119 010a88e0
-	virtual bool32_t IsCivic();
+	virtual bool32_t IsCivic() { return false; }
 	// BW1W120 00422060 BW1M119 010a8960
-	virtual ABODE_TYPE GetAbodeType();
+	virtual ABODE_TYPE GetAbodeType() { return ABODE_TYPE_GENERAL; }
 	// BW1W120 00401550 BW1M119 014f0c10
 	virtual void SetPower(float power) {}
 	// BW1W120 00401560 BW1M119 01112de0
-	virtual MapCoords GetResourcePos(RESOURCE_TYPE type, int param_2) { return coords; }
+	virtual MapCoords GetResourcePos(RESOURCE_TYPE type, long param_2) { return Pos; }
 	// BW1W120 00401580 BW1M119 01112cf0
 	virtual bool IsPoisonedResource(RESOURCE_TYPE type) { return false; }
 	// BW1W120 00401590 BW1M119 01558af0
 	virtual MapCoords GetResourceNearestEdge(RESOURCE_TYPE type, Object* param_3, int param_4)
 	{
-		return GetResourcePos(type, param_4);
+		return GetResourcePos(type, -1);
 	}
 	// BW1W120 0052ece0 BW1M119 010e4a80
 	virtual float GetDesireToBeRepaired();
@@ -244,23 +245,29 @@ public:
 	virtual void RemoveFromPlayer() {}
 	// BW1W120 00422070 BW1M119 010a89a0
 	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool param_4,
-	                                  const MapCoords& coords, int param_6);
+	                                  const MapCoords& coords, int param_6)
+	{
+		return 0;
+	}
 	// BW1W120 00422080 BW1M119 010a8a10
-	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool* param_4);
+	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool* param_4)
+	{
+		return 0;
+	}
 	// BW1W120 004015d0 BW1M119 01177c30
 	virtual int CalulateAmountOverMaximum(RESOURCE_TYPE type) { return 0; }
-	// BW1W120 00422090 BW1M119 inlined
-	virtual void SetTown(Town* town);
+	// BW1W120 00422090 BW1M119 010a8a80
+	virtual void SetTown(Town* town) {}
 	// BW1W120 0052f160 BW1M119 010e3f30
 	virtual void RemovePotFromStructure(PotStructure* structure);
 	// BW1W120 004220b0 BW1M119 010a8b00
-	virtual bool32_t GetShouldNotBeAddedToPlanned();
+	virtual bool32_t GetShouldNotBeAddedToPlanned() { return false; }
 	// BW1W120 004220c0 BW1M119 010a8b50
-	virtual void SetShouldNotBeAddedToPlanned(bool value);
+	virtual void SetShouldNotBeAddedToPlanned(bool32_t value) {}
 	// BW1W120 0052ed40 BW1M119 010e4940
 	virtual void BuildBy(float amount);
 	// BW1W120 00438d90 BW1M119 010b5150
-	virtual PlannedMultiMapFixed* ConvertToPlanned();
+	virtual PlannedMultiMapFixed* ConvertToPlanned() { return NULL; }
 	// BW1W120 0052f550 BW1M119 010e33f0
 	virtual void CreateCollideData();
 
@@ -292,12 +299,18 @@ public:
 	void AllocateMultiChild();
 	// BW1W120 0052f6d0 BW1M119 010e3110
 	void ReleaseCollideData();
+	// BW1W120 inlined BW1M119 0111f050
+	const GMultiMapFixedInfo* GetInfo() const { return (const GMultiMapFixedInfo*)info; }
+	// BW1W120 inlined BW1M119 010a0550
+	BuildingSite* GetBuildingSite() { return building_site; }
 	// BW1W120 0052e3f0 BW1M119 010e6030
 	void SetBuildingSite(BuildingSite* site);
 	// BW1W120 0052edd0 BW1M119 010e48a0
 	void SetPercentBuilt(float percent);
 	// BW1W120 0052ef50 BW1M119 null
 	void UpdateFootpathLink();
+	// BW1W120 00517f90 BW1M119 010cd3c0
+	void DrawBuilding(Game3DObject* object);
 };
 
 #endif /* BW1_DECOMP_MULTI_MAP_FIXED_INCLUDED_H */
