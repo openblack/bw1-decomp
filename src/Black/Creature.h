@@ -186,8 +186,8 @@ public:
 	uint32_t                              field_0x10f0;
 	uint32_t                              field_0x10f4;
 	uint32_t                              field_0x10f8;
-	uint32_t                              field_0x10fc;
-	uint32_t                              field_0x1100;
+	uint32_t                              LastImpressiveDanceTurn;
+	uint32_t                              LastImpressiveDanceType;
 	uint32_t                              field_0x1104;
 	uint32_t                              field_0x1108;
 	uint32_t                              field_0x110c;
@@ -225,8 +225,8 @@ public:
 	uint8_t                               field_0x11f3;
 	uint32_t                              field_0x11f4;
 	uint32_t                              field_0x11f8;
-	uint32_t                              field_0x11fc;
-	MapCoords                             field_0x1200;
+	uint32_t                              HomeExists;
+	MapCoords                             HomePos;
 	uint32_t                              field_0x120c;
 	uint32_t                              field_0x1210;
 	MapCoords                             field_0x1214;
@@ -618,17 +618,203 @@ public:
 	void FinishActionUnsuccessfully(char* param_1, int param_2, int param_3);
 	// BW1W120 00477850 BW1M119 011e26b0
 	LH3DCreature* GetCreature3D();
+	// BW1W120 00479480 BW1M119 011df800
+	bool32_t HasFinishedBuildingHome();
+	// BW1W120 0049a7a0
+	bool32_t IsHomeUnderConstruction(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 0049a7c0
+	bool32_t HasNoHome(CreaturePlan& plan, CREATURE_ACTION action);
 	// BW1W120 0047c650 BW1M119 011d9fd0
 	void SetAnimationTimeModify(bool value);
 	// BW1W120 0047c690 BW1M119 011d9ef0
 	bool IsOnHomeTeam();
+	// BW1W120 0047d640 BW1M119 011d6ea0
+	GInterfaceStatus* GetNearestCameraInterfaceStatus();
+	// BW1W120 0047d740 BW1M119 011d6ce0
+	GInterfaceStatus* GetNearestHandInterfaceStatus();
 	// BW1W120 004c4450 BW1M119 01235990
 	void ForceActivityAndForceAction(CREATURE_DESIRES param_1, CreatureBelief* param_2, CREATURE_ACTION param_3,
 	                                 CreatureBelief* param_4, CreatureBelief* param_5, int param_6, int param_7);
 	// BW1W120 004c44b0 BW1M119 01235820
 	void ForceActivityAndForceAction(CreaturePlan& param_1, int param_2, int param_3);
+	// BW1W120 004c84b0 BW1M119 0123b450
+	void SetFaceForMoodFrightened();
+	// BW1W120 004c8500 BW1M119 0123b3a0
+	void SetFaceForMoodInPain();
+	// BW1W120 004c8550 BW1M119 0123b330
+	void SetFaceForMoodSad();
+	// BW1W120 004c8570 BW1M119 0123b280
+	void SetFaceForMoodIrritable();
+	// BW1W120 004c85c0 BW1M119 0123b210
+	void SetFaceForMoodLonely();
+	// BW1W120 004c85e0 BW1M119 0123b1a0
+	void SetFaceForMoodExhausted();
+	// BW1W120 004c8600 BW1M119 0123b130
+	void SetFaceForMoodHappy();
+	// BW1W120 004c8620 BW1M119 0123b080
+	void SetFaceForActionReflectAttitudeToPlayer();
+	// BW1W120 004c8660 BW1M119 0123af90
+	void SetFaceForActionCuriosity();
+	// BW1W120 004c86d0 BW1M119 0123aee0
+	void SetFaceForActionAnger();
+	// BW1W120 004c8720 BW1M119 0123ae80
+	void SetFaceForActionFear();
+	// BW1W120 004c8730 BW1M119 0123add0
+	void SetFaceForActionCompassion();
+	// BW1W120 004c8780 BW1M119 0123ad20
+	void SetFaceForActionPlayfulness();
+	// BW1W120 004c87d0 BW1M119 0123acb0
+	void SetFaceForActionSmile();
+	// BW1W120 004c87f0 BW1M119 0123ac40
+	void SetFaceForActionGrimace();
+	// BW1W120 004c8810 BW1M119 0123abd0
+	void SetFaceForActionGrowl();
+	// BW1W120 004c8830 BW1M119 0123ab60
+	void SetFaceForActionAmazed();
+	// BW1W120 004c8850 BW1M119 0123aaf0
+	void SetFaceForActionPuzzled();
+	// BW1W120 004c8870 BW1M119 0123aa70
+	void SetFaceForActionIdle();
+	// BW1W120 004d0bd0 BW1M119 012494b0
+	int LookWhileGoingTowardsObject(MapCoords* destination);
+	// BW1W120 004d0c80 BW1M119 012493a0
+	int LookWhileGoingTowardsPoint(MapCoords* destination);
+	// BW1W120 004d10a0 BW1M119 01248dd0
+	int LookDown(MapCoords* destination);
+	// BW1W120 004d10d0 BW1M119 01248d50
+	int LookStoned(MapCoords* destination);
+	// BW1W120 004d1100 BW1M119 01248cb0
+	int LookJustWokenUp(MapCoords* destination);
+	// BW1W120 004d1140 BW1M119 01248be0
+	int LookAtPartner(MapCoords* destination);
+	// BW1W120 004d11a0 BW1M119 01248b00
+	int LookAtDependents(MapCoords* destination);
+	// BW1W120 004d1220 BW1M119 01248a60
+	int LookAtObjectFlutteringEyelids(MapCoords* destination);
+	// BW1W120 004d1250 BW1M119 012489d0
+	int LookFrightened(MapCoords* destination);
+	// BW1W120 004d1280 BW1M119 01248830
+	int LookWhileRunningAwayFromObject(MapCoords* destination);
+	// BW1W120 004d1350 BW1M119 012486a0
+	int LookWhileRunningAwayFromHand(MapCoords* destination);
+	// BW1W120 004d1420 BW1M119 01248620
+	int LookAtPlayer(MapCoords* destination);
 	// BW1W120 004d1460 BW1M119 01248530
 	int LookAtPosition(MapCoords* destination);
+	// BW1W120 004d1510 BW1M119 012482f0
+	int LookAtObjectArgumentTop(MapCoords* destination);
+	// BW1W120 004d1640 BW1M119 012481f0
+	int LookAtObjectArgumentBottom(MapCoords* destination);
+	// BW1W120 004d16d0 BW1M119 01248050
+	int LookAtObjectArgument(MapCoords* destination);
+	// BW1W120 004d17e0 BW1M119 01247f10
+	int LookAtFlyingObject(MapCoords* destination);
+	// BW1W120 004d1870 BW1M119 01247e70
+	int LookAround(MapCoords* destination);
+	// BW1W120 004d18c0 BW1M119 01247d40
+	int LookAtHand(MapCoords* destination);
+	// BW1W120 004d1980 BW1M119 01247c20
+	int LookAtFeet(MapCoords* destination);
+	// BW1W120 004d1a30 BW1M119 01247af0
+	int LookAtCamera(MapCoords* destination);
+	// BW1W120 004d2940 BW1M119 015eae60
+	bool32_t CanCreatureCastSpell(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2a20 BW1M119 015eacd0
+	bool32_t CanCreatureCastImpressiveSpell(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2af0 BW1M119 015eaae0
+	bool32_t CanCreatureCastPowerUpSpell(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2b20 BW1M119 015ea8e0
+	bool32_t CanCreatureCastTeleport(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2b80 BW1M119 015ea860
+	bool32_t IsMatureEnoughToLeaveHome(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2ba0 BW1M119 015ea7c0
+	bool32_t IsTimeRipeForEatingFromFields(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2bc0 BW1M119 015ea730
+	bool32_t IsCreatureFarAwayFromCamera(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2bd0 BW1M119 015ea6a0
+	bool32_t DoesCreatureHaveACitadel(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2bf0 BW1M119 015ea630
+	bool32_t HasCreatureBeenAskedToPlayGame(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2c00 BW1M119 015ea590
+	bool32_t IsActivityObjectATown(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2c30 BW1M119 015ea4a0
+	bool32_t IsActivityObjectATownUnderAttack(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2c80 BW1M119 015ea400
+	bool32_t IsCreatureHealthyEnoughToFight(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2cb0 BW1M119 015ea300
+	bool32_t IsPlayerNearbyAndFrightening(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2d20 BW1M119 015ea240
+	bool32_t IsHandMoving(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2d60 BW1M119 015ea160
+	bool32_t NotTooFarFromHome(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2db0 BW1M119 015ea0c0
+	bool32_t LastDanceWasntToDanceToImpress(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2de0 BW1M119 015ea020
+	bool32_t LastDanceWasntDanceCreature(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2e10 BW1M119 015e9f80
+	bool32_t LastDanceWasntDanceStory(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2e40 BW1M119 015e9e80
+	bool32_t LeashedOrTooFarFromHome(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2ea0 BW1M119 015e9d70
+	bool32_t FriendIsDoingSomethingWorthFollowing(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2f20 BW1M119 015e9cb0
+	bool32_t IsCreatureAwayFromCentreOfScreen(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2f50 BW1M119 015e9ba0
+	bool32_t IsCreatureAwayFromHand(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d2ff0 BW1M119 015e9b20
+	bool32_t IsCreatureNotNearHome(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3000 BW1M119 015e9aa0
+	bool32_t IsCreatureNearHome(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3010 BW1M119 015e9a20
+	bool32_t HasCreatureBuiltHisHome(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3020 BW1M119 015e9990
+	bool32_t CreatureHasntRestedRecently(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3040 BW1M119 015e9900
+	bool32_t CreatureHasntWavedRecently(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3060 BW1M119 015e9860
+	bool32_t CreatureHasntScratchedRecently(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3080 BW1M119 015e97e0
+	bool32_t IsSunVisible(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d30a0 BW1M119 015e9770
+	bool32_t IsMoonVisible(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d30b0 BW1M119 015e9700
+	bool32_t IsSlightlyHungry(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d30e0 BW1M119 015e9690
+	bool32_t IsSlightlyThirsty(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3110 BW1M119 015e9610
+	bool32_t IsSlightlyInNeedOfAPoo(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3140 BW1M119 015e9580
+	bool32_t IsSlightlyContent(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3160 BW1M119 015e9510
+	bool32_t IsSlightlySleepy(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3190 BW1M119 015e9470
+	bool32_t IsNearWater(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d31d0 BW1M119 015e93f0
+	bool32_t IsCrossWithPlayer(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3200 BW1M119 015e9330
+	bool32_t IsHoldingOneOffSpellAggressive(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3230 BW1M119 015e9270
+	bool32_t IsHoldingOneOffSpellCompassionate(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3260 BW1M119 015e91b0
+	bool32_t IsHoldingOneOffSpellPlayful(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3290 BW1M119 015e90e0
+	bool32_t IsHoldingOneOffSpellToRestoreHealth(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d32c0 BW1M119 015e8ef0
+	bool32_t ShouldCreatureCastWaterOnHimself(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d32f0 BW1M119 015e8df0
+	bool32_t ShouldNearestTownBeAttacked(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3360 BW1M119 015e8cf0
+	bool32_t ShouldNearestTownBeHelped(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d33d0 BW1M119 015e8c50
+	bool32_t HasntDoneImpressiveAnimRecently(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004d3410 BW1M119 015e8bc0
+	bool32_t IsThereFishFarmNearby(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004e4490 BW1M119 015ed130
+	bool32_t NothingScareyNearHome(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004e44a0 BW1M119 015ed0b0
+	bool32_t NothingScareyNearMe(CreaturePlan& plan, CREATURE_ACTION action);
+	// BW1W120 004e4680 BW1M119 015ecc10
+	bool32_t CanCastAmusingSpellOnCreature(CreaturePlan& plan, CREATURE_ACTION action);
 	// BW1W120 004ea670 BW1M119 0127da80
 	void DecideOnNewPlan(CreaturePlan& param_1);
 	// BW1W120 004f6a90 BW1M119 0128d560

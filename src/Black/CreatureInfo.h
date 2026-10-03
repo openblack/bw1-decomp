@@ -19,7 +19,9 @@ public:
 	uint32_t field_0x208;
 	float    field_0x20c;
 	uint32_t field_0x210;
-	float    field_0x214[0x15];
+	float    field_0x214[0x11];
+	float    RunSpeed; /* 0x258 */
+	float    field_0x25c[0x3];
 	uint32_t field_0x268;
 	uint32_t field_0x26c;
 	uint32_t field_0x270;

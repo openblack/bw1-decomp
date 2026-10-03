@@ -14,13 +14,13 @@ class Base;
 class Creature;
 class EffectValues;
 class GInterfaceStatus;
+class GSpellSeedInfo;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 class LHOSFile;
 struct MapCoords;
 class Object;
-class SpellSeed;
 
 class OneOffSpellSeed : public MobileObject
 {
@@ -36,7 +36,7 @@ public:
 	// BW1W120 0055d140 BW1M119 0152eb30
 	virtual GComputerSeen* GetComputerSeen();
 	// BW1W120 0055d130 BW1M119 0152eaf0
-	virtual SpellSeed* CastOneOffSpellSeed();
+	virtual OneOffSpellSeed* CastOneOffSpellSeed();
 	// BW1W120 0055d160 BW1M119 0152ebb0
 	virtual char* GetDebugText();
 	// BW1W120 0072aa20 BW1M119 0152f250
@@ -50,19 +50,19 @@ public:
 	// BW1W120 0072ac80 BW1M119 0152edd0
 	virtual uint32_t GetOverwriteTapToolTip();
 	// BW1W120 004e48f0 BW1M119 015ec590
-	virtual uint32_t CanBeEatenByCreature(Creature* param_1);
+	virtual bool32_t CanBeEatenByCreature(Creature* param_1);
 	// BW1W120 004e4ab0 BW1M119 015ebf60
-	virtual uint32_t IsOneOffSpellBelongingToOtherPlayer(Creature* param_1);
+	virtual bool32_t IsOneOffSpellBelongingToOtherPlayer(Creature* param_1);
 	// BW1W120 0072ab00 BW1M119 0152f1c0
-	virtual uint32_t IsOneOffSpellAggressive(Creature* param_1);
+	virtual bool32_t IsOneOffSpellAggressive(Creature* param_1);
 	// BW1W120 0072ab20 BW1M119 0152f130
-	virtual uint32_t IsOneOffSpellCompassionate(Creature* param_1);
+	virtual bool32_t IsOneOffSpellCompassionate(Creature* param_1);
 	// BW1W120 0072ab40 BW1M119 0152f0a0
-	virtual uint32_t IsOneOffSpellPlayful(Creature* param_1);
+	virtual bool32_t IsOneOffSpellPlayful(Creature* param_1);
 	// BW1W120 0072ab60 BW1M119 0152f000
-	virtual uint32_t IsOneOffSpellToRestoreHealth(Creature* param_1);
+	virtual bool32_t IsOneOffSpellToRestoreHealth(Creature* param_1);
 	// BW1W120 004e4040 BW1M119 015ede70
-	virtual uint32_t IsStealableSpell(Creature* param_1);
+	virtual bool32_t IsStealableSpell(Creature* param_1);
 	// BW1W120 0072ac90 BW1M119 0152ed30
 	virtual HELP_TEXT GetQueryFirstEnumText();
 	// BW1W120 0072acb0 BW1M119 0152eca0
@@ -76,17 +76,22 @@ public:
 	// BW1W120 0072a450 BW1M119 0152fee0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0072a530 BW1M119 0152fdc0
-	virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 0072a630 BW1M119 0152fb20
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
 	// BW1W120 0072a640 BW1M119 0152f9c0
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 0072a520 BW1M119 0152fe90
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0072a920 BW1M119 0152f540
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 0072ab80 BW1M119 0152eec0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+
+	// Non-virtual methods
+
+	// BW1W120 0072a5f0 BW1M119 0152fc00
+	const GSpellSeedInfo* GetSeedInfo() const;
 };
 
 #endif /* BW1_DECOMP_ONE_OFF_SPELL_SEED_INCLUDED_H */

@@ -48,6 +48,8 @@ public:
 	// Non-virtual methods
 	// BW1W120 inlined BW1M119 01001310
 	uint32_t NumGameTicksPerSecond() { return 1000 / MillisecondsPerGameTurn; }
+	// BW1W120 inlined BW1M119 01103280
+	uint32_t ConvertRealWorldSecondsToGameTicks(float seconds) { return (uint32_t)(seconds * NumGameTicksPerSecond()); }
 	// BW1W120 005575a0 BW1M119 010695d0
 	float GetVisualTime();
 	// BW1W120 005575d0 BW1M119 01301870

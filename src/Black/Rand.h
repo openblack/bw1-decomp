@@ -6,7 +6,7 @@
 struct GRand
 {
 	// BW1W120 006de510 BW1M119 014d2790
-	static int GameRand(uint32_t max, const char* src_file, uint32_t src_line);
+	static uint32_t GameRand(uint32_t max, const char* src_file, uint32_t src_line);
 	// BW1W120 006de530 BW1M119 014d26d0
 	static float GameFloatRand(float scale, const char* src_file, uint32_t src_line);
 	// BW1W120 006de570 BW1M119 01047590

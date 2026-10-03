@@ -28,34 +28,34 @@ struct CreaturePerceivedPlayerDesires
 	CreaturePerceivedPlayerDesires_field_0x15c field_0x155c[0x11];
 };
 
-struct CreatureAttitudeToPlayer_field_0x1da4
+struct CreatureObservedPlayerAction
 {
-	DETECTED_PLAYER_ACTION detected_action; /* 0x0 */
-	GameThingWithPos*      game_thing;
+	DETECTED_PLAYER_ACTION Action; /* 0x0 */
+	GameThingWithPos*      Object;
 	uint32_t               field_0x8;
-	MAGIC_TYPE             magic_type;
+	MAGIC_TYPE             MagicType;
 };
 
 class CreatureAttitudeToPlayer : public Base
 {
 public:
-	uint32_t                              field_0x8;
-	uint32_t                              field_0xc;
-	uint32_t                              field_0x10;
-	uint32_t                              field_0x14;
-	uint32_t                              field_0x18;
-	uint32_t                              field_0x1c;
-	uint32_t                              field_0x20;
-	uint32_t                              field_0x24;
-	float                                 field_0x28;
-	uint32_t                              field_0x2c;
-	uint32_t                              field_0x30;
-	uint32_t                              field_0x34;
-	uint32_t                              field_0x38;
-	uint32_t                              field_0x3c;
-	CreaturePerceivedPlayerDesires        field_0x40;
-	uint8_t                               field_0x17bc[0x5e8];
-	CreatureAttitudeToPlayer_field_0x1da4 field_0x1da4;
+	uint32_t                       field_0x8;
+	uint32_t                       field_0xc;
+	uint32_t                       field_0x10;
+	uint32_t                       field_0x14;
+	float                          Attitude; /* 0x18 */
+	uint32_t                       field_0x1c;
+	uint32_t                       field_0x20;
+	uint32_t                       field_0x24;
+	float                          field_0x28;
+	uint32_t                       field_0x2c;
+	uint32_t                       field_0x30;
+	uint32_t                       field_0x34;
+	uint32_t                       field_0x38;
+	uint32_t                       field_0x3c;
+	CreaturePerceivedPlayerDesires field_0x40;
+	uint8_t                        field_0x17bc[0x5e8];
+	CreatureObservedPlayerAction   ObservedAction; /* 0x1da4 */
 
 	// Override methods
 

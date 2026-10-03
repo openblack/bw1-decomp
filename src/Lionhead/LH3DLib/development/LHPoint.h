@@ -101,6 +101,13 @@ struct LHPoint
 		y += other.y;
 		z += other.z;
 	}
+	// BW1W120 004c2b90 BW1M119 01003790
+	void Sub(const LHPoint& other)
+	{
+		x -= other.x;
+		y -= other.y;
+		z -= other.z;
+	}
 	// BW1W120 inlined BW1M119 01043e70
 	LHPoint operator*(float rhs) const { return LHPoint(x * rhs, y * rhs, z * rhs); }
 	// BW1W120 inlined BW1M119 inlined

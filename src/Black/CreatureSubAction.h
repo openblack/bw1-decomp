@@ -13,6 +13,7 @@
 // Forward Declares
 
 class Creature;
+class CreatureBelief;
 class SubArgument;
 
 class CreatureSubAction : public Base
@@ -73,13 +74,16 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 004ff240 BW1M119 012908a0
-	void AddSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2,
-	                  int (Creature::*param_3)(const void*, void*, MapCoords*),
-	                  void (Creature::*param_4)(const void*, void*));
+	void AddSubAction(CREATURE_SUB_STATE_ACTIONS action, SubArgument* argument,
+	                  int (Creature::*look_function)(MapCoords* destination), void (Creature::*face_function)());
+	// BW1W120 004ff4b0 BW1M119 01290510
+	void AddCastSpellSubAction(CreatureBelief* belief, unsigned long magic_type);
 	// BW1W120 004ff3a0 BW1M119 012907a0
-	void AddMainSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2,
-	                      int (Creature::*param_3)(const void*, void*, MapCoords*),
-	                      void (Creature::*param_4)(const void*, void*));
+	void AddMainSubAction(CREATURE_SUB_STATE_ACTIONS action, SubArgument* argument,
+	                      int (Creature::*look_function)(MapCoords* destination), void (Creature::*face_function)());
+	// BW1W120 004ff420 BW1M119 01290630
+	void AddOrder(Creature* creature, CREATURE_SUB_STATE_ACTIONS action, SubArgument* argument,
+	              int (Creature::*look_function)(MapCoords* destination), void (Creature::*face_function)());
 };
 
 #endif /* BW1_DECOMP_CREATURE_SUB_ACTION_INCLUDED_H */
