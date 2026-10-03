@@ -636,7 +636,7 @@ Black/EditorHug.cpp:
 	.rdata      start:0x008C8760 end:0x008C8950
 	.CRT$XCU    start:0x009B6540 end:0x009B6544 align:4
 	.data       start:0x00BD8698 end:0x00BD86F8
-	.bss        start:0x00CB5188 end:0x00CB51E0
+	.bss        start:0x00CB5170 end:0x00CB51E0
 
 Black/EditorIcon.cpp:
 	.text       start:0x0051DAD0 end:0x0051E950
@@ -1198,13 +1198,16 @@ Black/MobileObject.cpp:
 
 Black/MobileStatic.cpp:
 	.text       start:0x00602DC0 end:0x00604080
+	.rdata      start:0x009205D0 end:0x0092061C
 	.CRT$XCU    start:0x009B6AAC end:0x009B6AB0 align:4
+	.data       start:0x00BE3620 end:0x00BE3660
 	.bss        start:0x00D294E4 end:0x00D2DC78
 
 Black/MobileWallHug.cpp:
 	.text       start:0x006040C0 end:0x00611870
-	.rdata      start:0x009205D4 end:0x00920658
+	.rdata      start:0x0092061C end:0x00920658
 	.CRT$XCU    start:0x009B6AB8 end:0x009B6AC4 align:4
+	.data       start:0x00BE3660 end:0x00BE3688
 	.bss        start:0x00D2DC78 end:0x00D2DD14
 
 Black/MorphableObject.cpp:

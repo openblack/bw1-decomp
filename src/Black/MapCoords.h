@@ -121,6 +121,12 @@ struct MapCoords : public LH3DMapCoords
 	void SetZ(float _z) { SetWholeZ((long)(_z * (float)0x10000 / 10.0f)); }
 	// BW1W120 inlined BW1M119 0104d850
 	void SetWholeZ(long _z) { z = _z; }
+	// Inliner IL size: <= 40
+	// BW1W120 0060a010 BW1M119 inlined
+	void AddToWholeX(int dx) { SetWholeX(WholeX() + dx); }
+	// Inliner IL size: <= 40
+	// BW1W120 0060a020 BW1M119 inlined
+	void AddToWholeZ(int dz) { SetWholeZ(WholeZ() + dz); }
 	// BW1W120 inlined BW1M119 0104d890
 	void SetAltitude(long _altitude) { altitude = _altitude; }
 	// BW1W120 00603430 BW1M119 0104c540

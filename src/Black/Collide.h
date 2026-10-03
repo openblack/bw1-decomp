@@ -184,6 +184,21 @@ template <bool clockwise> struct IntersectIntervalCircle
 		compares[1] = compares[0];
 		compares[1].result = compares[0].result;
 	}
+	// BW1W120 inlined BW1M119 inlined
+	bool32_t operator<(IntersectIntervalCircle& other)
+	{
+		if (compares[1] < other.compares[0])
+		{
+			return true;
+		}
+		if (other.compares[1] < compares[0])
+		{
+			return false;
+		}
+		Resolve();
+		other.Resolve();
+		return compares[1] < other.compares[0];
+	}
 };
 
 struct CircleHugInfo

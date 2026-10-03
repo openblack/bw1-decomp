@@ -143,11 +143,11 @@ public:
 	// BW1W120 00612660 BW1M119 0150df10
 	MapCell* ToMap(long cell_x, long cell_z)
 	{
-		if (InBounds(cell_x, cell_z))
+		if (!InBounds(cell_x, cell_z))
 		{
-			return &cells[0][cell_x * CellExtentZx[0] + cell_z];
+			return NULL;
 		}
-		return NULL;
+		return &cells[0][cell_x * CellExtentZx[0] + cell_z];
 	}
 };
 
