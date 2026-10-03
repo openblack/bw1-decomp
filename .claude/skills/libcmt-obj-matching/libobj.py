@@ -259,8 +259,8 @@ def masked_pattern(section):
 # configure.py object list                                                    #
 # --------------------------------------------------------------------------- #
 LIBOBJ_RE = re.compile(
-    r'LibObject\((?P<match>Matching|NonMatching),\s*"(?P<arch>[^"]+)",\s*'
-    r'"(?P<member>[^"]+)"'
+    r'LibObject\((?P<match>Matching|NonMatching|MatchingFor\([^)]*\)),\s*"(?P<arch>[^"]+)",\s*'
+    r'"(?P<member>[^"]+)"(?P<rest>[^\n]*)'
 )
 
 
@@ -269,25 +269,41 @@ def list_libobjects():
     out = []
     for m in LIBOBJ_RE.finditer(text):
         member = m.group("member").encode().decode("unicode_escape")
+        match = m.group("match")
+        # MatchingFor("BW1W110", "BW1W120") -> the versions it is linked for.
+        # Such an entry is "matching" for the loop's purposes (no NonMatching
+        # backlog), but `matching_for` lets callers see which versions are
+        # still missing, e.g. for a backport.
+        mfor = None
+        if match.startswith("MatchingFor"):
+            mfor = re.findall(r'"(BW1W\d+)"', match)
+        mod = re.search(r'module="([^"]+)"', m.group("rest") or "")
         out.append({
-            "matching": m.group("match") == "Matching",
+            "matching": match == "Matching" or mfor is not None,
+            "matching_for": mfor,
+            "module": mod.group(1) if mod else None,
             "archive": m.group("arch"),
             "member": member,
             "basename": member.replace("\\", "/").rsplit("/", 1)[-1],
-            "unit": "lib/" + m.group("arch") + "/"
+            "unit": ("" if not mod else mod.group(1) + "/") + "lib/" + m.group("arch") + "/"
                     + member.replace("\\", "/").rsplit("/", 1)[-1],
         })
     return out
 
 
 def resolve_member(query):
-    """Map a basename / partial to the exact (archive, member) in configure.py."""
+    """Map a basename / partial to the exact (archive, member) in configure.py.
+    Prefers the runblack (non-module) entry when the same member is also linked
+    into a module DLL."""
     q = query.replace("\\", "/").rsplit("/", 1)[-1]
     if not q.endswith(".obj"):
         q += ".obj"
     matches = [o for o in list_libobjects() if o["basename"] == q]
     if not matches:
         return None
+    for o in matches:
+        if o["module"] is None:
+            return o
     return matches[0]
 
 
@@ -913,6 +929,32 @@ def discover_toolchain():
     return dtk, py
 
 
+def configure_args():
+    """The full argument list the last configure used (from build.ninja's
+    `configure_args`, joining ninja's `$`-newline continuations). Re-running
+    configure.py with only `--dtk` would make ninja try to re-download the
+    other tools on a machine that already has them."""
+    if not BUILD_NINJA.exists():
+        return []
+    txt = BUILD_NINJA.read_text()
+    m = re.search(r"^configure_args = (.*?)(?<!\$)\n", txt, re.M | re.S)
+    if not m:
+        return []
+    args = m.group(1).replace("$\n", " ").split()
+    # drop the recorded version selector; the caller passes its own `-v`.
+    out = []
+    skip = False
+    for a in args:
+        if skip:
+            skip = False
+            continue
+        if a in ("-v", "--version"):
+            skip = True
+            continue
+        out.append(a)
+    return out
+
+
 # --------------------------------------------------------------------------- #
 # apply  (the only writer)                                                    #
 # --------------------------------------------------------------------------- #
@@ -1001,6 +1043,12 @@ def apply_member(query, force=False, label=False):
         changed["configure"] = True
     elif f'LibObject(Matching, "{archive}", "{esc}"' in ctext:
         changed["already"].append("configure")
+    elif re.search(r'LibObject\(MatchingFor\([^)]*\), "' + re.escape(archive)
+                   + '", "' + re.escape(esc) + '"', ctext):
+        # Version-restricted entry: leave the MatchingFor(...) list alone here;
+        # widen it by hand (or with `promote`) once verify passes on the new
+        # version.
+        changed["already"].append("configure(MatchingFor)")
     else:
         return {"ok": False, "error": f"could not find LibObject line for {member}"}
 
@@ -1077,7 +1125,8 @@ def verify_one(version, dtk, py):
         result["tail"] = out[-2000:]
         return result
 
-    rc, out = _run([py, "configure.py", "-v", version, "--dtk", dtk])
+    args = configure_args() or ["--dtk", dtk]
+    rc, out = _run([py, "configure.py", "-v", version] + args)
     log.append(out)
     if rc != 0:
         result["stage"] = "configure"

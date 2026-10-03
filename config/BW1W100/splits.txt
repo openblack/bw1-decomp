@@ -2153,6 +2153,9 @@ lib/libcmt/onexit.obj:
 lib/libcmt/sprintf.obj:
 	.text       start:0x00733E17 end:0x00733E69 align:1
 
+lib/libcmt/ftol.obj:
+	.text       start:0x00733E6C end:0x00733E93 align:1
+
 lib/libcmt/toupper.obj:
 	.text       start:0x00733E93 end:0x00733FCE align:1
 
@@ -2230,6 +2233,9 @@ lib/libcmt/wcscmp.obj:
 lib/libcmt/asin.obj:
 	.text       start:0x007350E0 end:0x007351AB align:1
 	.data       start:0x00B4F920 end:0x00B4F928
+
+lib/libcmt/fread.obj:
+	.text       start:0x007351AB end:0x007352C2 align:1
 
 lib/libcmt/fwrite.obj:
 	.text       start:0x007352C2 end:0x00735400 align:1
@@ -2362,6 +2368,9 @@ lib/libcmt/strtok.obj:
 
 lib/libcmt/atof.obj:
 	.text       start:0x007370ED end:0x00737144 align:1
+
+lib/libcmt/swscanf.obj:
+	.text       start:0x00737144 end:0x00737180 align:1
 
 lib/libcmt/strstr.obj:
 	.text       start:0x00737180 end:0x00737200 align:1
