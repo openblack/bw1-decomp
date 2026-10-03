@@ -223,6 +223,20 @@ if _debug_directory_unit is not None:
     config.linker_provided_units = [_debug_directory_unit]
 elif args.debug:
     config.base_ldflags.append("/debug")
+# 1.00 was linked with /OPT:REF. Some of the CRT objects it links carry
+# unreferenced COMDATs that still name kernel32 imports the shipped exe never
+# uses (mlock's _lockerr_exit -> FatalAppExitA, winsig's signal ->
+# SetConsoleCtrlHandler, tidtable -> GetCurrentThread/TlsFree). link.exe
+# satisfied those from kernel32.lib and then discarded both the COMDAT and the
+# import. Our link has no import libraries (imports come from the split
+# .idata), so alias each dead reference onto an import the exe does have;
+# nothing live references the alias, so the image is unchanged.
+if config.version == "BW1W100":
+    for _dead_import in [
+        "__imp__FatalAppExitA@8",
+        "__imp__SetConsoleCtrlHandler@8",
+    ]:
+        config.base_ldflags.append(f"/alternatename:{_dead_import}=__imp__ExitProcess@4")
 config.reconfig_deps = []
 
 # Post-link patch: applies version-specific binary fixups after linking,
@@ -1212,7 +1226,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\realloc.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\slbeep.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\strrchr.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "..\\build\\intel\\mt_obj\\ieee87.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\ieee87.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\ulldiv.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\llmul.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\crt0dat.obj", progress_category="sdk"),
@@ -1221,7 +1235,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\llshl.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\llrem.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\mkdir.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\fputc.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\fputc.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\ungetc.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\fgetpos.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\fsetpos.obj", progress_category="sdk"),
@@ -1236,10 +1250,10 @@ config.libs = [
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\setlocal.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\memset.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\_file.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\fputwc.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\fputwc.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\ungetwc.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\fgetwc.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\mlock.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\fgetwc.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\mlock.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\nlsdata2.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\a_map.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\isctype.obj", progress_category="sdk"),
@@ -1307,7 +1321,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\cfin.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\winput.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\w_map.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\winsig.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\winsig.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\crt0msg.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\_getbuf.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\ftelli64.obj", progress_category="sdk"),

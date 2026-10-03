@@ -2391,6 +2391,9 @@ lib/libcmt/realloc.obj:
 lib/libcmt/strrchr.obj:
 	.text       start:0x007376C0 end:0x007376E7 align:1
 
+lib/libcmt/ieee87.obj:
+	.text       start:0x007376E7 end:0x00737850 align:1
+
 lib/libcmt/ulldiv.obj:
 	.text       start:0x00737850 end:0x007378C0 align:1
 
@@ -2445,6 +2448,9 @@ lib/libcmt/_file.obj:
 	.data       start:0x00B4FCE0 end:0x00B4FF60
 	.bss        start:0x00D5B2E0 end:0x00D5B2E4
 
+lib/libcmt/fputc.obj:
+	.text       start:0x007389A8 end:0x007389E3 align:1
+
 lib/libcmt/ungetc.obj:
 	.text       start:0x007389E3 end:0x00738A7A align:1
 
@@ -2460,8 +2466,19 @@ lib/libcmt/setvbuf.obj:
 lib/libcmt/fflush.obj:
 	.text       start:0x00738B63 end:0x00738CC9 align:1
 
+lib/libcmt/fputwc.obj:
+	.text       start:0x00738CC9 end:0x00738DEC align:1
+
 lib/libcmt/ungetwc.obj:
 	.text       start:0x00738DEC end:0x00738F03 align:1
+
+lib/libcmt/fgetwc.obj:
+	.text       start:0x00738F03 end:0x00739017 align:1
+
+lib/libcmt/mlock.obj:
+	.text       start:0x00739017 end:0x007390B6 align:1
+	.data       start:0x00B4FF60 end:0x00B50020
+	.bss        start:0x00D5B2E8 end:0x00D5B348
 
 lib/libcmt/nlsdata2.obj:
 	.bss        start:0x00D5B348 end:0x00D5B368 align:8
@@ -2674,6 +2691,10 @@ lib/libcmt/winput.obj:
 	.text       start:0x00741243 end:0x00741DB5 align:1
 	.data       start:0x00B52860 end:0x00B52870
 
+lib/libcmt/winsig.obj:
+	.text       start:0x00741DB5 end:0x00741F74 align:1
+	.bss        start:0x00D5B474 end:0x00D5B488
+
 lib/libcmt/crt0msg.obj:
 	.text       start:0x00741F74 end:0x00742100 align:1
 	.rdata      start:0x008D6998 end:0x008D6C88
@@ -2828,6 +2849,9 @@ lib/libcmt/x10fout.obj:
 
 lib/libcmt/mbschr.obj:
 	.text       start:0x0074653B end:0x007465D2 align:1
+
+lib/libcmt/strdup.obj:
+	.text       start:0x007465D2 end:0x007465FD align:1
 
 lib/libcmt/chsize.obj:
 	.text       start:0x007465FD end:0x00746722 align:1
