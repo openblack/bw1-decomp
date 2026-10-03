@@ -2075,8 +2075,12 @@ lib/libcpmt/_tolower.obj:
 lib/libcpmt/_toupper.obj:
 	.text       start:0x0072B7E7 end:0x0072B947 align:1
 
+lib/libcpmt/xmbtowc.obj:
+	.text       start:0x0072BA4E end:0x0072BC10 align:1
+	.bss        start:0x00D5ABD4 end:0x00D5ABE0 align:4
+
 Lionhead/LHFile/ver3.0/LHOSFile.cpp:
-	.text       start:0x0072BC10 end:0x0072C8A0
+	.text       start:0x0072BC10 end:0x0072C8A0 align:16
 	.data       start:0x00B4DEE0 end:0x00B4DF74
 
 Lionhead/LHFile/ver3.0/LHFile.cpp:
@@ -2739,6 +2743,15 @@ lib/libcmt/strpbrk.obj:
 	.text       start:0x00743310 end:0x0074334A align:1
 	.data       start:0x00B52988 end:0x00B52990 align:1
 
+lib/libcmt/nlsdata3.obj:
+	.bss        start:0x00D5B5B0 end:0x00D5B5D4
+
+lib/libcmt/getqloc.obj:
+	.text       start:0x0074334A end:0x00743BF1 align:1
+	.rdata      start:0x008D6C88 end:0x008D7310
+	.data       start:0x00B52990 end:0x00B53108
+	.bss        start:0x00D5B5D4 end:0x00D5B5F8
+
 lib/libcmt/closeall.obj:
 	.text       start:0x00743BF1 end:0x00743C72 align:1
 
@@ -2765,9 +2778,6 @@ lib/libcmt/_filwbuf.obj:
 
 lib/libcmt/mbtowc.obj:
 	.text       start:0x00744291 end:0x007443B7 align:1
-
-lib/libcmt/nlsdata3.obj:
-	.bss        start:0x00D5B5B0 end:0x00D5B5D4
 
 lib/libcmt/a_str.obj:
 	.text       start:0x007443B7 end:0x00744500 align:1

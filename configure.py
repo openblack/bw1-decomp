@@ -235,6 +235,8 @@ if config.version == "BW1W100":
     for _dead_import in [
         "__imp__FatalAppExitA@8",
         "__imp__SetConsoleCtrlHandler@8",
+        "__imp__GetCurrentThread@0",
+        "__imp__TlsFree@4",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_import}=__imp__ExitProcess@4")
 config.reconfig_deps = []
@@ -1141,7 +1143,7 @@ config.libs = [
             LibObject(MatchingFor("BW1W120"), "libcpmt", "build\\intel\\mt_obj\\fiopen.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\nomemory.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\xwctomb.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\xmbtowc.obj", progress_category="sdk"),
+            LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\xmbtowc.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\xstrcoll.obj", progress_category="sdk"),
 
             LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\fpinit.obj", progress_category="sdk"),
@@ -1300,7 +1302,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\read.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\write.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\timeset.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\tidtable.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\tidtable.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\tzset.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\gmtime.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\dtoxtime.obj", progress_category="sdk"),
@@ -1339,7 +1341,7 @@ config.libs = [
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\initcoll.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\strpbrk.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\nlsdata3.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcmt", "build\\intel\\mt_obj\\getqloc.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\getqloc.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\closeall.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\_flswbuf.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\wctomb.obj", progress_category="sdk"),
