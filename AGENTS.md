@@ -292,7 +292,7 @@ Maps each source file to its section address ranges, telling dtk how to split th
 - Member variables: `PascalCase`, no prefix (e.g., `AttachedThing`, `PreviousStatus`, `XOffset`, `FlashOn`). Real Lionhead headers show members are consistently `PascalCase` — not `snake_case`/`camelCase`, and never `m_`-prefixed. Member names don't survive in the binary, so where the true name is unknown, pick a readable `PascalCase` name.
 - Unknown members retain placeholder names like `field_0x7c`, `field_0x94`, encoding the hex offset.
 - Method names use PascalCase: `ArriveHome()`, `AddVillagerToAbode()`, `CalcRandomPos()`.
-- Distinguish recovered original names from descriptive names and provisional ownership in comments.
+- Use comments to record specific evidence or uncertainty about a name or provisional ownership when useful. Do not add blanket comments such as "Descriptive member names" or comments merely stating that names are inferred rather than original; readable names for reconstructed members are expected.
 
 ### Comments & annotations in the code
 
