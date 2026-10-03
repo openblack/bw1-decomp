@@ -79,8 +79,7 @@ struct LHKeyboard
 	int GetKeyValue(int& key, unsigned char& mod);
 	// BW1W120 007dcda0 BW1M119 0113e9f0 (LHCombined Release)
 	int SetKeyValue();
-	// TODO: fabricated name. SetupBox::SetOnHold/SetOffHold only fit the inline budget if this reset and
-	// CharRing::Clear are separate inline calls; the real names and owners are unknown.
+	// fabricated
 	// BW1W120 inlined BW1M119 inlined
 	void ClearKey() { CurrentKey = 0; }
 };
@@ -124,14 +123,14 @@ struct CharRing
 			used += 0x10;
 		return used;
 	}
-	// TODO: fabricated name (see LHKeyboard::ClearKey).
+	// fabricated
 	// BW1W120 inlined BW1M119 inlined
 	void Clear()
 	{
 		Tail = 0;
 		Head = 0;
 	}
-	// TODO: No out-of-line copy on either platform, so the real name is unknown.
+	// fabricated
 	// BW1W120 inlined BW1M119 inlined
 	int GetCharFromBuf()
 	{
