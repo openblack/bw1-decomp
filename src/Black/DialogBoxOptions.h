@@ -10,10 +10,10 @@
 
 class DialogBoxImmersion;
 class MiniDialogBoxOptions;
-class SetupBigButton;
-class SetupButton;
-class SetupCheckBox;
-class SetupSlider;
+struct SetupBigButton;
+struct SetupButton;
+struct SetupCheckBox;
+struct SetupSlider;
 
 class DialogBoxOptions : public DialogBoxBase
 {

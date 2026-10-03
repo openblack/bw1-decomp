@@ -55,6 +55,9 @@ public:
 	// BW1W120 00429d60 BW1M119 010001c0
 	void PlaySoundEffect(Base* param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4, int param_5, int param_6,
 	                     AUDIO_SFX_BANK_TYPE param_7);
+	// BW1W120 00429da0 BW1M119 01000240
+	void PlaySoundEffect(Base* param_1, unsigned long param_2, unsigned long param_3, unsigned long param_4,
+	                     int param_5, int param_6, LH_AudioBank* bank);
 	// BW1W120 00429e30 BW1M119 010230f0
 	void PlaySoundEffect(LH_SamplePlayOptions* options);
 	// BW1W120 0042a210 BW1M119 01187ba0

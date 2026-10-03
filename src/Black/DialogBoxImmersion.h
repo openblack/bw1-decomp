@@ -8,9 +8,9 @@
 
 // Forward Declares
 
-class SetupBigButton;
-class SetupButton;
-class SetupStaticText;
+struct SetupBigButton;
+struct SetupButton;
+struct SetupStaticText;
 
 class DialogBoxImmersion : public DialogBoxBase
 {

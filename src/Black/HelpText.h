@@ -69,7 +69,10 @@ struct HelpTextDataBase
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 010946e0
-	char16_t* GetHelpText(unsigned long index) const { return array[index < count && index != 0 ? index : 0].Text; }
+	char16_t* GetHelpText(unsigned long index) const
+	{
+		return (index >= count ? array : index > 0 ? &array[index] : array)->Text;
+	}
 };
 
 #endif /* BW1_DECOMP_HELP_TEXT_INCLUDED_H */

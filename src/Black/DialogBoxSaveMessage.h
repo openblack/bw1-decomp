@@ -6,9 +6,9 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
-class SetupButton;
-class SetupEdit;
-class SetupStaticText;
+struct SetupButton;
+struct SetupEdit;
+struct SetupStaticText;
 
 class DialogBoxSaveMessage : public DialogBoxBase
 {

@@ -5,15 +5,14 @@
 #include <uchar.h>  /* For char16_t */
 
 #include "Lionhead/LH3DLib/development/LH3DText.h" /* For enum TEXTJUSTIFY */
-#include "SetupStaticText.h"                       /* For struct SetupStaticText */
+#include "alexmfc.h"                               /* For struct SetupStaticText */
 
 // Forward Declares
 
-class SetupControl;
+struct SetupControl;
 
-class SetupStaticTextNoHit : public SetupStaticText
+struct SetupStaticTextNoHit : public SetupStaticText
 {
-public:
 	// Override methods
 
 	// BW1W120 00571f00 BW1M119 013311d0

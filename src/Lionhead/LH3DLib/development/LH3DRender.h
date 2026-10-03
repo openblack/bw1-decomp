@@ -46,8 +46,6 @@ struct LH3DRender
 	static uint32_t g_render_states[D3DRENDERSTATE_CLIPPLANEENABLE + 1];
 	// BW1W120 00eca614 BW1M119 012d1e00 (LHCombined Release)
 	static bool32_t g_b_need_tilling;
-	// BW1W120 00eca618
-	static void* g_set_render_mode_data;
 	// BW1W120 00eca620 BW1M119 012cf858 (LHCombined Release)
 	static bool32_t b_open;
 	// BW1W120 00eca638
@@ -56,7 +54,7 @@ struct LH3DRender
 	// BW1W120 0082f810 BW1M119 0102b030 (LHCombined Release)
 	static void DrawTriangle(Vertex3D* vertices, uint32_t param_2, uint16_t* param_3, uint32_t param_4);
 	// BW1W120 00412940 BW1M119 01049520
-	static int SetRenderState(D3DRENDERSTATETYPE type, uint32_t value);
+	static int SetRenderState(D3DRENDERSTATETYPE type, unsigned long value);
 	// BW1W120 inlined BW1M119 inlined
 	static int GetRenderState(D3DRENDERSTATETYPE type, uint32_t& value);
 	// BW1W120 0082b220 BW1M119 0103c670 (LHCombined Release)
@@ -68,7 +66,7 @@ struct LH3DRender
 	// BW1W120 0082b570 BW1M119 010a5b30 (LHCombined Release)
 	static bool32_t Close();
 	// BW1W120 0082b9c0 BW1M119 0102dc80 (LHCombined Release)
-	static int SetTextureStageState(uint32_t index, D3DTEXTURESTAGESTATETYPE type, uint32_t value);
+	static int SetTextureStageState(unsigned long stage, D3DTEXTURESTAGESTATETYPE type, unsigned long value);
 	// BW1W120 0082cd80 BW1M119 010a30f0 (LHCombined Release)
 	static bool32_t OpenD3D();
 	// BW1W120 0082d3f0 BW1M119 010a2fa0 (LHCombined Release)
@@ -89,6 +87,57 @@ struct LH3DRender
 	// BW1W120 0082f460 BW1M119 0101f090 (LHCombined Release)
 	static void FinishFrame();
 };
+
+inline int LH3DRender::SetRenderState(D3DRENDERSTATETYPE type, unsigned long value)
+{
+	HRESULT result = S_OK;
+
+	if (g_render_states[type] != value)
+	{
+		result = Direct3DDevice7->SetRenderState(type, value);
+		if (result != S_OK)
+		{
+			value = 0xffffffff;
+		}
+		g_render_states[type] = value;
+	}
+	return result;
+}
+
+inline int LH3DRender::GetRenderState(D3DRENDERSTATETYPE type, uint32_t& value)
+{
+	HRESULT result = S_OK;
+
+	if (g_render_states[type] == 0xffffffff)
+	{
+		result = Direct3DDevice7->GetRenderState(type, (LPDWORD)&value);
+		if (result == S_OK)
+		{
+			g_render_states[type] = value;
+		}
+		else
+		{
+			g_render_states[type] = 0xffffffff;
+		}
+	}
+	else
+	{
+		value = g_render_states[type];
+	}
+	return result;
+}
+
+inline int LH3DRender::SetTextureStageState(unsigned long stage, D3DTEXTURESTAGESTATETYPE type, unsigned long value)
+{
+	HRESULT result = S_OK;
+
+	if (g_texture_stage_state[(stage << 8) + type] != value)
+	{
+		result = Direct3DDevice7->SetTextureStageState(stage, type, value);
+		g_texture_stage_state[(stage << 8) + type] = result != S_OK ? 0xffffffff : value;
+	}
+	return result;
+}
 
 // Original free symbol imported by the Mac executable.
 // BW1W120 00c386d0 BW1M119 011d0de8 (LHCombined Release)

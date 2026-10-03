@@ -8,8 +8,8 @@
 
 // Forward Declares
 
-class SetupBox;
-class SetupControl;
+struct SetupBox;
+struct SetupControl;
 
 class DialogBoxBase
 {
@@ -17,6 +17,8 @@ public:
 	// Descriptive name for the intrusive dialog list.
 	// BW1W120 00cc6298
 	static DialogBoxBase* First;
+	// BW1W120 00cc629c
+	static DialogBoxBase* LastShown;
 	SetupBox*             setup_box; /* 0x4 */
 	uint8_t               field_0x8;
 	uint8_t               field_0x9;
@@ -50,6 +52,8 @@ public:
 
 	// BW1W120 005136e0 BW1M119 012b50d0
 	static void HideAll();
+	// BW1W120 00513680 BW1M119 012b5290
+	static void UpdateLastShown(SetupBox* box);
 
 	// Non-virtual methods
 	// BW1W120 00513770 BW1M119 012b5060

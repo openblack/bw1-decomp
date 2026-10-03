@@ -130,6 +130,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 005d8a10 BW1M119 0136f240
+	void StartImmersion(IMMERSION_EFFECT_TYPE type, unsigned long param_2);
 	// BW1W120 005d8af0 BW1M119 0136f110
 	void StopAllImmersion();
 	// BW1W120 005d56c0 BW1M119 0107d9c0

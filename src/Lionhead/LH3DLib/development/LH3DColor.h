@@ -18,6 +18,14 @@ struct LH3DColor
 	// BW1W120 inlined BW1M119 01086020
 	// White's per-TU startup initialisers store the packed color as one DWORD.
 	LH3DColor(uint32_t color) { *(uint32_t*)this = color; }
+	// BW1W120 inlined BW1M119 0101d380
+	LH3DColor(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha)
+	{
+		b = blue;
+		g = green;
+		r = red;
+		a = alpha;
+	}
 
 	// Non-virtual methods
 

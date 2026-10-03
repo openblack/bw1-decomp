@@ -79,6 +79,10 @@ struct LHKeyboard
 	int GetKeyValue(int& key, unsigned char& mod);
 	// BW1W120 007dcda0 BW1M119 0113e9f0 (LHCombined Release)
 	int SetKeyValue();
+	// TODO: fabricated name. SetupBox::SetOnHold/SetOffHold only fit the inline budget if this reset and
+	// CharRing::Clear are separate inline calls; the real names and owners are unknown.
+	// BW1W120 inlined BW1M119 inlined
+	void ClearKey() { CurrentKey = 0; }
 };
 
 enum LH_KEY_SCAN_CODE
@@ -110,28 +114,75 @@ struct CharRing
 	int Buffer[16]; /* 0x00 */
 	int Head;       /* 0x40 */
 	int Tail;       /* 0x44 */
+
+	// The Mac declares this on LHKeyboard, which suggests the ring is really the tail of that class.
+	// BW1W120 inlined BW1M119 0115fd60 (LHCombined Release)
+	int GetNumCharsInBuf()
+	{
+		int used = Head - Tail;
+		if (used < 0)
+			used += 0x10;
+		return used;
+	}
+	// TODO: fabricated name (see LHKeyboard::ClearKey).
+	// BW1W120 inlined BW1M119 inlined
+	void Clear()
+	{
+		Tail = 0;
+		Head = 0;
+	}
+	// TODO: No out-of-line copy on either platform, so the real name is unknown.
+	// BW1W120 inlined BW1M119 inlined
+	int GetCharFromBuf()
+	{
+		if (Head == Tail)
+			return 0;
+		int c = Buffer[Tail];
+		Tail = (Tail + 1) & 0xF;
+		return c;
+	}
 };
 
-struct Q24slim5TbIME
+namespace slim
+{
+// The IME helper, constructed on window creation (LHSystem.cpp).
+struct TbIME
 {
 	void* field_0x0;
+
+	// Constructors
+
+	// BW1W120 007f3b80 BW1M119 01172120 (LHCombined Release)
+	TbIME();
+
+	// Static methods
+
+	// BW1W120 007f42b0 BW1M119 01171cb0 (LHCombined Release)
+	static int ConvertCHAR8toCHAR16(char c);
 
 	// Non-virtual methods
 
 	// BW1W120 007f3d00 BW1M119 01172070 (LHCombined Release)
-	void Activate(HWND param_1);
-	// BW1W120 007f3d10 BW1M119 011ca6c0 (LHCombined Release)
+	void Activate(void* window);
+	// BW1W120 007f3d10 BW1M119 01172030 (LHCombined Release)
 	void UnActivate();
+	// Returns a byte (callers test al, not eax).
+	// BW1W120 007f3d20 BW1M119 01171fe0 (LHCombined Release)
+	bool ProcessMessage(HWND wnd, UINT& msg, WPARAM& w, LPARAM& l, LRESULT& result);
 	// BW1W120 007f3d50 BW1M119 01171fa0 (LHCombined Release)
 	wchar_t* Composition_Get();
+	// BW1W120 007f3d70 BW1M119 01171eb0 (LHCombined Release)
+	wchar_t* CandidateList_GetItem(unsigned int index);
 	// BW1W120 007f3dc0 BW1M119 01171e60 (LHCombined Release)
-	uint32_t CandidateList_GetSelectIdx();
-	// BW1W120 007f3de0 BW1M119 011ca6f8 (LHCombined Release)
-	void CandidateList_SetViewWindow(uint32_t param_1, uint32_t param_2, uint32_t idx);
+	int CandidateList_GetSelectIdx();
+	// BW1W120 007f3de0 BW1M119 01171e10 (LHCombined Release)
+	void CandidateList_SetViewWindow(unsigned int param_1, unsigned int param_2, unsigned int idx);
+	// BW1W120 007f3e40 BW1M119 01171d70 (LHCombined Release)
+	bool CandidateList_HasContentsChanged();
+	// BW1W120 007f40c0 BW1M119 01171f00 (LHCombined Release)
+	int CandidateList_GetSize();
 };
-
-// The IME helper wrapper (slim::TbIME), constructed on window creation (LHSystem.cpp).
-struct TbIMEWrapper;
+} // namespace slim
 
 struct LHSys
 {
@@ -168,7 +219,7 @@ struct LHSys
 	uint8_t          AltTabPending;      /* 0x70bb */
 	int              AppMinimized;       /* 0x70bc */
 	int              AppMinimizedByUs;   /* 0x70c0 */
-	TbIMEWrapper*    TbIME;              /* 0x70c4 */
+	slim::TbIME*     TbIME;              /* 0x70c4 */
 	uint8_t          MouseThreadRunning; /* 0x70c8 */
 	uint8_t          TerminateRequested; /* 0x70c9 */
 	uint8_t          _pad70ca[2];

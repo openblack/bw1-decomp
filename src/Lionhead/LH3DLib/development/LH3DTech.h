@@ -20,9 +20,9 @@ class LH3DTech
 {
 public:
 	// Original Mac imported names; storage remains extracted.
-	static InfoTransform g_info_transform; // 00e839e4
+	static InfoTransform g_info_transform; // 00e839e0
 	static LHPoint       g_camera;         // 00ea1db8
-	static uint32_t      g_delta_time;     // 00c38134
+	static int           g_delta_time;     // 00c38134
 	// Original Mac import g_timer__8LH3DTech; no timer storage here.
 	// BW1W120 00ea1b78 BW1M119 012d3e80 (LHCombined Release)
 	static LHTimer g_timer;
@@ -69,20 +69,21 @@ public:
 
 struct InfoTransform
 {
-	struct LHCoord resolution; /* 0x0 */
+	float          NearClip;   /* 0x0 */
+	struct LHCoord resolution; /* 0x4 */
 	float          AspectRatioXOverY;
-	struct Point2D HalfRes;
-	struct Point2D InvHalfRes; /* 0x14 */
+	struct Point2D HalfRes; /* 0x10 */
+	struct Point2D InvHalfRes;
 	float          InvHalfTanFovY;
-	float          InvHalfTanFovX; /* 0x20 */
-	float          CosHalfFovSqr;
-	float          field_0x28;
+	float          InvHalfTanFovX;
+	float          CosHalfFovSqr; /* 0x28 */
+	float          field_0x2c;
 	float          CosHalfFov;
-	float          field_0x30;
+	float          field_0x34;
 	float          InvAspectSqrHypoInvTimesInvAspect;
 	float          InvAspectSqrHypoInv;
 };
-static_assert(sizeof(InfoTransform) == 0x3c, "Data type is of wrong size");
+static_assert(sizeof(InfoTransform) == 0x40, "Data type is of wrong size");
 
 // BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)
 void __cdecl Report3D__FPCce(const char* fmt, ...);
