@@ -113,6 +113,10 @@ struct MapCoords : public LH3DMapCoords
 	void Set(const char* str);
 	// BW1W120 00603340 BW1M119 0106cad0
 	MapCoords* Set(const LHPoint& point);
+	// BW1W120 inlined BW1M119 01024700
+	float MetersX() const;
+	// BW1W120 inlined BW1M119 01024770
+	float MetersZ() const;
 	// BW1W120 inlined BW1M119 inlined
 	void SetX(float _x) { SetWholeX((long)(_x * (float)0x10000 / 10.0f)); }
 	// BW1W120 inlined BW1M119 0104d810

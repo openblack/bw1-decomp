@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For MAGIC_TYPE_LAST_142, TOWN_DESIRE_INFO_LAST, enum ABODE_TYPE, enum LIVING_TYPE, enum MAGIC_TYPE, enum RESOURCE_TYPE, enum TOWN_DESIRE_INFO, enum TRIBE_TYPE */
+#include <chlasm/Enum.h> /* For MAGIC_TYPE_LAST, TOWN_DESIRE_INFO_LAST, enum ABODE_TYPE, enum LIVING_TYPE, enum MAGIC_TYPE, enum RESOURCE_TYPE, enum TOWN_DESIRE_INFO, enum TRIBE_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 #include <re_common.h>          /* For bool32_t */
 
@@ -134,11 +134,11 @@ public:
 	uint32_t                         field_0x9a0;
 	TownCentre*                      town_centre;
 	LHListHead<PlannedMultiMapFixed> PlannedList;
-	TownDesireFlags*                 town_desire_flags[TOWN_DESIRE_INFO_LAST]; /* 0x9b0 */
+	TownDesireFlags*                 town_desire_flags[TOWN_DESIRE_INFO_LAST];
 	uint32_t                         field_0x9f4;
 	uint32_t                         field_0x9f8;
 	PlayerTownInteract               field_0x9fc[0x8];
-	int                              MagicRemainder[MAGIC_TYPE_LAST_142]; /* 0xdfc */
+	int                              MagicRemainder[MAGIC_TYPE_LAST];
 	uint32_t                         field_0xea4;
 	uint32_t                         field_0xea8;
 	uint32_t                         field_0xeac;

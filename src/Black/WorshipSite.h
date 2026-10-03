@@ -182,7 +182,7 @@ public:
 	// BW1W120 0077c9e0 BW1M119 015b64c0
 	void AddSpellIconIfNecessary(SPELL_SEED_TYPE seed_type);
 	// BW1W120 0077cf30 BW1M119 015b5a20
-	MapCoords* GetTotemPos(MapCoords* coords);
+	MapCoords GetTotemPos();
 	// BW1W120 0077d0a0 BW1M119 015b5540
 	void RemoveVillagerFromWorshipCount(Villager* param_1);
 	// BW1W120 0077e1d0 BW1M119 015b2900

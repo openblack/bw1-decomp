@@ -11,6 +11,7 @@
 #include <re_common.h>                              /* For bool32_t */
 
 #include "GameThing.h"  /* For struct GameThing */
+#include "LHPTR.h"      /* For class LHPTR */
 #include "PlayerInfo.h" /* For enum PLAYER_TYPE */
 #include "Town.h"       /* For struct Town */
 #include "WinCondition.h"
@@ -74,12 +75,12 @@ public:
 	uint32_t           field_0xe8;
 	uint32_t           field_0xec;
 	uint32_t           field_0xf0;
-	MPFEStartGameData* StartGameData; /* 0xf4 */
+	MPFEStartGameData* StartGameData;
 #ifdef VERSION_BW1W120
-	std::map<int, WinCondition> Conditions; /* 0xf8; original key enum spelling is unrecovered. */
+	std::map<int, WinCondition> Conditions;
 	uint8_t                     field_0x108[0x7d8];
 #endif
-	PLAYER_TYPE      type; /* 0x8e0 */
+	PLAYER_TYPE      type;
 	char16_t         name[0x1e];
 	uint32_t         field_0x920;
 	uint32_t         field_0x924;
@@ -89,12 +90,12 @@ public:
 	uint32_t         WindResistance;
 	uintptr_t        field_0x944;
 	uint8_t          field_0x948[0x28];
-	int              MagicRemainder[0x2a]; /* 0x970 */
-	bool             MagicEnabled[0x2a];   /* 0xa18 */
-	GameStats*       game_stats;           /* 0xa44 */
-	Citadel*         citadel;
+	int              MagicRemainder[MAGIC_TYPE_LAST];
+	bool             MagicEnabled[MAGIC_TYPE_LAST];
+	GameStats*       game_stats;
+	LHPTR<Citadel>   citadel;
 	Creature*        creature;
-	LHListHead<Town> towns; /* 0xa50 */
+	LHListHead<Town> towns;
 	uint32_t         field_0xa58;
 	uint32_t         field_0xa5c;
 
@@ -159,6 +160,8 @@ public:
 	uint8_t GetPlayerNumber() const;
 	// BW1W120 0055da60 BW1M119 010345c0
 	GameStats* GetStats();
+	// BW1W120 inlined BW1M119 01086250
+	Citadel* GetCitadel() { return citadel.Get(); }
 	// BW1W120 004ea900 BW1M119 012724c0
 	void ConsiderMakingCreatureMimicPlayer(GInterfaceStatus* status, DETECTED_PLAYER_ACTION action,
 	                                       GameThingWithPos* thing, MAGIC_TYPE magic);

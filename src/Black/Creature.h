@@ -58,6 +58,17 @@ class PhysicsObject;
 struct RPHolder;
 class Reaction;
 class Spell;
+class Town;
+class Tree;
+
+struct CreatureRecentTrees
+{
+	Tree*    Trees[10];
+	uint32_t Index;
+	uint32_t Count;
+
+	void Add(Tree* tree);
+};
 
 struct CreatureEmotionsForMusic
 {
@@ -185,7 +196,7 @@ public:
 	uint32_t                              field_0x10ec;
 	uint32_t                              field_0x10f0;
 	uint32_t                              field_0x10f4;
-	uint32_t                              field_0x10f8;
+	Town*                                 LastTownImpressed;
 	uint32_t                              LastImpressiveDanceTurn;
 	uint32_t                              LastImpressiveDanceType;
 	uint32_t                              field_0x1104;
@@ -197,9 +208,7 @@ public:
 	uint32_t                              field_0x111c;
 	uint32_t                              field_0x1120;
 	int                                   GameTurn;
-	uint8_t                               field_0x1128[0x28];
-	uint32_t                              field_0x1150;
-	uint32_t                              field_0x1154;
+	CreatureRecentTrees                   RecentTrees;
 	uint32_t                              field_0x1158;
 	uint32_t                              field_0x115c;
 	uint32_t                              field_0x1160;
@@ -620,6 +629,8 @@ public:
 	LH3DCreature* GetCreature3D();
 	// BW1W120 00479480 BW1M119 011df800
 	bool32_t HasFinishedBuildingHome();
+	// BW1W120 0047a500 BW1M119 011dd440
+	void GetRunAwayPoint(const LHPoint& from, LHPoint* point);
 	// BW1W120 0049a7a0
 	bool32_t IsHomeUnderConstruction(CreaturePlan& plan, CREATURE_ACTION action);
 	// BW1W120 0049a7c0
@@ -632,6 +643,8 @@ public:
 	GInterfaceStatus* GetNearestCameraInterfaceStatus();
 	// BW1W120 0047d740 BW1M119 011d6ce0
 	GInterfaceStatus* GetNearestHandInterfaceStatus();
+	// BW1W120 004dfbe0 BW1M119 01264bb0
+	bool32_t FindClearArea(MapCoords* coords, float radius, int param_3);
 	// BW1W120 004c4450 BW1M119 01235990
 	void ForceActivityAndForceAction(CREATURE_DESIRES param_1, CreatureBelief* param_2, CREATURE_ACTION param_3,
 	                                 CreatureBelief* param_4, CreatureBelief* param_5, int param_6, int param_7);

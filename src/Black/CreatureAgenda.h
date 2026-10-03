@@ -21,21 +21,19 @@ class CreatureInfo;
 class CreatureAgenda : public Base
 {
 public:
-	CreaturePlanState       PlanState;       /* 0x8 */
-	CreaturePlan            plans[0x2];      /* 0x838 */
-	CreatureSubActionAgenda SubActionAgenda; /* 0x898 */
-	CreatureCommandState    CommandState;    /* 0x14e8 */
-	Creature*               creature;        /* 0x1514 */
+	CreaturePlanState       PlanState;
+	CreaturePlan            plans[0x2];
+	CreatureSubActionAgenda SubActionAgenda;
+	CreatureCommandState    CommandState;
+	Creature*               creature;
 	uint32_t                field_0x1518;
 	uint32_t                field_0x151c;
-	CreatureMimicState      MimicState; /* 0x1520 */
+	CreatureMimicState      MimicState;
 	uint32_t                field_0x155c;
-	CreatureBelief*         belief; /* 0x1560 */
+	CreatureBelief*         belief;
 	uint32_t                field_0x1564;
-	MapCoords               Destination; /* 0x1568 */
-	uint32_t                field_0x1574;
-	uint32_t                field_0x1578;
-	uint32_t                field_0x157c;
+	MapCoords               Destination;
+	MapCoords               PosToRunAwayFrom;
 	uint32_t                field_0x1580;
 	uint32_t                field_0x1584;
 	uint32_t                field_0x1588;
@@ -542,6 +540,8 @@ public:
 	int ConstructSubActionsForCastShieldAroundTown(unsigned long action_argument);
 	// BW1W120 004bf780 BW1M119 01208030
 	int ConstructSubActionsForMakeDiscipleBreeder(unsigned long param_1);
+	// BW1W120 004bf940 BW1M119 01207fa0
+	int ConstructSubActionsForPlayGameWithVillagers(unsigned long param_1);
 	// BW1W120 004bf960 BW1M119 01207cc0
 	int ConstructSubActionsForTakeVillagerHomeToSleep(unsigned long param_1);
 	// BW1W120 004bfbe0 BW1M119 012078f0

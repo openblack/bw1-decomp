@@ -433,7 +433,7 @@ bool32_t GGame::Init()
 	{
 		delete camera;
 		camera = NULL;
-		Citadel* citadel = players[PlayerIndex].citadel;
+		Citadel* citadel = players[PlayerIndex].citadel.Get();
 		if (((StartCameraCoords.x == 0 && StartCameraCoords.z == 0 && StartCameraCoords.altitude == 0.0f) ||
 		     g_game->Enum0x25017c == 3) &&
 		    citadel)
@@ -478,14 +478,13 @@ bool32_t GGame::Init()
 	RenderLoadingFrame(true);
 	GSpookyVoices::GetPlayerName();
 	time(&field_0x59ac);
-	if ((field_0x205a0c || IsMultiplayerGame()) && players[PlayerIndex].citadel)
+	if ((field_0x205a0c || IsMultiplayerGame()) && MyPlayer()->citadel.Get())
 	{
 		GInterfaceStatus* leader = players[PlayerIndex].GetLeaderInterfaceStatus();
 		if (MyInterfaceStatus() == leader)
 		{
-			// Preserve the two by-value home-position calls and right-to-left argument evaluation.
-			SetPacket((PACKET_TYPE)0x4e, (short)(players[PlayerIndex].citadel->GetCreatureHomePos().x >> 16),
-			          (short)(players[PlayerIndex].citadel->GetCreatureHomePos().z >> 16), -1L);
+			SetPacket((PACKET_TYPE)0x4e, MyPlayer()->GetCitadel()->GetCreatureHomePos().MapX(),
+			          MyPlayer()->GetCitadel()->GetCreatureHomePos().MapZ(), -1L);
 		}
 	}
 	fn_005525E0();
@@ -621,7 +620,7 @@ void GGame::Update3DInfluence()
 			// TODO: Original omits MSVC's byte-result mask after GetPlayerNumber.
 			long     playerNumber = GetRemapedPlayer(player->GetPlayerNumber());
 			float    influence;
-			Citadel* citadel = player->citadel;
+			Citadel* citadel = player->citadel.Get();
 			if (citadel != NULL)
 			{
 				influence = citadel->GetInfluence();
@@ -2571,9 +2570,9 @@ void GGame::EndTurn()
 	network.UpdateDebug();
 	if (field_0x205a10 == 0 && g_game->field_0x205a0c == 0 && !g_game->IsMultiplayerGame() &&
 	    g_game->field_0x205a14 == 1 && &g_game->players[g_game->PlayerIndex] != NULL &&
-	    g_game->players[g_game->PlayerIndex].citadel != NULL &&
-	    g_game->players[g_game->PlayerIndex].citadel->heart != NULL &&
-	    g_game->players[g_game->PlayerIndex].citadel->heart->field_0xb8 != 0)
+	    g_game->players[g_game->PlayerIndex].citadel.Get() != NULL &&
+	    g_game->players[g_game->PlayerIndex].GetCitadel()->heart.Get() != NULL &&
+	    g_game->players[g_game->PlayerIndex].GetCitadel()->GetCitadelHeart()->field_0xb8 != 0)
 	{
 		field_0x205a10 = 1;
 		g_game->script->StartScript("GameOver");

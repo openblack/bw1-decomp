@@ -601,7 +601,7 @@ Citadel* Villager::GetCitadel()
 	Town* town = GetTown();
 	if (town != NULL && town->owner.Get() != NULL)
 	{
-		return town->owner->citadel;
+		return town->owner->citadel.Get();
 	}
 	return NULL;
 }

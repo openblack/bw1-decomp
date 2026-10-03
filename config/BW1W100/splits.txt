@@ -334,14 +334,15 @@ Black/Creature.cpp:
 Black/Creature3D.cpp:
 	.text       start:0x00467E40 end:0x004797F0
 	.rdata      start:0x0080DF2C end:0x0080DF64
-	.bss        start:0x00B85A74 end:0x00B87904
+	.data       start:0x008FF6DC end:0x008FFCB8
+	.bss        start:0x00B85A74 end:0x00B85AB0
 
 Black/CreatureAction.cpp:
 	.text       start:0x004797F0 end:0x004ABBE0
-	.rdata      start:0x0080DF64 end:0x0080E198
+	.rdata      start:0x0080DF64 end:0x0080E20C
 	.CRT$XCU    start:0x008F6230 end:0x008F6264 align:4
-	.data       start:0x008FF718 end:0x00907D98
-	.bss        start:0x00B87904 end:0x00BA3EC4
+	.data       start:0x008FFCB8 end:0x00907E18
+	.bss        start:0x00B85AB0 end:0x00BA3EC4
 
 Black/CreatureAttitudeToCreature.cpp:
 	.text       start:0x004ABC30 end:0x004AC760
