@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/CreatureEnum.h> /* For NUM_CREATURE_ACTIONS */
+#include <chlasm/Enum.h>         /* For OBJECT_TYPE_LAST */
 
 #include "Base.h"                   /* For struct Base */
 #include "CreatureAction.h"         /* For struct PreviousActionContextStack */
@@ -24,10 +25,10 @@ public:
 	uint32_t                   field_0x1522c;
 	uint32_t                   field_0x15230[0x6];
 	uint32_t                   field_0x15248[0x6];
-	uint32_t                   field_0x15260[0x2a];
-	uint32_t                   field_0x15308[0x2a];
+	uint32_t                   field_0x15260[0x2a]; // possibly [MAGIC_TYPE_LAST]
+	uint32_t                   field_0x15308[0x2a]; // possibly [MAGIC_TYPE_LAST]
 	uint32_t                   field_0x153b0[NUM_CREATURE_ACTIONS];
-	uint32_t                   field_0x158d0[0x2d];
+	uint32_t                   HeldObjectActionCounts[OBJECT_TYPE_LAST];
 	uint32_t                   field_0x15984[0x2d];
 	uint32_t                   field_0x15a38[0x2d];
 	uint32_t                   field_0x15aec;

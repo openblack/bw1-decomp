@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LHLib/ver5.0/LHListHead.h> /* For struct LHListHead */
+#include <Lionhead/LHLib/ver5.0/LHFastPointer.h> /* For class LHFastPointer */
+#include <Lionhead/LHLib/ver5.0/LHListHead.h>    /* For struct LHListHead */
 
 #include "CitadelPart.h" /* For struct CitadelPart */
 #include "Container.h"   /* For struct Container */
@@ -29,21 +30,21 @@ class Citadel : public Container
 {
 public:
 	// BW1W120 00463a30 BW1M119 011c1380
-	MapCoords               GetCreatureHomePos();
-	CitadelHeart*           heart; /* 0x30 */
-	WorshipSite*            WorshipSites[0x6];
-	LHListHead<CitadelPart> PartList; /* 0x4c */
-	uint32_t                field_0x54;
-	uint32_t                field_0x58;
-	uint32_t                field_0x5c;
-	uint32_t                field_0x60;
-	uint32_t                field_0x64;
-	uint32_t                field_0x68;
-	float                   influence;
-	uint32_t                field_0x70;
-	uint32_t                field_0x74;
-	float                   field_0x78;
-	Living*                 living;
+	MapCoords                   GetCreatureHomePos();
+	LHFastPointer<CitadelHeart> heart;
+	WorshipSite*                WorshipSites[0x6];
+	LHListHead<CitadelPart>     PartList;
+	uint32_t                    field_0x54;
+	uint32_t                    field_0x58;
+	uint32_t                    field_0x5c;
+	uint32_t                    field_0x60;
+	uint32_t                    field_0x64;
+	uint32_t                    field_0x68;
+	float                       influence;
+	uint32_t                    field_0x70;
+	uint32_t                    field_0x74;
+	float                       field_0x78;
+	Living*                     living;
 
 	// Override methods
 
@@ -86,6 +87,8 @@ public:
 
 	// BW1W120 00464090 BW1M119 01030680
 	float GetInfluence();
+	// BW1W120 inlined BW1M119 01091bc0
+	CitadelHeart* GetCitadelHeart() { return heart.Get(); }
 
 	// BW1W120 00463130 BW1M119 011c2570
 	void* AddTown(Town* town);

@@ -43,37 +43,37 @@ class CreatureMental : public Base
 public:
 	// BW1W120 004e7820 BW1M119 0126dfb0
 	void                      SaveMind(char* path);
-	CreatureDesires           desires;                  /* 0x8 */
-	CreatureAgenda            agenda;                   /* 0x710 */
-	CreatureBeliefs           beliefs;                  /* 0x2208 */
-	DecisionTreeCollection    decision_tree_collection; /* 0x2478 */
-	CreatureActionOpinions    ActionOpinions;           /* 0x25b8 */
-	CreatureLearning          learning;                 /* 0x2ad8 */
-	CreatureAttitudeToPlayer  AttitudeToPlayer;         /* 0x18c40 */
+	CreatureDesires           desires;
+	CreatureAgenda            agenda;
+	CreatureBeliefs           beliefs;
+	DecisionTreeCollection    decision_tree_collection;
+	CreatureActionOpinions    ActionOpinions;
+	CreatureLearning          learning;
+	CreatureAttitudeToPlayer  AttitudeToPlayer;
 	uint32_t                  field_0x1a9f4;
 	uint32_t                  field_0x1a9f8;
 	CreatureActionsKnownAbout ActionsKnownAbout;
-	CreatureInnatePersonality InnatePersonality; /* 0x1aa14 */
-	CreatureVisionState       VisionState;       /* 0x1aa38 */
-	CreatureExplorationMap    ExplorationMap;    /* 0x1aa80 */
+	CreatureInnatePersonality InnatePersonality;
+	CreatureVisionState       VisionState;
+	CreatureExplorationMap    ExplorationMap;
 	uint8_t                   field_0x1ca98[0x400];
-	CreaturePreviousActions   PreviousActions; /* 0x1ce98 */
-	CreatureLookState         LookState;       /* 0x1d3c0 */
+	CreaturePreviousActions   PreviousActions;
+	CreatureLookState         LookState;
 	uint8_t                   field_0x1d3f8[0x14];
-	CreatureFaceState         FaceState;        /* 0x1d40c */
-	CreatureObjectsInspected  ObjectsInspected; /* 0x1d418 */
+	CreatureFaceState         FaceState;
+	CreatureObjectsInspected  ObjectsInspected;
 	uint32_t                  field_0x1d480;
-	uint32_t                  field_0x1d484;
+	CreatureBelief*           CitadelHeartBelief;
 	uint32_t                  field_0x1d488;
 	MapCoords                 field_0x1d48c[0x1e][0x28];
-	CreatureMentalDebug       debug;    /* 0x20ccc */
-	Creature*                 creature; /* 0x20d18 */
+	CreatureMentalDebug       debug;
+	Creature*                 creature;
 	int                       field_0x20d1c;
 	uint32_t                  field_0x20d20;
 	uint32_t                  field_0x20d24;
 	uint32_t                  field_0x20d28;
 	uint32_t                  field_0x20d2c;
-	uint32_t                  field_0x20d230; /* 0x20d30 */
+	uint32_t                  field_0x20d230;
 	uint32_t                  field_0x20d234;
 	uint32_t                  field_0x20d238;
 	uint32_t                  field_0x20d23c;

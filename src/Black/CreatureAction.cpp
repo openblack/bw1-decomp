@@ -22,6 +22,8 @@ static_assert(sizeof(CreatureActionTableEntry) == 0x50, "Data type is of wrong s
 #include <chlasm/Enum.h>                            /* For NUM_CREATURE_DESIRES */
 
 #include "Alignment.h"                 /* For struct GAlignment */
+#include "Citadel.h"                   /* For struct Citadel */
+#include "CitadelHeart.h"              /* For struct CitadelHeart */
 #include "ColourConstants.h"           /* For White */
 #include "Creature.h"                  /* For struct Creature */
 #include "CreatureActionInfo.h"        /* For struct CreatureActionInfo */
@@ -43,9 +45,48 @@ static_assert(sizeof(CreatureActionTableEntry) == 0x50, "Data type is of wrong s
 #include "SpellSeedInfo.h"             /* For struct GSpellSeedInfo */
 #include "SubArgument.h"               /* For struct SubArgument */
 #include "Town.h"                      /* For struct Town */
+#include "Tree.h"                      /* For struct Tree */
 #include "Villager.h"                  /* For struct Villager */
+#include "WorshipSite.h"               /* For struct WorshipSite */
 
-#define CREATURE_ACTION_FILE "C:\\dev\\MP\\Black\\CreatureAction.cpp"
+#if defined(VERSION_BW1W100)
+#define CREATURE_ACTION_FILE "C:\\dev\\black\\CreatureAction.cpp"
+// 1.0 has 9 more lines in HelpBuildHouse, then 3 more and 1 fewer around AttackerThrowBallAtGoal.
+#define CREATURE_ACTION_LINE(line) ((line) + ((line) < 915 ? 0 : (line) < 2700 ? 9 : (line) < 2740 ? 12 : 11))
+#elif defined(VERSION_BW1W110)
+#define CREATURE_ACTION_FILE       "C:\\dev\\Black\\CreatureAction.cpp"
+#define CREATURE_ACTION_LINE(line) (line)
+#else
+#define CREATURE_ACTION_FILE       "C:\\dev\\MP\\Black\\CreatureAction.cpp"
+#define CREATURE_ACTION_LINE(line) (line)
+#endif
+
+const float CastSpellDistance = 50.0f;
+
+inline float MapCoords::MetersX() const
+{
+	return WholeX() * MetresPerMapCell / (float)0x10000;
+}
+
+inline float MapCoords::MetersZ() const
+{
+	return WholeZ() * MetresPerMapCell / (float)0x10000;
+}
+
+inline Object* CreatureBelief::GetObjectPointer()
+{
+	return dynamic_cast<Object*>(Pointer);
+}
+
+inline void CreatureRecentTrees::Add(Tree* tree)
+{
+	Trees[Index] = tree;
+	Index++;
+	if (Index == 10)
+		Index = 0;
+	if (Count < 10)
+		Count++;
+}
 
 CreatureActionInfo           CreatureActionInfo::g_CreatureActionInfos[NUM_CREATURE_ACTIONS];
 CreatureInitialDesireInfo    CreatureInitialDesireInfo::g_CreatureInitialDesireInfos[NUM_CREATURE_DESIRES];
@@ -409,20 +450,23 @@ int CreatureAgenda::ConstructSubActionsForExamineByPickingUp(unsigned long param
 	if (creature->physical->GetObjectCarried() == NULL)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
-		                             new (CREATURE_ACTION_FILE, 388) SubArgumentObject(plans[0].ObjectToActOn),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(388))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 	}
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_HELD_OBJECT_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 390)
-	                                     SubArgumentInteger(GRand::GameRand(4, CREATURE_ACTION_FILE, 390) + 100),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(390)) SubArgumentInteger(
+										 GRand::GameRand(4, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(390)) + 100),
 	                                 &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCuriosity);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_STOP_LOOKING, NULL, &Creature::LookAround, NULL);
-	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
-	                             new (CREATURE_ACTION_FILE, 392)
-	                                 SubArgumentInteger(GRand::GameRand(10, CREATURE_ACTION_FILE, 392) > 1 ? 97 : 95),
-	                             NULL, NULL);
+	SubActionAgenda.AddSubAction(
+		CREATURE_SUB_STATE_ACTIONS_DISCARD,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(392))
+			SubArgumentInteger(GRand::GameRand(10, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(392)) > 1 ? 97 : 95),
+		NULL, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_OBSERVE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 393) SubArgumentInteger(plans[0].ObjectToActOn->GetType()),
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(393))
+	                                 SubArgumentInteger(plans[0].ObjectToActOn->GetType()),
 	                             NULL, NULL);
 	return 0;
 }
@@ -433,40 +477,78 @@ int CreatureAgenda::ConstructSubActionsForEatAlive(unsigned long param_1)
 	Object* carried = creature->physical->GetObjectCarried();
 	if (carried == NULL || !carried->CanBeEatenByCreature(creature))
 	{
-		if (GRand::GameRand(2, CREATURE_ACTION_FILE, 403) == 0)
+		if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(403)) == 0)
 		{
 			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-			                             new (CREATURE_ACTION_FILE, 405) SubArgumentInteger(0x36), NULL, NULL);
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(405)) SubArgumentInteger(0x36),
+			                             NULL, NULL);
 		}
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
-		                             new (CREATURE_ACTION_FILE, 407) SubArgumentObject(plans[0].ObjectToActOn),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(407))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 	}
-	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_EAT,
-	                                 new (CREATURE_ACTION_FILE, 409) SubArgumentObject(plans[0].ObjectToActOn), NULL,
-	                                 NULL);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_EAT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(409)) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
 	return 0;
 }
 
 // BW1W120 0049abb0 BW1M119 01232850
 int CreatureAgenda::ConstructSubActionsForPoo(unsigned long param_1)
 {
-	if (GRand::GameRand(3, CREATURE_ACTION_FILE, 416) == 0)
+	if (GRand::GameRand(3, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(416)) == 0)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                             new (CREATURE_ACTION_FILE, 418) SubArgumentInteger(0x42), NULL, NULL);
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(418)) SubArgumentInteger(0x42),
+		                             NULL, NULL);
 	}
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 420)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(420))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.0f),
 	                             &Creature::LookWhileGoingTowardsObject, NULL);
-	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_AWAY_FROM_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 421) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
+	SubActionAgenda.AddSubAction(
+		CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_AWAY_FROM_OBJECT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(421)) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_STATIC_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 422) SubArgumentIntegerAndFloat(0x20, 4.0f), NULL,
-	                                 &Creature::SetFaceForActionSmile);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(422))
+	                                     SubArgumentIntegerAndFloat(0x20, 4.0f),
+	                                 NULL, &Creature::SetFaceForActionSmile);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_POO, NULL, NULL, &Creature::SetFaceForActionSmile);
 	return 0;
+}
+
+// BW1W120 0049adf0 BW1M119 012325c0
+int CreatureAgenda::ConstructSubActionsForHurl(unsigned long param_1)
+{
+	if (plans[0].ObjectToUse != NULL)
+	{
+		if (creature->physical->GetObjectCarried() == NULL)
+		{
+			if (GRand::GameRand(6, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(435)) == 0)
+			{
+				SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+				                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(437))
+				                                 SubArgumentInteger(0x35),
+				                             NULL, &Creature::SetFaceForActionAmazed);
+			}
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(439))
+			                                 SubArgumentObject(plans[0].ObjectToUse),
+			                             &Creature::LookWhileGoingTowardsObject, NULL);
+		}
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_THROW_POS,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(441))
+		                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, creature->GetHeight()),
+		                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionAnger);
+		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW,
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(442))
+		                                     SubArgumentObject(plans[0].ObjectToActOn),
+		                                 &Creature::LookAtObjectArgument, &Creature::SetFaceForActionAnger);
+		return 0;
+	}
+	creature->FinishActionUnsuccessfully("no object to use", 1, 1);
+	return 1;
 }
 
 // BW1W120 0049b010 BW1M119 01232570
@@ -478,35 +560,86 @@ int CreatureAgenda::ConstructSubActionsForMoveToPos(unsigned long param_1)
 // BW1W120 0049b020 BW1M119 01232390
 int CreatureAgenda::ConstructSubActionsForRunAwayFromObject(unsigned long param_1)
 {
-	if (GRand::GameRand(2, CREATURE_ACTION_FILE, 461) == 0)
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(461)) == 0)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                             new (CREATURE_ACTION_FILE, 463) SubArgumentInteger(0x3d),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(463)) SubArgumentInteger(0x3d),
 		                             &Creature::LookFrightened, NULL);
 	}
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_RUN_AWAY,
-	                                 new (CREATURE_ACTION_FILE, 465) SubArgumentObject(plans[0].ObjectToActOn),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(465))
+	                                     SubArgumentObject(plans[0].ObjectToActOn),
 	                                 &Creature::LookWhileRunningAwayFromObject, &Creature::SetFaceForActionFear);
-	if (GRand::GameRand(2, CREATURE_ACTION_FILE, 466) == 0)
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(466)) == 0)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                             new (CREATURE_ACTION_FILE, 468) SubArgumentInteger(0x3d),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(468)) SubArgumentInteger(0x3d),
 		                             &Creature::LookFrightened, NULL);
 	}
 	return 0;
 }
 
+// BW1W120 0049b1c0 BW1M119 012320f0
+int CreatureAgenda::ConstructSubActionsForSleep(unsigned long param_1)
+{
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(477)) == 0)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(479)) SubArgumentInteger(0x39),
+		                             &Creature::LookJustWokenUp, NULL);
+	}
+	LHPoint pos;
+	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, pos);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(483))
+	                                 SubArgumentPointAndFloat(pos, min(5.0f, creature->GetHeight())),
+	                             &Creature::LookWhileGoingTowardsPoint, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_FACE_DOWN_SLOPE, NULL, NULL, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_SLEEP, NULL, NULL, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(486)) SubArgumentInteger(0x3f),
+	                             &Creature::LookJustWokenUp, &Creature::SetFaceForActionGrimace);
+	return 0;
+}
+
+// BW1W120 0049b420 BW1M119 01231e10
+int CreatureAgenda::ConstructSubActionsForSleepOnTheSpot(unsigned long param_1)
+{
+	MapCoords coords = creature->Pos;
+	float     radius = 4.0f * creature->GetHeight();
+	if (creature->FindClearArea(&coords, radius, !(creature->Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT)))
+	{
+		if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(498)) == 0)
+		{
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(500)) SubArgumentInteger(0x39),
+			                             &Creature::LookJustWokenUp, NULL);
+		}
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(502))
+		                                 SubArgumentPointAndFloat(coords.GetLHPoint(), creature->Get2DRadius()),
+		                             &Creature::LookWhileGoingTowardsPoint, NULL);
+		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_SLEEP, NULL, NULL, NULL);
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(504)) SubArgumentInteger(0x3f),
+		                             &Creature::LookJustWokenUp, &Creature::SetFaceForActionGrimace);
+		return 0;
+	}
+	return ConstructSubActionsForSleep(param_1);
+}
+
 // BW1W120 0049b660 BW1M119 01231ca0
 int CreatureAgenda::ConstructSubActionsForStomp(unsigned long param_1)
 {
-	if (GRand::GameRand(5, CREATURE_ACTION_FILE, 516) == 0)
+	if (GRand::GameRand(5, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(516)) == 0)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                             new (CREATURE_ACTION_FILE, 518) SubArgumentInteger(0x35), NULL,
-		                             &Creature::SetFaceForActionAnger);
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(518)) SubArgumentInteger(0x35),
+		                             NULL, &Creature::SetFaceForActionAnger);
 	}
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_STOMP,
-	                                 new (CREATURE_ACTION_FILE, 520) SubArgumentObject(plans[0].ObjectToActOn),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(520))
+	                                     SubArgumentObject(plans[0].ObjectToActOn),
 	                                 &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionAnger);
 	return 0;
 }
@@ -520,13 +653,61 @@ int CreatureAgenda::ConstructSubActionsForLookAtHand(unsigned long param_1)
 	return 0;
 }
 
+// BW1W120 0049ba70 BW1M119 012315d0
+int CreatureAgenda::ConstructSubActionsForExamineByLooking(unsigned long param_1)
+{
+	float distance = max(creature->GetHeight() * 2.5f, plans[0].ObjectToActOn->GetPointer()->GetHeight());
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(556))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, distance),
+	                             &Creature::LookWhileGoingTowardsObject, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(557))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
+	                             &Creature::LookAtObjectArgument, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_WAIT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(558))
+	                                 SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.1f)),
+	                             &Creature::LookAtObjectArgumentBottom, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_OBSERVE_OBJECT,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(559))
+	                                     SubArgumentInteger(plans[0].ObjectToActOn->GetType()),
+	                                 NULL, NULL);
+	return 0;
+}
+
 // BW1W120 0049c690 BW1M119 01230a40
 int CreatureAgenda::ConstructSubActionsForFollowPlayer(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_FOLLOW_CAMERA, NULL, &Creature::LookAtCamera, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 649) SubArgumentInteger(0x45), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(649)) SubArgumentInteger(0x45),
+	                                 NULL, NULL);
+	return 0;
+}
+
+// BW1W120 0049c790 BW1M119 01230800
+int CreatureAgenda::ConstructSubActionsForStroke(unsigned long param_1)
+{
+	Object* carried = creature->physical->GetObjectCarried();
+	if (carried == NULL || !carried->CanBeStrokedByCreature(creature))
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(659))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+	}
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_HELD_OBJECT_ACTION,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(661)) SubArgumentInteger(0x64),
+	                                 &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCompassion);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_HEAL,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(662))
+	                                 SubArgumentObject(plans[0].ObjectToActOn),
+	                             NULL, &Creature::SetFaceForActionCompassion);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(663)) SubArgumentInteger(0x61), NULL,
+	                             &Creature::SetFaceForActionCompassion);
 	return 0;
 }
 
@@ -545,15 +726,16 @@ int CreatureAgenda::ConstructSubActionsForEatAfterExamining(unsigned long param_
 	if (carried == NULL || !carried->CanBeEatenByCreature(creature))
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
-		                             new (CREATURE_ACTION_FILE, 718) SubArgumentObject(plans[0].ObjectToActOn),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(718))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 	}
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_HELD_OBJECT_ACTION,
-	                             new (CREATURE_ACTION_FILE, 720) SubArgumentInteger(0x67),
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(720)) SubArgumentInteger(0x67),
 	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCuriosity);
-	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_EAT,
-	                                 new (CREATURE_ACTION_FILE, 721) SubArgumentObject(plans[0].ObjectToActOn), NULL,
-	                                 NULL);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_EAT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(721)) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
 	return 0;
 }
 
@@ -564,15 +746,46 @@ int CreatureAgenda::ConstructSubActionsForStompAndEat(unsigned long param_1)
 	if (carried == NULL || !carried->CanBeEatenByCreature(creature))
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_STOMP,
-		                             new (CREATURE_ACTION_FILE, 731) SubArgumentObject(plans[0].ObjectToActOn),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(731))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
 		                             &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionAnger);
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
-		                             new (CREATURE_ACTION_FILE, 732) SubArgumentObject(plans[0].ObjectToActOn),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(732))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 	}
-	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_EAT,
-	                                 new (CREATURE_ACTION_FILE, 734) SubArgumentObject(plans[0].ObjectToActOn), NULL,
-	                                 NULL);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_EAT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(734)) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
+	return 0;
+}
+
+// BW1W120 0049d2e0 BW1M119 0122f9f0
+int CreatureAgenda::ConstructSubActionsForStoneAndEat(unsigned long param_1)
+{
+	Object* carried = creature->physical->GetObjectCarried();
+	if (carried == NULL || !carried->IsRock(creature))
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(745))
+		                                 SubArgumentObject(plans[0].ObjectToUse),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+	}
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_THROW_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(747))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, creature->GetHeight()),
+	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionAnger);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_THROW,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(748))
+	                                 SubArgumentObject(plans[0].ObjectToUse),
+	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionAnger);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(749))
+	                                 SubArgumentObject(plans[0].ObjectToActOn),
+	                             &Creature::LookWhileGoingTowardsObject, NULL);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_EAT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(750)) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
 	return 0;
 }
 
@@ -592,14 +805,15 @@ int CreatureAgenda::ConstructSubActionsForShowPlayerAnObject(unsigned long param
 	if (creature->physical->GetObjectCarried() == NULL)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
-		                             new (CREATURE_ACTION_FILE, 770) SubArgumentObject(plans[0].ObjectToUse),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(770))
+		                                 SubArgumentObject(plans[0].ObjectToUse),
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 	}
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_FOLLOW_CAMERA, NULL, &Creature::LookAtCamera, NULL);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera,
 	                                 &Creature::SetFaceForActionReflectAttitudeToPlayer);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
-	                             new (CREATURE_ACTION_FILE, 774) SubArgumentInteger(0x61), NULL,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(774)) SubArgumentInteger(0x61), NULL,
 	                             &Creature::SetFaceForActionReflectAttitudeToPlayer);
 	return 0;
 }
@@ -619,7 +833,7 @@ int CreatureAgenda::ConstructSubActionsForGoToHillAndLook(unsigned long param_1)
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
 	creature->mind->agenda.Destination = coords;
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                                 new (CREATURE_ACTION_FILE, 801)
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(801))
 	                                     SubArgumentPointAndFloat(pos, 2.0f * creature->GetHeight()),
 	                                 &Creature::LookWhileGoingTowardsPoint, NULL);
 	return 0;
@@ -647,7 +861,7 @@ int CreatureAgenda::ConstructSubActionsForGoToHillAndSit(unsigned long param_1)
 	}
 	creature->mind->agenda.Destination = coords;
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                                 new (CREATURE_ACTION_FILE, 841)
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(841))
 	                                     SubArgumentPointAndFloat(pos, 3.0f * creature->GetHeight()),
 	                                 &Creature::LookWhileGoingTowardsPoint, NULL);
 	return 0;
@@ -657,8 +871,9 @@ int CreatureAgenda::ConstructSubActionsForGoToHillAndSit(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForHelpBuildHouse(unsigned long param_1)
 {
 	ConstructSubActionsForCastHelpfulSpellOnObject(MAGIC_TYPE_WOOD);
-	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_BUILD,
-	                             new (CREATURE_ACTION_FILE, 911) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
+	SubActionAgenda.AddSubAction(
+		CREATURE_SUB_STATE_ACTIONS_BUILD,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(911)) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
 	return 0;
 }
 
@@ -668,11 +883,114 @@ int CreatureAgenda::ConstructSubActionsForBringToTown(unsigned long param_1)
 	return 0;
 }
 
+// BW1W120 0049e470 BW1M119 0122e500
+int CreatureAgenda::ConstructSubActionsForPutOutFire(unsigned long param_1)
+{
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(942))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.0f),
+	                             &Creature::LookWhileGoingTowardsObject, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GET_AWAY_FROM_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(943))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f * creature->GetHeight()),
+	                             &Creature::LookAtObjectArgument, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(944))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionFear);
+	SubActionAgenda.AddCastSpellSubAction(plans[0].ObjectToActOn, MAGIC_TYPE_NONE);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PUT_OUT_FIRE,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(946))
+	                                 SubArgumentObject(plans[0].ObjectToActOn),
+	                             &Creature::LookAtObjectArgument, NULL);
+	return 0;
+}
+
+// BW1W120 0049e650 BW1M119 0122e210
+int CreatureAgenda::ConstructSubActionsForShowImpressiveAnimation(unsigned long param_1)
+{
+	creature->LastTownImpressed = plans[0].ObjectToActOn->GetPointer()->GetTown();
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(954))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, creature->GetHeight() * 3.0f),
+	                             &Creature::LookWhileGoingTowardsObject, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(955))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+	                             &Creature::LookAtObjectArgument, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(956)) SubArgumentInteger(0x45),
+	                                 NULL, NULL);
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(957)) == 0)
+	{
+		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(959)) SubArgumentInteger(0x41),
+		                                 NULL, NULL);
+	}
+	else
+	{
+		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(963)) SubArgumentInteger(0x34),
+		                                 NULL, NULL);
+	}
+	return 0;
+}
+
+// BW1W120 0049ec80 BW1M119 0122db30
+int CreatureAgenda::ConstructSubActionsForThrowInTheSea(unsigned long param_1)
+{
+	MapCoords coast;
+	MapCoords sea;
+	if (creature->physical->GetObjectCarried() == NULL)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1030))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+	}
+	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
+	                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
+	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, creature->Pos, &sea,
+	                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
+	LHPoint coastPos;
+	GLandscape::ConvertMapCoordToLandscapePoint(coast, coastPos);
+	LHPoint seaPos;
+	GLandscape::ConvertMapCoordToLandscapePoint(sea, seaPos);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1037))
+	                                 SubArgumentPointAndFloat(coastPos, 2.0f * creature->GetHeight()),
+	                             &Creature::LookWhileGoingTowardsPoint, &Creature::SetFaceForActionPlayfulness);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW_AT_POS,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1038)) SubArgumentPoint(seaPos),
+	                                 &Creature::LookAtObjectArgument, NULL);
+	return 0;
+}
+
+// BW1W120 004a0010 BW1M119 0122c5e0
+int CreatureAgenda::ConstructSubActionsForCastMagicForest(unsigned long param_1)
+{
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1172))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.5f * creature->GetHeight()),
+	                             &Creature::LookWhileGoingTowardsObject, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1173))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCompassion);
+	LHPoint pos;
+	GLandscape::ConvertMapCoordToLandscapePoint(plans[0].ObjectToActOn->GetPos(), pos);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_CAST_SPELL_AT_POS,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1176))
+	                                     SubArgumentPointIntegerFloatAndSpell(pos, 0x2f, 4.0f, MAGIC_TYPE_FOREST),
+	                                 NULL, &Creature::SetFaceForActionGrimace);
+	return 0;
+}
+
 // BW1W120 004a01e0 BW1M119 0122c4b0
 int CreatureAgenda::ConstructSubActionsForFollowAround(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                                 new (CREATURE_ACTION_FILE, 1183) SubArgumentObjectAndFloat(
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1183)) SubArgumentObjectAndFloat(
 										 plans[0].ObjectToActOn, creature->GetHeight() * 5.0f),
 	                                 &Creature::LookWhileGoingTowardsObject, NULL);
 	return 0;
@@ -682,14 +1000,63 @@ int CreatureAgenda::ConstructSubActionsForFollowAround(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForPuke(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_STATIC_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 1190) SubArgumentIntegerAndFloat(0x23, 4.0f), NULL,
-	                                 &Creature::SetFaceForActionGrimace);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1190))
+	                                     SubArgumentIntegerAndFloat(0x23, 4.0f),
+	                                 NULL, &Creature::SetFaceForActionGrimace);
+	return 0;
+}
+
+// BW1W120 004a0300 BW1M119 0122c120
+int CreatureAgenda::ConstructSubActionsForBringSomethingBackToTheCitadel(unsigned long param_1)
+{
+	CreatureBelief* heart = creature->mind->CitadelHeartBelief;
+	// TODO: Unused, but both versions make this call.
+	Object* heartObject = heart->GetObjectPointer();
+	if (creature->physical->GetObjectCarried() == NULL)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1203))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+	}
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1205))
+	                                 SubArgumentObjectAndFloat(heart, heart->GetObjectPointer()->Get2DRadius() * 1.4f),
+	                             &Creature::LookWhileGoingTowardsObject, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1206))
+	                                 SubArgumentObjectAndFloat(heart, 0.1f),
+	                             &Creature::LookAtObjectArgument, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1207)) SubArgumentInteger(0x61),
+	                                 NULL, &Creature::SetFaceForActionReflectAttitudeToPlayer);
 	return 0;
 }
 
 // BW1W120 004a1320 BW1M119 0122b340
 int CreatureAgenda::ConstructSubActionsForPlayGameWithCreatureMainPart(unsigned long param_1)
 {
+	return 0;
+}
+
+// BW1W120 004a1330 BW1M119 0122b0d0
+int CreatureAgenda::ConstructSubActionsForPracticeThrow(unsigned long param_1)
+{
+	if (creature->physical->GetObjectCarried() == NULL)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1284))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+	}
+	MapCoords coords = creature->Pos;
+	coords.SetWholeX((long)((coords.MetersX() + 3.0f * creature->GetHeight()) * (float)0x10000 / MetresPerMapCell));
+	coords.SetWholeZ((long)((coords.MetersZ() + 3.0f * creature->GetHeight()) * (float)0x10000 / MetresPerMapCell));
+	LHPoint pos;
+	GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW_AT_POS,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1291)) SubArgumentPoint(pos),
+	                                 &Creature::LookWhileGoingTowardsPoint, NULL);
 	return 0;
 }
 
@@ -708,10 +1075,50 @@ int CreatureAgenda::ConstructSubActionsForCastShield(unsigned long action_argume
 		return ConstructSubActionsForBeingIdle(action_argument);
 	}
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 1311)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1311))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
 	                             NULL, &Creature::SetFaceForActionCompassion);
 	SubActionAgenda.AddCastSpellSubAction(plans[0].ObjectToActOn, MAGIC_TYPE_SHIELD);
+	return 0;
+}
+
+// BW1W120 004a1bd0 BW1M119 0122a7b0
+int CreatureAgenda::ConstructSubActionsForRaiseTotemPole(unsigned long param_1)
+{
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1385))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 12.0f),
+	                             &Creature::LookWhileGoingTowardsObject, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1386))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+	                             &Creature::LookAtObjectArgument, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1387)) SubArgumentInteger(0x34), NULL,
+	                             &Creature::SetFaceForActionPlayfulness);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_RAISE_TOTEM,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1388)) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
+	return 0;
+}
+
+// BW1W120 004a1db0 BW1M119 0122a580
+int CreatureAgenda::ConstructSubActionsForLowerTotemPole(unsigned long param_1)
+{
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1396))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 12.0f),
+	                             &Creature::LookWhileGoingTowardsObject, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1397))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+	                             &Creature::LookAtObjectArgument, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1398)) SubArgumentInteger(0x34), NULL,
+	                             &Creature::SetFaceForActionPlayfulness);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_LOWER_TOTEM,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1399)) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
 	return 0;
 }
 
@@ -720,7 +1127,7 @@ int CreatureAgenda::ConstructSubActionsForHealHimself(unsigned long param_1)
 {
 	LHPoint pos = creature->GetCreature3D()->position;
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_CAST_SPELL_AT_POS,
-	                             new (CREATURE_ACTION_FILE, 1408)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1408))
 	                                 SubArgumentPointIntegerFloatAndSpell(pos, 0x29, 3.0f, MAGIC_TYPE_HEAL),
 	                             NULL, &Creature::SetFaceForActionGrimace);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_HEAL_HIMSELF, NULL, NULL,
@@ -734,8 +1141,8 @@ int CreatureAgenda::ConstructSubActionsForRestToGetBetter(unsigned long param_1)
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_FACE_DOWN_SLOPE, NULL, NULL, NULL);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_REST_TO_GET_BETTER, NULL, NULL, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                             new (CREATURE_ACTION_FILE, 1419) SubArgumentInteger(0x3f), &Creature::LookJustWokenUp,
-	                             &Creature::SetFaceForActionGrimace);
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1419)) SubArgumentInteger(0x3f),
+	                             &Creature::LookJustWokenUp, &Creature::SetFaceForActionGrimace);
 	return 0;
 }
 
@@ -745,18 +1152,47 @@ int CreatureAgenda::ConstructSubActionsForSmileAtFriend(unsigned long param_1)
 	// TODO: In the second sub action the target loads plans[0].ObjectToActOn before the 4.0f add and stores the
 	// vtable before Float; the order of the add's operands, a double constant or a cast do not move it.
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 1426)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1426))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 3.0f * creature->GetHeight()),
 	                             &Creature::LookAtObjectFlutteringEyelids, &Creature::SetFaceForActionSmile);
 	SubActionAgenda.AddMainSubAction(
 		CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-		new (CREATURE_ACTION_FILE, 1427) SubArgumentObjectAndFloat(
-			plans[0].ObjectToActOn, 4.0f + GRand::GameFloatRand(4.0f, CREATURE_ACTION_FILE, 1427)),
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1427))
+			SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 4.0f + GRand::GameFloatRand(4.0f, CREATURE_ACTION_FILE,
+	                                                                                      CREATURE_ACTION_LINE(1427))),
 		&Creature::LookAtObjectFlutteringEyelids, &Creature::SetFaceForActionSmile);
-	if (GRand::GameRand(2, CREATURE_ACTION_FILE, 1428) == 0)
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1428)) == 0)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                             new (CREATURE_ACTION_FILE, 1430) SubArgumentInteger(0x37), NULL, NULL);
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1430)) SubArgumentInteger(0x37),
+		                             NULL, NULL);
+	}
+	return 0;
+}
+
+// BW1W120 004a2330 BW1M119 01229dd0
+int CreatureAgenda::ConstructSubActionsForFollowFriendAround(unsigned long param_1)
+{
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1439))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f * creature->GetHeight()),
+	                             &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionSmile);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1440))
+			SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f + GRand::GameFloatRand(10.0f, CREATURE_ACTION_FILE,
+	                                                                                      CREATURE_ACTION_LINE(1440))),
+		&Creature::LookAtObjectFlutteringEyelids, &Creature::SetFaceForActionSmile);
+	for (int i = 0; i < 4; i++)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1443)) SubArgumentObjectAndFloat(
+										 plans[0].ObjectToActOn, 2.0f * creature->GetHeight()),
+		                             &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionSmile);
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1444))
+		                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 10.0f),
+		                             &Creature::LookAtObjectFlutteringEyelids, &Creature::SetFaceForActionSmile);
 	}
 	return 0;
 }
@@ -765,16 +1201,81 @@ int CreatureAgenda::ConstructSubActionsForSmileAtFriend(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForInspectCreature(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 1478)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1478))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 4.0f * creature->GetHeight()),
 	                             &Creature::LookWhileGoingTowardsObject, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 1479)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1479))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
 	                             NULL, &Creature::SetFaceForActionCuriosity);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INSPECT_CREATURE,
-	                                 new (CREATURE_ACTION_FILE, 1480) SubArgumentObject(plans[0].ObjectToActOn),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1480))
+	                                     SubArgumentObject(plans[0].ObjectToActOn),
 	                                 &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCuriosity);
+	return 0;
+}
+
+// BW1W120 004a2bc0 BW1M119 01229420
+int CreatureAgenda::ConstructSubActionsForHoldObject(unsigned long param_1)
+{
+	if (creature->physical->GetObjectCarried() == NULL)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1490))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+	}
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera,
+	                                 &Creature::SetFaceForActionReflectAttitudeToPlayer);
+	Object* object = plans[0].ObjectToActOn->GetObjectPointer();
+	if (object != NULL)
+	{
+		OBJECT_TYPE type = object->info->type;
+		if (creature->mind->learning.HeldObjectActionCounts[type] < 2)
+		{
+			SubActionAgenda.AddSubAction(
+				CREATURE_SUB_STATE_ACTIONS_HELD_OBJECT_ACTION,
+				new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1500))
+					SubArgumentInteger(GRand::GameRand(4, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1500)) + 100),
+				NULL, &Creature::SetFaceForActionSmile);
+			creature->mind->learning.HeldObjectActionCounts[type]++;
+		}
+	}
+	// TODO: The target schedules the 40.0f add after the inlined division, see ConvertRealWorldSecondsToGameTicks
+	SubActionAgenda.AddSubAction(
+		CREATURE_SUB_STATE_ACTIONS_WAIT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1504))
+			SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
+				40.0f + GRand::GameFloatRand(10.0f, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1504)))),
+		&Creature::LookAtCamera, &Creature::SetFaceForActionReflectAttitudeToPlayer);
+	return 0;
+}
+
+// BW1W120 004a30e0 BW1M119 01228e50
+int CreatureAgenda::ConstructSubActionsForEatFromField(unsigned long param_1)
+{
+	Object* carried = creature->physical->GetObjectCarried();
+	if (carried != NULL && carried->CanBeEatenByCreature(creature))
+	{
+		return 1;
+	}
+	LHPoint pos;
+	GLandscape::ConvertMapCoordToLandscapePoint(plans[0].ObjectToActOn->GetPos(), pos);
+	belief = plans[0].ObjectToActOn;
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1557))
+	                                 SubArgumentPointAndFloat(pos, creature->GetHeight()),
+	                             NULL, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1558))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+	                             NULL, NULL);
+	CreatureBelief* field = plans[0].ObjectToActOn;
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_CLEAR_OBJECT_TO_ACT_ON, NULL, NULL, NULL);
+	SubActionAgenda.AddSubAction(
+		CREATURE_SUB_STATE_ACTIONS_CREATE_PICK_UP_THEN_REMOVE,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1561)) SubArgumentObjectAndInteger(field, 0x11), NULL, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_EAT_CREATED_OBJECT, NULL, NULL, NULL);
 	return 0;
 }
 
@@ -782,7 +1283,8 @@ int CreatureAgenda::ConstructSubActionsForInspectCreature(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForPutDown(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
-	                             new (CREATURE_ACTION_FILE, 1595) SubArgumentInteger(0x61), NULL, NULL);
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1595)) SubArgumentInteger(0x61), NULL,
+	                             NULL);
 	return 0;
 }
 
@@ -798,11 +1300,12 @@ int CreatureAgenda::ConstructSubActionsForThrowAtCamera(unsigned long param_1)
 		if (creature->physical->GetObjectCarried() == NULL)
 		{
 			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
-			                             new (CREATURE_ACTION_FILE, 1641) SubArgumentObject(plans[0].ObjectToUse),
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1641))
+			                                 SubArgumentObject(plans[0].ObjectToUse),
 			                             &Creature::LookWhileGoingTowardsObject, NULL);
 		}
 		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW_AT_POS,
-		                                 new (CREATURE_ACTION_FILE, 1643) SubArgumentPoint(pos),
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1643)) SubArgumentPoint(pos),
 		                                 &Creature::LookAtCamera, NULL);
 		return 0;
 	}
@@ -813,19 +1316,20 @@ int CreatureAgenda::ConstructSubActionsForThrowAtCamera(unsigned long param_1)
 // BW1W120 004a3f10 BW1M119 01227f60
 int CreatureAgenda::ConstructSubActionsForRunAwayFromPlayer(unsigned long param_1)
 {
-	if (GRand::GameRand(2, CREATURE_ACTION_FILE, 1657) == 0)
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1657)) == 0)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                             new (CREATURE_ACTION_FILE, 1659) SubArgumentInteger(0x3d),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1659)) SubArgumentInteger(0x3d),
 		                             &Creature::LookFrightened, NULL);
 	}
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_RUN_AWAY_FROM_PLAYER,
-	                                 new (CREATURE_ACTION_FILE, 1661) SubArgumentObject(plans[0].ObjectToActOn),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1661))
+	                                     SubArgumentObject(plans[0].ObjectToActOn),
 	                                 &Creature::LookWhileRunningAwayFromHand, &Creature::SetFaceForActionFear);
-	if (GRand::GameRand(2, CREATURE_ACTION_FILE, 1662) == 0)
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1662)) == 0)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                             new (CREATURE_ACTION_FILE, 1664) SubArgumentInteger(0x3d),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1664)) SubArgumentInteger(0x3d),
 		                             &Creature::LookFrightened, NULL);
 	}
 	return 0;
@@ -835,7 +1339,8 @@ int CreatureAgenda::ConstructSubActionsForRunAwayFromPlayer(unsigned long param_
 int CreatureAgenda::ConstructSubActionsForSneeze(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 1672) SubArgumentInteger(0x3e), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1672)) SubArgumentInteger(0x3e),
+	                                 NULL, NULL);
 	return 0;
 }
 
@@ -843,7 +1348,8 @@ int CreatureAgenda::ConstructSubActionsForSneeze(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForShiver(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 1679) SubArgumentInteger(0x3b), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1679)) SubArgumentInteger(0x3b),
+	                                 NULL, NULL);
 	return 0;
 }
 
@@ -858,7 +1364,8 @@ int CreatureAgenda::ConstructSubActionsForStartFire(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForShowHotness(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 1699) SubArgumentInteger(0x3a), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1699)) SubArgumentInteger(0x3a),
+	                                 NULL, NULL);
 	return 0;
 }
 
@@ -866,7 +1373,8 @@ int CreatureAgenda::ConstructSubActionsForShowHotness(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForScratch(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 1706) SubArgumentInteger(0x3c), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1706)) SubArgumentInteger(0x3c),
+	                                 NULL, NULL);
 	return 0;
 }
 
@@ -885,7 +1393,7 @@ int CreatureAgenda::ConstructSubActionsForExploreCoast(unsigned long param_1)
 	LHPoint pos;
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                                 new (CREATURE_ACTION_FILE, 1730)
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1730))
 	                                     SubArgumentPointAndFloat(pos, 3.0f * creature->GetHeight()),
 	                                 &Creature::LookWhileGoingTowardsPoint, NULL);
 	return 0;
@@ -906,7 +1414,7 @@ int CreatureAgenda::ConstructSubActionsForExploreTowns(unsigned long param_1)
 	LHPoint pos;
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                                 new (CREATURE_ACTION_FILE, 1755)
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1755))
 	                                     SubArgumentPointAndFloat(pos, 3.0f * creature->GetHeight()),
 	                                 &Creature::LookWhileGoingTowardsPoint, NULL);
 	return 0;
@@ -916,11 +1424,12 @@ int CreatureAgenda::ConstructSubActionsForExploreTowns(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForExamineByFollowing(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_FOLLOW_INTERESTING_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 1787) SubArgumentObject(plans[0].ObjectToActOn),
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1787))
+	                                 SubArgumentObject(plans[0].ObjectToActOn),
 	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionAmazed);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 1788) SubArgumentInteger(0x3f), NULL,
-	                                 &Creature::SetFaceForActionAmazed);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1788)) SubArgumentInteger(0x3f),
+	                                 NULL, &Creature::SetFaceForActionAmazed);
 	return 0;
 }
 
@@ -929,15 +1438,16 @@ int CreatureAgenda::ConstructSubActionsForLookAtFlyingObject(unsigned long param
 {
 	LHPoint pos;
 	GLandscape::ConvertMapCoordToLandscapePoint(plans[0].ObjectToActOn->GetPointer()->Pos, pos);
-	if (GRand::GameRand(2, CREATURE_ACTION_FILE, 1798) == 0)
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1798)) == 0)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_OBJECT,
-		                             new (CREATURE_ACTION_FILE, 1800)
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1800))
 		                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
 		                             &Creature::LookAtFlyingObject, &Creature::SetFaceForActionAmazed);
 	}
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_LOOK_AT_FLYING_OBJECT,
-	                                 new (CREATURE_ACTION_FILE, 1802) SubArgumentObject(plans[0].ObjectToActOn),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1802))
+	                                     SubArgumentObject(plans[0].ObjectToActOn),
 	                                 &Creature::LookAtFlyingObject, &Creature::SetFaceForActionAmazed);
 	return 0;
 }
@@ -946,7 +1456,7 @@ int CreatureAgenda::ConstructSubActionsForLookAtFlyingObject(unsigned long param
 int CreatureAgenda::ConstructSubActionsForLookAtCamera(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_LOOK_AT_CAMERA,
-	                                 new (CREATURE_ACTION_FILE, 1840)
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1840))
 	                                     SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(5.0f)),
 	                                 &Creature::LookAtCamera, &Creature::SetFaceForActionCuriosity);
 	return 0;
@@ -959,12 +1469,59 @@ int CreatureAgenda::ConstructSubActionsForCreateHome(unsigned long param_1)
 	return 1;
 }
 
+// BW1W120 004a5740 BW1M119 01225fb0
+int CreatureAgenda::ConstructSubActionsForBringHome(unsigned long param_1)
+{
+	LHPoint home;
+	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, home);
+	GameThingWithPos* thing = plans[0].ObjectToActOn->GetPointer();
+	if (creature->physical->GetObjectCarried() == NULL)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1918))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+	}
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1920))
+	                                 SubArgumentPointAndFloat(home, min(5.0f, creature->GetHeight())),
+	                             &Creature::LookWhileGoingTowardsPoint, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1921)) SubArgumentInteger(0x61),
+	                                 NULL, NULL);
+	if (dynamic_cast<Living*>(thing) != NULL)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_RENDER_IMMOBILE,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1924))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+	}
+	return 0;
+}
+
+// BW1W120 004a59c0 BW1M119 01225d60
+int CreatureAgenda::ConstructSubActionsForSleepAtPos(unsigned long param_1)
+{
+	LHPoint home;
+	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, home);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1934)) SubArgumentPointAndFloat(
+									 home, creature->GetHeight() > 5.0f ? 5.0f : creature->GetHeight()),
+	                             &Creature::LookWhileGoingTowardsPoint, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_FACE_DOWN_SLOPE, NULL, NULL, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_SLEEP, NULL, NULL, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1937)) SubArgumentInteger(0x3f),
+	                             &Creature::LookJustWokenUp, &Creature::SetFaceForActionGrimace);
+	return 0;
+}
+
 // BW1W120 004a5ba0 BW1M119 01225c70
 int CreatureAgenda::ConstructSubActionsForShowLearntLesson(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 1944) SubArgumentInteger(0x3c), NULL,
-	                                 &Creature::SetFaceForActionSmile);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1944)) SubArgumentInteger(0x3c),
+	                                 NULL, &Creature::SetFaceForActionSmile);
 	return 0;
 }
 
@@ -972,8 +1529,8 @@ int CreatureAgenda::ConstructSubActionsForShowLearntLesson(unsigned long param_1
 int CreatureAgenda::ConstructSubActionsForPracticeDance(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_PRACTICE_DANCE,
-	                                 new (CREATURE_ACTION_FILE, 1951) SubArgumentFloat(20.0f), NULL,
-	                                 &Creature::SetFaceForActionSmile);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1951)) SubArgumentFloat(20.0f),
+	                                 NULL, &Creature::SetFaceForActionSmile);
 	return 0;
 }
 
@@ -990,11 +1547,11 @@ int CreatureAgenda::ConstructSubActionsForGoToMiddleOfScreen(unsigned long param
 int CreatureAgenda::ConstructSubActionsForGoToHand(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_FOLLOW_HAND, NULL, &Creature::LookAtHand, NULL);
-	if (GRand::GameRand(2, CREATURE_ACTION_FILE, 1967) == 0)
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1967)) == 0)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                             new (CREATURE_ACTION_FILE, 1969) SubArgumentInteger(0x37), &Creature::LookAtHand,
-		                             NULL);
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1969)) SubArgumentInteger(0x37),
+		                             &Creature::LookAtHand, NULL);
 	}
 	return 0;
 }
@@ -1004,8 +1561,8 @@ int CreatureAgenda::ConstructSubActionsForWaveAtPlayer(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 1979) SubArgumentInteger(0x48), &Creature::LookAtCamera,
-	                                 NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1979)) SubArgumentInteger(0x48),
+	                                 &Creature::LookAtCamera, NULL);
 	return 0;
 }
 
@@ -1013,15 +1570,15 @@ int CreatureAgenda::ConstructSubActionsForWaveAtPlayer(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForWaveAtObject(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 1987)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1987))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 3.5f * creature->GetHeight()),
 	                             &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionSmile);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 1988)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1988))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 1.4f),
 	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionSmile);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 1989) SubArgumentInteger(0x48),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1989)) SubArgumentInteger(0x48),
 	                                 &Creature::LookAtObjectFlutteringEyelids, NULL);
 	return 0;
 }
@@ -1031,11 +1588,39 @@ int CreatureAgenda::ConstructSubActionsForLookConfused(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                             new (CREATURE_ACTION_FILE, 1997) SubArgumentInteger(0x3c), &Creature::LookAtCamera,
-	                             &Creature::SetFaceForActionPuzzled);
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1997)) SubArgumentInteger(0x3c),
+	                             &Creature::LookAtCamera, &Creature::SetFaceForActionPuzzled);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 1998) SubArgumentInteger(0x3f), &Creature::LookAtCamera,
-	                                 &Creature::SetFaceForActionPuzzled);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1998)) SubArgumentInteger(0x3f),
+	                                 &Creature::LookAtCamera, &Creature::SetFaceForActionPuzzled);
+	return 0;
+}
+
+// BW1W120 004a6140 BW1M119 012251a0
+int CreatureAgenda::ConstructSubActionsForEatFromTree(unsigned long param_1)
+{
+	Object* carried = creature->physical->GetObjectCarried();
+	if (carried != NULL && carried->CanBeEatenByCreature(creature))
+	{
+		return 1;
+	}
+	Object* tree = plans[0].ObjectToActOn->GetObjectPointer();
+	LHPoint pos;
+	GLandscape::ConvertMapCoordToLandscapePoint(plans[0].ObjectToActOn->GetPos(), pos);
+	float distance = (tree->Get2DRadius() + creature->Get2DRadius()) * 1.2f;
+	belief = plans[0].ObjectToActOn;
+	SubActionAgenda.AddSubAction(
+		CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2013)) SubArgumentPointAndFloat(pos, distance), NULL, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2014))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+	                             NULL, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_CREATE_PICK_UP_THEN_REMOVE,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2015))
+	                                 SubArgumentObjectAndInteger(plans[0].ObjectToActOn, 0xf),
+	                             NULL, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_EAT_CREATED_OBJECT, NULL, NULL, NULL);
 	return 0;
 }
 
@@ -1044,7 +1629,7 @@ int CreatureAgenda::ConstructSubActionsForRunToObject(unsigned long param_1)
 {
 	creature->physical->Creature3d->SetRequiredSpeed(((const CreatureInfo*)creature->info)->RunSpeed);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                                 new (CREATURE_ACTION_FILE, 2122) SubArgumentObjectAndFloat(
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2122)) SubArgumentObjectAndFloat(
 										 plans[0].ObjectToActOn, creature->GetHeight() * 1.5f),
 	                                 &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionSmile);
 	return 0;
@@ -1076,12 +1661,14 @@ int CreatureAgenda::ConstructSubActionsForGoToTeleport(unsigned long param_1)
 	LHPoint         pos;
 	GLandscape::ConvertMapCoordToLandscapePoint(teleport->GetPointer()->Pos, pos);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                             new (CREATURE_ACTION_FILE, 2333) SubArgumentPointAndFloat(pos, 5.0f),
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2333))
+	                                 SubArgumentPointAndFloat(pos, 5.0f),
 	                             &Creature::LookAtPosition, &Creature::SetFaceForActionPuzzled);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_DO_TELEPORT,
-	                                 new (CREATURE_ACTION_FILE, 2334) SubArgumentObject(teleport), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2334)) SubArgumentObject(teleport),
+	                                 NULL, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_WAIT,
-	                             new (CREATURE_ACTION_FILE, 2335)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2335))
 	                                 SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(0.4f)),
 	                             NULL, &Creature::SetFaceForActionPuzzled);
 	return 0;
@@ -1101,8 +1688,9 @@ int CreatureAgenda::ConstructSubActionsForTakeObjectFromHand(unsigned long param
 int CreatureAgenda::ConstructSubActionsForGesture(unsigned long gesture_type)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
-	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_GESTURE,
-	                                 new (CREATURE_ACTION_FILE, 2525) SubArgumentInteger(gesture_type), NULL, NULL);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_GESTURE,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2525)) SubArgumentInteger(gesture_type), NULL, NULL);
 	return 0;
 }
 
@@ -1110,15 +1698,16 @@ int CreatureAgenda::ConstructSubActionsForGesture(unsigned long gesture_type)
 int CreatureAgenda::ConstructSubActionsForPineForFriend(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 2618)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2618))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
 	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForMoodSad);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 2619)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2619))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
 	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForMoodSad);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 2620) SubArgumentInteger(0x38), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2620)) SubArgumentInteger(0x38),
+	                                 NULL, NULL);
 	return 0;
 }
 
@@ -1126,13 +1715,14 @@ int CreatureAgenda::ConstructSubActionsForPineForFriend(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForLookForFriend(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 2627)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2627))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
 	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForMoodSad);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 2628) SubArgumentInteger(0x38), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2628)) SubArgumentInteger(0x38),
+	                                 NULL, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 2629) SubArgumentObjectAndFloat(
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2629)) SubArgumentObjectAndFloat(
 									 plans[0].ObjectToActOn, 3.0f * creature->GetCreature3D()->GetStandingHeight()),
 	                             &Creature::LookWhileGoingTowardsObject, NULL);
 	return 0;
@@ -1142,9 +1732,10 @@ int CreatureAgenda::ConstructSubActionsForLookForFriend(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForDiePermanently(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_FAINT,
-	                                 new (CREATURE_ACTION_FILE, 2657) SubArgumentInteger(0x6a), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2657)) SubArgumentInteger(0x6a),
+	                                 NULL, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_WAIT,
-	                             new (CREATURE_ACTION_FILE, 2658)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2658))
 	                                 SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(999999.0f)),
 	                             NULL, NULL);
 	return 0;
@@ -1167,7 +1758,8 @@ int CreatureAgenda::ConstructSubActionsForDefenderStompOnBall(unsigned long para
 		if (belief != NULL)
 		{
 			SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_STOMP,
-			                                 new (CREATURE_ACTION_FILE, 2753) SubArgumentObject(belief),
+			                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2753))
+			                                     SubArgumentObject(belief),
 			                                 &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionAnger);
 			return 0;
 		}
@@ -1192,7 +1784,8 @@ int CreatureAgenda::ConstructSubActionsForGoalieCatchBall(unsigned long action_a
 int CreatureAgenda::ConstructSubActionsForCelebrateGoal(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 2819) SubArgumentInteger(0x37), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2819)) SubArgumentInteger(0x37),
+	                                 NULL, NULL);
 	return 0;
 }
 
@@ -1200,7 +1793,90 @@ int CreatureAgenda::ConstructSubActionsForCelebrateGoal(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForCommiserateGoal(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 2826) SubArgumentInteger(0x38), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2826)) SubArgumentInteger(0x38),
+	                                 NULL, NULL);
+	return 0;
+}
+
+// BW1W120 004ad090 BW1M119 0121d2a0
+int CreatureAgenda::ConstructSubActionsForCastOneOffSpellInHandAggressive(unsigned long param_1)
+{
+	Object* carried = creature->physical->GetObjectCarried();
+	if (carried != NULL)
+	{
+		OneOffSpellSeed* seed = carried->CastOneOffSpellSeed();
+		if (seed != NULL)
+		{
+			MAGIC_TYPE magicType = seed->GetSeedInfo()->GetFirstMagicType();
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2839))
+			                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, CastSpellDistance),
+			                             &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionCompassion);
+			SubActionAgenda.AddSubAction(
+				CREATURE_SUB_STATE_ACTIONS_GET_AWAY_FROM_OBJECT,
+				new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2840))
+					SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f * creature->GetHeight()),
+				&Creature::LookAtObjectArgument, NULL);
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2841))
+			                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+			                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCompassion);
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_HIDE_OBJECT_IN_HAND, NULL, NULL, NULL);
+			SubActionAgenda.AddCastSpellSubAction(plans[0].ObjectToActOn, magicType);
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DESTROY_OBJECT_TO_USE, NULL, NULL, NULL);
+			return 0;
+		}
+	}
+	creature->FinishActionUnsuccessfully("failed to construct subactions", 1, 1);
+	return 1;
+}
+
+// BW1W120 004ad2f0 BW1M119 0121d0b0
+int CreatureAgenda::ConstructSubActionsForRunAwayFromPos(unsigned long param_1)
+{
+	creature->physical->Creature3d->SetRequiredSpeed(((const CreatureInfo*)creature->info)->RunSpeed);
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2856)) == 0)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2858)) SubArgumentInteger(0x3d),
+		                             &Creature::LookFrightened, &Creature::SetFaceForActionAmazed);
+	}
+	LHPoint from;
+	GLandscape::ConvertMapCoordToLandscapePoint(creature->mind->agenda.PosToRunAwayFrom, from);
+	LHPoint to;
+	creature->GetRunAwayPoint(from, &to);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2863))
+	                                     SubArgumentPointAndFloat(to, 5.0f * creature->GetHeight()),
+	                                 &Creature::LookWhileGoingTowardsPoint, NULL);
+	return 0;
+}
+
+// BW1W120 004ae450 BW1M119 0121bcf0
+int CreatureAgenda::ConstructSubActionsForEatFromFoodPile(unsigned long param_1)
+{
+	Object* carried = creature->physical->GetObjectCarried();
+	if (carried != NULL && carried->CanBeEatenByCreature(creature))
+	{
+		return 1;
+	}
+	Object* pile = plans[0].ObjectToActOn->GetObjectPointer();
+	LHPoint pos;
+	GLandscape::ConvertMapCoordToLandscapePoint(pile->Pos, pos);
+	float distance = (pile->Get2DRadius() + creature->Get2DRadius()) * 1.2f;
+	belief = plans[0].ObjectToActOn;
+	SubActionAgenda.AddSubAction(
+		CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2990)) SubArgumentPointAndFloat(pos, distance), NULL, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2991))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+	                             NULL, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_CREATE_PICK_UP_THEN_REMOVE,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(2992))
+	                                 SubArgumentObjectAndInteger(plans[0].ObjectToActOn, 0x11),
+	                             NULL, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_EAT_CREATED_OBJECT, NULL, NULL, NULL);
 	return 0;
 }
 
@@ -1208,7 +1884,8 @@ int CreatureAgenda::ConstructSubActionsForCommiserateGoal(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForSmashStoneInHalf(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_STOMP,
-	                                 new (CREATURE_ACTION_FILE, 3006) SubArgumentObject(plans[0].ObjectToActOn),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3006))
+	                                     SubArgumentObject(plans[0].ObjectToActOn),
 	                                 &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionAnger);
 	return 0;
 }
@@ -1217,20 +1894,23 @@ int CreatureAgenda::ConstructSubActionsForSmashStoneInHalf(unsigned long param_1
 int CreatureAgenda::ConstructSubActionsForBeSad(unsigned long param_1)
 {
 	// TODO: The target schedules the 2.0f add after the inlined division, see ConvertRealWorldSecondsToGameTicks
-	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_WAIT,
-	                             new (CREATURE_ACTION_FILE, 3013)
-	                                 SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
-										 2.0f + GRand::GameFloatRand(3.0f, CREATURE_ACTION_FILE, 3013))),
-	                             &Creature::LookDown, &Creature::SetFaceForMoodSad);
-	if (GRand::GameRand(2, CREATURE_ACTION_FILE, 3014) == 0)
+	SubActionAgenda.AddSubAction(
+		CREATURE_SUB_STATE_ACTIONS_WAIT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3013))
+			SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
+				2.0f + GRand::GameFloatRand(3.0f, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3013)))),
+		&Creature::LookDown, &Creature::SetFaceForMoodSad);
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3014)) == 0)
 	{
-		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                                 new (CREATURE_ACTION_FILE, 3016) SubArgumentInteger(0x38), NULL, NULL);
+		SubActionAgenda.AddMainSubAction(
+			CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+			new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3016)) SubArgumentInteger(0x38), NULL, NULL);
 	}
 	else
 	{
-		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                                 new (CREATURE_ACTION_FILE, 3020) SubArgumentInteger(0xdb), NULL, NULL);
+		SubActionAgenda.AddMainSubAction(
+			CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+			new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3020)) SubArgumentInteger(0xdb), NULL, NULL);
 	}
 	return 0;
 }
@@ -1241,13 +1921,15 @@ int CreatureAgenda::ConstructSubActionsForBeingIdle(unsigned long param_1)
 	// TODO: The target schedules the 1.0f add after the inlined division, see ConvertRealWorldSecondsToGameTicks
 	for (int i = 0; i < 2; i++)
 	{
-		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_WAIT,
-		                             new (CREATURE_ACTION_FILE, 3030)
-		                                 SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
-											 1.0f + GRand::GameFloatRand(1.0f, CREATURE_ACTION_FILE, 3030))),
-		                             &Creature::LookAround, &Creature::SetFaceForActionIdle);
+		SubActionAgenda.AddSubAction(
+			CREATURE_SUB_STATE_ACTIONS_WAIT,
+			new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3030))
+				SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
+					1.0f + GRand::GameFloatRand(1.0f, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3030)))),
+			&Creature::LookAround, &Creature::SetFaceForActionIdle);
 		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                                 new (CREATURE_ACTION_FILE, 3031) SubArgumentInteger(0x39),
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3031))
+		                                     SubArgumentInteger(0x39),
 		                                 &Creature::LookJustWokenUp, &Creature::SetFaceForActionIdle);
 	}
 	return 0;
@@ -1260,7 +1942,7 @@ int CreatureAgenda::ConstructSubActionsForGoHome(unsigned long param_1)
 	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, home);
 	creature->mind->agenda.Destination = creature->HomePos;
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                                 new (CREATURE_ACTION_FILE, 3042) SubArgumentPointAndFloat(
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3042)) SubArgumentPointAndFloat(
 										 home, creature->GetHeight() > 5.0f ? 5.0f : creature->GetHeight()),
 	                                 &Creature::LookWhileGoingTowardsPoint, NULL);
 	return 0;
@@ -1270,9 +1952,40 @@ int CreatureAgenda::ConstructSubActionsForGoHome(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForPointAtObject(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_OBJECT,
-	                                 new (CREATURE_ACTION_FILE, 3049)
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3049))
 	                                     SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 5.0f),
 	                                 &Creature::LookAtFlyingObject, &Creature::SetFaceForActionAmazed);
+	return 0;
+}
+
+// BW1W120 004aebd0 BW1M119 0121b370
+int CreatureAgenda::ConstructSubActionsForBringFoodHome(unsigned long param_1)
+{
+	Object* carried = creature->physical->GetObjectCarried();
+	if (carried == NULL || !carried->CanBeEatenByCreature(creature))
+	{
+		GameThingWithPos* food = plans[0].ObjectToActOn->GetPointer();
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3060))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+		if (dynamic_cast<Living*>(food) != NULL)
+		{
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_RENDER_IMMOBILE,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3063))
+			                                 SubArgumentObject(plans[0].ObjectToActOn),
+			                             &Creature::LookWhileGoingTowardsObject, NULL);
+		}
+	}
+	LHPoint home;
+	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, home);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3069))
+	                                 SubArgumentPointAndFloat(home, creature->GetHeight()),
+	                             &Creature::LookWhileGoingTowardsPoint, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3070)) SubArgumentInteger(0x61),
+	                                 NULL, NULL);
 	return 0;
 }
 
@@ -1290,13 +2003,15 @@ int CreatureAgenda::ConstructSubActionsForShowPlayerHowNiceYouReckon(unsigned lo
 	if (creature->mind->AttitudeToPlayer.Attitude > 0.0f)
 	{
 		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                                 new (CREATURE_ACTION_FILE, 3156) SubArgumentInteger(0x48),
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3156))
+		                                     SubArgumentInteger(0x48),
 		                                 &Creature::LookAtCamera, NULL);
 	}
 	else
 	{
 		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                                 new (CREATURE_ACTION_FILE, 3161) SubArgumentInteger(0x38),
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3161))
+		                                     SubArgumentInteger(0x38),
 		                                 &Creature::LookAtCamera, NULL);
 	}
 	return 0;
@@ -1314,7 +2029,8 @@ int CreatureAgenda::ConstructSubActionsForPointAtCamera(unsigned long param_1)
 		                             NULL);
 		LHPoint pos = status->GetCameraPos();
 		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_POINT,
-		                                 new (CREATURE_ACTION_FILE, 3176) SubArgumentPointAndFloat(pos, 1.0f),
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3176))
+		                                     SubArgumentPointAndFloat(pos, 1.0f),
 		                                 &Creature::LookAtPosition, &Creature::SetFaceForActionAmazed);
 		return 0;
 	}
@@ -1334,7 +2050,8 @@ int CreatureAgenda::ConstructSubActionsForPointAtHand(unsigned long param_1)
 		                             NULL);
 		LHPoint pos = status->GetHandPos();
 		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_POINT,
-		                                 new (CREATURE_ACTION_FILE, 3196) SubArgumentPointAndFloat(pos, 1.0f),
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3196))
+		                                     SubArgumentPointAndFloat(pos, 1.0f),
 		                                 &Creature::LookAtPosition, &Creature::SetFaceForActionAmazed);
 		return 0;
 	}
@@ -1345,17 +2062,17 @@ int CreatureAgenda::ConstructSubActionsForPointAtHand(unsigned long param_1)
 // BW1W120 004af9c0 BW1M119 0121a330
 int CreatureAgenda::ConstructSubActionsForRunHome(unsigned long param_1)
 {
-	if (GRand::GameRand(2, CREATURE_ACTION_FILE, 3209) == 0)
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3209)) == 0)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                             new (CREATURE_ACTION_FILE, 3211) SubArgumentInteger(0x3d),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3211)) SubArgumentInteger(0x3d),
 		                             &Creature::LookFrightened, &Creature::SetFaceForMoodFrightened);
 	}
 	creature->physical->Creature3d->SetRequiredSpeed(((const CreatureInfo*)creature->info)->RunSpeed);
 	LHPoint home;
 	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, home);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                                 new (CREATURE_ACTION_FILE, 3216)
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3216))
 	                                     SubArgumentPointAndFloat(home, 2.0f * creature->GetHeight()),
 	                                 &Creature::LookWhileGoingTowardsPoint, NULL);
 	return 0;
@@ -1371,16 +2088,19 @@ int CreatureAgenda::ConstructSubActionsForPlayThrowingGameWithPlayer(unsigned lo
 	{
 		LHPoint pos = status->GetHandPos();
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
-		                             new (CREATURE_ACTION_FILE, 3230) SubArgumentObject(plans[0].ObjectToUse),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3230))
+		                                 SubArgumentObject(plans[0].ObjectToUse),
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 		if (creature->physical->GetObjectCarried() == NULL)
 		{
 			SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW_AT_POS,
-			                                 new (CREATURE_ACTION_FILE, 3233) SubArgumentPoint(pos),
+			                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3233))
+			                                     SubArgumentPoint(pos),
 			                                 &Creature::LookAtHand, NULL);
 		}
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                             new (CREATURE_ACTION_FILE, 3235) SubArgumentInteger(0x37), NULL, NULL);
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3235)) SubArgumentInteger(0x37),
+		                             NULL, NULL);
 		return 0;
 	}
 	creature->FinishActionUnsuccessfully("failed to construct subactions", 1, 1);
@@ -1391,14 +2111,14 @@ int CreatureAgenda::ConstructSubActionsForPlayThrowingGameWithPlayer(unsigned lo
 int CreatureAgenda::ConstructSubActionsForBeFrightenedOnTheSpot(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                             new (CREATURE_ACTION_FILE, 3299) SubArgumentInteger(0x3d), &Creature::LookFrightened,
-	                             NULL);
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3299)) SubArgumentInteger(0x3d),
+	                             &Creature::LookFrightened, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_WAIT,
-	                             new (CREATURE_ACTION_FILE, 3300)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3300))
 	                                 SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(3.0f)),
 	                             NULL, &Creature::SetFaceForMoodFrightened);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 3301) SubArgumentInteger(0x3d),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3301)) SubArgumentInteger(0x3d),
 	                                 &Creature::LookFrightened, NULL);
 	return 0;
 }
@@ -1409,7 +2129,7 @@ int CreatureAgenda::ConstructSubActionsForPooDiscretely(unsigned long action_arg
 	LHPoint home;
 	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, home);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                             new (CREATURE_ACTION_FILE, 3311)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3311))
 	                                 SubArgumentPointAndFloat(home, 2.0f * creature->GetHeight()),
 	                             &Creature::LookWhileGoingTowardsPoint, NULL);
 	return ConstructSubActionsForPoo(action_argument);
@@ -1431,11 +2151,29 @@ int CreatureAgenda::ConstructSubActionsForFart(unsigned long action_argument)
 int CreatureAgenda::ConstructSubActionsForRestOnTheSpot(unsigned long param_1)
 {
 	// TODO: The target schedules the 3.0f add after the inlined division, see ConvertRealWorldSecondsToGameTicks
-	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_WAIT,
-	                                 new (CREATURE_ACTION_FILE, 3331)
-	                                     SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
-											 3.0f + GRand::GameFloatRand(8.0f, CREATURE_ACTION_FILE, 3331))),
-	                                 &Creature::LookDown, &Creature::SetFaceForMoodExhausted);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_WAIT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3331))
+			SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
+				3.0f + GRand::GameFloatRand(8.0f, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3331)))),
+		&Creature::LookDown, &Creature::SetFaceForMoodExhausted);
+	return 0;
+}
+
+// BW1W120 004b0590 BW1M119 012193b0
+int CreatureAgenda::ConstructSubActionsForGoHomeToRecover(unsigned long param_1)
+{
+	LHPoint home;
+	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, home);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3340)) SubArgumentPointAndFloat(
+									 home, creature->GetHeight() > 5.0f ? 5.0f : creature->GetHeight()),
+	                             &Creature::LookWhileGoingTowardsPoint, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_FACE_DOWN_SLOPE, NULL, NULL, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_REST_TO_GET_BETTER, NULL, NULL, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3343)) SubArgumentInteger(0x3f),
+	                             &Creature::LookJustWokenUp, &Creature::SetFaceForActionGrimace);
 	return 0;
 }
 
@@ -1459,12 +2197,13 @@ int CreatureAgenda::ConstructSubActionsForGetHigh(unsigned long param_1)
 	if (carried == NULL || !carried->IsMushroom(creature))
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
-		                             new (CREATURE_ACTION_FILE, 3362) SubArgumentObject(plans[0].ObjectToActOn),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3362))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 	}
-	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_EAT,
-	                                 new (CREATURE_ACTION_FILE, 3364) SubArgumentObject(plans[0].ObjectToActOn), NULL,
-	                                 NULL);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_EAT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3364)) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
 	return 0;
 }
 
@@ -1481,14 +2220,15 @@ int CreatureAgenda::ConstructSubActionsForLookButDontApproach(unsigned long para
 {
 	// TODO: The target schedules the 1.1f add after the inlined division, see ConvertRealWorldSecondsToGameTicks
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 3379)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3379))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
 	                             &Creature::LookAtObjectArgument, NULL);
-	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_WAIT,
-	                                 new (CREATURE_ACTION_FILE, 3380)
-	                                     SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
-											 1.1f + GRand::GameFloatRand(1.2f, CREATURE_ACTION_FILE, 3380))),
-	                                 &Creature::LookAtObjectArgumentBottom, NULL);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_WAIT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3380))
+			SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
+				1.1f + GRand::GameFloatRand(1.2f, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3380)))),
+		&Creature::LookAtObjectArgumentBottom, NULL);
 	return 0;
 }
 
@@ -1496,14 +2236,44 @@ int CreatureAgenda::ConstructSubActionsForLookButDontApproach(unsigned long para
 int CreatureAgenda::ConstructSubActionsForLookForever(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 3409)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3409))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
 	                             &Creature::LookAtObjectArgument, NULL);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_WAIT,
-	                                 new (CREATURE_ACTION_FILE, 3410) SubArgumentInteger(
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3410)) SubArgumentInteger(
 										 GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(86400.0f)),
 	                                 &Creature::LookAtObjectArgument, NULL);
 	return 0;
+}
+
+// BW1W120 004b1100 BW1M119 01218500
+int CreatureAgenda::ConstructSubActionsForLookAtMountains(unsigned long param_1)
+{
+	// TODO: The target spills this to the stack and has a 12 byte smaller frame; the instructions otherwise match.
+	MapCoords coords;
+	LHPoint   pos;
+	int       found = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_HILL, creature->Pos, &coords,
+	                                                             PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
+	pos = coords.ConvertToLHPoint();
+	if (found)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_POS,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3436)) SubArgumentPoint(pos),
+		                             &Creature::LookAtPosition, NULL);
+		if (GRand::GameRand(3, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3437)) == 0)
+		{
+			SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_POINT,
+			                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3439))
+			                                     SubArgumentPointAndFloat(pos, 3.0f),
+			                                 &Creature::LookAtPosition, NULL);
+		}
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_POS,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3441)) SubArgumentPoint(pos),
+		                             &Creature::LookAtPosition, NULL);
+		return 0;
+	}
+	creature->FinishActionUnsuccessfully("failed to construct subactions", 1, 1);
+	return 1;
 }
 
 // BW1W120 004b15d0 BW1M119 01218050
@@ -1511,11 +2281,12 @@ int CreatureAgenda::ConstructSubActionsForLookAtSun(unsigned long param_1)
 {
 	LHPoint pos(-50000.0f, 0.0f, -50000.0f);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_POS,
-	                             new (CREATURE_ACTION_FILE, 3480) SubArgumentPoint(pos), &Creature::LookAtPosition,
-	                             NULL);
-	if (GRand::GameRand(2, CREATURE_ACTION_FILE, 3481) == 0)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3480)) SubArgumentPoint(pos),
+	                             &Creature::LookAtPosition, NULL);
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3481)) == 0)
 		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_POINT,
-		                                 new (CREATURE_ACTION_FILE, 3483) SubArgumentPointAndFloat(pos, 3.0f),
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3483))
+		                                     SubArgumentPointAndFloat(pos, 3.0f),
 		                                 &Creature::LookAtPosition, NULL);
 	return 0;
 }
@@ -1525,19 +2296,20 @@ int CreatureAgenda::ConstructSubActionsForLookAtMoon(unsigned long param_1)
 {
 	LHPoint pos = LH3DAtmos::GetMoonPos();
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_POS,
-	                             new (CREATURE_ACTION_FILE, 3492) SubArgumentPoint(pos), &Creature::LookAtPosition,
-	                             NULL);
-	if (GRand::GameRand(2, CREATURE_ACTION_FILE, 3493) == 0)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3492)) SubArgumentPoint(pos),
+	                             &Creature::LookAtPosition, NULL);
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3493)) == 0)
 	{
 		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_POINT,
-		                                 new (CREATURE_ACTION_FILE, 3495) SubArgumentPointAndFloat(pos, 3.0f),
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3495))
+		                                     SubArgumentPointAndFloat(pos, 3.0f),
 		                                 &Creature::LookAtPosition, NULL);
 	}
 	if (creature->alignment->value < 0.0f)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-		                             new (CREATURE_ACTION_FILE, 3499) SubArgumentInteger(0x35), NULL,
-		                             &Creature::SetFaceForActionAmazed);
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3499)) SubArgumentInteger(0x35),
+		                             NULL, &Creature::SetFaceForActionAmazed);
 	}
 	return 0;
 }
@@ -1558,7 +2330,8 @@ int CreatureAgenda::ConstructSubActionsForExploreAndCastTeleport(unsigned long p
 int CreatureAgenda::ConstructSubActionsForHurlObjectInHand(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW,
-	                                 new (CREATURE_ACTION_FILE, 3520) SubArgumentObject(plans[0].ObjectToActOn),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3520))
+	                                     SubArgumentObject(plans[0].ObjectToActOn),
 	                                 &Creature::LookAtObjectArgument, &Creature::SetFaceForActionAnger);
 	return 0;
 }
@@ -1576,7 +2349,8 @@ int CreatureAgenda::ConstructSubActionsForBePatheticWithPlayer(unsigned long par
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_FOLLOW_CAMERA, NULL, &Creature::LookAtCamera, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 3770) SubArgumentInteger(0x4a), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3770)) SubArgumentInteger(0x4a),
+	                                 NULL, NULL);
 	return 0;
 }
 
@@ -1585,10 +2359,11 @@ int CreatureAgenda::ConstructSubActionsForBeCrossWithPlayer(unsigned long param_
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_FOLLOW_CAMERA, NULL, &Creature::LookAtCamera, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
-	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 3779) SubArgumentInteger(
-										 GRand::GameRand(2, CREATURE_ACTION_FILE, 3779) ? 0xde : 0x46),
-	                                 NULL, NULL);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3779))
+			SubArgumentInteger(GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3779)) ? 0xde : 0x46),
+		NULL, NULL);
 	return 0;
 }
 
@@ -1599,16 +2374,80 @@ int CreatureAgenda::ConstructSubActionsForKissFriendsArse(unsigned long param_1)
 	if (other != NULL)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_REQUEST_PARTNER,
-		                             new (CREATURE_ACTION_FILE, 3789)
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3789))
 		                                 SubArgumentObjectAndInteger(plans[0].ObjectToActOn, 0x10),
 		                             &Creature::LookAtObjectArgument, NULL);
 		SubActionAgenda.AddOrder(other, CREATURE_SUB_STATE_ACTIONS_STATIC_ACTION,
-		                         new (CREATURE_ACTION_FILE, 3790) SubArgumentIntegerAndFloat(0x20, 4.0f), NULL,
-		                         &Creature::SetFaceForActionPuzzled);
+		                         new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3790))
+		                             SubArgumentIntegerAndFloat(0x20, 4.0f),
+		                         NULL, &Creature::SetFaceForActionPuzzled);
 		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_KISS,
-		                                 new (CREATURE_ACTION_FILE, 3791) SubArgumentObject(plans[0].ObjectToActOn),
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3791))
+		                                     SubArgumentObject(plans[0].ObjectToActOn),
 		                                 NULL, NULL);
 		return 0;
+	}
+	creature->FinishActionUnsuccessfully("failed to construct subactions", 1, 1);
+	return 1;
+}
+
+// BW1W120 004b5bb0 BW1M119 01213140
+int CreatureAgenda::ConstructSubActionsForCastOneOffSpellInHandCompassionate(unsigned long param_1)
+{
+	Object* carried = creature->physical->GetObjectCarried();
+	if (carried != NULL)
+	{
+		OneOffSpellSeed* seed = carried->CastOneOffSpellSeed();
+		if (seed != NULL)
+		{
+			MAGIC_TYPE magicType = seed->GetSeedInfo()->GetFirstMagicType();
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3911))
+			                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, CastSpellDistance),
+			                             &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionCompassion);
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3912))
+			                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+			                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCompassion);
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_HIDE_OBJECT_IN_HAND, NULL, NULL, NULL);
+			SubActionAgenda.AddCastSpellSubAction(plans[0].ObjectToActOn, magicType);
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DESTROY_OBJECT_TO_USE, NULL, NULL, NULL);
+			return 0;
+		}
+	}
+	creature->FinishActionUnsuccessfully("failed to construct subactions", 1, 1);
+	return 1;
+}
+
+// BW1W120 004b5d80 BW1M119 01212e50
+int CreatureAgenda::ConstructSubActionsForCastOneOffSpellInHandPlayful(unsigned long param_1)
+{
+	Object* carried = creature->physical->GetObjectCarried();
+	if (carried != NULL)
+	{
+		OneOffSpellSeed* seed = carried->CastOneOffSpellSeed();
+		if (seed != NULL)
+		{
+			MAGIC_TYPE magicType = seed->GetSeedInfo()->GetFirstMagicType();
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3932))
+			                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, CastSpellDistance),
+			                             &Creature::LookWhileGoingTowardsObject,
+			                             &Creature::SetFaceForActionPlayfulness);
+			SubActionAgenda.AddSubAction(
+				CREATURE_SUB_STATE_ACTIONS_GET_AWAY_FROM_OBJECT,
+				new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3933))
+					SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f * creature->GetHeight()),
+				&Creature::LookAtObjectArgument, NULL);
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3934))
+			                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+			                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionPlayfulness);
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_HIDE_OBJECT_IN_HAND, NULL, NULL, NULL);
+			SubActionAgenda.AddCastSpellSubAction(plans[0].ObjectToActOn, magicType);
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DESTROY_OBJECT_TO_USE, NULL, NULL, NULL);
+			return 0;
+		}
 	}
 	creature->FinishActionUnsuccessfully("failed to construct subactions", 1, 1);
 	return 1;
@@ -1627,10 +2466,11 @@ int CreatureAgenda::ConstructSubActionsForCastOneOffSpellInHandToRestoreHealth(u
 			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_HIDE_OBJECT_IN_HAND, NULL, NULL, NULL);
 			// Unused on both platforms, as if left over from HealHimself
 			LHPoint pos = creature->GetCreature3D()->position;
-			SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_CAST_SPELL_AT_OBJECT,
-			                                 new (CREATURE_ACTION_FILE, 3958) SubArgumentObjectIntegerFloatAndSpell(
-												 creature->mind->GetBeliefAboutObject(creature), 0x29, 3.0f, magicType),
-			                                 NULL, &Creature::SetFaceForActionGrimace);
+			SubActionAgenda.AddMainSubAction(
+				CREATURE_SUB_STATE_ACTIONS_CAST_SPELL_AT_OBJECT,
+				new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3958)) SubArgumentObjectIntegerFloatAndSpell(
+					creature->mind->GetBeliefAboutObject(creature), 0x29, 3.0f, magicType),
+				NULL, &Creature::SetFaceForActionGrimace);
 			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DESTROY_OBJECT_TO_USE, NULL, NULL, NULL);
 			return 0;
 		}
@@ -1648,15 +2488,16 @@ int CreatureAgenda::ConstructSubActionsForKick(unsigned long param_1)
 		// Unused on both platforms
 		LHPoint pos = creature->GetCreature3D()->position;
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-		                             new (CREATURE_ACTION_FILE, 4080)
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4080))
 		                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.0f),
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-		                             new (CREATURE_ACTION_FILE, 4081)
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4081))
 		                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
 		                             &Creature::LookAtObjectArgument, NULL);
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_KICK_OBJECT,
-		                             new (CREATURE_ACTION_FILE, 4082) SubArgumentObject(plans[0].ObjectToActOn),
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4082))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
 		                             &Creature::LookAtObjectArgument, NULL);
 		return 0;
 	}
@@ -1668,8 +2509,9 @@ int CreatureAgenda::ConstructSubActionsForKick(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForCatch(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_CATCH,
-	                                 new (CREATURE_ACTION_FILE, 4092) SubArgumentObject(plans[0].ObjectToActOn), NULL,
-	                                 &Creature::SetFaceForActionSmile);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4092))
+	                                     SubArgumentObject(plans[0].ObjectToActOn),
+	                                 NULL, &Creature::SetFaceForActionSmile);
 	return 0;
 }
 
@@ -1677,19 +2519,95 @@ int CreatureAgenda::ConstructSubActionsForCatch(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForCastMagicWater(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 4099)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4099))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f * creature->GetHeight()),
 	                             &Creature::LookWhileGoingTowardsObject, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 4100)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4100))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
 	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionSmile);
 	// Unused on both platforms
 	LHPoint pos = plans[0].ObjectToActOn->GetPos().GetLHPoint();
-	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_CAST_SPELL_AT_OBJECT,
-	                                 new (CREATURE_ACTION_FILE, 4104) SubArgumentObjectIntegerFloatAndSpell(
-										 plans[0].ObjectToActOn, 0x2f, 3.0f, MAGIC_TYPE_WATER),
-	                                 NULL, &Creature::SetFaceForActionSmile);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_CAST_SPELL_AT_OBJECT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4104))
+			SubArgumentObjectIntegerFloatAndSpell(plans[0].ObjectToActOn, 0x2f, 3.0f, MAGIC_TYPE_WATER),
+		NULL, &Creature::SetFaceForActionSmile);
+	return 0;
+}
+
+// BW1W120 004b7800 BW1M119 01210f50
+int CreatureAgenda::ConstructSubActionsForCastMagicWaterOnMyself(unsigned long param_1)
+{
+	float     radius = 1.7f * creature->GetHeight();
+	MapCoords coords = creature->Pos;
+	if (creature->FindClearArea(&coords, radius, 0))
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4164))
+		                                 SubArgumentPointAndFloat(coords.GetLHPoint(), 2.0f * creature->GetHeight()),
+		                             &Creature::LookWhileGoingTowardsPoint, NULL);
+		SubActionAgenda.AddMainSubAction(
+			CREATURE_SUB_STATE_ACTIONS_CAST_SPELL_AT_OBJECT,
+			new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4165)) SubArgumentObjectIntegerFloatAndSpell(
+				creature->mind->GetBeliefAboutObject(creature), 0x2f, 3.0f, MAGIC_TYPE_WATER),
+			NULL, &Creature::SetFaceForActionSmile);
+		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_STOP_BEING_ON_FIRE, NULL, NULL, NULL);
+		return 0;
+	}
+	creature->FinishActionUnsuccessfully("failed to construct subactions", 1, 1);
+	return 1;
+}
+
+// BW1W120 004b7cb0 BW1M119 01210990
+int CreatureAgenda::ConstructSubActionsForNoticeAggressiveAction(unsigned long param_1)
+{
+	if (creature->physical->GetObjectCarried() == NULL)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_OBJECT,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4200))
+		                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.8f),
+		                             &Creature::LookAtFlyingObject, &Creature::SetFaceForActionAmazed);
+	}
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_LOOK_AT_CAMERA,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4204))
+	                                     SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.0f)),
+	                                 &Creature::LookAtCamera, &Creature::SetFaceForActionAnger);
+	if (GRand::GameRand(3, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4205)) == 0)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4207)) SubArgumentInteger(0xda),
+		                             NULL, NULL);
+	}
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4209)) SubArgumentInteger(0x35), NULL,
+	                             NULL);
+	return 0;
+}
+
+// BW1W120 004b7f00 BW1M119 012106f0
+int CreatureAgenda::ConstructSubActionsForNoticeAction(unsigned long param_1)
+{
+	if (creature->physical->GetObjectCarried() == NULL)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_OBJECT,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4218))
+		                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
+		                             &Creature::LookAtFlyingObject, &Creature::SetFaceForActionAmazed);
+	}
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_LOOK_AT_CAMERA,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4221))
+	                                     SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.0f)),
+	                                 &Creature::LookAtCamera, &Creature::SetFaceForActionCuriosity);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_LOOK_AT_CAMERA,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4223))
+	                                     SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.0f)),
+	                                 &Creature::LookAtCamera, &Creature::SetFaceForActionCuriosity);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4224)) SubArgumentInteger(0xdc), NULL,
+	                             NULL);
 	return 0;
 }
 
@@ -1699,17 +2617,76 @@ int CreatureAgenda::ConstructSubActionsForGiveWoodFromTreeToBuildingSite(unsigne
 	return ConstructSubActionsForGiveWoodFromTreeToStoragePit(action_argument);
 }
 
+// BW1W120 004b8810 BW1M119 0120fc20
+int CreatureAgenda::ConstructSubActionsForRepositionObjectToUseNearObjectToActOn(unsigned long param_1)
+{
+	Object* carried = creature->physical->GetObjectCarried();
+	if (carried == NULL || !carried->IsTree(creature))
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4295))
+		                                 SubArgumentObject(plans[0].ObjectToUse),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+	}
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4298))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.0f),
+	                             &Creature::LookWhileGoingTowardsObject, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4299))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.0f),
+	                             &Creature::LookAtObjectArgument, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4300)) SubArgumentInteger(0x61), NULL,
+	                             NULL);
+	if (plans[0].ObjectToActOn != NULL && plans[0].ObjectToActOn->GetPointer() != NULL)
+	{
+		Tree* tree = dynamic_cast<Tree*>(plans[0].ObjectToActOn->GetPointer());
+		if (tree != NULL)
+			creature->RecentTrees.Add(tree);
+	}
+	return 0;
+}
+
+// BW1W120 004b8a60 BW1M119 0120f960
+int CreatureAgenda::ConstructSubActionsForDanceOutsideWorshipSite(unsigned long param_1)
+{
+	float    distance = min(creature->GetHeight() * 6.0f, 50.0f);
+	GPlayer* player = creature->GetPlayer();
+	if (player != NULL)
+	{
+		CreatureBelief* heart = creature->mind->AddBeliefAboutObject(creature, player->citadel.Get()->heart.Get());
+		plans[0].ObjectToActOn = heart;
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4322))
+		                                 SubArgumentObjectAndFloat(heart, distance),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_START_THE_DANCE, NULL, NULL, NULL);
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4324))
+		                                 SubArgumentObjectAndFloat(heart, 2.0f),
+		                             &Creature::LookAtObjectArgument, NULL);
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DANCE,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4325))
+		                                 SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(60.0f)),
+		                             NULL, NULL);
+		return 0;
+	}
+	creature->FinishActionUnsuccessfully("failed to construct subactions", 1, 1);
+	return 1;
+}
+
 // BW1W120 004b8cc0 BW1M119 0120f770
 int CreatureAgenda::ConstructSubActionsForDanceAroundArtefact(unsigned long param_1)
 {
 	float distance = 4.0f * creature->GetHeight() < 50.0f ? 4.0f * creature->GetHeight() : 50.0f;
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 4336)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4336))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, distance),
 	                             &Creature::LookWhileGoingTowardsObject, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_START_THE_DANCE, NULL, NULL, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DANCE,
-	                             new (CREATURE_ACTION_FILE, 4338)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4338))
 	                                 SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(60.0f)),
 	                             NULL, NULL);
 	return 0;
@@ -1721,13 +2698,16 @@ int CreatureAgenda::ConstructSubActionsForStealScaffold(unsigned long param_1)
 	LHPoint home;
 	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, home);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
-	                             new (CREATURE_ACTION_FILE, 4383) SubArgumentObject(plans[0].ObjectToActOn),
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4383))
+	                                 SubArgumentObject(plans[0].ObjectToActOn),
 	                             &Creature::LookWhileGoingTowardsObject, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                             new (CREATURE_ACTION_FILE, 4384) SubArgumentPointAndFloat(home, creature->GetHeight()),
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4384))
+	                                 SubArgumentPointAndFloat(home, creature->GetHeight()),
 	                             &Creature::LookWhileGoingTowardsPoint, NULL);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
-	                                 new (CREATURE_ACTION_FILE, 4385) SubArgumentInteger(0x61), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4385)) SubArgumentInteger(0x61),
+	                                 NULL, NULL);
 	return 0;
 }
 
@@ -1742,11 +2722,111 @@ int CreatureAgenda::ConstructSubActionsForCatchFireball(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForDeadForever(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_FAINT,
-	                                 new (CREATURE_ACTION_FILE, 4523) SubArgumentInteger(0x6a), NULL, NULL);
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4523)) SubArgumentInteger(0x6a),
+	                                 NULL, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_WAIT,
-	                             new (CREATURE_ACTION_FILE, 4524)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4524))
 	                                 SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(864000.0f)),
 	                             NULL, NULL);
+	return 0;
+}
+
+// BW1W120 004bae20 BW1M119 0120d170
+int CreatureAgenda::ConstructSubActionsForStealAndPutByCitadel(unsigned long param_1)
+{
+	if (creature->GetPlayer() != NULL)
+	{
+		if (creature->physical->GetObjectCarried() == NULL)
+		{
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4578))
+			                                 SubArgumentObject(plans[0].ObjectToActOn),
+			                             &Creature::LookWhileGoingTowardsObject, NULL);
+		}
+		creature->mind->agenda.Destination = creature->HomePos;
+		SubActionAgenda.AddMainSubAction(
+			CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+			new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4581))
+				SubArgumentPointAndFloat(creature->HomePos.GetLHPoint(), 2.0f * creature->GetHeight()),
+			&Creature::LookWhileGoingTowardsPoint, NULL);
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4582)) SubArgumentInteger(0x61),
+		                             NULL, NULL);
+	}
+	return 0;
+}
+
+// BW1W120 004bb000 BW1M119 0120ceb0
+int CreatureAgenda::ConstructSubActionsForBreakRock(unsigned long param_1)
+{
+	if (creature->physical->GetObjectCarried() == NULL)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4596))
+		                                 SubArgumentObject(plans[0].ObjectToActOn),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+	}
+	MapCoords coords = creature->Pos;
+	coords.SetWholeX((long)((coords.MetersX() + 3.0f * creature->GetHeight()) * (float)0x10000 / MetresPerMapCell));
+	coords.SetWholeZ((long)((coords.MetersZ() + 3.0f * creature->GetHeight()) * (float)0x10000 / MetresPerMapCell));
+	LHPoint pos;
+	GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW_AT_POS,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4603)) SubArgumentPoint(pos),
+	                                 &Creature::LookWhileGoingTowardsPoint, NULL);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_SHATTER_ROCK,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4604)) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
+	return 0;
+}
+
+// BW1W120 004bb250 BW1M119 0120cc00
+int CreatureAgenda::ConstructSubActionsForNoticeStealingAction(unsigned long param_1)
+{
+	if (creature->physical->GetObjectCarried() == NULL)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_OBJECT,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4613))
+		                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
+		                             &Creature::LookAtFlyingObject, &Creature::SetFaceForActionAmazed);
+	}
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_LOOK_AT_CAMERA,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4616))
+	                                     SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.0f)),
+	                                 &Creature::LookAtCamera, &Creature::SetFaceForActionCuriosity);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_LOOK_AT_CAMERA,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4618))
+	                                     SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.0f)),
+	                                 &Creature::LookAtCamera, &Creature::SetFaceForActionCuriosity);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4619)) SubArgumentInteger(0x3c), NULL,
+	                             NULL);
+	return 0;
+}
+
+// BW1W120 004bb4a0 BW1M119 0120c950
+int CreatureAgenda::ConstructSubActionsForNoticePlayfulAction(unsigned long param_1)
+{
+	if (creature->physical->GetObjectCarried() == NULL)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_OBJECT,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4628))
+		                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
+		                             &Creature::LookAtFlyingObject, &Creature::SetFaceForActionAmazed);
+	}
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_LOOK_AT_CAMERA,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4631))
+	                                     SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.0f)),
+	                                 &Creature::LookAtCamera, &Creature::SetFaceForActionCuriosity);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_LOOK_AT_CAMERA,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4633))
+	                                     SubArgumentInteger(GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.0f)),
+	                                 &Creature::LookAtCamera, &Creature::SetFaceForActionCuriosity);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4634)) SubArgumentInteger(0x37), NULL,
+	                             NULL);
 	return 0;
 }
 
@@ -1754,7 +2834,7 @@ int CreatureAgenda::ConstructSubActionsForDeadForever(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForExamineObjectInHand(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_HELD_OBJECT_ACTION,
-	                             new (CREATURE_ACTION_FILE, 4897) SubArgumentInteger(0x67),
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4897)) SubArgumentInteger(0x67),
 	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCuriosity);
 	return 0;
 }
@@ -1762,9 +2842,9 @@ int CreatureAgenda::ConstructSubActionsForExamineObjectInHand(unsigned long para
 // BW1W120 004be4e0 BW1M119 012098a0
 int CreatureAgenda::ConstructSubActionsForEatObjectInHand(unsigned long param_1)
 {
-	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_EAT,
-	                                 new (CREATURE_ACTION_FILE, 4904) SubArgumentObject(plans[0].ObjectToActOn), NULL,
-	                                 NULL);
+	SubActionAgenda.AddMainSubAction(
+		CREATURE_SUB_STATE_ACTIONS_EAT,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4904)) SubArgumentObject(plans[0].ObjectToActOn), NULL, NULL);
 	return 0;
 }
 
@@ -1772,13 +2852,14 @@ int CreatureAgenda::ConstructSubActionsForEatObjectInHand(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForStrokeObjectInHand(unsigned long param_1)
 {
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_HELD_OBJECT_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 4911) SubArgumentInteger(0x64),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4911)) SubArgumentInteger(0x64),
 	                                 &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCompassion);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_HEAL,
-	                             new (CREATURE_ACTION_FILE, 4912) SubArgumentObject(plans[0].ObjectToActOn), NULL,
-	                             &Creature::SetFaceForActionCompassion);
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4912))
+	                                 SubArgumentObject(plans[0].ObjectToActOn),
+	                             NULL, &Creature::SetFaceForActionCompassion);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
-	                             new (CREATURE_ACTION_FILE, 4913) SubArgumentInteger(0x61), NULL,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4913)) SubArgumentInteger(0x61), NULL,
 	                             &Creature::SetFaceForActionCompassion);
 	return 0;
 }
@@ -1791,7 +2872,7 @@ int CreatureAgenda::ConstructSubActionsForThrowObjectInHand(unsigned long param_
 	{
 		LHPoint pos = status->GetCameraPos();
 		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW_AT_POS,
-		                                 new (CREATURE_ACTION_FILE, 4926) SubArgumentPoint(pos),
+		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4926)) SubArgumentPoint(pos),
 		                                 &Creature::LookAtCamera, NULL);
 		return 0;
 	}
@@ -1802,6 +2883,48 @@ int CreatureAgenda::ConstructSubActionsForThrowObjectInHand(unsigned long param_
 int CreatureAgenda::ConstructSubActionsForGiveFriendToy(unsigned long action_argument)
 {
 	return ConstructSubActionsForGiveToCreature(action_argument);
+}
+
+// BW1W120 004beec0 BW1M119 01208a30
+int CreatureAgenda::ConstructSubActionsForSacrifice(unsigned long param_1)
+{
+	if (creature->GetCitadel() != NULL)
+	{
+		WorshipSite* site;
+		for (uint32_t i = 0; i < 6; i++)
+		{
+			site = creature->GetCitadel()->WorshipSites[i];
+			if (site != NULL)
+			{
+				break;
+			}
+		}
+		if (site != NULL)
+		{
+			LHPoint pos = site->GetTotemPos().GetLHPoint();
+			Object* carried = creature->physical->GetObjectCarried();
+			if (carried == NULL || !carried->IsLiving(creature))
+			{
+				SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+				                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5006))
+				                                 SubArgumentObject(plans[0].ObjectToActOn),
+				                             &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionAnger);
+			}
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5008))
+			                                 SubArgumentPointAndFloat(pos, creature->GetHeight() * 3.0f),
+			                             &Creature::LookWhileGoingTowardsPoint, NULL);
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_POS,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5009)) SubArgumentPoint(pos),
+			                             &Creature::LookAtPosition, NULL);
+			SubActionAgenda.AddSubAction(
+				CREATURE_SUB_STATE_ACTIONS_DISCARD,
+				new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5010)) SubArgumentInteger(0x61), NULL, NULL);
+			return 0;
+		}
+	}
+	creature->FinishActionUnsuccessfully("no object to use", 1, 1);
+	return 1;
 }
 
 // BW1W120 004bf440 BW1M119 01208630
@@ -1816,6 +2939,124 @@ int CreatureAgenda::ConstructSubActionsForWatchPlayer(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForCastShieldAroundTown(unsigned long action_argument)
 {
 	return ConstructSubActionsForCastShield(action_argument);
+}
+
+// BW1W120 004bf780 BW1M119 01208030
+int CreatureAgenda::ConstructSubActionsForMakeDiscipleBreeder(unsigned long param_1)
+{
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5079))
+	                                 SubArgumentObject(plans[0].ObjectToActOn),
+	                             &Creature::LookWhileGoingTowardsObject, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_HELD_OBJECT_ACTION,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5080)) SubArgumentInteger(0x64),
+	                                 &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCompassion);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MAKE_DISCIPLE,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5081))
+	                                 SubArgumentObjectAndInteger(plans[0].ObjectToActOn, VILLAGER_DISCIPLE_BREEDER),
+	                             NULL, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5082)) SubArgumentInteger(0x61), NULL,
+	                             NULL);
+	return 0;
+}
+
+// BW1W120 004bf940 BW1M119 01207fa0
+int CreatureAgenda::ConstructSubActionsForPlayGameWithVillagers(unsigned long param_1)
+{
+	creature->FinishActionUnsuccessfully("not implemented", 1, 1);
+	return 1;
+}
+
+// BW1W120 004bf960 BW1M119 01207cc0
+int CreatureAgenda::ConstructSubActionsForTakeVillagerHomeToSleep(unsigned long param_1)
+{
+	if (plans[0].ObjectToActOn != NULL)
+	{
+		Villager* villager = dynamic_cast<Villager*>(plans[0].ObjectToActOn->GetPointer());
+		if (villager != NULL && villager->GetAbode() != NULL)
+		{
+			Object* carried = creature->physical->GetObjectCarried();
+			if (carried == NULL || !carried->IsVillager(creature))
+			{
+				SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+				                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5104))
+				                                 SubArgumentObject(plans[0].ObjectToActOn),
+				                             &Creature::LookWhileGoingTowardsObject, NULL);
+			}
+			CreatureBelief* abode = creature->mind->AddBeliefAboutObject(creature, villager->GetAbode());
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5107))
+			                                 SubArgumentObjectAndFloat(abode, 2.0f),
+			                             &Creature::LookWhileGoingTowardsObject, NULL);
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5108))
+			                                 SubArgumentObjectAndFloat(abode, 0.1f),
+			                             &Creature::LookAtObjectArgument, NULL);
+			SubActionAgenda.AddSubAction(
+				CREATURE_SUB_STATE_ACTIONS_DISCARD,
+				new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5109)) SubArgumentInteger(0x61), NULL, NULL);
+			return 0;
+		}
+	}
+	creature->FinishActionUnsuccessfully("invalid plan", 1, 1);
+	return 1;
+}
+
+// BW1W120 004bffa0 BW1M119 01207620
+int CreatureAgenda::ConstructSubActionsForThrowBallAtObject(unsigned long param_1)
+{
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5145)) == 0)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5147)) SubArgumentInteger(0x37),
+		                             NULL, NULL);
+	}
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5149))
+	                                 SubArgumentObject(plans[0].ObjectToUse),
+	                             &Creature::LookWhileGoingTowardsObject, NULL);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_THROW_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5150))
+	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, creature->GetHeight()),
+	                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionAnger);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5151))
+	                                     SubArgumentObject(plans[0].ObjectToActOn),
+	                                 &Creature::LookAtObjectArgument, &Creature::SetFaceForActionAnger);
+	if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5152)) == 0)
+	{
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5154)) SubArgumentInteger(0x37),
+		                             NULL, NULL);
+	}
+	return 0;
+}
+
+// BW1W120 004c0220 BW1M119 01207390
+int CreatureAgenda::ConstructSubActionsForDanceOnYourOwnByTheSea(unsigned long param_1)
+{
+	MapCoords coast;
+	MapCoords sea;
+	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
+	                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
+	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, creature->Pos, &sea,
+	                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
+	LHPoint coastPos;
+	GLandscape::ConvertMapCoordToLandscapePoint(coast, coastPos);
+	LHPoint seaPos;
+	GLandscape::ConvertMapCoordToLandscapePoint(sea, seaPos);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5167))
+	                                 SubArgumentPointAndFloat(coastPos, creature->GetHeight()),
+	                             &Creature::LookWhileGoingTowardsPoint, &Creature::SetFaceForActionSmile);
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5168)) SubArgumentPoint(seaPos),
+	                             &Creature::LookAtPosition, NULL);
+	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_PRACTICE_DANCE,
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5169)) SubArgumentFloat(20.0f),
+	                                 NULL, &Creature::SetFaceForActionPlayfulness);
+	return 0;
 }
 
 // BW1W120 004c0470 BW1M119 012072f0
@@ -1843,16 +3084,16 @@ int CreatureAgenda::ConstructSubActionsForTellVillagersAStory(unsigned long para
 int CreatureAgenda::ConstructSubActionsForPlayfullyFrightenVillagers(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 5197)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5197))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 3.0f * creature->GetHeight()),
 	                             &Creature::LookWhileGoingTowardsObject, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 5198)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5198))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
 	                             &Creature::LookAtObjectArgument, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                             new (CREATURE_ACTION_FILE, 5199) SubArgumentInteger(0x3d), &Creature::LookFrightened,
-	                             NULL);
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5199)) SubArgumentInteger(0x3d),
+	                             &Creature::LookFrightened, NULL);
 	return 0;
 }
 
@@ -1860,15 +3101,16 @@ int CreatureAgenda::ConstructSubActionsForPlayfullyFrightenVillagers(unsigned lo
 int CreatureAgenda::ConstructSubActionsForKickTree(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 5241)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5241))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.0f),
 	                             &Creature::LookWhileGoingTowardsObject, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 5242)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5242))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
 	                             &Creature::LookAtObjectArgument, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_KICK_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 5243) SubArgumentObject(plans[0].ObjectToActOn),
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5243))
+	                                 SubArgumentObject(plans[0].ObjectToActOn),
 	                             &Creature::LookAtObjectArgument, NULL);
 	return 0;
 }
@@ -1877,31 +3119,63 @@ int CreatureAgenda::ConstructSubActionsForKickTree(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForPlayfullyKissVillager(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 5266)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5266))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f * creature->GetHeight()),
 	                             &Creature::LookWhileGoingTowardsObject, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 5267)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5267))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
 	                             &Creature::LookAtObjectArgument, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_SINGLE_KISS, NULL, NULL, NULL);
 	return 0;
 }
 
+// BW1W120 004c0f70 BW1M119 01206210
+int CreatureAgenda::ConstructSubActionsForBringVillagerToWorshipSite(unsigned long param_1)
+{
+	if (plans[0].ObjectToUse != NULL && dynamic_cast<Villager*>(plans[0].ObjectToUse->GetPointer()) != NULL)
+	{
+		CreatureBelief* villager = plans[0].ObjectToUse;
+		Object*         carried = creature->physical->GetObjectCarried();
+		if (carried == NULL || !carried->IsVillager(creature))
+		{
+			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5283))
+			                                 SubArgumentObject(villager),
+			                             &Creature::LookWhileGoingTowardsObject, NULL);
+		}
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5285))
+		                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.1f),
+		                             &Creature::LookAtObjectArgument, NULL);
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5286))
+		                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 0.0f),
+		                             &Creature::LookWhileGoingTowardsObject, NULL);
+		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5287)) SubArgumentInteger(0x61),
+		                             NULL, &Creature::SetFaceForActionCompassion);
+		return 0;
+	}
+	creature->FinishActionUnsuccessfully("no villager found", 1, 1);
+	return 1;
+}
+
 // BW1W120 004c1860 BW1M119 01205890
 int CreatureAgenda::ConstructSubActionsForStealSpellSeed(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
-	                             new (CREATURE_ACTION_FILE, 5326) SubArgumentObject(plans[0].ObjectToActOn),
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5326))
+	                                 SubArgumentObject(plans[0].ObjectToActOn),
 	                             &Creature::LookWhileGoingTowardsObject, NULL);
 	LHPoint home;
 	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, home);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                             new (CREATURE_ACTION_FILE, 5329)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5329))
 	                                 SubArgumentPointAndFloat(home, 2.0f * creature->GetHeight()),
 	                             &Creature::LookWhileGoingTowardsPoint, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_DISCARD,
-	                             new (CREATURE_ACTION_FILE, 5330) SubArgumentInteger(0x61), NULL,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5330)) SubArgumentInteger(0x61), NULL,
 	                             &Creature::SetFaceForActionCompassion);
 	return 0;
 }
@@ -1910,11 +3184,12 @@ int CreatureAgenda::ConstructSubActionsForStealSpellSeed(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForHowlAtFriend(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-	                             new (CREATURE_ACTION_FILE, 5399)
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5399))
 	                                 SubArgumentObjectAndFloat(plans[0].ObjectToActOn, 2.0f),
 	                             &Creature::LookAtObjectArgument, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                             new (CREATURE_ACTION_FILE, 5400) SubArgumentInteger(0xd9), NULL, NULL);
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5400)) SubArgumentInteger(0xd9), NULL,
+	                             NULL);
 	return 0;
 }
 
@@ -1923,7 +3198,8 @@ int CreatureAgenda::ConstructSubActionsForHowlAtPlayer(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                             new (CREATURE_ACTION_FILE, 5408) SubArgumentInteger(0xd9), NULL, NULL);
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5408)) SubArgumentInteger(0xd9), NULL,
+	                             NULL);
 	return 0;
 }
 
@@ -1932,7 +3208,8 @@ int CreatureAgenda::ConstructSubActionsForPrayToPlayer(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                             new (CREATURE_ACTION_FILE, 5430) SubArgumentInteger(0xdd), NULL, NULL);
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5430)) SubArgumentInteger(0xdd), NULL,
+	                             NULL);
 	return 0;
 }
 
@@ -1943,11 +3220,36 @@ int CreatureAgenda::ConstructSubActionsForPrayAtCitadel(unsigned long param_1)
 	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, home);
 	creature->mind->agenda.Destination = creature->HomePos;
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
-	                                 new (CREATURE_ACTION_FILE, 5440)
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5440))
 	                                     SubArgumentPointAndFloat(home, creature->GetHeight()),
 	                                 &Creature::LookWhileGoingTowardsPoint, NULL);
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
-	                             new (CREATURE_ACTION_FILE, 5441) SubArgumentInteger(0xdd), NULL, NULL);
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5441)) SubArgumentInteger(0xdd), NULL,
+	                             NULL);
+	return 0;
+}
+
+// BW1W120 004c2bb0 BW1M119 012040f0
+int CreatureAgenda::ConstructSubActionsForTakeToyHome(unsigned long param_1)
+{
+	// TODO: The target adds home.x before pushing the second GameFloatRand's 10.0f argument.
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5484))
+	                                 SubArgumentObject(plans[0].ObjectToActOn),
+	                             &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionCompassion);
+	LHPoint home;
+	GLandscape::ConvertMapCoordToLandscapePoint(creature->HomePos, home);
+	home.x += GRand::GameFloatRand(10.0f, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5487)) - 5.0f;
+	home.z += GRand::GameFloatRand(10.0f, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5488)) - 5.0f;
+	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5489)) SubArgumentPointAndFloat(
+									 home, creature->GetHeight() > 5.0f ? 5.0f : creature->GetHeight()),
+	                             &Creature::LookWhileGoingTowardsPoint, &Creature::SetFaceForActionCompassion);
+	SubActionAgenda.AddSubAction(
+		CREATURE_SUB_STATE_ACTIONS_DISCARD,
+		new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5490))
+			SubArgumentInteger(GRand::GameRand(10, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5490)) > 1 ? 97 : 95),
+		NULL, &Creature::SetFaceForActionCompassion);
 	return 0;
 }
 
@@ -1955,10 +3257,11 @@ int CreatureAgenda::ConstructSubActionsForPrayAtCitadel(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForStrokeToy(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_PICKUP,
-	                             new (CREATURE_ACTION_FILE, 5497) SubArgumentObject(plans[0].ObjectToActOn),
+	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5497))
+	                                 SubArgumentObject(plans[0].ObjectToActOn),
 	                             &Creature::LookWhileGoingTowardsObject, &Creature::SetFaceForActionCompassion);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_HELD_OBJECT_ACTION,
-	                                 new (CREATURE_ACTION_FILE, 5498) SubArgumentInteger(0x64),
+	                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5498)) SubArgumentInteger(0x64),
 	                                 &Creature::LookAtObjectArgument, &Creature::SetFaceForActionCompassion);
 	return 0;
 }
@@ -1969,19 +3272,20 @@ int CreatureAgenda::ConstructSubActionsForWaterTreeForTown(unsigned long param_1
 	if (plans[0].ObjectToUse != NULL)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_GO_NEAR_OBJECT,
-		                             new (CREATURE_ACTION_FILE, 5532)
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5532))
 		                                 SubArgumentObjectAndFloat(plans[0].ObjectToUse, 2.0f * creature->GetHeight()),
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_OBJECT,
-		                             new (CREATURE_ACTION_FILE, 5533)
+		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5533))
 		                                 SubArgumentObjectAndFloat(plans[0].ObjectToUse, 0.1f),
 		                             &Creature::LookAtObjectArgument, &Creature::SetFaceForActionSmile);
 		// Unused on both platforms, and taken from ObjectToActOn rather than the tree in ObjectToUse
 		LHPoint pos = plans[0].ObjectToActOn->GetPos().GetLHPoint();
-		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_CAST_SPELL_AT_OBJECT,
-		                                 new (CREATURE_ACTION_FILE, 5535) SubArgumentObjectIntegerFloatAndSpell(
-											 plans[0].ObjectToUse, 0x2f, 3.0f, MAGIC_TYPE_WATER),
-		                                 NULL, &Creature::SetFaceForActionSmile);
+		SubActionAgenda.AddMainSubAction(
+			CREATURE_SUB_STATE_ACTIONS_CAST_SPELL_AT_OBJECT,
+			new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(5535))
+				SubArgumentObjectIntegerFloatAndSpell(plans[0].ObjectToUse, 0x2f, 3.0f, MAGIC_TYPE_WATER),
+			NULL, &Creature::SetFaceForActionSmile);
 		return 0;
 	}
 	creature->FinishActionUnsuccessfully("no object to use", 1, 1);

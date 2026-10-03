@@ -753,10 +753,11 @@ enum     MAGIC_TYPE
     MAGIC_TYPE_CREATURE_SPELL_ILL                   =  39 ,
     MAGIC_TYPE_CREATURE_SPELL_THIRSTY               =  40 ,
     MAGIC_TYPE_CREATURE_SPELL_ITCHY                 =  41 ,
-    MAGIC_TYPE_LAST_142                             =  42 ,
+#ifdef VERSION_BW1WCI
     MAGIC_TYPE_CREATURE_SPELL_ANTI_SPELL            =  42 ,
     MAGIC_TYPE_CREATURE_SPELL_FAST                  =  43 ,
-    MAGIC_TYPE_LAST_CI                              =  44 ,
+#endif // VERSION_BW1WCI
+    MAGIC_TYPE_LAST
 };
 
 //*****************************************************************************
