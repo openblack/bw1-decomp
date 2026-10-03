@@ -2,7 +2,7 @@
 #define BW1_DECOMP_TOWN_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "ContainerInfo.h" /* For struct GContainerInfo */
 
@@ -15,6 +15,12 @@ struct LHColor;
 class GTownInfo : public GContainerInfo
 {
 public:
+	uint8_t  field_0x14[0xf8];
+	float    field_0x10c;
+	uint32_t field_0x110;
+	uint8_t  field_0x114[0x2c];
+	float    field_0x140;
+	float    field_0x144;
 	float    field_0x148;
 	float    field_0x14c;
 	uint32_t field_0x150;

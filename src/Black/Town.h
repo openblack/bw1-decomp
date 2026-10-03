@@ -243,7 +243,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 inlined
-	inline GTownInfo* GetInfo() const { return (GTownInfo*)info; }
+	inline GTownInfo* GetInfo() const { return (GTownInfo*)info.Get(); }
 	// BW1W120 0073c9b0 BW1M119 0155b500
 	void UpdateAggressor(const EffectValues& values, float aggressor_value);
 	// BW1W120 007399a0 BW1M119 015600a0

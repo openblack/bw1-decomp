@@ -486,7 +486,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/ClimateRainInfo.cpp"),
             GameCodeObject(NonMatching, "Black/Collide.cpp"),
             GameCodeObject(NonMatching, "Black/Config.cpp"),
-            GameCodeObject(NonMatching, "Black/Container.cpp"),
+            GameCodeObject(Matching, "Black/Container.cpp"),
             GameCodeObject(NonMatching, "Black/ContainerInfo.cpp"),
             GameCodeObject(NonMatching, "Black/ControlHand.cpp"),
             GameCodeObject(NonMatching, "Black/ControlMap.cpp"),

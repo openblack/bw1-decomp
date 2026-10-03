@@ -28,6 +28,11 @@ add_relocations:
     type: x86_abs32
     target: '?InfoList@GMobileObjectInfo@@2PAV1@A'
     addend: 0x2280
+# MOV ESI is the end of GContainerInfo::Definitions for its destructor loop, not ControlHand's data.
+  - source: 0x0046B867
+    type: x86_abs32
+    target: '?Definitions@GContainerInfo@@2PAV1@A'
+    addend: 0x50
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000
