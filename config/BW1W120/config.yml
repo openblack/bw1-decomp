@@ -11,6 +11,9 @@ block_relocations:
   - source: 0x007DBB1D
   - source: 0x007DCA45
   - source: 0x007DDDA9
+# The RTTI type names ".?AVFixed@@" and ".?AVMultiMapFixed@@" end in "d@@\0", which reads as 0x00404064.
+  - source: 0x009C7F78
+  - source: 0x009C7F98
 
 # CMP EDX compares against PacketTimeHistory's one-past-end, not the next array.
 add_relocations:

@@ -5,6 +5,11 @@ hash: d810fe43e2956f2b76533ab698632756ba99b44d
 symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 
+# The RTTI type names ".?AVFixed@@" and ".?AVMultiMapFixed@@" end in "d@@\0", which reads as 0x00404064.
+block_relocations:
+  - source: 0x008F7698
+  - source: 0x008F76B8
+
 # MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
 add_relocations:
   - source: 0x00504097

@@ -805,7 +805,6 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MPFEStartGameTransferFilesMessage.cpp"),
             GameCodeObject(NonMatching, "Black/MPFETeamsReadyList.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEUserTeamList.cpp"),
-            GameCodeObject(NonMatching, "Black/MultiMapFixed.cpp"),
             GameCodeObject(NonMatching, "Black/MultiMapFixedInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MultiplayerConditionBox.cpp"),
             GameCodeObject(NonMatching, "Black/MultiplayerDatabase.cpp"),

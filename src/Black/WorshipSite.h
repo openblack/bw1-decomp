@@ -157,7 +157,7 @@ public:
 	// BW1W120 0055dc70 BW1M119 015bad20
 	virtual ABODE_TYPE GetAbodeType();
 	// BW1W120 0077c5d0 BW1M119 015b6e20
-	virtual MapCoords GetResourcePos(RESOURCE_TYPE type, int index);
+	virtual MapCoords GetResourcePos(RESOURCE_TYPE type, long index);
 	// BW1W120 0077c6d0 BW1M119 015b6b00
 	virtual MapCoords GetResourceNearestEdge(RESOURCE_TYPE type, Object* object, int index);
 	// BW1W120 0077ae10 BW1M119 015b9d00
