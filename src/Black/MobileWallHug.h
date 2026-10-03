@@ -273,6 +273,13 @@ struct CircleHugStateInfoT
 
 		// Non-virtual methods
 
+		// BW1W120 inlined BW1M119 013cda30
+		performance& operator=(const performance& other)
+		{
+			count = other.count;
+			dist = other.dist;
+			return *this;
+		}
 		// BW1W120 inlined BW1M119 013cd990
 		bool operator<(const performance& other)
 		{
