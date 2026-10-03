@@ -44,7 +44,6 @@ struct LH3DMaterial
 	LH3DColor    color;
 
 	// The render-mode function table LH3DRender dispatches through; points at one of the tables below.
-	// TODO: The element type is a render function pointer whose signature is not recovered yet.
 	// BW1W120 00eca618 BW1M119 012cf91c (LHCombined Release)
 	static void* g_list_render_func;
 	// BW1W120 00c38728 BW1M119 011d0e38 (LHCombined Release)

@@ -100,19 +100,19 @@ void SetupBox::SetCurrentActiveBox(SetupBox* box)
 		box->SetFocusControl(NULL);
 	if (CurrentActiveBox != NULL && CurrentActiveBox->OnHold)
 		CurrentActiveBox->SetOffHold();
-	if (CurrentActiveBox != NULL && CurrentActiveBox->field_0xb0 != NULL)
+	if (CurrentActiveBox != NULL && CurrentActiveBox->Callback != NULL)
 	{
-		CurrentActiveBox->Widget0x74 = NULL;
+		CurrentActiveBox->HeldOverWidget = NULL;
 		CurrentActiveBox->FocusedWidget = NULL;
 		CurrentActiveBox->SetOffHold();
-		CurrentActiveBox->field_0xb0(7, CurrentActiveBox, CurrentActiveBox->FocusedWidget, 0, 0);
+		CurrentActiveBox->Callback(7, CurrentActiveBox, CurrentActiveBox->FocusedWidget, 0, 0);
 	}
 	CurrentFadeBox = CurrentActiveBox;
 	if (CurrentFadeBox != NULL)
 	{
-		CurrentFadeBox->Zoomer0x34.SetPosition(0.0f);
-		CurrentFadeBox->Zoomer0x34.SetDestination(0.0f, 0.2f);
-		CurrentFadeBox->Zoomer0x4.SetDestination(0.0f, 0.2f);
+		CurrentFadeBox->HoldFade.SetPosition(0.0f);
+		CurrentFadeBox->HoldFade.SetDestination(0.0f, 0.2f);
+		CurrentFadeBox->Fade.SetDestination(0.0f, 0.2f);
 	}
 	CurrentActiveBox = box;
 	LHSys::TheSystem.charRing.Clear();
@@ -122,18 +122,18 @@ void SetupBox::SetCurrentActiveBox(SetupBox* box)
 	SetupThing::PrevLeftButton = LHSys::TheSystem.mouse.Buttons & 1;
 	if (box != NULL)
 	{
-		box->Zoomer0x4.SetPosition(0.0f);
-		box->Zoomer0x34.SetPosition(0.0f);
-		box->Zoomer0x4.SetDestination(1.0f, 0.5f);
+		box->Fade.SetPosition(0.0f);
+		box->HoldFade.SetPosition(0.0f);
+		box->Fade.SetDestination(1.0f, 0.5f);
 	}
 	if (CurrentActiveBox != NULL)
 	{
 		CurrentActiveBox->SetOffHold();
-		CurrentActiveBox->Widget0x74 = NULL;
+		CurrentActiveBox->HeldOverWidget = NULL;
 		CurrentActiveBox->FocusedWidget = NULL;
 	}
-	if (CurrentActiveBox != NULL && CurrentActiveBox->field_0xb0 != NULL)
-		CurrentActiveBox->field_0xb0(6, CurrentActiveBox, CurrentActiveBox->FocusedWidget, 0, 0);
+	if (CurrentActiveBox != NULL && CurrentActiveBox->Callback != NULL)
+		CurrentActiveBox->Callback(6, CurrentActiveBox, CurrentActiveBox->FocusedWidget, 0, 0);
 	DialogBoxBase::UpdateLastShown(CurrentActiveBox);
 }
 
@@ -166,23 +166,23 @@ void SetupBox::UpdateWantKey()
 	}
 }
 
-void __stdcall SetupBox::DefaultCB(int message, SetupBox* box, SetupControl* control, int param_4, int param_5)
+void __stdcall SetupBox::DefaultCB(int message, SetupBox* box, SetupControl* control, int data1, int data2)
 {
 	int           controlId = control != NULL ? control->id : 0;
 	int           pressed = -1;
 	SetupControl* button;
 	if (message == 8)
 	{
-		if (param_5 == 0)
+		if (data2 == 0)
 		{
 			char16_t yes = *HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_120);
 			char16_t no = *HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_119);
 			if (yes != no)
 			{
-				if (toupper(param_4) == toupper(yes) && toupper(param_4) &&
+				if (toupper(data1) == toupper(yes) && toupper(data1) &&
 				    (button = box->FindControl(SETUP_MESSAGE_BOX_ID_YES)) != NULL)
 					pressed = button->id;
-				if (toupper(param_4) == toupper(no) && toupper(param_4) &&
+				if (toupper(data1) == toupper(no) && toupper(data1) &&
 				    (button = box->FindControl(SETUP_MESSAGE_BOX_ID_NO)) != NULL)
 					pressed = button->id;
 			}
@@ -190,7 +190,7 @@ void __stdcall SetupBox::DefaultCB(int message, SetupBox* box, SetupControl* con
 	}
 	else if (message == 2)
 	{
-		switch (param_4)
+		switch (data1)
 		{
 		case LHKEY_RETURN:
 		case LHKEY_RIGHT_RETURN:
@@ -212,8 +212,8 @@ void __stdcall SetupBox::DefaultCB(int message, SetupBox* box, SetupControl* con
 	if (pressed >= 0 && box->OnHold)
 	{
 		box->SetOffHold();
-		if (box->field_0xb0 != NULL)
-			box->field_0xb0(3, box, control, pressed, box->field_0xb8);
+		if (box->Callback != NULL)
+			box->Callback(3, box, control, pressed, box->HoldData);
 	}
 }
 
@@ -223,7 +223,7 @@ SetupControl* SetupBox::FindControl(int x, int y)
 	for (SetupControl* control = WidgetList; control != NULL; control = control->next)
 	{
 		if (control->HitTest(x, y) && !control->hidden &&
-		    (hit == NULL || control->id == SETUP_IME_CANDIDATE_LIST_ID || control->field_0x22b))
+		    (hit == NULL || control->id == SETUP_IME_CANDIDATE_LIST_ID || control->OnTop))
 			hit = control;
 	}
 	return hit;
@@ -237,7 +237,7 @@ SetupControl* SetupBox::FindControl(int id)
 		if (control->id == id)
 			return control;
 	}
-	for (control = Widgets0x68; control != NULL; control = control->next)
+	for (control = HoldWidgetList; control != NULL; control = control->next)
 	{
 		if (control->id == id)
 			return control;
@@ -245,22 +245,22 @@ SetupControl* SetupBox::FindControl(int id)
 	return NULL;
 }
 
-void SetupBox::SetOnHold(unsigned long param_1)
+void SetupBox::SetOnHold(unsigned long data)
 {
-	field_0xb8 = param_1;
+	HoldData = data;
 	if (!OnHold)
 	{
 		SetFocusControl(NULL);
 		HoverWidget = NULL;
-		Widget0x74 = NULL;
-		if (field_0xb0 != NULL)
-			field_0xb0(5, this, FocusedWidget, 0, 0);
+		HeldOverWidget = NULL;
+		if (Callback != NULL)
+			Callback(5, this, FocusedWidget, 0, 0);
 		SetupControl* list = WidgetList;
 		OnHold = true;
-		WidgetList = Widgets0x68;
-		Widgets0x68 = list;
-		Zoomer0x34.SetPosition(0.0f);
-		Zoomer0x34.SetDestination(1.0f, 0.5f);
+		WidgetList = HoldWidgetList;
+		HoldWidgetList = list;
+		HoldFade.SetPosition(0.0f);
+		HoldFade.SetDestination(1.0f, 0.5f);
 		LHSys::TheSystem.keyboard.ClearKey();
 		LHSys::TheSystem.charRing.Clear();
 	}
@@ -272,15 +272,15 @@ void SetupBox::SetOffHold()
 	{
 		SetFocusControl(NULL);
 		SetupControl* list = WidgetList;
-		WidgetList = Widgets0x68;
-		Widgets0x68 = list;
+		WidgetList = HoldWidgetList;
+		HoldWidgetList = list;
 		OnHold = false;
 		HoverWidget = NULL;
-		Widget0x74 = NULL;
-		Zoomer0x4.SetPosition(1.0f);
-		Zoomer0x34.SetPosition(0.0f);
-		Zoomer0x4.SetDestination(1.0f, 0.5f);
-		Zoomer0x34.SetDestination(0.0f, 0.2f);
+		HeldOverWidget = NULL;
+		Fade.SetPosition(1.0f);
+		HoldFade.SetPosition(0.0f);
+		Fade.SetDestination(1.0f, 0.5f);
+		HoldFade.SetDestination(0.0f, 0.2f);
 		LHSys::TheSystem.keyboard.ClearKey();
 		LHSys::TheSystem.charRing.Clear();
 	}
@@ -299,8 +299,7 @@ inline void SetupList::SetSelected(int index)
 		SelectedIndex = index;
 	else
 		SelectedIndex = -1;
-	if (field_0x4 && SetupThing::IMEActive && index >= 0 &&
-	    LHSys::TheSystem.TbIME->CandidateList_GetSelectIdx() != index)
+	if (UsesIME && SetupThing::IMEActive && index >= 0 && LHSys::TheSystem.TbIME->CandidateList_GetSelectIdx() != index)
 	{
 		LHSys::TheSystem.TbIME->CandidateList_SetViewWindow(0, NumItems - 1, index);
 		AutoScroll(false);
@@ -310,54 +309,52 @@ inline void SetupList::SetSelected(int index)
 void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool no_input)
 {
 	float dt = LH3DTech::g_delta_time * 0.001f;
-	// TODO: The FadeIn copy of Zoomer::Update matches, but the two member copies below differ in x87
-	// operand order only (the same expression tree), which looks like a c2 tie-break.
 	if (!no_input)
 		FadeIn.Update(dt);
-	Zoomer0x4.Update(dt);
-	Zoomer0x34.Update(dt);
-	if (Zoomer0x4.CurrentTime == Zoomer0x4.duration && Zoomer0x34.CurrentTime == Zoomer0x34.duration &&
-	    CurrentFadeBox == this && Zoomer0x4.CurrentValue == 0.0f)
+	Fade.Update(dt);
+	HoldFade.Update(dt);
+	if (Fade.CurrentTime == Fade.duration && HoldFade.CurrentTime == HoldFade.duration && CurrentFadeBox == this &&
+	    Fade.CurrentValue == 0.0f)
 		CurrentFadeBox = NULL;
 
 	LH3DMaterial::g_list_render_func = LH3DMaterial::g_list_render_func_global_alpha;
 	SetupThing::unadjust(x, y);
-	int alpha = (int)((Zoomer0x4.GetCurrentValue() - Zoomer0x34.GetCurrentValue() * 0.75f) * field_0xc4 * 255.0f);
+	int alpha = (int)((Fade.GetCurrentValue() - HoldFade.GetCurrentValue() * 0.75f) * Alpha * 255.0f);
 	if (alpha < 0)
 		alpha = 0;
 	else if (alpha > 255)
 		alpha = 255;
 	SetupThing::DrawAlpha = alpha;
-	if (field_0xb0 != NULL)
-		field_0xb0(13, this, FocusedWidget, x, y);
-	if (field_0x94 != 0 && field_0x9c > 0 && field_0xa0 > 0)
+	if (Callback != NULL)
+		Callback(13, this, FocusedWidget, x, y);
+	if (BackgroundStyle != 0 && BackgroundWidth > 0 && BackgroundHeight > 0)
 	{
 		SetupThing::DrawAlpha = alpha;
-		if (field_0x94 == 2)
-			SetupThing::DrawBg(400 - field_0x9c / 2, 300 - field_0xa0 / 2, 400 + field_0x9c / 2, 340 + field_0xa0 / 2,
-			                   0xffffff, 0, 0);
-		else if (field_0x98 != 0)
-			SetupThing::DrawBg(400 - field_0x9c / 2, 300 - field_0xa0 / 2, 400 + field_0x9c / 2, 340 + field_0xa0 / 2,
-			                   0xffffff, 0, -1);
+		if (BackgroundStyle == 2)
+			SetupThing::DrawBg(400 - BackgroundWidth / 2, 300 - BackgroundHeight / 2, 400 + BackgroundWidth / 2,
+			                   340 + BackgroundHeight / 2, 0xffffff, 0, 0);
+		else if (TallBackground != 0)
+			SetupThing::DrawBg(400 - BackgroundWidth / 2, 300 - BackgroundHeight / 2, 400 + BackgroundWidth / 2,
+			                   340 + BackgroundHeight / 2, 0xffffff, 0, -1);
 		else
-			SetupThing::DrawBg(400 - field_0x9c / 2, 300 - field_0xa0 / 2, 400 + field_0x9c / 2, 300 + field_0xa0 / 2,
-			                   0xffffff, 0, -1);
+			SetupThing::DrawBg(400 - BackgroundWidth / 2, 300 - BackgroundHeight / 2, 400 + BackgroundWidth / 2,
+			                   300 + BackgroundHeight / 2, 0xffffff, 0, -1);
 	}
 
 	LH3DMaterial::g_list_render_func = LH3DMaterial::g_list_render_func_global_alpha;
 	if (OnHold)
 	{
 		SetupThing::DrawAlpha = alpha;
-		for (SetupControl* held = Widgets0x68; held != NULL; held = held->next)
+		for (SetupControl* held = HoldWidgetList; held != NULL; held = held->next)
 		{
 			if (!held->hidden)
 				held->Draw(false, false);
 		}
-		if (field_0xb0 != NULL)
-			field_0xb0(14, this, FocusedWidget, x, y);
-		SetupThing::DrawAlpha = (int)(Zoomer0x34.CurrentValue * 255.0f);
-		SetupThing::DrawBg(400 - field_0xa4 / 2, 300 - field_0xa8 / 2, 400 + field_0xa4 / 2, 300 + field_0xa8 / 2,
-		                   field_0xc0 & 0xffffff, field_0x9c > 5 && field_0xa0 > 5, -1);
+		if (Callback != NULL)
+			Callback(14, this, FocusedWidget, x, y);
+		SetupThing::DrawAlpha = (int)(HoldFade.CurrentValue * 255.0f);
+		SetupThing::DrawBg(400 - HoldWidth / 2, 300 - HoldHeight / 2, 400 + HoldWidth / 2, 300 + HoldHeight / 2,
+		                   HoldColour & 0xffffff, BackgroundWidth > 5 && BackgroundHeight > 5, -1);
 	}
 	else
 	{
@@ -395,7 +392,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 		SetupList* candidates = (SetupList*)FindControl(SETUP_IME_CANDIDATE_LIST_ID);
 		if (candidates != NULL)
 		{
-			if (candidates->field_0x4 && SetupThing::IMEActive)
+			if (candidates->UsesIME && SetupThing::IMEActive)
 			{
 				int size = LHSys::TheSystem.TbIME->CandidateList_GetSize();
 				if (size)
@@ -417,7 +414,8 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 							candidates->SetCol(candidates->NumItems - 1, 0);
 						}
 						candidates->SetSelected(LHSys::TheSystem.TbIME->CandidateList_GetSelectIdx());
-						candidates->ScrollPosition = scroll > 0.0f ? min(scroll, (float)candidates->field_0x278) : 0.0f;
+						candidates->ScrollPosition =
+							scroll > 0.0f ? min(scroll, (float)candidates->MaxScrollPosition) : 0.0f;
 						candidates->AutoScroll(false);
 					}
 				}
@@ -432,9 +430,9 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 
 		if (double_clicked)
 		{
-			if (field_0xb0 != NULL && FocusedWidget != NULL)
+			if (Callback != NULL && FocusedWidget != NULL)
 			{
-				field_0xb0(12, FocusedWidget->setup_box, FocusedWidget, x, y);
+				Callback(12, FocusedWidget->setup_box, FocusedWidget, x, y);
 				RussClickNoise();
 			}
 			if (!GGame::g_game->field_0x250538)
@@ -450,22 +448,22 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 				SetFocusControl(HoverWidget);
 				if (FocusedWidget != NULL)
 					FocusedWidget->MouseDown(x, y, true);
-				if (FocusedWidget != NULL && field_0xb0 != NULL)
-					field_0xb0(9, FocusedWidget->setup_box, FocusedWidget, x, y);
+				if (FocusedWidget != NULL && Callback != NULL)
+					Callback(9, FocusedWidget->setup_box, FocusedWidget, x, y);
 				if (FocusedWidget != NULL)
 					DefaultCB(9, FocusedWidget->setup_box, FocusedWidget, x, y);
 				if (FocusedWidget != NULL)
 					FocusedWidget->MouseUp(x, y, true);
-				if (FocusedWidget != NULL && field_0xb0 != NULL)
-					field_0xb0(10, FocusedWidget->setup_box, FocusedWidget, x, y);
+				if (FocusedWidget != NULL && Callback != NULL)
+					Callback(10, FocusedWidget->setup_box, FocusedWidget, x, y);
 				if (FocusedWidget != NULL)
 					DefaultCB(10, FocusedWidget->setup_box, FocusedWidget, x, y);
 				if (FocusedWidget != NULL)
 					RussClickNoise();
 				if (FocusedWidget != NULL)
 					FocusedWidget->Click(x, y);
-				if (FocusedWidget != NULL && field_0xb0 != NULL)
-					field_0xb0(1, FocusedWidget->setup_box, FocusedWidget, x, y);
+				if (FocusedWidget != NULL && Callback != NULL)
+					Callback(1, FocusedWidget->setup_box, FocusedWidget, x, y);
 				if (FocusedWidget != NULL)
 					DefaultCB(1, FocusedWidget->setup_box, FocusedWidget, x, y);
 			}
@@ -479,9 +477,9 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 				SetupThing::MouseDownY = y;
 				SetFocusControl(HoverWidget);
 				if (HoverWidget != NULL)
-					HoverWidget->field_0x22c = LHSys::TheSystem.mouse.Buttons & 2;
-				if (field_0xb0 != NULL)
-					field_0xb0(9, FocusedWidget != NULL ? FocusedWidget->setup_box : NULL, FocusedWidget, x, y);
+					HoverWidget->RightButton = LHSys::TheSystem.mouse.Buttons & 2;
+				if (Callback != NULL)
+					Callback(9, FocusedWidget != NULL ? FocusedWidget->setup_box : NULL, FocusedWidget, x, y);
 				if (HoverWidget != NULL)
 				{
 					SetupThing::Dragging = true;
@@ -492,15 +490,15 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 			{
 				if (FocusedWidget != NULL)
 					FocusedWidget->MouseUp(x, y, true);
-				if (field_0xb0 != NULL)
-					field_0xb0(10, FocusedWidget != NULL ? FocusedWidget->setup_box : NULL, FocusedWidget, x, y);
+				if (Callback != NULL)
+					Callback(10, FocusedWidget != NULL ? FocusedWidget->setup_box : NULL, FocusedWidget, x, y);
 				if (FocusedWidget == HoverWidget && FocusedWidget != NULL)
 				{
 					RussClickNoise();
 					if (FocusedWidget != NULL)
 						FocusedWidget->Click(x, y);
-					if (FocusedWidget != NULL && field_0xb0 != NULL)
-						field_0xb0(1, FocusedWidget->setup_box, FocusedWidget, x, y);
+					if (FocusedWidget != NULL && Callback != NULL)
+						Callback(1, FocusedWidget->setup_box, FocusedWidget, x, y);
 					if (FocusedWidget != NULL)
 						DefaultCB(1, FocusedWidget->setup_box, FocusedWidget, x, y);
 				}
@@ -512,16 +510,16 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 			if (SetupThing::Dragging && FocusedWidget != NULL)
 				FocusedWidget->Drag(x, y);
 			if (FocusedWidget != NULL)
-				FocusedWidget->field_0x22c |= LHSys::TheSystem.mouse.Buttons & 2;
-			if (field_0xb0 != NULL && FocusedWidget != NULL)
-				field_0xb0(4, this, FocusedWidget, x, y);
-			if (HoverWidget != Widget0x74)
+				FocusedWidget->RightButton |= LHSys::TheSystem.mouse.Buttons & 2;
+			if (Callback != NULL && FocusedWidget != NULL)
+				Callback(4, this, FocusedWidget, x, y);
+			if (HoverWidget != HeldOverWidget)
 			{
-				if (Widget0x74 != NULL && Widget0x74 == FocusedWidget)
-					Widget0x74->MouseUp(x, y, false);
-				Widget0x74 = HoverWidget;
-				if (Widget0x74 != NULL && Widget0x74 == FocusedWidget)
-					Widget0x74->MouseDown(x, y, false);
+				if (HeldOverWidget != NULL && HeldOverWidget == FocusedWidget)
+					HeldOverWidget->MouseUp(x, y, false);
+				HeldOverWidget = HoverWidget;
+				if (HeldOverWidget != NULL && HeldOverWidget == FocusedWidget)
+					HeldOverWidget->MouseDown(x, y, false);
 			}
 		}
 		if (LHSys::TheSystem.charRing.GetNumCharsInBuf())
@@ -529,10 +527,10 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 		SetupThing::PrevLeftButton = left_button;
 	}
 
-	if ((!OnHold || field_0x65) && field_0xb0 != NULL)
-		field_0xb0(14, this, FocusedWidget, x, y);
-	if (field_0xb0 != NULL)
-		field_0xb0(0, this, HoverWidget, x, y);
+	if ((!OnHold || ActiveWhileOnHold) && Callback != NULL)
+		Callback(14, this, FocusedWidget, x, y);
+	if (Callback != NULL)
+		Callback(0, this, HoverWidget, x, y);
 	LH3DMaterial::g_list_render_func = LH3DMaterial::g_list_render_func_normal;
 }
 
@@ -550,15 +548,15 @@ void SetupBox::Key(int key, int mod)
 	else if (FocusedWidget != NULL)
 	{
 		FocusedWidget->KeyDown(key, LHSys::TheSystem.keyboard.ModifierFlags);
-		if (FocusedWidget != NULL && (!OnHold || field_0x65) && field_0xb0 != NULL)
-			field_0xb0(2, FocusedWidget->setup_box, FocusedWidget, key, mod);
+		if (FocusedWidget != NULL && (!OnHold || ActiveWhileOnHold) && Callback != NULL)
+			Callback(2, FocusedWidget->setup_box, FocusedWidget, key, mod);
 		if (FocusedWidget != NULL)
 			DefaultCB(2, FocusedWidget->setup_box, FocusedWidget, key, mod);
 	}
 	else
 	{
-		if (field_0xb0 != NULL && (!OnHold || field_0x65))
-			field_0xb0(2, CurrentActiveBox, NULL, key, mod);
+		if (Callback != NULL && (!OnHold || ActiveWhileOnHold))
+			Callback(2, CurrentActiveBox, NULL, key, mod);
 		DefaultCB(2, CurrentActiveBox, FocusedWidget, key, mod);
 	}
 }
@@ -569,8 +567,8 @@ void SetupBox::Char(int character)
 		return;
 	if (FocusedWidget != NULL)
 	{
-		if ((!OnHold || field_0x65) && field_0xb0 != NULL)
-			field_0xb0(8, FocusedWidget->setup_box, FocusedWidget, character, 0);
+		if ((!OnHold || ActiveWhileOnHold) && Callback != NULL)
+			Callback(8, FocusedWidget->setup_box, FocusedWidget, character, 0);
 		if (FocusedWidget != NULL)
 			DefaultCB(8, FocusedWidget->setup_box, FocusedWidget, character, 0);
 		if (FocusedWidget != NULL)
@@ -578,10 +576,10 @@ void SetupBox::Char(int character)
 	}
 	else
 	{
-		if (field_0xb0 != NULL && (!OnHold || field_0x65))
-			field_0xb0(8, CurrentActiveBox, NULL, character, 0);
-		if (field_0xb0 != NULL && character == VK_ESCAPE)
-			field_0xb0(15, NULL, NULL, VK_ESCAPE, 0);
+		if (Callback != NULL && (!OnHold || ActiveWhileOnHold))
+			Callback(8, CurrentActiveBox, NULL, character, 0);
+		if (Callback != NULL && character == VK_ESCAPE)
+			Callback(15, NULL, NULL, VK_ESCAPE, 0);
 		DefaultCB(8, CurrentActiveBox, FocusedWidget, character, 0);
 	}
 }
@@ -603,7 +601,7 @@ void SetupBox::ClickKeyDown(int key, int mod) {}
 void SetupControl::SetFocus(bool focus)
 {
 	this->focus = focus;
-	focus = focus && field_0x4 && setup_box == SetupBox::GetCurrentActiveBox();
+	focus = focus && UsesIME && setup_box == SetupBox::GetCurrentActiveBox();
 	if ((SetupThing::IMEActive != 0) != focus)
 	{
 		if (focus)
@@ -619,8 +617,6 @@ void SetupControl::SetFocus(bool focus)
 	}
 }
 
-// TODO: The target emits the GetHelpText fallback arm (array[0]) before the in-range arm here, while the
-// constant-index callers (SetupBox::DefaultCB, GameOSFile::SaveAllGame) match the current inline form.
 void SetupControl::SetToolTip(uint32_t tooltip_id)
 {
 	tooltip = HelpTextDataBase::HelpTextDatabase.GetHelpText(tooltip_id);
@@ -628,7 +624,7 @@ void SetupControl::SetToolTip(uint32_t tooltip_id)
 
 SetupControl::SetupControl(int id, int x, int y, int width, int height, const char16_t* label)
 {
-	field_0x22b = false;
+	OnTop = false;
 	tooltip = NULL;
 	wcscpy(this->label, label);
 	this->id = id;
@@ -642,10 +638,10 @@ SetupControl::SetupControl(int id, int x, int y, int width, int height, const ch
 	SetupBox::CurrentInitBox->WidgetList = this;
 	hidden = false;
 	focus = false;
-	field_0x4 = 0;
-	field_0x1c = 0;
+	UsesIME = 0;
+	Style = 0;
 	ContinueButtonCallback = NULL;
-	field_0x22a = true;
+	TabStop = true;
 }
 
 void SetupControl::SetToolTip(const char16_t* tooltip)
@@ -665,9 +661,9 @@ bool SetupControl::HitTest(int x, int y)
 
 void SetupControl::Drag(int x, int y) {}
 
-void SetupControl::MouseDown(int x, int y, bool param_3) {}
+void SetupControl::MouseDown(int x, int y, bool button_event) {}
 
-void SetupControl::MouseUp(int x, int y, bool param_3) {}
+void SetupControl::MouseUp(int x, int y, bool button_event) {}
 
 void SetupControl::Click(int x, int y) {}
 
@@ -679,8 +675,8 @@ SetupControl::~SetupControl()
 {
 	if (setup_box->FocusedWidget == this)
 		setup_box->SetFocusControl(NULL);
-	if (setup_box->Widget0x74 == this)
-		setup_box->Widget0x74 = NULL;
+	if (setup_box->HeldOverWidget == this)
+		setup_box->HeldOverWidget = NULL;
 	SetupControl* control = setup_box->WidgetList;
 	if (control == this)
 	{
@@ -738,10 +734,10 @@ void SetupStaticText::Draw(bool hovered, bool selected)
 	case TEXTJUSTIFY_CENTRE_BREAK:
 		SetupThing::DrawTextWrap(rect.start.x + 2, rect.start.y + 2, rect.end.x + 2, rect.end.y + 2, rect.start.y + 2,
 		                         text_justify == TEXTJUSTIFY_CENTRE_BREAK, label, DisplayTextSize,
-		                         &SetupThing::ShadowColour, field_0x1c != 0, false);
+		                         &SetupThing::ShadowColour, Style != 0, false);
 		textHeight = SetupThing::DrawTextWrap(rect.start.x, rect.start.y, rect.end.x, rect.end.y, rect.start.y,
 		                                      text_justify == TEXTJUSTIFY_CENTRE_BREAK, label, DisplayTextSize,
-		                                      &SetupThing::SelectedColour, field_0x1c != 0, false);
+		                                      &SetupThing::SelectedColour, Style != 0, false);
 		break;
 	case TEXTJUSTIFY_RIGHT:
 		SetupThing::DrawTextA(rect.end.x + 2, y + 2, rect.end.x - rect.start.x, TEXTJUSTIFY_RIGHT, label,
@@ -795,12 +791,12 @@ SetupButton::SetupButton(int id, int x, int y, int width, int height, const char
 	pressed = false;
 }
 
-void SetupButton::MouseDown(int x, int y, bool param_3)
+void SetupButton::MouseDown(int x, int y, bool button_event)
 {
 	pressed = true;
 }
 
-void SetupButton::MouseUp(int x, int y, bool param_3)
+void SetupButton::MouseUp(int x, int y, bool button_event)
 {
 	pressed = false;
 }
@@ -835,15 +831,15 @@ void SetupSlider::KeyDown(int key, int mod)
 	}
 	value = value > 0.0f ? min(value, 1.0f) : 0.0f;
 	DragStartValue = value;
-	if (changed && setup_box->field_0xb0 != NULL)
-		setup_box->field_0xb0(4, setup_box, this, 0, 0);
+	if (changed && setup_box->Callback != NULL)
+		setup_box->Callback(4, setup_box, this, 0, 0);
 }
 
 void SetupSlider::Draw(bool hovered, bool selected)
 {
 	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, 16, -1, 0xffffffff);
 	int x = rect.start.x + (int)((rect.end.x - height - rect.start.x) * value);
-	if (field_0x1c & 0x40000000)
+	if (Style & 0x40000000)
 	{
 		int top = rect.start.y;
 		int halfHeight = (rect.end.y - top) / 2;
@@ -886,9 +882,9 @@ void SetupSlider::Drag(int x, int y)
 	value = value > 0.0f ? min(value, 1.0f) : 0.0f;
 }
 
-void SetupSlider::MouseDown(int x, int y, bool param_3)
+void SetupSlider::MouseDown(int x, int y, bool button_event)
 {
-	if (param_3)
+	if (button_event)
 	{
 		DragStart.x = x;
 		DragStart.y = y;
@@ -896,18 +892,18 @@ void SetupSlider::MouseDown(int x, int y, bool param_3)
 	}
 }
 
-void SetupSlider::MouseUp(int x, int y, bool param_3)
+void SetupSlider::MouseUp(int x, int y, bool button_event)
 {
-	if (setup_box->field_0xb0 != NULL)
-		setup_box->field_0xb0(1, setup_box, this, x, y);
+	if (setup_box->Callback != NULL)
+		setup_box->Callback(1, setup_box, this, x, y);
 	Click(x, y);
 }
 
-void SetupList::AutoScroll(bool param_1)
+void SetupList::AutoScroll(bool to_bottom)
 {
-	if (param_1 || SelectedIndex < 0)
+	if (to_bottom || SelectedIndex < 0)
 	{
-		ScrollPosition = field_0x278;
+		ScrollPosition = MaxScrollPosition;
 		return;
 	}
 	float top = 0.0f;
@@ -925,7 +921,7 @@ void SetupList::AutoScroll(bool param_1)
 				top += ItemHeights[index];
 				continue;
 			}
-			ScrollPosition = ScrollPosition > 0 ? min(ScrollPosition, field_0x278) : 0;
+			ScrollPosition = ScrollPosition > 0 ? min(ScrollPosition, MaxScrollPosition) : 0;
 			return;
 		}
 		top += ItemHeights[index];
@@ -934,7 +930,7 @@ void SetupList::AutoScroll(bool param_1)
 
 void SetupList::KeyDown(int key, int mod)
 {
-	if (!field_0x284 && DrawHighlightBox)
+	if (!IgnoreKeys && DrawHighlightBox)
 	{
 		switch (key)
 		{
@@ -961,38 +957,39 @@ void SetupList::KeyDown(int key, int mod)
 			AutoScroll(false);
 			break;
 		}
-		field_0x24c = SelectedIndex;
-		field_0x280 = ScrollPosition;
+		PrevSelectedIndex = SelectedIndex;
+		DragStartScroll = ScrollPosition;
 	}
 }
 
 void SetupList::Drag(int x, int y)
 {
-	if (!field_0x4)
+	if (!UsesIME)
 	{
-		if (field_0x285 || HitTest(x, y))
+		if (DraggingScrollbar || HitTest(x, y))
 		{
-			if (field_0x285)
+			if (DraggingScrollbar)
 			{
-				float startScroll = field_0x280;
+				float startScroll = DragStartScroll;
 				float scrollDistance = ScrollDistance;
 				float height = rect.end.y - rect.start.y;
 				float top = rect.start.y;
 				int   thumbTop = (int)(startScroll / scrollDistance * height + top);
 				if (DragStart.y < thumbTop ||
-				    DragStart.y >= (int)((rect.end.y - rect.start.y + field_0x280 - 8) / scrollDistance * height + top))
+				    DragStart.y >=
+				        (int)((rect.end.y - rect.start.y + DragStartScroll - 8) / scrollDistance * height + top))
 				{
 					int page = rect.end.x - rect.start.x - 20;
 					if (page < 0)
 						page = 0;
 					if (DragStart.y < thumbTop)
-						ScrollPosition = field_0x280 - page;
+						ScrollPosition = DragStartScroll - page;
 					else
-						ScrollPosition = field_0x280 + page;
+						ScrollPosition = DragStartScroll + page;
 				}
 				else
 					ScrollPosition = (int)((y - DragStart.y) * scrollDistance / height + startScroll);
-				ScrollPosition = ScrollPosition > 0 ? min(ScrollPosition, field_0x278) : 0;
+				ScrollPosition = ScrollPosition > 0 ? min(ScrollPosition, MaxScrollPosition) : 0;
 			}
 			else
 			{
@@ -1014,38 +1011,38 @@ void SetupList::Drag(int x, int y)
 
 void SetupList::Click(int x, int y) {}
 
-void SetupList::MouseDown(int x, int y, bool param_3)
+void SetupList::MouseDown(int x, int y, bool button_event)
 {
-	if (field_0x4 == 0 && param_3)
+	if (UsesIME == 0 && button_event)
 	{
-		field_0x24c = SelectedIndex;
-		field_0x280 = ScrollPosition;
+		PrevSelectedIndex = SelectedIndex;
+		DragStartScroll = ScrollPosition;
 		DragStart.x = x;
 		DragStart.y = y;
-		field_0x285 = x > rect.end.x - ScrollbackWidth && ShowScrollbar;
-		if (field_0x285)
+		DraggingScrollbar = x > rect.end.x - ScrollbackWidth && ShowScrollbar;
+		if (DraggingScrollbar)
 			SelectedIndex = -1;
 		Drag(x, y);
 	}
 }
 
-void SetupList::MouseUp(int x, int y, bool param_3)
+void SetupList::MouseUp(int x, int y, bool button_event)
 {
-	if (field_0x4 != 0)
+	if (UsesIME != 0)
 		return;
-	if (field_0x285)
+	if (DraggingScrollbar)
 	{
-		if (param_3)
-			SelectedIndex = field_0x24c;
-		field_0x285 = false;
+		if (button_event)
+			SelectedIndex = PrevSelectedIndex;
+		DraggingScrollbar = false;
 	}
-	else if (param_3)
+	else if (button_event)
 	{
-		field_0x24c = SelectedIndex;
-		field_0x280 = ScrollPosition;
+		PrevSelectedIndex = SelectedIndex;
+		DragStartScroll = ScrollPosition;
 	}
 	else
-		SelectedIndex = field_0x24c;
+		SelectedIndex = PrevSelectedIndex;
 }
 
 SetupList::SetupList(int id, int x, int y, int width, int height) : SetupControl(id, x, y, width, height, L"")
@@ -1053,12 +1050,12 @@ SetupList::SetupList(int id, int x, int y, int width, int height) : SetupControl
 	field_0x23c = false;
 	field_0x29c = 0;
 	SelectionColor = 0xffffffff;
-	field_0x284 = false;
-	field_0x24c = -1;
+	IgnoreKeys = false;
+	PrevSelectedIndex = -1;
 	SelectedIndex = -1;
-	field_0x280 = 0;
+	DragStartScroll = 0;
 	NumItems = 0;
-	field_0x254 = 0;
+	Capacity = 0;
 	item_labels = NULL;
 	ItemHeights = NULL;
 	field_0x264 = NULL;
@@ -1068,7 +1065,7 @@ SetupList::SetupList(int id, int x, int y, int width, int height) : SetupControl
 	ScrollDistance = 0;
 	ShowScrollbar = false;
 	ScrollPosition = 0;
-	field_0x278 = 0;
+	MaxScrollPosition = 0;
 	field_0x244 = false;
 	UseColorBackground = false;
 	ScrollbackWidth = 24;
@@ -1085,7 +1082,7 @@ void SetupList::UpdateHeights()
 {
 	int i;
 	ShowScrollbar = false;
-	field_0x278 = 0;
+	MaxScrollPosition = 0;
 	ScrollDistance = 0;
 	for (i = 0; i < NumItems; i++)
 	{
@@ -1111,9 +1108,9 @@ void SetupList::UpdateHeights()
 			          6.0f);
 			ScrollDistance += ItemHeights[i];
 		}
-		field_0x278 = ScrollDistance - rect.end.y + rect.start.y + 8;
+		MaxScrollPosition = ScrollDistance - rect.end.y + rect.start.y + 8;
 	}
-	ScrollPosition = ScrollPosition > 0 ? min(ScrollPosition, field_0x278) : 0;
+	ScrollPosition = ScrollPosition > 0 ? min(ScrollPosition, MaxScrollPosition) : 0;
 }
 
 void SetupList::DeleteString(int index)
@@ -1171,22 +1168,22 @@ void SetupList::SetNum(int num)
 {
 	if (num < 0)
 		num = 0;
-	if (num < field_0x254 / 2 || num > field_0x254)
+	if (num < Capacity / 2 || num > Capacity)
 	{
-		field_0x254 = num + 16;
+		Capacity = num + 16;
 		typedef char16_t          Label[256];
-		Label*                    labels = new (FILEPATH, 1365) Label[field_0x254];
-		int*                      heights = new (FILEPATH, 1366) int[field_0x254];
-		uint32_t*                 data = new (FILEPATH, 1367) uint32_t[field_0x254];
-		SetupList__ListBoxDraw_t* callbacks = new (FILEPATH, 1368) SetupList__ListBoxDraw_t[field_0x254];
-		LH3DColor*                colors = (LH3DColor*)operator new(field_0x254 * sizeof(LH3DColor), FILEPATH, 1369);
-		void**                    tags = new (FILEPATH, 1370) void*[field_0x254];
-		memset(labels, 0, field_0x254 * sizeof(Label));
-		memset(heights, 0, field_0x254 * sizeof(int));
-		memset(data, 0, field_0x254 * sizeof(uint32_t));
-		memset(callbacks, 0, field_0x254 * sizeof(SetupList__ListBoxDraw_t));
-		memset(colors, 0, field_0x254 * sizeof(LH3DColor));
-		memset(tags, 0, field_0x254 * sizeof(void*));
+		Label*                    labels = new (FILEPATH, 1365) Label[Capacity];
+		int*                      heights = new (FILEPATH, 1366) int[Capacity];
+		uint32_t*                 data = new (FILEPATH, 1367) uint32_t[Capacity];
+		SetupList__ListBoxDraw_t* callbacks = new (FILEPATH, 1368) SetupList__ListBoxDraw_t[Capacity];
+		LH3DColor*                colors = (LH3DColor*)operator new(Capacity * sizeof(LH3DColor), FILEPATH, 1369);
+		void**                    tags = new (FILEPATH, 1370) void*[Capacity];
+		memset(labels, 0, Capacity * sizeof(Label));
+		memset(heights, 0, Capacity * sizeof(int));
+		memset(data, 0, Capacity * sizeof(uint32_t));
+		memset(callbacks, 0, Capacity * sizeof(SetupList__ListBoxDraw_t));
+		memset(colors, 0, Capacity * sizeof(LH3DColor));
+		memset(tags, 0, Capacity * sizeof(void*));
 		memcpy(labels, item_labels, min(num, NumItems) * sizeof(Label));
 		memcpy(heights, ItemHeights, min(num, NumItems) * sizeof(int));
 		memcpy(data, field_0x264, min(num, NumItems) * sizeof(uint32_t));
@@ -1226,7 +1223,7 @@ SetupMultiList::SetupMultiList(int id, int x, int y, int width, int height, int 
 	: SetupList(id, x, y, width, height)
 {
 	this->size = size;
-	field_0x2b4 = 0;
+	NumSelected = 0;
 	list = new (FILEPATH, 1422) bool[size];
 	for (int index = 0; index < this->size; ++index)
 		list[index] = false;
@@ -1247,7 +1244,7 @@ bool SetupMultiList::IsSelected(int index)
 void SetupMultiList::Click(int x, int y)
 {
 	int top = rect.start.y - ScrollPosition;
-	if (!field_0x285)
+	if (!DraggingScrollbar)
 	{
 		int index;
 		for (index = 0; index < NumItems; ++index)
@@ -1260,9 +1257,9 @@ void SetupMultiList::Click(int x, int y)
 		{
 			list[index] = !list[index];
 			if (list[index])
-				++field_0x2b4;
+				++NumSelected;
 			else
-				--field_0x2b4;
+				--NumSelected;
 		}
 	}
 }
@@ -1271,16 +1268,17 @@ int SetupEdit::CalcCharpos(int pos)
 {
 	int count;
 	int result = wcslen(label);
-	for (count = 1; count <= (int)wcslen(label) - field_0x258; count++)
+	for (count = 1; count <= (int)wcslen(label) - ScrollOffset; count++)
 	{
-		if (rect.start.x + (int)SetupThing::Font->GetStringWidth(&label[field_0x258], count, (float)GetTextSize()) + 4 >
+		if (rect.start.x + (int)SetupThing::Font->GetStringWidth(&label[ScrollOffset], count, (float)GetTextSize()) +
+		        4 >
 		    pos)
 		{
 			result = count - 1;
 			break;
 		}
 	}
-	return result + field_0x258;
+	return result + ScrollOffset;
 }
 
 void SetupEdit::Drag(int x, int y)
@@ -1289,9 +1287,9 @@ void SetupEdit::Drag(int x, int y)
 	SelectStart = CursorPosition;
 }
 
-void SetupEdit::MouseDown(int x, int y, bool param_3)
+void SetupEdit::MouseDown(int x, int y, bool button_event)
 {
-	if (param_3)
+	if (button_event)
 	{
 		CursorPosition = CalcCharpos(x);
 		SelectEnd = CursorPosition;
@@ -1299,9 +1297,9 @@ void SetupEdit::MouseDown(int x, int y, bool param_3)
 	}
 }
 
-void SetupEdit::MouseUp(int x, int y, bool param_3)
+void SetupEdit::MouseUp(int x, int y, bool button_event)
 {
-	if (param_3)
+	if (button_event)
 	{
 		CursorPosition = CalcCharpos(x);
 		SelectStart = CursorPosition;
@@ -1311,44 +1309,44 @@ void SetupEdit::MouseUp(int x, int y, bool param_3)
 			SelectStart = SelectEnd;
 			SelectEnd = position;
 		}
-		if (SelectStart == SelectEnd && field_0x464 != 0)
+		if (SelectStart == SelectEnd && SelectAllOnClick != 0)
 		{
 			SelectStart = 0;
 			CursorPosition = wcslen(label);
 			SelectEnd = CursorPosition;
 		}
-		field_0x464 = 0;
+		SelectAllOnClick = 0;
 	}
 }
 
 void SetupEdit::SetFocus(bool focus)
 {
 	if (focus && !this->focus)
-		field_0x464 = 1;
+		SelectAllOnClick = 1;
 	SetupControl::SetFocus(focus);
 	CursorPosition = wcslen(label);
 	SelectEnd = CursorPosition;
 	SelectStart = CursorPosition;
-	field_0x258 = 0;
+	ScrollOffset = 0;
 	if (focus)
 		SelectStart = 0;
 }
 
 void SetupMP3Button::Draw(bool hovered, bool selected)
 {
-	if (field_0x248)
+	if (ShowButton)
 		SetupButton::Draw(hovered, selected);
 	int x = (rect.start.x + rect.end.x) / 2 - 9;
 	int y = (rect.start.y + rect.end.y) / 2 - 9;
-	if (pressed || field_0x1c)
+	if (pressed || Style)
 	{
 		x++;
 		y++;
 	}
-	float u = (field_0x244 & 3) * 0.0625f + 0.25f;
-	float v = ((field_0x244 / 4 & 3) + 1) * 0.0625f;
+	float u = (IconIndex & 3) * 0.0625f + 0.25f;
+	float v = ((IconIndex / 4 & 3) + 1) * 0.0625f;
 	SetupThing::DrawBox(x, y, x + 16, y + 16, u, v, u + 0.0625f, v + 0.0625f, LH3DAtmos::AtmosMaterial,
-	                    hovered || field_0x1c ? &SetupThing::HighlightColour : &color, 1, -40960, 40960, false, 100.0f);
+	                    hovered || Style ? &SetupThing::HighlightColour : &color, 1, -40960, 40960, false, 100.0f);
 }
 
 void SetupBigButton::Draw(bool hovered, bool selected)
@@ -1456,9 +1454,9 @@ void SetupHLineGraph::KeyDown(int key, int mod)
 		setup_box->ClickKeyDown(key, mod);
 }
 
-void SetupHLineGraph::MouseUp(int x, int y, bool param_3)
+void SetupHLineGraph::MouseUp(int x, int y, bool button_event)
 {
-	if (param_3)
+	if (button_event)
 		percent_mode = !percent_mode;
 }
 
@@ -1656,7 +1654,7 @@ SetupTabButton::SetupTabButton(int id, int x, int y, int width, int height, cons
 	text_size = GetMidTextSize();
 	this->selected = selected;
 	if (setup_box != NULL)
-		setup_box->field_0x94 = 2;
+		setup_box->BackgroundStyle = 2;
 }
 
 void SetupTabButton::KeyDown(int key, int mod)
@@ -1665,11 +1663,11 @@ void SetupTabButton::KeyDown(int key, int mod)
 		setup_box->ClickKeyDown(key, mod);
 }
 
-void SetupPicture::MouseDown(int x, int y, bool param_3)
+void SetupPicture::MouseDown(int x, int y, bool button_event)
 {
 	HoveredPictureIndex = -1;
 	pressed = true;
-	if (param_3)
+	if (button_event)
 	{
 		if (draggable)
 			dragging = true;
@@ -1678,15 +1676,15 @@ void SetupPicture::MouseDown(int x, int y, bool param_3)
 	}
 }
 
-void SetupPicture::MouseUp(int x, int y, bool param_3)
+void SetupPicture::MouseUp(int x, int y, bool button_event)
 {
 	pressed = false;
-	if (param_3)
+	if (button_event)
 	{
 		if (draggable)
 		{
-			if (dragging && setup_box->field_0xb0 != NULL)
-				setup_box->field_0xb0(11, setup_box, this, x, y);
+			if (dragging && setup_box->Callback != NULL)
+				setup_box->Callback(11, setup_box, this, x, y);
 			dragging = false;
 		}
 		if (clickable)
@@ -1736,12 +1734,12 @@ void SetupPicture::SetFocus(bool focus)
 	}
 }
 
-void SetupColourPicker::MouseDown(int x, int y, bool param_3)
+void SetupColourPicker::MouseDown(int x, int y, bool button_event)
 {
 	pressed = true;
 }
 
-void SetupColourPicker::MouseUp(int x, int y, bool param_3)
+void SetupColourPicker::MouseUp(int x, int y, bool button_event)
 {
 	pressed = false;
 }
@@ -1895,7 +1893,7 @@ void SetupBox::SetFocusNext()
 		SetFocusControl(control);
 		if (control == original || control == NULL)
 			break;
-	} while (!control->field_0x22a || control->hidden);
+	} while (!control->TabStop || control->hidden);
 }
 
 void SetupBox::SetFocusPrev()
@@ -1913,20 +1911,20 @@ void SetupBox::SetFocusPrev()
 		SetFocusControl(control);
 		if (control == original || control == NULL)
 			break;
-	} while (!control->field_0x22a || control->hidden);
+	} while (!control->TabStop || control->hidden);
 }
 
 void SetupBox::CleanOld()
 {
-	if (Widgets0x68 != NULL)
+	if (HoldWidgetList != NULL)
 	{
 		SetupControl* list = WidgetList;
-		WidgetList = Widgets0x68;
-		Widgets0x68 = list;
+		WidgetList = HoldWidgetList;
+		HoldWidgetList = list;
 		while (WidgetList != NULL)
 			delete WidgetList;
-		WidgetList = Widgets0x68;
-		Widgets0x68 = NULL;
+		WidgetList = HoldWidgetList;
+		HoldWidgetList = NULL;
 	}
 }
 
@@ -1949,7 +1947,7 @@ float SetupThing::GetTextWidth(char16_t* text, float size, int length, float sca
 }
 
 float SetupThing::DrawTextWrap(int x_min, int y_min, int x_max, int y_max, int start_y, bool centered, char16_t* text,
-                               int size, LH3DColor* p_color, bool param_10, bool param_11)
+                               int size, LH3DColor* p_color, bool centre_vertically, bool no_z_test)
 {
 	if (!text[0])
 		return 0.0f;
@@ -1972,17 +1970,17 @@ float SetupThing::DrawTextWrap(int x_min, int y_min, int x_max, int y_max, int s
 	start_y += y_min;
 	x_max += x_min;
 	y_max += y_min;
-	if (param_10)
+	if (centre_vertically)
 	{
 		float height = Font->DrawTextA(text, (float)x_min, (float)y_min, (float)y_min, (float)x_max, (float)y_max,
 		                               (float)y_max, (float)start_y, LH3DTech::g_info_transform.NearClip * 1.5f,
-		                               textSize, &color, centered, 0, param_11);
+		                               textSize, &color, centered, 0, no_z_test);
 		if (height < y_max - y_min)
 			start_y = (int)((y_max - y_min - height) * 0.5f + y_min);
 	}
 	float height = Font->DrawTextA(text, (float)x_min, (float)y_min, (float)y_min, (float)x_max, (float)y_max,
 	                               (float)y_max, (float)start_y, LH3DTech::g_info_transform.NearClip * 1.5f, textSize,
-	                               &color, centered, 1, param_11);
+	                               &color, centered, 1, no_z_test);
 	TextBounds.p0.x = x_min;
 	TextBounds.p0.y = y_min;
 	TextBounds.p1.x = x_max;
@@ -1993,7 +1991,7 @@ float SetupThing::DrawTextWrap(int x_min, int y_min, int x_max, int y_max, int s
 }
 
 float SetupThing::DrawTextA(int x, int y, int width, TEXTJUSTIFY justify, char16_t* text, int size, LH3DColor* p_color,
-                            int param_8)
+                            int length)
 {
 	if (!text[0])
 		return 0.0f;
@@ -2009,7 +2007,7 @@ float SetupThing::DrawTextA(int x, int y, int width, TEXTJUSTIFY justify, char16
 		textSize /= scale;
 		maxWidth /= scale;
 	}
-	int count = param_8;
+	int count = length;
 	if (count == 0)
 		count = wcslen(text);
 	int textWidth;

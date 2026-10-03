@@ -162,11 +162,11 @@ struct SetupThing
 	// BW1W120 00411720 BW1M119 01593080
 	static float GetTextWidth(char16_t* text, float size, int length, float scale);
 	// BW1W120 00411750 BW1M119 01486690
-	static float DrawTextWrap(int x_min, int y_min, int x_max, int y_max, int param_5, bool param_6, char16_t* text,
-	                          int param_8, LH3DColor* color, bool param_10, bool param_11);
+	static float DrawTextWrap(int x_min, int y_min, int x_max, int y_max, int start_y, bool centered, char16_t* text,
+	                          int size, LH3DColor* p_color, bool centre_vertically, bool no_z_test);
 	// BW1W120 004119b0 BW1M119 01480f40
 	static float DrawTextA(int x, int y, int width, TEXTJUSTIFY justify, char16_t* text, int size, LH3DColor* p_color,
-	                       int param_8);
+	                       int length);
 	// BW1W120 00411b40 BW1M119 01486aa0
 	static float adjust(int& x, int& y);
 	// BW1W120 00411c30 BW1M119 012bb270
@@ -185,8 +185,8 @@ struct SetupThing
 	static void DrawBigButton(int x, int y, bool centered, bool interacted, int size, BBSTYLE style, bool shadowed,
 	                          int clip_y_start, int clip_y_end);
 	// BW1W120 004125a0 BW1M119 013ed8d0
-	static void DrawLine(int param_1, int param_2, int param_3, int param_4, LH3DColor color, int adjust, float param_7,
-	                     float inv_w);
+	static void DrawLine(int x_start, int y_start, int x_end, int y_end, unsigned long color, int adjust, float depth,
+	                     float distance);
 	// BW1W120 00412980 BW1M119 0104b340
 	static void DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max,
 	                    LH3DMaterial* material, LH3DColor* color, int adjust, int clip_y_start, int clip_y_end,
@@ -208,18 +208,18 @@ struct SetupThing
 
 struct SetupControl
 {
-	uint32_t        field_0x4;
+	uint32_t        UsesIME;
 	LHRegion        rect;
 	int             id; /* 0x18 */
-	int             field_0x1c;
+	int             Style;
 	int             text_size; /* 0x20 */
 	char16_t        label[0x100];
 	const char16_t* tooltip; /* 0x224 */
 	bool            focus;
 	bool            hidden;
-	bool            field_0x22a;
-	bool            field_0x22b;
-	uint32_t        field_0x22c;
+	bool            TabStop;
+	bool            OnTop;
+	uint32_t        RightButton;
 	SetupControl*   next; /* 0x230 */
 	SetupBox*       setup_box;
 	void*           ContinueButtonCallback;
@@ -241,9 +241,9 @@ struct SetupControl
 	// BW1W120 00409340 BW1M119 inlined
 	virtual void Drag(int x, int y);
 	// BW1W120 00409350 BW1M119 0135d4b0
-	virtual void MouseDown(int x, int y, bool param_3);
+	virtual void MouseDown(int x, int y, bool button_event);
 	// BW1W120 00409360 BW1M119 01357370
-	virtual void MouseUp(int x, int y, bool param_3);
+	virtual void MouseUp(int x, int y, bool button_event);
 	// BW1W120 00409370 BW1M119 0138a080
 	virtual void Click(int x, int y);
 	// BW1W120 00409380 BW1M119 013cc040
@@ -262,8 +262,7 @@ struct SetupControl
 
 	// BW1W120 inlined BW1M119 inlined
 	int GetTextSize();
-	// TODO: fabricated. Both platforms halve the text size inside each arm (ending in a constant 5), which
-	// GetTextSize() / 2 does not reproduce.
+	// fabricated
 	// BW1W120 inlined BW1M119 inlined
 	int GetHalfTextSize();
 };
@@ -285,14 +284,14 @@ struct SetupBox
 	static Zoomer FadeIn;
 	// BW1W120 00409170 BW1M119 01445730
 	virtual void  ClickKeyDown(int key, int mod);
-	Zoomer        Zoomer0x4;
-	Zoomer        Zoomer0x34;
+	Zoomer        Fade;
+	Zoomer        HoldFade;
 	bool          OnHold; /* 0x64 */
-	bool          field_0x65;
-	SetupControl* Widgets0x68;
+	bool          ActiveWhileOnHold;
+	SetupControl* HoldWidgetList;
 	SetupControl* WidgetList;
 	SetupControl* FocusedWidget; /* 0x70 */
-	SetupControl* Widget0x74;
+	SetupControl* HeldOverWidget;
 	uint8_t       field_0x78;
 	uint32_t      field_0x7c;
 	uint32_t      field_0x80;
@@ -300,19 +299,19 @@ struct SetupBox
 	uint32_t      field_0x88;
 	uint32_t      field_0x8c;
 	uint32_t      field_0x90;
-	int           field_0x94;
-	int           field_0x98;
-	int           field_0x9c;
-	int           field_0xa0;
-	int           field_0xa4;
-	int           field_0xa8;
+	int           BackgroundStyle;
+	int           TallBackground;
+	int           BackgroundWidth;
+	int           BackgroundHeight;
+	int           HoldWidth;
+	int           HoldHeight;
 	int           DefaultTextSize;
-	void(__stdcall* field_0xb0)(int param_0, SetupBox* param_1, SetupControl* param_2, int x, int y);
+	void(__stdcall* Callback)(int message, SetupBox* box, SetupControl* control, int data1, int data2);
 	uint32_t      field_0xb4;
-	unsigned long field_0xb8;
+	unsigned long HoldData;
 	SetupControl* HoverWidget; /* 0xbc */
-	int           field_0xc0;
-	float         field_0xc4;
+	int           HoldColour;
+	float         Alpha;
 	uint32_t      field_0xc8;
 
 	// Static methods
@@ -326,7 +325,7 @@ struct SetupBox
 	// BW1W120 00407ef0 BW1M119 01090750
 	static void UpdateWantKey();
 	// BW1W120 00407f60 BW1M119 01357850
-	static void __stdcall DefaultCB(int message, SetupBox* box, SetupControl* control, int param_4, int param_5);
+	static void __stdcall DefaultCB(int message, SetupBox* box, SetupControl* control, int data1, int data2);
 
 	// Non-virtual methods
 
@@ -335,7 +334,7 @@ struct SetupBox
 	// BW1W120 00408160 BW1M119 010e8bd0
 	SetupControl* FindControl(int id);
 	// BW1W120 004081a0 BW1M119 01375c50
-	void SetOnHold(unsigned long param_1);
+	void SetOnHold(unsigned long data);
 	// BW1W120 00408240 BW1M119 0151af10
 	void SetOffHold();
 	// BW1W120 00408340 BW1M119 0150a9b0
@@ -383,7 +382,7 @@ struct SetupStaticText : public SetupControl
 		: SetupControl(id, x, y, width, height, label)
 	{
 		text_justify = justify;
-		field_0x22a = false;
+		TabStop = false;
 		DisplayTextSize = 0;
 	}
 
@@ -403,9 +402,9 @@ struct SetupButton : public SetupControl
 	// BW1W120 004097a0 BW1M119 01501fc0
 	virtual void Draw(bool hovered, bool selected);
 	// BW1W120 00409900 BW1M119 0159be80
-	virtual void MouseDown(int x, int y, bool param_3);
+	virtual void MouseDown(int x, int y, bool button_event);
 	// BW1W120 00409910 BW1M119 01375da0
-	virtual void MouseUp(int x, int y, bool param_3);
+	virtual void MouseUp(int x, int y, bool button_event);
 	// BW1W120 00409920 BW1M119 011723f0
 	virtual void KeyDown(int key, int mod);
 
@@ -429,9 +428,9 @@ struct SetupSlider : public SetupControl
 	// BW1W120 00409c70 BW1M119 0159ff50
 	virtual void Drag(int x, int y);
 	// BW1W120 00409d60 BW1M119 011109a0
-	virtual void MouseDown(int x, int y, bool param_3);
+	virtual void MouseDown(int x, int y, bool button_event);
 	// BW1W120 00409d90 BW1M119 015824f0
-	virtual void MouseUp(int x, int y, bool param_3);
+	virtual void MouseUp(int x, int y, bool button_event);
 	// BW1W120 00409960 BW1M119 010d97f0
 	virtual void KeyDown(int key, int mod);
 
@@ -450,9 +449,9 @@ struct SetupList : public SetupControl
 	int  ScrollbackWidth; /* 0x240 */
 	bool field_0x244;
 	int  SelectedIndex;
-	int  field_0x24c;
+	int  PrevSelectedIndex;
 	int  NumItems; /* 0x250 */
-	int  field_0x254;
+	int  Capacity;
 	char16_t (*item_labels)[0x100];
 	int*                      ItemHeights;
 	void**                    TagData;
@@ -461,11 +460,11 @@ struct SetupList : public SetupControl
 	SetupList__ListBoxDraw_t* ListBoxDraw;
 	int                       ScrollDistance; /* 0x270 */
 	bool                      ShowScrollbar;
-	int                       field_0x278;
+	int                       MaxScrollPosition;
 	int                       ScrollPosition;
-	int                       field_0x280;
-	bool                      field_0x284;
-	bool                      field_0x285;
+	int                       DragStartScroll;
+	bool                      IgnoreKeys;
+	bool                      DraggingScrollbar;
 	LHCoord                   DragStart;
 	bool                      UseColorBackground; /* 0x290 */
 	bool                      DrawHighlightBox;
@@ -484,9 +483,9 @@ struct SetupList : public SetupControl
 	// BW1W120 0040a110 BW1M119 010cb230
 	virtual void Drag(int x, int y);
 	// BW1W120 0040a370 BW1M119 0110daa0
-	virtual void MouseDown(int x, int y, bool param_3);
+	virtual void MouseDown(int x, int y, bool button_event);
 	// BW1W120 0040a3f0 BW1M119 01449520
-	virtual void MouseUp(int x, int y, bool param_3);
+	virtual void MouseUp(int x, int y, bool button_event);
 	// BW1W120 0040a360 BW1M119 013e5a90
 	virtual void Click(int x, int y);
 	// BW1W120 00409eb0 BW1M119 010c7980
@@ -504,8 +503,8 @@ struct SetupList : public SetupControl
 	// Non-virtual methods
 
 	// BW1W120 00409dd0 BW1M119 0116ea40
-	void AutoScroll(bool param_1);
-	// TODO: fabricated name. No out-of-line copy on either platform; KeyDown, Drag and SetupBox::DrawAll share the body.
+	void AutoScroll(bool to_bottom);
+	// fabricated
 	// BW1W120 inlined BW1M119 inlined
 	void SetSelected(int index);
 	// BW1W120 0040aaf0 BW1M119 013ebe40
@@ -547,7 +546,7 @@ inline void SetupList::SetCol(int index, unsigned long col)
 struct SetupMultiList : public SetupList
 {
 	bool* list; /* 0x2b0 */
-	int   field_0x2b4;
+	int   NumSelected;
 	int   size;
 
 	// Override methods
@@ -574,11 +573,11 @@ struct SetupEdit : public SetupControl
 	int        CursorPosition;
 	int        SelectStart; /* 0x250 */
 	int        SelectEnd;
-	int        field_0x258;
+	int        ScrollOffset;
 	bool32_t   editable;
 	bool       MaskedText; /* 0x260 */
 	char16_t   text[0x100];
-	uint32_t   field_0x464;
+	uint32_t   SelectAllOnClick;
 
 	// Override methods
 
@@ -589,9 +588,9 @@ struct SetupEdit : public SetupControl
 	// BW1W120 0040c150 BW1M119 01368600
 	virtual void Drag(int x, int y);
 	// BW1W120 0040c170 BW1M119 014f1f60
-	virtual void MouseDown(int x, int y, bool param_3);
+	virtual void MouseDown(int x, int y, bool button_event);
 	// BW1W120 0040c1a0 BW1M119 01439aa0
-	virtual void MouseUp(int x, int y, bool param_3);
+	virtual void MouseUp(int x, int y, bool button_event);
 	// BW1W120 0040baf0 BW1M119 0111c4d0
 	virtual void KeyDown(int key, int mod);
 	// BW1W120 0040b5f0 BW1M119 01171680
@@ -616,8 +615,8 @@ struct SetupEdit : public SetupControl
 
 struct SetupMP3Button : public SetupButton
 {
-	int       field_0x244;
-	int       field_0x248;
+	int       IconIndex;
+	int       ShowButton;
 	LH3DColor color;
 
 	// Override methods
@@ -764,7 +763,7 @@ struct SetupHLineGraph : public SetupButton
 	// BW1W120 0040dab0 BW1M119 01372820
 	virtual void Draw(bool hovered, bool selected);
 	// BW1W120 0040e5a0 BW1M119 0149d930
-	virtual void MouseUp(int x, int y, bool param_3);
+	virtual void MouseUp(int x, int y, bool button_event);
 	// BW1W120 0040e580 BW1M119 013e5ba0
 	virtual void KeyDown(int key, int mod);
 	// BW1W120 0040e5e0 BW1M119 01174420
@@ -827,9 +826,9 @@ struct SetupPicture : public SetupButton
 	// BW1W120 0040fa10 BW1M119 01407570
 	virtual void Drag(int x, int y);
 	// BW1W120 0040f6b0 BW1M119 inlined
-	virtual void MouseDown(int x, int y, bool param_3);
+	virtual void MouseDown(int x, int y, bool button_event);
 	// BW1W120 0040f840 BW1M119 0142ea20
-	virtual void MouseUp(int x, int y, bool param_3);
+	virtual void MouseUp(int x, int y, bool button_event);
 	// BW1W120 00410710 BW1M119 01361d70
 	virtual void Click(int x, int y);
 	// BW1W120 004106f0 BW1M119 013525c0
@@ -857,9 +856,9 @@ struct SetupColourPicker : public SetupButton
 	// BW1W120 00410810 BW1M119 013760a0
 	virtual void Drag(int x, int y);
 	// BW1W120 004107f0 BW1M119 011a2660
-	virtual void MouseDown(int x, int y, bool param_3);
+	virtual void MouseDown(int x, int y, bool button_event);
 	// BW1W120 00410800 BW1M119 0142f970
-	virtual void MouseUp(int x, int y, bool param_3);
+	virtual void MouseUp(int x, int y, bool button_event);
 	// BW1W120 00410b50 BW1M119 0156c5a0
 	virtual void Click(int x, int y);
 	// BW1W120 00410b30 BW1M119 0117bea0
