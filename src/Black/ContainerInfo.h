@@ -2,7 +2,7 @@
 #define BW1_DECOMP_CONTAINER_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <stdint.h> /* For uint32_t */
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
@@ -10,23 +10,38 @@
 
 class Base;
 
+enum CONTAINER_INFO
+{
+	CONTAINER_INFO_TOWN = 0,
+	CONTAINER_INFO_PRAYER = 1,
+	CONTAINER_INFO_CITADEL = 2,
+	CONTAINER_INFO_FOREST = 3,
+	CONTAINER_INFO_LAST = 4
+};
+
 class GContainerInfo : public GBaseInfo
 {
 public:
-	uint32_t field_0x10;
-	uint8_t  field_0x14[0xf8];
-	float    field_0x10c;
-	uint32_t field_0x110;
-	uint8_t  field_0x114[0x2c];
-	float    field_0x140;
-	float    field_0x144;
+	CONTAINER_INFO ContainerType;
+
+	// Static data
+
+	// BW1W120 00c5e5e8
+	static GContainerInfo Definitions[CONTAINER_INFO_LAST];
 
 	// Override methods
 
-	// BW1W120 0046b880 BW1M119 010c3240
-	virtual ~GContainerInfo();
 	// BW1W120 0046b820 BW1M119 010c3360
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = sizeof(Definitions) / sizeof(Definitions[0]);
+		return GetInfo();
+	}
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 010c3140
+	static GContainerInfo* GetInfo() { return Definitions; }
 };
 
 #endif /* BW1_DECOMP_CONTAINER_INFO_INCLUDED_H */

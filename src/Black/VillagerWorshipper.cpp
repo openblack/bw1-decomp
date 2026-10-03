@@ -86,7 +86,7 @@ bool32_t Villager::CanIGetToTheWorshipSite(MagicTeleport*& teleport)
 		WorshipSite* worshipSite = GetWorshipSite();
 		if (worshipSite != NULL)
 		{
-			const GTownInfo* townInfo = (const GTownInfo*)town->info;
+			const GTownInfo* townInfo = (const GTownInfo*)town->info.Get();
 			if (GUtils::GetDistanceInMetres(Pos, worshipSite->Pos) > townInfo->field_0x148)
 			{
 				if (GetPlayer() != NULL)

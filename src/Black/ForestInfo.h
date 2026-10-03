@@ -13,6 +13,8 @@ class Base;
 class GForestInfo : public GContainerInfo
 {
 public:
+	uint32_t DefaultNoTrees;
+
 	// Override methods
 
 	// BW1W120 005399c0 BW1M119 010fbc00

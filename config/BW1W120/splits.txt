@@ -383,20 +383,20 @@ Black/Config.cpp:
 	.rdata      start:0x008CB410 end:0x008CB944
 	.CRT$XCU    start:0x009C62E4 end:0x009C62F4 align:4
 	.data       start:0x009CEBB0 end:0x009CED1C
-	.bss        start:0x00C5E5CC end:0x00C5E5E0
+	.bss        start:0x00C5E5CC end:0x00C5E5D8
 
 Black/Container.cpp:
 	.text       start:0x0046B790 end:0x0046B9D0
-	.rdata      start:0x008CB944 end:0x008CB980
+	.rdata      start:0x008CB944 end:0x008CBE80
 	.CRT$XCU    start:0x009C62F4 end:0x009C6304 align:4
-	.bss        start:0x00C5E5E0 end:0x00C5E68C
+	.bss        start:0x00C5E5D8 end:0x00C5E638
 
 Black/ControlHand.cpp:
 	.text       start:0x0046B9D0 end:0x0046EDF0
-	.rdata      start:0x008CB980 end:0x008CBF44
+	.rdata      start:0x008CBE80 end:0x008CBF44
 	.CRT$XCU    start:0x009C6304 end:0x009C6324 align:4
 	.data       start:0x009CED1C end:0x009CF9E0
-	.bss        start:0x00C5E68C end:0x00C5E8CC
+	.bss        start:0x00C5E638 end:0x00C5E8CC
 
 Black/ControlMap.cpp:
 	.text       start:0x0046EDF0 end:0x00471A50

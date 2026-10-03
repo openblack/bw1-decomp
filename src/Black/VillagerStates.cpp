@@ -11,7 +11,7 @@
 
 #include "Abode.h"
 #include "ColourConstants.h" /* For White */
-#include "ContainerInfo.h"
+#include "TownInfo.h"        /* For GTownInfo::field_0x140 */
 #include "Game.h"
 #include "GameThing.h"
 #include "VillagerInfo.h"
@@ -809,7 +809,7 @@ bool32_t Villager::GoAndChilloutInTown()
 	{
 		MapCoords congregationPos = town->GetCongregationPos();
 		GetMeToMyChillOutPos((int (Villager::*)(MapCoords&))&Villager::GetChillOutPos, congregationPos,
-		                     town->info->field_0x140, congregationPos);
+		                     town->GetInfo()->field_0x140, congregationPos);
 		return true;
 	}
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);

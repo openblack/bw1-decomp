@@ -160,7 +160,7 @@ GPlayer* Villager::GetPlayer()
 {
 	if (GetTown() != NULL)
 	{
-		return GetTown()->owner;
+		return GetTown()->owner.Get();
 	}
 	return NULL;
 }
@@ -599,7 +599,7 @@ bool32_t Villager::IsEffectReceiver(EffectValues* effect)
 Citadel* Villager::GetCitadel()
 {
 	Town* town = GetTown();
-	if (town != NULL && town->owner != NULL)
+	if (town != NULL && town->owner.Get() != NULL)
 	{
 		return town->owner->citadel;
 	}
@@ -1057,7 +1057,7 @@ uint32_t Villager::GetChillOutPos(MapCoords& coords)
 	if (town != NULL)
 	{
 		MapCoords congregationPos = town->GetCongregationPos();
-		float     radius = ((const GTownInfo*)town->info)->field_0x140 * 0.1f;
+		float     radius = ((const GTownInfo*)town->info.Get())->field_0x140 * 0.1f;
 		float     angle = GUtils::Get3DAngleFromXZ(congregationPos, Pos);
 		float     jitter = GRand::GameFloatRand(0.7853982f, __FILE__, __LINE__) - 0.39269909f;
 		MapCoords offset =
