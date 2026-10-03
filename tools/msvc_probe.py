@@ -24,7 +24,7 @@ def compile_command(unit):
     obj = unit["base_path"]
     out = subprocess.run(["ninja", "-t", "commands", obj], cwd=ROOT, capture_output=True, text=True, check=True)
     line = out.stdout.strip().splitlines()[-1]
-    argv = shlex.split(line)
+    argv = shlex.split(line, posix=os.name != "nt")
     source = next(a for a in argv if a.endswith((".cpp", ".c")) and not a.startswith("/"))
     return argv, source, obj
 

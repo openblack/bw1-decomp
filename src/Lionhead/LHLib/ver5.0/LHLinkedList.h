@@ -89,6 +89,21 @@ public:
 		return last;
 	}
 
+	// BW1W120 inlined BW1M119 012aa9e0
+	inline LHLinkedNode<T>* GetNodeAtPosition(long position)
+	{
+		if (count <= 0)
+			return NULL;
+		LHLinkedNode<T>* node = head.Get();
+		if (node == NULL)
+			return NULL;
+		if (position >= (long)count)
+			return NULL;
+		for (long i = 0; i < position; i++)
+			node = node->next.Get();
+		return node;
+	}
+
 	int AddToEnd(T val);
 	// Returns the matching node, not its payload (BW1M119 012564c0 for CreatureBelief*).
 	LHLinkedNode<T>* Find(T value);
@@ -140,30 +155,18 @@ template <typename T> LHLinkedList<T>::LHLinkedList()
 
 template <typename T> int LHLinkedList<T>::AddToEnd(T val)
 {
-	LHLinkedNode<T>* node;
 	if (!val)
-	{
-		goto fail;
-	}
-	node = new LHLinkedNode<T>(val, NULL);
+		return 0;
+	LHLinkedNode<T>* node = new LHLinkedNode<T>(val, NULL);
 	if (!node)
-	{
-		goto fail;
-	}
-	{
-		LHLinkedNode<T>* last = GetLastNode();
-		if (last)
-		{
-			last->next.Set(node);
-			++count;
-			return 1;
-		}
+		return 0;
+	LHLinkedNode<T>* last = GetLastNode();
+	if (last)
+		last->next.Set(node);
+	else
 		head.Set(node);
-		++count;
-		return 1;
-	}
-fail:
-	return 0;
+	count++;
+	return 1;
 }
 
 #endif /* BW1_DECOMP_LH_LINKED_LIST_INCLUDED_H */

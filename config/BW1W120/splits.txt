@@ -41,7 +41,7 @@ lib/libcmt/crt0init.obj:
 
 Black/Abode.cpp:
 	.text       start:0x00401000 end:0x00407880
-	.rdata      start:0x008A99DC end:0x008AB278
+	.rdata      start:0x008A99DC end:0x008AB250
 	.rdata$r    start:0x009A62D8 end:0x009A6570
 	.CRT$XCU    start:0x009C6004 end:0x009C6054 align:4
 	.data       start:0x009C7E80 end:0x009C8078
@@ -49,7 +49,7 @@ Black/Abode.cpp:
 
 Black/alexmfc.cpp:
 	.text       start:0x00407880 end:0x00414020
-	.rdata      start:0x008AB278 end:0x008AB638
+	.rdata      start:0x008AB250 end:0x008AB638
 	.rdata$r    start:0x009A6570 end:0x009A69C8
 	.CRT$XCU    start:0x009C6054 end:0x009C607C align:4
 	.data       start:0x009C8078 end:0x009C83EC

@@ -32,7 +32,7 @@ class SkirmishGameBox;
 class StartGameBox;
 class StatsBox;
 class TattooEditor;
-class SetupTabButton;
+struct SetupTabButton;
 
 struct FrontEnd
 {

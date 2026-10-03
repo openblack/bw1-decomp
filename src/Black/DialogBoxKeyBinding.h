@@ -8,9 +8,9 @@
 
 // Forward Declares
 
-class SetupList;
-class SetupButton;
-class SetupBigButton;
+struct SetupList;
+struct SetupButton;
+struct SetupBigButton;
 
 class DialogBoxKeyBinding : public DialogBoxBase
 {

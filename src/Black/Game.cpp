@@ -29,7 +29,7 @@
 #include "MPFEConnectionStatus.h"
 #include "MPFEStartGameData.h"
 #include "ServerLandscapeMap.h"
-#include "SetupTabButton.h"
+#include "alexmfc.h"
 #include "SkirmishGameBox.h"
 #include <Lionhead/LH3DLib/development/LH3DMeshIntersect.h>
 #include <io.h>
@@ -53,7 +53,6 @@
 #include "IpSpecialDialog.h"
 #include "PCMain.h"
 #include "PlayerSymbol.h"
-#include "SetupBox.h"
 #include "SpecialVillager.h"
 #include "Utils.h"
 #include "MapShield.h"
@@ -126,7 +125,6 @@
 #include "Script.h"
 #include "ScriptDLL.h"
 #include "SaveGameRoom.h"
-#include "SetupThing.h"
 #include "SoundConfirmation.h"
 #include "SoundGuidance.h"
 #include "SoundMap.h"

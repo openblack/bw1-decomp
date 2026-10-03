@@ -100,7 +100,9 @@ struct FontCache
 
 struct GatheringText
 {
-	uint8_t field_0x0;
+	// BW1W120 00eccd08
+	static GatheringText* gamefont;
+	uint8_t               field_0x0;
 
 	// Non-virtual methods
 
@@ -109,19 +111,22 @@ struct GatheringText
 	// BW1W120 008310d0 BW1M119 010c5150 (LHCombined Release)
 	void CloseGameFonts();
 	// BW1W120 00831130 BW1M119 01033370 (LHCombined Release)
-	float GetStringWidth(const char16_t* str, int len, float text_size);
+	float GetStringWidth(char16_t* str, int len, float text_size);
 	// BW1W120 00831550 BW1M119 010c5080 (LHCombined Release)
 	static float GetFrac(float value, float lower, float upper);
-	// BW1W120 008315b0
-	float DrawText(const char16_t* text, float param_2, float param_3, float param_4, float param_5, float param_6,
-	               float param_7, float param_8, float param_9, float param_10, const LH3DColor* p_color, int param_12,
-	               int param_13, int param_14);
+	// BW1W120 008315b0 BW1M119 010c4970 (LHCombined Release)
+	float DrawTextA(char16_t* text, float param_2, float param_3, float param_4, float param_5, float param_6,
+	                float param_7, float param_8, float param_9, float param_10, LH3DColor* p_color, int param_12,
+	                int param_13, int param_14);
 	// BW1W120 008319e0 BW1M119 010c43c0 (LHCombined Release)
 	void DrawChar2Texture(CacheEntry* param_1, uint16_t* param_2, int param_3, float param_4, float param_5,
 	                      float param_6, float param_7, uint16_t* param_8);
 	// BW1W120 00831df0 BW1M119 010c3e20 (LHCombined Release)
 	void DrawText2Texture(uint16_t* param_1, int param_2, const char16_t* param_3, int param_4, float param_5,
 	                      float param_6, float param_7, float param_8, uint16_t param_9);
+	// BW1W120 00832c60 BW1M119 01030e80 (LHCombined Release)
+	void DrawTextRaw(char16_t* text, int count, float x, float y, float z, float size, LH3DColor* color_top,
+	                 int no_z_test, LH3DColor* color_bottom, float fade_top, float fade_bottom);
 	// BW1W120 008321c0 BW1M119 010c31f0 (LHCombined Release)
 	void DrawTextRawOriented(LHMatrix& param_1, int param_2, int param_3, const char16_t* param_4, int param_5,
 	                         float param_6, float param_7, float param_8, float param_9, float param_10,

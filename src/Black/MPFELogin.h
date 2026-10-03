@@ -9,9 +9,9 @@
 
 // Forward Declares
 
-class SetupBigButton;
-class SetupEdit;
-class SetupStaticText;
+struct SetupBigButton;
+struct SetupEdit;
+struct SetupStaticText;
 
 class MPFELogin : public DialogBoxBase
 {

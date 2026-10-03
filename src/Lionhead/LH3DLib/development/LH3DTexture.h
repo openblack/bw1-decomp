@@ -12,6 +12,8 @@ enum TextureFormat
 
 struct LH3DTexture
 {
+	// BW1W120 00edd470
+	static int    g_b_use_low_res;
 	uint32_t      field_0x0;
 	uint32_t      field_0x4;
 	uint32_t      field_0x8;

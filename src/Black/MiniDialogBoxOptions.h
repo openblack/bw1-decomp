@@ -8,11 +8,11 @@
 
 // Forward Declares
 
-class SetupBigButton;
-class SetupButton;
-class SetupCheckBox;
-class SetupSlider;
-class SetupStaticText;
+struct SetupBigButton;
+struct SetupButton;
+struct SetupCheckBox;
+struct SetupSlider;
+struct SetupStaticText;
 
 class MiniDialogBoxOptions : public DialogBoxBase
 {

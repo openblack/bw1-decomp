@@ -42,6 +42,15 @@ struct LH3DMaterial
 	uint8_t      cull_mode;
 	LH3DTexture* texture;
 	LH3DColor    color;
+
+	// The render-mode function table LH3DRender dispatches through; points at one of the tables below.
+	// TODO: The element type is a render function pointer whose signature is not recovered yet.
+	// BW1W120 00eca618 BW1M119 012cf91c (LHCombined Release)
+	static void* g_list_render_func;
+	// BW1W120 00c38728 BW1M119 011d0e38 (LHCombined Release)
+	static void* g_list_render_func_normal[40];
+	// BW1W120 00c387c8 BW1M119 011d0ed8 (LHCombined Release)
+	static void* g_list_render_func_global_alpha[40];
 };
 static_assert(sizeof(LH3DMaterial) == 0x10, "Data type is of wrong size");
 

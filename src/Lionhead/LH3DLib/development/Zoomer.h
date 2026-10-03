@@ -25,10 +25,10 @@ struct Zoomer
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M119 inlined
-	void SetDestination(float destination);
+	// BW1W120 inlined BW1M119 010337f0
+	void SetDestination(float destination, float time);
 	// BW1W120 inlined BW1M119 0103a990
-	float GetCurrentValue();
+	float GetCurrentValue() { return CurrentValue; }
 	// BW1W120 inlined BW1M119 01023960
 	float GetDestination();
 	// BW1W120 00407d60 BW1M119 010517e0
@@ -37,8 +37,8 @@ struct Zoomer
 	void SetPosition(float position)
 	{
 		destination = position;
-		StartValue = position;
 		CurrentValue = position;
+		StartValue = position;
 		duration = 0.0f;
 		CurrentTime = 0.0f;
 		NonLinearAcceleration.z = 0.0f;
@@ -74,5 +74,76 @@ struct Zoomer3d
 	// BW1W120 inlined BW1M119 011a1520
 	void SetPosition(const LHPoint& destination);
 };
+
+#include "LHMatrix.h"
+
+// BW1W120 00407d60 BW1M119 010517e0
+inline void Zoomer::SetDestinationWithSpeedAndTime(float destination, float speed, float time)
+{
+	if (time < 0.001f)
+	{
+		SetPosition(destination);
+		return;
+	}
+	StartSpeed = CurrentSpeed;
+	StartValue = CurrentValue;
+	this->destination = destination;
+	DestinationSpeed = speed;
+	duration = time;
+	CurrentTime = 0.0f;
+	float    halfTimeSquared = time * time * 0.5f;
+	float    sixthTimeCubed = halfTimeSquared * time * (1.0f / 3.0f);
+	LHMatrix coefficients;
+	coefficients.m[0] = halfTimeSquared * halfTimeSquared * (1.0f / 6.0f);
+	coefficients.m[1] = sixthTimeCubed;
+	coefficients.m[2] = halfTimeSquared;
+	coefficients.m[3] = sixthTimeCubed;
+	coefficients.m[4] = halfTimeSquared;
+	coefficients.m[5] = time;
+	coefficients.m[6] = halfTimeSquared;
+	coefficients.m[7] = time;
+	coefficients.m[8] = 1.0f;
+	coefficients.m[11] = 0.0f;
+	coefficients.m[10] = 0.0f;
+	coefficients.m[9] = 0.0f;
+	LHMatrix inverse;
+	inverse.SetInverse(coefficients);
+	float distance = this->destination - StartValue - duration * StartSpeed;
+	float speedChange = DestinationSpeed - StartSpeed;
+	float accelerationZ = inverse.m[3] * speedChange + inverse.m[0] * distance + inverse.m[9];
+	NonLinearAcceleration.y = inverse.m[1] * distance + inverse.m[4] * speedChange + inverse.m[10];
+	NonLinearAcceleration.x = inverse.m[5] * speedChange + inverse.m[2] * distance + inverse.m[11];
+	NonLinearAcceleration.z = accelerationZ;
+}
+
+// Inliner IL size: <= 40
+// BW1W120 inlined BW1M119 010337f0
+inline void Zoomer::SetDestination(float destination, float time)
+{
+	SetDestinationWithSpeedAndTime(destination, 0.0f, time);
+}
+
+// BW1W120 00442720 BW1M119 0102eff0
+inline void Zoomer::Update(float dt)
+{
+	CurrentTime += dt;
+	if (CurrentTime >= duration)
+	{
+		CurrentValue = destination;
+		CurrentSpeed = DestinationSpeed;
+		TimeM2 = 0.0f;
+		CurrentTime = duration;
+	}
+	else
+	{
+		float halfTimeSquared = CurrentTime * CurrentTime * 0.5f;
+		float sixthTimeCubed = CurrentTime * halfTimeSquared * (1.0f / 3.0f);
+		CurrentSpeed = CurrentTime * NonLinearAcceleration.x + sixthTimeCubed * NonLinearAcceleration.z +
+		               halfTimeSquared * NonLinearAcceleration.y + StartSpeed;
+		CurrentValue = NonLinearAcceleration.z * (halfTimeSquared * halfTimeSquared * (1.0f / 6.0f)) +
+		               CurrentTime * StartSpeed + sixthTimeCubed * NonLinearAcceleration.y +
+		               halfTimeSquared * NonLinearAcceleration.x + StartValue;
+	}
+}
 
 #endif /* BW1_DECOMP_ZOOMER_INCLUDED_H */

@@ -7,7 +7,7 @@ struct LHLobby;
 class LHSession;
 class LHTransport;
 struct LHNetUser;
-class SetupBox;
+struct SetupBox;
 
 class LHNetBase
 {

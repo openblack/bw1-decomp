@@ -18,24 +18,10 @@
 
 WINUSERAPI BOOL WINAPI TrackMouseEvent(LPTRACKMOUSEEVENT);
 
-// slim::TbIME helpers implemented in another TU.
-// BW1W120 007f42b0 BW1M119 01171cb0 (LHCombined Release)
-int TbIME_ConvertCHAR8toCHAR16(char c);
 // (LHScreen.cpp) per-message screen bookkeeping
 // BW1W120 007de8d0
 void sub_7DE8D0();
 
-// The IME helper wrapper (slim::TbIME), constructed on window creation.
-struct TbIMEWrapper
-{
-	void* field_0x0;
-	// BW1W120 007f3b80
-	TbIMEWrapper();
-	// BW1W120 007f3d20
-	// __thiscall: `this` (LHSys::TheSystem.TbIME) rides in ecx, only the 5 explicit args are pushed.
-	// Returns a byte (target tests al, not eax).
-	bool ProcessMessage(HWND wnd, UINT* msg, WPARAM* w, LPARAM* l, LRESULT* result);
-};
 // 00e85204 is TheSystem.mouse: LHSys embeds LHMouse at offset 0x1c4.
 static_assert(offsetof(LHSys, mouse) == 0x1c4, "LHSys mouse offset changed");
 
@@ -518,7 +504,7 @@ int RegisterGameWindowClass(HINSTANCE inst, WNDPROC proc)
 
 // Create the game's top-level window (800x600 windowed, or a full-screen
 // popup), start mouse-leave tracking, and construct the IME wrapper.
-// TODO: 81% — the C++ EH frame (from `new TbIMEWrapper()`, needs /GX) and body now match;
+// TODO: 81% — the C++ EH frame (from `new slim::TbIME()`, needs /GX) and body now match;
 // residual is MSVC caching the constant 1 in a register + a different callee-saved reg
 // choice in the CreateWindowEx branch. Optimizer-level.
 // BW1W120 007dba90
@@ -558,7 +544,7 @@ int CreateGameWindow(HINSTANCE inst, int cmd_show, int windowed)
 	if (LHSys::GetMouse().AnimType == 3)
 		SendMessageA(LHSys::GetWindow(), 0x8005, 0, 0);
 	TurnOnMenu();
-	LHSys::TheSystem.TbIME = new (__FILE__, __LINE__) TbIMEWrapper();
+	LHSys::TheSystem.TbIME = new (__FILE__, __LINE__) slim::TbIME();
 	return 0;
 }
 
@@ -578,7 +564,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 	}
 
 	// Does the IME wrapper want to handle this message?
-	if (LHSys::TheSystem.TbIME && !LHSys::TheSystem.TbIME->ProcessMessage(hWnd, &msg, &wParam, &lParam, &result))
+	if (LHSys::TheSystem.TbIME && !LHSys::TheSystem.TbIME->ProcessMessage(hWnd, msg, wParam, lParam, result))
 		return result;
 
 	if (msg >= 0x500 && msg < 0x600 && LHSys::TheSystem.MessageHook)
@@ -658,7 +644,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 			MouseMoveHandler((int)hWnd, lParam, GetMessageTime());
 		break;
 	case WM_CHAR: {
-		int c = TbIME_ConvertCHAR8toCHAR16((char)wParam) & 0xFFFF;
+		int c = slim::TbIME::ConvertCHAR8toCHAR16((char)wParam) & 0xFFFF;
 		if (c)
 		{
 			int used = LHSys::TheSystem.charRing.Head - LHSys::TheSystem.charRing.Tail;

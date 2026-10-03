@@ -8,12 +8,12 @@
 
 // Forward Declares
 
-class SetupBigButton;
-class SetupButton;
-class SetupCheckBox;
-class SetupEdit;
-class SetupList;
-class SetupStaticText;
+struct SetupBigButton;
+struct SetupButton;
+struct SetupCheckBox;
+struct SetupEdit;
+struct SetupList;
+struct SetupStaticText;
 
 class MPFEChannelSelector : public DialogBoxBase
 {

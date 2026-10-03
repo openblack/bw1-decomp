@@ -5,6 +5,7 @@
 
 enum LHKey
 {
+	LHKEY_ESCAPE = 0x1,
 	LHKEY_1 = 0x2,
 	LHKEY_2 = 0x3,
 	LHKEY_3 = 0x4,
@@ -375,5 +376,12 @@ enum LHKeyMod
 	LHKEYMOD_ALT = 0x40
 };
 static_assert(sizeof(enum LHKeyMod) == 0x4, "Data type is of wrong size");
+
+// BW1W120 009a161c
+extern const unsigned short LH_MOD_SHIFT;
+// BW1W120 009a161e
+extern const unsigned short LH_MOD_CTRL;
+// BW1W120 009a1620
+extern const unsigned short LH_MOD_ALT;
 
 #endif /* BW1_DECOMP_LH_KEY_INCLUDED_H */
