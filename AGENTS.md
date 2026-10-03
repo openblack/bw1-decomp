@@ -435,8 +435,10 @@ instead of `Type*`, and the first parameter should be removed.
 
 Globals belong to a class as `static` data members (`GGame::g_game`,
 `EditorPhysics::PhysicsConstants`), declared in that class's header and defined in
-its `.cpp`. Do not reach for a file-scope `extern` declaration just to get a global
-address to compile — that hides which translation unit owns the data and produces a
-mangled name (`?Name@@3...`) that will not match the real one. Find the owning class
-first (the functions that write the data usually name it), and only fall back to a
-free `extern` when the evidence really points at a file-scope variable.
+its `.cpp`. Find the owning class first (the functions that write the data usually
+name it).
+
+**Never use `extern`**, not even as a temporary stand-in in a NonMatching unit. It hides
+which translation unit owns the data and produces a mangled name (`?Name@@3...`) that will
+not match the real one. If a global cannot be declared in its proper header yet, comment
+out the use with a `// TODO:` explaining why.

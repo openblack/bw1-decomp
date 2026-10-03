@@ -20,6 +20,7 @@ class GPlayer;
 class GVirtualInfluence;
 class GameOSFile;
 class GameThing;
+struct MapCoords;
 class Object;
 struct PSysProcessInfo;
 class Spell;
@@ -118,6 +119,8 @@ public:
 	void Init(uint8_t player_number, GInterface* iface);
 	// BW1W120 005dc870 BW1M119 01375b90
 	void PlaceObjectInMagicHand(Object* object);
+	// BW1W120 005dc8d0 BW1M119 01375a50
+	MapCoords GetHandMapCoords();
 };
 
 #endif /* BW1_DECOMP_INTERFACE_STATUS_INCLUDED_H */

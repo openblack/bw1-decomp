@@ -35,19 +35,18 @@ struct Point2D
 	// BW1W120 00611170 BW1M119 010f2a00
 	float operator*(const Point2D& other) { return x * other.x + y * other.y; }
 	// BW1W120 00611310 BW1M119 inlined
-	float DotProduct(const Point2D* other) const;
+	float DotProduct(const Point2D* other) const { return other->y * y + other->x * x; }
 	// BW1W120 00611190 BW1M119 010621c0
 	Point2D operator*(float rhs) const { return Point2D(x * rhs, y * rhs); }
-	// BW1W120 inlined BW1M119 010f29a0
-	Point2D& operator+(const Point2D& rhs) const;
+	// BW1W120 00611080 BW1M119 010f29a0
+	Point2D operator+(const Point2D& rhs) const { return Point2D(x + rhs.x, y + rhs.y); }
 	// BW1W120 inlined BW1M119 inlined
-	Point2D& operator+=(const Point2D& other)
+	void operator+=(const Point2D& other)
 	{
 		x += other.x;
 		y += other.y;
-		return *this;
 	}
-	// BW1W120 inlined BW1M119 010eb710
+	// BW1W120 006110a0 BW1M119 010eb710
 	Point2D operator-(const Point2D& rhs) const { return Point2D(x - rhs.x, y - rhs.y); }
 	// BW1W120 inlined BW1M119 inlined
 	Point2D& operator*=(float rhs)
@@ -57,11 +56,10 @@ struct Point2D
 		return *this;
 	}
 	// BW1W120 inlined BW1M119 inlined
-	Point2D& operator-=(const Point2D& other)
+	void operator-=(const Point2D& other)
 	{
 		x -= other.x;
 		y -= other.y;
-		return *this;
 	}
 	// BW1W120 00611240 BW1M119 inlined
 	float Cross(const Point2D& other) const { return y * other.x - other.y * x; }

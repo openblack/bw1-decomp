@@ -2,6 +2,10 @@
 
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 #include "Landscape.h"
+#include "EditorHug.h"
+#include "Footpath.h"
+#include "Interface.h"
+#include "InterfaceStatus.h"
 #include <math.h> /* For sqrt */
 #include "Game.h"
 #include "GameOSFile.h"
@@ -14,6 +18,16 @@
 #include "VillagerInfo.h"
 
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
+
+#if defined(VERSION_BW1W100)
+#define MOBILE_WALL_HUG_FILE "C:\\dev\\black\\MobileWallHug.cpp"
+#elif defined(VERSION_BW1W110)
+#define MOBILE_WALL_HUG_FILE "C:\\dev\\Black\\MobileWallHug.cpp"
+#else
+#define MOBILE_WALL_HUG_FILE "C:\\dev\\MP\\Black\\MobileWallHug.cpp"
+#endif
+
+inline CircleHugStateInfoT::CircleHugStateInfoT() {}
 
 static CircleHugStateInfoT g_CircleHugStateInfo;
 static bool                g_CircleHugNeedsLookahead;
@@ -29,7 +43,7 @@ inline NewCollide::Obj* CircleHugStateInfoT::fetch(MapCoords coords)
 	}
 	LHPoint point;
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
-	NewCollide::Obj* obj = new (__FILE__, 215) NewCollide::Obj(7.2f, &point);
+	NewCollide::Obj* obj = new (MOBILE_WALL_HUG_FILE, 215) NewCollide::Obj(7.2f, &point);
 	LandscapeBlockers[blockPos] = obj;
 	return obj;
 }
@@ -45,8 +59,8 @@ inline MapCoords CircleHugInfo::GetObjCoords()
 inline void CircleHugStateInfoT::swapDirection(MobileWallHug& mwh)
 {
 	MapCoords pos = mwh.Pos;
-	pos.x += mwh.step.x * 3;
-	pos.z += mwh.step.z * 3;
+	pos.AddToWholeX(mwh.step.x * 3);
+	pos.AddToWholeZ(mwh.step.z * 3);
 	mwh.MoveMapObject(pos);
 	// The Mac shows the same swapped altitude/z arguments
 	mwh.step.Init(-mwh.step.x, -mwh.step.altitude, -mwh.step.z);
@@ -70,20 +84,21 @@ inline CircleHugStateInfoT::performance CircleHugStateInfoT::evaluate(MobileWall
 	villager->GameAngle = mwh->GameAngle;
 	villager->SetSpeed(mwh->speed * 4, 1);
 
+	performance result;
 	if (swapped)
 	{
-		switch (villager->GetMoveState())
+		switch (villager->MoveState)
 		{
-		case MOVE_TO_STATES_LINEAR_CW:
-			villager->SetMoveState(MOVE_TO_STATES_LINEAR_CCW);
+		case MOVE_TO_STATES_LINEAR_CCW:
+			villager->MoveState = MOVE_TO_STATES_LINEAR_CW;
 			swapDirection(*villager);
 			break;
-		case MOVE_TO_STATES_LINEAR_CCW:
-			villager->SetMoveState(MOVE_TO_STATES_LINEAR_CW);
+		case MOVE_TO_STATES_LINEAR_CW:
+			villager->MoveState = MOVE_TO_STATES_LINEAR_CCW;
 			swapDirection(*villager);
 			break;
 		case MOVE_TO_STATES_ORBIT_CW:
-			villager->SetMoveState(MOVE_TO_STATES_ORBIT_CCW);
+			villager->MoveState = MOVE_TO_STATES_ORBIT_CCW;
 			swapDirection(*villager);
 			if (villager->circle_hug_info.GetObjectPtr() != NULL)
 			{
@@ -91,26 +106,25 @@ inline CircleHugStateInfoT::performance CircleHugStateInfoT::evaluate(MobileWall
 			}
 			break;
 		case MOVE_TO_STATES_ORBIT_CCW:
-			villager->SetMoveState(MOVE_TO_STATES_ORBIT_CW);
+			villager->MoveState = MOVE_TO_STATES_ORBIT_CW;
 			swapDirection(*villager);
 			if (villager->circle_hug_info.GetObjectPtr() != NULL)
 			{
 				MobileWallHug_InCircleStuff<true>::MoveToCircleHugCircleSquareSweep(villager, villager->GetPos());
 			}
 			break;
-		case MOVE_TO_STATES_EXIT_CIRCLE_CCW:
-			villager->SetMoveState(MOVE_TO_STATES_EXIT_CIRCLE_CW);
+		case MOVE_TO_STATES_EXIT_CIRCLE_CW:
+			villager->MoveState = MOVE_TO_STATES_EXIT_CIRCLE_CCW;
 			swapDirection(*villager);
 			break;
-		case MOVE_TO_STATES_EXIT_CIRCLE_CW:
-			villager->SetMoveState(MOVE_TO_STATES_EXIT_CIRCLE_CCW);
+		case MOVE_TO_STATES_EXIT_CIRCLE_CCW:
+			villager->MoveState = MOVE_TO_STATES_EXIT_CIRCLE_CW;
 			swapDirection(*villager);
 			break;
 		}
 
 		if (villager->MoveState == MOVE_TO_STATES_STEP_THROUGH)
 		{
-			performance result;
 			result.count = 0;
 			result.dist = MaxFloat;
 			villager->ToBeDeleted(0);
@@ -118,7 +132,6 @@ inline CircleHugStateInfoT::performance CircleHugStateInfoT::evaluate(MobileWall
 		}
 	}
 
-	performance result;
 	result.count = 1500;
 	while (villager->MoveTo() != 10 && result.count-- > 0)
 	{
@@ -132,18 +145,18 @@ inline void CircleHugStateInfoT::swap(MobileWallHug& mwh)
 {
 	switch (mwh.MoveState)
 	{
-	case MOVE_TO_STATES_LINEAR_CW:
-		mwh.MoveState = MOVE_TO_STATES_LINEAR_CCW;
-		swapDirection(mwh);
-		break;
 	case MOVE_TO_STATES_LINEAR_CCW:
 		mwh.MoveState = MOVE_TO_STATES_LINEAR_CW;
+		swapDirection(mwh);
+		break;
+	case MOVE_TO_STATES_LINEAR_CW:
+		mwh.MoveState = MOVE_TO_STATES_LINEAR_CCW;
 		swapDirection(mwh);
 		break;
 	case MOVE_TO_STATES_ORBIT_CW:
 		mwh.MoveState = MOVE_TO_STATES_ORBIT_CCW;
 		swapDirection(mwh);
-		if (mwh.circle_hug_info.obj != NULL)
+		if (mwh.circle_hug_info.GetObjectPtr() != NULL)
 		{
 			MobileWallHug_InCircleStuff<false>::MoveToCircleHugCircleSquareSweep(&mwh, mwh.GetPos());
 		}
@@ -151,17 +164,17 @@ inline void CircleHugStateInfoT::swap(MobileWallHug& mwh)
 	case MOVE_TO_STATES_ORBIT_CCW:
 		mwh.MoveState = MOVE_TO_STATES_ORBIT_CW;
 		swapDirection(mwh);
-		if (mwh.circle_hug_info.obj != NULL)
+		if (mwh.circle_hug_info.GetObjectPtr() != NULL)
 		{
 			MobileWallHug_InCircleStuff<true>::MoveToCircleHugCircleSquareSweep(&mwh, mwh.GetPos());
 		}
 		break;
-	case MOVE_TO_STATES_EXIT_CIRCLE_CCW:
-		mwh.MoveState = MOVE_TO_STATES_EXIT_CIRCLE_CW;
-		swapDirection(mwh);
-		break;
 	case MOVE_TO_STATES_EXIT_CIRCLE_CW:
 		mwh.MoveState = MOVE_TO_STATES_EXIT_CIRCLE_CCW;
+		swapDirection(mwh);
+		break;
+	case MOVE_TO_STATES_EXIT_CIRCLE_CCW:
+		mwh.MoveState = MOVE_TO_STATES_EXIT_CIRCLE_CW;
 		swapDirection(mwh);
 		break;
 	}
@@ -285,7 +298,7 @@ void CircleHugInfo::FetchObjectFromCircHugInfo(NewCollide::Obj* collide_obj, Res
 
 void CircleHugInfo::SetResolutionInfo(Object* object, int index, const MapCoords& coords)
 {
-	obj = (NewCollide::Obj*)new ("C:\\dev\\MP\\Black\\MobileWallHug.cpp", 312) ResolutionInfoT;
+	obj = (NewCollide::Obj*)new (MOBILE_WALL_HUG_FILE, 312) ResolutionInfoT;
 	((ResolutionInfoT*)obj)->object = object;
 	((ResolutionInfoT*)obj)->index = index;
 	((ResolutionInfoT*)obj)->coords = coords;
@@ -366,7 +379,7 @@ void CircleHugInfo::SetObjectPtr(NewCollide::Obj* new_obj, MobileWallHug* mwh, b
 		}
 		else
 		{
-			obj = (NewCollide::Obj*)new (__FILE__, 422) ResolutionInfoT;
+			obj = (NewCollide::Obj*)new (MOBILE_WALL_HUG_FILE, 422) ResolutionInfoT;
 			FetchObjectFromCircHugInfo(new_obj, *(ResolutionInfoT*)obj);
 		}
 		return;
@@ -793,12 +806,12 @@ void MobileWallHug::SetNewWander(const MapCoords* centre, long min_dist, long ma
 		}
 		else
 		{
-			angle += GRand::GameRand(0x80, __FILE__, 1080) - 0x40;
+			angle += GRand::GameRand(0x80, MOBILE_WALL_HUG_FILE, 1080) - 0x40;
 		}
 	}
 	else
 	{
-		angle += GRand::GameRand(0x80, __FILE__, 1085) - 0x40;
+		angle += GRand::GameRand(0x80, MOBILE_WALL_HUG_FILE, 1085) - 0x40;
 	}
 	SetTowardsAngle(angle & 0x7ff);
 	RebuildMoveByStep();
@@ -858,10 +871,15 @@ int MobileWallHug::MoveByStep(int& direction)
 
 int MobileWallHug::CollideWithMapCell(uint16_t x, uint16_t z)
 {
+	long         cellX = x;
+	long         cellZ = z;
 	COLLIDE_TYPE mask = (COLLIDE_TYPE)GetInfo()->CollideMask;
-	return GGame::g_game->map.InBounds(x, z)
-	           ? GGame::g_game->map.cells[0][x * GGame::g_game->map.CellExtentZx[0] + z].Collide(mask)
-	           : -1;
+	GMap&        map = GGame::g_game->map;
+	if (!map.InBounds(cellX, cellZ))
+	{
+		return -1;
+	}
+	return map.cells[0][cellX * map.CellExtentZx[0] + cellZ].Collide(mask);
 }
 
 int MobileWallHug::Collide()
@@ -1280,8 +1298,8 @@ uint32_t MobileWallHug::MoveToCircleHugLinearSquareSweep(const MapCoords& coords
 	if (it.IsValid())
 	{
 		float                  length = dir.Normalize();
-		IntersectIntervalLine* nearest = new (__FILE__, 1771) IntersectIntervalLine(it, origin, dir);
-		IntersectIntervalLine* current = new (__FILE__, 1772) IntersectIntervalLine;
+		IntersectIntervalLine* nearest = new (MOBILE_WALL_HUG_FILE, 1771) IntersectIntervalLine(it, origin, dir);
+		IntersectIntervalLine* current = new (MOBILE_WALL_HUG_FILE, 1772) IntersectIntervalLine;
 		while (nearest->disc <= 0.0f)
 		{
 			it.Next(coords);
@@ -1428,13 +1446,541 @@ void MobileWallHug::SetYAngle(float angle)
 	GameAngle = GUtils::ConvertAngle3DToGame(angle);
 }
 
+// BW1W120 00d3ee60 BW1M119 01b3db00
+static Point2D g_CircleHugBlockPoint;
+// BW1W120 00d3eed1 BW1M119 01b3db08
+static bool g_CircleHugBlockPointValid;
+
 // BW1W120 0060db00 BW1M119 013c9820
 MobileWallHug::~MobileWallHug()
 {
 	circle_hug_info.Reset(this);
 }
 
-// BW1W120 0060f760 BW1M119 013c9790
+template <bool clockwise>
+inline uint32_t MobileWallHug_InCircleStuff<clockwise>::MoveToCircleHugCircleSquareSweep(MobileWallHug*   mwh,
+                                                                                         const MapCoords& coords)
+{
+	static int depth = 3;
+	depth--;
+
+	Point2D centre(mwh->circle_hug_info.GetObjectPtr()->position.x, mwh->circle_hug_info.GetObjectPtr()->position.z);
+	Point2D dir;
+	Point2D pos;
+	MapCoordsToPoint2D(dir, mwh->Pos);
+	pos = dir;
+	dir -= centre;
+	Point2DCompare<clockwise>::origin = dir;
+	float radius = mwh->circle_hug_info.GetObjectPtr()->radius;
+	float length = dir.Normalize();
+	float overlap = length / radius - 0.9;
+	bool  goalInside = mwh->goal.GetMetresDistanceSq(mwh->circle_hug_info.GetObjCoords()) < radius * radius;
+	ObjectCircleIterator it(coords);
+	if (!it.IsValid() && !goalInside)
+	{
+		mwh->circle_hug_info.TurnsToObj = 0xff;
+	}
+	else
+	{
+		IntersectIntervalCircle<clockwise>* nearest =
+			new (MOBILE_WALL_HUG_FILE, 1846) IntersectIntervalCircle<clockwise>;
+		IntersectIntervalCircle<clockwise>* current =
+			new (MOBILE_WALL_HUG_FILE, 1846) IntersectIntervalCircle<clockwise>;
+		Point2DCompare<clockwise> start;
+		if (goalInside)
+		{
+			Point2D goal;
+			MapCoordsToPoint2D(goal, mwh->goal);
+			nearest->compares[1] = Point2DCompare<clockwise>(goal - centre);
+			if (nearest->compares[1].point == Point2D(0.0f, 0.0f))
+			{
+				nearest->compares[0] = Point2DCompare<clockwise>(dir);
+			}
+			else if (clockwise)
+			{
+				nearest->compares[0].point.x =
+					nearest->compares[1].point.x * 0.99999845f - nearest->compares[1].point.y * 0.0017453284f;
+				nearest->compares[0].point.y =
+					nearest->compares[1].point.y * 0.99999845f + nearest->compares[1].point.x * 0.0017453284f;
+			}
+			else
+			{
+				nearest->compares[0].point.x =
+					nearest->compares[1].point.y * 0.0017453284f + nearest->compares[1].point.x * 0.99999845f;
+				nearest->compares[0].point.y =
+					nearest->compares[1].point.y * 0.99999845f - nearest->compares[1].point.x * 0.0017453284f;
+			}
+			nearest->compares[1] = nearest->compares[0];
+			nearest->compares[1].Resolve();
+			start.result = nearest->compares[0].result = nearest->compares[1].result;
+			nearest->obj = NULL;
+			nearest->HalfChordLengthSq = 1.0f;
+			start = nearest->compares[1];
+		}
+		else
+		{
+			nearest->Init(it, radius, centre, dir, pos);
+			while (nearest->HalfChordLengthSq <= 0.0f)
+			{
+				it.Next(coords);
+				if (!it.IsValid())
+				{
+					break;
+				}
+				nearest->Init(it, radius, centre, dir, pos);
+			}
+			if (it.IsValid())
+			{
+				it.Next(coords);
+			}
+		}
+		for (; it.IsValid(); it.Next(coords))
+		{
+			current->Init(it, radius, centre, dir, pos);
+			while (current->HalfChordLengthSq <= 0.0f)
+			{
+				it.Next(coords);
+				if (!it.IsValid())
+				{
+					break;
+				}
+				current->Init(it, radius, centre, dir, pos);
+			}
+			if (!it.IsValid())
+			{
+				break;
+			}
+			if (*current < *nearest && (!it.DoIPointAtLandscapeMaterial() || nearest->obj != NULL))
+			{
+				IntersectIntervalCircle<clockwise>* swap = nearest;
+				nearest = current;
+				current = swap;
+			}
+		}
+		if (nearest->HalfChordLengthSq > 0.0f)
+		{
+			nearest->Resolve();
+			if (goalInside)
+			{
+				Point2D&                  point = nearest->compares[1].point;
+				Point2D                   mid;
+				Point2DCompare<clockwise> arcEnd;
+				if (clockwise)
+				{
+					mid.x = nearest->ChordProjection * point.x + point.y * nearest->HalfChordLength;
+					mid.y = nearest->ChordProjection * point.y - nearest->HalfChordLength * point.x;
+					arcEnd.point.x = mid.y * nearest->HalfChordLength + mid.x * nearest->ChordProjection;
+					arcEnd.point.y = mid.y * nearest->ChordProjection - mid.x * nearest->HalfChordLength;
+				}
+				else
+				{
+					mid.x = nearest->ChordProjection * point.x - point.y * nearest->HalfChordLength;
+					mid.y = nearest->HalfChordLength * point.x + nearest->ChordProjection * point.y;
+					arcEnd.point.x = mid.x * nearest->ChordProjection - mid.y * nearest->HalfChordLength;
+					arcEnd.point.y = mid.x * nearest->HalfChordLength + mid.y * nearest->ChordProjection;
+				}
+				arcEnd.Resolve();
+				if (start < arcEnd)
+				{
+					nearest->compares[0] = nearest->compares[1] = start;
+					nearest->obj = NULL;
+				}
+			}
+			nearest->compares[1].point.Normalize();
+			float angle = acos(nearest->compares[1].point.DotProduct(&dir));
+			if (clockwise ? nearest->compares[1].point.Cross(dir) > 0.0f : nearest->compares[1].point.Cross(dir) < 0.0f)
+			{
+				angle = 6.2831855f - angle;
+			}
+			g_CircleHugBlockPointValid = true;
+			float turns = angle * radius * 65536.0f / (mwh->speed * 10.0f * 1.5);
+			g_CircleHugBlockPoint = nearest->compares[1].point * radius;
+			if (turns > 255.0f)
+			{
+				mwh->circle_hug_info.TurnsToObj = 0xff;
+			}
+			else if (turns < 1.0f)
+			{
+				g_CircleHugBlockPointValid = false;
+				if (nearest->obj == NULL)
+				{
+					mwh->InitStepsXZ();
+					mwh->TurnsUntilStepRebuild = 16;
+					mwh->circle_hug_info.Reset(mwh);
+					mwh->MoveState = MOVE_TO_STATES_STEP_THROUGH;
+					depth++;
+					delete nearest;
+					delete current;
+					return 1;
+				}
+				g_CircleHugNeedsLookahead = nearest->IsLandscapeOrFence;
+				mwh->circle_hug_info.SetObjectPtr(nearest->obj, mwh, false);
+				if (depth <= 0)
+				{
+					depth++;
+					mwh->circle_hug_info.TurnsToObj = 10;
+					delete nearest;
+					delete current;
+					return 1;
+				}
+				uint32_t result = MoveToCircleHugCircleSquareSweep(mwh, coords);
+				depth++;
+				delete nearest;
+				delete current;
+				return result;
+			}
+			else if (turns < 4.0f)
+			{
+				mwh->circle_hug_info.TurnsToObj = 0;
+			}
+			else
+			{
+				mwh->circle_hug_info.TurnsToObj = turns;
+			}
+		}
+		else
+		{
+			mwh->circle_hug_info.TurnsToObj = 0xff;
+		}
+		delete nearest;
+		delete current;
+	}
+	mwh->InitStepsXZSetAngle((GUtils::GetAngleFromXZ(mwh->Pos, mwh->circle_hug_info.GetObjCoords()) +
+	                          (clockwise ? 0x200 : -0x200) - (long)(overlap * (clockwise ? 64.0f : -64.0f))) &
+	                         0x7ff);
+	depth++;
+	return 1;
+}
+
+// BW1W120 0060db30 BW1M119 null
+void EditorHug::PrssKey(LH_KEY key, uint16_t param_2)
+{
+	switch (key)
+	{
+	case KB_SPACE: {
+		Path.clear();
+		Villager* villager = Villager::Create(Start, GVillagerInfo::GetInfo(), 21, false);
+		villager->circle_hug_info.SetObjectPtr(NULL, NULL, false);
+		villager->SetupMobileMoveToPos(Goal, MOVE_TO_STATES_LINEAR);
+		Path.push_back(villager->Pos);
+		int count = 10000;
+		while (villager->MoveTo() != 10 && count-- > 0)
+		{
+			Path.push_back(villager->Pos);
+			DoWallHuggerLookahead();
+		}
+		Path.push_back(villager->Pos);
+		villager->ToBeDeleted(0);
+		break;
+	}
+	case KB_D:
+		DebugCells.clear();
+		break;
+	case KB_T: {
+		GInterface* iface = GGame::g_game->MyInterface();
+		MapCoords   coords = iface->status->GetHandMapCoords();
+		Villager*   original = NULL;
+		int         cells = 49;
+		long        spiralX = 1;
+		long        spiralZ = 1;
+		while (cells != 0)
+		{
+			for (Object* obj = coords.GetFirstObjectMobile(); obj != NULL; obj = obj->GetMapChild(coords))
+			{
+				original = dynamic_cast<Villager*>(obj);
+				if (original != NULL)
+				{
+					break;
+				}
+			}
+			if (original != NULL)
+			{
+				break;
+			}
+			cells--;
+			coords += *GUtils::Spiral(spiralX, spiralZ);
+		}
+		if (original == NULL)
+		{
+			break;
+		}
+		Path.clear();
+		Villager* villager = Villager::Create(original->Pos, GVillagerInfo::GetInfo(), 21, false);
+		villager->circle_hug_info.TurnsToObj = original->circle_hug_info.TurnsToObj;
+		villager->circle_hug_info.EntryDistance = original->circle_hug_info.EntryDistance;
+		villager->circle_hug_info.SetObjectPtr(original->circle_hug_info.GetObjectPtr(), villager, false);
+		villager->MoveState = original->MoveState;
+		villager->goal = original->goal;
+		villager->step.Init(original->step.x, original->step.z, original->step.altitude);
+		villager->GameAngle = original->GameAngle;
+		if (villager->circle_hug_info.EntryDistance == -1)
+		{
+			g_CircleHugStateInfo.ExtendedEntryDistances[villager] =
+				g_CircleHugStateInfo.ExtendedEntryDistances[original];
+		}
+		Path.push_back(villager->Pos);
+		int count = 10000;
+		while (villager->MoveTo() != 10 && count-- > 0)
+		{
+			Path.push_back(villager->Pos);
+			DoWallHuggerLookahead();
+		}
+		Path.push_back(villager->Pos);
+		Path.push_back(villager->goal);
+		villager->ToBeDeleted(0);
+		break;
+	}
+	case KB_U: {
+		Path.clear();
+		Villager* villager = Villager::Create(Start, GVillagerInfo::GetInfo(), 21, false);
+		villager->circle_hug_info.SetObjectPtr(NULL, NULL, false);
+		villager->SetupMobileMoveToPos(Goal, MOVE_TO_STATES_LINEAR);
+		Path.push_back(villager->Pos);
+		int count = 1000;
+		g_CircleHugBlockPointValid = false;
+		while (villager->MoveTo() != 10 && count-- > 0)
+		{
+			if (villager->circle_hug_info.GetObjectPtr() != NULL)
+			{
+				Point2D centre(villager->circle_hug_info.GetObjectPtr()->position.x,
+				               villager->circle_hug_info.GetObjectPtr()->position.z);
+				Point2D pos;
+				MapCoordsToPoint2D(pos, villager->Pos);
+				float radius = villager->circle_hug_info.GetObjectPtr()->radius;
+				float left = (long)(pos.x / 10.0f) * 10.0f + 0.001f - centre.x;
+				float right = (long)(pos.x / 10.0f) * 10.0f + 9.999f - centre.x;
+				float bottom = (long)(pos.y / 10.0f) * 10.0f + 0.001f - centre.y;
+				float top = (long)(pos.y / 10.0f) * 10.0f + 9.999f - centre.y;
+				bool  found = false;
+				if (villager->MoveState == MOVE_TO_STATES_ORBIT_CW)
+				{
+					Point2DCompare<true>::origin = pos - centre;
+					Point2DCompare<true> best;
+					if (g_CircleHugBlockPointValid)
+					{
+						best = Point2DCompare<true>(g_CircleHugBlockPoint);
+						best.Resolve();
+						found = true;
+					}
+					float radiusSq = radius * radius;
+					float leftSq = radiusSq - left * left;
+					if (leftSq > 0.0f)
+					{
+						Point2DCompare<true> point(Point2D(left, -sqrt(leftSq)));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					float rightSq = radiusSq - right * right;
+					if (rightSq > 0.0f)
+					{
+						Point2DCompare<true> point(Point2D(right, sqrt(rightSq)));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					float topSq = radiusSq - top * top;
+					if (topSq > 0.0f)
+					{
+						Point2DCompare<true> point(Point2D(-sqrt(topSq), top));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					float bottomSq = radiusSq - bottom * bottom;
+					if (bottomSq > 0.0f)
+					{
+						Point2DCompare<true> point(Point2D(sqrt(bottomSq), bottom));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					if (leftSq > 0.0f)
+					{
+						Point2DCompare<true> point(Point2D(left, sqrt(leftSq)));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					if (rightSq > 0.0f)
+					{
+						Point2DCompare<true> point(Point2D(right, -sqrt(rightSq)));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					if (topSq > 0.0f)
+					{
+						Point2DCompare<true> point(Point2D(sqrt(topSq), top));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					if (bottomSq > 0.0f)
+					{
+						Point2DCompare<true> point(Point2D(-sqrt(bottomSq), bottom));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					villager->MoveMapObject(ConvertPoint2DToMapCoords(best.point + centre));
+					MobileWallHug_InCircleStuff<true>::MoveToCircleHugCircleSquareSweep(villager, villager->GetPos());
+				}
+				else if (villager->MoveState == MOVE_TO_STATES_ORBIT_CCW)
+				{
+					Point2DCompare<false>::origin = pos - centre;
+					Point2DCompare<false> best;
+					if (g_CircleHugBlockPointValid)
+					{
+						best = Point2DCompare<false>(g_CircleHugBlockPoint);
+						best.Resolve();
+						found = true;
+					}
+					float radiusSq = radius * radius;
+					float leftSq = radiusSq - left * left;
+					if (leftSq > 0.0f)
+					{
+						Point2DCompare<false> point(Point2D(left, -sqrt(leftSq)));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					float rightSq = radiusSq - right * right;
+					if (rightSq > 0.0f)
+					{
+						Point2DCompare<false> point(Point2D(right, sqrt(rightSq)));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					float topSq = radiusSq - top * top;
+					if (topSq > 0.0f)
+					{
+						Point2DCompare<false> point(Point2D(-sqrt(topSq), top));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					float bottomSq = radiusSq - bottom * bottom;
+					if (bottomSq > 0.0f)
+					{
+						Point2DCompare<false> point(Point2D(sqrt(bottomSq), bottom));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					if (leftSq > 0.0f)
+					{
+						Point2DCompare<false> point(Point2D(left, sqrt(leftSq)));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					if (rightSq > 0.0f)
+					{
+						Point2DCompare<false> point(Point2D(right, -sqrt(rightSq)));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					if (topSq > 0.0f)
+					{
+						Point2DCompare<false> point(Point2D(sqrt(topSq), top));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					if (bottomSq > 0.0f)
+					{
+						Point2DCompare<false> point(Point2D(-sqrt(bottomSq), bottom));
+						point.Resolve();
+						if (!found || point < best)
+						{
+							found = true;
+							best = point;
+							best.Resolve();
+						}
+					}
+					villager->MoveMapObject(ConvertPoint2DToMapCoords(best.point + centre));
+					MobileWallHug_InCircleStuff<false>::MoveToCircleHugCircleSquareSweep(villager, villager->GetPos());
+				}
+			}
+			g_CircleHugBlockPointValid = false;
+			Path.push_back(villager->Pos);
+		}
+		Path.push_back(villager->Pos);
+		Path.push_back(villager->goal);
+		villager->ToBeDeleted(0);
+		break;
+	}
+	case KB_ESC:
+	case KB_Q:
+	case KB_X:
+		Terminate();
+		break;
+	}
+}
+
 void MobileWallHug::SetToZero()
 {
 	speed = 0;

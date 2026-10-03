@@ -79,4 +79,7 @@ public:
 	GFootpathNode* GetNearestPos(const MapCoords& coords, int param_3);
 };
 
+// BW1W120 005357c0 BW1M119 010f2ab0
+MapCoords ConvertPoint2DToMapCoords(const Point2D& point);
+
 #endif /* BW1_DECOMP_FOOTPATH_INCLUDED_H */
