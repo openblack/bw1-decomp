@@ -36,6 +36,44 @@ enum SETUP_MESSAGE_BOX_ID
 	SETUP_MESSAGE_BOX_ID_NO = 10003
 };
 
+// Messages a SetupBox sends to its callback and to SetupBox::DefaultCB.
+enum SETUP_MESSAGE
+{
+	SETUP_MESSAGE_UPDATE = 0,
+	SETUP_MESSAGE_CLICK = 1,
+	SETUP_MESSAGE_KEY = 2,
+	SETUP_MESSAGE_MESSAGE_BOX_RESULT = 3,
+	SETUP_MESSAGE_DRAG = 4,
+	SETUP_MESSAGE_ON_HOLD = 5,
+	SETUP_MESSAGE_ACTIVATE = 6,
+	SETUP_MESSAGE_DEACTIVATE = 7,
+	SETUP_MESSAGE_CHAR = 8,
+	SETUP_MESSAGE_MOUSE_DOWN = 9,
+	SETUP_MESSAGE_MOUSE_UP = 10,
+	SETUP_MESSAGE_DROP = 11,
+	SETUP_MESSAGE_DOUBLE_CLICK = 12,
+	SETUP_MESSAGE_PRE_DRAW = 13,
+	SETUP_MESSAGE_POST_DRAW = 14,
+	SETUP_MESSAGE_ESCAPE = 15
+};
+
+// Where SetupCheckBox and SetupBigButton draw their label.
+enum SETUP_TEXT_POSITION
+{
+	SETUP_TEXT_POSITION_RIGHT = 0,
+	SETUP_TEXT_POSITION_LEFT = 1,
+	SETUP_TEXT_POSITION_BELOW = 2
+};
+
+// The frame SetupBox::DrawAll draws behind a box.
+enum SETUP_BACKGROUND
+{
+	SETUP_BACKGROUND_NONE = 0,
+	SETUP_BACKGROUND_FRAMED = 1,
+	// No top edge, so a row of SetupTabButtons can sit on it.
+	SETUP_BACKGROUND_TABBED = 2
+};
+
 enum BBSTYLE
 {
 	BBSTYLE_CHECK_BOX_OFF = 0x0,
@@ -283,29 +321,29 @@ struct SetupBox
 	// BW1W120 00c4cc88
 	static Zoomer FadeIn;
 	// BW1W120 00409170 BW1M119 01445730
-	virtual void  ClickKeyDown(int key, int mod);
-	Zoomer        Fade;
-	Zoomer        HoldFade;
-	bool          OnHold; /* 0x64 */
-	bool          ActiveWhileOnHold;
-	SetupControl* HoldWidgetList;
-	SetupControl* WidgetList;
-	SetupControl* FocusedWidget; /* 0x70 */
-	SetupControl* HeldOverWidget;
-	uint8_t       field_0x78;
-	uint32_t      field_0x7c;
-	uint32_t      field_0x80;
-	float         field_0x84;
-	uint32_t      field_0x88;
-	uint32_t      field_0x8c;
-	uint32_t      field_0x90;
-	int           BackgroundStyle;
-	int           TallBackground;
-	int           BackgroundWidth;
-	int           BackgroundHeight;
-	int           HoldWidth;
-	int           HoldHeight;
-	int           DefaultTextSize;
+	virtual void     ClickKeyDown(int key, int mod);
+	Zoomer           Fade;
+	Zoomer           HoldFade;
+	bool             OnHold; /* 0x64 */
+	bool             ActiveWhileOnHold;
+	SetupControl*    HoldWidgetList;
+	SetupControl*    WidgetList;
+	SetupControl*    FocusedWidget; /* 0x70 */
+	SetupControl*    HeldOverWidget;
+	uint8_t          field_0x78;
+	uint32_t         field_0x7c;
+	uint32_t         field_0x80;
+	float            field_0x84;
+	uint32_t         field_0x88;
+	uint32_t         field_0x8c;
+	uint32_t         field_0x90;
+	SETUP_BACKGROUND BackgroundStyle;
+	int              TallBackground;
+	int              BackgroundWidth;
+	int              BackgroundHeight;
+	int              HoldWidth;
+	int              HoldHeight;
+	int              DefaultTextSize;
 	void(__stdcall* Callback)(int message, SetupBox* box, SetupControl* control, int data1, int data2);
 	uint32_t      field_0xb4;
 	unsigned long HoldData;
@@ -634,9 +672,9 @@ struct SetupMP3Button : public SetupButton
 
 struct SetupBigButton : public SetupButton
 {
-	int       text_position; /* 0x244 */
-	BBSTYLE   style;
-	SetupRect InnerRect;
+	SETUP_TEXT_POSITION text_position; /* 0x244 */
+	BBSTYLE             style;
+	SetupRect           InnerRect;
 
 	// Override methods
 
@@ -872,10 +910,10 @@ struct SetupColourPicker : public SetupButton
 
 struct SetupCheckBox : public SetupButton
 {
-	uint32_t  text_position; /* 0x244 */
-	int       style;
-	bool      RadioButton;
-	SetupRect InnerRect; /* 0x250 */
+	SETUP_TEXT_POSITION text_position; /* 0x244 */
+	int                 style;
+	bool                RadioButton;
+	SetupRect           InnerRect; /* 0x250 */
 
 	// Override methods
 

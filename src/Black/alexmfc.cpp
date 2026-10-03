@@ -105,7 +105,7 @@ void SetupBox::SetCurrentActiveBox(SetupBox* box)
 		CurrentActiveBox->HeldOverWidget = NULL;
 		CurrentActiveBox->FocusedWidget = NULL;
 		CurrentActiveBox->SetOffHold();
-		CurrentActiveBox->Callback(7, CurrentActiveBox, CurrentActiveBox->FocusedWidget, 0, 0);
+		CurrentActiveBox->Callback(SETUP_MESSAGE_DEACTIVATE, CurrentActiveBox, CurrentActiveBox->FocusedWidget, 0, 0);
 	}
 	CurrentFadeBox = CurrentActiveBox;
 	if (CurrentFadeBox != NULL)
@@ -133,7 +133,7 @@ void SetupBox::SetCurrentActiveBox(SetupBox* box)
 		CurrentActiveBox->FocusedWidget = NULL;
 	}
 	if (CurrentActiveBox != NULL && CurrentActiveBox->Callback != NULL)
-		CurrentActiveBox->Callback(6, CurrentActiveBox, CurrentActiveBox->FocusedWidget, 0, 0);
+		CurrentActiveBox->Callback(SETUP_MESSAGE_ACTIVATE, CurrentActiveBox, CurrentActiveBox->FocusedWidget, 0, 0);
 	DialogBoxBase::UpdateLastShown(CurrentActiveBox);
 }
 
@@ -171,7 +171,7 @@ void __stdcall SetupBox::DefaultCB(int message, SetupBox* box, SetupControl* con
 	int           controlId = control != NULL ? control->id : 0;
 	int           pressed = -1;
 	SetupControl* button;
-	if (message == 8)
+	if (message == SETUP_MESSAGE_CHAR)
 	{
 		if (data2 == 0)
 		{
@@ -188,7 +188,7 @@ void __stdcall SetupBox::DefaultCB(int message, SetupBox* box, SetupControl* con
 			}
 		}
 	}
-	else if (message == 2)
+	else if (message == SETUP_MESSAGE_KEY)
 	{
 		switch (data1)
 		{
@@ -207,13 +207,13 @@ void __stdcall SetupBox::DefaultCB(int message, SetupBox* box, SetupControl* con
 			break;
 		}
 	}
-	if (controlId >= SETUP_MESSAGE_BOX_ID_OK && message == 1)
+	if (controlId >= SETUP_MESSAGE_BOX_ID_OK && message == SETUP_MESSAGE_CLICK)
 		pressed = controlId;
 	if (pressed >= 0 && box->OnHold)
 	{
 		box->SetOffHold();
 		if (box->Callback != NULL)
-			box->Callback(3, box, control, pressed, box->HoldData);
+			box->Callback(SETUP_MESSAGE_MESSAGE_BOX_RESULT, box, control, pressed, box->HoldData);
 	}
 }
 
@@ -254,7 +254,7 @@ void SetupBox::SetOnHold(unsigned long data)
 		HoverWidget = NULL;
 		HeldOverWidget = NULL;
 		if (Callback != NULL)
-			Callback(5, this, FocusedWidget, 0, 0);
+			Callback(SETUP_MESSAGE_ON_HOLD, this, FocusedWidget, 0, 0);
 		SetupControl* list = WidgetList;
 		OnHold = true;
 		WidgetList = HoldWidgetList;
@@ -326,11 +326,11 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 		alpha = 255;
 	SetupThing::DrawAlpha = alpha;
 	if (Callback != NULL)
-		Callback(13, this, FocusedWidget, x, y);
-	if (BackgroundStyle != 0 && BackgroundWidth > 0 && BackgroundHeight > 0)
+		Callback(SETUP_MESSAGE_PRE_DRAW, this, FocusedWidget, x, y);
+	if (BackgroundStyle != SETUP_BACKGROUND_NONE && BackgroundWidth > 0 && BackgroundHeight > 0)
 	{
 		SetupThing::DrawAlpha = alpha;
-		if (BackgroundStyle == 2)
+		if (BackgroundStyle == SETUP_BACKGROUND_TABBED)
 			SetupThing::DrawBg(400 - BackgroundWidth / 2, 300 - BackgroundHeight / 2, 400 + BackgroundWidth / 2,
 			                   340 + BackgroundHeight / 2, 0xffffff, 0, 0);
 		else if (TallBackground != 0)
@@ -351,7 +351,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 				held->Draw(false, false);
 		}
 		if (Callback != NULL)
-			Callback(14, this, FocusedWidget, x, y);
+			Callback(SETUP_MESSAGE_POST_DRAW, this, FocusedWidget, x, y);
 		SetupThing::DrawAlpha = (int)(HoldFade.CurrentValue * 255.0f);
 		SetupThing::DrawBg(400 - HoldWidth / 2, 300 - HoldHeight / 2, 400 + HoldWidth / 2, 300 + HoldHeight / 2,
 		                   HoldColour & 0xffffff, BackgroundWidth > 5 && BackgroundHeight > 5, -1);
@@ -432,7 +432,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 		{
 			if (Callback != NULL && FocusedWidget != NULL)
 			{
-				Callback(12, FocusedWidget->setup_box, FocusedWidget, x, y);
+				Callback(SETUP_MESSAGE_DOUBLE_CLICK, FocusedWidget->setup_box, FocusedWidget, x, y);
 				RussClickNoise();
 			}
 			if (!GGame::g_game->field_0x250538)
@@ -449,23 +449,23 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 				if (FocusedWidget != NULL)
 					FocusedWidget->MouseDown(x, y, true);
 				if (FocusedWidget != NULL && Callback != NULL)
-					Callback(9, FocusedWidget->setup_box, FocusedWidget, x, y);
+					Callback(SETUP_MESSAGE_MOUSE_DOWN, FocusedWidget->setup_box, FocusedWidget, x, y);
 				if (FocusedWidget != NULL)
-					DefaultCB(9, FocusedWidget->setup_box, FocusedWidget, x, y);
+					DefaultCB(SETUP_MESSAGE_MOUSE_DOWN, FocusedWidget->setup_box, FocusedWidget, x, y);
 				if (FocusedWidget != NULL)
 					FocusedWidget->MouseUp(x, y, true);
 				if (FocusedWidget != NULL && Callback != NULL)
-					Callback(10, FocusedWidget->setup_box, FocusedWidget, x, y);
+					Callback(SETUP_MESSAGE_MOUSE_UP, FocusedWidget->setup_box, FocusedWidget, x, y);
 				if (FocusedWidget != NULL)
-					DefaultCB(10, FocusedWidget->setup_box, FocusedWidget, x, y);
+					DefaultCB(SETUP_MESSAGE_MOUSE_UP, FocusedWidget->setup_box, FocusedWidget, x, y);
 				if (FocusedWidget != NULL)
 					RussClickNoise();
 				if (FocusedWidget != NULL)
 					FocusedWidget->Click(x, y);
 				if (FocusedWidget != NULL && Callback != NULL)
-					Callback(1, FocusedWidget->setup_box, FocusedWidget, x, y);
+					Callback(SETUP_MESSAGE_CLICK, FocusedWidget->setup_box, FocusedWidget, x, y);
 				if (FocusedWidget != NULL)
-					DefaultCB(1, FocusedWidget->setup_box, FocusedWidget, x, y);
+					DefaultCB(SETUP_MESSAGE_CLICK, FocusedWidget->setup_box, FocusedWidget, x, y);
 			}
 		}
 		if (left_button != SetupThing::PrevLeftButton)
@@ -479,7 +479,8 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 				if (HoverWidget != NULL)
 					HoverWidget->RightButton = LHSys::TheSystem.mouse.Buttons & 2;
 				if (Callback != NULL)
-					Callback(9, FocusedWidget != NULL ? FocusedWidget->setup_box : NULL, FocusedWidget, x, y);
+					Callback(SETUP_MESSAGE_MOUSE_DOWN, FocusedWidget != NULL ? FocusedWidget->setup_box : NULL,
+					         FocusedWidget, x, y);
 				if (HoverWidget != NULL)
 				{
 					SetupThing::Dragging = true;
@@ -491,16 +492,17 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 				if (FocusedWidget != NULL)
 					FocusedWidget->MouseUp(x, y, true);
 				if (Callback != NULL)
-					Callback(10, FocusedWidget != NULL ? FocusedWidget->setup_box : NULL, FocusedWidget, x, y);
+					Callback(SETUP_MESSAGE_MOUSE_UP, FocusedWidget != NULL ? FocusedWidget->setup_box : NULL,
+					         FocusedWidget, x, y);
 				if (FocusedWidget == HoverWidget && FocusedWidget != NULL)
 				{
 					RussClickNoise();
 					if (FocusedWidget != NULL)
 						FocusedWidget->Click(x, y);
 					if (FocusedWidget != NULL && Callback != NULL)
-						Callback(1, FocusedWidget->setup_box, FocusedWidget, x, y);
+						Callback(SETUP_MESSAGE_CLICK, FocusedWidget->setup_box, FocusedWidget, x, y);
 					if (FocusedWidget != NULL)
-						DefaultCB(1, FocusedWidget->setup_box, FocusedWidget, x, y);
+						DefaultCB(SETUP_MESSAGE_CLICK, FocusedWidget->setup_box, FocusedWidget, x, y);
 				}
 				SetupThing::Dragging = false;
 			}
@@ -512,7 +514,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 			if (FocusedWidget != NULL)
 				FocusedWidget->RightButton |= LHSys::TheSystem.mouse.Buttons & 2;
 			if (Callback != NULL && FocusedWidget != NULL)
-				Callback(4, this, FocusedWidget, x, y);
+				Callback(SETUP_MESSAGE_DRAG, this, FocusedWidget, x, y);
 			if (HoverWidget != HeldOverWidget)
 			{
 				if (HeldOverWidget != NULL && HeldOverWidget == FocusedWidget)
@@ -528,9 +530,9 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 	}
 
 	if ((!OnHold || ActiveWhileOnHold) && Callback != NULL)
-		Callback(14, this, FocusedWidget, x, y);
+		Callback(SETUP_MESSAGE_POST_DRAW, this, FocusedWidget, x, y);
 	if (Callback != NULL)
-		Callback(0, this, HoverWidget, x, y);
+		Callback(SETUP_MESSAGE_UPDATE, this, HoverWidget, x, y);
 	LH3DMaterial::g_list_render_func = LH3DMaterial::g_list_render_func_normal;
 }
 
@@ -549,15 +551,15 @@ void SetupBox::Key(int key, int mod)
 	{
 		FocusedWidget->KeyDown(key, LHSys::TheSystem.keyboard.ModifierFlags);
 		if (FocusedWidget != NULL && (!OnHold || ActiveWhileOnHold) && Callback != NULL)
-			Callback(2, FocusedWidget->setup_box, FocusedWidget, key, mod);
+			Callback(SETUP_MESSAGE_KEY, FocusedWidget->setup_box, FocusedWidget, key, mod);
 		if (FocusedWidget != NULL)
-			DefaultCB(2, FocusedWidget->setup_box, FocusedWidget, key, mod);
+			DefaultCB(SETUP_MESSAGE_KEY, FocusedWidget->setup_box, FocusedWidget, key, mod);
 	}
 	else
 	{
 		if (Callback != NULL && (!OnHold || ActiveWhileOnHold))
-			Callback(2, CurrentActiveBox, NULL, key, mod);
-		DefaultCB(2, CurrentActiveBox, FocusedWidget, key, mod);
+			Callback(SETUP_MESSAGE_KEY, CurrentActiveBox, NULL, key, mod);
+		DefaultCB(SETUP_MESSAGE_KEY, CurrentActiveBox, FocusedWidget, key, mod);
 	}
 }
 
@@ -568,19 +570,19 @@ void SetupBox::Char(int character)
 	if (FocusedWidget != NULL)
 	{
 		if ((!OnHold || ActiveWhileOnHold) && Callback != NULL)
-			Callback(8, FocusedWidget->setup_box, FocusedWidget, character, 0);
+			Callback(SETUP_MESSAGE_CHAR, FocusedWidget->setup_box, FocusedWidget, character, 0);
 		if (FocusedWidget != NULL)
-			DefaultCB(8, FocusedWidget->setup_box, FocusedWidget, character, 0);
+			DefaultCB(SETUP_MESSAGE_CHAR, FocusedWidget->setup_box, FocusedWidget, character, 0);
 		if (FocusedWidget != NULL)
 			FocusedWidget->Char(character);
 	}
 	else
 	{
 		if (Callback != NULL && (!OnHold || ActiveWhileOnHold))
-			Callback(8, CurrentActiveBox, NULL, character, 0);
+			Callback(SETUP_MESSAGE_CHAR, CurrentActiveBox, NULL, character, 0);
 		if (Callback != NULL && character == VK_ESCAPE)
-			Callback(15, NULL, NULL, VK_ESCAPE, 0);
-		DefaultCB(8, CurrentActiveBox, FocusedWidget, character, 0);
+			Callback(SETUP_MESSAGE_ESCAPE, NULL, NULL, VK_ESCAPE, 0);
+		DefaultCB(SETUP_MESSAGE_CHAR, CurrentActiveBox, FocusedWidget, character, 0);
 	}
 }
 
@@ -832,7 +834,7 @@ void SetupSlider::KeyDown(int key, int mod)
 	value = value > 0.0f ? min(value, 1.0f) : 0.0f;
 	DragStartValue = value;
 	if (changed && setup_box->Callback != NULL)
-		setup_box->Callback(4, setup_box, this, 0, 0);
+		setup_box->Callback(SETUP_MESSAGE_DRAG, setup_box, this, 0, 0);
 }
 
 void SetupSlider::Draw(bool hovered, bool selected)
@@ -895,7 +897,7 @@ void SetupSlider::MouseDown(int x, int y, bool button_event)
 void SetupSlider::MouseUp(int x, int y, bool button_event)
 {
 	if (setup_box->Callback != NULL)
-		setup_box->Callback(1, setup_box, this, x, y);
+		setup_box->Callback(SETUP_MESSAGE_CLICK, setup_box, this, x, y);
 	Click(x, y);
 }
 
@@ -1357,7 +1359,7 @@ void SetupBigButton::Draw(bool hovered, bool selected)
 	SetupThing::TextBounds.p1.y = rect.end.y;
 	SetupThing::DrawBigButton(rect.start.x, rect.start.y, pressed, hovered || (selected && !label[0]),
 	                          rect.end.x - rect.start.x, style, true, -40960, 40960);
-	if (text_position == 2)
+	if (text_position == SETUP_TEXT_POSITION_BELOW)
 	{
 		SetupThing::DrawTextA((rect.start.x + rect.end.x) / 2 + 2, rect.end.y + 4, 1000, TEXTJUSTIFY_CENTRE, label,
 		                      GetTextSize(), &SetupThing::ShadowColour, 0);
@@ -1365,7 +1367,7 @@ void SetupBigButton::Draw(bool hovered, bool selected)
 			(rect.start.x + rect.end.x) / 2, rect.end.y + 2, 1000, TEXTJUSTIFY_CENTRE, label, GetTextSize(),
 			hovered || (selected && !label[0]) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
 	}
-	else if (text_position)
+	else if (text_position != SETUP_TEXT_POSITION_RIGHT)
 	{
 		SetupThing::DrawTextA(rect.start.x + 2, (rect.start.y + rect.end.y) / 2 - GetHalfTextSize() + 2, 1000,
 		                      TEXTJUSTIFY_RIGHT, label, GetTextSize(), &SetupThing::ShadowColour, 0);
@@ -1391,8 +1393,8 @@ SetupBigButton::SetupBigButton(int id, int x, int y, const char16_t* label, int 
 {
 	pressed = false;
 	fn_0040D380();
-	this->text_position = text_position;
-	if (text_position == 2)
+	this->text_position = (SETUP_TEXT_POSITION)text_position;
+	if (text_position == SETUP_TEXT_POSITION_BELOW)
 		text_size = GetMidTextSize();
 	this->style = (BBSTYLE)style;
 }
@@ -1654,7 +1656,7 @@ SetupTabButton::SetupTabButton(int id, int x, int y, int width, int height, cons
 	text_size = GetMidTextSize();
 	this->selected = selected;
 	if (setup_box != NULL)
-		setup_box->BackgroundStyle = 2;
+		setup_box->BackgroundStyle = SETUP_BACKGROUND_TABBED;
 }
 
 void SetupTabButton::KeyDown(int key, int mod)
@@ -1684,7 +1686,7 @@ void SetupPicture::MouseUp(int x, int y, bool button_event)
 		if (draggable)
 		{
 			if (dragging && setup_box->Callback != NULL)
-				setup_box->Callback(11, setup_box, this, x, y);
+				setup_box->Callback(SETUP_MESSAGE_DROP, setup_box, this, x, y);
 			dragging = false;
 		}
 		if (clickable)
@@ -1808,7 +1810,7 @@ void SetupCheckBox::Draw(bool hovered, bool selected)
 	SetupThing::TextBounds.p1.y = rect.end.y;
 	SetupThing::DrawBigButton(rect.start.x, rect.start.y, pressed, hovered, rect.end.x - rect.start.x,
 	                          style ? BBSTYLE_CHECK_BOX_ON : BBSTYLE_CHECK_BOX_OFF, true, -40960, 40960);
-	if (text_position == 2)
+	if (text_position == SETUP_TEXT_POSITION_BELOW)
 	{
 		SetupThing::DrawTextA((rect.start.x + rect.end.x) / 2 + 2, rect.end.y + 4, 1000, TEXTJUSTIFY_CENTRE, label,
 		                      GetTextSize(), &SetupThing::ShadowColour, 0);
@@ -1816,7 +1818,7 @@ void SetupCheckBox::Draw(bool hovered, bool selected)
 			(rect.start.x + rect.end.x) / 2, rect.end.y + 2, 1000, TEXTJUSTIFY_CENTRE, label, GetTextSize(),
 			hovered || (selected && !label[0]) ? &SetupThing::HighlightColour : &SetupThing::DefaultColor, 0);
 	}
-	else if (text_position)
+	else if (text_position != SETUP_TEXT_POSITION_RIGHT)
 	{
 		SetupThing::DrawTextA(rect.start.x - 2, (rect.start.y + rect.end.y) / 2 - GetHalfTextSize() + 2, 1000,
 		                      TEXTJUSTIFY_RIGHT, label, GetTextSize(), &SetupThing::ShadowColour, 0);
@@ -1844,7 +1846,7 @@ SetupCheckBox::SetupCheckBox(int id, int x, int y, bool radio_button, int style,
 	this->style = style;
 	RadioButton = radio_button;
 	text_size = GetMidTextSize();
-	text_position = 2;
+	text_position = SETUP_TEXT_POSITION_BELOW;
 }
 
 bool SetupCheckBox::HitTest(int x, int y)
