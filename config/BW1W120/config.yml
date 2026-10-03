@@ -14,6 +14,9 @@ block_relocations:
 # The RTTI type names ".?AVFixed@@" and ".?AVMultiMapFixed@@" end in "d@@\0", which reads as 0x00404064.
   - source: 0x009C7F78
   - source: 0x009C7F98
+# Likewise ".?AUSetupList@@" ends in "t@@\0" (0x00404074) and ".?AUSetupCheckBox@@" in "x@@\0" (0x00404078).
+  - source: 0x009C818C
+  - source: 0x009C82F0
 # SetupColourPicker's grey colour 0x808080 is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x00410B14
 
