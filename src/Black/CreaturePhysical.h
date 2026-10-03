@@ -12,6 +12,7 @@ class Creature;
 class CreatureInfo;
 class LH3DCreature;
 struct MapCoords;
+class Object;
 
 class CreatureDamageMap : public Base
 {
@@ -38,7 +39,7 @@ public:
 	uint16_t          field_0x24;
 	uint8_t           field_0x26;
 	uint8_t           field_0x27;
-	uint32_t          field_0x28;
+	Object*           ObjectCarried; /* 0x28 */
 	uint32_t          field_0x2c;
 	float             field_0x30;
 	uint32_t          field_0x34;
@@ -64,6 +65,11 @@ public:
 
 	// BW1W120 004ef2c0 BW1M119 0127a5d0
 	CreaturePhysical(const MapCoords& coords, uint16_t param_2, const CreatureInfo* info, Creature* creature);
+
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 011e9d60
+	Object* GetObjectCarried() { return ObjectCarried; }
 };
 
 #endif /* BW1_DECOMP_CREATURE_PHYSICAL_INCLUDED_H */

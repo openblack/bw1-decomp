@@ -23,11 +23,11 @@ public:
 	MAGIC_TYPE             magic_type;
 	GameThingWithPos*      game_thing;
 	uint32_t               field_0x1c;
-	uint32_t               field_0x20;
-	uint32_t               field_0x24;
-	uint32_t               field_0x28;
+	uint32_t               Stage;
+	uint32_t               StageProgress;
+	uint32_t               StageLimit;
 	uint32_t               field_0x2c;
-	MapCoords              coords; /* 0x30 */
+	MapCoords              coords;
 
 	// Override methods
 
@@ -38,6 +38,11 @@ public:
 
 	// BW1W120 004e9d20 BW1M119 01273cb0
 	CreatureMimicState();
+
+	// Non-virtual methods
+
+	// BW1W120 004e9d60 BW1M119 01273b20
+	void SetCreatureIntoStateOfMimicking(DETECTED_PLAYER_ACTION action, GameThingWithPos* thing, MAGIC_TYPE magic_type);
 };
 
 #endif /* BW1_DECOMP_CREATURE_MIMIC_INCLUDED_H */

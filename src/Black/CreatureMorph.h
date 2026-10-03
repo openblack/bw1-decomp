@@ -156,6 +156,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 011a6f80
+	float GetStandingHeight() { return 15.0f * Size1; }
+	// BW1W120 0047fa20 BW1M119 01202760
+	void SetRequiredSpeed(float speed);
 	// BW1W120 00480a60 BW1M119 012011a0
 	float GetNavRadius();
 	// BW1W120 004813f0 BW1M119 01200130

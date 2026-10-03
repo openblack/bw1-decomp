@@ -140,24 +140,44 @@ public:
 class CreatureDesireActionEntry : public GBaseInfo
 {
 public:
+	uint32_t field_0x10[0x1e];
+
 	// Override methods
 
-	// BW1W120 00491980 BW1M119 012332d0
-	virtual ~CreatureDesireActionEntry();
 	// BW1W120 00491910 BW1M119 01233c20
-	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = sizeof(g_CreatureDesireActionEntries) / sizeof(g_CreatureDesireActionEntries[0]);
+		return g_CreatureDesireActionEntries;
+	}
+
+	// BW1W120 00c66950
+	static CreatureDesireActionEntry g_CreatureDesireActionEntries[NUM_CREATURE_DESIRES];
+	// BW1W120 00c65778
+	static CreatureDesireActionEntry g_CompassionForTownActionTable[TOWN_DESIRE_INFO_LAST];
+	// BW1W120 00c64230
+	static CreatureDesireActionEntry g_CompassionForCreatureActionTable[NUM_CREATURE_DESIRES];
 };
+static_assert(sizeof(CreatureDesireActionEntry) == 0x88, "Data type is of wrong size");
 
 class CreatureDesireAttributeEntry : public GBaseInfo
 {
 public:
+	uint32_t field_0x10[0xa];
+
 	// Override methods
 
-	// BW1W120 00491b70 BW1M119 01233060
-	virtual ~CreatureDesireAttributeEntry();
 	// BW1W120 00491b10 BW1M119 01233ce0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = sizeof(g_CreatureDesireAttributeEntries) / sizeof(g_CreatureDesireAttributeEntries[0]);
+		return g_CreatureDesireAttributeEntries;
+	}
+
+	// BW1W120 00c66090
+	static CreatureDesireAttributeEntry g_CreatureDesireAttributeEntries[NUM_CREATURE_DESIRES];
 };
+static_assert(sizeof(CreatureDesireAttributeEntry) == 0x38, "Data type is of wrong size");
 
 class CreatureDesireDependency : public GBaseInfo
 {

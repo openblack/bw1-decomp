@@ -49,6 +49,7 @@ enum FOOTBALL_SUBSTATES_GOALIE
 
 // Forward Declares
 
+class Ball;
 class Base;
 class Creature;
 class GPlayer;
@@ -125,7 +126,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00531410 BW1M119 012c0a10
-	void* GetBall();
+	Ball* GetBall();
 	// BW1W120 005325d0 BW1M119 012bebf0
 	bool32_t RemoveVillagerFromTeam(Villager* villager);
 	// BW1W120 005326e0 BW1M119 012be9e0

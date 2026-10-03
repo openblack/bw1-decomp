@@ -46,7 +46,7 @@ public:
 	LHPoint            field_0xa4;
 	LHPoint            CameraPos;
 	LHPoint            CameraFoc;
-	LHPoint            field_0xc8;
+	LHPoint            ReportedHandPos; /* 0xc8 */
 	LHPoint            field_0xd4;
 	uint32_t           field_0xe0;
 	uint32_t           field_0xe4;
@@ -98,6 +98,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 0108e840
+	LHPoint& GetCameraPos() { return CameraPos; }
+	// BW1W120 inlined BW1M119 01099000
+	LHPoint& GetHandPos() { return ReportedHandPos; }
 	// BW1W120 005cedc0 BW1M119 01362540
 	void SetActive(int param_1);
 	// BW1W120 005d29c0 BW1M119 01029660

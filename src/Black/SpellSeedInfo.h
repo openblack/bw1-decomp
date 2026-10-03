@@ -42,6 +42,8 @@ public:
 	MAGIC_TYPE GetMagicTypeFromPULevel(POWER_UP_TYPE power_type) const;
 	// BW1W120 0072b060 BW1M119 inlined
 	bool SpellSeedIsOfMagicType(MAGIC_TYPE type) const;
+	// BW1W120 0072b230 BW1M119 01535610
+	MAGIC_TYPE GetFirstMagicType() const;
 };
 
 #endif /* BW1_DECOMP_SPELL_SEED_INFO_INCLUDED_H */

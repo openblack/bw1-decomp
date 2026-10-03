@@ -24,6 +24,7 @@
 // Forward Declares
 
 class Creature;
+class CreatureBelief;
 class GameThingWithPos;
 
 struct CreatureInnatePersonality
@@ -84,8 +85,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 004d7b80 BW1M119 01258470
+	CreatureBelief* GetBeliefAboutObject(GameThingWithPos* object);
 	// BW1W120 004d7bd0 BW1M119 01258250
-	void* AddBeliefAboutObject(Creature* param_1, GameThingWithPos* param_2);
+	CreatureBelief* AddBeliefAboutObject(Creature* creature, GameThingWithPos* object);
 };
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_INCLUDED_H */

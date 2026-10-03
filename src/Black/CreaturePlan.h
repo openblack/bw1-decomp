@@ -19,9 +19,9 @@ class CreaturePlan : public Base
 {
 public:
 	CREATURE_DESIRES CreatureDesire; /* 0x8 */
-	CreatureBelief*  field_0xc;
-	CreatureBelief*  field_0x10;
-	CreatureBelief*  field_0x14;
+	CreatureBelief*  ActivityObject; /* 0xc */
+	CreatureBelief*  ObjectToActOn;  /* 0x10 */
+	CreatureBelief*  ObjectToUse;    /* 0x14 */
 	CREATURE_ACTION  creature_action;
 	float            field_0x1c;
 	float            field_0x20;

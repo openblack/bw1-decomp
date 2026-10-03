@@ -27,10 +27,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 004918a0 BW1M119 01233750
-	virtual ~CreatureInitialDesireInfo() {}
 	// BW1W120 00491830 BW1M119 01233b60
-	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = sizeof(g_CreatureInitialDesireInfos) / sizeof(g_CreatureInitialDesireInfos[0]);
+		return g_CreatureInitialDesireInfos;
+	}
 
 	// BW1W120 00c67e90
 	static CreatureInitialDesireInfo g_CreatureInitialDesireInfos[NUM_CREATURE_DESIRES];

@@ -301,10 +301,10 @@ class GameOSFile;
 class Living;
 struct MapCoords;
 class MultiMapFixed;
+class OneOffSpellSeed;
 struct PSysProcessInfo;
 class Spell;
 class SpellIcon;
-class SpellSeed;
 class Town;
 class Tree;
 class Villager;
@@ -423,7 +423,7 @@ public:
 	// BW1W120 004018e0 BW1M119 0159bec0
 	virtual GPlayer* CastPlayer() { return NULL; }
 	// BW1W120 004018f0 BW1M119 0157ef70
-	virtual SpellSeed* CastOneOffSpellSeed() { return NULL; }
+	virtual OneOffSpellSeed* CastOneOffSpellSeed() { return NULL; }
 	// BW1W120 004051e0 BW1M119 01583290
 	virtual Abode* CastAbode();
 	// BW1W120 004051f0 BW1M119 011d0280

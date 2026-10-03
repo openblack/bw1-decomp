@@ -32,6 +32,10 @@ public:
 	static void Render3D();
 	// BW1W120 008366a0 BW1M119 01009ea0 (LHCombined Release)
 	static void Render2D();
+	// BW1W120 00edd378 BW1M119 013453e8 (LHCombined Release)
+	static LHPoint moonpos;
+	// BW1W120 inlined BW1M119 0101a070
+	static LHPoint GetMoonPos() { return moonpos; }
 	// Original Mac symbol: ambient__9LH3DAtmos.
 	// BW1W120 00edc348 BW1M119 013453fc (LHCombined Release)
 	static WeatherInfo ambient;
