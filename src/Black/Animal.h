@@ -242,7 +242,7 @@ public:
 	// BW1W120 00417810 BW1M119 0109e9f0
 	virtual uint32_t DecideAnimation();
 	// BW1W120 0041a3f0 BW1M119 0100eaf0
-	virtual void SetNewWander(const MapCoords& param_1, int param_2, int param_3);
+	virtual void SetNewWander(const MapCoords* centre, long min_dist, long max_dist);
 	// BW1W120 0041acc0 BW1M119 0116eda0
 	virtual bool32_t DecideWhatToDo();
 	// BW1W120 0041a2b0 BW1M119 0107ec70

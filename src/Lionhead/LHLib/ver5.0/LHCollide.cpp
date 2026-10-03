@@ -7,6 +7,8 @@
 #include <cmath>
 #include <cstdio>
 
+// TODO: void (*NewCollide::g_collide_del_callback)(NewCollide::Obj* obj); (see LHCollide.h)
+
 NewCollide::Obj::Obj(float radius, LHPoint* position)
 	: position(*position), radius(radius), r2(radius * radius), angle(0.0f), BoundingBox(radius, 0.0f, radius),
 	  IteratorList(NULL)
@@ -22,7 +24,7 @@ NewCollide::Obj::Obj(LHPoint* position, float bb_x, float bb_z, float angle)
 
 bool NewCollide::Obj::Collide(const NewCollide::List* other) const
 {
-	for (int i = 0; i < other->direction; ++i)
+	for (int i = 0; i < other->count; ++i)
 	{
 		if (other->objs[i]->Collide(this))
 		{
@@ -34,9 +36,9 @@ bool NewCollide::Obj::Collide(const NewCollide::List* other) const
 
 bool NewCollide::List::Collide(const NewCollide::List* other) const
 {
-	for (int j = 0; j < other->direction; ++j)
+	for (int j = 0; j < other->count; ++j)
 	{
-		for (int i = 0; i < this->direction; ++i)
+		for (int i = 0; i < this->count; ++i)
 		{
 			if (this->objs[i]->Collide(other->objs[j]))
 			{

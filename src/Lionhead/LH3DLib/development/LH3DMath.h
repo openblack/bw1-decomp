@@ -7,6 +7,12 @@ const float TWO_PI = 6.2831854820251465f;
 
 struct LHPoint;
 
+// 16.16 sine values for 2048 angle units per turn, with an extra quarter turn for cosine.
+// Free global: the Mac symbol is unmangled, and a static data member here would shift the
+// compiler-generated $S/$E numbering in every consumer (breaks Object.cpp).
+// BW1W120 00c31614 BW1M119 011dc044 (LHCombined Release)
+extern long LHSinTable[2560];
+
 struct LH3DMath
 {
 	// BW1W120 00eea394

@@ -207,6 +207,28 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
+	void WriteSafe(int16_t& value)
+	{
+		if (WriteEnabled)
+		{
+			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				WriteEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
+	void WriteSafe(int8_t& value)
+	{
+		if (WriteEnabled)
+		{
+			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			{
+				WriteEnabled = false;
+			}
+			Checksum += *(uint8_t*)&value + sizeof(value);
+		}
+	}
 	void WriteSafe(uint16_t& value)
 	{
 		if (WriteEnabled)

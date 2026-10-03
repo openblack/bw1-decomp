@@ -111,6 +111,11 @@ public:
 	float           FoodPowerupIncrease;
 	float           MissionaryImpressiveValue; /* 0x3a0 */
 
+	// Static data
+
+	// BW1W120 00da6be8
+	static GVillagerInfo InfoList[VILLAGER_INFO_LAST];
+
 	// Override methods
 
 	// BW1W120 0074f900 BW1M119 01574d70
@@ -126,6 +131,8 @@ public:
 	static int GetInfoFromText(char* text);
 	// BW1W120 00752650 BW1M119 01574bc0
 	static GVillagerInfo* Find(TRIBE_TYPE type, VILLAGER_NUMBER villager_number);
+	// BW1W120 inlined BW1M119 01069390
+	static GVillagerInfo* GetInfo() { return InfoList; }
 };
 
 #endif /* BW1_DECOMP_VILLAGER_INFO_INCLUDED_H */

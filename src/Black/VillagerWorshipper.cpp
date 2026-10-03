@@ -136,12 +136,12 @@ bool32_t Villager::GotoWorshipSiteForWorship()
 }
 
 // BW1W120 0076bda0 BW1M119 015a57a0
-// TODO: needs the dance-speed helper at 0x77c100 named; the target also loads info+0x118 as
-// an int where the header declares float, and it has no return value on any path (`return 1`
+// TODO: needs the dance-speed helper at 0x77c100 named; the target loads info+0x118
+// (RunningSpeed, an int) as an int where this still uses a float, and it has no return value on any path (`return 1`
 // stands in — no return statement at all breaks MSVC6 codegen)
 bool32_t Villager::SetGotoWorshipSpeed()
 {
-	float speed = ((const GVillagerInfo*)info)->field_0x118;
+	float speed = ((const GVillagerInfo*)info)->RunningSpeed;
 	if (GetWorshipSite() != NULL)
 	{
 		float danceSpeed = 0.0f; // fabricated: should come from the helper at 0x77c100

@@ -14,8 +14,8 @@ public:
 	int32_t field_0x10c; /* speed threshold */
 	uint8_t field_0x110[0x4];
 	float   field_0x114;
-	float   field_0x118;
-	float   field_0x11c;
+	int32_t RunningSpeed;
+	int32_t CollideMask;
 };
 
 #endif /* BW1_DECOMP_MOBILE_WALL_HUG_INFO_INCLUDED_H */

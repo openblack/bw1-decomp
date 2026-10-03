@@ -23,10 +23,8 @@
 #include "Utils.h"
 #include "Rand.h"
 
-extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
-
 // 84 entries (12 tribe slots x VILLAGER_NUMBER_LAST), filled by GVillagerInfo::GetInfoFromText.
-GVillagerInfo GVillagerInfo_ARRAY_00da6be8[84];
+GVillagerInfo GVillagerInfo::InfoList[84];
 
 // clang-format off
 static const DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST] = {
@@ -52,7 +50,7 @@ static const DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST] = {
 GBaseInfo* GVillagerInfo::GetBaseInfo(uint32_t& count)
 {
 	count = 84;
-	return GVillagerInfo_ARRAY_00da6be8;
+	return InfoList;
 }
 
 // BW1W120 0074fb20 BW1M119 01579d80
@@ -623,7 +621,7 @@ void Villager::PopFromPrevious()
 	// TODO: target pushes the state-table field as a raw dword (natural if SetTopState's
 	// param were the 4-byte enum rather than unsigned char); vtable-load scheduling also
 	// differs
-	if (SetTopState(g_GVillagerStateTableInfos[action.states[LIVING_ACTION_INDEX_PREVIOUS]].field_0x30) ==
+	if (SetTopState(GVillagerStateTableInfo::Infos[action.states[LIVING_ACTION_INDEX_PREVIOUS]].field_0x30) ==
 	    VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_WITH_SUPPLIES)
 	{
 		action.SetState(LIVING_ACTION_INDEX_TOP, VILLAGER_STATE_DECIDE_WHAT_TO_DO);
@@ -667,10 +665,10 @@ StoragePit* Villager::GetStoragePit()
 // BW1W120 00751f40 BW1M119 01575af0
 VILLAGER_STATES Villager::GetVillagerAvailableState()
 {
-	// TODO: 86% -- correct semantics/reloc (g_GVillagerStateTableInfos[GetFinalState()&0xff]
+	// TODO: 86% -- correct semantics/reloc (GVillagerStateTableInfo::Infos[GetFinalState()&0xff]
 	// .field_0xb8). Only diff: target parks the masked index in ecx (`mov ecx,eax`) and
 	// runs the *276 multiply through eax; MSVC6 here keeps it in eax. Regalloc tie-break.
-	return (VILLAGER_STATES)g_GVillagerStateTableInfos[GetFinalState() & 0xff].field_0xb8;
+	return (VILLAGER_STATES)GVillagerStateTableInfo::Infos[GetFinalState() & 0xff].field_0xb8;
 }
 
 // BW1W120 00751f70
@@ -701,7 +699,7 @@ int Villager::SetCurrentAndDestinationState(uint8_t current, uint8_t destination
 uint32_t Villager::CanPauseForASecond(VILLAGER_STATES state)
 {
 	if (action.states[LIVING_ACTION_INDEX_TOP] != VILLAGER_STATE_PAUSE_FOR_A_SECOND &&
-	    g_GVillagerStateTableInfos[state & 0xff].field_0xd4 != 0 && !(((GameThingWithPos*)this)->Flags & 0x400))
+	    GVillagerStateTableInfo::Infos[state & 0xff].field_0xd4 != 0 && !(((GameThingWithPos*)this)->Flags & 0x400))
 	{
 		return 1;
 	}
@@ -796,13 +794,13 @@ bool32_t Villager::IsStateExitFunctionSameAs(VILLAGER_STATES state) const
 // BW1W120 007525b0 BW1M119 01574fa0
 bool Villager::IsReactiveState(unsigned long state)
 {
-	// TODO: 57% -- index/field semantics correct (g_GVillagerStateTableInfos[state]
+	// TODO: 57% -- index/field semantics correct (GVillagerStateTableInfo::Infos[state]
 	// .field_0xc8 != 0). BLOCKED: symbols.txt names this thiscall (?...@@QAE_NK@Z) but the
 	// target body is __cdecl -- ends `c3` (ret, NO arg cleanup), reads state from [esp+4],
 	// never touches ecx(this), returns full eax. Not ICF (ret != ret4 => bytes differ). A
 	// faithful thiscall member compiles to `ret 4`+al. Calling-convention/symbol anomaly for
 	// the dispatcher (symbol may need to be static/cdecl).
-	return g_GVillagerStateTableInfos[state].field_0xc8 != 0;
+	return GVillagerStateTableInfo::Infos[state].field_0xc8 != 0;
 }
 
 // BW1W120 00752600 BW1M119 01022ae0
@@ -820,9 +818,7 @@ bool Villager::IsWoman()
 // BW1W120 00752650 BW1M119 01574bc0
 GVillagerInfo* GVillagerInfo::Find(TRIBE_TYPE type, VILLAGER_NUMBER villager_number)
 {
-	// TODO: needs the info-array data symbol carved at 0xda6be8 (currently inside a pad)
-	// so the relocs can pair
-	for (GVillagerInfo* info = GVillagerInfo_ARRAY_00da6be8; info < &GVillagerInfo_ARRAY_00da6be8[84]; info++)
+	for (GVillagerInfo* info = InfoList; info < &InfoList[84]; info++)
 	{
 		if (info->TribeType == type && info->VillagerNumber == villager_number)
 		{

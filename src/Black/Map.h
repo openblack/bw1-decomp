@@ -6,7 +6,8 @@
 
 #include <chlasm/Enum.h> /* For enum OBJECT_TYPE */
 
-#include "Base.h" /* For struct Base */
+#include "Base.h"      /* For struct Base */
+#include "MapCoords.h" /* For enum COLLIDE_TYPE */
 
 // Forward Declares
 
@@ -42,6 +43,8 @@ struct MapCell
 	Fixed* FindFixedOnMap(Object* param_1);
 	// BW1W120 inlined BW1M119 013dcd10
 	MapCellIterator GetFirstIterator() const;
+	// BW1W120 00601bc0 BW1M119 0111edf0
+	int Collide(COLLIDE_TYPE type);
 };
 
 struct MapCellIterator
@@ -132,10 +135,20 @@ public:
 	void UpdateControlMap();
 	// BW1W120 00601850 BW1M119 01090d60
 	void CalculateMapInfluenceX();
-	// BW1W120 00612660 BW1M119 0150df10
-	MapCell* ToMap(uint32_t cell_x, uint32_t cell_z);
 	// BW1W120 00612690 BW1M119 0104c5d0
-	bool InBounds(uint32_t x, uint32_t z);
+	bool32_t InBounds(long x, long z) const
+	{
+		return (unsigned long)x < CellExtentZx[1] && (unsigned long)z < CellExtentZx[0];
+	}
+	// BW1W120 00612660 BW1M119 0150df10
+	MapCell* ToMap(long cell_x, long cell_z)
+	{
+		if (InBounds(cell_x, cell_z))
+		{
+			return &cells[0][cell_x * CellExtentZx[0] + cell_z];
+		}
+		return NULL;
+	}
 };
 
 static_assert(sizeof(GMap) == 0x200050, "GMap size is incorrect");

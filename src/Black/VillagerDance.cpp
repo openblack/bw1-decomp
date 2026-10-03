@@ -14,21 +14,11 @@
 static int VillagerDanceSentinel = -1;
 
 // BW1W120 00759890 BW1M119 0157f720
-// TODO: ~unknown% — blocked on a cross-TU return-type contradiction (mangled-void-returns-value
-// family, dispatcher-owned). GUtils::Spiral is declared in Utils.h as returning `JustMapXZ` BY
-// VALUE, but its real mangled signature (?Spiral@GUtils@@SAPBUJustMapXZ@@AAJ0@Z) proves it
-// returns `const JustMapXZ*` (a pointer into some static table) -- the target call site here
-// pushes the result pointer directly as the (already-a-pointer) argument to
-// MapCoords::operator+=(const JustMapXZ&), with NO intervening spill/temp. Fixing Utils.h would
-// require also updating VillagerForester.cpp's existing call site (`searchCoords +=
-// GUtils::Spiral(spiralA, spiralB);`, which relies on the current by-value form) -- cross-TU,
-// not mine to touch. Kept using the current (by-value) convention so this compiles/matches the
-// rest of the function; only the Spiral call site itself is expected to differ.
 Villager* Villager::FindImmediateNeighbour()
 {
 	MapCoords coords = Pos;
-	int       spiralVar1 = 1; // GUtils::Spiral in/out state; true meaning of the pair unclear
-	int       spiralVar2 = 1;
+	long      spiralVar1 = 1; // GUtils::Spiral in/out state; true meaning of the pair unclear
+	long      spiralVar2 = 1;
 	int       i = 0x31; // 49 -- max map cells to visit spiralling outward from Pos
 	do
 	{
@@ -42,7 +32,7 @@ Villager* Villager::FindImmediateNeighbour()
 				obj = obj->MapChild.Get();
 			}
 		}
-		coords += GUtils::Spiral(spiralVar1, spiralVar2);
+		coords += *GUtils::Spiral(spiralVar1, spiralVar2);
 	} while (--i != 0);
 	return NULL;
 }

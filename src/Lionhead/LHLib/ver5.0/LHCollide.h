@@ -29,9 +29,9 @@ public:
 
 	struct List
 	{
-		uint32_t                      size; /* 0x0 */
-		ObjectCircleIteratorDirection direction;
-		Obj**                         objs;
+		uint32_t size;
+		int      count; // number of objs
+		Obj**    objs;
 
 		// Non-virtual methods
 
@@ -71,6 +71,13 @@ public:
 	};
 
 	Obj* obj; /* 0x0 */
+
+	// TODO: static void (*g_collide_del_callback)(Obj* obj);
+	// at BW1W120 00eb9a98, BW1M119 011f1db8 (LHCombined Release).
+	// Called from Obj::~Obj; MobileWallHug's CircleHugStateInfoT installs its handler here.
+	// Not declared: every static data member in this header shifts the compiler-generated
+	// $S/$E numbering of all consumers (Object.cpp via Living.h -> MobileWallHug.h -> Collide.h)
+	// and breaks Object.cpp's .bss order. Restore once the include graph is understood.
 
 	// Constructors
 

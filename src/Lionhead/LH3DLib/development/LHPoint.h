@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <math.h>   /* For sqrt */
 
+#include <re_common.h> /* For bool32_t */
+
 struct Point2D
 {
 	float x; /* 0x0 */
@@ -11,6 +13,8 @@ struct Point2D
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	Point2D() {}
 	// BW1W120 inlined BW1M119 inlined
 	Point2D(float x, float y) : x(x), y(y) {}
 	// BW1W120 inlined BW1M119 inlined
@@ -20,10 +24,16 @@ struct Point2D
 
 	// Non-virtual methods
 
-	// BW1W120 00468480 BW1M119 010eb7d0
-	Point2D& operator=(const Point2D& other);
-	// BW1W120 00611170 BW1M119 inlined
-	float DotProduct(const Point2D& other);
+	// BW1W120 00611220 BW1M119 010eb7d0
+	Point2D& operator=(const Point2D& other)
+	{
+		x = other.x;
+		y = other.y;
+		return *this;
+	}
+	// Dot product.
+	// BW1W120 00611170 BW1M119 010f2a00
+	float operator*(const Point2D& other) { return x * other.x + y * other.y; }
 	// BW1W120 00611310 BW1M119 inlined
 	float DotProduct(const Point2D* other) const;
 	// BW1W120 00611190 BW1M119 010621c0
@@ -38,7 +48,7 @@ struct Point2D
 		return *this;
 	}
 	// BW1W120 inlined BW1M119 010eb710
-	Point2D& operator-(const Point2D& rhs) const;
+	Point2D operator-(const Point2D& rhs) const { return Point2D(x - rhs.x, y - rhs.y); }
 	// BW1W120 inlined BW1M119 inlined
 	Point2D& operator*=(float rhs)
 	{
@@ -54,13 +64,31 @@ struct Point2D
 		return *this;
 	}
 	// BW1W120 00611240 BW1M119 inlined
-	float Cross(const Point2D& other) const;
+	float Cross(const Point2D& other) const { return y * other.x - other.y * x; }
+	// Returns the length before normalising; a zero vector is left alone.
 	// BW1W120 00611330 BW1M119 010eb640
-	float Normalize();
+	float Normalize()
+	{
+		float px = x;
+		float py = y;
+		float length;
+		if (px == 0.0f && py == 0.0f)
+		{
+			length = 0.0f;
+		}
+		else
+		{
+			length = sqrt(py * py + px * px);
+			float scale = 1.0f / length;
+			x = scale * px;
+			y = scale * py;
+		}
+		return length;
+	}
 	// BW1W120 006115f0 BW1M119 0105e6f0
-	float GetNormSq() const;
+	float GetNormSq() { return x * x + y * y; }
 	// BW1W120 006159c0 BW1M119 inlined
-	bool operator==(const Point2D& other);
+	bool32_t operator==(const Point2D& other) { return x == other.x && y == other.y; }
 	// BW1W120 0086fd00 BW1M119 01086c70 (LHCombined Release)
 	float GetHeading() const;
 	// BW1W120 0086fd70 BW1M119 01086b10 (LHCombined Release)

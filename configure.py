@@ -758,7 +758,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MobileObjectInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MobileStatic.cpp"),
             GameCodeObject(NonMatching, "Black/MobileStaticInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/MobileWallHug.cpp", extra_cflags=["/GX"]),
+            GameCodeObject(NonMatching, "Black/MobileWallHug.cpp"),
             GameCodeObject(NonMatching, "Black/MobileWallHugInfo.cpp"),
             GameCodeObject(NonMatching, "Black/MorphableObject.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEAlexDialog.cpp"),

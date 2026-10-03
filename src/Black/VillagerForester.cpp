@@ -191,8 +191,8 @@ bool32_t Villager::FindTreeNearVillager(Tree** found_tree)
 	MapCoords searchCoords = Pos;
 	float     bestDist = 99999.0f;
 	Tree*     bestTree = NULL;
-	int       spiralA = 1;
-	int       spiralB = 1;
+	long      spiralA = 1;
+	long      spiralB = 1;
 	int       count = 9;
 	do
 	{
@@ -207,7 +207,7 @@ bool32_t Villager::FindTreeNearVillager(Tree** found_tree)
 				bestTree = tree;
 			}
 		}
-		searchCoords += GUtils::Spiral(spiralA, spiralB);
+		searchCoords += *GUtils::Spiral(spiralA, spiralB);
 		--count;
 	} while (count != 0);
 	if (bestTree == NULL)
