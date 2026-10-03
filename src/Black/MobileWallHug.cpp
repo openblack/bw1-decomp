@@ -67,80 +67,6 @@ inline void CircleHugStateInfoT::swapDirection(MobileWallHug& mwh)
 	mwh.GameAngle = (mwh.GameAngle + 0x400) & 0x7ff;
 }
 
-// BW1W120 inlined BW1M119 013cdab0
-inline CircleHugStateInfoT::performance CircleHugStateInfoT::evaluate(MobileWallHug* mwh, bool swapped)
-{
-	Villager* villager = Villager::Create(mwh->Pos, GVillagerInfo::GetInfo(), 21, false);
-	villager->circle_hug_info.TurnsToObj = mwh->circle_hug_info.TurnsToObj;
-	villager->circle_hug_info.EntryDistance = mwh->circle_hug_info.EntryDistance;
-	if (villager->circle_hug_info.EntryDistance == -1)
-	{
-		ExtendedEntryDistances[villager] = ExtendedEntryDistances[mwh];
-	}
-	villager->circle_hug_info.SetObjectPtr(mwh->circle_hug_info.GetObjectPtr(), villager, false);
-	villager->MoveState = mwh->MoveState;
-	villager->goal = mwh->goal;
-	villager->step.Init(mwh->step.x, mwh->step.z, mwh->step.altitude);
-	villager->GameAngle = mwh->GameAngle;
-	villager->SetSpeed(mwh->speed * 4, 1);
-
-	performance result;
-	if (swapped)
-	{
-		switch (villager->MoveState)
-		{
-		case MOVE_TO_STATES_LINEAR_CCW:
-			villager->MoveState = MOVE_TO_STATES_LINEAR_CW;
-			swapDirection(*villager);
-			break;
-		case MOVE_TO_STATES_LINEAR_CW:
-			villager->MoveState = MOVE_TO_STATES_LINEAR_CCW;
-			swapDirection(*villager);
-			break;
-		case MOVE_TO_STATES_ORBIT_CW:
-			villager->MoveState = MOVE_TO_STATES_ORBIT_CCW;
-			swapDirection(*villager);
-			if (villager->circle_hug_info.GetObjectPtr() != NULL)
-			{
-				MobileWallHug_InCircleStuff<false>::MoveToCircleHugCircleSquareSweep(villager, villager->GetPos());
-			}
-			break;
-		case MOVE_TO_STATES_ORBIT_CCW:
-			villager->MoveState = MOVE_TO_STATES_ORBIT_CW;
-			swapDirection(*villager);
-			if (villager->circle_hug_info.GetObjectPtr() != NULL)
-			{
-				MobileWallHug_InCircleStuff<true>::MoveToCircleHugCircleSquareSweep(villager, villager->GetPos());
-			}
-			break;
-		case MOVE_TO_STATES_EXIT_CIRCLE_CW:
-			villager->MoveState = MOVE_TO_STATES_EXIT_CIRCLE_CCW;
-			swapDirection(*villager);
-			break;
-		case MOVE_TO_STATES_EXIT_CIRCLE_CCW:
-			villager->MoveState = MOVE_TO_STATES_EXIT_CIRCLE_CW;
-			swapDirection(*villager);
-			break;
-		}
-
-		if (villager->MoveState == MOVE_TO_STATES_STEP_THROUGH)
-		{
-			result.count = 0;
-			result.dist = MaxFloat;
-			villager->ToBeDeleted(0);
-			return result;
-		}
-	}
-
-	result.count = 1500;
-	while (villager->MoveTo() != 10 && result.count-- > 0)
-	{
-	}
-	result.dist = villager->goal.GetMetresDistanceSq(villager->Pos);
-	villager->ToBeDeleted(0);
-	return result;
-}
-
 inline void CircleHugStateInfoT::swap(MobileWallHug& mwh)
 {
 	switch (mwh.MoveState)
@@ -180,6 +106,44 @@ inline void CircleHugStateInfoT::swap(MobileWallHug& mwh)
 	}
 }
 
+inline CircleHugStateInfoT::performance CircleHugStateInfoT::evaluate(MobileWallHug* mwh, bool swapped)
+{
+	Villager* villager = Villager::Create(mwh->Pos, GVillagerInfo::GetInfo(), 21, false);
+	villager->circle_hug_info.TurnsToObj = mwh->circle_hug_info.TurnsToObj;
+	villager->circle_hug_info.EntryDistance = mwh->circle_hug_info.EntryDistance;
+	if (villager->circle_hug_info.EntryDistance == -1)
+	{
+		ExtendedEntryDistances[villager] = ExtendedEntryDistances[mwh];
+	}
+	villager->circle_hug_info.SetObjectPtr(mwh->circle_hug_info.GetObjectPtr(), villager, false);
+	villager->SetMoveState(mwh->GetMoveState());
+	villager->goal = mwh->goal;
+	villager->step.Init(mwh->step.x, mwh->step.z, mwh->step.altitude);
+	villager->GameAngle = mwh->GameAngle;
+	villager->SetSpeed(mwh->speed * 4, 1);
+
+	performance result;
+	if (swapped)
+	{
+		swap(*villager);
+		if (villager->GetMoveState() == MOVE_TO_STATES_STEP_THROUGH)
+		{
+			result.count = 0;
+			result.dist = MaxFloat;
+			villager->ToBeDeleted(0);
+			return result;
+		}
+	}
+
+	result.count = 1500;
+	while (villager->MoveTo() != 10 && result.count-- > 0)
+	{
+	}
+	result.dist = villager->goal.GetMetresDistanceSq(villager->Pos);
+	villager->ToBeDeleted(0);
+	return result;
+}
+
 void DoWallHuggerLookahead()
 {
 	bool lookahead = g_CircleHugStateInfo.EvaluatingLookahead;
@@ -189,8 +153,10 @@ void DoWallHuggerLookahead()
 		MobileWallHug* mwh = *g_CircleHugStateInfo.PendingLookahead.begin();
 		g_CircleHugStateInfo.PendingLookahead.erase(g_CircleHugStateInfo.PendingLookahead.begin());
 		g_CircleHugStateInfo.CompletedLookahead.insert(mwh);
-		CircleHugStateInfoT::performance unswapped = g_CircleHugStateInfo.evaluate(mwh, false);
-		CircleHugStateInfoT::performance swapped = g_CircleHugStateInfo.evaluate(mwh, true);
+		CircleHugStateInfoT::performance unswapped;
+		CircleHugStateInfoT::performance swapped;
+		unswapped = g_CircleHugStateInfo.evaluate(mwh, false);
+		swapped = g_CircleHugStateInfo.evaluate(mwh, true);
 		if (swapped < unswapped)
 		{
 			g_CircleHugStateInfo.swap(*mwh);
@@ -233,11 +199,11 @@ void CircleHugInfo::FetchObjectFromCircHugInfo(NewCollide::Obj* collide_obj, Res
 	coords.SetX(collide_obj->position.x);
 	coords.SetZ(collide_obj->position.z);
 	coords.altitude = 0.0f;
+	Object* found = NULL;
+	int     count = 9;
 	long    spiralX = 1;
 	long    spiralZ = 1;
-	Object* found = NULL;
 	int     index;
-	int     count = 9;
 	do
 	{
 		for (Object* object = coords.GetFirstObjectFixed(); object != NULL; object = object->GetMapChild(coords))
@@ -279,20 +245,21 @@ void CircleHugInfo::FetchObjectFromCircHugInfo(NewCollide::Obj* collide_obj, Res
 		coords += *GUtils::Spiral(spiralX, spiralZ);
 	} while (count != 0);
 
-	if (found != NULL)
+	if (found == NULL)
+	{
+		MapCoords objCoords;
+		objCoords.SetX(collide_obj->position.x);
+		objCoords.SetZ(collide_obj->position.z);
+		info.object = NULL;
+		info.index = 1;
+		info.coords = objCoords;
+	}
+	else
 	{
 		found->GetCollideData();
 		info.object = found;
 		info.index = index;
 		info.coords = MapCoords();
-	}
-	else
-	{
-		info.object = NULL;
-		info.index = 1;
-		info.coords.SetX(collide_obj->position.x);
-		info.coords.SetZ(collide_obj->position.z);
-		info.coords.altitude = 0.0f;
 	}
 }
 
@@ -332,26 +299,28 @@ void CircleHugStateInfoT::OnDeletionOfNewcollideObj(NewCollide::Obj* obj)
 
 		MobileWallHug* mwh = *(*it).second.begin();
 		mwh->circle_hug_info.GetObjectPtr();
-		switch (mwh->MoveState)
+		switch (mwh->GetMoveState())
 		{
 		case MOVE_TO_STATES_LINEAR:
+		case MOVE_TO_STATES_LINEAR_CW:
+		case MOVE_TO_STATES_LINEAR_CCW:
 			mwh->MoveToCircleHugLinearSquareSweep(mwh->Pos);
 			break;
 		case MOVE_TO_STATES_ORBIT_CW:
 			mwh->InitStepsXZ();
-			mwh->MoveState = MOVE_TO_STATES_LINEAR_CW;
+			mwh->SetMoveState(MOVE_TO_STATES_LINEAR_CW);
 			mwh->MoveToCircleHugLinearSquareSweep(mwh->Pos);
 			break;
 		case MOVE_TO_STATES_ORBIT_CCW:
 			mwh->InitStepsXZ();
-			mwh->MoveState = MOVE_TO_STATES_LINEAR_CCW;
+			mwh->SetMoveState(MOVE_TO_STATES_LINEAR_CCW);
 			mwh->MoveToCircleHugLinearSquareSweep(mwh->Pos);
 			break;
 		case MOVE_TO_STATES_EXIT_CIRCLE_CCW:
 		case MOVE_TO_STATES_EXIT_CIRCLE_CW:
 			mwh->InitStepsXZ();
-			mwh->MoveState =
-				mwh->MoveState == MOVE_TO_STATES_EXIT_CIRCLE_CW ? MOVE_TO_STATES_LINEAR_CW : MOVE_TO_STATES_LINEAR_CCW;
+			mwh->SetMoveState(mwh->GetMoveState() == MOVE_TO_STATES_EXIT_CIRCLE_CW ? MOVE_TO_STATES_LINEAR_CW
+			                                                                       : MOVE_TO_STATES_LINEAR_CCW);
 			mwh->MoveToCircleHugLinearSquareSweep(mwh->Pos);
 			// fallthrough
 		default:
