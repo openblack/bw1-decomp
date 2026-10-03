@@ -9,6 +9,11 @@
 #include <chlasm/Enum.h>                                /* For enum OBJECT_TYPE */
 #include <re_common.h>                                  /* For bool32_t */
 
+enum COLLIDE_TYPE
+{
+	COLLIDE_TYPE_NONE = 0x0,
+};
+
 // Forward Declares
 
 class Game3DObject;
@@ -33,6 +38,8 @@ struct JustMapXZ
 		x = 0;
 		z = 0;
 	}
+	// BW1W120 inlined BW1M119 015a0680
+	JustMapXZ(unsigned short cell_x, unsigned short cell_z) : x(cell_x), z(cell_z) {}
 
 	// Non-virtual methods
 
@@ -142,15 +149,18 @@ struct MapCoords : public LH3DMapCoords
 	bool32_t operator==(const MapCoords& other) const;
 	// BW1W120 00605c40 BW1M119 01052890
 	LHPoint GetLHPoint() const;
-	// BW1W120 00605cd0
-	// TODO: fabricated name
-	float GetDistanceInMetres(const MapCoords& other) const;
+	// BW1W120 00605cd0 BW1M119 01053320
+	float GetDistance(const MapCoords& other) const;
 	// BW1W120 00605fb0 BW1M119 01034c00
 	float GetMetresDistanceSq(const MapCoords& param_2) const;
 	// BW1W120 inlined BW1M119 010ea620
 	MapCoords* operator=(const MapCoords* other);
 	// BW1W120 inlined BW1M119 0104cb80
 	float Altitude() const { return altitude; }
+	// BW1W120 0060d740 BW1M119 0106d020
+	void AddToMapX(short dx) { SetMapX(MapX() + dx); }
+	// BW1W120 0060d750 BW1M119 0106cfe0
+	void AddToMapZ(short dz) { SetMapZ(MapZ() + dz); }
 	// BW1W120 00603490 BW1M119 013e9960
 	Object* GetFirstObjectMobile() const;
 	// BW1W120 006056b0 BW1M119 0148cf80
@@ -160,6 +170,10 @@ struct MapCoords : public LH3DMapCoords
 	bool32_t operator!=(const MapCoords& other) const;
 	// BW1W120 00604fe0 BW1M119 013621f0
 	int CollideCollideWithFixe() const;
+	// BW1W120 006033c0 BW1M119 01029080
+	int Collide() const;
+	// BW1W120 006033b0 BW1M119 01028f70
+	int Collide(COLLIDE_TYPE type) const;
 };
 
 #pragma inline_depth(2)

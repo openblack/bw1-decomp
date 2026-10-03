@@ -43,7 +43,7 @@ struct GLandscape
 
 	// Static methods
 
-	// BW1W120 inlined BW1M119 0101c4a0
+	// BW1W120 006137f0 BW1M119 0101c4a0
 	static void ConvertLandscapePointToMapCoord(const LHPoint& point, MapCoords& coords)
 	{
 		coords.x = (LH3DMapCoordsFull)(point.x / (10.0f / (float)0x10000));

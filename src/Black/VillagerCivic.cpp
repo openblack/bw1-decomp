@@ -198,7 +198,7 @@ bool32_t Villager::ArrivesAtBuildingSite()
 			buildPos.x = (int)(buildPoint->x * 6553.6f);
 			buildPos.z = (int)(buildPoint->z * 6553.6f);
 			buildPos.altitude = 0.0f;
-			if (Pos.GetDistanceInMetres(buildPos) > 0.2f)
+			if (Pos.GetDistance(buildPos) > 0.2f)
 			{
 				SetupMoveToWithHug(buildPos, VILLAGER_STATE_ARRIVES_AT_BUILDING_SITE);
 				return 1;

@@ -29,7 +29,7 @@ struct LandCell
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 0100f850
-	bool IsWater();
+	bool32_t IsWater() { return properties & 0x10; }
 };
 
 struct LandBlock
@@ -60,6 +60,16 @@ public:
 			return NULL;
 		}
 		return &g_ptr_blocks[block]->Cells[x & 0xf][z & 0xf];
+	}
+	// BW1W120 0060d3a0 BW1M119 inlined
+	static bool32_t IsWater(long x, long z)
+	{
+		LandCell* cell = GetCell(x, z);
+		if (cell != NULL)
+		{
+			return cell->IsWater();
+		}
+		return 1;
 	}
 
 	// BW1W120 00804790 BW1M119 01045ba0 (LHCombined Release)

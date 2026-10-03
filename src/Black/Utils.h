@@ -10,6 +10,11 @@
 struct JustMapXZ;
 struct MapCoords;
 
+// TODO: Owner unknown (no Mac symbol). Kept out of GUtils: a static data member here would
+// shift the compiler-generated $S/$E numbering in every consumer (breaks Object.cpp).
+// BW1W120 00da59fc
+extern JustMapXZ MapXZDirections[4];
+
 struct GUtils
 {
 	// BW1W120 0074cca0 BW1M119 013d2a10
@@ -18,22 +23,28 @@ struct GUtils
 	static void GetDistance(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074cd70 BW1M119 0104bf00
 	static float GetDistanceInMetres(const MapCoords& param_1, const MapCoords& param_2);
+	// BW1W120 0074cd50
+	static float GetDistanceInMetres_0074cd50(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074d200 BW1M119 010516f0
-	static uint16_t GetAngleFromDXDZ(long dx, long dz);
+	static long GetAngleFromDXDZ(long dx, long dz);
 	// BW1W120 0074d240 BW1M119 01051760
-	static uint16_t GetAngleFromXZ(const MapCoords& param_1, const MapCoords& param_2);
+	static long GetAngleFromXZ(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074d270 BW1M119 01013ec0
 	static float Get3DAngleFromXZ(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074d580 BW1M119 01064310
 	static MapCoords GetPosFromAngle(float angle, float radius);
 	// BW1W120 0074d7e0 BW1M119 0104c490
-	static JustMapXZ Spiral(int& param_1, int& param_2);
+	static const JustMapXZ* Spiral(long& param_1, long& param_2);
 	// BW1W120 0074d810 BW1M119 01024840
 	static void SpiralIncrement(MapCoords& param_1, int& param_2, int& param_3, float param_4);
 	// BW1W120 0074dc50 BW1M119 0104f6e0
-	static float ConvertGameAngleTo3D(uint32_t angle);
+	static float ConvertGameAngleTo3D(long angle);
 	// BW1W120 0074dcc0 BW1M119 01034b90
 	static float ConvertWholeDistanceToMeters(int param_1);
+	// BW1W120 0074dce0 BW1M119 01590e30
+	static int ConvertMetersToWholeDistance(float meters);
+	// BW1W120 0074e2b0 BW1M119 013e5570
+	static float ConvertGameAngleToScawenAngle(uint16_t angle);
 	// BW1W120 0074e3a0 BW1M119 01180280
 	static bool32_t FindNearestDrinkingWater(MapCoords& param_1, MapCoords& param_2, float max_dist);
 	// BW1W120 0074f170 BW1M119 01069aa0

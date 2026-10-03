@@ -45,7 +45,11 @@ struct LH3DMapCoords
 	// BW1W120 inlined
 	void AddToMapZ(uint16_t z) const;
 	// BW1W120 inlined BW1M119 inlined
-	void CentreOnMap();
+	void CentreOnMap()
+	{
+		FractionX = 0x8000;
+		FractionZ = 0x8000;
+	}
 	// BW1W120 inlined BW1M119 inlined
 	void SetFractionX(uint16_t x);
 	// BW1W120 inlined BW1M119 inlined
@@ -59,9 +63,9 @@ struct LH3DMapCoords
 	// BW1W120 inlined BW1M119 010484b0
 	int32_t WholeZ() const { return z; }
 	// BW1W120 inlined BW1M119 inlined
-	void SetMapX(uint16_t x) const;
+	void SetMapX(uint16_t x) { CellX = x; }
 	// BW1W120 inlined BW1M119 inlined
-	void SetMapZ(uint16_t z) const;
+	void SetMapZ(uint16_t z) { CellZ = z; }
 	// BW1W120 inlined BW1M119 0104d810
 	void SetWholeX(int x);
 	// BW1W120 inlined BW1M119 0104d850
