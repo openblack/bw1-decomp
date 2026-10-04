@@ -223,7 +223,7 @@ char* const             GGame::NetworkApplication = "Lionhead";
 char* const             GGame::NetworkChannel = "Channel";
 char* const             GGame::NetworkPassword = "Password";
 
-// TODO: Original name unknown; tail-jumps to fn_007DEE00, not an empty function.
+// TODO: Original name unknown; tail-jumps to LHResetFPU, not an empty function.
 // BW1W120 0054d610
 void             fn_0054D610();
 void             CheckSquareFunction(int x, int z, RPHolder* holder);
@@ -788,32 +788,32 @@ uint32_t GGame::InitOneTimeOnly()
 	Report3D__FPCce("EditorPhysics::Load\n");
 	RenderLoadingFrame(true);
 	EditorPhysics::Load();
-	fn_007DEE00();
+	LHResetFPU();
 	Report3D__FPCce("GSpookyVoices\n");
 	RenderLoadingFrame(true);
 	GSpookyVoices::Init();
 	Report3D__FPCce("GConfirmation\n");
 	RenderLoadingFrame(true);
 	GConfirmation::Init();
-	fn_007DEE00();
+	LHResetFPU();
 	Report3D__FPCce("StartupGameInfo\n");
 	RenderLoadingFrame(true);
 	GGameInfo::Info.CurrentYear = (uint32_t)(int)GGameInfo::Info.GetYear();
-	fn_007DEE00();
+	LHResetFPU();
 	RenderLoadingFrame(true);
 	GUtils::SetupUtils();
-	fn_007DEE00();
+	LHResetFPU();
 	RenderLoadingFrame(true);
 	if (LoadFiles() != 1)
 	{
 		return 0;
 	}
-	fn_007DEE00();
+	LHResetFPU();
 	RenderLoadingFrame("Loading variables...");
 	Report3D__FPCce("load_variables\n");
 	load_variables();
-	fn_007DEE00();
-	fn_007DEE00();
+	LHResetFPU();
+	LHResetFPU();
 	RenderLoadingFrame(true);
 	Report3D__FPCce("SetupStatics\n");
 	GInterface::SetupStatics();
@@ -1299,7 +1299,7 @@ bool32_t GGame::Close()
 // BW1W120 00552bb0 BW1M119 01172c70
 void GGame::ClearMap()
 {
-	fn_007DEE00();
+	LHResetFPU();
 	g_game->field_0x14 |= 0x8000;
 	field_0x14 &= 0xffddffff;
 	field_0x205a10 = 0;
@@ -1397,7 +1397,7 @@ void GGame::ClearMap()
 	InitStaticsValues();
 	GameBlock::Clean();
 	ClearAllStuff();
-	fn_007DEE00();
+	LHResetFPU();
 }
 
 // Constructors emitted in the original Game translation unit.
@@ -2370,7 +2370,7 @@ void GGame::Process3dEngine()
 		InfluenceCircle::Draw(0);
 	LH3DRender::FinishFrame();
 	VillagerNameBlock::DeleteAll();
-	fn_007DEE00();
+	LHResetFPU();
 	if (CreatureMentalEditor::Instance)
 		CreatureMentalEditor::Instance->Draw();
 	Creature::DrawLeashInfo();
@@ -2391,7 +2391,7 @@ void GGame::Process3dEngine()
 	}
 	if (field_0x205a28 != 1 && field_0x205a28 != 2)
 		LH3DAtmos::Render2D();
-	fn_007DEE00();
+	LHResetFPU();
 }
 
 // BW1W120 0054d820 BW1M119 010861b0
@@ -2523,11 +2523,11 @@ void GGame::ProcessTurn()
 void GGame::EndTurn()
 {
 	// These calls reset x87 state and select single precision; they are not no-ops.
-	fn_007DEE00();
+	LHResetFPU();
 	SoundMap->Update();
-	fn_007DEE00();
+	LHResetFPU();
 	SoundMap->Dump();
-	fn_007DEE00();
+	LHResetFPU();
 	SoundTag::ProcessSoundTags();
 	if ((field_0x14 & 4) == 0 && data.GameTurn > 5)
 	{
