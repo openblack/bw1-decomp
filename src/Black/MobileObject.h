@@ -87,7 +87,7 @@ public:
 	// BW1W120 006074e0 BW1M119 013c4a40
 	virtual void SetXYZAnglesAndScale(float x_angle, float y_angle, float z_angle, float scale);
 	// BW1W120 00607790 BW1M119 013c42e0
-	virtual uint32_t MoveAlongPath();
+	virtual bool32_t MoveAlongPath();
 	// BW1W120 00607210 BW1M119 013c5220
 	virtual void Create3DObject();
 	// BW1W120 00607250 BW1M119 013c5160

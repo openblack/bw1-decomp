@@ -662,7 +662,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/GroupBehaviour.cpp"),
             GameCodeObject(NonMatching, "Black/GSFunctions.cpp"),
             GameCodeObject(NonMatching, "Black/GSLobbybox.cpp"),
-            GameCodeObject(NonMatching, "Black/GStates.cpp"),
+            GameCodeObject(Matching, "Black/GStates.cpp"),
             GameCodeObject(NonMatching, "Black/Guidance.cpp"),
             GameCodeObject(NonMatching, "Black/HairGroup.cpp"),
             GameCodeObject(NonMatching, "Black/HandState.cpp"),

@@ -92,7 +92,7 @@ public:
 	// BW1W120 00417540 BW1M119 011374c0
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00417550 BW1M119 inlined
-	virtual int GetDetailMesh(int param_1);
+	virtual int GetDetailMesh(int param_1) const;
 	// BW1W120 0051c310 BW1M119 010443e0
 	virtual void Draw();
 	// BW1W120 00417ee0 BW1M119 0104eae0
@@ -131,6 +131,10 @@ public:
 	virtual void SetTowardsAngle(uint16_t param_1);
 	// BW1W120 00418aa0 BW1M119 0104ac50
 	virtual void MoveTo3D();
+	// BW1W120 0041baf0 BW1M119 01051680
+	virtual bool32_t MoveToPos();
+	// BW1W120 00417d50 BW1M119 01174660
+	virtual bool32_t Landed();
 	// BW1W120 00417c90 BW1M119 01098600
 	virtual bool32_t StartWander();
 	// BW1W120 00418010 BW1M119 01173ed0
@@ -241,6 +245,8 @@ public:
 	virtual uint32_t ThrownAnimation();
 	// BW1W120 00417810 BW1M119 0109e9f0
 	virtual uint32_t DecideAnimation();
+	// BW1W120 00417850 BW1M119 01138270
+	virtual uint32_t CheckSuitableEnvironment(const MapCoords& param_1);
 	// BW1W120 0041a3f0 BW1M119 0100eaf0
 	virtual void SetNewWander(const MapCoords* centre, long min_dist, long max_dist);
 	// BW1W120 0041acc0 BW1M119 0116eda0
@@ -248,7 +254,7 @@ public:
 	// BW1W120 0041a2b0 BW1M119 0107ec70
 	virtual void SetStateSpeed();
 	// BW1W120 0041b430 BW1M119 inlined
-	virtual bool IsFinalState(uint8_t state);
+	virtual bool IsFinalState(VILLAGER_STATES state);
 	// BW1W120 00417fa0 BW1M119 01057730
 	virtual ANIM_LIST GetAnimId();
 	// BW1W120 0041a2c0 BW1M119 inlined
@@ -260,11 +266,11 @@ public:
 	// BW1W120 0041b170 BW1M119 inlined
 	virtual bool32_t ExitReaction(uint8_t state);
 	// BW1W120 00417570 BW1M119 inlined
-	virtual bool IsScriptState(uint8_t state) const;
+	virtual bool IsScriptState(VILLAGER_STATES state) const;
 	// BW1W120 00417590 BW1M119 inlined
-	virtual bool IsScriptInterruptableState(uint8_t state) const;
+	virtual bool IsScriptInterruptableState(VILLAGER_STATES state) const;
 	// BW1W120 0041b100 BW1M119 inlined
-	virtual bool32_t IsStateExitFunctionSameAs(uint8_t state) const;
+	virtual bool32_t IsStateExitFunctionSameAs(VILLAGER_STATES state) const;
 	// BW1W120 0041b1c0 BW1M119 0116e740
 	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 00419bc0 BW1M119 01170ad0
@@ -338,10 +344,6 @@ public:
 
 	// BW1W120 0041abb0 BW1M119 01089fb0
 	uint32_t KeepFlockMemberWithinFlockArea();
-	// BW1W120 005afe70 BW1M119 01051680
-	bool32_t MoveToPos();
-	// BW1W120 005afef0 BW1M119 01174660
-	bool32_t Landed();
 
 	// State-table handlers reached only through the villager/animal state
 	// tables in GStates.cpp. Names are placeholders keyed on the address;

@@ -293,7 +293,7 @@ int MobileObject::SetupMoveAlongPath(SCRIPT_PATH path, float start, float end, i
 	return 1;
 }
 
-uint32_t MobileObject::MoveAlongPath()
+bool32_t MobileObject::MoveAlongPath()
 {
 	LHPoint         position;
 	LHPoint         unused;

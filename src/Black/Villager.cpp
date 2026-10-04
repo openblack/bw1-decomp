@@ -1685,8 +1685,10 @@ void Villager::SetLife(float param_1) {}
 // BW1W120 00756be0 BW1M119 0156cb60
 void Villager::FindChildrenAndOrphanThem() {}
 
+#ifndef VERSION_BW1W100
 // BW1W120 00756c60 BW1M119 0104feb0
 bool32_t Villager::IsMovingForAnimation()
 {
 	return false;
 }
+#endif

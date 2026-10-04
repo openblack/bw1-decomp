@@ -243,7 +243,7 @@ public:
 	// BW1W120 0055c9c0 BW1M119 0114fdc0
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 0055c9d0 BW1M119 inlined
-	virtual int GetDetailMesh(int param_1);
+	virtual int GetDetailMesh(int param_1) const;
 	// BW1W120 0051b940 BW1M119 0104f050
 	virtual void Draw();
 	// BW1W120 0074ff70 BW1M119 0104dd70
@@ -326,8 +326,10 @@ public:
 	virtual bool32_t GotoFoodReaction();
 	// BW1W120 007646d0 BW1M119 01599630
 	virtual bool32_t GotoWoodReaction();
+#ifndef VERSION_BW1W100
 	// BW1W120 00756c60 BW1M119 0104feb0
 	virtual bool32_t IsMovingForAnimation();
+#endif
 	// BW1W120 00764920 BW1M119 01598f50
 	virtual bool32_t ArrivesAtFoodReaction();
 	// BW1W120 00764720 BW1M119 01599340
@@ -530,9 +532,9 @@ public:
 	// BW1W120 00473ee0 BW1M119 inlined
 	virtual bool IsPosValidForTurnAngle(const MapCoords& param_1);
 	// BW1W120 0055ca40 BW1M119 010c8a80
-	const char* GetVillagerName();
+	virtual const char* GetVillagerName();
 	// BW1W120 0051b510 BW1M119 0105a910
-	uint32_t DrawVillagerInfo();
+	virtual uint32_t DrawVillagerInfo();
 
 	// Static methods
 
@@ -1828,6 +1830,8 @@ public:
 	// containers that follow the game container, and never in the game container
 	// itself (unlike the other 54 members of the Save/Load family).
 
+	// BW1W120 005ac990 BW1M119 inlined
+	uint32_t AlwaysReactToTownEmergency() { return VILLAGER_STATE_MOVE_TO_POS; }
 	// save_state slot
 	// BW1W120 005ac9a0 BW1M119 inlined
 	bool32_t SaveInFlying(GameOSFile& file) { return 1; }
@@ -1837,8 +1841,6 @@ public:
 	bool32_t SaveWaitForAnim(GameOSFile& file) { return 1; }
 	// BW1W120 005ac9d0 BW1M119 inlined
 	bool32_t LoadWaitForAnim(GameOSFile& file) { return 1; }
-	// BW1W120 005ac990 BW1M119 inlined
-	uint32_t AlwaysReactToTownEmergency() { return VILLAGER_STATE_MOVE_TO_POS; }
 	// BW1W120 005319c0 BW1M119 012c0330
 	bool32_t FootballWonGoal();
 	// BW1W120 005319d0 BW1M119 012c02f0

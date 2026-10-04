@@ -221,7 +221,7 @@ public:
 	// BW1W120 00417000 BW1M119 011384f0
 	virtual void SetSkeleton(int param_1);
 	// BW1W120 005ee230 BW1M119 013866d0
-	virtual uint32_t MoveAlongPath();
+	virtual bool32_t MoveAlongPath();
 	// BW1W120 00417480 BW1M119 inlined
 	virtual void SetSpecularColor(LH3DColor param_1);
 	// BW1W120 00417490 BW1M119 01139ae0
@@ -289,7 +289,7 @@ public:
 	// BW1W120 005ec400 BW1M119 0138ab30
 	virtual bool32_t Dead();
 	// BW1W120 005ec4b0 BW1M119 0138aa10
-	virtual bool Downed();
+	virtual bool32_t Downed();
 	// BW1W120 005ec4d0 BW1M119 0138a900
 	virtual bool32_t BeingEaten();
 	// BW1W120 005f2550 BW1M119 0138e1d0
@@ -297,9 +297,11 @@ public:
 	// BW1W120 005f25c0 BW1M119 0138e0e0
 	virtual bool32_t GotoWoodReaction();
 	// BW1W120 005ecdb0 BW1M119 01388cf0
-	virtual bool MoveInFlock();
+	virtual bool32_t MoveInFlock();
+#ifndef VERSION_BW1W100
 	// BW1W120 005ef350 BW1M119 01034f20
 	virtual bool32_t IsMovingForAnimation();
+#endif
 	// BW1W120 005f2630 BW1M119 0138e070
 	virtual bool32_t ArrivesAtFoodReaction();
 	// BW1W120 00417030 BW1M119 01138530
@@ -315,7 +317,7 @@ public:
 	// BW1W120 005ed2c0 BW1M119 01388800
 	virtual void SetAge(uint32_t age);
 	// BW1W120 005f26d0 BW1M119 0138de80
-	virtual bool LookAtFlyingObjectReaction();
+	virtual bool32_t LookAtFlyingObjectReaction();
 	// BW1W120 005f2980 BW1M119 01078700
 	virtual int SetCurrentAndDestinationState(uint8_t current, uint8_t destination);
 	// BW1W120 purecall BW1M119 null
@@ -628,7 +630,7 @@ public:
 	// BW1W120 purecall BW1M119 null
 	virtual uint32_t GetTeamForChessGame() = 0;
 	// BW1W120 purecall BW1M119 null
-	virtual bool IsPosValidForTurnAngle(const MapCoords* param_1) = 0;
+	virtual bool IsPosValidForTurnAngle(const MapCoords& param_1) = 0;
 
 	// Static methods
 
@@ -644,42 +646,6 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 005afe20 BW1M119 inlined
-	bool32_t StateArrivesAtFoodReaction();
-	// BW1W120 005afe30 BW1M119 inlined
-	bool32_t StateDying();
-	// BW1W120 005afe80 BW1M119 inlined
-	bool32_t StateArrivesAtWoodReaction();
-	// BW1W120 005afe90 BW1M119 inlined
-	bool32_t StateDead();
-	// BW1W120 005aff20 BW1M119 inlined
-	bool32_t StateInHand();
-	// BW1W120 005aff30 BW1M119 inlined
-	bool32_t StateDowned();
-	// BW1W120 005aff40 BW1M119 inlined
-	bool32_t StateSetDying();
-	// BW1W120 005affd0 BW1M119 inlined
-	bool32_t StateBeingEaten();
-	// BW1W120 005affe0 BW1M119 inlined
-	bool32_t StateFleeingFromObjectReaction();
-	// BW1W120 005b0040 BW1M119 inlined
-	bool32_t StateAlongPath();
-	// BW1W120 005b0050 BW1M119 inlined
-	bool32_t StateGoToFoodReaction();
-	// BW1W120 005b0060 BW1M119 inlined
-	bool32_t StateLookingAtObjectReaction();
-	// BW1W120 005b00e0 BW1M119 inlined
-	bool32_t StateFleeingAndLookingAtObjectReaction();
-	// BW1W120 005b00f0 BW1M119 inlined
-	bool32_t StateGoToWoodReaction();
-	// BW1W120 005b0190 BW1M119 inlined
-	bool32_t StateMoveInFlock();
-	// BW1W120 005b01b0 BW1M119 inlined
-	bool32_t StateFollowingObjectReaction();
-	// BW1W120 005b0230 BW1M119 inlined
-	bool32_t StateLookingAtFlyingObjectReaction();
-	// BW1W120 005b0240 BW1M119 inlined
-	bool32_t StateInspectObjectReaction();
 	// BW1W120 005ec030 BW1M119 0138b700
 	void SetToZero();
 	// BW1W120 005ec1d0 BW1M119 0138b420

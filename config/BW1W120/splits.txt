@@ -1042,15 +1042,12 @@ Black/GSLobbybox.cpp:
 	.bss        start:0x00D09188 end:0x00D09198
 
 Black/GStates.cpp:
-	.text       start:0x0059D020 end:0x005AFDC0
+	.text       start:0x0059D020 end:0x005B0260
 	.CRT$XCU    start:0x009C6AF0 end:0x009C6AFC align:4
 	.bss        start:0x00D09198 end:0x00D13ED8
 
-Black/HandState.cpp:
-	.text       start:0x005AFDC0 end:0x005B0260
-
 Black/HandStateCamera.cpp:
-	.text       start:0x005B0260 end:0x005B0BA0
+	.text       start:0x005B0260 end:0x005B0BA0 align:16
 	.rdata      start:0x00900A48 end:0x00900A54
 	.CRT$XCU    start:0x009C6AFC end:0x009C6B08 align:4
 	.bss        start:0x00D13ED8 end:0x00D13EE4
