@@ -152,8 +152,8 @@ struct LHMatrix
 		               point.z * m[8] + point.y * m[5] + point.x * m[2] + m[11]);
 	}
 	// Inliner IL size: 180
-	// BW1W120 inlined BW1M119 0102a970
-	void TransformPoint(LHPoint& point) const
+	// BW1W120 00418a50 BW1M119 0102a970
+	void __fastcall TransformPoint(LHPoint& point) const
 	{
 		float x = point.x;
 		float y = point.y;

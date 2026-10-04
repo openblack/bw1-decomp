@@ -9,9 +9,28 @@
 class GInterfaceFlags : public Base
 {
 public:
-	int      field_0x8;
+	uint8_t  field_0x8;
+	uint8_t  Select : 1;
+	uint8_t  Apply : 1;
+	uint8_t  field_0x9_2 : 6;
+	uint8_t  field_0xa[2];
 	uint32_t field_0xc;
-	uint32_t field_0x10;
+	uint8_t  field_0x10_0 : 1;
+	uint8_t  field_0x10_1 : 1;
+	uint8_t  DoubleClicked : 1;
+	uint8_t  field_0x10_3 : 5;
+	uint8_t  field_0x11[3];
+
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 01000000
+	void ClearDoubleClicked() { DoubleClicked = 0; }
+	// BW1W120 inlined BW1M119 010141a0
+	bool32_t IsDoubleClicked() const { return DoubleClicked; }
+	// BW1W120 inlined BW1M119 011af240
+	bool32_t IsSelect() const { return Select == 1; }
+	// BW1W120 inlined BW1M119 01088790
+	bool32_t IsApply() const { return Apply == 1; }
 
 	// Override methods
 

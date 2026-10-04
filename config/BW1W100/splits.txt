@@ -233,22 +233,28 @@ Black/CameraModeCitadel.cpp:
 	.data       start:0x008FC85C end:0x008FC868
 
 Black/CameraModeCtrInteract.cpp:
-	.text       start:0x0043E720 end:0x0043E9D0
-	.rdata      start:0x00806784 end:0x00806838
+	.text       start:0x0043E720 end:0x0043E960
+	.rdata      start:0x00806784 end:0x00806834
 
 Black/CameraModeDance.cpp:
-	.text       start:0x0043E9D0 end:0x0043EAB0
+	.text       start:0x0043E960 end:0x0043EAB0
+	.rdata      start:0x00806834 end:0x00806880
+	.rdata$r    start:0x008DC9F8 end:0x008DCA44
 	.data       start:0x008FC868 end:0x008FC8B8
 
 Black/CameraModeFollow.cpp:
 	.text       start:0x0043EAB0 end:0x00440AF0
-	.rdata      start:0x008068CC end:0x00806A80
+	.rdata      start:0x008068CC end:0x00806940
 	.CRT$XCU    start:0x008F614C end:0x008F6150 align:4
 	.data       start:0x008FC8DC end:0x008FC8E0
-	.bss        start:0x00B7C888 end:0x00B7F9BC
+	.bss        start:0x00B7C888 end:0x00B7C890
 
 Black/CameraModeFollowHeading.cpp:
 	.text       start:0x00440AF0 end:0x00441170
+	.rdata      start:0x00806940 end:0x0080699C
+	.rdata$r    start:0x008DCA98 end:0x008DCAE4
+	.data       start:0x008FC908 end:0x008FC950
+	.bss        start:0x00B7C890 end:0x00B7C894
 
 Black/CameraModeFree.cpp:
 	.text       start:0x00441170 end:0x00441EA0
@@ -259,15 +265,18 @@ Black/CameraModeNew3.cpp:
 
 Black/CameraModePath.cpp:
 	.text       start:0x0044C890 end:0x0044CB30
-	.rdata      start:0x00806ACC end:0x00806CA0
+	.rdata      start:0x00806ACC end:0x00806C28
 
 Black/CameraModeScript.cpp:
-	.text       start:0x0044CB30 end:0x0044D600
-	.data       start:0x008FCE10 end:0x008FCE70
-	.bss        start:0x00B7FA1C end:0x00B7FAC4
+	.text       start:0x0044CB30 end:0x0044D560
+	.rdata      start:0x00806C28 end:0x00806C80
+	.rdata$r    start:0x008DCBD8 end:0x008DCC24
+	.CRT$XCU    start:0x008F6168 end:0x008F616C align:4
+	.data       start:0x008FCE14 end:0x008FCE40
+	.bss        start:0x00B7FA1C end:0x00B7FA20
 
 Black/CameraModeTwoObjects.cpp:
-	.text       start:0x0044D600 end:0x0044DE90
+	.text       start:0x0044D560 end:0x0044DE90
 	.data       start:0x008FCE98 end:0x008FCF06
 
 Black/CarriedObject.cpp:

@@ -263,7 +263,7 @@ Black/CameraEditor.cpp:
 	.text       start:0x00443B70 end:0x00447310
 	.rdata      start:0x008C7110 end:0x008C763C
 	.CRT$XCU    start:0x009C6200 end:0x009C620C align:4
-	.data       start:0x009CDBA0 end:0x009CE04C
+	.data       start:0x009CDBA0 end:0x009CE018
 	.bss        start:0x00C59BC4 end:0x00C5AFB4
 
 Black/CameraHelp.cpp:
@@ -274,85 +274,112 @@ Black/CameraHelp.cpp:
 
 Black/CameraModeCitadel.cpp:
 	.text       start:0x0044A170 end:0x0044A800
-	.rdata      start:0x008C767C end:0x008C76E0
+	.rdata      start:0x008C767C end:0x008C7730
+	.rdata$r    start:0x009A88A8 end:0x009A893C
 	.CRT$XCU    start:0x009C6224 end:0x009C622C align:4
-	.data       start:0x009CE04C end:0x009CE0A8
+	.data       start:0x009CE018 end:0x009CE078
 	.bss        start:0x00C5AFF0 end:0x00C5AFF4
 
 Black/CameraModeCtrInteract.cpp:
 	.text       start:0x0044A800 end:0x0044AB60
-	.rdata      start:0x008C76E0 end:0x008C77A0
+	.rdata      start:0x008C7730 end:0x008C779C
+	.rdata$r    start:0x009A8940 end:0x009A898C
 	.CRT$XCU    start:0x009C622C end:0x009C6238 align:4
+	.data       start:0x009CE078 end:0x009CE0A8
 	.bss        start:0x00C5AFF4 end:0x00C5AFFC
 
 Black/CameraModeDance.cpp:
 	.text       start:0x0044AB60 end:0x0044AD30
+	.rdata      start:0x008C779C end:0x008C77E8
+	.rdata$r    start:0x009A8990 end:0x009A89DC
 	.CRT$XCU    start:0x009C6238 end:0x009C623C align:4
-	.data       start:0x009CE0A8 end:0x009CE12C
+	.data       start:0x009CE0A8 end:0x009CE0F8
 
 Black/CameraModeFlyAndClick.cpp:
 	.text       start:0x0044AD30 end:0x0044B750
-	.rdata      start:0x008C77A0 end:0x008C7814
+	.rdata      start:0x008C77E8 end:0x008C785C
+	.rdata$r    start:0x009A89E0 end:0x009A8A2C
 	.CRT$XCU    start:0x009C623C end:0x009C6244 align:4
-	.data       start:0x009CE12C end:0x009CE158
+	.data       start:0x009CE0F8 end:0x009CE158
 	.bss        start:0x00C5AFFC end:0x00C5B000
 
 Black/CameraModeFollow.cpp:
 	.text       start:0x0044B750 end:0x0044D840
-	.rdata      start:0x008C7814 end:0x008C7B58
+	.rdata      start:0x008C785C end:0x008C78F4
+	.rdata$r    start:0x009A8A30 end:0x009A8A7C
 	.CRT$XCU    start:0x009C6244 end:0x009C6250 align:4
 	.data       start:0x009CE158 end:0x009CE1A8
-	.bss        start:0x00C5B000 end:0x00C5E134
+	.bss        start:0x00C5B000 end:0x00C5B008
 
 Black/CameraModeFollowHeading.cpp:
 	.text       start:0x0044D840 end:0x0044DF90
+	.rdata      start:0x008C78F4 end:0x008C7950
+	.rdata$r    start:0x009A8A80 end:0x009A8ACC
 	.CRT$XCU    start:0x009C6250 end:0x009C6254 align:4
-	.data       start:0x009CE1A8 end:0x009CE5D8
+	.data       start:0x009CE1A8 end:0x009CE220
+	.bss        start:0x00C5B008 end:0x00C5B00C
 
 Black/CameraModeFree.cpp:
 	.text       start:0x0044DF90 end:0x0044ED50
+	.rdata      start:0x008C7950 end:0x008C79AC
+	.rdata$r    start:0x009A8AD0 end:0x009A8B1C
 	.CRT$XCU    start:0x009C6254 end:0x009C6258 align:4
+	.data       start:0x009CE220 end:0x009CE228
 
 Black/CameraModeNew1.cpp:
 	.text       start:0x0044ED50 end:0x00451C50
+	.rdata      start:0x008C79AC end:0x008C7B18
+	.rdata$r    start:0x009A8B20 end:0x009A8BBC
 	.CRT$XCU    start:0x009C6258 end:0x009C625C align:4
+	.data       start:0x009CE228 end:0x009CE270
+	.bss        start:0x00C5B00C end:0x00C5B010
 
 Black/CameraModeNew2.cpp:
 	.text       start:0x00451C50 end:0x00454850
+	.rdata      start:0x008C7B18 end:0x008C7BB0
+	.rdata$r    start:0x009A8BC0 end:0x009A8C0C
 	.CRT$XCU    start:0x009C625C end:0x009C6260 align:4
+	.data       start:0x009CE270 end:0x009CE608
 
 Black/CameraModeNew3.cpp:
 	.text       start:0x00454850 end:0x00460E20
-	.rdata      start:0x008C7B58 end:0x008C7BFC
+	.rdata      start:0x008C7BB0 end:0x008C7D04
+	.rdata$r    start:0x009A8C10 end:0x009A8C5C
 	.CRT$XCU    start:0x009C6260 end:0x009C627C align:4
-	.bss        start:0x00C5E134 end:0x00C5E18C
+	.data       start:0x009CE608 end:0x009CE730
+	.bss        start:0x00C5B010 end:0x00C5E18C
 
 Black/CameraModePath.cpp:
 	.text       start:0x00460E20 end:0x00461120
-	.rdata      start:0x008C7BFC end:0x008C7DD0
+	.rdata      start:0x008C7D04 end:0x008C7D58
+	.rdata$r    start:0x009A8C60 end:0x009A8CAC
 	.CRT$XCU    start:0x009C627C end:0x009C6284 align:4
-	.data       start:0x009CE738 end:0x009CE75C
-	.bss        start:0x00C5E18C end:0x00C5E194
+	.data       start:0x009CE730 end:0x009CE75C
+	.bss        start:0x00C5E18C end:0x00C5E190
 
 Black/CameraModeScript.cpp:
 	.text       start:0x00461120 end:0x00461BB0
+	.rdata      start:0x008C7D58 end:0x008C7DB0
+	.rdata$r    start:0x009A8CB0 end:0x009A8CFC
 	.CRT$XCU    start:0x009C6284 end:0x009C628C align:4
-	.data       start:0x009CE75C end:0x009CE7C0
-	.bss        start:0x00C5E194 end:0x00C5E23C
+	.data       start:0x009CE75C end:0x009CE790
+	.bss        start:0x00C5E194 end:0x00C5E198
 
 Black/CameraModeTwoObjects.cpp:
 	.text       start:0x00461BB0 end:0x00462530
+	.rdata      start:0x008C7DB0 end:0x008C7E1C
+	.rdata$r    start:0x009A8D00 end:0x009A8D4C
 	.CRT$XCU    start:0x009C628C end:0x009C6290 align:4
-	.data       start:0x009CE7C0 end:0x009CE86C
+	.data       start:0x009CE790 end:0x009CE7F0
 
 Black/CarriedObject.cpp:
 	.text       start:0x00462530 end:0x00462920
 
 Black/Citadel.cpp:
 	.text       start:0x00462920 end:0x00464290
-	.rdata      start:0x008C7DD0 end:0x008C7E68
+	.rdata      start:0x008C7E1C end:0x008C7E68
 	.CRT$XCU    start:0x009C6290 end:0x009C629C align:4
-	.data       start:0x009CE86C end:0x009CE9D0
+	.data       start:0x009CE7F0 end:0x009CE9D0
 	.bss        start:0x00C5E23C end:0x00C5E26C
 
 Black/CitadelHeart.cpp:
@@ -729,7 +756,7 @@ Black/DialogBoxOptions.cpp:
 	.rdata      start:0x008D85F0 end:0x008D8698
 	.CRT$XCU    start:0x009C674C end:0x009C6758 align:4
 	.data       start:0x00BE8D40 end:0x00BE8E14
-	.bss        start:0x00CC62AC end:0x00CC62F0
+	.bss        start:0x00CC62AC end:0x00CC62C0
 
 Black/DialogBoxSaveMessage.cpp:
 	.text       start:0x00515990 end:0x00515EC0
@@ -740,7 +767,7 @@ Black/DrawingObject.cpp:
 	.text       start:0x00515EC0 end:0x0051CCB0
 	.rdata      start:0x008D8698 end:0x008D8760
 	.CRT$XCU    start:0x009C675C end:0x009C6770 align:4
-	.bss        start:0x00CC62F0 end:0x00CC6328
+	.bss        start:0x00CC62C0 end:0x00CC6328
 
 Black/EditorAnim.cpp:
 	.text       start:0x0051CCB0 end:0x0051EE90

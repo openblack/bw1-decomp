@@ -4,7 +4,11 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include "Base.h" /* For struct Base */
+#include <re_common.h> /* For bool32_t */
+
+#include "Base.h"            /* For struct Base */
+#include "BindableAction.h"  /* For enum BINDABLE_ACTIONS */
+#include "CameraHelpTypes.h" /* For enum CH_ANIMTYPE */
 
 enum HELP_SET_CATEGORY
 {
@@ -253,69 +257,71 @@ class HelpSystem : public Base
 public:
 	// BW1W120 005c5710 BW1M119 01359b70
 	static HelpSystem* Create();
-	HelpSpirit*        SpiritType2; /* 0x8 */
-	HelpSpirit*        SpiritType1;
-	HelpDudeControl*   help_dude_control; /* 0x10 */
-	uint32_t           help_text;
-	Bubble*            bubble;
-	uint32_t           field_0x1c;
-	uint32_t           field_0x20;
-	uint32_t           icon0;
-	uint32_t           icon1;
-	uint32_t           icon2;
-	uint8_t            field_0x30[0x48];
-	uint32_t           field_0x78[0x98];
-	uint32_t           field_0x2d8[0x9];
-	uint32_t           field_0x2fc[0x98];
-	uint32_t           field_0x55c;
-	uint32_t           field_0x560;
-	uint8_t            field_0x564;
-	uint8_t            field_0x565;
-	uint8_t            field_0x566;
-	uint8_t            field_0x567;
-	uint32_t           field_0x568;
-	uint16_t           field_0x56c;
-	uint8_t            field_0x56e;
-	uint8_t            field_0x56f;
-	uint32_t           field_0x570;
-	uint32_t           field_0x574;
-	uint32_t           field_0x578;
-	uint32_t           field_0x57c;
-	uint32_t           field_0x580;
-	uint32_t           field_0x584[0x6];
-	uint8_t            field_0x59c[0x4028];
-	uint32_t           field_0x45c4;
-	uint32_t           field_0x45c8;
-	uint32_t           field_0x45cc;
-	uint32_t           field_0x45d0;
-	uint8_t            field_0x45d4;
-	uint8_t            field_0x45d5;
-	uint8_t            field_0x45d6;
-	uint8_t            field_0x45d7;
-	uint32_t           field_0x45d8;
-	uint32_t           field_0x45dc;
-	uint32_t           field_0x45e0;
-	uint32_t           field_0x45e4;
-	int                field_0x45e8;
-	int                field_0x45ec;
-	float              field_0x45f0;
-	int                field_0x45f4;
-	int                field_0x45f8;
-	uint32_t           field_0x45fc;
-	uint8_t            field_0x4600;
-	uint8_t            field_0x4601;
-	uint8_t            field_0x4602;
-	uint8_t            field_0x4603;
-	uint8_t            field_0x4604;
-	uint8_t            field_0x4605;
-	uint8_t            field_0x4606;
-	uint8_t            field_0x4607;
-	uint32_t           field_0x4608;
-	uint32_t           field_0x460c;
-	uint8_t            field_0x4610;
-	uint8_t            field_0x4611;
-	uint8_t            field_0x4612;
-	uint8_t            field_0x4613;
+	// BW1W120 005c78f0 BW1M119 01094c50
+	static bool32_t  ConvertActionToKMIcon(BINDABLE_ACTIONS action, CH_ANIMTYPE* anim_type, int* key, int* mouse_type);
+	HelpSpirit*      SpiritType2;
+	HelpSpirit*      SpiritType1;
+	HelpDudeControl* help_dude_control;
+	uint32_t         help_text;
+	Bubble*          bubble;
+	uint32_t         field_0x1c;
+	uint32_t         field_0x20;
+	uint32_t         icon0;
+	uint32_t         icon1;
+	uint32_t         icon2;
+	uint8_t          field_0x30[0x48];
+	uint32_t         field_0x78[0x98];
+	uint32_t         field_0x2d8[0x9];
+	uint32_t         field_0x2fc[0x98];
+	uint32_t         field_0x55c;
+	uint32_t         field_0x560;
+	uint8_t          field_0x564;
+	uint8_t          field_0x565;
+	uint8_t          field_0x566;
+	uint8_t          field_0x567;
+	uint32_t         field_0x568;
+	uint16_t         field_0x56c;
+	uint8_t          field_0x56e;
+	uint8_t          field_0x56f;
+	uint32_t         field_0x570;
+	uint32_t         field_0x574;
+	uint32_t         field_0x578;
+	uint32_t         field_0x57c;
+	uint32_t         field_0x580;
+	uint32_t         field_0x584[0x6];
+	uint8_t          field_0x59c[0x4028];
+	uint32_t         field_0x45c4;
+	uint32_t         field_0x45c8;
+	uint32_t         field_0x45cc;
+	uint32_t         field_0x45d0;
+	uint8_t          field_0x45d4;
+	uint8_t          field_0x45d5;
+	uint8_t          field_0x45d6;
+	uint8_t          field_0x45d7;
+	uint32_t         field_0x45d8;
+	uint32_t         field_0x45dc;
+	uint32_t         field_0x45e0;
+	uint32_t         field_0x45e4;
+	int              field_0x45e8;
+	int              field_0x45ec;
+	float            field_0x45f0;
+	int              field_0x45f4;
+	int              field_0x45f8;
+	uint32_t         field_0x45fc;
+	uint8_t          field_0x4600;
+	uint8_t          field_0x4601;
+	uint8_t          field_0x4602;
+	uint8_t          field_0x4603;
+	uint8_t          field_0x4604;
+	uint8_t          field_0x4605;
+	uint8_t          field_0x4606;
+	uint8_t          field_0x4607;
+	uint32_t         field_0x4608;
+	uint32_t         field_0x460c;
+	uint8_t          field_0x4610;
+	uint8_t          field_0x4611;
+	uint8_t          field_0x4612;
+	uint8_t          field_0x4613;
 
 	// Override methods
 

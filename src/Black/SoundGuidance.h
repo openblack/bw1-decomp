@@ -11,6 +11,7 @@
 
 // Forward Declares
 
+class Creature;
 class GInterfaceStatus;
 class GameThingWithPos;
 struct LH_SamplePlayOptions;
@@ -81,6 +82,8 @@ public:
 	void Init(GInterfaceStatus& status);
 	// BW1W120 0071cbe0 BW1M119 01516150
 	void HelpSpritesLowOnPeople(Town& param_1);
+	// BW1W120 0071cd40 BW1M119 01515df0
+	void HelpSpritesCreatureFight(Creature& creature);
 };
 
 #endif /* BW1_DECOMP_SOUND_GUIDANCE_INCLUDED_H */

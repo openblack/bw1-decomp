@@ -26,6 +26,8 @@ struct LH3DColor
 		r = red;
 		a = alpha;
 	}
+	// BW1W120 inlined BW1M119 01568690
+	LH3DColor(uint8_t _r, uint8_t _g, uint8_t _b) : b(_b), g(_g), r(_r), a(0xff) {}
 
 	// Non-virtual methods
 

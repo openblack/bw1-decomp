@@ -34,14 +34,14 @@ public:
 	uint32_t          field_0x10;
 	float             field_0x14;
 	float             field_0x18;
-	uint32_t          field_0x1c;
+	float             Energy;
 	uint32_t          field_0x20;
 	uint16_t          field_0x24;
 	uint8_t           field_0x26;
 	uint8_t           field_0x27;
-	Object*           ObjectCarried; /* 0x28 */
+	Object*           ObjectCarried;
 	uint32_t          field_0x2c;
-	float             field_0x30;
+	float             Exhaustion;
 	uint32_t          field_0x34;
 	uint32_t          field_0x38;
 	float             field_0x3c;
@@ -70,6 +70,10 @@ public:
 
 	// BW1W120 inlined BW1M119 011e9d60
 	Object* GetObjectCarried() { return ObjectCarried; }
+	// BW1W120 inlined BW1M119 01509240
+	float GetEnergy() { return Energy; }
+	// BW1W120 inlined BW1M119 0128f450
+	float GetExhaustion() { return Exhaustion; }
 };
 
 #endif /* BW1_DECOMP_CREATURE_PHYSICAL_INCLUDED_H */

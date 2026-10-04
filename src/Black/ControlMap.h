@@ -12,10 +12,12 @@
 
 struct ControlMap
 {
-	// Shared delta returned by ControlMap::DeltaPos on Mac.
-	// Original member spelling unrecovered; storage remains extracted.
 	// BW1W120 00c5e8d0
 	static LHCoord MouseDelta;
+	// BW1W120 inlined BW1M119 011ac280
+	static LHCoord DeltaPos() { return MouseDelta; }
+	// BW1W120 00c5e8d8
+	static int     MouseWheelDelta;
 	BindableAction BindableActions[_BINDABLE_ACTION_SIZE];      /* 0x0 */
 	bool32_t       BindableActionStates[_BINDABLE_ACTION_SIZE]; /* 0x648c */
 	bool32_t       Field20x6510;
@@ -41,6 +43,10 @@ struct ControlMap
 	void GetText(LH_KEY key, char16_t* out_text);
 	// BW1W120 00470ab0 BW1M119 01092cf0
 	void ProcessActionsPerformed();
+	// BW1W120 00470af0 BW1M119 01073e00
+	bool32_t IsActionPerformed(BINDABLE_ACTIONS action);
+	// BW1W120 00471940 BW1M119 01094b00
+	bool32_t IsMouseButtonAssignedToAction(BINDABLE_ACTIONS action);
 };
 
 static_assert(sizeof(ControlMap) == 0x6534, "ControlMap size is incorrect");

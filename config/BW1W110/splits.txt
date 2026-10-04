@@ -246,27 +246,32 @@ Black/CameraModeCitadel.cpp:
 	.data       start:0x009BD6AC end:0x009BD6B8
 
 Black/CameraModeCtrInteract.cpp:
-	.text       start:0x00449D90 end:0x0044A070
-	.rdata      start:0x008B76E0 end:0x008B7794
+	.text       start:0x00449D90 end:0x0044A000
+	.rdata      start:0x008B76E0 end:0x008B7790
 
 Black/CameraModeDance.cpp:
-	.text       start:0x0044A070 end:0x0044A1A0
-	.data       start:0x009BD6B8 end:0x009BD73C
+	.text       start:0x0044A000 end:0x0044A1A0
+	.rdata      start:0x008B7790 end:0x008B77DC
+	.rdata$r    start:0x00998890 end:0x009988DC
+	.data       start:0x009BD6B8 end:0x009BD708
 
 Black/CameraModeFlyAndClick.cpp:
 	.text       start:0x0044A1A0 end:0x0044AB80
-	.rdata      start:0x008B7794 end:0x008B7808
+	.rdata      start:0x008B77DC end:0x008B7808
 
 Black/CameraModeFollow.cpp:
-	.text       start:0x0044AB80 end:0x0044CCA0
-	.rdata      start:0x008B7808 end:0x008B7B48
+	.text       start:0x0044AB80 end:0x0044CC40
+	.rdata      start:0x008B7808 end:0x008B78E8
 	.CRT$XCU    start:0x009B618C end:0x009B6194 align:4
 	.data       start:0x009BD760 end:0x009BD7B0
-	.bss        start:0x00C49E38 end:0x00C4CF6C
+	.bss        start:0x00C49E38 end:0x00C49E40
 
 Black/CameraModeFollowHeading.cpp:
-	.text       start:0x0044CCA0 end:0x0044D360
-	.data       start:0x009BD7B0 end:0x009BDBE8
+	.text       start:0x0044CC40 end:0x0044D360
+	.rdata      start:0x008B78E8 end:0x008B7944
+	.rdata$r    start:0x00998980 end:0x009989CC
+	.data       start:0x009BD7B0 end:0x009BD828
+	.bss        start:0x00C49E40 end:0x00C49E44
 
 Black/CameraModeFree.cpp:
 	.text       start:0x0044D360 end:0x0044E0F0
@@ -284,16 +289,18 @@ Black/CameraModeNew3.cpp:
 
 Black/CameraModePath.cpp:
 	.text       start:0x004600F0 end:0x004603C0
-	.rdata      start:0x008B7BEC end:0x008B7DC0
+	.rdata      start:0x008B7BEC end:0x008B7D48
 
 Black/CameraModeScript.cpp:
-	.text       start:0x004603C0 end:0x00460EC0
+	.text       start:0x004603C0 end:0x00460E20
+	.rdata      start:0x008B7D48 end:0x008B7DA0
+	.rdata$r    start:0x00998BB0 end:0x00998BFC
 	.CRT$XCU    start:0x009B61AC end:0x009B61B0 align:4
-	.data       start:0x009BDD58 end:0x009BDDB8
-	.bss        start:0x00C4CFCC end:0x00C4D074
+	.data       start:0x009BDD5C end:0x009BDD88
+	.bss        start:0x00C4CFCC end:0x00C4CFD0
 
 Black/CameraModeTwoObjects.cpp:
-	.text       start:0x00460EC0 end:0x00461770
+	.text       start:0x00460E20 end:0x00461770
 
 Black/CarriedObject.cpp:
 	.text       start:0x00461770 end:0x00461B60

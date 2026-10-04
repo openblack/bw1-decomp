@@ -7,6 +7,8 @@
 #include "Fixed.h"            /* For struct Fixed */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
+
 // Forward Declares
 
 class Base;
@@ -21,7 +23,10 @@ class Object;
 class GArena : public GameThingWithPos
 {
 public:
-	uint8_t field_0x28[0x24];
+	uint8_t            field_0x28[0x10];
+	Creature*          Creatures[2];
+	uint8_t            field_0x40[0x8];
+	LHListNode<GArena> next;
 
 	// Override methods
 
@@ -41,6 +46,11 @@ public:
 	virtual uint32_t GetSaveType();
 	// BW1W120 00424790 BW1M119 010afef0
 	virtual const char* GetText();
+
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 011ac8d0
+	Creature* GetCreature(unsigned long index) { return Creatures[index]; }
 };
 
 class ArenaSpellIcon : public Fixed

@@ -36,6 +36,7 @@ class Base;
 class Citadel;
 class Creature;
 class GAlignment;
+class GComputerPlayer;
 class GInterface;
 class GInterfaceStatus;
 class GameThingWithPos;
@@ -88,7 +89,7 @@ public:
 	int              field_0x92c;
 	uint8_t          field_0x930[0x10];
 	uint32_t         WindResistance;
-	uintptr_t        field_0x944;
+	GComputerPlayer* ComputerPlayer;
 	uint8_t          field_0x948[0x28];
 	int              MagicRemainder[MAGIC_TYPE_LAST];
 	bool             MagicEnabled[MAGIC_TYPE_LAST];
@@ -174,7 +175,7 @@ public:
 	// BW1W120 0064ad00 BW1M119 0104fab0
 	float CalculateInfluencePower();
 	// BW1W120 0064b590 BW1M119 0149c420
-	LH3DColor* GetPlayer3DColor(LH3DColor* color);
+	LH3DColor GetPlayer3DColor();
 	// BW1W120 0064c220 BW1M119 0149aa30
 	bool32_t IsMagicTypeEnabled(MAGIC_TYPE type);
 	// BW1W120 0064d120 BW1M119 01053eb0

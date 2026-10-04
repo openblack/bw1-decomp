@@ -49,11 +49,8 @@ struct GDebug
 
 	// BW1W120 00511f50 BW1M119 01090b10
 	void ClearMessages(long category);
-
-	// Static methods
-
 	// BW1W120 00511da0 BW1M119 0102f280
-	static void SetMessage(GDebug* debug, uint16_t param_2, char* fmt, ...);
+	void SetMessage(uint16_t category, char* fmt, ...);
 };
 
 #endif /* BW1_DECOMP_DEBUG_INCLUDED_H */

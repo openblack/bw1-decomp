@@ -513,6 +513,18 @@ def call_indirect(slot):
 # addresses; each call is restored over nops of its own length, and rows are skipped
 # where it is already present (the owning unit is still linked from its split object).
 BW1W120_SAFEDISC_CALLS = (
+    (0x0044ABCA, call_indirect(0x008A9190)),  # CameraModeDance: __imp__RemoveDirectoryA@4
+    (0x0044AC8B, call_rel32(0x00401879)),  # CameraModeDance
+    (0x0044ACCA, call_indirect(0x008A96C4)),  # CameraModeDance: __imp__LHWaveGetQMixerDirectSoundObject...
+    (0x0044D89B, call_rel32(0x00401879)),  # CameraModeFollowHeading
+    (0x00460ECA, call_indirect(0x008A9310)),  # CameraModePath
+    (0x00460F4B, call_rel32(0x00401879)),  # CameraModePath
+    (0x0046113B, call_rel32(0x00401879)),  # CameraModeScript
+    (0x004611FB, call_rel32(0x00401879)),  # CameraModeScript
+    (0x0046126A, call_indirect(0x008A96F4)),  # CameraModeScript: __imp__LHAtmosProcess...
+    (0x004616EA, call_indirect(0x008A9958)),  # CameraModeScript
+    (0x004619AA, call_indirect(0x008A9970)),  # CameraModeScript
+    (0x00461B7B, call_rel32(0x00401879)),  # CameraModeScript
     (0x0046B7AB, call_rel32(0x00401879)),  # Container
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
     (0x0052E3FA, call_indirect(0x008A901C)),  # Fixed: __imp__TrackMouseEvent@4

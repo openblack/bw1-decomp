@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 #include "Morphable.h" /* For struct Morphable */
@@ -33,8 +34,7 @@ class CHand : public Morphable
 public:
 	// BW1W120 0046e8c0 BW1M119 011cd410
 	void OnClearMap();
-	struct State
-	{
+	union State {
 		struct Named
 		{
 			HandStateInvisible*   invisible;
@@ -65,15 +65,14 @@ public:
 	uint8_t           field_0x4859;
 	uint8_t           field_0x485a;
 	uint8_t           field_0x485b;
-	uint32_t          field_0x485c;
-	uint32_t          field_0x4860;
+	LHCoord           ScreenPos;
 	uint32_t          field_0x4864;
 	uint8_t           field_0x4868;
 	uint8_t           field_0x4869;
 	uint8_t           field_0x486a;
 	uint8_t           field_0x486b;
-	uint32_t          field_0x486c;
-	uint32_t          field_0x4870;
+	int               field_0x486c;
+	int               field_0x4870;
 	uint8_t           field_0x4874;
 	uint8_t           field_0x4875;
 	uint8_t           field_0x4876;
@@ -234,6 +233,8 @@ public:
 	CHand(LHPoint point, GInterfaceStatus* status);
 
 	// Non-virtual methods
+	// BW1W120 0046c1b0 BW1M119 011d0600
+	void Show(bool32_t show);
 	// BW1W120 0046eb10 BW1M119 011cce70
 	uint32_t Save(GameOSFile& file);
 	// BW1W120 0046e930 BW1M119 011cd140

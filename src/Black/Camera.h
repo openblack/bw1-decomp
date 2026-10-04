@@ -67,6 +67,8 @@ public:
 	// BW1W120 00442810 BW1M119 01034fe0
 	static void SetPointFromPointDistanceHeadingAndPitch(LHPoint* param_1, const LHPoint& point, float distance,
 	                                                     float heading, float pitch);
+	// BW1W120 00442860 BW1M119 011a2d80
+	static float GetHeadingFromPoints(const LHPoint& origin, const LHPoint& focus);
 	// BW1W120 004428d0 BW1M119 01080170
 	static void GetHeadingAndPitchFromPoints(const LHPoint& origin, const LHPoint& heading, float* pitch, float* yaw);
 
@@ -78,19 +80,27 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00441b70 BW1M119 011a3880
-	bool CantExitCurrentMode();
+	bool32_t CantExitCurrentMode();
 	// BW1W120 00441cd0 BW1M119 011a3650
 	void SwitchToViewMode(CameraMode* mode);
+	// BW1W120 00441c50 BW1M119 011a3770
+	void PopViewMode();
 	// BW1W120 00441d40 BW1M119 01090140
 	void CheckStackedModesForValidity();
+	// BW1W120 00441e60 BW1M119 011a33a0
+	float CalculateRotationAngleY();
 	// BW1W120 00441f50 BW1M119 01091a90
 	void Validate();
 	// BW1W120 00441f80 BW1M119 0102f680
 	void Update();
+	// BW1W120 00442eb0 BW1M119 null
+	bool32_t IsFollowing(GameThingWithPos* thing);
 	// BW1W120 00442ef0 BW1M119 0102ddf0
 	void UpdateGameThingWithPosData();
 	// BW1W120 00443680 BW1M119 011a1840
 	void SetCameraFov(float fov, float time);
+	// BW1W120 004438c0 BW1M119 011a13d0
+	void SetPositionAndFocus(const LHPoint& position, const LHPoint& focus);
 };
 
 #endif /* BW1_DECOMP_CAMERA_INCLUDED_H */

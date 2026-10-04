@@ -9,7 +9,7 @@ void Animal::SetStateSpeed() {}
 
 uint32_t Animal::KeepFlockMemberWithinFlockArea()
 {
-	MapCoords flockPos = flock->GetFlockPos();
+	MapCoords& flockPos = *flock->GetFlockPos();
 
 	if (PosWithinDomain(coords, 1.0f) != 0)
 	{

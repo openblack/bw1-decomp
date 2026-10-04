@@ -93,7 +93,8 @@ public:
 	uint8_t   field_0x5230[8];
 	uint32_t  field_0x5238;
 	uint32_t  field_0x523c;
-	uint8_t   field_0x5240[0x30];
+	float     EventualHeading;
+	uint8_t   field_0x5244[0x2c];
 	int       SafeBufferSelector; /* 0x5270 */
 	uint32_t  field_0x5274;
 	uint8_t*  SafeBuffer0;
@@ -158,6 +159,10 @@ public:
 
 	// BW1W120 inlined BW1M119 011a6f80
 	float GetStandingHeight() { return 15.0f * Size1; }
+	// BW1W120 004867b0 BW1M119 011f8a20
+	float GetHeadHeight();
+	// BW1W120 inlined BW1M119 011a6f40
+	float GetEventualHeading() { return EventualHeading; }
 	// BW1W120 0047fa20 BW1M119 01202760
 	void SetRequiredSpeed(float speed);
 	// BW1W120 00480a60 BW1M119 012011a0

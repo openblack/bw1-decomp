@@ -7,6 +7,7 @@
 
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
 #include <Lionhead/LHLib/ver5.0/LHFastPointer.h>
+#include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE */
 
 #include "BaseInfo.h"               /* For struct BaseInfo */
 #include "GameThingWithPos.h"       /* For struct GameThingWithPos */
@@ -76,7 +77,7 @@ public:
 	uint32_t                field_0x398;
 	GInterfaceStatus*       status;
 	LHFastPointer<CHand>    hand; /* 0x3a0 */
-	InterfaceHandState      field_0x3a4;
+	InterfaceHandState      HandState;
 	GInterfaceCollide       interface_collide; /* 0x3b0 */
 	GInterfaceCollide       field_0x3e0;
 	float                   field_0x410;
@@ -90,7 +91,7 @@ public:
 	GInterfaceMessageBuffer MessageBuffers; /* 0x430 */
 	int                     field_0x444;
 	int                     field_0x448;
-	uint32_t                field_0x44c;
+	bool32_t                CameraMoved;
 	uint32_t                field_0x450;
 	uint32_t                field_0x454;
 	uint32_t                field_0x458;
@@ -160,6 +161,8 @@ public:
 	void ProcessFrameUpdates();
 	// BW1W120 005db710 BW1M119 01074d00
 	bool32_t IsPlayBack(uint32_t playback) const;
+	// BW1W120 inlined BW1M119 010789b0
+	CHand* GetRenderHand() { return hand.Get(); }
 	// BW1W120 005d0610 BW1M119 01086440
 	void UpdateHandRenderCollide();
 	// BW1W120 005ce3f0 BW1M119 01363de0
@@ -176,6 +179,6 @@ public:
 static_assert(offsetof(GInterface, IsSpecificPlayback) == 0x15c, "GInterface playback offset is incorrect");
 static_assert(offsetof(GInterface, hand) == 0x3a0, "GInterface hand offset is incorrect");
 static_assert(sizeof(LHFastPointer<CHand>) == 4, "GInterface hand pointer size is incorrect");
-static_assert(offsetof(GInterface, field_0x3a4) == 0x3a4, "GInterface hand state offset is incorrect");
+static_assert(offsetof(GInterface, HandState) == 0x3a4, "GInterface hand state offset is incorrect");
 
 #endif /* BW1_DECOMP_INTERFACE_INCLUDED_H */
