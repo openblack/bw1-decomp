@@ -25,6 +25,27 @@
 #include "HelpText.h"      /* For HelpTextDataBase */
 #include "PlayerProfile.h" /* For PlayerProfile */
 
+// Loading screen palette, as 0xAARRGGBB.
+#define TIP_PANEL_COLOUR          0xA0808080 // Translucent grey band behind the tip text
+#define VIDEO_SHADE_COLOUR        0xFF000000 // Darkens the lower half of the blurred backdrop
+#define LOADING_BAR_SWEEP_COLOUR  0xCDFFFFFF // Bright sweep along the loading bar
+#define LOADING_BAR_SHADOW_COLOUR 0xFF000000 // Dark sweep and inner shadow of the loading bar
+#define VIDEO_OUTLINE_COLOUR      0xFFFFFFFF // Outline around the tip video
+#define PLEASE_WAIT_SHADE_COLOUR  0x9F000000 // Shadows above and below the "please wait" banner
+#define PLEASE_WAIT_EDGE_COLOUR   0xFF202020 // Darker ends of the banner
+#define PLEASE_WAIT_BODY_COLOUR   0xFF404040 // Banner fill
+#define PLEASE_WAIT_LINE_COLOUR   0xF0F0F0F0 // Lines along the top and bottom of the banner
+
+// Red, green and blue of the LH3DColors whose alpha follows the fade.
+#define BACKDROP_RGB    200, 200, 200 // Blurred backdrop and version number
+#define TEXT_RGB        255, 255, 255 // Tip text, video and "please wait" text
+#define TEXT_SHADOW_RGB 0, 0, 0
+
+// Tip n is help text TIP_HELP_TEXT_BASE + n, for n in 1..NUM_TIPS. HelpTextEnums.h comes from a later
+// build whose HELP_TEXT_TOTD_* entries sit elsewhere, so its values do not apply here.
+#define NUM_TIPS           34
+#define TIP_HELP_TEXT_BASE 5151
+
 static int  LoadingBarDuration = 15000;
 static bool LoadingScreenActive = true;
 
@@ -115,7 +136,7 @@ void DrawLoading(float fade, float progress)
 			int videoHeight = screenHeight * 0.64f;
 			int alphaByte = alpha * 255.0f;
 
-			LH3DRender::g_mode_cleaning = 1;
+			LH3DRender::g_mode_cleaning = true;
 			LHSys::TheSystem.mouse.SetCursor(NULL, LH_MOUSE_IMAGE_TYPE_0x01, 0);
 			GatheringText* font = GatheringText::gamefont;
 			LH3DRender::StartFrame();
@@ -126,53 +147,55 @@ void DrawLoading(float fade, float progress)
 				SetupThing::DrawBox(0, 0, screenWidth, screenHeight, 1.0f / 64.0f, 1.0f / 64.0f,
 				                    GGame::TipVideo->BlurWidth / 256.0f - 1.0f / 64.0f,
 				                    GGame::TipVideo->BlurHeight / 256.0f - 1.0f / 64.0f, GGame::TipVideo->BlurMaterial,
-				                    &LH3DColor(200, 200, 200, alphaByte), 0, -40960, 40960, false, 100.0f);
-				SetupThing::DrawBox(0, screenHeight / 2, screenWidth, screenHeight, 0, 0, 0xFF000000, 0xFF000000, 0, 0);
+				                    &LH3DColor(BACKDROP_RGB, alphaByte), 0, -40960, 40960, false, 100.0f);
+				SetupThing::DrawBox(0, screenHeight / 2, screenWidth, screenHeight, 0, 0, VIDEO_SHADE_COLOUR,
+				                    VIDEO_SHADE_COLOUR, 0, 0);
 				if (videoFade < 1.0f)
 				{
 					SetupThing::DrawBox(videoX, videoY, videoX + videoWidth, videoY + videoHeight, 1.0f / 64.0f,
 					                    1.0f / 64.0f, GGame::TipVideo->BlurWidth / 256.0f - 1.0f / 64.0f,
 					                    GGame::TipVideo->BlurHeight / 256.0f - 1.0f / 64.0f,
-					                    GGame::TipVideo->BlurMaterial, &LH3DColor(255, 255, 255, alphaByte), 0, -40960,
+					                    GGame::TipVideo->BlurMaterial, &LH3DColor(TEXT_RGB, alphaByte), 0, -40960,
 					                    40960, false, 100.0f);
 				}
 				if (videoFade > 0.0f)
 				{
-					GGame::TipVideo->DoDrawToScreen(LH3DColor(255, 255, 255, videoFade * 255.0f), videoX, videoY,
-					                                videoWidth, videoHeight, false, false);
+					GGame::TipVideo->DoDrawToScreen(LH3DColor(TEXT_RGB, videoFade * 255.0f), videoX, videoY, videoWidth,
+					                                videoHeight, false, false);
 				}
 			}
 			else
 			{
-				GGame::TipVideo->DoDrawToScreen(LH3DColor(255, 255, 255, alphaByte), videoX, videoY, videoWidth,
-				                                videoHeight, false, false);
+				GGame::TipVideo->DoDrawToScreen(LH3DColor(TEXT_RGB, alphaByte), videoX, videoY, videoWidth, videoHeight,
+				                                false, false);
 			}
 
-			SetupThing::DrawBox(0, textTop, screenWidth / 5, textBottom, 0, 0xA0808080, 0xA0808080, 0, 0, 0);
-			SetupThing::DrawBox(screenWidth / 5, textTop, 4 * screenWidth / 5, textBottom, 0xA0808080, 0xA0808080,
-			                    0xA0808080, 0xA0808080, 0, 0);
-			SetupThing::DrawBox(4 * screenWidth / 5, textTop, screenWidth, textBottom, 0xA0808080, 0, 0, 0xA0808080, 0,
+			SetupThing::DrawBox(0, textTop, screenWidth / 5, textBottom, 0, TIP_PANEL_COLOUR, TIP_PANEL_COLOUR, 0, 0,
 			                    0);
+			SetupThing::DrawBox(screenWidth / 5, textTop, 4 * screenWidth / 5, textBottom, TIP_PANEL_COLOUR,
+			                    TIP_PANEL_COLOUR, TIP_PANEL_COLOUR, TIP_PANEL_COLOUR, 0, 0);
+			SetupThing::DrawBox(4 * screenWidth / 5, textTop, screenWidth, textBottom, TIP_PANEL_COLOUR, 0, 0,
+			                    TIP_PANEL_COLOUR, 0, 0);
 
 			int   fontSize = screenWidth / 20 - 2;
 			float textHeight = font->DrawTextA(TipText, textLeft, textTop, textTop, textRight, textBottom, textBottom,
 			                                   textTop, LH3DTech::g_info_transform.NearClip * 1.5f, fontSize,
-			                                   &LH3DColor(255, 255, 255, alphaByte), 1, 0, 1);
+			                                   &LH3DColor(TEXT_RGB, alphaByte), 1, 0, 1);
 			while (textHeight >= textBottom - textTop && fontSize > 8)
 			{
 				fontSize -= 2;
 				textHeight = font->DrawTextA(TipText, textLeft, textTop, textTop, textRight, textBottom, textBottom,
 				                             textTop, LH3DTech::g_info_transform.NearClip * 1.5f, fontSize,
-				                             &LH3DColor(255, 255, 255, alphaByte), 1, 0, 1);
+				                             &LH3DColor(TEXT_RGB, alphaByte), 1, 0, 1);
 			}
 
 			float textOffset = ((textBottom - textTop) - textHeight) * 0.5f;
 			font->DrawTextA(TipText, textLeft + 2, textTop + 2, textTop + 2, textRight + 2, textBottom + 2,
 			                textBottom + 2, textTop + 2 + textOffset, LH3DTech::g_info_transform.NearClip * 1.5f,
-			                fontSize, &LH3DColor(0, 0, 0, alphaByte / 2), 1, 1, 1);
+			                fontSize, &LH3DColor(TEXT_SHADOW_RGB, alphaByte / 2), 1, 1, 1);
 			font->DrawTextA(TipText, textLeft, textTop, textTop, textRight, textBottom, textBottom,
 			                textTop + textOffset, LH3DTech::g_info_transform.NearClip * 1.5f, fontSize,
-			                &LH3DColor(255, 255, 255, alphaByte), 1, 1, 1);
+			                &LH3DColor(TEXT_RGB, alphaByte), 1, 1, 1);
 
 			float                versionSize = LHSys::TheSystem.screen.width * 0.02f;
 			static char16_t      versionText[0x100] = {0};
@@ -195,7 +218,7 @@ void DrawLoading(float fade, float progress)
 				         developerPatch ? LHSPrintfW(L" Beta %d", developerPatch).Text : L"");
 			}
 			uint16_t  versionScreenWidth = LHSys::TheSystem.screen.width;
-			LH3DColor versionColor(200, 200, 200, alphaByte);
+			LH3DColor versionColor(BACKDROP_RGB, alphaByte);
 			uint16_t  versionScreenHeight = LHSys::TheSystem.screen.height;
 			float     versionWidth = font->GetStringWidth(versionText, wcslen(versionText), versionSize);
 			font->DrawTextRaw(versionText, wcslen(versionText), versionScreenWidth - versionWidth - 2.0f,
@@ -223,24 +246,26 @@ void DrawLoading(float fade, float progress)
 			int sweepEnd = sweepStart + 120;
 			sweepStart = sweepStart > left + 3 ? (sweepStart < right - 3 ? sweepStart : right - 3) : left + 3;
 			sweepEnd = sweepEnd > left + 3 ? (sweepEnd < right - 3 ? sweepEnd : right - 3) : left + 3;
-			SetupThing::DrawBox(left + 3, bottom + barTop + 3.0f, sweepStart, bottom + barBottom - 4.0f, 0xCDFFFFFF,
-			                    0xCDFFFFFF, 0xCDFFFFFF, 0xCDFFFFFF, 0, 1);
-			SetupThing::DrawBox(sweepStart, bottom + barTop + 3.0f, sweepEnd, bottom + barBottom - 4.0f, 0xCDFFFFFF, 0,
-			                    0, 0xCDFFFFFF, 0, 1);
+			SetupThing::DrawBox(left + 3, bottom + barTop + 3.0f, sweepStart, bottom + barBottom - 4.0f,
+			                    LOADING_BAR_SWEEP_COLOUR, LOADING_BAR_SWEEP_COLOUR, LOADING_BAR_SWEEP_COLOUR,
+			                    LOADING_BAR_SWEEP_COLOUR, 0, 1);
+			SetupThing::DrawBox(sweepStart, bottom + barTop + 3.0f, sweepEnd, bottom + barBottom - 4.0f,
+			                    LOADING_BAR_SWEEP_COLOUR, 0, 0, LOADING_BAR_SWEEP_COLOUR, 0, 1);
 
 			barWidth = right - left + 120;
 			sweepStart = phaseB * barWidth + left - 60.0f;
 			sweepEnd = sweepStart + 120;
 			sweepStart = sweepStart > left + 3 ? (sweepStart < right - 3 ? sweepStart : right - 3) : left + 3;
 			sweepEnd = sweepEnd > left + 3 ? (sweepEnd < right - 3 ? sweepEnd : right - 3) : left + 3;
-			SetupThing::DrawBox(left + 3, bottom + barTop + 3.0f, sweepStart, bottom + barBottom - 3.0f, 0xFF000000,
-			                    0xFF000000, 0xFF000000, 0xFF000000, 0, 1);
-			SetupThing::DrawBox(sweepStart, bottom + barTop + 3.0f, sweepEnd, bottom + barBottom - 3.0f, 0xFF000000, 0,
-			                    0, 0xFF000000, 0, 1);
-			SetupThing::DrawBox(left + 3, bottom + barTop + 3.0f, right - 4, bottom + border * 1.8f + 3.0f, 0xFF000000,
-			                    0xFF000000, 0, 0, 0, 1);
+			SetupThing::DrawBox(left + 3, bottom + barTop + 3.0f, sweepStart, bottom + barBottom - 3.0f,
+			                    LOADING_BAR_SHADOW_COLOUR, LOADING_BAR_SHADOW_COLOUR, LOADING_BAR_SHADOW_COLOUR,
+			                    LOADING_BAR_SHADOW_COLOUR, 0, 1);
+			SetupThing::DrawBox(sweepStart, bottom + barTop + 3.0f, sweepEnd, bottom + barBottom - 3.0f,
+			                    LOADING_BAR_SHADOW_COLOUR, 0, 0, LOADING_BAR_SHADOW_COLOUR, 0, 1);
+			SetupThing::DrawBox(left + 3, bottom + barTop + 3.0f, right - 4, bottom + border * 1.8f + 3.0f,
+			                    LOADING_BAR_SHADOW_COLOUR, LOADING_BAR_SHADOW_COLOUR, 0, 0, 0, 1);
 			SetupThing::DrawBox(left + 3, bottom + barTop + 3.0f, border * 0.3f + (left + 3), bottom + barBottom - 4.0f,
-			                    0xFF000000, 0, 0, 0xFF000000, 0, 1);
+			                    LOADING_BAR_SHADOW_COLOUR, 0, 0, LOADING_BAR_SHADOW_COLOUR, 0, 1);
 
 			SetupThing::DrawAlpha = alphaByte / 2;
 			left -= border;
@@ -271,10 +296,10 @@ void DrawLoading(float fade, float progress)
 			top += border;
 			bottom -= border;
 			SetupThing::DrawAlpha = alphaByte;
-			SetupThing::DrawLine(left, top, right, top, 0xFFFFFFFF, 1, 0.0f, 100.0f);
-			SetupThing::DrawLine(left, top, left, bottom, 0xFFFFFFFF, 1, 0.0f, 100.0f);
-			SetupThing::DrawLine(right, top, right, bottom, 0xFFFFFFFF, 1, 0.0f, 100.0f);
-			SetupThing::DrawLine(left, bottom, right, bottom, 0xFFFFFFFF, 1, 0.0f, 100.0f);
+			SetupThing::DrawLine(left, top, right, top, VIDEO_OUTLINE_COLOUR, 1, 0.0f, 100.0f);
+			SetupThing::DrawLine(left, top, left, bottom, VIDEO_OUTLINE_COLOUR, 1, 0.0f, 100.0f);
+			SetupThing::DrawLine(right, top, right, bottom, VIDEO_OUTLINE_COLOUR, 1, 0.0f, 100.0f);
+			SetupThing::DrawLine(left, bottom, right, bottom, VIDEO_OUTLINE_COLOUR, 1, 0.0f, 100.0f);
 
 			g_enable_callbacks = false;
 			LH3DRender::FinishFrame();
@@ -287,14 +312,14 @@ void StartTipOfTheDayText()
 {
 	static bool firstTip = true;
 	float       fade = 0.0f;
-	int         tip = (timeGetTime() >> 4) % 34;
+	int         tip = (timeGetTime() >> 4) % NUM_TIPS;
 	if (PlayerProfile::GetNumberOfProfiles() == 0)
 	{
 		TipNumber = 0;
 	}
 	else
 	{
-		for (TipNumber = tip + 1; TipNumber == 29 || TipNumber == 32; TipNumber = TipNumber % 34 + 1)
+		for (TipNumber = tip + 1; TipNumber == 29 || TipNumber == 32; TipNumber = TipNumber % NUM_TIPS + 1)
 		{
 		}
 	}
@@ -303,7 +328,7 @@ void StartTipOfTheDayText()
 		MakeTipVideo();
 	}
 	TipShowing = true;
-	TipHelpTextIndex = TipNumber + 5151;
+	TipHelpTextIndex = TipNumber + TIP_HELP_TEXT_BASE;
 	wcscpy(TipText, HelpTextDataBase::HelpTextDatabase.GetHelpText(TipHelpTextIndex));
 	for (int i = 0; i < (int)wcslen(TipText); i++)
 	{
@@ -334,10 +359,10 @@ void StartTipOfTheDayText()
 			}
 			DrawLoading(fade, 0.0f);
 			fade += LH3DTech::g_delta_time * 0.001f;
-			LHSys::TheSystem.screen.Flip(1);
+			LHSys::TheSystem.screen.Flip(true);
 		}
 		firstTip = false;
-		LH3DRender::g_mode_cleaning = 0;
+		LH3DRender::g_mode_cleaning = false;
 		LHResetFPU();
 	}
 }
@@ -384,29 +409,34 @@ void RenderLoadingFrame(bool flip)
 					int top = middle - 30;
 					int bottom = middle + 30;
 					int edge = screenWidth * 0.4f;
-					SetupThing::DrawBox(-1, top, screenWidth, top - 15, 0x9F000000, 0x9F000000, 0, 0, 0, 0);
-					SetupThing::DrawBox(-1, bottom, screenWidth, bottom + 15, 0x9F000000, 0x9F000000, 0, 0, 0, 0);
-					SetupThing::DrawBox(-1, top, edge, bottom, 0xFF202020, 0xFF404040, 0xFF404040, 0xFF202020, 0, 0);
-					SetupThing::DrawBox(edge, top, screenWidth - edge, bottom, 0xFF404040, 0xFF404040, 0xFF404040,
-					                    0xFF404040, 0, 0);
-					SetupThing::DrawBox(screenWidth - edge, top, screenWidth, bottom, 0xFF404040, 0xFF202020,
-					                    0xFF202020, 0xFF404040, 0, 0);
-					SetupThing::DrawLine(-1, top, screenWidth, top, 0xF0F0F0F0, 0, 0.0f, 100.0f);
-					SetupThing::DrawLine(-1, bottom, screenWidth, bottom, 0xF0F0F0F0, 0, 0.0f, 100.0f);
+					SetupThing::DrawBox(-1, top, screenWidth, top - 15, PLEASE_WAIT_SHADE_COLOUR,
+					                    PLEASE_WAIT_SHADE_COLOUR, 0, 0, 0, 0);
+					SetupThing::DrawBox(-1, bottom, screenWidth, bottom + 15, PLEASE_WAIT_SHADE_COLOUR,
+					                    PLEASE_WAIT_SHADE_COLOUR, 0, 0, 0, 0);
+					SetupThing::DrawBox(-1, top, edge, bottom, PLEASE_WAIT_EDGE_COLOUR, PLEASE_WAIT_BODY_COLOUR,
+					                    PLEASE_WAIT_BODY_COLOUR, PLEASE_WAIT_EDGE_COLOUR, 0, 0);
+					SetupThing::DrawBox(edge, top, screenWidth - edge, bottom, PLEASE_WAIT_BODY_COLOUR,
+					                    PLEASE_WAIT_BODY_COLOUR, PLEASE_WAIT_BODY_COLOUR, PLEASE_WAIT_BODY_COLOUR, 0,
+					                    0);
+					SetupThing::DrawBox(screenWidth - edge, top, screenWidth, bottom, PLEASE_WAIT_BODY_COLOUR,
+					                    PLEASE_WAIT_EDGE_COLOUR, PLEASE_WAIT_EDGE_COLOUR, PLEASE_WAIT_BODY_COLOUR, 0,
+					                    0);
+					SetupThing::DrawLine(-1, top, screenWidth, top, PLEASE_WAIT_LINE_COLOUR, 0, 0.0f, 100.0f);
+					SetupThing::DrawLine(-1, bottom, screenWidth, bottom, PLEASE_WAIT_LINE_COLOUR, 0, 0.0f, 100.0f);
 					char16_t* text = HelpTextDataBase::HelpTextDatabase.GetHelpText(6775);
 					SetupThing::DrawTextWrap(101, 201, 701, 401, 401, true, text, GetBigTextSize(),
-					                         &LH3DColor(0, 0, 0, 255), true, false);
+					                         &LH3DColor(TEXT_SHADOW_RGB, 255), true, false);
 					SetupThing::DrawTextWrap(100, 200, 700, 400, 400, true, text, GetBigTextSize(),
-					                         &LH3DColor(255, 255, 255, 255), true, false);
+					                         &LH3DColor(TEXT_RGB, 255), true, false);
 					LH3DRender::FinishFrame();
 				}
 			}
 			if (flip)
 			{
-				LHSys::TheSystem.screen.Flip(1);
+				LHSys::TheSystem.screen.Flip(true);
 			}
 			LH3DRender::Direct3DDevice7->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0, 1.0f, 0);
-			LH3DRender::g_mode_cleaning = 0;
+			LH3DRender::g_mode_cleaning = false;
 			LHResetFPU();
 		}
 	}

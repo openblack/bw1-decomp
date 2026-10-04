@@ -118,7 +118,7 @@ struct LHScreen
 	// BW1W120 007ddcb0 BW1M119 0114d850 (LHCombined Release)
 	int ChangeMode(uint16_t width, uint16_t height, uint8_t depth);
 	// BW1W120 007de090 BW1M119 0114d6c0 (LHCombined Release)
-	int Flip(int param_1);
+	int Flip(bool32_t clear);
 	// BW1W120 007de200 BW1M119 0114d500 (LHCombined Release)
 	int Clear(LHColor* colour, LHRegion* region);
 	// BW1W120 007de2f0 BW1M119 0114d470 (LHCombined Release)
@@ -126,7 +126,7 @@ struct LHScreen
 	// BW1W120 007de320 BW1M119 01009bf0 (LHCombined Release)
 	uint16_t SetTimingStats();
 	// BW1W120 007de580 BW1M119 0114d2f0 (LHCombined Release)
-	int LHFlip(int param_1);
+	int LHFlip(bool32_t clear);
 	// BW1W120 007de630 BW1M119 0114d1d0 (LHCombined Release)
 	int BlitToMSWindow(LHRegion* region, LHCoord* coord, int param_3);
 	// BW1W120 007de6c0 BW1M119 0114d180 (LHCombined Release)
