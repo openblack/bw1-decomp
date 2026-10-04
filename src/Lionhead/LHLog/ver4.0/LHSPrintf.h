@@ -2,9 +2,10 @@
 #define BW1_DECOMP_LH_SPRINTF_INCLUDED_H
 
 #include <assert.h>
+#include <uchar.h> /* For char16_t */
 
 // BW1W120 007aee08 BW1M119 0116e4c0 (LHCombined Release)
-__declspec(dllimport) int __cdecl UNICODE_sprintf(unsigned short* output, unsigned short* format, ...);
+__declspec(dllimport) int __cdecl UNICODE_sprintf(char16_t* output, char16_t* format, ...);
 
 class LHSPrintf
 {
@@ -19,9 +20,9 @@ static_assert(sizeof(LHSPrintf) == 0x401, "LHSPrintf size is incorrect");
 class LHSPrintfW
 {
 public:
-	unsigned short Text[0x401];
+	char16_t Text[0x401];
 	// BW1W120 10002ab0 BW1M119 0116de60 (LHCombined Release)
-	__declspec(dllimport) LHSPrintfW(unsigned short* format, ...);
+	__declspec(dllimport) LHSPrintfW(char16_t* format, ...);
 };
 
 #endif

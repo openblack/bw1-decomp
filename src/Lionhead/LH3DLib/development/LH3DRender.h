@@ -23,7 +23,7 @@ struct LH3DRender
 	// Original Mac imported names; storage remains extracted.
 	static int          g_started_frame; // 00eca644
 	static LH3DZSorter* g_zsorter;       // 00eca648
-	static int          g_mode_cleaning; // 00c3871c
+	static bool32_t     g_mode_cleaning; // 00c3871c
 	// Original Mac import g_frame__10LH3DRender.
 	// BW1W120 00eca640 BW1M119 012cf838 (LHCombined Release)
 	static int g_frame;

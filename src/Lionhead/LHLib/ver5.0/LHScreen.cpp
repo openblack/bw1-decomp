@@ -717,8 +717,8 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 		LH3DVRAMTexAllocAllVRAM();
 	}
 
-	LHFlip(1);
-	LHFlip(1);
+	LHFlip(true);
+	LHFlip(true);
 
 	// Read the back surface pitch/address + pixel format.
 	PBackSurface->Lock(NULL, &desc, DDLOCK_WAIT, NULL);
@@ -747,7 +747,7 @@ int LHScreen::ChangeMode(uint16_t width, uint16_t height, uint8_t depth)
 }
 
 // BW1W120 007de090 BW1M119 0114d6c0 (LHCombined Release)
-int LHScreen::Flip(int param_1)
+int LHScreen::Flip(bool32_t clear)
 {
 	++flipCount;
 	if (ShowTimingStats)
@@ -775,7 +775,7 @@ int LHScreen::Flip(int param_1)
 	LHSys::GetMouse().Locked = 1;
 	LeaveCriticalSection(&LHScreen::CriticalSection);
 	LHSys::GetMouse().Draw(LH_SCREEN_BUFFER_0x0, LH_MOUSE_EVENT_TYPE_0x1);
-	int flipResult = LHFlip(param_1);
+	int flipResult = LHFlip(clear);
 	LeaveCriticalSection(&LHScreen::CriticalSection);
 
 	if ((unsigned char)sub_7DB910())
@@ -882,7 +882,7 @@ uint16_t LHScreen::SetTimingStats()
 }
 
 // BW1W120 007de580 BW1M119 0114d2f0 (LHCombined Release)
-int LHScreen::LHFlip(int param_1)
+int LHScreen::LHFlip(bool32_t clear)
 {
 	if (windowed)
 	{
@@ -898,7 +898,7 @@ int LHScreen::LHFlip(int param_1)
 		PPrimarySurface->Flip(NULL, flipFlags);
 	}
 
-	if (param_1)
+	if (clear)
 	{
 		if (!windowed)
 		{
