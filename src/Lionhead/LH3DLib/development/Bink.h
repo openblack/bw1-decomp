@@ -27,5 +27,6 @@ struct BINKREALTIME
 extern "C" __declspec(dllimport) void __stdcall BinkService(HBINK bink);
 extern "C" __declspec(dllimport) void __stdcall BinkGetRealtime(HBINK bink, BINKREALTIME* realtime,
                                                                 unsigned long frames);
+extern "C" __declspec(dllimport) void __stdcall BinkGoto(HBINK bink, unsigned long frame, long flags);
 
 #endif /* BW1_DECOMP_BINK_INCLUDED_H */

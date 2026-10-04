@@ -1,0 +1,15 @@
+#ifndef BW1_DECOMP_LOADING_SCREEN_INCLUDED_H
+#define BW1_DECOMP_LOADING_SCREEN_INCLUDED_H
+
+// BW1W120 005f3cc0 BW1M119 0110ba60
+void ReinitLoadingScreen();
+// BW1W120 005f3ce0 BW1M119 0110b940
+void MakeTipVideo();
+// BW1W120 005f3d90 BW1M119 0110b8d0
+void ClearTipVideo();
+// BW1W120 005f3dc0 BW1M119 0110a3e0
+void DrawLoading(float fade, float progress);
+// BW1W120 005f4c90 BW1M119 0110a150
+void StartTipOfTheDayText();
+
+#endif /* BW1_DECOMP_LOADING_SCREEN_INCLUDED_H */
