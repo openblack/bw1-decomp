@@ -817,8 +817,13 @@ Black/GSLobbybox.cpp:
 	.CRT$XCU    start:0x008F6774 end:0x008F677C align:4
 	.bss        start:0x00C2A2B8 end:0x00C2A2C8
 
+Black/GStates.cpp:
+	.text       start:0x00560EA0 end:0x00574050
+	.CRT$XCU    start:0x008F677C end:0x008F6784 align:4
+	.bss        start:0x00C2A2C8 end:0x00C35008
+
 Black/HandStateCamera.cpp:
-	.text       start:0x00574050 end:0x00574940
+	.text       start:0x00574050 end:0x00574940 align:16
 	.rdata      start:0x0083E864 end:0x0083E870
 
 Black/HandStateCitadel.cpp:
@@ -828,9 +833,6 @@ Black/HandStateCitadel.cpp:
 Black/HandStateCreature.cpp:
 	.text       start:0x005750F0 end:0x00576810
 	.rdata      start:0x0083E89C end:0x0083E8C8
-
-Black/GStates.cpp:
-	.bss        start:0x00C2A2C8 end:0x00C35008
 
 Black/HandStateGrain.cpp:
 	.text       start:0x00576810 end:0x005776A0

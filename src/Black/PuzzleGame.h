@@ -393,9 +393,11 @@ public:
 	// BW1W120 005f25c0 BW1M119 inlined
 	virtual bool32_t GotoWoodReaction();
 	// BW1W120 0041a9f0 BW1M119 inlined
-	virtual bool MoveInFlock();
+	virtual bool32_t MoveInFlock();
+#ifndef VERSION_BW1W100
 	// BW1W120 005ef350 BW1M119 inlined
 	virtual bool32_t IsMovingForAnimation();
+#endif
 	// BW1W120 0041a0a0 BW1M119 inlined
 	virtual bool32_t ArrivesAtFoodReaction();
 	// BW1W120 00417030 BW1M119 inlined

@@ -212,7 +212,7 @@ public:
 	// BW1W120 00402540 BW1M119 0111a420
 	virtual void UpdateFrom3DPosition() {}
 	// BW1W120 00402550 BW1M119 015a33f0
-	virtual uint32_t MoveAlongPath() { return 1; }
+	virtual bool32_t MoveAlongPath() { return true; }
 	// BW1W120 00402560 BW1M119 01174810
 	virtual bool32_t IsReachable() { return IsAvailable(); }
 	// BW1W120 0063a920 BW1M119 013d8610
