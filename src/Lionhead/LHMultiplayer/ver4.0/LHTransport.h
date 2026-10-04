@@ -8,6 +8,7 @@
 
 #include "LHNetEvent.h"      /* For enum LH_NETEVENT_TYPE */
 #include "LHTransportInfo.h" /* For enum LH_TRANSPORT_TYPE */
+#include "LHMultiplayerExport.h"
 
 // Forward Declares
 
@@ -40,8 +41,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 10022470
+	LH_MULTIPLAYER_API int IsConnected();
 	// BW1W120 10022550 BW1M119 0111ae40 (LHCombined Release)
-	LH_RETURN OpenConnectionToTransport(LHTransport* param_1, void(__cdecl*)(void*) param_2, void* param_3);
+	LH_RETURN OpenConnectionToTransport(LHTransport* transport, void(__cdecl* callback)(void*), void* context);
 };
 
 struct LHTransportRemote

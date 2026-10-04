@@ -17,38 +17,11 @@
 #define GATHERING_INTERFACE_SOURCE_FILE "C:\\dev\\MP\\Black\\GatheringInterface.h"
 #endif
 
-enum INCOMINGTEXTTYPE
-{
-	INCOMINGTEXTTYPE_CHAT = 1,
-};
-
-struct IncomingBubbleInfo
-{
-	INCOMINGTEXTTYPE Type;
-	char16_t         Text[0x400];
-	char16_t         field_0x804[0x200];
-	char16_t         field_0xc04[0x200];
-	uint32_t         field_0x1004;
-	DWORD            Time;
-
-	// BW1W120 00635cf0 BW1M119 01300c40
-	IncomingBubbleInfo(INCOMINGTEXTTYPE type, char16_t* text)
-	{
-		Type = type;
-		wcsncpy(Text, text, 0x3ff);
-		Text[0x3ff] = 0;
-		field_0x1004 = 0;
-		field_0x804[0] = 0;
-		field_0xc04[0] = 0;
-		Time = GetTickCount();
-	}
-};
-
 inline void AddIncomingText(INCOMINGTEXTTYPE type, char16_t* text)
 {
 	GatheringBox* box = GatheringBox::Instance;
-	box->IncomingTextCount++;
-	box->IncomingText.AddToEnd(new (GATHERING_INTERFACE_SOURCE_FILE, 282) IncomingBubbleInfo(type, text));
+	box->NumIncoming++;
+	box->IncomingList.AddToEnd(new (GATHERING_INTERFACE_SOURCE_FILE, 282) IncomingBubbleInfo(type, text));
 	box->UpdateIncomingText();
 }
 

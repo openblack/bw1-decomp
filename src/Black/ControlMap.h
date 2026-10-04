@@ -27,8 +27,8 @@ struct ControlMap
 	bool32_t       Field60x6520;
 	bool32_t       Field70x6524;
 	bool32_t       Field70x6528;
-	bool32_t       Field90x652c;
-	bool32_t       Field100x6530;
+	bool32_t       CameraControlEnabled;
+	bool32_t       NormalInterface;
 
 	// Constructors
 

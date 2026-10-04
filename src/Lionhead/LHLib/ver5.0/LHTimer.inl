@@ -16,7 +16,7 @@ inline bool32_t LHTimer::Running()
 inline int LHTimer::MSeconds()
 {
 	// Subtract ticks before conversion to preserve unsigned wraparound.
-	return (int)((double)(GetTickCount() - TickCount) * SpeedUpFactor + ElapsedTime);
+	return (int)((GetTickCount() - TickCount) * SpeedUpFactor + (uint32_t)ElapsedTime);
 }
 
 inline float LHTimer::GetSpeedUpFactor()

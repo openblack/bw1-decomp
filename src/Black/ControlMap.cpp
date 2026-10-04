@@ -15,6 +15,6 @@ ControlMap::ControlMap()
 	Field30x6514 = 0;
 	Field70x6524 = 0;
 	Field60x6520 = 0;
-	Field90x652c = 1;
-	Field100x6530 = 1;
+	CameraControlEnabled = 1;
+	NormalInterface = 1;
 }

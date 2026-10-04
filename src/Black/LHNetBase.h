@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#include <Lionhead/LHMultiplayer/ver4.0/LHNetUser.h> /* For struct LH_USER_ID */
+
 struct LHLobby;
 class LHSession;
 class LHTransport;
@@ -41,6 +43,14 @@ public:
 
 	// BW1W120 005eb120
 	void Ping(LHTransportInfo* info);
+	// BW1W120 005eab10 BW1M119 0137e360
+	void SendSpecial(char16_t* text);
+	// BW1W120 005eab60 BW1M119 0137e260
+	char16_t* AdjustMessage(char16_t* text);
+	// BW1W120 005eabe0 BW1M119 0137de30
+	void Chat(LH_USER_ID user_id, char16_t* text, LHTransportInfo* transport_info);
+	// BW1W120 005eb470 BW1M119 0137d870
+	void SendIAmHere(LHTransportInfo* transport_info);
 };
 
 // The next Windows object at 00d2054c is a separately allocated SetupBox pointer.

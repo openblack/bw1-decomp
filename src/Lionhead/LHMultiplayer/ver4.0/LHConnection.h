@@ -38,8 +38,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 10002020 BW1M119 0110c200 (LHCombined Release)
+	LH_MULTIPLAYER_API LHNetUser* GetNetUser() { return NetUser; }
 	// BW1W120 10002030 BW1M119 01174870
-	LH_MULTIPLAYER_API LH_USER_ID GetUserID() { return NetUser->id; }
+	LH_MULTIPLAYER_API LH_USER_ID GetUserID() { return GetNetUser()->id; }
 	// BW1W120 100046c0 BW1M119 010deab0 (LHCombined Release)
 	void SetNetUser(LHNetUser* net_user);
 	// BW1W120 100046e0 BW1M119 010dea50 (LHCombined Release)
@@ -68,6 +70,8 @@ public:
 	void ClearTransport();
 	// BW1W120 10005270 BW1M119 010102b0 (LHCombined Release)
 	LH_MULTIPLAYER_API int IsDisconnected();
+	// BW1W120 10005490
+	LH_MULTIPLAYER_API LH_RETURN GetTransportInfo(LHTransportInfo* transport_info, int local);
 	// BW1W120 100052d0 BW1M119 010dc610 (LHCombined Release)
 	LH_MULTIPLAYER_API int CheckForEvents();
 	// BW1W120 10005330 BW1M119 010dc440 (LHCombined Release)

@@ -3,12 +3,12 @@
 
 struct MusicEmotion
 {
-	float field_0x0;
+	float Mood;
 	float field_0x4;
 	void  Reset()
 	{
 		field_0x4 = 0.0f;
-		field_0x0 = 0.0f;
+		Mood = 0.0f;
 	}
 };
 
@@ -32,6 +32,8 @@ public:
 	static void Close();
 	// BW1W120 00633ef0 BW1M119 01090dc0
 	static void UpdateOnGameTurn(float delta_time, bool reset);
+	// BW1W120 00634370 BW1M119 01113bf0
+	static MusicEmotion* GetCurrentMusicEmotion();
 };
 
 #endif /* BW1_DECOMP_MUSIC_MOOD_INCLUDED_H */

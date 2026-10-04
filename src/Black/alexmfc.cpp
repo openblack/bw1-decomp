@@ -293,19 +293,6 @@ void RussClickNoise()
 		GGame::g_game->MyInterface()->StartImmersion(IMMERSION_EFFECT_TYPE_COMMAND_SUCCESS, 0x80000000);
 }
 
-inline void SetupList::SetSelected(int index)
-{
-	if (index >= 0 && index < NumItems)
-		SelectedIndex = index;
-	else
-		SelectedIndex = -1;
-	if (UsesIME && SetupThing::IMEActive && index >= 0 && LHSys::TheSystem.TbIME->CandidateList_GetSelectIdx() != index)
-	{
-		LHSys::TheSystem.TbIME->CandidateList_SetViewWindow(0, NumItems - 1, index);
-		AutoScroll(false);
-	}
-}
-
 void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool no_input)
 {
 	float dt = LH3DTech::g_delta_time * 0.001f;
@@ -435,7 +422,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 				Callback(SETUP_MESSAGE_DOUBLE_CLICK, FocusedWidget->setup_box, FocusedWidget, x, y);
 				RussClickNoise();
 			}
-			if (!GGame::g_game->field_0x250538)
+			if (!GGame::g_game->Initialised)
 				LHSys::TheSystem.mouse.ButtonPressed &= ~0x10;
 			SetupThing::DoubleClicked = 0;
 		}
@@ -1060,7 +1047,7 @@ SetupList::SetupList(int id, int x, int y, int width, int height) : SetupControl
 	Capacity = 0;
 	item_labels = NULL;
 	ItemHeights = NULL;
-	field_0x264 = NULL;
+	ItemData = NULL;
 	ListBoxDraw = NULL;
 	color = NULL;
 	TagData = NULL;
@@ -1121,7 +1108,7 @@ void SetupList::DeleteString(int index)
 	{
 		memmove(item_labels + index, item_labels + index + 1, (NumItems - index - 1) * sizeof(*item_labels));
 		memmove(ItemHeights + index, ItemHeights + index + 1, (NumItems - index - 1) * sizeof(*ItemHeights));
-		memmove(field_0x264 + index, field_0x264 + index + 1, (NumItems - index - 1) * sizeof(*field_0x264));
+		memmove(ItemData + index, ItemData + index + 1, (NumItems - index - 1) * sizeof(*ItemData));
 		memmove(ListBoxDraw + index, ListBoxDraw + index + 1, (NumItems - index - 1) * sizeof(*ListBoxDraw));
 		memmove(color + index, color + index + 1, (NumItems - index - 1) * sizeof(*color));
 		memmove(TagData + index, TagData + index + 1, (NumItems - index - 1) * sizeof(*TagData));
@@ -1136,13 +1123,13 @@ void SetupList::InsertString(int index, const char16_t* text)
 		SetNum(NumItems + 1);
 		memmove(item_labels + index + 1, item_labels + index, (NumItems - index - 1) * sizeof(*item_labels));
 		memmove(ItemHeights + index + 1, ItemHeights + index, (NumItems - index - 1) * sizeof(*ItemHeights));
-		memmove(field_0x264 + index + 1, field_0x264 + index, (NumItems - index - 1) * sizeof(*field_0x264));
+		memmove(ItemData + index + 1, ItemData + index, (NumItems - index - 1) * sizeof(*ItemData));
 		memmove(ListBoxDraw + index + 1, ListBoxDraw + index, (NumItems - index - 1) * sizeof(*ListBoxDraw));
 		memmove(color + index + 1, color + index, (NumItems - index - 1) * sizeof(*color));
 		memmove(TagData + index + 1, TagData + index, (NumItems - index - 1) * sizeof(*TagData));
 		SetString(index, text);
 		if (index < NumItems)
-			field_0x264[index] = 0;
+			ItemData[index] = 0;
 		if (index < NumItems)
 			ListBoxDraw[index] = NULL;
 		SetCol(index, 0);
@@ -1188,17 +1175,17 @@ void SetupList::SetNum(int num)
 		memset(tags, 0, Capacity * sizeof(void*));
 		memcpy(labels, item_labels, min(num, NumItems) * sizeof(Label));
 		memcpy(heights, ItemHeights, min(num, NumItems) * sizeof(int));
-		memcpy(data, field_0x264, min(num, NumItems) * sizeof(uint32_t));
+		memcpy(data, ItemData, min(num, NumItems) * sizeof(uint32_t));
 		memcpy(callbacks, ListBoxDraw, min(num, NumItems) * sizeof(SetupList__ListBoxDraw_t));
 		memcpy(colors, color, min(num, NumItems) * sizeof(LH3DColor));
 		memcpy(tags, TagData, min(num, NumItems) * sizeof(void*));
 		delete[] ItemHeights;
 		delete[] item_labels;
-		delete[] field_0x264;
+		delete[] ItemData;
 		delete[] ListBoxDraw;
 		delete[] color;
 		delete[] TagData;
-		field_0x264 = data;
+		ItemData = data;
 		ListBoxDraw = callbacks;
 		color = colors;
 		item_labels = labels;
@@ -1210,7 +1197,7 @@ void SetupList::SetNum(int num)
 		int count = num - NumItems;
 		memset(item_labels + NumItems, 0, count * sizeof(*item_labels));
 		memset(ItemHeights + NumItems, 0, count * sizeof(*ItemHeights));
-		memset(field_0x264 + NumItems, 0, count * sizeof(*field_0x264));
+		memset(ItemData + NumItems, 0, count * sizeof(*ItemData));
 		memset(ListBoxDraw + NumItems, 0, count * sizeof(*ListBoxDraw));
 		memset(color + NumItems, 0, count * sizeof(*color));
 		memset(TagData + NumItems, 0, count * sizeof(*TagData));

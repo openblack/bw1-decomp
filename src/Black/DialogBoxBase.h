@@ -29,8 +29,8 @@ public:
 	// Override methods
 
 	// BW1W120 00513400 BW1M119 012b55a0
-	virtual void Init(uint32_t param_1, uint32_t param_2,
-	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
+	virtual void Init(uint32_t background_style, uint32_t tall_background,
+	                  void(__stdcall* callback)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 00513590 BW1M119 012b5480
 	virtual void Destroy();
 	// BW1W120 005127d0 BW1M119 01107290

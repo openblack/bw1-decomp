@@ -4,12 +4,12 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include "Villager.h" /* For struct Villager */
+#include "SpecialVillagerInfo.h" /* For class GSpecialVillagerInfo */
+#include "Villager.h"            /* For struct Villager */
 
 // Forward Declares
 
 class Base;
-class GSpecialVillagerInfo;
 class GVillagerInfo;
 class GameOSFile;
 class GameThing;
@@ -19,7 +19,7 @@ class Object;
 class SpecialVillager : public Villager
 {
 public:
-	uint32_t field_0x134; /* 0x130 */
+	uint32_t InfoIndex; /* 0x130 */
 
 	// Override methods
 
@@ -54,8 +54,8 @@ public:
 
 	// BW1W120 0071ef70 BW1M119 0114f7f0
 	void MakeHimSpeak(wchar_t* param_1);
-	// BW1W120 0071f170 BW1M119 0114f5f0
-	void GetSpecialInfo();
+	// BW1W120 inlined BW1M119 0114f5f0
+	GSpecialVillagerInfo* GetSpecialInfo() { return &GSpecialVillagerInfo::InfoList[InfoIndex]; }
 	// BW1W120 0071f470 BW1M119 0114f270
 	bool CanShowName();
 };

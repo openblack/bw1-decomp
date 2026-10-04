@@ -7,6 +7,7 @@
 #include "LHMultiplayerExport.h"
 
 class LHMail;
+class LHTransportInfo;
 
 // IAT 008a9434.
 // BW1W120 1006272c
@@ -36,5 +37,12 @@ LH_MULTIPLAYER_API unsigned short* __cdecl LHNetGetCurrentUsedProfile(void);
 // Ushort * LHNetGetCurrentProfileNameFromRegistry(void)
 // BW1W120 10018b30
 LH_MULTIPLAYER_API unsigned short* __cdecl LHNetGetCurrentProfileNameFromRegistry(void);
+
+// BW1W120 10018e20
+LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetGetCurrentProfileData(char* name, unsigned char* data, unsigned long* size);
+// BW1W120 10019050
+LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetSetCurrentProfileData(char* name, unsigned char* data, unsigned long size);
+// BW1W120 100194a0
+LH_MULTIPLAYER_API void __cdecl ICQinttoLHTransportInfo(unsigned long address, LHTransportInfo* transport_info);
 
 #endif /* BW1_DECOMP_LH_NET_UTILS_INCLUDED_H */
