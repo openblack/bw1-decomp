@@ -86,6 +86,7 @@ template <bool clockwise> struct Point2DCompare
 		result = other.result;
 		return *this;
 	}
+	// Inliner IL size: 92
 	// BW1W120 006101f0 BW1M119 01077d00
 	// BW1W120 00610180 BW1M119 01076d60
 	bool32_t operator<(const Point2DCompare& other)
@@ -93,7 +94,14 @@ template <bool clockwise> struct Point2DCompare
 		if (result == other.result)
 		{
 			float cross = other.point.Cross(point);
-			return clockwise ? cross < 0.0f : cross > 0.0f;
+			if (clockwise)
+			{
+				return cross < 0.0f;
+			}
+			else
+			{
+				return cross > 0.0f;
+			}
 		}
 		return result;
 	}

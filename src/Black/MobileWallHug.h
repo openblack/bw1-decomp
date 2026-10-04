@@ -141,6 +141,10 @@ public:
 
 	// BW1W120 inlined BW1M119 010713d0
 	const GMobileWallHugInfo* GetInfo() const { return (const GMobileWallHugInfo*)info; }
+	// BW1W120 inlined BW1M119 010222a0
+	int GetDefaultSpeed();
+	// BW1W120 inlined BW1M119 inlined
+	int GetRunningSpeed();
 	// BW1W120 inlined BW1M119 013cd370
 	uint8_t GetMoveState() { return MoveState; }
 	// BW1W120 inlined BW1M119 010a0b30
