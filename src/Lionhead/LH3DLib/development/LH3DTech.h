@@ -2,10 +2,12 @@
 #define BW1_DECOMP_LH3D_TECH_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <math.h>   /* For tan */
 #include <stdint.h> /* For uint32_t */
 
-#include "LHCoord.h" /* For struct LHCoord */
-#include "LHPoint.h" /* For struct Point2D */
+#include "LH3DCamera.h" /* For struct LH3DCamera */
+#include "LHCoord.h"    /* For struct LHCoord */
+#include "LHPoint.h"    /* For struct Point2D */
 
 // Forward Declares
 
@@ -13,28 +15,48 @@ struct LH3DColor;
 struct LH3DMaterial;
 struct LHMatrix;
 struct LHPoint;
-struct InfoTransform;
 struct LHTimer;
+
+struct InfoTransform
+{
+	float          NearClip;
+	struct LHCoord resolution;
+	float          AspectRatioXOverY;
+	struct Point2D HalfRes;
+	struct Point2D InvHalfRes;
+	float          InvHalfTanFovY;
+	float          InvHalfTanFovX;
+	float          CosHalfFovSqr;
+	float          field_0x2c;
+	float          CosHalfFov;
+	float          field_0x34;
+	float          InvAspectSqrHypoInvTimesInvAspect;
+	float          InvAspectSqrHypoInv;
+};
+static_assert(sizeof(InfoTransform) == 0x40, "Data type is of wrong size");
 
 class LH3DTech
 {
 public:
-	// Original Mac imported names; storage remains extracted.
 	static InfoTransform g_info_transform; // 00e839e0
-	static LHPoint       g_camera;         // 00ea1db8
+	static LH3DCamera    g_camera;         // 00ea1db8
 	static int           g_delta_time;     // 00c38134
-	// Original Mac import g_timer__8LH3DTech; no timer storage here.
+	// BW1W120 00c3812c BW1M119 011d1504 (LHCombined Release)
+	static float g_meter_width_screen_on_2;
+	// BW1W120 00c38130 BW1M119 011d1508 (LHCombined Release)
+	static float g_meter_height_screen_on_2;
 	// BW1W120 00ea1b78 BW1M119 012d3e80 (LHCombined Release)
 	static LHTimer g_timer;
-	// Projection-scaled world-to-camera matrix, including the depth row.
 	// BW1W120 00ea9e40 BW1M119 012dc144 (LHCombined Release)
 	static LHMatrix g_world_to_clipping;
+	// BW1W120 00ea1d28 BW1M119 012dc0b4 (LHCombined Release)
+	static LHMatrix g_world_to_camera;
 	// BW1W120 inlined BW1M119 010e7360
 	static float GetValueForZSorter(const LHPoint& point)
 	{
-		float x = point.x - g_camera.x;
-		float y = point.y - g_camera.y;
-		float z = point.z - g_camera.z;
+		float x = point.x - g_camera.pos.x;
+		float y = point.y - g_camera.pos.y;
+		float z = point.z - g_camera.pos.z;
 		return x * x + y * y + z * z;
 	}
 	// Original Mac symbol: g_ambient_wind_direction__8LH3DTech.
@@ -46,13 +68,29 @@ public:
 	// BW1W120 00819030 BW1M119 010bfe40 (LHCombined Release)
 	static void UpdateViewPort(long width, long height);
 	// BW1W120 00819390 BW1M119 01037930 (LHCombined Release)
-	static uint32_t ProjectPoint(LHPoint* point, int* x, int* y, float* depth);
+	static uint32_t __fastcall ProjectPoint(LHPoint* point, int* x, int* y, float* depth);
 	// BW1W120 008195b0 BW1M119 01011be0 (LHCombined Release)
 	static void ChangeFov(float fov);
 	// BW1W120 00819690 BW1M119 01011e40 (LHCombined Release)
-	static void UpdateWorldToCamera(LHMatrix& matrix, LHPoint& position, LHPoint& focus, bool param_4);
+	static void __fastcall UpdateWorldToCamera(LHMatrix& matrix, LHPoint& position, LHPoint& focus, bool param_4);
 	// BW1W120 inlined BW1M119 01095480
 	static uint32_t GetDeltaTime();
+	// BW1W120 inlined BW1M119 01049620
+	static float GetNearClipping() { return g_info_transform.NearClip; }
+	// BW1W120 inlined BW1M119 inlined
+	static void SetNearClipping(float near_clipping)
+	{
+		g_info_transform.NearClip = near_clipping;
+		SetMeterScreen();
+	}
+	// BW1W120 inlined BW1M119 01009df0 (LHCombined Release)
+	static void SetMeterScreen()
+	{
+		g_meter_width_screen_on_2 = (float)tan(g_camera.fov * 0.5f) * g_info_transform.NearClip;
+		g_meter_height_screen_on_2 = g_meter_width_screen_on_2 / g_info_transform.AspectRatioXOverY;
+	}
+	// BW1W120 0045a7f0 BW1M119 010318a0
+	static LHPoint* GetCameraPosition() { return &g_camera.pos; }
 	// BW1W120 00819920 BW1M119 01034f90 (LHCombined Release)
 	static void UpdateCamera(const LHPoint& position, const LHPoint& focus);
 	// BW1W120 00818c60 BW1M119 010bffa0 (LHCombined Release)
@@ -66,24 +104,6 @@ public:
 	// BW1W120 0081b370 BW1M119 0101b840 (LHCombined Release)
 	static void __fastcall Get3DPointFromScreen(const LHCoord& screen, LHPoint& point, float distance);
 };
-
-struct InfoTransform
-{
-	float          NearClip;   /* 0x0 */
-	struct LHCoord resolution; /* 0x4 */
-	float          AspectRatioXOverY;
-	struct Point2D HalfRes; /* 0x10 */
-	struct Point2D InvHalfRes;
-	float          InvHalfTanFovY;
-	float          InvHalfTanFovX;
-	float          CosHalfFovSqr; /* 0x28 */
-	float          field_0x2c;
-	float          CosHalfFov;
-	float          field_0x34;
-	float          InvAspectSqrHypoInvTimesInvAspect;
-	float          InvAspectSqrHypoInv;
-};
-static_assert(sizeof(InfoTransform) == 0x40, "Data type is of wrong size");
 
 // BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)
 void __cdecl Report3D__FPCce(const char* fmt, ...);

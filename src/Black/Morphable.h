@@ -117,12 +117,16 @@ public:
 	void ReadExtraDataBinary(LHFile* param_1, AnimInfo* param_2, AnimInfo* param_3, long param_4);
 	// BW1W120 00618720 BW1M119 01110510
 	uint32_t LoadMesh(char* param_2, int param_3);
+	// BW1W120 006182f0 BW1M119 01110f20
+	void SetPos(const LHPoint& pos);
 	// BW1W120 00619650 BW1M119 01086c40
 	CAnim* GetAnim(long anim_index, long param_3);
 	// BW1W120 00619690 BW1M119 01086830
 	CAnim* GetSetAnim(long param_1, long param_2, long param_3);
 	// BW1W120 inlined BW1M119 01095450
 	LHPoint& GetPos() { return position; }
+	// BW1W120 inlined BW1M119 010898e0
+	LH3DComplexObject* Get3DObject() { return DynamicShadow; }
 	// BW1W120 inlined BW1M119 013e2420
 	float GetHeading() { return Heading; }
 };

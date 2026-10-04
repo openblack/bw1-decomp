@@ -49,6 +49,8 @@ public:
 
 	// BW1W120 005c4500 BW1M119 01353930
 	static HelpProfile* Create();
+	// BW1W120 005c4800 BW1M119 01094dd0
+	static int GetMouseType();
 
 	// Non-virtual methods
 

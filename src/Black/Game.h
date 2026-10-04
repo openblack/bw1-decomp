@@ -465,6 +465,8 @@ public:
 	void ForceNeedUpdateInfluence();
 	// BW1W120 inlined BW1M119 0107b840
 	GPlayer* MyPlayer() { return &players[PlayerIndex]; }
+	// BW1W120 00555820 BW1M119 01029180
+	uint32_t GetCameraTimeInc();
 	// BW1W120 00555850 BW1M119 01053ef0
 	GInterface* MyInterface();
 	// BW1W120 00555880 BW1M119 01062630
@@ -487,5 +489,8 @@ public:
 	// BW1W120 0063f940 BW1M119 010a1200
 	uint32_t DoAction(unsigned long param_1);
 };
+
+// BW1W120 0054a770 BW1M119 0107d6c0
+void SetTurnOffMouseMove(bool turn_off);
 
 #endif /* BW1_DECOMP_GAME_INCLUDED_H */

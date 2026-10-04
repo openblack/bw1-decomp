@@ -331,29 +331,66 @@ public:
 		}
 	}
 
+	// Inliner IL size: 83
 	// BW1W120 00407750 BW1M119 010bd770
 	template <typename T> void ReadIt(T& out)
 	{
 		if (ReadEnabled)
 		{
-			if (Read(&out, sizeof(out), NULL) == LH_FILE_RESULT_ERROR)
+			LH_FILE_RESULT result = Read(&out, sizeof(out), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
 			{
 				ReadEnabled = false;
 			}
-			Checksum += *(uint8_t*)&out + sizeof(out);
+			uint8_t first = *(uint8_t*)&out;
+			Checksum += first + sizeof(out);
 		}
 	}
 
+	// Inliner IL size: 83
 	// BW1W120 00407700 BW1M119 010a9e00
 	template <typename T> void WriteIt(T& value)
 	{
 		if (WriteEnabled)
 		{
-			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			LH_FILE_RESULT result = Write(&value, sizeof(value), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
 			{
 				WriteEnabled = false;
 			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
+			uint8_t first = *(uint8_t*)&value;
+			Checksum += first + sizeof(value);
+		}
+	}
+	// Inliner IL size: 80
+	// BW1W120 00460c20 BW1M119 inlined
+	template <typename T> void ReadArray(T* values)
+	{
+		if (ReadEnabled)
+		{
+			unsigned int count;
+			ReadIt(count);
+			for (unsigned int i = 0; i < count; ++i)
+			{
+				ReadIt(values[i]);
+			}
+		}
+	}
+	// Inliner IL size: 92
+	// BW1W120 00460cc0 BW1M119 inlined
+	template <typename T> void WriteArray(T* values, unsigned int count)
+	{
+		if (WriteEnabled)
+		{
+			WriteIt(count);
+			for (unsigned int i = 0; i < count; ++i)
+			{
+				WriteIt(values[i]);
+				if (!WriteEnabled)
+				{
+					break;
+				}
+			}
 		}
 	}
 	// BW1W120 00558dc0 BW1M119 01307600
@@ -459,6 +496,12 @@ static_assert(sizeof(GameOSFile) == 0x230, "GameOSFile size is incorrect");
 	if (GameOSFile::WriteEnabled)                                                                                      \
 	{                                                                                                                  \
 		(file).WriteSafe(value);                                                                                       \
+	}
+
+#define WRITE_IT(file, value)                                                                                          \
+	if (GameOSFile::WriteEnabled)                                                                                      \
+	{                                                                                                                  \
+		(file).WriteIt(value);                                                                                         \
 	}
 
 // fabricated names: the original counted-array template names are unknown.

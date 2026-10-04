@@ -109,6 +109,8 @@ struct LHPoint
 	LHPoint(float x, float y, float z) : x(x), y(y), z(z) {}
 	// BW1W120 0044cfc0 BW1M119 0103cdd0
 	LHPoint(const LHPoint& other) : x(other.x), y(other.y), z(other.z) {}
+	// BW1W120 0045a7d0 BW1M119 01047670
+	LHPoint(const LHPoint* other) : x(other->x), y(other->y), z(other->z) {}
 
 	// Non-virtual methods
 
@@ -120,12 +122,26 @@ struct LHPoint
 		z *= rhs;
 		return *this;
 	}
-	// BW1W120 inlined BW1M119 010c8ba0 (LHCombined Release)
+	// BW1W120 0044ea40 BW1M119 010c8ba0 (LHCombined Release)
 	void Add(const LHPoint& other)
 	{
 		x += other.x;
 		y += other.y;
 		z += other.z;
+	}
+	// BW1W120 0044ea20 BW1M119 01016330 (LHCombined Release)
+	void Mul(float rhs)
+	{
+		x *= rhs;
+		y *= rhs;
+		z *= rhs;
+	}
+	// BW1W120 inlined BW1M119 01012250 (LHCombined Release)
+	void CrossProduct(const LHPoint& a, const LHPoint& b)
+	{
+		x = a.y * b.z - a.z * b.y;
+		y = a.z * b.x - a.x * b.z;
+		z = a.x * b.y - a.y * b.x;
 	}
 	// BW1W120 004c2b90 BW1M119 01003790
 	void Sub(const LHPoint& other)
@@ -134,12 +150,27 @@ struct LHPoint
 		y -= other.y;
 		z -= other.z;
 	}
-	// BW1W120 inlined BW1M119 01043e70
+	// BW1W120 00460620 BW1M119 inlined
+	void operator-=(const LHPoint& other)
+	{
+		x -= other.x;
+		y -= other.y;
+		z -= other.z;
+	}
+	// BW1W120 0044e9f0 BW1M119 01043e70
 	LHPoint operator*(float rhs) const { return LHPoint(x * rhs, y * rhs, z * rhs); }
 	// BW1W120 inlined BW1M119 inlined
 	LHPoint operator+(const LHPoint& rhs) const { return LHPoint(x + rhs.x, y + rhs.y, z + rhs.z); }
-	// BW1W120 inlined BW1M119 01043e00
+	// BW1W120 0044cf90 BW1M119 01043e00
 	LHPoint operator-(const LHPoint& rhs) const { return LHPoint(x - rhs.x, y - rhs.y, z - rhs.z); }
+	// Cross product.
+	// BW1W120 inlined BW1M119 01021150
+	LHPoint operator^(const LHPoint& rhs) const
+	{
+		return LHPoint(y * rhs.z - z * rhs.y, z * rhs.x - x * rhs.z, x * rhs.y - y * rhs.x);
+	}
+	// BW1W120 inlined BW1M119 inlined
+	bool operator==(const LHPoint& other) const { return x == other.x && y == other.y && z == other.z; }
 	// BW1W120 inlined BW1M119 inlined
 	float DotProductInline(const LHPoint& other) const { return z * other.z + y * other.y + x * other.x; }
 	// BW1W120 inlined BW1M119 inlined
@@ -168,6 +199,16 @@ struct LHPoint
 		y = 0.0f;
 		x = 0.0f;
 	}
+	// BW1W120 0044f130 BW1M119 010ef530
+	float GetNormeSq() const
+	{
+		float px = x;
+		float py = y;
+		float pz = z;
+		return px * px + py * py + pz * pz;
+	}
+	// BW1W120 00453f50 BW1M119 01091d00
+	float __fastcall DotProduct(const LHPoint& other) const { return other.z * z + other.y * y + other.x * x; }
 	// BW1W120 inlined BW1M119 inlined
 	void SetSize(float size)
 	{
@@ -176,8 +217,65 @@ struct LHPoint
 			*this *= size / (float)sqrt(x * x + y * y + z * z);
 		}
 	}
+	// BW1W120 00460710 BW1M119 inlined
+	float Normalise()
+	{
+		float px = x;
+		float py = y;
+		float pz = z;
+		if (px == 0.0f && py == 0.0f && pz == 0.0f)
+		{
+			return 0.0f;
+		}
+		float length = sqrt(pz * pz + py * py + px * px);
+		float scale = 1.0f / length;
+		x = scale * px;
+		y = scale * py;
+		z = scale * pz;
+		return length;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	float GetDistance(const LHPoint& other) const
+	{
+		float dx = x - other.x;
+		float dy = y - other.y;
+		float dz = z - other.z;
+		return sqrt(dz * dz + dy * dy + dx * dx);
+	}
+	// BW1W120 00460690 BW1M119 inlined
+	float GetDistanceSq(const LHPoint& other) const
+	{
+		float dx = x - other.x;
+		float dy = y - other.y;
+		float dz = z - other.z;
+		return dz * dz + dy * dy + dx * dx;
+	}
+	// BW1W120 inlined BW1M119 01089dc0
+	float GetRange(const LHPoint& other) const
+	{
+		float dx = x - other.x;
+		float dy = y - other.y;
+		float dz = z - other.z;
+		return sqrt(dy * dy + dx * dx + dz * dz);
+	}
+	// BW1W120 004606f0 BW1M119 inlined
+	float GetDistance2DSq(const LHPoint& other) const
+	{
+		float dx = x - other.x;
+		float dz = z - other.z;
+		return dz * dz + dx * dx;
+	}
+	// BW1W120 004606c0 BW1M119 inlined
+	float GetDistance2D(const LHPoint& other) const
+	{
+		float dx = x - other.x;
+		float dz = z - other.z;
+		return sqrt(dz * dz + dx * dx);
+	}
 	// BW1W120 0054e910 BW1M119 01084bc0
 	void FastNormalize();
+	// BW1W120 00459be0 BW1M119 inlined
+	inline void SetToLandAltitude();
 	// BW1W120 inlined BW1M119 inlined
 	void FastNormalizeInline()
 	{

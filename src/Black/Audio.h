@@ -14,6 +14,7 @@ class Base;
 class GameOSFile;
 struct LH_AudioBank;
 struct LH_SamplePlayOptions;
+struct LHPoint;
 
 class GAudio : public GameThing
 {
@@ -60,6 +61,9 @@ public:
 	                     int param_5, int param_6, LH_AudioBank* bank);
 	// BW1W120 00429e30 BW1M119 010230f0
 	void PlaySoundEffect(LH_SamplePlayOptions* options);
+	// BW1W120 0042a000 BW1M119 01187f00
+	void PlaySoundEffect(Base* param_1, const LHPoint& pos, uint32_t param_3, uint32_t param_4, uint32_t param_5,
+	                     int param_6, int param_7, AUDIO_SFX_BANK_TYPE param_8);
 	// BW1W120 0042a210 BW1M119 01187ba0
 	void StopPlayingSoundEffect(uint32_t param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type) const;
 	// BW1W120 0042a330 BW1M119 011877f0

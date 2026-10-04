@@ -12,6 +12,7 @@
 // Forward Declares
 
 struct LH3DColor;
+struct LHCoord;
 struct LH3DMaterial;
 struct LH3DTexture;
 
@@ -82,6 +83,17 @@ public:
 	                                                       unsigned long* specular);
 	// BW1W120 00803630 BW1M119 0101c2c0 (LHCombined Release)
 	static void __fastcall GetNormal(const LH3DMapCoords& coords, LHPoint* normal);
+	// BW1W120 00802550 BW1M119 01019660 (LHCombined Release)
+	static bool32_t __fastcall RayCast(const LHPoint& from, const LHPoint& to, float* x, float* z);
+	// BW1W120 00800c30 BW1M119 01018fc0 (LHCombined Release)
+	static bool32_t __fastcall RayCastFrom2DPoint(const LHCoord& point, float* x, float* z, bool param_4,
+	                                              float param_5);
+	// BW1W120 inlined BW1M119 inlined
+	static float GetAltitude(const LHPoint& pos)
+	{
+		LH3DMapCoords coords(pos.x, pos.z);
+		return GetAltitude(coords);
+	}
 	// BW1W120 inlined BW1M119 inlined
 	static void GetNormal(const LHPoint& pos, LHPoint* normal)
 	{

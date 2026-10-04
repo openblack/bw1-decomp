@@ -17,6 +17,25 @@ struct ScriptedCamera
 
 	// BW1W120 inlined BW1M119 013c45e0
 	int GetDuration() { return field_0x4->way->NumFrames; }
+	// BW1W120 00446ac0 BW1M119 011a4140
+	void Release();
+	// BW1W120 inlined BW1M119 inlined
+	void GetPositionAndFocus(long time, LHPoint* position, LHPoint* focus)
+	{
+		if (time < 0)
+		{
+			time = 0;
+		}
+		else if (time >= GetDuration())
+		{
+			time = GetDuration();
+		}
+		field_0x4->GetPosAtTime(time, position);
+		if (focus)
+		{
+			field_0x8->way->GetPosAtSegment(field_0x4->field_0x0, field_0x4->field_0x204, focus);
+		}
+	}
 };
 static_assert(sizeof(ScriptedCamera) == 0xc, "Data type is of wrong size");
 

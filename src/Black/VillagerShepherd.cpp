@@ -117,7 +117,6 @@ bool32_t Villager::ShepherdWaitForFlock()
 }
 
 // BW1W120 00768e30 BW1M119 0159f480
-// TODO: Flock::GetFlockPos really returns MapCoords*, not MapCoords by value (see Flock.h)
 bool32_t Villager::ShepherdGotoFlock()
 {
 	MapCoords flockPos;
@@ -129,7 +128,7 @@ bool32_t Villager::ShepherdGotoFlock()
 	}
 	if (GetJobInfo(10)->GetJobActivity() != 0)
 	{
-		flockPos = my_flock->GetFlockPos();
+		flockPos = *my_flock->GetFlockPos();
 		SetupMoveToWithHug(flockPos, VILLAGER_STATE_SHEPHERD_TAKES_CONTROL_OF_FLOCK);
 		return true;
 	}

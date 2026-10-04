@@ -61,6 +61,11 @@ public:
 	virtual bool32_t IsComputerPlayer();
 	// BW1W120 006587b0 BW1M119 014ad090
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
+
+	// Non-virtual methods
+
+	// BW1W120 00657fe0 BW1M119 010572a0
+	MapCoords GetHandPos();
 };
 
 class GComputerPlayerQueue : public GameThing

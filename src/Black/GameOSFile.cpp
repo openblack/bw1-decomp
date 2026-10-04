@@ -259,10 +259,10 @@ int GameOSFile::LoadAllGame(char* filename)
 	GPlayer* player = NULL;
 	while ((player = GGame::g_game->GetNextPlayerAndNeutral(player)) != NULL)
 	{
-		if (player->field_0x944)
+		if (player->ComputerPlayer)
 		{
-			((Base*)player->field_0x944)->ToBeDeleted(0);
-			player->field_0x944 = 0;
+			((Base*)player->ComputerPlayer)->ToBeDeleted(0);
+			player->ComputerPlayer = 0;
 		}
 		GameThing::ProcessDeadList(1);
 	}

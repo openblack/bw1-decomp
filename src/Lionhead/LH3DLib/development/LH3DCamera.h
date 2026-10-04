@@ -11,11 +11,6 @@ struct LH3DCamera
 	LHPoint foc;
 	float   fov; /* 0x18 */
 	LHPoint LookAtVector;
-
-	// Static methods
-
-	// BW1W120 0045a7f0 BW1M119 inlined
-	static LHPoint* GetPos();
 };
 
 #endif /* BW1_DECOMP_LH3D_CAMERA_INCLUDED_H */

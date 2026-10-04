@@ -109,8 +109,7 @@ public:
 	// TODO: incorrect return type
 	void SeperateLivingIntoNewFlock(Living* living, int update);
 	// BW1W120 00530570 BW1M119 0106ac10
-	// TODO: incorrect return type
-	MapCoords GetFlockPos();
+	MapCoords* GetFlockPos();
 };
 
 #endif /* BW1_DECOMP_FLOCK_INCLUDED_H */

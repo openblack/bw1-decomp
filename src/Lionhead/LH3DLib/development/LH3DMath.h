@@ -1,7 +1,11 @@
 #ifndef BW1_DECOMP_LH3D_MATH_INCLUDED_H
 #define BW1_DECOMP_LH3D_MATH_INCLUDED_H
 
-const float TWO_PI = 6.2831854820251465f;
+#define TWO_PI       6.2831855f
+#define PI_F         3.1415927f
+#define HALF_PI_F    1.5707964f
+#define QUARTER_PI_F 0.7853982f
+#define EIGHTH_PI_F  0.3926991f
 
 #include <stdint.h> /* For uint8_t */
 
@@ -38,5 +42,9 @@ struct LH3DMath
 int __cdecl hypotenuse(int param_1, int param_2);
 // BW1W120 0074d0c0 BW1M119 0102fd80 (LHCombined Release)
 long __cdecl LHArcTan(long param_1, long param_2);
+// BW1W120 007fa990 BW1M119 0100f5a0 (LHCombined Release)
+float __cdecl atan360(float x, float y);
+// BW1W120 007faa50 BW1M119 0100f420 (LHCombined Release)
+float __cdecl heading_from_direction_vector(const LHPoint& direction);
 
 #endif /* BW1_DECOMP_LH3D_MATH_INCLUDED_H */

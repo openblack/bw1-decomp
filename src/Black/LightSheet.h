@@ -38,6 +38,8 @@ struct LightSheet
 	int           field_0x54;
 	LH3DMaterial* Material0x58;
 	uint32_t      field_0x5c;
+	float         field_0x60;
+	uint32_t      field_0x64;
 
 	// Constructors
 
@@ -46,6 +48,22 @@ struct LightSheet
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 011af650
+	void SetScaleFac(float scale_fac) { field_0x10 = scale_fac; }
+	// BW1W120 0083e710 BW1M119 010cd630 (LHCombined Release)
+	void Init(int count);
+	// BW1W120 inlined BW1M119 inlined
+	void ResetPulses()
+	{
+		SetScaleFac(1.0f);
+		field_0x5c = 1;
+		field_0x60 = 0.0f;
+		for (int i = 0; i < count; i++)
+		{
+			field_0x24[i] = 0.0f;
+			field_0x28[i] = 250.0f;
+		}
+	}
 	// BW1W120 0083e610 BW1M119 010cda30 (LHCombined Release)
 	void PulseForceField(LHPoint param_1, float param_2);
 };

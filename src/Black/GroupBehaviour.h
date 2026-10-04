@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <Lionhead/LHLib/ver5.0/LHDynamicStack.h> /* For LHDynamicStack */
+#include <re_common.h>                            /* For bool32_t */
 
 #include "DanceGroup.h"       /* For enum DANCE_GROUP_ACTION_TYPE */
 #include "DancePathInfo.h"    /* For struct DancePathInfo */
@@ -48,10 +49,10 @@ public:
 	uint32_t      field_0xa4;
 	uint32_t      field_0xa8;
 	float         GroupAngle;
-	uint32_t      field_0xb0;
+	bool32_t      UseDanceCamera;
 	uint32_t      field_0xb4;
-	uint32_t      field_0xb8;
-	uint32_t      field_0xbc;
+	bool32_t      DanceCameraCreated;
+	bool32_t      MarkedForDeletion;
 	uint32_t      field_0xc0;
 	uint32_t      field_0xc4;
 	DancePathInfo dance_path_info;
