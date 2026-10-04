@@ -122,7 +122,7 @@ public:
 	// BW1W120 00417860 BW1M119 011382c0
 	virtual uint32_t GetTastiness();
 	// BW1W120 0041a130 BW1M119 011701c0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00417780 BW1M119 01137fe0
 	virtual uint32_t StandAnimation();
 	// BW1W120 00417fe0 BW1M119 01086670

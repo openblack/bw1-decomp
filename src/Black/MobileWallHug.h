@@ -234,7 +234,7 @@ template <bool clockwise> struct MobileWallHug_InCircleStuff
 			                          1) &
 			                         0x7ff);
 		}
-		MapCoords next(mwh->Pos.x + mwh->step.x, mwh->Pos.z + mwh->step.z, mwh->Pos.Altitude());
+		MapCoords next((long)(mwh->Pos.x + mwh->step.x), (long)(mwh->Pos.z + mwh->step.z), mwh->Pos.Altitude());
 		if (next.MapX() != mwh->Pos.MapX() || next.MapZ() != mwh->Pos.MapZ())
 		{
 			MoveToCircleHugCircleSquareSweep(mwh, next);

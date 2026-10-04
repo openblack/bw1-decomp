@@ -299,7 +299,7 @@ public:
 	// BW1W120 0055ca30 BW1M119 0114ff50
 	virtual uint32_t GetTastiness();
 	// BW1W120 00751af0 BW1M119 01576600
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00753410 BW1M119 01572f40
 	virtual void SetFoodSpeedup(bool param_1);
 	// BW1W120 0055c980 BW1M119 01053ca0
@@ -1925,11 +1925,16 @@ public:
 	// validate slot
 	// BW1W120 00756990 BW1M119 016e91c4
 	void WallhugValidate();
+	// BW1W120 inlined BW1M119 0106cfb0
+	const GVillagerInfo* GetInfo() const { return (const GVillagerInfo*)info; }
 };
 
 class MissionaryControl : public GameThingWithPos
 {
 public:
+	uint8_t            field_0x28[0x8];
+	MissionaryControl* next;
+
 	// Override methods
 
 	// BW1W120 00756740 BW1M119 0156d9b0

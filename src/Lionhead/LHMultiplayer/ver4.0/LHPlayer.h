@@ -5,11 +5,13 @@
 #include <stdint.h> /* For uint32_t */
 #include <uchar.h>  /* For char16_t */
 
+#include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
+
 #include "LHPacketisableObject.h" /* For struct LHPacketisableObject */
 #include "LHNetUser.h"            /* For LH_USER_ID */
 #include "LHTransportInfo.h"      /* For struct LHTransportInfo */
 
-class LHPlayer : public LHPacketisableObject
+class LH_MULTIPLAYER_API LHPlayer : public LHPacketisableObject
 {
 public:
 	char            UserFilename[0x104]; /* 0x4 */
@@ -25,19 +27,30 @@ public:
 	uint32_t        field_0x1fc;
 
 	// BW1W120 100019c0
-	LH_MULTIPLAYER_API LHPlayer();
+	LHPlayer() { ClearAllData(); }
 	// Nonvirtual.
 	// BW1W120 10019eb0
-	LH_MULTIPLAYER_API ~LHPlayer();
+	~LHPlayer();
+	// BW1W120 10019b40
+	LH_RETURN SetDetails(char16_t* player_name, LH_USER_ID user_id, long player_id);
+	// BW1W120 inlined BW1M119 0132c440
+	unsigned long GetPlayerID() { return PlayerId; }
+	// BW1W120 inlined BW1M119 01139c40
+	LH_USER_ID GetUserID() { return UserId; }
+
+protected:
+	// BW1W120 10019c70
+	void ClearAllData();
+
+public:
 	// BW1W120 1001a0f0
-	virtual LH_MULTIPLAYER_API unsigned long GetEncodedLength(unsigned long options, void* context);
+	virtual unsigned long GetEncodedLength(unsigned long options, void* context);
 	// BW1W120 1001a160
-	virtual LH_MULTIPLAYER_API unsigned char* EncodeToBuffer(unsigned char* buffer, unsigned long options,
-	                                                         void* context);
+	virtual unsigned char* EncodeToBuffer(unsigned char* buffer, unsigned long options, void* context);
 	// BW1W120 1001a210
-	virtual LH_MULTIPLAYER_API unsigned char* DecodeFromBuffer(unsigned char* buffer);
+	virtual unsigned char* DecodeFromBuffer(unsigned char* buffer);
 	// BW1W120 1001a330
-	virtual LH_MULTIPLAYER_API void ClearObject();
+	virtual void ClearObject();
 };
 
 static_assert(sizeof(LHPlayer) == 0x200, "LHPlayer size is incorrect");

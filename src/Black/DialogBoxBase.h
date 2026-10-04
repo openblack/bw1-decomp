@@ -50,6 +50,8 @@ public:
 
 	// Static methods
 
+	// BW1W120 00513640 BW1M119 012b5310
+	static void Hide();
 	// BW1W120 005136e0 BW1M119 012b50d0
 	static void HideAll();
 	// BW1W120 00513680 BW1M119 012b5290

@@ -87,7 +87,7 @@ public:
 	// BW1W120 00744380 BW1M119 01563c80
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00744140 BW1M119 01563f80
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00744940 BW1M119 inlined
 	virtual MapCoords* GetDoorPos(MapCoords* param_1);
 	// BW1W120 007443a0 BW1M119 01563bf0
@@ -140,6 +140,8 @@ public:
 	void AddPowerUp(SPELL_SEED_TYPE seed_type, POWER_UP_TYPE power_up_type);
 	// BW1W120 00744050 BW1M119 01564240
 	bool AddSpell(SPELL_SEED_TYPE seed_type);
+	// BW1W120 00743bd0 BW1M119 01564f30
+	void SetPlayersCreature();
 };
 
 #endif /* BW1_DECOMP_TOWN_CENTRE_INCLUDED_H */

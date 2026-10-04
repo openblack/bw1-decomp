@@ -11,6 +11,7 @@
 // Forward Declares
 
 class Abode;
+class GPlayer;
 class EffectValues;
 class Object;
 
@@ -25,14 +26,27 @@ public:
 	// BW1W120 004740e0 BW1M119 011e63d0
 	virtual ~GAlignment();
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	GAlignment() { SetToZero(); }
+
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 011e8cc0
+	void SetToZero()
+	{
+		field_0xc = 0.0f;
+		value = 0.0f;
+	}
 	// BW1W120 00414410 BW1M119 010a7380
 	void Update(Object* object, EffectValues& values, float param_3);
 	// BW1W120 00414520 BW1M119 010a7210
 	void Update(Abode* abode, RESOURCE_TYPE type, int amount, float param_4);
 	// BW1W120 004146f0 BW1M119 010a6e70
 	void CrudeSet(float value);
+	// BW1W120 004141a0 BW1M119 01035580
+	void ProcessForPlayer(GPlayer* player);
 };
 
 #endif /* BW1_DECOMP_ALIGNMENT_INCLUDED_H */

@@ -477,7 +477,7 @@ bool32_t Villager::SetDying()
 	}
 	if (!(Flags & 0x40))
 	{
-		GGame::g_game->data.field_0x24--;
+		GGame::g_game->data.WorldPopulation--;
 		Flags |= 0x40;
 	}
 	return true;

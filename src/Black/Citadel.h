@@ -26,13 +26,15 @@ struct MapCoords;
 class Town;
 class WorshipSite;
 
+#define MAX_WORSHIP_SITES 6
+
 class Citadel : public Container
 {
 public:
 	// BW1W120 00463a30 BW1M119 011c1380
 	MapCoords                   GetCreatureHomePos();
 	LHFastPointer<CitadelHeart> heart;
-	WorshipSite*                WorshipSites[0x6];
+	WorshipSite*                WorshipSites[MAX_WORSHIP_SITES];
 	LHListHead<CitadelPart>     PartList;
 	uint32_t                    field_0x54;
 	uint32_t                    field_0x58;
@@ -100,6 +102,14 @@ public:
 	WorshipSite* FindOrCreateWorshipSite(const GTribeInfo* tribe_info);
 	// BW1W120 004633f0 BW1M119 011c1f50
 	WorshipSite* RequestANewWorshipSite(const GTribeInfo* tribe_info);
+	// BW1W120 00462d70 BW1M119 0106ba90
+	void Process();
+	// BW1W120 00463510 BW1M119 011c1ec0
+	void Cheat(int param_1);
+	// BW1W120 00463920 BW1M119 0108cce0
+	void ProcessSpellIcons();
+	// BW1W120 00463980 BW1M119 0108fe80
+	void DrawSpellIcons();
 };
 
 #endif /* BW1_DECOMP_CITADEL_INCLUDED_H */

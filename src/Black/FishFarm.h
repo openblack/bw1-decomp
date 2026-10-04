@@ -137,7 +137,7 @@ public:
 	// BW1W120 0052d950 BW1M119 010df200
 	virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
 	// BW1W120 0052cf90 BW1M119 010e0750
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 0052cf40 BW1M119 inlined
 	virtual MapCoords* GetDoorPos(MapCoords* param_1);
 	// BW1W120 0052c4c0 BW1M119 010e2b60

@@ -175,12 +175,12 @@ public:
 	uint8_t          field_0x597a[2];
 	StatsDatabase    stats_database;    /* 0x597c */
 	CreatureDatabase creature_database; /* 0x598c */
-	bool             field_0x599c;
+	bool             GameOver;
 	uint8_t          field_0x599d;
 	uint8_t          field_0x599e;
 	uint8_t          field_0x599f;
 #ifdef VERSION_BW1W120
-	uint32_t field_0x59a0;
+	uint32_t MultiplayerTimeLimit;
 #endif
 	uint32_t               field_0x59a4;
 	uint32_t               field_0x59a8;
@@ -189,7 +189,7 @@ public:
 	Temple*                temple; /* 0x59b4 */
 	GMap                   map;
 	int32_t                LandNumber; /* 0x205a08 */
-	int                    field_0x205a0c;
+	bool32_t               SkirmishGame;
 	int                    field_0x205a10;
 	int                    field_0x205a14;
 	uint32_t               field_0x205a18;
@@ -467,6 +467,12 @@ public:
 	GPlayer* MyPlayer() { return &players[PlayerIndex]; }
 	// BW1W120 00555820 BW1M119 01029180
 	uint32_t GetCameraTimeInc();
+	// BW1W120 inlined BW1M119 010736c0
+	GPlayer* GetNeutralPlayer() { return &players[NeutralPlayerIndex]; }
+	// BW1W120 00550a80 BW1M119 010c7100
+	unsigned long GetNoPlayers() const;
+	// BW1W120 00555130 BW1M119 01183980
+	unsigned long GetNumberOfPlayersThatHaveLost();
 	// BW1W120 00555850 BW1M119 01053ef0
 	GInterface* MyInterface();
 	// BW1W120 00555880 BW1M119 01062630
@@ -492,5 +498,7 @@ public:
 
 // BW1W120 0054a770 BW1M119 0107d6c0
 void SetTurnOffMouseMove(bool turn_off);
+// BW1W120 0054cb10 BW1M119 010cf8c0
+void DoOKGameRequestor(char16_t* text);
 
 #endif /* BW1_DECOMP_GAME_INCLUDED_H */

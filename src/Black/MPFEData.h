@@ -15,7 +15,7 @@ public:
 	uint8_t      field_0x0[0xa64];
 	ChannelBox*  ActiveDialog;
 	uint8_t      field_0xa68[0xb6c];
-	WinCondition Conditions[15]; /* 0x15d4 */
+	WinCondition Conditions[WC_LAST];
 	// Descriptive singleton name.
 	// BW1W120 00d3f038
 	static MPFEData Data;

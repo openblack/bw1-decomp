@@ -23,6 +23,7 @@ struct MapCellIterator;
 struct MapCoords;
 class Object;
 struct Point2D;
+class GPlayer;
 class Town;
 
 struct JustMapXZ
@@ -76,6 +77,8 @@ struct MapCoords : public LH3DMapCoords
 	MapCoords();
 	// BW1W120 006031b0 BW1M119 01052840
 	MapCoords(long x, long z, float altitude);
+	// BW1W120 inlined BW1M119 01381f90
+	MapCoords(float x, float z, float altitude);
 	// BW1W120 006031d0 BW1M119 013c72a0
 	MapCoords(const char* str);
 	// BW1W120 00603030 BW1M119 01375af0
@@ -85,6 +88,13 @@ struct MapCoords : public LH3DMapCoords
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 01081a00
+	void Clear()
+	{
+		x = 0;
+		z = 0;
+		altitude = 0.0f;
+	}
 	// BW1W120 00602880 BW1M119 011a5f70
 	char* ConvertToText(char* buff);
 	// BW1W120 006041c0 BW1M119 01121330
@@ -192,6 +202,8 @@ struct MapCoords : public LH3DMapCoords
 	int Collide() const;
 	// BW1W120 006033b0 BW1M119 01028f70
 	int Collide(COLLIDE_TYPE type) const;
+	// BW1W120 00603830 BW1M119 01083f60
+	GPlayer* CalculateMostInfluentialPlayer() const;
 };
 
 #pragma inline_depth(2)

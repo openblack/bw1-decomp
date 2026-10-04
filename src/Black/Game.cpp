@@ -249,7 +249,6 @@ void             load_variables();
 void             fn_0054B190();
 void             fn_0054B180(); // Real emitted empty function; original name unrecovered.
 void             LoadAllAnimations();
-char*            WCHAR2CHAR(char16_t* text);
 void __stdcall   camera_editor_callback(unsigned long message, unsigned long param_1, unsigned long param_2);
 void __stdcall   water_drop_cb(LHPoint& position, float size, unsigned long type);
 
@@ -290,7 +289,7 @@ bool32_t GGame::Init()
 	field_0x59b0 = 0;
 	RenderLoadingFrame(true);
 	GGlobal::Global.audio->Reset();
-	field_0x599c = false;
+	GameOver = false;
 	field_0x599d = 0;
 	AttributeTest::CreateAttributeArray();
 	AttributeTest::CreateBeliefArray();
@@ -336,7 +335,7 @@ bool32_t GGame::Init()
 	camera = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x112a) GCamera(StartCameraCoords);
 	if (Enum0x25017c == 0 && !GameOSFile::IsAutoSaveValid())
 		Enum0x25017c = 1;
-	field_0x205a0c = 0;
+	SkirmishGame = false;
 	field_0x205a10 = 0;
 	field_0x205a14 = 0;
 	switch (Enum0x25017c)
@@ -407,10 +406,10 @@ bool32_t GGame::Init()
 		_unlink("oos.txt");
 		_unlink("oos.lnd");
 #ifdef VERSION_BW1W120
-		field_0x59a0 *= 600;
+		MultiplayerTimeLimit *= 600;
 		for (GPlayer* player = GetNextActivePlayer(NULL); player; player = GetNextActivePlayer(player))
 		{
-			for (int i = 0; i < 15; ++i)
+			for (int i = 0; i < WC_LAST; ++i)
 			{
 				if (MPFEData::Data.ActiveDialog->ConditionEnabled[i])
 					player->Conditions.insert(std::make_pair(i, MPFEData::Data.Conditions[i]));
@@ -423,7 +422,7 @@ bool32_t GGame::Init()
 		char mapPath[0x104];
 		strcpy(mapPath, WCHAR2CHAR(FrontEnd::SkirmishDialog->MapPath));
 		g_game->ResetAndStartPlaygroundGame(mapPath);
-		field_0x205a0c = 1;
+		SkirmishGame = true;
 		break;
 	}
 	}
@@ -476,7 +475,7 @@ bool32_t GGame::Init()
 	RenderLoadingFrame(true);
 	GSpookyVoices::GetPlayerName();
 	time(&field_0x59ac);
-	if ((field_0x205a0c || IsMultiplayerGame()) && MyPlayer()->citadel.Get())
+	if ((SkirmishGame || IsMultiplayerGame()) && MyPlayer()->citadel.Get())
 	{
 		GInterfaceStatus* leader = players[PlayerIndex].GetLeaderInterfaceStatus();
 		if (MyInterfaceStatus() == leader)
@@ -849,7 +848,7 @@ uint32_t GGame::InitOneTimeOnly()
 		internetOptions = 2;
 	}
 #ifdef VERSION_BW1W120
-	field_0x59a0 = 30;
+	MultiplayerTimeLimit = 30;
 #endif
 	Report3D__FPCce("LHCheckForInternetConnection\n");
 	InternetAvailable = LHCheckForInternetConnection(internetOptions);
@@ -963,7 +962,7 @@ int GGame::MyPlayerID(unsigned long user_id)
 		for (GInterfaceStatus* status = players[i].GetNextInterfaceStatus(NULL); status != NULL;
 		     status = players[i].GetNextInterfaceStatus(status))
 		{
-			if (status->GetInterface()->player != NULL && status->GetInterface()->player->UserId.field_0x0 == user_id)
+			if (status->GetInterface()->player != NULL && status->GetInterface()->player->UserId.id == user_id)
 			{
 				return status->GetInterface()->player->PlayerId;
 			}
@@ -1048,7 +1047,7 @@ void GGame::SetupPlayers()
 			player->TeamNumber = player->PlayerId + 1;
 			player->TeamMemberNumber = 1;
 		}
-		if (player->UserId.field_0x0 == network.session->NetUser->id.field_0x0)
+		if (player->UserId.id == network.session->NetUser->id.id)
 		{
 			g_game->field_0x205a5a = (uint8_t)player->PlayerId;
 			if (player->TeamNumber == 0)
@@ -1174,7 +1173,7 @@ void GGame::ClearVariables()
 	field_0x2502e0 = NULL;
 	field_0x2502e4 = NULL;
 	field_0x14 = 0x20;
-	field_0x205a0c = 0;
+	SkirmishGame = false;
 	field_0x205a10 = 0;
 	field_0x205a14 = 0;
 	field_0x205a18 = 0;
@@ -1225,7 +1224,7 @@ bool32_t GGame::Close()
 	ClearMap();
 	climate = NULL;
 #ifdef VERSION_BW1W120
-	field_0x59a0 = 30;
+	MultiplayerTimeLimit = 30;
 #endif
 	GameThing::ProcessDeadList(1);
 	time_t currentTime;
@@ -1320,7 +1319,7 @@ void GGame::ClearMap()
 	startCoords.x = 0;
 	startCoords.z = 0;
 	startCoords.altitude = 0.0f;
-	if (players[PlayerIndex].creature != NULL && players[PlayerIndex].GetLeaderInterfaceStatus() != NULL &&
+	if (players[PlayerIndex].creature.Get() != NULL && players[PlayerIndex].GetLeaderInterfaceStatus() != NULL &&
 	    players[PlayerIndex].creature->field_0x1058 == 0)
 	{
 		char mindPath[256];
@@ -1523,7 +1522,7 @@ static_assert(offsetof(GGame, field_0x205a5a) == 0x201b16, "GGame interface inde
 static_assert(offsetof(GGame, network) + offsetof(GNetwork, session) == 0x201c3c, "GGame session offset is incorrect");
 static_assert(offsetof(GGame, camera) == 0x24c37c, "GGame camera offset is incorrect");
 #endif
-static_assert(offsetof(Town, field_0x5b4) == 0x5b4, "Town ID offset is incorrect");
+static_assert(offsetof(Town, ID) == 0x5b4, "Town ID offset is incorrect");
 #ifdef VERSION_BW1W120
 static_assert(offsetof(Town, next) == 0x75c, "Town next offset is incorrect");
 static_assert(offsetof(GGame, field_0x205a5c) == 0x205a5c, "GGame serialized byte offset is incorrect");
@@ -1983,7 +1982,7 @@ void GGame::Loop()
 		}
 	}
 	DialogBoxBase::HideAll();
-	if (field_0x205a10 == 0 && !IsMultiplayerGame() && field_0x205a0c == 0 && g_game->GameMode != GAME_MODE_4)
+	if (field_0x205a10 == 0 && !IsMultiplayerGame() && SkirmishGame == 0 && g_game->GameMode != GAME_MODE_4)
 	{
 		if (GameMode == GAME_MODE_QUITTING)
 		{
@@ -2078,7 +2077,7 @@ void GGame::ProcessOneGameTurn()
 	field_0x205d44 = 0;
 	GameTimeMilliseconds += GGameInfo::Info.MillisecondsPerGameTurn;
 	ProcessGameInputs();
-	if (!g_game->field_0x599c)
+	if (!g_game->GameOver)
 	{
 		ProcessGameCode();
 	}
@@ -2245,7 +2244,7 @@ void GGame::Process3dEngine()
 			if (RenderLoopEnabled)
 				landscape.Draw();
 			drewLandscape = true;
-			if (players[PlayerIndex].creature)
+			if (players[PlayerIndex].creature.Get())
 				players[PlayerIndex].creature->physical->Creature3d->DrawFightSparkles();
 			GInterface::DrawAllLeashes();
 			PhysicsObject::DrawAll();
@@ -2566,7 +2565,7 @@ void GGame::EndTurn()
 		GameOSFile::AutoSave(0);
 	}
 	network.UpdateDebug();
-	if (field_0x205a10 == 0 && g_game->field_0x205a0c == 0 && !g_game->IsMultiplayerGame() &&
+	if (field_0x205a10 == 0 && g_game->SkirmishGame == false && !g_game->IsMultiplayerGame() &&
 	    g_game->field_0x205a14 == 1 && &g_game->players[g_game->PlayerIndex] != NULL &&
 	    g_game->players[g_game->PlayerIndex].citadel.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->heart.Get() != NULL &&
@@ -2709,7 +2708,7 @@ Town* GGame::FindTownWithID(unsigned long id)
 	{
 		for (Town* town = player->towns.head; town != NULL; town = town->next)
 		{
-			if (town->field_0x5b4 == id)
+			if (town->ID == id)
 			{
 				return town;
 			}
@@ -2748,7 +2747,7 @@ uint32_t GGame::Save(GameOSFile& file)
 	file.WriteSafe(data);
 	file.WriteIt(PlayerIndex);
 	unsigned char creatureFlags = 0;
-	Creature*     creature = players[PlayerIndex].creature;
+	Creature*     creature = players[PlayerIndex].creature.Get();
 	script_creature_curse.Init(creature);
 	if (creature)
 	{
@@ -2829,7 +2828,7 @@ uint32_t GGame::Save(GameOSFile& file)
 	file.WriteIt(LH3DAtmos::ambient);
 	file.WriteIt(Enum0x25017c);
 	file.WriteIt(ScriptRebootRequested);
-	file.WriteIt(field_0x205a0c);
+	file.WriteIt(SkirmishGame);
 	file.WriteIt(field_0x205a10);
 	file.WriteIt(field_0x205a14);
 	file.WriteIt(GameOSFile::LastAutoSaveTurn);
@@ -2952,7 +2951,7 @@ uint32_t GGame::Load(GameOSFile& file)
 	memset(&LH3DAtmos::ambient, 0, sizeof(LH3DAtmos::ambient));
 	file.ReadIt(Enum0x25017c);
 	file.ReadIt(ScriptRebootRequested);
-	file.ReadIt(field_0x205a0c);
+	file.ReadIt(SkirmishGame);
 	file.ReadIt(field_0x205a10);
 	file.ReadIt(field_0x205a14);
 	file.ReadIt(GameOSFile::LastAutoSaveTurn);

@@ -119,7 +119,7 @@ public:
 	// BW1W120 00737d50 BW1M119 0154ebb0
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00561140 BW1M119 0154c8b0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00561090 BW1M119 0154c590
 	virtual bool32_t IsRepaired();
 	// BW1W120 005610b0 BW1M119 0101d550

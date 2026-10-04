@@ -623,7 +623,7 @@ public:
 	// BW1W120 00402b10 BW1M119 010a3520
 	virtual void SetHeadPos(MapCoords* pos) { *pos = Pos; }
 	// BW1W120 purecall BW1M119 null
-	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords) = 0;
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords) = 0;
 	// BW1W120 00402b30 BW1M119 010a3580
 	virtual bool32_t IsAPotFromABuildingSite() { return false; }
 	// BW1W120 00636cd0 BW1M119 013e0230

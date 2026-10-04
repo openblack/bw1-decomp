@@ -17,12 +17,15 @@ public:
 
 static_assert(sizeof(LHSPrintf) == 0x401, "LHSPrintf size is incorrect");
 
+// Wide counterpart: the formatted text is the object itself.
 class LHSPrintfW
 {
 public:
 	char16_t Text[0x401];
 	// BW1W120 10002ab0 BW1M119 0116de60 (LHCombined Release)
 	__declspec(dllimport) LHSPrintfW(char16_t* format, ...);
+
+	operator char16_t*() { return Text; }
 };
 
 #endif

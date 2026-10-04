@@ -8,7 +8,8 @@
 
 // rogue includes needed for matching bss: together they move the $S counter so that
 // Definitions' destructor guard lands on a number whose name hashes ahead of SecondsPerYear
-// in every Windows build ($S115). Game.h alone gives $S113 for 1.20 but $S99 for 1.00 and
+// in every Windows build ($S123; $S115 before Player.h, PlayerInfo.h, Reward.h and Network.h
+// gained their static data members). Game.h alone gave $S113 for 1.20 but $S99 for 1.00 and
 // 1.10, which hashes after it.
 #include "Creature.h"
 #include "Game.h"

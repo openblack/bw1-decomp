@@ -89,6 +89,8 @@ public:
 	CreatureBelief* GetBeliefAboutObject(GameThingWithPos* object);
 	// BW1W120 004d7bd0 BW1M119 01258250
 	CreatureBelief* AddBeliefAboutObject(Creature* creature, GameThingWithPos* object);
+	// BW1W120 004d2800 BW1M119 null
+	void EmpathiseWithPlayer(CREATURE_DESIRES desire);
 };
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_INCLUDED_H */

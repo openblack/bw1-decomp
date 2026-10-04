@@ -34,6 +34,9 @@ class StatsBox;
 class TattooEditor;
 struct SetupTabButton;
 
+// BW1W120 0053b4a0 BW1M119 015ccb10
+char* WCHAR2CHAR(char16_t* text);
+
 struct FrontEnd
 {
 	// Descriptive names; pointers assigned by frontend dialog/tab creation.
@@ -46,6 +49,10 @@ struct FrontEnd
 	static bool CursorOn;
 	// BW1W120 00cd065c
 	static MainMenu* MainMenuDialog;
+	// BW1W120 00cd0654
+	static TattooEditor* TattooDialog;
+	// BW1W120 00cd0b0c
+	static EndGameBox* EndGameDialog;
 	// TODO: Original name unknown; created by JustDoABox.
 	// BW1W120 00cd06e8
 	static Plasma* Dat_00CD06E8;

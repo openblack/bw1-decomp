@@ -40,6 +40,8 @@ class GameOSFile;
 class GameThing;
 class EffectValues;
 class GameThingWithPos;
+class LHOSFile;
+class MissionaryControl;
 class MultiMapFixed;
 class StoragePit;
 class TotemStatue;
@@ -72,7 +74,7 @@ public:
 	TownDesire  desire;
 	uint8_t     field_0x598[0x18];
 	char*       field_0x5b0;
-	uint32_t    field_0x5b4;
+	uint32_t    ID;
 	TRIBE_TYPE  tribe_type;
 	uint8_t     player_number;
 	float       worship_percentage; /* 0x5c0 */
@@ -89,22 +91,22 @@ public:
 	uint32_t    field_0x5ec;
 	uint32_t    field_0x5f0;
 	uint32_t    field_0x5f4;
-	uint32_t    field_0x5f8;
-	uint32_t    field_0x5fc;
-	uint32_t    field_0x600;
-	uint32_t    field_0x604;
-	uint32_t    forests;
-	uint32_t    field_0x60c;
-	TownStats   stats; /* 0x610 */
-	MapCoords   field_0x728;
-	MapCoords   field_0x734;
-#ifdef VERSION_BW1W120
-	uint32_t field_0x740;
-#endif
-	Creche* creche;
 #ifndef VERSION_BW1W100
-	uint32_t field_0x748;
+	uint32_t field_0x5f8;
 #endif
+#ifdef VERSION_BW1W120
+	uint32_t field_0x5fc;
+#endif
+	uint32_t                         field_0x600;
+	uint32_t                         field_0x604;
+	uint32_t                         forests;
+	uint32_t                         field_0x60c;
+	TownStats                        stats; /* 0x610 */
+	MapCoords                        field_0x728;
+	MapCoords                        field_0x734;
+	uint32_t                         field_0x740;
+	Creche*                          creche;
+	uint32_t                         field_0x748;
 	Abode*                           Abode0x74c;
 	uint32_t                         field_0x750;
 	LHListHead<Abode>                AbodeList;
@@ -130,7 +132,7 @@ public:
 	uint32_t                         field_0x98c;
 	uint32_t                         field_0x990;
 	LHLinkedList<TownArtifact*>      artifacts;
-	uint32_t                         field_0x99c;
+	MissionaryControl*               Missionaries; /* 0x99c */
 	uint32_t                         field_0x9a0;
 	TownCentre*                      town_centre;
 	LHListHead<PlannedMultiMapFixed> PlannedList;
@@ -241,6 +243,9 @@ public:
 	     int param_7);
 
 	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 01497b90
+	float GetInfluence() { return influence; }
 
 	// BW1W120 inlined BW1M119 inlined
 	inline GTownInfo* GetInfo() const { return (GTownInfo*)info.Get(); }
@@ -366,6 +371,22 @@ public:
 	bool32_t GetBestRepairBuildingSite();
 	// BW1W120 007635d0 BW1M119 010158b0
 	static void DisplayHowImpressed();
+	// BW1W120 inlined BW1M119 010732b0
+	int GetPopulation() const { return stats.NumAdults + stats.NumChildren; }
+	// BW1W120 0073a7d0 BW1M119 0155f860
+	void RemoveTownFromPlayer();
+	// BW1W120 0073a8f0 BW1M119 0155f6b0
+	void AddTownToPlayer(GPlayer* player);
+	// BW1W120 0073a9c0 BW1M119 0155f4a0
+	void ResetAllDiscipleStates();
+	// BW1W120 0073bab0 BW1M119 01064100
+	float GetBeliefInPlayer(GPlayer* player);
+	// BW1W120 0073fbc0 BW1M119 01073dc0
+	float CalculateInfluencePower();
+	// BW1W120 00741f30 BW1M119 0154f6e0
+	void SaveTown(LHOSFile& file, const MapCoords& coords);
+	// BW1W120 007489c0 BW1M119 0102c470
+	void Draw();
 };
 
 #endif /* BW1_DECOMP_TOWN_INCLUDED_H */

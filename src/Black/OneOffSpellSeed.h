@@ -86,7 +86,7 @@ public:
 	// BW1W120 0072a920 BW1M119 0152f540
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 0072ab80 BW1M119 0152eec0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 
 	// Non-virtual methods
 

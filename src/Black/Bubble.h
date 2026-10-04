@@ -15,7 +15,7 @@ struct Bubble
 	uint8_t  field_0x84[0x10];
 	uint8_t  field_0x94;
 	uint8_t  field_0x95;
-	uint32_t field_0x98;
+	float    DisplayTime;
 	uint32_t field_0x9c;
 	uint32_t field_0xa0;
 	uint32_t field_0xa4;

@@ -32,7 +32,7 @@ public:
 	// BW1W120 00527980 BW1M119 010d4600
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 00527a80 BW1M119 010d46b0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 };
 
 #endif /* BW1_DECOMP_FLOWERS_INCLUDED_H */

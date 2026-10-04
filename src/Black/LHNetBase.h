@@ -6,6 +6,7 @@
 struct LHLobby;
 class LHSession;
 class LHTransport;
+class LHTransportInfo;
 struct LHNetUser;
 struct SetupBox;
 
@@ -37,6 +38,9 @@ public:
 	uint32_t     field_0x38;
 	uint32_t     field_0x3c;
 	char         UserName[100]; /* 0x40, GetUserNameA bound and constructor memset. */
+
+	// BW1W120 005eb120
+	void Ping(LHTransportInfo* info);
 };
 
 // The next Windows object at 00d2054c is a separately allocated SetupBox pointer.

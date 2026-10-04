@@ -101,6 +101,8 @@ public:
 	void SetCameraFov(float fov, float time);
 	// BW1W120 004438c0 BW1M119 011a13d0
 	void SetPositionAndFocus(const LHPoint& position, const LHPoint& focus);
+	// BW1W120 inlined BW1M119 inlined
+	CameraMode* GetCurrentMode() { return ModeCurrentIndex < 0 ? NULL : modes[ModeCurrentIndex]; }
 };
 
 #endif /* BW1_DECOMP_CAMERA_INCLUDED_H */

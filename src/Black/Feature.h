@@ -49,7 +49,7 @@ public:
 	// BW1W120 00518690 BW1M119 01026430
 	virtual void Draw();
 	// BW1W120 005275b0 BW1M119 010d57e0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 };
 
 #endif /* BW1_DECOMP_FEATURE_INCLUDED_H */

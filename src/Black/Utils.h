@@ -15,6 +15,17 @@ struct MapCoords;
 // BW1W120 00da59fc
 extern JustMapXZ MapXZDirections[4];
 
+// TODO: original header unknown; Mac keeps the instantiation POWER<double> (BW1M119 0149f1d0).
+template <class T> inline T POWER(T value, unsigned long power)
+{
+	T result = value;
+	while (--power)
+	{
+		result *= value;
+	}
+	return result;
+}
+
 struct GUtils
 {
 	// BW1W120 0074cca0 BW1M119 013d2a10
@@ -69,6 +80,8 @@ struct GUtils
 	static void GetMidPoint(MapCoords& param_1, MapCoords& param_2, float param_3);
 	// BW1W120 0074dc30 BW1M119 015a09e0
 	static uint32_t ConvertAngle3DToGame(float param_1);
+	// BW1W120 0074cf30 BW1M119 013d2e80
+	static long VeryFastDistance(long x1, long z1, long x2, long z2);
 };
 
 // BW1W120 0074f620 BW1M119 inlined

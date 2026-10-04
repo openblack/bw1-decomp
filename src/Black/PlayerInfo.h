@@ -33,7 +33,7 @@ public:
 class GPlayerInfo : public GBaseInfo
 {
 public:
-	float    field_0x10;
+	float    MaxAlignmentChangePerGameTurn;
 	float    field_0x14;
 	float    field_0x18;
 	float    field_0x1c;
@@ -51,22 +51,18 @@ public:
 	float    field_0x4c;
 	char16_t NetworkName[32]; /* 0x50; passed to WCHAR2CHAR by SetupPlayers. */
 
+	// BW1W120 00d47988
+	static GPlayerInfo Info;
+
 	// Override methods
 
-	// BW1W120 0054be50 BW1M119 014fc8b0
-	virtual ~GPlayerInfo() {}
 	// BW1W120 0054b830 BW1M119 014ef3b0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-};
 
-struct PlayerInfo
-{
-	uint8_t field_0x0[0x8];
+	// Static methods
 
-	// Constructors
-
-	// BW1W120 00648d50 BW1M119 0137cfa0
-	PlayerInfo();
+	// BW1W120 inlined BW1M119 0149f140
+	static GPlayerInfo* GetInfo() { return &Info; }
 };
 
 #endif /* BW1_DECOMP_PLAYER_INFO_INCLUDED_H */

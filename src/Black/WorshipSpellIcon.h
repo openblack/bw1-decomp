@@ -38,7 +38,7 @@ public:
 	uint32_t          field_0x128;
 	uint32_t          field_0x12c;
 	uint32_t          field_0x130;
-	float             field_0x134;
+	float             Charge;
 	uint32_t          field_0x138;
 	int16_t           slot;
 
@@ -71,7 +71,7 @@ public:
 	// BW1W120 0077f0b0 BW1M119 015bb1d0
 	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0077f0d0 BW1M119 015bb270
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 
 	// Static methods
 
@@ -94,6 +94,18 @@ public:
 	void UpdateGraphicsWithPULevels();
 	// BW1W120 0077ff40 BW1M119 015bbf70
 	void StopRemoveFromPlayer();
+	// BW1W120 0077f670 BW1M119 015bd700
+	unsigned long GetTurnChargingStarted();
+	// BW1W120 0077f690 BW1M119 015bd650
+	float GetSpellChargingFraction(GInterfaceStatus* status);
+	// BW1W120 0077f6d0 BW1M119 015bd5e0
+	bool IsCharging(GInterfaceStatus* status);
+	// BW1W120 0077f9a0 BW1M119 015bcca0
+	void CancelCharge(GInterfaceStatus* status);
+	// BW1W120 0077fb40 BW1M119 015bc920
+	bool32_t RequestSpell(GInterfaceStatus* status, POWER_UP_TYPE power_up, bool param_3);
+	// BW1W120 0077fba0 BW1M119 015bc820
+	bool32_t ValidForRequestSpell(GInterfaceStatus* status, POWER_UP_TYPE power_up, bool param_3);
 };
 
 class PrayerIcon : public SingleMapFixed

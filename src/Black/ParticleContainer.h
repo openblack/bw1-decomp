@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/Enum.h> /* For enum SPOT_VISUAL_TYPE */
+
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
 // Forward Declares
@@ -49,6 +51,9 @@ public:
 	virtual const char* GetText();
 	// BW1W120 00560f50 BW1M119 01119600
 	virtual bool32_t IsParticleContainer();
+	// BW1W120 0063e540 BW1M119 01001ee0
+	static GParticleContainer* CreateSpotVisual(const MapCoords& pos, SPOT_VISUAL_TYPE type, float scale,
+	                                            GameThingWithPos* thing);
 };
 
 #endif /* BW1_DECOMP_PARTICLE_CONTAINER_INCLUDED_H */

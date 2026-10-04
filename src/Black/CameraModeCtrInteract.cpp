@@ -48,7 +48,8 @@ void CameraModeCtrInteract::Update()
 	{
 		return;
 	}
-	if (GGame::g_game->MyPlayer()->creature == NULL || (TheCreature->GameThing::Flags & GAME_THING_FLAG_UNAVAILABLE))
+	if (GGame::g_game->MyPlayer()->creature.Get() == NULL ||
+	    (TheCreature->GameThing::Flags & GAME_THING_FLAG_UNAVAILABLE))
 	{
 		TheCreature = NULL;
 		return;

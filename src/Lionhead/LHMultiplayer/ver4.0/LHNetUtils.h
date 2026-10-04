@@ -25,6 +25,10 @@ LH_MULTIPLAYER_API LHMail* __cdecl LHLoadInGameEmailSystem(char* address_book);
 LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetGetCurrentProfileUlong(char* name, unsigned long* value);
 // BW1W120 10018e90
 LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetSetCurrentProfileUlong(char* name, unsigned long value);
+// BW1W120 10018db0
+LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetGetCurrentProfileDouble(char* name, double* value);
+// BW1W120 10018fe0
+LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetSetCurrentProfileDouble(char* name, double value);
 
 // Ushort * LHNetGetCurrentUsedProfile(void)
 // BW1W120 100189d0

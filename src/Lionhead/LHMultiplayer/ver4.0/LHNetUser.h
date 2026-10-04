@@ -6,7 +6,12 @@
 
 struct LH_USER_ID
 {
-	uint32_t field_0x0;
+	uint32_t id;
+
+	// BW1W120 100010b0 BW1M119 0100e950
+	LH_USER_ID() { id = 0; }
+	// BW1W120 100010d0
+	operator unsigned long() { return id; }
 };
 static_assert(sizeof(LH_USER_ID) == 0x4, "Data type is of wrong size");
 

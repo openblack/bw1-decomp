@@ -23,7 +23,7 @@ public:
 	// BW1W120 004eeed0 BW1M119 01278f50
 	virtual ~CreaturePen();
 	// BW1W120 004ef100 BW1M119 01278790
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 004eefc0 BW1M119 01278c80
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
 };

@@ -90,8 +90,8 @@ public:
 	virtual void ResolveLoad();
 	// BW1W120 0077ced0 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
-	// BW1W120 0055dc30 BW1M119 inlined
-	virtual void GetInteractPos(LHPoint* param_1);
+	// BW1W120 0055dc30 BW1M119 015bac30
+	virtual MapCoords GetInteractPos();
 	// BW1W120 0055dc80 BW1M119 015bad60
 	virtual bool32_t IsSuitableForCreatureAction();
 	// BW1W120 004e4b60 BW1M119 015ebca0
@@ -145,7 +145,7 @@ public:
 	// BW1W120 0077d000 BW1M119 015b57e0
 	virtual uint32_t GetObjectCollide();
 	// BW1W120 0077c120 BW1M119 015b7590
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 0077dc90 BW1M119 015b3460
 	virtual LHPoint GetNearestEdgeOfObject(Object* object);
 	// BW1W120 0077e460 BW1M119 inlined
@@ -189,6 +189,16 @@ public:
 	void RemoveVillagerRequestingToGoHome(Villager* param_1);
 	// BW1W120 0077e260 BW1M119 015b28b0
 	int GetNumVillagersRequestingToGoHome();
+	// BW1W120 0077b8a0 BW1M119 015b8ab0
+	void UpdateGraphicsWithPULevels();
+	// BW1W120 0077b960 BW1M119 015b88a0
+	unsigned long GetNumberVillagersWorshipping();
+	// BW1W120 0077cbc0 BW1M119 015b61a0
+	float GetChantsAvailableForCharging(bool param_1);
+	// BW1W120 0077cc10 BW1M119 015b6140
+	float GetChantsAvailable();
+	// BW1W120 0077b170 BW1M119 015b95a0
+	WorshipSpellIcon* GetSpellIconFromSeedType(SPELL_SEED_TYPE type);
 };
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_INCLUDED_H */

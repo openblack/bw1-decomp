@@ -4,14 +4,26 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For class LHLinkedList */
+
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
+
+struct IncomingBubbleInfo;
 
 class GatheringBox : public DialogBoxBase
 {
 public:
+	// BW1W120 00d0643c
+	static GatheringBox* Instance;
 	// BW1W120 005751d0 BW1M119 0132ac40
-	static void InitialiseForCurrentGame();
-	uint8_t     field_0x10[0xe0];
+	static void                       InitialiseForCurrentGame();
+	uint8_t                           field_0x10[0xd0];
+	int                               IncomingTextCount;
+	uint32_t                          field_0xe4;
+	LHLinkedList<IncomingBubbleInfo*> IncomingText;
+
+	// BW1W120 00635d40 BW1M119 013840c0
+	void UpdateIncomingText();
 
 	// Override methods
 

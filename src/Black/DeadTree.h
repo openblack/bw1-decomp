@@ -120,7 +120,7 @@ public:
 	// BW1W120 00511a20 BW1M119 010c45c0
 	virtual uint32_t GetCarriedTreeType();
 	// BW1W120 00511430 BW1M119 010c5160
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00510970 BW1M119 010c4300
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 };

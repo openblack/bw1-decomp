@@ -14,5 +14,8 @@ struct MPFEStartGameData
 	uint32_t MemoryLength;
 	uint32_t field_0x18;
 	float    Alignment;
+
+	// BW1W120 00632880 BW1M119 013b2e00
+	~MPFEStartGameData();
 };
 #endif

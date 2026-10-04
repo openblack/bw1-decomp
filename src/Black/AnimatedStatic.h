@@ -27,7 +27,7 @@ public:
 	// BW1W120 00422300 BW1M119 010aa720
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00422650 BW1M119 010aa210
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 };
 
 #endif /* BW1_DECOMP_ANIMATED_STATIC_INCLUDED_H */

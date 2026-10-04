@@ -735,7 +735,7 @@ char* Abode::GetAbodeText(char* buff)
 	return buff;
 }
 
-uint32_t Abode::SaveObject(LHOSFile& file, const MapCoords& coords)
+uint32_t Abode::SaveObject(LHOSFile& file, const MapCoords* coords)
 {
 	if (CheckAndSetSaved())
 	{

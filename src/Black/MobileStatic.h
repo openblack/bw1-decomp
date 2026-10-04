@@ -155,7 +155,7 @@ public:
 	// BW1W120 00439660 BW1M119 010b6db0
 	virtual uint32_t GetTastiness();
 	// BW1W120 006088e0 BW1M119 013c82f0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 
 	// Constructors
 
@@ -183,7 +183,7 @@ public:
 	// BW1W120 006093a0 BW1M119 013c68c0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 006095e0 BW1M119 013c6370
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 };
 
 #endif /* BW1_DECOMP_MOBILE_STATIC_INCLUDED_H */

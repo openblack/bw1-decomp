@@ -19,7 +19,9 @@ public:
 	uint32_t                field_0xa4;
 	uint32_t                field_0xa8;
 	// Original GetSuperPacketGameTurn at 10003170 reads this signed long.
-	long SuperPacketGameTurn; /* 0xac */
+	long      SuperPacketGameTurn; /* 0xac */
+	uint8_t   field_0xb0[0x9c];
+	LHPlayer* LocalPlayer;
 
 	// BW1W120 1001dab0 BW1M119 0101f490 (LHCombined Release)
 	LH_MULTIPLAYER_API int IsSinglePlayer();

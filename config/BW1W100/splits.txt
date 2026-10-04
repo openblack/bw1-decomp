@@ -1300,20 +1300,24 @@ Black/PlaceSupport.cpp:
 
 Black/PlannedMultiMapFixed.cpp:
 	.text       start:0x005F68E0 end:0x005F6E10
-	.data       start:0x00B228AC end:0x00B228D8
-	.bss        start:0x00C68720 end:0x00C6873C
+	.rdata      start:0x0086ED94 end:0x0086EDA0
+	.CRT$XCU    start:0x008F6C24 end:0x008F6C2C align:4
+	.data       start:0x00B228AC end:0x00B228D4
+	.bss        start:0x00C68720 end:0x00C68728
 
 Black/Player.cpp:
 	.text       start:0x005F6E10 end:0x005FAC60
-	.rdata      start:0x0086EDA8 end:0x0086EDB8
-	.data       start:0x00B229B0 end:0x00B22EF0
-	.bss        start:0x00C688D0 end:0x00C68CD0
+	.rdata      start:0x0086EDA0 end:0x0086EEB8
+	.CRT$XCU    start:0x008F6C2C end:0x008F6C3C align:4
+	.data       start:0x00B228D4 end:0x00B22A7C
+	.bss        start:0x00C68728 end:0x00C687D0
 
 Black/PlayerAction.cpp:
-	.text       start:0x005FAC90 end:0x005FE330
-	.rdata      start:0x0086EDB8 end:0x0086EEC8
-	.CRT$XCU    start:0x008F6C40 end:0x008F6C4C align:4
-	.data       start:0x00B22EF0 end:0x00B2423C
+	.text       start:0x005FAC60 end:0x005FE330
+	.rdata      start:0x0086EEB8 end:0x0086EEC8
+	.CRT$XCU    start:0x008F6C3C end:0x008F6C4C align:4
+	.data       start:0x00B22A7C end:0x00B2423C
+	.bss        start:0x00C687D0 end:0x00C68CE8
 
 Black/PlayerComputer.cpp:
 	.text       start:0x006014A0 end:0x00604230

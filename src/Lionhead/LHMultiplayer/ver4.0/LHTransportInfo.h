@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
+#include <string.h> /* For memcpy, memset */
 
 #include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
 #include "LHPacketisableObject.h"
@@ -18,7 +19,7 @@ enum LH_TRANSPORT_TYPE
 	_LH_TRANSPORT_TYPE_COUNT = 0x6
 };
 
-class LHTransportInfo : public LHPacketisableObject
+class LH_MULTIPLAYER_API LHTransportInfo : public LHPacketisableObject
 {
 public:
 	LH_TRANSPORT_TYPE type; /* 0x4 */
@@ -27,17 +28,39 @@ public:
 	char              ip[0x64];
 
 	// BW1W120 10001460
-	LH_MULTIPLAYER_API LHTransportInfo();
+	LHTransportInfo()
+	{
+		type = (LH_TRANSPORT_TYPE)0;
+		data_len = 0;
+		memset(&port, 0, sizeof(port) + sizeof(ip));
+	}
+	// BW1W120 10001490
+	LHTransportInfo(LH_TRANSPORT_TYPE transport_type, unsigned long length, void* data)
+	{
+		Set(transport_type, length, data);
+	}
+	// BW1W120 10001950
+	void Set(LH_TRANSPORT_TYPE transport_type, unsigned long length, void* data)
+	{
+		if (length == 0 || data != NULL)
+		{
+			data_len = length;
+			type = transport_type;
+			if (length != 0)
+			{
+				memcpy(&port, data, length);
+			}
+		}
+	}
 	// BW1W120 10024360
-	virtual LH_MULTIPLAYER_API unsigned long GetEncodedLength(unsigned long options, void* context);
+	virtual unsigned long GetEncodedLength(unsigned long options, void* context);
 	// BW1W120 10024370
-	virtual LH_MULTIPLAYER_API unsigned char* EncodeToBuffer(unsigned char* buffer, unsigned long options,
-	                                                         void* context);
+	virtual unsigned char* EncodeToBuffer(unsigned char* buffer, unsigned long options, void* context);
 
 	// BW1W120 100243b0 BW1M119 0111b620 (LHCombined Release)
-	virtual LH_MULTIPLAYER_API uint8_t* DecodeFromBuffer(uint8_t* data);
+	virtual uint8_t* DecodeFromBuffer(uint8_t* data);
 	// BW1W120 10024420
-	virtual LH_MULTIPLAYER_API void ClearObject();
+	virtual void ClearObject();
 };
 
 static_assert(sizeof(LHTransportInfo) == 0x74, "LHTransportInfo size is incorrect");
