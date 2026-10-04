@@ -33,10 +33,19 @@ public:
 	~LHPlayer();
 	// BW1W120 10019b40
 	LH_RETURN SetDetails(char16_t* player_name, LH_USER_ID user_id, long player_id);
-	// BW1W120 inlined BW1M119 0132c440
-	unsigned long GetPlayerID() { return PlayerId; }
-	// BW1W120 inlined BW1M119 01139c40
+	// BW1W120 10001aa0 BW1M119 0132c480
+	LHTransportInfo* GetTransportInfo()
+	{
+		if (transport_info.type == LH_TRANSPORT_TYPE_TCP)
+			return &transport_info;
+		return NULL;
+	}
+	// BW1W120 10001ac0 BW1M119 0132c410
+	char16_t* GetName() { return name; }
+	// BW1W120 10001ad0 BW1M119 01139c40
 	LH_USER_ID GetUserID() { return UserId; }
+	// BW1W120 10001b10 BW1M119 0132c440
+	long GetPlayerID() { return PlayerId; }
 
 protected:
 	// BW1W120 10019c70

@@ -13,7 +13,10 @@
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>     /* For struct LHLinkedList */
 #include <re_common.h>                              /* For bool32_t */
 
-#include <wchar.h> /* For wcsncpy */
+#include <wchar.h>   /* For wcsncpy */
+#include <windows.h> /* Before LHSystem.h */
+
+#include <Lionhead/LHLib/ver5.0/LHSystem.h> /* For LHSys::TheSystem */
 
 // Forward Declares
 
@@ -476,6 +479,26 @@ struct SetupSlider : public SetupControl
 
 	// BW1W120 00409bf0 BW1M119 013c2910
 	SetupSlider(int id, int x, int y, int width, int height, float value, char16_t* label);
+
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 inlined
+	void SetValue(float new_value, float min, float max)
+	{
+		if (new_value > min)
+		{
+			if (new_value >= max)
+				new_value = max;
+		}
+		else
+			new_value = min;
+		if (max > min)
+			value = (new_value - min) / (max - min);
+		else
+			value = 0.0f;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	float GetValue(float min, float max) { return value * (max - min) + min; }
 };
 
 typedef uint32_t(__stdcall* SetupList__ListBoxDraw_t)(SetupList* list, int index, int x_min, int y_min, int x_max,
@@ -493,7 +516,7 @@ struct SetupList : public SetupControl
 	char16_t (*item_labels)[0x100];
 	int*                      ItemHeights;
 	void**                    TagData;
-	uint32_t*                 field_0x264;
+	uint32_t*                 ItemData;
 	LH3DColor*                color;
 	SetupList__ListBoxDraw_t* ListBoxDraw;
 	int                       ScrollDistance; /* 0x270 */
@@ -545,6 +568,39 @@ struct SetupList : public SetupControl
 	// fabricated
 	// BW1W120 inlined BW1M119 inlined
 	void SetSelected(int index);
+	// BW1W120 inlined BW1M119 015c5360
+	int GetSelected() { return SelectedIndex; }
+	// BW1W120 inlined BW1M119 013e2930
+	void DeleteAll()
+	{
+		while (NumItems > 0)
+			DeleteString(NumItems - 1);
+	}
+	// BW1W120 inlined BW1M119 013e2860
+	void AddString(const char16_t* text, unsigned char red, unsigned char green, unsigned char blue)
+	{
+		InsertString(NumItems, text);
+		SetCol(NumItems - 1, (red << 16) + (green << 8) + blue);
+	}
+	// BW1W120 inlined BW1M119 inlined
+	uint32_t GetItemData(int index) { return index >= 0 && index < NumItems ? ItemData[index] : 0; }
+	// BW1W120 inlined BW1M119 inlined
+	void SetItemData(int index, uint32_t data)
+	{
+		if (index >= 0 && index < NumItems)
+			ItemData[index] = data;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	SetupList__ListBoxDraw_t GetListBoxDraw(int index)
+	{
+		return index >= 0 && index < NumItems ? ListBoxDraw[index] : NULL;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	void SetListBoxDraw(int index, SetupList__ListBoxDraw_t draw)
+	{
+		if (index >= 0 && index < NumItems)
+			ListBoxDraw[index] = draw;
+	}
 	// BW1W120 0040aaf0 BW1M119 013ebe40
 	void UpdateHeights();
 	// BW1W120 0040ad60 BW1M119 010b7200
@@ -568,10 +624,23 @@ inline SetupList::~SetupList()
 {
 	delete[] color;
 	delete[] ListBoxDraw;
-	delete[] field_0x264;
+	delete[] ItemData;
 	delete[] ItemHeights;
 	delete[] item_labels;
 	delete[] TagData;
+}
+
+inline void SetupList::SetSelected(int index)
+{
+	if (index >= 0 && index < NumItems)
+		SelectedIndex = index;
+	else
+		SelectedIndex = -1;
+	if (UsesIME && SetupThing::IMEActive && index >= 0 && LHSys::TheSystem.TbIME->CandidateList_GetSelectIdx() != index)
+	{
+		LHSys::TheSystem.TbIME->CandidateList_SetViewWindow(0, NumItems - 1, index);
+		AutoScroll(false);
+	}
 }
 
 // BW1W120 005471c0 BW1M119 01376730
@@ -649,6 +718,16 @@ struct SetupEdit : public SetupControl
 	void FixSelect();
 	// BW1W120 0040c090 BW1M119 013e1d10
 	int CalcCharpos(int pos);
+	// BW1W120 inlined BW1M119 inlined
+	void SetText(const char16_t* text)
+	{
+		wcsncpy(label, text, 0xff);
+		label[0xff] = 0;
+		CursorPosition = wcslen(label);
+		SelectEnd = CursorPosition;
+		SelectStart = CursorPosition;
+		ScrollOffset = 0;
+	}
 };
 
 struct SetupMP3Button : public SetupButton
@@ -661,13 +740,18 @@ struct SetupMP3Button : public SetupButton
 
 	// BW1W120 0040cda0 BW1M119 013e89c0
 	virtual void Draw(bool hovered, bool selected);
-	// BW1W120 00571f30 BW1M119 0149c020
-	virtual ~SetupMP3Button();
 
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	SetupMP3Button(int id, int x, int y, int width, int height, const char16_t* label, int param_8, uint32_t param_9);
+	SetupMP3Button(int id, int x, int y, int width, int height, const char16_t* label, int param_8, int icon_index)
+		: SetupButton(id, x, y, width, height, label, param_8)
+	{
+		color = SetupThing::DefaultColor;
+		ShowButton = 1;
+		Style = 0;
+		IconIndex = icon_index;
+	}
 };
 
 struct SetupBigButton : public SetupButton

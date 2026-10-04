@@ -431,4 +431,7 @@ void ProcessExternalSpeech(char16_t* text, LH_USER_ID id, char16_t* name, unsign
 // BW1W120 0064d790 BW1M119 01024410
 long GetRemapedPlayer(unsigned long player);
 
+// BW1W120 0064af80 BW1M119 0149cbb0
+void PlayTauntSample(int taunt);
+
 #endif /* BW1_DECOMP_PLAYER_INCLUDED_H */

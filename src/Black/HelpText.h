@@ -50,6 +50,11 @@ struct HelpTextData
 	uint32_t  field_0x0;
 	uint32_t  field_0x4;
 	char16_t* Text;
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 0110db70
+	static char16_t* GetTextL(unsigned long index);
 };
 
 static_assert(sizeof(HelpTextData) == 0xc, "HelpTextData size is incorrect");
@@ -78,5 +83,11 @@ struct HelpTextDataBase
 		return (index <= 0 ? array : &array[index])->Text;
 	}
 };
+
+// BW1W120 inlined BW1M119 0110db70
+inline char16_t* HelpTextData::GetTextL(unsigned long index)
+{
+	return HelpTextDataBase::HelpTextDatabase.GetHelpText(index);
+}
 
 #endif /* BW1_DECOMP_HELP_TEXT_INCLUDED_H */

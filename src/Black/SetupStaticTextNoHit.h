@@ -7,23 +7,21 @@
 #include "Lionhead/LH3DLib/development/LH3DText.h" /* For enum TEXTJUSTIFY */
 #include "alexmfc.h"                               /* For struct SetupStaticText */
 
-// Forward Declares
-
-struct SetupControl;
-
 struct SetupStaticTextNoHit : public SetupStaticText
 {
 	// Override methods
 
 	// BW1W120 00571f00 BW1M119 013311d0
-	virtual bool HitTest(int x, int y);
-	// BW1W120 00571f10 BW1M119 01331130
-	virtual ~SetupStaticTextNoHit();
+	virtual bool HitTest(int x, int y) { return false; }
 
 	// Constructors
 
-	// BW1W120 inlined
-	SetupStaticTextNoHit(int id, int x, int y, int width, int height, const char16_t* label, TEXTJUSTIFY text_justify);
+	// BW1W120 inlined BW1M119 inlined
+	SetupStaticTextNoHit(int id, int x, int y, int width, int height, const char16_t* label,
+	                     TEXTJUSTIFY justify = TEXTJUSTIFY_LEFT)
+		: SetupStaticText(id, x, y, width, height, label, justify)
+	{
+	}
 };
 
 #endif /* BW1_DECOMP_SETUP_STATIC_TEXT_NO_HIT_INCLUDED_H */

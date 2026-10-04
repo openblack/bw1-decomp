@@ -33,6 +33,11 @@ public:
 		GUIDANCE_SFX_TYPE_0 = 0
 	};
 
+	enum ONE_OFF_GUIDANCE_TYPE
+	{
+		ONE_OFF_GUIDANCE_TYPE_3 = 3
+	};
+
 	struct LastThings
 	{
 		GameThingWithPos* thing; /* 0x0 */
@@ -101,6 +106,8 @@ public:
 	void HelpSpritesCheckPlayerWatching(GPlayer* player);
 	// BW1W120 0071d270 BW1M119 01514d30
 	void HelpSpiritSay(unsigned long text, GUIDANCE_SFX_TYPE sfx);
+	// BW1W120 0071d0b0 BW1M119 015150a0
+	void HelpSpritesSayOneOffGuidanceIfNecessary(ONE_OFF_GUIDANCE_TYPE type);
 };
 
 #endif /* BW1_DECOMP_SOUND_GUIDANCE_INCLUDED_H */

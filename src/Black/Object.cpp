@@ -1741,7 +1741,7 @@ bool32_t Object::CanBeDestroyedBySpell(Spell* spell)
 	{
 		return false;
 	}
-	if (IsInScript() && GGame::g_game->help_system->field_0x45e8 != 0 && GGame::g_game->help_system->field_0x45ec != 0)
+	if (IsInScript() && GGame::g_game->help_system->WideScreen != 0 && GGame::g_game->help_system->field_0x45ec != 0)
 	{
 		if (spell == NULL || (spell->Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) == 0)
 		{
@@ -1947,7 +1947,7 @@ void Object::ResolveLoad()
 
 void Object::SetLife(float life)
 {
-	if ((((Flags & GAME_THING_WITH_POS_FLAG_IN_SCRIPT) != 0 && GGame::g_game->help_system->field_0x45e8 != 0 &&
+	if ((((Flags & GAME_THING_WITH_POS_FLAG_IN_SCRIPT) != 0 && GGame::g_game->help_system->WideScreen != 0 &&
 	      GGame::g_game->help_system->field_0x45ec != 0) ||
 	     (Flags & GAME_THING_WITH_POS_FLAG_INDESTRUCTIBLE) != 0) &&
 	    life <= 0.01f)

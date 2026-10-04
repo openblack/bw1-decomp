@@ -32,6 +32,11 @@ block_relocations:
 # "LUE\0" ending "DETAIL_CREATURE_INITIAL_DESIRE_SOURCE_VALUE" reads as 0x0045554C, inside
 # CameraExclusion::SaveExclusionFile.
   - source: 0x009CBEB8
+# GatheringInterface: player colour 0xafefff and special user IDs 9999998..10000015 are immediates.
+  - source: 0x00573F19
+  - source: 0x00573F21
+  - source: 0x00573FCF
+  - source: 0x00574398
 
 # CMP EDX compares against PacketTimeHistory's one-past-end, not the next array.
 add_relocations:

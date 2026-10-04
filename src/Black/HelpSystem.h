@@ -302,7 +302,7 @@ public:
 	uint32_t         field_0x45dc;
 	uint32_t         field_0x45e0;
 	uint32_t         field_0x45e4;
-	int              field_0x45e8;
+	int              WideScreen;
 	int              field_0x45ec;
 	float            field_0x45f0;
 	int              field_0x45f4;

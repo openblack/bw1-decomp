@@ -457,7 +457,7 @@ bool32_t GGame::Init()
 	soundMap->UpdateFromMap(MapCoords(soundMap->GetReceiverPos()));
 	map.CalculateMapInfluence();
 	field_0x205a2c = 0;
-	field_0x205a28 = 0;
+	ViewMode = 0;
 	RenderLoadingFrame(true);
 	CarriedObject::Init();
 	BMan_Zero();
@@ -466,7 +466,7 @@ bool32_t GGame::Init()
 	field_0x205e78 = 0;
 	FinishInitialisation();
 	MeshIntersect::InitialiseMeshIntersect();
-	field_0x250538 = 1;
+	Initialised = 1;
 	field_0x205d60 = 0;
 	RenderLoadingFrame(true);
 	PlayerSymbol::CreateFinalTextureSymbols();
@@ -1231,7 +1231,7 @@ bool32_t GGame::Close()
 	PlayerProfile::Profile.timestarted += currentTime - field_0x59ac;
 	PlayerProfile::WriteBackToRegistry(PlayerProfile::Profile);
 	GameThing::ProcessDeadList(1);
-	field_0x250538 = 0;
+	Initialised = 0;
 	if (script != NULL)
 	{
 		script->Reset(1);
@@ -1494,7 +1494,7 @@ static_assert(offsetof(LHSys, mouse) + offsetof(LHMouse, DrawCallback) == 0x1c8,
 static_assert(offsetof(LHSys, mouse) + offsetof(LHMouse, CallbackArg1) == 0x314, "Mouse context offset is incorrect");
 
 static_assert(sizeof(GGlobal) == 0x2d500, "GGlobal size is incorrect");
-static_assert(offsetof(GGlobal, field_0x2d2ac) == 0x2d2ac, "GGlobal editor mode offset is incorrect");
+static_assert(offsetof(GGlobal, EditorMode) == 0x2d2ac, "GGlobal editor mode offset is incorrect");
 static_assert(offsetof(GGlobal, field_0x2d2e4) == 0x2d2e4, "GGlobal editor pointer offset is incorrect");
 static_assert(sizeof(Prss) == 0x10, "Prss size is incorrect");
 static_assert(offsetof(GDebug, CellBoxes) == 0x2d2a0, "GDebug CellBoxes offset is incorrect");
@@ -1594,7 +1594,7 @@ void GGame::ProcessFrameInputs()
 	CreatureLessonChooser::Update();
 	PSysEditorInterface::ProcessFrameInputs();
 	ProcessMapKeys();
-	if (GGlobal::Global.field_0x2d2ac != 0)
+	if (GGlobal::Global.EditorMode != 0)
 	{
 		if (GCameraEditor::Instance == NULL || GCameraEditor::Instance->field_0x10 != 0)
 		{
@@ -1630,7 +1630,7 @@ void GGame::ProcessBufferedKeys()
 	for (int i = 0; i < count; ++i)
 	{
 		// Snapshot the count, but reload the mode and array after each callback.
-		if (GGlobal::Global.field_0x2d2ac != 0)
+		if (GGlobal::Global.EditorMode != 0)
 		{
 			EditorProcessKey(key_buffer.Inputs[(unsigned short)i].Key, key_buffer.Inputs[(unsigned short)i].Modifier);
 		}
@@ -1716,7 +1716,7 @@ void GGame::ProcessNetworkPackets()
 	{
 		return;
 	}
-	if ((field_0x14 & 4) && (GGlobal::Global.field_0x2d2ac != 0 || field_0x205a28 == 1))
+	if ((field_0x14 & 4) && (GGlobal::Global.EditorMode != 0 || ViewMode == 1))
 	{
 		static DWORD lastPausedTurn = GetTickCount();
 		if (GetTickCount() - lastPausedTurn > 100)
@@ -1726,15 +1726,15 @@ void GGame::ProcessNetworkPackets()
 			{
 				lastPausedTurn = GetTickCount();
 			}
-			if (GGlobal::Global.field_0x2d2ac != 0)
+			if (GGlobal::Global.EditorMode != 0)
 			{
 				GGlobal::Global.field_0x2d2e4 = GGlobal::Global.field_0x2d2e4->ProcessTurn();
 				if (GGlobal::Global.field_0x2d2e4 == NULL)
 				{
-					GGlobal::Global.field_0x2d2ac = 0;
+					GGlobal::Global.EditorMode = 0;
 				}
 			}
-			if (field_0x205a28 == 1)
+			if (ViewMode == 1)
 			{
 				temple->ProcessGameTurn();
 			}
@@ -1975,7 +1975,7 @@ void GGame::Loop()
 		players[PlayerIndex].SavePlayerAlignment(data.GameTurn);
 		CreatureRoom::ProcessScreenShot();
 		if (LHSys::GetSystem().Terminate != 0 && help_system != NULL &&
-		    (help_system->field_0x45e8 == 0 || help_system->field_0x45ec == 0))
+		    (help_system->WideScreen == 0 || help_system->field_0x45ec == 0))
 		{
 			g_game->GameMode = GAME_MODE_QUITTING;
 		}
@@ -2105,7 +2105,7 @@ void GGame::ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2)
 	camera->Update();
 	MyInterface()->PreDrawProcess();
 	Process3dEngine();
-	if (GGlobal::Global.field_0x2d2ac)
+	if (GGlobal::Global.EditorMode)
 	{
 		BMan_Display();
 		DrawMouseCross();
@@ -2199,7 +2199,7 @@ void GGame::Process3dEngine()
 	LeaveVideoSection();
 	if (!videoOnly)
 	{
-		switch (field_0x205a28)
+		switch (ViewMode)
 		{
 		case 2:
 			LH3DAtmos::Update3D((int)LH3DTech::g_delta_time * 0.001f);
@@ -2248,7 +2248,7 @@ void GGame::Process3dEngine()
 			GInterface::DrawAllLeashes();
 			PhysicsObject::DrawAll();
 			MyInterface()->hand.Get()->UpdateHeldObject();
-			if (GGlobal::Global.field_0x2d2ac)
+			if (GGlobal::Global.EditorMode)
 				GGlobal::Global.field_0x2d2e4->Display();
 			if (hand)
 				hand->AddDrawing();
@@ -2288,7 +2288,7 @@ void GGame::Process3dEngine()
 				nextSpinner = spinner->next;
 				spinner->Update(time);
 			}
-			if (!g_game->help_system->field_0x45e8)
+			if (!g_game->help_system->WideScreen)
 			{
 				for (ValueSpinner* spinner = ValueSpinner::first; spinner; spinner = spinner->next)
 					spinner->AddDrawing();
@@ -2323,7 +2323,7 @@ void GGame::Process3dEngine()
 				if (field_0x59b0 < target)
 					field_0x59b0 = target;
 			}
-			if (!g_game->help_system->field_0x45e8 || !g_game->help_system->field_0x45ec)
+			if (!g_game->help_system->WideScreen || !g_game->help_system->field_0x45ec)
 			{
 				for (VillagerName* name = VillagerName::First; name; name = name->next)
 					name->AddDrawing();
@@ -2337,9 +2337,9 @@ void GGame::Process3dEngine()
 		}
 		}
 	}
-	if (field_0x205a28 != 3)
+	if (ViewMode != 3)
 	{
-		if (Temple::Dat_00E06020 == Temple::Dat_00C2A150 && field_0x205a28 != 1)
+		if (Temple::Dat_00E06020 == Temple::Dat_00C2A150 && ViewMode != 1)
 			script->ProcessFade(true);
 		else
 			Temple::UpdateFade();
@@ -2362,9 +2362,9 @@ void GGame::Process3dEngine()
 			GCameraEditor::Draw3DPart();
 	}
 	g_enable_callbacks = true;
-	if (!field_0x205a28)
+	if (!ViewMode)
 		InfluenceCircle::Draw(1);
-	else if (field_0x205a28 != 2 && dynamic_cast<class WorldRoom*>(temple->ActiveRoom) && WorldRoom::ShowInfluence)
+	else if (ViewMode != 2 && dynamic_cast<class WorldRoom*>(temple->ActiveRoom) && WorldRoom::ShowInfluence)
 		InfluenceCircle::Draw(0);
 	LH3DRender::FinishFrame();
 	VillagerNameBlock::DeleteAll();
@@ -2387,7 +2387,7 @@ void GGame::Process3dEngine()
 			green = 255;
 		CreatureMentalEditor::DrawTextA(text, 320, 90, 24.0f, red, green, 0);
 	}
-	if (field_0x205a28 != 1 && field_0x205a28 != 2)
+	if (ViewMode != 1 && ViewMode != 2)
 		LH3DAtmos::Render2D();
 	LHResetFPU();
 }
@@ -2486,8 +2486,7 @@ void GGame::ProcessTurn()
 	MusicMoodController::UpdateOnGameTurn(0.1f, false);
 
 	// This packet handshake is Windows-specific; the Mac memory warning path differs.
-	if (g_game->help_system != NULL &&
-	    (g_game->help_system->field_0x45e8 == 0 || g_game->help_system->field_0x45ec == 0))
+	if (g_game->help_system != NULL && (g_game->help_system->WideScreen == 0 || g_game->help_system->field_0x45ec == 0))
 	{
 		if (!g_game->IsMultiplayerGame() && g_game->field_0x205a10 == 0 && g_game->data.GameTurn % 2000 == 0 &&
 		    StartTime != 0 && MemoryState == 0 && timeGetTime() > StartTime + 0x36ee80u &&
@@ -2539,12 +2538,12 @@ void GGame::EndTurn()
 	{
 		map.UpdateControlMap();
 	}
-	if (GGlobal::Global.field_0x2d2ac != 0)
+	if (GGlobal::Global.EditorMode != 0)
 	{
 		GGlobal::Global.field_0x2d2e4 = GGlobal::Global.field_0x2d2e4->ProcessTurn();
 		if (GGlobal::Global.field_0x2d2e4 == NULL)
 		{
-			GGlobal::Global.field_0x2d2ac = 0;
+			GGlobal::Global.EditorMode = 0;
 		}
 	}
 	int count = GLandscape::DrawObjectCount;

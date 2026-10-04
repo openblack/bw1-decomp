@@ -195,7 +195,7 @@ public:
 	uint32_t               field_0x205a18;
 	int                    field_0x205a1c;
 	GLandscape             landscape; /* 0x205a20 */
-	uint32_t               field_0x205a28;
+	uint32_t               ViewMode;
 	uint32_t               field_0x205a2c;
 	GData                  data;  /* 0x205a30 */
 	GSetup                 setup; /* 0x205a58; empty utility member occupies one byte. */
@@ -285,7 +285,7 @@ public:
 	PathCreator            path_creator; /* 0x250310 */
 	uint32_t               field_0x250530;
 	GClimate*              climate;
-	uint32_t               field_0x250538;
+	uint32_t               Initialised;
 	uint32_t               field_0x25053c;
 	int                    field_0x250540;
 

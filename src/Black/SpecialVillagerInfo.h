@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/Enum.h> /* For SPECIAL_VILLAGER_INFO_LAST */
+
 #include "BaseInfo.h"    /* For struct GBaseInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
@@ -14,6 +16,8 @@ class Base;
 class GSpecialVillagerInfo : public GBaseInfo
 {
 public:
+	// BW1W120 00d9b154
+	static GSpecialVillagerInfo* InfoList;
 	// BW1W120 0071f930 BW1M119 0114e750
 	static void OnClearMap();
 	char        name[0x30]; /* 0x10 */

@@ -829,7 +829,7 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 	{
 		return;
 	}
-	if (GGame::g_game->field_0x250538 == 0)
+	if (GGame::g_game->Initialised == 0)
 	{
 		return;
 	}
@@ -855,7 +855,7 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 	{
 		return;
 	}
-	if (GGame::g_game->field_0x205a28 != 0)
+	if (GGame::g_game->ViewMode != 0)
 	{
 		return;
 	}
@@ -1108,7 +1108,7 @@ void CameraModeNew3::TriconDraw()
 		float size = depth / 22.0f;
 		int   visibleHeight = LHSys::TheSystem.screen.height;
 		int   screenHeight = visibleHeight;
-		if (GGame::g_game->help_system->field_0x45e8)
+		if (GGame::g_game->help_system->WideScreen)
 		{
 			visibleHeight -= (int)(LH3DTech::g_info_transform.resolution.y -
 			                       LH3DTech::g_info_transform.resolution.x * (9.0f / 16.0f));
@@ -1369,7 +1369,7 @@ void CameraModeNew3::ProcessKeyMovement(uint16_t key)
 			KeyTriconFlags |= 3;
 		}
 	}
-	if (GGlobal::Global.field_0x2d2ac == 0)
+	if (GGlobal::Global.EditorMode == 0)
 	{
 		if (GGame::g_game->control_map->IsActionPerformed(BINDABLE_ACTION_ROTATE_RIGHT))
 		{
@@ -2519,7 +2519,7 @@ void CameraModeNew3::Update()
 	bool local_4a = false;
 	int  screenHeight = LHSys::TheSystem.screen.height;
 	int  visibleHeight = screenHeight;
-	if (GGame::g_game->help_system->field_0x45e8)
+	if (GGame::g_game->help_system->WideScreen)
 	{
 		visibleHeight = screenHeight - (int)(LH3DTech::g_info_transform.resolution.y -
 		                                     LH3DTech::g_info_transform.resolution.x * (9.0f / 16.0f));
@@ -3033,7 +3033,7 @@ void CameraModeNew3::Update()
 				int width = LHSys::TheSystem.screen.width;
 				int height = LHSys::TheSystem.screen.height;
 				int visibleHeight = height;
-				if (GGame::g_game->help_system->field_0x45e8)
+				if (GGame::g_game->help_system->WideScreen)
 				{
 					visibleHeight = height - (int)(LH3DTech::g_info_transform.resolution.y -
 					                               LH3DTech::g_info_transform.resolution.x * (9.0f / 16.0f));
@@ -3747,7 +3747,7 @@ void CameraModeNew3::Update()
 		focusDest.Mul(HeadingDistance);
 		focusDest.Add(originDest);
 	}
-	if (!GGlobal::Global.field_0x2d2ac)
+	if (!GGlobal::Global.EditorMode)
 	{
 		originDest -= MapCentre;
 		focusDest -= MapCentre;

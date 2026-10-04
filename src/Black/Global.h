@@ -20,7 +20,7 @@ struct GGlobal
 	GGlobal();
 	GAudio*  audio; /* 0x0 */
 	GDebug   debug;
-	uint32_t field_0x2d2ac; // Editor mode; original member name unrecovered.
+	uint32_t EditorMode;
 	uint32_t field_0x2d2b0;
 	uint32_t field_0x2d2b4;
 	uint32_t field_0x2d2b8;

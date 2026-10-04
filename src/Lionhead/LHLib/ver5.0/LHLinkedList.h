@@ -23,8 +23,23 @@ public:
 	LHFastPointer<LHLinkedNode<T> > head;
 	uint32_t                        count;
 	LHLinkedList();
+	// BW1W120 inlined BW1M119 0132a2a0
+	~LHLinkedList() {}
+	LHLinkedList(T val)
+	{
+		count = 0;
+		head.Clear();
+		Add(val);
+	}
 	inline LHLinkedNode<T>* GetStart() const { return head.Get(); }
-	inline bool             Add(T val)
+	// BW1W120 inlined BW1M119 01342030
+	T GetHead()
+	{
+		if (head.Get() != NULL)
+			return head.Get()->payload;
+		return NULL;
+	}
+	inline bool Add(T val)
 	{
 		if (!val)
 			return false;
