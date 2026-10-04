@@ -16,4 +16,12 @@ public:
 
 static_assert(sizeof(LHSPrintf) == 0x401, "LHSPrintf size is incorrect");
 
+class LHSPrintfW
+{
+public:
+	unsigned short Text[0x401];
+	// BW1W120 10002ab0 BW1M119 0116de60 (LHCombined Release)
+	__declspec(dllimport) LHSPrintfW(unsigned short* format, ...);
+};
+
 #endif
