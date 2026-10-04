@@ -71,7 +71,7 @@ public:
 	// BW1W120 00464490 BW1M119 011c92b0
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 00464840 BW1M119 011c9f20
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 };
 
 struct TempleLeash
@@ -172,7 +172,7 @@ public:
 	// BW1W120 00464b50 BW1M119 011c9b40
 	virtual uint32_t GetObjectCollide();
 	// BW1W120 004673a0 BW1M119 011c6760
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00464b70 BW1M119 011c9bc0
 	virtual bool32_t ShouldFootpathsGoRound();
 	// BW1W120 00467d10 BW1M119 inlined

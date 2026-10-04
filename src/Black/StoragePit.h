@@ -28,15 +28,13 @@ class PileWood;
 class PotStructure;
 class Villager;
 
+#define MAX_WOOD_PILES 5
+
 class StoragePit : public Abode
 {
 public:
-	PileFood*     pile_food; /* 0xc4 */
-	PileWood*     pile_wood;
-	PileResource* field_0xcc;
-	PileResource* field_0xd0;
-	PileResource* field_0xd4;
-	PileResource* field_0xd8;
+	PileFood* pile_food;                 /* 0xc4 */
+	PileWood* WoodPiles[MAX_WOOD_PILES]; /* 0xc8 */
 
 	// Override methods
 
@@ -125,6 +123,8 @@ public:
 	// BW1W120 00732d60 BW1M119 0115b120
 	static StoragePit* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
 	                          float food, int wood);
+	// BW1W120 007337d0 BW1M119 01159e10
+	PileResource* GetResourcePile(RESOURCE_TYPE type, unsigned long index);
 };
 
 #endif /* BW1_DECOMP_STORAGE_PIT_INCLUDED_H */

@@ -13,6 +13,7 @@
 
 class Creature;
 class GInterfaceStatus;
+class GPlayer;
 class GameThingWithPos;
 struct LH_SamplePlayOptions;
 struct MapCoords;
@@ -26,6 +27,11 @@ enum RESOURCE_RAIN_TYPE
 class GGuidance : public Base
 {
 public:
+	enum GUIDANCE_SFX_TYPE
+	{
+		GUIDANCE_SFX_TYPE_0 = 0
+	};
+
 	struct LastThings
 	{
 		GameThingWithPos* thing; /* 0x0 */
@@ -84,6 +90,10 @@ public:
 	void HelpSpritesLowOnPeople(Town& param_1);
 	// BW1W120 0071cd40 BW1M119 01515df0
 	void HelpSpritesCreatureFight(Creature& creature);
+	// BW1W120 0071d100 BW1M119 01514f40
+	void HelpSpritesCheckPlayerWatching(GPlayer* player);
+	// BW1W120 0071d270 BW1M119 01514d30
+	void HelpSpiritSay(unsigned long text, GUIDANCE_SFX_TYPE sfx);
 };
 
 #endif /* BW1_DECOMP_SOUND_GUIDANCE_INCLUDED_H */

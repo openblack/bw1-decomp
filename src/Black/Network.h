@@ -44,6 +44,9 @@ struct GNetwork
 	// BW1W120 00635450
 	LH_RETURN fn_00635450(void* packet, unsigned long size);
 
+	// BW1W120 00d4139c
+	static char LobbyServerAddress[0x100];
+
 	// Static methods
 
 	// BW1W120 006345e0 BW1M119 01019df0

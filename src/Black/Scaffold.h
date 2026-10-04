@@ -122,7 +122,7 @@ public:
 	// BW1W120 006e8570 BW1M119 0114b970
 	virtual uint32_t ProcessInHand();
 	// BW1W120 006eaf30 BW1M119 01146b10
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 
 	// Non-virtual methods
 

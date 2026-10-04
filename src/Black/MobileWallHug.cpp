@@ -831,7 +831,7 @@ int MobileWallHug::MoveToWander(const MapCoords* centre, long min_dist, long max
 int MobileWallHug::MoveByStep(int& direction)
 {
 	MapCoords pos = Pos;
-	MapCoords next(pos.x + step.x, pos.z + step.z, pos.Altitude());
+	MapCoords next((long)(pos.x + step.x), (long)(pos.z + step.z), pos.Altitude());
 	return MoveMapObject(next);
 }
 
@@ -1353,7 +1353,7 @@ inline bool IsLandscapeBlocker(NewCollide::Obj* obj)
 
 int MobileWallHug::MoveToCircleHug()
 {
-	MapCoords next(Pos.x + step.x, Pos.z + step.z, Pos.Altitude());
+	MapCoords next((long)(Pos.x + step.x), (long)(Pos.z + step.z), Pos.Altitude());
 	if (next.MapX() != Pos.MapX() || next.MapZ() != Pos.MapZ())
 	{
 		InitStepsXZ();

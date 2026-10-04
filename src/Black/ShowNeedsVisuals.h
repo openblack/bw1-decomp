@@ -66,7 +66,7 @@ public:
 	// BW1W120 00719e00 BW1M119 0114d780
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055dda0 BW1M119 0114ccd0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 
 	// Constructors
 

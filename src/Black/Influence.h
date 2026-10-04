@@ -19,7 +19,8 @@ struct MapCoords;
 
 enum INFL_CALC_TYPE
 {
-	INFL_CALC_TYPE_0 = 0
+	INFL_CALC_TYPE_DEFAULT = 0,
+	INFL_CALC_TYPE_ALWAYS_INCLUDE_HAND = 1,
 };
 
 class Influence
@@ -28,6 +29,8 @@ public:
 	// BW1W120 005cd170 BW1M119 010386b0
 	static float CalculatePlayerInfluence(const MapCoords& pos, GPlayer* player, int param_3, INFL_CALC_TYPE type,
 	                                      int param_5);
+	// BW1W120 005cd630 BW1M119 010674f0
+	static GPlayer* CalculateMostInfluentialPlayer(const MapCoords& pos, float* influence);
 };
 
 class InfluenceRing : public GameThingWithPos
@@ -36,11 +39,11 @@ public:
 	// BW1W120 005cdb90 BW1M119 0105c050
 	static void ProcessRings();
 
-	BaseInfo info;   /* 0x28 */
-	GPlayer* player; /* 0x34 */
-	float    field_0x38;
-	int      field_0x3c;
-	uint32_t field_0x40;
+	BaseInfo       info;
+	GPlayer*       player;
+	float          Influence;
+	int            field_0x3c;
+	InfluenceRing* next;
 
 	// Override methods
 

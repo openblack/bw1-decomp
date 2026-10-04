@@ -26,6 +26,8 @@
 class Base;
 struct BookmarkGraphic;
 struct Bubble;
+class CreatureInfo;
+class LHPlayer;
 class Citadel;
 struct ControlHandUpdateInfo;
 class CreatureBelief;
@@ -491,7 +493,7 @@ public:
 	// BW1W120 004770d0 BW1M119 011e3390
 	virtual void SetHeadPos(MapCoords* param_1);
 	// BW1W120 00477f70 BW1M119 011e1520
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00477860 BW1M119 011e2650
 	virtual LHPoint GetNearestEdgeOfObject(Object* object);
 	// BW1W120 004753c0 BW1M119 011e5ef0
@@ -838,6 +840,14 @@ public:
 	uint32_t SubStatePerformPickUpParameter(CreatureBelief* param_1);
 	// BW1W120 00501d10 BW1M119 012a0af0
 	bool SubStatePerformAddVillagersToDance();
+	// BW1W120 00477440 BW1M119 011e2df0
+	bool32_t CanSeePos(const MapCoords& pos);
+	// BW1W120 004796a0 BW1M119 011ded90
+	void AddSpeechItem(char16_t* text, LHPlayer* player, unsigned long flags);
+	// BW1W120 004e7660 BW1M119 0126e110
+	unsigned long SaveMindToMemory(char** buffer);
+	// BW1W120 inlined BW1M119 011e3200
+	const CreatureInfo* GetInfo() const { return (const CreatureInfo*)info; }
 };
 
 class Creed : public MobileObject

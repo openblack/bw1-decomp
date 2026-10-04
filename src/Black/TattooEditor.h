@@ -6,6 +6,8 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+class LH3DCreature;
+
 class TattooEditor : public DialogBoxBase
 {
 public:
@@ -15,13 +17,18 @@ public:
 
 	// BW1W120 00542510 BW1M119 015c4900
 	virtual void Init(uint32_t param_1, uint32_t param_2,
-	                  void(__stdcall*)(int, SetupBox*, SetupControl*, int, int) param_3);
+	                  void(__stdcall* param_3)(int, SetupBox*, SetupControl*, int, int));
 	// BW1W120 005427e0 BW1M119 015c48a0
 	virtual void Destroy();
 	// BW1W120 0053bd20 BW1M119 015ccbc0
 	virtual bool CanESCOut();
 	// BW1W120 005433e0 BW1M119 015c3740
 	virtual void InitControls();
+
+	// Non-virtual methods
+
+	// BW1W120 00543200 BW1M119 015c3800
+	void SetC3D(LH3DCreature* creature);
 };
 
 #endif /* BW1_DECOMP_TATTOO_EDITOR_INCLUDED_H */

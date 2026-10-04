@@ -73,7 +73,7 @@ public:
 	// BW1W120 00438de0 BW1M119 010b4fd0
 	virtual uint32_t GetCarriedTreeType();
 	// BW1W120 00438f70 BW1M119 010b5cf0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 
 	// Non-virtual methods
 

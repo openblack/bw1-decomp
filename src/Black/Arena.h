@@ -81,7 +81,7 @@ public:
 	// BW1W120 00425310 BW1M119 010ad4f0
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00425300 BW1M119 010ad4a0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 };
 
 #endif /* BW1_DECOMP_ARENA_INCLUDED_H */

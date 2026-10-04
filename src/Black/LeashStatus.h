@@ -12,6 +12,7 @@ class Base;
 class GInterfaceStatus;
 class GPlayer;
 class GameOSFile;
+class Object;
 
 class GLeashStatus : public GameThing
 {
@@ -20,10 +21,10 @@ public:
 	uint32_t          field_0x18;
 	uint32_t          field_0x1c;
 	uint32_t          field_0x20;
-	uint32_t          field_0x24;
+	Object*           ObjectAttachedTo;
 	uint32_t          field_0x28;
 	uint32_t          field_0x2c;
-	uint8_t           player_number; /* 0x30 */
+	uint8_t           player_number;
 	uint32_t          field_0x34;
 	GInterfaceStatus* InterfaceStatus;
 

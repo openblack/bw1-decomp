@@ -71,7 +71,11 @@ struct HelpTextDataBase
 	// BW1W120 inlined BW1M119 010946e0
 	char16_t* GetHelpText(unsigned long index) const
 	{
-		return (index >= count ? array : index > 0 ? &array[index] : array)->Text;
+		if (index >= count)
+		{
+			index = 0;
+		}
+		return (index <= 0 ? array : &array[index])->Text;
 	}
 };
 

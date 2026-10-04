@@ -33,7 +33,7 @@ public:
 	// BW1W120 00644030 BW1M119 inlined
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00643980 BW1M119 inlined
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00643950 BW1M119 inlined
 	virtual bool32_t IsPlaytimeStructure();
 	// BW1W120 00643960 BW1M119 inlined

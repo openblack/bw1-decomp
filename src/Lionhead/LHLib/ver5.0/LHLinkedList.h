@@ -94,11 +94,11 @@ public:
 	{
 		if (count <= 0)
 			return NULL;
-		LHLinkedNode<T>* node = head.Get();
-		if (node == NULL)
+		if (head.Get() == NULL)
 			return NULL;
 		if (position >= (long)count)
 			return NULL;
+		LHLinkedNode<T>* node = head.Get();
 		for (long i = 0; i < position; i++)
 			node = node->next.Get();
 		return node;

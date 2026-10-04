@@ -10,6 +10,8 @@
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "MagicHand.h"        /* For struct GMagicHand */
 
+#include <chlasm/Enum.h> /* For enum SPELL_SEED_TYPE */
+
 // Forward Declares
 
 class Base;
@@ -63,9 +65,9 @@ public:
 	uint32_t           field_0x11c;
 	Object*            LastPickedUpObject;
 	Object*            LastDroppedObject;
+	uint32_t           field_0x128;
 	GLeashStatus*      LeashStatus;
 	GVirtualInfluence* influence;
-	float              field_0x130;
 
 	// Override methods
 
@@ -121,6 +123,8 @@ public:
 	void PlaceObjectInMagicHand(Object* object);
 	// BW1W120 005dc8d0 BW1M119 01375a50
 	MapCoords GetHandMapCoords();
+	// BW1W120 005dca40 BW1M119 0108dfc0
+	SPELL_SEED_TYPE GetLastSpellGained();
 };
 
 #endif /* BW1_DECOMP_INTERFACE_STATUS_INCLUDED_H */

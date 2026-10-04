@@ -16,9 +16,10 @@ class GBaseInfo;
 class GSpellSeedInfo : public GObjectInfo
 {
 public:
-	uint8_t    field_0x100[0x24];
-	MAGIC_TYPE MagicTypes[0x4]; /* 0x124 */
-	uint8_t    field_0x134[0x5c];
+	GESTURE_TYPE Gesture;
+	uint8_t      field_0x104[0x20];
+	MAGIC_TYPE   MagicTypes[0x4];
+	uint8_t      field_0x134[0x5c];
 
 	// Override methods
 
@@ -44,6 +45,13 @@ public:
 	bool SpellSeedIsOfMagicType(MAGIC_TYPE type) const;
 	// BW1W120 0072b230 BW1M119 01535610
 	MAGIC_TYPE GetFirstMagicType() const;
+	// BW1W120 0072af10 BW1M119 01536360
+	MAGIC_TYPE GetMagicType(GESTURE_TYPE gesture) const;
+
+	// Static data
+
+	// BW1W120 00d9d678
+	static GSpellSeedInfo Infos[];
 };
 
 #endif /* BW1_DECOMP_SPELL_SEED_INFO_INCLUDED_H */

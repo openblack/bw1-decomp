@@ -43,6 +43,7 @@
 #include "Influence.h"
 #include "Interface.h"
 #include "InterfaceStatus.h"
+#include "LeashStatus.h"
 #include "JCGameBlock.h"
 #include "LandBalance.h"
 #include "LandFeature.h"
@@ -93,10 +94,17 @@ static uint32_t UnusedStatic1 = 0;
 
 GObjectInfo GObjectInfo::Definitions[OBJECT_TYPE_LAST];
 
-// TODO: fabricated; five unrecovered counter slots so DefaultAIPlayerObjectInfo's guard lands on $S140.
+// TODO: fabricated; unrecovered counter slots that move DefaultAIPlayerObjectInfo's destructor
+// guard to a number whose name hashes into DefaultAIPlayerObjectInfo's .bss bucket, ahead of it
+// ($S200), while Definitions' guard ($S137) stays ahead of Definitions. The static data members
+// declared by Player.h, PlayerInfo.h, Reward.h and Network.h already put Definitions' guard 8
+// slots later than the original's $S129, so the original pair ($S129/$S140) is out of reach.
 struct ObjectCounterPadBetween
 {
-	static int Pad0, Pad1, Pad2, Pad3, Pad4;
+	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5, Pad6, Pad7, Pad8, Pad9, Pad10, Pad11, Pad12, Pad13, Pad14, Pad15,
+		Pad16, Pad17, Pad18, Pad19, Pad20, Pad21, Pad22, Pad23, Pad24, Pad25, Pad26, Pad27, Pad28, Pad29, Pad30, Pad31,
+		Pad32, Pad33, Pad34, Pad35, Pad36, Pad37, Pad38, Pad39, Pad40, Pad41, Pad42, Pad43, Pad44, Pad45, Pad46, Pad47,
+		Pad48, Pad49, Pad50, Pad51, Pad52, Pad53, Pad54, Pad55, Pad56;
 };
 
 GObjectInfo GObjectInfo::DefaultAIPlayerObjectInfo;
@@ -479,9 +487,9 @@ void Object::RemoveDraggingCreatureByLeash()
 		for (GInterfaceStatus* status = GetPlayer()->GetNextInterfaceStatus(NULL); status != NULL;
 		     status = GetPlayer()->GetNextInterfaceStatus(status))
 		{
-			if (status->influence->field_0x24 == this)
+			if (status->LeashStatus->ObjectAttachedTo == this)
 			{
-				status->influence->field_0x24 = NULL;
+				status->LeashStatus->ObjectAttachedTo = NULL;
 				break;
 			}
 		}
@@ -1807,7 +1815,7 @@ float Object::GetDefaultFireRadius()
 uint32_t Object::ProcessInHand()
 {
 	GPlayer* player = GetPlayerHoldingThis();
-	if (Influence::CalculatePlayerInfluence(Pos, player, 0, INFL_CALC_TYPE_0, 1) > 0.0f)
+	if (Influence::CalculatePlayerInfluence(Pos, player, 0, INFL_CALC_TYPE_DEFAULT, 1) > 0.0f)
 	{
 		FireEffect::CheckToSeeIfObjectIsNearOnFireObject(this);
 	}
@@ -1964,7 +1972,7 @@ GInterfaceStatus* Object::GetInterfaceStatusHoldingThis()
 	for (GPlayer* player = GGame::g_game->GetNextActivePlayerAndNeutral(NULL); player != NULL;
 	     player = GGame::g_game->GetNextActivePlayerAndNeutral(player))
 	{
-		for (uint32_t i = 0; i < 18; i++)
+		for (uint32_t i = 0; i < MAX_PLAYER_INTERFACES; i++)
 		{
 			if (player->GetRealInterface(i) != NULL &&
 			    player->GetRealInterface(i)->status->GetFirstObjectInCurrentHand() == this)
@@ -2116,7 +2124,7 @@ GInterfaceStatus* Object::GetInterfaceStatusWhoLastPickedMeUp()
 	for (GPlayer* player = GGame::g_game->GetNextPlayer(NULL); player != NULL;
 	     player = GGame::g_game->GetNextPlayer(player))
 	{
-		for (uint32_t i = 0; i < 18; i++)
+		for (uint32_t i = 0; i < MAX_PLAYER_INTERFACES; i++)
 		{
 			if (player->GetRealInterface(i) != NULL && player->GetRealInterface(i)->status->LastPickedUpObject == this)
 			{
@@ -2132,7 +2140,7 @@ GInterfaceStatus* Object::GetInterfaceStatusWhoLastDroppedMe()
 	for (GPlayer* player = GGame::g_game->GetNextPlayer(NULL); player != NULL;
 	     player = GGame::g_game->GetNextPlayer(player))
 	{
-		for (uint32_t i = 0; i < 18; i++)
+		for (uint32_t i = 0; i < MAX_PLAYER_INTERFACES; i++)
 		{
 			if (player->GetRealInterface(i) != NULL && player->GetRealInterface(i)->status->LastDroppedObject == this)
 			{

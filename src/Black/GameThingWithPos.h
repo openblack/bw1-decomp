@@ -161,7 +161,7 @@ public:
 	// BW1W120 0056ff50 BW1M119 0117b4f0
 	virtual void GetPhysicsMovementDirection(LHPoint* pos);
 	// BW1W120 004019f0 BW1M119 0149b9d0
-	virtual void GetInteractPos(LHPoint* pos);
+	virtual MapCoords GetInteractPos();
 	// BW1W120 004052b0 BW1M119 010ad630
 	virtual bool32_t IsMoving() const;
 	// BW1W120 004052c0 BW1M119 013e0960

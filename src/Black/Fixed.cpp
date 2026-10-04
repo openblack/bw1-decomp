@@ -666,11 +666,11 @@ void MultiMapFixed::UseFootpathIfNecessary(Living* living, const MapCoords& coor
 	GameThingWithPos::UseFootpathIfNecessary(living, coords, state);
 }
 
-uint32_t MultiMapFixed::SaveObject(LHOSFile& file, const MapCoords& coords)
+uint32_t MultiMapFixed::SaveObject(LHOSFile& file, const MapCoords* coords)
 {
-	if (&coords != NULL && GetFootpathLink() != NULL)
+	if (coords != NULL && GetFootpathLink() != NULL)
 	{
-		GetFootpathLink()->SaveObject(file, coords);
+		GetFootpathLink()->SaveObject(file, *coords);
 	}
 	return true;
 }

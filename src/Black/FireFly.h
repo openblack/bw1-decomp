@@ -74,7 +74,7 @@ public:
 	// BW1W120 0052a1c0 BW1M119 010deee0
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0052bf10 BW1M119 010db330
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 
 	// Static methods
 

@@ -165,7 +165,7 @@ static inline bool IsSamePosition(const MapCoords& a, const MapCoords& b)
 	return a.WholeX() == b.WholeX() && a.WholeZ() == b.WholeZ() && a.Altitude() == b.Altitude();
 }
 
-uint32_t MobileObject::SaveObject(LHOSFile& file, const MapCoords& origin)
+uint32_t MobileObject::SaveObject(LHOSFile& file, const MapCoords* origin)
 {
 	char          text[0xc8];
 	char          coordText[0x64];
@@ -174,7 +174,7 @@ uint32_t MobileObject::SaveObject(LHOSFile& file, const MapCoords& origin)
 	uint32_t saved = CheckAndSetSaved();
 	if (saved)
 	{
-		MapCoords relative = (&origin != NULL) ? (Pos - origin) : Pos;
+		MapCoords relative = (origin != NULL) ? (Pos - *origin) : Pos;
 		if (object.Get() == NULL)
 		{
 			float scale = GetScale();

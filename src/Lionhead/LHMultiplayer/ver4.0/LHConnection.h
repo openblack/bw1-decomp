@@ -7,13 +7,13 @@
 #include <re_common.h> /* For bool32_t */
 
 #include "LHNetEvent.h"      /* For enum LH_NETEVENT_TYPE */
+#include "LHNetUser.h"       /* For struct LHNetUser */
 #include "LHTransportInfo.h" /* For enum LH_TRANSPORT_TYPE */
 #include "LHMultiplayerExport.h"
 
 // Forward Declares
 
 class LHNetEvent;
-struct LHNetUser;
 class LHTransport;
 class LHTransportInfo;
 
@@ -38,6 +38,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 10002030 BW1M119 01174870
+	LH_MULTIPLAYER_API LH_USER_ID GetUserID() { return NetUser->id; }
 	// BW1W120 100046c0 BW1M119 010deab0 (LHCombined Release)
 	void SetNetUser(LHNetUser* net_user);
 	// BW1W120 100046e0 BW1M119 010dea50 (LHCombined Release)

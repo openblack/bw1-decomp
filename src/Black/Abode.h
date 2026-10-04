@@ -198,7 +198,7 @@ public:
 	// BW1W120 00407420 BW1M119 013ce440
 	virtual void DiscipleInHandNear(Villager& villager, GInterfaceStatus& status);
 	// BW1W120 00405bb0 BW1M119 015bfee0
-	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
 	// BW1W120 00403ef0 BW1M119 0117b490
 	virtual bool32_t ShouldFootpathsGoRound();
 	// BW1W120 004072a0 BW1M119 01055bb0

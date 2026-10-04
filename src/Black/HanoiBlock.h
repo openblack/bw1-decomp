@@ -41,7 +41,7 @@ public:
 	// BW1W120 00561800 BW1M119 01127f00
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 005617f0 BW1M119 01127eb0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00561820 BW1M119 01127f90
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 };

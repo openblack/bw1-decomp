@@ -35,7 +35,7 @@ public:
 	// BW1W120 005c4af0 BW1M119 01353b70
 	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 005c4ae0 BW1M119 01353b20
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 
 	// Constructors
 

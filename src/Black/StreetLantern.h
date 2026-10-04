@@ -51,7 +51,7 @@ public:
 	// BW1W120 00734d50 BW1M119 0153d2d0
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00734b10 BW1M119 0153d6c0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 
 	// Static methods
 

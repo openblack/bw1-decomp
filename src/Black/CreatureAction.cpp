@@ -2891,7 +2891,7 @@ int CreatureAgenda::ConstructSubActionsForSacrifice(unsigned long param_1)
 	if (creature->GetCitadel() != NULL)
 	{
 		WorshipSite* site;
-		for (uint32_t i = 0; i < 6; i++)
+		for (uint32_t i = 0; i < MAX_WORSHIP_SITES; i++)
 		{
 			site = creature->GetCitadel()->WorshipSites[i];
 			if (site != NULL)

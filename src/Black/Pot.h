@@ -33,7 +33,7 @@ class Pot : public MobileObject
 public:
 	RESOURCE_TYPE field_0x68;
 	uint32_t      field_0x6c;
-	uint32_t      field_0x70;
+	uint32_t      ResourceAmount;
 	uint8_t       field_0x74;
 
 	// Override methods
@@ -128,7 +128,7 @@ public:
 	// BW1W120 0066e8f0 BW1M119 01121d00
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0066d550 BW1M119 01124bc0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 0055d590 BW1M119 0111fd90
 	virtual bool32_t IsAPotFromABuildingSite();
 

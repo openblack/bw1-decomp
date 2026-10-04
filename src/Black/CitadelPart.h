@@ -74,7 +74,7 @@ public:
 	// BW1W120 004697f0 BW1M119 011ca350
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 004694c0 BW1M119 011caf50
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 004694f0 BW1M119 011cb020
 	virtual bool32_t ShouldFootpathsGoRound();
 	// BW1W120 00464ab0 BW1M119 011c82c0

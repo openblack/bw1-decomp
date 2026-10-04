@@ -279,56 +279,49 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
-	// Instantiated per translation unit; the linker folds the copies, so an address
-	// only names whichever unit won. BW1W120 00407750 is ReadIt<long> in this build.
-	// A list is stored as its count followed by that many GameThing pointers. The
-	// count is copied out before it is written, because WriteIt takes it by
-	// reference and the walk that follows has to agree with what went to disk: a
-	// list longer than its own count would deserialise short, so the save is failed
-	// instead. Seeding the cursor with NULL keeps the first element and the
-	// successors in one expression, which the compiler emits as a single
-	// next-or-head dispatcher.
 	// BW1W120 inlined BW1M119 inlined
-	template <typename T> void ReadSafe(LHListHead<T>& list)
+	template <typename T> bool32_t ReadSafe(LHListHead<T>& list)
 	{
-		if (ReadEnabled)
+		if (!ReadEnabled)
 		{
-			int count;
-			ReadIt(count);
-			while (count > 0)
-			{
-				T* element;
-				ReadPtr((GameThing**)&element);
-				element->next = NULL;
-				list.AddToLast(element);
-				count--;
-			}
+			return FALSE;
 		}
+		long count;
+		ReadIt(count);
+		while (count > 0)
+		{
+			T* element;
+			ReadPtr((GameThing**)&element);
+			element->next = NULL;
+			list.AddToLast(element);
+			count--;
+		}
+		return TRUE;
 	}
 	// BW1W120 inlined BW1M119 inlined
-	// Declaring written/element inside the guarded block is load-bearing: hoisting
-	// them out swaps the ebx/edi/ebp assignment in Abode::Save (see its 100% match).
-	template <typename T> void WriteSafe(LHListHead<T>& list)
+	template <typename T> bool32_t WriteSafe(LHListHead<T>& list)
 	{
-		if (WriteEnabled)
+		if (!WriteEnabled)
 		{
-			uint32_t count = list.count;
-			WriteIt(list.count);
-			int written = 0;
-			for (T* element = NULL; (element = (element == NULL ? list.head : element->next)) != NULL;)
-			{
-				if (++written > (int)count)
-				{
-					WriteEnabled = false;
-					break;
-				}
-				if (!WriteEnabled)
-				{
-					break;
-				}
-				WritePtr(element);
-			}
+			return FALSE;
 		}
+		uint32_t count = list.count;
+		WriteIt(list.count);
+		int written = 0;
+		for (T* element = NULL; (element = (element == NULL ? list.head : element->next)) != NULL;)
+		{
+			if (++written > (int)count)
+			{
+				WriteEnabled = false;
+				break;
+			}
+			if (!WriteEnabled)
+			{
+				break;
+			}
+			WritePtr(element);
+		}
+		return TRUE;
 	}
 
 	// Inliner IL size: 83

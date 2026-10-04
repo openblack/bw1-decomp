@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <re_common.h> /* For bool32_t */
+
 #include "Base.h" /* For struct Base */
 
 // Forward Declares
@@ -29,7 +31,7 @@ public:
 	GInterfaceStatus* InterfaceStatus;
 	uint32_t          field_0x3c;
 	float             field_0x40;
-	uint32_t          field_0x44;
+	bool32_t          Disabled;
 	uint32_t          field_0x48;
 	uint32_t          field_0x4c;
 	uint32_t          field_0x50;

@@ -271,7 +271,7 @@ int GameOSFile::LoadAllGame(char* filename)
 	Loading = 1;
 	file.LoadInstance(&game);
 	file.ResolveAllLoads();
-	Creature* creature = GGame::g_game->players[GGame::g_game->PlayerIndex].creature;
+	Creature* creature = GGame::g_game->players[GGame::g_game->PlayerIndex].creature.Get();
 	if (creature)
 	{
 		creature->field_0x110c = (LoadedCreatureFlags & 1) != 0;
@@ -333,7 +333,7 @@ void GameOSFile::ResolveAllLoads()
 		}
 		creatureNode = next;
 	}
-	GGame::g_game->script_creature_curse.ResolveLoad(GGame::g_game->players[GGame::g_game->PlayerIndex].creature);
+	GGame::g_game->script_creature_curse.ResolveLoad(GGame::g_game->players[GGame::g_game->PlayerIndex].creature.Get());
 
 	while (SaveLoadPtrList.GetStart())
 	{
@@ -844,7 +844,7 @@ void GameOSFile::WriteSafe(GData& value)
 	{
 		return;
 	}
-	WriteIt(value.field_0x24);
+	WriteIt(value.WorldPopulation);
 }
 
 // BW1W120 00563620 BW1M119 01303930
@@ -857,7 +857,7 @@ void GameOSFile::ReadSafe(GData& value)
 	ReadIt(value.NumCreatedObjects);
 	ReadIt(value.field_0x1c);
 	ReadIt(value.field_0x20);
-	ReadIt(value.field_0x24);
+	ReadIt(value.WorldPopulation);
 }
 
 // BW1W120 005637f0 BW1M119 01303070

@@ -129,6 +129,11 @@ public:
 	// BW1W120 005ce2d0 BW1M119 0135fdf0
 	virtual const char* GetText();
 
+	// Constructors
+
+	// BW1W120 005ce130 BW1M119 01363f90
+	GInterface();
+
 	// Non-virtual methods
 
 	// BW1W120 005d8a10 BW1M119 0136f240
@@ -173,6 +178,10 @@ public:
 	void UpdateAllLeashes();
 	// BW1W120 005d9d80 BW1M119 010042e0
 	bool SendMessageA(INTERFACE_MESSAGE_TYPES param_1, LHCoord* param_2);
+	// BW1W120 005ce910 BW1M119 01363530
+	void Cheat();
+	// BW1W120 005d0690 BW1M119 0135ffe0
+	bool32_t IsLeaderInterface();
 };
 
 // LHReleasedOSFile already includes its 0x104-byte filename storage.

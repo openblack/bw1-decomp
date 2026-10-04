@@ -48,7 +48,7 @@ public:
 	// BW1W120 00748f00 BW1M119 0156a200
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 00748be0 BW1M119 0156aa40
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 };
 
 class TownCentreSpellIcon : public TownSpellIcon

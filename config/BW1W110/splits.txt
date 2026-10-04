@@ -942,7 +942,7 @@ Black/HelpDudeControl.cpp:
 Black/HelpEditor.cpp:
 	.text       start:0x005BFE60 end:0x005BFF90
 	.CRT$XCU    start:0x009B6838 end:0x009B683C align:4
-	.data       start:0x00BDFC7C end:0x00BDFEA8
+	.data       start:0x00BDFC80 end:0x00BDFEA8
 	.bss        start:0x00D048F8 end:0x00D04F7C
 
 Black/HelpProfile.cpp:
@@ -1405,19 +1405,24 @@ Black/PlaceSupport.cpp:
 
 Black/PlannedMultiMapFixed.cpp:
 	.text       start:0x0063F4D0 end:0x0063FA40
-	.data       start:0x00BEE22C end:0x00BEE298
-	.bss        start:0x00D36658 end:0x00D366F4
+	.rdata      start:0x00922B3C end:0x00922B48
+	.CRT$XCU    start:0x009B6C6C end:0x009B6C74 align:4
+	.data       start:0x00BEE22C end:0x00BEE254
+	.bss        start:0x00D36650 end:0x00D36658
 
 Black/Player.cpp:
 	.text       start:0x0063FA40 end:0x00644210
-	.rdata      start:0x00922B50 end:0x00922B60
-	.data       start:0x00BEE330 end:0x00BEE86C
+	.rdata      start:0x00922B48 end:0x00922C64
+	.CRT$XCU    start:0x009B6C74 end:0x009B6C84 align:4
+	.data       start:0x00BEE254 end:0x00BEE3FC
+	.bss        start:0x00D36658 end:0x00D36700
 
 Black/PlayerAction.cpp:
-	.text       start:0x00644240 end:0x00648040
-	.rdata      start:0x00922B60 end:0x00922C70
-	.CRT$XCU    start:0x009B6C88 end:0x009B6C94 align:4
-	.data       start:0x00BEE870 end:0x00BEFB98
+	.text       start:0x00644210 end:0x00648040
+	.rdata      start:0x00922C64 end:0x00922C70
+	.CRT$XCU    start:0x009B6C84 end:0x009B6C94 align:4
+	.data       start:0x00BEE3FC end:0x00BEFB98
+	.bss        start:0x00D36700 end:0x00D36C18
 
 Black/PlayerComputer.cpp:
 	.text       start:0x0064B540 end:0x0064EA70

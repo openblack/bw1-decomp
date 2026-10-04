@@ -26,6 +26,12 @@ struct LHListHead
 	T* Get() { return head; }
 	// BW1W120 inlined BW1M119 010cd520
 	void Set(T* element) { head = element; }
+	// BW1W120 inlined BW1M119 0158fa30
+	void Clear()
+	{
+		head = NULL;
+		count = 0;
+	}
 
 	T* Find(T* element)
 	{

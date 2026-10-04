@@ -23,6 +23,8 @@ class Object;
 class MagicTeleport : public MobileStatic
 {
 public:
+	MagicTeleport* next;
+
 	// Override methods
 
 	// BW1W120 005fc100 BW1M119 013b8af0

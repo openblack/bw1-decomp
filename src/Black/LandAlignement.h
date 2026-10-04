@@ -10,6 +10,8 @@ public:
 	static void  DrawSky(); // 005e2160
 	// BW1W120 005e1fe0 BW1M119 01085950
 	static void UpdateTime(float time_increment, float delta_time);
+	// BW1W120 005e2240 BW1M119 0108e880
+	static void __stdcall SetAlignement(float alignment);
 };
 
 #endif /* BW1_DECOMP_LAND_ALIGNEMENT_INCLUDED_H */

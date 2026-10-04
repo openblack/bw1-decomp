@@ -27,31 +27,29 @@ class Object;
 class SpellSeedGraphic;
 class WorshipSite;
 
-struct Q29SpellIcon13TChargingData
-{
-	uint8_t    field_0x0;
-	LightSheet light_sheet;
-	uint32_t   field_0x64;
-	uint32_t   field_0x68;
-	uint32_t   field_0x6c;
-	int        field_0x70;
-	uint32_t   field_0x74;
-
-	// Constructors
-
-	// BW1W120 00726690 BW1M119 0152bae0
-	Q29SpellIcon13TChargingData();
-};
-
 class SpellIcon : public MultiMapFixed
 {
 public:
-	SpellSeedGraphic*           graphic;   /* 0x7c */
-	GSpellSeedInfo*             seed_info; /* 0x80 */
-	uint32_t                    field_0x84;
-	Q29SpellIcon13TChargingData ChargingData;
-	MapCoords                   SpellCoords; /* 0x100 */
-	uint32_t                    field_0x10c;
+	struct TChargingData
+	{
+		uint8_t    field_0x0;
+		LightSheet light_sheet;
+		uint32_t   field_0x6c;
+		int        field_0x70;
+		uint32_t   field_0x74;
+
+		// Constructors
+
+		// BW1W120 00726690 BW1M119 0152bae0
+		TChargingData();
+	};
+
+	SpellSeedGraphic* graphic;   /* 0x7c */
+	GSpellSeedInfo*   seed_info; /* 0x80 */
+	uint32_t          field_0x84;
+	TChargingData     ChargingData;
+	MapCoords         SpellCoords; /* 0x100 */
+	uint32_t          field_0x10c;
 
 	// Override methods
 
@@ -130,6 +128,8 @@ public:
 	GSpellSeedInfo* GetSpellSeedInfo() const;
 	// BW1W120 00726360 BW1M119 0152c220
 	SPELL_SEED_TYPE GetSpellSeedType();
+	// BW1W120 00726380 BW1M119 0152c1c0
+	MAGIC_TYPE GetMagicType();
 };
 
 #endif /* BW1_DECOMP_SPELL_ICON_INCLUDED_H */

@@ -35,6 +35,19 @@ public:
 class GComputerPlayer : public GameThingWithPos
 {
 public:
+	uint8_t  field_0x28[0x190];
+	bool32_t Active;
+	uint8_t  field_0x1bc[0x40];
+
+	// BW1W120 00656d40 BW1M119 014b0ad0
+	GComputerPlayer(GPlayer* player, float param_2, float param_3, unsigned long param_4);
+	// BW1W120 006573c0 BW1M119 01091300
+	void Draw();
+	// BW1W120 00657420 BW1M119 01057350
+	void NewProcess();
+	// BW1W120 006588d0 BW1M119 014ace40
+	void OnEndOfClearMap();
+
 	// Override methods
 
 	// BW1W120 0055e3d0 BW1M119 0149ec40

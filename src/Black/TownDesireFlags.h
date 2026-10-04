@@ -66,7 +66,7 @@ public:
 	// BW1W120 00746de0 BW1M119 01566410
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0055da90 BW1M119 015656f0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_FLAGS_INCLUDED_H */

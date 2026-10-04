@@ -9,14 +9,14 @@
 class GData : public Base
 {
 public:
-	uint32_t RandSeed; /* 0x8 */
+	uint32_t RandSeed;
 	uint32_t field_0xc;
-	uint32_t GameTurn; /* 0x10 */
+	uint32_t GameTurn;
 	uint32_t field_0x14;
-	uint32_t NumCreatedObjects; /* 0x18 */
+	uint32_t NumCreatedObjects;
 	uint32_t field_0x1c;
 	uint32_t field_0x20;
-	uint32_t field_0x24;
+	uint32_t WorldPopulation;
 
 	// Override methods
 

@@ -25,6 +25,7 @@
 
 class GInterfaceStatus;
 class GameOSFile;
+class LHPlayer;
 struct HandFX;
 struct LHMatrix;
 class CHand;
@@ -254,6 +255,8 @@ public:
 	void UpdateHeldObject();
 	// BW1W120 0046d100 BW1M119 01024a70
 	void AddDrawing();
+	// BW1W120 0046e5f0 BW1M119 011cdda0
+	void UpdateLeftRightFromPlayer(LHPlayer* player);
 };
 
 #endif /* BW1_DECOMP_CONTROL_HAND_INCLUDED_H */

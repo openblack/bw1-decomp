@@ -21,26 +21,24 @@ struct MapCoords;
 class Object;
 class WorshipSite;
 
-struct Q212WorshipTotem13TChargingData
-{
-	uint8_t    field_0x0;
-	LightSheet light_sheet;
-	uint32_t   field_0x64;
-	uint32_t   field_0x68;
-	uint32_t   field_0x6c;
-
-	// Constructors
-
-	// BW1W120 00780af0 BW1M119 inlined
-	Q212WorshipTotem13TChargingData();
-};
-
 class WorshipTotem : public CitadelPart
 {
 public:
-	uint32_t                        field_0x8c;
-	Q212WorshipTotem13TChargingData ChargingData; /* 0x90 */
-	WorshipSite*                    site;         /* 0x100 */
+	struct TChargingData
+	{
+		uint8_t    field_0x0;
+		LightSheet light_sheet;
+		uint32_t   field_0x6c;
+
+		// Constructors
+
+		// BW1W120 00780af0 BW1M119 inlined
+		TChargingData();
+	};
+
+	uint32_t      field_0x8c;
+	TChargingData ChargingData;
+	WorshipSite*  site;
 
 	// Override methods
 

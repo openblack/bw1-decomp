@@ -176,7 +176,7 @@ public:
 	// BW1W120 0055d900 BW1M119 011618c0
 	virtual uint32_t GetCarriedTreeType();
 	// BW1W120 0074a9d0 BW1M119 01160510
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 0074c5f0 BW1M119 0115dd60
 	virtual void CreateCollideData();
 	// BW1W120 0074b810 BW1M119 0115f830

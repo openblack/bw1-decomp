@@ -182,6 +182,8 @@ public:
 	Spell();
 	// BW1W120 0071fb40 BW1M119 015210d0
 	Spell(MAGIC_TYPE type, GameThing* creator);
+	// BW1W120 007218e0 BW1M119 0151d760
+	GInterfaceStatus* GetInterfaceStatus();
 };
 
 #endif /* BW1_DECOMP_SPELL_INCLUDED_H */

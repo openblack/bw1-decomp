@@ -542,7 +542,7 @@ char* Villager::GetVillagerText(char* param_1)
 }
 
 // BW1W120 00751af0 BW1M119 01576600
-uint32_t Villager::SaveObject(LHOSFile& param_1, const MapCoords& param_2)
+uint32_t Villager::SaveObject(LHOSFile& param_1, const MapCoords* param_2)
 {
 	return 0;
 }

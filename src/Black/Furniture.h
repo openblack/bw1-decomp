@@ -25,7 +25,7 @@ public:
 	// BW1W120 0054a450 BW1M119 inlined
 	virtual uint32_t GetSaveType();
 	// BW1W120 0054a440 BW1M119 inlined
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 };
 
 #endif /* BW1_DECOMP_FURNITURE_INCLUDED_H */

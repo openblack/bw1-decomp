@@ -31,7 +31,7 @@ public:
 	// BW1W120 00468e80 BW1M119 011c3750
 	virtual ~CitadelEntrance() {}
 	// BW1W120 00468e50 BW1M119 011c37e0
-	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords) { return 1; }
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords) { return 1; }
 	// BW1W120 00468e60 BW1M119 011c3830
 	virtual uint32_t GetSaveType() { return 0x110; }
 	// BW1W120 00468e70 BW1M119 011c3870

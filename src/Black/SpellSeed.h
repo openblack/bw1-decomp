@@ -115,7 +115,7 @@ public:
 	// BW1W120 00729930 BW1M119 01531560
 	virtual uint32_t ProcessInHand();
 	// BW1W120 00727f90 BW1M119 015354b0
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 0072a2d0 BW1M119 015304c0
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 };

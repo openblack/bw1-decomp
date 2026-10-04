@@ -128,7 +128,7 @@ public:
 	// BW1W120 00425b50 BW1M119 010b0550
 	virtual uint32_t GetTastiness();
 	// BW1W120 00607270 BW1M119 013c4db0
-	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& origin);
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* origin);
 
 	// Static methods
 

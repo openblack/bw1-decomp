@@ -168,7 +168,7 @@ public:
 	// BW1W120 0052f490 BW1M119 010e3550
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0052ef10 BW1M119 010e4500
-	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
 	// BW1W120 0052e490 BW1M119 010e5d30
 	virtual bool32_t IsObjectFullyInMap();
 

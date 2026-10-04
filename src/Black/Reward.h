@@ -77,6 +77,19 @@ public:
 class GRewardProgress : public GBaseInfo
 {
 public:
+	MAGIC_TYPE MagicType;
+	bool32_t   AvailableOnLand[6]; /* 0x14 */
+
+	// BW1W120 00d55468
+	static GRewardProgress InfosGood[REWARD_INFO_PROGRESS_GOOD_LAST];
+	// BW1W120 00d506c8
+	static GRewardProgress InfosEvil[REWARD_INFO_PROGRESS_EVIL_LAST];
+
+	// BW1W120 inlined BW1M119 01144e10
+	static GRewardProgress* GetInfoGood() { return InfosGood; }
+	// BW1W120 inlined BW1M119 01144d60
+	static GRewardProgress* GetInfoEvil() { return InfosEvil; }
+
 	// Override methods
 
 	// BW1W120 006e5580 BW1M119 01143d00
@@ -84,5 +97,7 @@ public:
 	// BW1W120 006e5520 BW1M119 01145010
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
+
+static_assert(sizeof(GRewardProgress) == 0x2c, "GRewardProgress size is incorrect");
 
 #endif /* BW1_DECOMP_REWARD_INCLUDED_H */
