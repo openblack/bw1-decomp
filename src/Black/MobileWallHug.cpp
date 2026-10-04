@@ -16,6 +16,7 @@
 #include "Field.h"
 #include "MultiMapFixed.h"
 #include "VillagerInfo.h"
+#include "CreatureAttitudeConstants.h" // rogue include needed for matching .rdata
 
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
@@ -69,18 +70,18 @@ inline void CircleHugStateInfoT::swapDirection(MobileWallHug& mwh)
 
 inline void CircleHugStateInfoT::swap(MobileWallHug& mwh)
 {
-	switch (mwh.MoveState)
+	switch (mwh.GetMoveState())
 	{
 	case MOVE_TO_STATES_LINEAR_CCW:
-		mwh.MoveState = MOVE_TO_STATES_LINEAR_CW;
+		mwh.SetMoveState(MOVE_TO_STATES_LINEAR_CW);
 		swapDirection(mwh);
 		break;
 	case MOVE_TO_STATES_LINEAR_CW:
-		mwh.MoveState = MOVE_TO_STATES_LINEAR_CCW;
+		mwh.SetMoveState(MOVE_TO_STATES_LINEAR_CCW);
 		swapDirection(mwh);
 		break;
 	case MOVE_TO_STATES_ORBIT_CW:
-		mwh.MoveState = MOVE_TO_STATES_ORBIT_CCW;
+		mwh.SetMoveState(MOVE_TO_STATES_ORBIT_CCW);
 		swapDirection(mwh);
 		if (mwh.circle_hug_info.GetObjectPtr() != NULL)
 		{
@@ -88,7 +89,7 @@ inline void CircleHugStateInfoT::swap(MobileWallHug& mwh)
 		}
 		break;
 	case MOVE_TO_STATES_ORBIT_CCW:
-		mwh.MoveState = MOVE_TO_STATES_ORBIT_CW;
+		mwh.SetMoveState(MOVE_TO_STATES_ORBIT_CW);
 		swapDirection(mwh);
 		if (mwh.circle_hug_info.GetObjectPtr() != NULL)
 		{
@@ -96,11 +97,11 @@ inline void CircleHugStateInfoT::swap(MobileWallHug& mwh)
 		}
 		break;
 	case MOVE_TO_STATES_EXIT_CIRCLE_CW:
-		mwh.MoveState = MOVE_TO_STATES_EXIT_CIRCLE_CCW;
+		mwh.SetMoveState(MOVE_TO_STATES_EXIT_CIRCLE_CCW);
 		swapDirection(mwh);
 		break;
 	case MOVE_TO_STATES_EXIT_CIRCLE_CCW:
-		mwh.MoveState = MOVE_TO_STATES_EXIT_CIRCLE_CW;
+		mwh.SetMoveState(MOVE_TO_STATES_EXIT_CIRCLE_CW);
 		swapDirection(mwh);
 		break;
 	}
@@ -128,8 +129,8 @@ inline CircleHugStateInfoT::performance CircleHugStateInfoT::evaluate(MobileWall
 		swap(*villager);
 		if (villager->GetMoveState() == MOVE_TO_STATES_STEP_THROUGH)
 		{
-			result.count = 0;
 			result.dist = MaxFloat;
+			result.count = 0;
 			villager->ToBeDeleted(0);
 			return result;
 		}
@@ -150,8 +151,9 @@ void DoWallHuggerLookahead()
 	g_CircleHugStateInfo.EvaluatingLookahead = true;
 	if (!g_CircleHugStateInfo.PendingLookahead.empty())
 	{
-		MobileWallHug* mwh = *g_CircleHugStateInfo.PendingLookahead.begin();
-		g_CircleHugStateInfo.PendingLookahead.erase(g_CircleHugStateInfo.PendingLookahead.begin());
+		std::set<MobileWallHug*>::iterator it = g_CircleHugStateInfo.PendingLookahead.begin();
+		MobileWallHug*                     mwh = *it;
+		g_CircleHugStateInfo.PendingLookahead.erase(it);
 		g_CircleHugStateInfo.CompletedLookahead.insert(mwh);
 		CircleHugStateInfoT::performance unswapped;
 		CircleHugStateInfoT::performance swapped;
@@ -196,9 +198,7 @@ void CircleHugInfo::FetchObjectFromCircHugInfo(NewCollide::Obj* collide_obj, Res
 	}
 
 	MapCoords coords;
-	coords.SetX(collide_obj->position.x);
-	coords.SetZ(collide_obj->position.z);
-	coords.altitude = 0.0f;
+	GLandscape::ConvertLandscapePointToMapCoord(collide_obj->position, coords);
 	Object* found = NULL;
 	int     count = 9;
 	long    spiralX = 1;
@@ -248,8 +248,7 @@ void CircleHugInfo::FetchObjectFromCircHugInfo(NewCollide::Obj* collide_obj, Res
 	if (found == NULL)
 	{
 		MapCoords objCoords;
-		objCoords.SetX(collide_obj->position.x);
-		objCoords.SetZ(collide_obj->position.z);
+		GLandscape::ConvertLandscapePointToMapCoord(collide_obj->position, objCoords);
 		info.object = NULL;
 		info.index = 1;
 		info.coords = objCoords;
@@ -376,9 +375,7 @@ void CircleHugInfo::SetObjectPtr(NewCollide::Obj* new_obj, MobileWallHug* mwh, b
 	obj = new_obj;
 }
 
-// fabricated: an inlined helper is needed to reproduce the out-of-line
-// set::find calls of the original
-inline void EraseFromCircleHugSet(std::set<MobileWallHug*>& s, MobileWallHug* mwh)
+inline void EraseFromCircleHugSet(std::set<MobileWallHug*>& s, MobileWallHug* const& mwh)
 {
 	std::set<MobileWallHug*>::iterator it = s.find(mwh);
 	if (it != s.end())
@@ -406,17 +403,17 @@ void CircleHugInfo::Reset(MobileWallHug* mwh)
 	}
 }
 
-// TODO: the map lookups below emit _Lbound calls where the target calls
-// lower_bound; likely needs this TU's other container users to match
-#pragma inline_depth(1)
-
 // BW1W120 0060aad0 BW1M119 010303f0
 void MobileWallHug::SetupMobileMoveToPos(const MapCoords& coords)
 {
 	goal = coords;
 	InitStepsXZ();
 
-	EraseFromCircleHugSet(g_CircleHugStateInfo.CompletedLookahead, this);
+	std::set<MobileWallHug*>::iterator setIt = g_CircleHugStateInfo.CompletedLookahead.find(this);
+	if (setIt != g_CircleHugStateInfo.CompletedLookahead.end())
+	{
+		g_CircleHugStateInfo.CompletedLookahead.erase(setIt);
+	}
 	std::map<MobileWallHug*, uint32_t>::iterator it = g_CircleHugStateInfo.ExtendedEntryDistances.find(this);
 	if (it != g_CircleHugStateInfo.ExtendedEntryDistances.end())
 	{
@@ -426,13 +423,13 @@ void MobileWallHug::SetupMobileMoveToPos(const MapCoords& coords)
 
 	if (AreWeThere(0.0f) == 1)
 	{
-		MoveState = MOVE_TO_STATES_ARRIVED;
+		SetMoveState(MOVE_TO_STATES_ARRIVED);
 		return;
 	}
 
 	circle_hug_info.Reset(this);
 	TurnsUntilStepRebuild = 1;
-	MoveState = MOVE_TO_STATES_STEP_THROUGH;
+	SetMoveState(MOVE_TO_STATES_STEP_THROUGH);
 }
 
 // BW1W120 0060abc0 BW1M119 0101f330
@@ -441,7 +438,11 @@ void MobileWallHug::SetupMobileMoveToPos(const MapCoords& coords, MOVE_TO_STATES
 	goal = coords;
 	InitStepsXZ();
 
-	EraseFromCircleHugSet(g_CircleHugStateInfo.CompletedLookahead, this);
+	std::set<MobileWallHug*>::iterator setIt = g_CircleHugStateInfo.CompletedLookahead.find(this);
+	if (setIt != g_CircleHugStateInfo.CompletedLookahead.end())
+	{
+		g_CircleHugStateInfo.CompletedLookahead.erase(setIt);
+	}
 	std::map<MobileWallHug*, uint32_t>::iterator it = g_CircleHugStateInfo.ExtendedEntryDistances.find(this);
 	if (it != g_CircleHugStateInfo.ExtendedEntryDistances.end())
 	{
@@ -451,24 +452,20 @@ void MobileWallHug::SetupMobileMoveToPos(const MapCoords& coords, MOVE_TO_STATES
 
 	if (AreWeThere(0.0f) == 1)
 	{
-		MoveState = MOVE_TO_STATES_ARRIVED;
+		SetMoveState(MOVE_TO_STATES_ARRIVED);
 		return;
 	}
 
 	if (move_to_state == MOVE_TO_STATES_LINEAR)
 	{
 		MoveToCircleHugLinearSquareSweep(Pos);
-		MoveState = move_to_state;
-		return;
 	}
-	if (move_to_state == MOVE_TO_STATES_STEP_THROUGH)
+	else if (move_to_state == MOVE_TO_STATES_STEP_THROUGH)
 	{
 		TurnsUntilStepRebuild = 1;
 	}
-	MoveState = move_to_state;
+	SetMoveState(move_to_state);
 }
-
-#pragma inline_depth()
 
 void MobileWallHug::SetupMobileMoveToObject(Object* object)
 {
@@ -497,7 +494,7 @@ bool32_t MobileWallHug::AreWeThere(const MapCoords& coords, float extra_distance
 	float dx = (float)(Pos.x - coords.x);
 	float dz = (float)(Pos.z - coords.z);
 	float r = (float)speed + extra_distance;
-	return dx * dx + dz * dz <= r * r;
+	return dx * dx + dz * dz < r * r;
 }
 
 int MobileWallHug::MoveToObjectPos()
@@ -838,6 +835,16 @@ int MobileWallHug::MoveByStep(int& direction)
 	return MoveMapObject(next);
 }
 
+inline int MobileWallHug::GetDefaultSpeed()
+{
+	return GetInfo()->speed;
+}
+
+inline int MobileWallHug::GetRunningSpeed()
+{
+	return GetInfo()->RunningSpeed;
+}
+
 int MobileWallHug::CollideWithMapCell(uint16_t x, uint16_t z)
 {
 	long         cellX = x;
@@ -907,12 +914,12 @@ void MobileWallHug::SetSpeedInMetres(float speed_in_metres, int scale_speed)
 
 float MobileWallHug::GetRunningSpeedInMetres()
 {
-	return GUtils::ConvertWholeDistanceToMeters(GetInfo()->RunningSpeed);
+	return GUtils::ConvertWholeDistanceToMeters(GetRunningSpeed());
 }
 
 float MobileWallHug::GetDefaultSpeedInMetres()
 {
-	return GUtils::ConvertWholeDistanceToMeters(GetInfo()->speed);
+	return GUtils::ConvertWholeDistanceToMeters(GetDefaultSpeed());
 }
 
 float MobileWallHug::GetSpeedInMetresPerSecond() const
@@ -927,12 +934,12 @@ void MobileWallHug::SetSpeedInMetresPerSecond(float speed)
 
 float MobileWallHug::GetRunningSpeedInMetresPerSecond()
 {
-	return GUtils::ConvertWholeDistanceToMeters(GetInfo()->RunningSpeed) * 10.0f;
+	return GUtils::ConvertWholeDistanceToMeters(GetRunningSpeed()) * 10.0f;
 }
 
 float MobileWallHug::GetDefaultSpeedInMetresPerSecond()
 {
-	return GUtils::ConvertWholeDistanceToMeters(GetInfo()->speed) * 10.0f;
+	return GUtils::ConvertWholeDistanceToMeters(GetDefaultSpeed()) * 10.0f;
 }
 
 void MapCoordsToPoint2D(Point2D& point, const MapCoords& coords)
@@ -978,14 +985,9 @@ void CircleHugInfo::ResolveLoad(MobileWallHug* mwh)
 
 	if (info->object != NULL)
 	{
-		if (info->index == -1)
-		{
-			SetObjectPtr(info->object->GetCollideData()->obj, mwh, true);
-		}
-		else
-		{
-			SetObjectPtr(info->object->GetCollideData()->obj->IteratorList->objs[info->index], mwh, true);
-		}
+		SetObjectPtr(info->index == -1 ? info->object->GetCollideData()->obj
+		                               : info->object->GetCollideData()->obj->IteratorList->objs[info->index],
+		             mwh, true);
 	}
 	else if (info->index == 1)
 	{
@@ -1123,8 +1125,8 @@ struct IntersectIntervalLine
 		t1 = offset * dir;
 		float radius = collide_obj->radius;
 		t0 = t1 - radius;
-		obj = collide_obj;
 		disc = radius * radius - offset.GetNormSq() + t1 * t1;
+		obj = collide_obj;
 		if (t0 < -0.2 && disc > 0.0f)
 		{
 			Resolve();
@@ -1339,6 +1341,16 @@ uint32_t MobileWallHug::MoveToCircleHugLinearSquareSweep(const MapCoords& coords
 	return 1;
 }
 
+inline bool IsLandscapeBlocker(NewCollide::Obj* obj)
+{
+	MapCoords block;
+	GLandscape::ConvertLandscapePointToMapCoord(obj->position, block);
+	block.CentreOnMap();
+	SubCollideBlockPos blockPos = SubCollideBlockPos::MakeSubCollideBlockPos(block);
+	std::map<SubCollideBlockPos, NewCollide::Obj*>::iterator it = g_CircleHugStateInfo.LandscapeBlockers.find(blockPos);
+	return it != g_CircleHugStateInfo.LandscapeBlockers.end() && (*it).second == obj;
+}
+
 int MobileWallHug::MoveToCircleHug()
 {
 	MapCoords next(Pos.x + step.x, Pos.z + step.z, Pos.Altitude());
@@ -1357,27 +1369,22 @@ int MobileWallHug::MoveToCircleHug()
 		Point2D centre;
 		MapCoordsToPoint2D(centre, circle_hug_info.GetObjCoords());
 
-		NewCollide::Obj* obj = circle_hug_info.GetObjectPtr();
-		MapCoords        block;
-		GLandscape::ConvertLandscapePointToMapCoord(obj->position, block);
-		block.CentreOnMap();
-		std::map<SubCollideBlockPos, NewCollide::Obj*>::iterator it =
-			g_CircleHugStateInfo.LandscapeBlockers.find(SubCollideBlockPos::MakeSubCollideBlockPos(block));
-		if (it != g_CircleHugStateInfo.LandscapeBlockers.end() && (*it).second == obj)
+		if (IsLandscapeBlocker(circle_hug_info.GetObjectPtr()))
 		{
 			g_CircleHugNeedsLookahead = true;
 		}
 
-		if (MoveState == MOVE_TO_STATES_LINEAR)
+		if (GetMoveState() == MOVE_TO_STATES_LINEAR)
 		{
-			MoveState = (pos - centre).Cross(dir) > 0.0f ? MOVE_TO_STATES_ORBIT_CW : MOVE_TO_STATES_ORBIT_CCW;
+			SetMoveState((pos - centre).Cross(dir) > 0.0f ? MOVE_TO_STATES_ORBIT_CW : MOVE_TO_STATES_ORBIT_CCW);
 		}
 		else
 		{
-			MoveState = MoveState == MOVE_TO_STATES_LINEAR_CW ? MOVE_TO_STATES_ORBIT_CW : MOVE_TO_STATES_ORBIT_CCW;
+			SetMoveState(GetMoveState() == MOVE_TO_STATES_LINEAR_CW ? MOVE_TO_STATES_ORBIT_CW
+			                                                        : MOVE_TO_STATES_ORBIT_CCW);
 		}
 
-		if (MoveState == MOVE_TO_STATES_ORBIT_CW)
+		if (GetMoveState() == MOVE_TO_STATES_ORBIT_CW)
 		{
 			MobileWallHug_InCircleStuff<true>::MoveToCircleHugCircleSquareSweep(this, Pos);
 		}
@@ -1576,7 +1583,7 @@ inline uint32_t MobileWallHug_InCircleStuff<clockwise>::MoveToCircleHugCircleSqu
 					mwh->InitStepsXZ();
 					mwh->TurnsUntilStepRebuild = 16;
 					mwh->circle_hug_info.Reset(mwh);
-					mwh->MoveState = MOVE_TO_STATES_STEP_THROUGH;
+					mwh->SetMoveState(MOVE_TO_STATES_STEP_THROUGH);
 					depth++;
 					delete nearest;
 					delete current;
@@ -1967,46 +1974,36 @@ bool CirclesOverlap(NewCollide::Obj* a, NewCollide::Obj* b)
 	return dx * dx + dz * dz < radius * radius;
 }
 
+inline void GetCollideObjs(Object* object, NewCollide::Obj**& objs, int& count)
+{
+	NewCollide* collide = object->GetCollideData();
+	if (collide == NULL)
+	{
+		objs = NULL;
+		count = 0;
+	}
+	else if (collide->obj->IteratorList)
+	{
+		objs = collide->obj->IteratorList->objs;
+		count = collide->obj->IteratorList->count;
+	}
+	else
+	{
+		objs = &collide->obj;
+		count = 1;
+	}
+}
+
 bool ObjectsCollide(Object* a, Object* b)
 {
 	NewCollide::Obj** objs_a;
 	int               count_a;
-	NewCollide*       collide_a = a->GetCollideData();
-	if (collide_a == NULL)
-	{
-		objs_a = NULL;
-		count_a = 0;
-	}
-	else if (collide_a->obj->IteratorList)
-	{
-		objs_a = collide_a->obj->IteratorList->objs;
-		count_a = collide_a->obj->IteratorList->count;
-	}
-	else
-	{
-		objs_a = &collide_a->obj;
-		count_a = 1;
-	}
+	GetCollideObjs(a, objs_a, count_a);
 	for (; count_a > 0; objs_a++, count_a--)
 	{
 		NewCollide::Obj** objs_b;
 		int               count_b;
-		NewCollide*       collide_b = b->GetCollideData();
-		if (collide_b == NULL)
-		{
-			objs_b = NULL;
-			count_b = 0;
-		}
-		else if (collide_b->obj->IteratorList)
-		{
-			objs_b = collide_b->obj->IteratorList->objs;
-			count_b = collide_b->obj->IteratorList->count;
-		}
-		else
-		{
-			objs_b = &collide_b->obj;
-			count_b = 1;
-		}
+		GetCollideObjs(b, objs_b, count_b);
 		for (; count_b > 0; objs_b++, count_b--)
 		{
 			if (CirclesOverlap(*objs_a, *objs_b))
@@ -2067,22 +2064,7 @@ void MobileWallHug::ProcessRemoveFromMap(MultiMapFixed* map_fixed)
 	{
 		NewCollide::Obj** objs;
 		int               count;
-		NewCollide*       collide = (*it)->GetCollideData();
-		if (collide == NULL)
-		{
-			objs = NULL;
-			count = 0;
-		}
-		else if (collide->obj->IteratorList)
-		{
-			objs = collide->obj->IteratorList->objs;
-			count = collide->obj->IteratorList->count;
-		}
-		else
-		{
-			objs = &collide->obj;
-			count = 1;
-		}
+		GetCollideObjs(*it, objs, count);
 		for (; count > 0; objs++, count--)
 		{
 			std::map<NewCollide::Obj*, std::set<MobileWallHug*> >::iterator found =
