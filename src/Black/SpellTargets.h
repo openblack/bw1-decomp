@@ -5,8 +5,8 @@
 #include <stddef.h>
 
 #include <Lionhead/LH3DLib/development/LHPoint.h>
-#include <Lionhead/LHLib/ver5.0/GJVector.h>
 
+#include "GJBaseUtils.h" /* For GJVector */
 #include "GTPointer.h"
 
 class GameThing;

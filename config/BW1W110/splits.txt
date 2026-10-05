@@ -1598,18 +1598,18 @@ Black/PSysModifiers.cpp:
 	.bss        start:0x00D3DA14 end:0x00D3DA48
 
 Black/PSysPCreator.cpp:
-	.text       start:0x0069D840 end:0x006A02D0
-	.rdata      start:0x009279B8 end:0x00927D08
-	.CRT$XCU    start:0x009B6EF8 end:0x009B6F00 align:4
-	.data       start:0x00BF3998 end:0x00BF5738
+	.text       start:0x0069D840 end:0x006A0300
+	.rdata      start:0x009279B8 end:0x00927D30
+	.CRT$XCU    start:0x009B6EF8 end:0x009B6F04 align:4
+	.data       start:0x00BF3998 end:0x00BF3BE8
 
 Black/PSysProperties.cpp:
-	.text       start:0x006A03E0 end:0x006BC810
+	.text       start:0x006A0300 end:0x006BC840
 	.text$x     start:0x008963A0 end:0x008963B0 align:4
-	.rdata      start:0x00927D08 end:0x00928E14
-	.CRT$XCU    start:0x009B6F14 end:0x009B6F18 align:4
-	.data       start:0x00BF666C end:0x00BF86E8
-	.bss        start:0x00D3DA64 end:0x00D3DAC8
+	.rdata      start:0x00927D30 end:0x00928E14
+	.CRT$XCU    start:0x009B6F04 end:0x009B6F1C align:4
+	.data       start:0x00BF3BE8 end:0x00BF86E8
+	.bss        start:0x00D3DA60 end:0x00D3DAC8
 
 Black/PSysRenderParticle.cpp:
 	.text       start:0x006BC840 end:0x006C02F0
