@@ -77,7 +77,4 @@ struct FrontEnd
 	static void JustDoSkirmishGameBox();
 };
 
-// BW1W120 0053b4a0 BW1M119 015ccb10
-char* WCHAR2CHAR(char16_t* text);
-
 #endif /* BW1_DECOMP_FRONT_END_INCLUDED_H */

@@ -48,6 +48,11 @@
 #include "Town.h"
 #include "alexmfc.h"
 
+#define MUSIC_UPDATE_INTERVAL        1000   // ms between music player refreshes
+#define INCOMING_TEXT_DISPLAY_TIME   10000  // ms an incoming message stays up
+#define FRIEND_ONLINE_TIMEOUT        450000 // ms since a friend was last seen before they count as offline
+#define CREATURE_BUBBLE_DISPLAY_TIME 3.0f   // seconds
+
 GBCategory*               CurrentPlayers;
 GBCategory*               OtherPlayers;
 GBCategory*               Friends;
@@ -59,7 +64,7 @@ char16_t*                 CurrentPlayersText;
 char16_t*                 OtherPlayersText;
 char16_t*                 FriendsText;
 LHTimer                   OnlineTimer;
-LH_USER_ID                FriendIDs[25];
+LH_USER_ID                FriendIDs[GatheringBox::MAX_FRIENDS];
 unsigned int              MP3PlayerEnabled = 0;
 unsigned int              MusicMoodController::CreatureMusicMoodEnabled = 0;
 GatheringBox*             GatheringBox::Instance = NULL;
@@ -80,8 +85,8 @@ uint32_t __stdcall PlayerDraw(SetupList* list, int index, int x_min, int y_min, 
 {
 	int       size = SetupThing::unadjustsize(20);
 	GBPlayer* player = (GBPlayer*)list->GetItemData(index);
-	clip_min = clip_min > y_min ? (clip_min < y_max ? clip_min : y_max) : y_min;
-	clip_max = clip_max > y_min ? (clip_max < y_max ? clip_max : y_max) : y_min;
+	clip_min = clip_min > y_min ? (min(clip_min, y_max)) : y_min;
+	clip_max = clip_max > y_min ? (min(clip_max, y_max)) : y_min;
 	if (clip_max - 4 > clip_min && player->Online && LH3DAtmos::AtmosMaterial != NULL)
 	{
 		LH3DColor colour(0xff, 0xff, 0xff, 0xff);
@@ -119,7 +124,7 @@ bool32_t GatheringBox::MusicMoodActive()
 void GatheringBox::HideMP3Controls(int hide)
 {
 	int playListHidden = PlayList->hidden;
-	for (int id = 66601; id < 66620; id++)
+	for (int id = GATHERING_CONTROL_ID_MP3_PLAY; id < GATHERING_CONTROL_ID_MP3_END; id++)
 	{
 		SetupControl* control = setup_box->FindControl(id);
 		if (control != NULL)
@@ -177,7 +182,7 @@ void GatheringBox::UpdateMP3()
 	Music.TrackPosition = 0;
 	Music.TrackLength = 0;
 	wcscpy(PositionSlider->label, L"");
-	PositionSlider->Style = 0x40000000;
+	PositionSlider->Style = SETUP_SLIDER_STYLE_LABEL_ABOVE;
 	if (Music.Capabilities & MUSIC_PLAYER_CAPABILITY_POSITION)
 	{
 		Music.TrackPosition = Music.GetPosition();
@@ -206,11 +211,11 @@ void GatheringBox::UpdateMP3()
 	if (emotion != NULL)
 	{
 		LH3DColor from = SetupThing::DefaultColor;
-		LH3DColor to(0xffff0000);
+		LH3DColor to(MUSIC_MOOD_BAD_COLOUR);
 		if (emotion->Mood >= 0.0f)
-			to = LH3DColor(0xff00ff00);
+			to = LH3DColor(MUSIC_MOOD_GOOD_COLOUR);
 		int amount = abs((int)(emotion->Mood * -255.0f));
-		amount = amount > 0 ? (amount < 255 ? amount : 255) : 0;
+		amount = amount > 0 ? (min(amount, 255)) : 0;
 		MusicButton->color = BlendColor(amount, &from, &to);
 	}
 	else
@@ -239,29 +244,33 @@ void GatheringBox::Init(uint32_t background_style, uint32_t tall_background,
 	int bigButtonSize = SetupThing::unadjustsize(48);
 	setup_box->BackgroundStyle = SETUP_BACKGROUND_NONE;
 
-	SendButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 223) SetupBigButton(
-		1, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(0), L"", buttonSize, 0, BBSTYLE_NO_SPEECH);
-	QuickChatButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 224) SetupBigButton(
-		2, SetupThing::unadjustx(width / 2), SetupThing::unadjusty(0), L"", buttonSize, 0, BBSTYLE_EXCLAIM_ARROW);
-	IncomingText = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 226)
-		SetupStaticTextNoHit(1000, SetupThing::unadjustx(48), SetupThing::unadjusty(height - 34),
-	                         SetupThing::unadjustsize(width - 53), SetupThing::unadjustsize(20), L"");
+	SendButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 223)
+		SetupBigButton(GATHERING_CONTROL_ID_SEND, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(0), L"",
+	                   buttonSize, 0, BBSTYLE_NO_SPEECH);
+	QuickChatButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 224)
+		SetupBigButton(GATHERING_CONTROL_ID_QUICK_CHAT, SetupThing::unadjustx(width / 2), SetupThing::unadjusty(0), L"",
+	                   buttonSize, 0, BBSTYLE_EXCLAIM_ARROW);
+	IncomingText = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 226) SetupStaticTextNoHit(
+		GATHERING_CONTROL_ID_INCOMING_TEXT, SetupThing::unadjustx(48), SetupThing::unadjusty(height - 34),
+		SetupThing::unadjustsize(width - 53), SetupThing::unadjustsize(20), L"");
 	IncomingText->text_size = 18;
-	IncomingButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 228) SetupBigButton(
-		11, SetupThing::unadjustx(0), SetupThing::unadjusty(height - 48), L"", bigButtonSize, 0, BBSTYLE_SPEECH);
-	OpenButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 229) SetupBigButton(
-		12, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(0), L"", buttonSize, 0, BBSTYLE_SPEECH);
+	IncomingButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 228)
+		SetupBigButton(GATHERING_CONTROL_ID_INCOMING, SetupThing::unadjustx(0), SetupThing::unadjusty(height - 48), L"",
+	                   bigButtonSize, 0, BBSTYLE_SPEECH);
+	OpenButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 229)
+		SetupBigButton(GATHERING_CONTROL_ID_OPEN, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(0), L"",
+	                   buttonSize, 0, BBSTYLE_SPEECH);
 	FriendButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 231)
-		SetupButton(6, SetupThing::unadjustx(width - 130), SetupThing::unadjusty(0), SetupThing::unadjustsize(130),
-	                SetupThing::unadjustsize(20), L"", 0);
+		SetupButton(GATHERING_CONTROL_ID_FRIEND, SetupThing::unadjustx(width - 130), SetupThing::unadjusty(0),
+	                SetupThing::unadjustsize(130), SetupThing::unadjustsize(20), L"", 0);
 	ChatEdit = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 234)
-		SetupEdit(4, SetupThing::unadjustx(width / 2 + 20), SetupThing::unadjusty(0),
+		SetupEdit(GATHERING_CONTROL_ID_CHAT_EDIT, SetupThing::unadjustx(width / 2 + 20), SetupThing::unadjusty(0),
 	              SetupThing::unadjustsize(width / 2 - 40), SetupThing::unadjustsize(20), L"", 1);
 	ChatEdit->text_size = SetupThing::unadjustsize(18);
 	FriendButton->text_size = ChatEdit->text_size;
 	PlayerList = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 238)
-		SetupList(5, SetupThing::unadjustx(width - 130), SetupThing::unadjusty(20), SetupThing::unadjustsize(130),
-	              SetupThing::unadjustsize(100));
+		SetupList(GATHERING_CONTROL_ID_LIST, SetupThing::unadjustx(width - 130), SetupThing::unadjusty(20),
+	              SetupThing::unadjustsize(130), SetupThing::unadjustsize(100));
 	PlayerList->text_size = ChatEdit->text_size;
 	PlayerList->ScrollbackWidth = buttonSize - 2;
 	PlayerList->DrawHighlightBox = false;
@@ -270,7 +279,7 @@ void GatheringBox::Init(uint32_t background_style, uint32_t tall_background,
 	if (LHSys::TheSystem.screen.width - 50 <= 520)
 		listWidth = LHSys::TheSystem.screen.width - 50;
 	QuickChatList = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 245)
-		SetupList(5, SetupThing::unadjustx(width - listWidth), SetupThing::unadjusty(20),
+		SetupList(GATHERING_CONTROL_ID_LIST, SetupThing::unadjustx(width - listWidth), SetupThing::unadjusty(20),
 	              SetupThing::unadjustsize(listWidth), SetupThing::unadjustsize(LHSys::TheSystem.screen.height / 2));
 	QuickChatList->text_size = ChatEdit->text_size;
 	QuickChatList->ScrollbackWidth = buttonSize - 2;
@@ -283,51 +292,51 @@ void GatheringBox::Init(uint32_t background_style, uint32_t tall_background,
 	setup_box->DefaultTextSize = GetSmallTextSize();
 
 	MusicButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 258)
-		SetupMP3Button(66600, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(0), SetupThing::unadjustsize(20),
-	                   SetupThing::unadjustsize(20), L"", 1, 10);
-	MusicButton->ShowButton = 0;
+		SetupMP3Button(GATHERING_CONTROL_ID_MP3_TOGGLE, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(0),
+	                   SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 10);
+	MusicButton->ShowButton = false;
 	new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 261)
-		SetupMP3Button(66601, SetupThing::unadjustx(width - 160), SetupThing::unadjusty(20),
+		SetupMP3Button(GATHERING_CONTROL_ID_MP3_PLAY, SetupThing::unadjustx(width - 160), SetupThing::unadjusty(20),
 	                   SetupThing::unadjustsize(40), SetupThing::unadjustsize(20), L"", 1, 0);
 	new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 262)
-		SetupMP3Button(66602, SetupThing::unadjustx(width - 120), SetupThing::unadjusty(20),
+		SetupMP3Button(GATHERING_CONTROL_ID_MP3_PAUSE, SetupThing::unadjustx(width - 120), SetupThing::unadjusty(20),
 	                   SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 1);
 	new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 263)
-		SetupMP3Button(66603, SetupThing::unadjustx(width - 100), SetupThing::unadjusty(20),
+		SetupMP3Button(GATHERING_CONTROL_ID_MP3_STOP, SetupThing::unadjustx(width - 100), SetupThing::unadjusty(20),
 	                   SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 2);
 	new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 264)
-		SetupMP3Button(66604, SetupThing::unadjustx(width - 80), SetupThing::unadjusty(20),
+		SetupMP3Button(GATHERING_CONTROL_ID_MP3_PREVIOUS, SetupThing::unadjustx(width - 80), SetupThing::unadjusty(20),
 	                   SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 4);
 	new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 265)
-		SetupMP3Button(66605, SetupThing::unadjustx(width - 60), SetupThing::unadjusty(20),
+		SetupMP3Button(GATHERING_CONTROL_ID_MP3_NEXT, SetupThing::unadjustx(width - 60), SetupThing::unadjusty(20),
 	                   SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 7);
 	new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 266)
-		SetupMP3Button(66606, SetupThing::unadjustx(width - 40), SetupThing::unadjusty(20),
+		SetupMP3Button(GATHERING_CONTROL_ID_MP3_REWIND, SetupThing::unadjustx(width - 40), SetupThing::unadjusty(20),
 	                   SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 5);
-	new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 267)
-		SetupMP3Button(66607, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(20),
-	                   SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 6);
+	new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 267) SetupMP3Button(
+		GATHERING_CONTROL_ID_MP3_FAST_FORWARD, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(20),
+		SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 6);
 	ShuffleButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 269)
-		SetupMP3Button(66608, SetupThing::unadjustx(width - 40), SetupThing::unadjusty(40),
+		SetupMP3Button(GATHERING_CONTROL_ID_MP3_SHUFFLE, SetupThing::unadjustx(width - 40), SetupThing::unadjusty(40),
 	                   SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 8);
 	RepeatButton = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 270)
-		SetupMP3Button(66609, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(40),
+		SetupMP3Button(GATHERING_CONTROL_ID_MP3_REPEAT, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(40),
 	                   SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 9);
-	new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 271)
-		SetupMP3Button(66610, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(60),
-	                   SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 3);
+	new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 271) SetupMP3Button(
+		GATHERING_CONTROL_ID_MP3_PLAYLIST_TOGGLE, SetupThing::unadjustx(width - 20), SetupThing::unadjusty(60),
+		SetupThing::unadjustsize(20), SetupThing::unadjustsize(20), L"", 1, 3);
 	VolumeSlider = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 274)
-		SetupSlider(66611, SetupThing::unadjustx(width - 160), SetupThing::unadjusty(40), SetupThing::unadjustsize(120),
-	                SetupThing::unadjustsize(20), 0.0f, L"Volume");
+		SetupSlider(GATHERING_CONTROL_ID_MP3_VOLUME, SetupThing::unadjustx(width - 160), SetupThing::unadjusty(40),
+	                SetupThing::unadjustsize(120), SetupThing::unadjustsize(20), 0.0f, L"Volume");
 	PositionSlider = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 275)
-		SetupSlider(66612, SetupThing::unadjustx(width - 160), SetupThing::unadjusty(60), SetupThing::unadjustsize(140),
-	                SetupThing::unadjustsize(20), 0.0f, L"");
+		SetupSlider(GATHERING_CONTROL_ID_MP3_POSITION, SetupThing::unadjustx(width - 160), SetupThing::unadjusty(60),
+	                SetupThing::unadjustsize(140), SetupThing::unadjustsize(20), 0.0f, L"");
 	SongName = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 277) SetupStaticTextNoHit(
-		66613, SetupThing::unadjustx(width - 400), SetupThing::unadjusty(0), SetupThing::unadjustsize(358),
-		SetupThing::unadjustsize(20), L"song name", TEXTJUSTIFY_RIGHT);
+		GATHERING_CONTROL_ID_MP3_SONG_NAME, SetupThing::unadjustx(width - 400), SetupThing::unadjusty(0),
+		SetupThing::unadjustsize(358), SetupThing::unadjustsize(20), L"song name", TEXTJUSTIFY_RIGHT);
 	PlayList = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 279)
-		SetupList(66614, SetupThing::unadjustx(width - 160), SetupThing::unadjusty(80), SetupThing::unadjustsize(160),
-	              SetupThing::unadjustsize(320));
+		SetupList(GATHERING_CONTROL_ID_MP3_PLAYLIST, SetupThing::unadjustx(width - 160), SetupThing::unadjusty(80),
+	              SetupThing::unadjustsize(160), SetupThing::unadjustsize(320));
 	PlayList->Hide(true);
 
 	MP3PlayerEnabled = BWCheckFeatureIsEnabled("BWMP3Player");
@@ -352,7 +361,7 @@ void GatheringBox::Init(uint32_t background_style, uint32_t tall_background,
 					{
 						FARPROC* functions = (FARPROC*)&Music;
 						int      i;
-						for (i = 0; i < 22; i++)
+						for (i = 0; i < MusicPlayer::NUM_FUNCTIONS; i++)
 						{
 							functions[i] = GetProcAddress(library, (LPCSTR)(i + 1));
 							if (functions[i] == NULL)
@@ -459,7 +468,8 @@ void GatheringBox::RebuildList()
 				UNICODE_sprintf(text, L"  %s", player->Name);
 				PlayerList->AddString(text, (unsigned char)(player->Colour >> 16), (unsigned char)(player->Colour >> 8),
 				                      (unsigned char)player->Colour);
-				PlayerList->SetCol(PlayerList->NumItems - 1, player->Colour | (player->Selected ? 0xff000000 : 0));
+				PlayerList->SetCol(PlayerList->NumItems - 1,
+				                   player->Colour | (player->Selected ? GB_SELECTED_COLOUR_BITS : 0));
 				PlayerList->SetItemData(PlayerList->NumItems - 1, (uint32_t)player);
 				PlayerList->SetListBoxDraw(PlayerList->NumItems - 1, PlayerDraw);
 			}
@@ -470,7 +480,7 @@ void GatheringBox::RebuildList()
 	PlayerList->rect.end.y = PlayerList->rect.start.y + maxHeight;
 	PlayerList->UpdateHeights();
 	int height = PlayerList->ScrollDistance + 8;
-	PlayerList->rect.end.y = PlayerList->rect.start.y + (height > 10 ? (height < maxHeight ? height : maxHeight) : 10);
+	PlayerList->rect.end.y = PlayerList->rect.start.y + (height > 10 ? (min(height, maxHeight)) : 10);
 	PlayerList->UpdateHeights();
 	if (scroll > (float)PlayerList->MaxScrollPosition)
 		scroll = (float)PlayerList->MaxScrollPosition;
@@ -570,7 +580,8 @@ void GatheringBox::UpdateShow()
 		HideMP3Controls(true);
 	IncomingButton->style = (BBSTYLE)flashStyle;
 	SendButton->style = ChatEdit->label[0] != 0 ? BBSTYLE_RIGHT_ARROW : BBSTYLE_NO_SPEECH;
-	if (!IncomingButton->hidden && GetTopIncoming() != NULL && GetTickCount() - GetTopIncoming()->Time > 10000)
+	if (!IncomingButton->hidden && GetTopIncoming() != NULL &&
+	    GetTickCount() - GetTopIncoming()->Time > INCOMING_TEXT_DISPLAY_TIME)
 	{
 		if (NumIncoming > 0)
 		{
@@ -593,43 +604,43 @@ void GatheringBox::MP3Callback(int message, SetupBox* box, SetupControl* control
 	switch (message)
 	{
 	case SETUP_MESSAGE_UPDATE:
-		if ((int)GetTickCount() > LastMusicUpdate + 1000)
+		if ((int)GetTickCount() > LastMusicUpdate + MUSIC_UPDATE_INTERVAL)
 			UpdateMP3();
 		break;
 	case SETUP_MESSAGE_CLICK:
-		if (MusicLibrary == NULL || control == NULL || control->id < 66600 || control->id > 66666 ||
-		    !Music.IsPlayerRunning())
+		if (MusicLibrary == NULL || control == NULL || control->id < GATHERING_CONTROL_ID_MP3_TOGGLE ||
+		    control->id > GATHERING_CONTROL_ID_MP3_LAST || !Music.IsPlayerRunning())
 			break;
 		switch (control->id)
 		{
-		case 66600:
+		case GATHERING_CONTROL_ID_MP3_TOGGLE:
 			HideMP3Controls(!SongName->hidden);
 			break;
-		case 66601:
+		case GATHERING_CONTROL_ID_MP3_PLAY:
 			Music.Play();
 			break;
-		case 66602:
+		case GATHERING_CONTROL_ID_MP3_PAUSE:
 			if (Music.Capabilities & MUSIC_PLAYER_CAPABILITY_PAUSE)
 				Music.Pause();
 			break;
-		case 66603:
+		case GATHERING_CONTROL_ID_MP3_STOP:
 			Music.Stop();
 			break;
-		case 66604:
+		case GATHERING_CONTROL_ID_MP3_PREVIOUS:
 			Music.PreviousTrack();
 			break;
-		case 66605:
+		case GATHERING_CONTROL_ID_MP3_NEXT:
 			Music.NextTrack();
 			break;
-		case 66606:
+		case GATHERING_CONTROL_ID_MP3_REWIND:
 			if (Music.Capabilities & MUSIC_PLAYER_CAPABILITY_REWIND)
 				Music.Rewind();
 			break;
-		case 66607:
+		case GATHERING_CONTROL_ID_MP3_FAST_FORWARD:
 			if (Music.Capabilities & MUSIC_PLAYER_CAPABILITY_FAST_FORWARD)
 				Music.FastForward();
 			break;
-		case 66608:
+		case GATHERING_CONTROL_ID_MP3_SHUFFLE:
 			if (Music.Capabilities & MUSIC_PLAYER_CAPABILITY_SHUFFLE)
 			{
 				Music.Shuffle = !Music.Shuffle;
@@ -637,7 +648,7 @@ void GatheringBox::MP3Callback(int message, SetupBox* box, SetupControl* control
 			}
 			ShuffleButton->Style = Music.Shuffle;
 			break;
-		case 66609:
+		case GATHERING_CONTROL_ID_MP3_REPEAT:
 			if (Music.Capabilities & MUSIC_PLAYER_CAPABILITY_REPEAT)
 			{
 				Music.Repeat = !Music.Repeat;
@@ -645,7 +656,7 @@ void GatheringBox::MP3Callback(int message, SetupBox* box, SetupControl* control
 			}
 			RepeatButton->Style = Music.Repeat;
 			break;
-		case 66610:
+		case GATHERING_CONTROL_ID_MP3_PLAYLIST_TOGGLE:
 			if (Music.Capabilities & MUSIC_PLAYER_CAPABILITY_PLAYLIST)
 			{
 				PlayList->Hide(!PlayList->hidden);
@@ -653,7 +664,7 @@ void GatheringBox::MP3Callback(int message, SetupBox* box, SetupControl* control
 					PlayList->AutoScroll(false);
 			}
 			break;
-		case 66614:
+		case GATHERING_CONTROL_ID_MP3_PLAYLIST:
 			if (Music.Capabilities & MUSIC_PLAYER_CAPABILITY_PLAYLIST)
 			{
 				int selected = PlayList->SelectedIndex;
@@ -668,19 +679,19 @@ void GatheringBox::MP3Callback(int message, SetupBox* box, SetupControl* control
 		UpdateMP3();
 		break;
 	case SETUP_MESSAGE_DRAG:
-		if (MusicLibrary == NULL || control == NULL || control->id < 66600 || control->id > 66666 ||
-		    !Music.IsPlayerRunning())
+		if (MusicLibrary == NULL || control == NULL || control->id < GATHERING_CONTROL_ID_MP3_TOGGLE ||
+		    control->id > GATHERING_CONTROL_ID_MP3_LAST || !Music.IsPlayerRunning())
 			break;
 		switch (control->id)
 		{
-		case 66611:
+		case GATHERING_CONTROL_ID_MP3_VOLUME:
 			if (Music.Capabilities & MUSIC_PLAYER_CAPABILITY_VOLUME)
 			{
 				Music.Volume = (int)VolumeSlider->GetValue(0.0f, 255.0f);
 				Music.SetVolume(Music.Volume);
 			}
 			break;
-		case 66612:
+		case GATHERING_CONTROL_ID_MP3_POSITION:
 			if (Music.Capabilities & MUSIC_PLAYER_CAPABILITY_SEEK)
 			{
 				Music.TrackPosition = (int)PositionSlider->GetValue(0.0f, (float)Music.TrackLength);
@@ -867,7 +878,7 @@ void __stdcall GatheringBox::ControlCallback(int message, SetupBox* box, SetupCo
 		}
 		if (control == gatheringBox->FriendButton)
 			MakeFriends();
-		if (control->id == 5)
+		if (control->id == GATHERING_CONTROL_ID_LIST)
 		{
 			int selected = gatheringBox->PlayerList->GetSelected();
 			if (selected >= 0)
@@ -931,7 +942,7 @@ void __stdcall GatheringBox::ControlCallback(int message, SetupBox* box, SetupCo
 		}
 		break;
 	case SETUP_MESSAGE_CHAR:
-		if (x == 13)
+		if (x == '\r')
 		{
 			gatheringBox->SendMessageA(true, -1);
 			LHSys::TheSystem.keyboard.ClearKey();
@@ -939,7 +950,7 @@ void __stdcall GatheringBox::ControlCallback(int message, SetupBox* box, SetupCo
 		}
 		break;
 	case SETUP_MESSAGE_KEY:
-		if (x == 1)
+		if (x == LHKEY_ESCAPE)
 		{
 			if (!gatheringBox->SongName->hidden)
 				gatheringBox->HideMP3Controls(true);
@@ -958,7 +969,7 @@ void __stdcall GatheringBox::ControlCallback(int message, SetupBox* box, SetupCo
 		                    20.0f);
 		int   maxWidth = SetupThing::unadjustsize(LHSys::TheSystem.screen.width >> 1);
 		int   minWidth = SetupThing::unadjustsize(90);
-		width = width > minWidth ? (width < maxWidth ? width : maxWidth) : minWidth;
+		width = width > minWidth ? (min(width, maxWidth)) : minWidth;
 		gatheringBox->ChatEdit->rect.start.x = gatheringBox->ChatEdit->rect.end.x - width;
 		gatheringBox->QuickChatButton->rect.start.x -= gatheringBox->QuickChatButton->rect.end.x;
 		gatheringBox->QuickChatButton->rect.end.x = gatheringBox->ChatEdit->rect.start.x;
@@ -992,11 +1003,11 @@ void GatheringBox::SendMessageA(bool close, int quick_chat)
 		PlayTauntSample(quick_chat);
 		if (!IsAtLeastOnePlayerSelected())
 		{
-			SendPacketToPlayers((PACKET_TYPE)73, 4, &quick_chat, false);
+			SendPacketToPlayers(PACKET_TYPE_TAUNT, 4, &quick_chat, false);
 		}
 		else
 		{
-			SendPacketToPlayers((PACKET_TYPE)73, 4, &quick_chat, true);
+			SendPacketToPlayers(PACKET_TYPE_TAUNT, 4, &quick_chat, true);
 			char16_t* taunt = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_YOU_ARE_GOOD_01 + quick_chat);
 			SendMessageA(Friends, taunt);
 			SendMessageA(OtherPlayers, taunt);
@@ -1009,11 +1020,11 @@ void GatheringBox::SendMessageA(bool close, int quick_chat)
 		LHNetBase::Instance.SendSpecial(text);
 		if (!IsAtLeastOnePlayerSelected())
 		{
-			SendPacketToPlayers((PACKET_TYPE)72, wcslen(text) * 2 + 2, text, false);
+			SendPacketToPlayers(PACKET_TYPE_SPEECH, wcslen(text) * 2 + 2, text, false);
 		}
 		else
 		{
-			SendPacketToPlayers((PACKET_TYPE)72, wcslen(text) * 2 + 2, text, true);
+			SendPacketToPlayers(PACKET_TYPE_SPEECH, wcslen(text) * 2 + 2, text, true);
 			SendMessageA(Friends, text);
 			SendMessageA(OtherPlayers, text);
 		}
@@ -1026,7 +1037,8 @@ void GatheringBox::SendMessageA(bool close, int quick_chat)
 
 void GatheringBox::UpdateFrame()
 {
-	bool inGame = GGame::g_game->Initialised != 0 && GGame::g_game->ViewMode == 0 && GGlobal::Global.EditorMode == 0;
+	bool inGame =
+		GGame::g_game->Initialised && GGame::g_game->ViewMode == GAME_VIEW_MODE_WORLD && !GGlobal::Global.EditorMode;
 	LHSession* session = GGame::g_game->network.session;
 	if (session == NULL || session->IsDisconnected() || (GGame::g_game->network.session->IsSinglePlayer() && !Open))
 		ShowInterface = false;
@@ -1054,7 +1066,7 @@ void GatheringBox::UpdateFrame()
 	{
 		Show();
 		if (GGame::g_game->MyPlayer() != NULL && GGame::g_game->MyPlayer()->creature.Get() != NULL)
-			GGame::g_game->MyPlayer()->creature->bubble->DisplayTime = 3.0f;
+			GGame::g_game->MyPlayer()->creature->bubble->DisplayTime = CREATURE_BUBBLE_DISPLAY_TIME;
 	}
 	if (SetupBox::GetCurrentActiveBox() == setup_box && !ShowInterface)
 		Hide();
@@ -1141,8 +1153,8 @@ void GatheringBox::AddToOtherList(char16_t* name, LH_USER_ID user_id, LHTranspor
 		OtherPlayers = new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 1122) GBCategory(NULL, OtherPlayersText);
 	GBPlayer* player =
 		new ("C:\\dev\\MP\\Black\\GatheringInterface.cpp", 1124) GBPlayer(-1, -1, name, user_id, 0, transport_info);
-	if (user_id > 9999998 && user_id < 10000015)
-		player->Colour = 0xffffff00;
+	if (user_id > SPECIAL_USER_ID_BEFORE_FIRST && user_id < SPECIAL_USER_ID_AFTER_LAST)
+		player->Colour = GB_SPECIAL_USER_COLOUR;
 	OtherPlayers->Players.Add(player);
 	RelinkPeopleList();
 }
@@ -1220,7 +1232,7 @@ void GatheringBox::UpdatePlayerOnlineInAllLists(LHTransportInfo* transport_info,
 	{
 		AddToOtherList(name, user_id, transport_info);
 	}
-	if (user_id == 9999999)
+	if (user_id == ADMIN_USER_ID)
 	{
 		OtherPlayers->Expanded = true;
 		if (Instance != NULL)
@@ -1263,7 +1275,7 @@ void GatheringBox::RebuildList(LHLinkedList<LHPlayer*>* players, GBCategory** ca
 					LHTransportInfo* transportInfo = player->GetTransportInfo();
 					if (transportInfo != NULL && transportInfo->type == LH_TRANSPORT_TYPE_TCP)
 					{
-						LHTransportInfo address(transportInfo->GetIP(), 2611);
+						LHTransportInfo address(transportInfo->GetIP(), LH_TRANSPORT_DEFAULT_PORT);
 						gbPlayer->TransportInfo.Set(&address);
 					}
 					if (transportInfo != NULL && transportInfo->type == LH_TRANSPORT_TYPE_ASYNC &&
@@ -1272,7 +1284,7 @@ void GatheringBox::RebuildList(LHLinkedList<LHPlayer*>* players, GBCategory** ca
 						LHNetBase::Instance.Session->GetTransportInfo(&sessionTransportInfo, 0);
 						if (sessionTransportInfo.type == LH_TRANSPORT_TYPE_TCP)
 						{
-							sessionTransportInfo.address.port = 2611;
+							sessionTransportInfo.address.port = LH_TRANSPORT_DEFAULT_PORT;
 							gbPlayer->TransportInfo.Set(&sessionTransportInfo);
 						}
 					}
@@ -1296,7 +1308,7 @@ void GatheringBox::RebuildList(LHLinkedList<LHPlayer*>* players, GBCategory** ca
 				LHTransportInfo* transportInfo = netPlayer->GetTransportInfo();
 				if (transportInfo != NULL && transportInfo->type == LH_TRANSPORT_TYPE_TCP)
 				{
-					LHTransportInfo address(transportInfo->GetIP(), 2611);
+					LHTransportInfo address(transportInfo->GetIP(), LH_TRANSPORT_DEFAULT_PORT);
 					gbPlayer->TransportInfo.Set(&address);
 				}
 				if (transportInfo == NULL && LHNetBase::Instance.Session != NULL &&
@@ -1305,7 +1317,7 @@ void GatheringBox::RebuildList(LHLinkedList<LHPlayer*>* players, GBCategory** ca
 					LHNetBase::Instance.Session->GetTransportInfo(&sessionTransportInfo, 0);
 					if (sessionTransportInfo.type == LH_TRANSPORT_TYPE_TCP)
 					{
-						sessionTransportInfo.address.port = 2611;
+						sessionTransportInfo.address.port = LH_TRANSPORT_DEFAULT_PORT;
 						gbPlayer->TransportInfo.Set(&sessionTransportInfo);
 					}
 				}
@@ -1340,7 +1352,7 @@ void GatheringBox::WriteFriendListToRegistry()
 {
 	if (Friends == NULL)
 		return;
-	love_baby     babies[25];
+	love_baby     babies[MAX_FRIENDS];
 	int           count = 0;
 	unsigned char compressed[2048];
 	for (LHLinkedNode<GBPlayer*>* node = Friends->Players.GetStart(); node != NULL; node = node->next.Get())
@@ -1349,7 +1361,7 @@ void GatheringBox::WriteFriendListToRegistry()
 		babies[count].UserID.Number = player->UserID.Number;
 		babies[count].TransportInfo = player->TransportInfo;
 		wcscpy(babies[count].Name, player->Name);
-		if (++count == 25)
+		if (++count == MAX_FRIENDS)
 			break;
 	}
 	unsigned long size = sizeof(compressed);
@@ -1372,7 +1384,7 @@ void GatheringBox::ReadFriendListFromRegistry()
 	}
 	Friends = category;
 	RelinkPeopleList();
-	love_baby     babies[25];
+	love_baby     babies[MAX_FRIENDS];
 	unsigned char compressed[2048];
 	unsigned long compressedSize = sizeof(compressed);
 	unsigned long size = sizeof(babies);
@@ -1561,7 +1573,7 @@ void GatheringBox::UpdateOnlineStatus(long* status, long count)
 		if (player->LastSeen > (unsigned long)OnlineTimer.MSeconds())
 			player->LastSeen = 0;
 		player->Online = IsUserInList(CurrentPlayers, player->UserID) ||
-		                 (unsigned long)(OnlineTimer.MSeconds() - player->LastSeen) < 450000;
+		                 (unsigned long)(OnlineTimer.MSeconds() - player->LastSeen) < FRIEND_ONLINE_TIMEOUT;
 	}
 }
 

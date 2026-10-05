@@ -829,7 +829,7 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 	{
 		return;
 	}
-	if (GGame::g_game->Initialised == 0)
+	if (GGame::g_game->Initialised == false)
 	{
 		return;
 	}
@@ -855,7 +855,7 @@ void __stdcall CameraModeNew3::tricondraw(void* param)
 	{
 		return;
 	}
-	if (GGame::g_game->ViewMode != 0)
+	if (GGame::g_game->ViewMode != GAME_VIEW_MODE_WORLD)
 	{
 		return;
 	}
@@ -1369,7 +1369,7 @@ void CameraModeNew3::ProcessKeyMovement(uint16_t key)
 			KeyTriconFlags |= 3;
 		}
 	}
-	if (GGlobal::Global.EditorMode == 0)
+	if (GGlobal::Global.EditorMode == false)
 	{
 		if (GGame::g_game->control_map->IsActionPerformed(BINDABLE_ACTION_ROTATE_RIGHT))
 		{

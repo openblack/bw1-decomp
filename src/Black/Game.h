@@ -32,6 +32,14 @@
 #include "Setup.h"
 #include "TerrainMap.h" /* For struct GTerrainMap */
 
+enum GAME_VIEW_MODE
+{
+	GAME_VIEW_MODE_WORLD = 0,
+	GAME_VIEW_MODE_INSIDE_CITADEL = 1,
+	GAME_VIEW_MODE_FALLING_SPELL_VIDEO = 2,
+	GAME_VIEW_MODE_3 = 3
+};
+
 enum GAME_LANGUAGE
 {
 	GAME_LANGUAGE_UK_ENGLISH = 0,
@@ -195,7 +203,7 @@ public:
 	uint32_t               field_0x205a18;
 	int                    field_0x205a1c;
 	GLandscape             landscape; /* 0x205a20 */
-	uint32_t               ViewMode;
+	GAME_VIEW_MODE         ViewMode;
 	uint32_t               field_0x205a2c;
 	GData                  data;  /* 0x205a30 */
 	GSetup                 setup; /* 0x205a58; empty utility member occupies one byte. */
@@ -285,7 +293,7 @@ public:
 	PathCreator            path_creator; /* 0x250310 */
 	uint32_t               field_0x250530;
 	GClimate*              climate;
-	uint32_t               Initialised;
+	bool32_t               Initialised;
 	uint32_t               field_0x25053c;
 	int                    field_0x250540;
 

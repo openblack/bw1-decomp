@@ -11,6 +11,11 @@ class ChannelBox;
 class MPFEData
 {
 public:
+	enum
+	{
+		MAX_TEAMS = 5
+	};
+
 	// Verified prefix only; the original object continues beyond +16c4.
 	uint8_t      field_0x0[0xa64];
 	ChannelBox*  ActiveDialog;
@@ -23,7 +28,7 @@ public:
 	// BW1W120 00d408b0
 	static uint64_t CreatureFileChecksum;
 	// BW1W120 00bf456c
-	static unsigned long TeamColors[5];
+	static unsigned long TeamColors[MAX_TEAMS];
 	// BW1W120 006227c0 BW1M119 013a02f0
 	void Reset();
 };

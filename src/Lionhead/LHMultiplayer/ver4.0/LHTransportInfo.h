@@ -19,6 +19,11 @@ enum LH_TRANSPORT_TYPE
 	_LH_TRANSPORT_TYPE_COUNT = 0x6
 };
 
+enum
+{
+	LH_TRANSPORT_DEFAULT_PORT = 2611
+};
+
 struct LHIAddress
 {
 	unsigned short port;
