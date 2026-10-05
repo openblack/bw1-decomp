@@ -17,6 +17,17 @@ class GameOSFile;
 class GameThing;
 struct MapCoords;
 
+struct CameraStore
+{
+	LHPoint Position;
+	LHPoint Focus;
+
+	// Non-virtual methods
+
+	// BW1W120 00441840 BW1M119 011a3b60
+	void Set(LHPoint& position, LHPoint& focus);
+};
+
 class GCamera : public GameThingWithPos
 {
 public:

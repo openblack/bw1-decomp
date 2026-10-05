@@ -18,8 +18,13 @@ class GSpellSeedInfo : public GObjectInfo
 public:
 	GESTURE_TYPE Gesture;
 	uint8_t      field_0x104[0x20];
-	MAGIC_TYPE   MagicTypes[0x4];
+	MAGIC_TYPE   MagicTypes[POWER_UP_TYPE_LAST + 1];
 	uint8_t      field_0x134[0x5c];
+
+	// Static data
+
+	// BW1W120 00d9d678
+	static GSpellSeedInfo Infos[SPELL_SEED_TYPE_LAST];
 
 	// Override methods
 
@@ -32,8 +37,12 @@ public:
 
 	// Static methods
 
+	// BW1W120 inlined BW1M119 01536400
+	static GSpellSeedInfo* GetInfo() { return Infos; }
 	// BW1W120 0072b090 BW1M119 01535e30
 	static SPELL_SEED_TYPE GetFirstSpellSeedForMagicType(MAGIC_TYPE magic_type);
+	// BW1W120 0072b1c0 BW1M119 01535980
+	static SPELL_SEED_TYPE GetInfoFromMagicType(MAGIC_TYPE magic_type);
 
 	// Non-virtual methods
 
@@ -47,11 +56,6 @@ public:
 	MAGIC_TYPE GetFirstMagicType() const;
 	// BW1W120 0072af10 BW1M119 01536360
 	MAGIC_TYPE GetMagicType(GESTURE_TYPE gesture) const;
-
-	// Static data
-
-	// BW1W120 00d9d678
-	static GSpellSeedInfo Infos[];
 };
 
 #endif /* BW1_DECOMP_SPELL_SEED_INFO_INCLUDED_H */

@@ -31,6 +31,11 @@ public:
 	// BW1W120 005fb3b0 BW1M119 013b6320
 	static MAGIC_TYPE GetInfoFromText(const char* text);
 
+	// Static members
+
+	// BW1W120 00d37d10
+	static GMagicInfo* Infos[MAGIC_TYPE_LAST];
+
 	// Constructors
 
 	// BW1W120 00435520 BW1M119 01198090

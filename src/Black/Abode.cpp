@@ -8,6 +8,9 @@
 #include <Lionhead/LH3DLib/development/PhysOb.h>   /* For struct PhysOb */
 
 #include "AbodeInfo.h"
+
+static GAbodeInfo AbodeInfos[ABODE_INFO_LAST];
+
 #include "MapCoords.h"
 #include "MultiMapFixedInfo.h"
 #include "Player.h"
@@ -44,6 +47,12 @@
 #include "Workshop.h"
 
 #define M_PI 3.14159265358979323846
+
+GBaseInfo* GAbodeInfo::GetBaseInfo(uint32_t& num_infos)
+{
+	num_infos = ABODE_INFO_LAST;
+	return &AbodeInfos[0];
+}
 
 Abode* Abode::CastAbode()
 {
@@ -406,7 +415,7 @@ uint32_t Abode::Process()
 	if (GetPercentAbodeFullWithAdults() == 0.0f && GetPercentAbodeFullWithChildren() == 0.0f && IsBuilt() &&
 	    !IsInScript())
 	{
-		if (GetTown() == NULL || GetTown()->field_0x5f4 == 0)
+		if (GetTown() == NULL || GetTown()->Uninhabitable == false)
 		{
 			field_0xb0 += 0.001f;
 			if (field_0xb0 >= 1.0f)

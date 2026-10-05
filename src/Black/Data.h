@@ -34,6 +34,8 @@ public:
 	uint32_t Rand(uint32_t max, const char* src_file, uint32_t src_line);
 	// BW1W120 00510750 BW1M119 010c3dd0
 	void Reset();
+	// BW1W120 inlined BW1M119 010564c0
+	uint32_t GetGameTurn() const { return GameTurn; }
 	// BW1W120 0050f960 BW1M119 012b4010
 	void InitialiseShapes();
 };

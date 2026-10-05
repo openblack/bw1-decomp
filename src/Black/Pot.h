@@ -150,6 +150,8 @@ public:
 
 	// BW1W120 0066cec0 BW1M119 011260f0
 	void SetToZero();
+	// BW1W120 0066d660 BW1M119 01124ab0
+	void SetupReaction();
 };
 
 #endif /* BW1_DECOMP_POT_INCLUDED_H */

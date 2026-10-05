@@ -10,12 +10,15 @@
 
 class Base;
 class GameOSFile;
+struct LHPoint;
 
 class GClimate : public GameThing
 {
 public:
 	// BW1W120 00771be0 BW1M119 01053390
 	static void ProcessAll();
+	// BW1W120 007714b0 BW1M119 01026110
+	static bool IsRaining(const LHPoint& point);
 
 	uint8_t field_0x14[0x74];
 

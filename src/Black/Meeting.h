@@ -16,6 +16,9 @@ class Town;
 class Meeting : public GameThingWithPos
 {
 public:
+	uint8_t  field_0x28[0x14];
+	Meeting* next;
+
 	// Override methods
 
 	// BW1W120 00606160 BW1M119 inlined

@@ -26,6 +26,16 @@ add_relocations:
     type: x86_abs32
     target: '?Definitions@GContainerInfo@@2PAV1@A'
     addend: 0x50
+# CMP is the end of GMagicInfo::Infos for Town::SaveObject's loop over the town's magic types.
+  - source: 0x00730128
+    type: x86_abs32
+    target: '?Infos@GMagicInfo@@2PAPAV1@A'
+    addend: 0xA8
+# CMP is the end of GTownDesireInfo::InfoList for Town::CreateTownDesireFlags' loop.
+  - source: 0x00731B57
+    type: x86_abs32
+    target: '?InfoList@GTownDesireInfo@@2PAV1@A'
+    addend: 0x9C0
 
 # TODO: Unsure why we get 0x832000, probably because of decryptor
 force_size: 0x00902a0b

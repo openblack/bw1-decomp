@@ -272,10 +272,11 @@ enum     SPELL_SEED_TYPE
     SPELL_SEED_TYPE_CREATURE_SPELL_ITCHY            =  27 ,
     SPELL_SEED_TYPE_TELEPORT                        =  28 ,
     SPELL_SEED_TYPE_BEAM_EXPLOSION                  =  29 ,
-    SPELL_SEED_TYPE_LAST_141                        =  30 ,
+#ifdef VERSION_BW1WCI
     SPELL_SEED_TYPE_CREATURE_SPELL_ANTI_SPELL       =  30 ,
     SPELL_SEED_TYPE_CREATURE_SPELL_FAST             =  31 ,
-    SPELL_SEED_TYPE_LAST_CI                         =  32 ,
+#endif // VERSION_BW1WCI
+    SPELL_SEED_TYPE_LAST
 };
 
 //*****************************************************************************

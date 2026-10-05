@@ -42,8 +42,9 @@ public:
 	// win1.41 00718330 mac 10508550 GSetup::SaveAllMap(char *)
 	static int SaveAllMap(char* param_1);
 	// win1.41 00718870 mac 10508160 GSetup::SaveMapCell(LHOSFile &, MapCell *, unsigned long &, unsigned long &, unsigned long &, unsigned long &, unsigned long &, MapCoords const &)
-	static void SaveMapCell(LHOSFile& param_1, MapCell* param_2, uint32_t& param_3, uint32_t& param_4,
-	                        uint32_t& param_5, uint32_t& param_6, uint32_t& param_7, const MapCoords& param_8);
+	static void SaveMapCell(LHOSFile& param_1, MapCell* param_2, unsigned long& param_3, unsigned long& param_4,
+	                        unsigned long& param_5, unsigned long& param_6, unsigned long& param_7,
+	                        const MapCoords& param_8);
 };
 
 #endif /* BW1_DECOMP_SETUP_INCLUDED_H */

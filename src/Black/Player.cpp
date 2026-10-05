@@ -1373,7 +1373,8 @@ unsigned long GPlayer::GetTotalNumberOfDisciples()
 		}
 		else
 		{
-			for (MissionaryControl* missionary = town->Missionaries; missionary != NULL; missionary = missionary->next)
+			for (MissionaryControl* missionary = town->MissionaryList.head; missionary != NULL;
+			     missionary = missionary->next)
 			{
 				if (missionary->GetPlayer() == this)
 				{
@@ -1451,7 +1452,7 @@ unsigned long GPlayer::GetTotalNumberOfMisionaries()
 	for (LHLinkedNode<Town*>* node = GGame::g_game->GameLists.TownList.GetStart(); node != NULL;
 	     node = node->next.Get())
 	{
-		for (MissionaryControl* missionary = node->payload->Missionaries; missionary != NULL;
+		for (MissionaryControl* missionary = node->payload->MissionaryList.head; missionary != NULL;
 		     missionary = missionary->next)
 		{
 			if (missionary->GetPlayer() == this)

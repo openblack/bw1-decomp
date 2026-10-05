@@ -87,7 +87,7 @@ public:
 	// BW1W120 004055a0 BW1M119 0149c170
 	void Init(Town* town);
 	// BW1W120 004056f0 BW1M119 inlined
-	bool32_t FUN_004056f0(int param_1);
+	bool32_t IsAbodeTypeInMask(int abode_type_mask);
 	// BW1W120 004057f0 BW1M119 inlined
 	bool32_t IsOkToBuild();
 };

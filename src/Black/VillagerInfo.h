@@ -14,6 +14,7 @@
 class Base;
 class GBaseInfo;
 class GObjectInfo;
+struct DiscipleInfo;
 
 struct AgeToScale
 {
@@ -115,6 +116,8 @@ public:
 
 	// BW1W120 00da6be8
 	static GVillagerInfo InfoList[VILLAGER_INFO_LAST];
+	// BW1W120 0099a1f8
+	static const DiscipleInfo DiscipleInfos[VILLAGER_DISCIPLE_LAST];
 
 	// Override methods
 
@@ -133,6 +136,8 @@ public:
 	static GVillagerInfo* Find(TRIBE_TYPE type, VILLAGER_NUMBER villager_number);
 	// BW1W120 inlined BW1M119 01069390
 	static GVillagerInfo* GetInfo() { return InfoList; }
+	// BW1W120 inlined BW1M119 0101ffb0
+	static const DiscipleInfo* GetDiscipleInfo() { return DiscipleInfos; }
 };
 
 #endif /* BW1_DECOMP_VILLAGER_INFO_INCLUDED_H */

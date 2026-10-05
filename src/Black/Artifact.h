@@ -9,6 +9,7 @@
 // Forward Declares
 
 class Base;
+class Fixed;
 class GPlayer;
 class GameOSFile;
 class Town;
@@ -18,9 +19,13 @@ class WorshipSite;
 class TownArtifact : public GameThing
 {
 public:
-	uint8_t field_0x14[0x14];
-	float   Value; /* 0x28 */
-	uint8_t field_0x2c[0x14];
+	Fixed*                   Artifact;
+	Town*                    town;
+	GameThing*               field_0x1c;
+	LHListNode<TownArtifact> next;
+	GPlayer*                 Player;
+	float                    Value;
+	uint8_t                  field_0x2c[0x14];
 
 	// Override methods
 
@@ -45,8 +50,15 @@ public:
 	// BW1W120 00425d70 BW1M119 010b0c30
 	virtual uint32_t GetSaveType();
 
+	// Constructors
+
+	// BW1W120 00425d00 BW1M119 010b28e0
+	TownArtifact(Fixed* artifact, Town* town, GPlayer* player);
+
 	// Non-virtual methods
 
+	// BW1W120 004268e0 BW1M119 010b0e90
+	float GetImpressiveValueForDancing();
 	// BW1W120 004267f0 BW1M119 010b1220
 	bool IsReadyForParticleEffect();
 	// BW1W120 00426230 BW1M119 010b1af0

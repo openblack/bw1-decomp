@@ -7,7 +7,7 @@
 
 GBeliefInfo GBeliefInfo::Info;
 
-void GBelief::SetBelief(int index, float value)
+void GBelief::SetBelief(unsigned long index, float value)
 {
 	BeliefInPlayer[index] = BeliefInPlayerMax[index] < value ? BeliefInPlayerMax[index] : value;
 }

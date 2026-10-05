@@ -15,10 +15,12 @@ class Base;
 class Creature;
 class GFootpath;
 class GFootpathLink;
+class BigForest;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 class Living;
+class Object;
 struct MapCoords;
 
 class Forest : public Container
@@ -29,8 +31,10 @@ public:
 	// BW1W120 00539d70 BW1M119 01027fe0
 	static void ProcessForests();
 
-	uint8_t             field_0x30[0x10];
-	uint32_t            id; /* 0x40 */
+	uint8_t             field_0x30[0x8];
+	BigForest*          BigForestObject;
+	bool32_t            IsScenic;
+	uint32_t            id;
 	Forest*             next;
 	LHLinkedList<Tree*> Trees0;
 	LHLinkedList<Tree*> Trees1; /* 0x50 */
@@ -83,10 +87,16 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0053a220 BW1M119 010facd0
+	void RemoveTree(Tree* tree);
 	// BW1W120 0053a310 BW1M119 010fab00
 	void AddTree(Tree* tree);
 	// BW1W120 0053abf0 BW1M119 010f9e00
 	Tree* GetForestCentreTree();
+	// BW1W120 0053adb0 BW1M119 010f9860
+	MapCoords GetNearestEdgeToPos(const MapCoords& pos);
+	// BW1W120 0053b280 BW1M119 010f8bf0
+	float GetWoodValue();
 };
 
 #endif /* BW1_DECOMP_FOREST_INCLUDED_H */

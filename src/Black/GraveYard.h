@@ -59,6 +59,11 @@ public:
 	// BW1W120 00595d70 BW1M119 010fdd90
 	static Graveyard* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
 	                         float food, int wood);
+
+	// Non-virtual methods
+
+	// BW1W120 00595e50 BW1M119 010fda20
+	void ProcessNewDeath();
 };
 
 #endif /* BW1_DECOMP_GRAVEYARD_INCLUDED_H */

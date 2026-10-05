@@ -4,6 +4,10 @@
 #include "MapCoords.h"
 #include "Utils.h"
 
+char* GTribeInfo::TribeTextArray[TRIBE_TYPE_LAST + 1] = {
+	"CELTIC", "AFRICAN", "AZTEC", "JAPANESE", "INDIAN", "EGYPTIAN", "GREEK", "NORSE", "TIBETAN", "LAST_ERROR",
+};
+
 // BW1W120 00da59fc
 JustMapXZ MapXZDirections[4] = {
 	JustMapXZ(1, 0),

@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+class Game3DObject;
 class Base;
 class GBaseInfo;
 class GObjectInfo;
@@ -81,9 +82,11 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00404b10 BW1M119 01590e90
-	bool IsOkToCreateAtPos(const MapCoords& coords, float param_2, float param_3, Town* town) const;
+	bool32_t IsOkToCreateAtPos(const MapCoords& coords, float param_2, float param_3, Town* town) const;
 	// BW1W120 00405a60 BW1M119 inlined
 	const char* GetDescription();
+	// BW1W120 0073daa0 BW1M119 015596c0
+	Game3DObject* GetTemporaryMesh() const;
 	// BW1W120 0042e520 BW1M119 inlined
 	void LoadBinary(LHFile* file)
 	{
@@ -93,13 +96,5 @@ public:
 	}
 };
 static_assert(sizeof(GAbodeInfo) == 0x1c8, "Data type is of wrong size");
-
-static GAbodeInfo AbodeInfos[ABODE_INFO_LAST];
-
-GBaseInfo* GAbodeInfo::GetBaseInfo(uint32_t& num_infos)
-{
-	num_infos = ABODE_INFO_LAST;
-	return &AbodeInfos[0];
-}
 
 #endif /* BW1_DECOMP_ABODE_INFO_INCLUDED_H */

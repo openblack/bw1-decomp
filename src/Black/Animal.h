@@ -30,6 +30,7 @@ struct PhysOb;
 class PhysicsObject;
 class Reaction;
 class Spell;
+class Town;
 
 class Animal : public Living
 {
@@ -344,6 +345,8 @@ public:
 
 	// BW1W120 0041abb0 BW1M119 01089fb0
 	uint32_t KeepFlockMemberWithinFlockArea();
+	// BW1W120 00417c50 BW1M119 01174910
+	void SetTown(Town* town);
 
 	// State-table handlers reached only through the villager/animal state
 	// tables in GStates.cpp. Names are placeholders keyed on the address;

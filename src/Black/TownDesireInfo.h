@@ -42,12 +42,22 @@ public:
 	uint32_t            HelpMessage;
 	uint32_t            HelpCondition;
 
+	// Static data
+
+	// BW1W120 00da2930
+	static GTownDesireInfo InfoList[TOWN_DESIRE_INFO_LAST];
+
 	// Override methods
 
 	// BW1W120 00744b90 BW1M119 015662f0
 	virtual ~GTownDesireInfo();
 	// BW1W120 00744b20 BW1M119 015681c0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 01568120
+	static GTownDesireInfo* GetInfo() { return InfoList; }
 
 	// Non-virtual methods
 

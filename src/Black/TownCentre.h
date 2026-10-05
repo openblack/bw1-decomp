@@ -9,6 +9,8 @@
 
 #include "Abode.h" /* For struct Abode */
 
+#define MAX_TOWN_CENTRE_SPELLS 6
+
 // Forward Declares
 
 class Base;
@@ -35,10 +37,10 @@ class Villager;
 class TownCentre : public Abode
 {
 public:
-	LH3DObject*          GameObject; /* 0xc4 */
+	LH3DObject*          GameObject;
 	PSysInterface*       psys;
 	TotemStatue*         totem_statue;
-	TownCentreSpellIcon* icons[0x6]; /* 0xd0 */
+	TownCentreSpellIcon* icons[MAX_TOWN_CENTRE_SPELLS];
 
 	// Override methods
 
@@ -138,8 +140,14 @@ public:
 	TownCentreSpellIcon* FindSpellIcon(SPELL_SEED_TYPE type);
 	// BW1W120 00744010 BW1M119 01564490
 	void AddPowerUp(SPELL_SEED_TYPE seed_type, POWER_UP_TYPE power_up_type);
+	// BW1W120 00744030 BW1M119 01564400
+	void RemovePowerUp(SPELL_SEED_TYPE seed_type, POWER_UP_TYPE power_up_type);
 	// BW1W120 00744050 BW1M119 01564240
-	bool AddSpell(SPELL_SEED_TYPE seed_type);
+	bool32_t AddSpell(SPELL_SEED_TYPE seed_type);
+	// BW1W120 00744120 BW1M119 01564190
+	int GetNumberOfSpells();
+	// BW1W120 007442c0 BW1M119 01563dd0
+	void RemoveSpell(SPELL_SEED_TYPE seed_type);
 	// BW1W120 00743bd0 BW1M119 01564f30
 	void SetPlayersCreature();
 };

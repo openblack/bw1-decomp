@@ -23,6 +23,7 @@
 
 // Forward Declares
 
+class BuildingSite;
 class Base;
 class Citadel;
 class Creature;
@@ -61,7 +62,7 @@ enum CREATURE_BELIEF_TYPE
 enum GAME_THING_WITH_POS_FLAGS
 {
 	GAME_THING_WITH_POS_FLAG_IN_MAP = 1 << 0,
-	GAME_THING_WITH_POS_FLAG_0x00000002 = 1 << 1, // TODO(#343)
+	GAME_THING_WITH_POS_FLAG_FIXED = 1 << 1,
 	GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE = 1 << 2,
 	GAME_THING_WITH_POS_FLAG_0x00000008 = 1 << 3, // TODO(#343)
 	GAME_THING_WITH_POS_FLAG_INTERACTING = 1 << 4,
@@ -75,7 +76,7 @@ enum GAME_THING_WITH_POS_FLAGS
 	GAME_THING_WITH_POS_FLAG_IMMOVABLE = 1 << 12,
 	GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP = 1 << 13,
 	GAME_THING_WITH_POS_FLAG_INDESTRUCTIBLE = 1 << 14,
-	GAME_THING_WITH_POS_FLAG_FIXED = 1 << 15
+	GAME_THING_WITH_POS_FLAG_FIXED_FOR_MAP_LIST = 1 << 15
 };
 
 class GameThingWithPos : public GameThing
@@ -607,7 +608,7 @@ public:
 	// BW1W120 004024a0 BW1M119 013f97d0
 	virtual bool32_t IsScriptTimer() { return false; }
 	// BW1W120 004178e0 BW1M119 013e3d40
-	virtual bool32_t CreateBuildingSite();
+	virtual BuildingSite* CreateBuildingSite();
 	// BW1W120 00405560 BW1M119 01516bb0
 	virtual HELP_TEXT GetQueryFirstEnumText();
 	// BW1W120 00405570 BW1M119 011c6c60
@@ -658,6 +659,8 @@ public:
 	void SetPos(const LHPoint& pos);
 	// BW1W120 005705d0 BW1M119 0109a960
 	void SetToZero();
+	// BW1W120 0073ea50 BW1M119 01557d00
+	bool32_t IsFixed() const { return (Flags & GAME_THING_WITH_POS_FLAG_FIXED) != 0; }
 	// BW1W120 inlined BW1M119 01032e80
 	bool32_t IsInMagicHand() const { return (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE) != 0; }
 	// BW1W120 00768540 BW1M119 0159c070

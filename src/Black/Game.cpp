@@ -614,7 +614,6 @@ void GGame::Update3DInfluence()
 		GPlayer* player = NULL;
 		while ((player = GetNextPlayer(player)) != NULL)
 		{
-			// TODO: Original omits MSVC's byte-result mask after GetPlayerNumber.
 			long     playerNumber = GetRemapedPlayer(player->GetPlayerNumber());
 			float    influence;
 			Citadel* citadel = player->citadel.Get();
@@ -634,7 +633,7 @@ void GGame::Update3DInfluence()
 				{
 					InfluenceCircle::Add(playerNumber, town->Pos.GetLHPoint(), influence);
 				}
-				town->field_0xf24 = influence;
+				town->LastAddedInfluence = influence;
 			}
 		}
 		field_0x250174 = 0;

@@ -146,9 +146,9 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 0052d290 BW1M119 010a19c0
-	// TODO: added from symbols.txt (?RemoveFisherman@FishFarm@@QAEXPAVVillager@@@Z), called from
-	// Villager::ExitFishing (VillagerFisherman.cpp); no BW1M119 (Mac) address correlated yet.
 	void RemoveFisherman(Villager* villager);
+	// BW1W120 0052d2f0 BW1M119 010e0270
+	uint32_t GetDesireToBeFished();
 
 	// Constructors
 

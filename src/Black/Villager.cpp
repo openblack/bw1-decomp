@@ -27,7 +27,7 @@
 GVillagerInfo GVillagerInfo::InfoList[84];
 
 // clang-format off
-static const DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST] = {
+const DiscipleInfo GVillagerInfo::DiscipleInfos[VILLAGER_DISCIPLE_LAST] = {
 	/* [VILLAGER_DISCIPLE_NONE]         = */ {VILLAGER_STATE_INVALID_STATE,                 0, 0, 0, 0, TOWN_DESIRE_INFO_NONE,         0},
 	/* [VILLAGER_DISCIPLE_FARMER]       = */ {VILLAGER_STATE_INVALID_STATE,                 1, 1, 1, 0, TOWN_DESIRE_INFO_FOR_FOOD,     1},
 	/* [VILLAGER_DISCIPLE_FORESTER]     = */ {VILLAGER_STATE_FORESTER_ARRIVES_AT_FOREST,    1, 1, 1, 1, TOWN_DESIRE_INFO_FOR_WOOD,     0},
@@ -476,7 +476,7 @@ bool32_t Villager::DecideWhatToDo()
 				DiscipleType = VILLAGER_DISCIPLE_NONE;
 				return true;
 			}
-			if (g_DiscipleInfos[DiscipleType].field_0x4 == 0)
+			if (GVillagerInfo::GetDiscipleInfo()[DiscipleType].field_0x4 == 0)
 			{
 				return true;
 			}
@@ -864,11 +864,7 @@ bool32_t Villager::IsAvailableForWorshipSite(int param_1)
 }
 
 // BW1W120 00752860 BW1M119 01574690
-// TODO: 84% -- semantics/states all correct. Remaining diffs are open blockers: (1)
-// bool-return-full-eax-epilogue (target `mov eax,1`/`xor eax,eax`, ours al); (2) target
-// tests Flags directly (`test byte[esi+0xe0],2`) then pops esi, ours pre-loads it to cl to
-// pop esi earlier -- epilogue/scheduler tie-break.
-bool Villager::IsAtOrOnTheWayToWorshipSite()
+bool32_t Villager::IsAtOrOnTheWayToWorshipSite()
 {
 	int state = GetFinalState() & 0xff;
 	if (state == VILLAGER_STATE_GO_TOWARDS_TELEPORT_REACTION || state == VILLAGER_STATE_TELEPORT_REACTION ||
@@ -1516,7 +1512,7 @@ uint32_t Villager::SetVillagerDisciple(GameThing* interacted_thing, VILLAGER_DIS
 	if (disciple != VILLAGER_DISCIPLE_NONE)
 	{
 		Flags = Flags & 0xfbff | 0x200;
-		Game3dObject->SetIsGlowing(g_DiscipleInfos[disciple].field_0x8);
+		Game3dObject->SetIsGlowing(GVillagerInfo::GetDiscipleInfo()[disciple].field_0x8);
 		GetPlayer();
 		DiscipleType = (uint8_t)disciple;
 		return true;

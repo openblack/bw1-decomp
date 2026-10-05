@@ -9,11 +9,20 @@
 // Forward Declares
 
 class Base;
+class Dance;
+class GPlaytimeInfo;
+class MultiMapFixed;
 class Town;
 
 class PlaytimeElement : public GameThing
 {
 public:
+	uint8_t              field_0x14[0x20];
+	MultiMapFixed*       Structure;
+	const GPlaytimeInfo* info;
+	Town*                town;
+	Dance*               CurrentDance;
+
 	// Override methods
 
 	// BW1W120 0066c3f0 BW1M119 inlined
@@ -24,6 +33,11 @@ public:
 	virtual Town* GetTown();
 	// BW1W120 0066c810 BW1M119 inlined
 	virtual bool32_t IsFunctional();
+
+	// Non-virtual methods
+
+	// BW1W120 0066c9d0 BW1M119 0111f460
+	MultiMapFixed* GetStructure();
 };
 
 #endif /* BW1_DECOMP_PLAYTIME_DANCE_INCLUDED_H */

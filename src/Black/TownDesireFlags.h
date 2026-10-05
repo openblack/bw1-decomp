@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/Enum.h>          /* For enum TOWN_DESIRE_INFO */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 
 #include "Object.h" /* For struct Object */
@@ -23,7 +24,10 @@ class Town;
 class TownDesireFlags : public Object
 {
 public:
-	uint8_t field_0x54[0x44];
+	uint32_t         field_0x54;
+	float            Desire;
+	TOWN_DESIRE_INFO DesireType;
+	uint8_t          field_0x60[0x38];
 
 	// Override methods
 
@@ -67,6 +71,11 @@ public:
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 0055da90 BW1M119 015656f0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+
+	// Static methods
+
+	// BW1W120 00746df0 BW1M119 015660c0
+	static TownDesireFlags* Create(Town* town, TOWN_DESIRE_INFO type, unsigned long slot);
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_FLAGS_INCLUDED_H */

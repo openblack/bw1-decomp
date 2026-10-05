@@ -1033,7 +1033,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Totem.cpp"),
             GameCodeObject(NonMatching, "Black/TotemStatue.cpp"),
             GameCodeObject(NonMatching, "Black/TotemStatueInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/Town.cpp"),
+            GameCodeObject(NonMatching, "Black/Town.cpp", extra_cflags=["/vmg"]),
             GameCodeObject(NonMatching, "Black/TownAttitudeToCreature.cpp"),
             GameCodeObject(NonMatching, "Black/TownCentre.cpp"),
             GameCodeObject(NonMatching, "Black/TownCreatureInfo.cpp"),

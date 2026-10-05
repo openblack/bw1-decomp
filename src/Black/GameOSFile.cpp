@@ -865,23 +865,23 @@ void GameOSFile::ReadSafe(TownDesire& value)
 {
 	ReadCountedArray(*this, value.field_0x8);
 	ReadCountedArray(*this, value.field_0x4c);
-	ReadCountedArray(*this, value.field_0x90);
-	ReadCountedArray(*this, value.field_0xd4);
-	ReadCountedArray(*this, value.field_0x118);
-	ReadIt(value.field_0x15fc);
+	ReadCountedArray(*this, value.DesireCheat);
+	ReadCountedArray(*this, value.DesireBoost);
+	ReadCountedArray(*this, value.Desire);
+	ReadIt(value.field_0x15c);
 	ReadPtr((GameThing**)&value.town);
 	ReadIt(value.field_0x164);
-	ReadCountedArray(*this, value.field_0x168);
+	ReadCountedArray(*this, value.RawDesire);
 	ReadCountedArray(*this, value.field_0x1ac);
 	ReadCountedArray(*this, value.field_0x1f0);
 	ReadCountedArray(*this, value.field_0x234);
 	ReadCountedArray(*this, value.sorts);
 	ReadCountedArray(*this, value.sorts2);
 	ReadCountedArray(*this, value.field_0x410);
-	ReadCountedArray(*this, value.field_0x454);
-	ReadCountedArray(*this, value.field_0x498);
-	ReadCountedArray(*this, value.field_0x4dc);
-	ReadCountedArray(*this, value.field_0x520);
+	ReadCountedArray(*this, value.PreviousVillagerStateAmount);
+	ReadCountedArray(*this, value.PreviousVillagerStateCount);
+	ReadCountedArray(*this, value.VillagerStateAmount);
+	ReadCountedArray(*this, value.VillagerStateCount);
 }
 
 // BW1W120 00563b30 BW1M119 01302700
@@ -889,23 +889,23 @@ void GameOSFile::WriteSafe(TownDesire& value)
 {
 	WriteCountedArray(*this, value.field_0x8, TOWN_DESIRE_INFO_LAST);
 	WriteCountedArray(*this, value.field_0x4c, TOWN_DESIRE_INFO_LAST);
-	WriteCountedArray(*this, value.field_0x90, TOWN_DESIRE_INFO_LAST);
-	WriteCountedArray(*this, value.field_0xd4, TOWN_DESIRE_INFO_LAST);
-	WriteCountedArray(*this, value.field_0x118, TOWN_DESIRE_INFO_LAST);
-	WriteIt(value.field_0x15fc);
+	WriteCountedArray(*this, value.DesireCheat, TOWN_DESIRE_INFO_LAST);
+	WriteCountedArray(*this, value.DesireBoost, TOWN_DESIRE_INFO_LAST);
+	WriteCountedArray(*this, value.Desire, TOWN_DESIRE_INFO_LAST);
+	WriteIt(value.field_0x15c);
 	WritePtr(value.town);
 	WriteIt(value.field_0x164);
-	WriteCountedArray(*this, value.field_0x168, TOWN_DESIRE_INFO_LAST);
+	WriteCountedArray(*this, value.RawDesire, TOWN_DESIRE_INFO_LAST);
 	WriteCountedArray(*this, value.field_0x1ac, TOWN_DESIRE_INFO_LAST);
 	WriteCountedArray(*this, value.field_0x1f0, TOWN_DESIRE_INFO_LAST);
 	WriteCountedArray(*this, value.field_0x234, TOWN_DESIRE_INFO_LAST);
 	WriteCountedArray(*this, value.sorts, TOWN_DESIRE_INFO_LAST);
 	WriteCountedArray(*this, value.sorts2, TOWN_DESIRE_INFO_LAST);
 	WriteCountedArray(*this, value.field_0x410, TOWN_DESIRE_INFO_LAST);
-	WriteCountedArray(*this, value.field_0x454, TOWN_DESIRE_INFO_LAST);
-	WriteCountedArray(*this, value.field_0x498, TOWN_DESIRE_INFO_LAST);
-	WriteCountedArray(*this, value.field_0x4dc, TOWN_DESIRE_INFO_LAST);
-	WriteCountedArray(*this, value.field_0x520, TOWN_DESIRE_INFO_LAST);
+	WriteCountedArray(*this, value.PreviousVillagerStateAmount, TOWN_DESIRE_INFO_LAST);
+	WriteCountedArray(*this, value.PreviousVillagerStateCount, TOWN_DESIRE_INFO_LAST);
+	WriteCountedArray(*this, value.VillagerStateAmount, TOWN_DESIRE_INFO_LAST);
+	WriteCountedArray(*this, value.VillagerStateCount, TOWN_DESIRE_INFO_LAST);
 }
 
 // BW1W120 00563ea0 BW1M119 01302640

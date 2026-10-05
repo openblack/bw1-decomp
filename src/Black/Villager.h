@@ -689,7 +689,7 @@ public:
 	// BW1W120 00752820 BW1M119 01574750
 	bool32_t IsAvailableForWorshipSite(int param_1);
 	// BW1W120 00752860 BW1M119 01574690
-	bool IsAtOrOnTheWayToWorshipSite();
+	bool32_t IsAtOrOnTheWayToWorshipSite();
 	// BW1W120 00752a90 BW1M119 015740d0
 	void SetScaleForAge(unsigned long param_1);
 	// BW1W120 00752b80 BW1M119 01573fd0
@@ -1744,7 +1744,7 @@ public:
 	// BW1W120 0076ba60 BW1M119 01098d20
 	bool32_t CheckNeededForWorship();
 	// BW1W120 0076bae0 BW1M119 015a5bb0
-	float CheckWorshipActivity(int num_needed);
+	bool32_t CheckWorshipActivity(int num_needed);
 	// BW1W120 0076bc20 BW1M119 015a5a80
 	bool32_t CanIGetToTheWorshipSite(MagicTeleport*& teleport);
 	// BW1W120 0076bcc0 BW1M119 015a5880
@@ -1932,8 +1932,9 @@ public:
 class MissionaryControl : public GameThingWithPos
 {
 public:
-	uint8_t            field_0x28[0x8];
-	MissionaryControl* next;
+	Villager*                     Missionary;
+	Reaction*                     reaction;
+	LHListNode<MissionaryControl> next;
 
 	// Override methods
 

@@ -62,6 +62,52 @@ public:
 			node = next;
 		}
 	}
+	// BW1W120 00742230 BW1M119 01560ce0
+	int IsThisInList(T val)
+	{
+		for (LHLinkedNode<T>* node = head.Get(); node != NULL; node = node->next.Get())
+		{
+			if (node->payload == val)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	// BW1W120 00742260 BW1M119 inlined
+	void RemoveAll()
+	{
+		LHLinkedNode<T>* node;
+		while ((node = head.Get()) != NULL)
+		{
+			Remove(node->payload);
+		}
+	}
+	// BW1W120 inlined BW1M119 01100fc0
+	void DeleteAll()
+	{
+		LHLinkedNode<T>* node;
+		while ((node = head.Get()) != NULL)
+		{
+			T val = node->payload;
+			Remove(val);
+			delete val;
+		}
+	}
+	// BW1W120 inlined BW1M119 null
+	void ToBeDeletedAll()
+	{
+		LHLinkedNode<T>* node;
+		while ((node = head.Get()) != NULL)
+		{
+			T val = node->payload;
+			val->ToBeDeleted(0);
+			if (IsThisInList(val))
+			{
+				Remove(val);
+			}
+		}
+	}
 	inline bool Contains(T val)
 	{
 		for (LHLinkedNode<T>* node = head.Get(); node != NULL; node = node->next.Get())
@@ -104,6 +150,17 @@ public:
 		return node;
 	}
 
+	// BW1W120 inlined BW1M119 inlined
+	inline LHLinkedNode<T>* GetPreviousNode(LHLinkedNode<T>* node)
+	{
+		LHLinkedNode<T>* walker = head.Get();
+		while (walker != NULL && walker->next.Get() != node)
+		{
+			walker = walker->next.Get();
+		}
+		return walker;
+	}
+
 	int AddToEnd(T val);
 	// Returns the matching node, not its payload (BW1M119 012564c0 for CreatureBelief*).
 	LHLinkedNode<T>* Find(T value);
@@ -120,13 +177,16 @@ public:
 		}
 		else
 		{
-			LHLinkedNode<T>* node = Find(value);
-			if (node != NULL)
+			for (LHLinkedNode<T>* node = head.Get(); node != NULL; node = node->next.Get())
 			{
-				node = node->next.Get();
-				if (node != NULL)
+				if (node->payload == value)
 				{
-					return node->payload;
+					node = node->next.Get();
+					if (node != NULL)
+					{
+						return node->payload;
+					}
+					return NULL;
 				}
 			}
 		}
@@ -155,18 +215,25 @@ template <typename T> LHLinkedList<T>::LHLinkedList()
 
 template <typename T> int LHLinkedList<T>::AddToEnd(T val)
 {
-	if (!val)
-		return 0;
-	LHLinkedNode<T>* node = new LHLinkedNode<T>(val, NULL);
-	if (!node)
-		return 0;
-	LHLinkedNode<T>* last = GetLastNode();
-	if (last)
-		last->next.Set(node);
-	else
-		head.Set(node);
-	count++;
-	return 1;
+	if (val)
+	{
+		LHLinkedNode<T>* node = new LHLinkedNode<T>(val, NULL);
+		if (node)
+		{
+			LHLinkedNode<T>* last = GetLastNode();
+			if (last)
+			{
+				last->next.Set(node);
+			}
+			else
+			{
+				head.Set(node);
+			}
+			++count;
+			return 1;
+		}
+	}
+	return 0;
 }
 
 #endif /* BW1_DECOMP_LH_LINKED_LIST_INCLUDED_H */

@@ -35,6 +35,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 0130f400
+	Container() {}
 	// BW1W120 0046b8a0 BW1M119 010c2f70
 	Container(const MapCoords& coords, const GContainerInfo* info, GPlayer* player);
 };
