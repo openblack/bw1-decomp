@@ -40,6 +40,53 @@ inline LH3DColor BlendColor(long amount, LH3DColor* from, LH3DColor* to)
 	                 (((a & 0xff) + ((((b & 0xff) - (a & 0xff)) * amount) >> 8)) & 0xff));
 }
 
+// Gathering box palette, as 0xAARRGGBB.
+#define GB_PLAYER_COLOUR        0x00afefff // Players with no team
+#define GB_CATEGORY_COLOUR      0x00ffffff // Category headings; team colours are blended halfway towards it
+#define GB_SPECIAL_USER_COLOUR  0xffffff00
+#define GB_SELECTED_COLOUR_BITS 0xff000000 // Set on a player row's colour while it is selected
+#define MUSIC_MOOD_GOOD_COLOUR  0xff00ff00
+#define MUSIC_MOOD_BAD_COLOUR   0xffff0000
+
+enum GATHERING_CONTROL_ID
+{
+	GATHERING_CONTROL_ID_SEND = 1,
+	GATHERING_CONTROL_ID_QUICK_CHAT = 2,
+	GATHERING_CONTROL_ID_CHAT_EDIT = 4,
+	GATHERING_CONTROL_ID_LIST = 5,
+	GATHERING_CONTROL_ID_FRIEND = 6,
+	GATHERING_CONTROL_ID_INCOMING = 11,
+	GATHERING_CONTROL_ID_OPEN = 12,
+	GATHERING_CONTROL_ID_INCOMING_TEXT = 1000,
+	GATHERING_CONTROL_ID_MP3_TOGGLE = 66600,
+	GATHERING_CONTROL_ID_MP3_PLAY = 66601,
+	GATHERING_CONTROL_ID_MP3_PAUSE = 66602,
+	GATHERING_CONTROL_ID_MP3_STOP = 66603,
+	GATHERING_CONTROL_ID_MP3_PREVIOUS = 66604,
+	GATHERING_CONTROL_ID_MP3_NEXT = 66605,
+	GATHERING_CONTROL_ID_MP3_REWIND = 66606,
+	GATHERING_CONTROL_ID_MP3_FAST_FORWARD = 66607,
+	GATHERING_CONTROL_ID_MP3_SHUFFLE = 66608,
+	GATHERING_CONTROL_ID_MP3_REPEAT = 66609,
+	GATHERING_CONTROL_ID_MP3_PLAYLIST_TOGGLE = 66610,
+	GATHERING_CONTROL_ID_MP3_VOLUME = 66611,
+	GATHERING_CONTROL_ID_MP3_POSITION = 66612,
+	GATHERING_CONTROL_ID_MP3_SONG_NAME = 66613,
+	GATHERING_CONTROL_ID_MP3_PLAYLIST = 66614,
+	// One past the controls HideMP3Controls hides.
+	GATHERING_CONTROL_ID_MP3_END = 66620,
+	// Highest id MP3Callback handles.
+	GATHERING_CONTROL_ID_MP3_LAST = 66666
+};
+
+// Users with these ids are shown in yellow; ADMIN_USER_ID also opens the box and expands its category.
+enum SPECIAL_USER_ID
+{
+	SPECIAL_USER_ID_BEFORE_FIRST = 9999998,
+	ADMIN_USER_ID = 9999999,
+	SPECIAL_USER_ID_AFTER_LAST = 10000015
+};
+
 enum INCOMINGTEXTTYPE
 {
 	INCOMINGTEXTTYPE_NONE = 0,
@@ -104,15 +151,15 @@ struct GBPlayer
 		memset(Name, 0, sizeof(Name));
 		if (name != NULL)
 			wcsncpy(Name, name, 47);
-		Colour = 0x00afefff;
+		Colour = GB_PLAYER_COLOUR;
 		UserID = user_id;
 		if (transport_info != NULL)
 			TransportInfo = *transport_info;
 		TeamNumber = team_number;
 		TeamMemberNumber = team_member_number;
-		if (team_number >= 0 && team_number < 5)
+		if (team_number >= 0 && team_number < MPFEData::MAX_TEAMS)
 		{
-			LH3DColor white(0x00ffffff);
+			LH3DColor white(GB_CATEGORY_COLOUR);
 			LH3DColor colour = BlendColor(128, (LH3DColor*)&MPFEData::TeamColors[team_number], &white);
 			Colour = *(unsigned long*)&colour;
 		}
@@ -147,7 +194,7 @@ struct GBCategory
 				wcscpy(Name, name);
 			else
 				Name[0] = 0;
-			Colour = 0xffffff;
+			Colour = GB_CATEGORY_COLOUR;
 		}
 		Players = NULL;
 	}
@@ -162,6 +209,11 @@ struct love_baby
 // A music player plug-in from BWAudioDLL. The plug-ins export these functions by ordinal, starting at 1.
 struct MusicPlayer
 {
+	enum
+	{
+		NUM_FUNCTIONS = 22
+	};
+
 	int(__cdecl* Initialise)();
 	unsigned long(__cdecl* GetCapabilities)();
 	int(__cdecl* GetNumTracks)();
@@ -209,6 +261,11 @@ enum MUSIC_PLAYER_CAPABILITY
 class GatheringBox : public DialogBoxBase
 {
 public:
+	enum
+	{
+		MAX_FRIENDS = 25
+	};
+
 	// BW1W120 00d0643c
 	static GatheringBox* Instance;
 

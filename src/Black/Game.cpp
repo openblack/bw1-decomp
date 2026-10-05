@@ -457,7 +457,7 @@ bool32_t GGame::Init()
 	soundMap->UpdateFromMap(MapCoords(soundMap->GetReceiverPos()));
 	map.CalculateMapInfluence();
 	field_0x205a2c = 0;
-	ViewMode = 0;
+	ViewMode = GAME_VIEW_MODE_WORLD;
 	RenderLoadingFrame(true);
 	CarriedObject::Init();
 	BMan_Zero();
@@ -466,7 +466,7 @@ bool32_t GGame::Init()
 	field_0x205e78 = 0;
 	FinishInitialisation();
 	MeshIntersect::InitialiseMeshIntersect();
-	Initialised = 1;
+	Initialised = true;
 	field_0x205d60 = 0;
 	RenderLoadingFrame(true);
 	PlayerSymbol::CreateFinalTextureSymbols();
@@ -1231,7 +1231,7 @@ bool32_t GGame::Close()
 	PlayerProfile::Profile.timestarted += currentTime - field_0x59ac;
 	PlayerProfile::WriteBackToRegistry(PlayerProfile::Profile);
 	GameThing::ProcessDeadList(1);
-	Initialised = 0;
+	Initialised = false;
 	if (script != NULL)
 	{
 		script->Reset(1);
@@ -1716,7 +1716,7 @@ void GGame::ProcessNetworkPackets()
 	{
 		return;
 	}
-	if ((field_0x14 & 4) && (GGlobal::Global.EditorMode != 0 || ViewMode == 1))
+	if ((field_0x14 & 4) && (GGlobal::Global.EditorMode || ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL))
 	{
 		static DWORD lastPausedTurn = GetTickCount();
 		if (GetTickCount() - lastPausedTurn > 100)
@@ -1731,10 +1731,10 @@ void GGame::ProcessNetworkPackets()
 				GGlobal::Global.field_0x2d2e4 = GGlobal::Global.field_0x2d2e4->ProcessTurn();
 				if (GGlobal::Global.field_0x2d2e4 == NULL)
 				{
-					GGlobal::Global.EditorMode = 0;
+					GGlobal::Global.EditorMode = false;
 				}
 			}
-			if (ViewMode == 1)
+			if (ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL)
 			{
 				temple->ProcessGameTurn();
 			}
@@ -2201,7 +2201,7 @@ void GGame::Process3dEngine()
 	{
 		switch (ViewMode)
 		{
-		case 2:
+		case GAME_VIEW_MODE_FALLING_SPELL_VIDEO:
 			LH3DAtmos::Update3D((int)LH3DTech::g_delta_time * 0.001f);
 			LH3DRender::g_mode_cleaning = 0;
 			fn_00553A60();
@@ -2214,7 +2214,7 @@ void GGame::Process3dEngine()
 			UpdateLiquidParticles((int)LH3DTech::g_delta_time * 0.001f);
 			DrawLiquidParticles();
 			break;
-		case 1:
+		case GAME_VIEW_MODE_INSIDE_CITADEL:
 			LH3DAtmos::Update3D((int)LH3DTech::g_delta_time * 0.001f);
 			LH3DRender::g_mode_cleaning = 0;
 			LH3DSky::g_b_we_are_inside_citadel = 1;
@@ -2226,7 +2226,7 @@ void GGame::Process3dEngine()
 			UpdateLiquidParticles((int)LH3DTech::g_delta_time * 0.001f);
 			DrawLiquidParticles();
 			break;
-		case 0: {
+		case GAME_VIEW_MODE_WORLD: {
 			if (RenderLoopEnabled)
 				landscape.PreDraw();
 			TemporaryShadow::UpdateAll();
@@ -2337,9 +2337,9 @@ void GGame::Process3dEngine()
 		}
 		}
 	}
-	if (ViewMode != 3)
+	if (ViewMode != GAME_VIEW_MODE_3)
 	{
-		if (Temple::Dat_00E06020 == Temple::Dat_00C2A150 && ViewMode != 1)
+		if (Temple::Dat_00E06020 == Temple::Dat_00C2A150 && ViewMode != GAME_VIEW_MODE_INSIDE_CITADEL)
 			script->ProcessFade(true);
 		else
 			Temple::UpdateFade();
@@ -2387,7 +2387,7 @@ void GGame::Process3dEngine()
 			green = 255;
 		CreatureMentalEditor::DrawTextA(text, 320, 90, 24.0f, red, green, 0);
 	}
-	if (ViewMode != 1 && ViewMode != 2)
+	if (ViewMode != GAME_VIEW_MODE_INSIDE_CITADEL && ViewMode != GAME_VIEW_MODE_FALLING_SPELL_VIDEO)
 		LH3DAtmos::Render2D();
 	LHResetFPU();
 }

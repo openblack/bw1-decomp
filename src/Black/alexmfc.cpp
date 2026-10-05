@@ -828,7 +828,7 @@ void SetupSlider::Draw(bool hovered, bool selected)
 {
 	SetupThing::DrawBevBox(rect.start.x, rect.start.y, rect.end.x, rect.end.y, 1, 16, -1, 0xffffffff);
 	int x = rect.start.x + (int)((rect.end.x - height - rect.start.x) * value);
-	if (Style & 0x40000000)
+	if (Style & SETUP_SLIDER_STYLE_LABEL_ABOVE)
 	{
 		int top = rect.start.y;
 		int halfHeight = (rect.end.y - top) / 2;

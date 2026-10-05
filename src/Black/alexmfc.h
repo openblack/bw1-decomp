@@ -455,6 +455,11 @@ struct SetupButton : public SetupControl
 	SetupButton(int id, int x, int y, int width, int height, const char16_t* label, int param_8);
 };
 
+enum SETUP_SLIDER_STYLE
+{
+	SETUP_SLIDER_STYLE_LABEL_ABOVE = 0x40000000
+};
+
 struct SetupSlider : public SetupControl
 {
 	float   value;          /* 0x23c */
@@ -483,22 +488,16 @@ struct SetupSlider : public SetupControl
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 inlined
-	void SetValue(float new_value, float min, float max)
+	void SetValue(float new_value, float min_value, float max_value)
 	{
-		if (new_value > min)
-		{
-			if (new_value >= max)
-				new_value = max;
-		}
-		else
-			new_value = min;
-		if (max > min)
-			value = (new_value - min) / (max - min);
+		new_value = new_value > min_value ? min(new_value, max_value) : min_value;
+		if (max_value > min_value)
+			value = (new_value - min_value) / (max_value - min_value);
 		else
 			value = 0.0f;
 	}
 	// BW1W120 inlined BW1M119 inlined
-	float GetValue(float min, float max) { return value * (max - min) + min; }
+	float GetValue(float min_value, float max_value) { return value * (max_value - min_value) + min_value; }
 };
 
 typedef uint32_t(__stdcall* SetupList__ListBoxDraw_t)(SetupList* list, int index, int x_min, int y_min, int x_max,
@@ -748,7 +747,7 @@ struct SetupMP3Button : public SetupButton
 		: SetupButton(id, x, y, width, height, label, param_8)
 	{
 		color = SetupThing::DefaultColor;
-		ShowButton = 1;
+		ShowButton = true;
 		Style = 0;
 		IconIndex = icon_index;
 	}
