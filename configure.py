@@ -239,6 +239,13 @@ if config.version == "BW1W100":
         "__imp__TlsFree@4",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_import}=__imp__ExitProcess@4")
+    # Same for C++ library code: ios.obj's ios_base::register_callback and
+    # _Findarr were dropped by /OPT:REF, but still name std::_Nomemory, whose
+    # nomemory.obj 1.00 never linked at all.
+    for _dead_function in [
+        "?_Nomemory@std@@YAXXZ",
+    ]:
+        config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
 config.reconfig_deps = []
 
 # Post-link patch: applies version-specific binary fixups after linking,
@@ -1132,11 +1139,11 @@ config.libs = [
 
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\delop.obj", progress_category="sdk"),
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\xlock.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\string.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\ios.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\string.obj", progress_category="sdk"),
+            LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\ios.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\locale.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\locale0.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\uncaught.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\locale0.obj", progress_category="sdk"),
+            LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\uncaught.obj", progress_category="sdk"),
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\_tolower.obj", progress_category="sdk"),
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\_toupper.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\xstod.obj", progress_category="sdk"),
@@ -1145,6 +1152,10 @@ config.libs = [
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\xwctomb.obj", progress_category="sdk"),
             LibObject(Matching, "libcpmt", "build\\intel\\mt_obj\\xmbtowc.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120"), "libcpmt", "build\\intel\\mt_obj\\xstrcoll.obj", progress_category="sdk"),
+            LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\iostream.obj", progress_category="sdk"),
+            LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\wiostrea.obj", progress_category="sdk"),
+            LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\wlocale.obj", progress_category="sdk"),
+            LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\xlocale.obj", progress_category="sdk"),
 
             LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\fpinit.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\typinfo.obj", progress_category="sdk"),
