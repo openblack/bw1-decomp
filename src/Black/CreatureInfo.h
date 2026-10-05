@@ -4,7 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include "LivingInfo.h" /* For struct GLivingInfo */
+#include <chlasm/CreatureEnum.h> /* For CREATURE_TYPE_LAST */
+
+#include "LivingInfo.h"  /* For struct GLivingInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -40,6 +43,21 @@ public:
 	virtual ~CreatureInfo();
 	// BW1W120 00472c10 BW1M119 011e9f90
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+
+	// Static data
+
+	// BW1W120 00c60460
+	static CreatureInfo Infos[CREATURE_TYPE_LAST];
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 011e9e60
+	static CreatureInfo* GetInfo() { return Infos; }
+
+	// TODO(#377): The original declared this class in Creature.h.
+	// Out of line: LoadBinary at 0042e6c0, Load at 0042e620.
+	INFO_DATA_BLOCK(CreatureType, field_0x348)
+	INFO_DERIVED_LOADERS(GLivingInfo, "Creature.h", 160)
 };
 
 #endif /* BW1_DECOMP_CREATURE_INFO_INCLUDED_H */

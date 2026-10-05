@@ -7,7 +7,8 @@
 #include <chlasm/CreatureEnum.h> /* For enum CREATURE_DESIRE_SOURCE */
 #include <chlasm/Enum.h>         /* For NUM_CREATURE_DESIRES */
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -16,14 +17,14 @@ class Base;
 class CreatureInitialDesireInfo : public GBaseInfo
 {
 public:
-	CREATURE_DESIRE_SOURCE Sources[8]; /* 0x10 */
+	CREATURE_DESIRE_SOURCE Sources[MAX_NUM_SOURCES_FOR_EACH_DESIRE];
 	uint32_t               field_0x30[0x7];
-	float                  DesireDecay;      /* 0x4c, fabricated name */
-	float                  InitialValueMin;  /* 0x50, fabricated name */
-	float                  InitialValueMax;  /* 0x54 */
-	uint32_t               field_0x58[0x8];  /* 0x58 */
-	float                  DesireGrowthRate; /* 0x78, fabricated name */
-	uint32_t               field_0x7c[0x51]; /* 0x7c */
+	float                  DesireDecay;
+	float                  InitialValueMin;
+	float                  InitialValueMax;
+	uint32_t               field_0x58[0x8];
+	float                  DesireGrowthRate;
+	uint32_t               field_0x7c[0x51];
 
 	// Override methods
 
@@ -36,6 +37,13 @@ public:
 
 	// BW1W120 00c67e90
 	static CreatureInitialDesireInfo g_CreatureInitialDesireInfos[NUM_CREATURE_DESIRES];
+
+	// BW1W120 inlined BW1M119 01233640
+	static CreatureInitialDesireInfo* GetInfo() { return g_CreatureInitialDesireInfos; }
+
+	// TODO(#377): The original declared this class in CreatureAction.h.
+	INFO_DATA_BLOCK(Sources, field_0x7c)
+	INFO_ROOT_LOADERS("CreatureAction.h", 54)
 };
 static_assert(sizeof(CreatureInitialDesireInfo) == 0x1c0, "Data type is of wrong size");
 

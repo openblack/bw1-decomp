@@ -151,24 +151,29 @@ Black/Audio.cpp:
 
 Black/AudioMusicThing.cpp:
 	.text       start:0x00423130 end:0x00424500
+	.rdata      start:0x00803B94 end:0x00803C90
 	.CRT$XCU    start:0x008F60AC end:0x008F60B0 align:4
 	.data       start:0x008FA110 end:0x008FA32C
-	.bss        start:0x00B77A28 end:0x00B79D44
+	.bss        start:0x00B77A28 end:0x00B79C2C
 
 Black/audiotag.cpp:
 	.text       start:0x00424CA0 end:0x004250F0
+	.rdata      start:0x00803C90 end:0x00803C94
+	.bss        start:0x00B79C2C end:0x00B79C38
 
 Black/Balance.cpp:
-	.text       start:0x00425120 end:0x0042F540
-	.rdata      start:0x00803B94 end:0x00804064
-	.CRT$XCU    start:0x008F60B4 end:0x008F60BC align:4
-	.data       start:0x008FB30C end:0x008FBCA4
+	.text       start:0x004250F0 end:0x0042F540
+	.rdata      start:0x00803C94 end:0x008040A4
+	.rdata$r    start:0x008DBDE8 end:0x008DC3E8
+	.CRT$XCU    start:0x008F60B0 end:0x008F60BC align:4
+	.data       start:0x008FA370 end:0x008FBC70
+	.bss        start:0x00B79C38 end:0x00B79D4C
 
 Black/Ball.cpp:
 	.text       start:0x0042F540 end:0x0042FDB0
-	.rdata      start:0x00804064 end:0x008040F4
-	.data       start:0x008FBCA4 end:0x008FBE60
-	.bss        start:0x00B79D54 end:0x00B79EB8
+	.rdata      start:0x008040A4 end:0x008040F4
+	.data       start:0x008FBC70 end:0x008FBE60
+	.bss        start:0x00B79D4C end:0x00B79EB8
 
 Black/BaseInfo.cpp:
 	.text       start:0x0042FDB0 end:0x00430550

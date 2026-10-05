@@ -5,6 +5,12 @@
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
 
+#include <re_common.h> /* For bool32_t */
+
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For LHLinkedList */
+
+#include "LHSegment.h" /* For LHSegment */
+
 enum LH_FILE_RESULT
 {
 	LH_FILE_RESULT_OK = 0,
@@ -28,28 +34,24 @@ enum LH_SEEK_MODE
 
 // Forward Declares
 
-struct LHSegment;
 struct LHSegmentDesc;
 
 class LHFile
 {
 public:
-	uint32_t* field_0x4;
-	uint32_t  field_0x8;
-	uint32_t  opened;
-	void*     handle; /* 0x10 */
-	void*     field_0x14[0x9];
-	uint32_t  field_0x38;
-	uint32_t  field_0x3c;
+	LHLinkedList<LHSegmentDesc*> SegmentList;
+	bool32_t                     opened;
+	void*                        handle;
+	LHSegment                    LastSegment;                                              /* 0x14 */
 	uint32_t (*custom_write_function)(const void* data, uint32_t length, void* user_data); /* 0x40 */
 	uint32_t (*custom_read_function)(void* data, uint32_t length, void* user_data);        /* 0x44 */
 	uint32_t (*custom_set_file_pointer_function)(uint32_t distance_to_move, uint32_t move_method, void* user_data);
 	void*        CustomFunctionUserData;
-	LH_FILE_MODE FileMode; /* 0x50 */
+	LH_FILE_MODE FileMode;
 	uint32_t     SegmentOpened;
 	uint32_t     segment_size;
 	uint32_t     CurrentFileOffset;
-	uint32_t     SegmentOffset; /* 0x60 */
+	uint32_t     SegmentOffset;
 	char*        segment_name;
 	char*        file_name;
 
@@ -60,15 +62,30 @@ public:
 
 	// Constructors
 
+	// The member constructors run before the vtable pointer is set, so it is stored last.
+	// Inliner IL size: 61
 	// BW1W120 0042e110 BW1M119 0118cc20
-	LHFile();
+	LHFile() { ResetData(); }
 	// BW1W120 007bda20 BW1M119 01169bc0 (LHCombined Release)
 	~LHFile();
 
 	// Non-virtual methods
 
 	// BW1W120 0042e160 BW1M119 010d14c0
-	uint32_t ResetData();
+	uint32_t ResetData()
+	{
+		file_name = NULL;
+		opened = 0;
+		handle = NULL;
+		custom_write_function = NULL;
+		custom_read_function = NULL;
+		custom_set_file_pointer_function = NULL;
+		SegmentOpened = 0;
+		segment_size = 0;
+		CurrentFileOffset = 0;
+		SegmentOffset = 0;
+		return 0;
+	}
 	// BW1W120 007bd390 BW1M119 0116aba0 (LHCombined Release)
 	uint32_t SetName(const char* name);
 	// BW1W120 007bd420 BW1M119 0116aaa0 (LHCombined Release)

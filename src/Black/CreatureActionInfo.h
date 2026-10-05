@@ -6,7 +6,8 @@
 
 #include <chlasm/CreatureEnum.h> /* For NUM_CREATURE_ACTIONS */
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -32,6 +33,13 @@ public:
 
 	// BW1W120 00c6c490
 	static CreatureActionInfo g_CreatureActionInfos[NUM_CREATURE_ACTIONS];
+
+	// BW1W120 inlined BW1M119 01233880
+	static CreatureActionInfo* GetInfo() { return g_CreatureActionInfos; }
+
+	// TODO(#377): The original declared this class in CreatureAction.h.
+	INFO_DATA_BLOCK(field_0x10, field_0xe8)
+	INFO_ROOT_LOADERS("CreatureAction.h", 46)
 };
 static_assert(sizeof(CreatureActionInfo) == 0x110, "Data type is of wrong size");
 

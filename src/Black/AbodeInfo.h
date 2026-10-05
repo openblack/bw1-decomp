@@ -9,6 +9,7 @@
 #include "MultiMapFixedInfo.h"             /* For struct GMultiMapFixedInfo */
 #include "Name.h"                          /* For struct Name */
 #include "Lionhead/LHFile/ver3.0/LHFile.h" /* For LHFile */
+#include "InfoLoaders.h"                   /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -87,13 +88,21 @@ public:
 	const char* GetDescription();
 	// BW1W120 0073daa0 BW1M119 015596c0
 	Game3DObject* GetTemporaryMesh() const;
-	// BW1W120 0042e520 BW1M119 inlined
-	void LoadBinary(LHFile* file)
-	{
-		file->GetSegmentData(&type, sizeof(type), -1);
-		SetInfoID();
-		file->GetSegmentData(&EditorMesh, sizeof(EditorMesh), -1);
-	}
+
+	// Static data
+
+	// BW1W120 00c3c690
+	static GAbodeInfo AbodeInfos[ABODE_INFO_LAST];
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 01448cc0
+	static GAbodeInfo* GetInfo() { return AbodeInfos; }
+
+	// TODO(#377): The original declared this class in Abode.h.
+	// Out of line: LoadBinary at 0042e520, Load at 0042e490.
+	INFO_DATA_BLOCK(AbodeType, DykCategory)
+	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "Abode.h", 35)
 };
 static_assert(sizeof(GAbodeInfo) == 0x1c8, "Data type is of wrong size");
 

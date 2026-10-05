@@ -7,6 +7,7 @@
 #include <chlasm/Enum.h> /* For POT_INFO_LAST */
 
 #include "MobileObjectInfo.h" /* For struct GMobileObjectInfo */
+#include "InfoLoaders.h"      /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -40,6 +41,10 @@ public:
 
 	// BW1W120 0066cc70 BW1M119 011264b0
 	float GetResourceValue() const;
+
+	// TODO(#377): The original declared this class in Pot.h.
+	INFO_DATA_BLOCK(field_0x114, field_0x114)
+	INFO_DERIVED_LOADERS(GMobileObjectInfo, "Pot.h", 23)
 };
 static_assert(sizeof(GPotInfo) == 0x144, "GPotInfo size is incorrect");
 

@@ -12,7 +12,8 @@
 #include <Lionhead/LHFile/ver3.0/LHFile.h> /* For struct LHFile */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>   /* For operator new(size_t, const char*, uint32_t) */
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 class GVillagerStateTableInfo : public GBaseInfo
 {
@@ -21,31 +22,6 @@ public:
 
 	// BW1W120 00db9e68 BW1M119 01b9a988
 	static GVillagerStateTableInfo Infos[VILLAGER_STATE_LAST_STATE];
-
-	// BW1W120 inlined BW1M119 inlined
-	void LoadBinary(LHFile* file)
-	{
-		uint8_t* temp = new ("C:\\dev\\MP\\Black\\VillagerStates.h", 23) uint8_t[get_size()];
-		file->GetSegmentData(temp, get_size(), -1);
-		memcpy(get_start(), temp, get_size());
-		delete[] temp;
-		SetInfoID();
-	}
-
-	// BW1W120 inlined BW1M119 inlined
-	uint32_t LoadTextAndCache(char** cursor, LHFile* file)
-	{
-		file->WriteSegmentData(*cursor, get_size());
-		memcpy(get_start(), *cursor, get_size());
-		*cursor += get_size();
-		SetInfoID();
-		return get_size();
-	}
-
-	// BW1W120 inlined BW1M119 0119fbb0
-	char* get_start() { return (char*)&field_0x10; }
-	// BW1W120 inlined BW1M119 0119fc00
-	unsigned long get_size() { return sizeof(GVillagerStateTableInfo) - sizeof(GBaseInfo); }
 
 	uint32_t field_0x10;
 	int      field_0x14;
@@ -93,6 +69,10 @@ public:
 
 	// BW1W120 inlined BW1M119 0104d9a0
 	static GVillagerStateTableInfo* GetInfo() { return Infos; }
+
+	// TODO(#377): The original declared this class in VillagerStates.h.
+	INFO_DATA_BLOCK(field_0x10, field_0x110)
+	INFO_ROOT_LOADERS("VillagerStates.h", 23)
 };
 
 #endif /* BW1_DECOMP_VILLAGER_STATE_TABLE_INFO_INCLUDED_H */

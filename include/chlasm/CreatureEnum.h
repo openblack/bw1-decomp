@@ -26,9 +26,11 @@ enum     CREATURE_TYPE
     CREATURE_TYPE_MANDRILL                          =  14 ,
     CREATURE_TYPE_RHINO                             =  15 ,
     CREATURE_TYPE_GORILLA                           =  16 ,
-    CREATURE_TYPE_CHICKEN                           =  17 ,
+#ifdef VERSION_BW1WCI
+	CREATURE_TYPE_CHICKEN                           =  17 ,
     CREATURE_TYPE_CROCODILE                         =  18 ,
-    CREATURE_TYPE_LAST                              =  19 ,
+#endif // VERSION_BW1WCI
+	CREATURE_TYPE_LAST
 };
 
 //*****************************************************************************

@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include "CitadelPartInfo.h" /* For struct GCitadelPartInfo */
+#include "InfoLoaders.h"     /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -30,6 +31,21 @@ public:
 	virtual ~GCitadelHeartInfo();
 	// BW1W120 00464390 BW1M119 011c97a0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+
+	// Static data
+
+	// BW1W120 00c5e270
+	static GCitadelHeartInfo Infos[1];
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 011c9510
+	static GCitadelHeartInfo* GetInfo() { return Infos; }
+
+	// TODO(#377): The original declared this class in CitadelHeart.h.
+	// Out of line: LoadBinary at 0042ee70, Load at 0042edd0.
+	INFO_DATA_BLOCK(field_0x134, field_0x154)
+	INFO_DERIVED_LOADERS(GCitadelPartInfo, "CitadelHeart.h", 27)
 };
 
 #endif /* BW1_DECOMP_CITADEL_HEART_INFO_INCLUDED_H */

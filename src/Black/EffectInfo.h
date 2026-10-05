@@ -4,7 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
+#include <chlasm/Enum.h> /* For EFFECT_INFO_LAST */
+
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -34,6 +37,20 @@ public:
 
 	// BW1W120 00524d40 BW1M119 010d09f0
 	GEffectInfo();
+
+	// Static data
+
+	// BW1W120 00cc94c8
+	static GEffectInfo Infos[EFFECT_INFO_LAST];
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 010d0db0
+	static GEffectInfo* GetInfo() { return Infos; }
+
+	// TODO(#377): The original declared this class in Effect.h.
+	INFO_DATA_BLOCK(field_0x10, field_0x30)
+	INFO_ROOT_LOADERS("Effect.h", 27)
 };
 
 #endif /* BW1_DECOMP_EFFECT_INFO_INCLUDED_H */

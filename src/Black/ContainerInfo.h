@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -42,6 +43,10 @@ public:
 
 	// BW1W120 inlined BW1M119 010c3140
 	static GContainerInfo* GetInfo() { return Definitions; }
+
+	// TODO(#377): The original declared this class in Container.h.
+	INFO_DATA_BLOCK(ContainerType, ContainerType)
+	INFO_ROOT_LOADERS("Container.h", 27)
 };
 
 #endif /* BW1_DECOMP_CONTAINER_INFO_INCLUDED_H */

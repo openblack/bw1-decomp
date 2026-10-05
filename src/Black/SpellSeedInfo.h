@@ -6,7 +6,8 @@
 
 #include <chlasm/Enum.h> /* For enum MAGIC_TYPE, enum POWER_UP_TYPE, enum SPELL_SEED_TYPE */
 
-#include "ObjectInfo.h" /* For struct GObjectInfo */
+#include "ObjectInfo.h"  /* For struct GObjectInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -43,6 +44,8 @@ public:
 	static SPELL_SEED_TYPE GetFirstSpellSeedForMagicType(MAGIC_TYPE magic_type);
 	// BW1W120 0072b1c0 BW1M119 01535980
 	static SPELL_SEED_TYPE GetInfoFromMagicType(MAGIC_TYPE magic_type);
+	// BW1W120 0072b100 BW1M119 01535bf0
+	static GESTURE_TYPE GetFirstGestureForMagicType(MAGIC_TYPE magic_type, POWER_UP_TYPE* power_up);
 
 	// Non-virtual methods
 
@@ -56,6 +59,10 @@ public:
 	MAGIC_TYPE GetFirstMagicType() const;
 	// BW1W120 0072af10 BW1M119 01536360
 	MAGIC_TYPE GetMagicType(GESTURE_TYPE gesture) const;
+
+	// Out of line: LoadBinary at 0042f620, Load at 0042f5b0.
+	INFO_DATA_BLOCK(Gesture, field_0x134)
+	INFO_DERIVED_LOADERS(GObjectInfo, "SpellSeedInfo.h", 43)
 };
 
 #endif /* BW1_DECOMP_SPELL_SEED_INFO_INCLUDED_H */

@@ -8,7 +8,8 @@
 #include <chlasm/Enum.h>          /* For enum VILLAGER_BASIC_INFO */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -63,6 +64,10 @@ public:
 
 	// BW1W120 00746580 BW1M119 010612e0
 	GTownDesireFunction* GetDesireFunctions() const;
+
+	// TODO(#377): The original declared this class in TownDesire.h.
+	INFO_DATA_BLOCK(AssociatedPrayerSite, HelpCondition)
+	INFO_ROOT_LOADERS("TownDesire.h", 46)
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INFO_INCLUDED_H */

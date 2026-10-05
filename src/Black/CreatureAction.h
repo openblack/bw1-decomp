@@ -229,32 +229,12 @@ public:
 	virtual ~CreatureActionKnownAbout();
 };
 
-class CreatureActionKnownAboutEntry : public GBaseInfo
-{
-public:
-	// Override methods
-
-	// BW1W120 004e2db0 BW1M119 0126b4a0
-	virtual ~CreatureActionKnownAboutEntry();
-	// BW1W120 004e2d50 BW1M119 0126b710
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
-};
-
 class CreatureFalling : public LH3DCreature
 {
 public:
 	// Override methods
 
 	// The Windows table uses LH3DCreature::SetAnimTime, not a separate override.
-};
-
-class CreatureMagicActionKnownAboutEntry : public CreatureActionKnownAboutEntry
-{
-public:
-	// Override methods
-
-	// BW1W120 004e2e50 BW1M119 0126b370
-	virtual ~CreatureMagicActionKnownAboutEntry();
 };
 
 #endif /* BW1_DECOMP_CREATURE_ACTION_INCLUDED_H */

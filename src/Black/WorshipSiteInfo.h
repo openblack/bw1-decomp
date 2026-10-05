@@ -7,6 +7,7 @@
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE */
 
 #include "CitadelPartInfo.h" /* For struct GCitadelPartInfo */
+#include "InfoLoaders.h"     /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -40,6 +41,21 @@ public:
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00464380 BW1M119 inlined
 	virtual ABODE_TYPE GetAbodeType() const;
+
+	// Static data
+
+	// BW1W120 00dcbd30
+	static GWorshipSiteInfo Infos[WORSHIP_SITE_INFO_LAST];
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 015baae0
+	static GWorshipSiteInfo* GetInfo() { return Infos; }
+
+	// TODO(#377): The original declared this class in Worship.h.
+	// Out of line: LoadBinary at 0042f170, Load at 0042f0d0.
+	INFO_DATA_BLOCK(field_0x134, field_0x15c)
+	INFO_DERIVED_LOADERS(GCitadelPartInfo, "Worship.h", 41)
 };
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_INFO_INCLUDED_H */

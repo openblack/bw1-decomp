@@ -16,8 +16,9 @@ public:
 
 	// Constructors
 
+	// Inliner IL size: 66
 	// BW1W120 0047f6d0 BW1M119 011d1110
-	LHReleasedFile();
+	LHReleasedFile() { ResetData(); }
 	// BW1W120 00837350 BW1M119 inlined
 	LHReleasedFile(const char* name);
 };

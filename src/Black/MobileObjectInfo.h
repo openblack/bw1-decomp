@@ -6,8 +6,9 @@
 
 #include <chlasm/Enum.h> /* For enum MOBILE_OBJECT_INFO */
 
-#include "BaseInfo.h"   /* For class GBaseInfo */
-#include "MobileInfo.h" /* For struct GMobileInfo */
+#include "BaseInfo.h"    /* For class GBaseInfo */
+#include "MobileInfo.h"  /* For struct GMobileInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -43,6 +44,10 @@ public:
 
 	// BW1W120 inlined BW1M119 013c5e40
 	static GMobileObjectInfo* GetInfo() { return InfoList; }
+
+	// TODO(#377): The original declared this class in MobileObject.h.
+	INFO_DATA_BLOCK(MobileObjectType, field_0x110)
+	INFO_DERIVED_LOADERS(GMobileInfo, "MobileObject.h", 21)
 };
 
 #endif /* BW1_DECOMP_MOBILE_OBJECT_INFO_INCLUDED_H */

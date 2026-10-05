@@ -6,7 +6,8 @@
 
 #include <chlasm/Enum.h> /* For JOB_INFO_LAST, SEASON_LAST, enum JOB_ACTIVITY */
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -40,6 +41,10 @@ public:
 
 	// BW1W120 005e1740 BW1M119 01108170
 	uint32_t GetJobActivity() const;
+
+	// TODO(#377): The original declared this class in Job.h.
+	INFO_DATA_BLOCK(field_0x10, field_0x38)
+	INFO_ROOT_LOADERS("Job.h", 15)
 };
 
 static_assert(sizeof(GJobInfo) == 0x58, "Data type is of wrong size");

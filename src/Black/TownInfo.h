@@ -7,6 +7,7 @@
 #include <chlasm/Enum.h> /* For VILLAGER_JOB_LAST */
 
 #include "ContainerInfo.h" /* For struct GContainerInfo */
+#include "InfoLoaders.h"   /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -85,6 +86,10 @@ public:
 
 	// BW1W120 inlined BW1M119 01562350
 	static GTownInfo* GetInfo() { return Definitions; }
+
+	// TODO(#377): The original declared this class in Town.h.
+	INFO_DATA_BLOCK(field_0x14, field_0x188)
+	INFO_DERIVED_LOADERS(GContainerInfo, "Town.h", 110)
 };
 
 #endif /* BW1_DECOMP_TOWN_INFO_INCLUDED_H */
