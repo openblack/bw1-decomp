@@ -198,8 +198,8 @@ void GameStats::FillInTownStatsStructure()
 	for (Town* town = GetPlayer()->towns.Get(); town != NULL; town = town->next)
 	{
 		TownStats.FinalTotalPopulation += town->stats.GetPopulation();
-		TownStats.FinalMalePopulation += town->stats.field_0x54;
-		TownStats.FinalFemalePopulation += town->stats.field_0x58;
+		TownStats.FinalMalePopulation += town->stats.NumMales;
+		TownStats.FinalFemalePopulation += town->stats.NumFemales;
 		TownStats.FinalTotalPopulationCapacity += town->stats.MaxVillagersInAbodes;
 		TownStats.FinalTotalPopulationCapacity += town->stats.field_0x40;
 		TownStats.TownsOwned++;

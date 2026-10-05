@@ -630,7 +630,7 @@ float Town::GetDesireToBeBuilt(const GMultiMapFixedInfo* info, unsigned long num
 		break;
 	case ABODE_TYPE_LIVING_QUARTERS: {
 		int spare = stats.VillagerSpaceLeftInAbodes - HomelessList.count;
-		int needed = (uint32_t)(stats.NumAdults + stats.NumChildren) / 10 + 1;
+		int needed = (stats.NumAdults + stats.NumChildren) / 10 + 1;
 		if (spare > needed && num_scaffolds == 0)
 		{
 			desire = 0.0f;
@@ -1714,7 +1714,7 @@ void Town::SetToZero()
 	NumVillagersOnWayToWorshipSite = 0;
 	worship_percentage = 0.0f;
 #ifdef VERSION_BW1W120
-	field_0x5fc = 0;
+	CompleteNewTownBuilt = false;
 #endif
 	WorshipCount = 0;
 	influence = 0.0f;
@@ -2763,7 +2763,7 @@ PlannedMultiMapFixed* Town::GetPlannedAtPos(const MapCoords& pos, float radius, 
 	{
 		FOREACH_LH_LIST_HEAD(PlannedMultiMapFixed, planned, PlannedList)
 		{
-			if (planned->field_0x30 != 0 || param_3 == 0)
+			if (planned->WasConstructed || param_3 == 0)
 			{
 				const GMultiMapFixedInfo* info = planned->info.Get();
 				float                     meshRadius = info->GetMesh2DRadius(planned->GetScale());

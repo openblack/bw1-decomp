@@ -7,7 +7,6 @@
 #include <chlasm/Enum.h> /* For ABODE_INFO_LAST, enum ABODE_NUMBER, enum ABODE_TYPE, enum DYK_CATEGORY, enum TRIBE_TYPE */
 
 #include "MultiMapFixedInfo.h"             /* For struct GMultiMapFixedInfo */
-#include "Name.h"                          /* For struct Name */
 #include "Lionhead/LHFile/ver3.0/LHFile.h" /* For LHFile */
 #include "InfoLoaders.h"                   /* For INFO_DATA_BLOCK */
 
@@ -26,7 +25,7 @@ class GAbodeInfo : public GMultiMapFixedInfo
 public:
 	ABODE_TYPE   AbodeType; /* 0x120 */
 	ABODE_NUMBER AbodeNumber;
-	Name         description;
+	char         description[0x20];
 	uint32_t     field_0x148;
 	uint32_t     field_0x14c;
 	uint32_t     field_0x150;
@@ -62,8 +61,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 00401320 BW1M119 013ce3a0
-	virtual ~GAbodeInfo();
 	// BW1W120 00401270 BW1M119 010a4850
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 	// BW1W120 00401240 BW1M119 01112ea0
@@ -83,7 +80,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00404b10 BW1M119 01590e90
-	bool32_t IsOkToCreateAtPos(const MapCoords& coords, float param_2, float param_3, Town* town) const;
+	uint32_t IsOkToCreateAtPos(const MapCoords& coords, float y_angle, float scale, Town* town) const;
 	// BW1W120 00405a60 BW1M119 inlined
 	const char* GetDescription();
 	// BW1W120 0073daa0 BW1M119 015596c0

@@ -60,7 +60,7 @@ public:
 	// BW1W120 007346e0 BW1M119 0153e170
 	static GStreetLantern* Create(const MapCoords& coords, const GMobileStaticInfo* info);
 	// BW1W120 00734a30 BW1M119 0153da00
-	static bool32_t IsALaternWithinDistance(MapCoords coords, float max_dist);
+	static uint32_t IsALaternWithinDistance(MapCoords coords, float max_dist);
 };
 
 #endif /* BW1_DECOMP_STREET_LANTERN_INCLUDED_H */

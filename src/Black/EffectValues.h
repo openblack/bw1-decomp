@@ -34,6 +34,8 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	EffectValues() : AppliedBy(NULL), field_0x38(0) { SetToZero(); }
+	// BW1W120 00524fe0 BW1M119 010d07b0
+	EffectValues(EFFECT_INFO info, GameThing* source, GPlayer* player);
 	// BW1W120 00525040 BW1M119 010d0680
 	EffectValues(EFFECT_TYPE type, float value, GameThing* source, float param_4, GPlayer* player);
 
@@ -45,6 +47,8 @@ public:
 	GPlayer* GetCausedPlayer() const;
 	// BW1W120 00525500 BW1M119 010cfff0
 	void SetToZero();
+	// BW1W120 00525950 BW1M119 010cfb40
+	EffectValues& operator/=(const EffectNumbers& rhs);
 };
 
 // BW1W120 00524ed0 BW1M119 010d0b60

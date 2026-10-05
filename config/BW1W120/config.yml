@@ -5,8 +5,10 @@ hash: e554d46de745e604c05d7e3607b2f4ec61e8c063
 symbols: config/BW1W120/symbols.txt
 splits: config/BW1W120/splits.txt
 
-# WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
 block_relocations:
+# Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate, like SetupColourPicker's.
+  - source: 0x00403267
+# WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
   - source: 0x007DBAD7
   - source: 0x007DBB1D
   - source: 0x007DCA45
@@ -42,8 +44,12 @@ block_relocations:
   - source: 0x00C1E664
   - source: 0x00C1E7CC
 
-# CMP EDX compares against PacketTimeHistory's one-past-end, not the next array.
 add_relocations:
+# GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
+  - source: 0x00405B61
+    type: x86_abs32
+    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
+    addend: 0x10730
   - source: 0x00409600
     type: x86_abs32
     target: '?ShadowColour@SetupThing@@2ULH3DColor@@A'
@@ -76,6 +82,7 @@ add_relocations:
     type: x86_abs32
     target: '?Draw@SetupStaticText@@UAEX_N0@Z'
     addend: 0x1BB
+# CMP EDX compares against PacketTimeHistory's one-past-end, not the next array.
   - source: 0x0054CE1E
     type: x86_abs32
     target: '?PacketTimeHistory@GGame@@2PAHA'

@@ -63,11 +63,16 @@ struct MultiChildList
 	uint32_t           capacity;
 };
 
+enum FIXED_FLAGS
+{
+	FIXED_FLAG_UNDER_CONSTRUCTION = 0x2,
+};
+
 class MultiMapFixed : public Fixed
 {
 public:
 	union {
-		uint8_t field_0x58;
+		uint8_t FixedFlags; /* FIXED_FLAGS */
 		struct
 		{
 			uint8_t Flag0x01 : 1;

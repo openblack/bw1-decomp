@@ -57,7 +57,7 @@ void CreatureDesires::Initialise(Creature* creature, const CreatureInfo* info)
 {
 	for (int i = 0; i < NUM_CREATURE_DESIRES; i++)
 	{
-		field_0x8[i] = (GGame::g_game->field_0x14 & 0x2000) ? 1 : 0;
+		field_0x8[i] = (GGame::g_game->GameFlags & GAME_FLAG_ACTIVATE_CREATURE_DESIRES) ? 1 : 0;
 		field_0xa8[i] = 0.0f;
 		field_0x148[i] = 0;
 

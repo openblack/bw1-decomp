@@ -102,6 +102,21 @@ class LHVideoPlayer;
 class LHMail;
 class FallingSpell;
 
+enum GAME_FLAGS
+{
+	GAME_FLAG_PAUSED = 0x4,
+	GAME_FLAG_UNKNOWN_0x20 = 0x20,
+	GAME_FLAG_NEEDS_CONTROL_MAP_UPDATE = 0x1000,
+	GAME_FLAG_ACTIVATE_CREATURE_DESIRES = 0x2000,
+	GAME_FLAG_DRAW_VALUE_SPINNERS = 0x4000,
+	GAME_FLAG_CLEARING_MAP = 0x8000,
+	GAME_FLAG_AUTO_SAVE_ENABLED = 0x10000,
+	GAME_FLAG_UNKNOWN_0x20000 = 0x20000,
+	GAME_FLAG_WAIT_FOR_BUILDING_WOOD = 0x40000,
+	GAME_FLAG_UNKNOWN_0x200000 = 0x200000,
+	GAME_FLAG_UNKNOWN_0x400000 = 0x400000,
+};
+
 class GGame : public GameThing
 {
 public:
@@ -175,7 +190,7 @@ public:
 	// BW1W120 008df610
 	static char* const NetworkPassword;
 
-	uint32_t         field_0x14;
+	uint32_t         GameFlags;
 	GPlayer          players[0x8];
 	uint8_t          field_0x5318[0x660];
 	uint8_t          field_0x5978;

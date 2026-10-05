@@ -2,11 +2,14 @@
 #define BW1_DECOMP_LH3D_MESH_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/AllMeshes.h> /* For MAX_COUNT_3D_MESHES */
 
 #include "LH3DBoundingBox.h" /* For struct LH3DBoundingBox */
+
+#include <re_common.h> /* For bool32_t */
 
 enum LH3D_MESH_FLAGS
 {
@@ -81,26 +84,115 @@ struct LH3DMesh
 
 	// BW1W120 inlined BW1M119 0102dc80
 	LH3DBoundingBox& GetBoundingBox() { return BoundingBox; }
-	// BW1W120 00403730 BW1M119 01010f40
-	uint32_t GetSizeFootprintData();
-	// BW1W120 00403740 BW1M119 01010ea0
-	uint32_t GetSizeUV2Data();
-	// BW1W120 00403770 BW1M119 01010df0
-	uint32_t GetSizeNameData();
-	// BW1W120 004037e0 BW1M119 01026e70
-	uint32_t GetSizeEMetricsData();
-	// BW1W120 004038e0 BW1M119 01387dc0
-	uint32_t GetSizeEBone();
+
+	// BW1W120 inlined BW1M119 01010fd0
+	bool32_t IsContainsLandscapeFeature() { return flags & LH3D_MESH_FLAGS_CONTAINS_LANDSCAPE_FEATURE; }
+	// BW1W120 inlined BW1M119 01370dc0
+	bool32_t IsContainsUV2() { return flags & LH3D_MESH_FLAGS_CONTAINS_UV2; }
+	// BW1W120 inlined BW1M119 015729b0
+	bool32_t IsContainsNameData() { return flags & LH3D_MESH_FLAGS_CONTAINS_NAME_DATA; }
+	// BW1W120 inlined BW1M119 01010da0
+	bool32_t IsContainsExtraMetrics() { return flags & LH3D_MESH_FLAGS_CONTAINS_EXTRA_METRICS; }
+	// BW1W120 inlined BW1M119 01026f40
+	bool32_t IsContainsEBone() { return flags & LH3D_MESH_FLAGS_CONTAINS_EBONE; }
+	// BW1W120 inlined BW1M119 013eae60
+	bool32_t IsContainsTnLData() { return flags & LH3D_MESH_FLAGS_CONTAINS_TNL_DATA; }
+	// BW1W120 inlined BW1M119 011b2360
+	bool32_t IsContainsNewEP() { return flags & LH3D_MESH_FLAGS_CONTAINS_NEW_EP; }
+
+	// BW1W120 00403730 BW1M119 inlined
+	uint8_t* GetLandscapeFeatureData() { return !IsContainsLandscapeFeature() ? NULL : (uint8_t*)FootprintData; }
+	// BW1W120 00403b90 BW1M119 01010f40
+	uint32_t GetSizeFootprintData()
+	{
+		if (IsContainsLandscapeFeature())
+		{
+			return ((uint32_t*)GetLandscapeFeatureData())[2];
+		}
+		return 0;
+	}
+	// BW1W120 00403740 BW1M119 inlined
+	uint8_t* GetUV2Data() { return !IsContainsUV2() ? NULL : (uint8_t*)FootprintData + GetSizeFootprintData(); }
+	// BW1W120 00403bb0 BW1M119 01010ea0
+	uint32_t GetSizeUV2Data()
+	{
+		if (IsContainsUV2())
+		{
+			return *(uint32_t*)GetUV2Data();
+		}
+		return 0;
+	}
+	// BW1W120 00403770 BW1M119 inlined
+	uint8_t* GetNameData()
+	{
+		return !IsContainsNameData() ? NULL : (uint8_t*)FootprintData + (GetSizeFootprintData() + GetSizeUV2Data());
+	}
+	// BW1W120 00403be0 BW1M119 01010df0
+	uint32_t GetSizeNameData()
+	{
+		if (IsContainsNameData())
+		{
+			return *(uint32_t*)GetNameData();
+		}
+		return 0;
+	}
+	// BW1W120 004037e0 BW1M119 inlined
+	uint8_t* GetEMetricsData()
+	{
+		return !IsContainsExtraMetrics()
+		           ? NULL
+		           : (uint8_t*)FootprintData + (GetSizeFootprintData() + GetSizeUV2Data() + GetSizeNameData());
+	}
+	// BW1W120 00403c50 BW1M119 01026e70
+	uint32_t GetSizeEMetricsData()
+	{
+		if (IsContainsExtraMetrics())
+		{
+			return *(uint32_t*)GetEMetricsData();
+		}
+		return 0;
+	}
+	// BW1W120 004038e0 BW1M119 inlined
+	uint8_t* GetEBoneData()
+	{
+		return !IsContainsEBone() ? NULL
+		                          : (uint8_t*)FootprintData + (GetSizeFootprintData() + GetSizeUV2Data() +
+		                                                       GetSizeNameData() + GetSizeEMetricsData());
+	}
+	// BW1W120 inlined BW1M119 01387dc0
+	uint32_t GetSizeEBone()
+	{
+		if (IsContainsEBone())
+		{
+			return *(uint32_t*)GetEBoneData();
+		}
+		return 0;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	uint8_t* GetTnLData()
+	{
+		return !IsContainsTnLData()
+		           ? NULL
+		           : (uint8_t*)FootprintData + (GetSizeFootprintData() + GetSizeUV2Data() + GetSizeNameData() +
+		                                        GetSizeEMetricsData() + GetSizeEBone());
+	}
 	// BW1W120 00403a30 BW1M119 013e4e70
-	uint32_t GetSizeTnLData();
-	// BW1W120 00403b90 BW1M119 inlined
-	uint32_t GetSizeFootprintData_dup1();
-	// BW1W120 00403bb0 BW1M119 inlined
-	uint32_t GetSizeUV2Data_dup1();
-	// BW1W120 00403be0 BW1M119 inlined
-	uint32_t GetSizeNameData_dup1();
-	// BW1W120 00403c50 BW1M119 inlined
-	uint32_t GetSizeEMetricsData_dup1();
+	uint32_t GetSizeTnLData()
+	{
+		if (IsContainsTnLData())
+		{
+			return *(uint32_t*)GetTnLData();
+		}
+		return 0;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	uint8_t* GetNewEPData()
+	{
+		return !IsContainsNewEP()
+		           ? NULL
+		           : (uint8_t*)FootprintData + (GetSizeFootprintData() + GetSizeUV2Data() + GetSizeNameData() +
+		                                        GetSizeEMetricsData() + GetSizeEBone() + GetSizeTnLData());
+	}
 	// BW1W120 00806d00 BW1M119 01007590 (LHCombined Release)
 	void Release();
 	// BW1W120 008081b0 BW1M119 01068970 (LHCombined Release)

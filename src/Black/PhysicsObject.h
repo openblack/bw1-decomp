@@ -30,14 +30,6 @@ enum PHYSICS_OBJECT_FLAG
 	PHYSICS_OBJECT_FLAG_WAS_DISAPPEARING = 0x40,
 };
 
-struct PhysicsObjectHit
-{
-	uint8_t           field_0x0[0x18];
-	Object*           object; /* 0x18 */
-	uint8_t           field_0x1c[0x8];
-	GInterfaceStatus* status; /* 0x24 */
-};
-
 class PhysicsObject : public Base
 {
 public:
@@ -66,10 +58,12 @@ public:
 	// BW1W120 00d47828 BW1M119 01a202b0
 	static Object* PredictionObject;
 
-	uint8_t           field_0x8[0x18];
-	PhysicsObjectHit* field_0x20;
-	uint32_t          field_0x24;
-	PhysOb            Physics; /* 0x28 */
+	uint8_t           field_0x8[0x10];
+	Object*           object;
+	Object*           CollidedWith;
+	PhysicsObject*    WhoHitMe;
+	GInterfaceStatus* status;
+	PhysOb            Physics;
 	uint8_t           field_0x1a4[0x4];
 	float             field_0x1a8;
 	uint32_t          field_0x1ac;

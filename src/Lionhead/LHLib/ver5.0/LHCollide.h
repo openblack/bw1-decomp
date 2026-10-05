@@ -22,6 +22,17 @@ enum ObjectCircleIteratorDirection
 	_ObjectCircleIteratorDirection_COUNT = 0xa
 };
 
+class HowManyPeople
+{
+public:
+	// Static methods
+
+	// BW1W120 00829690 BW1M119 0109ffd0 (LHCombined Release)
+	static void KnockKnock();
+	// BW1W120 00829780 BW1M119 01091a20 (LHCombined Release)
+	static void Draw(long max_people, long people, LHPoint* pos);
+};
+
 class NewCollide
 {
 public:

@@ -64,9 +64,6 @@ bool32_t Villager::FindClosestFlockAnimal()
 }
 
 // BW1W120 00768cc0 BW1M119 0159f5d0
-// TODO: Abode::FindNearestDrinkingWater is declared void but the target tests its eax result;
-// the original was surely `|| (FindNearestDrinkingWater(400.0f) && GetNearestWaterPos(waterPos))`
-// and the comma form below is the closest legal shape until the return type is fixed.
 bool32_t Villager::ShepherdMoveFlockToWater()
 {
 	GetJobInfo(10); // result discarded
@@ -76,7 +73,7 @@ bool32_t Villager::ShepherdMoveFlockToWater()
 	if (abode != NULL && my_flock != NULL)
 	{
 		if (abode->GetNearestWaterPos(waterPos) ||
-		    (abode->FindNearestDrinkingWater(400.0f), abode->GetNearestWaterPos(waterPos)))
+		    (abode->SetNearestWaterPos(400.0f) && abode->GetNearestWaterPos(waterPos)))
 		{
 			my_flock->SavedDomainCentre = my_flock->Pos;
 			my_flock->SetDomainCentrePos(waterPos);

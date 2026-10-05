@@ -11,6 +11,7 @@
 
 // Forward Declares
 
+class Abode;
 class Creature;
 class EffectValues;
 class GInterfaceStatus;
@@ -98,6 +99,8 @@ public:
 	void HelpSpritesCreatureAttackingThem(Creature* creature, EffectValues& values);
 	// BW1W120 0071c9f0 BW1M119 01516560
 	void HelpSpritesAttackingTown(Town& town, EffectValues& values);
+	// BW1W120 0071d070 BW1M119 015151b0
+	void HelpSpritesDestroyBuilding(Abode& abode);
 	// BW1W120 0071cbe0 BW1M119 01516150
 	void HelpSpritesLowOnPeople(Town& param_1);
 	// BW1W120 0071cd40 BW1M119 01515df0

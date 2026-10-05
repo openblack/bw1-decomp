@@ -227,7 +227,7 @@ void Object::InsertMapObject()
 {
 	if (Pos.ToMap() != NULL)
 	{
-		if ((GGame::g_game->field_0x14 & 0x8000) == 0x8000)
+		if ((GGame::g_game->GameFlags & GAME_FLAG_CLEARING_MAP) == GAME_FLAG_CLEARING_MAP)
 		{
 			// fabricated name: chosen to hash after Object::StoredMatrix in .bss.
 			static char message[128];
@@ -707,7 +707,7 @@ PhysicsInitialisation Object::InitialisePhysics(const LHPoint& param_1, const LH
 			Creature::CheckAllCreaturesForCatching(this, physicsObject);
 		}
 	}
-	if (fire_effect != NULL && (GGame::g_game->field_0x14 & 0x8000) == 0)
+	if (fire_effect != NULL && (GGame::g_game->GameFlags & GAME_FLAG_CLEARING_MAP) == 0)
 	{
 		fire_effect->StartedMoving(0);
 	}
@@ -1583,7 +1583,7 @@ void Object::DrawValue(int param_1, float param_2)
 		point.x = pos.WholeX() * (10.0f / (float)0x10000);
 		point.z = pos.WholeZ() * (10.0f / (float)0x10000);
 		point.y += GetHeight();
-		if (GGame::g_game->field_0x14 & 0x4000)
+		if (GGame::g_game->GameFlags & GAME_FLAG_DRAW_VALUE_SPINNERS)
 		{
 			ValueSpinner* spinner = new (OBJECT_SOURCE_FILE, 1950) ValueSpinner;
 			spinner->Init(point, param_2, (ValueSpinner::TEXTTYPE_ENUM)param_1);
@@ -2239,7 +2239,7 @@ void Object::DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* pa
 		options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
 		options.SampleNumber = LH_SAMPLE_G_TREEMULCH_01 + mulchSample;
 		options.AttachedObject = param_1;
-		options.field_0x8 = 1;
+		options.Positional = 1;
 		options.Pos = pos;
 		options.field_0xc = 0;
 		GGlobal::Global.audio->PlaySoundEffect(&options);

@@ -798,7 +798,7 @@ uint32_t MultiMapFixed::Save(GameOSFile& file)
 {
 	if (Fixed::Save(file))
 	{
-		WRITE_SAFE(file, field_0x58);
+		WRITE_SAFE(file, FixedFlags);
 		WRITE_SAFE(file, reinterpret_cast<uint32_t&>(PercentBuilt));
 		file.WritePtr(FootpathLink);
 		file.WritePtr(building_site);
@@ -811,7 +811,7 @@ uint32_t MultiMapFixed::Load(GameOSFile& file)
 {
 	if (Fixed::Load(file))
 	{
-		file.ReadSafe(field_0x58);
+		file.ReadSafe(FixedFlags);
 		file.ReadSafe(reinterpret_cast<uint32_t&>(PercentBuilt));
 		file.ReadPtr(reinterpret_cast<GameThing**>(&FootpathLink));
 		file.ReadPtr(reinterpret_cast<GameThing**>(&building_site));
@@ -856,7 +856,7 @@ bool32_t MultiMapFixed::DeleteObjectAndTakeResource(Object* object, GInterfaceSt
 
 bool32_t MultiMapFixed::CreatureMustAvoid(Creature* creature)
 {
-	bool32_t solid = GetPercentBuilt() > 0.01f || building_site == NULL || building_site->field_0x24 > 0;
+	bool32_t solid = GetPercentBuilt() > 0.01f || building_site == NULL || building_site->ScaffoldList.count > 0;
 	if (creature == NULL || (solid && GetHeight() >= creature->GetHeight() * 0.1f))
 	{
 		return true;

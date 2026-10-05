@@ -175,6 +175,8 @@ struct MapCoords : public LH3DMapCoords
 	bool32_t IsLand() const;
 	// BW1W120 00603840 BW1M119 015aa980
 	bool32_t IsNavigable() const;
+	// BW1W120 00603860 BW1M119 015a8790
+	bool32_t IsSuitableForFixedAbodeInTown(MESH_LIST mesh, const Town* town, float y_angle, float scale) const;
 	// BW1W120 006038b0 BW1M119 015aa7d0
 	bool32_t IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3) const;
 	// BW1W120 00603dc0 BW1M119 01121940

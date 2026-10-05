@@ -26,7 +26,7 @@ class PlannedMultiMapFixed : public GameThingWithPos
 public:
 	float                           YAngle;
 	float                           scale;
-	uint32_t                        field_0x30;
+	bool32_t                        WasConstructed;
 	uint32_t                        field_0x34;
 	GFootpathLink*                  FootpathLink;
 	int                             CreationTurn;
@@ -44,9 +44,9 @@ public:
 	// BW1W120 0055cbd0 BW1M119 inlined
 	virtual uint32_t GetSaveType();
 	// BW1W120 004050c0 BW1M119 01150d50
-	virtual float GetScale();
+	virtual float GetScale() { return scale; }
 	// BW1W120 004050d0 BW1M119 01155290
-	virtual void SetScale(float scale);
+	virtual void SetScale(float scale_) { scale = scale_; }
 	// BW1W120 00648940 BW1M119 0111ed50
 	virtual const char* GetText();
 	// BW1W120 00465560 BW1M119 010d62b0
@@ -72,11 +72,8 @@ public:
 
 	// BW1W120 00648780 BW1M119 0111f0f0
 	PlannedMultiMapFixed(const MapCoords& coords, const GMultiMapFixedInfo* info, float param_3, float param_4);
-
-	// Non-virtual Destructors
-
-	// BW1W120 0055cbf0 BW1M119 01174730
-	~PlannedMultiMapFixed();
+	// BW1W120 00648820 BW1M119 0111ee60
+	PlannedMultiMapFixed(MultiMapFixed* fixed);
 };
 
 #endif /* BW1_DECOMP_PLANNED_MULTI_MAP_FIXED_INCLUDED_H */
