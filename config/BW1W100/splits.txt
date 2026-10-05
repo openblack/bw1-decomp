@@ -695,6 +695,7 @@ Black/Forest.cpp:
 
 Black/frontend.cpp:
 	.text       start:0x0050F590 end:0x00519870
+	.text$x     start:0x007E9310 end:0x007E9320 align:4
 	.rdata      start:0x0081CB64 end:0x0081D390
 	.CRT$XCU    start:0x008F65D8 end:0x008F65DC align:4
 	.data       start:0x00B17740 end:0x00B17990
@@ -720,6 +721,7 @@ Black/Furniture.cpp:
 
 Black/Game.cpp:
 	.text       start:0x0051DAB0 end:0x00528CA0
+	.text$x     start:0x007E9320 end:0x007E9330 align:4
 	.rdata      start:0x0081D4C8 end:0x0081D750
 	.bss        start:0x00C22C98 end:0x00C22D90
 
@@ -783,11 +785,13 @@ Black/GestureSystemDataList.cpp:
 
 Black/GJUtils.cpp:
 	.text       start:0x005466F0 end:0x0054AED0
+	.text$x     start:0x007E9330 end:0x007E9340 align:4
 	.CRT$XCU    start:0x008F66F0 end:0x008F6728 align:4
 	.bss        start:0x00C27640 end:0x00C276E0
 
 Black/GJPersistent.cpp:
 	.text       start:0x0054AF00 end:0x0054E300
+	.text$x     start:0x007E9340 end:0x007E9350 align:4
 	.CRT$XCU    start:0x008F672C end:0x008F6734 align:4
 	.data       start:0x00B1C908 end:0x00B1CA78
 	.bss        start:0x00C276E0 end:0x00C27770
@@ -797,6 +801,7 @@ Black/GestureSystemResult.cpp:
 
 Black/GJProperty.cpp:
 	.text       start:0x0054E300 end:0x00559880
+	.text$x     start:0x007E9350 end:0x007E9420 align:4
 	.rdata      start:0x0083E0B0 end:0x0083E1B4
 	.CRT$XCU    start:0x008F6734 end:0x008F675C align:4
 	.data       start:0x00B1CAA4 end:0x00B1CEE4
@@ -999,6 +1004,7 @@ Black/LHInetWeather.cpp:
 
 Black/LHNetBase.cpp:
 	.text       start:0x005A9460 end:0x005AAA30
+	.text$x     start:0x007E9420 end:0x007E9430 align:4
 	.CRT$XCU    start:0x008F6984 end:0x008F698C align:4
 	.data       start:0x00B206F8 end:0x00B20720
 
@@ -1486,6 +1492,7 @@ Black/PSysPCreator.cpp:
 
 Black/PSysProperties.cpp:
 	.text       start:0x00651140 end:0x00666D40
+	.text$x     start:0x007E9430 end:0x007E9440 align:4
 	.rdata      start:0x00872AC0 end:0x00873BCC
 	.CRT$XCU    start:0x008F6ECC end:0x008F6ED0 align:4
 	.data       start:0x00B2ABEC end:0x00B2CC68
@@ -2075,6 +2082,7 @@ Black/TempleRoomAddText.cpp:
 
 Black/WorldRoom.cpp:
 	.text       start:0x00723400 end:0x00725F30
+	.text$x     start:0x007E9440 end:0x007E9458 align:4
 	.rdata      start:0x008D51CC end:0x008D5228
 	.CRT$XCU    start:0x008F7388 end:0x008F7390 align:4
 	.bss        start:0x00D56AE0 end:0x00D5AAF8
@@ -2090,6 +2098,38 @@ lib/libcpmt/xlock.obj:
 	.text       start:0x007290E9 end:0x0072919A align:1
 	.bss        start:0x00D5ABB8 end:0x00D5ABD4 align:8
 
+lib/libcpmt/string.obj:
+	.text       start:0x0072919A end:0x007294F8 align:1
+	.text$x     start:0x007E9458 end:0x007E94E4 align:4
+
+lib/libcpmt/ios.obj:
+	.text       start:0x007294F8 end:0x007298C1 align:1
+	.text$x     start:0x007E94E4 end:0x007E9560 align:4
+	.rdata      start:0x008D5550 end:0x008D55AC align:8
+	.rdata$r    start:0x008EDCE8 end:0x008EDD84 align:8
+	.xdata$x    start:0x008EEA18 end:0x008EEB88 align:8
+	.data       start:0x00B4DCF0 end:0x00B4DD40 align:8
+	.bss        start:0x00D5ABD4 end:0x00D5AC08 align:4
+
+lib/libcpmt/uncaught.obj:
+	.text       start:0x007298C1 end:0x007298C4 align:1
+
+lib/libcpmt/locale0.obj:
+	.text       start:0x007298C4 end:0x00729BE9 align:4
+	.text$x     start:0x007E9560 end:0x007E95CC align:4
+
+lib/libcpmt/locale.obj:
+	.text       start:0x00729BE9 end:0x00729D79 align:1
+	.text$x     start:0x007E95CC end:0x007E9628 align:4
+
+lib/libcpmt/iostream.obj:
+	.text       start:0x00729D79 end:0x0072A765 align:1
+	.text$x     start:0x007E9628 end:0x007E9734 align:4
+
+lib/libcpmt/wiostrea.obj:
+	.text       start:0x0072A765 end:0x0072B5D8 align:1
+	.text$x     start:0x007E9734 end:0x007E9888 align:4
+
 lib/libcpmt/_tolower.obj:
 	.text       start:0x0072B5D8 end:0x0072B7E7 align:1
 
@@ -2098,14 +2138,16 @@ lib/libcpmt/_toupper.obj:
 
 lib/libcpmt/xmbtowc.obj:
 	.text       start:0x0072BA4E end:0x0072BC10 align:1
-	.bss        start:0x00D5ABD4 end:0x00D5ABE0 align:4
+	.bss        start:0x00D5B014 end:0x00D5B020 align:4
 
 Lionhead/LHFile/ver3.0/LHOSFile.cpp:
 	.text       start:0x0072BC10 end:0x0072C8A0 align:16
+	.text$x     start:0x007E9888 end:0x007E98F0 align:4
 	.data       start:0x00B4DEE0 end:0x00B4DF74
 
 Lionhead/LHFile/ver3.0/LHFile.cpp:
 	.text       start:0x0072C8A0 end:0x0072D460
+	.text$x     start:0x007E98F0 end:0x007E9910 align:4
 	.CRT$XCU    start:0x008F7408 end:0x008F740C align:4
 
 zlib/compress.c:
@@ -2911,6 +2953,7 @@ Lionhead/LHLib/ver5.0/LHWin.cpp:
 
 Lionhead/LHLib/ver5.0/LHSystem.cpp:
 	.text       start:0x00746D90 end:0x00748230
+	.text$x     start:0x007E9910 end:0x007E9960 align:4
 	.CRT$XCU    start:0x008F7410 end:0x008F7414 align:4
 
 Lionhead/LHLib/ver5.0/LHScreen.cpp:
@@ -2922,12 +2965,14 @@ Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp:
 
 Lionhead/LHLib/ver5.0/LHHeap2.cpp:
 	.text       start:0x0074A4A0 end:0x0074B790
+	.text$x     start:0x007E9960 end:0x007E99D0 align:4
 
 Lionhead/LHLib/ver5.0/LHText.cpp:
 	.text       start:0x0074B870 end:0x0074BB40
 
 Lionhead/LHLib/ver5.0/LHMouse.cpp:
 	.text       start:0x0074BB40 end:0x0074CFF0
+	.text$x     start:0x007E99D0 end:0x007E9A00 align:4
 
 Lionhead/LHLib/ver5.0/LHSurface.cpp:
 	.text       start:0x0074CFF0 end:0x0074D6D0
@@ -2943,6 +2988,7 @@ lib/libcmt/constpow.obj:
 
 Lionhead/LHLib/ver5.0/LHScript.cpp:
 	.text       start:0x0074DA00 end:0x007503D0
+	.text$x     start:0x007E9A00 end:0x007E9AC0 align:4
 	.data       start:0x00B56328 end:0x00B56F58
 
 Lionhead/LHLib/ver5.0/LHSpriteList.cpp:
@@ -2953,15 +2999,19 @@ Lionhead/LHLib/ver5.0/LHConvert.cpp:
 
 Lionhead/LHLib/ver5.0/LHSprite.cpp:
 	.text       start:0x00752790 end:0x00752890
+	.text$x     start:0x007E9AC0 end:0x007E9C40 align:4
 
 Lionhead/LH3DLib/development/LH3DSmoke.cpp:
 	.text       start:0x00757420 end:0x007575F0
+	.text$x     start:0x007E9C40 end:0x007E9CA0 align:4
 
 Lionhead/LH3DLib/development/LH3DIsland.cpp:
 	.text       start:0x0075D8D0 end:0x00762570
+	.text$x     start:0x007E9CA0 end:0x007E9CD0 align:4
 
 Lionhead/LH3DLib/development/LH3DMesh.cpp:
 	.text       start:0x007632B0 end:0x00764EA0
+	.text$x     start:0x007E9CD0 end:0x007E9E00 align:4
 
 Lionhead/LH3DLib/development/LH3DTech.cpp:
 	.text       start:0x00773EE0 end:0x00777BA0
@@ -2974,10 +3024,12 @@ Lionhead/LH3DLib/development/LH3DCameraChecker.cpp:
 
 Lionhead/LH3DLib/development/Fish.cpp:
 	.text       start:0x0077E1D0 end:0x0077EBF0
+	.text$x     start:0x007E9E00 end:0x007E9E40 align:4
 	.CRT$XCU    start:0x008F74B0 end:0x008F74B4 align:4
 
 Lionhead/LHLib/ver5.0/LHCollide.cpp:
 	.text       start:0x00781140 end:0x00784380
+	.text$x     start:0x007E9E40 end:0x007E9EE0 align:4
 	.CRT$XCU    start:0x008F74C0 end:0x008F74C4 align:4
 
 Lionhead/LH3DLib/development/LH3DRender.cpp:
@@ -2987,10 +3039,12 @@ Lionhead/LH3DLib/development/LH3DRender.cpp:
 
 Lionhead/LH3DLib/development/LH3DText.cpp:
 	.text       start:0x00789040 end:0x0078C9F0
+	.text$x     start:0x007E9EE0 end:0x007E9F10 align:4
 	.CRT$XCU    start:0x008F74D4 end:0x008F74D8 align:4
 
 Lionhead/LH3DLib/development/ValueSpinner.cpp:
 	.text       start:0x0078C9F0 end:0x0078CCE0
+	.text$x     start:0x007E9F10 end:0x007E9F30 align:4
 
 Lionhead/LHLib/ver5.0/Route.cpp:
 	.text       start:0x007901F0 end:0x007917F0
@@ -2998,18 +3052,22 @@ Lionhead/LHLib/ver5.0/Route.cpp:
 
 Lionhead/LH3DLib/development/LH3DOrientSprite.cpp:
 	.text       start:0x007917F0 end:0x00791CD0
+	.text$x     start:0x007E9F30 end:0x007E9F50 align:4
 
 Lionhead/LH3DLib/development/Glow.cpp:
 	.text       start:0x007925D0 end:0x007931D0
+	.text$x     start:0x007E9F50 end:0x007E9F70 align:4
 
 Lionhead/LH3DLib/development/LH3DStorm.cpp:
 	.text       start:0x00794160 end:0x007950F0
+	.text$x     start:0x007E9F70 end:0x007E9FB0 align:4
 
 Lionhead/LH3DLib/development/LH3DSprite.cpp:
 	.text       start:0x007950F0 end:0x00795D80
 
 Lionhead/LH3DLib/development/LH3DMath.cpp:
 	.text       start:0x00795D80 end:0x00795EC0
+	.text$x     start:0x007E9FB0 end:0x007E9FE0 align:4
 
 Lionhead/LH3DLib/development/LH3DLightningSheet.cpp:
 	.text       start:0x00798F50 end:0x00799140
@@ -3022,6 +3080,7 @@ Lionhead/LH3DLib/development/LH3DWay.cpp:
 
 Lionhead/LH3DLib/development/Font.cpp:
 	.text       start:0x0079B090 end:0x0079B5C0
+	.text$x     start:0x007E9FE0 end:0x007EA000 align:4
 
 Lionhead/LH3DLib/development/LHVideoPlayer.cpp:
 	.text       start:0x0079B5C0 end:0x0079C480
@@ -3032,6 +3091,7 @@ Lionhead/LH3DLib/development/Blob.cpp:
 
 Lionhead/LH3DLib/development/LH3DHair.cpp:
 	.text       start:0x0079CF90 end:0x0079E570
+	.text$x     start:0x007EA000 end:0x007EA020 align:4
 
 Lionhead/LH3DLib/development/Leash.cpp:
 	.text       start:0x0079E570 end:0x0079FB70
@@ -3045,6 +3105,7 @@ Lionhead/LH3DLib/development/LH3DVRAMTex.cpp:
 
 Lionhead/LH3DLib/development/CAnim.cpp:
 	.text       start:0x007B4F30 end:0x007B70A0
+	.text$x     start:0x007EA020 end:0x007EA1CD align:4
 
 lib/libcmt/wcsdup.obj:
 	.text       start:0x007E894E end:0x007E897C align:1
