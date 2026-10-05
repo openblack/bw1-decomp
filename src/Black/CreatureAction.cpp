@@ -6860,10 +6860,10 @@ int CreatureAgenda::ConstructSubActionsForGetFriendToGiveMeFish(unsigned long pa
 		Creature* other = friendBelief->GetPointer()->CastCreature();
 		MapCoords coast;
 		MapCoords sea;
-		int       foundCoast = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
-		                                                                  PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
-		int       foundSea = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, coast, &sea,
-		                                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
+		int foundCoast = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
+		                                                            PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
+		int foundSea = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, coast, &sea,
+		                                                          PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
 		if (other != NULL && foundSea && foundCoast)
 		{
 			LHPoint coastPos;
