@@ -1,5 +1,5 @@
 Black & White
-[![Build Status]][actions] [![Code Progress]][progress] [![Data Progress]][progress] [![Discord Badge]][discord][![Ask DeepWiki]][deepwiki]
+[![Build Status]][actions] [![Code Progress]][progress] [![Data Progress]][progress] [![Discord Badge]][discord] [![Ask DeepWiki]][deepwiki]
 =============
 
 [Build Status]: https://github.com/openblack/bw1-decomp/actions/workflows/build.yml/badge.svg
