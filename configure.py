@@ -367,6 +367,47 @@ cflags_gamecode = [*cflags_base, "/G6"]
 if config.version == "BW1W100":
     cflags_gamecode.append("/Gy")
 
+cflags_lhdialog = [
+    "/nologo",
+    "/MDd",
+    "/W3",
+    "/GX",
+    "/ZI",
+    "/Od",
+    "/GZ",
+    "/I", f"build/compilers/{config.linker_version}/include",
+    "/I", f"build/compilers/{config.linker_version}/mfc/include",
+    "/DWIN32",
+    "/D_DEBUG",
+    "/D_WINDOWS",
+    "/D_WINDLL",
+    "/D_AFXDLL",
+    "/D_MBCS",
+    "/D_USRDLL",
+]
+
+cflags_mfcs42d = [
+    "/nologo",
+    "/MDd",
+    "/W3",
+    "/GX",
+    "/GR",
+    "/GF",
+    "/Gy",
+    "/Od",
+    "/Zi",
+    "/I", f"build/compilers/{config.linker_version}/include",
+    "/I", f"build/compilers/{config.linker_version}/mfc/include",
+    "/I", f"build/compilers/{config.linker_version}/atl/include",
+    "/DWIN32",
+    "/D_DEBUG",
+    "/D_WINDOWS",
+    "/D_WINDLL",
+    "/D_AFXDLL",
+    "/D_MBCS",
+    "/D_USRDLL",
+]
+
 # Optional numeric ID for decomp.me preset. A preset dictates the compiler.
 config.scratch_preset_id = 208 if config.compilers_tag == "6.5" else None
 
@@ -1863,18 +1904,20 @@ config.libs = [
     {
         "lib": "LHDialog",
         "compiler_version": config.linker_version,
-        "cflags": cflags_base,
+        "cflags": cflags_lhdialog,
         "progress_category": "sdk",
         "objects": [
-            Object(NonMatching, "Lionhead/LHDialogLib/version 1.0/LHCameraParamsDialog.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version 1.0/LHDialogLib.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version 1.0/LHEditDialog.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version 1.0/LHEditDialogSizable.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version 1.0/LHProgressDialog.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version 1.0/LHSystemSpecDialog.cpp"),
-            Object(NonMatching, "Lionhead/LHDialogLib/version 1.0/LHSystemSpecSummaryDialog.cpp"),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHCameraParamsDialog.cpp"),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHDialogLib.cpp"),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHEditDialog.cpp"),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHEditDialogSizable.cpp"),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHProgressDialog.cpp"),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHSystemSpecDialog.cpp"),
+            Object(NonMatching, "Lionhead/LHDialogLib/version_1.0/LHSystemSpecSummaryDialog.cpp"),
+            Object(NonMatching, "MFC/dllmodul.cpp", cflags=cflags_mfcs42d),
             LibObject(Matching, "msvcrtd", "build\\intel\\xdll_obj\\atonexit.obj", module="LHDialog", progress_category="sdk"),
             LibObject(Matching, "msvcrtd", "build\\intel\\xdll_obj\\crtdll.obj", module="LHDialog", progress_category="sdk"),
+            LibObject(Matching, "msvcrtd", "build\\intel\\xdll_obj\\ti_inst.obj", module="LHDialog", progress_category="sdk"),
         ],
     },
 ]
