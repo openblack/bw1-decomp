@@ -313,3 +313,86 @@ Match it together with its contiguous successors, or leave for hand work.
   run-matching / data-reference problem, not a linker-flag one.
 - Forgetting to re-run `configure.py` after a comdat carve → `.rdata` short.
 - Tabs (not spaces) in `splits.txt`. Always `-v <VERSION>` (default BW1W100).
+
+## libcpmt C++ objects
+
+Linked so far: string, ios, locale0 in 1.10 and 1.20; ios (and uncaught) in 1.00.
+Still extracted: locale, iostream, wiostrea, wlocale, xlocale everywhere, and string and
+locale0 in 1.00 (see below).
+
+The C++ library objects are COMDAT-heavy and only partly survive in the image: every
+template member the game had already instantiated was folded onto the game's copy
+(first definition wins), the rest sits contiguously in link order in each output
+section (`.text`, `.text$x`, `.rdata`, `.rdata$r`, `.xdata$x`, `.CRT$XCU`, `.data`,
+`.bss`). 1.00 additionally dead-strips (`/OPT:REF`) and folds identical code
+(`/OPT:ICF`). `analyze` cannot place these; use the positional walker:
+
+```
+D=.claude/skills/libcmt-obj-matching
+python3 $D/chainwalk.py BW1W110 string,ios .text=0x79E67E    # walk in link order, chaining ends
+python3 $D/labelplan.py BW1W110 build/agent-tools/walk_BW1W110_ios.txt [--apply]
+python3 $D/funclet_map.py BW1W110 00896280 008963C8          # who owns each .text$x funclet
+python3 $D/textx_holders.py BW1W110 00896280 008963C8 [--apply]
+```
+
+- `cppwalk.py VER OBJ BIN=0xSTART...` walks one object: per section `present` (claim it
+  in the split) or `folded`, the `.bss` bases (from the object's own relocations), and a
+  **label plan**: every folded COMDAT needs the game's copy labelled in `symbols.txt`
+  under the exact decorated name with `comdat` (`ADD-COMDAT`, `RENAME fn_xxx`,
+  `ADD-LABEL`, `ok-lib*` = an earlier lib object defines it, `UNKNOWN` = no copy found;
+  for code that usually means dead-stripped). Copies are found through references from
+  surviving sections, folded vtables, data-follow (RTTI R4 -> R3 -> R2 -> R1 -> R0),
+  throw-info chains and call pairing. Section ranges come from `imgsections.py`.
+- Matching is guarded: vtable and RTTI sections must name the right class through their
+  type descriptor, and low-information COMDATs (`""`, one-byte `ret` stubs) count as
+  present only with positive evidence (a reference to that address from a present
+  section, or the following layout); otherwise the walk is redone with them folded.
+- `labelplan.py` applies the plan (carving blob labels it lands in); pass the code
+  labels it leaves for hand work with `--set NAME=0xADDR`.
+
+Rules learned on string/ios/locale0:
+
+- Split ranges tile the previous object's end to the next one's start; pad data ends to
+  the next object's alignment, never past a byte that belongs to a later object
+  (1.20: iostream's `_Init_cnt`; 1.10: locale's 8-aligned descriptors follow).
+- `.bss` blocks tile strictly in link order (proven on 1.10: xlock, ios, locale0, locale,
+  iostream, wiostrea, nomemory, wlocale, xlocale, xmbtowc), so an object's unreferenced
+  statics still have a determined place.
+- Vtables are `IMAGE_COMDAT_SELECT_LARGEST`: the game-side label must cover the lib
+  section's size.
+- Labels from older backports can be wrong: 1.10 had the narrow `basic_string::_Grow`
+  name on the wide copy (the body checks 0x7FFFFFFD). Cross-check fold targets with the
+  newest version (byte-compare the labelled bodies) before trusting them.
+- Blob labels (`lbl_`, oversized vtables, `__TI3...` runs) often straddle the new unit
+  boundaries; cut them at the boundary.
+- dtk emits per-function auto units of the `.text$x` region as plain `.text`, which lld
+  orders among the `.text` units, so once any lib object claims funclets, every funclet
+  run needs an explicit holder. `funclet_map.py` attributes each funclet from the EH
+  records (handler thunk `mov eax, FuncInfo; jmp`, registered by its owner with `push`
+  or with `mov eax, thunk; call __EH_prolog`; unwind and catch funclets listed in the
+  FuncInfo); `textx_holders.py` writes the ranges. Runs whose owner is in code not split
+  into units yet are carried by the nearest unit before that code (code order = funclet
+  order) that holds extracted bytes, i.e. not a lib object and not linked from source;
+  this puts foreign funclets into that unit's objdiff target (LHSurface, LHSprite,
+  LH3DMesh, CAnim...) until the owning code gets its own unit. dtk re-creates the funclet
+  symbols on every split, so retyping or deleting them does not avoid this. Add a
+  boundary label at the first funclet if dtk reports `Split ... overlaps with previous split`.
+- lld reports undefined symbols before it discards dead COMDATs: references from
+  sections the original `/OPT:REF` dropped must still resolve (label the real copy, or
+  add the name to configure.py's 1.00 dead-reference `/alternatename` list).
+
+Why string and locale0 are not linked in 1.00: both register a one-byte
+`collate<char>::id` atexit stub, and 1.00's identical-code folding pointed their
+references at iostream.obj's identical placement `operator delete` (0x72A065), a later
+object. lld keeps the first COMDAT definition in link order, so their own `ret` would
+stay inside string.obj. Linking them would need the project's `fold` step (which rewrites
+a compiled unit's COMDATs into references to the image copy) applied to lib objects, or
+a way to make a later definition win; both are design decisions. Folds onto *earlier*
+objects are reproducible: string.obj's extracted unit carries `runtime_error::what` as
+the COMDAT leader of `logic_error::what`'s body, which ios.obj's copy folds onto.
+
+Why the remaining five are open: their folded members include template code the game
+inlined everywhere (`ctype<char>` ctor, `_Tidyfac::_Save`, `basic_streambuf::sbumpc/
+sgetc/sputc`, `basic_string::append`, `num_get::_Getifld`); those copies exist with game
+codegen but have no byte-identical body and no labelled reference, so each needs hand RE.
+wlocale and xlocale fold the least and are the better next targets.
