@@ -1654,7 +1654,9 @@ config.libs = [
         "cflags": cflags_base,
         "progress_category": "sdk",
         "objects": [
+            Object(NonMatching, "Lionhead/LHLog/ver4.0/ErrorCodes.cpp"),
             Object(NonMatching, "Lionhead/LHLog/ver4.0/LHAssert.cpp"),
+            Object(NonMatching, "Lionhead/LHLog/ver4.0/LHDebugStack.cpp"),
             Object(NonMatching, "Lionhead/LHLog/ver4.0/LHGenLog.cpp"),
             Object(NonMatching, "Lionhead/LHLog/ver4.0/LHLogProps.cpp"),
             Object(NonMatching, "Lionhead/LHLog/ver4.0/LHVersion.cpp"),
