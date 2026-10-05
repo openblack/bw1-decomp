@@ -2,6 +2,7 @@
 #define BW1_DECOMP_BASE_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For LHListNode */
@@ -24,7 +25,7 @@ public:
 	// Override methods
 
 	// BW1W120 004140b0 BW1M119 0112ba50
-	virtual const char* GetDebugText() const;
+	virtual const char* GetDebugText() const { return NULL; }
 	// BW1W120 00436c60 BW1M119 0142e670
 	virtual LHColor GetDebugColor() const;
 	// BW1W120 purecall BW1M119 purecall

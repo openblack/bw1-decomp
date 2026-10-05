@@ -7,6 +7,8 @@
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>    /* For class LHLinkedList */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>           /* For operator new(size_t, const char*, uint32_t) */
 
+#include "EditorIcon.h" /* For class EditorIconShow */
+
 #if defined(VERSION_BW1W100)
 #define EDITOR_ICON_PDM_SOURCE_FILE "C:\\dev\\black\\EditorIconPDM.h"
 #elif defined(VERSION_BW1W110)
@@ -16,19 +18,6 @@
 #endif
 
 struct LH3DColor;
-
-class EditorIconShow
-{
-public:
-	// BW1W120 00414c20 BW1M119 010a5760
-	virtual LHRegion* GetRegion();
-
-	uint8_t field_0x4[0x144];
-
-	// BW1W120 0051fb20 BW1M119 012bab40
-	EditorIconShow(LHRegion region, const char* text, unsigned long param_3, LH3DColor* text_color,
-	               LH3DColor* active_color, LH3DColor* inactive_color, LH3DColor* hilite_color);
-};
 
 class EditorIconPDM
 {

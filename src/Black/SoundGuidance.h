@@ -105,6 +105,8 @@ public:
 	void HelpSpritesLowOnPeople(Town& param_1);
 	// BW1W120 0071cd40 BW1M119 01515df0
 	void HelpSpritesCreatureFight(Creature& creature);
+	// BW1W120 0071ceb0 BW1M119 010257a0
+	void HelpSpritesAlignmentProcess(float change);
 	// BW1W120 0071d100 BW1M119 01514f40
 	void HelpSpritesCheckPlayerWatching(GPlayer* player);
 	// BW1W120 0071d270 BW1M119 01514d30

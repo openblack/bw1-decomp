@@ -22,7 +22,8 @@ public:
 	float                  DesireDecay;
 	float                  InitialValueMin;
 	float                  InitialValueMax;
-	uint32_t               field_0x58[0x8];
+	float                  AlignmentChange;
+	uint32_t               field_0x5c[0x7];
 	float                  DesireGrowthRate;
 	uint32_t               field_0x7c[0x51];
 

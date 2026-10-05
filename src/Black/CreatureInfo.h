@@ -35,7 +35,9 @@ public:
 	uint32_t field_0x2a8;
 	float    field_0x2ac[0x26];
 	uint32_t field_0x344;
-	float    field_0x348[0x13];
+	float    field_0x348[0xf];
+	float    AlignmentChangeScale; /* 0x384 */
+	float    field_0x388[0x3];
 
 	// Override methods
 
@@ -56,7 +58,7 @@ public:
 
 	// TODO(#377): The original declared this class in Creature.h.
 	// Out of line: LoadBinary at 0042e6c0, Load at 0042e620.
-	INFO_DATA_BLOCK(CreatureType, field_0x348)
+	INFO_DATA_BLOCK(CreatureType, field_0x388)
 	INFO_DERIVED_LOADERS(GLivingInfo, "Creature.h", 160)
 };
 
