@@ -322,8 +322,10 @@ enum     FIELD_TYPE_INFO
     FIELD_INFO_TYPE_CORN_WITH_FENCE                 =  3 ,
     FIELD_INFO_TYPE_CEREAL                          =  4 ,
     FIELD_INFO_TYPE_CEREAL_WITH_FENCE               =  5 ,
-    FIELD_INFO_TYPE_SPECIAL_CROP                    =  6 ,
-    FIELD_INFO_TYPE_LAST                            =  7 ,
+#ifdef VERSION_BW1WCI
+	FIELD_INFO_TYPE_SPECIAL_CROP                    =  6 ,
+#endif // VERSION_BW1WCI
+	FIELD_INFO_TYPE_LAST
 };
 
 //*****************************************************************************
@@ -647,7 +649,8 @@ enum     FEATURE_INFO
     FEATURE_INFO_PIER                               =  73 ,
     FEATURE_INFO_CRATER                             =  74 ,
     FEATURE_INFO_TOMBSTONE                          =  75 ,
-    FEATURE_INFO_STONE_ICON_APE                     =  76 ,
+#ifdef VERSION_BW1WCI
+	FEATURE_INFO_STONE_ICON_APE                     =  76 ,
     FEATURE_INFO_STONE_ICON_BEAR                    =  77 ,
     FEATURE_INFO_STONE_ICON_COW                     =  78 ,
     FEATURE_INFO_STONE_ICON_HORSE                   =  79 ,
@@ -667,7 +670,8 @@ enum     FEATURE_INFO
     FEATURE_INFO_EGG_TREE_4                         =  93 ,
     FEATURE_INFO_POINTER_HAND                       =  94 ,
     FEATURE_INFO_BOWLING_END                        =  95 ,
-    FEATURE_INFO_LAST                               =  96 ,
+#endif // VERSION_BW1WCI
+	FEATURE_INFO_LAST
 };
 
 //*****************************************************************************
@@ -677,8 +681,10 @@ enum     FLOWERS_INFO
 {
     FLOWERS_INFO_WHITE_ONE                          =  0 ,
     FLOWERS_INFO_PINK                               =  1 ,
-    FLOWERS_INFO_SUN                                =  2 ,
-    FLOWERS_INFO_LAST                               =  3 ,
+#ifdef VERSION_BW1WCI
+	FLOWERS_INFO_SUN                                =  2 ,
+#endif // VERSION_BW1WCI
+	FLOWERS_INFO_LAST
 };
 
 //*****************************************************************************
@@ -703,8 +709,10 @@ enum     ANIMATED_STATIC_INFO
     ANIMATED_STATIC_INFO_CHESS_KING_TEAMA           =  13 ,
     ANIMATED_STATIC_INFO_CHESS_KING_TEAMB           =  14 ,
     ANIMATED_STATIC_INFO_PHONE_BOX                  =  15 ,
-    ANIMATED_STATIC_INFO_BALISTA                    =  16 ,
-    ANIMATED_STATIC_INFO_LAST                       =  17 ,
+#ifdef VERSION_BW1WCI
+	ANIMATED_STATIC_INFO_BALISTA                    =  16 ,
+#endif // VERSION_BW1WCI};
+	ANIMATED_STATIC_INFO_LAST
 };
 
 //*****************************************************************************
@@ -1171,13 +1179,15 @@ enum     HIGHLIGHT_INFO
     SCRIPT_HIGHLIGHT_INFO_SCRIPT_SILVER             =  1 ,
     SCRIPT_HIGHLIGHT_INFO_SCRIPT_GOLD               =  2 ,
     SCRIPT_HIGHLIGHT_INFO_SCOREBOARD                =  3 ,
-    SCRIPT_HIGHLIGHT_INFO_SCOREBOARD_BIG            =  4 ,
+#ifdef VERSION_BW1WCI
+	SCRIPT_HIGHLIGHT_INFO_SCOREBOARD_BIG            =  4 ,
     SCRIPT_HIGHLIGHT_INFO_SCRIPT_SILVER_CANCEL      =  5 ,
     SCRIPT_HIGHLIGHT_INFO_SCRIPT_GOLD_CANCEL        =  6 ,
     SCRIPT_HIGHLIGHT_INFO_SCRIPT_SWAP_CREATURE      =  7 ,
     SCRIPT_HIGHLIGHT_INFO_SCRIPT_FIGHT_CREATURE     =  8 ,
     SCRIPT_HIGHLIGHT_INFO_BROTHERHOOD               =  9 ,
-    SCRIPT_HIGHLIGHT_INFO_LAST                      =  10 ,
+#endif // VERSION_BW1WCI
+	SCRIPT_HIGHLIGHT_INFO_LAST
 };
 
 //*****************************************************************************
@@ -2007,7 +2017,8 @@ enum     MOBILE_STATIC_INFO
     MOBILE_STATIC_INFO_SCULPTURE_IN_PROGRESS        =  58 ,
     MOBILE_STATIC_INFO_COUNTRY_LANTERN              =  59 ,
     MOBILE_STATIC_INFO_METEOR                       =  60 ,
-    MOBILE_STATIC_INFO_MARBLE1                      =  61 ,
+#ifdef VERSION_BW1WCI
+	MOBILE_STATIC_INFO_MARBLE1                      =  61 ,
     MOBILE_STATIC_INFO_MARBLE2                      =  62 ,
     MOBILE_STATIC_INFO_MARBLE3                      =  63 ,
     MOBILE_STATIC_INFO_MARBLE4                      =  64 ,
@@ -2035,7 +2046,8 @@ enum     MOBILE_STATIC_INFO
     MOBILE_STATIC_INFO_WATER_CANNON                 =  86 ,
     MOBILE_STATIC_INFO_WATER_CANNON_AMMO            =  87 ,
     MOBILE_STATIC_INFO_BASE_ONLY_MARBLE_BASE        =  88 ,
-    MOBILE_STATIC_INFO_LAST                         =  89 ,
+#endif // VERSION_BW1WCI
+	MOBILE_STATIC_INFO_LAST
 };
 
 //*****************************************************************************
@@ -2562,7 +2574,11 @@ enum     SOUND_COLLISION_TYPE
 //*****************************************************************************
 enum     SPECIAL_VILLAGER_INFO
 {
-    SPECIAL_VILLAGER_INFO_LAST                      =  68 ,
+#ifndef VERSION_BW1WCI
+	SPECIAL_VILLAGER_INFO_LAST = 48,
+#else
+	SPECIAL_VILLAGER_INFO_LAST                      =  68 ,
+#endif // VERSION_BW1WCI
 };
 
 //*****************************************************************************

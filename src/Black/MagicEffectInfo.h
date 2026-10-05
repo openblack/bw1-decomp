@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include "EffectInfo.h" /* For struct GEffectInfo */
+#include "EffectInfo.h"  /* For struct GEffectInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -73,6 +74,21 @@ public:
 
 	// BW1W120 00524e00 BW1M119 010d0d40
 	GMagicEffectInfo();
+
+	// Static data
+
+	// BW1W120 00cc6630
+	static GMagicEffectInfo Infos[MAGIC_TYPE_LAST];
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 010d0ba0
+	static GMagicEffectInfo* GetInfo() { return Infos; }
+
+	// TODO(#377): The original declared this class in Effect.h.
+	// Out of line: LoadBinary at 0042d5e0, Load at 0042d570.
+	INFO_DATA_BLOCK(name, field_0x118)
+	INFO_DERIVED_LOADERS(GEffectInfo, "Effect.h", 38)
 };
 
 #endif /* BW1_DECOMP_MAGIC_EFFECT_INFO_INCLUDED_H */

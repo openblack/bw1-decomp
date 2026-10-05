@@ -7,7 +7,8 @@
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 #include <chlasm/Enum.h>      /* For enum ABODE_NUMBER, enum ABODE_TYPE */
 
-#include "ObjectInfo.h" /* For struct GObjectInfo, struct GObjectInfoVftable */
+#include "ObjectInfo.h"  /* For struct GObjectInfo, struct GObjectInfoVftable */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -33,6 +34,11 @@ public:
 	virtual ABODE_TYPE GetAbodeType() const { return ABODE_TYPE_GENERAL; }
 	// BW1W120 00421e90 BW1M119 010ab4c0
 	virtual ABODE_NUMBER GetAbodeNumber() const { return ABODE_NUMBER_INVALID; }
+
+	// TODO(#377): The original declared this class in Fixed.h.
+	// Out of line: LoadBinary at 004303d0, Load at 00430360.
+	INFO_DATA_BLOCK(EditorMesh, influence)
+	INFO_DERIVED_LOADERS(GObjectInfo, "Fixed.h", 92)
 };
 
 #endif /* BW1_DECOMP_MULTI_MAP_FIXED_INFO_INCLUDED_H */

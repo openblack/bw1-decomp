@@ -5,7 +5,8 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 #include <uchar.h>
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 enum PLAYER_TYPE
 {
@@ -63,6 +64,9 @@ public:
 
 	// BW1W120 inlined BW1M119 0149f140
 	static GPlayerInfo* GetInfo() { return &Info; }
+
+	INFO_DATA_BLOCK(MaxAlignmentChangePerGameTurn, field_0x4c)
+	INFO_ROOT_LOADERS_UNTAGGED()
 };
 
 #endif /* BW1_DECOMP_PLAYER_INFO_INCLUDED_H */

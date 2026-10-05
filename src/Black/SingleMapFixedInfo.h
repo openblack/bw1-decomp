@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include "ObjectInfo.h" /* For struct GObjectInfo, struct GObjectInfoVftable */
+#include "ObjectInfo.h"  /* For struct GObjectInfo, struct GObjectInfoVftable */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -31,6 +32,16 @@ public:
 		param_1 = 4;
 		return Infos;
 	}
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 010e7050
+	static GSingleMapFixedInfo* GetInfo() { return Infos; }
+
+	// TODO(#377): The original declared this class in Fixed.h.
+	// Out of line: LoadBinary at 0042de00, Load at 0042dd90.
+	INFO_DATA_BLOCK(Mesh, Mesh)
+	INFO_DERIVED_LOADERS(GObjectInfo, "Fixed.h", 283)
 };
 
 #endif /* BW1_DECOMP_SINGLE_MAP_FIXED_INFO_INCLUDED_H */

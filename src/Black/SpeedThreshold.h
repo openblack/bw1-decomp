@@ -6,7 +6,8 @@
 
 #include <chlasm/Enum.h> /* For SPEED_THRESHOLD_LAST */
 
-#include "BaseInfo.h" /* For class GBaseInfo */
+#include "BaseInfo.h"    /* For class GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 class GSpeedThreshold : public GBaseInfo
 {
@@ -33,12 +34,9 @@ public:
 	// BW1W120 inlined BW1M119 0101e170
 	static GSpeedThreshold* GetInfo() { return InfoList; }
 
-	// Non-virtual methods
-
-	// BW1W120 inlined BW1M119 0119f6e0
-	char* get_start() { return (char*)&WalkThreshold; }
-	// BW1W120 inlined BW1M119 0119f720
-	unsigned long get_size() { return (char*)&RunThreshold - get_start() + sizeof(RunThreshold); }
+	// TODO(#377): The original declared this class in Mobile.h.
+	INFO_DATA_BLOCK(WalkThreshold, RunThreshold)
+	INFO_ROOT_LOADERS("Mobile.h", 54)
 };
 
 #endif /* BW1_DECOMP_SPEED_THRESHOLD_INCLUDED_H */

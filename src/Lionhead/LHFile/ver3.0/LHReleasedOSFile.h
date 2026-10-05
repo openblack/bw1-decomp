@@ -14,8 +14,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 0042fd40 BW1M119 01553860
-	virtual ~LHReleasedOSFile() {}
 	// BW1W120 007bc7e0 BW1M119 01165b70 (LHCombined Release)
 	virtual LH_FILE_RESULT Open(const char* path, LH_FILE_MODE mode);
 

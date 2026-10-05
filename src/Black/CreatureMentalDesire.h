@@ -15,6 +15,7 @@
 #include "Base.h"                       /* For struct Base */
 #include "BaseInfo.h"                   /* For struct GBaseInfo */
 #include "CreatureMentalDesireSource.h" /* For struct CreatureDesireSource */
+#include "InfoLoaders.h"                /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -157,6 +158,20 @@ public:
 	static CreatureDesireActionEntry g_CompassionForTownActionTable[TOWN_DESIRE_INFO_LAST];
 	// BW1W120 00c64230
 	static CreatureDesireActionEntry g_CompassionForCreatureActionTable[NUM_CREATURE_DESIRES];
+
+	// BW1W120 inlined BW1M119 01233530
+	static CreatureDesireActionEntry* GetInfo() { return g_CreatureDesireActionEntries; }
+	// BW1W120 inlined BW1M119 01233400
+	static CreatureDesireActionEntry* GetCompassionForTownActionTable() { return g_CompassionForTownActionTable; }
+	// BW1W120 inlined BW1M119 012331a0
+	static CreatureDesireActionEntry* GetCompassionForCreatureActionTable()
+	{
+		return g_CompassionForCreatureActionTable;
+	}
+
+	// TODO(#377): The original declared this class in CreatureAction.h.
+	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_ROOT_LOADERS("CreatureAction.h", 62)
 };
 static_assert(sizeof(CreatureDesireActionEntry) == 0x88, "Data type is of wrong size");
 
@@ -176,6 +191,13 @@ public:
 
 	// BW1W120 00c66090
 	static CreatureDesireAttributeEntry g_CreatureDesireAttributeEntries[NUM_CREATURE_DESIRES];
+
+	// BW1W120 inlined BW1M119 01232f50
+	static CreatureDesireAttributeEntry* GetInfo() { return g_CreatureDesireAttributeEntries; }
+
+	// TODO(#377): The original declared this class in CreatureAction.h.
+	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_ROOT_LOADERS("CreatureAction.h", 72)
 };
 static_assert(sizeof(CreatureDesireAttributeEntry) == 0x38, "Data type is of wrong size");
 
@@ -191,40 +213,16 @@ public:
 	// BW1W120 004db2e0 BW1M119 01260880
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 
-	// Non-virtual methods
+	// Static methods
 
-	// BW1W120 inlined BW1M119 0119e940
-	char* get_start() { return (char*)field_0x10; }
-	// BW1W120 inlined BW1M119 0119e990
-	unsigned long get_size() { return sizeof(field_0x10); }
-
-	// BW1W120 inlined BW1M119 0119e8d0
-	uint32_t SaveBinary(unsigned char* buffer, unsigned long size, LHFile* file);
 	// BW1W120 inlined BW1M119 01260590
-	static CreatureDesireDependency* GetInfo();
-
-	// BW1W120 inlined BW1M119 inlined
-	void LoadBinary(LHFile* file)
-	{
-		uint8_t* temp = new ("C:\\dev\\MP\\Black\\CreatureMentalDesire.h", 165) uint8_t[get_size()];
-		file->GetSegmentData(temp, get_size(), -1);
-		memcpy(get_start(), temp, get_size());
-		delete[] temp;
-		SetInfoID();
-	}
-
-	// BW1W120 inlined BW1M119 inlined
-	uint32_t LoadTextAndCache(char** cursor, LHFile* file)
-	{
-		file->WriteSegmentData(*cursor, get_size());
-		memcpy(get_start(), *cursor, get_size());
-		*cursor += get_size();
-		SetInfoID();
-		return get_size();
-	}
+	static CreatureDesireDependency* GetInfo() { return g_CreatureDesireDependency; }
 
 	// BW1W120 00c85cd0
 	static CreatureDesireDependency g_CreatureDesireDependency[NUM_CREATURE_DESIRES];
+
+	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 165)
 };
 
 class CreatureDesireForType : public GBaseInfo
@@ -239,40 +237,46 @@ public:
 	// BW1W120 004db3c0 BW1M119 012607c0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 
-	// Non-virtual methods
+	// Static data
 
-	// BW1W120 0042dfa0 BW1M119 inlined
-	void LoadBinary(LHFile* file)
-	{
-		float* temp = new float[0x11];
-		file->GetSegmentData(temp, sizeof(ByCreatureType), -1);
-		for (int i = 0; i < 0x11; i++)
-			ByCreatureType[i] = temp[i];
-		delete[] temp;
-		SetInfoID();
-	}
+	// BW1W120 00c84fb0
+	static CreatureDesireForType InitialIncreaseTime[NUM_CREATURE_DESIRES];
 
-	// BW1W120 0042df60 BW1M119 inlined
-	uint32_t LoadTextAndCache(char** cursor, LHFile* file)
-	{
-		file->WriteSegmentData(*cursor, sizeof(ByCreatureType));
-		for (int i = 0; i < 0x11; i++)
-			ByCreatureType[i] = ((float*)*cursor)[i];
-		*cursor += sizeof(ByCreatureType);
-		SetInfoID();
-		return sizeof(ByCreatureType);
-	}
+	// Static methods
+
+	// BW1W120 inlined BW1M119 012604d0
+	static CreatureDesireForType* GetInitialIncreaseTime() { return InitialIncreaseTime; }
+
+	// Out of line: LoadBinary at 0042dfa0, Load at 0042df60.
+	INFO_DATA_BLOCK(ByCreatureType, ByCreatureType)
+	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 173)
 };
 
 class CreatureDesireSourceTable : public GBaseInfo
 {
 public:
+	uint8_t field_0x10[0x94];
+
 	// Override methods
 
 	// BW1W120 004dd1f0 BW1M119 01260ad0
 	virtual ~CreatureDesireSourceTable();
 	// BW1W120 004dd180 BW1M119 01262e80
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
+
+	// Static data
+
+	// BW1W120 00c8ad60
+	static CreatureDesireSourceTable Table[NUM_CREATURE_DESIRE_SOURCES];
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 01262c50
+	static CreatureDesireSourceTable* GetTable() { return Table; }
+
+	// TODO(#377): The original declared this class in CreatureMentalDesireSource.h.
+	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_ROOT_LOADERS("CreatureMentalDesireSource.h", 16)
 };
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_DESIRE_INCLUDED_H */

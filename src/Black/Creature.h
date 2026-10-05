@@ -617,6 +617,10 @@ public:
 	static Creature* CreateCreature(const MapCoords& coords, const GCreatureInfo* info, GPlayer* player);
 	// BW1W120 0047cbd0 BW1M119 011d8360
 	static void CheckAllCreaturesForCatching(Object* object, PhysicsObject* physics_object);
+	// BW1W120 0047c6b0 BW1M119 011d8d80
+	static void CopyDifferentCreatureInfoToCreatureInfo();
+	// BW1W120 004c48b0 BW1M119 01235350
+	static void ComputeActionIndices();
 
 	// Constructors
 

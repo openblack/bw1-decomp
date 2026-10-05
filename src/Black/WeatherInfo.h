@@ -4,7 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
+#include <chlasm/Enum.h> /* For WEATHER_INFO_LAST */
+
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 #include <Lionhead/LH3DLib/development/WeatherInfo.h>
 
 // Forward Declares
@@ -23,6 +26,20 @@ public:
 	virtual ~GWeatherInfo();
 	// BW1W120 00770dd0 BW1M119 015aa340
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+
+	// Static data
+
+	// BW1W120 00dcb5f8
+	static GWeatherInfo Infos[WEATHER_INFO_LAST];
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 015aa120
+	static GWeatherInfo* GetInfo() { return Infos; }
+
+	// TODO(#377): The original declared this class in Weather.h.
+	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_ROOT_LOADERS("Weather.h", 24)
 };
 
 static_assert(sizeof(GWeatherInfo) == 0x64, "GWeatherInfo size is incorrect");

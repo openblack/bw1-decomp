@@ -8,6 +8,7 @@
 
 #include "BaseInfo.h"     /* For struct GBaseInfo */
 #include "MobileObject.h" /* For struct MobileObject */
+#include "InfoLoaders.h"  /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -99,6 +100,10 @@ public:
 	virtual ~GRewardProgress();
 	// BW1W120 006e5520 BW1M119 01145010
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+
+	// TODO(#377): The original declared this class in reward.h.
+	INFO_DATA_BLOCK(MagicType, AvailableOnLand)
+	INFO_ROOT_LOADERS("reward.h", 15)
 };
 
 static_assert(sizeof(GRewardProgress) == 0x2c, "GRewardProgress size is incorrect");

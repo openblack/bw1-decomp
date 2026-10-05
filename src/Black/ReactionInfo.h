@@ -6,7 +6,8 @@
 
 #include <chlasm/Enum.h> /* For enum GUIDANCE_ALIGNMENT, enum TOWN_DESIRE_INFO */
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -43,6 +44,10 @@ public:
 	virtual ~ReactionInfo();
 	// BW1W120 006e0e00 BW1M119 0113f4c0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+
+	// TODO(#377): The original declared this class in Reaction.h.
+	INFO_DATA_BLOCK(priority, AlignmentForSFX)
+	INFO_ROOT_LOADERS("Reaction.h", 56)
 };
 
 #endif /* BW1_DECOMP_REACTION_INFO_INCLUDED_H */

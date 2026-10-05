@@ -10,4 +10,7 @@ struct vec2u16
 
 typedef int32_t bool32_t;
 
+// Number of elements in a fixed-size array (MSVC 6.0 has no _countof)
+#define ARRAY_SIZE(array) (sizeof(array) / sizeof((array)[0]))
+
 #endif /* BW1_DECOMP_REVERSING_UTILS_COMMON_INCLUDED_H */

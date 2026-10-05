@@ -325,9 +325,10 @@ enum     ANIMAL_STATES
     ANIMAL_STATE_GIVES_BIRTH                                                             =  50 ,
     ANIMAL_STATE_HIDE_IN_LAIR                                                            =  51 ,
     ANIMAL_STATE_SEEK_FOOD                                                               =  52 ,
-    ANIMAL_STATE_LAST_STATE                                                              =  53 ,
-    // ANIMAL_STATE_SCRIPT_PLAY_ANIM                                                        =  53 ,
-    // ANIMAL_STATE_LAST_STATE                                                              =  54 ,
+#ifdef VERSION_BW1WCI
+	ANIMAL_STATE_SCRIPT_PLAY_ANIM = 53,
+#endif // VERSION_BW1WCI
+	ANIMAL_STATE_LAST_STATE
 };
 
 #endif

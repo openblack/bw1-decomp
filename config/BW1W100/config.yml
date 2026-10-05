@@ -9,6 +9,17 @@ splits: config/BW1W100/splits.txt
 block_relocations:
   - source: 0x008F7698
   - source: 0x008F76B8
+# GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874.
+  - source: 0x008FA414
+  - source: 0x008FA478
+  - source: 0x008FA4DC
+  - source: 0x008FA540
+  - source: 0x008FA5AC
+# So does the tail of the ".\\scripts\\info*.txt" search pattern.
+  - source: 0x008FB344
+# "LUE\0" ending "DETAIL_CREATURE_INITIAL_DESIRE_SOURCE_VALUE" reads as 0x0045554C, inside
+# CPController::Update.
+  - source: 0x008FABA0
 
 # MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
 add_relocations:
@@ -36,6 +47,139 @@ add_relocations:
     type: x86_abs32
     target: '?InfoList@GTownDesireInfo@@2PAV1@A'
     addend: 0x9C0
+# Balance: the info-array loops compare against each array's one-past-end, not the next unit's data.
+  - source: 0x00425246
+    type: x86_abs32
+    target: '?Infos@GMagicInfo@@2PAPAV1@A'
+    addend: 0xA8
+  - source: 0x0042603E
+    type: x86_abs32
+    target: '?Infos@GMagicInfo@@2PAPAV1@A'
+    addend: 0xA8
+  - source: 0x00426097
+    type: x86_abs32
+    target: '?Infos@GSpellSeedInfo@@2PAV1@A'
+    addend: 0x2EE0
+  - source: 0x00426152
+    type: x86_abs32
+    target: '?Infos@GSpellSeedInfo@@2PAV1@A'
+    addend: 0x2EE0
+  - source: 0x004261BA
+    type: x86_abs32
+    target: '?Infos@GAnimalInfo@@2PAV1@A'
+    addend: 0x56B4
+  - source: 0x004261DF
+    type: x86_abs32
+    target: '?Infos@GAnimalInfo@@2PAV1@A'
+    addend: 0x56B4
+  - source: 0x004261FE
+    type: x86_abs32
+    target: '?Infos@CreatureInfo@@2PAV1@A'
+    addend: 0x3CD4
+  - source: 0x00426261
+    type: x86_abs32
+    target: '?Infos@CreatureInfo@@2PAV1@A'
+    addend: 0x3CD4
+  - source: 0x004262B7
+    type: x86_abs32
+    target: '?Infos@DifferentCreatureInfo@@2PAV1@A'
+    addend: 0x72C
+  - source: 0x004262E1
+    type: x86_abs32
+    target: '?Infos@DifferentCreatureInfo@@2PAV1@A'
+    addend: 0x72C
+  - source: 0x004264E2
+    type: x86_abs32
+    target: '?Infos@GCitadelInfo@@2PAV1@A'
+    addend: 0x54
+  - source: 0x0042653A
+    type: x86_abs32
+    target: '?Infos@GCitadelHeartInfo@@2PAV1@A'
+    addend: 0x158
+  - source: 0x00426576
+    type: x86_abs32
+    target: '?Infos@GCreaturePenInfo@@2PAV1@A'
+    addend: 0x654
+  - source: 0x004265D9
+    type: x86_abs32
+    target: '?Infos@GCreaturePenInfo@@2PAV1@A'
+    addend: 0x654
+  - source: 0x00426635
+    type: x86_abs32
+    target: '?Infos@GWorshipSiteInfo@@2PAV1@A'
+    addend: 0xC60
+  - source: 0x00426662
+    type: x86_abs32
+    target: '?Infos@GWorshipSiteInfo@@2PAV1@A'
+    addend: 0xC60
+  - source: 0x00426681
+    type: x86_abs32
+    target: '?Infos@GSpellIconInfo@@2PAV1@A'
+    addend: 0x258
+  - source: 0x004266E4
+    type: x86_abs32
+    target: '?Infos@GSpellIconInfo@@2PAV1@A'
+    addend: 0x258
+  - source: 0x00426740
+    type: x86_abs32
+    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
+    addend: 0x105D8
+  - source: 0x0042676D
+    type: x86_abs32
+    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
+    addend: 0x105D8
+  - source: 0x0042678C
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x004267EF
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x00426845
+    type: x86_abs32
+    target: '?Infos@GSpecialVillagerInfo@@2PAV1@A'
+    addend: 0x1200
+  - source: 0x0042686F
+    type: x86_abs32
+    target: '?Infos@GSpecialVillagerInfo@@2PAV1@A'
+    addend: 0x1200
+  - source: 0x0042688E
+    type: x86_abs32
+    target: '?Infos@GTreeInfo@@2PAV1@A'
+    addend: 0x1CC0
+  - source: 0x004268F1
+    type: x86_abs32
+    target: '?Infos@GTreeInfo@@2PAV1@A'
+    addend: 0x1CC0
+  - source: 0x0042694D
+    type: x86_abs32
+    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
+    addend: 0x410
+  - source: 0x0042697A
+    type: x86_abs32
+    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
+    addend: 0x410
+  - source: 0x00426999
+    type: x86_abs32
+    target: '?Infos@GScriptHighlightInfo@@2PAV1@A'
+    addend: 0x440
+  - source: 0x004269FC
+    type: x86_abs32
+    target: '?Infos@GScriptHighlightInfo@@2PAV1@A'
+    addend: 0x440
+  - source: 0x00426A54
+    type: x86_abs32
+    target: '?Infos@GMapShieldInfo@@2PAV1@A'
+    addend: 0x210
+  - source: 0x00426A81
+    type: x86_abs32
+    target: '?Infos@GMapShieldInfo@@2PAV1@A'
+    addend: 0x210
+  - source: 0x00426AEC
+    type: x86_abs32
+    target: '?Infos@GBallInfo@@2PAV1@A'
+    addend: 0x140
 
 dead_strip: true
 # The original 1.0 link used /OPT:REF, which only collects COMDATs. Until the

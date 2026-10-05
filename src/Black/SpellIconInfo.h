@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
+#include "InfoLoaders.h"       /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -27,6 +28,21 @@ public:
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00725f30 BW1M119 0152c180
 	virtual MESH_LIST GetMesh() const;
+
+	// Static data
+
+	// BW1W120 00d9d3e8
+	static GSpellIconInfo Infos[SPELL_ICON_INFO_LAST];
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 0152e240
+	static GSpellIconInfo* GetInfo() { return Infos; }
+
+	// TODO(#377): The original declared this class in SpellIcon.h.
+	// Out of line: LoadBinary at 0042f4e0, Load at 0042f440.
+	INFO_DATA_BLOCK(field_0x120, field_0x128)
+	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "SpellIcon.h", 26)
 };
 
 #endif /* BW1_DECOMP_SPELL_ICON_INFO_INCLUDED_H */

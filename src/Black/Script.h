@@ -9,9 +9,10 @@
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
-#include "Base.h"      /* For struct Base */
-#include "BaseInfo.h"  /* For struct GBaseInfo */
-#include "ScriptDLL.h" /* For enum VMScriptType, enum VMType */
+#include "Base.h"        /* For struct Base */
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "ScriptDLL.h"   /* For enum VMScriptType, enum VMType */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 enum SCRIPT_FEATURE_COMMANDS
 {
@@ -1228,12 +1229,17 @@ public:
 class GScriptOpposingCreature : public GBaseInfo
 {
 public:
+	uint8_t field_0x10[0xc];
+
 	// Override methods
 
 	// BW1W120 006f3770 BW1M119 014eb2a0
 	virtual ~GScriptOpposingCreature();
 	// BW1W120 006f3710 BW1M119 014ef2f0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+
+	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_ROOT_LOADERS("Script.h", 923)
 };
 
 #endif /* BW1_DECOMP_SCRIPT_INCLUDED_H */

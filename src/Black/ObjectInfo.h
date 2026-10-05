@@ -10,6 +10,7 @@
 
 #include "BaseInfo.h"      /* For struct GBaseInfo, struct GBaseInfoVftable */
 #include "EffectNumbers.h" /* For struct EffectNumbers */
+#include "InfoLoaders.h"   /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -70,11 +71,15 @@ public:
 	// BW1W120 004012c0 BW1M119 013e51c0
 	virtual const char* GetDebugText() const { return DebugString; }
 	// BW1W120 0042b380 BW1M119 013e4f50
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = OBJECT_TYPE_LAST;
+		return Definitions;
+	}
 	// BW1W120 00401290 BW1M119 010e45f0
 	virtual MESH_LIST GetMesh(TRIBE_TYPE tribe) const { return MSH_DUMMY; }
 	// BW1W120 0042b370 BW1M119 0157f860
-	virtual MESH_LIST GetMesh() const;
+	virtual MESH_LIST GetMesh() const { return MSH_DUMMY; }
 	// BW1W120 004012a0 BW1M119 012fef20
 	virtual ALIGNMENT_TYPE GetAlignmentType() const { return AlignmentType; }
 	// BW1W120 004012b0 BW1M119 01064f20
@@ -86,6 +91,10 @@ public:
 	bool32_t IsOkToCreateAtPos(const MapCoords& coords, float param_2, float param_3) const;
 	// BW1W120 00636e30 BW1M119 013dff10
 	float GetMesh2DRadius(float scale) const;
+
+	// Out of line: LoadBinary at 0042ea60, Load at 0042e980.
+	INFO_DATA_BLOCK(type, ComputerAttackDesire)
+	INFO_ROOT_LOADERS_UNTAGGED()
 };
 
 #endif /* BW1_DECOMP_OBJECT_INFO_INCLUDED_H */

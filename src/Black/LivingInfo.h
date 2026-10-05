@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "MobileWallHugInfo.h" /* For struct GMobileWallHugInfo */
+#include "InfoLoaders.h"       /* For INFO_DATA_BLOCK */
 
 class GLivingInfo : public GMobileWallHugInfo
 {
@@ -35,6 +36,10 @@ public:
 	uint32_t field_0x1b0;
 	uint32_t field_0x1b4;
 	uint8_t  field_0x1b8[0x3c];
+
+	// TODO(#377): The original declared this class in Living.h.
+	INFO_DATA_BLOCK(field_0x120, field_0x1b8)
+	INFO_DERIVED_LOADERS(GMobileWallHugInfo, "Living.h", 197)
 };
 
 #endif /* BW1_DECOMP_LIVING_INFO_INCLUDED_H */

@@ -19,6 +19,19 @@ block_relocations:
   - source: 0x009C82F0
 # SetupColourPicker's grey colour 0x808080 is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x00410B14
+# The country code "DEC\0" in getqloc's locale tables reads as 0x00434544, inside LoadIt<GFurnitureInfo>.
+  - source: 0x00C30B04
+# GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874, inside Town::ProcessTownEmergency.
+  - source: 0x009CB6CC
+  - source: 0x009CB730
+  - source: 0x009CB794
+  - source: 0x009CB7F8
+  - source: 0x009CB864
+# So does the tail of the ".\\scripts\\info*.txt" search pattern.
+  - source: 0x009CC65C
+# "LUE\0" ending "DETAIL_CREATURE_INITIAL_DESIRE_SOURCE_VALUE" reads as 0x0045554C, inside
+# CameraExclusion::SaveExclusionFile.
+  - source: 0x009CBEB8
 
 # CMP EDX compares against PacketTimeHistory's one-past-end, not the next array.
 add_relocations:
@@ -83,6 +96,139 @@ add_relocations:
     type: x86_abs32
     target: '?InfoList@GTownDesireInfo@@2PAV1@A'
     addend: 0x9C0
+# Balance: the info-array loops compare against each array's one-past-end, not the next unit's data.
+  - source: 0x0042B456
+    type: x86_abs32
+    target: '?Infos@GMagicInfo@@2PAPAV1@A'
+    addend: 0xA8
+  - source: 0x0042C24E
+    type: x86_abs32
+    target: '?Infos@GMagicInfo@@2PAPAV1@A'
+    addend: 0xA8
+  - source: 0x0042C2A7
+    type: x86_abs32
+    target: '?Infos@GSpellSeedInfo@@2PAV1@A'
+    addend: 0x2EE0
+  - source: 0x0042C362
+    type: x86_abs32
+    target: '?Infos@GSpellSeedInfo@@2PAV1@A'
+    addend: 0x2EE0
+  - source: 0x0042C3CA
+    type: x86_abs32
+    target: '?Infos@GAnimalInfo@@2PAV1@A'
+    addend: 0x56B4
+  - source: 0x0042C3EF
+    type: x86_abs32
+    target: '?Infos@GAnimalInfo@@2PAV1@A'
+    addend: 0x56B4
+  - source: 0x0042C40E
+    type: x86_abs32
+    target: '?Infos@CreatureInfo@@2PAV1@A'
+    addend: 0x3CD4
+  - source: 0x0042C471
+    type: x86_abs32
+    target: '?Infos@CreatureInfo@@2PAV1@A'
+    addend: 0x3CD4
+  - source: 0x0042C4C7
+    type: x86_abs32
+    target: '?Infos@DifferentCreatureInfo@@2PAV1@A'
+    addend: 0x72C
+  - source: 0x0042C4F1
+    type: x86_abs32
+    target: '?Infos@DifferentCreatureInfo@@2PAV1@A'
+    addend: 0x72C
+  - source: 0x0042C6F2
+    type: x86_abs32
+    target: '?Infos@GCitadelInfo@@2PAV1@A'
+    addend: 0x54
+  - source: 0x0042C74A
+    type: x86_abs32
+    target: '?Infos@GCitadelHeartInfo@@2PAV1@A'
+    addend: 0x158
+  - source: 0x0042C786
+    type: x86_abs32
+    target: '?Infos@GCreaturePenInfo@@2PAV1@A'
+    addend: 0x654
+  - source: 0x0042C7E9
+    type: x86_abs32
+    target: '?Infos@GCreaturePenInfo@@2PAV1@A'
+    addend: 0x654
+  - source: 0x0042C845
+    type: x86_abs32
+    target: '?Infos@GWorshipSiteInfo@@2PAV1@A'
+    addend: 0xC60
+  - source: 0x0042C872
+    type: x86_abs32
+    target: '?Infos@GWorshipSiteInfo@@2PAV1@A'
+    addend: 0xC60
+  - source: 0x0042C891
+    type: x86_abs32
+    target: '?Infos@GSpellIconInfo@@2PAV1@A'
+    addend: 0x258
+  - source: 0x0042C8F4
+    type: x86_abs32
+    target: '?Infos@GSpellIconInfo@@2PAV1@A'
+    addend: 0x258
+  - source: 0x0042C950
+    type: x86_abs32
+    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
+    addend: 0x105D8
+  - source: 0x0042C97D
+    type: x86_abs32
+    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
+    addend: 0x105D8
+  - source: 0x0042C99C
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x0042C9FF
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x0042CA55
+    type: x86_abs32
+    target: '?Infos@GSpecialVillagerInfo@@2PAV1@A'
+    addend: 0x1200
+  - source: 0x0042CA7F
+    type: x86_abs32
+    target: '?Infos@GSpecialVillagerInfo@@2PAV1@A'
+    addend: 0x1200
+  - source: 0x0042CA9E
+    type: x86_abs32
+    target: '?Infos@GTreeInfo@@2PAV1@A'
+    addend: 0x1CC0
+  - source: 0x0042CB01
+    type: x86_abs32
+    target: '?Infos@GTreeInfo@@2PAV1@A'
+    addend: 0x1CC0
+  - source: 0x0042CB5D
+    type: x86_abs32
+    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
+    addend: 0x410
+  - source: 0x0042CB8A
+    type: x86_abs32
+    target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'
+    addend: 0x410
+  - source: 0x0042CBA9
+    type: x86_abs32
+    target: '?Infos@GScriptHighlightInfo@@2PAV1@A'
+    addend: 0x440
+  - source: 0x0042CC0C
+    type: x86_abs32
+    target: '?Infos@GScriptHighlightInfo@@2PAV1@A'
+    addend: 0x440
+  - source: 0x0042CC64
+    type: x86_abs32
+    target: '?Infos@GMapShieldInfo@@2PAV1@A'
+    addend: 0x210
+  - source: 0x0042CC91
+    type: x86_abs32
+    target: '?Infos@GMapShieldInfo@@2PAV1@A'
+    addend: 0x210
+  - source: 0x0042CCFC
+    type: x86_abs32
+    target: '?Infos@GBallInfo@@2PAV1@A'
+    addend: 0x140
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000

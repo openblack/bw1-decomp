@@ -7,7 +7,8 @@
 #include <chlasm/AllMeshes.h> /* For enum ANIM_LIST, enum MESH_LIST */
 #include <chlasm/Enum.h> /* For enum JOB_INFO, enum SEX_TYPE, enum TOWN_DESIRE_INFO, enum TRIBE_TYPE, enum VILLAGER_NUMBER */
 
-#include "LivingInfo.h" /* For struct GLivingInfo */
+#include "LivingInfo.h"  /* For struct GLivingInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -138,6 +139,11 @@ public:
 	static GVillagerInfo* GetInfo() { return InfoList; }
 	// BW1W120 inlined BW1M119 0101ffb0
 	static const DiscipleInfo* GetDiscipleInfo() { return DiscipleInfos; }
+
+	// TODO(#377): The original declared this class in Villager.h.
+	// Out of line: LoadBinary at 0042e2a0, Load at 0042e190.
+	INFO_DATA_BLOCK(TribeType, MissionaryImpressiveValue)
+	INFO_DERIVED_LOADERS(GLivingInfo, "Villager.h", 124)
 };
 
 #endif /* BW1_DECOMP_VILLAGER_INFO_INCLUDED_H */

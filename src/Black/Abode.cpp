@@ -9,8 +9,6 @@
 
 #include "AbodeInfo.h"
 
-static GAbodeInfo AbodeInfos[ABODE_INFO_LAST];
-
 #include "MapCoords.h"
 #include "MultiMapFixedInfo.h"
 #include "Player.h"
@@ -47,6 +45,8 @@ static GAbodeInfo AbodeInfos[ABODE_INFO_LAST];
 #include "Workshop.h"
 
 #define M_PI 3.14159265358979323846
+
+GAbodeInfo GAbodeInfo::AbodeInfos[ABODE_INFO_LAST];
 
 GBaseInfo* GAbodeInfo::GetBaseInfo(uint32_t& num_infos)
 {

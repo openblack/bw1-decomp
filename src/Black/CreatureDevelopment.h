@@ -4,9 +4,11 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/CreatureEnum.h>           /* For DEVELOPMENT_PHASE_LAST */
 #include <Lionhead/LHFile/ver3.0/LHFile.h> /* For struct LHFile */
 
-#include "BaseInfo.h" /* For struct GBaseInfo */
+#include "BaseInfo.h"    /* For struct GBaseInfo */
+#include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -24,18 +26,20 @@ public:
 	// BW1W120 004db560 BW1M119 01260700
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
-	// Non-virtual methods
+	// Static data
 
-	// BW1W120 0042e0c0 BW1M119 inlined
-	void LoadBinary(LHFile* file)
-	{
-		uint32_t* temp = new uint32_t[0xe];
-		file->GetSegmentData(temp, sizeof(field_0x10), -1);
-		for (int i = 0; i < 0xe; i++)
-			field_0x10[i] = temp[i];
-		delete[] temp;
-		SetInfoID();
-	}
+	// BW1W120 00c843b0
+	static CreatureDevelopmentDurationEntry Infos[17];
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 01260030
+	static CreatureDevelopmentDurationEntry* GetInfo() { return Infos; }
+
+	// TODO(#377): The original declared this class in CreatureMentalDesire.h.
+	// Out of line: LoadBinary at 0042e0c0, Load at 0042e080.
+	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 189)
 };
 
 class CreatureDevelopmentPhaseEntry : public GBaseInfo
@@ -50,18 +54,20 @@ public:
 	// BW1W120 004db480 BW1M119 01260640
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
-	// Non-virtual methods
+	// Static data
 
-	// BW1W120 0042e030 BW1M119 inlined
-	void LoadBinary(LHFile* file)
-	{
-		uint32_t* temp = new uint32_t[0x1d];
-		file->GetSegmentData(temp, sizeof(field_0x10), -1);
-		for (int i = 0; i < 0x1d; i++)
-			field_0x10[i] = temp[i];
-		delete[] temp;
-		SetInfoID();
-	}
+	// BW1W120 00c84878
+	static CreatureDevelopmentPhaseEntry Infos[DEVELOPMENT_PHASE_LAST];
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 01260280
+	static CreatureDevelopmentPhaseEntry* GetInfo() { return Infos; }
+
+	// TODO(#377): The original declared this class in CreatureMentalDesire.h.
+	// Out of line: LoadBinary at 0042e030, Load at 0042dff0.
+	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 181)
 };
 
 #endif /* BW1_DECOMP_CREATURE_DEVELOPMENT_INCLUDED_H */
