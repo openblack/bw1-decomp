@@ -1,0 +1,45 @@
+#ifndef BW1_DECOMP_LH_DIALOG_LIB_RESOURCE_INCLUDED_H
+#define BW1_DECOMP_LH_DIALOG_LIB_RESOURCE_INCLUDED_H
+
+// Dialog templates
+#define IDD_EDIT_DIALOG                1000
+#define IDD_PROGRESS_DIALOG            1001
+#define IDD_EDIT_DIALOG_SIZABLE        1002
+#define IDD_SYSTEM_SPEC_DIALOG         1003
+#define IDD_SYSTEM_SPEC_SUMMARY_DIALOG 1004
+#define IDD_CAMERA_PARAMS_DIALOG       1005
+
+// IDD_EDIT_DIALOG, IDD_EDIT_DIALOG_SIZABLE, IDD_SYSTEM_SPEC_SUMMARY_DIALOG
+#define IDC_EDIT   1000
+#define IDC_PROMPT 1001
+
+// IDD_PROGRESS_DIALOG (the prompt is IDC_PROMPT)
+#define IDC_PROGRESS 1003
+
+// IDD_SYSTEM_SPEC_DIALOG
+#define IDC_OS                 1001
+#define IDC_PROCESSOR          1006
+#define IDC_MEMORY             1007
+#define IDC_VIDEO              1008
+#define IDC_SOUND              1009
+#define IDC_SCREEN_WIDTH       1036
+#define IDC_SCREEN_HEIGHT      1037
+#define IDC_NAME               1038
+#define IDC_TEST_REFERENCE     1039
+#define IDC_FULLSCREEN         1040
+#define IDC_ENABLE_NETWORK     1041
+#define IDC_SCREEN_DEPTH       1042
+#define IDC_VIDEO_DEVICE       1043
+#define IDC_INTERACTIVE_MODE   1044
+#define IDC_USE_SOUND_HARDWARE 1045
+// The "Start &Self Test" button uses IDCANCEL.
+
+// IDD_CAMERA_PARAMS_DIALOG
+#define IDC_SAVE  1005
+#define IDC_LOAD  1006
+#define IDC_RESET 1007
+// 27 labels (1008-1034) and 27 sliders (1035-1061), one pair per parameter.
+#define IDC_PARAM_LABEL_0  1008
+#define IDC_PARAM_SLIDER_0 1035
+
+#endif /* BW1_DECOMP_LH_DIALOG_LIB_RESOURCE_INCLUDED_H */

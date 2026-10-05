@@ -1,10 +1,76 @@
 Sections:
 	.text       type:code align:4096
+	.text$x     type:code vaddr:0x10006FA0 end:0x10018750
 	.rdata      type:rodata align:4096
+	.rdata$r    type:rodata vaddr:0x10019B58 end:0x10019D48
+	.xdata$x    type:rodata vaddr:0x10019D48 end:0x1001AB20
 	.data       type:data align:4096
+	.CRT$XCA    type:data vaddr:0x1001B000 end:0x1001B104
+	.CRT$XCL    type:data vaddr:0x1001B104 end:0x1001B208
+	.CRT$XCU    type:data vaddr:0x1001B208 end:0x1001B31C
+	.CRT$XCZ    type:data vaddr:0x1001B31C end:0x1001B630
 	.bss        type:bss vaddr:0x1001B928 end:0x1001CDE4
 	.idata      type:data align:4096
 	.rsrc       type:rodata align:4096
+
+Lionhead/LHDialogLib/version_1.0/LHCameraParamsDialog.cpp:
+	.text       start:0x100013D0 end:0x10001900
+	.rdata      start:0x10019020 end:0x100191F0
+	.data       start:0x1001B630 end:0x1001B690
+
+Lionhead/LHDialogLib/version_1.0/LHDialogLib.cpp:
+	.text       start:0x10001900 end:0x10003B40
+	.text$x     start:0x10006FA0 end:0x100074A0
+	.rdata      start:0x100191F0 end:0x100192E8
+	.xdata$x    start:0x10019D48 end:0x1001A340
+	.CRT$XCU    start:0x1001B208 end:0x1001B21C
+	.data       start:0x1001B690 end:0x1001B6DC
+	.bss        start:0x1001BA58 end:0x1001BCF8
+
+Lionhead/LHDialogLib/version_1.0/LHEditDialog.cpp:
+	.text       start:0x10003B40 end:0x10003EE0
+	.text$x     start:0x100074A0 end:0x10007530
+	.rdata      start:0x100192E8 end:0x10019418
+	.xdata$x    start:0x1001A340 end:0x1001A3A0
+	.data       start:0x1001B6DC end:0x1001B728
+
+Lionhead/LHDialogLib/version_1.0/LHEditDialogSizable.cpp:
+	.text       start:0x10003EE0 end:0x100043D0
+	.text$x     start:0x10007530 end:0x100075B0
+	.rdata      start:0x10019418 end:0x10019560
+	.xdata$x    start:0x1001A3A0 end:0x1001A3F8
+	.data       start:0x1001B728 end:0x1001B77C
+
+Lionhead/LHDialogLib/version_1.0/LHProgressDialog.cpp:
+	.text       start:0x100043D0 end:0x100046D0
+	.text$x     start:0x100075B0 end:0x10007600
+	.rdata      start:0x10019560 end:0x10019690
+	.xdata$x    start:0x1001A3F8 end:0x1001A440
+	.data       start:0x1001B77C end:0x1001B7CC
+
+Lionhead/LHDialogLib/version_1.0/LHSystemSpecDialog.cpp:
+	.text       start:0x100046D0 end:0x10004F90
+	.text$x     start:0x10007600 end:0x10007690
+	.rdata      start:0x10019690 end:0x10019830
+	.xdata$x    start:0x1001A440 end:0x1001A4B0
+	.data       start:0x1001B7CC end:0x1001B820
+
+Lionhead/LHDialogLib/version_1.0/LHSystemSpecSummaryDialog.cpp:
+	.text       start:0x10004F90 end:0x10005238
+	.text$x     start:0x10007690 end:0x100076D0
+	.rdata      start:0x10019830 end:0x1001995C
+	.xdata$x    start:0x1001A4B0 end:0x1001A4F0
+	.data       start:0x1001B820 end:0x1001B87C
+
+MFC/dllmodul.cpp:
+	.text       start:0x10005550 end:0x100059B0
+	.text$x     start:0x100076D0 end:0x100076E3
+	.rdata      start:0x1001995C end:0x10019A08
+	.rdata$r    start:0x10019B58 end:0x10019BD8
+	.xdata$x    start:0x1001A4F0 end:0x1001A518
+	.CRT$XCL    start:0x1001B104 end:0x1001B108
+	.data       start:0x1001B87C end:0x1001B910
+	.bss        start:0x1001BCF8 end:0x1001CDC0
 
 LHDialog/lib/msvcrtd/atonexit.obj:
 	.text       start:0x100059C0 end:0x10005A18 align:1
@@ -13,3 +79,9 @@ LHDialog/lib/msvcrtd/crtdll.obj:
 	.text       start:0x10005A30 end:0x10005C33 align:1
 	.rdata      start:0x10019A08 end:0x10019A14
 	.bss        start:0x1001CDC0 end:0x1001CDC4
+
+LHDialog/lib/msvcrtd/ti_inst.obj:
+	.text       start:0x10005C40 end:0x10005CA0 align:1
+	.rdata      start:0x10019A14 end:0x10019A1C
+	.rdata$r    start:0x10019BD8 end:0x10019C1C
+	.data       start:0x1001B910 end:0x1001B928
