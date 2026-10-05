@@ -5,6 +5,8 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 #include <uchar.h>
 
+#include <chlasm/Enum.h> /* For DEATH_REASON_LAST */
+
 #include "BaseInfo.h"    /* For struct GBaseInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
 
@@ -35,19 +37,10 @@ class GPlayerInfo : public GBaseInfo
 {
 public:
 	float    MaxAlignmentChangePerGameTurn;
-	float    field_0x14;
-	float    field_0x18;
-	float    field_0x1c;
-	uint32_t field_0x20;
-	float    field_0x24;
-	float    field_0x28;
-	float    field_0x2c;
-	float    field_0x30;
-	float    field_0x34;
-	float    field_0x38;
-	float    field_0x3c;
-	float    field_0x40;
-	uint32_t field_0x44;
+	float    ScriptAlignmentScale;
+	float    TreeAlignmentChange;
+	float    EffectAlignmentBase;
+	float    DeathAlignmentChange[DEATH_REASON_LAST]; /* 0x20 */
 	float    field_0x48;
 	float    field_0x4c;
 	char16_t NetworkName[32]; /* 0x50; passed to WCHAR2CHAR by SetupPlayers. */

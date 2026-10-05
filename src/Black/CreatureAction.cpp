@@ -729,7 +729,7 @@ int CreatureAgenda::ConstructSubActionsForFight(unsigned long param_1)
 	creature->field_0x3b8 = 1;
 	if (creature->mind->learning.field_0x15c40[CREATURE_FIGHT] == 0)
 	{
-		creature->mind->learning.field_0x1522c = -creature->alignment->value;
+		creature->mind->learning.field_0x1522c = -creature->alignment->Value;
 	}
 	float value = creature->mind->learning.field_0x1522c;
 	creature->GetCreature3D()->field_0x4ab0 = value;
@@ -4845,7 +4845,7 @@ int CreatureAgenda::ConstructSubActionsForLookAtMoon(unsigned long param_1)
 		                                     SubArgumentPointAndFloat(pos, 3.0f),
 		                                 &Creature::LookAtPosition, NULL);
 	}
-	if (creature->alignment->value < 0.0f)
+	if (creature->alignment->Value < 0.0f)
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
 		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3499)) SubArgumentInteger(0x35),
@@ -6874,10 +6874,10 @@ int CreatureAgenda::ConstructSubActionsForGetFriendToGiveMeFish(unsigned long pa
 		Creature* other = friendBelief->GetPointer()->CastCreature();
 		MapCoords coast;
 		MapCoords sea;
-		int foundCoast = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
-		                                                            PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
-		int foundSea = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, coast, &sea,
-		                                                          PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
+		int       foundCoast = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
+		                                                                  PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
+		int       foundSea = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, coast, &sea,
+		                                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
 		if (other != NULL && foundSea && foundCoast)
 		{
 			LHPoint coastPos;

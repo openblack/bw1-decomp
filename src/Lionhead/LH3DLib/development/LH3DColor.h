@@ -31,6 +31,15 @@ struct LH3DColor
 
 	// Non-virtual methods
 
+	// BW1W120 00414b90 BW1M119 010a67e0
+	void __fastcall Set(uint8_t alpha, uint8_t red, uint8_t green, uint8_t blue)
+	{
+		a = alpha;
+		r = red;
+		g = green;
+		b = blue;
+	}
+
 	// BW1W120 inlined BW1M119 01352630
 	// fabricated
 	void operator=(const LH3DColor& other) { *(uint32_t*)this = *(uint32_t*)&other; }

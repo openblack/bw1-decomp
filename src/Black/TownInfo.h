@@ -45,7 +45,9 @@ public:
 	float    DiscipleMinDesire;
 	float    DiscipleMaxDesire;
 	uint32_t ArtifactBeliefGiftTurns;
-	uint8_t  field_0x130[0x10];
+	uint8_t  field_0x130[0x8];
+	float    StoragePitGiveAlignment; /* 0x138 */
+	float    StoragePitTakeAlignment;
 	float    field_0x140;
 	float    field_0x144;
 	float    field_0x148;

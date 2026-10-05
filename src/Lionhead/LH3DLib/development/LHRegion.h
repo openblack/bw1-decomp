@@ -14,8 +14,33 @@ struct LHRegion
 	struct LHCoord start; /* 0x0 */
 	struct LHCoord end;
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 010a6820
+	LHRegion() {}
+	// BW1W120 inlined BW1M119 010a6a20
+	LHRegion(long x, long y, unsigned long width, unsigned long height)
+	{
+		start.x = x;
+		start.y = y;
+		end.x = x + width - 1;
+		end.y = y + height - 1;
+	}
+
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 0142d050
+	long X1() const { return start.x; }
+	// BW1W120 inlined BW1M119 01575be0
+	long Y1() const { return start.y; }
+	// BW1W120 inlined BW1M119 010a5e30
+	long X2() const { return end.x; }
+	// BW1W120 inlined BW1M119 010a5e60
+	long Y2() const { return end.y; }
+	// BW1W120 inlined BW1M119 010a5720
+	long Width() const { return X2() - X1() + 1; }
+	// BW1W120 inlined BW1M119 01344950
+	long Height() const { return Y2() - Y1() + 1; }
 	// BW1W120 007deab0 BW1M119 0114cbe0 (LHCombined Release)
 	int CoordInRegion(const LHCoord& coord) const;
 	// BW1W120 007deae0 BW1M119 0114cb00 (LHCombined Release)

@@ -15,7 +15,7 @@
 
 class Base;
 class GPrayerIconInfo;
-struct GTownDesireFunction;
+class DesireFunctions;
 
 class GTownDesireInfo : public GBaseInfo
 {
@@ -63,7 +63,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00746580 BW1M119 010612e0
-	GTownDesireFunction* GetDesireFunctions() const;
+	DesireFunctions* GetDesireFunctions() const;
 
 	// TODO(#377): The original declared this class in TownDesire.h.
 	INFO_DATA_BLOCK(AssociatedPrayerSite, HelpCondition)

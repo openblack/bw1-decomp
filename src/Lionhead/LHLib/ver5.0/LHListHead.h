@@ -1,6 +1,7 @@
 #ifndef BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H
 #define BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H
 
+#include <stddef.h> // For NULL
 #include <stdint.h> // For uint32_t
 
 // Plain iteration; the body must not unlink the element it is given.

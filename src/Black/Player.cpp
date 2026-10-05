@@ -348,7 +348,7 @@ void GPlayer::Process()
 	alignment->ProcessForPlayer(this);
 	if (IsNeutral())
 	{
-		alignment->value = 0.0f;
+		alignment->Value = 0.0f;
 	}
 	else
 	{
@@ -2227,7 +2227,7 @@ void GPlayer::SavePlayerAlignment(unsigned long game_turn)
 {
 	if (!GGame::g_game->IsMultiplayerGame() && game_turn - AlignmentSaveTurn >= 600)
 	{
-		LHNetSetCurrentProfileDouble("LoveBuckets", alignment->value);
+		LHNetSetCurrentProfileDouble("LoveBuckets", alignment->Value);
 		AlignmentSaveTurn = game_turn;
 	}
 }
@@ -2341,7 +2341,7 @@ float GPlayer::GetAllyValue(GPlayer* other)
 
 float GPlayer::GetAlignmentValue()
 {
-	return alignment->value;
+	return alignment->Value;
 }
 
 MagicTeleport* GPlayer::FindTeleportBetween(MapCoords& from, MapCoords& to, float max_distance)
