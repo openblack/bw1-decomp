@@ -73,7 +73,24 @@ completion checks (`decomp-verify.py`, `decomp-regress.py --refresh --fail-on-re
 
 ## 4. Clamp / saturate macros
 
-None is known. BW1M119 (main and all 11 module symbol files) has no Clamp/Saturate/
+No original one is known, but `include/re_common.h` provides a project-defined
+`CLAMP(value, low, high)` statement macro (a plain braced if/else-if one-liner; the braces keep inline sizes right, and `value` is left unparenthesised because `(value) < low` reorders a load in `CreatureAgenda::ConstructSubActionsForFight`) for the `if (x < lo) x = lo; else if (x > hi) x = hi;`
+shape. It expands to exactly that chain, so it is byte-identical wherever the chain is (an inline
+`Clamp(T&, T, T)` template is not: the reference makes MSVC6 reload the stored value instead of
+reusing the register, e.g. `GAlignment::CrudeSet`). `minmax-scan.py` offers it as the last
+spelling of every two-sided clamp and verifies it like the others; real min/max win when both
+pass. Where `CLAMP` is not in scope it is judged injected (`SAME*`), and `--apply` adds
+`#include <re_common.h>` after the last include, then re-checks the real file (`__LINE__` shifts):
+
+```bash
+python tools/minmax-scan.py --all --kind two-sided                    # scan the whole tree
+python tools/minmax-scan.py --all --verify --kind two-sided           # dry run, every .cpp
+python tools/minmax-scan.py --verify --apply --kind two-sided src/Black/VillagerFood.cpp
+```
+
+`>`-first chains, `>=` bounds and two independent `if`s come out `DIFF`: leave them written out.
+
+No original helper is known. BW1M119 (main and all 11 module symbol files) has no Clamp/Saturate/
 Bound/Limit symbol, there is no such `#define` in src/ or include/, and macros
 leave no symbols. The two-sided candidates also get a **probe-only** single-expression
 shape (`x < lo ? lo : (x > hi ? hi : x)`). It is printed as evidence and never

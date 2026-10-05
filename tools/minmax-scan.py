@@ -42,15 +42,20 @@ SAME* / TARGET* / DIFF*
        include (windows.h or minmax.h), which is a human call.
 
 Two-sided clamps (`if (x < lo) x = lo; [else] if (x > hi) x = hi;`, flagged
-"saturate" for 0..1) are tried as nested min(max()) both ways. They also get a
-probe-only single-expression clamp shape, never applied: no CLAMP or SATURATE
-macro is known for this codebase (no symbol, string or header evidence). A probe
+"saturate" for 0..1) are tried as nested min(max()) both ways, then as
+`CLAMP(x, lo, hi);`. CLAMP is the project's own macro from include/re_common.h
+(no original clamp macro is known); it expands to exactly the if/else-if chain,
+so it fits wherever that chain is the original shape. Where CLAMP is not in
+scope it is judged with its definition injected (SAME* / TARGET*), and --apply
+adds `#include <re_common.h>` after the file's last #include; the combined
+compile below then checks the real file, including the shifted __LINE__.
+They also get a probe-only single-expression clamp shape, never applied: a probe
 that matches only shows the shape is compatible; if/else chains often compile
 to the same bytes as that ternary, so a match alone proves nothing.
 
---apply writes SAME/TARGET rewrites (first passing spelling per candidate),
-then recompiles the combined result and reverts if anything changed versus the
-individual checks. A header is verified against one unit only (--unit); check
+--apply writes SAME/TARGET rewrites (first passing spelling per candidate; real
+min/max before CLAMP), then recompiles the combined result and reverts if
+anything changed versus the individual checks. A header is verified against one unit only (--unit); check
 its other consumers with decomp-verify.py before keeping the change.
 Probe builds go to build/probe-minmax/.
 """
@@ -571,7 +576,7 @@ def clamp_records(text, masked):
 def find_two_sided(path, text, masked):
     """`if (x < lo) x = lo; [else] if (x > hi) x = hi;` in either order.
 
-    Spellings: nested min/max in both nestings. A probe-only single-expression
+    Spellings: nested min/max in both nestings, then CLAMP. A probe-only single-expression
     clamp shows whether a lost CLAMP-style macro (one test chain, one store) fits
     where nested min/max does not; it is evidence, never applied.
     """
@@ -594,6 +599,7 @@ def find_two_sided(path, text, masked):
             forms = [f"{lhs} = min(max({lhs}, {lo}), {hi});", f"{lhs} = max(min({lhs}, {hi}), {lo});"]
         else:
             forms = [f"{lhs} = max(min({lhs}, {hi}), {lo});", f"{lhs} = min(max({lhs}, {lo}), {hi});"]
+        forms.append(f"CLAMP({lhs}, {lo}, {hi});")
         c = Candidate(path, text, a[0], b[1], kind, forms, True)
         if a[4]:
             shape = f"{lhs} = {lhs} < {lo} ? {lo} : ({lhs} > {hi} ? {hi} : {lhs});"
@@ -629,6 +635,31 @@ def scan(path):
 # `#line 1` keeps __LINE__ (assert and operator new line arguments) unchanged.
 INJECT = ("#ifndef max\n#define max(a,b) (((a) > (b)) ? (a) : (b))\n#endif\n"
           "#ifndef min\n#define min(a,b) (((a) < (b)) ? (a) : (b))\n#endif\n#line 1\n")
+
+RE_COMMON = "include/re_common.h"
+CLAMP_INCLUDE = "#include <re_common.h> /* For CLAMP */"
+
+
+def clamp_inject():
+    """re_common.h's CLAMP definition, for units where it is not in scope."""
+    text = (Path(ROOT) / RE_COMMON).read_text(encoding="latin-1")
+    m = re.search(r"^#define CLAMP\(.*?(?<!\\)\r?$", text, re.M | re.S)
+    if not m:
+        raise SystemExit(f"no CLAMP definition in {RE_COMMON}")
+    return "#ifndef CLAMP\n" + m.group(0).replace("\r", "") + "\n#endif\n#line 1\n"
+
+
+def add_clamp_include(text):
+    """Insert CLAMP_INCLUDE after the last #include line."""
+    nl = "\r\n" if "\r\n" in text else "\n"
+    last = None
+    for m in re.finditer(r"^[ \t]*#[ \t]*include\b.*$", text, re.M):
+        last = m
+    if last is None:
+        return CLAMP_INCLUDE + nl + text
+    eol = text.find("\n", last.end())
+    at = len(text) if eol < 0 else eol + 1
+    return text[:at] + CLAMP_INCLUDE + nl + text[at:]
 
 
 def compile_variant(ctx, rel_file, new_text, tag):
@@ -685,6 +716,9 @@ def verify(cands, text, rel_file, unit, jobs):
         if funcs is None and re.search(r"'(min|max)' : undeclared", err):
             funcs, err = compile_variant(ctx, rel_file, INJECT + variant, f"c{ci}_{fi}i")
             injected = True
+        elif funcs is None and re.search(r"'CLAMP' : undeclared", err):
+            funcs, err = compile_variant(ctx, rel_file, clamp_inject() + variant, f"c{ci}_{fi}i")
+            injected = True
         if funcs is None:
             return ci, fi, "ERROR", [err]
         verdict, changed = judge(ctx, funcs)
@@ -710,7 +744,9 @@ def oneline(s, width=70):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("files", nargs="*", help="source or header files to scan")
-    ap.add_argument("--all", action="store_true", help="scan every .cpp/.c/.h under src/ (scan only)")
+    ap.add_argument("--all", action="store_true",
+                    help="every .cpp/.c/.h under src/; with --verify, headers are listed but skipped")
+    ap.add_argument("--kind", help="only candidates whose kind contains this text (e.g. two-sided)")
     ap.add_argument("--verify", action="store_true", help="compile each rewrite and compare bytes")
     ap.add_argument("--apply", action="store_true", help="with --verify: write the safe rewrites")
     ap.add_argument("--unit", help="objdiff unit to compile a header against (default: the file's own unit)")
@@ -720,8 +756,8 @@ def main(argv=None):
         ap.error("--apply needs --verify")
     files = [Path(f) for f in args.files]
     if args.all:
-        if args.verify:
-            ap.error("--all is scan-only; verify files one unit at a time")
+        if args.unit:
+            ap.error("--all picks each file's own unit; --unit is for one header")
         files = sorted(p for p in (Path(ROOT) / "src").rglob("*") if p.suffix in (".cpp", ".c", ".h")
                        and "zlib" not in p.parts)
     if not files:
@@ -732,6 +768,8 @@ def main(argv=None):
         path = path.resolve()
         rel = os.path.relpath(path, ROOT)
         text, cands = scan(path)
+        if args.kind:
+            cands = [c for c in cands if args.kind in c.kind]
         if not cands:
             if not args.all:
                 print(f"{rel}: no candidates")
@@ -741,14 +779,26 @@ def main(argv=None):
                 flag = "" if c.exact else "  [<=/>=: not an exact macro]"
                 print(f"{rel}:{c.line}: {c.kind}: {oneline(c.original)}{flag}")
                 print(f"    -> {oneline(c.replacements[0])}")
+                clamp = [r for r in c.replacements[1:] if r.startswith("CLAMP(")]
+                if clamp:
+                    print(f"    -> {oneline(clamp[0])}")
             continue
 
         if args.unit:
             unit = mp.unit_for(unit=args.unit)
         elif path.suffix == ".h":
+            if args.all:
+                print(f"{rel}: header with {len(cands)} candidate(s); skipped, verify with --unit <consumer>")
+                continue
             ap.error(f"{rel} is a header; pass --unit to pick a consumer to compile")
         else:
-            unit = mp.unit_for(source=rel)
+            try:
+                unit = mp.unit_for(source=rel)
+            except ValueError as e:
+                if not args.all:
+                    raise SystemExit(str(e))
+                print(f"{rel}: {len(cands)} candidate(s); skipped, {e}")
+                continue
         shutil.rmtree(Path(ROOT) / WORK, ignore_errors=True)
         ctx, table = verify(cands, text, rel, unit, args.jobs)
 
@@ -769,6 +819,9 @@ def main(argv=None):
                     continue
                 if pick is None and verdict in ("SAME", "TARGET"):
                     pick = fi
+                # A missing CLAMP only needs re_common.h, which --apply adds.
+                if pick is None and verdict in ("SAME*", "TARGET*") and form.startswith("CLAMP("):
+                    pick = fi
             if pick is not None:
                 chosen.append((c, pick))
 
@@ -784,6 +837,10 @@ def main(argv=None):
         new_text = text
         for c, pick in reversed(chosen):
             new_text = c.apply(new_text, pick)
+        needs_include = any(table[cands.index(c)][pick][0].endswith("*") and c.replacements[pick].startswith("CLAMP(")
+                            for c, pick in chosen)
+        if needs_include:
+            new_text = add_clamp_include(new_text)
         funcs, err = compile_variant(ctx, rel, new_text, "combined")
         if funcs is None:
             print(f"  combined rewrite failed to compile, not applied: {err}")
@@ -795,7 +852,8 @@ def main(argv=None):
             status = 1
             continue
         path.write_text(new_text, encoding="latin-1")
-        print(f"  applied {len(chosen)} rewrite(s) to {rel} ({verdict})")
+        extra = f", added {CLAMP_INCLUDE.split(' /*')[0]}" if needs_include else ""
+        print(f"  applied {len(chosen)} rewrite(s) to {rel} ({verdict}{extra})")
     return status
 
 

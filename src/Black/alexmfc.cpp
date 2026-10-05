@@ -307,10 +307,7 @@ void SetupBox::DrawAll(int x, int y, int left_button, int double_clicked, bool n
 	LH3DMaterial::g_list_render_func = LH3DMaterial::g_list_render_func_global_alpha;
 	SetupThing::unadjust(x, y);
 	int alpha = (int)((Fade.GetCurrentValue() - HoldFade.GetCurrentValue() * 0.75f) * Alpha * 255.0f);
-	if (alpha < 0)
-		alpha = 0;
-	else if (alpha > 255)
-		alpha = 255;
+	CLAMP(alpha, 0, 255);
 	SetupThing::DrawAlpha = alpha;
 	if (Callback != NULL)
 		Callback(SETUP_MESSAGE_PRE_DRAW, this, FocusedWidget, x, y);

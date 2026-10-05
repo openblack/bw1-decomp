@@ -323,14 +323,7 @@ void CameraModeNew2Controller::Update(float dt)
 	LHPoint sideDirection;
 	GetDirections(Heading.Destination + HALF_PI_F, 0.0f, &sideDirection, NULL);
 	float blend = fabs(FlyBlend);
-	if (blend < 0.0f)
-	{
-		blend = 0.0f;
-	}
-	else if (blend > 1.0f)
-	{
-		blend = 1.0f;
-	}
+	CLAMP(blend, 0.0f, 1.0f);
 
 	if (DragState != 0)
 	{

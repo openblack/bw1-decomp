@@ -10,7 +10,7 @@
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <Lionhead/LH3DLib/development/LHRegion.h>  /* For struct LHRegion */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>         /* For LHSys::TheSystem */
-#include <re_common.h>                              /* For bool32_t */
+#include <re_common.h>                              /* For bool32_t, CLAMP */
 
 #include "EditorIconBase.h" /* For class EditorIconBase */
 
@@ -330,14 +330,7 @@ public:
 			}
 		}
 		T position = (mouse - GetBoxStart()) / GetBoxSize();
-		if (position < 0.0f)
-		{
-			position = 0.0f;
-		}
-		else if (position > 1.0f)
-		{
-			position = 1.0f;
-		}
+		CLAMP(position, 0.0f, 1.0f);
 		T range = Max - Min;
 		return position * range + Min;
 	}

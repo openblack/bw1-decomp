@@ -60,6 +60,15 @@ class ScanTests(unittest.TestCase):
         self.assertIn("two-sided clamp (saturate 0..1)", kinds)
         forms = dict(cands)["two-sided clamp (saturate 0..1)"]
         self.assertEqual(forms[0], "f = min(max(f, 0.0f), 1.0f);")
+        self.assertIn("CLAMP(f, 0.0f, 1.0f);", forms)
+
+    def test_clamp_include_goes_after_last_include(self):
+        lines = ["#include <a.h>", "#include <b.h>", "", "void f();", ""]
+        expected = lines[:2] + [scan_mod.CLAMP_INCLUDE] + lines[2:]
+        self.assertEqual(scan_mod.add_clamp_include(chr(10).join(lines)), chr(10).join(expected))
+
+    def test_clamp_inject_reads_re_common(self):
+        self.assertIn("#define CLAMP(value, low, high)", scan_mod.clamp_inject())
 
     def test_rejects_non_selects(self):
         self.assertEqual(scan("x = a < b ? c : d;"), [])

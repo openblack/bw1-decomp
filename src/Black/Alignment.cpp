@@ -10,6 +10,7 @@
 #include <string.h> /* For strlen */
 
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
+#include <re_common.h>                   /* For CLAMP */
 
 #include "Abode.h"
 #include "Creature.h"
@@ -59,14 +60,7 @@ GAlignmentInfo GAlignmentInfo::Infos[EFFECT_TYPE_LAST];
 
 void GAlignment::Process(GameThing* thing)
 {
-	if (ChangeThisTurn < -1.0f)
-	{
-		ChangeThisTurn = -1.0f;
-	}
-	else if (ChangeThisTurn > 1.0f)
-	{
-		ChangeThisTurn = 1.0f;
-	}
+	CLAMP(ChangeThisTurn, -1.0f, 1.0f);
 	float change = ChangeThisTurn * thing->GetMaxAlignmentChangePerGameTurn();
 	CrudeUpdate(change);
 	ChangeThisTurn = 0.0f;
@@ -238,27 +232,13 @@ float GAlignment::GetUpdatedChangeThisTurn(float change)
 void GAlignment::CrudeUpdate(float change)
 {
 	Value += change;
-	if (Value < -1.0f)
-	{
-		Value = -1.0f;
-	}
-	else if (Value > 1.0f)
-	{
-		Value = 1.0f;
-	}
+	CLAMP(Value, -1.0f, 1.0f);
 }
 
 void GAlignment::CrudeSet(float value)
 {
 	Value = value;
-	if (Value < -1.0f)
-	{
-		Value = -1.0f;
-	}
-	else if (Value > 1.0f)
-	{
-		Value = 1.0f;
-	}
+	CLAMP(Value, -1.0f, 1.0f);
 }
 
 DISCRETE_ALIGNMENT_VALUES GAlignment::GetDiscreteAlignmentValue(float value)
