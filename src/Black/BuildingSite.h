@@ -23,6 +23,7 @@ class Object;
 class PlannedMultiMapFixed;
 class Pot;
 class PotStructure;
+class Scaffold;
 class Town;
 
 class BuildingSite : public GameThing
@@ -30,8 +31,7 @@ class BuildingSite : public GameThing
 public:
 	MultiMapFixed*          RootBuilding; /* 0x14 */
 	LHLinkedList<Villager*> BuildingWorkerList;
-	uint32_t                field_0x20;
-	uint32_t                field_0x24;
+	LHLinkedList<Scaffold*> ScaffoldList; /* 0x20 */
 	uint8_t                 field_0x28[0xc];
 	LHPoint                 BuildingPositions[0x7f]; /* 0x34 */
 	uint8_t                 field_0x628[0x14];

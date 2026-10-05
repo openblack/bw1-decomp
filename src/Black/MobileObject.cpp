@@ -415,8 +415,8 @@ void MobileObject::ReactToPhysicsImpact(PhysicsObject* physics_object, bool unus
 	    info == &GMobileObjectInfo::GetInfo()[MOBILE_OBJECT_INFO_MAGIC_MUSHROOM] ||
 	    info == &GMobileObjectInfo::GetInfo()[MOBILE_OBJECT_INFO_TOADSTOOL])
 	{
-		Object*           hitter = physics_object->GetGameObjectWhoHitMe();
-		PhysicsObjectHit* hit = physics_object->field_0x20;
+		Object*        hitter = physics_object->GetGameObjectWhoHitMe();
+		PhysicsObject* hit = physics_object->WhoHitMe;
 		if (hitter != NULL && hitter->IsResourceStore(GetResourceType()))
 		{
 			hitter->DeleteObjectAndTakeResource(this, hit != NULL ? hit->status : NULL);

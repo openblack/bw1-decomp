@@ -50,33 +50,42 @@ class Town;
 class Abode : public MultiMapFixed
 {
 public:
-	uint8_t              field_0x7c;
-	uint8_t              field_0x7d;
-	uint8_t              field_0x7e;
-	uint8_t              field_0x7f;
-	MapCoords            DrinkingWater; /* 0x80 */
+	union {
+		uint8_t AbodeFlags;
+		struct
+		{
+			uint8_t HasDrinkingWater : 1;
+			uint8_t AddedToTownStats : 1;
+			uint8_t ShouldNotBeAddedToPlanned : 1;
+			uint8_t : 1;
+			uint8_t VillagerInHand : 1;
+			uint8_t SmashedByCreature : 1;
+			uint8_t LosingLifeFromNeglect : 1;
+		};
+	};
+	MapCoords            DrinkingWater;
 	LH3DSmoke*           smoke;
-	FragMesh*            DestructionMesh; /* 0x90 */
-	uint32_t             field_0x94;
+	FragMesh*            DestructionMesh;
+	uint32_t             UnusedSavedValue;
 	Town*                town;
 	Abode*               next;
-	LHListHead<Villager> villagers; /* 0xa0 */
+	LHListHead<Villager> villagers;
 	Villager*            MaleFemaleVillagers[0x2];
-	float                field_0xb0;
+	float                NeglectTimer;
 	uint8_t              AdultCount;
 	uint8_t              AdultMaleCount;
 	uint8_t              PresentAtHome;
 	uint8_t              ChildCount;
 	uint8_t              index;
-	uint8_t              field_0xb9;
+	uint8_t              Age;
 	uint32_t             resources[RESOURCE_TYPE_LAST];
 
 	// Override methods
 
 	// BW1W120 00401650 BW1M119 01176c50
-	virtual bool32_t GetShouldNotBeAddedToPlanned() { return (field_0x7c & 4) >> 2; }
+	virtual bool32_t GetShouldNotBeAddedToPlanned() { return ShouldNotBeAddedToPlanned; }
 	// BW1W120 00401660 BW1M119 0111a380
-	virtual void SetShouldNotBeAddedToPlanned(bool32_t value) { field_0x7c = (value & 1) << 2 | field_0x7c & ~4; }
+	virtual void SetShouldNotBeAddedToPlanned(bool32_t value) { ShouldNotBeAddedToPlanned = value; }
 	// BW1W120 00401690 BW1M119 01119c70
 	virtual void SetTown(Town* _town) { town = _town; }
 	// BW1W120 004016a0 BW1M119 01069320
@@ -84,7 +93,7 @@ public:
 	// BW1W120 004016c0 BW1M119 01058540
 	virtual bool32_t IsBuilt()
 	{
-		if ((field_0x58 & 2) == 2)
+		if ((FixedFlags & FIXED_FLAG_UNDER_CONSTRUCTION) == FIXED_FLAG_UNDER_CONSTRUCTION)
 		{
 			return false;
 		}
@@ -107,30 +116,30 @@ public:
 	// BW1W120 00401790 BW1M119 01112cc0
 	virtual bool32_t IsHouse() { return true; }
 	// BW1W120 004017a0 BW1M119 010abd30
-	virtual uint32_t GetSaveType() { return 0x7; }
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_ABODE; }
 	// BW1W120 004017b0 BW1M119 013ee250
 	virtual char* GetDebugText() { return "Abode:"; }
-	// BW1W120 004017c0 BW1M119 0155e5d0
+	// BW1W120 00402b60 BW1M119 0155e5d0
 	virtual ~Abode();
 	// BW1W120 00402c10 BW1M119 01575020
 	virtual void Delete();
 	// BW1W120 00402c60 BW1M119 010b44b0
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 00405f70 BW1M119 0106f7f0
 	virtual GPlayer* GetPlayer();
 	// BW1W120 00401730 BW1M119 010527c0
 	virtual Town* GetTown();
 	// BW1W120 00404d40 BW1M119 01000f50
-	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3);
+	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool poisoned);
 	// BW1W120 00404d60 BW1M119 015a5e60
-	virtual uint32_t JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* param_3);
+	virtual uint32_t JustRemoveResource(RESOURCE_TYPE type, uint32_t amount, bool* poisoned);
 	// BW1W120 00404d30 BW1M119 0106fa80
 	virtual uint32_t GetResource(RESOURCE_TYPE type);
 	// BW1W120 00404d90 BW1M119 01582ec0
-	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool param_4,
-	                             const MapCoords* coords, int param_6);
+	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool poisoned,
+	                             const MapCoords* coords, int from_other_player);
 	// BW1W120 00404f10 BW1M119 01107ae0
-	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* param_4);
+	virtual uint32_t RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* poisoned);
 	// BW1W120 00401640 BW1M119 0151ba40
 	virtual Abode* CastAbode();
 	// BW1W120 00403f10 BW1M119 0143e8b0
@@ -162,13 +171,13 @@ public:
 	// BW1W120 00403ee0 BW1M119 0111a4a0
 	virtual void InsertMapObject();
 	// BW1W120 00402cf0 BW1M119 0151b900
-	virtual bool GetPSysFireLocalRndFlamePos(LHPoint* point, int* param_2);
+	virtual bool GetPSysFireLocalRndFlamePos(LHPoint* point, int* bone_index);
 	// BW1W120 00405d90 BW1M119 01099b20
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00405ed0 BW1M119 01162420
 	virtual float IncreaseLife(float value);
 	// BW1W120 00403f80 BW1M119 010c82c0
-	virtual uint32_t DestroyedByEffect(GPlayer* player, float param_2);
+	virtual uint32_t DestroyedByEffect(GPlayer* player, float damage);
 	// BW1W120 00404440 BW1M119 01052640
 	virtual uint32_t Process();
 	// BW1W120 00404aa0 BW1M119 013439a0
@@ -190,11 +199,11 @@ public:
 	// BW1W120 00406230 BW1M119 013ed2a0
 	virtual bool ChecksVerticesVObjects();
 	// BW1W120 00406240 BW1M119 013ee960
-	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+	virtual void ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage);
 	// BW1W120 00406800 BW1M119 01448d60
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00402cd0 BW1M119 015792e0
-	virtual bool32_t GetInspectObjectPos(Villager* param_1, MapCoords* pos);
+	virtual bool32_t GetInspectObjectPos(Villager* villager, MapCoords* pos);
 	// BW1W120 00407420 BW1M119 013ce440
 	virtual void DiscipleInHandNear(Villager& villager, GInterfaceStatus& status);
 	// BW1W120 00405bb0 BW1M119 015bfee0
@@ -222,10 +231,10 @@ public:
 	// BW1W120 00406970 BW1M119 0104ef20
 	virtual float GetDesireToBeRepaired();
 	// BW1W120 00404df0 BW1M119 01002b80
-	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool param_4,
-	                                  const MapCoords& coords, int param_6);
+	virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool poisoned,
+	                                  const MapCoords& coords, int from_other_player);
 	// BW1W120 00404f60 BW1M119 015a3260
-	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool* param_4);
+	virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* iface, bool* poisoned);
 	// BW1W120 00405050 BW1M119 01370a40
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
 
@@ -252,7 +261,7 @@ public:
 
 	// BW1W120 00402e20 BW1M119 010e0ff0
 	static Abode* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
-	                     uint32_t param_6, uint32_t param_7, float food, int wood, int param_10);
+	                     uint32_t food_amount, uint32_t wood_amount, float food, int wood, int unused);
 	// BW1W120 00403190 BW1M119 011b30f0
 	static Abode* CreateWithoutSpecial(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle,
 	                                   float scale, float food, int wood);
@@ -270,7 +279,7 @@ public:
 	// BW1W120 00402bc0 BW1M119 inlined
 	void SetToZero();
 	// BW1W120 00403130 BW1M119 01578db0
-	void Init(int param_1, uint32_t food_amount, uint32_t wood_amount);
+	void Init(int unused, uint32_t food_amount, uint32_t wood_amount);
 	// BW1W120 00403590 BW1M119 0143cff0
 	bool32_t GetNewEp(ABODE_EPP index, LHPoint* point);
 	// BW1W120 00403d20 BW1M119 013e9f50
@@ -299,12 +308,16 @@ public:
 	int GetRoomLeftForAdults();
 	// BW1W120 00404680 BW1M119 013dc960
 	int GetRoomLeftForChildren();
-	// BW1W120 004046a0 BW1M119 inlined
-	void FUN_004046a0(int param_1);
-	// BW1W120 004046b0 BW1M119 inlined
-	int FUN_004046b0();
+	// BW1W120 004046a0 BW1M119 01031900
+	void DebugText(int unused);
+	// BW1W120 004046b0 BW1M119 null
+	uint32_t GetMaxVillagersNeededToBuild();
 	// BW1W120 004046c0 BW1M119 013435f0
 	bool32_t IsTooCrowded();
+#ifdef VERSION_BW1W120
+	// BW1W120 00404960 BW1M119 null
+	void CheckForCompleteNewTown();
+#endif
 	// BW1W120 00404b40 BW1M119 01566ec0
 	float CalculateScoreForAddingVillagerToAbode(Villager* villager);
 	// BW1W120 00404cc0 BW1M119 013dd6a0
@@ -312,7 +325,7 @@ public:
 	// BW1W120 00405b70 BW1M119 015c0360
 	char* GetAbodeText(char* buff);
 	// BW1W120 00405d80 BW1M119 inlined
-	int FUN_00405d80();
+	int Destroyed();
 	// BW1W120 00405f40 BW1M119 011a5950
 	TRIBE_TYPE GetTribeType() const;
 	// BW1W120 00405fa0 BW1M119 01003a50
@@ -324,26 +337,28 @@ public:
 	// BW1W120 00406640 BW1M119 014492c0
 	void ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player);
 	// BW1W120 004069c0 BW1M119 013198b0
-	Villager* FindVillager(int(__cdecl* param_1)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                       SCRIPT_OBJECT_TYPE param_2, uint32_t param_3);
-	// BW1W120 00407020 BW1M119 inlined
-	void FindNearestDrinkingWater(float max_dist);
+	Villager* FindVillager(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                       SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 00407020 BW1M119 011d36c0
+	bool32_t SetNearestWaterPos(float max_dist);
 	// BW1W120 004070d0 BW1M119 014f4710
 	float GetNumAdultsInAbode();
 	// BW1W120 004070f0 BW1M119 011d2000
-	void DrawPercentFull(uint32_t param_1);
+	void DrawPercentFull(int villager_in_hand);
 	// BW1W120 00407230 BW1M119 inlined
-	MapCoords FUN_00407230(bool param_2);
+	MapCoords GetResourcePos(RESOURCE_TYPE type, uint32_t param_2);
 	// BW1W120 004072e0 BW1M119 0100f890
-	MapCoords GetPosOutside(float param_2, float param_3, float param_4);
-	// BW1W120 004073f0 BW1M119 inlined
-	void FUN_004073f0(GPlayer* param_1);
+	MapCoords GetPosOutside(float divisions, float min_dist, float rand_dist);
+#ifdef VERSION_BW1W120
+	// BW1W120 004073f0 BW1M119 null
+	void AddSmashedCondition(GPlayer* player);
+#endif
 	// BW1W120 004074a0 BW1M119 010d1690
 	float CalculateDesireToGainMale();
 	// BW1W120 00407540 BW1M119 011a30d0
 	float CalculateDesireToGainVillager();
 	// BW1W120 004075b0 BW1M119 011ac310
-	bool32_t TakeVillagerFrom(Abode& other, uint32_t param_2);
+	bool32_t TakeVillagerFrom(Abode& other, int male);
 	// BW1W120 00407620 BW1M119 01155160
 	bool32_t SwapMaleForFemaleFrom(Abode& other);
 	// BW1W120 004076c0 BW1M119 011552d0

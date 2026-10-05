@@ -5,8 +5,10 @@ hash: d810fe43e2956f2b76533ab698632756ba99b44d
 symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 
-# The RTTI type names ".?AVFixed@@" and ".?AVMultiMapFixed@@" end in "d@@\0", which reads as 0x00404064.
 block_relocations:
+# Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate.
+  - source: 0x00401FE7
+# The RTTI type names ".?AVFixed@@" and ".?AVMultiMapFixed@@" end in "d@@\0", which reads as 0x00404064.
   - source: 0x008F7698
   - source: 0x008F76B8
 # GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874.
@@ -21,8 +23,13 @@ block_relocations:
 # CPController::Update.
   - source: 0x008FABA0
 
-# MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
 add_relocations:
+# GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
+  - source: 0x00404201
+    type: x86_abs32
+    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
+    addend: 0x10730
+# MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
   - source: 0x00504097
     type: x86_abs32
     target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'

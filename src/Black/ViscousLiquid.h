@@ -10,6 +10,8 @@ class GameOSFile;
 struct LH3DMesh;
 struct LH3DPrimitive;
 struct LHPoint;
+class LH3DObject;
+class Object;
 
 struct FragVertex
 {
@@ -47,17 +49,19 @@ struct FragPrimitive
 
 struct FragMesh
 {
-	uint32_t        field_0x0;
+	uint32_t        LastHitter;
 	uint32_t        count;
 	uint32_t        field_0x8;
 	FragPrimitive** primitives;
 	uint32_t        field_0x10;
 	uint8_t         field_0x14[0x4];
-	float           field_0x18;
+	float           FractionRemaining;
 	uint8_t         field_0x1c[0xc];
 
 	// Constructors
 
+	// BW1W120 007f6f00 BW1M119 010fddf0 (LHCombined Release)
+	FragMesh(LH3DObject* object);
 	// BW1W120 0076d520 BW1M119 01166590
 	FragMesh(GameOSFile& file, LH3DMesh* mesh);
 
@@ -74,6 +78,10 @@ struct FragMesh
 	bool GetRandomSurfacePos(LHPoint* pos, float (*rand_func)(float));
 	// BW1W120 0076d680 BW1M119 011663a0
 	void WriteToFile(GameOSFile& file);
+	// BW1W120 007f7d40 BW1M119 01162ea0
+	void Impact(LHPoint* pos, LHPoint* velocity, float radius, Object* object);
+	// BW1W120 007f7230 BW1M119 010ffb80 (LHCombined Release)
+	float WorkOutFractionRemaining();
 };
 
 #endif /* BW1_DECOMP_VISCOUS_LIQUID_INCLUDED_H */

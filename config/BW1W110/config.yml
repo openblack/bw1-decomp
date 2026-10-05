@@ -23,8 +23,13 @@ block_relocations:
 # The country code "DEC\0" in getqloc's locale tables reads as 0x00434544, inside LoadIt<GMagicFireBallInfo>.
   - source: 0x00C1F954
 
-# MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
 add_relocations:
+# GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
+  - source: 0x004059B1
+    type: x86_abs32
+    target: '?AbodeInfos@GAbodeInfo@@2PAV1@A'
+    addend: 0x10730
+# MOV ESI is the end of GSingleMapFixedInfo::Infos for its destructor loop, not the next unit's data.
   - source: 0x0052B837
     type: x86_abs32
     target: '?Infos@GSingleMapFixedInfo@@2PAV1@A'

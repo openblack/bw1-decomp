@@ -8,6 +8,30 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+enum IMPACT_SOUND_LEVEL
+{
+	IMPACT_SOUND_LEVEL_HEAVY = 1,
+	IMPACT_SOUND_LEVEL_MEDIUM = 2,
+	IMPACT_SOUND_LEVEL_LIGHT = 3,
+};
+
+enum IMPACT_SOUND_HITTER
+{
+	IMPACT_SOUND_HITTER_STONE = 22,
+};
+
+enum IMPACT_SOUND_TARGET
+{
+	IMPACT_SOUND_TARGET_BUILDING = 9,
+	IMPACT_SOUND_TARGET_GROUND = 16,
+};
+
+enum IMPACT_SOUND_EVENT
+{
+	IMPACT_SOUND_EVENT_COLLISION = 75,
+	IMPACT_SOUND_EVENT_KICK = 150,
+};
+
 // Forward Declares
 
 class Base;
@@ -25,7 +49,8 @@ public:
 	void          Reset();
 	uint8_t       field_0x14[0x394];
 	LH_AudioBank* AudioBanks[0x2]; /* 0x3a8 */
-	uint8_t       field_0x3b0[0x24];
+	LH_AudioBank* AnimEffectBank;  /* 0x3b0 */
+	uint8_t       field_0x3b4[0x20];
 
 	// Override methods
 
@@ -64,6 +89,9 @@ public:
 	// BW1W120 0042a000 BW1M119 01187f00
 	void PlaySoundEffect(Base* param_1, const LHPoint& pos, uint32_t param_3, uint32_t param_4, uint32_t param_5,
 	                     int param_6, int param_7, AUDIO_SFX_BANK_TYPE param_8);
+	// BW1W120 0042a4b0 BW1M119 01062bd0
+	uint32_t SamplePlayAnimEffect(void* object, float distance, long* sound, int param_4, LH_AudioBank* bank,
+	                              int param_6, float param_7, float param_8);
 	// BW1W120 0042a210 BW1M119 01187ba0
 	void StopPlayingSoundEffect(uint32_t param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type) const;
 	// BW1W120 0042a330 BW1M119 011877f0

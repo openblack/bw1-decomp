@@ -63,7 +63,7 @@ public:
 	// BW1W120 00745ae0 BW1M119 0105f590
 	void Process();
 	// BW1W120 00745d80 BW1M119 0105fde0
-	void CallDesireFunction(uint32_t param_1);
+	float CallDesireFunction(uint32_t desire);
 	// BW1W120 00745ff0 BW1M119 010789f0
 	// TODO: incorrect return type
 	void CheckVillagerNeededForTownDesire(Villager* villager, float trigger);

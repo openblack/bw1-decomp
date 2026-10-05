@@ -2,6 +2,7 @@
 #include "CitadelHeart.h"
 
 #include "CitadelEntrance.h"
+#include "CitadelHeartInfo.h"
 #include "ColourConstants.h" /* For White */
 #include "Game.h"
 #include "GameOSFile.h"
@@ -9,6 +10,11 @@
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
+
+float GCitadelHeartInfo::GetTransferedDamageMultiplier()
+{
+	return GetInfo()->TransferedDamageMultiplier;
+}
 
 CitadelHeart::CitadelHeart() : CitadelPart(), field_0x90(0)
 {

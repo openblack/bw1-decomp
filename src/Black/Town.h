@@ -130,7 +130,7 @@ public:
 #ifdef VERSION_BW1W120
 	// Absent from BW1W110 and BW1W100: ZeroBaseInfluence keeps its offset in BW1W110 while TemporaryResourceStorePots and every
 	// later member sit 4 bytes lower.
-	uint32_t field_0x5fc;
+	bool32_t CompleteNewTownBuilt;
 #endif
 	Pot*                             TemporaryResourceStorePots[RESOURCE_TYPE_LAST];
 	LHLinkedList<Forest*>            forests;

@@ -556,7 +556,7 @@ public:
 	// BW1W120 006377d0 BW1M119 013ded30
 	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
 	// BW1W120 00402a00 BW1M119 013ed5b0
-	virtual bool32_t PhysicallyDestroysAbodes() { return false; }
+	virtual bool PhysicallyDestroysAbodes() { return false; }
 	// BW1W120 006377c0 BW1M119 013dedc0
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 006377e0 BW1M119 013decf0

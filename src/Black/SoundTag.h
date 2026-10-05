@@ -49,8 +49,9 @@ public:
 	static void ProcessSoundTags();
 
 	// BW1W120 0071e840 BW1M119 0151bd10
-	static SoundTag* Create(GameThingWithPos* param_1, uint32_t param_2, bool param_3, uint32_t param_4,
-	                        uint32_t param_5, int param_6, int param_7, AUDIO_SFX_BANK_TYPE bank_type, int param_9);
+	static SoundTag* Create(GameThingWithPos* param_1, unsigned long param_2, bool param_3, unsigned long param_4,
+	                        unsigned long param_5, int param_6, int param_7, AUDIO_SFX_BANK_TYPE bank_type,
+	                        int param_9);
 
 	// Constructors
 

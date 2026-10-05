@@ -140,7 +140,7 @@ public:
 	// BW1W120 00609260 BW1M119 013c6d90
 	virtual bool ChecksVerticesVObjects();
 	// BW1W120 00609210 BW1M119 013c6e20
-	virtual bool32_t PhysicallyDestroysAbodes();
+	virtual bool PhysicallyDestroysAbodes();
 	// BW1W120 00608fc0 BW1M119 013c7680
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00609320 BW1M119 013c6bd0

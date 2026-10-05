@@ -20,7 +20,7 @@ class Villager;
 class TownStats : public Base
 {
 public:
-	int      NumAdults;
+	uint32_t NumAdults;
 	int      NumChildren;
 	uint32_t field_0x10;
 	uint32_t field_0x14;
@@ -31,7 +31,7 @@ public:
 	uint32_t field_0x28;
 	uint32_t field_0x2c;
 	uint32_t field_0x30;
-	uint32_t MaxVillagersInAbodes;
+	int      MaxVillagersInAbodes;
 	uint32_t field_0x38;
 	uint32_t field_0x3c;
 	uint32_t field_0x40;
@@ -39,8 +39,8 @@ public:
 	int      field_0x48;
 	uint32_t VillagerSpaceLeftInAbodes;
 	uint32_t field_0x50;
-	uint32_t field_0x54;
-	uint32_t field_0x58;
+	uint32_t NumMales;
+	uint32_t NumFemales;
 	uint32_t field_0x5c[0x8];
 	uint32_t Deaths[DEATH_REASON_LAST];
 	uint32_t field_0xa4[0x9];

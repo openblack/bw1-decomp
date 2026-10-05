@@ -19,7 +19,7 @@ struct LH_SamplePlayOptions
 {
 	uint32_t      field_0x0;
 	LH_AudioBank* Bank;
-	uint32_t      field_0x8;
+	uint32_t      Positional;
 	uint32_t      field_0xc;
 	uint8_t       field_0x10[0x10];
 	Base*         AttachedObject;

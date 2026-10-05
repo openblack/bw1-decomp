@@ -34,12 +34,12 @@ public:
 	// TODO: Extent unknown (at most 0xe entries); Town::GetBaseInfluence indexes it with GGame::LandNumber.
 	float    BaseInfluenceByLand[0xe];
 	int      DefaultVillagerCapacity;
-	uint32_t field_0xf8;
-	uint32_t field_0xfc;
+	float    ResourceBeliefMultiplier;
+	float    ForeignResourceBeliefMultiplier;
 	uint32_t ResourceRemovedRecoveryTurns;
 	uint32_t field_0x104;
 	uint32_t field_0x108;
-	float    field_0x10c;
+	float    RepairDesireThreshold;
 	uint32_t field_0x110;
 	uint8_t  field_0x114[0x10];
 	float    DiscipleMinDesire;

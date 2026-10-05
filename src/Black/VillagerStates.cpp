@@ -383,7 +383,7 @@ bool32_t Villager::MissionaryDisciple()
 // BW1W120 0076a2a0 BW1M119 015a1e10
 bool32_t Villager::EnterBreeder(unsigned char param_1, unsigned char param_2)
 {
-	if ((GGame::g_game->field_0x14 & 0x8000) == 0)
+	if ((GGame::g_game->GameFlags & GAME_FLAG_CLEARING_MAP) == 0)
 	{
 		Reaction::CreateReaction(this, REACTION_REACT_TO_BREEDER, GetPlayer(), 1);
 	}
@@ -666,7 +666,7 @@ bool32_t Villager::ExitInHand(uint8_t state)
 		Abode* abode = GetAbode();
 		if (abode != NULL)
 		{
-			abode->field_0x7c &= ~0x10;
+			abode->VillagerInHand = false;
 		}
 	}
 	return result;

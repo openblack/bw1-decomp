@@ -92,6 +92,11 @@ struct DiscipleInfo
 	uint32_t         field_0x18;
 };
 
+enum VILLAGER_FLAGS
+{
+	VILLAGER_FLAG_AT_HOME = 0x4,
+};
+
 class Villager : public Living
 {
 public:

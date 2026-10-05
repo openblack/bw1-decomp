@@ -23,7 +23,7 @@ public:
 	float    field_0x148;
 	float    field_0x14c;
 	float    field_0x150;
-	float    field_0x154;
+	float    TransferedDamageMultiplier;
 
 	// Override methods
 
@@ -41,10 +41,12 @@ public:
 
 	// BW1W120 inlined BW1M119 011c9510
 	static GCitadelHeartInfo* GetInfo() { return Infos; }
+	// BW1W120 00464440 BW1M119 011c94a0
+	static float GetTransferedDamageMultiplier();
 
 	// TODO(#377): The original declared this class in CitadelHeart.h.
 	// Out of line: LoadBinary at 0042ee70, Load at 0042edd0.
-	INFO_DATA_BLOCK(field_0x134, field_0x154)
+	INFO_DATA_BLOCK(field_0x134, TransferedDamageMultiplier)
 	INFO_DERIVED_LOADERS(GCitadelPartInfo, "CitadelHeart.h", 27)
 };
 

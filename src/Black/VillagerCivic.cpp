@@ -135,7 +135,7 @@ bool32_t Villager::SetupGetBuildingSupplies(BuildingSite* building_site)
 		return false;
 	if (!building_site->ShouldIGetWood(this))
 		return GotoBuildingSite(building_site);
-	if (GGame::g_game->field_0x14 & 0x40000)
+	if (GGame::g_game->GameFlags & GAME_FLAG_WAIT_FOR_BUILDING_WOOD)
 		SetupWaitForWood(building_site);
 	switch (DecideHowToGetWood(1, &bigForest, &forest))
 	{

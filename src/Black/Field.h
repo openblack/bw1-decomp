@@ -183,13 +183,13 @@ public:
 
 	// BW1W120 00528280 BW1M119 010d9c90
 	static Field* Create(const MapCoords& coords, const GFieldTypeInfo* type_info, Town* town, float y_angle,
-	                     float scale, int wood);
+	                     float food, int wood);
 
 	// Constructors
 
 	// BW1W120 00527dd0 BW1M119 010da5b0
 	Field(const MapCoords& coords, const GFieldTypeInfo* type_info, const GAbodeInfo* abode_info, Town* town,
-	      float y_angle, float scale, int wood);
+	      float y_angle, float food, int wood);
 
 	// Non-virtual methods
 

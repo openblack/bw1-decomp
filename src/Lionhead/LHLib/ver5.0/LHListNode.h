@@ -11,7 +11,7 @@ template <typename T> struct LHListNode
 	T*   Get() { return value; }
 	void Set(T* v) { value = v; }
 
-	LHListNode() { Set(NULL); }
+	LHListNode() : value(NULL) {}
 	// BW1W120 inlined BW1M119 inlined
 	operator T*() const { return value; }
 	// BW1W120 inlined BW1M119 inlined

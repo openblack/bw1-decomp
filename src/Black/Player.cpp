@@ -325,18 +325,18 @@ void GPlayer::Process()
 	}
 	Town* town = NULL;
 	TotalPopulation = 0;
-	unsigned long deaths = 0;
-	unsigned long births = 0;
+	unsigned long females = 0;
+	unsigned long males = 0;
 	while ((town = towns.GetNext(town)) != NULL)
 	{
 		town->Process();
 		TotalPopulation += town->GetPopulation();
-		deaths += town->stats.field_0x58;
-		births += town->stats.field_0x54;
+		females += town->stats.NumFemales;
+		males += town->stats.NumMales;
 	}
 	if (game_stats != NULL)
 	{
-		game_stats->CheckAllPopulationTotals(births, deaths);
+		game_stats->CheckAllPopulationTotals(males, females);
 		GetStats()->PopulationGraph.Add(TotalPopulation);
 	}
 	if (type == PLAYER_TYPE_HUMAN)
@@ -389,7 +389,7 @@ void GPlayer::ClaimTown(Town* town)
 			options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
 			options.SampleNumber = LH_SAMPLE_G_TAKEOVERTOWN_01;
 			options.AttachedObject = NULL;
-			options.field_0x8 = 0;
+			options.Positional = 0;
 			GGlobal::Global.audio->PlaySoundEffect(&options);
 		}
 	}
@@ -422,7 +422,7 @@ void GPlayer::ClaimTown(Town* town)
 			visual->SetPlayer(this);
 		}
 	}
-	GGame::g_game->field_0x14 |= 0x1000;
+	GGame::g_game->GameFlags |= GAME_FLAG_NEEDS_CONTROL_MAP_UPDATE;
 	GGame::g_game->ForceNeedUpdateInfluence();
 #ifdef VERSION_BW1W120
 	if (GGame::g_game->IsMultiplayerGame() && town->GetPlayer() != NULL)
@@ -1247,17 +1247,17 @@ float GPlayer::GetMaxAlignmentChangePerGameTurn()
 
 float GPlayer::GetProportionOfWorldPopulationWhoBelieveInMe()
 {
-	unsigned long children = 0;
-	unsigned long adults = 0;
+	unsigned long females = 0;
+	unsigned long males = 0;
 	for (Town* town = towns.head; town != NULL; town = town->next)
 	{
-		children += town->stats.field_0x58;
-		adults += town->stats.field_0x54;
+		females += town->stats.NumFemales;
+		males += town->stats.NumMales;
 	}
 	unsigned long worldPopulation = GGame::g_game->data.WorldPopulation;
-	if (worldPopulation != 0 && adults + children != 0)
+	if (worldPopulation != 0 && males + females != 0)
 	{
-		float believers = (float)(adults + children);
+		float believers = (float)(males + females);
 		float population = (float)worldPopulation;
 		return believers / population;
 	}

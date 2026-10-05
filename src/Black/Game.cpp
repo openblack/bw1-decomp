@@ -285,7 +285,7 @@ bool32_t GGame::Init()
 		StartTipOfTheDayText();
 		MakeTipVideo();
 	}
-	field_0x14 &= ~0x20004u;
+	GameFlags &= ~(GAME_FLAG_ACTIVATE_CREATURE_DESIRES | GAME_FLAG_PAUSED);
 	field_0x59b0 = 0;
 	RenderLoadingFrame(true);
 	GGlobal::Global.audio->Reset();
@@ -365,7 +365,7 @@ bool32_t GGame::Init()
 		break;
 	case 3: {
 		char* mapName = NULL;
-		field_0x14 &= ~0x2000u;
+		GameFlags &= ~GAME_FLAG_ACTIVATE_CREATURE_DESIRES;
 		if (network.session->Channel->GetGameDataLength())
 			mapName = (char*)network.session->Channel->GetGameData();
 		if (mapName && strcmp(mapName, "oos") == 0)
@@ -591,7 +591,7 @@ void GGame::OnNewGame()
 		}
 	}
 	DoYesNoSkipTutorialRequestersIfNecessary();
-	if (started && !(g_game->field_0x14 & 4))
+	if (started && !(g_game->GameFlags & GAME_FLAG_PAUSED))
 	{
 		g_game->script->SetupScreenFadeTo(0, 0, 0, 0);
 		Temple::Dat_00C2A150 = 0.0f;
@@ -644,15 +644,15 @@ void GGame::Update3DInfluence()
 void PauseGame(int pause)
 {
 	// Mac confirms unsigned-to-float conversion; MSVC optimizes the elapsed add to signed FIADD.
-	if (pause != ((GGame::g_game->field_0x14 >> 2) & 1))
+	if (pause != ((GGame::g_game->GameFlags & GAME_FLAG_PAUSED) != 0))
 	{
 		if (GGame::g_game->network.session->IsSinglePlayer())
 		{
-			uint32_t flags = GGame::g_game->field_0x14;
+			uint32_t flags = GGame::g_game->GameFlags;
 			// Replace only the pause bit with its complement, preserving the other flags.
-			GGame::g_game->field_0x14 = flags ^ ((~flags ^ flags) & 4u);
+			GGame::g_game->GameFlags = flags ^ ((~flags ^ flags) & GAME_FLAG_PAUSED);
 			LHTimer& timer = GGame::g_game->timer;
-			if (GGame::g_game->field_0x14 & 4)
+			if (GGame::g_game->GameFlags & GAME_FLAG_PAUSED)
 			{
 				if (timer.SpeedUpFactor != 0.0f)
 				{
@@ -1140,7 +1140,7 @@ GGame::GGame()
 	TownInfluenceMultiplier = 1.0f;
 	DanceLight::InitialiseBitmaps();
 	RPHolder::InitialiseSystem(CheckSquareFunction, AddSpecialRPObjects);
-	field_0x14 |= 0x10000;
+	GameFlags |= GAME_FLAG_AUTO_SAVE_ENABLED;
 	field_0x2502a4 = 0;
 	LandNumber = 0;
 	field_0x25053c = 0;
@@ -1175,7 +1175,7 @@ void GGame::ClearVariables()
 	field_0x2502dc = NULL;
 	field_0x2502e0 = NULL;
 	field_0x2502e4 = NULL;
-	field_0x14 = 0x20;
+	GameFlags = GAME_FLAG_UNKNOWN_0x20;
 	SkirmishGame = false;
 	field_0x205a10 = 0;
 	field_0x205a14 = 0;
@@ -1304,8 +1304,8 @@ bool32_t GGame::Close()
 void GGame::ClearMap()
 {
 	LHResetFPU();
-	g_game->field_0x14 |= 0x8000;
-	field_0x14 &= 0xffddffff;
+	g_game->GameFlags |= GAME_FLAG_CLEARING_MAP;
+	GameFlags &= ~(GAME_FLAG_UNKNOWN_0x20000 | GAME_FLAG_UNKNOWN_0x200000);
 	field_0x205a10 = 0;
 	field_0x205a14 = 0;
 	SuperVillager* superVillager = SuperVillager::g_first;
@@ -1396,7 +1396,7 @@ void GGame::ClearMap()
 	Forest::OnClearMap();
 	Creature::OnClearMap();
 	GSpecialVillagerInfo::OnClearMap();
-	g_game->field_0x14 &= ~0x8000u;
+	g_game->GameFlags &= ~GAME_FLAG_CLEARING_MAP;
 	GLandBalance::Init();
 	InitStaticsValues();
 	GameBlock::Clean();
@@ -1675,15 +1675,15 @@ bool32_t GGame::LocalTimerSaysDoATurn()
 	int elapsed =
 		(int)((float)(GetTickCount() - timer.TickCount) * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
 	int gameTime = (int)(g_game->data.GameTurn * 100);
-	if (g_game->field_0x14 & 0x400000)
+	if (g_game->GameFlags & GAME_FLAG_UNKNOWN_0x400000)
 	{
-		return 1;
+		return true;
 	}
-	if (network.session->IsSinglePlayer() && (g_game->field_0x14 & 4))
+	if (network.session->IsSinglePlayer() && (g_game->GameFlags & GAME_FLAG_PAUSED))
 	{
-		return 0;
+		return false;
 	}
-	if (network.session->IsSinglePlayer() && !(g_game->field_0x14 & 4) && elapsed - gameTime > 2000)
+	if (network.session->IsSinglePlayer() && !(g_game->GameFlags & GAME_FLAG_PAUSED) && elapsed - gameTime > 2000)
 	{
 		ResetLocalGameTimer();
 	}
@@ -1742,7 +1742,7 @@ void GGame::ProcessNetworkPackets()
 	{
 		return;
 	}
-	if ((field_0x14 & 4) && (GGlobal::Global.EditorMode || ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL))
+	if ((GameFlags & GAME_FLAG_PAUSED) && (GGlobal::Global.EditorMode || ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL))
 	{
 		static DWORD lastPausedTurn = GetTickCount();
 		if (GetTickCount() - lastPausedTurn > 100)
@@ -1863,7 +1863,7 @@ void GGame::Loop()
 	if (playLogoOnFirstLoop)
 	{
 		LH_SamplePlayOptions options;
-		options.field_0x8 = 0;
+		options.Positional = 0;
 		options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
 		options.AttachedObject = NULL;
 		options.SampleNumber = LH_SAMPLE_LOGO;
@@ -1936,7 +1936,7 @@ void GGame::Loop()
 		++data.field_0x1c;
 		if (RenderLoopEnabled)
 		{
-			if ((field_0x14 & 4) == 0)
+			if ((GameFlags & GAME_FLAG_PAUSED) == 0)
 			{
 				static int      PreviousLoopTimerSample = 0;
 				static uint32_t PreviousLoopGameTurn = 0;
@@ -2145,7 +2145,7 @@ void GGame::ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2)
 void GGame::Process3dEngine()
 {
 	bool32_t drewLandscape = false;
-	if (Dat_00D46A74 && (field_0x14 & 4) && (g_game->field_0x14 & 4))
+	if (Dat_00D46A74 && (GameFlags & GAME_FLAG_PAUSED) && (g_game->GameFlags & GAME_FLAG_PAUSED))
 	{
 		PhysicsObject::GameTurnUpdate();
 	}
@@ -2171,7 +2171,7 @@ void GGame::Process3dEngine()
 		{
 			if (VideoPlayer->CurrentFrame > field_0x25018c)
 			{
-				if (VideoPreviousPause != ((field_0x14 >> 2) & 1))
+				if (VideoPreviousPause != ((GameFlags & GAME_FLAG_PAUSED) != 0))
 				{
 					PauseGame(VideoPreviousPause);
 				}
@@ -2335,7 +2335,7 @@ void GGame::Process3dEngine()
 				CameraModeNew3::ForceField->Update((int)LH3DTech::g_game_time_inc * 0.001f);
 				CameraModeNew3::ForceField->DoTheDrawing(CameraModeNew3::ForceFieldMaterial);
 			}
-			float target = (float)((field_0x14 >> 17) & 1);
+			float target = (GameFlags & GAME_FLAG_UNKNOWN_0x20000) ? 1.0f : 0.0f;
 			float step = (int)LH3DTech::g_game_time_inc * 0.003f;
 			if (field_0x59b0 < target)
 			{
@@ -2422,7 +2422,7 @@ void GGame::Process3dEngine()
 void GGame::ProcessGameCode()
 {
 	StartTurn();
-	if ((field_0x14 & 4) == 0)
+	if ((GameFlags & GAME_FLAG_PAUSED) == 0)
 	{
 		ProcessTurn();
 	}
@@ -2433,7 +2433,7 @@ void GGame::ProcessGameCode()
 void GGame::StartTurn()
 {
 	++data.field_0x14;
-	if ((field_0x14 & 4) == 0)
+	if ((GameFlags & GAME_FLAG_PAUSED) == 0)
 	{
 		++data.GameTurn;
 	}
@@ -2552,7 +2552,7 @@ void GGame::EndTurn()
 	SoundMap->Dump();
 	LHResetFPU();
 	SoundTag::ProcessSoundTags();
-	if ((field_0x14 & 4) == 0 && data.GameTurn > 5)
+	if ((GameFlags & GAME_FLAG_PAUSED) == 0 && data.GameTurn > 5)
 	{
 		GGlobal::Global.audio->ProcessAudioGameTurn();
 	}
@@ -2560,7 +2560,7 @@ void GGame::EndTurn()
 	{
 		GGlobal::Global.audio->AtmosProcess(0);
 	}
-	if ((field_0x14 & 0x1000) != 0)
+	if ((GameFlags & GAME_FLAG_NEEDS_CONTROL_MAP_UPDATE) != 0)
 	{
 		map.UpdateControlMap();
 	}
@@ -2583,8 +2583,8 @@ void GGame::EndTurn()
 		}
 	}
 	map.CalculateMapInfluenceX();
-	field_0x14 &= ~0x10u;
-	if ((field_0x14 & 0x10000) != 0 && field_0x205a10 == 0)
+	GameFlags &= ~0x10u;
+	if ((GameFlags & GAME_FLAG_AUTO_SAVE_ENABLED) != 0 && field_0x205a10 == 0)
 	{
 		GameOSFile::AutoSave(0);
 	}
@@ -2599,7 +2599,7 @@ void GGame::EndTurn()
 		g_game->script->StartScript("GameOver");
 	}
 	uint32_t interval = GameStats::UpdateInterval;
-	if ((field_0x14 & 4) != 0)
+	if ((GameFlags & GAME_FLAG_PAUSED) != 0)
 	{
 		interval >>= 1;
 	}
@@ -2762,7 +2762,7 @@ uint32_t GGame::Save(GameOSFile& file)
 			}
 		}
 	}
-	file.WriteIt(field_0x14);
+	file.WriteIt(GameFlags);
 	file.WriteIt(LandNumber);
 	for (uint32_t player = 0; player < 8; ++player)
 	{
@@ -2895,7 +2895,7 @@ uint32_t GGame::Load(GameOSFile& file)
 			file.ReadIt(revision[i]);
 		}
 	}
-	file.ReadIt(field_0x14);
+	file.ReadIt(GameFlags);
 	file.ReadIt(LandNumber);
 	GameThing* player;
 	for (uint32_t i = 0; i < 8; ++i)
