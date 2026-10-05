@@ -1,5 +1,68 @@
 Sections:
 	.text       type:code align:4096
+	.text$x     type:code vaddr:0x100141C0 end:0x10014218
 	.rdata      type:rodata align:4096
+	.idata$5    type:rodata vaddr:0x10015000 end:0x100151E8
+	.xdata$x    type:rodata vaddr:0x100158F8 end:0x10015970
+	.idata$2    type:rodata vaddr:0x10015970 end:0x100159D4
+	.idata$3    type:rodata vaddr:0x100159D4 end:0x100159E8
+	.idata$4    type:rodata vaddr:0x100159E8 end:0x10015BCC
+	.idata$6    type:rodata vaddr:0x10015BCC end:0x10016400
+	.edata      type:rodata vaddr:0x10016400 end:0x1001819D
 	.data       type:data align:4096
+	.CRT$XCA    type:data vaddr:0x10019000 end:0x10019004
+	.CRT$XCU    type:data vaddr:0x10019004 end:0x1001900C
+	.CRT$XCZ    type:data vaddr:0x1001900C end:0x10019010
+	.CRT$XIA    type:data vaddr:0x10019010 end:0x10019014
+	.CRT$XIC    type:data vaddr:0x10019014 end:0x10019024
+	.CRT$XIZ    type:data vaddr:0x10019024 end:0x10019028
+	.CRT$XPA    type:data vaddr:0x10019028 end:0x1001902C
+	.CRT$XPX    type:data vaddr:0x1001902C end:0x10019030
+	.CRT$XPZ    type:data vaddr:0x10019030 end:0x10019034
+	.CRT$XTA    type:data vaddr:0x10019034 end:0x10019038
+	.CRT$XTB    type:data vaddr:0x10019038 end:0x1001903C
+	.CRT$XTZ    type:data vaddr:0x1001903C end:0x10019040
+	.bss        type:bss vaddr:0x10020C80 end:0x1002C3DC
 	.rsrc       type:rodata align:4096
+
+Lionhead/LHLog/ver4.0/ErrorCodes.cpp:
+	.text       start:0x10001000 end:0x10001220
+	.data       start:0x10019040 end:0x1001CA90
+
+Lionhead/LHLog/ver4.0/LHAssert.cpp:
+	.text       start:0x10001220 end:0x10002190
+	.data       start:0x1001CA90 end:0x1001CBD0
+	.bss        start:0x10020C80 end:0x10024CF0
+
+Lionhead/LHLog/ver4.0/LHDebugStack.cpp:
+	.text       start:0x10002190 end:0x10002680
+	.rdata      start:0x100151E8 end:0x100151F4
+	.data       start:0x1001CBD0 end:0x1001CBF8
+	.bss        start:0x10024CF0 end:0x100298B8
+
+Lionhead/LHLog/ver4.0/LHGenLog.cpp:
+	.text       start:0x10002680 end:0x10003D40
+	.text$x     start:0x100141C0 end:0x10014200
+	.rdata      start:0x100151F4 end:0x100151F8
+	.xdata$x    start:0x100158F8 end:0x10015948
+	.CRT$XCU    start:0x10019004 end:0x10019008
+	.data       start:0x1001CBF8 end:0x1001CFB4
+	.bss        start:0x100298B8 end:0x1002A330
+
+Lionhead/LHLog/ver4.0/LHLogProps.cpp:
+	.text       start:0x10003D40 end:0x100065C0
+	.data       start:0x1001CFB4 end:0x1001D1D8
+	.bss        start:0x1002A330 end:0x1002AAE8
+
+Lionhead/LHLog/ver4.0/LHVersion.cpp:
+	.text       start:0x100065C0 end:0x100093B0
+	.text$x     start:0x10014200 end:0x10014218
+	.xdata$x    start:0x10015948 end:0x10015970
+	.CRT$XCU    start:0x10019008 end:0x1001900C
+	.data       start:0x1001D1D8 end:0x1001DB90
+	.bss        start:0x1002AAE8 end:0x1002ACB8
+
+Lionhead/LHLog/ver4.0/LogUtils.cpp:
+	.text       start:0x100093B0 end:0x10009BD0
+	.data       start:0x1001DB90 end:0x1001DCA0
+	.bss        start:0x1002ACB8 end:0x1002ACC4
