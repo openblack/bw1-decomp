@@ -739,24 +739,10 @@ int CreatureAgenda::ConstructSubActionsForFight(unsigned long param_1)
 	{
 		creature->GetCreature3D()->field_0x4aa8 = (creature->GetLife() + 1.0f) * 0.5f;
 		creature->GetCreature3D()->field_0x4aac = creature->physical->GetEnergy() - creature->physical->GetExhaustion();
-		if (creature->GetCreature3D()->field_0x4aac < 0.0f)
-		{
-			creature->GetCreature3D()->field_0x4aac = 0.0f;
-		}
-		else if (creature->GetCreature3D()->field_0x4aac > 1.0f)
-		{
-			creature->GetCreature3D()->field_0x4aac = 1.0f;
-		}
+		CLAMP(creature->GetCreature3D()->field_0x4aac, 0.0f, 1.0f);
 		other->GetCreature3D()->field_0x4aa8 = (other->GetLife() + 1.0f) * 0.5f;
 		other->GetCreature3D()->field_0x4aac = other->physical->GetEnergy() - other->physical->GetExhaustion();
-		if (other->GetCreature3D()->field_0x4aac < 0.0f)
-		{
-			other->GetCreature3D()->field_0x4aac = 0.0f;
-		}
-		else if (other->GetCreature3D()->field_0x4aac > 1.0f)
-		{
-			other->GetCreature3D()->field_0x4aac = 1.0f;
-		}
+		CLAMP(other->GetCreature3D()->field_0x4aac, 0.0f, 1.0f);
 		if (creature != NULL)
 		{
 			if (creature->GetPlayer() != NULL && creature->GetPlayer()->type == PLAYER_TYPE_HUMAN)

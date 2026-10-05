@@ -2084,13 +2084,6 @@ void MobileWallHug::ProcessRemoveFromMap(MultiMapFixed* map_fixed)
 
 void MobileWallHug::SetSpeed(int new_speed)
 {
-	if (new_speed < 0)
-	{
-		new_speed = 0;
-	}
-	else if (new_speed > 0xffff)
-	{
-		new_speed = 0xffff;
-	}
+	CLAMP(new_speed, 0, 0xffff);
 	speed = new_speed;
 }

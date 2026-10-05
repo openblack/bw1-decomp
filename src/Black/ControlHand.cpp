@@ -162,14 +162,7 @@ uint32_t CHand::LoadBinary(char* filename, int param_1)
 
 void CHand::SetSize(float size)
 {
-	if (size < 0.05f)
-	{
-		size = 0.05f;
-	}
-	else if (size > 2.0f)
-	{
-		size = 2.0f;
-	}
+	CLAMP(size, 0.05f, 2.0f);
 	Size1 = size;
 	float fVar1 = 3.2f; /* = FUN_0046c040() */
 	Size2 = fVar1 / field_0x8c * field_0x4834 * Size1;

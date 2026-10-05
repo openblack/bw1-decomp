@@ -181,11 +181,17 @@ These are not affected by:
 | Store to a flat float member | 8 |
 | `a = b = c = …` chain | about 8 per element instead of 10 |
 | Compound assignment (`m[0] *= c`) | cheaper than the explicit `m[0] = m[0] * c` |
+| Braces around a single-statement `if`/`else` body | about 2 per `{ }` block, with identical bytes |
 
 Examples of the compound saving:
 
 - `RotateY` written as `m[0] = m[0] * c + m[6] * s` costs 229, against 223 for the current form.
 - `PostTranslation` written as `m[9] += t.x` costs 57, against 81.
+
+Braces are a size knob of their own: `EditorIconSlider<float>::GetMouseValue` costs 316 with
+`if (p < 0.0f) { p = 0.0f; } else if (p > 1.0f) { p = 1.0f; }` and 312 without the braces. The
+unbraced form leaves `GetMousePos` out of line in `EditorIconSlider<float>::Process`. This is
+why re_common.h's `CLAMP` keeps its braces.
 
 ## Worked example: Game3DObject::SetPositionAndXZYScale(LHPoint)
 

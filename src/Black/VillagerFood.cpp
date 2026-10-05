@@ -119,10 +119,7 @@ uint32_t Villager::GetAmountOfFoodToEat()
 	if (GetTown())
 	{
 		float scarcity = GetTown()->desire.Desire[TOWN_DESIRE_INFO_FOR_FOOD];
-		if (scarcity < 0.0f)
-			scarcity = 0.0f;
-		else if (scarcity > 1.0f)
-			scarcity = 1.0f;
+		CLAMP(scarcity, 0.0f, 1.0f);
 		// TODO: 97.3% — two residual diffs:
 		//  (1) target's 0.3 constant is __real@3e999999 (one ULP BELOW 0.3f, whose
 		//      bits are 3e99999a). No evidence-based literal reproduces 3e999999;
@@ -167,10 +164,7 @@ bool32_t Villager::EatFoodHeld()
 		amountToEat = (float)ResourceHeld[RESOURCE_TYPE_FOOD];
 	DropFood((uint16_t)amountToEat);
 	food += amountToEat / foodToEatF * ((const GVillagerInfo*)info)->FoodNurishmentMultiplier;
-	if (food < 0.0f)
-		food = 0.0f;
-	else if (food > 1.0f)
-		food = 1.0f;
+	CLAMP(food, 0.0f, 1.0f);
 	if (GetTown())
 		GetTown()->UseFood((uint32_t)amountToEat);
 	return (uint32_t)food;
