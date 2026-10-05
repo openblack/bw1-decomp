@@ -1,5 +1,5 @@
 Black & White
-[![Build Status]][actions] [![Code Progress]][progress] [![Data Progress]][progress] [![Discord Badge]][discord]
+[![Build Status]][actions] [![Code Progress]][progress] [![Data Progress]][progress] [![Discord Badge]][discord][![Ask DeepWiki]][deepwiki]
 =============
 
 [Build Status]: https://github.com/openblack/bw1-decomp/actions/workflows/build.yml/badge.svg
@@ -9,6 +9,8 @@ Black & White
 [progress]: https://decomp.dev/openblack/bw1-decomp
 [Discord Badge]: https://img.shields.io/discord/608729286513262622?color=%237289DA&logo=discord&logoColor=%23FFFFFF
 [discord]: https://discord.gg/5QTexBU
+[Ask DeepWiki]: https://deepwiki.com/badge.svg
+[deepwiki]: https://deepwiki.com/openblack/bw1-decomp
 
 [<img src="https://decomp.dev/openblack/bw1-decomp.svg?w=512&h=256" width="512" height="256">][Progress]
 
