@@ -160,7 +160,7 @@ struct MapCoords : public LH3DMapCoords
 		z = whole + dz;
 	}
 	// BW1W120 inlined BW1M119 0104d890
-	void SetAltitude(long _altitude) { altitude = _altitude; }
+	void SetAltitude(float _altitude) { altitude = _altitude; }
 	// BW1W120 00603430 BW1M119 0104c540
 	MapCell* ToMap() const;
 	// BW1W120 006034b0 BW1M119 0102f600

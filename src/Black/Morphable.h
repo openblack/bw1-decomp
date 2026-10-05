@@ -129,6 +129,8 @@ public:
 	LH3DComplexObject* Get3DObject() { return DynamicShadow; }
 	// BW1W120 inlined BW1M119 013e2420
 	float GetHeading() { return Heading; }
+	// BW1W120 inlined BW1M119 01231c70
+	float GetSize() { return Size1; }
 };
 
 #endif /* BW1_DECOMP_MORPHABLE_INCLUDED_H */

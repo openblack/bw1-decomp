@@ -30,12 +30,18 @@ class Object;
 class PlannedMultiMapFixed;
 class Town;
 
+struct FishFarm_field_0x88_t
+{
+	uint8_t field_0x0[0x48];
+	LHPoint field_0x48;
+};
+
 class FishFarm : public MultiMapFixed
 {
 public:
 	FishFarm*               next;      /* 0x7c */
 	LHLinkedList<Villager*> villagers; /* 0x80 */
-	uint32_t                field_0x88;
+	FishFarm_field_0x88_t*  field_0x88;
 	Town*                   town;
 	float                   field_0x90;
 	float                   field_0x94;
@@ -142,6 +148,11 @@ public:
 	virtual MapCoords* GetDoorPos(MapCoords* param_1);
 	// BW1W120 0052c4c0 BW1M119 010e2b60
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
+
+	// Static methods
+
+	// BW1W120 0052d360 BW1M119 010e01a0
+	static FishFarm* FindClosestFishFarm(const MapCoords& pos, float max_distance);
 
 	// Non-virtual methods
 

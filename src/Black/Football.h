@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>      /* For struct LHLinkedList */
 
 #include "Abode.h"     /* For struct Abode */
 #include "MapCoords.h" /* For struct MapCoords */
@@ -70,9 +71,16 @@ public:
 		FOOTBALL_STATES_1 = 0x1,
 	};
 
-	uint8_t field_0xc4[0x180];
-	Object* MarkTargets[2]; /* 0x244 -- indexed by IsPlayerOnHomeTeam() */
-	uint8_t field_0x24c[0xcc];
+#if defined(VERSION_BW1W100)
+	uint8_t field_0xc4[0x15c];
+#else
+	uint8_t field_0xc4[0x160];
+#endif
+	LHLinkedList<Villager*> HomeTeam;
+	LHLinkedList<Villager*> AwayTeam;
+	uint8_t                 field_0x234[0x10];
+	Object*                 MarkTargets[2];
+	uint8_t                 field_0x24c[0xcc];
 
 	// Override methods
 

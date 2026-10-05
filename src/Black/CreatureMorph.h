@@ -59,7 +59,8 @@ public:
 	uint8_t   field_0x4a94[0x14];
 	float     field_0x4aa8;
 	float     field_0x4aac;
-	uint8_t   field_0x4ab0[0x6cc];
+	float     field_0x4ab0;
+	uint8_t   field_0x4ab4[0x6c8];
 	LHMatrix* field_0x517c;
 	uint8_t   field_0x5180[4];
 	void*     field_0x5184;
@@ -112,7 +113,8 @@ public:
 	float     field_0x5474;
 	uint8_t   field_0x5478[0x2A4];
 	uint32_t  field_0x571c;
-	uint8_t   field_0x5720[0x80];
+	uint8_t   field_0x5720[0x7c];
+	uint32_t  field_0x579c;
 	uint32_t  field_0x57a0;
 	uint8_t   field_0x57a4[0x10];
 	uint32_t  field_0x57b4;
@@ -149,6 +151,10 @@ public:
 	static void FollowerCallbackPrepareAnims(Creature* param_1, float param_2, float param_3);
 	// BW1W120 0047f280 BW1M119 012035e0
 	static float FollowerCallbackGetStopDist(Creature* param_1);
+	// BW1W120 00483850 BW1M119 011fd140
+	static bool32_t IsDestinationValid(const LHPoint* pos);
+	// BW1W120 004839d0 BW1M119 011fce00
+	static void SpiralCheckForValidPoint(LHPoint* pos, LHPoint* result);
 
 	// Constructors
 
@@ -165,8 +171,14 @@ public:
 	float GetEventualHeading() { return EventualHeading; }
 	// BW1W120 0047fa20 BW1M119 01202760
 	void SetRequiredSpeed(float speed);
+	// BW1W120 00480a10 BW1M119 01201220
+	float GetKissingDistance(LH3DCreature* other);
+	// BW1W120 0048f800 BW1M119 011ed460
+	float GetPutDownDistance();
 	// BW1W120 00480a60 BW1M119 012011a0
 	float GetNavRadius();
+	// BW1W120 004813b0 BW1M119 01200210
+	LHPoint* GetHeadPos();
 	// BW1W120 004813f0 BW1M119 01200130
 	LHPoint* GetBonePos(int index);
 	// BW1W120 004842b0 BW1M119 011fc210
