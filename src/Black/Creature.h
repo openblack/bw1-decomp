@@ -48,6 +48,7 @@ class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 class LH3DCreature;
+class LH3DObject;
 struct LH3DSmoke;
 class LHOSFile;
 struct LHPoint;
@@ -142,7 +143,9 @@ public:
 	uint32_t                              field_0x380;
 	uint32_t                              field_0x384;
 	CreatureEmotionsForMusic              EmotionsForMusic;
-	uint32_t                              field_0x390[0xe];
+	uint32_t                              field_0x390[0xa];
+	uint32_t                              field_0x3b8;
+	uint32_t                              field_0x3bc[0x3];
 	uint32_t                              field_0x3c8;
 	uint32_t                              field_0x3cc;
 	Creature*                             next; /* 0x3d0 */
@@ -219,7 +222,7 @@ public:
 	uint32_t                              field_0x1190;
 	uint8_t                               field_0x1194[0x14];
 	MapCoords                             field_0x11a8;
-	uint32_t                              field_0x11b4;
+	float                                 field_0x11b4;
 	uint32_t                              field_0x11b8;
 	uint32_t                              field_0x11bc;
 	float                                 ObjectsDestroyed;
@@ -234,7 +237,7 @@ public:
 	uint8_t                               field_0x11f1;
 	uint8_t                               field_0x11f2;
 	uint8_t                               field_0x11f3;
-	uint32_t                              field_0x11f4;
+	LH3DObject*                           field_0x11f4;
 	uint32_t                              field_0x11f8;
 	uint32_t                              HomeExists;
 	MapCoords                             HomePos;
@@ -635,8 +638,24 @@ public:
 	LH3DCreature* GetCreature3D();
 	// BW1W120 00479480 BW1M119 011df800
 	bool32_t HasFinishedBuildingHome();
+	// BW1W120 004f82f0 BW1M119 0128f550
+	bool32_t HasEnoughEnergyToCastSpell(MAGIC_TYPE magic_type);
+	// BW1W120 004f8940 BW1M119 0128eaa0
+	SPELL_SEED_TYPE ChooseSpellSeedTypeToSteal(GameThingWithPos* object);
+	// BW1W120 004f89d0 BW1M119 0128e9d0
+	Town* FindTownBelongingToMeWhichNeedsSpell(SPELL_SEED_TYPE type);
+	// BW1W120 00477370 BW1M119 011e2f00
+	bool32_t CanSeeAnObject(Object* object);
+	// BW1W120 00479d80 BW1M119 011de2f0
+	CreatureBelief* GetNearbyObject(bool32_t (GameThingWithPos::*is_suitable)(Creature*), CreatureBelief* exclude1,
+	                                CreatureBelief* exclude2);
+	// BW1W120 0047d860 BW1M119 011d6b10
+	bool32_t FindNearbyWaterPoint(MapCoords* coords, float radius);
 	// BW1W120 0047a500 BW1M119 011dd440
 	void GetRunAwayPoint(const LHPoint& from, LHPoint* point);
+	// BW1W120 004c9fe0 BW1M119 0123ea40
+	void SendCandidateHelpScript(CREATURE_HELP_TYPE type, unsigned long help, GameThingWithPos* thing,
+	                             const MapCoords* pos, int param_5);
 	// BW1W120 0049a7a0
 	bool32_t IsHomeUnderConstruction(CreaturePlan& plan, CREATURE_ACTION action);
 	// BW1W120 0049a7c0
@@ -644,7 +663,7 @@ public:
 	// BW1W120 0047c650 BW1M119 011d9fd0
 	void SetAnimationTimeModify(bool value);
 	// BW1W120 0047c690 BW1M119 011d9ef0
-	bool IsOnHomeTeam();
+	bool32_t IsOnHomeTeam();
 	// BW1W120 0047d640 BW1M119 011d6ea0
 	GInterfaceStatus* GetNearestCameraInterfaceStatus();
 	// BW1W120 0047d740 BW1M119 011d6ce0

@@ -24,6 +24,7 @@
 // Forward Declares
 
 class Creature;
+class CreatureAttitudeToCreature;
 class CreatureBelief;
 class GameThingWithPos;
 
@@ -91,6 +92,8 @@ public:
 	CreatureBelief* AddBeliefAboutObject(Creature* creature, GameThingWithPos* object);
 	// BW1W120 004d2800 BW1M119 null
 	void EmpathiseWithPlayer(CREATURE_DESIRES desire);
+	// BW1W120 004c4c80 BW1M119 012364d0
+	CreatureAttitudeToCreature* GetAttitudeToCreature(Creature* creature);
 };
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_INCLUDED_H */

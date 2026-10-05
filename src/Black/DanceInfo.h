@@ -16,7 +16,11 @@ class Base;
 class GDanceInfo : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0xa0];
+	uint32_t field_0x10;
+	uint32_t field_0x14;
+	uint8_t  field_0x18[0x8c];
+	uint32_t field_0xa4;
+	uint8_t  field_0xa8[0x8];
 
 	// Override methods
 
@@ -36,7 +40,7 @@ public:
 	static GDanceInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in Dance.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(field_0x10, field_0xa8)
 	INFO_ROOT_LOADERS("Dance.h", 39)
 };
 

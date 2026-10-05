@@ -149,6 +149,12 @@ public:
 			node = node->next.Get();
 		return node;
 	}
+	// BW1W120 inlined BW1M119 010dd460
+	inline T GetAtPosition(long position)
+	{
+		LHLinkedNode<T>* node = GetNodeAtPosition(position);
+		return node != NULL ? node->payload : NULL;
+	}
 
 	// BW1W120 inlined BW1M119 inlined
 	inline LHLinkedNode<T>* GetPreviousNode(LHLinkedNode<T>* node)
