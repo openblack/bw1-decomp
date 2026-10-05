@@ -5,8 +5,9 @@
 #include <stddef.h> /* For offsetof */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LHLib/ver5.0/GJVector.h>       /* For struct GJVector */
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+
+#include "GJBaseUtils.h" /* For GJVector */
 
 // Forward Declares
 

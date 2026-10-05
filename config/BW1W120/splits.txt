@@ -1914,18 +1914,18 @@ Black/PSysModifiers.cpp:
 
 Black/PSysPCreator.cpp:
 	.text       start:0x006A8350 end:0x006AAE70
-	.rdata      start:0x00937A40 end:0x00937D90
+	.rdata      start:0x00937A40 end:0x00937DB8
 	.CRT$XCU    start:0x009C74C0 end:0x009C74D4 align:4
-	.data       start:0x00C04808 end:0x00C07504
-	.bss        start:0x00D4ED78 end:0x00D4ED94
+	.data       start:0x00C04808 end:0x00C04A80
+	.bss        start:0x00D4ED78 end:0x00D4ED90
 
 Black/PSysProperties.cpp:
 	.text       start:0x006AAE70 end:0x006C73E0
 	.text$x     start:0x008A6590 end:0x008A65A0 align:4
-	.rdata      start:0x00937D90 end:0x00938E9C
+	.rdata      start:0x00937DB8 end:0x00938E9C
 	.CRT$XCU    start:0x009C74D4 end:0x009C74EC align:4
-	.data       start:0x00C07504 end:0x00C09580
-	.bss        start:0x00D4ED94 end:0x00D4EDF8
+	.data       start:0x00C04A80 end:0x00C09580
+	.bss        start:0x00D4ED90 end:0x00D4EDF8
 
 Black/PSysRenderParticle.cpp:
 	.text       start:0x006C73E0 end:0x006CAEC0
