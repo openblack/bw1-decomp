@@ -25,7 +25,9 @@ class Villager;
 class Workshop : public Abode
 {
 public:
-	uint8_t field_0xc4[0x24];
+	uint8_t              field_0xc4[0x14];
+	LHListNode<Workshop> next;
+	uint8_t              field_0xdc[0xc];
 
 	// Override methods
 
@@ -59,7 +61,7 @@ public:
 	// BW1W120 007792d0 BW1M119 inlined
 	virtual uint32_t IsWorkshop_1(Creature* param_1);
 	// BW1W120 0077a6d0 BW1M119 01169f70
-	virtual bool32_t CreateBuildingSite();
+	virtual BuildingSite* CreateBuildingSite();
 	// BW1W120 0077a610 BW1M119 0116a230
 	virtual void ScaffoldMoved(Scaffold* param_1);
 	// BW1W120 007797f0 BW1M119 0116bd90
@@ -93,6 +95,10 @@ public:
 	float GetDesireToBeSupplied();
 	// BW1W120 00779b90 BW1M119 0116b630
 	float GetVisualWoodDesire();
+	// BW1W120 0077a3a0 BW1M119 0116a5f0
+	bool32_t IsPosWithinScaffoldAreas(MapCoords& pos);
+	// BW1W120 0077a480 BW1M119 0116a3f0
+	bool32_t CheckSnapToPoint(Scaffold* scaffold);
 };
 
 #endif /* BW1_DECOMP_WORKSHOP_INCLUDED_H */

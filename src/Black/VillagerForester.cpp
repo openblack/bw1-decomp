@@ -94,7 +94,7 @@ bool32_t Villager::ArrivesAtBigForest()
 	//   Town::FindNearestForestToPos (?...@Town@@QAEXABVMapCoords@@@Z) reads eax as a Town*/owner;
 	//   BigForest::GetArrivePos (?...@BigForest@@QAEXPAVVillager@@@Z) returns MapCoords by value.
 	// Body: woodCap=GetWoodCapacity(); if (GetTown() && woodCap) { owner=GetTown()->FindNearestForestToPos(Pos);
-	//   if (owner) { bf=owner->field_0x38; if (bf) { c=bf->GetArrivePos(this);
+	//   if (owner) { bf=owner->BigForestObject; if (bf) { c=bf->GetArrivePos(this);
 	//     if (AreWeThere(c,0)) { r=bf->AddResource(WOOD,woodCap,0,0); if(r){PickupWood(r,bf->vtbl0x820());GotWoodDecideWhatToDo();} }
 	//     else { SetupMoveToWithHug(c, this->vtbl0xb04()); return 1; } } } }
 	//   SetTopState(DECIDE_WHAT_TO_DO); return 1;
@@ -175,13 +175,12 @@ bool32_t Villager::GotWoodDecideWhatToDo()
 {
 	// TODO: deferred — one UNNAMED callee. Body (from target asm) is:
 	//   if (ResourceHeld[WOOD]==0) { SetTopState(DECIDE_WHAT_TO_DO); return 1; }
-	//   if ((Flags>>9 & 1) && _g_DiscipleInfos[DiscipleType].field_0xc==1) { SetTopState(DECIDE_WHAT_TO_DO); return 1; }
+	//   if ((Flags>>9 & 1) && GVillagerInfo::GetDiscipleInfo()[DiscipleType].field_0xc==1) { SetTopState(DECIDE_WHAT_TO_DO); return 1; }
 	//   if (building_site && GetTown() && GetTown()->IsBuildingSiteValid(building_site) &&
-	//       (building_site->fn_0043BC60() || DiscipleType==4) && GotoBuildingSite(building_site)==1) return 1;
+	//       (building_site->IsBuilderNeeded() || DiscipleType==4) && GotoBuildingSite(building_site)==1) return 1;
 	//   if (CheckNeededForBuilding()) return 1;
 	//   SetTopState(VILLAGER_STATE_GOTO_STORAGE_PIT_FOR_DROP_OFF); return 1;
-	// _g_DiscipleInfos (0x99a1f8) IS named. BLOCKER: building_site->fn_0043BC60() is UNNAMED
-	// (a BuildingSite bool method at 0x43bc60, `return 0 < inner()`). Dispatcher: name it.
+	// The callee at 0x43bc60 is now named BuildingSite::IsBuilderNeeded (`return 0 < inner()`).
 	return 1;
 }
 

@@ -73,6 +73,16 @@ add_relocations:
     type: x86_abs32
     target: '?Definitions@GContainerInfo@@2PAV1@A'
     addend: 0x50
+# CMP is the end of GMagicInfo::Infos for Town::SaveObject's loop over the town's magic types.
+  - source: 0x0073BDF8
+    type: x86_abs32
+    target: '?Infos@GMagicInfo@@2PAPAV1@A'
+    addend: 0xA8
+# CMP is the end of GTownDesireInfo::InfoList for Town::CreateTownDesireFlags' loop.
+  - source: 0x0073D837
+    type: x86_abs32
+    target: '?InfoList@GTownDesireInfo@@2PAV1@A'
+    addend: 0x9C0
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000

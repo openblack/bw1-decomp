@@ -40,11 +40,14 @@ public:
 	unsigned long                    TotalAbodesBuilt;
 	uint8_t                          field_0x78[0x8];
 	unsigned long                    TotalWondersBuilt;
-	uint8_t                          field_0x84[0x24];
+	uint8_t                          field_0x84[0x20];
+	uint32_t                         FoodUsed;
 	uint32_t                         WoodUsed;
 	EverlastingGraph<float, 500, 50> InfluenceGraph;
 	EverlastingGraph<float, 500, 50> PopulationGraph;
-	uint8_t                          field_0x1064[0x1c];
+	uint8_t                          field_0x1064[0x8];
+	uint32_t                         VillagersKilled;
+	uint8_t                          field_0x1070[0x10];
 	uint32_t                         field_0x1080;
 	uint8_t                          field_0x1084[0xa4];
 

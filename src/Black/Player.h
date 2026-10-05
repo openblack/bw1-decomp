@@ -16,23 +16,11 @@
 #include "LHPTR.h"      /* For class LHPTR */
 #include "MapCoords.h"  /* For struct MapCoords */
 #include "PlayerInfo.h" /* For enum PLAYER_TYPE */
+#include "PlayerName.h" /* For enum PLAYER_NAME */
 #include "Town.h"       /* For struct Town */
 #include "WinCondition.h"
 #include "MultiplayerConstants.h" /* For MAX_MULTIPLAYER_PLAYERS */
 #include <map>
-
-enum PLAYER_NAME
-{
-	PLAYER_NAME_PLAYER_ONE = 0x0,
-	PLAYER_NAME_PLAYER_TWO = 0x1,
-	PLAYER_NAME_PLAYER_THREE = 0x2,
-	PLAYER_NAME_PLAYER_FOUR = 0x3,
-	PLAYER_NAME_PLAYER_FIVE = 0x4,
-	PLAYER_NAME_PLAYER_SIX = 0x5,
-	PLAYER_NAME_PLAYER_SEVEN = 0x6,
-	PLAYER_NAME_NEUTRAL = 0x7,
-	_PLAYER_NAME_COUNT = 0x8
-};
 
 #define MAX_PLAYER_INTERFACES 18
 

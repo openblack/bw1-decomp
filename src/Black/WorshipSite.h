@@ -7,7 +7,8 @@
 #include <chlasm/Enum.h>        /* For enum ABODE_TYPE, enum RESOURCE_TYPE, enum SPELL_SEED_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
-#include <Lionhead/LHLib/ver5.0/LHListHead.h> /* For LHListHead */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHListHead.h>   /* For LHListHead */
 
 #include "CitadelPart.h"      /* For struct CitadelPart */
 #include "WorshipSpellIcon.h" /* For struct WorshipSpellIcon */
@@ -44,7 +45,8 @@ public:
 	uint32_t                     field_0x98;
 	uint32_t                     field_0x9c;
 	Dance*                       dance; /* 0xa0 */
-	uint8_t                      field_0xa4[0x14];
+	LHLinkedList<Town*>          Towns;
+	uint8_t                      field_0xac[0xc];
 	int*                         field_0xb8;
 	uint8_t                      field_0xbc[0xc];
 	int                          field_0xc8;
@@ -177,12 +179,22 @@ public:
 	void RemoveFromFoodOnTheWay(uint32_t amount);
 	// BW1W120 0077c430 BW1M119 015b7150
 	void AddSpellIcon(WorshipSpellIcon* icon);
+	// BW1W120 0077b920 BW1M119 015b8910
+	int CalculateFoodNeededFromTown();
 	// BW1W120 0077c910 BW1M119 015b6770
 	void AddTownSpells(Town* town);
+	// BW1W120 0077c800 BW1M119 015b6820
+	void AddTown(Town* town);
+	// BW1W120 0077c950 BW1M119 015b6630
+	void RemoveTown(Town* town);
 	// BW1W120 0077c9e0 BW1M119 015b64c0
 	void AddSpellIconIfNecessary(SPELL_SEED_TYPE seed_type);
+	// BW1W120 0077caa0 BW1M119 015b63b0
+	void RemoveSpellIconIfNecessary(SPELL_SEED_TYPE seed_type, int param_2);
 	// BW1W120 0077cf30 BW1M119 015b5a20
 	MapCoords GetTotemPos();
+	// BW1W120 0077dd40 BW1M119 015b3370
+	MapCoords CalculateCentrePos();
 	// BW1W120 0077d0a0 BW1M119 015b5540
 	void RemoveVillagerFromWorshipCount(Villager* param_1);
 	// BW1W120 0077e1d0 BW1M119 015b2900

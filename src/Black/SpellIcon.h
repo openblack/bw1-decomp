@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h>                            /* For enum SPELL_SEED_TYPE */
+#include <chlasm/Enum.h>                            /* For enum MAGIC_TYPE, enum SPELL_SEED_TYPE */
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <re_common.h>                              /* For bool32_t */
 

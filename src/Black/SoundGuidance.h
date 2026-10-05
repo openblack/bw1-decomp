@@ -12,6 +12,7 @@
 // Forward Declares
 
 class Creature;
+class EffectValues;
 class GInterfaceStatus;
 class GPlayer;
 class GameThingWithPos;
@@ -72,6 +73,8 @@ public:
 	static void ProcessTownDesireSFX(GInterfaceStatus& status);
 	// BW1W120 0071b570 BW1M119 01518d40
 	static void ResourceDropSFX(GInterfaceStatus& status, const MapCoords& pos, RESOURCE_RAIN_TYPE type);
+	// BW1W120 0071b7c0 BW1M119 01517b10
+	static void TownAttackSFX(GInterfaceStatus& status, Town& town, EffectValues& values);
 	// BW1W120 0071d1c0 BW1M119 010852f0
 	static void HelpSpritesCheckMoonPhase();
 	// BW1W120 0071bf10 BW1M119 01517210
@@ -86,6 +89,10 @@ public:
 
 	// BW1W120 0071ac70 BW1M119 01519d90
 	void Init(GInterfaceStatus& status);
+	// BW1W120 0071c960 BW1M119 015167f0
+	void HelpSpritesCreatureAttackingThem(Creature* creature, EffectValues& values);
+	// BW1W120 0071c9f0 BW1M119 01516560
+	void HelpSpritesAttackingTown(Town& town, EffectValues& values);
 	// BW1W120 0071cbe0 BW1M119 01516150
 	void HelpSpritesLowOnPeople(Town& param_1);
 	// BW1W120 0071cd40 BW1M119 01515df0

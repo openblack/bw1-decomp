@@ -35,8 +35,8 @@ public:
 	uint8_t                 field_0x28[0xc];
 	LHPoint                 BuildingPositions[0x7f]; /* 0x34 */
 	uint8_t                 field_0x628[0x14];
-	uint8_t                 field_0x63c[0x4];
-	float                   life; /* 0x640 */
+	float                   ForcedDesire;
+	float                   life;
 
 	// Override methods
 
@@ -90,10 +90,14 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0043bc00 BW1M119 0106efd0
+	int GetBuildersNeeded();
 	// BW1W120 0043bc70 BW1M119 010624b0
 	MultiMapFixed* GetBuilding();
 	// BW1W120 0043bca0 BW1M119 0106f270
 	MultiMapFixed* GetRootBuilding();
+	// BW1W120 0043bd70 BW1M119 0106f0b0
+	float GetDesireForVillagers();
 	// BW1W120 0043bde0 BW1M119 010bf360
 	float GetClearAreaRadius();
 	// BW1W120 0043be00 BW1M119 010bf2b0
@@ -104,8 +108,12 @@ public:
 	float GetWoodNeededToBuild();
 	// BW1W120 0043c680 BW1M119 010bdd70
 	bool32_t ShouldIGetWood(Villager* param_1);
+	// BW1W120 0043bc60 BW1M119 01099990
+	bool32_t IsBuilderNeeded();
 	// BW1W120 0043d080 BW1M119 010bc950
 	void BuildBy(float amount);
+	// BW1W120 0043d0b0 BW1M119 010bc770
+	void RemoveAllVillagersFromTown(Town* town);
 };
 
 #endif /* BW1_DECOMP_BUILDING_SITE_INCLUDED_H */

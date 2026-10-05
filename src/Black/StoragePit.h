@@ -123,6 +123,11 @@ public:
 	// BW1W120 00732d60 BW1M119 0115b120
 	static StoragePit* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
 	                          float food, int wood);
+
+	// Non-virtual methods
+
+	// BW1W120 007336e0 BW1M119 0115a060
+	MapCoords GetTownDesireFlagPos(unsigned long index);
 	// BW1W120 007337d0 BW1M119 01159e10
 	PileResource* GetResourcePile(RESOURCE_TYPE type, unsigned long index);
 };

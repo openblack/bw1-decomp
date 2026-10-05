@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum EFFECT_TYPE */
+#include <chlasm/Enum.h> /* For enum EFFECT_TYPE, enum MAGIC_TYPE */
 
 #include "Base.h"          /* For struct Base */
 #include "EffectNumbers.h" /* For struct EffectNumbers */
@@ -32,6 +32,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	EffectValues() : AppliedBy(NULL), field_0x38(0) { SetToZero(); }
 	// BW1W120 00525040 BW1M119 010d0680
 	EffectValues(EFFECT_TYPE type, float value, GameThing* source, float param_4, GPlayer* player);
 
@@ -39,6 +41,13 @@ public:
 
 	// BW1W120 005254c0 BW1M119 010d0070
 	GPlayer* GetPlayer() const;
+	// BW1W120 00525910 BW1M119 010cfbf0
+	GPlayer* GetCausedPlayer() const;
+	// BW1W120 00525500 BW1M119 010cfff0
+	void SetToZero();
 };
+
+// BW1W120 00524ed0 BW1M119 010d0b60
+void operator++(MAGIC_TYPE& type, int);
 
 #endif /* BW1_DECOMP_EFFECT_VALUES_INCLUDED_H */

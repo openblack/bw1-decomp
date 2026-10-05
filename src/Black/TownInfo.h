@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/Enum.h> /* For VILLAGER_JOB_LAST */
+
 #include "ContainerInfo.h" /* For struct GContainerInfo */
 
 // Forward Declares
@@ -15,10 +17,34 @@ struct LHColor;
 class GTownInfo : public GContainerInfo
 {
 public:
-	uint8_t  field_0x14[0xf8];
+	uint8_t  field_0x14[0x34];
+	uint32_t FemalePercentage;
+	uint8_t  field_0x4c[0x8];
+	uint32_t JobWeights[VILLAGER_JOB_LAST];
+	uint8_t  field_0x74[0x4];
+	float    BaseInfluence;
+	uint8_t  field_0x7c[0x20];
+	float    InteractionDecrease;
+	float    InteractionIncrease;
+	uint8_t  field_0xa4[0x8];
+	float    FirstAttackAggressorBonus;
+	uint8_t  field_0xb0[0x8];
+	float    InitialBeliefInNeutralPlayer;
+	// TODO: Extent unknown (at most 0xe entries); Town::GetBaseInfluence indexes it with GGame::LandNumber.
+	float    BaseInfluenceByLand[0xe];
+	int      DefaultVillagerCapacity;
+	uint32_t field_0xf8;
+	uint32_t field_0xfc;
+	uint32_t ResourceRemovedRecoveryTurns;
+	uint32_t field_0x104;
+	uint32_t field_0x108;
 	float    field_0x10c;
 	uint32_t field_0x110;
-	uint8_t  field_0x114[0x2c];
+	uint8_t  field_0x114[0x10];
+	float    DiscipleMinDesire;
+	float    DiscipleMaxDesire;
+	uint32_t ArtifactBeliefGiftTurns;
+	uint8_t  field_0x130[0x10];
 	float    field_0x140;
 	float    field_0x144;
 	float    field_0x148;
@@ -27,7 +53,7 @@ public:
 	float    field_0x154;
 	float    field_0x158;
 	float    field_0x15c;
-	uint32_t field_0x160;
+	float    DiscipleAlignmentChange;
 	float    field_0x164;
 	uint32_t field_0x168;
 	float    field_0x16c;
@@ -39,14 +65,26 @@ public:
 	float    field_0x184;
 	float    field_0x188;
 
+	// Static data
+
+	// BW1W120 00da2780
+	static GTownInfo Definitions[1];
+
 	// Override methods
 
-	// BW1W120 00738fc0 BW1M119 0154f640
-	virtual ~GTownInfo();
-	// BW1W120 0073fd80 BW1M119 inlined
+	// BW1W120 0073fd80 BW1M119 01553de0
 	virtual LHColor GetDebugColor() const;
 	// BW1W120 00738f70 BW1M119 0154f5e0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = sizeof(Definitions) / sizeof(Definitions[0]);
+		return GetInfo();
+	}
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 01562350
+	static GTownInfo* GetInfo() { return Definitions; }
 };
 
 #endif /* BW1_DECOMP_TOWN_INFO_INCLUDED_H */

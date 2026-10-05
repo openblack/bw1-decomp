@@ -67,13 +67,18 @@ struct LH3DMapCoords
 	// BW1W120 inlined BW1M119 inlined
 	void SetMapZ(uint16_t z) { CellZ = z; }
 	// BW1W120 inlined BW1M119 0104d810
-	void SetWholeX(int x);
+	void SetWholeX(long _x) { x = _x; }
 	// BW1W120 inlined BW1M119 0104d850
-	void SetWholeZ(int z);
+	void SetWholeZ(long _z) { z = _z; }
 	// BW1W120 inlined BW1M119 0104d890
-	void SetAltitude(float altitude);
+	void SetAltitude(float _altitude) { altitude = _altitude; }
 	// BW1W120 0054b820 BW1M119 inlined
-	void SetToZero();
+	void SetToZero()
+	{
+		SetWholeX(0);
+		SetWholeZ(0);
+		SetAltitude(0.0f);
+	}
 };
 
 #endif /* BW1_DECOMP_LH3D_MAP_COORDS_INCLUDED_H */

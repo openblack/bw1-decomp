@@ -6,7 +6,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
 #include <chlasm/AllMeshes.h>                           /* For enum MESH_LIST */
-#include <chlasm/Enum.h>                                /* For enum OBJECT_TYPE */
+#include <chlasm/Enum.h>                                /* For enum OBJECT_TYPE, enum TRIBE_TYPE */
 #include <re_common.h>                                  /* For bool32_t */
 
 enum COLLIDE_TYPE
@@ -81,6 +81,8 @@ struct MapCoords : public LH3DMapCoords
 	MapCoords(float x, float z, float altitude);
 	// BW1W120 006031d0 BW1M119 013c72a0
 	MapCoords(const char* str);
+	// BW1W120 inlined BW1M119 inlined
+	MapCoords(float meters_x, float meters_z);
 	// BW1W120 00603030 BW1M119 01375af0
 	MapCoords(JustWholeMapXZ* xz);
 	// BW1W120 00603160 BW1M119 0106cbb0
@@ -117,16 +119,24 @@ struct MapCoords : public LH3DMapCoords
 	MapCoords operator+(const MapCoords& other) const;
 	// BW1W120 006055c0 BW1M119 inlined
 	MapCoords operator-(const MapCoords& other) const;
+	// BW1W120 00601f90 BW1M119 013fd5d0
+	uint32_t GetNearestTown(Town** town, unsigned long* distance, const Town* exclude, TRIBE_TYPE tribe_type) const;
 	// BW1W120 006020e0 BW1M119 01412720
 	Town* GetNearestTown(float t_max) const;
 	// BW1W120 00603280 BW1M119 01183eb0
 	void Set(const char* str);
+	// BW1W120 00603320 BW1M119 01007700
+	void Set(const MapCoords& other);
 	// BW1W120 00603340 BW1M119 0106cad0
 	MapCoords* Set(const LHPoint& point);
 	// BW1W120 inlined BW1M119 01024700
 	float MetersX() const;
 	// BW1W120 inlined BW1M119 01024770
 	float MetersZ() const;
+	// BW1W120 inlined BW1M119 0107ffa0
+	void SetMetersX(float meters);
+	// BW1W120 inlined BW1M119 010247e0
+	void SetMetersZ(float meters);
 	// BW1W120 inlined BW1M119 inlined
 	void SetX(float _x) { SetWholeX((long)(_x * (float)0x10000 / 10.0f)); }
 	// BW1W120 inlined BW1M119 0104d810
@@ -163,10 +173,14 @@ struct MapCoords : public LH3DMapCoords
 	bool32_t IsDryLand() const;
 	// BW1W120 00603720 BW1M119 0106a480
 	bool32_t IsLand() const;
+	// BW1W120 00603840 BW1M119 015aa980
+	bool32_t IsNavigable() const;
 	// BW1W120 006038b0 BW1M119 015aa7d0
 	bool32_t IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3) const;
 	// BW1W120 00603dc0 BW1M119 01121940
 	void IsSuitableForFixed(Game3DObject* object) const;
+	// BW1W120 00603dc0 BW1M119 0154e6c0
+	bool32_t IsSuitableForAbodeBuildFixed(Game3DObject* object, float param_2, float param_3, Object* param_4) const;
 	// BW1W120 006045c0 BW1M119 0101c170
 	Object* FindType(OBJECT_TYPE type, Object* object) const;
 	// BW1W120 00604af0 BW1M119 013c9d50
@@ -185,6 +199,8 @@ struct MapCoords : public LH3DMapCoords
 	MapCoords* operator=(const MapCoords* other);
 	// BW1W120 inlined BW1M119 0104cb80
 	float Altitude() const { return altitude; }
+	// BW1W120 inlined BW1M119 inlined
+	bool IsZero() const { return WholeX() == 0 && WholeZ() == 0 && Altitude() == 0.0f; }
 	// BW1W120 0060d740 BW1M119 0106d020
 	void AddToMapX(short dx) { SetMapX(MapX() + dx); }
 	// BW1W120 0060d750 BW1M119 0106cfe0

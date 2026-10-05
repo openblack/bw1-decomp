@@ -14,6 +14,7 @@
 #include "TownInfo.h"        /* For GTownInfo::field_0x140 */
 #include "Game.h"
 #include "GameThing.h"
+#include "GraveYard.h"
 #include "VillagerInfo.h"
 #include "MapCoords.h"
 #include "MultiMapFixed.h"
@@ -220,12 +221,12 @@ bool32_t Villager::CheckTrader()
 	{
 		return false;
 	}
-	float woodDesire = TradeTown->desire.field_0x168[TOWN_DESIRE_INFO_FOR_WOOD] +
-	                   TradeTown->desire.field_0xd4[TOWN_DESIRE_INFO_FOR_WOOD] +
-	                   TradeTown->desire.field_0x90[TOWN_DESIRE_INFO_FOR_WOOD];
-	float foodDesire = TradeTown->desire.field_0x168[TOWN_DESIRE_INFO_FOR_FOOD] +
-	                   TradeTown->desire.field_0xd4[TOWN_DESIRE_INFO_FOR_FOOD] +
-	                   TradeTown->desire.field_0x90[TOWN_DESIRE_INFO_FOR_FOOD];
+	float woodDesire = TradeTown->desire.RawDesire[TOWN_DESIRE_INFO_FOR_WOOD] +
+	                   TradeTown->desire.DesireBoost[TOWN_DESIRE_INFO_FOR_WOOD] +
+	                   TradeTown->desire.DesireCheat[TOWN_DESIRE_INFO_FOR_WOOD];
+	float foodDesire = TradeTown->desire.RawDesire[TOWN_DESIRE_INFO_FOR_FOOD] +
+	                   TradeTown->desire.DesireBoost[TOWN_DESIRE_INFO_FOR_FOOD] +
+	                   TradeTown->desire.DesireCheat[TOWN_DESIRE_INFO_FOR_FOOD];
 	if (foodDesire > woodDesire)
 	{
 		TargetThing = NULL;
@@ -465,8 +466,8 @@ bool32_t Villager::SetDying()
 		DeleteDependancys();
 		status |= 0x30;
 	}
-#ifndef VERSION_BW1W100 // Town::field_0x748 is taken to be a 1.10 addition; see Town.h.
-	if (town != NULL && town->field_0x748 != 0 && ((MultiMapFixed*)town->field_0x748)->IsFunctional())
+#ifndef VERSION_BW1W100 // The BW1W100 build does not check the town's graveyard here.
+	if (town != NULL && town->graveyard != NULL && town->graveyard->IsFunctional())
 	{
 		TurnsUntilNextStateChange = (int16_t)((const GVillagerInfo*)info)->DyingTimeWithGraveyard;
 	}
@@ -496,8 +497,8 @@ bool32_t Villager::Dying()
 	}
 	if ((Flags & 4) == 0)
 	{
-#ifndef VERSION_BW1W100 // Town::field_0x748 is taken to be a 1.10 addition; see Town.h.
-		if (GetTown() != NULL && GetTown()->field_0x748 != 0)
+#ifndef VERSION_BW1W100 // The BW1W100 build does not check the town's graveyard here.
+		if (GetTown() != NULL && GetTown()->graveyard != NULL)
 		{
 			return true;
 		}

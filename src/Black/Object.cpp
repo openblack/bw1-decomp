@@ -193,7 +193,7 @@ void Object::Delete()
 
 bool32_t Object::IsObjectInMapCheck()
 {
-	if (Flags & GAME_THING_WITH_POS_FLAG_FIXED)
+	if (Flags & GAME_THING_WITH_POS_FLAG_FIXED_FOR_MAP_LIST)
 	{
 		if (Pos.InBounds())
 		{
@@ -250,7 +250,7 @@ void Object::RemoveMapObject()
 bool32_t Object::IsObjectInMap(MapCell* cell)
 {
 	Object* object;
-	if (Flags & GAME_THING_WITH_POS_FLAG_FIXED)
+	if (Flags & GAME_THING_WITH_POS_FLAG_FIXED_FOR_MAP_LIST)
 	{
 		for (object = cell->FirstObjectFixed; object != NULL; object = object->GetMapChild(*cell))
 		{
@@ -275,7 +275,7 @@ bool32_t Object::IsObjectInMap(MapCell* cell)
 
 void Object::InsertMapObjectToCell(MapCell* cell)
 {
-	if (Flags & GAME_THING_WITH_POS_FLAG_FIXED)
+	if (Flags & GAME_THING_WITH_POS_FLAG_FIXED_FOR_MAP_LIST)
 	{
 		Object* last = cell->FirstObjectFixed;
 		if (last == NULL)
@@ -310,7 +310,7 @@ void Object::InsertMapObjectToCell(MapCell* cell)
 
 void Object::RemoveMapObjectFromCell(MapCell* cell)
 {
-	if (Flags & GAME_THING_WITH_POS_FLAG_FIXED)
+	if (Flags & GAME_THING_WITH_POS_FLAG_FIXED_FOR_MAP_LIST)
 	{
 		Object* object = cell->FirstObjectFixed;
 		if (object == this)
@@ -2111,7 +2111,7 @@ void Object::InitialiseIsFixedForMapList()
 {
 	OBJECT_TYPE type = info->type;
 	uint32_t    fixed = MapCell::DoesObjectTypeCountAsFixed(type);
-	Flags = (Flags & ~GAME_THING_WITH_POS_FLAG_FIXED) | (fixed << 15);
+	Flags = (Flags & ~GAME_THING_WITH_POS_FLAG_FIXED_FOR_MAP_LIST) | (fixed << 15);
 }
 
 bool32_t Object::IsSuitableForArtifact()

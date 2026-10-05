@@ -16,6 +16,8 @@ struct EffectNumbers
 
 	// Non-virtual methods
 
+	// BW1W120 005256d0 BW1M119 010cfe00
+	EffectNumbers& operator=(const EffectNumbers& rhs);
 	// BW1W120 00525720 BW1M119 010cfd50
 	EffectNumbers& operator*=(const float& rhs);
 	// BW1W120 005258c0 BW1M119 010cfcd0

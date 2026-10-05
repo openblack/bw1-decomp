@@ -14,9 +14,6 @@
 #include "Game.h"
 
 extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
-// TODO: Villager.cpp defines this `static const`, but this TU reads it — the original
-// must have had external linkage; reconcile with Villager.cpp.
-extern "C" const DiscipleInfo g_DiscipleInfos[VILLAGER_DISCIPLE_LAST];
 
 // BW1W120 0075bb60
 float __stdcall POWER(float base);
@@ -39,7 +36,7 @@ bool32_t Villager::HomeDecideWhatToDo()
 	if (disciple_flags & 1)
 	{
 		uint32_t disciple = DiscipleType;
-		if (g_DiscipleInfos[(uint8_t)disciple].field_0xc == 1)
+		if (GVillagerInfo::GetDiscipleInfo()[(uint8_t)disciple].field_0xc == 1)
 		{
 			if ((uint8_t)disciple == VILLAGER_DISCIPLE_BREEDER)
 			{
@@ -132,7 +129,7 @@ bool32_t Villager::CheckNeedsAtHome()
 	uint32_t flags = Flags;
 	uint8_t  disciple_flags = flags >> 9;
 	float    desire;
-	if ((disciple_flags & 1) && g_DiscipleInfos[DiscipleType].field_0xc == 1)
+	if ((disciple_flags & 1) && GVillagerInfo::GetDiscipleInfo()[DiscipleType].field_0xc == 1)
 	{
 		const GVillagerInfo* vi = (const GVillagerInfo*)info;
 		desire = max(GetLifeDesireFromLife(vi->DamageThresholdToGoHome), POWER(vi->StarvingForFood));

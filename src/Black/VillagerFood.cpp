@@ -118,7 +118,7 @@ uint32_t Villager::GetAmountOfFoodToEat()
 	float                foodWanted = GetDesireForFood() * villagerInfo->FoodReqiredForDinner;
 	if (GetTown())
 	{
-		float scarcity = GetTown()->desire.field_0x118[TOWN_DESIRE_INFO_FOR_FOOD];
+		float scarcity = GetTown()->desire.Desire[TOWN_DESIRE_INFO_FOR_FOOD];
 		if (scarcity < 0.0f)
 			scarcity = 0.0f;
 		else if (scarcity > 1.0f)

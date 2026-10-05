@@ -26,11 +26,61 @@ struct LHListHead
 	T* Get() { return head; }
 	// BW1W120 inlined BW1M119 010cd520
 	void Set(T* element) { head = element; }
-	// BW1W120 inlined BW1M119 0158fa30
+	// BW1W120 inlined BW1M119 01561cd0
 	void Clear()
 	{
-		head = NULL;
+		Set(NULL);
 		count = 0;
+	}
+	// BW1W120 007422b0 BW1M119 inlined
+	void RemoveAll()
+	{
+		T* element = head;
+		while (element != NULL)
+		{
+			T* next = element->next;
+			element->next = NULL;
+			element = next;
+		}
+		Clear();
+	}
+	// BW1W120 007422d0 BW1M119 inlined
+	void DeleteAll()
+	{
+		T* element = head;
+		while (element != NULL)
+		{
+			T* next = element->next;
+			if ((element->GameThing::Flags & GAME_THING_FLAG_UNAVAILABLE) == 0)
+			{
+				element->ToBeDeleted(0);
+			}
+			element = next;
+		}
+		Clear();
+	}
+
+	// BW1W120 inlined BW1M119 inlined
+	void ToBeDeletedEach()
+	{
+		T* element = head;
+		while (element != NULL)
+		{
+			T* next = element->next;
+			element->ToBeDeleted(0);
+			element = next;
+		}
+		Clear();
+	}
+
+	// BW1W120 inlined BW1M119 null
+	void ToBeDeletedAll()
+	{
+		T* element;
+		while ((element = Get()) != NULL)
+		{
+			element->ToBeDeleted(0);
+		}
 	}
 
 	T* Find(T* element)
@@ -54,7 +104,7 @@ struct LHListHead
 	T* Get(uint32_t index) const
 	{
 		T* walker = head;
-		for (uint32_t i = 0; i < index && walker != NULL; ++i)
+		for (uint32_t i = 0; walker != NULL && index != i; ++i)
 		{
 			walker = walker->next;
 		}
@@ -66,6 +116,21 @@ struct LHListHead
 	// Confirmed against BW1M119 .GetNext__21LHListHead<8Villager>FP8Villager:
 	//   if (param_2 == 0) return *param_1; return *(param_2 + 0xe4);
 	T* GetNext(T* element) const { return element == NULL ? head : element->next; }
+
+	// BW1W120 inlined BW1M119 inlined
+	T* GetPrevious(T* element) const
+	{
+		if (head == element)
+		{
+			return NULL;
+		}
+		T* walker = head;
+		while (walker != NULL && walker->next != element)
+		{
+			walker = walker->next;
+		}
+		return walker;
+	}
 
 	T* GetLast() const
 	{
@@ -82,27 +147,20 @@ struct LHListHead
 		if (head == element)
 		{
 			head = element->next;
+			count--;
+			element->next = NULL;
+			return;
 		}
-		else
+		for (T* walker = head; walker != NULL; walker = walker->next)
 		{
-			T* walker = head;
-			while (true)
+			if (walker->next == element)
 			{
-				if (walker == NULL)
-				{
-					return;
-				}
-				T* next = walker->next;
-				if (next == element)
-				{
-					break;
-				}
-				walker = next;
+				walker->next = element->next;
+				count--;
+				element->next = NULL;
+				return;
 			}
-			walker->next = element->next;
 		}
-		count--;
-		element->next = NULL;
 	}
 };
 
@@ -111,16 +169,16 @@ template <typename T> void LHListHead<T>::AddToLast(T* element)
 	T* walker = head;
 	if (walker != NULL)
 	{
-		for (T* next = walker->next; next != NULL; next = walker->next)
+		while (walker->next != NULL)
 		{
-			walker = next;
+			walker = walker->next;
 		}
 		walker->next = element;
-		element->next = NULL;
-		++count;
-		return;
 	}
-	head = element;
+	else
+	{
+		head = element;
+	}
 	element->next = NULL;
 	++count;
 }

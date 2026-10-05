@@ -222,7 +222,7 @@ MultiMapFixed::MultiMapFixed(const MapCoords& coords, const GMultiMapFixedInfo* 
                              float percent_built, int under_construction)
 	: Fixed(coords, info, y_angle, scale)
 {
-	Flags |= GAME_THING_WITH_POS_FLAG_0x00000002;
+	Flags |= GAME_THING_WITH_POS_FLAG_FIXED;
 	FootpathLink = NULL;
 	UnderConstruction = under_construction;
 	if (UnderConstruction)
@@ -731,7 +731,7 @@ bool MultiMapFixed::IsDrawBuilding()
 uint32_t MultiMapFixed::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager)
 {
 	Town* town = GetTown();
-	if (town == NULL || town->field_0x5f4 == 0)
+	if (town == NULL || town->Uninhabitable == 0)
 	{
 		if (status->GetPlayer() == villager->GetPlayer())
 		{
@@ -876,9 +876,9 @@ void MultiMapFixed::CreateCollideData()
 	CollideData = new (FIXED_SOURCE_FILE, 1286 - FIXED_LINE_SHIFT) NewCollide(Game3dObject);
 }
 
-bool32_t MultiMapFixed::CreateBuildingSite()
+BuildingSite* MultiMapFixed::CreateBuildingSite()
 {
-	return (bool32_t) new (FIXED_SOURCE_FILE, 1292 - FIXED_LINE_SHIFT) StandardBuildingSite(this);
+	return new (FIXED_SOURCE_FILE, 1292 - FIXED_LINE_SHIFT) StandardBuildingSite(this);
 }
 
 float MultiMapFixed::ReduceLife(float value, GPlayer* player)

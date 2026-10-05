@@ -202,6 +202,10 @@ public:
 	int GetFieldActivity(int param_1);
 	// BW1W120 00529500 BW1M119 01000730
 	float GetPercentFull();
+	// BW1W120 005293a0 BW1M119 010d8040
+	float GetDesireToBeFarmed();
+	// BW1W120 0052a080 BW1M119 010d66b0
+	float GetPercentFullWithFood();
 	// BW1W120 005295a0 BW1M119 010d7c70
 	float RemoveFood(float param_1);
 	// BW1W120 00529700 BW1M119 010d7c10

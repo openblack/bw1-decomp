@@ -134,7 +134,7 @@ public:
 	// BW1W120 00422050 BW1M119 010a8920
 	virtual bool32_t IsWonder() { return false; }
 	// BW1W120 0052f590 BW1M119 010e32d0
-	virtual bool32_t CreateBuildingSite();
+	virtual BuildingSite* CreateBuildingSite();
 	// BW1W120 0052e400 BW1M119 01036580
 	virtual Object* GetMapChild(const MapCell& cell);
 	// BW1W120 0052e420 BW1M119 010e5e70

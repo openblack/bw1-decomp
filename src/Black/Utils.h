@@ -3,10 +3,12 @@
 
 #include <stdint.h> /* For uint16_t, uint32_t */
 
-#include <re_common.h> /* For bool32_t */
+#include <chlasm/Enum.h> /* For enum TRIBE_TYPE */
+#include <re_common.h>   /* For bool32_t */
 
 // Forward Declares
 
+class Abode;
 struct JustMapXZ;
 struct MapCoords;
 
@@ -16,6 +18,7 @@ struct MapCoords;
 extern JustMapXZ MapXZDirections[4];
 
 // TODO: original header unknown; Mac keeps the instantiation POWER<double> (BW1M119 0149f1d0).
+// BW1W120 inlined BW1M119 01069710
 template <class T> inline T POWER(T value, unsigned long power)
 {
 	T result = value;
@@ -34,7 +37,7 @@ struct GUtils
 	static void GetDistance(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074cd70 BW1M119 0104bf00
 	static float GetDistanceInMetres(const MapCoords& param_1, const MapCoords& param_2);
-	// BW1W120 0074cd50
+	// BW1W120 0074cd50 BW1M119 null
 	static float GetDistanceInMetres_0074cd50(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074d200 BW1M119 010516f0
 	static long GetAngleFromDXDZ(long dx, long dz);
@@ -47,13 +50,17 @@ struct GUtils
 	// BW1W120 0074d7e0 BW1M119 0104c490
 	static const JustMapXZ* Spiral(long& param_1, long& param_2);
 	// BW1W120 0074d810 BW1M119 01024840
-	static void SpiralIncrement(MapCoords& param_1, int& param_2, int& param_3, float param_4);
+	static void SpiralIncrement(MapCoords& param_1, long& param_2, long& param_3, float param_4);
 	// BW1W120 0074dc50 BW1M119 0104f6e0
 	static float ConvertGameAngleTo3D(long angle);
+	// BW1W120 0074dc80 BW1M119 0101b2e0
+	static int ConvertDistance3DToGame(float distance);
 	// BW1W120 0074dcc0 BW1M119 01034b90
 	static float ConvertWholeDistanceToMeters(int param_1);
 	// BW1W120 0074dce0 BW1M119 01590e30
 	static int ConvertMetersToWholeDistance(float meters);
+	// BW1W120 0074dd70 BW1M119 011a8630
+	static Abode* FindClosestAbode(const MapCoords& pos, TRIBE_TYPE tribe_type, int param_3, int param_4, int param_5);
 	// BW1W120 0074e2b0 BW1M119 013e5570
 	static float ConvertGameAngleToScawenAngle(uint16_t angle);
 	// BW1W120 0074e3a0 BW1M119 01180280
@@ -66,6 +73,8 @@ struct GUtils
 	static int GetPathFromPath(char* path, char* out);
 	// BW1W120 0074f290 BW1M119 01069b80
 	static float GetDistanceModifier(float param_1, float param_2);
+	// BW1W120 0074f490 BW1M119 015079b0
+	static uint32_t GetNumVillagersNear(const MapCoords& pos, unsigned long cells);
 	// BW1W120 0074f520 BW1M119 010254b0
 	static int GetMapCellSpiralSizeFromRadius(float param_1);
 	// BW1W120 0074f540 BW1M119 010027b0

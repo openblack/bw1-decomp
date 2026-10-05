@@ -22,8 +22,6 @@
 extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
 
 // BW1W120 0076ba60 BW1M119 01098d20
-// TODO: the true return type is float — the target tail-returns CheckWorshipActivity's
-// float in ST0 with no __ftol; as bool32_t our tail emits one
 bool32_t Villager::CheckNeededForWorship()
 {
 	GetTown();
@@ -39,16 +37,12 @@ bool32_t Villager::CheckNeededForWorship()
 	{
 		int worshippersNeeded = 1;
 		if (town->GetWorshipersNeeded(1, 1, &worshippersNeeded) > 0)
-			return (bool32_t)CheckWorshipActivity(worshippersNeeded);
+			return CheckWorshipActivity(worshippersNeeded);
 	}
 	return 0;
 }
 
-// BW1W120 0076bae0 BW1M119 015a5bb0
-// TODO: the target never sets an explicit return value (every path leaves the last callee's
-// ST0), and it inlines removal of `this` from the reaction's follower node list before
-// StartReacting — the node type and the Reaction* field at MagicTeleport+0x94 are unnamed
-float Villager::CheckWorshipActivity(int num_needed)
+bool32_t Villager::CheckWorshipActivity(int num_needed)
 {
 	MagicTeleport* teleport = NULL;
 	Town*          town = GetTown();
@@ -64,15 +58,12 @@ float Villager::CheckWorshipActivity(int num_needed)
 				if (teleport != NULL)
 				{
 					SetReactionDoneWhen(REACTION_REACT_TO_TELEPORT);
-					// TODO: the target inlines removal of `this` from the reaction's node list here
 					StartReacting(REACTION_REACT_TO_TELEPORT, teleport, *(Reaction**)((uint8_t*)teleport + 0x94));
 				}
 			}
 		}
 	}
-	// TODO: the target has no return value here, but a float function with no return
-	// statement at all breaks the MSVC6 optimizer — 0.0f stands in
-	return 0.0f;
+	return false;
 }
 
 // BW1W120 0076bc20 BW1M119 015a5a80

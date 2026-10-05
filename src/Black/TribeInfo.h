@@ -34,13 +34,10 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 01162090
-	inline static char** GetTribeTextArray()
-	{
-		static char* TribeTextArray[] = {
-			"CELTIC", "AFRICAN", "AZTEC", "JAPANESE", "INDIAN", "EGYPTIAN", "GREEK", "NORSE", "TIBETAN", "LAST_ERROR",
-		};
-		return TribeTextArray;
-	}
+	static char** GetTribeTextArray() { return TribeTextArray; }
+
+	// BW1W120 00c22fdc
+	static char* TribeTextArray[TRIBE_TYPE_LAST + 1];
 };
 
 #endif /* BW1_DECOMP_TRIBE_INFO_INCLUDED_H */

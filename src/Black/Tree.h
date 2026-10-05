@@ -81,9 +81,9 @@ public:
 	// BW1W120 0055d940 BW1M119 011619e0
 	virtual bool32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1);
 	// BW1W120 0055d9d0 BW1M119 inlined
-	virtual uint32_t IsTree_1();
+	virtual bool32_t IsTree();
 	// BW1W120 0055d920 BW1M119 inlined
-	virtual uint32_t IsTree_0(Creature* param_1);
+	virtual bool32_t IsTree(Creature* param_1);
 	// BW1W120 004e46e0 BW1M119 015ecac0
 	virtual bool32_t IsTreeNotTooNearPlannedForest(Creature* param_1);
 	// BW1W120 0074c0a0 BW1M119 0115e970

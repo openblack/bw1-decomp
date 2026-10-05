@@ -306,8 +306,8 @@ public:
 			return FALSE;
 		}
 		uint32_t count = list.count;
+		int      written = 0;
 		WriteIt(list.count);
-		int written = 0;
 		for (T* element = NULL; (element = (element == NULL ? list.head : element->next)) != NULL;)
 		{
 			if (++written > (int)count)
@@ -322,6 +322,89 @@ public:
 			WritePtr(element);
 		}
 		return TRUE;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	template <typename T> bool32_t ReadSafe(LHLinkedList<T>& list)
+	{
+		if (!ReadEnabled)
+		{
+			return FALSE;
+		}
+		int count;
+		ReadIt(count);
+		while (count > 0)
+		{
+			T element;
+			ReadPtr((GameThing**)&element);
+			list.AddToEnd(element);
+			count--;
+		}
+		return TRUE;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	template <typename T> bool32_t WriteSafe(LHLinkedList<T>& list)
+	{
+		if (!WriteEnabled)
+		{
+			return FALSE;
+		}
+		uint32_t count = list.count;
+		int      written = 0;
+		WriteIt(list.count);
+		for (LHLinkedNode<T>* node = list.head.Get(); node != NULL; node = node->next.Get())
+		{
+			if (++written > (int)count)
+			{
+				WriteEnabled = false;
+				break;
+			}
+			if (!WriteEnabled)
+			{
+				break;
+			}
+			WritePtr(node->payload);
+		}
+		if (WriteEnabled && written != (int)count)
+		{
+			WriteEnabled = false;
+		}
+		return TRUE;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	template <typename T> void ReadSafe2DArray(T (*values)[2])
+	{
+		if (!ReadEnabled)
+		{
+			return;
+		}
+		unsigned long rows;
+		unsigned long columns;
+		ReadIt(rows);
+		ReadIt(columns);
+		for (unsigned long row = 0; row < rows; row++)
+		{
+			for (unsigned long column = 0; column < columns; column++)
+			{
+				ReadIt(values[row][column]);
+			}
+		}
+	}
+	// BW1W120 inlined BW1M119 inlined
+	template <typename T> void WriteSafe2DArray(T (*values)[2], unsigned long rows, unsigned long columns)
+	{
+		if (!WriteEnabled)
+		{
+			return;
+		}
+		WriteIt(rows);
+		WriteIt(columns);
+		for (unsigned long row = 0; row < rows; row++)
+		{
+			for (unsigned long column = 0; column < columns && WriteEnabled; column++)
+			{
+				WriteIt(values[row][column]);
+			}
+		}
 	}
 
 	// Inliner IL size: 83

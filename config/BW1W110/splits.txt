@@ -1893,18 +1893,19 @@ Black/Totem.cpp:
 Black/TotemStatue.cpp:
 	.text       start:0x0072BCF0 end:0x0072D220
 	.rdata      start:0x009899AC end:0x009899C0
-	.data       start:0x00C11C10 end:0x00C11C88
-	.bss        start:0x00D909D8 end:0x00D91448
+	.data       start:0x00C11C10 end:0x00C11C30
+	.bss        start:0x00D909D8 end:0x00D91438
 
 Black/Town.cpp:
-	.text       start:0x0072D270 end:0x00737980
-	.rdata      start:0x009899C0 end:0x00989F84
-	.CRT$XCU    start:0x009B71D4 end:0x009B71D8 align:4
-	.bss        start:0x00D91448 end:0x00D915E8
+	.text       start:0x0072D220 end:0x00737980
+	.rdata      start:0x00989A18 end:0x00989FA8
+	.CRT$XCU    start:0x009B71CC end:0x009B71D8 align:4
+	.data       start:0x00C11C30 end:0x00C11CA0
+	.bss        start:0x00D91438 end:0x00D915E8
 
 Black/TownAttitudeToCreature.cpp:
 	.text       start:0x007379B0 end:0x00737CE0
-	.rdata      start:0x00989F84 end:0x00989FB8
+	.rdata      start:0x00989FA8 end:0x00989FB8
 
 Black/TownCentre.cpp:
 	.text       start:0x00737CE0 end:0x00738CE0

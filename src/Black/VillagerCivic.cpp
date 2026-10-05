@@ -232,12 +232,12 @@ float Villager::GetWoodUsedPerBuild()
 // BW1W120 00758e30 BW1M119 0109a440
 bool32_t Villager::CheckSatisfyAbodesDesire()
 {
-	if (CheckNeededForBuilding() == 1)
+	if (CheckNeededForBuilding() == true)
 		return true;
-	if (GetTown()->field_0x5e4 == 0)
+	if (GetTown()->BuildingRequested == false)
 	{
-		GetTown()->field_0x5e4 = 1;
-		if (GetTown()->RequestANewAbode(ABODE_TYPE_LIVING_QUARTERS) == 1 && CheckNeededForBuilding() == 1)
+		GetTown()->BuildingRequested = TRUE;
+		if (GetTown()->RequestANewAbode(ABODE_TYPE_LIVING_QUARTERS) == true && CheckNeededForBuilding() == true)
 			return true;
 	}
 	return false;
@@ -246,12 +246,12 @@ bool32_t Villager::CheckSatisfyAbodesDesire()
 // BW1W120 00758e90 BW1M119 0157d760
 bool32_t Villager::CheckSatisfyCivicBuildings()
 {
-	if (CheckNeededForBuilding() == 1)
+	if (CheckNeededForBuilding() == true)
 		return true;
-	if (GetTown()->field_0x5e4 == 0)
+	if (GetTown()->BuildingRequested == false)
 	{
-		GetTown()->field_0x5e4 = 1;
-		if (GetTown()->RequestBestPlanned() == 1 && CheckNeededForBuilding() == 1)
+		GetTown()->BuildingRequested = TRUE;
+		if (GetTown()->RequestBestPlanned() == true && CheckNeededForBuilding() == true)
 			return true;
 	}
 	return false;

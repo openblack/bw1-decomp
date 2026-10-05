@@ -15,7 +15,9 @@ struct MapCoords;
 class GFieldTypeInfo : public GMultiMapFixedInfo
 {
 public:
-	uint8_t field_0x20[0x34]; /* 0x120 */
+	uint8_t  field_0x120[0x14];
+	uint32_t Capacity;
+	uint8_t  field_0x138[0x1c];
 
 	// Override methods
 

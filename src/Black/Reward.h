@@ -11,6 +11,7 @@
 
 // Forward Declares
 
+class Town;
 class Base;
 class GInterfaceStatus;
 class GPlayer;
@@ -26,7 +27,9 @@ public:
 	// BW1W120 006e6890 BW1M119 01090310
 	static void ProcessList();
 
-	uint8_t field_0x68[0x40];
+	uint8_t field_0x68[0xc];
+	Town*   town;
+	uint8_t field_0x78[0x30];
 
 	// Override methods
 

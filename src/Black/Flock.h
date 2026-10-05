@@ -11,6 +11,7 @@
 
 // Forward Declares
 
+class Animal;
 class Base;
 class CitadelHeart;
 class Creature;
@@ -105,6 +106,9 @@ public:
 	void RemoveLivingFromFlock(Living* living, int update);
 	// BW1W120 0052fc20 BW1M119 010ea580
 	void SetDomainCentrePos(const MapCoords& param_1);
+	// BW1W120 005304a0 BW1M119 010e8ea0
+	Animal* FindAnimal(int(__cdecl* param_1)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                   SCRIPT_OBJECT_TYPE param_2, uint32_t param_3);
 	// BW1W120 0052fe10 BW1M119 010ea170
 	// TODO: incorrect return type
 	void SeperateLivingIntoNewFlock(Living* living, int update);

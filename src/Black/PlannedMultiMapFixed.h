@@ -8,9 +8,11 @@
 #include <re_common.h>   /* For bool32_t */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
+#include "LHPTR.h"            /* For class LHPTR */
 
 // Forward Declares
 
+class BuildingSite;
 class GFootpathLink;
 class GMultiMapFixedInfo;
 class GObjectInfo;
@@ -22,14 +24,14 @@ class MultiMapFixed;
 class PlannedMultiMapFixed : public GameThingWithPos
 {
 public:
-	float                 field_0x28;
-	float                 scale;
-	uint32_t              field_0x30;
-	uint32_t              field_0x34;
-	GFootpathLink*        FootpathLink;
-	int                   CreationTurn;
-	GObjectInfo*          info; /* 0x40 */
-	PlannedMultiMapFixed* next;
+	float                           YAngle;
+	float                           scale;
+	uint32_t                        field_0x30;
+	uint32_t                        field_0x34;
+	GFootpathLink*                  FootpathLink;
+	int                             CreationTurn;
+	LHPTR<const GMultiMapFixedInfo> info;
+	PlannedMultiMapFixed*           next;
 
 	// Override methods
 
@@ -50,7 +52,7 @@ public:
 	// BW1W120 00465560 BW1M119 010d62b0
 	virtual bool32_t IsWonder();
 	// BW1W120 00648950 BW1M119 inlined
-	virtual bool32_t CreateBuildingSite();
+	virtual BuildingSite* CreateBuildingSite();
 	// BW1W120 00469660 BW1M119 010c09d0
 	virtual MultiMapFixed* CreatePlanned(float param_1);
 	// BW1W120 00465540 BW1M119 010d6220
