@@ -13,6 +13,22 @@ public:
 	unsigned short SamplesPerSlot;
 	unsigned short SamplesInSlot;
 
+	// BW1W120 inlined BW1M119 inlined
+	EverlastingGraph()
+	{
+		Size = SIZE;
+		SamplesPerSlot = PARAM;
+		SetToZero();
+	}
+
+	// BW1W120 inlined BW1M119 01323f30
+	void SetToZero()
+	{
+		Index = 0;
+		SamplesInSlot = 0;
+		memset(Data, 0, Size);
+	}
+
 	// BW1W120 inlined BW1M119 01034470
 	void Add(T value)
 	{

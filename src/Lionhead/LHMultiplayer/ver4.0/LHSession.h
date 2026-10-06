@@ -7,24 +7,33 @@
 
 class LHPlayer;
 
-// Only the established prefix is declared. Do not allocate using sizeof(LHSession).
-// The original DLL constructor at 10003090 establishes LHConnection inheritance.
+struct LHSessionGamePlayerInfo
+{
+	unsigned long UserID;
+	unsigned long ClanID;
+};
+
 class LHSession : public LHConnection
 {
 public:
-	LHLinkedList<LHPlayer*> Players; /* 0x90 */
+	LHLinkedList<LHPlayer*> Players;
 	uint32_t                field_0x98;
 	uint32_t                field_0x9c;
-	LHChannel*              Channel; /* 0xa0 */
+	LHChannel*              Channel;
 	uint32_t                field_0xa4;
 	uint32_t                field_0xa8;
-	// Original GetSuperPacketGameTurn at 10003170 reads this signed long.
-	long      SuperPacketGameTurn; /* 0xac */
-	uint8_t   field_0xb0[0x9c];
-	LHPlayer* LocalPlayer;
+	long                    SuperPacketGameTurn;
+	uint8_t                 field_0xb0[0x9c];
+	LHPlayer*               LocalPlayer;
+	uint8_t                 field_0x150[0x18c];
+	LHSessionGamePlayerInfo GamePlayerInfo[4][4];
 
 	// BW1W120 1001dab0 BW1M119 0101f490 (LHCombined Release)
 	LH_MULTIPLAYER_API int IsSinglePlayer();
+	// BW1W120 10003260
+	LH_MULTIPLAYER_API void* GetGameData();
+	// BW1W120 10003270
+	LH_MULTIPLAYER_API unsigned long GetGameDataLength();
 	// BW1W120 1001e5e0
 	LH_MULTIPLAYER_API int NextPacketIsSuperpacket();
 	// BW1W120 1001ccc0

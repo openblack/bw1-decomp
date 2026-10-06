@@ -1014,7 +1014,7 @@ void Abode::StopBeingFunctional(GPlayer* player)
 {
 	if (player != NULL && field_0xb9 >= 200)
 	{
-		++player->game_stats->field_0x1080;
+		++player->game_stats->BuildingsDestroyed;
 	}
 }
 

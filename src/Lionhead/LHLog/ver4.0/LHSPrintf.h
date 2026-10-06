@@ -13,6 +13,8 @@ public:
 	char Text[0x401]; // GetBufSize excludes the terminator; the DLL assignment copies all 0x401 bytes.
 	// BW1W120 100029d0 BW1M119 0116e140 (LHCombined Release)
 	__declspec(dllimport) LHSPrintf(char* format, ...);
+	// BW1W120 10001050 BW1M119 01103cb0 (LHCombined Release)
+	__declspec(dllimport) operator char*();
 };
 
 static_assert(sizeof(LHSPrintf) == 0x401, "LHSPrintf size is incorrect");

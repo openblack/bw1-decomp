@@ -423,18 +423,19 @@ public:
 		}
 	}
 
-	// Inliner IL size: 83
+	// Inliner IL size: 88
 	// BW1W120 00407700 BW1M119 010a9e00
 	template <typename T> void WriteIt(T& value)
 	{
 		if (WriteEnabled)
 		{
-			LH_FILE_RESULT result = Write(&value, sizeof(value), NULL);
+			T*             data = &value;
+			LH_FILE_RESULT result = Write(data, sizeof(value), NULL);
 			if (result == LH_FILE_RESULT_ERROR)
 			{
 				WriteEnabled = false;
 			}
-			uint8_t first = *(uint8_t*)&value;
+			uint8_t first = *(uint8_t*)data;
 			Checksum += first + sizeof(value);
 		}
 	}

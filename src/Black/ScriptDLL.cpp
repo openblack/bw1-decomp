@@ -27,3 +27,8 @@ int ScriptDLL::LoadBinary(const char* path)
 {
 	return LoadBinary(transport, path);
 }
+
+uint32_t ScriptDLL::GetScriptInstructionCount()
+{
+	return GetScriptInstructionCount_ptr(transport);
+}

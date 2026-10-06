@@ -61,6 +61,19 @@ struct LHListHead
 	}
 
 	// BW1W120 inlined BW1M119 inlined
+	void DeleteEach()
+	{
+		T* element = Get();
+		while (element != NULL)
+		{
+			T* next = element->next.Get();
+			delete element;
+			element = next;
+		}
+		Clear();
+	}
+
+	// BW1W120 inlined BW1M119 inlined
 	void ToBeDeletedEach()
 	{
 		T* element = head;
@@ -161,6 +174,29 @@ struct LHListHead
 				return;
 			}
 		}
+	}
+};
+
+template <typename T> struct LHListHeadTail : public LHListHead<T>
+{
+	T* tail;
+
+	// BW1W120 inlined BW1M119 inlined
+	LHListHeadTail() : tail(NULL) {}
+
+	// BW1W120 inlined BW1M119 inlined
+	void AddToTail(T* element)
+	{
+		if (tail != NULL)
+		{
+			tail->next.Set(element);
+		}
+		tail = element;
+		if (this->Get() == NULL)
+		{
+			this->Set(element);
+		}
+		this->count++;
 	}
 };
 

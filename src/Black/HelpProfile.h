@@ -21,6 +21,8 @@ struct CameraHelpAccumulator
 
 	// BW1W120 00448f20 BW1M119 011a5e10
 	void Reset();
+	// BW1W120 inlined BW1M119 01322a20
+	long GetTotal() { return TotalTriggerCount; }
 };
 
 static_assert(sizeof(CameraHelpAccumulator) == 0x10c, "Data type is of wrong size");

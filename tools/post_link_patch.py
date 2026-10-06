@@ -533,6 +533,23 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0052F0CB, call_rel32(0x00401879)),  # Fixed
     (0x0052F1EB, call_rel32(0x00401879)),  # Fixed
     (0x0052F50B, call_rel32(0x00401879)),  # Fixed
+    (0x005649EB, call_rel32(0x004017F9)),  # GameStats
+    (0x00564ADA, call_indirect(0x008A90A0)),  # GameStats: __imp_?GetCurrentPosition@CImmMouse@@UAEHAAJ0@Z
+    (0x00564EDB, call_rel32(0x004017F9)),  # GameStats
+    (0x00564EFB, call_rel32(0x004017F9)),  # GameStats
+    (0x00564F1B, call_rel32(0x004017F9)),  # GameStats
+    (0x00564F3B, call_rel32(0x004017F9)),  # GameStats
+    (0x00564F5B, call_rel32(0x004017F9)),  # GameStats
+    (0x00564F7B, call_rel32(0x004017F9)),  # GameStats
+    (0x00564F9B, call_rel32(0x004017F9)),  # GameStats
+    (0x00564FBB, call_rel32(0x004017F9)),  # GameStats
+    (0x00564FDB, call_rel32(0x004017F9)),  # GameStats
+    (0x0056535A, call_indirect(0x008A903C)),  # GameStats: __imp__DirectXSetupGetVersion
+    (0x0056544B, call_rel32(0x004017F9)),  # GameStats
+    (0x0056A26B, call_rel32(0x004017F9)),  # GameStats
+    (0x0056A36A, call_indirect(0x008A901C)),  # GameStats: __imp__TrackMouseEvent@4
+    (0x0056A38A, call_indirect(0x008A97AC)),  # GameStats: __imp__ShellExecuteA@4
+    (0x0056A3AA, call_indirect(0x008A9980)),  # GameStats: __imp_??0Dialup@@QAE@XZ
     (0x0056F9DB, call_rel32(0x004017F9)),  # GameThing
     (0x0056FB0B, call_rel32(0x004017F9)),  # GameThing
     (0x005703CA, call_indirect(0x008A96E4)),  # GameThing: __imp__LHSampleSetVolume...
