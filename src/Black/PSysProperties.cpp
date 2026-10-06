@@ -1789,10 +1789,17 @@ void LandscapeCollide::DefineProperties(PropertyList* list)
 // puts it after the _Tree helpers. The same IL also decides a register tie-break in
 // RegisterModifiers. This unreferenced helper (never emitted) stands in for the unknown original
 // reference.
+#if defined(VERSION_BW1W100)
+static std::string EmptyString()
+{
+	return std::string();
+}
+#else
 static void EmptyString()
 {
 	std::string text;
 }
+#endif
 
 bool PSysFileData::LoadFromFile(PARTICLE_TYPE type, const char* filename)
 {
@@ -1828,6 +1835,7 @@ bool PSysFileData::LoadFromFile(PARTICLE_TYPE type, const char* filename)
 	return !failed;
 }
 
+#if !defined(VERSION_BW1W100)
 bool32_t PSysFileData::SaveToFile(const char* filename)
 {
 	std::stringstream   stream;
@@ -1879,6 +1887,7 @@ bool32_t PSysFileData::SaveAsCode(const char* filename)
 	}
 	return !failed;
 }
+#endif
 
 #define DECLARE_PARTICLE_CREATOR(CLASS, LINE)                                                                          \
 	static Persistent* StaticCreate_##CLASS(PersistentOwner* owner)                                                    \

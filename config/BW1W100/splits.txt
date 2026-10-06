@@ -893,7 +893,7 @@ Black/HelpDudeControl.cpp:
 
 Black/HelpEditor.cpp:
 	.text       start:0x00585F30 end:0x00585F70
-	.data       start:0x00B1D6AC end:0x00B1D8D8
+	.data       start:0x00B1D6AC end:0x00B1D8DC
 	.bss        start:0x00C36C00 end:0x00C37284
 
 Black/HelpProfile.cpp:
@@ -1495,19 +1495,20 @@ Black/PSysPCreator.cpp:
 	.data       start:0x00B27EF8 end:0x00B28168
 
 Black/PSysProperties.cpp:
-	.text       start:0x00651060 end:0x00666D70
+	.text       start:0x00651060 end:0x00666DF0
 	.text$x     start:0x007E9430 end:0x007E9440 align:4
-	.rdata      start:0x00872AE8 end:0x00873BCC
-	.CRT$XCU    start:0x008F6EBC end:0x008F6ED4 align:4
-	.data       start:0x00B28168 end:0x00B2CC68
-	.bss        start:0x00C6FB30 end:0x00C6FB98
+	.rdata      start:0x00872AE8 end:0x00873BEC
+	.xdata$x    start:0x008EE7C0 end:0x008EE818 align:4
+	.CRT$XCU    start:0x008F6EBC end:0x008F6ED8 align:4
+	.data       start:0x00B28168 end:0x00B2CB50
+	.bss        start:0x00C6FB30 end:0x00C6FB50
 
 Black/PSysRenderParticle.cpp:
-	.text       start:0x00666EA0 end:0x0066A420
-	.rdata      start:0x00873BCC end:0x00874E30
-	.CRT$XCU    start:0x008F6EE8 end:0x008F6EF0 align:4
-	.data       start:0x00B2CC68 end:0x00B2CE08
-	.bss        start:0x00C6FB98 end:0x00C6FBC8
+	.text       start:0x00666DF0 end:0x0066A420
+	.rdata      start:0x00873BEC end:0x00874E30
+	.CRT$XCU    start:0x008F6ED8 end:0x008F6EF0 align:4
+	.data       start:0x00B2CB50 end:0x00B2CE08
+	.bss        start:0x00C6FB50 end:0x00C6FBC8
 
 Black/PSysSave.cpp:
 	.text       start:0x0066A4B0 end:0x0066EF20
@@ -2087,7 +2088,7 @@ Black/TempleRoomAddText.cpp:
 
 Black/WorldRoom.cpp:
 	.text       start:0x00723400 end:0x00725F30
-	.text$x     start:0x007E9440 end:0x007E9458 align:4
+	.text$x     start:0x007E9440 end:0x007E9458 align:16
 	.rdata      start:0x008D51CC end:0x008D5228
 	.CRT$XCU    start:0x008F7388 end:0x008F7390 align:4
 	.bss        start:0x00D56AE0 end:0x00D5AAF8

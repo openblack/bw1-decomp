@@ -23,7 +23,387 @@ block_relocations:
 # The country code "DEC\0" in getqloc's locale tables reads as 0x00434544, inside LoadIt<GMagicFireBallInfo>.
   - source: 0x00C1F954
 
+# RTTI type-name payloads contain ASCII words that resemble image addresses.
+  - source: 0x00BF3C04
+  - source: 0x00BF4D40
+  - source: 0x00BF4E44
+  - source: 0x00BF69B4
+  - source: 0x00BF6A00
+  - source: 0x00BF6A90
+  - source: 0x00BF6B20
+  - source: 0x00BF6CF0
+  - source: 0x00BF6D40
+  - source: 0x00BF6D90
+  - source: 0x00BF6DE0
+  - source: 0x00BF6E30
+  - source: 0x00BF6E5C
+  - source: 0x00BF6EE4
+  - source: 0x00BF7008
+  - source: 0x00BF7058
+  - source: 0x00BF72E4
+  - source: 0x00BF75FC
+  - source: 0x00BF77A0
+  - source: 0x00BF789C
+  - source: 0x00BF7A18
+  - source: 0x00BF7AB0
+  - source: 0x00BF7BDC
+  - source: 0x00BF7E3C
+  - source: 0x00BF7F5C
+  - source: 0x00BF8118
+  - source: 0x00BF81F8
+  - source: 0x00BF826C
+  - source: 0x00BF82B8
+  - source: 0x00BF8400
+  - source: 0x00BF8440
+
 add_relocations:
+# PSysProperties weak deleting-destructor aliases and istream exception metadata.
+  - source: 0x006BC3CC
+    type: x86_abs32
+    target: '__except_list'
+  - source: 0x006BC3D4
+    type: x86_abs32
+    target: '__except_list'
+  - source: 0x006BC55D
+    type: x86_abs32
+    target: '??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAK@Z'
+    addend: 0x1a2
+  - source: 0x006BC59B
+    type: x86_abs32
+    target: '__except_list'
+  - source: 0x008963A1
+    type: x86_abs32
+    target: '$T99291'
+  - source: 0x00927EEC
+    type: x86_abs32
+    target: '??_EParticlePointCreator@@UAEPAXI@Z'
+  - source: 0x00927F18
+    type: x86_abs32
+    target: '??_EEventConditionCollectionDelay@@UAEPAXI@Z'
+  - source: 0x00927F3C
+    type: x86_abs32
+    target: '??_EEventConditionTrueOnCloseDown@@UAEPAXI@Z'
+  - source: 0x00927F60
+    type: x86_abs32
+    target: '??_EEventConditionTrueWhenEnabled@@UAEPAXI@Z'
+  - source: 0x00927F84
+    type: x86_abs32
+    target: '??_EEC_DeflectionInAtomsHierarchy@@UAEPAXI@Z'
+  - source: 0x00927FA8
+    type: x86_abs32
+    target: '??_EEC_CollectionShouldBeEmitting@@UAEPAXI@Z'
+  - source: 0x00927FCC
+    type: x86_abs32
+    target: '??_EEC_DeflectionInCollectionsHierarchy@@UAEPAXI@Z'
+  - source: 0x00927FF0
+    type: x86_abs32
+    target: '??_EEventConditionNever@@UAEPAXI@Z'
+  - source: 0x00928014
+    type: x86_abs32
+    target: '??_EEventConditionCollectionLimitedTime@@UAEPAXI@Z'
+  - source: 0x00928038
+    type: x86_abs32
+    target: '??_EEventConditionAtomDelay@@UAEPAXI@Z'
+  - source: 0x0092805C
+    type: x86_abs32
+    target: '??_EEventConditionAtomNearVillagers@@UAEPAXI@Z'
+  - source: 0x00928080
+    type: x86_abs32
+    target: '??_EEventConditionAtomLimitedTime@@UAEPAXI@Z'
+  - source: 0x009280A4
+    type: x86_abs32
+    target: '??_EEventConditionRandom@@UAEPAXI@Z'
+  - source: 0x009280C8
+    type: x86_abs32
+    target: '??_EEventConditionParentFrameTime@@UAEPAXI@Z'
+  - source: 0x009280EC
+    type: x86_abs32
+    target: '??_EEventConditionFrameTime@@UAEPAXI@Z'
+  - source: 0x00928110
+    type: x86_abs32
+    target: '??_EEventConditionAtomBelowHeight@@UAEPAXI@Z'
+  - source: 0x00928134
+    type: x86_abs32
+    target: '??_EEC_AtomAlphaAbove@@UAEPAXI@Z'
+  - source: 0x00928158
+    type: x86_abs32
+    target: '??_EEventConditionAtomCloseWater@@UAEPAXI@Z'
+  - source: 0x0092817C
+    type: x86_abs32
+    target: '??_EEventConditionFireBallSteam@@UAEPAXI@Z'
+  - source: 0x009281A0
+    type: x86_abs32
+    target: '??_EEventConditionAtomInUse@@UAEPAXI@Z'
+  - source: 0x009281C4
+    type: x86_abs32
+    target: '??_EEventConditionAtomBelowSpeed@@UAEPAXI@Z'
+  - source: 0x009281E8
+    type: x86_abs32
+    target: '??_EEventConditionAtomHasBeenDeflected@@UAEPAXI@Z'
+  - source: 0x0092820C
+    type: x86_abs32
+    target: '??_EConstFloatProvider@@UAEPAXI@Z'
+  - source: 0x00928228
+    type: x86_abs32
+    target: '??_EFloatProvider@@UAEPAXI@Z'
+  - source: 0x00928244
+    type: x86_abs32
+    target: '??_EFloatProvider_ParentAtomScale@@UAEPAXI@Z'
+  - source: 0x00928260
+    type: x86_abs32
+    target: '??_EStrengthFloatProvider@@UAEPAXI@Z'
+  - source: 0x0092827C
+    type: x86_abs32
+    target: '??_EMagnitudeFloatProvider@@UAEPAXI@Z'
+  - source: 0x00928298
+    type: x86_abs32
+    target: '??_EMagnitudeTimesStrengthFloatProvider@@UAEPAXI@Z'
+  - source: 0x009282B4
+    type: x86_abs32
+    target: '??_ERenderHandScaleFloatProvider@@UAEPAXI@Z'
+  - source: 0x009282D0
+    type: x86_abs32
+    target: '??_ERenderHandScaleTimesStrengthFloatProvider@@UAEPAXI@Z'
+  - source: 0x009282EC
+    type: x86_abs32
+    target: '??_EUR_RingSpin@@UAEPAXI@Z'
+  - source: 0x00928310
+    type: x86_abs32
+    target: '??_EUR_Articulate@@UAEPAXI@Z'
+  - source: 0x00928334
+    type: x86_abs32
+    target: '??_EAppearanceRuleFadeOut@@UAEPAXI@Z'
+  - source: 0x00928358
+    type: x86_abs32
+    target: '??_EAddSoundToAtom@@UAEPAXI@Z'
+  - source: 0x0092837C
+    type: x86_abs32
+    target: '??_EAppearanceUpdateRule@@UAEPAXI@Z'
+  - source: 0x009283A0
+    type: x86_abs32
+    target: '??_EStartStopSoundOnCondition@@UAEPAXI@Z'
+  - source: 0x009283C4
+    type: x86_abs32
+    target: '??_ERemoveSoundFromAtom@@UAEPAXI@Z'
+  - source: 0x009283E8
+    type: x86_abs32
+    target: '??_EAR_SetAnimPlay@@UAEPAXI@Z'
+  - source: 0x0092840C
+    type: x86_abs32
+    target: '??_EAR_FadeAlpha@@UAEPAXI@Z'
+  - source: 0x00928430
+    type: x86_abs32
+    target: '??_EAR_FadeCollectionAlpha@@UAEPAXI@Z'
+  - source: 0x00928454
+    type: x86_abs32
+    target: '??_EAR_FadeOutOnceConditionTrue@@UAEPAXI@Z'
+  - source: 0x00928478
+    type: x86_abs32
+    target: '??_EAR_FadeAlphaWithHeightAboveLandscape@@UAEPAXI@Z'
+  - source: 0x0092849C
+    type: x86_abs32
+    target: '??_EAR_GetColorFromParent@@UAEPAXI@Z'
+  - source: 0x009284C0
+    type: x86_abs32
+    target: '??_EAppearanceRuleTumble@@UAEPAXI@Z'
+  - source: 0x009284E4
+    type: x86_abs32
+    target: '??_EUR_UpdatePosnFromVelocity@@UAEPAXI@Z'
+  - source: 0x00928508
+    type: x86_abs32
+    target: '??_EEventAlways@@UAEPAXI@Z'
+  - source: 0x0092852C
+    type: x86_abs32
+    target: '??_EUR_OrientWithVelocity@@UAEPAXI@Z'
+  - source: 0x00928550
+    type: x86_abs32
+    target: '??_EUR_OrientSpriteWithVelocity@@UAEPAXI@Z'
+  - source: 0x00928574
+    type: x86_abs32
+    target: '??_EUR_OrientSpriteWithRandomAngle@@UAEPAXI@Z'
+  - source: 0x00928598
+    type: x86_abs32
+    target: '??_EUR_GustyWind@@UAEPAXI@Z'
+  - source: 0x009285BC
+    type: x86_abs32
+    target: '??_EFollowOrigin@@UAEPAXI@Z'
+  - source: 0x009285E0
+    type: x86_abs32
+    target: '??_ESetScale@@UAEPAXI@Z'
+  - source: 0x00928604
+    type: x86_abs32
+    target: '??_ESetCollectionAlpha@@UAEPAXI@Z'
+  - source: 0x00928628
+    type: x86_abs32
+    target: '??_ESetAtomAlpha@@UAEPAXI@Z'
+  - source: 0x0092864C
+    type: x86_abs32
+    target: '??_ESetPSysCloseDown@@UAEPAXI@Z'
+  - source: 0x00928670
+    type: x86_abs32
+    target: '??_ESetAtomHasBeenDeflected@@UAEPAXI@Z'
+  - source: 0x00928694
+    type: x86_abs32
+    target: '??_EForceConstantAltitude@@UAEPAXI@Z'
+  - source: 0x009286B8
+    type: x86_abs32
+    target: '??_EForceConstantHeight@@UAEPAXI@Z'
+  - source: 0x009286DC
+    type: x86_abs32
+    target: '??_EForceMinimumHeight@@UAEPAXI@Z'
+  - source: 0x00928700
+    type: x86_abs32
+    target: '??_EForceLandscapeHeight@@UAEPAXI@Z'
+  - source: 0x00928724
+    type: x86_abs32
+    target: '??_EUpdateRuleRotatePrincipalAxis@@UAEPAXI@Z'
+  - source: 0x00928748
+    type: x86_abs32
+    target: '??_EUR_StormCast@@UAEPAXI@Z'
+  - source: 0x0092876C
+    type: x86_abs32
+    target: '??_EUR_ChangeScale@@UAEPAXI@Z'
+  - source: 0x00928790
+    type: x86_abs32
+    target: '??_EUR_ChangeScaleXYZ@@UAEPAXI@Z'
+  - source: 0x009287B4
+    type: x86_abs32
+    target: '??_EUR_ChangeStretchHeight@@UAEPAXI@Z'
+  - source: 0x009287D8
+    type: x86_abs32
+    target: '??_EUR_MoveAtom@@UAEPAXI@Z'
+  - source: 0x009287FC
+    type: x86_abs32
+    target: '??_EUR_AddDefensiveSphere@@UAEPAXI@Z'
+  - source: 0x00928820
+    type: x86_abs32
+    target: '??_EUR_HealInHand@@UAEPAXI@Z'
+  - source: 0x00928844
+    type: x86_abs32
+    target: '??_EUR_SphereSurfaceTracer@@UAEPAXI@Z'
+  - source: 0x00928868
+    type: x86_abs32
+    target: '??_EUR_VapourEndEffect@@UAEPAXI@Z'
+  - source: 0x0092888C
+    type: x86_abs32
+    target: '??_ECheckShieldDeflections@@UAEPAXI@Z'
+  - source: 0x009288B0
+    type: x86_abs32
+    target: '??_EAddSubCollectionsToAtom@@UAEPAXI@Z'
+  - source: 0x009288D4
+    type: x86_abs32
+    target: '??_EEmitterRuleSimple@@UAEPAXI@Z'
+  - source: 0x009288F8
+    type: x86_abs32
+    target: '??_EEmitterRuleLightningSprite@@UAEPAXI@Z'
+  - source: 0x0092891C
+    type: x86_abs32
+    target: '??_EDiskEmitter@@UAEPAXI@Z'
+  - source: 0x00928940
+    type: x86_abs32
+    target: '??_ESpreadingDiskEmitter@@UAEPAXI@Z'
+  - source: 0x00928964
+    type: x86_abs32
+    target: '??_EEmitterRuleConical@@UAEPAXI@Z'
+  - source: 0x00928988
+    type: x86_abs32
+    target: '??_EUR_AtomsAtEPTarget@@UAEPAXI@Z'
+  - source: 0x009289AC
+    type: x86_abs32
+    target: '??_EUR_FollowCastPosn@@UAEPAXI@Z'
+  - source: 0x009289D0
+    type: x86_abs32
+    target: '??_EUR_FollowLocalHand@@UAEPAXI@Z'
+  - source: 0x009289F4
+    type: x86_abs32
+    target: '??_ECreateRuleMakeChain@@UAEPAXI@Z'
+  - source: 0x00928A18
+    type: x86_abs32
+    target: '??_EUR_ExplodeObject@@UAEPAXI@Z'
+  - source: 0x00928A3C
+    type: x86_abs32
+    target: '??_EUR_ExplodeObject2@@UAEPAXI@Z'
+  - source: 0x00928A60
+    type: x86_abs32
+    target: '??_EUR_MoveAtomToBaseGroup@@UAEPAXI@Z'
+  - source: 0x00928A84
+    type: x86_abs32
+    target: '??_EAttatchFireBallToAtom@@UAEPAXI@Z'
+  - source: 0x00928AA8
+    type: x86_abs32
+    target: '??_ECreateNewBaseAtom@@UAEPAXI@Z'
+  - source: 0x00928ACC
+    type: x86_abs32
+    target: '??_ECreateRuleSphere@@UAEPAXI@Z'
+  - source: 0x00928AF4
+    type: x86_abs32
+    target: '??_EUR_SideSpin@@UAEPAXI@Z'
+  - source: 0x00928B18
+    type: x86_abs32
+    target: '??_EUR_InitialSpin@@UAEPAXI@Z'
+  - source: 0x00928B3C
+    type: x86_abs32
+    target: '??_ECreateRuleFusedSphericalExplode@@UAEPAXI@Z'
+  - source: 0x00928B60
+    type: x86_abs32
+    target: '??_ECreateRule_GameObjectRef@@UAEPAXI@Z'
+  - source: 0x00928B84
+    type: x86_abs32
+    target: '??_ELightningForkFlicker@@UAEPAXI@Z'
+  - source: 0x00928BA8
+    type: x86_abs32
+    target: '??_EUR_FollowParent@@UAEPAXI@Z'
+  - source: 0x00928BCC
+    type: x86_abs32
+    target: '??_EUR_FollowTargets@@UAEPAXI@Z'
+  - source: 0x00928BF0
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellItch@@UAEPAXI@Z'
+  - source: 0x00928C14
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellFreeze@@UAEPAXI@Z'
+  - source: 0x00928C38
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellGeneric@@UAEPAXI@Z'
+  - source: 0x00928C5C
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellCompassion@@UAEPAXI@Z'
+  - source: 0x00928C80
+    type: x86_abs32
+    target: '??_EUR_ManaPathNew@@UAEPAXI@Z'
+  - source: 0x00928CA4
+    type: x86_abs32
+    target: '??_EUR_BeliefSprite@@UAEPAXI@Z'
+  - source: 0x00928CC8
+    type: x86_abs32
+    target: '??_EUR_TownCentreBelief@@UAEPAXI@Z'
+  - source: 0x00928CEC
+    type: x86_abs32
+    target: '??_EUR_Rope@@UAEPAXI@Z'
+  - source: 0x00928D10
+    type: x86_abs32
+    target: '??_EUR_ObjectArcer@@UAEPAXI@Z'
+  - source: 0x00928D34
+    type: x86_abs32
+    target: '??_EUR_ScaleByCameraDist@@UAEPAXI@Z'
+  - source: 0x00928D58
+    type: x86_abs32
+    target: '??_ERemoveRuleOldAgeOnly@@UAEPAXI@Z'
+  - source: 0x00928D80
+    type: x86_abs32
+    target: '??_ERemoveRuleProb@@UAEPAXI@Z'
+  - source: 0x00928DA8
+    type: x86_abs32
+    target: '??_ERemoveRuleAfterCloseDown@@UAEPAXI@Z'
+  - source: 0x00928DD0
+    type: x86_abs32
+    target: '??_ERemoveRuleAfterConditionTrue@@UAEPAXI@Z'
+  - source: 0x00928DF8
+    type: x86_abs32
+    target: '??_ELandscapeCollide@@UAEPAXI@Z'
+  - source: 0x00928E1C
+    type: x86_abs32
+    target: '??_ESetInitialRandomOrientations@@UAEPAXI@Z'
 # GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
   - source: 0x004059B1
     type: x86_abs32
