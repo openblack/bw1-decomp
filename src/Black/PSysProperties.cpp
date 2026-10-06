@@ -1798,19 +1798,14 @@ bool PSysFileData::LoadFromFile(PARTICLE_TYPE type, const char* filename)
 	return !failed;
 }
 
-// TODO: SaveToFile and SaveAsCode are nonmatching on inlining alone. The target calls
-// basic_ios::basic_ios() out of line (BW1W120 005889b0) from the stringstream constructor, which
-// LoadFromFile and our build inline. The nested budget share is remaining / candidates-left, so
-// the original had at least one more inlinable call after the stream's construction; a vanishing
-// `(void)stream.rdstate();` reproduces the target exactly, but no natural construct was found.
 bool32_t PSysFileData::SaveToFile(const char* filename)
 {
 	std::stringstream   stream;
 	PersistenceStreamer streamer;
 	bool32_t            failed = !streamer.WriteProperties(&stream, this);
-	for (Node* node = Head; node != NULL; node = node->Next)
+	for (LHLinkedNode<Persistent*>* node = Objects.GetStart(); node != NULL; node = node->next.Get())
 	{
-		failed |= !streamer.Write(&stream, node->Object);
+		failed |= !streamer.Write(&stream, node->payload);
 	}
 	{
 		LHReleasedOSFile file;
@@ -1834,9 +1829,9 @@ bool32_t PSysFileData::SaveAsCode(const char* filename)
 	std::stringstream   stream;
 	PersistenceStreamer streamer;
 	bool32_t            failed = !streamer.WritePropertiesAsCode(&stream, this);
-	for (Node* node = Head; node != NULL; node = node->Next)
+	for (LHLinkedNode<Persistent*>* node = Objects.GetStart(); node != NULL; node = node->next.Get())
 	{
-		failed |= !streamer.WriteAsCode(&stream, node->Object);
+		failed |= !streamer.WriteAsCode(&stream, node->payload);
 	}
 	{
 		LHReleasedOSFile file;
