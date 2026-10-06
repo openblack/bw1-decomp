@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_MAGIC_FIRE_BALL_INCLUDED_H
 #define BW1_DECOMP_MAGIC_FIRE_BALL_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
+#include <assert.h>                           /* For static_assert */
+#include <stdint.h>                           /* For uint32_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "Object.h" /* For struct Object */
 
@@ -21,9 +22,9 @@ struct MapCoords;
 class MagicFireBall : public Object
 {
 public:
-	uint32_t field_0x54;
-	bool     field_0x58;
-	uint32_t field_0x5c;
+	LHListNode<MagicFireBall> next;
+	bool                      field_0x58;
+	uint32_t                  field_0x5c;
 
 	// Override methods
 

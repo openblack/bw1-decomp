@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+#include <chlasm/ScriptEnums.h>               /* For enum SCRIPT_OBJECT_TYPE */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
@@ -21,7 +22,9 @@ public:
 	// BW1W120 007741a0 BW1M119 01085420
 	static void ProcessWeatherThings();
 
-	uint8_t field_0x28[0x60];
+	uint8_t                  field_0x28[0x58];
+	LHListNode<WeatherThing> next;
+	uint8_t                  field_0x84[0x4];
 
 	// Override methods
 

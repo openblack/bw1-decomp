@@ -7,6 +7,7 @@
 #include <chlasm/Enum.h>                          /* For enum IMPRESSIVE_TYPE, enum MAGIC_TYPE */
 #include <chlasm/HelpTextEnums.h>                 /* For enum HELP_TEXT */
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
 #include "MapCoords.h"        /* For struct MapCoords */
@@ -34,44 +35,44 @@ public:
 	static void ProcessSpells();
 	static void DrawSpells(); // 007203f0
 
-	uint32_t   field_0x28;
-	float      field_0x2c;
-	uint32_t   field_0x30;
-	uint32_t   field_0x34;
-	uint32_t   field_0x38;
-	uint32_t   field_0x3c;
-	uint32_t   field_0x40;
-	uint32_t   field_0x44;
-	uint32_t   field_0x48;
-	uint32_t   field_0x4c;
-	float      field_0x50;
-	float      field_0x54;
-	float      field_0x58;
-	uint8_t    field_0x5c;
-	uint8_t    field_0x5d;
-	uint32_t   field_0x60;
-	LHPoint    field_0x64;
-	LHPoint    field_0x70;
-	LHPoint    field_0x7c;
-	LHPoint    field_0x88;
-	float      field_0x94;
-	uint32_t   field_0x98;
-	uint8_t    field_0x9c;
-	GameThing* creator; /* 0xa0 */
-	GameThing* field_0xa4;
-	GameThing* InterfaceStatus;
-	GameThing* field_0xac;
-	uint32_t   field_0xb0;
-	MAGIC_TYPE magic_type;
-	float      field_0xb8;
-	float      field_0xbc;
-	MapCoords  field_0xc0;
-	MapCoords  field_0xcc;
-	uint32_t   field_0xd8;
-	uint32_t   field_0xdc;
-	uint32_t   field_0xe0;
-	float      field_0xe4;
-	Spell*     next;
+	uint32_t          field_0x28;
+	float             field_0x2c;
+	uint32_t          field_0x30;
+	uint32_t          field_0x34;
+	uint32_t          field_0x38;
+	uint32_t          field_0x3c;
+	uint32_t          field_0x40;
+	uint32_t          field_0x44;
+	uint32_t          field_0x48;
+	uint32_t          field_0x4c;
+	float             field_0x50;
+	float             field_0x54;
+	float             field_0x58;
+	uint8_t           field_0x5c;
+	uint8_t           field_0x5d;
+	uint32_t          field_0x60;
+	LHPoint           field_0x64;
+	LHPoint           field_0x70;
+	LHPoint           field_0x7c;
+	LHPoint           field_0x88;
+	float             field_0x94;
+	uint32_t          field_0x98;
+	uint8_t           field_0x9c;
+	GameThing*        creator;
+	GameThing*        field_0xa4;
+	GameThing*        InterfaceStatus;
+	GameThing*        field_0xac;
+	uint32_t          field_0xb0;
+	MAGIC_TYPE        magic_type;
+	float             field_0xb8;
+	float             field_0xbc;
+	MapCoords         field_0xc0;
+	MapCoords         field_0xcc;
+	uint32_t          field_0xd8;
+	uint32_t          field_0xdc;
+	uint32_t          field_0xe0;
+	float             field_0xe4;
+	LHListNode<Spell> next;
 
 	// Override methods
 

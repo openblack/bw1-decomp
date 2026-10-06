@@ -131,6 +131,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 006013d0 BW1M119 01562a20
+	void Clean();
 	// BW1W120 006016d0 BW1M119 0155b770
 	void UpdateControlMap();
 	// BW1W120 00601850 BW1M119 01090d60

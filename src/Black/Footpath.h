@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LHLib/ver5.0/LHListHead.h> /* For LHListHead */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "GameThing.h" /* For struct GameThing */
 
@@ -24,7 +25,7 @@ class GFootpath : public GameThing
 {
 public:
 	LHListHead<GFootpathNode> nodes; /* 0x14 */
-	GFootpath*                next;
+	LHListNode<GFootpath>     next;
 	uint32_t                  field_0x20;
 
 	// Override methods

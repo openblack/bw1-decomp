@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+#include <chlasm/ScriptEnums.h>               /* For enum SCRIPT_OBJECT_TYPE */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
@@ -20,13 +21,13 @@ struct MistListNode;
 class Mist : public GameThingWithPos
 {
 public:
-	uint32_t field_0x28;
-	float    field_0x2c;
-	uint32_t field_0x30;
-	float    field_0x34;
-	uint8_t  field_0x38[0x14];
-	uint32_t field_0x4c;
-	Mist*    next; /* 0x50 */
+	uint32_t         field_0x28;
+	float            field_0x2c;
+	uint32_t         field_0x30;
+	float            field_0x34;
+	uint8_t          field_0x38[0x14];
+	uint32_t         field_0x4c;
+	LHListNode<Mist> next;
 
 	// Override methods
 
@@ -61,6 +62,11 @@ public:
 
 	// BW1W120 00606270 BW1M119 0110f140
 	Mist(const MapCoords& coords, float param_3, uint32_t param_4, float param_5);
+
+	// Non-virtual methods
+
+	// BW1W120 00606880 BW1M119 01065070
+	void Process();
 };
 
 #endif /* BW1_DECOMP_MIST_INCLUDED_H */

@@ -1,3 +1,5 @@
+// LHLib saw an older LHLinkedList.h in which AddToEnd was out of line; see the note there.
+#define LH_LINKED_LIST_ADD_TO_END_OUT_OF_LINE
 #include <Lionhead/LHLib/ver5.0/LHMemoryLeak.h>
 
 #include <stddef.h> /* For size_t */

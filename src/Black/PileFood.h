@@ -7,6 +7,7 @@
 #include <chlasm/Enum.h>                             /* For enum RESOURCE_TYPE */
 #include <chlasm/HelpTextEnums.h>                    /* For enum HELP_TEXT */
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>        /* For struct LHListNode */
 
 #include "PileResource.h" /* For struct PileResource */
 
@@ -26,8 +27,8 @@ class Town;
 class PileFood : public PileResource
 {
 public:
-	PileFood* next; /* 0xb4 */
-	uint32_t  field_0xb8;
+	LHListNode<PileFood> next;
+	uint32_t             field_0xb8;
 
 	// Override methods
 
@@ -69,6 +70,11 @@ public:
 	// BW1W120 0066e070 BW1M119 01123170
 	PileFood(const MapCoords& coords, const GPotInfo* param_2, uint32_t param_3, MultiMapFixed* param_4, Town* param_5,
 	         int param_6, float param_7, float param_8);
+
+	// Non-virtual methods
+
+	// BW1W120 0066e1c0 BW1M119 01085cc0
+	void ProcessPileFood();
 };
 
 #endif /* BW1_DECOMP_PILE_FOOD_INCLUDED_H */

@@ -864,20 +864,23 @@ Black/GJPersistent.cpp:
 Black/GJProperty.cpp:
 	.text       start:0x0057FED0 end:0x0058C800
 	.text$x     start:0x008962C0 end:0x00896390 align:4
-	.rdata      start:0x008F0258 end:0x008F035C
+	.rdata      start:0x008F0258 end:0x008F0390
 	.CRT$XCU    start:0x009B6778 end:0x009B67A0 align:4
 	.data       start:0x00BDEEE4 end:0x00BDF36C
 	.bss        start:0x00CF5468 end:0x00CF5904
 
 Black/GJVnoise.cpp:
 	.text       start:0x0058C800 end:0x0058CF20
+	.rdata      start:0x008F0390 end:0x008F0394
 
 Black/Global.cpp:
 	.text       start:0x0058CF20 end:0x0058D1F0
 
 Black/GlobalGameList.cpp:
-	.text       start:0x0058D2B0 end:0x00591B40
-	.rdata      start:0x008F035C end:0x008F03A0
+	.text       start:0x0058D1F0 end:0x00591B40
+	.rdata      start:0x008F0394 end:0x008F03A0
+	.CRT$XCU    start:0x009B67A0 end:0x009B67AC align:4
+	.bss        start:0x00CF5904 end:0x00CF5914
 
 Black/GraveYard.cpp:
 	.text       start:0x00591B40 end:0x00591ED0
@@ -1642,13 +1645,13 @@ Black/PSysTornado.cpp:
 	.rdata      start:0x0092A3E0 end:0x0092A688
 	.CRT$XCU    start:0x009B6F74 end:0x009B6F78 align:4
 	.data       start:0x00BF8924 end:0x00BF8C8C
-	.bss        start:0x00D3DB74 end:0x00D3DBC4
+	.bss        start:0x00D3DB74 end:0x00D3DBB8
 
 Black/puzzlegame.cpp:
 	.text       start:0x006CB540 end:0x006D3870
 	.rdata      start:0x0092A688 end:0x00930DA0
 	.CRT$XCU    start:0x009B6F80 end:0x009B6F88 align:4
-	.bss        start:0x00D3DBC4 end:0x00D3E250
+	.bss        start:0x00D3DBB8 end:0x00D3E250
 
 Black/RandomBuildingPlacement.cpp:
 	.text       start:0x006D3870 end:0x006D3950

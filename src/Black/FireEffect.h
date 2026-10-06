@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_FIRE_EFFECT_INCLUDED_H
 #define BW1_DECOMP_FIRE_EFFECT_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <assert.h>                           /* For static_assert */
+#include <stdint.h>                           /* For uint32_t, uint8_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "GameThing.h" /* For struct GameThing */
 
@@ -32,20 +33,20 @@ public:
 	// BW1W120 0072eec0 BW1M119 01157f80
 	static float ConvertTemperatureToDamage(Object* object, float temperature);
 
-	float       temperature; /* 0x14 */
-	float       temperature2;
-	Object*     source;
-	GPlayer*    player; /* 0x20 */
-	GameThing*  thing;
-	uint32_t    field_0x28;
-	uint32_t    field_0x2c;
-	uint32_t    field_0x30;
-	uint32_t    field_0x34;
-	uint8_t     field_0x38;
-	FireEffect* next;
-	uint8_t     field_0x40[0x8];
-	uint32_t    field_0x48;
-	uint32_t    field_0x4c;
+	float                  temperature;
+	float                  temperature2;
+	Object*                source;
+	GPlayer*               player;
+	GameThing*             thing;
+	uint32_t               field_0x28;
+	uint32_t               field_0x2c;
+	uint32_t               field_0x30;
+	uint32_t               field_0x34;
+	uint8_t                field_0x38;
+	LHListNode<FireEffect> next;
+	uint8_t                field_0x40[0x8];
+	uint32_t               field_0x48;
+	uint32_t               field_0x4c;
 
 	// Override methods
 

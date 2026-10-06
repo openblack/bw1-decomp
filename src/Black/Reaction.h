@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For enum REACTION */
+#include <chlasm/Enum.h>                      /* For enum REACTION */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "GameThing.h" /* For struct GameThing */
 
@@ -20,18 +21,18 @@ class ReactionInfo;
 class Reaction : public GameThing
 {
 public:
-	GameThingWithPos* target; /* 0x14 */
-	uint32_t          field_0x18;
-	uint32_t          field_0x1c;
-	uint32_t          field_0x20;
-	REACTION          type;
-	uint32_t          field_0x28;
-	uint32_t          field_0x2c;
-	uint32_t          field_0x30;
-	uint32_t          field_0x34;
-	GPlayer*          player;
-	float             field_0x3c;
-	Reaction*         next; /* 0x40 */
+	GameThingWithPos*    target;
+	uint32_t             field_0x18;
+	uint32_t             field_0x1c;
+	uint32_t             field_0x20;
+	REACTION             type;
+	uint32_t             field_0x28;
+	uint32_t             field_0x2c;
+	uint32_t             field_0x30;
+	uint32_t             field_0x34;
+	GPlayer*             player;
+	float                field_0x3c;
+	LHListNode<Reaction> next;
 
 	// Override methods
 

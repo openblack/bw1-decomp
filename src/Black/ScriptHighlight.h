@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+#include <chlasm/ScriptEnums.h>               /* For enum SCRIPT_OBJECT_TYPE */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "Fixed.h" /* For struct SingleMapFixed */
 
@@ -27,8 +28,9 @@ class ScriptHighlight : public SingleMapFixed
 {
 public:
 	// BW1W120 007096e0 BW1M119 015035c0
-	static void OnClearMap();
-	uint8_t     field_0x5c[0x30];
+	static void                 OnClearMap();
+	uint8_t                     field_0x5c[0x2c];
+	LHListNode<ScriptHighlight> next;
 
 	// Override methods
 

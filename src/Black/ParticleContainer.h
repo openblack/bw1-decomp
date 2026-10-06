@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum SPOT_VISUAL_TYPE */
+#include <chlasm/Enum.h>                      /* For enum SPOT_VISUAL_TYPE */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
@@ -22,12 +23,12 @@ public:
 	static void ProcessParticleContainers();
 	static void DrawParticleContainers(); // 0063e0d0
 
-	GameThingWithPos*   thing; /* 0x28 */
-	uint32_t            field_0x2c;
-	uint32_t            field_0x30;
-	float               field_0x34;
-	bool                field_0x38;
-	GParticleContainer* next;
+	GameThingWithPos*              thing;
+	uint32_t                       field_0x2c;
+	uint32_t                       field_0x30;
+	float                          field_0x34;
+	bool                           field_0x38;
+	LHListNode<GParticleContainer> next;
 
 	// Override methods
 

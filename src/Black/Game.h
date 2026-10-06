@@ -181,8 +181,8 @@ public:
 	uint8_t          field_0x5978;
 	uint8_t          field_0x5979;
 	uint8_t          field_0x597a[2];
-	StatsDatabase    stats_database;    /* 0x597c */
-	CreatureDatabase creature_database; /* 0x598c */
+	StatsDatabase    stats_database;
+	CreatureDatabase creature_database;
 	bool             GameOver;
 	uint8_t          field_0x599d;
 	uint8_t          field_0x599e;
@@ -194,19 +194,19 @@ public:
 	uint32_t               field_0x59a8;
 	time_t                 field_0x59ac;
 	float                  field_0x59b0;
-	Temple*                temple; /* 0x59b4 */
+	Temple*                temple;
 	GMap                   map;
-	int32_t                LandNumber; /* 0x205a08 */
+	int32_t                LandNumber;
 	bool32_t               SkirmishGame;
 	int                    field_0x205a10;
 	int                    field_0x205a14;
 	uint32_t               field_0x205a18;
 	int                    field_0x205a1c;
-	GLandscape             landscape; /* 0x205a20 */
+	GLandscape             landscape;
 	GAME_VIEW_MODE         ViewMode;
 	uint32_t               field_0x205a2c;
-	GData                  data;  /* 0x205a30 */
-	GSetup                 setup; /* 0x205a58; empty utility member occupies one byte. */
+	GData                  data;
+	GSetup                 setup;
 	uint8_t                PlayerIndex;
 	uint8_t                field_0x205a5a;
 	uint8_t                NeutralPlayerIndex;
@@ -215,9 +215,9 @@ public:
 	uint8_t                field_0x205a5e;
 	uint8_t                field_0x205a5f;
 	GPacket                Packet;
-	GNetwork               network; /* 0x205b70 */
+	GNetwork               network;
 	uint32_t               field_0x205ba0;
-	GlobalGameLists        GameLists; /* 0x205ba4 */
+	GlobalGameLists        GameLists;
 	uint32_t               field_0x205d34;
 	int                    Fps0x205d38;
 	uint32_t               field_0x205d3c;
@@ -234,75 +234,79 @@ public:
 	LHTimer                timer;
 	uint32_t               field_0x205e78;
 	uint8_t                field_0x205e7c[0x10];
-	GTerrainMap            terrain_map; /* 0x205e8c */
-	GPlayerInfo            player_info; /* 0x24ffbc */
-	GLanguage              language;    /* 0x25004c */
-	GSoundMap*             SoundMap;    /* 0x250058 */
+	GTerrainMap            terrain_map;
+	GPlayerInfo            player_info;
+	GLanguage              language;
+	GSoundMap*             SoundMap;
 	HelpSystem*            help_system;
-	HelpProfile*           help_profile; /* 0x250060 */
+	HelpProfile*           help_profile;
 	GestureSystemDataList* gesture_system_data_list;
 	GestureSystemData*     gesture_system_data;
 	GestureSystem*         gesture_system;
-	GestureSystemResult*   gesture_system_result; /* 0x250070 */
-	Settings*              settings;
-	float                  TownInfluenceMultiplier;
-	float                  PlayerInfluenceMultiplier;
-	GAME_LANGUAGE          CurrentLanguage;
-	ScriptCreatureCurse    script_creature_curse;
-	GScript*               script; /* 0x250090 */
-	HelpEditor*            field_0x250094;
-	uint32_t               field_0x250098;
-	MapCoords              StartCameraCoords;
-	uint8_t                field_0x2500a8[0xc8];
-	char*                  field_0x250170;
-	uint8_t                field_0x250174;
-	Config*                config;
-	uint32_t               Enum0x25017c; // TODO: Original enum identity is unrecovered; serialized as four bytes.
-	GAME_MODE              GameMode;     /* 0x250180 */
-	uint32_t               field_0x250184;
-	LHVideoPlayer*         VideoPlayer;
-	int                    field_0x25018c;
-	int                    field_0x250190;
-	float                  field_0x250194;
-	uint8_t                field_0x250198[0x10c];
-	uint32_t               field_0x2502a4; /* Set before an automatic save. */
-	GKeyBuffer             key_buffer;     /* 0x2502a8 */
-	CMouse                 Mouse;          /* 0x2502b8 */
-	uint32_t               field_0x2502bc;
-	GCamera*               camera; /* 0x2502c0 */
-	uint32_t               field_0x2502c4;
-	uint8_t                field_0x2502c8;
-	uint8_t                field_0x2502c9[3];
-	uint8_t                field_0x2502cc;
-	uint8_t                field_0x2502cd;
-	uint8_t                field_0x2502ce;
-	uint8_t                field_0x2502cf;
-	FILE*                  field_0x2502d0;
-	FILE*                  field_0x2502d4;
-	FILE*                  field_0x2502d8;
-	FILE*                  field_0x2502dc;
-	FILE*                  field_0x2502e0;
-	FILE*                  field_0x2502e4;
-	uint32_t               field_0x2502e8;
-	uint32_t               field_0x2502ec;
-	uint8_t                field_0x2502f0[0x10];
-	ControlMap*            control_map; /* 0x250300 */
-	DialogBoxOptions*      dialog_box_options;
-	DialogBoxKeyBinding*   dialog_box_key_binding;
-	DialogBoxSaveMessage*  dialog_box_save_message;
-	PathCreator            path_creator; /* 0x250310 */
-	uint32_t               field_0x250530;
-	GClimate*              climate;
-	bool32_t               Initialised;
-	uint32_t               field_0x25053c;
-	int                    field_0x250540;
+	GestureSystemResult*   gesture_system_result;
+#ifndef VERSION_BW1W100
+	Settings* settings;
+#endif
+	float         TownInfluenceMultiplier;
+	float         PlayerInfluenceMultiplier;
+	GAME_LANGUAGE CurrentLanguage;
+#ifndef VERSION_BW1W100
+	ScriptCreatureCurse script_creature_curse;
+#endif
+	GScript*              script;
+	HelpEditor*           field_0x250094;
+	uint32_t              field_0x250098;
+	MapCoords             StartCameraCoords;
+	uint8_t               field_0x2500a8[0xc8];
+	char*                 field_0x250170;
+	uint8_t               field_0x250174;
+	Config*               config;
+	uint32_t              Enum0x25017c; // TODO: Original enum identity is unrecovered; serialized as four bytes.
+	GAME_MODE             GameMode;
+	uint32_t              field_0x250184;
+	LHVideoPlayer*        VideoPlayer;
+	int                   field_0x25018c;
+	int                   field_0x250190;
+	float                 field_0x250194;
+	uint8_t               field_0x250198[0x10c];
+	uint32_t              field_0x2502a4;
+	GKeyBuffer            key_buffer;
+	CMouse                Mouse;
+	uint32_t              field_0x2502bc;
+	GCamera*              camera;
+	uint32_t              field_0x2502c4;
+	uint8_t               field_0x2502c8;
+	uint8_t               field_0x2502c9[3];
+	uint8_t               field_0x2502cc;
+	uint8_t               field_0x2502cd;
+	uint8_t               field_0x2502ce;
+	uint8_t               field_0x2502cf;
+	FILE*                 field_0x2502d0;
+	FILE*                 field_0x2502d4;
+	FILE*                 field_0x2502d8;
+	FILE*                 field_0x2502dc;
+	FILE*                 field_0x2502e0;
+	FILE*                 field_0x2502e4;
+	uint32_t              field_0x2502e8;
+	uint32_t              field_0x2502ec;
+	uint8_t               field_0x2502f0[0x10];
+	ControlMap*           control_map;
+	DialogBoxOptions*     dialog_box_options;
+	DialogBoxKeyBinding*  dialog_box_key_binding;
+	DialogBoxSaveMessage* dialog_box_save_message;
+	PathCreator           path_creator;
+	uint32_t              field_0x250530;
+	GClimate*             climate;
+	uint32_t              Initialised;
+	uint32_t              field_0x25053c;
+	int                   field_0x250540;
 
 	// Override methods
 
 	// BW1W120 0054c330 BW1M119 010e7580
 	virtual void Delete();
 	// BW1W120 0054bfd0 BW1M119 013c9a40
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 00550780 BW1M119 010c8970
 	virtual void Dump();
 	// BW1W120 0054b9a0 BW1M119 0109ee50

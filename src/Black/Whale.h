@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_WHALE_INCLUDED_H
 #define BW1_DECOMP_WHALE_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <assert.h>                           /* For static_assert */
+#include <stdint.h>                           /* For uint32_t, uint8_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "MobileObject.h" /* For struct MobileObject */
 
@@ -21,7 +22,8 @@ public:
 	// BW1W120 00775140 BW1M119 01090cd0
 	static void ProcessAll();
 
-	uint8_t field_0x68[0xc];
+	uint8_t           field_0x68[0x8];
+	LHListNode<Whale> next;
 
 	// Override methods
 

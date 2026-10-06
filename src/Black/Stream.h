@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_STREAM_INCLUDED_H
 #define BW1_DECOMP_STREAM_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <assert.h>                           /* For static_assert */
+#include <stdint.h>                           /* For uint32_t, uint8_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "GameThing.h" /* For struct GameThing */
 
@@ -14,7 +15,8 @@ class GameOSFile;
 class GStream : public GameThing
 {
 public:
-	uint8_t field_0x14[0x14];
+	uint8_t             field_0x14[0x10];
+	LHListNode<GStream> next;
 
 	// Override methods
 

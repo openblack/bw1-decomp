@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+#include <chlasm/ScriptEnums.h>               /* For enum SCRIPT_OBJECT_TYPE */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "BaseInfo.h"         /* For struct BaseInfo */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
@@ -39,11 +40,11 @@ public:
 	// BW1W120 005cdb90 BW1M119 0105c050
 	static void ProcessRings();
 
-	BaseInfo       info;
-	GPlayer*       player;
-	float          Influence;
-	int            field_0x3c;
-	InfluenceRing* next;
+	BaseInfo                  info;
+	GPlayer*                  player;
+	float                     Influence;
+	int                       field_0x3c;
+	LHListNode<InfluenceRing> next;
 
 	// Override methods
 

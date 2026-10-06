@@ -9,6 +9,7 @@
 #include <chlasm/GStates.h>                         /* For enum VILLAGER_STATES */
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <re_common.h>                              /* For bool32_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>       /* For struct LHListNode */
 
 #include "GameThing.h"        /* For struct GameThing */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
@@ -152,7 +153,7 @@ public:
 	ReactionDoneWhen*    reaction_done_when;
 	int                  field_0x9c;
 	int32_t              BirthTurn; /* 0xa0 */
-	Living*              next;
+	LHListNode<Living>   next;
 	uint32_t             field_0xa8;
 	DataPath*            data_path;
 	DataForScriptRemind* data_for_script_remind; /* 0xb0 */

@@ -804,7 +804,7 @@ Black/GestureSystemResult.cpp:
 Black/GJProperty.cpp:
 	.text       start:0x0054E300 end:0x00559880
 	.text$x     start:0x007E9350 end:0x007E9420 align:4
-	.rdata      start:0x0083E0B0 end:0x0083E1B4
+	.rdata      start:0x0083E0B0 end:0x0083E1E8
 	.CRT$XCU    start:0x008F6734 end:0x008F675C align:4
 	.data       start:0x00B1CAA4 end:0x00B1CEE4
 	.bss        start:0x00C27770 end:0x00C27C0C
@@ -817,7 +817,9 @@ Black/Global.cpp:
 
 Black/GlobalGameList.cpp:
 	.text       start:0x00559F00 end:0x0055CD80
+	.rdata      start:0x0083E1E8 end:0x0083E1F4
 	.CRT$XCU    start:0x008F675C end:0x008F6768 align:4
+	.bss        start:0x00C27C0C end:0x00C27C1C
 
 Black/GraveYard.cpp:
 	.text       start:0x0055CD80 end:0x0055CFD0
@@ -1529,12 +1531,13 @@ Black/PSysTornado.cpp:
 	.rdata      start:0x00875198 end:0x00875440
 	.CRT$XCU    start:0x008F6F2C end:0x008F6F30 align:4
 	.data       start:0x00B2CEA4 end:0x00B2D010
-	.bss        start:0x00C6FC44 end:0x00C6FC94
+	.bss        start:0x00C6FC44 end:0x00C6FC88
 
 Black/puzzlegame.cpp:
 	.text       start:0x00674500 end:0x0067BC90
 	.rdata      start:0x00875440 end:0x008788F8
 	.CRT$XCU    start:0x008F6F38 end:0x008F6F40 align:4
+	.bss        start:0x00C6FC88 end:0x00C70320
 
 Black/RandomBuildingPlacement.cpp:
 	.text       start:0x0067BC90 end:0x0067BE20

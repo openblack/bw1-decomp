@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_FIRE_FLY_INCLUDED_H
 #define BW1_DECOMP_FIRE_FLY_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <assert.h>                           /* For static_assert */
+#include <stdint.h>                           /* For uint32_t, uint8_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "MapCoords.h" /* For struct MapCoords */
 #include "Object.h"    /* For struct Object */
@@ -26,26 +27,26 @@ public:
 	// BW1W120 0052b7a0 BW1M119 0107fcb0
 	static void ProcessAll();
 
-	uint32_t    field_0x54;
-	LH3DSprite* sprite;
-	uint32_t    field_0x5c;
-	MapCoords   field_0x60;
-	MapCoords   field_0x6c;
-	MapCoords   field_0x78;
-	uint8_t     field_0x84[0xc];
-	uint32_t    field_0x90;
-	uint32_t    field_0x94;
-	uint32_t    field_0x98;
-	float       field_0x9c;
-	float       field_0xa0;
-	float       field_0xa4;
-	float       field_0xa8;
-	float       field_0xac;
-	float       field_0xb0;
-	float       field_0xb4;
-	float       field_0xb8;
-	float       field_0xbc;
-	uint8_t     field_0xc0;
+	LHListNode<FireFly> next;
+	LH3DSprite*         sprite;
+	uint32_t            field_0x5c;
+	MapCoords           field_0x60;
+	MapCoords           field_0x6c;
+	MapCoords           field_0x78;
+	uint8_t             field_0x84[0xc];
+	uint32_t            field_0x90;
+	uint32_t            field_0x94;
+	uint32_t            field_0x98;
+	float               field_0x9c;
+	float               field_0xa0;
+	float               field_0xa4;
+	float               field_0xa8;
+	float               field_0xac;
+	float               field_0xb0;
+	float               field_0xb4;
+	float               field_0xb8;
+	float               field_0xbc;
+	uint8_t             field_0xc0;
 
 	// Override methods
 

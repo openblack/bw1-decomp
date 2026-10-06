@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+#include <chlasm/ScriptEnums.h>               /* For enum SCRIPT_OBJECT_TYPE */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "Object.h" /* For struct Object */
 
@@ -22,7 +23,8 @@ struct MapCoords;
 class GStreetLantern : public Object
 {
 public:
-	uint8_t field_0x54[0x10];
+	LHListNode<GStreetLantern> next;
+	uint8_t                    field_0x58[0xc];
 
 	// Override methods
 

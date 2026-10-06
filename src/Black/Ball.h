@@ -8,6 +8,7 @@
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 #include <re_common.h>                            /* For bool32_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
 
 #include "MapCoords.h"    /* For struct MapCoords */
 #include "MobileObject.h" /* For struct MobileObject */
@@ -31,20 +32,20 @@ public:
 	// BW1W120 00435f30 BW1M119 01091330
 	static void ProcessBalls();
 
-	uint32_t  field_0x68;
-	LHPoint   field_0x6c;
-	LHPoint   field_0x78;
-	MapCoords Destination; /* 0x84 -- where the ball was last kicked at */
-	bool32_t  IsOwned;     /* 0x90 */
-	uint32_t  field_0x94;
-	uint32_t  field_0x98;
-	uint32_t  field_0x9c;
-	Town*     town; /* 0xa0 */
-	uint32_t  field_0xa4;
-	uint32_t  field_0xa8;
-	uint32_t  field_0xac;
-	uint32_t  field_0xb0;
-	uint32_t  field_0xb4;
+	LHListNode<Ball> next;
+	LHPoint          field_0x6c;
+	LHPoint          field_0x78;
+	MapCoords        Destination;
+	bool32_t         IsOwned;
+	uint32_t         field_0x94;
+	uint32_t         field_0x98;
+	uint32_t         field_0x9c;
+	Town*            town;
+	uint32_t         field_0xa4;
+	uint32_t         field_0xa8;
+	uint32_t         field_0xac;
+	uint32_t         field_0xb0;
+	uint32_t         field_0xb4;
 
 	// Override methods
 

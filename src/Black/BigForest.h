@@ -6,6 +6,7 @@
 
 #include <chlasm/Enum.h>                             /* For enum RESOURCE_TYPE */
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>        /* For struct LHListNode */
 
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 
@@ -26,9 +27,9 @@ class Villager;
 class BigForest : public MultiMapFixed
 {
 public:
-	uint32_t field_0x80; /* 0x7c */
-	Forest*  forest;     /* 0x80 */
-	uint32_t field_0x84;
+	LHListNode<BigForest> next;
+	Forest*               forest;
+	uint32_t              field_0x84;
 
 	// Override methods
 

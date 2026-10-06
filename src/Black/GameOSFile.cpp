@@ -333,7 +333,9 @@ void GameOSFile::ResolveAllLoads()
 		}
 		creatureNode = next;
 	}
+#ifndef VERSION_BW1W100
 	GGame::g_game->script_creature_curse.ResolveLoad(GGame::g_game->players[GGame::g_game->PlayerIndex].creature.Get());
+#endif
 
 	while (SaveLoadPtrList.GetStart())
 	{

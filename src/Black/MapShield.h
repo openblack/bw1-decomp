@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_MAP_SHIELD_INCLUDED_H
 #define BW1_DECOMP_MAP_SHIELD_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
+#include <assert.h>                           /* For static_assert */
+#include <stdint.h>                           /* For uint32_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "Fixed.h" /* For struct SingleMapFixed, struct SingleMapFixedVftable */
 
@@ -24,9 +25,9 @@ class SpellShield;
 class MapShield : public SingleMapFixed
 {
 public:
-	MapShield*   next;  /* 0x5c */
-	SpellShield* spell; /* 0x60 */
-	GMagicInfo*  SpellInfo;
+	LHListNode<MapShield> next;
+	SpellShield*          spell;
+	GMagicInfo*           SpellInfo;
 
 	// Override methods
 
