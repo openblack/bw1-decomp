@@ -1,8 +1,25 @@
-// The static ios_base::Init and _Winit objects from <iostream> initialise before SecondsPerYear,
-// so the original included it ahead of everything else.
+// The iostream initialisers precede the point, year-length and logarithm initialisers.
 #include <iostream>
 
+#include <Lionhead/LH3DLib/development/LHPoint.h>
+
+// The name is a guess, but not a free one. cl6 orders .bss by a hash of the symbol name, and
+// statics inside a namespace by the namespace's name, so <iostream>'s _Wios_init and _Ios_init
+// both sort as "std". The target needs this point after SecondsPerYear and ahead of them;
+// "PSysZeroPoint" sorted after them, "ParticleZeroPoint" sorts between. Renaming it will move it:
+// re-check this unit's .bss first.
+// BW1W120 00d4ed98 BW1M119 01b42abc
+static const LHPoint ParticleZeroPoint(0.0f, 0.0f, 0.0f);
+
 #include "GameTimeConstants.h"
+
+// BW1W120 00d4ed90
+static float OneOverLogHalf = 1.0f / (float)log(0.5);
+
+// fabricated: an unreferenced 4-byte .bss slot at 0x00d4eda8, after the iostream guards and
+// ahead of the _Nilrefs COMDAT. Nothing names it; this name hashes after "std".
+static float unused;
+
 #include "PSysProperties.h"
 
 #include "GJProperty.h"        /* For class PropertyList */
@@ -1762,6 +1779,19 @@ void LandscapeCollide::DefineProperties(PropertyList* list)
 {
 	AtomCollectionModifier::DefineProperties(list);
 	list->AddBoolProperty("SendEvent", &SendEvent);
+}
+
+// fabricated
+// TODO: cl6 queues the template functions it emits after the last ordinary function by the
+// order in which non-template code names them. In the target, std::string's default constructor
+// (BW1W120 006c0f10) leads that queue, so some non-template code ahead of
+// RegisterParticleCreators names it directly; reaching it only through inlined map::operator[]
+// puts it after the _Tree helpers. The same IL also decides a register tie-break in
+// RegisterModifiers. This unreferenced helper (never emitted) stands in for the unknown original
+// reference.
+static void EmptyString()
+{
+	std::string text;
 }
 
 bool PSysFileData::LoadFromFile(PARTICLE_TYPE type, const char* filename)

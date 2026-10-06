@@ -184,12 +184,12 @@ public:
 		streamer->AddFixUpReference(name, (Persistent**)Pointer);
 		return !failed;
 	}
-	virtual bool32_t IsCompatible(const Persistent* value)
+	virtual Persistent* GetAsPointer() { return *Pointer; }
+	virtual void        SetAsPointer(Persistent* value) { *Pointer = dynamic_cast<T*>(value); }
+	virtual bool32_t    IsCompatible(const Persistent* value)
 	{
 		return value == NULL || dynamic_cast<const T*>(value) != NULL;
 	}
-	virtual Persistent* GetAsPointer() { return *Pointer; }
-	virtual void        SetAsPointer(Persistent* value) { *Pointer = dynamic_cast<T*>(value); }
 
 	T** Pointer; /* 0xc */
 };
@@ -594,15 +594,10 @@ public:
 
 	typedef std::map<const type_info*, T, compare> MapType;
 
-	T& operator[](const type_info& key);
+	T& operator[](const type_info& key) { return Map[&key]; }
 
 	MapType Map; /* 0x0 */
 };
-
-template <class T> T& type_map<T>::operator[](const type_info& key)
-{
-	return Map[&key];
-}
 
 // The registry of the persistent classes, filled by the Register* methods in PSysProperties.cpp.
 // The constructor and destructor live with the property code (BW1M119 012dfff0, 012ff0b0).
