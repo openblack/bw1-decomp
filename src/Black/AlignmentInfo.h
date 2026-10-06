@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <chlasm/Enum.h> /* For ALIGNMENT_TYPE_LAST, EFFECT_TYPE_LAST */
+#include <re_common.h>   /* For ARRAY_SIZE */
 
 #include "BaseInfo.h"    /* For struct GBaseInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
@@ -24,7 +25,7 @@ public:
 	// BW1W120 004140c0 BW1M119 010a7df0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
 	{
-		num_infos = sizeof(Infos) / sizeof(Infos[0]);
+		num_infos = ARRAY_SIZE(Infos);
 		return GetInfo();
 	}
 
