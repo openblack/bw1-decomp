@@ -6,6 +6,38 @@ symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 
 block_relocations:
+# PSysProperties RTTI type-name payloads contain ASCII words, not image pointers.
+  - source: 0x00B28184
+  - source: 0x00B292C0
+  - source: 0x00B293C4
+  - source: 0x00B2AF34
+  - source: 0x00B2AF80
+  - source: 0x00B2B010
+  - source: 0x00B2B0A0
+  - source: 0x00B2B270
+  - source: 0x00B2B2C0
+  - source: 0x00B2B310
+  - source: 0x00B2B360
+  - source: 0x00B2B3B0
+  - source: 0x00B2B3DC
+  - source: 0x00B2B464
+  - source: 0x00B2B588
+  - source: 0x00B2B5D8
+  - source: 0x00B2B864
+  - source: 0x00B2BB7C
+  - source: 0x00B2BD20
+  - source: 0x00B2BE1C
+  - source: 0x00B2BF98
+  - source: 0x00B2C030
+  - source: 0x00B2C15C
+  - source: 0x00B2C3BC
+  - source: 0x00B2C4DC
+  - source: 0x00B2C698
+  - source: 0x00B2C778
+  - source: 0x00B2C7EC
+  - source: 0x00B2C838
+  - source: 0x00B2C980
+  - source: 0x00B2C9C0
 # Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate.
   - source: 0x00401FE7
 # The RTTI type names ".?AVFixed@@" and ".?AVMultiMapFixed@@" end in "d@@\0", which reads as 0x00404064.
@@ -24,6 +56,1324 @@ block_relocations:
   - source: 0x008FABA0
 
 add_relocations:
+# PSysProperties shared callback aliases and istream exception boundaries.
+  - source: 0x0065A9E8
+    type: x86_abs32
+    target: '?StaticCreate_ParticleSpriteCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AA4E
+    type: x86_abs32
+    target: '?StaticCreate_ParticleSymbolSpriteCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AAB1
+    type: x86_abs32
+    target: '?StaticCreate_ParticleLightMapCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AB14
+    type: x86_abs32
+    target: '?StaticCreate_ParticleChainCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AB77
+    type: x86_abs32
+    target: '?StaticCreate_ParticlePointCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065ABD5
+    type: x86_abs32
+    target: '?StaticCreate_ParticleMeshCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AC3D
+    type: x86_abs32
+    target: '?StaticCreate_ParticleVolBlendMeshCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065ACBA
+    type: x86_abs32
+    target: '?StaticCreate_ParticleGJMeshCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AD59
+    type: x86_abs32
+    target: '?StaticCreate_ParticleMeshCreatorAnimTextured@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AE2B
+    type: x86_abs32
+    target: '?StaticCreate_ParticleMistCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AEFE
+    type: x86_abs32
+    target: '?StaticCreate_ParticleAnimCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AFD1
+    type: x86_abs32
+    target: '?StaticCreate_ParticleGoodEvilCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B0C0
+    type: x86_abs32
+    target: '?StaticCreate_ParticleAnimWithCameraCreator@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B478
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionCollectionDelay@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B4DE
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionTrueOnCloseDown@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B541
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionTrueWhenEnabled@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B5A4
+    type: x86_abs32
+    target: '?StaticCreate_EC_DeflectionInAtomsHierarchy@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B607
+    type: x86_abs32
+    target: '?StaticCreate_EC_CollectionShouldBeEmitting@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B665
+    type: x86_abs32
+    target: '?StaticCreate_EC_DeflectionInCollectionsHierarchy@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B6CD
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionNever@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B730
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionCollectionLimitedTime@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B793
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionAtomDelay@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B7F6
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionAtomNearVillagers@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B859
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionAtomLimitedTime@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B8BC
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionRandom@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B955
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionParentFrameTime@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B9EF
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionFrameTime@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BAC6
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionAtomBelowHeight@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BB99
+    type: x86_abs32
+    target: '?StaticCreate_EC_AtomAlphaAbove@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BC6C
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionAtomCloseWater@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BD3F
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionFireBallSteam@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BE50
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionAtomInUse@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BF3B
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionAtomBelowSpeed@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C02A
+    type: x86_abs32
+    target: '?StaticCreate_EventConditionAtomHasBeenDeflected@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C698
+    type: x86_abs32
+    target: '?StaticCreate_ConstFloatProvider@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C6FE
+    type: x86_abs32
+    target: '?StaticCreate_FloatProvider_ParentAtomScale@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C761
+    type: x86_abs32
+    target: '?StaticCreate_StrengthFloatProvider@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C7C4
+    type: x86_abs32
+    target: '?StaticCreate_MagnitudeFloatProvider@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C892
+    type: x86_abs32
+    target: '?StaticCreate_MagnitudeTimesStrengthFloatProvider@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C965
+    type: x86_abs32
+    target: '?StaticCreate_RenderHandScaleFloatProvider@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CA16
+    type: x86_abs32
+    target: '?StaticCreate_RenderHandScaleTimesStrengthFloatProvider@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CD28
+    type: x86_abs32
+    target: '?StaticCreate_AR_FadeAlpha@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CD8A
+    type: x86_abs32
+    target: '?StaticCreate_AR_FadeCollectionAlpha@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CDED
+    type: x86_abs32
+    target: '?StaticCreate_AR_FadeOutOnceConditionTrue@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CE50
+    type: x86_abs32
+    target: '?StaticCreate_AR_FadeAlphaWithHeightAboveLandscape@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CEB3
+    type: x86_abs32
+    target: '?StaticCreate_AR_GetColorFromParent@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CF15
+    type: x86_abs32
+    target: '?StaticCreate_AppearanceRuleFadeOut@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CF79
+    type: x86_abs32
+    target: '?StaticCreate_AppearanceRuleTumble@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CFDC
+    type: x86_abs32
+    target: '?StaticCreate_SetScale@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D03F
+    type: x86_abs32
+    target: '?StaticCreate_SetCollectionAlpha@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D0A2
+    type: x86_abs32
+    target: '?StaticCreate_SetAtomAlpha@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D105
+    type: x86_abs32
+    target: '?StaticCreate_UR_ScaleByCameraDist@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D168
+    type: x86_abs32
+    target: '?StaticCreate_UpdateRuleRotatePrincipalAxis@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D1CB
+    type: x86_abs32
+    target: '?StaticCreate_UR_UpdatePosnFromVelocity@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D22E
+    type: x86_abs32
+    target: '?StaticCreate_UpdateRuleGravity@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D291
+    type: x86_abs32
+    target: '?StaticCreate_UpdateRuleGravityWithFloor@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D2F4
+    type: x86_abs32
+    target: '?StaticCreate_UR_OrientWithVelocity@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D357
+    type: x86_abs32
+    target: '?StaticCreate_UR_OrientSpriteWithVelocity@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D3BA
+    type: x86_abs32
+    target: '?StaticCreate_UR_OrientSpriteWithRandomAngle@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D41D
+    type: x86_abs32
+    target: '?StaticCreate_ForceConstantAltitude@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D47B
+    type: x86_abs32
+    target: '?StaticCreate_ForceConstantHeight@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D4E3
+    type: x86_abs32
+    target: '?StaticCreate_ForceMinimumHeight@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D546
+    type: x86_abs32
+    target: '?StaticCreate_ForceLandscapeHeight@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D5A9
+    type: x86_abs32
+    target: '?StaticCreate_UR_MoveAtom@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D60C
+    type: x86_abs32
+    target: '?StaticCreate_UR_KPMoveAtoms@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D66F
+    type: x86_abs32
+    target: '?StaticCreate_UR_SideSpin@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D6D2
+    type: x86_abs32
+    target: '?StaticCreate_UR_InitialSpin@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D735
+    type: x86_abs32
+    target: '?StaticCreate_UR_CloudMoverNew@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D798
+    type: x86_abs32
+    target: '?StaticCreate_EmitterRuleSimple@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D7FB
+    type: x86_abs32
+    target: '?StaticCreate_EmitterRuleLightningSprite@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D85E
+    type: x86_abs32
+    target: '?StaticCreate_DiskEmitter@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D8C1
+    type: x86_abs32
+    target: '?StaticCreate_SpreadingDiskEmitter@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D924
+    type: x86_abs32
+    target: '?StaticCreate_EmitterRuleConical@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D987
+    type: x86_abs32
+    target: '?StaticCreate_CreateNewBaseAtom@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065D9E5
+    type: x86_abs32
+    target: '?StaticCreate_CreateRuleSphere@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DA4D
+    type: x86_abs32
+    target: '?StaticCreate_CreateRuleAnAtom@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DAB0
+    type: x86_abs32
+    target: '?StaticCreate_CreateWithInitialDirection@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DB13
+    type: x86_abs32
+    target: '?StaticCreate_CreateRuleMakeChain@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DB76
+    type: x86_abs32
+    target: '?StaticCreate_RemoveRuleOldAgeOnly@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DBD9
+    type: x86_abs32
+    target: '?StaticCreate_RemoveRuleProb@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DC3C
+    type: x86_abs32
+    target: '?StaticCreate_RemoveRuleAfterCloseDown@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DC9F
+    type: x86_abs32
+    target: '?StaticCreate_RemoveRuleAfterConditionTrue@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DD02
+    type: x86_abs32
+    target: '?StaticCreate_LandscapeCollide@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DD65
+    type: x86_abs32
+    target: '?StaticCreate_EventAlways@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DDC8
+    type: x86_abs32
+    target: '?StaticCreate_AddSoundToAtom@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DE2B
+    type: x86_abs32
+    target: '?StaticCreate_StartStopSoundOnCondition@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DE8E
+    type: x86_abs32
+    target: '?StaticCreate_RemoveSoundFromAtom@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DEF1
+    type: x86_abs32
+    target: '?StaticCreate_AR_SetAnimPlay@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DF4F
+    type: x86_abs32
+    target: '?StaticCreate_SetPSysCloseDown@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065DFB7
+    type: x86_abs32
+    target: '?StaticCreate_SetAtomHasBeenDeflected@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E01A
+    type: x86_abs32
+    target: '?StaticCreate_UR_AddDefensiveSphere@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E07D
+    type: x86_abs32
+    target: '?StaticCreate_CheckShieldDeflections@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E0E0
+    type: x86_abs32
+    target: '?StaticCreate_UR_Flocking@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E143
+    type: x86_abs32
+    target: '?StaticCreate_UR_RingSpin@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E1A6
+    type: x86_abs32
+    target: '?StaticCreate_UR_Articulate@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E209
+    type: x86_abs32
+    target: '?StaticCreate_UR_GustyWind@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E26C
+    type: x86_abs32
+    target: '?StaticCreate_FollowOrigin@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E2CF
+    type: x86_abs32
+    target: '?StaticCreate_UR_Tornado@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E332
+    type: x86_abs32
+    target: '?StaticCreate_UR_StormCast@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E395
+    type: x86_abs32
+    target: '?StaticCreate_UR_VortexAttract@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E3F8
+    type: x86_abs32
+    target: '?StaticCreate_UR_CloudGather@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E45B
+    type: x86_abs32
+    target: '?StaticCreate_UR_ChangeScale@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E4BE
+    type: x86_abs32
+    target: '?StaticCreate_UR_ChangeScaleXYZ@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E508
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065E557
+    type: x86_abs32
+    target: '?StaticCreate_UR_ChangeStretchHeight@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E5A8
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065E5F8
+    type: x86_abs32
+    target: '?StaticCreate_UR_KPStretchHeight@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E649
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065E69E
+    type: x86_abs32
+    target: '?StaticCreate_UpdateRuleShieldSpark@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E6EA
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065E73E
+    type: x86_abs32
+    target: '?StaticCreate_UR_SphereSurfaceTracer@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E78B
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065E7DB
+    type: x86_abs32
+    target: '?StaticCreate_UR_ForestPath@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E82C
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065E881
+    type: x86_abs32
+    target: '?StaticCreate_UR_HealInHand@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E8CD
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065E921
+    type: x86_abs32
+    target: '?StaticCreate_UR_VapourEndEffect@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065E96C
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065E9B8
+    type: x86_abs32
+    target: '?StaticCreate_UR_WillowWisp@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065EA3B
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065EA8C
+    type: x86_abs32
+    target: '?StaticCreate_ZR_ChainGesture@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065EB0A
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065EB5B
+    type: x86_abs32
+    target: '?StaticCreate_UR_AtomsAtEPTarget@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065EBD9
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065EC2A
+    type: x86_abs32
+    target: '?StaticCreate_UR_GesturingRecognised@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065ECA8
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065ECF9
+    type: x86_abs32
+    target: '?StaticCreate_UR_LightSheetOnObject@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065ED77
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065EDC8
+    type: x86_abs32
+    target: '?StaticCreate_UR_VolFXOnObject@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065EE46
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065EE97
+    type: x86_abs32
+    target: '?StaticCreate_ER_EmitFromParentAtom@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065EF15
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065EF66
+    type: x86_abs32
+    target: '?StaticCreate_ER_BurstFromParentAtom@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065EFE4
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065F035
+    type: x86_abs32
+    target: '?StaticCreate_ER_GlintsOnTarget@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F0B3
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065F104
+    type: x86_abs32
+    target: '?StaticCreate_ER_MultiPickup@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F182
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065F1D3
+    type: x86_abs32
+    target: '?StaticCreate_UR_Explosion@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F251
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065F2A2
+    type: x86_abs32
+    target: '?StaticCreate_UR_ExplodeObject@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F320
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065F371
+    type: x86_abs32
+    target: '?StaticCreate_UR_ExplodeObject2@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F3EF
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065F440
+    type: x86_abs32
+    target: '?StaticCreate_UR_MoveAtomToBaseGroup@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F4BE
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065F50F
+    type: x86_abs32
+    target: '?StaticCreate_AttatchFireBallToAtom@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F58D
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065F5DE
+    type: x86_abs32
+    target: '?StaticCreate_CreateRuleFusedSphericalExplode@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F676
+    type: x86_abs32
+    target: '?StaticCreate_UR_FireWorkSimple@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F6B2
+    type: x86_abs32
+    target: '?StaticCreate_CreateRule_GameObjectRef@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F6EE
+    type: x86_abs32
+    target: '?StaticCreate_LightningForkFlicker@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F72A
+    type: x86_abs32
+    target: '?StaticCreate_UR_HealSpellChakra@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F766
+    type: x86_abs32
+    target: '?StaticCreate_UR_CreatureSpell@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F796
+    type: x86_abs32
+    target: '?StaticCreate_UR_CreatureSpellItch@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F7DE
+    type: x86_abs32
+    target: '?StaticCreate_UR_CreatureSpellFreeze@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F81A
+    type: x86_abs32
+    target: '?StaticCreate_UR_CreatureSpellGeneric@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F856
+    type: x86_abs32
+    target: '?StaticCreate_UR_CreatureSpellCompassion@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F892
+    type: x86_abs32
+    target: '?StaticCreate_UR_FollowTargets@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F8CE
+    type: x86_abs32
+    target: '?StaticCreate_UR_FollowParent@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F90A
+    type: x86_abs32
+    target: '?StaticCreate_UR_FollowCastPosn@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F946
+    type: x86_abs32
+    target: '?StaticCreate_UR_HandSprinkle@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F982
+    type: x86_abs32
+    target: '?StaticCreate_UR_FollowLocalHand@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F9BE
+    type: x86_abs32
+    target: '?StaticCreate_UR_Trail@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065F9FA
+    type: x86_abs32
+    target: '?StaticCreate_UR_ManaPathNew@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065FA36
+    type: x86_abs32
+    target: '?StaticCreate_UR_BeliefSprite@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065FA72
+    type: x86_abs32
+    target: '?StaticCreate_UR_TownCentreBelief@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065FAAE
+    type: x86_abs32
+    target: '?StaticCreate_UR_Lightning@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065FAEA
+    type: x86_abs32
+    target: '?StaticCreate_UR_LightningStrike@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065FB26
+    type: x86_abs32
+    target: '?StaticCreate_UR_SimpleBeam@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065FB62
+    type: x86_abs32
+    target: '?StaticCreate_UR_Rope@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065FB9E
+    type: x86_abs32
+    target: '?StaticCreate_UR_ObjectArcer@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065FBDA
+    type: x86_abs32
+    target: '?StaticCreate_UR_Plasma@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065FC16
+    type: x86_abs32
+    target: '?StaticCreate_ZR_SurfRevol@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065FC52
+    type: x86_abs32
+    target: '?StaticCreate_SetInitialRandomOrientations@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x0065FC8E
+    type: x86_abs32
+    target: '?StaticCreate_AddSubCollectionsToAtom@@YAPAVPersistent@@PAVPersistentOwner@@@Z'
+  - source: 0x00666A8D
+    type: x86_abs32
+    target: '??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAK@Z'
+    addend: 0x1a2
+  - source: 0x007E9431
+    type: x86_abs32
+    target: '$T97681'
+  - source: 0x008EE814
+    type: x86_abs32
+    target: '??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAK@Z'
+    addend: 0x177
+# PSysProperties shared callback aliases and istream exception boundaries.
+  - source: 0x0066258B
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x006625AF
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x006625DE
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662644
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x006626DB
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x006626FF
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x0066272E
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662794
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+# PSysProperties shared callback aliases and istream exception boundaries.
+  - source: 0x006511C0
+    type: x86_abs32
+    target: '?GetMaxGroups@PSysFileData@@QAEKXZ'
+  - source: 0x006511C7
+    type: x86_abs32
+    target: '?SetMaxGroups@PSysFileData@@QAEXK@Z'
+  - source: 0x006512AC
+    type: x86_abs32
+    target: '?GetMaxGroups@PSysFileData@@QAEKXZ'
+  - source: 0x006512B3
+    type: x86_abs32
+    target: '?SetMaxGroups@PSysFileData@@QAEXK@Z'
+  - source: 0x006518F6
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00651C2A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00651C5F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00651DA4
+    type: x86_abs32
+    target: '?GetAccnType@UR_Flocking@@QAEJXZ'
+  - source: 0x00651E6D
+    type: x86_abs32
+    target: '?GetNeighbourAccnType@UR_Flocking@@QAEJXZ'
+  - source: 0x00651F5A
+    type: x86_abs32
+    target: '?GetIdealVelAccnType@UR_Flocking@@QAEJXZ'
+  - source: 0x006520AA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065210F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006521AC
+    type: x86_abs32
+    target: '?SetGravity@UpdateRuleGravity@@QAEXM@Z'
+  - source: 0x006524EA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065255A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006525AA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006525FA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065266F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006526CE
+    type: x86_abs32
+    target: '?GetAxis@UpdateRuleRotatePrincipalAxis@@QAEJXZ'
+  - source: 0x006527DF
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00652A3A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00652A6A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00652A9A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00652ACA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00653BAA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00653C1A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00653CBA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00653D2F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00653FFF
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065408B
+    type: x86_abs32
+    target: '?GetStartX@UR_MoveAtom@@QBEMXZ'
+  - source: 0x00654092
+    type: x86_abs32
+    target: '?SetStartX@UR_MoveAtom@@QAEXM@Z'
+  - source: 0x00654129
+    type: x86_abs32
+    target: '?GetStartY@UR_MoveAtom@@QBEMXZ'
+  - source: 0x006541D6
+    type: x86_abs32
+    target: '?SetStartZ@UR_MoveAtom@@QAEXM@Z'
+  - source: 0x0065424F
+    type: x86_abs32
+    target: '?GetStopX@UR_MoveAtom@@QBEMXZ'
+  - source: 0x00654256
+    type: x86_abs32
+    target: '?SetStopX@UR_MoveAtom@@QAEXM@Z'
+  - source: 0x0065428B
+    type: x86_abs32
+    target: '?GetStopY@UR_MoveAtom@@QBEMXZ'
+  - source: 0x0065432F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00654613
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006548CA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006548FF
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00654BAF
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065515F
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065528A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065533A
+    type: x86_abs32
+    target: '?NextGroupsGetSize@AddSubCollectionsToAtom@@QAEKXZ'
+  - source: 0x00655341
+    type: x86_abs32
+    target: '?NextGroupsSetSize@AddSubCollectionsToAtom@@QAEXK@Z'
+  - source: 0x00655348
+    type: x86_abs32
+    target: '?NextGroupsGet@AddSubCollectionsToAtom@@QAEJK@Z'
+  - source: 0x0065534F
+    type: x86_abs32
+    target: '?NextGroupsSet@AddSubCollectionsToAtom@@QAEXKJ@Z'
+  - source: 0x00656F3A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006571FA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065766A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065785A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x006586BA
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00658F0A
+    type: x86_rel32
+    target: '?DefineProperties@UpdateRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00658F7A
+    type: x86_rel32
+    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x00658FCA
+    type: x86_rel32
+    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065900A
+    type: x86_rel32
+    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065903F
+    type: x86_rel32
+    target: '?DefineProperties@RemoveRule@@UAEXPAVPropertyList@@@Z'
+  - source: 0x0065AA2E
+    type: x86_abs32
+    target: '?PCreator_ParticleSpriteCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AA91
+    type: x86_abs32
+    target: '?PCreator_ParticleSymbolSpriteCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AAF4
+    type: x86_abs32
+    target: '?PCreator_ParticleLightMapCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AB57
+    type: x86_abs32
+    target: '?PCreator_ParticleChainCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065ABBA
+    type: x86_abs32
+    target: '?PCreator_ParticlePointCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AC1D
+    type: x86_abs32
+    target: '?PCreator_ParticleMeshCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AC80
+    type: x86_abs32
+    target: '?PCreator_ParticleVolBlendMeshCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AD09
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065AD28
+    type: x86_abs32
+    target: '?PCreator_ParticleGJMeshCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065ADDC
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065ADF2
+    type: x86_abs32
+    target: '?PCreator_ParticleMeshCreatorAnimTextured@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AEAF
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065AEC5
+    type: x86_abs32
+    target: '?PCreator_ParticleMistCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065AF82
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVParticleCreator@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065AF98
+    type: x86_abs32
+    target: '?PCreator_ParticleAnimCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B09E
+    type: x86_abs32
+    target: '?PCreator_ParticleGoodEvilCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B182
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x0065B190
+    type: x86_abs32
+    target: '?PCreator_ParticleAnimWithCameraCreator@@YAPAVParticleCreator@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B4BE
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionCollectionDelay@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B521
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionTrueOnCloseDown@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B584
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionTrueWhenEnabled@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B5E7
+    type: x86_abs32
+    target: '?ConditionCreate_EC_DeflectionInAtomsHierarchy@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B64A
+    type: x86_abs32
+    target: '?ConditionCreate_EC_CollectionShouldBeEmitting@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B6AD
+    type: x86_abs32
+    target: '?ConditionCreate_EC_DeflectionInCollectionsHierarchy@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B710
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionNever@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B773
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionCollectionLimitedTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B7D6
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomDelay@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B839
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomNearVillagers@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B89C
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomLimitedTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B906
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065B91C
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionRandom@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065B9A4
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065B9BA
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionParentFrameTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BA77
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065BA8D
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionFrameTime@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BB4A
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065BB60
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomBelowHeight@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BC1D
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065BC33
+    type: x86_abs32
+    target: '?ConditionCreate_EC_AtomAlphaAbove@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BCF0
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065BD06
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomCloseWater@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BDFC
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVTEventCondition@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065BE12
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionFireBallSteam@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065BF19
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomInUse@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C008
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomBelowSpeed@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C0E5
+    type: x86_abs32
+    target: '?ConditionCreate_EventConditionAtomHasBeenDeflected@@YAPAVTEventCondition@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C6DE
+    type: x86_abs32
+    target: '?FloatProviderCreate_ConstFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C741
+    type: x86_abs32
+    target: '?FloatProviderCreate_FloatProvider_ParentAtomScale@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C7A4
+    type: x86_abs32
+    target: '?FloatProviderCreate_StrengthFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C843
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVFloatProvider@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065C859
+    type: x86_abs32
+    target: '?FloatProviderCreate_MagnitudeFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C916
+    type: x86_rel32
+    target: '??0?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@QAE@ABQBVtype_info@@ABQ6APAVFloatProvider@@PAVPersistentOwner@@@Z@Z'
+  - source: 0x0065C92C
+    type: x86_abs32
+    target: '?FloatProviderCreate_MagnitudeTimesStrengthFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065C9F9
+    type: x86_abs32
+    target: '?FloatProviderCreate_RenderHandScaleFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CAD5
+    type: x86_abs32
+    target: '?FloatProviderCreate_RenderHandScaleTimesStrengthFloatProvider@@YAPAVFloatProvider@@PAVPersistentOwner@@@Z'
+  - source: 0x0065CAEA
+    type: x86_rel32
+    target: '??1Persistent@@UAE@XZ'
+  - source: 0x00661038
+    type: x86_rel32
+    target: '??1Persistent@@UAE@XZ'
+  - source: 0x00662A81
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x00662AB0
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662B16
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVPersistent@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVPersistent@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662BB1
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x00662BE0
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662C46
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662CE1
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x00662D10
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662D76
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVParticleCreator@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVParticleCreator@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662E11
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x00662E40
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662EA6
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662F41
+    type: x86_rel32
+    target: '?begin@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@QAE?AViterator@12@XZ'
+  - source: 0x00662F70
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x00662FD6
+    type: x86_rel32
+    target: '??0?$pair@Viterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@std@@_N@std@@QAE@ABViterator@?$_Tree@PBVtype_info@@U?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@U_Kfn@?$map@PBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@ZVcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@std@@@3@Vcompare@?$type_map@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@@V?$allocator@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@3@@1@AB_N@Z'
+  - source: 0x006643D8
+    type: x86_rel32
+    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVPersistent@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
+  - source: 0x00664648
+    type: x86_rel32
+    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVFloatProvider@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
+  - source: 0x00664B28
+    type: x86_rel32
+    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVTEventCondition@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
+  - source: 0x00664D98
+    type: x86_rel32
+    target: '?_Construct@std@@YAXPAU?$pair@QBVtype_info@@P6APAVAtomCollectionModifier@@PAVPersistentOwner@@@Z@1@ABU21@@Z'
+  - source: 0x00666D61
+    type: x86_abs32
+    target: '?id@?$ctype@G@std@@$E'
+  - source: 0x00666DC1
+    type: x86_abs32
+    target: '?id@?$num_put@DV?$ostreambuf_iterator@DU?$char_traits@D@std@@@$E'
+  - source: 0x00666DD1
+    type: x86_abs32
+    target: '?id@?$num_get@DV?$istreambuf_iterator@DU?$char_traits@D@std@@@$E'
+  - source: 0x00666DE1
+    type: x86_abs32
+    target: '?id@?$numpunct@D@std@@$E'
+
+# PSysProperties weak deleting-destructor aliases and istream exception metadata.
+  - source: 0x006668FC
+    type: x86_abs32
+    target: '__except_list'
+  - source: 0x00666904
+    type: x86_abs32
+    target: '__except_list'
+  - source: 0x00666ACB
+    type: x86_abs32
+    target: '__except_list'
+  - source: 0x00872CA4
+    type: x86_abs32
+    target: '??_EParticlePointCreator@@UAEPAXI@Z'
+  - source: 0x00872CD0
+    type: x86_abs32
+    target: '??_EEventConditionCollectionDelay@@UAEPAXI@Z'
+  - source: 0x00872CF4
+    type: x86_abs32
+    target: '??_EEventConditionTrueOnCloseDown@@UAEPAXI@Z'
+  - source: 0x00872D18
+    type: x86_abs32
+    target: '??_EEventConditionTrueWhenEnabled@@UAEPAXI@Z'
+  - source: 0x00872D3C
+    type: x86_abs32
+    target: '??_EEC_DeflectionInAtomsHierarchy@@UAEPAXI@Z'
+  - source: 0x00872D60
+    type: x86_abs32
+    target: '??_EEC_CollectionShouldBeEmitting@@UAEPAXI@Z'
+  - source: 0x00872D84
+    type: x86_abs32
+    target: '??_EEC_DeflectionInCollectionsHierarchy@@UAEPAXI@Z'
+  - source: 0x00872DA8
+    type: x86_abs32
+    target: '??_EEventConditionNever@@UAEPAXI@Z'
+  - source: 0x00872DCC
+    type: x86_abs32
+    target: '??_EEventConditionCollectionLimitedTime@@UAEPAXI@Z'
+  - source: 0x00872DF0
+    type: x86_abs32
+    target: '??_EEventConditionAtomDelay@@UAEPAXI@Z'
+  - source: 0x00872E14
+    type: x86_abs32
+    target: '??_EEventConditionAtomNearVillagers@@UAEPAXI@Z'
+  - source: 0x00872E38
+    type: x86_abs32
+    target: '??_EEventConditionAtomLimitedTime@@UAEPAXI@Z'
+  - source: 0x00872E5C
+    type: x86_abs32
+    target: '??_EEventConditionRandom@@UAEPAXI@Z'
+  - source: 0x00872E80
+    type: x86_abs32
+    target: '??_EEventConditionParentFrameTime@@UAEPAXI@Z'
+  - source: 0x00872EA4
+    type: x86_abs32
+    target: '??_EEventConditionFrameTime@@UAEPAXI@Z'
+  - source: 0x00872EC8
+    type: x86_abs32
+    target: '??_EEventConditionAtomBelowHeight@@UAEPAXI@Z'
+  - source: 0x00872EEC
+    type: x86_abs32
+    target: '??_EEC_AtomAlphaAbove@@UAEPAXI@Z'
+  - source: 0x00872F10
+    type: x86_abs32
+    target: '??_EEventConditionAtomCloseWater@@UAEPAXI@Z'
+  - source: 0x00872F34
+    type: x86_abs32
+    target: '??_EEventConditionFireBallSteam@@UAEPAXI@Z'
+  - source: 0x00872F58
+    type: x86_abs32
+    target: '??_EEventConditionAtomInUse@@UAEPAXI@Z'
+  - source: 0x00872F7C
+    type: x86_abs32
+    target: '??_EEventConditionAtomBelowSpeed@@UAEPAXI@Z'
+  - source: 0x00872FA0
+    type: x86_abs32
+    target: '??_EEventConditionAtomHasBeenDeflected@@UAEPAXI@Z'
+  - source: 0x00872FC4
+    type: x86_abs32
+    target: '??_EConstFloatProvider@@UAEPAXI@Z'
+  - source: 0x00872FE0
+    type: x86_abs32
+    target: '??_EFloatProvider@@UAEPAXI@Z'
+  - source: 0x00872FFC
+    type: x86_abs32
+    target: '??_EFloatProvider_ParentAtomScale@@UAEPAXI@Z'
+  - source: 0x00873018
+    type: x86_abs32
+    target: '??_EStrengthFloatProvider@@UAEPAXI@Z'
+  - source: 0x00873034
+    type: x86_abs32
+    target: '??_EMagnitudeFloatProvider@@UAEPAXI@Z'
+  - source: 0x00873050
+    type: x86_abs32
+    target: '??_EMagnitudeTimesStrengthFloatProvider@@UAEPAXI@Z'
+  - source: 0x0087306C
+    type: x86_abs32
+    target: '??_ERenderHandScaleFloatProvider@@UAEPAXI@Z'
+  - source: 0x00873088
+    type: x86_abs32
+    target: '??_ERenderHandScaleTimesStrengthFloatProvider@@UAEPAXI@Z'
+  - source: 0x008730A4
+    type: x86_abs32
+    target: '??_EUR_RingSpin@@UAEPAXI@Z'
+  - source: 0x008730C8
+    type: x86_abs32
+    target: '??_EUR_Articulate@@UAEPAXI@Z'
+  - source: 0x008730EC
+    type: x86_abs32
+    target: '??_EAppearanceRuleFadeOut@@UAEPAXI@Z'
+  - source: 0x00873110
+    type: x86_abs32
+    target: '??_EAddSoundToAtom@@UAEPAXI@Z'
+  - source: 0x00873134
+    type: x86_abs32
+    target: '??_EAppearanceUpdateRule@@UAEPAXI@Z'
+  - source: 0x00873158
+    type: x86_abs32
+    target: '??_EStartStopSoundOnCondition@@UAEPAXI@Z'
+  - source: 0x0087317C
+    type: x86_abs32
+    target: '??_ERemoveSoundFromAtom@@UAEPAXI@Z'
+  - source: 0x008731A0
+    type: x86_abs32
+    target: '??_EAR_SetAnimPlay@@UAEPAXI@Z'
+  - source: 0x008731C4
+    type: x86_abs32
+    target: '??_EAR_FadeAlpha@@UAEPAXI@Z'
+  - source: 0x008731E8
+    type: x86_abs32
+    target: '??_EAR_FadeCollectionAlpha@@UAEPAXI@Z'
+  - source: 0x0087320C
+    type: x86_abs32
+    target: '??_EAR_FadeOutOnceConditionTrue@@UAEPAXI@Z'
+  - source: 0x00873230
+    type: x86_abs32
+    target: '??_EAR_FadeAlphaWithHeightAboveLandscape@@UAEPAXI@Z'
+  - source: 0x00873254
+    type: x86_abs32
+    target: '??_EAR_GetColorFromParent@@UAEPAXI@Z'
+  - source: 0x00873278
+    type: x86_abs32
+    target: '??_EAppearanceRuleTumble@@UAEPAXI@Z'
+  - source: 0x0087329C
+    type: x86_abs32
+    target: '??_EUR_UpdatePosnFromVelocity@@UAEPAXI@Z'
+  - source: 0x008732C0
+    type: x86_abs32
+    target: '??_EEventAlways@@UAEPAXI@Z'
+  - source: 0x008732E4
+    type: x86_abs32
+    target: '??_EUR_OrientWithVelocity@@UAEPAXI@Z'
+  - source: 0x00873308
+    type: x86_abs32
+    target: '??_EUR_OrientSpriteWithVelocity@@UAEPAXI@Z'
+  - source: 0x0087332C
+    type: x86_abs32
+    target: '??_EUR_OrientSpriteWithRandomAngle@@UAEPAXI@Z'
+  - source: 0x00873350
+    type: x86_abs32
+    target: '??_EUR_GustyWind@@UAEPAXI@Z'
+  - source: 0x00873374
+    type: x86_abs32
+    target: '??_EFollowOrigin@@UAEPAXI@Z'
+  - source: 0x00873398
+    type: x86_abs32
+    target: '??_ESetScale@@UAEPAXI@Z'
+  - source: 0x008733BC
+    type: x86_abs32
+    target: '??_ESetCollectionAlpha@@UAEPAXI@Z'
+  - source: 0x008733E0
+    type: x86_abs32
+    target: '??_ESetAtomAlpha@@UAEPAXI@Z'
+  - source: 0x00873404
+    type: x86_abs32
+    target: '??_ESetPSysCloseDown@@UAEPAXI@Z'
+  - source: 0x00873428
+    type: x86_abs32
+    target: '??_ESetAtomHasBeenDeflected@@UAEPAXI@Z'
+  - source: 0x0087344C
+    type: x86_abs32
+    target: '??_EForceConstantAltitude@@UAEPAXI@Z'
+  - source: 0x00873470
+    type: x86_abs32
+    target: '??_EForceConstantHeight@@UAEPAXI@Z'
+  - source: 0x00873494
+    type: x86_abs32
+    target: '??_EForceMinimumHeight@@UAEPAXI@Z'
+  - source: 0x008734B8
+    type: x86_abs32
+    target: '??_EForceLandscapeHeight@@UAEPAXI@Z'
+  - source: 0x008734DC
+    type: x86_abs32
+    target: '??_EUpdateRuleRotatePrincipalAxis@@UAEPAXI@Z'
+  - source: 0x00873500
+    type: x86_abs32
+    target: '??_EUR_StormCast@@UAEPAXI@Z'
+  - source: 0x00873524
+    type: x86_abs32
+    target: '??_EUR_ChangeScale@@UAEPAXI@Z'
+  - source: 0x00873548
+    type: x86_abs32
+    target: '??_EUR_ChangeScaleXYZ@@UAEPAXI@Z'
+  - source: 0x0087356C
+    type: x86_abs32
+    target: '??_EUR_ChangeStretchHeight@@UAEPAXI@Z'
+  - source: 0x00873590
+    type: x86_abs32
+    target: '??_EUR_MoveAtom@@UAEPAXI@Z'
+  - source: 0x008735B4
+    type: x86_abs32
+    target: '??_EUR_AddDefensiveSphere@@UAEPAXI@Z'
+  - source: 0x008735D8
+    type: x86_abs32
+    target: '??_EUR_HealInHand@@UAEPAXI@Z'
+  - source: 0x008735FC
+    type: x86_abs32
+    target: '??_EUR_SphereSurfaceTracer@@UAEPAXI@Z'
+  - source: 0x00873620
+    type: x86_abs32
+    target: '??_EUR_VapourEndEffect@@UAEPAXI@Z'
+  - source: 0x00873644
+    type: x86_abs32
+    target: '??_ECheckShieldDeflections@@UAEPAXI@Z'
+  - source: 0x00873668
+    type: x86_abs32
+    target: '??_EAddSubCollectionsToAtom@@UAEPAXI@Z'
+  - source: 0x0087368C
+    type: x86_abs32
+    target: '??_EEmitterRuleSimple@@UAEPAXI@Z'
+  - source: 0x008736B0
+    type: x86_abs32
+    target: '??_EEmitterRuleLightningSprite@@UAEPAXI@Z'
+  - source: 0x008736D4
+    type: x86_abs32
+    target: '??_EDiskEmitter@@UAEPAXI@Z'
+  - source: 0x008736F8
+    type: x86_abs32
+    target: '??_ESpreadingDiskEmitter@@UAEPAXI@Z'
+  - source: 0x0087371C
+    type: x86_abs32
+    target: '??_EEmitterRuleConical@@UAEPAXI@Z'
+  - source: 0x00873740
+    type: x86_abs32
+    target: '??_EUR_AtomsAtEPTarget@@UAEPAXI@Z'
+  - source: 0x00873764
+    type: x86_abs32
+    target: '??_EUR_FollowCastPosn@@UAEPAXI@Z'
+  - source: 0x00873788
+    type: x86_abs32
+    target: '??_EUR_FollowLocalHand@@UAEPAXI@Z'
+  - source: 0x008737AC
+    type: x86_abs32
+    target: '??_ECreateRuleMakeChain@@UAEPAXI@Z'
+  - source: 0x008737D0
+    type: x86_abs32
+    target: '??_EUR_ExplodeObject@@UAEPAXI@Z'
+  - source: 0x008737F4
+    type: x86_abs32
+    target: '??_EUR_ExplodeObject2@@UAEPAXI@Z'
+  - source: 0x00873818
+    type: x86_abs32
+    target: '??_EUR_MoveAtomToBaseGroup@@UAEPAXI@Z'
+  - source: 0x0087383C
+    type: x86_abs32
+    target: '??_EAttatchFireBallToAtom@@UAEPAXI@Z'
+  - source: 0x00873860
+    type: x86_abs32
+    target: '??_ECreateNewBaseAtom@@UAEPAXI@Z'
+  - source: 0x00873884
+    type: x86_abs32
+    target: '??_ECreateRuleSphere@@UAEPAXI@Z'
+  - source: 0x008738AC
+    type: x86_abs32
+    target: '??_EUR_SideSpin@@UAEPAXI@Z'
+  - source: 0x008738D0
+    type: x86_abs32
+    target: '??_EUR_InitialSpin@@UAEPAXI@Z'
+  - source: 0x008738F4
+    type: x86_abs32
+    target: '??_ECreateRuleFusedSphericalExplode@@UAEPAXI@Z'
+  - source: 0x00873918
+    type: x86_abs32
+    target: '??_ECreateRule_GameObjectRef@@UAEPAXI@Z'
+  - source: 0x0087393C
+    type: x86_abs32
+    target: '??_ELightningForkFlicker@@UAEPAXI@Z'
+  - source: 0x00873960
+    type: x86_abs32
+    target: '??_EUR_FollowParent@@UAEPAXI@Z'
+  - source: 0x00873984
+    type: x86_abs32
+    target: '??_EUR_FollowTargets@@UAEPAXI@Z'
+  - source: 0x008739A8
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellItch@@UAEPAXI@Z'
+  - source: 0x008739CC
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellFreeze@@UAEPAXI@Z'
+  - source: 0x008739F0
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellGeneric@@UAEPAXI@Z'
+  - source: 0x00873A14
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellCompassion@@UAEPAXI@Z'
+  - source: 0x00873A38
+    type: x86_abs32
+    target: '??_EUR_ManaPathNew@@UAEPAXI@Z'
+  - source: 0x00873A5C
+    type: x86_abs32
+    target: '??_EUR_BeliefSprite@@UAEPAXI@Z'
+  - source: 0x00873A80
+    type: x86_abs32
+    target: '??_EUR_TownCentreBelief@@UAEPAXI@Z'
+  - source: 0x00873AA4
+    type: x86_abs32
+    target: '??_EUR_Rope@@UAEPAXI@Z'
+  - source: 0x00873AC8
+    type: x86_abs32
+    target: '??_EUR_ObjectArcer@@UAEPAXI@Z'
+  - source: 0x00873AEC
+    type: x86_abs32
+    target: '??_EUR_ScaleByCameraDist@@UAEPAXI@Z'
+  - source: 0x00873B10
+    type: x86_abs32
+    target: '??_ERemoveRuleOldAgeOnly@@UAEPAXI@Z'
+  - source: 0x00873B38
+    type: x86_abs32
+    target: '??_ERemoveRuleProb@@UAEPAXI@Z'
+  - source: 0x00873B60
+    type: x86_abs32
+    target: '??_ERemoveRuleAfterCloseDown@@UAEPAXI@Z'
+  - source: 0x00873B88
+    type: x86_abs32
+    target: '??_ERemoveRuleAfterConditionTrue@@UAEPAXI@Z'
+  - source: 0x00873BB0
+    type: x86_abs32
+    target: '??_ELandscapeCollide@@UAEPAXI@Z'
+  - source: 0x00873BD4
+    type: x86_abs32
+    target: '??_ESetInitialRandomOrientations@@UAEPAXI@Z'
 # GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
   - source: 0x00404201
     type: x86_abs32

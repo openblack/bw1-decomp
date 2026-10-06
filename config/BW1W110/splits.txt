@@ -957,7 +957,7 @@ Black/HelpDudeControl.cpp:
 Black/HelpEditor.cpp:
 	.text       start:0x005BFE60 end:0x005BFF90
 	.CRT$XCU    start:0x009B6838 end:0x009B683C align:4
-	.data       start:0x00BDFC80 end:0x00BDFEA8
+	.data       start:0x00BDFC80 end:0x00BDFEAC
 	.bss        start:0x00D048F8 end:0x00D04F7C
 
 Black/HelpProfile.cpp:
@@ -1609,19 +1609,20 @@ Black/PSysPCreator.cpp:
 	.data       start:0x00BF3998 end:0x00BF3BE8
 
 Black/PSysProperties.cpp:
-	.text       start:0x006A0300 end:0x006BC840
+	.text       start:0x006A0300 end:0x006BC8C0
 	.text$x     start:0x008963A0 end:0x008963B0 align:4
-	.rdata      start:0x00927D30 end:0x00928E14
-	.CRT$XCU    start:0x009B6F04 end:0x009B6F1C align:4
-	.data       start:0x00BF3BE8 end:0x00BF86E8
-	.bss        start:0x00D3DA60 end:0x00D3DAC8
+	.rdata      start:0x00927D30 end:0x00928E34
+	.xdata$x    start:0x009AC018 end:0x009AC070 align:4
+	.CRT$XCU    start:0x009B6F04 end:0x009B6F20 align:4
+	.data       start:0x00BF3BE8 end:0x00BF85D0
+	.bss        start:0x00D3DA60 end:0x00D3DA80
 
 Black/PSysRenderParticle.cpp:
-	.text       start:0x006BC840 end:0x006C02F0
-	.rdata      start:0x00928E14 end:0x0092A078
-	.CRT$XCU    start:0x009B6F1C end:0x009B6F38 align:4
-	.data       start:0x00BF86E8 end:0x00BF8888
-	.bss        start:0x00D3DAC8 end:0x00D3DAF8
+	.text       start:0x006BC8C0 end:0x006C02F0
+	.rdata      start:0x00928E34 end:0x0092A078
+	.CRT$XCU    start:0x009B6F20 end:0x009B6F38 align:4
+	.data       start:0x00BF85D0 end:0x00BF8888
+	.bss        start:0x00D3DA80 end:0x00D3DAF8
 
 Black/PSysSave.cpp:
 	.text       start:0x006C03F0 end:0x006C5CC0
@@ -2169,7 +2170,7 @@ Black/WorldRoom.cpp:
 
 Lionhead/LH3DLib/development/LH3DP3.cpp:
 	.text       start:0x00790BB0 end:0x0079C960
-	.text$x     start:0x008963B0 end:0x008963C8 align:4
+	.text$x     start:0x008963B0 end:0x008963C8 align:16
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
 	.text       start:0x0079C960 end:0x0079DDE0
