@@ -1866,9 +1866,11 @@ bool32_t PSysFileData::SaveAsCode(const char* filename)
 	}
 
 #define REGISTER_PARTICLE_CREATOR(CLASS)                                                                               \
-	StaticCreators[&typeid(CLASS)] = StaticCreate_##CLASS;                                                             \
-	Names[&typeid(CLASS)] = #CLASS;                                                                                    \
-	ParticleCreatorCreators[&typeid(CLASS)] = PCreator_##CLASS
+	{                                                                                                                  \
+		StaticCreators[&typeid(CLASS)] = StaticCreate_##CLASS;                                                         \
+		Names[&typeid(CLASS)] = #CLASS;                                                                                \
+		ParticleCreatorCreators[&typeid(CLASS)] = PCreator_##CLASS;                                                    \
+	}
 
 // clang-format off
 DECLARE_PARTICLE_CREATOR(ParticleSpriteCreator, 2189)
@@ -1914,9 +1916,11 @@ void RegisterPersistent::RegisterParticleCreators()
 	}
 
 #define REGISTER_CONDITION(CLASS)                                                                                      \
-	StaticCreators[&typeid(CLASS)] = StaticCreate_##CLASS;                                                             \
-	Names[&typeid(CLASS)] = #CLASS;                                                                                    \
-	ConditionCreators[&typeid(CLASS)] = ConditionCreate_##CLASS
+	{                                                                                                                  \
+		StaticCreators[&typeid(CLASS)] = StaticCreate_##CLASS;                                                         \
+		Names[&typeid(CLASS)] = #CLASS;                                                                                \
+		ConditionCreators[&typeid(CLASS)] = ConditionCreate_##CLASS;                                                   \
+	}
 
 // clang-format off
 DECLARE_CONDITION(EventConditionCollectionDelay, 2226)
@@ -1978,9 +1982,11 @@ void RegisterPersistent::RegisterConditions()
 	}
 
 #define REGISTER_FLOAT_PROVIDER(CLASS)                                                                                 \
-	StaticCreators[&typeid(CLASS)] = StaticCreate_##CLASS;                                                             \
-	Names[&typeid(CLASS)] = #CLASS;                                                                                    \
-	FloatProviderCreators[&typeid(CLASS)] = FloatProviderCreate_##CLASS
+	{                                                                                                                  \
+		StaticCreators[&typeid(CLASS)] = StaticCreate_##CLASS;                                                         \
+		Names[&typeid(CLASS)] = #CLASS;                                                                                \
+		FloatProviderCreators[&typeid(CLASS)] = FloatProviderCreate_##CLASS;                                           \
+	}
 
 // clang-format off
 DECLARE_FLOAT_PROVIDER(ConstFloatProvider, 2279)
@@ -2014,9 +2020,11 @@ void RegisterPersistent::RegisterFloatProviders()
 	}
 
 #define REGISTER_MODIFIER(CLASS)                                                                                       \
-	StaticCreators[&typeid(CLASS)] = StaticCreate_##CLASS;                                                             \
-	Names[&typeid(CLASS)] = #CLASS;                                                                                    \
-	ModifierCreators[&typeid(CLASS)] = ModifierCreate_##CLASS
+	{                                                                                                                  \
+		StaticCreators[&typeid(CLASS)] = StaticCreate_##CLASS;                                                         \
+		Names[&typeid(CLASS)] = #CLASS;                                                                                \
+		ModifierCreators[&typeid(CLASS)] = ModifierCreate_##CLASS;                                                     \
+	}
 
 // clang-format off
 DECLARE_MODIFIER(UpdateRuleGravity, 2302)
