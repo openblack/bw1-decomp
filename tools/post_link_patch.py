@@ -553,6 +553,42 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0056F9DB, call_rel32(0x004017F9)),  # GameThing
     (0x0056FB0B, call_rel32(0x004017F9)),  # GameThing
     (0x005703CA, call_indirect(0x008A96E4)),  # GameThing: __imp__LHSampleSetVolume...
+    (0x005912FB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x005914CB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059419A, call_indirect(0x008A9970)),  # GlobalGameList: __imp__GetOpenFileNameA@4
+    (0x0059424B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x005942FB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x005943AB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059445B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059450B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x005945BB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059466B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059472A, call_indirect(0x008A9028)),  # GlobalGameList: __imp__DirectDrawEnumerateA@4
+    (0x005947EB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059489B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059495A, call_indirect(0x008A9034)),  # GlobalGameList: __imp__DirectInputCreateA@4
+    (0x00594A1A, call_indirect(0x008A9088)),  # GlobalGameList: __imp___GetNumEffectsFromIFR_CImmProject__QAEHXZ@4
+    (0x00594ADB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x00594B8B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x00594C3B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x00594CEB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x00594D9B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x00594E4B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x00594F0B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x00594FCB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059508B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059514B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059520B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x005952CB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059537B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059543B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x005954FB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x005955AB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059566B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x0059572B, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x005957EB, call_rel32(0x004017F9)),  # GlobalGameList
+    (0x00595ADA, call_indirect(0x008A903C)),  # GlobalGameList: __imp__DirectXSetupGetVersion
+    (0x00595BFA, call_indirect(0x008A97C4)),  # GlobalGameList: __imp__LoadImageA@4
     (0x00606D5B, call_rel32(0x004017F9)),  # MobileObject
     (0x00606ECA, call_indirect(0x008A9260)),  # MobileObject: __imp__GetLocaleInfoW@16
     (0x0060714B, call_rel32(0x004017F9)),  # MobileObject

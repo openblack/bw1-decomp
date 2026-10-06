@@ -8,6 +8,9 @@
 #include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
 #include <re_common.h>      /* For bool32_t */
 
+#include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>           /* For struct LHListNode */
+
 #include "Animal.h"           /* For struct Animal */
 #include "AnimalCow.h"        /* For struct Cow */
 #include "AnimalHorse.h"      /* For struct Horse */
@@ -46,7 +49,12 @@ struct RPHolder;
 class PuzzleGame : public GameThingWithPos
 {
 public:
-	uint8_t field_0x0x28[0x560];
+	// BW1W120 00d4eee8
+	static LH3DMapCoords AppliedMapPos;
+
+	uint32_t               field_0x28;
+	LHListNode<PuzzleGame> next;
+	uint8_t                field_0x30[0x558];
 
 	// Override methods
 
@@ -68,6 +76,11 @@ public:
 	virtual const char* GetText();
 	// BW1W120 00561b40 BW1M119 0113c560
 	virtual bool32_t IsPuzzleGame();
+
+	// Non-virtual methods
+
+	// BW1W120 006d7480 BW1M119 01132350
+	void Process();
 };
 
 class ChessGamePuzzle : public GameThingWithPos

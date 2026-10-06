@@ -7,6 +7,7 @@
 #include <chlasm/Enum.h>                        /* For enum RESOURCE_TYPE */
 #include <re_common.h>                          /* For bool32_t */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>   /* For struct LHListNode */
 
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 #include "Object.h"        /* For enum FOOD_TYPE */
@@ -39,8 +40,8 @@ struct FishFarm_field_0x88_t
 class FishFarm : public MultiMapFixed
 {
 public:
-	FishFarm*               next;      /* 0x7c */
-	LHLinkedList<Villager*> villagers; /* 0x80 */
+	LHListNode<FishFarm>    next;
+	LHLinkedList<Villager*> villagers;
 	FishFarm_field_0x88_t*  field_0x88;
 	Town*                   town;
 	float                   field_0x90;

@@ -15,6 +15,8 @@ class LH3DStorm
 {
 public:
 	static void DebugDrawAll(); // 0083f890
+	// BW1W120 0083f810 BW1M119 010ba480 (LHCombined Release)
+	static void ReallyKillAll();
 	// Virtual functions
 
 	virtual void Update(float param_1); /* 0x0 */

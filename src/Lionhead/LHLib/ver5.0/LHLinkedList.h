@@ -32,14 +32,8 @@ public:
 		Add(val);
 	}
 	inline LHLinkedNode<T>* GetStart() const { return head.Get(); }
-	// BW1W120 inlined BW1M119 01342030
-	T GetHead()
-	{
-		if (head.Get() != NULL)
-			return head.Get()->payload;
-		return NULL;
-	}
-	inline bool Add(T val)
+	T                       GetHead() { return head.Get() != NULL ? head.Get()->payload : NULL; }
+	inline bool             Add(T val)
 	{
 		if (!val)
 			return false;
@@ -182,7 +176,29 @@ public:
 		return walker;
 	}
 
-	int AddToEnd(T val);
+	// BW1W120 00595a80 BW1M119 01339810
+	int AddToEnd(T val)
+	{
+		if (val)
+		{
+			LHLinkedNode<T>* node = new LHLinkedNode<T>(val, NULL);
+			if (node)
+			{
+				LHLinkedNode<T>* last = GetLastNode();
+				if (last)
+				{
+					last->next.Set(node);
+				}
+				else
+				{
+					head.Set(node);
+				}
+				++count;
+				return 1;
+			}
+		}
+		return 0;
+	}
 	// Returns the matching node, not its payload (BW1M119 012564c0 for CreatureBelief*).
 	LHLinkedNode<T>* Find(T value);
 	// For LHPlayer*. NULL starts at the head.
@@ -232,29 +248,6 @@ template <typename T> LHLinkedList<T>::LHLinkedList()
 	// The head's default construction precedes this second clear in the original.
 	count = 0;
 	head.Clear();
-}
-
-template <typename T> int LHLinkedList<T>::AddToEnd(T val)
-{
-	if (val)
-	{
-		LHLinkedNode<T>* node = new LHLinkedNode<T>(val, NULL);
-		if (node)
-		{
-			LHLinkedNode<T>* last = GetLastNode();
-			if (last)
-			{
-				last->next.Set(node);
-			}
-			else
-			{
-				head.Set(node);
-			}
-			++count;
-			return 1;
-		}
-	}
-	return 0;
 }
 
 #endif /* BW1_DECOMP_LH_LINKED_LIST_INCLUDED_H */

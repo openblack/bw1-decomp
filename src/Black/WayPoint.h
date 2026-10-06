@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_WAY_POINT_INCLUDED_H
 #define BW1_DECOMP_WAY_POINT_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <assert.h>                           /* For static_assert */
+#include <stdint.h>                           /* For uint32_t, uint8_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
@@ -14,6 +15,8 @@ class GameThing;
 class WayPoint : public GameThingWithPos
 {
 public:
+	LHListNode<WayPoint> next;
+
 	// Override methods
 
 	// BW1W120 00770b50 BW1M119 01167ec0
@@ -26,12 +29,6 @@ public:
 	virtual uint32_t GetSaveType();
 	// BW1W120 00770b40 BW1M119 011679d0
 	virtual const char* GetText();
-};
-
-class Waypoint : public GameThingWithPos
-{
-public:
-	uint8_t field_0x28[0x4];
 };
 
 #endif /* BW1_DECOMP_WAY_POINT_INCLUDED_H */

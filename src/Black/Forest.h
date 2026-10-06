@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>   /* For struct LHListNode */
 
 #include "Container.h" /* For struct Container, struct ContainerVftable */
 #include "Tree.h"      /* For struct Tree */
@@ -35,9 +36,9 @@ public:
 	BigForest*          BigForestObject;
 	bool32_t            IsScenic;
 	uint32_t            id;
-	Forest*             next;
+	LHListNode<Forest>  next;
 	LHLinkedList<Tree*> Trees0;
-	LHLinkedList<Tree*> Trees1; /* 0x50 */
+	LHLinkedList<Tree*> Trees1;
 
 	// Override methods
 

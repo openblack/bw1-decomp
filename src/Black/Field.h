@@ -4,8 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
-#include <re_common.h>   /* For bool32_t */
+#include <chlasm/Enum.h>                      /* For enum RESOURCE_TYPE */
+#include <re_common.h>                        /* For bool32_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "Abode.h" /* For struct Abode */
 
@@ -34,30 +35,30 @@ class Villager;
 class Field : public Abode
 {
 public:
-	Field*          next; /* 0xc4 */
-	uint32_t        field_0xc8;
-	uint8_t         field_0xcc;
-	uint32_t        field_0xd0;
-	uint32_t        field_0xd4;
-	uint32_t        field_0xd8;
-	uint32_t        field_0xdc;
-	uint32_t        field_0xe0;
-	float           field_0xe4;
-	float           field_0xe8;
-	float           field_0xec;
-	uint32_t        field_0xf0;
-	uint32_t        field_0xf4;
-	uint32_t        field_0xf8;
-	uint32_t        field_0xfc;
-	uint32_t        field_0x100;
-	float           field_0x104;
-	uint32_t        field_0x108;
-	uint32_t        field_0x10c;
-	uint32_t        field_0x110;
-	uint32_t        field_0x114;
-	Town*           town;
-	int             field_0x11c;
-	GFieldTypeInfo* type_info; /* 0x120 */
+	LHListNode<Field> next;
+	uint32_t          field_0xc8;
+	uint8_t           field_0xcc;
+	uint32_t          field_0xd0;
+	uint32_t          field_0xd4;
+	uint32_t          field_0xd8;
+	uint32_t          field_0xdc;
+	uint32_t          field_0xe0;
+	float             field_0xe4;
+	float             field_0xe8;
+	float             field_0xec;
+	uint32_t          field_0xf0;
+	uint32_t          field_0xf4;
+	uint32_t          field_0xf8;
+	uint32_t          field_0xfc;
+	uint32_t          field_0x100;
+	float             field_0x104;
+	uint32_t          field_0x108;
+	uint32_t          field_0x10c;
+	uint32_t          field_0x110;
+	uint32_t          field_0x114;
+	Town*             town;
+	int               field_0x11c;
+	GFieldTypeInfo*   type_info;
 
 	// Override methods
 

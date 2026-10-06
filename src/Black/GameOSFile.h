@@ -305,15 +305,14 @@ public:
 		{
 			return FALSE;
 		}
-		uint32_t count = list.count;
 		int      written = 0;
+		uint32_t count = list.count;
 		WriteIt(list.count);
-		for (T* element = NULL; (element = (element == NULL ? list.head : element->next)) != NULL;)
+		for (T* element = NULL; (element = list.GetNext(element)) != NULL;)
 		{
 			if (++written > (int)count)
 			{
 				WriteEnabled = false;
-				break;
 			}
 			if (!WriteEnabled)
 			{
@@ -330,7 +329,7 @@ public:
 		{
 			return FALSE;
 		}
-		int count;
+		long count;
 		ReadIt(count);
 		while (count > 0)
 		{

@@ -67,6 +67,8 @@ public:
 	bool32_t WillImpress(Town* town);
 	// BW1W120 004268b0 BW1M119 010b1000
 	bool32_t WillImpress(WorshipSite* site);
+	// BW1W120 00426860 BW1M119 010b10e0
+	void Validate();
 };
 
 #endif /* BW1_DECOMP_ARTIFACT_INCLUDED_H */

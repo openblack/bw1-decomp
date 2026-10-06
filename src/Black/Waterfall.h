@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_WATERFALL_INCLUDED_H
 #define BW1_DECOMP_WATERFALL_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <assert.h>                           /* For static_assert */
+#include <stdint.h>                           /* For uint32_t, uint8_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "Object.h" /* For struct Object */
 
@@ -17,7 +18,10 @@ struct MapCoords;
 class GWaterfall : public Object
 {
 public:
-	uint8_t field_0x54[0x4];
+	// BW1W120 00bf34e0
+	static bool32_t DesignedWaterFallNeedsReset;
+
+	LHListNode<GWaterfall> next; /* 0x54 */
 
 	// Override methods
 

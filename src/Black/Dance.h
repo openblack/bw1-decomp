@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
+#include <chlasm/ScriptEnums.h>               /* For enum SCRIPT_OBJECT_TYPE */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "GroupBehaviour.h" /* For struct GroupBehaviour */
 
@@ -27,9 +28,9 @@ public:
 	// BW1W120 0050bb60 BW1M119 0108ff50
 	static void ProcessDances();
 
-	uint32_t field_0xe8;
-	Dance*   Next; /* 0xec */
-	uint8_t  field_0xf0[0x3c];
+	uint32_t          field_0xe8;
+	LHListNode<Dance> next; /* 0xec */
+	uint8_t           field_0xf0[0x3c];
 
 	// Override methods
 

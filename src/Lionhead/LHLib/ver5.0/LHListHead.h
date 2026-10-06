@@ -60,13 +60,40 @@ struct LHListHead
 		Clear();
 	}
 
-	// BW1W120 inlined BW1M119 inlined
-	void DeleteEach()
+	// BW1W120 005926b0 BW1M119 inlined
+	void ToBeDeletedAvailable()
 	{
-		T* element = Get();
+		T* element = head;
 		while (element != NULL)
 		{
-			T* next = element->next.Get();
+			T* next = element->next;
+			if ((element->GameThing::Flags & GAME_THING_FLAG_UNAVAILABLE) == 0)
+			{
+				element->ToBeDeleted(0);
+			}
+			element = next;
+		}
+	}
+
+	// BW1W120 005927e0 BW1M119 inlined
+	void ToBeDeletedEachLinked()
+	{
+		T* element = head;
+		while (element != NULL)
+		{
+			T* next = element->next;
+			element->ToBeDeleted(0);
+			element = next;
+		}
+	}
+
+	// BW1W120 00592670 BW1M119 inlined
+	void DeleteEach()
+	{
+		T* element = head;
+		while (element != NULL)
+		{
+			T* next = element->next;
 			delete element;
 			element = next;
 		}
@@ -112,8 +139,6 @@ struct LHListHead
 		++count;
 	}
 
-	void AddToLast(T* element);
-
 	T* Get(uint32_t index) const
 	{
 		T* walker = head;
@@ -124,10 +149,27 @@ struct LHListHead
 		return walker;
 	}
 
-	// NULL means "before the first", so a walk seeded with NULL needs only one call
-	// site:  for (T* v = NULL; (v = list.GetNext(v)) != NULL;)
-	// Confirmed against BW1M119 .GetNext__21LHListHead<8Villager>FP8Villager:
-	//   if (param_2 == 0) return *param_1; return *(param_2 + 0xe4);
+	// BW1W120 005957f0 BW1M119 0133a110
+	void AddToLast(T* element)
+	{
+		T* walker = head;
+		if (walker != NULL)
+		{
+			while (walker->next != NULL)
+			{
+				walker = walker->next;
+			}
+			walker->next = element;
+		}
+		else
+		{
+			head = element;
+		}
+		element->next = NULL;
+		++count;
+	}
+
+	// BW1W120 00595830 BW1M119 0133c960
 	T* GetNext(T* element) const { return element == NULL ? head : element->next; }
 
 	// BW1W120 inlined BW1M119 inlined
@@ -199,24 +241,5 @@ template <typename T> struct LHListHeadTail : public LHListHead<T>
 		this->count++;
 	}
 };
-
-template <typename T> void LHListHead<T>::AddToLast(T* element)
-{
-	T* walker = head;
-	if (walker != NULL)
-	{
-		while (walker->next != NULL)
-		{
-			walker = walker->next;
-		}
-		walker->next = element;
-	}
-	else
-	{
-		head = element;
-	}
-	element->next = NULL;
-	++count;
-}
 
 #endif /* BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H */

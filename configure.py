@@ -704,7 +704,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/GJUtils.cpp"),
             GameCodeObject(NonMatching, "Black/GJVnoise.cpp"),
             GameCodeObject(NonMatching, "Black/Global.cpp"),
-            GameCodeObject(NonMatching, "Black/GlobalGameList.cpp"),
+            GameCodeObject(Matching, "Black/GlobalGameList.cpp"),
             GameCodeObject(NonMatching, "Black/GlobalGameLists.cpp"),
             GameCodeObject(NonMatching, "Black/GraveYard.cpp"),
             GameCodeObject(NonMatching, "Black/GroupBehaviour.cpp"),

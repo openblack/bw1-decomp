@@ -6,6 +6,7 @@
 
 #include <chlasm/AudioSFX.h>                      /* For enum AUDIO_SFX_BANK_TYPE */
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
 
 #include "LocalBase.h" /* For struct LocalBase */
 
@@ -17,21 +18,21 @@ class GameThingWithPos;
 class SoundTag : public LocalBase
 {
 public:
-	SoundTag*         next; /* 0x8 */
-	GameThingWithPos* game_thing;
-	LHPoint           field_0x10;
-	LHPoint           field_0x1c;
-	uint32_t          field_0x28;
-	uint32_t          field_0x2c;
-	bool              field_0x30;
-	int               field_0x34;
-	uint32_t          field_0x38;
-	uint32_t          field_0x3c;
-	int               field_0x40;
-	int               field_0x44;
-	int               field_0x48;
-	uint32_t          field_0x4c;
-	uint16_t          field_0x50;
+	LHListNode<SoundTag> next;
+	GameThingWithPos*    game_thing;
+	LHPoint              field_0x10;
+	LHPoint              field_0x1c;
+	uint32_t             field_0x28;
+	uint32_t             field_0x2c;
+	bool                 field_0x30;
+	int                  field_0x34;
+	uint32_t             field_0x38;
+	uint32_t             field_0x3c;
+	int                  field_0x40;
+	int                  field_0x44;
+	int                  field_0x48;
+	uint32_t             field_0x4c;
+	uint16_t             field_0x50;
 
 	// Override methods
 

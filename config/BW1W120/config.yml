@@ -37,6 +37,10 @@ block_relocations:
   - source: 0x00573F21
   - source: 0x00573FCF
   - source: 0x00574398
+# "GET_PLAYER_ALLY" and "SET_PLAYER_ALLY" end in "LLY\0", which reads as 0x00594C4C, inside
+# GameOSFile::ReadSafe(LHListHead<GFootpath>&).
+  - source: 0x00C1E664
+  - source: 0x00C1E7CC
 
 # CMP EDX compares against PacketTimeHistory's one-past-end, not the next array.
 add_relocations:

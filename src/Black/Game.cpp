@@ -769,7 +769,9 @@ void CheckSquareFunction(int x, int z, RPHolder* holder)
 uint32_t GGame::InitOneTimeOnly()
 {
 	Report3D__FPCce("InitOneTimeOnly\n");
+#ifndef VERSION_BW1W100
 	settings->ParseConfigFile(NULL);
+#endif
 	RenderLoadingFrame(true);
 	key_buffer.Init(0x80);
 	Report3D__FPCce("LoadTextScript\n");
@@ -1128,7 +1130,9 @@ GGame::GGame()
 	gesture_system_data = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x405) GestureSystemData;
 	gesture_system = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x406) GestureSystem;
 	gesture_system_result = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x407) GestureSystemResult;
+#ifndef VERSION_BW1W100
 	settings = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x408) Settings;
+#endif
 	((LH3DMapCoords&)StartCameraCoords).SetToZero();
 	field_0x2500a8[0] = 0;
 	field_0x250170 = NULL;
@@ -1180,14 +1184,16 @@ void GGame::ClearVariables()
 }
 
 // BW1W120 0054bfd0 BW1M119 013c9a40
-void GGame::ToBeDeleted(int param_1)
+void GGame::ToBeDeleted(int delete_now)
 {
 	DanceLight::CloseBitmaps();
 	delete gesture_system_data_list;
 	delete gesture_system_data;
 	delete gesture_system;
 	::operator delete(gesture_system_result);
+#ifndef VERSION_BW1W100
 	::operator delete(settings);
+#endif
 	delete script;
 	delete SoundMap;
 	fclose(field_0x2502d0);
@@ -1360,7 +1366,7 @@ void GGame::ClearMap()
 	Dance* dance = g_game->GameLists.dances.head;
 	while (dance != NULL)
 	{
-		Dance* next = dance->Next;
+		Dance* next = dance->next;
 		dance->ToBeDeleted(0);
 		dance = next;
 	}
@@ -1464,14 +1470,20 @@ static_assert(offsetof(GGame, VideoPlayer) == 0x250188, "Video player offset is 
 #else
 static_assert(offsetof(GGame, Packet) == 0x201b1c, "GPacket offset is incorrect");
 static_assert(offsetof(GGame, field_0x5978) == 0x1a38, "Packet length offset is incorrect");
+#ifdef VERSION_BW1W110
 static_assert(offsetof(GGame, VideoPlayer) == 0x24c244, "Video player offset is incorrect");
+#else
+static_assert(offsetof(GGame, VideoPlayer) == 0x24c234, "Video player offset is incorrect");
+#endif
 #endif
 static_assert(sizeof(GNetwork) == 0x30, "GNetwork size is incorrect");
 static_assert(sizeof(GTerrainMap) == 0x4a130, "GTerrainMap size is incorrect");
 #ifdef VERSION_BW1W120
 static_assert(sizeof(GGame) == 0x250544, "GGame size is incorrect");
-#else
+#elif defined(VERSION_BW1W110)
 static_assert(sizeof(GGame) == 0x24c600, "GGame size is incorrect");
+#else
+static_assert(sizeof(GGame) == 0x24c5f0, "GGame size is incorrect");
 #endif
 static_assert(sizeof(GSoundMap) == 0x110, "GSoundMap size is incorrect");
 static_assert(sizeof(GestureSystemDataList) == 0x10, "GestureSystemDataList size is incorrect");
@@ -1480,7 +1492,7 @@ static_assert(sizeof(GestureSystem) == 0xc98, "GestureSystem size is incorrect")
 static_assert(sizeof(GestureSystemResult) == 0xc, "GestureSystemResult size is incorrect");
 static_assert(sizeof(Settings) == 0x104, "Settings size is incorrect");
 static_assert(offsetof(CreatureDanceLineInput, Analysis) == 0x28, "Line-input prefix offset is incorrect");
-static_assert(offsetof(Dance, Next) == 0xec, "Dance link offset is incorrect");
+static_assert(offsetof(Dance, next) == 0xec, "Dance link offset is incorrect");
 static_assert(sizeof(Dance) == 0x12c, "Dance size is incorrect");
 #ifdef VERSION_BW1W120
 static_assert(offsetof(GGame, field_0x59ac) == 0x59ac, "Game start-time offset is incorrect");
@@ -1519,7 +1531,11 @@ static_assert(offsetof(GGame, GameLists) + offsetof(GlobalGameLists, GameThings)
 static_assert(offsetof(GGame, PlayerIndex) == 0x201b15, "GGame player index offset is incorrect");
 static_assert(offsetof(GGame, field_0x205a5a) == 0x201b16, "GGame interface index offset is incorrect");
 static_assert(offsetof(GGame, network) + offsetof(GNetwork, session) == 0x201c3c, "GGame session offset is incorrect");
+#ifdef VERSION_BW1W110
 static_assert(offsetof(GGame, camera) == 0x24c37c, "GGame camera offset is incorrect");
+#else
+static_assert(offsetof(GGame, camera) == 0x24c36c, "GGame camera offset is incorrect");
+#endif
 #endif
 static_assert(offsetof(Town, ID) == 0x5b4, "Town ID offset is incorrect");
 #ifdef VERSION_BW1W120
@@ -1547,12 +1563,22 @@ static_assert(offsetof(GGame, GameLists) + offsetof(GlobalGameLists, LivingList)
 #else
 // Everything after GGame::players sits 0x3f44 lower in 1.00/1.10 (see the GPlayer note above).
 static_assert(offsetof(GGame, field_0x205ba0) == 0x201c5c, "GGame serialized word offset is incorrect");
+#ifdef VERSION_BW1W110
 static_assert(offsetof(GGame, script_creature_curse) == 0x24c140, "GGame curse offset is incorrect");
 static_assert(offsetof(GGame, Mouse) == 0x24c374, "GGame mouse offset is incorrect");
 static_assert(offsetof(GGame, key_buffer) + offsetof(GKeyBuffer, Inputs) == 0x24c36c,
               "GGame key array offset is incorrect");
 static_assert(offsetof(GGame, key_buffer) + offsetof(GKeyBuffer, BufferedKeys) == 0x24c372,
               "GGame key count offset is incorrect");
+#else
+// 1.00 has no GGame::settings or GGame::script_creature_curse.
+static_assert(offsetof(GGame, script) == 0x24c13c, "GGame script offset is incorrect");
+static_assert(offsetof(GGame, Mouse) == 0x24c364, "GGame mouse offset is incorrect");
+static_assert(offsetof(GGame, key_buffer) + offsetof(GKeyBuffer, Inputs) == 0x24c35c,
+              "GGame key array offset is incorrect");
+static_assert(offsetof(GGame, key_buffer) + offsetof(GKeyBuffer, BufferedKeys) == 0x24c362,
+              "GGame key count offset is incorrect");
+#endif
 static_assert(offsetof(GGame, GameLists) + offsetof(GlobalGameLists, LivingList) == 0x201c78,
               "GGame living list offset is incorrect");
 #endif
@@ -2746,7 +2772,9 @@ uint32_t GGame::Save(GameOSFile& file)
 	file.WriteIt(PlayerIndex);
 	unsigned char creatureFlags = 0;
 	Creature*     creature = players[PlayerIndex].creature.Get();
+#ifndef VERSION_BW1W100
 	script_creature_curse.Init(creature);
+#endif
 	if (creature)
 	{
 		// The original combines low bytes by addition, without Boolean normalization.
@@ -2844,7 +2872,9 @@ uint32_t GGame::Save(GameOSFile& file)
 	WorldRoom::SaveButtonConfig(file);
 	CreditsRoom::DYKSave(file);
 	((class ChallengeRoom*)temple->rooms[2])->ChallengeSave(file);
+#ifndef VERSION_BW1W100
 	file.WriteIt(script_creature_curse);
+#endif
 	return 1;
 }
 
@@ -2969,7 +2999,9 @@ uint32_t GGame::Load(GameOSFile& file)
 	WorldRoom::LoadButtonConfig(file);
 	CreditsRoom::DYKLoad(file);
 	((class ChallengeRoom*)temple->rooms[2])->ChallengeLoad(file);
+#ifndef VERSION_BW1W100
 	file.ReadIt(script_creature_curse);
+#endif
 	return 1;
 }
 

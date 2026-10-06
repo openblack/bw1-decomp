@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_STREET_LIGHT_INCLUDED_H
 #define BW1_DECOMP_STREET_LIGHT_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
+#include <assert.h>                           /* For static_assert */
+#include <stdint.h>                           /* For uint32_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
@@ -17,7 +18,7 @@ struct MapCoords;
 class GStreetLight : public GameThingWithPos
 {
 public:
-	uint32_t field_0x28;
+	LHListNode<GStreetLight> next;
 
 	// Override methods
 
