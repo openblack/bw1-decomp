@@ -294,8 +294,8 @@ void CAlignmentHistory::DrawTotals()
 			"Tree    :%.08f[%d]", "Villager:%.08f[%d]",
 		};
 		LHRegion  region(0, 0, LHSys::GetScreen().Width() / 2, ALIGNMENT_HISTORY_LINE_HEIGHT);
-		LH3DColor positive(255, 255, 255, 255);
-		LH3DColor negative(255, 125, 125, 255);
+		LH3DColor positive(0xff, 0xff, 0xff, 0xff);
+		LH3DColor negative(0xff, 0x7d, 0x7d, 0xff);
 		char      text[512];
 
 		float current = GGame::g_game->GetPlayer(0)->alignment->GetValue();
@@ -347,7 +347,7 @@ void CAlignmentHistory::DrawHistory()
 			y += ALIGNMENT_HISTORY_LINE_HEIGHT;
 		}
 		Slider->Process();
-		Slider->Draw(0);
+		Slider->Draw(false);
 	}
 }
 
@@ -571,13 +571,13 @@ void CAlignmentHistoryNode::Draw(int x, int y)
 		"ANIMAL_NICE", "ANIMAL_NASTY", "CREATURE",      "PRIEST", "SKELETON", "VILLAGER",    "BUILDING", "PLANT",
 		"FIELD",       "FEATURE",      "MOBILE_OBJECT", "LAND",   "SCRIPT",   "UNIMPORTANT", "LAST",
 	};
-	LH3DColor color(255, 255, 255, 255);
+	LH3DColor color(0xff, 0xff, 0xff, 0xff);
 	char      text[200];
 
 	sprintf(text, "GT:%d, Al:%.08f, Ch:%.08f :", GameTurn, Alignment, Change);
 	if (Change < 0.0f)
 	{
-		color.Set(255, 55, 0, 0);
+		color.Set(0xff, 0x37, 0x00, 0x00);
 	}
 	switch (Type)
 	{
@@ -703,7 +703,7 @@ void CAlignmentHistoryNode::Draw(int x, int y)
 	}
 	case ALIGNMENT_HISTORY_TYPE_UPDATE:
 		sprintf(text + strlen(text), "%s", "UPDATE");
-		color.Set(255, 255, 0, 0);
+		color.Set(0xff, 0xff, 0x00, 0x00);
 		break;
 	case ALIGNMENT_HISTORY_TYPE_DEATH: {
 		const char* deathReasons[] = {

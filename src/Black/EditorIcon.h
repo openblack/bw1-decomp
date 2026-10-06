@@ -58,7 +58,7 @@ public:
 	// BW1W120 0051fe30 BW1M119 012ba220
 	virtual int Process();
 	// BW1W120 0051fea0 BW1M119 012ba110
-	virtual void Draw(int param_1);
+	virtual void Draw(bool32_t parent_active);
 	// BW1W120 00414c10 BW1M119 010a7f50
 	virtual int IsActive() { return Active; }
 	// BW1W120 00414c30 BW1M119 010a7f90
@@ -213,8 +213,8 @@ public:
 	{
 		PageStep = step;
 		Dragging = false;
-		ButtonColor.Set(31, 93, 94, 84);
-		ButtonColor.Set(127, 93, 94, 84);
+		ButtonColor.Set(0x1f, 0x5d, 0x5e, 0x54);
+		ButtonColor.Set(0x7f, 0x5d, 0x5e, 0x54);
 		SetButtonPosition();
 		SetRegion(region);
 	}
@@ -250,17 +250,17 @@ public:
 		{
 			LeftClicked = true;
 			SetValue(GetMouseValue());
-			Dragging = LHSys::GetMouse().Buttons & 1;
+			Dragging = LHSys::GetMouse().Buttons & LH_MOUSE_BUTTON_LEFT_DOWN;
 			return true;
 		}
 		SetButtonPosition();
 		return processed;
 	}
 	// BW1W120 00416060 BW1M119 010a4cd0
-	virtual void Draw(int param_1)
+	virtual void Draw(bool32_t parent_active)
 	{
 		bool32_t mouseOverTextWasEmpty = MouseOverText == NULL;
-		EditorIconShow::Draw(0);
+		EditorIconShow::Draw(false);
 		if (MouseOverText != NULL && mouseOverTextWasEmpty)
 		{
 			MouseOverText = NULL;
@@ -360,10 +360,7 @@ public:
 			height = GetBoxHeight();
 			x -= width * 0.5f;
 		}
-		if (width < 5.0f)
-		{
-			width = 5.0f;
-		}
+		width = max(width, 5.0f);
 		if (GetRegion()->X1() > x)
 		{
 			x = (T)GetRegion()->X1();

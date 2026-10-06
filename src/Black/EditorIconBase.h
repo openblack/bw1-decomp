@@ -47,7 +47,7 @@ public:
 	// BW1W120 purecall BW1M119 purecall
 	virtual int Process() = 0;
 	// BW1W120 purecall BW1M119 purecall
-	virtual void Draw(int param_1) = 0;
+	virtual void Draw(bool32_t parent_active) = 0;
 	// BW1W120 purecall BW1M119 purecall
 	virtual int IsActive() = 0;
 	// BW1W120 00520f00 BW1M119 012bb170

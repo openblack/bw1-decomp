@@ -106,6 +106,20 @@ enum LH_ANIMATE_IMAGE_TYPE
 	LH_ANIMATE_IMAGE_TYPE_0x1 = 0x1, /* LHSpriteList (single-part frames) */
 };
 
+// Bits of LHMouse::Buttons, set by LHMouse::SetButtons from the window's mouse messages.
+// A *_DOWN bit stays set while the button is held and is cleared by the matching *_UP.
+enum LH_MOUSE_BUTTON
+{
+	LH_MOUSE_BUTTON_LEFT_DOWN = 0x01,
+	LH_MOUSE_BUTTON_RIGHT_DOWN = 0x02,
+	LH_MOUSE_BUTTON_LEFT_UP = 0x04,
+	LH_MOUSE_BUTTON_RIGHT_UP = 0x08,
+	LH_MOUSE_BUTTON_LEFT_DOUBLE_CLICK = 0x10,
+	LH_MOUSE_BUTTON_RIGHT_DOUBLE_CLICK = 0x20,
+	LH_MOUSE_BUTTON_MIDDLE_DOWN = 0x40,
+	LH_MOUSE_BUTTON_MIDDLE_UP = 0x80,
+};
+
 struct LHSprite;
 struct LHSurface;
 
