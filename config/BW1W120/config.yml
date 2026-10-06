@@ -43,8 +43,366 @@ block_relocations:
 # GameOSFile::ReadSafe(LHListHead<GFootpath>&).
   - source: 0x00C1E664
   - source: 0x00C1E7CC
+# PSysProperties RTTI type names end in "h@@@@", "m@@@@", "t@@", "d@@" or "t@@@".
+# These ASCII words are not pointers into the game code; the descriptor's first word is still a pointer.
+  - source: 0x00C05BD8
+  - source: 0x00C05CDC
+  - source: 0x00C07898
+  - source: 0x00C07C28
+  - source: 0x00C08638
+  - source: 0x00C09298
+  - source: 0x00C092D8
+# UTF-16 text ("Pl", "pl", "tl", "dl") reads as 0x006C00xx, inside PSysProperties'
+# static ModifierCreate_UR_Trail; these words are not pointers.
+  - source: 0x00BE8E40
+  - source: 0x00BE8E64
+  - source: 0x00BEA79C
+  - source: 0x00BEF0D8
+  - source: 0x00C27BB4
+  - source: 0x00C28048
+# Import-name bytes "\0\0l\0" read as 0x006C0000, inside the static
+# ModifierCreate_UR_CreatureSpellCompassion.
+  - source: 0x009C1038
 
 add_relocations:
+# cl points vftable deleting-destructor slots at ??_E, a weak external that defaults to
+# ??_G; the image only shows the resolved ??_G address, which also carries a ??_E alias.
+  - source: 0x00937F74
+    type: x86_abs32
+    target: '??_EParticlePointCreator@@UAEPAXI@Z'
+  - source: 0x00937FA0
+    type: x86_abs32
+    target: '??_EEventConditionCollectionDelay@@UAEPAXI@Z'
+  - source: 0x00937FC4
+    type: x86_abs32
+    target: '??_EEventConditionTrueOnCloseDown@@UAEPAXI@Z'
+  - source: 0x00937FE8
+    type: x86_abs32
+    target: '??_EEventConditionTrueWhenEnabled@@UAEPAXI@Z'
+  - source: 0x0093800C
+    type: x86_abs32
+    target: '??_EEC_DeflectionInAtomsHierarchy@@UAEPAXI@Z'
+  - source: 0x00938030
+    type: x86_abs32
+    target: '??_EEC_CollectionShouldBeEmitting@@UAEPAXI@Z'
+  - source: 0x00938054
+    type: x86_abs32
+    target: '??_EEC_DeflectionInCollectionsHierarchy@@UAEPAXI@Z'
+  - source: 0x00938078
+    type: x86_abs32
+    target: '??_EEventConditionNever@@UAEPAXI@Z'
+  - source: 0x0093809C
+    type: x86_abs32
+    target: '??_EEventConditionCollectionLimitedTime@@UAEPAXI@Z'
+  - source: 0x009380C0
+    type: x86_abs32
+    target: '??_EEventConditionAtomDelay@@UAEPAXI@Z'
+  - source: 0x009380E4
+    type: x86_abs32
+    target: '??_EEventConditionAtomNearVillagers@@UAEPAXI@Z'
+  - source: 0x00938108
+    type: x86_abs32
+    target: '??_EEventConditionAtomLimitedTime@@UAEPAXI@Z'
+  - source: 0x0093812C
+    type: x86_abs32
+    target: '??_EEventConditionRandom@@UAEPAXI@Z'
+  - source: 0x00938150
+    type: x86_abs32
+    target: '??_EEventConditionParentFrameTime@@UAEPAXI@Z'
+  - source: 0x00938174
+    type: x86_abs32
+    target: '??_EEventConditionFrameTime@@UAEPAXI@Z'
+  - source: 0x00938198
+    type: x86_abs32
+    target: '??_EEventConditionAtomBelowHeight@@UAEPAXI@Z'
+  - source: 0x009381BC
+    type: x86_abs32
+    target: '??_EEC_AtomAlphaAbove@@UAEPAXI@Z'
+  - source: 0x009381E0
+    type: x86_abs32
+    target: '??_EEventConditionAtomCloseWater@@UAEPAXI@Z'
+  - source: 0x00938204
+    type: x86_abs32
+    target: '??_EEventConditionFireBallSteam@@UAEPAXI@Z'
+  - source: 0x00938228
+    type: x86_abs32
+    target: '??_EEventConditionAtomInUse@@UAEPAXI@Z'
+  - source: 0x0093824C
+    type: x86_abs32
+    target: '??_EEventConditionAtomBelowSpeed@@UAEPAXI@Z'
+  - source: 0x00938270
+    type: x86_abs32
+    target: '??_EEventConditionAtomHasBeenDeflected@@UAEPAXI@Z'
+  - source: 0x00938294
+    type: x86_abs32
+    target: '??_EConstFloatProvider@@UAEPAXI@Z'
+  - source: 0x009382B0
+    type: x86_abs32
+    target: '??_EFloatProvider@@UAEPAXI@Z'
+  - source: 0x009382CC
+    type: x86_abs32
+    target: '??_EFloatProvider_ParentAtomScale@@UAEPAXI@Z'
+  - source: 0x009382E8
+    type: x86_abs32
+    target: '??_EStrengthFloatProvider@@UAEPAXI@Z'
+  - source: 0x00938304
+    type: x86_abs32
+    target: '??_EMagnitudeFloatProvider@@UAEPAXI@Z'
+  - source: 0x00938320
+    type: x86_abs32
+    target: '??_EMagnitudeTimesStrengthFloatProvider@@UAEPAXI@Z'
+  - source: 0x0093833C
+    type: x86_abs32
+    target: '??_ERenderHandScaleFloatProvider@@UAEPAXI@Z'
+  - source: 0x00938358
+    type: x86_abs32
+    target: '??_ERenderHandScaleTimesStrengthFloatProvider@@UAEPAXI@Z'
+  - source: 0x00938374
+    type: x86_abs32
+    target: '??_EUR_RingSpin@@UAEPAXI@Z'
+  - source: 0x00938398
+    type: x86_abs32
+    target: '??_EUR_Articulate@@UAEPAXI@Z'
+  - source: 0x009383BC
+    type: x86_abs32
+    target: '??_EAppearanceRuleFadeOut@@UAEPAXI@Z'
+  - source: 0x009383E0
+    type: x86_abs32
+    target: '??_EAddSoundToAtom@@UAEPAXI@Z'
+  - source: 0x00938404
+    type: x86_abs32
+    target: '??_EAppearanceUpdateRule@@UAEPAXI@Z'
+  - source: 0x00938428
+    type: x86_abs32
+    target: '??_EStartStopSoundOnCondition@@UAEPAXI@Z'
+  - source: 0x0093844C
+    type: x86_abs32
+    target: '??_ERemoveSoundFromAtom@@UAEPAXI@Z'
+  - source: 0x00938470
+    type: x86_abs32
+    target: '??_EAR_SetAnimPlay@@UAEPAXI@Z'
+  - source: 0x00938494
+    type: x86_abs32
+    target: '??_EAR_FadeAlpha@@UAEPAXI@Z'
+  - source: 0x009384B8
+    type: x86_abs32
+    target: '??_EAR_FadeCollectionAlpha@@UAEPAXI@Z'
+  - source: 0x009384DC
+    type: x86_abs32
+    target: '??_EAR_FadeOutOnceConditionTrue@@UAEPAXI@Z'
+  - source: 0x00938500
+    type: x86_abs32
+    target: '??_EAR_FadeAlphaWithHeightAboveLandscape@@UAEPAXI@Z'
+  - source: 0x00938524
+    type: x86_abs32
+    target: '??_EAR_GetColorFromParent@@UAEPAXI@Z'
+  - source: 0x00938548
+    type: x86_abs32
+    target: '??_EAppearanceRuleTumble@@UAEPAXI@Z'
+  - source: 0x0093856C
+    type: x86_abs32
+    target: '??_EUR_UpdatePosnFromVelocity@@UAEPAXI@Z'
+  - source: 0x00938590
+    type: x86_abs32
+    target: '??_EEventAlways@@UAEPAXI@Z'
+  - source: 0x009385B4
+    type: x86_abs32
+    target: '??_EUR_OrientWithVelocity@@UAEPAXI@Z'
+  - source: 0x009385D8
+    type: x86_abs32
+    target: '??_EUR_OrientSpriteWithVelocity@@UAEPAXI@Z'
+  - source: 0x009385FC
+    type: x86_abs32
+    target: '??_EUR_OrientSpriteWithRandomAngle@@UAEPAXI@Z'
+  - source: 0x00938620
+    type: x86_abs32
+    target: '??_EUR_GustyWind@@UAEPAXI@Z'
+  - source: 0x00938644
+    type: x86_abs32
+    target: '??_EFollowOrigin@@UAEPAXI@Z'
+  - source: 0x00938668
+    type: x86_abs32
+    target: '??_ESetScale@@UAEPAXI@Z'
+  - source: 0x0093868C
+    type: x86_abs32
+    target: '??_ESetCollectionAlpha@@UAEPAXI@Z'
+  - source: 0x009386B0
+    type: x86_abs32
+    target: '??_ESetAtomAlpha@@UAEPAXI@Z'
+  - source: 0x009386D4
+    type: x86_abs32
+    target: '??_ESetPSysCloseDown@@UAEPAXI@Z'
+  - source: 0x009386F8
+    type: x86_abs32
+    target: '??_ESetAtomHasBeenDeflected@@UAEPAXI@Z'
+  - source: 0x0093871C
+    type: x86_abs32
+    target: '??_EForceConstantAltitude@@UAEPAXI@Z'
+  - source: 0x00938740
+    type: x86_abs32
+    target: '??_EForceConstantHeight@@UAEPAXI@Z'
+  - source: 0x00938764
+    type: x86_abs32
+    target: '??_EForceMinimumHeight@@UAEPAXI@Z'
+  - source: 0x00938788
+    type: x86_abs32
+    target: '??_EForceLandscapeHeight@@UAEPAXI@Z'
+  - source: 0x009387AC
+    type: x86_abs32
+    target: '??_EUpdateRuleRotatePrincipalAxis@@UAEPAXI@Z'
+  - source: 0x009387D0
+    type: x86_abs32
+    target: '??_EUR_StormCast@@UAEPAXI@Z'
+  - source: 0x009387F4
+    type: x86_abs32
+    target: '??_EUR_ChangeScale@@UAEPAXI@Z'
+  - source: 0x00938818
+    type: x86_abs32
+    target: '??_EUR_ChangeScaleXYZ@@UAEPAXI@Z'
+  - source: 0x0093883C
+    type: x86_abs32
+    target: '??_EUR_ChangeStretchHeight@@UAEPAXI@Z'
+  - source: 0x00938860
+    type: x86_abs32
+    target: '??_EUR_MoveAtom@@UAEPAXI@Z'
+  - source: 0x00938884
+    type: x86_abs32
+    target: '??_EUR_AddDefensiveSphere@@UAEPAXI@Z'
+  - source: 0x009388A8
+    type: x86_abs32
+    target: '??_EUR_HealInHand@@UAEPAXI@Z'
+  - source: 0x009388CC
+    type: x86_abs32
+    target: '??_EUR_SphereSurfaceTracer@@UAEPAXI@Z'
+  - source: 0x009388F0
+    type: x86_abs32
+    target: '??_EUR_VapourEndEffect@@UAEPAXI@Z'
+  - source: 0x00938914
+    type: x86_abs32
+    target: '??_ECheckShieldDeflections@@UAEPAXI@Z'
+  - source: 0x00938938
+    type: x86_abs32
+    target: '??_EAddSubCollectionsToAtom@@UAEPAXI@Z'
+  - source: 0x0093895C
+    type: x86_abs32
+    target: '??_EEmitterRuleSimple@@UAEPAXI@Z'
+  - source: 0x00938980
+    type: x86_abs32
+    target: '??_EEmitterRuleLightningSprite@@UAEPAXI@Z'
+  - source: 0x009389A4
+    type: x86_abs32
+    target: '??_EDiskEmitter@@UAEPAXI@Z'
+  - source: 0x009389C8
+    type: x86_abs32
+    target: '??_ESpreadingDiskEmitter@@UAEPAXI@Z'
+  - source: 0x009389EC
+    type: x86_abs32
+    target: '??_EEmitterRuleConical@@UAEPAXI@Z'
+  - source: 0x00938A10
+    type: x86_abs32
+    target: '??_EUR_AtomsAtEPTarget@@UAEPAXI@Z'
+  - source: 0x00938A34
+    type: x86_abs32
+    target: '??_EUR_FollowCastPosn@@UAEPAXI@Z'
+  - source: 0x00938A58
+    type: x86_abs32
+    target: '??_EUR_FollowLocalHand@@UAEPAXI@Z'
+  - source: 0x00938A7C
+    type: x86_abs32
+    target: '??_ECreateRuleMakeChain@@UAEPAXI@Z'
+  - source: 0x00938AA0
+    type: x86_abs32
+    target: '??_EUR_ExplodeObject@@UAEPAXI@Z'
+  - source: 0x00938AC4
+    type: x86_abs32
+    target: '??_EUR_ExplodeObject2@@UAEPAXI@Z'
+  - source: 0x00938AE8
+    type: x86_abs32
+    target: '??_EUR_MoveAtomToBaseGroup@@UAEPAXI@Z'
+  - source: 0x00938B0C
+    type: x86_abs32
+    target: '??_EAttatchFireBallToAtom@@UAEPAXI@Z'
+  - source: 0x00938B30
+    type: x86_abs32
+    target: '??_ECreateNewBaseAtom@@UAEPAXI@Z'
+  - source: 0x00938B54
+    type: x86_abs32
+    target: '??_ECreateRuleSphere@@UAEPAXI@Z'
+  - source: 0x00938B7C
+    type: x86_abs32
+    target: '??_EUR_SideSpin@@UAEPAXI@Z'
+  - source: 0x00938BA0
+    type: x86_abs32
+    target: '??_EUR_InitialSpin@@UAEPAXI@Z'
+  - source: 0x00938BC4
+    type: x86_abs32
+    target: '??_ECreateRuleFusedSphericalExplode@@UAEPAXI@Z'
+  - source: 0x00938BE8
+    type: x86_abs32
+    target: '??_ECreateRule_GameObjectRef@@UAEPAXI@Z'
+  - source: 0x00938C0C
+    type: x86_abs32
+    target: '??_ELightningForkFlicker@@UAEPAXI@Z'
+  - source: 0x00938C30
+    type: x86_abs32
+    target: '??_EUR_FollowParent@@UAEPAXI@Z'
+  - source: 0x00938C54
+    type: x86_abs32
+    target: '??_EUR_FollowTargets@@UAEPAXI@Z'
+  - source: 0x00938C78
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellItch@@UAEPAXI@Z'
+  - source: 0x00938C9C
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellFreeze@@UAEPAXI@Z'
+  - source: 0x00938CC0
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellGeneric@@UAEPAXI@Z'
+  - source: 0x00938CE4
+    type: x86_abs32
+    target: '??_EUR_CreatureSpellCompassion@@UAEPAXI@Z'
+  - source: 0x00938D08
+    type: x86_abs32
+    target: '??_EUR_ManaPathNew@@UAEPAXI@Z'
+  - source: 0x00938D2C
+    type: x86_abs32
+    target: '??_EUR_BeliefSprite@@UAEPAXI@Z'
+  - source: 0x00938D50
+    type: x86_abs32
+    target: '??_EUR_TownCentreBelief@@UAEPAXI@Z'
+  - source: 0x00938D74
+    type: x86_abs32
+    target: '??_EUR_Rope@@UAEPAXI@Z'
+  - source: 0x00938D98
+    type: x86_abs32
+    target: '??_EUR_ObjectArcer@@UAEPAXI@Z'
+  - source: 0x00938DBC
+    type: x86_abs32
+    target: '??_EUR_ScaleByCameraDist@@UAEPAXI@Z'
+  - source: 0x00938DE0
+    type: x86_abs32
+    target: '??_ERemoveRuleOldAgeOnly@@UAEPAXI@Z'
+  - source: 0x00938E08
+    type: x86_abs32
+    target: '??_ERemoveRuleProb@@UAEPAXI@Z'
+  - source: 0x00938E30
+    type: x86_abs32
+    target: '??_ERemoveRuleAfterCloseDown@@UAEPAXI@Z'
+  - source: 0x00938E58
+    type: x86_abs32
+    target: '??_ERemoveRuleAfterConditionTrue@@UAEPAXI@Z'
+  - source: 0x00938E80
+    type: x86_abs32
+    target: '??_ELandscapeCollide@@UAEPAXI@Z'
+# The catch handler in the istream exception table is inside operator>>(unsigned long&).
+  - source: 0x009BC3A4
+    type: x86_abs32
+    target: '??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAK@Z'
+    addend: 0x177
+# istream::operator>>(unsigned long&) EH funclet: mov eax, <its exception-state table>.
+  - source: 0x008A6591
+    type: x86_abs32
+    target: '$T90596'
 # istream::operator>>(unsigned long&) returns the address of its catch continuation.
   - source: 0x006C70FD
     type: x86_abs32

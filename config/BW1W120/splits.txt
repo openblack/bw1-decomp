@@ -1918,19 +1918,20 @@ Black/PSysPCreator.cpp:
 	.bss        start:0x00D4ED78 end:0x00D4ED90
 
 Black/PSysProperties.cpp:
-	.text       start:0x006AAE70 end:0x006C73E0
+	.text       start:0x006AAE70 end:0x006C7460
 	.text$x     start:0x008A6590 end:0x008A65A0 align:4
-	.rdata      start:0x00937DB8 end:0x00938E9C
-	.CRT$XCU    start:0x009C74D4 end:0x009C74EC align:4
-	.data       start:0x00C04A80 end:0x00C09580
-	.bss        start:0x00D4ED90 end:0x00D4EDF8
+	.rdata      start:0x00937DB8 end:0x00938EBC
+	.xdata$x    start:0x009BC350 end:0x009BC3A8 align:4
+	.CRT$XCU    start:0x009C74D4 end:0x009C74F0 align:4
+	.data       start:0x00C04A80 end:0x00C09468
+	.bss        start:0x00D4ED90 end:0x00D4EDB0
 
 Black/PSysRenderParticle.cpp:
-	.text       start:0x006C73E0 end:0x006CAEC0
-	.rdata      start:0x00938E9C end:0x0093A100
-	.CRT$XCU    start:0x009C74EC end:0x009C750C align:4
-	.data       start:0x00C09580 end:0x00C09720
-	.bss        start:0x00D4EDF8 end:0x00D4EE28
+	.text       start:0x006C7460 end:0x006CAEC0
+	.rdata      start:0x00938EBC end:0x0093A100
+	.CRT$XCU    start:0x009C74F0 end:0x009C750C align:4
+	.data       start:0x00C09468 end:0x00C09720
+	.bss        start:0x00D4EDB0 end:0x00D4EE28
 
 Black/PSysSave.cpp:
 	.text       start:0x006CAEC0 end:0x006D0890
@@ -2541,7 +2542,7 @@ Black/WeatherThing.cpp:
 
 Black/Whale.cpp:
 	.text       start:0x00774A50 end:0x00778D20
-	.text$x     start:0x008A65A0 end:0x008A65B0 align:4
+	.text$x     start:0x008A65A0 end:0x008A65B0 align:16
 	.rdata      start:0x0099BA88 end:0x0099BAF0
 	.CRT$XCU    start:0x009C7AA8 end:0x009C7ACC align:4
 	.data       start:0x00C24A5C end:0x00C24CA0
