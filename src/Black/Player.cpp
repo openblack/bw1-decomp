@@ -1302,7 +1302,7 @@ unsigned long GPlayer::GetTotalAbodesBuiltInWholeWorld()
 {
 	if (game_stats != NULL)
 	{
-		return game_stats->TotalAbodesBuilt;
+		return game_stats->TotalBuildingsBuilt;
 	}
 	return 0;
 }

@@ -120,20 +120,20 @@ public:
 	static uint32_t CreatureActionIndex[0x40];
 #endif
 
-	char16_t                              name[0x40]; /* 0xe0 */
-	CreaturePhysical*                     physical;   /* 0x160 */
+	char16_t                              name[0x40];
+	CreaturePhysical*                     physical;
 	CreatureMental*                       mind;
 	GAlignment*                           alignment;
-	uint32_t                              field_0x16c;
-	uint32_t                              field_0x170;
-	uint32_t                              field_0x174;
-	uint32_t                              field_0x178;
-	uint32_t                              field_0x17c;
-	uint32_t                              field_0x180;
-	uint32_t                              field_0x184;
+	uint32_t                              NumPeopleKilled;
+	uint32_t                              NumAnimalsKilled;
+	uint32_t                              NumCreaturesKilled;
+	uint32_t                              NumBattlesFought;
+	uint32_t                              NumBattlesWon;
+	uint32_t                              NumPoos;
+	uint32_t                              NumMushroomsEaten;
 	CreatureHelpState                     HelpState;
-	LHLinkedList<CreatureHelpStackEntry*> HelpStackEntries[0x2a]; /* 0x220 */
-	CreatureReceiveSpell*                 ReceiveSpell;           /* 0x370 */
+	LHLinkedList<CreatureHelpStackEntry*> HelpStackEntries[0x2a];
+	CreatureReceiveSpell*                 ReceiveSpell;
 	float                                 field_0x374;
 	float                                 field_0x378;
 	uint8_t                               field_0x37c;
@@ -148,7 +148,7 @@ public:
 	uint32_t                              field_0x3bc[0x3];
 	uint32_t                              field_0x3c8;
 	uint32_t                              field_0x3cc;
-	Creature*                             next; /* 0x3d0 */
+	Creature*                             next;
 	uint32_t                              field_0x3d4;
 	MapCoords                             field_0x3d8;
 	uint32_t                              field_0x3e4;
@@ -171,7 +171,7 @@ public:
 	uint32_t                              field_0x1064;
 	uint32_t                              field_0x1068;
 	uint32_t                              field_0x106c;
-	GPlayer*                              owner; /* 0x1070 */
+	GPlayer*                              owner;
 	Dance*                                dance;
 	uint32_t                              field_0x1078;
 	GParticleContainer*                   ParticleContainer0x107c;
@@ -183,7 +183,7 @@ public:
 	uint32_t                              field_0x1094;
 	uint32_t                              field_0x1098;
 	LH3DSmoke*                            smoke;
-	GArena*                               arena; /* 0x10a0 */
+	GArena*                               arena;
 	uint32_t                              field_0x10a4;
 	uint32_t                              field_0x10a8;
 	uint32_t                              field_0x10ac;
@@ -664,6 +664,8 @@ public:
 	void SetAnimationTimeModify(bool value);
 	// BW1W120 0047c690 BW1M119 011d9ef0
 	bool32_t IsOnHomeTeam();
+	// BW1W120 0047d580 BW1M119 011d71e0
+	float GetSize();
 	// BW1W120 0047d640 BW1M119 011d6ea0
 	GInterfaceStatus* GetNearestCameraInterfaceStatus();
 	// BW1W120 0047d740 BW1M119 011d6ce0

@@ -77,7 +77,7 @@ public:
 		return POP(&type);
 	}
 	uint32_t GetCurrentScriptType; /* 0x90 */
-	uint32_t GetScriptInstructionCount;
+	uint32_t(__cdecl* GetScriptInstructionCount_ptr)(LHTransport* transport);
 	uint32_t Mode;
 	uint32_t Type;
 	uint32_t Value; /* 0xa0 */
@@ -120,6 +120,8 @@ public:
 	void PUSH(void* param_1, VMType param_2);
 	// BW1W120 006f6c50 BW1M119 014ef510
 	void* GetScriptType(unsigned long param_1);
+	// BW1W120 006f6aa0 BW1M119 014ef800
+	uint32_t GetScriptInstructionCount();
 
 	virtual void GetAPI();
 	virtual void AutoStart(LHTransport* transport);

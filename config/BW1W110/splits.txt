@@ -791,24 +791,26 @@ Black/GameOptionsRoom.cpp:
 	.text       start:0x00554B00 end:0x00554EC0
 	.rdata      start:0x008CF8C0 end:0x008EFC74
 	.CRT$XCU    start:0x009B667C end:0x009B6690 align:4
-	.bss        start:0x00CF0890 end:0x00CF4E64
+	.bss        start:0x00CF0890 end:0x00CF08D8
 
 Black/GameOSFile.cpp:
-	.text       start:0x00554EC0 end:0x005617A0
+	.text       start:0x00554EC0 end:0x00561840
+	.rdata      start:0x008EFC74 end:0x008EFD70
 	.data       start:0x00BDBE40 end:0x00BDDA28
 
 Black/GameStats.cpp:
-	.text       start:0x005617A0 end:0x005677B0
-	.rdata      start:0x008EFC74 end:0x008EFD88
-	.data       start:0x00BDDA28 end:0x00BDE528
-	.bss        start:0x00CF4E64 end:0x00CF4E88
+	.text       start:0x00561840 end:0x005677B0
+	.rdata      start:0x008EFD70 end:0x008EFE94
+	.CRT$XCU    start:0x009B6690 end:0x009B669C align:4
+	.data       start:0x00BDDA28 end:0x00BDE4EC
+	.bss        start:0x00CF08D8 end:0x00CF4E88
 
 Black/GameStatsFrontEnd.cpp:
 	.text       start:0x005677B0 end:0x0056B880
-	.rdata      start:0x008EFD88 end:0x008EFEF4
+	.rdata      start:0x008EFE94 end:0x008EFEF4
 	.CRT$XCU    start:0x009B669C end:0x009B66A4 align:4
-	.data       start:0x00BDE59C end:0x00BDE654
-	.bss        start:0x00CF4E94 end:0x00CF4E9C
+	.data       start:0x00BDE4EC end:0x00BDE654
+	.bss        start:0x00CF4E88 end:0x00CF4E9C
 
 Black/GameThing.cpp:
 	.text       start:0x0056BC30 end:0x0056C8C0
