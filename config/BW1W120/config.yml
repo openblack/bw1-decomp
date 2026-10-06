@@ -45,6 +45,21 @@ block_relocations:
   - source: 0x00C1E7CC
 
 add_relocations:
+# istream::operator>>(unsigned long&) returns the address of its catch continuation.
+  - source: 0x006C70FD
+    type: x86_abs32
+    target: '??5?$basic_istream@DU?$char_traits@D@std@@@std@@QAEAAV01@AAK@Z'
+    addend: 0x1A2
+# Its exception-registration accesses use an FS offset, represented by cl as an absolute symbol.
+  - source: 0x006C6F6C
+    type: x86_abs32
+    target: '__except_list'
+  - source: 0x006C6F74
+    type: x86_abs32
+    target: '__except_list'
+  - source: 0x006C713B
+    type: x86_abs32
+    target: '__except_list'
 # GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
   - source: 0x00405B61
     type: x86_abs32
