@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <string>   /* For std::string */
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For LHLinkedList */
+
 // Forward Declares
 
 class AtomCollection;
@@ -47,19 +49,12 @@ static_assert(sizeof(Persistent) == 0xc, "Data type is of wrong size");
 class PersistentOwner : public Persistent
 {
 public:
-	struct Node
-	{
-		Node*       Next;
-		Persistent* Object;
-	};
-
 	// BW1W120 00672420 BW1M119 013e6910
 	virtual ~PersistentOwner();
 	// BW1W120 00672410 BW1M119 013e7ec0
 	virtual void DefineProperties(PropertyList* list);
 
-	Node* Head;
-	long  Count;
+	LHLinkedList<Persistent*> Objects;
 };
 static_assert(sizeof(PersistentOwner) == 0x14, "Data type is of wrong size");
 
