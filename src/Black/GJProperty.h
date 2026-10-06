@@ -594,16 +594,14 @@ public:
 
 	typedef std::map<const type_info*, T, compare> MapType;
 
-	T& operator[](const type_info* key);
+	T& operator[](const type_info& key);
 
 	MapType Map; /* 0x0 */
 };
 
-// Defined outside the class so that it is not an inline candidate: the registration functions
-// call it rather than expanding the map lookup.
-template <class T> T& type_map<T>::operator[](const type_info* key)
+template <class T> T& type_map<T>::operator[](const type_info& key)
 {
-	return Map[key];
+	return Map[&key];
 }
 
 // The registry of the persistent classes, filled by the Register* methods in PSysProperties.cpp.
