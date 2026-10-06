@@ -68,7 +68,7 @@ void GameStats::Init(GPlayer& player)
 {
 	SetPlayer(&player);
 	StartAlignment = player.GetAlignmentValue();
-	StartCreatureAlignment = player.creature.Get() != NULL ? player.creature.Get()->alignment->value : 0.0f;
+	StartCreatureAlignment = player.creature.Get() != NULL ? player.creature.Get()->alignment->Value : 0.0f;
 	time(&StartTime);
 	NumTownsAtStart = GGame::g_game->GameLists.TownList.count;
 }
@@ -326,7 +326,7 @@ float GameStats::GetCreatureAlignmentChange()
 {
 	if (GetPlayer() != NULL && GetPlayer()->GetCreature() != NULL)
 	{
-		return GetPlayer()->GetCreature()->alignment->value - StartCreatureAlignment;
+		return GetPlayer()->GetCreature()->alignment->Value - StartCreatureAlignment;
 	}
 	return 0.0f;
 }
@@ -427,7 +427,7 @@ float GameStats::GetCreatureAlignment()
 	Creature* creature = GetPlayer()->GetCreature();
 	if (creature != NULL)
 	{
-		return creature->alignment->value;
+		return creature->alignment->Value;
 	}
 	return 0.0f;
 }
