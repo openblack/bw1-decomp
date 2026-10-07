@@ -5,56 +5,15 @@ hash: ef763f2b88488d1099ca50379a1b9c904c316c0c
 symbols: config/BW1W110/symbols.txt
 splits: config/BW1W110/splits.txt
 
-# The RTTI type names ".?AVFixed@@" and ".?AVMultiMapFixed@@" end in "d@@\0", which reads as 0x00404064.
 block_relocations:
-  - source: 0x009B7738
-  - source: 0x009B7758
 # GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874.
   - source: 0x009BAE44
   - source: 0x009BAEA8
   - source: 0x009BAF0C
   - source: 0x009BAF70
   - source: 0x009BAFDC
-# So does the tail of the ".\\scripts\\info*.txt" search pattern.
-  - source: 0x009BBDA0
-# "LUE\0" ending "DETAIL_CREATURE_INITIAL_DESIRE_SOURCE_VALUE" reads as 0x0045554C, inside
-# CameraExclusion::InsideInclusion.
-  - source: 0x009BB5FC
 # The country code "DEC\0" in getqloc's locale tables reads as 0x00434544, inside LoadIt<GMagicFireBallInfo>.
   - source: 0x00C1F954
-
-# RTTI type-name payloads contain ASCII words that resemble image addresses.
-  - source: 0x00BF3C04
-  - source: 0x00BF4D40
-  - source: 0x00BF4E44
-  - source: 0x00BF69B4
-  - source: 0x00BF6A00
-  - source: 0x00BF6A90
-  - source: 0x00BF6B20
-  - source: 0x00BF6CF0
-  - source: 0x00BF6D40
-  - source: 0x00BF6D90
-  - source: 0x00BF6DE0
-  - source: 0x00BF6E30
-  - source: 0x00BF6E5C
-  - source: 0x00BF6EE4
-  - source: 0x00BF7008
-  - source: 0x00BF7058
-  - source: 0x00BF72E4
-  - source: 0x00BF75FC
-  - source: 0x00BF77A0
-  - source: 0x00BF789C
-  - source: 0x00BF7A18
-  - source: 0x00BF7AB0
-  - source: 0x00BF7BDC
-  - source: 0x00BF7E3C
-  - source: 0x00BF7F5C
-  - source: 0x00BF8118
-  - source: 0x00BF81F8
-  - source: 0x00BF826C
-  - source: 0x00BF82B8
-  - source: 0x00BF8400
-  - source: 0x00BF8440
 
 add_relocations:
 # PSysProperties weak deleting-destructor aliases and istream exception metadata.
