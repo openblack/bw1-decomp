@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.29"
+config.dtk_tag = "v0.0.30"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
@@ -965,7 +965,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/PSysModifiers.cpp"),
             GameCodeObject(NonMatching, "Black/PSysPCreator.cpp"),
             GameCodeObject(NonMatching, "Black/PSysProcessInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/PSysProperties.cpp"),
+            GameCodeObject(Matching, "Black/PSysProperties.cpp"),
             GameCodeObject(NonMatching, "Black/PSysRenderParticle.cpp"),
             GameCodeObject(NonMatching, "Black/PSysSave.cpp"),
             GameCodeObject(NonMatching, "Black/PSysShield.cpp"),

@@ -13,12 +13,6 @@ block_relocations:
   - source: 0x007DBB1D
   - source: 0x007DCA45
   - source: 0x007DDDA9
-# The RTTI type names ".?AVFixed@@" and ".?AVMultiMapFixed@@" end in "d@@\0", which reads as 0x00404064.
-  - source: 0x009C7F78
-  - source: 0x009C7F98
-# Likewise ".?AUSetupList@@" ends in "t@@\0" (0x00404074) and ".?AUSetupCheckBox@@" in "x@@\0" (0x00404078).
-  - source: 0x009C818C
-  - source: 0x009C82F0
 # SetupColourPicker's grey colour 0x808080 is an immediate, not a pointer into LH3DPrimitive::ComputeBoundingBox.
   - source: 0x00410B14
 # The country code "DEC\0" in getqloc's locale tables reads as 0x00434544, inside LoadIt<GFurnitureInfo>.
@@ -29,29 +23,11 @@ block_relocations:
   - source: 0x009CB794
   - source: 0x009CB7F8
   - source: 0x009CB864
-# So does the tail of the ".\\scripts\\info*.txt" search pattern.
-  - source: 0x009CC65C
-# "LUE\0" ending "DETAIL_CREATURE_INITIAL_DESIRE_SOURCE_VALUE" reads as 0x0045554C, inside
-# CameraExclusion::SaveExclusionFile.
-  - source: 0x009CBEB8
 # GatheringInterface: player colour 0xafefff and special user IDs 9999998..10000015 are immediates.
   - source: 0x00573F19
   - source: 0x00573F21
   - source: 0x00573FCF
   - source: 0x00574398
-# "GET_PLAYER_ALLY" and "SET_PLAYER_ALLY" end in "LLY\0", which reads as 0x00594C4C, inside
-# GameOSFile::ReadSafe(LHListHead<GFootpath>&).
-  - source: 0x00C1E664
-  - source: 0x00C1E7CC
-# PSysProperties RTTI type names end in "h@@@@", "m@@@@", "t@@", "d@@" or "t@@@".
-# These ASCII words are not pointers into the game code; the descriptor's first word is still a pointer.
-  - source: 0x00C05BD8
-  - source: 0x00C05CDC
-  - source: 0x00C07898
-  - source: 0x00C07C28
-  - source: 0x00C08638
-  - source: 0x00C09298
-  - source: 0x00C092D8
 # UTF-16 text ("Pl", "pl", "tl", "dl") reads as 0x006C00xx, inside PSysProperties'
 # static ModifierCreate_UR_Trail; these words are not pointers.
   - source: 0x00BE8E40

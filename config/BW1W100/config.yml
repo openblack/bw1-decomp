@@ -6,54 +6,14 @@ symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 
 block_relocations:
-# PSysProperties RTTI type-name payloads contain ASCII words, not image pointers.
-  - source: 0x00B28184
-  - source: 0x00B292C0
-  - source: 0x00B293C4
-  - source: 0x00B2AF34
-  - source: 0x00B2AF80
-  - source: 0x00B2B010
-  - source: 0x00B2B0A0
-  - source: 0x00B2B270
-  - source: 0x00B2B2C0
-  - source: 0x00B2B310
-  - source: 0x00B2B360
-  - source: 0x00B2B3B0
-  - source: 0x00B2B3DC
-  - source: 0x00B2B464
-  - source: 0x00B2B588
-  - source: 0x00B2B5D8
-  - source: 0x00B2B864
-  - source: 0x00B2BB7C
-  - source: 0x00B2BD20
-  - source: 0x00B2BE1C
-  - source: 0x00B2BF98
-  - source: 0x00B2C030
-  - source: 0x00B2C15C
-  - source: 0x00B2C3BC
-  - source: 0x00B2C4DC
-  - source: 0x00B2C698
-  - source: 0x00B2C778
-  - source: 0x00B2C7EC
-  - source: 0x00B2C838
-  - source: 0x00B2C980
-  - source: 0x00B2C9C0
 # Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate.
   - source: 0x00401FE7
-# The RTTI type names ".?AVFixed@@" and ".?AVMultiMapFixed@@" end in "d@@\0", which reads as 0x00404064.
-  - source: 0x008F7698
-  - source: 0x008F76B8
 # GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874.
   - source: 0x008FA414
   - source: 0x008FA478
   - source: 0x008FA4DC
   - source: 0x008FA540
   - source: 0x008FA5AC
-# So does the tail of the ".\\scripts\\info*.txt" search pattern.
-  - source: 0x008FB344
-# "LUE\0" ending "DETAIL_CREATURE_INITIAL_DESIRE_SOURCE_VALUE" reads as 0x0045554C, inside
-# CPController::Update.
-  - source: 0x008FABA0
 
 add_relocations:
 # PSysProperties shared callback aliases and istream exception boundaries.
