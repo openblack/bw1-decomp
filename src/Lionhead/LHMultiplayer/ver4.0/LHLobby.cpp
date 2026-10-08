@@ -14,18 +14,18 @@
 
 #include "LHLobbyServer.h"
 #include "LHMPServerStartInfo.h"
-#include "LHSession.h" /* TODO: before LHMessageServer.h, see OOSInfo in LHSession.h */
+#include "LHSession.h"
 #include "LHMessageServer.h"
 #include "LHNetErrors.h"
 #include "LHPlayer.h"
 #include "LHServerListener.h"
 
-// TODO: the TU also dynamically initialises a 4-byte .bss global (10068d90) from the last word of
-// LHTransportInfo.cpp's LHVersionBlock (10062c90, a pointer to that TU's LHVersion object). Its
-// declaration is unknown, and the source global would need an extern.
+enum
+{
+	LH_LOBBY_MSERVE_BROADCAST_PORT = LH_TRANSPORT_DEFAULT_PORT + 1,
+	LH_LOBBY_CHAT_LINE_LENGTH = 0x400,
+};
 
-// Only its first two bytes are used as the UDP port (Mac, being big-endian, reads 0 from them).
-// TODO: name and type fabricated; a 4-byte .data word at 10061660.
 static unsigned long LobbyListenerPort = LH_TRANSPORT_DEFAULT_PORT;
 
 LHTransportInfo LH_LIONHEAD_DEFAULT_LISTNER_ADDRESS(LH_TRANSPORT_TYPE_UDP, sizeof(unsigned short), &LobbyListenerPort);
@@ -36,24 +36,24 @@ unsigned long LHLobby::UserDataLen;
 void*         LHLobby::MGJCallbackParam;
 LH_MGJ_CALLBACK_RETURN (*LHLobby::MGJCallback)(void* param);
 LH_OPERATING_MODE               LHLobby::MessageServerMode;
-int                             LHLobby::SendFullChecksum;
-int                             LHLobby::RunMessageServerOnThisHost;
-char                            LHLobby::GameFile[0x104];
-char                            LHLobby::UserFile[0x104];
-char                            LHLobby::ConnectedLobbyName[0x41];
+bool32_t                        LHLobby::SendFullChecksum;
+bool32_t                        LHLobby::RunMessageServerOnThisHost;
+char                            LHLobby::GameFile[_MAX_PATH];
+char                            LHLobby::UserFile[_MAX_PATH];
+char                            LHLobby::ConnectedLobbyName[LH_MAX_LOBBY_NAME_LENGTH + 1];
 LHLinkedList<LHLocalLobbyInfo*> LHLobby::LocalLobbyList;
 LHTransportInfo                 LHLobby::MSAcceptorInfo;
 LHLinkedList<LHPlayer*>         LHLobby::LANPlayerList;
 LHLobby*                        LHLobby::InternalLobbyServerConnection;
 LHLobbyServer*                  LHLobby::InternalLobbyServer;
-int                             LHLobby::InternalLobbyServerRunning;
+bool32_t                        LHLobby::InternalLobbyServerRunning;
 unsigned long                   LHLobby::OpenLobbyCount;
 
 void LHLobby::ClearAllData()
 {
 	LHConnection::ClearAllData();
 	GlobalLobby = NULL;
-	ServerProtocolVersion = 0;
+	LobbyProtocolVersion = 0;
 	memset(LastJoinChannelPlayerName, 0, sizeof(LastJoinChannelPlayerName));
 	memset(ConnectedLobbyName, 0, sizeof(ConnectedLobbyName));
 }
@@ -125,11 +125,7 @@ LHLobby* LHLobby::GetGlobalLobby()
 
 LH_RETURN LHLobby::ConnectToChannel(char* name, char* password, LH_NET_CHANNEL_MODE mode)
 {
-	// The `(a && b) == FALSE` checks in this file reproduce the target's layout, which evaluates the
-	// condition as a value and keeps the error return next to the test; `!a || !b` moves it to the end.
-	// Mac (`if (!name || !*name)`) cannot tell the spellings apart.
-	// TODO: the original spelling is unknown (an inline bool helper or a bool local also match).
-	if ((name != NULL && name[0] != '\0') == FALSE)
+	if ((name != NULL && name[0] != '\0') == false)
 		return LH_ERROR;
 	return Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CLIENT_JOIN_CHANNEL, GetUserID(), name,
 	                                 (unsigned char)RunMessageServerOnThisHost, GetUserName(), password, mode,
@@ -138,7 +134,7 @@ LH_RETURN LHLobby::ConnectToChannel(char* name, char* password, LH_NET_CHANNEL_M
 
 LH_RETURN LHLobby::BootOtherUsersOffChannel(char* channel_name)
 {
-	if ((channel_name != NULL && channel_name[0] != '\0') == FALSE)
+	if ((channel_name != NULL && channel_name[0] != '\0') == false)
 		return LH_ERROR;
 	return Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CLIENT_BOOT_OTHER_USERS, GetUserID(), channel_name));
 }
@@ -153,7 +149,7 @@ LH_RETURN LHLobby::OpenLANLobby(LHNetUser* user, char* lobby_name)
 
 LH_RETURN LHLobby::OpenRemoteLobby(LHNetUser* user, LHTransportInfo* transport_info)
 {
-	if ((user != NULL && user->id.IsValid()) == FALSE)
+	if ((user != NULL && user->id.IsValid()) == false)
 		return LH_ERROR;
 	SetRegisteredName(NULL);
 	OpenLobbyCount++;
@@ -194,16 +190,16 @@ LH_RETURN LHLobby::OpenLocalLobby(LHMPServerStartInfo* info)
 	if (info->ListenerAddress == (LHTransportInfo*)-1)
 	{
 		transportInfo.type = LH_TRANSPORT_TYPE_SYNC;
-		if (OpenClientConnection(info->user, &transportInfo) != LH_OK)
+		if (OpenClientConnection(info->User, &transportInfo) != LH_OK)
 			return LH_FAIL;
 	}
 	else
 	{
 		transportInfo.type = LH_TRANSPORT_TYPE_ASYNC;
-		if (OpenClientConnection(info->user, &transportInfo) != LH_OK)
+		if (OpenClientConnection(info->User, &transportInfo) != LH_OK)
 		{
 			transportInfo.type = LH_TRANSPORT_TYPE_SYNC;
-			if (OpenClientConnection(info->user, &transportInfo) != LH_OK)
+			if (OpenClientConnection(info->User, &transportInfo) != LH_OK)
 				return LH_FAIL;
 		}
 	}
@@ -242,9 +238,9 @@ char* LHLobby::SetRegisteredName(const char* name)
 	if (RegisteredGame[0] == '\0' || (name != NULL && name[0] != '\0'))
 	{
 		if (name != NULL)
-			strncpy(RegisteredGame, name, 0x30);
+			strncpy(RegisteredGame, name, LH_MAX_NAME_LENGTH);
 		else
-			strncpy(RegisteredGame, LHLogger::GetFileName(NULL), 0x30);
+			strncpy(RegisteredGame, LHLogger::GetFileName(NULL), LH_MAX_NAME_LENGTH);
 		for (char* c = RegisteredGame; *c != '\0'; c++)
 			*c = *c >= 'A' && *c <= 'Z' ? *c + ('a' - 'A') : *c;
 		char* extension = strstr(RegisteredGame, ".exe");
@@ -266,11 +262,10 @@ LH_RETURN LHLobby::StartInternalLobbyServer(LHMPServerStartInfo* info)
 		InternalLobbyServer = NULL;
 		return LH_FAIL;
 	}
-	InternalLobbyServerRunning = TRUE;
+	InternalLobbyServerRunning = true;
 	return LH_OK;
 }
 
-// TODO: matches, but dtk's labels at 1000d132..1000d1c8 split the target function (see requests.md).
 LH_RETURN LHLobby::ProcessEvent(LHNetEvent* net_event)
 {
 	long type = net_event->GetType();
@@ -317,7 +312,7 @@ void LHLobby::WriteChatFile(char* text, char* name, char* file_name)
 {
 	static bool firstCall = true;
 	DWORD       written;
-	char        buffer[0x400];
+	char        buffer[LH_LOBBY_CHAT_LINE_LENGTH];
 
 	if (firstCall)
 	{
@@ -338,15 +333,15 @@ LH_RETURN LHLobby::ProcessLobbyGreeting(LHNetEvent* net_event)
 {
 	char*         lobbyName;
 	unsigned long numberOfChannels;
-	unsigned long param_3;
+	unsigned long serverProtocolVersion;
 	unsigned long protocolVersion;
 
-	if (net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_GREETING, &lobbyName, &numberOfChannels, &param_3,
+	if (net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_GREETING, &lobbyName, &numberOfChannels, &serverProtocolVersion,
 	                       &protocolVersion) != LH_OK)
 		return LH_ERROR;
 
-	strncpy(ConnectedLobbyName, lobbyName, 0x40);
-	ServerProtocolVersion = protocolVersion;
+	strncpy(ConnectedLobbyName, lobbyName, LH_MAX_LOBBY_NAME_LENGTH);
+	LobbyProtocolVersion = protocolVersion;
 	if (protocolVersion != LHLobbyServer::GetLobbyProtocolVersion())
 	{
 		Close();
@@ -383,11 +378,11 @@ LH_RETURN LHLobby::ProcessLobbyPlayerList(LHNetEvent* net_event)
 	LH_USER_ID              userID;
 	LH_PLAYER_EVENT         event;
 	LHLinkedList<LHPlayer*> players;
-	unsigned char           param_6;
+	unsigned char           mserveStarted;
 
 	LHLobbyChannel* channel = FindOrCreateChannel(net_event->GetChannelName(), this);
 	net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_PLAYER_LIST, &channelName, &userID, &event, LHPlayer::Create, &players,
-	                   &param_6);
+	                   &mserveStarted);
 	LastJoinUserID = userID;
 
 	LHPlayer* player;
@@ -398,11 +393,11 @@ LH_RETURN LHLobby::ProcessLobbyPlayerList(LHNetEvent* net_event)
 	if (player != NULL)
 		wcscpy(LastJoinChannelPlayerName, player->GetName());
 	else
-		LastJoinChannelPlayerName[0] = 0;
+		LastJoinChannelPlayerName[0] = L'\0';
 	LastJoinEvent = event;
 
 	LHPlayer::CopyPlayerList(&channel->Players, &players);
-	channel->field_0x88 = param_6;
+	channel->MServeStarted = mserveStarted;
 	players.DeleteAll();
 	return LH_OK;
 }
@@ -410,10 +405,10 @@ LH_RETURN LHLobby::ProcessLobbyPlayerList(LHNetEvent* net_event)
 LH_RETURN LHLobby::ProcessLobbyStartMServe(LHNetEvent* net_event)
 {
 	char*             channelName;
-	unsigned long     param_2;
+	unsigned long     idleTime;
 	LH_OPERATING_MODE mode;
 
-	if (net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_START_MSERVE, &channelName, &param_2, &mode) != LH_OK)
+	if (net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_START_MSERVE, &channelName, &idleTime, &mode) != LH_OK)
 		return LH_ERROR;
 
 	LHLobbyChannel* channel = FindChannel(channelName);
@@ -421,18 +416,18 @@ LH_RETURN LHLobby::ProcessLobbyStartMServe(LHNetEvent* net_event)
 	{
 		if (mode != LH_OPERATING_MODE_SYNCHRONOUS && channel->GetSize() == 1)
 			mode = LH_OPERATING_MODE_SYNCHRONOUS;
-		return StartInternalMessageServer(channel, param_2, mode, 0, NULL, NULL);
+		return StartInternalMessageServer(channel, idleTime, mode, 0, NULL, NULL);
 	}
-	SendStartMServeResult(channelName, FALSE, NULL, LH_OPERATING_MODE_NONE);
+	SendStartMServeResult(channelName, false, NULL, LH_OPERATING_MODE_NONE);
 	return LH_FAIL;
 }
 
-LH_RETURN LHLobby::StartInternalMessageServer(LHLobbyChannel* channel, unsigned long param_2, LH_OPERATING_MODE mode,
-                                              unsigned long game_turn, unsigned short player_names[][0x30],
+LH_RETURN LHLobby::StartInternalMessageServer(LHLobbyChannel* channel, unsigned long idle_time, LH_OPERATING_MODE mode,
+                                              unsigned long game_turn, wchar_t player_names[][LH_MAX_NAME_LENGTH],
                                               LH_USER_ID player_ids[])
 {
-	LHMessageServer* server = StartInternalMessageServer(GetNetUser(), channel->GetName(), channel->GetSize(), param_2,
-	                                                     mode, game_turn, player_names, player_ids);
+	LHMessageServer* server = StartInternalMessageServer(GetNetUser(), channel->GetName(), channel->GetSize(),
+	                                                     idle_time, mode, game_turn, player_names, player_ids);
 	LHTransportInfo  syncTransportInfo(LH_TRANSPORT_TYPE_SYNC);
 
 	if (server != NULL)
@@ -446,18 +441,17 @@ LH_RETURN LHLobby::StartInternalMessageServer(LHLobbyChannel* channel, unsigned 
 		else
 			transportInfo = server->GetConnectionAcceptorInfo();
 		channel->InternalMessageServer = server;
-		// TODO: the target keeps the mode in ESI (ours uses ECX); reading it into a local first matches,
-		// but nothing else suggests the original had one. Mac reloads it through the channel, as here.
-		return SendStartMServeResult(channel->GetName(), TRUE, transportInfo, channel->InternalMessageServer->Mode);
+		return SendStartMServeResult(channel->GetName(), true, transportInfo, channel->InternalMessageServer->Mode);
 	}
-	SendStartMServeResult(channel->GetName(), FALSE, NULL, LH_OPERATING_MODE_NONE);
+	SendStartMServeResult(channel->GetName(), false, NULL, LH_OPERATING_MODE_NONE);
 	return LH_FAIL;
 }
 
-LHMessageServer* LHLobby::StartInternalMessageServer(LHNetUser* user, char* name, unsigned long param_3,
-                                                     unsigned long param_4, LH_OPERATING_MODE mode,
-                                                     unsigned long game_turn, unsigned short player_names[][0x30],
-                                                     LH_USER_ID player_ids[])
+LHMessageServer* LHLobby::StartInternalMessageServer(LHNetUser* user, char* name, unsigned long num_players,
+                                                     unsigned long idle_time, LH_OPERATING_MODE mode,
+                                                     unsigned long game_turn,
+                                                     wchar_t       player_names[][LH_MAX_NAME_LENGTH],
+                                                     LH_USER_ID    player_ids[])
 {
 	LHMPServerStartInfo info;
 	memset(&info, 0, sizeof(info));
@@ -465,11 +459,11 @@ LHMessageServer* LHLobby::StartInternalMessageServer(LHNetUser* user, char* name
 
 	LHMessageServer* server = new LHMessageServer();
 	LHTransportInfo  broadcastInfo;
-	broadcastInfo.Set((unsigned short)(LH_TRANSPORT_DEFAULT_PORT + 1));
+	broadcastInfo.Set((unsigned short)LH_LOBBY_MSERVE_BROADCAST_PORT);
 
 	info.BroadcastInfo = &broadcastInfo;
 	info.AcceptorInfo = &MSAcceptorInfo;
-	info.user = user;
+	info.User = user;
 	info.RegisteredName = RegisteredGame;
 	info.GameTurn = game_turn;
 	if (player_names != NULL)
@@ -481,7 +475,7 @@ LHMessageServer* LHLobby::StartInternalMessageServer(LHNetUser* user, char* name
 	else
 		info.OperatingMode = mode;
 
-	if (server->Start(&info, name, param_3, param_4) != LH_OK)
+	if (server->Start(&info, name, num_players, idle_time) != LH_OK)
 	{
 		delete server;
 		return NULL;
@@ -492,12 +486,12 @@ LHMessageServer* LHLobby::StartInternalMessageServer(LHNetUser* user, char* name
 LH_RETURN LHLobby::ProcessLobbyUserFile(LHNetEvent* net_event)
 {
 	char*         channelName;
-	unsigned long param_2;
+	char*         fileName;
 	LH_USER_ID    userID;
 	unsigned long length;
 	void*         data;
 
-	net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_USER_FILE, &channelName, &param_2, &userID, &length, &data);
+	net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_USER_FILE, &channelName, &fileName, &userID, &length, &data);
 	LHLobbyChannel* channel = FindChannel(channelName);
 	if (channel == NULL)
 		return LH_FAIL;
@@ -506,7 +500,7 @@ LH_RETURN LHLobby::ProcessLobbyUserFile(LHNetEvent* net_event)
 	return LH_OK;
 }
 
-LH_RETURN LHLobby::SendStartMServeResult(char* channel_name, int success, LHTransportInfo* transport_info,
+LH_RETURN LHLobby::SendStartMServeResult(char* channel_name, bool32_t success, LHTransportInfo* transport_info,
                                          LH_OPERATING_MODE mode)
 {
 	return Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CLIENT_START_MSERVE_RESULT, GetUserID(), channel_name,
@@ -519,13 +513,13 @@ LH_RETURN LHLobby::ProcessLobbyConnectToMServe(LHNetEvent* net_event)
 	char*           channelName;
 	unsigned long   mserveUserNumber;
 	LHTransportInfo transportInfo;
-	unsigned char   param_4[4];
-	int             mgj;
+	char*           mserveName;
+	bool32_t        mgj;
 	unsigned long   gameDataLength;
 	void*           gameData;
 
 	if (net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_CONNECT_TO_MSERVE, &channelName, &mserveUserNumber, &transportInfo,
-	                       param_4, &mgj, &gameDataLength, &gameData) != LH_OK)
+	                       &mserveName, &mgj, &gameDataLength, &gameData) != LH_OK)
 		return LH_FAIL;
 
 	LHLobbyChannel* channel = FindChannel(channelName);
@@ -592,7 +586,7 @@ LH_RETURN LHLobby::ProcessLobbyUserFilesTransferComplete(LHNetEvent* net_event)
 	LHLobbyChannel* channel = GetChannel(net_event);
 	if (channel == NULL)
 		return LH_ERROR;
-	channel->FileTransferComplete = TRUE;
+	channel->FileTransferComplete = true;
 	return LH_OK;
 }
 
@@ -613,16 +607,11 @@ LH_RETURN LHLobby::CheckSessionReady(LHLobbyChannel* channel)
 	return LH_OK;
 }
 
-// TODO: nonmatching. The target calls the LHLinkedList<LHPlayer*> constructor (in the local
-// LHLocalLobbyInfo) and LHTransportInfo::operator= out of line where we inline them, so its inline
-// budget is smaller; with the constant 0 no longer cached in a register its early returns also keep
-// their own epilogues. Mac walks the lists with LHLinkedListIterator<T>, which this repo lacks; the
-// loops below follow the Mac control flow.
 LH_RETURN LHLobby::ProcessInternalLobbyNewLocalLobbyList(LHNetEvent* net_event)
 {
 	if (GameRunning)
 		return LH_OK;
-	if ((InternalLobbyServer != NULL && InternalLobbyServerRunning) == FALSE)
+	if ((InternalLobbyServer != NULL && InternalLobbyServerRunning) == false)
 		return LH_ERROR;
 
 	unsigned char    event;
@@ -652,8 +641,6 @@ LH_RETURN LHLobby::ProcessInternalLobbyNewLocalLobbyList(LHNetEvent* net_event)
 		break;
 	}
 
-	// Add the players of every LAN lobby that LANPlayerList does not have yet, restarting the scan
-	// after each addition.
 	LHLinkedNode<LHLocalLobbyInfo*>* lobbyNode;
 	LHLinkedNode<LHPlayer*>*         playerNode;
 	LHLinkedNode<LHPlayer*>*         lanNode;
@@ -664,12 +651,12 @@ restartAdd:
 		     playerNode = playerNode->next.Get())
 		{
 			LHPlayer* player = playerNode->payload;
-			int       found = FALSE;
+			bool32_t  found = false;
 			for (lanNode = LANPlayerList.GetStart(); lanNode != NULL; lanNode = lanNode->next.Get())
 			{
 				if (lanNode->payload->UserId == player->UserId)
 				{
-					found = TRUE;
+					found = true;
 					break;
 				}
 			}
@@ -683,12 +670,11 @@ restartAdd:
 		}
 	}
 
-	// Remove LAN players no LAN lobby lists any more, restarting the scan after each removal.
 restartRemove:
 	for (lanNode = LANPlayerList.GetStart(); lanNode != NULL; lanNode = lanNode->next.Get())
 	{
 		LHPlayer* player = lanNode->payload;
-		int       found = FALSE;
+		bool32_t  found = false;
 		for (lobbyNode = LocalLobbyList.GetStart(); lobbyNode != NULL; lobbyNode = lobbyNode->next.Get())
 		{
 			for (playerNode = lobbyNode->payload->Players.GetStart(); playerNode != NULL;
@@ -696,7 +682,7 @@ restartRemove:
 			{
 				if (playerNode->payload->UserId == player->UserId)
 				{
-					found = TRUE;
+					found = true;
 					break;
 				}
 			}
@@ -767,8 +753,8 @@ void LHLobbyChannel::ClearAllData()
 	InternalMessageServer = NULL;
 	Session = NULL;
 	PacketSource = LH_PACKET_SOURCE_NETWORK;
-	field_0x88 = 0;
-	FileTransferComplete = FALSE;
+	MServeStarted = false;
+	FileTransferComplete = false;
 }
 
 LHLobbyChannel::~LHLobbyChannel()
@@ -800,8 +786,6 @@ void LHLobbyChannel::ClearInternalMessageServer()
 	}
 }
 
-// TODO: the inlined LHMPPacketSave constructor stores Info's first word through a register-held
-// address in ours ([edi+0x18] directly in the target); everything else matches.
 LHLobbyChannel* LHLobbyChannel::FindOrCreateChannel(char* name, LHLobby* lobby, LHLinkedList<LHLobbyChannel*>* list)
 {
 	LHLobbyChannel* channel = FindChannel(name, list);
@@ -813,34 +797,34 @@ LHLobbyChannel* LHLobbyChannel::FindOrCreateChannel(char* name, LHLobby* lobby, 
 	return channel;
 }
 
-LH_RETURN LHLobbyChannel::StartGame(unsigned long param_1, unsigned long length, void* data)
+LH_RETURN LHLobbyChannel::StartGame(unsigned long idle_time, unsigned long length, void* data)
 {
 	return Lobby->Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CLIENT_START_GAME, GetUserID(), Name, GetUserID(),
-	                                        param_1, length, data));
+	                                        idle_time, length, data));
 }
 
-void LHLobbyChannel::RequestMGJ(int param_1)
+void LHLobbyChannel::RequestMGJ(bool32_t ask_players)
 {
-	Lobby->Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_REQUEST, GetUserID(), Name, param_1));
+	Lobby->Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_REQUEST, GetUserID(), Name, ask_players));
 }
 
-int LHLobbyChannel::MGJInProgress()
+bool32_t LHLobbyChannel::MGJInProgress()
 {
 	if (Session == NULL)
-		return FALSE;
+		return false;
 	return Session->MGJInProgress();
 }
 
-LH_RETURN LHLobbyChannel::SendMGJResponse(int accept, LH_USER_ID user_id, char* reason)
+LH_RETURN LHLobbyChannel::SendMGJResponse(bool32_t accept, LH_USER_ID user_id, char* reason)
 {
 	return Lobby->Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_RESPONSE, GetUserID(), Name, user_id,
 	                                        (unsigned char)accept, reason));
 }
 
-LH_RETURN LHLobbyChannel::ChatOnChannel(void* data, unsigned long length, LH_USER_ID user_id, bool param_4)
+LH_RETURN LHLobbyChannel::ChatOnChannel(void* data, unsigned long length, LH_USER_ID user_id, bool flag)
 {
 	return Lobby->Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CLIENT_CHAT_ON_CHANNEL, GetUserID(), Name,
-	                                        GetUserID(), length, data, user_id, param_4));
+	                                        GetUserID(), length, data, user_id, flag));
 }
 
 LH_RETURN LHLobby::LeaveChannel(LHLobbyChannel* channel)
@@ -901,11 +885,8 @@ LHLocalLobbyInfo* LHLobby::FindLocalLobby(char* name)
 	return lobby;
 }
 
-// TODO: the decoded locals sit at different stack offsets in the target (which reuses net_event's
-// slot for targetUserID); declaration order does not change ours. Same in GetChatDataLength.
-// The 4004 fields are: channel name, sender, data length, data, private flag (byte), target user.
 LH_RETURN LHLobby::GetChatOnChannelInfo(LHNetEvent* net_event, LHLobbyChannel** channel, LHPlayer** player, void** data,
-                                        int* is_private)
+                                        bool32_t* is_private)
 {
 	if (net_event->GetType() != LH_NETEVENT_TYPE_LOBBY_CHAT_ON_CHANNEL)
 		return LH_FAIL;
@@ -914,9 +895,9 @@ LH_RETURN LHLobby::GetChatOnChannelInfo(LHNetEvent* net_event, LHLobbyChannel** 
 	LH_USER_ID    userID;
 	unsigned long length;
 	unsigned char isPrivate;
-	unsigned long targetUserID;
+	unsigned long flag;
 	if (net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_CHAT_ON_CHANNEL, &channelName, &userID, &length, data, &isPrivate,
-	                       &targetUserID) != LH_OK)
+	                       &flag) != LH_OK)
 		return LH_FAIL;
 	*channel = FindChannel(channelName);
 	*player = (*channel)->GetPlayer(userID);
@@ -934,9 +915,9 @@ LH_RETURN LHLobby::GetChatDataLength(LHNetEvent* net_event, unsigned long* lengt
 	unsigned long dataLength;
 	void*         data;
 	unsigned char isPrivate;
-	unsigned long targetUserID;
+	unsigned long flag;
 	if (net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_CHAT_ON_CHANNEL, &channelName, &userID, &dataLength, &data,
-	                       &isPrivate, &targetUserID) != LH_OK)
+	                       &isPrivate, &flag) != LH_OK)
 		return LH_FAIL;
 	*length = dataLength;
 	return LH_OK;
@@ -962,16 +943,13 @@ void LHLobby::ShutdownInternalLobbyServer()
 	ClearInternalLobbyServer();
 	LocalLobbyList.DeleteAll();
 	LANPlayerList.DeleteAll();
-	InternalLobbyServerRunning = FALSE;
+	InternalLobbyServerRunning = false;
 	InternalLobbyServer = NULL;
 	InternalLobbyServerConnection = NULL;
-	// TODO: the target calls LHLocalLobbyInfo's scalar deleting destructor here instead of inlining
-	// it, so its inline budget ran out sooner than ours; the extra consumer is unknown (Mac has three
-	// explicit while/Remove/delete loops, which budget the same as DeleteAll here).
 	LocalLobbyList.DeleteAll();
-	RunMessageServerOnThisHost = FALSE;
+	RunMessageServerOnThisHost = false;
 	memset(ConnectedLobbyName, 0, sizeof(ConnectedLobbyName));
-	SendFullChecksum = FALSE;
+	SendFullChecksum = false;
 	MessageServerMode = LH_OPERATING_MODE_NONE;
 }
 

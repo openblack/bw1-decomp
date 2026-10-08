@@ -10,20 +10,13 @@
 #include "LHNetUtils.h"
 #include "LHPacketisableObject.h"
 
-// Packet format strings, one character per argument:
-//   B  byte                          (VCreate: int,                     VDecode: unsigned char*)
-//   D  length-prefixed data block    (unsigned long length, void* data / unsigned long*, void**)
-//   E  embedded LHNetEvent           (LHNetEvent* / LHNetEvent**)
-//   F  double                        (double / double*)
-//   I  LH_USER_ID                    (LH_USER_ID / unsigned long*)
-//   L  list of packetisable objects  (LHLinkedList<LHPacketisableObject*>* / factory, list)
-//   P  one packetisable object       (LHPacketisableObject* / LHPacketisableObject*)
-//   S  string                        (char* / char**)
-//   U  unsigned long                 (unsigned long / unsigned long*)
-//   W  wide string                   (unsigned short* / unsigned short**)
-//   X  file                          (char* name, LH_USER_ID / char**, LH_USER_ID*)
-//   Z  string list                   (LHLinkedList<char*>* / LHLinkedList<char*>*)
-// A '*' after L or P passes an extra (unsigned long options, void* context) pair to the encoder.
+enum
+{
+	LH_SUPER_PACKET_HEADER_SIZE = 2 * sizeof(unsigned char),
+	LH_SUPER_PACKET_EVENT_HEADER_SIZE = sizeof(unsigned char) + sizeof(unsigned short),
+	LH_EMPTY_SUPER_PACKET_LENGTH = 0xe,
+};
+
 LHNetMessageFormatDescriptor LHNetEvent::MessageDescriptors[] = {
 	{LH_NETEVENT_TYPE_LOBBY_SESSION_READY, "S"},
 	{LH_NETEVENT_TYPE_INTERNAL_LOBBY_NEW_LOCAL_LOBBY_LIST, "BP"},
@@ -37,7 +30,7 @@ LHNetMessageFormatDescriptor LHNetEvent::MessageDescriptors[] = {
 	{LH_NETEVENT_TYPE_CLIENT_CHALLENGE_RESPONSE, "U"},
 	{LH_NETEVENT_TYPE_CLIENT_REQUEST_PROTOCOL, "U"},
 	{LH_NETEVENT_TYPE_CLIENT_NEW_IDLE_TIME, "U"},
-	{LH_NETEVENT_TYPE_UNKNOWN_3005, "W"},
+	{LH_NETEVENT_TYPE_CLIENT_BROADCAST_MESSAGE, "W"},
 	{LH_NETEVENT_TYPE_BROADCAST_LOBBY_ADDRESS_REQUEST, "P"},
 	{LH_NETEVENT_TYPE_BROADCAST_LOBBY_ADDRESS, "P"},
 	{LH_NETEVENT_TYPE_BROADCAST_LOBBY_SHUTDOWN, "P"},
@@ -94,16 +87,12 @@ char* LHNetEvent::UserFileDirectory;
 typedef LHLinkedList<LHPacketisableObject*> LHPacketisableObjectList;
 typedef LHPacketisableObject* (*LHPacketisableObjectFactory)();
 
-// TODO: the Mac build has these as out-of-line functions next to RawCreate/RawDecode
-// (LHNetEncodeULONG__FPUcUl, LHNetDecodeULONG__FPUcPUl in 1.1.0); BW1M119 has no copy.
-// BW1W120 inlined BW1M119 null
 inline unsigned char* LHNetEncodeULONG(unsigned char* buffer, unsigned long value)
 {
 	memcpy(buffer, &value, sizeof(value));
 	return buffer + sizeof(value);
 }
 
-// BW1W120 inlined BW1M119 null
 inline unsigned char* LHNetDecodeULONG(unsigned char* buffer, unsigned long* value)
 {
 	memcpy(value, buffer, sizeof(*value));
@@ -132,7 +121,7 @@ LHNetEvent* LHNetEvent::CreateFromPacket(LHPacket* packet)
 
 	LHNetEvent*   event = new LHNetEvent;
 	unsigned long length = packet->GetDataLen();
-	LHPacket*     copy = (LHPacket*)calloc(length + 10, 1);
+	LHPacket*     copy = (LHPacket*)calloc(length + LH_PACKET_ALLOCATION_PADDING, 1);
 	copy->SetDataLen(length);
 	event->Packet = copy;
 	if (event->Packet == NULL)
@@ -149,7 +138,7 @@ LHNetEvent* LHNetEvent::CreateFromEvent(LHNetEvent* net_event)
 
 	LHNetEvent*   event = new LHNetEvent;
 	unsigned long length = net_event->Packet->GetDataLen();
-	LHPacket*     copy = (LHPacket*)calloc(length + 10, 1);
+	LHPacket*     copy = (LHPacket*)calloc(length + LH_PACKET_ALLOCATION_PADDING, 1);
 	copy->SetDataLen(length);
 	event->Packet = copy;
 	if (event->Packet == NULL)
@@ -163,8 +152,8 @@ LHNetEvent* LHNetEvent::CreateFromEvent(LHNetEvent* net_event)
 LHNetEvent* LHNetEvent::CreateSimple(LH_NETEVENT_TYPE type, LH_USER_ID user_id, unsigned long length, void* data)
 {
 	LHNetEvent*   event = new LHNetEvent;
-	unsigned long packetLength = length + 6;
-	LHPacket*     packet = (LHPacket*)calloc(packetLength + 10, 1);
+	unsigned long packetLength = length + LH_NETEVENT_HEADER_SIZE;
+	LHPacket*     packet = (LHPacket*)calloc(packetLength + LH_PACKET_ALLOCATION_PADDING, 1);
 	packet->SetDataLen(packetLength);
 	event->Packet = packet;
 	if (event->Packet == NULL)
@@ -174,7 +163,7 @@ LHNetEvent* LHNetEvent::CreateSimple(LH_NETEVENT_TYPE type, LH_USER_ID user_id, 
 	}
 
 	if (length != 0 && data != NULL)
-		memcpy(event->Packet->GetDataPtr() + 6, data, length);
+		memcpy(event->Packet->GetDataPtr() + LH_NETEVENT_HEADER_SIZE, data, length);
 	event->SetPacketHeader(type, user_id);
 	return event;
 }
@@ -226,10 +215,7 @@ LH_RETURN __cdecl LHNetEvent::VDecode(long type, LHNetMessageFormatDescriptor* d
 	return RawDecode(format, args);
 }
 
-// TODO: unverified until the jump-table labels are removed from symbols.txt. An overlay build with the
-// 'L' cases restored differs in the inlined LHNetEvent constructor (the target keeps both
-// LHTransportInfo::ClearAllData calls out of line) and in register allocation; inline-budget residual.
-LHNetEvent* LHNetEvent::RawCreate(LH_USER_ID user_id, LH_NETEVENT_TYPE type, char* format, char* args)
+LHNetEvent* LHNetEvent::RawCreate(LH_USER_ID user_id, LH_NETEVENT_TYPE type, char* format, va_list args)
 {
 	LHNetEvent*    event = new LHNetEvent;
 	va_list        sizeArgs = args;
@@ -242,11 +228,11 @@ LHNetEvent* LHNetEvent::RawCreate(LH_USER_ID user_id, LH_NETEVENT_TYPE type, cha
 		{
 		case 'I':
 			va_arg(sizeArgs, LH_USER_ID);
-			length += 4;
+			length += sizeof(LH_USER_ID);
 			break;
 		case 'U':
 			va_arg(sizeArgs, unsigned long);
-			length += 4;
+			length += sizeof(unsigned long);
 			break;
 		case 'S': {
 			char* string = va_arg(sizeArgs, char*);
@@ -254,18 +240,18 @@ LHNetEvent* LHNetEvent::RawCreate(LH_USER_ID user_id, LH_NETEVENT_TYPE type, cha
 			break;
 		}
 		case 'W': {
-			unsigned short* string = va_arg(sizeArgs, unsigned short*);
-			length += string != NULL ? wcslen(string) * 2 + 3 : 1;
+			wchar_t* string = va_arg(sizeArgs, wchar_t*);
+			length += string != NULL ? 1 + (wcslen(string) + 1) * sizeof(wchar_t) : 1;
 			break;
 		}
 		case 'F':
 			va_arg(sizeArgs, double);
-			length += 8;
+			length += sizeof(double);
 			break;
 		case 'D': {
 			unsigned long dataLength = va_arg(sizeArgs, unsigned long);
 			va_arg(sizeArgs, void*);
-			length += dataLength + 4;
+			length += dataLength + sizeof(unsigned long);
 			break;
 		}
 		case 'E':
@@ -319,8 +305,8 @@ LHNetEvent* LHNetEvent::RawCreate(LH_USER_ID user_id, LH_NETEVENT_TYPE type, cha
 		}
 	}
 
-	length += 6;
-	LHPacket* packet = (LHPacket*)calloc(length + 10, 1);
+	length += LH_NETEVENT_HEADER_SIZE;
+	LHPacket* packet = (LHPacket*)calloc(length + LH_PACKET_ALLOCATION_PADDING, 1);
 	packet->SetDataLen(length);
 	event->Packet = packet;
 	if (event->Packet == NULL)
@@ -329,8 +315,8 @@ LHNetEvent* LHNetEvent::RawCreate(LH_USER_ID user_id, LH_NETEVENT_TYPE type, cha
 		return NULL;
 	}
 
-	event->SetPacketHeader((LH_NETEVENT_TYPE)0, LH_USER_ID(0xffffffff));
-	unsigned char* buffer = event->Packet->GetDataPtr() + 6;
+	event->SetPacketHeader(LH_NETEVENT_TYPE_NONE, LH_USER_ID(LH_ALL_USERS_ID));
+	unsigned char* buffer = event->Packet->GetDataPtr() + LH_NETEVENT_HEADER_SIZE;
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -366,12 +352,12 @@ LHNetEvent* LHNetEvent::RawCreate(LH_USER_ID user_id, LH_NETEVENT_TYPE type, cha
 			break;
 		}
 		case 'W': {
-			unsigned short* string = va_arg(args, unsigned short*);
+			wchar_t* string = va_arg(args, wchar_t*);
 			if (string != NULL)
 			{
 				*buffer = 1;
-				wcscpy((unsigned short*)(buffer + 1), string);
-				buffer = buffer + 1 + wcslen(string) * 2 + 2;
+				wcscpy((wchar_t*)(buffer + 1), string);
+				buffer = buffer + 1 + (wcslen(string) + 1) * sizeof(wchar_t);
 			}
 			else
 			{
@@ -468,9 +454,9 @@ LHNetEvent* LHNetEvent::RawCreate(LH_USER_ID user_id, LH_NETEVENT_TYPE type, cha
 	return event;
 }
 
-LH_RETURN LHNetEvent::RawDecode(char* format, char* args)
+LH_RETURN LHNetEvent::RawDecode(char* format, va_list args)
 {
-	unsigned char* buffer = Packet->GetDataPtr() + 6;
+	unsigned char* buffer = Packet->GetDataPtr() + LH_NETEVENT_HEADER_SIZE;
 	unsigned short i;
 
 	for (i = 0; format[i] != '\0'; i++)
@@ -506,7 +492,7 @@ LH_RETURN LHNetEvent::RawDecode(char* format, char* args)
 			break;
 		}
 		case 'W': {
-			unsigned short** string = va_arg(args, unsigned short**);
+			wchar_t** string = va_arg(args, wchar_t**);
 			if (*buffer == 0)
 			{
 				buffer++;
@@ -515,8 +501,8 @@ LH_RETURN LHNetEvent::RawDecode(char* format, char* args)
 			else if (*buffer == 1)
 			{
 				buffer++;
-				*string = (unsigned short*)buffer;
-				buffer += wcslen((unsigned short*)buffer) * 2 + 2;
+				*string = (wchar_t*)buffer;
+				buffer += (wcslen((wchar_t*)buffer) + 1) * sizeof(wchar_t);
 			}
 			else
 			{
@@ -581,26 +567,23 @@ LH_RETURN LHNetEvent::RawDecode(char* format, char* args)
 		}
 	}
 
-	if (buffer - (Packet->GetDataPtr() + 6) == Packet->GetDataLen() - 6)
+	if (buffer - (Packet->GetDataPtr() + LH_NETEVENT_HEADER_SIZE) == Packet->GetDataLen() - LH_NETEVENT_HEADER_SIZE)
 		return LH_OK;
 	return LH_ERROR;
 }
 
-// TODO: 92%. The target calls LHTransportInfo::LHTransportInfo() out of line inside the inlined
-// LHNetEvent constructor while we inline it (inline-budget residual; adding accessor calls did not move
-// it), which also shifts register allocation.
 LHNetEvent* LHNetEvent::CreateMServeSuperPacket(LH_USER_ID user_id, long game_turn, LHDynamicQueue<LHNetEvent*>* queue,
-                                                int param_4)
+                                                bool32_t remove_events)
 {
 	unsigned long                    length = 0;
 	LHNetEvent*                      event = new LHNetEvent;
 	LHDynamicQueueNode<LHNetEvent*>* node;
 
 	for (node = queue->Head; node != NULL; node = node->Next)
-		length += 3 + node->Payload->Packet->GetDataLen() - 6;
+		length += LH_SUPER_PACKET_EVENT_HEADER_SIZE + node->Payload->Packet->GetDataLen() - LH_NETEVENT_HEADER_SIZE;
 
-	length += 8;
-	LHPacket* packet = (LHPacket*)calloc(length + 10, 1);
+	length += LH_NETEVENT_HEADER_SIZE + LH_SUPER_PACKET_HEADER_SIZE;
+	LHPacket* packet = (LHPacket*)calloc(length + LH_PACKET_ALLOCATION_PADDING, 1);
 	packet->SetDataLen(length);
 	event->Packet = packet;
 	if (event->Packet == NULL)
@@ -609,11 +592,11 @@ LHNetEvent* LHNetEvent::CreateMServeSuperPacket(LH_USER_ID user_id, long game_tu
 		return NULL;
 	}
 
-	unsigned char* buffer = event->Packet->GetDataPtr() + 6;
+	unsigned char* buffer = event->Packet->GetDataPtr() + LH_NETEVENT_HEADER_SIZE;
 	*buffer++ = (unsigned char)game_turn;
 	*buffer++ = (unsigned char)queue->Count;
 
-	if (param_4)
+	if (remove_events)
 	{
 		while (queue->Count != 0)
 		{
@@ -631,8 +614,8 @@ LHNetEvent* LHNetEvent::CreateMServeSuperPacket(LH_USER_ID user_id, long game_tu
 				return NULL;
 
 			*buffer = (unsigned char)playerEvent->GetUserID();
-			unsigned char* data = playerEvent->Packet->GetDataPtr() + 6;
-			unsigned short dataLength = playerEvent->Packet->GetDataLen() - 6;
+			unsigned char* data = playerEvent->Packet->GetDataPtr() + LH_NETEVENT_HEADER_SIZE;
+			unsigned short dataLength = playerEvent->Packet->GetDataLen() - LH_NETEVENT_HEADER_SIZE;
 			memcpy(buffer + 1, &dataLength, sizeof(dataLength));
 			buffer += 1 + sizeof(dataLength);
 			if (dataLength != 0)
@@ -659,8 +642,8 @@ LHNetEvent* LHNetEvent::CreateMServeSuperPacket(LH_USER_ID user_id, long game_tu
 				return NULL;
 
 			*buffer = (unsigned char)playerEvent->GetUserID();
-			unsigned char* data = playerEvent->Packet->GetDataPtr() + 6;
-			unsigned short dataLength = playerEvent->Packet->GetDataLen() - 6;
+			unsigned char* data = playerEvent->Packet->GetDataPtr() + LH_NETEVENT_HEADER_SIZE;
+			unsigned short dataLength = playerEvent->Packet->GetDataLen() - LH_NETEVENT_HEADER_SIZE;
 			memcpy(buffer + 1, &dataLength, sizeof(dataLength));
 			buffer += 1 + sizeof(dataLength);
 			if (dataLength != 0)
@@ -685,8 +668,8 @@ LHNetEvent* LHNetEvent::CreateMServeSuperPacket(LH_USER_ID user_id, long game_tu
 LHNetEvent* LHNetEvent::CreateEmptyMServeSuperPacket(LH_USER_ID user_id, long game_turn)
 {
 	LHNetEvent* event = new LHNetEvent;
-	LHPacket*   packet = (LHPacket*)calloc(0x18, 1);
-	packet->SetDataLen(0xe);
+	LHPacket*   packet = (LHPacket*)calloc(LH_EMPTY_SUPER_PACKET_LENGTH + LH_PACKET_ALLOCATION_PADDING, 1);
+	packet->SetDataLen(LH_EMPTY_SUPER_PACKET_LENGTH);
 	event->Packet = packet;
 	if (event->GetPacket() == NULL)
 	{
@@ -694,15 +677,13 @@ LHNetEvent* LHNetEvent::CreateEmptyMServeSuperPacket(LH_USER_ID user_id, long ga
 		return NULL;
 	}
 
-	unsigned char* buffer = event->GetPacket()->GetDataPtr() + 6;
+	unsigned char* buffer = event->GetPacket()->GetDataPtr() + LH_NETEVENT_HEADER_SIZE;
 	buffer[0] = (unsigned char)game_turn;
 	buffer[1] = 0;
 	event->SetPacketHeader(LH_NETEVENT_TYPE_MSERVE_SUPER_PACKET, user_id);
 	return event;
 }
 
-// TODO: 99.8%. Only the load order of game_turn/value differs (scheduler tie) plus the unnamed
-// fn_10015A10 relocation.
 LH_RETURN LHNetEvent::DecodeMServeSuperPacket(LHDynamicQueue<LHNetEvent*>* queue, long* game_turn)
 {
 	if (GetType() != LH_NETEVENT_TYPE_MSERVE_SUPER_PACKET)
@@ -723,7 +704,7 @@ LH_RETURN LHNetEvent::DecodeMServeSuperPacket(LHDynamicQueue<LHNetEvent*>* queue
 		queue->Head = NULL;
 	}
 
-	unsigned char* buffer = Packet->GetDataPtr() + 6;
+	unsigned char* buffer = Packet->GetDataPtr() + LH_NETEVENT_HEADER_SIZE;
 	LHNetEvent*    playerEvent;
 	unsigned char  value;
 	memcpy(&value, buffer, sizeof(value));
@@ -755,7 +736,7 @@ LH_RETURN LHNetEvent::DecodeMServeSuperPacket(LHDynamicQueue<LHNetEvent*>* queue
 		queue->Add(playerEvent);
 	}
 
-	if (buffer - (Packet->GetDataPtr() + 6) == Packet->GetDataLen() - 6)
+	if (buffer - (Packet->GetDataPtr() + LH_NETEVENT_HEADER_SIZE) == Packet->GetDataLen() - LH_NETEVENT_HEADER_SIZE)
 		return LH_OK;
 	return LH_ERROR;
 }
@@ -764,14 +745,14 @@ long LHNetEvent::GetNetGameTurn()
 {
 	if (GetType() != LH_NETEVENT_TYPE_MSERVE_SUPER_PACKET)
 		return LH_ERROR;
-	return Packet->GetDataPtr()[6];
+	return Packet->GetDataPtr()[LH_NETEVENT_HEADER_SIZE];
 }
 
 unsigned long LHNetEvent::GetNumberOfPlayerEvents()
 {
 	if (GetType() != LH_NETEVENT_TYPE_MSERVE_SUPER_PACKET)
 		return LH_ERROR;
-	return Packet->GetDataPtr()[7];
+	return Packet->GetDataPtr()[LH_NETEVENT_HEADER_SIZE + 1];
 }
 
 void LHNetEvent::SetUDPinfo(LHTransportInfo* transport_info)
@@ -780,9 +761,8 @@ void LHNetEvent::SetUDPinfo(LHTransportInfo* transport_info)
 		UDPInfo.Set(transport_info);
 }
 
-LH_RETURN LHNetEvent::DecodeDataPacket(LHNetEvent* net_event, unsigned long* param_2, void** data, int* data_length)
+LH_RETURN LHNetEvent::DecodeDataPacket(LHNetEvent* net_event, unsigned long* data_type, void** data, int* data_length)
 {
-	// The shared error tail is a goto in the original (both checks jump to one return block).
 	if (net_event == NULL)
 		goto fail;
 	if (net_event->GetType() != LH_NETEVENT_TYPE_MSERVE_CLIENT_DATA_PACKET)
@@ -790,5 +770,5 @@ LH_RETURN LHNetEvent::DecodeDataPacket(LHNetEvent* net_event, unsigned long* par
 	fail:
 		return LH_ERROR;
 	}
-	return net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_CLIENT_DATA_PACKET, param_2, data_length, data);
+	return net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_CLIENT_DATA_PACKET, data_type, data_length, data);
 }

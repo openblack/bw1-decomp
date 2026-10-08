@@ -91,8 +91,6 @@ public:
 	// BW1W120 10001950
 	void Set(LH_TRANSPORT_TYPE type, unsigned long length, void* data)
 	{
-		// The out-of-line copy compiles the same with either store order; the inlined
-		// copy in LHPOP3::OpenConnectionAsync stores the type first.
 		if (length == 0 || data != NULL)
 		{
 			this->type = type;

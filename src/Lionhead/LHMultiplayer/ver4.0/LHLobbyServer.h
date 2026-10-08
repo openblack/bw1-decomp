@@ -9,10 +9,18 @@
 
 #include "LHChannel.h"          /* For class LHChannel */
 #include "LHConnectionServer.h" /* For class LHConnectionServer */
-#include "LHNetUser.h"          /* For struct LH_USER_ID */
+#include "LHNetUser.h"          /* For struct LH_USER_ID, LH_MAX_LOBBY_NAME_LENGTH */
 #include "LHTransportInfo.h"    /* For class LHTransportInfo */
 
-// Forward Declares
+enum
+{
+	LH_LOBBYSERVER_IDLE_TIME = 15000,
+	LH_LOBBYSERVER_LOCAL_LOBBY_TIMEOUT = 30000,
+	LH_LOBBYSERVER_ADDRESS_REQUEST_WAIT = 600,
+	LH_LOBBYSERVER_MAX_ADDRESS_REPLY_DELAY = 200,
+	LH_LOBBYSERVER_MAX_NAME_SUFFIXES = 10,
+	LH_LOBBYSERVER_ERROR_GAME_CALLBACK_FAILED = 14,
+};
 
 class LHConnection;
 class LHLocalLobbyInfo;
@@ -21,11 +29,6 @@ class LHNetUser;
 class LHPlayer;
 struct LHMPServerStartInfo;
 
-// A player's answer to a mid-game-join request, and the overall result that
-// LHLobbyServerChannel::CheckMGJResponseComplete derives from all of them.
-// ProcessMGJResponse stores 2 for a true decoded flag and 1 for false; CheckMGJResponseComplete
-// reports 2 once nobody is pending and then sends the MServe connection details.
-// TODO: enumerator names fabricated.
 enum LH_MGJ_RESPONSE
 {
 	LH_MGJ_RESPONSE_NONE = 0x0,
@@ -34,9 +37,6 @@ enum LH_MGJ_RESPONSE
 	_LH_MGJ_RESPONSE_COUNT = 0x3
 };
 
-// The reason passed with LH_NETEVENT_TYPE_INTERNAL_LOBBY_NEW_LOCAL_LOBBY_LIST.
-// TODO: enumerator names fabricated; 0 follows UpdateLocalLobbyInfoDetails, 1 a removal and
-// 2 a newly discovered lobby.
 enum LH_LOBBYSERVER_EVENT
 {
 	LH_LOBBYSERVER_EVENT_UPDATED = 0x0,
@@ -45,34 +45,26 @@ enum LH_LOBBYSERVER_EVENT
 	_LH_LOBBYSERVER_EVENT_COUNT = 0x3
 };
 
-// The lobby server's per-player bookkeeping, allocated with LHPlayer::AllocSystemData(0x10)
-// in ProcessLobbyClientJoinChannel and reached through LHLobbyServerChannel::GetSysInfo.
-// TODO: type and member names fabricated.
 struct LHLobbyServerSysInfo
 {
 	LH_MGJ_RESPONSE MGJResponse;          /* 0x0 */
 	LHConnection*   Connection;           /* 0x4 */
-	int             GameRunning;          /* 0x8; set for every player by StartGameHouseKeeping */
-	int             FileTransferComplete; /* 0xc */
+	bool32_t        GameRunning;          /* 0x8 */
+	bool32_t        FileTransferComplete; /* 0xc */
 };
 static_assert(sizeof(LHLobbyServerSysInfo) == 0x10, "LHLobbyServerSysInfo size is incorrect");
 
-// Not exported. Created by FindOrCreateChannel when a client joins and by Create as the
-// DecodeListFromBuffer factory.
 class LHLobbyServerChannel : public LHChannel
 {
 public:
-	LHTransportInfo TransportInfo; /* 0x78; MServe address, copied by StartGameHouseKeeping */
-	// TODO: names fabricated for the next three members.
-	int           MServeStarted;    /* 0xec; encoded as one byte after the LHChannel fields */
-	unsigned long MServeID;         /* 0xf0 */
-	char          MServeName[0x40]; /* 0xf4; from LH_NETEVENT_TYPE_LOBBY_CLIENT_START_MSERVE_RESULT */
-	LH_USER_ID    MGJUser;          /* 0x134; LH_ALL_USERS when no mid-game join is in progress */
+	LHTransportInfo TransportInfo;                        /* 0x78 */
+	bool32_t        MServeStarted;                        /* 0xec */
+	unsigned long   MServeIdleTime;                       /* 0xf0 */
+	char            MServeName[LH_MAX_LOBBY_NAME_LENGTH]; /* 0xf4 */
+	LH_USER_ID      MGJUser;                              /* 0x134 */
 
 	// BW1W120 inlined BW1M119 inlined
 	LHLobbyServerChannel() { ClearAllData(); }
-
-	// Original DLL vtable order, 10050674.
 
 	// BW1W120 10011a20 BW1M119 010f0fd0 (LHCombined Release)
 	virtual unsigned long GetEncodedLength(unsigned long options, void* context);
@@ -82,17 +74,11 @@ public:
 	virtual unsigned char* DecodeFromBuffer(unsigned char* buffer);
 	// BW1W120 10011a90 BW1M119 010f0e50 (LHCombined Release)
 	virtual void ClearObject();
-	// The destructor is implicit (compiler-generated): the target's copy, pulled in by the scalar
-	// deleting destructor, is a bare jmp to ~LHChannel without the vptr store a user-written one has.
-	// BW1W120 10011620 BW1M119 010eca00 (LHCombined Release)
-	// ~LHLobbyServerChannel();
-
-	// Non-virtual methods
 
 	// BW1W120 10011060 BW1M119 010f2830 (LHCombined Release)
-	int CheckGameFileTransferComplete();
+	bool32_t CheckGameFileTransferComplete();
 	// BW1W120 10011630 BW1M119 010f1910 (LHCombined Release)
-	int MGJInProgress();
+	bool32_t MGJInProgress();
 	// BW1W120 10011650 BW1M119 010f17d0 (LHCombined Release)
 	void StartGameHouseKeeping(LHTransportInfo* transport_info, LHNetUser* user);
 	// BW1W120 100116f0 BW1M119 010f16f0 (LHCombined Release)
@@ -107,13 +93,8 @@ public:
 	LH_RETURN SendEventCopyToMGJUser(LHNetEvent* event);
 	// BW1W120 inlined BW1M119 010f2c00 (LHCombined Release)
 	LH_USER_ID GetMGJUSerID() { return MGJUser; }
-	// TODO: Mac reads the pointer through LHPlayer::GetSystemData (BW1M119 010f12e0), which
-	// LHPlayer.h does not declare yet.
 	// BW1W120 inlined BW1M119 010f4900 (LHCombined Release)
 	LHLobbyServerSysInfo* GetSysInfo(LHPlayer* player) { return (LHLobbyServerSysInfo*)player->SystemData; }
-
-	// Static methods
-
 	// BW1W120 inlined BW1M119 010f2020 (LHCombined Release)
 	static LHLobbyServerChannel* FindChannel(char* name, LHLinkedList<LHLobbyServerChannel*>* list)
 	{
@@ -133,31 +114,23 @@ static_assert(offsetof(LHLobbyServerChannel, MServeStarted) == 0xec, "LHLobbySer
 static_assert(offsetof(LHLobbyServerChannel, MGJUser) == 0x134, "LHLobbyServerChannel layout is incorrect");
 static_assert(sizeof(LHLobbyServerChannel) == 0x138, "LHLobbyServerChannel size is incorrect");
 
-// The lobby (channel/chat) server that LHLobby::StartInternalLobbyServer runs in-process.
-// Not exported: LHLobby.cpp constructs it inline and so emits its vtable (10050634), the
-// inline AddConnection, the destructor and the scalar deleting destructor.
 class LHLobbyServer : public LHConnectionServer
 {
 public:
-	// TODO: name fabricated; cleared by ClearAllData and otherwise unused in this TU.
-	unsigned long field_0x450;
-	// TODO: name fabricated; LHMPServerStartInfo+0x10, stored by Start.
-	unsigned long field_0x454;
-	// Sent in the greeting and the LAN broadcast; the computer name when Start got none.
-	char                                ServerName[0x40]; /* 0x458 */
-	LHLinkedList<LHLocalLobbyInfo*>     LocalLobbyList;   /* 0x498; other lobbies seen on the LAN */
-	LHLinkedList<LHLobbyServerChannel*> ChannelList;      /* 0x4a0 */
-	bool                                OffLan;           /* 0x4a8; set by TakeServerOffLan */
+	unsigned long                       Reserved;                             /* 0x450 */
+	unsigned long                       UserData;                             /* 0x454 */
+	char                                ServerName[LH_MAX_LOBBY_NAME_LENGTH]; /* 0x458 */
+	LHLinkedList<LHLocalLobbyInfo*>     LocalLobbyList;                       /* 0x498 */
+	LHLinkedList<LHLobbyServerChannel*> ChannelList;                          /* 0x4a0 */
+	bool                                OffLan;                               /* 0x4a8 */
 
 	// BW1W120 inlined BW1M119 inlined
 	LHLobbyServer() { ClearAllData(); }
-	// Emitted in LHLobby.cpp.
 	// BW1W120 1000d060 BW1M119 010ec790 (LHCombined Release)
 	virtual ~LHLobbyServer() { Shutdown(); }
 
 	// BW1W120 10011450 BW1M119 010f1df0 (LHCombined Release)
 	virtual void DoUnsolicitedProcessing();
-	// Emitted in LHLobby.cpp.
 	// BW1W120 1000d030 BW1M119 010f67a0 (LHCombined Release)
 	virtual LH_RETURN AddConnection(LHServerPlayer* player) { return LH_OK; }
 	// BW1W120 1000f5b0 BW1M119 010f5e80 (LHCombined Release)
@@ -175,8 +148,6 @@ public:
 	// BW1W120 1000f370 BW1M119 010f64b0 (LHCombined Release)
 	virtual void Shutdown();
 
-	// Non-virtual methods
-
 	// BW1W120 1000f270 BW1M119 010f6580 (LHCombined Release)
 	LH_RETURN Start(LHMPServerStartInfo* start_info, LH_OPERATING_MODE mode, LHConnection* parent_connection);
 	// BW1W120 1000f410 BW1M119 010f6440 (LHCombined Release)
@@ -193,7 +164,7 @@ public:
 	// BW1W120 1000f550 BW1M119 010f5f50 (LHCombined Release)
 	LH_RETURN SendEventCopyToAllRunningPlayersOnChannel(LHLobbyServerChannel* channel, LHNetEvent* event);
 	// BW1W120 1000f9c0 BW1M119 010f5460 (LHCombined Release)
-	int RemovePlayerFromChannel(LHServerPlayer* player, LHLobbyServerChannel* channel);
+	bool32_t RemovePlayerFromChannel(LHServerPlayer* player, LHLobbyServerChannel* channel);
 	// BW1W120 1000fb20 BW1M119 010f52d0 (LHCombined Release)
 	void CheckMGJStatus(LHLobbyServerChannel* channel, LHNetEvent* event);
 	// BW1W120 1000fbf0 BW1M119 010f51c0 (LHCombined Release)
@@ -221,7 +192,7 @@ public:
 	// BW1W120 100112f0 BW1M119 010f20b0 (LHCombined Release)
 	LHLocalLobbyInfo* GetNextLocalLobby(LHLocalLobbyInfo* lobby);
 	// BW1W120 10011330 BW1M119 010f1e60 (LHCombined Release)
-	LH_RETURN StartMServe(char* channel_name, unsigned long mserve_id, LHConnection* connection);
+	LH_RETURN StartMServe(char* channel_name, unsigned long idle_time, LHConnection* connection);
 	// BW1W120 inlined BW1M119 010f25e0 (LHCombined Release)
 	LHLobbyServerChannel* FindChannel(char* name) { return LHLobbyServerChannel::FindChannel(name, &ChannelList); }
 	// BW1W120 inlined BW1M119 010f4240 (LHCombined Release)
@@ -235,9 +206,6 @@ public:
 	}
 	// BW1W120 inlined BW1M119 010f2580 (LHCombined Release)
 	LHLinkedList<LHPlayer*>* GetPlayerList(LHLobbyServerChannel* channel) { return &channel->Players; }
-
-	// Static methods
-
 	// BW1W120 10011ab0 BW1M119 010f0d50 (LHCombined Release)
 	static unsigned long GetLobbyProtocolVersion();
 
@@ -283,7 +251,7 @@ private:
 	// BW1W120 10011180 BW1M119 010f2460 (LHCombined Release)
 	LH_RETURN ProcessLobbyClientRequestChannelUsers(LHConnection* connection, LHNetEvent* event);
 };
-static_assert(offsetof(LHLobbyServer, field_0x450) == 0x450, "LHLobbyServer layout is incorrect");
+static_assert(offsetof(LHLobbyServer, Reserved) == 0x450, "LHLobbyServer layout is incorrect");
 static_assert(offsetof(LHLobbyServer, LocalLobbyList) == 0x498, "LHLobbyServer layout is incorrect");
 static_assert(offsetof(LHLobbyServer, OffLan) == 0x4a8, "LHLobbyServer layout is incorrect");
 static_assert(sizeof(LHLobbyServer) == 0x4ac, "LHLobbyServer size is incorrect");

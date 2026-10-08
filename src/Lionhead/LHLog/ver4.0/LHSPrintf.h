@@ -25,7 +25,6 @@ public:
 
 static_assert(sizeof(LHSPrintf) == 0x401, "LHSPrintf size is incorrect");
 
-// Wide counterpart: the formatted text is the object itself.
 class LHSPrintfW
 {
 public:

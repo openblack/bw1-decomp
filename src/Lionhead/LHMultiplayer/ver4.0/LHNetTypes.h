@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stddef.h> /* For offsetof */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 #include <Lionhead/LHLib/ver5.0/LHTimer.h>
 #include "LHMultiplayerExport.h"
@@ -11,28 +13,20 @@
 #include "LHPacketisableObject.h" /* For LHPacketisableObject */
 #include "LHTransportInfo.h"      /* For LHTransportInfo */
 
-// Forward Declares
-
 class LHPlayer;
 
-// One lobby found on the LAN (LHLobby::LocalLobbyList, LHLobbyServer::LocalLobbyList). Lobby
-// servers broadcast it to each other (LH_NETEVENT_TYPE_BROADCAST_LOBBY_ADDRESS).
-// Its methods live in LHNetTypes.cpp.
-// The whole class is exported: its constructors, destructor, operator= and vtable are DLL exports.
 class LH_MULTIPLAYER_API LHLocalLobbyInfo : public LHPacketisableObject
 {
 public:
-	char                    Name[0x41];         /* 0x4 */
-	long                    LastHeardTime;      /* 0x48; Timer milliseconds */
-	LHTransportInfo         ConnectionAcceptor; /* 0x4c */
-	LHTransportInfo         BroadcastListener;  /* 0xc0 */
-	LH_USER_ID::CATEGORY    Category;           /* 0x134 */
-	LHLinkedList<LHPlayer*> Players;            /* 0x138 */
-	int                     NumberOfPlayers;    /* 0x140 */
+	char                    Name[LH_MAX_LOBBY_NAME_LENGTH + 1]; /* 0x4 */
+	long                    LastHeardTime;                      /* 0x48 */
+	LHTransportInfo         ConnectionAcceptor;                 /* 0x4c */
+	LHTransportInfo         BroadcastListener;                  /* 0xc0 */
+	LH_USER_ID::CATEGORY    Category;                           /* 0x134 */
+	LHLinkedList<LHPlayer*> Players;                            /* 0x138 */
+	bool32_t                GameStarted;                        /* 0x140 */
 
 #ifdef LH_MULTIPLAYER_EXPORTS
-	// TODO: hidden from game TUs like LHConnection::RegisteredGame (static data members shift the
-	// game's _$E numbering).
 	// BW1W120 10069468 BW1M119 01357824 (LHCombined Release)
 	static LHTimer Timer;
 #endif
@@ -41,13 +35,12 @@ public:
 	LHLocalLobbyInfo() { ClearAllData(); }
 	// BW1W120 10002610 BW1M119 inlined
 	LHLocalLobbyInfo(char* name, LHTransportInfo* connection_acceptor, LHTransportInfo* broadcast_listener,
-	                 LHLinkedList<LHPlayer*>* players, LH_USER_ID::CATEGORY category, int number_of_players)
+	                 LHLinkedList<LHPlayer*>* players, LH_USER_ID::CATEGORY category, bool32_t game_started)
 	{
-		Initialise(name, connection_acceptor, broadcast_listener, players, category, number_of_players);
+		Initialise(name, connection_acceptor, broadcast_listener, players, category, game_started);
 	}
 	// BW1W120 10017460 BW1M119 01102420 (LHCombined Release)
 	LHLocalLobbyInfo(LHLocalLobbyInfo* other);
-	// Non-virtual.
 	// BW1W120 10017730 BW1M119 01101fc0 (LHCombined Release)
 	~LHLocalLobbyInfo();
 
@@ -55,9 +48,9 @@ public:
 	void ClearAllData();
 	// BW1W120 10017520 BW1M119 011022a0 (LHCombined Release)
 	void Initialise(char* name, LHTransportInfo* connection_acceptor, LHTransportInfo* broadcast_listener,
-	                LHLinkedList<LHPlayer*>* players, LH_USER_ID::CATEGORY category, int number_of_players);
+	                LHLinkedList<LHPlayer*>* players, LH_USER_ID::CATEGORY category, bool32_t game_started);
 	// BW1W120 100175d0 BW1M119 01102090 (LHCombined Release)
-	int UpdateLocalLobbyInfoDetails(LHLocalLobbyInfo* other);
+	bool32_t UpdateLocalLobbyInfoDetails(LHLocalLobbyInfo* other);
 
 	// BW1W120 100177e0 BW1M119 01101ed0 (LHCombined Release)
 	virtual unsigned long GetEncodedLength(unsigned long options, void* context);
@@ -72,7 +65,6 @@ static_assert(offsetof(LHLocalLobbyInfo, LastHeardTime) == 0x48, "LHLocalLobbyIn
 static_assert(offsetof(LHLocalLobbyInfo, Category) == 0x134, "LHLocalLobbyInfo category offset is incorrect");
 static_assert(sizeof(LHLocalLobbyInfo) == 0x144, "LHLocalLobbyInfo size is incorrect");
 
-// Defined in LHNetUtils.cpp.
 // BW1W120 10018370 BW1M119 01106230 (LHCombined Release)
 LH_MULTIPLAYER_API LHLocalLobbyInfo* LHNetFindLocalLobby(LHLinkedList<LHLocalLobbyInfo*>* list,
                                                          LHTransportInfo*                 transport_info);

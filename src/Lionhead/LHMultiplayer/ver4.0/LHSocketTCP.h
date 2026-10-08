@@ -2,30 +2,24 @@
 #define BW1_DECOMP_LH_SOCKET_TCP_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LHLib/ver5.0/LHTimer.h>
 #include "LHSocket.h" /* For class LHSocket */
-
-// Forward Declares
 
 class LHPacket;
 class LHTransportInfo;
 
-// TODO: values unknown; only named by CheckActivity's Mac signature.
 enum LH_ACTIVITY_TYPE
 {
-	LH_ACTIVITY_TYPE_0 = 0x0,
+	LH_ACTIVITY_TYPE_READ = 0,
+	LH_ACTIVITY_TYPE_WRITE = 1,
 };
 
-// TODO: contents unknown; the implicit operator= copies it as one struct, and the
-// constructor's speed timer lives in its last 16 bytes.
-struct LHSocketTCPStats
+enum
 {
-	uint8_t       field_0x0[0x100];
-	unsigned long StartTick; /* 0x100 */
-	long          Elapsed;
-	float         Speed;
-	float         PreviousSpeed;
+	LH_SOCKET_TCP_WRITE_BUFFER_SIZE = 0x20004,
+	LH_SOCKET_TCP_READ_BUFFER_SIZE = 0x10002,
+	LH_SOCKET_TCP_PACKET_BUFFER_SIZE = 0x20004,
 };
 
 class LH_MULTIPLAYER_API LHSocketTCP : public LHSocket
@@ -51,7 +45,7 @@ public:
 	// BW1W120 10020900 BW1M119 01114300 (LHCombined Release)
 	virtual LH_RETURN Send(void* data, long size);
 	// BW1W120 10020b80 BW1M119 01113db0 (LHCombined Release)
-	virtual LH_RETURN Receive(void* data, long size, int param_3);
+	virtual LH_RETURN Receive(void* data, long size, int flags);
 	// BW1W120 100210c0 BW1M119 01113400 (LHCombined Release)
 	virtual LH_RETURN SendPacket(LHPacket* packet);
 	// BW1W120 10021120 BW1M119 01113240 (LHCombined Release)
@@ -90,9 +84,9 @@ public:
 	LH_RETURN AcceptConnections(unsigned short port);
 	// BW1W120 10021350 BW1M119 01112e00 (LHCombined Release)
 	LH_RETURN GetDatagram(void* data, unsigned long size, unsigned long* received, LHTransportInfo* transport_info,
-	                      unsigned long param_5);
+	                      unsigned long timeout);
 	// BW1W120 10021610 BW1M119 01112890 (LHCombined Release)
-	LH_RETURN GetNewConnectedSocket(LHSocketTCP** socket, unsigned long param_2);
+	LH_RETURN GetNewConnectedSocket(LHSocketTCP** socket, unsigned long timeout);
 	// BW1W120 10021be0 BW1M119 01111eb0 (LHCombined Release)
 	LH_RETURN GetSocketInfo(LHTransportInfo* transport_info, int local);
 	// BW1W120 10021d80 BW1M119 01111b80 (LHCombined Release)
@@ -109,20 +103,18 @@ public:
 	// BW1W120 10009110
 	bool IsConnected() { return Socket != INVALID_SOCKET; }
 
-	// The implicit copy members (10009120/10009230, emitted in LHHttp.cpp) fix these
-	// boundaries: operator= copies each array byte by byte and the stats struct as a block.
-	char             WriteBuffer[0x20004];  /* 0x2c */
-	char             ReadBuffer[0x10002];   /* 0x20030 */
-	char*            ReadPointer;           /* 0x30034 */
-	char             PacketBuffer[0x20004]; /* 0x30038 */
-	char*            PacketStart;           /* 0x5003c */
-	char*            PacketEnd;             /* 0x50040 */
-	short            field_0x50044;
-	unsigned long    field_0x50048;
-	unsigned long    field_0x5004c;
-	LHSocketTCPStats Stats;  /* 0x50050 */
-	void*            Signal; /* 0x50160 */
-	bool             field_0x50164;
+	char          WriteBuffer[LH_SOCKET_TCP_WRITE_BUFFER_SIZE];   /* 0x2c */
+	char          ReadBuffer[LH_SOCKET_TCP_READ_BUFFER_SIZE];     /* 0x20030 */
+	char*         ReadPointer;                                    /* 0x30034 */
+	char          PacketBuffer[LH_SOCKET_TCP_PACKET_BUFFER_SIZE]; /* 0x30038 */
+	char*         PacketStart;                                    /* 0x5003c */
+	char*         PacketEnd;                                      /* 0x50040 */
+	short         ReadPacketSize;                                 /* 0x50044 */
+	bool32_t      ReadPacketComplete;                             /* 0x50048 */
+	unsigned long LastReceiveTime;                                /* 0x5004c */
+	LHTimer       Timer;                                          /* 0x50050 */
+	void*         Signal;                                         /* 0x50160 */
+	bool          SignalCreated;                                  /* 0x50164 */
 };
 static_assert(sizeof(LHSocketTCP) == 0x50168, "LHSocketTCP size is incorrect");
 

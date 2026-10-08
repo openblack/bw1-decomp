@@ -4,19 +4,16 @@
 #include <assert.h> /* For static_assert */
 #include <string.h> /* For memset */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>
 #include "LHMultiplayerExport.h"
-
-// Forward Declares
 
 class LHNetEvent;
 class LHPlayer;
 class LHSession;
 
-// Where a session's packets come from. LHMPPacketSave::Open creates the save file for 1 and
-// opens an existing one for 2.
-// TODO: enumerator names fabricated.
 enum LH_PACKET_SOURCE
 {
 	LH_PACKET_SOURCE_NETWORK = 0x0,
@@ -24,43 +21,36 @@ enum LH_PACKET_SOURCE
 	LH_PACKET_SOURCE_PLAYBACK = 0x2,
 };
 
-// Header of a saved packet file.
-// TODO: layout only partly known; LHMPPacketSave::Open sets NumberOfPlayers from the session.
 struct LHReplayPacketInfo
 {
-	unsigned long field_0x0;
-	unsigned long field_0x4;
-	unsigned long NumberOfPlayers; /* 0x8 */
+	unsigned long NumberOfSuperPackets; /* 0x0 */
+	unsigned long OutOfSyncGameTurn;    /* 0x4 */
+	unsigned long NumberOfPlayers;      /* 0x8 */
 };
 
-// Records a session's incoming events to a file, or plays them back. Embedded in every
-// LHLobbyChannel (+0x90).
-// The whole class is exported: its constructor, destructor and operator= are DLL exports.
 class LH_MULTIPLAYER_API LHMPPacketSave
 {
 public:
 	LHLinkedList<LHPlayer*> OriginalPlayerList; /* 0x0 */
-	void*                   File;               /* 0x8; HANDLE */
+	void*                   File;               /* 0x8 */
 	LH_PACKET_SOURCE        Source;             /* 0xc */
-	int                     EventUnread;        /* 0x10 */
-	int                     Opened;             /* 0x14 */
+	bool32_t                EventUnread;        /* 0x10 */
+	bool32_t                Opened;             /* 0x14 */
 	LHReplayPacketInfo      Info;               /* 0x18 */
 
-	// TODO: Mac clears the first word of Info before clearing the whole object; how the original
-	// spelled that is unknown.
 	// BW1W120 100024f0 BW1M119 010ebfd0 (LHCombined Release)
 	LHMPPacketSave()
 	{
-		memset(&Info, 0, sizeof(Info.field_0x0));
+		memset(&Info, 0, sizeof(Info.NumberOfSuperPackets));
 		memset(this, 0, sizeof(*this));
 	}
 	// BW1W120 10002560 BW1M119 010ebf60 (LHCombined Release)
 	~LHMPPacketSave() {}
 
 	// BW1W120 10002520 BW1M119 inlined
-	void UnReadEvent() { EventUnread = 1; }
+	void UnReadEvent() { EventUnread = true; }
 	// BW1W120 10002530 BW1M119 inlined
-	int IsOpen() { return Opened; }
+	bool32_t IsOpen() { return Opened; }
 
 	// BW1W120 10015ab0 BW1M119 010ff2a0 (LHCombined Release)
 	void Open(LH_PACKET_SOURCE source, LHSession* session);

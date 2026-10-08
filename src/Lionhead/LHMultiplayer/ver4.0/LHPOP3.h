@@ -10,20 +10,40 @@
 
 class LHSocketTCP;
 
-// Progress of one asynchronous POP3 exchange; callers start at 0 and poll until a call
-// returns something other than LH_FAIL.
-// TODO: enumerator names unknown. 1 is never used.
+enum
+{
+	LH_POP3_DEFAULT_PORT = 110,
+	LH_POP3_DEFAULT_TIMEOUT = 45,
+	LH_POP3_SERVER_LENGTH = 200,
+	LH_POP3_USER_LENGTH = 150,
+	LH_POP3_PASSWORD_LENGTH = 150,
+	LH_POP3_UIDL_LENGTH = 50,
+	LH_POP3_FROM_LENGTH = 200,
+	LH_POP3_SUBJECT_LENGTH = 200,
+	LH_POP3_LINE_LENGTH = 1024,
+	LH_POP3_RECEIVE_SIZE = 1024,
+	LH_POP3_COMMAND_BUFFER_SIZE = 2048,
+	LH_POP3_REPLY_LENGTH = 200,
+	LH_POP3_DATE_LENGTH = 200,
+};
+
 enum LH_POP3_ACTION
 {
 	LH_POP3_ACTION_START = 0,
 	LH_POP3_ACTION_SEND = 2,
 	LH_POP3_ACTION_DONE = 3,
 	LH_POP3_ACTION_RECEIVED = 4,
-	LH_POP3_ACTION_SEND_2 = 5,
-	LH_POP3_ACTION_RECEIVED_2 = 6,
+	LH_POP3_ACTION_SEND_NEXT = 5,
+	LH_POP3_ACTION_RECEIVED_NEXT = 6,
 };
 
-// Header field LHPOP3::ParseLine extracts.
+enum LH_POP3_STATE
+{
+	LH_POP3_STATE_IDLE = 0,
+	LH_POP3_STATE_WAITING = 2,
+	LH_POP3_STATE_DONE = 3,
+};
+
 enum LH_POP3_PARSE
 {
 	LH_POP3_PARSE_FROM = 0,
@@ -35,11 +55,11 @@ class LH_MULTIPLAYER_API LHPOP3Mail
 public:
 	long Number;
 	long Size;
-	char UIDL[50];     /* 0x8 */
-	char From[200];    /* 0x3a */
-	char Subject[200]; /* 0x102 */
-	bool New;          /* 0x1ca */
-	long Date;         /* 0x1cc */
+	char UIDL[LH_POP3_UIDL_LENGTH];       /* 0x8 */
+	char From[LH_POP3_FROM_LENGTH];       /* 0x3a */
+	char Subject[LH_POP3_SUBJECT_LENGTH]; /* 0x102 */
+	bool New;                             /* 0x1ca */
+	long Date;                            /* 0x1cc */
 
 	// BW1W120 10011b90
 	LHPOP3Mail()
@@ -55,7 +75,6 @@ public:
 };
 static_assert(sizeof(LHPOP3Mail) == 0x1d0, "LHPOP3Mail size is incorrect");
 
-// One line of a server reply, as split by LHPOP3::ScanLines.
 class LH_MULTIPLAYER_API LHPOP3Line
 {
 public:
@@ -81,26 +100,26 @@ static_assert(sizeof(LHPOP3Line) == 0x8, "LHPOP3Line size is incorrect");
 class LH_MULTIPLAYER_API LHPOP3
 {
 public:
-	char                      Server[200];
-	long                      Port;          /* 0xc8 */
-	char                      User[150];     /* 0xcc */
-	char                      Password[150]; /* 0x162 */
-	long                      Timeout;       /* 0x1f8 */
-	LHSocketTCP*              Socket;        /* 0x1fc */
-	bool                      field_0x200;
-	unsigned long             NrOfNewMails;   /* 0x204 */
-	unsigned long             NrOfAllMails;   /* 0x208 */
-	long                      CommandState;   /* 0x20c */
-	long                      ConnectState;   /* 0x210 */
-	LHLinkedList<LHPOP3Line*> Lines;          /* 0x214 */
-	char                      Received[1024]; /* 0x21c */
-	unsigned long             ReceivedLength; /* 0x61c */
-	char*                     Response;       /* 0x620 */
-	LH_RETURN                 SubjectStatus;  /* 0x624 */
-	char                      From[1024];     /* 0x628 */
-	char                      Subject[1024];  /* 0xa28 */
-	long                      FromLength;     /* 0xe28 */
-	long                      SubjectLength;  /* 0xe2c */
+	char                      Server[LH_POP3_SERVER_LENGTH];
+	long                      Port;                              /* 0xc8 */
+	char                      User[LH_POP3_USER_LENGTH];         /* 0xcc */
+	char                      Password[LH_POP3_PASSWORD_LENGTH]; /* 0x162 */
+	long                      Timeout;                           /* 0x1f8 */
+	LHSocketTCP*              Socket;                            /* 0x1fc */
+	bool                      Connected;                         /* 0x200 */
+	unsigned long             NrOfNewMails;                      /* 0x204 */
+	unsigned long             NrOfAllMails;                      /* 0x208 */
+	LH_POP3_STATE             CommandState;                      /* 0x20c */
+	LH_POP3_STATE             ConnectState;                      /* 0x210 */
+	LHLinkedList<LHPOP3Line*> Lines;                             /* 0x214 */
+	char                      Received[LH_POP3_LINE_LENGTH];     /* 0x21c */
+	unsigned long             ReceivedLength;                    /* 0x61c */
+	char*                     Response;                          /* 0x620 */
+	LH_RETURN                 SubjectStatus;                     /* 0x624 */
+	char                      From[LH_POP3_LINE_LENGTH];         /* 0x628 */
+	char                      Subject[LH_POP3_LINE_LENGTH];      /* 0xa28 */
+	long                      FromLength;                        /* 0xe28 */
+	long                      SubjectLength;                     /* 0xe2c */
 
 	// BW1W120 1001a9c0 BW1M119 0110a160 (LHCombined Release)
 	LHPOP3();
@@ -137,5 +156,18 @@ private:
 	                               long* remainder_length);
 };
 static_assert(sizeof(LHPOP3) == 0xe30, "LHPOP3 size is incorrect");
+
+// BW1W120 1001a360 BW1M119 0110acd0 (LHCombined Release)
+LH_RETURN lookforfirstchars(char* text, char* prefix);
+// BW1W120 1001a3e0 BW1M119 0110abc0 (LHCombined Release)
+LH_RETURN qdec(char* text, char* output, long* length);
+// BW1W120 1001a460 BW1M119 0110a980 (LHCombined Release)
+LH_RETURN base64dec(char* text, char* output, long* length);
+// BW1W120 1001a590 BW1M119 0110a820 (LHCombined Release)
+LH_RETURN lookfordecoding(char* text, char* output, long* length);
+// BW1W120 1001a650 BW1M119 0110a330 (LHCombined Release)
+LH_RETURN LHParseMailDate(char* line, long* date);
+// BW1W120 1001a990 BW1M119 0110a260 (LHCombined Release)
+LHPOP3Mail* GetLastMail(LHLinkedList<LHPOP3Mail*>& mails);
 
 #endif /* BW1_DECOMP_LH_POP3_INCLUDED_H */

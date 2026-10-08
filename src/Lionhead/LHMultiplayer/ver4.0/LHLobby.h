@@ -3,6 +3,9 @@
 
 #include <assert.h> /* For static_assert */
 #include <stddef.h> /* For NULL, offsetof */
+#include <stdlib.h> /* For _MAX_PATH */
+
+#include <re_common.h> /* For bool32_t */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 #include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
@@ -16,7 +19,6 @@
 #include "LHNetUser.h"       /* For struct LH_USER_ID */
 #include "LHTransportInfo.h" /* For class LHTransportInfo */
 
-// Used by the game's multiplayer front end (MPFEConnectionStatus).
 enum LOBBY_TYPE
 {
 	LOBBY_TYPE_INTERNET = 0x0,
@@ -24,35 +26,24 @@ enum LOBBY_TYPE
 	_LOBBY_TYPE_COUNT = 0x2
 };
 
-// How LHLobby::ConnectToChannel joins a channel; sent to the lobby server with the join request.
-// TODO: enumerator names fabricated.
 enum LH_NET_CHANNEL_MODE
 {
-	LH_NET_CHANNEL_MODE_0 = 0x0,
-	LH_NET_CHANNEL_MODE_1 = 0x1,
+	LH_NET_CHANNEL_MODE_LOBBY = 0x0,
+	LH_NET_CHANNEL_MODE_GAME = 0x1,
 };
 
-// Why the last LH_NETEVENT_TYPE_LOBBY_PLAYER_LIST was sent (LHLobby::GetLastJoinChannelInfo).
-// For a nonzero event ProcessLobbyPlayerList finds the player in the channel's previous list.
-// TODO: enumerator names fabricated. Also defined by LHSession.h, hence the guard.
-#ifndef BW1_DECOMP_LH_PLAYER_EVENT_DEFINED
-#define BW1_DECOMP_LH_PLAYER_EVENT_DEFINED
 enum LH_PLAYER_EVENT
 {
 	LH_PLAYER_EVENT_JOINED = 0x0,
 	LH_PLAYER_EVENT_LEFT = 0x1,
 };
-#endif
 
-// Answer of the game's mid-game-join callback (LHLobby::MGJCallback).
-// TODO: enumerator names fabricated.
 enum LH_MGJ_CALLBACK_RETURN
 {
 	LH_MGJ_CALLBACK_RETURN_REFUSE = 0x0,
 	LH_MGJ_CALLBACK_RETURN_ACCEPT = 0x1,
+	LH_MGJ_CALLBACK_RETURN_SAVES_COMPLETE = 0x2,
 };
-
-// Forward Declares
 
 class LHLobby;
 class LHLobbyServer;
@@ -63,20 +54,16 @@ class LHPlayer;
 class LHSession;
 struct LHMPServerStartInfo;
 
-// A channel as seen by a lobby client. Its methods live in LHLobby.cpp.
-// The whole class is exported: its constructors, operator= and vtable are DLL exports.
 class LH_MULTIPLAYER_API LHLobbyChannel : public LHChannel
 {
 public:
 	LHLobby*         Lobby;                 /* 0x78 */
 	LHSession*       Session;               /* 0x7c */
-	LHMessageServer* InternalMessageServer; /* 0x80; this host's message server for the channel */
-	// Set by LH_NETEVENT_TYPE_LOBBY_USER_FILES_TRANSFER_COMPLETE; tested by LHLobby::CheckSessionReady.
-	int FileTransferComplete; /* 0x84 */
-	// TODO: name fabricated; a byte from LH_NETEVENT_TYPE_LOBBY_PLAYER_LIST.
-	int              field_0x88;
-	LH_PACKET_SOURCE PacketSource; /* 0x8c */
-	LHMPPacketSave   PacketSave;   /* 0x90 */
+	LHMessageServer* InternalMessageServer; /* 0x80 */
+	bool32_t         FileTransferComplete;  /* 0x84 */
+	bool32_t         MServeStarted;         /* 0x88 */
+	LH_PACKET_SOURCE PacketSource;          /* 0x8c */
+	LHMPPacketSave   PacketSave;            /* 0x90 */
 
 	// BW1W120 10002950 BW1M119 inlined
 	LHLobbyChannel() { ClearAllData(); }
@@ -116,38 +103,31 @@ public:
 	// BW1W120 1000e890 BW1M119 010ebd10 (LHCombined Release)
 	static LHLobbyChannel* FindOrCreateChannel(char* name, LHLobby* lobby, LHLinkedList<LHLobbyChannel*>* list);
 	// BW1W120 1000e980 BW1M119 010ebc40 (LHCombined Release)
-	LH_RETURN StartGame(unsigned long param_1, unsigned long length, void* data);
+	LH_RETURN StartGame(unsigned long idle_time, unsigned long length, void* data);
 	// BW1W120 1000e9c0 BW1M119 010ebba0 (LHCombined Release)
-	void RequestMGJ(int param_1);
+	void RequestMGJ(bool32_t ask_players);
 	// BW1W120 1000ea00 BW1M119 010ebb40 (LHCombined Release)
-	int MGJInProgress();
+	bool32_t MGJInProgress();
 	// BW1W120 1000ea20 BW1M119 010eba80 (LHCombined Release)
-	LH_RETURN SendMGJResponse(int accept, LH_USER_ID user_id, char* reason);
+	LH_RETURN SendMGJResponse(bool32_t accept, LH_USER_ID user_id, char* reason);
 	// BW1W120 1000ea70 BW1M119 010eb990 (LHCombined Release)
-	LH_RETURN ChatOnChannel(void* data, unsigned long length, LH_USER_ID user_id, bool param_4);
+	LH_RETURN ChatOnChannel(void* data, unsigned long length, LH_USER_ID user_id, bool flag);
 };
 static_assert(offsetof(LHLobbyChannel, PacketSave) == 0x90, "LHLobbyChannel packet save offset is incorrect");
 static_assert(sizeof(LHLobbyChannel) == 0xb4, "LHLobbyChannel size is incorrect");
 
-// A lobby client connection. LHLobby also owns the process-wide lobby state: the internal (LAN)
-// lobby server, the list of lobbies seen on the LAN and the players on them.
-// The whole class is exported: its constructors, operator= and vtable are DLL exports.
 class LH_MULTIPLAYER_API LHLobby : public LHConnection
 {
 public:
-	unsigned long                       ServerProtocolVersion;           /* 0x90; from the lobby greeting */
-	LHLinkedList<LHLobbyChannel*>       Channels;                        /* 0x94 */
-	LHLobby*                            GlobalLobby;                     /* 0x9c */
-	unsigned short                      LastJoinChannelPlayerName[0x31]; /* 0xa0 */
-	LH_PLAYER_EVENT                     LastJoinEvent;                   /* 0x104 */
-	LH_USER_ID                          LastJoinUserID;                  /* 0x108 */
-	LHLinkedList<LHLobbyServerChannel*> ServerChannels; /* 0x10c; LH_NETEVENT_TYPE_LOBBY_CHANNEL_LIST_INFO */
+	unsigned long                       LobbyProtocolVersion;                              /* 0x90 */
+	LHLinkedList<LHLobbyChannel*>       Channels;                                          /* 0x94 */
+	LHLobby*                            GlobalLobby;                                       /* 0x9c */
+	wchar_t                             LastJoinChannelPlayerName[LH_MAX_NAME_LENGTH + 1]; /* 0xa0 */
+	LH_PLAYER_EVENT                     LastJoinEvent;                                     /* 0x104 */
+	LH_USER_ID                          LastJoinUserID;                                    /* 0x108 */
+	LHLinkedList<LHLobbyServerChannel*> ServerChannels;                                    /* 0x10c */
 
 #ifdef LH_MULTIPLAYER_EXPORTS
-	// TODO: hidden from game TUs like LHConnection::RegisteredGame: each static data member
-	// declaration shifts the game's _$E numbering. The game does import GameRunning, UserData,
-	// UserDataLen, MGJCallback, SendFullChecksum, GameFile, UserFile, ConnectedLobbyName and
-	// InternalLobbyServerConnection, so its view of this class must have declared them somehow.
 	// BW1W120 10068b48 BW1M119 013566c0 (LHCombined Release)
 	static bool GameRunning;
 	// BW1W120 10068b4c BW1M119 013566c4 (LHCombined Release)
@@ -161,15 +141,15 @@ public:
 	// BW1W120 10068b5c BW1M119 013566d4 (LHCombined Release)
 	static LH_OPERATING_MODE MessageServerMode;
 	// BW1W120 10068b60 BW1M119 013566d8 (LHCombined Release)
-	static int SendFullChecksum;
+	static bool32_t SendFullChecksum;
 	// BW1W120 10068b64 BW1M119 013566dc (LHCombined Release)
-	static int RunMessageServerOnThisHost;
+	static bool32_t RunMessageServerOnThisHost;
 	// BW1W120 10068b68 BW1M119 013566e0 (LHCombined Release)
-	static char GameFile[0x104];
+	static char GameFile[_MAX_PATH];
 	// BW1W120 10068c70 BW1M119 01356ae4 (LHCombined Release)
-	static char UserFile[0x104];
+	static char UserFile[_MAX_PATH];
 	// BW1W120 10068d98 BW1M119 01356ee8 (LHCombined Release)
-	static char ConnectedLobbyName[0x41];
+	static char ConnectedLobbyName[LH_MAX_LOBBY_NAME_LENGTH + 1];
 
 private:
 	// BW1W120 10068d78 BW1M119 01356f2c (LHCombined Release)
@@ -187,7 +167,7 @@ private:
 	// BW1W120 10068d84 BW1M119 01356fcc (LHCombined Release)
 	static LHLobbyServer* InternalLobbyServer;
 	// BW1W120 10068d88 BW1M119 01356fd0 (LHCombined Release)
-	static int InternalLobbyServerRunning;
+	static bool32_t InternalLobbyServerRunning;
 
 public:
 	// BW1W120 10068d8c BW1M119 01356fd4 (LHCombined Release)
@@ -195,7 +175,6 @@ public:
 #endif
 
 private:
-	// Original DLL vtable order, 10050314: ProcessEvent, deleting destructor, Close, LHConnection::Read.
 	// BW1W120 1000d0b0 BW1M119 010ef4a0 (LHCombined Release)
 	virtual LH_RETURN ProcessEvent(LHNetEvent* net_event);
 
@@ -207,8 +186,6 @@ public:
 
 	// BW1W120 1000c8e0 BW1M119 010f0390 (LHCombined Release)
 	LHLobby();
-
-	// Inline members, emitted in LHChannel.cpp.
 
 private:
 	// BW1W120 10002cb0 BW1M119 inlined
@@ -241,7 +218,7 @@ public:
 	// BW1W120 10002d70 BW1M119 inlined
 	LHLobbyChannel* GetChannel(LHNetEvent* net_event) { return FindChannel(net_event->GetChannelName()); }
 	// BW1W120 10002d90 BW1M119 inlined
-	void GetLastJoinChannelInfo(unsigned short** name, LH_PLAYER_EVENT* event)
+	void GetLastJoinChannelInfo(wchar_t** name, LH_PLAYER_EVENT* event)
 	{
 		*name = LastJoinChannelPlayerName;
 		*event = LastJoinEvent;
@@ -250,10 +227,10 @@ public:
 	LH_USER_ID GetLastJoinUserID() { return LastJoinUserID; }
 #ifdef LH_MULTIPLAYER_EXPORTS
 	// BW1W120 10002dc0 BW1M119 inlined
-	int IsInternalLobbyConnection() { return this == InternalLobbyServerConnection; }
+	bool32_t IsInternalLobbyConnection() { return this == InternalLobbyServerConnection; }
 #endif
 	// BW1W120 10002dd0 BW1M119 inlined
-	int IsGlobalLobbyConnection() { return GetConnectedUserID().IsGlobal(); }
+	bool32_t IsGlobalLobbyConnection() { return GetConnectedUserID().IsGlobal(); }
 	// BW1W120 10002df0 BW1M119 inlined
 	unsigned long GetNumberOfChannels() { return Channels.count; }
 #ifdef LH_MULTIPLAYER_EXPORTS
@@ -321,22 +298,23 @@ private:
 	// BW1W120 1000d5b0 BW1M119 010eec80 (LHCombined Release)
 	LH_RETURN ProcessLobbyStartMServe(LHNetEvent* net_event);
 	// BW1W120 1000d670 BW1M119 010eea90 (LHCombined Release)
-	LH_RETURN StartInternalMessageServer(LHLobbyChannel* channel, unsigned long param_2, LH_OPERATING_MODE mode,
-	                                     unsigned long game_turn, unsigned short player_names[][0x30],
+	LH_RETURN StartInternalMessageServer(LHLobbyChannel* channel, unsigned long idle_time, LH_OPERATING_MODE mode,
+	                                     unsigned long game_turn, wchar_t player_names[][LH_MAX_NAME_LENGTH],
 	                                     LH_USER_ID player_ids[]);
 
 public:
 	// BW1W120 1000d750 BW1M119 010ee1a0 (LHCombined Release)
-	static LHMessageServer* StartInternalMessageServer(LHNetUser* user, char* name, unsigned long param_3,
-	                                                   unsigned long param_4, LH_OPERATING_MODE mode,
-	                                                   unsigned long game_turn, unsigned short player_names[][0x30],
-	                                                   LH_USER_ID player_ids[]);
+	static LHMessageServer* StartInternalMessageServer(LHNetUser* user, char* name, unsigned long num_players,
+	                                                   unsigned long idle_time, LH_OPERATING_MODE mode,
+	                                                   unsigned long game_turn,
+	                                                   wchar_t       player_names[][LH_MAX_NAME_LENGTH],
+	                                                   LH_USER_ID    player_ids[]);
 
 private:
 	// BW1W120 1000dbd0 BW1M119 010ee0c0 (LHCombined Release)
 	LH_RETURN ProcessLobbyUserFile(LHNetEvent* net_event);
 	// BW1W120 1000dc50 BW1M119 010edfe0 (LHCombined Release)
-	LH_RETURN SendStartMServeResult(char* channel_name, int success, LHTransportInfo* transport_info,
+	LH_RETURN SendStartMServeResult(char* channel_name, bool32_t success, LHTransportInfo* transport_info,
 	                                LH_OPERATING_MODE mode);
 	// BW1W120 1000dca0 BW1M119 010eda60 (LHCombined Release)
 	LH_RETURN ProcessLobbyConnectToMServe(LHNetEvent* net_event);
@@ -372,7 +350,7 @@ public:
 	static LHLocalLobbyInfo* FindLocalLobby(char* name);
 	// BW1W120 1000ec70 BW1M119 010eb250 (LHCombined Release)
 	LH_RETURN GetChatOnChannelInfo(LHNetEvent* net_event, LHLobbyChannel** channel, LHPlayer** player, void** data,
-	                               int* is_private);
+	                               bool32_t* is_private);
 	// BW1W120 1000ed20 BW1M119 010eb100 (LHCombined Release)
 	LH_RETURN GetChatDataLength(LHNetEvent* net_event, unsigned long* length);
 	// BW1W120 1000eda0 BW1M119 010eb0a0 (LHCombined Release)
@@ -393,8 +371,6 @@ public:
 static_assert(offsetof(LHLobby, Channels) == 0x94, "LHLobby channel list offset is incorrect");
 static_assert(offsetof(LHLobby, LastJoinEvent) == 0x104, "LHLobby join event offset is incorrect");
 static_assert(sizeof(LHLobby) == 0x114, "LHLobby size is incorrect");
-
-// Inline members of LHLobbyChannel that need the complete LHLobby.
 
 // BW1W120 10002930 BW1M119 inlined
 inline LH_USER_ID LHLobbyChannel::GetUserID()

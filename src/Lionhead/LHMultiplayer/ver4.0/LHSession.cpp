@@ -16,14 +16,24 @@
 #include "LHPlayer.h"
 #include "LHTransportInfo.h"
 
-// The last ten super packets and their super packet numbers, kept so a new host can hand
-// them to the players that missed them (LHSession::BuildSuperpacketDatablock).
-// TODO: names fabricated. File statics: the whole LHSession class is exported, but these are not.
+#define GAMESPY_CD_KEY "4087-5c31-7b03-1f32"
+
+enum
+{
+	LH_MESSAGE_SERVER_PORT = 2612,
+	LH_TIME_INFINITE = 0xffffffff,
+	SUPER_PACKET_HISTORY_SIZE = 10,
+	CHALLENGE_RESPONSE_SIZE = 100,
+	SYNC_POLL_TIMEOUT = 10,
+	MIGRATE_HOST_FLUSH_TIMEOUT = 1000,
+	CHECKSUM_FAILURE_TIMEOUT = 10000,
+	CONNECT_TO_NEW_HOST_TIMEOUT = 10000,
+	MIGRATION_TIMEOUT = 25000,
+};
+
 static LHDynamicQueue<LHNetEvent*>    SuperPacketQ;
 static LHDynamicQueue<unsigned long*> SuperPacketNGTQ;
 
-// TODO: the queue helpers below are inlined on both platforms and have no symbols; they are
-// probably LHDynamicQueue methods.
 template <class T> static inline void EmptyQueue(LHDynamicQueue<T>* queue)
 {
 	LHDynamicQueueNode<T>* node = queue->Head;
@@ -53,8 +63,6 @@ template <class T> static inline T RemoveFromQueue(LHDynamicQueue<T>* queue)
 	return payload;
 }
 
-// TODO: 88.6%. Register allocation only: the target keeps `length` in ebp and spills `event` into the dead
-// game_turn argument slot; ours keeps `event` in ebp. Declaration order and a ternary VCreate did not move it.
 LH_RETURN LHSession::SendChecksum(unsigned long checksum, unsigned long game_turn, void* data, unsigned long length)
 {
 	LH_USER_ID    savedUser;
@@ -69,7 +77,7 @@ LH_RETURN LHSession::SendChecksum(unsigned long checksum, unsigned long game_tur
 		return LH_OK;
 
 	ChecksumCount++;
-	if (SendChecksumData)
+	if (SendFullChecksum)
 		event = LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_CLIENT_CHECKSUM, GetUserID(), checksum, game_turn,
 		                            GetUserID(), length, data);
 	else
@@ -97,17 +105,16 @@ LH_RETURN LHSession::SendChecksum(unsigned long checksum, unsigned long game_tur
 			return LH_FAIL;
 		if (savedChecksum != checksum)
 		{
-			AddToIncomingEventQ(LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_CHECKSUM_FAILURE, savedUser, 1,
+			AddToIncomingEventQ(LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_CHECKSUM_FAILURE, savedUser, true,
 			                                        savedChecksum, savedGameTurn, savedUser, savedLength, savedData));
-			AddToIncomingEventQ(LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_CHECKSUM_FAILURE, GetUserID(), 0, checksum,
-			                                        game_turn, GetUserID(), length, data));
+			AddToIncomingEventQ(LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_CHECKSUM_FAILURE, GetUserID(), false,
+			                                        checksum, game_turn, GetUserID(), length, data));
 		}
 		break;
 	}
 	return Write(event);
 }
 
-// TODO: waits for LHSPrintf::SetString in LHSPrintf.h (see the // PENDING: line); otherwise matches.
 LH_RETURN LHSession::SendOOSChecksumAndWaitForSync(unsigned long checksum, unsigned long game_turn, void* data,
                                                    unsigned long length)
 {
@@ -117,7 +124,7 @@ LH_RETURN LHSession::SendOOSChecksumAndWaitForSync(unsigned long checksum, unsig
 	OOSChecksumCount++;
 	Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_CLIENT_FULL_CHECKSUM, GetUserID(), checksum, game_turn,
 	                          GetUserID()));
-	SyncAllAndStartSession(0xffffffff);
+	SyncAllAndStartSession(LH_TIME_INFINITE);
 	if (RawPeek(0, LH_NETEVENT_TYPE_MSERVE_CHECKSUM_SYNC) == NULL)
 		return LH_OK;
 
@@ -125,7 +132,7 @@ LH_RETURN LHSession::SendOOSChecksumAndWaitForSync(unsigned long checksum, unsig
 	SendOOSChecksums = false;
 	memset(OOSData, 0, sizeof(OOSData));
 	Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_CLIENT_CHECKSUM_DATA, GetUserID(), length, data));
-	SyncAllAndStartSession(0xffffffff);
+	SyncAllAndStartSession(LH_TIME_INFINITE);
 	if (RawPeek(0, LH_NETEVENT_TYPE_MSERVE_CHECKSUM_DATA) == NULL)
 		return LH_FAIL;
 
@@ -159,22 +166,22 @@ LH_RETURN LHSession::SendOOSChecksumAndWaitForSync(unsigned long checksum, unsig
 void LHSession::ClearAllData()
 {
 	LHConnection::ClearAllData();
-	SendChecksumData = 0;
-	memset(LastJoinChannelName, 0, sizeof(LastJoinChannelName));
-	GameTickInterval = 0xffffffff;
+	SendFullChecksum = false;
+	memset(LastJoinChannelPlayerName, 0, sizeof(LastJoinChannelPlayerName));
+	GameTickInterval = LH_TIME_INFINITE;
 	LastGameEventRead = NULL;
 	LobbyChannel = NULL;
-	GameLoopRunning = 0;
+	GameLoopRunning = false;
 	GameEventQ = NULL;
-	OwnsGameEventQ = 0;
-	ChecksumFromFileFlag = 0;
+	OwnsGameEventQ = false;
+	ChecksumFromFile = false;
 	ChecksumErrorPlayer = NULL;
-	SuperPacketReceived = 0;
-	GameFileReceived = 0;
+	SuperPacketReceived = false;
+	GameFileReceived = false;
 	LocalPlayer = NULL;
 	Fake = false;
 	memset(OOSData, 0, sizeof(OOSData));
-	MGJInProgressFlag = 0;
+	MGJInProgressFlag = false;
 	SuperPacketGameTurn = -1;
 	SuperPacketNumber = -1;
 	OOSChecksumCount = -1;
@@ -218,22 +225,21 @@ void LHSession::SetupGamePlayerInfo()
 	for (LHLinkedNode<LHPlayer*>* node = Players.GetStart(); node != NULL; node = node->next.Get())
 	{
 		LHPlayer* player = node->payload;
-		if (player->TeamNumber >= 1 && player->TeamNumber <= 4 && player->TeamMemberNumber >= 1 &&
-		    player->TeamMemberNumber <= 4)
+		if (player->TeamNumber >= 1 && player->TeamNumber <= LH_MAX_TEAMS && player->TeamMemberNumber >= 1 &&
+		    player->TeamMemberNumber <= LH_MAX_TEAM_MEMBERS)
 		{
 			GamePlayerInfo[player->TeamNumber - 1][player->TeamMemberNumber - 1].UserID = player->GetUserID().Number;
-			GamePlayerInfo[player->TeamNumber - 1][player->TeamMemberNumber - 1].ClanID = player->field_0x1fc;
+			GamePlayerInfo[player->TeamNumber - 1][player->TeamMemberNumber - 1].ClanID = player->ClanID;
 		}
 	}
 }
 
-void LHSession::SendDataPacketToAllGamePlayers(unsigned long param_1, void* data, int length)
+void LHSession::SendDataPacketToAllGamePlayers(unsigned long type, void* data, int length)
 {
-	Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_CLIENT_DATA_PACKET, LocalPlayer->GetPlayerID(), param_1, length,
+	Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_CLIENT_DATA_PACKET, LocalPlayer->GetPlayerID(), type, length,
 	                          data));
 }
 
-// TODO: waits for LHPlayer::GetPlayerFromPlayerNumber in LHPlayer.h (see the // PENDING: line).
 LH_RETURN LHSession::GetSuperPacketNextData(void** data, unsigned long* length, LHPlayer** player)
 {
 	if (!IsSinglePlayer() && GetLastEventRead()->GetType() != LH_NETEVENT_TYPE_MSERVE_SUPER_PACKET)
@@ -243,8 +249,8 @@ LH_RETURN LHSession::GetSuperPacketNextData(void** data, unsigned long* length, 
 
 	ClearLastGameEventRead();
 	LastGameEventRead = RemoveFromQueue(GameEventQ);
-	*data = LastGameEventRead->GetPacket()->GetDataPtr() + 6;
-	*length = LastGameEventRead->GetPacket()->GetDataLen() - 6;
+	*data = LastGameEventRead->GetDataPtr();
+	*length = LastGameEventRead->GetDataLen();
 	*player = LHPlayer::GetPlayerFromPlayerNumber(LastGameEventRead->GetUserID(), &Players);
 	if (*player != NULL)
 		return LH_OK;
@@ -255,7 +261,7 @@ void LHSession::ClearGameEventQ()
 {
 	if (OwnsGameEventQ)
 	{
-		OwnsGameEventQ = 0;
+		OwnsGameEventQ = false;
 		if (GameEventQ != NULL)
 			EmptyQueue(GameEventQ);
 		delete GameEventQ;
@@ -264,8 +270,6 @@ void LHSession::ClearGameEventQ()
 	ClearLastGameEventRead();
 }
 
-// The case order (and the separate REMOVE_CONNECTION / HOST_MIGRATION cases that the compiler merges) is
-// what reproduces the target's block layout.
 LH_RETURN LHSession::ProcessEvent(LHNetEvent* net_event)
 {
 	long type = net_event->GetType();
@@ -284,7 +288,7 @@ LH_RETURN LHSession::ProcessEvent(LHNetEvent* net_event)
 	case LH_NETEVENT_TYPE_MSERVE_SUPER_PACKET:
 		return ProcessMServeSuperPacket(net_event);
 	case LH_NETEVENT_TYPE_MSERVE_STOP_GAME_LOOP:
-		GameLoopRunning = 0;
+		GameLoopRunning = false;
 		return LH_OK;
 	case LH_NETEVENT_TYPE_SERVER_ERROR:
 	case LH_NETEVENT_TYPE_MSERVE_CHECKSUM_SYNC:
@@ -293,12 +297,12 @@ LH_RETURN LHSession::ProcessEvent(LHNetEvent* net_event)
 		return LH_OK;
 	case LH_NETEVENT_TYPE_MSERVE_GAME_LOOP_STARTED:
 		return ProcessMServeGameLoopStarted(net_event);
-	case LH_NETEVENT_TYPE_UNKNOWN_6006:
+	case LH_NETEVENT_TYPE_MSERVE_TERMINATE_GAME_LOOP:
 		Close();
 		return LH_OK;
 	case LH_NETEVENT_TYPE_MSERVE_RESTART_GAME_LOOP:
 	case LH_NETEVENT_TYPE_MSERVE_SYNC_COMPLETE:
-		GameLoopRunning = 1;
+		GameLoopRunning = true;
 		return LH_OK;
 	case LH_NETEVENT_TYPE_MSERVE_CHECKSUM_FAILURE:
 		SendChecksums = false;
@@ -323,12 +327,12 @@ LH_RETURN LHSession::ProcessServerShutdown()
 
 LH_RETURN LHSession::ProcessMServeGreeting(LHNetEvent* net_event)
 {
-	unsigned long param_1;
-	unsigned long param_2;
+	char*         serverName;
+	unsigned long serverProtocolVersion;
 	unsigned long protocolVersion;
 
-	if (net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_GREETING, &param_1, &param_2, &protocolVersion, &SendChecksumData) !=
-	    LH_OK)
+	if (net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_GREETING, &serverName, &serverProtocolVersion, &protocolVersion,
+	                       &SendFullChecksum) != LH_OK)
 		return LH_ERROR;
 	if (protocolVersion != LHMessageServer::GetMServeProtocolVersion())
 	{
@@ -355,7 +359,7 @@ LH_RETURN LHSession::ProcessMServeRequestLastSuperpacketData(LHNetEvent* net_eve
 
 void* LHSession::BuildSuperpacketDatablock(unsigned long first_turn, unsigned long* length)
 {
-	LHNetEvent*                         events[11];
+	LHNetEvent*                         events[SUPER_PACKET_HISTORY_SIZE + 1];
 	LHDynamicQueueNode<LHNetEvent*>*    node = SuperPacketQ.Head;
 	LHDynamicQueueNode<unsigned long*>* turnNode = SuperPacketNGTQ.Head;
 
@@ -371,7 +375,7 @@ void* LHSession::BuildSuperpacketDatablock(unsigned long first_turn, unsigned lo
 	unsigned long size = 0;
 	int           i;
 	for (i = 0; events[i] != NULL; i++)
-		size += (unsigned short)((events[i])->GetPacket()->GetDataLen() + 2);
+		size += (unsigned short)(events[i]->GetPacket()->GetDataLen() + sizeof(unsigned short));
 
 	unsigned char* block = (unsigned char*)malloc(size);
 	unsigned long  offset = 0;
@@ -379,7 +383,7 @@ void* LHSession::BuildSuperpacketDatablock(unsigned long first_turn, unsigned lo
 	{
 		LHPacket*      packet = events[i]->GetPacket();
 		unsigned char* destination = block + offset;
-		unsigned long  packetLength = (unsigned short)(packet->GetDataLen() + 2);
+		unsigned long  packetLength = (unsigned short)(packet->GetDataLen() + sizeof(unsigned short));
 		offset += packetLength;
 		memcpy(destination, packet, packetLength);
 	}
@@ -387,7 +391,6 @@ void* LHSession::BuildSuperpacketDatablock(unsigned long first_turn, unsigned lo
 	return block;
 }
 
-// TODO: 99.9%; the remaining difference is which stack slots the locals get.
 LH_RETURN LHSession::ProcessMServeCheckSumFailure(LHNetEvent* net_event)
 {
 	unsigned long fromFile;
@@ -409,7 +412,7 @@ LH_RETURN LHSession::ProcessMServeCheckSumFailure(LHNetEvent* net_event)
 	failedUser = user;
 	ChecksumErrorData = data;
 	ChecksumErrorLength = size;
-	ChecksumFromFileFlag = fromFile;
+	ChecksumFromFile = fromFile;
 	LHPlayer* player = GetPlayer(user);
 	OOSData[player->GetPlayerID()].Set(data, size, player);
 
@@ -418,7 +421,7 @@ LH_RETURN LHSession::ProcessMServeCheckSumFailure(LHNetEvent* net_event)
 		LHPlayer* other = node->payload;
 		if (other != NULL && other->GetUserID() != failedUser)
 		{
-			LHNetEvent* event = RawRead(10000, LH_NETEVENT_TYPE_MSERVE_CHECKSUM_FAILURE);
+			LHNetEvent* event = RawRead(CHECKSUM_FAILURE_TIMEOUT, LH_NETEVENT_TYPE_MSERVE_CHECKSUM_FAILURE);
 			if (event != NULL)
 			{
 				event->VDecode(LH_NETEVENT_TYPE_MSERVE_CHECKSUM_FAILURE, &fromFile, &checksum, &gameTurn, &user, &size,
@@ -435,7 +438,7 @@ LH_RETURN LHSession::ProcessMServeCheckSumFailure(LHNetEvent* net_event)
 		ChecksumErrorPlayer = LHPlayer::GetPlayer(user, &Players);
 	if (GetPacketSource() == LH_PACKET_SOURCE_RECORD)
 	{
-		GetMPPacketSave()->Info.field_0x4 = gameTurn;
+		GetMPPacketSave()->Info.OutOfSyncGameTurn = gameTurn;
 		GetMPPacketSave()->UpdateInfoBlock();
 	}
 	return LH_FAIL;
@@ -452,20 +455,18 @@ LHPlayer* LHSession::GetPlayerFromNum(unsigned long player_number)
 	return NULL;
 }
 
-// TODO: waits for LHPlayer::SetDetails(LHPlayer*) (see the // PENDING: line). Beyond that the target saves ebp
-// only on the list-changing path and gives the ignored-event path its own epilogue; re-check once the call is in.
 LH_RETURN LHSession::ProcessMServePlayerList(LHNetEvent* net_event)
 {
-	unsigned long            param_1;
-	unsigned short*          name = NULL;
+	char*                    channelName;
+	wchar_t*                 playerName = NULL;
 	LH_USER_ID               user;
 	LH_PLAYER_EVENT          playerEvent;
 	LHLinkedList<LHPlayer*>  playerList;
 	LHPlayer*                player;
 	LHLinkedNode<LHPlayer*>* node;
 
-	net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_PLAYER_LIST, &param_1, &name, &user, &playerEvent, LHPlayer::Create,
-	                   &playerList);
+	net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_PLAYER_LIST, &channelName, &playerName, &user, &playerEvent,
+	                   LHPlayer::Create, &playerList);
 	if (LHPlayer::GetPlayer(user, &Players) != NULL && playerEvent == LH_PLAYER_EVENT_JOINED)
 	{
 		SetLastEventReadToBeIgnored();
@@ -499,12 +500,12 @@ LH_RETURN LHSession::ProcessMServePlayerList(LHNetEvent* net_event)
 		}
 	}
 
-	wcscpy(LastJoinChannelName, name);
+	wcscpy(LastJoinChannelPlayerName, playerName);
 	LastJoinChannelEvent = playerEvent;
 	LastJoinPlayerID = player != NULL ? player->GetPlayerID() : -1;
 	for (node = Players.GetStart(); node != NULL; node = node->next.Get())
 	{
-		if ((unsigned long)node->payload->GetUserID() == (unsigned long)GetUserID())
+		if (node->payload->GetUserID() == GetUserID())
 		{
 			LocalPlayer = node->payload;
 			break;
@@ -512,7 +513,6 @@ LH_RETURN LHSession::ProcessMServePlayerList(LHNetEvent* net_event)
 	}
 	playerList.DeleteAll();
 
-	// Rebuild the list in ascending player ID order.
 	LHLinkedList<LHPlayer*> sorted;
 	while (Players.count != 0)
 	{
@@ -541,7 +541,7 @@ LHPlayer* LHSession::GetLobbyPlayer(LHPlayer* player)
 	for (LHLinkedNode<LHPlayer*>* node = LobbyChannel->Players.GetStart(); node != NULL; node = node->next.Get())
 	{
 		LHPlayer* lobbyPlayer = node->payload;
-		if ((unsigned long)lobbyPlayer->GetUserID() == (unsigned long)player->GetUserID())
+		if (lobbyPlayer->GetUserID() == player->GetUserID())
 			return lobbyPlayer;
 	}
 	return NULL;
@@ -553,7 +553,6 @@ LHSession::~LHSession()
 	Close();
 }
 
-// TODO: waits for the LHPlayer(LHNetUser*) constructor in LHPlayer.h (see the // PENDING: line).
 void LHSession::FakeOpen(LHNetUser* user)
 {
 	LHTransportInfo transportInfo(LH_TRANSPORT_TYPE_BASE);
@@ -564,29 +563,29 @@ void LHSession::FakeOpen(LHNetUser* user)
 	LocalPlayer = player;
 	Players.Add(LocalPlayer);
 	LobbyChannel = new LHLobbyChannel;
-	OwnsGameEventQ = 1;
+	OwnsGameEventQ = true;
 	GameEventQ = new LHDynamicQueue<LHNetEvent*>;
-	GameLoopRunning = 1;
+	GameLoopRunning = true;
 	Fake = true;
 }
 
-int LHSession::IsSinglePlayer()
+bool32_t LHSession::IsSinglePlayer()
 {
 	if (!IsOpen())
-		return 0;
+		return false;
 	if (LobbyChannel == NULL)
-		return 1;
+		return true;
 	return Mode != LH_OPERATING_MODE_ASYNCHRONOUS;
 }
 
 LH_RETURN LHSession::ProcessMServeMGJ(LHNetEvent* net_event)
 {
-	unsigned long param_1 = 0;
+	unsigned long joiningUser = 0;
 	LHLobby*      lobby = GetLobby();
 
 	if (lobby == NULL || lobby->IsDisconnected())
 		return LH_FAIL;
-	if (net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_MGJ, &param_1) != LH_OK)
+	if (net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_MGJ, &joiningUser) != LH_OK)
 		return LH_ERROR;
 	if (LHLobby::MGJCallback != NULL)
 	{
@@ -597,7 +596,7 @@ LH_RETURN LHSession::ProcessMServeMGJ(LHNetEvent* net_event)
 			return LH_FAIL;
 		case LH_MGJ_CALLBACK_RETURN_ACCEPT:
 			break;
-		case 2:
+		case LH_MGJ_CALLBACK_RETURN_SAVES_COMPLETE:
 			SavesCompleteForMGJ();
 			break;
 		default:
@@ -614,33 +613,30 @@ void LHSession::SavesCompleteForMGJ()
 	if (MessageServerRunningHere())
 	{
 		Write(LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_MSERVE_CLIENT_GAME_FILE_SAVED, GetUserID(), 0, NULL));
-		MGJInProgressFlag = 0;
+		MGJInProgressFlag = false;
 	}
 }
 
 LH_RETURN LHSession::ProcessMServeGameFile(LHNetEvent* net_event)
 {
-	unsigned long param_1;
-	unsigned long param_2 = 0;
+	char*         fileName;
+	unsigned long fileUser = 0;
 	long          gameTurn;
 	LHLobby*      lobby = GetLobby();
 
-	if (net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_GAME_FILE, &param_1, &param_2, &gameTurn) != LH_OK)
+	if (net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_GAME_FILE, &fileName, &fileUser, &gameTurn) != LH_OK)
 		return LH_ERROR;
 	SuperPacketGameTurn = gameTurn - 1;
-	GameFileReceived = 1;
+	GameFileReceived = true;
 	lobby->CheckSessionReady(LobbyChannel);
 	return LH_OK;
 }
 
-// TODO: the target passes the LHSPrintf temporary straight to gcd_compute_response, so LHSPrintf's
-// operator char*() must be an inline `return Text;` rather than the current dllimport declaration.
 LH_RETURN LHSession::ProcessMServeChallengeKey(LHNetEvent* net_event)
 {
-	char response[100];
+	char response[CHALLENGE_RESPONSE_SIZE];
 
-	gcd_compute_response("4087-5c31-7b03-1f32", LHSPrintf("%d", *(unsigned long*)net_event->GetDataPtr()).Text,
-	                     response);
+	gcd_compute_response(GAMESPY_CD_KEY, LHSPrintf("%d", *(unsigned long*)net_event->GetDataPtr()).Text, response);
 	return Write(LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_MSERVE_CLIENT_CHALLENGE_RESPONSE, GetUserID(),
 	                                      strlen(response) + 1, response));
 }
@@ -660,7 +656,7 @@ LH_RETURN LHSession::ProcessMServeSuperPacket(LHNetEvent* net_event)
 {
 	long gameTurn;
 
-	SuperPacketReceived = 1;
+	SuperPacketReceived = true;
 	if (GetPacketSource() == LH_PACKET_SOURCE_PLAYBACK)
 	{
 		LHNetEvent* received = net_event;
@@ -686,7 +682,7 @@ LH_RETURN LHSession::ProcessMServeSuperPacket(LHNetEvent* net_event)
 	else
 	{
 		gameTurn = net_event->GetNetGameTurn();
-		if (net_event->GetDataLen() != 4)
+		if (net_event->GetDataLen() != sizeof(gameTurn))
 			return LH_ERROR;
 		if (GetPacketSource() == LH_PACKET_SOURCE_RECORD)
 		{
@@ -704,7 +700,7 @@ LH_RETURN LHSession::ProcessMServeSuperPacket(LHNetEvent* net_event)
 	unsigned long* number = new unsigned long;
 	*number = SuperPacketNumber;
 	SuperPacketNGTQ.Add(number);
-	if (SuperPacketQ.Count > 10)
+	if (SuperPacketQ.Count > SUPER_PACKET_HISTORY_SIZE)
 	{
 		delete RemoveFromQueue(&SuperPacketQ);
 		number = RemoveFromQueue(&SuperPacketNGTQ);
@@ -716,9 +712,9 @@ LH_RETURN LHSession::ProcessMServeSuperPacket(LHNetEvent* net_event)
 LH_RETURN LHSession::ProcessServerNewIdleTime(LHNetEvent* net_event)
 {
 	unsigned long idleTime;
-	unsigned long param_2;
+	char*         userName;
 
-	net_event->VDecode(LH_NETEVENT_TYPE_SERVER_NEW_IDLE_TIME, &idleTime, &param_2);
+	net_event->VDecode(LH_NETEVENT_TYPE_SERVER_NEW_IDLE_TIME, &idleTime, &userName);
 	GameTickInterval = idleTime;
 	return LH_OK;
 }
@@ -730,7 +726,7 @@ LH_RETURN LHSession::ProcessMServeGameLoopStarted(LHNetEvent* net_event)
 	LHLobby::GameRunning = true;
 	if (GetPacketSource() != LH_PACKET_SOURCE_NETWORK)
 		GetMPPacketSave()->Open(GetPacketSource(), this);
-	SuperPacketReceived = 1;
+	SuperPacketReceived = true;
 	if (net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_GAME_LOOP_STARTED, &tickInterval) != LH_OK)
 		return LH_FAIL;
 	GameTickInterval = tickInterval;
@@ -739,20 +735,20 @@ LH_RETURN LHSession::ProcessMServeGameLoopStarted(LHNetEvent* net_event)
 
 bool LHSession::SyncPoint(char* name, int value)
 {
-	char* data = (char*)malloc(strlen(name) + 5);
+	char* data = (char*)malloc(sizeof(value) + strlen(name) + 1);
 	*(int*)data = value;
-	strcpy(data + 4, name);
-	bool result = SyncData(strlen(name) + 5, data, false);
+	strcpy(data + sizeof(value), name);
+	bool result = SyncData(sizeof(value) + strlen(name) + 1, data, false);
 	free(data);
 	return result;
 }
 
-bool LHSession::SyncData(unsigned long length, void* data, bool param_3)
+bool LHSession::SyncData(unsigned long length, void* data, bool wait)
 {
 	if (this == NULL || IsDisconnected() || IsSinglePlayer())
 		return true;
 	Write(LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_MSERVE_CLIENT_SYNC_PACKET, GetUserID(), length, data));
-	while (RawPeek(10, LH_NETEVENT_TYPE_MSERVE_SYNC_COMPLETE) == NULL)
+	while (RawPeek(SYNC_POLL_TIMEOUT, LH_NETEVENT_TYPE_MSERVE_SYNC_COMPLETE) == NULL)
 		;
 	RawRead(0, LH_NETEVENT_TYPE_MSERVE_SYNC_COMPLETE);
 	if (RawPeek(0, LH_NETEVENT_TYPE_MSERVE_SYNC_DATA_FAILED) != NULL)
@@ -763,7 +759,7 @@ bool LHSession::SyncData(unsigned long length, void* data, bool param_3)
 LH_RETURN LHSession::SyncAllAndStartSession(unsigned long timeout)
 {
 	Write(LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_MSERVE_CLIENT_SYNC_PACKET, GetUserID(), 0, NULL));
-	while (RawPeek(0xffffffff, LH_NETEVENT_TYPE_MSERVE_SYNC_COMPLETE) == NULL)
+	while (RawPeek(LH_TIME_INFINITE, LH_NETEVENT_TYPE_MSERVE_SYNC_COMPLETE) == NULL)
 	{
 		if (IsDisconnected())
 			return LH_FAIL;
@@ -810,7 +806,7 @@ LH_RETURN LHSession::CloseSession()
 	return Write(LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_MSERVE_CLIENT_TERMINATE_GAME_LOOP, GetUserID(), 0, NULL));
 }
 
-LH_RETURN LHSession::Open(LHNetUser* user, LHLobbyChannel* lobby_channel, LHTransportInfo* transport_info, int mgj,
+LH_RETURN LHSession::Open(LHNetUser* user, LHLobbyChannel* lobby_channel, LHTransportInfo* transport_info, bool32_t mgj,
                           LHMessageServer* message_server)
 {
 	if (transport_info != NULL && transport_info->type != LH_TRANSPORT_TYPE_TCP && message_server == NULL)
@@ -820,7 +816,7 @@ LH_RETURN LHSession::Open(LHNetUser* user, LHLobbyChannel* lobby_channel, LHTran
 
 	LobbyChannel = lobby_channel;
 	if (mgj)
-		MGJInProgressFlag = 1;
+		MGJInProgressFlag = true;
 	if (OpenClientConnection(user, transport_info) != LH_OK)
 		return LH_FAIL;
 	if (transport_info->type != LH_TRANSPORT_TYPE_TCP && message_server->ConnectToConnection(this) != LH_OK)
@@ -831,22 +827,22 @@ LH_RETURN LHSession::Open(LHNetUser* user, LHLobbyChannel* lobby_channel, LHTran
 
 	if (Mode == LH_OPERATING_MODE_SYNCHRONOUS)
 	{
-		OwnsGameEventQ = 0;
+		OwnsGameEventQ = false;
 		GameEventQ = &message_server->EventQueue;
 	}
 	else
 	{
-		OwnsGameEventQ = 1;
+		OwnsGameEventQ = true;
 		GameEventQ = new LHDynamicQueue<LHNetEvent*>;
 	}
-	GameLoopRunning = 1;
+	GameLoopRunning = true;
 	if (mgj)
-		Read(0xffffffff, LH_NETEVENT_TYPE_MSERVE_GAME_FILE);
+		Read(LH_TIME_INFINITE, LH_NETEVENT_TYPE_MSERVE_GAME_FILE);
 	Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_CLIENT_REQUEST_PROTOCOL, GetUserID(),
 	                          LHMessageServer::GetMServeProtocolVersion()));
 
 	LHTransportInfo local;
-	GetTransportInfo(&local, 1);
+	GetTransportInfo(&local, true);
 	if (local.type == LH_TRANSPORT_TYPE_TCP)
 	{
 		if (strlen(local.GetIP()) != 0)
@@ -883,10 +879,9 @@ LHMessageServer* LHSession::GetMessageServer()
 	return LobbyChannel->InternalMessageServer;
 }
 
-// TODO: returns the message server pointer itself as the flag; the original spelling is unknown.
-int LHSession::MessageServerRunningHere()
+bool32_t LHSession::MessageServerRunningHere()
 {
-	return (int)LobbyChannel->InternalMessageServer;
+	return (bool32_t)LobbyChannel->InternalMessageServer;
 }
 
 LHLobby* LHSession::GetLobby()
@@ -896,23 +891,23 @@ LHLobby* LHSession::GetLobby()
 	return LobbyChannel->GetLobby();
 }
 
-int LHSession::NextPacketIsSuperpacket()
+bool32_t LHSession::NextPacketIsSuperpacket()
 {
 	LHNetEvent* event = Peek(0);
 	if (event != NULL)
 		return event->GetType() == LH_NETEVENT_TYPE_MSERVE_SUPER_PACKET;
-	return 0;
+	return false;
 }
 
-void LHSession::GetLastJoinChannelInfo(unsigned short** name, LH_PLAYER_EVENT* event, unsigned long* player_id)
+void LHSession::GetLastJoinChannelInfo(wchar_t** name, LH_PLAYER_EVENT* event, unsigned long* player_id)
 {
-	*name = LastJoinChannelName;
+	*name = LastJoinChannelPlayerName;
 	*event = LastJoinChannelEvent;
 	if (player_id != NULL)
 		*player_id = LastJoinPlayerID;
 }
 
-void LHSession::GetLastJoinChannelInfo(unsigned short** name, LH_PLAYER_EVENT* event)
+void LHSession::GetLastJoinChannelInfo(wchar_t** name, LH_PLAYER_EVENT* event)
 {
 	GetLastJoinChannelInfo(name, event, NULL);
 }
@@ -921,7 +916,7 @@ void* LHSession::GetUserData(LHPlayer* player)
 {
 	if (player == NULL)
 		return NULL;
-	if ((unsigned long)player->GetUserID() == (unsigned long)GetUserID())
+	if (player->GetUserID() == GetUserID())
 		return LHLobby::UserData;
 	return player->user_data;
 }
@@ -930,7 +925,7 @@ unsigned long LHSession::GetUserDataLen(LHPlayer* player)
 {
 	if (player == NULL)
 		return 0;
-	if ((unsigned long)player->GetUserID() == (unsigned long)GetUserID())
+	if (player->GetUserID() == GetUserID())
 		return LHLobby::UserDataLen;
 	return player->UserDataLen;
 }
@@ -942,19 +937,19 @@ void LHSession::EmptyEventQ()
 }
 
 LHSession* LHSession::Create(bool host, LHNetUser* user, LHTransportInfo* transport_info, char* channel_name,
-                             unsigned long param_5, unsigned long idle_time, void* game_data,
-                             unsigned long game_data_length, unsigned short player_names[][0x30],
+                             unsigned long num_players, unsigned long idle_time, void* game_data,
+                             unsigned long game_data_length, wchar_t player_names[][LH_MAX_NAME_LENGTH],
                              LH_USER_ID player_ids[])
 {
 	LHMessageServer* server = NULL;
 	LHTransportInfo  localTransportInfo;
-	unsigned short   port = 2612;
+	unsigned short   port = LH_MESSAGE_SERVER_PORT;
 
 	LHLobby::MSAcceptorInfo.Set(LH_TRANSPORT_TYPE_UDP, sizeof(port), &port);
 	LHLobby::TakeServerOffLan();
 	if (host)
 	{
-		server = LHLobby::StartInternalMessageServer(user, channel_name, param_5, idle_time,
+		server = LHLobby::StartInternalMessageServer(user, channel_name, num_players, idle_time,
 		                                             LH_OPERATING_MODE_ASYNCHRONOUS, 0, player_names, player_ids);
 		if (server == NULL)
 			return NULL;
@@ -990,7 +985,7 @@ LH_RETURN LHSession::SetUserData(LH_USER_ID user_id, char* user_file, unsigned l
 	for (LHLinkedNode<LHPlayer*>* node = Players.GetStart(); node != NULL; node = node->next.Get())
 	{
 		LHPlayer* player = node->payload;
-		if (player != NULL && (unsigned long)player->GetUserID() == (unsigned long)user_id)
+		if (player != NULL && player->GetUserID() == user_id)
 		{
 			player->SetUserFile(user_file);
 			player->SetUserData(data, length);
@@ -1006,7 +1001,7 @@ void LHSession::MigrateHost()
 	    !IsSinglePlayer())
 	{
 		Write(LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_MSERVE_CLIENT_MIGRATE_HOST, GetUserID(), 0, NULL));
-		Flush(1000);
+		Flush(MIGRATE_HOST_FLUSH_TIMEOUT);
 	}
 }
 
@@ -1032,7 +1027,7 @@ LH_RETURN LHSession::ProcessMServeHostMigration(LHNetEvent* net_event)
 			return LH_FAIL;
 		playerLists.Add(LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_PLAYER_LIST, myID, LobbyChannel->GetName(),
 		                                    GetPlayer(hostID)->GetName(), hostID, LH_PLAYER_EVENT_LEFT, &Players));
-		if ((unsigned long)GetHost()->GetUserID() == (unsigned long)GetUserID())
+		if (GetHost()->GetUserID() == GetUserID())
 			break;
 		if (ConnectToNewHost(&transportInfo) == LH_OK)
 			goto wait;
@@ -1052,8 +1047,6 @@ wait:
 	return LH_ERROR;
 }
 
-// TODO: 75%. The LHTimer helpers: the target calls Stop/SetSpeedUpFactor/MSeconds out of line where we
-// inline them, the same unsolved LHTimer.inl shape problem noted in LHConnectionServer::FlushAllConnections.
 void LHSession::WaitForMigrationCompleted()
 {
 	LHTimer     timer;
@@ -1072,12 +1065,11 @@ void LHSession::WaitForMigrationCompleted()
 			ProcessMServeRequestLastSuperpacketData(event);
 			event = NULL;
 		}
-	} while ((unsigned long)timer.MSeconds() <= 25000);
+	} while ((unsigned long)timer.MSeconds() <= MIGRATION_TIMEOUT);
 	if (event == NULL)
 		Close();
 }
 
-// TODO: 66%. Same LHTimer inline-shape problem as WaitForMigrationCompleted.
 LH_RETURN LHSession::ConnectToNewHost(LHTransportInfo* transport_info)
 {
 	LHNetUser* user = NetUser;
@@ -1086,30 +1078,28 @@ LH_RETURN LHSession::ConnectToNewHost(LHTransportInfo* transport_info)
 	LHTimer timer;
 	timer.Reset(0);
 	timer.Start();
-	transport_info->address.port = 2612;
+	transport_info->address.port = LH_MESSAGE_SERVER_PORT;
 	do
 	{
 		Open(user, LobbyChannel, transport_info, 0, NULL);
 		if (IsOpen())
 			break;
-	} while ((unsigned long)timer.MSeconds() <= 10000);
+	} while ((unsigned long)timer.MSeconds() <= CONNECT_TO_NEW_HOST_TIMEOUT);
 	if (!IsOpen())
 		return LH_FAIL;
 	Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_CLIENT_LAST_SUPER_PACKET, GetUserID(), SuperPacketNumber));
 	return LH_OK;
 }
 
-// TODO: 94%. The target frame is 4 bytes smaller (it reuses one slot for the decoded player event and the
-// player counter); the code itself lines up.
 LH_RETURN LHSession::HostSession(LHDynamicQueue<LHNetEvent*>* player_lists)
 {
-	memset(LastJoinChannelName, 0, sizeof(LastJoinChannelName));
-	GameLoopRunning = 0;
-	SuperPacketReceived = 0;
-	GameFileReceived = 0;
+	memset(LastJoinChannelPlayerName, 0, sizeof(LastJoinChannelPlayerName));
+	GameLoopRunning = false;
+	SuperPacketReceived = false;
+	GameFileReceived = false;
 
-	LH_USER_ID     playerIDs[32];
-	unsigned short playerNames[32][0x30];
+	LH_USER_ID playerIDs[LH_MAX_GAME_PLAYERS];
+	wchar_t    playerNames[LH_MAX_GAME_PLAYERS][LH_MAX_NAME_LENGTH];
 	memset(playerNames, 0, sizeof(playerNames));
 	memset(playerIDs, 0, sizeof(playerIDs));
 
@@ -1124,13 +1114,13 @@ LH_RETURN LHSession::HostSession(LHDynamicQueue<LHNetEvent*>* player_lists)
 
 	for (LHDynamicQueueNode<LHNetEvent*>* listNode = player_lists->Head; listNode != NULL; listNode = listNode->Next)
 	{
-		unsigned long           param_1;
-		unsigned short*         name;
+		char*                   channelName;
+		wchar_t*                playerName;
 		LH_USER_ID              user;
 		LH_PLAYER_EVENT         playerEvent;
 		LHLinkedList<LHPlayer*> playerList;
 
-		listNode->Payload->VDecode(LH_NETEVENT_TYPE_MSERVE_PLAYER_LIST, &param_1, &name, &user, &playerEvent,
+		listNode->Payload->VDecode(LH_NETEVENT_TYPE_MSERVE_PLAYER_LIST, &channelName, &playerName, &user, &playerEvent,
 		                           LHPlayer::Create, &playerList);
 		for (int i = 0; i < count; i++)
 		{
@@ -1145,7 +1135,7 @@ LH_RETURN LHSession::HostSession(LHDynamicQueue<LHNetEvent*>* player_lists)
 
 	LHNetUser*      user = NetUser;
 	LHTransportInfo transportInfo;
-	unsigned short  port = 2612;
+	unsigned short  port = LH_MESSAGE_SERVER_PORT;
 	LHLobby::MSAcceptorInfo.Set(LH_TRANSPORT_TYPE_UDP, sizeof(port), &port);
 	LHMessageServer* server = LHLobby::StartInternalMessageServer(
 		user, LobbyChannel->GetName(), Players.count - player_lists->Count, GameTickInterval,
@@ -1163,9 +1153,6 @@ LH_RETURN LHSession::HostSession(LHDynamicQueue<LHNetEvent*>* player_lists)
 	return LH_OK;
 }
 
-// TODO: 43%. The target calls LHTransportInfo's implicit operator= (100018f0) for the first assignment and
-// inlines it for the second; we inline both. The reason (inline budget share? a nested inline helper on
-// LHPlayer?) is unknown.
 LH_RETURN LHSession::MakeNextPlayerHost(LHTransportInfo* transport_info)
 {
 	LHLinkedNode<LHPlayer*>* node;

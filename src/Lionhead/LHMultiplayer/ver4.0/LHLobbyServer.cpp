@@ -25,20 +25,18 @@ void LHLobbyServer::ClearAllData()
 	LocalLobbyList.DeleteAll();
 	ChannelList.RemoveAll();
 	ServerName[0] = '\0';
-	field_0x450 = 0;
-	field_0x454 = 0;
+	Reserved = 0;
+	UserData = 0;
 	OffLan = false;
 }
 
 LH_RETURN LHLobbyServer::Start(LHMPServerStartInfo* start_info, LH_OPERATING_MODE mode, LHConnection* parent_connection)
 {
-	field_0x454 = start_info->field_0x10;
-	// TODO: LHMPServerStartInfo.h calls +0x14 BroadcastInfo, but it is passed as the acceptor here and
-	// ListenerAddress (+0x4) as the broadcast listener; one of the two names is wrong.
+	UserData = start_info->UserData;
 	LH_USER_ID::CATEGORY category =
 		start_info->IsGlobalServer ? LH_USER_ID::CATEGORY_GLOBAL_SERVER : LH_USER_ID::CATEGORY_SESSION_SERVER;
 	if (LHConnectionServer::Start(start_info, start_info->BroadcastInfo, start_info->ListenerAddress, category, mode,
-	                              parent_connection, 15000, 0xffffffff) != LH_OK)
+	                              parent_connection, LH_LOBBYSERVER_IDLE_TIME, THREAD_PRIORITY_BELOW_NORMAL) != LH_OK)
 	{
 		Shutdown();
 		return LH_FAIL;
@@ -47,7 +45,7 @@ LH_RETURN LHLobbyServer::Start(LHMPServerStartInfo* start_info, LH_OPERATING_MOD
 	if (start_info->ServerName != NULL)
 		strncpy(ServerName, start_info->ServerName, sizeof(ServerName));
 	Timer.Start();
-	UnsolicitedProcessing = TRUE;
+	UnsolicitedProcessing = true;
 	return WaitUntilStarted();
 }
 
@@ -74,10 +72,6 @@ void LHLobbyServer::PutServerOnLan()
 	BroadcastAddressInformation(NULL, true);
 }
 
-// TODO: 88.7%. The target reloads Listener for the outer BroadcastEvent and fetches its vtable
-// separately from the inner GetConnectionAcceptorInfo call's; cl here shares one vtable load. Same
-// residual as ProcessInternalServerStart; locals, casts and the inline LHConnectionServer helpers
-// do not reproduce it.
 void LHLobbyServer::BroadcastShutdown(bool force)
 {
 	if (Listener != NULL && (force || !OffLan))
@@ -135,8 +129,6 @@ LH_RETURN LHLobbyServer::SendGreeting(LHConnection* connection)
 	                                             ChannelList.count, GetProtocolVersion(), player->ProtocolVersion));
 }
 
-// Byte-identical to the target (checked against the DLL), but dtk splits the target symbol at the
-// jump-table labels lbl_1000F657..lbl_1000F85C, so objdiff cannot pair it yet (requests.md).
 LH_RETURN LHLobbyServer::ProcessEvent(LHConnection* connection, LHNetEvent* event)
 {
 	if (event == NULL)
@@ -184,7 +176,6 @@ LH_RETURN LHLobbyServer::ProcessEvent(LHConnection* connection, LHNetEvent* even
 		}
 	}
 
-	// Connectionless broadcasts from other lobbies on the LAN.
 	long type = event->GetType();
 	switch (type)
 	{
@@ -208,8 +199,6 @@ LH_RETURN LHLobbyServer::ProcessEvent(LHConnection* connection, LHNetEvent* even
 	}
 }
 
-// TODO: 97.3%; see BroadcastShutdown (the outer BroadcastEvent's vtable comes from a copy of the
-// Listener register in the target).
 LH_RETURN LHLobbyServer::ProcessInternalServerStart()
 {
 	if (Mode == LH_OPERATING_MODE_ASYNCHRONOUS && Listener != NULL)
@@ -217,8 +206,8 @@ LH_RETURN LHLobbyServer::ProcessInternalServerStart()
 		Listener->BroadcastEvent(LHNetEvent::VCreate(LH_NETEVENT_TYPE_BROADCAST_LOBBY_ADDRESS_REQUEST, GetUserID(),
 		                                             Listener->GetBroadcastListenerInfo()),
 		                         NULL);
-		Sleep(600);
-		Listener->DoProcessing(-3);
+		Sleep(LH_LOBBYSERVER_ADDRESS_REQUEST_WAIT);
+		Listener->DoProcessing(LH_SERVER_SIGNAL_BROADCAST);
 	}
 
 	if (ServerName[0] == '\0')
@@ -227,10 +216,9 @@ LH_RETURN LHLobbyServer::ProcessInternalServerStart()
 		if (!GetComputerNameA(ServerName, &size))
 			return LH_FAIL;
 
-		// Make the name unique among the lobbies already seen on the LAN.
 		unsigned long suffix = 1;
 		unsigned long length = strlen(ServerName);
-		while (FindLocalLobby(ServerName) != NULL && suffix < 10)
+		while (FindLocalLobby(ServerName) != NULL && suffix < LH_LOBBYSERVER_MAX_NAME_SUFFIXES)
 		{
 			ServerName[length] = '1' + suffix;
 			ServerName[length + 1] = '\0';
@@ -250,17 +238,16 @@ restart:
 	for (LHLinkedNode<LHLobbyServerChannel*>* node = ChannelList.GetStart(); node != NULL; node = node->next.Get())
 	{
 		LHLobbyServerChannel* channel = node->payload;
-		// A removed player can delete the channel, so the walk starts over.
 		if (channel->GetPlayerList()->IsThisInList(player) && RemovePlayerFromChannel(player, channel))
 			goto restart;
 	}
 	return LH_OK;
 }
 
-int LHLobbyServer::RemovePlayerFromChannel(LHServerPlayer* player, LHLobbyServerChannel* channel)
+bool32_t LHLobbyServer::RemovePlayerFromChannel(LHServerPlayer* player, LHLobbyServerChannel* channel)
 {
-	char name[sizeof(channel->Name)];
-	int  deleted = FALSE;
+	char     name[sizeof(channel->Name)];
+	bool32_t deleted = false;
 
 	strcpy(name, channel->Name);
 	channel->RemovePlayer(player);
@@ -268,13 +255,13 @@ int LHLobbyServer::RemovePlayerFromChannel(LHServerPlayer* player, LHLobbyServer
 	{
 		ChannelList.Remove(channel);
 		delete channel;
-		deleted = TRUE;
+		deleted = true;
 	}
 	else
 	{
 		LHNetEvent* event =
-			LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_PLAYER_LIST, GetUserID(), name, player->GetUserID(), 1,
-		                        &channel->Players, (unsigned char)channel->MServeStarted);
+			LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_PLAYER_LIST, GetUserID(), name, player->GetUserID(),
+		                        LH_PLAYER_EVENT_LEFT, &channel->Players, (unsigned char)channel->MServeStarted);
 		SendEventCopyToAllPlayersOnChannel(channel, event);
 		delete event;
 		CheckMGJStatus(channel, NULL);
@@ -300,7 +287,6 @@ void LHLobbyServer::CheckMGJStatus(LHLobbyServerChannel* channel, LHNetEvent* ev
 
 			if (event != NULL)
 				channel->ProcessMGJResponse(event, &message);
-			// The target tests the response against NONE twice (je, then jle).
 			if (channel->CheckMGJResponseComplete(&response, &user_id) == LH_OK && response != LH_MGJ_RESPONSE_NONE &&
 			    response > LH_MGJ_RESPONSE_NONE && response <= LH_MGJ_RESPONSE_ACCEPTED)
 			{
@@ -316,7 +302,7 @@ void LHLobbyServer::CheckMGJStatus(LHLobbyServerChannel* channel, LHNetEvent* ev
 void LHLobbyServer::SendMGJConnect(LHLobbyServerChannel* channel)
 {
 	LHNetEvent* event = LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CONNECT_TO_MSERVE, GetUserID(), channel->Name,
-	                                        LH_ALL_USERS.Number, &channel->TransportInfo, channel->MServeName, 1,
+	                                        LH_ALL_USERS.Number, &channel->TransportInfo, channel->MServeName, true,
 	                                        channel->GetGameDataLength(), channel->GetGameData());
 	channel->SendEventCopyToMGJUser(event);
 	delete event;
@@ -329,16 +315,12 @@ LH_RETURN LHLobbyServer::ProcessBroadcastLobbyAddressRequest(LHNetEvent* event)
 	if (event->VDecode(LH_NETEVENT_TYPE_BROADCAST_LOBBY_ADDRESS_REQUEST, &transportInfo) != LH_OK)
 		return LH_FAIL;
 
-	// Spread the replies of every lobby on the LAN.
 	srand(GetTickCount());
-	Sleep(rand() % 200);
+	Sleep(rand() % LH_LOBBYSERVER_MAX_ADDRESS_REPLY_DELAY);
 	BroadcastAddressInformation(event->GetUDPinfo(), false);
 	return LH_OK;
 }
 
-// TODO: 91.1%, inline budget: the target keeps both LHTransportInfo::ClearAllData calls of the inlined
-// LHLocalLobbyInfo() constructor as calls; cl inlines the first one here. The rest matches.
-// The new-lobby/updated-lobby flow follows the Mac body.
 LH_RETURN LHLobbyServer::ProcessBroadcastLobbyAddress(LHNetEvent* event)
 {
 	LHLocalLobbyInfo     info;
@@ -347,7 +329,6 @@ LH_RETURN LHLobbyServer::ProcessBroadcastLobbyAddress(LHNetEvent* event)
 	if (event->VDecode(LH_NETEVENT_TYPE_BROADCAST_LOBBY_ADDRESS, &info) != LH_OK)
 		return LH_FAIL;
 
-	// Ignore our own broadcast.
 	if (info.ConnectionAcceptor.Compare(GetConnectionAcceptorInfo()) != 0)
 	{
 		LHLocalLobbyInfo* newLobby;
@@ -431,20 +412,19 @@ LH_RETURN LHLobbyServer::ProcessBroadcastLobbyShutdown(LHNetEvent* event)
 
 LH_RETURN LHLobbyServer::ProcessLobbyClientJoinChannel(LHConnection* connection, LHNetEvent* event)
 {
-	char*         name;
-	unsigned char runsMessageServer;
-	unsigned long field_3; // TODO: unknown decoded value
-	char*         password;
-	unsigned long field_5; // TODO: unknown decoded value
-	char*         userFile;
+	char*               name;
+	unsigned char       runsMessageServer;
+	wchar_t*            userName;
+	char*               password;
+	LH_NET_CHANNEL_MODE mode;
+	char*               userFile;
 
 	if (event->GetUserID() != connection->GetConnectedUserID())
 		return LH_ERROR;
 
-	event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_JOIN_CHANNEL, &name, &runsMessageServer, &field_3, &password, &field_5,
+	event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_JOIN_CHANNEL, &name, &runsMessageServer, &userName, &password, &mode,
 	               &userFile);
 
-	// A global server only hosts named channels.
 	if (strcmp(name, LH_CHANNEL_DEFAULT_NAME) == 0 && GetUserID().IsType(LH_USER_ID::CATEGORY_GLOBAL_SERVER))
 	{
 		return connection->Write(
@@ -462,8 +442,8 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientJoinChannel(LHConnection* connection,
 	LHLobbyServerSysInfo* sysInfo = channel->GetSysInfo(player);
 	sysInfo->MGJResponse = LH_MGJ_RESPONSE_NONE;
 	sysInfo->Connection = NULL;
-	sysInfo->GameRunning = FALSE;
-	sysInfo->FileTransferComplete = FALSE;
+	sysInfo->GameRunning = false;
+	sysInfo->FileTransferComplete = false;
 	info->Connection = connection;
 
 	if (!GetUserID().IsType(LH_USER_ID::CATEGORY_GLOBAL_SERVER) && LHLobby::OpenLobbyCount > 1)
@@ -478,7 +458,7 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientJoinChannel(LHConnection* connection,
 	}
 
 	LHNetEvent* playerList = LHNetEvent::VCreate(
-		LH_NETEVENT_TYPE_LOBBY_PLAYER_LIST, GetUserID(), name, connection->GetConnectedUserID(), 0,
+		LH_NETEVENT_TYPE_LOBBY_PLAYER_LIST, GetUserID(), name, connection->GetConnectedUserID(), LH_PLAYER_EVENT_JOINED,
 		LHLobbyServerChannel::FindChannel(name, &ChannelList)->GetPlayerList(), channel->MServeStarted);
 	SendEventCopyToAllPlayersOnChannel(channel, playerList);
 	delete playerList;
@@ -529,13 +509,12 @@ LH_RETURN LHLobbyServer::BroadcastAddressInformation(LHTransportInfo* destinatio
 	if (!force && OffLan)
 		return LH_OK;
 
-	// TODO: the default channel's player list is fetched and dropped; Mac does the same.
 	LHLinkedList<LHPlayer*>* players = NULL;
 	if (FindDefaultChannel() != NULL)
 		players = FindDefaultChannel()->GetPlayerList();
 
 	LHLobbyServerChannel* channel = FindChannel((char*)LH_CHANNEL_DEFAULT_NAME);
-	int                   mserveStarted = channel != NULL ? channel->MServeStarted : 0;
+	bool32_t              mserveStarted = channel != NULL ? channel->MServeStarted : false;
 	LHLocalLobbyInfo      info(ServerName, GetConnectionAcceptorInfo(), GetBroadcastListenerInfo(),
 	                           FindDefaultChannelPlayers(), (LH_USER_ID::CATEGORY)GetUserID().Category, mserveStarted);
 
@@ -544,15 +523,14 @@ LH_RETURN LHLobbyServer::BroadcastAddressInformation(LHTransportInfo* destinatio
 	return Listener->BroadcastEvent(event, destination);
 }
 
-// Matches; only the Timer relocations are named lbl_10069568.. instead of LHLocalLobbyInfo::Timer+0x100..
 LH_RETURN LHLobbyServer::PurgeLocalLobbyList()
 {
 restart:
 	for (LHLinkedNode<LHLocalLobbyInfo*>* node = LocalLobbyList.GetStart(); node != NULL; node = node->next.Get())
 	{
 		LHLocalLobbyInfo* lobby = node->payload;
-		// Lobbies that have not broadcast for 30 seconds are gone.
-		if ((unsigned long)(LHLocalLobbyInfo::Timer.MSeconds() - lobby->LastHeardTime) > 30000)
+		if ((unsigned long)(LHLocalLobbyInfo::Timer.MSeconds() - lobby->LastHeardTime) >
+		    LH_LOBBYSERVER_LOCAL_LOBBY_TIMEOUT)
 		{
 			LocalLobbyList.Remove(lobby);
 			SendInternalLocalLobbyMessage(lobby, LH_LOBBYSERVER_EVENT_REMOVED);
@@ -595,7 +573,7 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientSendCodeChecksum(LHConnection* connec
 	LHServerPlayer* player = GetConnectedPlayer(connection);
 	char*           checksum;
 
-	if (event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_SEND_CODE_CHECKSUM, &player->field_0x200, &checksum) != LH_OK)
+	if (event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_SEND_CODE_CHECKSUM, &player->CodeChecksum, &checksum) != LH_OK)
 		return LH_FAIL;
 	player->SetCodeChecksumString(checksum);
 	return LH_OK;
@@ -604,9 +582,9 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientSendCodeChecksum(LHConnection* connec
 LH_RETURN LHLobbyServer::ProcessLobbyClientChatOnChannel(LHConnection* connection, LHNetEvent* event)
 {
 	char*         name;
-	void*         data;
 	unsigned long length;
-	unsigned char flags; // TODO: meaning unknown
+	void*         data;
+	unsigned char flag;
 
 	LHLobbyServerChannel* channel = FindChannel(event->GetChannelName());
 	if (channel == NULL)
@@ -615,7 +593,7 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientChatOnChannel(LHConnection* connectio
 	LH_USER_ID from;
 	LH_USER_ID to;
 
-	if (event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_CHAT_ON_CHANNEL, &name, &from, &data, &length, &to, &flags) !=
+	if (event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_CHAT_ON_CHANNEL, &name, &from, &length, &data, &to, &flag) !=
 	    LH_OK)
 		return LH_FAIL;
 	if (from != connection->GetConnectedUserID())
@@ -623,8 +601,8 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientChatOnChannel(LHConnection* connectio
 	if (strcmp(name, event->GetChannelName()) != 0)
 		return LH_FAIL;
 
-	LHNetEvent* chat = LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CHAT_ON_CHANNEL, event->GetUserID(), name, from, data,
-	                                       length, to != 0, flags);
+	LHNetEvent* chat = LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CHAT_ON_CHANNEL, event->GetUserID(), name, from,
+	                                       length, data, to != 0, flag);
 	LHPlayer*   player = channel->GetPlayer(to);
 	if (to.IsValid() && player != NULL)
 		SendEventCopyToPlayer((LHServerPlayer*)player, chat);
@@ -634,18 +612,16 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientChatOnChannel(LHConnection* connectio
 	return LH_OK;
 }
 
-// TODO: 85.2%. The target keeps the two `return LH_FAIL` exits as separate epilogues; cl merges
-// them into one tail (the known residual from LHConnectionServer.cpp).
 LH_RETURN LHLobbyServer::ProcessLobbyClientStartMServeResult(LHConnection* connection, LHNetEvent* event)
 {
-	char*           channelName;
-	int             started;
-	LHTransportInfo transportInfo;
-	char*           mserveName;
-	int             field_5; // TODO: unknown decoded value
+	char*             channelName;
+	bool32_t          started;
+	LHTransportInfo   transportInfo;
+	char*             mserveName;
+	LH_OPERATING_MODE mode;
 
 	if (event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_START_MSERVE_RESULT, &channelName, &started, &transportInfo,
-	                   &mserveName, &field_5) != LH_OK)
+	                   &mserveName, &mode) != LH_OK)
 		return LH_FAIL;
 
 	LHLobbyServerChannel* channel = FindChannel(channelName);
@@ -661,10 +637,10 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientStartMServeResult(LHConnection* conne
 		LHNetEvent* connect =
 			LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CONNECT_TO_MSERVE, GetUserID(), event->GetChannelName(),
 		                        GetConnectedPlayer(connection)->GetUserID().Number, &transportInfo, channel->MServeName,
-		                        0, channel->GetGameDataLength(), channel->GetGameData());
+		                        false, channel->GetGameDataLength(), channel->GetGameData());
 		SendEventCopyToAllPlayersOnChannel(channel, connect);
 		delete connect;
-		if (channel->Players.count == 1 && field_5 == 1)
+		if (channel->Players.count == 1 && mode == LH_OPERATING_MODE_SYNCHRONOUS)
 		{
 			connection->Write(
 				LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_USER_FILES_TRANSFER_COMPLETE, GetUserID(), channel->Name));
@@ -672,19 +648,19 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientStartMServeResult(LHConnection* conne
 		return LH_OK;
 	}
 
-	GetConnectedPlayer(connection)->field_0x214 = 1;
-	return StartMServe(channelName, channel->MServeID, NULL);
+	GetConnectedPlayer(connection)->MServeStartFailed = true;
+	return StartMServe(channelName, channel->MServeIdleTime, NULL);
 }
 
 LH_RETURN LHLobbyServer::ProcessLobbyClientStartGame(LHConnection* connection, LHNetEvent* event)
 {
 	char*         channelName;
-	LH_USER_ID    user_id;
-	unsigned long mserveID;
+	LH_USER_ID    userID;
+	unsigned long idleTime;
 	unsigned long length;
 	void*         data;
 
-	event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_START_GAME, &channelName, &user_id, &mserveID, &length, &data);
+	event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_START_GAME, &channelName, &userID, &idleTime, &length, &data);
 	LHLobbyServerChannel* channel = FindChannel(channelName);
 	if (length != 0)
 		channel->SetGameData(length, data);
@@ -692,16 +668,16 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientStartGame(LHConnection* connection, L
 		return LH_FAIL;
 
 	VerifyCodeChecksums(channel);
-	return StartMServe(channelName, mserveID, connection);
+	return StartMServe(channelName, idleTime, connection);
 }
 
 LH_RETURN LHLobbyServer::ProcessLobbyClientMGJRequest(LHConnection* connection, LHNetEvent* event)
 {
-	unsigned long field_1; // TODO: unknown decoded value
-	int           askPlayers;
+	char*    channelName;
+	bool32_t askPlayers;
 
 	LHLobbyServerChannel* channel = FindChannel(event->GetChannelName());
-	if (event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_REQUEST, &field_1, &askPlayers) != LH_OK)
+	if (event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_REQUEST, &channelName, &askPlayers) != LH_OK)
 		return LH_ERROR;
 
 	if (channel == NULL || !channel->MServeStarted || channel->TransportInfo.type == LH_TRANSPORT_TYPE_BASE ||
@@ -721,7 +697,6 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientMGJRequest(LHConnection* connection, 
 	channel->SetMGJInProgress(event->GetUserID());
 	if (askPlayers)
 	{
-		// Ask the players already in the game before letting the new one in.
 		LHServerPlayer* player = GetConnectedPlayer(connection);
 		LHNetEvent*     request = LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_MGJ_REQUEST, GetUserID(),
 		                                              event->GetChannelName(), player->GetUserID(), player->GetName());
@@ -771,16 +746,15 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientMGJResponse(LHConnection* connection,
 
 LH_RETURN LHLobbyServer::ProcessLobbyClientError(LHConnection* connection, LHNetEvent* event)
 {
-	unsigned long field_1; // TODO: unknown decoded value
+	char*         text;
 	unsigned long error;
-	unsigned long field_3; // TODO: unknown decoded value
+	char*         errorText;
 
 	LHLobbyServerChannel* channel = FindChannel(event->GetChannelName());
-	if (event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_ERROR, &field_1, &error, &field_3) != LH_OK)
+	if (event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_ERROR, &text, &error, &errorText) != LH_OK)
 		return LH_FAIL;
 
-	// TODO: 14 is an unnamed client error code.
-	if (channel->MGJInProgress() && error == 14)
+	if (channel->MGJInProgress() && error == LH_LOBBYSERVER_ERROR_GAME_CALLBACK_FAILED)
 	{
 		channel->ClearMGJInProgress();
 		LHNetEvent* failed =
@@ -800,7 +774,7 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientUserFile(LHConnection* connection, LH
 	LHLobbyServerSysInfo* info = channel->GetSysInfo(GetConnectedPlayer(connection));
 	if (info == NULL)
 		return LH_ERROR;
-	info->FileTransferComplete = TRUE;
+	info->FileTransferComplete = true;
 
 	if (channel->MGJInProgress())
 	{
@@ -820,20 +794,14 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientUserFile(LHConnection* connection, LH
 	return LH_OK;
 }
 
-// The channel loops walk the players with LHChannel::GetNextPlayer (inline, exported copy at
-// 10002350); Mac calls LHLinkedList<LHPlayer*>::FindNext directly, but only the extra inline level
-// reproduces the target's unfolded NULL test in each loop step.
-// TODO: 97.2%. One register choice differs (the inlined GetNextPlayer result lands in edx and is
-// copied to esi). Mac returns 0 from inside the loop; the break form is closer to the target's
-// block layout.
-int LHLobbyServerChannel::CheckGameFileTransferComplete()
+bool32_t LHLobbyServerChannel::CheckGameFileTransferComplete()
 {
-	int complete = TRUE;
+	bool32_t complete = true;
 	for (LHPlayer* player = GetNextPlayer(NULL); player != NULL; player = GetNextPlayer(player))
 	{
 		if (player->GetUserID().IsType(LH_USER_ID::CATEGORY_PLAYER) && !GetSysInfo(player)->FileTransferComplete)
 		{
-			complete = FALSE;
+			complete = false;
 			break;
 		}
 	}
@@ -854,11 +822,11 @@ LH_RETURN LHLobbyServer::SendFileTransferComplete(LHLobbyServerChannel* channel)
 
 LH_RETURN LHLobbyServer::ProcessLobbyClientRequestChannelList(LHConnection* connection, LHNetEvent* event)
 {
-	unsigned long options; // TODO: name guessed
+	char* filter;
 
-	event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_REQUEST_CHANNEL_LIST, &options);
+	event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_REQUEST_CHANNEL_LIST, &filter);
 	connection->Write(
-		LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CHANNEL_LIST_INFO, GetUserID(), &ChannelList, 0, options));
+		LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_CHANNEL_LIST_INFO, GetUserID(), &ChannelList, 0, filter));
 	return LH_OK;
 }
 
@@ -874,13 +842,13 @@ void LHLobbyServer::VerifyCodeChecksums(LHLobbyServerChannel* channel)
 	LHLinkedList<LHServerPlayer*>* players = (LHLinkedList<LHServerPlayer*>*)channel->GetPlayerList();
 	if (players != NULL)
 	{
-		unsigned long checksum = players->GetHead()->field_0x200;
-		int           mismatch = FALSE;
+		unsigned long checksum = players->GetHead()->CodeChecksum;
+		bool32_t      mismatch = false;
 		for (LHLinkedNode<LHServerPlayer*>* node = players->GetStart(); node != NULL; node = node->next.Get())
 		{
-			if (node->payload->field_0x200 != checksum)
+			if (node->payload->CodeChecksum != checksum)
 			{
-				mismatch = TRUE;
+				mismatch = true;
 				break;
 			}
 		}
@@ -929,7 +897,7 @@ LHLocalLobbyInfo* LHLobbyServer::GetNextLocalLobby(LHLocalLobbyInfo* lobby)
 	return NULL;
 }
 
-LH_RETURN LHLobbyServer::StartMServe(char* channel_name, unsigned long mserve_id, LHConnection* connection)
+LH_RETURN LHLobbyServer::StartMServe(char* channel_name, unsigned long idle_time, LHConnection* connection)
 {
 	LHLobbyServerChannel* channel = FindChannel(channel_name);
 	if (channel == NULL)
@@ -939,26 +907,25 @@ LH_RETURN LHLobbyServer::StartMServe(char* channel_name, unsigned long mserve_id
 	if (channel->Players.count <= 0)
 		return LH_FAIL;
 
-	channel->MServeID = mserve_id;
-	channel->MServeStarted = TRUE;
+	channel->MServeIdleTime = idle_time;
+	channel->MServeStarted = true;
 	BroadcastAddressInformation(NULL, false);
 
 	if (channel->Players.count == 1)
 	{
-		// A lone player hosts the MServe itself.
 		LHServerPlayer* host = (LHServerPlayer*)channel->GetNextPlayer(NULL);
-		if (host->field_0x214)
+		if (host->MServeStartFailed)
 			return LH_ERROR;
-		LHNetEvent* event =
-			LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_START_MSERVE, GetUserID(), channel_name, mserve_id, 1);
+		LHNetEvent* event = LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_START_MSERVE, GetUserID(), channel_name,
+		                                        idle_time, LH_OPERATING_MODE_SYNCHRONOUS);
 		SendEventCopyToPlayer(host, event);
 		delete event;
 	}
 	else
 	{
 		LHServerPlayer* host = GetConnectedPlayer(connection);
-		LHNetEvent*     event =
-			LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_START_MSERVE, GetUserID(), channel_name, mserve_id, 2);
+		LHNetEvent*     event = LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_START_MSERVE, GetUserID(), channel_name,
+		                                            idle_time, LH_OPERATING_MODE_ASYNCHRONOUS);
 		SendEventCopyToPlayer(host, event);
 		delete event;
 	}
@@ -973,9 +940,9 @@ void LHLobbyServer::DoUnsolicitedProcessing()
 void LHLobbyServerChannel::ClearAllData()
 {
 	LHChannel::ClearAllData();
-	MServeStarted = FALSE;
+	MServeStarted = false;
 	MGJUser = LH_ALL_USERS;
-	MServeID = 0xffffffff;
+	MServeIdleTime = -1;
 	memset(MServeName, 0, sizeof(MServeName));
 }
 
@@ -1004,7 +971,7 @@ LHLobbyServerChannel* LHLobbyServerChannel::FindOrCreateChannel(char* name, LHLi
 	return channel;
 }
 
-int LHLobbyServerChannel::MGJInProgress()
+bool32_t LHLobbyServerChannel::MGJInProgress()
 {
 	return MGJUser.IsValid();
 }
@@ -1012,7 +979,7 @@ int LHLobbyServerChannel::MGJInProgress()
 void LHLobbyServerChannel::StartGameHouseKeeping(LHTransportInfo* transport_info, LHNetUser* user)
 {
 	for (LHPlayer* player = GetNextPlayer(NULL); player != NULL; player = GetNextPlayer(player))
-		GetSysInfo(player)->GameRunning = TRUE;
+		GetSysInfo(player)->GameRunning = true;
 	TransportInfo = *transport_info;
 }
 
@@ -1024,10 +991,10 @@ void LHLobbyServerChannel::SetMGJInProgress(LH_USER_ID user_id)
 		LHLobbyServerSysInfo* info = GetSysInfo(player);
 		if (info == NULL)
 			return;
-		if (info->GameRunning == TRUE)
+		if (info->GameRunning == true)
 		{
 			info->MGJResponse = LH_MGJ_RESPONSE_NONE;
-			info->FileTransferComplete = FALSE;
+			info->FileTransferComplete = false;
 		}
 	}
 }
@@ -1041,22 +1008,22 @@ void LHLobbyServerChannel::ClearMGJInProgress()
 		if (info == NULL)
 			return;
 		info->MGJResponse = LH_MGJ_RESPONSE_NONE;
-		info->FileTransferComplete = FALSE;
+		info->FileTransferComplete = false;
 	}
 }
 
 LH_RETURN LHLobbyServerChannel::ProcessMGJResponse(LHNetEvent* event, char** message)
 {
 	char*         channelName;
-	unsigned long field_2; // TODO: unknown decoded value
+	unsigned long userID;
 	unsigned char accepted;
 
 	if (MGJInProgress())
 	{
-		field_2 = 0;
+		userID = 0;
 		if (event->GetType() != LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_RESPONSE)
 			return LH_ERROR;
-		event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_RESPONSE, &channelName, &field_2, &accepted, message);
+		event->VDecode(LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_RESPONSE, &channelName, &userID, &accepted, message);
 
 		for (LHPlayer* player = GetNextPlayer(NULL); player != NULL; player = GetNextPlayer(player))
 		{
@@ -1073,11 +1040,9 @@ LH_RETURN LHLobbyServerChannel::ProcessMGJResponse(LHNetEvent* event, char** mes
 	return LH_OK;
 }
 
-// TODO: 79.1%. Same instructions, different block order: the target places the `default` and
-// REFUSED exits before the code after the loop. Case order and early-return forms do not move them.
 LH_RETURN LHLobbyServerChannel::CheckMGJResponseComplete(LH_MGJ_RESPONSE* response, LH_USER_ID* user_id)
 {
-	int waiting = FALSE;
+	bool32_t waiting = false;
 
 	if (!MGJInProgress())
 		return LH_OK;
@@ -1090,9 +1055,9 @@ LH_RETURN LHLobbyServerChannel::CheckMGJResponseComplete(LH_MGJ_RESPONSE* respon
 			switch (info->MGJResponse)
 			{
 			case LH_MGJ_RESPONSE_NONE:
-				*user_id = LH_USER_ID(0xffffffff);
+				*user_id = LH_USER_ID(LH_ALL_USERS_ID);
 				*response = LH_MGJ_RESPONSE_NONE;
-				waiting = TRUE;
+				waiting = true;
 				break;
 			case LH_MGJ_RESPONSE_REFUSED:
 				*user_id = player->GetUserID();
@@ -1109,7 +1074,7 @@ LH_RETURN LHLobbyServerChannel::CheckMGJResponseComplete(LH_MGJ_RESPONSE* respon
 
 	if (!waiting)
 	{
-		*user_id = LH_USER_ID(0xffffffff);
+		*user_id = LH_USER_ID(LH_ALL_USERS_ID);
 		*response = LH_MGJ_RESPONSE_ACCEPTED;
 	}
 	return LH_OK;
@@ -1160,12 +1125,6 @@ unsigned long LHLobbyServer::GetLobbyProtocolVersion()
 	return LHVersion::GetMajorMinorULONG("LHLobbyServerProtocol", &version) == LH_OK ? version : 0;
 }
 
-// Registers the lobby server protocol version ("LHLobbyServerProtocol" 1.0) with LHLogR.dll;
-// GetLobbyProtocolVersion() reads it back through LHVersion::GetMajorMinorULONG. Same
-// block/object/pointer triple as LHConnection.cpp.
-// TODO: names fabricated; Windows only (the Mac build has no version blocks). Nothing reads VersionPointer.
-// The object's name must hash into a lower cl .bss bucket than LH_ALL_USERS so that it is laid out
-// first, as in the target ("VersionInformation" is bucket 3).
 static LHVersionBlock VersionBlock = {
 	"YyHhTtMm",
 	"RELEASE",

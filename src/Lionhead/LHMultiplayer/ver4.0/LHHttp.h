@@ -1,14 +1,54 @@
 #ifndef BW1_DECOMP_LH_HTTP_INCLUDED_H
 #define BW1_DECOMP_LH_HTTP_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <time.h>   /* For time_t */
+#include <assert.h>    /* For static_assert */
+#include <re_common.h> /* For bool32_t */
+#include <time.h>      /* For time_t */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>
 #include "LHMultiplayerExport.h"
 
 class LHSocketTCP;
+
+enum
+{
+	LH_HTTP_DEFAULT_PORT = 80,
+	LH_HTTP_DEFAULT_TIME_OUT = 60,
+	LH_HTTP_DEFAULT_MAX_FORWARDINGS = 10,
+	LH_HTTP_BLOCK_SIZE = 1024,
+	LH_HTTP_CRLF_LENGTH = 2,
+	LH_HTTP_SELECT_TIMEOUT_USEC = 10000,
+	LH_HTTP2_SELECT_TIMEOUT_USEC = 1,
+	LH_HTTP_HOST_LENGTH = 512,
+	LH_HTTP_DOCUMENT_TYPE_LENGTH = 512,
+	LH_HTTP_HEADER_LENGTH = 512,
+	LH_HTTP_REQUEST_LENGTH = 4096,
+	LH_HTTP_LINE_LENGTH = 2048,
+	LH_HTTP_URI_LENGTH = 2048,
+	LH_HTTP_RESPONSE_LINE_LENGTH = 5000,
+	LH_HTTP_REDIRECT_HOST_LENGTH = 200,
+	LH_HTTP_WORD_LENGTH = 1024,
+	LH_HTTP_PORT_LENGTH = 20,
+	LH_HTTP_CHUNK_LINE_LENGTH = 1024,
+	LH_HTTP_CHUNK_SIZE_LINE_LENGTH = 1000,
+	LH_HTTP_CHUNK_END_LENGTH = 10,
+	LH_HTTP_CHUNK_TRAILER_LENGTH = 15,
+};
+
+enum
+{
+	LH_HTTP_CODE_OK = 200,
+	LH_HTTP_CODE_MULTIPLE_CHOICES = 300,
+	LH_HTTP_CODE_BAD_REQUEST = 400,
+};
+
+enum
+{
+	LH_HTTP_REQUEST_STATE_IDLE = 0,
+	LH_HTTP_REQUEST_STATE_SENT = 1,
+	LH_HTTP_REQUEST_STATE_HEADER_RECEIVED = 2,
+};
 
 enum HTTP_REQUEST_TYPE
 {
@@ -17,7 +57,6 @@ enum HTTP_REQUEST_TYPE
 	HTTP_REQUEST_TYPE_POST = 2,
 };
 
-// What LHHttp::CheckServerResponseHeader found.
 enum HTTP_RECEIVED_STATUS
 {
 	HTTP_RECEIVED_STATUS_HEADER_COMPLETE = 1,
@@ -25,8 +64,6 @@ enum HTTP_RECEIVED_STATUS
 	HTTP_RECEIVED_STATUS_LINE_READ = 3,
 };
 
-// Results of LHHttp2's asynchronous steps.
-// TODO: enumerator names fabricated from how each value is used.
 enum LH_HTTP_STATUS
 {
 	LH_HTTP_STATUS_NOT_WAITING_FOR_HEADER = -105,
@@ -44,20 +81,19 @@ enum LH_HTTP_STATUS
 	LH_HTTP_STATUS_OK = 1000,
 };
 
-// Blocking HTTP/1.1 client.
 class LH_MULTIPLAYER_API LHHttp
 {
 public:
 	LHSocketTCP*        Socket;
-	char                Host[512];         /* 0x4 */
-	char                DocumentType[512]; /* 0x204 */
-	unsigned long       DocumentSize;      /* 0x404 */
-	long                Chunked;           /* 0x408 */
-	LHLinkedList<char*> SentHeaders;       /* 0x40c */
-	LHLinkedList<char*> ReceivedHeaders;   /* 0x414 */
-	unsigned long       field_0x41c;
-	bool                HeaderReceived; /* 0x420 */
-	unsigned short      StatusCode;     /* 0x422 */
+	char                Host[LH_HTTP_HOST_LENGTH];                  /* 0x4 */
+	char                DocumentType[LH_HTTP_DOCUMENT_TYPE_LENGTH]; /* 0x204 */
+	unsigned long       DocumentSize;                               /* 0x404 */
+	bool32_t            Chunked;                                    /* 0x408 */
+	LHLinkedList<char*> SentHeaders;                                /* 0x40c */
+	LHLinkedList<char*> ReceivedHeaders;                            /* 0x414 */
+	unsigned long       DocumentReceived;                           /* 0x41c */
+	bool                HeaderReceived;                             /* 0x420 */
+	unsigned short      StatusCode;                                 /* 0x422 */
 
 	// BW1W120 10009350 BW1M119 010ea8a0 (LHCombined Release)
 	LHHttp();
@@ -101,7 +137,7 @@ private:
 	// BW1W120 100097d0 BW1M119 010ea100 (LHCombined Release)
 	LH_RETURN SendHeaderInternal(char* header);
 	// BW1W120 10009840 BW1M119 010e9fc0 (LHCombined Release)
-	LH_RETURN SendInternalEndOfRequest(int send_headers);
+	LH_RETURN SendInternalEndOfRequest(bool32_t send_headers);
 	// BW1W120 1000a610 BW1M119 010e8d10 (LHCombined Release)
 	LH_RETURN ParseURI(char* url, char* host, unsigned short* port, char* uri);
 };
@@ -135,13 +171,12 @@ public:
 };
 static_assert(sizeof(LHHttpHeaders) == 0xc, "LHHttpHeaders size is incorrect");
 
-// Parsed reply headers of an LHHttp2 request.
 struct LH_MULTIPLAYER_API LHHttpHeaderStatus
 {
-	unsigned long  Status;        // HTTP status code; -1 until a reply is parsed.
+	unsigned long  Status;
 	LHHttpHeaders  Headers;       /* 0x4 */
 	char*          Location;      /* 0x10 */
-	long           ContentLength; // +14; -1 without a Content-Length header.
+	long           ContentLength; /* 0x14 */
 	char*          LocationHost;  /* 0x18 */
 	char*          LocationURI;   /* 0x1c */
 	unsigned short LocationPort;  /* 0x20 */
@@ -171,7 +206,6 @@ struct LH_MULTIPLAYER_API LHHttpHeaderStatus
 };
 static_assert(sizeof(LHHttpHeaderStatus) == 0x24, "LHHttpHeaderStatus size is incorrect");
 
-// One received piece of a document.
 struct LHHttpDocumentParts
 {
 	char*         Data;
@@ -188,35 +222,34 @@ struct LHHttpDocumentParts
 	~LHHttpDocumentParts();
 };
 
-// Asynchronous HTTP/1.1 client, polled one step at a time.
 class LH_MULTIPLAYER_API LHHttp2
 {
 public:
 	LHSocketTCP*                       Socket;
-	char                               Host[512];        /* 0x4 */
-	unsigned short                     Port;             /* 0x204 */
-	char*                              Request;          /* 0x208 */
-	unsigned long                      SendSize;         /* 0x20c */
-	unsigned long                      RequestLength;    /* 0x210 */
-	LHHttpHeaders*                     RequestHeaders;   /* 0x214 */
-	LHHttpHeaders*                     ResponseHeaders;  /* 0x218 */
-	unsigned long                      TimeOut;          // +21c; seconds.
-	time_t                             LastActivity;     /* 0x220 */
-	bool                               Waiting;          /* 0x224 */
-	unsigned short                     RequestState;     // +226; 1 once sent, 2 once the header arrived.
-	unsigned long                      ReadSize;         /* 0x228 */
-	unsigned long                      MaxForwardings;   /* 0x22c */
-	unsigned long                      Forwardings;      /* 0x230 */
-	char                               HeaderLine[2048]; /* 0x234 */
-	unsigned long                      HeaderLineLength; /* 0xa34 */
-	LHLinkedList<LHHttpDocumentParts*> DocumentParts;    /* 0xa38 */
-	long                               Chunked;          /* 0xa40 */
-	unsigned long                      field_0xa44;
-	unsigned long                      field_0xa48;
-	char                               ChunkLine[2048]; /* 0xa4c */
-	unsigned long                      ChunkLineLength; /* 0x124c */
-	bool                               ChunkHeaderRead; /* 0x1250 */
-	LHHttpDocumentParts*               CurrentPart;     /* 0x1254 */
+	char                               Host[LH_HTTP_HOST_LENGTH];       /* 0x4 */
+	unsigned short                     Port;                            /* 0x204 */
+	char*                              Request;                         /* 0x208 */
+	unsigned long                      SendSize;                        /* 0x20c */
+	unsigned long                      RequestLength;                   /* 0x210 */
+	LHHttpHeaders*                     RequestHeaders;                  /* 0x214 */
+	LHHttpHeaders*                     ResponseHeaders;                 /* 0x218 */
+	unsigned long                      TimeOut;                         /* 0x21c */
+	time_t                             LastActivity;                    /* 0x220 */
+	bool                               Waiting;                         /* 0x224 */
+	unsigned short                     RequestState;                    /* 0x226 */
+	unsigned long                      ReadSize;                        /* 0x228 */
+	unsigned long                      MaxForwardings;                  /* 0x22c */
+	unsigned long                      Forwardings;                     /* 0x230 */
+	char                               HeaderLine[LH_HTTP_LINE_LENGTH]; /* 0x234 */
+	unsigned long                      HeaderLineLength;                /* 0xa34 */
+	LHLinkedList<LHHttpDocumentParts*> DocumentParts;                   /* 0xa38 */
+	bool32_t                           Chunked;                         /* 0xa40 */
+	unsigned long                      ChunkSize;                       /* 0xa44 */
+	unsigned long                      ChunkReceived;                   /* 0xa48 */
+	char                               ChunkLine[LH_HTTP_LINE_LENGTH];  /* 0xa4c */
+	unsigned long                      ChunkLineLength;                 /* 0x124c */
+	bool                               ChunkHeaderRead;                 /* 0x1250 */
+	LHHttpDocumentParts*               CurrentPart;                     /* 0x1254 */
 
 	// BW1W120 1000af90 BW1M119 010e7a20 (LHCombined Release)
 	LHHttp2();

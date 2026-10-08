@@ -6,6 +6,11 @@
 
 #include "LHNetUser.h" /* For struct LH_USER_ID */
 
+enum
+{
+	LH_PACKET_ALLOCATION_PADDING = 10,
+};
+
 struct LHPacketHeader
 {
 	uint16_t          length; /* 0x0 */
@@ -20,7 +25,6 @@ public:
 	struct LHPacketHeader header; /* 0x0 */
 	uint8_t               payload[0x0];
 
-	// The "data" of a packet is everything after the length word, header included.
 	// BW1W120 inlined BW1M119 01005540 (LHCombined Release)
 	unsigned short GetDataLen() { return header.length; }
 	// BW1W120 inlined BW1M119 0103f180 (LHCombined Release)

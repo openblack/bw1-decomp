@@ -6,7 +6,7 @@
 
 struct LHTimer
 {
-	uint8_t  field_0x0[0x100];
+	char     Text[0x100];
 	uint32_t TickCount; /* 0x100 */
 	int      ElapsedTime;
 	float    SpeedUpFactor;

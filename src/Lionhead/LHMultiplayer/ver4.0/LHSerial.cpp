@@ -7,6 +7,15 @@
 #include "LHPacket.h"
 #include "LHTransportInfo.h"
 
+enum
+{
+	LH_SERIAL_PORT_NAME_LENGTH = 16,
+	LH_SERIAL_QUEUE_SIZE = 10000,
+	LH_SERIAL_BYTE_SIZE = 8,
+	LH_SERIAL_READ_TIMEOUT = 1,
+	LH_SERIAL_WRITE_TIMEOUT = 5000,
+};
+
 LHSerial::LHSerial()
 {
 	Handle = NULL;
@@ -18,7 +27,7 @@ LHSerial::~LHSerial() {}
 
 LH_RETURN LHSerial::Connect(LHTransportInfo* info)
 {
-	char                   name[16];
+	char                   name[LH_SERIAL_PORT_NAME_LENGTH];
 	COMMTIMEOUTS           timeouts;
 	DCB                    dcb;
 	const LHSerialAddress* address;
@@ -34,22 +43,22 @@ LH_RETURN LHSerial::Connect(LHTransportInfo* info)
 		return LH_ERROR;
 
 	SetCommMask(Handle, 0);
-	SetupComm(Handle, 10000, 10000);
+	SetupComm(Handle, LH_SERIAL_QUEUE_SIZE, LH_SERIAL_QUEUE_SIZE);
 	PurgeComm(Handle, PURGE_TXABORT | PURGE_RXABORT | PURGE_TXCLEAR | PURGE_RXCLEAR);
 
 	dcb.DCBlength = sizeof(DCB);
 	GetCommState(Handle, &dcb);
 	dcb.BaudRate = address->BaudRate;
 	dcb.fParity = address->Parity > 0;
-	dcb.ByteSize = 8;
+	dcb.ByteSize = LH_SERIAL_BYTE_SIZE;
 	dcb.Parity = (BYTE)address->Parity;
 	SetCommState(Handle, &dcb);
 
 	timeouts.ReadIntervalTimeout = MAXDWORD;
 	timeouts.ReadTotalTimeoutMultiplier = MAXDWORD;
-	timeouts.ReadTotalTimeoutConstant = 1;
+	timeouts.ReadTotalTimeoutConstant = LH_SERIAL_READ_TIMEOUT;
 	timeouts.WriteTotalTimeoutMultiplier = 0;
-	timeouts.WriteTotalTimeoutConstant = 5000;
+	timeouts.WriteTotalTimeoutConstant = LH_SERIAL_WRITE_TIMEOUT;
 	SetCommTimeouts(Handle, &timeouts);
 
 	Connected = TRUE;

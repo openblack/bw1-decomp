@@ -12,29 +12,25 @@
 #include "LHSocketTCP.h"
 #include "LHTransportInfo.h"
 
+enum
+{
+	LH_POP3_MONTH_COUNT = 12,
+	LH_POP3_MONTH_NAME_LENGTH = 5,
+};
+
 struct LHPOP3Month
 {
-	char          Name[5];
+	char          Name[LH_POP3_MONTH_NAME_LENGTH];
 	unsigned char Number;
 };
 
-// TODO: name fabricated.
-// BW1W120 10062920
-static LHPOP3Month Months[12] = {
+static LHPOP3Month Months[LH_POP3_MONTH_COUNT] = {
 	{"Jan", 1}, {"Feb", 2}, {"Mar", 3}, {"Apr", 4},  {"May", 5},  {"Jun", 6},
 	{"Jul", 7}, {"Aug", 8}, {"Sep", 9}, {"Oct", 10}, {"Nov", 11}, {"Dec", 12},
 };
 
-// Time of the last reply data, refreshed by SendCommandAsync but never read.
-// TODO: name fabricated.
-// BW1W120 1006a57c
 static time_t LastReceiveTime;
 
-// The Mac build has the helpers below as file statics, but here they are emitted in
-// definition order ahead of LHPOP3's methods, which MSVC only does for external functions
-// (it defers a static function until its first use).
-
-// BW1W120 1001a360 BW1M119 0110acd0 (LHCombined Release)
 LH_RETURN lookforfirstchars(char* text, char* prefix)
 {
 	unsigned long i;
@@ -54,8 +50,6 @@ LH_RETURN lookforfirstchars(char* text, char* prefix)
 	return LH_OK;
 }
 
-// Decodes RFC 2047 "Q" encoded text up to the closing '?'.
-// BW1W120 1001a3e0 BW1M119 0110abc0 (LHCombined Release)
 LH_RETURN qdec(char* text, char* output, long* length)
 {
 	char hex[3];
@@ -90,8 +84,6 @@ LH_RETURN qdec(char* text, char* output, long* length)
 	return LH_OK;
 }
 
-// Decodes RFC 2047 "B" (base64) encoded text up to the closing '?'.
-// BW1W120 1001a460 BW1M119 0110a980 (LHCombined Release)
 LH_RETURN base64dec(char* text, char* output, long* length)
 {
 	int           count = 0;
@@ -174,8 +166,6 @@ LH_RETURN base64dec(char* text, char* output, long* length)
 	return LH_OK;
 }
 
-// Decodes an RFC 2047 encoded word, returning LH_ERROR when the text is not one.
-// BW1W120 1001a590 BW1M119 0110a820 (LHCombined Release)
 LH_RETURN lookfordecoding(char* text, char* output, long* length)
 {
 	char* start;
@@ -204,12 +194,10 @@ LH_RETURN lookfordecoding(char* text, char* output, long* length)
 	return LH_ERROR;
 }
 
-// Converts a "date: " header line to a time_t, normalising its zone to GMT.
-// BW1W120 1001a650 BW1M119 0110a330 (LHCombined Release)
 LH_RETURN LHParseMailDate(char* line, long* date)
 {
 	struct tm time;
-	char      buffer[200];
+	char      buffer[LH_POP3_DATE_LENGTH];
 	long      i;
 	long      zone;
 	long      hour;
@@ -237,7 +225,7 @@ LH_RETURN LHParseMailDate(char* line, long* date)
 	for (i = 0; *text != ' ' && *text != '\0'; text++)
 		buffer[i++] = *text;
 	buffer[i] = '\0';
-	for (i = 0; i < 12; i++)
+	for (i = 0; i < LH_POP3_MONTH_COUNT; i++)
 	{
 		if (strcmp(buffer, Months[i].Name) == 0)
 			time.tm_mon = Months[i].Number - 1;
@@ -321,7 +309,6 @@ LH_RETURN LHParseMailDate(char* line, long* date)
 	return LH_OK;
 }
 
-// BW1W120 1001a990 BW1M119 0110a260 (LHCombined Release)
 LHPOP3Mail* GetLastMail(LHLinkedList<LHPOP3Mail*>& mails)
 {
 	long                       highest = 0;
@@ -350,13 +337,13 @@ LHPOP3::LHPOP3()
 	NrOfNewMails = 0;
 	SubjectStatus = LH_OK;
 	Socket = NULL;
-	field_0x200 = false;
-	CommandState = 0;
-	ConnectState = 0;
+	Connected = false;
+	CommandState = LH_POP3_STATE_IDLE;
+	ConnectState = LH_POP3_STATE_IDLE;
 	Response = NULL;
-	FromLength = 200;
-	SubjectLength = 200;
-	Timeout = 45;
+	FromLength = LH_POP3_FROM_LENGTH;
+	SubjectLength = LH_POP3_SUBJECT_LENGTH;
+	Timeout = LH_POP3_DEFAULT_TIMEOUT;
 }
 
 LHPOP3::~LHPOP3()
@@ -475,7 +462,7 @@ LH_RETURN LHPOP3::ScanLines(char* data, long length, char* remainder, long* rema
 			else
 			{
 				line_length = -1;
-				memset(remainder, 0, 1024);
+				memset(remainder, 0, LH_POP3_LINE_LENGTH);
 				out = remainder - 1;
 			}
 			i++;
@@ -532,9 +519,9 @@ LH_RETURN LHPOP3::SearchForSpecialChar(char* data, long length, char* line, char
 
 LH_RETURN LHPOP3::SendCommandAsync(char* command, char** response, bool multi_line)
 {
-	char                       buffer[2048];
-	char                       previous[2048];
-	unsigned long              length = 1024;
+	char                       buffer[LH_POP3_COMMAND_BUFFER_SIZE];
+	char                       previous[LH_POP3_COMMAND_BUFFER_SIZE];
+	unsigned long              length = LH_POP3_RECEIVE_SIZE;
 	time_t                     now = 0;
 	LH_RETURN                  result;
 	long                       total;
@@ -545,7 +532,7 @@ LH_RETURN LHPOP3::SendCommandAsync(char* command, char** response, bool multi_li
 
 	switch (CommandState)
 	{
-	case 0:
+	case LH_POP3_STATE_IDLE:
 		if (Socket == NULL)
 		{
 			Socket = NULL;
@@ -553,20 +540,20 @@ LH_RETURN LHPOP3::SendCommandAsync(char* command, char** response, bool multi_li
 		}
 		if (strcmp(command, "") != 0)
 			Socket->Send(LHSPrintf("%s\r\n", command).Text, strlen(LHSPrintf("%s\r\n", command).Text));
-		CommandState = 2;
+		CommandState = LH_POP3_STATE_WAITING;
 		ReceivedLength = 0;
 		memset(Received, 0, sizeof(Received));
 		Lines.DeleteAll();
 		time(&LastReceiveTime);
 		return LH_FAIL;
 
-	case 2:
+	case LH_POP3_STATE_WAITING:
 		if (Socket->IsReadData() != LH_OK)
 			return LH_FAIL;
 		result = Socket->ReceiveRaw(buffer, (long*)&length);
 		if (result == LH_ERROR)
 		{
-			if (length == 1024)
+			if (length == LH_POP3_RECEIVE_SIZE)
 			{
 				ReceivedLength = 0;
 				delete Socket;
@@ -598,7 +585,7 @@ LH_RETURN LHPOP3::SendCommandAsync(char* command, char** response, bool multi_li
 
 			if (Received[ReceivedLength - 1] == '\n' && Received[ReceivedLength - 2] == '\r' && !multi_line)
 			{
-				CommandState = 3;
+				CommandState = LH_POP3_STATE_DONE;
 				*response = new char[ReceivedLength + 10];
 				memset(*response, 0, ReceivedLength + 10);
 				memcpy(*response, Received, ReceivedLength);
@@ -609,7 +596,7 @@ LH_RETURN LHPOP3::SendCommandAsync(char* command, char** response, bool multi_li
 				return LH_FAIL;
 
 			ReceivedLength = 0;
-			CommandState = 3;
+			CommandState = LH_POP3_STATE_DONE;
 			total = 0;
 			for (node = Lines.GetStart(); node != NULL; node = node->next.Get())
 			{
@@ -637,8 +624,8 @@ LH_RETURN LHPOP3::SendCommandAsync(char* command, char** response, bool multi_li
 		}
 		return LH_FAIL;
 
-	case 3:
-		CommandState = 0;
+	case LH_POP3_STATE_DONE:
+		CommandState = LH_POP3_STATE_IDLE;
 		return LH_FAIL;
 	}
 	return LH_FAIL;
@@ -646,13 +633,13 @@ LH_RETURN LHPOP3::SendCommandAsync(char* command, char** response, bool multi_li
 
 LH_RETURN LHPOP3::OpenConnectionAsync()
 {
-	char      reply[200];
+	char      reply[LH_POP3_REPLY_LENGTH];
 	char*     response = reply;
 	LH_RETURN result;
 
 	switch (ConnectState)
 	{
-	case 0: {
+	case LH_POP3_STATE_IDLE: {
 		if (Socket != NULL)
 		{
 			delete Socket;
@@ -664,27 +651,27 @@ LH_RETURN LHPOP3::OpenConnectionAsync()
 		{
 			delete Socket;
 			Socket = NULL;
-			ConnectState = 0;
+			ConnectState = LH_POP3_STATE_IDLE;
 			return LH_ERROR;
 		}
 		Socket->SetBlockingMode(false);
-		ConnectState = 2;
+		ConnectState = LH_POP3_STATE_WAITING;
 		return LH_FAIL;
 	}
 
-	case 2:
+	case LH_POP3_STATE_WAITING:
 		result = SendCommandAsync("", &response, false);
 		if (result == LH_OK)
 		{
-			ConnectState = 3;
+			ConnectState = LH_POP3_STATE_DONE;
 			return LH_FAIL;
 		}
 		if (result == LH_ERROR)
 			return result;
 		break;
 
-	case 3:
-		ConnectState = 0;
+	case LH_POP3_STATE_DONE:
+		ConnectState = LH_POP3_STATE_IDLE;
 		return LH_OK;
 	}
 	return LH_FAIL;
@@ -709,7 +696,7 @@ LH_RETURN LHPOP3::LoginAsync(LH_POP3_ACTION* action)
 		result = SendCommandAsync(LHSPrintf("USER %s", User).Text, &Response, false);
 		if (result == LH_OK)
 		{
-			*action = LH_POP3_ACTION_SEND_2;
+			*action = LH_POP3_ACTION_SEND_NEXT;
 			return LH_FAIL;
 		}
 		if (result != LH_FAIL)
@@ -717,18 +704,18 @@ LH_RETURN LHPOP3::LoginAsync(LH_POP3_ACTION* action)
 		*action = LH_POP3_ACTION_RECEIVED;
 		return result;
 
-	case LH_POP3_ACTION_SEND_2:
+	case LH_POP3_ACTION_SEND_NEXT:
 		result = SendCommandAsync(LHSPrintf("PASS %s", Password).Text, &Response, false);
 		if (result == LH_OK)
 		{
-			*action = LH_POP3_ACTION_RECEIVED_2;
+			*action = LH_POP3_ACTION_RECEIVED_NEXT;
 			return LH_FAIL;
 		}
 		if (result == LH_ERROR)
 			break;
 		return LH_FAIL;
 
-	case LH_POP3_ACTION_RECEIVED_2:
+	case LH_POP3_ACTION_RECEIVED_NEXT:
 		if (strncmp(_strlwr(Response), "+ok", 3) == 0)
 		{
 			*action = LH_POP3_ACTION_DONE;
@@ -824,12 +811,12 @@ LH_RETURN LHPOP3::GetMsgListAsync(LHLinkedList<LHPOP3Mail*>& mails, LH_POP3_ACTI
 		*action = LH_POP3_ACTION_START;
 		return LH_OK;
 
-	case LH_POP3_ACTION_SEND_2:
+	case LH_POP3_ACTION_SEND_NEXT:
 		if (SendCommandAsync("UIDL", &Response, true) == LH_OK)
-			*action = LH_POP3_ACTION_RECEIVED_2;
+			*action = LH_POP3_ACTION_RECEIVED_NEXT;
 		return LH_FAIL;
 
-	case LH_POP3_ACTION_RECEIVED_2:
+	case LH_POP3_ACTION_RECEIVED_NEXT:
 		if (strncmp(_strlwr(Response), "+ok", 3) == 0)
 		{
 		}
@@ -862,8 +849,6 @@ LH_RETURN LHPOP3::LogoutAsync(LH_POP3_ACTION* action)
 		*action = LH_POP3_ACTION_SEND;
 	case LH_POP3_ACTION_SEND:
 		result = SendCommandAsync("QUIT", &Response, false);
-		// TODO: the redundant assignment reproduces the target's "mov eax, 3" after the
-		// compare; plainer spellings fold into a sete.
 		if (result == LH_OK)
 			*action = LH_POP3_ACTION_DONE;
 		else if (result == LH_ERROR)
@@ -929,9 +914,9 @@ LH_RETURN LHPOP3::GetMailNameSubject(long number, LHPOP3Mail& mail, LH_POP3_ACTI
 			if (line != NULL && strncmp(line->Data, "+OK", 3) != 0 && strncmp(line->Data, "+Ok", 3) != 0 &&
 			    strncmp(line->Data, "+ok", 3) != 0 && strncmp(line->Data, ".", 1) != 0)
 			{
-				ParseLine(line->Data, line->Length, From, &FromLength, LH_POP3_PARSE_FROM, 1024);
-				SubjectStatus =
-					ParseLine(line->Data, line->Length, Subject, &SubjectLength, LH_POP3_PARSE_SUBJECT, 1024);
+				ParseLine(line->Data, line->Length, From, &FromLength, LH_POP3_PARSE_FROM, sizeof(From));
+				SubjectStatus = ParseLine(line->Data, line->Length, Subject, &SubjectLength, LH_POP3_PARSE_SUBJECT,
+				                          sizeof(Subject));
 				if (LHParseMailDate(line->Data, &date) == LH_OK)
 					mail.Date = date;
 			}

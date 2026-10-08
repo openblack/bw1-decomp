@@ -25,11 +25,10 @@ public:
 	LHTransportInfo transport_info;   /* 0x180 */
 	uint32_t        TeamMemberNumber; // +1f4; ordinal, not a Boolean flag.
 	uint32_t        TeamNumber;       // +1f8; zero is unassigned.
-	uint32_t        field_0x1fc;
+	uint32_t        ClanID;
 
 	// BW1W120 100019c0
 	LHPlayer() { ClearAllData(); }
-	// Nonvirtual.
 	// BW1W120 10019eb0
 	~LHPlayer();
 	// BW1W120 10019b40

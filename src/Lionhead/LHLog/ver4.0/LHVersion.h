@@ -9,41 +9,44 @@ class LHVersion;
 template <typename T> class LHLinkedList;
 struct HWND__;
 
-// A module's version record, compiled into the module's .data and registered with LHLogR.dll by
-// constructing a static LHVersion from it (see LHConnection.cpp). The tags at both ends delimit it.
-// ValidateBlock also accepts an encrypted block: StartTag "31415927", the 0x187 bytes after it
-// scrambled (DecryptBlock), and a ChecksumBlock() of the first 0x183 bytes stored in Checksum.
-// The Mac build has no version blocks; the layout comes from LHLogR.dll (LHVersion::ProcessFields,
-// ValidateBlock, UpdateRegistry and the 0x190-byte struct copy in CheckForNewerVersion).
-// TODO: field names fabricated, except where the registry value names written by UpdateRegistry
-// ("MajorVersionNumber", "MinorVersionNumber", "Author", "Date", "Comments") name them.
-struct LHVersionBlock
+enum
 {
-	char StartTag[9];     // 0x000 "YyHhTtMm" (or "31415927" once encrypted)
-	char Build[10];       // 0x009 "RELEASE"
-	char Name[32];        // 0x013 registry key / GetMajorMinor() lookup name, e.g. "LHConnectionProtocol"
-	char Major[19];       // 0x033 "MajorVersionNumber", parsed with "%u%c"
-	char Minor[19];       // 0x046 "MinorVersionNumber", "$Revision: " is stripped before parsing
-	char Author[42];      // 0x059 "$Author: ... $"
-	char Date[40];        // 0x083 "$Date: ... $"
-	char Expiry[40];      // 0x0ab "NULL" or an expiry date checked by CheckExpiry ("%d/%d/%d")
-	char Comments[100];   // 0x0d3
-	char Field_0x137[60]; // 0x137 "NULL" (blanked); non-empty makes the constructor show the copyright dialog
-	char Field_0x173[16]; // 0x173 "NULL" (blanked); likewise, and also gates the expiry check
-	char Checksum[4];     // 0x183 only meaningful in an encrypted block
-	char EndTag[9];       // 0x187 "YyHhTtMM"
+	LH_VERSION_TAG_LENGTH = 9,
+	LH_VERSION_BUILD_LENGTH = 10,
+	LH_VERSION_NAME_LENGTH = 32,
+	LH_VERSION_NUMBER_LENGTH = 19,
+	LH_VERSION_AUTHOR_LENGTH = 42,
+	LH_VERSION_DATE_LENGTH = 40,
+	LH_VERSION_COMMENTS_LENGTH = 100,
+	LH_VERSION_RECIPIENT_LENGTH = 60,
+	LH_VERSION_PASSWORD_LENGTH = 16,
+	LH_VERSION_CHECKSUM_LENGTH = 4,
 };
 
-// Exported by LHLogR.dll.
-// sizeof(LHVersion) == 0x1a0 (the implicit operator= exported by LHLogR.dll copies 0x68 dwords)
+struct LHVersionBlock
+{
+	char StartTag[LH_VERSION_TAG_LENGTH];
+	char Build[LH_VERSION_BUILD_LENGTH];         /* 0x9 */
+	char Name[LH_VERSION_NAME_LENGTH];           /* 0x13 */
+	char Major[LH_VERSION_NUMBER_LENGTH];        /* 0x33 */
+	char Minor[LH_VERSION_NUMBER_LENGTH];        /* 0x46 */
+	char Author[LH_VERSION_AUTHOR_LENGTH];       /* 0x59 */
+	char Date[LH_VERSION_DATE_LENGTH];           /* 0x83 */
+	char Expiry[LH_VERSION_DATE_LENGTH];         /* 0xab */
+	char Comments[LH_VERSION_COMMENTS_LENGTH];   /* 0xd3 */
+	char Recipient[LH_VERSION_RECIPIENT_LENGTH]; /* 0x137 */
+	char Password[LH_VERSION_PASSWORD_LENGTH];   /* 0x173 */
+	char Checksum[LH_VERSION_CHECKSUM_LENGTH];   /* 0x183 */
+	char EndTag[LH_VERSION_TAG_LENGTH];          /* 0x187 */
+};
+
 class __declspec(dllimport) LHVersion
 {
 public:
-	// TODO: enumerator names fabricated
 	enum VALIDATION
 	{
-		VALIDATION_ENCRYPTED = 0, // decrypted and checksum verified
-		VALIDATION_PLAIN = 1,     // StartTag still "YyHhTtMm"
+		VALIDATION_ENCRYPTED = 0,
+		VALIDATION_PLAIN = 1,
 		VALIDATION_INVALID = 2,
 	};
 
@@ -107,11 +110,6 @@ private:
 	// BW1W120 10008420 BW1M119 0116eca0 (LHCombined Release)
 	static void RepopulateList(HWND__* hwnd, unsigned long state);
 
-	// TODO: every static data member declared here bumps cl's _$E counter in the game TUs that include
-	// this header (GameStats.cpp would get _$E25.. instead of the target's _$E20..), so the game does not
-	// see them yet. LHMultiplayerR.dll needs them for the inline GetModuleChecksum() and
-	// GetModuleChecksumString(), which LHLobby::ProcessLobbyGreeting inlines (it imports ModuleChecksum and
-	// ModuleChecksumString); GameStats.cpp calls the exported GetModuleChecksum() instead.
 #ifdef LH_MULTIPLAYER_EXPORTS
 public:
 	// BW1W120 10028be0 BW1M119 null
@@ -130,11 +128,11 @@ private:
 	// BW1W120 10028bec BW1M119 null
 	static unsigned long ModuleChecksum;
 
-	LHVersionBlock* Block;         // 0x000 the module's own block
-	LHVersionBlock  RegistryBlock; // 0x004 the block last written to the registry for Block->Name
-	int             Declined;      // 0x194 set by CopyrightDialogProc; TODO: name fabricated
-	unsigned long   MajorVersion;  // 0x198 parsed from Block->Major
-	unsigned long   MinorVersion;  // 0x19c parsed from Block->Minor
+	LHVersionBlock* Block;
+	LHVersionBlock  RegistryBlock; /* 0x4 */
+	int             Declined;      /* 0x194 */
+	unsigned long   MajorVersion;  /* 0x198 */
+	unsigned long   MinorVersion;  /* 0x19c */
 };
 
 #endif /* BW1_DECOMP_LH_VERSION_INCLUDED_H */
