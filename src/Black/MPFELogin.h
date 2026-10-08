@@ -16,11 +16,14 @@ struct SetupStaticText;
 class MPFELogin : public DialogBoxBase
 {
 public:
-	SetupBigButton*  LeftArrowButton; /* 0x10 */
+	// BW1W120 00d40f38
+	static MPFELogin Instance;
+
+	SetupBigButton*  LeftArrowButton;
 	SetupBigButton*  RightArrowButton;
 	SetupEdit*       edit;
 	SetupEdit*       edit2;
-	SetupStaticText* text1; /* 0x20 */
+	SetupStaticText* text1;
 	SetupStaticText* text2;
 	SetupStaticText* text3;
 	MPFEDatabase     database;

@@ -243,23 +243,24 @@ Black/Bookmark.cpp:
 
 Black/BuildingSite.cpp:
 	.text       start:0x0043AD90 end:0x0043DD40
-	.rdata      start:0x008C6B58 end:0x008C6F24
+	.rdata      start:0x008C6B58 end:0x008C7050
 	.CRT$XCU    start:0x009C61C4 end:0x009C61D4 align:4
-	.data       start:0x009CD40C end:0x009CD6D0
-	.bss        start:0x00C58CD0 end:0x00C599FC
+	.data       start:0x009CD40C end:0x009CD4F0
+	.bss        start:0x00C58CD0 end:0x00C58EE0
 
 Black/BWGameSpy.cpp:
 	.text       start:0x0043DD40 end:0x004407B0
-	.rdata      start:0x008C6F24 end:0x008C70A4
+	.rdata      start:0x008C7050 end:0x008C70AC
+	.rdata$r    start:0x009A86E8 end:0x009A8794
 	.CRT$XCU    start:0x009C61D4 end:0x009C61E8 align:4
-	.data       start:0x009CD6D0 end:0x009CD984
-	.bss        start:0x00C599FC end:0x00C59B24
+	.data       start:0x009CD4F0 end:0x009CD970
+	.bss        start:0x00C58EE0 end:0x00C59B24
 
 Black/BWLan.cpp:
 	.text       start:0x004407B0 end:0x00441630
-	.rdata      start:0x008C70A4 end:0x008C7110
+	.rdata      start:0x008C70AC end:0x008C7110
 	.CRT$XCU    start:0x009C61E8 end:0x009C61F8 align:4
-	.data       start:0x009CD984 end:0x009CD9A0
+	.data       start:0x009CD970 end:0x009CD9A0
 	.bss        start:0x00C59B24 end:0x00C59BBC
 
 Black/Camera.cpp:

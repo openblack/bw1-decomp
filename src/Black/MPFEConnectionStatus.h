@@ -10,7 +10,7 @@ struct MPFEConnectionStatus
 	// Descriptive singleton name; extracted storage.
 	// BW1W120 00d40e20
 	static MPFEConnectionStatus Status;
-	LOBBY_TYPE                  type; /* 0x0 */
+	LOBBY_TYPE                  type;
 
 	// Non-virtual methods
 
@@ -18,6 +18,8 @@ struct MPFEConnectionStatus
 	bool IsLanLobby();
 	// BW1W120 0062dac0 BW1M119 013a9330
 	bool IsInternetLobby();
+	// BW1W120 0062d8f0 BW1M119 013a9820
+	void LeaveLobbyScreen();
 };
 
 #endif /* BW1_DECOMP_MPFE_CONNECTION_STATUS_INCLUDED_H */

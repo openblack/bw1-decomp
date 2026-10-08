@@ -11,3 +11,4 @@ bool ARGS_FORCEINETCONN;
 bool ARGS_NOINETCONN;
 bool Dat_00D46AC1;
 bool ARGS_NOLOADMUSIC;
+bool QuittingMultiplayerGame;

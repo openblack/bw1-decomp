@@ -16,8 +16,6 @@ public:
 
 	// BW1W120 00633050 BW1M119 0139da70
 	virtual ~MPFEUserTeamList();
-	// BW1W120 00626a00 BW1M119 inlined
-	virtual void Send(MPFEPlayerDetails* param_1);
 };
 
 #endif /* BW1_DECOMP_MPFE_USER_TEAM_LIST_INCLUDED_H */

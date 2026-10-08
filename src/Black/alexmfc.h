@@ -308,6 +308,12 @@ struct SetupControl
 	int GetHalfTextSize();
 };
 
+enum MSGBOXSTYLE
+{
+	MSGBOXSTYLE_SINGLE_BUTTON = 0,
+	MSGBOXSTYLE_NO_BUTTONS = 5,
+};
+
 struct SetupBox
 {
 	// BW1W120 00c4ccec
@@ -393,7 +399,7 @@ struct SetupBox
 	// BW1W120 00411150 BW1M119 014efd50
 	void CleanOld();
 	// BW1W120 00411190 BW1M119 013ccd30
-	void MessageBoxA(const char16_t* param_2, uint32_t param_3, uint32_t param_4);
+	void MessageBoxA(char16_t* text, MSGBOXSTYLE style, unsigned long hold_data);
 };
 
 // BW1W120 inlined BW1M119 inlined

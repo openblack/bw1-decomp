@@ -11,7 +11,10 @@ public:
 	// BW1W120 10008760 BW1M119 0116ebb0 (LHCombined Release)
 	__declspec(dllimport) static LH_RETURN GetMajorMinor(char* module, unsigned long* major, unsigned long* minor);
 	// BW1W120 10002750 BW1M119 null
-	__declspec(dllimport) static unsigned long GetModuleChecksum();
+	__declspec(dllimport) static unsigned long GetModuleChecksum() { return ModuleChecksum; }
+
+private:
+	__declspec(dllimport) static unsigned long ModuleChecksum;
 };
 
 #endif /* BW1_DECOMP_LH_VERSION_INCLUDED_H */

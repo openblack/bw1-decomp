@@ -1,16 +1,35 @@
 #ifndef BW1_DECOMP_LH_TIMER_INCLUDED_INL
 #define BW1_DECOMP_LH_TIMER_INCLUDED_INL
 
+// TODO: Very unlikely .inl is canonical. It should be removed and rewritten
+
 #include "LHTimer.h"
 
 // Opt-in definitions: GameOSFile inlines these, but LHScreen retains an external
 // SetSpeedUpFactor call at BW1W120 007de37e.
+// Out-of-line copies come out in definition order. This order reproduces the Stop, MSeconds,
+// SetSpeedUpFactor copies after BWGameSpy::Think in BW1W100 and BW1W110.
 // Avoid exposing windows.h macros to game headers.
 extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount(void);
 
 inline bool32_t LHTimer::Running()
 {
 	return SpeedUpFactor != 0.0f;
+}
+
+inline void LHTimer::Start()
+{
+	SpeedUpFactor = 0.00001f;
+	SetSpeedUpFactor(SpeedUpFactor2);
+}
+
+inline void LHTimer::Stop()
+{
+	if (Running())
+	{
+		SpeedUpFactor2 = GetSpeedUpFactor();
+		SetSpeedUpFactor(0.0f);
+	}
 }
 
 inline int LHTimer::MSeconds()
@@ -38,15 +57,6 @@ inline void LHTimer::SetSpeedUpFactor(float factor)
 	}
 }
 
-inline void LHTimer::Stop()
-{
-	if (Running())
-	{
-		SpeedUpFactor2 = GetSpeedUpFactor();
-		SetSpeedUpFactor(0.0f);
-	}
-}
-
 inline void LHTimer::Reset(uint32_t value)
 {
 	TickCount = GetTickCount();
@@ -54,10 +64,10 @@ inline void LHTimer::Reset(uint32_t value)
 	Stop();
 }
 
-inline void LHTimer::Start()
+inline void LHTimer::Restart(uint32_t value)
 {
-	SpeedUpFactor = 0.00001f;
-	SetSpeedUpFactor(SpeedUpFactor2);
+	Reset(value);
+	Start();
 }
 
 #endif /* BW1_DECOMP_LH_TIMER_INCLUDED_INL */

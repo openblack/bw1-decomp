@@ -14,7 +14,7 @@ public:
 	// BW1W120 100029d0 BW1M119 0116e140 (LHCombined Release)
 	__declspec(dllimport) LHSPrintf(char* format, ...);
 	// BW1W120 10001050 BW1M119 01103cb0 (LHCombined Release)
-	__declspec(dllimport) operator char*();
+	__declspec(dllimport) operator char*() { return Text; }
 };
 
 static_assert(sizeof(LHSPrintf) == 0x401, "LHSPrintf size is incorrect");

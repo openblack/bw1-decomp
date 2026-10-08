@@ -10,19 +10,19 @@
 
 // Forward Declares
 
-struct LHNetUser;
+class LHNetUser;
 struct LHTransportInfo;
 
 struct LHMPServerStartInfo
 {
-	struct LHNetUser*       user; /* 0x0 */
+	LHNetUser*              user;
 	struct LHTransportInfo* ListenerAddress;
 	char*                   RegisteredName;
 	uint8_t                 field_0xc[0x18];
-	char*                   UserFile; /* 0x24 */
+	char*                   UserFile;
 	char*                   GameFile;
 	enum LH_OPERATING_MODE  OperatingMode;
-	bool32_t                RunMessageServer; /* 0x30 */
+	bool32_t                RunMessageServer;
 	uint8_t                 field_0x34[0xc88];
 };
 static_assert(sizeof(LHMPServerStartInfo) == 0xcbc, "Data type is of wrong size");
