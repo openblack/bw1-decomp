@@ -449,6 +449,20 @@ def MultiplayerObject(completed, name, **options):
 cflags_delayimp = [*(f for f in cflags_base if f not in ("/O2", "/Og", "/Ob1")), "/O1"]
 
 
+# The GameSpy SDK is C with its own relative includes. It is built without the
+# project's include directories, whose assert.h is C++-only.
+cflags_gamespy = list(cflags_base)
+for _include_dir in includes_project[1::2]:
+    _index = cflags_gamespy.index(_include_dir)
+    del cflags_gamespy[_index - 1 : _index + 1]
+
+
+# A GameSpy SDK object in LHMultiplayerR.dll, built from the SDK sources under src/GameSpy.
+def GameSpyObject(completed, name, **options):
+    source = name.replace("GameSpy/", "GameSpy/src/GameSpy/", 1)
+    return Object(completed, name, source=source, cflags=cflags_gamespy, **options)
+
+
 # A game-code object (Black/), compiled with cflags_gamecode (Pentium Pro, /G6)
 # instead of the plain cflags_base used for the static libraries. Per-object
 # extra_cflags still apply on top, as with Object.
@@ -1768,28 +1782,29 @@ config.libs = [
             Object(Matching, "LHMultiplayer/zlib/infutil.c", source="zlib/infutil.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
             Object(Matching, "LHMultiplayer/zlib/inffast.c", source="zlib/inffast.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
 
-            Object(NonMatching, "GameSpy/Peer/peerMain.c"),
-            Object(NonMatching, "GameSpy/Peer/peerCallbacks.c"),
-            Object(NonMatching, "GameSpy/Peer/peerOperations.c"),
-            Object(NonMatching, "GameSpy/nonport.c"),
-            Object(NonMatching, "GameSpy/Chat/chatMain.c"),
-            Object(NonMatching, "GameSpy/Peer/peerCEngine.c"),
-            Object(NonMatching, "GameSpy/Peer/peerRooms.c"),
-            Object(NonMatching, "GameSpy/Peer/peerPing.c"),
-            Object(NonMatching, "GameSpy/Peer/peerPlayers.c"),
-            Object(NonMatching, "GameSpy/qr/gqueryreporting.c"),
-            Object(NonMatching, "GameSpy/Peer/peerGlobalCallbacks.c"),
-            Object(NonMatching, "GameSpy/Peer/peerMangle.c"),
-            Object(NonMatching, "GameSpy/CEngine/gserver.c"),
-            Object(NonMatching, "GameSpy/md5c.c"),
-            Object(NonMatching, "GameSpy/CEngine/gserverlist.c"),
-            Object(NonMatching, "GameSpy/darray.c"),
-            Object(NonMatching, "GameSpy/Chat/chatSocket.c"),
-            Object(NonMatching, "GameSpy/Chat/chatCallbacks.c"),
-            Object(NonMatching, "GameSpy/Chat/chatChannel.c"),
-            Object(NonMatching, "GameSpy/Chat/chatHandlers.c"),
-            Object(NonMatching, "GameSpy/hashtable.c"),
-            Object(NonMatching, "GameSpy/pinger/pingerMain.c"),
+            GameSpyObject(NonMatching, "GameSpy/Peer/peerMain.c"),
+            GameSpyObject(Matching, "GameSpy/gcdkey/gcdkeyc.c"),
+            GameSpyObject(NonMatching, "GameSpy/Peer/peerCallbacks.c"),
+            GameSpyObject(NonMatching, "GameSpy/Peer/peerOperations.c"),
+            GameSpyObject(Matching, "GameSpy/nonport.c"),
+            GameSpyObject(NonMatching, "GameSpy/Chat/chatMain.c"),
+            GameSpyObject(NonMatching, "GameSpy/Peer/peerCEngine.c"),
+            GameSpyObject(NonMatching, "GameSpy/Peer/peerRooms.c"),
+            GameSpyObject(NonMatching, "GameSpy/Peer/peerPing.c"),
+            GameSpyObject(NonMatching, "GameSpy/Peer/peerPlayers.c"),
+            GameSpyObject(NonMatching, "GameSpy/qr/gqueryreporting.c"),
+            GameSpyObject(NonMatching, "GameSpy/Peer/peerGlobalCallbacks.c"),
+            GameSpyObject(NonMatching, "GameSpy/Peer/peerMangle.c"),
+            GameSpyObject(NonMatching, "GameSpy/CEngine/gserver.c"),
+            GameSpyObject(Matching, "GameSpy/md5c.c"),
+            GameSpyObject(NonMatching, "GameSpy/CEngine/gserverlist.c"),
+            GameSpyObject(Matching, "GameSpy/darray.c", extra_cflags=["/D_NO_NOPORT_H_"]),
+            GameSpyObject(NonMatching, "GameSpy/Chat/chatSocket.c"),
+            GameSpyObject(NonMatching, "GameSpy/Chat/chatCallbacks.c"),
+            GameSpyObject(NonMatching, "GameSpy/Chat/chatChannel.c"),
+            GameSpyObject(NonMatching, "GameSpy/Chat/chatHandlers.c"),
+            GameSpyObject(Matching, "GameSpy/hashtable.c", extra_cflags=["/D_NO_NOPORT_H_"]),
+            GameSpyObject(Matching, "GameSpy/pinger/pingerMain.c"),
 
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\purevirt.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\trnsctrl.obj", module="LHMultiplayer", progress_category="sdk"),

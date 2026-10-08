@@ -895,8 +895,12 @@ LHMultiplayer/lib/libcmt/constpow.obj:
 	.data       start:0x100675B0 end:0x1006786C
 
 GameSpy/Peer/peerMain.c:
-	.text       start:0x1003AEC0 end:0x1003C8B0
-	.data       start:0x1006786C end:0x100678C0
+	.text       start:0x1003AEC0 end:0x1003C790
+	.data       start:0x1006786C end:0x10067890
+
+GameSpy/gcdkey/gcdkeyc.c:
+	.text       start:0x1003C790 end:0x1003C8B0
+	.data       start:0x10067890 end:0x100678C0
 
 GameSpy/Peer/peerCallbacks.c:
 	.text       start:0x1003C8B0 end:0x1003E170

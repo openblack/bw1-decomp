@@ -93,12 +93,8 @@ DArray ArrayNew(int elemSize, int numElemsToAllocate,
 	array->elemsize = elemSize;
 	array->growby	= numElemsToAllocate;
 	array->elemfreefn = elemFreeFn;
-	if (array->capacity != 0)
-	{
-		array->list = gsimalloc((size_t)array->capacity * array->elemsize);
-		GS_ASSERT(array->list);
-	} else
-		array->list = NULL;
+	array->list = gsimalloc((size_t)array->capacity * array->elemsize);
+	GS_ASSERT(array->list);
 
 	return array;
 }
@@ -119,32 +115,6 @@ void ArrayFree(DArray array)
 	gsifree(array);
 }
 
-void *ArrayGetDataPtr(DArray array)
-{
-	GS_ASSERT(array);
-	return array->list;
-}
-
-void ArraySetDataPtr(DArray array, void *ptr, int count, int capacity)
-{
-	int i;
-	
-	GS_ASSERT(array);
-	if (array->list != NULL)
-	{
-		for (i = 0; i < array->count; i++)
-		{
-			FreeElement(array, i);
-		}
-		gsifree(array->list);
-	}
-	array->list = ptr;
-	array->count = count;
-	array->capacity = capacity;
-
-}
-
-
 int ArrayLength(const DArray array)
 {
 	GS_ASSERT(array)
@@ -153,11 +123,8 @@ int ArrayLength(const DArray array)
 
 void *ArrayNth(DArray array, int n)
 {
-	// 2004.Nov.16.JED - modified GS_ASSERT to include "if" to add robustness
 	GS_ASSERT( (n >= 0) && (n < array->count));
-	if( ! ((n >= 0) && (n < array->count)) )
-		return NULL;
-	
+
 	return (char *)array->list + array->elemsize*n;
 }
 
@@ -167,8 +134,7 @@ void *ArrayNth(DArray array, int n)
 void ArrayAppend(DArray array, const void *newElem)
 {
 	GS_ASSERT(array);
-	if(array)
-		ArrayInsertAt(array, newElem, array->count);
+	ArrayInsertAt(array, newElem, array->count);
 }
 
 void ArrayInsertAt(DArray array, const void *newElem, int n)
@@ -216,8 +182,14 @@ void ArrayDeleteAt(DArray array, int n)
  	GS_ASSERT (array)
    	GS_ASSERT ( (n >= 0) && (n < array->count));
 
-	FreeElement(array,n);
-	ArrayRemoveAt(array, n);
+#ifdef VERSION_BW1W120
+	/* BW1: Only 1.20's copy checks the index. */
+	if ((n >= 0) && (n < array->count))
+#endif
+	{
+		FreeElement(array,n);
+		ArrayRemoveAt(array, n);
+	}
 }
 
 
@@ -243,7 +215,7 @@ int ArraySearch(DArray array, const void *key, ArrayCompareFn comparator,
 {
 	void *res;
 	int found = 1;
-	if (!array || array->count == 0)
+	if (array->count == 0)
 		return NOT_FOUND;
 
    	if (isSorted)
@@ -291,24 +263,6 @@ void * ArrayMap2(DArray array, ArrayMapFn2 fn, void *clientData)
 	GS_ASSERT(clientData);
 
 	for (i = 0; i < array->count; i++)
-	{
-		pcurr = ArrayNth(array,i);
-		if(!fn(pcurr, clientData))
-			return pcurr;
-	}
-
-	return NULL;
-}
-
-void * ArrayMapBackwards2(DArray array, ArrayMapFn2 fn, void *clientData)
-{
-	int i;
-	void * pcurr;
-
-	GS_ASSERT(fn);
-	GS_ASSERT(clientData);
-
-	for (i = (array->count - 1) ; i >= 0 ; i--)
 	{
 		pcurr = ArrayNth(array,i);
 		if(!fn(pcurr, clientData))

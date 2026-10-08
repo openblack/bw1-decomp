@@ -116,6 +116,77 @@ static uint16 piGetNextID(void)
 	return ID;
 }
 
+static void piSocketSelect(PINGERBool * readFlag, PINGERBool * writeFlag, PINGERBool * exceptFlag)
+{
+	fd_set fdRead;
+	fd_set fdWrite;
+	fd_set fdExcept;
+	fd_set * readFds;
+	fd_set * writeFds;
+	fd_set * exceptFds;
+	struct timeval timeout;
+	int rcode;
+
+	// Setup the fd sets.
+	/////////////////////
+	if(readFlag != NULL)
+	{
+		FD_ZERO(&fdRead);
+		FD_SET(piSocket, &fdRead);
+		readFds = &fdRead;
+	}
+	else
+		readFds = NULL;
+	if(writeFlag != NULL)
+	{
+		FD_ZERO(&fdWrite);
+		FD_SET(piSocket, &fdWrite);
+		writeFds = &fdWrite;
+	}
+	else
+		writeFds = NULL;
+	if(exceptFlag != NULL)
+	{
+		FD_ZERO(&fdExcept);
+		FD_SET(piSocket, &fdExcept);
+		exceptFds = &fdExcept;
+	}
+	else
+		exceptFds = NULL;
+
+	// Check the socket without blocking.
+	/////////////////////////////////////
+	timeout.tv_sec = 0;
+	timeout.tv_usec = 0;
+	rcode = select(FD_SETSIZE, readFds, writeFds, exceptFds, &timeout);
+	if(rcode == SOCKET_ERROR)
+		return;
+
+	// Return the results.
+	//////////////////////
+	if(readFlag != NULL)
+	{
+		if((rcode > 0) && FD_ISSET(piSocket, readFds))
+			*readFlag = PINGERTrue;
+		else
+			*readFlag = PINGERFalse;
+	}
+	if(writeFlag != NULL)
+	{
+		if((rcode > 0) && FD_ISSET(piSocket, writeFds))
+			*writeFlag = PINGERTrue;
+		else
+			*writeFlag = PINGERFalse;
+	}
+	if(exceptFlag != NULL)
+	{
+		if((rcode > 0) && FD_ISSET(piSocket, exceptFds))
+			*exceptFlag = PINGERTrue;
+		else
+			*exceptFlag = PINGERFalse;
+	}
+}
+
 static PINGERBool piBytesToPing(unsigned char * buffer, piUDPPing * udpPing, char * data)
 {
 	assert(buffer != NULL);
@@ -205,6 +276,7 @@ static PINGERBool piSendPing(SOCKADDR_IN * to, uint16 trip, uint16 ID_A, uint16 
 	unsigned char buffer[PINGER_UDP_PING_SIZE];
 	piUDPPing udpPing;
 	int rcode;
+	int iLastError;
 
 	assert(to != NULL);
 	assert((trip >= 1) && (trip <= 3));
@@ -229,7 +301,10 @@ static PINGERBool piSendPing(SOCKADDR_IN * to, uint16 trip, uint16 ID_A, uint16 
 	// Did it send ok?
 	//////////////////
 	if(rcode != PINGER_UDP_PING_SIZE)
+	{
+		iLastError = WSAGetLastError();
 		return PINGERFalse;
+	}
 
 	return PINGERTrue;
 }
@@ -240,7 +315,7 @@ static PINGERBool piSocketInit(const char * localAddress,
 	int rcode;
 	SOCKADDR_IN sockaddr;
 	int bFlag;
-	//int iLastError;
+	int iLastError;
 
 	assert(localPort != 0);
 
@@ -296,7 +371,7 @@ static PINGERBool piSocketInit(const char * localAddress,
 	piSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 	if(piSocket == INVALID_SOCKET)
 	{
-//		iLastError = GOAGetLastError(piSocket);
+		iLastError = WSAGetLastError();
 		assert(0);
 		return PINGERFalse;
 	}
@@ -319,7 +394,7 @@ static PINGERBool piSocketInit(const char * localAddress,
 	rcode = bind(piSocket, (SOCKADDR *)&sockaddr, sizeof(SOCKADDR_IN));
 	if (gsiSocketIsError(rcode))
 	{
-//		iLastError = GOAGetLastError(piSocket);
+		iLastError = WSAGetLastError();
 		assert(0);
 		return PINGERFalse;
 	}
@@ -357,7 +432,7 @@ static void piQueueCallback
 	/////////////////
 	if(data)
 	{
-		callback.data = (char *)gsimalloc((unsigned int)len);
+		callback.data = (char *)malloc((unsigned int)len);
 		if(!callback.data)
 			return;
 		memcpy(callback.data, data, (unsigned int)len);
@@ -401,7 +476,7 @@ static void piCallCallbacks(void)
 
 		// gsifree it.
 		///////////
-		gsifree(callback->data);
+		free(callback->data);
 	}
 }
 
@@ -576,11 +651,9 @@ static int piCalculatePing(gsi_time sendTime, gsi_time recvTime)
 	//////////////////////////////////////////////////////
 	if(piLastThinkTime != 0)
 	{
-#if 0
-		ping -= ((int)(recvTime - piLastThinkTime) / 2);
+		ping -= ((recvTime - piLastThinkTime) / 2);
 		if(ping < 0)
 			ping = 0;
-#endif
 	}
 
 	return ping;
@@ -783,11 +856,16 @@ static void piProcessIncoming(void)
 	gsi_time recvTime;
 	piUDPPing udpPing;
 	char data[PI_DATA_MAX_LEN];
+	PINGERBool readFlag;
 	
 	// Check for incoming dgrams.
 	/////////////////////////////
-	while(piInitialized && CanReceiveOnSocket(piSocket))
+	do
 	{
+		piSocketSelect(&readFlag, NULL, NULL);
+		if(!readFlag)
+			continue;
+
 		// Read the dgram.
 		//////////////////
 		len = sizeof(SOCKADDR_IN);
@@ -798,7 +876,7 @@ static void piProcessIncoming(void)
 		//////////////////////
 		if (gsiSocketIsError(rcode))
 		{
-			if(GOAGetLastError(piSocket) == WSAEMSGSIZE)
+			if(WSAGetLastError() == WSAEMSGSIZE)
 			{
 				// Ignore "too big" errors.
 				///////////////////////////
@@ -831,6 +909,7 @@ static void piProcessIncoming(void)
 			piProcessPing(&udpPing, data, &from, recvTime);
 		}
 	}
+	while(piInitialized && readFlag);
 
 	// Last time we checked for incoming data.
 	//////////////////////////////////////////

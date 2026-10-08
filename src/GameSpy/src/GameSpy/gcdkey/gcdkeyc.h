@@ -29,7 +29,8 @@ typedef enum
 } CDResponseMethod;
 	
 	
-void gcd_compute_response(char *cdkey, char *challenge,/*out*/ char response[73], CDResponseMethod method);
+/* BW1: LHMultiplayerR.dll links a version from before the reauth method parameter. */
+void gcd_compute_response(char *cdkey, char *challenge,/*out*/ char response[73]);
 
 
 #ifdef __cplusplus

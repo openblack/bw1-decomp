@@ -325,17 +325,14 @@ static void MD5_memset (POINTER output, int value, unsigned int len)
 
 #endif
 
+/* BW1: LHMultiplayerR.dll links the version from before the 05-16-2007 change away
+   from sprintf (see changelog.txt). */
 void MD5Print (unsigned char digest[16], char output[33])
 {
-	static const char hex_digits[] = "0123456789abcdef";
 	unsigned int i;
 
 	for (i = 0; i < 16; i++)
-	{
-		output[i*2  ] = hex_digits[digest[i] / 16];
-		output[i*2+1] = hex_digits[digest[i] % 16];
-	}
-	output[32] = '\0';
+		sprintf(output+i*2,"%02x", digest[i]);
 }
 
 void MD5Digest (unsigned char *input, unsigned int len, char output[33])
