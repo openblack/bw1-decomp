@@ -80,9 +80,6 @@ void TableFree(HashTable table)
 	
 	assert(table);
 
-	if (NULL == table )
-		return;
-	
 	for (i = 0 ; i < table->nbuckets ; i++)
 		ArrayFree(table->buckets[i]);
 	gsifree(table->buckets);
@@ -96,9 +93,6 @@ int TableCount(HashTable table)
 	
 	assert(table);
 
-	if (NULL == table )
-		return count;
-
 	for (i = 0 ; i < table->nbuckets ; i++)
 		count += ArrayLength(table->buckets[i]);
 	
@@ -111,9 +105,6 @@ void TableEnter(HashTable table, const void *newElem)
 	int hash, itempos;
 	
 	assert(table);
-
-	if (NULL == table )
-		return;
 
 	hash = table->hashfn(newElem, table->nbuckets);
 	itempos = ArraySearch(table->buckets[hash], newElem, table->compfn, 0,0);
@@ -129,9 +120,6 @@ int TableRemove(HashTable table, const void *delElem)
 	
 	assert(table);
 
-	if (NULL == table )
-		return 0;
-
 	hash = table->hashfn(delElem, table->nbuckets);
 	itempos = ArraySearch(table->buckets[hash], delElem, table->compfn, 0,0);
 	if (itempos == NOT_FOUND)
@@ -146,9 +134,6 @@ void *TableLookup(HashTable table, const void *elemKey)
 	int hash, itempos;
 	
 	assert(table);
-
-	if (NULL == table )
-		return NULL;
 
 	hash = table->hashfn(elemKey, table->nbuckets);
 	itempos = ArraySearch(table->buckets[hash], elemKey, table->compfn, 0,
@@ -167,9 +152,6 @@ void TableMap(HashTable table, TableMapFn fn, void *clientData)
 	assert(table);
 	assert(fn);
 
-	if (NULL == table || NULL == fn)
-		return;
-	
 	for (i = 0 ; i < table->nbuckets ; i++)
 		ArrayMap(table->buckets[i], fn, clientData);
 	
@@ -196,23 +178,6 @@ void * TableMap2(HashTable table, TableMapFn2 fn, void *clientData)
 	for (i = 0 ; i < table->nbuckets ; i++)
 	{
 		pcurr = ArrayMap2(table->buckets[i], fn, clientData);
-		if(pcurr)
-			return pcurr;
-	}
-
-	return NULL;
-}
-
-void * TableMapSafe2(HashTable table, TableMapFn2 fn, void *clientData)
-{
-	int i;
-	void * pcurr;
-	
-	assert(fn);
-	
-	for (i = 0 ; i < table->nbuckets ; i++)
-	{
-		pcurr = ArrayMapBackwards2(table->buckets[i], fn, clientData);
 		if(pcurr)
 			return pcurr;
 	}

@@ -25,7 +25,7 @@ LH_RETURN LHSerial::Connect(LHTransportInfo* info)
 	if (Connected)
 		return LH_ERROR;
 
-	address = (const LHSerialAddress*)&info->port;
+	address = (const LHSerialAddress*)info->data;
 	wsprintfA(name, "COM%i", address->Port);
 	Handle = CreateFileA(name, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING,
 	                     FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, NULL);
