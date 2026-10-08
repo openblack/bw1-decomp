@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{f4ef9568-7eb6-4c35-92f5-aafe5a0007d3}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{0e83d88b-544f-4e2d-a98d-4f11d54b5a1f}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{71766d68-cbe2-4e5b-8baf-751c4e66ef02}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="PersistentStorageSDK">
+      <UniqueIdentifier>{c95f56e7-744c-4e36-9172-f699bcb5dc0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PersistentStorageSDK\Source Files">
+      <UniqueIdentifier>{0ee1c007-717d-4deb-b951-b3b41907c218}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PersistentStorageSDK\Header Files">
+      <UniqueIdentifier>{3c68a7f9-1056-43a2-84db-9a6c37ce1a4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PresenceSDK">
+      <UniqueIdentifier>{2dddce61-ea0f-499e-81e8-cdb2bbffc2fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PresenceSDK\Source Files">
+      <UniqueIdentifier>{325531b6-376e-47b9-a6fa-238ea1d726b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PresenceSDK\Header Files">
+      <UniqueIdentifier>{36f440a9-4e29-4f40-8bab-51198383ca99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon">
+      <UniqueIdentifier>{877446b6-735a-47cf-a4ec-1acc86d1d6bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Source Files">
+      <UniqueIdentifier>{e282dbaf-9a35-4e44-b3c3-26a7cc27c150}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Header Files">
+      <UniqueIdentifier>{c90de435-5e1d-4e32-a6bd-8f58a4ee4741}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HttpSDK">
+      <UniqueIdentifier>{a3ec7ee1-4d00-41b7-82a4-8cb40f901c63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HttpSDK\Source Files">
+      <UniqueIdentifier>{35b77619-ef4e-45b7-bcd3-016a44577602}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HttpSDK\Header Files">
+      <UniqueIdentifier>{f0463344-ea62-42fa-a976-86b0aed81e2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TransportSDK">
+      <UniqueIdentifier>{ea49f81c-833c-4be0-9edb-7aabd89cd31c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TransportSDK\Source Files">
+      <UniqueIdentifier>{c1e8840a-974a-4ae3-b8de-fcdcbf05b6c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TransportSDK\Header Files">
+      <UniqueIdentifier>{ef336c1f-91c2-4c8e-b849-7710fc116155}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="gp_stats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gp_statsDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gbucket.c">
+      <Filter>PersistentStorageSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gstats.c">
+      <Filter>PersistentStorageSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gp.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpi.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpiBuddy.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpiBuffer.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpiCallback.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpiConnect.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpiInfo.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiKeys.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpiOperation.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpiPeer.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpiProfile.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpiSearch.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpiTransfer.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiUnique.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gp\gpiUtility.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\darray.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAssert.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAvailable.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsCrypt.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsDebug.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsLargeInt.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsMemory.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatform.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformSocket.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformThread.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsRC4.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsSHA1.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsSSL.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsStringUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsUdpEngine.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsXML.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hashtable.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\md5c.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpBuffer.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpCallbacks.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpCommon.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpConnection.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpEncryption.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpMain.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpPost.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpProcess.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Auth.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Buffer.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Callback.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Connection.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Encode.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Filter.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Main.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Message.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Socket.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Utility.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gp_stats.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gp_stats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gp_statsDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gbucket.h">
+      <Filter>PersistentStorageSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpersist.h">
+      <Filter>PersistentStorageSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gstats.h">
+      <Filter>PersistentStorageSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gp.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpi.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpiBuddy.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpiBuffer.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpiCallback.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpiConnect.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpiInfo.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiKeys.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpiOperation.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpiPeer.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpiProfile.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpiSearch.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpiTransfer.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiUnique.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gp\gpiUtility.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\darray.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAssert.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAvailable.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCommon.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCrypt.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsDebug.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsLargeInt.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsMemory.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatform.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformSocket.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformThread.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsRC4.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsSHA1.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsSSL.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsStringUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsUdpEngine.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsXML.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hashtable.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\md5.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttp.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpASCII.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpBuffer.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpCallbacks.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpCommon.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpConnection.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpEncryption.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpMain.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpPost.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpProcess.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Auth.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Buffer.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Callback.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Connection.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Encode.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Filter.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Main.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Message.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Socket.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Utility.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\gp_stats.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\gp_stats.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

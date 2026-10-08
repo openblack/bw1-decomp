@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{330fcefa-0c18-4a67-8373-45ffe483d73c}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{215d9ca0-195c-41b7-952a-0d80599d77c0}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="TransportSDK">
+      <UniqueIdentifier>{d1c26918-354c-47e4-b6f4-976b854402e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TransportSDK\Source Files">
+      <UniqueIdentifier>{d32ef73d-eeb3-43c9-92fb-d4f7591f7360}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TransportSDK\Header Files">
+      <UniqueIdentifier>{e6485c55-16e0-4acd-95eb-7864412cc234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon">
+      <UniqueIdentifier>{f3b826aa-4bb8-4b35-a103-f85d2498ea63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Source Files">
+      <UniqueIdentifier>{98ba1b2a-6158-44bb-bbbe-2b7753f28782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Header Files">
+      <UniqueIdentifier>{68c4cf4f-677c-4384-8e2c-ec5c7c79f726}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="gt2proxy.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gt2Auth.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gt2Buffer.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gt2Callback.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gt2Connection.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gt2Encode.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gt2Filter.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gt2Main.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gt2Message.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gt2Socket.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gt2Utility.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\darray.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAssert.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsDebug.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsMemory.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatform.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformSocket.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformThread.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hashtable.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\gt2.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gt2Auth.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gt2Buffer.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gt2Callback.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gt2Connection.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gt2Encode.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gt2Filter.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gt2Main.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gt2Message.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gt2Socket.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gt2Utility.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\darray.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAssert.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCommon.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsDebug.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsMemory.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatform.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformSocket.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformThread.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hashtable.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

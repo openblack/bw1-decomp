@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2bdb651e-fc41-48d8-9e71-32b643bcad68}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{7ff91fc1-9705-4525-b0a1-1cf000a6764e}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{5e6593f7-dd0b-4735-b04f-92d0e73c4b1c}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="ChatSDK">
+      <UniqueIdentifier>{d2b41749-9328-45dc-a739-4520a5392476}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ChatSDK\Source Files">
+      <UniqueIdentifier>{2d25d143-b8b4-4e3b-94dc-94d2dabae58f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ChatSDK\Header Files">
+      <UniqueIdentifier>{1078c07e-eef0-4b9c-8fe6-983660e058c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon">
+      <UniqueIdentifier>{b25e15f5-e121-4712-ba9b-cf7b96a4104c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Source Files">
+      <UniqueIdentifier>{7f33f125-836a-43e4-9333-09c9b7682440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Header Files">
+      <UniqueIdentifier>{a42b02f4-d4d6-4db8-bc5e-590798813171}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ChannelListDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChannelModeDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chatty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chattyDoc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chattyView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildFrm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnterDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GetUserInfoDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KickReasonDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SendRawDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SetPasswordDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SetTopicDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TalkDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\chatCallbacks.c">
+      <Filter>ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\chatChannel.c">
+      <Filter>ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\chatCrypt.c">
+      <Filter>ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\chatHandlers.c">
+      <Filter>ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\chatMain.c">
+      <Filter>ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\chatSocket.c">
+      <Filter>ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\darray.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAssert.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAvailable.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsDebug.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsMemory.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatform.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformSocket.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformThread.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsStringUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hashtable.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\md5c.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="chatty.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ChannelListDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChannelModeDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="chatty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="chattyDoc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="chattyView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildFrm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnterDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GetUserInfoDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KickReasonDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SendRawDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SetPasswordDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SetTopicDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TalkDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\chat.h">
+      <Filter>ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\chatASCII.h">
+      <Filter>ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\chatCallbacks.h">
+      <Filter>ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\chatChannel.h">
+      <Filter>ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\chatCrypt.h">
+      <Filter>ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\chatHandlers.h">
+      <Filter>ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\chatMain.h">
+      <Filter>ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\chatSocket.h">
+      <Filter>ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\darray.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAssert.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAvailable.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCommon.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsDebug.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsMemory.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatform.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformSocket.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformThread.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsStringUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hashtable.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\md5.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\chatty.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\chattyDoc.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\chatty.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

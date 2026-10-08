@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{fd071bb5-8b2a-4642-a76a-9e2b8a3dd5a9}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="GOA">
+      <UniqueIdentifier>{5c27aab4-085e-4133-a30f-db4f6214e3f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GOA\sake">
+      <UniqueIdentifier>{3aa4fe1c-9d16-41e7-b847-02d4b7e0145d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GOA\Common">
+      <UniqueIdentifier>{a8f1b5b2-aab0-4844-a4c1-86e0f5f7f721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GOA\ghttp">
+      <UniqueIdentifier>{3feaeabd-e338-475c-abe8-666f1198ebfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GOA\gp">
+      <UniqueIdentifier>{a06393ec-6c93-495f-a0f0-45ccda0194b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GOA\gt2">
+      <UniqueIdentifier>{62b6d4f3-70fc-4b69-b8cb-eb0790aea6ed}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="saketest.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sakeMain.c">
+      <Filter>GOA\sake</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sakeRequest.c">
+      <Filter>GOA\sake</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sakeRequestMisc.c">
+      <Filter>GOA\sake</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sakeRequestModify.c">
+      <Filter>GOA\sake</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sakeRequestRead.c">
+      <Filter>GOA\sake</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\darray.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAssert.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAvailable.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsCore.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsCrypt.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsDebug.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsLargeInt.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsMemory.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatform.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformSocket.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformThread.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformUtil.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsRC4.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsSHA1.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsSoap.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsSSL.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsStringUtil.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsUdpEngine.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsXML.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hashtable.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\md5c.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\win32\Win32Common.c">
+      <Filter>GOA\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpBuffer.c">
+      <Filter>GOA\ghttp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpCallbacks.c">
+      <Filter>GOA\ghttp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpCommon.c">
+      <Filter>GOA\ghttp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpConnection.c">
+      <Filter>GOA\ghttp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpEncryption.c">
+      <Filter>GOA\ghttp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpMain.c">
+      <Filter>GOA\ghttp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpPost.c">
+      <Filter>GOA\ghttp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\ghttp\ghttpProcess.c">
+      <Filter>GOA\ghttp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gp.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpi.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiBuddy.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiBuffer.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiCallback.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiConnect.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiInfo.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiKeys.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiOperation.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiPeer.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiProfile.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiSearch.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiTransfer.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiUnique.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiUtility.c">
+      <Filter>GOA\gp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Auth.c">
+      <Filter>GOA\gt2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Buffer.c">
+      <Filter>GOA\gt2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Callback.c">
+      <Filter>GOA\gt2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Connection.c">
+      <Filter>GOA\gt2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Encode.c">
+      <Filter>GOA\gt2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Filter.c">
+      <Filter>GOA\gt2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Main.c">
+      <Filter>GOA\gt2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Message.c">
+      <Filter>GOA\gt2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Socket.c">
+      <Filter>GOA\gt2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Utility.c">
+      <Filter>GOA\gt2</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\sake.h">
+      <Filter>GOA\sake</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sakeMain.h">
+      <Filter>GOA\sake</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sakeRequest.h">
+      <Filter>GOA\sake</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sakeRequestInternal.h">
+      <Filter>GOA\sake</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\darray.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAssert.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAvailable.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCommon.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCore.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCrypt.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsDebug.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsLargeInt.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsMemory.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatform.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformSocket.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformThread.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformUtil.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsRC4.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsSHA1.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsSoap.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsSSL.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsStringUtil.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsUdpEngine.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsXML.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hashtable.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\md5.h">
+      <Filter>GOA\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttp.h">
+      <Filter>GOA\ghttp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpASCII.h">
+      <Filter>GOA\ghttp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpBuffer.h">
+      <Filter>GOA\ghttp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpCallbacks.h">
+      <Filter>GOA\ghttp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpCommon.h">
+      <Filter>GOA\ghttp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpConnection.h">
+      <Filter>GOA\ghttp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpEncryption.h">
+      <Filter>GOA\ghttp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpMain.h">
+      <Filter>GOA\ghttp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpPost.h">
+      <Filter>GOA\ghttp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\ghttp\ghttpProcess.h">
+      <Filter>GOA\ghttp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gp.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpi.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiBuddy.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiBuffer.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiCallback.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiConnect.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiInfo.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiKeys.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiOperation.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiPeer.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiProfile.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiSearch.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiTransfer.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiUnique.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiUtility.h">
+      <Filter>GOA\gp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2.h">
+      <Filter>GOA\gt2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Auth.h">
+      <Filter>GOA\gt2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Buffer.h">
+      <Filter>GOA\gt2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Callback.h">
+      <Filter>GOA\gt2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Connection.h">
+      <Filter>GOA\gt2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Encode.h">
+      <Filter>GOA\gt2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Filter.h">
+      <Filter>GOA\gt2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Main.h">
+      <Filter>GOA\gt2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Message.h">
+      <Filter>GOA\gt2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Socket.h">
+      <Filter>GOA\gt2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Utility.h">
+      <Filter>GOA\gt2</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6e3318d0-d2e9-412f-894a-dd5fdc5b37aa}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{37af4ce7-3330-4fa8-bce8-aabddde48907}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{2b6ec119-6750-451e-b8b6-1dea98a88fbe}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="HttpSDK">
+      <UniqueIdentifier>{6a138040-2056-4ade-90bf-b130c82fc2c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HttpSDK\Source Files">
+      <UniqueIdentifier>{0dfb532d-1df0-48bd-bf2d-0251fc136162}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HttpSDK\Header Files">
+      <UniqueIdentifier>{5e8ea426-e04d-422f-acef-d93fe7f0060a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon">
+      <UniqueIdentifier>{d67d80dd-9eb8-4b75-870c-74fbcd084222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Source Files">
+      <UniqueIdentifier>{91b14c25-f193-46a6-bcd5-d339176ce796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Header Files">
+      <UniqueIdentifier>{b1e0f5dc-feda-49d1-9e81-4b5c584cd129}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ghttpmfc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ghttpmfcDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ghttpBuffer.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ghttpCallbacks.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ghttpCommon.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ghttpConnection.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ghttpEncryption.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ghttpMain.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ghttpPost.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ghttpProcess.c">
+      <Filter>HttpSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\darray.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAssert.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsCrypt.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsDebug.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsLargeInt.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsMemory.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatform.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformSocket.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformThread.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsRC4.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsSHA1.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsSSL.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsStringUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsXML.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hashtable.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\md5c.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ghttpmfc.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ghttpmfc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ghttpmfcDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ghttp.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ghttpBuffer.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ghttpCallbacks.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ghttpCommon.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ghttpConnection.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ghttpEncryption.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ghttpMain.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ghttpPost.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ghttpProcess.h">
+      <Filter>HttpSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\darray.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAssert.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCommon.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCrypt.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsDebug.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsLargeInt.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsMemory.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatform.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformSocket.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformThread.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsRC4.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsSHA1.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsSSL.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsStringUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsXML.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hashtable.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\md5.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\ghttpmfc.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\ghttpmfc.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

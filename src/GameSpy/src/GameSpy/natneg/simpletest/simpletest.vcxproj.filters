@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{feae1ef8-8ff6-4577-a2fb-e59d38933fa8}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{62baf2cf-b446-4d1c-91a3-abaafed83eb2}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="NatNegSDK">
+      <UniqueIdentifier>{a2d04517-0bef-4556-9eb6-437d081823fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NatNegSDK\Source Files">
+      <UniqueIdentifier>{566c1b46-0814-4d38-be55-0c4c14f4613b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NatNegSDK\Header Files">
+      <UniqueIdentifier>{14ed541e-8cd9-46cc-8a6f-9b1c5af16e65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon">
+      <UniqueIdentifier>{b0906a22-dcc4-4cdf-855c-248c6d701ca5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Source Files">
+      <UniqueIdentifier>{f49d1220-e8f9-4e04-ba0a-ec4c3b38fc24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Header Files">
+      <UniqueIdentifier>{2ebff2a4-47d9-4a64-bf89-0c0dd469f015}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="simpletest.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NATify.c">
+      <Filter>NatNegSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\natneg.c">
+      <Filter>NatNegSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\darray.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAssert.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAvailable.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsDebug.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsMemory.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatform.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformSocket.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformThread.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsStringUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\win32\Win32Common.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\NATify.h">
+      <Filter>NatNegSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\natneg.h">
+      <Filter>NatNegSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nninternal.h">
+      <Filter>NatNegSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\darray.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAssert.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAvailable.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCommon.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsDebug.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsMemory.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatform.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformSocket.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformThread.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsStringUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\changelog.txt" />
+  </ItemGroup>
+</Project>
