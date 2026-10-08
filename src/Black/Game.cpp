@@ -1945,7 +1945,7 @@ void GGame::Loop()
 				static uint32_t PreviousLoopGameTurn = 0;
 				static int      LoopTimeRemainder = 0;
 				int             sample = (int)((float)(GetTickCount() - timer.TickCount) * timer.SpeedUpFactor +
-                                   (float)(uint32_t)timer.ElapsedTime);
+				                               (float)(uint32_t)timer.ElapsedTime);
 				int             delta = sample - PreviousLoopTimerSample;
 				PreviousLoopTimerSample = sample;
 				uint32_t gameTurn = data.GameTurn;
@@ -2193,10 +2193,10 @@ void GGame::Process3dEngine()
 			// VideoPoll can finish and delete the movie.
 			if (VideoPlayer)
 			{
-				int border = (int)((LH3DTech::g_info_transform.resolution.y -
-				                    LH3DTech::g_info_transform.resolution.x * (9.0f / 16.0f)) *
-				                   VideoLetterboxScale) /
-				             2;
+				int       border = (int)((LH3DTech::g_info_transform.resolution.y -
+				                          LH3DTech::g_info_transform.resolution.x * (9.0f / 16.0f)) *
+				                         VideoLetterboxScale) /
+				                   2;
 				LH3DColor color;
 				color.b = 255;
 				color.g = 255;

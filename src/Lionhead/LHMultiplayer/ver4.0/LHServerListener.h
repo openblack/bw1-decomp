@@ -1,6 +1,8 @@
 #ifndef BW1_DECOMP_LH_SERVER_LISTENER_INCLUDED_H
 #define BW1_DECOMP_LH_SERVER_LISTENER_INCLUDED_H
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>
 #include "LHTransportInfo.h" /* For LH_TRANSPORT_TYPE */
 
@@ -14,7 +16,7 @@ public:
 	virtual ~LHServerListener();
 	virtual void             Shutdown();
 	virtual LH_RETURN        StartListening(LHTransportInfo* acceptor_info, LHTransportInfo* broadcast_info) = 0;
-	virtual int              GetActivitySignals(unsigned long* count, void*** signals) = 0;
+	virtual bool32_t         GetActivitySignals(unsigned long* count, void*** signals) = 0;
 	virtual LH_RETURN        DoProcessing(long signal_index) = 0;
 	virtual LHTransportInfo* GetConnectionAcceptorInfo() = 0;
 	virtual LHTransportInfo* GetBroadcastListenerInfo() = 0;

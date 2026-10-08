@@ -1,7 +1,9 @@
 #ifndef BW1_DECOMP_LH_SERIAL_INCLUDED_H
 #define BW1_DECOMP_LH_SERIAL_INCLUDED_H
 
-#include <windows.h> /* For HANDLE, BOOL */
+#include <windows.h> /* For HANDLE */
+
+#include <re_common.h> /* For bool32_t */
 
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>
 #include "LHMultiplayerExport.h"
@@ -20,7 +22,7 @@ class LH_MULTIPLAYER_API LHSerial
 {
 public:
 	HANDLE    Handle;
-	BOOL      Connected;
+	bool32_t  Connected;
 	LHPacket* Packet;
 
 	// BW1W120 1001bf90 BW1M119 null

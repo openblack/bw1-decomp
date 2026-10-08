@@ -3,6 +3,8 @@
 
 #include <stddef.h> /* For NULL */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
 
 class LHVersion;
@@ -88,17 +90,17 @@ public:
 	// BW1W120 10008850 BW1M119 0116ea00 (LHCombined Release)
 	static LH_RETURN GetMajorMinorULONG(char* module, unsigned long* version);
 	// BW1W120 10008ca0 BW1M119 0116ecf0 (LHCombined Release)
-	static void ShowVersionDialog(int show);
+	static void ShowVersionDialog(bool32_t show);
 
 private:
 	// BW1W120 10006590 BW1M119 011703f0 (LHCombined Release)
-	int CheckForNewerVersion(LHVersionBlock* registry_block);
+	bool32_t CheckForNewerVersion(LHVersionBlock* registry_block);
 	// BW1W120 10006850 BW1M119 011701c0 (LHCombined Release)
 	LH_RETURN UpdateRegistry(LHVersionBlock* block);
 	// BW1W120 10006bd0 BW1M119 0116ff40 (LHCombined Release)
 	LH_RETURN ProcessFields();
 	// BW1W120 10006f50 BW1M119 0116fa00 (LHCombined Release)
-	int CheckExpiry();
+	bool32_t CheckExpiry();
 	// BW1W120 10007440 BW1M119 0116f520 (LHCombined Release)
 	VALIDATION ValidateBlock();
 	// BW1W120 10007f30 BW1M119 0116f7a0 (LHCombined Release)
@@ -130,9 +132,31 @@ private:
 
 	LHVersionBlock* Block;
 	LHVersionBlock  RegistryBlock; /* 0x4 */
-	int             Declined;      /* 0x194 */
+	bool32_t        Declined;      /* 0x194 */
 	unsigned long   MajorVersion;  /* 0x198 */
 	unsigned long   MinorVersion;  /* 0x19c */
 };
+
+#define LH_VERSION_START_TAG "YyHhTtMm"
+#define LH_VERSION_END_TAG   "YyHhTtMM"
+#define LH_VERSION_BUILD     "RELEASE"
+#define LH_VERSION_NONE      "NULL"
+
+#define LH_VERSION_INFO(name, major, minor, author, date, expiry, comments)                                            \
+	static LHVersionBlock VersionBlock = {LH_VERSION_START_TAG,                                                        \
+	                                      LH_VERSION_BUILD,                                                            \
+	                                      name,                                                                        \
+	                                      major,                                                                       \
+	                                      minor,                                                                       \
+	                                      author,                                                                      \
+	                                      date,                                                                        \
+	                                      expiry,                                                                      \
+	                                      comments,                                                                    \
+	                                      LH_VERSION_NONE,                                                             \
+	                                      LH_VERSION_NONE,                                                             \
+	                                      "",                                                                          \
+	                                      LH_VERSION_END_TAG};                                                         \
+	static LHVersion      VersionInformation(&VersionBlock);                                                           \
+	static LHVersion*     VersionPointer = &VersionInformation
 
 #endif /* BW1_DECOMP_LH_VERSION_INCLUDED_H */

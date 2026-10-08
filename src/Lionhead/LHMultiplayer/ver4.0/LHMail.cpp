@@ -74,9 +74,9 @@ char* GetProductId()
 
 void LHMail::DecodeMemory(char* data, char** decoded, unsigned long* length)
 {
-	char key = (data[LH_MAIL_KEY_HIGH_OFFSET] & LH_MAIL_KEY_HIGH_MASK) |
-	           (data[*length - LH_MAIL_KEY_MIDDLE_OFFSET] & LH_MAIL_KEY_MIDDLE_MASK) |
-	           (data[*length - LH_MAIL_KEY_LOW_OFFSET] & LH_MAIL_KEY_LOW_MASK);
+	char          key = (data[LH_MAIL_KEY_HIGH_OFFSET] & LH_MAIL_KEY_HIGH_MASK) |
+	                    (data[*length - LH_MAIL_KEY_MIDDLE_OFFSET] & LH_MAIL_KEY_MIDDLE_MASK) |
+	                    (data[*length - LH_MAIL_KEY_LOW_OFFSET] & LH_MAIL_KEY_LOW_MASK);
 	char*         out = new char[*length];
 	long          position;
 	unsigned long i;

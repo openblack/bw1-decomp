@@ -88,7 +88,7 @@ public:
 	// BW1W120 10021610 BW1M119 01112890 (LHCombined Release)
 	LH_RETURN GetNewConnectedSocket(LHSocketTCP** socket, unsigned long timeout);
 	// BW1W120 10021be0 BW1M119 01111eb0 (LHCombined Release)
-	LH_RETURN GetSocketInfo(LHTransportInfo* transport_info, int local);
+	LH_RETURN GetSocketInfo(LHTransportInfo* transport_info, bool32_t local);
 	// BW1W120 10021d80 BW1M119 01111b80 (LHCombined Release)
 	bool CheckActivity(LH_ACTIVITY_TYPE type);
 	// BW1W120 10021e20 BW1M119 01111ab0 (LHCombined Release)
