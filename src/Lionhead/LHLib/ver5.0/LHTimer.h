@@ -34,6 +34,8 @@ struct LHTimer
 	void SetSpeedUpFactor(float factor);
 	// BW1W120 0054b850 BW1M119 01005740
 	void Reset(uint32_t value);
+	// BW1W120 inlined BW1M119 015cc950
+	void Restart(uint32_t value);
 };
 
 #endif /* BW1_DECOMP_LH_TIMER_INCLUDED_H */

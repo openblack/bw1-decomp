@@ -4,8 +4,7 @@
 #include <windows.h> /* For HINSTANCE */
 #include <chlasm/LHKeyBoard.h>
 
-// Descriptive names; the free assertion callback
-// at 00641ff0 owns this input override, shared with GGame::KeyHandler.
+// TODO: extern is not the right way to declare these. Replace with a proper replacement.
 // BW1W120 00d019c5
 extern bool AssertionKeyCapture;
 // BW1W120 00d019c8
@@ -21,6 +20,8 @@ extern bool ARGS_NOINETCONN;
 extern bool Dat_00D46AC1;
 // BW1W120 00d46ac3
 extern bool ARGS_NOLOADMUSIC;
+// BW1W120 00d46ac5
+extern bool QuittingMultiplayerGame;
 
 // BW1W120 006419f0 BW1M119 01370680
 void stop_draw_sprite_to_screen();

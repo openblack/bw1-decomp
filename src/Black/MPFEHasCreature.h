@@ -10,8 +10,13 @@ class MPFEHasCreature : public MPFEMessageObject
 public:
 	// Override methods
 
-	// BW1W120 00628010 BW1M119 inlined
-	virtual ~MPFEHasCreature();
+	// BW1W120 00628010 BW1M119 null
+	virtual ~MPFEHasCreature() {}
+
+	// Constructors
+
+	// BW1W120 00627f80 BW1M119 null
+	MPFEHasCreature();
 };
 
 #endif /* BW1_DECOMP_MPFE_HAS_CREATURE_INCLUDED_H */

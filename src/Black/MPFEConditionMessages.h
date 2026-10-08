@@ -1,0 +1,14 @@
+#ifndef BW1_DECOMP_MPFE_CONDITION_MESSAGES_INCLUDED_H
+#define BW1_DECOMP_MPFE_CONDITION_MESSAGES_INCLUDED_H
+
+#include <stdint.h> /* For uint64_t */
+
+extern "C"
+{
+	// BW1W120 0062cf70 BW1M119 013aa930
+	uint64_t GetInfoFileChecksum();
+	// BW1W120 0062ceb0 BW1M119 013aa5f0
+	uint64_t GetInfoFileChecksum2();
+}
+
+#endif /* BW1_DECOMP_MPFE_CONDITION_MESSAGES_INCLUDED_H */

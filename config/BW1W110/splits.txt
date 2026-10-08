@@ -222,20 +222,22 @@ Black/Bookmark.cpp:
 
 Black/BuildingSite.cpp:
 	.text       start:0x0043A4C0 end:0x0043D440
-	.rdata      start:0x008B6B58 end:0x008B6F24
-	.data       start:0x009BCA74 end:0x009BCD38
-	.bss        start:0x00C47B10 end:0x00C4883C
+	.rdata      start:0x008B6B58 end:0x008B7050
+	.data       start:0x009BCA74 end:0x009BCB58
+	.bss        start:0x00C47B10 end:0x00C47D20
 
 Black/BWGameSpy.cpp:
 	.text       start:0x0043D440 end:0x0043FE40
-	.rdata      start:0x008B6F24 end:0x008B70A4
+	.rdata      start:0x008B7050 end:0x008B70AC
+	.rdata$r    start:0x009985E8 end:0x00998694
 	.CRT$XCU    start:0x009B6148 end:0x009B6158 align:4
-	.data       start:0x009BCD7C end:0x009BCFB4
-	.bss        start:0x00C4883C end:0x00C48964
+	.data       start:0x009BCB58 end:0x009BCFA0
+	.bss        start:0x00C47D20 end:0x00C48964
 
 Black/BWLan.cpp:
 	.text       start:0x0043FE40 end:0x00440C80
-	.rdata      start:0x008B70A4 end:0x008B7110
+	.rdata      start:0x008B70AC end:0x008B7110
+	.data       start:0x009BCFA0 end:0x009BCFCC
 	.bss        start:0x00C48964 end:0x00C489FC
 
 Black/Camera.cpp:
@@ -1255,7 +1257,7 @@ Black/MPFEAlexDialog.cpp:
 	.text       start:0x00614CE0 end:0x0061AFC0
 	.CRT$XCU    start:0x009B6ACC end:0x009B6AD0 align:4
 	.data       start:0x00BE39B8 end:0x00BE39BC
-	.bss        start:0x00D2DE24 end:0x00D2F400
+	.bss        start:0x00D2DE24 end:0x00D2F578
 
 Black/MPFEChannelData.cpp:
 	.text       start:0x0061B010 end:0x0061E6D0

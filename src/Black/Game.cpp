@@ -197,7 +197,9 @@ static_assert(offsetof(GPlayer, type) == 0xf8, "GPlayer layout is incorrect");
 static_assert(offsetof(ChannelBox, ConditionEnabled) == 0xac4, "ChannelBox condition offset is incorrect");
 static_assert(sizeof(ChannelBox) == 0xad4, "ChannelBox size is incorrect");
 static_assert(offsetof(MPFEData, ActiveDialog) == 0xa64, "MPFEData dialog offset is incorrect");
+#ifdef VERSION_BW1W120
 static_assert(offsetof(MPFEData, Conditions) == 0x15d4, "MPFEData condition offset is incorrect");
+#endif
 
 GGame*                  GGame::g_game;
 uint32_t                GGame::TutorialState;

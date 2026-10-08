@@ -14,6 +14,10 @@ block_relocations:
   - source: 0x008FA4DC
   - source: 0x008FA540
   - source: 0x008FA5AC
+# BWGameSpy's "Cheater" and MPFEMessageObject's type descriptor name contain words that read as
+# code addresses.
+  - source: 0x008FC23C
+  - source: 0x008FC3AC
 
 add_relocations:
 # PSysProperties shared callback aliases and istream exception boundaries.
@@ -1497,6 +1501,19 @@ add_relocations:
     type: x86_abs32
     target: '?Infos@GBallInfo@@2PAV1@A'
     addend: 0x140
+# BWGameSpy::Connect keeps a pointer one past the colon of ChatServer, inside the buffer.
+  - source: 0x00436786
+    type: x86_abs32
+    target: '?ChatServer@BWGameSpy@@2PADA'
+    addend: 0x1
+# BWGameSpy::Think indexes Bans[NumBans - 1] from one element before the array.
+  - source: 0x00436B60
+    type: x86_abs32
+    target: '?Bans@BWGameSpy@@2PAY0CA@DA'
+    addend: -0x20
+  - source: 0x008061B8
+    type: x86_abs32
+    target: '??_EMPFEMessageObject@@UAEPAXI@Z'
 
 dead_strip: true
 # The original 1.0 link used /OPT:REF, which only collects COMDATs. Until the
