@@ -14,18 +14,29 @@ struct InnerRoom;
 struct LH3DCamera;
 struct LH3DMesh;
 
-class InnerCamera
+enum INNER_CAMERA_STATE
 {
-public:
-	Zoomer3d    ZoomerPos; /* 0x4 */
-	Zoomer3d    ZoomerFoc; /* 0x94 */
-	uint32_t    field_0x124;
+	INNER_CAMERA_STATE_THROUGH_DOOR = 3,
+	INNER_CAMERA_STATE_FOCUSED = 4,
+};
+
+enum INNER_CAMERA_HIT
+{
+	INNER_CAMERA_HIT_NONE = -1,
+	INNER_CAMERA_HIT_NEAR = 1,
+};
+
+struct InnerCamera
+{
+	Zoomer3d    ZoomerPos;
+	Zoomer3d    ZoomerFoc;
+	uint32_t    State;
 	uint32_t    field_0x128;
-	int32_t     field_0x12c;
-	uint8_t     field_0x130[0x4];
+	int32_t     HighlightedDoor;
+	int         TargetRoom;
 	uint32_t    field_0x134;
 	LHCoord*    field_0x138;
-	uint32_t    field_0x13c;
+	uint32_t    ClickHitType;
 	uint32_t    field_0x140;
 	float       field_0x144;
 	uint32_t    field_0x148;
@@ -34,7 +45,7 @@ public:
 	uint32_t    field_0x154;
 	int         field_0x158;
 	int         field_0x15c;
-	char        filename[0x100]; /* 0x160 */
+	char        filename[0x100];
 	LHPoint     field_0x260;
 	LHPoint     field_0x26c;
 	Zoomer3d    field_0x278;
@@ -46,14 +57,14 @@ public:
 	LHPoint     Pos0x39c;
 	LHPoint     Foc0x3a8;
 	uint8_t     field_0x3b4[0x18];
-	float       field_0x3cc;
+	float       StateTime;
 	float       field_0x3d0;
 	LHPoint     current_pos;
-	LHPoint     CurrentFoc; /* 0x3e0 */
+	LHPoint     CurrentFoc;
 	Point2D     field_0x3ec;
 	uint8_t     field_0x3f4;
 	uint8_t     field_0x3f5[0x3];
-	uint32_t    field_0x3f8;
+	uint32_t    MouseHitType;
 	float       field_0x3fc;
 	float       field_0x400;
 	uint8_t     field_0x404[0x1c];
@@ -65,7 +76,7 @@ public:
 	LH3DCamera* lh3dcamera;
 	uint8_t     field_0x440[0xc];
 	int32_t     field_0x44c;
-	uint32_t    field_0x450;
+	float       ZoomProgress;
 	LHPoint     field_0x454;
 	LHPoint     field_0x460;
 

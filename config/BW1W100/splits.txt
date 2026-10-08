@@ -2099,17 +2099,25 @@ Black/TempleRoomAddText.cpp:
 	.text       start:0x00721140 end:0x00723400
 	.rdata      start:0x008D516C end:0x008D51CC
 	.CRT$XCU    start:0x008F7384 end:0x008F7388 align:4
-	.data       start:0x00B4CE60 end:0x00B4D1B4
+	.data       start:0x00B4CE60 end:0x00B4CE90
+
+Black/UniverseRoom.cpp:
+	.text       start:0x00723400 end:0x007237C0
+	.rdata      start:0x008D51CC end:0x008D521C
+	.CRT$XCU    start:0x008F7388 end:0x008F7390 align:4
+	.data       start:0x00B4CE90 end:0x00B4CFAC
+	.bss        start:0x00D56AE0 end:0x00D56AE8
 
 Black/WorldRoom.cpp:
-	.text       start:0x00723400 end:0x00725F30
-	.text$x     start:0x007E9440 end:0x007E9458 align:16
-	.rdata      start:0x008D51CC end:0x008D5228
-	.CRT$XCU    start:0x008F7388 end:0x008F7390 align:4
-	.bss        start:0x00D56AE0 end:0x00D5AAF8
+	.text       start:0x007237C0 end:0x00725F30
+	.rdata      start:0x008D521C end:0x008D52B4
+	.CRT$XCU    start:0x008F7390 end:0x008F739C align:4
+	.data       start:0x00B4CFB0 end:0x00B4D2BC
+	.bss        start:0x00D56AE8 end:0x00D5AB44
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
 	.text       start:0x00727B50 end:0x00728B90
+	.text$x     start:0x007E9440 end:0x007E9458 align:16
 	.CRT$XCU    start:0x008F73A0 end:0x008F73A4 align:4
 
 lib/libcpmt/delop.obj:

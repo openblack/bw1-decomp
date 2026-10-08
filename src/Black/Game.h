@@ -486,6 +486,8 @@ public:
 	void SetSpeed(float speed);
 	// BW1W120 00553e10 BW1M119 013cc210
 	void GoInsideCitadel(unsigned long param_1, int param_2);
+	// BW1W120 00553a70 BW1M119 011aee80
+	void LeaveInsideCitadel();
 	// BW1W120 00555280 BW1M119 01091800
 	void Update3DInfluence();
 	// BW1W120 00555270 BW1M119 0151aec0

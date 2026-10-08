@@ -95,11 +95,7 @@ inline int LH3DRender::SetRenderState(D3DRENDERSTATETYPE type, unsigned long val
 	if (g_render_states[type] != value)
 	{
 		result = Direct3DDevice7->SetRenderState(type, value);
-		if (result != S_OK)
-		{
-			value = 0xffffffff;
-		}
-		g_render_states[type] = value;
+		g_render_states[type] = result != S_OK ? 0xffffffff : value;
 	}
 	return result;
 }

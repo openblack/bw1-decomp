@@ -2173,13 +2173,21 @@ Black/TempleRoomAddText.cpp:
 	.text       start:0x0078A200 end:0x0078C500
 	.rdata      start:0x0098EDCC end:0x0098EE2C
 	.CRT$XCU    start:0x009B73D4 end:0x009B73D8 align:4
-	.data       start:0x00C19118 end:0x00C1946C
+	.data       start:0x00C19118 end:0x00C19148
+
+Black/UniverseRoom.cpp:
+	.text       start:0x0078C500 end:0x0078C900
+	.rdata      start:0x0098EE2C end:0x0098EE7C
+	.CRT$XCU    start:0x009B73D8 end:0x009B73E0 align:4
+	.data       start:0x00C19148 end:0x00C19264
+	.bss        start:0x00E24B18 end:0x00E24B20
 
 Black/WorldRoom.cpp:
-	.text       start:0x0078C500 end:0x0078F0D0
-	.rdata      start:0x0098EE2C end:0x0098EE88
-	.CRT$XCU    start:0x009B73D8 end:0x009B73E0 align:4
-	.bss        start:0x00E24B18 end:0x00E28B30
+	.text       start:0x0078C900 end:0x0078F0D0
+	.rdata      start:0x0098EE7C end:0x0098EF14
+	.CRT$XCU    start:0x009B73E0 end:0x009B73EC align:4
+	.data       start:0x00C19268 end:0x00C19574
+	.bss        start:0x00E24B20 end:0x00E28B7C
 
 Lionhead/LH3DLib/development/LH3DP3.cpp:
 	.text       start:0x00790BB0 end:0x0079C960

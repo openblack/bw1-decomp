@@ -75,17 +75,17 @@ public:
 	virtual bool32_t            IsPaper();
 	virtual void                SetNoSnow(int param_1);
 	virtual bool32_t            IsNoSnow();
-	virtual void                SetPosition_1(const LHPoint* point, float param_2, float param_3); /* 0x20 */
+	virtual void __fastcall     SetPosition_1(const LHPoint& point, float y_angle, float scale); /* 0x20 */
 	virtual void                SetPosition_2(float x, float y, float z);
 	virtual void                SetLinkedPosition(LH3DObject* linked_obj);
-	virtual void                SetColorSpecular(uint32_t param_1, uint32_t param_2);
+	virtual void __fastcall     SetColorSpecular(uint32_t color, uint32_t specular);
 	virtual void                SetWindowColor(uint32_t color); /* 0x30 */
 	virtual void __fastcall     SetSnowlevel(int level);
 	virtual void                SetSnowlevel(LHPoint& point);
 	virtual bool32_t            IsUseAlpha();
 	virtual void                SetNeedSorting(int value); /* 0x40 */
 	virtual bool32_t            IsNeedSorting();
-	virtual void                SetDrawWithGlobalAlpha(int param_1);
+	virtual void __fastcall     SetDrawWithGlobalAlpha(int value);
 	virtual bool32_t            IsDrawWithGlobalAlpha();
 	virtual void                SetLinked(int param_1); /* 0x50 */
 	virtual bool32_t            IsLinked();
@@ -107,7 +107,7 @@ public:
 	virtual bool32_t            IsShadowOnTextureChroma();
 	virtual void __fastcall     SetDisappear(int param_1);
 	virtual bool32_t            IsDisappear();
-	virtual void                SetNeedClipping(int param_1); /* 0xa0 */
+	virtual void __fastcall     SetNeedClipping(int value); /* 0xa0 */
 	virtual bool32_t            IsNeedClipping();
 	virtual int                 GetVisageId();
 	virtual void                SetVisage(int visage_id);
@@ -125,7 +125,7 @@ public:
 	virtual void                SetFastBlending(float param_1, LH3DMesh* mesh1, LH3DMesh* mesh2);
 	virtual void                SetNeedTilling(int param_1); /* 0xe0 */
 	virtual bool32_t            IsNeedTilling();
-	virtual void                SetAnimatedUV_1(float param_1, float param_2, float param_3);
+	virtual void                SetAnimatedUV_1(float u_speed, float v_speed);
 	virtual void                SetAnimatedUV_2(int param_1);
 	virtual bool32_t            IsAnimatedUV(); /* 0xf0 */
 	virtual uint32_t __fastcall SetMesh(LH3DMesh* param_1, LH3DMesh* param_2, LH3DMesh* param_3);

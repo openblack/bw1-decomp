@@ -34,6 +34,20 @@ struct LH3DSubMesh;
 struct LH3DTexture;
 struct LHPoint;
 
+struct SubmeshName
+{
+	char    Name[0x20];
+	uint8_t field_0x20[0xc0];
+};
+static_assert(sizeof(SubmeshName) == 0xe0, "Data type is of wrong size");
+
+struct SubmeshNameData
+{
+	uint32_t     Size;
+	uint32_t     Count;
+	SubmeshName* Names;
+};
+
 struct LH3DMeshPack
 {
 	int       MeshCount; /* 0x0 */
@@ -58,6 +72,8 @@ struct LH3DMesh
 	// Static data
 
 	static LH3DMeshPack* MeshPack; /* 0x00e9fe34 */
+	// BW1W120 00e9fe28 BW1M119 01215a7c (LHCombined Release)
+	static bool g_hinge_only;
 
 	// Static methods
 
@@ -101,7 +117,14 @@ struct LH3DMesh
 	bool32_t IsContainsNewEP() { return flags & LH3D_MESH_FLAGS_CONTAINS_NEW_EP; }
 
 	// BW1W120 00403730 BW1M119 inlined
-	uint8_t* GetLandscapeFeatureData() { return !IsContainsLandscapeFeature() ? NULL : (uint8_t*)FootprintData; }
+	uint8_t* GetLandscapeFeatureData()
+	{
+		if (IsContainsLandscapeFeature())
+		{
+			return (uint8_t*)FootprintData;
+		}
+		return NULL;
+	}
 	// BW1W120 00403b90 BW1M119 01010f40
 	uint32_t GetSizeFootprintData()
 	{
@@ -112,7 +135,14 @@ struct LH3DMesh
 		return 0;
 	}
 	// BW1W120 00403740 BW1M119 inlined
-	uint8_t* GetUV2Data() { return !IsContainsUV2() ? NULL : (uint8_t*)FootprintData + GetSizeFootprintData(); }
+	uint8_t* GetUV2Data()
+	{
+		if (!IsContainsUV2())
+		{
+			return NULL;
+		}
+		return (uint8_t*)FootprintData + GetSizeFootprintData();
+	}
 	// BW1W120 00403bb0 BW1M119 01010ea0
 	uint32_t GetSizeUV2Data()
 	{

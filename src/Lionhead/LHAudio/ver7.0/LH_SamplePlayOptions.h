@@ -2,7 +2,7 @@
 #define BW1_DECOMP_LH_SAMPLE_PLAY_OPTIONS_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
@@ -27,7 +27,11 @@ public:
 	uint32_t      SampleNumber;
 	uint8_t       field_0x28[0x8];
 	LHPoint       Pos;
-	uint8_t       field_0x3c[0x12c];
+	uint8_t       field_0x3c[0xc];
+	uint32_t      Pitch;
+	uint32_t      field_0x4c;
+	uint32_t      Priority;
+	uint8_t       field_0x54[0x114];
 
 	// Constructors
 

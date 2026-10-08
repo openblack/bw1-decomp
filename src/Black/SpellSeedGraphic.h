@@ -15,8 +15,10 @@ class GPlayer;
 class Game3DObject;
 class GameOSFile;
 class GameThing;
+struct LHMatrix;
 struct LHPoint;
 struct MapCoords;
+class Object;
 
 class SpellSeedGraphic : public GameThingWithPos
 {
@@ -84,6 +86,12 @@ public:
 	void SetPowerUpType(POWER_UP_TYPE type);
 	// BW1W120 00727080 BW1M119 0152a6d0
 	void CreatePUBand();
+	// BW1W120 00727680 BW1M119 01529c60
+	void SetAutoUpdate(bool auto_update);
+	// BW1W120 00727630 BW1M119 01529cb0
+	void DrawUpdateAtPos(const LHMatrix& matrix, float scale);
+	// BW1W120 00519ad0 BW1M119 010c9140
+	void DrawSpellGraphic(Object* object, bool param_2, bool param_3, unsigned char alpha);
 };
 
 #endif /* BW1_DECOMP_SPELL_SEED_GRAPHIC_INCLUDED_H */

@@ -17,6 +17,7 @@
 class Base;
 class Creature;
 class GInterfaceStatus;
+class GMagicInfo;
 class GPlayer;
 class GameOSFile;
 class GameThing;
@@ -24,6 +25,7 @@ class Living;
 class Object;
 struct PSysProcessInfo;
 class Reaction;
+class SpellSeedGraphic;
 struct SpellCastData;
 struct SpellEventInfo;
 class WorshipSite;
@@ -50,7 +52,7 @@ public:
 	float             field_0x58;
 	uint8_t           field_0x5c;
 	uint8_t           field_0x5d;
-	uint32_t          field_0x60;
+	SpellSeedGraphic* SeedGraphic;
 	LHPoint           field_0x64;
 	LHPoint           field_0x70;
 	LHPoint           field_0x7c;
@@ -185,6 +187,12 @@ public:
 	Spell(MAGIC_TYPE type, GameThing* creator);
 	// BW1W120 007218e0 BW1M119 0151d760
 	GInterfaceStatus* GetInterfaceStatus();
+	// BW1W120 007201d0 BW1M119 01520760
+	GMagicInfo* GetMagicInfo() const;
+	// BW1W120 0079ddf0 BW1M119 015aed70
+	void CreateSpellSeedGraphic();
+	// BW1W120 0079dd20 BW1M119 015af130
+	void DeleteSpellSeedGraphic();
 };
 
 #endif /* BW1_DECOMP_SPELL_INCLUDED_H */
