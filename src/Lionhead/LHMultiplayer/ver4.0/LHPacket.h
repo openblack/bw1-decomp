@@ -14,8 +14,9 @@ struct LHPacketHeader
 };
 static_assert(sizeof(LHPacketHeader) == 0x8, "Data type is of wrong size");
 
-struct LHPacket
+class LHPacket
 {
+public:
 	struct LHPacketHeader header; /* 0x0 */
 	uint8_t               payload[0x0];
 };
