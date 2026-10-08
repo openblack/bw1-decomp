@@ -33,8 +33,6 @@ public:
 	}
 	inline LHLinkedNode<T>* GetStart() const { return head.Get(); }
 	T                       GetHead() { return head.Get() != NULL ? head.Get()->payload : NULL; }
-	// Returns int like AddToEnd: the out-of-line LHMailContacts* copy in LHMultiplayerR.dll
-	// (10013b80) returns through eax.
 	// BW1W120 10013b80
 	inline int Add(T val)
 	{

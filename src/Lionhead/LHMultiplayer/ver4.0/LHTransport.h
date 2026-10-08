@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
 #include "LHDynamicQueue.h"
 #include "LHNetEvent.h"      /* For enum LH_NETEVENT_TYPE */
@@ -13,9 +15,6 @@
 class LHNetEvent;
 class LHTransportInfo;
 
-// The whole class is exported: its protected constructor, inline accessors and implicit copy
-// constructor / operator= are DLL exports (emitted in LHChannel.cpp's range).
-// LHMultiplayerR.dll vtable 10050334 (21 slots).
 class LH_MULTIPLAYER_API LHTransport
 {
 protected:
@@ -47,17 +46,17 @@ public:
 	// BW1W120 100227d0 BW1M119 0111a6f0 (LHCombined Release)
 	virtual void AddAtPositionInIncomingEventQ(LHNetEvent* net_event, unsigned long position);
 	// BW1W120 10022630 BW1M119 0111adf0 (LHCombined Release)
-	virtual int CheckForEvents();
+	virtual bool32_t CheckForEvents();
 	// BW1W120 10022460 BW1M119 0100f820 (LHCombined Release)
-	virtual int IsDisconnected();
+	virtual bool32_t IsDisconnected();
 	// BW1W120 10022640 BW1M119 0111ad00 (LHCombined Release)
-	virtual int CheckForEvent(LH_NETEVENT_TYPE type);
+	virtual bool32_t CheckForEvent(LH_NETEVENT_TYPE type);
 	// BW1W120 10022c00 BW1M119 01119ae0 (LHCombined Release)
 	virtual void* GetSignalDataToRead();
 	// BW1W120 10022490 BW1M119 0111b130 (LHCombined Release)
-	virtual LH_RETURN GetTransportInfo(LHTransportInfo* transport_info, int local);
+	virtual LH_RETURN GetTransportInfo(LHTransportInfo* transport_info, bool32_t local);
 	// BW1W120 10022680 BW1M119 0111ac90 (LHCombined Release)
-	virtual int WaitForEvent(LH_NETEVENT_TYPE type, unsigned long timeout);
+	virtual bool32_t WaitForEvent(LH_NETEVENT_TYPE type, unsigned long timeout);
 	// BW1W120 100228e0 BW1M119 0111a0d0 (LHCombined Release)
 	virtual LHNetEvent* ExtractEvent(LH_NETEVENT_TYPE type, unsigned long timeout);
 	// BW1W120 10022920 BW1M119 0111a010 (LHCombined Release)
@@ -65,15 +64,15 @@ public:
 	// BW1W120 100228b0 BW1M119 010096f0 (LHCombined Release)
 	virtual LHNetEvent* Peek(unsigned long timeout);
 
-	LH_TRANSPORT_TYPE            Type;           /* 0x04 */
-	int                          field_0x8;      /* 0x08 */
-	int                          field_0xc;      /* 0x0c */
-	LHNetEvent*                  LastEventRead;  /* 0x10 */
-	int                          Opened;         /* 0x14 */
-	int                          Disconnected;   /* 0x18 */
-	LHDynamicQueue<LHNetEvent*>* OutgoingEventQ; /* 0x1c */
-	LHDynamicQueue<LHNetEvent*>* IncomingEventQ; /* 0x20 */
-	uint8_t                      field_0x24;     /* 0x24 */
+	LH_TRANSPORT_TYPE            Type;               /* 0x04 */
+	bool32_t                     OwnsIncomingEventQ; /* 0x08 */
+	bool32_t                     OwnsOutgoingEventQ; /* 0x0c */
+	LHNetEvent*                  LastEventRead;      /* 0x10 */
+	bool32_t                     Opened;             /* 0x14 */
+	bool32_t                     Disconnected;       /* 0x18 */
+	LHDynamicQueue<LHNetEvent*>* OutgoingEventQ;     /* 0x1c */
+	LHDynamicQueue<LHNetEvent*>* IncomingEventQ;     /* 0x20 */
+	uint8_t                      Reserved;           /* 0x24 */
 
 protected:
 	// BW1W120 10003790 BW1M119 inlined
@@ -91,7 +90,7 @@ private:
 
 public:
 	// BW1W120 100037b0 BW1M119 inlined
-	int IsOpen() { return Opened; }
+	bool32_t IsOpen() { return Opened; }
 	// BW1W120 100037c0 BW1M119 inlined
 	LH_TRANSPORT_TYPE GetType() { return Type; }
 	// BW1W120 100037d0 BW1M119 inlined
@@ -102,7 +101,7 @@ public:
 	LHDynamicQueue<LHNetEvent*>* GetIncomingEventQ() { return IncomingEventQ; }
 
 	// BW1W120 10022470 BW1M119 0100b970 (LHCombined Release)
-	int IsConnected();
+	bool32_t IsConnected();
 	// BW1W120 10022820 BW1M119 0100f750 (LHCombined Release)
 	unsigned long GetIncomingEventQSize();
 	// BW1W120 10022890 BW1M119 0111a220 (LHCombined Release)
@@ -117,19 +116,15 @@ public:
 };
 static_assert(sizeof(LHTransport) == 0x28, "LHTransport size is incorrect");
 
-// TODO: layout and remaining members belong to LHTransportUDP.cpp's owner.
 class LHTransportUDP : public LHTransport
 {
 public:
-	// Overload (not an override) used by LHConnection::Write(LHNetEvent*, LHTransportInfo*).
 	LH_RETURN Write(LHNetEvent* net_event, LHTransportInfo* transport_info);
 };
 
 struct LHTransportRemote
 {
 	uint8_t field_0x0;
-
-	// Non-virtual methods
 
 	// BW1W120 10023880 BW1M119 01117a40 (LHCombined Release)
 	void RemoteTransportThread();

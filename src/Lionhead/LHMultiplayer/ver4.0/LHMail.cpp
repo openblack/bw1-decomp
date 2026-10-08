@@ -10,18 +10,35 @@
 #include "LHNetUser.h"
 #include "LHNetUtils.h"
 
-// TODO: names fabricated for the three registry keys LHMailOutlook::CheckForOutlook reads.
-// They are the first data in this unit, ahead of every string literal.
-// BW1W120 10061854
+enum
+{
+	LH_MAIL_PRODUCT_ID_LENGTH = 150,
+	LH_MAIL_PROFILE_DATA_LENGTH = 200,
+	LH_MAIL_REGISTRY_VALUE_LENGTH = 100,
+	LH_MAIL_CODE_HEADER_SIZE = 15,
+	LH_MAIL_CODE_TRAILER_SIZE = 25,
+	LH_MAIL_CODE_OVERHEAD = LH_MAIL_CODE_HEADER_SIZE + LH_MAIL_CODE_TRAILER_SIZE,
+	LH_MAIL_KEY_HIGH_OFFSET = 9,
+	LH_MAIL_KEY_MIDDLE_OFFSET = 3,
+	LH_MAIL_KEY_LOW_OFFSET = 19,
+	LH_MAIL_KEY_HIGH_MASK = 0xf0,
+	LH_MAIL_KEY_MIDDLE_MASK = 0x0c,
+	LH_MAIL_KEY_LOW_MASK = 0x03,
+	LH_MAIL_KEY_RANGE = 255,
+	LH_MAIL_CONTACT_LOG_LENGTH = 150,
+	LH_MAIL_OUTLOOK_LOG_LENGTH = 1224,
+	LH_MAIL_POP3_LOG_LENGTH = 200,
+	LH_MAIL_POP3_MESSAGE_LENGTH = 400,
+	LH_MAIL_STARTUP_DATE_LENGTH = 152,
+	LH_MAIL_DATE_LENGTH = 50,
+	LH_OUTLOOK_MAIL_SUBJECT_LENGTH = 300,
+	LH_OUTLOOK_MAIL_NAME_LENGTH = 752,
+};
+
 static char OutlookAccountManagerKey[] = "Software\\Microsoft\\Office\\Outlook\\OMI Account Manager";
-// BW1W120 1006188c
 static char Outlook8Key[] = "Software\\Microsoft\\Office\\8.0\\Outlook";
-// BW1W120 100618b4
 static char Outlook9Key[] = "Software\\Microsoft\\Office\\9.0\\Outlook";
 
-// Header of a saved address book, ahead of its encoded contacts.
-// TODO: name fabricated.
-// BW1W120 10050688
 static const char AddressBookSignature[] = "WhereTheWildRosesGrow";
 
 unsigned long LHMail::SeedCounter;
@@ -41,18 +58,14 @@ void InetLogging(char* text)
 	}
 }
 
-// Windows product ID, the key EncodeMemory and DecodeMemory mix into the address book.
-// TODO: names fabricated.
-// BW1W120 1006907c
-static char ProductId[150];
+static char ProductId[LH_MAIL_PRODUCT_ID_LENGTH];
 
-// BW1W120 100122a0
 char* GetProductId()
 {
 	unsigned long   size = sizeof(ProductId);
 	LH_REG_KEY_TYPE key = LHRegistryGetCurrentKey();
 
-	LHRegistrySetCurrentKey(LH_REG_KEY_TYPE_0x02);
+	LHRegistrySetCurrentKey(LH_REG_KEY_TYPE_LOCAL_MACHINE);
 	memset(ProductId, 0, size);
 	RegistryRetrieveString("Software\\Microsoft\\Windows\\CurrentVersion", "ProductId", ProductId, &size);
 	LHRegistrySetCurrentKey(key);
@@ -61,27 +74,27 @@ char* GetProductId()
 
 void LHMail::DecodeMemory(char* data, char** decoded, unsigned long* length)
 {
-	char          key = (data[9] & 0xf0) | (data[*length - 3] & 0xc) | (data[*length - 19] & 0x3);
+	char key = (data[LH_MAIL_KEY_HIGH_OFFSET] & LH_MAIL_KEY_HIGH_MASK) |
+	           (data[*length - LH_MAIL_KEY_MIDDLE_OFFSET] & LH_MAIL_KEY_MIDDLE_MASK) |
+	           (data[*length - LH_MAIL_KEY_LOW_OFFSET] & LH_MAIL_KEY_LOW_MASK);
 	char*         out = new char[*length];
 	long          position;
 	unsigned long i;
 	unsigned char value;
 
 	*decoded = out;
-	memset(out, 0, *length - 40);
-	data += 15;
+	memset(out, 0, *length - LH_MAIL_CODE_OVERHEAD);
+	data += LH_MAIL_CODE_HEADER_SIZE;
 	position = 0;
 	GetProductId();
-	// TODO: the target addresses data[i] as out + (data - *decoded); no spelling tried so far
-	// reproduces that induction-variable choice.
-	for (i = 0; i < *length - 25; i++, out++)
+	for (i = 0; i < *length - LH_MAIL_CODE_TRAILER_SIZE; i++, out++)
 	{
 		value = ProductId[position++] + data[i] - key;
 		*out = (value << 4) | (value >> 4);
 		if (ProductId[position] == '\0')
 			position = 0;
 	}
-	*length -= 40;
+	*length -= LH_MAIL_CODE_OVERHEAD;
 }
 
 void LHMail::EncodeMemory(char* data, char** encoded, unsigned long* length, char key)
@@ -93,7 +106,7 @@ void LHMail::EncodeMemory(char* data, char** encoded, unsigned long* length, cha
 	unsigned long k;
 	long          position;
 
-	*length += 40;
+	*length += LH_MAIL_CODE_OVERHEAD;
 	out = new char[*length];
 	*encoded = out;
 	now = time(&now);
@@ -101,32 +114,32 @@ void LHMail::EncodeMemory(char* data, char** encoded, unsigned long* length, cha
 		srand((unsigned int)&out);
 	SeedCounter++;
 
-	for (i = 0; i < 15; i++)
+	for (i = 0; i < LH_MAIL_CODE_HEADER_SIZE; i++)
 	{
-		out[i] = (char)rand() % 255 - SeedCounter;
+		out[i] = (char)rand() % LH_MAIL_KEY_RANGE - SeedCounter;
 		for (k = 0; k <= SeedCounter; k++)
 			rand();
 	}
-	for (j = *length - 25; j < *length; j++)
+	for (j = *length - LH_MAIL_CODE_TRAILER_SIZE; j < *length; j++)
 	{
-		out[j] = (char)rand() % 255 - SeedCounter;
+		out[j] = (char)rand() % LH_MAIL_KEY_RANGE - SeedCounter;
 		for (k = 0; k <= SeedCounter; k++)
 			rand();
 	}
 
 	position = 0;
-	out[*length - 19] = 0;
-	out[*length - 3] = 0;
-	out[9] = 0;
-	out[9] |= key & 0xf0;
-	out[*length - 3] |= key & 0xc;
-	out[*length - 19] |= key & 0x3;
+	out[*length - LH_MAIL_KEY_LOW_OFFSET] = 0;
+	out[*length - LH_MAIL_KEY_MIDDLE_OFFSET] = 0;
+	out[LH_MAIL_KEY_HIGH_OFFSET] = 0;
+	out[LH_MAIL_KEY_HIGH_OFFSET] |= key & LH_MAIL_KEY_HIGH_MASK;
+	out[*length - LH_MAIL_KEY_MIDDLE_OFFSET] |= key & LH_MAIL_KEY_MIDDLE_MASK;
+	out[*length - LH_MAIL_KEY_LOW_OFFSET] |= key & LH_MAIL_KEY_LOW_MASK;
 	GetProductId();
-	for (j = 0; j < *length - 40; j++)
+	for (j = 0; j < *length - LH_MAIL_CODE_OVERHEAD; j++)
 	{
-		out[j + 15] = (data[j] << 4) | ((unsigned char)data[j] >> 4);
-		out[j + 15] += key;
-		out[j + 15] -= ProductId[position++];
+		out[j + LH_MAIL_CODE_HEADER_SIZE] = (data[j] << 4) | ((unsigned char)data[j] >> 4);
+		out[j + LH_MAIL_CODE_HEADER_SIZE] += key;
+		out[j + LH_MAIL_CODE_HEADER_SIZE] -= ProductId[position++];
 		if (ProductId[position] == '\0')
 			position = 0;
 	}
@@ -138,7 +151,7 @@ LHMail::LHMail(char* address_book)
 	LoadPersonalAddressBook(address_book);
 	StartupTime = time(NULL);
 	CurrentCheckStatus = false;
-	CheckTime = 180000;
+	CheckTime = LH_MAIL_DEFAULT_CHECK_TIME;
 }
 
 LHMail::~LHMail()
@@ -273,8 +286,8 @@ bool LHMail::SavePersonalAddressBook(char* address_book)
 
 	srand(time(NULL));
 	random = rand();
-	if (random > 255)
-		key = (char)random % 255;
+	if (random > LH_MAIL_KEY_RANGE)
+		key = (char)random % LH_MAIL_KEY_RANGE;
 	else
 		key = (char)random;
 	EncodeMemory(data, &encoded, &length, key);
@@ -361,7 +374,7 @@ LH_RETURN LHMail::CheckMails()
 
 bool LHMail::GetContactNames(unsigned long* count)
 {
-	char buffer[150];
+	char buffer[LH_MAIL_CONTACT_LOG_LENGTH];
 	bool result = DriverGetContactNames(count);
 
 	if (result == true)
@@ -397,12 +410,12 @@ void LHMail::ReadRegistrySettings()
 
 bool LHMailOutlook::CheckForOutlook()
 {
-	unsigned long   account_size = 100;
-	unsigned long   first_run_size = 100;
-	unsigned long   first_run_dialog_size = 100;
-	char            account[100];
-	char            first_run[100];
-	char            first_run_dialog[100];
+	unsigned long   account_size = LH_MAIL_REGISTRY_VALUE_LENGTH;
+	unsigned long   first_run_size = LH_MAIL_REGISTRY_VALUE_LENGTH;
+	unsigned long   first_run_dialog_size = LH_MAIL_REGISTRY_VALUE_LENGTH;
+	char            account[LH_MAIL_REGISTRY_VALUE_LENGTH];
+	char            first_run[LH_MAIL_REGISTRY_VALUE_LENGTH];
+	char            first_run_dialog[LH_MAIL_REGISTRY_VALUE_LENGTH];
 	LH_REG_KEY_TYPE key;
 	LH_RETURN       account_result;
 	LH_RETURN       first_run_result;
@@ -412,7 +425,7 @@ bool LHMailOutlook::CheckForOutlook()
 	memset(first_run, 0, sizeof(first_run));
 	memset(first_run_dialog, 0, sizeof(first_run_dialog));
 	key = LHRegistryGetCurrentKey();
-	LHRegistrySetCurrentKey(LH_REG_KEY_TYPE_0x00);
+	LHRegistrySetCurrentKey(LH_REG_KEY_TYPE_CURRENT_USER);
 	account_result = RegistryRetrieveString(OutlookAccountManagerKey, "Default Mail Account", account, &account_size);
 	first_run_result = RegistryRetrieveString(Outlook8Key, "First-Run", first_run, &first_run_size);
 	first_run_dialog_result =
@@ -462,7 +475,7 @@ bool LHMailOutlook::CleanUpOutlook()
 
 LHMailOutlook::LHMailOutlook(char* address_book) : LHMail(address_book)
 {
-	DriverType = 0;
+	DriverType = LH_MAIL_DRIVER_TYPE_OUTLOOK;
 }
 
 LHMailOutlook::~LHMailOutlook()
@@ -480,19 +493,17 @@ bool LHMailOutlook::CleanUpDriver()
 	return CleanUpOutlook();
 }
 
-// A mail as outlookdll.dll's GetMails reports it.
-// TODO: layout recovered only as far as DriverCheckMails reads it.
 struct LHOutlookMail
 {
-	char Subject[300];
-	char Name[752]; /* 0x12c */
-	long Time;      /* 0x41c */
-	bool Displayed; /* 0x420 */
+	char Subject[LH_OUTLOOK_MAIL_SUBJECT_LENGTH];
+	char Name[LH_OUTLOOK_MAIL_NAME_LENGTH]; /* 0x12c */
+	long Time;                              /* 0x41c */
+	bool Displayed;                         /* 0x420 */
 };
 
 LH_RETURN LHMailOutlook::DriverCheckMails()
 {
-	char                          buffer[1224];
+	char                          buffer[LH_MAIL_OUTLOOK_LOG_LENGTH];
 	char                          result;
 	LHLinkedList<LHOutlookMail*>* mails;
 	LHLinkedNode<LHOutlookMail*>* node;
@@ -574,7 +585,7 @@ bool LHMailOutlook::ReloadDriver()
 
 LHMailPOP3::LHMailPOP3(char* address_book) : LHMail(address_book)
 {
-	DriverType = 1;
+	DriverType = LH_MAIL_DRIVER_TYPE_POP3;
 }
 
 LHMailPOP3::~LHMailPOP3()
@@ -585,11 +596,11 @@ LHMailPOP3::~LHMailPOP3()
 bool LHMailPOP3::InitPOP3()
 {
 	bool          result = false;
-	unsigned long size = 200;
+	unsigned long size = LH_MAIL_PROFILE_DATA_LENGTH;
 	char*         user;
 	char*         server;
 	char*         password;
-	char          data[200];
+	char          data[LH_MAIL_PROFILE_DATA_LENGTH];
 
 	POP3 = new LHPOP3;
 	if (POP3 == NULL)
@@ -598,18 +609,18 @@ bool LHMailPOP3::InitPOP3()
 	if (LHNetGetCurrentProfileData("POP3ServerName", (unsigned char*)data, &size) == LH_OK)
 	{
 		DecodeMemory(data, &server, &size);
-		size = 200;
+		size = sizeof(data);
 		if (LHNetGetCurrentProfileData("POP3UserName", (unsigned char*)data, &size) == LH_OK)
 		{
 			DecodeMemory(data, &user, &size);
-			size = 200;
+			size = sizeof(data);
 			if (LHNetGetCurrentProfileData("POP3UserPassword", (unsigned char*)data, &size) == LH_OK)
 			{
 				DecodeMemory(data, &password, &size);
-				size = 200;
+				size = sizeof(data);
 				if (user[0] != '\0' && server[0] != '\0')
 				{
-					POP3->SetLogin(user, password, server, 110);
+					POP3->SetLogin(user, password, server, LH_POP3_DEFAULT_PORT);
 					result = true;
 					SystemActive = true;
 				}
@@ -633,50 +644,50 @@ bool LHMailPOP3::CleanUpPOP3()
 LH_RETURN LHMailPOP3::DriverCheckMails()
 {
 	LHPOP3Mail   mail;
-	char         buffer[200];
-	char         startup[152];
-	char         message[400];
+	char         buffer[LH_MAIL_POP3_LOG_LENGTH];
+	char         startup[LH_MAIL_STARTUP_DATE_LENGTH];
+	char         message[LH_MAIL_POP3_MESSAGE_LENGTH];
 	LH_RETURN    result = LH_FAIL;
 	LH_RETURN    status;
 	LHMailEmail* email;
 
 	switch (State)
 	{
-	case 1:
+	case LH_MAIL_POP3_STATE_CONNECT:
 		Action = LH_POP3_ACTION_START;
 		status = POP3->OpenConnectionAsync();
 		if (status == LH_OK)
 		{
-			State = 2;
+			State = LH_MAIL_POP3_STATE_LOGIN;
 			Action = LH_POP3_ACTION_START;
 		}
 		else if (status == LH_ERROR)
 		{
-			State = 6;
+			State = LH_MAIL_POP3_STATE_FINISHED;
 			Action = LH_POP3_ACTION_START;
 			result = status;
 		}
 		break;
 
-	case 2:
+	case LH_MAIL_POP3_STATE_LOGIN:
 		status = POP3->LoginAsync(&Action);
 		if (status == LH_ERROR)
 		{
-			State = 6;
+			State = LH_MAIL_POP3_STATE_FINISHED;
 			Action = LH_POP3_ACTION_START;
 			result = LH_ERROR;
 		}
 		else if (status == LH_OK)
 		{
-			State = 3;
+			State = LH_MAIL_POP3_STATE_LIST;
 		}
 		break;
 
-	case 3:
+	case LH_MAIL_POP3_STATE_LIST:
 		status = POP3->GetMsgListAsync(Mails, &Action);
 		if (status == LH_ERROR)
 		{
-			State = 6;
+			State = LH_MAIL_POP3_STATE_FINISHED;
 			Action = LH_POP3_ACTION_START;
 			result = LH_ERROR;
 		}
@@ -686,23 +697,23 @@ LH_RETURN LHMailPOP3::DriverCheckMails()
 			{
 				OldMailCount = POP3->GetNrofAllMails() - POP3->GetNrOfNewMails();
 				CurrentMail = POP3->GetNrofAllMails();
-				State = 4;
+				State = LH_MAIL_POP3_STATE_GET_HEADERS;
 				sprintf(buffer, "POP3 Email: New mails found! Number: %ld\n", POP3->GetNrOfNewMails());
 			}
 			else
 			{
-				State = 5;
+				State = LH_MAIL_POP3_STATE_LOGOUT;
 			}
 		}
 		break;
 
-	case 4:
+	case LH_MAIL_POP3_STATE_GET_HEADERS:
 		if (CurrentMail > OldMailCount)
 		{
 			status = POP3->GetMailNameSubject(CurrentMail, mail, &Action);
 			if (status == LH_ERROR)
 			{
-				State = 6;
+				State = LH_MAIL_POP3_STATE_FINISHED;
 				Action = LH_POP3_ACTION_START;
 				result = LH_ERROR;
 			}
@@ -720,8 +731,8 @@ LH_RETURN LHMailPOP3::DriverCheckMails()
 				}
 				else
 				{
-					strftime(buffer, 50, "%d.%m.%Y %H:%M", gmtime(&mail.Date));
-					strftime(startup, 50, "%d.%m.%Y %H:%M", gmtime((time_t*)&StartupTime));
+					strftime(buffer, LH_MAIL_DATE_LENGTH, "%d.%m.%Y %H:%M", gmtime(&mail.Date));
+					strftime(startup, LH_MAIL_DATE_LENGTH, "%d.%m.%Y %H:%M", gmtime((time_t*)&StartupTime));
 					sprintf(message,
 					        "POP3 Email: Mail with Subject \"%s\" and Name: \"%s\"  will not be displayed.\n"
 					        "Servertime of Mail:%s is lower than Black Startuptime: %s!!\n",
@@ -732,26 +743,26 @@ LH_RETURN LHMailPOP3::DriverCheckMails()
 		}
 		else
 		{
-			State = 5;
+			State = LH_MAIL_POP3_STATE_LOGOUT;
 		}
 		break;
 
-	case 5:
+	case LH_MAIL_POP3_STATE_LOGOUT:
 		status = POP3->LogoutAsync(&Action);
 		if (status == LH_ERROR || status == LH_OK)
 		{
-			State = 6;
+			State = LH_MAIL_POP3_STATE_FINISHED;
 			Action = LH_POP3_ACTION_START;
 			result = status;
 		}
 		break;
 
-	case 0:
-		State = 1;
+	case LH_MAIL_POP3_STATE_IDLE:
+		State = LH_MAIL_POP3_STATE_CONNECT;
 		break;
 
-	case 6:
-		State = 0;
+	case LH_MAIL_POP3_STATE_FINISHED:
+		State = LH_MAIL_POP3_STATE_IDLE;
 		break;
 	}
 	return result;
@@ -764,7 +775,7 @@ bool LHMailPOP3::DriverGetContactNames(unsigned long* count)
 
 bool LHMailPOP3::CallInitDriver()
 {
-	State = 0;
+	State = LH_MAIL_POP3_STATE_IDLE;
 	return InitPOP3();
 }
 

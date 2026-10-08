@@ -13,11 +13,9 @@ struct LHNetMessageFormatDescriptor;
 struct LH_USER_ID;
 template <typename T> class LHLinkedList;
 
-// IAT 008a9434.
 // BW1W120 1006272c
 LH_MULTIPLAYER_API extern char CheckInternetConnectionOptions;
 
-// IAT 008a9548 / 008a9430 / 008a95f8.
 // BW1W120 10018ad0
 LH_MULTIPLAYER_API void __cdecl LHNetUseProfile(unsigned short* profile);
 // BW1W120 100196f0
@@ -25,7 +23,6 @@ LH_MULTIPLAYER_API bool __cdecl LHCheckForInternetConnection(char options);
 // BW1W120 100139d0
 LH_MULTIPLAYER_API LHMail* __cdecl LHLoadInGameEmailSystem(char* address_book);
 
-// IAT 008a9638 / 008a9634.
 // BW1W120 10018c60
 LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetGetCurrentProfileUlong(char* name, unsigned long* value);
 // BW1W120 10018e90
@@ -35,10 +32,8 @@ LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetGetCurrentProfileDouble(char* name, do
 // BW1W120 10018fe0
 LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetSetCurrentProfileDouble(char* name, double value);
 
-// Ushort * LHNetGetCurrentUsedProfile(void)
 // BW1W120 100189d0
 LH_MULTIPLAYER_API unsigned short* __cdecl LHNetGetCurrentUsedProfile(void);
-// Ushort * LHNetGetCurrentProfileNameFromRegistry(void)
 // BW1W120 10018b30
 LH_MULTIPLAYER_API unsigned short* __cdecl LHNetGetCurrentProfileNameFromRegistry(void);
 
@@ -48,8 +43,6 @@ LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetGetCurrentProfileData(char* name, unsi
 LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetSetCurrentProfileData(char* name, unsigned char* data, unsigned long size);
 // BW1W120 100194a0
 LH_MULTIPLAYER_API void __cdecl ICQinttoLHTransportInfo(unsigned long address, LHTransportInfo* transport_info);
-
-// Packet encoding helpers used by LHNetEvent::RawCreate / RawDecode.
 
 // BW1W120 10018440 BW1M119 01106010 (LHCombined Release)
 unsigned long LHNetGetEncodedStringListLength(LHLinkedList<char*>* list);
@@ -73,8 +66,8 @@ LH_MULTIPLAYER_API unsigned char* LHNetEncodeNetEvent(unsigned char* buffer, LHN
 LH_MULTIPLAYER_API unsigned char* LHNetDecodeFile(unsigned char* buffer, char** file_name, LH_USER_ID* user_id);
 
 // BW1W120 100195e0 BW1M119 01103a80 (LHCombined Release)
-unsigned short* LIBCHAR2WCHAR(char* string);
+wchar_t* LIBCHAR2WCHAR(char* string);
 // BW1W120 10019610 BW1M119 011039f0 (LHCombined Release)
-char* LIBWCHAR2CHAR(char16_t* text);
+char* LIBWCHAR2CHAR(wchar_t* text);
 
 #endif /* BW1_DECOMP_LH_NET_UTILS_INCLUDED_H */

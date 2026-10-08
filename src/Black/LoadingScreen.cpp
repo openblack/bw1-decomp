@@ -203,7 +203,7 @@ void DrawLoading(float fade, float progress)
 			static unsigned long developerPatch = 0;
 			if (versionText[0] == 0)
 			{
-				LHRegistrySetCurrentKey(LH_REG_KEY_TYPE_0x00);
+				LHRegistrySetCurrentKey(LH_REG_KEY_TYPE_CURRENT_USER);
 				if (RegistryRetrieveULong("Software\\Lionhead Studios Ltd\\Black & White", "GameVersion",
 				                          &gameVersion) != LH_OK)
 				{

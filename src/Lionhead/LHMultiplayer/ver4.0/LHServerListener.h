@@ -8,8 +8,6 @@ class LHConnection;
 class LHNetEvent;
 class LHNetUser;
 
-// Accepts connections for an LHConnectionServer (LHTCPServerListener is the only
-// implementation). Vtable order from Mac __vt__16LHServerListener / LHConnectionServer's calls.
 class LHServerListener
 {
 public:

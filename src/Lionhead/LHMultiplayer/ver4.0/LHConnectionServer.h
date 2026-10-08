@@ -4,17 +4,17 @@
 #include <assert.h>  /* For static_assert */
 #include <windows.h> /* For CRITICAL_SECTION, HANDLE */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>
 #include <Lionhead/LHLib/ver5.0/LHTimer.h>
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
 
 #include "LHConnection.h" /* For enum LH_OPERATING_MODE */
-#include "LHNetUser.h"    /* For LHNetUser, LH_USER_ID */
+#include "LHNetUser.h"    /* For LHNetUser, LH_USER_ID, LH_MAX_NAME_LENGTH */
 #include "LHPlayer.h"     /* For LHPlayer */
 #include "LHServerListener.h"
-
-// Forward Declares
 
 class LHConnection;
 class LHNetEvent;
@@ -22,35 +22,50 @@ class LHServerListener;
 class LHTransportInfo;
 struct LHMPServerStartInfo;
 
-// Base class of LHLobbyServer and LHMessageServer: owns the accepted connections (one
-// LHServerPlayer each), the listener and either a server thread (asynchronous mode) or
-// a caller-driven event loop (synchronous mode).
-// Not exported; its constructor is inlined into LHLobby::StartInternalLobbyServer and
-// LHLobby::StartInternalMessageServer.
+enum
+{
+	LH_SERVER_MAX_PLAYERS = 100,
+	LH_SERVER_MAX_SIGNALS = LH_SERVER_MAX_PLAYERS + 3,
+	LH_SERVER_REFUSE_CONNECTION_DELAY = 500,
+	LH_SERVER_OP_COMPLETE_TIMEOUT = 15500,
+	LH_SERVER_SHUTDOWN_FLUSH_TIMEOUT = 15000,
+	LH_SERVER_MAX_IDLE_TIMES_BEHIND = 20,
+};
+
+enum
+{
+	LH_SERVER_SIGNAL_NONE = -1,
+	LH_SERVER_SIGNAL_ACCEPT_CONNECTION = -2,
+	LH_SERVER_SIGNAL_BROADCAST = -3,
+};
+
+enum
+{
+	LH_INVALID_GAME_TURN = 0xffffffff,
+};
+
 class LHConnectionServer
 {
 public:
-	// The server's record of one accepted connection.
 	class LHServerPlayer : public LHPlayer
 	{
 	public:
-		uint32_t      field_0x200;
-		unsigned long ProtocolVersion;    /* 0x204; set by DetermineConnectionProtocol */
-		char*         CodeChecksumString; /* 0x208 */
-		uint32_t      field_0x20c;
-		LHConnection* Connection; /* 0x210 */
-		uint32_t      field_0x214;
-		uint32_t      RunsMessageServer; /* 0x218; not cleared by ClearAllData */
-		uint32_t      field_0x21c;
-		uint32_t      field_0x220;
-		uint32_t      field_0x224;
-		uint32_t      field_0x228;
-		uint32_t      field_0x22c;
-		uint32_t      field_0x230;
+		unsigned long CodeChecksum;         /* 0x200 */
+		unsigned long ProtocolVersion;      /* 0x204 */
+		char*         CodeChecksumString;   /* 0x208 */
+		long          Reserved;             /* 0x20c */
+		LHConnection* Connection;           /* 0x210 */
+		bool32_t      MServeStartFailed;    /* 0x214 */
+		bool32_t      RunsMessageServer;    /* 0x218 */
+		bool32_t      SyncPacketReceived;   /* 0x21c */
+		unsigned long LastSuperPacketTurn;  /* 0x220 */
+		unsigned long NextChecksumTurn;     /* 0x224 */
+		unsigned long NextFullChecksumTurn; /* 0x228 */
+		unsigned long SyncDataSize;         /* 0x22c */
+		void*         SyncData;             /* 0x230 */
 
 		// BW1W120 inlined BW1M119 inlined
 		LHServerPlayer() { ClearAllData(); }
-		// Non-virtual, like ~LHPlayer: the vtable is LHPlayer's four slots.
 		// BW1W120 10005570 BW1M119 010e2850 (LHCombined Release)
 		~LHServerPlayer();
 		// BW1W120 100055c0 BW1M119 010e27b0 (LHCombined Release)
@@ -61,32 +76,27 @@ public:
 		void ClearAllData();
 	};
 
-	// Mac keeps the vptr after these members (at +0x1f8); MSVC puts it first.
-	CRITICAL_SECTION  SharedDataLock;     /* 0x4 */
-	HANDLE            StartedEvent;       /* 0x1c; auto-reset */
-	HANDLE            ShutdownEvent;      /* 0x20; manual-reset */
-	LH_OPERATING_MODE Mode;               /* 0x24 */
-	char              RegisteredName[49]; /* 0x28 */
-	char*             UserName;           /* 0x5c */
-	// Handles passed to WaitForMultipleObjects: one per player plus the listener's.
-	// TODO: 0x67 is the observed array length; the original constant is unknown.
-	HANDLE                        Signals[0x67];         /* 0x60 */
-	unsigned long                 NumSignals;            /* 0x1fc */
-	int                           Started;               /* 0x200 */
-	int                           UnsolicitedProcessing; /* 0x204; TODO: name fabricated, never set here */
-	unsigned long                 IdleTime;              /* 0x208; interval between unsolicited processing */
-	unsigned long                 LastUnsolicitedTime;   /* 0x20c; Timer milliseconds */
-	LHTimer                       Timer;                 /* 0x210 */
-	LHConnection*                 ParentConnection;      /* 0x320 */
-	LHServerPlayer*               InternalPlayer;        /* 0x324; the player on an async (in-process) transport */
-	LHServerListener*             Listener;              /* 0x328 */
-	LHNetUser                     NetUser;               /* 0x32c */
-	LHLinkedList<LHServerPlayer*> Players;               /* 0x448 */
+	CRITICAL_SECTION              SharedDataLock;                         /* 0x4 */
+	HANDLE                        StartedEvent;                           /* 0x1c */
+	HANDLE                        ShutdownEvent;                          /* 0x20 */
+	LH_OPERATING_MODE             Mode;                                   /* 0x24 */
+	char                          RegisteredName[LH_MAX_NAME_LENGTH + 1]; /* 0x28 */
+	char*                         UserName;                               /* 0x5c */
+	HANDLE                        Signals[LH_SERVER_MAX_SIGNALS];         /* 0x60 */
+	unsigned long                 NumSignals;                             /* 0x1fc */
+	bool32_t                      Started;                                /* 0x200 */
+	bool32_t                      UnsolicitedProcessing;                  /* 0x204 */
+	unsigned long                 IdleTime;                               /* 0x208 */
+	unsigned long                 LastUnsolicitedTime;                    /* 0x20c */
+	LHTimer                       Timer;                                  /* 0x210 */
+	LHConnection*                 ParentConnection;                       /* 0x320 */
+	LHServerPlayer*               InternalPlayer;                         /* 0x324 */
+	LHServerListener*             Listener;                               /* 0x328 */
+	LHNetUser                     NetUser;                                /* 0x32c */
+	LHLinkedList<LHServerPlayer*> Players;                                /* 0x448 */
 
 	// BW1W120 inlined BW1M119 010ee7e0 (LHCombined Release)
 	LHConnectionServer() { ClearAllData(); }
-
-	// Original DLL vtable order, 1005059c.
 
 	// BW1W120 purecall BW1M119 purecall
 	virtual void DoUnsolicitedProcessing() = 0;
@@ -109,14 +119,12 @@ public:
 	// BW1W120 purecall BW1M119 purecall
 	virtual void Shutdown() = 0;
 
-	// Non-virtual methods
-
 	// BW1W120 10005710 BW1M119 010e1f00 (LHCombined Release)
 	LH_RETURN BaseAddConnection(LHConnection* connection);
 	// BW1W120 10005970 BW1M119 010e1af0 (LHCombined Release)
 	LH_RETURN Start(LHMPServerStartInfo* start_info, LHTransportInfo* acceptor_info, LHTransportInfo* broadcast_info,
 	                LH_USER_ID::CATEGORY category, LH_OPERATING_MODE mode, LHConnection* parent_connection,
-	                unsigned long idle_time, unsigned long param_8);
+	                unsigned long idle_time, unsigned long thread_priority);
 	// BW1W120 10005c90 BW1M119 010e1a30 (LHCombined Release)
 	LH_RETURN SendStartupEvent();
 	// BW1W120 10005ce0 BW1M119 010e1990 (LHCombined Release)
@@ -209,7 +217,6 @@ public:
 	LH_USER_ID GetUserID() { return NetUser.GetID(); }
 
 protected:
-	// Protected like the other LH base classes' ClearAllData (IAE): LHMessageServer::ClearAllData calls it.
 	// BW1W120 10005650 BW1M119 010e2600 (LHCombined Release)
 	void ClearAllData();
 

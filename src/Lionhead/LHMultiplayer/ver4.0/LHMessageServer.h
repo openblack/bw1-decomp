@@ -2,38 +2,43 @@
 #define BW1_DECOMP_LH_MESSAGE_SERVER_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For wchar_t */
 #include <stdlib.h> /* For free */
-#include <uchar.h>  /* For char16_t */
 
 #include <Lionhead/LHLib/ver5.0/LHOrderedLinkedList.h>
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>
 
 #include "LHConnectionServer.h"
 #include "LHDynamicQueue.h"
-#include "LHNetUser.h" /* For LH_USER_ID */
-
-// Forward Declares
+#include "LHMPServerStartInfo.h" /* For LH_MAX_GAME_PLAYERS */
+#include "LHNetUser.h"           /* For LH_USER_ID, LH_MAX_NAME_LENGTH */
 
 class LHConnection;
 class LHNetEvent;
 class LHPlayer;
-struct LHMPServerStartInfo;
 
-// The game-loop server of a multiplayer game: collects the players' game packets into
-// super packets once per turn, catches up late joiners and compares their checksums.
-// Not exported; LHLobby::StartInternalMessageServer constructs it inline and also emits
-// its destructor.
+enum
+{
+	LH_MSERVE_LOCAL_ADDRESS_TIMEOUT = 1000,
+	LH_MSERVE_LAST_SUPERPACKET_DATA_TIMEOUT = 60000,
+	LH_MSERVE_DATA_PACKET_FLUSH_TIMEOUT = 60000,
+	LH_MSERVE_CATCHUP_CHECKSUM_TIMEOUT = 10000,
+	LH_MSERVE_WAIT_FOR_PLAYERS_TIMEOUT = 20000,
+	LH_MSERVE_AUTH_FAILED_DISCONNECT_DELAY = 5000,
+	LH_MSERVE_MAX_CATCHUP_TURNS = 10,
+	LH_MSERVE_CHALLENGE_RESPONSE_SIZE = 100,
+};
+
 class LHMessageServer : public LHConnectionServer
 {
 public:
-	// One player's checksum for one game turn, kept sorted by turn and player.
 	class LHChecksumInfo
 	{
 	public:
 		unsigned long Checksum; /* 0x0 */
 		unsigned long GameTurn; /* 0x4 */
 		LHPlayer*     Player;   /* 0x8 */
-		void*         Data;     /* 0xc; only sent with ordinary (not full) checksums */
+		void*         Data;     /* 0xc */
 		unsigned long DataSize; /* 0x10 */
 
 		// BW1W120 inlined BW1M119 inlined
@@ -43,7 +48,7 @@ public:
 			DataSize = 0;
 			Player = NULL;
 			Checksum = 0;
-			GameTurn = 0xffffffff;
+			GameTurn = LH_INVALID_GAME_TURN;
 		}
 		// BW1W120 inlined BW1M119 010fcc70 (LHCombined Release)
 		~LHChecksumInfo()
@@ -53,34 +58,31 @@ public:
 		}
 
 		// BW1W120 100158e0 BW1M119 010fb500 (LHCombined Release)
-		int operator<(const LHChecksumInfo& other);
+		bool32_t operator<(const LHChecksumInfo& other);
 	};
 
-	unsigned long                       NumPlayers;           /* 0x450; connected players (not servers) */
-	unsigned long                       StartTime;            /* 0x454; GetTickCount() at ClearAllData */
-	LHOrderedLinkedList<LHChecksumInfo> Checksums;            /* 0x458 */
-	LHOrderedLinkedList<LHChecksumInfo> FullChecksums;        /* 0x460 */
-	LHServerPlayer*                     GameFilePlayer;       /* 0x468; late joiner waiting for the saved game */
-	unsigned long                       GameFileTurn;         /* 0x46c */
-	int                                 GameStarted;          /* 0x470 */
-	unsigned long                       GameTurn;             /* 0x474 */
-	unsigned long                       NextPlayerID;         /* 0x478 */
-	char                                Name[49];             /* 0x47c */
-	unsigned long                       NumExpectedPlayers;   /* 0x4b0 */
-	int                                 ChecksumsEnabled;     /* 0x4b4 */
-	int                                 FullChecksumsEnabled; /* 0x4b8 */
-	LHDynamicQueue<LHNetEvent*>         EventQueue;           /* 0x4bc; game packets for the next super packet */
-	unsigned long                       GameIdleTime;         /* 0x4c8; Start's idle time, TODO: never read here */
-	char16_t                            PlayerNames[32][48];  /* 0x4cc */
-	LH_USER_ID                          PlayerIDs[32];        /* 0x10cc */
+	unsigned long                       NumPlayers;                                           /* 0x450 */
+	unsigned long                       StartTime;                                            /* 0x454 */
+	LHOrderedLinkedList<LHChecksumInfo> Checksums;                                            /* 0x458 */
+	LHOrderedLinkedList<LHChecksumInfo> FullChecksums;                                        /* 0x460 */
+	LHServerPlayer*                     GameFilePlayer;                                       /* 0x468 */
+	unsigned long                       GameFileTurn;                                         /* 0x46c */
+	bool32_t                            GameStarted;                                          /* 0x470 */
+	unsigned long                       GameTurn;                                             /* 0x474 */
+	unsigned long                       NextPlayerID;                                         /* 0x478 */
+	char                                Name[LH_MAX_NAME_LENGTH + 1];                         /* 0x47c */
+	unsigned long                       NumExpectedPlayers;                                   /* 0x4b0 */
+	bool32_t                            ChecksumsEnabled;                                     /* 0x4b4 */
+	bool32_t                            FullChecksumsEnabled;                                 /* 0x4b8 */
+	LHDynamicQueue<LHNetEvent*>         EventQueue;                                           /* 0x4bc */
+	unsigned long                       GameIdleTime;                                         /* 0x4c8 */
+	wchar_t                             PlayerNames[LH_MAX_GAME_PLAYERS][LH_MAX_NAME_LENGTH]; /* 0x4cc */
+	LH_USER_ID                          PlayerIDs[LH_MAX_GAME_PLAYERS];                       /* 0x10cc */
 
 	// BW1W120 inlined BW1M119 inlined
 	LHMessageServer() { ClearAllData(); }
-	// Emitted in LHLobby.cpp.
 	// BW1W120 1000dad0 BW1M119 010ec360 (LHCombined Release)
 	virtual ~LHMessageServer() { Shutdown(); }
-
-	// Original DLL vtable order, 10050654.
 
 	// BW1W120 100140e0 BW1M119 010fd9f0 (LHCombined Release)
 	virtual void DoUnsolicitedProcessing();
@@ -100,8 +102,6 @@ public:
 	virtual LH_RETURN RemoveConnection(LHConnection* connection);
 	// BW1W120 10013db0 BW1M119 010fe140 (LHCombined Release)
 	virtual void Shutdown();
-
-	// Non-virtual methods
 
 	// BW1W120 10013c80 BW1M119 010fe260 (LHCombined Release)
 	LH_RETURN Start(LHMPServerStartInfo* start_info, char* name, unsigned long num_players, unsigned long idle_time);
@@ -124,7 +124,7 @@ private:
 	// BW1W120 10014c80 BW1M119 010fc850 (LHCombined Release)
 	LH_RETURN ProcessInternalServerStart();
 	// BW1W120 10014c90 BW1M119 010fc760 (LHCombined Release)
-	LH_RETURN ProcessMServeClientRestartGameLoop(int notify);
+	LH_RETURN ProcessMServeClientRestartGameLoop(bool32_t notify);
 	// BW1W120 10014dd0 BW1M119 010fc650 (LHCombined Release)
 	LH_RETURN ProcessMServeClientChallengeResponse(LHConnection* connection, LHNetEvent* event);
 	// BW1W120 10014e50 BW1M119 010fc530 (LHCombined Release)
@@ -144,11 +144,9 @@ private:
 	// BW1W120 100154b0 BW1M119 010fb660 (LHCombined Release)
 	LH_RETURN ProcessMServeClientLastSuperPacket(LHConnection* connection, LHNetEvent* event);
 	// BW1W120 100154f0 BW1M119 010faf70 (LHCombined Release)
-	LH_RETURN ProcessMServeClientChecksum(LHConnection* connection, LHNetEvent* event, int full);
+	LH_RETURN ProcessMServeClientChecksum(LHConnection* connection, LHNetEvent* event, bool32_t full);
 
 public:
-	// Static methods
-
 	// BW1W120 10015930 BW1M119 010fae70 (LHCombined Release)
 	static unsigned long GetMServeProtocolVersion();
 };

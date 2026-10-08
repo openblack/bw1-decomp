@@ -590,7 +590,7 @@ void GPlayer::ProcessPlayers()
 						GameStats::PlayerLostTheGame(*ranking[i], 0);
 					}
 				}
-				unsigned long team = GGame::g_game->MyInterface()->player->field_0x1fc;
+				unsigned long team = GGame::g_game->MyInterface()->player->ClanID;
 				if (winner != GGame::g_game->MyPlayer() &&
 				    GGame::g_game->MyPlayer()->GetPlayerNumber() < MAX_MULTIPLAYER_PLAYERS)
 				{
@@ -661,7 +661,7 @@ void GPlayer::ProcessPlayers()
 			for (player = GGame::g_game->GetNextActivePlayer(NULL); player != NULL;
 			     player = GGame::g_game->GetNextActivePlayer(player))
 			{
-				unsigned long team = GGame::g_game->MyInterface()->player->field_0x1fc;
+				unsigned long team = GGame::g_game->MyInterface()->player->ClanID;
 				if (!player->HasLost || player->field_0x93c)
 				{
 					continue;

@@ -4,13 +4,13 @@
 #include <assert.h> /* For static_assert */
 #include <stddef.h> /* For NULL, offsetof */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
 #include "LHMultiplayerExport.h"
 #include "LHNetEvent.h"      /* For enum LH_NETEVENT_TYPE */
 #include "LHNetUser.h"       /* For struct LHNetUser, struct LH_USER_ID */
 #include "LHTransportInfo.h" /* For enum LH_TRANSPORT_TYPE */
-
-// Forward Declares
 
 class LHConnection;
 class LHNetEvent;
@@ -19,8 +19,6 @@ class LHTransportInfo;
 
 enum LH_OPERATING_MODE
 {
-	// Names from the "SYNCHRONOUS"/"ASYNCHRONOUS" strings in LHConnectionServer::BaseSendGreeting;
-	// ConnectionServerShutdown sets 3.
 	LH_OPERATING_MODE_NONE = 0x0,
 	LH_OPERATING_MODE_SYNCHRONOUS = 0x1,
 	LH_OPERATING_MODE_ASYNCHRONOUS = 0x2,
@@ -30,11 +28,9 @@ enum LH_OPERATING_MODE
 
 typedef LH_RETURN (*LHConnectionEventFunction)(LHNetEvent* net_event, LHConnection* connection, void* context);
 
-// The whole class is exported: its vtable, implicit copy constructor and operator= are DLL exports.
 class LH_MULTIPLAYER_API LHConnection
 {
 private:
-	// Original DLL vtable order, 100502cc: ProcessEvent, deleting destructor, Close, Read.
 	// BW1W120 10001fb0 BW1M119 010dbfd0 (LHCombined Release)
 	virtual LH_RETURN ProcessEvent(LHNetEvent* net_event) { return LH_ERROR; }
 
@@ -46,27 +42,22 @@ public:
 	// BW1W120 100047b0 BW1M119 010de540 (LHCombined Release)
 	virtual LHNetEvent* Read(unsigned long timeout, LH_NETEVENT_TYPE type);
 
-	int                       Open;                    /* 0x04 */
-	LHConnectionEventFunction EventFunction;           /* 0x08 */
-	void*                     EventContext;            /* 0x0c */
-	unsigned long             ProtocolVersion;         /* 0x10 */
-	int                       Validated;               /* 0x14 */
-	LH_USER_ID                ConnectedUserID;         /* 0x18 */
-	unsigned short            ConnectedUserName[0x31]; /* 0x1c */
-	unsigned long             ChallengeKey;            /* 0x80 */
-	LHTransport*              Transport;               /* 0x84 */
-	LHNetUser*                NetUser;                 /* 0x88 */
-	LH_OPERATING_MODE         Mode;                    /* 0x8c */
+	bool32_t                  Open;                                      /* 0x04 */
+	LHConnectionEventFunction EventFunction;                             /* 0x08 */
+	void*                     EventContext;                              /* 0x0c */
+	unsigned long             ProtocolVersion;                           /* 0x10 */
+	bool32_t                  Validated;                                 /* 0x14 */
+	LH_USER_ID                ConnectedUserID;                           /* 0x18 */
+	wchar_t                   ConnectedUserName[LH_MAX_NAME_LENGTH + 1]; /* 0x1c */
+	unsigned long             ChallengeKey;                              /* 0x80 */
+	LHTransport*              Transport;                                 /* 0x84 */
+	LHNetUser*                NetUser;                                   /* 0x88 */
+	LH_OPERATING_MODE         Mode;                                      /* 0x8c */
 
 protected:
 #ifdef LH_MULTIPLAYER_EXPORTS
-	// TODO: hidden from game TUs. Each static data member declaration bumps cl6's _$E counter in
-	// every consumer, and runblack's _$E numbering (GameStats, GatheringInterface) shows the game
-	// was built without seeing LHConnection::RegisteredGame, LHNetEvent::MessageDescriptors or
-	// LHNetEvent::UserFileDirectory. How the original headers hid them is unknown.
-	// TODO: size inferred from the 0x34-byte .bss slot and the 0x31-char names used elsewhere.
 	// BW1W120 10068600 BW1M119 01356634 (LHCombined Release)
-	static char RegisteredGame[0x31];
+	static char RegisteredGame[LH_MAX_NAME_LENGTH + 1];
 #endif
 
 public:
@@ -80,28 +71,27 @@ public:
 	}
 
 	// BW1W120 10002010 BW1M119 inlined
-	int IsOpen() { return Open; }
+	bool32_t IsOpen() { return Open; }
 	// BW1W120 10002020 BW1M119 0110c200 (LHCombined Release)
 	LHNetUser* GetNetUser() { return NetUser; }
 	// BW1W120 10002030 BW1M119 010dd9a0 (LHCombined Release)
 	LH_USER_ID GetUserID() { return GetNetUser()->id; }
-	// The original method is GetUserName; <windows.h> renamed it to GetUserNameA.
 	// BW1W120 10002050 BW1M119 inlined
-	unsigned short* GetUserNameA() { return NetUser->Name; }
+	wchar_t* GetUserNameA() { return NetUser->Name; }
 	// BW1W120 10002060 BW1M119 inlined
 	LH_OPERATING_MODE GetMode() { return Mode; }
 	// BW1W120 10002070 BW1M119 010f48b0 (LHCombined Release)
 	LH_USER_ID GetConnectedUserID() { return ConnectedUserID; }
 	// BW1W120 10002080 BW1M119 inlined
-	unsigned short* GetConnectedUserName() { return ConnectedUserName; }
+	wchar_t* GetConnectedUserName() { return ConnectedUserName; }
 #ifdef LH_MULTIPLAYER_EXPORTS
 	// BW1W120 10002090 BW1M119 inlined
 	char* GetRegisteredName() { return RegisteredGame; }
 #endif
 	// BW1W120 100020a0 BW1M119 inlined
-	int IsValid() { return Validated; }
+	bool32_t IsValid() { return Validated; }
 	// BW1W120 100020b0 BW1M119 inlined
-	int IsConnected() { return !IsDisconnected(); }
+	bool32_t IsConnected() { return !IsDisconnected(); }
 
 protected:
 	// BW1W120 10004670 BW1M119 010dec40 (LHCombined Release)
@@ -137,14 +127,14 @@ private:
 	// BW1W120 100048b0 BW1M119 010de110 (LHCombined Release)
 	LH_RETURN BaseProcessEvent(LHNetEvent* net_event);
 	// BW1W120 10004940 BW1M119 010de0a0 (LHCombined Release)
-	LH_RETURN SetConnectedUserName(unsigned short* name);
+	LH_RETURN SetConnectedUserName(wchar_t* name);
 	// BW1W120 10004960 BW1M119 010ddf30 (LHCombined Release)
 	LH_RETURN ProcessClientJoin(LHNetEvent* net_event);
 
 public:
 	// BW1W120 10004a20 BW1M119 010dde80 (LHCombined Release)
-	static LH_RETURN DetermineConnectionProtocol(LHConnection* connection, unsigned long client_version,
-	                                             unsigned long* protocol_version, unsigned long server_version);
+	static LH_RETURN DetermineConnectionProtocol(LHConnection* connection, unsigned long local_version,
+	                                             unsigned long* protocol_version, unsigned long remote_version);
 
 private:
 	// BW1W120 10004a60 BW1M119 010dddb0 (LHCombined Release)
@@ -180,7 +170,7 @@ public:
 	// BW1W120 10004ee0 BW1M119 010dcf10 (LHCombined Release)
 	LH_RETURN RawOpen(LHNetUser* user, LHTransportInfo* transport_info);
 	// BW1W120 10004f80 BW1M119 010dceb0 (LHCombined Release)
-	int ConnectionOriented();
+	bool32_t ConnectionOriented();
 	// BW1W120 10004fa0 BW1M119 010dcdb0 (LHCombined Release)
 	LH_RETURN OpenServerConnectionToExternalTransport(LHNetUser* user, LHTransport* transport);
 	// BW1W120 10005000 BW1M119 010dcac0 (LHCombined Release)
@@ -197,13 +187,13 @@ public:
 	// BW1W120 100051e0 BW1M119 010dc8f0 (LHCombined Release)
 	LH_RETURN Flush(unsigned long timeout);
 	// BW1W120 10005270 BW1M119 010102b0 (LHCombined Release)
-	int IsDisconnected();
+	bool32_t IsDisconnected();
 	// BW1W120 10005290 BW1M119 010dc690 (LHCombined Release)
-	int IsInternal();
+	bool32_t IsInternal();
 	// BW1W120 100052d0 BW1M119 010dc610 (LHCombined Release)
-	int CheckForEvents();
+	bool32_t CheckForEvents();
 	// BW1W120 100052f0 BW1M119 010dc580 (LHCombined Release)
-	int CheckForEvent(LH_NETEVENT_TYPE type);
+	bool32_t CheckForEvent(LH_NETEVENT_TYPE type);
 
 protected:
 	// BW1W120 10005310 BW1M119 010dc530 (LHCombined Release)
@@ -221,7 +211,7 @@ public:
 	// BW1W120 100053a0 BW1M119 010dc0a0 (LHCombined Release)
 	static LHNetEvent* BlockingMultipleRead(unsigned long* index, LHConnection** connections, unsigned long count);
 	// BW1W120 10005490 BW1M119 010dc020 (LHCombined Release)
-	LH_RETURN GetTransportInfo(LHTransportInfo* transport_info, int local);
+	LH_RETURN GetTransportInfo(LHTransportInfo* transport_info, bool32_t local);
 };
 static_assert(offsetof(LHConnection, ChallengeKey) == 0x80, "LHConnection challenge key offset is incorrect");
 static_assert(offsetof(LHConnection, NetUser) == 0x88, "LHConnection user offset is incorrect");

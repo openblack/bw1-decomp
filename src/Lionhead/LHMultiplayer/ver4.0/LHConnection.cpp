@@ -13,12 +13,18 @@
 
 #include "LHTransport.h"
 
-char LHConnection::RegisteredGame[0x31];
+enum
+{
+	LH_CONNECTION_ERROR_FLUSH_TIMEOUT = 500,
+	LH_CONNECTION_VALIDATION_TIMEOUT = 10000000,
+};
+
+char LHConnection::RegisteredGame[LH_MAX_NAME_LENGTH + 1];
 
 void LHConnection::ClearAllData()
 {
 	Transport = NULL;
-	Open = FALSE;
+	Open = false;
 	EventFunction = NULL;
 	EventContext = NULL;
 	Mode = LH_OPERATING_MODE_NONE;
@@ -26,7 +32,7 @@ void LHConnection::ClearAllData()
 	ConnectedUserID = 0;
 	memset(ConnectedUserName, 0, sizeof(ConnectedUserName));
 	ChallengeKey = 0;
-	Validated = FALSE;
+	Validated = false;
 	ProtocolVersion = 0;
 }
 
@@ -91,7 +97,7 @@ LHNetEvent* LHConnection::RawRead(unsigned long timeout, LH_NETEVENT_TYPE type)
 		return NULL;
 	if (!Transport->IsOpen())
 		return NULL;
-	if (type != 0)
+	if (type != LH_NETEVENT_TYPE_NONE)
 		return Transport->ExtractEvent(type, timeout);
 	return Transport->Read(timeout);
 }
@@ -139,16 +145,16 @@ LH_RETURN LHConnection::BaseProcessEvent(LHNetEvent* net_event)
 	}
 }
 
-LH_RETURN LHConnection::SetConnectedUserName(unsigned short* name)
+LH_RETURN LHConnection::SetConnectedUserName(wchar_t* name)
 {
-	wcsncpy(ConnectedUserName, name, 0x30);
+	wcsncpy(ConnectedUserName, name, LH_MAX_NAME_LENGTH);
 	return LH_OK;
 }
 
 LH_RETURN LHConnection::ProcessClientJoin(LHNetEvent* net_event)
 {
-	unsigned short* name;
-	unsigned long   clientVersion;
+	wchar_t*      name;
+	unsigned long clientVersion;
 
 	if (net_event->VDecode(LH_NETEVENT_TYPE_CLIENT_JOIN, &name, &clientVersion) != LH_OK)
 		return LH_ERROR;
@@ -179,13 +185,13 @@ LH_RETURN LHConnection::DetermineConnectionProtocol(LHConnection* connection, un
 void LHConnection::WriteLastError(LH_NETEVENT_TYPE type)
 {
 	Write(LHNetEvent::VCreate(type, GetUserID(), LHLogger::GetCode(), LHLogger::GetText()));
-	Flush(500);
+	Flush(LH_CONNECTION_ERROR_FLUSH_TIMEOUT);
 	Disconnect();
 }
 
 void LHConnection::FeedbackLastErrorAndClose()
 {
-	Validated = TRUE;
+	Validated = true;
 	AddToFrontOfIncomingEventQ(
 		LHNetEvent::VCreate(LH_NETEVENT_TYPE_SERVER_ERROR, GetUserID(), LHLogger::GetCode(), LHLogger::GetText()));
 	Disconnect();
@@ -217,7 +223,7 @@ LH_RETURN LHConnection::ProcessClientChallengeResponse(LHNetEvent* net_event)
 		return LH_FAIL;
 	}
 
-	Validated = TRUE;
+	Validated = true;
 	AddToIncomingEventQ(LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_ADD_CONNECTION, GetUserID(), 0, NULL));
 	return Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_SERVER_CONNECTION_VALIDATED, GetUserID(), GetProtocolVersion(),
 	                                 ProtocolVersion)) != LH_OK
@@ -233,7 +239,7 @@ LH_RETURN LHConnection::ProcessServerConnectionValidated(LHNetEvent* net_event)
 	if (net_event->VDecode(LH_NETEVENT_TYPE_SERVER_CONNECTION_VALIDATED, &serverVersion, &protocolVersion) != LH_OK)
 		return LH_ERROR;
 
-	Validated = TRUE;
+	Validated = true;
 	ProtocolVersion = protocolVersion;
 	return LH_OK;
 }
@@ -252,15 +258,15 @@ LH_RETURN LHConnection::ProcessServerConnectionRefused(LHNetEvent* net_event)
 
 LH_RETURN LHConnection::ProcessServerGreeting(LHNetEvent* net_event)
 {
-	char*         param_1;
-	char*         param_2;
-	char*         param_3;
-	unsigned long param_4;
-	char*         param_5;
-	unsigned long param_6;
+	char*         serverName;
+	char*         serverUserName;
+	char*         modeName;
+	unsigned long playerCount;
+	char*         upTime;
+	unsigned long idleTime;
 
-	return net_event->VDecode(LH_NETEVENT_TYPE_SERVER_GREETING, &param_1, &param_2, &param_3, &param_4, &param_5,
-	                          &param_6) != LH_OK
+	return net_event->VDecode(LH_NETEVENT_TYPE_SERVER_GREETING, &serverName, &serverUserName, &modeName, &playerCount,
+	                          &upTime, &idleTime) != LH_OK
 	           ? LH_FAIL
 	           : LH_OK;
 }
@@ -271,15 +277,13 @@ LH_RETURN LHConnection::WaitForConnectionValidation()
 
 	while (!Validated)
 	{
-		net_event = Read(10000000, (LH_NETEVENT_TYPE)0);
+		net_event = Read(LH_CONNECTION_VALIDATION_TIMEOUT, LH_NETEVENT_TYPE_NONE);
 		if (net_event == NULL)
 			return LH_FAIL;
 		if (!Open)
 			return LH_FAIL;
 	}
 
-	// TODO: net_event is read uninitialised when the connection was already validated; the
-	// binary does the same.
 	if (net_event->GetType() == LH_NETEVENT_TYPE_SERVER_CONNECTION_VALIDATED ||
 	    net_event->GetType() == LH_NETEVENT_TYPE_CLIENT_CHALLENGE_RESPONSE)
 		return LH_OK;
@@ -352,12 +356,12 @@ LH_RETURN LHConnection::RawOpen(LHNetUser* user, LHTransportInfo* transport_info
 	           ? LH_OPERATING_MODE_SYNCHRONOUS
 	           : LH_OPERATING_MODE_ASYNCHRONOUS;
 	if (!ConnectionOriented())
-		Validated = TRUE;
-	Open = TRUE;
+		Validated = true;
+	Open = true;
 	return LH_OK;
 }
 
-int LHConnection::ConnectionOriented()
+bool32_t LHConnection::ConnectionOriented()
 {
 	return Transport->GetType() != LH_TRANSPORT_TYPE_UDP;
 }
@@ -370,7 +374,7 @@ LH_RETURN LHConnection::OpenServerConnectionToExternalTransport(LHNetUser* user,
 	SetNetUser(user);
 	Mode = LH_OPERATING_MODE_ASYNCHRONOUS;
 	Transport = transport;
-	Open = TRUE;
+	Open = true;
 	if (WaitForConnectionValidation() != LH_OK)
 	{
 		Close();
@@ -379,9 +383,6 @@ LH_RETURN LHConnection::OpenServerConnectionToExternalTransport(LHNetUser* user,
 	return LH_OK;
 }
 
-// TODO: 66%. The target keeps a separate Close()/return LH_ERROR block after each of the five reads
-// (and a separate return for the final check) where our build shares one block; separate ifs, the
-// Mac && chain and || all compile to the shared form.
 LH_RETURN LHConnection::OpenServerConnectionToOtherConnection(LHNetUser* user, LHConnection* connection,
                                                               void (*callback)(void*), void* context)
 {
@@ -414,11 +415,10 @@ LH_RETURN LHConnection::OpenServerConnectionToOtherConnection(LHNetUser* user, L
 	if (Transport->OpenConnectionToTransport(connection->Transport, callback, context) != LH_OK)
 		return LH_FAIL;
 
-	// Pump the five handshake events through both ends.
-	Open = TRUE;
-	if (Read(-1, (LH_NETEVENT_TYPE)0) != NULL && connection->Read(-1, (LH_NETEVENT_TYPE)0) != NULL &&
-	    Read(-1, (LH_NETEVENT_TYPE)0) != NULL && connection->Read(-1, (LH_NETEVENT_TYPE)0) != NULL &&
-	    Read(-1, (LH_NETEVENT_TYPE)0) != NULL)
+	Open = true;
+	if (Read(INFINITE, LH_NETEVENT_TYPE_NONE) != NULL && connection->Read(INFINITE, LH_NETEVENT_TYPE_NONE) != NULL &&
+	    Read(INFINITE, LH_NETEVENT_TYPE_NONE) != NULL && connection->Read(INFINITE, LH_NETEVENT_TYPE_NONE) != NULL &&
+	    Read(INFINITE, LH_NETEVENT_TYPE_NONE) != NULL)
 	{
 		if (Validated && connection->Validated)
 			return LH_OK;
@@ -460,7 +460,7 @@ void LHConnection::Close()
 {
 	if (Open)
 	{
-		Open = FALSE;
+		Open = false;
 		ClearTransport();
 		ClearAllData();
 	}
@@ -472,34 +472,34 @@ LHConnection::~LHConnection()
 		Close();
 }
 
-int LHConnection::IsDisconnected()
+bool32_t LHConnection::IsDisconnected()
 {
 	if (!Open)
-		return TRUE;
+		return true;
 	return Transport->IsDisconnected();
 }
 
-int LHConnection::IsInternal()
+bool32_t LHConnection::IsInternal()
 {
 	if (!Open)
 		return LH_ERROR;
 	if (GetTransportType() == LH_TRANSPORT_TYPE_BASE || GetTransportType() == LH_TRANSPORT_TYPE_SYNC ||
 	    GetTransportType() == LH_TRANSPORT_TYPE_ASYNC)
-		return TRUE;
-	return FALSE;
+		return true;
+	return false;
 }
 
-int LHConnection::CheckForEvents()
+bool32_t LHConnection::CheckForEvents()
 {
 	if (!Open)
-		return FALSE;
+		return false;
 	return Transport->CheckForEvents();
 }
 
-int LHConnection::CheckForEvent(LH_NETEVENT_TYPE type)
+bool32_t LHConnection::CheckForEvent(LH_NETEVENT_TYPE type)
 {
 	if (!Open)
-		return FALSE;
+		return false;
 	return Transport->CheckForEvent(type);
 }
 
@@ -519,7 +519,6 @@ unsigned long LHConnection::GetProtocolVersion()
 	return LHVersion::GetMajorMinorULONG("LHConnectionProtocol", &version) == LH_OK ? version : 0;
 }
 
-// TODO: the variadic connection list is never read; both binaries pass an empty array.
 LHNetEvent* __cdecl LHConnection::BlockingMultipleRead(LHConnection** connection, ...)
 {
 	unsigned long  index;
@@ -530,8 +529,6 @@ LHNetEvent* __cdecl LHConnection::BlockingMultipleRead(LHConnection** connection
 	return net_event;
 }
 
-// TODO: same instructions, different block layout: the target places the early-return block of the
-// first loop and the final Read after the WAIT_FAILED return.
 LHNetEvent* LHConnection::BlockingMultipleRead(unsigned long* index, LHConnection** connections, unsigned long count)
 {
 	HANDLE* signals = new HANDLE[count];
@@ -546,34 +543,28 @@ LHNetEvent* LHConnection::BlockingMultipleRead(unsigned long* index, LHConnectio
 		{
 			*index = i;
 			delete signals;
-			return connections[i]->Read(-1, (LH_NETEVENT_TYPE)0);
+			return connections[i]->Read(INFINITE, LH_NETEVENT_TYPE_NONE);
 		}
 	}
 
 	long result = WaitForMultipleObjects(count, signals, FALSE, INFINITE);
 	delete signals;
-	if (result == -1)
+	if (result == WAIT_FAILED)
 		return NULL;
 	if (result < 0 || result >= (long)count)
 		return NULL;
 
 	*index = result;
-	if (connections[result]->CheckForEvents() == TRUE)
-		return connections[result]->Read(0, (LH_NETEVENT_TYPE)0);
+	if (connections[result]->CheckForEvents() == true)
+		return connections[result]->Read(0, LH_NETEVENT_TYPE_NONE);
 	return NULL;
 }
 
-LH_RETURN LHConnection::GetTransportInfo(LHTransportInfo* transport_info, int local)
+LH_RETURN LHConnection::GetTransportInfo(LHTransportInfo* transport_info, bool32_t local)
 {
 	return Transport->GetTransportInfo(transport_info, local);
 }
 
-// Registers the connection protocol version ("LHConnectionProtocol" 1.15) with LHLogR.dll; GetProtocolVersion()
-// reads it back through LHVersion::GetMajorMinorULONG. The same block/object/pointer triple appears in every
-// versioned module (LHLobbyServer.cpp, LHMessageServer.cpp, LHMultiplayerLib, LHLog, LHAudio, the game).
-// TODO: names fabricated; Windows only (the Mac build has no version blocks). Nothing reads VersionPointer.
-// The object's name must hash into a lower cl .bss bucket than RegisteredGame and LH_ALL_USERS so that it is
-// laid out first, as in the target ("VersionInformation" is bucket 3).
 static LHVersionBlock VersionBlock = {
 	"YyHhTtMm",
 	"RELEASE",

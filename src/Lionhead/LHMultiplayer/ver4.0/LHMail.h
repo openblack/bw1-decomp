@@ -10,34 +10,55 @@
 #include "LHMultiplayerExport.h"
 #include "LHPOP3.h"
 
-// A mail waiting to be shown in game.
+enum
+{
+	LH_MAIL_NAME_LENGTH = 350,
+	LH_MAIL_SUBJECT_LENGTH = 1024,
+	LH_MAIL_ADDRESS_BOOK_FILE_LENGTH = 350,
+	LH_MAIL_DEFAULT_CHECK_TIME = 180000,
+};
+
+enum LH_MAIL_DRIVER_TYPE
+{
+	LH_MAIL_DRIVER_TYPE_OUTLOOK = 0,
+	LH_MAIL_DRIVER_TYPE_POP3 = 1,
+};
+
+enum LH_MAIL_POP3_STATE
+{
+	LH_MAIL_POP3_STATE_IDLE = 0,
+	LH_MAIL_POP3_STATE_CONNECT = 1,
+	LH_MAIL_POP3_STATE_LOGIN = 2,
+	LH_MAIL_POP3_STATE_LIST = 3,
+	LH_MAIL_POP3_STATE_GET_HEADERS = 4,
+	LH_MAIL_POP3_STATE_LOGOUT = 5,
+	LH_MAIL_POP3_STATE_FINISHED = 6,
+};
+
 struct LHMailEmail
 {
-	char Name[350];
-	char Subject[1024]; /* 0x15e */
+	char Name[LH_MAIL_NAME_LENGTH];
+	char Subject[LH_MAIL_SUBJECT_LENGTH]; /* 0x15e */
 };
 static_assert(sizeof(LHMailEmail) == 0x55e, "LHMailEmail size is incorrect");
 
-// One sender name in the personal address book.
 struct LHMailContacts
 {
-	char Name[350];
+	char Name[LH_MAIL_NAME_LENGTH];
 };
 static_assert(sizeof(LHMailContacts) == 0x15e, "LHMailContacts size is incorrect");
 
-// In-game email: watches the player's real inbox (through Outlook or POP3) and queues
-// mails from known senders. Vtable: 100506a0.
 class LH_MULTIPLAYER_API LHMail
 {
 public:
-	long                          DriverType;           // 0 for LHMailOutlook, 1 for LHMailPOP3.
-	bool                          SystemActive;         /* 0x8 */
-	unsigned long                 StartupTime;          // +c; time(); older mails are skipped.
-	LHLinkedList<LHMailEmail*>    MailQueue;            /* 0x10 */
-	LHLinkedList<LHMailContacts*> ContactList;          /* 0x18 */
-	char                          AddressBookFile[350]; /* 0x20 */
-	bool                          CurrentCheckStatus;   /* 0x17e */
-	unsigned long                 CheckTime;            // +180; milliseconds between checks.
+	LH_MAIL_DRIVER_TYPE           DriverType;                                        /* 0x4 */
+	bool                          SystemActive;                                      /* 0x8 */
+	unsigned long                 StartupTime;                                       /* 0xc */
+	LHLinkedList<LHMailEmail*>    MailQueue;                                         /* 0x10 */
+	LHLinkedList<LHMailContacts*> ContactList;                                       /* 0x18 */
+	char                          AddressBookFile[LH_MAIL_ADDRESS_BOOK_FILE_LENGTH]; /* 0x20 */
+	bool                          CurrentCheckStatus;                                /* 0x17e */
+	unsigned long                 CheckTime;                                         /* 0x180 */
 
 	// BW1W120 10069118 BW1M119 null
 	static unsigned long SeedCounter;
@@ -112,7 +133,6 @@ protected:
 };
 static_assert(sizeof(LHMail) == 0x184, "LHMail size is incorrect");
 
-// Mail driver that talks to Outlook through outlookdll.dll. Vtable: 100506b8.
 class LH_MULTIPLAYER_API LHMailOutlook : public LHMail
 {
 public:
@@ -147,16 +167,15 @@ public:
 };
 static_assert(sizeof(LHMailOutlook) == 0x19c, "LHMailOutlook size is incorrect");
 
-// Mail driver that polls a POP3 server with LHPOP3. Vtable: 100506d0.
 class LH_MULTIPLAYER_API LHMailPOP3 : public LHMail
 {
 public:
-	long                      State;        /* 0x184 */
+	LH_MAIL_POP3_STATE        State;        /* 0x184 */
 	LHPOP3*                   POP3;         /* 0x188 */
 	LHLinkedList<LHPOP3Mail*> Mails;        /* 0x18c */
 	LH_POP3_ACTION            Action;       /* 0x194 */
-	long                      OldMailCount; // +198; messages already on the server.
-	long                      CurrentMail;  // +19c; message whose header is fetched next.
+	long                      OldMailCount; /* 0x198 */
+	long                      CurrentMail;  /* 0x19c */
 
 	// BW1W120 10013330 BW1M119 010f83a0 (LHCombined Release)
 	LHMailPOP3(char* address_book);
@@ -182,5 +201,7 @@ static_assert(sizeof(LHMailPOP3) == 0x1a0, "LHMailPOP3 size is incorrect");
 
 // BW1W120 10012260 BW1M119 010fae40 (LHCombined Release)
 LH_MULTIPLAYER_API void InetLogging(char* text);
+// BW1W120 100122a0
+char* GetProductId();
 
 #endif /* BW1_DECOMP_LH_MAIL_INCLUDED_H */

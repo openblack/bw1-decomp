@@ -2,19 +2,15 @@
 #define BW1_DECOMP_LH_SOCKET_INCLUDED_H
 
 #include <assert.h>   /* For static_assert */
-#include <stdint.h>   /* For uint32_t, uint8_t */
-#include <winsock2.h> /* For SOCKET, sockaddr_in; its functions are dllimport */
+#include <stdint.h>   /* For uint32_t */
+#include <winsock2.h> /* For SOCKET, sockaddr_in, hostent */
 
 #include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
 #include "LHMultiplayerExport.h"
 
-// Forward Declares
-
 class LHPacket;
 class LHTransportInfo;
 
-// Abstract base of LHSocketTCP. Every virtual is pure (all ten slots of 100505e4 are
-// _purecall) and the destructor is not virtual.
 class LH_MULTIPLAYER_API LHSocket
 {
 public:
@@ -34,7 +30,7 @@ public:
 	// BW1W120 purecall BW1M119 purecall
 	virtual LH_RETURN Send(void* data, long size) = 0;
 	// BW1W120 purecall BW1M119 purecall
-	virtual LH_RETURN Receive(void* data, long size, int param_3) = 0;
+	virtual LH_RETURN Receive(void* data, long size, int flags) = 0;
 	// BW1W120 purecall BW1M119 purecall
 	virtual LH_RETURN SendPacket(LHPacket* packet) = 0;
 	// BW1W120 purecall BW1M119 purecall
@@ -49,7 +45,7 @@ public:
 	// BW1W120 1001fe60 BW1M119 011152b0 (LHCombined Release)
 	static void Startup();
 	// BW1W120 1001fef0 BW1M119 01114fe0 (LHCombined Release)
-	static LH_RETURN WaitForSocketEvents(unsigned int* socket, unsigned short param_2, timeval* timeout);
+	static LH_RETURN WaitForSocketEvents(unsigned int* sockets, unsigned short count, timeval* timeout);
 	// BW1W120 1001fed0 BW1M119 011151a0 (LHCombined Release)
 	void ClearLastUDPPacketBuffer();
 	// BW1W120 10020000 BW1M119 01114ef0 (LHCombined Release)
@@ -79,13 +75,13 @@ protected:
 	void ClearAllData();
 
 public:
-	uint32_t    field_0x4;
-	uint32_t    field_0x8;
-	sockaddr_in Address; // +c; the implicit operator= copies it as one 16-byte struct.
-	char**      name;
+	LHPacket*   LastUDPPacket;  /* 0x4 */
+	LHPacket*   LastReadPacket; /* 0x8 */
+	sockaddr_in Address;        /* 0xc */
+	hostent*    HostEntry;      /* 0x1c */
 	uint32_t    SendBytesTotal; /* 0x20 */
-	uint32_t    SendBytes;
-	SOCKET      Socket; // +28; INVALID_SOCKET until connected.
+	uint32_t    SendBytes;      /* 0x24 */
+	SOCKET      Socket;         /* 0x28 */
 };
 static_assert(sizeof(LHSocket) == 0x2c, "LHSocket size is incorrect");
 
