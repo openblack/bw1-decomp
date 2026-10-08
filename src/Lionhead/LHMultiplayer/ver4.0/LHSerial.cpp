@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 
+#include "LHNetErrors.h"
 #include "LHPacket.h"
 #include "LHTransportInfo.h"
 

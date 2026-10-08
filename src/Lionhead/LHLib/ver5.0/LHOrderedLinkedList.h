@@ -104,6 +104,21 @@ public:
 			Remove(node->GetData());
 		}
 	}
+	// Like LHLinkedList::DeleteAll: also deletes the payloads.
+	// TODO: name fabricated. No symbol on either platform; its existence is inferred from the
+	// inliner: LHMessageServer::Shutdown and CheckReadyToGo only match with the loop inside a
+	// helper (Remove stays a call in CheckReadyToGo, which a top-level Remove would never do).
+	// BW1W120 inlined BW1M119 null
+	void DeleteAll()
+	{
+		OrderedNode<T>* node;
+		while ((node = GetHead()) != NULL)
+		{
+			T* data = node->GetData();
+			Remove(data);
+			delete data;
+		}
+	}
 };
 
 template <typename T> class LHOrderedLinkedListIterator

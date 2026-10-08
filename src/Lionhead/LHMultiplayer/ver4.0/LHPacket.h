@@ -19,6 +19,14 @@ class LHPacket
 public:
 	struct LHPacketHeader header; /* 0x0 */
 	uint8_t               payload[0x0];
+
+	// The "data" of a packet is everything after the length word, header included.
+	// BW1W120 inlined BW1M119 01005540 (LHCombined Release)
+	unsigned short GetDataLen() { return header.length; }
+	// BW1W120 inlined BW1M119 0103f180 (LHCombined Release)
+	void SetDataLen(unsigned short length) { header.length = length; }
+	// BW1W120 inlined BW1M119 01005590 (LHCombined Release)
+	unsigned char* GetDataPtr() { return (unsigned char*)&header.NeteventType; }
 };
 static_assert(sizeof(LHPacket) == 0x8, "Data type is of wrong size");
 

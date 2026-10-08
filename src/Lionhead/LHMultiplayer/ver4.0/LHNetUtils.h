@@ -7,7 +7,11 @@
 #include "LHMultiplayerExport.h"
 
 class LHMail;
+class LHNetEvent;
 class LHTransportInfo;
+struct LHNetMessageFormatDescriptor;
+struct LH_USER_ID;
+template <typename T> class LHLinkedList;
 
 // IAT 008a9434.
 // BW1W120 1006272c
@@ -44,5 +48,33 @@ LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetGetCurrentProfileData(char* name, unsi
 LH_MULTIPLAYER_API LH_RETURN __cdecl LHNetSetCurrentProfileData(char* name, unsigned char* data, unsigned long size);
 // BW1W120 100194a0
 LH_MULTIPLAYER_API void __cdecl ICQinttoLHTransportInfo(unsigned long address, LHTransportInfo* transport_info);
+
+// Packet encoding helpers used by LHNetEvent::RawCreate / RawDecode.
+
+// BW1W120 10018440 BW1M119 01106010 (LHCombined Release)
+unsigned long LHNetGetEncodedStringListLength(LHLinkedList<char*>* list);
+// BW1W120 10018480 BW1M119 01105ec0 (LHCombined Release)
+unsigned char* LHNetEncodeStringList(unsigned char* buffer, LHLinkedList<char*>* list);
+// BW1W120 10018500 BW1M119 01105d00 (LHCombined Release)
+unsigned char* LHNetDecodeStringList(unsigned char* buffer, LHLinkedList<char*>* list);
+// BW1W120 100185c0 BW1M119 01105c60 (LHCombined Release)
+char* LHNetGetFormatDescriptor(long type, LHNetMessageFormatDescriptor* descriptors);
+// BW1W120 10018640 BW1M119 01105ab0 (LHCombined Release)
+unsigned long LHNetGetEncodedFileLength(char* file_name);
+// BW1W120 100186d0 BW1M119 011057f0 (LHCombined Release)
+LH_MULTIPLAYER_API unsigned char* LHNetEncodeFile(unsigned char* buffer, LH_USER_ID user_id, char* file_name);
+// BW1W120 10018840 BW1M119 01105780 (LHCombined Release)
+LH_MULTIPLAYER_API unsigned long LHNetGetNetEventLength(LHNetEvent* net_event);
+// BW1W120 10018860 BW1M119 011056f0 (LHCombined Release)
+LH_MULTIPLAYER_API unsigned char* LHNetDecodeNetEvent(unsigned char* buffer, LHNetEvent** net_event);
+// BW1W120 10018890 BW1M119 011055f0 (LHCombined Release)
+LH_MULTIPLAYER_API unsigned char* LHNetEncodeNetEvent(unsigned char* buffer, LHNetEvent* net_event);
+// BW1W120 100188d0 BW1M119 01105360 (LHCombined Release)
+LH_MULTIPLAYER_API unsigned char* LHNetDecodeFile(unsigned char* buffer, char** file_name, LH_USER_ID* user_id);
+
+// BW1W120 100195e0 BW1M119 01103a80 (LHCombined Release)
+unsigned short* LIBCHAR2WCHAR(char* string);
+// BW1W120 10019610 BW1M119 011039f0 (LHCombined Release)
+char* LIBWCHAR2CHAR(char16_t* text);
 
 #endif /* BW1_DECOMP_LH_NET_UTILS_INCLUDED_H */
