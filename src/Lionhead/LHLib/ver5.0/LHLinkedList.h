@@ -131,17 +131,17 @@ public:
 	inline LHLinkedNode<T>* GetLastNode()
 	{
 		LHLinkedNode<T>* node = head.Get();
-		if (!node)
+		if (node)
 		{
-			return NULL;
+			LHLinkedNode<T>* last;
+			do
+			{
+				last = node;
+				node = node->next.Get();
+			} while (node);
+			return last;
 		}
-		LHLinkedNode<T>* last;
-		do
-		{
-			last = node;
-			node = node->next.Get();
-		} while (node);
-		return last;
+		return NULL;
 	}
 
 	// BW1W120 inlined BW1M119 012aa9e0

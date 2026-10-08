@@ -23,7 +23,8 @@ class Object;
 class GArena : public GameThingWithPos
 {
 public:
-	uint8_t            field_0x28[0x10];
+	uint8_t            field_0x28[0xc];
+	bool32_t           FightInProgress; /* 0x34 */
 	Creature*          Creatures[2];
 	uint8_t            field_0x40[0x8];
 	LHListNode<GArena> next;
@@ -51,6 +52,8 @@ public:
 
 	// BW1W120 inlined BW1M119 011ac8d0
 	Creature* GetCreature(unsigned long index) { return Creatures[index]; }
+	// BW1W120 00425060 BW1M119 010ae4c0
+	bool32_t IsCreatureInArena(Creature* creature);
 };
 
 class ArenaSpellIcon : public Fixed

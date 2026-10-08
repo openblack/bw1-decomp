@@ -96,6 +96,8 @@ public:
 	void* AddTown(Town* town);
 	// BW1W120 00463190 BW1M119 011c2460
 	WorshipSite* FindTribeWorshipSite(const GTribeInfo* tribe_info);
+	// BW1W120 004639a0 BW1M119 01005d60
+	WorshipSite* GetNearestActiveWorshipSite(const MapCoords& coords, float t_max) const;
 	// BW1W120 004631d0 BW1M119 011c2390
 	WorshipSite* FindOrCreateWorshipSite(Town* town);
 	// BW1W120 00463220 BW1M119 011c2300

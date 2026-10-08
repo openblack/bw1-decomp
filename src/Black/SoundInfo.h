@@ -14,7 +14,10 @@ class Base;
 class GSoundInfo : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0x3c];
+	uint8_t field_0x10[0x2c];
+	float   TownMusicNearDistance;
+	float   TownMusicFarDistance;
+	uint8_t field_0x44[0x8];
 
 	// BW1W120 00d9a8f8
 	static GSoundInfo Info;
@@ -28,7 +31,7 @@ public:
 
 	// TODO(#377): The original declared this class in SoundMap.h.
 	// Out of line: LoadBinary at 0042f750.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(field_0x10, field_0x44)
 	INFO_ROOT_LOADERS("SoundMap.h", 19)
 };
 

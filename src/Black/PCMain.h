@@ -19,6 +19,8 @@ extern bool ARGS_NOINETCONN;
 // TODO: Original name unknown; ScanParameters sets this for CONVERT.
 // BW1W120 00d46ac1
 extern bool Dat_00D46AC1;
+// BW1W120 00d46ac3
+extern bool ARGS_NOLOADMUSIC;
 
 // BW1W120 006419f0 BW1M119 01370680
 void stop_draw_sprite_to_screen();

@@ -17,7 +17,7 @@ class EffectValues;
 class GInterfaceStatus;
 class GPlayer;
 class GameThingWithPos;
-struct LH_SamplePlayOptions;
+class LH_SamplePlayOptions;
 struct MapCoords;
 class Town;
 

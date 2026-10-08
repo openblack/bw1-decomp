@@ -158,23 +158,33 @@ Black/Arrow.cpp:
 
 Black/Artifact.cpp:
 	.text       start:0x00425C50 end:0x00426AF0
-	.rdata      start:0x008C3F5C end:0x008C47D0
+	.rdata      start:0x008C3F5C end:0x008C48CC
 	.CRT$XCU    start:0x009C6120 end:0x009C6130 align:4
-	.data       start:0x009C9728 end:0x009CAF7C
+	.data       start:0x009C9728 end:0x009C9748
 	.bss        start:0x00C56140 end:0x00C5615C
 
 Black/Audio.cpp:
-	.text       start:0x00426AF0 end:0x00429180
-	.rdata      start:0x008C47D0 end:0x008C4A14
-	.CRT$XCU    start:0x009C6130 end:0x009C6140 align:4
-	.data       start:0x009CAF7C end:0x009CB3C0
+	.text       start:0x00426AF0 end:0x00428850
+	.rdata      start:0x008C48CC end:0x008C49E8
+	.CRT$XCU    start:0x009C6130 end:0x009C613C align:4
+	.data       start:0x009C9748 end:0x009CB048
 	.bss        start:0x00C5615C end:0x00C56168
+
+Black/AudioAnalyse.cpp:
+	.text       start:0x00428850 end:0x00428EF0
+	.rdata      start:0x008C49E8 end:0x008C4A00
+
+Black/AudioAtmos.cpp:
+	.text       start:0x00428EF0 end:0x00429180
+	.rdata      start:0x008C4A00 end:0x008C4A10
+	.CRT$XCU    start:0x009C613C end:0x009C6140 align:4
+	.data       start:0x009CB048 end:0x009CB3A0
 
 Black/AudioMusicThing.cpp:
 	.text       start:0x00429180 end:0x0042A650
-	.rdata      start:0x008C4A14 end:0x008C4B10
+	.rdata      start:0x008C4A10 end:0x008C4B10
 	.CRT$XCU    start:0x009C6140 end:0x009C614C align:4
-	.data       start:0x009CB3C0 end:0x009CB5DC
+	.data       start:0x009CB3A0 end:0x009CB5DC
 	.bss        start:0x00C56168 end:0x00C5836C
 
 Black/audiotag.cpp:

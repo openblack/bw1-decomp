@@ -19,13 +19,13 @@ class SubArgument;
 class CreatureSubAction : public Base
 {
 public:
-	uint8_t  field_0x8[0x4];
-	uint32_t field_0xc;
-	uint8_t  field_0x10[0x4];
-	LHPoint  field_0x14;
-	uint8_t  field_0x20[0xc];
-	uint32_t field_0x2c;
-	uint8_t  field_0x30[0x30];
+	CREATURE_SUB_STATE_ACTIONS Action;
+	uint32_t                   field_0xc;
+	uint8_t                    field_0x10[0x4];
+	LHPoint                    field_0x14;
+	uint8_t                    field_0x20[0xc];
+	uint32_t                   field_0x2c;
+	uint8_t                    field_0x30[0x30];
 
 	// Override methods
 
@@ -38,13 +38,16 @@ public:
 	CreatureSubAction();
 };
 
+// NextPart moves on to the next sub-action once SubActionState reaches this.
+#define CREATURE_SUB_ACTION_PARTS 3
+
 class CreatureSubActionAgenda : public Base
 {
 public:
 	uint32_t          field_0x8;
-	uint32_t          field_0xc;
-	uint32_t          field_0x10;
-	uint32_t          field_0x14;
+	unsigned long     CurrentSubAction;
+	int               SubActionState;
+	unsigned long     NumSubActions;
 	uint32_t          field_0x18;
 	int               field_0x1c;
 	uint32_t          field_0x20;
@@ -73,6 +76,13 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 011d7d00
+	bool IsValid()
+	{
+		return NumSubActions > 0 && CurrentSubAction < NumSubActions && SubActionState < CREATURE_SUB_ACTION_PARTS;
+	}
+	// BW1W120 inlined BW1M119 0129acc0
+	unsigned long GetSubActionIndex() const { return CurrentSubAction; }
 	// BW1W120 004ff240 BW1M119 012908a0
 	void AddSubAction(CREATURE_SUB_STATE_ACTIONS action, SubArgument* argument,
 	                  int (Creature::*look_function)(MapCoords* destination), void (Creature::*face_function)());

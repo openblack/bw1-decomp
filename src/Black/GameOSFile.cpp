@@ -955,7 +955,7 @@ int GameOSFile::AutoLoad()
 // BW1W120 00564050 BW1M119 01080520
 int GameOSFile::AutoSave(int force)
 {
-	if ((!GGame::g_game->help_system->WideScreen || !GGame::g_game->help_system->field_0x45ec) &&
+	if ((!GGame::g_game->help_system->WideScreen || !GGame::g_game->help_system->WideScreenControl) &&
 	    !GGame::g_game->IsMultiplayerGame() && GGame::g_game->LandNumber != 6 &&
 	    ((GGame::g_game->data.GameTurn - LastAutoSaveTurn > AutoSaveInterval &&
 	      !(GGame::g_game->GameFlags & GAME_FLAG_PAUSED)) ||
