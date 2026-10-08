@@ -7,11 +7,25 @@
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
-#include "PictureRoom.h" /* For struct PictureRoomBase */
+#include "chlasm/ScriptChallengeEnums.h" /* For enum ScriptChallengeEnums */
+#include "PictureRoom.h"                 /* For struct PictureRoomBase */
+#include "ScriptDLL.h"                   /* For enum VMType */
 
 // Forward Declares
 
 class GameOSFile;
+
+struct SnapShotData
+{
+	ScriptChallengeEnums Challenge;
+	char*                ScriptName;
+	uint32_t             HelpText;
+	float                Alignment;
+	float                Success;
+	LHPoint              Position;
+	LHPoint              Focus;
+	uint32_t             Type; // SNAPSHOT's quest/challenge keyword
+};
 
 struct TempleChallenge
 {
@@ -59,6 +73,8 @@ public:
 	bool StartScript(unsigned long param_1);
 	// BW1W120 00784d10 BW1M119 011b4810
 	void ChallengeLoad(GameOSFile& file);
+	// BW1W120 00784780 BW1M119 011b5180
+	void UpdateChallenge(SnapShotData& data, unsigned long count, void** values, VMType* types, int take_picture);
 	// BW1W120 00784c70 BW1M119 011b4a70
 	void ChallengeSave(GameOSFile& file);
 };

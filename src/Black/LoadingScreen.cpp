@@ -46,12 +46,12 @@
 #define NUM_TIPS           34
 #define TIP_HELP_TEXT_BASE 5151
 
-static int  LoadingBarDuration = 15000;
-static bool LoadingScreenActive = true;
+static int LoadingBarDuration = 15000;
+bool       LoadingScreen::Active = true;
 
 static char16_t      TipText[0x800];
 static float         unused;
-static int           LoadingTime = 0;
+int                  LoadingScreen::Time = 0;
 static int           unused2 = 0;
 static unsigned long TipHelpTextIndex = 0;
 LHVideoPlayer*       GGame::TipVideo = NULL;
@@ -61,7 +61,7 @@ static int           TipNumber = 0;
 void ReinitLoadingScreen()
 {
 	RenderLoadingFrame(true);
-	LoadingTime = 0;
+	LoadingScreen::Time = 0;
 }
 
 void MakeTipVideo()
@@ -372,17 +372,17 @@ static int PleaseWaitDelay = 5000;
 void RenderLoadingFrame(bool flip)
 {
 	static DWORD lastTime = 0;
-	if (GGame::LoadingFrameEnabled && TipShowing && LoadingScreenActive)
+	if (GGame::LoadingFrameEnabled && TipShowing && LoadingScreen::Active)
 	{
 		DWORD now = timeGetTime();
-		if (LoadingTime == 0)
+		if (LoadingScreen::Time == 0)
 		{
 			lastTime = now;
-			LoadingTime = 1;
+			LoadingScreen::Time = 1;
 		}
 		if (now - lastTime >= 150)
 		{
-			int loadingTime = LoadingTime;
+			int loadingTime = LoadingScreen::Time;
 			if (GGame::LoadingFrameEnabled == 1 && now - lastTime > 350)
 			{
 				loadingTime += 350;
@@ -391,18 +391,18 @@ void RenderLoadingFrame(bool flip)
 			{
 				loadingTime += now - lastTime;
 			}
-			LoadingTime = loadingTime;
+			LoadingScreen::Time = loadingTime;
 			lastTime = now;
 			if (!LHSys::TheSystem.screen.IsAppMinimized())
 			{
 				if (GGame::LoadingFrameEnabled == 1)
 				{
-					DrawLoading(1.0f, (float)LoadingTime / LoadingBarDuration);
+					DrawLoading(1.0f, (float)LoadingScreen::Time / LoadingBarDuration);
 				}
-				else if (LoadingTime > PleaseWaitDelay)
+				else if (LoadingScreen::Time > PleaseWaitDelay)
 				{
 					LH3DRender::StartFrame();
-					int alpha = (LoadingTime - PleaseWaitDelay) / 2;
+					int alpha = (LoadingScreen::Time - PleaseWaitDelay) / 2;
 					SetupThing::DrawAlpha = alpha > 0 ? (alpha < 255 ? alpha : 255) : 0;
 					int screenWidth = LHSys::TheSystem.screen.width;
 					int middle = LHSys::TheSystem.screen.height >> 1;

@@ -164,8 +164,8 @@ public:
 	virtual void                DrawForMouse();
 	virtual void                Blend(LH3DObject* obj1, LH3DObject* obj2);
 	virtual void __fastcall     SetCurrentAnim(LH3DAnim* anim); /* 0x180 */
-	virtual int                 GetCurrentAnim();
-	virtual void                SetCurrentCycleTime(int time);
+	virtual LH3DAnim*           GetCurrentAnim();
+	virtual void __fastcall     SetCurrentCycleTime(int time);
 	virtual float               GetCurrentCycleTime();
 	virtual void                SetLastAnim(const LH3DAnim* anim); /* 0x190 */
 	virtual LH3DAnim*           GetLastAnim();

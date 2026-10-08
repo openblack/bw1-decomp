@@ -205,6 +205,8 @@ public:
 
 	// BW1W120 00464950 BW1M119 011c8b50
 	void CreateLeashes();
+	// BW1W120 00465ab0 BW1M119 011c6e60
+	void DestructionSequenceStart();
 	// BW1W120 00464da0 BW1M119 011c84d0
 	void SetToZero();
 	// BW1W120 00465110 BW1M119 011c7d90

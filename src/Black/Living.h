@@ -5,6 +5,7 @@
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
 
 #include <chlasm/AllMeshes.h>                       /* For enum ANIM_LIST */
+#include <chlasm/CameraPosEnum.h>                   /* For enum SCRIPT_PATH */
 #include <chlasm/Enum.h>                            /* For enum IMMERSION_EFFECT_TYPE, enum REACTION */
 #include <chlasm/GStates.h>                         /* For enum VILLAGER_STATES */
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
@@ -93,6 +94,11 @@ public:
 
 	// BW1W120 005ef110 BW1M119 013850d0
 	DataForScriptRemind();
+
+	// Non-virtual methods
+
+	// BW1W120 005ef1d0 BW1M119 01384e10
+	void KeepThatInMind(Living* living);
 };
 
 // fabricated: result codes of Living::SetTopState / SetCurrentAndDestinationState
@@ -333,18 +339,18 @@ public:
 	virtual void SetStateSpeed();
 	// BW1W120 purecall BW1M119 null
 	virtual bool IsFinalState(VILLAGER_STATES state) = 0;
-	// BW1W120 005ecba0 BW1M119 inlined
-	virtual void SetAnim(int anim, int flags);
 	// BW1W120 005ecb80 BW1M119 inlined
 	virtual void SetAnim(int anim);
+	// BW1W120 005ecba0 BW1M119 inlined
+	virtual void SetAnim(int anim, int flags);
 	// BW1W120 purecall BW1M119 null
 	virtual ANIM_LIST GetAnimId() = 0;
 	// BW1W120 purecall BW1M119 null
 	virtual uint32_t CallExitStateFunction(uint8_t state) = 0;
 	// BW1W120 purecall BW1M119 null
-	virtual uint32_t CallEntryStateFunction(uint8_t current, uint8_t destination) = 0;
-	// BW1W120 purecall BW1M119 null
 	virtual uint32_t CallEntryStateFunction(uint8_t state) = 0;
+	// BW1W120 purecall BW1M119 null
+	virtual uint32_t CallEntryStateFunction(uint8_t current, uint8_t destination) = 0;
 	// BW1W120 005eccd0 BW1M119 inlined
 	virtual bool32_t ExitReaction(uint8_t state);
 	// BW1W120 005ed9c0 BW1M119 inlined
@@ -718,6 +724,10 @@ public:
 	bool SetupMoveToObject(Object* param_1, unsigned char param_2);
 	// BW1W120 005f2830 BW1M119 0102bdb0
 	bool32_t SetupMoveToPos(const MapCoords& coord, uint8_t end_state);
+	// BW1W120 005ee100 BW1M119 01386b70
+	int SetupMoveAlongPath(SCRIPT_PATH path, uint8_t end_state, float start, float end, int reverse);
+	// BW1W120 005ee520 BW1M119 013865a0
+	float GetWalkPathPercentage();
 	// BW1W120 005f2890 BW1M119 01013b30
 	bool32_t SetupMoveToWithHug(const MapCoords& coords, uint8_t state);
 	// BW1W120 006e44a0 BW1M119 0113e540

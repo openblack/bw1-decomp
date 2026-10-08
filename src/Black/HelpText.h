@@ -8,6 +8,8 @@
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <Lionhead/LH3DLib/development/LHRegion.h>  /* For struct LHRegion */
 
+#include <re_common.h> /* For bool32_t */
+
 #include "Base.h" /* For struct Base */
 
 class HelpText : public Base
@@ -29,7 +31,7 @@ public:
 	uint32_t        field_0xa4;
 	uint32_t        field_0xa8;
 	uint32_t        field_0xac;
-	uint32_t        field_0xb0;
+	bool32_t        SingleLine;
 	uint32_t        field_0xb4;
 	uint32_t        field_0xb8;
 

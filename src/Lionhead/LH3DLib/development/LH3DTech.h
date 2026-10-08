@@ -13,6 +13,7 @@
 
 struct LH3DColor;
 struct LH3DMaterial;
+class LH3DObject;
 struct LHMatrix;
 struct LHPoint;
 struct LHTimer;
@@ -109,5 +110,9 @@ public:
 
 // BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)
 void __cdecl Report3D__FPCce(const char* fmt, ...);
+// BW1W120 0081f1a0 BW1M119 01013fc0 (LHCombined Release)
+int IsObjectOnScreen(LH3DObject* object);
+// BW1W120 0081f1d0 BW1M119 01005310 (LHCombined Release)
+int IsPointOnScreen(LHPoint* point);
 
 #endif /* BW1_DECOMP_LH3D_TECH_INCLUDED_H */

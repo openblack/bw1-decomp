@@ -119,10 +119,19 @@ public:
 #ifdef VERSION_BW1W120
 	float field_0x108;
 #endif
-	float       field_0x10c;
-	uint32_t    field_0x110;
+	union {
+		struct
+		{
+			float    field_0x10c;
+			uint32_t field_0x110;
+		};
+		JustWholeMapXZ ScriptWanderCentre; /* SET_SCRIPT_STATE_POS's position */
+	};
 	FireEffect* fire_effect;
-	GameThing*  TargetThing;
+	union {
+		GameThing* TargetThing;
+		float      ScriptWanderRadius; /* SET_SCRIPT_FLOAT's value */
+	};
 	union { /* 0x11c */
 		Football*      football;
 		Town*          TradeTown;

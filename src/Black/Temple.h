@@ -6,7 +6,12 @@
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 
+#include "ScriptDLL.h"  /* For enum VMType */
 #include "TempleRoom.h" /* For class TempleRoom, enum TempleRoomsEnum */
+
+// Forward Declares
+
+struct SnapShotData;
 
 struct Temple
 {
@@ -71,6 +76,8 @@ struct Temple
 	void Draw();
 	// BW1W120 00794a20 BW1M119 0153f010
 	bool StartScript(unsigned long param_1);
+	// BW1W120 00794970 BW1M119 0153f230
+	void UpdateChallenge(SnapShotData& data, unsigned long count, void** values, VMType* types, int take_picture);
 	// BW1W120 007949e0 BW1M119 0153f110
 	void SetCameraToLookAtSubMesh(unsigned long sub_mesh, float param_2, float param_3, float param_4);
 	// BW1W120 inlined BW1M119 015aef90

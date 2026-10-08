@@ -185,6 +185,8 @@ public:
 	uint8_t* GetSafeBuffer();
 	// BW1W120 004842d0 BW1M119 011fc1c0
 	bool IsPerformingBodyAction();
+	// BW1W120 00484c60 BW1M119 011faf30
+	float GetBodyActionFraction();
 	// BW1W120 0048b780 BW1M119 011f2640
 	uint32_t GetObjectActionStatus();
 	// BW1W120 0048dd70 BW1M119 011eefb0
