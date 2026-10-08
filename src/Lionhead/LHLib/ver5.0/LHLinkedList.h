@@ -33,17 +33,22 @@ public:
 	}
 	inline LHLinkedNode<T>* GetStart() const { return head.Get(); }
 	T                       GetHead() { return head.Get() != NULL ? head.Get()->payload : NULL; }
-	inline bool             Add(T val)
+	// Returns int like AddToEnd: the out-of-line LHMailContacts* copy in LHMultiplayerR.dll
+	// (10013b80) returns through eax.
+	// BW1W120 10013b80
+	inline int Add(T val)
 	{
-		if (!val)
-			return false;
-		LHLinkedNode<T>* node = new LHLinkedNode<T>(val, head.Get());
-		if (node)
+		if (val)
 		{
-			head.Set(node);
-			++count;
+			LHLinkedNode<T>* node = new LHLinkedNode<T>(val, head.Get());
+			if (node)
+			{
+				head.Set(node);
+				++count;
+			}
+			return 1;
 		}
-		return true;
+		return 0;
 	}
 	// The flag stops after the first match; it never controls payload ownership.
 	inline void Remove(T val, bool only_first = false)

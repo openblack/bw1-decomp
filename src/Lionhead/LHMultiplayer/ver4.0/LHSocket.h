@@ -1,27 +1,92 @@
 #ifndef BW1_DECOMP_LH_SOCKET_INCLUDED_H
 #define BW1_DECOMP_LH_SOCKET_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <assert.h>   /* For static_assert */
+#include <stdint.h>   /* For uint32_t, uint8_t */
+#include <winsock2.h> /* For SOCKET, sockaddr_in; its functions are dllimport */
+
+#include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
+#include "LHMultiplayerExport.h"
 
 // Forward Declares
 
 class LHPacket;
 class LHTransportInfo;
 
-class LHSocket
+// Abstract base of LHSocketTCP. Every virtual is pure (all ten slots of 100505e4 are
+// _purecall) and the destructor is not virtual.
+class LH_MULTIPLAYER_API LHSocket
 {
 public:
-	uint32_t field_0x4;
-	uint32_t field_0x8;
-	uint32_t field_0xc;
-	uint8_t  IpBin[0x4]; /* 0x10 */
-	uint32_t field_0x14;
-	uint32_t field_0x18;
-	char**   name;
-	uint32_t SendBytesTotal; /* 0x20 */
-	uint32_t SendBytes;
-	uint32_t ConnectionStatus;
+	// BW1W120 1001fe20 BW1M119 01115440 (LHCombined Release)
+	LHSocket();
+	// BW1W120 1001fe40 BW1M119 011153c0 (LHCombined Release)
+	~LHSocket();
+
+	// BW1W120 purecall BW1M119 purecall
+	virtual LH_RETURN Connect(LHTransportInfo* transport_info) = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual LH_RETURN SendDatagram(void* data, unsigned long size, LHTransportInfo* transport_info) = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual LH_RETURN SendDatagramPacket(LHPacket* packet, LHTransportInfo* transport_info) = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual LH_RETURN Disconnect() = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual LH_RETURN Send(void* data, long size) = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual LH_RETURN Receive(void* data, long size, int param_3) = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual LH_RETURN SendPacket(LHPacket* packet) = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual LH_RETURN ReceivePacket(LHPacket** packet) = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual LH_RETURN ListenForBroadcastRequests(LHTransportInfo* transport_info) = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual LH_RETURN ReceiveUDPPacket(LHPacket** packet, unsigned long size, LHTransportInfo* transport_info) = 0;
+
+	// BW1W120 1001fe50 BW1M119 01115360 (LHCombined Release)
+	static void Shutdown();
+	// BW1W120 1001fe60 BW1M119 011152b0 (LHCombined Release)
+	static void Startup();
+	// BW1W120 1001fef0 BW1M119 01114fe0 (LHCombined Release)
+	static LH_RETURN WaitForSocketEvents(unsigned int* socket, unsigned short param_2, timeval* timeout);
+	// BW1W120 1001fed0 BW1M119 011151a0 (LHCombined Release)
+	void ClearLastUDPPacketBuffer();
+	// BW1W120 10020000 BW1M119 01114ef0 (LHCombined Release)
+	LH_RETURN Resolving(char* host);
+	// BW1W120 10020060 BW1M119 01114e50 (LHCombined Release)
+	LH_RETURN GetIP(char* ip);
+	// BW1W120 100200b0 BW1M119 01114e00 (LHCombined Release)
+	long GetIPbin();
+	// BW1W120 100200c0 BW1M119 01114d90 (LHCombined Release)
+	long GetPort();
+	// BW1W120 100200e0 BW1M119 01114d00 (LHCombined Release)
+	LH_RETURN GetName(char* name);
+	// BW1W120 10020130 BW1M119 01114cc0 (LHCombined Release)
+	long GetSendBytesTotal();
+	// BW1W120 10020140 BW1M119 01114c80 (LHCombined Release)
+	long GetSendBytes();
+	// BW1W120 10020150 BW1M119 01114b50 (LHCombined Release)
+	LH_RETURN IsReadData();
+	// BW1W120 100201e0 BW1M119 01114a20 (LHCombined Release)
+	LH_RETURN IsExcept();
+
+	// BW1W120 1006a5b4 BW1M119 01358a80 (LHCombined Release)
+	static int InitFlag;
+
+protected:
+	// BW1W120 1001fea0 BW1M119 01115220 (LHCombined Release)
+	void ClearAllData();
+
+public:
+	uint32_t    field_0x4;
+	uint32_t    field_0x8;
+	sockaddr_in Address; // +c; the implicit operator= copies it as one 16-byte struct.
+	char**      name;
+	uint32_t    SendBytesTotal; /* 0x20 */
+	uint32_t    SendBytes;
+	SOCKET      Socket; // +28; INVALID_SOCKET until connected.
 };
+static_assert(sizeof(LHSocket) == 0x2c, "LHSocket size is incorrect");
 
 #endif /* BW1_DECOMP_LH_SOCKET_INCLUDED_H */

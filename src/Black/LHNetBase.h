@@ -5,7 +5,7 @@
 
 #include <Lionhead/LHMultiplayer/ver4.0/LHNetUser.h> /* For struct LH_USER_ID */
 
-struct LHLobby;
+class LHLobby;
 class LHSession;
 class LHTransport;
 class LHTransportInfo;

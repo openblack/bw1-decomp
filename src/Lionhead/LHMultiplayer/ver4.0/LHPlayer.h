@@ -7,6 +7,7 @@
 
 #include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 #include "LHPacketisableObject.h" /* For struct LHPacketisableObject */
 #include "LHNetUser.h"            /* For LH_USER_ID */
 #include "LHTransportInfo.h"      /* For struct LHTransportInfo */
@@ -46,6 +47,32 @@ public:
 	LH_USER_ID GetUserID() { return UserId; }
 	// BW1W120 10001b10 BW1M119 0132c440
 	long GetPlayerID() { return PlayerId; }
+
+	// BW1W120 10001b40 BW1M119 010f12e0 (LHCombined Release)
+	void* GetSystemData() { return SystemData; }
+
+	// BW1W120 10019cf0 BW1M119 01107bb0 (LHCombined Release)
+	LHPlayer(LHPlayer* player);
+	// BW1W120 10019e40 BW1M119 01107ad0 (LHCombined Release)
+	LHPlayer(LHNetUser* user);
+	// BW1W120 10019b80 BW1M119 01107ee0 (LHCombined Release)
+	LH_RETURN SetDetails(LHPlayer* player);
+	// BW1W120 1001a070 BW1M119 01107380 (LHCombined Release)
+	void* AllocSystemData(unsigned long size);
+	// BW1W120 10019cd0 BW1M119 01107d20 (LHCombined Release)
+	void SetUserFile(const char* file_name);
+	// BW1W120 10019ed0 BW1M119 01107930 (LHCombined Release)
+	void SetUserData(void* data, unsigned long length);
+	// BW1W120 1001a020 BW1M119 01107420 (LHCombined Release)
+	unsigned long Compare(LHPlayer* player);
+	// BW1W120 10019f30 BW1M119 01107800 (LHCombined Release)
+	static LHPlayer* GetPlayer(LH_USER_ID user_id, LHLinkedList<LHPlayer*>* list);
+	// BW1W120 10019f90 BW1M119 01107510 (LHCombined Release)
+	static LH_RETURN CopyPlayerList(LHLinkedList<LHPlayer*>* destination, LHLinkedList<LHPlayer*>* source);
+	// BW1W120 1001a2d0 BW1M119 01106d90 (LHCombined Release)
+	static LHPlayer* Create();
+	// BW1W120 10019f60 BW1M119 01005660 (LHCombined Release)
+	static LHPlayer* GetPlayerFromPlayerNumber(unsigned long number, LHLinkedList<LHPlayer*>* list);
 
 protected:
 	// BW1W120 10019c70

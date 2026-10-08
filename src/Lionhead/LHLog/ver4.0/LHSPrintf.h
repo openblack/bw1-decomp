@@ -11,8 +11,14 @@ class LHSPrintf
 {
 public:
 	char Text[0x401]; // GetBufSize excludes the terminator; the DLL assignment copies all 0x401 bytes.
+	// BW1W120 inlined BW1M119 inlined
+	LHSPrintf() { Text[0] = '\0'; }
 	// BW1W120 100029d0 BW1M119 0116e140 (LHCombined Release)
 	__declspec(dllimport) LHSPrintf(char* format, ...);
+	// BW1W120 1002ab12 BW1M119 0116e0b0 (LHCombined Release)
+	__declspec(dllimport) void __cdecl AppendString(char* format, ...);
+	// BW1W120 1002ab66 BW1M119 0116e220 (LHCombined Release)
+	__declspec(dllimport) void __cdecl SetString(char* format, ...);
 	// BW1W120 10001050 BW1M119 01103cb0 (LHCombined Release)
 	__declspec(dllimport) operator char*() { return Text; }
 };

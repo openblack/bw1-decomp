@@ -368,8 +368,8 @@ bool32_t GGame::Init()
 	case 3: {
 		char* mapName = NULL;
 		GameFlags &= ~GAME_FLAG_ACTIVATE_CREATURE_DESIRES;
-		if (network.session->Channel->GetGameDataLength())
-			mapName = (char*)network.session->Channel->GetGameData();
+		if (network.session->LobbyChannel->GetGameDataLength())
+			mapName = (char*)network.session->LobbyChannel->GetGameData();
 		if (mapName && strcmp(mapName, "oos") == 0)
 		{
 			GSetup::CreateMultiplayerCreatures = 0;
@@ -1736,7 +1736,7 @@ void ResetLocalGameTimer()
 // BW1W120 0054cc30 BW1M119 0102be90
 void GGame::ProcessNetworkPackets()
 {
-	if (network.session->field_0x4 == 0)
+	if (!network.session->IsOpen())
 	{
 		return;
 	}
@@ -1776,13 +1776,14 @@ void GGame::ProcessNetworkPackets()
 		{
 			++NetworkTurnsThisFrame;
 			LHNetEvent* event = network.session->Peek(0);
-			if (!network.session->IsSinglePlayer() && network.session->RawPeek(0, LH_NETEVENT_TYPE_0x1b63) == NULL)
+			if (!network.session->IsSinglePlayer() &&
+			    network.session->RawPeek(0, LH_NETEVENT_TYPE_MSERVE_HOST_MIGRATION_COMPLETE) == NULL)
 			{
 				for (int i = 0; i < 9; ++i)
 				{
 					PacketTimeHistory[i] = PacketTimeHistory[i + 1];
 				}
-				int eventTime = event->field_0x4;
+				int eventTime = event->TickCount;
 				GetTickCount(); // Two real clock calls; the first result is discarded.
 				PacketTimeHistory[9] = GetTickCount() - 200 - eventTime;
 				int sum = 0;
@@ -1944,7 +1945,7 @@ void GGame::Loop()
 				static uint32_t PreviousLoopGameTurn = 0;
 				static int      LoopTimeRemainder = 0;
 				int             sample = (int)((float)(GetTickCount() - timer.TickCount) * timer.SpeedUpFactor +
-				                               (float)(uint32_t)timer.ElapsedTime);
+                                   (float)(uint32_t)timer.ElapsedTime);
 				int             delta = sample - PreviousLoopTimerSample;
 				PreviousLoopTimerSample = sample;
 				uint32_t gameTurn = data.GameTurn;
@@ -2192,10 +2193,10 @@ void GGame::Process3dEngine()
 			// VideoPoll can finish and delete the movie.
 			if (VideoPlayer)
 			{
-				int       border = (int)((LH3DTech::g_info_transform.resolution.y -
-				                          LH3DTech::g_info_transform.resolution.x * (9.0f / 16.0f)) *
-				                         VideoLetterboxScale) /
-				                   2;
+				int border = (int)((LH3DTech::g_info_transform.resolution.y -
+				                    LH3DTech::g_info_transform.resolution.x * (9.0f / 16.0f)) *
+				                   VideoLetterboxScale) /
+				             2;
 				LH3DColor color;
 				color.b = 255;
 				color.g = 255;
