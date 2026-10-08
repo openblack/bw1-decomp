@@ -7,7 +7,7 @@
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 class Base;
-struct LH_AudioBank;
+class LH_AudioBank;
 
 #ifdef LH_AUDIO_EXPORTS
 #define LH_AUDIO_OPTIONS_API __declspec(dllexport)
@@ -15,8 +15,9 @@ struct LH_AudioBank;
 #define LH_AUDIO_OPTIONS_API __declspec(dllimport)
 #endif
 
-struct LH_SamplePlayOptions
+class LH_SamplePlayOptions
 {
+public:
 	uint32_t      field_0x0;
 	LH_AudioBank* Bank;
 	uint32_t      Positional;

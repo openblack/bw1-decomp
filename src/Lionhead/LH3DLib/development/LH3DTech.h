@@ -91,6 +91,8 @@ public:
 	}
 	// BW1W120 0045a7f0 BW1M119 010318a0
 	static LHPoint* GetCameraPosition() { return &g_camera.pos; }
+	// BW1W120 inlined BW1M119 01025530
+	static LHPoint* GetCameraTarget() { return &g_camera.foc; }
 	// BW1W120 00819920 BW1M119 01034f90 (LHCombined Release)
 	static void UpdateCamera(const LHPoint& position, const LHPoint& focus);
 	// BW1W120 00818c60 BW1M119 010bffa0 (LHCombined Release)

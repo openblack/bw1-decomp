@@ -1582,8 +1582,8 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage
 		float distance = GGame::g_game->GetCamera()->GetDistance(pos);
 		sound[1] = 0;
 		sound[4] = IMPACT_SOUND_EVENT_COLLISION;
-		GGlobal::Global.audio->SamplePlayAnimEffect(this, distance, sound, 0, GGlobal::Global.audio->AnimEffectBank, 0,
-		                                            0.0f, 0.0f);
+		GGlobal::Global.audio->SamplePlayAnimEffect(
+			this, distance, sound, 0, GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR), 0, 0.0f, 0.0f);
 	}
 }
 
@@ -1601,8 +1601,8 @@ void Abode::ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player
 		float distance = GGame::g_game->GetCamera()->GetDistance(pos);
 		long  sound[5] = {IMPACT_SOUND_LEVEL_HEAVY, 0, IMPACT_SOUND_HITTER_STONE, IMPACT_SOUND_TARGET_BUILDING,
 		                  IMPACT_SOUND_EVENT_COLLISION};
-		GGlobal::Global.audio->SamplePlayAnimEffect(this, distance, sound, 0, GGlobal::Global.audio->AnimEffectBank, 0,
-		                                            0.0f, 0.0f);
+		GGlobal::Global.audio->SamplePlayAnimEffect(
+			this, distance, sound, 0, GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR), 0, 0.0f, 0.0f);
 		EffectValues values(EFFECT_INFO_CRUSH, object, player);
 		if (DestructionMesh != NULL)
 		{

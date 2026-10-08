@@ -513,6 +513,10 @@ def call_indirect(slot):
 # addresses; each call is restored over nops of its own length, and rows are skipped
 # where it is already present (the owning unit is still linked from its split object).
 BW1W120_SAFEDISC_CALLS = (
+    (0x00426B3B, call_rel32(0x00401879)),  # Audio
+    (0x00426C9B, call_rel32(0x00401879)),  # Audio
+    (0x004271FA, call_indirect(0x008A98A8)),  # Audio: __imp__waveInClose@4
+    (0x004282AB, call_rel32(0x00401879)),  # Audio
     (0x0044ABCA, call_indirect(0x008A9190)),  # CameraModeDance: __imp__RemoveDirectoryA@4
     (0x0044AC8B, call_rel32(0x00401879)),  # CameraModeDance
     (0x0044ACCA, call_indirect(0x008A96C4)),  # CameraModeDance: __imp__LHWaveGetQMixerDirectSoundObject...

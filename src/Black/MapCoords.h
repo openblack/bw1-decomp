@@ -17,6 +17,7 @@ enum COLLIDE_TYPE
 
 // Forward Declares
 
+class Citadel;
 class Game3DObject;
 class GameThingWithPos;
 struct LHPoint;
@@ -128,6 +129,10 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 00604370 BW1M119 0102ac40
 	GameThingWithPos* FindNearForScript(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
 	                                    SCRIPT_OBJECT_TYPE type, uint32_t subtype, float radius) const;
+	// BW1W120 00602160 BW1M119 01069220
+	Town* GetNearestTownWithTownCentre(float t_max) const;
+	// BW1W120 00602200 BW1M119 01061800
+	Citadel* GetNearestCitadel(float t_max) const;
 	// BW1W120 00603280 BW1M119 01183eb0
 	void Set(const char* str);
 	// BW1W120 00603320 BW1M119 01007700

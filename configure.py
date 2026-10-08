@@ -246,6 +246,14 @@ if config.version == "BW1W100":
         "?_Nomemory@std@@YAXXZ",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
+    # GAudio's MusicSwitch, Shutdown and bank SampleSet3DPosition wrappers have
+    # no callers in 1.00; /OPT:REF dropped them and their LHAudio imports.
+    for _dead_import in [
+        "__imp_?LHMusicSwitch@LH_AudioSystem@@QAEXK@Z",
+        "__imp_?Shutdown@LH_AudioSystem@@QAEXXZ",
+        "__imp_?LHSampleSet3DPosition@LH_AudioSystem@@QAEPAULH_SampleInfo@@PAVLH_AudioBank@@KKMMMH@Z",
+    ]:
+        config.base_ldflags.append(f"/alternatename:{_dead_import}=__imp__ExitProcess@4")
 config.reconfig_deps = []
 
 # Post-link patch: applies version-specific binary fixups after linking,
@@ -522,7 +530,9 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Arrow.cpp"),
             GameCodeObject(NonMatching, "Black/ArrowInfo.cpp"),
             GameCodeObject(NonMatching, "Black/Artifact.cpp"),
-            GameCodeObject(NonMatching, "Black/Audio.cpp"),
+            GameCodeObject(Matching, "Black/Audio.cpp"),
+            GameCodeObject(NonMatching, "Black/AudioAnalyse.cpp"),
+            GameCodeObject(NonMatching, "Black/AudioAtmos.cpp"),
             GameCodeObject(NonMatching, "Black/AudioMusicThing.cpp"),
             GameCodeObject(NonMatching, "Black/audiotag.cpp"),
             GameCodeObject(NonMatching, "Black/Balance.cpp"),

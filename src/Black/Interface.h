@@ -40,8 +40,8 @@ public:
 	void                    Validate();
 	uint32_t                field_0x28;
 	LiquidParticleGroup*    liquid_particle_group;
-	GInterfaceFlags         flags; /* 0x30 */
-	int                     field_0x44;
+	GInterfaceFlags         flags;
+	int                     ActionState;
 	uint32_t                field_0x48;
 	uint32_t                field_0x4c;
 	LHReleasedOSFile        file;               /* 0x50 */

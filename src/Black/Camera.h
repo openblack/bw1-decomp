@@ -114,6 +114,10 @@ public:
 	void SetPositionAndFocus(const LHPoint& position, const LHPoint& focus);
 	// BW1W120 inlined BW1M119 011a1680
 	void GetPosition(LHPoint& pos);
+	// BW1W120 inlined BW1M119 011a1600
+	void GetFocus(LHPoint& focus);
+	// BW1W120 inlined BW1M119 inlined
+	void GetUpVector(LHPoint& up);
 	// BW1W120 inlined BW1M119 011a26b0
 	float GetDistance(const LHPoint& point);
 	// BW1W120 inlined BW1M119 inlined

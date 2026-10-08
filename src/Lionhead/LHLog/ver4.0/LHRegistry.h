@@ -12,5 +12,7 @@ enum LH_REG_KEY_TYPE
 __declspec(dllimport) void LHRegistrySetCurrentKey(LH_REG_KEY_TYPE key_type);
 // BW1W120 100092a0 BW1M119 011715b0 (LHCombined Release)
 __declspec(dllimport) LH_RETURN RegistryRetrieveULong(char* key, char* value, unsigned long* out);
+// BW1W120 100092d0 BW1M119 01171550 (LHCombined Release)
+__declspec(dllimport) LH_RETURN RegistrySetULong(char* key, char* value, unsigned long data);
 
 #endif /* BW1_DECOMP_LH_REGISTRY_INCLUDED_H */

@@ -167,6 +167,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0077c2e0 BW1M119 015b7490
+	TRIBE_TYPE GetTribeType() const;
+	// BW1W120 0077cd90 BW1M119 015b5e60
+	void GetDancePos(MapCoords* pos);
 	// BW1W120 0077afc0 BW1M119 015b9860
 	MapCoords* GetSpellIconPosFromSlot(MapCoords* coords, uint32_t slot, float angle);
 	// BW1W120 0077b080 BW1M119 015b9650

@@ -13,14 +13,12 @@
 #include <Lionhead/LHLib/ver5.0/LHMouse.h>        /* For LHMouse::Draw */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>       /* For LHSys::TheSystem */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>          /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LHLog/ver4.0/LHRegistry.h>     /* For RegistryRetrieveULong */
 
 // -----------------------------------------------------------------------------
 // External symbols this translation unit depends on that have not been
 // decompiled yet.
 // -----------------------------------------------------------------------------
-
-// BW1W120 007aedea BW1M119 011715b0 (LHCombined Release)
-__declspec(dllimport) int RegistryRetrieveULong(const char* key, const char* value, int* out);
 
 // BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)
 void Report3D(const char* fmt, ...);
@@ -156,7 +154,7 @@ LHScreen::LHScreen()
 	isLocked = 0;
 
 	// VSync: registry read miss => 1 (wait); VSync value != 0 => 1; == 0 => 8 (no-vsync).
-	int vsync;
+	unsigned long vsync;
 	if (!RegistryRetrieveULong("Software\\Lionhead Studios Ltd\\Black & White\\BWSetup", "VSync", &vsync))
 		flipFlags = vsync != 0 ? 1 : 8;
 	else

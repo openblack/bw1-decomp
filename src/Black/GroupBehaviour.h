@@ -41,7 +41,7 @@ public:
 	uint32_t      field_0x84;
 	uint32_t      field_0x88;
 	uint32_t      field_0x8c;
-	uint32_t      field_0x90;
+	uint32_t      NumDancers;
 	uint32_t      field_0x94;
 	uint32_t      field_0x98;
 	float         field_0x9c;
@@ -92,6 +92,8 @@ public:
 
 	// BW1W120 00597400 BW1M119 011018b0
 	bool FindDanceGroup(Living* param_1);
+	// BW1W120 005981d0 BW1M119 010ffa50
+	Living* FindFirstDanceMember(GameThingWithPos* exclude);
 	// BW1W120 00597f20 BW1M119 010ffc30
 	void CalculateDancePosition(const MapCoords& param_1, MapCoords* param_2, DanceGroup* param_3,
 	                            unsigned long param_4);

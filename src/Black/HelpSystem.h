@@ -303,7 +303,7 @@ public:
 	uint32_t         field_0x45e0;
 	uint32_t         field_0x45e4;
 	bool32_t         WideScreen;
-	int              field_0x45ec;
+	int              WideScreenControl;
 	float            field_0x45f0;
 	int              field_0x45f4;
 	int              field_0x45f8;
@@ -365,6 +365,10 @@ public:
 	void SetWideScreen(int param_2, uint32_t param_3);
 	// BW1W120 005c6b60 BW1M119 01020020
 	float GetWideScreenPercentage() const;
+	// BW1W120 005c6c50 BW1M119 0101e730
+	bool32_t IsInWideScreenTransition() const;
+	// BW1W120 inlined BW1M119 010867f0
+	int GetWideScreenControl() const { return WideScreenControl; }
 	// BW1W120 005c8280 BW1M119 0135a370
 	void TriggerCategory(HELP_SET_CATEGORY param_1);
 	// BW1W120 005c8b80 BW1M119 0135b8c0

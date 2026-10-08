@@ -2001,7 +2001,7 @@ void GGame::Loop()
 		players[PlayerIndex].SavePlayerAlignment(data.GameTurn);
 		CreatureRoom::ProcessScreenShot();
 		if (LHSys::GetSystem().Terminate != 0 && help_system != NULL &&
-		    (help_system->WideScreen == 0 || help_system->field_0x45ec == 0))
+		    (help_system->WideScreen == 0 || help_system->WideScreenControl == 0))
 		{
 			g_game->GameMode = GAME_MODE_QUITTING;
 		}
@@ -2349,7 +2349,7 @@ void GGame::Process3dEngine()
 				if (field_0x59b0 < target)
 					field_0x59b0 = target;
 			}
-			if (!g_game->help_system->WideScreen || !g_game->help_system->field_0x45ec)
+			if (!g_game->help_system->WideScreen || !g_game->help_system->WideScreenControl)
 			{
 				for (VillagerName* name = VillagerName::First; name; name = name->next)
 					name->AddDrawing();
@@ -2512,7 +2512,8 @@ void GGame::ProcessTurn()
 	MusicMoodController::UpdateOnGameTurn(0.1f, false);
 
 	// This packet handshake is Windows-specific; the Mac memory warning path differs.
-	if (g_game->help_system != NULL && (g_game->help_system->WideScreen == 0 || g_game->help_system->field_0x45ec == 0))
+	if (g_game->help_system != NULL &&
+	    (g_game->help_system->WideScreen == 0 || g_game->help_system->WideScreenControl == 0))
 	{
 		if (!g_game->IsMultiplayerGame() && g_game->field_0x205a10 == 0 && g_game->data.GameTurn % 2000 == 0 &&
 		    StartTime != 0 && MemoryState == 0 && timeGetTime() > StartTime + 0x36ee80u &&

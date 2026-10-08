@@ -211,7 +211,7 @@ public:
 	float                  field_0x59b0;
 	Temple*                temple;
 	GMap                   map;
-	int32_t                LandNumber;
+	uint32_t               LandNumber;
 	bool32_t               SkirmishGame;
 	int                    field_0x205a10;
 	int                    field_0x205a14;

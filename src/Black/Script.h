@@ -184,7 +184,10 @@ public:
 	LHPoint   FocusPos;
 	uint8_t   field_0x4c[0x20];
 	int(__cdecl* LoopCallback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t);
-	uint8_t  field_0x70[0x30];
+	uint8_t  field_0x70[0x24];
+	bool32_t AlignmentMusic;
+	long     LastMusicLine;
+	long     LastMusicWord;
 	uint32_t CitadelInteract;
 	uint8_t  field_0xa4[0x18];
 
@@ -1141,6 +1144,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 01184d00
+	long GetLastMusicWord() { return LastMusicWord; }
 	// BW1W120 006eb2d0 BW1M119 014de360
 	void Reset(int param_2);
 	// BW1W120 006eb6f0 BW1M119 014de110
