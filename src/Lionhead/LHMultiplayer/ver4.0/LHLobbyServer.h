@@ -251,9 +251,11 @@ private:
 	// BW1W120 10011180 BW1M119 010f2460 (LHCombined Release)
 	LH_RETURN ProcessLobbyClientRequestChannelUsers(LHConnection* connection, LHNetEvent* event);
 };
+#ifdef VERSION_BW1W120
 static_assert(offsetof(LHLobbyServer, Reserved) == 0x450, "LHLobbyServer layout is incorrect");
 static_assert(offsetof(LHLobbyServer, LocalLobbyList) == 0x498, "LHLobbyServer layout is incorrect");
 static_assert(offsetof(LHLobbyServer, OffLan) == 0x4a8, "LHLobbyServer layout is incorrect");
 static_assert(sizeof(LHLobbyServer) == 0x4ac, "LHLobbyServer size is incorrect");
+#endif
 
 #endif /* BW1_DECOMP_LH_LOBBY_SERVER_INCLUDED_H */

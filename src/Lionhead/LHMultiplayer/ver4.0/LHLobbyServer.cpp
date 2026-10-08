@@ -1125,20 +1125,5 @@ unsigned long LHLobbyServer::GetLobbyProtocolVersion()
 	return LHVersion::GetMajorMinorULONG("LHLobbyServerProtocol", &version) == LH_OK ? version : 0;
 }
 
-static LHVersionBlock VersionBlock = {
-	"YyHhTtMm",
-	"RELEASE",
-	"LHLobbyServerProtocol",
-	"1",
-	"0",
-	"$Author: Trance $",
-	"$Date: 19/01/01 18:17 $",
-	"NULL",
-	"The first stab at a Lobby server protocol",
-	"NULL",
-	"NULL",
-	"",
-	"YyHhTtMM",
-};
-static LHVersion  VersionInformation(&VersionBlock);
-static LHVersion* VersionPointer = &VersionInformation;
+LH_VERSION_INFO("LHLobbyServerProtocol", "1", "0", "$Author: Trance $", "$Date: 19/01/01 18:17 $", LH_VERSION_NONE,
+                "The first stab at a Lobby server protocol");

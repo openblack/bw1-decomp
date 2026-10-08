@@ -4,6 +4,8 @@
 #include <stdint.h> /* For uint32_t */
 #include <stdlib.h> /* For malloc */
 
+#include <re_common.h> /* For bool32_t */
+
 #include "LHFastPointer.h"
 
 template <typename T> class LHLinkedNode
@@ -34,7 +36,7 @@ public:
 	inline LHLinkedNode<T>* GetStart() const { return head.Get(); }
 	T                       GetHead() { return head.Get() != NULL ? head.Get()->payload : NULL; }
 	// BW1W120 10013b80
-	inline int Add(T val)
+	inline bool32_t Add(T val)
 	{
 		if (val)
 		{
@@ -44,9 +46,9 @@ public:
 				head.Set(node);
 				++count;
 			}
-			return 1;
+			return true;
 		}
-		return 0;
+		return false;
 	}
 	// The flag stops after the first match; it never controls payload ownership.
 	inline void Remove(T val, bool only_first = false)
@@ -75,7 +77,7 @@ public:
 		}
 	}
 	// BW1W120 00742230 BW1M119 01560ce0
-	int IsThisInList(T val)
+	bool32_t IsThisInList(T val)
 	{
 		for (LHLinkedNode<T>* node = head.Get(); node != NULL; node = node->next.Get())
 		{
@@ -180,7 +182,7 @@ public:
 	}
 
 	// BW1W120 00595a80 BW1M119 01339810
-	int AddToEnd(T val)
+	bool32_t AddToEnd(T val)
 	{
 		if (val)
 		{
@@ -197,10 +199,10 @@ public:
 					head.Set(node);
 				}
 				++count;
-				return 1;
+				return true;
 			}
 		}
-		return 0;
+		return false;
 	}
 	// Returns the matching node, not its payload (BW1M119 012564c0 for CreatureBelief*).
 	LHLinkedNode<T>* Find(T value);

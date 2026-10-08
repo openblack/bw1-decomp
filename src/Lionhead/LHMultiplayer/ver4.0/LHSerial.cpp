@@ -19,7 +19,7 @@ enum
 LHSerial::LHSerial()
 {
 	Handle = NULL;
-	Connected = FALSE;
+	Connected = false;
 	Packet = NULL;
 }
 
@@ -61,7 +61,7 @@ LH_RETURN LHSerial::Connect(LHTransportInfo* info)
 	timeouts.WriteTotalTimeoutConstant = LH_SERIAL_WRITE_TIMEOUT;
 	SetCommTimeouts(Handle, &timeouts);
 
-	Connected = TRUE;
+	Connected = true;
 	return LH_OK;
 }
 
@@ -74,7 +74,7 @@ LH_RETURN LHSerial::Disconnect()
 	EscapeCommFunction(Handle, CLRDTR);
 	PurgeComm(Handle, PURGE_TXABORT | PURGE_RXABORT | PURGE_TXCLEAR | PURGE_RXCLEAR);
 	CloseHandle(Handle);
-	Connected = FALSE;
+	Connected = false;
 	Handle = NULL;
 	return LH_OK;
 }

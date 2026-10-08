@@ -783,20 +783,5 @@ unsigned long LHMessageServer::GetMServeProtocolVersion()
 	return LHVersion::GetMajorMinorULONG("LHMessageServerProtocol", &version) == LH_OK ? version : 0;
 }
 
-static LHVersionBlock VersionBlock = {
-	"YyHhTtMm",
-	"RELEASE",
-	"LHMessageServerProtocol",
-	"1",
-	"0",
-	"$Author: Ddeptford $",
-	"$Date: 01/02/15 20:23 $",
-	"NULL",
-	"The first stab at a message server protocol",
-	"NULL",
-	"NULL",
-	"",
-	"YyHhTtMM",
-};
-static LHVersion  VersionInformation(&VersionBlock);
-static LHVersion* VersionPointer = &VersionInformation;
+LH_VERSION_INFO("LHMessageServerProtocol", "1", "0", "$Author: Ddeptford $", "$Date: 01/02/15 20:23 $", LH_VERSION_NONE,
+                "The first stab at a message server protocol");

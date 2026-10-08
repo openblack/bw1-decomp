@@ -4,6 +4,8 @@
 #include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t */
 
+#include <re_common.h> /* For bool32_t */
+
 template <typename T> class OrderedNode
 {
 public:
@@ -72,7 +74,7 @@ public:
 		count++;
 	}
 	// BW1W120 007424d0 BW1M119 01552af0
-	int Remove(T* data)
+	bool32_t Remove(T* data)
 	{
 		OrderedNode<T>* previous = NULL;
 		for (OrderedNode<T>* node = head; node != NULL; node = node->next)

@@ -5,6 +5,8 @@
 #include <stdint.h> /* For uint32_t */
 #include <wchar.h>  /* For wchar_t */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LHLib/ver5.0/LHReturn.h>
 #include "LHMultiplayerExport.h"
 
@@ -50,19 +52,19 @@ struct LH_MULTIPLAYER_API LH_USER_ID
 		return *this;
 	}
 	// BW1W120 10001100
-	int IsValid() { return id != 0 && id != LH_ALL_USERS_ID; }
+	bool32_t IsValid() { return id != 0 && id != LH_ALL_USERS_ID; }
 	// BW1W120 10001120
-	int IsType(CATEGORY category) { return Category == (unsigned long)category; }
+	bool32_t IsType(CATEGORY category) { return Category == (unsigned long)category; }
 	// BW1W120 10001140
-	int IsServer()
+	bool32_t IsServer()
 	{
 		return Category == CATEGORY_GLOBAL_SERVER || Category == CATEGORY_SESSION_SERVER ||
 		       Category == CATEGORY_LOBBY_SERVER;
 	}
 	// BW1W120 10001170
-	int IsGlobal() { return Category == CATEGORY_GLOBAL_SERVER; }
+	bool32_t IsGlobal() { return Category == CATEGORY_GLOBAL_SERVER; }
 	// BW1W120 10001190
-	int IsPlayer() { return Category == CATEGORY_PLAYER; }
+	bool32_t IsPlayer() { return Category == CATEGORY_PLAYER; }
 };
 static_assert(sizeof(LH_USER_ID) == 0x4, "Data type is of wrong size");
 

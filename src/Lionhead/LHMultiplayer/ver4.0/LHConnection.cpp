@@ -565,20 +565,5 @@ LH_RETURN LHConnection::GetTransportInfo(LHTransportInfo* transport_info, bool32
 	return Transport->GetTransportInfo(transport_info, local);
 }
 
-static LHVersionBlock VersionBlock = {
-	"YyHhTtMm",
-	"RELEASE",
-	"LHConnectionProtocol",
-	"1",
-	"15",
-	"$Author: Trance $",
-	"$Date: 20/04/01 14:20 $",
-	"NULL",
-	"Mid Game join now supported",
-	"NULL",
-	"NULL",
-	"",
-	"YyHhTtMM",
-};
-static LHVersion  VersionInformation(&VersionBlock);
-static LHVersion* VersionPointer = &VersionInformation;
+LH_VERSION_INFO("LHConnectionProtocol", "1", "15", "$Author: Trance $", "$Date: 20/04/01 14:20 $", LH_VERSION_NONE,
+                "Mid Game join now supported");
