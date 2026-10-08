@@ -14,12 +14,6 @@ public:
 };
 extern __declspec(dllimport) LHLogger LHSyslog;
 
-struct LHEnumPair
-{
-	char* name;
-	int   value;
-};
-
 // BW1W120 007be400 BW1M119 01167850 (LHCombined Release)
 int LHEnumPairCompare(const char** a, const char** b)
 {
@@ -53,7 +47,7 @@ uint32_t LHParseFile::Close()
 	file = 0;
 	LineLength = 0;
 	WordLength = 0;
-	field_0x2b8 = 0;
+	Unused = 0;
 	line_number = 0;
 	FreeEnumList();
 	return result;
@@ -71,7 +65,7 @@ uint32_t LHParseFile::GetNextTokenIgnoreComments(int* token_out)
 }
 
 // BW1W120 007be530 BW1M119 01167500 (LHCombined Release)
-uint32_t LHParseFile::FindEnumVal(void* key, uint32_t* out_value)
+uint32_t LHParseFile::FindEnumVal(char* key, long* out_value)
 {
 	LHEnumPair* v3 = (LHEnumPair*)bsearch(key, EnumSorted, EnumCount, 8,
 	                                      (int(__cdecl*)(const void*, const void*))LHEnumPairCompareWithString);
@@ -193,9 +187,9 @@ uint32_t LHParseFile::ParseEnumListInternal()
 			v7 = v21;
 			if (v21 != 4)
 			{
-				PushbackType = v21;
-				PushbackValue = v22;
-				PushbackText = (char*)v23;
+				Pushback.Type = v21;
+				Pushback.Value = v22;
+				Pushback.Text = (char*)v23;
 			}
 			break;
 		case 4:
@@ -219,9 +213,9 @@ uint32_t LHParseFile::ParseEnumListInternal()
 					return 0;
 				if (v21 != 10)
 				{
-					PushbackType = v21;
-					PushbackValue = v22;
-					PushbackText = (char*)v23;
+					Pushback.Type = v21;
+					Pushback.Value = v22;
+					Pushback.Text = (char*)v23;
 					if (!GetNextTokenIgnoreComments(&v21))
 						return 0;
 					v7 = v21;
@@ -266,7 +260,11 @@ uint32_t LHParseFile::ParseEnumListInternal()
 	return 0;
 }
 
-// BW1W120 007bea70 BW1M119 011664a0 (LHCombined Release)
+LHParseFile::~LHParseFile()
+{
+	Close();
+}
+
 uint32_t LHParseFile::GetNextToken(int* token_out)
 {
 	char*          v4;
@@ -284,7 +282,7 @@ uint32_t LHParseFile::GetNextToken(int* token_out)
 	char           v38;
 	char*          v39;
 
-	uint32_t* v3 = &PushbackType;
+	uint32_t* v3 = &Pushback.Type;
 	v4 = ScanPtr;
 	if (v3[0])
 	{

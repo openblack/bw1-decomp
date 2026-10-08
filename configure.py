@@ -241,9 +241,14 @@ if config.version == "BW1W100":
         config.base_ldflags.append(f"/alternatename:{_dead_import}=__imp__ExitProcess@4")
     # Same for C++ library code: ios.obj's ios_base::register_callback and
     # _Findarr were dropped by /OPT:REF, but still name std::_Nomemory, whose
-    # nomemory.obj 1.00 never linked at all.
+    # nomemory.obj 1.00 never linked at all. Likewise GJProperty's
+    # Persistent::SetUniqueName and PersistenceStreamer writers: 1.00 has no
+    # PSysFileData::SaveToFile, so they were dropped too, and with them the only
+    # users of PersistentOwner::IsNameUsed and typeid's ___RTtypeid.
     for _dead_function in [
         "?_Nomemory@std@@YAXXZ",
+        "?IsNameUsed@PersistentOwner@@QAEHPBD@Z",
+        "___RTtypeid",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
     # GAudio's MusicSwitch, Shutdown and bank SampleSet3DPosition wrappers have
@@ -739,7 +744,8 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/GestureSystemDataList.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystemResult.cpp"),
             GameCodeObject(NonMatching, "Black/GJPersistent.cpp"),
-            GameCodeObject(NonMatching, "Black/GJProperty.cpp"),
+            GameCodeObject(Matching, "Black/GJProperty.cpp"),
+            GameCodeObject(NonMatching, "Black/GJSpline.cpp"),
             GameCodeObject(NonMatching, "Black/GJUtils.cpp"),
             GameCodeObject(NonMatching, "Black/GJVnoise.cpp"),
             GameCodeObject(NonMatching, "Black/Global.cpp"),

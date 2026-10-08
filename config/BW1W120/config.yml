@@ -402,7 +402,7 @@ add_relocations:
 # istream::operator>>(unsigned long&) EH funclet: mov eax, <its exception-state table>.
   - source: 0x008A6591
     type: x86_abs32
-    target: '$T90596'
+    target: '$T99795'
 # istream::operator>>(unsigned long&) returns the address of its catch continuation.
   - source: 0x006C70FD
     type: x86_abs32
