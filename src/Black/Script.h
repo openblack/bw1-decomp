@@ -10,6 +10,7 @@
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 #include "Base.h"        /* For struct Base */
+#include "MapCoords.h"   /* For struct MapCoords */
 #include "BaseInfo.h"    /* For struct GBaseInfo */
 #include "ScriptDLL.h"   /* For enum VMScriptType, enum VMType */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
@@ -129,8 +130,10 @@ class Abode;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
+class GPlayer;
 class Living;
 struct MapCoords;
+class Town;
 
 struct ScriptObjectDispatch
 {
@@ -167,13 +170,22 @@ public:
 	// BW1W120 00c0c740
 	static ScriptObjectDispatch g_scriptObjectDispatch[SCRIPT_OBJECT_TYPE_LAST - 1];
 
-	uint32_t CountDownTimerEnabled;   // +08
-	uint32_t CountDownTimerRemaining; // +0c
-	uint32_t CountDownTimerVisible;   // +10
-	uint8_t  field_0x14[0x2c];
-	LHPoint  FocusPos; /* 0x40 */
-	uint8_t  field_0x4c[0x54];
-	uint32_t CitadelInteract; /* 0xa0 */
+	uint32_t  CountDownTimerEnabled;
+	uint32_t  CountDownTimerRemaining;
+	uint32_t  CountDownTimerVisible;
+	MapCoords FindPos;
+	float     FindRadius;
+	uint32_t  LoopValue;
+	uint32_t  LoopValue2;
+	uint8_t   field_0x2c[0x8];
+	uint32_t  LoopCount;
+	uint32_t  LoopParam;
+	bool32_t  LoopSetControlledByScript;
+	LHPoint   FocusPos;
+	uint8_t   field_0x4c[0x20];
+	int(__cdecl* LoopCallback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t);
+	uint8_t  field_0x70[0x30];
+	uint32_t CitadelInteract;
 	uint8_t  field_0xa4[0x18];
 
 	// Override methods
@@ -551,7 +563,7 @@ public:
 	static void TempTextWithNumber();
 	// BW1W120 006f8370 BW1M119 014ff590
 	static void SetScriptState();
-	// BW1W120 inlined BW1M119 014ff710
+	// BW1W120 006f82e0 BW1M119 014ff710
 	static void SetScriptState(Living* living, uint32_t state);
 	// BW1W120 006f84c0 BW1M119 014ff2b0
 	static void SetScriptStatePos();
@@ -1152,78 +1164,132 @@ public:
 	static void ScriptErrorMessage(char* msg);
 	// BW1W120 006f62c0 BW1M119 010053d0
 	static void ScriptWarningMessage(char* msg);
+	// BW1W120 006f6d00 BW1M119 014f27d0
+	static uint32_t GetSubType(GameThingWithPos* thing);
+	// BW1W120 006f6fa0 BW1M119 014f26e0
+	static int FindGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 006f6ff0 BW1M119 014f25c0
+	static int FindCheckPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 006f7030 BW1M119 014f24a0
+	static int FindCheckNotPoisoned(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 006f7070 BW1M119 01013fc0
+	static int FindNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 006f7100 BW1M119 014f22b0
+	static int FindFireNearGeneralCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 006f7190 BW1M119 014f2130
+	static int FindGeneralNotNearCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7220 BW1M119 014f2030
 	static void* FindAtPos(const MapCoords& pos,
 	                       int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                       SCRIPT_OBJECT_TYPE type, uint32_t param_4);
+	                       SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7280 BW1M119 0101c220
 	static void* FindNearPos(const MapCoords& pos,
 	                         int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                         SCRIPT_OBJECT_TYPE type, uint32_t param_4, float radius);
+	                         SCRIPT_OBJECT_TYPE type, uint32_t subtype, float radius);
+	// BW1W120 006f72e0 BW1M119 014f1e90
+	static Town* FindPlayerTownAtPos(const MapCoords& pos, float radius, GPlayer* player);
 	// BW1W120 006f7340 BW1M119 014f1de0
 	static void* FindTownAtPos(const MapCoords& pos,
 	                           int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                           SCRIPT_OBJECT_TYPE type, uint32_t param_4);
+	                           SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7370 BW1M119 014f1d40
 	static void* FindTownNearPos(const MapCoords& pos,
 	                             int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                             SCRIPT_OBJECT_TYPE type, uint32_t param_4, float radius);
+	                             SCRIPT_OBJECT_TYPE type, uint32_t subtype, float radius);
 	// BW1W120 006f7380 BW1M119 014f1c30
 	static void* FindCreatureAtPos(const MapCoords& pos,
 	                               int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                               SCRIPT_OBJECT_TYPE type, uint32_t param_4);
+	                               SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f73c0 BW1M119 014f1af0
 	static void* FindCreatureNearPos(const MapCoords& pos,
 	                                 int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                                 SCRIPT_OBJECT_TYPE type, uint32_t param_4, float radius);
+	                                 SCRIPT_OBJECT_TYPE type, uint32_t subtype, float radius);
 	// BW1W120 006f7410 BW1M119 014f1a10
 	static void* FindInTown(GameThingWithPos* thing,
 	                        int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                        SCRIPT_OBJECT_TYPE type, uint32_t param_4);
+	                        SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7470 BW1M119 014f18c0
 	static void* FindInTownNear(GameThingWithPos* thing,
 	                            int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                            SCRIPT_OBJECT_TYPE type, uint32_t param_4, const MapCoords& pos, float radius);
+	                            SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos, float radius);
 	// BW1W120 006f7500 BW1M119 014f1820
 	static void* FindInFlock(GameThingWithPos* thing,
 	                         int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                         SCRIPT_OBJECT_TYPE type, uint32_t param_4);
+	                         SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7520 BW1M119 014f1780
 	static void* FindInDance(GameThingWithPos* thing,
 	                         int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                         SCRIPT_OBJECT_TYPE type, uint32_t param_4);
+	                         SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 006f7540 BW1M119 null
+	static void* FindInAbode(GameThingWithPos* thing,
+	                         int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                         SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7570 BW1M119 014f1670
 	static void* FindInFlockNear(GameThingWithPos* thing,
 	                             int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                             SCRIPT_OBJECT_TYPE type, uint32_t param_4, const MapCoords& pos, float radius);
+	                             SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos, float radius);
 	// BW1W120 006f75c0 BW1M119 014f1560
 	static void* FindInDanceNear(GameThingWithPos* thing,
 	                             int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                             SCRIPT_OBJECT_TYPE type, uint32_t param_4, const MapCoords& pos, float radius);
+	                             SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos, float radius);
+	// BW1W120 006f7610 BW1M119 null
+	static void* FindInAbodeNear(GameThingWithPos* thing,
+	                             int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                             SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos, float radius);
 	// BW1W120 006f7670 BW1M119 014f1440
 	static void* FindInFlockNotNear(GameThingWithPos* thing,
 	                                int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                                SCRIPT_OBJECT_TYPE type, uint32_t param_4, const MapCoords& pos, float radius);
+	                                SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos, float radius);
 	// BW1W120 006f76c0 BW1M119 014f1320
 	static void* FindInDanceNotNear(GameThingWithPos* thing,
 	                                int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                                SCRIPT_OBJECT_TYPE type, uint32_t param_4, const MapCoords& pos, float radius);
+	                                SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos, float radius);
 	// BW1W120 006f7710 BW1M119 014f11c0
 	static void* FindInTownNotNear(GameThingWithPos* thing,
 	                               int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                               SCRIPT_OBJECT_TYPE type, uint32_t param_4, const MapCoords& pos, float radius);
+	                               SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos, float radius);
+	// BW1W120 006f77a0 BW1M119 null
+	static void* FindInAbodeNotNear(GameThingWithPos* thing,
+	                                int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                                SCRIPT_OBJECT_TYPE type, uint32_t subtype, const MapCoords& pos, float radius);
+	// BW1W120 006f7800 BW1M119 014f10d0
+	static int LoopFnCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f7850 BW1M119 014f1010
 	static void* TownLoop(GameThingWithPos* thing,
 	                      int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                      SCRIPT_OBJECT_TYPE type, uint32_t param_4);
+	                      SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 006f7880 BW1M119 null
+	static void* AbodeLoop(GameThingWithPos* thing,
+	                       int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                       SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f78b0 BW1M119 014f0f50
 	static void* FlockLoop(GameThingWithPos* thing,
 	                       int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                       SCRIPT_OBJECT_TYPE type, uint32_t param_4);
+	                       SCRIPT_OBJECT_TYPE type, uint32_t subtype);
 	// BW1W120 006f78e0 BW1M119 014f0e90
 	static void* DanceLoop(GameThingWithPos* thing,
 	                       int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
-	                       SCRIPT_OBJECT_TYPE type, uint32_t param_4);
+	                       SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 006f79f0 BW1M119 014f0c50
+	static int FindGeneralCheckExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
+	                                                  uint32_t subtype);
+	// BW1W120 006f7a20 BW1M119 01022750
+	static int FindNearGeneralCheckExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
+	                                                      uint32_t subtype);
+	// BW1W120 006f7a50 BW1M119 014f0b20
+	static int FindGeneralNotNearCheckExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
+	                                                         uint32_t subtype);
+	// BW1W120 006f7a80 BW1M119 014f0a40
+	static int FindCheckPoisonedExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
+	                                                   uint32_t subtype);
+	// BW1W120 006f7ab0 BW1M119 014f0950
+	static int FindCheckNotPoisonedExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
+	                                                      uint32_t subtype);
+	// BW1W120 006f7ae0 BW1M119 014f0800
+	static int FindNearInStateCheck(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type, uint32_t subtype);
+	// BW1W120 006f7b40 BW1M119 014f0710
+	static int FindNearInStateCheckExcludingScriptObjects(GameThingWithPos* thing, SCRIPT_OBJECT_TYPE type,
+	                                                      uint32_t subtype);
 };
 
 class GScriptOpposingCreature : public GBaseInfo

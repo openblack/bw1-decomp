@@ -39,6 +39,20 @@ block_relocations:
 # Import-name bytes "\0\0l\0" read as 0x006C0000, inside the static
 # ModifierCreate_UR_CreatureSpellCompassion.
   - source: 0x009C1038
+# Script strings whose tails read as .text addresses ("TON\0" ending IS_SKELETON reads as
+# 0x004E4F54): ScriptFind's "Not implemented", the command names after g_scriptFunctionTable
+# and ScriptGFX's model paths.
+  - source: 0x00C0D38C
+  - source: 0x00C1E32C
+  - source: 0x00C1E664
+  - source: 0x00C1E7CC
+  - source: 0x00C1EF88
+  - source: 0x00C1EFC4
+  - source: 0x00C1F110
+  - source: 0x00C1FBD0
+  - source: 0x00C1FC20
+  - source: 0x00C20310
+  - source: 0x00C20530
 
 add_relocations:
 # cl points vftable deleting-destructor slots at ??_E, a weak external that defaults to

@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/Enum.h>          /* For enum SPELL_SEED_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 
 #include "MobileObject.h" /* For struct MobileObject */
@@ -25,7 +26,8 @@ class Object;
 class OneOffSpellSeed : public MobileObject
 {
 public:
-	uint8_t field_0x68[0x14];
+	SPELL_SEED_TYPE SeedType;
+	uint8_t         field_0x6c[0x10];
 
 	// Override methods
 

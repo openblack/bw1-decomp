@@ -18,6 +18,7 @@ class GFootpathLink;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
+class Living;
 struct LHPoint;
 struct MapCoords;
 class Town;
@@ -81,6 +82,9 @@ public:
 
 	// BW1W120 0050bb40 BW1M119 012acce0
 	void StartDance();
+	// BW1W120 0050c3d0 BW1M119 012ac0d0
+	Living* FindLiving(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE type,
+	                   uint32_t subtype);
 };
 
 #endif /* BW1_DECOMP_DANCE_INCLUDED_H */
