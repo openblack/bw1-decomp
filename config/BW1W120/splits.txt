@@ -2048,18 +2048,31 @@ Black/ScriptDLL.cpp:
 	.data       start:0x00C0D108 end:0x00C0D368
 	.bss        start:0x00D96034 end:0x00D96058
 
+Black/ScriptFind.cpp:
+	.text       start:0x006F6CB0 end:0x006F7BA0
+	.rdata      start:0x00942208 end:0x00942210
+	.CRT$XCU    start:0x009C7648 end:0x009C7654 align:4
+	.data       start:0x00C0D368 end:0x00C0D3B4
+	.bss        start:0x00D96058 end:0x00D96064
+
 Black/ScriptFunctions.cpp:
-	.text       start:0x006F6CB0 end:0x00708C30
-	.rdata      start:0x00942208 end:0x00942224
-	.CRT$XCU    start:0x009C7648 end:0x009C766C align:4
-	.data       start:0x00C0D548 end:0x00C20594
-	.bss        start:0x00D96058 end:0x00D96378
+	.text       start:0x006F7BA0 end:0x006FFFA0
+	.rdata      start:0x00942210 end:0x00942224
+	.CRT$XCU    start:0x009C7654 end:0x009C7660 align:4
+	.data       start:0x00C0D3B4 end:0x00C0DB98
+	.bss        start:0x00D96064 end:0x00D96274
+
+Black/ScriptFunctionTable.cpp:
+	.text       start:0x006FFFA0 end:0x00708C30
+	.CRT$XCU    start:0x009C7660 end:0x009C766C align:4
+	.data       start:0x00C0DB98 end:0x00C20520
+	.bss        start:0x00D96274 end:0x00D96278
 
 Black/ScriptGFX.cpp:
 	.text       start:0x00708C30 end:0x00709580
 	.CRT$XCU    start:0x009C766C end:0x009C7674 align:4
-	.data       start:0x00C20594 end:0x00C205F0
-	.bss        start:0x00D96378 end:0x00D96388
+	.data       start:0x00C20520 end:0x00C205F0
+	.bss        start:0x00D96278 end:0x00D96388
 
 Black/ScriptHighlight.cpp:
 	.text       start:0x00709580 end:0x0070AE90

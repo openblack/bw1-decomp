@@ -4,9 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h>    /* For enum IMMERSION_EFFECT_TYPE */
-#include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
-#include <re_common.h>      /* For bool32_t */
+#include <chlasm/Enum.h>        /* For enum IMMERSION_EFFECT_TYPE */
+#include <chlasm/GStates.h>     /* For enum VILLAGER_STATES */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_PUZZLE_GAME_TYPE */
+#include <re_common.h>          /* For bool32_t */
 
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>           /* For struct LHListNode */
@@ -52,9 +53,11 @@ public:
 	// BW1W120 00d4eee8
 	static LH3DMapCoords AppliedMapPos;
 
-	uint32_t               field_0x28;
-	LHListNode<PuzzleGame> next;
-	uint8_t                field_0x30[0x558];
+	uint32_t                field_0x28;
+	LHListNode<PuzzleGame>  next;
+	uint8_t                 field_0x30[0x18];
+	SCRIPT_PUZZLE_GAME_TYPE GameType;
+	uint8_t                 field_0x4c[0x53c];
 
 	// Override methods
 

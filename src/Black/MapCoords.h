@@ -7,6 +7,7 @@
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
 #include <chlasm/AllMeshes.h>                           /* For enum MESH_LIST */
 #include <chlasm/Enum.h>                                /* For enum OBJECT_TYPE, enum TRIBE_TYPE */
+#include <chlasm/ScriptEnums.h>                         /* For enum SCRIPT_OBJECT_TYPE */
 #include <re_common.h>                                  /* For bool32_t */
 
 enum COLLIDE_TYPE
@@ -17,6 +18,7 @@ enum COLLIDE_TYPE
 // Forward Declares
 
 class Game3DObject;
+class GameThingWithPos;
 struct LHPoint;
 struct MapCell;
 struct MapCellIterator;
@@ -123,6 +125,9 @@ struct MapCoords : public LH3DMapCoords
 	uint32_t GetNearestTown(Town** town, unsigned long* distance, const Town* exclude, TRIBE_TYPE tribe_type) const;
 	// BW1W120 006020e0 BW1M119 01412720
 	Town* GetNearestTown(float t_max) const;
+	// BW1W120 00604370 BW1M119 0102ac40
+	GameThingWithPos* FindNearForScript(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
+	                                    SCRIPT_OBJECT_TYPE type, uint32_t subtype, float radius) const;
 	// BW1W120 00603280 BW1M119 01183eb0
 	void Set(const char* str);
 	// BW1W120 00603320 BW1M119 01007700
