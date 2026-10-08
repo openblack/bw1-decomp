@@ -20,6 +20,7 @@
 
 class AtomCollectionModifier;
 class FloatProvider;
+class LHParseFile;
 class ParticleCreator;
 class Persistent;
 class PersistentOwner;
@@ -36,8 +37,12 @@ struct PersistenceStreamer
 
 	// BW1W120 005873e0 BW1M119 012d44c0
 	bool32_t ReadProperties(std::istream* stream, Persistent* object);
+	// BW1W120 00587180 BW1M119 012d9300
+	bool32_t ReadClass(std::istream* stream, PersistentOwner* owner, Persistent** object);
 	// BW1W120 00587020 BW1M119 012dc510
 	bool32_t Read(std::istream* stream, PersistentOwner* owner, Persistent** object);
+	// BW1W120 00586f00 BW1M119 012dc680
+	bool32_t DoFixUps();
 	// BW1W120 00586d50 BW1M119 012ddc10
 	void AddFixUpReference(const std::string& name, Persistent** pointer);
 
@@ -53,10 +58,8 @@ struct PersistenceStreamer
 	// BW1W120 00586830 BW1M119 null
 	bool32_t WriteAsCode(std::ostream* stream, Persistent* object);
 
-	std::map<Persistent**, std::string> FixUps; /* 0x0 */
-	// LoadFromFile's stack frame on both platforms leaves room for one more word; the constructor
-	// does not initialise it.
-	uint32_t field_0x10;
+	std::map<Persistent**, std::string> FixUps;
+	PersistentOwner*                    Owner;
 };
 static_assert(sizeof(PersistenceStreamer) == 0x14, "Data type is of wrong size");
 
@@ -78,10 +81,14 @@ public:
 
 	// BW1W120 purecall BW1M119 purecall
 	virtual std::string GetAsString() = 0;
+	// Inline: the Windows copy follows PropertyList::AddFloatProperty, the first user of a vtable.
 	// BW1W120 00584630 BW1M119 012d4450
-	virtual std::string GetAsUserReadableString();
+	virtual std::string GetAsUserReadableString() { return GetAsString(); }
 	// BW1W120 purecall BW1M119 purecall
 	virtual bool32_t ReadProperty(std::istream* stream, PersistenceStreamer* streamer) = 0;
+
+	// BW1W120 00584e20 BW1M119 null
+	void WriteProperty(std::ostream* stream);
 
 	const char* Name;     /* 0x4 */
 	const char* TypeName; /* 0x8 */
@@ -133,6 +140,152 @@ public:
 	long Max; /* 0x10 */
 };
 static_assert(sizeof(IntegerProperty) == 0x14, "Data type is of wrong size");
+
+class FloatValueProperty : public FloatProperty
+{
+public:
+	FloatValueProperty() { TypeName = "FLOAT"; }
+
+	// BW1W120 00584ec0 BW1M119 012df620
+	virtual std::string GetAsString();
+	// BW1W120 00584ff0 BW1M119 012df500
+	virtual bool32_t ReadProperty(std::istream* stream, PersistenceStreamer* streamer);
+	// BW1W120 00584640 BW1M119 012e4640
+	virtual float GetFloatProperty() { return *Value; }
+	// BW1W120 00584650 BW1M119 012e4690
+	virtual void SetFloatProperty(float value) { *Value = value; }
+
+	float* Value;
+};
+static_assert(sizeof(FloatValueProperty) == 0x18, "Data type is of wrong size");
+
+class IntegerValueProperty : public IntegerProperty
+{
+public:
+	IntegerValueProperty() { TypeName = "INTEGER"; }
+
+	// BW1W120 00585380 BW1M119 012df180
+	virtual std::string GetAsString();
+	// BW1W120 005854b0 BW1M119 012df060
+	virtual bool32_t ReadProperty(std::istream* stream, PersistenceStreamer* streamer);
+	// BW1W120 00584770 BW1M119 012e45a0
+	virtual long GetIntegerProperty() { return *Value; }
+	// BW1W120 00584780 BW1M119 012e45f0
+	virtual void SetIntegerProperty(long value) { *Value = value; }
+
+	long* Value;
+};
+static_assert(sizeof(IntegerValueProperty) == 0x18, "Data type is of wrong size");
+
+class StringProperty : public Property
+{
+public:
+	// BW1W120 inlined BW1M119 012dfc10
+	StringProperty() { TypeName = "STRING"; }
+
+	// BW1W120 005850d0 BW1M119 012df420
+	virtual std::string GetAsString();
+	// BW1W120 00585200 BW1M119 012df2c0
+	virtual bool32_t ReadProperty(std::istream* stream, PersistenceStreamer* streamer);
+
+	std::string* Value;
+};
+static_assert(sizeof(StringProperty) == 0x10, "Data type is of wrong size");
+
+class FileNameProperty : public StringProperty
+{
+public:
+	std::string Extension;
+};
+static_assert(sizeof(FileNameProperty) == 0x20, "Data type is of wrong size");
+
+class SoundActionProperty : public Property
+{
+public:
+	SoundActionProperty() { TypeName = "SOUND_ACTION"; }
+
+	// BW1W120 00585740 BW1M119 012deb30
+	virtual std::string GetAsString();
+	// BW1W120 00585a70 BW1M119 012de8a0
+	virtual bool32_t ReadProperty(std::istream* stream, PersistenceStreamer* streamer);
+
+	// BW1W120 00585590 BW1M119 012dee90
+	static void MakeLHActionFile();
+
+	// BW1W120 005856d0 BW1M119 null
+	const PSysSoundAction& GetSoundActionProperty();
+	// BW1W120 005856e0 BW1M119 null
+	void SetSoundActionProperty(const PSysSoundAction& value);
+
+	// BW1W120 00d0666c
+	static LHParseFile* ActionFile;
+
+	PSysSoundAction* Value;
+};
+static_assert(sizeof(SoundActionProperty) == 0x10, "Data type is of wrong size");
+
+class EnumProperty : public Property
+{
+public:
+	// BW1W120 inlined BW1M119 012df850
+	EnumProperty() { TypeName = "ENUM"; }
+
+	// BW1W120 00585e10 BW1M119 012de4a0
+	virtual std::string GetAsString();
+	// BW1W120 00586010 BW1M119 012de2e0
+	virtual bool32_t ReadProperty(std::istream* stream, PersistenceStreamer* streamer);
+	// BW1W120 purecall BW1M119 purecall
+	virtual const char* GetNullEnumName() = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual const char* GetEnumFileName() = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual LHParseFile* GetEnumFile() = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual void SetEnumFile(LHParseFile* file) = 0;
+
+	// BW1W120 00585cd0 BW1M119 012de690
+	void MakeEnumFile();
+
+	// BW1W120 00585df0 BW1M119 null
+	const long& GetEnumProperty();
+	// BW1W120 00585e00 BW1M119 null
+	void SetEnumProperty(const long& value);
+
+	long* Value;
+};
+static_assert(sizeof(EnumProperty) == 0x10, "Data type is of wrong size");
+
+class MeshEnumProperty : public EnumProperty
+{
+public:
+	// BW1W120 005861b0 BW1M119 012de240
+	virtual const char* GetNullEnumName();
+	// BW1W120 005861a0 BW1M119 012de290
+	virtual const char* GetEnumFileName();
+	// BW1W120 005861c0 BW1M119 012de200
+	virtual LHParseFile* GetEnumFile();
+	// BW1W120 005861d0 BW1M119 012de1b0
+	virtual void SetEnumFile(LHParseFile* file);
+
+	// BW1W120 00d06670
+	static LHParseFile* EnumFile;
+};
+
+class AnimEnumProperty : public EnumProperty
+{
+public:
+	// BW1W120 005861f0 BW1M119 012de110
+	virtual const char* GetNullEnumName();
+	// BW1W120 005861e0 BW1M119 012de160
+	virtual const char* GetEnumFileName();
+	// BW1W120 00586200 BW1M119 012de0d0
+	virtual LHParseFile* GetEnumFile();
+	// BW1W120 00586210 BW1M119 012de080
+	virtual void SetEnumFile(LHParseFile* file);
+
+	// BW1W120 00d06674
+	static LHParseFile* EnumFile;
+};
 
 class TPointerProperty : public Property
 {
@@ -191,7 +344,18 @@ public:
 		return value == NULL || dynamic_cast<const T*>(value) != NULL;
 	}
 
-	T** Pointer; /* 0xc */
+	T** Pointer;
+};
+
+class PersistentPointerProperty : public Property
+{
+public:
+	// BW1W120 00586430 BW1M119 null
+	virtual std::string GetAsString();
+	// BW1W120 00586570 BW1M119 null
+	virtual bool32_t ReadProperty(std::istream* stream, PersistenceStreamer* streamer);
+
+	Persistent** Pointer;
 };
 
 class BoolArrayProperty : public Property
@@ -268,11 +432,11 @@ public:
 		}
 	}
 
-	T*          Object;  /* 0xc */
-	GetSizeFunc GetSize; /* 0x10 */
-	SetSizeFunc SetSize; /* 0x14 */
-	GetFunc     Get;     /* 0x18 */
-	SetFunc     Set;     /* 0x1c */
+	T*          Object;
+	GetSizeFunc GetSize;
+	SetSizeFunc SetSize;
+	GetFunc     Get;
+	SetFunc     Set;
 };
 
 class FloatArrayProperty : public Property
@@ -319,14 +483,14 @@ public:
 			*stream >> array.Data[i];
 		}
 		(Object->*Set)(array);
-		return 1;
+		return true;
 	}
 	virtual void GetArray(GJArray<float>* array) { (Object->*Get)(array); }
 	virtual void SetArray(const GJArray<float>& array) { (Object->*Set)(array); }
 
-	T*      Object; /* 0xc */
-	GetFunc Get;    /* 0x10 */
-	SetFunc Set;    /* 0x14 */
+	T*      Object;
+	GetFunc Get;
+	SetFunc Set;
 };
 
 class IntegerArrayProperty : public Property
@@ -337,8 +501,8 @@ public:
 	// BW1W120 purecall BW1M119 purecall
 	virtual void SetArray(const GJArray<long>& array) = 0;
 
-	long Min; /* 0xc */
-	long Max; /* 0x10 */
+	long Min;
+	long Max;
 };
 
 template <class T> class TemplateIntegerArrayProperty : public IntegerArrayProperty
@@ -406,11 +570,11 @@ public:
 		}
 	}
 
-	T*          Object;  /* 0x14 */
-	GetSizeFunc GetSize; /* 0x18 */
-	SetSizeFunc SetSize; /* 0x1c */
-	GetFunc     Get;     /* 0x20 */
-	SetFunc     Set;     /* 0x24 */
+	T*          Object;
+	GetSizeFunc GetSize;
+	SetSizeFunc SetSize;
+	GetFunc     Get;
+	SetFunc     Set;
 };
 
 template <class T> class GetSetFloatProperty : public FloatProperty
@@ -435,14 +599,14 @@ public:
 		float value;
 		*stream >> value;
 		(Object->*Set)(value);
-		return 1;
+		return true;
 	}
 	virtual float GetFloatProperty() { return (Object->*Get)(); }
 	virtual void  SetFloatProperty(float value) { (Object->*Set)(value); }
 
-	T*      Object; /* 0x14 */
-	GetFunc Get;    /* 0x18 */
-	SetFunc Set;    /* 0x1c */
+	T*      Object;
+	GetFunc Get;
+	SetFunc Set;
 };
 
 template <class T> class GetSetIntegerProperty : public IntegerProperty
@@ -468,25 +632,51 @@ public:
 		long value;
 		*stream >> value;
 		(Object->*Set)(value);
-		return 1;
+		return true;
 	}
 	virtual long GetIntegerProperty() { return (Object->*Get)(); }
 	virtual void SetIntegerProperty(long value) { (Object->*Set)(value); }
 
-	T*      Object; /* 0x14 */
-	GetFunc Get;    /* 0x18 */
-	SetFunc Set;    /* 0x1c */
+	T*      Object;
+	GetFunc Get;
+	SetFunc Set;
 };
 
 class PropertyList
 {
 public:
+	// BW1W120 inlined BW1M119 012d6a30
+	~PropertyList() { Clear(); }
+
+	// BW1W120 inlined BW1M119 012d46b0
+	void Clear()
+	{
+		std::map<std::string, Property*>::iterator it;
+		for (it = Properties.begin(); it != Properties.end(); ++it)
+		{
+			delete it->second;
+		}
+		Properties.erase(Properties.begin(), Properties.end());
+	}
+
+	void RemoveProperty(const char* name)
+	{
+		std::map<std::string, Property*>::iterator it = Properties.find(name);
+		if (it != Properties.end())
+		{
+			delete it->second;
+			Properties.erase(it);
+		}
+	}
+
 	// BW1W120 00584520 BW1M119 012dfe90
 	void AddFloatProperty(const char* name, float* value, float min, float max);
 	// BW1W120 00584660 BW1M119 012dfd60
 	void AddIntegerProperty(const char* name, long* value, long min, long max);
 	// BW1W120 00584790 BW1M119 012dfc60
 	void AddSoundActionProperty(const char* name, PSysSoundAction* value);
+	// BW1W120 005848a0 BW1M119 null
+	void AddStringProperty(const char* name, std::string* value);
 	// BW1W120 005849b0 BW1M119 012dfaa0
 	void AddFileNameProperty(const char* name, std::string* value, const std::string& extension);
 	// BW1W120 00584af0 BW1M119 012df990
@@ -594,7 +784,17 @@ public:
 
 	typedef std::map<const type_info*, T, compare> MapType;
 
-	T& operator[](const type_info& key) { return Map[&key]; }
+	T&   operator[](const type_info& key) { return Map[&key]; }
+	bool Lookup(const type_info& key, T& value)
+	{
+		typename MapType::const_iterator it = Map.find(&key);
+		if (it != Map.end())
+		{
+			value = it->second;
+			return true;
+		}
+		return false;
+	}
 
 	MapType Map; /* 0x0 */
 };
@@ -609,6 +809,9 @@ public:
 	typedef ParticleCreator* (*ParticleCreatorCreateFunc)(PersistentOwner* owner);
 	typedef TEventCondition* (*ConditionCreateFunc)(PersistentOwner* owner);
 	typedef AtomCollectionModifier* (*ModifierCreateFunc)(PersistentOwner* owner);
+
+	// BW1W120 00584470 BW1M119 012dfff0
+	RegisterPersistent();
 
 	// BW1W120 006c0ef0 BW1M119 01449870
 	void RegisterPersistentClasses();
@@ -628,5 +831,14 @@ public:
 	type_map<ConditionCreateFunc>       ConditionCreators;       /* 0x40 */
 	type_map<ModifierCreateFunc>        ModifierCreators;        /* 0x50 */
 };
+
+// TODO: Should not be using an extern. Remove this
+// A plain global, not a static member: its atexit destructor is unguarded, and
+// Persistent::SetUniqueName (BW1W120 00583f80) uses it ahead of its definition.
+// BW1W120 00d065e0
+extern RegisterPersistent PersistenceRegistry;
+
+// BW1W120 00585700 BW1M119 012dee10
+const char* FindEnumName(LHParseFile* file, long value);
 
 #endif /* BW1_DECOMP_GJ_PROPERTY_INCLUDED_H */

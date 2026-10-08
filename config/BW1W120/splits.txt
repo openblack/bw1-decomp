@@ -1020,7 +1020,7 @@ Black/GestureSystemDataList.cpp:
 
 Black/GestureSystemResult.cpp:
 	.text       start:0x0057A8F0 end:0x0057BA70
-	.rdata      start:0x00900108 end:0x00900290
+	.rdata      start:0x00900108 end:0x0090017C
 	.CRT$XCU    start:0x009C6A3C end:0x009C6A54 align:4
 	.bss        start:0x00D064C4 end:0x00D06510
 
@@ -1031,24 +1031,36 @@ Black/GJUtils.cpp:
 	.bss        start:0x00D06510 end:0x00D065B0
 
 Black/GJPersistent.cpp:
-	.text       start:0x00580840 end:0x00583DB0
+	.text       start:0x00580840 end:0x00583E50
 	.text$x     start:0x008A64A0 end:0x008A64B0 align:4
-	.CRT$XCU    start:0x009C6A7C end:0x009C6A84 align:4
-	.data       start:0x00BEF87C end:0x00BEFA4C
-	.bss        start:0x00D065B0 end:0x00D06640
+	.rdata      start:0x0090017C end:0x009002A8
+	.xdata$x    start:0x009BBE28 end:0x009BBE80 align:4
+	.CRT$XCU    start:0x009C6A7C end:0x009C6A88 align:4
+	.data       start:0x00BEF87C end:0x00BEF9D8
+	.bss        start:0x00D065B0 end:0x00D065E0
 
 Black/GJProperty.cpp:
-	.text       start:0x00583DB0 end:0x00590810
+	.text       start:0x00583E50 end:0x0058FFE0
 	.text$x     start:0x008A64B0 end:0x008A6580 align:4
-	.rdata      start:0x00900290 end:0x009003C8
-	.CRT$XCU    start:0x009C6A84 end:0x009C6AB0 align:4
-	.data       start:0x00BEFA4C end:0x00BEFEDC
-	.bss        start:0x00D06640 end:0x00D06ADC
+	.rdata      start:0x009002A8 end:0x009003BC
+	.xdata$x    start:0x009BBE80 end:0x009BC2F8 align:4
+	.CRT$XCU    start:0x009C6A88 end:0x009C6AA8 align:4
+	.data       start:0x00BEF9D8 end:0x00BEFD9C
+	.bss        start:0x00D065E0 end:0x00D066C8
+
+Black/GJSpline.cpp:
+	.text       start:0x0058FFE0 end:0x00590810
+	.rdata      start:0x009003C0 end:0x009003C8 align:8
+	.CRT$XCU    start:0x009C6AA8 end:0x009C6AB0 align:4
+	.data       start:0x00BEFD9C end:0x00BEFDBC
+	.bss        start:0x00D066C8 end:0x00D066D8
 
 Black/GJVnoise.cpp:
 	.text       start:0x00590810 end:0x00590F00
 	.rdata      start:0x009003C8 end:0x009003CC
 	.CRT$XCU    start:0x009C6AB0 end:0x009C6AB4 align:4
+	.data       start:0x00BEFDBC end:0x00BEFEDC
+	.bss        start:0x00D066D8 end:0x00D06ADC
 
 Black/Global.cpp:
 	.text       start:0x00590F00 end:0x005912B0
@@ -1312,7 +1324,7 @@ Black/LHInetWeather.cpp:
 
 Black/LHNetBase.cpp:
 	.text       start:0x005EA4E0 end:0x005EBDE0
-	.text$x     start:0x008A6580 end:0x008A6590 align:4
+	.text$x     start:0x008A6580 end:0x008A6590 align:16
 	.rdata      start:0x0092B388 end:0x0092B3E8
 	.CRT$XCU    start:0x009C6DD8 end:0x009C6DEC align:4
 	.data       start:0x00BF39E0 end:0x00BF3A80

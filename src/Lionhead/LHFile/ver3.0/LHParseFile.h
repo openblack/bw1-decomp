@@ -2,32 +2,69 @@
 #define BW1_DECOMP_LH_PARSE_FILE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint16_t, uint32_t */
+
+struct LHEnumPair
+{
+	char* name;
+	int   value;
+};
+
+struct LHToken
+{
+	LHToken()
+	{
+		Type = 0;
+		Value = 0;
+		Text = NULL;
+	}
+
+	uint32_t Type;
+	uint32_t Value;
+	char*    Text;
+};
 
 class LHParseFile
 {
 public:
-	char     line[0x100];    /* 0x0 */
-	char     word[0x80];     /* 0x100 */
-	char     token[0x80];    /* 0x180 */
-	char     EnumName[0x80]; /* 0x200 */
-	uint32_t PushbackType;   /* 0x280 */
-	uint32_t PushbackValue;  /* 0x284 */
-	char*    PushbackText;   /* 0x288 */
-	void*    EnumPairs;      /* 0x28c */
-	void*    EnumSorted;     /* 0x290 */
-	uint16_t EnumCount;      /* 0x294 */
+	char     line[0x100];
+	char     word[0x80];
+	char     token[0x80];
+	char     EnumName[0x80];
+	LHToken  Pushback;
+	void*    EnumPairs;
+	void*    EnumSorted;
+	uint16_t EnumCount;
 	uint16_t field_0x296;
 	uint32_t field_0x298;
-	uint32_t line_number; /* 0x29c */
-	char*    ParsePtr;    /* 0x2a0 */
-	char*    ScanPtr;     /* 0x2a4 */
-	char*    filename;    /* 0x2a8 */
-	void*    file;        /* 0x2ac */
-	char*    delimiters;  /* 0x2b0 */
-	uint16_t LineLength;  /* 0x2b4 */
-	uint16_t WordLength;  /* 0x2b6 */
-	uint32_t field_0x2b8;
+	uint32_t line_number;
+	char*    ParsePtr;
+	char*    ScanPtr;
+	char*    filename;
+	void*    file;
+	char*    delimiters;
+	uint16_t LineLength;
+	uint16_t WordLength;
+	uint32_t Unused;
+
+	// Inlined everywhere: BW1W120 00585590 and 00585cd0 build it in place.
+	LHParseFile(char* path, const char* delimiter_set)
+	{
+		filename = path;
+		file = NULL;
+		LineLength = 0;
+		WordLength = 0;
+		delimiters = (char*)delimiter_set;
+		Unused = 0;
+		line_number = 0;
+		EnumName[0] = '\0';
+		EnumPairs = NULL;
+		EnumSorted = NULL;
+		EnumCount = 0;
+	}
+	// BW1W120 007bea60 BW1M119 01166cc0 (LHCombined Release)
+	~LHParseFile();
 
 	// BW1W120 007be480 BW1M119 01167750 (LHCombined Release)
 	uint32_t Open();
@@ -36,7 +73,7 @@ public:
 	// BW1W120 007be510 BW1M119 011675a0 (LHCombined Release)
 	uint32_t GetNextTokenIgnoreComments(int* token_out);
 	// BW1W120 007be530 BW1M119 01167500 (LHCombined Release)
-	uint32_t FindEnumVal(void* key, uint32_t* out_value);
+	uint32_t FindEnumVal(char* key, long* out_value);
 	// BW1W120 007be570 BW1M119 01167430 (LHCombined Release)
 	uint32_t FindEnumValLinear(const char* key, uint32_t* out_value);
 	// BW1W120 007be5f0 BW1M119 01167350 (LHCombined Release)

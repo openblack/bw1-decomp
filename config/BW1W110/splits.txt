@@ -858,7 +858,7 @@ Black/GestureSystemDataList.cpp:
 	.CRT$XCU    start:0x009B6704 end:0x009B6734 align:4
 
 Black/GestureSystemResult.cpp:
-	.rdata      start:0x008F00D0 end:0x008F0258
+	.rdata      start:0x008F00D0 end:0x008F0144
 	.bss        start:0x00CF52EC end:0x00CF5338
 
 Black/GJUtils.cpp:
@@ -868,23 +868,34 @@ Black/GJUtils.cpp:
 	.bss        start:0x00CF5338 end:0x00CF53D8
 
 Black/GJPersistent.cpp:
-	.text       start:0x0057C960 end:0x0057FED0
+	.text       start:0x0057C960 end:0x0057FF70
 	.text$x     start:0x008962B0 end:0x008962C0 align:4
-	.CRT$XCU    start:0x009B6770 end:0x009B6778 align:4
-	.data       start:0x00BDED14 end:0x00BDEEE4
-	.bss        start:0x00CF53D8 end:0x00CF5468
+	.rdata      start:0x008F0144 end:0x008F0270
+	.xdata$x    start:0x009ABAF0 end:0x009ABB48 align:4
+	.CRT$XCU    start:0x009B6770 end:0x009B677C align:4
+	.data       start:0x00BDED14 end:0x00BDEE70
+	.bss        start:0x00CF53D8 end:0x00CF5408
 
 Black/GJProperty.cpp:
-	.text       start:0x0057FED0 end:0x0058C800
+	.text       start:0x0057FF70 end:0x0058BFB0
 	.text$x     start:0x008962C0 end:0x00896390 align:4
-	.rdata      start:0x008F0258 end:0x008F0390
-	.CRT$XCU    start:0x009B6778 end:0x009B67A0 align:4
-	.data       start:0x00BDEEE4 end:0x00BDF36C
-	.bss        start:0x00CF5468 end:0x00CF5904
+	.rdata      start:0x008F0270 end:0x008F0384
+	.xdata$x    start:0x009ABB48 end:0x009ABFC0 align:4
+	.CRT$XCU    start:0x009B677C end:0x009B679C align:4
+	.data       start:0x00BDEE70 end:0x00BDF22C
+	.bss        start:0x00CF5408 end:0x00CF54F0
+
+Black/GJSpline.cpp:
+	.text       start:0x0058BFB0 end:0x0058C7B0
+	.rdata      start:0x008F0388 end:0x008F0390 align:8
+	.CRT$XCU    start:0x009B679C end:0x009B67A0 align:4
+	.data       start:0x00BDF22C end:0x00BDF24C
+	.bss        start:0x00CF54F0 end:0x00CF5500
 
 Black/GJVnoise.cpp:
-	.text       start:0x0058C800 end:0x0058CF20
+	.text       start:0x0058C7B0 end:0x0058CF20
 	.rdata      start:0x008F0390 end:0x008F0394
+	.bss        start:0x00CF5500 end:0x00CF5904
 
 Black/Global.cpp:
 	.text       start:0x0058CF20 end:0x0058D1F0
@@ -1098,7 +1109,7 @@ Black/LHInetWeather.cpp:
 
 Black/LHNetBase.cpp:
 	.text       start:0x005E5610 end:0x005E6CB0
-	.text$x     start:0x00896390 end:0x008963A0 align:4
+	.text$x     start:0x00896390 end:0x008963A0 align:16
 	.rdata      start:0x0091B350 end:0x0091B3B0
 	.CRT$XCU    start:0x009B69CC end:0x009B69D4 align:4
 	.data       start:0x00BE2E50 end:0x00BE2E78

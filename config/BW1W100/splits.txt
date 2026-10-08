@@ -806,23 +806,26 @@ Black/GJUtils.cpp:
 	.CRT$XCU    start:0x008F66F0 end:0x008F6728 align:4
 	.bss        start:0x00C27640 end:0x00C276E0
 
-Black/GJPersistent.cpp:
-	.text       start:0x0054AF00 end:0x0054E300
-	.text$x     start:0x007E9340 end:0x007E9350 align:4
-	.CRT$XCU    start:0x008F672C end:0x008F6734 align:4
-	.data       start:0x00B1C908 end:0x00B1CA78
-	.bss        start:0x00C276E0 end:0x00C27770
-
 Black/GestureSystemResult.cpp:
-	.rdata      start:0x0083DF28 end:0x0083E0B0
+	.rdata      start:0x0083DF28 end:0x0083DF9C
+
+Black/GJPersistent.cpp:
+	.text       start:0x0054AF00 end:0x0054E380
+	.text$x     start:0x007E9340 end:0x007E9350 align:4
+	.rdata      start:0x0083DF9C end:0x0083E0C8
+	.xdata$x    start:0x008EE298 end:0x008EE2F0 align:4
+	.CRT$XCU    start:0x008F672C end:0x008F6738 align:4
+	.data       start:0x00B1C908 end:0x00B1CA40
+	.bss        start:0x00C276E0 end:0x00C27710
 
 Black/GJProperty.cpp:
-	.text       start:0x0054E300 end:0x00559880
+	.text       start:0x0054E380 end:0x00559330
 	.text$x     start:0x007E9350 end:0x007E9420 align:4
-	.rdata      start:0x0083E0B0 end:0x0083E1E8
-	.CRT$XCU    start:0x008F6734 end:0x008F675C align:4
-	.data       start:0x00B1CAA4 end:0x00B1CEE4
-	.bss        start:0x00C27770 end:0x00C27C0C
+	.rdata      start:0x0083E0C8 end:0x0083E1DC
+	.xdata$x    start:0x008EE2F0 end:0x008EE768 align:4
+	.CRT$XCU    start:0x008F6738 end:0x008F6758 align:4
+	.data       start:0x00B1CA40 end:0x00B1CDA4
+	.bss        start:0x00C27710 end:0x00C277F8
 
 Black/GJVnoise.cpp:
 	.text       start:0x00559880 end:0x00559C30
@@ -1023,7 +1026,7 @@ Black/LHInetWeather.cpp:
 
 Black/LHNetBase.cpp:
 	.text       start:0x005A9460 end:0x005AAA30
-	.text$x     start:0x007E9420 end:0x007E9430 align:4
+	.text$x     start:0x007E9420 end:0x007E9430 align:16
 	.CRT$XCU    start:0x008F6984 end:0x008F698C align:4
 	.data       start:0x00B206F8 end:0x00B20720
 

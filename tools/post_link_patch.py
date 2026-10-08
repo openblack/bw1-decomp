@@ -557,6 +557,31 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0056F9DB, call_rel32(0x004017F9)),  # GameThing
     (0x0056FB0B, call_rel32(0x004017F9)),  # GameThing
     (0x005703CA, call_indirect(0x008A96E4)),  # GameThing: __imp__LHSampleSetVolume...
+    (0x00583E6B, call_rel32(0x004017F9)),  # GJProperty
+    (0x005854AA, call_indirect(0x008A9034)),  # GJProperty: __imp__DirectInputCreateA@4
+    (0x0058600A, call_indirect(0x008A90A0)),  # GJProperty: __imp_?GetCurrentPosition@CImmMouse@@UAEHAAJ0@Z
+    (0x00586BAB, call_rel32(0x004017F9)),  # GJProperty
+    (0x00588C7A, call_indirect(0x008A903C)),  # GJProperty: __imp__DirectXSetupGetVersion
+    (0x0058A10B, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058A6FB, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058A78A, call_indirect(0x008A97F8)),  # GJProperty: __imp__GetFocus@0
+    (0x0058ACAB, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058AD3A, call_indirect(0x008A9540)),  # GJProperty: __imp____7LHConnection__6B_@4
+    (0x0058B17B, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058B20A, call_indirect(0x008A9978)),  # GJProperty: __imp__CoFileTimeToDosDateTime@12
+    (0x0058B64B, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058B6DA, call_indirect(0x008A9014)),  # GJProperty: __imp__RegSetValueExA@4
+    (0x0058BB1B, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058BBAA, call_indirect(0x008A9898)),  # GJProperty: __imp__timeSetEvent@4
+    (0x0058BFEB, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058C35B, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058C5CB, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058C5EB, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058D74B, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058D90B, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058DC6B, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058DE0B, call_rel32(0x004017F9)),  # GJProperty
+    (0x0058F7CB, call_rel32(0x004017F9)),  # GJProperty
     (0x005912FB, call_rel32(0x004017F9)),  # GlobalGameList
     (0x005914CB, call_rel32(0x004017F9)),  # GlobalGameList
     (0x0059419A, call_indirect(0x008A9970)),  # GlobalGameList: __imp__GetOpenFileNameA@4

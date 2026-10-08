@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <string>   /* For std::string */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For LHLinkedList */
 
 // Forward Declares
@@ -29,6 +31,8 @@ public:
 	const char* GetName();
 	// BW1W120 00580b80 BW1M119 012ce820
 	void SetName(const char* name);
+	// BW1W120 00583f80 BW1M119 null
+	void SetUniqueName();
 
 	// Override methods
 
@@ -49,6 +53,9 @@ static_assert(sizeof(Persistent) == 0xc, "Data type is of wrong size");
 class PersistentOwner : public Persistent
 {
 public:
+	// BW1W120 00580af0 BW1M119 null
+	bool32_t IsNameUsed(const char* name);
+
 	// BW1W120 00672420 BW1M119 013e6910
 	virtual ~PersistentOwner();
 	// BW1W120 00672410 BW1M119 013e7ec0
