@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Template|Win32">
+      <Configuration>Template</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName>$/IGNCP/Gamespy/GOA/Voice2/voice2buddymfc</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <Keyword>MFCProj</Keyword>
+    <ProjectGuid>{84E96670-7B64-47D2-822B-2EAD3E6401CD}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>..\speex-1.0.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Release\Voice2BuddyMFC.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Release\Voice2BuddyMFC.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release\Voice2BuddyMFC.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>.\Release\Voice2BuddyMFC.exe</OutputFile>
+      <AdditionalLibraryDirectories>..\libspeex\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dsound.lib;dxguid.lib;libspeex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <MinimalRebuild>true</MinimalRebuild>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\speex-1.0.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\Debug\Voice2BuddyMFC.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\Debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\Debug\Voice2BuddyMFC.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug\Voice2BuddyMFC.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>.\Debug\Voice2BuddyMFC.exe</OutputFile>
+      <AdditionalLibraryDirectories>..\libspeex\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dsound.lib;dxguid.lib;libspeex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\common\gsAssert.c" />
+    <ClCompile Include="..\..\common\gsAvailable.c" />
+    <ClCompile Include="..\..\common\gsDebug.c" />
+    <ClCompile Include="..\..\common\gsMemory.c" />
+    <ClCompile Include="..\..\common\gsPlatform.c" />
+    <ClCompile Include="..\..\common\gsPlatformSocket.c" />
+    <ClCompile Include="..\..\common\gsPlatformThread.c" />
+    <ClCompile Include="..\..\common\gsPlatformUtil.c" />
+    <ClCompile Include="..\..\common\gsStringUtil.c" />
+    <ClCompile Include="..\..\common\gsUdpEngine.c" />
+    <ClCompile Include="..\..\darray.c" />
+    <ClCompile Include="..\..\GP\gp.c" />
+    <ClCompile Include="..\..\GP\gpi.c" />
+    <ClCompile Include="..\..\GP\gpiBuddy.c" />
+    <ClCompile Include="..\..\GP\gpiBuffer.c" />
+    <ClCompile Include="..\..\GP\gpiCallback.c" />
+    <ClCompile Include="..\..\GP\gpiConnect.c" />
+    <ClCompile Include="..\..\GP\gpiInfo.c" />
+    <ClCompile Include="..\..\GP\gpiKeys.c" />
+    <ClCompile Include="..\..\GP\gpiOperation.c" />
+    <ClCompile Include="..\..\GP\gpiPeer.c" />
+    <ClCompile Include="..\..\GP\gpiProfile.c" />
+    <ClCompile Include="..\..\GP\gpiSearch.c" />
+    <ClCompile Include="..\..\GP\gpiTransfer.c" />
+    <ClCompile Include="..\..\GP\gpiUnique.c" />
+    <ClCompile Include="..\..\GP\gpiUtility.c" />
+    <ClCompile Include="..\..\gt2\gt2Auth.c" />
+    <ClCompile Include="..\..\gt2\gt2Buffer.c" />
+    <ClCompile Include="..\..\gt2\gt2Callback.c" />
+    <ClCompile Include="..\..\gt2\gt2Connection.c" />
+    <ClCompile Include="..\..\gt2\gt2Encode.c" />
+    <ClCompile Include="..\..\gt2\gt2Filter.c" />
+    <ClCompile Include="..\..\gt2\gt2Main.c" />
+    <ClCompile Include="..\..\gt2\gt2Message.c" />
+    <ClCompile Include="..\..\gt2\gt2Socket.c" />
+    <ClCompile Include="..\..\gt2\gt2Utility.c" />
+    <ClCompile Include="..\..\hashtable.c" />
+    <ClCompile Include="..\..\md5c.c" />
+    <ClCompile Include="..\..\natneg\NATify.c" />
+    <ClCompile Include="..\..\natneg\natneg.c" />
+    <ClCompile Include="..\gvCodec.c" />
+    <ClCompile Include="..\gvCustomDevice.c" />
+    <ClCompile Include="..\gvDevice.c" />
+    <ClCompile Include="..\gvDirectSound.c">
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Level3</WarningLevel>
+      <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</TreatWarningAsError>
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Level3</WarningLevel>
+      <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</TreatWarningAsError>
+    </ClCompile>
+    <ClCompile Include="..\gvFrame.c" />
+    <ClCompile Include="..\gvMain.c" />
+    <ClCompile Include="..\gvSource.c" />
+    <ClCompile Include="..\gvSpeex.c" />
+    <ClCompile Include="..\gvUtil.c" />
+    <ClCompile Include="LoginDlg.cpp" />
+    <ClCompile Include="SetupDlg.cpp" />
+    <ClCompile Include="StdAfx.cpp" />
+    <ClCompile Include="Voice2BuddyMFC.cpp" />
+    <ClCompile Include="Voice2BuddyMFCDlg.cpp" />
+    <ClCompile Include="VoiceSessionDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Voice2BuddyMFC.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\common\gsAssert.h" />
+    <ClInclude Include="..\..\common\gsAvailable.h" />
+    <ClInclude Include="..\..\common\gsCommon.h" />
+    <ClInclude Include="..\..\common\gsDebug.h" />
+    <ClInclude Include="..\..\common\gsMemory.h" />
+    <ClInclude Include="..\..\common\gsPlatform.h" />
+    <ClInclude Include="..\..\common\gsPlatformSocket.h" />
+    <ClInclude Include="..\..\common\gsPlatformThread.h" />
+    <ClInclude Include="..\..\common\gsPlatformUtil.h" />
+    <ClInclude Include="..\..\common\gsStringUtil.h" />
+    <ClInclude Include="..\..\common\gsUdpEngine.h" />
+    <ClInclude Include="..\..\darray.h" />
+    <ClInclude Include="..\..\GP\gp.h" />
+    <ClInclude Include="..\..\GP\gpi.h" />
+    <ClInclude Include="..\..\GP\gpiBuddy.h" />
+    <ClInclude Include="..\..\GP\gpiBuffer.h" />
+    <ClInclude Include="..\..\GP\gpiCallback.h" />
+    <ClInclude Include="..\..\GP\gpiConnect.h" />
+    <ClInclude Include="..\..\GP\gpiInfo.h" />
+    <ClInclude Include="..\..\GP\gpiKeys.h" />
+    <ClInclude Include="..\..\GP\gpiOperation.h" />
+    <ClInclude Include="..\..\GP\gpiPeer.h" />
+    <ClInclude Include="..\..\GP\gpiProfile.h" />
+    <ClInclude Include="..\..\GP\gpiSearch.h" />
+    <ClInclude Include="..\..\GP\gpiTransfer.h" />
+    <ClInclude Include="..\..\GP\gpiUnique.h" />
+    <ClInclude Include="..\..\GP\gpiUtility.h" />
+    <ClInclude Include="..\..\gt2\gt2.h" />
+    <ClInclude Include="..\..\gt2\gt2Auth.h" />
+    <ClInclude Include="..\..\gt2\gt2Buffer.h" />
+    <ClInclude Include="..\..\gt2\gt2Callback.h" />
+    <ClInclude Include="..\..\gt2\gt2Connection.h" />
+    <ClInclude Include="..\..\gt2\gt2Encode.h" />
+    <ClInclude Include="..\..\gt2\gt2Filter.h" />
+    <ClInclude Include="..\..\gt2\gt2Main.h" />
+    <ClInclude Include="..\..\gt2\gt2Message.h" />
+    <ClInclude Include="..\..\gt2\gt2Socket.h" />
+    <ClInclude Include="..\..\gt2\gt2Utility.h" />
+    <ClInclude Include="..\..\hashtable.h" />
+    <ClInclude Include="..\..\md5.h" />
+    <ClInclude Include="..\..\natneg\NATify.h" />
+    <ClInclude Include="..\..\natneg\natneg.h" />
+    <ClInclude Include="..\..\natneg\nninternal.h" />
+    <ClInclude Include="..\gv.h" />
+    <ClInclude Include="..\gvCodec.h" />
+    <ClInclude Include="..\gvCustomDevice.h" />
+    <ClInclude Include="..\gvDevice.h" />
+    <ClInclude Include="..\gvDirectSound.h" />
+    <ClInclude Include="..\gvFrame.h" />
+    <ClInclude Include="..\gvMain.h" />
+    <ClInclude Include="..\gvSource.h" />
+    <ClInclude Include="..\gvSpeex.h" />
+    <ClInclude Include="..\gvUtil.h" />
+    <ClInclude Include="LoginDlg.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SetupDlg.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="Voice2BuddyMFC.h" />
+    <ClInclude Include="Voice2BuddyMFCDlg.h" />
+    <ClInclude Include="VoiceSessionDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\gamespyl.bmp" />
+    <Image Include="res\logo270x83.bmp" />
+    <Image Include="res\microsoft-microphone.bmp" />
+    <Image Include="res\microsoft-speaker.bmp" />
+    <Image Include="res\speaking.bmp" />
+    <Image Include="res\speaking2.bmp" />
+    <Image Include="res\Voice2BuddyMFC.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\Voice2BuddyMFC.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libspeex\libspeex.vcxproj">
+      <Project>{1342dd90-6ae3-45be-b6c4-161639f35d04}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

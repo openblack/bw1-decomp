@@ -11,6 +11,8 @@ on:
       - '**.h'
       - '**.c'
       - '**.clang-format'
+      - '.clang-format-ignore'
+      - '.github/workflows/lint.yml'
       - 'config/**/symbols.txt'
       - 'tools/check_addr_comments.py'
 
@@ -28,9 +30,10 @@ jobs:
         clang-format-version: '22'
         fallback-style: 'none'
         # Only lint our own source tree; include/ holds vendor SDK headers
-        # (ddraw.h, d3dtypes.h) and unformatted shared headers. zlib and two
-        # ObjC-misdetected headers are skipped via .clang-format-ignore.
+        # (ddraw.h, d3dtypes.h) and unformatted shared headers.
+        # Vendored GameSpy sources are excluded; zlib is skipped via .clang-format-ignore.
         check-path: 'src'
+        exclude-regex: '^src/GameSpy/src/GameSpy/'
 
   check-address-comments:
     runs-on: ubuntu-latest

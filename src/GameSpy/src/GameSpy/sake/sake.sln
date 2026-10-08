@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sake", "sake.vcxproj", "{8E65BE16-C1E6-4B71-A1F3-1CDD78A39B34}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "saketest", "saketest\saketest.vcxproj", "{95F496C3-80E5-45DE-ADE4-9FBF0AAAB54E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+		Template|x86 = Template|x86
+		Unicode Debug|x86 = Unicode Debug|x86
+		Unicode Release|x86 = Unicode Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E65BE16-C1E6-4B71-A1F3-1CDD78A39B34}.Debug|x86.ActiveCfg = Debug|Win32
+		{8E65BE16-C1E6-4B71-A1F3-1CDD78A39B34}.Debug|x86.Build.0 = Debug|Win32
+		{8E65BE16-C1E6-4B71-A1F3-1CDD78A39B34}.Release|x86.ActiveCfg = Release|Win32
+		{8E65BE16-C1E6-4B71-A1F3-1CDD78A39B34}.Release|x86.Build.0 = Release|Win32
+		{8E65BE16-C1E6-4B71-A1F3-1CDD78A39B34}.Template|x86.ActiveCfg = Template|Win32
+		{8E65BE16-C1E6-4B71-A1F3-1CDD78A39B34}.Template|x86.Build.0 = Template|Win32
+		{8E65BE16-C1E6-4B71-A1F3-1CDD78A39B34}.Unicode Debug|x86.ActiveCfg = Debug|Win32
+		{8E65BE16-C1E6-4B71-A1F3-1CDD78A39B34}.Unicode Debug|x86.Build.0 = Debug|Win32
+		{8E65BE16-C1E6-4B71-A1F3-1CDD78A39B34}.Unicode Release|x86.ActiveCfg = Release|Win32
+		{8E65BE16-C1E6-4B71-A1F3-1CDD78A39B34}.Unicode Release|x86.Build.0 = Release|Win32
+		{95F496C3-80E5-45DE-ADE4-9FBF0AAAB54E}.Debug|x86.ActiveCfg = Debug|Win32
+		{95F496C3-80E5-45DE-ADE4-9FBF0AAAB54E}.Debug|x86.Build.0 = Debug|Win32
+		{95F496C3-80E5-45DE-ADE4-9FBF0AAAB54E}.Release|x86.ActiveCfg = Release|Win32
+		{95F496C3-80E5-45DE-ADE4-9FBF0AAAB54E}.Release|x86.Build.0 = Release|Win32
+		{95F496C3-80E5-45DE-ADE4-9FBF0AAAB54E}.Template|x86.ActiveCfg = Template|Win32
+		{95F496C3-80E5-45DE-ADE4-9FBF0AAAB54E}.Template|x86.Build.0 = Template|Win32
+		{95F496C3-80E5-45DE-ADE4-9FBF0AAAB54E}.Unicode Debug|x86.ActiveCfg = Unicode Debug|Win32
+		{95F496C3-80E5-45DE-ADE4-9FBF0AAAB54E}.Unicode Debug|x86.Build.0 = Unicode Debug|Win32
+		{95F496C3-80E5-45DE-ADE4-9FBF0AAAB54E}.Unicode Release|x86.ActiveCfg = Unicode Release|Win32
+		{95F496C3-80E5-45DE-ADE4-9FBF0AAAB54E}.Unicode Release|x86.Build.0 = Unicode Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

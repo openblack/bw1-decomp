@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{89040f98-a326-4d02-9941-e56c47cff519}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{dc89422f-e87f-49b8-b255-74f552f145cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon">
+      <UniqueIdentifier>{6c720f3f-0d27-4c2d-ae9b-e47a0d4a6cf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Source Files">
+      <UniqueIdentifier>{915ac13d-dc02-49f6-9e27-6bf4b8ff5137}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Header Files">
+      <UniqueIdentifier>{1f2a90c0-33b9-4f5d-978c-9540f49ddd66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK">
+      <UniqueIdentifier>{f375ccb9-bc08-4bf8-992c-5cf3d3f1b3ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\Source Files">
+      <UniqueIdentifier>{190c1411-03ba-4cf3-9813-5ea40078dcf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\Header Files">
+      <UniqueIdentifier>{32ceda1e-c93f-4d28-b960-c95d1605750b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\ChatSDK">
+      <UniqueIdentifier>{2b20c2f6-5ade-47bf-8626-9872a2e0ffcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\ChatSDK\Source Files">
+      <UniqueIdentifier>{de72fc76-8852-46ab-8cc2-0c5981cb906b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\ChatSDK\Header Files">
+      <UniqueIdentifier>{a0942b09-3dc4-4249-bc86-ffc08032e11f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\Pinger">
+      <UniqueIdentifier>{76a0b4cb-4ad1-44fe-9375-7c87a2bf7d4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\Pinger\Source Files">
+      <UniqueIdentifier>{94909a0e-354e-430d-ac47-684c5e5dd2f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\Pinger\Header Files">
+      <UniqueIdentifier>{0ba7ff12-e362-4255-bd7b-4ec8d2ac9e85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\QueryReporting2SDK">
+      <UniqueIdentifier>{2cab6717-052b-41f9-996c-751422c3de08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\QueryReporting2SDK\Source Files">
+      <UniqueIdentifier>{55234763-da08-4055-9dc1-c2baf460f451}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\QueryReporting2SDK\Header Files">
+      <UniqueIdentifier>{3b9de92f-64bb-436d-8aaf-abde1ceca2ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\ServerBrowsingSDK">
+      <UniqueIdentifier>{94c09059-dd58-43c6-b088-d8a2cf0fe3a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\ServerBrowsingSDK\Source Files">
+      <UniqueIdentifier>{1123543e-e5f7-4db8-a52b-b71ec7f37b25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PeerSDK\ServerBrowsingSDK\Header Files">
+      <UniqueIdentifier>{8a81d536-55f7-4761-b946-6c77e068b5ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NatNeg">
+      <UniqueIdentifier>{c49a1aad-3cf5-4805-aeda-933f4ee9a234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NatNeg\Source Files">
+      <UniqueIdentifier>{801fbb51-0387-49b9-b97e-69cdffa8e1aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NatNeg\Header Files">
+      <UniqueIdentifier>{5d25ab9b-6b1c-4543-a361-44830ba18d7b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="peerc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\darray.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAssert.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAvailable.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsDebug.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsMemory.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatform.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformSocket.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformThread.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsStringUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hashtable.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\md5c.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\win32\Win32Common.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerAutoMatch.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerCallbacks.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerGlobalCallbacks.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerHost.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerKeys.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerMain.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerMangle.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerOperations.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerPing.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerPlayers.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerQR.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerRooms.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\peerSB.c">
+      <Filter>PeerSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Chat\chatCallbacks.c">
+      <Filter>PeerSDK\ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Chat\chatChannel.c">
+      <Filter>PeerSDK\ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Chat\chatCrypt.c">
+      <Filter>PeerSDK\ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Chat\chatHandlers.c">
+      <Filter>PeerSDK\ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Chat\chatMain.c">
+      <Filter>PeerSDK\ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Chat\chatSocket.c">
+      <Filter>PeerSDK\ChatSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pinger\pingerMain.c">
+      <Filter>PeerSDK\Pinger\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\qr2\qr2.c">
+      <Filter>PeerSDK\QueryReporting2SDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\qr2\qr2regkeys.c">
+      <Filter>PeerSDK\QueryReporting2SDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\serverbrowsing\sb_crypt.c">
+      <Filter>PeerSDK\ServerBrowsingSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\serverbrowsing\sb_queryengine.c">
+      <Filter>PeerSDK\ServerBrowsingSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\serverbrowsing\sb_server.c">
+      <Filter>PeerSDK\ServerBrowsingSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\serverbrowsing\sb_serverlist.c">
+      <Filter>PeerSDK\ServerBrowsingSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\natneg\NATify.c">
+      <Filter>NatNeg\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\natneg\natneg.c">
+      <Filter>NatNeg\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\darray.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAssert.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAvailable.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCommon.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsDebug.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsMemory.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatform.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformSocket.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformThread.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsStringUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hashtable.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\md5.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peer.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerAutoMatch.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerCallbacks.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerGlobalCallbacks.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerHost.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerKeys.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerMain.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerMangle.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerOperations.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerPing.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerPlayers.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerQR.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\peerRooms.h">
+      <Filter>PeerSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Chat\chat.h">
+      <Filter>PeerSDK\ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Chat\chatASCII.h">
+      <Filter>PeerSDK\ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Chat\chatCallbacks.h">
+      <Filter>PeerSDK\ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Chat\chatChannel.h">
+      <Filter>PeerSDK\ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Chat\chatCrypt.h">
+      <Filter>PeerSDK\ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Chat\chatHandlers.h">
+      <Filter>PeerSDK\ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Chat\chatMain.h">
+      <Filter>PeerSDK\ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Chat\chatSocket.h">
+      <Filter>PeerSDK\ChatSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pinger\pinger.h">
+      <Filter>PeerSDK\Pinger\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\qr2\qr2.h">
+      <Filter>PeerSDK\QueryReporting2SDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\qr2\qr2regkeys.h">
+      <Filter>PeerSDK\QueryReporting2SDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\serverbrowsing\sb_ascii.h">
+      <Filter>PeerSDK\ServerBrowsingSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\serverbrowsing\sb_crypt.h">
+      <Filter>PeerSDK\ServerBrowsingSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\serverbrowsing\sb_internal.h">
+      <Filter>PeerSDK\ServerBrowsingSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\natneg\NATify.h">
+      <Filter>NatNeg\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\natneg\natneg.h">
+      <Filter>NatNeg\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\natneg\nninternal.h">
+      <Filter>NatNeg\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

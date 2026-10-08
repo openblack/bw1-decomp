@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{794e9836-09d7-4e93-a038-878274925d65}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{95d8ab9a-2c88-4788-b937-ff0eaa9bf3a1}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{e41f4bbc-c7db-4321-b32b-b36b878e9db9}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="VoiceSDK">
+      <UniqueIdentifier>{e9168964-df0c-4b6d-8cd6-58ebf786e63b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PresenceSDK">
+      <UniqueIdentifier>{5dcf1372-1fb2-421a-84c4-90277217e04e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon">
+      <UniqueIdentifier>{5775f360-04eb-4d3a-ae8c-797f41254db6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TransportSDK">
+      <UniqueIdentifier>{e949031d-5497-4b91-82c1-39382e0beb7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NatNegSDK">
+      <UniqueIdentifier>{880b22f0-cc5d-446e-887c-d7adf0966f74}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LoginDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SetupDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice2BuddyMFC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Voice2BuddyMFCDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VoiceSessionDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gvCodec.c">
+      <Filter>VoiceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gvCustomDevice.c">
+      <Filter>VoiceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gvDevice.c">
+      <Filter>VoiceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gvDirectSound.c">
+      <Filter>VoiceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gvFrame.c">
+      <Filter>VoiceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gvMain.c">
+      <Filter>VoiceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gvSource.c">
+      <Filter>VoiceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gvSpeex.c">
+      <Filter>VoiceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gvUtil.c">
+      <Filter>VoiceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gp.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpi.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiBuddy.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiBuffer.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiCallback.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiConnect.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiInfo.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiKeys.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiOperation.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiPeer.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiProfile.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiSearch.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiTransfer.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiUnique.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\GP\gpiUtility.c">
+      <Filter>PresenceSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\darray.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAssert.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAvailable.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsDebug.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsMemory.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatform.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformSocket.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformThread.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformUtil.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsStringUtil.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsUdpEngine.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hashtable.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\md5c.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Auth.c">
+      <Filter>TransportSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Buffer.c">
+      <Filter>TransportSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Callback.c">
+      <Filter>TransportSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Connection.c">
+      <Filter>TransportSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Encode.c">
+      <Filter>TransportSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Filter.c">
+      <Filter>TransportSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Main.c">
+      <Filter>TransportSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Message.c">
+      <Filter>TransportSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Socket.c">
+      <Filter>TransportSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Utility.c">
+      <Filter>TransportSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\natneg\NATify.c">
+      <Filter>NatNegSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\natneg\natneg.c">
+      <Filter>NatNegSDK</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Voice2BuddyMFC.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LoginDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SetupDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice2BuddyMFC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Voice2BuddyMFCDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VoiceSessionDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gv.h">
+      <Filter>VoiceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gvCodec.h">
+      <Filter>VoiceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gvCustomDevice.h">
+      <Filter>VoiceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gvDevice.h">
+      <Filter>VoiceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gvDirectSound.h">
+      <Filter>VoiceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gvFrame.h">
+      <Filter>VoiceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gvMain.h">
+      <Filter>VoiceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gvSource.h">
+      <Filter>VoiceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gvSpeex.h">
+      <Filter>VoiceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gvUtil.h">
+      <Filter>VoiceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gp.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpi.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiBuddy.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiBuffer.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiCallback.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiConnect.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiInfo.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiKeys.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiOperation.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiPeer.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiProfile.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiSearch.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiTransfer.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiUnique.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\GP\gpiUtility.h">
+      <Filter>PresenceSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\darray.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAssert.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAvailable.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCommon.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsDebug.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsMemory.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatform.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformSocket.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformThread.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformUtil.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsStringUtil.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsUdpEngine.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hashtable.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\md5.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2.h">
+      <Filter>TransportSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Auth.h">
+      <Filter>TransportSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Buffer.h">
+      <Filter>TransportSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Callback.h">
+      <Filter>TransportSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Connection.h">
+      <Filter>TransportSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Encode.h">
+      <Filter>TransportSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Filter.h">
+      <Filter>TransportSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Main.h">
+      <Filter>TransportSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Message.h">
+      <Filter>TransportSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Socket.h">
+      <Filter>TransportSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Utility.h">
+      <Filter>TransportSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\natneg\NATify.h">
+      <Filter>NatNegSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\natneg\natneg.h">
+      <Filter>NatNegSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\natneg\nninternal.h">
+      <Filter>NatNegSDK</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\gamespyl.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\logo270x83.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\microsoft-microphone.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\microsoft-speaker.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\speaking.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\speaking2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\Voice2BuddyMFC.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\Voice2BuddyMFC.rc2">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

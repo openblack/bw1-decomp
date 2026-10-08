@@ -25,6 +25,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+VENDORED_GAMESPY = os.path.join(ROOT, "src", "GameSpy")
 
 WORDS = ("inlined", "purecall", "null")
 
@@ -59,6 +60,9 @@ def canonical_re(mac_modules):
 def source_files():
     for top in ("src", "include"):
         for dirpath, _dirs, files in os.walk(os.path.join(ROOT, top)):
+            if dirpath == VENDORED_GAMESPY:
+                _dirs[:] = []
+                continue
             for name in files:
                 if name.endswith((".h", ".hpp", ".cpp", ".c", ".inl")):
                     yield os.path.join(dirpath, name)
@@ -76,6 +80,7 @@ def main(argv):
 
     errors = 0
     files = [os.path.abspath(a) for a in argv] or sorted(source_files())
+    files = [path for path in files if not path.startswith(VENDORED_GAMESPY + os.sep)]
     for path in files:
         rel = os.path.relpath(path, ROOT)
         with open(path, errors="ignore") as f:

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{dd5b76e7-7760-420a-9987-0a5ba6057d01}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="GsCommon">
+      <UniqueIdentifier>{81b13e91-4b35-4dd1-9f9c-062affcf38b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QueryReporting2SDK">
+      <UniqueIdentifier>{1e23e3ee-b15b-482d-b921-c6ded249d6a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NatNegSDK">
+      <UniqueIdentifier>{42a34ba5-8795-43bc-98f8-cbf8f184eebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{2265a99d-47f4-4dae-a2fb-8e072638d294}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="qr2csample.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\darray.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAssert.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAvailable.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsDebug.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsMemory.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatform.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformSocket.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformThread.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformUtil.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsStringUtil.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\win32\Win32Common.c">
+      <Filter>GsCommon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\qr2.c">
+      <Filter>QueryReporting2SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\qr2regkeys.c">
+      <Filter>QueryReporting2SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\natneg\NATify.c">
+      <Filter>NatNegSDK</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\natneg\natneg.c">
+      <Filter>NatNegSDK</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\darray.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAssert.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAvailable.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCommon.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsDebug.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsMemory.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatform.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformSocket.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformThread.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformUtil.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsStringUtil.h">
+      <Filter>GsCommon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\qr2.h">
+      <Filter>QueryReporting2SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\qr2regkeys.h">
+      <Filter>QueryReporting2SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\natneg\NATify.h">
+      <Filter>NatNegSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\natneg\natneg.h">
+      <Filter>NatNegSDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\natneg\nninternal.h">
+      <Filter>NatNegSDK</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\changelog.txt" />
+  </ItemGroup>
+</Project>

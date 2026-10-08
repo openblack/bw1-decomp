@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{817df118-0eb3-4fd4-bd64-3b556ae8abb3}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5cad8668-2a3d-46c7-8c3c-8017f4aee5fa}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="GsCommon">
+      <UniqueIdentifier>{c21d319e-42fa-4dc8-9af4-ff783c2dd0b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Source Files">
+      <UniqueIdentifier>{0a7a4a60-8459-4000-b35d-3df5a7e5a1ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GsCommon\Header Files">
+      <UniqueIdentifier>{d33d8793-663b-4337-b795-1162c3abbf2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PresenceSDK">
+      <UniqueIdentifier>{6c38fd3b-b603-476f-a7ec-8bb94aac78cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PresenceSDK\Source Files">
+      <UniqueIdentifier>{97b7760d-8cc5-454b-826f-d8bfe6eb1fd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PresenceSDK\Header Files">
+      <UniqueIdentifier>{c556d6dd-0021-41c7-8e19-6db9e08ad9a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TransportSDK">
+      <UniqueIdentifier>{a43fc8ca-2965-4d41-8f0b-12dbd741a5c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TransportSDK\Header Files">
+      <UniqueIdentifier>{f1fe4b26-d80e-4995-9da4-63c10686be22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TransportSDK\Source Files">
+      <UniqueIdentifier>{07fef304-5609-418c-ac71-6c485463d59b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="gptestc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\darray.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAssert.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsAvailable.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsDebug.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsMemory.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatform.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformSocket.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformThread.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsPlatformUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsStringUtil.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\gsUdpEngine.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\hashtable.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\md5c.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\win32\Win32Common.c">
+      <Filter>GsCommon\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gp.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpi.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiBuddy.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiBuffer.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiCallback.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiConnect.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiInfo.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiKeys.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiOperation.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiPeer.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiProfile.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiSearch.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiTransfer.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiUnique.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gpiUtility.c">
+      <Filter>PresenceSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Auth.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Buffer.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Callback.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Connection.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Encode.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Filter.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Main.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Message.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Socket.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gt2\gt2Utility.c">
+      <Filter>TransportSDK\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\darray.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAssert.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsAvailable.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsCommon.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsDebug.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsMemory.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatform.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformSocket.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformThread.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsPlatformUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsStringUtil.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\gsUdpEngine.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\hashtable.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\md5.h">
+      <Filter>GsCommon\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gp.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpi.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiBuddy.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiBuffer.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiCallback.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiConnect.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiInfo.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiKeys.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiOperation.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiPeer.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiProfile.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiSearch.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiTransfer.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiUnique.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gpiUtility.h">
+      <Filter>PresenceSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Auth.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Buffer.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Callback.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Connection.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Encode.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Filter.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Main.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Message.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Socket.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gt2\gt2Utility.h">
+      <Filter>TransportSDK\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
