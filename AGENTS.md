@@ -12,10 +12,11 @@ The main version to work from is `BW1W120`.
 
 The work is fundamentally about getting into the heads of the original developers using only the evidence available — the binary, the linker map, debug strings, and the compiler's behavior. Every assumption must be doubted and verified. Be skeptical of everything: naming guesses, code structure, control flow choices, even whether a function "looks right." Only commit to a decision when the evidence is overwhelming.
 
-When progress stalls because a tough choice must be made and strong evidence is lacking, **leave the code nonmatching and move on**. New evidence often emerges later — from matching a neighboring function, finding a pattern in another TU, or discovering a debug string. Premature commitment to a wrong approach creates technical debt that's harder to undo than a TODO comment. The final goal is still always a 100% match, but trying to headbutt a particular function into matching 100% usually results in fakematches (see below) and technical debt. Case-by-case judgement should be used.
+When progress stalls because a tough choice must be made and strong evidence is lacking, **leave the code nonmatching and move on**. New evidence often emerges later — from matching a neighboring function, finding a pattern in another TU, or discovering a debug string. Premature commitment to a wrong approach creates technical debt that's harder to undo than a nonmatching function. The final goal is still always a 100% match, but trying to headbutt a particular function into matching 100% usually results in fakematches (see below) and technical debt. Case-by-case judgement should be used.
 
 Truly hard judgment calls — ambiguous code structure, naming disputes, architectural decisions — should be deferred to humans.
-Do that by leaving TODOs around places that feel especially fake and wrong rather than refusing to tackle complicated tasks.
+Raise them in the PR description or the investigation notes (see [Comments](#comments--annotations-in-the-code)),
+not in source comments, rather than refusing to tackle complicated tasks.
 The ultimate goal of the project is not just a matching binary, but **human-readable, modifiable source code**.
 
 Before trying another source variant, identify the assembly difference it is intended
@@ -111,6 +112,26 @@ python tools/decomp-regress.py --refresh --fail-on-regression
 Refreshing reads existing objects; it does not establish that sources and headers were
 rebuilt. Freshness checks report stale or uncertain evidence, not proof of a correct build.
 Use `--help` for snapshot comparison and machine-readable output options.
+
+For a readability pass that must not change code generation (renames, constants, comment
+removal, formatting), snapshot the affected objects before editing and compare afterwards:
+
+```powershell
+python tools/codegen-check.py snapshot tidy --changed     # or --source <file> (repeatable)
+python tools/codegen-check.py compare tidy                # add --ignore-comdat-order for NonMatching consumers
+```
+
+It recompiles with the exact Ninja commands into `build/codegen-check/` and ignores
+compiler-numbered labels. COMDAT/RTTI section order reacts to unrelated header contents and
+even the source path, so an order-only difference matters only for linked units, which the
+executable hashes check.
+
+### Game versions
+
+CI builds BW1W100, BW1W110 and BW1W120, including the DLL units; only BW1W120 is configured
+locally by default. Layouts can differ between versions (e.g. `LHNetUser`), so guard
+version-specific `static_assert`s and members with `#ifdef VERSION_BW1W120`, and compile
+touched units with each version's `/DBUILD_VERSION=<n> /DVERSION_<ver>` before pushing.
 
 The underlying utility used for splitting the binary is `dtk` (`build/tools/dtk`).
 It is already properly set up and almost never requires any meddling.
@@ -239,6 +260,11 @@ that share a translation unit. Handoffs should include changed files, supporting
 verification commands/results, remaining mismatches, and whether source, objects and
 reports describe the same revision.
 
+Concurrent Ninja runs in one build directory race on shared objects and logs. Workers build
+only their own objects (with the compile command from `ninja -t compdb cl`, or
+`codegen-check.py`), never run bare `ninja`, and never edit `config/`; one coordinator applies
+symbol, split and config requests and re-splits between waves.
+
 ## Source Organization
 
 Each `.o` file maps 1:1 to a `.cpp` file. The path is listed in `configure.py` under `config.libs`. Each object has a status:
@@ -276,6 +302,18 @@ mangled_name = .section:0xADDRESS; // type:function size:0xSIZE scope:global ali
 
 Scope is `global`, `local` (static), or `weak` (inline/header-defined).
 
+dtk rewrites this file when it splits, and it de-duplicates function **and data** names per
+module: the lowest address keeps a repeated name and every other copy becomes `fn_0x…` or
+`data_0x…`. Name a per-TU static (`_$E` initializer pairs, header-defined file statics) in one
+TU only, or a new name silently steals an already-paired one. Other recurring fixes:
+
+- A dtk `lbl_` inside a function, or a switch jump table after its code, splits the function
+  in objdiff: delete the labels and extend the size over the table (not the trailing padding).
+- Renaming a delay-load import slot to `__imp__Name@N` drops its base relocation and breaks
+  the DLL hash; restore it with an `add_relocations` entry pointing the slot at its
+  `__imp_load_*` thunk. EH functions need `__except_list` entries the same way.
+- `add_relocations` and other `config.yml` changes take effect only after `python configure.py`.
+
 ### `config/BW1W120/splits.txt`
 
 Maps each source file to its section address ranges, telling dtk how to split the binary into per-TU objects.
@@ -296,25 +334,47 @@ Maps each source file to its section address ranges, telling dtk how to split th
 
 ### Comments & annotations in the code
 
-- `// fabricated` — the code is not from the original binary; it was invented/guessed to make things compile. May be incorrect.
-- `// TODO:` — known issues, suspected inaccuracies, or incomplete understanding.
-- `// Tiny size mismatch` / `// TODO: incorrect size` — for functions which were completely inlined and not emitted to the original binary, but are present in the symbol map as UNUSED symbols and their size is available. That size can be compared against the size in our code using tools/decomp-diff.py and if it's different, then the guess for the function's contents is not correct yet.
-- `// correct but X is incorrect` — the function itself matches, but a called function does not.
-- `// rogue includes needed for matching sinit & bss` — includes added purely for BSS/static-init ordering.
-- `#pragma dont_inline on/off` — forces the compiler to not inline a function (required for matching in specific cases).
+Source must read as if a Lionhead programmer wrote it. The only comments it contains are:
+
+- Address comments in the exact form described under
+  [Signatures](#signatures-function-boundaries-and-layouts), above declarations in headers.
+  `.cpp` files carry no comments above definitions; a function with no header (file static,
+  callback) keeps its address comment on a forward declaration in the `.cpp`.
+- `/* 0x1c */` offsets on data members.
 - `// Inliner IL size: N` — above an inline helper's address comment: its exact IL size, as measured by `tools/inline-budget.py size`
   (`<= 40` means never charged). Update it whenever the body changes.
+- Comments a Lionhead programmer could plausibly have written; prefer none.
 
-Don't be afraid to leave notes that would be useful to the next person trying to match the code, figure it out, or in the far future, write mods for the game.
+Do not commit decompilation commentary: TODOs, "fabricated", match percentages, register,
+scheduling or inliner notes, evidence for a name, Mac/IDA references, layout prose, or
+dividers such as `// Static methods`. The match percentage is the TODO. Keep residual
+analyses, name evidence and matching notes in the disassembly folder (see
+[Repository Layout](#repository-layout)) or the PR description.
+
+`#pragma dont_inline on/off` is code, not commentary, and stays where matching needs it.
 
 ### Style
 
 - Formatting follows `.clang-format` (Microsoft-based, 120-column, tabs for indentation with spaces for alignment).
+  CI checks with **clang-format 22**; other major versions wrap some expressions differently
+  (`pip install "clang-format>=22,<23"`).
 - Apply whole-file clang-format to touched C++ files before final verification and commits, not just changed lines.
 - Pre-C++11 style (`.clang-format` sets `Standard: c++03`; the compiler is MSVC 6.0): no `auto`, no range-for, no lambdas, no `nullptr` (use `NULL` or `0`).
 - Header guards use the `#ifndef BW1_DECOMP_<NAME>_INCLUDED_H` / `#define` / `#endif` pattern (e.g. `BW1_DECOMP_ABODE_INCLUDED_H`).
 - Use windef.h's `min`/`max` where the original did. `tools/minmax-scan.py --verify --apply <file>` finds
   hand-expanded selects and clamps and keeps only rewrites that compile byte-identical (`minmax-macros` skill).
+- No magic numbers. Name sizes, counts, lengths, ports, timeouts, ids and flags as enumerators
+  (an anonymous `enum { LH_... = n };` in the owning header, never new static data), use existing
+  enums and Win32 names (`INFINITE`, `WAIT_FAILED`, `THREAD_PRIORITY_*`), `sizeof`/`ARRAY_SIZE`
+  for repeated sizes, hex for colours and base 10 for line numbers.
+- Full-register true/false values are `bool32_t` (returns, members, parameters, template helpers
+  such as `LHLinkedList::Add`) with `true`/`false`, not `TRUE`/`FALSE`/`1`/`0`. It is `int`, so
+  manglings do not change. Wide strings are `wchar_t`, not `char16_t` or `unsigned short`.
+  `unsigned long` (`K`) and `uint32_t` (`I`) mangle differently: never swap them in signatures.
+- Never use `__FILE__`, `__LINE__` or `#line`. For debug-new and logging calls define a TU-local
+  `#define FILEPATH "C:\\dev\\MP\\..."` holding the binary's exact string and pass a base-10 line literal.
+- Boilerplate that recurs identically across modules is a shared macro, not per-file code
+  (e.g. the version blocks: `LH_VERSION_INFO` in `LHLog/ver4.0/LHVersion.h`).
 
 ### Header dependencies
 
@@ -322,6 +382,10 @@ An include can change generated code even when its declarations are unused: TU-l
 constants, dynamic initializers, template storage/helpers and inlining can all be affected.
 Keep enum-only headers lightweight and place complete types where consumers need them.
 Verify affected header consumers after layout, virtual-interface or include-boundary changes.
+
+Every static data member declared in a header bumps cl6's `_$E`/`_$S` counter in each TU
+that includes it, renumbering those TUs' initializers. If the game's numbering shows it never
+saw a module's statics, keep them out of the game's view (e.g. `#ifdef LH_MULTIPLAYER_EXPORTS`).
 
 ### Inline expansion
 
@@ -440,5 +504,5 @@ name it).
 
 **Never use `extern`**, not even as a temporary stand-in in a NonMatching unit. It hides
 which translation unit owns the data and produces a mangled name (`?Name@@3...`) that will
-not match the real one. If a global cannot be declared in its proper header yet, comment
-out the use with a `// TODO:` explaining why.
+not match the real one. If a global cannot be declared in its proper header yet, leave
+the function nonmatching without it and record why in the notes or PR description.
