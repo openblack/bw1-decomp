@@ -1,6 +1,8 @@
 Sections:
 	.text       type:code align:4096
+	.text$x     type:code vaddr:0x1004EDE0 end:0x1004FAC2
 	.rdata      type:rodata align:4096
+	.xdata$x    type:rodata vaddr:0x100524E8 end:0x10053388
 	.data       type:data align:4096
 	.CRT$XCA    type:data vaddr:0x10061000 end:0x10061004
 	.CRT$XCU    type:data vaddr:0x10061004 end:0x10061094
@@ -17,14 +19,6 @@ Sections:
 	.CRT$XTZ    type:data vaddr:0x100610C8 end:0x100610CC
 	.bss        type:bss vaddr:0x100683F8 end:0x1006DEB0
 
-Lionhead/LHMultiplayer/ver4.0/LHPacketisableObject.cpp:
-	.text       start:0x10001000 end:0x100011C0
-	.rdata      start:0x1005029C end:0x100502AC
-
-Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp:
-	.text       start:0x10001440 end:0x100019C0
-	.rdata      start:0x100502AC end:0x100502BC
-
 LHMultiplayer/lib/libcmt/crt0init.obj:
 	.CRT$XCA    start:0x10061000 end:0x10061004
 	.CRT$XCZ    start:0x10061094 end:0x10061098
@@ -35,46 +29,261 @@ LHMultiplayer/lib/libcmt/crt0init.obj:
 	.CRT$XTA    start:0x100610C0 end:0x100610C4
 	.CRT$XTZ    start:0x100610C8 end:0x100610CC
 
+Lionhead/LHMultiplayer/ver4.0/LHChannel.cpp:
+	.text       start:0x10001000 end:0x10004650
+	.text$x     start:0x1004EDE0 end:0x1004EF60
+	.rdata      start:0x1005029C end:0x1005058C
+	.xdata$x    start:0x100524E8 end:0x100526B0
+	.CRT$XCU    start:0x10061004 end:0x10061008 align:4
+	.data       start:0x100610D0 end:0x100610F8
+	.bss        start:0x10068400 end:0x10068408
+
 Lionhead/LHMultiplayer/ver4.0/LHConnection.cpp:
-	.text       start:0x10004670 end:0x100054B0
-	.data       start:0x10061294 end:0x100612AC
+	.text       start:0x10004650 end:0x10005500
+	.CRT$XCU    start:0x10061008 end:0x10061010 align:4
+	.data       start:0x100610F8 end:0x100612AC
+	.bss        start:0x10068408 end:0x100685E0
 
 Lionhead/LHMultiplayer/ver4.0/LHConnectionServer.cpp:
-	.text       start:0x10008410 end:0x1000C460
-	.data       start:0x100613B4 end:0x10061614
+	.text       start:0x10005500 end:0x10007140
+	.text$x     start:0x1004EF60 end:0x1004EFF0
+	.rdata      start:0x1005058C end:0x100505C0
+	.xdata$x    start:0x100526B0 end:0x10052758
+	.CRT$XCU    start:0x10061010 end:0x10061014 align:4
+	.data       start:0x100612AC end:0x10061368
+	.bss        start:0x100685E0 end:0x100685E4
+
+Lionhead/LHMultiplayer/ver4.0/LHDatabase.cpp:
+	.text       start:0x10007140 end:0x10008410
+	.text$x     start:0x1004EFF0 end:0x1004F060
+	.rdata      start:0x100505C0 end:0x100505D8
+	.xdata$x    start:0x10052758 end:0x100527E0
+	.CRT$XCU    start:0x10061014 end:0x10061018 align:4
+	.data       start:0x10061368 end:0x10061460
+	.bss        start:0x100685E4 end:0x10068AE4
+
+Lionhead/LHMultiplayer/ver4.0/LHFileDownload.cpp:
+	.text       start:0x10008410 end:0x10008F90
+	.text$x     start:0x1004F060 end:0x1004F0D0
+	.rdata      start:0x100505D8 end:0x100505E4
+	.xdata$x    start:0x100527E0 end:0x10052868
+	.data       start:0x10061460 end:0x10061480
+
+Lionhead/LHMultiplayer/ver4.0/LHHttp.cpp:
+	.text       start:0x10008F90 end:0x1000C4B0
+	.text$x     start:0x1004F0D0 end:0x1004F1C0
+	.rdata      start:0x100505E4 end:0x10050634
+	.xdata$x    start:0x10052868 end:0x10052980
+	.CRT$XCU    start:0x10061018 end:0x1006101C align:4
+	.data       start:0x10061480 end:0x1006160C
+	.bss        start:0x10068AE4 end:0x10068AF0
 
 Lionhead/LHMultiplayer/ver4.0/LHLobby.cpp:
-	.text       start:0x1000C620 end:0x1000EF70
-	.rdata      start:0x10050300 end:0x10050324
-	.bss        start:0x10068D20 end:0x10068E80
+	.text       start:0x1000C4B0 end:0x1000F040
+	.text$x     start:0x1004F1C0 end:0x1004F490
+	.rdata      start:0x10050634 end:0x10050674
+	.xdata$x    start:0x10052980 end:0x10052C30
+	.CRT$XCU    start:0x1006101C end:0x10061034 align:4
+	.data       start:0x1006160C end:0x10061650
+	.bss        start:0x10068AF0 end:0x10068E80
 
-Lionhead/LHMultiplayer/ver4.0/LHPacket.cpp:
-	.text       start:0x10015990 end:0x10016070
+Lionhead/LHMultiplayer/ver4.0/LHLobbyServer.cpp:
+	.text       start:0x1000F040 end:0x10011A50
+	.text$x     start:0x1004F490 end:0x1004F540
+	.rdata      start:0x10050674 end:0x10050688
+	.xdata$x    start:0x10052C30 end:0x10052D08
+	.CRT$XCU    start:0x10061034 end:0x1006103C align:4
+	.data       start:0x10061650 end:0x1006180C
+	.bss        start:0x10068E80 end:0x10069024
+
+Lionhead/LHMultiplayer/ver4.0/LHMail.cpp:
+	.text       start:0x10011A50 end:0x10013AB0
+	.text$x     start:0x1004F540 end:0x1004F600
+	.rdata      start:0x10050688 end:0x100506E8
+	.xdata$x    start:0x10052D08 end:0x10052E18
+	.CRT$XCU    start:0x1006103C end:0x10061040 align:4
+	.data       start:0x1006180C end:0x10061B60
+	.bss        start:0x10069024 end:0x100690C8
+
+Lionhead/LHMultiplayer/ver4.0/LHMessageServer.cpp:
+	.text       start:0x10013AB0 end:0x10015970
+	.CRT$XCU    start:0x10061040 end:0x10061048 align:4
+	.data       start:0x10061B60 end:0x10061D1C
+	.bss        start:0x100690C8 end:0x10069400
+
+Lionhead/LHMultiplayer/ver4.0/LHMPPacketSave.cpp:
+	.text       start:0x10015970 end:0x100160C0
+	.text$x     start:0x1004F600 end:0x1004F620
+	.xdata$x    start:0x10052E18 end:0x10052E40
+	.CRT$XCU    start:0x10061048 end:0x1006104C align:4
+	.data       start:0x10061D1C end:0x10061D30
+	.bss        start:0x10069400 end:0x10069408
+
+Lionhead/LHMultiplayer/ver4.0/LHNetErrors.cpp:
+	.data       start:0x10061D30 end:0x10062300
 
 Lionhead/LHMultiplayer/ver4.0/LHNetEvent.cpp:
-	.text       start:0x100160E0 end:0x10017000
+	.text       start:0x100160C0 end:0x10017000
+	.CRT$XCU    start:0x1006104C end:0x10061050 align:4
+	.data       start:0x10062300 end:0x100625C8
+	.bss        start:0x10069408 end:0x10069410
+
+Lionhead/LHMultiplayer/ver4.0/LHNetTypes.cpp:
+	.text       start:0x10017000 end:0x10017880
+	.text$x     start:0x1004F620 end:0x1004F660
+	.xdata$x    start:0x10052E40 end:0x10052E90
+	.CRT$XCU    start:0x10061050 end:0x10061058 align:4
+	.data       start:0x100625C8 end:0x100625D0
+	.bss        start:0x10069410 end:0x10069524
 
 Lionhead/LHMultiplayer/ver4.0/LHNetUser.cpp:
-	.text       start:0x100178E0 end:0x10018220
+	.text       start:0x10017880 end:0x10018220
+	.text$x     start:0x1004F660 end:0x1004F6C0
+	.xdata$x    start:0x10052E90 end:0x10052EF8
+	.CRT$XCU    start:0x10061058 end:0x1006105C align:4
+	.data       start:0x100625D0 end:0x100626A8
+	.bss        start:0x10069524 end:0x10069528
+
+Lionhead/LHMultiplayer/ver4.0/LHNetUtils.cpp:
+	.text       start:0x10018220 end:0x100197D0
+	.text$x     start:0x1004F6C0 end:0x1004F6E0
+	.xdata$x    start:0x10052EF8 end:0x10052F20
+	.CRT$XCU    start:0x1006105C end:0x10061060 align:4
+	.data       start:0x100626A8 end:0x100628BC
+	.bss        start:0x10069528 end:0x1006A51C
+
+Lionhead/LHMultiplayer/ver4.0/LHPacketisableObject.cpp:
+	.text       start:0x100197D0 end:0x10019990
+	.CRT$XCU    start:0x10061060 end:0x10061064 align:4
+	.data       start:0x100628BC end:0x100628C4
+	.bss        start:0x1006A51C end:0x1006A520
 
 Lionhead/LHMultiplayer/ver4.0/LHPlayer.cpp:
-	.text       start:0x100199B0 end:0x1001A1B0
+	.text       start:0x10019990 end:0x1001A1B0
+	.CRT$XCU    start:0x10061064 end:0x10061068 align:4
+	.data       start:0x100628C4 end:0x100628CC
+	.bss        start:0x1006A520 end:0x1006A524
+
+Lionhead/LHMultiplayer/ver4.0/LHPOP3.cpp:
+	.text       start:0x1001A1B0 end:0x1001BDC0
+	.text$x     start:0x1004F6E0 end:0x1004F740
+	.xdata$x    start:0x10052F20 end:0x10052F98
+	.CRT$XCU    start:0x10061068 end:0x1006106C align:4
+	.data       start:0x100628CC end:0x100629AC
+	.bss        start:0x1006A524 end:0x1006A52C
 
 Lionhead/LHMultiplayer/ver4.0/LHSerial.cpp:
-	.text       start:0x1001BDE0 end:0x1001C0C0
+	.text       start:0x1001BDC0 end:0x1001C0C0
+	.CRT$XCU    start:0x1006106C end:0x10061070 align:4
+	.data       start:0x100629AC end:0x100629BC
+	.bss        start:0x1006A52C end:0x1006A530
+
+Lionhead/LHMultiplayer/ver4.0/LHServerListener.cpp:
+	.text       start:0x1001C0C0 end:0x1001C400
+	.text$x     start:0x1004F740 end:0x1004F7A0
+	.rdata      start:0x100506E8 end:0x10050740
+	.xdata$x    start:0x10052F98 end:0x10053018
+	.CRT$XCU    start:0x10061070 end:0x10061074 align:4
+	.data       start:0x100629BC end:0x100629C4
+	.bss        start:0x1006A530 end:0x1006A538
 
 Lionhead/LHMultiplayer/ver4.0/LHSession.cpp:
-	.text       start:0x1001C4E0 end:0x1001F260
+	.text       start:0x1001C400 end:0x1001F2D0
+	.text$x     start:0x1004F7A0 end:0x1004F930
+	.xdata$x    start:0x10053018 end:0x10053188
+	.CRT$XCU    start:0x10061074 end:0x10061080 align:4
+	.data       start:0x100629C4 end:0x10062A18
+	.bss        start:0x1006A538 end:0x1006A558
+
+Lionhead/LHMultiplayer/ver4.0/LHSNMP.cpp:
+	.text       start:0x1001F2D0 end:0x1001FC70
+	.text$x     start:0x1004F930 end:0x1004F950
+	.xdata$x    start:0x10053188 end:0x100531B0
+	.data       start:0x10062A18 end:0x10062A78
 
 Lionhead/LHMultiplayer/ver4.0/LHSocket.cpp:
-	.text       start:0x1001FC90 end:0x100200E0
-	.rdata      start:0x100505E4 end:0x1005060C
+	.text       start:0x1001FC70 end:0x10021D90
+	.text$x     start:0x1004F950 end:0x1004F970
+	.xdata$x    start:0x100531B0 end:0x100531D8
+	.CRT$XCU    start:0x10061080 end:0x10061084 align:4
+	.data       start:0x10062A78 end:0x10062A80
+	.bss        start:0x1006A558 end:0x1006A560
 
-Lionhead/LHMultiplayer/ver4.0/LHSocketTCP.cpp:
-	.text       start:0x100200E0 end:0x10021D90
+Lionhead/LHMultiplayer/ver4.0/LHTCPServerListener.cpp:
+	.text       start:0x10021D90 end:0x10022240
+	.text$x     start:0x1004F970 end:0x1004F990
+	.xdata$x    start:0x100531D8 end:0x10053208
+	.CRT$XCU    start:0x10061084 end:0x10061088 align:4
+	.data       start:0x10062A80 end:0x10062A88
+	.bss        start:0x1006A560 end:0x1006A56C
 
 Lionhead/LHMultiplayer/ver4.0/LHTransport.cpp:
-	.text       start:0x10022260 end:0x100240C0
+	.text       start:0x10022240 end:0x10024190
+	.text$x     start:0x1004F990 end:0x1004FAC2
+	.xdata$x    start:0x10053208 end:0x10053388
+	.CRT$XCU    start:0x10061088 end:0x1006108C align:4
+	.data       start:0x10062A88 end:0x10062AA8
+	.bss        start:0x1006A56C end:0x1006A570
+
+Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp:
+	.text       start:0x10024190 end:0x100242E0
+	.CRT$XCU    start:0x1006108C end:0x10061094 align:4
+	.data       start:0x10062AA8 end:0x10062C3C
+	.bss        start:0x1006A570 end:0x1006A718
+
+LHMultiplayer/delayimp/delayhlp.cpp:
+	.text       start:0x1002460C end:0x100248C0
+	.bss        start:0x1006A71C end:0x1006A720
+
+LHMultiplayer/zlib/uncompr.c:
+	.text       start:0x100248C0 end:0x10024960
+	.data       start:0x10062C3C end:0x10062C44
+
+LHMultiplayer/zlib/compress.c:
+	.text       start:0x10024960 end:0x10024A30
+
+LHMultiplayer/zlib/inflate.c:
+	.text       start:0x10024A30 end:0x100251C0
+	.rdata      start:0x1005074C end:0x10050750
+	.data       start:0x10062C44 end:0x10062CB4
+
+LHMultiplayer/zlib/deflate.c:
+	.text       start:0x100251C0 end:0x10026880
+	.rdata      start:0x10050750 end:0x10050800
+	.data       start:0x10062CB4 end:0x10062CB8
+
+LHMultiplayer/zlib/infblock.c:
+	.text       start:0x10026880 end:0x10027730
+	.rdata      start:0x10050800 end:0x1005084C
+	.data       start:0x10062CB8 end:0x10062D2C
+
+LHMultiplayer/zlib/adler32.c:
+	.text       start:0x10027730 end:0x10027860
+
+LHMultiplayer/zlib/zutil.c:
+	.text       start:0x10027860 end:0x100278C0
+	.data       start:0x10062D2C end:0x10062DC4
+
+LHMultiplayer/zlib/trees.c:
+	.text       start:0x100278C0 end:0x10029500
+	.rdata      start:0x1005084C end:0x1005127C
+	.data       start:0x10062DC8 end:0x10062E0C
+
+LHMultiplayer/zlib/infcodes.c:
+	.text       start:0x10029500 end:0x10029D10
+	.data       start:0x10062E0C end:0x10062E40
+
+LHMultiplayer/zlib/inftrees.c:
+	.text       start:0x10029D10 end:0x1002A450
+	.rdata      start:0x1005127C end:0x10051494
+	.data       start:0x10062E40 end:0x10064038
+
+LHMultiplayer/zlib/infutil.c:
+	.text       start:0x1002A450 end:0x1002A590
+	.data       start:0x10064038 end:0x1006407C
+
+LHMultiplayer/zlib/inffast.c:
+	.text       start:0x1002A590 end:0x1002A920
 
 LHMultiplayer/lib/libcmt/purevirt.obj:
 	.text       start:0x1002A9BC end:0x1002A9C5 align:1
@@ -332,6 +541,9 @@ LHMultiplayer/lib/libcmt/_filbuf.obj:
 LHMultiplayer/lib/libcmt/read.obj:
 	.text       start:0x10032778 end:0x100329B6 align:1
 
+LHMultiplayer/lib/libcmt/memcpy.obj:
+	.text       start:0x100329C0 end:0x10032CF5 align:1
+
 LHMultiplayer/lib/libcmt/dosmap.obj:
 	.text       start:0x10032CF5 end:0x10032D7A align:1
 	.data       start:0x10066540 end:0x100666A8
@@ -370,11 +582,28 @@ LHMultiplayer/lib/libcmt/a_map.obj:
 	.rdata      start:0x100517E4 end:0x10051808 align:1
 	.bss        start:0x1006A8F8 end:0x1006A8FC
 
+LHMultiplayer/lib/libcmt/setlocal.obj:
+	.text       start:0x10033A3F end:0x100340B8 align:1
+	.rdata      start:0x10051808 end:0x1005185C
+	.data       start:0x100666D0 end:0x10066828
+	.bss        start:0x1006A8FC end:0x1006A908
+
 LHMultiplayer/lib/libcmt/isctype.obj:
 	.text       start:0x100340B8 end:0x10034130 align:1
 
+LHMultiplayer/lib/libcmt/ctype.obj:
+	.data       start:0x10066828 end:0x10066A34
+
+LHMultiplayer/lib/libcmt/nlsdata1.obj:
+	.data       start:0x10066A34 end:0x10066A40
+
+LHMultiplayer/lib/libcmt/timeset.obj:
+	.rdata      start:0x1005185C end:0x1005189C align:1
+	.data       start:0x10066A40 end:0x10066AD4
+
 LHMultiplayer/lib/libcmt/llmul.obj:
 	.text       start:0x10034130 end:0x10034164 align:1
+	.data       start:0x10066AD4 end:0x10066AE0
 
 LHMultiplayer/lib/libcmt/iswctype.obj:
 	.text       start:0x10034164 end:0x100341C6 align:1
@@ -395,8 +624,12 @@ LHMultiplayer/lib/libcmt/memset.obj:
 LHMultiplayer/lib/libcmt/localtim.obj:
 	.text       start:0x100343A8 end:0x10034510 align:1
 
+LHMultiplayer/lib/libcmt/days.obj:
+	.data       start:0x10066AE0 end:0x10066B48
+
 LHMultiplayer/lib/libcmt/strcmp.obj:
 	.text       start:0x10034510 end:0x10034594 align:1
+	.data       start:0x10066B48 end:0x10066B50
 
 LHMultiplayer/lib/libcmt/getenv.obj:
 	.text       start:0x10034594 end:0x10034632 align:1
@@ -421,6 +654,12 @@ LHMultiplayer/lib/libcmt/a_env.obj:
 LHMultiplayer/lib/libcmt/dllmain.obj:
 	.text       start:0x10034F06 end:0x10034F0C align:1
 
+LHMultiplayer/lib/libcmt/crt0msg.obj:
+	.text       start:0x10034F0C end:0x100350C9 align:1
+	.rdata      start:0x1005189C end:0x10051B88
+	.data       start:0x10066B50 end:0x10066BE0
+	.bss        start:0x1006AA38 end:0x1006AA3C
+
 LHMultiplayer/lib/libcmt/unhandld.obj:
 	.text       start:0x100350C9 end:0x1003512D align:1
 	.CRT$XIY    start:0x100610AC end:0x100610B0
@@ -430,18 +669,8 @@ LHMultiplayer/lib/libcmt/unhandld.obj:
 LHMultiplayer/lib/libcmt/validate.obj:
 	.text       start:0x1003512D end:0x1003517D align:1
 
-LHMultiplayer/lib/libcmt/ctype.obj:
-	.data       start:0x10066828 end:0x10066A34
-
-LHMultiplayer/lib/libcmt/nlsdata1.obj:
-	.data       start:0x10066A34 end:0x10066A40
-
-LHMultiplayer/lib/libcmt/timeset.obj:
-	.rdata      start:0x1005185C end:0x1005189C align:1
-	.data       start:0x10066A40 end:0x10066AD8
-
-LHMultiplayer/lib/libcmt/days.obj:
-	.data       start:0x10066AE0 end:0x10066B48
+LHMultiplayer/lib/libcmt/memmove.obj:
+	.text       start:0x10035180 end:0x100354B5 align:1
 
 LHMultiplayer/lib/libcmt/winxfltr.obj:
 	.text       start:0x100354B5 end:0x1003562D align:1
@@ -513,6 +742,10 @@ LHMultiplayer/lib/libcmt/inittime.obj:
 	.text       start:0x10036C08 end:0x10037177 align:1
 	.bss        start:0x1006AA44 end:0x1006AA48
 
+LHMultiplayer/lib/libcmt/initnum.obj:
+	.text       start:0x10037177 end:0x10037383 align:1
+	.bss        start:0x1006AA48 end:0x1006AA54
+
 LHMultiplayer/lib/libcmt/initmon.obj:
 	.text       start:0x10037383 end:0x100375F5 align:1
 	.bss        start:0x1006AA54 end:0x1006AA58
@@ -520,6 +753,9 @@ LHMultiplayer/lib/libcmt/initmon.obj:
 LHMultiplayer/lib/libcmt/initctyp.obj:
 	.text       start:0x100375F5 end:0x1003783A align:1
 	.bss        start:0x1006AA58 end:0x1006AA60
+
+LHMultiplayer/lib/libcmt/initcoll.obj:
+	.text       start:0x1003783A end:0x10037840 align:1
 
 LHMultiplayer/lib/libcmt/strcspn.obj:
 	.text       start:0x10037840 end:0x10037880 align:1
@@ -654,6 +890,101 @@ LHMultiplayer/lib/libcmt/w_map.obj:
 	.rdata      start:0x100522E8 end:0x10052300
 	.bss        start:0x1006AAF4 end:0x1006AAF8
 
+LHMultiplayer/lib/libcmt/constpow.obj:
+	.data       start:0x10067550 end:0x1006780C
+
+GameSpy/Peer/peerMain.c:
+	.text       start:0x1003AD10 end:0x1003C700
+	.data       start:0x1006780C end:0x10067860
+
+GameSpy/Peer/peerCallbacks.c:
+	.text       start:0x1003C700 end:0x1003DFC0
+	.rdata      start:0x10052300 end:0x100524A0
+
+GameSpy/Peer/peerOperations.c:
+	.text       start:0x1003DFC0 end:0x1003ED20
+	.data       start:0x10067860 end:0x1006788C
+
+GameSpy/nonport.c:
+	.text       start:0x1003ED20 end:0x1003F080
+	.data       start:0x1006788C end:0x10067904
+	.bss        start:0x1006AAF8 end:0x1006AC00
+
+GameSpy/Chat/chatMain.c:
+	.text       start:0x1003F160 end:0x100404A0
+	.data       start:0x10067908 end:0x10067B40
+
+GameSpy/Peer/peerCEngine.c:
+	.text       start:0x100404A0 end:0x10040DE0
+	.data       start:0x10067B40 end:0x10067BC4
+
+GameSpy/Peer/peerRooms.c:
+	.text       start:0x10040DE0 end:0x10041260
+
+GameSpy/Peer/peerPing.c:
+	.text       start:0x10041260 end:0x10041DA0
+	.data       start:0x10067BC4 end:0x10067BC8
+
+GameSpy/Peer/peerPlayers.c:
+	.text       start:0x10041DA0 end:0x10042340
+
+GameSpy/qr/gqueryreporting.c:
+	.text       start:0x10042340 end:0x10043390
+	.data       start:0x10067BC8 end:0x10067DD8
+	.bss        start:0x1006AC00 end:0x1006AF18
+
+GameSpy/Peer/peerGlobalCallbacks.c:
+	.text       start:0x10043390 end:0x10044290
+	.data       start:0x10067DD8 end:0x10067E68
+	.bss        start:0x1006AF18 end:0x1006B130
+
+GameSpy/Peer/peerMangle.c:
+	.text       start:0x10044290 end:0x100445B0
+	.rdata      start:0x100524A0 end:0x100524CC
+	.data       start:0x10067E68 end:0x10067EBC
+	.bss        start:0x1006B130 end:0x1006B150
+
+GameSpy/CEngine/gserver.c:
+	.text       start:0x100445B0 end:0x10044D50
+	.data       start:0x10067EBC end:0x10067EDC
+	.bss        start:0x1006B150 end:0x1006B154
+
+GameSpy/md5c.c:
+	.text       start:0x10044D50 end:0x10045960
+	.data       start:0x10067EDC end:0x10067F24
+
+GameSpy/CEngine/gserverlist.c:
+	.text       start:0x10045960 end:0x10047010
+	.rdata      start:0x100524CC end:0x100524E8
+	.data       start:0x10067F24 end:0x10068100
+	.bss        start:0x1006B154 end:0x1006B9AC
+
+GameSpy/darray.c:
+	.text       start:0x10047010 end:0x10047520
+
+GameSpy/Chat/chatSocket.c:
+	.text       start:0x10047520 end:0x100484C0
+	.data       start:0x10068100 end:0x10068128
+	.bss        start:0x1006B9AC end:0x1006CAAC
+
+GameSpy/Chat/chatCallbacks.c:
+	.text       start:0x100484C0 end:0x10049880
+
+GameSpy/Chat/chatChannel.c:
+	.text       start:0x10049880 end:0x1004A900
+
+GameSpy/Chat/chatHandlers.c:
+	.text       start:0x1004A900 end:0x1004D880
+	.data       start:0x10068128 end:0x1006837C
+
+GameSpy/hashtable.c:
+	.text       start:0x1004D880 end:0x1004DB80
+
+GameSpy/pinger/pingerMain.c:
+	.text       start:0x1004DB80 end:0x1004E7D0
+	.data       start:0x1006837C end:0x10068380
+	.bss        start:0x1006CAAC end:0x1006CAD8
+
 LHMultiplayer/lib/libcmt/unlink.obj:
 	.text       start:0x1004E7D0 end:0x1004E805 align:1
 
@@ -667,6 +998,3 @@ LHMultiplayer/lib/libcmt/qsort.obj:
 
 LHMultiplayer/lib/libcmt/vsprintf.obj:
 	.text       start:0x1004EA98 end:0x1004EAE9 align:1
-
-LHMultiplayer/lib/libcmt/constpow.obj:
-	.data       start:0x10067550 end:0x1006780C

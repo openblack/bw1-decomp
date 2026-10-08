@@ -8,7 +8,7 @@
 
 // Forward Declares
 
-struct LHPacket;
+class LHPacket;
 class LHTransportInfo;
 
 class LHSocketTCP : public LHSocket

@@ -434,6 +434,21 @@ def LibObject(completed, archive, member, module=None, **options):
     return Object(completed, name, lib_archive=archive, lib_member=member, **options)
 
 
+# LHMultiplayerR.dll's own C++ was built with C++ exception handling (it carries
+# EH funclets and FuncInfo tables) but without RTTI (no type descriptors at all)
+# and without /G6 (LHSerial only matches without it).
+cflags_multiplayer = [*(f for f in cflags_base if f != "/GR"), "/GX"]
+
+
+def MultiplayerObject(completed, name, **options):
+    return Object(completed, name, cflags=cflags_multiplayer, **options)
+
+
+# delayimp.lib's delay-load helper, rebuilt from the source MSVC 6 ships in its include
+# directory. Microsoft built it with /O1.
+cflags_delayimp = [*(f for f in cflags_base if f not in ("/O2", "/Og", "/Ob1")), "/O1"]
+
+
 # A game-code object (Black/), compiled with cflags_gamecode (Pentium Pro, /G6)
 # instead of the plain cflags_base used for the static libraries. Per-object
 # extra_cflags still apply on top, as with Object.
@@ -1710,24 +1725,72 @@ config.libs = [
         "cflags": cflags_base,
         "progress_category": "sdk",
         "objects": [
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHConnection.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHConnectionServer.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHLobby.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHLobbyServer.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHMPServerStartInfo.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHNetEvent.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHNetUser.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHNetUtils.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHPacket.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHPacketisableObject.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHPlayer.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSerial.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHServerPlayer.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSession.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSocket.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSocketTCP.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHTransport.cpp"),
-            Object(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHChannel.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHConnection.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHConnectionServer.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHDatabase.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHFileDownload.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHHttp.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHLobby.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHLobbyServer.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHMail.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHMessageServer.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHMPPacketSave.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHNetErrors.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHNetEvent.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHNetTypes.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHNetUser.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHNetUtils.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHPacketisableObject.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHPlayer.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHPOP3.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSerial.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHServerListener.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSession.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSNMP.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSocket.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHTCPServerListener.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHTransport.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp"),
+
+            Object(Matching, "LHMultiplayer/delayimp/delayhlp.cpp", source="delayimp/delayhlp.cpp", cflags=cflags_delayimp),
+
+            Object(Matching, "LHMultiplayer/zlib/uncompr.c", source="zlib/uncompr.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+            Object(Matching, "LHMultiplayer/zlib/compress.c", source="zlib/compress.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+            Object(Matching, "LHMultiplayer/zlib/inflate.c", source="zlib/inflate.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+            Object(Matching, "LHMultiplayer/zlib/deflate.c", source="zlib/deflate.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+            Object(Matching, "LHMultiplayer/zlib/infblock.c", source="zlib/infblock.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+            Object(Matching, "LHMultiplayer/zlib/adler32.c", source="zlib/adler32.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+            Object(Matching, "LHMultiplayer/zlib/zutil.c", source="zlib/zutil.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+            Object(Matching, "LHMultiplayer/zlib/trees.c", source="zlib/trees.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+            Object(Matching, "LHMultiplayer/zlib/infcodes.c", source="zlib/infcodes.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+            Object(Matching, "LHMultiplayer/zlib/inftrees.c", source="zlib/inftrees.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+            Object(Matching, "LHMultiplayer/zlib/infutil.c", source="zlib/infutil.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+            Object(Matching, "LHMultiplayer/zlib/inffast.c", source="zlib/inffast.c", extra_cflags=["/Za", "/UVERSION_BW1W100"]),
+
+            Object(NonMatching, "GameSpy/Peer/peerMain.c"),
+            Object(NonMatching, "GameSpy/Peer/peerCallbacks.c"),
+            Object(NonMatching, "GameSpy/Peer/peerOperations.c"),
+            Object(NonMatching, "GameSpy/nonport.c"),
+            Object(NonMatching, "GameSpy/Chat/chatMain.c"),
+            Object(NonMatching, "GameSpy/Peer/peerCEngine.c"),
+            Object(NonMatching, "GameSpy/Peer/peerRooms.c"),
+            Object(NonMatching, "GameSpy/Peer/peerPing.c"),
+            Object(NonMatching, "GameSpy/Peer/peerPlayers.c"),
+            Object(NonMatching, "GameSpy/qr/gqueryreporting.c"),
+            Object(NonMatching, "GameSpy/Peer/peerGlobalCallbacks.c"),
+            Object(NonMatching, "GameSpy/Peer/peerMangle.c"),
+            Object(NonMatching, "GameSpy/CEngine/gserver.c"),
+            Object(NonMatching, "GameSpy/md5c.c"),
+            Object(NonMatching, "GameSpy/CEngine/gserverlist.c"),
+            Object(NonMatching, "GameSpy/darray.c"),
+            Object(NonMatching, "GameSpy/Chat/chatSocket.c"),
+            Object(NonMatching, "GameSpy/Chat/chatCallbacks.c"),
+            Object(NonMatching, "GameSpy/Chat/chatChannel.c"),
+            Object(NonMatching, "GameSpy/Chat/chatHandlers.c"),
+            Object(NonMatching, "GameSpy/hashtable.c"),
+            Object(NonMatching, "GameSpy/pinger/pingerMain.c"),
+
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\purevirt.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\trnsctrl.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\exsup.obj", module="LHMultiplayer", progress_category="sdk"),
@@ -1796,6 +1859,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\fflush.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\_filbuf.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\read.obj", module="LHMultiplayer", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\memcpy.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\_open.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\stream.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\input.obj", module="LHMultiplayer", progress_category="sdk"),
@@ -1807,6 +1871,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\write.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\strcat.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\a_map.obj", module="LHMultiplayer", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\setlocal.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\isctype.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\llmul.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\iswctype.obj", module="LHMultiplayer", progress_category="sdk"),
@@ -1822,8 +1887,10 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\stdargv.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\a_env.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\dllmain.obj", module="LHMultiplayer", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\crt0msg.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\unhandld.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\validate.obj", module="LHMultiplayer", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\memmove.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\winxfltr.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\abort.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\strtol.obj", module="LHMultiplayer", progress_category="sdk"),
@@ -1845,8 +1912,10 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\llshl.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\ungetc.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\inittime.obj", module="LHMultiplayer", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\initnum.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\initmon.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\initctyp.obj", module="LHMultiplayer", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\initcoll.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\strcspn.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\strpbrk.obj", module="LHMultiplayer", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\getqloc.obj", module="LHMultiplayer", progress_category="sdk"),

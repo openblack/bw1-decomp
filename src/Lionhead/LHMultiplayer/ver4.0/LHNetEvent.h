@@ -20,7 +20,7 @@ enum LH_NETEVENT_TYPE
 // Forward Declares
 
 class LHNetEvent;
-struct LHPacket;
+class LHPacket;
 
 class LHNetEvent
 {
