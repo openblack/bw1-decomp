@@ -83,6 +83,8 @@ public:
 	}
 	// BW1W120 inlined BW1M119 0129acc0
 	unsigned long GetSubActionIndex() const { return CurrentSubAction; }
+	// BW1W120 004ff5c0 BW1M119 012902d0
+	void ClearSubActionAgenda();
 	// BW1W120 004ff240 BW1M119 012908a0
 	void AddSubAction(CREATURE_SUB_STATE_ACTIONS action, SubArgument* argument,
 	                  int (Creature::*look_function)(MapCoords* destination), void (Creature::*face_function)());

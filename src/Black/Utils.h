@@ -10,6 +10,7 @@
 
 class Abode;
 struct JustMapXZ;
+struct LHPoint;
 struct MapCoords;
 
 // TODO: Owner unknown (no Mac symbol). Kept out of GUtils: a static data member here would
@@ -37,6 +38,8 @@ struct GUtils
 	static void GetDistance(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074cd70 BW1M119 0104bf00
 	static float GetDistanceInMetres(const MapCoords& param_1, const MapCoords& param_2);
+	// BW1W120 0074cde0 BW1M119 01036610
+	static float GetDistance(const LHPoint& a, const LHPoint& b);
 	// BW1W120 0074cd50 BW1M119 null
 	static float GetDistanceInMetres_0074cd50(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074d200 BW1M119 010516f0

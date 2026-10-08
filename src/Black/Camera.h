@@ -98,6 +98,8 @@ public:
 	void PopViewMode();
 	// BW1W120 00441d40 BW1M119 01090140
 	void CheckStackedModesForValidity();
+	// BW1W120 00441f40 BW1M119 011a3220
+	void SetScriptSlomoControl(int control);
 	// BW1W120 00441e60 BW1M119 011a33a0
 	float CalculateRotationAngleY();
 	// BW1W120 00441f50 BW1M119 01091a90

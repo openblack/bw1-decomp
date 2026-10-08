@@ -474,8 +474,8 @@ public:
 	void AddPlayerSparkles();
 	// BW1W120 00552bb0 BW1M119 01172c70
 	void ClearMap();
-	// BW1W120 00552f40 BW1M119 01115890
-	void StartPlaygroundGame(char* map_path);
+	// BW1W120 00552f40 BW1M119 010ad400
+	void LoadMap(char* map_path);
 	// BW1W120 00552f80 BW1M119 01039330
 	bool32_t IsMultiplayerGame() const;
 	// BW1W120 00552fa0 BW1M119 010adff0
@@ -508,8 +508,8 @@ public:
 	GInterfaceStatus* MyInterfaceStatus();
 	// BW1W120 00555890 BW1M119 0117d380
 	void SetLandBalance(int index, float balance, GPlayer* player);
-	// BW1W120 00555990 BW1M119 inlined
-	void ResetAndStartPlaygroundGame(char* path);
+	// BW1W120 00555990 BW1M119 01115890
+	void StartPlaygroundGame(char* path);
 	// BW1W120 0063c3d0 BW1M119 01020d50
 	void ProcessOneSuperpacket();
 	// BW1W120 0063ef20 BW1M119 013e32d0

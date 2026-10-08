@@ -39,6 +39,10 @@ class InfluenceRing : public GameThingWithPos
 public:
 	// BW1W120 005cdb90 BW1M119 0105c050
 	static void ProcessRings();
+	// BW1W120 005cd9d0 BW1M119 01105ad0
+	static InfluenceRing* Create(const MapCoords& coords, GPlayer* player, float radius, int anti);
+	// BW1W120 005cd990 BW1M119 01105bb0
+	static InfluenceRing* Create(GameThingWithPos* thing, GPlayer* player, float radius, int anti);
 
 	BaseInfo                  info;
 	GPlayer*                  player;
@@ -76,9 +80,9 @@ public:
 	// Constructors
 
 	// BW1W120 005cd760 BW1M119 011061e0
-	InfluenceRing(const MapCoords& coords, GPlayer* player, float param_4, int param_5);
+	InfluenceRing(const MapCoords& coords, GPlayer* player, float radius, int anti);
 	// BW1W120 005cd800 BW1M119 01105fd0
-	InfluenceRing(GameThingWithPos* thing, GPlayer* player, float param_4, int param_5);
+	InfluenceRing(GameThingWithPos* thing, GPlayer* player, float radius, int anti);
 };
 
 #endif /* BW1_DECOMP_INFLUENCE_INCLUDED_H */

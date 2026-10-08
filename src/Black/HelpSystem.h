@@ -3,12 +3,20 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
+#include <uchar.h>  /* For char16_t */
+
+#include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT_NARRATOR */
 
 #include <re_common.h> /* For bool32_t */
 
 #include "Base.h"            /* For struct Base */
 #include "BindableAction.h"  /* For enum BINDABLE_ACTIONS */
 #include "CameraHelpTypes.h" /* For enum CH_ANIMTYPE */
+
+enum HELP_TEXT_INTERACTION
+{
+	HELP_TEXT_INTERACTION_NONE = 0x0,
+};
 
 enum HELP_SET_CATEGORY
 {
@@ -250,6 +258,7 @@ class GameThingWithPos;
 class GameOSFile;
 struct HelpDudeControl;
 class HelpSpirit;
+class HelpText;
 class Object;
 
 class HelpSystem : public Base
@@ -262,7 +271,7 @@ public:
 	HelpSpirit*      SpiritType2;
 	HelpSpirit*      SpiritType1;
 	HelpDudeControl* help_dude_control;
-	uint32_t         help_text;
+	HelpText*        help_text;
 	Bubble*          bubble;
 	uint32_t         field_0x1c;
 	uint32_t         field_0x20;
@@ -358,7 +367,14 @@ public:
 	void ResetIcons();
 	// BW1W120 005c5eb0 BW1M119 01093c60
 	void PostDrawProcess();
-	void Draw3D(); // 005c59a0
+	// BW1W120 005c5f90 BW1M119 01358e20
+	void SendText(unsigned long text, HELP_TEXT_INTERACTION interaction, float number, HELP_TEXT_NARRATOR narrator);
+	// BW1W120 005c6100 BW1M119 01358cf0
+	void SendText(char16_t* text, HELP_TEXT_INTERACTION interaction, float number, HELP_TEXT_NARRATOR narrator,
+	              unsigned long param_5);
+	// BW1W120 005c64e0 BW1M119 013589c0
+	bool32_t IsTextRead();
+	void     Draw3D(); // 005c59a0
 	// BW1W120 005c67e0 BW1M119 01357fe0
 	void ClearDialogueControl();
 	// BW1W120 005c6ad0 BW1M119 01357c40
@@ -383,6 +399,8 @@ public:
 	void GetHelpQueryOnGameThingWithPos(GameThingWithPos* param_1);
 	// BW1W120 005c98e0 BW1M119 0135bea0
 	void HelpQuery();
+	// BW1W120 inlined BW1M119 014ffc90
+	HelpText* GetHelpText() { return help_text; }
 };
 
 #endif /* BW1_DECOMP_HELP_SYSTEM_INCLUDED_H */

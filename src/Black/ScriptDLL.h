@@ -4,12 +4,18 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uintptr_t */
 
-#include <Lionhead/LHDLL/ver1.0/LHDLL.h> /* For struct LHDLL */
+#include <Lionhead/LHDLL/ver1.0/LHDLL.h>          /* For struct LHDLL */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
+// Types of values on the script VM's stack.
 enum VMType
 {
-	VMType_0 = 0x0,
-	_VMType_COUNT = 0x1
+	VMType_NONE = 0x0,
+	VMType_INT = 0x1,
+	VMType_FLOAT = 0x2,
+	VMType_VECTOR = 0x3,
+	VMType_OBJECT = 0x4,
+	VMType_BOOLEAN = 0x6,
 };
 
 enum VMScriptType
@@ -44,7 +50,7 @@ public:
 	uintptr_t StopTasksOfType_ptr;
 	uintptr_t POP_ptr; /* 0x50 */
 	uintptr_t PUSH_ptr;
-	uintptr_t STRING;
+	uintptr_t STRING_ptr;
 	int(__cdecl* LoadBinary_ptr)(LHTransport* transport, const char* path);
 	uintptr_t SaveBinary; /* 0x60 */
 	uintptr_t SaveState;
@@ -52,7 +58,7 @@ public:
 	uintptr_t Reboot;
 	uint32_t  NumTasks; /* 0x70 */
 	uint32_t  LineNumber;
-	uint32_t  TaskNumber;
+	uint32_t  TaskNumber_ptr;
 	uint32_t  TaskName;
 	uint32_t  TaskFilename; /* 0x80 */
 	uint32_t  GetTaskFilename;
@@ -75,6 +81,30 @@ public:
 	{
 		VMType type;
 		return POP(&type);
+	}
+	// BW1W120 inlined BW1M119 014e04e0
+	uint32_t ULONG_POP()
+	{
+		VMType type;
+		return POP(&type);
+	}
+	// BW1W120 inlined BW1M119 014f4110
+	float FLOAT_POP()
+	{
+		VMType   type;
+		uint32_t value = POP(&type);
+		return *(float*)&value;
+	}
+	// BW1W120 inlined BW1M119 01045930
+	void COORD_PUSH(float value) { PUSH(*(void**)&value, VMType_VECTOR); }
+	// BW1W120 inlined BW1M119 inlined
+	void FLOAT_PUSH(float value) { PUSH(*(void**)&value, VMType_FLOAT); }
+	// BW1W120 006fb100 BW1M119 null
+	void POINT_PUSH(const LHPoint& point)
+	{
+		COORD_PUSH(point.x);
+		COORD_PUSH(point.y);
+		COORD_PUSH(point.z);
 	}
 	uint32_t GetCurrentScriptType; /* 0x90 */
 	uint32_t(__cdecl* GetScriptInstructionCount_ptr)(LHTransport* transport);
@@ -116,8 +146,12 @@ public:
 	void StopAllTasks();
 	// BW1W120 006f6920 BW1M119 014efaf0
 	int LoadBinary(const char* path);
+	// BW1W120 006f69f0 BW1M119 014ef950
+	uint32_t TaskNumber();
 	// BW1W120 006f6ba0 BW1M119 010458d0
 	void PUSH(void* param_1, VMType param_2);
+	// BW1W120 006f6bd0 BW1M119 014ef5e0
+	char* STRING(uint32_t index);
 	// BW1W120 006f6c50 BW1M119 014ef510
 	void* GetScriptType(unsigned long param_1);
 	// BW1W120 006f6aa0 BW1M119 014ef800

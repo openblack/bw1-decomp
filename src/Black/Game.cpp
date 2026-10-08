@@ -423,7 +423,7 @@ bool32_t GGame::Init()
 	case 4: {
 		char mapPath[0x104];
 		strcpy(mapPath, WCHAR2CHAR(FrontEnd::SkirmishDialog->MapPath));
-		g_game->ResetAndStartPlaygroundGame(mapPath);
+		g_game->StartPlaygroundGame(mapPath);
 		SkirmishGame = true;
 		break;
 	}
@@ -551,9 +551,7 @@ void GGame::StartGame()
 	}
 }
 
-// Mac 1056f520 includes the Reset performed by the Windows wrapper.
-// BW1W120 00552f40 BW1M119 01115890
-void GGame::StartPlaygroundGame(char* map_path)
+void GGame::LoadMap(char* map_path)
 {
 	if (map_path != NULL)
 	{
@@ -566,12 +564,10 @@ void GGame::StartPlaygroundGame(char* map_path)
 	}
 }
 
-// Combined with StartPlaygroundGame in the Mac binary.
-// BW1W120 00555990
-void GGame::ResetAndStartPlaygroundGame(char* path)
+void GGame::StartPlaygroundGame(char* path)
 {
 	script->Reset(1);
-	StartPlaygroundGame(path);
+	LoadMap(path);
 }
 
 // BW1W120 005538e0 BW1M119 010e8430

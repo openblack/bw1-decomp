@@ -13,6 +13,8 @@
 
 class Base;
 class GameOSFile;
+class LH3DStorm;
+struct LHPoint;
 class GameThing;
 struct MapCoords;
 
@@ -22,7 +24,9 @@ public:
 	// BW1W120 007741a0 BW1M119 01085420
 	static void ProcessWeatherThings();
 
-	uint8_t                  field_0x28[0x58];
+	uint8_t                  field_0x28[0x50];
+	LH3DStorm*               Storm;
+	uint32_t                 field_0x7c;
 	LHListNode<WeatherThing> next;
 	uint8_t                  field_0x84[0x4];
 
@@ -52,6 +56,23 @@ public:
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0055df20 BW1M119 015aac80
 	virtual void SetAffectedByWind(int param_1);
+
+	// Non-virtual methods
+
+	// BW1W120 00774400 BW1M119 015ab6e0
+	void SetProperties(float temperature, float rainfall, float snowfall, float overcast, float fall_speed);
+	// BW1W120 00774460 BW1M119 015ab680
+	void SetTimes(float time, float fade);
+	// BW1W120 00774500 BW1M119 015ab550
+	void SetClouds(float shade, int clouds, float height);
+	// BW1W120 00774520 BW1M119 015ab4e0
+	void SetLightning(float sheet_min, float sheet_max, float fork_min, float fork_max);
+	// BW1W120 00774480 BW1M119 015ab5b0
+	void SetMovement(const LHPoint& velocity);
+	// BW1W120 00774550 BW1M119 015ab470
+	void SetMoveTo(const LHPoint& point);
+	// BW1W120 inlined BW1M119 014fd440
+	bool32_t IsFinished() const { return Storm == NULL; }
 };
 
 #endif /* BW1_DECOMP_WEATHER_THING_INCLUDED_H */

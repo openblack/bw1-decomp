@@ -632,6 +632,71 @@ add_relocations:
     type: x86_abs32
     target: '??_EMPFEMessageObject@@UAEPAXI@Z'
 
+# ScriptFunctions: string literals and dispatch-table entries dtk leaves as raw immediates.
+  - source: 0x006F7CD1
+    type: x86_abs32
+    target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
+  - source: 0x006F7DAE
+    type: x86_abs32
+    target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
+  - source: 0x006F7EB0
+    type: x86_abs32
+    target: '??_C@_0BE@OJJG@Jonty?5?9?5Invalid?5ptr?$AA@'
+  - source: 0x006F7ED0
+    type: x86_abs32
+    target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
+  - source: 0x006F7FC9
+    type: x86_abs32
+    target: '??_C@_0BE@OJJG@Jonty?5?9?5Invalid?5ptr?$AA@'
+  - source: 0x006F7FE9
+    type: x86_abs32
+    target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
+  - source: 0x006F8073
+    type: x86_abs32
+    target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
+  - source: 0x006F8143
+    type: x86_abs32
+    target: '??_C@_0CG@KGKI@This?5is?5not?5multiplayer?5friendly@'
+  - source: 0x006F83E2
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F83FE
+    type: x86_abs32
+    target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
+  - source: 0x006F857B
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F8598
+    type: x86_abs32
+    target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
+  - source: 0x006F86BA
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F86D7
+    type: x86_abs32
+    target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
+  - source: 0x006F8804
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F8821
+    type: x86_abs32
+    target: '??_C@_0BJ@FPLG@No?5Loop?5funtion?5for?5type?$AA@'
+  - source: 0x006F911A
+    type: x86_abs32
+    target: '??_C@_0BG@KIOP@Thing?5no?5longer?5valid?$AA@'
+  - source: 0x006F916C
+    type: x86_abs32
+    target: '?g_scriptObjectDispatch@GScript@@2PAUScriptObjectDispatch@@A'
+    addend: -4
+  - source: 0x006F9235
+    type: x86_abs32
+    target: '??_C@_0BB@CNII@Thing?5not?5found?$CB?$AA@'
+
+
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000
 linker_version: "6.0"

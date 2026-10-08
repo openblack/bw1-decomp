@@ -256,7 +256,8 @@ public:
 	uint32_t                              field_0x1280;
 	uint32_t                              field_0x1284;
 	uint32_t                              field_0x1288;
-	uint8_t                               field_0x128c[0x8];
+	uint32_t                              ScriptAnim;
+	uint32_t                              ScriptAnimRepeats;
 	uint32_t                              field_0x1294;
 	uint32_t                              field_0x1298;
 	int                                   field_0x129c;
@@ -873,6 +874,20 @@ public:
 	unsigned long SaveMindToMemory(char** buffer);
 	// BW1W120 inlined BW1M119 011e3200
 	const CreatureInfo* GetInfo() const { return (const CreatureInfo*)info; }
+	// BW1W120 00479eb0 BW1M119 011de020
+	void ForceMoveMapObjectWithoutWalking(const MapCoords& pos);
+	// BW1W120 0047ab90 BW1M119 011dcbc0
+	void SetFizz(float param_1, float param_2, bool param_3);
+	// BW1W120 0047b140 BW1M119 011dc350
+	bool32_t IsAnimIndividual(unsigned long anim);
+	// BW1W120 004f6850 BW1M119 0128d9d0
+	void SetFocus(GameThingWithPos* thing);
+	// BW1W120 004f6b60 BW1M119 0128d220
+	void ScriptMoveToPos(LHPoint* pos, float speed);
+	// BW1W120 004f6e30 BW1M119 0128d0e0
+	void ScriptPlayIndividualAnimation(unsigned long anim);
+	// BW1W120 004f6f10 BW1M119 0128cfa0
+	void ScriptPlayStaticAnimation(unsigned long anim, float param_2);
 };
 
 class Creed : public MobileObject
