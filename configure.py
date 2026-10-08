@@ -1136,6 +1136,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/TreeInfo.cpp"),
             GameCodeObject(NonMatching, "Black/Tribe.cpp"),
             GameCodeObject(NonMatching, "Black/TribeInfo.cpp"),
+            GameCodeObject(NonMatching, "Black/UniverseRoom.cpp"),
             GameCodeObject(NonMatching, "Black/Utils.cpp"),
             GameCodeObject(NonMatching, "Black/ValueSpinner.cpp"),
             GameCodeObject(NonMatching, "Black/Villager.cpp"),
@@ -1188,7 +1189,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/WorshipSpell.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSpellIcon.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipTotem.cpp"),
-            GameCodeObject(NonMatching, "Black/WorldRoom.cpp"),
+            GameCodeObject(Matching, "Black/WorldRoom.cpp"),
 
             # Contains SSE instructions, could be result of compiling with intel compiler
             # P3 suggests pentium III. Instructions are for P3 and P4.

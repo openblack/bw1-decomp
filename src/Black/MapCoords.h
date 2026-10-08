@@ -143,6 +143,10 @@ struct MapCoords : public LH3DMapCoords
 	float MetersX() const;
 	// BW1W120 inlined BW1M119 01024770
 	float MetersZ() const;
+	// BW1W120 inlined BW1M119 01180670
+	float MapMetersX();
+	// BW1W120 inlined BW1M119 01180610
+	float MapMetersZ();
 	// BW1W120 inlined BW1M119 0107ffa0
 	void SetMetersX(float meters);
 	// BW1W120 inlined BW1M119 010247e0

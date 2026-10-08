@@ -5,6 +5,8 @@
 #include <stdint.h>    /* For uint8_t */
 #include <re_common.h> /* For bool32_t */
 
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+
 #include "PictureRoom.h" /* For struct PictureRoomBase */
 
 // Forward Declares
@@ -26,6 +28,10 @@ struct TempleChallenge
 	void StartScript(int param_1);
 	// BW1W120 007817a0 BW1M119 011bd0c0
 	void LoadChallenge(GameOSFile& param_1);
+	// BW1W120 007813b0 BW1M119 011be190
+	LHPoint GetPosition() const;
+	// BW1W120 007813f0 BW1M119 011be100
+	float GetSuccess() const;
 };
 
 class ChallengeRoom : public PictureRoomBase
@@ -33,6 +39,10 @@ class ChallengeRoom : public PictureRoomBase
 public:
 	// BW1W120 00784de0 BW1M119 011b4630
 	static void ChallengeClear();
+	// BW1W120 00784f30 BW1M119 011b4150
+	static unsigned long GetNumOfChallenges();
+	// BW1W120 00784f40 BW1M119 011b3fd0
+	static TempleChallenge* GetChallengeAtPosition(unsigned long position);
 	// Static methods
 
 	// BW1W120 00784b30 BW1M119 011b4de0

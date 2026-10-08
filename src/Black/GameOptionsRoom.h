@@ -23,7 +23,7 @@ public:
 	// BW1W120 0078d8f0 BW1M119 01301b00
 	virtual bool32_t IsAvailable();
 	// BW1W120 0079a230 BW1M119 inlined
-	virtual void DrawAdditional(bool param_1);
+	virtual void DrawAdditional(bool reflection);
 	// BW1W120 00799f80 BW1M119 inlined
 	virtual void PreDraw();
 	// BW1W120 0078d810 BW1M119 01301da0

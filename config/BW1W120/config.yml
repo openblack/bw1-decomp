@@ -391,6 +391,9 @@ add_relocations:
   - source: 0x00938E80
     type: x86_abs32
     target: '??_ELandscapeCollide@@UAEPAXI@Z'
+  - source: 0x0099EFF8
+    type: x86_abs32
+    target: '??_EWorldRoomCamera@@UAEPAXI@Z'
 # The catch handler in the istream exception table is inside operator>>(unsigned long&).
   - source: 0x009BC3A4
     type: x86_abs32

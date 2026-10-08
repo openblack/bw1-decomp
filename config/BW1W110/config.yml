@@ -365,6 +365,9 @@ add_relocations:
   - source: 0x00928E1C
     type: x86_abs32
     target: '??_ESetInitialRandomOrientations@@UAEPAXI@Z'
+  - source: 0x0098EF00
+    type: x86_abs32
+    target: '??_EWorldRoomCamera@@UAEPAXI@Z'
 # GAbodeInfo::Find compares against AbodeInfos' tribe_type field one past the end.
   - source: 0x004059B1
     type: x86_abs32

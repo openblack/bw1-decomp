@@ -4,9 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
 
-// Forward Declares
+#include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 
-class TempleRoom;
+#include "TempleRoom.h" /* For class TempleRoom, enum TempleRoomsEnum */
 
 struct Temple
 {
@@ -16,9 +16,19 @@ struct Temple
 	static float Dat_00C2A150;
 	// BW1W120 00e06020
 	static float Dat_00E06020;
+	// BW1W120 00e05fe0
+	static bool MultiplayerCitadel;
+	// BW1W120 00e05fe4
+	static LH3DColor CitadelSpecular;
+	// BW1W120 00e05fe8
+	static LH3DColor CitadelColour;
+	// BW1W120 00e0601c
+	static int LeaveCitadel;
+	// BW1W120 00e0602c
+	static float DoorPosition;
 
-	TempleRoom* rooms[0x7]; /* 0x0 */
-	TempleRoom* ActiveRoom; /* 0x1c */
+	TempleRoom* rooms[0x7];
+	TempleRoom* ActiveRoom;
 	uintptr_t   field_0x20;
 	uint32_t    field_0x24;
 	float       fov;
@@ -28,7 +38,7 @@ struct Temple
 	float       field_0x38;
 	float       field_0x3c;
 	float       field_0x40;
-	uint32_t    field_0x44;
+	uint32_t    HelpSuppressed;
 	uint8_t     field_0x48;
 	uint8_t     field_0x49;
 	uint8_t     field_0x4a;
@@ -43,6 +53,8 @@ struct Temple
 
 	// BW1W120 00794a30 BW1M119 0153ef60
 	void ProcessGameTurn();
+	// BW1W120 00794a80 BW1M119 0153eec0
+	static void StartTempleScript(char* script_name);
 
 	// Constructors
 
@@ -59,6 +71,10 @@ struct Temple
 	void Draw();
 	// BW1W120 00794a20 BW1M119 0153f010
 	bool StartScript(unsigned long param_1);
+	// BW1W120 007949e0 BW1M119 0153f110
+	void SetCameraToLookAtSubMesh(unsigned long sub_mesh, float param_2, float param_3, float param_4);
+	// BW1W120 inlined BW1M119 015aef90
+	TempleRoom*& GetRoom(TempleRoomsEnum room) { return rooms[room]; }
 };
 
 #endif /* BW1_DECOMP_TEMPLE_INCLUDED_H */

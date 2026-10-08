@@ -2673,15 +2673,22 @@ Black/TempleRoomAddText.cpp:
 	.text       start:0x0079A880 end:0x0079CCE0
 	.rdata      start:0x0099EEC4 end:0x0099EF24
 	.CRT$XCU    start:0x009C7C04 end:0x009C7C10 align:4
-	.data       start:0x00C2A324 end:0x00C2A67C
+	.data       start:0x00C2A324 end:0x00C2A358
 	.bss        start:0x00E36144 end:0x00E36150
 
+Black/UniverseRoom.cpp:
+	.text       start:0x0079CCE0 end:0x0079D110
+	.rdata      start:0x0099EF24 end:0x0099EF74
+	.CRT$XCU    start:0x009C7C10 end:0x009C7C1C align:4
+	.data       start:0x00C2A358 end:0x00C2A474
+	.bss        start:0x00E36150 end:0x00E36158
+
 Black/WorldRoom.cpp:
-	.text       start:0x0079CCE0 end:0x0079F910
-	.rdata      start:0x0099EF24 end:0x0099EF80
-	.CRT$XCU    start:0x009C7C10 end:0x009C7C80 align:4
-	.data       start:0x00C2A67C end:0x00C2A6A0
-	.bss        start:0x00E36150 end:0x00E3A168
+	.text       start:0x0079D140 end:0x0079F940
+	.rdata      start:0x0099EF74 end:0x0099F00C
+	.CRT$XCU    start:0x009C7C20 end:0x009C7C30 align:4
+	.data       start:0x00C2A478 end:0x00C2A788
+	.bss        start:0x00E36158 end:0x00E3A1B4
 
 Lionhead/LH3DLib/development/LH3DP3.cpp:
 	.text       start:0x007A1480 end:0x007AD230

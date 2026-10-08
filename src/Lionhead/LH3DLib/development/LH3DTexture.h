@@ -10,15 +10,26 @@ enum TextureFormat
 	_TextureFormat__COUNT = 0x1
 };
 
+enum LH3D_TEXTURE_TYPE
+{
+	LH3D_TEXTURE_TYPE_SYSTEM_MEMORY = 0x4,
+	LH3D_TEXTURE_TYPE_NAMED = 0x8,
+};
+
+struct LH3DVRAMTex;
+
 struct LH3DTexture
 {
 	// BW1W120 00edd470
-	static int    g_b_use_low_res;
+	static int g_b_use_low_res;
+	// BW1W120 00edd460 BW1M119 013404d0 (LHCombined Release)
+	static LH3DTexture* g_first;
+
 	uint32_t      field_0x0;
-	uint32_t      field_0x4;
+	LH3DVRAMTex*  VRAMTex;
 	uint32_t      field_0x8;
 	LH3DTexture*  next;
-	uint32_t      field_0x10;
+	uint32_t      Flags;
 	TextureFormat format;
 	uint32_t      id;
 	uint8_t       field_0x1c[0x104];
@@ -28,7 +39,7 @@ struct LH3DTexture
 	uint32_t      MaskCollide;
 	uint32_t      field_0x130;
 	void*         field_0x134;
-	uint32_t      field_0x138;
+	uint32_t      ReloadPending;
 
 	// Static methods
 
@@ -43,6 +54,10 @@ struct LH3DTexture
 
 	// BW1W120 00837d40 BW1M119 010c9130 (LHCombined Release)
 	void Release();
+	// BW1W120 00838430 BW1M119 010c8e30 (LHCombined Release)
+	void YouLostYourVRAM();
+	// BW1W120 inlined BW1M119 010107b0 (LHCombined Release)
+	uint32_t GetType() { return Flags & 0x3f; }
 };
 
 #endif /* BW1_DECOMP_LH3D_TEXTURE_INCLUDED_H */

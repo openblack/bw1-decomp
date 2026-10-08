@@ -18,7 +18,7 @@ public:
 	// Static methods
 
 	// BW1W120 007f9d60 BW1M119 01029300 (LHCombined Release)
-	void SetDrawWithGlobalAlpha(int value);
+	void __fastcall SetDrawWithGlobalAlpha(int value);
 	// BW1W120 007f9fb0 BW1M119 0100bff0 (LHCombined Release)
 	bool32_t __fastcall GetDoorPos(LHPoint* out_point) const;
 

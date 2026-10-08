@@ -29,4 +29,7 @@ public:
 	CreatureRoom();
 };
 
+// BW1W120 007867b0 BW1M119 0128b2e0
+void ApplyCitadelColoring(unsigned long& colour, unsigned long& specular);
+
 #endif /* BW1_DECOMP_CREATURE_ROOM_INCLUDED_H */
