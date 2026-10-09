@@ -273,7 +273,7 @@ bool LHMail::SavePersonalAddressBook(char* address_book)
 	length = strlen(AddressBookSignature) + 1 + ContactList.count * sizeof(LHMailContacts);
 	data = new char[length + 10];
 	encoded = NULL;
-	strcpy(data, AddressBookSignature);
+	memcpy(data, AddressBookSignature, strlen(AddressBookSignature) + 1);
 	out = data + strlen(AddressBookSignature) + 1;
 	for (node = ContactList.GetStart(); node != NULL; node = node->next.Get())
 	{

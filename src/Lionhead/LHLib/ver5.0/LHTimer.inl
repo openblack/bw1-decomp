@@ -34,8 +34,8 @@ inline void LHTimer::Stop()
 
 inline int LHTimer::MSeconds()
 {
-	// Subtract ticks before conversion to preserve unsigned wraparound.
-	return (int)((GetTickCount() - TickCount) * SpeedUpFactor + (uint32_t)ElapsedTime);
+	unsigned long ticks = GetTickCount() - TickCount;
+	return ticks * SpeedUpFactor + (uint32_t)ElapsedTime;
 }
 
 inline float LHTimer::GetSpeedUpFactor()

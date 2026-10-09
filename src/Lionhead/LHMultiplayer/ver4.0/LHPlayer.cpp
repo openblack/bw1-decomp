@@ -5,6 +5,7 @@
 #include <string.h>
 #include <wchar.h>
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
 #include "LHNetErrors.h"
 
 inline unsigned char* LHNetEncodeULONG(unsigned char* buffer, unsigned long value)
@@ -193,8 +194,8 @@ LH_RETURN LHPlayer::CopyPlayerList(LHLinkedList<LHPlayer*>* destination, LHLinke
 	destination->DeleteAll();
 	if (source != NULL)
 	{
-		for (LHLinkedNode<LHPlayer*>* node = source->GetStart(); node != NULL; node = node->next.Get())
-			destination->Add(new LHPlayer(node->payload));
+		for (LHLinkedListIterator<LHPlayer*> it = source->GetStart(); it; it++)
+			destination->Add(new LHPlayer(it.Get()));
 	}
 	return LH_OK;
 }
