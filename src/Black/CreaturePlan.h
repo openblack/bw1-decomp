@@ -32,7 +32,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 00473b70 BW1M119 0127c5c0
+	// BW1W120 004f12d0 BW1M119 0127c5c0
 	virtual ~CreaturePlan();
 
 	// Constructors

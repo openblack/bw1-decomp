@@ -114,6 +114,8 @@ struct LHMatrix
 	// Inliner IL size: <= 40, always inlined and never charged
 	// BW1W120 inlined BW1M119 01043dd0
 	const LHPoint& GetPos() const { return *(const LHPoint*)&m[9]; }
+	// BW1W120 inlined BW1M119 01099510
+	LHPoint& GetVectorX() const { return *(LHPoint*)&m[0]; }
 	// BW1W120 inlined BW1M119 010995c0
 	LHPoint& GetVectorY() const { return *(LHPoint*)&m[3]; }
 	// BW1W120 inlined BW1M119 01099540
@@ -231,15 +233,17 @@ struct LHMatrix
 	void __fastcall PostMultiplyMatrixOnly(const LHMatrix& r);
 	// BW1W120 007fab30 BW1M119 0100ee90 (LHCombined Release)
 	void GetYXZ(float* y, float* x, float* z) const;
+	// BW1W120 007fb5c0 BW1M119 01022550 (LHCombined Release)
+	void NormaliseMatrixOnly();
 	// BW1W120 007fac10 BW1M119 01032770 (LHCombined Release)
 	void SetYXZMatrixOnly(float y, float x, float z);
 	// Inliner IL size: 183
 	// BW1W120 inlined BW1M119 inlined
 	LHPoint operator*(const LHPoint& point) const
 	{
-		return LHPoint(point.z * m[6] + point.y * m[3] + point.x * m[0] + m[9],
-		               point.z * m[7] + point.y * m[4] + point.x * m[1] + m[10],
-		               point.z * m[8] + point.y * m[5] + point.x * m[2] + m[11]);
+		return LHPoint(point.x * m[0] + point.y * m[3] + point.z * m[6] + m[9],
+		               point.x * m[1] + point.y * m[4] + point.z * m[7] + m[10],
+		               point.x * m[2] + point.y * m[5] + point.z * m[8] + m[11]);
 	}
 	// Inliner IL size: 180
 	// BW1W120 00418a50 BW1M119 0102a970

@@ -60,18 +60,23 @@ struct CAnim
 	CAnim();
 	// BW1W120 0085e4c0 BW1M119 0112eff0 (LHCombined Release)
 	CAnim(CAnim* param_2);
+	// BW1W120 0085e9d0 BW1M119 01096f70 (LHCombined Release)
+	CAnim(CAnim* param_2, CFrame* param_3, CAnim* param_4, CFrame* param_5, float param_6);
 	// BW1W120 0085ef40 BW1M119 010b9180 (LHCombined Release)
 	CAnim(CAnim* param_2, CFrame* param_3, CAnim* param_4, CFrame* param_5, float param_6, CAnim* param_7,
 	      CFrame* param_8, float param_9);
 
 	// Non-virtual methods
 
-	// BW1W120 0085e4a0 BW1M119 011299e0 (LHCombined Release)
+	// BW1W120 0085e490 BW1M119 011299e0 (LHCombined Release)
 	~CAnim();
 	// BW1W120 00861a00 BW1M119 010fbf90 (LHCombined Release)
 	void AdjustForNewBasedOnStand(CAnim* param_2, CAnim* param_3);
 	// BW1W120 00860860 BW1M119 010950e0 (LHCombined Release)
 	void ReadBinary(LHFile* file);
+	// BW1W120 00860e00 BW1M119 01031bd0 (LHCombined Release)
+	void FillBuffer(LHMatrix* buffer, LH3DMesh* mesh, LHMatrix* param_3, LHMatrix* param_4, long time, CFrame* frame,
+	                long* param_7, int param_8);
 };
 
 struct LH3DAnimSet
@@ -190,8 +195,12 @@ struct LH3DAnim
 		}
 		return AnimPack->Anims[0];
 	}
+	// BW1W120 0083a0e0 BW1M119 0113e8f0 (LHCombined Release)
+	static void GetGraspPoint(LHMatrix* matrices, LH3DMesh* mesh, LHPoint& point, long bone);
 	// BW1W120 0083a1d0 BW1M119 01129510 (LHCombined Release)
 	static float SetTransform(LHMatrix* param_1, LH3DMesh* param_2, LHMatrix* param_3);
+	// BW1W120 00839f10 BW1M119 0101e440 (LHCombined Release)
+	static void FinishTransform(LHMatrix* buffer, LH3DMesh* mesh, LHMatrix& matrix);
 	// BW1W120 0083aa30 BW1M119 01128810 (LHCombined Release)
 	static void CreatePack();
 

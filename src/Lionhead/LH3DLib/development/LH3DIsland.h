@@ -95,6 +95,16 @@ public:
 	                                                       unsigned long* specular);
 	// BW1W120 00803630 BW1M119 0101c2c0 (LHCombined Release)
 	static void __fastcall GetNormal(const LH3DMapCoords& coords, LHPoint* normal);
+	// BW1W120 00801c90 BW1M119 0102a1a0 (LHCombined Release)
+	static void GetColorAndSpecular(const LHPoint* pos, unsigned long* color, unsigned long* specular);
+	// BW1W120 007feb30 BW1M119 01026a30 (LHCombined Release)
+	static unsigned long GetFogValue(const LHPoint* pos, unsigned long specular, unsigned long* color);
+	// BW1W120 inlined BW1M119 01049370
+	static void GetColorAndSpecularWithFog(const LHPoint* pos, unsigned long* color, unsigned long* specular)
+	{
+		GetColorAndSpecular(pos, color, specular);
+		*specular = GetFogValue(pos, *specular, color);
+	}
 	// BW1W120 00802550 BW1M119 01019660 (LHCombined Release)
 	static bool32_t __fastcall RayCast(const LHPoint& from, const LHPoint& to, float* x, float* z);
 	// BW1W120 00800c30 BW1M119 01018fc0 (LHCombined Release)
@@ -112,18 +122,8 @@ public:
 		LH3DMapCoords coords(pos.x, pos.z);
 		GetNormal(coords, normal);
 	}
-	// BW1W120 00801c90 BW1M119 0102a1a0 (LHCombined Release)
-	static void GetColorAndSpecular(const LHPoint* pos, unsigned long* color, unsigned long* specular);
 	// BW1W120 00802120 BW1M119 01026d00 (LHCombined Release)
 	static void GetColorAndSpecular(const LH3DMapCoords& coords, unsigned long* color, unsigned long* specular);
-	// BW1W120 007feb30 BW1M119 01026a30 (LHCombined Release)
-	static unsigned long GetFogValue(const LHPoint* pos, unsigned long specular, unsigned long* color);
-	// BW1W120 inlined BW1M119 01049370
-	static void GetColorAndSpecularWithFog(const LHPoint* pos, unsigned long* color, unsigned long* specular)
-	{
-		GetColorAndSpecular(pos, color, specular);
-		*specular = GetFogValue(pos, *specular, color);
-	}
 };
 
 #endif /* BW1_DECOMP_LH3D_ISLAND_INCLUDED_H */

@@ -53,7 +53,7 @@ public:
 	Creature*         creature;
 	LH3DCreature*     Creature3d;
 	CreatureDamageMap DamageMap;
-	uint8_t*          field_0x6c;
+	float             field_0x6c;
 	uint32_t          field_0x70;
 
 	// Override methods

@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/Enum.h> /* For enum MAGIC_TYPE */
+
 #include "Fixed.h"            /* For struct Fixed */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
@@ -57,6 +59,8 @@ public:
 	Creature* GetCreature(unsigned long index) { return Creatures[index]; }
 	// BW1W120 00425060 BW1M119 010ae4c0
 	bool32_t IsCreatureInArena(Creature* creature);
+	// BW1W120 004250a0 BW1M119 010ae470
+	void SetSpellSelection(MAGIC_TYPE type, Creature* creature, bool param_3);
 };
 
 class ArenaSpellIcon : public Fixed

@@ -12,6 +12,7 @@
 
 class Base;
 struct HandFX;
+class LH3DCreature;
 struct LHMatrix;
 struct LHPoint;
 
@@ -22,6 +23,14 @@ public:
 
 	// BW1W120 0068e120 BW1M119 01415fa0
 	void DrawAt(const LHMatrix& matrix, float scale);
+};
+
+struct HandGlows
+{
+	// BW1W120 0068e260 BW1M119 01415e00
+	void Release();
+	// BW1W120 0068e430 BW1M119 01415510
+	void Draw(LH3DCreature* creature);
 };
 
 class PSysHandFX

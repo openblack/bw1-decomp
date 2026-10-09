@@ -8,6 +8,7 @@
 
 // Forward Declares
 
+struct LH3DMaterial;
 struct LH3DObjectHair;
 struct LHMatrix;
 
@@ -18,15 +19,15 @@ public:
 	uint32_t*          field_0x84;
 	LH3DObjectHair*    hair;
 	uint32_t           field_0x8c;
-	uint32_t           field_0x90;
-	uint32_t           field_0x94;
-	uint32_t           field_0x98;
-	uint32_t           field_0x9c;
-	uint32_t           field_0xa0;
+	LH3DMaterial*      FrozMaterial;
+	float              FrozAmount;
+	uint32_t           FrozParam;
+	LH3DMaterial*      FizzMaterial;
+	float              FizzAmount;
 	uint32_t           field_0xa4;
 	uint32_t           field_0xa8;
 	uint32_t           field_0xac;
-	LH3DComplexObject* next; /* 0xb0 */
+	LH3DComplexObject* next;
 	uint32_t           field_0xb4;
 	uint32_t           field_0xb8;
 	uint32_t           field_0xbc;

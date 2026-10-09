@@ -104,6 +104,11 @@ public:
 	// BW1W120 006e6f70 BW1M119 011461c0
 	Rock(const MapCoords& coords, const GMobileStaticInfo* info, Object* param_3, GPlayer* param_4, float param_5,
 	     float param_6);
+
+	// Non-virtual methods
+
+	// BW1W120 006e7560 BW1M119 01145650
+	void SplitInTwo();
 };
 
 #endif /* BW1_DECOMP_ROCK_INCLUDED_H */

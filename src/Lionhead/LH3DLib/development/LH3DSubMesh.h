@@ -22,7 +22,7 @@ struct LH3DSubMesh
 	// BW1W120 0087fa00 BW1M119 010bb180 (LHCombined Release)
 	static void Create(const uint8_t* buffer, LH3DSubMesh* submesh);
 	// BW1W120 0087fb20 BW1M119 010bb010 (LHCombined Release)
-	static void ComputeBoundingBox(LH3DSubMesh* this, LHPoint* maxima, LHPoint* minima, int* initialized);
+	static void ComputeBoundingBox(LH3DSubMesh* submesh, LHPoint* maxima, LHPoint* minima, int* initialized);
 };
 
 #endif /* BW1_DECOMP_LH3D_SUB_MESH_INCLUDED_H */

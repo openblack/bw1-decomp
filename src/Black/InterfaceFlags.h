@@ -9,7 +9,9 @@
 class GInterfaceFlags : public Base
 {
 public:
-	uint8_t  field_0x8;
+	uint8_t  field_0x8_0 : 5;
+	uint8_t  WaitForGive : 1;
+	uint8_t  field_0x8_6 : 2;
 	uint8_t  Select : 1;
 	uint8_t  Apply : 1;
 	uint8_t  field_0x9_2 : 6;
@@ -31,6 +33,8 @@ public:
 	bool32_t IsSelect() const { return Select == 1; }
 	// BW1W120 inlined BW1M119 01088790
 	bool32_t IsApply() const { return Apply == 1; }
+	// BW1W120 inlined BW1M119 011f7580
+	void ClearWaitForGive() { WaitForGive = 0; }
 
 	// Override methods
 
