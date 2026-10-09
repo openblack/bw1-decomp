@@ -41,6 +41,8 @@ struct GGlobal
 
 	// Non-virtual methods
 
+	// BW1W120 00591010 BW1M119 01335780
+	void AddPlayerTextMessage(long player, char* text);
 	// BW1W120 005910f0 BW1M119 013353e0
 	void DisplayPlayerTextMessages();
 };

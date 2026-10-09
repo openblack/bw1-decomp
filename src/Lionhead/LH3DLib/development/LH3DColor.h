@@ -43,6 +43,8 @@ struct LH3DColor
 	// BW1W120 inlined BW1M119 01352630
 	// fabricated
 	void operator=(const LH3DColor& other) { *(uint32_t*)this = *(uint32_t*)&other; }
+	// BW1W120 inlined BW1M119 0101f500 (LHCombined Release)
+	uint32_t GetColor() { return *(uint32_t*)this; }
 };
 
 #endif /* BW1_DECOMP_LH3D_COLOR_INCLUDED_H */

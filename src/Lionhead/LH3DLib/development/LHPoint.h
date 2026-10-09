@@ -122,6 +122,13 @@ struct LHPoint
 		z *= rhs;
 		return *this;
 	}
+	// BW1W120 inlined BW1M119 inlined
+	void operator+=(const LHPoint& other)
+	{
+		x += other.x;
+		y += other.y;
+		z += other.z;
+	}
 	// BW1W120 0044ea40 BW1M119 010c8ba0 (LHCombined Release)
 	void Add(const LHPoint& other)
 	{
@@ -159,6 +166,8 @@ struct LHPoint
 	}
 	// BW1W120 0044e9f0 BW1M119 01043e70
 	LHPoint operator*(float rhs) const { return LHPoint(x * rhs, y * rhs, z * rhs); }
+	// BW1W120 inlined BW1M119 010ef580
+	float operator*(const LHPoint& other) const { return x * other.x + y * other.y + z * other.z; }
 	// BW1W120 inlined BW1M119 inlined
 	LHPoint operator+(const LHPoint& rhs) const { return LHPoint(x + rhs.x, y + rhs.y, z + rhs.z); }
 	// BW1W120 0044cf90 BW1M119 01043e00
@@ -191,6 +200,20 @@ struct LHPoint
 		x = _x;
 		y = _y;
 		z = _z;
+	}
+	// BW1W120 inlined BW1M119 01032ed0
+	void Set(const LHPoint& other)
+	{
+		x = other.x;
+		y = other.y;
+		z = other.z;
+	}
+	// BW1W120 inlined BW1M119 0103a610
+	void Set(const LHPoint* other)
+	{
+		x = other->x;
+		y = other->y;
+		z = other->z;
 	}
 	// BW1W120 inlined BW1M119 0101b360
 	void SetNull()

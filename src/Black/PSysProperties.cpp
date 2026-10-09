@@ -1797,7 +1797,7 @@ static std::string EmptyString()
 #else
 static void EmptyString()
 {
-	std::string text;
+	std::string text[2];
 }
 #endif
 

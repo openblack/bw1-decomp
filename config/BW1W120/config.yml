@@ -6,6 +6,10 @@ symbols: config/BW1W120/symbols.txt
 splits: config/BW1W120/splits.txt
 
 block_relocations:
+# Text in Creature3D.cpp's .data that reads as code addresses: "tic" of PhysicalActionNames' "StartStatic" and
+# "l3d" of "Data\eyelid.l3d".
+  - source: 0x009D077C
+  - source: 0x009D1148
 # Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate, like SetupColourPicker's.
   - source: 0x00403267
 # WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
@@ -23,6 +27,8 @@ block_relocations:
   - source: 0x009CB794
   - source: 0x009CB7F8
   - source: 0x009CB864
+# The script keyword "..._DEPTH" ends in "PTH\0", which reads as 0x00485450, inside LH3DCreature::StateSwitch.
+  - source: 0x00C34C5C
 # GatheringInterface: player colour 0xafefff and special user IDs 9999998..10000015 are immediates.
   - source: 0x00573F19
   - source: 0x00573F21
@@ -62,6 +68,188 @@ block_relocations:
   - source: 0x009CD8FC
 
 add_relocations:
+# LH3DCreature::StateAction's jump table (dtk misses it): one entry per case block.
+  - source: 0x0048752C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x49
+  - source: 0x00487530
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x55
+  - source: 0x00487534
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x61
+  - source: 0x00487538
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x23E
+  - source: 0x0048753C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x2EE
+  - source: 0x00487540
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x337
+  - source: 0x00487544
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x5AD
+  - source: 0x00487548
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x8C8
+  - source: 0x0048754C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x960
+  - source: 0x00487550
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x960
+  - source: 0x00487554
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x97A
+  - source: 0x00487558
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x97A
+  - source: 0x0048755C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x9FE
+  - source: 0x00487560
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA0A
+  - source: 0x00487564
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA46
+  - source: 0x00487568
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x96E
+  - source: 0x0048756C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA46
+  - source: 0x00487570
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x954
+  - source: 0x00487574
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA16
+  - source: 0x00487578
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA22
+  - source: 0x0048757C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA2E
+  - source: 0x00487580
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA3A
+  - source: 0x00487584
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x37A
+  - source: 0x00487588
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x893
+  - source: 0x0048758C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x9D5
+  - source: 0x00487590
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x90B
+  - source: 0x00487594
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x8B
+  - source: 0x00487598
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xE0
+  - source: 0x0048759C
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x437
+  - source: 0x004875A0
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x24A
+  - source: 0x004875A4
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA52
+  - source: 0x004875A8
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA52
+  - source: 0x004875AC
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x8B
+  - source: 0x004875B0
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x1F5
+  - source: 0x004875B4
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0x299
+  - source: 0x004875B8
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA93
+  - source: 0x004875BC
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xAD6
+  - source: 0x004875C0
+    type: x86_abs32
+    target: '?StateAction@LH3DCreature@@QAEXXZ'
+    addend: 0xA9C
+# LH3DCreature::UpdateMotion's second jump table (dtk misses it).
+  - source: 0x00491164
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x265
+  - source: 0x00491168
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x274
+  - source: 0x0049116C
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x2B3
+  - source: 0x00491170
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x2C8
+  - source: 0x00491174
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x2D8
+  - source: 0x00491178
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x333
+  - source: 0x0049117C
+    type: x86_abs32
+    target: '?UpdateMotion@LH3DCreature@@QAEXXZ'
+    addend: 0x316
 # cl points vftable deleting-destructor slots at ??_E, a weak external that defaults to
 # ??_G; the image only shows the resolved ??_G address, which also carries a ??_E alias.
   - source: 0x00937F74

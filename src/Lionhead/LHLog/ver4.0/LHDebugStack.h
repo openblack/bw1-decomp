@@ -1,0 +1,9 @@
+#ifndef BW1_DECOMP_LH_DEBUG_STACK_INCLUDED_H
+#define BW1_DECOMP_LH_DEBUG_STACK_INCLUDED_H
+
+#include "LHLogger.h" /* For LH_LOG_API */
+
+// BW1W120 10002550 BW1M119 01171720 (LHCombined Release)
+LH_LOG_API char* GetCurrentStackString();
+
+#endif /* BW1_DECOMP_LH_DEBUG_STACK_INCLUDED_H */

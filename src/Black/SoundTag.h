@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint16_t, uint32_t */
 
 #include <chlasm/AudioSFX.h>                      /* For enum AUDIO_SFX_BANK_TYPE */
+#include <chlasm/LHSample.h>                      /* For enum LH_SAMPLE */
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
 
@@ -52,6 +53,12 @@ public:
 	static SoundTag* Create(GameThingWithPos* param_1, unsigned long param_2, bool param_3, unsigned long param_4,
 	                        unsigned long param_5, int param_6, int param_7, AUDIO_SFX_BANK_TYPE bank_type,
 	                        int param_9);
+	// BW1W120 0071ea40 BW1M119 0109dc20
+	static SoundTag* Create(const LHPoint& pos, unsigned long sample, bool param_3, unsigned long param_4,
+	                        unsigned long param_5, int param_6, int param_7, AUDIO_SFX_BANK_TYPE bank_type,
+	                        int param_9);
+	// BW1W120 0071ed40 BW1M119 010a05d0
+	static LH_SAMPLE GetRandomSample(LH_SAMPLE first, unsigned long count);
 
 	// Constructors
 

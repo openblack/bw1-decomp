@@ -24,6 +24,14 @@ class LHFile;
 struct LHMatrix;
 struct Morphable_field_0x4314_t;
 
+struct MorphableSoundEffect
+{
+	long field_0x0;
+	long Sound;
+	long Param;
+	bool Flag;
+};
+
 class Morphable : public DrawingObject
 {
 public:
@@ -43,38 +51,31 @@ public:
 	float                     Size1;
 	float                     Size2;
 	int                       CurrentMesh;
-	uint8_t                   field_0x9c;
-	uint8_t                   field_0x9d;
-	uint8_t                   field_0x9e;
-	uint8_t                   field_0x9f;
+	float                     EvilGood;
 	float                     field_0xa0;
-	uint8_t                   field_0xa4;
-	uint8_t                   field_0xa5;
-	uint8_t                   field_0xa6;
-	uint8_t                   field_0xa7;
+	float                     ThinFat;
 	float                     field_0xa8;
-	uint8_t                   field_0xac;
-	uint8_t                   field_0xad;
-	uint8_t                   field_0xae;
-	uint8_t                   field_0xaf;
+	float                     WeakStrong;
 	uint8_t                   field_0xb0;
 	uint8_t                   field_0xb1;
 	uint8_t                   field_0xb2;
 	uint8_t                   field_0xb3;
 	LH3DMesh*                 meshes[0x8];
-	Name                      names[0x8];    /* 0xd4 */
-	LH3DAnimSet               AnimSets[0x6]; /* 0x1d4 */
+	Name                      names[0x8];
+	LH3DAnimSet               AnimSets[0x6];
 	Morphable_field_0x4314_t* field_0x4314[0xe8];
-	uint8_t                   field_0x46b4[0x104];
+	MorphableSoundEffect      SoundEffects[16];
+	int                       NumSoundEffects;
 	int                       field_0x47b8;
-	uint8_t                   field_0x47bc[0x24];
-	float                     field_0x47e0;
-	uint8_t                   field_0x47e4[0xc];
-	LHMatrix*                 TransformedMatrices; /* 0x47f0 */
+	int                       field_0x47bc;
+	CAnim*                    CycleAnim[4];
+	long                      CycleTime[4];
+	float                     CycleWeight[4];
+	LHMatrix*                 TransformedMatrices;
 	LHMatrix*                 field_0x47f4;
 	LHMatrix*                 field_0x47f8;
 	CFrame*                   frame;
-	int32_t                   HairGroupCount; /* 0x4800 */
+	int32_t                   HairGroupCount;
 	HairGroup*                HairGroups[0x8];
 	uint32_t                  field_0x4824;
 	LH3DObjectHair*           L3dHairGroup;
@@ -98,6 +99,11 @@ public:
 	virtual uint32_t LoadBinary(char* filename, int param_1) = 0;
 	virtual uint32_t SaveBinary(char* filename) = 0;
 
+	// Destructor
+
+	// BW1W120 006171a0 BW1M119 01112650
+	~Morphable();
+
 	// Static methods
 
 	// BW1W120 006186b0 BW1M119 011109f0
@@ -119,6 +125,14 @@ public:
 	uint32_t LoadMesh(char* param_2, int param_3);
 	// BW1W120 006182f0 BW1M119 01110f20
 	void SetPos(const LHPoint& pos);
+	// BW1W120 00617970 BW1M119 01111d40
+	void CheckSounds(long anim, long old_time, long new_time);
+	// BW1W120 00617a10 BW1M119 01111c30
+	long AdvanceCyclic(long anim, long time, long delta);
+	// BW1W120 00617a80 BW1M119 01111b50
+	long AdvanceSimple(long anim, long time, long delta);
+	// BW1W120 00618c40 BW1M119 0107bcd0
+	void UpdateMorphing();
 	// BW1W120 00619650 BW1M119 01086c40
 	CAnim* GetAnim(long anim_index, long param_3);
 	// BW1W120 00619690 BW1M119 01086830
@@ -133,6 +147,14 @@ public:
 	float GetHeading() { return Heading; }
 	// BW1W120 inlined BW1M119 01231c70
 	float GetSize() { return Size1; }
+	// BW1W120 inlined BW1M119 012031e0
+	float GetEvilGood() { return EvilGood; }
+	// BW1W120 inlined BW1M119 01203220
+	float GetWeakStrong() { return WeakStrong; }
+	// BW1W120 inlined BW1M119 01203260
+	float GetThinFat() { return ThinFat; }
+	// BW1W120 inlined BW1M119 011effa0
+	LH3DMesh* GetMesh() { return meshes[CurrentMesh]; }
 };
 
 #endif /* BW1_DECOMP_MORPHABLE_INCLUDED_H */

@@ -195,7 +195,9 @@ public:
 	int(__cdecl* LoopCallback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t);
 	GameThingWithPos* HitObject;
 	GameThingWithPos* ObjectWhichHit;
-	uint8_t           field_0x78[0x1c];
+	uint8_t           field_0x78[0xc];
+	uint32_t          field_0x84;
+	uint8_t           field_0x88[0xc];
 	bool32_t          AlignmentMusic;
 	long              LastMusicLine;
 	long              LastMusicWord;

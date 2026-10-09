@@ -187,6 +187,8 @@ public:
 	void Cheat();
 	// BW1W120 005d0690 BW1M119 0135ffe0
 	bool32_t IsLeaderInterface();
+	// BW1W120 005da100 BW1M119 013725b0
+	uint32_t ApplyChangesToHand(uint32_t ret, Object* object, const MapCoords* coords);
 };
 
 // LHReleasedOSFile already includes its 0x104-byte filename storage.

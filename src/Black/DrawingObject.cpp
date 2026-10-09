@@ -1695,8 +1695,8 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool draw_now, bool sele
 			case CREATURE_RECEIVE_SPELL_FREEZE:
 				LH3DIsland::GetColorAndSpecularWithFog(&Game3dObject->matrix.GetPos(), &Game3dObject->color,
 				                                       &Game3dObject->specular);
-				Game3dObject->DrawFroz_2(pulse, RGB_MAKE(53, 79, 141),
-				                         GlobalTextures::GetFrozMaterial(GlobalTextures::FROZ_MAT_TYPE_0));
+				Game3dObject->DrawFroz(pulse, RGB_MAKE(53, 79, 141),
+				                       GlobalTextures::GetFrozMaterial(GlobalTextures::FROZ_MAT_TYPE_0));
 				break;
 			case CREATURE_RECEIVE_SPELL_BIG:
 				Game3dObject->color &= 0xFFFFFF;

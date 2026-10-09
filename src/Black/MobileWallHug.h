@@ -203,6 +203,8 @@ public:
 	void SetGameAngle(uint16_t angle);
 	// BW1W120 0060f760 BW1M119 013c9790
 	void SetToZero();
+	// BW1W120 inlined BW1M119 01081600
+	uint16_t GetGameAngle() { return GameAngle; }
 };
 
 template <bool clockwise> struct MobileWallHug_InCircleStuff

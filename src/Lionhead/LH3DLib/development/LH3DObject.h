@@ -129,7 +129,7 @@ public:
 	virtual bool32_t            IsNeedSorting();
 	virtual void __fastcall     SetDrawWithGlobalAlpha(bool32_t value);
 	virtual bool32_t            IsDrawWithGlobalAlpha();
-	virtual void                SetLinked(int param_1); /* 0x50 */
+	virtual void __fastcall     SetLinked(int param_1);
 	virtual bool32_t            IsLinked();
 	virtual void __fastcall     SetDynamicLighting(int param_1);
 	virtual bool32_t            IsDynamicLighting();
@@ -158,7 +158,7 @@ public:
 	virtual bool32_t            IsInBuild();
 	virtual void                SetInBuild(int param_1);
 	virtual bool32_t            IsHumanShadowed(); /* 0xc0 */
-	virtual void                SetHumanShadowed(int param_1);
+	virtual void __fastcall     SetHumanShadowed(int param_1);
 	virtual bool32_t            IsGlowing();
 	virtual void                SetIsGlowing(int param_1);
 	virtual bool32_t            IsSuperSortedPolys(); /* 0xd0 */
@@ -194,12 +194,10 @@ public:
 	virtual void                DrawRefMapMT();
 	virtual void                DrawNormals();
 	virtual void                DrawJustPhys(); /* 0x150 */
-	// DrawFizz and DrawFroz are overload pairs; MSVC lays out overloads in reverse declaration order, so the
-	// versions with arguments come first on Windows (0x154 takes 8 bytes, 0x15c takes 12).
-	virtual void                DrawFizz_2(float param_1, LH3DMaterial* material);
-	virtual void                DrawFizz_1();
-	virtual void                DrawFroz_2(float param_1, uint32_t param_2, LH3DMaterial* material);
-	virtual void                DrawFroz_1(); /* 0x160 */
+	virtual void                DrawFizz();
+	virtual void                DrawFizz(float param_1, LH3DMaterial* material);
+	virtual void                DrawFroz();
+	virtual void                DrawFroz(float param_1, uint32_t param_2, LH3DMaterial* material);
 	virtual void                DrawTextureShadow(uint32_t param_1, uint32_t param_2);
 	virtual void                DrawTextureShadow32x32(void* param_1);
 	virtual void                DrawMorphLand();

@@ -42,9 +42,23 @@ public:
 
 	// BW1W120 008639e0 BW1M119 010a9040 (LHCombined Release)
 	RPFollow();
+	// BW1W120 00863a70 BW1M119 010a8fc0 (LHCombined Release)
+	~RPFollow();
 	// BW1W120 00863ac0 BW1M119 010a8ea0 (LHCombined Release)
 	void Init(int context, void(__cdecl* status)(int, int), void(__cdecl* movement)(int, float, float),
 	          float(__cdecl* range)(int), int mode);
+	// BW1W120 00863b00 BW1M119 010a8dd0 (LHCombined Release)
+	void SetPos(const Point2D& pos, float radius);
+	// BW1W120 00863b70 BW1M119 010a89e0 (LHCombined Release)
+	void SetDest(const Point2D& pos, float param_2, float param_3, float param_4, float param_5);
+	// BW1W120 00863ef0 BW1M119 010a8820 (LHCombined Release)
+	void StopMoving();
+	// BW1W120 00864040 BW1M119 010a85d0 (LHCombined Release)
+	void GameTurnUpdate(void(__cdecl* object_encountered)(int, int), int param_2);
+	// BW1W120 00864ba0 BW1M119 010a7630 (LHCombined Release)
+	void FillPosAndHeading(Point2D& pos, float& heading, float distance);
+	// BW1W120 00864990 BW1M119 010a7910 (LHCombined Release)
+	void MoveAlongRoute();
 };
 
 static_assert(offsetof(RPFollow, field_0x64060) == 0x64060, "RPFollow context offset is incorrect");

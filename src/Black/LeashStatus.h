@@ -14,6 +14,8 @@ class GPlayer;
 class GameOSFile;
 class Object;
 
+class Creature;
+
 class GLeashStatus : public GameThing
 {
 public:
@@ -44,6 +46,11 @@ public:
 	virtual void SaveExtraData(GameOSFile& param_1);
 	// BW1W120 005e7650 BW1M119 01382be0
 	virtual void ResolveLoad();
+
+	// Non-virtual methods
+
+	// BW1W120 005e6980 BW1M119 01384380
+	void CalculateLeashLengthFromCreature(Creature* creature);
 };
 
 #endif /* BW1_DECOMP_LEASH_STATUS_INCLUDED_H */

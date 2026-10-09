@@ -41,6 +41,8 @@ struct RPHolder
 
 	// win1.41 0083b330 mac 1061c58c RPHolder::Empty(void)
 	void Empty();
+	// BW1W120 0083b380 BW1M119 010aac90 (LHCombined Release)
+	void SearchRPSquare(int x, int z);
 	// BW1W120 0083b3e0 BW1M119 010aabb0 (LHCombined Release)
 	bool32_t SquareDoesNotContain(int object_id, int x, int z);
 	// BW1W120 0083b450 BW1M119 010aa7b0 (LHCombined Release)

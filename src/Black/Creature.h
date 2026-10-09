@@ -638,14 +638,34 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 004753f0 BW1M119 011e5db0
+	void CantFindRoute();
 	// BW1W120 00475730 BW1M119 011e57d0
 	void FinishActionUnsuccessfully(char* param_1, int param_2, int param_3);
+	// BW1W120 0047daa0 BW1M119 011d6590
+	bool32_t FindSuitableActionToRemoveObstacle(Object* object);
+	// BW1W120 0047d9a0 BW1M119 011d6740
+	void TrappedInEnclosedSpace(unsigned long num_objects, Object** objects);
 	// BW1W120 00477850 BW1M119 011e26b0
 	LH3DCreature* GetCreature3D();
 	// BW1W120 0047cce0 BW1M119 011d82c0
 	bool32_t IsConfinedToArea();
+	// BW1W120 00490950 BW1M119 011ec1c0
+	void SetInCreatureHand(Creature* creature);
+	// BW1W120 00490910 BW1M119 011ec210
+	bool32_t CanCurrentlyBePickedUp();
+	// BW1W120 00479040 BW1M119 011e0070
+	void ReceivedFightImpact(long param_1, float param_2, Creature* attacker);
+	// BW1W120 004f81f0 BW1M119 0128f7e0
+	void DestroySpell();
+	// BW1W120 004f7970 BW1M119 0128fd70
+	void CastSpellOnObject(MAGIC_TYPE type, Object* object, float param_3, int param_4);
+	// BW1W120 00476fa0 BW1M119 011e3550
+	void Faint();
 	// BW1W120 00479480 BW1M119 011df800
 	bool32_t HasFinishedBuildingHome();
+	// BW1W120 004cf060 BW1M119 01243630
+	GInterfaceStatus* GetInterfaceStatusLeashOn();
 	// BW1W120 004f82f0 BW1M119 0128f550
 	bool32_t HasEnoughEnergyToCastSpell(MAGIC_TYPE magic_type);
 	// BW1W120 004f8940 BW1M119 0128eaa0

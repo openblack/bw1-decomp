@@ -55,7 +55,7 @@ void Villager::CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos
 
 void Creature::CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos)
 {
-	float distance = physical->Creature3d->WalkSpeed;
+	float distance = physical->Creature3d->CurrentSpeed;
 	distance *= seconds;
 	float heading = physical->Creature3d->GetHeading();
 	outPos->x = (float)sin(heading) * distance;

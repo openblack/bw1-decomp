@@ -44,7 +44,7 @@ public:
 	static PhysicsObject* AddObject(Object* object, const LHPoint& velocity, const LHPoint& angular_velocity,
 	                                Object* thrower, GInterfaceStatus* status);
 	// BW1W120 00646a00 BW1M119 0111b470
-	static void RemoveObject(Object* object, bool param_2, bool param_3);
+	static Object* RemoveObject(Object* object, bool param_2, bool param_3);
 	// BW1W120 00644800 BW1M119 0111d080
 	static void RaiseUntilNotIntersecting(PhysicsObject** physics_object);
 
