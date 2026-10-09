@@ -7,6 +7,9 @@
 #include <re_common.h> /* For bool32_t */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
+#ifdef LH_MULTIPLAYER_EXPORTS
+class LHTimer;
+#endif
 #include <Lionhead/LHLib/ver5.0/LHTimer.h>
 #include "LHMultiplayerExport.h"
 #include "LHNetUser.h"            /* For LH_USER_ID */
@@ -22,9 +25,9 @@ public:
 	long                    LastHeardTime;                      /* 0x48 */
 	LHTransportInfo         ConnectionAcceptor;                 /* 0x4c */
 	LHTransportInfo         BroadcastListener;                  /* 0xc0 */
-	LH_USER_ID::CATEGORY    Category;                           /* 0x134 */
+	bool32_t                GameStarted;                        /* 0x134 */
 	LHLinkedList<LHPlayer*> Players;                            /* 0x138 */
-	bool32_t                GameStarted;                        /* 0x140 */
+	LH_USER_ID::CATEGORY    Category;                           /* 0x140 */
 
 #ifdef LH_MULTIPLAYER_EXPORTS
 	// BW1W120 10069468 BW1M119 01357824 (LHCombined Release)
@@ -62,8 +65,14 @@ public:
 	virtual void ClearObject();
 };
 static_assert(offsetof(LHLocalLobbyInfo, LastHeardTime) == 0x48, "LHLocalLobbyInfo time offset is incorrect");
-static_assert(offsetof(LHLocalLobbyInfo, Category) == 0x134, "LHLocalLobbyInfo category offset is incorrect");
+static_assert(offsetof(LHLocalLobbyInfo, Category) == 0x140, "LHLocalLobbyInfo category offset is incorrect");
 static_assert(sizeof(LHLocalLobbyInfo) == 0x144, "LHLocalLobbyInfo size is incorrect");
+
+struct LHChannelPlayerSystemInfo
+{
+	// BW1W120 10017990 BW1M119 01101ba0 (LHCombined Release)
+	~LHChannelPlayerSystemInfo();
+};
 
 // BW1W120 10018370 BW1M119 01106230 (LHCombined Release)
 LH_MULTIPLAYER_API LHLocalLobbyInfo* LHNetFindLocalLobby(LHLinkedList<LHLocalLobbyInfo*>* list,

@@ -39,6 +39,7 @@ enum
 enum
 {
 	LH_HTTP_CODE_OK = 200,
+	LH_HTTP_CODE_PARTIAL_CONTENT = 206,
 	LH_HTTP_CODE_MULTIPLE_CHOICES = 300,
 	LH_HTTP_CODE_BAD_REQUEST = 400,
 };
@@ -290,12 +291,16 @@ public:
 	// BW1W120 1000c400 BW1M119 010e59c0 (LHCombined Release)
 	LH_HTTP_STATUS HelperGetDocument(bool redirected);
 
+	// BW1W120 10001310
+	void SetTimeOut(unsigned long time_out) { TimeOut = time_out; }
 	// BW1W120 10001320
 	unsigned long GetTimeOut() { return TimeOut; }
 	// BW1W120 10001330
 	unsigned long GetReadSize() { return ReadSize; }
 	// BW1W120 10001340
 	unsigned long GetSendSize() { return SendSize; }
+	// BW1W120 10001350
+	void SetMaxForwardings(unsigned long max_forwardings) { MaxForwardings = max_forwardings; }
 	// BW1W120 10001360
 	unsigned long GetMaxForwardings() { return MaxForwardings; }
 };

@@ -25,8 +25,8 @@ struct LH_MULTIPLAYER_API LH_USER_ID
 	{
 		CATEGORY_NONE = 0,
 		CATEGORY_PLAYER = 1,
-		CATEGORY_LOBBY_SERVER = 2,
-		CATEGORY_SESSION_SERVER = 3,
+		CATEGORY_MESSAGE_SERVER = 2,
+		CATEGORY_LOBBY_SERVER = 3,
 		CATEGORY_GLOBAL_SERVER = 4
 	};
 
@@ -58,8 +58,8 @@ struct LH_MULTIPLAYER_API LH_USER_ID
 	// BW1W120 10001140
 	bool32_t IsServer()
 	{
-		return Category == CATEGORY_GLOBAL_SERVER || Category == CATEGORY_SESSION_SERVER ||
-		       Category == CATEGORY_LOBBY_SERVER;
+		return Category == CATEGORY_GLOBAL_SERVER || Category == CATEGORY_LOBBY_SERVER ||
+		       Category == CATEGORY_MESSAGE_SERVER;
 	}
 	// BW1W120 10001170
 	bool32_t IsGlobal() { return Category == CATEGORY_GLOBAL_SERVER; }
@@ -72,7 +72,8 @@ static_assert(sizeof(LH_USER_ID) == 0x4, "Data type is of wrong size");
 static LH_USER_ID LH_ALL_USERS(LH_ALL_USERS_ID);
 #endif
 
-class LHHttp;
+#include "LHHttp.h"
+
 class LHTransportInfo;
 
 enum LH_LOGIN_CHECK
@@ -87,40 +88,61 @@ enum LH_LOGIN_CHECK
 class LH_MULTIPLAYER_API LHNetUser
 {
 public:
-	LH_USER_ID id; /* 0x000 */
+	LH_USER_ID    id;          /* 0x000 */
+	unsigned long LoginValue1; /* 0x004 */
+	unsigned long LoginValue2; /* 0x008 */
 #ifdef VERSION_BW1W120
-	uint32_t       LoginValue1;                          /* 0x004 */
-	uint32_t       LoginValue2;                          /* 0x008 */
-	char           LoginText[LH_MAX_LOGIN_TEXT_LENGTH];  /* 0x00c */
+	char LoginText[LH_MAX_LOGIN_TEXT_LENGTH]; /* 0x00c */
+#endif
 	wchar_t        Name[LH_MAX_NAME_LENGTH + 1];         /* 0x070 */
 	char           Password[LH_MAX_PASSWORD_LENGTH + 1]; /* 0x0d2 */
-	uint32_t       LoginState;                           /* 0x104 */
+	LH_LOGIN_CHECK LoginState;                           /* 0x104 */
 	unsigned long  LoginDocumentSize;                    /* 0x108 */
 	unsigned long  LoginDocumentReceived;                /* 0x10c */
 	char*          LoginDocument;                        /* 0x110 */
 	LHHttp*        Http;                                 /* 0x114 */
 	unsigned short HttpResponseCode;                     /* 0x118 */
-#else
-	uint8_t field_0x4[0x8];
-	wchar_t Name[LH_MAX_NAME_LENGTH + 1];
+#ifndef VERSION_BW1W120
+	char LoginText[LH_MAX_LOGIN_TEXT_LENGTH];
 #endif
 
-	// BW1W120 10001390
+	// BW1W120 10001390 BW1M119 inlined
 	LHNetUser() { ClearAllData(); }
-	// BW1W120 10017ae0
-	~LHNetUser();
-	// BW1W120 100013b0
+	// BW1W120 100013b0 BW1M119 010dd1b0 (LHCombined Release)
 	LH_USER_ID GetID() { return id; }
-	// BW1W120 100013c0
+	// BW1W120 100013c0 BW1M119 010dd180 (LHCombined Release)
 	wchar_t* GetName() { return Name; }
-	// BW1W120 10017a50
+	// BW1W120 100013d0 BW1M119 inlined
+	bool32_t IsValid() { return id.IsValid(); }
+	// BW1W120 100013f0 BW1M119 inlined
+	void ChangeName(wchar_t* name) { SetUserDetails(name, NULL); }
+	// BW1W120 10001400 BW1M119 inlined
+	char* GetPassword() { return Password; }
+	// BW1W120 10001410 BW1M119 inlined
+	void ChangeID(unsigned long new_id) { id = new_id; }
+
+	// BW1W120 10017ae0 BW1M119 01103500 (LHCombined Release)
+	~LHNetUser();
+	// BW1W120 10017a50 BW1M119 01103650 (LHCombined Release)
 	void Logout();
-	// BW1W120 100182e0
+	// BW1W120 10017b10 BW1M119 011032b0 (LHCombined Release)
+	LH_RETURN Login(char* name, char* password);
+	// BW1W120 10017bf0 BW1M119 01102f20 (LHCombined Release)
+	LH_RETURN Login(char* name, char* password, LHTransportInfo* server);
+	// BW1W120 10017ec0 BW1M119 01102d50 (LHCombined Release)
+	LH_RETURN SendLogin(char* name, char* password, LHTransportInfo* server);
+	// BW1W120 10018110 BW1M119 011028e0 (LHCombined Release)
+	LH_LOGIN_CHECK CheckLogin();
+	// BW1W120 100182e0 BW1M119 01102720 (LHCombined Release)
 	LH_RETURN Login(LHNetUser* user, LH_USER_ID::CATEGORY category);
 
 private:
-	// BW1W120 10017a00
+	// BW1W120 10017a00 BW1M119 011036c0 (LHCombined Release)
 	void ClearAllData();
+	// BW1W120 10017a90 BW1M119 01103590 (LHCombined Release)
+	LH_RETURN SetUserDetails(wchar_t* name, char* password);
+	// BW1W120 10018010 BW1M119 01102b60 (LHCombined Release)
+	LH_RETURN ParseUserData(char* document, unsigned long* user_id);
 };
 #ifdef VERSION_BW1W120
 static_assert(sizeof(LHNetUser) == 0x11c, "Data type is of wrong size");

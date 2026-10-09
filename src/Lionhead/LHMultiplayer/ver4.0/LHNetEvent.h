@@ -17,6 +17,7 @@
 enum LH_NETEVENT_TYPE
 {
 	LH_NETEVENT_TYPE_NONE = 0,
+	LH_NETEVENT_TYPE_IGNORE = 1,
 
 	LH_NETEVENT_TYPE_REMOVE_CONNECTION = 1000,
 
@@ -130,6 +131,13 @@ template <class T> class LHDynamicQueue;
 class LH_MULTIPLAYER_API LHNetEvent
 {
 private:
+	// BW1W120 10001d90 BW1M119 0103f100 (LHCombined Release)
+	void ClearAllData()
+	{
+		Packet = NULL;
+		TickCount = -1;
+		UDPInfo.ClearAllData();
+	}
 	// BW1W120 10001dc0 BW1M119 inlined
 	LHNetEvent() { ClearAllData(); }
 
@@ -153,16 +161,6 @@ public:
 	static char* UserFileDirectory;
 #endif
 
-private:
-	// BW1W120 10001d90 BW1M119 0103f100 (LHCombined Release)
-	void ClearAllData()
-	{
-		Packet = NULL;
-		TickCount = -1;
-		UDPInfo.ClearAllData();
-	}
-
-public:
 	// BW1W120 10016220 BW1M119 010055d0 (LHCombined Release)
 	~LHNetEvent();
 
@@ -190,6 +188,16 @@ public:
 	}
 	// BW1W120 10001e70 BW1M119 010ed890 (LHCombined Release)
 	char* GetChannelName() { return (char*)GetDataPtr() + 1; }
+#ifdef LH_MULTIPLAYER_EXPORTS
+	// BW1W120 10001e80 BW1M119 null
+	static LHNetEvent* CreateSimple(long type, unsigned long length, void* data)
+	{
+		return CreateSimple((LH_NETEVENT_TYPE)type, LH_ALL_USERS, length, data);
+	}
+#else
+	// BW1W120 10001e80 BW1M119 null
+	static LHNetEvent* CreateSimple(long type, unsigned long length, void* data);
+#endif
 	// BW1W120 10001ea0 BW1M119 inlined
 	unsigned long GetTickCount() { return TickCount; }
 	// BW1W120 10001eb0 BW1M119 inlined
@@ -220,16 +228,6 @@ public:
 	static LHNetEvent* CreateFromEvent(LHNetEvent* net_event);
 	// BW1W120 10016370 BW1M119 0103ee80 (LHCombined Release)
 	static LHNetEvent* CreateSimple(LH_NETEVENT_TYPE type, LH_USER_ID user_id, unsigned long length, void* data);
-#ifdef LH_MULTIPLAYER_EXPORTS
-	// BW1W120 10001e80 BW1M119 null
-	static LHNetEvent* CreateSimple(long type, unsigned long length, void* data)
-	{
-		return CreateSimple((LH_NETEVENT_TYPE)type, LH_ALL_USERS, length, data);
-	}
-#else
-	// BW1W120 10001e80 BW1M119 null
-	static LHNetEvent* CreateSimple(long type, unsigned long length, void* data);
-#endif
 	// BW1W120 10016440 BW1M119 01101020 (LHCombined Release)
 	static LHNetEvent* __cdecl VCreate(LH_NETEVENT_TYPE type, LH_USER_ID user_id, ...);
 	// BW1W120 10016470 BW1M119 01100f20 (LHCombined Release)

@@ -56,6 +56,10 @@ struct LHMPServerStartInfo;
 
 class LH_MULTIPLAYER_API LHLobbyChannel : public LHChannel
 {
+private:
+	// BW1W120 10002930 BW1M119 inlined
+	LH_USER_ID GetUserID() { return ((LHConnection*)Lobby)->GetUserID(); }
+
 public:
 	LHLobby*         Lobby;                 /* 0x78 */
 	LHSession*       Session;               /* 0x7c */
@@ -92,8 +96,6 @@ public:
 	LHLobby* GetLobby() { return Lobby; }
 
 private:
-	// BW1W120 10002930 BW1M119 inlined
-	LH_USER_ID GetUserID();
 	// BW1W120 1000e790 BW1M119 010ec5d0 (LHCombined Release)
 	void ClearAllData();
 
@@ -371,11 +373,5 @@ public:
 static_assert(offsetof(LHLobby, Channels) == 0x94, "LHLobby channel list offset is incorrect");
 static_assert(offsetof(LHLobby, LastJoinEvent) == 0x104, "LHLobby join event offset is incorrect");
 static_assert(sizeof(LHLobby) == 0x114, "LHLobby size is incorrect");
-
-// BW1W120 10002930 BW1M119 inlined
-inline LH_USER_ID LHLobbyChannel::GetUserID()
-{
-	return Lobby->GetUserID();
-}
 
 #endif /* BW1_DECOMP_LH_LOBBY_INCLUDED_H */

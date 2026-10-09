@@ -17,9 +17,9 @@ enum LH_ACTIVITY_TYPE
 
 enum
 {
-	LH_SOCKET_TCP_WRITE_BUFFER_SIZE = 0x20004,
+	LH_SOCKET_TCP_COMPRESSION_BUFFER_SIZE = 0x20004,
 	LH_SOCKET_TCP_READ_BUFFER_SIZE = 0x10002,
-	LH_SOCKET_TCP_PACKET_BUFFER_SIZE = 0x20004,
+	LH_SOCKET_TCP_WRITE_BUFFER_SIZE = 0x20004,
 };
 
 class LH_MULTIPLAYER_API LHSocketTCP : public LHSocket
@@ -53,7 +53,7 @@ public:
 	// BW1W120 10021a20 BW1M119 01112060 (LHCombined Release)
 	virtual LH_RETURN ListenForBroadcastRequests(LHTransportInfo* transport_info);
 	// BW1W120 10021470 BW1M119 01112cd0 (LHCombined Release)
-	virtual LH_RETURN ReceiveUDPPacket(LHPacket** packet, unsigned long size, LHTransportInfo* transport_info);
+	virtual LH_RETURN ReceiveUDPPacket(LHPacket** packet, unsigned long timeout, LHTransportInfo* transport_info);
 
 	// BW1W120 10021500 BW1M119 01112bb0 (LHCombined Release)
 	static LH_RETURN sockaddr_inFromLHTransportInfo(sockaddr_in* address, LHTransportInfo* transport_info);
@@ -103,19 +103,22 @@ public:
 	// BW1W120 10009110
 	bool IsConnected() { return Socket != INVALID_SOCKET; }
 
-	char          WriteBuffer[LH_SOCKET_TCP_WRITE_BUFFER_SIZE];   /* 0x2c */
-	char          ReadBuffer[LH_SOCKET_TCP_READ_BUFFER_SIZE];     /* 0x20030 */
-	char*         ReadPointer;                                    /* 0x30034 */
-	char          PacketBuffer[LH_SOCKET_TCP_PACKET_BUFFER_SIZE]; /* 0x30038 */
-	char*         PacketStart;                                    /* 0x5003c */
-	char*         PacketEnd;                                      /* 0x50040 */
-	short         ReadPacketSize;                                 /* 0x50044 */
-	bool32_t      ReadPacketComplete;                             /* 0x50048 */
-	unsigned long LastReceiveTime;                                /* 0x5004c */
-	LHTimer       Timer;                                          /* 0x50050 */
-	void*         Signal;                                         /* 0x50160 */
-	bool          SignalCreated;                                  /* 0x50164 */
+	char           CompressionBuffer[LH_SOCKET_TCP_COMPRESSION_BUFFER_SIZE]; /* 0x2c */
+	char           ReadBuffer[LH_SOCKET_TCP_READ_BUFFER_SIZE];               /* 0x20030 */
+	char*          ReadPointer;                                              /* 0x30034 */
+	char           WriteBuffer[LH_SOCKET_TCP_WRITE_BUFFER_SIZE];             /* 0x30038 */
+	char*          WritePointer;                                             /* 0x5003c */
+	char*          SendPointer;                                              /* 0x50040 */
+	unsigned short ReadPacketSize;                                           /* 0x50044 */
+	bool32_t       ReadPacketComplete;                                       /* 0x50048 */
+	unsigned long  LastReceiveTime;                                          /* 0x5004c */
+	LHTimer        Timer;                                                    /* 0x50050 */
+	void*          Signal;                                                   /* 0x50160 */
+	bool           SignalCreated;                                            /* 0x50164 */
 };
 static_assert(sizeof(LHSocketTCP) == 0x50168, "LHSocketTCP size is incorrect");
+
+// BW1W120 10021d70 BW1M119 01111cf0 (LHCombined Release)
+LH_MULTIPLAYER_API char* GetIPAddress();
 
 #endif /* BW1_DECOMP_LH_SOCKET_TCP_INCLUDED_H */
