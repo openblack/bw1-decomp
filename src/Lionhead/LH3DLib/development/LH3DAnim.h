@@ -118,6 +118,15 @@ struct AnimInfo
 
 struct LH3DAnim;
 
+struct LH3DAnimSound
+{
+	uint32_t       field_0x0;
+	long           Frame;
+	long           Sound;
+	int            field_0xc;
+	LH3DAnimSound* Next;
+};
+
 struct LH3DAnimPack
 {
 	int       AnimCount; /* 0x0 */
@@ -126,42 +135,38 @@ struct LH3DAnimPack
 
 struct LH3DAnim
 {
-	ANM_Name name; /* 0x0 */
-	int      field_0x20;
-	uint8_t  field_0x24;
-	uint8_t  field_0x25;
-	uint8_t  field_0x26;
-	uint8_t  field_0x27;
-	float    field_0x28;
-	uint8_t  field_0x2c;
-	uint8_t  field_0x2d;
-	uint8_t  field_0x2e;
-	uint8_t  field_0x2f;
-	uint8_t  field_0x30;
-	uint8_t  field_0x31;
-	uint8_t  field_0x32;
-	uint8_t  field_0x33;
-	uint8_t  field_0x34;
-	uint8_t  field_0x35;
-	uint8_t  field_0x36;
-	uint8_t  field_0x37;
-	int      NumFrames;
-	int      field_0x3c;
-	uint8_t  field_0x40;
-	uint8_t  field_0x41;
-	uint8_t  field_0x42;
-	uint8_t  field_0x43;
-	uint8_t  field_0x44;
-	uint8_t  field_0x45;
-	uint8_t  field_0x46;
-	uint8_t  field_0x47;
-	uint32_t parents;
-	int**    ListPtrFrames;
-	uint16_t field_0x50;
-	uint16_t PackIndex1;
-	uint32_t CurrentTimeMaybe;
-	uint32_t field_0x58;
-	uint32_t PackIndex2;
+	ANM_Name       name; /* 0x0 */
+	int            field_0x20;
+	uint8_t        field_0x24;
+	uint8_t        field_0x25;
+	uint8_t        field_0x26;
+	uint8_t        field_0x27;
+	float          field_0x28;
+	uint8_t        field_0x2c;
+	uint8_t        field_0x2d;
+	uint8_t        field_0x2e;
+	uint8_t        field_0x2f;
+	uint8_t        field_0x30;
+	uint8_t        field_0x31;
+	uint8_t        field_0x32;
+	uint8_t        field_0x33;
+	uint8_t        field_0x34;
+	uint8_t        field_0x35;
+	uint8_t        field_0x36;
+	uint8_t        field_0x37;
+	int            NumFrames;
+	int            field_0x3c;
+	uint8_t        field_0x40;
+	uint8_t        field_0x41;
+	uint8_t        field_0x42;
+	uint8_t        field_0x43;
+	int            field_0x44;
+	LH3DAnimSound* Sounds; /* 0x48 */
+	int**          ListPtrFrames;
+	uint32_t       Flags; /* 0x50 */
+	uint32_t       CurrentTimeMaybe;
+	uint32_t       field_0x58;
+	uint32_t       PackIndex2;
 
 	// Static data
 
@@ -188,6 +193,10 @@ struct LH3DAnim
 
 	// BW1W120 0083a6a0 BW1M119 0101f950 (LHCombined Release)
 	int GetListPtrFrames();
+	// BW1W120 0083add0 BW1M119 01033790 (LHCombined Release)
+	int GetIndexInCache();
+	// BW1W120 inlined BW1M119 01018c60
+	uint32_t IsCyclic() const { return Flags & 0x100; }
 };
 
 #endif /* BW1_DECOMP_LH3D_ANIM_INCLUDED_H */

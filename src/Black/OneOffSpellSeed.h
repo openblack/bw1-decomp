@@ -20,14 +20,18 @@ class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 class LHOSFile;
+struct LHMatrix;
 struct MapCoords;
 class Object;
+class SpellSeedGraphic;
 
 class OneOffSpellSeed : public MobileObject
 {
 public:
-	SPELL_SEED_TYPE SeedType;
-	uint8_t         field_0x6c[0x10];
+	SPELL_SEED_TYPE         SeedType;
+	uint8_t                 field_0x6c[0x4];
+	LHPTR<SpellSeedGraphic> Graphic;
+	uint8_t                 field_0x74[0x8];
 
 	// Override methods
 
@@ -94,6 +98,12 @@ public:
 
 	// BW1W120 0072a5f0 BW1M119 0152fc00
 	const GSpellSeedInfo* GetSeedInfo() const;
+	// BW1W120 00518720 BW1M119 010cbdc0
+	void FaceCamera();
+	// BW1W120 0072a570 BW1M119 0152fc70
+	void UpdateFrame();
+	// BW1W120 0072a840 BW1M119 0152f5d0
+	void GetSpellGraphicPos(LHMatrix* matrix, float* scale);
 };
 
 #endif /* BW1_DECOMP_ONE_OFF_SPELL_SEED_INCLUDED_H */

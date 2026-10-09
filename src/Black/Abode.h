@@ -80,6 +80,11 @@ public:
 	uint8_t              Age;
 	uint32_t             resources[RESOURCE_TYPE_LAST];
 
+	// Static data
+
+	// BW1W120 00c4cc6c BW1M119 01a086bc
+	static Town* KnockedTown;
+
 	// Override methods
 
 	// BW1W120 00401650 BW1M119 01176c50

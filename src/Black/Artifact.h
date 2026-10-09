@@ -12,6 +12,7 @@ class Base;
 class Fixed;
 class GPlayer;
 class GameOSFile;
+class PlayerSymbolSprite;
 class Town;
 class Villager;
 class WorshipSite;
@@ -25,7 +26,8 @@ public:
 	LHListNode<TownArtifact> next;
 	GPlayer*                 Player;
 	float                    Value;
-	uint8_t                  field_0x2c[0x14];
+	uint8_t                  field_0x2c[0x10];
+	PlayerSymbolSprite*      Symbol;
 
 	// Override methods
 
@@ -69,6 +71,8 @@ public:
 	bool32_t WillImpress(WorshipSite* site);
 	// BW1W120 00426860 BW1M119 010b10e0
 	void Validate();
+	// BW1W120 0051c8e0 BW1M119 010c77b0
+	void Draw();
 };
 
 #endif /* BW1_DECOMP_ARTIFACT_INCLUDED_H */

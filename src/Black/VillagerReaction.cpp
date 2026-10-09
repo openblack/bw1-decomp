@@ -336,9 +336,8 @@ bool32_t Villager::LookToSeeIfItIsSafe()
 // BW1W120 007640a0 BW1M119 0159a610
 uint32_t Villager::NumGameTurnsToReactToPredatorFunction(GameThingWithPos* thing, uint32_t param_2, float param_3)
 {
-	VILLAGER_STATES state = GetFinalState();
-	if ((uint8_t)state != VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING &&
-	    (uint8_t)state != VILLAGER_STATE_LOOK_TO_SEE_IF_IT_IS_SAFE)
+	uint8_t state = GetFinalState();
+	if (state != VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING && state != VILLAGER_STATE_LOOK_TO_SEE_IF_IT_IS_SAFE)
 	{
 		return Living::NumGameTurnsToReactToPredatorFunction(thing, param_2, param_3);
 	}

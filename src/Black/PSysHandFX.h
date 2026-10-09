@@ -12,7 +12,17 @@
 
 class Base;
 struct HandFX;
+struct LHMatrix;
 struct LHPoint;
+
+class HandGlow
+{
+public:
+	// Non-virtual methods
+
+	// BW1W120 0068e120 BW1M119 01415fa0
+	void DrawAt(const LHMatrix& matrix, float scale);
+};
 
 class PSysHandFX
 {

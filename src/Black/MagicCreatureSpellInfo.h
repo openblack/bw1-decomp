@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/Enum.h> /* For enum CREATURE_RECEIVE_SPELL_TYPE */
+
 #include "MagicInfo.h" /* For struct GMagicInfo */
 
 // Forward Declares
@@ -17,7 +19,8 @@ struct MapCoords;
 class GMagicCreatureSpellInfo : public GMagicInfo
 {
 public:
-	uint8_t field_0x58[0x44];
+	CREATURE_RECEIVE_SPELL_TYPE SpellType;
+	uint8_t                     field_0x5c[0x40];
 
 	// Override methods
 
@@ -35,7 +38,7 @@ public:
 	// Non-virtual methods
 
 	// Out of line: LoadBinary at 0042dd10, Load at 0042dcb0.
-	INFO_DATA_BLOCK(field_0x58, field_0x58)
+	INFO_DATA_BLOCK(SpellType, field_0x5c)
 	INFO_DERIVED_LOADERS(GMagicInfo, "MagicCreatureSpellInfo.h", 19)
 };
 static_assert(sizeof(GMagicCreatureSpellInfo) == 0x9c, "Data type is of wrong size");

@@ -52,12 +52,14 @@ public:
 	static LHMatrix g_world_to_clipping;
 	// BW1W120 00ea1d28 BW1M119 012dc0b4 (LHCombined Release)
 	static LHMatrix g_world_to_camera;
+	// BW1W120 00ea9ea0 BW1M119 012dbff0 (LHCombined Release)
+	static LHMatrix* g_current_matrix;
 	// BW1W120 inlined BW1M119 010e7360
 	static float GetValueForZSorter(const LHPoint& point)
 	{
-		float x = point.x - g_camera.pos.x;
-		float y = point.y - g_camera.pos.y;
 		float z = point.z - g_camera.pos.z;
+		float y = point.y - g_camera.pos.y;
+		float x = point.x - g_camera.pos.x;
 		return x * x + y * y + z * z;
 	}
 	// Original Mac symbol: g_ambient_wind_direction__8LH3DTech.
@@ -70,12 +72,16 @@ public:
 	static void UpdateViewPort(long width, long height);
 	// BW1W120 00819390 BW1M119 01037930 (LHCombined Release)
 	static uint32_t __fastcall ProjectPoint(LHPoint* point, int* x, int* y, float* depth);
+	// BW1W120 008190d0 BW1M119 0100c5c0 (LHCombined Release)
+	static uint32_t __fastcall ProjectPoint(LHPoint* point, int* x, int* y);
 	// BW1W120 008195b0 BW1M119 01011be0 (LHCombined Release)
 	static void ChangeFov(float fov);
 	// BW1W120 00819690 BW1M119 01011e40 (LHCombined Release)
 	static void __fastcall UpdateWorldToCamera(LHMatrix& matrix, LHPoint& position, LHPoint& focus, bool param_4);
 	// BW1W120 inlined BW1M119 01095480
 	static uint32_t GetDeltaTime();
+	// BW1W120 inlined BW1M119 01038930
+	static int GetGameTimeInc() { return g_game_time_inc; }
 	// BW1W120 inlined BW1M119 01049620
 	static float GetNearClipping() { return g_info_transform.NearClip; }
 	// BW1W120 inlined BW1M119 inlined

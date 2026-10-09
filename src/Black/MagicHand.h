@@ -37,6 +37,8 @@ public:
 
 	// BW1W120 005fb040 BW1M119 01077ae0
 	Object* GetObjectFromHand() const;
+	// BW1W120 005faf80 BW1M119 01019fb0
+	void DrawContents() const;
 };
 
 #endif /* BW1_DECOMP_MAGIC_HAND_INCLUDED_H */

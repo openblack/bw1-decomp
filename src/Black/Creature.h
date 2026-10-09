@@ -35,20 +35,24 @@ class CreatureMental;
 class CreaturePhysical;
 class CreaturePlan;
 struct CreatureReceiveSpell;
+class CreatureSpeechItem;
 class Dance;
 struct EffectNumbers;
 class EffectValues;
 class GAlignment;
 class GArena;
+struct GatheringText;
 struct GCreatureInfo;
 class GInterfaceStatus;
 class GParticleContainer;
 class GPlayer;
+class HandGlow;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 class LH3DCreature;
 class LH3DObject;
+struct LH3DColor;
 struct LH3DSmoke;
 class LHOSFile;
 struct LHPoint;
@@ -244,14 +248,12 @@ public:
 	uint32_t                              field_0x120c;
 	uint32_t                              field_0x1210;
 	MapCoords                             field_0x1214;
-	uint32_t                              field_0x1220;
-	uint32_t                              field_0x1224;
+	LHLinkedList<LHPoint*>                field_0x1220;
 	uint8_t                               field_0x1228[0x40];
 	int                                   field_0x1268;
 	uint32_t                              field_0x126c;
 	uint32_t                              field_0x1270;
-	uint32_t                              field_0x1274;
-	uint32_t                              field_0x1278;
+	LHLinkedList<CreatureSpeechItem*>     SpeechItems;
 	Bubble*                               bubble;
 	uint32_t                              field_0x1280;
 	uint32_t                              field_0x1284;
@@ -625,6 +627,9 @@ public:
 	static void CopyDifferentCreatureInfoToCreatureInfo();
 	// BW1W120 004c48b0 BW1M119 01235350
 	static void ComputeActionIndices();
+	// BW1W120 00479670 BW1M119 011df1c0
+	static int __stdcall CreatureBubbleCallbackStub(int param_1, unsigned long user, LH3DColor* color, wchar_t** text,
+	                                                float* param_5, GatheringText** font);
 
 	// Constructors
 
@@ -637,6 +642,8 @@ public:
 	void FinishActionUnsuccessfully(char* param_1, int param_2, int param_3);
 	// BW1W120 00477850 BW1M119 011e26b0
 	LH3DCreature* GetCreature3D();
+	// BW1W120 0047cce0 BW1M119 011d82c0
+	bool32_t IsConfinedToArea();
 	// BW1W120 00479480 BW1M119 011df800
 	bool32_t HasFinishedBuildingHome();
 	// BW1W120 004f82f0 BW1M119 0128f550
@@ -893,7 +900,7 @@ public:
 class Creed : public MobileObject
 {
 public:
-	uint32_t field_0x68;
+	HandGlow* Glow;
 
 	// Constructors
 

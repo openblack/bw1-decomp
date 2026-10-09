@@ -13,6 +13,7 @@
 
 class Base;
 class GBaseInfo;
+class GMagicInfo;
 
 class GSpellSeedInfo : public GObjectInfo
 {
@@ -20,7 +21,9 @@ public:
 	GESTURE_TYPE Gesture;
 	uint8_t      field_0x104[0x20];
 	MAGIC_TYPE   MagicTypes[POWER_UP_TYPE_LAST + 1];
-	uint8_t      field_0x134[0x5c];
+	uint8_t      field_0x134[0x10];
+	float        DrawScale;
+	uint8_t      field_0x148[0x48];
 
 	// Static data
 
@@ -59,9 +62,11 @@ public:
 	MAGIC_TYPE GetFirstMagicType() const;
 	// BW1W120 0072af10 BW1M119 01536360
 	MAGIC_TYPE GetMagicType(GESTURE_TYPE gesture) const;
+	// BW1W120 0072af50 BW1M119 015362b0
+	GMagicInfo* GetMagicInfo(GESTURE_TYPE gesture) const;
 
 	// Out of line: LoadBinary at 0042f620, Load at 0042f5b0.
-	INFO_DATA_BLOCK(Gesture, field_0x134)
+	INFO_DATA_BLOCK(Gesture, field_0x148)
 	INFO_DERIVED_LOADERS(GObjectInfo, "SpellSeedInfo.h", 43)
 };
 

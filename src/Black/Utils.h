@@ -10,6 +10,7 @@
 
 class Abode;
 struct JustMapXZ;
+struct LH3DColor;
 struct LHPoint;
 struct MapCoords;
 
@@ -32,6 +33,13 @@ template <class T> inline T POWER(T value, unsigned long power)
 
 struct GUtils
 {
+	struct Circle
+	{
+		// BW1W120 0074eb40 BW1M119 015521d0
+		static void DrawCircleOnMap(const MapCoords& centre, float radius, const LH3DColor& color, float param_4,
+		                            int param_5);
+	};
+
 	// BW1W120 0074cca0 BW1M119 013d2a10
 	static void SetupUtils();
 	// BW1W120 0074ccb0 BW1M119 0104bfa0

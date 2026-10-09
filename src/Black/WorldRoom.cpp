@@ -101,7 +101,7 @@ static uint32_t UnusedStatic = 0;
 
 struct WorldRoomCounterPad
 {
-	static int Pad0, Pad1;
+	static int Pad0;
 };
 
 #define LIGHTEN_MARKER_COLOUR(colour)                                                                                  \
@@ -167,7 +167,7 @@ void WorldRoom::InitEngine()
 	WaterObject = LH3DObject::Create(LH3DObject::STATIC);
 	WaterObject->SetMesh(WaterMesh, NULL, NULL);
 	WaterObject->SetDynamicLighting(true);
-	WaterObject->SetPosition_1(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
+	WaterObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
 	Font = GatheringText::gamefont;
 	Map = new (WORLD_ROOM_SOURCE_FILE, 111) MiniMap;
 	Map->Init();
@@ -188,17 +188,17 @@ void WorldRoom::InitEngine()
 	CitadelIconObject = LH3DObject::Create(LH3DObject::STATIC);
 	CitadelIconObject->SetMesh(CitadelIconMesh, NULL, NULL);
 	CitadelIconObject->SetDynamicLighting(true);
-	CitadelIconObject->SetPosition_1(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
+	CitadelIconObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
 	CreatureIconMesh = LH3DMesh::CreateFromHD("data\\citadel\\icons\\I_creature_on_map.l3d", false);
 	CreatureIconObject = LH3DObject::Create(LH3DObject::STATIC);
 	CreatureIconObject->SetMesh(CreatureIconMesh, NULL, NULL);
 	CreatureIconObject->SetDynamicLighting(true);
-	CreatureIconObject->SetPosition_1(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
+	CreatureIconObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
 	ChallengeIconMesh = LH3DMesh::CreateFromHD("data\\citadel\\icons\\I_challenge_on_map.l3d", false);
 	ChallengeIconObject = LH3DObject::Create(LH3DObject::STATIC);
 	ChallengeIconObject->SetMesh(ChallengeIconMesh, NULL, NULL);
 	ChallengeIconObject->SetDynamicLighting(true);
-	ChallengeIconObject->SetPosition_1(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
+	ChallengeIconObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
 	camera->Close();
 	delete camera;
 	camera = new (WORLD_ROOM_SOURCE_FILE, 150) WorldRoomCamera;
@@ -318,7 +318,7 @@ void WorldRoom::DrawCitadel(bool glow)
 
 void MiniMap::DrawMarker(const LH3DColor& colour, LHPoint pos, LH3DObject* object, float angle, float scale)
 {
-	object->SetPosition_1(pos, angle, scale);
+	object->SetPosition(pos, angle, scale);
 	unsigned long marker_colour = *(unsigned long*)&colour | 0xff000000;
 	unsigned long specular = 0;
 	ApplyCitadelColoring(marker_colour, specular);
@@ -546,14 +546,14 @@ void WorldRoom::Draw()
 		0xffffff;
 
 	WaterObject->SetDrawWithGlobalAlpha(true);
-	WaterObject->SetPosition_1(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
+	WaterObject->SetPosition(LHPoint(0.0f, 0.0f, 0.0f), 0.0f, 1.0f);
 	WaterObject->SetColorSpecular(water_colour + (alpha << 24), *(unsigned long*)&Temple::CitadelSpecular);
 	WaterObject->SetNeedClipping(true);
 	WaterObject->SetAnimatedUV_1(-time * 0.01f, time * 0.007f);
 	WaterObject->Draw();
 
 	WaterObject->SetDrawWithGlobalAlpha(true);
-	WaterObject->SetPosition_1(LHPoint(0.0f, 0.05f, 0.0f), QUARTER_PI_F, 1.0f);
+	WaterObject->SetPosition(LHPoint(0.0f, 0.05f, 0.0f), QUARTER_PI_F, 1.0f);
 	WaterObject->SetColorSpecular(water_colour + ((255 - alpha) << 24), *(unsigned long*)&Temple::CitadelSpecular);
 	WaterObject->SetNeedClipping(true);
 	WaterObject->SetAnimatedUV_1(time * 0.01f, time * 0.005f);

@@ -9,14 +9,15 @@
 // Forward Declares
 
 class Creature;
+class CreatureBelief;
 class GameThingWithPos;
 
 class CreatureBeliefList : public Base
 {
 public:
-	uint32_t field_0x8;
-	uint32_t field_0xc;
-	uint32_t field_0x10;
+	CreatureBelief* Head;
+	uint32_t        field_0xc;
+	uint32_t        field_0x10;
 
 	// Override methods
 

@@ -49,6 +49,11 @@ public:
 
 	// BW1W120 00719ab0 BW1M119 0114e080
 	ShowNeeds(GameThingWithPos* game_thing);
+
+	// Non-virtual methods
+
+	// BW1W120 00719c10 BW1M119 0114dd20
+	void Draw();
 };
 
 #endif /* BW1_DECOMP_SHOW_NEEDS_INCLUDED_H */

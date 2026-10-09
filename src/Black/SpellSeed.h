@@ -25,7 +25,9 @@ class WorshipSite;
 class SpellSeed : public Object
 {
 public:
-	uint8_t field_0x54[0x4c];
+	uint8_t field_0x54[0x3c];
+	uint8_t field_0x90;
+	uint8_t field_0x91[0xf];
 
 	// Override methods
 

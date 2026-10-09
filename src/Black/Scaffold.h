@@ -26,11 +26,31 @@ class Object;
 class PhysicsObject;
 class Reaction;
 class Town;
+class Game3DObject;
+class PlannedAbode;
+
+enum PLANNED_TYPE
+{
+	PLANNED_TYPE_0 = 0x0,
+	PLANNED_TYPE_1 = 0x1,
+};
 
 class Scaffold : public MobileObject
 {
 public:
-	uint8_t field_0x68[0x34];
+	uint32_t      field_0x68;
+	PlannedAbode* field_0x6c;
+	PlannedAbode* field_0x70;
+	Game3DObject* field_0x74;
+	uint32_t      field_0x78;
+	uint32_t      field_0x7c;
+	float         field_0x80;
+	float         field_0x84;
+	uint16_t      field_0x88_0 : 1;
+	uint16_t      field_0x88_1 : 5;
+	uint16_t      WorkshopPosition : 2;
+	uint16_t      field_0x88_8 : 8;
+	uint8_t       field_0x8a[0x12];
 
 	// Override methods
 
@@ -128,8 +148,12 @@ public:
 
 	// BW1W120 006e8860 BW1M119 0114b700
 	void ForceBuildBuilding(GPlayer* player);
+	// BW1W120 006ea950 BW1M119 01147a60
+	bool32_t IsPlannedValid(PLANNED_TYPE type);
 	// BW1W120 006e9610 BW1M119 01149e90
 	void RemoveOldBuildingSite();
+	// BW1W120 inlined BW1M119 010c7770
+	uint8_t GetWorkshopPosition() { return WorkshopPosition; }
 };
 
 #endif /* BW1_DECOMP_SCAFFOLD_INCLUDED_H */

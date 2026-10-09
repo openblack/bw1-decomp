@@ -6,6 +6,8 @@
 
 #include <chlasm/Enum.h> /* For enum POWER_UP_TYPE, enum SPELL_SEED_TYPE */
 
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
 // Forward Declares
@@ -15,33 +17,33 @@ class GPlayer;
 class Game3DObject;
 class GameOSFile;
 class GameThing;
+class GSpellSeedInfo;
 struct LHMatrix;
 struct LHPoint;
 struct MapCoords;
 class Object;
+class PSysInterface;
 
 class SpellSeedGraphic : public GameThingWithPos
 {
 public:
-	uint32_t      field_0x28;
-	int*          field_0x2c;
-	Game3DObject* obj; /* 0x30 */
-	float         field_0x34;
-	float         field_0x38;
-	float         field_0x3c;
-	float         field_0x40;
-	float         field_0x44;
-	int           field_0x48;
-	uint32_t      field_0x4c;
-	int*          field_0x50;
-	float         field_0x54;
-	float         field_0x58;
-	char          field_0x5c;
-	POWER_UP_TYPE power_up_type; /* 0x60 */
-	uint32_t      field_0x64;
-	uint32_t      field_0x68;
-	uint32_t      field_0x6c;
-	uint32_t      field_0x70;
+	uint32_t        field_0x28;
+	Game3DObject*   Game3dObject;
+	Game3DObject*   PUBand;
+	float           UVFrame;
+	float           PulsePhase;
+	float           YAngle;
+	float           field_0x40;
+	float           BandAngle;
+	SPELL_SEED_TYPE SeedType;
+	uint32_t        field_0x4c;
+	PSysInterface*  PSys;
+	float           Size;
+	float           BandScale;
+	bool            field_0x5c;
+	POWER_UP_TYPE   power_up_type;
+	LHPoint         BandPos;
+	uint8_t         BandAlpha;
 
 	// Override methods
 
@@ -88,6 +90,10 @@ public:
 	void CreatePUBand();
 	// BW1W120 00727680 BW1M119 01529c60
 	void SetAutoUpdate(bool auto_update);
+	// BW1W120 00727690 BW1M119 01529be0
+	bool32_t IsSpellG3DObjectDrawn();
+	// BW1W120 00727700 BW1M119 015299f0
+	GSpellSeedInfo* GetSpellSeedInfo() const;
 	// BW1W120 00727630 BW1M119 01529cb0
 	void DrawUpdateAtPos(const LHMatrix& matrix, float scale);
 	// BW1W120 00519ad0 BW1M119 010c9140

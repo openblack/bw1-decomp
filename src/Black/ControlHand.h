@@ -259,6 +259,8 @@ public:
 	void AddDrawing();
 	// BW1W120 0046e5f0 BW1M119 011cdda0
 	void UpdateLeftRightFromPlayer(LHPlayer* player);
+	// BW1W120 0046df00 BW1M119 0108f950
+	void DrawTheHeldObject();
 };
 
 #endif /* BW1_DECOMP_CONTROL_HAND_INCLUDED_H */

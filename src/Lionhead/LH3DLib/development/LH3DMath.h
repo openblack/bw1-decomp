@@ -36,6 +36,9 @@ struct LH3DMath
 	static float GetYAngle(LHPoint* from, LHPoint* to);
 };
 
+// BW1W120 00841170 BW1M119 010d50e0 (LHCombined Release)
+float __cdecl InverseSquareRoot(float x);
+
 // TODO: Judging by the function address, this is the wrong TU for this:
 
 // BW1W120 0074f680 BW1M119 0104c020
@@ -46,5 +49,7 @@ long __cdecl LHArcTan(long param_1, long param_2);
 float __cdecl atan360(float x, float y);
 // BW1W120 007faa50 BW1M119 0100f420 (LHCombined Release)
 float __cdecl heading_from_direction_vector(const LHPoint& direction);
+// BW1W120 007faaf0 BW1M119 01030540 (LHCombined Release)
+float __cdecl angle_correct(float angle);
 
 #endif /* BW1_DECOMP_LH3D_MATH_INCLUDED_H */

@@ -13,7 +13,9 @@ class CHand;
 class HandStateCreature : public HandState
 {
 public:
-	uint8_t field_0x8[0x118];
+	uint8_t field_0x8[0xd0];
+	float   HandValue;
+	uint8_t field_0xdc[0x44];
 
 	// Override methods
 

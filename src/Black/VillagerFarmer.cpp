@@ -61,7 +61,7 @@ bool32_t Villager::FarmerArrivesAtFarm()
 	switch (field->GetFieldActivity(0))
 	{
 	case 1:
-		field_0xf1 = 1;
+		CarriedObjectType = CARRIED_OBJECT_NONE;
 		if (AreWeThere(*(MapCoords*)&football, 0.0f))
 		{
 			*(MapCoords*)&football = field->GetArrivePos(); // fabricated -- real value from unnamed fn_00528970

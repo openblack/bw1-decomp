@@ -39,7 +39,7 @@ public:
 	// BW1W120 00422110 BW1M119 inlined
 	virtual bool32_t IsBuilt();
 	// BW1W120 00527790 BW1M119 inlined
-	virtual bool IsDrawBuilding();
+	virtual bool32_t IsDrawBuilding();
 	// BW1W120 0077edd0 BW1M119 inlined
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
 };

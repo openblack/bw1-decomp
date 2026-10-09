@@ -67,11 +67,11 @@ void Villager::SetToZero()
 	town = NULL;
 	LastCheckTurn = 0;
 	mother = NULL;
-#ifndef VERSION_BW1W100
+#ifdef VERSION_BW1W120
 	LastPlayerToInteract = NULL;
 #endif
-#ifdef VERSION_BW1W120
-	field_0x108 = 0.0f;
+#ifndef VERSION_BW1W100
+	DrawYAngle = 0.0f;
 #endif
 }
 
@@ -607,7 +607,7 @@ Citadel* Villager::GetCitadel()
 }
 
 // BW1W120 00751dd0 BW1M119 01051580
-VILLAGER_STATES Villager::GetFinalState() const
+uint8_t Villager::GetFinalState() const
 {
 	return VILLAGER_STATE_INVALID_STATE;
 }

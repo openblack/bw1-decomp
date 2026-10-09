@@ -104,20 +104,21 @@ public:
 	Villager*     next;
 	float         food;
 	int           LastCheckTurn;
-	bool          FoodSpeedUp; /* 0xf0 */
-	uint8_t       field_0xf1;
+	bool          FoodSpeedUp;
+	uint8_t       CarriedObjectType;
 	uint8_t       DiscipleType;
 	uint8_t       field_0xf3;
 	int16_t       ResourceHeld[RESOURCE_TYPE_LAST];
 	int16_t       is_pregnant;
 	int16_t       field_0xfa;
 	BuildingSite* building_site;
-	Villager*     mother; /* 0x100 */
-#ifndef VERSION_BW1W100
+	Villager*     mother;
+#ifdef VERSION_BW1W120
 	GPlayer* LastPlayerToInteract;
 #endif
-#ifdef VERSION_BW1W120
-	float field_0x108;
+#ifndef VERSION_BW1W100
+	// The angle the villager is drawn at; Villager::Draw eases it towards the real Y angle.
+	float DrawYAngle;
 #endif
 	union {
 		struct
@@ -520,7 +521,7 @@ public:
 	// BW1W120 0055c970 BW1M119 010676b0
 	virtual bool32_t IsChild();
 	// BW1W120 00751dd0 BW1M119 01051580
-	virtual VILLAGER_STATES GetFinalState() const;
+	virtual uint8_t GetFinalState() const;
 	// BW1W120 00751510 BW1M119 01577220
 	virtual void RemoveFromDance(int param_1);
 	// BW1W120 00759b80 BW1M119 0157f1b0
@@ -548,7 +549,7 @@ public:
 	// BW1W120 0055ca40 BW1M119 010c8a80
 	virtual const char* GetVillagerName();
 	// BW1W120 0051b510 BW1M119 0105a910
-	virtual uint32_t DrawVillagerInfo();
+	virtual bool DrawVillagerInfo();
 
 	// Static methods
 
@@ -572,6 +573,8 @@ public:
 	uint32_t FootballWatchMatchAnimation();
 	// BW1W120 0074fb20 BW1M119 01579d80
 	void SetToZero();
+	// BW1W120 0051baf0 BW1M119 010563d0
+	void DrawCarriedObject();
 	// BW1W120 0074fb80 BW1M119 01579cb0
 	void InitialiseScale(unsigned long age);
 	// BW1W120 0074fd60 BW1M119 01579570

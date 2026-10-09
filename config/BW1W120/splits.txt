@@ -763,20 +763,22 @@ Black/DialogBoxMain.cpp:
 
 Black/DialogBoxOptions.cpp:
 	.text       start:0x005137C0 end:0x00515990
-	.rdata      start:0x008D85F0 end:0x008D8698
+	.rdata      start:0x008D85F0 end:0x008D8694
 	.CRT$XCU    start:0x009C674C end:0x009C6758 align:4
 	.data       start:0x00BE8D40 end:0x00BE8E14
 	.bss        start:0x00CC62AC end:0x00CC62C0
 
 Black/DialogBoxSaveMessage.cpp:
 	.text       start:0x00515990 end:0x00515EC0
+	.rdata      start:0x008D8694 end:0x008D86BC
 	.CRT$XCU    start:0x009C6758 end:0x009C675C align:4
-	.data       start:0x00BE8E14 end:0x00BE8F80
+	.data       start:0x00BE8E14 end:0x00BE8E88
 
 Black/DrawingObject.cpp:
 	.text       start:0x00515EC0 end:0x0051CCB0
-	.rdata      start:0x008D8698 end:0x008D8760
+	.rdata      start:0x008D86BC end:0x008D8760
 	.CRT$XCU    start:0x009C675C end:0x009C6770 align:4
+	.data       start:0x00BE8E88 end:0x00BE8F80
 	.bss        start:0x00CC62C0 end:0x00CC6328
 
 Black/EditorAnim.cpp:

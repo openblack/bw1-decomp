@@ -43,6 +43,8 @@ public:
 	void CalculateRadiusPointAndDistance();
 	// BW1W120 0071d720 BW1M119 01045d30
 	void UpdateFromMap(const MapCoords& coords);
+	// BW1W120 0071d8e0 BW1M119 0106a530
+	static int GetSurfaceType(const MapCoords& coords);
 	// BW1W120 inlined BW1M119 01362dd0
 	LHPoint GetReceiverPos() { return field_0xec; }
 

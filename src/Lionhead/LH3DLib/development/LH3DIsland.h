@@ -45,6 +45,8 @@ public:
 	static uint8_t g_index_block[32][32];
 	// BW1W120 00e9c564 BW1M119 011ffed8 (LHCombined Release)
 	static LandBlock* g_ptr_blocks[0x100];
+	// BW1W120 00c3720c BW1M119 011ceb28 (LHCombined Release)
+	static float g_height_unit;
 
 	// Static methods
 
@@ -61,6 +63,16 @@ public:
 			return NULL;
 		}
 		return &g_ptr_blocks[block]->Cells[x & 0xf][z & 0xf];
+	}
+	// BW1W120 inlined BW1M119 01017640
+	static float GetHeightAsFloat(long x, long z)
+	{
+		LandCell* cell = GetCell(x, z);
+		if (cell != NULL)
+		{
+			return cell->altitude * g_height_unit;
+		}
+		return 0.0f;
 	}
 	// BW1W120 0060d3a0 BW1M119 inlined
 	static bool32_t IsWater(long x, long z)
@@ -99,6 +111,18 @@ public:
 	{
 		LH3DMapCoords coords(pos.x, pos.z);
 		GetNormal(coords, normal);
+	}
+	// BW1W120 00801c90 BW1M119 0102a1a0 (LHCombined Release)
+	static void GetColorAndSpecular(const LHPoint* pos, unsigned long* color, unsigned long* specular);
+	// BW1W120 00802120 BW1M119 01026d00 (LHCombined Release)
+	static void GetColorAndSpecular(const LH3DMapCoords& coords, unsigned long* color, unsigned long* specular);
+	// BW1W120 007feb30 BW1M119 01026a30 (LHCombined Release)
+	static unsigned long GetFogValue(const LHPoint* pos, unsigned long specular, unsigned long* color);
+	// BW1W120 inlined BW1M119 01049370
+	static void GetColorAndSpecularWithFog(const LHPoint* pos, unsigned long* color, unsigned long* specular)
+	{
+		GetColorAndSpecular(pos, color, specular);
+		*specular = GetFogValue(pos, *specular, color);
 	}
 };
 

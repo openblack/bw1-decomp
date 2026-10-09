@@ -93,7 +93,7 @@ Game3DObject* Game3DObject::Create(const MapCoords& coords, LH3DObject::ObjectTy
 		LHPoint unused1;
 		GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
 		LH3DObject* object3d = object;
-		object3d->SetPosition(point, y_angle, scale);
+		object3d->LH3DObject::SetPosition(point, y_angle, scale);
 	}
 	return object;
 }

@@ -183,6 +183,10 @@ public:
 	LHPoint* GetBonePos(int index);
 	// BW1W120 004842b0 BW1M119 011fc210
 	uint8_t* GetSafeBuffer();
+	// BW1W120 00484300 BW1M119 011fc110
+	bool32_t IsMoving() const;
+	// BW1W120 00482d40 BW1M119 011fdf10
+	bool32_t HasLookPoint();
 	// BW1W120 004842d0 BW1M119 011fc1c0
 	bool IsPerformingBodyAction();
 	// BW1W120 00484c60 BW1M119 011faf30

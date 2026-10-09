@@ -20,4 +20,12 @@ public:
 	static bool32_t Interacting;
 };
 
+// BW1W120 005178d0 BW1M119 01019d30
+void DrawCreatureStats();
+// BW1W120 00517080 BW1M119 010cdf70
+void DrawCreatureStats(float life_loss, float energy_loss, float exhaustion, float hand_value, int alpha);
+// BW1W120 00516cb0 BW1M119 010ce9e0
+void DrawCreatureFightStats(float life1, float energy1, wchar_t* name1, float life2, float energy2, wchar_t* name2,
+                            int alpha);
+
 #endif /* BW1_DECOMP_CREATURE_STATS_DISPLAY_INCLUDED_H */

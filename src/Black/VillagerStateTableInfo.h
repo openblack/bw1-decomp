@@ -23,7 +23,7 @@ public:
 	// BW1W120 00db9e68 BW1M119 01b9a988
 	static GVillagerStateTableInfo Infos[VILLAGER_STATE_LAST_STATE];
 
-	uint32_t field_0x10;
+	int      field_0x10;
 	int      field_0x14;
 	float    field_0x18;
 	bool32_t isFinalState;

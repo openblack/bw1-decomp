@@ -25,6 +25,11 @@ enum ObjectCircleIteratorDirection
 class HowManyPeople
 {
 public:
+	// Static data
+
+	// BW1W120 00c383f0 BW1M119 011ceaa8 (LHCombined Release)
+	static int g_alpha;
+
 	// Static methods
 
 	// BW1W120 00829690 BW1M119 0109ffd0 (LHCombined Release)

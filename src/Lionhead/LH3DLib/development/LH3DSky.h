@@ -9,6 +9,8 @@ public:
 	static int g_b_we_are_inside_citadel;
 	// BW1W120 00869fa0 BW1M119 010b2070 (LHCombined Release)
 	static void SetDayNightTimes(float night, float dusk_start, float dusk_end, float day);
+	// BW1W120 0086a1b0 BW1M119 01033e10 (LHCombined Release)
+	static float Time2SkyType(float time);
 };
 
 #endif /* BW1_DECOMP_LH3D_SKY_INCLUDED_H */
