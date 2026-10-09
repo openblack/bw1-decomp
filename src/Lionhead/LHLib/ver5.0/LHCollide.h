@@ -86,7 +86,7 @@ public:
 		~Obj();
 	};
 
-	Obj* obj; /* 0x0 */
+	Obj* obj;
 
 	// Constructors
 

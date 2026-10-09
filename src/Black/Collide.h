@@ -211,15 +211,14 @@ template <bool clockwise> struct IntersectIntervalCircle
 
 struct CircleHugInfo
 {
-	// Stored in place of obj while a save game is loading, until ResolveLoad finds the object.
 	struct ResolutionInfoT
 	{
-		Object*   object;
-		int       index;
-		MapCoords coords;
+		Object*       object;
+		int           index;
+		LH3DMapCoords coords;
 	};
 
-	NewCollide::Obj* obj; /* 0x0 */
+	NewCollide::Obj* obj;
 	uint8_t          TurnsToObj;
 	uint8_t          field_0x5;
 	int16_t          EntryDistance;

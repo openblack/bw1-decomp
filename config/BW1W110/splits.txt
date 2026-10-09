@@ -1256,9 +1256,9 @@ Black/MobileStatic.cpp:
 	.bss        start:0x00D294E4 end:0x00D2DC78
 
 Black/MobileWallHug.cpp:
-	.text       start:0x006040C0 end:0x00611870
+	.text       start:0x00604080 end:0x00611870
 	.rdata      start:0x0092061C end:0x00920658
-	.CRT$XCU    start:0x009B6AB8 end:0x009B6AC4 align:4
+	.CRT$XCU    start:0x009B6AB0 end:0x009B6AC4 align:4
 	.data       start:0x00BE3660 end:0x00BE3688
 	.bss        start:0x00D2DC78 end:0x00D2DD14
 
