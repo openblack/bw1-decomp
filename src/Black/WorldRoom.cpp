@@ -99,11 +99,6 @@ wchar_t WorldRoom::WorldStatisticsText[0x2000];
 
 static uint32_t UnusedStatic = 0;
 
-struct WorldRoomCounterPad
-{
-	static int Pad0;
-};
-
 #define LIGHTEN_MARKER_COLOUR(colour)                                                                                  \
 	(0xff000000 | (((colour & 0xff0000) + ((0xff0000 - (colour & 0xff0000)) * 64 >> 8)) & 0xff0000) |                  \
 	 (((colour & 0xff00) + ((0xff00 - (colour & 0xff00)) * 64 >> 8)) & 0xff00) |                                       \

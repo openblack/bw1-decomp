@@ -198,6 +198,28 @@ struct LHMatrix
 		_42 -= t;
 	}
 	// BW1W120 inlined BW1M119 inlined
+	void RotateX(float angle)
+	{
+		float c = cos(angle);
+		float s = sin(angle);
+		float t;
+		t = _21 * s;
+		_21 *= c;
+		_21 -= _31 * s;
+		_31 *= c;
+		_31 += t;
+		t = _22 * s;
+		_22 *= c;
+		_22 -= _32 * s;
+		_32 *= c;
+		_32 += t;
+		t = _23 * s;
+		_23 *= c;
+		_23 -= _33 * s;
+		_33 *= c;
+		_33 += t;
+	}
+	// BW1W120 inlined BW1M119 inlined
 	void RotateZ(float angle)
 	{
 		float c = cos(angle);
@@ -218,6 +240,22 @@ struct LHMatrix
 		_13 -= _23 * s;
 		_23 *= c;
 		_23 += t;
+	}
+	// BW1W120 inlined BW1M119 01055f60
+	void SetBlend(const LHMatrix& a, const LHMatrix& b, float t)
+	{
+		_11 = (b._11 - a._11) * t + a._11;
+		_12 = (b._12 - a._12) * t + a._12;
+		_13 = (b._13 - a._13) * t + a._13;
+		_21 = (b._21 - a._21) * t + a._21;
+		_22 = (b._22 - a._22) * t + a._22;
+		_23 = (b._23 - a._23) * t + a._23;
+		_31 = (b._31 - a._31) * t + a._31;
+		_32 = (b._32 - a._32) * t + a._32;
+		_33 = (b._33 - a._33) * t + a._33;
+		_41 = (b._41 - a._41) * t + a._41;
+		_42 = (b._42 - a._42) * t + a._42;
+		_43 = (b._43 - a._43) * t + a._43;
 	}
 	// BW1W120 007fb290 BW1M119 0102fff0 (LHCombined Release)
 	void __fastcall SetInverse(const LHMatrix& r);

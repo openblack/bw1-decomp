@@ -2,6 +2,6 @@
 #define BW1_DECOMP_LH_RANDOM_INCLUDED_H
 
 // BW1W120 0081d180 BW1M119 0101f540 (LHCombined Release)
-float Random(float min, float max);
+float __stdcall Random(float min, float max);
 
 #endif /* BW1_DECOMP_LH_RANDOM_INCLUDED_H */

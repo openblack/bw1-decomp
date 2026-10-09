@@ -17,6 +17,7 @@ class LH3DObject;
 struct LHMatrix;
 struct LHPoint;
 struct LHTimer;
+struct Vertex3D;
 
 enum LH3D_PROJECT_RESULT
 {
@@ -57,10 +58,12 @@ public:
 	static LHTimer g_timer;
 	// BW1W120 00ea9e40 BW1M119 012dc144 (LHCombined Release)
 	static LHMatrix g_world_to_clipping;
-	// BW1W120 00ea1d28 BW1M119 012dc0b4 (LHCombined Release)
-	static LHMatrix g_world_to_camera;
 	// BW1W120 00ea9ea0 BW1M119 012dbff0 (LHCombined Release)
 	static LHMatrix* g_current_matrix;
+	// BW1W120 00ea1d28 BW1M119 012dc0b4 (LHCombined Release)
+	static LHMatrix g_world_to_camera;
+	// BW1W120 00ea9e90 BW1M119 012d3fa8 (LHCombined Release)
+	static LHPoint g_sun_light;
 	// BW1W120 inlined BW1M119 010e7360
 	static float GetValueForZSorter(const LHPoint& point)
 	{
@@ -106,6 +109,10 @@ public:
 	static LHPoint* GetCameraPosition() { return &g_camera.pos; }
 	// BW1W120 inlined BW1M119 01025530
 	static LHPoint* GetCameraTarget() { return &g_camera.foc; }
+	// BW1W120 inlined BW1M119 01020d00
+	static LHPoint GetSun() { return g_sun_light; }
+	// BW1W120 0081e1f0 BW1M119 0101c120 (LHCombined Release)
+	static LHPoint SetSun(const LHPoint& sun);
 	// BW1W120 00819920 BW1M119 01034f90 (LHCombined Release)
 	static void UpdateCamera(const LHPoint& position, const LHPoint& focus);
 	// BW1W120 00818c60 BW1M119 010bffa0 (LHCombined Release)
@@ -118,6 +125,11 @@ public:
 	                                           long num_triangles, long* indices, LH3DMaterial* material, int param_8);
 	// BW1W120 0081b370 BW1M119 0101b840 (LHCombined Release)
 	static void __fastcall Get3DPointFromScreen(const LHCoord& screen, LHPoint& point, float distance);
+	// BW1W120 0081b450 BW1M119 01037ba0 (LHCombined Release)
+	static void __fastcall TransformProjectFlagClipping(Vertex3D* out, unsigned long* clip_flags, LHPoint* points,
+	                                                    long count);
+	// BW1W120 0081b5f0 BW1M119 010be620 (LHCombined Release)
+	static void __fastcall TransformProject(Vertex3D* out, LHPoint* points, long count);
 };
 
 // BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)

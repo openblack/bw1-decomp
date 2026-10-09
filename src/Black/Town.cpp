@@ -12,7 +12,7 @@
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>
 #include <Lionhead/LH3DLib/development/LH3DMath.h> /* For TWO_PI */
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>
-#include <Lionhead/LH3DLib/development/LHColor.h>
+#include <Lionhead/LH3DLib/development/LH3DColor.h>
 #include <Lionhead/LHLib/ver5.0/LHQueue.h>
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
@@ -3281,9 +3281,9 @@ float Town::GetBaseInfluence()
 	return GetInfo()->BaseInfluence;
 }
 
-LHColor GTownInfo::GetDebugColor() const
+LH3DColor GTownInfo::GetDebugColor() const
 {
-	return LHColor(223, 236, 130, 255);
+	return LH3DColor(223, 236, 130, 255);
 }
 
 TownArtifact* Town::AddArtifact(Fixed* artifact, GPlayer* player)

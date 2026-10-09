@@ -13,7 +13,7 @@
 
 class Base;
 class GBaseInfo;
-struct LHColor;
+struct LH3DColor;
 
 class GTownInfo : public GContainerInfo
 {
@@ -76,7 +76,7 @@ public:
 	// Override methods
 
 	// BW1W120 0073fd80 BW1M119 01553de0
-	virtual LHColor GetDebugColor() const;
+	virtual LH3DColor GetDebugColor() const;
 	// BW1W120 00738f70 BW1M119 0154f5e0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
 	{

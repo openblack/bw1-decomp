@@ -7,7 +7,8 @@
 
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT_NARRATOR */
 
-#include <re_common.h> /* For bool32_t */
+#include <chlasm/Enum.h> /* For enum HELP_SPIRIT_TYPE */
+#include <re_common.h>   /* For bool32_t */
 
 #include "Base.h"            /* For struct Base */
 #include "BindableAction.h"  /* For enum BINDABLE_ACTIONS */
@@ -377,6 +378,8 @@ public:
 	void     Draw3D(); // 005c59a0
 	// BW1W120 005c67e0 BW1M119 01357fe0
 	void ClearDialogueControl();
+	// BW1W120 005c68a0 BW1M119 01357f40
+	HelpSpirit* GetSpirit(HELP_SPIRIT_TYPE type) const;
 	// BW1W120 005c6ad0 BW1M119 01357c40
 	void SetWideScreen(int param_2, uint32_t param_3);
 	// BW1W120 005c6b60 BW1M119 01020020

@@ -1153,14 +1153,17 @@ Black/HandStatePlayAnim.cpp:
 
 Black/HandStateTug.cpp:
 	.text       start:0x005B7D80 end:0x005B8EC0
-	.rdata      start:0x00900BE4 end:0x009154B8
+	.rdata      start:0x00900BE4 end:0x00900C30
 	.CRT$XCU    start:0x009C6B7C end:0x009C6B88 align:4
-	.bss        start:0x00D14060 end:0x00D15AD0
+	.data       start:0x00BF0260 end:0x00BF027C
+	.bss        start:0x00D14060 end:0x00D14070
 
 Black/helpdude.cpp:
 	.text       start:0x005B8EC0 end:0x005C2A40
+	.rdata      start:0x00900C30 end:0x00900D40
 	.CRT$XCU    start:0x009C6B88 end:0x009C6B9C align:4
-	.data       start:0x00BF0260 end:0x00BF0774
+	.data       start:0x00BF027C end:0x00BF0774
+	.bss        start:0x00D14070 end:0x00D15AB4
 
 Black/HelpDudeControl.cpp:
 	.text       start:0x005C2A40 end:0x005C3D90

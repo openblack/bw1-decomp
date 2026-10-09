@@ -23,7 +23,7 @@ enum ANIMLIST
 	ANIM_EM4,				//Shock (ends early)
 	ANIM_EM5,				//Raises eyebrow (ends early)
 	ANIM_EM6,				//Angry (ends early)
-	//ANIM_EM7,				<-- CI
+	ANIM_EM7,               //Furious
 	ANIM_LOOKLR,			//Looks up for a second? (useless)
 	ANIM_LOOKUD,			//Looks up for a second? (useless)
 	ANIM_NOD,				//Nods
@@ -79,15 +79,18 @@ enum ANIMLIST
 	ANIM_LOOKLRSTABLE,		//Looks around before snapping back
 	ANIM_LOOKUDSTABLE,		//Looks around before snapping back
 	ANIM_CHUCKLE,			//Chuckling
-	//ANIM_BLOW,			<-- CI
-	//ANIM_SPARE5,			<-- CI
-	//ANIM_SPARE6,			<-- CI
-	//ANIM_SPARE7,			<-- CI
-	//ANIM_SPARE8,			<-- CI
-	//ANIM_SPARE9,			<-- CI
-	//ANIM_SPARE10,			<-- CI
-	ANIM_LAST,
+#ifdef VERSION_BW1WCI
+	ANIM_BLOW
+#else
+	ANIM_SPARE4,  //Unused
+	ANIM_SPARE5,  //Unused
+	ANIM_SPARE6,  //Unused
+	ANIM_SPARE7,  //Unused
+	ANIM_SPARE8,  //Unused
+	ANIM_SPARE9,  //Unused
+	ANIM_SPARE10, //Unused
+#endif // VERSION_BW1WCI
+		ANIM_LAST,
 };
-
 
 #endif //__HELPDUDEANIM_H__

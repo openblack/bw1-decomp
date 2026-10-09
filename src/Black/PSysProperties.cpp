@@ -1792,7 +1792,8 @@ void LandscapeCollide::DefineProperties(PropertyList* list)
 #if defined(VERSION_BW1W100)
 static std::string EmptyString()
 {
-	return std::string();
+	std::string text[1];
+	return text[0];
 }
 #else
 static void EmptyString()

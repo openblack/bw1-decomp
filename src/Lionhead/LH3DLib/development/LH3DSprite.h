@@ -12,12 +12,12 @@ struct LHMatrix;
 
 struct LH3DSprite
 {
-	LHPoint       pos; /* 0x0 */
-	float         field_0xc;
-	float         field_0x10;
+	LHPoint       pos;
+	float         Size;
+	float         Aspect;
 	float         angle;
-	float         field_0x18;
-	float         field_0x1c;
+	float         OffsetX;
+	float         OffsetY;
 	LH3DColor     colour;
 	float         field_0x24;
 	uint32_t      Frame : 6;
@@ -44,9 +44,9 @@ struct LH3DSprite
 		{
 			size = 0.0001f;
 		}
-		field_0x18 *= size / field_0xc;
-		field_0x1c *= size / field_0xc;
-		field_0xc = size;
+		OffsetX *= size / Size;
+		OffsetY *= size / Size;
+		Size = size;
 	}
 	// BW1W120 008404f0 BW1M119 0100c840 (LHCombined Release)
 	void SetToZero();
