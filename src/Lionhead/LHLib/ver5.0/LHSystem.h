@@ -29,6 +29,8 @@ struct LHSystem
 #include <wchar.h>    /* For wchar_t */
 #include <commctrl.h> /* For TRACKMOUSEEVENT (comctl32's _TrackMouseEvent, pre-NT4 SDK) */
 
+#include <Lionhead/LH3DLib/development/LHColor.h> /* For struct LHColor */
+
 #include "LHConvert.h" /* For class LHConvert */
 #include "LHJoypad.h"  /* For struct LHJoypads */
 #include "LHMouse.h"   /* For struct LHMouse */
@@ -256,5 +258,12 @@ static_assert(offsetof(LHSys, ScriptResources) == 0x924, "LHSys ScriptResources 
 static_assert(offsetof(LHSys, text) == 0x7044, "LHSys text offset changed");
 static_assert(offsetof(LHSys, Window) == 0x70b4, "LHSys Window offset changed");
 static_assert(offsetof(LHSys, LastKey) == 0x70d0, "LHSys LastKey offset changed");
+
+inline void LHPixel16::Set(LHColor color)
+{
+	value = ((uint8_t)(color.b >> LHSys::TheSystem.screen.BlueScale) << LHSys::TheSystem.screen.BlueShift) +
+	        ((uint8_t)(color.g >> LHSys::TheSystem.screen.GreenScale) << LHSys::TheSystem.screen.GreenShift) +
+	        ((uint8_t)(color.r >> LHSys::TheSystem.screen.redScale) << LHSys::TheSystem.screen.RedShift);
+}
 
 #endif /* BW1_DECOMP_LH_SYSTEM_INCLUDED_H */

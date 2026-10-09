@@ -31,7 +31,8 @@ public:
 	uint32_t      Pitch;
 	uint32_t      field_0x4c;
 	uint32_t      Priority;
-	uint8_t       field_0x54[0x114];
+	uint8_t       field_0x54[0x110];
+	uint32_t      KeepData;
 
 	// Constructors
 

@@ -22,18 +22,18 @@ enum AnimInfoType
 // Forward Declares
 
 struct AnimInfo;
+struct LH3DAnim;
 struct LH3DMesh;
 class LHFile;
 struct LHFilePath;
 struct LHMatrix;
-struct CFrameData;
 
 typedef char ANM_Name[0x20];
 
 struct CFrame
 {
-	CFrameData* field_0x0;
-	CFrameData* field_0x4;
+	LHPoint* field_0x0;
+	LHPoint* Positions;
 
 	// Non-virtual methods
 
@@ -43,10 +43,11 @@ struct CFrame
 
 struct CAnim
 {
-	uint32_t FrameOffset; /* 0x0 */
+	int      Duration;
 	uint32_t field_0x4;
-	float    field_0x8[0x5];
-	uint32_t FrameCount; /* 0x1c */
+	float    field_0x8[0x2];
+	LHPoint  Movement;
+	int      FrameCount;
 	uint32_t field_0x20;
 	int      FrameField0x0Count;
 	int      FrameField0x4Count;
@@ -65,18 +66,31 @@ struct CAnim
 	// BW1W120 0085ef40 BW1M119 010b9180 (LHCombined Release)
 	CAnim(CAnim* param_2, CFrame* param_3, CAnim* param_4, CFrame* param_5, float param_6, CAnim* param_7,
 	      CFrame* param_8, float param_9);
+	// BW1W120 0085f690 BW1M119 inlined
+	CAnim(CAnim* anim, CFrame* frame);
+	// BW1W120 0085fd00 BW1M119 inlined
+	CAnim(LH3DMesh* mesh, LHMatrix* base, LHMatrix* inverse_base, LH3DAnim* anim);
 
 	// Non-virtual methods
 
 	// BW1W120 0085e490 BW1M119 011299e0 (LHCombined Release)
 	~CAnim();
+	// BW1W120 0085e4a0 BW1M119 0112ef90 (LHCombined Release)
+	void Release();
+	// BW1W120 00860be0 BW1M119 0110eaf0 (LHCombined Release)
+	int GetWriteSize();
+	// BW1W120 00860a70 BW1M119 01078820 (LHCombined Release)
+	void WriteBinary(LHFile* file);
 	// BW1W120 00861a00 BW1M119 010fbf90 (LHCombined Release)
 	void AdjustForNewBasedOnStand(CAnim* param_2, CAnim* param_3);
+	// BW1W120 00860e00 BW1M119 01031bd0 (LHCombined Release)
+	void FillBuffer(LHMatrix* buffer, LH3DMesh* mesh, LHMatrix* param_3, LHMatrix* param_4, long frame, CFrame* param_6,
+	                long* param_7, int param_8);
+	// BW1W120 00861ee0 BW1M119 010328b0 (LHCombined Release)
+	void ModifyBufferByDifferenceFromFrame(LHMatrix* buffer, CFrame* base_frame, LH3DMesh* mesh, LHMatrix* param_4,
+	                                       LHMatrix* param_5, long frame, CFrame* param_7, long* param_8);
 	// BW1W120 00860860 BW1M119 010950e0 (LHCombined Release)
 	void ReadBinary(LHFile* file);
-	// BW1W120 00860e00 BW1M119 01031bd0 (LHCombined Release)
-	void FillBuffer(LHMatrix* buffer, LH3DMesh* mesh, LHMatrix* param_3, LHMatrix* param_4, long time, CFrame* frame,
-	                long* param_7, int param_8);
 };
 
 struct LH3DAnimSet
@@ -198,9 +212,16 @@ struct LH3DAnim
 	// BW1W120 0083a0e0 BW1M119 0113e8f0 (LHCombined Release)
 	static void GetGraspPoint(LHMatrix* matrices, LH3DMesh* mesh, LHPoint& point, long bone);
 	// BW1W120 0083a1d0 BW1M119 01129510 (LHCombined Release)
-	static float SetTransform(LHMatrix* param_1, LH3DMesh* param_2, LHMatrix* param_3);
+	static float SetTransform(LHMatrix* bones, LH3DMesh* mesh, LHMatrix& transform);
 	// BW1W120 00839f10 BW1M119 0101e440 (LHCombined Release)
-	static void FinishTransform(LHMatrix* buffer, LH3DMesh* mesh, LHMatrix& matrix);
+	static void FinishTransform(LHMatrix* bones, LH3DMesh* mesh, LHMatrix& transform);
+	// The world transform of one bone, as FinishTransform would leave it.
+	// BW1W120 00839fa0 BW1M119 0113e250 (LHCombined Release)
+	static LHMatrix FinishTransformForBone(LHMatrix* bones, LH3DMesh* mesh, LHMatrix& transform, int bone);
+	// BW1W120 00839900 BW1M119 01126380 (LHCombined Release)
+	static LH3DAnim* Load(char* filename);
+	// BW1W120 0083a020 BW1M119 011437f0 (LHCombined Release)
+	static void UnFinishTransform(LHMatrix* bones, LH3DMesh* mesh, LHMatrix& transform);
 	// BW1W120 0083aa30 BW1M119 01128810 (LHCombined Release)
 	static void CreatePack();
 

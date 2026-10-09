@@ -7,6 +7,7 @@
 #include <re_common.h> /* For bool32_t */
 
 #include "LHAudioExport.h" /* For LH_AUDIO_API */
+#include "LH_SampleInfo.h" /* For struct LH_SampleInfo */
 
 // Forward Declares
 
@@ -40,19 +41,6 @@ static_assert(sizeof(LH_MusicInfo) == 0x6c, "Data type is of wrong size");
 #define LH_MUSIC_STATUS_PLAYING 1
 
 #define LH_SAMPLE_OBJECT_GONE ((Base*)-1)
-
-struct LH_SampleInfo
-{
-	uint8_t field_0x0[0x18];
-	Base*   AttachedObject;
-	uint8_t field_0x1c[0x34];
-	float   X;
-	float   Y;
-	float   Z;
-	float   OffsetX;
-	float   OffsetY;
-	float   OffsetZ;
-};
 
 typedef unsigned long (*LH_SAMPLE_3D_OBJECT_FUNCTION)(LH_SampleInfo* info, float* x, float* y, float* z,
                                                       float* distance, bool32_t* valid);

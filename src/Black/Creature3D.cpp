@@ -1576,10 +1576,10 @@ void LH3DCreature::UpdateTime(int time)
 		}
 		bool finished;
 		// TODO: CAnim's first field is a signed duration (see UpdateLook), hence the cast.
-		if (field_0x5734 + delta >= (long)anim->FrameOffset)
+		if (field_0x5734 + delta >= (long)anim->Duration)
 		{
 			finished = true;
-			delta = anim->FrameOffset - field_0x5734;
+			delta = anim->Duration - field_0x5734;
 		}
 		else
 		{
@@ -1799,8 +1799,7 @@ void LH3DCreature::UpdateLook()
 			float heading = Heading;
 			if (Anim0x5220)
 			{
-				// TODO: CAnim's first field is a signed duration (fidiv here, xoris on Mac), not uint32_t FrameOffset.
-				heading += angle_correct(RequiredHeading - Heading) * CycleTime[0] / (long)Anim0x5220->FrameOffset;
+				heading += angle_correct(RequiredHeading - Heading) * CycleTime[0] / (long)Anim0x5220->Duration;
 			}
 			yaw = angle_correct(heading_from_direction_vector(dir) - heading);
 		}
@@ -1980,7 +1979,7 @@ bool32_t LH3DCreature::CanUpdateLook()
 		return CurrentAnim == C_STATIC_SIT;
 	case LH3D_CREATURE_STATE_POINTING:
 	case LH3D_CREATURE_STATE_FINISH_POINTING: {
-		long duration = GetAnim(C_POINT_HI_LEFT, 0)->FrameOffset;
+		long duration = GetAnim(C_POINT_HI_LEFT, 0)->Duration;
 		return CycleTime[0] > duration * 7 / 10 || CycleTime[0] < duration * 2 / 10;
 	}
 	}
@@ -2117,9 +2116,9 @@ long LH3DCreature::GetStartState(LHPoint& param_1, LHPoint& param_2)
 			InitialiseTurning(RequiredHeading);
 			return 4;
 		}
-		anim0->field_0x8[1] = ((LHPoint*)&anim0->field_0x8[2])->GetNorme();
-		anim1->field_0x8[1] = ((LHPoint*)&anim1->field_0x8[2])->GetNorme();
-		anim2->field_0x8[1] = ((LHPoint*)&anim2->field_0x8[2])->GetNorme();
+		anim0->field_0x8[1] = anim0->Movement.GetNorme();
+		anim1->field_0x8[1] = anim1->Movement.GetNorme();
+		anim2->field_0x8[1] = anim2->Movement.GetNorme();
 		field_0x521c = 1;
 	}
 	else
@@ -2130,9 +2129,9 @@ long LH3DCreature::GetStartState(LHPoint& param_1, LHPoint& param_2)
 			InitialiseTurning(RequiredHeading);
 			return 4;
 		}
-		anim0->field_0x8[1] = ((LHPoint*)&anim0->field_0x8[2])->GetNorme();
-		anim1->field_0x8[1] = ((LHPoint*)&anim1->field_0x8[2])->GetNorme();
-		anim2->field_0x8[1] = ((LHPoint*)&anim2->field_0x8[2])->GetNorme();
+		anim0->field_0x8[1] = anim0->Movement.GetNorme();
+		anim1->field_0x8[1] = anim1->Movement.GetNorme();
+		anim2->field_0x8[1] = anim2->Movement.GetNorme();
 		field_0x521c = 2;
 	}
 	float distance = sqrt(delta.x * delta.x + delta.z * delta.z + delta.y * delta.y) / Size2;
@@ -2165,9 +2164,8 @@ long LH3DCreature::GetStartState(LHPoint& param_1, LHPoint& param_2)
 	float   scale = 1.0f / frames;
 	float   angle2 = angle_correct(RequiredHeading - Heading);
 	LHPoint direction(sin(angle2), 0.0f, -cos(angle2));
-	LHPoint step = *(LHPoint*)&Anim0x5220->field_0x8[2] * scale;
-	// TODO: CAnim::FrameOffset holds the anim duration here.
-	Anim0x5220->FrameOffset = (long)(1000.0f * (Size2 * step.DotProduct(direction) / WalkSpeed * frames));
+	LHPoint step = Anim0x5220->Movement * scale;
+	Anim0x5220->Duration = (long)(1000.0f * (Size2 * step.DotProduct(direction) / WalkSpeed * frames));
 	return 5;
 }
 
@@ -2600,8 +2598,7 @@ bool32_t LH3DCreature::ForceIndividualAction(long action, int param_2)
 float LH3DCreature::GetBodyActionFraction()
 {
 	CAnim* anim = GetAnim(CurrentAnim, 0);
-	// TODO: CAnim::FrameOffset is the signed animation length; drop the cast once LH3DAnim.h types it as long.
-	return (float)CycleTime[0] / (long)anim->FrameOffset;
+	return (float)CycleTime[0] / (long)anim->Duration;
 }
 
 bool32_t LH3DCreature::StartObjectKeepAction(long action)
@@ -2845,7 +2842,7 @@ void LH3DCreature::StateSwitch()
 	{
 	case LH3D_CREATURE_STATE_START_DANCE:
 		CycleAnim[0] = GetAnim(C_DANCE_START, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(C_DANCE_START, CycleTime[0], AnimTimeInc);
 			if (field_0x5238)
@@ -2860,7 +2857,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_START_BLOCK:
 		CycleAnim[0] = GetAnim(C_FIGHT_START_BLOCK, 0);
-		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(C_FIGHT_START_BLOCK, CycleTime[0], (long)(GetFightMul() * IntTimeInc));
 			if (field_0x5238)
@@ -2875,7 +2872,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_START_FIGHT_CAST:
 		CycleAnim[0] = GetAnim(CurrentAnim - 1, 0);
-		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(CurrentAnim - 1, CycleTime[0], (long)(GetFightMul() * IntTimeInc));
 			if (field_0x5238)
@@ -2906,7 +2903,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_FINISH_FIGHT_CAST:
 		CycleAnim[0] = GetAnim(CurrentAnim + 1, 0);
-		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(CurrentAnim + 1, CycleTime[0], (long)(GetFightMul() * IntTimeInc));
 			CurrentAnim = 0;
@@ -2919,7 +2916,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_START_STATIC:
 		CycleAnim[0] = GetAnim(CurrentAnim - 1, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(CurrentAnim - 1, CycleTime[0], AnimTimeInc);
 			if (field_0x5238)
@@ -2936,7 +2933,7 @@ void LH3DCreature::StateSwitch()
 		if (TurningCompleted)
 		{
 			CycleAnim[0] = GetAnim(C_FIGHT_START, 0);
-			if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+			if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 			{
 				AdvanceSimple(C_FIGHT_START, CycleTime[0], AnimTimeInc);
 				if (field_0x5238)
@@ -2987,7 +2984,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_CATCH_STEP:
 		CycleAnim[0] = GetAnim(CurrentAnim, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(CurrentAnim, CycleTime[0], AnimTimeInc);
 			StateSet(LH3D_CREATURE_STATE_CATCH_MAIN);
@@ -2997,7 +2994,7 @@ void LH3DCreature::StateSwitch()
 		CycleAnim[0] = GetAnim(C_CATCH_LO_L, 0);
 		if (ObjectActionStatus == 1 || ObjectActionStatus == 3)
 		{
-			if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+			if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 			{
 				AdvanceSimple(C_CATCH_LO_L, CycleTime[0], AnimTimeInc);
 				StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -3010,14 +3007,14 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_DO_DANCE: {
 		CycleAnim[0] = GetAnim(CurrentAnim, 0);
-		long duration = CycleAnim[0]->FrameOffset;
+		long duration = CycleAnim[0]->Duration;
 		if (CycleTime[0] + IntTimeInc >= duration)
 		{
 			do
 			{
 				CurrentAnim = GRand::GameRand(5, CREATURE_3D_FILE, 3863) + C_DANCE_A;
 			} while (!GetAnim(CurrentAnim, 0));
-			long newDuration = GetAnim(CurrentAnim, 0)->FrameOffset;
+			long newDuration = GetAnim(CurrentAnim, 0)->Duration;
 			CycleTime[0] -= duration;
 			CycleTime[0] += newDuration;
 		}
@@ -3025,7 +3022,7 @@ void LH3DCreature::StateSwitch()
 	}
 	case LH3D_CREATURE_STATE_FINISH_STATIC:
 		CycleAnim[0] = GetAnim(CurrentAnim + 1, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(CurrentAnim + 1, CycleTime[0], AnimTimeInc);
 			CurrentAnim = 0;
@@ -3034,7 +3031,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_FINISH_BLOCK:
 		CycleAnim[0] = GetAnim(C_FIGHT_END_BLOCK, 0);
-		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(C_FIGHT_END_BLOCK, CycleTime[0], (long)(GetFightMul() * IntTimeInc));
 			CurrentAnim = 0;
@@ -3047,7 +3044,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_FINISH_FIGHT:
 		CycleAnim[0] = GetAnim(C_FIGHT_FINISH, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(C_FIGHT_FINISH, CycleTime[0], AnimTimeInc);
 			StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -3055,7 +3052,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_FINISH_DANCE:
 		CycleAnim[0] = GetAnim(C_DANCE_FINISH, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(C_DANCE_FINISH, CycleTime[0], AnimTimeInc);
 			StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -3066,7 +3063,7 @@ void LH3DCreature::StateSwitch()
 		if (TurningCompleted)
 		{
 			CycleAnim[0] = GetAnim(C_POINT_HI_LEFT, 0);
-			if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+			if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 			{
 				AdvanceSimple(C_POINT_HI_LEFT, CycleTime[0], AnimTimeInc);
 				StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -3076,7 +3073,7 @@ void LH3DCreature::StateSwitch()
 	case LH3D_CREATURE_STATE_INDIVIDUAL:
 	case LH3D_CREATURE_STATE_OBJECT_KEEP:
 		CycleAnim[0] = GetAnim(CurrentAnim, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(CurrentAnim, CycleTime[0], AnimTimeInc);
 			CurrentAnim = 0;
@@ -3085,7 +3082,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_KISSING:
 		CycleAnim[0] = GetAnim(C_MISC_KISS_HI, 0);
-		if (CycleTime[0] + IntTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + IntTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(C_MISC_KISS_HI, CycleTime[0], IntTimeInc);
 			StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -3093,7 +3090,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_KICKING:
 		CycleAnim[0] = GetAnim(C_DESTROY_KICK_LOW, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(C_DESTROY_KICK_LOW, CycleTime[0], AnimTimeInc);
 			StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -3101,7 +3098,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_BLOCK_RECOIL:
 		CycleAnim[0] = GetAnim(C_RECOIL_BLOCK, 0);
-		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(C_RECOIL_BLOCK, CycleTime[0], (long)(GetFightMul() * IntTimeInc));
 			StateSet(LH3D_CREATURE_STATE_BLOCK);
@@ -3109,7 +3106,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_FIGHT:
 		CycleAnim[0] = GetAnim(CurrentAnim, 0);
-		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + (long)(GetFightMul() * IntTimeInc) >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(CurrentAnim, CycleTime[0], (long)(GetFightMul() * IntTimeInc));
 			StateSet(LH3D_CREATURE_STATE_FIGHT_MAIN);
@@ -3137,7 +3134,7 @@ void LH3DCreature::StateSwitch()
 				diff = 400;
 			}
 			long step = (long)((diff / 400.0f) * (AnimTimeInc - inc) + inc);
-			if (CycleTime[0] + step >= (long)CycleAnim[0]->FrameOffset)
+			if (CycleTime[0] + step >= (long)CycleAnim[0]->Duration)
 			{
 				AdvanceSimple(C_THROW_HURL_FLAT, CycleTime[0], step);
 				StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -3147,7 +3144,7 @@ void LH3DCreature::StateSwitch()
 	case LH3D_CREATURE_STATE_OBJECT_REMOVE:
 		// Same as INDIVIDUAL/OBJECT_KEEP; its own case here on Mac, merged into theirs by MSVC.
 		CycleAnim[0] = GetAnim(CurrentAnim, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(CurrentAnim, CycleTime[0], AnimTimeInc);
 			CurrentAnim = 0;
@@ -3156,7 +3153,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_PICK_UP_FROM_HAND:
 		CycleAnim[0] = GetAnim(C_PICKUP_FROM_HAND, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(CurrentAnim, CycleTime[0], AnimTimeInc);
 			CurrentAnim = 0;
@@ -3171,7 +3168,7 @@ void LH3DCreature::StateSwitch()
 			CycleAnim[0] = GetAnim(anim, 0);
 			if (ObjectActionStatus == 1 || ObjectActionStatus == 3)
 			{
-				if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+				if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 				{
 					AdvanceSimple(anim, CycleTime[0], AnimTimeInc);
 					StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -3185,7 +3182,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_DEATH:
 		CycleAnim[0] = GetAnim(CurrentAnim, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(CurrentAnim, CycleTime[0], AnimTimeInc);
 			StateSet(LH3D_CREATURE_STATE_DEAD);
@@ -3193,7 +3190,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_RESURRECT:
 		CycleAnim[0] = GetAnim(CurrentAnim, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(CurrentAnim, CycleTime[0], AnimTimeInc);
 			StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -3213,7 +3210,7 @@ void LH3DCreature::StateSwitch()
 		break;
 	case LH3D_CREATURE_STATE_CREATION:
 		CycleAnim[0] = GetAnim(C_FIGHT_EXTRA_CREATION, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(C_FIGHT_EXTRA_CREATION, CycleTime[0], AnimTimeInc);
 			StateSet(LH3D_CREATURE_STATE_STANDING);
@@ -3633,8 +3630,8 @@ void LH3DCreature::StateAction()
 		rotation.SetRotationY(Heading);
 		CycleAnim[0] = GetAnim(C_RECOIL_BLOCK, 0);
 		LHPoint move;
-		move = *(LHPoint*)&CycleAnim[0]->field_0x8[2];
-		move *= Size2 * AnimTimeInc / (long)CycleAnim[0]->FrameOffset;
+		move = CycleAnim[0]->Movement;
+		move *= Size2 * AnimTimeInc / (long)CycleAnim[0]->Duration;
 		rotation.TransformPoint(move);
 		LHPoint newPos = position + move;
 		if (newPos.GetDistance2D(ArenaCentre) < ArenaEdgeFraction * ArenaRadius)
@@ -3690,7 +3687,7 @@ void LH3DCreature::StateAction()
 			pull = pull > -1.0f ? min(pull, 1.0f) : -1.0f;
 			*(float*)&lineIn->field_0x3514 += pull * drift;
 			// The animation's own tempo, folded into 81..162 bpm.
-			float animTempo = 60000.0f / (long)anim->FrameOffset;
+			float animTempo = 60000.0f / (long)anim->Duration;
 			if (animTempo < 0.1f)
 			{
 				animTempo = 0.1f;
@@ -3766,7 +3763,7 @@ void LH3DCreature::StateAction()
 	case LH3D_CREATURE_STATE_OBJECT_KEEP: {
 		CycleAnim[0] = GetAnim(CurrentAnim, 0);
 		long oldTime = CycleTime[0];
-		long half = (long)CycleAnim[0]->FrameOffset >> 1;
+		long half = (long)CycleAnim[0]->Duration >> 1;
 		CycleTime[0] = AdvanceCyclic(CurrentAnim, oldTime, AnimTimeInc);
 		if (oldTime <= half && CycleTime[0] > half)
 		{
@@ -4174,8 +4171,8 @@ void LH3DCreature::DoCatchStep()
 	// TODO: CAnim's 0x10 is the animation's total movement and its first field a signed duration (fidiv here,
 	// xoris on Mac), not uint32_t FrameOffset.
 	LHPoint step;
-	step = *(LHPoint*)&anim->field_0x8[2];
-	step *= AnimTimeInc * Size2 / (long)anim->FrameOffset;
+	step = anim->Movement;
+	step *= AnimTimeInc * Size2 / (long)anim->Duration;
 	rotation.TransformPoint(step);
 	if (ReverseAnim)
 	{
@@ -4256,7 +4253,7 @@ void LH3DCreature::DoCatchMain()
 		CAnim* anim = GetAnim(CurrentAnim, 0);
 		if (anim)
 		{
-			LHPoint move = *(LHPoint*)&anim->field_0x8[2];
+			LHPoint move = anim->Movement;
 			if (ReverseAnim)
 			{
 				move.x = -move.x;
@@ -4512,8 +4509,7 @@ void LH3DCreature::DoFightMainAction()
 		CycleAnim[0] = GetAnim(C_FIGHT_EXTRA_SPARE0, 0);
 		if (CycleAnim[0])
 		{
-			// TODO: CAnim's first field is a signed duration, not uint32_t FrameOffset.
-			if (CycleTime[0] > (long)CycleAnim[0]->FrameOffset)
+			if (CycleTime[0] > (long)CycleAnim[0]->Duration)
 			{
 				CycleTime[0] = 0;
 			}
@@ -5138,8 +5134,7 @@ bool LH3DCreature::IsBlocking()
 	switch (MoveState)
 	{
 	case LH3D_CREATURE_STATE_START_BLOCK:
-		// TODO: CAnim's first field is a signed duration, not uint32_t FrameOffset.
-		if (CycleTime[0] > (long)GetAnim(C_FIGHT_START_BLOCK, 0)->FrameOffset / 2)
+		if (CycleTime[0] > (long)GetAnim(C_FIGHT_START_BLOCK, 0)->Duration / 2)
 		{
 			return true;
 		}
@@ -5147,7 +5142,7 @@ bool LH3DCreature::IsBlocking()
 	case LH3D_CREATURE_STATE_BLOCK:
 		return true;
 	case LH3D_CREATURE_STATE_FINISH_BLOCK:
-		if (CycleTime[0] < (long)GetAnim(C_FIGHT_START_BLOCK, 0)->FrameOffset / 2)
+		if (CycleTime[0] < (long)GetAnim(C_FIGHT_START_BLOCK, 0)->Duration / 2)
 		{
 			return true;
 		}
@@ -5163,8 +5158,8 @@ void LH3DCreature::DoFightActionAction()
 	CycleAnim[0] = GetAnim(CurrentAnim, 0);
 	// TODO: CAnim 0x10 is the anim's root movement (CAnim::field_0x8[2..4]); its first field is the signed duration.
 	LHPoint move;
-	move = *(LHPoint*)&CycleAnim[0]->field_0x8[2];
-	move *= GetFightMul() * IntTimeInc * Size2 / (long)CycleAnim[0]->FrameOffset;
+	move = CycleAnim[0]->Movement;
+	move *= GetFightMul() * IntTimeInc * Size2 / (long)CycleAnim[0]->Duration;
 	matrix.TransformPoint(move);
 	LHPoint newPos = position + move;
 	SetPos(newPos);
@@ -5548,21 +5543,19 @@ bool32_t LH3DCreature::DoTheTurningBusiness()
 	{
 		CycleAnim[0] = Anim0x5220;
 		CAnim* anim = GetAnim(C_MOVE_R_SPIN_90, 0);
-		// TODO: CAnim's first field is a signed duration, not uint32_t FrameOffset.
-		long oldTime = (long)anim->FrameOffset * CycleTime[0] / (long)CycleAnim[0]->FrameOffset;
+		long   oldTime = (long)anim->Duration * CycleTime[0] / (long)CycleAnim[0]->Duration;
 		CycleTime[0] += AnimTimeInc;
-		CheckSounds(C_MOVE_R_SPIN_90, oldTime,
-		            (long)anim->FrameOffset * CycleTime[0] / (long)CycleAnim[0]->FrameOffset);
+		CheckSounds(C_MOVE_R_SPIN_90, oldTime, (long)anim->Duration * CycleTime[0] / (long)CycleAnim[0]->Duration);
 	}
 	else
 	{
 		CycleAnim[0] = GetAnim(C_MOVE_STAND, 0);
 		float diff = angle_correct(RequiredHeading - Heading);
-		float heading = Heading + diff * CycleTime[0] / (long)CycleAnim[0]->FrameOffset;
+		float heading = Heading + diff * CycleTime[0] / (long)CycleAnim[0]->Duration;
 		Heading = angle_correct(heading);
 		CycleTime[0] += AnimTimeInc;
 	}
-	if (CycleTime[0] >= (long)CycleAnim[0]->FrameOffset)
+	if (CycleTime[0] >= (long)CycleAnim[0]->Duration)
 	{
 		CycleAnim[0] = GetAnim(C_MOVE_STAND, 0);
 		CycleTime[0] = 0;
@@ -6109,11 +6102,10 @@ void LH3DCreature::DoStandingAction()
 	CycleWeight[0] = 1.0f;
 	if (CycleAnim[0])
 	{
-		// TODO: CAnim::FrameOffset is the signed animation length; drop the casts once LH3DAnim.h types it as long.
-		CycleTime[0] = field_0x4988 * (long)CycleAnim[0]->FrameOffset;
-		if (CycleTime[0] >= (long)CycleAnim[0]->FrameOffset)
+		CycleTime[0] = field_0x4988 * (long)CycleAnim[0]->Duration;
+		if (CycleTime[0] >= (long)CycleAnim[0]->Duration)
 		{
-			CycleTime[0] = CycleAnim[0]->FrameOffset - 1;
+			CycleTime[0] = CycleAnim[0]->Duration - 1;
 		}
 	}
 }
@@ -6330,8 +6322,8 @@ void LH3DCreature::AdvanceMovementAnimations(float param_1)
 			CycleWeight[1] = CurrentSpeed / WalkSpeed;
 			CycleWeight[0] = 1.0f - CycleWeight[1];
 			float cycles = param_1 / (CycleAnim[1]->field_0x8[1] * Size2 * CycleWeight[1]);
-			CycleTime[0] = (long)((long)CycleAnim[0]->FrameOffset * field_0x4988);
-			CycleTime[1] = AdvanceCyclic(C_MOVE_WALK, CycleTime[1], (long)((long)CycleAnim[1]->FrameOffset * cycles));
+			CycleTime[0] = (long)((long)CycleAnim[0]->Duration * field_0x4988);
+			CycleTime[1] = AdvanceCyclic(C_MOVE_WALK, CycleTime[1], (long)((long)CycleAnim[1]->Duration * cycles));
 		}
 		else
 		{
@@ -6342,8 +6334,8 @@ void LH3DCreature::AdvanceMovementAnimations(float param_1)
 			float cycles =
 				param_1 /
 				((CycleAnim[1]->field_0x8[1] * CycleWeight[1] + CycleAnim[0]->field_0x8[1] * CycleWeight[0]) * Size2);
-			CycleTime[1] = AdvanceCyclic(C_MOVE_WALK, CycleTime[1], (long)((long)CycleAnim[1]->FrameOffset * cycles));
-			CycleTime[0] = CycleTime[1] * (long)CycleAnim[0]->FrameOffset / (long)CycleAnim[1]->FrameOffset;
+			CycleTime[1] = AdvanceCyclic(C_MOVE_WALK, CycleTime[1], (long)((long)CycleAnim[1]->Duration * cycles));
+			CycleTime[0] = CycleTime[1] * (long)CycleAnim[0]->Duration / (long)CycleAnim[1]->Duration;
 		}
 	}
 }
@@ -7445,7 +7437,7 @@ void LH3DCreature::UpdateMotion()
 		break;
 	case 1:
 		CycleAnim[0] = GetAnim(C_INDIVIDUAL_CONFUSED, 0);
-		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+		if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 		{
 			AdvanceSimple(C_INDIVIDUAL_CONFUSED, CycleTime[0], AnimTimeInc);
 			field_0x5190 = 0;
@@ -7463,7 +7455,7 @@ void LH3DCreature::UpdateMotion()
 		if (TurningCompleted)
 		{
 			CycleAnim[0] = GetAnim(C_POINT_HI_LEFT, 0);
-			if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->FrameOffset)
+			if (CycleTime[0] + AnimTimeInc >= (long)CycleAnim[0]->Duration)
 			{
 				AdvanceSimple(C_POINT_HI_LEFT, CycleTime[0], AnimTimeInc);
 				field_0x5190 = 0;
@@ -7537,18 +7529,18 @@ void LH3DCreature::UpdateMotion()
 			RequiredHeading = RpFollow->field_0x64040;
 			CycleAnim[0] = Anim0x5220;
 			CycleWeight[0] = 1.0f;
-			if (CycleTime[0] + IntTimeInc >= (long)CycleAnim[0]->FrameOffset)
+			if (CycleTime[0] + IntTimeInc >= (long)CycleAnim[0]->Duration)
 			{
 				Heading = RequiredHeading;
-				float fraction = (float)CycleTime[0] / (long)CycleAnim[0]->FrameOffset;
+				float fraction = (float)CycleTime[0] / (long)CycleAnim[0]->Duration;
 				CycleAnim[1] = GetAnim(C_MOVE_WALK, 0);
 				if (field_0x521c == 2)
 				{
-					CycleTime[1] = (long)((long)CycleAnim[1]->FrameOffset * fraction);
+					CycleTime[1] = (long)((long)CycleAnim[1]->Duration * fraction);
 				}
 				else
 				{
-					CycleTime[1] = (long)((fraction - 0.5f) * (long)CycleAnim[1]->FrameOffset);
+					CycleTime[1] = (long)((fraction - 0.5f) * (long)CycleAnim[1]->Duration);
 				}
 				CurrentSpeed = WalkSpeed;
 				field_0x5190 = 6;
@@ -7561,13 +7553,13 @@ void LH3DCreature::UpdateMotion()
 			{
 				LHPoint move;
 				CAnim*  anim = GetAnim(C_MOVE_R_STEP_90, 0);
-				long    oldTime = CycleTime[0] * (long)anim->FrameOffset / (long)CycleAnim[0]->FrameOffset;
+				long    oldTime = CycleTime[0] * (long)anim->Duration / (long)CycleAnim[0]->Duration;
 				CycleTime[0] += IntTimeInc;
 				CheckSounds(C_MOVE_R_STEP_90, oldTime,
-				            (long)anim->FrameOffset * CycleTime[0] / (long)CycleAnim[0]->FrameOffset);
+				            (long)anim->Duration * CycleTime[0] / (long)CycleAnim[0]->Duration);
 				LHMatrix rotation;
 				rotation.SetRotationY(Heading);
-				move = *(LHPoint*)&CycleAnim[0]->field_0x8[2] * (IntTimeInc * Size2 / (long)CycleAnim[0]->FrameOffset);
+				move = CycleAnim[0]->Movement * (IntTimeInc * Size2 / (long)CycleAnim[0]->Duration);
 				move.y = 0.0f;
 				rotation.TransformPoint(move);
 				if (RpFollow->field_0x6408c && RpFollow->field_0x6408c->Route0x68)
