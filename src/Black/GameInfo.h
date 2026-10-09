@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_GAME_INFO_INCLUDED_H
 #define BW1_DECOMP_GAME_INFO_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For int32_t, uint32_t, uint8_t */
+#include <assert.h>    /* For static_assert */
+#include <stdint.h>    /* For int32_t, uint32_t, uint8_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "Base.h" /* For struct Base */
 
@@ -52,6 +53,8 @@ public:
 	uint32_t ConvertRealWorldSecondsToGameTicks(float seconds) { return (uint32_t)(seconds * NumGameTicksPerSecond()); }
 	// BW1W120 005575a0 BW1M119 010695d0
 	float GetVisualTime();
+	// BW1W120 005575e0 BW1M119 010711e0
+	bool32_t IsVisualNight();
 	// BW1W120 005575d0 BW1M119 01301870
 	void ForceVisualTime(float time);
 	// BW1W120 00557610 BW1M119 013017e0

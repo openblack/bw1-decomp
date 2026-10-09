@@ -142,6 +142,10 @@ public:
 	void StopAllImmersion();
 	// BW1W120 005d56c0 BW1M119 0107d9c0
 	void SendObjectDrawCollision(Object* object, float distance, LH3DObject* lh3d_object);
+	// BW1W120 005ced10 BW1M119 013629e0
+	Object* GetInteractObject();
+	// BW1W120 00519960 BW1M119 010261b0
+	static void SendInvisibleDrawCollision(Object* object, LHPoint* pos, float radius);
 
 	// BW1W120 005d0560 BW1M119 01360280
 	void ResolveLoadForCreature();
@@ -157,8 +161,9 @@ public:
 	// BW1W120 005ce9e0 BW1M119 0107de50
 	void PreDrawProcess();
 	// BW1W120 005ceab0 BW1M119 0107ff30
-	void        PostDrawProcess();
-	void        Draw();           // 00518640
+	void PostDrawProcess();
+	// BW1W120 00518640 BW1M119 010200c0
+	void        Draw();
 	static void DrawAllLeashes(); // 005d9310
 	// BW1W120 005cec10 BW1M119 01028060
 	void Process();

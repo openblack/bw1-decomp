@@ -214,7 +214,7 @@ public:
 	// BW1W120 00422010 BW1M119 010a8800
 	virtual float GetPercentAbodeFullWithChildren() { return 1.0f; }
 	// BW1W120 0052f0c0 BW1M119 01043940
-	virtual bool IsDrawBuilding();
+	virtual bool32_t IsDrawBuilding();
 	// BW1W120 0052ebb0 BW1M119 010e4d60
 	virtual bool32_t Built();
 	// BW1W120 0052ec70 BW1M119 010e4c60

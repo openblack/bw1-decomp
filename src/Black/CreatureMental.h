@@ -42,6 +42,17 @@ struct CreatureInnatePersonality
 class CreatureMental : public Base
 {
 public:
+	// BW1W120 00c82f48
+	static bool32_t DebugDrawConfinement;
+	// BW1W120 00c82f4c
+	static bool32_t DebugDrawLine;
+	// BW1W120 00c82f50
+	static bool32_t DebugDrawMarker;
+	// BW1W120 00c82f54
+	static bool32_t DebugDrawPath;
+	// BW1W120 00c82f58
+	static bool32_t DebugDrawObjectToActOn;
+
 	// BW1W120 004e7820 BW1M119 0126dfb0
 	void                      SaveMind(char* path);
 	CreatureDesires           desires;

@@ -90,6 +90,10 @@ public:
 	FireGraphic* CreateSprites();
 	// BW1W120 00732ae0 BW1M119 011512b0
 	uint32_t GetFirstCaused();
+	// BW1W120 00730480 BW1M119 011558d0
+	uint32_t GetFireEffectSpecularColor();
+	// BW1W120 00730570 BW1M119 01155820
+	uint32_t GetFireEffectCharingColor();
 };
 
 #endif /* BW1_DECOMP_FIRE_EFFECT_INCLUDED_H */

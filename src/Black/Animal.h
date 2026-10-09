@@ -337,7 +337,7 @@ public:
 	// BW1W120 00420550 BW1M119 0117edd0
 	virtual void GetFleeingPositionFromMovingObject(MapCoords* param_1, GameThingWithPos* param_2, float param_3);
 	// BW1W120 0041a240 BW1M119 0107eb10
-	virtual VILLAGER_STATES GetFinalState() const;
+	virtual uint8_t GetFinalState() const;
 	// BW1W120 0041b210 BW1M119 010585e0
 	virtual bool IsPosValidForTurnAngle(const MapCoords& param_1);
 
@@ -347,6 +347,8 @@ public:
 	uint32_t KeepFlockMemberWithinFlockArea();
 	// BW1W120 00417c50 BW1M119 01174910
 	void SetTown(Town* town);
+	// BW1W120 0041b1f0 BW1M119 01034ef0
+	void DebugShowText();
 
 	// State-table handlers reached only through the villager/animal state
 	// tables in GStates.cpp. Names are placeholders keyed on the address;

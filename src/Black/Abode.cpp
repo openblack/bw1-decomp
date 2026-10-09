@@ -105,8 +105,8 @@ LH3DObject* Windmill::Sails;
 float       Windmill::SailsAngle;
 float       Windmill::WindPhase;
 
-static Town* KnockedTown;
-static int   KnockSample;
+Town*      Abode::KnockedTown;
+static int KnockSample;
 
 // Process turns an empty abode stands before it loses life.
 #define ABODE_NEGLECT_TURNS 1000
@@ -353,8 +353,7 @@ void Abode::CallVirtualFunctionsForCreation(const MapCoords& coords_)
 	float   scale = GetScale();
 	float   yAngle = GetYAngle();
 	LHPoint position;
-	static_cast<LH3DObject*>(Game3dObject)
-		->SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
+	Game3dObject->LH3DObject::SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
 }
 
 struct NewEPEntry

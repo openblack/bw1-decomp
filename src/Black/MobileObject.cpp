@@ -583,7 +583,7 @@ FieldCrop* FieldCrop::Create(const MapCoords& coords, const GMobileObjectInfo* i
 		{
 			LHPoint pos;
 			GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
-			object3d->SetPosition(pos, y_angle, scale);
+			object3d->LH3DObject::SetPosition(pos, y_angle, scale);
 		}
 		crop->Game3dObject->SetPaper(1);
 	}

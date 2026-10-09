@@ -14,7 +14,8 @@ class Base;
 class GScaffoldInfo : public GMobileObjectInfo
 {
 public:
-	uint8_t field_0x114[0x12];
+	float   field_0x114;
+	uint8_t field_0x118[0xe];
 
 	// Override methods
 
@@ -32,7 +33,7 @@ public:
 	static GScaffoldInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in Scaffold.h.
-	INFO_DATA_BLOCK(field_0x114, field_0x114)
+	INFO_DATA_BLOCK(field_0x114, field_0x118)
 	INFO_DERIVED_LOADERS(GMobileObjectInfo, "Scaffold.h", 21)
 };
 

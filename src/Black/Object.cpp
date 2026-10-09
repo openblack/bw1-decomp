@@ -96,15 +96,16 @@ GObjectInfo GObjectInfo::Definitions[OBJECT_TYPE_LAST];
 
 // TODO: fabricated; unrecovered counter slots that move DefaultAIPlayerObjectInfo's destructor
 // guard to a number whose name hashes into DefaultAIPlayerObjectInfo's .bss bucket, ahead of it
-// ($S200), while Definitions' guard ($S138) stays ahead of Definitions. The static data members
-// declared by Player.h, PlayerInfo.h, Reward.h, Network.h and LH3DMesh.h already put Definitions'
-// guard 9 slots later than the original's $S129, so the original pair ($S129/$S140) is out of reach.
+// ($S200), while Definitions' guard ($S144) stays ahead of Definitions. The static data members
+// declared by Player.h, PlayerInfo.h, Reward.h, Network.h, LH3DMesh.h, LH3DObject.h, LH3DIsland.h,
+// LHCollide.h, Abode.h and Game.h already put Definitions' guard 15 slots later than the original's
+// $S129, so the original pair ($S129/$S140) is out of reach.
 struct ObjectCounterPadBetween
 {
 	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5, Pad6, Pad7, Pad8, Pad9, Pad10, Pad11, Pad12, Pad13, Pad14, Pad15,
 		Pad16, Pad17, Pad18, Pad19, Pad20, Pad21, Pad22, Pad23, Pad24, Pad25, Pad26, Pad27, Pad28, Pad29, Pad30, Pad31,
 		Pad32, Pad33, Pad34, Pad35, Pad36, Pad37, Pad38, Pad39, Pad40, Pad41, Pad42, Pad43, Pad44, Pad45, Pad46, Pad47,
-		Pad48, Pad49, Pad50, Pad51, Pad52, Pad53, Pad54, Pad55;
+		Pad48, Pad49;
 };
 
 GObjectInfo GObjectInfo::DefaultAIPlayerObjectInfo;
@@ -417,7 +418,7 @@ void Object::Create3DObjectAtPos()
 	position.y = pos.Altitude();
 	position.y += LH3DIsland::GetAltitudeAndSetColorSpecular(pos, (unsigned long*)&object3d->color,
 	                                                         (unsigned long*)&object3d->specular);
-	object3d->SetPosition(position, 0.0f, 1.0f);
+	object3d->LH3DObject::SetPosition(position, 0.0f, 1.0f);
 }
 
 float Object::GetMeshRadius() const
@@ -1517,7 +1518,7 @@ void Object::SetXYZAngles(float x, float y, float z)
 		{
 			LHPoint position;
 			GLandscape::ConvertMapCoordToLandscapePoint(Pos, position);
-			object3d->SetPosition(position, yAngle, scale);
+			object3d->LH3DObject::SetPosition(position, yAngle, scale);
 		}
 	}
 	if (inMap)
@@ -1543,7 +1544,7 @@ void Object::SetXYZAnglesAndScale(float x, float y, float z, float scale)
 		{
 			LHPoint position;
 			GLandscape::ConvertMapCoordToLandscapePoint(Pos, position);
-			object3d->SetPosition(position, yAngle, objectScale);
+			object3d->LH3DObject::SetPosition(position, yAngle, objectScale);
 		}
 	}
 	if (inMap)

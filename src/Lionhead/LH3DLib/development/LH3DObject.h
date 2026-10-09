@@ -35,28 +35,32 @@ public:
 		COUNT = 0x9
 	};
 
-	uint32_t    Flags1; /* 0x4 */
-	uint32_t    Flags2;
-	uint32_t    field_0xc;
-	float       importance; /* 0x10 */
-	LHMatrix    matrix;
-	float       scale; /* 0x44 */
-	float       y_angle;
-	LH3DColor   color;
-	LH3DColor   specular; /* 0x50 */
-	LH3DColor   WindowColor;
-	int         SnowLevel;
-	int         field_0x5c;
-	uint32_t    field_0x60;
-	uint32_t    field_0x64;
-	float       u;
-	float       v;
-	LH3DObject* next; /* 0x70 */
-	uint32_t    field_0x74;
-	uint8_t     field_0x78;
+	uint32_t      Flags1;
+	uint32_t      Flags2;
+	uint32_t      field_0xc;
+	float         importance;
+	LHMatrix      matrix;
+	float         scale;
+	float         y_angle;
+	unsigned long color;
+	unsigned long specular;
+	LH3DColor     WindowColor;
+	int           SnowLevel;
+	int           field_0x5c;
+	uint32_t      field_0x60;
+	uint32_t      field_0x64;
+	float         u;
+	float         v;
+	LH3DObject*   next;
+	uint32_t      field_0x74;
+	uint8_t       field_0x78;
 
 	// Static data
 
+	// BW1W120 00ea1ac8 BW1M119 012b1f00 (LHCombined Release)
+	static int g_selected_px;
+	// BW1W120 00ea1acc BW1M119 012b1efc (LHCombined Release)
+	static int g_selected_py;
 	// BW1W120 00ea1ad0 BW1M119 012b1ef8 (LHCombined Release)
 	static bool32_t g_last_selected_box;
 	// BW1W120 00ea1af0 BW1M119 012b1ed8 (LHCombined Release)
@@ -68,22 +72,55 @@ public:
 
 	virtual bool32_t IsPreSetup(); /* 0x0 */
 	// TODO: original name unrecovered; frees the object and takes no arguments.
-	virtual void                Release();
-	virtual float               GetU();
-	virtual float               GetV();
-	virtual void __fastcall     SetPaper(int param_1); /* 0x10 */
-	virtual bool32_t            IsPaper();
-	virtual void                SetNoSnow(int param_1);
-	virtual bool32_t            IsNoSnow();
-	virtual void __fastcall     SetPosition_1(const LHPoint& point, float y_angle, float scale); /* 0x20 */
-	virtual void                SetPosition_2(float x, float y, float z);
-	virtual void                SetLinkedPosition(LH3DObject* linked_obj);
+	virtual void            Release();
+	virtual float           GetU();
+	virtual float           GetV();
+	virtual void __fastcall SetPaper(int param_1); /* 0x10 */
+	virtual bool32_t        IsPaper();
+	virtual void            SetNoSnow(int param_1);
+	virtual bool32_t        IsNoSnow();
+	// BW1W120 007f9730 BW1M119 01020630 (LHCombined Release)
+	virtual void SetPosition(float x, float y, float z);
+	// Inliner IL size: 194
+	// BW1W120 00423140 BW1M119 01043ec0
+	virtual void __fastcall SetPosition(const LHPoint& point, float y_angle, float scale)
+	{
+		if (y_angle != 0.0f)
+		{
+			if (scale != 1.0f)
+			{
+				matrix.SetScale(scale);
+				matrix.PostTranslation(point);
+				matrix.RotateY(y_angle);
+			}
+			else
+			{
+				matrix.Translation(point);
+				matrix.RotateY(y_angle);
+			}
+		}
+		else
+		{
+			if (scale != 1.0f)
+			{
+				matrix.SetScale(scale);
+				matrix.PostTranslation(point);
+			}
+			else
+			{
+				matrix.Translation(point);
+			}
+		}
+		this->scale = scale;
+		this->y_angle = y_angle;
+	}
+	virtual void __fastcall     SetLinkedPosition(LH3DObject* linked_obj, float param_2, int param_3);
 	virtual void __fastcall     SetColorSpecular(uint32_t color, uint32_t specular);
-	virtual void                SetWindowColor(uint32_t color); /* 0x30 */
+	virtual void __fastcall     SetWindowColor(uint32_t color); /* 0x30 */
 	virtual void __fastcall     SetSnowlevel(int level);
 	virtual void                SetSnowlevel(LHPoint& point);
 	virtual bool32_t            IsUseAlpha();
-	virtual void                SetNeedSorting(int value); /* 0x40 */
+	virtual void __fastcall     SetNeedSorting(int value); /* 0x40 */
 	virtual bool32_t            IsNeedSorting();
 	virtual void __fastcall     SetDrawWithGlobalAlpha(int value);
 	virtual bool32_t            IsDrawWithGlobalAlpha();
@@ -126,7 +163,7 @@ public:
 	virtual void                SetNeedTilling(int param_1); /* 0xe0 */
 	virtual bool32_t            IsNeedTilling();
 	virtual void                SetAnimatedUV_1(float u_speed, float v_speed);
-	virtual void                SetAnimatedUV_2(int param_1);
+	virtual void __fastcall     SetAnimatedUV_2(int param_1);
 	virtual bool32_t            IsAnimatedUV(); /* 0xf0 */
 	virtual uint32_t __fastcall SetMesh(LH3DMesh* param_1, LH3DMesh* param_2, LH3DMesh* param_3);
 	virtual LH3DMesh*           GetMesh() const;
@@ -152,10 +189,12 @@ public:
 	virtual void                DrawRefMapMT();
 	virtual void                DrawNormals();
 	virtual void                DrawJustPhys(); /* 0x150 */
-	virtual void                DrawFizz_1();
+	// DrawFizz and DrawFroz are overload pairs; MSVC lays out overloads in reverse declaration order, so the
+	// versions with arguments come first on Windows (0x154 takes 8 bytes, 0x15c takes 12).
 	virtual void                DrawFizz_2(float param_1, LH3DMaterial* material);
-	virtual void                DrawFroz_1();
-	virtual void                DrawFroz_2(float param_1, uint32_t param_2, LH3DMaterial* material); /* 0x160 */
+	virtual void                DrawFizz_1();
+	virtual void                DrawFroz_2(float param_1, uint32_t param_2, LH3DMaterial* material);
+	virtual void                DrawFroz_1(); /* 0x160 */
 	virtual void                DrawTextureShadow(uint32_t param_1, uint32_t param_2);
 	virtual void                DrawTextureShadow32x32(void* param_1);
 	virtual void                DrawMorphLand();
@@ -165,8 +204,8 @@ public:
 	virtual void                Blend(LH3DObject* obj1, LH3DObject* obj2);
 	virtual void __fastcall     SetCurrentAnim(LH3DAnim* anim); /* 0x180 */
 	virtual LH3DAnim*           GetCurrentAnim();
-	virtual void __fastcall     SetCurrentCycleTime(int time);
-	virtual float               GetCurrentCycleTime();
+	virtual void __fastcall     SetCurrentCycleTime(long time);
+	virtual long                GetCurrentCycleTime();
 	virtual void                SetLastAnim(const LH3DAnim* anim); /* 0x190 */
 	virtual LH3DAnim*           GetLastAnim();
 	virtual void                SetLastCycleTime(int time);
@@ -219,39 +258,10 @@ public:
 
 	// Non-virtual functions
 
-	// Inliner IL size: 194
-	// BW1W120 00423140 BW1M119 01043ec0
-	void SetPosition(const LHPoint& point, float y_angle, float scale)
-	{
-		if (y_angle != 0.0f)
-		{
-			if (scale != 1.0f)
-			{
-				matrix.SetScale(scale);
-				matrix.PostTranslation(point);
-				matrix.RotateY(y_angle);
-			}
-			else
-			{
-				matrix.Translation(point);
-				matrix.RotateY(y_angle);
-			}
-		}
-		else
-		{
-			if (scale != 1.0f)
-			{
-				matrix.SetScale(scale);
-				matrix.PostTranslation(point);
-			}
-			else
-			{
-				matrix.Translation(point);
-			}
-		}
-		this->scale = scale;
-		this->y_angle = y_angle;
-	}
+	// BW1W120 0080bec0 BW1M119 0101c8e0 (LHCombined Release)
+	void __fastcall CombineColorFromPos(unsigned long color, unsigned long specular);
+	// BW1W120 0080bf10 BW1M119 0107f4f0 (LHCombined Release)
+	void __fastcall CombineColorWithCurrent(unsigned long color, unsigned long specular);
 };
 
 #endif /* BW1_DECOMP_LH3D_OBJECT_INCLUDED_H */

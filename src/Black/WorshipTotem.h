@@ -92,6 +92,11 @@ public:
 
 	// BW1W120 00780840 BW1M119 015bf560
 	WorshipTotem(WorshipSite* site);
+
+	// Non-virtual methods
+
+	// BW1W120 00780ee0 BW1M119 015be960
+	void DrawMagicSystem();
 };
 
 #endif /* BW1_DECOMP_WORSHIP_TOTEM_INCLUDED_H */

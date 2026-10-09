@@ -59,6 +59,11 @@ struct CreatureReceiveSpell
 
 	// BW1W120 004f5240 BW1M119 01284020
 	CreatureReceiveSpell(Creature* creature);
+
+	// Non-virtual methods
+
+	// BW1W120 004f4c50 BW1M119 01284d30
+	void Draw();
 };
 
 // Constructor stores: 004f5240; allocation of 0x1d8 bytes: 0047472c.

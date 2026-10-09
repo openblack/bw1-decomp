@@ -51,8 +51,8 @@ public:
 	LHPoint            CameraFoc;
 	LHPoint            ReportedHandPos; /* 0xc8 */
 	LHPoint            field_0xd4;
-	uint32_t           field_0xe0;
-	uint32_t           field_0xe4;
+	int                field_0xe0;
+	int                field_0xe4;
 	LHPoint            field_0xe8;
 	float              field_0xf4;
 	float              field_0xf8;
@@ -93,6 +93,11 @@ public:
 	virtual void ResolveLoad();
 	// BW1W120 005db960 BW1M119 01374540
 	virtual const char* GetText();
+
+	// New virtual methods
+
+	// BW1W120 005dc600 BW1M119 01017560
+	virtual void DebugText(int param_1);
 
 	// Constructors
 

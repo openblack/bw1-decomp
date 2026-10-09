@@ -47,11 +47,8 @@
 #include "Interface.h"
 #include "Landscape.h"
 #include "Object.h"
-#include "alexmfc.h" /* For struct SetupBox */
-
-// BW1W120 00516cb0 BW1M119 010ce9e0
-void DrawCreatureFightStats(float param_1, float param_2, wchar_t* name1, float param_4, float param_5, wchar_t* name2,
-                            int alpha);
+#include "alexmfc.h"              /* For struct SetupBox */
+#include "CreatureStatsDisplay.h" /* For DrawCreatureFightStats */
 
 const float BigDistance = 3.4028235e+38f;
 

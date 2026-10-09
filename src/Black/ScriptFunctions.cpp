@@ -582,7 +582,7 @@ void GScript::SetPosition()
 							LH3DObject* object3d = object->Game3dObject;
 							LHPoint     point;
 							GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
-							object3d->SetPosition(point, yAngle, scale);
+							object3d->LH3DObject::SetPosition(point, yAngle, scale);
 						}
 						object->coords = object->Pos;
 						if (object->IsLiving() && (thing->Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT))
@@ -1639,8 +1639,8 @@ void GScript::GetScriptState()
 	{
 		if (thing->IsLiving())
 		{
-			VILLAGER_STATES state = ((Living*)thing)->GetFinalState();
-			g_scriptDLL->PUSH((void*)(uint8_t)state, VMType_INT);
+			VILLAGER_STATES state = (VILLAGER_STATES)((Living*)thing)->GetFinalState();
+			g_scriptDLL->PUSH((void*)state, VMType_INT);
 			return;
 		}
 		if (thing->IsPuzzleGame())

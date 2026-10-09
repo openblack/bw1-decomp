@@ -114,6 +114,10 @@ struct LHMatrix
 	// Inliner IL size: <= 40, always inlined and never charged
 	// BW1W120 inlined BW1M119 01043dd0
 	const LHPoint& GetPos() const { return *(const LHPoint*)&m[9]; }
+	// BW1W120 inlined BW1M119 010995c0
+	LHPoint& GetVectorY() const { return *(LHPoint*)&m[3]; }
+	// BW1W120 inlined BW1M119 01099540
+	LHPoint& GetVectorZ() const { return *(LHPoint*)&m[6]; }
 	// Inliner IL size: 187
 	// BW1W120 005198f0 BW1M119 inlined
 	void RotateY(float angle)
@@ -137,8 +141,94 @@ struct LHMatrix
 		_33 *= c;
 		_33 -= t;
 	}
+	// BW1W120 inlined BW1M119 inlined
+	void PostRotateY(float angle)
+	{
+		float c = cos(angle);
+		float s = sin(angle);
+		float t;
+		t = _11 * s;
+		_11 *= c;
+		_11 -= _13 * s;
+		_13 *= c;
+		_13 += t;
+		t = _21 * s;
+		_21 *= c;
+		_21 -= _23 * s;
+		_23 *= c;
+		_23 += t;
+		t = _31 * s;
+		_31 *= c;
+		_31 -= _33 * s;
+		_33 *= c;
+		_33 += t;
+		t = _41 * s;
+		_41 *= c;
+		_41 -= _43 * s;
+		_43 *= c;
+		_43 += t;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	void PostRotateZ(float angle)
+	{
+		float c = cos(angle);
+		float s = sin(angle);
+		float t;
+		t = _11 * s;
+		_11 *= c;
+		_11 += _12 * s;
+		_12 *= c;
+		_12 -= t;
+		t = _21 * s;
+		_21 *= c;
+		_21 += _22 * s;
+		_22 *= c;
+		_22 -= t;
+		t = _31 * s;
+		_31 *= c;
+		_31 += _32 * s;
+		_32 *= c;
+		_32 -= t;
+		t = _41 * s;
+		_41 *= c;
+		_41 += _42 * s;
+		_42 *= c;
+		_42 -= t;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	void RotateZ(float angle)
+	{
+		float c = cos(angle);
+		float s = sin(angle);
+		float t;
+		t = _11 * s;
+		_11 *= c;
+		_11 -= _21 * s;
+		_21 *= c;
+		_21 += t;
+		t = _12 * s;
+		_12 *= c;
+		_12 -= _22 * s;
+		_22 *= c;
+		_22 += t;
+		t = _13 * s;
+		_13 *= c;
+		_13 -= _23 * s;
+		_23 *= c;
+		_23 += t;
+	}
 	// BW1W120 007fb290 BW1M119 0102fff0 (LHCombined Release)
 	void __fastcall SetInverse(const LHMatrix& r);
+	// BW1W120 007fae60 BW1M119 010305a0 (LHCombined Release)
+	void __fastcall PreMultiply(const LHMatrix& m);
+	// BW1W120 007fb3f0 BW1M119 010377a0 (LHCombined Release)
+	void SetInverse();
+	// BW1W120 007faff0 BW1M119 01028040 (LHCombined Release)
+	void __fastcall PostMultiply(const LHMatrix& r);
+	// fabricated name: PostMultiply for the 3x3 part only. The out-of-line copy sits among the ControlHand.cpp
+	// functions; the Mac inlines it into ConvertToCameraFacingMatrix with a nested SetMatrixOnly call.
+	// BW1W120 0046d9d0 BW1M119 inlined
+	void __fastcall PostMultiplyMatrixOnly(const LHMatrix& r);
 	// BW1W120 007fab30 BW1M119 0100ee90 (LHCombined Release)
 	void GetYXZ(float* y, float* x, float* z) const;
 	// BW1W120 007fac10 BW1M119 01032770 (LHCombined Release)
@@ -161,6 +251,35 @@ struct LHMatrix
 		point.x = m[0] * x + m[3] * y + m[6] * z + m[9];
 		point.y = m[1] * x + m[4] * y + m[7] * z + m[10];
 		point.z = m[2] * x + m[5] * y + m[8] * z + m[11];
+	}
+	// fabricated name: scales the 3x3 part and leaves the translation alone, after SetMatrixOnly and
+	// NormaliseMatrixOnly. Inlined into OneOffSpellSeed::FaceCamera on the Mac.
+	// Inliner IL size: 108
+	// BW1W120 00518b90 BW1M119 inlined
+	void ScaleMatrixOnly(float scale)
+	{
+		m[0] *= scale;
+		m[1] *= scale;
+		m[2] *= scale;
+		m[3] *= scale;
+		m[4] *= scale;
+		m[5] *= scale;
+		m[6] *= scale;
+		m[7] *= scale;
+		m[8] *= scale;
+	}
+	// fabricated name: TransformPoint without the translation (after LH3DCore::InverseTransformVector).
+	// Inlined into OneOffSpellSeed::FaceCamera on the Mac.
+	// Inliner IL size: 156
+	// BW1W120 00518bf0 BW1M119 inlined
+	void __fastcall TransformVector(LHPoint& point) const
+	{
+		float x = point.x;
+		float y = point.y;
+		float z = point.z;
+		point.x = m[0] * x + m[3] * y + m[6] * z;
+		point.y = m[1] * x + m[4] * y + m[7] * z;
+		point.z = m[2] * x + m[5] * y + m[8] * z;
 	}
 };
 

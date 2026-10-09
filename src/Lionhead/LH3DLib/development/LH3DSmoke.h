@@ -14,8 +14,8 @@ struct LH3DSprite;
 
 struct LH3DSmoke
 {
-	LHPoint       pos; /* 0x0 */
-	uint32_t      field_0xc;
+	LHPoint       pos;    /* 0x0 */
+	int           State;  /* 0xc */
 	LH3DSprite*   sprite; /* 0x10 */
 	uint8_t       field_0x14[0xc];
 	int           field_0x20[0xa];
@@ -39,6 +39,8 @@ struct LH3DSmoke
 
 	// BW1W120 007f8d10 BW1M119 010b3290 (LHCombined Release)
 	void Release();
+	// BW1W120 007f8d30 BW1M119 0100e790 (LHCombined Release)
+	void AddDrawing();
 };
 
 #endif /* BW1_DECOMP_LH3D_SMOKE_INCLUDED_H */

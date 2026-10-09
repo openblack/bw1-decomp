@@ -4,8 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
-#include <re_common.h>   /* For bool32_t */
+#include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer */
+#include <chlasm/Enum.h>                         /* For enum RESOURCE_TYPE */
+#include <re_common.h>                           /* For bool32_t */
 
 #include "PotStructure.h" /* For struct PotStructure */
 
@@ -27,18 +28,7 @@ class Town;
 class PileResource : public PotStructure
 {
 public:
-	float    field_0x84;
-	float    field_0x88;
-	uint32_t field_0x8c;
-	uint32_t field_0x90;
-	uint32_t field_0x94;
-	uint32_t field_0x98;
-	uint32_t field_0x9c;
-	float    field_0xa0;
-	uint32_t field_0xa4;
-	uint32_t field_0xa8;
-	uint32_t field_0xac;
-	uint32_t field_0xb0;
+	Zoomer AltitudeZoomer;
 
 	// Override methods
 

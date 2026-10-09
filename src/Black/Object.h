@@ -31,6 +31,7 @@ class GameOSFile;
 class GameThing;
 struct GameThingVftable;
 struct GestureSystemPacketData;
+struct LH3DAnim;
 struct LH3DSprite;
 struct LHMatrix;
 class LHOSFile;
@@ -744,6 +745,14 @@ public:
 	void DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 004eaab0 BW1M119 012722f0
 	void ConsiderCreatureMimickingWhenObjectLands();
+	// BW1W120 00516510 BW1M119 010554a0
+	void CheckSounds(const LH3DAnim* anim, long start_frame, long end_frame);
+	// BW1W120 005167d0 BW1M119 010558c0
+	long MoveAnimByTime(const LH3DAnim* anim, long frame, long time);
+	// BW1W120 00516840 BW1M119 010559a0
+	long MoveAnimByDist(const LH3DAnim* anim, long frame, float distance);
+	// BW1W120 00518050 BW1M119 010cd310
+	void DrawObjectOnFire();
 };
 
 #endif /* BW1_DECOMP_OBJECT_INCLUDED_H */

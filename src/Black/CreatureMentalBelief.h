@@ -23,9 +23,10 @@ class Object;
 class CreatureBelief : public Base
 {
 public:
-	uint8_t           field_0x8[0x1c];
-	MapCoords         Pos;     /* 0x24 */
-	GameThingWithPos* Pointer; /* 0x30 */
+	CreatureBelief*   Next;
+	uint8_t           field_0xc[0x18];
+	MapCoords         Pos;
+	GameThingWithPos* Pointer;
 	uint8_t           field_0x34[0x18];
 
 	// Override methods

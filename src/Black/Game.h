@@ -133,6 +133,8 @@ public:
 	// TODO: Original static member name is unrecovered.
 	// BW1W120 00d019a9
 	static bool ScriptRebootRequested;
+	// BW1W120 00d46a78
+	static bool32_t DebugDrawCreatureBeliefs;
 	// TODO: Original names are unrecovered; shared with tutorial and packet processing.
 	// BW1W120 00d019a4
 	static uint32_t TutorialState;
@@ -238,7 +240,7 @@ public:
 	uint32_t               field_0x205d3c;
 	int                    GameTimeMilliseconds;
 	uint32_t               field_0x205d44;
-	int                    field_0x205d48;
+	uint32_t               field_0x205d48;
 	uint32_t               field_0x205d4c;
 	uint32_t               field_0x205d50;
 	uint32_t               field_0x205d54;
@@ -314,7 +316,7 @@ public:
 	GClimate*             climate;
 	uint32_t              Initialised;
 	uint32_t              field_0x25053c;
-	int                   field_0x250540;
+	uint32_t              field_0x250540;
 
 	// Override methods
 

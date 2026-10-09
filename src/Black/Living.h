@@ -609,7 +609,7 @@ public:
 	// BW1W120 005f2010 BW1M119 0138e9b0
 	virtual void GetFleeingPositionFromStationaryObject(MapCoords* param_1, GameThingWithPos* param_2, float param_3);
 	// BW1W120 004749e0 BW1M119 011385f0
-	virtual VILLAGER_STATES GetFinalState() const;
+	virtual uint8_t GetFinalState() const;
 	// BW1W120 005ef930 BW1M119 0138c3d0
 	virtual void RemoveFromDance(int param_1);
 	// BW1W120 00417300 BW1M119 01139470
@@ -655,6 +655,14 @@ public:
 
 	// BW1W120 005ec030 BW1M119 0138b700
 	void SetToZero();
+	// BW1W120 0051af00 BW1M119 0104b000
+	void PreDrawScale(float scale);
+	// BW1W120 0051b220 BW1M119 0104cc50
+	void PreDrawShear();
+	// BW1W120 0051b3d0 BW1M119 0104cde0
+	void DrawScale(float scale);
+	// BW1W120 0051b4a0 BW1M119 010c8ac0
+	void DrawScaleWithPlayerColor(float scale);
 	// BW1W120 005ec1d0 BW1M119 0138b420
 	bool32_t InvalidState();
 	// BW1W120 005ec270 BW1M119 0104f900

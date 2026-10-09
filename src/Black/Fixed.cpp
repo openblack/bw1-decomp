@@ -487,7 +487,7 @@ void MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords& coords)
 		GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(coords, point);
 		point.y += LH3DIsland::GetAltitudeAndSetColorSpecular(coords, (unsigned long*)&object->color,
 		                                                      (unsigned long*)&object->specular);
-		object->SetPosition(point, yAngle, scale);
+		object->LH3DObject::SetPosition(point, yAngle, scale);
 	}
 	InitialiseIsFixedForMapList();
 	AllocateMultiChild();
@@ -723,7 +723,7 @@ float MultiMapFixed::GetPercentRepairedFromWhenDamaged()
 	return 1.0f;
 }
 
-bool MultiMapFixed::IsDrawBuilding()
+bool32_t MultiMapFixed::IsDrawBuilding()
 {
 	return building_site != NULL;
 }

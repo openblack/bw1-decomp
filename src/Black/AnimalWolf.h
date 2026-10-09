@@ -20,6 +20,28 @@ class Object;
 class SpellWolf : public Lion
 {
 public:
+	uint32_t field_0x148;
+	uint32_t field_0x14c;
+	uint32_t field_0x150;
+	uint32_t field_0x154;
+	float    field_0x158;
+	uint32_t field_0x15c;
+	uint32_t field_0x160;
+	uint32_t field_0x164;
+	float    field_0x168;
+	float    field_0x16c;
+	float    field_0x170;
+	float    field_0x174;
+	uint32_t field_0x178;
+	float    field_0x17c;
+	float    field_0x180;
+	float    field_0x184;
+	float    field_0x188;
+	float    field_0x18c;
+	float    field_0x190;
+	float    field_0x194;
+	GPlayer* field_0x198;
+
 	// Override methods
 
 	// BW1W120 004208e0 BW1M119 0117f9e0

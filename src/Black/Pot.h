@@ -150,6 +150,10 @@ public:
 
 	// BW1W120 0066cec0 BW1M119 011260f0
 	void SetToZero();
+	// BW1W120 0051bb50 BW1M119 010c88f0
+	static uint32_t GetPoisonColor();
+	// BW1W120 0051bb60 BW1M119 010c88b0
+	static uint32_t GetPoisonSpecular();
 	// BW1W120 0066d660 BW1M119 01124ab0
 	void SetupReaction();
 };

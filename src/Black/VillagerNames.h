@@ -88,7 +88,7 @@ public:
 	// Static methods
 
 	// BW1W120 007629e0 BW1M119 015929c0
-	static VillagerName* Add(float text_size, LHPoint point, const char16_t* text, const LH3DColor& p_color);
+	static VillagerName* Add(float text_size, LHPoint point, char16_t* text, LH3DColor& p_color);
 
 	// Non-virtual methods
 

@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+
 #include "Base.h" /* For struct Base */
 
 class CreatureMentalDebug : public Base
@@ -16,11 +18,10 @@ public:
 	uint32_t field_0x18;
 	uint32_t field_0x1c;
 	uint32_t field_0x20;
-	uint32_t field_0x24;
-	uint32_t field_0x28;
-	uint8_t  field_0x2c[0x10];
-	uint32_t field_0x3c;
-	uint8_t  field_0x40[0xc];
+	LHPoint  LineStart;
+	LHPoint  LineEnd;
+	int      LineTurnsLeft;
+	LHPoint  MarkerPos;
 
 	// Override methods
 

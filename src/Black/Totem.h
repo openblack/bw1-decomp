@@ -85,6 +85,13 @@ public:
 	// BW1W120 007374c0 BW1M119 0154c180
 	static Totem* Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
 	                     float food, int wood);
+
+	// Non-virtual methods
+
+	// BW1W120 00737760 BW1M119 0154bb20
+	void InitTotemPosFromWorshipPercentage();
+	// BW1W120 00737780 BW1M119 0154baf0
+	void DebugText(int param_1);
 };
 
 #endif /* BW1_DECOMP_TOTEM_INCLUDED_H */

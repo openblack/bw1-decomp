@@ -9,6 +9,7 @@
 class GameOSFile;
 struct LH3DMesh;
 struct LH3DPrimitive;
+struct LHMatrix;
 struct LHPoint;
 class LH3DObject;
 class Object;
@@ -53,8 +54,8 @@ struct FragMesh
 	uint32_t        count;
 	uint32_t        field_0x8;
 	FragPrimitive** primitives;
-	uint32_t        field_0x10;
-	uint8_t         field_0x14[0x4];
+	uint32_t        Color;
+	uint32_t        Specular;
 	float           FractionRemaining;
 	uint8_t         field_0x1c[0xc];
 
@@ -78,6 +79,8 @@ struct FragMesh
 	bool GetRandomSurfacePos(LHPoint* pos, float (*rand_func)(float));
 	// BW1W120 0076d680 BW1M119 011663a0
 	void WriteToFile(GameOSFile& file);
+	// BW1W120 007f7960 BW1M119 010c1510 (LHCombined Release)
+	void Draw(LHMatrix* matrix, LHPoint& pos);
 	// BW1W120 007f7d40 BW1M119 01162ea0
 	void Impact(LHPoint* pos, LHPoint* velocity, float radius, Object* object);
 	// BW1W120 007f7230 BW1M119 010ffb80 (LHCombined Release)

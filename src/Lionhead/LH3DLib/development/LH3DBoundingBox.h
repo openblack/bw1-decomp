@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_LH3D_BOUNDING_BOX_INCLUDED_H
 #define BW1_DECOMP_LH3D_BOUNDING_BOX_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
+#include <assert.h>    /* For static_assert */
+#include <stdint.h>    /* For uint32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "LHPoint.h" /* For struct LHPoint */
 
@@ -20,7 +21,7 @@ struct LH3DBoundingBox
 	// Non-virtual methods
 
 	// BW1W120 00868c80 BW1M119 01027120 (LHCombined Release)
-	void CheckRegionOnScreen(LH3DObject* object);
+	bool32_t CheckRegionOnScreen(LH3DObject* object);
 };
 static_assert(sizeof(LH3DBoundingBox) == 0x20, "Data type is of wrong size");
 

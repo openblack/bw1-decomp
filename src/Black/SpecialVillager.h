@@ -40,7 +40,7 @@ public:
 	// BW1W120 0071f490 BW1M119 0114f210
 	virtual const char* GetVillagerName();
 	// BW1W120 0071f240 BW1M119 0106b580
-	virtual uint32_t DrawVillagerInfo();
+	virtual bool DrawVillagerInfo();
 
 	// Static methods
 	// BW1W120 0071f8f0 BW1M119 0114e8e0

@@ -122,6 +122,10 @@ public:
 
 	// BW1W120 007260f0 BW1M119 0152caf0
 	void SetToZero();
+	// BW1W120 00726d20 BW1M119 0152b110
+	void DrawMagicSystem();
+	// BW1W120 00726d30 BW1M119 0152b050
+	void DrawSpellSeedGraphic(uint8_t param_1);
 	// BW1W120 00726310 BW1M119 0152c2b0
 	bool32_t IsSpellSeed(SPELL_SEED_TYPE type);
 	// BW1W120 00726350 BW1M119 0152c3c0

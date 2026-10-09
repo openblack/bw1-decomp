@@ -645,12 +645,15 @@ Black/DialogBoxOptions.cpp:
 
 Black/DialogBoxSaveMessage.cpp:
 	.text       start:0x00513B00 end:0x00514000
-	.data       start:0x00BD8394 end:0x00BD84D0
+	.rdata      start:0x008C8688 end:0x008C86AC
+	.data       start:0x00BD8394 end:0x00BD83DC
 
 Black/DrawingObject.cpp:
 	.text       start:0x00514000 end:0x0051ADB0
-	.rdata      start:0x008C8688 end:0x008C8750
+	.rdata      start:0x008C86AC end:0x008C8750
 	.CRT$XCU    start:0x009B6524 end:0x009B6534 align:4
+	.data       start:0x00BD83DC end:0x00BD84D0
+	.bss        start:0x00CB50F8 end:0x00CB5160 align:8
 
 Black/EditorAnim.cpp:
 	.text       start:0x0051BE60 end:0x0051CEA0

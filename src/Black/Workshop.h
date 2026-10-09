@@ -6,6 +6,7 @@
 
 #include <chlasm/Enum.h>                             /* For enum RESOURCE_TYPE */
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>      /* For LHLinkedList */
 
 #include "Abode.h" /* For struct Abode */
 
@@ -19,15 +20,22 @@ class GameThing;
 class GameThingWithPos;
 struct MapCoords;
 class Object;
+class Game3DObject;
 class Scaffold;
+class ShowNeedsVisuals;
 class Villager;
 
 class Workshop : public Abode
 {
 public:
-	uint8_t              field_0xc4[0x14];
-	LHListNode<Workshop> next;
-	uint8_t              field_0xdc[0xc];
+	uint32_t                field_0xc4;
+	uint32_t                field_0xc8;
+	Game3DObject*           field_0xcc;
+	uint32_t                field_0xd0;
+	ShowNeedsVisuals*       NeedsVisuals;
+	LHListNode<Workshop>    next;
+	uint8_t                 field_0xdc[0x4];
+	LHLinkedList<Scaffold*> Scaffolds;
 
 	// Override methods
 
@@ -99,6 +107,10 @@ public:
 	bool32_t IsPosWithinScaffoldAreas(MapCoords& pos);
 	// BW1W120 0077a480 BW1M119 0116a3f0
 	bool32_t CheckSnapToPoint(Scaffold* scaffold);
+	// BW1W120 00779a60 BW1M119 0116b8e0
+	MapCoords GetScaffoldCreatePos(unsigned long position, float& x_angle, float& y_angle, float& z_angle);
+	// BW1W120 0051ca10 BW1M119 010c7410
+	void DrawScaffold();
 };
 
 #endif /* BW1_DECOMP_WORKSHOP_INCLUDED_H */
