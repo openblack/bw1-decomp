@@ -247,14 +247,14 @@ public:
 	uint32_t               field_0x205d3c;
 	int                    GameTimeMilliseconds;
 	uint32_t               field_0x205d44;
-	uint32_t               field_0x205d48;
+	uint32_t               TimeInc;
 	uint32_t               field_0x205d4c;
 	uint32_t               field_0x205d50;
 	uint32_t               field_0x205d54;
 	int                    field_0x205d58;
 	uint32_t               field_0x205d5c;
 	uint32_t               field_0x205d60;
-	float                  field_0x205d64;
+	float                  TurnFraction;
 	LHTimer                timer;
 	uint32_t               field_0x205e78;
 	uint8_t                field_0x205e7c[0x10];
@@ -322,8 +322,8 @@ public:
 	uint32_t              field_0x250530;
 	GClimate*             climate;
 	uint32_t              Initialised;
-	uint32_t              field_0x25053c;
-	uint32_t              field_0x250540;
+	uint32_t              RenderTime;
+	uint32_t              RenderTimeInc;
 
 	// Override methods
 

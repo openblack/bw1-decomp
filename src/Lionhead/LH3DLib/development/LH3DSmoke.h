@@ -12,6 +12,12 @@
 struct LH3DMaterial;
 struct LH3DSprite;
 
+enum LH3D_SMOKE_STATE
+{
+	LH3D_SMOKE_STATE_EMITTING = 0,
+	LH3D_SMOKE_STATE_FADING = 2,
+};
+
 struct LH3DSmoke
 {
 	LHPoint       pos;    /* 0x0 */

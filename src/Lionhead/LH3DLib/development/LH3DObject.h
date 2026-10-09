@@ -18,6 +18,11 @@ struct LH3DMesh;
 struct LHBoundingBox;
 struct LHPoint;
 
+enum LH3D_OBJECT_FLAGS2
+{
+	LH3D_OBJECT_FLAGS2_OUT_OF_MAP = 0x40,
+};
+
 class LH3DObject
 {
 public:
@@ -48,7 +53,7 @@ public:
 	int           SnowLevel;
 	int           field_0x5c;
 	uint32_t      field_0x60;
-	uint32_t      field_0x64;
+	bool32_t      DrawAsFence;
 	float         u;
 	float         v;
 	LH3DObject*   next;
@@ -120,9 +125,9 @@ public:
 	virtual void __fastcall     SetSnowlevel(int level);
 	virtual void                SetSnowlevel(LHPoint& point);
 	virtual bool32_t            IsUseAlpha();
-	virtual void __fastcall     SetNeedSorting(int value); /* 0x40 */
+	virtual void __fastcall     SetNeedSorting(bool32_t value); /* 0x40 */
 	virtual bool32_t            IsNeedSorting();
-	virtual void __fastcall     SetDrawWithGlobalAlpha(int value);
+	virtual void __fastcall     SetDrawWithGlobalAlpha(bool32_t value);
 	virtual bool32_t            IsDrawWithGlobalAlpha();
 	virtual void                SetLinked(int param_1); /* 0x50 */
 	virtual bool32_t            IsLinked();
@@ -163,7 +168,7 @@ public:
 	virtual void                SetNeedTilling(int param_1); /* 0xe0 */
 	virtual bool32_t            IsNeedTilling();
 	virtual void                SetAnimatedUV_1(float u_speed, float v_speed);
-	virtual void __fastcall     SetAnimatedUV_2(int param_1);
+	virtual void __fastcall     SetAnimatedUV_2(bool32_t animated);
 	virtual bool32_t            IsAnimatedUV(); /* 0xf0 */
 	virtual uint32_t __fastcall SetMesh(LH3DMesh* param_1, LH3DMesh* param_2, LH3DMesh* param_3);
 	virtual LH3DMesh*           GetMesh() const;

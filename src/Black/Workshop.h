@@ -25,16 +25,21 @@ class Scaffold;
 class ShowNeedsVisuals;
 class Villager;
 
+enum WORKSHOP_SCAFFOLD_SLOT
+{
+	WORKSHOP_SCAFFOLD_SLOT_MOVED = 1,
+};
+
 class Workshop : public Abode
 {
 public:
-	uint32_t                field_0xc4;
+	uint32_t                ProductionTimeLeft;
 	uint32_t                field_0xc8;
-	Game3DObject*           field_0xcc;
+	Game3DObject*           ScaffoldPreview;
 	uint32_t                field_0xd0;
 	ShowNeedsVisuals*       NeedsVisuals;
 	LHListNode<Workshop>    next;
-	uint8_t                 field_0xdc[0x4];
+	uint8_t                 ScaffoldSlots[0x4];
 	LHLinkedList<Scaffold*> Scaffolds;
 
 	// Override methods

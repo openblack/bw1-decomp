@@ -110,6 +110,11 @@ enum LIVING_SET_STATE_RESULT
 	LIVING_SET_STATE_ENTRY_REFUSED = 0x2f
 };
 
+enum LIVING_STATUS
+{
+	LIVING_STATUS_SHOW_INFO = 0x200,
+};
+
 template <class T, int N> class ForgetfulLinkedList
 {
 public:

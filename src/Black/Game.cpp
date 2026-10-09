@@ -280,8 +280,8 @@ bool32_t GGame::Init()
 	{
 		InternetAvailable = false;
 	}
-	field_0x25053c = 0;
-	field_0x250540 = 0;
+	RenderTime = 0;
+	RenderTimeInc = 0;
 	Initialising = true;
 	LoadingFrameEnabled = 1;
 	if (TipVideo == NULL)
@@ -1143,8 +1143,8 @@ GGame::GGame()
 	GameFlags |= GAME_FLAG_AUTO_SAVE_ENABLED;
 	AutoSaved = false;
 	LandNumber = 0;
-	field_0x25053c = 0;
-	field_0x250540 = 0;
+	RenderTime = 0;
+	RenderTimeInc = 0;
 	climate = NULL;
 	field_0x59a4 = 1;
 	field_0x205d34 = 50;
@@ -1858,8 +1858,8 @@ void GGame::Loop()
 		help_system->field_0x4608 = 0;
 	}
 	LH3DTech::g_game_time_inc = 0;
-	field_0x205d48 = 0;
-	field_0x205d64 = 0.0f;
+	TimeInc = 0;
+	TurnFraction = 0.0f;
 	static uint32_t playLogoOnFirstLoop = 1;
 	if (playLogoOnFirstLoop)
 	{
@@ -1887,7 +1887,7 @@ void GGame::Loop()
 		SendNetworkChecksum(false);
 		ProcessGameCode();
 		LH3DTech::g_game_time_inc = 0;
-		field_0x205d48 = 0;
+		TimeInc = 0;
 		ProcessGraphicsEngine(0, 0);
 		LH3DRender::StartFrame();
 		SetupThing::DrawAlpha = 0xff;
@@ -1965,22 +1965,22 @@ void GGame::Loop()
 					LoopTimeRemainder = 0;
 				}
 				uint32_t renderTime = gameTurn * 100 + LoopTimeRemainder;
-				if (renderTime < field_0x25053c)
+				if (renderTime < RenderTime)
 				{
-					field_0x25053c = renderTime;
+					RenderTime = renderTime;
 					LoopTimeRemainder = 0;
 				}
-				field_0x250540 = renderTime - field_0x25053c;
-				field_0x25053c = renderTime;
-				LH3DTech::g_game_time_inc = field_0x250540;
-				field_0x205d48 = field_0x250540;
-				field_0x205d64 = (float)LoopTimeRemainder * 0.01f;
+				RenderTimeInc = renderTime - RenderTime;
+				RenderTime = renderTime;
+				LH3DTech::g_game_time_inc = RenderTimeInc;
+				TimeInc = RenderTimeInc;
+				TurnFraction = (float)LoopTimeRemainder * 0.01f;
 			}
 			else
 			{
-				field_0x250540 = 0;
+				RenderTimeInc = 0;
 				LH3DTech::g_game_time_inc = 0;
-				field_0x205d48 = 0;
+				TimeInc = 0;
 			}
 			if (!LHSys::GetScreen().IsAppMinimized())
 			{
@@ -2017,7 +2017,7 @@ void GGame::Loop()
 			for (int i = 0; i < 2; ++i)
 			{
 				LH3DTech::g_game_time_inc = 0;
-				g_game->field_0x205d48 = 0;
+				g_game->TimeInc = 0;
 				LH3DRender::StartFrame();
 				SetupThing::DrawAlpha = 0xff;
 				SetupThing::DrawBox(-1, -1, LHSys::GetScreen().width, LHSys::GetScreen().height, 0xff000000, 0xff000000,
@@ -2298,7 +2298,7 @@ void GGame::Process3dEngine()
 				}
 			}
 			MyInterface()->Draw();
-			UpdateLiquidParticles((unsigned int)field_0x205d48 * 0.001f);
+			UpdateLiquidParticles((unsigned int)TimeInc * 0.001f);
 			DrawLiquidParticles();
 			Draw();
 			CreatureLessonChooser::UpdateDraw();
@@ -2788,8 +2788,8 @@ uint32_t GGame::Save(GameOSFile& file)
 	file.WriteIt(field_0x205ba0);
 	GameLists.Save(file);
 	file.WriteIt(field_0x205d34);
-	file.WriteIt(field_0x25053c);
-	file.WriteIt(field_0x250540);
+	file.WriteIt(RenderTime);
+	file.WriteIt(RenderTimeInc);
 	file.WriteIt(PlayerInfluenceMultiplier);
 	file.WriteIt(TownInfluenceMultiplier);
 	float visualTime = GGameInfo::Info.GetVisualTime();
@@ -2913,8 +2913,8 @@ uint32_t GGame::Load(GameOSFile& file)
 	file.ReadIt(field_0x205ba0);
 	GameLists.Load(file);
 	file.ReadIt(field_0x205d34);
-	file.ReadIt(field_0x25053c);
-	file.ReadIt(field_0x250540);
+	file.ReadIt(RenderTime);
+	file.ReadIt(RenderTimeInc);
 	file.ReadIt(PlayerInfluenceMultiplier);
 	file.ReadIt(TownInfluenceMultiplier);
 	float visualTime;
@@ -3016,11 +3016,11 @@ void GGame::ResolveLoad()
 	{
 		hand->ResolveLoad();
 	}
-	field_0x250540 = 0;
-	field_0x25053c = data.GameTurn * 100;
+	RenderTimeInc = 0;
+	RenderTime = data.GameTurn * 100;
 	LH3DTech::g_game_time_inc = 0;
-	field_0x205d48 = field_0x250540;
-	field_0x205d64 = 0.0f;
+	TimeInc = RenderTimeInc;
+	TurnFraction = 0.0f;
 	GLandBalance::ReInit();
 	help_system->ResolveLoad();
 }

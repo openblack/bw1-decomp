@@ -50,9 +50,9 @@ public:
 	LHPoint            CameraPos;
 	LHPoint            CameraFoc;
 	LHPoint            ReportedHandPos; /* 0xc8 */
-	LHPoint            field_0xd4;
-	int                field_0xe0;
-	int                field_0xe4;
+	LHPoint            HandMoveStart;
+	int                HandMoveTime;
+	int                HandMoveDuration;
 	LHPoint            field_0xe8;
 	float              field_0xf4;
 	float              field_0xf8;

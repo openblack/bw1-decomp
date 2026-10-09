@@ -21,7 +21,7 @@ public:
 	uint32_t      field_0x0;
 	LH_AudioBank* Bank;
 	uint32_t      Positional;
-	uint32_t      field_0xc;
+	uint32_t      Looping;
 	uint8_t       field_0x10[0x10];
 	Base*         AttachedObject;
 	uint32_t      SampleNumber;

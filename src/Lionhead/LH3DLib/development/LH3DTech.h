@@ -18,6 +18,13 @@ struct LHMatrix;
 struct LHPoint;
 struct LHTimer;
 
+enum LH3D_PROJECT_RESULT
+{
+	LH3D_PROJECT_BEHIND_CAMERA = 0,
+	LH3D_PROJECT_OFF_SCREEN = 1,
+	LH3D_PROJECT_ON_SCREEN = 2,
+};
+
 struct InfoTransform
 {
 	float          NearClip;
@@ -57,10 +64,9 @@ public:
 	// BW1W120 inlined BW1M119 010e7360
 	static float GetValueForZSorter(const LHPoint& point)
 	{
-		float z = point.z - g_camera.pos.z;
-		float y = point.y - g_camera.pos.y;
-		float x = point.x - g_camera.pos.x;
-		return x * x + y * y + z * z;
+		return (point.x - g_camera.pos.x) * (point.x - g_camera.pos.x) +
+		       (point.y - g_camera.pos.y) * (point.y - g_camera.pos.y) +
+		       (point.z - g_camera.pos.z) * (point.z - g_camera.pos.z);
 	}
 	// Original Mac symbol: g_ambient_wind_direction__8LH3DTech.
 	// BW1W120 00ea9e70 BW1M119 012d3f90 (LHCombined Release)

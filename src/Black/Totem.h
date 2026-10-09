@@ -27,7 +27,7 @@ class Town;
 class Totem : public Abode
 {
 public:
-	MapCoords field_0xc4;
+	MapCoords InteractPos;
 	MapCoords field_0xd0;
 	uint32_t  field_0xdc;
 	uint32_t  field_0xe0;

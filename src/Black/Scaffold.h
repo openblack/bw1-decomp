@@ -40,14 +40,14 @@ class Scaffold : public MobileObject
 {
 public:
 	uint32_t             field_0x68;
-	PlannedAbode*        field_0x6c;
+	PlannedAbode*        Planned;
 	PlannedAbode*        field_0x70;
-	Game3DObject*        field_0x74;
-	uint32_t             field_0x78;
+	Game3DObject*        HandObject;
+	uint32_t             FadeTime;
 	uint32_t             field_0x7c;
-	float                field_0x80;
-	float                field_0x84;
-	uint16_t             field_0x88_0 : 1;
+	float                HandAngle;
+	float                HandScale;
+	uint16_t             Appearing : 1;
 	uint16_t             field_0x88_1 : 5;
 	uint16_t             WorkshopPosition : 2;
 	uint16_t             field_0x88_8 : 8;

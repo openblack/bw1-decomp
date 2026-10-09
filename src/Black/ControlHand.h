@@ -123,7 +123,7 @@ public:
 	uint32_t          field_0x48f8;
 	uint32_t          field_0x48fc;
 	uint32_t          field_0x4900;
-	uint32_t          field_0x4904;
+	uint32_t          HeldObject;
 	uint32_t          field_0x4908;
 	uint32_t          field_0x490c;
 	uint8_t           field_0x4910;

@@ -64,7 +64,7 @@ CHand::CHand(LHPoint point, GInterfaceStatus* status)
 	field_0x48b4 = 0;
 	CurrentState = HAND_STATES_NORMAL;
 	field_0x4840 = 1;
-	field_0x4904 = 0;
+	HeldObject = 0;
 	field_0x48fc = 0;
 	field_0x4908 = 0;
 	field_0x4918 = 0;

@@ -2224,7 +2224,7 @@ void CameraModeNew3::Update()
 		TimeInArena = 0;
 		if (FightStatus == fight_status_t_0x1)
 		{
-			FightTimeLeft -= GGame::g_game->field_0x205d48;
+			FightTimeLeft -= GGame::g_game->TimeInc;
 			if (FightTimeLeft < 0)
 			{
 				FightStatus = fight_status_t_0x2;

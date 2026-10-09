@@ -238,14 +238,14 @@ void Game3DObject::FUN_0063b5c0(int param_1) {}
 void __fastcall Game3DObject::AddForDrawing(Object* object)
 {
 	int snowLevel = SnowLevel;
-	// TODO: name the Flags2 bits 0x20 and 0x40
+	// TODO: name the Flags2 bit 0x20
 	if (Flags2 & 0x20)
 	{
 		SetSnowlevel(0);
 	}
 	else
 	{
-		if (!(Flags2 & 0x40))
+		if (!(Flags2 & LH3D_OBJECT_FLAGS2_OUT_OF_MAP))
 		{
 			SetSnowlevel(*(LHPoint*)&matrix.m[9]);
 		}

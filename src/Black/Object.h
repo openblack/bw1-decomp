@@ -338,7 +338,7 @@ public:
 	// BW1W120 004648b0 BW1M119 010e7860
 	virtual void Draw();
 	// BW1W120 0051c820 BW1M119 0101d5f0
-	virtual void DrawOutOfMap(bool param_1);
+	virtual void DrawOutOfMap(bool selectable);
 	// BW1W120 00402670 BW1M119 011d2250
 	virtual bool IsG3DObjectDrawnInHand() { return true; }
 	// BW1W120 00402680 BW1M119 013e3140

@@ -225,8 +225,8 @@ public:
 	uint32_t                              field_0x1170[0x8];
 	uint32_t                              field_0x1190;
 	uint8_t                               field_0x1194[0x14];
-	MapCoords                             field_0x11a8;
-	float                                 field_0x11b4;
+	MapCoords                             ConfinementCentre;
+	float                                 ConfinementRadius;
 	uint32_t                              field_0x11b8;
 	uint32_t                              field_0x11bc;
 	float                                 ObjectsDestroyed;
@@ -248,7 +248,7 @@ public:
 	uint32_t                              field_0x120c;
 	uint32_t                              field_0x1210;
 	MapCoords                             field_0x1214;
-	LHLinkedList<LHPoint*>                field_0x1220;
+	LHLinkedList<LHPoint*>                DebugPath;
 	uint8_t                               field_0x1228[0x40];
 	int                                   field_0x1268;
 	uint32_t                              field_0x126c;
@@ -935,7 +935,7 @@ public:
 	// BW1W120 005186a0 BW1M119 010cc440
 	virtual void Draw();
 	// BW1W120 005186d0 BW1M119 010cc390
-	virtual void DrawOutOfMap(bool param_1);
+	virtual void DrawOutOfMap(bool selectable);
 	// BW1W120 0050b3a0 BW1M119 010c3b80
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0050b330 BW1M119 010c3750
