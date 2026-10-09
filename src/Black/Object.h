@@ -440,7 +440,10 @@ public:
 	// BW1W120 00637fb0 BW1M119 013dd850
 	virtual float GetDistanceFromObject(Object* param_1);
 	// BW1W120 004027c0 BW1M119 01176a00
-	virtual float GetDistanceFromObject(const MapCoords& coords) { return 0.0f; }
+	virtual float GetDistanceFromObject(const MapCoords& coords)
+	{
+		return GameThingWithPos::GetDistanceFromObject(coords);
+	}
 	// BW1W120 006399d0 BW1M119 01003b10
 	virtual float GetTribalPower(TRIBE_TYPE param_1);
 	// BW1W120 00419330 BW1M119 010b0950
