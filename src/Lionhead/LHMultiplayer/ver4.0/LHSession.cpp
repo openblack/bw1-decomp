@@ -6,6 +6,7 @@
 #include <wchar.h>
 
 #include <GameSpy/src/GameSpy/gcdkey/gcdkeyc.h>
+#include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>
 #include "LHLobby.h"
 #include "LHMPPacketSave.h"
@@ -133,31 +134,32 @@ LH_RETURN LHSession::SendOOSChecksumAndWaitForSync(unsigned long checksum, unsig
 	memset(OOSData, 0, sizeof(OOSData));
 	Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_MSERVE_CLIENT_CHECKSUM_DATA, GetUserID(), length, data));
 	SyncAllAndStartSession(LH_TIME_INFINITE);
-	if (RawPeek(0, LH_NETEVENT_TYPE_MSERVE_CHECKSUM_DATA) == NULL)
-		return LH_FAIL;
-
-	LHSPrintf report;
-	report.SetString("***OUT OF SYN IN OOS BUILD***\n");
-	for (LHLinkedNode<LHPlayer*>* node = Players.GetStart(); node != NULL; node = node->next.Get())
+	if (RawPeek(0, LH_NETEVENT_TYPE_MSERVE_CHECKSUM_DATA) != NULL)
 	{
-		LHPlayer* player = node->payload;
-		if (player != NULL)
+		LHSPrintf report;
+		report.SetString("***OUT OF SYN IN OOS BUILD***\n");
+		for (LHLinkedListIterator<LHPlayer*> it = Players.GetStart(); it; it++)
 		{
-			LH_USER_ID    user;
-			unsigned long size;
-			void*         oosData;
-			unsigned long playerChecksum;
-			unsigned long playerGameTurn;
+			LHPlayer* player = it.Get();
+			if (player != NULL)
+			{
+				LH_USER_ID    user;
+				unsigned long size;
+				void*         oosData;
+				unsigned long playerChecksum;
+				unsigned long playerGameTurn;
 
-			LHNetEvent* event = RawRead(0, LH_NETEVENT_TYPE_MSERVE_CHECKSUM_DATA);
-			event->VDecode(LH_NETEVENT_TYPE_MSERVE_CHECKSUM_DATA, &user, &size, &oosData);
-			OOSData[player->GetPlayerID()].Set(oosData, size, GetPlayer(user));
+				LHNetEvent* event = RawRead(0, LH_NETEVENT_TYPE_MSERVE_CHECKSUM_DATA);
+				event->VDecode(LH_NETEVENT_TYPE_MSERVE_CHECKSUM_DATA, &user, &size, &oosData);
+				OOSData[player->GetPlayerID()].Set(oosData, size, GetPlayer(user));
 
-			event = RawRead(0, LH_NETEVENT_TYPE_MSERVE_CHECKSUM_SYNC);
-			if (event->VDecode(LH_NETEVENT_TYPE_MSERVE_CHECKSUM_SYNC, &playerChecksum, &playerGameTurn, &user) != LH_OK)
-				return LH_FAIL;
-			report.AppendString("<%s:%d> checksum: %d\n", LIBWCHAR2CHAR(GetPlayer(user)->GetName()), playerGameTurn,
-			                    playerChecksum);
+				event = RawRead(0, LH_NETEVENT_TYPE_MSERVE_CHECKSUM_SYNC);
+				if (event->VDecode(LH_NETEVENT_TYPE_MSERVE_CHECKSUM_SYNC, &playerChecksum, &playerGameTurn, &user) !=
+				    LH_OK)
+					return LH_FAIL;
+				report.AppendString("<%s:%d> checksum: %d\n", LIBWCHAR2CHAR(GetPlayer(user)->GetName()), playerGameTurn,
+				                    playerChecksum);
+			}
 		}
 	}
 	return LH_FAIL;
@@ -457,14 +459,14 @@ LHPlayer* LHSession::GetPlayerFromNum(unsigned long player_number)
 
 LH_RETURN LHSession::ProcessMServePlayerList(LHNetEvent* net_event)
 {
-	char*                    channelName;
-	wchar_t*                 playerName = NULL;
-	LH_USER_ID               user;
-	LH_PLAYER_EVENT          playerEvent;
-	LHLinkedList<LHPlayer*>  playerList;
-	LHPlayer*                player;
-	LHLinkedNode<LHPlayer*>* node;
+	char*                   channelName;
+	wchar_t*                playerName;
+	LH_USER_ID              user;
+	LH_PLAYER_EVENT         playerEvent;
+	LHLinkedList<LHPlayer*> playerList;
+	LHPlayer*               player;
 
+	playerName = NULL;
 	net_event->VDecode(LH_NETEVENT_TYPE_MSERVE_PLAYER_LIST, &channelName, &playerName, &user, &playerEvent,
 	                   LHPlayer::Create, &playerList);
 	if (LHPlayer::GetPlayer(user, &Players) != NULL && playerEvent == LH_PLAYER_EVENT_JOINED)
@@ -487,15 +489,14 @@ LH_RETURN LHSession::ProcessMServePlayerList(LHNetEvent* net_event)
 	else
 	{
 		player = LHPlayer::GetPlayer(user, &playerList);
-		for (node = playerList.GetStart(); node != NULL; node = node->next.Get())
+		for (LHLinkedListIterator<LHPlayer*> it = playerList.GetStart(); it; it++)
 		{
-			LHPlayer* listed = node->payload;
+			LHPlayer* listed = it.Get();
 			if (GetPlayer(listed->GetUserID()) == NULL)
 			{
 				LHPlayer* newPlayer = new LHPlayer;
 				newPlayer->SetDetails(listed);
-				if (newPlayer != NULL)
-					Players.Add(newPlayer);
+				Players.Add(newPlayer);
 			}
 		}
 	}
@@ -503,11 +504,12 @@ LH_RETURN LHSession::ProcessMServePlayerList(LHNetEvent* net_event)
 	wcscpy(LastJoinChannelPlayerName, playerName);
 	LastJoinChannelEvent = playerEvent;
 	LastJoinPlayerID = player != NULL ? player->GetPlayerID() : -1;
-	for (node = Players.GetStart(); node != NULL; node = node->next.Get())
+	for (LHLinkedListIterator<LHPlayer*> it = Players.GetStart(); it; it++)
 	{
-		if (node->payload->GetUserID() == GetUserID())
+		LHPlayer* sessionPlayer = it.Get();
+		if (sessionPlayer->GetUserID() == GetUserID())
 		{
-			LocalPlayer = node->payload;
+			LocalPlayer = sessionPlayer;
 			break;
 		}
 	}
@@ -517,10 +519,11 @@ LH_RETURN LHSession::ProcessMServePlayerList(LHNetEvent* net_event)
 	while (Players.count != 0)
 	{
 		LHPlayer* highest = NULL;
-		for (node = Players.GetStart(); node != NULL; node = node->next.Get())
+		for (LHLinkedListIterator<LHPlayer*> it = Players.GetStart(); it; it++)
 		{
-			if (highest == NULL || node->payload->GetPlayerID() > highest->GetPlayerID())
-				highest = node->payload;
+			LHPlayer* candidate = it.Get();
+			if (highest == NULL || candidate->GetPlayerID() > highest->GetPlayerID())
+				highest = candidate;
 		}
 		Players.Remove(highest);
 		sorted.Add(highest);
@@ -634,9 +637,11 @@ LH_RETURN LHSession::ProcessMServeGameFile(LHNetEvent* net_event)
 
 LH_RETURN LHSession::ProcessMServeChallengeKey(LHNetEvent* net_event)
 {
-	char response[CHALLENGE_RESPONSE_SIZE];
+	unsigned long challenge;
+	char          response[CHALLENGE_RESPONSE_SIZE];
 
-	gcd_compute_response(GAMESPY_CD_KEY, LHSPrintf("%d", *(unsigned long*)net_event->GetDataPtr()).Text, response);
+	memcpy(&challenge, net_event->GetDataPtr(), sizeof(challenge));
+	gcd_compute_response(GAMESPY_CD_KEY, LHSPrintf("%d", challenge).Text, response);
 	return Write(LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_MSERVE_CLIENT_CHALLENGE_RESPONSE, GetUserID(),
 	                                      strlen(response) + 1, response));
 }
@@ -1052,8 +1057,7 @@ void LHSession::WaitForMigrationCompleted()
 	LHTimer     timer;
 	LHNetEvent* event;
 
-	timer.Reset(0);
-	timer.Start();
+	timer.Restart(0);
 	do
 	{
 		event = RawPeek(0, LH_NETEVENT_TYPE_MSERVE_GAME_LOOP_STARTED);
@@ -1076,8 +1080,7 @@ LH_RETURN LHSession::ConnectToNewHost(LHTransportInfo* transport_info)
 	LHConnection::Close();
 
 	LHTimer timer;
-	timer.Reset(0);
-	timer.Start();
+	timer.Restart(0);
 	transport_info->address.port = LH_MESSAGE_SERVER_PORT;
 	do
 	{
@@ -1104,10 +1107,10 @@ LH_RETURN LHSession::HostSession(LHDynamicQueue<LHNetEvent*>* player_lists)
 	memset(playerIDs, 0, sizeof(playerIDs));
 
 	int count = 0;
-	for (LHLinkedNode<LHPlayer*>* node = Players.GetStart(); node != NULL; node = node->next.Get())
+	for (LHLinkedListIterator<LHPlayer*> it = Players.GetStart(); it; it++)
 	{
-		LHPlayer* player = node->payload;
-		wcscpy(playerNames[count], player->GetName());
+		LHPlayer* player = it.Get();
+		wcscpy(playerNames[count], player->Name);
 		playerIDs[count] = player->GetUserID();
 		count++;
 	}
@@ -1155,25 +1158,24 @@ LH_RETURN LHSession::HostSession(LHDynamicQueue<LHNetEvent*>* player_lists)
 
 LH_RETURN LHSession::MakeNextPlayerHost(LHTransportInfo* transport_info)
 {
-	LHLinkedNode<LHPlayer*>* node;
+	LHLinkedListIterator<LHPlayer*> it = Players.GetStart();
+	LHPlayer*                       player;
 
-	for (node = Players.GetStart();; node = node->next.Get())
+	for (;; it++)
 	{
-		if (node == NULL)
+		if (it.Node == NULL)
 			return LH_OK;
-		if (node->payload->TransportInfo.type == LH_TRANSPORT_TYPE_ASYNC)
+		player = it.Get();
+		if (player->TransportInfo.type == LH_TRANSPORT_TYPE_ASYNC)
 			break;
 	}
-	node->payload->TransportInfo = LHTransportInfo((LH_TRANSPORT_TYPE)0);
-	node = node->next.Get();
-	LHPlayer* next = node->payload;
+	player->SetTransportInfo(&LHTransportInfo((LH_TRANSPORT_TYPE)0));
+	it++;
+	LHPlayer* next = it.Get();
 	if (next == NULL)
 		return LH_ERROR;
-	LHTransportInfo* info = next->GetTransportInfo();
-	transport_info->type = info->type;
-	transport_info->data_len = info->data_len;
-	memcpy(transport_info->data, info->data, transport_info->data_len);
-	next->TransportInfo = LHTransportInfo(LH_TRANSPORT_TYPE_ASYNC);
+	transport_info->Set(next->GetTransportInfo());
+	next->SetTransportInfo(&LHTransportInfo(LH_TRANSPORT_TYPE_ASYNC));
 	return LH_OK;
 }
 

@@ -7,6 +7,7 @@
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 #include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
 
+#include "LHNetTypes.h"         /* For LHNetFindLocalLobby, LHLocalLobbyInfo */
 #include "LHChannel.h"          /* For class LHChannel */
 #include "LHConnectionServer.h" /* For class LHConnectionServer */
 #include "LHNetUser.h"          /* For struct LH_USER_ID, LH_MAX_LOBBY_NAME_LENGTH */
@@ -173,6 +174,11 @@ public:
 	void SendToInternalConnectedPlayerIfPresent(LHNetEvent* event);
 	// BW1W120 1000ff00 BW1M119 010f4c80 (LHCombined Release)
 	LHLocalLobbyInfo* FindLocalLobby(char* name);
+	// BW1W120 inlined BW1M119 inlined
+	LHLocalLobbyInfo* FindLocalLobby(LHTransportInfo* transport_info)
+	{
+		return LHNetFindLocalLobby(&LocalLobbyList, transport_info);
+	}
 	// BW1W120 1000fff0 BW1M119 010f4ae0 (LHCombined Release)
 	LH_RETURN SendBroadcastMessageToInternalLobby(LHNetEvent* event);
 	// BW1W120 10010400 BW1M119 010f42b0 (LHCombined Release)

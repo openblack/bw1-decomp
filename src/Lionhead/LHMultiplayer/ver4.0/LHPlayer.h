@@ -40,8 +40,10 @@ public:
 		LHPlayer* player = GetPlayer(user_id, list);
 		return player != NULL ? player->PlayerId : LH_ALL_USERS_ID;
 	}
+#ifdef LH_MULTIPLAYER_EXPORTS
 	// BW1W120 10001a40 BW1M119 inlined
 	void SetTransportInfo(LHTransportInfo* transport_info) { TransportInfo = *transport_info; }
+#endif
 	// BW1W120 10001aa0 BW1M119 010fd800 (LHCombined Release)
 	LHTransportInfo* GetTransportInfo()
 	{
