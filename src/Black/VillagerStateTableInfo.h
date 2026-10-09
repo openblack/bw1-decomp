@@ -23,7 +23,7 @@ public:
 	// BW1W120 00db9e68 BW1M119 01b9a988
 	static GVillagerStateTableInfo Infos[VILLAGER_STATE_LAST_STATE];
 
-	int      field_0x10;
+	int      Anim;
 	int      field_0x14;
 	float    field_0x18;
 	bool32_t isFinalState;
@@ -55,7 +55,7 @@ public:
 	uint32_t field_0x100;
 	uint32_t field_0x104;
 	float    field_0x108;
-	uint32_t field_0x10c;
+	uint32_t StateHelpText;
 	uint32_t field_0x110;
 
 	// Override methods
@@ -71,7 +71,7 @@ public:
 	static GVillagerStateTableInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in VillagerStates.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x110)
+	INFO_DATA_BLOCK(Anim, field_0x110)
 	INFO_ROOT_LOADERS("VillagerStates.h", 23)
 };
 

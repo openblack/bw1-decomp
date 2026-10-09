@@ -778,14 +778,14 @@ Black/DrawingObject.cpp:
 	.text       start:0x00515EC0 end:0x0051CCB0
 	.rdata      start:0x008D86BC end:0x008D8760
 	.CRT$XCU    start:0x009C675C end:0x009C6770 align:4
-	.data       start:0x00BE8E88 end:0x00BE8F80
+	.data       start:0x00BE8E88 end:0x00BE8F68
 	.bss        start:0x00CC62C0 end:0x00CC6328
 
 Black/EditorAnim.cpp:
 	.text       start:0x0051CCB0 end:0x0051EE90
 	.rdata      start:0x008D8760 end:0x008D8770
 	.CRT$XCU    start:0x009C6770 end:0x009C678C align:4
-	.data       start:0x00BE8F80 end:0x00BE9150
+	.data       start:0x00BE8F68 end:0x00BE9150
 	.bss        start:0x00CC6328 end:0x00CC6338
 
 Black/EditorHug.cpp:

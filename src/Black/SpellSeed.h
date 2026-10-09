@@ -26,7 +26,7 @@ class SpellSeed : public Object
 {
 public:
 	uint8_t field_0x54[0x3c];
-	uint8_t field_0x90;
+	uint8_t DrawnInHand;
 	uint8_t field_0x91[0xf];
 
 	// Override methods
@@ -76,7 +76,7 @@ public:
 	// BW1W120 00518710 BW1M119 010cc360
 	virtual void Draw();
 	// BW1W120 005190a0 BW1M119 010cb620
-	virtual void DrawOutOfMap(bool param_1);
+	virtual void DrawOutOfMap(bool selectable);
 	// BW1W120 00728600 BW1M119 015342c0
 	virtual bool IsG3DObjectDrawnInHand();
 	// BW1W120 00728360 BW1M119 015346f0

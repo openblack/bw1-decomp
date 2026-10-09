@@ -123,7 +123,7 @@ struct LH3DAnimSound
 	uint32_t       field_0x0;
 	long           Frame;
 	long           Sound;
-	int            field_0xc;
+	int            Variation;
 	LH3DAnimSound* Next;
 };
 
@@ -133,15 +133,21 @@ struct LH3DAnimPack
 	LH3DAnim* Anims[MAX_COUNT_3D_ANIMS];
 };
 
+enum LH3D_ANIM_FLAGS
+{
+	LH3D_ANIM_FLAG_CYCLIC = 0x100,
+	LH3D_ANIM_FLAG_TIME_BASED = 0x200,
+};
+
 struct LH3DAnim
 {
 	ANM_Name       name; /* 0x0 */
-	int            field_0x20;
+	int            Duration;
 	uint8_t        field_0x24;
 	uint8_t        field_0x25;
 	uint8_t        field_0x26;
 	uint8_t        field_0x27;
-	float          field_0x28;
+	float          Distance;
 	uint8_t        field_0x2c;
 	uint8_t        field_0x2d;
 	uint8_t        field_0x2e;
@@ -160,7 +166,7 @@ struct LH3DAnim
 	uint8_t        field_0x41;
 	uint8_t        field_0x42;
 	uint8_t        field_0x43;
-	int            field_0x44;
+	int            SoundType;
 	LH3DAnimSound* Sounds; /* 0x48 */
 	int**          ListPtrFrames;
 	uint32_t       Flags; /* 0x50 */
@@ -196,7 +202,7 @@ struct LH3DAnim
 	// BW1W120 0083add0 BW1M119 01033790 (LHCombined Release)
 	int GetIndexInCache();
 	// BW1W120 inlined BW1M119 01018c60
-	uint32_t IsCyclic() const { return Flags & 0x100; }
+	uint32_t IsCyclic() const { return Flags & LH3D_ANIM_FLAG_CYCLIC; }
 };
 
 #endif /* BW1_DECOMP_LH3D_ANIM_INCLUDED_H */

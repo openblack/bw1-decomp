@@ -4315,7 +4315,7 @@ int CreatureAgenda::ConstructSubActionsForHangAroundAtHome(unsigned long param_1
 				direction.y = 0.0f;
 				direction.z = 0.0f;
 			}
-			LHPoint pos = home + direction * (creature->field_0x11b4 * 0.8f);
+			LHPoint pos = home + direction * (creature->ConfinementRadius * 0.8f);
 			LHPoint lookPos = home + direction * 50.0f;
 			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
 			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3113))

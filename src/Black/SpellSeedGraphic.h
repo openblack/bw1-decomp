@@ -34,14 +34,14 @@ public:
 	float           UVFrame;
 	float           PulsePhase;
 	float           YAngle;
-	float           field_0x40;
+	float           BandSpinAngle;
 	float           BandAngle;
 	SPELL_SEED_TYPE SeedType;
 	uint32_t        field_0x4c;
 	PSysInterface*  PSys;
 	float           Size;
 	float           BandScale;
-	bool            field_0x5c;
+	bool            InterpolateParticles;
 	POWER_UP_TYPE   power_up_type;
 	LHPoint         BandPos;
 	uint8_t         BandAlpha;
@@ -103,7 +103,7 @@ public:
 	// BW1W120 00727630 BW1M119 01529cb0
 	void DrawUpdateAtPos(const LHMatrix& matrix, float scale);
 	// BW1W120 00519ad0 BW1M119 010c9140
-	void DrawSpellGraphic(Object* object, bool param_2, bool param_3, unsigned char alpha);
+	void DrawSpellGraphic(Object* object, bool draw_now, bool selectable, unsigned char alpha);
 };
 
 #endif /* BW1_DECOMP_SPELL_SEED_GRAPHIC_INCLUDED_H */

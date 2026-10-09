@@ -126,7 +126,7 @@ public:
 	// BW1W120 0074ab00 BW1M119 01047730
 	virtual void Draw();
 	// BW1W120 0074b270 BW1M119 011602a0
-	virtual void DrawOutOfMap(bool param_1);
+	virtual void DrawOutOfMap(bool selectable);
 	// BW1W120 0055d8b0 BW1M119 01161770
 	virtual bool32_t CanBePickedUp() { return !(Flags & GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP); }
 	// BW1W120 0074a1a0 BW1M119 01160ea0

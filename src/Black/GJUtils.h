@@ -23,10 +23,10 @@ public:
 	// BW1W120 inlined BW1M119 010c8150
 	static unsigned long ModulateColor(unsigned long color1, unsigned long color2)
 	{
-		return ((((color1 >> 24) * (color2 >> 24)) >> 8) << 24) |
-		       (((((color1 >> 16) & 0xff) * ((color2 >> 16) & 0xff)) >> 8) << 16) |
-		       (((((color1 >> 8) & 0xff) * ((color2 >> 8) & 0xff)) >> 8) << 8) |
-		       (((color1 & 0xff) * (color2 & 0xff)) >> 8);
+		return ((((color2 >> 24) * (color1 >> 24)) >> 8) << 24) |
+		       (((((color2 >> 16) & 0xff) * ((color1 >> 16) & 0xff)) >> 8) << 16) |
+		       (((((color2 >> 8) & 0xff) * ((color1 >> 8) & 0xff)) >> 8) << 8) |
+		       (((color2 & 0xff) * (color1 & 0xff)) >> 8);
 	}
 };
 

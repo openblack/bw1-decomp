@@ -111,6 +111,133 @@ static const float UVTextureScale = 1.0f / 256.0f;
 #include <chlasm/LHSample.h>
 #include <Lionhead/LH3DLib/development/LH3DComplexObject.h>
 
+#define ABODE_WINDOW_FLICKER_STEPS       8
+#define ABODE_WINDOW_FLICKER_PHASE_SCALE 0.1f
+#define ABODE_WINDOW_FLICKER_SPEED       1000.0f
+#define ABODE_WINDOW_FLICKER_SCALE       4
+#define ABODE_WINDOW_FLICKER_RANGE       32
+#define ABODE_WINDOW_GLOW_MINIMUM        0xE0
+#define ABODE_WINDOW_LIGHTS_ON_HOUR      20.5
+#define ABODE_WINDOW_LIGHTS_ON_RATE      8192.0
+#define ABODE_WINDOW_LIGHTS_OFF_HOUR     3.0f
+#define ABODE_WINDOW_LIGHTS_OFF_RATE     8192.0f
+#define ABODE_WINDOW_FULL_BRIGHTNESS     256
+#define ABODE_WINDOW_BRIGHTNESS_SHIFT    8
+#define ABODE_AMBIENT_SOUND_INTERVAL     80000.0f
+#define ABODE_AMBIENT_SOUND_RANGE        200.0f
+#define ABODE_AMBIENT_NIGHT_SKY          0.7f
+#define ABODE_AMBIENT_DAY_SKY            1.3f
+#define NOON_HOUR                        12.0f
+
+#define BALL_DEBUG_CATEGORY 2
+
+#define METRES_PER_MAP_CELL 10.0f
+
+#define GROUND_CIRCLE_SEGMENTS  40
+#define GROUND_CIRCLE_HEIGHT    4.0f
+#define GROUND_CIRCLE_THICKNESS 5
+
+#define MAX_DRAW_ALPHA          255
+#define STATS_BACKGROUND_COLOUR 0x5f000000
+#define TEXT_SHADOW_OFFSET      2
+#define HALF_BLEND_SCALE        512.0f
+
+#define STAT_BAR_SHADE             128
+#define STAT_BAR_BEVEL_STYLE       1
+#define STAT_BAR_OUTLINE_THICKNESS 16
+#define STAT_BAR_BORDER            3
+
+// Fight statistics are laid out in units of 1/70th of the screen height.
+#define FIGHT_STATS_FIGHTERS          2
+#define FIGHT_STATS_UNITS_PER_SCREEN  70
+#define FIGHT_STATS_WIDTH             33
+#define FIGHT_STATS_HEIGHT            9
+#define FIGHT_STATS_BAR_WIDTH         25
+#define FIGHT_STATS_LIFE_BAR_HEIGHT   2
+#define FIGHT_STATS_ENERGY_BAR_TOP    1.5f
+#define FIGHT_STATS_ENERGY_BAR_BOTTOM 3.0f
+#define FIGHT_STATS_NAME_OFFSET       26
+#define FIGHT_STATS_NAME_WIDTH        30
+#define FIGHT_STATS_NAME_SIZE         3
+#define FIGHT_STATS_ROW_HEIGHT        3.5
+
+#define CREATURE_STATS_MARGIN          40
+#define CREATURE_STATS_INTERACTING_TOP 4
+#define CREATURE_STATS_WIDTH           4
+#define CREATURE_STATS_HEIGHT          3
+#define CREATURE_STATS_SHORT_HEIGHT    0.75f
+#define CREATURE_STATS_ROWS_PER_SCREEN 16
+#define CREATURE_STATS_TEXT_WIDTH      800
+#define CREATURE_STATS_TEXT_LENGTH     64
+#define CREATURE_STATS_NEUTRAL_HAND    0.01f
+
+enum CREATURE_STAT
+{
+	CREATURE_STAT_LIFE,
+	CREATURE_STAT_ENERGY,
+	CREATURE_STAT_EXHAUSTION,
+	CREATURE_STAT_HAND,
+	CREATURE_STAT_COUNT
+};
+
+#define DEBUG_BELIEF_MARKER_HEIGHT 30.0f
+#define DEBUG_MARKER_HEIGHT        20.0f
+#define DEBUG_PATH_MARKER_HEIGHT   10.0f
+
+#define CREATURE_BUBBLE_ALIGNMENT_THRESHOLD 0.333f
+
+enum CREATURE_BUBBLE_FONT
+{
+	CREATURE_BUBBLE_FONT_DEFAULT,
+	CREATURE_BUBBLE_FONT_GOOD,
+	CREATURE_BUBBLE_FONT_NEUTRAL,
+	CREATURE_BUBBLE_FONT_EVIL
+};
+
+// Render time counts this many steps per game turn.
+#define RENDER_TIME_PER_TURN 100
+
+#define SCAFFOLD_FADE_TIME          400.0f
+#define SCAFFOLD_HAND_ALPHA_DIVISOR 1.5f
+#define SCAFFOLD_APPEAR_PITCH       100
+#define SCAFFOLD_APPEAR_ABODE_PITCH 110
+#define SCAFFOLD_APPEAR_PITCH_STEP  3
+
+#define FACE_CAMERA_MIN_DIRECTION 0.0001f
+
+#define MILLISECONDS_PER_SECOND 1000.0f
+#define SECONDS_PER_MILLISECOND 0.001f
+
+// The spell textures hold 32 frames of 32x32 texels, eight to a row.
+#define SPELL_UV_FRAMES             32.0f
+#define SPELL_UV_FRAMES_PER_ROW     8
+#define SPELL_UV_FRAME_TEXELS       32.0f
+#define SPELL_FAT_PULSE             1.5f
+#define SPELL_THIN_PULSE_X          0.8f
+#define SPELL_THIN_PULSE_Z          0.7f
+#define SPELL_SMALL_SHADOW_ALPHA    80
+#define SPELL_GRAPHIC_COLLIDE_SCALE 2.0f
+
+#define TOWN_ARTIFACT_SYMBOL_MIN_VALUE    2.0f
+#define TOWN_ARTIFACT_SYMBOL_HEIGHT_SCALE 1.2
+#define TOWN_ARTIFACT_SYMBOL_HEIGHT       2.0f
+
+#define SCAFFOLD_PREVIEW_ALPHA         (1.0f / 3.0f)
+#define SCAFFOLD_PREVIEW_MAX_ALPHA_REF 250
+
+#define LIVING_SPEED_DISTANCE_SCALE 655350.0f
+#define LIVING_SHEAR_MAX_ALTITUDE   0.2f
+#define LIVING_MAX_SHEAR            0.3f
+
+#define VILLAGER_INFO_TEXT_LENGTH    0x400
+#define VILLAGER_NAME_HEIGHT         1.75f
+#define VILLAGER_NAME_FEMALE_LIGHTEN 145
+#define VILLAGER_DRAW_TURN_RATE      0.003f
+
+// Turns after a villager sits down during which the chair sounds still play.
+#define SITTING_DOWN1_SOUND_TURNS 15
+#define SITTING_DOWN2_SOUND_TURNS 10
+
 bool32_t CreatureStatsDisplay::Interacting;
 int      CreatureStatsDisplay::Alpha;
 float    CreatureStatsDisplay::HandValue;
@@ -118,36 +245,71 @@ float    CreatureStatsDisplay::Exhaustion;
 float    CreatureStatsDisplay::EnergyLoss;
 float    CreatureStatsDisplay::LifeLoss;
 
-inline void GCamera::GetPosition(LHPoint& pos)
+// BW1W120 005168a0 BW1M119 null
+void DrawGroundCircle(const LHPoint& centre, float radius, float red, float green, float blue);
+
+// BW1W120 00516b00 BW1M119 inlined
+static void DrawStatBar(unsigned long colour, int x_min, int y_min, int x_max, int y_max, float fraction, bool centred);
+
+// BW1W120 0051a830 BW1M119 010ca660
+static void ConvertToCameraFacingMatrix(LHMatrix* matrix);
+
+static inline void SetPositionOnMap(Game3DObject* object, const MapCoords& coords, float y_angle, float scale)
 {
-	pos = LH3DTech::g_camera.pos;
+	LHPoint point;
+	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
+	object->LH3DObject::SetPosition(point, y_angle, scale);
 }
 
-// BW1W120 00515f70 BW1M119 010393d0
+static inline void SetPositionOnLand(Game3DObject* object, const MapCoords& coords, float y_angle, float scale,
+                                     Object* owner)
+{
+	LHPoint point;
+	GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(coords, point);
+	point.y += LH3DIsland::GetAltitudeAndSetColorSpecular(coords, &object->color, &object->specular);
+	object->LH3DObject::SetPosition(point, y_angle, scale);
+	object->AddForDrawing(owner);
+}
+
+static inline void DrawWithColor(Object* self, unsigned long color, unsigned long specular)
+{
+	Game3DObject* object = self->Game3dObject;
+	object->CombineColorFromPos(color, specular);
+	object->AddForDrawing(self);
+}
+
+inline void GCamera::GetPosition(LHPoint& pos)
+{
+	pos = *LH3DTech::GetCameraPosition();
+}
+
 void Abode::Draw()
 {
-	static const uint32_t windowFlicker[8] = {0, 7, 3, 5, 4, 2, 6, 1};
+	static const uint32_t windowFlicker[ABODE_WINDOW_FLICKER_STEPS] = {0, 7, 3, 5, 4, 2, 6, 1};
 
 	Game3DObject* object = Game3dObject;
 	if (PresentAtHome && GGameInfo::Info.IsVisualNight())
 	{
-		float t = fabs(object->matrix._43 + object->matrix._41) * 0.1f + object->matrix._42;
+		float t = fabs(object->matrix._43 + object->matrix._41) * ABODE_WINDOW_FLICKER_PHASE_SCALE + object->matrix._42;
 		t = t - (int)t + GLandAlignement::VisualTime;
 		int brightness = 0;
-		if (t > 20.5)
+		if (t > ABODE_WINDOW_LIGHTS_ON_HOUR)
 		{
-			brightness = (int)((t - 20.5) * 8192.0);
+			brightness = (int)((t - ABODE_WINDOW_LIGHTS_ON_HOUR) * ABODE_WINDOW_LIGHTS_ON_RATE);
 		}
-		else if (t < 3.0f)
+		else if (t < ABODE_WINDOW_LIGHTS_OFF_HOUR)
 		{
-			brightness = (int)((3.0f - t) * 8192.0f);
+			brightness = (int)((ABODE_WINDOW_LIGHTS_OFF_HOUR - t) * ABODE_WINDOW_LIGHTS_OFF_RATE);
 		}
 		if (brightness > 0)
 		{
-			int c = (windowFlicker[(int)(t * 1000.0f) & 7] * 4) % 32 | 0xE0;
-			if (brightness < 256)
+			int c = (windowFlicker[(int)(t * ABODE_WINDOW_FLICKER_SPEED) & (ABODE_WINDOW_FLICKER_STEPS - 1)] *
+			         ABODE_WINDOW_FLICKER_SCALE) %
+			            ABODE_WINDOW_FLICKER_RANGE |
+			        ABODE_WINDOW_GLOW_MINIMUM;
+			if (brightness < ABODE_WINDOW_FULL_BRIGHTNESS)
 			{
-				c = c * brightness >> 8;
+				c = c * brightness >> ABODE_WINDOW_BRIGHTNESS_SHIFT;
 			}
 			object->SetWindowColor(c | (c << 8) | (c << 16) | 0xFF000000);
 		}
@@ -194,33 +356,33 @@ void Abode::Draw()
 	{
 		MultiMapFixed::Draw();
 	}
-	if (GRand::LocalRand((long)(80000.0f / GGame::g_game->field_0x205d48)) == 1)
+	if (GRand::LocalRand((long)(ABODE_AMBIENT_SOUND_INTERVAL / GGame::g_game->TimeInc)) == 1)
 	{
 		LHPoint pos;
 		Get3DSoundPos(&pos);
 		LHPoint cameraPos;
 		GGame::g_game->GetCamera()->GetPosition(cameraPos);
 		float distance = pos.GetDistance(cameraPos);
-		if (distance < 200.0f)
+		if (distance < ABODE_AMBIENT_SOUND_RANGE)
 		{
 			float time = GGameInfo::Info.GetVisualTime();
 			float sky = LH3DSky::Time2SkyType(time);
-			long  sound[5];
+			long  sound[SOUND_KEY_LENGTH];
 			sound[0] = 0;
 			sound[1] = 0;
-			sound[2] = 0x13;
+			sound[2] = IMPACT_SOUND_HITTER_ABODE;
 			sound[3] = 0;
-			if (sky < 0.7f)
+			if (sky < ABODE_AMBIENT_NIGHT_SKY)
 			{
-				sound[4] = 0x47;
+				sound[4] = IMPACT_SOUND_EVENT_ABODE_NIGHT;
 			}
-			else if (sky < 1.3f)
+			else if (sky < ABODE_AMBIENT_DAY_SKY)
 			{
-				sound[4] = time < 12.0f ? 0x49 : 0x48;
+				sound[4] = time < NOON_HOUR ? IMPACT_SOUND_EVENT_ABODE_MORNING : IMPACT_SOUND_EVENT_ABODE_AFTERNOON;
 			}
 			else
 			{
-				sound[4] = 0x4A;
+				sound[4] = IMPACT_SOUND_EVENT_ABODE_EVENING;
 			}
 			GGlobal::Global.audio->SamplePlayAnimEffect(
 				this, distance, sound, 0, GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR), 1, 0.0f, 0.0f);
@@ -228,18 +390,18 @@ void Abode::Draw()
 	}
 	if (smoke != NULL && LH3DObject::g_b_last_on_screen)
 	{
-		if (PresentAtHome || (IsWorkshop() && ((Workshop*)this)->field_0xc4))
+		if (PresentAtHome || (IsWorkshop() && ((Workshop*)this)->ProductionTimeLeft))
 		{
-			smoke->State = 0;
+			smoke->State = LH3D_SMOKE_STATE_EMITTING;
 			smoke->AddDrawing();
 		}
-		else if (smoke->State == 2)
+		else if (smoke->State == LH3D_SMOKE_STATE_FADING)
 		{
 			smoke->AddDrawing();
 		}
-		else if (smoke->State == 0)
+		else if (smoke->State == LH3D_SMOKE_STATE_EMITTING)
 		{
-			smoke->State = 2;
+			smoke->State = LH3D_SMOKE_STATE_FADING;
 			smoke->AddDrawing();
 		}
 	}
@@ -250,7 +412,6 @@ void Abode::Draw()
 	}
 }
 
-// BW1W120 00516320 BW1M119 010cf6c0
 void Windmill::Draw()
 {
 	Abode::Draw();
@@ -267,14 +428,13 @@ void Windmill::Draw()
 	}
 }
 
-// BW1W120 00516450 BW1M119 01021420
 void TownCentre::Draw()
 {
 	Abode::Draw();
 	bool32_t onScreen = LH3DObject::g_b_last_on_screen;
 	if (GetTown() != NULL)
 	{
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < MAX_TOWN_CENTRE_SPELLS; i++)
 		{
 			TownCentreSpellIcon* icon = icons[i];
 			if (icon != NULL && GetLife() > 0.0f)
@@ -293,7 +453,6 @@ void TownCentre::Draw()
 	LH3DObject::g_b_last_on_screen = onScreen;
 }
 
-// BW1W120 00516510 BW1M119 010554a0
 void Object::CheckSounds(const LH3DAnim* anim, long start_frame, long end_frame)
 {
 	for (LH3DAnimSound* event = anim->Sounds; event != NULL; event = event->Next)
@@ -309,7 +468,7 @@ void Object::CheckSounds(const LH3DAnim* anim, long start_frame, long end_frame)
 			GGame::g_game->GetCamera()->GetPosition(cameraPos);
 			float distance = pos.GetDistance(cameraPos);
 			long  voice;
-			if (anim->field_0x44 == 1)
+			if (anim->SoundType == ANIM_SOUND_TYPE_VOICE)
 			{
 				if (!IsAlive())
 				{
@@ -320,50 +479,51 @@ void Object::CheckSounds(const LH3DAnim* anim, long start_frame, long end_frame)
 				{
 					if (villager->IsChild())
 					{
-						voice = 3;
+						voice = ANIM_SOUND_VOICE_CHILD;
 					}
 					else
 					{
-						voice = villager->GetInfo()->sex != SEX_MALE ? 2 : 1;
+						voice = villager->GetInfo()->sex != SEX_MALE ? ANIM_SOUND_VOICE_FEMALE : ANIM_SOUND_VOICE_MALE;
 					}
 				}
 				else
 				{
-					voice = 3;
+					voice = ANIM_SOUND_VOICE_CHILD;
 				}
 			}
 			else
 			{
-				voice = 2;
+				voice = ANIM_SOUND_VOICE_FEMALE;
 			}
-			long sound[5];
+			long sound[SOUND_KEY_LENGTH];
 			sound[0] = voice;
-			sound[1] = 2;
-			sound[2] = anim->field_0x44;
+			sound[1] = ANIM_SOUND_ACTION;
+			sound[2] = anim->SoundType;
 			sound[3] = GSoundMap::GetSurfaceType(Pos);
 			sound[4] = event->Sound;
-			if (event->Sound == 0x92 || event->Sound == 0x93 || event->Sound == 0x94)
+			if (event->Sound == ANIM_SOUND_EVENT_BANTER_AT_HOME || event->Sound == ANIM_SOUND_EVENT_BANTER_1 ||
+			    event->Sound == ANIM_SOUND_EVENT_BANTER_2)
 			{
-				if (event->Sound == 0x92)
+				if (event->Sound == ANIM_SOUND_EVENT_BANTER_AT_HOME)
 				{
 					if (IsVillager(NULL))
 					{
 						Abode* abode = ((Villager*)this)->GetAbode();
 						GGlobal::Global.audio->SamplePlayAnimEffect(
-							abode, distance, sound, event->field_0xc,
+							abode, distance, sound, event->Variation,
 							GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_VILLAGERS_BANTER), 1, 0.0f, 0.0f);
 					}
 				}
 				else
 				{
 					GGlobal::Global.audio->SamplePlayAnimEffect(
-						this, distance, sound, event->field_0xc,
+						this, distance, sound, event->Variation,
 						GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_VILLAGERS_BANTER), 1, 0.0f, 0.0f);
 				}
 			}
 			else
 			{
-				if (event->Sound == 4 && IsVillager(NULL) && !IsInScript())
+				if (event->Sound == ANIM_SOUND_EVENT_SPEECH && IsVillager(NULL) && !IsInScript())
 				{
 					HelpSystem* help = GGame::g_game->help_system;
 					if (help != NULL && help->WideScreen && help->GetWideScreenControl())
@@ -371,28 +531,28 @@ void Object::CheckSounds(const LH3DAnim* anim, long start_frame, long end_frame)
 						return;
 					}
 				}
-				if (((LH3DAnim*)anim)->GetIndexInCache() == 399)
+				if (((LH3DAnim*)anim)->GetIndexInCache() == ANM_P_SITTING_DOWN1_SITTING)
 				{
-					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < 15)
+					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < SITTING_DOWN1_SOUND_TURNS)
 					{
 						GGlobal::Global.audio->SamplePlayAnimEffect(
-							this, distance, sound, event->field_0xc,
+							this, distance, sound, event->Variation,
 							GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR), 1, 0.0f, 0.0f);
 					}
 				}
-				else if (((LH3DAnim*)anim)->GetIndexInCache() == 401)
+				else if (((LH3DAnim*)anim)->GetIndexInCache() == ANM_P_SITTING_DOWN2_OUT_OF)
 				{
-					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < 10)
+					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < SITTING_DOWN2_SOUND_TURNS)
 					{
 						GGlobal::Global.audio->SamplePlayAnimEffect(
-							this, distance, sound, event->field_0xc,
+							this, distance, sound, event->Variation,
 							GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR), 1, 0.0f, 0.0f);
 					}
 				}
 				else
 				{
 					GGlobal::Global.audio->SamplePlayAnimEffect(
-						this, distance, sound, event->field_0xc,
+						this, distance, sound, event->Variation,
 						GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR), 1, 0.0f, 0.0f);
 				}
 			}
@@ -400,20 +560,19 @@ void Object::CheckSounds(const LH3DAnim* anim, long start_frame, long end_frame)
 	}
 }
 
-// BW1W120 005167d0 BW1M119 010558c0
 long Object::MoveAnimByTime(const LH3DAnim* anim, long frame, long time)
 {
 	long newFrame = frame + time;
-	if (newFrame >= anim->field_0x20)
+	if (newFrame >= anim->Duration)
 	{
-		CheckSounds(anim, frame, anim->field_0x20);
+		CheckSounds(anim, frame, anim->Duration);
 		if (anim->IsCyclic())
 		{
-			newFrame %= anim->field_0x20;
+			newFrame %= anim->Duration;
 		}
 		else
 		{
-			newFrame = anim->field_0x20;
+			newFrame = anim->Duration;
 		}
 		if (newFrame != 0)
 		{
@@ -427,31 +586,30 @@ long Object::MoveAnimByTime(const LH3DAnim* anim, long frame, long time)
 	return newFrame;
 }
 
-// BW1W120 00516840 BW1M119 010559a0
 long Object::MoveAnimByDist(const LH3DAnim* anim, long frame, float distance)
 {
-	return MoveAnimByTime(anim, frame, (long)(distance / anim->field_0x28 * anim->field_0x20));
+	return MoveAnimByTime(anim, frame, (long)(distance / anim->Distance * anim->Duration));
 }
 
-// BW1W120 00516870 BW1M119 010cf160
 void Ball::Draw()
 {
-	GGlobal::Global.debug.SetMessage(2, "height: %.2f", Pos.altitude);
+	GGlobal::Global.debug.SetMessage(BALL_DEBUG_CATEGORY, "height: %.2f", Pos.altitude);
 	MobileObject::Draw();
 }
 
-// BW1W120 005168a0 BW1M119 null
 void DrawGroundCircle(const LHPoint& centre, float radius, float red, float green, float blue)
 {
 	LH3DColor colour(red, green, blue, 255);
-	LHPoint   points[41];
+	LHPoint   points[GROUND_CIRCLE_SEGMENTS + 1];
 	float     top = 0.0f;
-	for (unsigned int i = 0; i <= 40; i++)
+	for (unsigned int i = 0; i <= GROUND_CIRCLE_SEGMENTS; i++)
 	{
-		float angle = i * (TWO_PI / 40);
+		float angle = i * (TWO_PI / GROUND_CIRCLE_SEGMENTS);
 		points[i].x = centre.x + sin(angle) * radius;
 		points[i].z = centre.z + cos(angle) * radius;
-		points[i].y = LH3DIsland::GetHeightAsFloat((long)(centre.x / 10.0f), (long)(centre.z / 10.0f)) + 4.0f;
+		points[i].y = LH3DIsland::GetHeightAsFloat((long)(centre.x / METRES_PER_MAP_CELL),
+		                                           (long)(centre.z / METRES_PER_MAP_CELL)) +
+		              GROUND_CIRCLE_HEIGHT;
 		if (top < points[i].y)
 		{
 			top = points[i].y;
@@ -460,24 +618,23 @@ void DrawGroundCircle(const LHPoint& centre, float radius, float red, float gree
 
 	LHPoint previous;
 	LHPoint current;
-	for (unsigned int j = 0; j <= 40; j++)
+	for (unsigned int j = 0; j <= GROUND_CIRCLE_SEGMENTS; j++)
 	{
 		current = points[j];
 		current.y = top;
 		if (j > 0)
 		{
-			for (unsigned int k = 0; k < 5; k++)
+			for (unsigned int k = 0; k < GROUND_CIRCLE_THICKNESS; k++)
 			{
 				LH3DLine::AddLine(previous - LHPoint(0.0f, k, 0.0f), current - LHPoint(0.0f, k, 0.0f), &colour, NULL);
 			}
 		}
-		LH3DLine::AddLine(current, current - LHPoint(0.0f, 5.0f, 0.0f), &colour, NULL);
+		LH3DLine::AddLine(current, current - LHPoint(0.0f, GROUND_CIRCLE_THICKNESS, 0.0f), &colour, NULL);
 		previous = current;
 	}
 }
 
 // Moves each channel of from amount/256 of the way towards to; alpha is taken from to.
-// fabricated
 static inline unsigned long BlendColour(long amount, unsigned long from, unsigned long to)
 {
 	return (to & 0xff000000) |
@@ -486,29 +643,32 @@ static inline unsigned long BlendColour(long amount, unsigned long from, unsigne
 	       (((from & 0xff) + ((((to & 0xff) - (from & 0xff)) * amount) >> 8)) & 0xff);
 }
 
-// BW1W120 00516b00 BW1M119 inlined
 static void DrawStatBar(unsigned long colour, int x_min, int y_min, int x_max, int y_max, float fraction, bool centred)
 {
-	unsigned long darkColour = BlendColour(128, colour, 0xff000000);
-	SetupThing::DrawBevBox(x_min, y_min, x_max, y_max, 1, 16, -1, 0xffffffff);
-	int fillEnd = (int)(x_min + 3 + (x_max - x_min - 6) * fraction);
+	unsigned long darkColour = BlendColour(STAT_BAR_SHADE, colour, 0xff000000);
+	SetupThing::DrawBevBox(x_min, y_min, x_max, y_max, STAT_BAR_BEVEL_STYLE, STAT_BAR_OUTLINE_THICKNESS, -1,
+	                       0xffffffff);
+	int fillEnd = (int)(x_min + STAT_BAR_BORDER + (x_max - x_min - 2 * STAT_BAR_BORDER) * fraction);
 	fillEnd = fillEnd > x_min ? min(fillEnd, x_max) : x_min;
 	if (centred)
 	{
 		int centre = (x_min + x_max) / 2;
-		SetupThing::DrawBox(centre, y_min + 3, fillEnd, y_max - 3, darkColour, colour, colour, darkColour, 0, 1);
-		SetupThing::DrawBox(centre, y_min + 3, centre + 1, y_max - 3, 0xff000000, 0xff000000, 0xff000000, 0xff000000, 0,
-		                    1);
+		SetupThing::DrawBox(centre, y_min + STAT_BAR_BORDER, fillEnd, y_max - STAT_BAR_BORDER, darkColour, colour,
+		                    colour, darkColour, 0, 1);
+		SetupThing::DrawBox(centre, y_min + STAT_BAR_BORDER, centre + 1, y_max - STAT_BAR_BORDER, 0xff000000,
+		                    0xff000000, 0xff000000, 0xff000000, 0, 1);
 	}
 	else
 	{
-		SetupThing::DrawBox(x_min + 3, y_min + 3, fillEnd, y_max - 3, darkColour, colour, colour, darkColour, 0, 1);
+		SetupThing::DrawBox(x_min + STAT_BAR_BORDER, y_min + STAT_BAR_BORDER, fillEnd, y_max - STAT_BAR_BORDER,
+		                    darkColour, colour, colour, darkColour, 0, 1);
 	}
-	SetupThing::DrawBox(x_min + 3, y_min + 3, x_max - 3, y_min + 6, 0xff000000, 0xff000000, 0, 0, 0, 1);
-	SetupThing::DrawBox(x_min + 3, y_min + 3, x_min + 6, y_max - 3, 0xff000000, 0, 0, 0xff000000, 0, 1);
+	SetupThing::DrawBox(x_min + STAT_BAR_BORDER, y_min + STAT_BAR_BORDER, x_max - STAT_BAR_BORDER,
+	                    y_min + 2 * STAT_BAR_BORDER, 0xff000000, 0xff000000, 0, 0, 0, 1);
+	SetupThing::DrawBox(x_min + STAT_BAR_BORDER, y_min + STAT_BAR_BORDER, x_min + 2 * STAT_BAR_BORDER,
+	                    y_max - STAT_BAR_BORDER, 0xff000000, 0, 0, 0xff000000, 0, 1);
 }
 
-// BW1W120 00516cb0 BW1M119 010ce9e0
 void DrawCreatureFightStats(float life1, float energy1, wchar_t* name1, float life2, float energy2, wchar_t* name2,
                             int alpha)
 {
@@ -521,11 +681,11 @@ void DrawCreatureFightStats(float life1, float energy1, wchar_t* name1, float li
 		return;
 	}
 
-	wchar_t* names[2] = {name1, name2};
-	float    lives[2] = {life1, life2};
-	float    energies[2] = {energy1, energy2};
+	wchar_t* names[FIGHT_STATS_FIGHTERS] = {name1, name2};
+	float    lives[FIGHT_STATS_FIGHTERS] = {life1, life2};
+	float    energies[FIGHT_STATS_FIGHTERS] = {energy1, energy2};
 
-	int drawAlpha = alpha > 0 ? min(alpha, 255) : 0;
+	int drawAlpha = alpha > 0 ? min(alpha, MAX_DRAW_ALPHA) : 0;
 	if (drawAlpha < 1)
 	{
 		return;
@@ -533,49 +693,49 @@ void DrawCreatureFightStats(float life1, float energy1, wchar_t* name1, float li
 	int oldDrawAlpha = SetupThing::DrawAlpha;
 	SetupThing::DrawAlpha = drawAlpha;
 
-	int unit = LHSys::TheSystem.screen.height / 70;
+	int unit = LHSys::TheSystem.screen.height / FIGHT_STATS_UNITS_PER_SCREEN;
 	int xMin = 0;
 	int yMin = 0;
-	int xMax = unit * 33;
-	int yMax = unit * 9;
+	int xMax = unit * FIGHT_STATS_WIDTH;
+	int yMax = unit * FIGHT_STATS_HEIGHT;
 	SetupThing::unadjust(xMin, yMin);
 	SetupThing::unadjust(xMax, yMax);
-	int size = SetupThing::unadjustsize(unit);
-	SetupThing::DrawBox(xMin, yMin, xMax, yMax, 0x5f000000, 0, 0, 0, 0, 1);
+	unit = SetupThing::unadjustsize(unit);
+	SetupThing::DrawBox(xMin, yMin, xMax, yMax, STATS_BACKGROUND_COLOUR, 0, 0, 0, 0, 1);
 
-	// TODO: The target computes both of these as lea [min + size] (base and index swapped compared to ours). The Mac
-	// adds them in this order too; swapped operands, compound assignment and other declaration orders do not move it.
-	int x = xMin + size;
-	int y = yMin + size;
-	for (int i = 0; i < 2; i++)
+	int x = xMin + unit;
+	int y = yMin + unit;
+	for (int i = 0; i < FIGHT_STATS_FIGHTERS; i++)
 	{
 		lives[i] = lives[i] > 0.0f ? min(lives[i], 1.0f) : 0.0f;
 		energies[i] = energies[i] > 0.0f ? min(energies[i], 1.0f) : 0.0f;
 
-		DrawStatBar(BlendColour((long)(energies[i] * 255.0f), 0xff2080ff, 0xff8080ff), x, (int)(y + size * 1.5f),
-		            x + size * 25, (int)(y + size * 3.0f), energies[i], false);
+		DrawStatBar(BlendColour((long)(energies[i] * 255.0f), 0xff2080ff, 0xff8080ff), x,
+		            (int)(y + unit * FIGHT_STATS_ENERGY_BAR_TOP), x + unit * FIGHT_STATS_BAR_WIDTH,
+		            (int)(y + unit * FIGHT_STATS_ENERGY_BAR_BOTTOM), energies[i], false);
 
 		unsigned long lifeColour;
 		if (lives[i] < 0.5f)
 		{
-			lifeColour = BlendColour((long)(lives[i] * 512.0f), 0xffff0000, 0xffffff00);
+			lifeColour = BlendColour((long)(lives[i] * HALF_BLEND_SCALE), 0xffff0000, 0xffffff00);
 		}
 		else
 		{
-			lifeColour = BlendColour((long)((lives[i] - 0.5f) * 512.0f), 0xffffff00, 0xff00ff00);
+			lifeColour = BlendColour((long)((lives[i] - 0.5f) * HALF_BLEND_SCALE), 0xffffff00, 0xff00ff00);
 		}
-		DrawStatBar(lifeColour, x, y, x + size * 25, y + size * 2, lives[i], false);
+		DrawStatBar(lifeColour, x, y, x + unit * FIGHT_STATS_BAR_WIDTH, y + unit * FIGHT_STATS_LIFE_BAR_HEIGHT,
+		            lives[i], false);
 
-		SetupThing::DrawTextA(x + size * 26 + 2, y + 2, size * 30, TEXTJUSTIFY_LEFT, names[i], size * 3,
+		SetupThing::DrawTextA(x + unit * FIGHT_STATS_NAME_OFFSET + TEXT_SHADOW_OFFSET, y + TEXT_SHADOW_OFFSET,
+		                      unit * FIGHT_STATS_NAME_WIDTH, TEXTJUSTIFY_LEFT, names[i], unit * FIGHT_STATS_NAME_SIZE,
 		                      &LH3DColor(0, 0, 0, 255), 0);
-		SetupThing::DrawTextA(x + size * 26, y, size * 30, TEXTJUSTIFY_LEFT, names[i], size * 3,
-		                      &LH3DColor(255, 255, 255, 255), 0);
-		y += size * 3.5;
+		SetupThing::DrawTextA(x + unit * FIGHT_STATS_NAME_OFFSET, y, unit * FIGHT_STATS_NAME_WIDTH, TEXTJUSTIFY_LEFT,
+		                      names[i], unit * FIGHT_STATS_NAME_SIZE, &LH3DColor(255, 255, 255, 255), 0);
+		y += unit * FIGHT_STATS_ROW_HEIGHT;
 	}
 	SetupThing::DrawAlpha = oldDrawAlpha;
 }
 
-// BW1W120 00517080 BW1M119 010cdf70
 void DrawCreatureStats(float life_loss, float energy_loss, float exhaustion, float hand_value, int alpha)
 {
 	static float labelWidth = 0.0f;
@@ -594,7 +754,7 @@ void DrawCreatureStats(float life_loss, float energy_loss, float exhaustion, flo
 		return;
 	}
 
-	int drawAlpha = alpha > 0 ? min(alpha, 255) : 0;
+	int drawAlpha = alpha > 0 ? min(alpha, MAX_DRAW_ALPHA) : 0;
 	if (drawAlpha < 1)
 	{
 		return;
@@ -610,15 +770,17 @@ void DrawCreatureStats(float life_loss, float energy_loss, float exhaustion, flo
 
 	int screenWidth = LHSys::TheSystem.screen.width;
 	int screenHeight = LHSys::TheSystem.screen.height;
-	int xMin = screenWidth / 40;
-	int yMin = CreatureStatsDisplay::Interacting ? screenHeight / 4 : screenHeight / 40;
-	int xMax = xMin + screenWidth / 4;
-	int yMax = (int)(yMin + screenHeight / 3 * (CreatureStatsDisplay::Interacting ? 1.0f : 0.75f));
+	int xMin = screenWidth / CREATURE_STATS_MARGIN;
+	int yMin = CreatureStatsDisplay::Interacting ? screenHeight / CREATURE_STATS_INTERACTING_TOP
+	                                             : screenHeight / CREATURE_STATS_MARGIN;
+	int xMax = xMin + screenWidth / CREATURE_STATS_WIDTH;
+	int yMax = (int)(yMin + screenHeight / CREATURE_STATS_HEIGHT *
+	                            (CreatureStatsDisplay::Interacting ? 1.0f : CREATURE_STATS_SHORT_HEIGHT));
 	SetupThing::unadjust(xMin, yMin);
 	SetupThing::unadjust(xMax, yMax);
-	SetupThing::DrawBox(xMin, yMin, xMax, yMax, 0x5f000000, 0, 0, 0x5f000000, 0, 1);
+	SetupThing::DrawBox(xMin, yMin, xMax, yMax, STATS_BACKGROUND_COLOUR, 0, 0, STATS_BACKGROUND_COLOUR, 0, 1);
 
-	int size = SetupThing::unadjustsize(screenHeight / 16);
+	int size = SetupThing::unadjustsize(screenHeight / CREATURE_STATS_ROWS_PER_SCREEN);
 	int y = yMin + size * 2 / 3;
 	if (labelWidth == 0.0f)
 	{
@@ -650,14 +812,10 @@ void DrawCreatureStats(float life_loss, float energy_loss, float exhaustion, flo
 	}
 	xMax += labelWidth - (xMax - xMin) / 3;
 
-	// TODO: The target keeps y in ebp for the whole loop and leaves the hoisted size / 2 in memory; our build gives
-	// size / 2 the register instead (an allocation-priority difference; the surrounding code matches). The weights
-	// are close: dropping one use of size / 2 hands y a register. Moving the loop locals' declarations, a named
-	// size / 2 local and no-op uses of y do not change the allocation.
-	wchar_t buffer[64];
-	for (int i = 0; i < (CreatureStatsDisplay::Interacting ? 4 : 3); i++)
+	wchar_t buffer[CREATURE_STATS_TEXT_LENGTH];
+	for (int i = 0; i < (CreatureStatsDisplay::Interacting ? CREATURE_STAT_COUNT : CREATURE_STAT_HAND); i++)
 	{
-		if (i == 3)
+		if (i == CREATURE_STAT_HAND)
 		{
 			y += size / 3;
 		}
@@ -665,30 +823,30 @@ void DrawCreatureStats(float life_loss, float energy_loss, float exhaustion, flo
 		float     value = 0.0f;
 		switch (i)
 		{
-		case 0:
+		case CREATURE_STAT_LIFE:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_30);
 			value = life_loss;
 			swprintf(buffer, L"%d%%", (int)(life_loss * 100.0f));
 			break;
-		case 1:
+		case CREATURE_STAT_ENERGY:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_50);
 			value = energy_loss;
 			swprintf(buffer, L"%d%%", (int)(energy_loss * 100.0f));
 			break;
-		case 2:
+		case CREATURE_STAT_EXHAUSTION:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_119);
 			value = exhaustion;
 			swprintf(buffer, L"%d%%", (int)(exhaustion * 100.0f));
 			break;
-		case 3:
+		case CREATURE_STAT_HAND:
 			label = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_100);
 			value = (hand_value * 0.5f) + 0.5f;
-			if (hand_value < -0.01f)
+			if (hand_value < -CREATURE_STATS_NEUTRAL_HAND)
 			{
 				swprintf(buffer, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_05),
 				         (int)(-hand_value * 100.0f));
 			}
-			else if (hand_value > 0.01f)
+			else if (hand_value > CREATURE_STATS_NEUTRAL_HAND)
 			{
 				swprintf(buffer, HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_ADDITION_47),
 				         (int)(hand_value * 100.0f));
@@ -703,27 +861,28 @@ void DrawCreatureStats(float life_loss, float energy_loss, float exhaustion, flo
 
 		int barLeft = (int)(xMin + labelWidth);
 		int barRight = (int)(barLeft + labelWidth);
-		SetupThing::DrawTextA(barLeft - size / 4 + 2, y + 2, 800, TEXTJUSTIFY_RIGHT, label, size / 2,
-		                      &LH3DColor(0, 0, 0, 255), 0);
-		SetupThing::DrawTextA(barLeft - size / 4, y, 800, TEXTJUSTIFY_RIGHT, label, size / 2,
+		SetupThing::DrawTextA(barLeft - size / 4 + TEXT_SHADOW_OFFSET, y + TEXT_SHADOW_OFFSET,
+		                      CREATURE_STATS_TEXT_WIDTH, TEXTJUSTIFY_RIGHT, label, size / 2, &LH3DColor(0, 0, 0, 255),
+		                      0);
+		SetupThing::DrawTextA(barLeft - size / 4, y, CREATURE_STATS_TEXT_WIDTH, TEXTJUSTIFY_RIGHT, label, size / 2,
 		                      &LH3DColor(255, 255, 255, 255), 0);
-		SetupThing::DrawTextA(barRight + size / 4 + 2, y + 2, 800, TEXTJUSTIFY_LEFT, buffer, size / 2,
-		                      &LH3DColor(0, 0, 0, 255), 0);
-		SetupThing::DrawTextA(barRight + size / 4, y, 800, TEXTJUSTIFY_LEFT, buffer, size / 2,
+		SetupThing::DrawTextA(barRight + size / 4 + TEXT_SHADOW_OFFSET, y + TEXT_SHADOW_OFFSET,
+		                      CREATURE_STATS_TEXT_WIDTH, TEXTJUSTIFY_LEFT, buffer, size / 2, &LH3DColor(0, 0, 0, 255),
+		                      0);
+		SetupThing::DrawTextA(barRight + size / 4, y, CREATURE_STATS_TEXT_WIDTH, TEXTJUSTIFY_LEFT, buffer, size / 2,
 		                      &LH3DColor(255, 255, 255, 255), 0);
 
 		unsigned long colour = 0xffffff00;
-		if (i == 3)
+		if (i == CREATURE_STAT_HAND)
 		{
 			colour = value < 0.5f ? 0xffff0000 : 0xff00ff00;
 		}
-		DrawStatBar(colour, barLeft, y, barRight, y + size / 2, value, i == 3);
+		DrawStatBar(colour, barLeft, y, barRight, y + size / 2, value, i == CREATURE_STAT_HAND);
 		y += size;
 	}
 	SetupThing::DrawAlpha = oldDrawAlpha;
 }
 
-// BW1W120 005178d0 BW1M119 01019d30
 void DrawCreatureStats()
 {
 	if (CreatureStatsDisplay::Alpha > 0)
@@ -736,13 +895,12 @@ void DrawCreatureStats()
 	CreatureStatsDisplay::Interacting = false;
 }
 
-// BW1W120 00517910 BW1M119 010cd640
 void Creature::Draw()
 {
 	if ((Flags & GAME_THING_WITH_POS_FLAG_INTERACTING) && GGame::g_game->MyInterface()->GetInteractObject() == this)
 	{
-		CreatureStatsDisplay::Alpha = 255;
-		CreatureStatsDisplay::Interacting = TRUE;
+		CreatureStatsDisplay::Alpha = MAX_DRAW_ALPHA;
+		CreatureStatsDisplay::Interacting = true;
 		CreatureStatsDisplay::LifeLoss = 1.0f - GetLife();
 		CreatureStatsDisplay::EnergyLoss = 1.0f - physical->GetEnergy();
 		CreatureStatsDisplay::Exhaustion = physical->GetExhaustion();
@@ -762,20 +920,21 @@ void Creature::Draw()
 
 	if (GGame::DebugDrawCreatureBeliefs)
 	{
-		for (CreatureBelief* belief = mind->beliefs.lists[1].Head; belief != NULL; belief = belief->Next)
+		for (CreatureBelief* belief = mind->beliefs.lists[CREATURE_BELIEF_LIST_TYPE_OBJECT].Head; belief != NULL;
+		     belief = belief->Next)
 		{
 			LHPoint point;
 			GLandscape::ConvertMapCoordToLandscapePoint(belief->Pos, point);
 			LHPoint top;
 			top = point;
-			top.y += 30.0f;
+			top.y += DEBUG_BELIEF_MARKER_HEIGHT;
 			LH3DLine::AddLine(point, top, &LH3DColor(255, 0, 0), NULL);
 		}
 	}
 
 	if (CreatureMental::DebugDrawConfinement && IsConfinedToArea())
 	{
-		GUtils::Circle::DrawCircleOnMap(field_0x11a8, field_0x11b4, LH3DColor(255, 255, 0), 0.5f, 1);
+		GUtils::Circle::DrawCircleOnMap(ConfinementCentre, ConfinementRadius, LH3DColor(255, 255, 0), 0.5f, 1);
 	}
 
 	if (Game3dObject != (Game3DObject*)physical->Creature3d->Get3DObject())
@@ -799,13 +958,13 @@ void Creature::Draw()
 		GLandscape::ConvertMapCoordToLandscapePoint(belief->Pos, objectPos);
 		LH3DColor red(255, 0, 0);
 		LHPoint   objectTop = objectPos;
-		objectTop.y += 20.0f;
+		objectTop.y += DEBUG_MARKER_HEIGHT;
 		LH3DLine::AddLine(objectPos, objectTop, &red, NULL);
 		LHPoint thingPos;
 		GLandscape::ConvertMapCoordToLandscapePoint(belief->GetPointer()->Pos, thingPos);
 		LH3DColor pink(255, 32, 32);
 		LHPoint   thingTop = thingPos;
-		thingTop.y += 20.0f;
+		thingTop.y += DEBUG_MARKER_HEIGHT;
 		LH3DLine::AddLine(thingPos, thingTop, &pink, NULL);
 	}
 
@@ -828,31 +987,29 @@ void Creature::Draw()
 	if (CreatureMental::DebugDrawMarker)
 	{
 		LHPoint top = mind->debug.MarkerPos;
-		top.y += 20.0f;
+		top.y += DEBUG_MARKER_HEIGHT;
 		LH3DLine::AddLine(mind->debug.MarkerPos, top, &LH3DColor(255, 0, 0), NULL);
 	}
 
 	static GatheringText* bubbleFont = NULL;
-	// Never referenced, here and on the Mac.
-	static int unused = 1;
+	static int            unused = 1;
 
 	int fontIndex;
-	if (alignment->GetValue() > 0.333f)
+	if (alignment->GetValue() > CREATURE_BUBBLE_ALIGNMENT_THRESHOLD)
 	{
-		fontIndex = 1;
+		fontIndex = CREATURE_BUBBLE_FONT_GOOD;
 	}
-	else if (alignment->GetValue() < -0.333f)
+	else if (alignment->GetValue() < -CREATURE_BUBBLE_ALIGNMENT_THRESHOLD)
 	{
-		fontIndex = 3;
+		fontIndex = CREATURE_BUBBLE_FONT_EVIL;
 	}
 	else
 	{
-		fontIndex = 2;
+		fontIndex = CREATURE_BUBBLE_FONT_NEUTRAL;
 	}
-	// TODO: GatheringText::gamefont is really an array of fonts; fix its declaration.
-	if (fontIndex == 2 || (&GatheringText::gamefont)[fontIndex] == NULL)
+	if (fontIndex == CREATURE_BUBBLE_FONT_NEUTRAL || (&GatheringText::gamefont)[fontIndex] == NULL)
 	{
-		fontIndex = 0;
+		fontIndex = CREATURE_BUBBLE_FONT_DEFAULT;
 	}
 	bubbleFont = (&GatheringText::gamefont)[fontIndex];
 
@@ -867,11 +1024,11 @@ void Creature::Draw()
 
 	if (CreatureMental::DebugDrawPath)
 	{
-		for (LHLinkedNode<LHPoint*>* node = field_0x1220.head.Get(); node != NULL; node = node->next.Get())
+		for (LHLinkedNode<LHPoint*>* node = DebugPath.head.Get(); node != NULL; node = node->next.Get())
 		{
 			LHPoint pos = *node->payload;
 			LHPoint top = pos;
-			top.y += 10.0f;
+			top.y += DEBUG_PATH_MARKER_HEIGHT;
 			LH3DLine::AddLine(pos, top, &LH3DColor(255, 0, 0), NULL);
 		}
 	}
@@ -883,7 +1040,6 @@ void Creature::Draw()
 	}
 }
 
-// BW1W120 00517f10 BW1M119 01045a20
 void Rock::Draw()
 {
 	if (GetFireEffect() != NULL)
@@ -898,17 +1054,15 @@ void Rock::Draw()
 	}
 }
 
-// BW1W120 00517f60 BW1M119 01045990
 void MobileStatic::Draw()
 {
 	if (Game3dObject != NULL && IsFence())
 	{
-		Game3dObject->field_0x64 = 1;
+		Game3dObject->DrawAsFence = true;
 	}
 	MultiMapFixed::Draw();
 }
 
-// BW1W120 00517f90 BW1M119 010cd3c0
 void MultiMapFixed::DrawBuilding(Game3DObject* object)
 {
 	float percent = GetPercentForDrawBuilding();
@@ -933,7 +1087,6 @@ void MultiMapFixed::DrawBuilding(Game3DObject* object)
 	}
 }
 
-// BW1W120 00518050 BW1M119 010cd310
 void Object::DrawObjectOnFire()
 {
 	FireEffect*   fire = GetFireEffect();
@@ -945,7 +1098,6 @@ void Object::DrawObjectOnFire()
 	DrawFireEffect();
 }
 
-// BW1W120 00518090 BW1M119 010474c0
 void MultiMapFixed::Draw()
 {
 	if (IsDrawBuilding() == true)
@@ -964,7 +1116,6 @@ void MultiMapFixed::Draw()
 	}
 }
 
-// BW1W120 00518100 BW1M119 0103aba0
 void SingleMapFixed::Draw()
 {
 	if (GetFireEffect() != NULL)
@@ -979,7 +1130,6 @@ void SingleMapFixed::Draw()
 	}
 }
 
-// BW1W120 00518150 BW1M119 01038d70
 void MobileObject::Draw()
 {
 	if (GetFireEffect() != NULL)
@@ -994,81 +1144,80 @@ void MobileObject::Draw()
 	}
 }
 
-// BW1W120 005181a0 BW1M119 010cc610
 void Scaffold::DrawInHand(GInterfaceStatus* status)
 {
-	static bool32_t appearSoundPlayed = FALSE;
-	static bool32_t disappearSoundPlayed = FALSE;
+	static bool32_t appearSoundPlayed = false;
+	static bool32_t disappearSoundPlayed = false;
 
-	// TODO: The target frame is 8 bytes smaller (two of the scalar slots below are shared) and schedules the scale
-	// branch of the inlined SetPosition slightly differently.
 	Object::DrawInHand(status);
 	if (!IsPlannedValid(PLANNED_TYPE_0) || status != GGame::g_game->MyInterface()->status)
 	{
 		return;
 	}
-	uint32_t cycle = GGame::g_game->field_0x25053c % 100;
-	int      fade = field_0x78 - min(cycle, field_0x78);
-	float    drawScale = field_0x84;
+	uint32_t cycle = GGame::g_game->RenderTime % RENDER_TIME_PER_TURN;
+	int      fade = FadeTime - min(cycle, FadeTime);
+	float    drawScale = HandScale;
 	if (fade > 0)
 	{
-		if (field_0x88_0)
+		if (Appearing)
 		{
 			if (!appearSoundPlayed)
 			{
-				disappearSoundPlayed = FALSE;
-				int                  abodeNumber = field_0x6c->GetInfo()->GetAbodeNumber();
+				disappearSoundPlayed = false;
+				int                  abodeNumber = Planned->GetInfo()->GetAbodeNumber();
 				LH_SamplePlayOptions options;
-				options.Pitch = abodeNumber < 0 ? 100 : 110 - abodeNumber * 3;
+				options.Pitch = abodeNumber < 0
+				                    ? SCAFFOLD_APPEAR_PITCH
+				                    : SCAFFOLD_APPEAR_ABODE_PITCH - abodeNumber * SCAFFOLD_APPEAR_PITCH_STEP;
 				options.Bank = GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_IN_GAME);
 				options.SampleNumber = LH_SAMPLE_G_SCAFFOLDAPPEAR_01;
-				options.field_0xc = 0;
+				options.Looping = 0;
 				options.AttachedObject = NULL;
 				options.Positional = 0;
 				GGlobal::Global.audio->PlaySoundEffect(&options);
-				appearSoundPlayed = TRUE;
+				appearSoundPlayed = true;
 			}
-			drawScale *= 1.0f - fade / 400.0f;
+			drawScale *= 1.0f - fade / SCAFFOLD_FADE_TIME;
 		}
 		else
 		{
 			if (!disappearSoundPlayed)
 			{
-				appearSoundPlayed = FALSE;
+				appearSoundPlayed = false;
 				GGlobal::Global.audio->PlaySoundEffect(NULL, LH_SAMPLE_G_SCAFFOLDDISAPPEAR_01, 2, 0, 0, 0,
 				                                       AUDIO_SFX_BANK_TYPE_IN_GAME);
-				disappearSoundPlayed = TRUE;
+				disappearSoundPlayed = true;
 			}
-			drawScale *= fade / 400.0f;
+			drawScale *= fade / SCAFFOLD_FADE_TIME;
 		}
 	}
-	else if (!field_0x88_0)
+	else if (!Appearing)
 	{
 		return;
 	}
-	if (field_0x74 == NULL)
+	if (HandObject == NULL)
 	{
 		return;
 	}
-	field_0x74->SetNeedSorting(1);
+	HandObject->SetNeedSorting(true);
 	GInterface* playerInterface = GGame::g_game->MyInterface();
 	MapCoords   coords(playerInterface->hand.Get()->DynamicShadow->matrix.GetPos());
-	float       angle =
-		((GGame::g_game->field_0x25053c % 100) / 100.0f) * ((const GScaffoldInfo*)info)->field_0x114 + field_0x80;
-	LH3DObject* object = field_0x74;
+	float       angle = ((GGame::g_game->RenderTime % RENDER_TIME_PER_TURN) / (float)RENDER_TIME_PER_TURN) *
+	                        ((const GScaffoldInfo*)info)->HandSpinSpeed +
+	                    HandAngle;
+	LH3DObject* object = HandObject;
 	LHPoint     pos;
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
 	object->LH3DObject::SetPosition(pos, angle, drawScale);
-	field_0x74->SetDrawWithGlobalAlpha(1);
+	HandObject->SetDrawWithGlobalAlpha(true);
 	unsigned long color = 0;
 	unsigned long specular = 0;
 	LH3DIsland::GetColorAndSpecular(coords, &color, &specular);
-	color = ((unsigned long)((color >> 24) / 1.5f) << 24) | (color & 0xFFFFFF);
-	field_0x74->SetColorSpecular(color, specular);
-	field_0x74->AddForDrawing(NULL);
+	color = ((unsigned long)((color >> 24) / SCAFFOLD_HAND_ALPHA_DIVISOR) << 24) | (color & 0xFFFFFF);
+	HandObject->SetColorSpecular(color, specular);
+	HandObject->AddForDrawing(NULL);
 }
 
-// BW1W120 00518640 BW1M119 010200c0
 void GInterface::Draw()
 {
 	GMagicHand* magicHand = status->HandHoldingSomething ? &status->magic_hand[status->HandHoldingSomething - 1] : NULL;
@@ -1079,13 +1228,11 @@ void GInterface::Draw()
 	status->DebugText(1);
 }
 
-// BW1W120 00518690 BW1M119 01026430
 void Feature::Draw()
 {
 	MultiMapFixed::Draw();
 }
 
-// BW1W120 005186a0 BW1M119 010cc440
 void Creed::Draw()
 {
 	if (Glow != NULL && Game3dObject != NULL)
@@ -1095,24 +1242,21 @@ void Creed::Draw()
 	}
 }
 
-// BW1W120 005186d0 BW1M119 010cc390
-void Creed::DrawOutOfMap(bool param_1)
+void Creed::DrawOutOfMap(bool selectable)
 {
 	if (Glow != NULL && Game3dObject != NULL)
 	{
-		Game3dObject->Flags2 |= 0x40;
+		Game3dObject->Flags2 |= LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 		Glow->DrawAt(Game3dObject->matrix, Game3dObject->scale);
-		Game3dObject->Flags2 &= ~0x40;
+		Game3dObject->Flags2 &= ~LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 	}
 }
 
-// BW1W120 00518710 BW1M119 010cc360
 void SpellSeed::Draw() {}
 
 // Alpha of the one-off spell seed models.
 static uint8_t SpellSeedAlpha = 150;
 
-// BW1W120 00518720 BW1M119 010cbdc0
 void OneOffSpellSeed::FaceCamera()
 {
 	static bool faceCamera = true;
@@ -1133,24 +1277,20 @@ void OneOffSpellSeed::FaceCamera()
 
 	GGame::g_game->GetCamera()->GetPosition(cameraPos);
 	direction = centre - cameraPos;
-	if (fabs(direction.x) < 0.0001f && fabs(direction.z) < 0.0001f)
+	if (fabs(direction.x) < FACE_CAMERA_MIN_DIRECTION && fabs(direction.z) < FACE_CAMERA_MIN_DIRECTION)
 	{
 		if (direction.x > 0.0f)
 		{
-			direction.x = 0.0001f;
+			direction.x = FACE_CAMERA_MIN_DIRECTION;
 		}
 		else
 		{
-			direction.x = -0.0001f;
+			direction.x = -FACE_CAMERA_MIN_DIRECTION;
 		}
 	}
 	direction.Normalise();
 
 	static LHPoint up(0.0f, 1.0f, 0.0f);
-	// TODO: The target inlines the LHPoint constructor nested in `direction * -(up * direction)`, which this
-	// function only gets with roughly 30 more units of inliner IL ahead of it (three extra unused LHPoint locals
-	// reproduce the target, apart from the operand order of the first product of the dot product). The source
-	// of the extra IL is unknown.
 	side = up + direction * -up.DotProductInline(direction);
 	side.Normalise();
 	cross.CrossProduct(side, direction);
@@ -1176,12 +1316,11 @@ void OneOffSpellSeed::FaceCamera()
 	*(LHPoint*)&Game3dObject->matrix.m[9] = centre - offset;
 }
 
-// BW1W120 00518c50 BW1M119 010cba80
-void OneOffSpellSeed::DrawOutOfMap(bool param_1)
+void OneOffSpellSeed::DrawOutOfMap(bool selectable)
 {
 	if (Game3dObject != NULL)
 	{
-		Game3dObject->Flags2 |= 0x40;
+		Game3dObject->Flags2 |= LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 	}
 	if (Graphic.Get() != NULL)
 	{
@@ -1190,23 +1329,20 @@ void OneOffSpellSeed::DrawOutOfMap(bool param_1)
 		LHPoint savedPos = Game3dObject->matrix.GetPos();
 		LHPoint pos = Game3dObject->matrix * Game3dObject->GetMesh()->GetBoundingBox().centre;
 		LHPoint toCamera = *LH3DTech::GetCameraPosition() - pos;
-		// TODO: The target keeps y and z in x87 registers for the squared length and multiplies by the radius
-		// with the components loaded first. The Mac does not fuse these products either. Unused locals placed here
-		// only switch between two codegens by their parity (0 to 12 tried), neither of them the target's.
-		float invLength =
+		float   invLength =
 			InverseSquareRoot(toCamera.x * toCamera.x + toCamera.y * toCamera.y + toCamera.z * toCamera.z);
 		toCamera.x *= invLength;
 		toCamera.y *= invLength;
 		toCamera.z *= invLength;
 		pos.Add(toCamera * GetRadius());
 		*(LHPoint*)&Game3dObject->matrix.m[9] = pos;
-		Game3dObject->Flags2 |= 0x40;
-		Game3dObject->SetDrawWithGlobalAlpha(TRUE);
+		Game3dObject->Flags2 |= LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
+		Game3dObject->SetDrawWithGlobalAlpha(true);
 		Game3DObject* object = Game3dObject;
 		object->CombineColorFromPos((SpellSeedAlpha << 24) | 0xFFFFFF, 0);
-		object->AddForDrawing(param_1 ? this : NULL);
+		object->AddForDrawing(selectable ? this : NULL);
 		*(LHPoint*)&Game3dObject->matrix.m[9] = savedPos;
-		Game3dObject->Flags2 &= ~0x40;
+		Game3dObject->Flags2 &= ~LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 		bool32_t onScreen = LH3DObject::g_b_last_on_screen;
 		if (LH3DObject::g_b_last_on_screen)
 		{
@@ -1214,17 +1350,16 @@ void OneOffSpellSeed::DrawOutOfMap(bool param_1)
 			float    scale;
 			GetSpellGraphicPos(&matrix, &scale);
 			Graphic->DrawUpdateAtPos(matrix, scale);
-			Graphic->DrawSpellGraphic(this, false, param_1, Game3dObject->color >> 24);
+			Graphic->DrawSpellGraphic(this, false, selectable, Game3dObject->color >> 24);
 		}
 		LH3DObject::g_b_last_on_screen = onScreen;
 	}
 	if (Game3dObject != NULL)
 	{
-		Game3dObject->Flags2 &= ~0x40;
+		Game3dObject->Flags2 &= ~LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 	}
 }
 
-// BW1W120 00518e90 BW1M119 010cb6f0
 void OneOffSpellSeed::Draw()
 {
 	if (Graphic.Get() != NULL)
@@ -1234,16 +1369,14 @@ void OneOffSpellSeed::Draw()
 		LHPoint savedPos = Game3dObject->matrix.GetPos();
 		LHPoint pos = Game3dObject->matrix * Game3dObject->GetMesh()->GetBoundingBox().centre;
 		LHPoint toCamera = *LH3DTech::GetCameraPosition() - pos;
-		// TODO: Same x87 residual as in DrawOutOfMap. One unused local here also fixes the operand order of the
-		// matrix product above, so that part is an inliner tie-break; no count up to 12 fixes the squared length.
-		float invLength =
+		float   invLength =
 			InverseSquareRoot(toCamera.x * toCamera.x + toCamera.y * toCamera.y + toCamera.z * toCamera.z);
 		toCamera.x *= invLength;
 		toCamera.y *= invLength;
 		toCamera.z *= invLength;
 		pos.Add(toCamera * GetRadius());
 		*(LHPoint*)&Game3dObject->matrix.m[9] = pos;
-		Game3dObject->SetDrawWithGlobalAlpha(TRUE);
+		Game3dObject->SetDrawWithGlobalAlpha(true);
 		Game3DObject* object = Game3dObject;
 		object->CombineColorFromPos((SpellSeedAlpha << 24) | 0xFFFFFF, 0);
 		object->AddForDrawing(this);
@@ -1261,14 +1394,13 @@ void OneOffSpellSeed::Draw()
 	}
 }
 
-// BW1W120 005190a0 BW1M119 010cb620
-void SpellSeed::DrawOutOfMap(bool param_1)
+void SpellSeed::DrawOutOfMap(bool selectable)
 {
-	if (field_0x90)
+	if (DrawnInHand)
 	{
 		if (Game3dObject != NULL)
 		{
-			Game3dObject->Flags2 |= 0x40;
+			Game3dObject->Flags2 |= LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 		}
 		if (IsG3DObjectDrawnInHand() == true)
 		{
@@ -1276,12 +1408,11 @@ void SpellSeed::DrawOutOfMap(bool param_1)
 		}
 		if (Game3dObject != NULL)
 		{
-			Game3dObject->Flags2 &= ~0x40;
+			Game3dObject->Flags2 &= ~LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 		}
 	}
 }
 
-// BW1W120 005190e0 BW1M119 0108f6b0
 void Object::DrawInHand(GInterfaceStatus* status)
 {
 	if (status == GGame::g_game->MyInterface()->status)
@@ -1294,57 +1425,41 @@ void Object::DrawInHand(GInterfaceStatus* status)
 	handPos = status->GetHandPos();
 	if (Game3dObject != NULL)
 	{
-		Game3dObject->Flags2 |= 0x40;
+		Game3dObject->Flags2 |= LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 	}
 	if (Game3dObject != NULL)
 	{
-		status->field_0xe0 += GGame::g_game->field_0x205d48;
-		int duration = status->field_0xe4;
-		// TODO: The target calls LH3DObject::SetPosition out of line in this branch but inlines it in the other one
-		// (SetScale and Translation stay calls, PostTranslation is inlined), and keeps status in ecx from the first
-		// comparison. Duplicated code cannot give that asymmetry under the c2 budget rules; the shared tail was
-		// probably an inline helper whose first expansion only got a share of the budget.
+		status->HandMoveTime += GGame::g_game->TimeInc;
+		int duration = status->HandMoveDuration;
 		if (duration == 0)
 		{
-			float       drawScale = scale;
-			MapCoords   coords(handPos);
-			LH3DObject* object = Game3dObject;
-			LHPoint     pos;
-			GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
-			object->LH3DObject::SetPosition(pos, 0.0f, drawScale);
+			SetPositionOnMap(Game3dObject, MapCoords(handPos), 0.0f, scale);
 			DrawOutOfMap(false);
 		}
 		else
 		{
-			int time = status->field_0xe0;
+			int time = status->HandMoveTime;
 			if (time >= duration)
 			{
 				time = duration;
 			}
-			LHPoint     delta = handPos - status->field_0xd4;
-			LHPoint     target = status->field_0xd4 + delta * ((float)time / duration);
-			float       drawScale = scale;
-			MapCoords   coords(target);
-			LH3DObject* object = Game3dObject;
-			LHPoint     pos;
-			GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
-			object->LH3DObject::SetPosition(pos, 0.0f, drawScale);
+			LHPoint delta = handPos - status->HandMoveStart;
+			LHPoint target = status->HandMoveStart + delta * ((float)time / duration);
+			SetPositionOnMap(Game3dObject, MapCoords(target), 0.0f, scale);
 			DrawOutOfMap(false);
 		}
 	}
 	if (Game3dObject != NULL)
 	{
-		Game3dObject->Flags2 &= ~0x40;
+		Game3dObject->Flags2 &= ~LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 	}
 }
 
-// BW1W120 00519350 BW1M119 0101d500
 void StoragePit::Draw()
 {
 	Abode::Draw();
 }
 
-// BW1W120 00519360 BW1M119 010cb170
 void WorshipTotem::Draw()
 {
 	if (IsBuilt())
@@ -1361,7 +1476,6 @@ void WorshipTotem::Draw()
 	}
 }
 
-// BW1W120 005193d0 BW1M119 010cb020
 void WorshipSite::Draw()
 {
 	if (!IsBuilt())
@@ -1375,27 +1489,14 @@ void WorshipSite::Draw()
 		DrawObjectOnFire();
 		return;
 	}
-	float         scale = GetScale();
-	float         yAngle = GetYAngle();
-	Game3DObject* object = Game3dObject;
-	// TODO: Inline budget: in the yAngle == 0 branch of the inlined SetPosition the target calls SetScale and inlines
-	// PostTranslation; this build does the opposite, so the original had 36 to 103 units less budget left here.
-	{
-		LHPoint point;
-		GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(Pos, point);
-		point.y += LH3DIsland::GetAltitudeAndSetColorSpecular(Pos, &object->color, &object->specular);
-		object->LH3DObject::SetPosition(point, yAngle, scale);
-	}
-	object->AddForDrawing(this);
+	SetPositionOnLand(Game3dObject, Pos, GetYAngle(), GetScale(), this);
 }
 
-// BW1W120 00519640 BW1M119 010cafd0
 void TownCentreSpellIcon::Draw()
 {
 	SpellIcon::Draw();
 }
 
-// BW1W120 00519650 BW1M119 010cad50
 void SpellIcon::Draw()
 {
 	if (!IsBuilt())
@@ -1407,26 +1508,12 @@ void SpellIcon::Draw()
 	// (SetScale, PostTranslation, RotateY, Translation) as a call; this build has budget left to inline most of them.
 	if (SpecularColor == 0)
 	{
-		float         scale = GetScale();
-		float         yAngle = GetYAngle();
-		Game3DObject* object = Game3dObject;
-		LHPoint       point;
-		GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(Pos, point);
-		point.y += LH3DIsland::GetAltitudeAndSetColorSpecular(Pos, &object->color, &object->specular);
-		object->LH3DObject::SetPosition(point, yAngle, scale);
-		object->AddForDrawing(this);
+		SetPositionOnLand(Game3dObject, Pos, GetYAngle(), GetScale(), this);
 	}
 	else
 	{
-		float       scale = GetScale();
-		float       yAngle = GetYAngle();
-		LH3DObject* object3d = Game3dObject;
-		LHPoint     point;
-		GLandscape::ConvertMapCoordToLandscapePoint(Pos, point);
-		object3d->LH3DObject::SetPosition(point, yAngle, scale);
-		Game3DObject* object = Game3dObject;
-		object->CombineColorFromPos(0xFFFFFFFF, SpecularColor);
-		object->AddForDrawing(this);
+		SetPositionOnMap(Game3dObject, Pos, GetYAngle(), GetScale());
+		DrawWithColor(this, 0xFFFFFFFF, SpecularColor);
 	}
 	if (LH3DObject::g_b_last_on_screen)
 	{
@@ -1435,7 +1522,6 @@ void SpellIcon::Draw()
 	}
 }
 
-// BW1W120 00519960 BW1M119 010261b0
 void GInterface::SendInvisibleDrawCollision(Object* object, LHPoint* pos, float radius)
 {
 	int   x;
@@ -1469,14 +1555,13 @@ void GInterface::SendInvisibleDrawCollision(Object* object, LHPoint* pos, float 
 		{
 			GGame::g_game->MyInterface()->SendObjectDrawCollision(object, depth, NULL);
 		}
-		if (result == 2)
+		if (result == LH3D_PROJECT_ON_SCREEN)
 		{
 			GGame::g_game->help_system->SendFOVObject(object, depth);
 		}
 	}
 }
 
-// BW1W120 0051a830 BW1M119 010ca660
 static void ConvertToCameraFacingMatrix(LHMatrix* matrix)
 {
 	static bool cameraFacing = true;
@@ -1495,15 +1580,15 @@ static void ConvertToCameraFacingMatrix(LHMatrix* matrix)
 	matrix->SetTranslateOnly(LHPoint(0.0f, 0.0f, 0.0f));
 	GGame::g_game->GetCamera()->GetPosition(cameraPos);
 	direction = pos - cameraPos;
-	if (fabs(direction.x) < 0.0001f && fabs(direction.z) < 0.0001f)
+	if (fabs(direction.x) < FACE_CAMERA_MIN_DIRECTION && fabs(direction.z) < FACE_CAMERA_MIN_DIRECTION)
 	{
 		if (direction.x > 0.0f)
 		{
-			direction.x = 0.0001f;
+			direction.x = FACE_CAMERA_MIN_DIRECTION;
 		}
 		else
 		{
-			direction.x = -0.0001f;
+			direction.x = -FACE_CAMERA_MIN_DIRECTION;
 		}
 	}
 	direction.Normalise();
@@ -1532,20 +1617,7 @@ static void ConvertToCameraFacingMatrix(LHMatrix* matrix)
 	matrix->m[11] = pos.z;
 }
 
-// fabricated: the Mac build calls the LHPoint constructor and ConvertMapCoordToLandscapePoint out of line at
-// these sites but inlines them elsewhere in DrawSpellGraphic, so they sit one inline level deeper. The original
-// was probably an inline Game3DObject member; both builds read the object and angle before the conversion.
-inline void SetSeedPosition(Game3DObject* object, const MapCoords& coords, float y_angle, float scale)
-{
-	LHPoint point;
-	object->LH3DObject::SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(coords, point), y_angle, scale);
-}
-
-// TODO: register allocation differs. The target keeps 0 in ebx for the whole function (byte tests become
-// `cmp [param_2], bl`) and spellInfo, object and the band index in ebp, leaving alpha in memory. Ours gives ebx to
-// alpha and the band index and rematerialises 0 in ebp, which also changes the switch-case tail merging.
-// BW1W120 00519ad0 BW1M119 010c9140
-void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param_3, unsigned char alpha)
+void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool draw_now, bool selectable, unsigned char alpha)
 {
 	static const float uvFrameSpeed = -15.0f;
 	static const float pulseSpeed = 0.5f;
@@ -1553,12 +1625,8 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 	static const float maxAlpha = 255.0f;
 	static const float spinSpeed = 2.0f;
 
-	bool32_t onScreen = LH3DObject::g_b_last_on_screen;
-#if defined(VERSION_BW1W120)
-	float dt = LH3DTech::GetGameTimeInc() / 1000.0f;
-#else
-	float dt = LH3DTech::GetGameTimeInc() * 0.001f;
-#endif
+	bool32_t        onScreen = LH3DObject::g_b_last_on_screen;
+	float           dt = LH3DTech::GetGameTimeInc() * SECONDS_PER_MILLISECOND;
 	GSpellSeedInfo* info = GSpellSeedInfo::GetInfo() + SeedType;
 	if (IsSpellG3DObjectDrawn())
 	{
@@ -1574,16 +1642,17 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 			GetSpellSeedInfo()->GetMagicInfo(GESTURE_TYPE_NONE)->AsMagicCreatureSpellInfo();
 		if (spellInfo != NULL)
 		{
-			Game3dObject->SetAnimatedUV_2(TRUE);
+			Game3dObject->SetAnimatedUV_2(true);
 			UVFrame += uvFrameSpeed * dt;
-			float uvFrame = fmod(UVFrame, 32.0f);
+			float uvFrame = fmod(UVFrame, SPELL_UV_FRAMES);
 			if (uvFrame < 0.0f)
 			{
-				uvFrame += 32.0f;
+				uvFrame += SPELL_UV_FRAMES;
 			}
 			UVFrame = uvFrame;
 			int frame = (int)UVFrame;
-			Game3dObject->SetAnimatedUV_1(frame % 8 * UVTextureScale * 32.0f, frame / 8 * UVTextureScale * 32.0f);
+			Game3dObject->SetAnimatedUV_1(frame % SPELL_UV_FRAMES_PER_ROW * UVTextureScale * SPELL_UV_FRAME_TEXELS,
+			                              frame / SPELL_UV_FRAMES_PER_ROW * UVTextureScale * SPELL_UV_FRAME_TEXELS);
 			float speed;
 			if (spellInfo->SpellType == CREATURE_RECEIVE_SPELL_FREEZE)
 			{
@@ -1595,14 +1664,15 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 			}
 			PulsePhase = fmod(PulsePhase + speed * dt, 1.0);
 			float pulse = ((float)sin(PulsePhase * TWO_PI) + 1.0f) * 0.5f;
-			SetSeedPosition(Game3dObject, Pos, YAngle, scale);
+			SetPositionOnMap(Game3dObject, Pos, YAngle, scale);
 			switch (spellInfo->SpellType)
 			{
 			case CREATURE_RECEIVE_SPELL_FAT:
-				Game3dObject->matrix.PreScale(pulse * 1.5f + 1.0f, 1.0f, pulse * 1.5f + 1.0f);
+				Game3dObject->matrix.PreScale(pulse * SPELL_FAT_PULSE + 1.0f, 1.0f, pulse * SPELL_FAT_PULSE + 1.0f);
 				break;
 			case CREATURE_RECEIVE_SPELL_THIN:
-				Game3dObject->matrix.PreScale(1.0f - pulse * 0.8f, 1.0f, 1.0f - pulse * 0.7f);
+				Game3dObject->matrix.PreScale(1.0f - pulse * SPELL_THIN_PULSE_X, 1.0f,
+				                              1.0f - pulse * SPELL_THIN_PULSE_Z);
 				break;
 			}
 			switch (spellInfo->SpellType)
@@ -1612,8 +1682,8 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 				                                       &Game3dObject->specular);
 				Game3dObject->color &= 0xFFFFFF;
 				Game3dObject->color |= (uint8_t)(alpha * pulse) << 24;
-				Game3dObject->SetDrawWithGlobalAlpha(TRUE);
-				if (param_2)
+				Game3dObject->SetDrawWithGlobalAlpha(true);
+				if (draw_now)
 				{
 					Game3dObject->DrawWithClipping();
 				}
@@ -1625,7 +1695,6 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 			case CREATURE_RECEIVE_SPELL_FREEZE:
 				LH3DIsland::GetColorAndSpecularWithFog(&Game3dObject->matrix.GetPos(), &Game3dObject->color,
 				                                       &Game3dObject->specular);
-				// The Mac passes the byte-swapped 0x8D4F3500, as its IndirectX RGB_MAKE would build it.
 				Game3dObject->DrawFroz_2(pulse, RGB_MAKE(53, 79, 141),
 				                         GlobalTextures::GetFrozMaterial(GlobalTextures::FROZ_MAT_TYPE_0));
 				break;
@@ -1638,8 +1707,8 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 				Game3dObject->color |= ((uint8_t)GJUtils::Linterp(maxAlpha, 0.0f, PulsePhase) * alpha >> 8) << 24;
 				Game3dObject->matrix.ScaleMatrixOnly(PulsePhase + 1.0f);
 				Game3dObject->scale *= pulse + 1.0f;
-				Game3dObject->SetDrawWithGlobalAlpha(TRUE);
-				if (param_2)
+				Game3dObject->SetDrawWithGlobalAlpha(true);
+				if (draw_now)
 				{
 					Game3dObject->DrawWithClipping();
 				}
@@ -1649,16 +1718,16 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 				}
 				break;
 			case CREATURE_RECEIVE_SPELL_SMALL:
-				SetSeedPosition(Game3dObject, Pos, YAngle, (1.0f - PulsePhase) * scale);
+				SetPositionOnMap(Game3dObject, Pos, YAngle, (1.0f - PulsePhase) * scale);
 				Game3dObject->color &= 0xFFFFFF;
 				Game3dObject->color |= alpha << 24;
 				Game3dObject->SetDrawWithGlobalAlpha(alpha != 0xFF);
 				Game3dObject->DrawWithClipping();
 				Game3dObject->color &= 0xFFFFFF;
-				Game3dObject->color |= (alpha * 80 >> 8) << 24;
-				SetSeedPosition(Game3dObject, Pos, YAngle, scale);
-				Game3dObject->SetDrawWithGlobalAlpha(TRUE);
-				if (param_2)
+				Game3dObject->color |= (alpha * SPELL_SMALL_SHADOW_ALPHA >> 8) << 24;
+				SetPositionOnMap(Game3dObject, Pos, YAngle, scale);
+				Game3dObject->SetDrawWithGlobalAlpha(true);
+				if (draw_now)
 				{
 					Game3dObject->DrawWithClipping();
 				}
@@ -1669,7 +1738,7 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 				break;
 			default:
 				Game3dObject->SetDrawWithGlobalAlpha(alpha != 0xFF);
-				if (param_2)
+				if (draw_now)
 				{
 					Game3dObject->DrawWithClipping();
 				}
@@ -1687,26 +1756,19 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 			Game3dObject->color &= 0xFFFFFF;
 			Game3dObject->color |= alpha << 24;
 			Game3dObject->SetDrawWithGlobalAlpha(alpha != 0xFF);
-			if (param_2)
+			if (draw_now)
 			{
-				SetSeedPosition(Game3dObject, Pos, YAngle, scale);
+				SetPositionOnMap(Game3dObject, Pos, YAngle, scale);
 				Game3dObject->DrawWithClipping();
 			}
 			else
 			{
-				float         angle = YAngle;
-				Game3DObject* seedObject = Game3dObject;
-				LHPoint       position;
-				GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(Pos, position);
-				position.y +=
-					LH3DIsland::GetAltitudeAndSetColorSpecular(Pos, &seedObject->color, &seedObject->specular);
-				seedObject->LH3DObject::SetPosition(position, angle, scale);
-				seedObject->AddForDrawing(NULL);
+				SetPositionOnLand(Game3dObject, Pos, YAngle, scale, NULL);
 			}
 		}
 	}
 
-	if (object != NULL && param_3)
+	if (object != NULL && selectable)
 	{
 		LHPoint position;
 		GLandscape::ConvertMapCoordToLandscapePoint(Pos, position);
@@ -1714,19 +1776,19 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 		{
 			position.Add(Game3dObject->GetMesh()->GetBoundingBox().centre);
 		}
-		GInterface::SendInvisibleDrawCollision(object, &position, Size * 2.0f);
+		GInterface::SendInvisibleDrawCollision(object, &position, Size * SPELL_GRAPHIC_COLLIDE_SCALE);
 	}
 
 	if (PSys != NULL)
 	{
 		PSys->SetAlpha(alpha);
-		if (param_2)
+		if (draw_now)
 		{
-			PSys->Draw(field_0x5c ? GGame::g_game->field_0x205d64 : 1.0f, false);
+			PSys->Draw(InterpolateParticles ? GGame::g_game->TurnFraction : 1.0f, false);
 		}
 		else
 		{
-			PSys->AddDrawing(field_0x5c ? GGame::g_game->field_0x205d64 : 1.0f, *PSys->GetOrigin());
+			PSys->AddDrawing(InterpolateParticles ? GGame::g_game->TurnFraction : 1.0f, *PSys->GetOrigin());
 		}
 	}
 
@@ -1741,7 +1803,7 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 			static float   bandScaleFactor = 0.2f;
 			static uint8_t bandSpecular = 20;
 			BandAngle = fmod(BandAngle + bandAngleSpeed * dt, TWO_PI);
-			field_0x40 = fmod(field_0x40 + bandSpinSpeed * dt, TWO_PI);
+			BandSpinAngle = fmod(BandSpinAngle + bandSpinSpeed * dt, TWO_PI);
 			GPlayer* player =
 				GetPlayer() == GGame::g_game->GetNeutralPlayer() ? GGame::g_game->MyPlayer() : GetPlayer();
 			PUBand->SetColorSpecular((player->GetPlayerColour() & 0xFFFFFF) | ((BandAlpha * alpha >> 8) << 24),
@@ -1769,7 +1831,7 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 				PUBand->matrix.ScaleMatrixOnly(bandScale);
 				ConvertToCameraFacingMatrix(&PUBand->matrix);
 				PUBand->DrawWithClipping();
-				if (param_2)
+				if (draw_now)
 				{
 					PUBand->DrawWithClipping();
 				}
@@ -1787,7 +1849,6 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 	LH3DObject::g_b_last_on_screen |= onScreen;
 }
 
-// BW1W120 0051aba0 BW1M119 010c8ea0
 void Totem::Draw()
 {
 	DebugText(1);
@@ -1797,32 +1858,18 @@ void Totem::Draw()
 		return;
 	}
 	InitTotemPosFromWorshipPercentage();
-	Game3dObject->SetDrawWithGlobalAlpha(0);
-	// TODO: Inline budget: the target calls LH3DObject::SetPosition out of line in the two interact paths and only
-	// inlines the last one, the same asymmetry as Object::DrawInHand. Repeated code cannot produce that under the c2
-	// budget rules; these position updates were probably shared inline helpers.
-	if ((((GameThingWithPos*)this)->Flags & 0x10) && GGame::g_game->MyInterface()->GetInteractObject() == this)
+	Game3dObject->SetDrawWithGlobalAlpha(false);
+	if ((((GameThingWithPos*)this)->Flags & GAME_THING_WITH_POS_FLAG_INTERACTING) &&
+	    GGame::g_game->MyInterface()->GetInteractObject() == this)
 	{
 		if (GetFireEffect() != NULL)
 		{
-			float       scale = GetScale();
-			float       yAngle = GetYAngle();
-			LH3DObject* object = Game3dObject;
-			LHPoint     point;
-			GLandscape::ConvertMapCoordToLandscapePoint(field_0xc4, point);
-			object->LH3DObject::SetPosition(point, yAngle, scale);
+			SetPositionOnMap(Game3dObject, InteractPos, GetYAngle(), GetScale());
 			DrawObjectOnFire();
 		}
 		else
 		{
-			float         scale = GetScale();
-			float         yAngle = GetYAngle();
-			Game3DObject* object = Game3dObject;
-			LHPoint       point;
-			GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(field_0xc4, point);
-			point.y += LH3DIsland::GetAltitudeAndSetColorSpecular(field_0xc4, &object->color, &object->specular);
-			object->LH3DObject::SetPosition(point, yAngle, scale);
-			object->AddForDrawing(this);
+			SetPositionOnLand(Game3dObject, InteractPos, GetYAngle(), GetScale(), this);
 		}
 		return;
 	}
@@ -1831,45 +1878,37 @@ void Totem::Draw()
 		DrawObjectOnFire();
 		return;
 	}
-	float         scale = GetScale();
-	float         yAngle = GetYAngle();
-	Game3DObject* object = Game3dObject;
-	LHPoint       point;
-	GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(Pos, point);
-	point.y += LH3DIsland::GetAltitudeAndSetColorSpecular(Pos, &object->color, &object->specular);
-	object->LH3DObject::SetPosition(point, yAngle, scale);
-	object->AddForDrawing(this);
+	SetPositionOnLand(Game3dObject, Pos, GetYAngle(), GetScale(), this);
 }
 
-// BW1W120 0051aec0 BW1M119 010c8e10
 void Living::Draw()
 {
 	GInterface* playerInterface = GGame::g_game->MyInterface();
 	CHand*      hand = playerInterface->hand.Get();
-	if (hand->CurrentState != 4 || hand->field_0x4904 != (uint32_t)this)
+	if (hand->CurrentState != HAND_STATES_HOLDING || hand->HeldObject != (uint32_t)this)
 	{
 		DrawScale(1.0f);
 	}
 }
 
-// BW1W120 0051af00 BW1M119 0104b000
 void Living::PreDrawScale(float scale)
 {
 #if defined(VERSION_BW1W100)
-	if (IsMoving() && Game3dObject->GetCurrentAnim() != NULL && !(Game3dObject->GetCurrentAnim()->Flags & 0x200))
+	if (IsMoving() && Game3dObject->GetCurrentAnim() != NULL &&
+	    !(Game3dObject->GetCurrentAnim()->Flags & LH3D_ANIM_FLAG_TIME_BASED))
 #else
 	if (IsMovingForAnimation() && Game3dObject->GetCurrentAnim() != NULL &&
-	    !(Game3dObject->GetCurrentAnim()->Flags & 0x200))
+	    !(Game3dObject->GetCurrentAnim()->Flags & LH3D_ANIM_FLAG_TIME_BASED))
 #endif
 	{
-		float distance = (float)(speed * GGame::g_game->field_0x250540) / (GetScale() * 655350.0f);
+		float distance = (float)(speed * GGame::g_game->RenderTimeInc) / (GetScale() * LIVING_SPEED_DISTANCE_SCALE);
 		Game3dObject->SetCurrentCycleTime(
 			MoveAnimByDist(Game3dObject->GetCurrentAnim(), Game3dObject->GetCurrentCycleTime(), distance));
 		LHPoint oldPos;
 		GLandscape::ConvertMapCoordToLandscapePoint(coords, oldPos);
 		LHPoint newPos;
 		GLandscape::ConvertMapCoordToLandscapePoint(Pos, newPos);
-		float t = GGame::g_game->field_0x205d64;
+		float t = GGame::g_game->TurnFraction;
 		float s = 1.0f - t;
 		((LH3DObject*)Game3dObject)->SetPosition(oldPos * s + newPos * t, GetYAngle() + HALF_PI_F, scale);
 	}
@@ -1882,25 +1921,24 @@ void Living::PreDrawScale(float scale)
 			GLandscape::ConvertMapCoordToLandscapePoint(Pos, pos);
 			object->LH3DObject::SetPosition(pos, yAngle, scale);
 		}
-		Game3dObject->SetCurrentCycleTime(MoveAnimByTime(
-			Game3dObject->GetCurrentAnim(), Game3dObject->GetCurrentCycleTime(), GGame::g_game->field_0x205d48));
+		Game3dObject->SetCurrentCycleTime(MoveAnimByTime(Game3dObject->GetCurrentAnim(),
+		                                                 Game3dObject->GetCurrentCycleTime(), GGame::g_game->TimeInc));
 	}
 }
 
-// BW1W120 0051b220 BW1M119 0104cc50
 void Living::PreDrawShear()
 {
-	if (Pos.Altitude() <= 0.2f)
+	if (Pos.Altitude() <= LIVING_SHEAR_MAX_ALTITUDE)
 	{
 		LHPoint right = Game3dObject->matrix * LHPoint(1.0f, 0.0f, 0.0f);
 		LHPoint front = Game3dObject->matrix * LHPoint(0.0f, 0.0f, 1.0f);
 		float   height = Game3dObject->matrix._42;
 		float   shearX = LH3DIsland::GetAltitude(LH3DMapCoords(right.x, right.z)) - height;
 		float   shearZ = LH3DIsland::GetAltitude(LH3DMapCoords(front.x, front.z)) - height;
-		shearX = min(shearX, 0.3f);
-		shearZ = min(shearZ, 0.3f);
-		shearX = max(shearX, -0.3f);
-		shearZ = max(shearZ, -0.3f);
+		shearX = min(shearX, LIVING_MAX_SHEAR);
+		shearZ = min(shearZ, LIVING_MAX_SHEAR);
+		shearX = max(shearX, -LIVING_MAX_SHEAR);
+		shearZ = max(shearZ, -LIVING_MAX_SHEAR);
 		LHMatrix shear;
 		shear.SetIdentity();
 		shear._12 = shearX;
@@ -1909,7 +1947,6 @@ void Living::PreDrawShear()
 	}
 }
 
-// BW1W120 0051b3d0 BW1M119 0104cde0
 void Living::DrawScale(float scale)
 {
 	PreDrawScale(scale);
@@ -1944,13 +1981,12 @@ void Living::DrawScale(float scale)
 	}
 }
 
-// BW1W120 0051b4a0 BW1M119 010c8ac0
 void Living::DrawScaleWithPlayerColor(float scale)
 {
 	PreDrawScale(scale);
 	if (*(uint32_t*)&SpecularColor == 0)
 	{
-		Game3dObject->SetDrawWithGlobalAlpha(1);
+		Game3dObject->SetDrawWithGlobalAlpha(true);
 		uint32_t color = GetPlayer()->GetPlayerColour() | 0xFF000000;
 		Game3dObject->SetColorSpecular(color, 0);
 		Game3dObject->AddForDrawing(this);
@@ -1963,27 +1999,26 @@ void Living::DrawScaleWithPlayerColor(float scale)
 	}
 }
 
-// BW1W120 0051b510 BW1M119 0105a910
 bool Villager::DrawVillagerInfo()
 {
-	if (!(status & 0x200) && !(GGame::g_game->GameFlags & GAME_FLAG_UNKNOWN_0x200000))
+	if (!(status & LIVING_STATUS_SHOW_INFO) && !(GGame::g_game->GameFlags & GAME_FLAG_UNKNOWN_0x200000))
 	{
 		return false;
 	}
 	GVillagerStateTableInfo* info = &GVillagerStateTableInfo::GetInfo()[GetFinalState()];
-	char16_t                 text[0x400];
+	char16_t                 text[VILLAGER_INFO_TEXT_LENGTH];
 	wcscpy(text, L"");
 	SpecialVillager* special = dynamic_cast<SpecialVillager*>(this);
 	if (GetVillagerName() != NULL && special != NULL && special->CanShowName())
 	{
 		swprintf(text + wcslen(text), L"%s\n", CHAR2WCHAR(GetVillagerName()));
 	}
-	if (info->field_0x10c != 0)
+	if (info->StateHelpText != 0)
 	{
 		char16_t* foodText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_EXTRA_KHAZAR_21);
 		char16_t* lifeText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_EXTRA_KHAZAR_20);
 		char16_t* ageText = HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_EXTRA_KHAZAR_22);
-		char16_t* stateText = HelpTextDataBase::HelpTextDatabase.GetHelpText(info->field_0x10c);
+		char16_t* stateText = HelpTextDataBase::HelpTextDatabase.GetHelpText(info->StateHelpText);
 		swprintf(text + wcslen(text), L"%s\n%s%d %s%.0f%% %s%.0f%%", stateText, ageText, GetAge(), lifeText,
 		         GetLife() * 100.0f, foodText, food * 100.0f);
 		if (IsPregnant())
@@ -2009,39 +2044,34 @@ bool Villager::DrawVillagerInfo()
 			wcscat(text, L" S");
 		}
 	}
-	// TODO: The original frame shares the slots of point and color with the branches above, so they had a narrower
-	// scope than the function (this block, or perhaps an inline helper).
 	{
 		LHPoint point = Game3dObject != NULL ? Game3dObject->matrix.GetPos() : Pos.GetLHPoint();
-		point.y += 1.75f;
+		point.y += VILLAGER_NAME_HEIGHT;
 		LH3DColor color(0xff, 0xff, 0xff, 0xff);
 		if (GetTown() != NULL && GetTown()->GetPlayer() != NULL)
 		{
 			color = GetTown()->GetPlayer()->GetPlayer3DColor();
 		}
+#ifndef VERSION_BW1W100
 		if (IsFemaleVillager())
 		{
-			// Lighten each channel 145/256 of the way towards white.
-			uint32_t c = *(uint32_t*)&color;
-			*(uint32_t*)&color = (((c & 0xff0000) + (((0xff0000 - (c & 0xff0000)) * 145) >> 8)) & 0xff0000) |
-			                     (((c & 0xff00) + (((0xff00 - (c & 0xff00)) * 145) >> 8)) & 0xff00) |
-			                     (((c & 0xff) + (((0xff - (c & 0xff)) * 145) >> 8)) & 0xff) | 0xff000000;
+			*(uint32_t*)&color = BlendColour(VILLAGER_NAME_FEMALE_LIGHTEN, *(uint32_t*)&color, 0xffffffff);
 		}
+#endif
 		VillagerName::Add(1.0f, point, text, color);
 	}
 	return true;
 }
 
-// BW1W120 0051b940 BW1M119 0104f050
 void Villager::Draw()
 {
 	GInterface* playerInterface = GGame::g_game->MyInterface();
 	CHand*      hand = playerInterface->hand.Get();
-	if (hand->CurrentState == 4 && hand->field_0x4904 == (uint32_t)this)
+	if (hand->CurrentState == HAND_STATES_HOLDING && hand->HeldObject == (uint32_t)this)
 	{
 		return;
 	}
-	if (GVillagerStateTableInfo::GetInfo()[action.GetState(LIVING_ACTION_INDEX_TOP)].field_0x10 != -4 &&
+	if (GVillagerStateTableInfo::GetInfo()[action.GetState(LIVING_ACTION_INDEX_TOP)].Anim != ANM_DONT_DRAW &&
 	    !(Flags & VILLAGER_FLAG_AT_HOME))
 	{
 #if defined(VERSION_BW1W100)
@@ -2049,7 +2079,7 @@ void Villager::Draw()
 		DrawCarriedObject();
 #else
 		float diff = angle_correct(angle_correct(GetYAngle()) - DrawYAngle);
-		float rate = 0.003f;
+		float rate = VILLAGER_DRAW_TURN_RATE;
 		if (fabs(diff) > HALF_PI_F)
 		{
 			rate = rate * (2.0f * (fabs(diff) / HALF_PI_F));
@@ -2083,7 +2113,6 @@ void Villager::Draw()
 	DrawVillagerInfo();
 }
 
-// BW1W120 0051baf0 BW1M119 010563d0
 void Villager::DrawCarriedObject()
 {
 	LH3DObject* carried = CarriedObject::Get3DCarriedObject((CARRIED_OBJECT)CarriedObjectType);
@@ -2097,19 +2126,16 @@ void Villager::DrawCarriedObject()
 	}
 }
 
-// BW1W120 0051bb50 BW1M119 010c88f0
 uint32_t Pot::GetPoisonColor()
 {
 	return 0xFFE8FFDD;
 }
 
-// BW1W120 0051bb60 BW1M119 010c88b0
 uint32_t Pot::GetPoisonSpecular()
 {
 	return 0xFF001000;
 }
 
-// BW1W120 0051bb70 BW1M119 010c87e0
 void Pot::Draw()
 {
 	if (ResourceAmount != 0)
@@ -2129,12 +2155,11 @@ void Pot::Draw()
 	}
 }
 
-// BW1W120 0051bbc0 BW1M119 010c86a0
-void Pot::DrawOutOfMap(bool param_1)
+void Pot::DrawOutOfMap(bool selectable)
 {
 	if (Game3dObject != NULL)
 	{
-		Game3dObject->Flags2 |= 0x40;
+		Game3dObject->Flags2 |= LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 	}
 	if (ResourceAmount != 0)
 	{
@@ -2144,54 +2169,38 @@ void Pot::DrawOutOfMap(bool param_1)
 			uint32_t      color = GetPoisonColor();
 			Game3DObject* object = Game3dObject;
 			object->CombineColorFromPos(color, specular);
-			object->AddForDrawing(param_1 ? this : NULL);
+			object->AddForDrawing(selectable ? this : NULL);
 		}
 		else
 		{
-			Object::DrawOutOfMap(param_1);
+			Object::DrawOutOfMap(selectable);
 		}
 	}
 	if (Game3dObject != NULL)
 	{
-		Game3dObject->Flags2 &= ~0x40;
+		Game3dObject->Flags2 &= ~LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 	}
 }
 
-// TODO: Inline-budget residual: the target keeps the second SetPosition's SetScale out of line (its nested share
-// is one unit short of SetScale's size in our build), and keeps ebx/ebp pushes inside the visible branch.
-// BW1W120 0051bc40 BW1M119 0103b400
 void PileWood::Draw()
 {
-	AltitudeZoomer.Update((int)LH3DTech::g_game_time_inc * 0.001f);
+	AltitudeZoomer.Update(LH3DTech::GetGameTimeInc() / MILLISECONDS_PER_SECOND);
 	float altitude = AltitudeZoomer.GetCurrentValue();
 	if (altitude > -GetHeight())
 	{
 		MapCoords coords = Pos;
 		coords.altitude = AltitudeZoomer.GetCurrentValue();
-		float       scale = GetScale();
-		float       yAngle = GetYAngle();
-		LH3DObject* object = Game3dObject;
-		LHPoint     position;
-		object->LH3DObject::SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(coords, position), yAngle, scale);
+		SetPositionOnMap(Game3dObject, coords, GetYAngle(), GetScale());
 
 		MobileObject::Draw();
 
-		scale = GetScale();
-		yAngle = GetYAngle();
-		object = Game3dObject;
-		object->LH3DObject::SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
+		SetPositionOnMap(Game3dObject, Pos, GetYAngle(), GetScale());
 	}
 }
 
-// TODO: Inline-budget residual: the target calls the out-of-line LH3DObject::SetPosition for the raised position
-// but inlines the second one; no budget model reproduces that from this source, so a source difference remains.
-// SetPosition is really the virtual __fastcall at vtable slot 0x20 (0x00423140), and the target
-// also calls it out of line from small functions with ample budget (SpellIcon::MoveMapObject 0x007265d0,
-// AnimatedStatic::CallVirtualFunctionsForCreation 0x00422300), so its inlining is not decided by the budget alone.
-// BW1W120 0051bf80 BW1M119 01033190
 void PileFood::Draw()
 {
-	AltitudeZoomer.Update((int)LH3DTech::g_game_time_inc * 0.001f);
+	AltitudeZoomer.Update(LH3DTech::GetGameTimeInc() / MILLISECONDS_PER_SECOND);
 	float altitude = AltitudeZoomer.GetCurrentValue();
 	if (altitude > -GetHeight())
 	{
@@ -2206,11 +2215,7 @@ void PileFood::Draw()
 
 		MapCoords coords = Pos;
 		coords.altitude = AltitudeZoomer.GetCurrentValue();
-		float       scale = GetScale();
-		float       yAngle = GetYAngle();
-		LH3DObject* object = Game3dObject;
-		LHPoint     position;
-		object->LH3DObject::SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(coords, position), yAngle, scale);
+		SetPositionOnMap(Game3dObject, coords, GetYAngle(), GetScale());
 
 		if (IsPoisoned() && GetFireEffect() == NULL)
 		{
@@ -2225,27 +2230,20 @@ void PileFood::Draw()
 			MobileObject::Draw();
 		}
 
-		scale = GetScale();
-		yAngle = GetYAngle();
-		object = Game3dObject;
-		object->LH3DObject::SetPosition(*GLandscape::ConvertMapCoordToLandscapePoint(Pos, position), yAngle, scale);
+		SetPositionOnMap(Game3dObject, Pos, GetYAngle(), GetScale());
 	}
 }
 
-// fabricated: the original squared the time through some inline helper taking its argument by value (Animal::Draw,
-// Dove::Draw, SpellWolf::Draw and SpellWolf/SpellDove::ProcessFadeOut all copy the value before multiplying); the name
-// is unknown.
 inline float Square(float x)
 {
 	return x * x;
 }
 
-// BW1W120 0051c310 BW1M119 010443e0
 void Animal::Draw()
 {
 	GInterface* playerInterface = GGame::g_game->MyInterface();
 	CHand*      hand = playerInterface->hand.Get();
-	if (hand->CurrentState == 4 && hand->field_0x4904 == (uint32_t)this)
+	if (hand->CurrentState == HAND_STATES_HOLDING && hand->HeldObject == (uint32_t)this)
 	{
 		return;
 	}
@@ -2302,7 +2300,6 @@ void Animal::Draw()
 	DebugShowText();
 }
 
-// The same inline-assembly rounding helper appears in Object.cpp as RoundPhysicsCell; its original name is unknown.
 static inline int FloatToInt(float value)
 {
 	int  result;
@@ -2316,7 +2313,6 @@ static inline int FloatToInt(float value)
 	return result;
 }
 
-// BW1W120 0051c560 BW1M119 010c7d90
 void SpellWolf::Draw()
 {
 	PreDrawScale(GetScale());
@@ -2354,7 +2350,6 @@ void SpellWolf::Draw()
 	FireEffect* fire = GetFireEffect();
 	if (fire != NULL)
 	{
-		// TODO: The target keeps charing in esi and color only in its stack slot; this build swaps the two.
 		uint32_t      color = Game3dObject->color;
 		uint32_t      charing = fire->GetFireEffectCharingColor();
 		uint32_t      specular = fire->GetFireEffectSpecularColor();
@@ -2376,12 +2371,11 @@ void SpellWolf::Draw()
 	DebugShowText();
 }
 
-// BW1W120 0051c820 BW1M119 0101d5f0
-void Object::DrawOutOfMap(bool param_1)
+void Object::DrawOutOfMap(bool selectable)
 {
 	if (Game3dObject != NULL)
 	{
-		Game3dObject->Flags2 |= 0x40;
+		Game3dObject->Flags2 |= LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 	}
 	FireEffect* fire = GetFireEffect();
 	if (fire != NULL)
@@ -2390,18 +2384,18 @@ void Object::DrawOutOfMap(bool param_1)
 		uint32_t      color = fire->GetFireEffectCharingColor();
 		Game3DObject* object = Game3dObject;
 		object->CombineColorFromPos(color, specular);
-		object->AddForDrawing(param_1 ? this : NULL);
+		object->AddForDrawing(selectable ? this : NULL);
 		DrawFireEffect();
 	}
 	else
 	{
 		Game3DObject* object = Game3dObject;
 		LH3DIsland::GetColorAndSpecularWithFog(&object->matrix.GetPos(), &object->color, &object->specular);
-		object->AddForDrawing(param_1 ? this : NULL);
+		object->AddForDrawing(selectable ? this : NULL);
 	}
 	if (Game3dObject != NULL)
 	{
-		Game3dObject->Flags2 &= ~0x40;
+		Game3dObject->Flags2 &= ~LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
 	}
 	if (IsVillager(NULL))
 	{
@@ -2409,10 +2403,9 @@ void Object::DrawOutOfMap(bool param_1)
 	}
 }
 
-// BW1W120 0051c8e0 BW1M119 010c77b0
 void TownArtifact::Draw()
 {
-	if (Value > 2.0f && Artifact != NULL && Symbol != NULL)
+	if (Value > TOWN_ARTIFACT_SYMBOL_MIN_VALUE && Artifact != NULL && Symbol != NULL)
 	{
 		LHPoint       pos;
 		Game3DObject* object = Artifact->Game3dObject;
@@ -2420,19 +2413,18 @@ void TownArtifact::Draw()
 		{
 			pos = object->GetMesh()->GetBoundingBox().centre;
 			object->matrix.TransformPoint(pos);
-			pos.y += object->GetMesh()->GetBoundingBox().size.y * object->scale * 1.2;
+			pos.y += object->GetMesh()->GetBoundingBox().size.y * object->scale * TOWN_ARTIFACT_SYMBOL_HEIGHT_SCALE;
 		}
 		else
 		{
 			pos = Artifact->Pos.GetLHPoint();
-			pos.y += Artifact->GetHeight() + 2.0f;
+			pos.y += Artifact->GetHeight() + TOWN_ARTIFACT_SYMBOL_HEIGHT;
 		}
 		Symbol->SetPos(pos);
 		Symbol->AddDrawing();
 	}
 }
 
-// BW1W120 0051ca10 BW1M119 010c7410
 void Workshop::DrawScaffold()
 {
 	static int pulseTime = 0;
@@ -2446,32 +2438,33 @@ void Workshop::DrawScaffold()
 	for (LHLinkedNode<Scaffold*>* node = Scaffolds.head.Get(); node != NULL; node = node->next.Get())
 	{
 		Scaffold* scaffold = node->payload;
-		if (field_0xdc[scaffold->GetWorkshopPosition()] == 1)
+		if (ScaffoldSlots[scaffold->GetWorkshopPosition()] == WORKSHOP_SCAFFOLD_SLOT_MOVED)
 		{
 			float     xAngle;
 			float     yAngle;
 			float     zAngle;
 			MapCoords pos = GetScaffoldCreatePos(scaffold->GetWorkshopPosition(), xAngle, yAngle, zAngle);
-			field_0xcc->SetMesh(LH3DMesh::GetPackedMesh(scaffold->GetMesh()), NULL, NULL);
-			field_0xcc->SetPosition(pos, xAngle, yAngle, zAngle, scaffold->GetScale());
-			field_0xcc->SetDrawWithGlobalAlpha(1);
+			ScaffoldPreview->SetMesh(LH3DMesh::GetPackedMesh(scaffold->GetMesh()), NULL, NULL);
+			ScaffoldPreview->SetPosition(pos, xAngle, yAngle, zAngle, scaffold->GetScale());
+			ScaffoldPreview->SetDrawWithGlobalAlpha(true);
 
 			unsigned long color = 0;
 			unsigned long specular = 0;
 			LH3DIsland::GetColorAndSpecular(pos, &color, &specular);
-			int alpha = (int)((color >> 24) * (1.0f / 3.0f) * (cos(pulseTime * TWO_PI / pulsePeriod) + 1.0) * 0.5);
+			int alpha =
+				(int)((color >> 24) * SCAFFOLD_PREVIEW_ALPHA * (cos(pulseTime * TWO_PI / pulsePeriod) + 1.0) * 0.5);
 			color = (color & 0xffffff) | (alpha << 24);
-			field_0xcc->SetColorSpecular(color, specular);
+			ScaffoldPreview->SetColorSpecular(color, specular);
 
 			static int minAlphaRef = 10;
-			LH3DRender::OverrideMaterial = max(alpha * 250 / 255 - minAlphaRef, 0);
-			field_0xcc->AddDrawing();
+			LH3DRender::OverrideMaterial =
+				max(alpha * SCAFFOLD_PREVIEW_MAX_ALPHA_REF / MAX_DRAW_ALPHA - minAlphaRef, 0);
+			ScaffoldPreview->AddDrawing();
 			LH3DRender::OverrideMaterial = 0;
 		}
 	}
 }
 
-// BW1W120 0051cbf0 BW1M119 010c72e0
 void Workshop::Draw()
 {
 	LH3DRender::g_zsorter->NewZObject(this, (LH3DZSorter::DrawCallback)&Workshop::DrawScaffold,

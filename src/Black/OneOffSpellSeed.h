@@ -78,7 +78,7 @@ public:
 	// BW1W120 00518e90 BW1M119 010cb6f0
 	virtual void Draw();
 	// BW1W120 00518c50 BW1M119 010cba80
-	virtual void DrawOutOfMap(bool param_1);
+	virtual void DrawOutOfMap(bool selectable);
 	// BW1W120 0072a450 BW1M119 0152fee0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0072a530 BW1M119 0152fdc0
