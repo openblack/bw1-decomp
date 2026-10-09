@@ -183,14 +183,14 @@ void GPlayer::ToBeDeleted(int delete_now)
 
 void GPlayer::InitReal(LHPlayer* player)
 {
-	Init(PLAYER_TYPE_HUMAN, player->GetPlayerID(), player->name, player->GetPlayerID());
+	Init(PLAYER_TYPE_HUMAN, player->GetPlayerID(), player->Name, player->GetPlayerID());
 	UserId = player->GetUserID();
 	AlignmentSaveTurn = 0;
 }
 
 void GPlayer::InitReal(LHPlayer* player, unsigned char player_number)
 {
-	Init(PLAYER_TYPE_HUMAN, player_number, player->name, player->GetPlayerID());
+	Init(PLAYER_TYPE_HUMAN, player_number, player->Name, player->GetPlayerID());
 	UserId = player->GetUserID();
 	interfaces[player->PlayerId]->player = player;
 	AlignmentSaveTurn = 0;
@@ -1114,7 +1114,7 @@ void ProcessSpeech(unsigned char* data, LHPlayer* player, bool taunt)
 	}
 	if (forMe)
 	{
-		AddIncomingText(INCOMINGTEXTTYPE_CHAT, LHSPrintfW(L"%s: %s", player->name, text));
+		AddIncomingText(INCOMINGTEXTTYPE_CHAT, LHSPrintfW(L"%s: %s", player->Name, text));
 	}
 	GPlayer* speaker = GGame::g_game->GetPlayer(data[0]);
 	if (speaker->creature.Get() != NULL)

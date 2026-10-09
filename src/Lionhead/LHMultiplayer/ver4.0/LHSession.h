@@ -17,12 +17,14 @@
 #include "LHMPServerStartInfo.h" /* For LH_MAX_GAME_PLAYERS */
 #include "LHMultiplayerExport.h"
 #include "LHNetUser.h" /* For struct LH_USER_ID, LH_MAX_NAME_LENGTH */
+#include "LHPlayer.h"  /* For class LHPlayer */
 
-class LHMessageServer;
+#ifdef LH_MULTIPLAYER_EXPORTS
+#include "LHMessageServer.h"
+#endif
+
 class LHNetEvent;
-class LHPlayer;
 class LHTransportInfo;
-struct LHTimer;
 
 enum
 {
@@ -123,19 +125,28 @@ public:
 	// BW1W120 10003220 BW1M119 inlined
 	LHLobbyChannel* GetLobbyChannel() { return LobbyChannel; }
 	// BW1W120 10003230 BW1M119 inlined
-	bool32_t IsThisMe(LHPlayer* player);
+	bool32_t IsThisMe(LHPlayer* player) { return player->GetUserID() == GetUserID(); }
 	// BW1W120 10003250 BW1M119 inlined
 	bool32_t CheckForSuperPackets() { return CheckForEvent(LH_NETEVENT_TYPE_MSERVE_SUPER_PACKET); }
 	// BW1W120 10003260 BW1M119 inlined
-	void* GetGameData();
+	void* GetGameData() { return LobbyChannel->GetGameData(); }
 	// BW1W120 10003270 BW1M119 inlined
-	unsigned long GetGameDataLength();
+	unsigned long GetGameDataLength() { return LobbyChannel->GetGameDataLength(); }
 	// BW1W120 10003280 BW1M119 inlined
 	bool32_t MGJInProgress() { return MGJInProgressFlag != false; }
 	// BW1W120 10003290 BW1M119 inlined
 	void ClearMGJInProgress() { MGJInProgressFlag = false; }
+#ifdef LH_MULTIPLAYER_EXPORTS
+	// BW1W120 100032a0 BW1M119 inlined
+	LHTimer* GetServerClock()
+	{
+		LHMessageServer* server = LobbyChannel->InternalMessageServer;
+		return server != NULL ? &server->Timer : NULL;
+	}
+#else
 	// BW1W120 100032a0 BW1M119 inlined
 	LHTimer* GetServerClock();
+#endif
 	// BW1W120 100032c0 BW1M119 inlined
 	static void Destroy(LHSession* session)
 	{
@@ -312,24 +323,5 @@ static_assert(offsetof(LHSession, LocalPlayer) == 0x14c, "LHSession local player
 static_assert(offsetof(LHSession, OOSData) == 0x154, "LHSession OOS data offset is incorrect");
 static_assert(offsetof(LHSession, GamePlayerInfo) == 0x2dc, "LHSession game player info offset is incorrect");
 static_assert(sizeof(LHSession) == 0x35c, "LHSession size is incorrect");
-
-#ifdef LH_MULTIPLAYER_EXPORTS
-#include "LHPlayer.h" /* For class LHPlayer */
-
-inline bool32_t LHSession::IsThisMe(LHPlayer* player)
-{
-	return player->GetUserID() == GetUserID();
-}
-
-inline void* LHSession::GetGameData()
-{
-	return LobbyChannel->GetGameData();
-}
-
-inline unsigned long LHSession::GetGameDataLength()
-{
-	return LobbyChannel->GetGameDataLength();
-}
-#endif
 
 #endif /* BW1_DECOMP_LH_SESSION_INCLUDED_H */

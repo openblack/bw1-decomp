@@ -1229,6 +1229,393 @@ modules:
     - source: 0x1001F2AF
       type: x86_abs32
       target: '__except_list'
+  # LHChannel.cpp
+    - source: 0x10001219
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10001221
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1000123E
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100012A9
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100012B1
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100012E6
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10002249
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10002251
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1000227E
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10002299
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100022A1
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100022E0
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10002579
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10002581
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100025FA
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10002619
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10002621
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100026B8
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10002959
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10002961
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100029C3
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100029D9
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100029E1
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10002A5A
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10003099
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100030A1
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10003119
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10004359
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10004361
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100043E6
+      type: x86_abs32
+      target: '__except_list'
+  # LHDatabase.cpp
+    - source: 0x100071A9
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100071B1
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100071FC
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10007AA9
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10007AB1
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10007FE7
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10008209
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10008211
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1000848F
+      type: x86_abs32
+      target: '__except_list'
+  # LHFileDownload.cpp
+    - source: 0x10008589
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10008591
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100085F5
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10008602
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10008611
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10008767
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100087E4
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100087F6
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10008EC6
+      type: x86_abs32
+      target: '__except_list'
+  # LHNetUser.cpp
+    - source: 0x10017BF9
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10017C01
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10017EAB
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10017EC2
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10017ED1
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10017FFE
+      type: x86_abs32
+      target: '__except_list'
+  # LHNetUtils.cpp
+    - source: 0x100196F4
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10019706
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10019906
+      type: x86_abs32
+      target: '__except_list'
+  # LHMPPacketSave.cpp
+    - source: 0x10015B79
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10015B81
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10015E9A
+      type: x86_abs32
+      target: '__except_list'
+  # LHNetTypes.cpp
+    - source: 0x10017469
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10017471
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10017512
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10017739
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10017741
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100177CE
+      type: x86_abs32
+      target: '__except_list'
+  # LHServerListener.cpp
+    - source: 0x1001C322
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001C335
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001C3C9
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001C3DF
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001C459
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001C461
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001C497
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001C4A9
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001C4B1
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001C54D
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001C562
+      type: x86_abs32
+      target: '__except_list'
+  # LHSNMP.cpp
+    - source: 0x1001F732
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001F745
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1001F796
+      type: x86_abs32
+      target: '__except_list'
+  # LHSocket.cpp
+    - source: 0x10021612
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10021626
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x1002181B
+      type: x86_abs32
+      target: '__except_list'
+  # LHTransport.cpp
+    - source: 0x10022A72
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022A81
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022AD2
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022B0B
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022B44
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022B79
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022BAE
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022BC4
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022BD8
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022C49
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022C51
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022C95
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022D39
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022D41
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022D77
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022D89
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022D91
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022DD5
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10023809
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10023811
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10023847
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10023CB2
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10023CC1
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10023CE3
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10023D39
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10023D54
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10023DE9
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10023DF1
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10023E27
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10024072
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10024081
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100240A6
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100240FD
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10024118
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10024179
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10024181
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100241B7
+      type: x86_abs32
+      target: '__except_list'
+  # LHTCPServerListener.cpp
+    - source: 0x10021FB2
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10021FC5
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100220FC
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x10022187
+      type: x86_abs32
+      target: '__except_list'
+    - source: 0x100221AE
+      type: x86_abs32
+      target: '__except_list'
 
 - object: LHDialogLib.dll
   hash: 64a22b88a51adc4bc119777642263e419ea8d09e

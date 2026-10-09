@@ -34,13 +34,6 @@ enum
 
 enum
 {
-	LH_SERVER_SIGNAL_NONE = -1,
-	LH_SERVER_SIGNAL_ACCEPT_CONNECTION = -2,
-	LH_SERVER_SIGNAL_BROADCAST = -3,
-};
-
-enum
-{
 	LH_INVALID_GAME_TURN = 0xffffffff,
 };
 

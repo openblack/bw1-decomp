@@ -116,7 +116,7 @@ LH_RETURN LHConnectionServer::BaseAddConnection(LHConnection* connection)
 
 	LHTransportInfo transportInfo;
 	connection->GetTransportInfo(&transportInfo, false);
-	player->transport_info = transportInfo;
+	player->TransportInfo = transportInfo;
 
 	if (connection->Mode != LH_OPERATING_MODE_SYNCHRONOUS)
 	{
@@ -184,7 +184,7 @@ LH_RETURN LHConnectionServer::Start(LHMPServerStartInfo* start_info, LHTransport
 			delete Listener;
 			Listener = NULL;
 		}
-		else if (Listener->GetActivitySignals(&numSignals, &signals))
+		else if (Listener->GetActivitySignals(&numSignals, &signals) != LH_OK)
 		{
 			Shutdown();
 			return LH_FAIL;

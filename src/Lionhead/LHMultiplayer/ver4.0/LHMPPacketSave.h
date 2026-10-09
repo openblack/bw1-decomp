@@ -44,8 +44,6 @@ public:
 		memset(&Info, 0, sizeof(Info.NumberOfSuperPackets));
 		memset(this, 0, sizeof(*this));
 	}
-	// BW1W120 10002560 BW1M119 010ebf60 (LHCombined Release)
-	~LHMPPacketSave() {}
 
 	// BW1W120 10002520 BW1M119 inlined
 	void UnReadEvent() { EventUnread = true; }

@@ -663,7 +663,7 @@ restartAdd:
 			if (!found)
 			{
 				LHPlayer* lanPlayer = new LHPlayer(player);
-				lanPlayer->transport_info = *FindPlayerBroadcastInfo(lanPlayer->GetUserID());
+				lanPlayer->TransportInfo = *FindPlayerBroadcastInfo(lanPlayer->GetUserID());
 				LANPlayerList.Add(lanPlayer);
 				goto restartAdd;
 			}

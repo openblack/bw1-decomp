@@ -49,7 +49,7 @@ LH_RETURN LHMessageServer::Start(LHMPServerStartInfo* start_info, char* name, un
                                  unsigned long idle_time)
 {
 	if (LHConnectionServer::Start(start_info, start_info->AcceptorInfo, start_info->BroadcastInfo,
-	                              LH_USER_ID::CATEGORY_LOBBY_SERVER, start_info->OperatingMode, NULL, idle_time,
+	                              LH_USER_ID::CATEGORY_MESSAGE_SERVER, start_info->OperatingMode, NULL, idle_time,
 	                              THREAD_PRIORITY_TIME_CRITICAL) != LH_OK)
 		return LH_FAIL;
 
@@ -210,7 +210,7 @@ LH_RETURN LHMessageServer::AddConnection(LHServerPlayer* player)
 		{
 			char* ip = NULL;
 			if (event->VDecode(LH_NETEVENT_TYPE_MSERVE_CLIENT_LOCAL_ADDRESS, &ip) == LH_OK && ip != NULL)
-				player->transport_info = LHTransportInfo(ip, player->GetTransportInfo()->GetPort());
+				player->TransportInfo = LHTransportInfo(ip, player->GetTransportInfo()->GetPort());
 		}
 	}
 

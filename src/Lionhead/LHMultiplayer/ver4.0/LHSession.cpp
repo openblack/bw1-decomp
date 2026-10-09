@@ -918,7 +918,7 @@ void* LHSession::GetUserData(LHPlayer* player)
 		return NULL;
 	if (player->GetUserID() == GetUserID())
 		return LHLobby::UserData;
-	return player->user_data;
+	return player->UserData;
 }
 
 unsigned long LHSession::GetUserDataLen(LHPlayer* player)
@@ -1161,10 +1161,10 @@ LH_RETURN LHSession::MakeNextPlayerHost(LHTransportInfo* transport_info)
 	{
 		if (node == NULL)
 			return LH_OK;
-		if (node->payload->transport_info.type == LH_TRANSPORT_TYPE_ASYNC)
+		if (node->payload->TransportInfo.type == LH_TRANSPORT_TYPE_ASYNC)
 			break;
 	}
-	node->payload->transport_info = LHTransportInfo((LH_TRANSPORT_TYPE)0);
+	node->payload->TransportInfo = LHTransportInfo((LH_TRANSPORT_TYPE)0);
 	node = node->next.Get();
 	LHPlayer* next = node->payload;
 	if (next == NULL)
@@ -1173,7 +1173,7 @@ LH_RETURN LHSession::MakeNextPlayerHost(LHTransportInfo* transport_info)
 	transport_info->type = info->type;
 	transport_info->data_len = info->data_len;
 	memcpy(transport_info->data, info->data, transport_info->data_len);
-	next->transport_info = LHTransportInfo(LH_TRANSPORT_TYPE_ASYNC);
+	next->TransportInfo = LHTransportInfo(LH_TRANSPORT_TYPE_ASYNC);
 	return LH_OK;
 }
 
@@ -1182,7 +1182,7 @@ LHPlayer* LHSession::GetHost()
 	for (LHLinkedNode<LHPlayer*>* node = Players.GetStart(); node != NULL; node = node->next.Get())
 	{
 		LHPlayer* player = node->payload;
-		if (player->transport_info.type == LH_TRANSPORT_TYPE_ASYNC)
+		if (player->TransportInfo.type == LH_TRANSPORT_TYPE_ASYNC)
 			return player;
 	}
 	return NULL;

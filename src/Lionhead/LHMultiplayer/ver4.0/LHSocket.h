@@ -38,7 +38,7 @@ public:
 	// BW1W120 purecall BW1M119 purecall
 	virtual LH_RETURN ListenForBroadcastRequests(LHTransportInfo* transport_info) = 0;
 	// BW1W120 purecall BW1M119 purecall
-	virtual LH_RETURN ReceiveUDPPacket(LHPacket** packet, unsigned long size, LHTransportInfo* transport_info) = 0;
+	virtual LH_RETURN ReceiveUDPPacket(LHPacket** packet, unsigned long timeout, LHTransportInfo* transport_info) = 0;
 
 	// BW1W120 1001fe50 BW1M119 01115360 (LHCombined Release)
 	static void Shutdown();

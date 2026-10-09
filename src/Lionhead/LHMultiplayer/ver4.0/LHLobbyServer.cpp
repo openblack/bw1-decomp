@@ -34,7 +34,7 @@ LH_RETURN LHLobbyServer::Start(LHMPServerStartInfo* start_info, LH_OPERATING_MOD
 {
 	UserData = start_info->UserData;
 	LH_USER_ID::CATEGORY category =
-		start_info->IsGlobalServer ? LH_USER_ID::CATEGORY_GLOBAL_SERVER : LH_USER_ID::CATEGORY_SESSION_SERVER;
+		start_info->IsGlobalServer ? LH_USER_ID::CATEGORY_GLOBAL_SERVER : LH_USER_ID::CATEGORY_LOBBY_SERVER;
 	if (LHConnectionServer::Start(start_info, start_info->BroadcastInfo, start_info->ListenerAddress, category, mode,
 	                              parent_connection, LH_LOBBYSERVER_IDLE_TIME, THREAD_PRIORITY_BELOW_NORMAL) != LH_OK)
 	{
@@ -857,7 +857,7 @@ void LHLobbyServer::VerifyCodeChecksums(LHLobbyServerChannel* channel)
 		{
 			LHSPrintf text;
 			for (LHLinkedNode<LHServerPlayer*>* node = players->GetStart(); node != NULL; node = node->next.Get())
-				text.AppendString("%s %s\n", node->payload->name, node->payload->CodeChecksumString);
+				text.AppendString("%s %s\n", node->payload->Name, node->payload->CodeChecksumString);
 
 			LHNetEvent* event =
 				LHNetEvent::VCreate(LH_NETEVENT_TYPE_LOBBY_VERIFY_CODE_CHECKSUMS, GetUserID(), channel->Name, &text);
