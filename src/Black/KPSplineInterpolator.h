@@ -28,6 +28,9 @@ public:
 		BC_TYPE_CLAMPED,
 	};
 
+	// BW1W120 inlined BW1M119 0130d580
+	KPSplineInterpolator() : BCType(BC_TYPE_CLAMPED) {}
+
 	// BW1W120 inlined BW1M119 01342ad0
 	void CompV2()
 	{

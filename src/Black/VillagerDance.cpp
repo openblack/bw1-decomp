@@ -61,10 +61,10 @@ bool32_t Villager::DanceButNotWorship()
 // kept, matching the cast idiom already established in VillagerWorshipper.cpp.
 bool32_t Villager::MoveToDancePos()
 {
-	if (dance_group == NULL)
+	if (dance_group.Get() == NULL)
 		return false;
 	// TODO: +0x7c is inside DanceGroup's unidentified field_0x60 blob; keep raw offset.
-	if (*(int*)((char*)dance_group + 0x7c) != 0)
+	if (*(int*)((char*)dance_group.Get() + 0x7c) != 0)
 	{
 		MapCoords pos;
 		CalculateDancePosition(dance_group->behaviour->Pos, &pos);
@@ -76,7 +76,7 @@ bool32_t Villager::MoveToDancePos()
 // BW1W120 00759a00 BW1M119 0157f430
 bool32_t Villager::ControlledByCreature()
 {
-	if (dance_group != NULL && dance_group->Dancer != NULL)
+	if (dance_group.Get() != NULL && dance_group->Dancer != NULL)
 	{
 		MapCoords dancePos;
 		CalculateDancePosition(dance_group->Dancer->Pos, &dancePos);

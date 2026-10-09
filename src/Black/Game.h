@@ -15,6 +15,7 @@
 #include "BindableAction.h"   /* For struct CMouse */
 #include "CreatureDatabase.h" /* For struct CreatureDatabase */
 #include "Data.h"             /* For struct GData */
+#include "GTPointer.h"        /* For GTPointer */
 #include "GameThing.h"        /* For struct GameThing */
 #include "GlobalGameLists.h"  /* For struct GlobalGameLists */
 #include "KeyBuffer.h"        /* For struct GKeyBuffer */
@@ -31,6 +32,12 @@
 #include "StatsDatabase.h"       /* For struct StatsDatabase */
 #include "Setup.h"
 #include "TerrainMap.h" /* For struct GTerrainMap */
+
+enum
+{
+	GAME_LAND_NUMBER_PLAYGROUND = 6,
+	GAME_MILLISECONDS_PER_TURN = 100,
+};
 
 enum GAME_VIEW_MODE
 {
@@ -286,7 +293,7 @@ public:
 	int                   field_0x250190;
 	float                 field_0x250194;
 	uint8_t               field_0x250198[0x10c];
-	uint32_t              field_0x2502a4;
+	bool32_t              AutoSaved;
 	GKeyBuffer            key_buffer;
 	CMouse                Mouse;
 	uint32_t              field_0x2502bc;
@@ -526,6 +533,11 @@ public:
 	// BW1W120 0063f940 BW1M119 010a1200
 	uint32_t DoAction(unsigned long param_1);
 };
+
+template <typename T> inline void GTPointer<T>::SetGameTurnValidated()
+{
+	GameTurnValidated = GGame::g_game->data.GameTurn;
+}
 
 // BW1W120 0054a770 BW1M119 0107d6c0
 void SetTurnOffMouseMove(bool turn_off);

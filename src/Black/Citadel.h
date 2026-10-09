@@ -79,6 +79,9 @@ public:
 	// BW1W120 00462ab0 BW1M119 011bfda0
 	virtual bool32_t IsCitadel();
 
+	// BW1W120 004629f0 BW1M119 011c3350
+	Citadel();
+
 	// Static methods
 
 	// BW1W120 00463240 BW1M119 011c2110

@@ -29,6 +29,9 @@ public:
 	virtual uint32_t GetSaveType();
 	// BW1W120 00770b40 BW1M119 011679d0
 	virtual const char* GetText();
+
+	// BW1W120 00770b70 BW1M119 01167f50
+	WayPoint();
 };
 
 #endif /* BW1_DECOMP_WAY_POINT_INCLUDED_H */

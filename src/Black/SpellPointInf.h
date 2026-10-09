@@ -15,18 +15,21 @@ class GameThing;
 class SpellPointInf : public PSysBase
 {
 public:
+	uint8_t field_0x14[0x20];
+
 	// Override methods
 
-	// BW1W120 0055f450 BW1M119 01428870
-	virtual ~SpellPointInf();
 	// BW1W120 0055f440 BW1M119 01428940
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "##a_class:"; }
 	// BW1W120 00698240 BW1M119 014222f0
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 006ced60 BW1M119 014893f0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055f430 BW1M119 01428900
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_POINT_INF; }
+
+	// BW1W120 0055f410 BW1M119 inlined
+	SpellPointInf() {}
 };
 
 #endif /* BW1_DECOMP_SPELL_POINT_INF_INCLUDED_H */

@@ -6,6 +6,11 @@
 
 class GameOSFile;
 
+enum
+{
+	PHYSICS_SAVE_INFO_MAX = 256,
+};
+
 class PhysicsSaveInfo
 {
 public:
@@ -13,7 +18,6 @@ public:
 	LHPoint  Velocity;
 	LHPoint  AngularVelocity;
 
-	// TODO: Original member names unknown. ReadInfo appends; Object::ResolveLoad consumes.
 	// BW1W120 00d01a90
 	static PhysicsSaveInfo* Buffer;
 	// BW1W120 00d01a94

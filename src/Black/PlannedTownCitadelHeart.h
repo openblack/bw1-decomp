@@ -15,10 +15,13 @@ class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 class MultiMapFixed;
+class Town;
 
 class PlannedTownCitadelHeart : public PlannedMultiMapFixed
 {
 public:
+	Town* town;
+
 	// Override methods
 
 	// BW1W120 00467e60 BW1M119 011c9800
@@ -34,7 +37,7 @@ public:
 	// BW1W120 00467e40 BW1M119 011c9970
 	virtual uint32_t GetSaveType();
 	// BW1W120 00467e20 BW1M119 011c98e0
-	virtual uint32_t IsWonder();
+	virtual bool32_t IsWonder();
 	// BW1W120 00467ea0 BW1M119 011c5740
 	virtual MultiMapFixed* CreatePlanned(float param_1);
 	// BW1W120 00467ef0 BW1M119 011c5530
@@ -43,6 +46,9 @@ public:
 	virtual bool32_t IsCivic();
 	// BW1W120 00467e30 BW1M119 011c9920
 	virtual ABODE_TYPE GetAbodeType();
+
+	// BW1W120 inlined BW1M119 inlined
+	PlannedTownCitadelHeart() {}
 };
 
 #endif /* BW1_DECOMP_PLANNED_TOWN_CITADEL_HEART_INCLUDED_H */

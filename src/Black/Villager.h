@@ -2,6 +2,7 @@
 #define BW1_DECOMP_VILLAGER_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For int16_t, uint16_t, uint32_t, uint8_t */
 
 #include <chlasm/AllMeshes.h>   /* For enum ANIM_LIST */
@@ -10,9 +11,11 @@
 #include <chlasm/GStates.h>                            /* For VILLAGER_STATE_LAST_STATE, enum VILLAGER_STATES */
 #include <chlasm/HelpTextEnums.h>                      /* For enum HELP_TEXT */
 #include <re_common.h>                                 /* For bool32_t */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>          /* For struct LHListNode */
 #include <Lionhead/LHLib/ver5.0/LHOrderedLinkedList.h> /* For LHOrderedLinkedList */
 
 #include "GameThing.h"        /* For struct GameThing */
+#include "LHPTR.h"            /* For class LHPTR */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "Living.h"           /* For struct Living, struct LivingVftable */
 #include "LivingAction.h"     /* For enum LIVING_ACTION_INDEX, struct Living__StateTableEntry */
@@ -95,24 +98,25 @@ struct DiscipleInfo
 enum VILLAGER_FLAGS
 {
 	VILLAGER_FLAG_AT_HOME = 0x4,
+	VILLAGER_FLAG_CHILD = 0x8,
 };
 
 class Villager : public Living
 {
 public:
-	uint16_t      Flags; // TODO(#343)
-	Villager*     next;
-	float         food;
-	int           LastCheckTurn;
-	bool          FoodSpeedUp;
-	uint8_t       CarriedObjectType;
-	uint8_t       DiscipleType;
-	uint8_t       field_0xf3;
-	int16_t       ResourceHeld[RESOURCE_TYPE_LAST];
-	int16_t       is_pregnant;
-	int16_t       field_0xfa;
-	BuildingSite* building_site;
-	Villager*     mother;
+	uint16_t             Flags; // TODO(#343)
+	LHListNode<Villager> next;
+	float                food;
+	int                  LastCheckTurn;
+	uint8_t              FoodSpeedUp;
+	uint8_t              CarriedObjectType;
+	uint8_t              DiscipleType;
+	uint8_t              field_0xf3;
+	int16_t              ResourceHeld[RESOURCE_TYPE_LAST];
+	int16_t              is_pregnant;
+	int16_t              field_0xfa;
+	BuildingSite*        building_site;
+	Villager*            mother;
 #ifdef VERSION_BW1W120
 	GPlayer* LastPlayerToInteract;
 #endif
@@ -120,27 +124,65 @@ public:
 	// The angle the villager is drawn at; Villager::Draw eases it towards the real Y angle.
 	float DrawYAngle;
 #endif
+	// State data selected by Living::action.states (GetTopState()/GetFinalState()).
 	union {
 		struct
 		{
-			float    field_0x10c;
-			uint32_t field_0x110;
+			float    field_0x10c; // Inspection reactions: value compared against 1.0f.
+			uint32_t field_0x110; // Inspection reactions: turns until approaching the target.
 		};
-		JustWholeMapXZ ScriptWanderCentre; /* SET_SCRIPT_STATE_POS's position */
+		struct
+		{
+			JustWholeMapXZ ReactionPos; // Reaction states: reaction position.
+		};
+		struct
+		{
+			JustWholeMapXZ ScriptWanderCentre; // SCRIPT_WANDER_AROUND_POSITION: wander centre.
+		};
+		struct
+		{
+			JustWholeMapXZ FirePos;     // MOVE_AROUND_FIRE: destination.
+			FireEffect*    fire_effect; // ON_FIRE / PUT_OUT_FIRE states: active fire.
+		};
+		struct
+		{
+			uint32_t       HideTurns; // GO_AND_HIDE_IN_NEARBY_BUILDING: elapsed hiding turns.
+			JustWholeMapXZ HidePos;   // GO_AND_HIDE_IN_NEARBY_BUILDING: hiding place.
+		};
 	};
-	FireEffect* fire_effect;
-	union {
-		GameThing* TargetThing;
-		float      ScriptWanderRadius; /* SET_SCRIPT_FLOAT's value */
+	// Also selected by Living::action.states; DiscipleType is not a union tag.
+	union { /* 0x118 */
+		struct
+		{
+			uint8_t DeathReason; // Death states: DEATH_REASON value.
+		};
+		struct
+		{
+			float ScriptWanderRadius; // SCRIPT_WANDER_AROUND_POSITION: wander radius.
+		};
+		struct
+		{
+			GameThing* TargetThing; // Current task's target; interpretation depends on the state.
+			Town*      TradeTown;   // Trading states: trading partner's town.
+		};
+		struct
+		{
+			LHPTR<Villager> Partner;    // Breeding states: partner villager.
+			JustWholeMapXZ  WanderArea; // BREEDER_DISCIPLE: wander position; script states reuse x/z as counters/data.
+		};
+		struct
+		{
+			LHPTR<Object> InteractObject; // Farming states: target field.
+			MapCoords     FarmPos;        // Farming states: work position in the field.
+		};
+		struct
+		{
+			uint32_t        FootballState; // Football states: football substate data.
+			LHPTR<Football> football;      // Football states: current match.
+		};
 	};
-	union { /* 0x11c */
-		Football*      football;
-		Town*          TradeTown;
-		JustWholeMapXZ WanderArea;
-	};
-	uint32_t field_0x124;
-	Abode*   home;
-	Town*    town;
+	Abode* home;
+	Town*  town;
 
 	// Override methods
 
@@ -160,17 +202,17 @@ public:
 	// BW1W120 00751cf0 BW1M119 0101c5a0
 	virtual bool32_t IsFunctional();
 	// BW1W120 0055cb30 BW1M119 0157a2c0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Villager:"; }
 	// BW1W120 00754580 BW1M119 01571730
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00754280 BW1M119 01571b20
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055cb20 BW1M119 0157a280
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_VILLAGER; }
 	// BW1W120 00754870 BW1M119 015716b0
 	virtual void ResolveLoad();
 	// BW1W120 0055ca70 BW1M119 0114fff0
-	virtual uint32_t GetCreatureBeliefType();
+	virtual uint32_t GetCreatureBeliefType() { return CREATURE_BELIEF_TYPE_VILLAGER; }
 	// BW1W120 00751db0 BW1M119 01576080
 	virtual Citadel* GetCitadel();
 	// BW1W120 00753110 BW1M119 015736b0
@@ -180,15 +222,15 @@ public:
 	// BW1W120 004e4c90 BW1M119 015eb940
 	virtual bool32_t CanBeHealedByCreature(Creature* param_1);
 	// BW1W120 0055caa0 BW1M119 011500f0
-	virtual bool32_t CanBeHelpedByCreature(Creature* param_1);
+	virtual bool32_t CanBeHelpedByCreature(Creature* creature) { return CanBePickedUp(); }
 	// BW1W120 0055ca80 BW1M119 01150030
-	virtual bool32_t CanBeImpressedByCreature(Creature* param_1);
+	virtual bool32_t CanBeImpressedByCreature(Creature* creature) { return !IsDancing(); }
 	// BW1W120 0055ca90 BW1M119 011500b0
-	virtual bool32_t CanReceiveGifts(Creature* param_1);
+	virtual bool32_t CanReceiveGifts(Creature* creature) { return true; }
 	// BW1W120 004e4b40 BW1M119 015ebd90
 	virtual bool32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
 	// BW1W120 0055cab0 BW1M119 0106ff80
-	virtual bool32_t IsVillager(Creature* param_1);
+	virtual bool32_t IsVillager(Creature* creature) { return true; }
 	// BW1W120 004e4d50 BW1M119 015eb650
 	virtual bool32_t IsVillagerFarFromHome(Creature* param_1);
 	// BW1W120 004e4510 BW1M119 015ece00
@@ -222,13 +264,13 @@ public:
 	// BW1W120 00768630 BW1M119 0159e900
 	virtual bool32_t IsReadyForNewScriptAction();
 	// BW1W120 0055cb10 BW1M119 01150260
-	virtual DEATH_REASON GetDeathReason();
+	virtual DEATH_REASON GetDeathReason() { return (DEATH_REASON)DeathReason; }
 	// BW1W120 0055cac0 BW1M119 011a28e0
 	virtual bool32_t IsMaleVillager();
 	// BW1W120 0055cae0 BW1M119 01155400
 	virtual bool32_t IsFemaleVillager();
 	// BW1W120 0055cb00 BW1M119 0109c270
-	virtual bool32_t IsAChild();
+	virtual bool32_t IsAChild() { return IsChild() == true; }
 	// BW1W120 007562c0 BW1M119 0156e0e0
 	virtual void SetSkeleton(int index);
 	// BW1W120 00753f20 BW1M119 015724c0
@@ -264,19 +306,26 @@ public:
 	// BW1W120 0074ff70 BW1M119 0104dd70
 	virtual uint32_t ProcessState();
 	// BW1W120 0055ca50 BW1M119 0114ff90
-	virtual bool32_t CanBePickedUp();
+	virtual bool32_t CanBePickedUp()
+	{
+		if (Flags & VILLAGER_FLAG_AT_HOME)
+		{
+			return false;
+		}
+		return !(GameThingWithPos::Flags & GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP);
+	}
 	// BW1W120 007560e0 BW1M119 0156e660
 	virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
 	// BW1W120 0074fc70 BW1M119 01579890
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055c990 BW1M119 0114fd20
-	virtual bool32_t IsABeliever();
+	virtual bool32_t IsABeliever() { return true; }
 	// BW1W120 0076a4c0 BW1M119 015a1a80
 	virtual bool32_t SetDying();
 	// BW1W120 00753040 BW1M119 inlined
 	virtual bool32_t IsTouching(const MapCoords& coords);
 	// BW1W120 0055c9a0 BW1M119 inlined
-	virtual bool32_t IsTouching(Object* target, float epsilon);
+	virtual bool32_t IsTouching(Object* target, float epsilon) { return Object::IsTouching(target, epsilon); }
 	// BW1W120 007564a0 BW1M119 0156dfa0
 	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
 	// BW1W120 00753080 BW1M119 01573730
@@ -312,13 +361,13 @@ public:
 	// BW1W120 00753e00 BW1M119 015727e0
 	virtual uint32_t RemoveFromGame();
 	// BW1W120 0055ca30 BW1M119 0114ff50
-	virtual uint32_t GetTastiness();
+	virtual uint32_t GetTastiness() { return OBJECT_TASTINESS_LIVING; }
 	// BW1W120 00751af0 BW1M119 01576600
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00753410 BW1M119 01572f40
 	virtual void SetFoodSpeedup(bool param_1);
 	// BW1W120 0055c980 BW1M119 01053ca0
-	virtual bool IsFoodSpeedUp();
+	virtual bool IsFoodSpeedUp() { return FoodSpeedUp != 0; }
 	// BW1W120 00756ad0 BW1M119 0156cf80
 	virtual MapCoords GetFinalDestPos();
 	// BW1W120 00763b00 BW1M119 0159b010
@@ -370,7 +419,7 @@ public:
 	// BW1W120 00753740 BW1M119 010782d0
 	virtual void SetStateSpeed();
 	// BW1W120 00753f00 BW1M119 inlined
-	virtual bool IsFinalState(VILLAGER_STATES state);
+	virtual bool IsFinalState(uint8_t state);
 	// BW1W120 00750110 BW1M119 01068c50
 	virtual ANIM_LIST GetAnimId();
 	// BW1W120 00752320 BW1M119 inlined
@@ -390,11 +439,11 @@ public:
 	// BW1W120 0076afe0 BW1M119 inlined
 	virtual bool32_t EnterInHand(uint8_t current, uint8_t destination);
 	// BW1W120 0055c9f0 BW1M119 inlined
-	virtual bool IsScriptState(VILLAGER_STATES state) const;
+	virtual bool32_t IsScriptState(unsigned long state) const;
 	// BW1W120 0055ca10 BW1M119 inlined
-	virtual bool IsScriptInterruptableState(VILLAGER_STATES state) const;
+	virtual bool32_t IsScriptInterruptableState(unsigned long state) const;
 	// BW1W120 00752530 BW1M119 inlined
-	virtual bool32_t IsStateExitFunctionSameAs(VILLAGER_STATES state) const;
+	virtual bool32_t IsStateExitFunctionSameAs(unsigned long state) const;
 	// BW1W120 007528b0 BW1M119 015745c0
 	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 00764df0 BW1M119 01598700
@@ -519,7 +568,7 @@ public:
 	virtual uint32_t NumGameTurnsBeforeReactingToShieldAgainFunction(GameThingWithPos* param_1, uint32_t param_2,
 	                                                                 float param_3);
 	// BW1W120 0055c970 BW1M119 010676b0
-	virtual bool32_t IsChild();
+	virtual bool32_t IsChild() { return (Flags & VILLAGER_FLAG_CHILD) != 0; }
 	// BW1W120 00751dd0 BW1M119 01051580
 	virtual uint8_t GetFinalState() const;
 	// BW1W120 00751510 BW1M119 01577220
@@ -528,26 +577,8 @@ public:
 	virtual void SetStateAfterFinishingDance();
 	// BW1W120 0075bae0 BW1M119 01583630
 	virtual float CalculateLifeDesire();
-	// BW1W120 004174a0 BW1M119 inlined
-	virtual bool MoveAllowedForChessGame();
-	// BW1W120 004174b0 BW1M119 inlined
-	virtual bool AttackAllowedForChessGame();
-	// BW1W120 004174c0 BW1M119 inlined
-	virtual void AddToBoxPositionForChessGame(int param_1, int param_2);
-	// BW1W120 004174d0 BW1M119 inlined
-	virtual int GetBoxXForChessGame();
-	// BW1W120 004174e0 BW1M119 inlined
-	virtual int GetBoxZForChessGame();
-	// BW1W120 004174f0 BW1M119 inlined
-	virtual void SetBoxXForChessGame(int param_1);
-	// BW1W120 00417500 BW1M119 inlined
-	virtual void SetBoxZForChessGame(int param_1);
-	// BW1W120 00417510 BW1M119 inlined
-	virtual uint32_t GetTeamForChessGame();
-	// BW1W120 00473ee0 BW1M119 inlined
-	virtual bool IsPosValidForTurnAngle(const MapCoords& param_1);
 	// BW1W120 0055ca40 BW1M119 010c8a80
-	virtual const char* GetVillagerName();
+	virtual const char* GetVillagerName() { return NULL; }
 	// BW1W120 0051b510 BW1M119 0105a910
 	virtual bool DrawVillagerInfo();
 
@@ -561,7 +592,7 @@ public:
 	// Constructors
 
 	// BW1W120 0055c8a0 BW1M119 0130e430
-	Villager();
+	Villager() : building_site(NULL) { SetToZero(); }
 	// BW1W120 0074f950 BW1M119 01579df0
 	Villager(const MapCoords& coords, const GVillagerInfo* info, uint32_t age, bool skeleton);
 

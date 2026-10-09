@@ -63,7 +63,7 @@ bool32_t Villager::CheckNeededForHarvest()
 // is the unnamed twin of GUtils::GetDistanceInMetres at 0x74cd50.
 bool32_t Villager::RunAwayFromObjectReaction()
 {
-	GameThingWithPos* runFrom = field_0xbc;
+	GameThingWithPos* runFrom = ReactionObject.Get();
 	if (runFrom != NULL && runFrom->IsAvailable())
 	{
 		float dist = GUtils::GetDistanceInMetres(Pos, runFrom->Pos);

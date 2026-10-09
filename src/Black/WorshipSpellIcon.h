@@ -82,6 +82,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 0077f020 BW1M119 015be2c0
+	WorshipSpellIcon();
 	// BW1W120 0077f140 BW1M119 015bdff0
 	WorshipSpellIcon(const MapCoords& coords, const GSpellIconInfo* icon_info, const GSpellSeedInfo* seed_info,
 	                 WorshipSite* site, int16_t slot, float param_6, int param_7);

@@ -46,6 +46,9 @@ public:
 	// BW1W120 0050ab50 BW1M119 012a6df0
 	virtual void MakeFunctional();
 
+	// BW1W120 inlined BW1M119 inlined
+	Creche() {}
+
 	// Static methods
 
 	// BW1W120 0050aad0 BW1M119 012a6ea0

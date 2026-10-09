@@ -61,6 +61,9 @@ public:
 	// BW1W120 0072b7f0 BW1M119 0153baa0
 	virtual float CalculateCostToMaintain();
 
+	// BW1W120 0072b3f0 BW1M119 0153c6b0
+	SpellShield();
+
 	// Non-virtual methods
 
 	// BW1W120 0072b820 BW1M119 0153ba50

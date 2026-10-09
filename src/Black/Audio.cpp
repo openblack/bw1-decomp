@@ -676,7 +676,7 @@ bool32_t GAudio::ProcessChantMusic()
 			citadel->GetNearestActiveWorshipSite(GGame::g_game->GetCamera()->Pos, CHANT_MUSIC_WORSHIP_SITE_DISTANCE);
 		if (site != NULL)
 		{
-			Dance* dance = site->dance;
+			Dance* dance = site->dance.Get();
 			if (dance != NULL)
 			{
 				float     cameraHeight = GGame::g_game->GetCamera()->Pos.Altitude() +

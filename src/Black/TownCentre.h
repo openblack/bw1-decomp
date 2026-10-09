@@ -8,6 +8,7 @@
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 
 #include "Abode.h" /* For struct Abode */
+#include "LHPTR.h" /* For LHPTR */
 
 #define MAX_TOWN_CENTRE_SPELLS 6
 
@@ -39,35 +40,35 @@ class TownCentre : public Abode
 public:
 	LH3DObject*          GameObject;
 	PSysInterface*       psys;
-	TotemStatue*         totem_statue;
+	LHPTR<TotemStatue>   totem_statue;
 	TownCentreSpellIcon* icons[MAX_TOWN_CENTRE_SPELLS];
 
 	// Override methods
 
-	// BW1W120 0055dbb0 BW1M119 015651c0
+	// BW1W120 00743ae0 BW1M119 015651c0
 	virtual ~TownCentre();
 	// BW1W120 00743b40 BW1M119 01565000
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0055dba0 BW1M119 01565670
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "TownCentre:"; }
 	// BW1W120 00744880 BW1M119 01563370
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00744830 BW1M119 01563410
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055db90 BW1M119 01565630
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_TOWN_CENTRE; }
 	// BW1W120 007448c0 BW1M119 015632f0
 	virtual void ResolveLoad();
 	// BW1W120 007449e0 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
 	// BW1W120 0055db60 BW1M119 01565570
-	virtual bool32_t IsCastShadowAtNight();
+	virtual bool32_t IsCastShadowAtNight() { return false; }
 	// BW1W120 0055db70 BW1M119 015655b0
-	virtual bool32_t IsTownCentre();
+	virtual bool32_t IsTownCentre() { return true; }
 	// BW1W120 0055db40 BW1M119 015654e0
-	virtual bool32_t CanActAsAContainer(Creature* param_1);
+	virtual bool32_t CanActAsAContainer(Creature* creature) { return false; }
 	// BW1W120 0055db50 BW1M119 01565530
-	virtual bool32_t IsStoragePit(Creature* param_1);
+	virtual bool32_t IsStoragePit(Creature* creature) { return false; }
 	// BW1W120 007445d0 BW1M119 01563570
 	virtual float ReduceLife(float value, GPlayer* player);
 	// BW1W120 00744320 BW1M119 01563cf0
@@ -81,9 +82,9 @@ public:
 	// BW1W120 00743cf0 BW1M119 01564b10
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055db20 BW1M119 01565450
-	virtual LH3DObject::ObjectType Get3DType();
+	virtual LH3DObject::ObjectType Get3DType() { return LH3DObject::MORPHABLE; }
 	// BW1W120 0055db10 BW1M119 01565400
-	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
+	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* status) { return 0; }
 	// BW1W120 00743bc0 BW1M119 01564fb0
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00744380 BW1M119 01563c80
@@ -91,7 +92,7 @@ public:
 	// BW1W120 00744140 BW1M119 01563f80
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00744940 BW1M119 inlined
-	virtual MapCoords* GetDoorPos(MapCoords* param_1);
+	virtual MapCoords GetDoorPos();
 	// BW1W120 007443a0 BW1M119 01563bf0
 	virtual void AddToPlayer();
 	// BW1W120 007443c0 BW1M119 01563af0
@@ -103,9 +104,9 @@ public:
 	// BW1W120 00744a00 BW1M119 01562f50
 	virtual void StopBeingFunctional(GPlayer* param_1);
 	// BW1W120 0055db30 BW1M119 01565490
-	virtual bool32_t CausesTownEmergencyIfDamaged();
+	virtual bool32_t CausesTownEmergencyIfDamaged() { return true; }
 	// BW1W120 0055db80 BW1M119 015655f0
-	virtual bool32_t CanBeHiddenIn();
+	virtual bool32_t CanBeHiddenIn() { return false; }
 
 	// Static methods
 
@@ -114,6 +115,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	TownCentre() { SetToZero(); }
 	// BW1W120 00743a60 BW1M119 01565270
 	TownCentre(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
 	           int wood);
@@ -150,6 +153,9 @@ public:
 	void RemoveSpell(SPELL_SEED_TYPE seed_type);
 	// BW1W120 00743bd0 BW1M119 01564f30
 	void SetPlayersCreature();
+
+	// BW1W120 00743b10 BW1M119 01565160
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_TOWN_CENTRE_INCLUDED_H */

@@ -22,28 +22,29 @@ public:
 
 	// Override methods
 
-	// BW1W120 00561420 BW1M119 0153e310
-	virtual ~GStreetLight();
 	// BW1W120 00734e00 BW1M119 0153ea20
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 005613d0 BW1M119 0153e3b0
-	virtual GPlayer* GetPlayer();
+	virtual GPlayer* GetPlayer() { return NULL; }
 	// BW1W120 00561410 BW1M119 0153e4b0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "StreetLight:"; }
 	// BW1W120 00735160 BW1M119 0153e550
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00735140 BW1M119 0153e5c0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00561400 BW1M119 0153e470
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GSTREET_LIGHT; }
 	// BW1W120 00735180 BW1M119 0153e4f0
 	virtual void ResolveLoad();
 	// BW1W120 00735110 BW1M119 0153e630
 	virtual float GetDistanceFromObject(const MapCoords& param_1);
 	// BW1W120 005613f0 BW1M119 0153e430
-	virtual bool32_t IsStreetLight();
+	virtual bool32_t IsStreetLight() { return true; }
 	// BW1W120 005613e0 BW1M119 0153e3f0
-	virtual const char* GetText();
+	virtual const char* GetText() { return "StreetLight"; }
+
+	// BW1W120 inlined BW1M119 inlined
+	GStreetLight() {}
 };
 
 #endif /* BW1_DECOMP_STREET_LIGHT_INCLUDED_H */

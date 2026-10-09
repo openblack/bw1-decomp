@@ -2,6 +2,7 @@
 #define BW1_DECOMP_SPELL_SEED_GRAPHIC_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
 
 #include <chlasm/Enum.h> /* For enum POWER_UP_TYPE, enum SPELL_SEED_TYPE */
@@ -74,10 +75,15 @@ public:
 	// BW1W120 00727800 BW1M119 01529580
 	virtual bool ForDrawFXGetVertexPos(int index, LHPoint* pos);
 
+	// BW1W120 00726dc0 BW1M119 0152af50
+	SpellSeedGraphic();
+
 	// Static methods
 
 	// BW1W120 00725ea0 BW1M119 0110bb30
-	static SpellSeedGraphic* __nw(uint32_t size);
+	static void* operator new(size_t size, const char* file_name, uint32_t line);
+	// BW1W120 005f8870 BW1M119 0110bac0
+	static void operator delete(void* ptr, size_t size);
 	// BW1W120 00726f60 BW1M119 0152ac10
 	static SpellSeedGraphic* Create(const MapCoords& coords, SPELL_SEED_TYPE type, GPlayer* player, float param_4,
 	                                POWER_UP_TYPE effect);

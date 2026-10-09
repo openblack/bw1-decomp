@@ -632,7 +632,7 @@ void Villager::PopFromPrevious()
 // BW1W120 00751ea0 BW1M119 01575cf0
 Football* Villager::GetFootball()
 {
-	return football;
+	return football.Get();
 }
 
 // BW1W120 00751ee0 BW1M119 01575c10
@@ -786,7 +786,7 @@ bool Villager::IsStateEntryFunctionSameAs(unsigned long state_a, unsigned long s
 }
 
 // BW1W120 00752530 BW1M119 inlined
-bool32_t Villager::IsStateExitFunctionSameAs(VILLAGER_STATES state) const
+bool32_t Villager::IsStateExitFunctionSameAs(unsigned long state) const
 {
 	return false;
 }
@@ -1103,7 +1103,7 @@ MapCoords Villager::GetResourceDropoffPos(RESOURCE_TYPE resource_type)
 }
 
 // BW1W120 00753f00 BW1M119 inlined
-bool Villager::IsFinalState(VILLAGER_STATES state)
+bool Villager::IsFinalState(uint8_t state)
 {
 	return false;
 }

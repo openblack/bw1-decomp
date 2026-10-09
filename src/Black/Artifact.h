@@ -31,6 +31,8 @@ public:
 
 	// Override methods
 
+	// BW1W120 004267e0 BW1M119 010b1280
+	virtual void ResolveLoad();
 	// BW1W120 00425d80 BW1M119 010b0ae0
 	virtual ~TownArtifact();
 	// BW1W120 00425e70 BW1M119 010b2410
@@ -54,11 +56,15 @@ public:
 
 	// Constructors
 
+	// BW1W120 00561ba0 BW1M119 inlined
+	TownArtifact() { SetToZero(); }
 	// BW1W120 00425d00 BW1M119 010b28e0
 	TownArtifact(Fixed* artifact, Town* town, GPlayer* player);
 
 	// Non-virtual methods
 
+	// BW1W120 00425f00 BW1M119 010b23c0
+	void SetToZero();
 	// BW1W120 004268e0 BW1M119 010b0e90
 	float GetImpressiveValueForDancing();
 	// BW1W120 004267f0 BW1M119 010b1220

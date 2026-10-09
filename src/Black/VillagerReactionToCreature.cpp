@@ -17,7 +17,7 @@ void Villager::SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2
 	// reloc and breaks the match; `switch(voidfunc())` won't compile. Semantics (from target asm):
 	//   Creature* c = dynamic_cast<Creature*>(param_1);
 	//   if (c->IsAvailable()) {
-	//     field_0xbc = c;
+	//     ReactionObject = c;
 	//     Town* t = GetTown();
 	//     if (t) {
 	//       t->CreateCreatureInfo(c);
@@ -65,7 +65,7 @@ bool32_t Villager::PerformInspectCreatureReaction()
 	// TODO: 95.7% — sole diff is FPU scheduling: target places FCOMP after the counter
 	// decrement (FLD;load;dec;FCOMP;store), ours emits FCOMP right after FLD. The compare is
 	// independent of the dec so MSVC is free to place it either side; no source order forces it.
-	if (field_0xbc != NULL && field_0xbc->IsAvailable())
+	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
 		field_0x110 = field_0x110 - 1;
 		if (field_0x10c < 1.0f)
@@ -84,7 +84,7 @@ bool32_t Villager::PerformInspectCreatureReaction()
 		}
 		else
 		{
-			LookAtObject(field_0xbc, 1);
+			LookAtObject(ReactionObject.Get(), 1);
 		}
 		UpdateAttitudeToCreature();
 		return 1;
@@ -112,8 +112,8 @@ bool32_t Villager::InitialiseRespectCreatureReaction()
 	// retbuf + the Object*). Same shape as FindPosOutsideAbode noted in VillagerFood.cpp. Until
 	// Object.h's return type is fixed (and its definition unit updated), this can't be written.
 	// Semantics (from target asm):
-	//   if (field_0xbc && field_0xbc->IsAvailable()) {
-	//     Creature* c = dynamic_cast<Creature*>(field_0xbc);
+	//   if (ReactionObject && ReactionObject->IsAvailable()) {
+	//     Creature* c = dynamic_cast<Creature*>(ReactionObject);
 	//     LHCoord e = GetNearestEdgeOfObject(c);           // hidden retbuf
 	//     MapCoords m((int)(e.x*6553.6f), (int)(e.z*6553.6f), 0);
 	//     SetupMoveToCreatureReaction(m, 0xa0);
@@ -126,12 +126,12 @@ bool32_t Villager::InitialiseRespectCreatureReaction()
 // BW1W120 00767c80 BW1M119 0159d190
 bool32_t Villager::TurnToFaceCreatureReaction()
 {
-	// TODO: 99.7% — sole diff is the scratch register for the reloaded field_0xbc passed to
+	// TODO: 99.7% — sole diff is the scratch register for the reloaded ReactionObject passed to
 	// LookAtObject: target uses eax, ours ecx (register-allocation tie-break). A named local
 	// and reusing it both regress; body is otherwise byte-exact.
-	if (field_0xbc != NULL && field_0xbc->IsAvailable())
+	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
-		if (LookAtObject(field_0xbc, 2) == 1)
+		if (LookAtObject(ReactionObject.Get(), 2) == 1)
 		{
 			TurnsUntilNextStateChange = 0;
 			SetTopState(0x9c);
@@ -149,8 +149,8 @@ bool32_t Villager::PerformRespectCreatureReaction()
 	// TODO: deferred — blocked on the same UNNAMED global 0x00d01a38 (divisor in `1000/global`)
 	// as InspectCreatureReaction, plus the `coords` layout bug (self coords at [esi+0x2c] vs
 	// target [esi+0x14]). Semantics (from target asm):
-	//   if (field_0xbc && field_0xbc->IsAvailable()) {
-	//     int d = GUtils::GetAngleFromXZ(coords, field_0xbc->coords) - field_0x5c;
+	//   if (ReactionObject && ReactionObject->IsAvailable()) {
+	//     int d = GUtils::GetAngleFromXZ(coords, ReactionObject->coords) - field_0x5c;
 	//     if (abs(d) > 0x100) { SetTopState(0xa0); return 1; }
 	//     ++TurnsUntilNextStateChange;   // field_0x58
 	//     if ((short)TurnsUntilNextStateChange > (int)((1000/global) * <c@0x8ab418>))
@@ -164,7 +164,7 @@ bool32_t Villager::PerformRespectCreatureReaction()
 // BW1W120 00767dc0 BW1M119 0159cf70
 bool32_t Villager::FinishRespectCreatureReaction()
 {
-	if (field_0xbc != NULL && field_0xbc->IsAvailable())
+	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
 		StopReactingAndSetState();
 		return 1;
@@ -186,7 +186,7 @@ bool32_t Villager::FleeingFromCreatureReaction()
 // BW1W120 00767f70 BW1M119 0159cc60
 bool32_t Villager::MoveTowardsCreatureReaction()
 {
-	if (field_0xbc != NULL && field_0xbc->IsAvailable())
+	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
 		if (MoveTo() == 10)
 		{
@@ -242,7 +242,7 @@ bool32_t Villager::UpdateReactiveStateFromAttitudeToCreature()
 	// SetupReactToCreature. (Globals ARE named here: GGame::g_game @0x00d0195c, Creature::arena
 	// @0x10a0.) Semantics (from target asm):
 	//   if (CheckNeededForWorship() == 1) return;
-	//   Creature* c = dynamic_cast<Creature*>(field_0xbc);
+	//   Creature* c = dynamic_cast<Creature*>(ReactionObject);
 	//   if (!c) return;
 	//   if (c->arena) {                      // arena != 0
 	//     StopReactingAndSetState();

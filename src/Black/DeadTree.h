@@ -53,7 +53,7 @@ public:
 	// BW1W120 005109e0 BW1M119 010c71c0
 	virtual uint32_t GetSaveType();
 	// BW1W120 005109d0 BW1M119 inlined
-	virtual uint32_t IsRock_0();
+	virtual bool32_t IsRock();
 	// BW1W120 00510980 BW1M119 010c4360
 	virtual bool32_t IsAnyKindOfTree();
 	// BW1W120 00510990 BW1M119 010c43a0
@@ -123,6 +123,12 @@ public:
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 00510970 BW1M119 010c4300
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
+
+	// BW1W120 inlined BW1M119 0130e550
+	DeadTree() { SetToZero(); }
+
+	// BW1W120 00510a80 BW1M119 010c6df0
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_DEAD_TREE_INCLUDED_H */

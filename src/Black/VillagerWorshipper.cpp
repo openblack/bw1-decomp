@@ -105,7 +105,7 @@ bool32_t Villager::GotoWorshipSiteForWorship()
 	bool32_t     result = 0;
 	if (worshipSite != NULL && worshipSite->IsBuilt())
 	{
-		++*(int*)((uint8_t*)worshipSite->dance + 0x114);
+		++*(int*)((uint8_t*)worshipSite->dance.Get() + 0x114);
 		Flags |= 0x10;
 		if (worshipSite->GetDistanceFromObject(this) > 0.0f)
 		{
@@ -159,7 +159,7 @@ bool32_t Villager::ArrivesAtWorshipSiteForWorship()
 	worshipSite->GetSpecialPos(9, &pos);
 	if (GUtils::GetDistanceInMetres(Pos, pos) < 10.0f)
 	{
-		if (*(uint32_t*)((uint8_t*)worshipSite->dance + 0x90) <
+		if (*(uint32_t*)((uint8_t*)worshipSite->dance.Get() + 0x90) <
 		    ((const GWorshipSiteInfo*)worshipSite->info)->field_0x14c)
 			StartWorshippingAtWorshipSite();
 		else
@@ -374,7 +374,7 @@ bool32_t Villager::RestartWorshippingAtWorshipSite()
 // — an arg-evaluation scheduler tie-break (named-local variant gives identical asm). Semantics correct.
 bool32_t Villager::RestartWorshippingCreature()
 {
-	if (dance_group != NULL)
+	if (dance_group.Get() != NULL)
 	{
 		PerformDance(dance_group->Dancer->Pos, VILLAGER_STATE_WORSHIPPING_CREATURE, 9);
 		return 1;
@@ -427,7 +427,7 @@ bool Villager::RemoveVillagerFromWorshipSite()
 bool32_t Villager::StartWorshippingAtWorshipSite()
 {
 	WorshipSite* worshipSite = GetWorshipSite();
-	if (worshipSite != NULL && worshipSite->IsAvailable() && worshipSite->dance != NULL)
+	if (worshipSite != NULL && worshipSite->IsAvailable() && worshipSite->dance.Get() != NULL)
 	{
 		if (worshipSite->dance->FindDanceGroup(this) == 1)
 		{
@@ -505,12 +505,12 @@ bool Villager::StartWorshippingCreature(Creature* creature)
 	MapCoords pos;
 	// TODO: Creature.h's include chain doesn't compile under MSVC6 in this TU; +0x1074 is
 	// Creature::dance and +0x14 the inherited Pos, accessed raw for now
-	if ((*(Dance**)((uint8_t*)creature + 0x1074))->FindDanceGroup(this) && dance_group != NULL)
+	if ((*(Dance**)((uint8_t*)creature + 0x1074))->FindDanceGroup(this) && dance_group.Get() != NULL)
 	{
 		GetFinalState();
 		action.states[0] = VILLAGER_STATE_CONTROLLED_BY_CREATURE;
 		SetTopState(VILLAGER_STATE_CONTROLLED_BY_CREATURE);
-		if (dance_group != NULL)
+		if (dance_group.Get() != NULL)
 		{
 			CalculateDancePosition(((GameThingWithPos*)creature)->Pos, &pos);
 			int speed = *(const int*)((const uint8_t*)info + 0x110);
@@ -528,7 +528,7 @@ bool Villager::StartWorshippingCreature(Creature* creature)
 // +0x100 and its MapCoords base at +0x14 (containing type beyond GameThingWithPos unknown). Semantics correct.
 bool32_t Villager::WorshippingCreature()
 {
-	if (dance_group != NULL)
+	if (dance_group.Get() != NULL)
 	{
 		GameThingWithPos* p = dance_group->Dancer;
 		// TODO: +0x100 is a flag on the (unidentified) dancer type; keep the raw offset.

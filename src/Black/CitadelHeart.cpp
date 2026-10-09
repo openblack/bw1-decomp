@@ -16,11 +16,6 @@ float GCitadelHeartInfo::GetTransferedDamageMultiplier()
 	return GetInfo()->TransferedDamageMultiplier;
 }
 
-CitadelHeart::CitadelHeart() : CitadelPart(), field_0x90(0)
-{
-	SetToZero();
-}
-
 void CitadelHeart::SetToZero()
 {
 	field_0xa8 = 0;

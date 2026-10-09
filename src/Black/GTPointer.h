@@ -13,6 +13,20 @@ public:
 
 	// Deliberately leaves the turn uninitialized (BW1M119 01305cc0 for GameThing).
 	GTPointer() : Pointer(0) {}
+	// BW1W120 inlined BW1M119 0130d090
+	GTPointer operator=(T* pointer)
+	{
+		Pointer = pointer;
+		if (Pointer)
+		{
+			SetGameTurnValidated();
+		}
+		return *this;
+	}
+	// BW1W120 inlined BW1M119 01407c20
+	void SetGameTurnValidated();
+	// BW1W120 inlined BW1M119 01022c70
+	void ValidateGameTurn(unsigned char max_age) const {}
 };
 
 static_assert(sizeof(GTPointer<int>) == 8, "GTPointer size is incorrect");

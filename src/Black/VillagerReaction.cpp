@@ -97,7 +97,7 @@ bool32_t Villager::SetupMoveToPos(const MapCoords& coord, VILLAGER_STATES end_st
 void Villager::SetupReactToMagicTree(GameThingWithPos* thing, Reaction* reaction)
 {
 	AddReaction(reaction, VILLAGER_STATE_INITIALISE_BEWILDERED_BY_MAGIC_TREE_REACTION);
-	this->field_0xbc = thing;
+	this->ReactionObject = thing;
 }
 
 // BW1W120 00763850 BW1M119 0159b510
@@ -121,7 +121,7 @@ void Villager::SetupFleeFromPredator(GameThingWithPos* thing, Reaction* reaction
 		return;
 	}
 	AddReaction(reaction, VILLAGER_STATE_FLEEING_FROM_PREDATOR_REACTION);
-	this->field_0xbc = thing;
+	this->ReactionObject = thing;
 }
 
 // BW1W120 007639d0 BW1M119 0159b240
@@ -157,14 +157,14 @@ bool32_t Villager::FleeingFromPredatorReaction()
 	// TODO: needs the coming-towards-me helper at 0x5f1e60 named (its leg of the hide
 	// condition is omitted below); the distance callee is the unnamed 2D twin at 0x74cd50
 	// and GameRand __FILE__/__LINE__ cannot match in a split TU
-	if (this->field_0xbc != NULL && this->field_0xbc->IsAvailable())
+	if (this->ReactionObject.Get() != NULL && this->ReactionObject->IsAvailable())
 	{
-		Animal* predator = dynamic_cast<Animal*>(this->field_0xbc);
+		Animal* predator = dynamic_cast<Animal*>(this->ReactionObject.Get());
 		if (predator == NULL)
 		{
 			return 0;
 		}
-		float distance = GUtils::GetDistanceInMetres(Pos, this->field_0xbc->Pos);
+		float distance = GUtils::GetDistanceInMetres(Pos, this->ReactionObject->Pos);
 		if (distance > GetReaction()->GetInfo()->MaxDistanceToRunAwayFromObject)
 		{
 			StopReactingAndSetState();
@@ -187,7 +187,7 @@ bool32_t Villager::FleeingFromPredatorReaction()
 				return 1;
 			}
 		}
-		return FleeFromObjectIfComingTowardsMe(this->field_0xbc, VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION,
+		return FleeFromObjectIfComingTowardsMe(this->ReactionObject.Get(), VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION,
 		                                       VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION);
 	}
 	StopReactingAndSetState();
@@ -240,18 +240,18 @@ bool32_t Villager::GoAndHideInNearbyBuilding()
 	// hide-turns counter here (header declares float), hence the casts
 	MapCoords coords((JustWholeMapXZ*)&this->field_0x110);
 	Abode*    abode = GetAbodeToHideInAtPos(coords);
-	if (this->field_0xbc != NULL && this->field_0xbc->IsAvailable() != 1)
+	if (this->ReactionObject.Get() != NULL && this->ReactionObject->IsAvailable() != 1)
 	{
-		this->field_0xbc = NULL;
+		this->ReactionObject = NULL;
 	}
 	if (abode != NULL && abode->CanBeHiddenIn())
 	{
 		MapCoords arrivePos = abode->GetArrivePos();
 		if (AreWeThere(arrivePos, 0.0f))
 		{
-			if (this->field_0xbc != NULL)
+			if (this->ReactionObject.Get() != NULL)
 			{
-				float distance = GUtils::GetDistanceInMetres(Pos, this->field_0xbc->Pos);
+				float distance = GUtils::GetDistanceInMetres(Pos, this->ReactionObject->Pos);
 				if (distance <= GetReaction()->GetInfo()->MinDistanceToRunAwayFromObject)
 				{
 					return 1;
@@ -302,13 +302,13 @@ bool32_t Villager::LookToSeeIfItIsSafe()
 {
 	// TODO: the distance callee is the unnamed 2D twin of GetDistanceInMetres at 0x74cd50;
 	// GameRand __FILE__/__LINE__ cannot match in a split TU
-	if (this->field_0xbc != NULL)
+	if (this->ReactionObject.Get() != NULL)
 	{
-		float distance = GUtils::GetDistanceInMetres(Pos, this->field_0xbc->Pos);
-		if (distance <= GetReaction()->GetInfo()->MaxReactionDistance && this->field_0xbc->IsAnimal())
+		float distance = GUtils::GetDistanceInMetres(Pos, this->ReactionObject->Pos);
+		if (distance <= GetReaction()->GetInfo()->MaxReactionDistance && this->ReactionObject->IsAnimal())
 		{
 			// The predator is only still a threat if it is awake and out of its lair.
-			uint8_t predatorState = ((Living*)this->field_0xbc)->action.states[LIVING_ACTION_INDEX_TOP];
+			uint8_t predatorState = ((Living*)this->ReactionObject.Get())->action.states[LIVING_ACTION_INDEX_TOP];
 			if (predatorState != ANIMAL_STATE_SLEEPS && predatorState != ANIMAL_STATE_HIDE_IN_LAIR)
 			{
 				Abode* abode = GetAbodeToHideInAtPos(MapCoords((JustWholeMapXZ*)&this->field_0x110));
@@ -318,7 +318,8 @@ bool32_t Villager::LookToSeeIfItIsSafe()
 					SetupMoveToOnFootpath(*abode, abode->GetArrivePos(), VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING);
 					return 1;
 				}
-				return FleeFromObjectIfComingTowardsMe(this->field_0xbc, VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION,
+				return FleeFromObjectIfComingTowardsMe(this->ReactionObject.Get(),
+				                                       VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION,
 				                                       VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION);
 			}
 		}
@@ -410,7 +411,7 @@ bool32_t Villager::InspectObjectReaction()
 // BW1W120 00764410 BW1M119 01599c90
 bool32_t Villager::PerformInspectionReaction()
 {
-	if (!this->field_0xbc->IsAvailable())
+	if (!this->ReactionObject->IsAvailable())
 	{
 		StopReactingAndSetState();
 		return 1;
@@ -425,7 +426,7 @@ bool32_t Villager::PerformInspectionReaction()
 		SetTopState(VILLAGER_STATE_APPROACH_OBJECT_REACTION);
 		return 1;
 	}
-	LookAtObject(this->field_0xbc, 1);
+	LookAtObject(this->ReactionObject.Get(), 1);
 	return 1;
 }
 
@@ -440,7 +441,7 @@ bool32_t Villager::ApproachObjectReaction()
 // BW1W120 00764610 BW1M119 01599940
 bool32_t Villager::InitialiseTellOthersAboutObject()
 {
-	if (!this->field_0xbc->IsAvailable())
+	if (!this->ReactionObject->IsAvailable())
 	{
 		StopReactingAndSetState();
 		return true;
@@ -522,9 +523,9 @@ bool32_t Villager::InitialiseBewilderedByMagicTreeReaction()
 {
 	// TODO: the tail needs Tree::GetForest fixed — it is declared void and non-virtual, but
 	// the target dispatches it virtually and uses its result
-	if (this->field_0xbc != NULL && this->field_0xbc->IsAvailable())
+	if (this->ReactionObject.Get() != NULL && this->ReactionObject->IsAvailable())
 	{
-		if (dynamic_cast<MagicTree*>(this->field_0xbc) == NULL)
+		if (dynamic_cast<MagicTree*>(this->ReactionObject.Get()) == NULL)
 		{
 			StopReactingAndSetState();
 			return 1;
@@ -545,12 +546,12 @@ bool32_t Villager::PerformBewilderedByMagicTreeReaction()
 // BW1W120 00764d10 BW1M119 01598a30
 bool32_t Villager::TurnToFaceMagicTree()
 {
-	if (this->field_0xbc == NULL || !this->field_0xbc->IsAvailable())
+	if (this->ReactionObject.Get() == NULL || !this->ReactionObject->IsAvailable())
 	{
 		StopReactingAndSetState();
 		return true;
 	}
-	if (LookAtObject(this->field_0xbc, 1) != 1)
+	if (LookAtObject(this->ReactionObject.Get(), 1) != 1)
 	{
 		return true;
 	}
@@ -561,10 +562,10 @@ bool32_t Villager::TurnToFaceMagicTree()
 // BW1W120 00764d70 BW1M119 01598910
 bool32_t Villager::LookAtMagicTree()
 {
-	if (this->field_0xbc != NULL && this->field_0xbc->IsAvailable())
+	if (this->ReactionObject.Get() != NULL && this->ReactionObject->IsAvailable())
 	{
 		// The original discards the cast result too (kept only as a call).
-		dynamic_cast<Tree*>(this->field_0xbc);
+		dynamic_cast<Tree*>(this->ReactionObject.Get());
 		// TurnsUntilNextStateChange doubles as {uint8 remaining, uint8 total} in this state:
 		// play the look-up anim at the halfway point.
 		// TODO: SetAnim dispatches through the wrong vtable slot — the two same-name SetAnim
@@ -599,14 +600,14 @@ bool Villager::IsInterestedInWoodObject(Object* param_1)
 // BW1W120 00765140 BW1M119 01598350
 bool32_t Villager::ApproachHandReaction()
 {
-	if (!this->field_0xbc->IsAvailable())
+	if (!this->ReactionObject->IsAvailable())
 	{
 		StopReactingAndSetState();
 		return true;
 	}
 	// TODO: fstp/LookAtObject-arg-setup scheduler reorder remains. Body is semantically exact.
-	GUtils::GetDistanceInMetres(Pos, this->field_0xbc->Pos);
-	LookAtObject(this->field_0xbc, 1);
+	GUtils::GetDistanceInMetres(Pos, this->ReactionObject->Pos);
+	LookAtObject(this->ReactionObject.Get(), 1);
 	return true;
 }
 
@@ -660,7 +661,7 @@ void Villager::SetupReactToWood(GameThingWithPos* thing, Reaction* reaction)
 {
 	Object* wood = dynamic_cast<Object*>(thing);
 	AddReaction(reaction, VILLAGER_STATE_GOTO_WOOD_REACTION);
-	this->field_0xbc = wood;
+	this->ReactionObject = wood;
 }
 
 // BW1W120 00765bb0 BW1M119 01597250
@@ -721,7 +722,7 @@ void Villager::SetupReactToTeleport(GameThingWithPos* thing, Reaction* reaction)
 		MapCoords coords;
 		coords = GetFinalDestPos();
 		int speedNow = this->speed;
-		this->field_0xbc = thing;
+		this->ReactionObject = thing;
 		AddReaction(reaction, speedNow > ((const GMobileWallHugInfo*)this->info)->field_0x10c
 		                          ? VILLAGER_STATE_GO_TOWARDS_TELEPORT_REACTION_QUICKLY
 		                          : VILLAGER_STATE_GO_TOWARDS_TELEPORT_REACTION);
@@ -813,7 +814,7 @@ void Villager::SetupReactToDeath(GameThingWithPos* thing, Reaction* reaction)
 	{
 		AddReaction(reaction, VILLAGER_STATE_GO_TOWARDS_DEAD_PERSON);
 	}
-	this->field_0xbc = thing;
+	this->ReactionObject = thing;
 }
 
 // BW1W120 00766620 BW1M119 01595eb0
@@ -844,7 +845,7 @@ bool32_t Villager::GoTowardsDeadPerson()
 // BW1W120 00766810 BW1M119 01595b50
 bool32_t Villager::LookAtDeadPerson()
 {
-	GameThingWithPos* target = this->field_0xbc;
+	GameThingWithPos* target = this->ReactionObject.Get();
 	if (LookAtObject(target, 1) == 1)
 	{
 		this->TurnsUntilNextStateChange = 0;
@@ -862,7 +863,7 @@ bool32_t Villager::MournDeadPerson()
 // BW1W120 007668c0 BW1M119 015959c0
 void Villager::SetupReactToFainting(GameThingWithPos* thing, Reaction* reaction)
 {
-	this->field_0xbc = this;
+	this->ReactionObject = this;
 	AddReaction(reaction, VILLAGER_STATE_FAINTING_REACTION);
 }
 
@@ -875,7 +876,7 @@ bool32_t Villager::FaintingReaction()
 // BW1W120 007668f0 BW1M119 015958d0
 void Villager::SetupReactToConfused(GameThingWithPos* thing, Reaction* reaction)
 {
-	this->field_0xbc = this;
+	this->ReactionObject = this;
 	AddReaction(reaction, VILLAGER_STATE_START_CONFUSED_REACTION);
 }
 
@@ -919,7 +920,7 @@ uint8_t Villager::ReactToFallingTreePriority(Reaction* param_1, Reaction* param_
 void Villager::SetupReactToFallingTree(GameThingWithPos* thing, Reaction* reaction)
 {
 	AddReaction(reaction, VILLAGER_STATE_FLEEING_FROM_OBJECT_REACTION);
-	this->field_0xbc = thing;
+	this->ReactionObject = thing;
 }
 
 // BW1W120 00766a50 BW1M119 01595550
@@ -932,7 +933,7 @@ uint8_t Villager::ReactToCrowdPriority(Reaction* param_1, Reaction* param_2)
 void Villager::SetupReactToCrowd(GameThingWithPos* thing, Reaction* reaction)
 {
 	AddReaction(reaction, VILLAGER_STATE_CROWD_REACTION);
-	this->field_0xbc = thing;
+	this->ReactionObject = thing;
 }
 
 // BW1W120 00766a90 BW1M119 01595280
@@ -944,7 +945,7 @@ bool32_t Villager::CrowdReaction()
 // BW1W120 00766c60 BW1M119 01595130
 bool32_t Villager::MoveTowardsObjectToLookAt()
 {
-	if (!this->field_0xbc->IsAvailable())
+	if (!this->ReactionObject->IsAvailable())
 	{
 		StopReactingAndSetState();
 		return true;
@@ -954,7 +955,7 @@ bool32_t Villager::MoveTowardsObjectToLookAt()
 	// MSVC6 here does zero-init first and copies altitude via integer mov. Semantics exact.
 	MapCoords destPos;
 	destPos = *GetDestPos();
-	if (GUtils::GetDistanceInMetres(this->field_0xbc->Pos, destPos) > 100.0f)
+	if (GUtils::GetDistanceInMetres(this->ReactionObject->Pos, destPos) > 100.0f)
 	{
 		SetTopState(VILLAGER_STATE_CROWD_REACTION);
 		return true;
@@ -965,12 +966,12 @@ bool32_t Villager::MoveTowardsObjectToLookAt()
 // BW1W120 00766d00 BW1M119 01595050
 bool32_t Villager::InitialiseImpressedReaction()
 {
-	if (this->field_0xbc == NULL || !this->field_0xbc->IsAvailable())
+	if (this->ReactionObject.Get() == NULL || !this->ReactionObject->IsAvailable())
 	{
 		StopReactingAndSetState();
 		return true;
 	}
-	if (LookAtObject(this->field_0xbc, 2) != 1)
+	if (LookAtObject(this->ReactionObject.Get(), 2) != 1)
 	{
 		return true;
 	}
@@ -995,7 +996,7 @@ uint8_t Villager::ReactToFightPriority(Reaction* param_1, Reaction* param_2)
 // BW1W120 00766e30 BW1M119 01594de0
 void Villager::SetupReactToFight(GameThingWithPos* thing, Reaction* reaction)
 {
-	this->field_0xbc = thing;
+	this->ReactionObject = thing;
 	AddReaction(reaction, VILLAGER_STATE_INITIALISE_FIGHT_REACTION);
 }
 
@@ -1018,7 +1019,7 @@ uint8_t Villager::ReactToTownCelebrationPriority(Reaction* param_1, Reaction* pa
 void Villager::SetupReactToBreeder(GameThingWithPos* thing, Reaction* reaction)
 {
 	AddReaction(reaction, VILLAGER_STATE_REACT_TO_BREEDER);
-	this->field_0xbc = thing;
+	this->ReactionObject = thing;
 }
 
 // BW1W120 00767210 BW1M119 015944b0
@@ -1030,9 +1031,9 @@ uint8_t Villager::ReactToBreederPriority(Reaction* param_1, Reaction* param_2)
 // BW1W120 00767280 BW1M119 01594410
 bool32_t Villager::ReactToBreeder()
 {
-	if (this->field_0xbc != NULL && this->field_0xbc->IsVillager(NULL))
+	if (this->ReactionObject.Get() != NULL && this->ReactionObject->IsVillager(NULL))
 	{
-		GoAndHaveSexWith((Villager*)this->field_0xbc);
+		GoAndHaveSexWith((Villager*)this->ReactionObject.Get());
 		return true;
 	}
 	return false;
@@ -1053,7 +1054,7 @@ bool32_t Villager::GoAndHaveSexWith(Villager* mate)
 void Villager::SetupReactToVillagerInHand(GameThingWithPos* thing, Reaction* reaction)
 {
 	AddReaction(reaction, VILLAGER_STATE_WAIT_FOR_MATE);
-	this->field_0xbc = thing;
+	this->ReactionObject = thing;
 }
 
 // BW1W120 00767320 BW1M119 01594130
@@ -1090,7 +1091,7 @@ uint8_t Villager::ReactToBurningObjectInHandPriority(Reaction* param_1, Reaction
 // BW1W120 00767490 BW1M119 01593e10
 void Villager::SetupReactToBurningObjectInHand(GameThingWithPos* thing, Reaction* reaction)
 {
-	this->field_0xbc = thing;
+	this->ReactionObject = thing;
 	AddReaction(reaction, VILLAGER_STATE_FLEEING_FROM_OBJECT_REACTION);
 }
 

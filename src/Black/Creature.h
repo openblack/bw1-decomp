@@ -210,9 +210,9 @@ public:
 	uint32_t                              LastImpressiveDanceType;
 	uint32_t                              field_0x1104;
 	uint32_t                              field_0x1108;
-	uint32_t                              field_0x110c;
-	int                                   field_0x1110;
-	uint32_t                              field_0x1114;
+	uint32_t                              ScriptFlag0;
+	int                                   ScriptFlag1;
+	uint32_t                              ScriptFlag2;
 	uint32_t                              field_0x1118;
 	uint32_t                              field_0x111c;
 	uint32_t                              field_0x1120;
@@ -904,6 +904,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 0050b310 BW1M119 010c3c20
+	Creed();
 	// BW1W120 inlined BW1M119 inlined
 	Creed(const MapCoords& coords, const GMobileObjectInfo* info, Object* param_3, float param_4, float param_5)
 		: MobileObject(coords, info, param_3, param_4, param_5)
@@ -946,9 +948,9 @@ public:
 static_assert(offsetof(Creature, HelpState) == 0x188, "Creature help offset is incorrect");
 static_assert(offsetof(Creature, HelpStackEntries) == 0x220, "Creature help stack offset is incorrect");
 static_assert(offsetof(Creature, ReceiveSpell) == 0x370, "Creature spell receiver offset is incorrect");
-static_assert(offsetof(Creature, field_0x110c) == 0x110c, "Creature flag offset is incorrect");
-static_assert(offsetof(Creature, field_0x1110) == 0x1110, "Creature flag offset is incorrect");
-static_assert(offsetof(Creature, field_0x1114) == 0x1114, "Creature flag offset is incorrect");
+static_assert(offsetof(Creature, ScriptFlag0) == 0x110c, "Creature flag offset is incorrect");
+static_assert(offsetof(Creature, ScriptFlag1) == 0x1110, "Creature flag offset is incorrect");
+static_assert(offsetof(Creature, ScriptFlag2) == 0x1114, "Creature flag offset is incorrect");
 static_assert(sizeof(Creature) == 0x12c8, "Creature size is incorrect");
 
 #endif /* BW1_DECOMP_CREATURE_INCLUDED_H */

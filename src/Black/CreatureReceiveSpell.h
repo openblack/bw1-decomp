@@ -14,46 +14,38 @@
 class Creature;
 class GameThing;
 
-// Global names survive in the Mac symbols; class rather than struct is a reconstructed choice.
-// The Windows serializers expose five 4-byte scalars and a GameThing-compatible pointer.
-// TODO: Recover scalar types/names and the original pointer subtype.
-class CreatureReceiveSpell_TPerSpellData
-{
-public:
-	uint32_t   field_0x0;
-	uint32_t   field_0x4;
-	uint32_t   field_0x8;
-	uint32_t   field_0xc;
-	uint32_t   field_0x10;
-	GameThing* field_0x14;
-};
-
-// Class tag and unresolved field types are reconstructed as above; queue stride is 0xc at 004f50e0.
-class CreatureReceiveSpell_QueueData
-{
-public:
-	uint32_t   field_0x0;
-	uint32_t   field_0x4;
-	GameThing* field_0x8;
-};
-
-static_assert(sizeof(CreatureReceiveSpell_TPerSpellData) == 0x18,
-              "CreatureReceiveSpell_TPerSpellData size is incorrect");
-static_assert(sizeof(CreatureReceiveSpell_QueueData) == 0xc, "CreatureReceiveSpell_QueueData size is incorrect");
-
 struct CreatureReceiveSpell
 {
-	Creature*                                creature; /* 0x0 */
-	CreatureReceiveSpell_TPerSpellData       data[0x10];
-	GJVector<CreatureReceiveSpell_QueueData> queueData;   /* 0x184 */
-	uint32_t                                 field_0x198; // Zeroed separately at 004f52ef.
-	LHPoint                                  field_0x19c;
-	LHPoint                                  field_0x1a8;
-	LHPoint                                  field_0x1b4;
-	LHPoint                                  field_0x1c0;
-	float                                    field_0x1cc;
-	uint32_t                                 field_0x1d0;
-	uint8_t                                  field_0x1d4;
+	class TPerSpellData
+	{
+	public:
+		uint32_t   SpellType;
+		uint32_t   State;
+		uint32_t   StartTime;
+		uint32_t   Intensity;
+		uint32_t   Duration;
+		GameThing* Caster;
+	};
+
+	class QueueData
+	{
+	public:
+		uint32_t   SpellType;
+		uint32_t   Intensity;
+		GameThing* Caster;
+	};
+
+	Creature*           creature;
+	TPerSpellData       data[0x10];
+	GJVector<QueueData> queueData;
+	uint32_t            field_0x198;
+	LHPoint             field_0x19c;
+	LHPoint             field_0x1a8;
+	LHPoint             field_0x1b4;
+	LHPoint             field_0x1c0;
+	float               field_0x1cc;
+	uint32_t            field_0x1d0;
+	uint8_t             field_0x1d4;
 
 	// Constructors
 

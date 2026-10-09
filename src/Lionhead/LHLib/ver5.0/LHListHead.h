@@ -21,7 +21,7 @@ struct LHListHead
 	T*       head;
 	uint32_t count;
 
-	inline LHListHead() : head(NULL), count(0) {}
+	inline LHListHead() { Clear(); }
 
 	// BW1W120 inlined BW1M119 014af430
 	T* Get() { return head; }
@@ -171,7 +171,14 @@ struct LHListHead
 	}
 
 	// BW1W120 00595830 BW1M119 0133c960
-	T* GetNext(T* element) const { return element == NULL ? head : element->next; }
+	T* GetNext(T* element) const
+	{
+		if (element == NULL)
+		{
+			return head;
+		}
+		return element->next;
+	}
 
 	// BW1W120 inlined BW1M119 inlined
 	T* GetPrevious(T* element) const

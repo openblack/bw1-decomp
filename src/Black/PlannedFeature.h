@@ -16,6 +16,8 @@ class MultiMapFixed;
 class PlannedFeature : public PlannedMultiMapFixed
 {
 public:
+	GameThing* field_0x48;
+
 	// Override methods
 
 	// BW1W120 005274a0 BW1M119 010d6100
@@ -30,6 +32,9 @@ public:
 	virtual uint32_t GetSaveType();
 	// BW1W120 005274d0 BW1M119 010d5aa0
 	virtual MultiMapFixed* CreatePlanned(float param_1);
+
+	// BW1W120 inlined BW1M119 inlined
+	PlannedFeature() {}
 };
 
 #endif /* BW1_DECOMP_PLANNED_FEATURE_INCLUDED_H */

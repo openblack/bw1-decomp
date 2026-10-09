@@ -37,11 +37,7 @@ struct JustMapXZ
 	// Constructors
 
 	// BW1W120 inlined BW1M119 010358d0
-	JustMapXZ()
-	{
-		x = 0;
-		z = 0;
-	}
+	JustMapXZ() { Init(0, 0); }
 	// BW1W120 inlined BW1M119 015a0680
 	JustMapXZ(unsigned short cell_x, unsigned short cell_z) : x(cell_x), z(cell_z) {}
 
@@ -66,8 +62,17 @@ struct JustWholeMapXZ
 	int32_t x; /* 0x0 */
 	int32_t z;
 
+	// BW1W120 inlined BW1M119 0130e030
+	JustWholeMapXZ() { Init(); }
+
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 01175370
+	void Init()
+	{
+		x = 0;
+		z = 0;
+	}
 	// BW1W120 005e1900 BW1M119 011085d0
 	void Init(const MapCoords& param_1);
 };

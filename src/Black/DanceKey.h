@@ -4,7 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LHLib/ver5.0/LHDynamicStack.h> /* For struct LHDynamicStack */
+#include <Lionhead/LHLib/ver5.0/LHDynamicStack.h> /* For class LHDynamicStack */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>   /* For class LHLinkedList */
 
 #include "DanceGroup.h" /* For enum DANCE_GROUP_ACTION_TYPE */
 #include "GameThing.h"  /* For struct GameThing */
@@ -13,12 +14,15 @@
 
 class Base;
 struct DanceGroupActionArgument;
+class DanceKeyAction;
 class GameOSFile;
 
 class DanceKeyFrame : public GameThing
 {
 public:
-	uint8_t field_0x14[0x10];
+	float                         Time;
+	LHLinkedList<DanceKeyAction*> Actions;
+	uint32_t                      field_0x20;
 
 	// Override methods
 
@@ -37,6 +41,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	DanceKeyFrame() {}
 	// BW1W120 0050eb60 BW1M119 012b1570
 	DanceKeyFrame(int param_1, LHDynamicStack<uint32_t>* stack, DANCE_GROUP_ACTION_TYPE action_type,
 	              const DanceGroupActionArgument& arguments);

@@ -491,7 +491,7 @@ void GScript::GetPosition()
 		if (thing->IsFlock())
 		{
 			Flock*  flock = (Flock*)thing;
-			Living* leader = flock->leader != NULL ? flock->leader->payload : NULL;
+			Living* leader = flock->Members.GetLast();
 			if (leader != NULL)
 			{
 				GLandscape::ConvertMapCoordToLandscapePoint(leader->Pos, point);

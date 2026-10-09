@@ -20,12 +20,14 @@ class PlannedTownCentre : public PlannedAbode
 public:
 	// Override methods
 
-	// BW1W120 0055dc10 BW1M119 01562df0
-	virtual ~PlannedTownCentre();
+	// BW1W120 00744550 BW1M119 015637b0
+	virtual MultiMapFixed* CreatePlannedNoFixedCheck(float food);
+	// BW1W120 0055dbe0 BW1M119 01562e90
+	virtual bool32_t IsCivic() { return true; }
 	// BW1W120 0055dc00 BW1M119 01562f10
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "PlannedTownCentre:"; }
 	// BW1W120 0055dbf0 BW1M119 01562ed0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PLANNED_TOWN_CENTRE; }
 
 	// Static methods
 
@@ -35,6 +37,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	PlannedTownCentre() {}
 	// BW1W120 00744460 BW1M119 015639f0
 	PlannedTownCentre(const TownCentre* town_centre);
 };

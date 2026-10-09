@@ -28,24 +28,30 @@ public:
 
 	// Override methods
 
-	// BW1W120 00561220 BW1M119 01169330
-	virtual ~Wonder();
+	// BW1W120 00778e60 BW1M119 01169df0
+	virtual void DeleteDependancys();
+	// BW1W120 00778f20 BW1M119 01169c30
+	virtual void MakeFunctional();
+	// BW1W120 005611d0 BW1M119 01169460
+	virtual bool32_t CanBeHiddenIn() { return false; }
+	// BW1W120 00779040 BW1M119 01169930
+	virtual GTribeInfo* GetTribe();
 	// BW1W120 00778e40 BW1M119 01169e60
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00561210 BW1M119 01169570
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Wonder:"; }
 	// BW1W120 007790f0 BW1M119 01169710
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00779080 BW1M119 011697e0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00561200 BW1M119 01169530
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_WONDER; }
 	// BW1W120 005611b0 BW1M119 inlined
-	virtual MapCoords GetArrivePos();
+	virtual MapCoords GetArrivePos() { return Pos; }
 	// BW1W120 005611e0 BW1M119 011694a0
-	virtual bool32_t CanActAsAContainer(Creature* param_1);
+	virtual bool32_t CanActAsAContainer(Creature* creature) { return false; }
 	// BW1W120 005611f0 BW1M119 011694f0
-	virtual bool32_t IsStoragePit(Creature* param_1);
+	virtual bool32_t IsStoragePit(Creature* creature) { return false; }
 	// BW1W120 00779160 BW1M119 01169660
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 00779190 BW1M119 011695b0
@@ -67,6 +73,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	Wonder() { SetToZero(); }
 	// BW1W120 00778e00 BW1M119 01169ee0
 	Wonder(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
 	       int wood);

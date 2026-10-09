@@ -9,6 +9,7 @@
 
 #include "Collide.h"          /* For struct CircleHugInfo */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
+#include "LHPTR.h"            /* For class LHPTR */
 #include "MapCoords.h"        /* For struct MapCoords */
 #include "Mobile.h"           /* For struct Mobile, struct MobileVftable */
 #include "Object.h"           /* For struct Object */
@@ -71,16 +72,16 @@ struct GMoveBy
 class MobileWallHug : public Mobile
 {
 public:
-	int16_t       TurnsUntilNextStateChange; /* 0x58 */
+	int16_t       TurnsUntilNextStateChange;
 	uint16_t      speed;
 	uint16_t      GameAngle;
 	uint8_t       MoveState;
-	Object*       target; /* 0x60 */
+	LHPTR<Object> target;
 	GMoveBy       step;
-	CircleHugInfo circle_hug_info; /* 0x70 */
+	CircleHugInfo circle_hug_info;
 	int8_t        TurnsUntilStepRebuild;
 	GFootpath*    footpath;
-	MapCoords     goal; /* 0x80 */
+	MapCoords     goal;
 
 	// Override methods
 
@@ -130,7 +131,7 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	MobileWallHug(const MapCoords& coords, const GMobileWallHugInfo* info);
 	// BW1W120 00474890 BW1M119 011e82a0
-	MobileWallHug();
+	MobileWallHug() {}
 
 	// Static methods
 

@@ -18,6 +18,8 @@ struct SpellCastData;
 class SpellCreature : public Spell
 {
 public:
+	uint8_t field_0xec[0x8];
+
 	// Override methods
 
 	// BW1W120 00722240 BW1M119 01521620
@@ -41,6 +43,9 @@ public:
 	// BW1W120 007222d0 BW1M119 01521d90
 	virtual int InitWithObject(GameThing* param_1, Object* param_2, SpellCastData* param_3,
 	                           const PSysProcessInfo& param_4);
+
+	// BW1W120 007221e0 BW1M119 01522010
+	SpellCreature();
 };
 
 #endif /* BW1_DECOMP_SPELL_CREATURE_INCLUDED_H */

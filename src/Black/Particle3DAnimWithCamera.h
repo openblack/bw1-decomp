@@ -14,10 +14,15 @@ struct Zoomer3d;
 class Particle3DAnimWithCamera : public Particle3DAnim
 {
 public:
+	uint8_t field_0x30[0x10];
+
 	// Override methods
 
 	// BW1W120 006c8680 BW1M119 inlined
 	virtual ~Particle3DAnimWithCamera();
+
+	// BW1W120 006c8630 BW1M119 01484130
+	Particle3DAnimWithCamera();
 
 	// Non-virtual methods
 

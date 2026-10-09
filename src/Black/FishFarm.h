@@ -9,6 +9,7 @@
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>   /* For struct LHListNode */
 
+#include "LHPTR.h"         /* For class LHPTR */
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 #include "Object.h"        /* For enum FOOD_TYPE */
 #include "Villager.h"      /* For struct Villager */
@@ -43,7 +44,7 @@ public:
 	LHListNode<FishFarm>    next;
 	LHLinkedList<Villager*> villagers;
 	FishFarm_field_0x88_t*  field_0x88;
-	Town*                   town;
+	LHPTR<Town>             town;
 	float                   field_0x90;
 	float                   field_0x94;
 
@@ -145,8 +146,8 @@ public:
 	virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
 	// BW1W120 0052cf90 BW1M119 010e0750
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
-	// BW1W120 0052cf40 BW1M119 inlined
-	virtual MapCoords* GetDoorPos(MapCoords* param_1);
+	// BW1W120 0052cf40 BW1M119 010e0950
+	virtual MapCoords GetDoorPos();
 	// BW1W120 0052c4c0 BW1M119 010e2b60
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
 
@@ -164,6 +165,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	FishFarm() {}
 	// BW1W120 0052c360 BW1M119 010e26d0
 	FishFarm(const MapCoords& coords, const GFishFarmInfo* info, Town* town);
 };

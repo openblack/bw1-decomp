@@ -10,12 +10,12 @@ class GData : public Base
 {
 public:
 	uint32_t RandSeed;
-	uint32_t field_0xc;
+	uint32_t InitialRandSeed;
 	uint32_t GameTurn;
-	uint32_t field_0x14;
+	uint32_t RealGameTurn;
 	uint32_t NumCreatedObjects;
-	uint32_t field_0x1c;
-	uint32_t field_0x20;
+	uint32_t FrameCount;
+	uint32_t MapLoadCount;
 	uint32_t WorldPopulation;
 
 	// Override methods

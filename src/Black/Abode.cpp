@@ -140,12 +140,12 @@ Abode* Abode::CastAbode()
 
 Town* Abode::GetTown()
 {
-	return town;
+	return town.Get();
 }
 
 Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* _town, float y_angle, float scale, float food,
              int wood)
-	: MultiMapFixed(coords, info, y_angle, scale, food, wood), DrinkingWater(), town(NULL), next(NULL), villagers()
+	: MultiMapFixed(coords, info, y_angle, scale, food, wood), DrinkingWater(), villagers()
 {
 	SetToZero();
 	if (_town)
@@ -1069,16 +1069,16 @@ PlannedMultiMapFixed* Abode::ConvertToPlanned()
 }
 
 PlannedAbode::PlannedAbode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale)
-	: PlannedMultiMapFixed(coords, info, y_angle, scale), town(NULL)
+	: PlannedMultiMapFixed(coords, info, y_angle, scale)
 {
 }
 
-PlannedAbode::PlannedAbode(Abode* abode) : PlannedMultiMapFixed(abode), town(NULL) {}
+PlannedAbode::PlannedAbode(Abode* abode) : PlannedMultiMapFixed(abode) {}
 
 void PlannedAbode::Init(Town* town_)
 {
 	town = town_;
-	if (town != NULL)
+	if (town.Get() != NULL)
 	{
 		town->AddPlanned(this);
 	}
@@ -1109,7 +1109,7 @@ PlannedAbode* PlannedAbode::Create(Abode* abode)
 
 void PlannedAbode::ToBeDeleted(int delete_now)
 {
-	if (town != NULL)
+	if (town.Get() != NULL)
 	{
 		town->RemovePlanned(this);
 	}
@@ -1123,7 +1123,7 @@ GAbodeInfo* PlannedAbode::GetInfo()
 
 Town* PlannedAbode::GetTown()
 {
-	return town;
+	return town.Get();
 }
 
 uint32_t PlannedAbode::GetSaveType()
@@ -1143,7 +1143,7 @@ bool32_t PlannedAbode::IsAbodeTypeInMask(int abode_type_mask)
 
 MultiMapFixed* PlannedAbode::CreatePlanned(float food)
 {
-	Town* owner = town;
+	Town* owner = town.Get();
 	float yAngle = YAngle;
 	if (GetInfo()->IsOkToCreateAtPos(Pos, yAngle, GetScale(), owner))
 	{
@@ -1155,7 +1155,7 @@ MultiMapFixed* PlannedAbode::CreatePlanned(float food)
 MultiMapFixed* PlannedAbode::CreatePlannedNoFixedCheck(float food)
 {
 	float  yAngle = YAngle;
-	Town*  owner = town;
+	Town*  owner = town.Get();
 	Abode* abode = Abode::Create(Pos, GetInfo(), owner, yAngle, GetScale(), 0, 0, food, 1, 1);
 	if (abode != NULL)
 	{
@@ -1180,7 +1180,7 @@ uint32_t PlannedAbode::Save(GameOSFile& file)
 {
 	if (PlannedMultiMapFixed::Save(file))
 	{
-		file.WritePtr(town);
+		file.WritePtr(town.Get());
 		return 1;
 	}
 	return 0;
@@ -1706,7 +1706,7 @@ uint32_t Abode::Save(GameOSFile& file)
 		WRITE_SAFE(file, AbodeFlags);
 		WRITE_SAFE(file, DrinkingWater);
 		WRITE_SAFE(file, UnusedSavedValue);
-		file.WritePtr(town);
+		file.WritePtr(town.Get());
 		file.WriteSafe(villagers);
 		WRITE_SAFE(file, AdultCount);
 		WRITE_SAFE(file, PresentAtHome);
@@ -1973,9 +1973,3 @@ float Abode::GetVillagerHealthTotal()
 	}
 	return total;
 }
-
-// MSVC6 compiles template instantiations at the end of the translation unit, using the
-// inline_depth in effect there. Limiting it to direct calls lets WriteSafe/ReadSafe and the
-// list/counted-array templates inline into Save/Load while their Read/WriteIt calls stay
-// calls and land here as COMDATs -- exactly what the original objects show (see GameOSFile.h).
-#pragma inline_depth(1)

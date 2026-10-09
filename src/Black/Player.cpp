@@ -1691,7 +1691,7 @@ bool32_t GPlayer::ValidForRequestSpell(GInterfaceStatus* status, GESTURE_TYPE ge
 			{
 				for (WorshipSpellIcon* icon = site->IconList.head; icon != NULL; icon = icon->next)
 				{
-					if (icon->seed_info != NULL && icon->seed_info->Gesture == gesture &&
+					if (icon->seed_info.Get() != NULL && icon->seed_info->Gesture == gesture &&
 					    icon->ValidForRequestSpell(status, POWER_UP_TYPE_NONE, true) == TRUE)
 					{
 						return TRUE;

@@ -499,7 +499,7 @@ bool32_t MobileWallHug::AreWeThere(const MapCoords& coords, float extra_distance
 
 int MobileWallHug::MoveToObjectPos()
 {
-	Object* object = target;
+	Object* object = target.Get();
 	if (object != NULL && object->IsAvailable())
 	{
 		MapCoords pos = object->Pos;
@@ -1031,7 +1031,7 @@ uint32_t MobileWallHug::Save(GameOSFile& file)
 		}
 		file.WritePtr((GameThing*)footpath);
 		WRITE_SAFE(file, goal);
-		file.WritePtr(target);
+		file.WritePtr(target.Get());
 		file.WriteIt(step);
 		return 1;
 	}

@@ -9,6 +9,8 @@
 #include <chlasm/Enum.h>        /* For enum DEATH_REASON, enum HOLD_TYPE, enum RESOURCE_TYPE */
 #include <chlasm/GStates.h>     /* For ANIMAL_STATE_LAST_STATE, enum VILLAGER_STATES */
 
+#include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer */
+
 #include "Living.h"       /* For struct Living */
 #include "LivingAction.h" /* For struct Living__StateTableEntry */
 
@@ -35,26 +37,26 @@ class Town;
 class Animal : public Living
 {
 public:
-	uint8_t  field_0xe0[0x2c];
-	uint8_t  DeathReason; /* 0x10c */
-	float    field_0x110;
-	float    field_0x114;
-	float    field_0x118;
-	float    field_0x11c;
-	uint32_t field_0x120;
-	float    field_0x124;
-	float    field_0x128;
-	float    field_0x12c;
-	float    field_0x130;
-	float    field_0x134;
-	float    field_0x138;
-	float    field_0x13c;
-	float    field_0x140;
-	float    field_0x144;
+	uint8_t        field_0xe0[0x14];
+	JustWholeMapXZ FoodPos;
+	uint8_t        field_0xfc[0x4];
+	JustMapXZ      PhysObPos;
+	JustMapXZ      SleepPos;
+	JustMapXZ      EnvironmentPos;
+	uint8_t        DeathReason;
+	Zoomer         AngleZoomer;
+	LHPTR<Object>  LandedOn;
+	float          field_0x144;
 
 	// Override methods
 
-	// BW1W120 004178a0 BW1M119 01174cd0
+	// BW1W120 0041a9f0 BW1M119 0116f250
+	virtual bool32_t MoveInFlock();
+	// BW1W120 0041a0a0 BW1M119 011703a0
+	virtual bool32_t ArrivesAtFoodReaction();
+	// BW1W120 004179c0 BW1M119 011750d0
+	virtual void SetAge(uint32_t age);
+	// BW1W120 00417b80 BW1M119 01174cd0
 	virtual ~Animal();
 	// BW1W120 00417b60 BW1M119 01174d70
 	virtual void ToBeDeleted(int param_1);
@@ -206,8 +208,8 @@ public:
 	virtual uint32_t IAmABird();
 	// BW1W120 0041b420 BW1M119 0116e270
 	virtual uint32_t CalculeLairPos();
-	// BW1W120 004192e0
-	virtual uint32_t FUN_004192E0();
+	// BW1W120 004192e0 BW1M119 011720e0
+	virtual void StartFadeOut(float time) {}
 	// BW1W120 004192f0 BW1M119 011720a0
 	virtual uint32_t ProcessFadeOut();
 	// BW1W120 0041b1d0 BW1M119 010337b0
@@ -254,8 +256,12 @@ public:
 	virtual bool32_t DecideWhatToDo();
 	// BW1W120 0041a2b0 BW1M119 0107ec70
 	virtual void SetStateSpeed();
-	// BW1W120 0041b430 BW1M119 inlined
-	virtual bool IsFinalState(VILLAGER_STATES state);
+	// BW1W120 00417820 BW1M119 01080b00
+	virtual int CallIntoAnimationFunction(uint8_t state);
+	// BW1W120 00417830 BW1M119 01080ab0
+	virtual int CallOutofAnimationFunction(uint8_t state);
+	// BW1W120 0041b430 BW1M119 0116e200
+	virtual bool IsFinalState(uint8_t state);
 	// BW1W120 00417fa0 BW1M119 01057730
 	virtual ANIM_LIST GetAnimId();
 	// BW1W120 0041a2c0 BW1M119 inlined
@@ -267,11 +273,11 @@ public:
 	// BW1W120 0041b170 BW1M119 inlined
 	virtual bool32_t ExitReaction(uint8_t state);
 	// BW1W120 00417570 BW1M119 inlined
-	virtual bool IsScriptState(VILLAGER_STATES state) const;
+	virtual bool32_t IsScriptState(unsigned long state) const;
 	// BW1W120 00417590 BW1M119 inlined
-	virtual bool IsScriptInterruptableState(VILLAGER_STATES state) const;
+	virtual bool32_t IsScriptInterruptableState(unsigned long state) const;
 	// BW1W120 0041b100 BW1M119 inlined
-	virtual bool32_t IsStateExitFunctionSameAs(VILLAGER_STATES state) const;
+	virtual bool32_t IsStateExitFunctionSameAs(unsigned long state) const;
 	// BW1W120 0041b1c0 BW1M119 0116e740
 	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 00419bc0 BW1M119 01170ad0
@@ -339,7 +345,7 @@ public:
 	// BW1W120 0041a240 BW1M119 0107eb10
 	virtual uint8_t GetFinalState() const;
 	// BW1W120 0041b210 BW1M119 010585e0
-	virtual bool IsPosValidForTurnAngle(const MapCoords& param_1);
+	virtual bool32_t IsPosValidForTurnAngle(const MapCoords& param_1);
 
 	// Non-virtual methods
 
@@ -363,6 +369,12 @@ public:
 	bool32_t EnterHideInLair(uint8_t param_1, uint8_t param_2);
 	// BW1W120 0041bae0 BW1M119 0116d6a0
 	bool32_t EnterSeekFood(uint8_t param_1, uint8_t param_2);
+
+	// BW1W120 0055e400 BW1M119 0130e110
+	Animal() { SetToZero(); }
+
+	// BW1W120 00417900 BW1M119 01175150
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_ANIMAL_INCLUDED_H */

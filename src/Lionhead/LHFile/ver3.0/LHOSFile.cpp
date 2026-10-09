@@ -246,12 +246,12 @@ LH_FILE_RESULT LHOSFile::DirFindEnd(LHDir* dir)
 	return FindClose(dir->FindHandle) ? LH_FILE_RESULT_OK : LH_FILE_RESULT_ERROR;
 }
 
-LH_FILE_RESULT __stdcall LHOSFile::Rename(const char* from, const char* to)
+LH_FILE_RESULT LHOSFile::Rename(char* from, char* to)
 {
 	return MoveFileA(from, to) ? LH_FILE_RESULT_OK : LH_FILE_RESULT_ERROR;
 }
 
-LH_FILE_RESULT __stdcall LHOSFile::Delete(const char* path)
+LH_FILE_RESULT LHOSFile::Delete(char* path)
 {
 	return DeleteFileA(path) ? LH_FILE_RESULT_OK : LH_FILE_RESULT_ERROR;
 }

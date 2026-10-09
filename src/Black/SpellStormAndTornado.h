@@ -14,6 +14,8 @@ class GameThing;
 class SpellStormAndTornado : public Spell
 {
 public:
+	uint8_t field_0xec[0xc];
+
 	// Override methods
 
 	// BW1W120 0072d990 BW1M119 01536890
@@ -28,6 +30,9 @@ public:
 	virtual char* GetDebugText();
 	// BW1W120 0072d970 BW1M119 01536a50
 	virtual uint32_t GetSaveType();
+
+	// BW1W120 0072d900 BW1M119 01537510
+	SpellStormAndTornado();
 };
 
 #endif /* BW1_DECOMP_SPELL_STORM_AND_TORNADO_INCLUDED_H */

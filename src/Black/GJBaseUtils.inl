@@ -48,15 +48,25 @@ template <class T> inline void GJVector<T>::Grow(long capacity)
 	{
 		T* data = MemoryAllocator.Allocate(capacity);
 		T* destination = data;
-		for (T* entry = Data; entry < Data + Size; ++entry, ++destination)
+		for (T* entry = Data; entry < Data + Size; ++entry)
 		{
-			MemoryAllocator.Construct(destination, *entry);
+			MemoryAllocator.Construct(destination++, *entry);
 			entry->~T();
 		}
 		MemoryAllocator.DeAllocate(Data, Capacity);
 		Data = data;
 		Capacity = capacity;
 	}
+}
+
+template <class T> inline long GJVector<T>::GetSize() const
+{
+	return Size;
+}
+
+template <class T> inline T& GJVector<T>::operator[](long index)
+{
+	return Data[index];
 }
 
 // GJArray

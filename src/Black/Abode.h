@@ -2,16 +2,18 @@
 #define BW1_DECOMP_ABODE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stddef.h> /* For size_t */
+#include <stddef.h> /* For NULL, size_t */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include <Lionhead/LHLib/ver5.0/LHListHead.h> /* For LHListHead */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For LHListNode */
 
 #include <chlasm/Enum.h>        /* For RESOURCE_TYPE_LAST, enum ABODE_TYPE, enum RESOURCE_TYPE, enum TRIBE_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 #include <re_common.h>          /* For bool32_t */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
+#include "LHPTR.h"            /* For LHPTR */
 #include "MapCoords.h"        /* For struct MapCoords */
 #include "MultiMapFixed.h"    /* For struct MultiMapFixed, struct MultiMapFixedVftable */
 #include "Object.h"           /* For struct Object */
@@ -67,8 +69,8 @@ public:
 	LH3DSmoke*           smoke;
 	FragMesh*            DestructionMesh;
 	uint32_t             UnusedSavedValue;
-	Town*                town;
-	Abode*               next;
+	LHPTR<Town>          town;
+	LHListNode<Abode>    next;
 	LHListHead<Villager> villagers;
 	Villager*            MaleFemaleVillagers[0x2];
 	float                NeglectTimer;
@@ -111,11 +113,11 @@ public:
 	// BW1W120 00401720 BW1M119 013702e0
 	virtual bool32_t IsCastShadowAtNight() { return true; }
 	// BW1W120 00401740 BW1M119 013703b0
-	virtual uint32_t GetCreatureBeliefType() { return 3; }
+	virtual uint32_t GetCreatureBeliefType() { return CREATURE_BELIEF_TYPE_ABODE; }
 	// BW1W120 00401750 BW1M119 013703f0
-	virtual uint32_t GetCreatureMimicType() { return 5; }
+	virtual uint32_t GetCreatureMimicType() { return CREATURE_MIMIC_TYPE_ABODE; }
 	// BW1W120 00401760 BW1M119 01370650
-	virtual uint32_t GetOrigin() { return 1; }
+	virtual uint32_t GetOrigin() { return OBJECT_ORIGIN_MAN_MADE; }
 	// BW1W120 00401770 BW1M119 0100ede0
 	virtual MapCoords GetArrivePos() { return GetDoorPos(); }
 	// BW1W120 00401790 BW1M119 01112cc0
@@ -273,6 +275,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 0055cc10 BW1M119 01310f90
+	Abode() : DrinkingWater(), villagers() { SetToZero(); }
 	// BW1W120 00401350 BW1M119 01583030
 	Abode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
 	      int wood);

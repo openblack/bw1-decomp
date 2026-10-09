@@ -89,6 +89,9 @@ public:
 	// BW1W120 0077a680 BW1M119 0116a030
 	virtual bool32_t DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus& param_2);
 
+	// BW1W120 00779240 BW1M119 0116ca00
+	Workshop();
+
 	// Static methods
 
 	// BW1W120 00779590 BW1M119 0116c360

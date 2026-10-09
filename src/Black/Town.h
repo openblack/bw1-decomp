@@ -185,7 +185,7 @@ public:
 	// Override methods
 
 	// BW1W120 007391d0 BW1M119 01562640
-	virtual uint32_t GetOrigin() { return 1; }
+	virtual uint32_t GetOrigin() { return OBJECT_ORIGIN_MAN_MADE; }
 	// BW1W120 007391e0 BW1M119 01553830
 	virtual Town* GetTown() { return this; }
 	// BW1W120 007391f0 BW1M119 01562670

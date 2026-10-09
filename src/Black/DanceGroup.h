@@ -46,6 +46,9 @@ public:
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0050cee0 BW1M119 012adc40
 	virtual uint32_t GetSaveType();
+
+	// BW1W120 0050ce40 BW1M119 012aff60
+	DanceGroup();
 };
 
 #endif /* BW1_DECOMP_DANCE_GROUP_INCLUDED_H */

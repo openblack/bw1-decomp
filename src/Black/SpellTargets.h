@@ -33,6 +33,11 @@ public:
 		Points.Clear();
 		Objects.Clear();
 	}
+
+	// BW1W120 00670c30 BW1M119 013e7d30
+	void AddTarget(GameThing* target);
+	// BW1W120 00670cf0 BW1M119 013e7cd0
+	void AddTarget(const LHPoint& point);
 };
 
 static_assert(offsetof(SpellTargets, Points) == 0x14, "SpellTargets points offset is incorrect");

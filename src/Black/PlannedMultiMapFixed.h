@@ -7,6 +7,8 @@
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE */
 #include <re_common.h>   /* For bool32_t */
 
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
+
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
 #include "LHPTR.h"            /* For class LHPTR */
 
@@ -24,25 +26,25 @@ class MultiMapFixed;
 class PlannedMultiMapFixed : public GameThingWithPos
 {
 public:
-	float                           YAngle;
-	float                           scale;
-	bool32_t                        WasConstructed;
-	uint32_t                        field_0x34;
-	GFootpathLink*                  FootpathLink;
-	int                             CreationTurn;
-	LHPTR<const GMultiMapFixedInfo> info;
-	PlannedMultiMapFixed*           next;
+	float                            YAngle;
+	float                            scale;
+	bool32_t                         WasConstructed;
+	uint32_t                         field_0x34;
+	LHPTR<GFootpathLink>             FootpathLink;
+	int                              CreationTurn;
+	LHPTR<const GMultiMapFixedInfo>  info;
+	LHListNode<PlannedMultiMapFixed> next;
 
 	// Override methods
 
 	// BW1W120 0055cbe0 BW1M119 0111b0b0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "PlannedMultiMapFixed:"; }
 	// BW1W120 00648af0 BW1M119 0111e820
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00648990 BW1M119 0111ea40
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055cbd0 BW1M119 inlined
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PLANNED_MULTI_MAP_FIXED; }
 	// BW1W120 004050c0 BW1M119 01150d50
 	virtual float GetScale() { return scale; }
 	// BW1W120 004050d0 BW1M119 01155290
@@ -70,6 +72,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 0055cb90 BW1M119 01310930
+	PlannedMultiMapFixed() {}
 	// BW1W120 00648780 BW1M119 0111f0f0
 	PlannedMultiMapFixed(const MapCoords& coords, const GMultiMapFixedInfo* info, float param_3, float param_4);
 	// BW1W120 00648820 BW1M119 0111ee60

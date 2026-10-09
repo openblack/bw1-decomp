@@ -4,11 +4,14 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h>                      /* For enum RESOURCE_TYPE */
-#include <re_common.h>                        /* For bool32_t */
-#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
+#include <chlasm/Enum.h>                        /* For enum RESOURCE_TYPE */
+#include <re_common.h>                          /* For bool32_t */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For class LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>   /* For struct LHListNode */
 
-#include "Abode.h" /* For struct Abode */
+#include "Abode.h"                               /* For struct Abode */
+#include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer */
+#include "LHPTR.h"                               /* For class LHPTR */
 
 // Forward Declares
 
@@ -35,33 +38,31 @@ class Villager;
 class Field : public Abode
 {
 public:
-	LHListNode<Field> next;
-	uint32_t          field_0xc8;
-	uint8_t           field_0xcc;
-	uint32_t          field_0xd0;
-	uint32_t          field_0xd4;
-	uint32_t          field_0xd8;
-	uint32_t          field_0xdc;
-	uint32_t          field_0xe0;
-	float             field_0xe4;
-	float             field_0xe8;
-	float             field_0xec;
-	uint32_t          field_0xf0;
-	uint32_t          field_0xf4;
-	uint32_t          field_0xf8;
-	uint32_t          field_0xfc;
-	uint32_t          field_0x100;
-	float             field_0x104;
-	uint32_t          field_0x108;
-	uint32_t          field_0x10c;
-	uint32_t          field_0x110;
-	uint32_t          field_0x114;
-	Town*             town;
-	int               field_0x11c;
-	GFieldTypeInfo*   type_info;
+	LHListNode<Field>       next;
+	uint32_t                field_0xc8;
+	uint8_t                 field_0xcc;
+	uint32_t                field_0xd0;
+	LHLinkedList<Villager*> Farmers;
+	uint32_t                field_0xdc;
+	uint32_t                field_0xe0;
+	float                   field_0xe4;
+	Zoomer                  GrowthZoomer;
+	LHPTR<Town>             town;
+	int                     field_0x11c;
+	GFieldTypeInfo*         type_info;
 
 	// Override methods
 
+	// BW1W120 00528c80 BW1M119 010d8e10
+	virtual MapCoords GetDoorPos();
+	// BW1W120 0052a0b0 BW1M119 010d65e0
+	virtual bool32_t Built();
+	// BW1W120 00527f10 BW1M119 010dab80
+	virtual PlannedMultiMapFixed* ConvertToPlanned();
+	// BW1W120 00528100 BW1M119 010d9e30
+	virtual void DeleteDependancys();
+	// BW1W120 00528060 BW1M119 010db120
+	virtual bool32_t CanBeHiddenIn();
 	// BW1W120 00528090 BW1M119 010daaf0
 	virtual ~Field();
 	// BW1W120 005280f0 BW1M119 010da4d0
@@ -87,9 +88,9 @@ public:
 	// BW1W120 0052a000 BW1M119 010d6820
 	virtual uint32_t GetOverwriteInteractableToolTip();
 	// BW1W120 00527f30 BW1M119 inlined
-	virtual uint32_t IsField_1(Creature* param_1);
+	virtual bool32_t IsField(Creature* creature);
 	// BW1W120 00527f40 BW1M119 inlined
-	virtual uint32_t IsField_0();
+	virtual bool32_t IsField();
 	// BW1W120 00527fd0 BW1M119 010daf10
 	virtual bool32_t CanBeEatenByCreature(Creature* param_1);
 	// BW1W120 00527fe0 BW1M119 010daf60
@@ -164,8 +165,8 @@ public:
 	virtual bool32_t IsTuggable();
 	// BW1W120 00528900 BW1M119 010d9550
 	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
-	// BW1W120 00529ff0 BW1M119 inlined
-	virtual uint32_t CanBeDestroyedBySpell_1(Spell* param_1);
+	// BW1W120 00529ff0 BW1M119 010d6870
+	virtual bool32_t CanBeDestroyedBySpell(Spell* param_1);
 	// BW1W120 00528020 BW1M119 010db030
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00528030 BW1M119 010db070
@@ -176,8 +177,6 @@ public:
 	virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
 	// BW1W120 00528ce0 BW1M119 010d8b50
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
-	// BW1W120 00528c80 BW1M119 inlined
-	virtual MapCoords* GetDoorPos(MapCoords* param_1);
 
 	// Static methods
 
@@ -187,6 +186,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	Field() { CollideData = NULL; }
 	// BW1W120 00527dd0 BW1M119 010da5b0
 	Field(const MapCoords& coords, const GFieldTypeInfo* type_info, const GAbodeInfo* abode_info, Town* town,
 	      float y_angle, float food, int wood);

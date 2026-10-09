@@ -5,11 +5,13 @@
 #include <stdint.h> /* For uint32_t */
 
 #include "Spell.h" /* For struct Spell */
+#include "LHPTR.h" /* For LHPTR */
 
 // Forward Declares
 
 class Base;
 class GameOSFile;
+class Forest;
 class GameThing;
 struct MapCoords;
 struct PSysProcessInfo;
@@ -19,28 +21,34 @@ struct SpellEventInfo;
 class SpellForest : public Spell
 {
 public:
+	LHPTR<Forest> MagicForest;
+	bool          TreeAdded;
+	long          MaxObjects;
+
 	// Override methods
 
-	// BW1W120 0055d220 BW1M119 01527650
-	virtual ~SpellForest();
 	// BW1W120 00725500 BW1M119 01528af0
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0055d210 BW1M119 015277f0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "SpellForest:"; }
 	// BW1W120 00725d50 BW1M119 01527830
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00725c90 BW1M119 01527960
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055d200 BW1M119 015277b0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_FOREST; }
 	// BW1W120 00725730 BW1M119 015284e0
-	virtual void HasEnoughChantsAndLifeForRecast();
+	virtual bool HasEnoughChantsAndLifeForRecast();
 	// BW1W120 007259c0 BW1M119 01527f80
 	virtual uint32_t Process();
 	// BW1W120 00725830 BW1M119 01527fe0
 	virtual void SpellEvent(const SpellEventInfo& param_1);
 	// BW1W120 0055d1e0 BW1M119 015276f0
-	virtual void CloseDown();
+	virtual void CloseDown()
+	{
+		CoreCloseDown();
+		creator = NULL;
+	}
 	// BW1W120 00725540 BW1M119 01528a60
 	virtual int InitWithPos(GameThing* param_1, const MapCoords& param_2, SpellCastData* param_3,
 	                        const PSysProcessInfo& param_4);
@@ -52,6 +60,12 @@ public:
 	virtual void SetMaxObjectsToCreate(int param_1);
 	// BW1W120 007256f0 BW1M119 01528560
 	virtual int GetMaxObjectsToCreate();
+
+	// BW1W120 inlined BW1M119 inlined
+	SpellForest() { SetToZero(); }
+
+	// BW1W120 007254f0 BW1M119 01528ba0
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_SPELL_FOREST_INCLUDED_H */

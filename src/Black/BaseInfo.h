@@ -60,12 +60,16 @@ public:
 	// Override methods
 
 	// BW1W120 0055c770 BW1M119 010466a0
-	virtual bool IsClear() const;
+	virtual bool IsClear() const { return UniqueId == 0 && AddressOffset == 0; }
 
 	// Constructors
 
 	// BW1W120 inlined BW1M119 0130f570
-	BaseInfo();
+	BaseInfo()
+	{
+		AddressOffset = 0;
+		UniqueId = 0;
+	}
 
 	// Non-virtual methods
 

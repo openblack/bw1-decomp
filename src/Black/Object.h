@@ -54,6 +54,12 @@ class SpellWater;
 class Town;
 class Villager;
 
+enum OBJECT_TASTINESS
+{
+	OBJECT_TASTINESS_NONE = 0,
+	OBJECT_TASTINESS_LIVING = 2
+};
+
 // fabricated names: results observed in MobileObject and FieldCrop's ApplyThisTo... methods.
 // TODO: recover the full result protocol and whether these values encode separate flags.
 enum OBJECT_APPLY_RESULT
@@ -274,7 +280,7 @@ public:
 	// BW1W120 004025b0 BW1M119 011d0c30
 	virtual bool32_t HandShouldFeelWithMeshIntersect() { return true; }
 	// BW1W120 004025c0 BW1M119 01590950
-	virtual void SetSpecularColor(LH3DColor color) {}
+	virtual void SetSpecularColor(unsigned long color) {}
 	// BW1W120 004025d0 BW1M119 011748d0
 	virtual LH3DColor GetSpecularColor() { return LH3DColor(0); }
 	// BW1W120 004025e0 BW1M119 01173850
@@ -563,7 +569,7 @@ public:
 	// BW1W120 006377e0 BW1M119 013decf0
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00402a10 BW1M119 010a30b0
-	virtual bool32_t GetAlwaysRemainsInPhysicsInternalSystem() { return false; }
+	virtual bool GetAlwaysRemainsInPhysicsInternalSystem() { return false; }
 	// BW1W120 00637470 BW1M119 013df620
 	virtual bool32_t HasSunk();
 	// BW1W120 00638740 BW1M119 013dc880
@@ -590,7 +596,7 @@ public:
 	// BW1W120 00638450 BW1M119 013dd0f0
 	virtual bool32_t GetLandingPoint(uint8_t param_1, LHPoint* param_2);
 	// BW1W120 00402ab0 BW1M119 010a33c0
-	virtual uint32_t GetTastiness() { return 0; }
+	virtual uint32_t GetTastiness() { return OBJECT_TASTINESS_NONE; }
 	// BW1W120 00402ac0 BW1M119 010a3400
 	virtual bool32_t IsScary() { return false; }
 	// BW1W120 00638cb0 BW1M119 013dbf70

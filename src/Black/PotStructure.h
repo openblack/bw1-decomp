@@ -25,20 +25,18 @@ class Town;
 class PotStructure : public Pot
 {
 public:
-	MultiMapFixed* field_0x78;
-	uint32_t       field_0x7c;
-	bool           field_0x80;
+	LHPTR<MultiMapFixed> ParentMultiMapFixed;
+	GPlayer*             Player;
+	bool                 field_0x80;
 
 	// Override methods
 
-	// BW1W120 0055d650 BW1M119 0111fb70
-	virtual ~PotStructure();
 	// BW1W120 0066d960 BW1M119 01124420
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0066f230 BW1M119 01120770
 	virtual GPlayer* GetPlayer();
 	// BW1W120 0055d620 BW1M119 0111fa60
-	virtual void SetPlayer(GPlayer* param_1);
+	virtual void SetPlayer(GPlayer* player) { Player = player; }
 	// BW1W120 0066ef60 BW1M119 011212b0
 	virtual Town* GetTown();
 	// BW1W120 0066d9b0 BW1M119 01124290
@@ -55,22 +53,20 @@ public:
 	// BW1W120 0066da90 BW1M119 01124000
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055d640 BW1M119 0111fb20
-	virtual bool32_t CanBeThrownByPlayer();
+	virtual bool32_t CanBeThrownByPlayer() { return (bool)(ResourceAmount != 0); }
 	// BW1W120 0066db90 BW1M119 01123e50
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0066da30 BW1M119 01124100
 	virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
-	// BW1W120 0066d480 BW1M119 inlined
-	virtual void SetSize();
 	// BW1W120 0066da00 BW1M119 0107a190
-	virtual bool IsPartOfStructure();
-	// BW1W120 0055d530 BW1M119 inlined
-	virtual void SetSpeedUp(int param_1);
+	virtual bool32_t IsPartOfStructure();
 	// BW1W120 0055d630 BW1M119 0111faa0
-	virtual void SetMultiMapFixed(MultiMapFixed* param_1);
+	virtual void SetMultiMapFixed(MultiMapFixed* multi_map_fixed) { ParentMultiMapFixed = multi_map_fixed; }
 
 	// Constructors
 
+	// BW1W120 0055d5e0 BW1M119 01123380
+	PotStructure() {}
 	// BW1W120 0066d910 BW1M119 011244a0
 	PotStructure(const MapCoords& coords, const GPotInfo* param_2, uint32_t param_3, MultiMapFixed* param_4,
 	             Town* param_5, int param_6, float param_7, float param_8);

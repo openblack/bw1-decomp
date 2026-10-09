@@ -6,10 +6,16 @@
 
 #include "PictureRoom.h" /* For struct PictureRoomBase */
 
+enum
+{
+	SAVE_GAME_ROOM_CIRCLE_FIRST_SLOT = 15,
+	SAVE_GAME_ROOM_CIRCLE_SLOT_COUNT = 3,
+	SAVE_GAME_ROOM_AUTO_SAVE_SLOT = 20,
+};
+
 class SaveGameRoom : public PictureRoomBase
 {
 public:
-	// TODO: Original global name unknown.
 	// BW1W120 00e05fc0
 	static long CurrentSlot;
 

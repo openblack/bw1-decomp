@@ -2,12 +2,15 @@
 #define BW1_DECOMP_FOOTBALL_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>      /* For struct LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>        /* For struct LHListNode */
 
 #include "Abode.h"     /* For struct Abode */
+#include "LHPTR.h"     /* For class LHPTR */
 #include "MapCoords.h" /* For struct MapCoords */
 
 enum FOOTBALL_SUBSTATES_ATTACKER
@@ -71,19 +74,32 @@ public:
 		FOOTBALL_STATES_1 = 0x1,
 	};
 
+	GameThing*           SavedThing;
+	uint8_t              field_0xc8[0x7c];
+	LHListNode<Football> next;
+	uint32_t             field_0x148;
+	MapCoords            field_0x14c[12];
 #if defined(VERSION_BW1W100)
-	uint8_t field_0xc4[0x15c];
+	uint8_t field_0x1dc[0x44];
 #else
-	uint8_t field_0xc4[0x160];
+	uint8_t field_0x1dc[0x48];
 #endif
 	LHLinkedList<Villager*> HomeTeam;
 	LHLinkedList<Villager*> AwayTeam;
-	uint8_t                 field_0x234[0x10];
+	LHLinkedList<Villager*> field_0x234[2];
 	Object*                 MarkTargets[2];
-	uint8_t                 field_0x24c[0xcc];
+	uint8_t                 field_0x24c[0x10];
+	LHPTR<Villager>         MexicanWave[40];
+	uint8_t                 field_0x2fc[0x1c];
 
 	// Override methods
 
+	// BW1W120 00531430 BW1M119 012c07e0
+	virtual void DeleteDependancys();
+	// BW1W120 00531380 BW1M119 012c0b20
+	virtual void MakeFunctional();
+	// BW1W120 00531300 BW1M119 012bc180
+	virtual bool32_t CanBeHiddenIn();
 	// BW1W120 00531330 BW1M119 012bbf00
 	virtual ~Football();
 	// BW1W120 00531360 BW1M119 012c0c20
@@ -118,12 +134,15 @@ public:
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 005312f0 BW1M119 012bc130
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
-	// BW1W120 00533b30 BW1M119 inlined
-	virtual MapCoords* GetDoorPos(MapCoords* param_1);
+	// BW1W120 00533b30 BW1M119 012bc240
+	virtual MapCoords GetDoorPos();
 	// BW1W120 00531290 BW1M119 012bbfe0
 	virtual bool32_t IsRepaired();
 	// BW1W120 005312b0 BW1M119 012bc050
 	virtual bool32_t IsBuilt();
+
+	// BW1W120 inlined BW1M119 inlined
+	Football() : SavedThing(NULL) {}
 
 	// Static methods
 

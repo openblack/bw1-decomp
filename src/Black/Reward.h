@@ -76,6 +76,9 @@ public:
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 006e6980 BW1M119 011424b0
 	virtual bool32_t CanBecomeAPhysicsObject();
+
+	// BW1W120 006e5620 BW1M119 01144cd0
+	Reward();
 };
 
 class GRewardProgress : public GBaseInfo

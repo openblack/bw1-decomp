@@ -67,7 +67,7 @@ public:
 	// BW1W120 007807e0 BW1M119 015be5f0
 	virtual bool32_t IsSacrificeAltar();
 	// BW1W120 007807b0 BW1M119 inlined
-	virtual void SetSpecularColor(LH3DColor param_1);
+	virtual void SetSpecularColor(unsigned long param_1);
 	// BW1W120 007807c0 BW1M119 015be560
 	virtual LH3DColor GetSpecularColor();
 	// BW1W120 00780a70 BW1M119 015bf2c0
@@ -90,6 +90,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 00780740 BW1M119 015bf6d0
+	WorshipTotem();
 	// BW1W120 00780840 BW1M119 015bf560
 	WorshipTotem(WorshipSite* site);
 

@@ -17,6 +17,7 @@
 #include <re_common.h>            /* For bool32_t */
 
 #include <Lionhead/LHLib/ver5.0/LHFastPointer.h> /* For LHFastPointer */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>    /* For LHListNode */
 
 #include "GameThing.h" /* For struct GameThing, struct GameThingVftable */
 #include "MapCoords.h" /* For struct MapCoords */
@@ -41,13 +42,33 @@ enum CREATURE_BELIEF_LIST_TYPE
 	CREATURE_BELIEF_LIST_TYPE_OBJECT = 1
 };
 
-// The enum name survives in the Mac signatures. These enumerator names are descriptive,
-// recovered from MobileObject::GetCreatureBeliefType; the remaining values are not recovered.
 enum CREATURE_BELIEF_TYPE
 {
+	CREATURE_BELIEF_TYPE_ABODE = 3,
+	CREATURE_BELIEF_TYPE_TREE = 5,
+	CREATURE_BELIEF_TYPE_VILLAGER = 6,
+	CREATURE_BELIEF_TYPE_SPELL = 10,
 	CREATURE_BELIEF_TYPE_POO = 13,
 	CREATURE_BELIEF_TYPE_MAGIC_FOOD = 14,
-	CREATURE_BELIEF_TYPE_MOBILE_OBJECT = 19
+	CREATURE_BELIEF_TYPE_POT = 16,
+	CREATURE_BELIEF_TYPE_SPELL_ICON = 17,
+	CREATURE_BELIEF_TYPE_MIST = 18,
+	CREATURE_BELIEF_TYPE_MOBILE_OBJECT = 19,
+	CREATURE_BELIEF_TYPE_TOTEM_STATUE = 23
+};
+
+enum CREATURE_MIMIC_TYPE
+{
+	CREATURE_MIMIC_TYPE_ABODE = 5,
+	CREATURE_MIMIC_TYPE_TREE = 6,
+	CREATURE_MIMIC_TYPE_MOBILE_OBJECT = 8
+};
+
+enum OBJECT_ORIGIN
+{
+	OBJECT_ORIGIN_NATURAL = 0,
+	OBJECT_ORIGIN_MAN_MADE = 1,
+	OBJECT_ORIGIN_MAGIC = 2
 };
 
 // fabricated: bit meanings of GameThingWithPos::Flags. ON_STRUCTURE is set by the
@@ -82,10 +103,20 @@ enum GAME_THING_WITH_POS_FLAGS
 class GameThingWithPos : public GameThing
 {
 public:
-	MapCoords             Pos;      /* 0x14 */
-	LHFastPointer<Object> MapChild; /* 0x20 */
-	uint16_t              Flags;    /* 0x24 */
-	uint8_t               field_0x26;
+	MapCoords Pos;
+	// Two views of the same link.
+	union {
+		struct
+		{
+			LHFastPointer<Object> MapChild; // Next Object in the map cell's fixed or mobile list.
+		};
+		struct
+		{
+			LHListNode<GameThingWithPos> MapChildNode; // Next Object in the map cell's fixed or mobile list.
+		};
+	};
+	uint16_t Flags;
+	uint8_t  field_0x26;
 
 	// Override methods
 
@@ -663,6 +694,11 @@ public:
 	bool32_t IsFixed() const { return (Flags & GAME_THING_WITH_POS_FLAG_FIXED) != 0; }
 	// BW1W120 inlined BW1M119 01032e80
 	bool32_t IsInMagicHand() const { return (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE) != 0; }
+	// BW1W120 inlined BW1M119 0112bd40
+	void SetIndestructable(bool32_t indestructable)
+	{
+		Flags = (Flags & ~GAME_THING_WITH_POS_FLAG_INDESTRUCTIBLE) | ((indestructable & 1) << 14);
+	}
 	// BW1W120 00768540 BW1M119 0159c070
 	uint32_t AttitudeToCreatureNone();
 	// BW1W120 00768550 BW1M119 0159c020

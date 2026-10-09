@@ -14,6 +14,8 @@ class GameOSFile;
 class VortexSave : public GameThing
 {
 public:
+	uint8_t field_0x14[0x10];
+
 	// Override methods
 
 	// BW1W120 0076f870 BW1M119 01167650
@@ -26,6 +28,9 @@ public:
 	virtual uint32_t GetSaveType();
 	// BW1W120 0076ffe0 BW1M119 01166960
 	virtual void ResolveLoad();
+
+	// BW1W120 0076f840 BW1M119 011678d0
+	VortexSave();
 };
 
 #endif /* BW1_DECOMP_VORTEX_SAVE_INCLUDED_H */

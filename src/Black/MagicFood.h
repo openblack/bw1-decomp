@@ -22,6 +22,8 @@ class Object;
 class MagicFood : public PileFood
 {
 public:
+	uint8_t field_0xbc[0x4];
+
 	// Override methods
 
 	// BW1W120 005fa9c0 BW1M119 013b3fa0
@@ -44,6 +46,9 @@ public:
 	virtual bool32_t IsAFoodPileOutsideStoragePit(Creature* param_1);
 	// BW1W120 005faab0 BW1M119 013b3ef0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+
+	// BW1W120 005fa950 BW1M119 013b4160
+	MagicFood();
 };
 
 #endif /* BW1_DECOMP_MAGIC_FOOD_INCLUDED_H */

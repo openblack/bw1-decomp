@@ -51,6 +51,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 0055cc60 BW1M119 inlined
+	Windmill() {}
 	// BW1W120 inlined BW1M119 inlined
 	Windmill(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
 	         int wood)

@@ -15,6 +15,8 @@ class GameThing;
 class Chain : public PSysBase
 {
 public:
+	uint8_t field_0x14[0x3c];
+
 	// Override methods
 
 	// BW1W120 006c8810 BW1M119 01483af0
@@ -27,6 +29,9 @@ public:
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 006c87f0 BW1M119 0142bad0
 	virtual uint32_t GetSaveType();
+
+	// BW1W120 006c87d0 BW1M119 01483d30
+	Chain();
 };
 
 #endif /* BW1_DECOMP_CHAIN_INCLUDED_H */
