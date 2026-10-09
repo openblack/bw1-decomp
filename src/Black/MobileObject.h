@@ -157,7 +157,7 @@ public:
 	// Constructors
 
 	// BW1W120 00600d80 BW1M119 01123450
-	MobileObject();
+	MobileObject() {}
 	// BW1W120 00606e40 BW1M119 013c5bd0
 	MobileObject(const MapCoords& coords, const GMobileObjectInfo* info, Object* parent, float y_angle, float scale);
 };

@@ -20,15 +20,16 @@ class SpellTeleport : public SpellWithObjects
 public:
 	// Override methods
 
-	// BW1W120 0055d870 BW1M119 013b9930
-	virtual ~SpellTeleport();
 	// BW1W120 0055d860 BW1M119 013b9a20
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "SpellTeleport:"; }
 	// BW1W120 0055d850 BW1M119 013b99e0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_TELEPORT; }
 	// BW1W120 005fbeb0 BW1M119 013b94a0
 	virtual int InitWithPos(GameThing* param_1, const MapCoords& param_2, SpellCastData* param_3,
 	                        const PSysProcessInfo& param_4);
+
+	// BW1W120 inlined BW1M119 inlined
+	SpellTeleport() {}
 };
 
 #endif /* BW1_DECOMP_SPELL_TELEPORT_INCLUDED_H */

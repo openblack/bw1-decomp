@@ -21,6 +21,8 @@ class PotStructure;
 class CitadelBuildingSite : public BuildingSite
 {
 public:
+	uint8_t field_0x644[0x18];
+
 	// Override methods
 
 	// BW1W120 0043d1b0 BW1M119 010c17b0
@@ -56,6 +58,9 @@ public:
 	virtual void RemovePotFromStructure(PotStructure* param_1);
 	// BW1W120 0043d580 BW1M119 010bba60
 	virtual bool IsLinkedToThisBuildingSite(Pot* param_1);
+
+	// BW1W120 0043d120 BW1M119 010bc600
+	CitadelBuildingSite();
 };
 
 #endif /* BW1_DECOMP_CITADEL_BUILDING_SITE_INCLUDED_H */

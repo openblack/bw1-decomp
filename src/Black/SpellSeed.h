@@ -120,6 +120,9 @@ public:
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 0072a2d0 BW1M119 015304c0
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
+
+	// BW1W120 00727f20 BW1M119 01535290
+	SpellSeed();
 };
 
 #endif /* BW1_DECOMP_SPELL_SEED_INCLUDED_H */

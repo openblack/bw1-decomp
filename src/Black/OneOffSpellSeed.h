@@ -2,12 +2,14 @@
 #define BW1_DECOMP_ONE_OFF_SPELL_SEED_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h>          /* For enum SPELL_SEED_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 
 #include "MobileObject.h" /* For struct MobileObject */
+#include "LHPTR.h"        /* For LHPTR */
 
 // Forward Declares
 
@@ -35,22 +37,20 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055d170 BW1M119 0152ea60
-	virtual ~OneOffSpellSeed();
 	// BW1W120 0072a420 BW1M119 015300e0
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0055d140 BW1M119 0152eb30
-	virtual GComputerSeen* GetComputerSeen();
+	virtual GComputerSeen* GetComputerSeen() { return (GComputerSeen*)this; }
 	// BW1W120 0055d130 BW1M119 0152eaf0
-	virtual OneOffSpellSeed* CastOneOffSpellSeed();
+	virtual OneOffSpellSeed* CastOneOffSpellSeed() { return this; }
 	// BW1W120 0055d160 BW1M119 0152ebb0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "OneOffSpellSeed:"; }
 	// BW1W120 0072aa20 BW1M119 0152f250
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 0072a930 BW1M119 0152f3c0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055d150 BW1M119 0152eb70
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_ONE_OFF_SPELL_SEED; }
 	// BW1W120 0072ac50 BW1M119 0152ee20
 	virtual uint32_t GetOverwritePickUpToolTip();
 	// BW1W120 0072ac80 BW1M119 0152edd0
@@ -94,8 +94,13 @@ public:
 	// BW1W120 0072ab80 BW1M119 0152eec0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 
+	// BW1W120 inlined BW1M119 inlined
+	OneOffSpellSeed() { SetToZero(); }
+
 	// Non-virtual methods
 
+	// BW1W120 0072a400 BW1M119 01530170
+	void SetToZero();
 	// BW1W120 0072a5f0 BW1M119 0152fc00
 	const GSpellSeedInfo* GetSeedInfo() const;
 	// BW1W120 00518720 BW1M119 010cbdc0

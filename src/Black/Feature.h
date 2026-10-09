@@ -24,6 +24,16 @@ class Feature : public MultiMapFixed
 public:
 	// Override methods
 
+	// BW1W120 005273b0 BW1M119 010d5e20
+	virtual GPlayer* GetPlayer();
+	// BW1W120 004220f0 BW1M119 010a85c0
+	virtual bool32_t IsRepaired();
+	// BW1W120 00422110 BW1M119 010a8630
+	virtual bool32_t IsBuilt();
+	// BW1W120 00527790 BW1M119 0102a790
+	virtual bool32_t IsDrawBuilding();
+	// BW1W120 005273d0 BW1M119 010d5cb0
+	virtual PlannedMultiMapFixed* ConvertToPlanned();
 	// BW1W120 00422e90 BW1M119 010ab260
 	virtual ~Feature();
 	// BW1W120 00422e80 BW1M119 010d6380
@@ -50,6 +60,9 @@ public:
 	virtual void Draw();
 	// BW1W120 005275b0 BW1M119 010d57e0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+
+	// BW1W120 inlined BW1M119 0130dbd0
+	Feature() {}
 };
 
 #endif /* BW1_DECOMP_FEATURE_INCLUDED_H */

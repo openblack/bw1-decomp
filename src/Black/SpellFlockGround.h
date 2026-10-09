@@ -8,6 +8,9 @@
 
 // Forward Declares
 
+struct SpellCastData;
+struct PSysProcessInfo;
+struct MapCoords;
 class Base;
 class GameOSFile;
 class GameThing;
@@ -18,20 +21,24 @@ class SpellFlockGround : public SpellFlock
 public:
 	// Override methods
 
-	// BW1W120 0055d2f0 BW1M119 01523620
-	virtual ~SpellFlockGround();
+	// BW1W120 00724220 BW1M119 01524560
+	virtual int InitWithPos(GameThing* creator, const MapCoords& pos, SpellCastData* cast_data,
+	                        const PSysProcessInfo& process_info);
 	// BW1W120 0055d2e0 BW1M119 01523700
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "SpellFlockGround:"; }
 	// BW1W120 00724bb0 BW1M119 015237b0
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00724bd0 BW1M119 01523740
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055d2d0 BW1M119 015236c0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_FLOCK_GROUND; }
 	// BW1W120 00724290 BW1M119 01524470
 	virtual void GetParticleType();
 	// BW1W120 007242a0 BW1M119 01523ea0
 	virtual uint32_t Process();
+
+	// BW1W120 inlined BW1M119 inlined
+	SpellFlockGround() { SetToZero(); }
 };
 
 #endif /* BW1_DECOMP_SPELL_FLOCK_GROUND_INCLUDED_H */

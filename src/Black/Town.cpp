@@ -2518,7 +2518,7 @@ Field* Town::FindBestFieldNearPos(const MapCoords& pos, float max_distance)
 		Field* field = node->payload;
 		float  distance = GUtils::GetDistanceInMetres(pos, field->Pos);
 		float  score = GUtils::GetDistanceModifier(distance, max_distance) * distance;
-		score *= 1.0 - min((float)field->field_0xd8 / (float)field->type_info->Capacity, 1.0f);
+		score *= 1.0 - min((float)field->Farmers.count / (float)field->type_info->Capacity, 1.0f);
 		if (score < bestScore)
 		{
 			bestScore = score;
@@ -2554,10 +2554,10 @@ Flock* Town::GetFlock(LIVING_TYPE living_type, int include_shepherded)
 	{
 		if (flock->Shepherd == NULL || include_shepherded == 1)
 		{
-			Living* first = flock->members != NULL ? flock->members->payload : NULL;
+			Living* first = flock->Members.GetFirst();
 			if (((const GLivingInfo*)first->GetInfo())->field_0x120 == living_type || living_type == LIVING_TYPE_ANY)
 			{
-				if (flock->leader != NULL && flock->leader->payload != NULL)
+				if (flock->Members.GetLast() != NULL)
 				{
 					return flock;
 				}
@@ -2652,7 +2652,7 @@ TotemStatue* Town::GetTotemStatue()
 {
 	if (town_centre != NULL)
 	{
-		return GetTownCentre()->totem_statue;
+		return GetTownCentre()->totem_statue.Get();
 	}
 	return NULL;
 }

@@ -15,6 +15,8 @@ class GameThing;
 class ParticleLightMap : public RenderParticle
 {
 public:
+	uint8_t field_0x18[0x34];
+
 	// Override methods
 
 	// BW1W120 006ca450 BW1M119 0142c560
@@ -23,6 +25,11 @@ public:
 	virtual char* GetDebugText();
 	// BW1W120 00695180 BW1M119 014258a0
 	virtual uint32_t Load(GameOSFile& file);
+	// BW1W120 0067b220 BW1M119 013f7820
+	virtual void DrawAt(const DrawData& data);
+
+	// BW1W120 006ca3f0 BW1M119 01481300
+	ParticleLightMap();
 };
 
 #endif /* BW1_DECOMP_PARTICLE_LIGHT_MAP_INCLUDED_H */

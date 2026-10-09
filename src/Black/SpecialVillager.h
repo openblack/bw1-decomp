@@ -23,24 +23,27 @@ public:
 
 	// Override methods
 
-	// BW1W120 00560fe0 BW1M119 0114f530
+	// BW1W120 0071f170 BW1M119 0114f530
 	virtual ~SpecialVillager();
 	// BW1W120 0071f0c0 BW1M119 0114f770
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00560fd0 BW1M119 0114fc50
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "SpecialVillager:"; }
 	// BW1W120 0071f5d0 BW1M119 0114ef00
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 0071f560 BW1M119 0114efe0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00560fc0 BW1M119 0114fc10
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPECIAL_VILLAGER; }
 	// BW1W120 0071f3d0 BW1M119 0102ff00
 	virtual void Draw();
 	// BW1W120 0071f490 BW1M119 0114f210
 	virtual const char* GetVillagerName();
 	// BW1W120 0071f240 BW1M119 0106b580
 	virtual bool DrawVillagerInfo();
+
+	// BW1W120 inlined BW1M119 inlined
+	SpecialVillager() {}
 
 	// Static methods
 	// BW1W120 0071f8f0 BW1M119 0114e8e0

@@ -31,12 +31,12 @@ struct RPHolder;
 class MobileStatic : public MultiMapFixed
 {
 public:
-	Object* field_0x7c;
-	uint8_t field_0x80[0x8];
+	GPlayer* Player;
+	uint8_t  field_0x80[0x8];
 
 	// Override methods
 
-	// BW1W120 0055d760 BW1M119 013c8b90
+	// BW1W120 00608750 BW1M119 013c8b90
 	virtual ~MobileStatic();
 	// BW1W120 00608760 BW1M119 013c8b40
 	virtual void ToBeDeleted(int param_1);
@@ -45,15 +45,15 @@ public:
 	// BW1W120 004396a0 BW1M119 010b6fd0
 	virtual bool32_t IsFunctional();
 	// BW1W120 0055d750 BW1M119 013c1970
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "MobileStatic:"; }
 	// BW1W120 00608590 BW1M119 013c8e20
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00608650 BW1M119 013c8ce0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055d740 BW1M119 013c1930
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_MOBILE_STATIC; }
 	// BW1W120 0055d720 BW1M119 013b7140
-	virtual void PhysicsEditorCreate(int param_1);
+	virtual void PhysicsEditorCreate(int keep_altitude) { Pos.altitude = 0.0f; }
 	// BW1W120 00608b10 BW1M119 013c8190
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 00439700 BW1M119 010b71c0
@@ -83,7 +83,7 @@ public:
 	// BW1W120 00439650 BW1M119 010b6d50
 	virtual bool32_t CanBeThrownInTheSeaPlayfully(Creature* param_1);
 	// BW1W120 0055d710 BW1M119 013b70f0
-	virtual uint32_t GetCreatureMimicType();
+	virtual uint32_t GetCreatureMimicType() { return CREATURE_MIMIC_TYPE_MOBILE_OBJECT; }
 	// BW1W120 004d1af0 BW1M119 01247a50
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
 	// BW1W120 004396f0 BW1M119 010b7180
@@ -119,7 +119,7 @@ public:
 	// BW1W120 006096d0 BW1M119 013c6210
 	virtual int GetDefaultResource();
 	// BW1W120 0055d730 BW1M119 013c90b0
-	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* status) { return true; }
 	// BW1W120 00608bb0 BW1M119 013c7ee0
 	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
 	// BW1W120 00608c30 BW1M119 013c7d30
@@ -159,6 +159,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 0055d6f0 BW1M119 01164640
+	MobileStatic() : Player(NULL) {}
 	// BW1W120 00608710 BW1M119 013c8c20
 	MobileStatic(const MapCoords& coords, const GMobileStaticInfo* info, Object* param_3, float param_4, float param_5);
 };
@@ -166,24 +168,27 @@ public:
 class GBaseOnly : public Object
 {
 public:
+	uint8_t field_0x54[0x8];
+
 	// BW1W120 006094e0 BW1M119 013c67f0
 	static void ReleaseAll();
 	// Override methods
 
-	// BW1W120 0055d7d0 BW1M119 013c5fe0
-	virtual ~GBaseOnly();
 	// BW1W120 006095c0 BW1M119 013c6660
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0055d7c0 BW1M119 013c60b0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "GBaseOnly:"; }
 	// BW1W120 0055d7b0 BW1M119 013c6070
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GBASE_ONLY; }
 	// BW1W120 00609540 BW1M119 013c6740
 	virtual void Draw();
 	// BW1W120 006093a0 BW1M119 013c68c0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 006095e0 BW1M119 013c6370
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+
+	// BW1W120 0055d790 BW1M119 inlined
+	GBaseOnly() {}
 };
 
 #endif /* BW1_DECOMP_MOBILE_STATIC_INCLUDED_H */

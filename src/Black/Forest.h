@@ -4,8 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
-#include <Lionhead/LHLib/ver5.0/LHListNode.h>   /* For struct LHListNode */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>          /* For struct LHListNode */
+#include <Lionhead/LHLib/ver5.0/LHOrderedLinkedList.h> /* For class LHOrderedLinkedList */
 
 #include "Container.h" /* For struct Container, struct ContainerVftable */
 #include "Tree.h"      /* For struct Tree */
@@ -23,6 +23,7 @@ class GameThingWithPos;
 class Living;
 class Object;
 struct MapCoords;
+class SortTreesOnDistanceFromForest;
 
 class Forest : public Container
 {
@@ -32,13 +33,13 @@ public:
 	// BW1W120 00539d70 BW1M119 01027fe0
 	static void ProcessForests();
 
-	uint8_t             field_0x30[0x8];
-	BigForest*          BigForestObject;
-	bool32_t            IsScenic;
-	uint32_t            id;
-	LHListNode<Forest>  next;
-	LHLinkedList<Tree*> Trees0;
-	LHLinkedList<Tree*> Trees1;
+	uint8_t                                            field_0x30[0x8];
+	BigForest*                                         BigForestObject;
+	bool32_t                                           IsScenic;
+	uint32_t                                           id;
+	LHListNode<Forest>                                 next;
+	LHOrderedLinkedList<SortTreesOnDistanceFromForest> Trees0;
+	LHOrderedLinkedList<SortTreesOnDistanceFromForest> Trees1;
 
 	// Override methods
 
@@ -83,6 +84,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	Forest() {}
 	// BW1W120 00539bd0 BW1M119 010fb8f0
 	Forest(const MapCoords& coords, uint32_t param_2);
 

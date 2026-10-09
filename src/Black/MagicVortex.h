@@ -124,6 +124,8 @@ public:
 class LandscapeVortexIn : public LandscapeVortex
 {
 public:
+	uint8_t field_0xec[0x18];
+
 	// Override methods
 
 	// BW1W120 005fd7b0 BW1M119 013c1b00
@@ -148,11 +150,16 @@ public:
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 005fd980 BW1M119 013c06d0
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
+
+	// BW1W120 005fd770 BW1M119 013c0b40
+	LandscapeVortexIn();
 };
 
 class LandscapeVortexOut : public LandscapeVortex
 {
 public:
+	uint8_t field_0xec[0x48];
+
 	// Override methods
 
 	// BW1W120 005fdde0 BW1M119 013c19b0
@@ -169,6 +176,9 @@ public:
 	virtual uint32_t GetSaveType();
 	// BW1W120 005fdfe0 BW1M119 013bfa40
 	virtual void SetTown(Town* param_1);
+
+	// BW1W120 005fdd80 BW1M119 013bffd0
+	LandscapeVortexOut();
 };
 
 class LandscapeVortexVolc : public LandscapeVortex
@@ -182,6 +192,9 @@ public:
 	virtual char* GetDebugText();
 	// BW1W120 005fd6e0 BW1M119 013c14d0
 	virtual uint32_t GetSaveType();
+
+	// BW1W120 005fd5e0 BW1M119 013c0c50
+	LandscapeVortexVolc();
 };
 
 #endif /* BW1_DECOMP_MAGIC_VORTEX_INCLUDED_H */

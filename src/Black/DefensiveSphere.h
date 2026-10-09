@@ -15,6 +15,8 @@ class GameThing;
 class DefensiveSphere : public DefensiveShield
 {
 public:
+	uint8_t field_0x14[0x1c];
+
 	// Override methods
 
 	// BW1W120 006d0d00 BW1M119 01420580
@@ -27,6 +29,9 @@ public:
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 006d0ce0 BW1M119 01420620
 	virtual uint32_t GetSaveType();
+
+	// BW1W120 006d0cb0 BW1M119 0148ed30
+	DefensiveSphere();
 };
 
 #endif /* BW1_DECOMP_DEFENSIVE_SPHERE_INCLUDED_H */

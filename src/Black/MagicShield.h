@@ -50,6 +50,9 @@ public:
 	virtual void DrawShield();
 	// BW1W120 0072b850 BW1M119 0153b8e0
 	virtual bool IsPointDefinietlyWithinShieldVolume(const MapCoords& param_1);
+
+	// BW1W120 0072c1f0 BW1M119 01539e10
+	MagicShield();
 };
 
 #endif /* BW1_DECOMP_MAGIC_SHIELD_INCLUDED_H */

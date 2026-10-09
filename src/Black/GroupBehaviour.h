@@ -116,6 +116,8 @@ public:
 class DanceKeyAction : public GameThing
 {
 public:
+	uint8_t field_0x14[0x44];
+
 	// Override methods
 
 	// BW1W120 0050e3a0 BW1M119 012b1dd0
@@ -128,6 +130,9 @@ public:
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0050e380 BW1M119 012b1ea0
 	virtual uint32_t GetSaveType();
+
+	// BW1W120 0050e340 BW1M119 012b1d30
+	DanceKeyAction();
 };
 
 #endif /* BW1_DECOMP_GROUP_BEHAVIOUR_INCLUDED_H */

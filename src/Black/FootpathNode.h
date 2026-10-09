@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>   /* For struct LHListNode */
 
 #include "GameThing.h" /* For struct GameThing */
 #include "Living.h"    /* For struct Living */
@@ -18,10 +19,10 @@ class GameOSFile;
 class GFootpathNode : public GameThing
 {
 public:
-	uint8_t               field_0x14;
-	MapCoords             coords;
-	GFootpathNode*        next; /* 0x24 */
-	LHLinkedList<Living*> followers;
+	uint8_t                   field_0x14;
+	MapCoords                 coords;
+	LHListNode<GFootpathNode> next;
+	LHLinkedList<Living*>     followers;
 
 	// Override methods
 
@@ -43,7 +44,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	GFootpathNode();
+	GFootpathNode() {}
 	// BW1W120 00534cf0 BW1M119 010f3ea0
 	GFootpathNode(const MapCoords& coords, int param_2, int param_3);
 

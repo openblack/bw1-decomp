@@ -27,22 +27,20 @@ public:
 
 	// Override methods
 
-	// BW1W120 005612c0 BW1M119 011680a0
-	virtual ~Whale();
 	// BW1W120 00774c00 BW1M119 01168fc0
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 005612b0 BW1M119 01168220
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Whale:"; }
 	// BW1W120 007752c0 BW1M119 011682b0
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 007752a0 BW1M119 01168310
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 005612a0 BW1M119 011681f0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_WHALE; }
 	// BW1W120 007752e0 BW1M119 01168260
 	virtual void ResolveLoad();
 	// BW1W120 00561280 BW1M119 011681b0
-	virtual void PhysicsEditorCreate(int param_1);
+	virtual void PhysicsEditorCreate(int keep_altitude) {}
 	// BW1W120 00775280 BW1M119 01168370
 	virtual uint32_t Process();
 	// BW1W120 00774e10 BW1M119 01168c50
@@ -50,9 +48,12 @@ public:
 	// BW1W120 00774ca0 BW1M119 01168cd0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 00561270 BW1M119 01168170
-	virtual bool InteractsWithPhysicsObjects();
+	virtual bool InteractsWithPhysicsObjects() { return true; }
 	// BW1W120 00561290 BW1M119 01168130
-	virtual bool32_t CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject() { return false; }
+
+	// BW1W120 00561250 BW1M119 inlined
+	Whale() {}
 };
 
 #endif /* BW1_DECOMP_WHALE_INCLUDED_H */

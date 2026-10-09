@@ -9,6 +9,7 @@
 
 #include "BaseInfo.h"         /* For struct BaseInfo */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
+#include "LHPTR.h"            /* For LHPTR */
 
 // Forward Declares
 
@@ -45,40 +46,40 @@ public:
 	static InfluenceRing* Create(GameThingWithPos* thing, GPlayer* player, float radius, int anti);
 
 	BaseInfo                  info;
-	GPlayer*                  player;
+	LHPTR<GPlayer>            player;
 	float                     Influence;
 	int                       field_0x3c;
 	LHListNode<InfluenceRing> next;
 
 	// Override methods
 
-	// BW1W120 0055ec70 BW1M119 01104e10
-	virtual ~InfluenceRing();
 	// BW1W120 005cd8a0 BW1M119 01105da0
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0055ec40 BW1M119 010467f0
-	virtual GPlayer* GetPlayer();
+	virtual GPlayer* GetPlayer() { return player.Get(); }
 	// BW1W120 0055ec10 BW1M119 01104f10
-	virtual void SetPlayer(GPlayer* param_1);
+	virtual void SetPlayer(GPlayer* new_player) { player = new_player; }
 	// BW1W120 0055ec60 BW1M119 011050f0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "InfluenceRing:"; }
 	// BW1W120 005cdd40 BW1M119 01105130
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 005cdc60 BW1M119 01105280
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055ec50 BW1M119 011050b0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_INFLUENCE_RING; }
 	// BW1W120 0055ebf0 BW1M119 01104eb0
-	virtual void SetPos(const MapCoords& param_1);
+	virtual void SetPos(const MapCoords& pos) { Pos = pos; }
 	// BW1W120 0055ec30 BW1M119 01104f90
-	virtual const char* GetText();
+	virtual const char* GetText() { return "Influence Ring"; }
 	// BW1W120 0055ec20 BW1M119 01104f50
-	virtual bool32_t IsInfluenceRing();
+	virtual bool32_t IsInfluenceRing() { return true; }
 	// BW1W120 005cdc50 BW1M119 011053f0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	InfluenceRing() {}
 	// BW1W120 005cd760 BW1M119 011061e0
 	InfluenceRing(const MapCoords& coords, GPlayer* player, float radius, int anti);
 	// BW1W120 005cd800 BW1M119 01105fd0

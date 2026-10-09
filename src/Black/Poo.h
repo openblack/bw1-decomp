@@ -22,6 +22,8 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
+	Poo() {}
+	// BW1W120 inlined BW1M119 inlined
 	Poo(const MapCoords& coords, const GMobileObjectInfo* info, Object* parent, float y_angle, float scale)
 		: MobileObject(coords, info, parent, y_angle, scale)
 	{
@@ -29,12 +31,10 @@ public:
 
 	// Override methods
 
-	// BW1W120 inlined BW1M119 013c5ef0
-	virtual ~Poo() {}
 	// BW1W120 0055d0b0 BW1M119 013c5fa0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Poo:"; }
 	// BW1W120 0055d0a0 BW1M119 013c5f70
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_POO; }
 	// BW1W120 006083c0 BW1M119 013c2e80
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 006079d0 BW1M119 013c41d0

@@ -20,10 +20,12 @@ struct SpellCastData;
 class SpellFlock : public SpellWithObjects
 {
 public:
+	uint8_t   field_0xf4[0xc];
+	MapCoords field_0x100;
+	uint8_t   field_0x10c[0x4];
+
 	// Override methods
 
-	// BW1W120 0055d250 BW1M119 01310dc0
-	virtual ~SpellFlock();
 	// BW1W120 00724780 BW1M119 01523ce0
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 007248a0 BW1M119 01523b10
@@ -39,6 +41,12 @@ public:
 	                        const PSysProcessInfo& param_4);
 	// BW1W120 00723240 BW1M119 01525f20
 	virtual float CalculateCostToMaintain();
+
+	// BW1W120 inlined BW1M119 01310e70
+	SpellFlock() { SetToZero(); }
+
+	// BW1W120 00723210 BW1M119 01525fc0
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_SPELL_FLOCK_INCLUDED_H */

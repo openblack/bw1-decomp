@@ -27,6 +27,8 @@ class FieldCrop : public MobileObject
 public:
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	FieldCrop() {}
 	// BW1W120 00607dd0 BW1M119 013c3670
 	FieldCrop(const MapCoords& coords, const GMobileObjectInfo* info, Object* field, float y_angle, float scale);
 
@@ -64,11 +66,11 @@ public:
 	// BW1W120 00608270 BW1M119 013c32e0
 	virtual bool32_t IsFunctional();
 	// BW1W120 0055d100 BW1M119 013c2c60
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "FieldCrop:"; }
 	// BW1W120 0055d0f0 BW1M119 013c2c20
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_FIELD_CROP; }
 	// BW1W120 0055d0e0 BW1M119 013c2be0
-	virtual void PhysicsEditorCreate(int keep_altitude);
+	virtual void PhysicsEditorCreate(int keep_altitude) {}
 	// BW1W120 00608260 BW1M119 013c3340
 	virtual void InsertMapObject();
 	// BW1W120 00608250 BW1M119 013c3390

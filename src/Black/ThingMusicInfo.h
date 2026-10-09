@@ -2,18 +2,32 @@
 #define BW1_DECOMP_THING_MUSIC_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/AudioMusic.h> /* For enum MUSIC_TYPE */
+#include <re_common.h>         /* For bool32_t */
+
 #include "GameThing.h" /* For struct GameThing */
+#include "MapCoords.h" /* For struct MapCoords */
 
 // Forward Declares
 
 class Base;
 class GameOSFile;
+class GameThingWithPos;
 
 class ThingMusicInfo : public GameThing
 {
 public:
+	MUSIC_TYPE        MusicType;
+	GameThingWithPos* Thing;
+	bool32_t          Enabled;
+	bool32_t          Suppressed;
+	bool32_t          Playing;
+	bool32_t          UseFixedPos;
+	MapCoords         FixedPos;
+
 	// Override methods
 
 	// BW1W120 00429320 BW1M119 01185c80
@@ -26,6 +40,17 @@ public:
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00429300 BW1M119 01185d10
 	virtual uint32_t GetSaveType();
+
+	// BW1W120 00561bc0 BW1M119 inlined
+	ThingMusicInfo()
+	{
+		MusicType = MUSIC_TYPE_NONE;
+		Thing = NULL;
+		Enabled = false;
+		Playing = false;
+		Suppressed = false;
+		UseFixedPos = false;
+	}
 };
 
 #endif /* BW1_DECOMP_THING_MUSIC_INFO_INCLUDED_H */

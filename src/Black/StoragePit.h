@@ -38,7 +38,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055cd50 BW1M119 0115b6a0
+	// BW1W120 00732c00 BW1M119 0115b6a0
 	virtual ~StoragePit();
 	// BW1W120 00732c10 BW1M119 0115b630
 	virtual void Delete();
@@ -50,21 +50,21 @@ public:
 	// BW1W120 007332a0 BW1M119 0115a790
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 0055cd40 BW1M119 01159850
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "StoragePit:"; }
 	// BW1W120 00733920 BW1M119 01159b00
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 007338d0 BW1M119 01159ba0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055cd30 BW1M119 01159810
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_STORAGE_PIT; }
 	// BW1W120 0055ccb0 BW1M119 inlined
-	virtual MapCoords GetArrivePos();
+	virtual MapCoords GetArrivePos() { return GetDoorPos(); }
 	// BW1W120 0055ccf0 BW1M119 011596e0
-	virtual bool32_t IsCastShadowAtNight();
+	virtual bool32_t IsCastShadowAtNight() { return false; }
 	// BW1W120 0055cd10 BW1M119 01159770
-	virtual bool32_t CanBeEatenByCreature(Creature* param_1);
+	virtual bool32_t CanBeEatenByCreature(Creature* creature) { return true; }
 	// BW1W120 0055cd00 BW1M119 01159720
-	virtual bool32_t CanActAsAContainer(Creature* param_1);
+	virtual bool32_t CanActAsAContainer(Creature* creature) { return true; }
 	// BW1W120 004e4b50 BW1M119 015ebd20
 	virtual bool32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
 	// BW1W120 004e4b70 BW1M119 015ebc50
@@ -86,9 +86,9 @@ public:
 	// BW1W120 00732e80 BW1M119 0115b080
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 0055ccd0 BW1M119 01159650
-	virtual LH3DObject::ObjectType Get3DType();
+	virtual LH3DObject::ObjectType Get3DType() { return LH3DObject::MORPHABLE; }
 	// BW1W120 0055cd20 BW1M119 011597c0
-	virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
+	virtual bool32_t IsResourceStore(RESOURCE_TYPE type) { return true; }
 	// BW1W120 00733750 BW1M119 01159ed0
 	virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
 	// BW1W120 00733810 BW1M119 01159c40
@@ -100,7 +100,7 @@ public:
 	// BW1W120 00733730 BW1M119 01159ff0
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00733550 BW1M119 inlined
-	virtual bool IsPoisonedResource();
+	virtual bool IsPoisonedResource(RESOURCE_TYPE type);
 	// BW1W120 00733400 BW1M119 01002830
 	virtual MapCoords GetResourceNearestEdge(RESOURCE_TYPE type, Object* object, int index);
 	// BW1W120 00733260 BW1M119 0115a910
@@ -116,7 +116,10 @@ public:
 	// BW1W120 007339d0 BW1M119 01159920
 	virtual void RestartBeingFunctional();
 	// BW1W120 0055cce0 BW1M119 01159690
-	virtual bool32_t CausesTownEmergencyIfDamaged();
+	virtual bool32_t CausesTownEmergencyIfDamaged() { return true; }
+
+	// BW1W120 inlined BW1M119 inlined
+	StoragePit() {}
 
 	// Static methods
 

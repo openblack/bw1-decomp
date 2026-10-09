@@ -638,7 +638,8 @@ bool32_t Villager::ShallIWaitForDinner()
 // BW1W120 007611f0 BW1M119 0158ed00
 void Villager::HomeDeleted()
 {
-	if (target == GetAbode())
+	Abode* abode = GetAbode();
+	if (target.Get() == abode)
 	{
 		target = NULL;
 	}

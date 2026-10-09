@@ -4,8 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/ScriptEnums.h>               /* For enum SCRIPT_OBJECT_TYPE */
-#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
+#include <chlasm/ScriptEnums.h>                     /* For enum SCRIPT_OBJECT_TYPE */
+#include <Lionhead/LH3DLib/development/LH3DStorm.h> /* For class LH3DStorm, struct StormInfo */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>       /* For struct LHListNode */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
@@ -13,7 +14,6 @@
 
 class Base;
 class GameOSFile;
-class LH3DStorm;
 struct LHPoint;
 class GameThing;
 struct MapCoords;
@@ -24,38 +24,39 @@ public:
 	// BW1W120 007741a0 BW1M119 01085420
 	static void ProcessWeatherThings();
 
-	uint8_t                  field_0x28[0x50];
+	StormInfo                Info;
 	LH3DStorm*               Storm;
-	uint32_t                 field_0x7c;
+	int                      AffectedByWind;
 	LHListNode<WeatherThing> next;
 	uint8_t                  field_0x84[0x4];
 
 	// Override methods
 
-	// BW1W120 0055df60 BW1M119 015aaba0
-	virtual ~WeatherThing();
 	// BW1W120 00774130 BW1M119 015abd50
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0055df50 BW1M119 015aad40
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "WeatherThing:"; }
 	// BW1W120 007747e0 BW1M119 015aad80
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 007745c0 BW1M119 015ab0a0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055df40 BW1M119 015aad00
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_WEATHER_THING; }
 	// BW1W120 007742e0 BW1M119 015ab980
 	virtual void SetPos(const MapCoords& param_1);
 	// BW1W120 00774580 BW1M119 015ab420
 	virtual void SetSpeedInMetres(float param_1, int param_2);
 	// BW1W120 0055df10 BW1M119 015aac40
-	virtual bool32_t IsWeather() const;
+	virtual bool32_t IsWeather() const { return true; }
 	// BW1W120 0055df30 BW1M119 015aacc0
-	virtual const char* GetText();
+	virtual const char* GetText() { return "Weather Thing"; }
 	// BW1W120 00774360 BW1M119 015ab8e0
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0055df20 BW1M119 015aac80
-	virtual void SetAffectedByWind(int param_1);
+	virtual void SetAffectedByWind(int affected) { AffectedByWind = affected; }
+
+	// BW1W120 inlined BW1M119 inlined
+	WeatherThing() {}
 
 	// Non-virtual methods
 

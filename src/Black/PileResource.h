@@ -32,8 +32,8 @@ public:
 
 	// Override methods
 
-	// BW1W120 0066ecb0 BW1M119 01123260
-	virtual ~PileResource();
+	// BW1W120 0066e900 BW1M119 01006f30
+	virtual void SetSize();
 	// BW1W120 0066d330 BW1M119 01003c70
 	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3);
 	// BW1W120 0066f690 BW1M119 0111fe30
@@ -42,8 +42,8 @@ public:
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0066e3d0 BW1M119 01122770
 	virtual float GetLife();
-	// BW1W120 0066e3c0 BW1M119 inlined
-	virtual uint32_t IsField_1(Creature* param_1);
+	// BW1W120 0066e3c0 BW1M119 01122810
+	virtual bool32_t IsField(Creature* creature);
 	// BW1W120 0066e390 BW1M119 01122890
 	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 0066ed60 BW1M119 01121730
@@ -53,7 +53,7 @@ public:
 	// BW1W120 0066e300 BW1M119 01122970
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 0055d680 BW1M119 01126770
-	virtual bool32_t IsLockedInInteract();
+	virtual bool32_t IsLockedInInteract() { return true; }
 	// BW1W120 0066e4f0 BW1M119 011224f0
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
 	// BW1W120 0066e710 BW1M119 01121f50
@@ -73,8 +73,15 @@ public:
 	// BW1W120 0066e520 BW1M119 011221b0
 	virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
 
+	// BW1W120 purecall BW1M119 purecall
+	virtual float GetProportionRaised() const = 0;
+	// BW1W120 purecall BW1M119 purecall
+	virtual uint32_t GetHandPotInfoType() const = 0;
+
 	// Constructors
 
+	// BW1W120 inlined BW1M119 0130ee50
+	PileResource() {}
 	// BW1W120 0066ec70 BW1M119 011218a0
 	PileResource(const MapCoords& param_1, const GPotInfo* info, uint32_t param_3, MultiMapFixed* param_4,
 	             Town* param_5, int param_6, float param_7, float param_8);

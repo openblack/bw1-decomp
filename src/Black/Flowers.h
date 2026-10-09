@@ -33,6 +33,9 @@ public:
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 00527a80 BW1M119 010d46b0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+
+	// BW1W120 00560fa0 BW1M119 inlined
+	Flowers() {}
 };
 
 #endif /* BW1_DECOMP_FLOWERS_INCLUDED_H */

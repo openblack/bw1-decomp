@@ -9,6 +9,7 @@
 
 #include "AbodeInfo.h"            /* For struct GAbodeInfo */
 #include "PlannedMultiMapFixed.h" /* For struct PlannedMultiMapFixed */
+#include "LHPTR.h"                /* For LHPTR */
 
 // Forward Declares
 
@@ -25,7 +26,7 @@ class MultiMapFixed;
 class PlannedAbode : public PlannedMultiMapFixed
 {
 public:
-	Town* town; /* 0x48 */
+	LHPTR<Town> town;
 
 	// Override methods
 
@@ -67,6 +68,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 0130ed00
+	PlannedAbode() {}
 	// BW1W120 00405080 BW1M119 01370320
 	PlannedAbode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale);
 	// BW1W120 00405580 BW1M119 01368800

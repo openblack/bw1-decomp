@@ -47,6 +47,13 @@ public:
 	// BW1W120 00564920
 	void Grow(long capacity);
 
+	// BW1W120 inlined BW1M119 010348b0
+	long GetSize() const;
+	// BW1W120 inlined BW1M119 0101ced0
+	T& operator[](long index);
+	// BW1W120 inlined BW1M119 0140d420
+	const T& operator[](long index) const;
+
 	T*        Data;
 	long      Capacity;
 	long      Size;
@@ -84,6 +91,55 @@ public:
 
 	T*   Data;
 	long Size;
+};
+
+template <class T> class GJCircularArray
+{
+public:
+	// BW1W120 inlined BW1M119 01315770
+	GJCircularArray() : Data(NULL), MaxSize(0), NumFilled(0), Head(-1) {}
+	// BW1W120 inlined BW1M119 inlined
+	~GJCircularArray() { delete[] Data; }
+
+	// BW1W120 006a7e30 BW1M119 0142d5e0
+	const T& Entry(long index) const;
+
+	T*   Data;
+	long MaxSize;
+	long NumFilled;
+	long Head;
+};
+
+template <class T> class GJLowPassFilterVariableStep
+{
+public:
+	// BW1W120 inlined BW1M119 0130d350
+	GJLowPassFilterVariableStep() : Initialised(false) {}
+
+	// BW1W120 inlined BW1M119 01342690
+	const T& GetValue() { return Value; }
+	// BW1W120 inlined BW1M119 013426e0
+	void Init(const T& value, float time_constant);
+	// BW1W120 inlined BW1M119 013427a0
+	void Update(float time, const T& value);
+
+	T     Value;
+	float TimeConstant;
+	bool  Initialised;
+};
+
+template <class T> class SimpleSpline
+{
+public:
+	// BW1W120 inlined BW1M119 0130d3a0
+	SimpleSpline() {}
+
+	// BW1W120 inlined BW1M119 013f11a0
+	void InitParams(const T& p0, const T& p1, const T& p2, const T& p3);
+	// BW1W120 inlined BW1M119 013f15e0
+	T EvalAtT(float t);
+
+	T Coefficients[4];
 };
 
 #include "GJBaseUtils.inl"

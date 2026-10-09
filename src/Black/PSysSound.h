@@ -16,6 +16,8 @@ struct LHPoint;
 class PSysSound : public PSysBase
 {
 public:
+	uint8_t field_0x14[0x2c];
+
 	// Override methods
 
 	// BW1W120 006d0f50 BW1M119 0148f430
@@ -30,6 +32,9 @@ public:
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 006d0f30 BW1M119 0148edc0
 	virtual uint32_t GetSaveType();
+
+	// BW1W120 006d0ee0 BW1M119 0148f690
+	PSysSound();
 };
 
 #endif /* BW1_DECOMP_P_SYS_SOUND_INCLUDED_H */

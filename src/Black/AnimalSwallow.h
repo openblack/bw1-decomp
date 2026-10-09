@@ -17,14 +17,25 @@ class Swallow : public Dove
 public:
 	// Override methods
 
-	// BW1W120 0041ece0 BW1M119 0117a5d0
-	virtual ~Swallow();
+	// BW1W120 0041c010 BW1M119 010234a0
+	virtual uint32_t MoveAnimation();
+	// BW1W120 0041c040 BW1M119 01179030
+	virtual uint32_t DeadAnimation();
+	// BW1W120 0041c050 BW1M119 01178ff0
+	virtual uint32_t EatAnimation();
+	// BW1W120 0041c060 BW1M119 01178fb0
+	virtual uint32_t SleepAnimation();
+	// BW1W120 0041c080 BW1M119 01178f30
+	virtual uint32_t ThrownAnimation();
 	// BW1W120 0041ecd0 BW1M119 0117a6a0
 	virtual char* GetDebugText();
 	// BW1W120 0041ecc0 BW1M119 0117a660
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041c070 BW1M119 01178f70
 	virtual uint32_t StandAnimation();
+
+	// BW1W120 0055e850 BW1M119 inlined
+	Swallow() {}
 };
 
 #endif /* BW1_DECOMP_ANIMAL_SWALLOW_INCLUDED_H */

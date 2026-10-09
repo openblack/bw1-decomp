@@ -2,6 +2,7 @@
 #define BW1_DECOMP_BALL_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t */
 
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
@@ -11,12 +12,14 @@
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
 
 #include "MapCoords.h"    /* For struct MapCoords */
+#include "LHPTR.h"        /* For LHPTR */
 #include "MobileObject.h" /* For struct MobileObject */
 
 // Forward Declares
 
 class Base;
 class Creature;
+class Football;
 class GBallInfo;
 class GPlayer;
 class GameOSFile;
@@ -37,13 +40,11 @@ public:
 	LHPoint          field_0x78;
 	MapCoords        Destination;
 	bool32_t         IsOwned;
-	uint32_t         field_0x94;
-	uint32_t         field_0x98;
-	uint32_t         field_0x9c;
-	Town*            town;
-	uint32_t         field_0xa4;
-	uint32_t         field_0xa8;
-	uint32_t         field_0xac;
+	LHPTR<Football>  football;
+	LHPTR<Villager>  Owner;
+	LHPTR<Villager>  LastOwner;
+	LHPTR<Town>      town;
+	MapCoords        field_0xa4;
 	uint32_t         field_0xb0;
 	uint32_t         field_0xb4;
 
@@ -84,11 +85,15 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	Ball() { SetToZero(); }
 	// BW1W120 004359b0 BW1M119 010b3900
 	Ball(const MapCoords& coords, const GBallInfo* info);
 
 	// Non-virtual methods
 
+	// BW1W120 00435c00 BW1M119 010b34b0
+	void SetToZero();
 	// BW1W120 00435c40 BW1M119 010b3200
 	void KickBallAtDestination(const MapCoords& destination, float speed, int flag);
 	// BW1W120 004360e0 BW1M119 010b2f80

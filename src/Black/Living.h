@@ -14,6 +14,7 @@
 
 #include "GameThing.h"        /* For struct GameThing */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
+#include "LHPTR.h"            /* For class LHPTR */
 #include "LivingAction.h"     /* For enum LIVING_ACTION_INDEX, struct LivingAction */
 #include "MobileWallHug.h"    /* For struct MobileWallHug, struct MobileWallHugVftable */
 #include "Object.h"           /* For struct Object */
@@ -109,6 +110,13 @@ enum LIVING_SET_STATE_RESULT
 	LIVING_SET_STATE_ENTRY_REFUSED = 0x2f
 };
 
+template <class T, int N> class ForgetfulLinkedList
+{
+public:
+	T* Head;
+	ForgetfulLinkedList() : Head(NULL) {}
+};
+
 class Living : public MobileWallHug
 {
 public:
@@ -154,26 +162,26 @@ public:
 		StateTableSubEntry           validate;            /* 0x80 */
 	};
 
-	LivingAction         action;   /* 0x8c */
-	Reaction*            reaction; /* 0x94 */
-	ReactionDoneWhen*    reaction_done_when;
-	int                  field_0x9c;
-	int32_t              BirthTurn; /* 0xa0 */
-	LHListNode<Living>   next;
-	uint32_t             field_0xa8;
-	DataPath*            data_path;
-	DataForScriptRemind* data_for_script_remind; /* 0xb0 */
-	uint16_t             status;
-	Flock*               flock;
-	GameThingWithPos*    field_0xbc;
-	uint32_t             field_0xc0;
-	uint32_t             field_0xc4;
-	GFootpath*           footpath;
-	GFootpathNode*       footpath_node;
-	LH3DColor            SpecularColor; /* 0xd0 */
-	uint32_t             field_0xd4;
-	DanceGroup*          dance_group;
-	uint8_t              field_0xdc;
+	LivingAction                              action;
+	LHPTR<Reaction>                           reaction;
+	ForgetfulLinkedList<ReactionDoneWhen*, 3> reaction_done_when;
+	int                                       field_0x9c;
+	int32_t                                   BirthTurn;
+	LHListNode<Living>                        next;
+	uint32_t                                  field_0xa8;
+	DataPath*                                 data_path;
+	DataForScriptRemind*                      data_for_script_remind;
+	uint16_t                                  status;
+	LHPTR<Flock>                              flock;
+	LHPTR<GameThingWithPos>                   ReactionObject;
+	uint32_t                                  field_0xc0;
+	uint32_t                                  field_0xc4;
+	GFootpath*                                footpath;
+	GFootpathNode*                            footpath_node;
+	LH3DColor                                 SpecularColor;
+	uint32_t                                  field_0xd4;
+	LHPTR<DanceGroup>                         dance_group;
+	uint8_t                                   field_0xdc;
 
 	// Override methods
 
@@ -230,7 +238,7 @@ public:
 	// BW1W120 005ee230 BW1M119 013866d0
 	virtual bool32_t MoveAlongPath();
 	// BW1W120 00417480 BW1M119 inlined
-	virtual void SetSpecularColor(LH3DColor param_1);
+	virtual void SetSpecularColor(unsigned long param_1);
 	// BW1W120 00417490 BW1M119 01139ae0
 	virtual LH3DColor GetSpecularColor();
 	// BW1W120 0051aec0 BW1M119 010c8e10
@@ -338,7 +346,7 @@ public:
 	// BW1W120 00473e50 BW1M119 011eaa80
 	virtual void SetStateSpeed();
 	// BW1W120 purecall BW1M119 null
-	virtual bool IsFinalState(VILLAGER_STATES state) = 0;
+	virtual bool IsFinalState(uint8_t state) = 0;
 	// BW1W120 005ecb80 BW1M119 inlined
 	virtual void SetAnim(int anim);
 	// BW1W120 005ecba0 BW1M119 inlined
@@ -392,13 +400,13 @@ public:
 	// BW1W120 007689c0 BW1M119 inlined
 	virtual bool32_t ExitPlayAnim(uint8_t state);
 	// BW1W120 00473e60 BW1M119 inlined
-	virtual bool IsScriptState(VILLAGER_STATES state) const;
+	virtual bool32_t IsScriptState(unsigned long state) const;
 	// BW1W120 00473e70 BW1M119 inlined
-	virtual bool IsScriptInterruptableState(VILLAGER_STATES state) const;
+	virtual bool32_t IsScriptInterruptableState(unsigned long state) const;
 	// BW1W120 00417070 BW1M119 inlined
-	virtual bool IsStateForInterface(VILLAGER_STATES state) const;
+	virtual bool32_t IsStateForInterface(unsigned long state) const;
 	// BW1W120 00473e80 BW1M119 inlined
-	virtual bool32_t IsStateExitFunctionSameAs(VILLAGER_STATES state) const;
+	virtual bool32_t IsStateExitFunctionSameAs(unsigned long state) const;
 	// BW1W120 005ecaa0 BW1M119 inlined
 	virtual bool IsDeathState(VILLAGER_STATES state) const;
 	// BW1W120 005ed2b0 BW1M119 016e0b5c
@@ -620,34 +628,36 @@ public:
 	virtual uint32_t DanceType();
 	// BW1W120 005ee550 BW1M119 01386470
 	virtual bool CanBeHealedByHealSpell();
-	// BW1W120 purecall BW1M119 null
-	virtual bool MoveAllowedForChessGame() = 0;
-	// BW1W120 purecall BW1M119 null
-	virtual bool AttackAllowedForChessGame() = 0;
-	// BW1W120 purecall BW1M119 null
-	virtual void AddToBoxPositionForChessGame(int param_1, int param_2) = 0;
-	// BW1W120 purecall BW1M119 null
-	virtual int GetBoxXForChessGame() = 0;
-	// BW1W120 purecall BW1M119 null
-	virtual int GetBoxZForChessGame() = 0;
-	// BW1W120 purecall BW1M119 null
-	virtual void SetBoxXForChessGame(int param_1) = 0;
-	// BW1W120 purecall BW1M119 null
-	virtual void SetBoxZForChessGame(int param_1) = 0;
-	// BW1W120 purecall BW1M119 null
-	virtual uint32_t GetTeamForChessGame() = 0;
-	// BW1W120 purecall BW1M119 null
-	virtual bool IsPosValidForTurnAngle(const MapCoords& param_1) = 0;
+	// BW1W120 004174a0 BW1M119 0112aa80
+	virtual bool32_t MoveAllowedForChessGame(long x, long z) { return false; }
+	// BW1W120 004174b0 BW1M119 0112aac0
+	virtual bool32_t AttackAllowedForChessGame(long x, long z) { return false; }
+	// BW1W120 004174c0 BW1M119 01139b20
+	virtual void AddToBoxPositionForChessGame(long x, long z) {}
+	// BW1W120 004174d0 BW1M119 0112ac00
+	virtual long GetBoxXForChessGame() { return 0; }
+	// BW1W120 004174e0 BW1M119 0112abc0
+	virtual long GetBoxZForChessGame() { return 0; }
+	// BW1W120 004174f0 BW1M119 0112aa40
+	virtual void SetBoxXForChessGame(long x) {}
+	// BW1W120 00417500 BW1M119 0112aa00
+	virtual void SetBoxZForChessGame(long z) {}
+	// BW1W120 00417510 BW1M119 0112ab00
+	virtual bool GetTeamForChessGame() { return false; }
+	// BW1W120 00473ee0 BW1M119 01150430
+	virtual bool32_t IsPosValidForTurnAngle(const MapCoords& pos) { return true; }
 
 	// Static methods
 
 	// BW1W120 005ec810 BW1M119 0104e4c0
 	static void ProcessLiving();
+	// BW1W120 inlined BW1M119 010e8380
+	static bool FlockOrder(Living* a, Living* b);
 
 	// Constructors
 
 	// BW1W120 0055c820 BW1M119 013116c0
-	Living();
+	Living() { SetToZero(); }
 	// BW1W120 005ebec0 BW1M119 0138b7b0
 	Living(const MapCoords& coords, const GLivingInfo* info);
 

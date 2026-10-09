@@ -31,14 +31,17 @@ class Town;
 class Pot : public MobileObject
 {
 public:
-	RESOURCE_TYPE field_0x68;
-	uint32_t      field_0x6c;
+	RESOURCE_TYPE ResourceType;
+	LHPTR<Town>   ParentTown;
 	uint32_t      ResourceAmount;
-	uint8_t       field_0x74;
+	uint8_t       Poisoned : 1;
+	uint8_t : 2;
+	uint8_t FromBuildingSite : 1;
+	uint8_t SpeedUp : 1;
 
 	// Override methods
 
-	// BW1W120 0055d5c0 BW1M119 01125c00
+	// BW1W120 0066d100 BW1M119 01125c00
 	virtual ~Pot();
 	// BW1W120 0066d110 BW1M119 01125b70
 	virtual void ToBeDeleted(int param_1);
@@ -56,7 +59,7 @@ public:
 	// BW1W120 0066d3f0 BW1M119 01125040
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 0055d5b0 BW1M119 0111fe00
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Pot:"; }
 	// BW1W120 0071bde0 BW1M119 01517770
 	virtual uint32_t GetGuidanceResourceType();
 	// BW1W120 0066d820 BW1M119 01124580
@@ -64,17 +67,17 @@ public:
 	// BW1W120 0066d730 BW1M119 011246f0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055d5a0 BW1M119 0111fdd0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_POT; }
 	// BW1W120 0055d580 BW1M119 0111fd50
-	virtual uint32_t GetCreatureBeliefType();
+	virtual uint32_t GetCreatureBeliefType() { return CREATURE_BELIEF_TYPE_POT; }
 	// BW1W120 0066f540 BW1M119 011201d0
 	virtual uint32_t GetOverwriteInteractableToolTip();
 	// BW1W120 0055d4e0 BW1M119 01011560
-	virtual bool IsPoisoned();
+	virtual bool IsPoisoned() { return Poisoned != 0; }
 	// BW1W120 0055d4f0 BW1M119 0111fc50
-	virtual bool32_t IsSpeedUp();
+	virtual bool32_t IsSpeedUp() { return SpeedUp; }
 	// BW1W120 0055d500 BW1M119 0111fc90
-	virtual bool32_t IsPot();
+	virtual bool32_t IsPot() { return true; }
 	// BW1W120 0066f530 BW1M119 01120250
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 0051bb70 BW1M119 010c87e0
@@ -92,13 +95,13 @@ public:
 	// BW1W120 0066f520 BW1M119 01120290
 	virtual float GetRadiusMultiplierForApplyingPotToPos();
 	// BW1W120 0055d4c0 BW1M119 010d7bd0
-	virtual RESOURCE_TYPE GetResourceType();
+	virtual RESOURCE_TYPE GetResourceType() { return ResourceType; }
 	// BW1W120 0055d4d0 BW1M119 0111fc10
-	virtual int GetDefaultResource();
+	virtual int GetDefaultResource() { return ResourceAmount; }
 	// BW1W120 0055d550 BW1M119 0111fd00
-	virtual void SetPoisonedResource(RESOURCE_TYPE param_1, int param_2);
+	virtual void SetPoisonedResource(RESOURCE_TYPE type, int poisoned) { Poisoned = poisoned; }
 	// BW1W120 0055d510 BW1M119 010011f0
-	virtual void SetPoisoned(int param_1);
+	virtual void SetPoisoned(int poisoned) { Poisoned = poisoned; }
 	// BW1W120 0066d6c0 BW1M119 011249d0
 	virtual void StartOnFire();
 	// BW1W120 0066d6d0 BW1M119 01124920
@@ -130,12 +133,20 @@ public:
 	// BW1W120 0066d550 BW1M119 01124bc0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 0055d590 BW1M119 0111fd90
-	virtual bool32_t IsAPotFromABuildingSite();
+	virtual bool32_t IsAPotFromABuildingSite() { return FromBuildingSite; }
+	// BW1W120 0066d480 BW1M119 01124e90
+	virtual void SetSize();
+	// BW1W120 0055d4b0 BW1M119 01121770
+	virtual bool32_t IsPartOfStructure() { return false; }
+	// BW1W120 0055d530 BW1M119 0111fcc0
+	virtual void SetSpeedUp(int speed_up) { SpeedUp = speed_up; }
+	// BW1W120 0055d570 BW1M119 010bc4b0
+	virtual void SetMultiMapFixed(MultiMapFixed* multi_map_fixed) {}
 
 	// Constructors
 
 	// BW1W120 inlined BW1M119 0130eed0
-	Pot();
+	Pot() { SetToZero(); }
 	// BW1W120 0066ce60 BW1M119 01126130
 	Pot(const MapCoords& param_1, const GPotInfo* param_2, uint32_t param_3, Town* param_4, float param_5,
 	    float param_6);

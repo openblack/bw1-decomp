@@ -8,9 +8,11 @@
 #include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
+#include "LHPTR.h"            /* For class LHPTR */
 
 // Forward Declares
 
+class LH3DMist;
 class Base;
 class GPlayer;
 class GameOSFile;
@@ -21,7 +23,7 @@ struct MistListNode;
 class Mist : public GameThingWithPos
 {
 public:
-	uint32_t         field_0x28;
+	LHPTR<LH3DMist>  MistObject;
 	float            field_0x2c;
 	uint32_t         field_0x30;
 	float            field_0x34;
@@ -31,35 +33,35 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055ebd0 BW1M119 0110e060
-	virtual ~Mist();
 	// BW1W120 00606300 BW1M119 0110ef00
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0055eb70 BW1M119 0110e0f0
-	virtual GPlayer* GetPlayer();
+	virtual GPlayer* GetPlayer() { return NULL; }
 	// BW1W120 0055ebc0 BW1M119 0110e1f0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Mist:"; }
 	// BW1W120 00606a10 BW1M119 0110e290
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00606920 BW1M119 0110e3f0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055ebb0 BW1M119 0110e1c0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_MIST; }
 	// BW1W120 00606af0 BW1M119 0110e230
 	virtual void ResolveLoad();
 	// BW1W120 0055eba0 BW1M119 0110e180
-	virtual uint32_t GetCreatureBeliefType();
+	virtual uint32_t GetCreatureBeliefType() { return CREATURE_BELIEF_TYPE_MIST; }
 	// BW1W120 006067d0 BW1M119 0110e710
 	virtual float GetDistanceFromObject(const MapCoords& param_1);
 	// BW1W120 0055eb90 BW1M119 0110e150
-	virtual bool32_t IsMist();
+	virtual bool32_t IsMist() { return true; }
 	// BW1W120 0055eb80 BW1M119 0110e120
-	virtual const char* GetText();
+	virtual const char* GetText() { return "Mist"; }
 	// BW1W120 00606910 BW1M119 0110e560
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	Mist() {}
 	// BW1W120 00606270 BW1M119 0110f140
 	Mist(const MapCoords& coords, float param_3, uint32_t param_4, float param_5);
 

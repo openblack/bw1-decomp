@@ -24,6 +24,8 @@ class PhysicsObject;
 class Bonfire : public Rock
 {
 public:
+	uint8_t field_0x94[0x4];
+
 	// Override methods
 
 	// BW1W120 00439800 BW1M119 010b6780
@@ -58,6 +60,12 @@ public:
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 004397d0 BW1M119 010b6990
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
+
+	// BW1W120 inlined BW1M119 inlined
+	Bonfire() { SetToZero(); }
+
+	// BW1W120 00439830 BW1M119 010b7920
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_BONFIRE_INCLUDED_H */

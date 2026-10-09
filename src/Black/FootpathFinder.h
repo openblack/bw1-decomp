@@ -46,7 +46,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	GFootpathFinder();
+	GFootpathFinder() {}
 
 	// Non-virtual methods
 

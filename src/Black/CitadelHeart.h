@@ -11,10 +11,12 @@
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 
 #include "CitadelPart.h" /* For struct CitadelPart */
+#include "LHPTR.h"       /* For LHPTR */
 #include "Object.h"      /* For struct Object */
 
 // Forward Declares
 
+class LH3DObjectCollide;
 class BuildingSite;
 class Base;
 class Citadel;
@@ -89,32 +91,34 @@ struct TempleLeash
 class CitadelHeart : public CitadelPart
 {
 public:
-	uint32_t     field_0x8c;
-	uint32_t     field_0x90;
-	GameThing*   field_0x94;
-	GameThing*   field_0x98;
-	uint32_t     field_0x9c;
-	uint32_t     field_0xa0;
-	int          field_0xa4;
-	uint32_t     field_0xa8;
-	GameThing*   field_0xac;
-	GameThing*   field_0xb0;
-	uint32_t     field_0xb4;
-	uint8_t      field_0xb8;
-	float        field_0xbc;
-	GameThing*   field_0xc0;
-	uint32_t     field_0xc4;
-	uint32_t     field_0xc8;
-	GameThing*   field_0xcc;
-	float        field_0xd0;
-	uint32_t     field_0xd4;
-	uint32_t     field_0xd8;
-	GameThing*   field_0xdc;
-	uint32_t     field_0xe0;
-	TempleLeash* leashes;
+	uint32_t                 field_0x8c;
+	LHPTR<LH3DObjectCollide> ObjectCollide;
+	GameThing*               field_0x94;
+	GameThing*               field_0x98;
+	uint32_t                 field_0x9c;
+	uint32_t                 field_0xa0;
+	int                      field_0xa4;
+	uint32_t                 field_0xa8;
+	GameThing*               field_0xac;
+	GameThing*               field_0xb0;
+	uint32_t                 field_0xb4;
+	uint8_t                  field_0xb8;
+	float                    field_0xbc;
+	GameThing*               field_0xc0;
+	uint32_t                 field_0xc4;
+	uint32_t                 field_0xc8;
+	GameThing*               field_0xcc;
+	float                    field_0xd0;
+	uint32_t                 field_0xd4;
+	uint32_t                 field_0xd8;
+	GameThing*               field_0xdc;
+	uint32_t                 field_0xe0;
+	TempleLeash*             leashes;
 
 	// Override methods
 
+	// BW1W120 00467d10 BW1M119 011c5980
+	virtual MapCoords GetDoorPos();
 	// BW1W120 00464bc0 BW1M119 011c87d0
 	virtual ~CitadelHeart();
 	// BW1W120 00464c50 BW1M119 011c8570
@@ -138,7 +142,7 @@ public:
 	// BW1W120 004680b0 BW1M119 011c5260
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00464b20 BW1M119 inlined
-	virtual void SetSpecularColor(LH3DColor param_1);
+	virtual void SetSpecularColor(unsigned long param_1);
 	// BW1W120 00464b30 BW1M119 01019f70
 	virtual LH3DColor GetSpecularColor();
 	// BW1W120 00468c30 BW1M119 011c4330
@@ -196,7 +200,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	CitadelHeart();
+	CitadelHeart() { SetToZero(); }
 	// BW1W120 004649b0 BW1M119 011c8970
 	CitadelHeart(MapCoords* coords, GCitadelHeartInfo* info, Citadel* citadel, float param_4, float param_5,
 	             float param_6, int param_7);

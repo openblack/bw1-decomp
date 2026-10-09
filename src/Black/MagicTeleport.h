@@ -24,6 +24,7 @@ class MagicTeleport : public MobileStatic
 {
 public:
 	MagicTeleport* next;
+	uint8_t        field_0x8c[0x18];
 
 	// Override methods
 
@@ -81,6 +82,9 @@ public:
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 005fc4a0 BW1M119 013b8450
 	virtual bool32_t IsSolidToNewAbode();
+
+	// BW1W120 005fbff0 BW1M119 013b91f0
+	MagicTeleport();
 
 	// Non-virtual methods
 

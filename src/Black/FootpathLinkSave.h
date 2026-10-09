@@ -21,6 +21,10 @@ public:
 
 	// Override methods
 
+	// BW1W120 00537110 BW1M119 null
+	virtual uint32_t Save(GameOSFile& file);
+	// BW1W120 005371d0 BW1M119 null
+	virtual uint32_t GetSaveType();
 	// BW1W120 005371f0 BW1M119 010f0180
 	virtual ~GFootpathLinkSave();
 	// BW1W120 005371e0 BW1M119 010f41e0
@@ -31,7 +35,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	GFootpathLinkSave();
+	GFootpathLinkSave() {}
 
 	// Non-virtual methods
 

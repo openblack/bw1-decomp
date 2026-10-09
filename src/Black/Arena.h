@@ -48,6 +48,9 @@ public:
 	// BW1W120 00424790 BW1M119 010afef0
 	virtual const char* GetText();
 
+	// BW1W120 inlined BW1M119 inlined
+	GArena() {}
+
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 011ac8d0
@@ -59,6 +62,8 @@ public:
 class ArenaSpellIcon : public Fixed
 {
 public:
+	uint8_t field_0x58[0x1c];
+
 	// Override methods
 
 	// BW1W120 00425350 BW1M119 010adf60
@@ -85,6 +90,9 @@ public:
 	virtual bool32_t CreatureMustAvoid(Creature* param_1);
 	// BW1W120 00425300 BW1M119 010ad4a0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+
+	// BW1W120 004252d0 BW1M119 010ae0e0
+	ArenaSpellIcon();
 };
 
 #endif /* BW1_DECOMP_ARENA_INCLUDED_H */

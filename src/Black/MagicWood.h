@@ -22,6 +22,8 @@ class Object;
 class MagicWood : public PileWood
 {
 public:
+	uint8_t field_0xb4[0x4];
+
 	// Override methods
 
 	// BW1W120 00600df0 BW1M119 013c2440
@@ -42,6 +44,9 @@ public:
 	virtual bool32_t IsAWoodPileOutsideStoragePit(Creature* param_1);
 	// BW1W120 00600f10 BW1M119 013c2340
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+
+	// BW1W120 00600d40 BW1M119 013c25f0
+	MagicWood();
 };
 
 #endif /* BW1_DECOMP_MAGIC_WOOD_INCLUDED_H */

@@ -20,6 +20,8 @@ class Object;
 class SpellDispenser : public Abode
 {
 public:
+	uint8_t field_0xc4[0x18];
+
 	// Override methods
 
 	// BW1W120 00722700 BW1M119 01522080
@@ -48,6 +50,9 @@ public:
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 007226e0 BW1M119 01522190
 	virtual bool32_t IsSpellSeedReturnPoint() const;
+
+	// BW1W120 00722660 BW1M119 01523570
+	SpellDispenser();
 
 	// Static methods
 

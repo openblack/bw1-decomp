@@ -13,17 +13,18 @@
 
 #include <re_common.h> /* For bool32_t */
 
-#include "GameThing.h"   /* For struct GameThing */
-#include "MapCoords.h"   /* For struct MapCoords */
-#include "SaveLoadPtr.h" /* For struct GSaveLoadPtr */
+#include "CreatureReceiveSpell.h" /* For struct CreatureReceiveSpell */
+#include "GameThing.h"            /* For struct GameThing */
+#include "MapCoords.h"            /* For struct MapCoords */
+#include "SaveLoadPtr.h"          /* For struct GSaveLoadPtr */
 
 // Forward Declares
 
+template <class T> class GJVector;
+template <typename T> class GTPointer;
 class CalculateDrawPosInfo;
 class ChainJoint;
 class CollectionAndOwnership;
-class CreatureReceiveSpell_QueueData;
-class CreatureReceiveSpell_TPerSpellData;
 class GBaseInfo;
 class GData;
 class LHOSFile;
@@ -39,21 +40,33 @@ class TSphere;
 struct MapCoords;
 struct PSysProcessInfo;
 
+enum
+{
+	GAME_OS_FILE_MAX_LOAD_ATTEMPTS = 2,
+	GAME_OS_FILE_UNREAD_LOAD_ATTEMPTS = 1000,
+};
+
+enum GAME_OS_FILE_CREATURE_FLAG
+{
+	GAME_OS_FILE_CREATURE_FLAG_SCRIPT_0 = 1 << 0,
+	GAME_OS_FILE_CREATURE_FLAG_SCRIPT_1 = 1 << 1,
+	GAME_OS_FILE_CREATURE_FLAG_SCRIPT_2 = 1 << 2,
+};
+
 class GameOSFile : public LHReleasedOSFile
 {
 public:
-	uint32_t                    field_0x10c;
+	uint32_t                    Status;
 	char                        Filename[0x100]; /* 0x110 */
 	uint32_t                    field_0x210;
 	uint32_t                    Checksum; /* 0x214 */
-	uint32_t                    field_0x218;
+	bool32_t                    Reading;
 	uint32_t                    field_0x21c;
 	LHLinkedList<GSaveLoadPtr*> SaveLoadPtrList; /* 0x220 */
 	LHLinkedList<GameThing*>    GameThingList;
 
 	// Static data
 
-	// TODO: Original global names unknown; revision fragments are deliberately separate.
 	// BW1W120 00bec980
 	static char* RevisionPrefix;
 	// BW1W120 00bec984
@@ -67,41 +80,35 @@ public:
 	// BW1W120 00d01a84
 	static uint32_t SaveCount;
 	// BW1W120 00d01a9c
-	static int Saving;
+	static bool32_t Saving;
 
-	// TODO: Original names unknown; reset by SaveAllGame/LoadAllGame and cleared on I/O errors.
 	// BW1W120 00bec990
-	static int WriteEnabled;
+	static bool32_t WriteEnabled;
 	// BW1W120 00bec994
-	static int ReadEnabled;
-	// TODO: Original names unknown; shared state for loading and pointer reconstruction.
-	// (read by GGame::Load)
+	static bool32_t ReadEnabled;
 	// BW1W120 00d01a7c
 	static unsigned char LoadedCreatureFlags;
 	// BW1W120 00d01a88
 	static uint32_t LoadCount;
-	// (also tested by footpath and circle-hug code)
 	// BW1W120 00d01aa0
-	static int Loading;
+	static bool32_t Loading;
 
 	// Override methods
 
 	// BW1W120 00558050 BW1M119 01312630
-	// Scalar-deleting wrapper: BW1W120 00558030.
 	virtual ~GameOSFile();
 	// Static methods
 
 	// BW1W120 00558160 BW1M119 01312040
-	static int SaveAllGame(char* filename);
+	static bool32_t SaveAllGame(char* filename);
 	// BW1W120 005587b0 BW1M119 01311810
-	static int LoadAllGame(char* filename);
+	static bool32_t LoadAllGame(char* filename);
 	// BW1W120 00563ff0 BW1M119 01302340
-	// The caller at 0054f77c tests the full result; original integer signedness is unknown.
-	static int AutoLoad();
+	static bool32_t AutoLoad();
 	// BW1W120 00564050 BW1M119 01080520
-	static int AutoSave(int force);
+	static bool32_t AutoSave(bool32_t force);
 	// BW1W120 00564160 BW1M119 01302120
-	static int IsAutoSaveValid();
+	static bool32_t IsAutoSaveValid();
 
 	// Constructors
 
@@ -110,8 +117,6 @@ public:
 
 	// Non-virtual methods
 
-	// BW1W120 inlined BW1M119 inlined
-	void ReadIt_MapCoords_(MapCoords* out);
 	// BW1W120 inlined BW1M119 013bbf00
 	void ReadSafe(uint8_t& value)
 	{
@@ -158,8 +163,6 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
-	// fabricated: no MapCoords overload survives in either binary, but Abode::Load
-	// reads its 12-byte MapCoords through this shape.
 	// BW1W120 inlined BW1M119 inlined
 	void ReadSafe(MapCoords& value)
 	{
@@ -172,16 +175,33 @@ public:
 			Checksum += *(uint8_t*)&value + sizeof(value);
 		}
 	}
+	// BW1W120 inlined BW1M119 01305b50
+	void ReadSafe(LHPoint& value)
+	{
+		if (ReadEnabled)
+		{
+			LH_FILE_RESULT result = Read(&value, sizeof(value), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
+			{
+				ReadEnabled = false;
+			}
+			uint8_t first = *(uint8_t*)&value;
+			Checksum += first + sizeof(value);
+		}
+	}
 	// BW1W120 inlined BW1M119 013bc2a0
 	void WriteSafe(uint8_t& value)
 	{
 		if (WriteEnabled)
 		{
-			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			uint8_t*       data = &value;
+			LH_FILE_RESULT result = Write(data, sizeof(value), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
 			{
 				WriteEnabled = false;
 			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
+			uint8_t first = *(uint8_t*)data;
+			Checksum += first + sizeof(value);
 		}
 	}
 	// BW1W120 inlined BW1M119 012aef50
@@ -189,68 +209,85 @@ public:
 	{
 		if (WriteEnabled)
 		{
-			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			uint32_t*      data = &value;
+			LH_FILE_RESULT result = Write(data, sizeof(value), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
 			{
 				WriteEnabled = false;
 			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
+			uint8_t first = *(uint8_t*)data;
+			Checksum += first + sizeof(value);
 		}
 	}
 	void WriteSafe(int32_t& value)
 	{
 		if (WriteEnabled)
 		{
-			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			int32_t*       data = &value;
+			LH_FILE_RESULT result = Write(data, sizeof(value), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
 			{
 				WriteEnabled = false;
 			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
+			uint8_t first = *(uint8_t*)data;
+			Checksum += first + sizeof(value);
 		}
 	}
 	void WriteSafe(int16_t& value)
 	{
 		if (WriteEnabled)
 		{
-			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			int16_t*       data = &value;
+			LH_FILE_RESULT result = Write(data, sizeof(value), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
 			{
 				WriteEnabled = false;
 			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
+			uint8_t first = *(uint8_t*)data;
+			Checksum += first + sizeof(value);
 		}
 	}
 	void WriteSafe(int8_t& value)
 	{
 		if (WriteEnabled)
 		{
-			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			int8_t*        data = &value;
+			LH_FILE_RESULT result = Write(data, sizeof(value), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
 			{
 				WriteEnabled = false;
 			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
+			uint8_t first = *(uint8_t*)data;
+			Checksum += first + sizeof(value);
 		}
 	}
 	void WriteSafe(uint16_t& value)
 	{
 		if (WriteEnabled)
 		{
-			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			uint16_t*      data = &value;
+			LH_FILE_RESULT result = Write(data, sizeof(value), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
 			{
 				WriteEnabled = false;
 			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
+			uint8_t first = *(uint8_t*)data;
+			Checksum += first + sizeof(value);
 		}
 	}
-	// fabricated: see ReadSafe(MapCoords &)
 	// BW1W120 inlined BW1M119 inlined
 	void WriteSafe(MapCoords& value)
 	{
 		if (WriteEnabled)
 		{
-			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			MapCoords*     data = &value;
+			LH_FILE_RESULT result = Write(data, sizeof(value), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
 			{
 				WriteEnabled = false;
 			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
+			uint8_t first = *(uint8_t*)data;
+			Checksum += first + sizeof(value);
 		}
 	}
 	// BW1W120 inlined BW1M119 01305e60
@@ -258,25 +295,29 @@ public:
 	{
 		if (WriteEnabled)
 		{
-			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			LHPoint*       data = &value;
+			LH_FILE_RESULT result = Write(data, sizeof(value), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
 			{
 				WriteEnabled = false;
 			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
+			uint8_t first = *(uint8_t*)data;
+			Checksum += first + sizeof(value);
 		}
 	}
-	// fabricated: no LHMatrix overload survives in either binary, but Object::Save
-	// writes its 48-byte matrix through this shape.
 	// BW1W120 inlined BW1M119 inlined
 	void WriteSafe(LHMatrix& value)
 	{
 		if (WriteEnabled)
 		{
-			if (Write(&value, sizeof(value), NULL) == LH_FILE_RESULT_ERROR)
+			LHMatrix*      data = &value;
+			LH_FILE_RESULT result = Write(data, sizeof(value), NULL);
+			if (result == LH_FILE_RESULT_ERROR)
 			{
 				WriteEnabled = false;
 			}
-			Checksum += *(uint8_t*)&value + sizeof(value);
+			uint8_t first = *(uint8_t*)data;
+			Checksum += first + sizeof(value);
 		}
 	}
 	// BW1W120 inlined BW1M119 inlined
@@ -284,7 +325,7 @@ public:
 	{
 		if (!ReadEnabled)
 		{
-			return FALSE;
+			return false;
 		}
 		long count;
 		ReadIt(count);
@@ -296,14 +337,14 @@ public:
 			list.AddToLast(element);
 			count--;
 		}
-		return TRUE;
+		return true;
 	}
 	// BW1W120 inlined BW1M119 inlined
 	template <typename T> bool32_t WriteSafe(LHListHead<T>& list)
 	{
 		if (!WriteEnabled)
 		{
-			return FALSE;
+			return false;
 		}
 		int      written = 0;
 		uint32_t count = list.count;
@@ -320,14 +361,14 @@ public:
 			}
 			WritePtr(element);
 		}
-		return TRUE;
+		return true;
 	}
 	// BW1W120 inlined BW1M119 inlined
 	template <typename T> bool32_t ReadSafe(LHLinkedList<T>& list)
 	{
 		if (!ReadEnabled)
 		{
-			return FALSE;
+			return false;
 		}
 		long count;
 		ReadIt(count);
@@ -338,14 +379,14 @@ public:
 			list.AddToEnd(element);
 			count--;
 		}
-		return TRUE;
+		return true;
 	}
 	// BW1W120 inlined BW1M119 inlined
 	template <typename T> bool32_t WriteSafe(LHLinkedList<T>& list)
 	{
 		if (!WriteEnabled)
 		{
-			return FALSE;
+			return false;
 		}
 		uint32_t count = list.count;
 		int      written = 0;
@@ -367,7 +408,56 @@ public:
 		{
 			WriteEnabled = false;
 		}
-		return TRUE;
+		return true;
+	}
+	// BW1W120 inlined BW1M119 01305f20
+	template <typename T> void WriteSafe(GTPointer<T>& pointer)
+	{
+		WriteIt(pointer.GameTurnValidated);
+		WriteSafe(pointer.Pointer);
+	}
+	// BW1W120 inlined BW1M119 01305c10
+	template <typename T> void ReadSafe(GTPointer<T>& pointer)
+	{
+		if (ReadEnabled)
+		{
+			ReadIt(pointer.GameTurnValidated);
+			ReadSafe(pointer.Pointer);
+		}
+	}
+	// BW1W120 inlined BW1M119 01489e20
+	template <typename T> void WriteSafe(GJVector<T>& vector)
+	{
+		if (WriteEnabled)
+		{
+			long count = vector.GetSize();
+			WriteIt(count);
+			for (long i = 0; i < count; ++i)
+			{
+				WriteSafe(vector[i]);
+				if (!WriteEnabled)
+				{
+					break;
+				}
+			}
+		}
+	}
+	// BW1W120 inlined BW1M119 01422dc0
+	template <typename T> void ReadSafe(GJVector<T>& vector)
+	{
+		if (ReadEnabled)
+		{
+			long count;
+			ReadIt(count);
+			long i = 0;
+			while (i < count)
+			{
+				T value;
+				ReadSafe(value);
+				vector.PushBack(value);
+				++i;
+			}
+		}
 	}
 	// BW1W120 inlined BW1M119 inlined
 	template <typename T> void ReadSafe2DArray(T (*values)[2])
@@ -470,13 +560,11 @@ public:
 		}
 	}
 	// BW1W120 00558dc0 BW1M119 01307600
-	// TODO: Integrate the recovered factory after fixing constructed class layouts,
-	// particle nested scopes, and class-specific allocation functions.
 	void LoadInstance(GameThing** out_thing);
 	// BW1W120 00561c60 BW1M119 01307010
 	void ResolveAllLoads();
 	// BW1W120 00561e10 BW1M119 01306750
-	void WritePtr(GameThing* param_1);
+	void WritePtr(GameThing* thing);
 	// BW1W120 00562180 BW1M119 013061b0
 	void ReadPtr(GameThing** ptr);
 	// BW1W120 00562240 BW1M119 013060b0
@@ -487,7 +575,6 @@ public:
 	void WriteSafe(SpellTargets& value);
 	// BW1W120 005624e0 BW1M119 01305a10
 	void ReadSafe(SpellTargets& value);
-	// TODO: Other verified serializers still need their type tags and scope resolved.
 	// BW1W120 005626c0 BW1M119 01305970
 	void WriteSafe(CollectionAndOwnership& value);
 	// BW1W120 00562720 BW1M119 013058e0
@@ -497,13 +584,13 @@ public:
 	// BW1W120 005628c0 BW1M119 01305390
 	void ReadSafe(LightningObjectInfo& value);
 	// BW1W120 00562a00 BW1M119 01305170
-	void WriteSafe(CreatureReceiveSpell_TPerSpellData& value);
+	void WriteSafe(CreatureReceiveSpell::TPerSpellData& value);
 	// BW1W120 00562b40 BW1M119 01304f70
-	void ReadSafe(CreatureReceiveSpell_TPerSpellData& value);
+	void ReadSafe(CreatureReceiveSpell::TPerSpellData& value);
 	// BW1W120 00562c70 BW1M119 01304e40
-	void WriteSafe(CreatureReceiveSpell_QueueData& value);
+	void WriteSafe(CreatureReceiveSpell::QueueData& value);
 	// BW1W120 00562d00 BW1M119 01304d20
-	void ReadSafe(CreatureReceiveSpell_QueueData& value);
+	void ReadSafe(CreatureReceiveSpell::QueueData& value);
 	// BW1W120 00562d90 BW1M119 01304c00
 	void WriteSafe(Persistent* const& ptr);
 	// BW1W120 00562e50 BW1M119 01304ae0
@@ -564,10 +651,6 @@ public:
 
 static_assert(sizeof(GameOSFile) == 0x230, "GameOSFile size is incorrect");
 
-// fabricated name: the original spelling is unknown, but Save paths re-check
-// WriteEnabled before every field write (Abode::Save), and only a macro can add
-// that guard without spending an inline level (WriteSafe must still expand
-// under the depth-1 inlining those TUs use). Load paths do not guard ReadSafe.
 #define WRITE_SAFE(file, value)                                                                                        \
 	if (GameOSFile::WriteEnabled)                                                                                      \
 	{                                                                                                                  \
@@ -580,9 +663,6 @@ static_assert(sizeof(GameOSFile) == 0x230, "GameOSFile size is incorrect");
 		(file).WriteIt(value);                                                                                         \
 	}
 
-// fabricated names: the original counted-array template names are unknown.
-// Each array has an unsigned-int count followed by individually checksummed raw elements.
-// Readers trust the saved count and keep iterating after errors; writers stop on an element error.
 template <typename T> static inline void ReadCountedArray(GameOSFile& file, T* values)
 {
 	if (GameOSFile::ReadEnabled)

@@ -45,7 +45,7 @@ bool32_t Villager::ShepherdLookForFlock()
 		Flock* new_flock = GetTown()->GetFlock(LIVING_TYPE_ANY, 0);
 		if (new_flock != NULL)
 		{
-			if (flock != NULL)
+			if (flock.Get() != NULL)
 				flock->RemoveLivingFromFlock(this, 1);
 			SetFlock(new_flock);
 			flock->Shepherd = this;
@@ -67,7 +67,7 @@ bool32_t Villager::FindClosestFlockAnimal()
 bool32_t Villager::ShepherdMoveFlockToWater()
 {
 	GetJobInfo(10); // result discarded
-	Flock*    my_flock = flock;
+	Flock*    my_flock = flock.Get();
 	Abode*    abode = GetAbode();
 	MapCoords waterPos;
 	if (abode != NULL && my_flock != NULL)
@@ -80,11 +80,7 @@ bool32_t Villager::ShepherdMoveFlockToWater()
 			((int16_t*)&TargetThing)[0] = 900;
 			((uint16_t*)&TargetThing)[1] = VILLAGER_STATE_SHEPHERD_MOVE_FLOCK_BACK;
 			SetupMoveToWithHug(waterPos, VILLAGER_STATE_SHEPHERD_WAIT_FOR_FLOCK);
-			Living* animal;
-			if (my_flock->members != NULL)
-				animal = my_flock->members->payload;
-			else
-				animal = NULL;
+			Living* animal = my_flock->Members.GetFirst();
 			SetSpeed(animal->speed, 0);
 			SetStateAnim();
 			return true;
@@ -117,8 +113,8 @@ bool32_t Villager::ShepherdWaitForFlock()
 bool32_t Villager::ShepherdGotoFlock()
 {
 	MapCoords flockPos;
-	Flock*    my_flock = flock;
-	if (my_flock == NULL || my_flock->leader == NULL || my_flock->leader->payload == NULL)
+	Flock*    my_flock = flock.Get();
+	if (my_flock == NULL || my_flock->Members.GetLast() == NULL)
 	{
 		ShepherdLookForFlock();
 		return false;
@@ -137,15 +133,11 @@ bool32_t Villager::ShepherdGotoFlock()
 // 0x52fa50 on the flock; needs that helper named
 bool32_t Villager::ShepherdTakesControlOfFlock()
 {
-	Flock* my_flock = flock;
+	Flock* my_flock = flock.Get();
 	if (GetJobInfo(10)->GetJobActivity() != 0 && my_flock != NULL)
 	{
 		my_flock->GetFlockPos(); // result unused
-		Living* leader;
-		if (my_flock->leader != NULL)
-			leader = my_flock->leader->payload;
-		else
-			leader = NULL;
+		Living* leader = my_flock->Members.GetLast();
 		((int16_t*)&TargetThing)[0] = 50;
 		SetupMoveToObject(leader, VILLAGER_STATE_SHEPHERD_DECIDE_WHAT_TO_DO_WITH_FLOCK);
 		return 1;
@@ -156,7 +148,7 @@ bool32_t Villager::ShepherdTakesControlOfFlock()
 // BW1W120 00768f20 BW1M119 0159f2a0
 bool32_t Villager::ShepherdReleasesControlOfFlock()
 {
-	if (flock != NULL)
+	if (flock.Get() != NULL)
 	{
 		((int16_t*)&TargetThing)[0] = 20;
 		((uint16_t*)&TargetThing)[1] = VILLAGER_STATE_GO_HOME;
@@ -171,7 +163,7 @@ bool32_t Villager::ExitShepherding(unsigned char state)
 {
 	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state))
 	{
-		Flock* my_flock = flock;
+		Flock* my_flock = flock.Get();
 		if (my_flock != NULL)
 		{
 			my_flock->SetDomainCentrePos(my_flock->SavedDomainCentre);
@@ -189,14 +181,15 @@ bool32_t Villager::ShepherdDecideWhatToDoWithFlock()
 	((int16_t*)&TargetThing)[0]--;
 	if (((int16_t*)&TargetThing)[0] == 0)
 	{
-		if (flock->NumMembers < 2)
+		if (flock->Members.GetSize() < 2)
 		{
 			SetTopState(VILLAGER_STATE_SHEPHERD_RELEASES_CONTROL_OF_FLOCK);
 			return 0;
 		}
 		GTownDesireInfo* info = GetTown()->desire.GetInfo(TOWN_DESIRE_INFO_FOR_FOOD);
 		float            desire = GetTown()->GetDesire(TOWN_DESIRE_INFO_FOR_FOOD);
-		if (desire >= info->DesireTriggersVillagerAction && flock != NULL && (flock->NumMembers > 2 || desire > 0.5f))
+		if (desire >= info->DesireTriggersVillagerAction && flock.Get() != NULL &&
+		    (flock->Members.GetSize() > 2 || desire > 0.5f))
 		{
 			SetTopState(VILLAGER_STATE_SHEPHERD_TAKE_ANIMAL_FOR_SLAUGHTER);
 			return 1;
@@ -209,16 +202,12 @@ bool32_t Villager::ShepherdDecideWhatToDoWithFlock()
 // BW1W120 00769070 BW1M119 0159ef90
 bool32_t Villager::ShepherdMoveFlockBack()
 {
-	Flock* my_flock = flock;
+	Flock* my_flock = flock.Get();
 	if (my_flock != NULL)
 	{
 		my_flock->SetDomainCentrePos(my_flock->SavedDomainCentre);
 		SetupMoveToWithHug(my_flock->SavedDomainCentre, VILLAGER_STATE_SHEPHERD_RELEASES_CONTROL_OF_FLOCK);
-		Living* animal;
-		if (my_flock->members != NULL)
-			animal = my_flock->members->payload;
-		else
-			animal = NULL;
+		Living* animal = my_flock->Members.GetFirst();
 		SetSpeed(animal->speed, 0);
 		SetStateAnim();
 		return 1;
@@ -238,7 +227,7 @@ bool32_t Villager::ShepherdMoveFlockToFood()
 // the target continues to set up (see Flock.h)
 bool32_t Villager::ShepherdTakeAnimalForSlaughter()
 {
-	Flock* my_flock = flock;
+	Flock* my_flock = flock.Get();
 	if (my_flock != NULL)
 	{
 		Living* animal = NULL; // fabricated -- stands in for the unnamed helper above
@@ -267,12 +256,12 @@ bool32_t Villager::ShepherdTakeAnimalForSlaughter()
 bool32_t Villager::ShepherdCheckAnimalForSlaughter()
 {
 	((int16_t*)&TargetThing)[0]--;
-	Flock* my_flock = flock;
+	Flock* my_flock = flock.Get();
 	if (((int16_t*)&TargetThing)[0] > 0)
 		return 0;
 	if (my_flock != NULL)
 	{
-		if (my_flock->NumMembers < 2)
+		if (my_flock->Members.GetSize() < 2)
 		{
 			((int16_t*)&TargetThing)[0] = 20;
 			SetTopState(VILLAGER_STATE_SHEPHERD_DECIDE_WHAT_TO_DO_WITH_FLOCK);
@@ -307,11 +296,7 @@ bool32_t Villager::ShepherdCheckAnimalForSlaughter()
 			SetStateAnim();
 			return 1;
 		}
-		Living* member;
-		if (my_flock->members != NULL)
-			member = my_flock->members->payload;
-		else
-			member = NULL;
+		Living* member = my_flock->Members.GetFirst();
 		SetGameAngle(GUtils::GetAngleFromXZ(Pos, member->Pos));
 		((int16_t*)&TargetThing)[0] = 20;
 	}
@@ -327,7 +312,7 @@ bool32_t Villager::ShepherdCheckAnimalForSlaughter()
 bool32_t Villager::ShepherdSlaughterAnimal()
 {
 	((int16_t*)&TargetThing)[0]--;
-	Flock* my_flock = flock;
+	Flock* my_flock = flock.Get();
 	if (((int16_t*)&TargetThing)[0] <= 0 && my_flock != NULL)
 	{
 		Living* animal = (Living*)SlaughterAnimalIsClose(4.0f, this);
@@ -349,7 +334,7 @@ bool32_t Villager::ShepherdSlaughterAnimal()
 // TODO: passthrough of the nearest-flock-member helper at 0x530050; needs it named
 bool32_t Villager::SlaughterAnimalIsClose(float max_dist, Living* exclude)
 {
-	if (flock != NULL)
+	if (flock.Get() != NULL)
 	{
 	}
 	return 0;

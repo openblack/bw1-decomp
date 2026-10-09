@@ -19,15 +19,16 @@ class SpellHeal : public Spell
 public:
 	// Override methods
 
-	// BW1W120 0055d1b0 BW1M119 0153c800
-	virtual ~SpellHeal();
 	// BW1W120 0055d1a0 BW1M119 0153c8e0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "SpellHeal:"; }
 	// BW1W120 0055d190 BW1M119 0153c8a0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_HEAL; }
 	// BW1W120 0072d870 BW1M119 015375d0
 	virtual int InitWithPos(GameThing* param_1, const MapCoords& param_2, SpellCastData* param_3,
 	                        const PSysProcessInfo& param_4);
+
+	// BW1W120 inlined BW1M119 inlined
+	SpellHeal() {}
 };
 
 #endif /* BW1_DECOMP_SPELL_HEAL_INCLUDED_H */

@@ -2,9 +2,12 @@
 #define BW1_DECOMP_CITADEL_PART_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
+#include <Lionhead/LHLib/ver5.0/LHFastPointer.h>     /* For LHFastPointer */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>        /* For LHListNode */
 
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 
@@ -28,10 +31,10 @@ class Spell;
 class CitadelPart : public MultiMapFixed
 {
 public:
-	float        field_0x7c;
-	Citadel*     citadel; /* 0x80 */
-	CitadelPart* next;
-	GameThing*   GameThing0x88;
+	float                   Influence;
+	LHFastPointer<Citadel>  citadel;
+	LHListNode<CitadelPart> next;
+	LHFastPointer<Citadel>  GameThing0x88;
 
 	// Override methods
 
@@ -53,10 +56,10 @@ public:
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 00464a80 BW1M119 0108cdc0
 	virtual Citadel* GetCitadel();
-	// BW1W120 00464b00 BW1M119 inlined
-	virtual uint32_t IsCitadelPart_0();
 	// BW1W120 00464b10 BW1M119 inlined
-	virtual uint32_t IsCitadelPart_1(Creature* param_1);
+	virtual bool32_t IsCitadelPart(Creature* creature) { return true; }
+	// BW1W120 00464b00 BW1M119 inlined
+	virtual bool32_t IsCitadelPart() { return true; }
 	// BW1W120 00469780 BW1M119 011ca430
 	virtual void* GetActualObjectToEffect(GPlayer* param_1, bool param_2);
 	// BW1W120 004695c0 BW1M119 011caae0
@@ -70,7 +73,7 @@ public:
 	// BW1W120 004694b0 BW1M119 011caf10
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 004695d0 BW1M119 inlined
-	virtual uint32_t CanBeDestroyedBySpell_1(Spell* param_1);
+	virtual bool32_t CanBeDestroyedBySpell(Spell* spell) { return false; }
 	// BW1W120 004697f0 BW1M119 011ca350
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 004694c0 BW1M119 011caf50
@@ -87,10 +90,17 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 01310780
-	CitadelPart();
+	CitadelPart() { SetToZero(); }
+
+	// BW1W120 inlined BW1M119 013109e0
+	void SetToZero()
+	{
+		FixedFlags = 0;
+		Influence = 0.0f;
+	}
 	// BW1W120 004693f0 BW1M119 011cadc0
-	CitadelPart(const MapCoords& coords, const GCitadelPartInfo* info, Citadel* citadel, float y_angle, float scale,
-	            float param_6, int param_7);
+	CitadelPart(const MapCoords& coords, const GCitadelPartInfo* info, Citadel* parent_citadel, float y_angle,
+	            float scale, float food, int wood);
 };
 
 #endif /* BW1_DECOMP_CITADEL_PART_INCLUDED_H */

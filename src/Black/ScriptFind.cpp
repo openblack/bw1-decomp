@@ -114,7 +114,7 @@ uint32_t GScript::GetSubType(GameThingWithPos* thing)
 		subtype = ((Field*)thing)->type_info - GFieldTypeInfo::GetInfo();
 		break;
 	case SCRIPT_OBJECT_TYPE_WORSHIP_SITE:
-		subtype = ((WorshipSite*)thing)->tribe_info - GTribeInfo::GetInfo();
+		subtype = ((WorshipSite*)thing)->tribe_info.Get() - GTribeInfo::GetInfo();
 		break;
 	case SCRIPT_OBJECT_TYPE_HIGHLIGHT:
 		subtype = (const GScriptHighlightInfo*)((Object*)thing)->info - GScriptHighlightInfo::GetInfo();

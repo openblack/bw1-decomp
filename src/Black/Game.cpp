@@ -164,6 +164,8 @@
 #include <string.h>
 #include <wchar.h>
 
+#define RAND_SEED 0x88f89f
+
 inline void ValueSpinner::AddDrawing()
 {
 	if (LH3DRender::g_started_frame)
@@ -299,8 +301,8 @@ bool32_t GGame::Init()
 	InitialiseLiquidParticles();
 	DeadTree::Init();
 	GGameInfo::Info.MillisecondsPerGameTurn = 100;
-	data.field_0xc = 0x88f89f;
-	data.RandSeed = 0x88f89f;
+	data.InitialRandSeed = RAND_SEED;
+	data.RandSeed = RAND_SEED;
 	fn_0054D610();
 	RenderLoadingFrame("Setting up players...");
 	SetupPlayers();
@@ -558,7 +560,7 @@ void GGame::LoadMap(char* map_path)
 		g_game->ClearMap();
 		LH3DLandscape::Release();
 		LH3DIsland::Release();
-		g_game->data.field_0x20 = 0;
+		g_game->data.MapLoadCount = 0;
 		GSetup::LoadMapFeatures(map_path);
 		Town::AsssignTownFeature();
 	}
@@ -1139,7 +1141,7 @@ GGame::GGame()
 	DanceLight::InitialiseBitmaps();
 	RPHolder::InitialiseSystem(CheckSquareFunction, AddSpecialRPObjects);
 	GameFlags |= GAME_FLAG_AUTO_SAVE_ENABLED;
-	field_0x2502a4 = 0;
+	AutoSaved = false;
 	LandNumber = 0;
 	field_0x25053c = 0;
 	field_0x250540 = 0;
@@ -1816,7 +1818,7 @@ void GGame::DoNetworkStart()
 {
 	RenderLoadingFrame("Waiting for completion of user data transer...");
 	network.field_0x4 = 1.0f;
-	g_game->data.field_0x14 = g_game->network.session->SuperPacketGameTurn + 1;
+	g_game->data.RealGameTurn = g_game->network.session->SuperPacketGameTurn + 1;
 	RenderLoadingFrame("Waiting for first super packet...");
 	RenderLoadingFrame("Found superpacket.");
 	GatheringBox::InitialiseForCurrentGame();
@@ -1932,7 +1934,7 @@ void GGame::Loop()
 		LeaveCriticalSection(&LHKeyboard::CriticalSection);
 		ProcessNetworkPackets();
 		fn_005525E0();
-		++data.field_0x1c;
+		++data.FrameCount;
 		if (RenderLoopEnabled)
 		{
 			if ((GameFlags & GAME_FLAG_PAUSED) == 0)
@@ -2431,7 +2433,7 @@ void GGame::ProcessGameCode()
 // BW1W120 0054e4f0 BW1M119 01086050
 void GGame::StartTurn()
 {
-	++data.field_0x14;
+	++data.RealGameTurn;
 	if ((GameFlags & GAME_FLAG_PAUSED) == 0)
 	{
 		++data.GameTurn;
@@ -2586,7 +2588,7 @@ void GGame::EndTurn()
 	GameFlags &= ~0x10u;
 	if ((GameFlags & GAME_FLAG_AUTO_SAVE_ENABLED) != 0 && field_0x205a10 == 0)
 	{
-		GameOSFile::AutoSave(0);
+		GameOSFile::AutoSave(false);
 	}
 	network.UpdateDebug();
 	if (field_0x205a10 == 0 && g_game->SkirmishGame == false && !g_game->IsMultiplayerGame() &&
@@ -2778,8 +2780,8 @@ uint32_t GGame::Save(GameOSFile& file)
 	if (creature)
 	{
 		// The original combines low bytes by addition, without Boolean normalization.
-		creatureFlags = (unsigned char)creature->field_0x110c + 2 * (unsigned char)creature->field_0x1110 +
-		                4 * (unsigned char)creature->field_0x1114;
+		creatureFlags = (unsigned char)creature->ScriptFlag0 + 2 * (unsigned char)creature->ScriptFlag1 +
+		                4 * (unsigned char)creature->ScriptFlag2;
 	}
 	file.WriteIt(creatureFlags);
 	file.WriteIt(field_0x205a5c);

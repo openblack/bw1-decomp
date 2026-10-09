@@ -33,6 +33,8 @@ public:
 
 	// Override methods
 
+	// BW1W120 00439580 BW1M119 null
+	virtual void CreateCollideData();
 	// BW1W120 00438e20 BW1M119 010b6510
 	virtual ~BigForest();
 	// BW1W120 00438e60 BW1M119 010b6260
@@ -92,6 +94,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	BigForest() {}
 	// BW1W120 00438ce0 BW1M119 010b65a0
 	BigForest(const MapCoords& coords, const GBigForestInfo* info, uint32_t param_3, float param_4, float param_5);
 };

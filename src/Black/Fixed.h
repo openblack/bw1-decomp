@@ -137,6 +137,13 @@ public:
 	// BW1W120 0052f510 BW1M119 010e34a0
 	virtual void CreateCollideData();
 
+	// BW1W120 inlined BW1M119 0130f2d0
+	SingleMapFixed()
+	{
+		SetToZero();
+		CollideData = NULL;
+	}
+
 	// Non-virtual methods
 
 	// BW1W120 0052f6a0 BW1M119 010e3190

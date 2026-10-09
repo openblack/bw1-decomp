@@ -5,17 +5,16 @@
 #include "CitadelPartInfo.h"
 #include "GameOSFile.h"
 
-CitadelPart::CitadelPart() : MultiMapFixed(), citadel(NULL), next(NULL), GameThing0x88(NULL), field_0x7c(0.0f) {}
-
-CitadelPart::CitadelPart(const MapCoords& coords, const GCitadelPartInfo* info, Citadel* citadel, float y_angle,
-                         float scale, float param_6, int param_7)
-	: MultiMapFixed(coords, info, y_angle, scale, param_6, param_7), citadel(citadel), next(NULL), GameThing0x88(NULL)
+CitadelPart::CitadelPart(const MapCoords& coords, const GCitadelPartInfo* info, Citadel* parent_citadel, float y_angle,
+                         float scale, float food, int wood)
+	: MultiMapFixed(coords, info, y_angle, scale, food, wood)
 {
+	citadel.Set(parent_citadel);
 	SetLife(info->life);
-	field_0x7c = info->influence;
-	if (citadel != NULL)
+	Influence = info->influence;
+	if (parent_citadel != NULL)
 	{
-		citadel->PartList.AddToFirst(this);
+		parent_citadel->PartList.AddToFirst(this);
 	}
 }
 
@@ -26,9 +25,9 @@ uint32_t CitadelPart::Load(GameOSFile& file)
 		return 0;
 	}
 
-	file.ReadIt(field_0x7c);
+	file.ReadIt(Influence);
 	file.ReadPtr((GameThing**)&citadel);
-	file.ReadPtr(&GameThing0x88);
+	file.ReadPtr((GameThing**)&GameThing0x88);
 
 	return 1;
 }

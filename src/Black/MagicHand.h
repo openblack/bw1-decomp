@@ -33,6 +33,9 @@ public:
 	// BW1W120 005faf20 BW1M119 013b4c10
 	virtual uint32_t GetSaveType();
 
+	// BW1W120 005faf00 BW1M119 013b5640
+	GMagicHand();
+
 	// Non-virtual methods
 
 	// BW1W120 005fb040 BW1M119 01077ae0

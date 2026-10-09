@@ -21,18 +21,22 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055d020 BW1M119 015265e0
-	virtual ~SpellWater();
 	// BW1W120 0055d010 BW1M119 015266c0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "SpellWater:"; }
 	// BW1W120 007253b0 BW1M119 015267e0
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00725420 BW1M119 01526700
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055d000 BW1M119 01526680
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_WATER; }
 	// BW1W120 00724ed0 BW1M119 01526a80
 	virtual uint32_t Process();
+
+	// BW1W120 inlined BW1M119 inlined
+	SpellWater() { SetToZero(); }
+
+	// BW1W120 00724ec0 BW1M119 01527090
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_SPELL_WATER_INCLUDED_H */

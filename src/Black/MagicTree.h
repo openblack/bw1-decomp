@@ -20,6 +20,8 @@ class Object;
 class MagicTree : public Tree
 {
 public:
+	uint8_t field_0x6c[0x8];
+
 	// Override methods
 
 	// BW1W120 005fcf30 BW1M119 013ba1f0
@@ -42,6 +44,9 @@ public:
 	virtual void StartOnFire();
 	// BW1W120 005fd0e0 BW1M119 013ba590
 	virtual void EndOnFire();
+
+	// BW1W120 005fcec0 BW1M119 013baa90
+	MagicTree();
 };
 
 #endif /* BW1_DECOMP_MAGIC_TREE_INCLUDED_H */

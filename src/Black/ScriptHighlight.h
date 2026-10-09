@@ -11,6 +11,7 @@
 
 // Forward Declares
 
+class LHOSFile;
 class Base;
 class Creature;
 class EffectValues;
@@ -46,6 +47,8 @@ public:
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00709850 BW1M119 01501670
 	virtual uint32_t GetSaveType();
+	// BW1W120 007097f0 BW1M119 01501480
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
 	// BW1W120 00709760 BW1M119 01501190
 	virtual void PhysicsEditorCreate(int param_1);
 	// BW1W120 0070ae10 BW1M119 01501800
@@ -99,6 +102,9 @@ public:
 	// BW1W120 0070ae40 BW1M119 015016f0
 	virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3,
 	                            void(__cdecl* param_4)(int, Point2D, float, int));
+
+	// BW1W120 00709700 BW1M119 01503500
+	ScriptHighlight();
 
 	// Static methods
 

@@ -190,7 +190,7 @@ void CameraModeFollow::SetToDestinationPosition()
 		if (focus->IsFlock())
 		{
 			Flock*    flock = (Flock*)focus;
-			Living*   leader = flock->leader ? flock->leader->payload : NULL;
+			Living*   leader = flock->Members.GetLast();
 			MapCoords flockPos = *flock->GetFlockPos();
 			GLandscape::ConvertMapCoordToLandscapePoint(flockPos, point);
 			if (leader)
@@ -217,7 +217,7 @@ void CameraModeFollow::SetToDestinationPosition()
 		if (Target->IsFlock())
 		{
 			Flock*    flock = (Flock*)Target;
-			Living*   leader = flock->leader ? flock->leader->payload : NULL;
+			Living*   leader = flock->Members.GetLast();
 			MapCoords flockPos = *flock->GetFlockPos();
 			GLandscape::ConvertMapCoordToLandscapePoint(flockPos, targetPoint);
 			if (leader)
@@ -320,7 +320,7 @@ void CameraModeFollow::Update()
 		if (focus->IsFlock())
 		{
 			Flock*    flock = (Flock*)focus;
-			Living*   leader = flock->leader ? flock->leader->payload : NULL;
+			Living*   leader = flock->Members.GetLast();
 			MapCoords flockPos = *flock->GetFlockPos();
 			GLandscape::ConvertMapCoordToLandscapePoint(flockPos, point);
 			if (leader)
@@ -353,7 +353,7 @@ void CameraModeFollow::Update()
 		if (Target->IsFlock())
 		{
 			Flock*    flock = (Flock*)Target;
-			Living*   leader = flock->leader ? flock->leader->payload : NULL;
+			Living*   leader = flock->Members.GetLast();
 			MapCoords flockPos = *flock->GetFlockPos();
 			GLandscape::ConvertMapCoordToLandscapePoint(flockPos, point);
 			if (leader)

@@ -27,10 +27,6 @@ public:
 
 	// BW1W120 007bc6a0 BW1M119 01165f60 (LHCombined Release)
 	static LH_FILE_RESULT Exists(const char* path);
-	// BW1W120 007bcc20 BW1M119 01165190 (LHCombined Release)
-	static LH_FILE_RESULT __stdcall Rename(const char* from, const char* to);
-	// BW1W120 007bcc40 BW1M119 01165100 (LHCombined Release)
-	static LH_FILE_RESULT __stdcall Delete(const char* path);
 
 	// Constructors
 
@@ -38,6 +34,11 @@ public:
 	LHOSFile();
 
 	// Non-virtual methods
+
+	// BW1W120 007bcc20 BW1M119 01165190 (LHCombined Release)
+	LH_FILE_RESULT Rename(char* from, char* to);
+	// BW1W120 007bcc40 BW1M119 01165100 (LHCombined Release)
+	LH_FILE_RESULT Delete(char* path);
 
 	// BW1W120 0046b720 BW1M119 inlined
 	LH_FILE_RESULT Write(const char* str);

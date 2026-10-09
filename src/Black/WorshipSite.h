@@ -2,15 +2,19 @@
 #define BW1_DECOMP_WORSHIP_SITE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For int16_t, uint32_t, uint8_t */
 
 #include <chlasm/Enum.h>        /* For enum ABODE_TYPE, enum RESOURCE_TYPE, enum SPELL_SEED_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
-#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For LHLinkedList */
-#include <Lionhead/LHLib/ver5.0/LHListHead.h>   /* For LHListHead */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>        /* For LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHListHead.h>          /* For LHListHead */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>          /* For LHListNode */
+#include <Lionhead/LHLib/ver5.0/LHOrderedLinkedList.h> /* For LHOrderedLinkedList */
 
 #include "CitadelPart.h"      /* For struct CitadelPart */
+#include "LHPTR.h"            /* For LHPTR */
 #include "WorshipSpellIcon.h" /* For struct WorshipSpellIcon */
 
 // Forward Declares
@@ -32,45 +36,49 @@ class MultiMapFixed;
 class Object;
 class PotStructure;
 class ShowNeeds;
+class SortVillagerOnNeedToGoHome;
 class Town;
+class TownArtifact;
 class Villager;
+class WorshipSiteUpgrade;
 class WorshipTotem;
 
 class WorshipSite : public CitadelPart
 {
 public:
-	GTribeInfo*                  tribe_info; /* 0x8c */
-	ShowNeeds*                   show_needs; /* 0x90 */
-	uint32_t                     field_0x94;
-	uint32_t                     field_0x98;
-	uint32_t                     field_0x9c;
-	Dance*                       dance; /* 0xa0 */
-	LHLinkedList<Town*>          Towns;
-	uint8_t                      field_0xac[0xc];
-	int*                         field_0xb8;
-	uint8_t                      field_0xbc[0xc];
-	int                          field_0xc8;
-	uint8_t                      field_0xcc[0xc];
-	int                          field_0xd8;
-	WorshipTotem*                totem;
-	LHListHead<WorshipSpellIcon> IconList; /* 0xe0 */
-	uint8_t                      field_0xe8[0x1c];
-	float                        ChantDamage; /* 0x104 */
-	uint8_t                      field_0x108[0xc];
-	float                        field_0x114;
-	float                        field_0x118;
-	float                        field_0x11c;
-	uint32_t                     field_0x120;
-	int                          NumVillagersRequestingToGoHome;
+	LHFastPointer<const GTribeInfo>                 tribe_info;
+	LHFastPointer<ShowNeeds>                        show_needs;
+	LHListNode<WorshipSite>                         next;
+	LHListHead<WorshipSiteUpgrade>                  Upgrades;
+	LHPTR<Dance>                                    dance;
+	LHLinkedList<Town*>                             Towns;
+	LHLinkedList<TownArtifact*>                     Artifacts;
+	uint8_t                                         field_0xb4[0x20];
+	LHLinkedList<Villager*>                         Worshippers;
+	LHPTR<WorshipTotem>                             totem;
+	LHListHead<WorshipSpellIcon>                    IconList;
+	uint8_t                                         field_0xe8[0x1c];
+	float                                           ChantDamage;
+	uint8_t                                         field_0x108[0xc];
+	float                                           field_0x114;
+	float                                           field_0x118;
+	float                                           field_0x11c;
+	LHOrderedLinkedList<SortVillagerOnNeedToGoHome> VillagersRequestingToGoHome;
 
 	// Override methods
 
-	// BW1W120 0055dcf0 BW1M119 015ba5a0
+	// BW1W120 0077dc50 BW1M119 015b3600
+	virtual void BuildBy(float amount);
+	// BW1W120 0077bff0 BW1M119 015b7b50
+	virtual PlannedMultiMapFixed* ConvertToPlanned();
+	// BW1W120 0077e490 BW1M119 015b21b0
+	virtual void CreateCollideData();
+	// BW1W120 0077aa30 BW1M119 015ba5a0
 	virtual ~WorshipSite();
 	// BW1W120 0077aa60 BW1M119 015ba240
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0055dc50 BW1M119 015bac90
-	virtual void RemoveDance();
+	virtual void RemoveDance() { dance = NULL; }
 	// BW1W120 0077bd80 BW1M119 015b8190
 	virtual uint32_t GetResource(RESOURCE_TYPE param_1);
 	// BW1W120 0077c5f0 BW1M119 015b6cf0
@@ -79,7 +87,7 @@ public:
 	// BW1W120 0077c670 BW1M119 015b6c10
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 0055dce0 BW1M119 015baf10
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "WorshipSite:"; }
 	// BW1W120 0077cd70 BW1M119 015b5ed0
 	virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
 	// BW1W120 0077d700 BW1M119 015b3ab0
@@ -87,23 +95,23 @@ public:
 	// BW1W120 0077d2f0 BW1M119 015b4810
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055dcd0 BW1M119 015baed0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_WORSHIP_SITE; }
 	// BW1W120 0077daf0 BW1M119 015b3a60
 	virtual void ResolveLoad();
 	// BW1W120 0077ced0 BW1M119 inlined
 	virtual MapCoords GetArrivePos();
 	// BW1W120 0055dc30 BW1M119 015bac30
-	virtual MapCoords GetInteractPos();
+	virtual MapCoords GetInteractPos() { return GetFoodDrop(); }
 	// BW1W120 0055dc80 BW1M119 015bad60
-	virtual bool32_t IsSuitableForCreatureAction();
+	virtual bool32_t IsSuitableForCreatureAction() { return false; }
 	// BW1W120 004e4b60 BW1M119 015ebca0
 	virtual bool32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
-	// BW1W120 0055dca0 BW1M119 inlined
-	virtual uint32_t IsWorshipSite_1();
-	// BW1W120 0055dc90 BW1M119 inlined
-	virtual uint32_t IsWorshipSite_0(Creature* param_1);
+	// BW1W120 0055dc90 BW1M119 015badf0
+	virtual bool32_t IsWorshipSite(Creature* creature) { return true; }
+	// BW1W120 0055dca0 BW1M119 015badb0
+	virtual bool32_t IsWorshipSite() { return true; }
 	// BW1W120 0055dcb0 BW1M119 015bae40
-	virtual WorshipSite* GetWorshipSite();
+	virtual WorshipSite* GetWorshipSite() { return this; }
 	// BW1W120 0077c310 BW1M119 015b73a0
 	virtual float CalculateDesireForFood();
 	// BW1W120 0077c390 BW1M119 015b72e0
@@ -139,7 +147,7 @@ public:
 	// BW1W120 0077de20 BW1M119 015b31a0
 	virtual float GetDistanceFromObject(Object* param_1);
 	// BW1W120 0055dc60 BW1M119 015bacd0
-	virtual bool InteractsWithPhysicsObjects();
+	virtual bool InteractsWithPhysicsObjects() { return false; }
 	// BW1W120 0077ae30 BW1M119 015b9c70
 	virtual bool32_t GetInspectObjectPos(Villager* param_1, MapCoords* param_2);
 	// BW1W120 0077cc90 BW1M119 015b5f40
@@ -150,14 +158,14 @@ public:
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 0077dc90 BW1M119 015b3460
 	virtual LHPoint GetNearestEdgeOfObject(Object* object);
-	// BW1W120 0077e460 BW1M119 inlined
-	virtual void GetResourceDropPosForComputerPlayer(MapCoords* param_1);
+	// BW1W120 0077e460 BW1M119 015b2600
+	virtual MapCoords GetResourceDropPosForComputerPlayer(RESOURCE_TYPE type);
 	// BW1W120 0077bdd0 BW1M119 015b8010
 	virtual bool32_t IsBuilt();
 	// BW1W120 0077ac10 BW1M119 015ba190
 	virtual bool32_t Built();
 	// BW1W120 0055dc70 BW1M119 015bad20
-	virtual ABODE_TYPE GetAbodeType();
+	virtual ABODE_TYPE GetAbodeType() { return ABODE_TYPE_CITADEL; }
 	// BW1W120 0077c5d0 BW1M119 015b6e20
 	virtual MapCoords GetResourcePos(RESOURCE_TYPE type, long index);
 	// BW1W120 0077c6d0 BW1M119 015b6b00
@@ -165,12 +173,22 @@ public:
 	// BW1W120 0077ae10 BW1M119 015b9d00
 	virtual void RemovePotFromStructure(PotStructure* param_1);
 
+	// BW1W120 0077be10 BW1M119 015b7ef0
+	virtual WorshipSpellIcon* GetBuildingObjectForSpellIcon();
+
+	// BW1W120 inlined BW1M119 inlined
+	WorshipSite() { SetToZero(); }
+
 	// Non-virtual methods
 
+	// BW1W120 0077ae60 BW1M119 015b9bd0
+	void SetToZero();
 	// BW1W120 0077c2e0 BW1M119 015b7490
 	TRIBE_TYPE GetTribeType() const;
 	// BW1W120 0077cd90 BW1M119 015b5e60
 	void GetDancePos(MapCoords* pos);
+	// BW1W120 0077cf70 BW1M119 015b5950
+	MapCoords GetFoodDrop();
 	// BW1W120 0077afc0 BW1M119 015b9860
 	MapCoords* GetSpellIconPosFromSlot(MapCoords* coords, uint32_t slot, float angle);
 	// BW1W120 0077b080 BW1M119 015b9650

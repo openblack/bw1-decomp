@@ -28,20 +28,20 @@ public:
 
 	// Override methods
 
-	// BW1W120 00561470 BW1M119 0153e0a0
+	// BW1W120 007347c0 BW1M119 0153e0a0
 	virtual ~GStreetLantern();
 	// BW1W120 00734ab0 BW1M119 0153d830
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00561460 BW1M119 0153d290
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "GStreetLantern:"; }
 	// BW1W120 00734be0 BW1M119 0153d590
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00734c90 BW1M119 0153d460
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00561450 BW1M119 0153d250
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GSTREET_LANTERN; }
 	// BW1W120 00561440 BW1M119 0153d210
-	virtual bool32_t IsStreetLantern();
+	virtual bool32_t IsStreetLantern() { return true; }
 	// BW1W120 00734d40 BW1M119 01003670
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00734a70 BW1M119 01030370
@@ -55,12 +55,18 @@ public:
 	// BW1W120 00734b10 BW1M119 0153d6c0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 
+	// BW1W120 inlined BW1M119 inlined
+	GStreetLantern() { SetToZero(); }
+
 	// Static methods
 
 	// BW1W120 007346e0 BW1M119 0153e170
 	static GStreetLantern* Create(const MapCoords& coords, const GMobileStaticInfo* info);
 	// BW1W120 00734a30 BW1M119 0153da00
 	static uint32_t IsALaternWithinDistance(MapCoords coords, float max_dist);
+
+	// BW1W120 00734800 BW1M119 0153e060
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_STREET_LANTERN_INCLUDED_H */

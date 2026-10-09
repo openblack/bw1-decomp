@@ -10,6 +10,7 @@
 #include <re_common.h>          /* For bool32_t */
 
 #include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For struct LH3DMapCoords */
+#include <Lionhead/LHLib/ver5.0/LHListHead.h>           /* For struct LHListHead */
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>           /* For struct LHListNode */
 
 #include "Animal.h"           /* For struct Animal */
@@ -27,6 +28,9 @@
 #include "PileFood.h"         /* For struct PileFood */
 #include "Totem.h"            /* For struct Totem */
 
+#define HANOI_STABLE_TICKS              5
+#define PUZZLE_TOTEM_DEFAULT_MAX_HEIGHT 100
+
 // Forward Declares
 
 class Abode;
@@ -42,6 +46,7 @@ class Living;
 struct MapCoords;
 class MultiMapFixed;
 class Object;
+class PaintBrush;
 struct PhysOb;
 class PhysicsObject;
 class PlannedMultiMapFixed;
@@ -55,30 +60,35 @@ public:
 
 	uint32_t                field_0x28;
 	LHListNode<PuzzleGame>  next;
-	uint8_t                 field_0x30[0x18];
+	uint32_t                field_0x30;
+	LHListHead<PaintBrush>  PaintBrushes;
+	uint8_t                 field_0x3c[0xc];
 	SCRIPT_PUZZLE_GAME_TYPE GameType;
-	uint8_t                 field_0x4c[0x53c];
+	uint8_t                 field_0x4c[0x3c0];
+	int32_t                 HanoiStableCount;
+	uint8_t                 field_0x410[0x178];
 
 	// Override methods
 
-	// BW1W120 00561b70 BW1M119 0113c3c0
-	virtual ~PuzzleGame();
 	// BW1W120 006d6ff0 BW1M119 01135110
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00561b60 BW1M119 0113c5e0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "PuzzleGame: "; }
 	// BW1W120 006d9d40 BW1M119 0112fc40
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 006d96c0 BW1M119 011305d0
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00561b50 BW1M119 0113c5a0
-	virtual uint32_t GetSaveType();
-	// BW1W120 00561b10 BW1M119 inlined
-	virtual MapCoords GetPos() const;
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PUZZLE_GAME; }
+	// BW1W120 00561b10 BW1M119 0113c480
+	virtual MapCoords GetPos() { return Pos; }
 	// BW1W120 00561b30 BW1M119 0113c520
-	virtual const char* GetText();
+	virtual const char* GetText() { return "PuzzleGame"; }
 	// BW1W120 00561b40 BW1M119 0113c560
-	virtual bool32_t IsPuzzleGame();
+	virtual bool32_t IsPuzzleGame() { return true; }
+
+	// BW1W120 inlined BW1M119 inlined
+	PuzzleGame() { HanoiStableCount = HANOI_STABLE_TICKS; }
 
 	// Non-virtual methods
 
@@ -200,8 +210,6 @@ class PieceHorse : public Horse
 public:
 	// Override methods
 
-	// BW1W120 0041d870 BW1M119 01129d80
-	virtual ~PieceHorse();
 	// BW1W120 0041d860 BW1M119 01139d80
 	virtual char* GetDebugText();
 	// BW1W120 0041d850 BW1M119 01139d40
@@ -213,14 +221,21 @@ class PieceLion : public Lion
 public:
 	// Override methods
 
-	// BW1W120 004200f0 BW1M119 0117e3b0
-	virtual ~PieceLion();
+	// BW1W120 00420120 BW1M119 0117e5a0
+	virtual bool32_t DecideWhatToDo();
+	// BW1W120 004200a0 BW1M119 0117e450
+	virtual uint32_t ProcessNeeds();
+	// BW1W120 004200b0 BW1M119 0117e490
+	virtual uint32_t CheckNeeds();
 	// BW1W120 004200d0 BW1M119 0117e510
 	virtual char* GetDebugText();
 	// BW1W120 004200c0 BW1M119 0117e4d0
 	virtual uint32_t GetSaveType();
 	// BW1W120 004200e0 BW1M119 0117e550
 	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
+
+	// BW1W120 inlined BW1M119 inlined
+	PieceLion() {}
 };
 
 class PiecePig : public Pig
@@ -228,8 +243,6 @@ class PiecePig : public Pig
 public:
 	// Override methods
 
-	// BW1W120 0041dab0 BW1M119 01129890
-	virtual ~PiecePig();
 	// BW1W120 0041daa0 BW1M119 0113a190
 	virtual char* GetDebugText();
 	// BW1W120 0041da90 BW1M119 0113a150
@@ -243,12 +256,19 @@ class PieceSheep : public Sheep
 public:
 	// Override methods
 
-	// BW1W120 0041d630 BW1M119 0112a0f0
-	virtual ~PieceSheep();
+	// BW1W120 0041d5e0 BW1M119 011372c0
+	virtual bool32_t DecideWhatToDo();
+	// BW1W120 0041d5f0 BW1M119 01137300
+	virtual uint32_t ProcessNeeds();
+	// BW1W120 0041d600 BW1M119 01137340
+	virtual uint32_t CheckNeeds();
 	// BW1W120 0041d620 BW1M119 011373c0
 	virtual char* GetDebugText();
 	// BW1W120 0041d610 BW1M119 01137380
 	virtual uint32_t GetSaveType();
+
+	// BW1W120 inlined BW1M119 0130fc30
+	PieceSheep() {}
 };
 
 class PieceTortoise : public Tortoise
@@ -256,8 +276,6 @@ class PieceTortoise : public Tortoise
 public:
 	// Override methods
 
-	// BW1W120 0041dc40 BW1M119 01129ab0
-	virtual ~PieceTortoise();
 	// BW1W120 0041dc30 BW1M119 0113a050
 	virtual char* GetDebugText();
 	// BW1W120 0041dc20 BW1M119 0113a010
@@ -269,8 +287,36 @@ class PieceVillager : public Animal
 public:
 	// Override methods
 
-	// BW1W120 0041bbd0 BW1M119 0112ddd0
-	virtual ~PieceVillager();
+	// BW1W120 0041bc00 BW1M119 0116d2c0
+	virtual bool32_t DecideWhatToDo();
+	// BW1W120 0041bb80 BW1M119 0113bfc0
+	virtual uint32_t ProcessNeeds();
+	// BW1W120 0041bb90 BW1M119 0113c000
+	virtual uint32_t CheckNeeds();
+	// BW1W120 0041cf20 BW1M119 011762c0
+	virtual uint32_t MoveAnimation();
+	// BW1W120 0041cf50 BW1M119 01176240
+	virtual uint32_t DyingAnimation();
+	// BW1W120 0041cf60 BW1M119 01176200
+	virtual uint32_t DeadAnimation();
+	// BW1W120 0041cf70 BW1M119 011761c0
+	virtual uint32_t EatAnimation();
+	// BW1W120 0041cf80 BW1M119 01176170
+	virtual uint32_t StartToEatAnimation();
+	// BW1W120 0041cf90 BW1M119 01176120
+	virtual uint32_t FinishEatingAnimation();
+	// BW1W120 0041cfa0 BW1M119 011760e0
+	virtual uint32_t SleepAnimation();
+	// BW1W120 0041cfb0 BW1M119 011760a0
+	virtual uint32_t PounceAnimation();
+	// BW1W120 0041cfc0 BW1M119 01176060
+	virtual uint32_t HideAnimation();
+	// BW1W120 0041d030 BW1M119 01175fe0
+	virtual uint32_t InHandAnimation();
+	// BW1W120 0041cf40 BW1M119 01176280
+	virtual uint32_t LandedAnimation();
+	// BW1W120 0041d040 BW1M119 01175fa0
+	virtual uint32_t ThrownAnimation();
 	// BW1W120 0041bbb0 BW1M119 0116d0d0
 	virtual char* GetDebugText();
 	// BW1W120 0041bba0 BW1M119 0116d090
@@ -279,6 +325,9 @@ public:
 	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
 	// BW1W120 0041cfd0 BW1M119 01176020
 	virtual uint32_t StandAnimation();
+
+	// BW1W120 inlined BW1M119 0130fb80
+	PieceVillager() {}
 };
 
 class PieceWolf : public Wolf
@@ -286,14 +335,21 @@ class PieceWolf : public Wolf
 public:
 	// Override methods
 
-	// BW1W120 00421da0 BW1M119 01129f40
-	virtual ~PieceWolf();
+	// BW1W120 00421dd0 BW1M119 01181490
+	virtual bool32_t DecideWhatToDo();
+	// BW1W120 00421d50 BW1M119 0113bb50
+	virtual uint32_t ProcessNeeds();
+	// BW1W120 00421d60 BW1M119 0113bb90
+	virtual uint32_t CheckNeeds();
 	// BW1W120 00421d80 BW1M119 01181450
 	virtual char* GetDebugText();
 	// BW1W120 00421d70 BW1M119 01181410
 	virtual uint32_t GetSaveType();
 	// BW1W120 00421d90 BW1M119 0113bbd0
 	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
+
+	// BW1W120 inlined BW1M119 0130fb10
+	PieceWolf() {}
 };
 
 class PieceCow : public Cow
@@ -306,8 +362,6 @@ class PuzzleCow : public PieceCow
 public:
 	// Override methods
 
-	// BW1W120 006dd6f0 BW1M119 0113ae10
-	virtual ~PuzzleCow();
 	// BW1W120 006dd680 BW1M119 0113aef0
 	virtual char* GetDebugText();
 	// BW1W120 006dd670 BW1M119 0113aeb0
@@ -323,60 +377,69 @@ public:
 class PuzzleGrain : public PileFood
 {
 public:
+	uint8_t field_0xbc[0x4];
+
 	// Override methods
 
-	// BW1W120 00561a70 BW1M119 0113a360
-	virtual ~PuzzleGrain();
 	// BW1W120 00561910 BW1M119 0113a430
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "PuzzleGrain: "; }
 	// BW1W120 006dbe40 BW1M119 0112c5f0
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 006dbeb0 BW1M119 0112c510
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00561900 BW1M119 0113a3f0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PUZZLE_GRAIN; }
 	// BW1W120 00561920 BW1M119 0113a470
-	virtual bool32_t CanBeEatenByCreature(Creature* param_1);
+	virtual bool32_t CanBeEatenByCreature(Creature* creature) { return false; }
 	// BW1W120 00561930 BW1M119 0113a4c0
-	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
+	virtual bool32_t CanBePickedUpByCreature(Creature* creature) { return false; }
 	// BW1W120 00561a20 BW1M119 0113aa10
-	virtual void Draw();
+	virtual void Draw() { MobileObject::Draw(); }
 	// BW1W120 00561a30 BW1M119 0112c0e0
-	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords)
+	{
+		MobileObject::CallVirtualFunctionsForCreation(coords);
+	}
 	// BW1W120 00561a10 BW1M119 0113a9c0
-	virtual float GetFoodValue(FOOD_TYPE param_1);
+	virtual float GetFoodValue(FOOD_TYPE type) { return 0.0f; }
 	// BW1W120 00561940 BW1M119 0113a510
-	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* status) { return false; }
 	// BW1W120 00561950 BW1M119 0113a570
-	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* status) { return true; }
 	// BW1W120 00561960 BW1M119 0113a5d0
-	virtual bool32_t NetworkUnfriendlyStartLockedSelect();
+	virtual bool32_t NetworkUnfriendlyStartLockedSelect() { return true; }
 	// BW1W120 00561970 BW1M119 0113a620
-	virtual bool32_t IsReadyForNetworkUnfriendlyLockedSelect();
+	virtual bool32_t IsReadyForNetworkUnfriendlyLockedSelect() { return true; }
 	// BW1W120 00561980 BW1M119 0113a680
-	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* info) { return true; }
 	// BW1W120 00561990 BW1M119 0113a6e0
-	virtual bool32_t GetReadyForNetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t GetReadyForNetworkUnfriendlyEndLockedSelect() { return true; }
 	// BW1W120 005619a0 BW1M119 0113a740
-	virtual bool32_t IsReadyForNetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t IsReadyForNetworkUnfriendlyEndLockedSelect() { return true; }
 	// BW1W120 005619b0 BW1M119 0113a7a0
-	virtual bool32_t NetworkUnfriendlyEndLockedSelect();
+	virtual bool32_t NetworkUnfriendlyEndLockedSelect() { return true; }
 	// BW1W120 005619c0 BW1M119 0113a7f0
-	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+	virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* status) { return true; }
 	// BW1W120 005619d0 BW1M119 0113a850
-	virtual bool32_t ValidAsInterfaceTarget();
+	virtual bool32_t ValidAsInterfaceTarget() { return true; }
 	// BW1W120 005619f0 BW1M119 0113a900
-	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* status) { return true; }
 	// BW1W120 00561a00 BW1M119 0113a960
-	virtual bool32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
+	virtual bool32_t InterfaceSetOutMagicHand(GInterfaceStatus* status) { return true; }
 	// BW1W120 005619e0 BW1M119 0113a8a0
-	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
+	virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* status, Object* object) { return 0; }
 	// BW1W120 00561a40 BW1M119 0113aa60
-	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
+	virtual Object* EndPhysics(PhysicsObject* physics_object, bool param_2)
+	{
+		return Object::EndPhysics(physics_object, param_2);
+	}
 	// BW1W120 00561a60 BW1M119 0113aac0
-	virtual bool32_t CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject() { return false; }
 	// BW1W120 006dc550 BW1M119 0112b6f0
 	virtual IMMERSION_EFFECT_TYPE GetImmersionTexture();
+
+	// BW1W120 inlined BW1M119 inlined
+	PuzzleGrain() { ResourceType = RESOURCE_TYPE_NONE; }
 };
 
 class PuzzleHorse : public PieceHorse
@@ -384,8 +447,6 @@ class PuzzleHorse : public PieceHorse
 public:
 	// Override methods
 
-	// BW1W120 006dd590 BW1M119 0113b350
-	virtual ~PuzzleHorse();
 	// BW1W120 006dd520 BW1M119 0113b3f0
 	virtual char* GetDebugText();
 	// BW1W120 006dd530 BW1M119 0113b430
@@ -441,37 +502,63 @@ public:
 class PuzzleLion : public PieceWolf
 {
 public:
+	long BoxX; /* 0x148 */
+	long BoxZ;
+	bool Team; /* 0x150 */
+
 	// Override methods
 
-	// BW1W120 00561630 BW1M119 0113b890
-	virtual ~PuzzleLion();
+	// BW1W120 006db100 BW1M119 0112e020
+	virtual bool32_t DecideWhatToDo();
+	// BW1W120 006dd940 BW1M119 01128a80
+	virtual bool32_t MoveAllowedForChessGame(long x, long z);
+	// BW1W120 006dd9d0 BW1M119 01128a10
+	virtual bool32_t AttackAllowedForChessGame(long x, long z);
+	// BW1W120 006dcaa0 BW1M119 0112adc0
+	virtual void AddToBoxPositionForChessGame(long x, long z);
+	// BW1W120 005615e0 BW1M119 0113ba00
+	virtual long GetBoxXForChessGame() { return BoxX; }
+	// BW1W120 005615f0 BW1M119 0113ba40
+	virtual long GetBoxZForChessGame() { return BoxZ; }
+	// BW1W120 00561600 BW1M119 0113ba80
+	virtual void SetBoxXForChessGame(long x) { BoxX = x; }
+	// BW1W120 00561610 BW1M119 0113bac0
+	virtual void SetBoxZForChessGame(long z) { BoxZ = z; }
+	// BW1W120 00561620 BW1M119 0113bb00
+	virtual bool GetTeamForChessGame() { return Team; }
 	// BW1W120 005615c0 BW1M119 0113b970
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "PuzzleLion: "; }
 	// BW1W120 005615b0 BW1M119 0113b930
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PUZZLE_LION; }
 	// BW1W120 005615d0 BW1M119 0113b9b0
-	virtual bool32_t CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject() { return false; }
+
+	// BW1W120 inlined BW1M119 inlined
+	PuzzleLion() { Flags |= GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP; }
 };
 
 class PuzzleMobileObject : public MobileObject
 {
 public:
+	uint8_t field_0x68[0x4];
+
 	// Override methods
 
-	// BW1W120 00561af0 BW1M119 0113a1d0
-	virtual ~PuzzleMobileObject();
 	// BW1W120 00561ae0 BW1M119 0113a310
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Immersion Mushroom: "; }
 	// BW1W120 006dbf20 BW1M119 0112c430
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 006dbf80 BW1M119 0112c350
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00561ad0 BW1M119 0113a2d0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PUZZLE_MOBILE_OBJECT; }
 	// BW1W120 006dc510 BW1M119 0112b730
 	virtual IMMERSION_EFFECT_TYPE GetImmersionTexture();
 	// BW1W120 00561ac0 BW1M119 0113a260
-	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
+	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture() { return GetImmersionTexture(); }
+
+	// BW1W120 00561aa0 BW1M119 inlined
+	PuzzleMobileObject() { SetIndestructable(true); }
 };
 
 class PuzzlePig : public PiecePig
@@ -479,8 +566,6 @@ class PuzzlePig : public PiecePig
 public:
 	// Override methods
 
-	// BW1W120 006dd7a0 BW1M119 0113b0b0
-	virtual ~PuzzlePig();
 	// BW1W120 006dd730 BW1M119 0113b190
 	virtual char* GetDebugText();
 	// BW1W120 006dd720 BW1M119 0113b150
@@ -494,18 +579,39 @@ public:
 class PuzzleSheep : public PieceSheep
 {
 public:
+	long BoxX; /* 0x148 */
+	long BoxZ;
+	bool Team; /* 0x150 */
+
 	// Override methods
 
-	// BW1W120 005617c0 BW1M119 0113b5d0
-	virtual ~PuzzleSheep();
+	// BW1W120 006dd9f0 BW1M119 01128910
+	virtual bool32_t MoveAllowedForChessGame(long x, long z);
+	// BW1W120 006dda70 BW1M119 01128890
+	virtual bool32_t AttackAllowedForChessGame(long x, long z);
+	// BW1W120 006dca70 BW1M119 0112ae20
+	virtual void AddToBoxPositionForChessGame(long x, long z);
+	// BW1W120 00561770 BW1M119 0113b740
+	virtual long GetBoxXForChessGame() { return BoxX; }
+	// BW1W120 00561780 BW1M119 0113b780
+	virtual long GetBoxZForChessGame() { return BoxZ; }
+	// BW1W120 00561790 BW1M119 0113b7c0
+	virtual void SetBoxXForChessGame(long x) { BoxX = x; }
+	// BW1W120 005617a0 BW1M119 0113b800
+	virtual void SetBoxZForChessGame(long z) { BoxZ = z; }
+	// BW1W120 005617b0 BW1M119 0113b840
+	virtual bool GetTeamForChessGame() { return Team; }
 	// BW1W120 00561750 BW1M119 0113b6b0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "PuzzleSheep: "; }
 	// BW1W120 00561740 BW1M119 0113b670
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PUZZLE_SHEEP; }
 	// BW1W120 00561760 BW1M119 0113b6f0
-	virtual bool32_t CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject() { return false; }
 	// BW1W120 006db110 BW1M119 0112dfe0
 	virtual bool32_t DecideWhatToDo();
+
+	// BW1W120 inlined BW1M119 inlined
+	PuzzleSheep() { Flags |= GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP; }
 };
 
 class PuzzleTortoise : public PieceTortoise
@@ -513,8 +619,6 @@ class PuzzleTortoise : public PieceTortoise
 public:
 	// Override methods
 
-	// BW1W120 006dd640 BW1M119 0113ab10
-	virtual ~PuzzleTortoise();
 	// BW1W120 006dd5d0 BW1M119 0113abf0
 	virtual char* GetDebugText();
 	// BW1W120 006dd5c0 BW1M119 0113abb0
@@ -526,22 +630,26 @@ public:
 class PuzzleTotem : public Totem
 {
 public:
+	int32_t MaxHeight;
+	int32_t ActualHeight;
+	int32_t PreviousHeight;
+	int32_t HeightBlendCountdown;
+	uint8_t field_0xf4[0x8];
+
 	// Override methods
 
-	// BW1W120 005618d0 BW1M119 0113c0a0
-	virtual ~PuzzleTotem();
 	// BW1W120 00561890 BW1M119 0113c180
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "PuzzleTotem: "; }
 	// BW1W120 006da740 BW1M119 0112f2b0
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 006da7f0 BW1M119 0112f180
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 00561880 BW1M119 0113c140
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PUZZLE_TOTEM; }
 	// BW1W120 006da710 BW1M119 0112f3d0
 	virtual void SetMaxHeight(float param_1);
 	// BW1W120 005618a0 BW1M119 0113c1c0
-	virtual float GetMaxHeight();
+	virtual float GetMaxHeight() { return MaxHeight; }
 	// BW1W120 006da5d0 BW1M119 0112f6a0
 	virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
 	// BW1W120 006da8a0 BW1M119 0112f0c0
@@ -559,26 +667,64 @@ public:
 	// BW1W120 006da610 BW1M119 0112f580
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 005618b0 BW1M119 0113c220
-	virtual void ReactToPhysicsImpact(PhysicsObject* obj, bool param_2);
-	// BW1W120 00737450 BW1M119 inlined
-	virtual void DeleteDependancys();
-	// BW1W120 007377d0 BW1M119 inlined
-	virtual void MakeFunctional();
+	virtual void ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage)
+	{
+		Object::ReactToPhysicsImpact(physics, transferred_damage);
+	}
+	// BW1W120 006daa90 BW1M119 0112ebd0
+	virtual float GetWorshipPercentage();
+	// BW1W120 006da680 BW1M119 0112f4e0
+	virtual void SetWorshipPercentage(float percentage);
+
+	// BW1W120 inlined BW1M119 inlined
+	PuzzleTotem()
+	{
+		HeightBlendCountdown = 0;
+		SetIndestructable(true);
+		MaxHeight = PUZZLE_TOTEM_DEFAULT_MAX_HEIGHT;
+	}
 };
 
 class PuzzleVillager : public PieceVillager
 {
 public:
+	long BoxX; /* 0x148 */
+	long BoxZ;
+	bool Team; /* 0x150 */
+
 	// Override methods
 
-	// BW1W120 00561710 BW1M119 0113bc60
-	virtual ~PuzzleVillager();
+	// BW1W120 006db0f0 BW1M119 0112e060
+	virtual bool32_t DecideWhatToDo();
+	// BW1W120 006ddd40 BW1M119 011281f0
+	virtual bool32_t MoveAllowedForChessGame(long x, long z);
+	// BW1W120 006ddd30 BW1M119 01128240
+	virtual bool32_t AttackAllowedForChessGame(long x, long z);
+	// BW1W120 00561690 BW1M119 0113bdd0
+	virtual void AddToBoxPositionForChessGame(long x, long z)
+	{
+		BoxX += x;
+		BoxZ += z;
+	}
+	// BW1W120 005616c0 BW1M119 0113be30
+	virtual long GetBoxXForChessGame() { return BoxX; }
+	// BW1W120 005616d0 BW1M119 0113be80
+	virtual long GetBoxZForChessGame() { return BoxZ; }
+	// BW1W120 005616e0 BW1M119 0113bed0
+	virtual void SetBoxXForChessGame(long x) { BoxX = x; }
+	// BW1W120 005616f0 BW1M119 0113bf20
+	virtual void SetBoxZForChessGame(long z) { BoxZ = z; }
+	// BW1W120 00561700 BW1M119 0113bf70
+	virtual bool GetTeamForChessGame() { return Team; }
 	// BW1W120 00561670 BW1M119 0113bd40
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "PuzzleVillager: "; }
 	// BW1W120 00561660 BW1M119 0113bd00
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PUZZLE_VILLAGER; }
 	// BW1W120 00561680 BW1M119 0113bd80
-	virtual bool32_t CanBecomeAPhysicsObject();
+	virtual bool32_t CanBecomeAPhysicsObject() { return false; }
+
+	// BW1W120 inlined BW1M119 inlined
+	PuzzleVillager() { Flags |= GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP; }
 };
 
 #endif /* BW1_DECOMP_PUZZLE_GAME_INCLUDED_H */

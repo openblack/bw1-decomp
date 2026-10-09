@@ -9,15 +9,23 @@
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For LHPoint */
 
+#include "GTPointer.h"            /* For GTPointer */
 #include "KPSplineInterpolator.h" /* For KPSplineInterpolator */
 #include "PSysBaseModifiers.h"    /* For the rule base classes */
 #include "PSysSoundAction.h"      /* For class PSysSoundAction */
+#include "PosScaleRotation.h"     /* For class PosScaleRotation */
 
 // Forward Declares
 
 class AtomCollection;
 class AtomCore;
+class Creature;
 class FloatProvider;
+class GameThingWithPos;
+class LH3DStorm;
+class LandscapeVortex;
+class MagicFireBall;
+class Object;
 class ParticleCreator;
 class PropertyList;
 class TEventCondition;
@@ -25,6 +33,24 @@ class TEventCondition;
 class RemoveSoundFromAtom : public AppearanceUpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool SoundRemoved;
+
+		// BW1W120 0055f6f0 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier), SoundRemoved(false) {}
+
+		// BW1W120 0055f720 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_REMOVE_SOUND_FROM_ATOM_ATOM_DATA; }
+		// BW1W120 0055f730 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696c70 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd7d0 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	RemoveSoundFromAtom(PersistentOwner* owner) : AppearanceUpdateRule(owner)
 	{
 		SoundCondition = NULL;
@@ -40,11 +66,30 @@ public:
 	TEventCondition* SoundCondition;
 	long             FadeStep;
 };
+static_assert(sizeof(RemoveSoundFromAtom::AtomData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(RemoveSoundFromAtom) == 0x40, "Data type is of wrong size");
 
 class AddSoundToAtom : public AppearanceUpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool SoundAdded;
+
+		// BW1W120 0055f670 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier), SoundAdded(false) {}
+
+		// BW1W120 0055f6a0 BW1M119 0142ad00
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_ADD_SOUND_TO_ATOM_ATOM_DATA; }
+		// BW1W120 0055f6b0 BW1M119 0142ad50
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696c10 BW1M119 01424220
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd770 BW1M119 0148b0b0
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	AddSoundToAtom(PersistentOwner* owner) : AppearanceUpdateRule(owner)
 	{
 		SoundCondition = NULL;
@@ -74,6 +119,7 @@ public:
 	float            CameraShakeRadius;
 	float            CameraShakeDuration;
 };
+static_assert(sizeof(AddSoundToAtom::AtomData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(AddSoundToAtom) == 0x50, "Data type is of wrong size");
 
 class StartStopSoundOnCondition : public AppearanceUpdateRule
@@ -177,6 +223,27 @@ static_assert(sizeof(AR_FadeCollectionAlpha) == 0x34, "Data type is of wrong siz
 class AR_FadeOutOnceConditionTrue : public AppearanceUpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool     ConditionMet;
+		uint32_t field_0x24;
+		uint32_t field_0x28;
+		uint32_t field_0x2c;
+
+		// BW1W120 0055f5f0 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier), ConditionMet(false) {}
+
+		// BW1W120 0055f620 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_AR_FADE_OUT_ONCE_CONDITION_TRUE_ATOM_DATA; }
+		// BW1W120 0055f630 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696b00 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd660 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	AR_FadeOutOnceConditionTrue(PersistentOwner* owner) : AppearanceUpdateRule(owner)
 	{
 		TimeToFadeOut = 2.0f;
@@ -197,6 +264,7 @@ public:
 	uint8_t          field_0x2a;
 	uint8_t          field_0x2b;
 };
+static_assert(sizeof(AR_FadeOutOnceConditionTrue::AtomData) == 0x30, "Data type is of wrong size");
 static_assert(sizeof(AR_FadeOutOnceConditionTrue) == 0x2c, "Data type is of wrong size");
 
 class AR_FadeAlphaWithHeightAboveLandscape : public AppearanceUpdateRule
@@ -283,6 +351,26 @@ static_assert(sizeof(UR_UpdatePosnFromVelocity) == 0x20, "Data type is of wrong 
 class UR_Articulate : public UpdateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		// BW1W120 006855f0 BW1M119 inlined
+		virtual ~CollectionData();
+
+		// BW1W120 inlined BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		// BW1W120 00685620 BW1M119 inlined
+		virtual ~AtomData();
+
+		// BW1W120 inlined BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier);
+	};
+
 	UR_Articulate(PersistentOwner* owner) : UpdateRule(owner)
 	{
 		K_Spring = 1.0f;
@@ -302,6 +390,28 @@ static_assert(sizeof(UR_Articulate) == 0x28, "Data type is of wrong size");
 class UR_Flocking : public UpdateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool    FirstUpdate;
+		LHPoint Centre;
+
+		// BW1W120 00560ec0 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier)
+			: BaseCollectionModifierData(modifier), FirstUpdate(true), Centre(LHPoint(0.0f, 0.0f, 0.0f))
+		{
+		}
+
+		// BW1W120 00560ef0 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_FLOCKING_COLLECTION_DATA; }
+		// BW1W120 00560f00 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006987d0 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cf2b0 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 00683470 BW1M119 0140a370
 	UR_Flocking(PersistentOwner* owner);
 
@@ -362,11 +472,22 @@ public:
 	bool           NeighbourAccnInvert;
 	FloatProvider* LocalScaleFP;
 };
+static_assert(sizeof(UR_Flocking::CollectionData) == 0x30, "Data type is of wrong size");
 static_assert(sizeof(UR_Flocking) == 0x64, "Data type is of wrong size");
 
 class UR_RingSpin : public UpdateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		// BW1W120 006879d0 BW1M119 inlined
+		virtual ~CollectionData();
+
+		// BW1W120 inlined BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier);
+	};
+
 	UR_RingSpin(PersistentOwner* owner) : UpdateRule(owner)
 	{
 		AngularVelocity = 0.1f;
@@ -424,6 +545,27 @@ static_assert(sizeof(UpdateRuleGravity) == 0x34, "Data type is of wrong size");
 class UpdateRuleGravityWithFloor : public UpdateRuleGravity
 {
 public:
+	class AtomDataRipple : public BaseAtomModifierData
+	{
+	public:
+		LHPoint RippleCentre;
+
+		// BW1W120 0055f7e0 BW1M119 inlined
+		AtomDataRipple(const AtomCollectionModifier* modifier)
+			: BaseAtomModifierData(modifier), RippleCentre(LHPoint(0.0f, 0.0f, 0.0f))
+		{
+		}
+
+		// BW1W120 0055f810 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UPDATE_RULE_GRAVITY_WITH_FLOOR_ATOM_DATA_RIPPLE; }
+		// BW1W120 0055f820 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696cd0 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd830 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006a1510 BW1M119 01439ea0
 	UpdateRuleGravityWithFloor(PersistentOwner* owner);
 
@@ -447,11 +589,32 @@ public:
 	bool             CheckShieldDeflections;
 	uint8_t          field_0x73;
 };
+static_assert(sizeof(UpdateRuleGravityWithFloor::AtomDataRipple) == 0x2c, "Data type is of wrong size");
 static_assert(sizeof(UpdateRuleGravityWithFloor) == 0x74, "Data type is of wrong size");
 
 class UR_OrientWithVelocity : public UpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		LHPoint  field_0x20;
+		uint32_t field_0x2c;
+		bool     FirstUpdate;
+
+		// BW1W120 005604e0 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) { FirstUpdate = true; }
+
+		// BW1W120 00560510 BW1M119 01429990
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_ORIENT_WITH_VELOCITY_ATOM_DATA; }
+		// BW1W120 00560520 BW1M119 014299e0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00697520 BW1M119 014235d0
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ce090 BW1M119 0148a480
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_OrientWithVelocity(PersistentOwner* owner) : UpdateRule(owner)
 	{
 		SmoothFactor = 0.8f;
@@ -470,11 +633,31 @@ public:
 	float SpinSpeed;
 	float ProportionDefault;
 };
+static_assert(sizeof(UR_OrientWithVelocity::AtomData) == 0x34, "Data type is of wrong size");
 static_assert(sizeof(UR_OrientWithVelocity) == 0x30, "Data type is of wrong size");
 
 class UR_OrientSpriteWithVelocity : public UpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool                                 FirstUpdate;
+		GJLowPassFilterVariableStep<LHPoint> Velocity;
+
+		// BW1W120 00560dc0 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) { FirstUpdate = true; }
+
+		// BW1W120 00560df0 BW1M119 0142b060
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_ORIENT_SPRITE_WITH_VELOCITY_ATOM_DATA; }
+		// BW1W120 00560e00 BW1M119 0142b0c0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696940 BW1M119 014244c0
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd4a0 BW1M119 0148b340
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_OrientSpriteWithVelocity(PersistentOwner* owner) : UpdateRule(owner)
 	{
 		SmoothFactor = 0.8f;
@@ -489,11 +672,34 @@ public:
 	float SmoothFactor;
 	float ProportionDefault;
 };
+static_assert(sizeof(UR_OrientSpriteWithVelocity::AtomData) == 0x38, "Data type is of wrong size");
 static_assert(sizeof(UR_OrientSpriteWithVelocity) == 0x28, "Data type is of wrong size");
 
 class UR_OrientSpriteWithRandomAngle : public UpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool FirstUpdate;
+		long Angle;
+
+		// BW1W120 00560460 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier), Angle(0)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 00560490 BW1M119 01429ef0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_ORIENT_SPRITE_WITH_RANDOM_ANGLE_ATOM_DATA; }
+		// BW1W120 005604a0 BW1M119 01429f50
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006972a0 BW1M119 014238b0
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cde10 BW1M119 0148a760
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_OrientSpriteWithRandomAngle(PersistentOwner* owner) : UpdateRule(owner)
 	{
 		RandomAngle = 1.5707964f;
@@ -508,6 +714,7 @@ public:
 	float RandomAngle;
 	float DefaultAngle;
 };
+static_assert(sizeof(UR_OrientSpriteWithRandomAngle::AtomData) == 0x28, "Data type is of wrong size");
 static_assert(sizeof(UR_OrientSpriteWithRandomAngle) == 0x28, "Data type is of wrong size");
 
 class UR_GustyWind : public UpdateRule
@@ -715,6 +922,27 @@ static_assert(sizeof(ForceMinimumHeight) == 0x24, "Data type is of wrong size");
 class UR_CloudMoverNew : public UpdateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool FirstUpdate;
+
+		// BW1W120 00560c10 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 00560c40 BW1M119 014292c0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_CLOUD_MOVER_NEW_COLLECTION_DATA; }
+		// BW1W120 00560c50 BW1M119 01429310
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00697c20 BW1M119 01422900
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ce710 BW1M119 014899f0
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006d4150 BW1M119 01491ef0
 	UR_CloudMoverNew(PersistentOwner* owner);
 
@@ -727,11 +955,80 @@ public:
 	float WindDamping;
 	float WindMagnification;
 };
+static_assert(sizeof(UR_CloudMoverNew::CollectionData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(UR_CloudMoverNew) == 0x2c, "Data type is of wrong size");
 
 class UR_CloudGather : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		float           NumToEmit;
+		long            NumEmitted;
+		bool            FirstUpdate;
+		float           EmitRate;
+		float           NextLightningTime;
+		float           LightningEndTime;
+		float           SpinDirection;
+		AtomCollection* LightningCollection;
+		AtomCore*       LightningAtom;
+		bool            LightningDetached;
+		bool            LightningEnabled;
+		bool            RainEnabled;
+		bool            StormEnabled;
+		LHPoint         Heading;
+		LH3DStorm*      Storm;
+
+		// BW1W120 00560af0 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier)
+			: BaseCollectionModifierData(modifier), NumToEmit(0), NumEmitted(0), EmitRate(0), NextLightningTime(0),
+			  LightningEndTime(0), LightningCollection(NULL), LightningAtom(NULL), LightningDetached(false),
+			  LightningEnabled(false), RainEnabled(false), Storm(NULL)
+		{
+			SpinDirection = 1.0f;
+			FirstUpdate = true;
+		}
+
+		// BW1W120 00560b40 BW1M119 01427ea0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_CLOUD_GATHER_COLLECTION_DATA; }
+		// BW1W120 00560b50 BW1M119 01427ef0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006d4900 BW1M119 014916e0
+		virtual ~CollectionData();
+		// BW1W120 00698b30 BW1M119 01421a70
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cf610 BW1M119 01488b60
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		float Radius;
+		float Theta;
+		float UnusedSavedValue;
+		bool  SpecActive;
+		float SpecStartAge;
+		float HeightOffset;
+
+		// BW1W120 00560b60 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier)
+			: BaseAtomModifierData(modifier), Radius(0), Theta(0), UnusedSavedValue(0), SpecActive(false),
+			  HeightOffset(0)
+		{
+		}
+
+		// BW1W120 00560ba0 BW1M119 01427e00
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_CLOUD_GATHER_ATOM_DATA; }
+		// BW1W120 00560bb0 BW1M119 01427e50
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00698da0 BW1M119 01421990
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cf870 BW1M119 01488a80
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006d4700 BW1M119 014917f0
 	UR_CloudGather(PersistentOwner* owner);
 
@@ -777,11 +1074,43 @@ public:
 	float           MaxRadiusSmallSound;
 	float           MaxRadiusMediumSound;
 };
+static_assert(sizeof(UR_CloudGather::CollectionData) == 0x58, "Data type is of wrong size");
+static_assert(sizeof(UR_CloudGather::AtomData) == 0x38, "Data type is of wrong size");
 static_assert(sizeof(UR_CloudGather) == 0xc4, "Data type is of wrong size");
 
 class UR_VortexAttract : public AtomCreateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		float            StartHeight;
+		LHPoint          Centre;
+		bool             Indestructible;
+		bool             WasPaper;
+		bool             WasDisappearing;
+		float            Importance;
+		LandscapeVortex* OutVortex;
+
+		// BW1W120 00560c90 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier)
+			: BaseAtomModifierData(modifier), StartHeight(0), Indestructible(false), WasPaper(false), OutVortex(NULL)
+		{
+			Centre = LHPoint(0.0f, 0.0f, 0.0f);
+			WasDisappearing = true;
+			Importance = 1.0f;
+		}
+
+		// BW1W120 00560cf0 BW1M119 01428720
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_VORTEX_ATTRACT_ATOM_DATA; }
+		// BW1W120 00560d00 BW1M119 01428770
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00698350 BW1M119 01422200
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cee70 BW1M119 01489300
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006d3910 BW1M119 014929d0
 	UR_VortexAttract(PersistentOwner* owner);
 
@@ -800,11 +1129,32 @@ public:
 	float    YParam_RZeroHeight;
 	uint32_t field_0x4c;
 };
+static_assert(sizeof(UR_VortexAttract::AtomData) == 0x3c, "Data type is of wrong size");
 static_assert(sizeof(UR_VortexAttract) == 0x50, "Data type is of wrong size");
 
 class UR_StormCast : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		// BW1W120 006d5fa0 BW1M119 inlined
+		virtual ~CollectionData();
+
+		// BW1W120 inlined BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		// BW1W120 006d5fd0 BW1M119 inlined
+		virtual ~AtomData();
+
+		// BW1W120 inlined BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier);
+	};
+
 	UR_StormCast(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		Flags ^= 4;
@@ -851,6 +1201,113 @@ static_assert(sizeof(UR_StormCast) == 0x68, "Data type is of wrong size");
 class UR_Tornado : public AtomCreateRule
 {
 public:
+	class FlyingCollectionData : public BaseCollectionModifierData
+	{
+	public:
+		long NumEmitted;
+		long EmitTime;
+
+		// BW1W120 005609a0 BW1M119 inlined
+		FlyingCollectionData(const AtomCollectionModifier* modifier)
+			: BaseCollectionModifierData(modifier), NumEmitted(0), EmitTime(0)
+		{
+		}
+
+		// BW1W120 005609d0 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_TORNADO_DEBRIS_COLLECTION_DATA; }
+		// BW1W120 005609e0 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00698fc0 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cfaa0 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
+	class FlyingAtomData : public BaseAtomModifierData
+	{
+	public:
+		long  State;
+		float TargetHeight;
+		float ThetaDotScale;
+
+		// BW1W120 005609f0 BW1M119 inlined
+		FlyingAtomData(const AtomCollectionModifier* modifier)
+			: BaseAtomModifierData(modifier), TargetHeight(0), ThetaDotScale(0)
+		{
+			State = 2;
+		}
+
+		// BW1W120 00560a20 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_TORNADO_FLYING_ATOM_DATA; }
+		// BW1W120 00560a30 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00699070 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cfb50 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
+	class DebrisCollectionData : public BaseCollectionModifierData
+	{
+	public:
+		long NumEmitted;
+		long EmitTime;
+
+		// BW1W120 00560950 BW1M119 inlined
+		DebrisCollectionData(const AtomCollectionModifier* modifier)
+			: BaseCollectionModifierData(modifier), NumEmitted(0), EmitTime(0)
+		{
+		}
+
+		// BW1W120 00560980 BW1M119 01427cb0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_TORNADO_DEBRIS_COLLECTION_DATA; }
+		// BW1W120 00560990 BW1M119 01427d00
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00698f10 BW1M119 014218e0
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cf9f0 BW1M119 014889d0
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool    FirstUpdate;
+		LHPoint Point0;
+		LHPoint Point1;
+		LHPoint Point2;
+		LHPoint Point3;
+		LHPoint Point4;
+		float   Scale0;
+		float   Scale1;
+		bool    Flag0;
+		float   Scale2;
+		bool    Flag1;
+
+		// BW1W120 005608a0 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier)
+		{
+			Point0 = Point1 = Point2 = Point3 = Point4 = LHPoint(0.0f, 0.0f, 0.0f);
+			Scale0 = 1.0f;
+			Scale1 = 1.0f;
+			Flag0 = false;
+			Scale2 = 1.0f;
+			Flag1 = false;
+			FirstUpdate = true;
+		}
+
+		// BW1W120 00560930 BW1M119 014278c0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_TORNADO_COLLECTION_DATA; }
+		// BW1W120 00560940 BW1M119 01427910
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006d18a0 BW1M119 014953b0
+		virtual ~CollectionData();
+		// BW1W120 00699150 BW1M119 014215a0
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cfc40 BW1M119 01488690
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006d1680 BW1M119 01495460
 	UR_Tornado(PersistentOwner* owner);
 
@@ -921,6 +1378,10 @@ public:
 	ParticleCreator* PretendObjectCreatorLarge;
 	PSysSoundAction  SoundTornado;
 };
+static_assert(sizeof(UR_Tornado::CollectionData) == 0x74, "Data type is of wrong size");
+static_assert(sizeof(UR_Tornado::DebrisCollectionData) == 0x28, "Data type is of wrong size");
+static_assert(sizeof(UR_Tornado::FlyingCollectionData) == 0x28, "Data type is of wrong size");
+static_assert(sizeof(UR_Tornado::FlyingAtomData) == 0x2c, "Data type is of wrong size");
 static_assert(sizeof(UR_Tornado) == 0x11c, "Data type is of wrong size");
 
 class UR_ChangeScale : public UpdateRule
@@ -1094,6 +1555,30 @@ static_assert(sizeof(UR_KPMoveAtoms) == 0x38, "Data type is of wrong size");
 class UR_AddDefensiveSphere : public UpdateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool FirstUpdate;
+		long Count;
+
+		// BW1W120 0055f950 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier), Count(0)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 0055f980 BW1M119 01429360
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_ADD_DEFENSIVE_SPHERE_COLLECTION_DATA; }
+		// BW1W120 0055f990 BW1M119 014293c0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006a2a30 BW1M119 014386e0
+		virtual ~CollectionData();
+		// BW1W120 00697bb0 BW1M119 014229b0
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ce6a0 BW1M119 01489aa0
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_AddDefensiveSphere(PersistentOwner* owner) : UpdateRule(owner)
 	{
 		SphereRadius = NULL;
@@ -1111,11 +1596,30 @@ public:
 	uint8_t        field_0x26;
 	uint8_t        field_0x27;
 };
+static_assert(sizeof(UR_AddDefensiveSphere::CollectionData) == 0x28, "Data type is of wrong size");
 static_assert(sizeof(UR_AddDefensiveSphere) == 0x28, "Data type is of wrong size");
 
 class UpdateRuleShieldSpark : public AtomCreateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		uint8_t field_0x20[0x40];
+
+		// BW1W120 0055f9c0 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) {}
+
+		// BW1W120 0055f9f0 BW1M119 0142a790
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UPDATE_RULE_SHIELD_SPARK_ATOM_DATA; }
+		// BW1W120 0055fa00 BW1M119 0142a7e0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696d90 BW1M119 01423e90
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd8f0 BW1M119 0148ad20
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006a2b40 BW1M119 01438440
 	UpdateRuleShieldSpark(PersistentOwner* owner);
 
@@ -1130,6 +1634,7 @@ public:
 	float           WiggleAmpl;
 	PSysSoundAction SoundSpark;
 };
+static_assert(sizeof(UpdateRuleShieldSpark::AtomData) == 0x60, "Data type is of wrong size");
 static_assert(sizeof(UpdateRuleShieldSpark) == 0x54, "Data type is of wrong size");
 
 class UR_HealInHand : public UpdateRule
@@ -1149,6 +1654,27 @@ static_assert(sizeof(UR_HealInHand) == 0x24, "Data type is of wrong size");
 class UR_SphereSurfaceTracer : public UpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool     FirstUpdate;
+		uint32_t field_0x24;
+		uint32_t field_0x28;
+		uint32_t field_0x2c;
+
+		// BW1W120 0055fa40 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) { FirstUpdate = true; }
+
+		// BW1W120 0055fa70 BW1M119 01428290
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_SPHERE_SURFACE_TRACER_ATOM_DATA; }
+		// BW1W120 0055fa80 BW1M119 014282e0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00698870 BW1M119 01421d20
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cf350 BW1M119 01488e10
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_SphereSurfaceTracer(PersistentOwner* owner) : UpdateRule(owner)
 	{
 		ThetaSpeed = 1.0f;
@@ -1182,11 +1708,33 @@ public:
 	uint8_t        field_0x46;
 	uint8_t        field_0x47;
 };
+static_assert(sizeof(UR_SphereSurfaceTracer::AtomData) == 0x30, "Data type is of wrong size");
 static_assert(sizeof(UR_SphereSurfaceTracer) == 0x48, "Data type is of wrong size");
 
 class UR_ForestPath : public UpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool     FirstUpdate;
+		uint32_t field_0x24;
+		uint32_t field_0x28;
+		uint32_t field_0x2c;
+
+		// BW1W120 0055fac0 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) { FirstUpdate = true; }
+
+		// BW1W120 0055faf0 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_FOREST_PATH_ATOM_DATA; }
+		// BW1W120 0055fb00 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00698a20 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cf500 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006a35e0 BW1M119 01437320
 	UR_ForestPath(PersistentOwner* owner);
 
@@ -1215,11 +1763,30 @@ public:
 	KPSplineInterpolator<float> RadiusSpline;
 	KPSplineInterpolator<float> HeightSpline;
 };
+static_assert(sizeof(UR_ForestPath::AtomData) == 0x30, "Data type is of wrong size");
 static_assert(sizeof(UR_ForestPath) == 0x54, "Data type is of wrong size");
 
 class UR_VapourEndEffect : public UpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool FirstUpdate;
+
+		// BW1W120 0055fb40 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) { FirstUpdate = true; }
+
+		// BW1W120 0055fb70 BW1M119 0142a640
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_VAPOUR_END_EFFECT_ATOM_DATA; }
+		// BW1W120 0055fb80 BW1M119 0142a690
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696ed0 BW1M119 01423df0
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cda40 BW1M119 0148ac80
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_VapourEndEffect(PersistentOwner* owner) : UpdateRule(owner) { ScaleFactor = NULL; }
 
 	// BW1W120 006af410 BW1M119 0146c430
@@ -1229,11 +1796,31 @@ public:
 
 	FloatProvider* ScaleFactor;
 };
+static_assert(sizeof(UR_VapourEndEffect::AtomData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(UR_VapourEndEffect) == 0x24, "Data type is of wrong size");
 
 class CheckShieldDeflections : public UpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool    FirstUpdate;
+		LHPoint field_0x24;
+
+		// BW1W120 0055fcc0 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) { FirstUpdate = true; }
+
+		// BW1W120 0055fcf0 BW1M119 01428140
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_CHECK_SHIELD_DEFLECTIONS_ATOM_DATA; }
+		// BW1W120 0055fd00 BW1M119 01428190
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00698980 BW1M119 01421c70
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cf460 BW1M119 01488d60
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	CheckShieldDeflections(PersistentOwner* owner) : UpdateRule(owner)
 	{
 		GroupToMoveToIfDeflected = -1;
@@ -1253,11 +1840,30 @@ public:
 	bool    CheckMovementOnly;
 	uint8_t field_0x27;
 };
+static_assert(sizeof(CheckShieldDeflections::AtomData) == 0x30, "Data type is of wrong size");
 static_assert(sizeof(CheckShieldDeflections) == 0x28, "Data type is of wrong size");
 
 class AddSubCollectionsToAtom : public AtomCollectionModifier
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool Added;
+
+		// BW1W120 0055fbc0 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier), Added(false) {}
+
+		// BW1W120 0055fbf0 BW1M119 0142a4f0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_ADD_SUB_COLLECTIONS_TO_ATOM_ATOM_DATA; }
+		// BW1W120 0055fc00 BW1M119 0142a540
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696f30 BW1M119 01423d40
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cdaa0 BW1M119 0148abd0
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	AddSubCollectionsToAtom(PersistentOwner* owner) : AtomCollectionModifier(owner) {}
 
 	// BW1W120 006af5a0 BW1M119 0146c050
@@ -1276,6 +1882,7 @@ public:
 
 	GJArray<long> NextGroups;
 };
+static_assert(sizeof(AddSubCollectionsToAtom::AtomData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(AddSubCollectionsToAtom) == 0x28, "Data type is of wrong size");
 
 class EmitterRuleSimple : public EmitterRule
@@ -1303,6 +1910,32 @@ static_assert(sizeof(EmitterRuleSimple) == 0x5c, "Data type is of wrong size");
 class EmitterRuleLightningSprite : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		uint32_t field_0x20;
+		bool     Striking;
+		long     NumEmitted;
+		long     EmitTime;
+		bool     FirstUpdate;
+
+		// BW1W120 0055fdc0 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier)
+			: BaseCollectionModifierData(modifier), Striking(false), NumEmitted(0), EmitTime(0)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 0055fdf0 BW1M119 01426e50
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_EMITTER_RULE_LIGHTNING_SPRITE_COLLECTION_DATA; }
+		// BW1W120 0055fe00 BW1M119 01426eb0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00699ac0 BW1M119 01420d40
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006d0490 BW1M119 01487d90
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	EmitterRuleLightningSprite(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		SpecLife = 0.5f;
@@ -1326,6 +1959,7 @@ public:
 	uint8_t field_0x3e;
 	uint8_t field_0x3f;
 };
+static_assert(sizeof(EmitterRuleLightningSprite::CollectionData) == 0x34, "Data type is of wrong size");
 static_assert(sizeof(EmitterRuleLightningSprite) == 0x40, "Data type is of wrong size");
 
 class DiskEmitter : public EmitterRule
@@ -1396,6 +2030,30 @@ static_assert(sizeof(EmitterRuleConical) == 0x60, "Data type is of wrong size");
 class ER_EmitFromParentAtom : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool FirstUpdate;
+		long NumEmitted;
+		long EmitTime;
+
+		// BW1W120 00560040 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier)
+			: BaseCollectionModifierData(modifier), NumEmitted(0), EmitTime(0)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 00560070 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_ER_EMIT_FROM_PARENT_ATOM_COLLECTION_DATA; }
+		// BW1W120 00560080 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006996a0 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006d01b0 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006a5b00 BW1M119 01433e20
 	ER_EmitFromParentAtom(PersistentOwner* owner);
 
@@ -1416,11 +2074,30 @@ public:
 	bool             EmitOnlyAboveLandscape;
 	uint8_t          field_0x4b;
 };
+static_assert(sizeof(ER_EmitFromParentAtom::CollectionData) == 0x2c, "Data type is of wrong size");
 static_assert(sizeof(ER_EmitFromParentAtom) == 0x4c, "Data type is of wrong size");
 
 class UR_AtomsAtEPTarget : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		GTPointer<Object> Target;
+
+		// BW1W120 00560e40 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier) { Target = NULL; }
+
+		// BW1W120 00560e70 BW1M119 01429570
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_ATOMS_AT_EP_TARGET_COLLECTION_DATA; }
+		// BW1W120 00560e80 BW1M119 014295c0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00697800 BW1M119 01423040
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ce340 BW1M119 01489f90
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_AtomsAtEPTarget(PersistentOwner* owner) : AtomCreateRule(owner) { NumExtraPoints = 0; }
 
 	// BW1W120 006afd70 BW1M119 0146ac90
@@ -1430,11 +2107,38 @@ public:
 
 	long NumExtraPoints;
 };
+static_assert(sizeof(UR_AtomsAtEPTarget::CollectionData) == 0x28, "Data type is of wrong size");
 static_assert(sizeof(UR_AtomsAtEPTarget) == 0x30, "Data type is of wrong size");
 
 class UR_WillowWisp : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		LHPoint field_0x20;
+		long    NumEmitted;
+		long    EmitTime;
+		bool    FirstUpdate;
+
+		// BW1W120 0055fe40 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier)
+		{
+			EmitTime = 0;
+			NumEmitted = 0;
+			FirstUpdate = true;
+		}
+
+		// BW1W120 0055fe70 BW1M119 014276d0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_WILLOW_WISP_COLLECTION_DATA; }
+		// BW1W120 0055fe80 BW1M119 01427720
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006994b0 BW1M119 01421350
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cffc0 BW1M119 01488440
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006a6c20 BW1M119 01432630
 	UR_WillowWisp(PersistentOwner* owner);
 
@@ -1467,11 +2171,32 @@ public:
 	bool             AddCastVelToInitPos;
 	bool             DeleteAtomsAtDieAge;
 };
+static_assert(sizeof(UR_WillowWisp::CollectionData) == 0x38, "Data type is of wrong size");
 static_assert(sizeof(UR_WillowWisp) == 0x84, "Data type is of wrong size");
 
 class ZR_ChainGesture : public AtomCreateRule
 {
 public:
+	class ParentCollectionData : public BaseCollectionModifierData
+	{
+	public:
+		// BW1W120 0068a2d0 BW1M119 inlined
+		virtual ~ParentCollectionData();
+
+		// BW1W120 inlined BW1M119 inlined
+		ParentCollectionData(const AtomCollectionModifier* modifier);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		// BW1W120 0068a300 BW1M119 inlined
+		virtual ~AtomData();
+
+		// BW1W120 inlined BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier);
+	};
+
 	// BW1W120 00689ff0 BW1M119 014109f0
 	ZR_ChainGesture(PersistentOwner* owner);
 
@@ -1493,6 +2218,47 @@ static_assert(sizeof(ZR_ChainGesture) == 0x3c, "Data type is of wrong size");
 class UR_LightSheetOnObject : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool FirstUpdate;
+
+		// BW1W120 0055f570 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 0055f5a0 BW1M119 0142b320
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_FOLLOW_TARGETS_COLLECTION_DATA; }
+		// BW1W120 0055f5b0 BW1M119 0142b380
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006967f0 BW1M119 01424660
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd350 BW1M119 0148b4d0
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		uint8_t field_0x20[0x10];
+
+		// BW1W120 0069c820 BW1M119 inlined
+		virtual ~AtomData();
+		// BW1W120 0069c810 BW1M119 inlined
+		virtual char* GetDebugText();
+		// BW1W120 00696790 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd2f0 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+		// BW1W120 0069c800 BW1M119 inlined
+		virtual uint32_t GetSaveType();
+
+		// BW1W120 inlined BW1M119 0142fa70
+		AtomData(const AtomCollectionModifier* modifier);
+	};
+
 	// BW1W120 0069c8b0 BW1M119 0142f8a0
 	UR_LightSheetOnObject(PersistentOwner* owner);
 
@@ -1505,11 +2271,32 @@ public:
 	float          DefaultRadius;
 	long           NumAtoms;
 };
+static_assert(sizeof(UR_LightSheetOnObject::CollectionData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(UR_LightSheetOnObject) == 0x38, "Data type is of wrong size");
 
 class UR_VolFXOnObject : public AtomCreateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		uint8_t field_0x20[0x14];
+
+		// BW1W120 0069ccf0 BW1M119 inlined
+		virtual ~AtomData();
+		// BW1W120 0069cce0 BW1M119 inlined
+		virtual char* GetDebugText();
+		// BW1W120 00696720 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd280 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+		// BW1W120 0069ccd0 BW1M119 inlined
+		virtual uint32_t GetSaveType();
+
+		// BW1W120 inlined BW1M119 0142f340
+		AtomData(const AtomCollectionModifier* modifier);
+	};
+
 	// BW1W120 0069cda0 BW1M119 0142f170
 	UR_VolFXOnObject(PersistentOwner* owner);
 
@@ -1579,6 +2366,30 @@ static_assert(sizeof(UR_GesturingRecognised) == 0x94, "Data type is of wrong siz
 class ER_BurstFromParentAtom : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool FirstUpdate;
+		long NumEmitted;
+		long EmitTime;
+
+		// BW1W120 0055fec0 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier)
+			: BaseCollectionModifierData(modifier), NumEmitted(0), EmitTime(0)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 0055fef0 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_BURST_FROM_PARENT_ATOM_COLLECTION_DATA; }
+		// BW1W120 0055ff00 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006995c0 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006d00d0 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006a5810 BW1M119 014342a0
 	ER_BurstFromParentAtom(PersistentOwner* owner);
 
@@ -1594,11 +2405,56 @@ public:
 	float AtomAgeMaxSize;
 	float AtomAgeZeroSize;
 };
+static_assert(sizeof(ER_BurstFromParentAtom::CollectionData) == 0x2c, "Data type is of wrong size");
 static_assert(sizeof(ER_BurstFromParentAtom) == 0x44, "Data type is of wrong size");
 
 class ER_GlintsOnTarget : public AtomCreateRule
 {
 public:
+	class ParentAtomData : public BaseAtomModifierData
+	{
+	public:
+		bool                        FirstUpdate;
+		long                        NumEmitted;
+		long                        EmitTime;
+		GTPointer<GameThingWithPos> Target;
+
+		// BW1W120 0055ff40 BW1M119 inlined
+		ParentAtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier)
+		{
+			NumEmitted = 0;
+			EmitTime = 0;
+			FirstUpdate = true;
+		}
+
+		// BW1W120 0055ff70 BW1M119 0142a250
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_ER_GLINTS_ON_TARGET_PARENT_ATOM_DATA; }
+		// BW1W120 0055ff80 BW1M119 0142a2a0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696ff0 BW1M119 01423b10
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cdb60 BW1M119 0148a9b0
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		long Count;
+
+		// BW1W120 0055ff90 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier), Count(0) {}
+
+		// BW1W120 0055ffc0 BW1M119 0142a100
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_ER_GLINTS_ON_TARGET_ATOM_DATA; }
+		// BW1W120 0055ffd0 BW1M119 0142a150
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006970e0 BW1M119 01423a70
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cdc50 BW1M119 0148a910
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006a5300 BW1M119 01434b80
 	ER_GlintsOnTarget(PersistentOwner* owner);
 
@@ -1616,11 +2472,33 @@ public:
 	float            AtomAgeMaxSize;
 	float            AtomAgeZeroSize;
 };
+static_assert(sizeof(ER_GlintsOnTarget::ParentAtomData) == 0x34, "Data type is of wrong size");
+static_assert(sizeof(ER_GlintsOnTarget::AtomData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(ER_GlintsOnTarget) == 0x4c, "Data type is of wrong size");
 
 class ER_MultiPickup : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		// BW1W120 006a7b80 BW1M119 inlined
+		virtual ~CollectionData();
+
+		// BW1W120 inlined BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		// BW1W120 006a7bb0 BW1M119 inlined
+		virtual ~AtomData();
+
+		// BW1W120 inlined BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier);
+	};
+
 	// BW1W120 006a7730 BW1M119 014320f0
 	ER_MultiPickup(PersistentOwner* owner);
 
@@ -1656,6 +2534,44 @@ static_assert(sizeof(CreateRuleMakeChain) == 0x30, "Data type is of wrong size")
 class UR_Explosion : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		uint8_t field_0x20[0x38];
+
+		// BW1W120 0067e1b0 BW1M119 inlined
+		virtual ~CollectionData();
+		// BW1W120 0067e1a0 BW1M119 inlined
+		virtual char* GetDebugText();
+		// BW1W120 006984d0 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cf000 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+		// BW1W120 0067e190 BW1M119 inlined
+		virtual uint32_t GetSaveType();
+
+		// BW1W120 inlined BW1M119 01401c10
+		CollectionData(const AtomCollectionModifier* modifier);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool FirstUpdate;
+
+		// BW1W120 00560d40 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) { FirstUpdate = true; }
+
+		// BW1W120 00560d70 BW1M119 01428520
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_EXPLOSION_ATOM_DATA; }
+		// BW1W120 00560d80 BW1M119 01428570
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00698770 BW1M119 01421ea0
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cf250 BW1M119 01488f90
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 0067e090 BW1M119 01401d20
 	UR_Explosion(PersistentOwner* owner);
 
@@ -1674,6 +2590,7 @@ public:
 	float SmokeDelay;
 	float BeamDelay;
 };
+static_assert(sizeof(UR_Explosion::AtomData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(UR_Explosion) == 0x50, "Data type is of wrong size");
 
 class UR_ExplodeObject : public AtomCreateRule
@@ -1774,6 +2691,24 @@ static_assert(sizeof(CreateRuleAnAtom) == 0x64, "Data type is of wrong size");
 class CreateNewBaseAtom : public AtomCreateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		long Count;
+
+		// BW1W120 0055fc40 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier), Count(0) {}
+
+		// BW1W120 0055fc70 BW1M119 0142a3a0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_CREATE_NEW_BASE_ATOM_ATOM_DATA; }
+		// BW1W120 0055fc80 BW1M119 0142a3f0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696f90 BW1M119 01423bf0
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cdb00 BW1M119 0148aa80
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	CreateNewBaseAtom(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		Flags ^= 4;
@@ -1788,6 +2723,7 @@ public:
 	long            BaseGroup;
 	PSysSoundAction SoundCreation;
 };
+static_assert(sizeof(CreateNewBaseAtom::AtomData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(CreateNewBaseAtom) == 0x48, "Data type is of wrong size");
 
 class UR_MoveAtomToBaseGroup : public UpdateRule
@@ -1807,6 +2743,31 @@ static_assert(sizeof(UR_MoveAtomToBaseGroup) == 0x24, "Data type is of wrong siz
 class AttatchFireBallToAtom : public UpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool                     FirstUpdate;
+		GTPointer<MagicFireBall> FireBall;
+
+		// BW1W120 0055f770 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier)
+		{
+			FireBall = NULL;
+			FirstUpdate = true;
+		}
+
+		// BW1W120 0055f7a0 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_ATTATCH_FIREBALL_TO_ATOM_ATOM_DATA; }
+		// BW1W120 0055f7b0 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00682fa0 BW1M119 inlined
+		virtual ~AtomData();
+		// BW1W120 00696a50 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd5b0 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	AttatchFireBallToAtom(PersistentOwner* owner) : UpdateRule(owner) {}
 
 	// BW1W120 006b1220 BW1M119 01467030
@@ -1814,6 +2775,7 @@ public:
 	// BW1W120 00682fd0 BW1M119 014061a0
 	virtual void ModifyAtomCollection(AtomCollection* collection) const;
 };
+static_assert(sizeof(AttatchFireBallToAtom::AtomData) == 0x2c, "Data type is of wrong size");
 static_assert(sizeof(AttatchFireBallToAtom) == 0x20, "Data type is of wrong size");
 
 class CreateWithInitialDirection : public OnceOnlyCreateRule
@@ -1853,6 +2815,25 @@ static_assert(sizeof(CreateWithInitialDirection) == 0x84, "Data type is of wrong
 class UR_SideSpin : public UpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		float Spin;
+		bool  FirstUpdate;
+
+		// BW1W120 005600c0 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) { FirstUpdate = true; }
+
+		// BW1W120 005600f0 BW1M119 01429d90
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_SIDE_SPIN_ATOM_DATA; }
+		// BW1W120 00560100 BW1M119 01429de0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00697340 BW1M119 01423800
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cdeb0 BW1M119 0148a6b0
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_SideSpin(PersistentOwner* owner) : UpdateRule(owner)
 	{
 		ScaleAngularVelocity = 1.0f;
@@ -1869,11 +2850,31 @@ public:
 	float MaxAngularVelocity;
 	float TimeToFade;
 };
+static_assert(sizeof(UR_SideSpin::AtomData) == 0x28, "Data type is of wrong size");
 static_assert(sizeof(UR_SideSpin) == 0x2c, "Data type is of wrong size");
 
 class UR_InitialSpin : public UpdateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		float Spin;
+		bool  FirstUpdate;
+
+		// BW1W120 00560140 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) { FirstUpdate = true; }
+
+		// BW1W120 00560170 BW1M119 01429c50
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_INITIAL_SPIN_ATOM_DATA; }
+		// BW1W120 00560180 BW1M119 01429ca0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006973e0 BW1M119 01423750
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cdf50 BW1M119 0148a600
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_InitialSpin(PersistentOwner* owner) : UpdateRule(owner)
 	{
 		ScaleAngularVelocity = 1.0f;
@@ -1890,6 +2891,7 @@ public:
 	float MaxAngularVelocity;
 	float TimeToFade;
 };
+static_assert(sizeof(UR_InitialSpin::AtomData) == 0x28, "Data type is of wrong size");
 static_assert(sizeof(UR_InitialSpin) == 0x2c, "Data type is of wrong size");
 
 class CreateRuleFusedSphericalExplode : public OnceOnlyCreateRule
@@ -2012,6 +3014,30 @@ static_assert(sizeof(UR_FollowCastPosn) == 0x20, "Data type is of wrong size");
 class UR_HandSprinkle : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool FirstUpdate;
+		long Count;
+
+		// BW1W120 0055f8e0 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier), Count(0)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 0055f910 BW1M119 01426cf0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_HAND_SPRINKLE_COLLECTION_DATA; }
+		// BW1W120 0055f920 BW1M119 01426d40
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 0069fef0 BW1M119 0143c000
+		virtual ~CollectionData();
+		// BW1W120 00699c00 BW1M119 01420b30
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006d05e0 BW1M119 01487b80
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 0069ff00 BW1M119 0143be80
 	UR_HandSprinkle(PersistentOwner* owner);
 
@@ -2034,6 +3060,7 @@ public:
 
 	KPSplineInterpolator<float> KeyPoints;
 };
+static_assert(sizeof(UR_HandSprinkle::CollectionData) == 0x28, "Data type is of wrong size");
 static_assert(sizeof(UR_HandSprinkle) == 0x50, "Data type is of wrong size");
 
 class UR_FollowLocalHand : public UpdateRule
@@ -2056,6 +3083,29 @@ static_assert(sizeof(UR_FollowLocalHand) == 0x24, "Data type is of wrong size");
 class UR_CreatureSpell : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool                FirstUpdate;
+		GTPointer<Creature> Target;
+
+		// BW1W120 00560560 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier)
+		{
+			FirstUpdate = true;
+			Target = NULL;
+		}
+
+		// BW1W120 00560590 BW1M119 01428d20
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_CREATURE_SPELL_COLLECTION_DATA; }
+		// BW1W120 005605a0 BW1M119 01428d70
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00698030 BW1M119 01422530
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ceb40 BW1M119 01489630
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 00677e70 BW1M119 013f4d50
 	UR_CreatureSpell(PersistentOwner* owner);
 
@@ -2067,11 +3117,33 @@ public:
 	PSysSoundAction SoundCreatureSpell;
 	PSysSoundAction SoundCreatureSpellCast;
 };
+static_assert(sizeof(UR_CreatureSpell::CollectionData) == 0x2c, "Data type is of wrong size");
 static_assert(sizeof(UR_CreatureSpell) == 0x5c, "Data type is of wrong size");
 
 class UR_CreatureSpellItch : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool FirstUpdate;
+
+		// BW1W120 005605e0 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 00560610 BW1M119 01428bb0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_CREATURE_SPELL_ITCH_COLLECTION_DATA; }
+		// BW1W120 00560620 BW1M119 01428c10
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006980e0 BW1M119 01422480
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cebf0 BW1M119 01489580
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_CreatureSpellItch(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		NumAtoms = 5;
@@ -2088,11 +3160,36 @@ public:
 	float PauseBeforeGotoCreature;
 	float OrbitSpeed;
 };
+static_assert(sizeof(UR_CreatureSpellItch::CollectionData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(UR_CreatureSpellItch) == 0x38, "Data type is of wrong size");
 
 class UR_CreatureSpellFreeze : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool FirstUpdate;
+		long NumEmitted;
+		long EmitTime;
+
+		// BW1W120 00560660 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier)
+			: BaseCollectionModifierData(modifier), NumEmitted(0), EmitTime(0)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 00560690 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_CREATURE_SPELL_FREEZE_COLLECTION_DATA; }
+		// BW1W120 005606a0 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00698140 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cec50 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_CreatureSpellFreeze(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		Flags ^= 4;
@@ -2112,11 +3209,64 @@ public:
 	float InitSpeed;
 	float MinHeight;
 };
+static_assert(sizeof(UR_CreatureSpellFreeze::CollectionData) == 0x2c, "Data type is of wrong size");
 static_assert(sizeof(UR_CreatureSpellFreeze) == 0x3c, "Data type is of wrong size");
 
 class UR_CreatureSpellGeneric : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		LHPoint Start;
+		LHPoint End;
+		bool    FirstUpdate;
+		long    NumEmitted;
+		long    EmitTime;
+
+		// BW1W120 005606e0 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier)
+			: BaseCollectionModifierData(modifier), NumEmitted(0), EmitTime(0)
+		{
+			Start = End = LHPoint(0.0f, 0.0f, 0.0f);
+			FirstUpdate = true;
+		}
+
+		// BW1W120 00560740 BW1M119 01428e80
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_CREATURE_SPELL_GENERIC_COLLECTION_DATA; }
+		// BW1W120 00560750 BW1M119 01428ee0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00697ea0 BW1M119 01422660
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ce9a0 BW1M119 01489750
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		float Theta;
+		float Phi;
+		float ThetaSpeed;
+		float PhiSpeed;
+		float BaseScale;
+
+		// BW1W120 00560760 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier)
+			: BaseAtomModifierData(modifier), Theta(0), Phi(0), ThetaSpeed(0), PhiSpeed(1.0f), BaseScale(1.0f)
+		{
+		}
+
+		// BW1W120 005607a0 BW1M119 01428f40
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_CREATURE_SPELL_GENERIC_ATOM_DATA; }
+		// BW1W120 005607b0 BW1M119 01428f90
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00697d60 BW1M119 01422750
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ce850 BW1M119 01489840
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_CreatureSpellGeneric(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		Flags ^= 4;
@@ -2146,11 +3296,37 @@ public:
 	float field_0x48;
 	float field_0x4c;
 };
+static_assert(sizeof(UR_CreatureSpellGeneric::CollectionData) == 0x44, "Data type is of wrong size");
+static_assert(sizeof(UR_CreatureSpellGeneric::AtomData) == 0x34, "Data type is of wrong size");
 static_assert(sizeof(UR_CreatureSpellGeneric) == 0x50, "Data type is of wrong size");
 
 class UR_CreatureSpellCompassion : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool FirstUpdate;
+		long NumEmitted;
+		long EmitTime;
+
+		// BW1W120 00560820 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier)
+			: BaseCollectionModifierData(modifier), NumEmitted(0), EmitTime(0)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 00560850 BW1M119 01429150
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_CREATURE_SPELL_COMPASSION_COLLECTION_DATA; }
+		// BW1W120 00560860 BW1M119 014291b0
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00697c80 BW1M119 01422830
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ce770 BW1M119 01489920
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_CreatureSpellCompassion(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		Flags ^= 4;
@@ -2168,11 +3344,51 @@ public:
 	float DieAge;
 	float InitSpeed;
 };
+static_assert(sizeof(UR_CreatureSpellCompassion::CollectionData) == 0x2c, "Data type is of wrong size");
 static_assert(sizeof(UR_CreatureSpellCompassion) == 0x38, "Data type is of wrong size");
 
 class UR_FollowTargets : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool FirstUpdate;
+
+		// BW1W120 005601c0 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 005601f0 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_FOLLOW_TARGETS_COLLECTION_DATA; }
+		// BW1W120 00560200 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00699780 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006d0290 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		GTPointer<GameThingWithPos> Target;
+
+		// BW1W120 00560210 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) { Target = NULL; }
+
+		// BW1W120 00560240 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_FOLLOW_TARGETS_ATOM_DATA; }
+		// BW1W120 00560250 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00697600 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ce170 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_FollowTargets(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		Flags ^= 4;
@@ -2193,11 +3409,33 @@ public:
 	bool            SoundOneOnly;
 	PSysSoundAction SoundCreate;
 };
+static_assert(sizeof(UR_FollowTargets::CollectionData) == 0x24, "Data type is of wrong size");
+static_assert(sizeof(UR_FollowTargets::AtomData) == 0x28, "Data type is of wrong size");
 static_assert(sizeof(UR_FollowTargets) == 0x48, "Data type is of wrong size");
 
 class UR_HealSpellChakra : public AtomCreateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		uint8_t field_0x20[0x18];
+
+		// BW1W120 006a0980 BW1M119 inlined
+		virtual ~AtomData();
+		// BW1W120 006a0970 BW1M119 inlined
+		virtual char* GetDebugText();
+		// BW1W120 00697140 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cdcb0 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+		// BW1W120 006a0960 BW1M119 inlined
+		virtual uint32_t GetSaveType();
+
+		// BW1W120 inlined BW1M119 0143b170
+		AtomData(const AtomCollectionModifier* modifier);
+	};
+
 	// BW1W120 006a0810 BW1M119 0143b280
 	UR_HealSpellChakra(PersistentOwner* owner);
 
@@ -2226,6 +3464,28 @@ static_assert(sizeof(UR_HealSpellChakra) == 0x6c, "Data type is of wrong size");
 class UR_Trail : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		bool                              FirstUpdate;
+		GJCircularArray<PosScaleRotation> Trail;
+
+		// BW1W120 005602c0 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier)
+		{
+			FirstUpdate = true;
+		}
+
+		// BW1W120 00560300 BW1M119 01427140
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_TRAIL_COLLECTION_DATA; }
+		// BW1W120 00560310 BW1M119 01427190
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 006997e0 BW1M119 01420f80
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006d02f0 BW1M119 01487fd0
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 006a4030 BW1M119 01436350
 	UR_Trail(PersistentOwner* owner);
 
@@ -2254,11 +3514,38 @@ public:
 	float   FadeTailAlpha;
 	float   FadeTailScale;
 };
+static_assert(sizeof(UR_Trail::CollectionData) == 0x34, "Data type is of wrong size");
 static_assert(sizeof(UR_Trail) == 0x54, "Data type is of wrong size");
 
 class UR_ManaPathNew : public AtomCreateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		LHPoint               field_0x20;
+		LHPoint               field_0x2c;
+		LHPoint               field_0x38;
+		SimpleSpline<LHPoint> Path;
+		uint32_t              field_0x74;
+		uint32_t              field_0x78;
+		uint32_t              field_0x7c;
+		uint32_t              field_0x80;
+		long                  PathIndex;
+
+		// BW1W120 0055f470 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier), PathIndex(0) {}
+
+		// BW1W120 0055f4a0 BW1M119 0142b8e0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_MANA_PATH_NEW_ATOM_DATA; }
+		// BW1W120 0055f4b0 BW1M119 0142b930
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00695fc0 BW1M119 01424be0
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ccb10 BW1M119 0148ba40
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_ManaPathNew(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		NoiseFrequency = 1.0f;
@@ -2288,11 +3575,31 @@ public:
 	uint8_t field_0x4a;
 	uint8_t field_0x4b;
 };
+static_assert(sizeof(UR_ManaPathNew::AtomData) == 0x88, "Data type is of wrong size");
 static_assert(sizeof(UR_ManaPathNew) == 0x4c, "Data type is of wrong size");
 
 class UR_BeliefSprite : public AtomCreateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		LHPoint  field_0x20;
+		uint32_t field_0x2c;
+
+		// BW1W120 0055f4f0 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) {}
+
+		// BW1W120 0055f520 BW1M119 0142ba30
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_BELIEF_SPRITE_ATOM_DATA; }
+		// BW1W120 0055f530 BW1M119 0142ba80
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00695f20 BW1M119 01424d00
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cca70 BW1M119 0148bb60
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	UR_BeliefSprite(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		RiseSpeed = 10.0f;
@@ -2336,11 +3643,32 @@ public:
 	uint8_t         field_0x67;
 	PSysSoundAction SoundOfBelief;
 };
+static_assert(sizeof(UR_BeliefSprite::AtomData) == 0x30, "Data type is of wrong size");
 static_assert(sizeof(UR_BeliefSprite) == 0x80, "Data type is of wrong size");
 
 class UR_TownCentreBelief : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		// BW1W120 0069c6f0 BW1M119 inlined
+		virtual ~CollectionData();
+
+		// BW1W120 inlined BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		// BW1W120 0069c720 BW1M119 inlined
+		virtual ~AtomData();
+
+		// BW1W120 inlined BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier);
+	};
+
 	UR_TownCentreBelief(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		// Assignment order from the BW1M119 constructor (inlined into 0144df00).
@@ -2401,6 +3729,24 @@ static_assert(sizeof(UR_TownCentreBelief) == 0x7c, "Data type is of wrong size")
 class LightningForkFlicker : public AtomCollectionModifier
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		long Count;
+
+		// BW1W120 00560360 BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier), Count(0) {}
+
+		// BW1W120 00560390 BW1M119 inlined
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_LIGHTNING_FORK_FLICKER_COLLECTION_DATA; }
+		// BW1W120 005603a0 BW1M119 inlined
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00699a60 BW1M119 inlined
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006d0430 BW1M119 inlined
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	LightningForkFlicker(PersistentOwner* owner) : AtomCollectionModifier(owner) { FlickerFreq = 1.0f; }
 
 	// BW1W120 006b24d0 BW1M119 01462dc0
@@ -2410,6 +3756,7 @@ public:
 
 	float FlickerFreq;
 };
+static_assert(sizeof(LightningForkFlicker::CollectionData) == 0x24, "Data type is of wrong size");
 static_assert(sizeof(LightningForkFlicker) == 0x24, "Data type is of wrong size");
 
 class UR_Lightning : public AtomCreateRule
@@ -2454,6 +3801,16 @@ static_assert(sizeof(UR_Lightning) == 0x98, "Data type is of wrong size");
 class UR_LightningStrike : public AtomCreateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		// BW1W120 00693a40 BW1M119 inlined
+		virtual ~AtomData();
+
+		// BW1W120 inlined BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier);
+	};
+
 	// BW1W120 00693650 BW1M119 01419b50
 	UR_LightningStrike(PersistentOwner* owner);
 
@@ -2469,6 +3826,51 @@ static_assert(sizeof(UR_LightningStrike) == 0x44, "Data type is of wrong size");
 class UR_SimpleBeam : public AtomCreateRule
 {
 public:
+	class SubCollectionData : public BaseCollectionModifierData
+	{
+	public:
+		KPSplineInterpolator<LHPoint> Spline;
+		long                          Index;
+		bool32_t                      Active;
+
+		// BW1W120 0055f160 BW1M119 inlined
+		SubCollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier), Index(0)
+		{
+			Active = true;
+		}
+
+		// BW1W120 0055f1a0 BW1M119 01429620
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_SIMPLE_BEAM_SUB_COLLECTION_DATA; }
+		// BW1W120 0055f1b0 BW1M119 01429670
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 0055f240 BW1M119 014296c0
+		virtual ~SubCollectionData() {}
+		// BW1W120 00697670 BW1M119 01423110
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ce1e0 BW1M119 0148a050
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		GTPointer<GameThingWithPos> Target;
+		LHPoint                     field_0x28;
+		LHPoint                     field_0x34;
+
+		// BW1W120 0055f110 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) {}
+
+		// BW1W120 0055f140 BW1M119 0142b1d0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_SIMPLE_BEAM_ATOM_DATA; }
+		// BW1W120 0055f150 BW1M119 0142b220
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696850 BW1M119 01424590
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd3b0 BW1M119 0148b410
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 00675c50 BW1M119 013f0e70
 	UR_SimpleBeam(PersistentOwner* owner);
 
@@ -2490,11 +3892,23 @@ public:
 	float    ForkScaleMin;
 	float    ForkScaleMax;
 };
+static_assert(sizeof(UR_SimpleBeam::AtomData) == 0x40, "Data type is of wrong size");
+static_assert(sizeof(UR_SimpleBeam::SubCollectionData) == 0x34, "Data type is of wrong size");
 static_assert(sizeof(UR_SimpleBeam) == 0x5c, "Data type is of wrong size");
 
 class UR_Rope : public UpdateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		// BW1W120 00684410 BW1M119 inlined
+		virtual ~CollectionData();
+
+		// BW1W120 inlined BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier);
+	};
+
 	UR_Rope(PersistentOwner* owner) : UpdateRule(owner)
 	{
 		RopeLength = 50.0f;
@@ -2524,6 +3938,16 @@ static_assert(sizeof(UR_Rope) == 0x38, "Data type is of wrong size");
 class UR_ObjectArcer : public AtomCreateRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		// BW1W120 006935e0 BW1M119 inlined
+		virtual ~AtomData();
+
+		// BW1W120 inlined BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier);
+	};
+
 	UR_ObjectArcer(PersistentOwner* owner) : AtomCreateRule(owner)
 	{
 		AverageTicksPerUpdate = 10;
@@ -2548,9 +3972,81 @@ public:
 };
 static_assert(sizeof(UR_ObjectArcer) == 0x44, "Data type is of wrong size");
 
+class UR_BankedTurning
+{
+public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool FirstUpdate;
+
+		// BW1W120 0055f860 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) { FirstUpdate = true; }
+
+		// BW1W120 0055f890 BW1M119 0142a8e0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_BANKED_TURNING_ATOM_DATA; }
+		// BW1W120 0055f8a0 BW1M119 0142a930
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696d30 BW1M119 01424030
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd890 BW1M119 0148aec0
+		virtual uint32_t Save(GameOSFile& file);
+	};
+};
+static_assert(sizeof(UR_BankedTurning::AtomData) == 0x24, "Data type is of wrong size");
+
 class UR_Plasma : public AtomCreateRule
 {
 public:
+	class SubCollectionData : public BaseCollectionModifierData
+	{
+	public:
+		KPSplineInterpolator<LHPoint> Spline;
+		long                          Index;
+		bool32_t                      Active;
+
+		// BW1W120 0055f2f0 BW1M119 inlined
+		SubCollectionData(const AtomCollectionModifier* modifier) : BaseCollectionModifierData(modifier), Index(0)
+		{
+			Active = true;
+		}
+
+		// BW1W120 0055f330 BW1M119 0142b640
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_PLASMA_SUB_COLLECTION_DATA; }
+		// BW1W120 0055f340 BW1M119 0142b690
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 0055f3a0 BW1M119 0142b6e0
+		virtual ~SubCollectionData() {}
+		// BW1W120 006963e0 BW1M119 01424a20
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006ccf60 BW1M119 0148b880
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		LHPoint  field_0x20;
+		LHPoint  field_0x2c;
+		LHPoint  field_0x38;
+		LHPoint  field_0x44;
+		uint32_t field_0x50;
+		uint32_t field_0x54;
+		uint32_t field_0x58;
+
+		// BW1W120 0055f350 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier) {}
+
+		// BW1W120 0055f380 BW1M119 0142b5c0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UR_PLASMA_ATOM_DATA; }
+		// BW1W120 0055f390 BW1M119 0142b600
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00696570 BW1M119 01424940
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cd0c0 BW1M119 0148b7a0
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	// BW1W120 00676460 BW1M119 013f01d0
 	UR_Plasma(PersistentOwner* owner);
 
@@ -2575,11 +4071,23 @@ public:
 	float            ForkScaleMin;
 	float            ForkScaleMax;
 };
+static_assert(sizeof(UR_Plasma::SubCollectionData) == 0x34, "Data type is of wrong size");
+static_assert(sizeof(UR_Plasma::AtomData) == 0x5c, "Data type is of wrong size");
 static_assert(sizeof(UR_Plasma) == 0x68, "Data type is of wrong size");
 
 class ZR_SurfRevol : public AtomCreateRule
 {
 public:
+	class CollectionData : public BaseCollectionModifierData
+	{
+	public:
+		// BW1W120 00686180 BW1M119 inlined
+		virtual ~CollectionData();
+
+		// BW1W120 inlined BW1M119 inlined
+		CollectionData(const AtomCollectionModifier* modifier);
+	};
+
 	// BW1W120 00686200 BW1M119 0140b900
 	ZR_SurfRevol(PersistentOwner* owner);
 
@@ -2713,6 +4221,25 @@ static_assert(sizeof(RemoveRuleAfterCloseDown) == 0x24, "Data type is of wrong s
 class RemoveRuleAfterConditionTrue : public RemoveRule
 {
 public:
+	class AtomData : public BaseAtomModifierData
+	{
+	public:
+		bool     ConditionMet;
+		uint32_t field_0x24;
+
+		// BW1W120 005603e0 BW1M119 inlined
+		AtomData(const AtomCollectionModifier* modifier) : BaseAtomModifierData(modifier), ConditionMet(false) {}
+
+		// BW1W120 00560410 BW1M119 01429ae0
+		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_REMOVE_RULE_AFTER_CONDITION_TRUE_ATOM_DATA; }
+		// BW1W120 00560420 BW1M119 01429b40
+		virtual char* GetDebugText() { return "##a_class:"; }
+		// BW1W120 00697480 BW1M119 01423690
+		virtual uint32_t Load(GameOSFile& file);
+		// BW1W120 006cdff0 BW1M119 0148a540
+		virtual uint32_t Save(GameOSFile& file);
+	};
+
 	RemoveRuleAfterConditionTrue(PersistentOwner* owner) : RemoveRule(owner)
 	{
 		Delay = 0.0f;
@@ -2727,6 +4254,7 @@ public:
 	float            Delay;
 	TEventCondition* ConditionForRemove;
 };
+static_assert(sizeof(RemoveRuleAfterConditionTrue::AtomData) == 0x28, "Data type is of wrong size");
 static_assert(sizeof(RemoveRuleAfterConditionTrue) == 0x28, "Data type is of wrong size");
 
 class LandscapeCollide : public AtomCollectionModifier

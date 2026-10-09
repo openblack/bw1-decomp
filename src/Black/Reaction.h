@@ -4,14 +4,18 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h>                      /* For enum REACTION */
-#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
+#include <chlasm/Enum.h>                          /* For enum REACTION */
+#include <Lionhead/LHLib/ver5.0/LHDynamicStack.h> /* For class LHDynamicStack */
+#include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
+#include <re_common.h>                            /* For bool32_t */
 
 #include "GameThing.h" /* For struct GameThing */
+#include "LHPTR.h"     /* For class LHPTR */
 
 // Forward Declares
 
 class Base;
+class Dance;
 class GPlayer;
 class GameOSFile;
 class GameThingWithPos;
@@ -21,39 +25,41 @@ class ReactionInfo;
 class Reaction : public GameThing
 {
 public:
-	GameThingWithPos*    target;
-	uint32_t             field_0x18;
-	uint32_t             field_0x1c;
-	uint32_t             field_0x20;
-	REACTION             type;
-	uint32_t             field_0x28;
-	uint32_t             field_0x2c;
-	uint32_t             field_0x30;
-	uint32_t             field_0x34;
-	GPlayer*             player;
-	float                field_0x3c;
-	LHListNode<Reaction> next;
+	GameThingWithPos*       target;
+	LHDynamicStack<Living*> ReactingLivings;
+	uint32_t                field_0x20;
+	REACTION                type;
+	LHPTR<Dance>            ReactionDance;
+	uint32_t                field_0x2c;
+	uint32_t                field_0x30;
+	bool32_t                ShuttingDown;
+	GPlayer*                player;
+	float                   field_0x3c;
+	LHListNode<Reaction>    next;
 
 	// Override methods
 
-	// BW1W120 0055c800 BW1M119 0113f170
+	// BW1W120 006e3a60 BW1M119 0113f170
 	virtual ~Reaction();
 	// BW1W120 006e3aa0 BW1M119 0113ee20
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0055c7b0 BW1M119 0109bad0
-	virtual GPlayer* GetPlayer();
+	virtual GPlayer* GetPlayer() { return player; }
 	// BW1W120 0055c7c0 BW1M119 0113ccd0
-	virtual void SetPlayer(GPlayer* param_1);
+	virtual void SetPlayer(GPlayer* new_player) { player = new_player; }
 	// BW1W120 0055c7d0 BW1M119 0104bec0
-	virtual float GetRadius();
+	virtual float GetRadius() { return field_0x3c; }
 	// BW1W120 0055c7f0 BW1M119 0113cda0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Reaction:"; }
 	// BW1W120 006e4ba0 BW1M119 0113d100
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 006e4990 BW1M119 0113d580
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055c7e0 BW1M119 0113cd60
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_REACTION; }
+
+	// BW1W120 inlined BW1M119 inlined
+	Reaction() {}
 
 	// Static methods
 

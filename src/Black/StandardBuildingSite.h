@@ -59,6 +59,8 @@ public:
 
 	// Constructors
 
+	// BW1W120 0043d690 BW1M119 010bb730
+	StandardBuildingSite();
 	// BW1W120 inlined BW1M119 inlined
 	StandardBuildingSite(MultiMapFixed* building) : BuildingSite(building) { SetToZero(); }
 

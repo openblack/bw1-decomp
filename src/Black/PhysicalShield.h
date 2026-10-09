@@ -26,6 +26,8 @@ class Reaction;
 class PhysicalShield : public MapShield
 {
 public:
+	uint8_t field_0x68[0x98];
+
 	// Override methods
 
 	// BW1W120 0072cb20 BW1M119 0153c920
@@ -55,7 +57,7 @@ public:
 	// BW1W120 0072d170 BW1M119 01538120
 	virtual bool32_t SetDying();
 	// BW1W120 0072cc80 BW1M119 01538ae0
-	virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0072d7e0 BW1M119 015377d0
 	virtual uint32_t GetPhysicsConstantsType();
 	// BW1W120 0072ceb0 BW1M119 01538560
@@ -72,6 +74,9 @@ public:
 	virtual void DrawShield();
 	// BW1W120 0072b8e0 BW1M119 0153b740
 	virtual bool IsPointDefinietlyWithinShieldVolume(const MapCoords& param_1);
+
+	// BW1W120 0072cb50 BW1M119 01538cd0
+	PhysicalShield();
 };
 
 #endif /* BW1_DECOMP_PHYSICAL_SHIELD_INCLUDED_H */

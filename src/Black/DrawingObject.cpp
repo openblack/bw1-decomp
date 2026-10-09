@@ -280,7 +280,7 @@ void TownCentre::Draw()
 			if (icon != NULL && GetLife() > 0.0f)
 			{
 				Game3DObject* object = icon->Game3dObject;
-				object->CombineColorFromPos(0xFFFFFFFF, icon->field_0x10c);
+				object->CombineColorFromPos(0xFFFFFFFF, icon->SpecularColor);
 				object->AddForDrawing(this);
 				if (LH3DObject::g_b_last_on_screen)
 				{
@@ -1369,7 +1369,7 @@ void WorshipSite::Draw()
 		DrawBuilding(Game3dObject);
 		return;
 	}
-	show_needs->Draw();
+	show_needs.Get()->Draw();
 	if (GetFireEffect() != NULL)
 	{
 		DrawObjectOnFire();
@@ -1405,7 +1405,7 @@ void SpellIcon::Draw()
 	}
 	// TODO: Inline budget: the target inlines both SetPosition calls below but keeps every LHMatrix helper inside them
 	// (SetScale, PostTranslation, RotateY, Translation) as a call; this build has budget left to inline most of them.
-	if (field_0x10c == 0)
+	if (SpecularColor == 0)
 	{
 		float         scale = GetScale();
 		float         yAngle = GetYAngle();
@@ -1425,7 +1425,7 @@ void SpellIcon::Draw()
 		GLandscape::ConvertMapCoordToLandscapePoint(Pos, point);
 		object3d->LH3DObject::SetPosition(point, yAngle, scale);
 		Game3DObject* object = Game3dObject;
-		object->CombineColorFromPos(0xFFFFFFFF, field_0x10c);
+		object->CombineColorFromPos(0xFFFFFFFF, SpecularColor);
 		object->AddForDrawing(this);
 	}
 	if (LH3DObject::g_b_last_on_screen)
@@ -1722,7 +1722,7 @@ void SpellSeedGraphic::DrawSpellGraphic(Object* object, bool param_2, bool param
 		PSys->SetAlpha(alpha);
 		if (param_2)
 		{
-			PSys->Draw_1(field_0x5c ? GGame::g_game->field_0x205d64 : 1.0f, false);
+			PSys->Draw(field_0x5c ? GGame::g_game->field_0x205d64 : 1.0f, false);
 		}
 		else
 		{
@@ -2251,24 +2251,28 @@ void Animal::Draw()
 	}
 	PreDrawScale(GetScale());
 	PreDrawShear();
-	field_0x124 += LH3DTech::GetGameTimeInc() * 0.001f;
-	if (field_0x124 >= field_0x128)
+	AngleZoomer.CurrentTime += LH3DTech::GetGameTimeInc() * 0.001f;
+	if (AngleZoomer.CurrentTime >= AngleZoomer.duration)
 	{
-		field_0x110 = field_0x114;
-		field_0x11c = field_0x118;
-		field_0x120 = 0;
-		field_0x124 = field_0x128;
+		AngleZoomer.CurrentValue = AngleZoomer.destination;
+		AngleZoomer.CurrentSpeed = AngleZoomer.DestinationSpeed;
+		AngleZoomer.TimeM2 = 0;
+		AngleZoomer.CurrentTime = AngleZoomer.duration;
 	}
 	else
 	{
-		// TODO: The target loads field_0x130 before field_0x124 for the field_0x130 * field_0x124 term.
-		float t2 = Square(field_0x124) * 0.5f;
-		float t3 = field_0x124 * t2 * (1.0f / 3.0f);
+		// TODO: The target loads AngleZoomer.StartSpeed before AngleZoomer.CurrentTime for their product.
+		float t2 = Square(AngleZoomer.CurrentTime) * 0.5f;
+		float t3 = AngleZoomer.CurrentTime * t2 * (1.0f / 3.0f);
 		float t4 = t2 * t2 * (1.0f / 6.0f);
-		field_0x11c = field_0x130 + field_0x134 * field_0x124 + field_0x138 * t2 + field_0x13c * t3;
-		field_0x110 = field_0x12c + field_0x130 * field_0x124 + field_0x134 * t2 + field_0x138 * t3 + field_0x13c * t4;
+		AngleZoomer.CurrentSpeed = AngleZoomer.StartSpeed +
+		                           AngleZoomer.NonLinearAcceleration.x * AngleZoomer.CurrentTime +
+		                           AngleZoomer.NonLinearAcceleration.y * t2 + AngleZoomer.NonLinearAcceleration.z * t3;
+		AngleZoomer.CurrentValue = AngleZoomer.StartValue + AngleZoomer.StartSpeed * AngleZoomer.CurrentTime +
+		                           AngleZoomer.NonLinearAcceleration.x * t2 + AngleZoomer.NonLinearAcceleration.y * t3 +
+		                           AngleZoomer.NonLinearAcceleration.z * t4;
 	}
-	float    angle = field_0x110;
+	float    angle = AngleZoomer.CurrentValue;
 	LHMatrix savedMatrix;
 	if (angle != 0.0f)
 	{
@@ -2317,31 +2321,34 @@ void SpellWolf::Draw()
 {
 	PreDrawScale(GetScale());
 	PreDrawShear();
-	field_0x124 += LH3DTech::GetGameTimeInc() * 0.001f;
-	if (field_0x124 >= field_0x128)
+	AngleZoomer.CurrentTime += LH3DTech::GetGameTimeInc() * 0.001f;
+	if (AngleZoomer.CurrentTime >= AngleZoomer.duration)
 	{
-		field_0x110 = field_0x114;
-		field_0x11c = field_0x118;
-		field_0x120 = 0;
-		field_0x124 = field_0x128;
+		AngleZoomer.CurrentValue = AngleZoomer.destination;
+		AngleZoomer.CurrentSpeed = AngleZoomer.DestinationSpeed;
+		AngleZoomer.TimeM2 = 0;
+		AngleZoomer.CurrentTime = AngleZoomer.duration;
 	}
 	else
 	{
-		// TODO: As in Animal::Draw, the target loads field_0x130 before field_0x124 for their product.
-		float t2 = Square(field_0x124) * 0.5f;
-		float t3 = field_0x124 * t2 * (1.0f / 3.0f);
+		float t2 = Square(AngleZoomer.CurrentTime) * 0.5f;
+		float t3 = AngleZoomer.CurrentTime * t2 * (1.0f / 3.0f);
 		float t4 = t2 * t2 * (1.0f / 6.0f);
-		field_0x11c = field_0x130 + field_0x134 * field_0x124 + field_0x138 * t2 + field_0x13c * t3;
-		field_0x110 = field_0x12c + field_0x130 * field_0x124 + field_0x134 * t2 + field_0x138 * t3 + field_0x13c * t4;
+		AngleZoomer.CurrentSpeed = AngleZoomer.StartSpeed +
+		                           AngleZoomer.NonLinearAcceleration.x * AngleZoomer.CurrentTime +
+		                           AngleZoomer.NonLinearAcceleration.y * t2 + AngleZoomer.NonLinearAcceleration.z * t3;
+		AngleZoomer.CurrentValue = AngleZoomer.StartValue + AngleZoomer.StartSpeed * AngleZoomer.CurrentTime +
+		                           AngleZoomer.NonLinearAcceleration.x * t2 + AngleZoomer.NonLinearAcceleration.y * t3 +
+		                           AngleZoomer.NonLinearAcceleration.z * t4;
 	}
-	float    angle = field_0x110;
+	float    angle = AngleZoomer.CurrentValue;
 	LHMatrix savedMatrix;
 	if (angle != 0.0f)
 	{
 		savedMatrix = Game3dObject->matrix;
 		Game3dObject->matrix.RotateZ(angle);
 	}
-	int alpha = FloatToInt(field_0x168);
+	int alpha = FloatToInt(FadeAlpha.CurrentValue);
 	Game3dObject->color = (alpha << 24) | 0xFFFFFF;
 	Game3dObject->SetDrawWithGlobalAlpha(alpha != 255);
 	FireEffect* fire = GetFireEffect();

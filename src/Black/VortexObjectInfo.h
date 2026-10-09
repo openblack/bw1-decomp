@@ -15,18 +15,21 @@ class GameThing;
 class VortexObjectInfo : public PSysBase
 {
 public:
+	uint8_t field_0x14[0x4c];
+
 	// Override methods
 
-	// BW1W120 0055d830 BW1M119 013bab20
-	virtual ~VortexObjectInfo();
 	// BW1W120 0055d820 BW1M119 013babf0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "##a_class:"; }
 	// BW1W120 00600bf0 BW1M119 013bac40
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00600ad0 BW1M119 013baf40
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0055d810 BW1M119 013babb0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_VORTEX_OBJECT_INFO; }
+
+	// BW1W120 0055d7f0 BW1M119 inlined
+	VortexObjectInfo() {}
 };
 
 #endif /* BW1_DECOMP_VORTEX_OBJECT_INFO_INCLUDED_H */
