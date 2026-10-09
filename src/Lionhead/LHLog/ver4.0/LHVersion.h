@@ -6,6 +6,7 @@
 #include <re_common.h> /* For bool32_t */
 
 #include <Lionhead/LHLib/ver5.0/LHReturn.h> /* For enum LH_RETURN */
+#include "LHLogger.h"
 
 class LHVersion;
 template <typename T> class LHLinkedList;
@@ -42,7 +43,7 @@ struct LHVersionBlock
 	char EndTag[LH_VERSION_TAG_LENGTH];          /* 0x187 */
 };
 
-class __declspec(dllimport) LHVersion
+class LH_LOG_API LHVersion
 {
 public:
 	enum VALIDATION
