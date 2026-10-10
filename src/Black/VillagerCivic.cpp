@@ -459,7 +459,7 @@ uint32_t Villager::CheckForScaffoldForBuildingSite(BuildingSite* param_1)
 }
 
 // BW1W120 007595f0 BW1M119 0157c760
-bool32_t Villager::IsScaffoldValid()
+bool Villager::IsScaffoldValid()
 {
 	// TODO: target emits narrow `xor al,al` (byte) but this uint-mangled (?..@@QAEIXZ)
 	// function constant-folds `return false;` to `xor eax,eax` no matter the phrasing

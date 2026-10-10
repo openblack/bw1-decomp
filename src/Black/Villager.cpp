@@ -109,7 +109,7 @@ bool Villager::UnemployedJobs()
 }
 
 // BW1W120 0074ff60 BW1M119 015793e0
-bool Villager::SetupJobLocation()
+bool32_t Villager::SetupJobLocation()
 {
 	return false;
 }
@@ -276,16 +276,16 @@ void Villager::SetSpeed(int base_speed, int scale_speed)
 		factor = ((int)(ObjectCreationIndex * 47) % 31 - 16) * 0.01f + 1.0f;
 		if (GetAge() < ((const GVillagerInfo*)info)->TeenAge)
 		{
-			float slowDown = (((const GVillagerInfo*)info)->TeenAge - GetAge()) * 0.2f * 0.1f;
+			float slowDown = (GetInfo()->TeenAge - GetAge()) * 0.2f * 0.1f;
 			if (slowDown >= 0.4f)
 			{
 				slowDown = 0.4f;
 			}
 			factor = factor - slowDown;
 		}
-		else if (GetAge() > ((const GVillagerInfo*)info)->MiddleAge)
+		else if (GetAge() > GetInfo()->MiddleAge)
 		{
-			float slowDown = (GetAge() - ((const GVillagerInfo*)info)->MiddleAge) * 0.2f * 0.1f;
+			float slowDown = (GetAge() - GetInfo()->MiddleAge) * 0.2f * 0.1f;
 			if (slowDown >= 0.4f)
 			{
 				slowDown = 0.4f;
@@ -526,7 +526,7 @@ bool32_t Villager::DiscipleDecideWhatToDo()
 }
 
 // BW1W120 00751970 BW1M119 01576cf0
-bool Villager::GetPrayerSite()
+bool32_t Villager::GetPrayerSite()
 {
 	return false;
 }
@@ -572,7 +572,7 @@ GJobInfo* Villager::GetJobInfo(unsigned char job) const
 }
 
 // BW1W120 00751d40
-bool Villager::FUN00751d40()
+bool32_t Villager::FUN00751d40()
 {
 	return false;
 }
@@ -640,10 +640,7 @@ Football* Villager::GetFootball()
 // BW1W120 00751ee0 BW1M119 01575c10
 GTribeInfo* Villager::GetTribe()
 {
-	// TODO: target evaluates info->TribeType through ecx before loading g_game; ours keeps
-	// info in eax and loads g_game earlier
-	TRIBE_TYPE tribeType = ((const GVillagerInfo*)info)->TribeType;
-	return GGame::g_game->GetTribe(tribeType);
+	return GGame::g_game->GetTribe(GetInfo()->TribeType);
 }
 
 // BW1W120 00751f00 BW1M119 01066b20

@@ -107,7 +107,7 @@ bool32_t Villager::CheckNeededForSpecial()
 	{
 		return true;
 	}
-	return CheckSatisfyOwnDesire(((const GVillagerInfo*)info)->OwnDesireThreshold) == 1;
+	return CheckSatisfyOwnDesire(GetInfo()->OwnDesireThreshold) == 1;
 }
 
 // BW1W120 00760110 BW1M119 0100f140
@@ -250,7 +250,7 @@ bool32_t Villager::ArrivesHome()
 		{
 			if (abode->IsBuilt() == 0 || abode->IsRepaired() == 0)
 			{
-				if (GetLife() < ((const GVillagerInfo*)info)->DamageThresholdToGoHome)
+				if (GetLife() < GetInfo()->DamageThresholdToGoHome)
 				{
 					if (abode->IsFunctional() == 0)
 					{

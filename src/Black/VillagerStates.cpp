@@ -527,7 +527,7 @@ bool32_t Villager::Drowning()
 bool32_t Villager::MakeScaredStiff()
 {
 	TurnsUntilNextStateChange =
-		(int16_t)max((float)(uint32_t)GRand::GameRand(((const GVillagerInfo*)info)->ScaredStiffTime, FILEPATH, 604),
+		(int16_t)max((float)(uint32_t)GRand::GameRand(GetInfo()->ScaredStiffTime, FILEPATH, 604),
 	                 GRand::GameFloatRand(5.0f, FILEPATH, 604) + 10.0f);
 	SetTopState(VILLAGER_STATE_SCARED_STIFF);
 	ScaredStiff();
