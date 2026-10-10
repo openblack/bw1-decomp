@@ -8155,3 +8155,20 @@ void Creature::ForceActivityAndForceAction(CreaturePlan& param_1, int param_2, i
 		field_0x105c = 1;
 	}
 }
+
+bool32_t Creature::ForceActivityAndDecideAction(CREATURE_DESIRES desire, CreatureBelief* activity_object)
+{
+	FinishActionUnsuccessfully(NULL, 1, 1);
+	mind->desires.MakeDesireFullyDominant(desire, GetInfo());
+	CreaturePlan plan;
+	plan.CreatureDesire = desire;
+	plan.ActivityObject = activity_object;
+	plan.field_0x1c = 1.0f;
+	FindBestActionForPlan(plan);
+	if (plan.IsValid())
+	{
+		ConstructCurrentPlanFromPlan(plan, 0);
+		return true;
+	}
+	return false;
+}
