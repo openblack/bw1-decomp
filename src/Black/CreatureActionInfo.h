@@ -21,7 +21,7 @@ public:
 	uint8_t          field_0xac[0x18];
 	CREATURE_DESIRES Desire;
 	uint8_t          field_0xc8[0x1c];
-	uint32_t         field_0xe4;
+	float            field_0xe4;
 	uint8_t          field_0xe8[0x28];
 
 	// Override methods

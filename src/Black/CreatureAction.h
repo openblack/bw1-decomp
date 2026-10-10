@@ -164,6 +164,7 @@ enum CREATURE_SUB_STATE_ACTIONS
 
 // Forward Declares
 
+class CreatureInfo;
 class Creature;
 class CreatureAgenda;
 class CreatureContext;
@@ -201,12 +202,12 @@ struct PreviousActionContextStack
 
 struct CreatureActionOpinions
 {
-	uint32_t entries[NUM_CREATURE_ACTIONS]; /* 0x0 */
+	float entries[NUM_CREATURE_ACTIONS]; /* 0x0 */
 
 	// Constructors
 
 	// BW1W120 004c3930 BW1M119 01235290
-	CreatureActionOpinions();
+	CreatureActionOpinions(const CreatureInfo* info);
 };
 
 class CreaturePreviousActions : public Base

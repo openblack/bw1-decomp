@@ -8095,3 +8095,63 @@ int CreatureAgenda::ConstructSubActionsForWaterTreeForTown(unsigned long param_1
 	creature->FinishActionUnsuccessfully("no object to use", 1, 1);
 	return 1;
 }
+
+void Creature::UpdateActionPriority()
+{
+	GetActionPriority((CREATURE_ACTION)field_0x1098,
+	                  mind->agenda.PlanState.plans[CreatureActionInfo::g_CreatureActionInfos[field_0x1098].field_0xa8]);
+	field_0x1098++;
+	if (field_0x1098 >= NUM_CREATURE_ACTIONS)
+	{
+		field_0x1098 = 0;
+	}
+}
+
+void Creature::ForceActivityAndForceAction(CREATURE_DESIRES param_1, CreatureBelief* param_2, CREATURE_ACTION param_3,
+                                           CreatureBelief* param_4, CreatureBelief* param_5, int param_6, int param_7)
+{
+	CreaturePlan plan(param_1, param_3, param_2, param_4, param_5, MaxFloat);
+	ForceActivityAndForceAction(plan, param_6, param_7);
+}
+
+CreatureActionOpinions::CreatureActionOpinions(const CreatureInfo* info)
+{
+	for (uint32_t i = 0; i < NUM_CREATURE_ACTIONS; i++)
+	{
+		entries[i] = CreatureActionInfo::g_CreatureActionInfos[i].field_0xe4;
+	}
+}
+
+CreatureActionContext::CreatureActionContext(CreatureContext& context, float param_2)
+{
+	for (int i = 0; i < 5; i++)
+	{
+		((uint32_t*)&start)[i] = ((uint32_t*)&context.field_0x5c)[i];
+	}
+	field_0x14 = param_2;
+}
+
+float Creature::GetActionPriority(CREATURE_ACTION action, CreaturePlan& plan)
+{
+	if (IsConfinedToArea() && mind->agenda.field_0x158c[action] != 0)
+	{
+		return 0.0f;
+	}
+	return ((mind->ActionOpinions.entries[action] + 1.0f) * 0.5f) * 0.005f + 0.5f;
+}
+
+void Creature::ForceActivityAndForceAction(CreaturePlan& param_1, int param_2, int param_3)
+{
+	if (reaction.Get() != NULL)
+	{
+		StopReacting();
+	}
+	FinishActionUnsuccessfully("stopping because new action forcing me", param_3, param_3);
+	mind->agenda.plans[0] = param_1;
+	if (mind->agenda.ConstructSubActionsFromActionAgenda(mind->agenda.plans[0].creature_action))
+	{
+		CopyPlanToPreviousContext(param_2);
+		mind->desires.SuppressDesiresAfterDecidingOnActivity(mind->agenda.plans[0].CreatureDesire);
+		field_0x105c = 1;
+	}
+}

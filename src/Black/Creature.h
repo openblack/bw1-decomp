@@ -185,7 +185,7 @@ public:
 	uint32_t                              field_0x108c;
 	uint32_t                              field_0x1090;
 	uint32_t                              field_0x1094;
-	uint32_t                              field_0x1098;
+	int                                   field_0x1098;
 	LH3DSmoke*                            smoke;
 	GArena*                               arena;
 	uint32_t                              field_0x10a4;
@@ -650,6 +650,18 @@ public:
 	LH3DCreature* GetCreature3D();
 	// BW1W120 0047cce0 BW1M119 011d82c0
 	bool32_t IsConfinedToArea();
+	// BW1W120 004c3990 BW1M119 01235120
+	float GetActionPriority(CREATURE_ACTION action, CreaturePlan& plan);
+	// BW1W120 004c39f0 BW1M119 01235090
+	void UpdateActionPriority();
+	// BW1W120 004c43a0 BW1M119 01235aa0
+	bool32_t ForceActivityAndDecideAction(CREATURE_DESIRES desire, CreatureBelief* activity_object);
+	// BW1W120 004f0a70 BW1M119 0127d450
+	void FindBestActionForPlan(CreaturePlan& plan);
+	// BW1W120 004f1560 BW1M119 0127be20
+	void ConstructCurrentPlanFromPlan(CreaturePlan& plan, int param_2);
+	// BW1W120 004f1600 BW1M119 0127bcc0
+	void CopyPlanToPreviousContext(int param_1);
 	// BW1W120 00490950 BW1M119 011ec1c0
 	void SetInCreatureHand(Creature* creature);
 	// BW1W120 00490910 BW1M119 011ec210
