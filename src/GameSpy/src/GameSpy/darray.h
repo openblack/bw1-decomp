@@ -42,11 +42,7 @@ typedef struct DArrayImplementation *DArray;
  * If elem1 is "greater than" elem2, return a positive number.
  * If the two elements are "equal", return 0.
  */
-#if defined(WIN32)
-	typedef int (__cdecl *ArrayCompareFn)(const void *elem1, const void *elem2);
-#else
-	typedef int (*ArrayCompareFn)(const void *elem1, const void *elem2);
-#endif
+typedef int (*ArrayCompareFn)(const void *elem1, const void *elem2);
 
 
 /* ArrayMapFn
@@ -286,29 +282,11 @@ void ArrayMapBackwards(DArray array, ArrayMapFn fn, void *clientData);
  */
 void * ArrayMap2(DArray array, ArrayMapFn2 fn, void *clientData);
 
-/* ArrayMapBackwards2
- * ------------
- * Goes through the array backwards, and allows you to stop the mapping.
- */
-void * ArrayMapBackwards2(DArray array, ArrayMapFn2 fn, void *clientData);
-
 /* ArrayClear
  * -----------
  * Deletes all elements in the array, but without freeing the array.
  */
 void ArrayClear(DArray array);
-
-/* ArrayGetDataPtr
- * -----------
- * Obtain the pointer to the actual data storage
- */
-void *ArrayGetDataPtr(DArray array);
-
-/* ArraySetDataPtr
- * -----------
- * Set the pointer to the actual data storage, which must be allocated with malloc
- */
-void ArraySetDataPtr(DArray array, void *ptr, int count, int capacity);
 
 #ifdef __cplusplus
 }

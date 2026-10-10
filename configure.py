@@ -1814,7 +1814,7 @@ config.libs = [
             GameSpyObject(NonMatching, "GameSpy/Peer/peerRooms.c"),
             GameSpyObject(NonMatching, "GameSpy/Peer/peerPing.c"),
             GameSpyObject(NonMatching, "GameSpy/Peer/peerPlayers.c"),
-            GameSpyObject(NonMatching, "GameSpy/qr/gqueryreporting.c"),
+            GameSpyObject(NonMatching, "GameSpy/queryreporting/gqueryreporting.c"),
             GameSpyObject(NonMatching, "GameSpy/Peer/peerGlobalCallbacks.c"),
             GameSpyObject(NonMatching, "GameSpy/Peer/peerMangle.c"),
             GameSpyObject(NonMatching, "GameSpy/CEngine/gserver.c"),

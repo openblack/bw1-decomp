@@ -3,8 +3,12 @@ GameSpy Chat SDK
 Dan "Mr. Pants" Schoenblum
 dan@gamespy.com
 
-Copyright 1999-2007 GameSpy Industries, Inc
+Copyright 1999-2001 GameSpy Industries, Inc
 
+18002 Skypark Circle
+Irvine, California 92614
+949.798.4200 (Tel)
+949.798.4299 (Fax)
 devsupport@gamespy.com
 */
 
@@ -14,8 +18,13 @@ devsupport@gamespy.com
 /*************
 ** INCLUDES **
 *************/
+#include <stdio.h>
 #include "chat.h"
-#include "chatCrypt.h"
+#if defined(applec) || defined(THINK_C) || defined(__MWERKS__) && !defined(__KATANA__) && !defined(__mips64)
+	#include "::nonport.h"
+#else
+	#include "../nonport.h"
+#endif
 
 /**********
 ** ENUMS **
@@ -60,21 +69,13 @@ typedef struct ciSocket
 	ciBuffer inputQueue;
 	ciBuffer outputQueue;
 
-	CHATBool secure;
-	gs_crypt_key inKey;
-	gs_crypt_key outKey;
-
 	ciServerMessage lastMessage;
-
-#ifdef IRC_LOG
-	char filename[FILENAME_MAX];
-#endif
 } ciSocket;
 
 /**************
 ** FUNCTIONS **
 **************/
-CHATBool ciSocketInit(ciSocket * sock, const char * nick);
+CHATBool ciSocketInit(ciSocket * sock);
 
 CHATBool ciSocketConnect(ciSocket * sock,
 					 const char * serverAddress,

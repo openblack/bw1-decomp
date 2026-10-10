@@ -3,21 +3,29 @@ GameSpy Chat SDK
 Dan "Mr. Pants" Schoenblum
 dan@gamespy.com
 
-Copyright 1999-2007 GameSpy Industries, Inc
+Copyright 1999-2001 GameSpy Industries, Inc
 
+18002 Skypark Circle
+Irvine, California 92614
+949.798.4200 (Tel)
+949.798.4299 (Fax)
 devsupport@gamespy.com
 */
 
 /*************
 ** INCLUDES **
 *************/
-#include "chatMain.h"
+#include <stdlib.h>
+#include <string.h>
 #include "chatCallbacks.h"
+#include "chatMain.h"
 #include "chatChannel.h"
-
-#if defined(_WIN32)
-// warning about casting void* to function*
-#pragma warning(disable:4055)
+#if defined(applec) || defined(THINK_C) || defined(__MWERKS__) && !defined(__KATANA__)  && !defined(__mips64)
+	#include "::darray.h"
+	#include "::nonport.h"
+#else
+	#include "../darray.h"
+	#include "../nonport.h"
 #endif
 
 /************
@@ -52,24 +60,16 @@ devsupport@gamespy.com
 #define BANS                callbackParams->bans
 #define NICK                callbackParams->nick
 #define NAME                callbackParams->name
-#define NUM                 callbackParams->num
-#define KEY                 callbackParams->key
-#define KEYS                callbackParams->keys
-#define VALUE               callbackParams->value
-#define VALUES              callbackParams->values
-#define RESULT              callbackParams->result
-#define NUM_SUGGESTED_NICKS callbackParams->numSuggestedNicks
-#define SUGGESTED_NICKS     callbackParams->suggestedNicks
 #define COPY(param)         if(srcParams->param != NULL)\
 							{\
-								destParams->param = goastrdup(srcParams->param);\
+								destParams->param = _strdup(srcParams->param);\
 								if(destParams->param == NULL)\
 								{\
 									gsifree(destParams);\
 									gsifree(data.channel);\
 					/*ERRCON*/		return CHATFalse;\
 								}\
-							} else { destParams->param = srcParams->param; } // remove dangling "if" danger
+							}
 #define COPY_MODE()         if(srcParams->mode != NULL)\
 							{\
 								destParams->mode = (CHATChannelMode *)gsimalloc(sizeof(CHATChannelMode));\
@@ -80,12 +80,11 @@ devsupport@gamespy.com
 					/*ERRCON*/		return CHATFalse;\
 								}\
 								memcpy(destParams->mode, srcParams->mode, sizeof(CHATChannelMode));\
-							} else {} // remove dangling "if" danger
+							}
 #define COPY_STR_ARRAY(array, num)  assert(srcParams->num >= 0);\
-									if(!srcParams->array)\
-										destParams->array = NULL;\
-									else\
+                                    if(srcParams->num > 0)\
 									{\
+										assert(srcParams->array != NULL);\
 										destParams->array = (char **)gsimalloc(sizeof(char *) * srcParams->num);\
 										if(destParams->array == NULL)\
 										{\
@@ -99,7 +98,7 @@ devsupport@gamespy.com
 												destParams->array[i] = NULL;\
 											else\
 											{\
-												destParams->array[i] = goastrdup(srcParams->array[i]);\
+												destParams->array[i] = _strdup(srcParams->array[i]);\
 												if(destParams->array[i] == NULL)\
 												{\
 													for(i-- ; i >= 0 ; i--)\
@@ -116,24 +115,17 @@ devsupport@gamespy.com
                                     if(srcParams->num > 0)\
 									{\
 										assert(srcParams->array != NULL);\
-										len = (int)(sizeof(int) * srcParams->num);\
-										destParams->array = (int *)gsimalloc((unsigned int)len);\
+										len = (sizeof(int) * srcParams->num);\
+										destParams->array = (int *)gsimalloc(len);\
 										if(destParams->array == NULL)\
 										{\
 											gsifree(destParams);\
 											gsifree(data.channel);\
 							/*ERRCON*/		return CHATFalse;\
 										}\
-										memcpy(destParams->array, srcParams->array, (unsigned int)len);\
-									} else {} // remove dangling "if" danger
+										memcpy(destParams->array, srcParams->array, len);\
+									}
 
-#define FREE_STRING_ARRAY(array, num)	if (num > 0 && array != NULL)\
-										{\
-											int i = 0;\
-											for (; i < num; i++)\
-												gsifree(array[i]);\
-											gsifree(array);\
-										} else {} // remove dangling "if" danger
 /**********
 ** TYPES **
 **********/
@@ -153,9 +145,9 @@ typedef struct ciCallbackData
 static void ciCallbacksArrayElementFreeFn(void * elem)
 {
 	ciCallbackData * data = (ciCallbackData *)elem;
-	GS_ASSERT(data != NULL);
-	if (data->channel)
-		gsifree(data->channel);
+	assert(data != NULL);
+
+	gsifree(data->channel);
 }
 
 static void ciFreeCallbackData(ciCallbackData * data)
@@ -272,6 +264,12 @@ static void ciFreeCallbackData(ciCallbackData * data)
 		break;
 	}
 
+	case CALLBACK_CONNECT:
+	{
+		ciCallbackConnectParams * callbackParams = (ciCallbackConnectParams *)data->callbackParams;
+		break;
+	}
+
 	case CALLBACK_ENUM_CHANNELS_EACH:
 	{
 		ciCallbackEnumChannelsEachParams * callbackParams = (ciCallbackEnumChannelsEachParams *)data->callbackParams;
@@ -318,14 +316,6 @@ static void ciFreeCallbackData(ciCallbackData * data)
 		break;
 	}
 
-	case CALLBACK_GET_UDPRELAY:
-	{
-		ciCallbackGetUdpRelayParams * callbackParams = (ciCallbackGetUdpRelayParams *)data->callbackParams;
-		gsifree(CHANNEL);
-		gsifree(callbackParams->udpIp);
-		break;
-	}
-
 	case CALLBACK_GET_CHANNEL_PASSWORD:
 	{
 		ciCallbackGetChannelPasswordParams * callbackParams = (ciCallbackGetChannelPasswordParams *)data->callbackParams;
@@ -369,16 +359,6 @@ static void ciFreeCallbackData(ciCallbackData * data)
 		break;
 	}
 
-	case CALLBACK_GET_CHANNEL_BASIC_USER_INFO:
-	{
-		ciCallbackGetChannelBasicUserInfoParams * callbackParams = (ciCallbackGetChannelBasicUserInfoParams *)data->callbackParams;
-		gsifree(CHANNEL);
-		gsifree(NICK);
-		gsifree(USER);
-		gsifree(ADDRESS);
-		break;
-	}
-
 	case CALLBACK_GET_USER_MODE:
 	{
 		ciCallbackGetUserModeParams * callbackParams = (ciCallbackGetUserModeParams *)data->callbackParams;
@@ -400,12 +380,8 @@ static void ciFreeCallbackData(ciCallbackData * data)
 
 	case CALLBACK_NICK_ERROR:
 	{
-		int i;
 		ciCallbackNickErrorParams * callbackParams = (ciCallbackNickErrorParams *)data->callbackParams;
 		gsifree(NICK);
-		for(i = 0 ; i < NUM_SUGGESTED_NICKS; i++)
-			gsifree(SUGGESTED_NICKS[i]);
-		gsifree(SUGGESTED_NICKS);
 		break;
 	}
 
@@ -426,56 +402,6 @@ static void ciFreeCallbackData(ciCallbackData * data)
 			gsifree(USERS[i]);
 		gsifree(USERS);
 		gsifree(MODES);
-		break;
-	}
-
-	case CALLBACK_BROADCAST_KEY_CHANGED:
-	{
-		 ciCallbackBroadcastKeyChangedParams * callbackParams = (ciCallbackBroadcastKeyChangedParams *)data->callbackParams;
-		 gsifree(CHANNEL);
-		 gsifree(USER);
-		 gsifree(KEY);
-		 gsifree(VALUE);
-		 break;
-	}
-
-	case CALLBACK_GET_GLOBAL_KEYS:
-	{
-		int i;
-		ciCallbackGetGlobalKeysParams * callbackParams = (ciCallbackGetGlobalKeysParams *)data->callbackParams;
-		gsifree(USER);
-		for(i = 0 ; i < NUM ; i++)
-		{
-			gsifree(KEYS[i]);
-			if(VALUES)
-				gsifree(VALUES[i]);
-		}
-		gsifree(KEYS);
-		gsifree(VALUES);
-		break;
-	}
-
-	case CALLBACK_GET_CHANNEL_KEYS:
-	{
-		int i;
-		ciCallbackGetChannelKeysParams * callbackParams = (ciCallbackGetChannelKeysParams *)data->callbackParams;
-		gsifree(CHANNEL);
-		gsifree(USER);
-		for(i = 0 ; i < NUM ; i++)
-		{
-			gsifree(KEYS[i]);
-			if(VALUES)
-				gsifree(VALUES[i]);
-		}
-		gsifree(KEYS);
-		gsifree(VALUES);
-		break;
-	}
-
-	case CALLBACK_AUTHENTICATE_CDKEY:
-	{
-		ciCallbackAuthenticateCDKeyParams * callbackParams = (ciCallbackAuthenticateCDKeyParams *)data->callbackParams;
-		gsifree(MESSAGE);
 		break;
 	}
 
@@ -574,14 +500,14 @@ CHATBool ciAddCallback_(CHAT chat, int type, void * callback, void * callbackPar
 		data.channel = NULL;
 	else
 	{
-		len = (int)(strlen(channel) + 1);
-		data.channel = (char *)gsimalloc((unsigned int)len);
+		len = (strlen(channel) + 1);
+		data.channel = (char *)gsimalloc(len);
 		if(data.channel == NULL)
 		{
 			gsifree(data.callbackParams);
 			return CHATFalse; //ERRCON
 		}
-		memcpy(data.channel, channel, (unsigned int)len);
+		memcpy(data.channel, channel, len);
 	}
 
 	// Find which type of callback it is.
@@ -707,6 +633,13 @@ CHATBool ciAddCallback_(CHAT chat, int type, void * callback, void * callbackPar
 		break;
 	}
 
+	case CALLBACK_CONNECT:
+	{
+		ciCallbackConnectParams * destParams = (ciCallbackConnectParams *)data.callbackParams;
+		ciCallbackConnectParams * srcParams = (ciCallbackConnectParams *)callbackParams;
+		break;
+	}
+
 	case CALLBACK_ENUM_CHANNELS_EACH:
 	{
 		ciCallbackEnumChannelsEachParams * destParams = (ciCallbackEnumChannelsEachParams *)data.callbackParams;
@@ -752,15 +685,6 @@ CHATBool ciAddCallback_(CHAT chat, int type, void * callback, void * callbackPar
 		break;
 	}
 
-	case CALLBACK_GET_UDPRELAY:
-	{
-		ciCallbackGetUdpRelayParams * destParams = (ciCallbackGetUdpRelayParams *)data.callbackParams;
-		ciCallbackGetUdpRelayParams * srcParams = (ciCallbackGetUdpRelayParams *)callbackParams;
-		COPY(channel);
-		COPY(udpIp);
-		break;
-	}
-
 	case CALLBACK_GET_CHANNEL_PASSWORD:
 	{
 		ciCallbackGetChannelPasswordParams * destParams = (ciCallbackGetChannelPasswordParams *)data.callbackParams;
@@ -802,17 +726,6 @@ CHATBool ciAddCallback_(CHAT chat, int type, void * callback, void * callbackPar
 		break;
 	}
 
-	case CALLBACK_GET_CHANNEL_BASIC_USER_INFO:
-	{
-		ciCallbackGetChannelBasicUserInfoParams * destParams = (ciCallbackGetChannelBasicUserInfoParams *)data.callbackParams;
-		ciCallbackGetChannelBasicUserInfoParams * srcParams = (ciCallbackGetChannelBasicUserInfoParams *)callbackParams;
-		COPY(channel);
-		COPY(nick);
-		COPY(user);
-		COPY(address);
-		break;
-	}
-
 	case CALLBACK_GET_USER_MODE:
 	{
 		ciCallbackGetUserModeParams * destParams = (ciCallbackGetUserModeParams *)data.callbackParams;
@@ -836,7 +749,6 @@ CHATBool ciAddCallback_(CHAT chat, int type, void * callback, void * callbackPar
 		ciCallbackNickErrorParams * destParams = (ciCallbackNickErrorParams *)data.callbackParams;
 		ciCallbackNickErrorParams * srcParams = (ciCallbackNickErrorParams *)callbackParams;
 		COPY(nick);
-		COPY_STR_ARRAY(suggestedNicks, numSuggestedNicks);
 		break;
 	}
 
@@ -859,46 +771,6 @@ CHATBool ciAddCallback_(CHAT chat, int type, void * callback, void * callbackPar
 		break;
 	}
 
-	case CALLBACK_BROADCAST_KEY_CHANGED:
-	{
-		ciCallbackBroadcastKeyChangedParams * destParams = (ciCallbackBroadcastKeyChangedParams *)data.callbackParams;
-		ciCallbackBroadcastKeyChangedParams * srcParams = (ciCallbackBroadcastKeyChangedParams *)callbackParams;
-		COPY(channel);
-		COPY(user);
-		COPY(key);
-		COPY(value);
-		break;
-	}
-
-	case CALLBACK_GET_GLOBAL_KEYS:
-	{
-		ciCallbackGetGlobalKeysParams * destParams = (ciCallbackGetGlobalKeysParams *)data.callbackParams;
-		ciCallbackGetGlobalKeysParams * srcParams = (ciCallbackGetGlobalKeysParams *)callbackParams;
-		COPY(user);
-		COPY_STR_ARRAY(keys, num);
-		COPY_STR_ARRAY(values, num);
-		break;
-	}
-
-	case CALLBACK_GET_CHANNEL_KEYS:
-	{
-		ciCallbackGetChannelKeysParams * destParams = (ciCallbackGetChannelKeysParams *)data.callbackParams;
-		ciCallbackGetChannelKeysParams * srcParams = (ciCallbackGetChannelKeysParams *)callbackParams;
-		COPY(channel);
-		COPY(user);
-		COPY_STR_ARRAY(keys, num);
-		COPY_STR_ARRAY(values, num);
-		break;
-	}
-
-	case CALLBACK_AUTHENTICATE_CDKEY:
-	{
-		ciCallbackAuthenticateCDKeyParams * destParams = (ciCallbackAuthenticateCDKeyParams *)data.callbackParams;
-		ciCallbackAuthenticateCDKeyParams * srcParams = (ciCallbackAuthenticateCDKeyParams *)callbackParams;
-		COPY(message);
-		break;
-	}
-
 	default:
 		// The type for this callback is messed up.
 		///////////////////////////////////////////
@@ -912,10 +784,10 @@ CHATBool ciAddCallback_(CHAT chat, int type, void * callback, void * callbackPar
 	return CHATTrue;
 }
 
-static void ciCallCallback(CHAT chat, ciCallbackData * data)
+void ciCallCallback(CHAT chat, ciCallbackData * data)
 {
 	void * param;
-	//CONNECTION;
+	CONNECTION;
 
 	ASSERT_DATA(data);
 
@@ -931,272 +803,128 @@ static void ciCallCallback(CHAT chat, ciCallbackData * data)
 	{
 		ciCallbackRawParams * callbackParams = (ciCallbackRawParams *)data->callbackParams;
 		chatRaw callback = (chatRaw)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, RAW, param);
 		break;
-#else
-		// UNICODE: Copy all the params, call the callback, free the params
-		unsigned short* raw_W = UTF8ToUCS2StringAlloc(RAW);
-		callback(chat, raw_W, param);
-		gsifree(raw_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_DISCONNECTED:
 	{
 		ciCallbackDisconnectedParams * callbackParams = (ciCallbackDisconnectedParams *)data->callbackParams;
 		chatDisconnected callback = (chatDisconnected)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, REASON, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* reason_W = UTF8ToUCS2StringAlloc(REASON);
-		callback(chat, reason_W, param);
-		gsifree(reason_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_PRIVATE_MESSAGE:
 	{
 		ciCallbackPrivateMessageParams * callbackParams = (ciCallbackPrivateMessageParams *)data->callbackParams;
 		chatPrivateMessage callback = (chatPrivateMessage)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, USER, MESSAGE, TYPE, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* user_W		= UTF8ToUCS2StringAlloc(USER);
-		unsigned short* message_W	= UTF8ToUCS2StringAlloc(MESSAGE);
-		callback(chat, user_W, message_W, TYPE, param);
-		gsifree(user_W);
-		gsifree(message_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_INVITED:
 	{
 		ciCallbackInvitedParams * callbackParams = (ciCallbackInvitedParams *)data->callbackParams;
 		chatInvited callback = (chatInvited)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, CHANNEL, USER, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W = UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* user_W = UTF8ToUCS2StringAlloc(USER);
-		callback(chat, channel_W, user_W, param);
-		gsifree(channel_W);
-		gsifree(user_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_CHANNEL_MESSAGE:
 	{
 		ciCallbackChannelMessageParams * callbackParams = (ciCallbackChannelMessageParams *)data->callbackParams;
 		chatChannelMessage callback = (chatChannelMessage)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, CHANNEL, USER, MESSAGE, TYPE, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* user_W		= UTF8ToUCS2StringAlloc(USER);
-		unsigned short* message_W	= UTF8ToUCS2StringAlloc(MESSAGE);
-		callback(chat, channel_W, user_W, message_W, TYPE, param);
-		gsifree(channel_W);
-		gsifree(user_W);
-		gsifree(message_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_KICKED:
 	{
 		ciCallbackKickedParams * callbackParams = (ciCallbackKickedParams *)data->callbackParams;
 		chatKicked callback = (chatKicked)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, CHANNEL, USER, REASON, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* user_W		= UTF8ToUCS2StringAlloc(USER);
-		unsigned short* reason_W	= UTF8ToUCS2StringAlloc(REASON);
-		callback(chat, channel_W, user_W, reason_W, param);
-		gsifree(channel_W);
-		gsifree(user_W);
-		gsifree(reason_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_USER_JOINED:
 	{
 		ciCallbackUserJoinedParams * callbackParams = (ciCallbackUserJoinedParams *)data->callbackParams;
 		chatUserJoined callback = (chatUserJoined)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, CHANNEL, USER, MODE, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* user_W		= UTF8ToUCS2StringAlloc(USER);
-		callback(chat, channel_W, user_W, MODE, param);
-		gsifree(channel_W);
-		gsifree(user_W);
-		break;
-#endif
-
 	}
 
 	case CALLBACK_USER_PARTED:
 	{
 		ciCallbackUserPartedParams * callbackParams = (ciCallbackUserPartedParams *)data->callbackParams;
 		chatUserParted callback = (chatUserParted)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, CHANNEL, USER, WHY, REASON, KICKER, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* user_W		= UTF8ToUCS2StringAlloc(USER);
-		unsigned short* reason_W	= UTF8ToUCS2StringAlloc(REASON);
-		unsigned short* kicker_W	= UTF8ToUCS2StringAlloc(KICKER);
-		callback(chat, channel_W, user_W, WHY, reason_W, kicker_W, param);
-		gsifree(channel_W);
-		gsifree(user_W);
-		gsifree(reason_W);
-		gsifree(kicker_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_USER_CHANGED_NICK:
 	{
 		ciCallbackUserChangedNickParams * callbackParams = (ciCallbackUserChangedNickParams *)data->callbackParams;
 		chatUserChangedNick callback = (chatUserChangedNick)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, CHANNEL, OLD_NICK, NEW_NICK, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* oldnick_W	= UTF8ToUCS2StringAlloc(OLD_NICK);
-		unsigned short* newnick_W	= UTF8ToUCS2StringAlloc(NEW_NICK);
-		callback(chat, channel_W, oldnick_W, newnick_W, param);
-		gsifree(channel_W);
-		gsifree(oldnick_W);
-		gsifree(newnick_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_TOPIC_CHANGED:
 	{
 		ciCallbackTopicChangedParams * callbackParams = (ciCallbackTopicChangedParams *)data->callbackParams;
 		chatTopicChanged callback = (chatTopicChanged)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, CHANNEL, TOPIC, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* topic_W		= UTF8ToUCS2StringAlloc(TOPIC);
-		callback(chat, channel_W, topic_W, param);
-		gsifree(channel_W);
-		gsifree(topic_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_CHANNEL_MODE_CHANGED:
 	{
 		ciCallbackChannelModeChangedParams * callbackParams = (ciCallbackChannelModeChangedParams *)data->callbackParams;
 		chatChannelModeChanged callback = (chatChannelModeChanged)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, CHANNEL, MODE, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		callback(chat, channel_W, MODE, param);
-		gsifree(channel_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_USER_MODE_CHANGED:
 	{
 		ciCallbackUserModeChangedParams * callbackParams = (ciCallbackUserModeChangedParams *)data->callbackParams;
 		chatUserModeChanged callback = (chatUserModeChanged)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, CHANNEL, USER, MODE, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* user_W		= UTF8ToUCS2StringAlloc(USER);
-		callback(chat, channel_W, user_W, MODE, param);
-		gsifree(channel_W);
-		gsifree(user_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_USER_LIST_UPDATED:
 	{
 		ciCallbackUserListUpdatedParams * callbackParams = (ciCallbackUserListUpdatedParams *)data->callbackParams;
 		chatUserListUpdated callback = (chatUserListUpdated)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, CHANNEL, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W = UTF8ToUCS2StringAlloc(CHANNEL);
-		callback(chat, channel_W, param);
-		gsifree(channel_W);
+	}
+
+	case CALLBACK_CONNECT:
+	{
+		ciCallbackConnectParams * callbackParams = (ciCallbackConnectParams *)data->callbackParams;
+		chatConnectCallback callback = (chatConnectCallback)data->callback;
+		callback(chat, SUCCESS, param);
 		break;
-#endif
 	}
 
 	case CALLBACK_ENUM_CHANNELS_EACH:
 	{
 		ciCallbackEnumChannelsEachParams * callbackParams = (ciCallbackEnumChannelsEachParams *)data->callbackParams;
 		chatEnumChannelsCallbackEach callback = (chatEnumChannelsCallbackEach)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, SUCCESS, INDEX, CHANNEL, TOPIC, NUM_USERS, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W = UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* topic_W = UTF8ToUCS2StringAlloc(TOPIC);
-		callback(chat, SUCCESS, INDEX, channel_W, topic_W, NUM_USERS, param);
-		gsifree(channel_W);
-		gsifree(topic_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_ENUM_CHANNELS_ALL:
 	{
 		ciCallbackEnumChannelsAllParams * callbackParams = (ciCallbackEnumChannelsAllParams *)data->callbackParams;
 		chatEnumChannelsCallbackAll callback = (chatEnumChannelsCallbackAll)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, SUCCESS, NUM_CHANNELS, (const char **)CHANNELS, (const char **)TOPICS, NUM_USERS, param);
 		break;
-#else
-		unsigned short** channels_W = UTF8ToUCS2StringArrayAlloc((const char **)CHANNELS, NUM_CHANNELS);
-		unsigned short** topics_W	= UTF8ToUCS2StringArrayAlloc((const char **)TOPICS, NUM_CHANNELS);
-		callback(chat, SUCCESS, NUM_CHANNELS, (const unsigned short**)channels_W, (const unsigned short**)topics_W, NUM_USERS, param);
-		FREE_STRING_ARRAY(channels_W, NUM_CHANNELS);
-		FREE_STRING_ARRAY(topics_W, NUM_CHANNELS);
-		break;
-#endif
 	}
 
 	case CALLBACK_ENTER_CHANNEL:
@@ -1208,336 +936,96 @@ static void ciCallCallback(CHAT chat, ciCallbackData * data)
 		//////////////////////////////////////////////////////////////////////////
 		ciJoinCallbackCalled(chat, CHANNEL);
 
-#ifndef GSI_UNICODE
-		callback(chat, SUCCESS, RESULT, CHANNEL, param);
+		callback(chat, SUCCESS, CHANNEL, param);
 		break;
-#else
-		{
-			// Copy all the params, call the callback, free the params
-			unsigned short* channel_W = UTF8ToUCS2StringAlloc(CHANNEL);
-			callback(chat, SUCCESS, RESULT, channel_W, param);
-			gsifree(channel_W);
-			break;
-		}
-#endif
 	}
 
 	case CALLBACK_GET_CHANNEL_TOPIC:
 	{
 		ciCallbackGetChannelTopicParams * callbackParams = (ciCallbackGetChannelTopicParams *)data->callbackParams;
 		chatGetChannelTopicCallback callback = (chatGetChannelTopicCallback)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, SUCCESS, CHANNEL, TOPIC, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W = UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* topic_W = UTF8ToUCS2StringAlloc(TOPIC);
-		callback(chat, SUCCESS, channel_W, topic_W, param);
-		gsifree(channel_W);
-		gsifree(topic_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_GET_CHANNEL_MODE:
 	{
 		ciCallbackGetChannelModeParams * callbackParams = (ciCallbackGetChannelModeParams *)data->callbackParams;
 		chatGetChannelModeCallback callback = (chatGetChannelModeCallback)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, SUCCESS, CHANNEL, MODE, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W = UTF8ToUCS2StringAlloc(CHANNEL);
-		callback(chat, SUCCESS, channel_W, MODE, param);
-		gsifree(channel_W);
-		break;
-#endif
-	}
-
-	case CALLBACK_GET_UDPRELAY:
-	{
-		ciCallbackGetUdpRelayParams * callbackParams = (ciCallbackGetUdpRelayParams *)data->callbackParams;
-		chatGetUdpRelayCallback callback = (chatGetUdpRelayCallback)data->callback;
-#ifndef GSI_UNICODE
-		callback(chat, CHANNEL, callbackParams->udpIp, callbackParams->udpPort, callbackParams->udpKey, param);
-		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W = UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* udpIp_W = UTF8ToUCS2StringAlloc(callbackParams->udpIp);
-		callback(chat, channel_W, udpIp_W, callbackParams->udpPort, callbackParams->udpKey, param);
-		gsifree(channel_W);
-		gsifree(udpIp_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_GET_CHANNEL_PASSWORD:
 	{
 		ciCallbackGetChannelPasswordParams * callbackParams = (ciCallbackGetChannelPasswordParams *)data->callbackParams;
 		chatGetChannelPasswordCallback callback = (chatGetChannelPasswordCallback)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, SUCCESS, CHANNEL, ENABLED, PASSWORD, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* password_W	= UTF8ToUCS2StringAlloc(PASSWORD);
-		callback(chat, SUCCESS, channel_W, ENABLED, password_W, param);
-		gsifree(channel_W);
-		gsifree(password_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_ENUM_USERS:
 	{
 		ciCallbackEnumUsersParams * callbackParams = (ciCallbackEnumUsersParams *)data->callbackParams;
 		chatEnumUsersCallback callback = (chatEnumUsersCallback)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, SUCCESS, CHANNEL, NUM_USERS, (const char **)USERS, MODES, param);
 		break;
-#else
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short** users_W	= UTF8ToUCS2StringArrayAlloc((const char **)USERS, NUM_USERS);
-		callback(chat, SUCCESS, channel_W, NUM_USERS, (const unsigned short**)users_W, MODES, param);
-		gsifree(channel_W);
-		FREE_STRING_ARRAY(users_W, NUM_USERS);
-		break;
-#endif
 	}
 
 	case CALLBACK_GET_USER_INFO:
 	{
 		ciCallbackGetUserInfoParams * callbackParams = (ciCallbackGetUserInfoParams *)data->callbackParams;
 		chatGetUserInfoCallback callback = (chatGetUserInfoCallback)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, SUCCESS, NICK, USER, NAME, ADDRESS, NUM_CHANNELS, (const char **)CHANNELS, param);
 		break;
-#else
-		unsigned short* nick_W	= UTF8ToUCS2StringAlloc(NICK);
-		unsigned short* user_W	= UTF8ToUCS2StringAlloc(USER);
-		unsigned short* name_W	= UTF8ToUCS2StringAlloc(NAME);
-		unsigned short* address_W	= UTF8ToUCS2StringAlloc(ADDRESS);
-		unsigned short** channels_W	= UTF8ToUCS2StringArrayAlloc((const char **)CHANNELS, NUM_CHANNELS);
-		callback(chat, SUCCESS, nick_W, user_W, name_W, address_W, NUM_CHANNELS, (const unsigned short**)channels_W, param);
-		gsifree(nick_W);
-		gsifree(user_W);
-		gsifree(name_W);
-		gsifree(address_W);
-		FREE_STRING_ARRAY(channels_W, NUM_CHANNELS);
-		break;
-#endif
 	}
 
 	case CALLBACK_GET_BASIC_USER_INFO:
 	{
 		ciCallbackGetBasicUserInfoParams * callbackParams = (ciCallbackGetBasicUserInfoParams *)data->callbackParams;
 		chatGetBasicUserInfoCallback callback = (chatGetBasicUserInfoCallback)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, SUCCESS, NICK, USER, ADDRESS, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* nick_W		= UTF8ToUCS2StringAlloc(NICK);
-		unsigned short* user_W		= UTF8ToUCS2StringAlloc(USER);
-		unsigned short* address_W	= UTF8ToUCS2StringAlloc(ADDRESS);
-		callback(chat, SUCCESS, nick_W, user_W, address_W, param);
-		gsifree(nick_W);
-		gsifree(user_W);
-		gsifree(address_W);
-		break;
-#endif
-	}
-
-	case CALLBACK_GET_CHANNEL_BASIC_USER_INFO:
-	{
-		ciCallbackGetChannelBasicUserInfoParams * callbackParams = (ciCallbackGetChannelBasicUserInfoParams *)data->callbackParams;
-		chatGetChannelBasicUserInfoCallback callback = (chatGetChannelBasicUserInfoCallback)data->callback;
-#ifndef GSI_UNICODE
-		callback(chat, SUCCESS, CHANNEL, NICK, USER, ADDRESS, param);
-		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* nick_W		= UTF8ToUCS2StringAlloc(NICK);
-		unsigned short* user_W		= UTF8ToUCS2StringAlloc(USER);
-		unsigned short* address_W	= UTF8ToUCS2StringAlloc(ADDRESS);
-		callback(chat, SUCCESS, channel_W, nick_W, user_W, address_W, param);
-		gsifree(channel_W);
-		gsifree(nick_W);
-		gsifree(user_W);
-		gsifree(address_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_GET_USER_MODE:
 	{
 		ciCallbackGetUserModeParams * callbackParams = (ciCallbackGetUserModeParams *)data->callbackParams;
 		chatGetUserModeCallback callback = (chatGetUserModeCallback)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, SUCCESS, CHANNEL, USER, MODE, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* user_W		= UTF8ToUCS2StringAlloc(USER);
-		callback(chat, SUCCESS, channel_W, user_W, MODE, param);
-		gsifree(channel_W);
-		gsifree(user_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_ENUM_CHANNEL_BANS:
 	{
 		ciCallbackEnumChannelBansParams * callbackParams = (ciCallbackEnumChannelBansParams *)data->callbackParams;
 		chatEnumChannelBansCallback callback = (chatEnumChannelBansCallback)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, SUCCESS, CHANNEL, NUM_BANS, (const char **)BANS, param);
 		break;
-#else
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short** bans_W		= UTF8ToUCS2StringArrayAlloc((const char **)BANS, NUM_BANS);
-		callback(chat, SUCCESS, channel_W, NUM_BANS, (const unsigned short**)bans_W, param);
-		gsifree(channel_W);
-		FREE_STRING_ARRAY(bans_W, NUM_BANS);
-		break;
-#endif
 	}
 
 	case CALLBACK_NICK_ERROR:
 	{
 		ciCallbackNickErrorParams * callbackParams = (ciCallbackNickErrorParams *)data->callbackParams;
 		chatNickErrorCallback callback = (chatNickErrorCallback)data->callback;
-#ifndef GSI_UNICODE
-		callback(chat, TYPE, NICK, NUM_SUGGESTED_NICKS, (const char**)SUGGESTED_NICKS, param);
+		callback(chat, TYPE, NICK, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* nick_W	= UTF8ToUCS2StringAlloc(NICK);
-		unsigned short** suggestedNicks_W = UTF8ToUCS2StringArrayAlloc((const char **)SUGGESTED_NICKS, NUM_SUGGESTED_NICKS);
-		callback(chat, TYPE, nick_W, NUM_SUGGESTED_NICKS, (const unsigned short**)suggestedNicks_W, param);
-		gsifree(nick_W);
-		FREE_STRING_ARRAY(suggestedNicks_W, NUM_SUGGESTED_NICKS);
-		break;
-#endif
 	}
 
 	case CALLBACK_CHANGE_NICK:
 	{
 		ciCallbackChangeNickParams * callbackParams = (ciCallbackChangeNickParams *)data->callbackParams;
 		chatChangeNickCallback callback = (chatChangeNickCallback)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, SUCCESS, OLD_NICK, NEW_NICK, param);
 		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* oldnick_W	= UTF8ToUCS2StringAlloc(OLD_NICK);
-		unsigned short* newnick_W	= UTF8ToUCS2StringAlloc(NEW_NICK);
-		callback(chat, SUCCESS, oldnick_W, newnick_W, param);
-		gsifree(oldnick_W);
-		gsifree(newnick_W);
-		break;
-#endif
 	}
 
 	case CALLBACK_NEW_USER_LIST:
 	{
 		ciCallbackNewUserListParams * callbackParams = (ciCallbackNewUserListParams *)data->callbackParams;
 		chatNewUserList callback = (chatNewUserList)data->callback;
-#ifndef GSI_UNICODE
 		callback(chat, CHANNEL, NUM_USERS, (const char **)USERS, MODES, param);
 		break;
-#else
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short** users_W	= UTF8ToUCS2StringArrayAlloc((const char**)USERS, NUM_USERS);
-		callback(chat, channel_W, NUM_USERS, (const unsigned short**)users_W, MODES, param);
-		gsifree(channel_W);
-		FREE_STRING_ARRAY(users_W, NUM_USERS);
-		break;
-#endif
-	}
-
-	case CALLBACK_BROADCAST_KEY_CHANGED:
-	{
-		ciCallbackBroadcastKeyChangedParams * callbackParams = (ciCallbackBroadcastKeyChangedParams *)data->callbackParams;
-		chatBroadcastKeyChanged callback = (chatBroadcastKeyChanged)data->callback;
-#ifndef GSI_UNICODE
-		callback(chat, CHANNEL, USER, KEY, VALUE, param);
-		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short* user_W		= UTF8ToUCS2StringAlloc(USER);
-		unsigned short* key_W		= UTF8ToUCS2StringAlloc(KEY);
-		unsigned short* value_W		= UTF8ToUCS2StringAlloc(VALUE);
-		callback(chat, channel_W, user_W, key_W, value_W, param);
-		gsifree(channel_W);
-		gsifree(user_W);
-		gsifree(key_W);
-		gsifree(value_W);
-		break;
-#endif
-	}
-
-	case CALLBACK_GET_GLOBAL_KEYS:
-	{
-		 ciCallbackGetGlobalKeysParams * callbackParams = (ciCallbackGetGlobalKeysParams *)data->callbackParams;
-		 chatGetGlobalKeysCallback callback = (chatGetGlobalKeysCallback)data->callback;
-#ifndef GSI_UNICODE
-		 callback(chat, SUCCESS, USER, NUM, (const char **)KEYS, (const char **)VALUES, param);
-		 break;
-#else
-		unsigned short*  user_W		= UTF8ToUCS2StringAlloc(USER);
-		unsigned short** keys_W		= UTF8ToUCS2StringArrayAlloc((const char**)KEYS, NUM);
-		unsigned short** values_W	= UTF8ToUCS2StringArrayAlloc((const char**)VALUES, NUM);
-		callback(chat, SUCCESS, user_W, NUM, (const unsigned short**)keys_W, (const unsigned short**)values_W, param);
-		gsifree(user_W);
-		FREE_STRING_ARRAY(keys_W, NUM);
-		FREE_STRING_ARRAY(values_W, NUM);
-		break;
-#endif
-	}
-
-	case CALLBACK_GET_CHANNEL_KEYS:
-	{
-		 ciCallbackGetChannelKeysParams * callbackParams = (ciCallbackGetChannelKeysParams *)data->callbackParams;
-		 chatGetChannelKeysCallback callback = (chatGetChannelKeysCallback)data->callback;
-#ifndef GSI_UNICODE
-		 callback(chat, SUCCESS, CHANNEL, USER, NUM, (const char **)KEYS, (const char **)VALUES, param);
-		 break;
-#else
-		unsigned short*  channel_W	= UTF8ToUCS2StringAlloc(CHANNEL);
-		unsigned short*  user_W		= UTF8ToUCS2StringAlloc(USER);
-		unsigned short** keys_W		= UTF8ToUCS2StringArrayAlloc((const char**)KEYS, NUM);
-		unsigned short** values_W	= UTF8ToUCS2StringArrayAlloc((const char**)VALUES, NUM);
-		callback(chat, SUCCESS, channel_W, user_W, NUM, (const unsigned short**)keys_W, (const unsigned short**)values_W, param);
-		gsifree(channel_W);
-		gsifree(user_W);
-		FREE_STRING_ARRAY(keys_W, NUM);
-		FREE_STRING_ARRAY(values_W, NUM);
-		break;
-#endif
-	}
-
-	case CALLBACK_AUTHENTICATE_CDKEY:
-	{
-		ciCallbackAuthenticateCDKeyParams * callbackParams = (ciCallbackAuthenticateCDKeyParams *)data->callbackParams;
-		chatAuthenticateCDKeyCallback callback = (chatAuthenticateCDKeyCallback)data->callback;
-#ifndef GSI_UNICODE
-		callback(chat, RESULT, MESSAGE, param);
-		break;
-#else
-		// Copy all the params, call the callback, free the params
-		unsigned short* message_W	= UTF8ToUCS2StringAlloc(MESSAGE);
-		callback(chat, RESULT, message_W, param);
-		gsifree(message_W);
-		break;
-#endif
 	}
 
 	default:
@@ -1556,11 +1044,18 @@ void ciCallCallbacks(CHAT chat, int ID)
 	ciCallbackData * data;
 	ciCallbackData dataCopy;
 	int skip;
+	int len;
+	int i;
 	CONNECTION;
+
+	// Get the number of callbacks.
+	///////////////////////////////
+	len = ArrayLength(connection->callbackList);
 
 	// Call the callbacks.
 	//////////////////////
-	for(skip = 0 ; ArrayLength(connection->callbackList) > skip ; )
+	skip = 0;
+	for(i = 0 ; i < len ; i++)
 	{
 		// Get the callback.
 		///////////////////
