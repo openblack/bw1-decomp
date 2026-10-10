@@ -50,6 +50,10 @@ public:
 	static void* operator new(size_t size, const char* file_name, uint32_t line);
 	// BW1W120 00436970 BW1M119 015abc70
 	static void operator delete(void* ptr, size_t size);
+	// BW1W120 004368e0 BW1M119 01353e10
+	static void* operator new[](size_t size);
+	// BW1W120 004369d0 BW1M119 01514e50
+	static void operator delete[](void* ptr, size_t size);
 
 	// Constructors
 

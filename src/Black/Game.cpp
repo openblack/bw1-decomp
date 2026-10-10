@@ -1443,25 +1443,11 @@ GestureSystemDataList::GestureSystemDataList()
 	Data = NULL;
 	Count = 0;
 }
-// BW1W120 0054baf0 BW1M119 inlined
-GestureSystemData::GestureSystemData()
-{
-	SetToZero();
-}
 // BW1W120 0054bb40
 GestureSystem::GestureSystem()
 {
 	field_0xc94 = 1;
 }
-// BW1W120 0054bb90 BW1M119 01095b00
-void GestureSystemResult::SetToZero()
-{
-	field_0x0 = 0;
-	Reversed = 0;
-	EndSample = 0;
-	StartSample = 0;
-}
-
 static_assert(sizeof(GPacket) == 0x110, "GPacket size is incorrect");
 #ifdef VERSION_BW1W120
 static_assert(offsetof(GGame, Packet) == 0x205a60, "GPacket offset is incorrect");

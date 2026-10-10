@@ -6,6 +6,9 @@
 
 // 00e8c10c is LHSys::TheSystem.MessageHook, not separate storage.
 
+// BW1W120 007db770
+extern "C" float __cdecl Atan2Positive(float x, float y);
+
 // BW1W120 007db790
 void* operator new(size_t size, const char* file_name, uint32_t line);
 
