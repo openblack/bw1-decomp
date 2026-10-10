@@ -6,7 +6,7 @@
 
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
 #include <Lionhead/LHLog/ver4.0/LHLogger.h>
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetEvent.h"
 #include "LHPacket.h"
 #include "LHTransportInfo.h"
@@ -103,10 +103,10 @@ LH_RETURN LHTransport::OpenConnectionToTransport(LHTransport* transport, void (*
 	if (transport == NULL)
 		return LH_FAIL;
 
-	if (!(transport->Type == LH_TRANSPORT_TYPE_BASE && Type == LH_TRANSPORT_TYPE_BASE) &&
-	    !(transport->Type == LH_TRANSPORT_TYPE_SYNC && Type == LH_TRANSPORT_TYPE_BASE) &&
-	    !(transport->Type == LH_TRANSPORT_TYPE_BASE && Type == LH_TRANSPORT_TYPE_SYNC) &&
-	    !(transport->Type == LH_TRANSPORT_TYPE_ASYNC && Type == LH_TRANSPORT_TYPE_ASYNC))
+	if (((transport->Type == LH_TRANSPORT_TYPE_BASE && Type == LH_TRANSPORT_TYPE_BASE) ||
+	     (transport->Type == LH_TRANSPORT_TYPE_SYNC && Type == LH_TRANSPORT_TYPE_BASE) ||
+	     (transport->Type == LH_TRANSPORT_TYPE_BASE && Type == LH_TRANSPORT_TYPE_SYNC) ||
+	     (transport->Type == LH_TRANSPORT_TYPE_ASYNC && Type == LH_TRANSPORT_TYPE_ASYNC)) == false)
 		return LH_FAIL;
 	if (callback != NULL && transport->Type != LH_TRANSPORT_TYPE_SYNC && Type != LH_TRANSPORT_TYPE_SYNC)
 		return LH_FAIL;
@@ -118,7 +118,7 @@ LH_RETURN LHTransport::OpenConnectionToTransport(LHTransport* transport, void (*
 	if (Type == LH_TRANSPORT_TYPE_SYNC)
 		((LHSyncTransport*)this)->SetHookFunction(callback, context);
 
-	return Open(transport->OutgoingEventQ, transport->IncomingEventQ, NULL);
+	return Open(transport->GetOutgoingEventQ(), transport->GetIncomingEventQ(), NULL);
 }
 
 bool32_t LHTransport::CheckForEvents()
@@ -913,7 +913,7 @@ void LHTransportTCP::ClearSocket()
 LH_RETURN LHTransportTCP::Open(LHDynamicQueue<LHNetEvent*>* incoming, LHDynamicQueue<LHNetEvent*>* outgoing,
                                LHTransportInfo* transport_info)
 {
-	if (transport_info == NULL || transport_info->type != LH_TRANSPORT_TYPE_TCP)
+	if ((transport_info != NULL && transport_info->type == LH_TRANSPORT_TYPE_TCP) == false)
 		return LH_ERROR;
 
 	Socket = new LHSocketTCP;

@@ -7,7 +7,7 @@
 #include <re_common.h> /* For bool32_t */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 class LHTimer;
 #endif
 #include <Lionhead/LHLib/ver5.0/LHTimer.h>
@@ -29,7 +29,7 @@ public:
 	LHLinkedList<LHPlayer*> Players;                            /* 0x138 */
 	LH_USER_ID::CATEGORY    Category;                           /* 0x140 */
 
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10069468 BW1M119 01357824 (LHCombined Release)
 	static LHTimer Timer;
 #endif

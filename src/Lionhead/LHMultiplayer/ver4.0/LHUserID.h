@@ -62,7 +62,7 @@ struct LH_MULTIPLAYER_API LH_USER_ID
 };
 static_assert(sizeof(LH_USER_ID) == 0x4, "Data type is of wrong size");
 
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 static LH_USER_ID LH_ALL_USERS(LH_ALL_USERS_ID);
 #endif
 

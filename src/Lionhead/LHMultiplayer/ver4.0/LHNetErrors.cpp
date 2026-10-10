@@ -1,0 +1,41 @@
+#define LH_MULTIPLAYER_EXPORTS
+#include "LHNetErrors.h"
+
+#include <stddef.h>
+
+LHErrorCode LH_NET_Errors[] = {
+	{LH_NET_LOG_ERROR_NO_VALID_HOSTNAME, "No valid Hostname/Domain"},
+	{LH_NET_LOG_ERROR_ADDRESS_NOT_RESOLVED, "The IP address could not be resolved"},
+	{LH_NET_LOG_ERROR_CREATING_SOCKET, "Error creating socket"},
+	{LH_NET_LOG_ERROR_CONNECT_TIMED_OUT, "Connect failed - remote address timed out"},
+	{LH_NET_LOG_ERROR_PLAYER_ALREADY_ON_CHANNEL, "Player %s already on channel %s"},
+	{LH_NET_LOG_ERROR_UNSUPPORTED_APPLICATION,
+     "This server only supports connections from application\"%s\" (received:%s)"},
+	{LH_NET_LOG_ERROR_UNSUPPORTED_PROTOCOL, "Unsupported protocol: client requested:%d.%d (%d.%d is supported)"},
+	{LH_NET_LOG_ERROR_WRONG_SERVER_TYPE, "Server rejected connection - wrong type"},
+	{LH_NET_LOG_ERROR_ALREADY_CONNECTED, "Already connected to server"},
+	{LH_NET_LOG_ERROR_SERVER_TIMED_OUT, "Server timed out"},
+	{LH_NET_LOG_ERROR_GAME_NOT_RUNNING, "Game not running on channel %s"},
+	{LH_NET_LOG_ERROR_CHANNEL_NOT_FOUND, "Channel %s not found"},
+	{LH_NET_LOG_ERROR_MGJ_NOT_IN_PROGRESS, "Mid Game join not in progress on channel %s"},
+	{LH_NET_LOG_ERROR_GAME_NOT_OPEN_FOR_MGJ, "Game on channel %s is not open for mid game join"},
+	{LH_NET_LOG_ERROR_GAME_CALLBACK_FAILED, "Game callback failed"},
+	{LH_NET_LOG_ERROR_MGJ_PREVENTED, "Channel(%s) error(%s) from player(%s) machine prevented mid game join"},
+	{LH_NET_LOG_ERROR_PLAYER_IN_RUNNING_GAME, "Player %s cannot leave the channel %s as he is part of a running game"},
+	{LH_NET_LOG_ERROR_USER_ID_NOT_IN_STRING, "User id not in string returned by server"},
+	{LH_NET_LOG_ERROR_USER_NOT_REGISTERED, "User not registered"},
+	{LH_NET_LOG_ERROR_INVALID_LOGIN, "Invalid Login"},
+	{LH_NET_LOG_ERROR_PASSWORD_REQUIRED, "Password required for channel %s"},
+	{LH_NET_LOG_ERROR_USER_BUSY, "%s is busy in another room"},
+	{LH_NET_LOG_ERROR_INVALID_CHANNEL, "%s is not a valid channel"},
+	{LH_NET_LOG_ERROR_LOGIN_SERVER_PROBLEM, "Problem connecting to Login Server (%s error=%d)"},
+	{LH_NET_LOG_ERROR_ACCOUNT_NOT_ACTIVATED, "Account not activated"},
+	{LH_NET_LOG_ERROR_REMOTE_SOCKET_CLOSED, "Remote socket closed"},
+	{LH_NET_LOG_ERROR_COMPRESSION, "Data compression error"},
+	{LH_NET_LOG_ERROR_COMPRESSED_DATA_CORRUPTED, "Compressed data corrupted"},
+	{LH_NET_LOG_ERROR_SERVER_FULL, "This server is full, please use another"},
+	{LH_NET_LOG_ERROR_WINSOCK2_REQUIRED, "Winsock version 2 required"},
+	{LH_NET_LOG_ERROR_INVALID_CD_KEY, "User %s has been disconnected. Invalid cd key\n%s"},
+	{LH_NET_LOG_ERROR_HOST_AUTHENTICATION_FAILED, "Host(%s) failed authentication, game cannot continue\n%s"},
+	{0, NULL},
+};

@@ -150,13 +150,13 @@ public:
 	LHTransportInfo UDPInfo;   /* 0x8 */
 
 private:
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10062350 BW1M119 011d2898 (LHCombined Release)
 	static LHNetMessageFormatDescriptor MessageDescriptors[];
 #endif
 
 public:
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10069460 BW1M119 013577f8 (LHCombined Release)
 	static char* UserFileDirectory;
 #endif
@@ -188,7 +188,7 @@ public:
 	}
 	// BW1W120 10001e70 BW1M119 010ed890 (LHCombined Release)
 	char* GetChannelName() { return (char*)GetDataPtr() + 1; }
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10001e80 BW1M119 null
 	static LHNetEvent* CreateSimple(long type, unsigned long length, void* data)
 	{

@@ -8,6 +8,7 @@
 #include <wchar.h>
 #include <windows.h>
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
 #include <Lionhead/LHLog/ver4.0/LHLogger.h>
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>
 #include <Lionhead/LHLog/ver4.0/LHVersion.h>
@@ -16,7 +17,7 @@
 #include "LHMPServerStartInfo.h"
 #include "LHSession.h"
 #include "LHMessageServer.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHPlayer.h"
 #include "LHServerListener.h"
 
@@ -283,12 +284,12 @@ LH_RETURN LHLobby::ProcessEvent(LHNetEvent* net_event)
 		return ProcessLobbyStartMServe(net_event);
 	case LH_NETEVENT_TYPE_LOBBY_USER_FILE:
 		return ProcessLobbyUserFile(net_event);
-	case LH_NETEVENT_TYPE_LOBBY_USER_FILES_TRANSFER_COMPLETE:
-		return ProcessLobbyUserFilesTransferComplete(net_event);
 	case LH_NETEVENT_TYPE_LOBBY_CONNECT_TO_MSERVE:
 		return ProcessLobbyConnectToMServe(net_event);
 	case LH_NETEVENT_TYPE_LOBBY_EJECTED_FROM_CHANNEL:
 		return ProcessLobbyEjectedFromChannel(net_event);
+	case LH_NETEVENT_TYPE_LOBBY_USER_FILES_TRANSFER_COMPLETE:
+		return ProcessLobbyUserFilesTransferComplete(net_event);
 	case LH_NETEVENT_TYPE_INTERNAL_LOBBY_NEW_LOCAL_LOBBY_LIST:
 		return ProcessInternalLobbyNewLocalLobbyList(net_event);
 	case LH_NETEVENT_TYPE_SERVER_ERROR:
@@ -641,20 +642,16 @@ LH_RETURN LHLobby::ProcessInternalLobbyNewLocalLobbyList(LHNetEvent* net_event)
 		break;
 	}
 
-	LHLinkedNode<LHLocalLobbyInfo*>* lobbyNode;
-	LHLinkedNode<LHPlayer*>*         playerNode;
-	LHLinkedNode<LHPlayer*>*         lanNode;
 restartAdd:
-	for (lobbyNode = LocalLobbyList.GetStart(); lobbyNode != NULL; lobbyNode = lobbyNode->next.Get())
+	for (LHLinkedListIterator<LHLocalLobbyInfo*> lobbyIt = LocalLobbyList.GetStart(); lobbyIt; lobbyIt++)
 	{
-		for (playerNode = lobbyNode->payload->Players.GetStart(); playerNode != NULL;
-		     playerNode = playerNode->next.Get())
+		for (LHLinkedListIterator<LHPlayer*> playerIt = lobbyIt.Get()->Players.GetStart(); playerIt; playerIt++)
 		{
-			LHPlayer* player = playerNode->payload;
+			LHPlayer* player = playerIt.Get();
 			bool32_t  found = false;
-			for (lanNode = LANPlayerList.GetStart(); lanNode != NULL; lanNode = lanNode->next.Get())
+			for (LHLinkedListIterator<LHPlayer*> lanIt = LANPlayerList.GetStart(); lanIt; lanIt++)
 			{
-				if (lanNode->payload->UserId == player->UserId)
+				if (lanIt.Get()->UserId == player->UserId)
 				{
 					found = true;
 					break;
@@ -663,7 +660,7 @@ restartAdd:
 			if (!found)
 			{
 				LHPlayer* lanPlayer = new LHPlayer(player);
-				lanPlayer->TransportInfo = *FindPlayerBroadcastInfo(lanPlayer->GetUserID());
+				lanPlayer->SetTransportInfo(FindPlayerBroadcastInfo(lanPlayer->GetUserID()));
 				LANPlayerList.Add(lanPlayer);
 				goto restartAdd;
 			}
@@ -671,16 +668,15 @@ restartAdd:
 	}
 
 restartRemove:
-	for (lanNode = LANPlayerList.GetStart(); lanNode != NULL; lanNode = lanNode->next.Get())
+	for (LHLinkedListIterator<LHPlayer*> lanIt = LANPlayerList.GetStart(); lanIt; lanIt++)
 	{
-		LHPlayer* player = lanNode->payload;
+		LHPlayer* player = lanIt.Get();
 		bool32_t  found = false;
-		for (lobbyNode = LocalLobbyList.GetStart(); lobbyNode != NULL; lobbyNode = lobbyNode->next.Get())
+		for (LHLinkedListIterator<LHLocalLobbyInfo*> lobbyIt = LocalLobbyList.GetStart(); lobbyIt; lobbyIt++)
 		{
-			for (playerNode = lobbyNode->payload->Players.GetStart(); playerNode != NULL;
-			     playerNode = playerNode->next.Get())
+			for (LHLinkedListIterator<LHPlayer*> playerIt = lobbyIt.Get()->Players.GetStart(); playerIt; playerIt++)
 			{
-				if (playerNode->payload->UserId == player->UserId)
+				if (player->UserId == playerIt.Get()->UserId)
 				{
 					found = true;
 					break;
@@ -895,7 +891,7 @@ LH_RETURN LHLobby::GetChatOnChannelInfo(LHNetEvent* net_event, LHLobbyChannel** 
 	LH_USER_ID    userID;
 	unsigned long length;
 	unsigned char isPrivate;
-	unsigned long flag;
+	unsigned char flag;
 	if (net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_CHAT_ON_CHANNEL, &channelName, &userID, &length, data, &isPrivate,
 	                       &flag) != LH_OK)
 		return LH_FAIL;
@@ -915,7 +911,7 @@ LH_RETURN LHLobby::GetChatDataLength(LHNetEvent* net_event, unsigned long* lengt
 	unsigned long dataLength;
 	void*         data;
 	unsigned char isPrivate;
-	unsigned long flag;
+	unsigned char flag;
 	if (net_event->VDecode(LH_NETEVENT_TYPE_LOBBY_CHAT_ON_CHANNEL, &channelName, &userID, &dataLength, &data,
 	                       &isPrivate, &flag) != LH_OK)
 		return LH_FAIL;

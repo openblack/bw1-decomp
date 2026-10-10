@@ -12,7 +12,7 @@
 #include "LHConnection.h"
 #include "LHLobby.h"
 #include "LHMPServerStartInfo.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetEvent.h"
 #include "LHNetTypes.h"
 #include "LHNetUtils.h"
@@ -76,9 +76,9 @@ void LHLobbyServer::BroadcastShutdown(bool force)
 {
 	if (Listener != NULL && (force || !OffLan))
 	{
-		Listener->BroadcastEvent(LHNetEvent::VCreate(LH_NETEVENT_TYPE_BROADCAST_LOBBY_SHUTDOWN, GetUserID(),
-		                                             Listener->GetConnectionAcceptorInfo()),
-		                         NULL);
+		Listener->BroadcastEvent(
+			LHNetEvent::VCreate(LH_NETEVENT_TYPE_BROADCAST_LOBBY_SHUTDOWN, GetUserID(), GetConnectionAcceptorInfo()),
+			NULL);
 	}
 }
 
@@ -157,20 +157,20 @@ LH_RETURN LHLobbyServer::ProcessEvent(LHConnection* connection, LHNetEvent* even
 			return ProcessLobbyClientStartGame(connection, event);
 		case LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_REQUEST:
 			return ProcessLobbyClientMGJRequest(connection, event);
+		case LH_NETEVENT_TYPE_LOBBY_CLIENT_BOOT_OTHER_USERS:
+			return ProcessLobbyClientBootOtherUsers(connection, event);
 		case LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_RESPONSE:
 			return ProcessLobbyClientMGJResponse(connection, event);
 		case LH_NETEVENT_TYPE_LOBBY_CLIENT_USER_FILE:
 			return ProcessLobbyClientUserFile(connection, event);
-		case LH_NETEVENT_TYPE_LOBBY_CLIENT_ERROR:
-			return ProcessLobbyClientError(connection, event);
-		case LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_COMPLETE:
-			return ProcessLobbyClientMGJComplete(connection, event);
 		case LH_NETEVENT_TYPE_LOBBY_CLIENT_START_MSERVE_RESULT:
 			return ProcessLobbyClientStartMServeResult(connection, event);
+		case LH_NETEVENT_TYPE_LOBBY_CLIENT_MGJ_COMPLETE:
+			return ProcessLobbyClientMGJComplete(connection, event);
 		case LH_NETEVENT_TYPE_LOBBY_CLIENT_EVENT_BROADCAST:
 			return ProcessLobbyClientEventBroadcast(event);
-		case LH_NETEVENT_TYPE_LOBBY_CLIENT_BOOT_OTHER_USERS:
-			return ProcessLobbyClientBootOtherUsers(connection, event);
+		case LH_NETEVENT_TYPE_LOBBY_CLIENT_ERROR:
+			return ProcessLobbyClientError(connection, event);
 		default:
 			return LH_FAIL;
 		}
@@ -204,7 +204,7 @@ LH_RETURN LHLobbyServer::ProcessInternalServerStart()
 	if (Mode == LH_OPERATING_MODE_ASYNCHRONOUS && Listener != NULL)
 	{
 		Listener->BroadcastEvent(LHNetEvent::VCreate(LH_NETEVENT_TYPE_BROADCAST_LOBBY_ADDRESS_REQUEST, GetUserID(),
-		                                             Listener->GetBroadcastListenerInfo()),
+		                                             GetBroadcastListenerInfo()),
 		                         NULL);
 		Sleep(LH_LOBBYSERVER_ADDRESS_REQUEST_WAIT);
 		Listener->DoProcessing(LH_SERVER_SIGNAL_BROADCAST);
@@ -332,7 +332,7 @@ LH_RETURN LHLobbyServer::ProcessBroadcastLobbyAddress(LHNetEvent* event)
 	if (info.ConnectionAcceptor.Compare(GetConnectionAcceptorInfo()) != 0)
 	{
 		LHLocalLobbyInfo* newLobby;
-		LHLocalLobbyInfo* lobby = LHNetFindLocalLobby(&LocalLobbyList, &info.ConnectionAcceptor);
+		LHLocalLobbyInfo* lobby = FindLocalLobby(&info.ConnectionAcceptor);
 		if (lobby == NULL)
 		{
 			newLobby = new LHLocalLobbyInfo(&info);
@@ -399,7 +399,7 @@ LH_RETURN LHLobbyServer::ProcessBroadcastLobbyShutdown(LHNetEvent* event)
 	if (event->VDecode(LH_NETEVENT_TYPE_BROADCAST_LOBBY_SHUTDOWN, &transportInfo) != LH_OK)
 		return LH_FAIL;
 
-	LHLocalLobbyInfo* lobby = LHNetFindLocalLobby(&LocalLobbyList, &transportInfo);
+	LHLocalLobbyInfo* lobby = FindLocalLobby(&transportInfo);
 	if (lobby != NULL)
 	{
 		LockSharedDataStructures();
@@ -625,7 +625,7 @@ LH_RETURN LHLobbyServer::ProcessLobbyClientStartMServeResult(LHConnection* conne
 		return LH_FAIL;
 
 	LHLobbyServerChannel* channel = FindChannel(channelName);
-	if (channel == NULL || channel->Players.count <= 0)
+	if ((channel != NULL && channel->Players.count > 0) == false)
 		return LH_FAIL;
 
 	if (mserveName != NULL)
@@ -1047,29 +1047,34 @@ LH_RETURN LHLobbyServerChannel::CheckMGJResponseComplete(LH_MGJ_RESPONSE* respon
 	if (!MGJInProgress())
 		return LH_OK;
 
-	for (LHPlayer* player = GetNextPlayer(NULL); player != NULL; player = GetNextPlayer(player))
+	LHPlayer* player = GetNextPlayer(NULL);
+	if (player != NULL)
 	{
-		LHLobbyServerSysInfo* info = GetSysInfo(player);
-		if (info->GameRunning)
+		do
 		{
-			switch (info->MGJResponse)
+			LHLobbyServerSysInfo* info = GetSysInfo(player);
+			if (info->GameRunning)
 			{
-			case LH_MGJ_RESPONSE_NONE:
-				*user_id = LH_USER_ID(LH_ALL_USERS_ID);
-				*response = LH_MGJ_RESPONSE_NONE;
-				waiting = true;
-				break;
-			case LH_MGJ_RESPONSE_REFUSED:
-				*user_id = player->GetUserID();
-				*response = LH_MGJ_RESPONSE_REFUSED;
-				ClearMGJInProgress();
-				return LH_OK;
-			case LH_MGJ_RESPONSE_ACCEPTED:
-				break;
-			default:
-				return LH_ERROR;
+				switch (info->MGJResponse)
+				{
+				case LH_MGJ_RESPONSE_NONE:
+					*user_id = LH_USER_ID(LH_ALL_USERS_ID);
+					*response = LH_MGJ_RESPONSE_NONE;
+					waiting = true;
+					break;
+				case LH_MGJ_RESPONSE_REFUSED:
+					*user_id = player->GetUserID();
+					*response = LH_MGJ_RESPONSE_REFUSED;
+					ClearMGJInProgress();
+					return LH_OK;
+				case LH_MGJ_RESPONSE_ACCEPTED:
+					break;
+				default:
+					return LH_ERROR;
+				}
 			}
-		}
+			player = GetNextPlayer(player);
+		} while (player != NULL);
 	}
 
 	if (!waiting)

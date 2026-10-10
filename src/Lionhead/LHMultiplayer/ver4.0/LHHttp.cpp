@@ -7,6 +7,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
 #include <Lionhead/LHLog/ver4.0/LHRegistry.h>
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>
 #include "LHNetUser.h"
@@ -116,13 +117,11 @@ LH_RETURN LHHttp::SendHeaderInternal(char* header)
 
 LH_RETURN LHHttp::SendInternalEndOfRequest(bool32_t send_headers)
 {
-	LHLinkedNode<char*>* node;
-
 	if (send_headers)
 	{
-		for (node = SentHeaders.GetStart(); node != NULL; node = node->next.Get())
+		for (LHLinkedListIterator<char*> it = SentHeaders.GetStart(); it; it++)
 		{
-			if (Socket->Send(node->payload, strlen(node->payload)) == LH_FAIL)
+			if (Socket->Send(it.Get(), strlen(it.Get())) == LH_FAIL)
 				return LH_FAIL;
 			if (Socket->Send("\r\n", strlen("\r\n")) != LH_OK)
 				return LH_FAIL;
@@ -248,14 +247,13 @@ LH_RETURN LHHttp::GetServerResponseHeader(unsigned short* status)
 		return LH_FAIL;
 
 	_strlwr(line);
-	if (strncmp(line, "http/1.1", strlen("http/1.1")) == 0 || strncmp(line, "http/1.0", strlen("http/1.0")) == 0)
+	if (strncmp(line, "http/1.1", strlen("http/1.1")) == 0)
+		sscanf(line, "%s %d", word, status);
+	else if (strncmp(line, "http/1.0", strlen("http/1.0")) == 0)
 		sscanf(line, "%s %d", word, status);
 
 	length = sizeof(line);
-	if (GetUntilCRLF(line, &length) != LH_OK)
-		return LH_FAIL;
-
-	for (;;)
+	while (GetUntilCRLF(line, &length) == LH_OK)
 	{
 		if (length != 0 || strcmp(line, "") != 0)
 		{
@@ -276,7 +274,16 @@ LH_RETURN LHHttp::GetServerResponseHeader(unsigned short* status)
 			ReceivedHeaders.Add(header);
 			if (strncmp(line, "location:", strlen("location:")) == 0 && *status >= LH_HTTP_CODE_MULTIPLE_CHOICES &&
 			    *status < LH_HTTP_CODE_BAD_REQUEST)
-				break;
+			{
+				port = LH_HTTP_DEFAULT_PORT;
+				CleanData();
+				Close();
+				ParseURI(original + strlen("Location:"), host, &port, uri);
+				if (Open(host, port) == LH_OK && SendRequest(HTTP_REQUEST_TYPE_GET, uri) == LH_OK &&
+				    SendInternalEndOfRequest(true) == LH_OK)
+					return GetServerResponseHeader(status);
+				return LH_FAIL;
+			}
 		}
 		if (strcmp(line, "") == 0)
 		{
@@ -284,17 +291,7 @@ LH_RETURN LHHttp::GetServerResponseHeader(unsigned short* status)
 			return LH_OK;
 		}
 		length = sizeof(line);
-		if (GetUntilCRLF(line, &length) != LH_OK)
-			return LH_FAIL;
 	}
-
-	port = LH_HTTP_DEFAULT_PORT;
-	CleanData();
-	Close();
-	ParseURI(original + strlen("Location:"), host, &port, uri);
-	if (Open(host, port) == LH_OK && SendRequest(HTTP_REQUEST_TYPE_GET, uri) == LH_OK &&
-	    SendInternalEndOfRequest(true) == LH_OK)
-		return GetServerResponseHeader(status);
 	return LH_FAIL;
 }
 
@@ -351,23 +348,21 @@ LH_RETURN LHHttp::GetUntilCRLF(char* line, unsigned long* length)
 
 	memset(buffer, 0, sizeof(buffer));
 	memset(line, 0, *length);
-	for (;;)
+	do
 	{
 		received_length = 1;
 		if (Socket->ReceiveRaw(&received, &received_length) != LH_OK)
 			return LH_FAIL;
-		if (received_length == 0)
-			break;
-		if (received == '\n' || carriage_return)
+		if (received_length != 0)
 		{
-			received_length = 0;
-			break;
+			if (received == '\n' || carriage_return)
+				received_length = 0;
+			else if (received == '\r')
+				carriage_return = true;
+			else
+				buffer[count++] = received;
 		}
-		if (received == '\r')
-			carriage_return = true;
-		else
-			buffer[count++] = received;
-	}
+	} while (received_length != 0);
 
 	if (line == NULL)
 		return LH_FAIL;
@@ -440,48 +435,38 @@ LH_RETURN LHHttp::ParseURI(char* url, char* host, unsigned short* port, char* ur
 	while (iswspace(*url) || *url == ':')
 		url++;
 
-	for (i = 0; *url != '\0'; url++)
+	for (i = 0; *url != '\0' && !done; url++)
 	{
-		if (done)
-			break;
 		if (slashes == 2 && *url != ':' && *url != '/')
 			host[i++] = *url;
-		if (*url == '/')
-		{
-			if (slashes == 2)
-				done = true;
-			else
-				slashes++;
-		}
-		else if (*url == ':' && slashes == 2)
-		{
+		if (*url == '/' && slashes != 2)
+			slashes++;
+		else if ((*url == '/' && slashes == 2) || (*url == ':' && slashes == 2))
 			done = true;
-		}
 	}
 	host[i] = '\0';
 
 	if (*url != '\0' && url[-1] == ':')
 	{
 		memset(number, 0, sizeof(number));
-		i = 0;
-		do
+		for (i = 0; i != sizeof(number); i++)
 		{
 			if (*url == '\0' || *url == '/')
 				break;
-			number[i++] = *url++;
-		} while (i != sizeof(number));
+			number[i] = *url++;
+		}
 		if (number[0] != '\0')
 			*port = atoi(number);
 	}
 
 	if (url[-1] == '/')
 		url--;
-	for (i = 0; *url != '\0';)
-		uri[i++] = *url++;
-	if (i != 0)
-		uri[i] = '\0';
-	else
+	for (i = 0; *url != '\0'; i++)
+		uri[i] = *url++;
+	if (i == 0)
 		strcpy(uri, "/");
+	else
+		uri[i] = '\0';
 	return LH_OK;
 }
 
@@ -498,6 +483,7 @@ void LHHttp::CleanData()
 LH_RETURN LHHttp::GetDocumentAsync(char* document, unsigned long* received)
 {
 	long          length = DocumentSize - *received;
+	char*         data;
 	LH_RETURN     result;
 	unsigned long line_length;
 	char          line[LH_HTTP_CHUNK_LINE_LENGTH];
@@ -506,11 +492,12 @@ LH_RETURN LHHttp::GetDocumentAsync(char* document, unsigned long* received)
 		return LH_FAIL;
 	if (strcmp(DocumentType, "") == 0)
 		return LH_FAIL;
-	if (DocumentSize == 0)
+	if (DocumentSize <= 0)
 		return LH_FAIL;
 
+	data = document + *received;
 	Socket->SetBlockingMode(false);
-	result = Socket->ReceiveRaw(document + *received, &length);
+	result = Socket->ReceiveRaw(data, &length);
 	Socket->SetBlockingMode(true);
 	if (result != LH_OK)
 		return LH_FAIL;
@@ -521,8 +508,8 @@ LH_RETURN LHHttp::GetDocumentAsync(char* document, unsigned long* received)
 		line_length = LH_HTTP_CHUNK_END_LENGTH;
 		memset(line, 0, sizeof(line));
 		GetUntilCRLF(line, &line_length);
-		memset(line, 0, sizeof(line));
 		line_length = LH_HTTP_CHUNK_TRAILER_LENGTH;
+		memset(line, 0, sizeof(line));
 		if (strcmp("0", line) != 0)
 			GetUntilCRLF(line, &line_length);
 		line_length = LH_HTTP_CHUNK_TRAILER_LENGTH;
@@ -601,11 +588,11 @@ void LHHttpHeaderStatus::ParseLocationData()
 	}
 
 	text = start;
-	for (i = 0; *text != '\0'; i++)
-		text++;
+	for (i = 0; *start != '\0'; i++)
+		start++;
 	LocationURI = new char[i + 1];
-	for (i = 0; start[i] != '\0'; i++)
-		LocationURI[i] = start[i];
+	for (i = 0; text[i] != '\0'; i++)
+		LocationURI[i] = text[i];
 	LocationURI[i] = '\0';
 }
 
@@ -662,13 +649,15 @@ void LHHttpHeaders::AddHeader(char* header)
 
 void LHHttpHeaders::AddHeader(char* name, char* value)
 {
-	char* header;
+	char*  header;
+	size_t length;
 
 	if (name != NULL && value != NULL)
 	{
 		header = new char[strlen(name) + strlen(value) + 8];
+		length = strlen(name);
 		strcpy(header, name);
-		if (name[strlen(name) - 1] != ':')
+		if (name[length - 1] != ':')
 			strcat(header, ":");
 		strcat(header, " ");
 		strcat(header, value);
@@ -680,6 +669,7 @@ char* LHHttpHeaders::GetHeader(char* name)
 {
 	LHLinkedNode<char*>* node;
 	char*                header;
+	char*                value;
 	bool                 colon;
 
 	for (node = Headers.GetStart(); node != NULL; node = node->next.Get())
@@ -687,21 +677,20 @@ char* LHHttpHeaders::GetHeader(char* name)
 		header = node->payload;
 		if (lookforfirstchars(header, name) == LH_OK)
 		{
+			value = header;
 			colon = false;
-			for (; *header != '\0'; header++)
+			for (; *value != '\0'; value++)
 			{
-				if (*header == ':')
-				{
+				if (*value == ':')
 					colon = true;
-				}
-				else if (*header == ' ' && colon == true)
+				if (*value == ' ' && colon == true)
 				{
-					while (*header != '\0' && *header == ' ')
-						header++;
-					return header;
+					while (*value != '\0' && *value == ' ')
+						value++;
+					return value;
 				}
 			}
-			return header;
+			return value;
 		}
 	}
 	return NULL;
@@ -730,8 +719,8 @@ char* LHHttpHeaders::GetHeaderString()
 
 	HeaderString = new char[length];
 	strcpy(HeaderString, "");
-	for (node = Headers.GetStart(); node != NULL; node = node->next.Get())
-		strcat(HeaderString, LHSPrintf("%s\r\n", node->payload).Text);
+	for (LHLinkedListIterator<char*> it = Headers.GetStart(); it; it++)
+		strcat(HeaderString, LHSPrintf("%s\r\n", it.Get()).Text);
 	return HeaderString;
 }
 
@@ -1010,7 +999,6 @@ LH_HTTP_STATUS LHHttp2::ReceiveHeaderAsync()
 	bool           carriage_return = false;
 	LH_HTTP_STATUS result = LH_HTTP_STATUS_RECEIVING_HEADER;
 	unsigned short i;
-	char           c;
 
 	if (RequestState != LH_HTTP_REQUEST_STATE_SENT)
 		return LH_HTTP_STATUS_NOT_WAITING_FOR_HEADER;
@@ -1023,18 +1011,15 @@ LH_HTTP_STATUS LHHttp2::ReceiveHeaderAsync()
 
 	if (IsDataAvailable() == LH_OK)
 	{
-		for (i = 0; i < LH_HTTP_BLOCK_SIZE; i++)
+		for (i = 0; i < LH_HTTP_BLOCK_SIZE && count != 0; i++)
 		{
-			if (count == 0)
-				break;
 			if (Socket->ReceiveRaw(HeaderLine + HeaderLineLength, &count) != LH_OK)
 				return LH_HTTP_STATUS_TIMED_OUT;
 			if (count != 0)
 			{
-				c = HeaderLine[HeaderLineLength];
-				if (c == '\r')
+				if (HeaderLine[HeaderLineLength] == '\r')
 					carriage_return = true;
-				if (c == '\n' && carriage_return)
+				if (HeaderLine[HeaderLineLength] == '\n' && carriage_return)
 				{
 					HeaderLine[HeaderLineLength - 1] = '\0';
 					if (strcmp(HeaderLine, "") == 0)
@@ -1085,10 +1070,8 @@ LH_HTTP_STATUS LHHttp2::ReceiveHeaderAsync()
 		}
 		if (i != 0)
 			time(&LastActivity);
-		return result;
 	}
-
-	if ((unsigned long)time(NULL) > TimeOut + LastActivity)
+	else if ((unsigned long)time(NULL) > TimeOut + LastActivity)
 	{
 		ResponseHeaders->Reset();
 		HeaderLineLength = 0;
@@ -1144,29 +1127,24 @@ LH_HTTP_STATUS LHHttp2::GetUntilCRLF(char* line, unsigned long* length)
 	long           count = 1;
 	bool           carriage_return;
 	unsigned short i;
-	char           c;
 
 	if (IsDataAvailable() == LH_OK)
 	{
-		i = 0;
-		while (count != 0)
+		for (i = 0; i < LH_HTTP_BLOCK_SIZE && count != 0; i++)
 		{
 			if (Socket->ReceiveRaw(line + *length, &count) != LH_OK)
 				return LH_HTTP_STATUS_TIMED_OUT;
 			if (count != 0)
 			{
-				c = line[*length];
-				if (c == '\r')
+				if (line[*length] == '\r')
 					carriage_return = true;
-				if (c == '\n' && carriage_return)
+				if (line[*length] == '\n' && carriage_return)
 				{
 					line[*length - 1] = '\0';
 					return LH_HTTP_STATUS_RECEIVED;
 				}
 				*length += count;
 			}
-			if (++i >= LH_HTTP_BLOCK_SIZE)
-				return LH_HTTP_STATUS_RECEIVING;
 		}
 	}
 	return LH_HTTP_STATUS_RECEIVING;
@@ -1192,6 +1170,75 @@ LH_HTTP_STATUS LHHttp2::ReceiveDocumentAsync()
 
 	switch (Chunked)
 	{
+	case true:
+		if (!ChunkHeaderRead)
+		{
+			status = GetUntilCRLF(ChunkLine, &ChunkLineLength);
+			if (status == LH_HTTP_STATUS_RECEIVED)
+			{
+				size = 0;
+				ChunkHeaderRead = true;
+				sscanf(ChunkLine, "%X", &size);
+				if (size > 0)
+				{
+					size += LH_HTTP_CRLF_LENGTH;
+					CurrentPart = new LHHttpDocumentParts;
+					CurrentPart->Data = new char[size];
+					CurrentPart->Size = size;
+				}
+				else
+				{
+					Waiting = false;
+					result = LH_HTTP_STATUS_RECEIVED;
+				}
+				memset(ChunkLine, 0, sizeof(ChunkLine));
+				ChunkLineLength = 0;
+			}
+			else if (status == LH_HTTP_STATUS_TIMED_OUT)
+				return status;
+		}
+		else if (CurrentPart != NULL)
+		{
+			if (CurrentPart->Received < CurrentPart->Size)
+			{
+				if (IsDataAvailable() == LH_OK)
+				{
+					size = CurrentPart->Size - CurrentPart->Received;
+					if (size >= LH_HTTP_BLOCK_SIZE)
+						size = LH_HTTP_BLOCK_SIZE;
+					if (Socket->ReceiveRaw(CurrentPart->Data + CurrentPart->Received, (long*)&size) != LH_OK)
+						return LH_HTTP_STATUS_RECEIVE_FAILED;
+					CurrentPart->Received += size;
+					ReadSize += size;
+					time(&LastActivity);
+				}
+				else if (!Waiting)
+				{
+					time(&LastActivity);
+					Waiting = true;
+				}
+				else if ((unsigned long)time(NULL) > TimeOut + LastActivity)
+				{
+					if (CurrentPart != NULL)
+					{
+						delete CurrentPart;
+						CurrentPart = NULL;
+					}
+					ResetDocumentRecv();
+					result = LH_HTTP_STATUS_TIMED_OUT;
+				}
+			}
+			else if (CurrentPart->Received >= CurrentPart->Size)
+			{
+				CurrentPart->Size -= LH_HTTP_CRLF_LENGTH;
+				DocumentParts.Add(CurrentPart);
+				ChunkHeaderRead = false;
+			}
+		}
+		else
+			result = LH_HTTP_STATUS_RECEIVED;
+		break;
+
 	default:
 		if (IsDataAvailable() == LH_OK)
 		{
@@ -1205,21 +1252,22 @@ LH_HTTP_STATUS LHHttp2::ReceiveDocumentAsync()
 				delete CurrentPart;
 				CurrentPart = NULL;
 				Waiting = false;
-				return LH_HTTP_STATUS_RECEIVED;
+				result = LH_HTTP_STATUS_RECEIVED;
 			}
-			CurrentPart->Size = size;
-			ReadSize += size;
-			DocumentParts.Add(CurrentPart);
-			time(&LastActivity);
-			return result;
+			else
+			{
+				CurrentPart->Size = size;
+				ReadSize += size;
+				DocumentParts.Add(CurrentPart);
+				time(&LastActivity);
+			}
 		}
-		if (!Waiting)
+		else if (!Waiting)
 		{
 			time(&LastActivity);
 			Waiting = true;
-			return result;
 		}
-		if ((unsigned long)time(NULL) > TimeOut + LastActivity)
+		else if ((unsigned long)time(NULL) > TimeOut + LastActivity)
 		{
 			if (CurrentPart != NULL)
 			{
@@ -1229,77 +1277,7 @@ LH_HTTP_STATUS LHHttp2::ReceiveDocumentAsync()
 			ResetDocumentRecv();
 			result = LH_HTTP_STATUS_TIMED_OUT;
 		}
-		return result;
-
-	case true:
 		break;
-	}
-
-	if (!ChunkHeaderRead)
-	{
-		status = GetUntilCRLF(ChunkLine, &ChunkLineLength);
-		if (status == LH_HTTP_STATUS_RECEIVED)
-		{
-			size = 0;
-			ChunkHeaderRead = true;
-			sscanf(ChunkLine, "%X", &size);
-			if (size != 0)
-			{
-				size += LH_HTTP_CRLF_LENGTH;
-				CurrentPart = new LHHttpDocumentParts;
-				CurrentPart->Data = new char[size];
-				CurrentPart->Size = size;
-			}
-			else
-			{
-				Waiting = false;
-				result = LH_HTTP_STATUS_RECEIVED;
-			}
-			memset(ChunkLine, 0, sizeof(ChunkLine));
-			ChunkLineLength = 0;
-			return result;
-		}
-		if (status != LH_HTTP_STATUS_TIMED_OUT)
-			return result;
-		return status;
-	}
-
-	if (CurrentPart == NULL)
-		return LH_HTTP_STATUS_RECEIVED;
-	if (CurrentPart->Received >= CurrentPart->Size)
-	{
-		CurrentPart->Size -= LH_HTTP_CRLF_LENGTH;
-		DocumentParts.Add(CurrentPart);
-		ChunkHeaderRead = false;
-		return result;
-	}
-	if (IsDataAvailable() == LH_OK)
-	{
-		size = CurrentPart->Size - CurrentPart->Received;
-		if (size >= LH_HTTP_BLOCK_SIZE)
-			size = LH_HTTP_BLOCK_SIZE;
-		if (Socket->ReceiveRaw(CurrentPart->Data + CurrentPart->Received, (long*)&size) != LH_OK)
-			return LH_HTTP_STATUS_RECEIVE_FAILED;
-		CurrentPart->Received += size;
-		ReadSize += size;
-		time(&LastActivity);
-		return result;
-	}
-	if (!Waiting)
-	{
-		time(&LastActivity);
-		Waiting = true;
-		return result;
-	}
-	if ((unsigned long)time(NULL) > TimeOut + LastActivity)
-	{
-		if (CurrentPart != NULL)
-		{
-			delete CurrentPart;
-			CurrentPart = NULL;
-		}
-		ResetDocumentRecv();
-		result = LH_HTTP_STATUS_TIMED_OUT;
 	}
 	return result;
 }

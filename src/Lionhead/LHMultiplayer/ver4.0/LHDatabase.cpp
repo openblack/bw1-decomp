@@ -298,6 +298,8 @@ void LHWebEncodingFreePtr(char* data)
 
 DBSTATUS db_get_status_async(DBInfo* info)
 {
+	LH_HTTP_STATUS status;
+
 	if (info == NULL || info->Request == NULL)
 	{
 		return DBSTATUS_ERROR;
@@ -374,7 +376,8 @@ DBSTATUS db_get_status_async(DBInfo* info)
 		}
 
 	case DBINFO_STATE_RECEIVING_DOCUMENT:
-		switch (info->Http->ReceiveDocumentAsync())
+		status = info->Http->ReceiveDocumentAsync();
+		switch (status)
 		{
 		case LH_HTTP_STATUS_RECEIVING:
 			return DBSTATUS_PENDING;
@@ -382,6 +385,8 @@ DBSTATUS db_get_status_async(DBInfo* info)
 			info->State = DBINFO_STATE_DOCUMENT_RECEIVED;
 			return DBSTATUS_PENDING;
 		}
+		if (status == LH_HTTP_STATUS_RECEIVING)
+			return DBSTATUS_PENDING;
 		break;
 
 	case DBINFO_STATE_DOCUMENT_RECEIVED:
