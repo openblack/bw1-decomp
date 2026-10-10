@@ -22,6 +22,8 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 
+#define FILEPATH "C:\\dev\\MP\\Black\\VillagerReaction.cpp"
+
 extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
 
 // Metres-per-cell scale used by ConfusedReaction's coord<->metre jitter maths (the target
@@ -156,7 +158,6 @@ bool32_t Villager::FleeingFromPredatorReaction()
 {
 	// TODO: needs the coming-towards-me helper at 0x5f1e60 named (its leg of the hide
 	// condition is omitted below); the distance callee is the unnamed 2D twin at 0x74cd50
-	// and GameRand __FILE__/__LINE__ cannot match in a split TU
 	if (this->ReactionObject.Get() != NULL && this->ReactionObject->IsAvailable())
 	{
 		Animal* predator = dynamic_cast<Animal*>(this->ReactionObject.Get());
@@ -180,7 +181,7 @@ bool32_t Villager::FleeingFromPredatorReaction()
 			}
 		}
 		if ((predator->GetSpeedInMetresPerSecond() > 5.0f /* && fn_005F1E60(predator) */) ||
-		    GRand::GameRand(6, __FILE__, __LINE__) == 0)
+		    GRand::GameRand(6, FILEPATH, 365) == 0)
 		{
 			if (SetupGoAndHideInNearbyBuilding(predator))
 			{
@@ -236,7 +237,7 @@ bool32_t Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos* thing)
 bool32_t Villager::GoAndHideInNearbyBuilding()
 {
 	// TODO: the distance callee is the unnamed 2D twin of GetDistanceInMetres at 0x74cd50;
-	// GameRand __FILE__/__LINE__ cannot match in a split TU; field_0x10c is an int
+	// field_0x10c is an int
 	// hide-turns counter here (header declares float), hence the casts
 	MapCoords coords((JustWholeMapXZ*)&this->field_0x110);
 	Abode*    abode = GetAbodeToHideInAtPos(coords);
@@ -259,7 +260,7 @@ bool32_t Villager::GoAndHideInNearbyBuilding()
 			}
 			uint32_t hideTurns = *(uint32_t*)&this->field_0x10c + 1;
 			*(uint32_t*)&this->field_0x10c = hideTurns;
-			if (hideTurns > GRand::GameRand(150, __FILE__, __LINE__) + 150)
+			if (hideTurns > GRand::GameRand(150, FILEPATH, 422) + 150)
 			{
 				*(uint32_t*)&this->field_0x10c = 0;
 				// TODO: FindPosOutsideAbode is declared void but really returns the pos via
@@ -300,8 +301,7 @@ Abode* Villager::GetAbodeToHideInAtPos(const MapCoords& pos)
 // BW1W120 00763f80 BW1M119 0159a700
 bool32_t Villager::LookToSeeIfItIsSafe()
 {
-	// TODO: the distance callee is the unnamed 2D twin of GetDistanceInMetres at 0x74cd50;
-	// GameRand __FILE__/__LINE__ cannot match in a split TU
+	// TODO: the distance callee is the unnamed 2D twin of GetDistanceInMetres at 0x74cd50
 	if (this->ReactionObject.Get() != NULL)
 	{
 		float distance = GUtils::GetDistanceInMetres(Pos, this->ReactionObject->Pos);
@@ -327,7 +327,7 @@ bool32_t Villager::LookToSeeIfItIsSafe()
 	// TODO: register allocation of the counter differs around the GameRand call
 	uint32_t safeTurns = *(uint32_t*)&this->field_0x10c + 1;
 	*(uint32_t*)&this->field_0x10c = safeTurns;
-	if (safeTurns > GRand::GameRand(25, __FILE__, __LINE__) + 25)
+	if (safeTurns > GRand::GameRand(25, FILEPATH, 469) + 25)
 	{
 		StopReactingAndSetState();
 	}
@@ -805,7 +805,7 @@ void Villager::SetupReactToDeath(GameThingWithPos* thing, Reaction* reaction)
 	{
 		AddReaction(reaction, VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION);
 	}
-	else if (GRand::GameRand(2, __FILE__, __LINE__) == 0)
+	else if (GRand::GameRand(2, FILEPATH, 1830) == 0)
 	{
 		this->TurnsUntilNextStateChange = 0;
 		AddReaction(reaction, VILLAGER_STATE_POINT_AT_DEAD_PERSON);
@@ -900,10 +900,10 @@ bool32_t Villager::ConfusedReaction()
 		// z-store after the SetupMoveToWithHug arg pushes
 		MapCoords coords = Pos;
 		coords.x = (int)((coords.x * VillagerReactionFloat10p0 * (1.0f / 65536.0f) +
-		                  GRand::GameFloatRand(20.0f, __FILE__, __LINE__) - 10.0f) *
+		                  GRand::GameFloatRand(20.0f, FILEPATH, 1960) - 10.0f) *
 		                 65536.0f / VillagerReactionFloat10p0);
 		coords.z = (int)((coords.z * VillagerReactionFloat10p0 * (1.0f / 65536.0f) +
-		                  GRand::GameFloatRand(20.0f, __FILE__, __LINE__) - 10.0f) *
+		                  GRand::GameFloatRand(20.0f, FILEPATH, 1961) - 10.0f) *
 		                 65536.0f / VillagerReactionFloat10p0);
 		SetupMoveToWithHug(coords, VILLAGER_STATE_START_CONFUSED_REACTION);
 	}

@@ -9,6 +9,8 @@
 #include "Object.h"
 #include "Rand.h"
 
+#define FILEPATH "C:\\dev\\MP\\Black\\VillagerFootball.cpp"
+
 // Metres-per-cell scale used by the kick-target fixed-point<->metres conversions below.
 const float villager_football_float10p0_0x0099a980 = 10.0f;
 
@@ -40,7 +42,7 @@ void Villager::FootballAttackerShootProcess(Football* football)
 		{
 			MapCoords goalPos = football->GetGoalPosition(football->IsPlayerOnHomeTeam(this));
 			football->PerturbTarget(&goalPos, this);
-			ball->KickBallAtDestination(goalPos, GRand::GameFloatRand(4.0f, __FILE__, __LINE__) + 12.0f, 1);
+			ball->KickBallAtDestination(goalPos, GRand::GameFloatRand(4.0f, FILEPATH, 153) + 12.0f, 1);
 			TurnsUntilNextStateChange = 0;
 			// TODO: byte flag @0x118 — see FootballAttackerGoToBallProcess.
 			*(uint8_t*)&TargetThing = 1;
@@ -60,17 +62,17 @@ void Villager::FootballAttackerLobNearGoalProcess(Football* football)
 		if (GetHeight() > ballAltitude)
 		{
 			MapCoords goalPos = football->GetGoalPosition(football->IsPlayerOnHomeTeam(this));
-			float     jitterX = GRand::GameFloatRand(4.0f, __FILE__, __LINE__) - 2.0f;
+			float     jitterX = GRand::GameFloatRand(4.0f, FILEPATH, 199) - 2.0f;
 			goalPos.x = (int)(((float)goalPos.x * villager_football_float10p0_0x0099a980 / 65536.0f + jitterX) *
 			                  65536.0f / villager_football_float10p0_0x0099a980);
 			// TODO: fstp-discard placement — target pops the dead jitter right after __ftol,
 			// ours 2 slots later (scheduler tie).
-			float jitterZ = GRand::GameFloatRand(4.0f, __FILE__, __LINE__) - 2.0f;
+			float jitterZ = GRand::GameFloatRand(4.0f, FILEPATH, 200) - 2.0f;
 			goalPos.z = (int)(((float)goalPos.z * villager_football_float10p0_0x0099a980 / 65536.0f + jitterZ) *
 			                  65536.0f / villager_football_float10p0_0x0099a980);
 			MapCoords kickPos = goalPos;
 			football->PerturbTarget(&kickPos, this);
-			ball->KickBallAtDestination(kickPos, GRand::GameFloatRand(1.0f, __FILE__, __LINE__) + 3.0f, 1);
+			ball->KickBallAtDestination(kickPos, GRand::GameFloatRand(1.0f, FILEPATH, 203) + 3.0f, 1);
 			TurnsUntilNextStateChange = 0;
 			// TODO: byte flag @0x118 — see FootballAttackerGoToBallProcess.
 			*(uint8_t*)&TargetThing = 1;
@@ -95,7 +97,7 @@ void Villager::FootballAttackerGoToBallProcess(Football* football)
 			return;
 		}
 	}
-	if ((((Ball*)football->GetBall())->Flags & 0x40) && GRand::GameRand(3, __FILE__, __LINE__) != 0)
+	if ((((Ball*)football->GetBall())->Flags & 0x40) && GRand::GameRand(3, FILEPATH, 265) != 0)
 	{
 		MapCoords destination = ball->Destination;
 		SetupMoveToPos(destination, VILLAGER_STATE_FOOTBALL_ATTACKER);
@@ -134,7 +136,7 @@ void Villager::FootballAttackerDribbleProcess(Football* football)
 			kickPoint.z = myPoint.z + dz * dist;
 			MapCoords kickPos(kickPoint);
 			football->PerturbTarget(&kickPos, this);
-			ball->KickBallAtDestination(kickPos, GRand::GameFloatRand(1.0f, __FILE__, __LINE__) + 6.0f, 1);
+			ball->KickBallAtDestination(kickPos, GRand::GameFloatRand(1.0f, FILEPATH, 226) + 6.0f, 1);
 			TurnsUntilNextStateChange = 0;
 			// TODO: byte flag @0x118 — see FootballAttackerGoToBallProcess.
 			*(uint8_t*)&TargetThing = 1;
@@ -161,7 +163,7 @@ float Villager::FootballAttackerPassPriority(Football* football)
 {
 	if (football->GetHowCloseToGoalIndex(this) - 1 >= 0)
 	{
-		return GRand::GameFloatRand(0.2f, __FILE__, __LINE__) + 0.8f;
+		return GRand::GameFloatRand(0.2f, FILEPATH, 331) + 0.8f;
 	}
 	return 0.0;
 }
@@ -188,16 +190,16 @@ void Villager::FootballDefenderSaveProcess(Football* football)
 		if (GetHeight() > ballAltitude)
 		{
 			MapCoords goalPos = football->GetGoalPosition(football->IsPlayerOnHomeTeam(this));
-			float     jitterX = GRand::GameFloatRand(10.0f, __FILE__, __LINE__) - 5.0f;
+			float     jitterX = GRand::GameFloatRand(10.0f, FILEPATH, 489) - 5.0f;
 			goalPos.x = (int)(((float)goalPos.x * villager_football_float10p0_0x0099a980 / 65536.0f + jitterX) *
 			                  65536.0f / villager_football_float10p0_0x0099a980);
 			// TODO: fstp-discard placement — target pops the dead jitter right after __ftol,
 			// ours 2 slots later (scheduler tie).
-			float jitterZ = GRand::GameFloatRand(10.0f, __FILE__, __LINE__) - 5.0f;
+			float jitterZ = GRand::GameFloatRand(10.0f, FILEPATH, 490) - 5.0f;
 			goalPos.z = (int)(((float)goalPos.z * villager_football_float10p0_0x0099a980 / 65536.0f + jitterZ) *
 			                  65536.0f / villager_football_float10p0_0x0099a980);
 			MapCoords kickPos = goalPos;
-			ball->KickBallAtDestination(kickPos, GRand::GameFloatRand(3.0f, __FILE__, __LINE__) + 8.0f, 1);
+			ball->KickBallAtDestination(kickPos, GRand::GameFloatRand(3.0f, FILEPATH, 492) + 8.0f, 1);
 			TurnsUntilNextStateChange = 0;
 			// TODO: byte flag @0x118 — see FootballAttackerGoToBallProcess.
 			*(uint8_t*)&TargetThing = 1;
@@ -242,7 +244,7 @@ void Villager::FootballDefenderDribbleProcess(Football* football)
 			kickPoint.z = myPoint.z + dz * dist;
 			MapCoords kickPos(kickPoint);
 			football->PerturbTarget(&kickPos, this);
-			ball->KickBallAtDestination(kickPos, GRand::GameFloatRand(1.0f, __FILE__, __LINE__) + 6.0f, 1);
+			ball->KickBallAtDestination(kickPos, GRand::GameFloatRand(1.0f, FILEPATH, 520) + 6.0f, 1);
 			TurnsUntilNextStateChange = 0;
 			// TODO: byte flag @0x118 — see FootballAttackerGoToBallProcess.
 			*(uint8_t*)&TargetThing = 1;
@@ -278,7 +280,7 @@ void Villager::FootballDefenderGoToBallProcess(Football* football)
 			return;
 		}
 	}
-	if ((((Ball*)football->GetBall())->Flags & 0x40) && GRand::GameRand(3, __FILE__, __LINE__) != 0)
+	if ((((Ball*)football->GetBall())->Flags & 0x40) && GRand::GameRand(3, FILEPATH, 549) != 0)
 	{
 		MapCoords destination = ball->Destination;
 		SetupMoveToPos(destination, VILLAGER_STATE_FOOTBALL_DEFENDER);
@@ -303,19 +305,19 @@ void Villager::FootballDefenderIdleProcess(Football* football)
 // BW1W120 0075e890 BW1M119 015869f0
 float Villager::FootballDefenderSavePriority(Football* football)
 {
-	return GRand::GameFloatRand(0.3f, __FILE__, __LINE__) + 0.7f;
+	return GRand::GameFloatRand(0.3f, FILEPATH, 615) + 0.7f;
 }
 
 // BW1W120 0075e8b0 BW1M119 01586970
 float Villager::FootballDefenderClearPriority(Football* football)
 {
-	return GRand::GameFloatRand(0.4f, __FILE__, __LINE__) + 0.6f;
+	return GRand::GameFloatRand(0.4f, FILEPATH, 622) + 0.6f;
 }
 
 // BW1W120 0075e970 BW1M119 015867c0
 float Villager::FootballDefenderMarkPriority(Football* football)
 {
-	return GRand::GameFloatRand(1.0f, __FILE__, __LINE__);
+	return GRand::GameFloatRand(1.0f, FILEPATH, 640);
 }
 
 // BW1W120 0075e990 BW1M119 01586760
@@ -341,7 +343,7 @@ float Villager::FootballDefenderPassPriority(Football* football)
 {
 	if (football->GetHowCloseToGoalIndex(this) - 1 >= 0)
 	{
-		return GRand::GameFloatRand(0.2f, __FILE__, __LINE__) + 0.8f;
+		return GRand::GameFloatRand(0.2f, FILEPATH, 670) + 0.8f;
 	}
 	return 0.0;
 }
@@ -360,7 +362,7 @@ void Villager::FootballGoalieSaveProcess(Football* football)
 			{
 				football->PerturbTarget(&target, this);
 			}
-			ball->KickBallAtDestination(target, GRand::GameFloatRand(1.0f, __FILE__, __LINE__) + 9.0f, 1);
+			ball->KickBallAtDestination(target, GRand::GameFloatRand(1.0f, FILEPATH, 757) + 9.0f, 1);
 			TurnsUntilNextStateChange = 0;
 			// TODO: byte flag @0x118 — see FootballAttackerGoToBallProcess.
 			*(uint8_t*)&TargetThing = 1;
@@ -390,7 +392,7 @@ void Villager::FootballGoalieGoToBallProcess(Football* football)
 			return;
 		}
 	}
-	if ((((Ball*)football->GetBall())->Flags & 0x40) && GRand::GameRand(10, __FILE__, __LINE__) >= 8u)
+	if ((((Ball*)football->GetBall())->Flags & 0x40) && GRand::GameRand(10, FILEPATH, 796) >= 8u)
 	{
 		MapCoords destination = ball->Destination;
 		SetupMoveToPos(destination, VILLAGER_STATE_FOOTBALL_GOALIE);
@@ -419,19 +421,19 @@ void Villager::FootballGoalieIdleProcess(Football* football)
 // BW1W120 0075efc0 BW1M119 01584650
 float Villager::FootballGoalieSavePriority(Football* football)
 {
-	return GRand::GameFloatRand(1.0f, __FILE__, __LINE__);
+	return GRand::GameFloatRand(1.0f, FILEPATH, 864);
 }
 
 // BW1W120 0075efe0 BW1M119 015845e0
 float Villager::FootballGoalieClearPriority(Football* football)
 {
-	return GRand::GameFloatRand(1.0f, __FILE__, __LINE__);
+	return GRand::GameFloatRand(1.0f, FILEPATH, 870);
 }
 
 // BW1W120 0075f000 BW1M119 01584570
 float Villager::FootballGoalieLookPriority(Football* football)
 {
-	return GRand::GameFloatRand(1.0f, __FILE__, __LINE__);
+	return GRand::GameFloatRand(1.0f, FILEPATH, 876);
 }
 
 // BW1W120 0075f020 BW1M119 01584510

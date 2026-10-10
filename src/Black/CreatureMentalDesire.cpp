@@ -10,6 +10,8 @@
 #include "Game.h"                      /* For struct GGame */
 #include "Rand.h"                      /* For struct GRand */
 
+#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalDesire.cpp"
+
 // CreatureDevelopmentDurationEntry/PhaseEntry are declared in CreatureDevelopment.h, but
 // their GetBaseInfo addresses fall in this TU's split range, not CreatureDevelopment.cpp's.
 static CreatureDevelopmentDurationEntry g_CreatureDevelopmentDurationEntry[17];        // fabricated name
@@ -63,7 +65,7 @@ void CreatureDesires::Initialise(Creature* creature, const CreatureInfo* info)
 
 		float minValue = CreatureInitialDesireInfo::g_CreatureInitialDesireInfos[i].InitialValueMin;
 		float maxValue = CreatureInitialDesireInfo::g_CreatureInitialDesireInfos[i].InitialValueMax;
-		field_0x288[i] = minValue + GRand::GameFloatRand(maxValue - minValue, __FILE__, __LINE__);
+		field_0x288[i] = minValue + GRand::GameFloatRand(maxValue - minValue, FILEPATH, 100);
 
 		IncreaseTime[i] = g_CreatureDesireForType[i].ByCreatureType[info->CreatureType];
 

@@ -23,6 +23,8 @@
 #include "Utils.h"
 #include "Rand.h"
 
+#define FILEPATH "C:\\dev\\MP\\Black\\Villager.cpp"
+
 // 84 entries (12 tribe slots x VILLAGER_NUMBER_LAST), filled by GVillagerInfo::GetInfoFromText.
 GVillagerInfo GVillagerInfo::InfoList[84];
 
@@ -1010,10 +1012,10 @@ uint32_t Villager::SetupNothingToDo()
 {
 	Town*  town = GetTown();
 	Abode* abode = GetAbode();
-	switch (GRand::GameRand(9, __FILE__, __LINE__))
+	switch (GRand::GameRand(9, FILEPATH, 2886))
 	{
 	case 0:
-		if ((abode != NULL && abode->IsFunctional()) || GRand::GameRand(100, __FILE__, __LINE__) < 10u)
+		if ((abode != NULL && abode->IsFunctional()) || GRand::GameRand(100, FILEPATH, 2891) < 10u)
 		{
 			SetTopState(VILLAGER_STATE_GO_HOME);
 			return true;
@@ -1055,9 +1057,8 @@ uint32_t Villager::GetChillOutPos(MapCoords& coords)
 		MapCoords congregationPos = town->GetCongregationPos();
 		float     radius = ((const GTownInfo*)town->info.Get())->field_0x140 * 0.1f;
 		float     angle = GUtils::Get3DAngleFromXZ(congregationPos, Pos);
-		float     jitter = GRand::GameFloatRand(0.7853982f, __FILE__, __LINE__) - 0.39269909f;
-		MapCoords offset =
-			GUtils::GetPosFromAngle(jitter + angle, GRand::GameFloatRand(radius * 9.0f, __FILE__, __LINE__));
+		float     jitter = GRand::GameFloatRand(0.7853982f, FILEPATH, 2940) - 0.39269909f;
+		MapCoords offset = GUtils::GetPosFromAngle(jitter + angle, GRand::GameFloatRand(radius * 9.0f, FILEPATH, 2941));
 		coords = congregationPos + offset;
 		return 1;
 	}
