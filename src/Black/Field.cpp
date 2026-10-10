@@ -10,3 +10,13 @@ uint32_t Field::GetSaveType()
 {
 	return GAME_THING_TYPE_FIELD;
 }
+
+bool Field::InteractsWithPhysicsObjects()
+{
+	return false;
+}
+
+bool32_t Field::CanBecomeAPhysicsObject()
+{
+	return false;
+}
