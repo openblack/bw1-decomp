@@ -31,3 +31,8 @@ uint32_t CitadelPart::Load(GameOSFile& file)
 
 	return 1;
 }
+
+LH3DObject::ObjectType CitadelPart::Get3DType()
+{
+	return LH3DObject::MORPHABLE;
+}
