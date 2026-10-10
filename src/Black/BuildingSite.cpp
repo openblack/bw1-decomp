@@ -7,3 +7,5 @@ void BuildingSite::BuildBy(float amount)
 {
 	GetBuilding()->BuildBy(amount);
 }
+
+void BuildingSite::Init() {}

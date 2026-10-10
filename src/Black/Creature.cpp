@@ -3,3 +3,5 @@
 
 #include "ColourConstants.h"    /* For White */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+
+void Creature::SetAnim(int anim) {}

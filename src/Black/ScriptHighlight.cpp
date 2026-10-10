@@ -5,3 +5,5 @@
 #include "ScriptHighlightInfo.h"
 
 GScriptHighlightInfo GScriptHighlightInfo::Infos[SCRIPT_HIGHLIGHT_INFO_LAST];
+
+void ScriptHighlight::PhysicsEditorCreate(int param_1) {}

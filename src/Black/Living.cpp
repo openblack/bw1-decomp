@@ -5,3 +5,5 @@
 
 #include "ColourConstants.h"    /* For White */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+
+void Living::Birthday() {}

@@ -105,3 +105,5 @@ void CitadelEntrance::ResolveLoad()
 {
 	info = &GObjectInfo::Definitions[OBJECT_TYPE_TERRAIN];
 }
+
+void CitadelHeart::Draw() {}
