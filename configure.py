@@ -567,7 +567,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CameraModeCitadel.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeCtrInteract.cpp"),
             GameCodeObject(Matching, "Black/CameraModeDance.cpp"),
-            GameCodeObject(NonMatching, "Black/CameraModeFlyAndClick.cpp"),
+            GameCodeObject(Matching, "Black/CameraModeFlyAndClick.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeFollow.cpp"),
             GameCodeObject(Matching, "Black/CameraModeFollowHeading.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeFree.cpp"),
