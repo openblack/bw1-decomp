@@ -312,6 +312,14 @@ void GestureSystemDataList::CalculateGesturePacket(GestureSystem* system, Gestur
                                                    GestureSystemResult* result, GestureSystemPacketData* packet)
 {
 	GestureSystemData* gestureData = GetGestureFromResult(result->GetResult());
+	// BUG: gestureData is NULL when the gesture is not loaded, and is dereferenced below
+#ifdef BUGFIX
+	if (gestureData == NULL)
+	{
+		packet->Clear();
+		return;
+	}
+#endif
 	packet->field_0x4 = result->IsInverse();
 	packet->Gesture = result->GetResult();
 	long start;
