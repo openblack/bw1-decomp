@@ -13,3 +13,28 @@ uint32_t FelledTree::GetSaveType()
 {
 	return GAME_THING_TYPE_FELLED_TREE;
 }
+
+bool32_t DeadTree::HandShouldFeelWithMeshIntersect()
+{
+	return false;
+}
+
+bool DeadTree::InteractsWithPhysicsObjects()
+{
+	return true;
+}
+
+bool32_t DeadTree::IsARootedObject()
+{
+	return false;
+}
+
+bool32_t DeadTree::CanBecomeAPhysicsObject()
+{
+	return true;
+}
+
+bool32_t FelledTree::IsARootedObject()
+{
+	return false;
+}

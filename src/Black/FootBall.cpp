@@ -6,3 +6,8 @@ uint32_t Football::GetSaveType()
 {
 	return GAME_THING_TYPE_FOOTBALL;
 }
+
+bool Football::InteractsWithPhysicsObjects()
+{
+	return false;
+}

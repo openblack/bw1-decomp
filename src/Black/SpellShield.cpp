@@ -14,3 +14,8 @@ uint32_t PhysicalShield::GetSaveType()
 {
 	return GAME_THING_TYPE_PHYSICAL_SHIELD;
 }
+
+bool PhysicalShield::GetAlwaysRemainsInPhysicsInternalSystem()
+{
+	return true;
+}

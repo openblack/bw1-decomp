@@ -5,3 +5,7 @@ uint32_t SpellSeed::GetSaveType()
 {
 	return GAME_THING_TYPE_SPELL_SEED;
 }
+
+void SpellSeed::InsertMapObject() {}
+
+void SpellSeed::RemoveMapObject() {}
