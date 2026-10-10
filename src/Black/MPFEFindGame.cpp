@@ -2,5 +2,4 @@
 
 #include "ColourConstants.h" /* For White */
 
-
 void MPFEFindGame::Destroy() {}

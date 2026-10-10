@@ -2,7 +2,6 @@
 
 #include "ColourConstants.h" /* For White */
 
-
 bool BWLan::InitialiseLobbyState()
 {
 	return true;

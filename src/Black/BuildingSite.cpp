@@ -33,7 +33,7 @@ MultiMapFixed* BuildingSite::GetRootBuilding()
 
 uint32_t BuildingSite::GetSaveType()
 {
-	return 0;
+	return GAME_THING_TYPE_UNUSED_000;
 }
 
 void BuildingSite::Init() {}

@@ -5,5 +5,4 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 
-
 void PlannedMultiMapFixed::Draw() {}

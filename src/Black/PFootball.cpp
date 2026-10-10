@@ -1,7 +1,6 @@
 #include "GameTimeConstants.h"
 #include "PFootball.h"
 
-
 GPlayer* PFootball::GetPlayer()
 {
 	return NULL;

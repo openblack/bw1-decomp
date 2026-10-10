@@ -17,13 +17,12 @@ SCRIPT_OBJECT_TYPE TotemStatue::GetScriptObjectType()
 
 void TotemStatue::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2) {}
 
-bool32_t TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
-{
-	return true;
-}
-
-
 float TotemStatue::GetWorshipSpeed()
 {
 	return WorshipSpeed;
+}
+
+bool32_t TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
+{
+	return true;
 }

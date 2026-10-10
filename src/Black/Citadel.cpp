@@ -36,5 +36,5 @@ uint32_t Citadel::GetCreatureBeliefListType()
 
 uint32_t Citadel::GetOrigin()
 {
-	return 2;
+	return OBJECT_ORIGIN_MAGIC;
 }

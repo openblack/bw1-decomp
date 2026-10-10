@@ -73,7 +73,7 @@ uint32_t Animal::CheckSuitableEnvironment(const MapCoords& param_1)
 
 uint32_t Animal::GetTastiness()
 {
-	return 2;
+	return OBJECT_TASTINESS_LIVING;
 }
 
 bool32_t Animal::MoveToPosAndLookAround()

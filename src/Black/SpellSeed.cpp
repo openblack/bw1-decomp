@@ -12,12 +12,12 @@ void SpellSeed::RemoveMapObject() {}
 
 uint32_t SpellSeed::GetCreatureBeliefType()
 {
-	return 18;
+	return CREATURE_BELIEF_TYPE_MIST;
 }
 
 uint32_t SpellSeed::GetOrigin()
 {
-	return 2;
+	return OBJECT_ORIGIN_MAGIC;
 }
 
 uint32_t SpellSeed::SaveObject(LHOSFile& param_1, const MapCoords* param_2)
