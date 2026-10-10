@@ -10,6 +10,7 @@ struct LHCoord
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 010202a0
 	LHCoord() {}
 	// BW1W120 inlined BW1M119 01014170
 	LHCoord(long x, long y) : x(x), y(y) {}
