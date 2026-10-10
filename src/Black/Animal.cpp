@@ -30,3 +30,5 @@ uint32_t Animal::KeepFlockMemberWithinFlockArea()
 	}
 	return 0x23;
 }
+
+void Animal::DebugShowText() {}

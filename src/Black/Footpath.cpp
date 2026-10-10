@@ -64,3 +64,5 @@ uint32_t GFootpathNode::GetSaveType()
 }
 
 void GFootpathNode::ResolveLoad() {}
+
+void GFootpathLink::Update(MultiMapFixed* structure) {}
