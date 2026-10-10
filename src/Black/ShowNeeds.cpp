@@ -2,7 +2,6 @@
 
 #include "GameThingWithPos.h"
 
-
 GPlayer* ShowNeeds::GetPlayer()
 {
 	if (thing.Get() != NULL)

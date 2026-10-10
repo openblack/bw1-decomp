@@ -24,12 +24,6 @@ float TotemStatue::GetWorshipSpeed()
 	return WorshipSpeed;
 }
 
-bool32_t TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
-{
-	return true;
-}
-
-
 Town* TotemStatue::GetTown()
 {
 	if (town_centre.Get() != NULL)
@@ -37,4 +31,9 @@ Town* TotemStatue::GetTown()
 		return town_centre.Get()->GetTown();
 	}
 	return NULL;
+}
+
+bool32_t TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
+{
+	return true;
 }
