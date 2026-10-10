@@ -29,3 +29,8 @@ SCRIPT_OBJECT_TYPE Pot::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_STORE;
 }
+
+bool32_t Pot::IsResourceStore(RESOURCE_TYPE param_1)
+{
+	return false;
+}

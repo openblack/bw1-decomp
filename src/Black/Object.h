@@ -336,7 +336,7 @@ public:
 	// BW1W120 00402660 BW1M119 011d33d0
 	virtual int GetDetailMesh(int detail) const { return GetMesh(); }
 	// BW1W120 004648b0 BW1M119 010e7860
-	virtual void Draw();
+	virtual void Draw() {}
 	// BW1W120 0051c820 BW1M119 0101d5f0
 	virtual void DrawOutOfMap(bool selectable);
 	// BW1W120 00402670 BW1M119 011d2250

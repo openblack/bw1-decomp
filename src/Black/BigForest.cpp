@@ -10,3 +10,18 @@ LH3DObject::ObjectType BigForest::Get3DType()
 {
 	return LH3DObject::MORPHABLE;
 }
+
+bool32_t BigForest::ValidForPlaceInHand(GInterfaceStatus* param_1)
+{
+	return true;
+}
+
+bool32_t BigForest::IsTuggable()
+{
+	return false;
+}
+
+bool32_t BigForest::VillagerMustAvoid(Villager* param_1)
+{
+	return false;
+}

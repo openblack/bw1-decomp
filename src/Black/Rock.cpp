@@ -14,3 +14,13 @@ SCRIPT_OBJECT_TYPE Rock::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_ROCK;
 }
+
+uint32_t Rock::GetPhysicsConstantsType()
+{
+	return 3;
+}
+
+uint32_t Rock::GetOverwriteTapToolTip()
+{
+	return 3831;
+}

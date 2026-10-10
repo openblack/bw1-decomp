@@ -30,3 +30,10 @@ MultiMapFixed* BuildingSite::GetRootBuilding()
 {
 	return RootBuilding;
 }
+
+uint32_t BuildingSite::GetSaveType()
+{
+	return 0;
+}
+
+void BuildingSite::Init() {}

@@ -46,3 +46,23 @@ LH3DObject::ObjectType CitadelPart::Get3DType()
 {
 	return LH3DObject::MORPHABLE;
 }
+
+uint32_t CitadelPart::Process()
+{
+	return 1;
+}
+
+PlannedMultiMapFixed* CitadelPart::ConvertToPlanned()
+{
+	return NULL;
+}
+
+uint32_t CitadelPart::SaveObject(LHOSFile& param_1, const MapCoords* param_2)
+{
+	return 0;
+}
+
+uint32_t CitadelPart::DestroyedByEffect(GPlayer* param_1, float param_2)
+{
+	return 0;
+}

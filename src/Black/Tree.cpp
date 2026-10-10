@@ -37,3 +37,13 @@ SCRIPT_OBJECT_TYPE Tree::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_TREE;
 }
+
+uint32_t Tree::GetPhysicsConstantsType()
+{
+	return 6;
+}
+
+uint32_t Tree::GetOverwriteDropToolTip()
+{
+	return 3823;
+}

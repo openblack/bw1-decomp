@@ -143,3 +143,25 @@ SCRIPT_OBJECT_TYPE CitadelHeart::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_CITADEL;
 }
+
+ABODE_TYPE CitadelHeart::GetAbodeType()
+{
+	return ABODE_TYPE_CITADEL;
+}
+
+bool32_t CitadelHeart::IsCitadelHeart()
+{
+	return true;
+}
+
+void CitadelHeart::Draw() {}
+
+bool CitadelHeart::ChecksVerticesVObjects()
+{
+	return false;
+}
+
+uint32_t CitadelHeart::GetPhysicsConstantsType()
+{
+	return 0;
+}

@@ -1693,3 +1693,5 @@ uint32_t MissionaryControl::GetSaveType()
 {
 	return GAME_THING_TYPE_MISSIONARY_CONTROL;
 }
+
+void Villager::WallhugValidate() {}

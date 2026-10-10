@@ -21,3 +21,55 @@ bool32_t Living::CanBecomeAPhysicsObject()
 {
 	return true;
 }
+
+bool32_t Living::InvalidState()
+{
+	return false;
+}
+
+bool32_t Living::Flying()
+{
+	return true;
+}
+
+uint32_t Living::GetNumTurnsToDieOver()
+{
+	return 600;
+}
+
+bool32_t Living::InHand()
+{
+	return true;
+}
+
+void Living::Birthday() {}
+
+bool32_t Living::ExitInLanded(uint8_t state)
+{
+	return true;
+}
+
+bool32_t Living::CreatureMustAvoid(Creature* param_1)
+{
+	return false;
+}
+
+uint32_t Living::EnterMoveToPos(VILLAGER_STATES param_1, VILLAGER_STATES param_2)
+{
+	return 1;
+}
+
+bool32_t Living::ExitBeingEaten(uint8_t state)
+{
+	return true;
+}
+
+bool32_t Living::EnterMoveOnPath(uint8_t current, uint8_t destination)
+{
+	return true;
+}
+
+IMMERSION_EFFECT_TYPE Living::GetInHandImmersionTexture()
+{
+	return IMMERSION_EFFECT_TYPE_ANIMATING_IN_HAND;
+}

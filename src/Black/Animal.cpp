@@ -45,3 +45,90 @@ SCRIPT_OBJECT_TYPE Animal::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_ANIMAL;
 }
+
+bool32_t Animal::IsAnimal()
+{
+	return true;
+}
+
+uint32_t Animal::IsOkToBeShepherd()
+{
+	return 0;
+}
+
+uint32_t Animal::IAmABird()
+{
+	return 0;
+}
+
+uint32_t Animal::GetCreatureBeliefType()
+{
+	return 7;
+}
+
+uint32_t Animal::CheckSuitableEnvironment(const MapCoords& param_1)
+{
+	return 100;
+}
+
+uint32_t Animal::GetTastiness()
+{
+	return 2;
+}
+
+bool32_t Animal::MoveToPosAndLookAround()
+{
+	return true;
+}
+
+uint32_t Animal::ProcessFadeOut()
+{
+	return 0;
+}
+
+bool32_t Animal::FollowFlock()
+{
+	return false;
+}
+
+bool32_t Animal::SpecialMoveToPos()
+{
+	return false;
+}
+
+bool32_t Animal::LandOnObject()
+{
+	return false;
+}
+
+bool32_t Animal::LandAtPos()
+{
+	return false;
+}
+
+void Animal::DebugShowText() {}
+
+bool32_t Animal::HideInLair()
+{
+	return true;
+}
+
+bool32_t Animal::EnterWandering(uint8_t param_1, uint8_t param_2)
+{
+	return true;
+}
+
+bool32_t Animal::EnterSleep(uint8_t param_1, uint8_t param_2)
+{
+	return true;
+}
+
+bool32_t Animal::EnterHideInLair(uint8_t param_1, uint8_t param_2)
+{
+	return true;
+}
+
+bool32_t Animal::EnterSeekFood(uint8_t param_1, uint8_t param_2)
+{
+	return true;
+}

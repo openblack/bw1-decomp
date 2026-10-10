@@ -15,3 +15,15 @@ uint32_t ScriptHighlight::ApplyOnlyAfterReleased()
 {
 	return 0;
 }
+
+void ScriptHighlight::PhysicsEditorCreate(int param_1) {}
+
+uint32_t ScriptHighlight::ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords)
+{
+	return 0;
+}
+
+uint32_t ScriptHighlight::SaveObject(LHOSFile& file, const MapCoords* coords)
+{
+	return 0;
+}

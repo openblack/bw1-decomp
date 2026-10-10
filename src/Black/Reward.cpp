@@ -5,3 +5,10 @@ uint32_t Reward::GetSaveType()
 {
 	return GAME_THING_TYPE_REWARD;
 }
+
+void Reward::PhysicsEditorCreate(int param_1) {}
+
+uint32_t Reward::GetOverwriteTapToolTip()
+{
+	return 3832;
+}

@@ -12,3 +12,13 @@ uint32_t Feature::GetSaveType()
 {
 	return GAME_THING_TYPE_FEATURE;
 }
+
+bool AnimatedStatic::ChecksVerticesVObjects()
+{
+	return false;
+}
+
+bool32_t AnimatedStatic::CreatureMustAvoid(Creature* param_1)
+{
+	return true;
+}

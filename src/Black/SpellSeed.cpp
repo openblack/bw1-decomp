@@ -9,3 +9,18 @@ uint32_t SpellSeed::GetSaveType()
 void SpellSeed::InsertMapObject() {}
 
 void SpellSeed::RemoveMapObject() {}
+
+uint32_t SpellSeed::GetCreatureBeliefType()
+{
+	return 18;
+}
+
+uint32_t SpellSeed::GetOrigin()
+{
+	return 2;
+}
+
+uint32_t SpellSeed::SaveObject(LHOSFile& param_1, const MapCoords* param_2)
+{
+	return 0;
+}

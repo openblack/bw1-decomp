@@ -14,3 +14,10 @@ SCRIPT_OBJECT_TYPE TotemStatue::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_TOTEM_STATUE;
 }
+
+void TotemStatue::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2) {}
+
+bool32_t TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
+{
+	return true;
+}
