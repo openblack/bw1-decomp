@@ -8172,3 +8172,20 @@ bool32_t Creature::ForceActivityAndDecideAction(CREATURE_DESIRES desire, Creatur
 	}
 	return false;
 }
+
+static uint32_t CreatureActionIndex[NUM_CREATURE_ACTIONS];
+
+void Creature::ComputeActionIndices()
+{
+	for (uint32_t i = 0; i < NUM_CREATURE_ACTIONS; i++)
+	{
+		CreatureActionIndex[i] = 0;
+	}
+	for (uint32_t desire = 0; desire < NUM_CREATURE_DESIRES; desire++)
+	{
+		for (uint32_t j = 0; j < 0x1e; j++)
+		{
+			CreatureActionIndex[CreatureDesireActionEntry::g_CreatureDesireActionEntries[desire].field_0x10[j]] = j;
+		}
+	}
+}
