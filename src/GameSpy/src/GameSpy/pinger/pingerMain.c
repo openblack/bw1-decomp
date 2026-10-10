@@ -3,8 +3,12 @@ GameSpy Ping SDK
 Dan "Mr. Pants" Schoenblum
 dan@gamespy.com
 
-Copyright 1999-2007 GameSpy Industries, Inc
+Copyright 1999-2001 GameSpy Industries, Inc
 
+18002 Skypark Circle
+Irvine, California 92614
+949.798.4200 (Tel)
+949.798.4299 (Fax)
 devsupport@gamespy.com
 */
 
@@ -19,9 +23,22 @@ UPP = UDP Ping Protocol
 /*************
 ** INCLUDES **
 *************/
+#include <string.h>
+#include <stdlib.h>
+#if !defined(UNDER_CE) && !defined(__KATANA__)
+#include <assert.h>
+#else
+#define assert(a)
+#endif
 #include <limits.h>
 #include "pinger.h"
-#include "../darray.h"
+#if defined(applec) || defined(THINK_C) || defined(__MWERKS__) && !defined(__KATANA__) && !defined(__mips64)
+	#include "::nonport.h"
+	#include "::darray.h"
+#else
+	#include "../nonport.h"
+	#include "../darray.h"
+#endif
 
 /************
 ** DEFINES **
@@ -60,8 +77,8 @@ typedef struct piActivePing
 	PINGERBool     originator;    // true if we sent the first dgram
 	uint16         ID;            // unique ID for this ping
 	uint16         expectedTrip;  // expected trip # of the reply
-	gsi_time         timestamp;     // time we sent the ping
-	gsi_time         timeout;       // time this ping expires
+	unsigned long         timestamp;     // time we sent the ping
+	unsigned long         timeout;       // time this ping expires
 	unsigned int          remoteIP;      // IP of the other end of this ping
 	unsigned short        remotePort;    // port of the other end of this ping
 	pingerGotPing  reply;         // call this callback if we're the originator (otherwise call pingerPinged)
@@ -94,7 +111,7 @@ static PINGERBool       piSettingData;
 static PINGERBool       piUDPEnabled;
 static uint16           piNextID;
 static DArray           piActivePingList;
-static gsi_time    piLastThinkTime;
+static unsigned long    piLastThinkTime;
 static DArray           piCallbacks;
 
 /**************
@@ -116,76 +133,87 @@ static uint16 piGetNextID(void)
 	return ID;
 }
 
+
 static void piSocketSelect(PINGERBool * readFlag, PINGERBool * writeFlag, PINGERBool * exceptFlag)
 {
-	fd_set fdRead;
-	fd_set fdWrite;
-	fd_set fdExcept;
-	fd_set * readFds;
-	fd_set * writeFds;
-	fd_set * exceptFds;
-	struct timeval timeout;
+	fd_set writeSet;
+	fd_set readSet;
+	fd_set exceptSet;
+	fd_set * writefds;
+	fd_set * readfds;
+	fd_set * exceptfds;
 	int rcode;
+	struct timeval timeout;
 
-	// Setup the fd sets.
-	/////////////////////
+	assert(piSocket != INVALID_SOCKET);
+
+	// Setup the parameters.
+	////////////////////////
 	if(readFlag != NULL)
 	{
-		FD_ZERO(&fdRead);
-		FD_SET(piSocket, &fdRead);
-		readFds = &fdRead;
+		FD_ZERO(&readSet);
+		FD_SET(piSocket, &readSet);
+		readfds = &readSet;
 	}
 	else
-		readFds = NULL;
+	{
+		readfds = NULL;
+	}
 	if(writeFlag != NULL)
 	{
-		FD_ZERO(&fdWrite);
-		FD_SET(piSocket, &fdWrite);
-		writeFds = &fdWrite;
+		FD_ZERO(&writeSet);
+		FD_SET(piSocket, &writeSet);
+		writefds = &writeSet;
 	}
 	else
-		writeFds = NULL;
+	{
+		writefds = NULL;
+	}
 	if(exceptFlag != NULL)
 	{
-		FD_ZERO(&fdExcept);
-		FD_SET(piSocket, &fdExcept);
-		exceptFds = &fdExcept;
+		FD_ZERO(&exceptSet);
+		FD_SET(piSocket, &exceptSet);
+		exceptfds = &exceptSet;
 	}
 	else
-		exceptFds = NULL;
+	{
+		exceptfds = NULL;
+	}
 
-	// Check the socket without blocking.
-	/////////////////////////////////////
 	timeout.tv_sec = 0;
 	timeout.tv_usec = 0;
-	rcode = select(FD_SETSIZE, readFds, writeFds, exceptFds, &timeout);
+
+	// Get the write info.
+	//////////////////////
+	rcode = select(FD_SETSIZE, readfds, writefds, exceptfds, &timeout);
 	if(rcode == SOCKET_ERROR)
 		return;
 
-	// Return the results.
-	//////////////////////
+	// Check results.
+	/////////////////
 	if(readFlag != NULL)
 	{
-		if((rcode > 0) && FD_ISSET(piSocket, readFds))
+		if(rcode > 0 && FD_ISSET(piSocket, readfds))
 			*readFlag = PINGERTrue;
 		else
 			*readFlag = PINGERFalse;
 	}
 	if(writeFlag != NULL)
 	{
-		if((rcode > 0) && FD_ISSET(piSocket, writeFds))
+		if(rcode > 0 && FD_ISSET(piSocket, writefds))
 			*writeFlag = PINGERTrue;
 		else
 			*writeFlag = PINGERFalse;
 	}
 	if(exceptFlag != NULL)
 	{
-		if((rcode > 0) && FD_ISSET(piSocket, exceptFds))
+		if(rcode > 0 && FD_ISSET(piSocket, exceptfds))
 			*exceptFlag = PINGERTrue;
 		else
 			*exceptFlag = PINGERFalse;
 	}
 }
+
 
 static PINGERBool piBytesToPing(unsigned char * buffer, piUDPPing * udpPing, char * data)
 {
@@ -200,15 +228,15 @@ static PINGERBool piBytesToPing(unsigned char * buffer, piUDPPing * udpPing, cha
 	udpPing->version = *buffer++;
 
 	// Trip.
-	udpPing->trip = (unsigned short)(*buffer++ << 8);
+	udpPing->trip = (*buffer++ << 8);
 	udpPing->trip |= *buffer++;
 
 	// ID_A.
-	udpPing->ID_A = (unsigned short)(*buffer++ << 8);
+	udpPing->ID_A = (*buffer++ << 8);
 	udpPing->ID_A |= *buffer++;
 
 	// ID_B.
-	udpPing->ID_B = (unsigned short)(*buffer++ << 8);
+	udpPing->ID_B = (*buffer++ << 8);
 	udpPing->ID_B |= *buffer++;
 
 	// Check for the magic number.
@@ -259,16 +287,16 @@ static void piPingToBytes(piUDPPing * udpPing, unsigned char * buffer)
 	*buffer++ = udpPing->version;
 
 	// Trip.
-	*buffer++ = (unsigned char)((udpPing->trip & 0xFF00) >> 8);
-	*buffer++ = (unsigned char)(udpPing->trip & 0x00FF);
+	*buffer++ = ((udpPing->trip & 0xFF00) >> 8);
+	*buffer++ = (udpPing->trip & 0x00FF);
 
 	// ID_A.
-	*buffer++ = (unsigned char)((udpPing->ID_A & 0xFF00) >> 8);
-	*buffer++ = (unsigned char)(udpPing->ID_A & 0x00FF);
+	*buffer++ = ((udpPing->ID_A & 0xFF00) >> 8);
+	*buffer++ = (udpPing->ID_A & 0x00FF);
 
 	// ID_B.
-	*buffer++ = (unsigned char)((udpPing->ID_B & 0xFF00) >> 8);
-	*buffer++ = (unsigned char)(udpPing->ID_B & 0x00FF);
+	*buffer++ = ((udpPing->ID_B & 0xFF00) >> 8);
+	*buffer++ = (udpPing->ID_B & 0x00FF);
 }
 
 static PINGERBool piSendPing(SOCKADDR_IN * to, uint16 trip, uint16 ID_A, uint16 ID_B, const char * data)
@@ -276,7 +304,6 @@ static PINGERBool piSendPing(SOCKADDR_IN * to, uint16 trip, uint16 ID_A, uint16 
 	unsigned char buffer[PINGER_UDP_PING_SIZE];
 	piUDPPing udpPing;
 	int rcode;
-	int iLastError;
 
 	assert(to != NULL);
 	assert((trip >= 1) && (trip <= 3));
@@ -298,11 +325,13 @@ static PINGERBool piSendPing(SOCKADDR_IN * to, uint16 trip, uint16 ID_A, uint16 
 	// Send the outgoing ping.
 	//////////////////////////
 	rcode = sendto(piSocket, (char *)buffer, PINGER_UDP_PING_SIZE, 0, (SOCKADDR *)to, sizeof(SOCKADDR_IN));
+
 	// Did it send ok?
 	//////////////////
 	if(rcode != PINGER_UDP_PING_SIZE)
 	{
-		iLastError = WSAGetLastError();
+		int error = GOAGetLastError(piSocket);
+
 		return PINGERFalse;
 	}
 
@@ -371,7 +400,7 @@ static PINGERBool piSocketInit(const char * localAddress,
 	piSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 	if(piSocket == INVALID_SOCKET)
 	{
-		iLastError = WSAGetLastError();
+		iLastError = GOAGetLastError(piSocket);
 		assert(0);
 		return PINGERFalse;
 	}
@@ -379,10 +408,8 @@ static PINGERBool piSocketInit(const char * localAddress,
 	// Allow reuse of the socket if not closed properly before.
 	///////////////////////////////////////////////////////////
 	bFlag = 1;
-#ifndef INSOCK   // PS2 INSOCK network layer does not support reuse addr
 	rcode = setsockopt(piSocket, SOL_SOCKET, SO_REUSEADDR, (const char*)&bFlag, sizeof(bFlag) );
-#endif
-	/*if(gsiSocketIsError(rcode))
+	/*if(SOCKET_ERROR == rcode)
 	{
 		iLastError = WSAGetLastError();
 		assert(0);
@@ -392,9 +419,9 @@ static PINGERBool piSocketInit(const char * localAddress,
 	// Bind the socket.
 	///////////////////
 	rcode = bind(piSocket, (SOCKADDR *)&sockaddr, sizeof(SOCKADDR_IN));
-	if (gsiSocketIsError(rcode))
+	if(rcode == SOCKET_ERROR)
 	{
-		iLastError = WSAGetLastError();
+		iLastError = GOAGetLastError(piSocket);
 		assert(0);
 		return PINGERFalse;
 	}
@@ -432,10 +459,10 @@ static void piQueueCallback
 	/////////////////
 	if(data)
 	{
-		callback.data = (char *)malloc((unsigned int)len);
+		callback.data = (char *)gsimalloc(len);
 		if(!callback.data)
 			return;
-		memcpy(callback.data, data, (unsigned int)len);
+		memcpy(callback.data, data, len);
 	}
 	else
 	{
@@ -456,7 +483,7 @@ static void piCallCallbacks(void)
 	{
 		// Get the info.
 		////////////////
-		callback = (piQueuedCallback *)ArrayNth(piCallbacks, 0);
+		callback = ArrayNth(piCallbacks, 0);
 		assert(callback);
 		if(!callback)
 			return;
@@ -476,7 +503,7 @@ static void piCallCallbacks(void)
 
 		// gsifree it.
 		///////////
-		free(callback->data);
+		gsifree(callback->data);
 	}
 }
 
@@ -493,9 +520,7 @@ PINGERBool pingerInit(const char * localAddress,
 
 	// Make sure the UDP ping size is at least as large as the protocol struct.
 	///////////////////////////////////////////////////////////////////////////
-#if !defined(_NITRO)
 	assert(PINGER_UDP_PING_SIZE >= sizeof(piUDPPing));
-#endif
 
 	// Check if we're already intialized.
 	/////////////////////////////////////
@@ -514,7 +539,7 @@ PINGERBool pingerInit(const char * localAddress,
 	piPingerSetData = setData;
 	piPingerSetDataParam = setDataParam;
 	piSettingData = PINGERFalse;
-	piUDPEnabled = (PINGERBool)(localPort != 0);
+	piUDPEnabled = (localPort != 0);
 	piNextID = 1;
 	piLastThinkTime = 0;
 
@@ -604,7 +629,7 @@ void pingerShutdown(void)
 	piInitialized = PINGERFalse;
 }
 
-static int GS_STATIC_CALLBACK piFindActivePingCompareFn(const void *elem1, const void *elem2)
+static int piFindActivePingCompareFn(const void *elem1, const void *elem2)
 {
 	piActivePing * activePing1 = (piActivePing *)elem1;
 	piActivePing * activePing2 = (piActivePing *)elem2;
@@ -635,16 +660,16 @@ static piActivePing * piFindActivePing(uint16 ID, int * index)
 
 	// Found it!
 	////////////
-	return (piActivePing *)ArrayNth(piActivePingList, n);
+	return ArrayNth(piActivePingList, n);
 }
 
-static int piCalculatePing(gsi_time sendTime, gsi_time recvTime)
+static int piCalculatePing(unsigned long sendTime, unsigned long recvTime)
 {
 	int ping;
 
 	// Simple ping calculation.
 	///////////////////////////
-	ping = (int)(recvTime - sendTime);
+	ping = (recvTime - sendTime);
 
 	// Take off some time based on the last time we called
 	// the think function.
@@ -659,17 +684,15 @@ static int piCalculatePing(gsi_time sendTime, gsi_time recvTime)
 	return ping;
 }
 
-static void piProcessTrip1(piUDPPing * udpPing, const char * data, SOCKADDR_IN * from, gsi_time recvTime)
+static void piProcessTrip1(piUDPPing * udpPing, const char * data, SOCKADDR_IN * from, unsigned long recvTime)
 {
 	char dataOut[PI_DATA_MAX_LEN];
 	uint16 ID;
 
 	// Validity check.
-	// udpPing->ID_A != 0 was triggered by a ping
-	// from 213.105.94.117 sometime during 7/3-7/02
-	///////////////////////////////////////////////
+	//////////////////
 	assert(udpPing->trip == 1);
-	//assert(udpPing->ID_A != 0);
+	assert(udpPing->ID_A != 0);
 	if(udpPing->ID_A == 0)
 		return;
 	assert(udpPing->ID_B == 0);
@@ -727,12 +750,9 @@ static void piProcessTrip1(piUDPPing * udpPing, const char * data, SOCKADDR_IN *
 		//////////////////////
 		ArrayAppend(piActivePingList, &activePing);
 	}
-	
-	GSI_UNUSED(data);
-	GSI_UNUSED(recvTime);
 }
 
-static void piProcessTrip2(piUDPPing * udpPing, const char * data, SOCKADDR_IN * from, gsi_time recvTime)
+static void piProcessTrip2(piUDPPing * udpPing, const char * data, SOCKADDR_IN * from, unsigned long recvTime)
 {
 	char dataOut[PI_DATA_MAX_LEN];
 	int index;
@@ -791,7 +811,7 @@ static void piProcessTrip2(piUDPPing * udpPing, const char * data, SOCKADDR_IN *
 	ArrayDeleteAt(piActivePingList, index);
 }
 
-static void piProcessTrip3(piUDPPing * udpPing, const char * data, SOCKADDR_IN * from, gsi_time recvTime)
+static void piProcessTrip3(piUDPPing * udpPing, const char * data, SOCKADDR_IN * from, unsigned long recvTime)
 {
 	int index;
 	piActivePing * activePing;
@@ -831,7 +851,7 @@ static void piProcessTrip3(piUDPPing * udpPing, const char * data, SOCKADDR_IN *
 	ArrayDeleteAt(piActivePingList, index);
 }
 
-static void piProcessPing(piUDPPing * udpPing, const char * data, SOCKADDR_IN * from, gsi_time recvTime)
+static void piProcessPing(piUDPPing * udpPing, const char * data, SOCKADDR_IN * from, unsigned long recvTime)
 {
 	assert(udpPing != NULL);
 	assert(data != NULL);
@@ -850,63 +870,64 @@ static void piProcessPing(piUDPPing * udpPing, const char * data, SOCKADDR_IN * 
 static void piProcessIncoming(void)
 {
 	int rcode;
+	PINGERBool readFlag;
 	unsigned char buffer[PINGER_UDP_PING_SIZE];
 	SOCKADDR_IN from;
 	int len;
-	gsi_time recvTime;
+	unsigned long recvTime;
 	piUDPPing udpPing;
 	char data[PI_DATA_MAX_LEN];
-	PINGERBool readFlag;
 	
 	// Check for incoming dgrams.
 	/////////////////////////////
 	do
 	{
+		// Check for any waiting dgrams.
+		////////////////////////////////
 		piSocketSelect(&readFlag, NULL, NULL);
-		if(!readFlag)
-			continue;
-
-		// Read the dgram.
-		//////////////////
-		len = sizeof(SOCKADDR_IN);
-
-		rcode = recvfrom(piSocket, (char *)buffer, PINGER_UDP_PING_SIZE, 0, (SOCKADDR *)&from, &len);
-
-		// Check for an error.
-		//////////////////////
-		if (gsiSocketIsError(rcode))
+		if(readFlag)
 		{
-			if(WSAGetLastError() == WSAEMSGSIZE)
+			// Read the dgram.
+			//////////////////
+			len = sizeof(SOCKADDR_IN);
+			rcode = recvfrom(piSocket, (char *)buffer, PINGER_UDP_PING_SIZE, 0, (SOCKADDR *)&from, &len);
+
+			// Check for an error.
+			//////////////////////
+			if(rcode == SOCKET_ERROR)
 			{
-				// Ignore "too big" errors.
-				///////////////////////////
-				rcode = PINGER_UDP_PING_SIZE;
+				if(GOAGetLastError(piSocket) == WSAEMSGSIZE)
+				{
+					// Ignore "too big" errors.
+					///////////////////////////
+					rcode = PINGER_UDP_PING_SIZE;
+				}
+				else
+				{
+					// Something's wrong, get the hell out of here!
+					///////////////////////////////////////////////
+					return; //ERRCON
+				}
 			}
-			else
+			else if(rcode < PINGER_UDP_PING_SIZE)
 			{
-				// Something's wrong, get the hell out of here!
-				///////////////////////////////////////////////
-				return; //ERRCON
+				// The ping was too small.
+				//////////////////////////
+				return;  //ERRCON
 			}
-		}
-		else if(rcode < PINGER_UDP_PING_SIZE)
-		{
-			// The ping was too small.
-			//////////////////////////
-			return;  //ERRCON
-		}
 
-		// What time did we receive it?
-		///////////////////////////////
-		recvTime = current_time();
+			// What time did we receive it?
+			///////////////////////////////
+			recvTime = current_time();
 
-		// Convert the buffer into a ping.
-		//////////////////////////////////
-		if(piBytesToPing(buffer, &udpPing, data))
-		{
-			// Process the dgram.
-			/////////////////////
-			piProcessPing(&udpPing, data, &from, recvTime);
+			// Convert the buffer into a ping.
+			//////////////////////////////////
+			if(piBytesToPing(buffer, &udpPing, data))
+			{
+				// Process the dgram.
+				/////////////////////
+				piProcessPing(&udpPing, data, &from, recvTime);
+			}
 		}
 	}
 	while(piInitialized && readFlag);
@@ -918,7 +939,7 @@ static void piProcessIncoming(void)
 
 static void piCheckTimeouts(void)
 {
-	gsi_time now;
+	unsigned long now;
 	piActivePing * activePing;
 	int len;
 	int n;
@@ -1002,7 +1023,7 @@ void pingerPing(unsigned int IP,
 				pingerGotPing reply,
 				void * replyParam,
 				PINGERBool blocking,
-				gsi_time timeout)
+				unsigned long timeout)
 {
 	SOCKADDR_IN to;
 	uint16 ID;

@@ -3,8 +3,12 @@ GameSpy Peer SDK
 Dan "Mr. Pants" Schoenblum
 dan@gamespy.com
 
-Copyright 1999-2007 GameSpy Industries, Inc
+Copyright 1999-2001 GameSpy Industries, Inc
 
+18002 Skypark Circle
+Irvine, California 92614
+949.798.4200 (Tel)
+949.798.4299 (Fax)
 devsupport@gamespy.com
 */
 
@@ -21,31 +25,27 @@ devsupport@gamespy.com
 #include "peerMangle.h"
 #include "peerRooms.h"
 #include "peerPlayers.h"
-#include "peerKeys.h"
-#include "peerSB.h"
-#include "peerHost.h"
-#include "peerAutoMatch.h"
-#include "peerQR.h"
-#include "../md5.h"
+#include "peerCEngine.h"
+#if defined(applec) || defined(THINK_C) || defined(__MWERKS__) && !defined(__KATANA__) && !defined(__mips64)
+	#include "::md5.h"
+#else
+	#include "../md5.h"
+#endif
 
 /************
 ** DEFINES **
 ************/
-#define PI_CHAT_SERVER_ADDRESS    "peerchat." GSI_DOMAIN_NAME
+#define PI_CHAT_SERVER_ADDRESS    "peerchat.gamespy.com"
 #define PI_CHAT_SERVER_PORT       6667
 
-#define PEER_CONNECTION_OP        piOperation * operation = (piOperation *)param;\
-                                  piConnection * connection = NULL;\
-                                  PEER peer = NULL;\
-                                  assert(operation && operation->peer);\
-                                  if(operation && operation->peer)\
-                                      peer = operation->peer;\
-                                  connection = (piConnection *)peer;\
-								  GSI_UNUSED(connection);
+#define PEER_CONNECTION_OP        piConnection * connection;\
+                                  PEER peer;\
+                                  assert(operation);\
+								  assert(operation->peer);\
+								  peer = operation->peer;\
+                                  connection = (piConnection *)peer;
 #if 0
-// for Visual Assist
-PEER peer;
-piOperation * operation;
+PEER peer; // for Visual Assist
 #endif
 
 /**********
@@ -56,75 +56,65 @@ typedef struct piOperationContainer
 	piOperation * operation;
 } piOperationContainer;
 
+/***************
+** PROTOTYPES **
+***************/
+static void piOperationsListFree(void *elem1);
+
+static int piRemoveCompareCallback
+(
+ const void *elem1,
+ const void *elem2
+);
+
+static int piIsOperationFinishedCompareCallback
+(
+	const void *elem1,
+	const void *elem2
+);
+
+static piOperation * piAddOperation
+(
+	PEER peer,
+	piOperationType type,
+	void * data,
+	void * callback,
+	void * callbackParam,
+	int opID
+);
+
+static void piConnectConnectCallback
+(
+	CHAT chat,
+	CHATBool success,
+	void *param
+);
+
+static void piConnectNickErrorCallback
+(
+	CHAT chat,
+	int type,
+	const char * nick,
+	void *param
+);
+
+static void piConnectFillInUserCallback
+(
+	CHAT chat,
+	unsigned int IP,
+	char user[128],
+	void * param
+);
+
 /**************
 ** FUNCTIONS **
 **************/
-#ifndef GSI_UNICODE
-#define piGetGlobalKeysCallback		piGetGlobalKeysCallbackA
-#define piGetChannelKeysCallback	piGetChannelKeysCallbackA
-#define piGetPlayerInfoCallback		piGetPlayerInfoCallbackA
-#define piConnectNickErrorCallback	piConnectNickErrorCallbackA
-#define piConnectFillInUserCallback	piConnectFillInUserCallbackA
-#define piCreateStagingRoomEnumUsersCallback piCreateStagingRoomEnumUsersCallbackA
-#define piCreateStagingRoomEnterChannelCallback piCreateStagingRoomEnterChannelCallbackA
-#define piJoinRoomEnumUsersCallback piJoinRoomEnumUsersCallbackA
-#define piJoinRoomEnterChannelCallback piJoinRoomEnterChannelCallbackA
-#define piChangeNickCallback		piChangeNickCallbackA
-#define piAuthenticateCDKeyCallback piAuthenticateCDKeyCallbackA
-#else
-#define piGetGlobalKeysCallback		piGetGlobalKeysCallbackW
-#define piGetChannelKeysCallback	piGetChannelKeysCallbackW
-#define piGetPlayerInfoCallback		piGetPlayerInfoCallbackW
-#define piConnectNickErrorCallback	piConnectNickErrorCallbackW
-#define piConnectFillInUserCallback	piConnectFillInUserCallbackW
-#define piCreateStagingRoomEnumUsersCallback piCreateStagingRoomEnumUsersCallbackW
-#define piCreateStagingRoomEnterChannelCallback piCreateStagingRoomEnterChannelCallbackW
-#define piJoinRoomEnumUsersCallback piJoinRoomEnumUsersCallbackW
-#define piJoinRoomEnterChannelCallback piJoinRoomEnterChannelCallbackW
-#define piChangeNickCallback		piChangeNickCallbackW
-#define piAuthenticateCDKeyCallback piAuthenticateCDKeyCallbackW
-#endif
-
-static void piOperationsListFree(void *elem1)
-{
-	piOperationContainer * container = (piOperationContainer *)elem1;
-	piOperation * operation;
-
-	assert(container);
-	assert(container->operation);
-
-	operation = container->operation;
-
-	// Free the name.
-	/////////////////
-	gsifree(operation->name);
-
-	// Free the password.
-	/////////////////////
-	gsifree(operation->password);
-
-	// Free the user data.
-	//////////////////////
-	gsifree(operation->data);
-
-	// Close the socket if needed.
-	//////////////////////////////
-	if(operation->socketClose)
-	{
-		closesocket(operation->socket);
-		SocketShutDown();
-	}
-
-	// Free the operation.
-	//////////////////////
-	gsifree(operation);
-}
-
-PEERBool piOperationsInit(PEER peer)
+PEERBool piOperationsInit
+(
+	PEER peer
+)
 {
 	PEER_CONNECTION;
-
-	assert(!connection->operationList);
 
 	// Init data.
 	/////////////
@@ -140,21 +130,33 @@ PEERBool piOperationsInit(PEER peer)
 	return PEERTrue;
 }
 
-void piOperationsReset(PEER peer)
+static void piOperationsListFree(void *elem1)
 {
-	PEER_CONNECTION;
+	piOperationContainer * container = (piOperationContainer *)elem1;
+	piOperation * operation;
 
-	// Clear the list.
-	//////////////////
-	if(connection->operationList)
-		ArrayClear(connection->operationList);
-	
-	// Clear the listingGroupsOperation 
-	if (connection->listingGroupsOperation)
-		connection->listingGroupsOperation = NULL;
+	assert(container);
+	assert(container->operation);
+
+	operation = container->operation;
+
+	// gsifree the name.
+	/////////////////
+	gsifree(operation->name);
+
+	// gsifree the user data.
+	//////////////////////
+	gsifree(operation->data);
+
+	// gsifree the operation.
+	//////////////////////
+	gsifree(operation);
 }
 
-void piOperationsCleanup(PEER peer)
+void piOperationsCleanup
+(
+	PEER peer
+)
 {
 	PEER_CONNECTION;
 
@@ -162,142 +164,155 @@ void piOperationsCleanup(PEER peer)
 	////////////////////
 	if(connection->operationList)
 		ArrayFree(connection->operationList);
-	connection->operationList = NULL;
 }
 
-void piRemoveOperation(PEER peer, piOperation * operation)
+void piRemoveOperation
+(
+	PEER peer,
+	piOperation * operation
+)
 {
-	piOperationContainer * container;
-	piOperation * op;
-	int i;
-	int count;
+	piOperationContainer container;
+	int index;
 
 	PEER_CONNECTION;
 
-	// Make sure there is a list.
-	/////////////////////////////
-	if(!connection->operationList)
+	// Find this operation.
+	///////////////////////
+	container.operation = operation;
+	index = ArraySearch(connection->operationList, &container, piRemoveCompareCallback, 0, 0);
+	if(index == NOT_FOUND)
 		return;
 
-	// Loop through the operations.
-	///////////////////////////////
-	count = ArrayLength(connection->operationList);
-	for(i = 0 ; i < count ; i++)
-	{
-		// Get the operation.
-		/////////////////////
-		container = (piOperationContainer *)ArrayNth(connection->operationList, i);
-		op = container->operation;
+	// Remove it.
+	/////////////
+	ArrayDeleteAt(connection->operationList, index);
 
-		// Check the op.
-		////////////////
-		if(op == operation)
-		{
-			// Remove it.
-			/////////////
-			ArrayDeleteAt(connection->operationList, i);
-
-			// One more finished.
-			/////////////////////
-			connection->operationsFinished++;
-
-			return;
-		}
-	}
+	// One more finished.
+	/////////////////////
+	connection->operationsFinished++;
 }
 
-PEERBool piIsOperationFinished(PEER peer, int opID)
+static int piRemoveCompareCallback
+(
+ const void *elem1,
+ const void *elem2
+)
 {
-	piOperationContainer * container;
-	piOperation * op;
-	int i;
-	int count;
+	piOperationContainer * container1 = (piOperationContainer *)elem1;
+	piOperationContainer * container2 = (piOperationContainer *)elem2;
+	assert(container1);
+	assert(container2);
+
+	return (container1->operation - container2->operation);
+}
+
+PEERBool piIsOperationFinished
+(
+	PEER peer,
+	int opID
+)
+{
+	piOperationContainer container;
+	piOperation operation;
+	int index;
 
 	PEER_CONNECTION;
 
-	// Make sure there is a list.
-	/////////////////////////////
-	if(!connection->operationList)
-		return PEERTrue;
+	// Find this operation.
+	///////////////////////
+	container.operation = &operation;
+	operation.ID = opID;
+	index = ArraySearch(connection->operationList, &container, piIsOperationFinishedCompareCallback, 0, 0);
 
-	// Loop through the operations.
-	///////////////////////////////
-	count = ArrayLength(connection->operationList);
-	for(i = 0 ; i < count ; i++)
+	// Did we find it?
+	//////////////////
+	return (index == NOT_FOUND);
+}
+
+static int piIsOperationFinishedCompareCallback
+(
+	const void *elem1,
+	const void *elem2
+)
+{
+	piOperationContainer * container1 = (piOperationContainer *)elem1;
+	piOperationContainer * container2 = (piOperationContainer *)elem2;
+	assert(container1);
+	assert(container2);
+	assert(container1->operation);
+	assert(container2->operation);
+
+	return (container1->operation->ID - container2->operation->ID);
+}
+
+/***************
+** OPERATIONS **
+***************/
+
+/* Connect.
+**********/
+PEERBool piNewConnectOperation
+(
+	PEER peer,
+	const char * nick,
+	const char * user,
+	const char * serverAddress,
+	int port,
+	peerConnectCallback callback,
+	void * callbackParam,
+	int opID
+)
+{
+	piOperation * operation;
+	chatGlobalCallbacks globalCallbacks;
+	const char * uniqueID;
+	char encodedUniqueID[33];
+
+	PEER_CONNECTION;
+
+	assert(nick);
+	assert(nick[0]);
+	assert(callback);
+
+	// Add an operation.
+	////////////////////
+	operation = piAddOperation(peer, PI_CONNECT_OPERATION, NULL, callback, callbackParam, opID);
+	if(!operation)
+		return PEERFalse;
+
+	// Setup the global callbacks.
+	//////////////////////////////
+	memset(&globalCallbacks, 0, sizeof(chatGlobalCallbacks));
+	globalCallbacks.disconnected = piChatDisconnected;
+	globalCallbacks.privateMessage = piChatPrivateMessage;
+	globalCallbacks.param = peer;
+
+	// Encode the unique ID.
+	////////////////////////
+	uniqueID = GOAGetUniqueID();
+	MD5Digest((unsigned char *)uniqueID, strlen(uniqueID), encodedUniqueID);
+
+	// Connect to chat.
+	///////////////////
+	connection->chat = chatConnectSpecial(
+		serverAddress,
+		port,
+		nick,
+		user,
+		&globalCallbacks,
+		connection->nickErrorCallback ? piConnectNickErrorCallback : NULL,
+		piConnectFillInUserCallback,
+		piConnectConnectCallback,
+		operation,
+		CHATFalse);
+	if(!connection->chat)
 	{
-		// Get the operation.
-		/////////////////////
-		container = (piOperationContainer *)ArrayNth(connection->operationList, i);
-		op = container->operation;
-
-		// Check the ID.
-		////////////////
-		if(op->ID == opID)
-			return PEERFalse;
+		piRemoveOperation(peer, operation);
+		return PEERFalse;
 	}
 
 	return PEERTrue;
-}
-
-void piCancelJoinOperation(PEER peer, RoomType roomType)
-{
-	piOperationContainer * container;
-	piOperation * operation;
-	int i;
-	int count;
-
-	PEER_CONNECTION;
-
-	// Make sure there is a list.
-	/////////////////////////////
-	if(!connection->operationList)
-		return;
-
-	// Loop through the operations.
-	///////////////////////////////
-	count = ArrayLength(connection->operationList);
-	for(i = 0 ; i < count ; i++)
-	{
-		// Get the operation.
-		/////////////////////
-		container = (piOperationContainer *)ArrayNth(connection->operationList, i);
-		operation = container->operation;
-
-		// Is it a join or create?
-		//////////////////////////
-		if((operation->type == PI_JOIN_ROOM_OPERATION) || (operation->type == PI_CREATE_ROOM_OPERATION))
-		{
-			// Is it the same room?
-			///////////////////////
-			if(operation->roomType == roomType)
-			{
-				// Cancel the operation.
-				////////////////////////
-				operation->cancel = PEERTrue;
-
-				return;
-			}
-		}
-	}
-}
-
-int piGetNextID(PEER peer)
-{
-	int ID;
-
-	PEER_CONNECTION;
-
-	// Get the ID.
-	//////////////
-	ID = connection->nextID;
-
-	// Increment.
-	/////////////
-	connection->nextID++;
-	if(connection->nextID < 0)
-		connection->nextID = 0;
-
-	return ID;
 }
 
 static piOperation * piAddOperation
@@ -305,7 +320,7 @@ static piOperation * piAddOperation
 	PEER peer,
 	piOperationType type,
 	void * data,
-	PEERCBType callback,
+	void * callback,
 	void * callbackParam,
 	int opID
 )
@@ -315,13 +330,8 @@ static piOperation * piAddOperation
 
 	PEER_CONNECTION;
 
-	//assert(type >= 0);
+	assert(type >= 0);
 	assert(type < PI_NUM_OPERATION_TYPES);
-
-	// Make sure there is a list.
-	/////////////////////////////
-	if(!connection->operationList)
-		return NULL;
 
 	// Alloc the operaiton.
 	///////////////////////
@@ -353,32 +363,15 @@ static piOperation * piAddOperation
 	return operation;
 }
 
-/***************
-** OPERATIONS **
-***************/
-
-/* Connect.
-**********/
 static void piConnectConnectCallback
 (
 	CHAT chat,
 	CHATBool success,
-	int failureReason,
 	void *param
 )
 {
+	piOperation * operation = (piOperation *)param;
 	PEER_CONNECTION_OP;
-	
-	// If successful, try and do the connect title stuff.
-	/////////////////////////////////////////////////////
-	if(success)
-	{
-		if(!piConnectTitle(peer))
-		{
-			piDisconnectTitle(peer);
-			success = CHATFalse;
-		}
-	}
 
 	// Connection attempt finished.
 	///////////////////////////////
@@ -387,23 +380,9 @@ static void piConnectConnectCallback
 
 	if(success)
 	{
-		const char * nick;
-
 		// Setup server pinging.
 		////////////////////////
 		connection->lastChatPing = current_time();
-		
-		// Check the nick.
-		//////////////////
-		nick = chatGetNickA(chat);
-		if(strcasecmp(connection->nick, nick) != 0)
-		{
-			strcpy(connection->nick, nick);
-
-#ifdef GSI_UNICODE
-			UTF8ToUCS2String(connection->nick, connection->nick_W);
-#endif
-		}
 	}
 	else
 	{
@@ -414,56 +393,30 @@ static void piConnectConnectCallback
 
 	// Add the callback.
 	////////////////////
-	piAddConnectCallback(peer, (PEERBool)success, failureReason, (peerConnectCallback)operation->callback, operation->callbackParam, operation->ID);
+	piAddConnectCallback(peer, success, operation->callback, operation->callbackParam, operation->ID);
 
 	// Remove the operation.
 	////////////////////////
 	piRemoveOperation(peer, operation);
 }
 
-static void piConnectNickErrorCallbackA
+static void piConnectNickErrorCallback
 (
 	CHAT chat,
 	int type,
 	const char * nick,
-	int numSuggestedNicks,
-	const char ** suggestedNicks,
 	void *param
 )
 {
+	piOperation * operation = (piOperation *)param;
 	PEER_CONNECTION_OP;
 
 	// Add the peer callback.
 	/////////////////////////
-	piAddNickErrorCallback(peer, type, nick, numSuggestedNicks, suggestedNicks, operation->callbackParam, operation->ID);
-	
-	GSI_UNUSED(chat);
+	piAddNickErrorCallback(peer, type, nick, operation->callbackParam, operation->ID);
 }
-#ifdef GSI_UNICODE
-static void piConnectNickErrorCallbackW
-(
-	CHAT chat,
-	int type,
-	const unsigned short * nick,
-	int numSuggestedNicks,
-	const unsigned short ** suggestedNicks,
-	void *param
-)
-{
-	char* nick_A = UCS2ToUTF8StringAlloc(nick);
-	char** suggestedNicks_A = UCS2ToUTF8StringArrayAlloc(suggestedNicks, numSuggestedNicks);
-	int i;
-	piConnectNickErrorCallbackA(chat, type, nick_A, numSuggestedNicks, (const char**)suggestedNicks_A, param);
-	gsifree(nick_A);
-	if(suggestedNicks_A)
-	{
-		for (i=0; i<numSuggestedNicks; i++)
-			gsifree(suggestedNicks_A[i]);
-	}
-}
-#endif
 
-static void piConnectFillInUserCallbackA
+static void piConnectFillInUserCallback
 (
 	CHAT chat,
 	unsigned int IP,
@@ -471,210 +424,16 @@ static void piConnectFillInUserCallbackA
 	void * param
 )
 {
-	int pid;
-
+	piOperation * operation = (piOperation *)param;
 	PEER_CONNECTION_OP;
 
-	// 2004.Sep.17.JED - For reasons unknown, in the span of one month Arcade's automated
-	//   crash handling system reported +15 null pointer crashes when publicIP was stored.
-	//////////////////////////////////////////////////////////////////////////////////////
-	if( !connection )
-		return;
-
-	// Store the public IP.
-	///////////////////////
-	connection->publicIP = IP;
-
-	// If chat has a pid, override ours.
-	////////////////////////////////////
-	pid = chatGetProfileID(connection->chat);
-	if(pid)
-		connection->profileID = pid;
-
-	// Mangle the IP and pid into the user.
-	///////////////////////////////////////
-	piMangleUser(user, connection->publicIP, connection->profileID);
-	
-	GSI_UNUSED(chat);
-}
-#ifdef GSI_UNICODE
-static void piConnectFillInUserCallbackW
-(
-	CHAT chat,
-	unsigned int IP,
-	unsigned short user[128], // OUT parameter!!
-	void * param
-)
-{
-	// This one is reversed! Call the callback, THEN convert
-	char user_A[256];
-	piConnectFillInUserCallbackA(chat, IP, user_A, param);
-	UTF8ToUCS2String(user_A, user);
-}
-#endif
-
-PEERBool piNewConnectOperation
-(
-	PEER peer,
-	piConnectType connectType,
-	const char * nick,
-	int namespaceID,
-	const char * email,
-	const char * profilenick,
-	const char * uniquenick,
-	const char * password,
-	const char * authtoken,
-	const char * partnerchallenge,
-	peerConnectCallback callback,
-	void * callbackParam,
-	int opID
-)
-{
-	piOperation * operation;
-	chatGlobalCallbacks globalCallbacks;
-	const char * uniqueID;
-	char encodedUniqueID[33];
-	peerNickErrorCallback nickErrorCallback;
-
-	PEER_CONNECTION;
-
-	assert(callback);
-
-#ifdef _DEBUG
-	if(connectType == PI_CONNECT)
-	{
-		assert(nick && nick[0]);
-	}
-	else if(connectType == PI_CONNECT_UNIQUENICK_LOGIN)
-	{
-		assert(namespaceID > 0);
-		assert(uniquenick && uniquenick[0]);
-		assert(password && password[0]);
-	}
-	else if(connectType == PI_CONNECT_PROFILENICK_LOGIN)
-	{
-		assert(namespaceID >= 0);
-		assert(email && email[0]);
-		assert(profilenick && profilenick[0]);
-		assert(password && password[0]);
-	}
-	else if(connectType == PI_CONNECT_PREAUTH)
-	{
-		assert(authtoken && authtoken[0]);
-		assert(partnerchallenge && partnerchallenge[0]);
-	}
-#endif
-
-	// Add an operation.
-	////////////////////
-	operation = piAddOperation(peer, PI_CONNECT_OPERATION, NULL, (PEERCBType)callback, callbackParam, opID);
-	if(!operation)
-		return PEERFalse;
-
-	// Setup the global callbacks.
-	//////////////////////////////
-	memset(&globalCallbacks, 0, sizeof(chatGlobalCallbacks));
-	globalCallbacks.disconnected = piChatDisconnected;
-	globalCallbacks.privateMessage = piChatPrivateMessage;
-	globalCallbacks.param = peer;
-
-	// Encode the unique ID.
-	////////////////////////
-	uniqueID = GOAGetUniqueID();
-	MD5Digest((unsigned char *)uniqueID, strlen(uniqueID), encodedUniqueID);
-
-	// Connect to chat.
-	///////////////////
-	nickErrorCallback = (connection->nickErrorCallback ? piConnectNickErrorCallback : NULL);
-	if(connectType == PI_CONNECT)
-	{
-		connection->chat = chatConnectSecureA(
-			PI_CHAT_SERVER_ADDRESS,
-			PI_CHAT_SERVER_PORT,
-			nick,
-			encodedUniqueID,
-			connection->sbName,
-			connection->sbSecretKey,
-			&globalCallbacks,
-			nickErrorCallback,
-			piConnectFillInUserCallback,
-			piConnectConnectCallback,
-			operation,
-			CHATFalse);
-	}
-	else if((connectType == PI_CONNECT_UNIQUENICK_LOGIN) || (connectType == PI_CONNECT_PROFILENICK_LOGIN))
-	{
-		connection->chat = chatConnectLoginA(
-			PI_CHAT_SERVER_ADDRESS,
-			PI_CHAT_SERVER_PORT,
-			namespaceID,
-			email,
-			profilenick,
-			uniquenick,
-			password,
-			encodedUniqueID,
-			connection->sbName,
-			connection->sbSecretKey,
-			&globalCallbacks,
-			nickErrorCallback,
-			piConnectFillInUserCallback,
-			piConnectConnectCallback,
-			operation,
-			CHATFalse);
-	}
-	else if(connectType == PI_CONNECT_PREAUTH)
-	{
-		connection->chat = chatConnectPreAuthA(
-			PI_CHAT_SERVER_ADDRESS,
-			PI_CHAT_SERVER_PORT,
-			authtoken,
-			partnerchallenge,
-			encodedUniqueID,
-			connection->sbName,
-			connection->sbSecretKey,
-			&globalCallbacks,
-			nickErrorCallback,
-			piConnectFillInUserCallback,
-			piConnectConnectCallback,
-			operation,
-			CHATFalse);
-	}
-	if(!connection->chat)
-	{
-		piRemoveOperation(peer, operation);
-		return PEERFalse;
-	}
-
-	return PEERTrue;
+	connection->IP = IP;
+	piMangleUser(user, connection->IP, connection->profileID);
 }
 
 /* Create Staging Room.
 **********************/
-static PEERJoinResult piEnterResultToJoinResult
-(
-	CHATEnterResult result
-)
-{
-	switch(result)
-	{
-	case CHATEnterSuccess:
-		return PEERJoinSuccess;
-	case CHATChannelIsFull:
-		return PEERFullRoom;
-	case CHATInviteOnlyChannel:
-		return PEERInviteOnlyRoom;
-	case CHATBannedFromChannel:
-		return PEERBannedFromRoom;
-	case CHATBadChannelPassword:
-		return PEERBadPassword;
-	default:
-		break;
-	}
-
-	return PEERJoinFailed;
-}
-
-static void piCreateStagingRoomEnumUsersCallbackA
+static void piCreateStagingRoomEnumUsersCallback
 (
 	CHAT chat,
 	CHATBool success,
@@ -683,227 +442,20 @@ static void piCreateStagingRoomEnumUsersCallbackA
 	const char ** users,
 	int * modes,
 	void *param
-)
-{
-	PEER_CONNECTION_OP;
+);
 
-	// Check if this was cancelled.
-	///////////////////////////////
-	if(operation->cancel)
-	{
-		piRemoveOperation(peer, operation);
-		return;
-	}
-
-	// Start hosting/reporting.
-	///////////////////////////
-	if(success)
-	{
-		if(!peerIsAutoMatching(peer))
-		{
-			if(!piStartHosting(peer, operation->socket, operation->port))
-				success = CHATFalse;
-			else
-			{
-				// If we created the socket, hand over responsibility for it to qr2.
-				////////////////////////////////////////////////////////////////////
-				if(operation->socketClose)
-				{
-					operation->socketClose = PEERFalse;
-					connection->queryReporting->read_socket = 1;
-				}
-			}
-		}
-		else
-		{
-			connection->hosting = PEERTrue;
-		}
-	}
-
-	// Do stuff based on success.
-	/////////////////////////////
-	if(success)
-	{
-		int i;
-
-		// Done entering.
-		/////////////////
-		piFinishedEnteringRoom(peer, StagingRoom, operation->name);
-
-		// Add everyone to the room.
-		////////////////////////////
-		for(i = 0 ; i < numUsers ; i++)
-			piPlayerJoinedRoom(peer, users[i], StagingRoom, modes[i]);
-
-		// Set the name.
-		////////////////
-		chatSetChannelTopicA(connection->chat, channel, operation->name);
-
-		// Set a limit on the room.
-		///////////////////////////
-#ifndef PI_NO_STAGING_ROOM_LIMIT
-		if(connection->maxPlayers)
-			chatSetChannelLimitA(connection->chat, channel, connection->maxPlayers);
-#endif
-
-		// If this is AutoMatch, and we created a socket, hand it over.
-		///////////////////////////////////////////////////////////////
-		if(operation->socketClose && peerIsAutoMatching(peer))
-		{
-			connection->autoMatchOperation->socket = operation->socket;
-			connection->autoMatchOperation->port = operation->port;
-			connection->autoMatchOperation->socketClose = PEERTrue;
-			operation->socketClose = PEERFalse;
-		}
-	}
-	else
-	{
-		// Leave the room.
-		//////////////////
-		piLeaveRoom(peer, StagingRoom, NULL);
-	}
-
-	// Add the callback.
-	////////////////////
-	piAddJoinRoomCallback(peer, (PEERBool)success, success?PEERJoinSuccess:PEERJoinFailed, StagingRoom, (peerJoinRoomCallback)operation->callback, operation->callbackParam, operation->ID);
-
-	// Remove the operation.
-	////////////////////////
-	piRemoveOperation(peer, operation);
-	
-	GSI_UNUSED(chat);
-}
-#ifdef GSI_UNICODE
-static void piCreateStagingRoomEnumUsersCallbackW
+static void piCreateStagingRoomEnterChannelCallback
 (
 	CHAT chat,
 	CHATBool success,
-	const unsigned short * channel,
-	int numUsers,
-	const unsigned short ** users,
-	int * modes,
-	void *param
-)
-{
-	char* channel_A = UCS2ToUTF8StringAlloc(channel);
-	char** users_A = UCS2ToUTF8StringArrayAlloc(users, numUsers);
-	int i;
-	piCreateStagingRoomEnumUsersCallbackA(chat, success, channel_A, numUsers, (const char**)users_A, modes, param);
-	gsifree(channel_A);
-	for (i=0; i<numUsers; i++)
-		gsifree(users_A[i]);
-	gsifree(users_A);
-}
-#endif
-
-
-static void piCreateStagingRoomGetChannelModeCallback(CHAT chat, CHATBool success, const gsi_char * channel, 
-	CHATChannelMode * mode, void * param)
-{
-	piConnection *connection = (piConnection *)param;
-	if (success)
-	{
-
-		mode->Limit = connection->maxPlayers;
-		mode->OpsObeyChannelLimit = CHATTrue;
-		
-		// Don't let ops bypass channel limit on the number of players in room
-		chatSetChannelMode(chat, channel, mode);
-	}
-	
-}
-
-
-static void piCreateStagingRoomEnterChannelCallbackA
-(
-	CHAT chat,
-	CHATBool success,
-	CHATEnterResult result,
 	const char * channel,
 	void *param
-)
-{	
-	PEER_CONNECTION_OP;
-
-	assert(channel);
-	assert(channel[0]);
-
-	// Check if this was cancelled.
-	///////////////////////////////
-	if(operation->cancel)
-	{
-		piRemoveOperation(peer, operation);
-		return;
-	}
-
-	if(success)
-	{
-		// If passworded, set it.
-		/////////////////////////
-		if(operation->password)
-			chatSetChannelPasswordA(connection->chat, channel, CHATTrue, operation->password);
-
-		
-		// get the channel modes so we can set the limits on our staging channel
-		chatGetChannelMode(connection->chat, peerGetRoomChannel(peer, StagingRoom), piCreateStagingRoomGetChannelModeCallback, 
-				(void *)connection, CHATFalse);
-
-		
-		// How many users?
-		//////////////////
-		chatEnumUsersA(chat, channel, piCreateStagingRoomEnumUsersCallback, operation, CHATFalse);
-	}
-	else
-	{
-		PEERJoinResult joinResult;
-
-		// Not entering.
-		////////////////
-		piLeaveRoom(peer, StagingRoom, NULL);
-
-		// Get the peer result.
-		///////////////////////
-		if(result == CHATEnterSuccess)
-			joinResult = PEERJoinFailed;
-		else
-			joinResult = piEnterResultToJoinResult(result);
-
-		// Add the callback.
-		////////////////////
-		piAddJoinRoomCallback(peer, PEERFalse, joinResult, StagingRoom, (peerJoinRoomCallback)operation->callback, operation->callbackParam, operation->ID);
-
-		// Remove the operation.
-		////////////////////////
-		piRemoveOperation(peer, operation);
-	}
-}
-#ifdef GSI_UNICODE
-static void piCreateStagingRoomEnterChannelCallbackW
-(
-	CHAT chat,
-	CHATBool success,
-	CHATEnterResult result,
-	const unsigned short * channel,
-	void *param
-)
-{
-	char* channel_A = UCS2ToUTF8StringAlloc(channel);
-	piCreateStagingRoomEnterChannelCallbackA(chat, success, result, channel_A, param);
-	gsifree(channel_A);
-}
-#endif
-
-// internal QR2 function
-qr2_error_t qr2_create_socket(/*[out]*/SOCKET *sock, const char *ip, /*[in/out]*/int * port);
+);
 
 PEERBool piNewCreateStagingRoomOperation
 (
 	PEER peer,
 	const char * name,
-	const char * password,
-	int maxPlayers,
-	SOCKET socket,
-	unsigned short port,
 	peerJoinRoomCallback callback,
 	void * callbackParam,
 	int opID
@@ -912,7 +464,6 @@ PEERBool piNewCreateStagingRoomOperation
 	piOperation * operation;
 	chatChannelCallbacks channelCallbacks;
 	char room[PI_ROOM_MAX_LEN];
-	PEERBool createdSocket = PEERFalse;
 
 	PEER_CONNECTION;
 
@@ -924,54 +475,22 @@ PEERBool piNewCreateStagingRoomOperation
 	if(!callback)
 		return PEERFalse;
 
-	// Save off the maxplayers.
-	///////////////////////////
-	connection->maxPlayers = maxPlayers;
-
-	// If we don't have a socket, create one to use.
-	////////////////////////////////////////////////
-	if(socket == INVALID_SOCKET)
-	{
-		IN_ADDR addr;
-		qr2_error_t rcode;
-		int privatePort;
-
-		addr.s_addr =  0;//crt -- don't bind to privateIP (for clients that have both public and private)  connection->privateIP;
-		if(port)
-			privatePort = port;
-		else
-			privatePort = PI_QUERYPORT;
-
-		rcode = qr2_create_socket(&socket, inet_ntoa(addr), &privatePort);
-		if(rcode != e_qrnoerror)
-			return PEERFalse;
-
-		port = (unsigned short)privatePort;
-		createdSocket = PEERTrue;
-	}
-
 	// Get the room name.
 	/////////////////////
-	piMangleStagingRoom(room, connection->title, connection->publicIP, connection->privateIP, port);
+	piMangleStagingRoom(room, connection->title, connection->IP);
 	assert(room[0]);
 
 	// Add the operation.
 	/////////////////////
-	operation = piAddOperation(peer, PI_CREATE_ROOM_OPERATION, NULL, (PEERCBType)callback, callbackParam, opID);
+	operation = piAddOperation(peer, PI_CREATE_ROOM_OPERATION, NULL, callback, callbackParam, opID);
 	if(!operation)
 		return PEERFalse;
-	operation->socketClose = createdSocket;
-	operation->name = goastrdup(name);
+	operation->name = _strdup(name);
 	if(!operation->name)
 	{
 		piRemoveOperation(peer, operation);
 		return PEERFalse;
 	}
-	operation->socket = socket;
-	operation->port = port;
-	operation->roomType = StagingRoom;
-	if(password[0])
-		operation->password = goastrdup(password);
 
 	// Set the callbacks.
 	/////////////////////
@@ -980,19 +499,305 @@ PEERBool piNewCreateStagingRoomOperation
 	// Create the room.
 	///////////////////
 	piStartedEnteringRoom(peer, StagingRoom, room);
-	chatEnterChannelA(connection->chat, room, NULL, &channelCallbacks, piCreateStagingRoomEnterChannelCallback, operation, CHATFalse);
-
-	// Store passworded flag if needed.
-	///////////////////////////////////
-	if(password[0])
-		connection->passwordedRoom = PEERTrue;
+	chatEnterChannel(connection->chat, room, NULL, &channelCallbacks, piCreateStagingRoomEnterChannelCallback, operation, CHATFalse);
 
 	return PEERTrue;
 }
 
+static void piCreateStagingRoomEnterChannelCallback
+(
+	CHAT chat,
+	CHATBool success,
+	const char * channel,
+	void *param
+)
+{
+	piOperation * operation = (piOperation *)param;
+	PEERBool callCallback = PEERTrue;
+
+	PEER_CONNECTION_OP;
+
+	assert(channel);
+	assert(channel[0]);
+
+	// Check for cancel.
+	////////////////////
+	if(connection->cancelJoinRoom[StagingRoom])
+	{
+		// Failed.
+		//////////
+		success = CHATFalse;
+		callCallback = connection->cancelJoinRoomError[StagingRoom];
+
+		// Clear the flag.
+		//////////////////
+		connection->cancelJoinRoom[StagingRoom] = PEERFalse;
+		connection->cancelJoinRoomError[StagingRoom] = PEERFalse;
+	}
+
+	if(success)
+	{
+		// How many users?
+		//////////////////
+		chatEnumUsers(chat, channel, piCreateStagingRoomEnumUsersCallback, operation, CHATFalse);
+	}
+	else
+	{
+		// Not entering.
+		////////////////
+		piLeaveRoom(peer, StagingRoom);
+
+		// Add the callback.
+		////////////////////
+		if(callCallback)
+			piAddJoinRoomCallback(peer, PEERFalse, StagingRoom, operation->callback, operation->callbackParam, operation->ID);
+
+		// Remove the operation.
+		////////////////////////
+		piRemoveOperation(peer, operation);
+	}
+}
+
+static void piCreateStagingRoomEnumUsersCallback
+(
+	CHAT chat,
+	CHATBool success,
+	const char * channel,
+	int numUsers,
+	const char ** users,
+	int * modes,
+	void *param
+)
+{
+	piOperation * operation = (piOperation *)param;
+	PEERBool callCallback = PEERTrue;
+
+	PEER_CONNECTION_OP;
+
+	// Check for cancel.
+	////////////////////
+	if(connection->cancelJoinRoom[StagingRoom])
+	{
+		// Failed.
+		//////////
+		callCallback = connection->cancelJoinRoomError[StagingRoom];
+		success = CHATFalse;
+
+		// Clear the flag.
+		//////////////////
+		connection->cancelJoinRoom[StagingRoom] = PEERFalse;
+		connection->cancelJoinRoomError[StagingRoom] = PEERFalse;
+	}
+
+	// We should be the only one in the room, and an op.
+	////////////////////////////////////////////////////
+	if(success && ((numUsers != 1) || (modes[0] != CHAT_OP)))
+		success = CHATFalse;
+
+	// Setup GOA.
+	/////////////
+	if(success && !piStartHosting(peer))
+		success = CHATFalse;
+
+	// Do stuff based on success.
+	/////////////////////////////
+	if(success)
+	{
+		CHATChannelMode mode;
+
+		// Done entering.
+		/////////////////
+		piFinishedEnteringRoom(peer, StagingRoom, operation->name);
+
+		// Add us to the room.
+		//////////////////////
+		piPlayerJoinedRoom(peer, users[0], StagingRoom, PEERTrue);
+
+		// Set the name.
+		////////////////
+		chatSetChannelTopic(connection->chat, channel, operation->name);
+
+		// Set the password.
+		////////////////////
+		if(connection->password[0])
+			chatSetChannelPassword(connection->chat, channel, CHATTrue, connection->password);
+
+		// Set the mode.
+		////////////////
+		memset(&mode, 0, sizeof(CHATChannelMode));
+		mode.Secret = CHATTrue;
+		mode.Private = CHATTrue;
+		mode.NoExternalMessages = CHATTrue;
+		mode.OnlyOpsChangeTopic = CHATTrue;
+		mode.Limit = connection->maxPlayers;
+		chatSetChannelMode(connection->chat, channel, &mode);
+	}
+	else
+	{
+		// Leave the room.
+		//////////////////
+		piLeaveRoom(peer, StagingRoom);
+	}
+
+	// Add the callback.
+	////////////////////
+	if(callCallback)
+		piAddJoinRoomCallback(peer, (PEERBool)success, StagingRoom, operation->callback, operation->callbackParam, operation->ID);
+
+	// Remove the operation.
+	////////////////////////
+	piRemoveOperation(peer, operation);
+}
+
 /* Join Room.
 ************/
-static void piJoinRoomEnumUsersCallbackA
+static void piJoinRoomEnterChannelCallback
+(
+	CHAT chat,
+	CHATBool success,
+	const char * channel,
+	void *param
+);
+
+static void piJoinRoomEnumUsersCallback
+(
+	CHAT chat,
+	CHATBool success,
+	const char * channel,
+	int numUsers,
+	const char ** users,
+	int * modes,
+	void * param
+);
+
+static char * piGetGroupRoomName
+(
+	PEER peer
+);
+
+static void piGetBasicUserInfoCallback
+(
+	CHAT chat,
+	CHATBool success,
+	const char * nick,
+	const char * user,
+	const char * address,
+	void * param
+);
+
+PEERBool piNewJoinRoomOperation
+(
+	PEER peer,
+	RoomType roomType,
+	const char * channel,
+	peerJoinRoomCallback callback,
+	void * callbackParam,
+	int opID
+)
+{
+	piOperation * operation;
+	chatChannelCallbacks channelCallbacks;
+	const char * password;
+
+	PEER_CONNECTION;
+
+	ASSERT_ROOMTYPE(roomType);
+	assert(callback);
+
+	// Check that the name isn't too long.
+	//////////////////////////////////////
+	assert(strlen(channel) < PI_ROOM_MAX_LEN);
+	if(strlen(channel) >= PI_ROOM_MAX_LEN)
+		return PEERFalse;
+
+	// Check the name.
+	//////////////////
+	assert(channel);
+	assert(channel[0]);
+	if(!channel || !channel[0])
+		return PEERFalse;
+
+	// Add the operation.
+	/////////////////////
+	operation = piAddOperation(peer, PI_JOIN_ROOM_OPERATION, NULL, callback, callbackParam, opID);
+	if(!operation)
+		return PEERFalse;
+	operation->roomType = roomType;
+
+	// Set the callbacks.
+	/////////////////////
+	piSetChannelCallbacks(peer, &channelCallbacks);
+
+	// Set the password for staging rooms.
+	//////////////////////////////////////
+	if((roomType == StagingRoom) && connection->password[0])
+		password = connection->password;
+	else
+		password = NULL;
+
+	// Join the room.
+	/////////////////
+	piStartedEnteringRoom(peer, roomType, channel);
+	chatEnterChannel(connection->chat, channel, password, &channelCallbacks, piJoinRoomEnterChannelCallback, operation, CHATFalse);
+
+	return PEERTrue;
+}
+
+static void piJoinRoomEnterChannelCallback
+(
+	CHAT chat,
+	CHATBool success,
+	const char * channel,
+	void *param
+)
+{
+	piOperation * operation = (piOperation *)param;
+	PEERBool callCallback = PEERTrue;
+
+	PEER_CONNECTION_OP;
+
+	assert(channel);
+	assert(channel[0]);
+
+	// Check for cancel.
+	////////////////////
+	if(connection->cancelJoinRoom[operation->roomType])
+	{
+		// Failed.
+		//////////
+		success = CHATFalse;
+		callCallback = connection->cancelJoinRoomError[operation->roomType];
+
+		// Clear the flag.
+		//////////////////
+		connection->cancelJoinRoom[operation->roomType] = PEERFalse;
+		connection->cancelJoinRoomError[operation->roomType] = PEERFalse;
+	}
+
+	if(success)
+	{
+		// How many users?
+		//////////////////
+		chatEnumUsers(chat, channel, piJoinRoomEnumUsersCallback, operation, CHATFalse);
+	}
+	else
+	{
+		// Not entering.
+		////////////////
+		piLeaveRoom(peer, operation->roomType);
+
+		// Add the callback.
+		////////////////////
+		if(callCallback)
+			piAddJoinRoomCallback(peer, PEERFalse, operation->roomType, operation->callback, operation->callbackParam, operation->ID);
+
+		// Remove the operation.
+		////////////////////////
+		piRemoveOperation(peer, operation);
+	}
+}
+
+static void piJoinRoomEnumUsersCallback
 (
 	CHAT chat,
 	CHATBool success,
@@ -1002,15 +807,27 @@ static void piJoinRoomEnumUsersCallbackA
 	int * modes,
 	void * param
 )
-{	
+{
+	char * name;
+	piOperation * operation = (piOperation *)param;
+
+	PEERBool callCallback = PEERTrue;
+
 	PEER_CONNECTION_OP;
 
-	// Check if this was cancelled.
-	///////////////////////////////
-	if(operation->cancel)
+	// Check for cancel.
+	////////////////////
+	if(connection->cancelJoinRoom[operation->roomType])
 	{
-		piRemoveOperation(peer, operation);
-		return;
+		// Failed.
+		//////////
+		callCallback = connection->cancelJoinRoomError[operation->roomType];
+
+		// Clear the flag.
+		//////////////////
+		connection->cancelJoinRoom[operation->roomType] = PEERFalse;
+		success = CHATFalse;
+		connection->cancelJoinRoomError[operation->roomType] = PEERFalse;
 	}
 
 	// Check for success.
@@ -1019,179 +836,105 @@ static void piJoinRoomEnumUsersCallbackA
 	{
 		int i;
 
-		// Finished entering the room.
-		//////////////////////////////
-		piFinishedEnteringRoom(peer, operation->roomType, "");
-
 		// Add all these people to the room.
 		////////////////////////////////////
 		for(i = 0 ; i < numUsers ; i++)
-			piPlayerJoinedRoom(peer, users[i], operation->roomType, modes[i]);
+			piPlayerJoinedRoom(peer, users[i], operation->roomType, (modes[i] == CHAT_OP));
+
+		// Get everyone's IP and profile ID if we're pinging.
+		/////////////////////////////////////////////////////
+		if(connection->pingRoom[operation->roomType])
+			chatGetChannelBasicUserInfo(connection->chat, channel, piGetBasicUserInfoCallback, peer, CHATFalse);
+
+		// Send our info.
+		/////////////////
+		piSendInfo(peer, channel, PEERFalse, PEERTrue);
+
+		// Get the name.
+		////////////////
+		if(operation->roomType == GroupRoom)
+			name = piGetGroupRoomName(peer);
+		else
+			name = "";
+
+		// Finished entering the room.
+		//////////////////////////////
+		piFinishedEnteringRoom(peer, operation->roomType, name);
+
+		// If we just joined a group, list the group's games.
+		/////////////////////////////////////////////////////
+		if(connection->listingGames && (operation->roomType == GroupRoom))
+			piRestartListingGames(peer);
 	}
 	else
 	{
 		// Leave the room.
 		//////////////////
-		piLeaveRoom(peer, operation->roomType, NULL);
+		piLeaveRoom(peer, operation->roomType);
 	}
 
 	// Add the callback.
 	////////////////////
-	piAddJoinRoomCallback(peer, (PEERBool)success, success?PEERJoinSuccess:PEERJoinFailed, operation->roomType, (peerJoinRoomCallback)operation->callback, operation->callbackParam, operation->ID);
+	if(callCallback)
+		piAddJoinRoomCallback(peer, (PEERBool)success, operation->roomType, operation->callback, operation->callbackParam, operation->ID);
 
 	// Remove the operation.
 	////////////////////////
 	piRemoveOperation(peer, operation);
-	
-	GSI_UNUSED(chat);
-	GSI_UNUSED(channel);
 }
-#ifdef GSI_UNICODE
-static void piJoinRoomEnumUsersCallbackW
+
+static char * piGetGroupRoomName
 (
-	CHAT chat,
-	CHATBool success,
-	const unsigned short * channel,
-	int numUsers,
-	const unsigned short ** users,
-	int * modes,
-	void * param
+	PEER peer
 )
 {
-	char* channel_A = UCS2ToUTF8StringAlloc(channel);
-	char** users_A = UCS2ToUTF8StringArrayAlloc(users, numUsers);
 	int i;
-	piJoinRoomEnumUsersCallbackA(chat, success, channel_A, numUsers, (const char**)users_A, modes, param);
-	gsifree(channel_A);
-	for (i=0; i<numUsers; i++)
-		gsifree(users_A[i]);
-	gsifree(users_A);
-}
-#endif
-
-static void piJoinRoomEnterChannelCallbackA
-(
-	CHAT chat,
-	CHATBool success,
-	CHATEnterResult result,
-	const char * channel,
-	void *param
-)
-{	
-	PEER_CONNECTION_OP;
-
-	assert(channel);
-	assert(channel[0]);
-
-	// Check if this was cancelled.
-	///////////////////////////////
-	if(operation->cancel)
-	{
-		piSBFreeHostServer(peer);
-		piRemoveOperation(peer, operation);
-		return;
-	}
-
-	if(success)
-	{
-		// How many users?
-		//////////////////
-		chatEnumUsersA(chat, channel, piJoinRoomEnumUsersCallback, operation, CHATFalse);
-	}
-	else
-	{
-		PEERJoinResult joinResult;
-
-		// Not entering.
-		////////////////
-		piLeaveRoom(peer, operation->roomType, NULL);
-
-		// Get the peer result.
-		///////////////////////
-		if(result == CHATEnterSuccess)
-			joinResult = PEERJoinFailed;
-		else
-			joinResult = piEnterResultToJoinResult(result);
-
-		// Add the callback.
-		////////////////////
-		piAddJoinRoomCallback(peer, PEERFalse, joinResult, operation->roomType, (peerJoinRoomCallback)operation->callback, operation->callbackParam, operation->ID);
-
-		// Remove the operation.
-		////////////////////////
-		piRemoveOperation(peer, operation);
-	}
-}
-#ifdef GSI_UNICODE
-static void piJoinRoomEnterChannelCallbackW
-(
-	CHAT chat,
-	CHATBool success,
-	CHATEnterResult result,
-	const unsigned short * channel,
-	void *param
-)
-{
-	char* channel_A = UCS2ToUTF8StringAlloc(channel);
-	piJoinRoomEnterChannelCallbackA(chat, success, result, channel_A, param);
-	gsifree(channel_A);
-}
-#endif
-
-PEERBool piNewJoinRoomOperation
-(
-	PEER peer,
-	RoomType roomType,
-	const char * channel,
-	const char * password,
-	peerJoinRoomCallback callback,
-	void * callbackParam,
-	int opID
-)
-{
-	piOperation * operation;
-	chatChannelCallbacks channelCallbacks;
+	int count;
+	GServer server;
+	int id;
+	static char * noName = "(No Name)";
 
 	PEER_CONNECTION;
 
-	ASSERT_ROOMTYPE(roomType);
-	assert(callback);
+	// Go through the list of groups until we find the right one.
+	/////////////////////////////////////////////////////////////
+	count = ServerListCount(connection->groupList);
+	for(i = 0 ; i < count ; i++)
+	{
+		server = ServerListGetServer(connection->groupList, i);
+		id = ServerGetIntValue(server, "groupid", -1);
+		if(id == connection->groupID)
+			return ServerGetStringValue(server, "hostname", "noName");
+	}
 
-	// Check the name.
+	return noName;
+}
+
+static void piGetBasicUserInfoCallback
+(
+	CHAT chat,
+	CHATBool success,
+	const char * nick,
+	const char * user,
+	const char * address,
+	void * param
+)
+{
+	PEER peer = (PEER)param;
+	unsigned int IP;
+	int profileID;
+
+	if(!success)
+		return;
+
+	// Get the IP and profile ID.
+	/////////////////////////////
+	if(!piDemangleUser(user, &IP, &profileID))
+		return;
+
+	// Cache the info.
 	//////////////////
-	assert(channel);
-	assert(channel[0]);
-	if(!channel || !channel[0])
-		return PEERFalse;
-
-	// Check password.
-	//////////////////
-	if(!password)
-		password = "";
-
-	// Check that the name isn't too long.
-	//////////////////////////////////////
-	assert(strlen(channel) < PI_ROOM_MAX_LEN);
-	if(strlen(channel) >= PI_ROOM_MAX_LEN)
-		return PEERFalse;
-
-	// Add the operation.
-	/////////////////////
-	operation = piAddOperation(peer, PI_JOIN_ROOM_OPERATION, NULL, (PEERCBType)callback, callbackParam, opID);
-	if(!operation)
-		return PEERFalse;
-	operation->roomType = roomType;
-
-	// Set the callbacks.
-	/////////////////////
-	piSetChannelCallbacks(peer, &channelCallbacks);
-
-	// Join the room.
-	/////////////////
-	piStartedEnteringRoom(peer, roomType, channel);
-	chatEnterChannelA(connection->chat, channel, password, &channelCallbacks, piJoinRoomEnterChannelCallback, operation, CHATFalse);
-
-	return PEERTrue;
+	piSetPlayerIPAndProfileID(peer, nick, IP, profileID);
 }
 
 /* List Group Rooms.
@@ -1199,7 +942,6 @@ PEERBool piNewJoinRoomOperation
 PEERBool piNewListGroupRoomsOperation
 (
 	PEER peer,
-	const char * fields,
 	peerListGroupRoomsCallback callback,
 	void * param,
 	int opID
@@ -1213,18 +955,122 @@ PEERBool piNewListGroupRoomsOperation
 
 	// Add the operation.
 	/////////////////////
-	operation = connection->listingGroupsOperation = piAddOperation(peer, PI_LIST_GROUP_ROOMS_OPERATION, NULL, (PEERCBType)callback, param, opID);
+	operation = connection->listingGroupsOperation = piAddOperation(peer, PI_LIST_GROUP_ROOMS_OPERATION, NULL, callback, param, opID);
 	if(!operation)
 		return PEERFalse;
 
 	// Start the listing.
 	/////////////////////
-	return piSBStartListingGroups(peer, fields);
+	return piCEngineStartListingGroups(peer);
+}
+
+/* ListingGames.
+***************/
+static void piListingGamesEnterChannelCallback
+(
+	CHAT chat,
+	CHATBool success,
+	const char * channel,
+	void * param
+);
+
+PEERBool piNewListingGamesOperation
+(
+	PEER peer,
+	peerListingGamesCallback callback,
+	void * param
+)
+{
+	piOperation * operation;
+	chatChannelCallbacks callbacks;
+	int groupID;
+
+	PEER_CONNECTION;
+
+	assert(callback);
+	assert(!connection->listingGamesOperation);
+
+	// Add the operation.
+	/////////////////////
+	operation = connection->listingGamesOperation = piAddOperation(peer, PI_LIST_STAGING_ROOMS_OPERATION, NULL, callback, param, -1);
+	if(!operation)
+		return PEERFalse;
+
+	// Set the channel callbacks.
+	/////////////////////////////
+	memset(&callbacks, 0, sizeof(chatChannelCallbacks));
+	callbacks.param = peer;
+	callbacks.channelMessage = piListingGamesChannelMessage;
+	callbacks.kicked = piListingGamesChannelKicked;
+
+	// Join the updates room.
+	/////////////////////////
+	if(connection->inRoom[GroupRoom])
+		groupID = connection->groupID;
+	else
+		groupID = 0;
+	piMangleUpdatesRoom(connection->updatesRoom, connection->title, groupID);
+	chatEnterChannel(connection->chat, connection->updatesRoom, "", &callbacks, piListingGamesEnterChannelCallback, operation, CHATFalse);
+
+	return PEERTrue;
+}
+
+static void piListingGamesEnterChannelCallback
+(
+	CHAT chat,
+	CHATBool success,
+	const char * channel,
+	void * param
+)
+{
+	piOperation * operation = (piOperation *)param;
+	PEER_CONNECTION_OP;
+
+	// Check for a cancelled operation.
+	///////////////////////////////////
+	if(operation->cancel)
+	{
+		piRemoveOperation(peer, operation);
+		return;
+	}
+
+	// Start listing the servers.
+	/////////////////////////////
+	if(success && !piCEngineStartListingGames(peer))
+		success = CHATFalse;
+
+	// Check for success.
+	/////////////////////
+	if(success)
+	{
+		// We're listing games.
+		///////////////////////
+		connection->listingGames = PEERTrue;
+
+		// Clear the list.
+		//////////////////
+		piAddListingGamesCallback(peer, PEERTrue, NULL, NULL, PEERFalse, PEER_CLEAR, 0, operation->callback, operation->callbackParam);
+	}
+	else
+	{
+		// Leave the channel.
+		/////////////////////
+		chatLeaveChannel(connection->chat, channel);
+
+		// Add the callback.
+		////////////////////
+		piAddListingGamesCallback(peer, PEERFalse, NULL, NULL, PEERFalse, 0, 0, operation->callback, operation->callbackParam);
+
+		// Clear the operation.
+		///////////////////////
+		piRemoveOperation(peer, operation);
+		connection->listingGamesOperation = NULL;
+	}
 }
 
 /* Get Player Info.
 *******************/
-static void piGetPlayerInfoCallbackA
+void piGetPlayerInfoCallback
 (
 	CHAT chat,
 	CHATBool success,
@@ -1234,6 +1080,7 @@ static void piGetPlayerInfoCallbackA
 	void * param
 )
 {
+	piOperation * operation = (piOperation *)param;
 	int profileID = 0;
 	unsigned int IP = 0;
 
@@ -1252,7 +1099,7 @@ static void piGetPlayerInfoCallbackA
 		// Get the info.
 		////////////////
 		if(!piDemangleUser(user, &IP, &profileID))
-			success = CHATFalse;
+			success = PEERFalse;
 
 		// Cache the info.
 		//////////////////
@@ -1269,12 +1116,10 @@ static void piGetPlayerInfoCallbackA
 	////////////////////
 	if(operation->callback)
 	{
-		if(operation->type == PI_GET_PLAYER_INFO_OPERATION)
-			piAddGetPlayerInfoCallback(peer, (PEERBool)success, nick, IP, profileID, (peerGetPlayerInfoCallback)operation->callback, operation->callbackParam, operation->ID);
-		else if(operation->type == PI_GET_PROFILE_ID_OPERATION)
-			piAddGetPlayerProfileIDCallback(peer, (PEERBool)success, nick, profileID, (peerGetPlayerProfileIDCallback)operation->callback, operation->callbackParam, operation->ID);
+		if(operation->type == PI_GET_PROFILE_ID_OPERATION)
+			piAddGetPlayerProfileIDCallback(peer, success, nick, profileID, operation->callback, operation->callbackParam, operation->ID);
 		else if(operation->type == PI_GET_IP_OPERATION)
-			piAddGetPlayerIPCallback(peer, (PEERBool)success, nick, IP, (peerGetPlayerIPCallback)operation->callback, operation->callbackParam, operation->ID);
+			piAddGetPlayerIPCallback(peer, success, nick, IP, operation->callback, operation->callbackParam, operation->ID);
 		else
 			assert(0);
 	}
@@ -1282,58 +1127,6 @@ static void piGetPlayerInfoCallbackA
 	// Remove the operation.
 	////////////////////////
 	piRemoveOperation(peer, operation);
-	
-	GSI_UNUSED(chat);
-	GSI_UNUSED(address);
-}
-#ifdef GSI_UNICODE
-static void piGetPlayerInfoCallbackW
-(
-	CHAT chat,
-	CHATBool success,
-	const unsigned short * nick,
-	const unsigned short * user,
-	const unsigned short * address,
-	void * param
-)
-{
-	char* nick_A = UCS2ToUTF8StringAlloc(nick);
-	char* user_A = UCS2ToUTF8StringAlloc(user);
-	char* address_A = UCS2ToUTF8StringAlloc(address);
-	piGetPlayerInfoCallbackA(chat, success, nick_A, user_A, address_A, param);
-	gsifree(nick_A);
-	gsifree(user_A);
-	gsifree(address_A);
-}
-#endif
-
-PEERBool piNewGetPlayerInfoOperation
-(
-	PEER peer,
-	const char * nick,
-	peerGetPlayerInfoCallback callback,
-	void * param,
-	int opID
-)
-{
-	piOperation * operation;
-
-	PEER_CONNECTION;
-
-	assert(nick);
-	assert(nick[0]);
-
-	// Add the operation.
-	/////////////////////
-	operation = piAddOperation(peer, PI_GET_PLAYER_INFO_OPERATION, NULL, (PEERCBType)callback, param, opID);
-	if(!operation)
-		return PEERFalse;
-
-	// Get the user's info.
-	///////////////////////
-	chatGetBasicUserInfoA(connection->chat, nick, piGetPlayerInfoCallback, operation, CHATFalse);
-
-	return PEERTrue;
 }
 
 PEERBool piNewGetProfileIDOperation
@@ -1354,13 +1147,13 @@ PEERBool piNewGetProfileIDOperation
 
 	// Add the operation.
 	/////////////////////
-	operation = piAddOperation(peer, PI_GET_PROFILE_ID_OPERATION, NULL, (PEERCBType)callback, param, opID);
+	operation = piAddOperation(peer, PI_GET_PROFILE_ID_OPERATION, NULL, callback, param, opID);
 	if(!operation)
 		return PEERFalse;
 
 	// Get the user's info.
 	///////////////////////
-	chatGetBasicUserInfoA(connection->chat, nick, piGetPlayerInfoCallback, operation, CHATFalse);
+	chatGetBasicUserInfo(connection->chat, nick, piGetPlayerInfoCallback, operation, CHATFalse);
 
 	return PEERTrue;
 }
@@ -1383,20 +1176,20 @@ PEERBool piNewGetIPOperation
 
 	// Add the operation.
 	/////////////////////
-	operation = piAddOperation(peer, PI_GET_IP_OPERATION, NULL, (PEERCBType)callback, param, opID);
+	operation = piAddOperation(peer, PI_GET_IP_OPERATION, NULL, callback, param, opID);
 	if(!operation)
 		return PEERFalse;
 
 	// Get the user's info.
 	///////////////////////
-	chatGetBasicUserInfoA(connection->chat, nick, piGetPlayerInfoCallback, operation, CHATFalse);
+	chatGetBasicUserInfo(connection->chat, nick, piGetPlayerInfoCallback, operation, CHATFalse);
 
 	return PEERTrue;
 }
 
 /* Change Nick.
 **************/
-static void piChangeNickCallbackA
+void piChangeNickCallback
 (
 	CHAT chat,
 	CHATBool success,
@@ -1405,6 +1198,8 @@ static void piChangeNickCallbackA
 	void * param
 )
 {
+	piOperation * operation = (piOperation *)param;
+
 	PEER_CONNECTION_OP;
 
 	// Check for success.
@@ -1414,40 +1209,17 @@ static void piChangeNickCallbackA
 		// Update the nick locally.
 		///////////////////////////
 		strcpy(connection->nick, newNick);
-
-#ifdef GSI_UNICODE
-		UTF8ToUCS2String(connection->nick, connection->nick_W);
-#endif
 	}
 
 	// Add the callback.
 	////////////////////
 	if(operation->callback)
-		piAddChangeNickCallback(peer, (PEERBool)success, oldNick, newNick, (peerChangeNickCallback)operation->callback, operation->callbackParam, operation->ID);
+		piAddChangeNickCallback(peer, success, oldNick, newNick, operation->callback, operation->callbackParam, operation->ID);
 
 	// Remove the operation.
 	////////////////////////
 	piRemoveOperation(peer, operation);
-	
-	GSI_UNUSED(chat);
 }
-#ifdef GSI_UNICODE
-static void piChangeNickCallbackW
-(
-	CHAT chat,
-	CHATBool success,
-	const unsigned short * oldNick,
-	const unsigned short * newNick,
-	void * param
-)
-{
-	char* oldNick_A = UCS2ToUTF8StringAlloc(oldNick);
-	char* newNick_A = UCS2ToUTF8StringAlloc(newNick);
-	piChangeNickCallbackA(chat, success, oldNick_A, newNick_A, param);
-	gsifree(oldNick_A);
-	gsifree(newNick_A);
-}
-#endif
 
 PEERBool piNewChangeNickOperation
 (
@@ -1467,378 +1239,13 @@ PEERBool piNewChangeNickOperation
 
 	// Add the operation.
 	/////////////////////
-	operation = piAddOperation(peer, PI_CHANGE_NICK_OPERATION, NULL, (PEERCBType)callback, param, opID);
+	operation = piAddOperation(peer, PI_CHANGE_NICK_OPERATION, NULL, callback, param, opID);
 	if(!operation)
 		return PEERFalse;
 
 	// Change the nick.
 	///////////////////
-	chatChangeNickA(connection->chat, newNick, piChangeNickCallback, operation, CHATFalse);
-
-	return PEERTrue;
-}
-
-/* Get Global Keys.
-******************/
-static void piGetGlobalKeysCallbackA
-(
-	CHAT chat,
-	CHATBool success,
-	const char * user,
-	int num,
-	const char ** keys,
-	const char ** values,
-	void * param
-)
-{
-	int i;
-
-	PEER_CONNECTION_OP;
-
-	// Update the watch keys.
-	/////////////////////////
-	if(success && user)
-	{
-		for(i = 0 ; i < num ; i++)
-			piGlobalKeyChanged(peer, user, keys[i], values[i]);
-	}
-
-	// Add the callback.
-	////////////////////
-	if(operation->callback)
-		piAddGetGlobalKeysCallback(peer, (PEERBool)success, user, num, keys, values, (peerGetGlobalKeysCallback)operation->callback, operation->callbackParam, operation->ID);
-
-	// Remove the operation.
-	////////////////////////
-	if(!success || !user || !operation->num)
-		piRemoveOperation(peer, operation);
-
-	GSI_UNUSED(chat);
-}
-#ifdef GSI_UNICODE
-static void piGetGlobalKeysCallbackW
-(
-	CHAT chat,
-	CHATBool success,
-	const unsigned short * user,
-	int num,
-	const unsigned short ** keys,
-	const unsigned short ** values,
-	void * param
-)
-{
-	char* user_A = UCS2ToUTF8StringAlloc(user);
-	char** keys_A = UCS2ToUTF8StringArrayAlloc(keys, num);
-	char** values_A = UCS2ToUTF8StringArrayAlloc(values, num);
-	int i;
-	piGetGlobalKeysCallbackA(chat, success, user_A, num, (const char**)keys_A, (const char**)values_A, param);
-	gsifree(user_A);
-	for (i=0; i<num; i++)
-	{
-		gsifree(keys_A[i]);
-		if (values_A != NULL) // may be a NULL when getting keys for "*"
-			gsifree(values_A[i]);
-	}
-	gsifree(keys_A);
-	gsifree(values_A);
-}
-#endif
-
-PEERBool piNewGetGlobalKeysOperation
-(
-	PEER peer,
-	const char * target,
-	int num,
-	const char ** keys,
-	peerGetGlobalKeysCallback callback,
-	void * param,
-	int opID
-)
-{
-	piOperation * operation;
-
-	PEER_CONNECTION;
-
-	assert(target);
-	assert(num > 0);
-	assert(keys);
-
-	if(!target || !target[0])
-		return PEERFalse;
-	if(num <= 0)
-		return PEERFalse;
-
-	// Add the operation.
-	/////////////////////
-	operation = piAddOperation(peer, PI_GET_GLOBAL_KEYS_OPERATION, NULL, (PEERCBType)callback, param, opID);
-	if(!operation)
-		return PEERFalse;
-
-	// Use num as a flag for getting a whole channel.
-	/////////////////////////////////////////////////
-	operation->num = (target[0] == '#');
-
-	// Get the keys.
-	////////////////
-	chatGetGlobalKeysA(connection->chat, target, num, keys, piGetGlobalKeysCallback, operation, CHATFalse);
-
-	return PEERTrue;
-}
-
-/* Get Room Keys.
-****************/
-static void piGetChannelKeysCallbackA
-(
-	CHAT chat,
-	CHATBool success,
-	const char * channel,
-	const char * user,
-	int num,
-	const char ** keys,
-	const char ** values,
-	void * param
-)
-{
-	int i;
-
-	PEER_CONNECTION_OP;
-
-	// Update the watch keys.
-	/////////////////////////
-	if(success && user)
-	{
-		for(i = 0 ; i < num ; i++)
-			piRoomKeyChanged(peer, operation->roomType, user, keys[i], values[i]);
-	}
-
-	// Add the callback.
-	////////////////////
-	if(operation->callback)
-		piAddGetRoomKeysCallback(peer, (PEERBool)success, operation->roomType, user, num, keys, values, (peerGetRoomKeysCallback)operation->callback, operation->callbackParam, operation->ID);
-
-	// Remove the operation.
-	////////////////////////
-	if(!success || !user || !operation->num)
-		piRemoveOperation(peer, operation);
-
-	GSI_UNUSED(chat);
-	GSI_UNUSED(channel);
-}
-#ifdef GSI_UNICODE
-static void piGetChannelKeysCallbackW
-(
-	CHAT chat,
-	CHATBool success,
-	const unsigned short * channel,
-	const unsigned short * user,
-	int num,
-	const unsigned short ** keys,
-	const unsigned short ** values,
-	void * param
-)
-{
-	char* channel_A = UCS2ToUTF8StringAlloc(channel);
-	char* user_A = UCS2ToUTF8StringAlloc(user);
-	char** keys_A = UCS2ToUTF8StringArrayAlloc(keys, num);
-	char** values_A = UCS2ToUTF8StringArrayAlloc(values, num);
-	int i;
-	piGetChannelKeysCallbackA(chat, success, channel_A, user_A, num, (const char**)keys_A, (const char**)values_A, param);
-	gsifree(channel_A);
-	gsifree(user_A);
-	for (i=0; i<num; i++)
-	{
-		gsifree(keys_A[i]);
-		if (values_A != NULL) // may be a NULL when getting keys for "*"
-			gsifree(values_A[i]);
-	}
-	gsifree(keys_A);
-	gsifree(values_A);
-
-}
-#endif
-
-PEERBool piNewGetRoomKeysOperation
-(
-	PEER peer,
-	RoomType roomType,
-	const char * nick,
-	int num,
-	const char ** keys,
-	peerGetRoomKeysCallback callback,
-	void * param,
-	int opID
-)
-{
-	piOperation * operation;
-
-	PEER_CONNECTION;
-
-	ASSERT_ROOMTYPE(roomType);
-	assert(num >= 0);
-	assert(!num || keys);
-
-	if(num < 0)
-		return PEERFalse;
-	if((num > 0) && !keys)
-		return PEERFalse;
-
-	if(!ENTERING_ROOM && !IN_ROOM)
-		return PEERFalse;
-
-	// Add the operation.
-	/////////////////////
-	operation = piAddOperation(peer, PI_GET_ROOM_KEYS_OPERATION, NULL, (PEERCBType)callback, param, opID);
-	if(!operation)
-		return PEERFalse;
-	operation->roomType = roomType;
-
-	// Use num as a flag for getting a whole channel.
-	/////////////////////////////////////////////////
-	if(nick)
-		operation->num = (strcmp(nick, "*") == 0);
-	else
-		operation->num = 0;
-
-	// Get the keys.
-	////////////////
-	chatGetChannelKeysA(connection->chat, ROOM, nick, num, keys, piGetChannelKeysCallback, operation, CHATFalse);
-
-	return PEERTrue;
-}
-
-/* Authenticate CD Key
-*********************/
-static void piAuthenticateCDKeyCallbackA
-(
-	CHAT chat,
-	int result,
-	const char * message,
-	void * param
-)
-{
-
-	PEER_CONNECTION_OP;
-
-	// Add the callback.
-	////////////////////
-	if(operation->callback)
-		piAddAuthenticateCDKeyCallback(peer, result, message, (peerAuthenticateCDKeyCallback)operation->callback, operation->callbackParam, operation->ID);
-
-	// Remove the operation.
-	////////////////////////
-	piRemoveOperation(peer, operation);
-	
-	GSI_UNUSED(chat);
-}
-#ifdef GSI_UNICODE
-static void piAuthenticateCDKeyCallbackW
-(
-	CHAT chat,
-	int result,
-	const unsigned short * message,
-	void * param
-)
-{
-	char* message_A = UCS2ToUTF8StringAlloc(message);
-	piAuthenticateCDKeyCallbackA(chat, result, message_A, param);
-	gsifree(message_A);
-}
-#endif
-
-PEERBool piNewAuthenticateCDKeyOperation
-(
-	PEER peer,
-	const char * cdkey,
-	peerAuthenticateCDKeyCallback callback,
-	void * param,
-	int opID
-)
-{
-	piOperation * operation;
-
-	PEER_CONNECTION;
-
-	assert(cdkey);
-	assert(cdkey[0]);
-
-	// Add the operation.
-	/////////////////////
-	operation = piAddOperation(peer, PI_AUTHENTICATE_CDKEY_OPERATION, NULL, (PEERCBType)callback, param, opID);
-	if(!operation)
-		return PEERFalse;
-
-	// Check the CD key.
-	////////////////////
-	chatAuthenticateCDKeyA(connection->chat, cdkey, piAuthenticateCDKeyCallback, operation, CHATFalse);
-
-	return PEERTrue;
-}
-
-/* AutoMatch
-***********/
-PEERBool piNewAutoMatchOperation
-(
-	PEER peer,
-	SOCKET socket,
-	unsigned short port,
-	peerAutoMatchStatusCallback statusCallback,
-	peerAutoMatchRateCallback rateCallback,
-	void * param,
-	int opID
-)
-{
-	piOperation * operation;
-	PEERAutoMatchStatus status;
-
-	PEER_CONNECTION;
-
-	// Add the operation.
-	/////////////////////
-	operation = piAddOperation(peer, PI_AUTO_MATCH_OPERATION, NULL, (PEERCBType)statusCallback, param, opID);
-	if(!operation)
-		return PEERFalse;
-
-	// Store the second callback.
-	/////////////////////////////
-	operation->callback2 = (PEERCBType)rateCallback;
-
-	// Store the socket and port.
-	/////////////////////////////
-	operation->socket = socket;
-	operation->port = port;
-
-	// Track this op.
-	/////////////////
-	connection->autoMatchOperation = operation;
-
-	// Figure out which status to use.
-	//////////////////////////////////
-/*	if(connection->inRoom[StagingRoom])
-	{
-		if(connection->numPlayers[StagingRoom] <= 1)
-		{
-			if(connection->hosting)
-				status = PEERWaiting;
-			else
-				status = PEERStaging;
-		}
-		else if(connection->numPlayers[StagingRoom] >= connection->maxPlayers)
-		{
-			status = PEERReady;
-		}
-		else
-		{
-			status = PEERStaging;
-		}
-	}
-	else*/
-	{
-		status = PEERSearching;
-	}
-
-	// Set the status.
-	//////////////////
-	piSetAutoMatchStatus(peer, status);
+	chatChangeNick(connection->chat, newNick, piChangeNickCallback, operation, CHATFalse);
 
 	return PEERTrue;
 }

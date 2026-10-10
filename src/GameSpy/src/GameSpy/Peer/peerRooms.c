@@ -1,10 +1,14 @@
 /*
-GameSpy Peer SDK 
+GameSpy Peer SDK
 Dan "Mr. Pants" Schoenblum
 dan@gamespy.com
 
-Copyright 1999-2007 GameSpy Industries, Inc
+Copyright 1999-2001 GameSpy Industries, Inc
 
+18002 Skypark Circle
+Irvine, California 92614
+949.798.4200 (Tel)
+949.798.4299 (Fax)
 devsupport@gamespy.com
 */
 
@@ -18,11 +22,12 @@ devsupport@gamespy.com
 #include "peerPlayers.h"
 #include "peerMangle.h"
 #include "peerCallbacks.h"
-#include "peerKeys.h"
-#include "peerQR.h"
-#include "peerHost.h"
-#include "peerOperations.h"
-#include "peerSB.h"
+#include "peerGlobalCallbacks.h"
+
+/************
+** DEFINES **
+************/
+#define PI_QUERYPORT    6500
 
 /**************
 ** FUNCTIONS **
@@ -32,7 +37,7 @@ PEERBool piRoomsInit
 	PEER peer
 )
 {
-	int roomType;
+	RoomType roomType;
 
 	PEER_CONNECTION;
 
@@ -40,21 +45,13 @@ PEERBool piRoomsInit
 	//////////////
 	for(roomType = 0 ; roomType < NumRooms ; roomType++)
 	{
-		if(connection->stayInTitleRoom && ((RoomType)roomType == TitleRoom))
-			continue;
-
 		ROOM[0] = '\0';
 		NAME[0] = '\0';
 		ENTERING_ROOM = PEERFalse;
 		IN_ROOM = PEERFalse;
-		connection->oldFlags[roomType] = 0;
-
-#ifdef GSI_UNICODE
-		ROOM_W[0] = '\0';
-#endif
+		connection->cancelJoinRoom[roomType] = PEERFalse;
 	}
 	connection->groupID = 0;
-	connection->titleRoomChannel[0] = '\0';
 
 	return PEERTrue;
 }
@@ -64,7 +61,7 @@ void piRoomsCleanup
 	PEER peer
 )
 {
-	int roomType;
+	RoomType roomType;
 
 	PEER_CONNECTION;
 
@@ -72,23 +69,20 @@ void piRoomsCleanup
 	///////////////////////
 	for(roomType = 0 ; roomType < NumRooms ; roomType++)
 	{
-		if(connection->stayInTitleRoom && ((RoomType)roomType == TitleRoom))
-			continue;
-
 		// Are we in or entering the room?
 		//////////////////////////////////
-		if(IN_ROOM || ENTERING_ROOM)
+		if(ENTERING_ROOM || IN_ROOM)
 		{
 			// Leave it.
 			////////////
-			piLeaveRoom(peer, (RoomType)roomType, NULL);
+			piLeaveRoom(peer, roomType);
 		}
 		ROOM[0] = '\0';
-		NAME[0] = '\0';
 		ENTERING_ROOM = PEERFalse;
 		IN_ROOM = PEERFalse;
+		NAME[0] = '\0';
+		connection->cancelJoinRoom[roomType] = PEERFalse;
 	}
-	connection->titleRoomChannel[0] = '\0';
 }
 
 void piStartedEnteringRoom
@@ -117,13 +111,7 @@ void piStartedEnteringRoom
 	//////////////////
 	strcpy(ROOM, room);
 	ENTERING_ROOM = PEERTrue;
-	connection->oldFlags[roomType] = 0;
-
-#ifdef GSI_UNICODE
-	UTF8ToUCS2String(ROOM, ROOM_W);
-#endif
 }
-
 
 void piFinishedEnteringRoom
 (
@@ -152,50 +140,170 @@ void piFinishedEnteringRoom
 	ENTERING_ROOM = PEERFalse;
 	strzcpy(NAME, name, PI_NAME_MAX_LEN);
 
-#ifdef GSI_UNICODE
-	UTF8ToUCS2String(NAME, NAME_W);
-#endif
+	// Let everyone in the staging room know our info.
+	//////////////////////////////////////////////////
+	if(roomType == StagingRoom)
+		piSendInfo(peer, NULL, PEERFalse, PEERFalse);
+}
 
-	// Set the flags.
+PEERBool piStartHosting
+(
+	PEER peer
+)
+{
+	PEER_CONNECTION;
+
+	// Check that we're not hosting.
+	////////////////////////////////
+	assert(!connection->hosting);
+	if(connection->hosting)
+		return PEERFalse;
+
+	// Set states.
+	//////////////
+	connection->hosting = PEERTrue;
+	strcpy(connection->gamename, connection->title);
+	if(connection->inRoom[GroupRoom])
+		connection->reportingGroupID = connection->groupID;
+	else
+		connection->reportingGroupID = 0;
+
+	// Start reporting.
+	///////////////////
+	piStartReporting(peer);
+
+	return PEERTrue;
+}
+
+void piResetHosting
+(
+	PEER peer
+)
+{
+	PEER_CONNECTION;
+
+	// Check that we're hosting.
+	////////////////////////////
+	assert(connection->hosting);
+	if(!connection->hosting)
+		return;
+
+	// Reset.
+	/////////
+	assert(connection->queryReporting);
+	qr_send_statechanged(connection->queryReporting);
+}
+
+void piStopHosting
+(
+	PEER peer
+)
+{
+	PEER_CONNECTION;
+
+	// Check that we're hosting.
+	////////////////////////////
+	assert(connection->hosting);
+	if(!connection->hosting)
+		return;
+
+	// Stop reporting.
+	//////////////////
+	if(connection->reporting)
+		piStopReporting(peer);
+
+	// Reset states.
+	////////////////
+	connection->hosting = PEERFalse;
+	connection->playing = PEERFalse;
+	connection->ready = PEERFalse;
+
+	// Send our info.
 	/////////////////
-	piSetLocalFlags(peer);
+	piSendInfo(peer, NULL, PEERFalse, PEERFalse);
+}
 
-	// Refresh the watch keys for this room.
-	////////////////////////////////////////
-	piKeyCacheRefreshRoom(peer, roomType);
+PEERBool piStartReporting
+(
+	PEER peer
+)
+{
+	PEER_CONNECTION;
+
+	// Check that we're not reporting.
+	//////////////////////////////////
+	assert(!connection->reporting);
+	if(connection->reporting)
+		piStopReporting(peer);
+
+	// Init goa.
+	////////////
+	if(qr_init(&connection->queryReporting, NULL, PI_QUERYPORT, connection->title, connection->qrSecretKey,
+		piGOABasicCallback,
+		piGOAInfoCallback,
+		piGOARulesCallback,
+		piGOAPlayersCallback,
+		peer) != 0)
+	{
+		return PEERFalse;
+	}
+
+	// We're reporting.
+	///////////////////
+	connection->reporting = PEERTrue;
+
+	return PEERTrue;
+}
+
+void piStopReporting
+(
+	PEER peer
+)
+{
+	PEER_CONNECTION;
+
+	// Check that we're reporting.
+	//////////////////////////////
+	if(!connection->reporting)
+		return;
+
+	// Let the master know we're exiting.
+	/////////////////////////////////////
+	assert(connection->queryReporting);
+	connection->exiting = PEERTrue;
+	qr_send_statechanged(connection->queryReporting);
+
+	// Clean up GOA.
+	////////////////
+	qr_shutdown(connection->queryReporting);
+	connection->queryReporting = NULL;
+	connection->exiting = PEERFalse;
+	connection->reporting = PEERFalse;
 }
 
 void piLeaveRoom
 (
 	PEER peer,
-	RoomType roomType,
-	const char * reason
+	RoomType roomType
 )
 {
 	PEER_CONNECTION;
 
 	ASSERT_ROOMTYPE(roomType);
 
-	// Check that we're in/entering this room.
-	//////////////////////////////////////////
-	if(!ENTERING_ROOM && !IN_ROOM)
-		return;
-
 	assert(ROOM[0]);
 
-	// Are we entering?
-	///////////////////
-	if(ENTERING_ROOM)
+	// Check that we're in/entering this room.
+	//////////////////////////////////////////
+	if(!IN_ROOM && !ENTERING_ROOM)
 	{
-		// Cancel the operation.
-		////////////////////////
-		piCancelJoinOperation(peer, roomType);
+		assert(0);
+		return;
 	}
 
 	// Leave the channel.
 	/////////////////////
-	if(connection->connected)
-		chatLeaveChannelA(connection->chat, ROOM, reason);
+	chatLeaveChannel(connection->chat, ROOM);
 
 	// Clear all the players out of this room.
 	//////////////////////////////////////////
@@ -219,53 +327,40 @@ void piLeaveRoom
 	ROOM[0] = '\0';
 	NAME[0] = '\0';
 
-#ifdef GSI_UNICODE
-	ROOM_W[0] = '\0';
-#endif
-
-	// Clear the flags.
-	///////////////////
-	connection->oldFlags[roomType] = 0;
-
-	// Do roomtype specific stuff.
-	//////////////////////////////
+	// Staging room?
+	////////////////
 	if(roomType == StagingRoom)
 	{
-		// Stop hosting.
-		////////////////
-		piStopHosting(peer, PEERFalse);
+		// Hosting?
+		///////////
+		if(connection->hosting)
+		{
+			// Are we playing without reporting, or reporting?
+			//////////////////////////////////////////////////
+			if((connection->playing && !connection->reporting) || connection->reporting)
+			{
+				// Stop hosting.
+				////////////////
+				piStopHosting(peer);
+			}
+		}
 
-		// Stop reporting as long as we're not playing.
-		///////////////////////////////////////////////
-		if(!connection->playing)
-			piStopReporting(peer);
-
-		// No host server.
+		// No game server.
 		//////////////////
-		piSBFreeHostServer(peer);
+		connection->gameServer = NULL;
+
+		// No server IP.
+		////////////////
+		connection->serverIP = INADDR_NONE;
 
 		// Turn ready off.
 		//////////////////
 		connection->ready = PEERFalse;
 
-		// Clear passworded flag.
-		/////////////////////////
-		connection->passwordedRoom = PEERFalse;
-
-		// Set the flags.
+		// Send our info.
 		/////////////////
-		piSetLocalFlags(peer);
+		piSendInfo(peer, NULL, PEERFalse, PEERFalse);
 	}
-	else if(roomType == GroupRoom)
-	{
-		// Clear the group ID.
-		//////////////////////
-		connection->groupID = 0;
-	}
-
-	// Cleanse the key cache.
-	/////////////////////////
-	piKeyCacheCleanse(peer);
 }
 
 PEERBool piRoomToType
@@ -289,128 +384,4 @@ PEERBool piRoomToType
 	}
 
 	return PEERFalse;
-}
-
-void piSetLocalFlags
-(
-	PEER peer
-)
-{
-	char buffer[NumRooms][128];
-	char * titleRoom;
-	char * groupRoom;
-	char * stagingRoom;
-	const char * key = "b_flags";
-	int nFlags;
-
-	PEER_CONNECTION;
-	
-	if(!connection->connected)
-		return;
-
-	if(connection->inRoom[TitleRoom] || connection->enteringRoom[TitleRoom])
-		titleRoom = buffer[TitleRoom];
-	else
-		titleRoom = NULL;
-	if(connection->inRoom[GroupRoom] || connection->enteringRoom[GroupRoom])
-		groupRoom = buffer[GroupRoom];
-	else
-		groupRoom = NULL;
-	if(connection->inRoom[StagingRoom] || connection->enteringRoom[StagingRoom])
-		stagingRoom = buffer[StagingRoom];
-	else
-		stagingRoom = NULL;
-
-	// Check for staging room.
-	//////////////////////////
-	if(connection->inRoom[StagingRoom])
-	{
-		if(titleRoom)
-			*titleRoom++ = 's';
-		if(groupRoom)
-			*groupRoom++ = 's';
-		*stagingRoom++ = 's';
-
-		// Check for ready.
-		///////////////////
-		if(connection->ready)
-			*stagingRoom++ = 'r';
-
-		// Check for hosting.
-		/////////////////////
-		if(connection->hosting)
-			*stagingRoom++ = 'h';
-	}
-
-	// Check for playing.
-	/////////////////////
-	if(connection->playing)
-	{
-		if(titleRoom)
-			*titleRoom++ = 'g';
-		if(groupRoom)
-			*groupRoom++ = 'g';
-		if(stagingRoom)
-			*stagingRoom++ = 'g';
-	}
-
-	// Check for away.
-	//////////////////
-	if(connection->away)
-	{
-		if(titleRoom)
-			*titleRoom++ = 'a';
-		if(groupRoom)
-			*groupRoom++ = 'a';
-		if(stagingRoom)
-			*stagingRoom++ = 'a';
-	}
-
-	// Cap it off.
-	//////////////
-	if(titleRoom)
-	{
-		*titleRoom = '\0';
-		titleRoom = buffer[TitleRoom];
-	}
-	if(groupRoom)
-	{
-		*groupRoom = '\0';
-		groupRoom = buffer[GroupRoom];
-	}
-	if(stagingRoom)
-	{
-		*stagingRoom = '\0';
-		stagingRoom = buffer[StagingRoom];
-	}
-
-	// Set the keys.
-	////////////////
-	if(titleRoom)
-	{
-		nFlags = piParseFlags(titleRoom);
-		if(nFlags != connection->oldFlags[TitleRoom])
-		{
-			chatSetChannelKeysA(connection->chat, connection->rooms[TitleRoom], connection->nick, 1, &key, (const char **)&titleRoom);
-			connection->oldFlags[TitleRoom] = nFlags;
-		}
-	}
-	if(groupRoom)
-	{
-		nFlags = piParseFlags(groupRoom);
-		if(nFlags != connection->oldFlags[GroupRoom])
-		{
-			chatSetChannelKeysA(connection->chat, connection->rooms[GroupRoom], connection->nick, 1, &key, (const char **)&groupRoom);
-			connection->oldFlags[GroupRoom] = nFlags;
-		}
-	}
-	if(stagingRoom)
-	{
-		nFlags = piParseFlags(stagingRoom);
-		if(nFlags != connection->oldFlags[StagingRoom])
-		{
-			chatSetChannelKeysA(connection->chat, connection->rooms[StagingRoom], connection->nick, 1, &key, (const char **)&stagingRoom);
-			connection->oldFlags[StagingRoom] = nFlags;
-		}
-	}
 }

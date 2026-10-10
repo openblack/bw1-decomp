@@ -32,9 +32,6 @@ The following makes PROTOTYPES default to 0 if it has not already
   been defined with C compiler flags.
  */
 
-#ifndef _MD5_H_
-#define _MD5_H_
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -76,6 +73,4 @@ void MD5Print PROTO_LIST ((unsigned char [16], char[33]));
 void MD5Digest PROTO_LIST ((unsigned char *, unsigned int, char[33]));
 #ifdef __cplusplus
 }
-#endif
-
 #endif
