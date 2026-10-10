@@ -127,3 +127,8 @@ GPlayer* Field::GetPlayer()
 	}
 	return NULL;
 }
+
+bool32_t Field::IsField(Creature* creature)
+{
+	return true;
+}

@@ -74,3 +74,58 @@ float Creature::GetDefaultSpeedInMetres()
 {
 	return physical->field_0x3c;
 }
+
+uint32_t Creature::CallExitStateFunction(uint8_t state)
+{
+	return 1;
+}
+
+bool32_t Creature::IsActivityObjectWhichCompassionAppliesTo(Creature* creature)
+{
+	return true;
+}
+
+bool32_t Creature::IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature)
+{
+	return true;
+}
+
+bool32_t Creature::CanBeSleptNextToByCreature(Creature* param_1)
+{
+	return true;
+}
+
+bool32_t Creature::CanBeBefriendedByCreature(Creature* param_1)
+{
+	return true;
+}
+
+bool32_t Creature::CanBePlayedWithByCreature(Creature* param_1)
+{
+	return true;
+}
+
+bool32_t Creature::IsCreature(Creature* creature)
+{
+	return true;
+}
+
+bool32_t Creature::CanBeFrighteningToCreature(Creature* param_1)
+{
+	return true;
+}
+
+bool32_t Creature::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
+{
+	return true;
+}
+
+uint32_t Creature::CallEntryStateFunction(uint8_t current, uint8_t destination)
+{
+	return 1;
+}
+
+uint32_t Creature::CallEntryStateFunction(uint8_t state)
+{
+	return 1;
+}
