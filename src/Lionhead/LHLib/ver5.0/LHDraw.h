@@ -10,6 +10,13 @@ struct LHPixel16
 {
 	uint16_t value;
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	LHPixel16() {}
+	// BW1W120 0057ba90 BW1M119 0114b2f0 (LHCombined Release)
+	LHPixel16(LHColor color);
+
 	// BW1W120 00449650 BW1M119 0114d640 (LHCombined Release)
 	void Set(LHColor color);
 	// BW1W120 00521a90
@@ -45,6 +52,13 @@ public:
 	int Line24(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode, LHColor* drawBuffer,
 	           unsigned long pixelPitch);
 
+	// BW1W120 inlined BW1M119 inlined
+	int Line(long x0, long y0, long x1, long y1, LHColor color, unsigned long mode);
+
+	// BW1W120 0057af50 BW1M119 null
+	int Box(long left, long top, long right, long bottom, LHColor color);
+	// BW1W120 0057b010 BW1M119 null
+	int Box(long left, long top, long right, long bottom, LHColor color, unsigned long style);
 	// BW1W120 007e2810 BW1M119 011335e0 (LHCombined Release)
 	int Box16(long left, long top, long right, long bottom, LHPixel16 color);
 	// BW1W120 007e2880 BW1M119 01133510 (LHCombined Release)
@@ -60,6 +74,8 @@ public:
 	int EmbossedBox24(long left, long top, long right, long bottom, LHColor fillColor, LHColor edgeColor,
 	                  uint8_t lightDir, uint8_t bevelWidth, unsigned long style);
 
+	// BW1W120 inlined BW1M119 inlined
+	int Pixel(unsigned long x, unsigned long y, LHColor color, unsigned long mode);
 	// BW1W120 007ea0b0 BW1M119 01148bb0 (LHCombined Release)
 	int Pixel16(unsigned long x, unsigned long y, LHPixel16 color, unsigned long mode);
 	// BW1W120 007ea240 BW1M119 01148770 (LHCombined Release)
