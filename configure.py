@@ -123,6 +123,12 @@ parser.add_argument(
     help="builds equivalent (but non-matching) or modded objects",
 )
 parser.add_argument(
+    "--bugfix",
+    dest="bugfix",
+    action="store_true",
+    help="compile game code with fixes for bugs in the original game (non-matching)",
+)
+parser.add_argument(
     "--warn",
     dest="warn",
     type=str,
@@ -374,6 +380,8 @@ cflags_icc = [
 # libraries (Lionhead/, zlib/) were not. Black/ objects are declared with
 # GameCodeObject (below), which compiles them with these flags.
 cflags_gamecode = [*cflags_base, "/G6"]
+if args.bugfix:
+    cflags_gamecode.append("/DBUGFIX")
 # 1.00 was built with function-level linking: every function is its own COMDAT,
 # so the link folds identical bodies (/OPT:ICF) and drops unreferenced ones
 # (/OPT:REF, lld's default without /debug).
@@ -742,7 +750,9 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/GestureSystem.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystemData.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystemDataList.cpp"),
+            GameCodeObject(NonMatching, "Black/GestureSystemMatch.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystemResult.cpp"),
+            GameCodeObject(NonMatching, "Black/GestureSystemSamples.cpp"),
             GameCodeObject(NonMatching, "Black/GJPersistent.cpp"),
             GameCodeObject(Matching, "Black/GJProperty.cpp"),
             GameCodeObject(NonMatching, "Black/GJSpline.cpp"),

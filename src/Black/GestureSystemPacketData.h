@@ -9,6 +9,7 @@ struct GestureSystemPacketData
 	uint8_t  Gesture;
 	uint32_t field_0x4;
 	LHPoint  Position;
+	float    Size; /* 0x14 */
 
 	// BW1W120 inlined BW1M119 0101b560
 	void Clear()
