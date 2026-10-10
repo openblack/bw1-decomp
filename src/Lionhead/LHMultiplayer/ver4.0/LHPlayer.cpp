@@ -6,7 +6,7 @@
 #include <wchar.h>
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 
 inline unsigned char* LHNetEncodeULONG(unsigned char* buffer, unsigned long value)
 {

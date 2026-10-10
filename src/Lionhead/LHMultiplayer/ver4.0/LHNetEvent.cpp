@@ -6,7 +6,7 @@
 #include <string.h>
 
 #include "LHDynamicQueue.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetUtils.h"
 #include "LHPacketisableObject.h"
 

@@ -6,7 +6,7 @@
 
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
 #include <Lionhead/LHLog/ver4.0/LHLogger.h>
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetEvent.h"
 #include "LHPacket.h"
 #include "LHTransportInfo.h"

@@ -16,7 +16,7 @@
 #include "LHSession.h"
 #include "LHTransport.h"
 #include "LHNetUtils.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 
 typedef LHLinkedList<LHPacketisableObject*> LHPacketisableObjectList;
 typedef LHPacketisableObject* (*LHPacketisableObjectFactory)();

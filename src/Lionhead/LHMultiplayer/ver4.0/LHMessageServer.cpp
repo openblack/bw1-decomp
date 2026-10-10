@@ -11,7 +11,7 @@
 #include "LHConnection.h"
 #include "LHLobby.h"
 #include "LHMPServerStartInfo.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetEvent.h"
 #include "LHPacket.h"
 #include "LHPlayer.h"

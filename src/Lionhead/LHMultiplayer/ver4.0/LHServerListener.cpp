@@ -2,7 +2,7 @@
 #include "LHServerListener.h"
 
 #include "LHConnection.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetUser.h"
 #include "LHTCPServerListener.h"
 

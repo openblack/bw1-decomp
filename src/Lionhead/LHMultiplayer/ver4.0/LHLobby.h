@@ -129,7 +129,7 @@ public:
 	LH_USER_ID                          LastJoinUserID;                                    /* 0x108 */
 	LHLinkedList<LHLobbyServerChannel*> ServerChannels;                                    /* 0x10c */
 
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10068b48 BW1M119 013566c0 (LHCombined Release)
 	static bool GameRunning;
 	// BW1W120 10068b4c BW1M119 013566c4 (LHCombined Release)
@@ -204,7 +204,7 @@ public:
 	}
 	// BW1W120 10002cf0 BW1M119 010ed830 (LHCombined Release)
 	LHLobbyChannel* FindChannel(char* name) { return LHLobbyChannel::FindChannel(name, &Channels); }
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10002d10 BW1M119 inlined
 	static LHLocalLobbyInfo* FindLocalLobby(LHTransportInfo* transport_info)
 	{
@@ -227,7 +227,7 @@ public:
 	}
 	// BW1W120 10002db0 BW1M119 inlined
 	LH_USER_ID GetLastJoinUserID() { return LastJoinUserID; }
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10002dc0 BW1M119 inlined
 	bool32_t IsInternalLobbyConnection() { return this == InternalLobbyServerConnection; }
 #endif
@@ -235,7 +235,7 @@ public:
 	bool32_t IsGlobalLobbyConnection() { return GetConnectedUserID().IsGlobal(); }
 	// BW1W120 10002df0 BW1M119 inlined
 	unsigned long GetNumberOfChannels() { return Channels.count; }
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10002e00 BW1M119 inlined
 	static LHLobby* GetInternalLobbyServerConnection() { return InternalLobbyServerConnection; }
 #endif

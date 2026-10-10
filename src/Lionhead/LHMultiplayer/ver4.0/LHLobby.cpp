@@ -17,7 +17,7 @@
 #include "LHMPServerStartInfo.h"
 #include "LHSession.h"
 #include "LHMessageServer.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHPlayer.h"
 #include "LHServerListener.h"
 
