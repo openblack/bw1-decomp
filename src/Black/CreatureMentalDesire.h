@@ -208,8 +208,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004db350 BW1M119 0125da10
-	virtual ~CreatureDesireDependency() {}
 	// BW1W120 004db2e0 BW1M119 01260880
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 
@@ -232,8 +230,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004db420 BW1M119 0125f0c0
-	virtual ~CreatureDesireForType() {}
 	// BW1W120 004db3c0 BW1M119 012607c0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 
