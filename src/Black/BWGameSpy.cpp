@@ -1043,8 +1043,8 @@ void BWGameSpy::CreateOrJoinRoom(wchar_t* name, wchar_t* password, MPFEChannelDe
 	TextConversion nameText(name);
 	TextConversion passwordText(password);
 #ifndef VERSION_BW1W100
-	ChannelMode.Private = CHATTrue;
 	ChannelMode.Secret = CHATTrue;
+	ChannelMode.Private = CHATTrue;
 	ChannelMode.NoExternalMessages = CHATTrue;
 	ChannelMode.OnlyOpsChangeTopic = CHATTrue;
 	ChannelMode.InviteOnly = CHATFalse;
