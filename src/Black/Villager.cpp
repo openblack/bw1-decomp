@@ -1688,3 +1688,8 @@ bool32_t Villager::IsMovingForAnimation()
 	return false;
 }
 #endif
+
+uint32_t MissionaryControl::GetSaveType()
+{
+	return GAME_THING_TYPE_MISSIONARY_CONTROL;
+}
