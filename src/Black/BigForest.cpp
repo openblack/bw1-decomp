@@ -30,3 +30,8 @@ MESH_LIST BigForest::GetMesh() const
 {
 	return info->GetMesh();
 }
+
+bool32_t BigForest::CreatureMustAvoid(Creature* param_1)
+{
+	return IsOnFire();
+}

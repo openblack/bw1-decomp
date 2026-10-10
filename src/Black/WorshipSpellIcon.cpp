@@ -20,3 +20,8 @@ bool32_t WorshipSpellIcon::IsEffectReceiver(EffectValues* param_1)
 {
 	return false;
 }
+
+float WorshipSpellIcon::ApplyEffect(EffectValues& param_1, int param_2)
+{
+	return 0.0f;
+}

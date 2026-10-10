@@ -46,7 +46,7 @@ public:
 	uintptr_t FindScript;
 	void(__cdecl* AutoStart_ptr)(LHTransport* transport); /* 0x40 */
 	uintptr_t StopTask;
-	uintptr_t StopAllTasks_ptr;
+	void(__cdecl* StopAllTasks_ptr)(LHTransport* transport);
 	uintptr_t StopTasksOfType_ptr;
 	uintptr_t POP_ptr; /* 0x50 */
 	uintptr_t PUSH_ptr;

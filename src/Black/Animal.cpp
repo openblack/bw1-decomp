@@ -138,3 +138,8 @@ uint32_t Animal::DecideAnimation()
 {
 	return StandAnimation();
 }
+
+DEATH_REASON Animal::GetDeathReason()
+{
+	return (DEATH_REASON)DeathReason;
+}

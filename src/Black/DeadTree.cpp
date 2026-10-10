@@ -3,6 +3,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include "FelledTree.h"
+#include "Reaction.h"
 
 uint32_t DeadTree::GetSaveType()
 {
@@ -77,4 +78,9 @@ uint32_t DeadTree::InterfaceTap(GInterfaceStatus* param_1)
 bool32_t DeadTree::IsRock()
 {
 	return false;
+}
+
+void DeadTree::StartOnFire()
+{
+	Reaction::RemoveAllReactionsInitiatedByObject(this);
 }

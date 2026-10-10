@@ -17,3 +17,8 @@ uint32_t Scaffold::GetOverwritePickUpToolTip()
 {
 	return 3815;
 }
+
+float Scaffold::GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2)
+{
+	return -1.0f;
+}
