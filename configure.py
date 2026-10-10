@@ -575,7 +575,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CameraModeNew1.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeNew2.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeNew3.cpp"),
-            GameCodeObject(NonMatching, "Black/CameraModePath.cpp"),
+            GameCodeObject(Matching, "Black/CameraModePath.cpp"),
             GameCodeObject(Matching, "Black/CameraModeScript.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeTwoObjects.cpp"),
             GameCodeObject(NonMatching, "Black/CarriedObject.cpp"),
