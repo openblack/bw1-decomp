@@ -18,3 +18,8 @@ WorshipSite* Citadel::FindOrCreateWorshipSite(const GTribeInfo* tribe_info)
 	}
 	return result;
 }
+
+uint32_t Citadel::GetSaveType()
+{
+	return GAME_THING_TYPE_CITADEL;
+}

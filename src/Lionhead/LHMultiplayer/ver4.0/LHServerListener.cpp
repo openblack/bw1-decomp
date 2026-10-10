@@ -2,7 +2,7 @@
 #include "LHServerListener.h"
 
 #include "LHConnection.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetUser.h"
 #include "LHTCPServerListener.h"
 
@@ -21,7 +21,7 @@ LH_RETURN LHServerListener::BaseStartListening(LHNetUser* user, void* context,
                                                LHTransportInfo* acceptor_info, LHTransportInfo* broadcast_info,
                                                LHServerListenerEventFunction process_event)
 {
-	if (user == NULL || context == NULL || add_connection == NULL)
+	if ((user != NULL && context != NULL && add_connection != NULL) == false)
 		return LH_ERROR;
 	if (!user->id.IsValid())
 		return LH_ERROR;

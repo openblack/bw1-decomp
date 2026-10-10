@@ -60,7 +60,7 @@ public:
 	// BW1W120 10008350 BW1M119 0116ef10 (LHCombined Release)
 	~LHVersion();
 
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10002740 BW1M119 null
 	static char* GetModuleChecksumString() { return ModuleChecksumString; }
 #else
@@ -113,7 +113,7 @@ private:
 	// BW1W120 10008420 BW1M119 0116eca0 (LHCombined Release)
 	static void RepopulateList(HWND__* hwnd, unsigned long state);
 
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 public:
 	// BW1W120 10028be0 BW1M119 null
 	static int VersionDialogRunning;

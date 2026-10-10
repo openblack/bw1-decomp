@@ -9,7 +9,7 @@
 #include <Lionhead/LHLog/ver4.0/LHLogger.h>
 #include <zlib/zlib.h>
 
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHPacket.h"
 #include "LHTransportInfo.h"
 

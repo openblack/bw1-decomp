@@ -28,6 +28,13 @@
 #define MOBILE_WALL_HUG_FILE "C:\\dev\\MP\\Black\\MobileWallHug.cpp"
 #endif
 
+#ifdef VERSION_BW1W100
+// 1.00 lacks the villager step rebuild in MoveToObjectPos, so its later lines sit 8 earlier.
+#define MOBILE_WALL_HUG_LINE(line) ((line) < 1080 ? (line) : (line) - 8)
+#else
+#define MOBILE_WALL_HUG_LINE(line) (line)
+#endif
+
 inline CircleHugStateInfoT::CircleHugStateInfoT() {}
 
 static CircleHugStateInfoT g_CircleHugStateInfo;
@@ -510,7 +517,7 @@ int MobileWallHug::MoveToObjectPos()
 		}
 		if (!IsAnimal())
 		{
-			float targetSpeed = object->GetSpeedInMetres() * 1.1f;
+			float targetSpeed = object->GetSpeedInMetres() * 1.25f;
 			if (targetSpeed > speedInMetres)
 			{
 				speedInMetres = targetSpeed;
@@ -518,6 +525,7 @@ int MobileWallHug::MoveToObjectPos()
 			SetSpeedInMetres(speedInMetres, 0);
 		}
 		goal = pos;
+#if !defined(VERSION_BW1W100)
 		if (IsVillager(NULL))
 		{
 			Villager* villager = dynamic_cast<Villager*>(this);
@@ -526,6 +534,7 @@ int MobileWallHug::MoveToObjectPos()
 				InitStepsXZ();
 			}
 		}
+#endif
 		return MoveTo();
 	}
 	return 38;
@@ -772,12 +781,12 @@ void MobileWallHug::SetNewWander(const MapCoords* centre, long min_dist, long ma
 		}
 		else
 		{
-			angle += GRand::GameRand(0x80, MOBILE_WALL_HUG_FILE, 1080) - 0x40;
+			angle += GRand::GameRand(0x80, MOBILE_WALL_HUG_FILE, MOBILE_WALL_HUG_LINE(1080)) - 0x40;
 		}
 	}
 	else
 	{
-		angle += GRand::GameRand(0x80, MOBILE_WALL_HUG_FILE, 1085) - 0x40;
+		angle += GRand::GameRand(0x80, MOBILE_WALL_HUG_FILE, MOBILE_WALL_HUG_LINE(1085)) - 0x40;
 	}
 	SetTowardsAngle(angle & 0x7ff);
 	RebuildMoveByStep();
@@ -847,15 +856,16 @@ inline int MobileWallHug::GetRunningSpeed()
 
 int MobileWallHug::CollideWithMapCell(uint16_t x, uint16_t z)
 {
-	long         cellX = x;
-	long         cellZ = z;
 	COLLIDE_TYPE mask = (COLLIDE_TYPE)GetInfo()->CollideMask;
 	GMap&        map = GGame::g_game->map;
+	long         cellX = x;
+	long         cellZ = z;
 	if (!map.InBounds(cellX, cellZ))
 	{
 		return -1;
 	}
-	return map.cells[0][cellX * map.CellExtentZx[0] + cellZ].Collide(mask);
+	MapCell* cell = &map.cells[0][cellX * map.CellExtentZx[0] + cellZ];
+	return cell->Collide(mask);
 }
 
 int MobileWallHug::Collide()
@@ -991,7 +1001,7 @@ void CircleHugInfo::ResolveLoad(MobileWallHug* mwh)
 	}
 	else if (info->index == 1)
 	{
-		SetObjectPtr(g_CircleHugStateInfo.fetch(info->coords), mwh, true);
+		SetObjectPtr(g_CircleHugStateInfo.fetch((const MapCoords&)info->coords), mwh, true);
 	}
 	delete info;
 }
@@ -1000,10 +1010,10 @@ uint32_t MobileWallHug::Save(GameOSFile& file)
 {
 	if (Mobile::Save(file))
 	{
-		WRITE_SAFE(file, TurnsUntilNextStateChange);
-		WRITE_SAFE(file, speed);
-		WRITE_SAFE(file, GameAngle);
-		WRITE_SAFE(file, MoveState);
+		file.WriteIt(TurnsUntilNextStateChange);
+		file.WriteIt(speed);
+		file.WriteIt(GameAngle);
+		file.WriteIt(MoveState);
 		switch (MoveState)
 		{
 		case MOVE_TO_STATES_LINEAR:
@@ -1013,20 +1023,20 @@ uint32_t MobileWallHug::Save(GameOSFile& file)
 		case MOVE_TO_STATES_ORBIT_CCW:
 		case MOVE_TO_STATES_EXIT_CIRCLE_CCW:
 		case MOVE_TO_STATES_EXIT_CIRCLE_CW: {
-			WRITE_SAFE(file, circle_hug_info.TurnsToObj);
+			file.WriteIt(circle_hug_info.TurnsToObj);
 			uint32_t turns = circle_hug_info.EntryDistance != (int16_t)0xffff
 			                     ? (uint16_t)circle_hug_info.EntryDistance
 			                     : g_CircleHugStateInfo.ExtendedEntryDistances[this];
-			WRITE_SAFE(file, turns);
+			file.WriteIt(turns);
 			CircleHugInfo::ResolutionInfoT info;
 			circle_hug_info.FetchObjectFromCircHugInfo(circle_hug_info.GetObjectPtr(), info);
 			file.WritePtr(info.object);
-			WRITE_SAFE(file, info.index);
-			WRITE_SAFE(file, info.coords);
+			file.WriteIt(info.index);
+			file.WriteIt(info.coords);
 			break;
 		}
 		case MOVE_TO_STATES_STEP_THROUGH:
-			WRITE_SAFE(file, TurnsUntilStepRebuild);
+			file.WriteIt(TurnsUntilStepRebuild);
 			break;
 		}
 		file.WritePtr((GameThing*)footpath);
@@ -1067,11 +1077,13 @@ uint32_t MobileWallHug::Load(GameOSFile& file)
 			{
 				circle_hug_info.EntryDistance = turns;
 			}
-			CircleHugInfo::ResolutionInfoT info;
-			file.ReadPtr((GameThing**)&info.object);
-			file.ReadIt(info.index);
-			file.ReadIt(info.coords);
-			circle_hug_info.SetResolutionInfo(info.object, info.index, info.coords);
+			Object*   object;
+			int       index;
+			MapCoords coords;
+			file.ReadPtr((GameThing**)&object);
+			file.ReadIt(index);
+			file.ReadIt(coords);
+			circle_hug_info.SetResolutionInfo(object, index, coords);
 			break;
 		}
 		case MOVE_TO_STATES_STEP_THROUGH:
@@ -1269,8 +1281,9 @@ uint32_t MobileWallHug::MoveToCircleHugLinearSquareSweep(const MapCoords& coords
 	if (it.IsValid())
 	{
 		float                  length = dir.Normalize();
-		IntersectIntervalLine* nearest = new (MOBILE_WALL_HUG_FILE, 1771) IntersectIntervalLine(it, origin, dir);
-		IntersectIntervalLine* current = new (MOBILE_WALL_HUG_FILE, 1772) IntersectIntervalLine;
+		IntersectIntervalLine* nearest =
+			new (MOBILE_WALL_HUG_FILE, MOBILE_WALL_HUG_LINE(1771)) IntersectIntervalLine(it, origin, dir);
+		IntersectIntervalLine* current = new (MOBILE_WALL_HUG_FILE, MOBILE_WALL_HUG_LINE(1772)) IntersectIntervalLine;
 		while (nearest->disc <= 0.0f)
 		{
 			it.Next(coords);
@@ -1459,9 +1472,9 @@ inline uint32_t MobileWallHug_InCircleStuff<clockwise>::MoveToCircleHugCircleSqu
 	else
 	{
 		IntersectIntervalCircle<clockwise>* nearest =
-			new (MOBILE_WALL_HUG_FILE, 1846) IntersectIntervalCircle<clockwise>;
+			new (MOBILE_WALL_HUG_FILE, MOBILE_WALL_HUG_LINE(1846)) IntersectIntervalCircle<clockwise>;
 		IntersectIntervalCircle<clockwise>* current =
-			new (MOBILE_WALL_HUG_FILE, 1846) IntersectIntervalCircle<clockwise>;
+			new (MOBILE_WALL_HUG_FILE, MOBILE_WALL_HUG_LINE(1846)) IntersectIntervalCircle<clockwise>;
 		Point2DCompare<clockwise> start;
 		if (goalInside)
 		{
@@ -1628,6 +1641,8 @@ inline uint32_t MobileWallHug_InCircleStuff<clockwise>::MoveToCircleHugCircleSqu
 	return 1;
 }
 
+// 1.00 has no hug editor
+#if !defined(VERSION_BW1W100)
 // BW1W120 0060db30 BW1M119 null
 void EditorHug::PrssKey(LH_KEY key, uint16_t param_2)
 {
@@ -1956,6 +1971,7 @@ void EditorHug::PrssKey(LH_KEY key, uint16_t param_2)
 		break;
 	}
 }
+#endif
 
 void MobileWallHug::SetToZero()
 {
@@ -2033,29 +2049,17 @@ void MobileWallHug::ProcessRemoveFromMap(MultiMapFixed* map_fixed)
 			for (Object* obj = cell->FirstObjectFixed; obj != NULL; obj = obj->GetMapChild(*cell))
 			{
 				MultiMapFixed* other = dynamic_cast<MultiMapFixed*>(obj);
-				if (other == NULL)
+				if (other != NULL && processed.find(other) == processed.end() &&
+				    to_process.find(other) == to_process.end() && neighbours.find(other) == neighbours.end())
 				{
-					continue;
-				}
-				if (processed.find(other) != processed.end())
-				{
-					continue;
-				}
-				if (to_process.find(other) != to_process.end())
-				{
-					continue;
-				}
-				if (neighbours.find(other) != neighbours.end())
-				{
-					continue;
-				}
-				if (ObjectsCollide(current, other))
-				{
-					to_process.insert(other);
-				}
-				else
-				{
-					neighbours.insert(other);
+					if (ObjectsCollide(current, other))
+					{
+						to_process.insert(other);
+					}
+					else
+					{
+						neighbours.insert(other);
+					}
 				}
 			}
 		}

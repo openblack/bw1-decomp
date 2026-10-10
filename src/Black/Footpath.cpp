@@ -4,6 +4,9 @@
 #include "FootpathLink.h"       /* For struct GFootpathLink */
 #include "GameOSFile.h"         /* For struct GameOSFile */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "FootpathFinder.h"
+#include "FootpathLinkSave.h"
+#include "FootpathNode.h"
 
 uint32_t GFootpathLink::Save(GameOSFile& file)
 {
@@ -38,4 +41,24 @@ uint32_t GFootpathLink::Save(GameOSFile& file)
 		return 1;
 	}
 	return 0;
+}
+
+uint32_t GFootpath::GetSaveType()
+{
+	return GAME_THING_TYPE_GFOOTPATH;
+}
+
+uint32_t GFootpathFinder::GetSaveType()
+{
+	return GAME_THING_TYPE_GFOOTPATH_FINDER;
+}
+
+uint32_t GFootpathLinkSave::GetSaveType()
+{
+	return GAME_THING_TYPE_GFOOTPATH_LINK_SAVE;
+}
+
+uint32_t GFootpathNode::GetSaveType()
+{
+	return GAME_THING_TYPE_GFOOTPATH_NODE;
 }

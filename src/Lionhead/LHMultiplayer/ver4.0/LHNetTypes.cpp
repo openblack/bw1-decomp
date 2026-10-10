@@ -3,8 +3,9 @@
 
 #include <string.h>
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHPlayer.h"
 
 typedef LHLinkedList<LHPacketisableObject*> LHPacketisableObjectList;
@@ -104,13 +105,12 @@ bool32_t LHLocalLobbyInfo::UpdateLocalLobbyInfoDetails(LHLocalLobbyInfo* other)
 	bool32_t playersChanged = false;
 	if (other->Players.count == Players.count)
 	{
-		for (LHLinkedNode<LHPlayer*>* node = Players.GetStart(); node != NULL; node = node->next.Get())
+		for (LHLinkedListIterator<LHPlayer*> it = Players.GetStart(); it; it++)
 		{
-			LHPlayer* player = node->payload;
-			for (LHLinkedNode<LHPlayer*>* otherNode = other->Players.GetStart(); otherNode != NULL;
-			     otherNode = otherNode->next.Get())
+			LHPlayer* player = it.Get();
+			for (LHLinkedListIterator<LHPlayer*> otherIt = other->Players.GetStart(); otherIt; otherIt++)
 			{
-				if (player->Compare(otherNode->payload) != 0)
+				if (player->Compare(otherIt.Get()) != 0)
 				{
 					playersChanged = true;
 					break;

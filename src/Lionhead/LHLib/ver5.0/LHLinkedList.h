@@ -167,7 +167,7 @@ public:
 	inline T GetAtPosition(long position)
 	{
 		LHLinkedNode<T>* node = GetNodeAtPosition(position);
-		return node != NULL ? node->payload : NULL;
+		return node == NULL ? NULL : node->payload;
 	}
 
 	// BW1W120 inlined BW1M119 inlined

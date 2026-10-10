@@ -9,7 +9,7 @@
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>
 #include "LHDatabase.h"
 #include "LHHttp.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetUtils.h"
 #include "LHTransportInfo.h"
 
@@ -56,9 +56,7 @@ void LHNetUser::Logout()
 
 LH_RETURN LHNetUser::SetUserDetails(wchar_t* name, char* password)
 {
-	if (name == NULL)
-		return LH_ERROR;
-	if (name[0] == L'\0')
+	if ((name != NULL && name[0] != L'\0') == false)
 		return LH_ERROR;
 	wcsncpy(Name, name, LH_MAX_NAME_LENGTH);
 	if (password != NULL)
@@ -142,7 +140,7 @@ LH_RETURN LHNetUser::Login(char* name, char* password, LHTransportInfo* server)
 
 LH_RETURN LHNetUser::SendLogin(char* name, char* password, LHTransportInfo* server)
 {
-	if (name == NULL || strlen(name) == 0)
+	if ((name != NULL && strlen(name) != 0) == false)
 		return LH_ERROR;
 	SetUserDetails(LIBCHAR2WCHAR(name), password);
 

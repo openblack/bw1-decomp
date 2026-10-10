@@ -106,7 +106,12 @@ public:
 	// BW1W120 10001810 BW1M119 0110b620 (LHCombined Release)
 	LHTransportInfo(LH_TRANSPORT_TYPE type) { Set(type); }
 	// BW1W120 10001830 BW1M119 010fd790 (LHCombined Release)
-	unsigned short GetPort() { return address.port; }
+	unsigned short GetPort()
+	{
+		unsigned short port;
+		memcpy(&port, data, sizeof(port));
+		return port;
+	}
 	// BW1W120 10001840 BW1M119 0110cf90 (LHCombined Release)
 	char* GetIP() { return address.ip; }
 	// BW1W120 10001850 BW1M119 inlined

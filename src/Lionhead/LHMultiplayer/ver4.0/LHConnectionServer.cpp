@@ -5,10 +5,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
 #include <Lionhead/LHLog/ver4.0/LHLogger.h>
 #include "LHConnection.h"
 #include "LHMPServerStartInfo.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetEvent.h"
 #include "LHNetUtils.h"
 #include "LHServerListener.h"
@@ -316,15 +317,14 @@ bool LHConnectionServer::FlushAllConnections(unsigned long timeout)
 	LHTimer timer;
 	bool    result = true;
 
-	timer.Reset(0);
-	timer.Start();
-	for (LHLinkedNode<LHServerPlayer*>* node = Players.GetStart(); node != NULL; node = node->next.Get())
+	timer.Restart(0);
+	for (LHLinkedListIterator<LHServerPlayer*> it = Players.GetStart(); it.Node != NULL; it++)
 	{
 		long remaining = timeout - timer.MSeconds();
 		if (remaining < 0)
 			remaining = 0;
 
-		LHServerPlayer* player = node->payload;
+		LHServerPlayer* player = it.Node->payload;
 		if (player->GetTransportInfo() != NULL && player->GetTransportInfo()->type == LH_TRANSPORT_TYPE_TCP &&
 		    player->Connection->Flush(remaining) != LH_OK)
 			result = false;
@@ -668,7 +668,7 @@ LH_RETURN LHConnectionServer::SendEventCopyToPlayer(LHServerPlayer* player, LHNe
 
 LH_RETURN LHConnectionServer::SendEventToPlayer(LHServerPlayer* player, LHNetEvent* event)
 {
-	if (event == NULL || player == NULL)
+	if ((event != NULL && player != NULL) == false)
 		return LH_FAIL;
 	if (player->Connection == NULL)
 		return LH_FAIL;
@@ -679,7 +679,7 @@ LH_RETURN LHConnectionServer::SendEventToPlayer(LHServerPlayer* player, LHNetEve
 
 LH_RETURN LHConnectionServer::SendToConnection(LHConnection* connection, LHNetEvent* event)
 {
-	if (event == NULL || connection == NULL)
+	if ((event != NULL && connection != NULL) == false)
 		return LH_FAIL;
 	if (connection->IsDisconnected())
 		return LH_FAIL;

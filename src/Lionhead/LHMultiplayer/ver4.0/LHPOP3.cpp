@@ -7,6 +7,7 @@
 #include <string.h>
 #include <time.h>
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>
 #include "LHNetUser.h"
 #include "LHSocketTCP.h"
@@ -90,6 +91,7 @@ LH_RETURN base64dec(char* text, char* output, long* length)
 	bool          done = false;
 	long          position = *length;
 	unsigned char in[4];
+	unsigned char out[3];
 	char          c;
 	bool          skip;
 
@@ -139,22 +141,22 @@ LH_RETURN base64dec(char* text, char* output, long* length)
 			}
 			if (count == 0 || done == true)
 			{
-				char out0 = (in[0] << 2) | ((in[1] >> 4) & 0x3);
-				char out1 = (in[1] << 4) | ((in[2] >> 2) & 0xf);
-				char out2 = (in[2] << 6) | (in[3] & 0x3f);
+				out[0] = (in[0] << 2) | ((in[1] >> 4) & 0x3);
+				out[1] = (in[1] << 4) | ((in[2] >> 2) & 0xf);
+				out[2] = (in[2] << 6) | (in[3] & 0x3f);
 				switch (count)
 				{
 				case 2:
-					output[position++] = out0;
-					output[position++] = out1;
+					output[position++] = out[0];
+					output[position++] = out[1];
 					break;
 				case 1:
-					output[position++] = out0;
+					output[position++] = out[0];
 					break;
 				default:
-					output[position++] = out0;
-					output[position++] = out1;
-					output[position++] = out2;
+					output[position++] = out[0];
+					output[position++] = out[1];
+					output[position++] = out[2];
 					break;
 				}
 				memset(in, 0, sizeof(in));
@@ -177,9 +179,9 @@ LH_RETURN lookfordecoding(char* text, char* output, long* length)
 		start = strstr(text, "=?");
 		if (start != NULL)
 		{
-			encoded = strstr(start + strlen("=?") + 1, "?") + 1;
-			encoding = tolower(*encoded);
-			encoded += 2;
+			encoded = strstr(start + strlen("=?") + 1, "?");
+			encoding = tolower(encoded[1]);
+			encoded += 3;
 			switch (encoding)
 			{
 			case 'q':
@@ -199,6 +201,7 @@ LH_RETURN LHParseMailDate(char* line, long* date)
 	struct tm time;
 	char      buffer[LH_POP3_DATE_LENGTH];
 	long      i;
+	char      month;
 	long      zone;
 	long      hour;
 	char*     text;
@@ -219,57 +222,58 @@ LH_RETURN LHParseMailDate(char* line, long* date)
 	for (i = 0; *text != ' ' && *text != '\0'; text++)
 		buffer[i++] = *text;
 	buffer[i] = '\0';
-	text++;
 	time.tm_mday = atol(buffer);
+	text++;
 
 	for (i = 0; *text != ' ' && *text != '\0'; text++)
 		buffer[i++] = *text;
 	buffer[i] = '\0';
-	for (i = 0; i < LH_POP3_MONTH_COUNT; i++)
+	for (month = 0; month < LH_POP3_MONTH_COUNT; month++)
 	{
-		if (strcmp(buffer, Months[i].Name) == 0)
-			time.tm_mon = Months[i].Number - 1;
+		if (strcmp(buffer, Months[month].Name) == 0)
+			time.tm_mon = Months[month].Number - 1;
 	}
 
 	text++;
 	for (i = 0; *text != ' ' && *text != '\0'; text++)
 		buffer[i++] = *text;
 	buffer[i] = '\0';
-	text++;
 	time.tm_year = atol(buffer) - 1900;
+	text++;
 
 	for (i = 0; *text != ':' && *text != '\0'; text++)
 		buffer[i++] = *text;
 	buffer[i] = '\0';
-	text++;
 	time.tm_hour = atol(buffer);
+	text++;
 
 	for (i = 0; *text != ':' && *text != '\0'; text++)
 		buffer[i++] = *text;
 	buffer[i] = '\0';
-	text++;
 	time.tm_min = atol(buffer) - 1;
-
-	for (i = 0; *text != ' ' && *text != '\0'; text++)
-		buffer[i++] = *text;
-	buffer[i] = '\0';
 	text++;
-	time.tm_sec = atol(buffer) - 1;
 
 	for (i = 0; *text != ' ' && *text != '\0'; text++)
 		buffer[i++] = *text;
 	buffer[i] = '\0';
-	time.tm_isdst = -1;
+	time.tm_sec = atol(buffer) - 1;
+	text++;
+
+	for (i = 0; *text != ' ' && *text != '\0'; text++)
+		buffer[i++] = *text;
+	buffer[i] = '\0';
 	zone = atol(buffer) / 100;
+	time.tm_isdst = -1;
 
 	_putenv("TZ=GMT+0GDT");
 	_tzset();
 
-	hour = time.tm_hour;
 	if (zone > 0)
 		hour = time.tm_hour - zone;
 	else if (zone < 0)
 		hour = time.tm_hour + zone;
+	else
+		hour = time.tm_hour;
 
 	if (hour < 0)
 	{
@@ -436,16 +440,17 @@ LH_RETURN LHPOP3::ParseLine(char* line, long length, char* output, long* output_
 
 LH_RETURN LHPOP3::ScanLines(char* data, long length, char* remainder, long* remainder_length, bool multi_line)
 {
-	char*       line_start = data;
+	char*       current = data;
 	char*       out = remainder;
+	char*       line_start = data;
 	long        line_length = 0;
 	long        i;
 	char*       text;
 	LHPOP3Line* line;
 
-	for (i = 0; i < length; i++, data++)
+	for (i = 0; i < length; i++)
 	{
-		if (data[0] == '\r' && data[1] == '\n' && i + 2 != length - 1 && multi_line == true)
+		if (current[0] == '\r' && current[1] == '\n' && i + 2 != length - 1 && multi_line == true)
 		{
 			text = new char[line_length + 10];
 			line = new LHPOP3Line;
@@ -454,10 +459,10 @@ LH_RETURN LHPOP3::ScanLines(char* data, long length, char* remainder, long* rema
 			line->Length = line_length + 2;
 			line->Data = text;
 			Lines.Add(line);
-			line_start = data + 2;
-			if (data[-1] == '.' && data[-2] == '\n' && data[-3] == '\r')
+			line_start = current + 2;
+			if (current[-1] == '.' && current[-2] == '\n' && current[-3] == '\r')
 			{
-				data[-1] = '.';
+				current[-1] = '.';
 			}
 			else
 			{
@@ -465,13 +470,14 @@ LH_RETURN LHPOP3::ScanLines(char* data, long length, char* remainder, long* rema
 				memset(remainder, 0, LH_POP3_LINE_LENGTH);
 				out = remainder - 1;
 			}
+			current++;
 			i++;
-			data++;
 		}
 		else
 		{
-			*out = *data;
+			*out = *current;
 		}
+		current++;
 		line_length++;
 		out++;
 	}
@@ -483,31 +489,32 @@ LH_RETURN LHPOP3::ScanLines(char* data, long length, char* remainder, long* rema
 LH_RETURN LHPOP3::SearchForSpecialChar(char* data, long length, char* line, char* remainder, long* line_length,
                                        long* remainder_length)
 {
-	long count = 0;
-	bool found = false;
-	long i;
+	char* out = line;
+	long  count = 0;
+	bool  found = false;
+	long  i;
 
 	for (i = 0; i != length; i++)
 	{
 		if (data[0] == '\r' && data[1] == '\n' && i + 2 != length)
 		{
-			line[0] = '\r';
-			line[1] = '\n';
-			line[2] = '\0';
+			out[0] = '\r';
+			out[1] = '\n';
+			out[2] = '\0';
 			found = true;
 			*line_length = count;
-			line = remainder;
+			out = remainder;
 			count = 0;
 		}
 		else
 		{
-			*line = *data;
+			*out = *data;
 		}
 		data++;
-		line++;
+		out++;
 		count++;
 	}
-	*line = '\0';
+	*out = '\0';
 	if (found == true)
 	{
 		*remainder_length = count;
@@ -519,16 +526,15 @@ LH_RETURN LHPOP3::SearchForSpecialChar(char* data, long length, char* line, char
 
 LH_RETURN LHPOP3::SendCommandAsync(char* command, char** response, bool multi_line)
 {
-	char                       buffer[LH_POP3_COMMAND_BUFFER_SIZE];
-	char                       previous[LH_POP3_COMMAND_BUFFER_SIZE];
-	unsigned long              length = LH_POP3_RECEIVE_SIZE;
-	time_t                     now = 0;
-	LH_RETURN                  result;
-	long                       total;
-	long                       offset;
-	char*                      text;
-	LHLinkedNode<LHPOP3Line*>* node;
-	LHPOP3Line*                line;
+	char          buffer[LH_POP3_COMMAND_BUFFER_SIZE];
+	char          previous[LH_POP3_COMMAND_BUFFER_SIZE];
+	unsigned long length = LH_POP3_RECEIVE_SIZE;
+	time_t        now = 0;
+	LH_RETURN     result;
+	long          total;
+	long          offset;
+	char*         text;
+	LHPOP3Line*   line;
 
 	switch (CommandState)
 	{
@@ -539,7 +545,7 @@ LH_RETURN LHPOP3::SendCommandAsync(char* command, char** response, bool multi_li
 			return LH_ERROR;
 		}
 		if (strcmp(command, "") != 0)
-			Socket->Send(LHSPrintf("%s\r\n", command).Text, strlen(LHSPrintf("%s\r\n", command).Text));
+			Socket->Send(LHSPrintf("%s\r\n", command), strlen(LHSPrintf("%s\r\n", command)));
 		CommandState = LH_POP3_STATE_WAITING;
 		ReceivedLength = 0;
 		memset(Received, 0, sizeof(Received));
@@ -596,20 +602,20 @@ LH_RETURN LHPOP3::SendCommandAsync(char* command, char** response, bool multi_li
 				return LH_FAIL;
 
 			ReceivedLength = 0;
-			CommandState = LH_POP3_STATE_DONE;
 			total = 0;
-			for (node = Lines.GetStart(); node != NULL; node = node->next.Get())
+			CommandState = LH_POP3_STATE_DONE;
+			offset = 0;
+			for (LHLinkedListIterator<LHPOP3Line*> it = Lines.GetStart(); it; it++)
 			{
-				line = node->payload;
+				line = it.Get();
 				if (line != NULL && line->Length != 0 && line->Data != NULL)
 					total += line->Length;
 			}
 			text = new char[total + 100];
 			*response = text;
-			offset = 0;
-			for (node = Lines.GetStart(); node != NULL; node = node->next.Get())
+			for (LHLinkedListIterator<LHPOP3Line*> it2 = Lines.GetStart(); it2; it2++)
 			{
-				line = node->payload;
+				line = it2.Get();
 				if (line != NULL)
 				{
 					memcpy(text + offset, line->Data, line->Length);
@@ -693,7 +699,7 @@ LH_RETURN LHPOP3::LoginAsync(LH_POP3_ACTION* action)
 			Response = NULL;
 		}
 	case LH_POP3_ACTION_RECEIVED:
-		result = SendCommandAsync(LHSPrintf("USER %s", User).Text, &Response, false);
+		result = SendCommandAsync(LHSPrintf("USER %s", User), &Response, false);
 		if (result == LH_OK)
 		{
 			*action = LH_POP3_ACTION_SEND_NEXT;
@@ -705,7 +711,7 @@ LH_RETURN LHPOP3::LoginAsync(LH_POP3_ACTION* action)
 		return result;
 
 	case LH_POP3_ACTION_SEND_NEXT:
-		result = SendCommandAsync(LHSPrintf("PASS %s", Password).Text, &Response, false);
+		result = SendCommandAsync(LHSPrintf("PASS %s", Password), &Response, false);
 		if (result == LH_OK)
 		{
 			*action = LH_POP3_ACTION_RECEIVED_NEXT;
@@ -869,10 +875,9 @@ LH_RETURN LHPOP3::LogoutAsync(LH_POP3_ACTION* action)
 
 LH_RETURN LHPOP3::GetMailNameSubject(long number, LHPOP3Mail& mail, LH_POP3_ACTION* action)
 {
-	LH_RETURN                  result;
-	LHLinkedNode<LHPOP3Line*>* node;
-	LHPOP3Line*                line;
-	long                       date;
+	LH_RETURN   result;
+	LHPOP3Line* line;
+	long        date;
 
 	if (Socket == NULL)
 		return LH_ERROR;
@@ -887,7 +892,7 @@ LH_RETURN LHPOP3::GetMailNameSubject(long number, LHPOP3Mail& mail, LH_POP3_ACTI
 		}
 		*action = LH_POP3_ACTION_SEND;
 	case LH_POP3_ACTION_SEND:
-		result = SendCommandAsync(LHSPrintf("TOP %ld 15", number).Text, &Response, true);
+		result = SendCommandAsync(LHSPrintf("TOP %ld 15", number), &Response, true);
 		if (result == LH_OK)
 		{
 			*action = LH_POP3_ACTION_RECEIVED;
@@ -904,13 +909,14 @@ LH_RETURN LHPOP3::GetMailNameSubject(long number, LHPOP3Mail& mail, LH_POP3_ACTI
 		FromLength = 0;
 
 		LHLinkedList<LHPOP3Line*> lines;
-		for (node = Lines.GetStart(); node != NULL; node = node->next.Get())
-			lines.Add(node->payload);
+		date = 0;
+		for (LHLinkedListIterator<LHPOP3Line*> it = Lines.GetStart(); it; it++)
+			lines.Add(it.Get());
 		Lines.RemoveAll();
 
-		for (node = lines.GetStart(); node != NULL; node = node->next.Get())
+		for (LHLinkedListIterator<LHPOP3Line*> it2 = lines.GetStart(); it2; it2++)
 		{
-			line = node->payload;
+			line = it2.Get();
 			if (line != NULL && strncmp(line->Data, "+OK", 3) != 0 && strncmp(line->Data, "+Ok", 3) != 0 &&
 			    strncmp(line->Data, "+ok", 3) != 0 && strncmp(line->Data, ".", 1) != 0)
 			{
