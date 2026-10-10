@@ -12,3 +12,8 @@ bool32_t MobileStatic::BlocksTownClearArea() const
 {
 	return false;
 }
+
+SCRIPT_OBJECT_TYPE MobileStatic::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_MOBILE_STATIC;
+}

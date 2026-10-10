@@ -41,3 +41,8 @@ bool32_t CitadelPart::ShouldFootpathsGoRound()
 {
 	return true;
 }
+
+LH3DObject::ObjectType CitadelPart::Get3DType()
+{
+	return LH3DObject::MORPHABLE;
+}
