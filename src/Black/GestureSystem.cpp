@@ -93,6 +93,11 @@ float GestureSystem::CalculateAngleDifference(float from, float to)
 
 void GestureSystem::CalculateGestureOffsets(GestureSystemResult* result, long* start, long* end)
 {
+	// BUG: If StartSample or EndSample is past the last key point, *start or *end is never written
+#ifdef BUGFIX
+	*start = 0;
+	*end = GetPointCount() - 1;
+#endif
 	int startKey = result->StartSample;
 	int endKey = result->EndSample;
 	int keyCount = 0;
