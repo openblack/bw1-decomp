@@ -16,3 +16,5 @@ uint32_t DataPath::GetSaveType()
 {
 	return GAME_THING_TYPE_DATA_PATH;
 }
+
+void Living::Birthday() {}

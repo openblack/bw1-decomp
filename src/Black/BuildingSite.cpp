@@ -25,3 +25,5 @@ uint32_t WorkshopBuildingSite::GetSaveType()
 {
 	return GAME_THING_TYPE_WORKSHOP_BUILDING_SITE;
 }
+
+void BuildingSite::Init() {}

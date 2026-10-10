@@ -14,3 +14,5 @@ uint32_t ArenaSpellIcon::GetSaveType()
 {
 	return GAME_THING_TYPE_ARENA_SPELL_ICON;
 }
+
+void ArenaSpellIcon::Draw() {}

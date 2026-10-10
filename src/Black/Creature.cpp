@@ -8,3 +8,5 @@ uint32_t Creature::GetSaveType()
 {
 	return GAME_THING_TYPE_CREATURE;
 }
+
+void Creature::SetAnim(int anim) {}

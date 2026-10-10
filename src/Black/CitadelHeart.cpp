@@ -128,3 +128,5 @@ uint32_t UR_PlasmaInf::GetSaveType()
 {
 	return GAME_THING_TYPE_UR_PLASMA_INF;
 }
+
+void CitadelHeart::Draw() {}
