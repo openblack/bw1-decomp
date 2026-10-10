@@ -4,6 +4,7 @@
 #include "ColourConstants.h" /* For White */
 #include "Chain.h"
 #include "PSysModifiers.h"
+#include "PSysPCreator.h"
 
 uint32_t Chain::GetSaveType()
 {
@@ -19,3 +20,7 @@ uint32_t DrawOffsetLT::GetSaveType()
 {
 	return GAME_THING_TYPE_DRAW_OFFSET_LT;
 }
+
+void RenderParticleCreatureRef::DrawAt(const DrawData& data) {}
+
+void RenderParticleGameObjectRef::DrawAt(const DrawData& data) {}

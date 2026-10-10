@@ -62,3 +62,5 @@ uint32_t GFootpathNode::GetSaveType()
 {
 	return GAME_THING_TYPE_GFOOTPATH_NODE;
 }
+
+void GFootpathNode::ResolveLoad() {}
