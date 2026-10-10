@@ -31,3 +31,8 @@ uint32_t CitadelPart::Load(GameOSFile& file)
 
 	return 1;
 }
+
+bool32_t CitadelPart::ShouldFootpathsGoRound()
+{
+	return true;
+}

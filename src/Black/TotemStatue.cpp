@@ -4,3 +4,8 @@
 #include "TotemStatue.h"
 
 #include "ColourConstants.h" /* For White */
+
+bool TotemStatue::InteractsWithPhysicsObjects()
+{
+	return false;
+}

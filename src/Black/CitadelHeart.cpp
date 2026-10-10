@@ -105,3 +105,8 @@ void CitadelEntrance::ResolveLoad()
 {
 	info = &GObjectInfo::Definitions[OBJECT_TYPE_TERRAIN];
 }
+
+bool32_t CitadelHeart::ShouldFootpathsGoRound()
+{
+	return false;
+}

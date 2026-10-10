@@ -5,3 +5,8 @@
 #include "ScriptHighlightInfo.h"
 
 GScriptHighlightInfo GScriptHighlightInfo::Infos[SCRIPT_HIGHLIGHT_INFO_LAST];
+
+uint32_t ScriptHighlight::ApplyOnlyAfterReleased()
+{
+	return 0;
+}

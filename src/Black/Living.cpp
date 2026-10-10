@@ -5,3 +5,8 @@
 
 #include "ColourConstants.h"    /* For White */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+
+bool32_t Living::CanBecomeAPhysicsObject()
+{
+	return true;
+}

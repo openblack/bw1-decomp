@@ -5,3 +5,13 @@
 #include "FieldTypeInfo.h"
 
 GFieldTypeInfo GFieldTypeInfo::Infos[FIELD_INFO_TYPE_LAST];
+
+bool Field::InteractsWithPhysicsObjects()
+{
+	return false;
+}
+
+bool32_t Field::CanBecomeAPhysicsObject()
+{
+	return false;
+}
