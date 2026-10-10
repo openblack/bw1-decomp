@@ -2,6 +2,7 @@
 #include "WorshipTotem.h"
 
 #include "ColourConstants.h" /* For White */
+#include "WorshipSite.h"
 
 uint32_t WorshipTotem::GetSaveType()
 {
@@ -12,4 +13,14 @@ uint32_t WorshipTotem::GetSaveType()
 void WorshipTotem::SetSpecularColor(unsigned long param_1)
 {
 	field_0x8c = param_1;
+}
+
+float WorshipTotem::CalculateDesireForFood()
+{
+	return site->CalculateDesireForFood();
+}
+
+float WorshipTotem::CalculatePeopleHidingIndicator()
+{
+	return site->CalculatePeopleHidingIndicator();
 }

@@ -37,3 +37,12 @@ uint32_t BuildingSite::GetSaveType()
 }
 
 void BuildingSite::Init() {}
+
+Town* BuildingSite::GetTown()
+{
+	if (RootBuilding != NULL)
+	{
+		return RootBuilding->GetTown();
+	}
+	return NULL;
+}

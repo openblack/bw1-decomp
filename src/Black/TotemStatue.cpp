@@ -3,6 +3,8 @@
 #include "GameTimeConstants.h"
 #include "TotemStatue.h"
 
+#include "TownCentre.h"
+
 #include "ColourConstants.h" /* For White */
 
 bool TotemStatue::InteractsWithPhysicsObjects()
@@ -25,4 +27,14 @@ float TotemStatue::GetWorshipSpeed()
 bool32_t TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
 {
 	return true;
+}
+
+
+Town* TotemStatue::GetTown()
+{
+	if (town_centre.Get() != NULL)
+	{
+		return town_centre.Get()->GetTown();
+	}
+	return NULL;
 }

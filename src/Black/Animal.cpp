@@ -132,3 +132,9 @@ bool32_t Animal::EnterSeekFood(uint8_t param_1, uint8_t param_2)
 {
 	return true;
 }
+
+
+uint32_t Animal::DecideAnimation()
+{
+	return StandAnimation();
+}

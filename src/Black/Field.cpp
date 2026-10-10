@@ -1,6 +1,8 @@
 #include "GameTimeConstants.h"
 #include "Field.h"
 
+#include "Town.h"
+
 #include "ColourConstants.h" /* For White */
 #include "FieldTypeInfo.h"
 
@@ -114,4 +116,14 @@ bool32_t Field::CanBeDestroyedBySpell(Spell* param_1)
 uint32_t Field::GetOverwriteInteractableToolTip()
 {
 	return 3699;
+}
+
+
+GPlayer* Field::GetPlayer()
+{
+	if (town.Get() != NULL)
+	{
+		return town.Get()->GetPlayer();
+	}
+	return NULL;
 }

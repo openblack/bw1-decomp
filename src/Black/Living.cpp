@@ -73,3 +73,10 @@ IMMERSION_EFFECT_TYPE Living::GetInHandImmersionTexture()
 {
 	return IMMERSION_EFFECT_TYPE_ANIMATING_IN_HAND;
 }
+
+#ifndef VERSION_BW1W100
+bool32_t Living::IsMovingForAnimation()
+{
+	return IsMoving();
+}
+#endif

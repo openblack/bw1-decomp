@@ -25,3 +25,8 @@ bool32_t BigForest::VillagerMustAvoid(Villager* param_1)
 {
 	return false;
 }
+
+MESH_LIST BigForest::GetMesh() const
+{
+	return info->GetMesh();
+}
