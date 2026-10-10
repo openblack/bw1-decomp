@@ -31,3 +31,8 @@ uint32_t CitadelPart::Load(GameOSFile& file)
 
 	return 1;
 }
+
+uint32_t CitadelPart::GetSaveType()
+{
+	return GAME_THING_TYPE_CITADEL_PART;
+}

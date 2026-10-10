@@ -5,3 +5,8 @@
 #include "FieldTypeInfo.h"
 
 GFieldTypeInfo GFieldTypeInfo::Infos[FIELD_INFO_TYPE_LAST];
+
+uint32_t Field::GetSaveType()
+{
+	return GAME_THING_TYPE_FIELD;
+}
