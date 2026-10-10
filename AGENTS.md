@@ -26,18 +26,19 @@ elsewhere, retain the clearest supported implementation and document the unresol
 Experiment discipline, learned the expensive way:
 
 - **Classify the difference before experimenting.** A helper inlined on one side only is an
-  inline-budget problem; the same calls in a different operand or register order is a
-  tie-break or scheduling problem; anything else is a real source difference. Each class
-  has its own procedure.
+  inline-budget problem; the same x87 operations in a different operand order inside inlined
+  bodies is a tie-break; the same integer instructions in a different order around the x87
+  chain is a scheduling problem (`tools/c2-sched-log.py`, see
+  [`docs/msvc6_scheduler.md`](docs/msvc6_scheduler.md)); anything else is a real source
+  difference. Each class has its own procedure.
 - **Prove that a knob moves the output before you sweep it.** A 5,000-build sweep over knobs
   that never touch the differing instructions finds nothing.
 - **Rank assumptions by evidence.** Mac bodies and signatures, and target call sets across
   all units, outrank guessed shapes of fabricated or hand-expanded functions. When a model
   can't fit every caller, doubt the weakest-evidence caller before rewriting shared headers.
-- **Bound the search and escalate early.** Once a residual is shown to be a compiler
+- **Bound the search and escalate early.** Once a residual is shown to be an x87 operand-order
   tie-break (see [Inline expansion](#inline-expansion)), stop hunting and ask the human
-  whether to accept a fakematch. Reverse-engineering the compiler's tie-break rule has not
-  paid off.
+  whether to accept a fakematch. Reverse-engineering that tie-break rule has not paid off.
 
 ## Repository Layout
 
@@ -375,6 +376,15 @@ analyses, name evidence and matching notes in the disassembly folder (see
   `#define FILEPATH "C:\\dev\\MP\\..."` holding the binary's exact string and pass a base-10 line literal.
 - Boilerplate that recurs identically across modules is a shared macro, not per-file code
   (e.g. the version blocks: `LH_VERSION_INFO` in `LHLog/ver4.0/LHVersion.h`).
+- Parentheses around a product stop cl folding constants: `(x * 3) / 4` emits
+  `fmul 3.0; fmul 0.25`, while `x * 3 / 4` folds to one `fmul 0.75`.
+- When we narrow a flag helper's `& mask` to `test byte ptr` but the target keeps `mov; and; test`,
+  the AND result flows into a join at the caller:
+  `uint32_t type = i < n - 1 ? GetKeyPointType(i) : GESTURE_KEY_POINT_TYPE_END;`.
+- Use inline accessors such as `LHCoordF::X()`/`Y()`/`Set()` where the Mac build has them, not
+  direct field access; their float results add IL nodes that move the schedule.
+- An accessor's float result also makes its operand the heavier one, so it is loaded first:
+  `z - region.start.Y()` gives `fld start.y; fsubr [z]`.
 
 ### Header dependencies
 
