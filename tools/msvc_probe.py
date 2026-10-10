@@ -22,7 +22,7 @@ REL32 = 0x14
 def compile_command(unit):
     """Return (argv, source, obj) for the unit's base object, as Ninja would run it."""
     obj = unit["base_path"]
-    out = subprocess.run(["ninja", "-t", "commands", obj], cwd=ROOT, capture_output=True, text=True, check=True)
+    out = subprocess.run(["ninja", "-t", "commands", "-s", obj], cwd=ROOT, capture_output=True, text=True, check=True)
     line = out.stdout.strip().splitlines()[-1]
     argv = shlex.split(line, posix=os.name != "nt")
     source = next(a for a in argv if a.endswith((".cpp", ".c")) and not a.startswith("/"))

@@ -1003,33 +1003,52 @@ Black/GatheringInterface.cpp:
 
 Black/GenerateCreatureHTML.cpp:
 	.text       start:0x005773F0 end:0x00578540
-	.rdata      start:0x009000CC end:0x00900108
+	.rdata      start:0x009000CC end:0x009000F4
 	.CRT$XCU    start:0x009C69CC end:0x009C69E0 align:4
-	.data       start:0x00BEF29C end:0x00BEF87C
-	.bss        start:0x00D06454 end:0x00D064C4
+	.data       start:0x00BEF29C end:0x00BEF308
+	.bss        start:0x00D06454 end:0x00D06468
 
 Black/GestureSystem.cpp:
 	.text       start:0x00578540 end:0x00578B10
+	.rdata      start:0x009000F4 end:0x009000FC
 	.CRT$XCU    start:0x009C69E0 end:0x009C69F4 align:4
+	.bss        start:0x00D06468 end:0x00D06480
 
 Black/GestureSystemData.cpp:
 	.text       start:0x00578B10 end:0x00579370
+	.rdata      start:0x009000FC end:0x00900100
 	.CRT$XCU    start:0x009C69F4 end:0x009C6A08 align:4
+	.bss        start:0x00D06484 end:0x00D0649C
 
 Black/GestureSystemDataList.cpp:
-	.text       start:0x00579370 end:0x0057A8F0
-	.CRT$XCU    start:0x009C6A08 end:0x009C6A3C align:4
+	.text       start:0x00579370 end:0x00579CE0
+	.rdata      start:0x00900100 end:0x00900108
+	.CRT$XCU    start:0x009C6A08 end:0x009C6A1C align:4
+	.bss        start:0x00D064A0 end:0x00D064B8
+
+Black/GestureSystemMatch.cpp:
+	.text       start:0x00579CE0 end:0x0057A8F0
+	.rdata      start:0x00900108 end:0x00900118
+	.CRT$XCU    start:0x009C6A1C end:0x009C6A3C align:4
+	.bss        start:0x00D064BC end:0x00D064DC
 
 Black/GestureSystemResult.cpp:
-	.text       start:0x0057A8F0 end:0x0057BA70
-	.rdata      start:0x00900108 end:0x0090017C
+	.text       start:0x0057A8F0 end:0x0057BAF0
+	.rdata      start:0x00900118 end:0x0090011C
 	.CRT$XCU    start:0x009C6A3C end:0x009C6A54 align:4
-	.bss        start:0x00D064C4 end:0x00D06510
+	.data       start:0x00BEF308 end:0x00BEF478
+	.bss        start:0x00D064DC end:0x00D064F4
+
+Black/GestureSystemSamples.cpp:
+	.text       start:0x0057BAF0 end:0x0057C940
+	.rdata      start:0x0090011C end:0x0090012C
+	.CRT$XCU    start:0x009C6A54 end:0x009C6A68 align:4
+	.bss        start:0x00D064F4 end:0x00D0650C
 
 Black/GJUtils.cpp:
-	.text       start:0x0057BA70 end:0x00580840
+	.text       start:0x0057C940 end:0x00580840
 	.text$x     start:0x008A6490 end:0x008A64A0 align:4
-	.CRT$XCU    start:0x009C6A54 end:0x009C6A7C align:4
+	.CRT$XCU    start:0x009C6A68 end:0x009C6A7C align:4
 	.bss        start:0x00D06510 end:0x00D065B0
 
 Black/GJPersistent.cpp:

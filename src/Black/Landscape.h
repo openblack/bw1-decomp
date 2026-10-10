@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_LANDSCAPE_INCLUDED_H
 #define BW1_DECOMP_LANDSCAPE_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
+#include <assert.h>    /* For static_assert */
+#include <stdint.h>    /* For uint32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "MapCoords.h" /* For struct MapCoords */
 
@@ -14,6 +15,7 @@
 
 struct LH3DMaterial;
 struct LH3DTexture;
+struct LHCoord;
 struct LHPoint;
 struct MapCoords;
 class Object;
@@ -88,6 +90,8 @@ struct GLandscape
 	void Draw();
 	// BW1W120 005e52e0 BW1M119 01381950
 	void Open(char* path);
+	// BW1W120 005e5620 BW1M119 0102bc30
+	bool32_t __fastcall GetLHPointFromScreenCoord(LHCoord* coord, LHPoint* point, float* param_3);
 };
 
 // Free functions
