@@ -22,3 +22,8 @@ bool32_t PrayerSite::CreatureMustAvoid(Creature* param_1)
 {
 	return false;
 }
+
+MESH_LIST PrayerSite::GetMesh() const
+{
+	return info->GetMesh();
+}
