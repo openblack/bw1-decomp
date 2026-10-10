@@ -6,3 +6,8 @@ uint32_t Football::GetSaveType()
 {
 	return GAME_THING_TYPE_FOOTBALL;
 }
+
+LH3DObject::ObjectType Football::Get3DType()
+{
+	return LH3DObject::MORPHABLE;
+}

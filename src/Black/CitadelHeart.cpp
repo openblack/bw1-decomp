@@ -128,3 +128,13 @@ uint32_t UR_PlasmaInf::GetSaveType()
 {
 	return GAME_THING_TYPE_UR_PLASMA_INF;
 }
+
+LH3DObject::ObjectType CitadelHeart::Get3DType()
+{
+	return LH3DObject::CITADEL;
+}
+
+SCRIPT_OBJECT_TYPE CitadelHeart::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_CITADEL;
+}

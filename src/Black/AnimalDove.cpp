@@ -53,3 +53,8 @@ uint32_t Vulture::GetSaveType()
 {
 	return GAME_THING_TYPE_VULTURE;
 }
+
+SCRIPT_OBJECT_TYPE Dove::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_BIRD;
+}

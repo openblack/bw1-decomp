@@ -14,3 +14,8 @@ uint32_t GFootpathLink::GetSaveType()
 {
 	return GAME_THING_TYPE_GFOOTPATH_LINK;
 }
+
+SCRIPT_OBJECT_TYPE Dance::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_DANCE;
+}

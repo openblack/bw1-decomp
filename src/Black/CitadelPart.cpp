@@ -36,3 +36,8 @@ uint32_t CitadelPart::GetSaveType()
 {
 	return GAME_THING_TYPE_CITADEL_PART;
 }
+
+LH3DObject::ObjectType CitadelPart::Get3DType()
+{
+	return LH3DObject::MORPHABLE;
+}
