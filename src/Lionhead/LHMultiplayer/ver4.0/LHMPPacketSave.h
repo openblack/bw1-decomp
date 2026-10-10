@@ -26,6 +26,9 @@ struct LHReplayPacketInfo
 	unsigned long NumberOfSuperPackets; /* 0x0 */
 	unsigned long OutOfSyncGameTurn;    /* 0x4 */
 	unsigned long NumberOfPlayers;      /* 0x8 */
+
+	// BW1W120 inlined BW1M119 inlined
+	LHReplayPacketInfo() { memset(this, 0, sizeof(this)); }
 };
 
 class LH_MULTIPLAYER_API LHMPPacketSave
@@ -39,11 +42,7 @@ public:
 	LHReplayPacketInfo      Info;               /* 0x18 */
 
 	// BW1W120 100024f0 BW1M119 010ebfd0 (LHCombined Release)
-	LHMPPacketSave()
-	{
-		memset(&Info, 0, sizeof(Info.NumberOfSuperPackets));
-		memset(this, 0, sizeof(*this));
-	}
+	LHMPPacketSave() { memset((char*)this, 0, sizeof(*this)); }
 
 	// BW1W120 10002520 BW1M119 inlined
 	void UnReadEvent() { EventUnread = true; }

@@ -8,7 +8,7 @@
 #include <Lionhead/LHLog/ver4.0/LHLogger.h>
 #include <Lionhead/LHLog/ver4.0/LHVersion.h>
 
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetUtils.h"
 
 #include "LHTransport.h"
@@ -416,17 +416,34 @@ LH_RETURN LHConnection::OpenServerConnectionToOtherConnection(LHNetUser* user, L
 		return LH_FAIL;
 
 	Open = true;
-	if (Read(INFINITE, LH_NETEVENT_TYPE_NONE) != NULL && connection->Read(INFINITE, LH_NETEVENT_TYPE_NONE) != NULL &&
-	    Read(INFINITE, LH_NETEVENT_TYPE_NONE) != NULL && connection->Read(INFINITE, LH_NETEVENT_TYPE_NONE) != NULL &&
-	    Read(INFINITE, LH_NETEVENT_TYPE_NONE) != NULL)
+	if (Read(INFINITE, LH_NETEVENT_TYPE_NONE) == NULL)
 	{
-		if (Validated && connection->Validated)
-			return LH_OK;
+		Close();
 		return LH_ERROR;
 	}
-
-	Close();
-	return LH_ERROR;
+	if (connection->Read(INFINITE, LH_NETEVENT_TYPE_NONE) == NULL)
+	{
+		Close();
+		return LH_ERROR;
+	}
+	if (Read(INFINITE, LH_NETEVENT_TYPE_NONE) == NULL)
+	{
+		Close();
+		return LH_ERROR;
+	}
+	if (connection->Read(INFINITE, LH_NETEVENT_TYPE_NONE) == NULL)
+	{
+		Close();
+		return LH_ERROR;
+	}
+	if (Read(INFINITE, LH_NETEVENT_TYPE_NONE) == NULL)
+	{
+		Close();
+		return LH_ERROR;
+	}
+	if ((Validated && connection->Validated) == false)
+		return LH_ERROR;
+	return LH_OK;
 }
 
 void LHConnection::SetEventFunction(LHConnectionEventFunction event_function, void* context)
@@ -551,13 +568,13 @@ LHNetEvent* LHConnection::BlockingMultipleRead(unsigned long* index, LHConnectio
 	delete signals;
 	if (result == WAIT_FAILED)
 		return NULL;
-	if (result < 0 || result >= (long)count)
+	if ((result >= 0 && result < (long)count) == false)
 		return NULL;
 
 	*index = result;
-	if (connections[result]->CheckForEvents() == true)
-		return connections[result]->Read(0, LH_NETEVENT_TYPE_NONE);
-	return NULL;
+	if (connections[result]->CheckForEvents() != true)
+		return NULL;
+	return connections[result]->Read(0, LH_NETEVENT_TYPE_NONE);
 }
 
 LH_RETURN LHConnection::GetTransportInfo(LHTransportInfo* transport_info, bool32_t local)

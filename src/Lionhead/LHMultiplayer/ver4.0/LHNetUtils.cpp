@@ -16,7 +16,7 @@
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>
 #include <Lionhead/LHLog/ver4.0/LHVersion.h>
 
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetEvent.h"
 #include "LHNetTypes.h"
 #include "LHSNMP.h"

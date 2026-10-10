@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.30"
+config.dtk_tag = "v0.0.31"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
@@ -449,8 +449,11 @@ def LibObject(completed, archive, member, module=None, **options):
 
 # LHMultiplayerR.dll's own C++ was built with C++ exception handling (it carries
 # EH funclets and FuncInfo tables) but without RTTI (no type descriptors at all)
-# and without /G6 (LHSerial only matches without it).
-cflags_multiplayer = [*(f for f in cflags_base if f != "/GR"), "/GX"]
+# and without /G6 (LHSerial only matches without it). Lionhead libraries were
+# built with a _LH_<NAME>_LIB_ define (LH3DLib passes -D _LH_3D_LIB_, see
+# LH3DP3.cpp below); the multiplayer headers use it to hide DLL-only members
+# from the game, whose _$E numbering and RTTI order show it never saw them.
+cflags_multiplayer = [*(f for f in cflags_base if f != "/GR"), "/GX", "/D_LH_MULTIPLAYER_LIB_"]
 
 
 def MultiplayerObject(completed, name, **options):

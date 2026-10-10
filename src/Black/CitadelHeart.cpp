@@ -10,6 +10,9 @@
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
+#include "PSysProperties.h"
+#include "PlannedCitadelPart.h"
+#include "PlannedTownCitadelHeart.h"
 
 float GCitadelHeartInfo::GetTransferedDamageMultiplier()
 {
@@ -104,6 +107,26 @@ HELP_TEXT CitadelEntrance::GetQueryLastEnumText()
 void CitadelEntrance::ResolveLoad()
 {
 	info = &GObjectInfo::Definitions[OBJECT_TYPE_TERRAIN];
+}
+
+uint32_t CitadelHeart::GetSaveType()
+{
+	return GAME_THING_TYPE_CITADEL_HEART_1;
+}
+
+uint32_t PlannedCitadelPart::GetSaveType()
+{
+	return GAME_THING_TYPE_PLANNED_CITADEL_PART;
+}
+
+uint32_t PlannedTownCitadelHeart::GetSaveType()
+{
+	return GAME_THING_TYPE_PLANNED_TOWN_CITADEL_HEART;
+}
+
+uint32_t UR_PlasmaInf::GetSaveType()
+{
+	return GAME_THING_TYPE_UR_PLASMA_INF;
 }
 
 LH3DObject::ObjectType CitadelHeart::Get3DType()

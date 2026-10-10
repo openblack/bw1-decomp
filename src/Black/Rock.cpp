@@ -1,5 +1,10 @@
 #include "Rock.h"
 
+GPlayer* Rock::GetPlayer()
+{
+	return player;
+}
+
 RESOURCE_TYPE Rock::GetResourceType()
 {
 	return RESOURCE_TYPE_WOOD;

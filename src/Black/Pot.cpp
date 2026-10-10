@@ -5,6 +5,11 @@
 #include "PileFood.h"
 #include "PileWood.h"
 
+uint32_t PileFood::GetSaveType()
+{
+	return GAME_THING_TYPE_PILE_FOOD;
+}
+
 LH3DObject::ObjectType PileFood::Get3DType()
 {
 	return LH3DObject::MORPHABLE;

@@ -5,3 +5,8 @@
 #include "ScriptHighlightInfo.h"
 
 GScriptHighlightInfo GScriptHighlightInfo::Infos[SCRIPT_HIGHLIGHT_INFO_LAST];
+
+uint32_t ScriptHighlight::GetSaveType()
+{
+	return GAME_THING_TYPE_SCRIPT_HIGHLIGHT;
+}

@@ -5,12 +5,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
 #include <Lionhead/LHLog/ver4.0/LHLogger.h>
 #include <Lionhead/LHLog/ver4.0/LHVersion.h>
 #include "LHConnection.h"
 #include "LHLobby.h"
 #include "LHMPServerStartInfo.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetEvent.h"
 #include "LHPacket.h"
 #include "LHPlayer.h"
@@ -210,7 +211,7 @@ LH_RETURN LHMessageServer::AddConnection(LHServerPlayer* player)
 		{
 			char* ip = NULL;
 			if (event->VDecode(LH_NETEVENT_TYPE_MSERVE_CLIENT_LOCAL_ADDRESS, &ip) == LH_OK && ip != NULL)
-				player->TransportInfo = LHTransportInfo(ip, player->GetTransportInfo()->GetPort());
+				player->SetTransportInfo(&LHTransportInfo(ip, player->GetTransportInfo()->GetPort()));
 		}
 	}
 
@@ -250,10 +251,9 @@ bool LHMessageServer::WeHaveNoBananas(unsigned long& min_turn, unsigned long& ma
 	unsigned long lastSize = 0;
 	LHNetEvent*   events[LH_MSERVE_MAX_CATCHUP_TURNS];
 
-	LHLinkedNode<LHServerPlayer*>* node;
-	for (node = Players.GetStart(); node != NULL; node = node->next.Get())
+	for (LHLinkedListIterator<LHServerPlayer*> it = Players.GetStart(); it; it++)
 	{
-		LHServerPlayer* player = node->payload;
+		LHServerPlayer* player = it.Get();
 		if (player->LastSuperPacketTurn == LH_INVALID_GAME_TURN)
 			return false;
 		if (max_turn == LH_INVALID_GAME_TURN)
@@ -315,9 +315,9 @@ bool LHMessageServer::WeHaveNoBananas(unsigned long& min_turn, unsigned long& ma
 	}
 
 	ParseCatchupData(events, data, max_turn - min_turn);
-	for (node = Players.GetStart(); node != NULL; node = node->next.Get())
+	for (LHLinkedListIterator<LHServerPlayer*> it2 = Players.GetStart(); it2; it2++)
 	{
-		LHServerPlayer* player = node->payload;
+		LHServerPlayer* player = it2.Get();
 		for (long i = player->LastSuperPacketTurn - min_turn; i < (long)(max_turn - min_turn); i++)
 			SendEventCopyToPlayer(player, events[i]);
 	}
@@ -331,12 +331,11 @@ bool LHMessageServer::WeHaveNoBananas(unsigned long& min_turn, unsigned long& ma
 void LHMessageServer::IgnoreChecksums(unsigned long min_turn, unsigned long max_turn)
 {
 	LHTimer timer;
-	timer.Reset(0);
-	timer.Start();
+	timer.Restart(0);
 
-	for (LHLinkedNode<LHServerPlayer*>* node = Players.GetStart(); node != NULL; node = node->next.Get())
+	for (LHLinkedListIterator<LHServerPlayer*> it = Players.GetStart(); it.Node != NULL; it++)
 	{
-		LHServerPlayer* player = node->payload;
+		LHServerPlayer* player = it.Node->payload;
 		for (long i = player->LastSuperPacketTurn - min_turn; i < (long)(max_turn - min_turn); i++)
 		{
 			unsigned long checksum;
@@ -360,9 +359,9 @@ void LHMessageServer::IgnoreChecksums(unsigned long min_turn, unsigned long max_
 
 void LHMessageServer::InitialiseChecksumLNGT()
 {
-	for (LHLinkedNode<LHServerPlayer*>* node = Players.GetStart(); node != NULL; node = node->next.Get())
+	for (LHLinkedListIterator<LHServerPlayer*> it = Players.GetStart(); it; it++)
 	{
-		LHServerPlayer* player = node->payload;
+		LHServerPlayer* player = it.Get();
 		player->NextChecksumTurn = LH_INVALID_GAME_TURN;
 		player->NextFullChecksumTurn = LH_INVALID_GAME_TURN;
 	}
@@ -538,10 +537,9 @@ LH_RETURN LHMessageServer::ProcessMServeClientSyncPacket(LHConnection* connectio
 		player->SyncDataSize = event->GetPacket()->GetDataLen() - LH_NETEVENT_HEADER_SIZE;
 	}
 
-	LHLinkedNode<LHServerPlayer*>* node;
-	for (node = Players.GetStart(); node != NULL; node = node->next.Get())
+	for (LHLinkedListIterator<LHServerPlayer*> it = Players.GetStart(); it; it++)
 	{
-		LHServerPlayer* other = node->payload;
+		LHServerPlayer* other = it.Get();
 		if (other->GetUserID().IsType(LH_USER_ID::CATEGORY_PLAYER) && !other->SyncPacketReceived &&
 		    (!removed || other->Connection != connection))
 			return LH_OK;
@@ -557,9 +555,9 @@ LH_RETURN LHMessageServer::ProcessMServeClientSyncPacket(LHConnection* connectio
 		memcpy(data, first->SyncData, size);
 	}
 
-	for (node = Players.GetStart(); node != NULL; node = node->next.Get())
+	for (LHLinkedListIterator<LHServerPlayer*> it2 = Players.GetStart(); it2; it2++)
 	{
-		LHServerPlayer* other = node->payload;
+		LHServerPlayer* other = it2.Get();
 		if (size != 0 && (size != other->SyncDataSize || memcmp(data, other->SyncData, size) != 0))
 		{
 			LHNetEvent* failed =
@@ -616,10 +614,7 @@ LH_RETURN LHMessageServer::ProcessMServeClientChecksumData(LHConnection* connect
 
 	long            index = GetConnectedPlayer(connection)->GetPlayerID();
 	LHServerPlayer* player = GetConnectedPlayer(connection);
-	oosInfo[index].Data = malloc(size);
-	memcpy(oosInfo[index].Data, data, size);
-	oosInfo[index].Size = size;
-	oosInfo[index].Player = player;
+	oosInfo[index].Set(data, size, player);
 
 	if (received == NumPlayers)
 	{

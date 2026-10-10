@@ -6,6 +6,7 @@
 #include <wchar.h>
 #include <windows.h>
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
 #include "LHNetEvent.h"
 #include "LHNetUtils.h"
 #include "LHPlayer.h"
@@ -102,8 +103,8 @@ void LHMPPacketSave::ProcessHeader(LHSession* session)
 void LHMPPacketSave::RestoreOriginalPlayerList(LHSession* session)
 {
 	session->Players.DeleteAll();
-	for (LHLinkedNode<LHPlayer*>* node = OriginalPlayerList.GetStart(); node != NULL; node = node->next.Get())
-		session->Players.Add(node->payload);
+	for (LHLinkedListIterator<LHPlayer*> it = OriginalPlayerList.GetStart(); it; it++)
+		session->Players.Add(it.Get());
 }
 
 LH_RETURN LHMPPacketSave::CheckSavedPacketsAvail(LHReplayPacketInfo* info)
@@ -136,8 +137,9 @@ LHNetEvent* LHMPPacketSave::ReadEventFromFile()
 	}
 	if (!ReadFile(File, &length, sizeof(length), &bytes, NULL) || bytes != sizeof(length))
 		return NULL;
-	LHPacket* packet = (LHPacket*)calloc(length + LH_PACKET_ALLOCATION_PADDING, 1);
-	packet->SetDataLen(length);
+	unsigned long size = length;
+	LHPacket*     packet = (LHPacket*)calloc(size + LH_PACKET_ALLOCATION_PADDING, 1);
+	packet->SetDataLen(size);
 	if (!ReadFile(File, packet->GetDataPtr(), length, &bytes, NULL) || bytes != length)
 		return NULL;
 	packet->SetDataLen(length);

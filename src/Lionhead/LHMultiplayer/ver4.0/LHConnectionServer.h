@@ -195,16 +195,12 @@ public:
 	// BW1W120 inlined BW1M119 010f4010 (LHCombined Release)
 	LHTransportInfo* GetConnectionAcceptorInfo()
 	{
-		if (Listener != NULL)
-			return Listener->GetConnectionAcceptorInfo();
-		return NULL;
+		return Listener != NULL ? Listener->GetConnectionAcceptorInfo() : NULL;
 	}
 	// BW1W120 inlined BW1M119 010f40a0 (LHCombined Release)
 	LHTransportInfo* GetBroadcastListenerInfo()
 	{
-		if (Listener != NULL)
-			return Listener->GetBroadcastListenerInfo();
-		return NULL;
+		return Listener != NULL ? Listener->GetBroadcastListenerInfo() : NULL;
 	}
 	// BW1W120 inlined BW1M119 010f41d0 (LHCombined Release)
 	LH_USER_ID GetUserID() { return NetUser.GetID(); }
