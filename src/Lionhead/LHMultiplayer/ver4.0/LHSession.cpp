@@ -11,7 +11,7 @@
 #include "LHLobby.h"
 #include "LHMPPacketSave.h"
 #include "LHMessageServer.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetEvent.h"
 #include "LHNetUtils.h"
 #include "LHPlayer.h"

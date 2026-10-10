@@ -55,7 +55,7 @@ public:
 	LH_OPERATING_MODE         Mode;                                      /* 0x8c */
 
 protected:
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10068600 BW1M119 01356634 (LHCombined Release)
 	static char RegisteredGame[LH_MAX_NAME_LENGTH + 1];
 #endif
@@ -84,7 +84,7 @@ public:
 	LH_USER_ID GetConnectedUserID() { return ConnectedUserID; }
 	// BW1W120 10002080 BW1M119 inlined
 	wchar_t* GetConnectedUserName() { return ConnectedUserName; }
-#ifdef LH_MULTIPLAYER_EXPORTS
+#ifdef _LH_MULTIPLAYER_LIB_
 	// BW1W120 10002090 BW1M119 inlined
 	char* GetRegisteredName() { return RegisteredGame; }
 #endif

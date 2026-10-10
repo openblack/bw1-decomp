@@ -5,7 +5,7 @@
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHPlayer.h"
 
 typedef LHLinkedList<LHPacketisableObject*> LHPacketisableObjectList;

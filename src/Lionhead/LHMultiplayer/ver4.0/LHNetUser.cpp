@@ -9,7 +9,7 @@
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>
 #include "LHDatabase.h"
 #include "LHHttp.h"
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHNetUtils.h"
 #include "LHTransportInfo.h"
 

@@ -5,7 +5,7 @@
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>
 
-#include "LHNetErrors.h"
+#include "LHNetLog.h"
 #include "LHUserID.h"
 
 inline unsigned char* LHNetEncodeULONG(unsigned char* buffer, unsigned long value)
