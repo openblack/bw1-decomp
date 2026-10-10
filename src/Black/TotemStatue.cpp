@@ -21,3 +21,9 @@ bool32_t TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
 {
 	return true;
 }
+
+
+float TotemStatue::GetWorshipSpeed()
+{
+	return WorshipSpeed;
+}

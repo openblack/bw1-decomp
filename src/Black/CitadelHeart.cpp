@@ -165,3 +165,9 @@ uint32_t CitadelHeart::GetPhysicsConstantsType()
 {
 	return 0;
 }
+
+
+void CitadelHeart::SetSpecularColor(unsigned long param_1)
+{
+	field_0xa0 = param_1;
+}

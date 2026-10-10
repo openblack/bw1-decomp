@@ -24,3 +24,4 @@ uint32_t Rock::GetOverwriteTapToolTip()
 {
 	return 3831;
 }
+

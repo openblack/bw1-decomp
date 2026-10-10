@@ -35,3 +35,14 @@ uint32_t Creature::InterfaceGiveObject(GInterfaceStatus* param_1, Object* param_
 {
 	return 22;
 }
+
+
+GPlayer* Creature::GetPlayer()
+{
+	return owner;
+}
+
+MapCoords* Creature::GetDestPos()
+{
+	return &field_0x1214;
+}

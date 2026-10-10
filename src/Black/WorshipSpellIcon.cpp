@@ -10,3 +10,8 @@ uint32_t WorshipSpellIcon::SaveObject(LHOSFile& param_1, const MapCoords* param_
 {
 	return 0;
 }
+
+unsigned long WorshipSpellIcon::GetTurnChargingStarted()
+{
+	return field_0x138;
+}
