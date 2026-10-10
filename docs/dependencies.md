@@ -6,6 +6,9 @@ Required on every host:
 - [Python 3](https://www.python.org/downloads/)
 - [ninja](https://github.com/ninja-build/ninja/releases) (or `pip install ninja`)
 
+Optional: `tools/difftest` ([differential testing](differential_testing.md)) needs
+`pip install unicorn capstone`.
+
 Everything else is downloaded automatically by `configure.py` on first run:
 
 - `dtk` — [openblack/decomp-toolkit](https://github.com/openblack/decomp-toolkit) build (split + link verification)

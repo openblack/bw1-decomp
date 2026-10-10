@@ -11,6 +11,7 @@
 class Abode;
 struct JustMapXZ;
 struct LH3DColor;
+struct LHCoord;
 struct LHPoint;
 struct MapCoords;
 
@@ -48,6 +49,8 @@ struct GUtils
 	static float GetDistanceInMetres(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074cde0 BW1M119 01036610
 	static float GetDistance(const LHPoint& a, const LHPoint& b);
+	// BW1W120 0074caf0 BW1M119 01076080
+	static void __fastcall SetPointFromScreenPointAndDistance(LHCoord* coord, float distance, LHPoint* point);
 	// BW1W120 0074cd50 BW1M119 null
 	static float GetDistanceInMetres_0074cd50(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074d200 BW1M119 010516f0
