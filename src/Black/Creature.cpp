@@ -3,6 +3,9 @@
 
 #include "ColourConstants.h"    /* For White */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "ColourConstants.h" /* For White */
+#include "CreatureInfo.h"
+#include "CreaturePhysical.h"
 
 uint32_t Creature::GetSaveType()
 {
@@ -45,4 +48,29 @@ GPlayer* Creature::GetPlayer()
 MapCoords* Creature::GetDestPos()
 {
 	return &field_0x1214;
+}
+
+LH3DCreature* Creature::GetCreature3D()
+{
+	return physical->Creature3d;
+}
+
+uint32_t Creature::GetAge()
+{
+	return physical->field_0x8;
+}
+
+float Creature::GetMaxAlignmentChangePerGameTurn()
+{
+	return GetInfo()->field_0x348[0];
+}
+
+float Creature::GetRunningSpeedInMetres()
+{
+	return physical->field_0x40;
+}
+
+float Creature::GetDefaultSpeedInMetres()
+{
+	return physical->field_0x3c;
 }
