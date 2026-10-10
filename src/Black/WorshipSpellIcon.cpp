@@ -15,3 +15,8 @@ unsigned long WorshipSpellIcon::GetTurnChargingStarted()
 {
 	return field_0x138;
 }
+
+bool32_t WorshipSpellIcon::IsEffectReceiver(EffectValues* param_1)
+{
+	return false;
+}

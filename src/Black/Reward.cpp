@@ -8,6 +8,11 @@ uint32_t Reward::GetSaveType()
 
 void Reward::PhysicsEditorCreate(int param_1) {}
 
+bool32_t Reward::ValidForPlaceInHand(GInterfaceStatus* param_1)
+{
+	return false;
+}
+
 uint32_t Reward::GetOverwriteTapToolTip()
 {
 	return 3832;

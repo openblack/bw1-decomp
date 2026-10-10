@@ -129,3 +129,48 @@ uint32_t Creature::CallEntryStateFunction(uint8_t state)
 {
 	return 1;
 }
+
+bool32_t Creature::IsReachable()
+{
+	return false;
+}
+
+bool32_t Creature::ValidForPlaceInHand(GInterfaceStatus* param_1)
+{
+	return false;
+}
+
+bool32_t Creature::IsSuitableForCreatureActivity()
+{
+	return true;
+}
+
+bool32_t Creature::CanBePickedUp()
+{
+	return true;
+}
+
+bool32_t Creature::CanBeExaminedByCreature(Creature* param_1)
+{
+	return false;
+}
+
+bool32_t Creature::CanBeEatenByCreature(Creature* param_1)
+{
+	return false;
+}
+
+bool32_t Creature::NetworkUnfriendlyEndLockedSelect()
+{
+	return true;
+}
+
+bool32_t Creature::CanBecomeAPhysicsObject()
+{
+	return false;
+}
+
+bool Creature::InteractsWithPhysicsObjects()
+{
+	return true;
+}

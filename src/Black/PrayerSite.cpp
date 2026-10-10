@@ -17,3 +17,8 @@ Town* PrayerSite::GetTown()
 {
 	return NULL;
 }
+
+bool32_t PrayerSite::CreatureMustAvoid(Creature* param_1)
+{
+	return false;
+}

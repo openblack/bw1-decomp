@@ -7,3 +7,13 @@ uint32_t FireFly::GetSaveType()
 }
 
 void FireFly::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2) {}
+
+bool FireFly::InteractsWithPhysicsObjects()
+{
+	return false;
+}
+
+bool32_t FireFly::CanBecomeAPhysicsObject()
+{
+	return false;
+}

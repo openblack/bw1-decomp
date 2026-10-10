@@ -24,3 +24,13 @@ float WorshipTotem::CalculatePeopleHidingIndicator()
 {
 	return site->CalculatePeopleHidingIndicator();
 }
+
+bool32_t WorshipTotem::IsEffectReceiver(EffectValues* param_1)
+{
+	return false;
+}
+
+bool32_t WorshipTotem::IsSacrificeAltar()
+{
+	return true;
+}

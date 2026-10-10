@@ -38,3 +38,13 @@ uint32_t Citadel::GetOrigin()
 {
 	return OBJECT_ORIGIN_MAGIC;
 }
+
+bool32_t Citadel::IsSuitableForCreatureActivity()
+{
+	return true;
+}
+
+bool32_t Citadel::IsCitadel()
+{
+	return true;
+}

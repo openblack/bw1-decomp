@@ -24,3 +24,18 @@ uint32_t SpellSeed::SaveObject(LHOSFile& param_1, const MapCoords* param_2)
 {
 	return 0;
 }
+
+bool32_t SpellSeed::HandShouldFeelWithMeshIntersect()
+{
+	return false;
+}
+
+bool SpellSeed::InteractsWithPhysicsObjects()
+{
+	return false;
+}
+
+bool32_t SpellSeed::IsEffectReceiver(EffectValues* param_1)
+{
+	return false;
+}
