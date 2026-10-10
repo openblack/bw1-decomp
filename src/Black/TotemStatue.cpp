@@ -9,3 +9,8 @@ bool TotemStatue::InteractsWithPhysicsObjects()
 {
 	return false;
 }
+
+SCRIPT_OBJECT_TYPE TotemStatue::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_TOTEM_STATUE;
+}

@@ -10,3 +10,8 @@ Town* Flock::GetTown()
 {
 	return town;
 }
+
+SCRIPT_OBJECT_TYPE Flock::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_FLOCK;
+}

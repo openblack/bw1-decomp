@@ -11,3 +11,8 @@ bool Football::InteractsWithPhysicsObjects()
 {
 	return false;
 }
+
+LH3DObject::ObjectType Football::Get3DType()
+{
+	return LH3DObject::MORPHABLE;
+}
