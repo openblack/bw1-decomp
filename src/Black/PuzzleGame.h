@@ -236,6 +236,13 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	PieceLion() {}
+	// BW1W120 inlined BW1M119 inlined
+	PieceLion(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3) : Lion(coords, info, param_3) {}
+
+	// Static methods
+
+	// BW1W120 00420040 BW1M119 0117e5e0
+	static PieceLion* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3);
 };
 
 class PiecePig : public Pig

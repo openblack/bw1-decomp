@@ -1,6 +1,9 @@
 #include "GameTimeConstants.h"
 #include "AnimalLion.h"
 #include "PuzzleGame.h"
+#include "Game3DObject.h" /* For Game3DObject */
+#include "PuzzleGame.h"   /* For PieceLion */
+#include "Reaction.h"     /* For Reaction */
 
 uint32_t Lion::GetSaveType()
 {
@@ -30,4 +33,15 @@ uint32_t PieceLion::CheckNeeds()
 bool32_t PieceLion::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;
+}
+
+PieceLion* PieceLion::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3)
+{
+	PieceLion* lion = new (ANIMAL_LION_FILE, 153) PieceLion(coords, info, param_3);
+	if (lion != NULL)
+	{
+		lion->CallVirtualFunctionsForCreation(coords);
+		lion->Game3dObject->SetHumanShadowed(1);
+	}
+	return lion;
 }
