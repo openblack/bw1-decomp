@@ -3,8 +3,12 @@ GameSpy Chat SDK
 Dan "Mr. Pants" Schoenblum
 dan@gamespy.com
 
-Copyright 1999-2007 GameSpy Industries, Inc
+Copyright 1999-2001 GameSpy Industries, Inc
 
+18002 Skypark Circle
+Irvine, California 92614
+949.798.4200 (Tel)
+949.798.4299 (Fax)
 devsupport@gamespy.com
 */
 
@@ -13,16 +17,17 @@ devsupport@gamespy.com
 *************/
 #include <stdio.h>
 #include <stdarg.h>
+#if !defined(UNDER_CE) && !defined(__KATANA__)
+#include <assert.h>
+#else
+#define assert(a)
+#endif
 #include <string.h>
 #include <limits.h>
 #include <stdlib.h>
-#include "chatMain.h"
 #include "chatSocket.h"
-
-
-#if defined(_WIN32)
-// Silence the "conditional expression is constant" on the FD_SET macros
-#pragma warning(disable:4127)
+#if !defined(__KATANA__) && !defined(UNDER_CE)
+#include <time.h>
 #endif
 
 /************
@@ -54,13 +59,13 @@ devsupport@gamespy.com
 								}
 #define RESET(ptr)  {if (ptr) {gsifree(ptr); ptr = NULL;} }
 
+
 /*********
 ** TIME **
 *********/
-#ifdef IRC_LOG
-static const char * ciGetTime(void)
+const char * ciGetTime(void)
 {
-#if defined(UNDER_CE) || defined(_PS2) || defined(_NITRO)
+#if defined(__KATANA__) || defined(UNDER_CE) || defined(__mips64)
 	return "";
 #else
 	static char buffer[256];
@@ -69,19 +74,14 @@ static const char * ciGetTime(void)
 
 	timer = time(NULL);
 	now = localtime(&timer);
-	if(now) // fixes the date > 2060 crash (23apr03/bgw)
-	{
-		if(now->tm_year > 99)
-			now->tm_year -= 100;
-		sprintf(buffer, "%02d.%02d.%02d %02d:%02d.%02d", now->tm_mon + 1, now->tm_mday, now->tm_year, now->tm_hour, now->tm_min, now->tm_sec);
-	}
-	else
-		strcpy(buffer, "00.00.00 00:00.00");
+	if(now->tm_year > 99)
+		now->tm_year -= 100;
+
+	sprintf(buffer, "%02d.%02d.%02d %02d:%02d.%02d", now->tm_mon + 1, now->tm_mday, now->tm_year, now->tm_hour, now->tm_min, now->tm_sec);
 
 	return buffer;
 #endif
 }
-#endif
 
 /***********
 ** BUFFER **
@@ -92,7 +92,7 @@ static CHATBool ciBufferInit(ciBuffer * buffer)
 
 	buffer->length = 0;
 	buffer->size = BUFFER_INC;
-	buffer->buffer = (char *)gsimalloc((unsigned int)buffer->size + 1);
+	buffer->buffer = (char *)gsimalloc(buffer->size + 1);
 	if(buffer->buffer == NULL)
 		return CHATFalse;
 
@@ -130,7 +130,7 @@ static CHATBool ciBufferPreAppend(ciBuffer * buffer, int len)
 
 	// Allocate the memory.
 	///////////////////////
-	tempPtr = (char *)gsirealloc(buffer->buffer, (unsigned int)total + 1);
+	tempPtr = (char *)gsirealloc(buffer->buffer, total + 1);
 	if(tempPtr == NULL)
 		return CHATFalse;
 
@@ -149,22 +149,14 @@ static void ciBufferClipFront(ciBuffer * buffer, int len)
 	assert(len <= buffer->length);
 
 	buffer->length -= len;
-	memmove(buffer->buffer, &buffer->buffer[len], (unsigned int)buffer->length);
+	memmove(buffer->buffer, &buffer->buffer[len], buffer->length);
 	buffer->buffer[buffer->length] = '\0';
 }
-
-
-#ifdef __MWERKS__ // CodeWarrior will warn if not prototyped
-/***************
-** PROTOTYPES **
-****************/
-CHATBool ciParseParam(const char *pText, ciServerMessage * message);
-#endif
 
 /**************
 ** FUNCTIONS **
 **************/
-CHATBool ciSocketInit(ciSocket * sock, const char * nick)
+CHATBool ciSocketInit(ciSocket * sock)
 {
 #ifdef IRC_LOG
 	FILE * log;
@@ -183,17 +175,14 @@ CHATBool ciSocketInit(ciSocket * sock, const char * nick)
 		return CHATFalse;
 	}
 #ifdef IRC_LOG
-	sprintf(sock->filename, "%s_irc.log", nick);
-	log = fopen(sock->filename, "at");
+	log = fopen("irc.log", "at");
 	if(log != NULL)
 	{
 		fprintf(log, "\n\n\n\n\nCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC\n");
 		fclose(log);
 	}
 #endif
-
-	GSI_UNUSED(nick);
-	return CHATTrue;	
+	return CHATTrue;
 }
 
 CHATBool ciSocketConnect(ciSocket * sock,
@@ -204,10 +193,7 @@ CHATBool ciSocketConnect(ciSocket * sock,
 	HOSTENT * host;
 	SOCKADDR_IN address;
 	int rcode;
-
-#if !defined(INSOCK) && !defined(_NITRO) && !defined(_REVOLUTION)
 	int keepalive;
-#endif
 
 	ASSERT_SOCK(sock);
 	assert(serverAddress != NULL);
@@ -217,7 +203,7 @@ CHATBool ciSocketConnect(ciSocket * sock,
 
 	// Copy off the address.
 	////////////////////////
-	strzcpy(sock->serverAddress, serverAddress, 255);
+	strncpy(sock->serverAddress, serverAddress, 255);
 
 	// Try resolving the string as an IP a.b.c.d number.
 	////////////////////////////////////////////////////
@@ -250,16 +236,14 @@ CHATBool ciSocketConnect(ciSocket * sock,
 
 	// Enable keep-alive.
 	/////////////////////
-#if !defined(INSOCK) && !defined(_NITRO) && !defined(_REVOLUTION)
 	keepalive = 1;
 	rcode = setsockopt(sock->sock, SOL_SOCKET, SO_KEEPALIVE, (char *)&keepalive, sizeof(int));
-	//assert(gsiSocketIsNotError(rcode));
-#endif
+	//assert(rcode != SOCKET_ERROR);
 
 	// Try and connect.
 	///////////////////
 	rcode = connect(sock->sock, (SOCKADDR *)&address, sizeof(SOCKADDR_IN));
-	if(gsiSocketIsError(rcode))
+	if(rcode == SOCKET_ERROR)
 	{
 		closesocket(sock->sock);
 		return CHATFalse;
@@ -312,20 +296,82 @@ void ciSocketDisconnect(ciSocket * sock)
 
 static void ciSocketSelect(SOCKET sock, CHATBool * readFlag, CHATBool * writeFlag, CHATBool * exceptFlag)
 {
-	int aReadFlag   = 0;
-	int aWriteFlag  = 0;
-	int aExceptFlag = 0;
+	fd_set writeSet;
+	fd_set readSet;
+	fd_set exceptSet;
+	fd_set * writefds;
+	fd_set * readfds;
+	fd_set * exceptfds;
+	int rcode;
+	struct timeval timeout;
 
-	// Call generic select GSISocketSelect
-	GSISocketSelect(sock, &aReadFlag, &aWriteFlag, &aExceptFlag);
-	
-	// Translate the int flags to ChatBool flags
-	if (readFlag)
-		*readFlag   = (CHATBool)aReadFlag;
-	if (writeFlag)
-		*writeFlag  = (CHATBool)aWriteFlag;
-	if (exceptFlag)
-		*exceptFlag = (CHATBool)aExceptFlag;
+	assert(sock != INVALID_SOCKET);
+
+	// Setup the parameters.
+	////////////////////////
+	if(readFlag != NULL)
+	{
+		FD_ZERO(&readSet);
+		FD_SET(sock, &readSet);
+		readfds = &readSet;
+	}
+	else
+	{
+		readfds = NULL;
+	}
+	if(writeFlag != NULL)
+	{
+		FD_ZERO(&writeSet);
+		FD_SET(sock, &writeSet);
+		writefds = &writeSet;
+	}
+	else
+	{
+		writefds = NULL;
+	}
+	if(exceptFlag != NULL)
+	{
+		FD_ZERO(&exceptSet);
+		FD_SET(sock, &exceptSet);
+		exceptfds = &exceptSet;
+	}
+	else
+	{
+		exceptfds = NULL;
+	}
+
+	timeout.tv_sec = 0;
+	timeout.tv_usec = 0;
+
+	// Get the write info.
+	//////////////////////
+	rcode = select(FD_SETSIZE, readfds, writefds, exceptfds, &timeout);
+	if(rcode == SOCKET_ERROR)
+		return;
+
+	// Check results.
+	/////////////////
+	if(readFlag != NULL)
+	{
+		if(rcode > 0 && FD_ISSET(sock, readfds))
+			*readFlag = CHATTrue;
+		else
+			*readFlag = CHATFalse;
+	}
+	if(writeFlag != NULL)
+	{
+		if(rcode > 0 && FD_ISSET(sock, writefds))
+			*writeFlag = CHATTrue;
+		else
+			*writeFlag = CHATFalse;
+	}
+	if(exceptFlag != NULL)
+	{
+		if(rcode > 0 && FD_ISSET(sock, exceptfds))
+			*exceptFlag = CHATTrue;
+		else
+			*exceptFlag = CHATFalse;
+	}
 }
 
 static void ciSocketThinkSend(ciSocket * sock)
@@ -352,10 +398,9 @@ static void ciSocketThinkSend(ciSocket * sock)
 		/////////////////////
 		len = min(sock->outputQueue.length, 1024);
 		rcode = send(sock->sock, sock->outputQueue.buffer, len, 0);
-
 		if(rcode == 0)
 			return;
-		if(gsiSocketIsError(rcode))
+		if(rcode == SOCKET_ERROR)
 			return; //ERRCON
 
 		// Update the output queue.
@@ -369,7 +414,6 @@ static void ciSocketThinkRecv(ciSocket * sock)
 	CHATBool readFlag;
 	int len;
 	int rcode;
-	char * pos;
 	
 	ASSERT_SOCK(sock);
 	ASSERT_CONNECTED(sock);
@@ -392,13 +436,15 @@ static void ciSocketThinkRecv(ciSocket * sock)
 
 		// Recv into the buffer.
 		////////////////////////
-		pos = &sock->inputQueue.buffer[sock->inputQueue.length];
-		rcode = recv(sock->sock, pos, RECV_LEN, 0);
-
+		rcode = recv(sock->sock, &sock->inputQueue.buffer[sock->inputQueue.length], RECV_LEN, 0);
+		/*if(rcode == SOCKET_ERROR)
+			return; //ERRCON
+*/
 		// Connection closed?
 		/////////////////////
 		if(rcode <= 0) //crt -- handle remote disconnections
 		{
+			rcode = GOAGetLastError(sock->sock);
 			sock->connectState = ciDisconnected;
 			return;
 		}
@@ -421,11 +467,6 @@ static void ciSocketThinkRecv(ciSocket * sock)
 		OutputDebugString("<<<---XXXRECV\n");
 }
 #endif
-
-		// Decrypt data if the socket is secure.
-		////////////////////////////////////////
-		if(sock->secure)
-			gs_crypt((unsigned char *)pos, len, &sock->inKey);
 
 		// Update the buffer length.
 		////////////////////////////
@@ -463,7 +504,6 @@ CHATBool ciSocketSend(ciSocket * sock,
 	FILE * log;
 #endif
 	int len;
-	char * pos;
 
 	ASSERT_SOCK(sock);
 	ASSERT_CONNECTED(sock);
@@ -476,7 +516,7 @@ CHATBool ciSocketSend(ciSocket * sock,
 
 	// Get the buffer length.
 	/////////////////////////
-	len = (int)strlen(buffer);
+	len = strlen(buffer);
 
 	// Make sure the buffer is big enough.
 	//////////////////////////////////////
@@ -485,8 +525,7 @@ CHATBool ciSocketSend(ciSocket * sock,
 
 	// Append to the output buffer.
 	///////////////////////////////
-	pos = &sock->outputQueue.buffer[sock->outputQueue.length];
-	memcpy(pos, buffer, (unsigned int)len);
+	memcpy(&sock->outputQueue.buffer[sock->outputQueue.length], buffer, len);
 
 	// Update the buffer length.
 	////////////////////////////
@@ -497,15 +536,10 @@ CHATBool ciSocketSend(ciSocket * sock,
 	sock->outputQueue.buffer[sock->outputQueue.length++] = 0x0D;
 	sock->outputQueue.buffer[sock->outputQueue.length++] = 0x0A;
 
-	// Encrypt data if the socket is secure.
-	////////////////////////////////////////
-	if(sock->secure)
-		gs_crypt((unsigned char *)pos, len + 2, &sock->outKey);
-
 #ifdef IRC_LOG
 	// Write it to the log.
 	///////////////////////
-	log = fopen(sock->filename, "at");
+	log = fopen("irc.log", "at");
 	if(log != NULL)
 	{
 		fprintf(log, "%s | OUT | %s\n", ciGetTime(), buffer);
@@ -540,7 +574,7 @@ CHATBool ciSocketSendf(ciSocket * sock,
 	if(num != -1)
 		buffer[num] = '\0';
 	else
-		buffer[sizeof(buffer) - 1] = '\0'; //ERRCON
+		buffer[sizeof(buffer)] = '\0'; //ERRCON
 
 	// Send.
 	////////
@@ -595,11 +629,11 @@ static CHATBool ciParseUser(const char *pText, ciServerMessage * message)
 	
 	if(nNick)
 	{
-		message->nick = (char *)gsimalloc((unsigned int)nNick + 1);
+		message->nick = (char *)gsimalloc(nNick + 1);
 		
 		if(message->nick)
 		{
-			memcpy(message->nick, pTmpNick, (unsigned int)nNick);
+			memcpy(message->nick, pTmpNick, nNick);
 			message->nick[nNick] = '\0';
 		}
 	}
@@ -608,11 +642,11 @@ static CHATBool ciParseUser(const char *pText, ciServerMessage * message)
 	
 	if(nUsername)
 	{
-		message->user = (char *)gsimalloc((unsigned int)nUsername + 1);
+		message->user = (char *)gsimalloc(nUsername + 1);
 		
 		if(message->user)
 		{
-			memcpy(message->user, pTmpUsername, (unsigned int)nUsername);
+			memcpy(message->user, pTmpUsername, nUsername);
 			message->user[nUsername] = '\0';
 		}
 	}
@@ -621,11 +655,11 @@ static CHATBool ciParseUser(const char *pText, ciServerMessage * message)
 	
 	if(nHost)
 	{
-		message->host = (char *)gsimalloc((unsigned int)nHost + 1);
+		message->host = (char *)gsimalloc(nHost + 1);
 		
 		if(message->host)
 		{
-			memcpy(message->host, pTmpHost, (unsigned int)nHost);
+			memcpy(message->host, pTmpHost, nHost);
 			message->host[nHost] = '\0';
 		}
 	}
@@ -724,12 +758,11 @@ CHATBool ciParseParam(const char *pText, ciServerMessage * message)
 	return CHATTrue;
 }
 
-static CHATBool ciParseMessage(ciSocket * sock, const char *sText)
+static CHATBool ciParseMessage(const char *sText, ciServerMessage * message)
 {	
 	//	TRACE("ServM: Parse Data=%s\n", sText);
 	int    nMessage = 0, nServer = 0, nCommand = 0, nMiddle = 0, nParam = 0;
 	char *p, *temp;
-	ciServerMessage * message = &sock->lastMessage;
 	
 	if(sText == NULL || sText[0] == '\0')
 	{
@@ -737,13 +770,14 @@ static CHATBool ciParseMessage(ciSocket * sock, const char *sText)
 		return CHATFalse; //ERRCON
 	}
 
-	nMessage = (int)strlen(sText);
-	message->message = (char *)gsimalloc((unsigned int)nMessage + 1);
+	nMessage = strlen(sText);
+	message->message = gsimalloc(nMessage + 1);
 	if(message->message == NULL)
 		return CHATFalse; //ERRCON
-	memcpy(message->message, sText, (unsigned int)nMessage);
+	memcpy(message->message, sText, nMessage);
 	message->message[nMessage] = '\0';
 
+	
 	p = (char *)sText;
 	
 	while(*p == '\n' || *p == '\r')
@@ -815,11 +849,11 @@ static CHATBool ciParseMessage(ciSocket * sock, const char *sText)
 	if(nServer)
 	{
 		temp = message->server;
-		message->server = (char *)gsimalloc((unsigned int)nServer + 1);
+		message->server = (char *)gsimalloc(nServer + 1);
 		
 		if(message->server)
 		{
-			memcpy(message->server, temp, (unsigned int)nServer);
+			memcpy(message->server, temp, nServer);
 			message->server[nServer] = '\0';
 		}
 
@@ -871,11 +905,11 @@ static CHATBool ciParseMessage(ciSocket * sock, const char *sText)
 	if(nParam)
 	{
 		temp = message->param;
-		message->param = (char *)gsimalloc((unsigned int)nParam + 1);
+		message->param = (char *)gsimalloc(nParam + 1);
 
 		if(message->param)
 		{
-			memcpy(message->param, temp, (unsigned int)nParam);
+			memcpy(message->param, temp, nParam);
 			message->param[nParam] = '\0';
 		}
 	}
@@ -887,11 +921,11 @@ static CHATBool ciParseMessage(ciSocket * sock, const char *sText)
 	if(nCommand)
 	{
 		temp = message->command;
-		message->command = (char *)gsimalloc((unsigned int)nCommand + 1);
+		message->command = (char *)gsimalloc(nCommand + 1);
 		
 		if(message->command)
 		{
-			memcpy(message->command, temp, (unsigned int)nCommand);
+			memcpy(message->command, temp, nCommand);
 			message->command[nCommand] = '\0';
 		}
 	}
@@ -901,11 +935,11 @@ static CHATBool ciParseMessage(ciSocket * sock, const char *sText)
 	if(nMiddle)
 	{
 		temp = message->middle;
-		message->middle = (char *)gsimalloc((unsigned int)nMiddle + 1);
+		message->middle = (char *)gsimalloc(nMiddle + 1);
 		
 		if(message->middle)
 		{
-			memcpy(message->middle, temp, (unsigned int)nMiddle);
+			memcpy(message->middle, temp, nMiddle);
 			message->middle[nMiddle] = '\0';
 		}
 	}
@@ -964,21 +998,15 @@ static CHATBool ciParseInput(ciSocket * sock)
 				RESET(sock->lastMessage.params);
 				sock->lastMessage.numParams = 0;
 
-				// Parse the message.
-				/////////////////////
 				memset(&sock->lastMessage,0,sizeof(sock->lastMessage));
-				if(!ciParseMessage(sock, p))
+				if(!ciParseMessage(p, &sock->lastMessage))
 				{
 					memset(&sock->lastMessage,0,sizeof(sock->lastMessage));
 					return CHATFalse; //ERRCON
 				}
 
-				// Restore the temp character.
-				//////////////////////////////
 				*r = temp;
 
-				// Take the message out of the buffer.
-				//////////////////////////////////////
 				ciBufferClipFront(&sock->inputQueue, (q - sock->inputQueue.buffer));
 
 				return CHATTrue;
@@ -996,10 +1024,8 @@ ciServerMessage * ciSocketRecv(ciSocket * sock)
 #endif
 	ASSERT_SOCK(sock);
 
-	// Bill: 08-10-04
-	//    There may be unprocessed messages in the queue
-	//if(sock->connectState == ciDisconnected)
-	//	return NULL;
+	if(sock->connectState == ciDisconnected)
+		return NULL;
 
 	// Check for an empty buffer.
 	/////////////////////////////
@@ -1018,7 +1044,7 @@ ciServerMessage * ciSocketRecv(ciSocket * sock)
 #ifdef IRC_LOG
 	// Write it to the log.
 	///////////////////////
-	log = fopen(sock->filename, "at");
+	log = fopen("irc.log", "at");
 	if(log != NULL)
 	{
 		fprintf(log, "%s | IN  | %s\n", ciGetTime(), sock->lastMessage.message);

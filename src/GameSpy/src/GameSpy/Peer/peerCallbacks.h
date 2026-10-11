@@ -3,22 +3,26 @@ GameSpy Peer SDK
 Dan "Mr. Pants" Schoenblum
 dan@gamespy.com
 
-Copyright 1999-2007 GameSpy Industries, Inc
+Copyright 1999-2001 GameSpy Industries, Inc
 
+18002 Skypark Circle
+Irvine, California 92614
+949.798.4200 (Tel)
+949.798.4299 (Fax)
 devsupport@gamespy.com
 */
 
 #ifndef _PEERCALLBACKS_H_
 #define _PEERCALLBACKS_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*************
 ** INCLUDES **
 *************/
 #include "peerMain.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /**********
 ** TYPES **
@@ -31,13 +35,11 @@ typedef enum piCallbackType
 	PI_LISTING_GAMES_CALLBACK,
 	PI_NICK_ERROR_CALLBACK,
 	PI_ENUM_PLAYERS_CALLBACK,
-	PI_GET_PLAYER_INFO_CALLBACK,
 	PI_GET_PLAYER_PROFILE_ID_CALLBACK,
 	PI_GET_PLAYER_IP_CALLBACK,
 	PI_ROOM_MESSAGE_CALLBACK,
 	PI_ROOM_UTM_CALLBACK,
 	PI_ROOM_NAME_CHANGED_CALLBACK,
-	PI_ROOM_MODE_CHANGED_CALLBACK,
 	PI_PLAYER_MESSAGE_CALLBACK,
 	PI_PLAYER_UTM_CALLBACK,
 	PI_READY_CHANGED_CALLBACK,
@@ -52,35 +54,38 @@ typedef enum piCallbackType
 	PI_PING_CALLBACK,
 	PI_CROSS_PING_CALLBACK,
 	PI_CHANGE_NICK_CALLBACK,
-	PI_GLOBAL_KEY_CHANGED_CALLBACK,
-	PI_ROOM_KEY_CHANGED_CALLBACK,
-	PI_GET_GLOBAL_KEYS_CALLBACK,
-	PI_GET_ROOM_KEYS_CALLBACK,
-	PI_PLAYER_FLAGS_CHANGED_CALLBACK,
-	PI_AUTHENTICATE_CDKEY_CALLBACK,
-	PI_AUTO_MATCH_STATUS_CALLBACK,
 	PI_NUM_CALLBACK_TYPES
 } piCallbackType;
 
 /**************
 ** FUNCTIONS **
 **************/
-PEERBool piCallbacksInit(PEER peer);
-void piCallbacksCleanup(PEER peer);
-void piCallbacksThink(PEER peer, int blockingID);
-PEERBool piIsCallbackFinished(PEER peer, int opID);
-void piClearCallbacks(PEER peer, piCallbackType type);
-void piClearListingGameServerCallbacks(PEER peer, SBServer server);
+PEERBool piCallbacksInit
+(
+	PEER peer
+);
 
-/**************
-** CALLBACKS **
-**************/
+void piCallbacksCleanup
+(
+	PEER peer
+);
+
+void piCallbacksThink
+(
+	PEER peer,
+	int blockingID
+);
+
+PEERBool piIsCallbackFinished
+(
+	PEER peer,
+	int opID
+);
 
 void piAddConnectCallback
 (
 	PEER peer,
 	PEERBool success,
-	int failureReason,
 	peerConnectCallback callback,
 	void * param,
 	int opID
@@ -90,7 +95,6 @@ void piAddJoinRoomCallback
 (
 	PEER peer,
 	PEERBool success,
-	PEERJoinResult result,
 	RoomType roomType,
 	peerJoinRoomCallback callback,
 	void * param,
@@ -102,7 +106,6 @@ void piAddListGroupRoomsCallback
 	PEER peer,
 	PEERBool success,
 	int groupID,
-	SBServer server,
 	const char * name,
 	int numWaiting,
 	int maxWaiting,
@@ -117,8 +120,13 @@ void piAddListingGamesCallback
 (
 	PEER peer,
 	PEERBool success,
-	SBServer server,
-	int msg
+	const char * name,
+	GServer server,
+	PEERBool staging,
+	int msg,
+	int progress,
+	peerListingGamesCallback callback,
+	void * param
 );
 
 void piAddEnumPlayersCallback
@@ -128,20 +136,8 @@ void piAddEnumPlayersCallback
 	RoomType roomType,
 	int index,
 	const char * nick,
-	int flags,
+	PEERBool host,
 	peerEnumPlayersCallback callback,
-	void * param,
-	int opID
-);
-
-void piAddGetPlayerInfoCallback
-(
-	PEER peer,
-	PEERBool success,
-	const char * nick,
-	unsigned int IP,
-	int profileID,
-	peerGetPlayerInfoCallback callback,
 	void * param,
 	int opID
 );
@@ -183,21 +179,13 @@ void piAddRoomUTMCallback
 	RoomType roomType,
 	const char * nick,
 	const char * command,
-	const char * parameters,
-	PEERBool authenticated
+	const char * parameters
 );
 
 void piAddRoomNameChangedCallback
 (
 	PEER peer,
 	RoomType roomType
-);
-
-void piAddRoomModeChangedCallback
-(
-	PEER peer,
-	RoomType roomType,
-	CHATChannelMode * mode
 );
 
 void piAddPlayerMessageCallback
@@ -213,8 +201,7 @@ void piAddPlayerUTMCallback
 	PEER peer,
 	const char * nick,
 	const char * command,
-	const char * parameters,
-	PEERBool authenticated
+	const char * parameters
 );
 
 void piAddReadyChangedCallback
@@ -227,7 +214,7 @@ void piAddReadyChangedCallback
 void piAddGameStartedCallback
 (
 	PEER peer,
-	SBServer server,
+	unsigned int IP,
 	const char * message
 );
 
@@ -242,8 +229,7 @@ void piAddPlayerLeftCallback
 (
 	PEER peer,
 	RoomType roomType,
-	const char * nick,
-	const char * reason
+	const char * nick
 );
 
 void piAddKickedCallback
@@ -271,7 +257,6 @@ void piAddPlayerChangedNickCallback
 void piAddPlayerInfoCallback
 (
 	PEER peer,
-	RoomType roomType,
 	const char * nick,
 	unsigned int IP,
 	int profileID
@@ -303,8 +288,6 @@ void piAddNickErrorCallback
 	PEER peer,
 	int type,
 	const char * nick,
-	int numSuggestedNicks,
-	const char ** suggestedNicks,
 	void * param,
 	int opID
 );
@@ -318,80 +301,6 @@ void piAddChangeNickCallback
 	peerChangeNickCallback callback,
 	void * param,
 	int opID
-);
-
-void piAddGlobalKeyChangedCallback
-(
-	PEER peer,
-	const char * nick,
-	const char * key,
-	const char * value
-);
-
-void piAddRoomKeyChangedCallback
-(
-	PEER peer,
-	RoomType roomType,
-	const char * nick,
-	const char * key,
-	const char * value
-);
-
-void piAddGetGlobalKeysCallback
-(
-	PEER peer,
-	PEERBool success,
-	const char * nick,
-	int num,
-	const char ** keys,
-	const char ** values,
-	peerGetGlobalKeysCallback callback,
-	void * param,
-	int opID
-);
-
-void piAddGetRoomKeysCallback
-(
-	PEER peer,
-	PEERBool success,
-	RoomType roomType,
-	const char * nick,
-	int num,
-	const char ** keys,
-	const char ** values,
-	peerGetRoomKeysCallback callback,
-	void * param,
-	int opID
-);
-
-void piAddPlayerFlagsChangedCallback
-(
-	PEER peer,
-	RoomType roomType,
-	const char * nick,
-	int oldFlags,
-	int newFlags
-);
-
-void piAddAuthenticateCDKeyCallback
-(
-	PEER peer,
-	int result,
-	const char * message,
-	peerAuthenticateCDKeyCallback callback,
-	void * param,
-	int opID
-);
-
-void piAddAutoMatchStatusCallback
-(
-	PEER peer
-);
-
-int piCallAutoMatchRateCallback
-(
-	PEER peer,
-	SBServer server
 );
 
 #ifdef __cplusplus

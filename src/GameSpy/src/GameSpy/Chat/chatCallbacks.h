@@ -3,8 +3,12 @@ GameSpy Chat SDK
 Dan "Mr. Pants" Schoenblum
 dan@gamespy.com
 
-Copyright 1999-2007 GameSpy Industries, Inc
+Copyright 1999-2001 GameSpy Industries, Inc
 
+18002 Skypark Circle
+Irvine, California 92614
+949.798.4200 (Tel)
+949.798.4299 (Fax)
 devsupport@gamespy.com
 */
 
@@ -35,6 +39,7 @@ enum
 	CALLBACK_CHANNEL_MODE_CHANGED,
 	CALLBACK_USER_MODE_CHANGED,
 	CALLBACK_USER_LIST_UPDATED,
+	CALLBACK_CONNECT,
 	CALLBACK_ENUM_CHANNELS_EACH,
 	CALLBACK_ENUM_CHANNELS_ALL,
 	CALLBACK_ENTER_CHANNEL,
@@ -44,17 +49,11 @@ enum
 	CALLBACK_ENUM_USERS,
 	CALLBACK_GET_USER_INFO,
 	CALLBACK_GET_BASIC_USER_INFO,
-	CALLBACK_GET_CHANNEL_BASIC_USER_INFO,
 	CALLBACK_GET_USER_MODE,
 	CALLBACK_ENUM_CHANNEL_BANS,
 	CALLBACK_NICK_ERROR,
 	CALLBACK_CHANGE_NICK,
 	CALLBACK_NEW_USER_LIST,
-	CALLBACK_BROADCAST_KEY_CHANGED,
-	CALLBACK_GET_GLOBAL_KEYS,
-	CALLBACK_GET_CHANNEL_KEYS,
-	CALLBACK_AUTHENTICATE_CDKEY,
-	CALLBACK_GET_UDPRELAY,
 	CALLBACK_NUM
 };
 
@@ -173,7 +172,6 @@ typedef struct ciCallbackEnumChannelsAllParams
 typedef struct ciCallbackEnterChannelParams
 {
 	CHATBool success;
-	CHATEnterResult result;
 	char * channel;
 } ciCallbackEnterChannelParams;
 
@@ -227,15 +225,6 @@ typedef struct ciCallbackGetBasicUserInfoParams
 	char * address;
 } ciCallbackGetBasicUserInfoParams;
 
-typedef struct ciCallbackGetChannelBasicUserInfoParams
-{
-	CHATBool success;
-	char * channel;
-	char * nick;
-	char * user;
-	char * address;
-} ciCallbackGetChannelBasicUserInfoParams;
-
 typedef struct ciCallbackGetUserModeParams
 {
 	CHATBool success;
@@ -256,8 +245,6 @@ typedef struct ciCallbackNickErrorParams
 {
 	int type;
 	char * nick;
-	int numSuggestedNicks;
-	char ** suggestedNicks;
 } ciCallbackNickErrorParams;
 
 typedef struct ciCallbackChangeNickParams
@@ -274,47 +261,6 @@ typedef struct ciCallbackNewUserListParams
 	char ** users;
 	int * modes;
 } ciCallbackNewUserListParams;
-
-typedef struct ciCallbackBroadcastKeyChangedParams
-{
-	char * channel;
-	char * user;
-	char * key;
-	char * value;
-} ciCallbackBroadcastKeyChangedParams;
-
-typedef struct ciCallbackGetGlobalKeysParams
-{
-	CHATBool success;
-	char * user;
-	int num;
-	char ** keys;
-	char ** values;
-} ciCallbackGetGlobalKeysParams;
-
-typedef struct ciCallbackGetChannelKeysParams
-{
-	CHATBool success;
-	char * channel;
-	char * user;
-	int num;
-	char ** keys;
-	char ** values;
-} ciCallbackGetChannelKeysParams;
-
-typedef struct ciCallbackAuthenticateCDKeyParams
-{
-	int result;
-	char * message;
-} ciCallbackAuthenticateCDKeyParams;
-
-typedef struct ciCallbackGetUdpRelayParams
-{
-	char * channel;
-	char * udpIp;
-	unsigned short udpPort;
-	int udpKey;
-} ciCallbackGetUdpRelayParams;
 
 /**************
 ** FUNCTIONS **

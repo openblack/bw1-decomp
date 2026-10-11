@@ -3,8 +3,12 @@ GameSpy Peer SDK
 Dan "Mr. Pants" Schoenblum
 dan@gamespy.com
 
-Copyright 1999-2007 GameSpy Industries, Inc
+Copyright 1999-2001 GameSpy Industries, Inc
 
+18002 Skypark Circle
+Irvine, California 92614
+949.798.4200 (Tel)
+949.798.4299 (Fax)
 devsupport@gamespy.com
 */
 
@@ -17,17 +21,20 @@ devsupport@gamespy.com
 **   #GPG!<groupid>
 **
 ** Staging Room
-**   #GSP!<gamename>!X<encoded public IP><encoded public port><encoded private IP><encoded private port>X
+**   #GSP!<gamename>!<encoded IP of host>
 **
 ** User
-**   X<encoded public IP>X|<profile ID>
+**   <encoded-IP>|<profile ID>
 **
 */
 
 /*************
 ** INCLUDES **
 *************/
+#include <stdio.h>
+#include <stdlib.h>
 #include <limits.h>
+#include <ctype.h>
 #include "peerMain.h"
 #include "peerMangle.h"
 
@@ -39,103 +46,109 @@ devsupport@gamespy.com
 /************
 ** GLOBALS **
 ************/
-PEERBool piOldMangleStagingRooms;
 static const char digits_hex[] = "0123456789abcdef";
 static const char digits_crypt[] = "aFl4uOD9sfWq1vGp";
-static const char new_digits_crypt[] = "qJ1h4N9cP3lzD0Ka";
 static const unsigned int ip_xormask = 0xc3801dc7;
-static char cryptbuffer[32];
+static char ip_cryptbuffer[32];
 
 /**************
 ** FUNCTIONS **
 **************/
-//originally ripped from Aphex's ipencode.h
-static const char * EncodeIP(unsigned int ip, char * buffer, PEERBool newCrypt)
-{
-	const char * crypt = newCrypt?new_digits_crypt:digits_crypt;
-	int i;
-	char * str;
-	int digit_idx;
-
-	// XOR the IP address.
-	ip ^= ip_xormask;
-
-	// Print out the ip addr in hex form.
-	sprintf(cryptbuffer, "%08x", ip);
-
-	// Translate chars in positions 0 through 7 from hex digits to "crypt" digits.
-	for(i = 0 ; i < 8 ; i++)
+//ripped from Aphex's ipencode.h
+static const char *
+EncodeIPAddr(unsigned int ulIPAddr, char * lpszEncodedAddr)
 	{
-		str = strchr(digits_hex, cryptbuffer[i]);
-		digit_idx = (str - digits_hex);
+	struct in_addr	addr;
+	int							i;
+	char *					pch;
+	int							digit_idx;
 
-		if((digit_idx < 0) || (digit_idx > 15)) // sanity check
+	//
+	// XOR the IP address...
+	//
+	addr.s_addr = ulIPAddr ^ ip_xormask;
+
+	//
+	// Print out the ip addr in hex form...
+	//
+	sprintf(ip_cryptbuffer, "X%08lxX", addr.s_addr);
+
+	//
+	// Translate chars in positions 1 through 8 from hex
+	// digits to "crypt" digits...
+	//
+	for(i=1; i<9; i++)
 		{
-			strcpy(cryptbuffer, "14saFv19"); // equivalent to 0.0.0.0
-			break;
+		pch = strchr(digits_hex, ip_cryptbuffer[i]);
+		digit_idx = pch - digits_hex;
+		if((digit_idx < 0) || (digit_idx > 15)) // sanity check
+			{
+			strcpy(ip_cryptbuffer, "X14saFv19X"); // equivalent to 0.0.0.0
+			goto all_done;
+			}
+		ip_cryptbuffer[i] = digits_crypt[digit_idx];
 		}
 
-		cryptbuffer[i] = crypt[digit_idx];
+all_done:
+
+	if(lpszEncodedAddr)
+		{
+		strcpy(lpszEncodedAddr, ip_cryptbuffer);
+		return(lpszEncodedAddr);
+		}
+	else
+		return(ip_cryptbuffer);
 	}
 
-	if(buffer)
+//ripped from Aphex's ipencode.h
+static unsigned int
+DecodeIPAddr(const char * lpszEncodedAddr)
 	{
-		strcpy(buffer, cryptbuffer);
-		return buffer;
-	}
+	unsigned int		ulIPAddr;
+	unsigned int		ulIPAddrXor;
+	char						szIPAddr[16];
+	char *					pch;
+	int							digit_idx;
+	int							i;
 
-	return cryptbuffer;
-}
+	if(!lpszEncodedAddr)
+		return(0);
 
-//originally ripped from Aphex's ipencode.h
-static unsigned int DecodeIP(const char * buffer, PEERBool newCrypt)
-{
-	const char * crypt = newCrypt?new_digits_crypt:digits_crypt;
-	unsigned int ip;
-	char * str;
-	int digit_idx;
-	int i;
-
-	if(!buffer)
-		return 0;
+	//
+	// Confirm that the first char is an 'X', otherwise
+	// the string is invalid.
+	//
+	if(lpszEncodedAddr[0] != 'X')
+		return(0);
+	if(lpszEncodedAddr[9] != 'X')
+		return(0);
 	
-	// Translate chars from hex digits to "crypt" digits.
-	for(i = 0 ; i < 8 ; i++)
-	{
-		str = strchr(crypt, buffer[i]);
-		digit_idx = (str - crypt);
-
+	//
+	// Translate chars from hex digits to "crypt" digits...
+	//
+	strncpy(szIPAddr, &lpszEncodedAddr[1], 8);
+	szIPAddr[8] = 0;
+	for(i=0; i<8; i++)
+		{
+		pch = strchr(digits_crypt, szIPAddr[i]);
+		digit_idx = pch - digits_crypt;
 		if((digit_idx < 0) || (digit_idx > 15))
-			return 0;
+			return(0);
+		szIPAddr[i] = digits_hex[digit_idx];
+		}
 
-		cryptbuffer[i] = digits_hex[digit_idx];
+	//
+	// Convert the string to an unsigned long (the XORd ip addr)...
+	//
+	//ulIPAddrXor = (unsigned long) strtoul(szIPAddr, NULL, 16);
+	sscanf(szIPAddr, "%x", &ulIPAddrXor);
+
+	//
+	// re-XOR the IP address and return it...
+	//
+	ulIPAddr = ulIPAddrXor ^ ip_xormask;
+	return(ulIPAddr);
 	}
-
-	// Cap the buffer.
-	cryptbuffer[i] = '\0';
-
-	// Convert the string to an unsigned long (the XORd ip addr).
-	sscanf(cryptbuffer, "%x", &ip);
-
-	// re-XOR the IP address.
-	ip ^= ip_xormask;
-
-	return ip;
-}
-
-static const char * piStagingRoomHash(unsigned int publicIP, unsigned int privateIP, unsigned short port, char * buffer)
-{
-	unsigned int result;
-
-	publicIP = ntohl(publicIP);
-	privateIP = ntohl(privateIP);
-
-	result = (((privateIP >> 24) & 0xFF) | ((privateIP >> 8) & 0xFF00) | ((privateIP << 8) & 0xFF0000) | ((privateIP << 24) & 0xFF000000));
-	result ^= publicIP;
-	result ^= (port | (port << 16));
-
-	return EncodeIP(result, buffer, PEERTrue);
-}
 
 void piMangleTitleRoom
 (
@@ -167,30 +180,34 @@ void piMangleStagingRoom
 (
 	char buffer[PI_ROOM_MAX_LEN],
 	const char * title,
-	unsigned int publicIP,
-	unsigned int privateIP,
-	unsigned short privatePort
+	unsigned int IP
 )
 {
-	char encodeBuffer[9];
-	int borderChar;
+	assert(buffer);
+	assert(title);
+	assert(title[0]);
+	assert(IP != 0);
 
+	sprintf(buffer, "#GSP" PI_SEPERATOR "%s" PI_SEPERATOR "%s",
+		title,
+		EncodeIPAddr(IP, NULL));
+}
+
+void piMangleUpdatesRoom
+(
+	char buffer[PI_ROOM_MAX_LEN],
+	const char * title,
+	int groupID
+)
+{
 	assert(buffer);
 	assert(title);
 	assert(title[0]);
 
-	if(piOldMangleStagingRooms)
-	{
-		EncodeIP(publicIP, encodeBuffer, PEERFalse);
-		borderChar = 'X';
-	}
+	if(groupID)
+		sprintf(buffer, "#%s_%d_updates", title, groupID);
 	else
-	{
-		piStagingRoomHash(publicIP, privateIP, privatePort, encodeBuffer);
-		borderChar = 'M';
-	}
-
-	sprintf(buffer, "#GSP" PI_SEPERATOR "%s" PI_SEPERATOR "%c%s%c", title, borderChar, encodeBuffer, borderChar);
+		sprintf(buffer, "#%s_updates", title);
 }
 
 void piMangleUser
@@ -204,8 +221,8 @@ void piMangleUser
 	assert(IP != 0);
 	assert(profileID >= 0);
 
-	sprintf(buffer, "X%sX|%d",
-		EncodeIP(IP, NULL, PEERFalse),
+	sprintf(buffer, "%s|%d",
+		EncodeIPAddr(IP, NULL),
 		profileID);
 }
 
@@ -228,14 +245,9 @@ PEERBool piDemangleUser
 	if(strlen(buffer) < 12)
 		return PEERFalse;
 
-	// Check for the Xs.
-	////////////////////
-	if((buffer[0] != 'X') && (buffer[9] != 'X'))
-		return PEERFalse;
-
 	// Get the IP.
 	//////////////
-	decodedIP = DecodeIP(buffer + 1, PEERFalse);
+	decodedIP = DecodeIPAddr(buffer);
 	if(!decodedIP)
 		return PEERFalse;
 
@@ -268,10 +280,7 @@ void piMangleIP
 	assert(buffer);
 	assert(IP != 0);
 
-	EncodeIP(IP, buffer + 1, PEERFalse);
-	buffer[0] = 'X';
-	buffer[9] = 'X';
-	buffer[10] = '\0';
+	EncodeIPAddr(IP, buffer);
 }
 
 unsigned int piDemangleIP
@@ -281,12 +290,7 @@ unsigned int piDemangleIP
 {
 	assert(buffer);
 	if(!buffer)
-		return 0;
+		return PEERFalse;
 
-	// Check for the Xs.
-	////////////////////
-	if((buffer[0] != 'X') && (buffer[9] != 'X'))
-		return 0;
-
-	return DecodeIP(buffer + 1, PEERFalse);
+	return DecodeIPAddr(buffer);
 }

@@ -3,15 +3,17 @@ GameSpy Ping SDK
 Dan "Mr. Pants" Schoenblum
 dan@gamespy.com
 
-Copyright 1999-2007 GameSpy Industries, Inc
+Copyright 1999-2001 GameSpy Industries, Inc
 
+18002 Skypark Circle
+Irvine, California 92614
+949.798.4200 (Tel)
+949.798.4299 (Fax)
 devsupport@gamespy.com
 */
 
 #ifndef _PINGER_H_
 #define _PINGER_H_
-
-#include "../common/gsCommon.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -108,7 +110,7 @@ void pingerPing(unsigned int IP,
 				pingerGotPing reply,
 				void * replyParam,
 				PINGERBool blocking,
-				gsi_time timeout);
+				unsigned long timeout);
 	
 #ifdef __cplusplus
 }

@@ -932,7 +932,7 @@ GameSpy/Peer/peerPing.c:
 GameSpy/Peer/peerPlayers.c:
 	.text       start:0x10041DA0 end:0x10042340
 
-GameSpy/qr/gqueryreporting.c:
+GameSpy/queryreporting/gqueryreporting.c:
 	.text       start:0x10042340 end:0x10043390
 	.data       start:0x10067BC8 end:0x10067DD8
 	.bss        start:0x1006AC00 end:0x1006AF18

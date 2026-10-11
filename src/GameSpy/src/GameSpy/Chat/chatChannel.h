@@ -3,8 +3,12 @@ GameSpy Chat SDK
 Dan "Mr. Pants" Schoenblum
 dan@gamespy.com
 
-Copyright 1999-2007 GameSpy Industries, Inc
+Copyright 1999-2001 GameSpy Industries, Inc
 
+18002 Skypark Circle
+Irvine, California 92614
+949.798.4200 (Tel)
+949.798.4299 (Fax)
 devsupport@gamespy.com
 */
 
@@ -41,7 +45,6 @@ void ciJoinCallbackCalled(CHAT chat, const char * channel);
 CHATBool ciWasJoinCallbackCalled(CHAT chat, const char * channel);
 void ciSetChannelTopic(CHAT chat, const char * channel, const char * topic);
 const char * ciGetChannelTopic(CHAT chat, const char * channel);
-int ciGetChannelNumUsers(CHAT chat, const char * channel);
 
 void ciUserEnteredChannel(CHAT chat, const char * nick, const char * channel, int mode, const char * user, const char * address);
 void ciUserLeftChannel(CHAT chat, const char * user, const char * channel);
@@ -53,12 +56,7 @@ CHATBool ciUserInChannel(CHAT chat, const char * channel, const char * user);
 int ciGetUserMode(CHAT chat, const char * channel, const char * user);
 void ciEnumJoinedChannels(CHAT chat, chatEnumJoinedChannelsCallback callback, void * param);
 void ciSetUserBasicInfo(CHAT chat, const char * nick, const char * user, const char * address);
+CHATBool ciGetUserBasicInfo(CHAT chat, const char * nick, const char ** user, const char ** address);
 void ciClearAllUsers(CHAT chat);
-
-// Because these return pointers to SDK memory, we must have a widestring version
-// so we can return a pointer to widestring data
-// DO NOT CHANGE nick to an unsigned short*, nicks are internally store as char*
-CHATBool ciGetUserBasicInfoA(CHAT chat, const char * nick, const char ** user, const char ** address);
-CHATBool ciGetUserBasicInfoW(CHAT chat, const char * nick, const unsigned short ** user, const unsigned short ** address);
 
 #endif

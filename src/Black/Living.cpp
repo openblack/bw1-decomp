@@ -17,4 +17,9 @@ uint32_t DataPath::GetSaveType()
 	return GAME_THING_TYPE_DATA_PATH;
 }
 
+bool32_t Living::CanBecomeAPhysicsObject()
+{
+	return true;
+}
+
 void Living::Birthday() {}

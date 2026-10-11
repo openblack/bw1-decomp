@@ -26,4 +26,9 @@ uint32_t WorkshopBuildingSite::GetSaveType()
 	return GAME_THING_TYPE_WORKSHOP_BUILDING_SITE;
 }
 
+MultiMapFixed* BuildingSite::GetRootBuilding()
+{
+	return RootBuilding;
+}
+
 void BuildingSite::Init() {}
