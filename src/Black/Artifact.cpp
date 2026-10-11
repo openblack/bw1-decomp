@@ -23,3 +23,8 @@ bool32_t Object::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;
 }
+
+void TownArtifact::SetPlayer(GPlayer* player)
+{
+	Player = player;
+}

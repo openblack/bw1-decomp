@@ -11,3 +11,8 @@ float GGameInfo::GetVisualTime()
 
 // BW1W120 00557ba0 BW1M119 01090ca0
 void GGameInfo::Debug() {}
+
+void GGameInfo::SetVisualTimeScale(float scale)
+{
+	VisualTimeScale = scale;
+}
