@@ -33,7 +33,7 @@ bool32_t Villager::IsAvailableForReaction(REACTION reaction)
 {
 	VILLAGER_STATES state = (VILLAGER_STATES)(GetFinalState() & VILLAGER_STATE_LAST_STATE);
 	uint16_t        flags = this->Flags;
-	if (!(flags & 2) && GVillagerStateTableInfo::Infos[state].field_0x34 != 0 && !(flags & 0x80) &&
+	if (!(flags & 2) && GVillagerStateTableInfo::Infos[state].field_0xfc != 0 && !(flags & 0x80) &&
 	    !IsDeathState(state))
 	{
 		const GVillagerInfo* villagerInfo = (const GVillagerInfo*)this->info;
