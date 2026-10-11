@@ -47,6 +47,8 @@ public:
 
 	// BW1W120 00535a80 BW1M119 inlined
 	static void FUN_00535a80(Point2D* param_1, MultiMapFixed* param_2, float point_x, float point_y);
+	// BW1W120 00535850 BW1M119 010f21f0
+	static void GenerateRoutesBetween(GameThingWithPos* from, GameThingWithPos* to);
 	// BW1W120 00537290 BW1M119 010ee810
 	static void SendFootpathsAroundObsticle(float radius, const MapCoords& coords);
 	// BW1W120 00537df0 BW1M119 010edd30
