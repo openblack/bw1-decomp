@@ -455,7 +455,6 @@ LHMessageServer* LHLobby::StartInternalMessageServer(LHNetUser* user, char* name
                                                      LH_USER_ID    player_ids[])
 {
 	LHMPServerStartInfo info;
-	memset(&info, 0, sizeof(info));
 	info.ListenerAddress = &LH_LIONHEAD_DEFAULT_LISTNER_ADDRESS;
 
 	LHMessageServer* server = new LHMessageServer();

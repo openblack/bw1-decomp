@@ -1796,7 +1796,7 @@ config.libs = [
         "cflags": cflags_base,
         "progress_category": "sdk",
         "objects": [
-            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHChannel.cpp"),
+            MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHChannel.cpp"),
             MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHConnection.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHConnectionServer.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHDatabase.cpp"),
