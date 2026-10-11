@@ -8,6 +8,8 @@
 
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
+#define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHHeap2.cpp"
+
 // When set, HeapWithPools bypasses the LHPool buckets and routes every request
 // straight to the underlying Heap free-list allocator. Defaults to true (pools off).
 // BW1W120 00c34098 BW1M119 011da730 (LHCombined Release)
@@ -63,12 +65,12 @@ unsigned int Heap::GetActualMemoryRequired(unsigned int size) const
 
 Heap* Heap::Create(unsigned int size, unsigned int a2)
 {
-	unsigned char* pool = (unsigned char*)operator new(size, __FILE__, __LINE__);
+	unsigned char* pool = (unsigned char*)operator new(size, FILEPATH, 62);
 	if (!pool)
 	{
 		return NULL;
 	}
-	Heap* heap = new (__FILE__, __LINE__) Heap(pool, size, a2);
+	Heap* heap = new (FILEPATH, 66) Heap(pool, size, a2);
 	if (!heap)
 	{
 		operator delete(pool);
@@ -482,12 +484,12 @@ unsigned int UniqueKeyHeap::GetActualMemoryRequired(unsigned int size) const
 
 UniqueKeyHeap* UniqueKeyHeap::Create(unsigned int size, unsigned int a2)
 {
-	unsigned char* pool = (unsigned char*)operator new(size, __FILE__, __LINE__);
+	unsigned char* pool = (unsigned char*)operator new(size, FILEPATH, 437);
 	if (!pool)
 	{
 		return NULL;
 	}
-	UniqueKeyHeap* heap = new (__FILE__, __LINE__) UniqueKeyHeap(pool, size, a2);
+	UniqueKeyHeap* heap = new (FILEPATH, 441) UniqueKeyHeap(pool, size, a2);
 	if (!heap)
 	{
 		operator delete(pool);
