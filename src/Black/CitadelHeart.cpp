@@ -300,8 +300,6 @@ TempleLeash::TempleLeash(LH3DObject* object, unsigned long player_number)
 	CurrentLeash = -1;
 }
 
-void Object::Draw() {}
-
 TempleLeash::~TempleLeash()
 {
 	for (int i = 0; i < LEASH_TYPE_LAST; i++)

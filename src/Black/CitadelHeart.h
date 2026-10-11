@@ -194,20 +194,6 @@ public:
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00465a10 BW1M119 011c7090
 	virtual void ResolveLoad();
-	// BW1W120 00464b80 BW1M119 011c9c10
-	virtual bool32_t IsCitadelHeart();
-	// BW1W120 00468dc0 BW1M119 011c41c0
-	virtual BuildingSite* CreateBuildingSite();
-	// BW1W120 004680b0 BW1M119 011c5260
-	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
-	// BW1W120 00464b20 BW1M119 inlined
-	virtual void SetSpecularColor(unsigned long color);
-	// BW1W120 00464b30 BW1M119 01019f70
-	virtual LH3DColor GetSpecularColor();
-	// BW1W120 00468c30 BW1M119 011c4330
-	virtual void* GetActualObjectToEffect(GPlayer* param_1, bool param_2);
-	// BW1W120 00468da0 BW1M119 011c42c0
-	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
 	// BW1W120 004665a0 BW1M119 0108ca30
 	virtual uint32_t Process();
 	// BW1W120 004673a0 BW1M119 011c6760
