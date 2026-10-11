@@ -361,7 +361,7 @@ int Villager::CheckChildGrownUp()
 		}
 		return ChildBecomesAdult();
 	}
-	if (GGame::g_game->data.GameTurn % ((uint32_t)GGameInfo::Info.TimeScale >> 2) == 0)
+	if (GGame::g_game->data.GameTurn % ((uint32_t)GGameInfo::Info.TimeScale / 4) == 0)
 	{
 		SetScaleForAge(GetAge());
 	}
@@ -691,7 +691,7 @@ uint8_t Villager::GetFinalState() const
 void Villager::ResetStateAfterReacting()
 {
 	PopFromPrevious();
-	if (GVillagerStateTableInfo::Infos[GetFinalState() & 0xff].field_0xc8 != 0)
+	if (GVillagerStateTableInfo::Infos[GetFinalState() & 0xff].isReactiveState != 0)
 	{
 		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 	}
@@ -896,12 +896,12 @@ bool32_t Villager::IsStateExitFunctionSameAs(unsigned long state) const
 bool Villager::IsReactiveState(unsigned long state)
 {
 	// TODO: 57% -- index/field semantics correct (GVillagerStateTableInfo::Infos[state]
-	// .field_0xc8 != 0). BLOCKED: symbols.txt names this thiscall (?...@@QAE_NK@Z) but the
+	// .isReactiveState != 0). BLOCKED: symbols.txt names this thiscall (?...@@QAE_NK@Z) but the
 	// target body is __cdecl -- ends `c3` (ret, NO arg cleanup), reads state from [esp+4],
 	// never touches ecx(this), returns full eax. Not ICF (ret != ret4 => bytes differ). A
 	// faithful thiscall member compiles to `ret 4`+al. Calling-convention/symbol anomaly for
 	// the dispatcher (symbol may need to be static/cdecl).
-	return GVillagerStateTableInfo::Infos[state].field_0xc8 != 0;
+	return GVillagerStateTableInfo::Infos[state].isReactiveState != 0;
 }
 
 // BW1W120 00752600 BW1M119 01022ae0

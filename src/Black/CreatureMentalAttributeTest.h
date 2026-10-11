@@ -19,6 +19,30 @@ enum DECISION_TREE_TYPE
 	_DECISION_TREE_TYPE_COUNT = 0x1
 };
 
+enum CREATURE_HEIGHT
+{
+	CREATURE_HEIGHT_VERY_SMALL,
+	CREATURE_HEIGHT_SMALL,
+	CREATURE_HEIGHT_MEDIUM,
+	CREATURE_HEIGHT_BIG,
+	CREATURE_HEIGHT_LAST
+};
+
+enum FOREST_SIZE
+{
+	FOREST_SIZE_SMALL,
+	FOREST_SIZE_MEDIUM,
+	FOREST_SIZE_LARGE,
+	FOREST_SIZE_LAST
+};
+
+enum ABODE_BEING_BUILT
+{
+	ABODE_BEING_BUILT_IS_BEING_BUILT,
+	ABODE_BEING_BUILT_IS_NOT_BEING_BUILT,
+	ABODE_BEING_BUILT_LAST
+};
+
 class GameThingWithPos;
 class GPlayer;
 
@@ -132,7 +156,7 @@ class AttributeAbodeBeingBuilt : public Attribute
 public:
 	// Static members
 
-	static char ValueNames[2][64];
+	static char ValueNames[ABODE_BEING_BUILT_LAST][64];
 
 	// Override methods
 
@@ -249,7 +273,7 @@ class AttributeCreatureHeight : public Attribute
 public:
 	// Static members
 
-	static char ValueNames[4][64];
+	static char ValueNames[CREATURE_HEIGHT_LAST][64];
 
 	// Override methods
 
@@ -337,7 +361,7 @@ class AttributeForestSize : public Attribute
 public:
 	// Static members
 
-	static char ValueNames[3][64];
+	static char ValueNames[FOREST_SIZE_LAST][64];
 
 	// Override methods
 
@@ -408,7 +432,7 @@ class AttributeMobileObjectType : public Attribute
 public:
 	// Static members
 
-	static char ValueNames[32][64];
+	static char ValueNames[MOBILE_OBJECT_INFO_LAST][64];
 
 	// Override methods
 

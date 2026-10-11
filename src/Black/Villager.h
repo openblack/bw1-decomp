@@ -95,11 +95,18 @@ struct DiscipleInfo
 	uint32_t         field_0x18;
 };
 
+enum
+{
+	VILLAGER_NUM_FOOTBALL_ROLES = 3,
+	VILLAGER_NUM_SHEPHERD_WORDS = 2,
+};
+
 enum VILLAGER_FLAGS
 {
 	VILLAGER_FLAG_AT_WORSHIP_SITE = 0x2,
 	VILLAGER_FLAG_AT_HOME = 0x4,
 	VILLAGER_FLAG_CHILD = 0x8,
+	VILLAGER_FLAG_PLAYING_FOOTBALL = 0x80,
 	VILLAGER_FLAG_DISCIPLE = 0x200,
 	VILLAGER_FLAG_DISCIPLE_FOLLOWER = 0x400,
 };
@@ -185,11 +192,11 @@ public:
 		};
 		struct
 		{
-			uint8_t FootballRoles[3]; // Football states: serialised as three separate bytes.
+			uint8_t FootballRoles[VILLAGER_NUM_FOOTBALL_ROLES];
 		};
 		struct
 		{
-			uint16_t ShepherdData[2]; // Shepherd states: two serialised words.
+			uint16_t ShepherdData[VILLAGER_NUM_SHEPHERD_WORDS];
 		};
 		struct
 		{

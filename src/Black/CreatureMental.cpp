@@ -49,14 +49,14 @@ char AttributeTownSize::ValueNames[3][64] = {
 	"Large",
 };
 
-char AttributeCreatureHeight::ValueNames[4][64] = {
+char AttributeCreatureHeight::ValueNames[CREATURE_HEIGHT_LAST][64] = {
 	"VerySmall",
 	"Small",
 	"Medium",
 	"Big",
 };
 
-char AttributeForestSize::ValueNames[3][64] = {
+char AttributeForestSize::ValueNames[FOREST_SIZE_LAST][64] = {
 	"Small",
 	"Medium",
 	"Large",
@@ -67,7 +67,7 @@ char AttributeSex::ValueNames[SEX_TYPE_LAST][64] = {
 	"Female",
 };
 
-char AttributeMobileObjectType::ValueNames[32][64] = {
+char AttributeMobileObjectType::ValueNames[MOBILE_OBJECT_INFO_LAST][64] = {
 	"Barrel",   //
 	"Cart",     //
 	"PotA",     //
@@ -98,7 +98,7 @@ char AttributeAbodeType::ValueNames[ABODE_TYPE_LAST][64] = {
 	"StoragePit", //
 };
 
-char AttributeAbodeBeingBuilt::ValueNames[2][64] = {
+char AttributeAbodeBeingBuilt::ValueNames[ABODE_BEING_BUILT_LAST][64] = {
 	"IsBeingBuilt",
 	"IsNotBeingBuilt",
 };

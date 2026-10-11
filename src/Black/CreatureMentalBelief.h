@@ -14,6 +14,13 @@
 
 // Forward Declares
 
+enum
+{
+	CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES = ATTRIBUTE_TYPE_TYPE + 1,
+	CREATURE_BELIEF_NUM_FOREST_ATTRIBUTES = CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES + 1,
+	CREATURE_BELIEF_NUM_DETAILED_ATTRIBUTES = CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES + 4,
+};
+
 class Archive;
 class Attribute;
 class Creature;
@@ -73,7 +80,7 @@ static_assert(sizeof(CreatureBelief) == 0x4c, "Data type is of wrong size");
 class CreatureBeliefAboutAbode : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[11];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_DETAILED_ATTRIBUTES];
 
 	// Override methods
 
@@ -100,7 +107,7 @@ static_assert(sizeof(CreatureBeliefAboutAbode) == 0x78, "Data type is of wrong s
 class CreatureBeliefAboutCitadel : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[7];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES];
 
 	// Override methods
 
@@ -150,7 +157,7 @@ static_assert(sizeof(CreatureBeliefAboutContext) == 0x4c, "Data type is of wrong
 class CreatureBeliefAboutCreature : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[11];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_DETAILED_ATTRIBUTES];
 	/* 0x78 */ uint32_t   field_0x78;
 
 	// Override methods
@@ -178,7 +185,7 @@ static_assert(sizeof(CreatureBeliefAboutCreature) == 0x7c, "Data type is of wron
 class CreatureBeliefAboutFlock : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[7];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES];
 
 	// Override methods
 
@@ -203,7 +210,7 @@ static_assert(sizeof(CreatureBeliefAboutFlock) == 0x68, "Data type is of wrong s
 class CreatureBeliefAboutForest : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[8];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_FOREST_ATTRIBUTES];
 
 	// Override methods
 
@@ -237,7 +244,7 @@ public:
 class CreatureBeliefAboutTown : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[11];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_DETAILED_ATTRIBUTES];
 
 	// Override methods
 
@@ -264,7 +271,7 @@ static_assert(sizeof(CreatureBeliefAboutTown) == 0x78, "Data type is of wrong si
 class CreatureBeliefAboutVillager : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[11];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_DETAILED_ATTRIBUTES];
 
 	// Override methods
 
@@ -291,7 +298,7 @@ static_assert(sizeof(CreatureBeliefAboutVillager) == 0x78, "Data type is of wron
 class CreatureBeliefSmall : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[7];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES];
 
 	// Override methods
 
