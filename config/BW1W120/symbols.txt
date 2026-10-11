@@ -42047,7 +42047,6 @@ _SecondsPerYear = .data:0x00C58B18; // type:object size:0x4 scope:local
 ?PulseHeight@BookmarkGraphic@@2MA = .data:0x00C58B20; // type:object size:0x4 scope:global
 ?PulseWidth@BookmarkGraphic@@2MA = .data:0x00C58B24; // type:object size:0x4 scope:global
 ?Bookmarks@Bookmark@@2PAV1@A = .data:0x00C58B30; // type:object size:0x18C scope:global
-_BookmarkSentinel = .data:0x00C58CBC; // type:object size:0x4 scope:local
 _SecondsPerYear = .data:0x00C58CC0; // type:object size:0x4 scope:local
 ?CurrentBookmark@Bookmark@@2HA = .data:0x00C58CC4; // type:object size:0x4 scope:global
 ?PulseTime@BookmarkGraphic@@2HA = .data:0x00C58CC8; // type:object size:0x4 scope:global

@@ -1,17 +1,5 @@
 #include <math.h> /* For cos, fabs */
 
-enum
-{
-	BOOKMARK_SENTINEL = -1,
-};
-
-inline int GetBookmarkSentinel()
-{
-	return BOOKMARK_SENTINEL;
-}
-
-static int BookmarkSentinel = GetBookmarkSentinel();
-
 #include "Bookmark.h"
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetAltitude */
