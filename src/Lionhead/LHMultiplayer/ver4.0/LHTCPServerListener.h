@@ -32,10 +32,10 @@ public:
 	virtual LH_RETURN GetActivitySignals(unsigned long* count, void*** signals);
 	// BW1W120 100221c0 BW1M119 01115b40 (LHCombined Release)
 	virtual LH_RETURN DoProcessing(long signal_index);
-	// BW1W120 1001c420 BW1M119 011156d0 (LHCombined Release)
-	virtual LHTransportInfo* GetConnectionAcceptorInfo() { return &ConnectionAcceptorInfo; }
 	// BW1W120 1001c410 BW1M119 01115680 (LHCombined Release)
 	virtual LHTransportInfo* GetBroadcastListenerInfo() { return &BroadcastListenerInfo; }
+	// BW1W120 1001c420 BW1M119 011156d0 (LHCombined Release)
+	virtual LHTransportInfo* GetConnectionAcceptorInfo() { return &ConnectionAcceptorInfo; }
 	// BW1W120 10021fa0 BW1M119 01115e30 (LHCombined Release)
 	virtual void StopListening();
 	// BW1W120 10022340 BW1M119 01115860 (LHCombined Release)
