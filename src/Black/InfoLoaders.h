@@ -20,6 +20,16 @@
 //
 // The tag is the declaring header's path, which moved between releases. The macros take the file
 // name alone.
+//
+// The class itself was macro-generated too: every info class has the same shape - a static `Infos`
+// array sized by a `_LAST` enumerator, an inline `GetInfo()`, the loader block above, and a small
+// set of virtuals. The file/line tag names the header the class was declared in: for most classes
+// that is the header of the class the info *describes* (GFeatureInfo -> "Feature.h", GDanceInfo ->
+// "Dance.h", GPBallInfo -> "PBall.h"), while a minority carry a dedicated "XxxInfo.h". A tag that
+// follows the described class only makes sense if the class was declared there through a macro that
+// captured __FILE__/__LINE__ (exactly what the loader macros do); this reconstruction instead
+// declares each class in its own header and passes the tag explicitly. Moving the declarations back
+// into the owning headers, and naming that macro, is tracked by #377.
 
 #if defined(VERSION_BW1W100)
 #define INFO_SOURCE_PATH "C:\\dev\\black\\"
