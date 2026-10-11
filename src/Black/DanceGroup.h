@@ -118,10 +118,6 @@ struct DancerAction
 
 static_assert(sizeof(DancerAction) == 0x10, "Data type is of wrong size");
 
-/* Argument of an action performed on a dance group. Which members are used depends on the action type: Value/Value2
- * hold e.g. the shape, the position (as floats), the angle or the percentage chance for
- * DANCE_GROUP_ACTION_TYPE_SET_STATE_OF_PROPORTION; Action belongs to DANCE_GROUP_ACTION_TYPE_SET_ACTION and
- * CameraPoints to DANCE_GROUP_ACTION_TYPE_SET_CAMERA. */
 struct DanceGroupActionArgument
 {
 	uint32_t     Value;
