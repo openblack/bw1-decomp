@@ -201,12 +201,13 @@ void Bookmark::SetFocusBeforeJumpBookmark()
 
 void Bookmark::SetFocusNextBookmark()
 {
-	for (int step = 1; step < BOOKMARK_COUNT + 1; step++)
+	int current = CurrentBookmark;
+	for (int i = 1; i < BOOKMARK_COUNT + 1; i++)
 	{
-		int index = (CurrentBookmark + step) % BOOKMARK_COUNT;
-		if (index < BOOKMARK_USER_COUNT && (Bookmarks[index].Flags & BOOKMARK_FLAG_SET) == BOOKMARK_FLAG_SET)
+		if ((current + i) % BOOKMARK_COUNT < BOOKMARK_USER_COUNT &&
+		    (Bookmarks[(current + i) % BOOKMARK_COUNT].Flags & BOOKMARK_FLAG_SET) == BOOKMARK_FLAG_SET)
 		{
-			SetCameraToBookMark((CurrentBookmark + step) % BOOKMARK_COUNT);
+			SetCameraToBookMark((current + i) % BOOKMARK_COUNT);
 			return;
 		}
 	}
@@ -214,12 +215,13 @@ void Bookmark::SetFocusNextBookmark()
 
 void Bookmark::SetFocusPreviousBookmark()
 {
-	for (int step = BOOKMARK_COUNT - 1; step > 0; step--)
+	int current = CurrentBookmark;
+	for (int i = BOOKMARK_COUNT - 1; i > 0; i--)
 	{
-		int index = (CurrentBookmark + step) % BOOKMARK_COUNT;
-		if (index < BOOKMARK_USER_COUNT && (Bookmarks[index].Flags & BOOKMARK_FLAG_SET) == BOOKMARK_FLAG_SET)
+		if ((current + i) % BOOKMARK_COUNT < BOOKMARK_USER_COUNT &&
+		    (Bookmarks[(current + i) % BOOKMARK_COUNT].Flags & BOOKMARK_FLAG_SET) == BOOKMARK_FLAG_SET)
 		{
-			SetCameraToBookMark((CurrentBookmark + step) % BOOKMARK_COUNT);
+			SetCameraToBookMark((current + i) % BOOKMARK_COUNT);
 			return;
 		}
 	}
@@ -247,33 +249,31 @@ void Bookmark::DrawAll()
 		{
 			for (int i = 0; i < BOOKMARK_USER_COUNT; i++)
 			{
-				Bookmark& bookmark = Bookmarks[i];
-				if (bookmark.Flags & BOOKMARK_FLAG_SET)
+				if (Bookmarks[i].Flags & BOOKMARK_FLAG_SET)
 				{
-					if (bookmark.Graphic == NULL)
+					if (Bookmarks[i].Graphic == NULL)
 					{
-						bookmark.Graphic = BookmarkGraphic::Create(i, (CREATURE_TYPE)BOOKMARK_NONE);
+						Bookmarks[i].Graphic = BookmarkGraphic::Create(i, (CREATURE_TYPE)BOOKMARK_NONE);
 					}
 					LHPoint point;
-					Object* target = bookmark.Target;
-					if (target != NULL)
+					if (Bookmarks[i].Target != NULL)
 					{
-						if (target->Game3dObject != NULL)
+						if (Bookmarks[i].Target->Game3dObject != NULL)
 						{
-							point = target->Game3dObject->matrix.GetPos();
+							point = Bookmarks[i].Target->Game3dObject->matrix.GetPos();
 						}
 						else
 						{
-							GLandscape::ConvertMapCoordToLandscapePoint(target->Pos, point);
+							GLandscape::ConvertMapCoordToLandscapePoint(Bookmarks[i].Target->Pos, point);
 						}
 					}
 					else
 					{
-						GLandscape::ConvertMapCoordToLandscapePoint(bookmark.Pos, point);
+						GLandscape::ConvertMapCoordToLandscapePoint(Bookmarks[i].Pos, point);
 					}
 					point.y += BOOKMARK_HEIGHT_OFFSET;
-					bookmark.Graphic->SetPosition(point);
-					bookmark.Graphic->AddDrawing();
+					Bookmarks[i].Graphic->SetPosition(point);
+					Bookmarks[i].Graphic->AddDrawing();
 				}
 			}
 		}
@@ -321,18 +321,14 @@ void Bookmark::SetCameraToBookMark(unsigned long index)
 			mode->FlyToPosFoc(pos, focus, BOOKMARK_FLY_TIME);
 		}
 
-		{
-			Bookmark& jump = Bookmarks[BOOKMARK_BEFORE_JUMP_INDEX];
-			jump.Flags |= BOOKMARK_FLAG_SET;
-			jump.Target = NULL;
-			jump.Pos = GGame::g_game->MyInterface()->status->Pos;
-			GGame::g_game->GetCamera();
-			LHPoint cameraPos = LH3DTech::g_camera.pos;
-			LHPoint cursor;
-			GLandscape::ConvertMapCoordToLandscapePoint(GGame::g_game->MyInterface()->status->Pos, cursor);
-			LHPoint offset = cameraPos - cursor;
-			jump.CameraOffset = offset;
-		}
+		Bookmarks[BOOKMARK_BEFORE_JUMP_INDEX].Flags |= BOOKMARK_FLAG_SET;
+		Bookmarks[BOOKMARK_BEFORE_JUMP_INDEX].Target = NULL;
+		Bookmarks[BOOKMARK_BEFORE_JUMP_INDEX].Pos = GGame::g_game->MyInterface()->status->Pos;
+		GGame::g_game->GetCamera();
+		LHPoint cameraPos = LH3DTech::g_camera.pos;
+		LHPoint cursor;
+		GLandscape::ConvertMapCoordToLandscapePoint(GGame::g_game->MyInterface()->status->Pos, cursor);
+		Bookmarks[BOOKMARK_BEFORE_JUMP_INDEX].CameraOffset = cameraPos - cursor;
 	}
 }
 
@@ -371,10 +367,9 @@ void Bookmark::SetFocusToOwnedTown()
 					CameraModeNew3* mode = dynamic_cast<CameraModeNew3*>(GGame::g_game->GetCamera()->GetCurrentMode());
 					if (mode != NULL)
 					{
-						const LHPoint& base = coords.GetLHPoint();
-						LHPoint        pos(base.x - BOOKMARK_TOWN_OFFSET_X, base.y + BOOKMARK_TOWN_OFFSET_Y,
-						                   base.z + BOOKMARK_TOWN_OFFSET_Z);
-						LHPoint        focus = coords.GetLHPoint();
+						LHPoint offset(-BOOKMARK_TOWN_OFFSET_X, BOOKMARK_TOWN_OFFSET_Y, BOOKMARK_TOWN_OFFSET_Z);
+						LHPoint pos = coords.GetLHPoint() + offset;
+						LHPoint focus = coords.GetLHPoint();
 						mode->FlyToPosFoc(pos, focus, BOOKMARK_FLY_TIME);
 					}
 					return;

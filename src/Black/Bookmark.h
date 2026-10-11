@@ -48,7 +48,7 @@ struct BookmarkGraphic
 	// Static methods
 
 	// BW1W120 0043a7d0 BW1M119 010b8360
-	static BookmarkGraphic* Create(int param_1, CREATURE_TYPE type);
+	static BookmarkGraphic* Create(long param_1, CREATURE_TYPE type);
 	// BW1W120 0043a9e0 BW1M119 01029e40
 	static void DrawLoopUpdate();
 
