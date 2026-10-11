@@ -90,3 +90,8 @@ void DeadTree::StartOnFire()
 {
 	Reaction::RemoveAllReactionsInitiatedByObject(this);
 }
+
+IMMERSION_EFFECT_TYPE DeadTree::GetInHandImmersionTexture()
+{
+	return Object::GetInHandImmersionTexture();
+}
