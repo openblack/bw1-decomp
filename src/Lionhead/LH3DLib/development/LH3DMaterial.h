@@ -53,9 +53,4 @@ struct LH3DMaterial
 };
 static_assert(sizeof(LH3DMaterial) == 0x10, "Data type is of wrong size");
 
-// BW1W120 00ea1abc BW1M119 012b3710 (LHCombined Release)
-extern LH3DMaterial* g_smoke_mat;
-// BW1W120 00ea1ac4 BW1M119 012b3708 (LHCombined Release)
-extern LH3DMaterial* g_smoke_additif_mat;
-
 #endif /* BW1_DECOMP_LH3D_MATERIAL_INCLUDED_H */

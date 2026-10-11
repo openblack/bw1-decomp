@@ -11,7 +11,7 @@
 #include <Lionhead/LH3DLib/development/LH3DCitadel.h>       /* For LH3DCitadel */
 #include <Lionhead/LH3DLib/development/LH3DComplexObject.h> /* For LH3DComplexObject */
 #include <Lionhead/LH3DLib/development/LH3DIsland.h>        /* For LandCell::g_darkness_to_color */
-#include <Lionhead/LH3DLib/development/LH3DMaterial.h>      /* For g_smoke_mat */
+#include <Lionhead/LH3DLib/development/LH3DMaterial.h>      /* For struct MaterialProperties */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>          /* For LH3DTech::g_camera */
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>          /* For struct LH3DMesh */
 #include <Lionhead/LH3DLib/development/LH3DSprite.h>        /* For struct LH3DSprite */
@@ -291,7 +291,8 @@ TempleLeash::TempleLeash(LH3DObject* object, unsigned long player_number)
 		leash->SpriteFrame = Random(0.0f, 15.0f);
 		LH3DSprite* sprite = LH3DSprite::Create(1, 1);
 		leash->sprite = sprite;
-		sprite->SetMaterial(g_smoke_mat);
+		// TODO: g_smoke_mat is a free LH3D global (unqualified on the Mac) with no owning class to declare it in.
+		// sprite->SetMaterial(g_smoke_mat);
 		sprite->SetSize(2.0f);
 		sprite->colour = LH3DColor(0x80ffffff);
 		sprite->pos = pos;
@@ -1125,7 +1126,8 @@ void CitadelHeart::DrawCreaturePen()
 					continue;
 				}
 				leash->sprite->colour = (alpha << 24) | 0xc18119;
-				leash->sprite->material = g_smoke_additif_mat;
+				// TODO: g_smoke_additif_mat is a free LH3D global (unqualified on the Mac) with no owning class to declare it in.
+				// leash->sprite->material = g_smoke_additif_mat;
 				LHMatrix handMatrix = *hand->Matrix0x80;
 				float    yAngle;
 				float    xAngle;
@@ -1147,7 +1149,8 @@ void CitadelHeart::DrawCreaturePen()
 			else
 			{
 				leash->sprite->colour = (alpha << 24) | 0xffffff;
-				leash->sprite->material = g_smoke_mat;
+				// TODO: g_smoke_mat is a free LH3D global (unqualified on the Mac) with no owning class to declare it in.
+				// leash->sprite->material = g_smoke_mat;
 				leash->sprite->AddDrawing();
 				leash->collar->AddDrawing();
 				GInterface::SendInvisibleDrawCollision(leashes->leashes[i], &pos, CreaturePenCollisionRadius);
