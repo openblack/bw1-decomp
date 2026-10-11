@@ -146,6 +146,9 @@ python tools/decomp-versions.py --since origin/main            # compile check, 
 python tools/decomp-versions.py --since origin/main --linked   # IDENTICAL / SAME-SECTIONS-REORDERED / DIFFERENT
 ```
 
+`SAME-SECTIONS-REORDERED` (only the COMDAT order moved) still passes for linked units; the
+executable hashes have the final word. `DIFFERENT` fails. `--strict-order` treats reordering as a failure.
+
 The underlying utility used for splitting the binary is `dtk` (`build/tools/dtk`).
 It is already properly set up and almost never requires any meddling.
 

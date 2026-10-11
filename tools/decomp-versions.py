@@ -23,9 +23,11 @@ changed Audio.cpp's BW1W100 object and broke that executable's hash while 1.20 p
 It checks out the merge-base of --since in a temporary detached worktree, compiles the
 selected linked units (Matching/MatchingFor in configure.py, evaluated per version)
 there and here for every version, and compares non-debug sections, relocations and external
-symbols like codegen-check.py. A reordered-only result still fails: for linked units the
-COMDAT order is hashed; --ignore-comdat-order tolerates it. Source edits to a linked unit
-are reported as differences too, which is expected.
+symbols like codegen-check.py. A reordered-only result (SAME-SECTIONS-REORDERED) is
+reported but passes: the order the compiler emits COMDATs in can shift with unrelated header
+contents, and such shifts have left the linked executables byte-identical (the hash check
+and CI are the final word). --strict-order makes it fail. Source edits to a linked unit are
+reported as differences too, which is expected.
 
 Selection is --since's merge-base against HEAD plus working-tree changes. Exit status: 0 all
 good, 1 compile failure or difference, 2 tool error.
@@ -270,11 +272,11 @@ def compile_mode(args, ours, sources, workdir):
     return failures, total
 
 
-def classify(ref, new, ignore_order):
+def classify(ref, new, strict_order):
     if not codegen.compare_objects(ref, new, False):
         return "IDENTICAL", []
     if not codegen.compare_objects(ref, new, True):
-        return "SAME-SECTIONS-REORDERED", [] if ignore_order else ["COMDAT/section order differs"]
+        return "SAME-SECTIONS-REORDERED", ["COMDAT/section order differs"] if strict_order else []
     return "DIFFERENT", codegen.compare_objects(ref, new, True)
 
 
@@ -299,12 +301,12 @@ def linked_mode(args, ours, sources, workdir):
             (new, _), (ref, _) = ours_obj.get(source, (None, None)), base_obj.get(source, (None, None))
             if not new or not ref:
                 continue
-            status, problems = classify(ref, new, args.ignore_comdat_order)
+            status, problems = classify(ref, new, args.strict_order)
             counts[status] = counts.get(status, 0) + 1
             compared += 1
             if status != "IDENTICAL":
                 print(f"{version}  {source:<60} {status}")
-                for problem in codegen.compare_objects(ref, new, args.ignore_comdat_order)[:6]:
+                for problem in codegen.compare_objects(ref, new, not args.strict_order)[:6]:
                     print("    " + problem)
             if problems:
                 failures.append((version, source))
@@ -325,16 +327,16 @@ def main(argv=None):
                         help="ignore changed headers: select only changed source files, not their consumers")
     parser.add_argument("--version", action="append", choices=VERSIONS,
                         help="version to check (repeatable; default BW1W100 BW1W110, all three with --linked)")
-    parser.add_argument("--ignore-comdat-order", action="store_true",
-                        help="with --linked, accept a unit whose sections differ only in order")
+    parser.add_argument("--strict-order", action="store_true",
+                        help="with --linked, fail a unit whose sections differ only in order")
     parser.add_argument("--list", action="store_true", help="print the selection and exit without compiling")
     parser.add_argument("--keep", action="store_true", help="keep the scratch directory (and base worktree)")
     parser.add_argument("--ninja", default="ninja.exe" if os.name == "nt" else "ninja")
     args = parser.parse_args(argv)
     if args.all_linked and not args.linked:
         parser.error("--all-linked requires --linked")
-    if args.ignore_comdat_order and not args.linked:
-        parser.error("--ignore-comdat-order requires --linked")
+    if args.strict_order and not args.linked:
+        parser.error("--strict-order requires --linked")
     if not args.version:
         args.version = list(VERSIONS if args.linked else VERSIONS[:2])
     if args.linked and os.name == "nt":
