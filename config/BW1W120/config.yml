@@ -592,6 +592,7 @@ modules:
   name: LHAudio
   symbols: config/BW1W120/LHAudio/symbols.txt
   splits: config/BW1W120/LHAudio/splits.txt
+  generate_exports: true
 
 - object: LHLogR.dll
   hash: 3c42f20350da2c54eb1ba0a61829b94d9883669a
@@ -599,15 +600,18 @@ modules:
   linker_version: "7.0"
   symbols: config/BW1W120/LHLog/symbols.txt
   splits: config/BW1W120/LHLog/splits.txt
+  generate_exports: true
 
 - object: LHMultiplayerR.dll
   hash: 4042119212fb6a5da6d736b059347f340eb4cd17
   name: LHMultiplayer
   symbols: config/BW1W120/LHMultiplayer/symbols.txt
   splits: config/BW1W120/LHMultiplayer/splits.txt
+  generate_exports: true
 
 - object: LHDialogLib.dll
   hash: 64a22b88a51adc4bc119777642263e419ea8d09e
   name: LHDialog
   symbols: config/BW1W120/LHDialog/symbols.txt
   splits: config/BW1W120/LHDialog/splits.txt
+  generate_exports: true

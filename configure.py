@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.33"
+config.dtk_tag = "v0.0.34"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
@@ -175,7 +175,7 @@ config.compilers_tag = {
     "BW1W120": "6.5",
 }[config.version]
 config.linker_version = f"MSVC/{config.compilers_tag}"
-config.lld_link_tag = "bw1-decomp-024"
+config.lld_link_tag = "bw1-decomp-025"
 # Static libraries to pull verbatim CRT objects from (see LibObject). They are
 # not committed and not downloaded — you must supply them yourself: place each
 # .lib at orig/libs/<package>/<lib>.lib. See the README for how to obtain them.
@@ -221,6 +221,15 @@ _debug_directory_unit = {
 if _debug_directory_unit is not None:
     config.base_ldflags.append("/debug")
     config.linker_provided_units = [_debug_directory_unit]
+# Export tables, which lld-link regenerates from the objects' -export:
+# directives (generate_exports in config.yml).
+if config.version == "BW1W120":
+    config.linker_provided_units = (config.linker_provided_units or []) + [
+        "auto_01_10034460_edata",
+        "auto_01_1001AB00_edata",
+        "auto_01_10054540_edata",
+        "auto_01_1001A6F0_edata",
+    ]
 elif args.debug:
     config.base_ldflags.append("/debug")
 # 1.00 was linked with /OPT:REF. Some of the CRT objects it links carry
