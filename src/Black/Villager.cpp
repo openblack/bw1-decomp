@@ -256,7 +256,7 @@ bool32_t Villager::HasSunk()
 		}
 	}
 	TurnsUntilNextStateChange = ((const GVillagerInfo*)info)->DrowningTime;
-	if ((status & 1) == 1)
+	if ((status & LIVING_STATUS_DYING) == LIVING_STATUS_DYING)
 	{
 		SetTopState(VILLAGER_STATE_DYING);
 		TurnsUntilNextStateChange = ((const GVillagerInfo*)info)->DyingTimeWithoutGraveyard;
@@ -810,10 +810,10 @@ Abode* Villager::GetAbode()
 }
 
 // BW1W120 007521b0 BW1M119 015755c0
-void Villager::ToBeDeleted(int param_1)
+void Villager::ToBeDeleted(int delete_now)
 {
 	DeleteDependancys();
-	Living::ToBeDeleted(param_1);
+	Living::ToBeDeleted(delete_now);
 }
 
 // BW1W120 007521d0 BW1M119 0104dce0
