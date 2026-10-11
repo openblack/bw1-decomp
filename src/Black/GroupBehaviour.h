@@ -116,6 +116,7 @@ public:
 enum
 {
 	DANCE_KEY_ACTION_FIELD_0x3C_DEFAULT = 10000,
+	DANCE_KEY_ACTION_FIELD_0x40_SIZE = 0x18,
 };
 
 class DanceKeyAction : public GameThing
@@ -131,7 +132,7 @@ public:
 	uint32_t                      field_0x34;
 	uint32_t                      field_0x38;
 	uint32_t                      field_0x3c;
-	uint8_t                       field_0x40[0x18];
+	uint8_t                       field_0x40[DANCE_KEY_ACTION_FIELD_0x40_SIZE];
 
 	// Override methods
 

@@ -6,6 +6,7 @@
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 #include <chlasm/CreatureEnum.h>                  /* For enum CREATURE_TYPE */
+#include <re_common.h>                            /* For bool32_t */
 
 #include "MapCoords.h" /* For struct MapCoords */
 
@@ -81,7 +82,7 @@ public:
 	// BW1W120 009cd380
 	static int FollowBookmark;
 	// BW1W120 009cd384
-	static int ShowBookmarks;
+	static bool32_t ShowBookmarks;
 	// BW1W120 009cd388
 	static int FocusTownID;
 
