@@ -197,6 +197,12 @@ private:
 	LH_RETURN ProcessMServeRequestLastSuperpacketData(LHNetEvent* net_event);
 
 public:
+#ifdef _LH_MULTIPLAYER_LIB_
+	// BW1W120 1006a5a0 BW1M119 01358a30 (LHCombined Release)
+	static LHDynamicQueue<LHNetEvent*> SuperPacketQ;
+	// BW1W120 1006a590 BW1M119 01358a18 (LHCombined Release)
+	static LHDynamicQueue<unsigned long*> SuperPacketNGTQ;
+#endif
 	// BW1W120 1001d140 BW1M119 0110f020 (LHCombined Release)
 	static void* BuildSuperpacketDatablock(unsigned long first_turn, unsigned long* length);
 	// BW1W120 1001d210 BW1M119 0110eca0 (LHCombined Release)
