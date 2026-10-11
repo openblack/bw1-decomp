@@ -192,3 +192,23 @@ GBaseInfo* GAnimalStateTableInfo::GetBaseInfo(uint32_t& info_count)
 	info_count = ANIMAL_STATE_LAST_STATE;
 	return Infos;
 }
+
+uint32_t Animal::LayDownAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::HideAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::StalkAnimation()
+{
+	return ANM_INVALID;
+}
+
+int Animal::CallOutofAnimationFunction(uint8_t state)
+{
+	return ANM_INVALID;
+}
