@@ -14,14 +14,14 @@
 
 TownSpellIcon::~TownSpellIcon() {}
 
-void TownSpellIcon::ToBeDeleted(int param_1)
+void TownSpellIcon::ToBeDeleted(int delete_now)
 {
 	if (GetTown())
 	{
 		GetTown()->RemoveSpellIcon(this);
 		town = NULL;
 	}
-	SpellIcon::ToBeDeleted(param_1);
+	SpellIcon::ToBeDeleted(delete_now);
 }
 
 GPlayer* TownSpellIcon::GetPlayer()
@@ -104,35 +104,35 @@ void TownStats::SetToZero()
 	int i;
 	NumAdults = 0;
 	NumChildren = 0;
-	field_0x10 = 0;
-	field_0x48 = 0;
-	field_0x28 = 0;
-	field_0x14 = 0;
-	field_0x18 = 0;
-	field_0x1c = 0;
-	field_0x20 = 0;
-	field_0x24 = 0;
-	field_0x2c = 0;
-	field_0x30 = 0;
+	NumAbodes = 0;
+	NumWonders = 0;
+	NumPlannedWonders = 0;
+	NumPlannedBuildings = 0;
+	NumBuildingSites = 0;
+	NumCivicBuildings = 0;
+	NumCivicBuildingSites = 0;
+	NumPlannedCivicBuildings = 0;
+	NumWonderSites = 0;
+	TotalSpaceLeftInAbodes = 0;
 	MaxVillagersInAbodes = 0;
-	field_0x38 = 0;
-	field_0x3c = 0;
-	field_0x40 = 0;
+	RecentDeaths = 0;
+	NumChildrenAdded = 0;
+	MaxChildrenInAbodes = 0;
 	NumAbodesAdded = 0;
 	VillagerSpaceLeftInAbodes = 0;
-	field_0x50 = 0;
-	field_0xd8 = 0;
-	field_0xdc = 0;
-	field_0xe0 = 0;
+	ChildSpaceLeftInAbodes = 0;
+	LastDeathTurn = 0;
+	NumDeaths = 0;
+	LastAbodeAddedTurn = 0;
 	FoodReqiredForDinner = 0;
 	FoodUsed = 0;
 	WoodUsed = 0;
-	field_0xf0 = 0;
-	field_0xf4 = 0;
+	AverageFoodUsed = 0;
+	AverageWoodUsed = 0;
 	TotalFood = 0;
 	TotalWood = 0;
-	field_0x100 = 0;
-	field_0x104 = 0;
+	TotalBuildingSiteCost = 0;
+	BuildingSiteCostSpent = 0;
 	NumMales = 0;
 	NumFemales = 0;
 	for (i = 0; i < VILLAGER_DISCIPLE_LAST; i++)
@@ -143,17 +143,17 @@ void TownStats::SetToZero()
 	{
 		NumAbodesOfNumber[i] = 0;
 	}
-	for (i = 0; i < ARRAY_SIZE(field_0x5c); i++)
+	for (i = 0; i < TOWN_STATS_PLAYER_COUNT; i++)
 	{
-		field_0x5c[i] = 0;
+		DeathsByOwner[i] = 0;
 	}
 	for (i = 0; i < DEATH_REASON_LAST; i++)
 	{
 		Deaths[i] = 0;
 	}
-	for (i = 0; i < ARRAY_SIZE(field_0xa4); i++)
+	for (i = 0; i < TOWN_STATS_PLAYER_COUNT + 1; i++)
 	{
-		field_0xa4[i] = 0;
+		DeathsByKiller[i] = 0;
 	}
 }
 
@@ -161,7 +161,7 @@ void TownStats::Add(Villager* villager)
 {
 	if (villager->IsChild())
 	{
-		field_0x3c++;
+		NumChildrenAdded++;
 		NumChildren++;
 	}
 	else
@@ -198,12 +198,12 @@ void TownStats::Remove(Villager* villager)
 	}
 }
 
-void TownStats::ChildToAdult(Villager* param_1)
+void TownStats::ChildToAdult(Villager* villager)
 {
-	if (param_1->GetAbode())
+	if (villager->GetAbode())
 	{
 		VillagerSpaceLeftInAbodes--;
-		field_0x50++;
+		ChildSpaceLeftInAbodes++;
 	}
 	NumChildren--;
 	NumAdults++;
@@ -213,13 +213,13 @@ void TownStats::VillagerMoveOutOfAbode(Villager* villager)
 {
 	if (villager->IsChild())
 	{
-		field_0x50++;
-		field_0x30++;
+		ChildSpaceLeftInAbodes++;
+		TotalSpaceLeftInAbodes++;
 	}
 	else
 	{
 		VillagerSpaceLeftInAbodes++;
-		field_0x30++;
+		TotalSpaceLeftInAbodes++;
 	}
 }
 
@@ -227,65 +227,65 @@ void TownStats::VillagerMoveIntoAbode(Villager* villager)
 {
 	if (villager->IsChild())
 	{
-		field_0x50--;
-		field_0x30--;
+		ChildSpaceLeftInAbodes--;
+		TotalSpaceLeftInAbodes--;
 	}
 	else
 	{
 		VillagerSpaceLeftInAbodes--;
-		field_0x30--;
+		TotalSpaceLeftInAbodes--;
 	}
 }
 
-void TownStats::IncrementNumOfDisciples(VILLAGER_DISCIPLE param_1)
+void TownStats::IncrementNumOfDisciples(VILLAGER_DISCIPLE disciple)
 {
-	if (param_1)
+	if (disciple)
 	{
-		NumDisciples[param_1]++;
+		NumDisciples[disciple]++;
 	}
 }
 
-void TownStats::DecrementNumOfDisciples(VILLAGER_DISCIPLE param_1)
+void TownStats::DecrementNumOfDisciples(VILLAGER_DISCIPLE disciple)
 {
-	if (param_1)
+	if (disciple)
 	{
-		NumDisciples[param_1]--;
+		NumDisciples[disciple]--;
 	}
 }
 
-void TownStats::VillagerDead(Villager* villager, DEATH_REASON reason, GPlayer* player, float param_4)
+void TownStats::VillagerDead(Villager* villager, DEATH_REASON reason, GPlayer* player, float)
 {
-	field_0xd8 = GGame::g_game->data.GameTurn;
-	field_0xdc++;
+	LastDeathTurn = GGame::g_game->data.GameTurn;
+	NumDeaths++;
 	if (player == NULL)
 	{
 		player = &GGame::g_game->players[GGame::g_game->NeutralPlayerIndex];
 	}
-	field_0xa4[player->GetPlayerNumber()]++;
+	DeathsByKiller[player->GetPlayerNumber()]++;
 	Deaths[reason]++;
-	field_0x5c[0]++;
-	field_0x38++;
+	DeathsByOwner[0]++;
+	RecentDeaths++;
 }
 
 void TownStats::ProcessBirthday()
 {
-	if (field_0xf0 != 0.0f)
+	if (AverageFoodUsed != 0.0f)
 	{
-		field_0xf0 = (FoodUsed / (NumAdults + NumChildren) + field_0xf0) * 0.5f;
+		AverageFoodUsed = (FoodUsed / (NumAdults + NumChildren) + AverageFoodUsed) * 0.5f;
 	}
 	else if (NumAdults + NumChildren != 0)
 	{
-		field_0xf0 = FoodUsed / (NumAdults + NumChildren);
+		AverageFoodUsed = FoodUsed / (NumAdults + NumChildren);
 	}
-	if (field_0xf4 != 0.0f)
+	if (AverageWoodUsed != 0.0f)
 	{
 		FoodUsed = 0.0f;
-		field_0xf4 = (field_0xf4 + WoodUsed) * 0.5f;
+		AverageWoodUsed = (AverageWoodUsed + WoodUsed) * 0.5f;
 		WoodUsed = 0.0f;
 	}
 	else
 	{
-		field_0xf4 = WoodUsed;
+		AverageWoodUsed = WoodUsed;
 		FoodUsed = 0.0f;
 		WoodUsed = 0.0f;
 	}

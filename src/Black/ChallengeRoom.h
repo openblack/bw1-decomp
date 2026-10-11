@@ -70,7 +70,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 00784c10 BW1M119 011b4b90
-	bool StartScript(unsigned long param_1);
+	bool StartScript(unsigned long challenge_id);
 	// BW1W120 00784d10 BW1M119 011b4810
 	void ChallengeLoad(GameOSFile& file);
 	// BW1W120 00784780 BW1M119 011b5180

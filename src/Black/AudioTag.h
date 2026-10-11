@@ -27,6 +27,8 @@ enum AUDIO_TAG_COMMAND
 	AUDIO_TAG_COMMAND_LOOK_RELEASE = 7,
 };
 
+#define AUDIO_TAG_EMOTION_PERCENT 100.0f
+
 struct AudioTag
 {
 	float Time;

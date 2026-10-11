@@ -6,5 +6,5 @@
 
 HandStateTug::HandStateTug(CHand* hand) : HandState(hand)
 {
-	field_0x8 = 0;
+	TugPosition = 0;
 }

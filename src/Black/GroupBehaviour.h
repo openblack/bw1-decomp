@@ -73,7 +73,7 @@ public:
 	virtual void UpdateGroupBasedOnAction(DanceGroup* dance_group, DANCE_GROUP_ACTION_TYPE action_type,
 	                                      const DanceGroupActionArgument& argument, uint32_t param_4);
 	// BW1W120 00597300 BW1M119 01101ac0
-	virtual void AddAction(float param_1, LHDynamicStack<unsigned long>& stack, DANCE_GROUP_ACTION_TYPE action_type,
+	virtual void AddAction(float time, LHDynamicStack<unsigned long>& stack, DANCE_GROUP_ACTION_TYPE action_type,
 	                       const DanceGroupActionArgument& argument);
 	// BW1W120 00597270 BW1M119 01101cf0
 	virtual void AddAction(float param_1, uint32_t param_2, DANCE_GROUP_ACTION_TYPE action_type,
@@ -113,19 +113,21 @@ public:
 	virtual void ToBeDeleted(int param_1);
 };
 
+#define DANCE_KEY_ACTION_DEFAULT_RADIUS 10000
+
 class DanceKeyAction : public GameThing
 {
 public:
 	LHDynamicStack<unsigned long> Groups;
 	uint32_t                      Type;
-	uint32_t                      field_0x20;
-	uint32_t                      field_0x24;
+	uint32_t                      ArgumentValue;
+	uint32_t                      ArgumentValue2;
 	uint32_t                      field_0x28;
 	uint32_t                      field_0x2c;
-	uint32_t                      field_0x30;
-	uint32_t                      field_0x34;
-	uint32_t                      field_0x38;
-	uint32_t                      field_0x3c;
+	uint32_t                      ArgumentPointX;
+	uint32_t                      ArgumentPointY;
+	uint32_t                      ArgumentPointZ;
+	uint32_t                      ArgumentRadius;
 	uint8_t                       field_0x40[0x18];
 
 	// Override methods

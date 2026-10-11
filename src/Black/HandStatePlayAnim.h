@@ -15,7 +15,7 @@ class HandStatePlayAnim : public HandState
 {
 public:
 	uint8_t  field_0x8[0x10];
-	uint32_t field_0x18;
+	uint32_t AnimationTime;
 	uint32_t field_0x1C;
 
 	// Override methods

@@ -2,8 +2,6 @@
 
 #include "HelpDude.h"
 
-#define AUDIO_TAG_EMOTION_PERCENT 100.0f
-
 void AudioTag::ApplyToDude(HelpDude* dude, int resolve_target, int play_sound)
 {
 	if (resolve_target)

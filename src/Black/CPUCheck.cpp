@@ -17,7 +17,7 @@ static BOOL WINAPI DisplayEnumCallback(GUID* guid, LPSTR description, LPSTR name
 
 CPUCheck::CPUCheck()
 {
-	memset(field_0x24, 0, sizeof(field_0x24));
+	memset(Reserved, 0, sizeof(Reserved));
 	ModelString = NULL;
 	TypeString = NULL;
 	Summary = NULL;
@@ -89,7 +89,7 @@ int CPUCheck::GetCPUSpeed()
 		{
 		rdtsc
 		mov dword ptr start, eax
-		mov dword ptr start + 4, edx
+		mov dword ptr start + CPU_CHECK_TSC_HIGH_OFFSET, edx
 	    }
 	DWORD startTime = GetTickCount();
 	Sleep(CPU_CHECK_SPEED_SLEEP_MILLISECONDS);
@@ -98,9 +98,9 @@ int CPUCheck::GetCPUSpeed()
 	{
 		rdtsc
 		mov dword ptr end, eax
-		mov dword ptr end + 4, edx
+		mov dword ptr end + CPU_CHECK_TSC_HIGH_OFFSET, edx
 	}
-	int speed = (int)((end - start) / (endTime - startTime) / CPU_CHECK_SPEED_DIVISOR);
+	int speed = (int)((end - start) / (endTime - startTime) / CPU_CHECK_KHZ_PER_MHZ);
 	Report3D__FPCce("CPU SPEED %d\n", speed);
 	return speed;
 }
@@ -141,9 +141,9 @@ void CPUCheck::GetProcessorInfo()
 		mov vendorEdx, edx
 		mov vendorEcx, ecx
 	    }
-	*(int*)&Vendor[0] = vendorEbx;
-	*(int*)&Vendor[4] = vendorEdx;
-	*(int*)&Vendor[8] = vendorEcx;
+	*(int*)&Vendor[0 * sizeof(int)] = vendorEbx;
+	*(int*)&Vendor[1 * sizeof(int)] = vendorEdx;
+	*(int*)&Vendor[2 * sizeof(int)] = vendorEcx;
 	Vendor[CPU_CHECK_VENDOR_LENGTH] = '\0';
 
 	if (strcmp(Vendor, "GenuineIntel") == 0)
@@ -454,9 +454,8 @@ BOOL WINAPI DisplayEnumCallback(GUID* guid, LPSTR description, LPSTR name, LPVOI
 		DWORD high = identifier.liDriverVersion.HighPart;
 		DWORD low = identifier.liDriverVersion.LowPart;
 		sprintf(DeviceDescription, "Driver desc:%s, Driver name:%s\n", identifier.szDriver, identifier.szDescription);
-		sprintf(DriverInfo, "Driver info:Product:0x%u, Version:0x%u, SubVersion:0x%u, Build:0x%u\n",
-		        (high >> CPU_CHECK_WORD_BITS) & CPU_CHECK_WORD_MASK, high & CPU_CHECK_WORD_MASK,
-		        (low >> CPU_CHECK_WORD_BITS) & CPU_CHECK_WORD_MASK, low & CPU_CHECK_WORD_MASK);
+		sprintf(DriverInfo, "Driver info:Product:0x%u, Version:0x%u, SubVersion:0x%u, Build:0x%u\n", HIWORD(high),
+		        LOWORD(high), HIWORD(low), LOWORD(low));
 		sprintf(DriverIds, "Driver Vendor ID:0x%X, Driver device ID:0x%X\nDriver SubSysID:0x%X ,Driver Revision:0x%X\n",
 		        identifier.dwVendorId, identifier.dwDeviceId, identifier.dwSubSysId, identifier.dwRevision);
 		sprintf(DriverWHQL, "Driver Windows Hardware Quality Lab Level:%u\n", identifier.dwWHQLLevel);

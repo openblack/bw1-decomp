@@ -75,11 +75,11 @@ struct Temple
 	// BW1W120 00794370 BW1M119 0153f7c0
 	void Draw();
 	// BW1W120 00794a20 BW1M119 0153f010
-	bool StartScript(unsigned long param_1);
+	bool StartScript(unsigned long challenge_id);
 	// BW1W120 00794970 BW1M119 0153f230
 	void UpdateChallenge(SnapShotData& data, unsigned long count, void** values, VMType* types, int take_picture);
 	// BW1W120 007949e0 BW1M119 0153f110
-	void SetCameraToLookAtSubMesh(unsigned long sub_mesh, float param_2, float param_3, float param_4);
+	void SetCameraToLookAtSubMesh(unsigned long sub_mesh, float pitch, float yaw, float roll);
 	// BW1W120 inlined BW1M119 015aef90
 	TempleRoom*& GetRoom(TempleRoomsEnum room) { return rooms[room]; }
 };

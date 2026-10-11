@@ -5,13 +5,13 @@
 
 DanceKeyAction::DanceKeyAction()
 {
-	field_0x3c = 10000;
-	field_0x30 = 0;
-	field_0x38 = 0;
-	field_0x34 = 0;
+	ArgumentRadius = DANCE_KEY_ACTION_DEFAULT_RADIUS;
+	ArgumentPointX = 0;
+	ArgumentPointZ = 0;
+	ArgumentPointY = 0;
 	Type = 0;
-	field_0x24 = 0;
-	field_0x20 = 0;
+	ArgumentValue2 = 0;
+	ArgumentValue = 0;
 }
 
 uint32_t DanceKeyAction::GetSaveType()
@@ -19,12 +19,12 @@ uint32_t DanceKeyAction::GetSaveType()
 	return GAME_THING_TYPE_DANCE_KEY_ACTION;
 }
 
-DanceKeyFrame::DanceKeyFrame(int param_1, LHDynamicStack<unsigned long>& groups, DANCE_GROUP_ACTION_TYPE action_type,
+DanceKeyFrame::DanceKeyFrame(int time, LHDynamicStack<unsigned long>& groups, DANCE_GROUP_ACTION_TYPE action_type,
                              const DanceGroupActionArgument& arguments)
 {
-	Time = (float)param_1;
+	Time = (float)time;
 	AddAction(groups, action_type, arguments);
-	field_0x20 = 0;
+	EditFlags = 0;
 }
 
 uint32_t DanceKeyFrame::GetSaveType()
@@ -42,10 +42,10 @@ char* DanceKeyFrame::GetDebugText()
 	return "DanceKeyFrame:";
 }
 
-void DanceKeyFrame::ToBeDeleted(int param_1)
+void DanceKeyFrame::ToBeDeleted(int delete_now)
 {
 	Actions.ToBeDeletedAll();
-	GameThing::ToBeDeleted(param_1);
+	GameThing::ToBeDeleted(delete_now);
 }
 
 uint32_t DanceKeyFrame::Save(GameOSFile& file)
@@ -54,7 +54,7 @@ uint32_t DanceKeyFrame::Save(GameOSFile& file)
 	{
 		WRITE_IT(file, Time);
 		file.WriteSafe(Actions);
-		WRITE_IT(file, field_0x20);
+		WRITE_IT(file, EditFlags);
 		return 1;
 	}
 	return 0;
@@ -66,7 +66,7 @@ uint32_t DanceKeyFrame::Load(GameOSFile& file)
 	{
 		file.ReadIt(Time);
 		file.ReadSafe(Actions);
-		file.ReadIt(field_0x20);
+		file.ReadIt(EditFlags);
 		return 1;
 	}
 	return 0;
