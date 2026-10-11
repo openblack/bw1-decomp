@@ -144,6 +144,10 @@ public:
 		};
 		struct
 		{
+			VILLAGER_DISCIPLE DiscipleOnDrop;
+		};
+		struct
+		{
 			JustWholeMapXZ ReactionPos; // Reaction states: reaction position.
 		};
 		struct
@@ -208,6 +212,7 @@ public:
 		struct
 		{
 			uint32_t ClearAreaPos[VILLAGER_NUM_CLEAR_AREA_COORDS];
+			float    ClearAreaRadius;
 		};
 	};
 	Abode* home;

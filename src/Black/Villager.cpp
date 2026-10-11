@@ -1399,14 +1399,14 @@ bool32_t Villager::LoadDance(GameOSFile& file)
 // BW1W120 00754c00 BW1M119 01570eb0
 bool32_t Villager::SaveWorship(GameOSFile& file)
 {
-	file.WriteIt(field_0x118);
+	file.WriteIt(TargetThing);
 	return true;
 }
 
 // BW1W120 00754c60 BW1M119 01570de0
 bool32_t Villager::LoadWorship(GameOSFile& file)
 {
-	file.ReadIt(field_0x118);
+	file.ReadIt(TargetThing);
 	return true;
 }
 
@@ -1427,14 +1427,14 @@ bool32_t Villager::LoadDead(GameOSFile& file)
 // BW1W120 00754d80 BW1M119 01570b90
 bool32_t Villager::SaveInHand(GameOSFile& file)
 {
-	file.WriteIt(field_0x10c);
+	file.WriteIt(DiscipleOnDrop);
 	return true;
 }
 
 // BW1W120 00754de0 BW1M119 01570ac0
 bool32_t Villager::LoadInHand(GameOSFile& file)
 {
-	file.ReadIt(field_0x10c);
+	file.ReadIt(DiscipleOnDrop);
 	return true;
 }
 
@@ -1626,7 +1626,7 @@ bool32_t Villager::LoadReaction(GameOSFile& param_1)
 bool32_t Villager::SaveClearArea(GameOSFile& file)
 {
 	file.WriteIt(ClearAreaPos);
-	file.WriteIt(field_0x120);
+	file.WriteIt(ClearAreaRadius);
 	return true;
 }
 
@@ -1634,7 +1634,7 @@ bool32_t Villager::SaveClearArea(GameOSFile& file)
 bool32_t Villager::LoadClearArea(GameOSFile& file)
 {
 	file.ReadIt(ClearAreaPos);
-	file.ReadIt(field_0x120);
+	file.ReadIt(ClearAreaRadius);
 	return true;
 }
 
