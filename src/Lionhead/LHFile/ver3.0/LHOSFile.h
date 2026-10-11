@@ -50,6 +50,28 @@ public:
 	LH_FILE_RESULT Read(void* buffer, size_t size, size_t* read);
 	// BW1W120 007bc920 BW1M119 011658c0 (LHCombined Release)
 	LH_FILE_RESULT Write(const void* data, uint32_t len, uint32_t* written);
+	// Inliner IL size: 56
+	// BW1W120 inlined BW1M119 inlined
+	LH_FILE_RESULT ReadChecked(void* buffer, size_t size)
+	{
+		size_t read;
+		if (Read(buffer, size, &read) != LH_FILE_RESULT_OK && read != size)
+		{
+			return LH_FILE_RESULT_ERROR;
+		}
+		return LH_FILE_RESULT_OK;
+	}
+	// Inliner IL size: 56
+	// BW1W120 inlined BW1M119 inlined
+	LH_FILE_RESULT WriteChecked(const void* data, uint32_t len)
+	{
+		uint32_t written;
+		if (Write(data, len, &written) != LH_FILE_RESULT_OK && written != len)
+		{
+			return LH_FILE_RESULT_ERROR;
+		}
+		return LH_FILE_RESULT_OK;
+	}
 	// BW1W120 007bc700 BW1M119 01165ee0 (LHCombined Release)
 	LH_FILE_RESULT Position(uint32_t* position);
 	// BW1W120 007bcae0 BW1M119 011654a0 (LHCombined Release)
