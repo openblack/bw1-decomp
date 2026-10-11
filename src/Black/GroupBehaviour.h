@@ -116,24 +116,70 @@ public:
 /* Default end time of a dance group movement; the unit is not known (probably milliseconds) */
 #define DANCE_GROUP_MOVEMENT_DEFAULT_END_TIME 10000
 
-/* Parameters of the SetAction dance group action: a kind of movement (RotateDancers, LookAt, MoveToPos, ...)
- * with up to two float parameters. */
+enum DANCE_GROUP_MOVEMENT_KIND
+{
+	DANCE_GROUP_MOVEMENT_KIND_STAND_STILL = 0x0,
+	DANCE_GROUP_MOVEMENT_KIND_ROTATE_DANCERS = 0x1,
+	DANCE_GROUP_MOVEMENT_KIND_LOOK_AT = 0x2,
+	DANCE_GROUP_MOVEMENT_KIND_SPIN_AROUND = 0x3,
+	DANCE_GROUP_MOVEMENT_KIND_RANDOM_DANCE = 0x4,
+	DANCE_GROUP_MOVEMENT_KIND_PRAY = 0x5,
+	DANCE_GROUP_MOVEMENT_KIND_FUNKY = 0x6,
+	DANCE_GROUP_MOVEMENT_KIND_FACE_IN = 0x7,
+	DANCE_GROUP_MOVEMENT_KIND_FACE_OUT = 0x8,
+	DANCE_GROUP_MOVEMENT_KIND_ROTATE_SHAPE = 0x9,
+	DANCE_GROUP_MOVEMENT_KIND_PLAY_ANIM = 0xa,
+	DANCE_GROUP_MOVEMENT_KIND_CHANGE_SIZE = 0xb,
+	DANCE_GROUP_MOVEMENT_KIND_MOVE_TO_POS = 0xc,
+	DANCE_GROUP_MOVEMENT_KIND_FACE_DIRECTION = 0xd,
+	DANCE_GROUP_MOVEMENT_KIND_IMPRESSED = 0xe,
+	DANCE_GROUP_MOVEMENT_KIND_SAD = 0xf,
+	DANCE_GROUP_MOVEMENT_KIND_HAPPY = 0x10,
+	DANCE_GROUP_MOVEMENT_KIND_LOOKING_FOR_SOMETHING = 0x11,
+	DANCE_GROUP_MOVEMENT_KIND_SEX = 0x12,
+	DANCE_GROUP_MOVEMENT_KIND_MOURNING = 0x13,
+	DANCE_GROUP_MOVEMENT_KIND_TALK = 0x14,
+	DANCE_GROUP_MOVEMENT_KIND_TALK_AND_POINT = 0x15,
+	DANCE_GROUP_MOVEMENT_KIND_WORSHIP_CREATURE = 0x16,
+	DANCE_GROUP_MOVEMENT_KIND_DANCE_X = 0x17,
+	DANCE_GROUP_MOVEMENT_KIND_DANCE_X_PARTNER = 0x18,
+	DANCE_GROUP_MOVEMENT_KIND_FEMALE_A = 0x19,
+	DANCE_GROUP_MOVEMENT_KIND_FEMALE_B = 0x1a,
+	DANCE_GROUP_MOVEMENT_KIND_FEMALE_C = 0x1b,
+	DANCE_GROUP_MOVEMENT_KIND_MALE_A = 0x1c,
+	DANCE_GROUP_MOVEMENT_KIND_MALE_B = 0x1d,
+	DANCE_GROUP_MOVEMENT_KIND_MALE_C = 0x1e,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACE_IN = 0x1f,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACE_OUT = 0x20,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACE_DIRECTION = 0x21,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_DANCE = 0x22,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_INDIVIDUAL = 0x23,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_STATIC = 0x24,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_LOOK_AT = 0x25,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACIAL = 0x26,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_GESTURE = 0x27,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_POINT = 0x28,
+};
+
+/* Parameters of the DANCE_GROUP_ACTION_TYPE_SET_ACTION dance group action: a kind of movement with up to two float
+ * parameters. */
 struct DanceGroupMovement
 {
-	uint32_t Kind;
-	float    Param1;
-	float    Param2;
-	uint32_t EndTime;
+	DANCE_GROUP_MOVEMENT_KIND Kind;
+	float                     Param1;
+	float                     Param2;
+	uint32_t                  EndTime;
 };
 
 /* Argument of an action performed on a dance group. Which members are used depends on the action type: Value/Value2
- * hold e.g. the shape, the position (as floats), the angle or the percentage chance for SetStateOfProportion;
- * Movement belongs to SetAction and CameraPoints to SetCamera. */
+ * hold e.g. the shape, the position (as floats), the angle or the percentage chance for
+ * DANCE_GROUP_ACTION_TYPE_SET_STATE_OF_PROPORTION; Movement belongs to DANCE_GROUP_ACTION_TYPE_SET_ACTION and
+ * CameraPoints to DANCE_GROUP_ACTION_TYPE_SET_CAMERA. */
 struct DanceGroupActionArgument
 {
 	uint32_t           Value;
 	uint32_t           Value2;
-	uint32_t           Value3; /* Numerator of Proportion */
+	uint32_t           Value3; /* Numerator of DANCE_GROUP_ACTION_TYPE_PROPORTION */
 	uint32_t           Unused; /* Never read or written by any code, only copied around with the rest */
 	DanceGroupMovement Movement;
 	float              CameraPoints[2][3];
@@ -145,7 +191,7 @@ class DanceKeyAction : public GameThing
 {
 public:
 	LHDynamicStack<unsigned long> Groups;
-	uint32_t                      Type;
+	DANCE_GROUP_ACTION_TYPE       Type;
 	DanceGroupActionArgument      Argument;
 
 	// Override methods
