@@ -23,11 +23,6 @@ bool32_t Fragment::ValidForPlaceInHand(GInterfaceStatus* param_1)
 	return false;
 }
 
-uint32_t Fragment::InterfaceValidToTap(GInterfaceStatus* param_1)
-{
-	return 0;
-}
-
 bool32_t Fragment::CanBeThrownByPlayer()
 {
 	return false;
@@ -37,8 +32,6 @@ bool Fragment::InteractsWithPhysicsObjects()
 {
 	return false;
 }
-
-void Fragment::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2) {}
 
 bool32_t Fragment::ShouldFootpathsGoRound()
 {

@@ -28,13 +28,3 @@ bool32_t Football::IsFootball()
 {
 	return true;
 }
-
-bool32_t Football::CreatureMustAvoid(Creature* param_1)
-{
-	return false;
-}
-
-bool32_t Football::CanBeHiddenIn()
-{
-	return false;
-}

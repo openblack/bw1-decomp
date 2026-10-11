@@ -41,16 +41,6 @@ PileResource::PileResource(const MapCoords& coords, const GPotInfo* info, uint32
 {
 }
 
-bool32_t PileResource::IsTuggable()
-{
-	return false;
-}
-
-bool32_t PileResource::IsField(Creature* creature)
-{
-	return false;
-}
-
 bool32_t PileResource::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
 {
 	return true;
