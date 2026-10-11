@@ -14,3 +14,8 @@ char* PSysManager::GetDebugText()
 {
 	return PSYS_DEBUG_TEXT;
 }
+
+const LHPoint* PSysManager::GetOrigin() const
+{
+	return &Origin;
+}
