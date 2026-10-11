@@ -340,7 +340,6 @@ Source must read as if a Lionhead programmer wrote it. The only comments it cont
   [Signatures](#signatures-function-boundaries-and-layouts), above declarations in headers.
   `.cpp` files carry no comments above definitions; a function with no header (file static,
   callback) keeps its address comment on a forward declaration in the `.cpp`.
-- `/* 0x1c */` offsets on data members.
 - `// Inliner IL size: N` — above an inline helper's address comment: its exact IL size, as measured by `tools/inline-budget.py size`
   (`<= 40` means never charged). Update it whenever the body changes.
 - Comments a Lionhead programmer could plausibly have written; prefer none.
