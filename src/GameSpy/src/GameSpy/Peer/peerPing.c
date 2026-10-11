@@ -643,6 +643,8 @@ PEERBool piPingInitPlayer
 	piPlayer * player
 )
 {
+	int i;
+
 	assert(player);
 
 	player->nextPing = 0;
@@ -653,7 +655,8 @@ PEERBool piPingInitPlayer
 	player->pingsLostConsecutive = 0;
 	player->field_0xc8 = 0;
 	player->pingAverage = 0;
-	memset(player->pingHistory, 0, sizeof(int) * PI_PING_HISTORY_LEN);
+	for(i = 0 ; i < PI_PING_HISTORY_LEN ; i++)
+		player->pingHistory[i] = 0;
 	player->pingHistoryNum = 0;
 	player->gotPing = PEERFalse;
 	player->pingQueued = PEERFalse;

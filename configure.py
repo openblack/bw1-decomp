@@ -1847,7 +1847,7 @@ config.libs = [
             GameSpyObject(MatchingFor("BW1W120"), "GameSpy/Chat/chatMain.c"),
             GameSpyObject(MatchingFor("BW1W120"), "GameSpy/Peer/peerCEngine.c"),
             GameSpyObject(MatchingFor("BW1W120"), "GameSpy/Peer/peerRooms.c"),
-            GameSpyObject(NonMatching, "GameSpy/Peer/peerPing.c"),
+            GameSpyObject(MatchingFor("BW1W120"), "GameSpy/Peer/peerPing.c"),
             GameSpyObject(NonMatching, "GameSpy/Peer/peerPlayers.c"),
             GameSpyObject(MatchingFor("BW1W120"), "GameSpy/queryreporting/gqueryreporting.c"),
             GameSpyObject(MatchingFor("BW1W120"), "GameSpy/Peer/peerGlobalCallbacks.c"),
