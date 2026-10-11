@@ -140,7 +140,7 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 006f6840 BW1M119 0108e380
-	void LookIn(VMScriptType param_1);
+	void LookIn(VMScriptType script_type);
 	// BW1W120 006f68c0 BW1M119 014efc20
 	void AutoStart();
 	// BW1W120 006f68f0 BW1M119 014efbb0

@@ -16,14 +16,14 @@ void Temple::UpdateChallenge(SnapShotData& data, unsigned long count, void** val
 	((ChallengeRoom*)rooms[TEMPLE_ROOM_CHALLENGE])->UpdateChallenge(data, count, values, types, take_picture);
 }
 
-void Temple::SetCameraToLookAtSubMesh(unsigned long sub_mesh, float param_2, float param_3, float param_4)
+void Temple::SetCameraToLookAtSubMesh(unsigned long sub_mesh, float pitch, float yaw, float roll)
 {
-	ActiveRoom->SetCameraToLookAtSubMesh(sub_mesh, param_2, param_3, param_4);
+	ActiveRoom->SetCameraToLookAtSubMesh(sub_mesh, pitch, yaw, roll);
 }
 
-bool Temple::StartScript(unsigned long param_1)
+bool Temple::StartScript(unsigned long challenge_id)
 {
-	return ((ChallengeRoom*)rooms[TEMPLE_ROOM_CHALLENGE])->StartScript(param_1);
+	return ((ChallengeRoom*)rooms[TEMPLE_ROOM_CHALLENGE])->StartScript(challenge_id);
 }
 
 void Temple::ProcessGameTurn()

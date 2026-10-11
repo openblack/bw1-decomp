@@ -72,8 +72,11 @@ enum ANIM_SOUND_EVENT
 
 #define NUM_ATMOS_TYPES 14
 
-enum
+#define MUSIC_DEFAULT_PLAY_DISTANCE 100.0f
+
+enum THING_MUSIC_RESULT
 {
+	THING_MUSIC_RESULT_NONE = 0,
 	THING_MUSIC_RESULT_IN_RANGE = 1,
 };
 
@@ -250,7 +253,7 @@ public:
 	// BW1W120 00429680 BW1M119 inlined
 	bool32_t IsThingMusicPlaying(ThingMusicInfo* info);
 	// BW1W120 004296c0 BW1M119 01186660
-	void StopMusic(ThingMusicInfo* info, int param_2);
+	void StopMusic(ThingMusicInfo* info, int fade);
 	// BW1W120 00429880 BW1M119 011864f0
 	void SwapThingMusic(GameThingWithPos* thing, GameThingWithPos* other);
 	// BW1W120 004298a0 BW1M119 01186460
@@ -268,26 +271,26 @@ public:
 	// BW1W120 0042a370 BW1M119 011876f0
 	void ReleaseSFXBanks();
 	// BW1W120 00429d60 BW1M119 010001c0
-	void PlaySoundEffect(Base* param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4, int param_5, int param_6,
-	                     AUDIO_SFX_BANK_TYPE param_7);
+	void PlaySoundEffect(Base* object, uint32_t sample, uint32_t priority, uint32_t volume, int distance,
+	                     int positional, AUDIO_SFX_BANK_TYPE bank_type);
 	// BW1W120 00429da0 BW1M119 01000240
-	void PlaySoundEffect(Base* param_1, unsigned long param_2, unsigned long param_3, unsigned long param_4,
-	                     int param_5, int param_6, LH_AudioBank* bank);
+	void PlaySoundEffect(Base* object, unsigned long sample, unsigned long priority, unsigned long volume, int distance,
+	                     int positional, LH_AudioBank* bank);
 	// BW1W120 00429e30 BW1M119 010230f0
 	void PlaySoundEffect(LH_SamplePlayOptions* options);
 	// BW1W120 0042a040 BW1M119 010004c0
-	void PlaySoundEffect(Base* param_1, const LHPoint& pos, uint32_t param_3, uint32_t param_4, uint32_t param_5,
-	                     int param_6, int param_7, LH_AudioBank* bank);
+	void PlaySoundEffect(Base* object, const LHPoint& pos, uint32_t sample, uint32_t priority, uint32_t volume,
+	                     int distance, int positional, LH_AudioBank* bank);
 	// BW1W120 0042a000 BW1M119 01187f00
-	void PlaySoundEffect(Base* param_1, const LHPoint& pos, uint32_t param_3, uint32_t param_4, uint32_t param_5,
-	                     int param_6, int param_7, AUDIO_SFX_BANK_TYPE param_8);
+	void PlaySoundEffect(Base* object, const LHPoint& pos, uint32_t sample, uint32_t priority, uint32_t volume,
+	                     int distance, int positional, AUDIO_SFX_BANK_TYPE bank_type);
 	// BW1W120 0042a4b0 BW1M119 01062bd0
 	uint32_t SamplePlayAnimEffect(void* object, float distance, long* sound, int param_4, LH_AudioBank* bank,
 	                              int param_6, float param_7, float param_8);
 	// BW1W120 0042a430 BW1M119 01187520
 	float GetGSFXSampleMaxDistance(uint32_t sample, LH_AudioBank* bank) const;
 	// BW1W120 0042a210 BW1M119 01187ba0
-	void StopPlayingSoundEffect(uint32_t param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type) const;
+	void StopPlayingSoundEffect(uint32_t sample, uint32_t object, AUDIO_SFX_BANK_TYPE type) const;
 	// BW1W120 0042a330 BW1M119 011877f0
 	void ReleaseLoopOnSoundEffect(Base* param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type) const;
 	// BW1W120 inlined BW1M119 011878b0

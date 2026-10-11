@@ -22,12 +22,12 @@ class DanceKeyFrame : public GameThing
 public:
 	float                         Time;
 	LHLinkedList<DanceKeyAction*> Actions;
-	uint32_t                      field_0x20;
+	uint32_t                      EditFlags;
 
 	// Override methods
 
 	// BW1W120 0050ebf0 BW1M119 012b1300
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 0050ebc0 BW1M119 012b00e0
 	virtual char* GetDebugText();
 	// BW1W120 0050f2f0 BW1M119 012b0120
@@ -42,7 +42,7 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	DanceKeyFrame() {}
 	// BW1W120 0050eb60 BW1M119 012b1570
-	DanceKeyFrame(int param_1, LHDynamicStack<unsigned long>& groups, DANCE_GROUP_ACTION_TYPE action_type,
+	DanceKeyFrame(int time, LHDynamicStack<unsigned long>& groups, DANCE_GROUP_ACTION_TYPE action_type,
 	              const DanceGroupActionArgument& arguments);
 
 	// Non-virtual methods

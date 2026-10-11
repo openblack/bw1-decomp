@@ -14,7 +14,7 @@ struct LHMatrix;
 class HandStateNormal : public HandState
 {
 public:
-	uintptr_t field_0x8;
+	uintptr_t AnimationTime;
 	uintptr_t field_0xC;
 
 	// Override methods

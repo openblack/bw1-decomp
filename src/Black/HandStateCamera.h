@@ -13,7 +13,7 @@ class CHand;
 class HandStateCamera : public HandState
 {
 public:
-	uintptr_t field_0x8;
+	uintptr_t AnimationTime;
 	uint8_t   field_0xC[0xcc];
 
 	// Override methods

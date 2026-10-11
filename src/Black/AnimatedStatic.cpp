@@ -47,18 +47,18 @@ AnimatedStatic::~AnimatedStatic()
 void AnimatedStatic::SetToZero()
 {
 	CollideData = NULL;
-	field_0x7c = 0;
+	GateType = 0;
 	for (int i = 0; i < ARRAY_SIZE(GateStones); i++)
 	{
 		GateStones[i] = NULL;
-		field_0x8c[i] = 0;
+		GateStoneIndices[i] = 0;
 	}
 }
 
-void AnimatedStatic::ToBeDeleted(int param_1)
+void AnimatedStatic::ToBeDeleted(int delete_now)
 {
 	GGame::g_game->GameLists.AnimatedStatics.Remove(this);
-	Feature::ToBeDeleted(param_1);
+	Feature::ToBeDeleted(delete_now);
 }
 
 MESH_LIST Feature::GetMesh() const

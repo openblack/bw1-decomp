@@ -14,7 +14,7 @@ struct LHMatrix;
 class HandStateCitadel : public HandState
 {
 public:
-	uint32_t field_0x8;
+	uint32_t AnimationTime;
 	uint8_t  field_0xC[0xc4];
 
 	// Override methods

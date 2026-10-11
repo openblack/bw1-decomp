@@ -14,9 +14,9 @@ LoaderAnon::LoaderAnon(char* detail_prefix, char* enum_prefix, char* load_id)
 	}
 	strcpy(LoadId, load_id);
 	Groups = NULL;
-	field_0x4 = 0;
+	CurrentGroup = NULL;
 	ErrorCount = 0;
-	field_0x2120 = 0;
-	field_0x114 = 1;
+	NumTruncatedStrings = 0;
+	UseLoadId = true;
 	Cursor = TextBuffer;
 }

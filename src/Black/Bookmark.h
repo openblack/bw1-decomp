@@ -17,19 +17,30 @@ class GameOSFile;
 class GameThing;
 class Object;
 
-enum
+enum BOOKMARK_INDEX
 {
-	BOOKMARK_USER_COUNT = 8,
-	BOOKMARK_TOWN_INDEX = 8,
-	BOOKMARK_BEFORE_JUMP_INDEX = 10,
-	BOOKMARK_COUNT = 11,
-	BOOKMARK_NONE = -1,
+	BOOKMARK_INDEX_NONE = -1,
+	BOOKMARK_INDEX_USER_FIRST = 0,
+	BOOKMARK_INDEX_TOWN = 8,
+	BOOKMARK_INDEX_USER_LAST = BOOKMARK_INDEX_TOWN,
+	BOOKMARK_INDEX_BEFORE_JUMP = 10,
+	BOOKMARK_INDEX_LAST = 11,
 };
 
-enum
+enum BOOKMARK_FLAG
 {
 	BOOKMARK_FLAG_SET = 1,
 };
+
+#define BOOKMARK_PULSE_PERIOD       2000
+#define BOOKMARK_PULSE_PHASE_OFFSET 200
+#define BOOKMARK_PULSE_RATE         0.0005f
+#define BOOKMARK_PULSE_MINIMUM      0.2
+#define BOOKMARK_HEIGHT_OFFSET      2.0f
+#define BOOKMARK_FLY_TIME           0.3f
+#define BOOKMARK_TOWN_OFFSET_X      24.45f
+#define BOOKMARK_TOWN_OFFSET_Y      28.3786f
+#define BOOKMARK_TOWN_OFFSET_Z      47.4f
 
 struct BookmarkGraphic
 {
@@ -48,7 +59,7 @@ struct BookmarkGraphic
 	// Static methods
 
 	// BW1W120 0043a7d0 BW1M119 010b8360
-	static BookmarkGraphic* Create(long param_1, CREATURE_TYPE type);
+	static BookmarkGraphic* Create(long index, CREATURE_TYPE type);
 	// BW1W120 0043a9e0 BW1M119 01029e40
 	static void DrawLoopUpdate();
 
@@ -76,7 +87,7 @@ public:
 	// Static data
 
 	// BW1W120 00c58b30
-	static Bookmark Bookmarks[BOOKMARK_COUNT];
+	static Bookmark Bookmarks[BOOKMARK_INDEX_LAST];
 	// BW1W120 00c58cc4
 	static int CurrentBookmark;
 	// BW1W120 009cd380

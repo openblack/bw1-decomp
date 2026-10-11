@@ -13,7 +13,7 @@ class CHand;
 class HandStateHolding : public HandState
 {
 public:
-	uintptr_t field_0x8;
+	uintptr_t AnimationTime;
 	uintptr_t field_0x10;
 	uint8_t   field_0xC[0x134]; /* 0x10 */
 

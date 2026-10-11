@@ -10,8 +10,6 @@
 #include "Landscape.h"
 #include "ThingMusicInfo.h"
 
-#define MUSIC_DEFAULT_PLAY_DISTANCE 100.0f
-
 uint32_t ThingMusicInfo::GetSaveType()
 {
 	return GAME_THING_TYPE_THING_MUSIC_INFO;
@@ -242,22 +240,22 @@ uint32_t ThingMusicInfo::Load(GameOSFile& file)
 	return 0;
 }
 
-void GAudio::PlaySoundEffect(Base* param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4, int param_5,
-                             int param_6, AUDIO_SFX_BANK_TYPE param_7)
+void GAudio::PlaySoundEffect(Base* object, uint32_t sample, uint32_t priority, uint32_t volume, int distance,
+                             int positional, AUDIO_SFX_BANK_TYPE bank_type)
 {
-	PlaySoundEffect(param_1, (unsigned long)param_2, (unsigned long)param_3, (unsigned long)param_4, param_5, param_6,
-	                GetBank(param_7));
+	PlaySoundEffect(object, (unsigned long)sample, (unsigned long)priority, (unsigned long)volume, distance, positional,
+	                GetBank(bank_type));
 }
 
-void GAudio::PlaySoundEffect(Base* param_1, const LHPoint& pos, uint32_t param_3, uint32_t param_4, uint32_t param_5,
-                             int param_6, int param_7, AUDIO_SFX_BANK_TYPE param_8)
+void GAudio::PlaySoundEffect(Base* object, const LHPoint& pos, uint32_t sample, uint32_t priority, uint32_t volume,
+                             int distance, int positional, AUDIO_SFX_BANK_TYPE bank_type)
 {
-	PlaySoundEffect(param_1, pos, param_3, param_4, param_5, param_6, param_7, GetBank(param_8));
+	PlaySoundEffect(object, pos, sample, priority, volume, distance, positional, GetBank(bank_type));
 }
 
-void GAudio::StopPlayingSoundEffect(uint32_t param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type) const
+void GAudio::StopPlayingSoundEffect(uint32_t sample, uint32_t object, AUDIO_SFX_BANK_TYPE type) const
 {
-	AudioSystem->LHSampleStop(AudioBanks[type], param_2, param_1);
+	AudioSystem->LHSampleStop(AudioBanks[type], object, sample);
 }
 
 float GAudio::GetGSFXSampleMaxDistance(uint32_t sample, LH_AudioBank* bank) const

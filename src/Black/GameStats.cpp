@@ -201,10 +201,10 @@ void GameStats::FillInTownStatsStructure()
 		TownStats.FinalMalePopulation += town->stats.NumMales;
 		TownStats.FinalFemalePopulation += town->stats.NumFemales;
 		TownStats.FinalTotalPopulationCapacity += town->stats.MaxVillagersInAbodes;
-		TownStats.FinalTotalPopulationCapacity += town->stats.field_0x40;
+		TownStats.FinalTotalPopulationCapacity += town->stats.MaxChildrenInAbodes;
 		TownStats.TownsOwned++;
-		TownStats.TotalCivicBuildings += town->stats.field_0x1c;
-		TownStats.TotalAbodes += town->stats.field_0x10;
+		TownStats.TotalCivicBuildings += town->stats.NumCivicBuildings;
+		TownStats.TotalAbodes += town->stats.NumAbodes;
 		TownStats.TotalBuildings += TownStats.TotalAbodes + TownStats.TotalCivicBuildings;
 		TownStats.TotalWonders += town->stats.NumAbodesOfNumber[ABODE_NUMBER_WONDER];
 	}
