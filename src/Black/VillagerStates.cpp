@@ -178,8 +178,8 @@ bool32_t Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE resourceType, un
 				storePos.z = (int)(edgePos.z * 6553.6f);
 				float fixedX = edgePos.x * 65536.0f;
 				float fixedZ = edgePos.z * 65536.0f;
-				lh3dCoords.x = (int)(fixedX * 0.001f);
-				lh3dCoords.z = (int)(fixedZ * 0.001f);
+				lh3dCoords.x = (int)(fixedX * 0.1f);
+				lh3dCoords.z = (int)(fixedZ * 0.1f);
 				lh3dCoords.altitude = 0.0f;
 				storePos.altitude = edgePos.y - LH3DIsland::GetAltitude(lh3dCoords);
 				if (AreWeThere(storePos, 0.0f))
