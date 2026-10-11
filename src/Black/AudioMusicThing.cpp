@@ -1,6 +1,220 @@
+#include <Lionhead/LHAudio/ver7.0/LH_AudioBank.h> /* For class LH_AudioBank */
+
+#include <Lionhead/LHAudio/ver7.0/LH_AudioSystem.h> /* For class LH_AudioSystem */
+
+#include "Audio.h"
+#include "GameOSFile.h"       /* For class GameOSFile */
+#include "GameThingWithPos.h" /* For class GameThingWithPos */
 #include "ThingMusicInfo.h"
+
+#define MUSIC_DEFAULT_PLAY_DISTANCE 100.0f
 
 uint32_t ThingMusicInfo::GetSaveType()
 {
 	return GAME_THING_TYPE_THING_MUSIC_INFO;
+}
+
+char* ThingMusicInfo::GetDebugText()
+{
+	return "ThingMusicInfo:";
+}
+
+ThingMusicInfo* GAudio::GetThingMusicInfo(GameThingWithPos* thing)
+{
+	for (LHLinkedNode<ThingMusicInfo*>* node = ThingMusicList.GetStart(); node != NULL; node = node->next.Get())
+	{
+		ThingMusicInfo* info = node->payload;
+		if (thing == info->Thing)
+		{
+			return info;
+		}
+	}
+	return NULL;
+}
+
+void GAudio::ReleaseAllThingMusicInfo()
+{
+	ThingMusicList.ToBeDeletedAll();
+}
+
+void GAudio::RemoveThingMusic(GameThingWithPos* thing)
+{
+	ThingMusicInfo* info = GetThingMusicInfo(thing);
+	if (info)
+	{
+		ThingMusicList.Remove(info);
+		info->ToBeDeleted(0);
+	}
+}
+
+float GAudio::GetPlayDistance(MUSIC_TYPE type)
+{
+	float distance = MUSIC_DEFAULT_PLAY_DISTANCE;
+	if (MusicBanks[type])
+	{
+		distance = MusicBanks[type]->LHBankGetMusicMaxDistance();
+		if (distance < 0.0f)
+		{
+			distance = MUSIC_DEFAULT_PLAY_DISTANCE;
+		}
+	}
+	return distance;
+}
+
+float GAudio::GetPlayDistance(GameThingWithPos* thing)
+{
+	ThingMusicInfo* info = GetThingMusicInfo(thing);
+	if (info)
+	{
+		return GetPlayDistance(info->MusicType);
+	}
+	return 0.0f;
+}
+
+void GAudio::ValidateThingMusic()
+{
+	LHLinkedNode<ThingMusicInfo*>* node = ThingMusicList.GetStart();
+	while (node)
+	{
+		ThingMusicInfo*                info = node->payload;
+		LHLinkedNode<ThingMusicInfo*>* next = node->next.Get();
+		if (!info->Thing->IsAvailable())
+		{
+			ThingMusicList.Remove(info);
+			info->ToBeDeleted(0);
+		}
+		node = next;
+	}
+}
+
+bool32_t GAudio::ProcessThingMusic()
+{
+	int                            result = 0;
+	LHLinkedNode<ThingMusicInfo*>* node = ThingMusicList.GetStart();
+	while (node)
+	{
+		ThingMusicInfo*                info = node->payload;
+		GameThingWithPos*              thing = info->Thing;
+		LHLinkedNode<ThingMusicInfo*>* next = node->next.Get();
+		if (thing->IsAvailable())
+		{
+			if (info->Enabled && !info->Suppressed)
+			{
+				if (ProcessThingMusic(info, thing))
+				{
+					return true;
+				}
+			}
+			else if (ThingMusicInRange(info->MusicType, thing))
+			{
+				result |= 1;
+			}
+		}
+		else
+		{
+			ThingMusicList.Remove(info);
+			info->ToBeDeleted(0);
+		}
+		node = next;
+	}
+	return result;
+}
+
+void GAudio::SwapThingMusic(GameThingWithPos* thing, GameThingWithPos* other)
+{
+	ThingMusicInfo* info = GetThingMusicInfo(thing);
+	if (info)
+	{
+		info->Thing = other;
+	}
+}
+
+void GAudio::EnableMusicThing(GameThingWithPos* thing, int enable)
+{
+	ThingMusicInfo* info = GetThingMusicInfo(thing);
+	if (info)
+	{
+		info->Enabled = enable;
+		info->Suppressed = false;
+		info->Playing = false;
+	}
+}
+
+void GAudio::SetPlayPosition(GameThingWithPos* thing, const MapCoords& coords)
+{
+	ThingMusicInfo* info = GetThingMusicInfo(thing);
+	if (info)
+	{
+		info->UseFixedPos = true;
+		info->FixedPos = coords;
+	}
+}
+
+bool32_t GAudio::IsMusicThingFinished(GameThingWithPos* thing)
+{
+	ThingMusicInfo* info = GetThingMusicInfo(thing);
+	if (info)
+	{
+		return info->Suppressed;
+	}
+	return true;
+}
+
+uint32_t ThingMusicInfo::Save(GameOSFile& file)
+{
+	if (GameThing::Save(file))
+	{
+		WRITE_IT(file, MusicType);
+		file.WritePtr(Thing);
+		WRITE_IT(file, Enabled);
+		WRITE_IT(file, Suppressed);
+		WRITE_IT(file, Playing);
+		WRITE_IT(file, UseFixedPos);
+		WRITE_IT(file, FixedPos);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t ThingMusicInfo::Load(GameOSFile& file)
+{
+	if (GameThing::Load(file))
+	{
+		file.ReadIt(MusicType);
+		file.ReadPtr((GameThing**)&Thing);
+		file.ReadIt(Enabled);
+		file.ReadIt(Suppressed);
+		file.ReadIt(Playing);
+		file.ReadIt(UseFixedPos);
+		file.ReadIt(FixedPos);
+		return 1;
+	}
+	return 0;
+}
+
+void GAudio::PlaySoundEffect(Base* param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4, int param_5,
+                             int param_6, AUDIO_SFX_BANK_TYPE param_7)
+{
+	PlaySoundEffect(param_1, (unsigned long)param_2, (unsigned long)param_3, (unsigned long)param_4, param_5, param_6,
+	                GetBank(param_7));
+}
+
+void GAudio::PlaySoundEffect(Base* param_1, const LHPoint& pos, uint32_t param_3, uint32_t param_4, uint32_t param_5,
+                             int param_6, int param_7, AUDIO_SFX_BANK_TYPE param_8)
+{
+	PlaySoundEffect(param_1, pos, param_3, param_4, param_5, param_6, param_7, GetBank(param_8));
+}
+
+void GAudio::StopPlayingSoundEffect(uint32_t param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type) const
+{
+	AudioSystem->LHSampleStop(AudioBanks[type], param_2, param_1);
+}
+
+float GAudio::GetGSFXSampleMaxDistance(uint32_t sample, LH_AudioBank* bank) const
+{
+	if (bank)
+	{
+		return AudioSystem->LHSampleGetMaxDistance(bank, sample);
+	}
+	return 0.0f;
 }
