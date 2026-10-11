@@ -913,7 +913,7 @@ def generate_build_ninja(
         n.comment("Fold a recompiled unit's shared COMDATs onto the image's copies (see add_unit)")
         n.rule(
             name="fold",
-            command=f"{dtk} coff fold $in $config --unit $unit -o $out",
+            command=f"{dtk} coff fold $in $config --unit $unit $fold_args -o $out",
             description="FOLD $out",
         )
         n.newline()
@@ -1485,7 +1485,6 @@ def generate_build_ninja(
             if link_built_obj and built_obj_path is not None:
                 if (
                     config.platform == "pe"
-                    and link_step.module_id == 0
                     and lib_member is None
                     and obj.src_path is not None
                     and file_is_c_cpp(obj.src_path)
@@ -1497,12 +1496,21 @@ def generate_build_ninja(
                     # reading the unfolded object.
                     folded = built_obj_path.with_suffix(".fold.o")
                     config_dir = config.config_path.parent
+                    # A DLL's units resolve against the module's own symbols and splits.
+                    fold_args = ""
+                    if link_step.module_id != 0:
+                        config_dir = config_dir / link_step.name
+                        fold_args = f"--module {link_step.name}"
                     n.build(
                         outputs=folded,
                         rule="fold",
                         inputs=built_obj_path,
                         implicit=[dtk, config.config_path, config_dir / "symbols.txt", config_dir / "splits.txt"],
-                        variables={"unit": obj.name, "config": serialize_path(config.config_path)},
+                        variables={
+                            "unit": obj.name,
+                            "config": serialize_path(config.config_path),
+                            "fold_args": fold_args,
+                        },
                     )
                     built_obj_path = folded
                 # Use the source-built object
