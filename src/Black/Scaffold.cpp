@@ -13,6 +13,11 @@ uint32_t Scaffold::GetPhysicsConstantsType()
 	return PHYSICS_CONSTANTS_TYPE_MOVABLE_SCAFFOLD;
 }
 
+bool32_t Scaffold::IsAvailableToBeBuiltWith()
+{
+	return field_0x68 == 0;
+}
+
 void Scaffold::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2) {}
 
 uint32_t Scaffold::GetOverwritePickUpToolTip()

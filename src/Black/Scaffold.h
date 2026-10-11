@@ -163,6 +163,8 @@ public:
 	void RemoveOldBuildingSite();
 	// BW1W120 inlined BW1M119 010c7770
 	uint8_t GetWorkshopPosition() { return WorkshopPosition; }
+	// BW1W120 006e8b10 BW1M119 0114b420
+	bool32_t IsAvailableToBeBuiltWith();
 };
 
 #endif /* BW1_DECOMP_SCAFFOLD_INCLUDED_H */
