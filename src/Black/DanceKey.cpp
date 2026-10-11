@@ -6,10 +6,10 @@
 DanceKeyAction::DanceKeyAction()
 {
 	Argument.Movement.EndTime = DANCE_GROUP_MOVEMENT_DEFAULT_END_TIME;
-	Argument.Movement.Kind = 0;
+	Argument.Movement.Kind = DANCE_GROUP_MOVEMENT_KIND_STAND_STILL;
 	Argument.Movement.Param2 = 0;
 	Argument.Movement.Param1 = 0;
-	Type = 0;
+	Type = DANCE_GROUP_ACTION_TYPE_SET_SHAPE;
 	Argument.Value2 = 0;
 	Argument.Value = 0;
 }
