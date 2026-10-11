@@ -760,7 +760,7 @@ bool32_t Villager::GoAndChilloutOutsideHome()
 // BW1W120 0076b4e0 BW1M119 010623b0
 bool32_t Villager::SitAndChillout()
 {
-	uint32_t turns = (uint16_t)TurnsUntilNextStateChange;
+	uint16_t turns = TurnsUntilNextStateChange;
 	TurnsUntilNextStateChange = turns - 1;
 	if ((int16_t)turns > 0)
 	{

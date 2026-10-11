@@ -656,7 +656,7 @@ public:
 	// BW1W120 00751190 BW1M119 01577a50
 	bool32_t StartMoveToObject(Object* object, VILLAGER_STATES state);
 	// BW1W120 007511b0 BW1M119 0109ea90
-	uint16_t DropResource(RESOURCE_TYPE param_1, unsigned short param_2);
+	uint16_t DropResource(RESOURCE_TYPE type, unsigned short amount);
 	// BW1W120 007511e0 BW1M119 01577910
 	uint16_t DropFood(unsigned short food_amount);
 	// BW1W120 00751240 BW1M119 01577820

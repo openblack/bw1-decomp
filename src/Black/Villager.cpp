@@ -5,6 +5,7 @@
 
 #include "chlasm/Enum.h"
 #include "chlasm/GStates.h"
+#include "Abode.h"
 #include "Game.h"
 #include "Game3DObject.h"
 #include "GameOSFile.h"
@@ -242,7 +243,16 @@ bool32_t Villager::HasSunk()
 }
 
 // BW1W120 00750b50 BW1M119 01578000
-void Villager::TownDeleted() {}
+void Villager::TownDeleted()
+{
+	LHListHead<Villager>& withoutTown = GGame::g_game->GameLists.VillagersWithoutTown;
+	if (withoutTown.Find(this) == NULL)
+	{
+		withoutTown.AddToFirst(this);
+	}
+	SetTopState(VILLAGER_STATE_VAGRANT_START);
+	SetTown(NULL);
+}
 
 // BW1W120 00750bb0 BW1M119 01577e20
 void Villager::DebugText(int param_1) {}
@@ -331,8 +341,16 @@ bool32_t Villager::StartMoveToObject(Object* object, VILLAGER_STATES state)
 }
 
 // BW1W120 007511b0 BW1M119 0109ea90
-unsigned short Villager::DropResource(RESOURCE_TYPE param_1, unsigned short param_2)
+unsigned short Villager::DropResource(RESOURCE_TYPE type, unsigned short amount)
 {
+	if (type == RESOURCE_TYPE_WOOD)
+	{
+		return DropWood(amount);
+	}
+	if (type == RESOURCE_TYPE_FOOD)
+	{
+		return DropFood(amount);
+	}
 	return 0;
 }
 
@@ -611,11 +629,23 @@ Citadel* Villager::GetCitadel()
 // BW1W120 00751dd0 BW1M119 01051580
 uint8_t Villager::GetFinalState() const
 {
-	return VILLAGER_STATE_INVALID_STATE;
+	uint8_t state = action.states[LIVING_ACTION_INDEX_TOP];
+	if (!GVillagerStateTableInfo::Infos[state].isFinalState)
+	{
+		state = action.states[LIVING_ACTION_INDEX_FINAL];
+	}
+	return state;
 }
 
 // BW1W120 00751e10 BW1M119 01575df0
-void Villager::ResetStateAfterReacting() {}
+void Villager::ResetStateAfterReacting()
+{
+	PopFromPrevious();
+	if (GVillagerStateTableInfo::Infos[GetFinalState() & 0xff].field_0xc8 != 0)
+	{
+		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+	}
+}
 
 // BW1W120 00751e50 BW1M119 01575d30
 void Villager::PopFromPrevious()
@@ -677,10 +707,28 @@ VILLAGER_STATES Villager::FUN_00751f70()
 }
 
 // BW1W120 00751fa0 BW1M119 010039e0
-void Villager::ArriveHome() {}
+void Villager::ArriveHome()
+{
+	if (GetAbode() != NULL)
+	{
+		Flags |= GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE;
+		GetAbode()->ArriveHome();
+	}
+}
 
 // BW1W120 00751fd0 BW1M119 010a1b50
-void Villager::LeaveHome() {}
+void Villager::LeaveHome()
+{
+	if (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE)
+	{
+		Flags &=
+			~(GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE | GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP);
+		if (GetAbode() != NULL)
+		{
+			GetAbode()->LeaveHome();
+		}
+	}
+}
 
 // BW1W120 00752010 BW1M119 0107e140
 int Villager::SetTopState(uint8_t state)
