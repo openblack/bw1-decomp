@@ -27,7 +27,7 @@ uint32_t PieceWolf::CheckNeeds()
 	return 0;
 }
 
-bool32_t PieceWolf::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t PieceWolf::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;
 }

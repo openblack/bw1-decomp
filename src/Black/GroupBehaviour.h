@@ -110,7 +110,7 @@ public:
 	// BW1W120 0050cc50 BW1M119 inlined
 	virtual ~DanceEditState();
 	// BW1W120 0050cc90 BW1M119 inlined
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(int delete_now);
 };
 
 class DanceKeyAction : public GameThing

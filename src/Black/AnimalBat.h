@@ -34,7 +34,7 @@ public:
 	// BW1W120 0041ef00 BW1M119 0117acb0
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041ef20 BW1M119 0117ad20
-	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
 	// BW1W120 0041be40 BW1M119 011797c0
 	virtual uint32_t StandAnimation();
 
@@ -62,7 +62,7 @@ public:
 	// BW1W120 0041efe0 BW1M119 0117ab10
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041f000 BW1M119 0117ab90
-	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
 	// BW1W120 0041bea0 BW1M119 01179640
 	virtual uint32_t StandAnimation();
 

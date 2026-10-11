@@ -52,7 +52,7 @@ bool32_t Animal::IsAnimal()
 	return true;
 }
 
-bool32_t Living::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t Living::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;
 }
@@ -77,7 +77,7 @@ uint32_t PieceVillager::CheckNeeds()
 	return 0;
 }
 
-bool32_t PieceVillager::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t PieceVillager::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;
 }

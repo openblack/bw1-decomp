@@ -27,7 +27,7 @@ uint32_t PieceLion::CheckNeeds()
 	return 0;
 }
 
-bool32_t PieceLion::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t PieceLion::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;
 }

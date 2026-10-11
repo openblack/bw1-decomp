@@ -24,12 +24,6 @@ enum VMScriptType
 	_VMScriptType_COUNT = 0x1
 };
 
-enum STATE_TYPE
-{
-	STATE_TYPE_0 = 0x0,
-	_STATE_TYPE_COUNT = 0x1
-};
-
 // Forward Declares
 
 class LHTransport;

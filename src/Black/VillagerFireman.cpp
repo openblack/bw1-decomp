@@ -59,8 +59,7 @@ bool32_t Villager::SetupMoveAroundFire(const MapCoords& pos, VILLAGER_STATES sta
 {
 	if (SetTopState(VILLAGER_STATE_MOVE_AROUND_FIRE) == 1)
 	{
-		// field_0x10c/field_0x110 double as a JustWholeMapXZ (x,z) wander target for this state.
-		((JustWholeMapXZ*)&field_0x10c)->Init(pos);
+		FirePos.Init(pos);
 		SetState(LIVING_ACTION_INDEX_PREVIOUS, state);
 		if (state == VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_FOR_WORSHIP)
 		{
@@ -203,8 +202,7 @@ bool32_t Villager::SetupOnFire(FireEffect* new_fire_effect)
 	if (!(((GameThingWithPos*)this)->Flags & 0x44) && IsAvailable() && (status & 1) != 1)
 	{
 		StorePreviousState();
-		// field_0x10c/field_0x110 double as a JustWholeMapXZ (x,z) position here too (see SetupMoveAroundFire).
-		((JustWholeMapXZ*)&field_0x10c)->Init(*GetDestPos());
+		FirePos.Init(*GetDestPos());
 		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 		fire_effect = new_fire_effect;
 		SetTopState(VILLAGER_STATE_ON_FIRE);
@@ -224,11 +222,11 @@ bool32_t Villager::OnFire()
 
 // BW1W120 0075b3d0 BW1M119 01580650
 // TODO: deferred — the target first calls the UNNAMED fn_00603260 (0x00603260) as a thiscall on
-// the MapCoords at this+0x80 with &field_0x10c as the arg: it copies x,z (two int32) and zeroes
+// the MapCoords at this+0x80 with &FirePos as the arg: it copies x,z (two int32) and zeroes
 // altitude, i.e. a MapCoords = JustWholeMapXZ assignment (likely MapCoords::operator=(const
 // JustWholeMapXZ&)). fn_00603260 has NO name in symbols.txt (only callers are this + MoveAroundFire),
 // so the call reloc can't match until the dispatcher names it. Once named, restore before
-// PopFromPrevious:  ((MapCoords*)&<0x80>) = *(JustWholeMapXZ*)&field_0x10c;
+// PopFromPrevious:  ((MapCoords*)&<0x80>) = FirePos;
 bool32_t Villager::FinishBeingOnFire()
 {
 	PopFromPrevious();

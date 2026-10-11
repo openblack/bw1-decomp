@@ -52,9 +52,9 @@ bool32_t Villager::InspectCreatureReaction()
 	//      "...VillagerReaction...") and __LINE__=0xa0 can't be reproduced from this file
 	//      (same known blocker noted in VillagerStates.cpp:554).
 	// Semantics (from target asm):
-	//   field_0x10c = 20.0f;
+	//   InspectDistance = 20.0f;
 	//   int a = (int)((1000/global) * 1.5f);
-	//   field_0x110 = a + GameRand((int)((1000/global) * 3.0f), __FILE__, __LINE__);
+	//   InspectTurnsUntilApproach = a + GameRand((int)((1000/global) * 3.0f), __FILE__, __LINE__);
 	//   SetTopState(0x93); UpdateAttitudeToCreature(); return 1;   (else StopReactingAndSetState)
 	return 0;
 }
@@ -67,16 +67,16 @@ bool32_t Villager::PerformInspectCreatureReaction()
 	// independent of the dec so MSVC is free to place it either side; no source order forces it.
 	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
-		field_0x110 = field_0x110 - 1;
-		if (field_0x10c < 1.0f)
+		InspectTurnsUntilApproach = InspectTurnsUntilApproach - 1;
+		if (InspectDistance < 1.0f)
 		{
-			if (field_0x110 == 0)
+			if (InspectTurnsUntilApproach == 0)
 			{
 				StopReactingAndSetState();
 				return 1;
 			}
 		}
-		else if (field_0x110 == 0)
+		else if (InspectTurnsUntilApproach == 0)
 		{
 			SetTopState(VILLAGER_STATE_APPROACH_CREATURE_REACTION);
 			UpdateAttitudeToCreature();

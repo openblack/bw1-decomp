@@ -28,7 +28,7 @@ public:
 	float    field_0x18;
 	bool32_t isFinalState;
 	bool32_t isTransientState;
-	uint32_t field_0x24;
+	bool32_t isMovingForAnimation;
 	uint32_t isScriptState;
 	uint32_t isScriptInterruptableState;
 	int      field_0x30;

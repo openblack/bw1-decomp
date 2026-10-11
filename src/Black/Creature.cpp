@@ -114,7 +114,7 @@ bool32_t Creature::IsCreature(Creature* creature)
 	return true;
 }
 
-bool32_t Creature::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t Creature::CanBeFrighteningToCreature(Creature* creature)
 {
 	return true;
 }

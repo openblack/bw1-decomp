@@ -59,17 +59,17 @@ SCRIPT_OBJECT_TYPE Dove::GetScriptObjectType()
 	return SCRIPT_OBJECT_TYPE_BIRD;
 }
 
-bool32_t Bat::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t Bat::CanBeFrighteningToCreature(Creature* creature)
 {
 	return true;
 }
 
-bool32_t SpellBat::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t SpellBat::CanBeFrighteningToCreature(Creature* creature)
 {
 	return true;
 }
 
-bool32_t Vulture::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t Vulture::CanBeFrighteningToCreature(Creature* creature)
 {
 	return true;
 }

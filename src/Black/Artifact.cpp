@@ -19,7 +19,7 @@ Town* TownArtifact::GetTown()
 	return town;
 }
 
-bool32_t Object::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t Object::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;
 }

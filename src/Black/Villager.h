@@ -18,9 +18,8 @@
 #include "LHPTR.h"            /* For class LHPTR */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "Living.h"           /* For struct Living, struct LivingVftable */
-#include "LivingAction.h"     /* For enum LIVING_ACTION_INDEX, struct Living__StateTableEntry */
+#include "LivingAction.h"     /* For enum LIVING_ACTION_INDEX, enum STATE_TYPE, struct Living__StateTableEntry */
 #include "Object.h"           /* For struct Object */
-#include "ScriptDLL.h"        /* For enum STATE_TYPE */
 
 // Forward Declares
 
@@ -95,8 +94,6 @@ struct DiscipleInfo
 	uint32_t         field_0x18;
 };
 
-#define VILLAGER_NUM_FOOTBALL_ROLES          3
-#define VILLAGER_NUM_SHEPHERD_WORDS          2
 #define VILLAGER_NUM_CLEAR_AREA_COORDS       2
 #define VILLAGER_MIN_ADULT_AGE               18
 #define VILLAGER_FOOD_SPEED_UP_START         0xff
@@ -139,12 +136,17 @@ public:
 	union {
 		struct
 		{
-			float    field_0x10c; // Inspection reactions: value compared against 1.0f.
-			uint32_t field_0x110; // Inspection reactions: turns until approaching the target.
+			float    InspectDistance;           // Inspection reactions: distance kept from the target.
+			uint32_t InspectTurnsUntilApproach; // Inspection reactions: turns until stepping closer.
 		};
 		struct
 		{
-			VILLAGER_DISCIPLE DiscipleOnDrop;
+			uint32_t BewilderedTreeIndex; // Magic tree reactions: tree of the forest being looked at.
+			uint32_t BewilderedTreesSeen; // Magic tree reactions: trees looked at so far.
+		};
+		struct
+		{
+			VILLAGER_DISCIPLE DiscipleOnPickUp; // IN_HAND: disciple type when picked up, checked on landing.
 		};
 		struct
 		{
@@ -178,7 +180,19 @@ public:
 		struct
 		{
 			GameThing* TargetThing; // Current task's target; interpretation depends on the state.
-			Town*      TradeTown;   // Trading states: trading partner's town.
+		};
+		struct
+		{
+			RESOURCE_TYPE TradeResource; // Trading states: resource being traded.
+			Town*         TradeTown;     // Trading states: trading partner's town.
+		};
+		struct
+		{
+			bool32_t RequestingToGoHome; // Worship site states: on the site's go-home request list.
+		};
+		struct
+		{
+			long BuildPosIndex; // Building states: index into BuildingSite::BuildingPositions.
 		};
 		struct
 		{
@@ -192,27 +206,25 @@ public:
 		};
 		struct
 		{
-			uint32_t        FootballState; // Football states: football substate data.
-			LHPTR<Football> football;      // Football states: current match.
+			bool            FootballSubStateDone;  // Football states: pick a new substate.
+			uint8_t         FootballSubStateTurns; // Football states: turns spent in the substate.
+			uint8_t         field_0x11a;
+			LHPTR<Football> football; // Football states: current match.
 		};
 		struct
 		{
-			uint8_t FootballRoles[VILLAGER_NUM_FOOTBALL_ROLES];
-		};
-		struct
-		{
-			uint16_t ShepherdData[VILLAGER_NUM_SHEPHERD_WORDS];
+			uint16_t ShepherdWaitTurns; // Shepherd states: turns until ShepherdNextState.
+			uint16_t ShepherdNextState; // Shepherd states: VILLAGER_STATES to enter after waiting.
 		};
 		struct
 		{
 			uint32_t field_0x118;
 			uint32_t field_0x11c;
-			uint32_t field_0x120;
 		};
 		struct
 		{
-			uint32_t ClearAreaPos[VILLAGER_NUM_CLEAR_AREA_COORDS];
-			float    ClearAreaRadius;
+			uint32_t ClearAreaPos[VILLAGER_NUM_CLEAR_AREA_COORDS]; // ARRIVE_AT_PUSH_OBJECT: x/z of the area to clear.
+			float    ClearAreaRadius; // ARRIVE_AT_PUSH_OBJECT: radius of the area to clear.
 		};
 	};
 	Abode* home;
@@ -815,109 +827,109 @@ public:
 	// BW1W120 00754180 BW1M119 01571f30
 	bool32_t FindDisciplePrayerPos(MapCoords* param_1);
 	// BW1W120 007548a0 BW1M119 015715c0
-	bool32_t CallSaveStateFunction(GameOSFile& param_1, STATE_TYPE param_2);
+	bool32_t CallSaveStateFunction(GameOSFile& file, STATE_TYPE state_type);
 	// BW1W120 00754910 BW1M119 015714d0
-	bool32_t CallLoadStateFunction(GameOSFile& param_1, STATE_TYPE param_2);
+	bool32_t CallLoadStateFunction(GameOSFile& file, STATE_TYPE state_type);
 	// BW1W120 00754980 BW1M119 01571420
-	bool32_t SaveStateFunction(GameOSFile& param_1);
+	bool32_t SaveStateFunction(GameOSFile& file);
 	// BW1W120 007549b0 BW1M119 01571360
-	bool32_t LoadStateFunction(GameOSFile& param_1);
+	bool32_t LoadStateFunction(GameOSFile& file);
 	// BW1W120 00754a00 BW1M119 01571280
-	bool32_t SaveBuilding(GameOSFile& param_1);
+	bool32_t SaveBuilding(GameOSFile& file);
 	// BW1W120 00754a60 BW1M119 015711b0
-	bool32_t LoadBuilding(GameOSFile& param_1);
+	bool32_t LoadBuilding(GameOSFile& file);
 	// BW1W120 00754ac0 BW1M119 01571090
-	bool32_t SaveDance(GameOSFile& param_1);
+	bool32_t SaveDance(GameOSFile& file);
 	// BW1W120 00754b60 BW1M119 01570f80
-	bool32_t LoadDance(GameOSFile& param_1);
+	bool32_t LoadDance(GameOSFile& file);
 	// BW1W120 00754c00 BW1M119 01570eb0
-	bool32_t SaveWorship(GameOSFile& param_1);
+	bool32_t SaveWorship(GameOSFile& file);
 	// BW1W120 00754c60 BW1M119 01570de0
-	bool32_t LoadWorship(GameOSFile& param_1);
+	bool32_t LoadWorship(GameOSFile& file);
 	// BW1W120 00754cc0 BW1M119 01570d20
-	bool32_t SaveDead(GameOSFile& param_1);
+	bool32_t SaveDead(GameOSFile& file);
 	// BW1W120 00754d20 BW1M119 01570c60
-	bool32_t LoadDead(GameOSFile& param_1);
+	bool32_t LoadDead(GameOSFile& file);
 	// BW1W120 00754d80 BW1M119 01570b90
-	bool32_t SaveInHand(GameOSFile& param_1);
+	bool32_t SaveInHand(GameOSFile& file);
 	// BW1W120 00754de0 BW1M119 01570ac0
-	bool32_t LoadInHand(GameOSFile& param_1);
+	bool32_t LoadInHand(GameOSFile& file);
 	// BW1W120 00754e40 BW1M119 01570a50
-	bool32_t SaveFishing(GameOSFile& param_1);
+	bool32_t SaveFishing(GameOSFile& file);
 	// BW1W120 00754e60 BW1M119 015709e0
-	bool32_t LoadFishing(GameOSFile& param_1);
+	bool32_t LoadFishing(GameOSFile& file);
 	// BW1W120 00754e80 BW1M119 01570900
-	bool32_t SaveFarming(GameOSFile& param_1);
+	bool32_t SaveFarming(GameOSFile& file);
 	// BW1W120 00754ef0 BW1M119 01570830
-	bool32_t LoadFarming(GameOSFile& param_1);
+	bool32_t LoadFarming(GameOSFile& file);
 	// BW1W120 00754f60 BW1M119 015706b0
-	bool32_t SaveFootball(GameOSFile& param_1);
+	bool32_t SaveFootball(GameOSFile& file);
 	// BW1W120 00755040 BW1M119 01570550
-	bool32_t LoadFootball(GameOSFile& param_1);
+	bool32_t LoadFootball(GameOSFile& file);
 	// BW1W120 00755120 BW1M119 01570430
-	bool32_t SaveShepherd(GameOSFile& param_1);
+	bool32_t SaveShepherd(GameOSFile& file);
 	// BW1W120 007551c0 BW1M119 01570320
-	bool32_t LoadShepherd(GameOSFile& param_1);
+	bool32_t LoadShepherd(GameOSFile& file);
 	// BW1W120 00755260 BW1M119 01570160
-	bool32_t SaveInScript(GameOSFile& param_1);
+	bool32_t SaveInScript(GameOSFile& file);
 	// BW1W120 00755370 BW1M119 0156ffc0
-	bool32_t LoadInScript(GameOSFile& param_1);
+	bool32_t LoadInScript(GameOSFile& file);
 	// BW1W120 00755470 BW1M119 0156fe00
-	bool32_t SaveScriptPos(GameOSFile& param_1);
+	bool32_t SaveScriptPos(GameOSFile& file);
 	// BW1W120 00755580 BW1M119 0156fc60
-	bool32_t LoadScriptPos(GameOSFile& param_1);
+	bool32_t LoadScriptPos(GameOSFile& file);
 	// BW1W120 00755680 BW1M119 0156fb80
-	bool32_t SaveFire(GameOSFile& param_1);
+	bool32_t SaveFire(GameOSFile& file);
 	// BW1W120 007556f0 BW1M119 0156fab0
-	bool32_t LoadFire(GameOSFile& param_1);
+	bool32_t LoadFire(GameOSFile& file);
 	// BW1W120 00755760 BW1M119 0156fa30
-	bool32_t SaveDiscipleNothingToDo(GameOSFile& param_1);
+	bool32_t SaveDiscipleNothingToDo(GameOSFile& file);
 	// BW1W120 00755780 BW1M119 0156f9b0
-	bool32_t LoadDiscipleNothingToDo(GameOSFile& param_1);
+	bool32_t LoadDiscipleNothingToDo(GameOSFile& file);
 	// BW1W120 007557a0 BW1M119 0156f8d0
-	bool32_t SaveTrader(GameOSFile& param_1);
+	bool32_t SaveTrader(GameOSFile& file);
 	// BW1W120 00755810 BW1M119 0156f800
-	bool32_t LoadTrader(GameOSFile& param_1);
+	bool32_t LoadTrader(GameOSFile& file);
 	// BW1W120 00755880 BW1M119 0156f790
-	bool32_t SaveInspectObject(GameOSFile& param_1);
+	bool32_t SaveInspectObject(GameOSFile& file);
 	// BW1W120 007558a0 BW1M119 0156f720
-	bool32_t LoadInspectObject(GameOSFile& param_1);
+	bool32_t LoadInspectObject(GameOSFile& file);
 	// BW1W120 007558c0 BW1M119 0156f6e0
-	bool32_t SaveReaction(GameOSFile& param_1);
+	bool32_t SaveReaction(GameOSFile& file);
 	// BW1W120 007558d0 BW1M119 0156f6a0
-	bool32_t LoadReaction(GameOSFile& param_1);
+	bool32_t LoadReaction(GameOSFile& file);
 	// BW1W120 007558e0 BW1M119 0156f580
-	bool32_t SaveClearArea(GameOSFile& param_1);
+	bool32_t SaveClearArea(GameOSFile& file);
 	// BW1W120 00755980 BW1M119 0156f470
-	bool32_t LoadClearArea(GameOSFile& param_1);
+	bool32_t LoadClearArea(GameOSFile& file);
 	// BW1W120 00755a20 BW1M119 0156f390
-	bool32_t SaveBreeder(GameOSFile& param_1);
+	bool32_t SaveBreeder(GameOSFile& file);
 	// BW1W120 00755a80 BW1M119 0156f2c0
-	bool32_t LoadBreeder(GameOSFile& param_1);
+	bool32_t LoadBreeder(GameOSFile& file);
 	// BW1W120 00755ae0 BW1M119 0156f250
-	bool32_t SaveForesting(GameOSFile& param_1);
+	bool32_t SaveForesting(GameOSFile& file);
 	// BW1W120 00755b00 BW1M119 0156f1e0
-	bool32_t LoadForesting(GameOSFile& param_1);
+	bool32_t LoadForesting(GameOSFile& file);
 	// BW1W120 00755b20 BW1M119 0156f150
-	bool32_t SaveFootPath(GameOSFile& param_1);
+	bool32_t SaveFootPath(GameOSFile& file);
 	// BW1W120 00755b50 BW1M119 0156f0c0
-	bool32_t LoadFootPath(GameOSFile& param_1);
+	bool32_t LoadFootPath(GameOSFile& file);
 	// BW1W120 00755b80 BW1M119 0156ef90
-	bool32_t SaveInspectionReaction(GameOSFile& param_1);
+	bool32_t SaveInspectionReaction(GameOSFile& file);
 	// BW1W120 00755c20 BW1M119 0156ee70
-	bool32_t LoadInspectionReaction(GameOSFile& param_1);
+	bool32_t LoadInspectionReaction(GameOSFile& file);
 	// BW1W120 00755cc0 BW1M119 0156ed40
-	bool32_t SaveMagicTreeReaction(GameOSFile& param_1);
+	bool32_t SaveMagicTreeReaction(GameOSFile& file);
 	// BW1W120 00755d60 BW1M119 0156ec20
-	bool32_t LoadMagicTreeReaction(GameOSFile& param_1);
+	bool32_t LoadMagicTreeReaction(GameOSFile& file);
 	// BW1W120 00755e00 BW1M119 0156eaf0
-	bool32_t SaveHideInBuilding(GameOSFile& param_1);
+	bool32_t SaveHideInBuilding(GameOSFile& file);
 	// BW1W120 00755ea0 BW1M119 0156e9d0
-	bool32_t LoadHideInBuilding(GameOSFile& param_1);
+	bool32_t LoadHideInBuilding(GameOSFile& file);
 	// BW1W120 00755f40 BW1M119 0156e900
-	bool32_t SaveShieldReaction(GameOSFile& param_1);
+	bool32_t SaveShieldReaction(GameOSFile& file);
 	// BW1W120 00755fa0 BW1M119 0156e830
-	bool32_t LoadShieldReaction(GameOSFile& param_1);
+	bool32_t LoadShieldReaction(GameOSFile& file);
 	// BW1W120 00756000 BW1M119 0100c4b0
 	uint32_t SetVillagerDisciple(GameThing* interacted_thing, VILLAGER_DISCIPLE disciple, int unused);
 	// BW1W120 00756170 BW1M119 0156e570
@@ -933,9 +945,9 @@ public:
 	// BW1W120 00756540 BW1M119 0156dd40
 	bool32_t ScriptInCrowd();
 	// BW1W120 00756570 BW1M119 0156dd00
-	bool32_t SaveLanded(GameOSFile& param_1);
+	bool32_t SaveLanded(GameOSFile& file);
 	// BW1W120 00756580 BW1M119 0156dcc0
-	bool32_t LoadLanded(GameOSFile& param_1);
+	bool32_t LoadLanded(GameOSFile& file);
 	// BW1W120 007569a0 BW1M119 0156d3c0
 	void MoveToObjectValidate();
 	// BW1W120 007569d0 BW1M119 0156d330

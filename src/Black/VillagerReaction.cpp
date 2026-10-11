@@ -407,12 +407,12 @@ bool32_t Villager::PerformInspectionReaction()
 		StopReactingAndSetState();
 		return 1;
 	}
-	if (this->field_0x10c < 1.0f)
+	if (this->InspectDistance < 1.0f)
 	{
 		StopReactingAndSetState();
 		return 1;
 	}
-	if (--this->field_0x110 == 0)
+	if (--this->InspectTurnsUntilApproach == 0)
 	{
 		SetTopState(VILLAGER_STATE_APPROACH_OBJECT_REACTION);
 		return 1;

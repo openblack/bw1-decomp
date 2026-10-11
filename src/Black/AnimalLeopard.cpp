@@ -2,7 +2,7 @@
 #include "AnimalLeopard.h"
 #include "AnimalLion.h"
 
-bool32_t Lion::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t Lion::CanBeFrighteningToCreature(Creature* creature)
 {
 	return true;
 }

@@ -36,15 +36,12 @@ bool32_t Living::CannotExitState(unsigned char state)
 // is the `and eax,0xffff` (max_turns 16-bit mask) floats one slot: target does `and ecx (min); lea
 // edx,[ecx+1]; and eax (max); cmp`, ours does `and ecx; and eax; lea edx; cmp`. max_turns is loaded
 // early but the target defers its mask to just before the cmp; no source form (ternary, if-max,
-// min+1-first local) reproduces the deferral (all mask both operands before the lea). Field
-// reinterpretation of the script-wander sub-state (field_0x10c wander-centre JustWholeMapXZ via the
-// established VillagerFireman idiom, TargetThing@0x118 reused as the radius float, WanderArea union
-// counters) is intentional; a dispatcher union/named members would remove the casts.
+// min+1-first local) reproduces the deferral (all mask both operands before the lea).
 bool32_t Villager::SetupScriptWanderToPos(const MapCoords& pos, float radius, unsigned short min_turns,
                                           unsigned short max_turns)
 {
-	((JustWholeMapXZ*)&field_0x10c)->Init(pos);
-	*(float*)&TargetThing = radius;
+	ScriptWanderCentre.Init(pos);
+	ScriptWanderRadius = radius;
 	unsigned int max_wander_turns = (min_turns + 1 > max_turns) ? (min_turns + 1) : max_turns;
 	WanderArea.x = min_turns;
 	WanderArea.z = max_wander_turns;
@@ -53,9 +50,9 @@ bool32_t Villager::SetupScriptWanderToPos(const MapCoords& pos, float radius, un
 
 // BW1W120 007686d0 BW1M119 0159e610
 // TODO: deferred (multiple blockers). Reverse-engineered structure (from 0x7686d0 asm):
-//     MapCoords coords(*(JustWholeMapXZ*)&field_0x10c);              // wander centre @0x10c/0x110
+//     MapCoords coords(ScriptWanderCentre);              // wander centre @0x10c/0x110
 //     float angle = GRand::GameFloatRand(6.2831855f, __FILE__, __LINE__);   // 0x40c90fdb = 2*pi
-//     float dist  = GRand::GameFloatRand(*(float*)&TargetThing, __FILE__, __LINE__); // radius @0x118
+//     float dist  = GRand::GameFloatRand(ScriptWanderRadius, __FILE__, __LINE__); // radius @0x118
 //     GUtils::AddDistanceFromAngle(&coords, angle, dist);
 //     SetupMoveToWithHug(coords, VILLAGER_STATE_SCRIPT_WANDER /*0xc7=199*/);
 //     TurnsUntilNextStateChange =
