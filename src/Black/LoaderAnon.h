@@ -51,7 +51,8 @@ struct LoaderAnon
 	uint32_t       field_0x4;
 	char           DetailPrefix[0x80];
 	char           EnumPrefix[0x80];
-	char           LoadId[0x10];
+	char           LoadId[0xc];
+	uint32_t       field_0x114;
 	unsigned char  TextBuffer[0x2000];
 	unsigned char* Cursor;
 	uint32_t       ErrorCount;
