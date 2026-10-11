@@ -269,6 +269,15 @@ public:
 
 	// BW1W120 inlined BW1M119 0130fc30
 	PieceSheep() {}
+	// BW1W120 inlined BW1M119 0112a190
+	PieceSheep(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3) : Sheep(coords, info, param_3)
+	{
+	}
+
+	// Static methods
+
+	// BW1W120 0041d580 BW1M119 0117b0e0
+	static PieceSheep* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3);
 };
 
 class PieceTortoise : public Tortoise
