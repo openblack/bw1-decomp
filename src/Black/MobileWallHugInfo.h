@@ -13,7 +13,7 @@ public:
 	int32_t speed; /* 0x104 */
 	uint8_t field_0x108[0x4];
 	int32_t field_0x10c; /* speed threshold */
-	uint8_t field_0x110[0x4];
+	int32_t WalkingSpeed;
 	float   field_0x114;
 	int32_t RunningSpeed;
 	int32_t CollideMask;
