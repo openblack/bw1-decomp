@@ -15,8 +15,6 @@
 
 #define FILEPATH "C:\\dev\\MP\\Black\\VillagerHome.cpp"
 
-extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
-
 // BW1W120 0075bb60
 float __stdcall POWER(float base);
 
@@ -864,9 +862,9 @@ bool32_t Villager::ExitGoHomeAndChange(unsigned char state)
 	{
 		Town*      town = GetTown();
 		TRIBE_TYPE tribe = town != NULL ? town->tribe_type : ((const GVillagerInfo*)info)->TribeType;
-		// TODO: only a reloc-form diff remains (raw address vs g_GVillagerStateTableInfos
+		// TODO: only a reloc-form diff remains (raw address vs GVillagerStateTableInfo::Infos
 		// symbol); byte-identical after link
-		ChangeTribeIfRequired(tribe, g_GVillagerStateTableInfos[state].field_0xd0 == 0);
+		ChangeTribeIfRequired(tribe, GVillagerStateTableInfo::Infos[state].field_0xd0 == 0);
 	}
 	if (DiscipleType == VILLAGER_DISCIPLE_CHANGE_HOUSE)
 	{
@@ -904,7 +902,7 @@ bool32_t Villager::SleepInTent()
 // BW1W120 00761b40 BW1M119 01097740
 bool32_t Villager::ExitAtHome(unsigned char state)
 {
-	if (g_GVillagerStateTableInfos[state].field_0xd0 == 0)
+	if (GVillagerStateTableInfo::Infos[state].field_0xd0 == 0)
 	{
 		LeaveHome();
 	}
