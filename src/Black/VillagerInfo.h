@@ -17,14 +17,9 @@ class GBaseInfo;
 class GObjectInfo;
 struct DiscipleInfo;
 
-enum
-{
-	AGE_TO_SCALE_NUM_VALUES = 21,
-};
-
 struct AgeToScale
 {
-	float values[AGE_TO_SCALE_NUM_VALUES];
+	float values[20];
 };
 
 class GVillagerInfo : public GLivingInfo
@@ -89,8 +84,9 @@ public:
 	float           StarvingToLifeMultiplier;
 	uint32_t        FoodReqiredForDinner;
 	uint32_t        ProcessChecksEvery;
-	uint32_t        HavingSexTime;       /* 0x2e0 */
-	AgeToScale      ageToScale;          /* 0x2e4 */
+	uint32_t        HavingSexTime; /* 0x2e0 */
+	AgeToScale      ageToScale;    /* 0x2e4 */
+	uint32_t        DancingSpeed;  /* 0x334 */
 	ANIM_LIST       LAttractAnim[0x3];   /* 0x338 */
 	ANIM_LIST       LNeedAnim[0x3];      /* 0x344 */
 	float           MaxDistCarryFoodPit; /* 0x350 */
