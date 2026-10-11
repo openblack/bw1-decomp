@@ -2860,7 +2860,10 @@ FishFarm* Town::FindBestFishFarm(Villager* villager, float* score)
 	{
 		FishFarm* fishFarm = node->payload;
 		float     distance = fishFarm->Pos.GetDistance(villager->Pos);
-		float fishFarmScore = (float)fishFarm->GetDesireToBeFished() * GUtils::GetDistanceModifier(distance, 500.0f);
+		// Keep the desire as its own statement. Written as one expression, which call MSVC emits first is a tie-break
+		// that flips with the number of declarations in the unit (BW1W110 broke when unrelated headers grew).
+		float desire = (float)fishFarm->GetDesireToBeFished();
+		float fishFarmScore = desire * GUtils::GetDistanceModifier(distance, 500.0f);
 		if (fishFarmScore > bestScore)
 		{
 			bestScore = fishFarmScore;
