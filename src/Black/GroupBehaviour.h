@@ -73,7 +73,7 @@ public:
 	virtual void UpdateGroupBasedOnAction(DanceGroup* dance_group, DANCE_GROUP_ACTION_TYPE action_type,
 	                                      const DanceGroupActionArgument& argument, uint32_t param_4);
 	// BW1W120 00597300 BW1M119 01101ac0
-	virtual void AddAction(float param_1, LHDynamicStack<uint32_t>& stack, DANCE_GROUP_ACTION_TYPE action_type,
+	virtual void AddAction(float param_1, LHDynamicStack<unsigned long>& stack, DANCE_GROUP_ACTION_TYPE action_type,
 	                       const DanceGroupActionArgument& argument);
 	// BW1W120 00597270 BW1M119 01101cf0
 	virtual void AddAction(float param_1, uint32_t param_2, DANCE_GROUP_ACTION_TYPE action_type,
@@ -113,15 +113,28 @@ public:
 	virtual void ToBeDeleted(int param_1);
 };
 
+enum
+{
+	DANCE_KEY_ACTION_FIELD_0x3C_DEFAULT = 10000,
+};
+
 class DanceKeyAction : public GameThing
 {
 public:
-	uint8_t field_0x14[0x44];
+	LHDynamicStack<unsigned long> Groups;
+	uint32_t                      Type;
+	uint32_t                      field_0x20;
+	uint32_t                      field_0x24;
+	uint32_t                      field_0x28;
+	uint32_t                      field_0x2c;
+	uint32_t                      field_0x30;
+	uint32_t                      field_0x34;
+	uint32_t                      field_0x38;
+	uint32_t                      field_0x3c;
+	uint8_t                       field_0x40[0x18];
 
 	// Override methods
 
-	// BW1W120 0050e3a0 BW1M119 012b1dd0
-	virtual ~DanceKeyAction();
 	// BW1W120 0050e390 BW1M119 012b1ee0
 	virtual char* GetDebugText();
 	// BW1W120 0050ea00 BW1M119 012b16f0
