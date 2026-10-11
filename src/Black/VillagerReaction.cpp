@@ -822,7 +822,7 @@ void Villager::SetupReactToDroppedByHand(GameThingWithPos* thing, Reaction* reac
 {
 	GameThingWithPos* target = reaction->target;
 	Villager*         dropped = dynamic_cast<Villager*>(target);
-	if (dropped != NULL && dropped->IsAvailable() && !(this->Flags & 0x400))
+	if (dropped != NULL && dropped->IsAvailable() && !(this->Flags & VILLAGER_FLAG_DISCIPLE_FOLLOWER))
 	{
 		SetDiscipleFollower((VILLAGER_DISCIPLE)dropped->DiscipleType);
 	}

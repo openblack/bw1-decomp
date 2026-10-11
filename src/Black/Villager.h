@@ -97,14 +97,17 @@ struct DiscipleInfo
 
 enum VILLAGER_FLAGS
 {
+	VILLAGER_FLAG_AT_WORSHIP_SITE = 0x2,
 	VILLAGER_FLAG_AT_HOME = 0x4,
 	VILLAGER_FLAG_CHILD = 0x8,
+	VILLAGER_FLAG_DISCIPLE = 0x200,
+	VILLAGER_FLAG_DISCIPLE_FOLLOWER = 0x400,
 };
 
 class Villager : public Living
 {
 public:
-	uint16_t             Flags; // TODO(#343)
+	uint16_t             Flags;
 	LHListNode<Villager> next;
 	float                food;
 	int                  LastCheckTurn;

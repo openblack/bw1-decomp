@@ -467,11 +467,11 @@ bool32_t Villager::DecideWhatToDo()
 
 	uint32_t flags = Flags;
 	uint8_t  disciple_flags = flags >> 9;
-	if (disciple_flags & 1 || flags & 0x400)
+	if (disciple_flags & 1 || flags & VILLAGER_FLAG_DISCIPLE_FOLLOWER)
 	{
 		if (DiscipleDecideWhatToDo() == true)
 		{
-			if (Flags & 0x400)
+			if (Flags & VILLAGER_FLAG_DISCIPLE_FOLLOWER)
 			{
 				DiscipleType = VILLAGER_DISCIPLE_NONE;
 				return true;
@@ -484,10 +484,10 @@ bool32_t Villager::DecideWhatToDo()
 			return true;
 		}
 		flags = Flags;
-		if (flags & 0x400)
+		if (flags & VILLAGER_FLAG_DISCIPLE_FOLLOWER)
 		{
 			DiscipleType = VILLAGER_DISCIPLE_NONE;
-			Flags = flags & ~(0x200 | 0x400);
+			Flags = flags & ~(VILLAGER_FLAG_DISCIPLE | VILLAGER_FLAG_DISCIPLE_FOLLOWER);
 		}
 	}
 
@@ -872,7 +872,7 @@ bool32_t Villager::IsAtOrOnTheWayToWorshipSite()
 	{
 		state = action.states[LIVING_ACTION_INDEX_PREVIOUS];
 	}
-	if ((Flags & 2) || state == VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_FOR_WORSHIP ||
+	if ((Flags & VILLAGER_FLAG_AT_WORSHIP_SITE) || state == VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_FOR_WORSHIP ||
 	    state == VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_WITH_SUPPLIES)
 	{
 		return true;
@@ -1511,13 +1511,13 @@ uint32_t Villager::SetVillagerDisciple(GameThing* interacted_thing, VILLAGER_DIS
 	}
 	if (disciple != VILLAGER_DISCIPLE_NONE)
 	{
-		Flags = Flags & 0xfbff | 0x200;
+		Flags = Flags & ~VILLAGER_FLAG_DISCIPLE_FOLLOWER | VILLAGER_FLAG_DISCIPLE;
 		Game3dObject->SetIsGlowing(GVillagerInfo::GetDiscipleInfo()[disciple].field_0x8);
 		GetPlayer();
 		DiscipleType = (uint8_t)disciple;
 		return true;
 	}
-	Flags &= 0xf9ff;
+	Flags &= ~(VILLAGER_FLAG_DISCIPLE | VILLAGER_FLAG_DISCIPLE_FOLLOWER);
 	Game3dObject->SetIsGlowing(0);
 	DiscipleType = (uint8_t)disciple;
 	return true;

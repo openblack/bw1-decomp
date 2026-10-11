@@ -20,3 +20,8 @@ bool32_t Field::CanBecomeAPhysicsObject()
 {
 	return false;
 }
+
+RESOURCE_TYPE Field::GetResourceType()
+{
+	return RESOURCE_TYPE_FOOD;
+}

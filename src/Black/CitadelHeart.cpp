@@ -134,4 +134,14 @@ bool32_t CitadelHeart::ShouldFootpathsGoRound()
 	return false;
 }
 
+LH3DObject::ObjectType CitadelHeart::Get3DType()
+{
+	return LH3DObject::CITADEL;
+}
+
+SCRIPT_OBJECT_TYPE CitadelHeart::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_CITADEL;
+}
+
 void CitadelHeart::Draw() {}

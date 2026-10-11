@@ -219,7 +219,7 @@ bool32_t Villager::CheckInteractWithVillager()
 // BW1W120 00757820 BW1M119 0157a390
 void Villager::SetDiscipleFollower(VILLAGER_DISCIPLE disciple_type)
 {
-	Flags |= 0x400;
+	Flags |= VILLAGER_FLAG_DISCIPLE_FOLLOWER;
 	DiscipleType = disciple_type;
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 }

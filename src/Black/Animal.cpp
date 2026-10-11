@@ -31,4 +31,19 @@ uint32_t Animal::KeepFlockMemberWithinFlockArea()
 	return 0x23;
 }
 
+RESOURCE_TYPE Animal::GetResourceType()
+{
+	return RESOURCE_TYPE_FOOD;
+}
+
+HOLD_TYPE Animal::GetHoldType()
+{
+	return HOLD_TYPE_VILLAGER;
+}
+
+SCRIPT_OBJECT_TYPE Animal::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_ANIMAL;
+}
+
 void Animal::DebugShowText() {}

@@ -11,4 +11,9 @@ bool FishFarm::InteractsWithPhysicsObjects()
 	return false;
 }
 
+RESOURCE_TYPE FishFarm::GetResourceType()
+{
+	return RESOURCE_TYPE_FOOD;
+}
+
 void FishFarm::Draw() {}
