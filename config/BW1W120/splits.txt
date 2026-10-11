@@ -693,7 +693,7 @@ Black/CreditsRoom.cpp:
 	.text       start:0x0050ABE0 end:0x0050B310
 	.rdata      start:0x008D16C4 end:0x008D1FFC
 	.CRT$XCU    start:0x009C66A8 end:0x009C66B8 align:4
-	.bss        start:0x00CADB60 end:0x00CC4B70
+	.bss        start:0x00CADB60 end:0x00CADB70
 
 Black/Creed.cpp:
 	.text       start:0x0050B310 end:0x0050B540

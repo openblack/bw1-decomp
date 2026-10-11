@@ -21,7 +21,13 @@
 #include <float.h>  /* For FLT_MAX */
 #include <string.h> /* For strcpy */
 
+#if defined(VERSION_BW1W100)
+#define FILEPATH "C:\\dev\\black\\Dance.cpp"
+#elif defined(VERSION_BW1W110)
+#define FILEPATH "C:\\dev\\Black\\Dance.cpp"
+#else
 #define FILEPATH "C:\\dev\\MP\\Black\\Dance.cpp"
+#endif
 
 #define MAP_COORDS_HALF_CELL 0x8000
 

@@ -9,7 +9,13 @@
 #include "Data.h" /* For class GData */
 #include "Rand.h" /* For class GRand */
 
+#if defined(VERSION_BW1W100)
+#define FILEPATH "C:\\dev\\black\\DanceShape.cpp"
+#elif defined(VERSION_BW1W110)
+#define FILEPATH "C:\\dev\\Black\\DanceShape.cpp"
+#else
 #define FILEPATH "C:\\dev\\MP\\Black\\DanceShape.cpp"
+#endif
 
 const DanceShapeInfo DanceShapeInfos[DANCE_SHAPE_LAST] = {
 	{"Circle", MakeShape::MakeShapeCircle, "NoFile"},

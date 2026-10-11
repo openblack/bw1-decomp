@@ -7,7 +7,13 @@
 
 #include "GameInfo.h" /* For class GGameInfo */
 
+#if defined(VERSION_BW1W100)
+#define FILEPATH "C:\\dev\\black\\DanceKey.cpp"
+#elif defined(VERSION_BW1W110)
+#define FILEPATH "C:\\dev\\Black\\DanceKey.cpp"
+#else
 #define FILEPATH "C:\\dev\\MP\\Black\\DanceKey.cpp"
+#endif
 
 template <typename T> static void ReadSafe(GameOSFile& file, LHDynamicStack<T>& stack)
 {
