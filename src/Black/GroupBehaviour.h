@@ -113,22 +113,40 @@ public:
 	virtual void ToBeDeleted(int param_1);
 };
 
-#define DANCE_KEY_ACTION_DEFAULT_RADIUS 10000
+/* Default end time of a dance group movement; the unit is not known (probably milliseconds) */
+#define DANCE_GROUP_MOVEMENT_DEFAULT_END_TIME 10000
+
+/* Parameters of the SetAction dance group action: a kind of movement (RotateDancers, LookAt, MoveToPos, ...)
+ * with up to two float parameters. */
+struct DanceGroupMovement
+{
+	uint32_t Kind;
+	float    Param1;
+	float    Param2;
+	uint32_t EndTime;
+};
+
+/* Argument of an action performed on a dance group. Which members are used depends on the action type: Value/Value2
+ * hold e.g. the shape, the position (as floats), the angle or the percentage chance for SetStateOfProportion;
+ * Movement belongs to SetAction and CameraPoints to SetCamera. */
+struct DanceGroupActionArgument
+{
+	uint32_t           Value;
+	uint32_t           Value2;
+	uint32_t           Value3; /* Numerator of Proportion */
+	uint32_t           Unused; /* Never read or written by any code, only copied around with the rest */
+	DanceGroupMovement Movement;
+	float              CameraPoints[2][3];
+};
+
+static_assert(sizeof(DanceGroupActionArgument) == 0x38, "Data type is of wrong size");
 
 class DanceKeyAction : public GameThing
 {
 public:
 	LHDynamicStack<unsigned long> Groups;
 	uint32_t                      Type;
-	uint32_t                      ArgumentValue;
-	uint32_t                      ArgumentValue2;
-	uint32_t                      field_0x28;
-	uint32_t                      field_0x2c;
-	uint32_t                      ArgumentPointX;
-	uint32_t                      ArgumentPointY;
-	uint32_t                      ArgumentPointZ;
-	uint32_t                      ArgumentRadius;
-	uint8_t                       field_0x40[0x18];
+	DanceGroupActionArgument      Argument;
 
 	// Override methods
 
@@ -144,5 +162,7 @@ public:
 	// BW1W120 0050e340 BW1M119 012b1d30
 	DanceKeyAction();
 };
+
+static_assert(sizeof(DanceKeyAction) == 0x58, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_GROUP_BEHAVIOUR_INCLUDED_H */

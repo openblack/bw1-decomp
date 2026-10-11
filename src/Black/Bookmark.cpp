@@ -1,3 +1,5 @@
+#include "ColourConstants.h" /* For White */
+
 #include <math.h> /* For cos, fabs */
 
 #include "Bookmark.h"
