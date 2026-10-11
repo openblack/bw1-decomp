@@ -53,13 +53,12 @@ def main() -> None:
         sys.exit(f"{args.target}: expected one section with data, found {len(data_sections)}")
     header = data_sections[0]
     size, raw = struct.unpack_from("<II", obj, header + 16)
-    if struct.unpack_from("<H", obj, header + 32)[0]:
-        sys.exit(f"{args.target}: relocations are not supported")
 
     ours = image_bytes(args.image, args.address, size)
     if ours == image_bytes(args.original, args.address, size):
         shutil.copyfile(args.target, args.output)
         return
+    # Relocated fields keep the target's addends, so they still show as differing.
     obj[raw : raw + size] = ours
     args.output.write_bytes(obj)
     differing = sum(a != b for a, b in zip(ours, args.target.read_bytes()[raw : raw + size]))
