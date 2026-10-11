@@ -137,7 +137,7 @@ bool32_t GAudio::ThingMusicInRange(MUSIC_TYPE type, GameThingWithPos* thing)
 		GGame::g_game->GetCamera();
 		LHPoint cameraPos = LH3DTech::g_camera.pos;
 		float   distance = pos.GetDistance(cameraPos);
-		if (GetPlayDistance(type) > distance)
+		if (distance < GetPlayDistance(type))
 		{
 			return true;
 		}
