@@ -1320,7 +1320,9 @@ uint32_t Villager::Load(GameOSFile& file)
 		file.ReadIt(reserved);
 		file.ReadIt(reserved);
 		LoadStateFunction(file);
+#ifndef VERSION_BW1W100
 		DrawYAngle = GetYAngle();
+#endif
 		return true;
 	}
 	return false;
