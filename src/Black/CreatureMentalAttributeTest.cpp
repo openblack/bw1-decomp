@@ -3,8 +3,11 @@
 
 #include "ColourConstants.h" /* For White */
 
-#include "Abode.h"    /* For ABODE_BEING_BUILT_LAST */
-#include "Creature.h" /* For CREATURE_HEIGHT_LAST */
+#include <chlasm/Enum.h> /* For INVALID_CREATURE_DESIRE, OBJECT_TYPE_LAST */
+
+#include "Abode.h"                     /* For ABODE_BEING_BUILT_LAST */
+#include "Creature.h"                  /* For CREATURE_HEIGHT_LAST */
+#include "CreatureActionsKnownAbout.h" /* For CREATURE_MAX_SPELLS_KNOWN */
 #include "CreatureMentalBelief.h"
 #include "Forest.h" /* For FOREST_SIZE_LAST */
 
@@ -20,7 +23,7 @@ const char* AttributeCreatureDominantDesire::TypeName()
 
 uint32_t AttributeCreatureDominantDesire::ValueRange()
 {
-	return NUM_CREATURE_DESIRES + 1;
+	return INVALID_CREATURE_DESIRE + 1;
 }
 
 ATTRIBUTE_TYPE AttributeCreatureDominantDesire::GetType()
@@ -69,7 +72,7 @@ const char* AttributeCreatureSpellKnowledge::TypeName()
 
 uint32_t AttributeCreatureSpellKnowledge::ValueRange()
 {
-	return MAGIC_TYPE_LAST + 1;
+	return CREATURE_MAX_SPELLS_KNOWN + 1;
 }
 
 ATTRIBUTE_TYPE AttributeCreatureSpellKnowledge::GetType()

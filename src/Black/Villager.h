@@ -136,17 +136,17 @@ public:
 	union {
 		struct
 		{
-			float    InspectDistance;           // Inspection reactions: distance kept from the target.
-			uint32_t InspectTurnsUntilApproach; // Inspection reactions: turns until stepping closer.
+			float    InspectDistance;
+			uint32_t InspectTurnsUntilApproach;
 		};
 		struct
 		{
-			uint32_t BewilderedTreeIndex; // Magic tree reactions: tree of the forest being looked at.
-			uint32_t BewilderedTreesSeen; // Magic tree reactions: trees looked at so far.
+			uint32_t BewilderedTreeIndex;
+			uint32_t BewilderedTreesSeen;
 		};
 		struct
 		{
-			VILLAGER_DISCIPLE DiscipleOnPickUp; // IN_HAND: disciple type when picked up, checked on landing.
+			VILLAGER_DISCIPLE DiscipleOnPickUp;
 		};
 		struct
 		{
@@ -183,16 +183,16 @@ public:
 		};
 		struct
 		{
-			RESOURCE_TYPE TradeResource; // Trading states: resource being traded.
-			Town*         TradeTown;     // Trading states: trading partner's town.
+			RESOURCE_TYPE TradeResource;
+			Town*         TradeTown; // Trading states: trading partner's town.
 		};
 		struct
 		{
-			bool32_t RequestingToGoHome; // Worship site states: on the site's go-home request list.
+			bool32_t RequestingToGoHome;
 		};
 		struct
 		{
-			long BuildPosIndex; // Building states: index into BuildingSite::BuildingPositions.
+			long BuildPosIndex;
 		};
 		struct
 		{
@@ -206,15 +206,15 @@ public:
 		};
 		struct
 		{
-			bool            FootballSubStateDone;  // Football states: pick a new substate.
-			uint8_t         FootballSubStateTurns; // Football states: turns spent in the substate.
+			bool            FootballSubStateDone;
+			uint8_t         FootballSubStateTurns;
 			uint8_t         field_0x11a;
 			LHPTR<Football> football; // Football states: current match.
 		};
 		struct
 		{
-			uint16_t ShepherdWaitTurns; // Shepherd states: turns until ShepherdNextState.
-			uint16_t ShepherdNextState; // Shepherd states: VILLAGER_STATES to enter after waiting.
+			uint16_t ShepherdWaitTurns;
+			uint16_t ShepherdNextState;
 		};
 		struct
 		{
@@ -223,8 +223,8 @@ public:
 		};
 		struct
 		{
-			uint32_t ClearAreaPos[VILLAGER_NUM_CLEAR_AREA_COORDS]; // ARRIVE_AT_PUSH_OBJECT: x/z of the area to clear.
-			float    ClearAreaRadius; // ARRIVE_AT_PUSH_OBJECT: radius of the area to clear.
+			uint32_t ClearAreaPos[VILLAGER_NUM_CLEAR_AREA_COORDS];
+			float    ClearAreaRadius;
 		};
 	};
 	Abode* home;

@@ -6,7 +6,7 @@
 
 #include <re_common.h>                          /* For ARRAY_SIZE, bool32_t */
 #include <chlasm/CreatureEnum.h>                /* For enum ATTRIBUTE_TYPE, enum CREATURE_ACTION */
-#include <chlasm/Enum.h>                        /* For MAGIC_TYPE_LAST, OBJECT_TYPE_LAST, enum CREATURE_DESIRES */
+#include <chlasm/Enum.h>                        /* For enum CREATURE_DESIRES */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 
 #include "Base.h"                  /* For struct Base */
