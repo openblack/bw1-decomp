@@ -4,9 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <re_common.h>                          /* For bool32_t */
+#include <re_common.h>                          /* For ARRAY_SIZE, bool32_t */
 #include <chlasm/CreatureEnum.h>                /* For enum ATTRIBUTE_TYPE, enum CREATURE_ACTION */
-#include <chlasm/Enum.h>                        /* For enum CREATURE_DESIRES */
+#include <chlasm/Enum.h>                        /* For MAGIC_TYPE_LAST, OBJECT_TYPE_LAST, enum CREATURE_DESIRES */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 
 #include "Base.h"                  /* For struct Base */
@@ -132,7 +132,7 @@ class AttributeAbodeBeingBuilt : public Attribute
 public:
 	// Static members
 
-	static char ValueNames[][64]; // fabricated name
+	static char ValueNames[2][64];
 
 	// Override methods
 
@@ -249,7 +249,7 @@ class AttributeCreatureHeight : public Attribute
 public:
 	// Static members
 
-	static char ValueNames[][64]; // fabricated name
+	static char ValueNames[4][64];
 
 	// Override methods
 
@@ -337,7 +337,7 @@ class AttributeForestSize : public Attribute
 public:
 	// Static members
 
-	static char ValueNames[][64]; // fabricated name
+	static char ValueNames[3][64];
 
 	// Override methods
 
@@ -408,7 +408,7 @@ class AttributeMobileObjectType : public Attribute
 public:
 	// Static members
 
-	static char ValueNames[][64]; // fabricated name
+	static char ValueNames[32][64];
 
 	// Override methods
 

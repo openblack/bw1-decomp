@@ -39,7 +39,7 @@ const char* AttributeCreatureHeight::TypeName()
 
 uint32_t AttributeCreatureHeight::ValueRange()
 {
-	return 4;
+	return ARRAY_SIZE(ValueNames);
 }
 
 const char* AttributeCreatureHeight::ValueName(unsigned long value)
@@ -66,7 +66,7 @@ const char* AttributeCreatureSpellKnowledge::TypeName()
 
 uint32_t AttributeCreatureSpellKnowledge::ValueRange()
 {
-	return 43;
+	return MAGIC_TYPE_LAST + 1;
 }
 
 ATTRIBUTE_TYPE AttributeCreatureSpellKnowledge::GetType()
@@ -88,7 +88,7 @@ const char* AttributeCreatureWhatHeIsCarrying::TypeName()
 
 uint32_t AttributeCreatureWhatHeIsCarrying::ValueRange()
 {
-	return 45;
+	return OBJECT_TYPE_LAST;
 }
 
 ATTRIBUTE_TYPE AttributeCreatureWhatHeIsCarrying::GetType()
@@ -110,7 +110,7 @@ const char* AttributeForestSize::TypeName()
 
 uint32_t AttributeForestSize::ValueRange()
 {
-	return 3;
+	return ARRAY_SIZE(ValueNames);
 }
 
 const char* AttributeForestSize::ValueName(unsigned long value)
@@ -137,7 +137,7 @@ const char* AttributeMobileObjectType::TypeName()
 
 uint32_t AttributeMobileObjectType::ValueRange()
 {
-	return 32;
+	return ARRAY_SIZE(ValueNames);
 }
 
 const char* AttributeMobileObjectType::ValueName(unsigned long value)
@@ -191,7 +191,7 @@ const char* AttributeAbodeBeingBuilt::TypeName()
 
 uint32_t AttributeAbodeBeingBuilt::ValueRange()
 {
-	return 2;
+	return ARRAY_SIZE(ValueNames);
 }
 
 const char* AttributeAbodeBeingBuilt::ValueName(unsigned long value)
@@ -213,7 +213,7 @@ uint32_t CreatureBelief::GetType()
 
 uint32_t CreatureBeliefSmall::GetNumAttributes()
 {
-	return 7;
+	return ARRAY_SIZE(Attributes);
 }
 
 Attribute* CreatureBeliefSmall::GetNthAttribute(unsigned long index)
@@ -230,7 +230,7 @@ CreatureBeliefSmall::~CreatureBeliefSmall() {}
 
 uint32_t CreatureBeliefAboutVillager::GetNumAttributes()
 {
-	return 11;
+	return ARRAY_SIZE(Attributes);
 }
 
 Attribute* CreatureBeliefAboutVillager::GetNthAttribute(unsigned long index)
@@ -247,7 +247,7 @@ CreatureBeliefAboutVillager::~CreatureBeliefAboutVillager() {}
 
 uint32_t CreatureBeliefAboutTown::GetNumAttributes()
 {
-	return 11;
+	return ARRAY_SIZE(Attributes);
 }
 
 Attribute* CreatureBeliefAboutTown::GetNthAttribute(unsigned long index)
@@ -264,7 +264,7 @@ CreatureBeliefAboutTown::~CreatureBeliefAboutTown() {}
 
 uint32_t CreatureBeliefAboutFlock::GetNumAttributes()
 {
-	return 7;
+	return ARRAY_SIZE(Attributes);
 }
 
 Attribute* CreatureBeliefAboutFlock::GetNthAttribute(unsigned long index)
@@ -281,7 +281,7 @@ CreatureBeliefAboutFlock::~CreatureBeliefAboutFlock() {}
 
 uint32_t CreatureBeliefAboutCitadel::GetNumAttributes()
 {
-	return 7;
+	return ARRAY_SIZE(Attributes);
 }
 
 Attribute* CreatureBeliefAboutCitadel::GetNthAttribute(unsigned long index)
@@ -298,7 +298,7 @@ CreatureBeliefAboutCitadel::~CreatureBeliefAboutCitadel() {}
 
 uint32_t CreatureBeliefAboutCreature::GetNumAttributes()
 {
-	return 11;
+	return ARRAY_SIZE(Attributes);
 }
 
 Attribute* CreatureBeliefAboutCreature::GetNthAttribute(unsigned long index)
@@ -315,7 +315,7 @@ CreatureBeliefAboutCreature::~CreatureBeliefAboutCreature() {}
 
 uint32_t CreatureBeliefAboutForest::GetNumAttributes()
 {
-	return 8;
+	return ARRAY_SIZE(Attributes);
 }
 
 Attribute* CreatureBeliefAboutForest::GetNthAttribute(unsigned long index)
@@ -332,7 +332,7 @@ CreatureBeliefAboutForest::~CreatureBeliefAboutForest() {}
 
 uint32_t CreatureBeliefAboutAbode::GetNumAttributes()
 {
-	return 11;
+	return ARRAY_SIZE(Attributes);
 }
 
 Attribute* CreatureBeliefAboutAbode::GetNthAttribute(unsigned long index)
