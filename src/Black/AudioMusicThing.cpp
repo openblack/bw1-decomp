@@ -12,11 +12,6 @@
 
 #define MUSIC_DEFAULT_PLAY_DISTANCE 100.0f
 
-enum
-{
-	THING_MUSIC_RESULT_IN_RANGE = 1,
-};
-
 uint32_t ThingMusicInfo::GetSaveType()
 {
 	return GAME_THING_TYPE_THING_MUSIC_INFO;

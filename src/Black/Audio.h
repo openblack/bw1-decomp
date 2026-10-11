@@ -72,6 +72,11 @@ enum ANIM_SOUND_EVENT
 
 #define NUM_ATMOS_TYPES 14
 
+enum
+{
+	THING_MUSIC_RESULT_IN_RANGE = 1,
+};
+
 // Forward Declares
 
 class Base;
