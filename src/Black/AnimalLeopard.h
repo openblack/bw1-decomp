@@ -8,6 +8,7 @@
 
 // Forward Declares
 
+class GAnimalInfo;
 class Base;
 class GameThing;
 class Object;
@@ -50,6 +51,13 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	Leopard() {}
+	// BW1W120 inlined BW1M119 inlined
+	Leopard(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3) : Lion(coords, info, param_3) {}
+
+	// Static methods
+
+	// BW1W120 0041fc10 BW1M119 0117e2a0
+	static Leopard* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_LEOPARD_INCLUDED_H */
