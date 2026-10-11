@@ -16,13 +16,33 @@ class Base;
 class CreatureActionInfo : public GBaseInfo
 {
 public:
-	uint8_t          field_0x10[0x98];
+	float            StrengthGain;
+	float            EnergyCost;
+	float            ExhaustionCost;
+	uint8_t          field_0x1c[0x8];
+	char             Name[0x20];
+	uint8_t          field_0x44[0x60];
+	uint32_t         NeedsObjectToActOn;
 	uint32_t         PlanIndex;
-	uint8_t          field_0xac[0x18];
+	uint32_t         KnownAboutCategory;
+	uint32_t         KnownAboutCategory2;
+	uint32_t         MagicType;
+	uint32_t         ExcludesCarriedObject;
+	uint8_t          field_0xbc[0x8];
 	CREATURE_DESIRES Desire;
-	uint8_t          field_0xc8[0x1c];
+	uint8_t          field_0xc8[0x8];
+	float            CompletionFactor;
+	uint8_t          field_0xd4[0x4];
+	uint32_t         CompletionEnabled;
+	uint8_t          field_0xdc[0x4];
+	float            LearnWindow;
 	float            InitialOpinion;
-	uint8_t          field_0xe8[0x28];
+	uint8_t          field_0xe8[0x4];
+	uint32_t         WorthFollowing;
+	uint8_t          field_0xf0[0x10];
+	uint32_t         Learnable;
+	uint32_t         CanBeStompedOn;
+	uint8_t          field_0x108[0x8];
 
 	// Override methods
 
@@ -40,7 +60,7 @@ public:
 	static CreatureActionInfo* GetInfo() { return g_CreatureActionInfos; }
 
 	// TODO(#377): The original declared this class in CreatureAction.h.
-	INFO_DATA_BLOCK(field_0x10, field_0xe8)
+	INFO_DATA_BLOCK(StrengthGain, field_0x108)
 	INFO_ROOT_LOADERS("CreatureAction.h", 46)
 };
 static_assert(sizeof(CreatureActionInfo) == 0x110, "Data type is of wrong size");
