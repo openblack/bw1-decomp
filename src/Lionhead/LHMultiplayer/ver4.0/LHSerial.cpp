@@ -1,10 +1,9 @@
 #define LH_MULTIPLAYER_EXPORTS
-#include "LHSerial.h"
-
 #include <stdlib.h>
 
 #include "LHNetLog.h"
 #include "LHPacket.h"
+#include "LHSerial.h"
 #include "LHTransportInfo.h"
 
 enum

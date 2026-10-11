@@ -24,8 +24,6 @@
 
 #define FILEPATH "C:\\dev\\MP\\Black\\VillagerReaction.cpp"
 
-extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
-
 // Metres-per-cell scale used by ConfusedReaction's coord<->metre jitter maths (the target
 // loads it from .rdata rather than folding the literal, so it must be a variable).
 const float VillagerReactionFloat10p0 = 10.0f;
@@ -35,7 +33,8 @@ bool32_t Villager::IsAvailableForReaction(REACTION reaction)
 {
 	VILLAGER_STATES state = (VILLAGER_STATES)(GetFinalState() & VILLAGER_STATE_LAST_STATE);
 	uint16_t        flags = this->Flags;
-	if (!(flags & 2) && g_GVillagerStateTableInfos[state].field_0x34 != 0 && !(flags & 0x80) && !IsDeathState(state))
+	if (!(flags & 2) && GVillagerStateTableInfo::Infos[state].field_0xfc != 0 && !(flags & 0x80) &&
+	    !IsDeathState(state))
 	{
 		const GVillagerInfo* villagerInfo = (const GVillagerInfo*)this->info;
 		if (GetLife() > villagerInfo->LifeWhenCrawlsWounded || reaction == REACTION_REACT_TO_FOOD)
@@ -66,7 +65,7 @@ void Villager::StorePreviousState()
 	// and the state*0x114 array-index expression (target copies state to ecx then indexes in eax).
 	VILLAGER_STATES state = (VILLAGER_STATES)(GetFinalState() & VILLAGER_STATE_LAST_STATE);
 	VILLAGER_STATES stateToStore = state;
-	if (g_GVillagerStateTableInfos[state].field_0x20 != 0 || g_GVillagerStateTableInfos[state].field_0xc8 != 0)
+	if (GVillagerStateTableInfo::Infos[state].field_0x20 != 0 || GVillagerStateTableInfo::Infos[state].field_0xc8 != 0)
 	{
 		stateToStore = (VILLAGER_STATES)this->action.states[LIVING_ACTION_INDEX_PREVIOUS];
 	}

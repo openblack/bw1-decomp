@@ -24,7 +24,7 @@ enum
 	LH_SOCKET_PACKET_HEADER_SIZE = sizeof(LHPacketHeader) - LH_SOCKET_PACKET_LENGTH_SIZE,
 };
 
-int LHSocket::InitFlag;
+int LHSocket::InitFlag = 0;
 
 LHSocket::LHSocket()
 {

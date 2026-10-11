@@ -19,8 +19,6 @@
 #include "WorshipSiteInfo.h"
 #include "chlasm/GStates.h"
 
-extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
-
 // BW1W120 0076ba60 BW1M119 01098d20
 bool32_t Villager::CheckNeededForWorship()
 {
@@ -323,11 +321,11 @@ bool32_t Villager::ExitAtWorshipSite(unsigned char state)
 }
 
 // BW1W120 0076c280 BW1M119 015a4d20
-// TODO: only a reloc-form diff remains (raw address vs g_GVillagerStateTableInfos symbol);
+// TODO: only a reloc-form diff remains (raw address vs GVillagerStateTableInfo::Infos symbol);
 // byte-identical after link
 bool32_t Villager::ExitGetFoodAtWorship(unsigned char state)
 {
-	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state) && g_GVillagerStateTableInfos[state].field_0xe8 == 0)
+	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state) && GVillagerStateTableInfo::Infos[state].field_0xe8 == 0)
 		RemoveVillagerFromWorshipSite();
 	return 1;
 }

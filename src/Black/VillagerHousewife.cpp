@@ -12,8 +12,6 @@
 #include "Town.h"
 #include "Game.h"
 
-extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
-
 // BW1W120 00761c00 BW1M119 01592550
 bool32_t Villager::HousewifeLookForWork()
 {
@@ -289,7 +287,7 @@ bool32_t Villager::HousewifeGetsPregnant(Villager* param_1)
 // BW1W120 007625a0 BW1M119 01591090
 bool32_t Villager::HousewifeCalledToMakeDinner()
 {
-	uint32_t result = g_GVillagerStateTableInfos[(uint8_t)GetFinalState()].field_0xc4;
+	uint32_t result = GVillagerStateTableInfo::Infos[(uint8_t)GetFinalState()].field_0xc4;
 	if (result == 0)
 	{
 		if ((Flags & 4) == 4)

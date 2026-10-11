@@ -187,7 +187,7 @@ LHNetEvent* __cdecl LHNetEvent::VCreate(long type, LHNetMessageFormatDescriptor*
 
 	va_list args;
 	va_start(args, descriptors);
-	return RawCreate(LH_ALL_USERS, (LH_NETEVENT_TYPE)type, format, args);
+	return RawCreate(LH_EVERYONE, (LH_NETEVENT_TYPE)type, format, args);
 }
 
 LH_RETURN __cdecl LHNetEvent::VDecode(LH_NETEVENT_TYPE type, ...)
