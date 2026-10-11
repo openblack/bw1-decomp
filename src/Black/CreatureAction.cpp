@@ -8189,3 +8189,280 @@ void Creature::ComputeActionIndices()
 		}
 	}
 }
+
+const float InverseHomeRange = 0.004f;
+const float InverseNumDangerousSpells = 1.0f / 42.0f;
+const float NeglectedTime = 120.0f;
+
+inline MapCoords::MapCoords(float meters_x, float meters_z)
+{
+	SetX(meters_x);
+	SetZ(meters_z);
+	SetAltitude(0.0f);
+}
+
+void Creature::ConsiderSamplingWeighting(CREATURE_ACTION action, float weight) {}
+
+float Creature::ConstantActionSource(CreaturePlan& plan)
+{
+	return 0.2f;
+}
+
+float Creature::HowMuchFasterIsObjectThanMe(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		float faster = plan.ObjectToActOn->GetPointer()->GetSpeedInMetres() - GetSpeedInMetres();
+		return faster < -1.0f ? -1.0f : (faster > 1.0f ? 1.0f : faster);
+	}
+	return 0.0f;
+}
+
+float Creature::HowInterestingIsObject(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		float interest = mind->GetObjectToActOnUsefulness(plan.ObjectToActOn, CREATURE_DESIRE_CURIOSITY);
+		return interest < -1.0f ? -1.0f : (interest > 1.0f ? 1.0f : interest);
+	}
+	return 0.0f;
+}
+
+float Creature::HowEdibleIsObjectAfterCrush(CreaturePlan& plan)
+{
+	return 0.0f;
+}
+
+float Creature::HowNearIsHome(CreaturePlan& plan)
+{
+	float distance = GUtils::GetDistanceInMetres(Pos, HomePos);
+	if (distance >= 250.0f)
+	{
+		distance = 250.0f;
+	}
+	return (1.0f - distance * InverseHomeRange) * 2.0f - 1.0f;
+}
+
+float Creature::HowDangerousIsObject(CreaturePlan& plan)
+{
+	return 0.0f;
+}
+
+float Creature::HowMuchStrongerIsOpponentThanMe(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		Creature* opponent = dynamic_cast<Creature*>(plan.ObjectToActOn->GetPointer());
+		if (opponent != NULL)
+		{
+			float opponentStrength = opponent->physical->strength;
+			float stronger = opponentStrength - physical->strength;
+			return stronger < -1.0f ? -1.0f : (stronger > 1.0f ? 1.0f : stronger);
+		}
+	}
+	return 0.0f;
+}
+
+float Creature::HowMuchMoreLifeHasOpponentThanMe(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		Creature* opponent = dynamic_cast<Creature*>(plan.ObjectToActOn->GetPointer());
+		if (opponent != NULL)
+		{
+			float myLife = GetLife();
+			float moreLife = opponent->GetLife() - myLife;
+			return moreLife < -1.0f ? -1.0f : (moreLife > 1.0f ? 1.0f : moreLife);
+		}
+	}
+	return 0.0f;
+}
+
+float Creature::HowManyDangerousSpellsOpponentKnows(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		Creature* opponent = dynamic_cast<Creature*>(plan.ObjectToActOn->GetPointer());
+		if (opponent != NULL)
+		{
+			uint32_t known = 0;
+			for (uint32_t spell = 0; spell < 0x2a; spell++)
+			{
+				known += opponent->mind->ActionsKnownAbout.KnowsAction(CREATURE_ACTION_LEARNING_TYPE_MAGIC, spell);
+			}
+			return (float)known * InverseNumDangerousSpells;
+		}
+	}
+	return 0.0f;
+}
+
+float Creature::HowNearIsPlayer(CreaturePlan& plan)
+{
+	if (GetPlayer() != NULL)
+	{
+		float distance = GUtils::GetDistanceInMetres(Pos, GetNearestCameraInterfaceStatus()->Pos);
+		if (distance >= 500.0f)
+		{
+			distance = 500.0f;
+		}
+		return 1.0f - distance / 500.0f;
+	}
+	return 0.0f;
+}
+
+float Creature::HowNearIsSea(CreaturePlan& plan)
+{
+	MapCoords sea;
+	sea.Clear();
+	if (mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, Pos, &sea, PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1))
+	{
+		float distance = GUtils::GetDistanceInMetres(Pos, sea);
+		if (distance >= 300.0f)
+		{
+			distance = 300.0f;
+		}
+		return (1.0f - distance / 300.0f) * 1.5f - 1.0f;
+	}
+	return -1.0f;
+}
+
+float Creature::HowMuchEnergy(CreaturePlan& plan)
+{
+	return physical->Energy - 1.0f;
+}
+
+float Creature::HowDamagedIsObject(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		return 1.0f - plan.ObjectToActOn->GetPointer()->GetLife();
+	}
+	return 0.0f;
+}
+
+float Creature::HowImpressedIsObject(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		Town* town = plan.ObjectToActOn->GetPointer()->GetTown();
+		if (town != NULL)
+		{
+			float belief = town->GetBeliefInPlayer(GetPlayer());
+			return belief < 0.0f ? 0.0f : (belief > 1.0f ? 1.0f : belief);
+		}
+	}
+	return 0.0f;
+}
+
+float Creature::HowMuchDangerNearMe(CreaturePlan& plan)
+{
+	return 0.0f;
+}
+
+float Creature::HowAbusiveIsPlayer(CreaturePlan& plan)
+{
+	return -mind->AttitudeToPlayer.Attitude;
+}
+
+float Creature::HowNeglectfulIsPlayer(CreaturePlan& plan)
+{
+	float neglect =
+		(float)(mind->AttitudeToPlayer.field_0xc / GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(NeglectedTime));
+	return neglect < 0.0f ? 0.0f : (neglect > 1.0f ? 1.0f : neglect);
+}
+
+float Creature::HowMuchDangerNearObject(CreaturePlan& plan)
+{
+	return 0.0f;
+}
+
+float Creature::HowNearIsCamera(CreaturePlan& plan)
+{
+	if (GetPlayer() != NULL)
+	{
+		LHPoint   cameraPos = GetNearestCameraInterfaceStatus()->GetCameraPos();
+		MapCoords camera(cameraPos.x, cameraPos.z);
+		float     distance = GUtils::GetDistanceInMetres(Pos, camera);
+		if (distance >= 250.0f)
+		{
+			distance = 250.0f;
+		}
+		return 1.0f - distance * InverseHomeRange;
+	}
+	return 0.0f;
+}
+
+float Creature::HowMuchFriendNeedsToKnowFireball(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		Creature* friendCreature = dynamic_cast<Creature*>(plan.ObjectToActOn->GetPointer());
+		if (friendCreature != NULL)
+		{
+			float skill = friendCreature->mind->learning.GetSkillAtAction(CREATURE_CAST_FIREBALL);
+			return skill < 0.0f ? 0.0f : (skill > 1.0f ? 1.0f : skill);
+		}
+	}
+	return 0.0f;
+}
+
+float Creature::HowMuchFriendNeedsToKnowLightning(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		Creature* friendCreature = dynamic_cast<Creature*>(plan.ObjectToActOn->GetPointer());
+		if (friendCreature != NULL)
+		{
+			float skill = friendCreature->mind->learning.GetSkillAtAction(CREATURE_CAST_LIGHTNING_BOLT);
+			return skill < 0.0f ? 0.0f : (skill > 1.0f ? 1.0f : skill);
+		}
+	}
+	return 0.0f;
+}
+
+float Creature::HowMuchFriendNeedsToKnowMagicFood(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		Creature* friendCreature = dynamic_cast<Creature*>(plan.ObjectToActOn->GetPointer());
+		if (friendCreature != NULL)
+		{
+			float skill = friendCreature->mind->learning.GetSkillAtAction(CREATURE_CAST_MAGIC_FOOD);
+			return skill < 0.0f ? 0.0f : (skill > 1.0f ? 1.0f : skill);
+		}
+	}
+	return 0.0f;
+}
+
+float Creature::HowMuchFriendNeedsToKnowMagicWood(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		Creature* friendCreature = dynamic_cast<Creature*>(plan.ObjectToActOn->GetPointer());
+		if (friendCreature != NULL)
+		{
+			float skill = friendCreature->mind->learning.GetSkillAtAction(CREATURE_CAST_MAGIC_WOOD);
+			return skill < 0.0f ? 0.0f : (skill > 1.0f ? 1.0f : skill);
+		}
+	}
+	return 0.0f;
+}
+
+float Creature::HowHungryIsFriend(CreaturePlan& plan)
+{
+	if (plan.ObjectToActOn != NULL)
+	{
+		Creature* friendCreature = dynamic_cast<Creature*>(plan.ObjectToActOn->GetPointer());
+		if (friendCreature != NULL)
+		{
+			float hunger = friendCreature->mind->desires.field_0x148[CREATURE_DESIRE_HUNGER];
+			return hunger < 0.0f ? 0.0f : (hunger > 1.0f ? 1.0f : hunger);
+		}
+	}
+	return 0.0f;
+}
+
+float Creature::HowInterestingIsPlayer(CreaturePlan& plan)
+{
+	return mind->AttitudeToPlayer.field_0x28;
+}
