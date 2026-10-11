@@ -2001,7 +2001,7 @@ void Living::DrawScaleWithPlayerColor(float scale)
 
 bool Villager::DrawVillagerInfo()
 {
-	if (!(status & LIVING_STATUS_SHOW_INFO) && !(GGame::g_game->GameFlags & GAME_FLAG_UNKNOWN_0x200000))
+	if (!(status & LIVING_STATUS_SHOW_INFO) && !(GGame::g_game->GameFlags & GAME_FLAG_SHOW_VILLAGER_INFO))
 	{
 		return false;
 	}

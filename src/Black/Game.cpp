@@ -1305,7 +1305,7 @@ void GGame::ClearMap()
 {
 	LHResetFPU();
 	g_game->GameFlags |= GAME_FLAG_CLEARING_MAP;
-	GameFlags &= ~(GAME_FLAG_UNKNOWN_0x20000 | GAME_FLAG_UNKNOWN_0x200000);
+	GameFlags &= ~(GAME_FLAG_UNKNOWN_0x20000 | GAME_FLAG_SHOW_VILLAGER_INFO);
 	field_0x205a10 = 0;
 	field_0x205a14 = 0;
 	SuperVillager* superVillager = SuperVillager::g_first;
@@ -1675,7 +1675,7 @@ bool32_t GGame::LocalTimerSaysDoATurn()
 	int elapsed =
 		(int)((float)(GetTickCount() - timer.TickCount) * timer.SpeedUpFactor + (float)(uint32_t)timer.ElapsedTime);
 	int gameTime = (int)(g_game->data.GameTurn * 100);
-	if (g_game->GameFlags & GAME_FLAG_UNKNOWN_0x400000)
+	if (g_game->GameFlags & GAME_FLAG_FORCE_GAME_TURN)
 	{
 		return true;
 	}
