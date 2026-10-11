@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stddef.h> /* For wchar_t */
 #include <stdint.h> /* For uint32_t */
+#include <string.h> /* For memset */
 
 #include <re_common.h> /* For bool32_t */
 
@@ -36,6 +37,9 @@ struct LHMPServerStartInfo
 	unsigned long          GameTurn;                                             /* 0x38 */
 	wchar_t                PlayerNames[LH_MAX_GAME_PLAYERS][LH_MAX_NAME_LENGTH]; /* 0x3c */
 	LH_USER_ID             PlayerIDs[LH_MAX_GAME_PLAYERS];                       /* 0xc3c */
+
+	// BW1W120 inlined BW1M119 inlined
+	LHMPServerStartInfo() { memset(this, 0, sizeof(*this)); }
 };
 static_assert(sizeof(LHMPServerStartInfo) == 0xcbc, "Data type is of wrong size");
 
