@@ -591,7 +591,7 @@ LH_RETURN LHConnectionServer::ConnectToConnection(LHConnection* connection)
 {
 	if (!connection->Open)
 		return LH_ERROR;
-	if (connection->Mode != Mode)
+	if (connection->GetMode() != Mode)
 		return LH_ERROR;
 	if (Players.count > 0 && Mode == LH_OPERATING_MODE_SYNCHRONOUS)
 		return LH_ERROR;
