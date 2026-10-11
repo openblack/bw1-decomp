@@ -39,6 +39,13 @@ public:
 	virtual void StartGame();
 	// BW1W120 00440ac0 BW1M119 0118a3e0
 	virtual bool Connect();
+	// BW1W120 00441390 BW1M119 01189840
+	virtual void Disconnect();
+
+	// Non-virtual methods
+
+	// BW1W120 00440c20 BW1M119 011898e0
+	void Think();
 };
 
 #endif /* BW1_DECOMP_BW_LAN_INCLUDED_H */

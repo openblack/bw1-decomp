@@ -8,3 +8,13 @@ bool BWLan::InitialiseLobbyState()
 }
 
 void BWLan::StartGame() {}
+
+void BWLan::Process()
+{
+	Think();
+}
+
+void BWLan::LeaveMainRoom()
+{
+	Disconnect();
+}
