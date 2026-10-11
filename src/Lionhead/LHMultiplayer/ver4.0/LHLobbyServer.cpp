@@ -329,22 +329,22 @@ LH_RETURN LHLobbyServer::ProcessBroadcastLobbyAddress(LHNetEvent* event)
 	if (event->VDecode(LH_NETEVENT_TYPE_BROADCAST_LOBBY_ADDRESS, &info) != LH_OK)
 		return LH_FAIL;
 
-	if (info.ConnectionAcceptor.Compare(GetConnectionAcceptorInfo()) != 0)
+	if (info.ConnectionAcceptor.Compare(GetConnectionAcceptorInfo()) == 0)
+		return LH_OK;
+
+	LHLocalLobbyInfo* newLobby;
+	LHLocalLobbyInfo* lobby = FindLocalLobby(&info.ConnectionAcceptor);
+	if (lobby == NULL)
 	{
-		LHLocalLobbyInfo* newLobby;
-		LHLocalLobbyInfo* lobby = FindLocalLobby(&info.ConnectionAcceptor);
+		newLobby = new LHLocalLobbyInfo(&info);
+		LocalLobbyList.Add(newLobby);
+		lobbyEvent = LH_LOBBYSERVER_EVENT_ADDED;
+	}
+	if (lobby == NULL || lobby->UpdateLocalLobbyInfoDetails(&info))
+	{
 		if (lobby == NULL)
-		{
-			newLobby = new LHLocalLobbyInfo(&info);
-			LocalLobbyList.Add(newLobby);
-			lobbyEvent = LH_LOBBYSERVER_EVENT_ADDED;
-		}
-		if (lobby == NULL || lobby->UpdateLocalLobbyInfoDetails(&info))
-		{
-			if (lobby == NULL)
-				lobby = newLobby;
-			SendInternalLocalLobbyMessage(lobby, lobbyEvent);
-		}
+			lobby = newLobby;
+		SendInternalLocalLobbyMessage(lobby, lobbyEvent);
 	}
 	return LH_OK;
 }
