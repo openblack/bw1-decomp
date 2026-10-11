@@ -2179,6 +2179,13 @@ DECLARE_MODIFIER(SetInitialRandomOrientations, 2418)
 
 void RegisterPersistent::RegisterModifiers()
 {
+#if defined(VERSION_BW1W100)
+	// TODO: fakematch. This unused local only shifts a c2 register tie-break in this function
+	// (edi holding 0 vs. an RTTI descriptor around UR_ChangeScaleXYZ/UR_ChangeStretchHeight).
+	// It became necessary once PSysBase::GetDebugText and UR_PlasmaInf::GetDebugText were made
+	// header-inline; tools/tiebreak-probe.py --dummies matches with 1 or 4 dummies only.
+	int tieBreakPadding;
+#endif
 	REGISTER_MODIFIER(AR_FadeAlpha);
 	REGISTER_MODIFIER(AR_FadeCollectionAlpha);
 	REGISTER_MODIFIER(AR_FadeOutOnceConditionTrue);
