@@ -5,3 +5,8 @@ uint32_t MagicTree::GetSaveType()
 {
 	return GAME_THING_TYPE_MAGIC_TREE;
 }
+
+IMPRESSIVE_TYPE MagicTree::GetImpressiveType()
+{
+	return IMPRESSIVE_TYPE_MAGIC_TREE;
+}

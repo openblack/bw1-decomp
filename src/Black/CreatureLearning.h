@@ -50,6 +50,11 @@ public:
 
 	// BW1W120 004e0290 BW1M119 01268fd0
 	CreatureLearning(Creature* creature);
+
+	// Non-virtual methods
+
+	// BW1W120 004e22e0 BW1M119 0126a740
+	float GetSkillAtAction(CREATURE_ACTION action);
 };
 
 class CreatureLearningEpisode : public Base

@@ -24,10 +24,10 @@ public:
 	CreatureBelief*  ObjectToActOn;  /* 0x10 */
 	CreatureBelief*  ObjectToUse;    /* 0x14 */
 	CREATURE_ACTION  creature_action;
-	float            field_0x1c;
+	float            ActivityPriority;
 	float            field_0x20;
 	float            field_0x24;
-	float            field_0x28;
+	float            ActionPriority;
 	float            field_0x2c;
 
 	// Override methods
@@ -37,12 +37,16 @@ public:
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 0127c3b0
+	CreaturePlan() { SetToZero(); }
 	// BW1W120 004f1230 BW1M119 0127c760
 	CreaturePlan(CREATURE_DESIRES param_1, CREATURE_ACTION param_2, CreatureBelief* param_3, CreatureBelief* param_4,
 	             CreatureBelief* param_5, float param_6);
 
 	// Non-virtual methods
 
+	// BW1W120 004f12b0 BW1M119 inlined
+	void SetToZero();
 	// BW1W120 004f12e0 BW1M119 0127c4e0
 	bool32_t IsValid();
 };

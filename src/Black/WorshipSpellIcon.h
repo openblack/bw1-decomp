@@ -39,7 +39,7 @@ public:
 	uint32_t          field_0x12c;
 	uint32_t          field_0x130;
 	float             Charge;
-	uint32_t          field_0x138;
+	uint32_t          TurnChargingStarted;
 	int16_t           slot;
 
 	// Override methods

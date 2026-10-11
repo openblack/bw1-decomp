@@ -30,3 +30,19 @@ MultiMapFixed* BuildingSite::GetRootBuilding()
 {
 	return RootBuilding;
 }
+
+uint32_t BuildingSite::GetSaveType()
+{
+	return GAME_THING_TYPE_UNUSED_000;
+}
+
+void BuildingSite::Init() {}
+
+Town* BuildingSite::GetTown()
+{
+	if (RootBuilding != NULL)
+	{
+		return RootBuilding->GetTown();
+	}
+	return NULL;
+}

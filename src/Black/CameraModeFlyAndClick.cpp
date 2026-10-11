@@ -61,7 +61,7 @@ CameraModeFlyAndClick::CameraModeFlyAndClick(GCamera* camera, FLY_AND_CLICK_TYPE
 	{
 	case FLY_AND_CLICK_TYPE_CAMERA:
 		Distance = CameraDistanceScale * DefaultDistance;
-		Focus = this->camera->pos;
+		Focus.Set(this->camera->pos);
 		break;
 	case FLY_AND_CLICK_TYPE_ISLAND:
 		Distance = DefaultDistance;

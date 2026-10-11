@@ -27,7 +27,7 @@ class CreatureDesires : public Base
 public:
 	uint32_t                            field_0x8[NUM_CREATURE_DESIRES];
 	float                               field_0xa8[NUM_CREATURE_DESIRES];
-	float                               field_0x148[NUM_CREATURE_DESIRES];
+	float                               Levels[NUM_CREATURE_DESIRES];
 	float                               IncreaseTime[NUM_CREATURE_DESIRES]; /* 0x1e8 */
 	uint32_t                            field_0x288[NUM_CREATURE_DESIRES];
 	LHLinkedList<CreatureDesireSource*> SourceLists[NUM_CREATURE_DESIRES]; /* 0x328 */
@@ -113,7 +113,7 @@ public:
 	// BW1W120 inlined BW1M119 0125d040
 	bool32_t IsSuppressed(unsigned long desire);
 	// BW1W120 inlined BW1M119 01235700
-	float GetDesire(unsigned long desire) { return field_0x148[desire]; }
+	float GetDesire(unsigned long desire) { return Levels[desire]; }
 	// BW1W120 004de270 BW1M119 012618c0
 	void InitialiseSources();
 	// BW1W120 004de370 BW1M119 012617a0
@@ -141,7 +141,7 @@ public:
 class CreatureDesireActionEntry : public GBaseInfo
 {
 public:
-	uint32_t field_0x10[0x1e];
+	uint32_t Actions[0x1e];
 
 	// Override methods
 
@@ -170,7 +170,7 @@ public:
 	}
 
 	// TODO(#377): The original declared this class in CreatureAction.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(Actions, Actions)
 	INFO_ROOT_LOADERS("CreatureAction.h", 62)
 };
 static_assert(sizeof(CreatureDesireActionEntry) == 0x88, "Data type is of wrong size");
@@ -208,8 +208,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004db350 BW1M119 0125da10
-	virtual ~CreatureDesireDependency() {}
 	// BW1W120 004db2e0 BW1M119 01260880
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 
@@ -232,8 +230,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004db420 BW1M119 0125f0c0
-	virtual ~CreatureDesireForType() {}
 	// BW1W120 004db3c0 BW1M119 012607c0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 

@@ -96,7 +96,7 @@ public:
 	GameThing*               field_0x94;
 	GameThing*               field_0x98;
 	uint32_t                 field_0x9c;
-	uint32_t                 field_0xa0;
+	uint32_t                 SpecularColor;
 	int                      field_0xa4;
 	uint32_t                 field_0xa8;
 	GameThing*               field_0xac;
@@ -142,7 +142,7 @@ public:
 	// BW1W120 004680b0 BW1M119 011c5260
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00464b20 BW1M119 inlined
-	virtual void SetSpecularColor(unsigned long param_1);
+	virtual void SetSpecularColor(unsigned long color);
 	// BW1W120 00464b30 BW1M119 01019f70
 	virtual LH3DColor GetSpecularColor();
 	// BW1W120 00468c30 BW1M119 011c4330

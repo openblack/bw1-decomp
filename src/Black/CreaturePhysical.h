@@ -29,7 +29,7 @@ public:
 class CreaturePhysical : public Base
 {
 public:
-	uint32_t          field_0x8;
+	uint32_t          Age;
 	float             strength;
 	uint32_t          field_0x10;
 	float             field_0x14;
@@ -44,8 +44,8 @@ public:
 	float             Exhaustion;
 	uint32_t          field_0x34;
 	uint32_t          field_0x38;
-	float             field_0x3c;
-	uint32_t          field_0x40;
+	float             DefaultSpeedInMetres;
+	float             RunningSpeedInMetres;
 	uint32_t          field_0x44;
 	float             field_0x48;
 	uint32_t          field_0x4c;

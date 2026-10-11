@@ -10,6 +10,8 @@
 #include "Game.h"                      /* For struct GGame */
 #include "Rand.h"                      /* For struct GRand */
 
+#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalDesire.cpp"
+
 // CreatureDevelopmentDurationEntry/PhaseEntry are declared in CreatureDevelopment.h, but
 // their GetBaseInfo addresses fall in this TU's split range, not CreatureDevelopment.cpp's.
 static CreatureDevelopmentDurationEntry g_CreatureDevelopmentDurationEntry[17];        // fabricated name
@@ -59,11 +61,11 @@ void CreatureDesires::Initialise(Creature* creature, const CreatureInfo* info)
 	{
 		field_0x8[i] = (GGame::g_game->GameFlags & GAME_FLAG_ACTIVATE_CREATURE_DESIRES) ? 1 : 0;
 		field_0xa8[i] = 0.0f;
-		field_0x148[i] = 0;
+		Levels[i] = 0;
 
 		float minValue = CreatureInitialDesireInfo::g_CreatureInitialDesireInfos[i].InitialValueMin;
 		float maxValue = CreatureInitialDesireInfo::g_CreatureInitialDesireInfos[i].InitialValueMax;
-		field_0x288[i] = minValue + GRand::GameFloatRand(maxValue - minValue, __FILE__, __LINE__);
+		field_0x288[i] = minValue + GRand::GameFloatRand(maxValue - minValue, FILEPATH, 100);
 
 		IncreaseTime[i] = g_CreatureDesireForType[i].ByCreatureType[info->CreatureType];
 
@@ -89,10 +91,10 @@ uint32_t CreatureDesires::FindWeakestDesire()
 	float    weakestValue = 2.0f;
 	for (uint32_t i = 0; i < NUM_CREATURE_DESIRES; i++)
 	{
-		if (IsActivated((CREATURE_DESIRES)i) && field_0x148[i] < weakestValue)
+		if (IsActivated((CREATURE_DESIRES)i) && Levels[i] < weakestValue)
 		{
 			weakest = i;
-			weakestValue = field_0x148[i];
+			weakestValue = Levels[i];
 		}
 	}
 	return weakest;

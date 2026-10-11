@@ -23,6 +23,11 @@ void ScriptDLL::AutoStart()
 	AutoStart(transport);
 }
 
+void ScriptDLL::StopAllTasks()
+{
+	StopAllTasks_ptr(transport);
+}
+
 int ScriptDLL::LoadBinary(const char* path)
 {
 	return LoadBinary(transport, path);

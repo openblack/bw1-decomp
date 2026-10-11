@@ -23,6 +23,8 @@
 #include "Utils.h"
 #include "Rand.h"
 
+#define FILEPATH "C:\\dev\\MP\\Black\\Villager.cpp"
+
 // 84 entries (12 tribe slots x VILLAGER_NUMBER_LAST), filled by GVillagerInfo::GetInfoFromText.
 GVillagerInfo GVillagerInfo::InfoList[84];
 
@@ -107,7 +109,7 @@ bool Villager::UnemployedJobs()
 }
 
 // BW1W120 0074ff60 BW1M119 015793e0
-bool Villager::SetupJobLocation()
+bool32_t Villager::SetupJobLocation()
 {
 	return false;
 }
@@ -274,16 +276,16 @@ void Villager::SetSpeed(int base_speed, int scale_speed)
 		factor = ((int)(ObjectCreationIndex * 47) % 31 - 16) * 0.01f + 1.0f;
 		if (GetAge() < ((const GVillagerInfo*)info)->TeenAge)
 		{
-			float slowDown = (((const GVillagerInfo*)info)->TeenAge - GetAge()) * 0.2f * 0.1f;
+			float slowDown = (GetInfo()->TeenAge - GetAge()) * 0.2f * 0.1f;
 			if (slowDown >= 0.4f)
 			{
 				slowDown = 0.4f;
 			}
 			factor = factor - slowDown;
 		}
-		else if (GetAge() > ((const GVillagerInfo*)info)->MiddleAge)
+		else if (GetAge() > GetInfo()->MiddleAge)
 		{
-			float slowDown = (GetAge() - ((const GVillagerInfo*)info)->MiddleAge) * 0.2f * 0.1f;
+			float slowDown = (GetAge() - GetInfo()->MiddleAge) * 0.2f * 0.1f;
 			if (slowDown >= 0.4f)
 			{
 				slowDown = 0.4f;
@@ -524,7 +526,7 @@ bool32_t Villager::DiscipleDecideWhatToDo()
 }
 
 // BW1W120 00751970 BW1M119 01576cf0
-bool Villager::GetPrayerSite()
+bool32_t Villager::GetPrayerSite()
 {
 	return false;
 }
@@ -570,7 +572,7 @@ GJobInfo* Villager::GetJobInfo(unsigned char job) const
 }
 
 // BW1W120 00751d40
-bool Villager::FUN00751d40()
+bool32_t Villager::FUN00751d40()
 {
 	return false;
 }
@@ -638,10 +640,7 @@ Football* Villager::GetFootball()
 // BW1W120 00751ee0 BW1M119 01575c10
 GTribeInfo* Villager::GetTribe()
 {
-	// TODO: target evaluates info->TribeType through ecx before loading g_game; ours keeps
-	// info in eax and loads g_game earlier
-	TRIBE_TYPE tribeType = ((const GVillagerInfo*)info)->TribeType;
-	return GGame::g_game->GetTribe(tribeType);
+	return GGame::g_game->GetTribe(GetInfo()->TribeType);
 }
 
 // BW1W120 00751f00 BW1M119 01066b20
@@ -1010,10 +1009,10 @@ uint32_t Villager::SetupNothingToDo()
 {
 	Town*  town = GetTown();
 	Abode* abode = GetAbode();
-	switch (GRand::GameRand(9, __FILE__, __LINE__))
+	switch (GRand::GameRand(9, FILEPATH, 2886))
 	{
 	case 0:
-		if ((abode != NULL && abode->IsFunctional()) || GRand::GameRand(100, __FILE__, __LINE__) < 10u)
+		if ((abode != NULL && abode->IsFunctional()) || GRand::GameRand(100, FILEPATH, 2891) < 10u)
 		{
 			SetTopState(VILLAGER_STATE_GO_HOME);
 			return true;
@@ -1055,9 +1054,8 @@ uint32_t Villager::GetChillOutPos(MapCoords& coords)
 		MapCoords congregationPos = town->GetCongregationPos();
 		float     radius = ((const GTownInfo*)town->info.Get())->field_0x140 * 0.1f;
 		float     angle = GUtils::Get3DAngleFromXZ(congregationPos, Pos);
-		float     jitter = GRand::GameFloatRand(0.7853982f, __FILE__, __LINE__) - 0.39269909f;
-		MapCoords offset =
-			GUtils::GetPosFromAngle(jitter + angle, GRand::GameFloatRand(radius * 9.0f, __FILE__, __LINE__));
+		float     jitter = GRand::GameFloatRand(0.7853982f, FILEPATH, 2940) - 0.39269909f;
+		MapCoords offset = GUtils::GetPosFromAngle(jitter + angle, GRand::GameFloatRand(radius * 9.0f, FILEPATH, 2941));
 		coords = congregationPos + offset;
 		return 1;
 	}
@@ -1693,3 +1691,5 @@ uint32_t MissionaryControl::GetSaveType()
 {
 	return GAME_THING_TYPE_MISSIONARY_CONTROL;
 }
+
+void Villager::WallhugValidate() {}

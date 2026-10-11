@@ -26,6 +26,8 @@
 #include "Utils.h"
 #include "Villager.h"
 
+#define FILEPATH "C:\\dev\\MP\\Black\\VillagerStates.cpp"
+
 GVillagerStateTableInfo GVillagerStateTableInfo::Infos[VILLAGER_STATE_LAST_STATE];
 
 // BW1W120 00769580 BW1M119 015a35b0
@@ -521,13 +523,12 @@ bool32_t Villager::Drowning()
 }
 
 // BW1W120 0076a7e0 BW1M119 015a1430
-// TODO: the max() macro double-evaluates both arms, baking GameRand __FILE__/__LINE__ into
-// several calls — cannot match in a split TU
+// TODO: the max() macro double-evaluates both arms; register allocation differs
 bool32_t Villager::MakeScaredStiff()
 {
-	TurnsUntilNextStateChange = (int16_t)max(
-		(float)(uint32_t)GRand::GameRand(((const GVillagerInfo*)info)->ScaredStiffTime, __FILE__, __LINE__),
-		GRand::GameFloatRand(5.0f, __FILE__, __LINE__) + 10.0f);
+	TurnsUntilNextStateChange =
+		(int16_t)max((float)(uint32_t)GRand::GameRand(GetInfo()->ScaredStiffTime, FILEPATH, 604),
+	                 GRand::GameFloatRand(5.0f, FILEPATH, 604) + 10.0f);
 	SetTopState(VILLAGER_STATE_SCARED_STIFF);
 	ScaredStiff();
 	return true;
@@ -619,8 +620,7 @@ bool32_t Villager::EnterSex(unsigned char param_1, unsigned char param_2)
 // BW1W120 0076acf0 BW1M119 015a0b50
 // TODO: needs GUtils::AddDistanceFromAngle declared (its target symbol is thiscall but the
 // body is cdecl) and the JustWholeMapXZ class/struct keyword reconciled with the MapCoords
-// ctor; GameRand __FILE__/__LINE__ cannot match in a split TU (same blockers as
-// SetupNewScriptWander in VillagerScript.cpp)
+// ctor (same blockers as SetupNewScriptWander in VillagerScript.cpp)
 bool32_t Villager::SetupWander(JustWholeMapXZ& wander_area, VILLAGER_STATES state)
 {
 	return false;
@@ -730,19 +730,17 @@ bool32_t Villager::GotoCongregateInTownAfterEmergency()
 }
 
 // BW1W120 0076b300 BW1M119 015a0190
-// TODO: GameRand's __FILE__/__LINE__ default args can't match the original line numbers
-// in a split TU (costs the file-string + line-number arg pushes per call). Rest matches.
 bool32_t Villager::CongregateInTownAfterEmergency()
 {
 	if (GetTown() != NULL && GetTown()->IsInStateOfEmergency())
 	{
-		int state = GRand::GameRand(12, __FILE__, __LINE__) ? VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY
-		                                                    : VILLAGER_STATE_GO_HOME;
+		int state = GRand::GameRand(12, FILEPATH, 944) ? VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY
+		                                               : VILLAGER_STATE_GO_HOME;
 		PlayAnimThenSetState(state, 1);
 		return true;
 	}
-	int state = GRand::GameRand(5, __FILE__, __LINE__) ? VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY
-	                                                   : VILLAGER_STATE_DECIDE_WHAT_TO_DO;
+	int state = GRand::GameRand(5, FILEPATH, 940) ? VILLAGER_STATE_GOTO_CONGREGATE_IN_TOWN_AFTER_EMERGENCY
+	                                              : VILLAGER_STATE_DECIDE_WHAT_TO_DO;
 	PlayAnimThenSetState(state, 1);
 	return true;
 }
@@ -779,7 +777,7 @@ bool32_t Villager::SitAndChillout()
 	{
 		return true;
 	}
-	if (GRand::GameRand(10, __FILE__, __LINE__) == 0)
+	if (GRand::GameRand(10, FILEPATH, 1023) == 0)
 	{
 		SetupNothingToDo();
 		return true;

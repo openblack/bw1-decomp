@@ -670,7 +670,7 @@ bool32_t FieldCrop::CanBecomeAPhysicsObject()
 
 uint32_t FieldCrop::GetPhysicsConstantsType()
 {
-	return PHYSICS_CONSTANTS_TYPE_CROP;
+	return PHYSICS_CONSTANTS_TYPE_TREE;
 }
 
 void FieldCrop::SetUpPhysOb(PhysOb* phys_ob)

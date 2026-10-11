@@ -25,7 +25,7 @@ void CitadelHeart::SetToZero()
 	field_0x8c = 0;
 	field_0x98 = 0;
 	field_0x94 = 0;
-	field_0xa0 = 0;
+	SpecularColor = 0;
 	field_0xa4 = -1;
 	field_0xdc = 0;
 	field_0xac = 0;
@@ -53,7 +53,7 @@ uint32_t CitadelHeart::Load(GameOSFile& file)
 	file.ReadIt(field_0x8c);
 	file.ReadPtr(&field_0x94);
 	file.ReadPtr(&field_0x98);
-	file.ReadIt(field_0xa0);
+	file.ReadIt(SpecularColor);
 	file.ReadIt(field_0xa4);
 	file.ReadIt(field_0xb8);
 	file.ReadIt(field_0xbc);
@@ -142,4 +142,31 @@ LH3DObject::ObjectType CitadelHeart::Get3DType()
 SCRIPT_OBJECT_TYPE CitadelHeart::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_CITADEL;
+}
+
+ABODE_TYPE CitadelHeart::GetAbodeType()
+{
+	return ABODE_TYPE_CITADEL;
+}
+
+bool32_t CitadelHeart::IsCitadelHeart()
+{
+	return true;
+}
+
+void CitadelHeart::Draw() {}
+
+bool CitadelHeart::ChecksVerticesVObjects()
+{
+	return false;
+}
+
+uint32_t CitadelHeart::GetPhysicsConstantsType()
+{
+	return 0;
+}
+
+void CitadelHeart::SetSpecularColor(unsigned long color)
+{
+	SpecularColor = color;
 }

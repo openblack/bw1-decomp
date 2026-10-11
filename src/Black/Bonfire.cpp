@@ -14,3 +14,22 @@ bool Bonfire::InteractsWithPhysicsObjects()
 {
 	return false;
 }
+
+uint32_t Bonfire::InterfaceValidToTap(GInterfaceStatus* param_1)
+{
+	return 0;
+}
+
+bool32_t Bonfire::ValidForPlaceInHand(GInterfaceStatus* param_1)
+{
+	return false;
+}
+
+void Bonfire::SetToZero() {}
+
+void Bonfire::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2) {}
+
+void Bonfire::PhysicsEditorCreate(int param_1)
+{
+	Pos.altitude = 0.0f;
+}

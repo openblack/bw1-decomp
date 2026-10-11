@@ -21,8 +21,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004db5c0 BW1M119 012601f0
-	virtual ~CreatureDevelopmentDurationEntry() {}
 	// BW1W120 004db560 BW1M119 01260700
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
@@ -49,8 +47,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004db4f0 BW1M119 01260390
-	virtual ~CreatureDevelopmentPhaseEntry() {}
 	// BW1W120 004db480 BW1M119 01260640
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 

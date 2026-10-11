@@ -36,7 +36,7 @@ public:
 		TChargingData();
 	};
 
-	uint32_t      field_0x8c;
+	uint32_t      SpecularColor;
 	TChargingData ChargingData;
 	WorshipSite*  site;
 
@@ -67,7 +67,7 @@ public:
 	// BW1W120 007807e0 BW1M119 015be5f0
 	virtual bool32_t IsSacrificeAltar();
 	// BW1W120 007807b0 BW1M119 inlined
-	virtual void SetSpecularColor(unsigned long param_1);
+	virtual void SetSpecularColor(unsigned long color);
 	// BW1W120 007807c0 BW1M119 015be560
 	virtual LH3DColor GetSpecularColor();
 	// BW1W120 00780a70 BW1M119 015bf2c0

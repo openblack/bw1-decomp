@@ -23,3 +23,28 @@ uint32_t Citadel::GetSaveType()
 {
 	return GAME_THING_TYPE_CITADEL;
 }
+
+uint32_t Citadel::GetCreatureBeliefType()
+{
+	return CREATURE_BELIEF_TYPE_CITADEL;
+}
+
+uint32_t Citadel::GetCreatureBeliefListType()
+{
+	return 0;
+}
+
+uint32_t Citadel::GetOrigin()
+{
+	return OBJECT_ORIGIN_MAGIC;
+}
+
+bool32_t Citadel::IsSuitableForCreatureActivity()
+{
+	return true;
+}
+
+bool32_t Citadel::IsCitadel()
+{
+	return true;
+}

@@ -101,6 +101,24 @@ public:
 	CreatureBelief* GetBeliefAboutObject(GameThingWithPos* object);
 	// BW1W120 004d7bd0 BW1M119 01258250
 	CreatureBelief* AddBeliefAboutObject(Creature* creature, GameThingWithPos* object);
+	// BW1W120 004c45c0 BW1M119 012355d0
+	float CalculateDesirabilityOfProposedActivity(CREATURE_DESIRES desire, GameThingWithPos* activity_object);
+	// BW1W120 004c4640 BW1M119 null
+	float FUN004c4640(CREATURE_DESIRES desire, GameThingWithPos* activity_object, CREATURE_ACTION action,
+	                  GameThingWithPos* object_to_act_on, GameThingWithPos* object_to_use);
+	// BW1W120 004c47d0 BW1M119 null
+	float FUN004c47d0(CREATURE_DESIRES desire, GameThingWithPos* activity_object);
+	// BW1W120 004c4870 BW1M119 null
+	float FUN004c4870(CREATURE_DESIRES desire, GameThingWithPos* activity_object, CREATURE_ACTION action,
+	                  GameThingWithPos* object_to_act_on, GameThingWithPos* object_to_use);
+	// BW1W120 004e9900 BW1M119 01271ea0
+	float GetActivityObjectUsefulness(CreatureBelief* object, CREATURE_DESIRES desire);
+	// BW1W120 004e9bb0 BW1M119 01271b80
+	float GetUsefulnessOfUsingObject(CreatureBelief* object, CREATURE_ACTION action);
+	// BW1W120 004f1ef0 BW1M119 0127aaf0
+	float CalculateDistancePriority(CREATURE_DESIRES desire, CreatureBelief* object);
+	// BW1W120 004e9a70 BW1M119 01271bf0
+	float GetObjectToActOnUsefulness(CreatureBelief* object, CREATURE_DESIRES desire);
 	// BW1W120 004d2800 BW1M119 null
 	void EmpathiseWithPlayer(CREATURE_DESIRES desire);
 	// BW1W120 004c4c80 BW1M119 012364d0

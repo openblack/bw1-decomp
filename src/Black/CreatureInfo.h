@@ -35,7 +35,7 @@ public:
 	uint32_t field_0x2a8;
 	float    field_0x2ac[0x26];
 	uint32_t field_0x344;
-	float    field_0x348[0xf];
+	float    MaxAlignmentChangePerGameTurn[0xf];
 	float    AlignmentChangeScale; /* 0x384 */
 	float    field_0x388[0x3];
 

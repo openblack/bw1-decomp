@@ -11,3 +11,8 @@ bool SpellIcon::InteractsWithPhysicsObjects()
 {
 	return false;
 }
+
+uint32_t SpellIcon::Process()
+{
+	return 1;
+}

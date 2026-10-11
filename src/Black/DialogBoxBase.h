@@ -34,11 +34,11 @@ public:
 	// BW1W120 00513590 BW1M119 012b5480
 	virtual void Destroy();
 	// BW1W120 005127d0 BW1M119 01107290
-	virtual void InitSubDialogs();
+	virtual void InitSubDialogs() {}
 	// BW1W120 005135f0 BW1M119 012b53c0
 	virtual void Show();
 	// BW1W120 005127e0 BW1M119 011072d0
-	virtual void CloseNotification();
+	virtual void CloseNotification() {}
 	// BW1W120 005127f0 BW1M119 010b7fc0
 	virtual bool WantsKeyControl();
 	// BW1W120 00512800 BW1M119 01107310

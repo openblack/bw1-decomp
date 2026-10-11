@@ -616,7 +616,7 @@ public:
 	// BW1W120 0074fec0 BW1M119 01579420
 	bool UnemployedJobs();
 	// BW1W120 0074ff60 BW1M119 015793e0
-	bool SetupJobLocation();
+	bool32_t SetupJobLocation();
 	// BW1W120 00750060 BW1M119 0109c740
 	void FinishedIntoOutOfAnimation();
 	// BW1W120 007501a0 BW1M119 01062720
@@ -684,7 +684,7 @@ public:
 	// BW1W120 00751720 BW1M119 01576d30
 	bool32_t DiscipleDecideWhatToDo();
 	// BW1W120 00751970 BW1M119 01576cf0
-	bool GetPrayerSite();
+	bool32_t GetPrayerSite();
 	// BW1W120 00751980 BW1M119 01576c20
 	bool RestartDance(VILLAGER_STATES state);
 	// BW1W120 00751ab0 BW1M119 015769c0
@@ -692,7 +692,7 @@ public:
 	// BW1W120 00751d20 BW1M119 01576320
 	GJobInfo* GetJobInfo(unsigned char job) const;
 	// BW1W120 00751d40 BW1M119 inlined
-	bool FUN00751d40();
+	bool32_t FUN00751d40();
 	// BW1W120 00751e50 BW1M119 01575d30
 	void PopFromPrevious();
 	// BW1W120 00751ea0 BW1M119 01575cf0
@@ -1042,7 +1042,7 @@ public:
 	// BW1W120 007595e0 BW1M119 0157c7a0
 	uint32_t CheckForScaffoldForBuildingSite(BuildingSite* param_1);
 	// BW1W120 007595f0 BW1M119 0157c760
-	bool32_t IsScaffoldValid();
+	bool IsScaffoldValid();
 	// BW1W120 00759600 BW1M119 0157c710
 	bool32_t ExitBringScaffoldToBuildingSite(unsigned char param_1);
 	// BW1W120 00759610 BW1M119 0157c490

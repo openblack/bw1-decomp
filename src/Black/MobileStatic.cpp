@@ -17,3 +17,8 @@ SCRIPT_OBJECT_TYPE MobileStatic::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_MOBILE_STATIC;
 }
+
+bool MobileStatic::ChecksVerticesVObjects()
+{
+	return true;
+}

@@ -170,7 +170,7 @@ public:
 	uint8_t                               field_0x407;
 	CreatureSubActionAgenda               SubActionAgenda;
 	int                                   field_0x1058;
-	uint32_t                              field_0x105c;
+	uint32_t                              ActionForced;
 	uint32_t                              field_0x1060;
 	uint32_t                              field_0x1064;
 	uint32_t                              field_0x1068;
@@ -185,7 +185,7 @@ public:
 	uint32_t                              field_0x108c;
 	uint32_t                              field_0x1090;
 	uint32_t                              field_0x1094;
-	uint32_t                              field_0x1098;
+	int                                   ActionPriorityUpdateIndex;
 	LH3DSmoke*                            smoke;
 	GArena*                               arena;
 	uint32_t                              field_0x10a4;
@@ -247,7 +247,7 @@ public:
 	MapCoords                             HomePos;
 	uint32_t                              field_0x120c;
 	uint32_t                              field_0x1210;
-	MapCoords                             field_0x1214;
+	MapCoords                             DestPos;
 	LHLinkedList<LHPoint*>                DebugPath;
 	uint8_t                               field_0x1228[0x40];
 	int                                   field_0x1268;
@@ -650,6 +650,75 @@ public:
 	LH3DCreature* GetCreature3D();
 	// BW1W120 0047cce0 BW1M119 011d82c0
 	bool32_t IsConfinedToArea();
+	// BW1W120 004c3990 BW1M119 01235120
+	float GetActionPriority(CREATURE_ACTION action, CreaturePlan& plan);
+	// BW1W120 004c39f0 BW1M119 01235090
+	void UpdateActionPriority();
+	// BW1W120 004c3aa0 BW1M119 01235040
+	void ConsiderSamplingWeighting(CREATURE_ACTION action, float weight);
+	// BW1W120 004c3ab0 BW1M119 01234ff0
+	float ConstantActionSource(CreaturePlan& plan);
+	// BW1W120 004c3ac0 BW1M119 01234f00
+	float HowMuchFasterIsObjectThanMe(CreaturePlan& plan);
+	// BW1W120 004c3b30 BW1M119 01234e50
+	float HowInterestingIsObject(CreaturePlan& plan);
+	// BW1W120 004c3b90 BW1M119 01234df0
+	float HowEdibleIsObjectAfterCrush(CreaturePlan& plan);
+	// BW1W120 004c3ba0 BW1M119 01234d40
+	float HowNearIsHome(CreaturePlan& plan);
+	// BW1W120 004c3be0 BW1M119 01234cf0
+	float HowDangerousIsObject(CreaturePlan& plan);
+	// BW1W120 004c3bf0 BW1M119 01234bf0
+	float HowMuchStrongerIsOpponentThanMe(CreaturePlan& plan);
+	// BW1W120 004c3c70 BW1M119 01234ad0
+	float HowMuchMoreLifeHasOpponentThanMe(CreaturePlan& plan);
+	// BW1W120 004c3d00 BW1M119 012349b0
+	float HowManyDangerousSpellsOpponentKnows(CreaturePlan& plan);
+	// BW1W120 004c3d80 BW1M119 012348e0
+	float HowNearIsPlayer(CreaturePlan& plan);
+	// BW1W120 004c3de0 BW1M119 012347f0
+	float HowNearIsSea(CreaturePlan& plan);
+	// BW1W120 004c3e70 BW1M119 01234790
+	float HowMuchEnergy(CreaturePlan& plan);
+	// BW1W120 004c3e90 BW1M119 012346f0
+	float HowDamagedIsObject(CreaturePlan& plan);
+	// BW1W120 004c3ec0 BW1M119 012345f0
+	float HowImpressedIsObject(CreaturePlan& plan);
+	// BW1W120 004c3f30 BW1M119 012345a0
+	float HowMuchDangerNearMe(CreaturePlan& plan);
+	// BW1W120 004c3f40 BW1M119 01234540
+	float HowAbusiveIsPlayer(CreaturePlan& plan);
+	// BW1W120 004c3f60 BW1M119 01234440
+	float HowNeglectfulIsPlayer(CreaturePlan& plan);
+	// BW1W120 004c3ff0 BW1M119 012343e0
+	float HowMuchDangerNearObject(CreaturePlan& plan);
+	// BW1W120 004c4000 BW1M119 01234290
+	float HowNearIsCamera(CreaturePlan& plan);
+	// BW1W120 004c40a0 BW1M119 012341a0
+	float HowMuchFriendNeedsToKnowFireball(CreaturePlan& plan);
+	// BW1W120 004c4120 BW1M119 012340b0
+	float HowMuchFriendNeedsToKnowLightning(CreaturePlan& plan);
+	// BW1W120 004c41a0 BW1M119 01233fc0
+	float HowMuchFriendNeedsToKnowMagicFood(CreaturePlan& plan);
+	// BW1W120 004c4220 BW1M119 01233ed0
+	float HowMuchFriendNeedsToKnowMagicWood(CreaturePlan& plan);
+	// BW1W120 004c42a0 BW1M119 01233e00
+	float HowHungryIsFriend(CreaturePlan& plan);
+	// BW1W120 004c4310 BW1M119 01233da0
+	float HowInterestingIsPlayer(CreaturePlan& plan);
+	// BW1W120 004c43a0 BW1M119 01235aa0
+	bool32_t ForceActivityAndDecideAction(CREATURE_DESIRES desire, CreatureBelief* activity_object);
+	// BW1W120 004f0a70 BW1M119 0127d450
+	void FindBestActionForPlan(CreaturePlan& plan);
+	// BW1W120 004f0ca0 BW1M119 0127d0d0
+	float GetActionPriorityModificationFromWhenLastDone(CREATURE_ACTION action);
+	// BW1W120 004c4580 BW1M119 01235750
+	void CommandActivityAndAction(CREATURE_DESIRES desire, CreatureBelief* activity_object, CREATURE_ACTION action,
+	                              CreatureBelief* object_to_act_on, CreatureBelief* object_to_use);
+	// BW1W120 004f1560 BW1M119 0127be20
+	void ConstructCurrentPlanFromPlan(CreaturePlan& plan, int param_2);
+	// BW1W120 004f1600 BW1M119 0127bcc0
+	void CopyPlanToPreviousContext(int param_1);
 	// BW1W120 00490950 BW1M119 011ec1c0
 	void SetInCreatureHand(Creature* creature);
 	// BW1W120 00490910 BW1M119 011ec210
@@ -701,10 +770,11 @@ public:
 	// BW1W120 004dfbe0 BW1M119 01264bb0
 	bool32_t FindClearArea(MapCoords* coords, float radius, int param_3);
 	// BW1W120 004c4450 BW1M119 01235990
-	void ForceActivityAndForceAction(CREATURE_DESIRES param_1, CreatureBelief* param_2, CREATURE_ACTION param_3,
-	                                 CreatureBelief* param_4, CreatureBelief* param_5, int param_6, int param_7);
+	void ForceActivityAndForceAction(CREATURE_DESIRES desire, CreatureBelief* activity_object, CREATURE_ACTION action,
+	                                 CreatureBelief* object_to_act_on, CreatureBelief* object_to_use, int param_6,
+	                                 int param_7);
 	// BW1W120 004c44b0 BW1M119 01235820
-	void ForceActivityAndForceAction(CreaturePlan& param_1, int param_2, int param_3);
+	void ForceActivityAndForceAction(CreaturePlan& plan, int param_2, int param_3);
 	// BW1W120 004c84b0 BW1M119 0123b450
 	void SetFaceForMoodFrightened();
 	// BW1W120 004c8500 BW1M119 0123b3a0

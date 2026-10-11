@@ -336,7 +336,7 @@ public:
 	// BW1W120 00402660 BW1M119 011d33d0
 	virtual int GetDetailMesh(int detail) const { return GetMesh(); }
 	// BW1W120 004648b0 BW1M119 010e7860
-	virtual void Draw();
+	virtual void Draw() {}
 	// BW1W120 0051c820 BW1M119 0101d5f0
 	virtual void DrawOutOfMap(bool selectable);
 	// BW1W120 00402670 BW1M119 011d2250
@@ -516,7 +516,7 @@ public:
 	// BW1W120 004196c0 BW1M119 010a8bf0
 	virtual uint32_t InterfaceTap(GInterfaceStatus* status);
 	// BW1W120 00402940 BW1M119 010a2650
-	virtual uint32_t InterfaceValidToGiveObject(GInterfaceStatus* status, Object* param_2);
+	virtual uint32_t InterfaceValidToGiveObject(GInterfaceStatus* status, Object* param_2) { return 0; }
 	// BW1W120 00402950 BW1M119 010a2c30
 	virtual uint32_t InterfaceGiveObject(GInterfaceStatus* status, Object* param_2);
 	// BW1W120 00402960 BW1M119 010a2c90
