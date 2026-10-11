@@ -327,20 +327,21 @@ Black/CarriedObject.cpp:
 
 Black/Citadel.cpp:
 	.text       start:0x00461B60 end:0x004634A0
-	.rdata      start:0x008B7DC0 end:0x008B7E58
-	.data       start:0x009BDE5C end:0x009BDFC0
-	.bss        start:0x00C4D074 end:0x00C4D0A4
+	.rdata      start:0x008B7DC0 end:0x008B8360
+	.data       start:0x009BDE5C end:0x009BDEFC
+	.bss        start:0x00C4D074 end:0x00C4D078
 
 Black/CitadelHeart.cpp:
 	.text       start:0x004634A0 end:0x00468580
-	.rdata      start:0x008B7E58 end:0x008BAAE0
+	.rdata      start:0x008B8360 end:0x008BAAE0
 	.CRT$XCU    start:0x009B61D0 end:0x009B61E8 align:4
-	.data       start:0x009BDFC0 end:0x009BE158
-	.bss        start:0x00C4D0A4 end:0x00C4D224
+	.data       start:0x009BDEFC end:0x009BE124
+	.bss        start:0x00C4D078 end:0x00C4D224
 
 Black/CitadelPart.cpp:
 	.text       start:0x00468580 end:0x00468AF0
 	.rdata      start:0x008BAAE0 end:0x008BB400
+	.data       start:0x009BE124 end:0x009BE158
 	.bss        start:0x00C4D224 end:0x00C4D2CC
 
 Black/citadelpeople.cpp:

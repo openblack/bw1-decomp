@@ -15,6 +15,8 @@ block_relocations:
   - source: 0x009D1148
 # Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate, like SetupColourPicker's.
   - source: 0x00403267
+# CitadelHeart::DrawCreaturePen's sprite colour 0xc18119 is an immediate, not a pointer into g_scriptFunctionTable.
+  - source: 0x00466A04
 # WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
   - source: 0x007DBAD7
   - source: 0x007DBB1D
