@@ -16,6 +16,14 @@
 /* Half a map cell in map coordinates */
 #define MAP_COORDS_HALF_CELL 0x8000
 
+GDanceInfo GDanceInfo::Infos[DANCE_INFO_LAST];
+
+GBaseInfo* GDanceInfo::GetBaseInfo(uint32_t& num_infos)
+{
+	num_infos = DANCE_INFO_LAST;
+	return Infos;
+}
+
 uint32_t Dance::GetSaveType()
 {
 	return GAME_THING_TYPE_DANCE;

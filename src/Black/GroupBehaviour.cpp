@@ -316,7 +316,7 @@ void GroupBehaviour::CalculateDancePosition(const MapCoords& centre, MapCoords* 
 		offset.SetMetersZ(offset.MetersZ() + z);
 		child = parent;
 	}
-	DanceGroup::RotateMapCoordsByAngle(&offset, GetAngle());
+	DanceGroup::RotateMapCoordsByAngle(&offset, dance_group->behaviour->GetAngle());
 	pos->SetMetersX(offset.MetersX() + pos->MetersX());
 	pos->SetMetersZ(offset.MetersZ() + pos->MetersZ());
 	GUtils::GetDistanceInMetres(centre, *pos);

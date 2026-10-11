@@ -120,7 +120,8 @@ public:
 	// BW1W120 005981d0 BW1M119 010ffa50
 	Living* FindFirstDanceMember(GameThingWithPos* exclude);
 	// BW1W120 00597f20 BW1M119 010ffc30
-	void CalculateDancePosition(const MapCoords& centre, MapCoords* pos, DanceGroup* dance_group, unsigned long index);
+	static void CalculateDancePosition(const MapCoords& centre, MapCoords* pos, DanceGroup* dance_group,
+	                                   unsigned long index);
 };
 
 static_assert(sizeof(GroupBehaviour) == 0xe8, "Data type is of wrong size");

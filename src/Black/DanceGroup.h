@@ -125,8 +125,8 @@ struct DanceGroupActionArgument
 {
 	uint32_t     Value;
 	uint32_t     Value2;
-	uint32_t     Value3; /* Numerator of DANCE_GROUP_ACTION_TYPE_PROPORTION */
-	uint32_t     Unused; /* Never read or written by any code, only copied around with the rest */
+	uint32_t     Value3;
+	uint32_t     Unused;
 	DancerAction Action;
 	float        CameraPoints[2][3];
 };
@@ -205,7 +205,6 @@ public:
 	// BW1W120 00be8290
 	static int NextUntitledNumber;
 
-	// The dance this group belongs to when its behaviour is a Dance
 	GameThingWithPos* Dancer; /* 0x14 */
 	GroupBehaviour*   behaviour;
 
