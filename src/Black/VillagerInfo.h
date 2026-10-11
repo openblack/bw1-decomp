@@ -17,9 +17,14 @@ class GBaseInfo;
 class GObjectInfo;
 struct DiscipleInfo;
 
+enum
+{
+	AGE_TO_SCALE_NUM_VALUES = 21,
+};
+
 struct AgeToScale
 {
-	float values[21];
+	float values[AGE_TO_SCALE_NUM_VALUES];
 };
 
 class GVillagerInfo : public GLivingInfo

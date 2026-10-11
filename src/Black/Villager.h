@@ -99,6 +99,10 @@ enum
 {
 	VILLAGER_NUM_FOOTBALL_ROLES = 3,
 	VILLAGER_NUM_SHEPHERD_WORDS = 2,
+	VILLAGER_NUM_CLEAR_AREA_COORDS = 2,
+	VILLAGER_MIN_ADULT_AGE = 18,
+	VILLAGER_FOOD_SPEED_UP_START = 0xff,
+	VILLAGER_MAX_LOAD_STATE_CHANGE_DELAY = 20,
 };
 
 enum VILLAGER_FLAGS
@@ -206,7 +210,7 @@ public:
 		};
 		struct
 		{
-			uint32_t ClearAreaPos[2]; // Clear area states: area position (x, z).
+			uint32_t ClearAreaPos[VILLAGER_NUM_CLEAR_AREA_COORDS];
 		};
 	};
 	Abode* home;

@@ -349,7 +349,7 @@ int Villager::CheckChildGrownUp()
 	if (GetAge() >= villagerInfo->TeenAge)
 	{
 		Flags &= ~VILLAGER_FLAG_CHILD;
-		SetAge(max(18, ((const GVillagerInfo*)info)->TeenAge));
+		SetAge(max(VILLAGER_MIN_ADULT_AGE, ((const GVillagerInfo*)info)->TeenAge));
 		if (GetAbode() != NULL)
 		{
 			GetAbode()->ChildToAdult(this);
@@ -691,7 +691,7 @@ uint8_t Villager::GetFinalState() const
 void Villager::ResetStateAfterReacting()
 {
 	PopFromPrevious();
-	if (GVillagerStateTableInfo::Infos[GetFinalState() & 0xff].isReactiveState != 0)
+	if (GVillagerStateTableInfo::Infos[GetFinalState() & VILLAGER_STATE_LAST_STATE].isReactiveState != 0)
 	{
 		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 	}
@@ -1075,7 +1075,7 @@ void Villager::SetFoodSpeedup(bool value)
 {
 	if (value)
 	{
-		FoodSpeedUp = 0xff;
+		FoodSpeedUp = VILLAGER_FOOD_SPEED_UP_START;
 	}
 	else
 	{
@@ -1360,7 +1360,7 @@ bool32_t Villager::LoadStateFunction(GameOSFile& file)
 	{
 		return true;
 	}
-	TurnsUntilNextStateChange = GRand::GameRand(20, FILEPATH, 3293) + 1;
+	TurnsUntilNextStateChange = GRand::GameRand(VILLAGER_MAX_LOAD_STATE_CHANGE_DELAY, FILEPATH, 3293) + 1;
 	return false;
 }
 
