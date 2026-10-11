@@ -15,3 +15,8 @@ GBaseInfo* GMagicFireBallInfo::GetBaseInfo(uint32_t& info_count)
 	info_count = MAGIC_FIREBALL_TYPE_LAST;
 	return Infos;
 }
+
+uint32_t MagicFireBall::InterfaceValidToTap(GInterfaceStatus* interface_status)
+{
+	return 1;
+}

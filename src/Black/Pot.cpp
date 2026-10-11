@@ -34,3 +34,13 @@ bool32_t Pot::IsResourceStore(RESOURCE_TYPE param_1)
 {
 	return false;
 }
+
+bool32_t PileResource::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* control_hand_update_info)
+{
+	return true;
+}
+
+bool32_t PileResource::NetworkUnfriendlyEndLockedSelect()
+{
+	return true;
+}

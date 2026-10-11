@@ -9,3 +9,8 @@ uint32_t GInterface::GetSaveType()
 {
 	return GAME_THING_TYPE_GPLAYER_INTERFACE;
 }
+
+bool32_t GInterface::LoadFiles()
+{
+	return true;
+}

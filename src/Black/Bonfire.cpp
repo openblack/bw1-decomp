@@ -33,3 +33,48 @@ void Bonfire::PhysicsEditorCreate(int param_1)
 {
 	Pos.altitude = 0.0f;
 }
+
+bool32_t MobileStatic::CanBeStompedOnByCreature(Creature* creature)
+{
+	return true;
+}
+
+bool32_t MobileStatic::CanBePlayedWithByCreature(Creature* creature)
+{
+	return true;
+}
+
+bool32_t MobileStatic::CanBeThrownInTheSeaPlayfully(Creature* creature)
+{
+	return true;
+}
+
+uint32_t MobileStatic::ValidToApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords)
+{
+	return 1;
+}
+
+bool32_t MobileStatic::IsMobileStatic()
+{
+	return true;
+}
+
+bool32_t MobileStatic::IsCastShadowAtNight()
+{
+	return true;
+}
+
+bool32_t Rock::IsRock()
+{
+	return true;
+}
+
+bool32_t Rock::CanBeAttackedByCreature(Creature* creature)
+{
+	return true;
+}
+
+bool32_t Rock::ShouldFootpathsGoRound()
+{
+	return true;
+}

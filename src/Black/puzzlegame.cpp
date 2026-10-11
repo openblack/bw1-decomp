@@ -33,3 +33,18 @@ char* PuzzlePig::GetDebugText()
 {
 	return "PuzzleSheep: ";
 }
+
+bool32_t PuzzleTotem::NetworkFriendlyEndLockedSelect(GInterfaceStatus* interface_status)
+{
+	return true;
+}
+
+bool32_t PuzzleSheep::DecideWhatToDo()
+{
+	return true;
+}
+
+uint32_t ChessPion::SaveObject(LHOSFile& l_h_o_s_file, const MapCoords* map_coords)
+{
+	return 1;
+}
