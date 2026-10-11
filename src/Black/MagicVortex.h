@@ -68,7 +68,7 @@ public:
 	// BW1W120 00600000 BW1M119 013bc060
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 005fd610 BW1M119 013c15b0
-	virtual void PhysicsEditorCreate(int param_1);
+	virtual void PhysicsEditorCreate(int type);
 	// BW1W120 005fd620 BW1M119 013c15f0
 	virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
 	// BW1W120 005fd630 BW1M119 013c1640

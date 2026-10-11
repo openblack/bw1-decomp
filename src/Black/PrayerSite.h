@@ -23,7 +23,7 @@ public:
 	// BW1W120 00670800 BW1M119 inlined
 	virtual ~PrayerSite();
 	// BW1W120 00670830 BW1M119 inlined
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 006708c0 BW1M119 inlined
 	virtual GPlayer* GetPlayer();
 	// BW1W120 006708e0 BW1M119 inlined

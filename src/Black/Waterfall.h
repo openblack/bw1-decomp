@@ -28,7 +28,7 @@ public:
 	// BW1W120 00734160 BW1M119 0115c610
 	virtual ~GWaterfall();
 	// BW1W120 00734170 BW1M119 0115c5d0
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 0055de50 BW1M119 0115b770
 	virtual char* GetDebugText() { return "Waterfall:"; }
 	// BW1W120 00734660 BW1M119 0115b7b0
@@ -38,7 +38,7 @@ public:
 	// BW1W120 0055de40 BW1M119 0115b730
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GWATERFALL; }
 	// BW1W120 007341b0 BW1M119 0115c4b0
-	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+	virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 	// BW1W120 007341d0 BW1M119 0115c420
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 

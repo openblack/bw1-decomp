@@ -101,7 +101,7 @@ public:
 	// BW1W120 00737760 BW1M119 0154bb20
 	void InitTotemPosFromWorshipPercentage();
 	// BW1W120 00737780 BW1M119 0154baf0
-	void DebugText(int param_1);
+	void DebugText(int unused);
 };
 
 #endif /* BW1_DECOMP_TOTEM_INCLUDED_H */

@@ -50,7 +50,7 @@ public:
 	// BW1W120 007097f0 BW1M119 01501480
 	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
 	// BW1W120 00709760 BW1M119 01501190
-	virtual void PhysicsEditorCreate(int param_1);
+	virtual void PhysicsEditorCreate(int type);
 	// BW1W120 0070ae10 BW1M119 01501800
 	virtual uint32_t GetOverwriteTapToolTip();
 	// BW1W120 007097a0 BW1M119 015012f0

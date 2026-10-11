@@ -51,7 +51,7 @@ public:
 	// BW1W120 006e6f00 BW1M119 01141c60
 	virtual void ResolveLoad();
 	// BW1W120 006e6990 BW1M119 01142470
-	virtual void PhysicsEditorCreate(int param_1);
+	virtual void PhysicsEditorCreate(int type);
 	// BW1W120 006e69b0 BW1M119 011423e0
 	virtual uint32_t GetOverwriteTapToolTip();
 	// BW1W120 006e5650 BW1M119 01141b80

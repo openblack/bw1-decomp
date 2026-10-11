@@ -16,4 +16,4 @@ uint32_t ScriptHighlight::ApplyOnlyAfterReleased()
 	return 0;
 }
 
-void ScriptHighlight::PhysicsEditorCreate(int param_1) {}
+void ScriptHighlight::PhysicsEditorCreate(int type) {}

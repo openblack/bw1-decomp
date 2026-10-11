@@ -3,9 +3,9 @@
 #include "WorshipSpellIcon.h"
 #include "PSysFileData.h"
 
-void PrayerSite::ToBeDeleted(int param_1) {}
+void PrayerSite::ToBeDeleted(int delete_now) {}
 
-void PrayerIcon::ToBeDeleted(int param_1) {}
+void PrayerIcon::ToBeDeleted(int delete_now) {}
 
 void PrayerIcon::Draw() {}
 

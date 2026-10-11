@@ -6,4 +6,4 @@ uint32_t Reward::GetSaveType()
 	return GAME_THING_TYPE_REWARD;
 }
 
-void Reward::PhysicsEditorCreate(int param_1) {}
+void Reward::PhysicsEditorCreate(int type) {}

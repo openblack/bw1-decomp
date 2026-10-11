@@ -13,4 +13,4 @@ uint32_t DanceGroup::GetSaveType()
 	return GAME_THING_TYPE_DANCE_GROUP;
 }
 
-void DanceEditState::ToBeDeleted(int param_1) {}
+void DanceEditState::ToBeDeleted(int delete_now) {}

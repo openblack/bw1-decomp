@@ -99,7 +99,7 @@ public:
 	// BW1W120 0041c6a0 BW1M119 01177d10
 	virtual uint32_t StandAnimation();
 	// BW1W120 004209b0 BW1M119 01180cf0
-	virtual void SetSpeed(int param_1);
+	virtual void SetSpeed(int new_speed);
 	// BW1W120 00420d50 BW1M119 01180860
 	virtual uint32_t GetNumTurnsToDieOver();
 

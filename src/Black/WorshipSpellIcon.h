@@ -118,7 +118,7 @@ public:
 	// BW1W120 00670960 BW1M119 inlined
 	virtual ~PrayerIcon();
 	// BW1W120 00670980 BW1M119 inlined
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 006709a0 BW1M119 inlined
 	virtual GPlayer* GetPlayer();
 	// BW1W120 006709b0 BW1M119 inlined
