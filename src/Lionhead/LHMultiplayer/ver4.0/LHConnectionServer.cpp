@@ -686,18 +686,18 @@ LH_RETURN LHConnectionServer::SendToConnection(LHConnection* connection, LHNetEv
 	return connection->Write(event);
 }
 
-inline char* LHTimer::GetText()
+inline char* GetTimerText(LHTimer* timer)
 {
-	unsigned long elapsed = MSeconds();
-	bool32_t      running = Running();
-	Stop();
+	unsigned long elapsed = timer->MSeconds();
+	bool32_t      running = timer->Running();
+	timer->Stop();
 	if (elapsed < 60000)
-		sprintf(Text, "%d.%03ds ", elapsed / 1000, elapsed % 1000);
+		sprintf(timer->Text, "%d.%03ds ", elapsed / 1000, elapsed % 1000);
 	else
-		sprintf(Text, "%dm %d.%03ds ", elapsed / 60000, elapsed / 1000 % 60, elapsed % 1000);
+		sprintf(timer->Text, "%dm %d.%03ds ", elapsed / 60000, elapsed / 1000 % 60, elapsed % 1000);
 	if (running)
-		Start();
-	return Text;
+		timer->Start();
+	return timer->Text;
 }
 
 LH_RETURN LHConnectionServer::BaseSendGreeting(LHConnection* connection)
@@ -705,7 +705,8 @@ LH_RETURN LHConnectionServer::BaseSendGreeting(LHConnection* connection)
 	char* modeName = Mode == LH_OPERATING_MODE_SYNCHRONOUS ? "SYNCHRONOUS" : "ASYNCHRONOUS";
 
 	if (connection->Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_SERVER_GREETING, NetUser.GetID(), RegisteredName,
-	                                          UserName, modeName, Players.count, Timer.GetText(), IdleTime)) != LH_OK)
+	                                          UserName, modeName, Players.count, GetTimerText(&Timer), IdleTime)) !=
+	    LH_OK)
 		return LH_FAIL;
 	return SendGreeting(connection);
 }
