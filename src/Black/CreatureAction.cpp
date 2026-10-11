@@ -8098,19 +8098,21 @@ int CreatureAgenda::ConstructSubActionsForWaterTreeForTown(unsigned long param_1
 
 void Creature::UpdateActionPriority()
 {
-	GetActionPriority((CREATURE_ACTION)field_0x1098,
-	                  mind->agenda.PlanState.plans[CreatureActionInfo::g_CreatureActionInfos[field_0x1098].field_0xa8]);
-	field_0x1098++;
-	if (field_0x1098 >= NUM_CREATURE_ACTIONS)
+	GetActionPriority(
+		(CREATURE_ACTION)ActionPriorityUpdateIndex,
+		mind->agenda.PlanState.plans[CreatureActionInfo::g_CreatureActionInfos[ActionPriorityUpdateIndex].PlanIndex]);
+	ActionPriorityUpdateIndex++;
+	if (ActionPriorityUpdateIndex >= NUM_CREATURE_ACTIONS)
 	{
-		field_0x1098 = 0;
+		ActionPriorityUpdateIndex = 0;
 	}
 }
 
-void Creature::ForceActivityAndForceAction(CREATURE_DESIRES param_1, CreatureBelief* param_2, CREATURE_ACTION param_3,
-                                           CreatureBelief* param_4, CreatureBelief* param_5, int param_6, int param_7)
+void Creature::ForceActivityAndForceAction(CREATURE_DESIRES desire, CreatureBelief* activity_object,
+                                           CREATURE_ACTION action, CreatureBelief* object_to_act_on,
+                                           CreatureBelief* object_to_use, int param_6, int param_7)
 {
-	CreaturePlan plan(param_1, param_3, param_2, param_4, param_5, MaxFloat);
+	CreaturePlan plan(desire, action, activity_object, object_to_act_on, object_to_use, MaxFloat);
 	ForceActivityAndForceAction(plan, param_6, param_7);
 }
 
@@ -8118,41 +8120,41 @@ CreatureActionOpinions::CreatureActionOpinions(const CreatureInfo* info)
 {
 	for (uint32_t i = 0; i < NUM_CREATURE_ACTIONS; i++)
 	{
-		entries[i] = CreatureActionInfo::g_CreatureActionInfos[i].field_0xe4;
+		entries[i] = CreatureActionInfo::g_CreatureActionInfos[i].InitialOpinion;
 	}
 }
 
-CreatureActionContext::CreatureActionContext(CreatureContext& context, float param_2)
+CreatureActionContext::CreatureActionContext(CreatureContext& context, float priority)
 {
 	for (int i = 0; i < 5; i++)
 	{
-		((uint32_t*)&start)[i] = ((uint32_t*)&context.field_0x5c)[i];
+		start.Values[i] = context.ActionContextStart.Values[i];
 	}
-	field_0x14 = param_2;
+	Priority = priority;
 }
 
 float Creature::GetActionPriority(CREATURE_ACTION action, CreaturePlan& plan)
 {
-	if (IsConfinedToArea() && mind->agenda.field_0x158c[action] != 0)
+	if (IsConfinedToArea() && mind->agenda.ActionUnavailableWhenConfined[action] != 0)
 	{
 		return 0.0f;
 	}
 	return ((mind->ActionOpinions.entries[action] + 1.0f) * 0.5f) * 0.005f + 0.5f;
 }
 
-void Creature::ForceActivityAndForceAction(CreaturePlan& param_1, int param_2, int param_3)
+void Creature::ForceActivityAndForceAction(CreaturePlan& plan, int param_2, int param_3)
 {
 	if (reaction.Get() != NULL)
 	{
 		StopReacting();
 	}
 	FinishActionUnsuccessfully("stopping because new action forcing me", param_3, param_3);
-	mind->agenda.plans[0] = param_1;
+	mind->agenda.plans[0] = plan;
 	if (mind->agenda.ConstructSubActionsFromActionAgenda(mind->agenda.plans[0].creature_action))
 	{
 		CopyPlanToPreviousContext(param_2);
 		mind->desires.SuppressDesiresAfterDecidingOnActivity(mind->agenda.plans[0].CreatureDesire);
-		field_0x105c = 1;
+		ActionForced = 1;
 	}
 }
 
@@ -8163,7 +8165,7 @@ bool32_t Creature::ForceActivityAndDecideAction(CREATURE_DESIRES desire, Creatur
 	CreaturePlan plan;
 	plan.CreatureDesire = desire;
 	plan.ActivityObject = activity_object;
-	plan.field_0x1c = 1.0f;
+	plan.ActivityPriority = 1.0f;
 	FindBestActionForPlan(plan);
 	if (plan.IsValid())
 	{
@@ -8185,7 +8187,7 @@ void Creature::ComputeActionIndices()
 	{
 		for (uint32_t j = 0; j < 0x1e; j++)
 		{
-			CreatureActionIndex[CreatureDesireActionEntry::g_CreatureDesireActionEntries[desire].field_0x10[j]] = j;
+			CreatureActionIndex[CreatureDesireActionEntry::g_CreatureDesireActionEntries[desire].Actions[j]] = j;
 		}
 	}
 }
@@ -8366,8 +8368,8 @@ float Creature::HowAbusiveIsPlayer(CreaturePlan& plan)
 
 float Creature::HowNeglectfulIsPlayer(CreaturePlan& plan)
 {
-	float neglect =
-		(float)(mind->AttitudeToPlayer.field_0xc / GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(NeglectedTime));
+	float neglect = (float)(mind->AttitudeToPlayer.TicksSinceAttention /
+	                        GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(NeglectedTime));
 	return neglect < 0.0f ? 0.0f : (neglect > 1.0f ? 1.0f : neglect);
 }
 
@@ -8455,7 +8457,7 @@ float Creature::HowHungryIsFriend(CreaturePlan& plan)
 		Creature* friendCreature = dynamic_cast<Creature*>(plan.ObjectToActOn->GetPointer());
 		if (friendCreature != NULL)
 		{
-			float hunger = friendCreature->mind->desires.field_0x148[CREATURE_DESIRE_HUNGER];
+			float hunger = friendCreature->mind->desires.Levels[CREATURE_DESIRE_HUNGER];
 			return hunger < 0.0f ? 0.0f : (hunger > 1.0f ? 1.0f : hunger);
 		}
 	}
@@ -8464,7 +8466,7 @@ float Creature::HowHungryIsFriend(CreaturePlan& plan)
 
 float Creature::HowInterestingIsPlayer(CreaturePlan& plan)
 {
-	return mind->AttitudeToPlayer.field_0x28;
+	return mind->AttitudeToPlayer.Interest;
 }
 
 void Creature::CommandActivityAndAction(CREATURE_DESIRES desire, CreatureBelief* activity_object,
@@ -8472,7 +8474,7 @@ void Creature::CommandActivityAndAction(CREATURE_DESIRES desire, CreatureBelief*
                                         CreatureBelief* object_to_use)
 {
 	ForceActivityAndForceAction(desire, activity_object, action, object_to_act_on, object_to_use, 1, 1);
-	mind->agenda.CommandState.field_0x1c = 1;
+	mind->agenda.CommandState.Commanded = 1;
 }
 
 float CreatureMental::CalculateDesirabilityOfProposedActivity(CREATURE_DESIRES  desire,
@@ -8480,7 +8482,7 @@ float CreatureMental::CalculateDesirabilityOfProposedActivity(CREATURE_DESIRES  
 {
 	CreatureBelief* belief = AddBeliefAboutObject(creature, activity_object);
 	float           distancePriority = CalculateDistancePriority(desire, belief);
-	float           desireLevel = desires.field_0x148[desire];
+	float           desireLevel = desires.Levels[desire];
 	float           desirability = GetActivityObjectUsefulness(belief, desire) * desireLevel * distancePriority;
 	return desirability < 0.0f ? 0.0f : (desirability > 1.0f ? 1.0f : desirability);
 }
@@ -8491,11 +8493,11 @@ float CreatureMental::FUN004c47d0(CREATURE_DESIRES desire, GameThingWithPos* act
 	CreaturePlan    plan;
 	plan.CreatureDesire = desire;
 	plan.ActivityObject = belief;
-	plan.field_0x1c = 1.0f;
+	plan.ActivityPriority = 1.0f;
 	creature->FindBestActionForPlan(plan);
 	if (plan.IsValid())
 	{
-		return plan.field_0x28;
+		return plan.ActionPriority;
 	}
 	return 0.0f;
 }

@@ -24,10 +24,10 @@ public:
 	CreatureBelief*  ObjectToActOn;  /* 0x10 */
 	CreatureBelief*  ObjectToUse;    /* 0x14 */
 	CREATURE_ACTION  creature_action;
-	float            field_0x1c;
+	float            ActivityPriority;
 	float            field_0x20;
 	float            field_0x24;
-	float            field_0x28;
+	float            ActionPriority;
 	float            field_0x2c;
 
 	// Override methods

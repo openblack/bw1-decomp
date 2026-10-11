@@ -170,7 +170,7 @@ public:
 	uint8_t                               field_0x407;
 	CreatureSubActionAgenda               SubActionAgenda;
 	int                                   field_0x1058;
-	uint32_t                              field_0x105c;
+	uint32_t                              ActionForced;
 	uint32_t                              field_0x1060;
 	uint32_t                              field_0x1064;
 	uint32_t                              field_0x1068;
@@ -185,7 +185,7 @@ public:
 	uint32_t                              field_0x108c;
 	uint32_t                              field_0x1090;
 	uint32_t                              field_0x1094;
-	int                                   field_0x1098;
+	int                                   ActionPriorityUpdateIndex;
 	LH3DSmoke*                            smoke;
 	GArena*                               arena;
 	uint32_t                              field_0x10a4;
@@ -247,7 +247,7 @@ public:
 	MapCoords                             HomePos;
 	uint32_t                              field_0x120c;
 	uint32_t                              field_0x1210;
-	MapCoords                             field_0x1214;
+	MapCoords                             DestPos;
 	LHLinkedList<LHPoint*>                DebugPath;
 	uint8_t                               field_0x1228[0x40];
 	int                                   field_0x1268;
@@ -770,10 +770,11 @@ public:
 	// BW1W120 004dfbe0 BW1M119 01264bb0
 	bool32_t FindClearArea(MapCoords* coords, float radius, int param_3);
 	// BW1W120 004c4450 BW1M119 01235990
-	void ForceActivityAndForceAction(CREATURE_DESIRES param_1, CreatureBelief* param_2, CREATURE_ACTION param_3,
-	                                 CreatureBelief* param_4, CreatureBelief* param_5, int param_6, int param_7);
+	void ForceActivityAndForceAction(CREATURE_DESIRES desire, CreatureBelief* activity_object, CREATURE_ACTION action,
+	                                 CreatureBelief* object_to_act_on, CreatureBelief* object_to_use, int param_6,
+	                                 int param_7);
 	// BW1W120 004c44b0 BW1M119 01235820
-	void ForceActivityAndForceAction(CreaturePlan& param_1, int param_2, int param_3);
+	void ForceActivityAndForceAction(CreaturePlan& plan, int param_2, int param_3);
 	// BW1W120 004c84b0 BW1M119 0123b450
 	void SetFaceForMoodFrightened();
 	// BW1W120 004c8500 BW1M119 0123b3a0

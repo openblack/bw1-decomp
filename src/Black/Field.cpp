@@ -5,6 +5,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include "FieldTypeInfo.h"
+#include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_* */
 
 GFieldTypeInfo GFieldTypeInfo::Infos[FIELD_INFO_TYPE_LAST];
 
@@ -35,7 +36,7 @@ PlannedMultiMapFixed* Field::ConvertToPlanned()
 
 uint32_t Field::GetCreatureBeliefType()
 {
-	return 11;
+	return CREATURE_BELIEF_TYPE_FIELD;
 }
 
 bool32_t Field::CanBePoodOn(Creature* param_1)
@@ -115,9 +116,8 @@ bool32_t Field::CanBeDestroyedBySpell(Spell* param_1)
 
 uint32_t Field::GetOverwriteInteractableToolTip()
 {
-	return 3699;
+	return HELP_TEXT_INTERRUPTION_IN_CITADEL_19;
 }
-
 
 GPlayer* Field::GetPlayer()
 {

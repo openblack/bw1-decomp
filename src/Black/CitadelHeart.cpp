@@ -25,7 +25,7 @@ void CitadelHeart::SetToZero()
 	field_0x8c = 0;
 	field_0x98 = 0;
 	field_0x94 = 0;
-	field_0xa0 = 0;
+	SpecularColor = 0;
 	field_0xa4 = -1;
 	field_0xdc = 0;
 	field_0xac = 0;
@@ -53,7 +53,7 @@ uint32_t CitadelHeart::Load(GameOSFile& file)
 	file.ReadIt(field_0x8c);
 	file.ReadPtr(&field_0x94);
 	file.ReadPtr(&field_0x98);
-	file.ReadIt(field_0xa0);
+	file.ReadIt(SpecularColor);
 	file.ReadIt(field_0xa4);
 	file.ReadIt(field_0xb8);
 	file.ReadIt(field_0xbc);
@@ -166,8 +166,7 @@ uint32_t CitadelHeart::GetPhysicsConstantsType()
 	return 0;
 }
 
-
-void CitadelHeart::SetSpecularColor(unsigned long param_1)
+void CitadelHeart::SetSpecularColor(unsigned long color)
 {
-	field_0xa0 = param_1;
+	SpecularColor = color;
 }

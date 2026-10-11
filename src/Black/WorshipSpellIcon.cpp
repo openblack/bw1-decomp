@@ -13,7 +13,7 @@ uint32_t WorshipSpellIcon::SaveObject(LHOSFile& param_1, const MapCoords* param_
 
 unsigned long WorshipSpellIcon::GetTurnChargingStarted()
 {
-	return field_0x138;
+	return TurnChargingStarted;
 }
 
 bool32_t WorshipSpellIcon::IsEffectReceiver(EffectValues* param_1)

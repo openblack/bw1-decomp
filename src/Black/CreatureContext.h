@@ -23,7 +23,7 @@ public:
 	uint8_t                    field_0x48[0xc];
 	uint32_t                   field_0x54;
 	CREATURE_DESIRE_SOURCE     DesireSource;
-	CreatureActionContextStart field_0x5c;
+	CreatureActionContextStart ActionContextStart;
 
 	// Override methods
 

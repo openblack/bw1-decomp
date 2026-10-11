@@ -1,5 +1,6 @@
 #include "GameTimeConstants.h"
 #include "Reward.h"
+#include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_* */
 
 uint32_t Reward::GetSaveType()
 {
@@ -15,5 +16,5 @@ bool32_t Reward::ValidForPlaceInHand(GInterfaceStatus* param_1)
 
 uint32_t Reward::GetOverwriteTapToolTip()
 {
-	return 3832;
+	return HELP_TEXT_TOOLTIP_126;
 }

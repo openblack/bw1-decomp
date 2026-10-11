@@ -40,14 +40,14 @@ class CreatureAttitudeToPlayer : public Base
 {
 public:
 	uint32_t                       field_0x8;
-	uint32_t                       field_0xc;
+	uint32_t                       TicksSinceAttention;
 	uint32_t                       field_0x10;
 	uint32_t                       field_0x14;
 	float                          Attitude; /* 0x18 */
 	uint32_t                       field_0x1c;
 	uint32_t                       field_0x20;
 	uint32_t                       field_0x24;
-	float                          field_0x28;
+	float                          Interest;
 	uint32_t                       field_0x2c;
 	uint32_t                       field_0x30;
 	uint32_t                       field_0x34;

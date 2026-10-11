@@ -2251,7 +2251,7 @@ bool32_t LH3DCreature::StartMovingToPoint(const LHPoint& pos, float param_2, flo
 	MoveState = LH3D_CREATURE_STATE_MOVING;
 	if (creature)
 	{
-		GLandscape::ConvertLandscapePointToMapCoord(dest, creature->field_0x1214);
+		GLandscape::ConvertLandscapePointToMapCoord(dest, creature->DestPos);
 		creature->field_0x1118 = 1;
 	}
 	return 4;
@@ -3890,8 +3890,8 @@ void LH3DCreature::DoStaticAction()
 					// TODO: CreaturePhysical::field_0x2c is the float AmountOfPoo (BW1M119 GetAmountOfPoo reads 0x2c).
 					creature->physical->field_0x2c = 0;
 					CreatureDesires& desires = creature->mind->desires;
-					desires.field_0x148[CREATURE_DESIRE_TO_POO] = 0.0f;
-					CLAMP(desires.field_0x148[CREATURE_DESIRE_TO_POO], 0.0f, 1.0f);
+					desires.Levels[CREATURE_DESIRE_TO_POO] = 0.0f;
+					CLAMP(desires.Levels[CREATURE_DESIRE_TO_POO], 0.0f, 1.0f);
 					creature->mind->desires.SuppressDesire(CREATURE_DESIRE_TO_POO, 60.0f);
 					creature->NumPoos++;
 				}

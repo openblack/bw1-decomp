@@ -12,7 +12,7 @@ void SpellSeed::RemoveMapObject() {}
 
 uint32_t SpellSeed::GetCreatureBeliefType()
 {
-	return CREATURE_BELIEF_TYPE_MIST;
+	return CREATURE_BELIEF_TYPE_SPELL_SEED;
 }
 
 uint32_t SpellSeed::GetOrigin()

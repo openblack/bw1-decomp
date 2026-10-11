@@ -1,5 +1,6 @@
 #include "GameTimeConstants.h"
 #include "Ball.h"
+#include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 
 uint32_t Ball::GetSaveType()
 {
@@ -23,7 +24,7 @@ uint32_t Ball::Process()
 
 uint32_t Ball::GetPhysicsConstantsType()
 {
-	return 2;
+	return PHYSICS_CONSTANTS_TYPE_FOOTBALL;
 }
 
 bool32_t Ball::IsToy(Creature* param_1)

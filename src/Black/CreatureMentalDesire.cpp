@@ -61,7 +61,7 @@ void CreatureDesires::Initialise(Creature* creature, const CreatureInfo* info)
 	{
 		field_0x8[i] = (GGame::g_game->GameFlags & GAME_FLAG_ACTIVATE_CREATURE_DESIRES) ? 1 : 0;
 		field_0xa8[i] = 0.0f;
-		field_0x148[i] = 0;
+		Levels[i] = 0;
 
 		float minValue = CreatureInitialDesireInfo::g_CreatureInitialDesireInfos[i].InitialValueMin;
 		float maxValue = CreatureInitialDesireInfo::g_CreatureInitialDesireInfos[i].InitialValueMax;
@@ -91,10 +91,10 @@ uint32_t CreatureDesires::FindWeakestDesire()
 	float    weakestValue = 2.0f;
 	for (uint32_t i = 0; i < NUM_CREATURE_DESIRES; i++)
 	{
-		if (IsActivated((CREATURE_DESIRES)i) && field_0x148[i] < weakestValue)
+		if (IsActivated((CREATURE_DESIRES)i) && Levels[i] < weakestValue)
 		{
 			weakest = i;
-			weakestValue = field_0x148[i];
+			weakestValue = Levels[i];
 		}
 	}
 	return weakest;

@@ -18,7 +18,7 @@ SCRIPT_OBJECT_TYPE Flock::GetScriptObjectType()
 
 uint32_t Flock::GetCreatureBeliefType()
 {
-	return 22;
+	return CREATURE_BELIEF_TYPE_FLOCK;
 }
 
 uint32_t Flock::GetCreatureBeliefListType()

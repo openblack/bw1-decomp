@@ -63,7 +63,7 @@ uint32_t Animal::IAmABird()
 
 uint32_t Animal::GetCreatureBeliefType()
 {
-	return 7;
+	return CREATURE_BELIEF_TYPE_ANIMAL;
 }
 
 uint32_t Animal::CheckSuitableEnvironment(const MapCoords& param_1)
@@ -132,7 +132,6 @@ bool32_t Animal::EnterSeekFood(uint8_t param_1, uint8_t param_2)
 {
 	return true;
 }
-
 
 uint32_t Animal::DecideAnimation()
 {

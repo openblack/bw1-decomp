@@ -1,4 +1,6 @@
 #include "Rock.h"
+#include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_* */
+#include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 
 GPlayer* Rock::GetPlayer()
 {
@@ -17,11 +19,10 @@ SCRIPT_OBJECT_TYPE Rock::GetScriptObjectType()
 
 uint32_t Rock::GetPhysicsConstantsType()
 {
-	return 3;
+	return PHYSICS_CONSTANTS_TYPE_ROCK;
 }
 
 uint32_t Rock::GetOverwriteTapToolTip()
 {
-	return 3831;
+	return HELP_TEXT_TOOLTIP_125;
 }
-

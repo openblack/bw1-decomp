@@ -10,7 +10,7 @@ class CreatureCommandState : public Base
 {
 public:
 	uint8_t  field_0x8[0x14];
-	uint32_t field_0x1c;
+	uint32_t Commanded;
 	uint32_t field_0x20;
 	uint32_t field_0x24;
 	int      field_0x28;

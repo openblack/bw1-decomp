@@ -176,22 +176,18 @@ struct CreatureActionTableEntry;
 
 struct CreatureActionContextStart
 {
-	uint32_t               field_0x0;
-	CreatureActionContext* field_0x4;
-	uint32_t               field_0x8;
-	uint32_t               field_0xc;
-	uint32_t               field_0x10;
+	uint32_t Values[5];
 };
 
 struct CreatureActionContext
 {
 	CreatureActionContextStart start; /* 0x0 */
-	float                      field_0x14;
+	float                      Priority;
 
 	// Constructors
 
 	// BW1W120 004c3960 BW1M119 01235210
-	CreatureActionContext(CreatureContext& context, float param_2);
+	CreatureActionContext(CreatureContext& context, float priority);
 };
 
 struct PreviousActionContextStack

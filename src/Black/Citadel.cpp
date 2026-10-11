@@ -26,7 +26,7 @@ uint32_t Citadel::GetSaveType()
 
 uint32_t Citadel::GetCreatureBeliefType()
 {
-	return 2;
+	return CREATURE_BELIEF_TYPE_CITADEL;
 }
 
 uint32_t Citadel::GetCreatureBeliefListType()

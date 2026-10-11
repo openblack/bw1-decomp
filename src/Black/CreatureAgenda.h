@@ -37,7 +37,7 @@ public:
 	uint32_t                field_0x1580;
 	uint32_t                field_0x1584;
 	uint32_t                field_0x1588;
-	uint32_t                field_0x158c[NUM_CREATURE_ACTIONS];
+	uint32_t                ActionUnavailableWhenConfined[NUM_CREATURE_ACTIONS];
 	uint32_t                field_0x1aac;
 	uint32_t                field_0x1ab0;
 	uint8_t                 field_0x1ab4[0xc];

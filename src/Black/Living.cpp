@@ -32,11 +32,6 @@ bool32_t Living::Flying()
 	return true;
 }
 
-uint32_t Living::GetNumTurnsToDieOver()
-{
-	return 600;
-}
-
 bool32_t Living::InHand()
 {
 	return true;

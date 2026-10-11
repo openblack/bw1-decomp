@@ -1,5 +1,7 @@
 #include "GameTimeConstants.h"
 #include "Scaffold.h"
+#include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_* */
+#include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 
 SCRIPT_OBJECT_TYPE Scaffold::GetScriptObjectType()
 {
@@ -8,14 +10,14 @@ SCRIPT_OBJECT_TYPE Scaffold::GetScriptObjectType()
 
 uint32_t Scaffold::GetPhysicsConstantsType()
 {
-	return 17;
+	return PHYSICS_CONSTANTS_TYPE_MOVABLE_SCAFFOLD;
 }
 
 void Scaffold::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2) {}
 
 uint32_t Scaffold::GetOverwritePickUpToolTip()
 {
-	return 3815;
+	return HELP_TEXT_TOOLTIP_109;
 }
 
 float Scaffold::GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2)

@@ -28,7 +28,7 @@ PlannedMultiMapFixed* FishFarm::ConvertToPlanned()
 
 uint32_t FishFarm::GetCreatureBeliefType()
 {
-	return 11;
+	return CREATURE_BELIEF_TYPE_FIELD;
 }
 
 bool32_t FishFarm::CanBePoodOn(Creature* param_1)

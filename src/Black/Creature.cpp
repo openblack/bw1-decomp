@@ -3,7 +3,7 @@
 
 #include "ColourConstants.h"    /* For White */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
-#include "ColourConstants.h" /* For White */
+#include "ColourConstants.h"    /* For White */
 #include "CreatureInfo.h"
 #include "CreaturePhysical.h"
 
@@ -14,12 +14,12 @@ uint32_t Creature::GetSaveType()
 
 uint32_t Creature::GetCreatureBeliefType()
 {
-	return 8;
+	return CREATURE_BELIEF_TYPE_CREATURE;
 }
 
 uint32_t Creature::GetCreatureMimicType()
 {
-	return 9;
+	return CREATURE_MIMIC_TYPE_CREATURE;
 }
 
 void Creature::SetAnim(int anim) {}
@@ -39,7 +39,6 @@ uint32_t Creature::InterfaceGiveObject(GInterfaceStatus* param_1, Object* param_
 	return 22;
 }
 
-
 GPlayer* Creature::GetPlayer()
 {
 	return owner;
@@ -47,7 +46,7 @@ GPlayer* Creature::GetPlayer()
 
 MapCoords* Creature::GetDestPos()
 {
-	return &field_0x1214;
+	return &DestPos;
 }
 
 LH3DCreature* Creature::GetCreature3D()
@@ -57,22 +56,22 @@ LH3DCreature* Creature::GetCreature3D()
 
 uint32_t Creature::GetAge()
 {
-	return physical->field_0x8;
+	return physical->Age;
 }
 
 float Creature::GetMaxAlignmentChangePerGameTurn()
 {
-	return GetInfo()->field_0x348[0];
+	return GetInfo()->MaxAlignmentChangePerGameTurn[0];
 }
 
 float Creature::GetRunningSpeedInMetres()
 {
-	return physical->field_0x40;
+	return physical->RunningSpeedInMetres;
 }
 
 float Creature::GetDefaultSpeedInMetres()
 {
-	return physical->field_0x3c;
+	return physical->DefaultSpeedInMetres;
 }
 
 uint32_t Creature::CallExitStateFunction(uint8_t state)
