@@ -21,7 +21,9 @@ struct RPHolder;
 class AnimatedStatic : public Feature
 {
 public:
-	uint8_t field_0x7c[0x1c];
+	uint32_t field_0x7c;
+	Object*  GateStones[3];
+	uint32_t field_0x8c[3];
 
 	// Override methods
 
