@@ -391,11 +391,10 @@ static void LHConnectionServerThread(void* context)
 
 long LHConnectionServer::WaitForAnyEvent(unsigned long timeout)
 {
-	LHLinkedNode<LHServerPlayer*>* node;
-	long                           index = 0;
-	for (node = Players.GetStart(); node != NULL; node = node->next.Get())
+	long index = 0;
+	for (LHLinkedListIterator<LHServerPlayer*> it = Players.GetStart(); it; it++)
 	{
-		if (node->payload->Connection->CheckForEvents())
+		if (it.Get()->Connection->CheckForEvents())
 			return index;
 		index++;
 	}
@@ -406,9 +405,9 @@ long LHConnectionServer::WaitForAnyEvent(unsigned long timeout)
 	if (Mode == LH_OPERATING_MODE_SYNCHRONOUS)
 	{
 		index = 0;
-		for (node = Players.GetStart(); node != NULL; node = node->next.Get())
+		for (LHLinkedListIterator<LHServerPlayer*> it = Players.GetStart(); it; it++)
 		{
-			if (node->payload->Connection->CheckForEvents())
+			if (it.Get()->Connection->CheckForEvents())
 				return index;
 			index++;
 		}
