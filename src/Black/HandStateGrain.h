@@ -13,12 +13,14 @@ class CHand;
 class HandStateGrain : public HandStateHolding
 {
 public:
-	uint8_t field_0x8[0xe4]; /* 0x144 */
+	uint8_t field_0x114[0x114];
 
 	// Constructors
 
 	// BW1W120 005b2b80 BW1M119 013421b0
 	HandStateGrain(CHand* hand);
 };
+
+static_assert(sizeof(HandStateGrain) == 0x228, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_HAND_STATE_GRAIN_INCLUDED_H */

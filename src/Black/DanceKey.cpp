@@ -5,13 +5,13 @@
 
 DanceKeyAction::DanceKeyAction()
 {
-	ArgumentRadius = DANCE_KEY_ACTION_DEFAULT_RADIUS;
-	ArgumentPointX = 0;
-	ArgumentPointZ = 0;
-	ArgumentPointY = 0;
+	Argument.Movement.EndTime = DANCE_GROUP_MOVEMENT_DEFAULT_END_TIME;
+	Argument.Movement.Kind = 0;
+	Argument.Movement.Param2 = 0;
+	Argument.Movement.Param1 = 0;
 	Type = 0;
-	ArgumentValue2 = 0;
-	ArgumentValue = 0;
+	Argument.Value2 = 0;
+	Argument.Value = 0;
 }
 
 uint32_t DanceKeyAction::GetSaveType()
