@@ -183,6 +183,24 @@ public:
 			uint32_t        FootballState; // Football states: football substate data.
 			LHPTR<Football> football;      // Football states: current match.
 		};
+		struct
+		{
+			uint8_t FootballRoles[3]; // Football states: serialised as three separate bytes.
+		};
+		struct
+		{
+			uint16_t ShepherdData[2]; // Shepherd states: two serialised words.
+		};
+		struct
+		{
+			uint32_t field_0x118;
+			uint32_t field_0x11c;
+			uint32_t field_0x120;
+		};
+		struct
+		{
+			uint32_t ClearAreaPos[2]; // Clear area states: area position (x, z).
+		};
 	};
 	Abode* home;
 	Town*  town;
