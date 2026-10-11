@@ -114,12 +114,12 @@ static int KnockSample;
 #define ABODE_SETTLED_AGE 200
 // Impact strength (speed times mass) that damages the destruction mesh, and above which the colliding objects are
 // linked; weaker impacts only play a sound above the sound thresholds.
-#define ABODE_DAMAGING_IMPACT     1000.0f
+#define ABODE_DAMAGING_IMPACT     2000.0f
 #define ABODE_LINKING_IMPACT      1400.0f
-#define ABODE_MEDIUM_IMPACT_SOUND 500.0f
+#define ABODE_MEDIUM_IMPACT_SOUND 1000.0f
 #define ABODE_LIGHT_IMPACT_SOUND  300.0f
 // Fixed-point factor for the angle and scale in the script commands written by SaveObject.
-#define ABODE_SCRIPT_SCALE    500.0f
+#define ABODE_SCRIPT_SCALE    1000.0f
 #define WORKSHOP_SMOKE_COLOUR 0x00808080
 
 // Index of the sails mesh in the packed mesh list; AllMeshes.h is numbered for a different list.
