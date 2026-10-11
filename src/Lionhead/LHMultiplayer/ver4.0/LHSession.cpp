@@ -32,8 +32,8 @@ enum
 	MIGRATION_TIMEOUT = 25000,
 };
 
-static LHDynamicQueue<LHNetEvent*>    SuperPacketQ;
-static LHDynamicQueue<unsigned long*> SuperPacketNGTQ;
+LHDynamicQueue<LHNetEvent*>    LHSession::SuperPacketQ;
+LHDynamicQueue<unsigned long*> LHSession::SuperPacketNGTQ;
 
 template <class T> static inline void EmptyQueue(LHDynamicQueue<T>* queue)
 {
