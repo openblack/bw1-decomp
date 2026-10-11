@@ -4,12 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For MAGIC_TYPE_LAST, enum CREATURE_ACTION_LEARNING_TYPE */
+#include <chlasm/Enum.h> /* For enum CREATURE_ACTION_LEARNING_TYPE */
 #include <re_common.h>   /* For bool32_t */
 
 #include "Base.h" /* For struct Base */
-
-#define CREATURE_MAX_SPELLS_KNOWN MAGIC_TYPE_LAST
 
 class CreatureActionsKnownAbout : public Base
 {
