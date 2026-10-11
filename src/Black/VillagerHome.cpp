@@ -212,7 +212,7 @@ bool32_t Villager::DoGoingHome(VILLAGER_STATES arrive_state, VILLAGER_STATES ten
 			end_state = action.states[LIVING_ACTION_INDEX_TOP];
 			float angle = GRand::GameFloatRand(1.5707964f, FILEPATH, 295) - 0.78539819f +
 			              GUtils::Get3DAngleFromXZ(Pos, town->Pos);
-			float dist = GRand::GameFloatRand(25.0f, FILEPATH, 296) + 10.0f;
+			float dist = (GRand::GameFloatRand(25.0f, FILEPATH, 296)) + 10.0f;
 			pos = town->Pos + GUtils::GetPosFromAngle(angle, dist);
 		}
 		else
@@ -256,7 +256,7 @@ bool32_t Villager::ArrivesHome()
 					{
 						float angle = 0.39269909f - GRand::GameFloatRand(0.78539819f, FILEPATH, 465);
 						angle += GUtils::Get3DAngleFromXZ(Pos, abode->Pos);
-						float     dist = GRand::GameFloatRand(5.0f, FILEPATH, 466) + 5.0f;
+						float     dist = (GRand::GameFloatRand(5.0f, FILEPATH, 466)) + 5.0f;
 						MapCoords spot = Pos + GUtils::GetPosFromAngle(angle, dist);
 						if (GetTentPos(spot) != NULL)
 						{

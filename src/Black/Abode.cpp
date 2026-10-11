@@ -1847,10 +1847,10 @@ MapCoords Abode::GetPosOutside(float divisions, float min_dist, float rand_dist)
 {
 	MapCoords pos;
 	pos = GetArrivePos();
-	float angle = GRand::GameFloatRand(2.0f * (float)M_PI / divisions, ABODE_FILE, ABODE_LINE(2378)) -
+	float angle = (GRand::GameFloatRand(2.0f * (float)M_PI / divisions, ABODE_FILE, ABODE_LINE(2378))) -
 	              2.0f * (float)M_PI / (divisions + divisions);
 	angle += GUtils::Get3DAngleFromXZ(Pos, pos);
-	float dist = GRand::GameFloatRand(rand_dist, ABODE_FILE, ABODE_LINE(2379)) + min_dist;
+	float dist = (GRand::GameFloatRand(rand_dist, ABODE_FILE, ABODE_LINE(2379))) + min_dist;
 	pos += GUtils::GetPosFromAngle(angle, dist);
 	return pos;
 }
