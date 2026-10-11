@@ -62,9 +62,8 @@ Bookmark::~Bookmark()
 
 void Bookmark::GetBookMarkSet()
 {
-	uint8_t flags = Flags & ~BOOKMARK_FLAG_SET;
 	Target = NULL;
-	Flags = flags;
+	Flags &= ~BOOKMARK_FLAG_SET;
 }
 
 void Bookmark::Clear(unsigned long index)
