@@ -7,6 +7,10 @@
 #define DANCE_SHAPE_NUM_POINTS 256
 /* Characters of the name and of the file name of a dance shape */
 #define DANCE_SHAPE_NAME_LENGTH 64
+/* Shape coordinates of the edge of a dance shape (GUtils::ShapePosToMeters) */
+#define DANCE_SHAPE_RADIUS 0x10000
+/* Characters of the path a dance shape is loaded from */
+#define DANCE_SHAPE_PATH_LENGTH 256
 
 /* The shapes a dance group can take, set by DANCE_GROUP_ACTION_TYPE_SET_SHAPE, in the order of DanceShapeInfos */
 enum DANCE_SHAPE
@@ -70,6 +74,56 @@ public:
 
 static_assert(sizeof(JustXZ) == 0x8, "Data type is of wrong size");
 
+/* The generators of the dance shapes; shapes kept in files are read by GData::LoadShape instead */
+class MakeShape
+{
+public:
+	// Static methods
+
+	// BW1W120 0050f9a0 BW1M119 012b3ee0
+	static void MakeShapeCircle(unsigned long shape);
+	// BW1W120 0050fa00 BW1M119 012b3d90
+	static void MakeShapeWaveyCircle(unsigned long shape);
+	// BW1W120 0050fa80 BW1M119 012b3c80
+	static void MakeShapeSpiral(unsigned long shape);
+	// BW1W120 0050fb70 BW1M119 012b38d0
+	static void MakeShapeSquare(unsigned long shape);
+	// BW1W120 0050fcd0 BW1M119 012b37c0
+	static void MakeShapeLineVertical(unsigned long shape);
+	// BW1W120 0050fd10 BW1M119 012b36a0
+	static void MakeShapeLineHorizontal(unsigned long shape);
+	// BW1W120 0050fd50 BW1M119 012b3560
+	static void MakeShapeNonCentredHorizontalLine(unsigned long shape);
+	// BW1W120 0050fd90 BW1M119 012b3460
+	static void MakeShapeRandomScatter(unsigned long shape);
+	// BW1W120 0050fe70 BW1M119 012b32d0
+	static void MakeShapeLoop(unsigned long shape);
+	// BW1W120 0050ff30 BW1M119 012b31f0
+	static void MakeShapePoint(unsigned long shape);
+	// BW1W120 0050ff50 BW1M119 012b2fe0
+	static void MakeShapeTriangle(unsigned long shape);
+	// BW1W120 00510090 BW1M119 012b2d50
+	static void MakeShapeHeart(unsigned long shape);
+	// BW1W120 00510210 BW1M119 012b2b70
+	static void MakeShapeOctagon(unsigned long shape);
+	// BW1W120 00510330 BW1M119 012b2b40
+	static void LoadShape(unsigned long shape);
+};
+
+/* A dance shape: its name in the dance editor, the generator of its points and the file they are loaded from when
+ * the generator is MakeShape::LoadShape */
+struct DanceShapeInfo
+{
+	char Name[DANCE_SHAPE_NAME_LENGTH];
+	void (*Make)(unsigned long shape);
+	char FileName[DANCE_SHAPE_NAME_LENGTH];
+};
+
+static_assert(sizeof(DanceShapeInfo) == 0x84, "Data type is of wrong size");
+
+// BW1W120 008d47f8
+extern const DanceShapeInfo DanceShapeInfos[DANCE_SHAPE_LAST];
+// BW1W120 00cadb70
 extern JustXZ DanceShapePoints[DANCE_SHAPE_LAST][DANCE_SHAPE_NUM_POINTS];
 
 #endif /* BW1_DECOMP_DANCE_SHAPE_INCLUDED_H */

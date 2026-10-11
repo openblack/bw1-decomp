@@ -6,6 +6,10 @@
 
 #include "Base.h" /* For struct Base */
 
+// Forward Declares
+
+class JustXZ;
+
 class GData : public Base
 {
 public:
@@ -38,6 +42,10 @@ public:
 	uint32_t GetGameTurn() const { return GameTurn; }
 	// BW1W120 0050f960 BW1M119 012b4010
 	void InitialiseShapes();
+	// BW1W120 00510340 BW1M119 012b29e0
+	void LoadShape(const char* name, unsigned long shape);
+	// BW1W120 00510400 BW1M119 012b2750
+	JustXZ CalculatePointOnLine(JustXZ& from, JustXZ& to, int step, int num_steps);
 };
 
 #endif /* BW1_DECOMP_DATA_INCLUDED_H */
