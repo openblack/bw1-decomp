@@ -795,7 +795,7 @@ bool32_t Villager::ArtifactDance()
 			return true;
 		}
 	}
-	PerformDance(dance_group->behaviour->Pos, VILLAGER_STATE_ARTIFACT_DANCE, dance_group->field_0x5c);
+	PerformDance(dance_group->behaviour->Pos, VILLAGER_STATE_ARTIFACT_DANCE, dance_group->Action.Kind);
 	return true;
 }
 

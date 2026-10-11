@@ -9,8 +9,9 @@
 #include <Lionhead/LHLib/ver5.0/LHStack.h>      /* For class LHStack */
 #include <re_common.h>                          /* For bool32_t */
 
-#include "GameThing.h" /* For struct GameThing */
-#include "MapCoords.h" /* For struct MapCoords */
+#include "GameThing.h"  /* For struct GameThing */
+#include "DanceShape.h" /* For enum DANCE_SHAPE */
+#include "MapCoords.h"  /* For struct MapCoords */
 
 enum DANCE_GROUP_ACTION_TYPE
 {
@@ -89,8 +90,6 @@ enum DANCE_GROUP_MOVEMENT_KIND
 	DANCE_GROUP_MOVEMENT_KIND_CREATURE_POINT = 0x28,
 };
 
-/* The movement a dance group performs, set by DANCE_GROUP_ACTION_TYPE_SET_ACTION: a kind of movement with up to two
- * parameters, running until EndTime. */
 /* The first parameter of a DancerAction: a value, or the direction of DANCE_GROUP_MOVEMENT_KIND_ROTATE_DANCERS and
  * DANCE_GROUP_MOVEMENT_KIND_ROTATE_SHAPE */
 union DancerActionParam {
@@ -98,6 +97,8 @@ union DancerActionParam {
 	bool32_t Direction;
 };
 
+/* The movement a dance group performs, set by DANCE_GROUP_ACTION_TYPE_SET_ACTION: a kind of movement with up to two
+ * parameters, running until EndTime. */
 struct DancerAction
 {
 	DANCE_GROUP_MOVEMENT_KIND Kind;
@@ -162,6 +163,9 @@ enum DANCE_GROUP_VILLAGER_TYPE
 
 /* Dancer angles (DanceGroup::DancerAngle) count 256 units per turn */
 #define DANCE_DANCER_ANGLE_FULL_TURN 256.0f
+/* Dancer angles step by one unit, so the last one before a full turn is one unit short of it */
+#define DANCE_DANCER_ANGLE_UNIT 1.0f
+#define DANCE_DANCER_ANGLE_MAX  (DANCE_DANCER_ANGLE_FULL_TURN - DANCE_DANCER_ANGLE_UNIT)
 /* Shape angles (DanceGroup::Angle) count 2048 units per turn, like the game angles */
 #define DANCE_SHAPE_ANGLE_FULL_TURN 2048.0f
 
@@ -170,6 +174,21 @@ struct DancePos
 {
 	float x;
 	float z;
+
+	void operator+=(const DancePos& other)
+	{
+		x += other.x;
+		z += other.z;
+	}
+};
+
+/* The share of the dancers a dance group takes, set by DANCE_GROUP_ACTION_TYPE_PROPORTION: a fixed number of dancers,
+ * or a proportion of them that GroupBehaviour::UpdateNumeratorsAndDenominator reduces to Numerator */
+struct DanceGroupProportion
+{
+	bool32_t      Fixed;
+	unsigned long Value;
+	unsigned long Numerator;
 };
 
 /* What a dance group changes by every game turn while it performs its DancerAction */
@@ -213,31 +232,26 @@ public:
 	DanceGroupChange      Change; /* 0x28 */
 	bool32_t              Hidden;
 	bool32_t              IsPath; /* 0x40 */
-	uint32_t              Shape;
+	DANCE_SHAPE           Shape;
 	DancePos              Pos;
 	float                 Size; /* 0x50 */
 	uint32_t              Unused;
 	float                 Angle;
 
-	uint32_t          field_0x5c;
-	DancerActionParam ActionParam1; /* 0x60 */
-	float             ActionParam2;
-	long              ActionEndTime;
-	float             DancerAngle; /* 0x6c */
-	DanceGroup*       Parent;
-	uint8_t           IndexInParent;
-	uint32_t          NumDancersAssigned;
-	bool32_t          Moved;
-	long              Speed; /* 0x80 */
-	bool32_t          HasLastCentre;
-	MapCoords         Centre;
-	MapCoords         LastCentre;
-	DANCE_TYPE        LivingType; /* 0xa0 */
-	uint32_t          NumLights;
-	char              Name[DANCE_GROUP_NAME_LENGTH];
-	bool32_t          Fixed; /* 0xe8 */
-	unsigned long     Proportion;
-	unsigned long     Numerator;
+	DancerAction         Action;
+	float                DancerAngle; /* 0x6c */
+	DanceGroup*          Parent;
+	uint8_t              IndexInParent;
+	uint32_t             NumDancersAssigned;
+	bool32_t             Moved;
+	long                 Speed; /* 0x80 */
+	bool32_t             HasLastCentre;
+	MapCoords            Centre;
+	MapCoords            LastCentre;
+	DANCE_TYPE           LivingType; /* 0xa0 */
+	uint32_t             NumLights;
+	char                 Name[DANCE_GROUP_NAME_LENGTH];
+	DanceGroupProportion Proportion; /* 0xe8 */
 
 	LHStack<unsigned long, DANCE_GROUP_MAX_CHILD_GROUPS> ChildGroups;  /* 0xf4 */
 	DANCE_GROUP_VILLAGER_TYPE                            VillagerType; /* 0x178 */

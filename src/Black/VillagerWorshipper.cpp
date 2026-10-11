@@ -488,8 +488,8 @@ bool32_t Villager::WorshippingAtWorshipSite()
 	}
 	bool32_t result = ProcessInWorship();
 	if (result == 1)
-		result =
-			PerformDance(dance_group->Dancer->Pos, VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE, dance_group->field_0x5c);
+		result = PerformDance(dance_group->Dancer->Pos, VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE,
+		                      dance_group->Action.Kind);
 	return result;
 }
 
@@ -530,7 +530,7 @@ bool32_t Villager::WorshippingCreature()
 		// TODO: +0x100 is a flag on the (unidentified) dancer type; keep the raw offset.
 		if (*(int*)((char*)p + 0x100) == 0)
 		{
-			PerformDance(p->Pos, VILLAGER_STATE_WORSHIPPING_CREATURE, dance_group->field_0x5c);
+			PerformDance(p->Pos, VILLAGER_STATE_WORSHIPPING_CREATURE, dance_group->Action.Kind);
 			return 1;
 		}
 		GoHome();

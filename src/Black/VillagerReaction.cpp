@@ -687,7 +687,7 @@ bool32_t Villager::DanceWhileReacting()
 	{
 		return DecideWhatToDo();
 	}
-	PerformDance(dance_group->behaviour->Pos, VILLAGER_STATE_DANCE_WHILE_REACTING, dance_group->field_0x5c);
+	PerformDance(dance_group->behaviour->Pos, VILLAGER_STATE_DANCE_WHILE_REACTING, dance_group->Action.Kind);
 	return 1;
 }
 

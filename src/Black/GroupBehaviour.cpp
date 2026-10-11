@@ -206,9 +206,9 @@ void GroupBehaviour::UpdateNumeratorsAndDenominator()
 	LHLinkedNode<DanceGroup*>* node;
 	for (node = ProportionGroups.GetStart(); node != NULL; node = node->next.Get())
 	{
-		if (node->payload->Proportion > maxProportion)
+		if (node->payload->Proportion.Value > maxProportion)
 		{
-			maxProportion = node->payload->Proportion;
+			maxProportion = node->payload->Proportion.Value;
 		}
 	}
 	for (unsigned long divisor = maxProportion; divisor >= 1; divisor--)
@@ -216,7 +216,7 @@ void GroupBehaviour::UpdateNumeratorsAndDenominator()
 		bool32_t dividesAll = true;
 		for (node = ProportionGroups.GetStart(); node != NULL; node = node->next.Get())
 		{
-			if (node->payload->Proportion % divisor != 0)
+			if (node->payload->Proportion.Value % divisor != 0)
 			{
 				dividesAll = false;
 			}
@@ -225,7 +225,7 @@ void GroupBehaviour::UpdateNumeratorsAndDenominator()
 		{
 			for (node = ProportionGroups.GetStart(); node != NULL; node = node->next.Get())
 			{
-				node->payload->Numerator = node->payload->Proportion / divisor;
+				node->payload->Proportion.Numerator = node->payload->Proportion.Value / divisor;
 			}
 			Denominator = GROUP_BEHAVIOUR_DEFAULT_DENOMINATOR / divisor;
 			return;
@@ -281,10 +281,10 @@ void GroupBehaviour::CalculateDancePosition(const MapCoords& centre, MapCoords* 
 	{
 		numPositions = dance_group->NumLights;
 	}
-	else if (dance_group->Fixed)
+	else if (dance_group->Proportion.Fixed)
 	{
-		numPositions =
-			dance_group->Proportion < dance_group->Dancers.count ? dance_group->Dancers.count : dance_group->Proportion;
+		numPositions = dance_group->Proportion.Value < dance_group->Dancers.count ? dance_group->Dancers.count
+		                                                                          : dance_group->Proportion.Value;
 	}
 	else
 	{

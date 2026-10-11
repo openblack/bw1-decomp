@@ -10,6 +10,7 @@
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>      /* For struct LHLinkedList */
 #include <Lionhead/LHLib/ver5.0/LHListHead.h>        /* For struct LHListHead */
+#include <Lionhead/LHLib/ver5.0/LHStack.h>           /* For class LHStack */
 
 #include <re_common.h> /* For bool32_t */
 
@@ -407,6 +408,51 @@ public:
 		if (WriteEnabled && written != (int)count)
 		{
 			WriteEnabled = false;
+		}
+		return true;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	template <typename T, int N> bool32_t ReadSafe(LHStack<T, N>& stack)
+	{
+		if (!ReadEnabled)
+		{
+			return false;
+		}
+		long count;
+		ReadIt(count);
+		while (count > 0)
+		{
+			T value;
+			ReadIt(value);
+			stack.Push(value);
+			count--;
+		}
+		return true;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	template <typename T, int N> bool32_t WriteSafe(LHStack<T, N>& stack)
+	{
+		if (!WriteEnabled)
+		{
+			return false;
+		}
+		uint32_t count = stack.Size();
+		int      written = 0;
+		long     size = stack.Size();
+		WriteIt(size);
+		for (long i = size - 1; i >= 0; i--)
+		{
+			if (++written > (int)count)
+			{
+				WriteEnabled = false;
+				break;
+			}
+			if (!WriteEnabled)
+			{
+				break;
+			}
+			T value = stack[i];
+			WriteIt(value);
 		}
 		return true;
 	}
