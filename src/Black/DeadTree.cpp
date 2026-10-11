@@ -4,6 +4,7 @@
 #include "ColourConstants.h" /* For White */
 #include "FelledTree.h"
 #include "Reaction.h"
+#include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 
 uint32_t DeadTree::GetSaveType()
 {
@@ -13,6 +14,11 @@ uint32_t DeadTree::GetSaveType()
 uint32_t FelledTree::GetSaveType()
 {
 	return GAME_THING_TYPE_FELLED_TREE;
+}
+
+uint32_t FelledTree::GetPhysicsConstantsType()
+{
+	return PHYSICS_CONSTANTS_TYPE_TREE;
 }
 
 bool32_t DeadTree::HandShouldFeelWithMeshIntersect()

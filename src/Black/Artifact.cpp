@@ -2,6 +2,7 @@
 #include "Artifact.h"
 
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "Object.h"
 
 uint32_t TownArtifact::GetSaveType()
 {
@@ -16,4 +17,9 @@ GPlayer* TownArtifact::GetPlayer()
 Town* TownArtifact::GetTown()
 {
 	return town;
+}
+
+bool32_t Object::CanBeFrighteningToCreature(Creature* param_1)
+{
+	return false;
 }

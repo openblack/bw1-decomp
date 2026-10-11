@@ -3,6 +3,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include "Flock.h"
+#include "PuzzleGame.h"
 #include "Utils.h"
 
 void Animal::SetStateSpeed() {}
@@ -49,6 +50,41 @@ SCRIPT_OBJECT_TYPE Animal::GetScriptObjectType()
 bool32_t Animal::IsAnimal()
 {
 	return true;
+}
+
+bool32_t Living::CanBeFrighteningToCreature(Creature* param_1)
+{
+	return false;
+}
+
+uint32_t PieceVillager::GetSaveType()
+{
+	return GAME_THING_TYPE_PIECE_VILLAGER;
+}
+
+bool32_t PieceVillager::DecideWhatToDo()
+{
+	return true;
+}
+
+uint32_t PieceVillager::ProcessNeeds()
+{
+	return 0;
+}
+
+uint32_t PieceVillager::CheckNeeds()
+{
+	return 0;
+}
+
+bool32_t PieceVillager::CanBeFrighteningToCreature(Creature* param_1)
+{
+	return false;
+}
+
+Town* Object::GetTown()
+{
+	return NULL;
 }
 
 uint32_t Animal::IsOkToBeShepherd()

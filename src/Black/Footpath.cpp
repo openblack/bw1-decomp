@@ -8,6 +8,8 @@
 #include "FootpathLinkSave.h"
 #include "FootpathNode.h"
 
+void GFootpathNode::ResolveLoad() {}
+
 uint32_t GFootpathLink::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))

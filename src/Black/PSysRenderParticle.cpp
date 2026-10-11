@@ -10,6 +10,11 @@ uint32_t Chain::GetSaveType()
 	return GAME_THING_TYPE_CHAIN;
 }
 
+uint32_t DrawOffset::GetSaveType()
+{
+	return GAME_THING_TYPE_UNUSED_000;
+}
+
 uint32_t DrawOffsetDecay::GetSaveType()
 {
 	return GAME_THING_TYPE_DRAW_OFFSET_DECAY;

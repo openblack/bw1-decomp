@@ -1,7 +1,8 @@
 #include "GameTimeConstants.h"
 #include "MagicVortex.h"
 
-#include "ColourConstants.h" /* For White */
+#include "ColourConstants.h"      /* For White */
+#include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 
 uint32_t LandscapeVortexIn::GetSaveType()
 {
@@ -16,4 +17,9 @@ uint32_t LandscapeVortexOut::GetSaveType()
 uint32_t LandscapeVortexVolc::GetSaveType()
 {
 	return GAME_THING_TYPE_LANDSCAPE_VORTEX_VOLC;
+}
+
+uint32_t LandscapeVortexIn::GetPhysicsConstantsType()
+{
+	return PHYSICS_CONSTANTS_TYPE_VORTEX;
 }

@@ -6,3 +6,5 @@ uint32_t MagicFireBall::GetSaveType()
 }
 
 void MagicFireBall::InsertMapObject() {}
+
+void MagicFireBall::Draw() {}
