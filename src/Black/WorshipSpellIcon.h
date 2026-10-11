@@ -9,6 +9,7 @@
 
 // Forward Declares
 
+class SpellSeed;
 class Base;
 class Citadel;
 class EffectValues;
@@ -90,6 +91,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0077fce0 BW1M119 015bc3f0
+	void UseCreateChants(SpellSeed* seed);
 	// BW1W120 0077f1f0 BW1M119 inlined
 	void SetToZero();
 	// BW1W120 0077f320 BW1M119 015bdb70
@@ -108,6 +111,8 @@ public:
 	bool32_t RequestSpell(GInterfaceStatus* status, POWER_UP_TYPE power_up, bool param_3);
 	// BW1W120 0077fba0 BW1M119 015bc820
 	bool32_t ValidForRequestSpell(GInterfaceStatus* status, POWER_UP_TYPE power_up, bool param_3);
+	// BW1W120 0077fcd0 BW1M119 015bc4d0
+	void AddChantsToSeedOnSeedCreation(SpellSeed* seed);
 };
 
 class PrayerIcon : public SingleMapFixed

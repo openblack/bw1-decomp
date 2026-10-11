@@ -3,6 +3,10 @@
 #include "GameTimeConstants.h"
 #include "CreatureMental.h"
 
+#include "Abode.h"    /* For ABODE_BEING_BUILT_LAST */
+#include "Creature.h" /* For CREATURE_HEIGHT_LAST */
+#include "Forest.h"   /* For FOREST_SIZE_LAST */
+
 #include <chlasm/Enum.h> /* For ABODE_TYPE_LAST, SEX_TYPE_LAST, TRIBE_TYPE_LAST */
 
 #include "ColourConstants.h" /* For White */

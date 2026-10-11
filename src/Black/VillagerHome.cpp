@@ -15,8 +15,6 @@
 
 #define FILEPATH "C:\\dev\\MP\\Black\\VillagerHome.cpp"
 
-extern GVillagerStateTableInfo g_GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
-
 // BW1W120 0075bb60
 float __stdcall POWER(float base);
 
@@ -212,7 +210,7 @@ bool32_t Villager::DoGoingHome(VILLAGER_STATES arrive_state, VILLAGER_STATES ten
 			end_state = action.states[LIVING_ACTION_INDEX_TOP];
 			float angle = GRand::GameFloatRand(1.5707964f, FILEPATH, 295) - 0.78539819f +
 			              GUtils::Get3DAngleFromXZ(Pos, town->Pos);
-			float dist = GRand::GameFloatRand(25.0f, FILEPATH, 296) + 10.0f;
+			float dist = (GRand::GameFloatRand(25.0f, FILEPATH, 296)) + 10.0f;
 			pos = town->Pos + GUtils::GetPosFromAngle(angle, dist);
 		}
 		else
@@ -256,7 +254,7 @@ bool32_t Villager::ArrivesHome()
 					{
 						float angle = 0.39269909f - GRand::GameFloatRand(0.78539819f, FILEPATH, 465);
 						angle += GUtils::Get3DAngleFromXZ(Pos, abode->Pos);
-						float     dist = GRand::GameFloatRand(5.0f, FILEPATH, 466) + 5.0f;
+						float     dist = (GRand::GameFloatRand(5.0f, FILEPATH, 466)) + 5.0f;
 						MapCoords spot = Pos + GUtils::GetPosFromAngle(angle, dist);
 						if (GetTentPos(spot) != NULL)
 						{
@@ -864,9 +862,9 @@ bool32_t Villager::ExitGoHomeAndChange(unsigned char state)
 	{
 		Town*      town = GetTown();
 		TRIBE_TYPE tribe = town != NULL ? town->tribe_type : ((const GVillagerInfo*)info)->TribeType;
-		// TODO: only a reloc-form diff remains (raw address vs g_GVillagerStateTableInfos
+		// TODO: only a reloc-form diff remains (raw address vs GVillagerStateTableInfo::Infos
 		// symbol); byte-identical after link
-		ChangeTribeIfRequired(tribe, g_GVillagerStateTableInfos[state].field_0xd0 == 0);
+		ChangeTribeIfRequired(tribe, GVillagerStateTableInfo::Infos[state].field_0xd0 == 0);
 	}
 	if (DiscipleType == VILLAGER_DISCIPLE_CHANGE_HOUSE)
 	{
@@ -904,7 +902,7 @@ bool32_t Villager::SleepInTent()
 // BW1W120 00761b40 BW1M119 01097740
 bool32_t Villager::ExitAtHome(unsigned char state)
 {
-	if (g_GVillagerStateTableInfos[state].field_0xd0 == 0)
+	if (GVillagerStateTableInfo::Infos[state].field_0xd0 == 0)
 	{
 		LeaveHome();
 	}

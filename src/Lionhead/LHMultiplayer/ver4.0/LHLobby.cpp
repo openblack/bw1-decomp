@@ -771,8 +771,7 @@ void LHLobbyChannel::ClearInternalMessageServer()
 		{
 			if (InternalMessageServer->Mode != LH_OPERATING_MODE_NONE)
 			{
-				Session->Write(
-					LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_CLIENT_SHUTDOWN_SERVER, LH_ALL_USERS, 0, NULL));
+				Session->Write(LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_CLIENT_SHUTDOWN_SERVER, LH_EVERYONE, 0, NULL));
 				InternalMessageServer->WaitUntilShutdown();
 			}
 			if (InternalMessageServer->Mode != LH_OPERATING_MODE_NONE)

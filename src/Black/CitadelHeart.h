@@ -216,6 +216,8 @@ public:
 	// BW1W120 00465110 BW1M119 011c7d90
 	WorshipSite* CreateBuiltWorshipSite(const MapCoords& coords, const GWorshipSiteInfo* info, const Citadel* citadel,
 	                                    const GTribeInfo* tribe_info);
+	// BW1W120 00468db0 BW1M119 011c4280
+	void UpdateLeashes();
 };
 
 #endif /* BW1_DECOMP_CITADEL_HEART_INCLUDED_H */

@@ -9,12 +9,9 @@
 #include <chlasm/Enum.h>                        /* For MAGIC_TYPE_LAST, OBJECT_TYPE_LAST, enum CREATURE_DESIRES */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 
-#include "Abode.h"                 /* For ABODE_BEING_BUILT_LAST */
 #include "Base.h"                  /* For struct Base */
-#include "Creature.h"              /* For CREATURE_HEIGHT_LAST */
 #include "CreatureLearning.h"      /* For struct CreatureLearningEpisode */
 #include "CreatureLessonChooser.h" /* For _LESSON_TYPE_COUNT */
-#include "Forest.h"                /* For FOREST_SIZE_LAST */
 
 enum DECISION_TREE_TYPE
 {
@@ -136,7 +133,7 @@ class AttributeAbodeBeingBuilt : public Attribute
 public:
 	// Static members
 
-	static char ValueNames[ABODE_BEING_BUILT_LAST][64];
+	static char ValueNames[][64];
 
 	// Override methods
 
@@ -253,7 +250,7 @@ class AttributeCreatureHeight : public Attribute
 public:
 	// Static members
 
-	static char ValueNames[CREATURE_HEIGHT_LAST][64];
+	static char ValueNames[][64];
 
 	// Override methods
 
@@ -341,7 +338,7 @@ class AttributeForestSize : public Attribute
 public:
 	// Static members
 
-	static char ValueNames[FOREST_SIZE_LAST][64];
+	static char ValueNames[][64];
 
 	// Override methods
 

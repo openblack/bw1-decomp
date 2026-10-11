@@ -3,7 +3,10 @@
 
 #include "ColourConstants.h" /* For White */
 
+#include "Abode.h"    /* For ABODE_BEING_BUILT_LAST */
+#include "Creature.h" /* For CREATURE_HEIGHT_LAST */
 #include "CreatureMentalBelief.h"
+#include "Forest.h" /* For FOREST_SIZE_LAST */
 
 bool32_t AttributeCreatureDominantDesire::IsDynamic()
 {
@@ -39,7 +42,7 @@ const char* AttributeCreatureHeight::TypeName()
 
 uint32_t AttributeCreatureHeight::ValueRange()
 {
-	return ARRAY_SIZE(ValueNames);
+	return CREATURE_HEIGHT_LAST;
 }
 
 const char* AttributeCreatureHeight::ValueName(unsigned long value)
@@ -110,7 +113,7 @@ const char* AttributeForestSize::TypeName()
 
 uint32_t AttributeForestSize::ValueRange()
 {
-	return ARRAY_SIZE(ValueNames);
+	return FOREST_SIZE_LAST;
 }
 
 const char* AttributeForestSize::ValueName(unsigned long value)
@@ -191,7 +194,7 @@ const char* AttributeAbodeBeingBuilt::TypeName()
 
 uint32_t AttributeAbodeBeingBuilt::ValueRange()
 {
-	return ARRAY_SIZE(ValueNames);
+	return ABODE_BEING_BUILT_LAST;
 }
 
 const char* AttributeAbodeBeingBuilt::ValueName(unsigned long value)

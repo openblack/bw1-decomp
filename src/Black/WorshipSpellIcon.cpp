@@ -25,3 +25,8 @@ float WorshipSpellIcon::ApplyEffect(EffectValues& param_1, int param_2)
 {
 	return 0.0f;
 }
+
+void WorshipSpellIcon::AddChantsToSeedOnSeedCreation(SpellSeed* seed)
+{
+	UseCreateChants(seed);
+}
