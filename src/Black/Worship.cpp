@@ -4,3 +4,5 @@ SCRIPT_OBJECT_TYPE WorshipSite::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_WORSHIP_SITE;
 }
+
+void WorshipSite::UpdateFrom3DPosition() {}

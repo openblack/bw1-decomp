@@ -33,3 +33,8 @@ void Bonfire::PhysicsEditorCreate(int param_1)
 {
 	Pos.altitude = 0.0f;
 }
+
+unsigned int MobileStatic::GetTastiness()
+{
+	return 0;
+}

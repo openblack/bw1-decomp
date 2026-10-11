@@ -99,3 +99,5 @@ uint32_t CreatureDesires::FindWeakestDesire()
 	}
 	return weakest;
 }
+
+void CreatureDesires::StorePreviousValues() {}

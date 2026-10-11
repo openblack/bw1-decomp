@@ -46,3 +46,12 @@ Town* BuildingSite::GetTown()
 	}
 	return NULL;
 }
+
+void CitadelBuildingSite::CreatePileWood() {}
+
+unsigned int WorkshopBuildingSite::GetWoodForStats()
+{
+	return 0;
+}
+
+void WorkshopBuildingSite::Process() {}

@@ -1973,3 +1973,38 @@ float Abode::GetVillagerHealthTotal()
 	}
 	return total;
 }
+
+int GameThing::IsFootpathLink()
+{
+	return 0;
+}
+
+GFootpathLink* GameThing::GetFootpathLink()
+{
+	return NULL;
+}
+
+Abode* GameThing::CastAbode()
+{
+	return NULL;
+}
+
+MultiMapFixed* GameThing::CastMultiMapFixed()
+{
+	return NULL;
+}
+
+bool GameThing::CanBecomeArtifact()
+{
+	return false;
+}
+
+int GameThingWithPos::IsMoving() const
+{
+	return 0;
+}
+
+int GameThingWithPos::IsObject() const
+{
+	return 0;
+}

@@ -17,3 +17,5 @@ bool32_t FireFly::CanBecomeAPhysicsObject()
 {
 	return false;
 }
+
+void FireFly::DrawAll() {}
