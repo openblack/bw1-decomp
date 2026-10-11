@@ -12,11 +12,46 @@
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "MapCoords.h"        /* For struct MapCoords */
 
-// Forward Declares
+enum CREATURE_BELIEF_ATTRIBUTE
+{
+	CREATURE_BELIEF_ATTRIBUTE_ALLEGIANCE = 0,
+	CREATURE_BELIEF_ATTRIBUTE_ORIGIN = 1,
+	CREATURE_BELIEF_ATTRIBUTE_ANIMATE = 2,
+	CREATURE_BELIEF_ATTRIBUTE_PLAYER_NUMBER = 3,
+	CREATURE_BELIEF_ATTRIBUTE_HARDER_THAN_ME = 4,
+	CREATURE_BELIEF_ATTRIBUTE_CREATURE_TYPE = 5,
+	CREATURE_BELIEF_ATTRIBUTE_TYPE = 6,
+	CREATURE_BELIEF_ATTRIBUTE_COMMON_LAST = 7,
 
-#define CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES    (ATTRIBUTE_TYPE_TYPE + 1)
-#define CREATURE_BELIEF_NUM_FOREST_ATTRIBUTES   (CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES + 1)
-#define CREATURE_BELIEF_NUM_DETAILED_ATTRIBUTES (CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES + 4)
+	CREATURE_BELIEF_ATTRIBUTE_TOWN_RELIGIOUS_BELIEF_IN_YOU = CREATURE_BELIEF_ATTRIBUTE_COMMON_LAST,
+	CREATURE_BELIEF_ATTRIBUTE_TOWN_NEEDS_MOST,
+	CREATURE_BELIEF_ATTRIBUTE_TOWN_SIZE,
+	CREATURE_BELIEF_ATTRIBUTE_TOWN_TRIBE,
+	CREATURE_BELIEF_ATTRIBUTE_TOWN_LAST,
+
+	CREATURE_BELIEF_ATTRIBUTE_FOREST_SIZE = CREATURE_BELIEF_ATTRIBUTE_COMMON_LAST,
+	CREATURE_BELIEF_ATTRIBUTE_FOREST_LAST,
+
+	CREATURE_BELIEF_ATTRIBUTE_ABODE_TYPE = CREATURE_BELIEF_ATTRIBUTE_COMMON_LAST,
+	CREATURE_BELIEF_ATTRIBUTE_ABODE_LIFE,
+	CREATURE_BELIEF_ATTRIBUTE_ABODE_ON_FIRE,
+	CREATURE_BELIEF_ATTRIBUTE_ABODE_BEING_BUILT,
+	CREATURE_BELIEF_ATTRIBUTE_ABODE_LAST,
+
+	CREATURE_BELIEF_ATTRIBUTE_VILLAGER_SEX = CREATURE_BELIEF_ATTRIBUTE_COMMON_LAST,
+	CREATURE_BELIEF_ATTRIBUTE_VILLAGER_JOB,
+	CREATURE_BELIEF_ATTRIBUTE_VILLAGER_LIFE,
+	CREATURE_BELIEF_ATTRIBUTE_VILLAGER_ON_FIRE,
+	CREATURE_BELIEF_ATTRIBUTE_VILLAGER_LAST,
+
+	CREATURE_BELIEF_ATTRIBUTE_CREATURE_DOMINANT_DESIRE = CREATURE_BELIEF_ATTRIBUTE_COMMON_LAST,
+	CREATURE_BELIEF_ATTRIBUTE_CREATURE_HEIGHT,
+	CREATURE_BELIEF_ATTRIBUTE_CREATURE_SPELL_KNOWLEDGE,
+	CREATURE_BELIEF_ATTRIBUTE_CREATURE_CARRYING,
+	CREATURE_BELIEF_ATTRIBUTE_CREATURE_LAST,
+};
+
+// Forward Declares
 
 class Archive;
 class Attribute;
@@ -61,7 +96,7 @@ public:
 	// BW1W120 004e8e00 BW1M119 0126c130
 	virtual void Load(Archive& archive);
 	// BW1W120 004c7920 BW1M119 01239af0
-	virtual void Dump(FILE* file, unsigned long param_2);
+	virtual void Dump(FILE* file, unsigned long indent);
 
 	// Non-virtual methods
 
@@ -77,7 +112,7 @@ static_assert(sizeof(CreatureBelief) == 0x4c, "Data type is of wrong size");
 class CreatureBeliefAboutAbode : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_DETAILED_ATTRIBUTES];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_ATTRIBUTE_ABODE_LAST];
 
 	// Override methods
 
@@ -97,14 +132,14 @@ public:
 	// BW1W120 004da720 BW1M119 0125ab70
 	virtual CreatureBelief* Copy();
 	// BW1W120 004c7ba0 BW1M119 012395b0
-	virtual void Dump(FILE* file, unsigned long param_2);
+	virtual void Dump(FILE* file, unsigned long indent);
 };
 static_assert(sizeof(CreatureBeliefAboutAbode) == 0x78, "Data type is of wrong size");
 
 class CreatureBeliefAboutCitadel : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_ATTRIBUTE_COMMON_LAST];
 
 	// Override methods
 
@@ -122,7 +157,7 @@ public:
 	// BW1W120 004da8b0 BW1M119 0125aa00
 	virtual CreatureBelief* Copy();
 	// BW1W120 004c7c20 BW1M119 01239430
-	virtual void Dump(FILE* file, unsigned long param_2);
+	virtual void Dump(FILE* file, unsigned long indent);
 };
 static_assert(sizeof(CreatureBeliefAboutCitadel) == 0x68, "Data type is of wrong size");
 
@@ -147,14 +182,14 @@ public:
 	// BW1W120 004da9d0 BW1M119 0125a810
 	virtual CreatureBelief* Copy();
 	// BW1W120 004c7be0 BW1M119 012394f0
-	virtual void Dump(FILE* file, unsigned long param_2);
+	virtual void Dump(FILE* file, unsigned long indent);
 };
 static_assert(sizeof(CreatureBeliefAboutContext) == 0x4c, "Data type is of wrong size");
 
 class CreatureBeliefAboutCreature : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_DETAILED_ATTRIBUTES];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_ATTRIBUTE_CREATURE_LAST];
 	/* 0x78 */ uint32_t   field_0x78;
 
 	// Override methods
@@ -175,14 +210,14 @@ public:
 	// BW1W120 004da1c0 BW1M119 0125b3e0
 	virtual CreatureBelief* Copy();
 	// BW1W120 004c7aa0 BW1M119 012397f0
-	virtual void Dump(FILE* file, unsigned long param_2);
+	virtual void Dump(FILE* file, unsigned long indent);
 };
 static_assert(sizeof(CreatureBeliefAboutCreature) == 0x7c, "Data type is of wrong size");
 
 class CreatureBeliefAboutFlock : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_ATTRIBUTE_COMMON_LAST];
 
 	// Override methods
 
@@ -200,14 +235,14 @@ public:
 	// BW1W120 004da0a0 BW1M119 0125b700
 	virtual CreatureBelief* Copy();
 	// BW1W120 004c7a60 BW1M119 012398b0
-	virtual void Dump(FILE* file, unsigned long param_2);
+	virtual void Dump(FILE* file, unsigned long indent);
 };
 static_assert(sizeof(CreatureBeliefAboutFlock) == 0x68, "Data type is of wrong size");
 
 class CreatureBeliefAboutForest : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_FOREST_ATTRIBUTES];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_ATTRIBUTE_FOREST_LAST];
 
 	// Override methods
 
@@ -225,7 +260,7 @@ public:
 	// BW1W120 004da360 BW1M119 0125b200
 	virtual CreatureBelief* Copy();
 	// BW1W120 004c7ae0 BW1M119 01239730
-	virtual void Dump(FILE* file, unsigned long param_2);
+	virtual void Dump(FILE* file, unsigned long indent);
 };
 static_assert(sizeof(CreatureBeliefAboutForest) == 0x6c, "Data type is of wrong size");
 
@@ -241,7 +276,7 @@ public:
 class CreatureBeliefAboutTown : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_DETAILED_ATTRIBUTES];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_ATTRIBUTE_TOWN_LAST];
 
 	// Override methods
 
@@ -261,14 +296,14 @@ public:
 	// BW1W120 004d9e80 BW1M119 0125b870
 	virtual CreatureBelief* Copy();
 	// BW1W120 004c7a20 BW1M119 01239970
-	virtual void Dump(FILE* file, unsigned long param_2);
+	virtual void Dump(FILE* file, unsigned long indent);
 };
 static_assert(sizeof(CreatureBeliefAboutTown) == 0x78, "Data type is of wrong size");
 
 class CreatureBeliefAboutVillager : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_DETAILED_ATTRIBUTES];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_ATTRIBUTE_VILLAGER_LAST];
 
 	// Override methods
 
@@ -288,14 +323,14 @@ public:
 	// BW1W120 004da450 BW1M119 0125aef0
 	virtual CreatureBelief* Copy();
 	// BW1W120 004c7b20 BW1M119 01239670
-	virtual void Dump(FILE* file, unsigned long param_2);
+	virtual void Dump(FILE* file, unsigned long indent);
 };
 static_assert(sizeof(CreatureBeliefAboutVillager) == 0x78, "Data type is of wrong size");
 
 class CreatureBeliefSmall : public CreatureBelief
 {
 public:
-	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_NUM_BASIC_ATTRIBUTES];
+	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_ATTRIBUTE_COMMON_LAST];
 
 	// Override methods
 
@@ -313,7 +348,7 @@ public:
 	// BW1W120 004d9d60 BW1M119 0125bb80
 	virtual CreatureBelief* Copy();
 	// BW1W120 004c79e0 BW1M119 01239a30
-	virtual void Dump(FILE* file, unsigned long param_2);
+	virtual void Dump(FILE* file, unsigned long indent);
 };
 static_assert(sizeof(CreatureBeliefSmall) == 0x68, "Data type is of wrong size");
 

@@ -211,7 +211,7 @@ AttributeAbodeBeingBuilt::~AttributeAbodeBeingBuilt() {}
 
 uint32_t CreatureBelief::GetType()
 {
-	return GetNthAttribute(ATTRIBUTE_TYPE_TYPE)->GetValue();
+	return GetNthAttribute(CREATURE_BELIEF_ATTRIBUTE_TYPE)->GetValue();
 }
 
 uint32_t CreatureBeliefSmall::GetNumAttributes()
