@@ -14,12 +14,29 @@ class LHTimer;
 struct LHErrorCode
 {
 	unsigned long Code;
-	char*         Text;
+	char*         Text; /* 0x4 */
 };
 
 enum LH_LOG_LEVEL
 {
+	LH_LOG_LEVEL_ERROR = -2,
 	LH_LOG_LEVEL_NONE = 0,
+};
+
+enum
+{
+	LH_LOG_MAX_ERROR_CODES = 1000,
+	LH_THREAD_PRIORITY_UNCHANGED = -255,
+};
+
+enum
+{
+	LH_LOG_LOCAL_ERROR_NONE = 0,
+	LH_LOG_LOCAL_ERROR_NOT_INITIALISED = 1,
+	LH_LOG_LOCAL_ERROR_NO_LOOKUP_TABLE = 2,
+	LH_LOG_LOCAL_ERROR_OPEN_FILE = 3,
+	LH_LOG_LOCAL_ERROR_THREAD = 4,
+	LH_LOG_LOCAL_ERROR_TLS = 5,
 };
 
 class LH_LOG_API LHLogger
@@ -86,18 +103,19 @@ public:
 	                              ...);
 
 	// BW1W120 10002bd0 BW1M119 null
-	int __cdecl CreateLogTextT(LHSPrintf* output, char* library, char* file, unsigned long line, char* format, ...);
+	bool32_t __cdecl CreateLogTextT(LHSPrintf* output, char* library, char* file, unsigned long line, char* format,
+	                                ...);
 	// BW1W120 10003970 BW1M119 null
-	static int CreateLogTextS(LHSPrintf* output, char* library, char* file, unsigned long line, char* format, ...);
+	static bool32_t CreateLogTextS(LHSPrintf* output, char* library, char* file, unsigned long line, char* format, ...);
 
 	// BW1W120 10002e80 BW1M119 null
-	int LogWin32ErrorT(unsigned long error, char* library, char* file, unsigned long line);
+	bool32_t LogWin32ErrorT(unsigned long error, char* library, char* file, unsigned long line);
 	// BW1W120 10003160 BW1M119 null
-	static int LogWin32ErrorS(char* library, char* file, unsigned long line);
+	static bool32_t LogWin32ErrorS(char* library, char* file, unsigned long line);
 
 	// BW1W120 10003850 BW1M119 null
-	int LogErrorCodeT(char* library, char* file, unsigned long line, LHErrorCode* codes, unsigned long code,
-	                  char* args);
+	bool32_t LogErrorCodeT(char* library, char* file, unsigned long line, LHErrorCode* codes, unsigned long code,
+	                       char* args);
 
 	// BW1W120 10002f50 BW1M119 null
 	static LH_LOG_LEVEL GetLevel();
@@ -129,7 +147,7 @@ public:
 #ifdef _LH_LOG_LIB_
 	// BW1W120 100279c0 BW1M119 01389500 (LHCombined Release)
 	static unsigned long TlsIndex;
-	// BW1W120 100279c4 BW1M119 null
+	// BW1W120 100279d4 BW1M119 null
 	static void* DLLHModule;
 #endif
 
@@ -137,30 +155,41 @@ private:
 	// BW1W120 100037c0 BW1M119 null
 	void Construct();
 	// BW1W120 10003510 BW1M119 null
-	int VCreateLogText(LHSPrintf* output, char* library, char* file, unsigned long line, char* format, char* args);
+	bool32_t VCreateLogText(LHSPrintf* output, char* library, char* file, unsigned long line, char* format, char* args);
 	// BW1W120 100033d0 BW1M119 null
-	static void SetLocalError(char* text, unsigned long code, unsigned long level);
+	static void SetLocalError(char* file, unsigned long line, unsigned long error);
 
 #ifdef _LH_LOG_LIB_
 	// BW1W120 100279c8 BW1M119 null
 	static LHTimer* LogTime;
 	// BW1W120 100279d0 BW1M119 null
 	static LHLogPropsSet* LogProps;
-	// BW1W120 100279d4 BW1M119 null
-	static int InitFlag;
+	// BW1W120 100279c4 BW1M119 null
+	static bool32_t InitFlag;
 #endif
 
-	LH_LOG_LEVEL  Level;      /* 0x0 */
+	LH_LOG_LEVEL  Level;
 	LHSPrintf     Text;       /* 0x4 */
-	LHSPrintf     field_0x405;
+	LHSPrintf     ErrorText;  /* 0x405 */
 	unsigned long Code;       /* 0x808 */
-	unsigned long field_0x80c;
+	bool32_t      NewLine;    /* 0x80c */
 	unsigned long ThreadID;   /* 0x810 */
 	char*         ThreadName; /* 0x814 */
 };
 
+static_assert(sizeof(LHLogger) == 0x818, "LHLogger size is incorrect");
+
+#ifdef _LH_LOG_LIB_
+static char* LHLogLibraryName;
+
+// BW1W120 10002cd0 BW1M119 null
+bool32_t PassesFilter(char* filter, bool32_t invert, char* string, ...);
+#endif
+
 // BW1W120 100279e0 BW1M119 null
 LH_LOG_API extern LHLogger LHSyslog;
+// BW1W120 1001dd04 BW1M119 null
+LH_LOG_API extern char* LH_LOG_NO_MEMORY_TEXT;
 
 // BW1W120 10003b00 BW1M119 0116daa0 (LHCombined Release)
 LH_LOG_API unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), unsigned int stack_size, void* argument,

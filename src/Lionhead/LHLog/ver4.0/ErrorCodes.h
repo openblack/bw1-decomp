@@ -5,5 +5,7 @@
 
 // BW1W120 1001d050 BW1M119 011df5bc (LHCombined Release)
 LH_LOG_API LHErrorCode LH_DX_Errors[];
+// BW1W120 1001db38 BW1M119 011e00a4 (LHCombined Release)
+LH_LOG_API extern LHErrorCode LH_WS_Errors[];
 
 #endif /* BW1_DECOMP_ERROR_CODES_INCLUDED_H */
