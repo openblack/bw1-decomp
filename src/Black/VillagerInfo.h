@@ -85,8 +85,8 @@ public:
 	uint32_t        FoodReqiredForDinner;
 	uint32_t        ProcessChecksEvery;
 	uint32_t        HavingSexTime; /* 0x2e0 */
-	uint32_t        DancingSpeed;
-	AgeToScale      ageToScale;
+	AgeToScale      ageToScale;    /* 0x2e4 */
+	uint32_t        DancingSpeed;  /* 0x334 */
 	ANIM_LIST       LAttractAnim[0x3];   /* 0x338 */
 	ANIM_LIST       LNeedAnim[0x3];      /* 0x344 */
 	float           MaxDistCarryFoodPit; /* 0x350 */
