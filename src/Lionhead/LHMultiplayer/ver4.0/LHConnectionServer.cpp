@@ -686,22 +686,26 @@ LH_RETURN LHConnectionServer::SendToConnection(LHConnection* connection, LHNetEv
 	return connection->Write(event);
 }
 
+inline char* LHTimer::GetText()
+{
+	unsigned long elapsed = MSeconds();
+	bool32_t      running = Running();
+	Stop();
+	if (elapsed < 60000)
+		sprintf(Text, "%d.%03ds ", elapsed / 1000, elapsed % 1000);
+	else
+		sprintf(Text, "%dm %d.%03ds ", elapsed / 60000, elapsed / 1000 % 60, elapsed % 1000);
+	if (running)
+		Start();
+	return Text;
+}
+
 LH_RETURN LHConnectionServer::BaseSendGreeting(LHConnection* connection)
 {
 	char* modeName = Mode == LH_OPERATING_MODE_SYNCHRONOUS ? "SYNCHRONOUS" : "ASYNCHRONOUS";
 
-	unsigned long uptime = Timer.MSeconds();
-	bool32_t      running = Timer.Running();
-	Timer.Stop();
-	if (uptime < 60000)
-		sprintf(Timer.Text, "%d.%03ds ", uptime / 1000, uptime % 1000);
-	else
-		sprintf(Timer.Text, "%dm %d.%03ds ", uptime / 60000, uptime / 1000 % 60, uptime % 1000);
-	if (running)
-		Timer.Start();
-
 	if (connection->Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_SERVER_GREETING, NetUser.GetID(), RegisteredName,
-	                                          UserName, modeName, Players.count, Timer.Text, IdleTime)) != LH_OK)
+	                                          UserName, modeName, Players.count, Timer.GetText(), IdleTime)) != LH_OK)
 		return LH_FAIL;
 	return SendGreeting(connection);
 }
