@@ -33,6 +33,8 @@ struct CameraExclusion
 
 	// BW1W120 00c5e160
 	static CameraExclusion* ExclusionList;
+	// BW1W120 009ce6b0
+	static bool32_t UseExclusions;
 	// BW1W120 009ce618
 	static float Margin;
 

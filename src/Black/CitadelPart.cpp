@@ -37,6 +37,11 @@ uint32_t CitadelPart::GetSaveType()
 	return GAME_THING_TYPE_CITADEL_PART;
 }
 
+bool32_t CitadelPart::CanBeDestroyedBySpell(Spell* spell)
+{
+	return false;
+}
+
 bool32_t CitadelPart::ShouldFootpathsGoRound()
 {
 	return true;

@@ -6,15 +6,20 @@
 #include <stdint.h>    /* For uint32_t, uint8_t */
 #include <re_common.h> /* For bool32_t */
 
+#include "LH3DColor.h" /* For struct LH3DColor */
 #include "LH3DMapCoords.h"
 #include "LHPoint.h"
 
 // Forward Declares
 
-struct LH3DColor;
 struct LHCoord;
 struct LH3DMaterial;
 struct LH3DTexture;
+
+enum
+{
+	LAND_CELL_DARKNESS_LEVELS = 256,
+};
 
 struct LandCell
 {
@@ -26,6 +31,13 @@ struct LandCell
 	uint8_t SaveColor;
 	uint8_t properties;
 	uint8_t flags;
+
+#ifdef LAND_CELL_DARKNESS_COLOURS
+	// Static data
+
+	// BW1W120 00edd90c BW1M119 01202f80 (LHCombined Release)
+	static LH3DColor g_darkness_to_color[LAND_CELL_DARKNESS_LEVELS];
+#endif
 
 	// Non-virtual methods
 

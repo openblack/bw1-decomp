@@ -16,6 +16,8 @@ class Base;
 class CitadelHeart;
 class Creature;
 class GCitadelHeartInfo;
+class GCitadelInfo;
+class GPlayer;
 class GTribeInfo;
 class GWorshipSiteInfo;
 class GameOSFile;
@@ -82,6 +84,8 @@ public:
 
 	// BW1W120 004629f0 BW1M119 011c3350
 	Citadel();
+	// BW1W120 00462b10 BW1M119 inlined
+	Citadel(const MapCoords& coords, const GCitadelInfo* info, GPlayer* player);
 
 	// Static methods
 

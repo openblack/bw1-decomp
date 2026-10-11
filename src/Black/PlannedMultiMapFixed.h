@@ -51,24 +51,31 @@ public:
 	virtual void SetScale(float scale_) { scale = scale_; }
 	// BW1W120 00648940 BW1M119 0111ed50
 	virtual const char* GetText();
-	// BW1W120 00465560 BW1M119 010d62b0
-	virtual bool32_t IsWonder();
 	// BW1W120 00648950 BW1M119 inlined
 	virtual BuildingSite* CreateBuildingSite();
 	// BW1W120 00469660 BW1M119 010c09d0
 	virtual MultiMapFixed* CreatePlanned(float param_1);
 	// BW1W120 00465540 BW1M119 010d6220
-	virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1);
+	virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1) { return NULL; }
 	// BW1W120 00648c50 BW1M119 0111e740
 	virtual void PostCreatePlanned(MultiMapFixed& param_1);
 	// BW1W120 00465550 BW1M119 010d6270
-	virtual bool32_t IsCivic();
+	virtual bool32_t IsCivic() { return false; }
+	// BW1W120 00465560 BW1M119 010d62b0
+	virtual bool32_t IsWonder() { return false; }
 	// BW1W120 00465570 BW1M119 010d62f0
-	virtual ABODE_TYPE GetAbodeType();
+	virtual ABODE_TYPE GetAbodeType() { return ABODE_TYPE_GENERAL; }
 	// BW1W120 00648910 BW1M119 01071cf0
 	virtual float GetDesireToBeRepaired();
 	// BW1W120 00648930 BW1M119 0111edb0
 	virtual void Draw();
+
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 011c5700
+	const GMultiMapFixedInfo* GetInfo() { return info.Get(); }
+	// BW1W120 inlined BW1M119 0158e670
+	float GetAngle() { return YAngle; }
 
 	// Constructors
 

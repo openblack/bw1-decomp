@@ -49,10 +49,32 @@ public:
 		int      count; // number of objs
 		Obj**    objs;
 
+		// Constructors
+
+		// BW1W120 008292d0 BW1M119 010d8220 (LHCombined Release)
+		List(long initial_size);
+
 		// Non-virtual methods
 
 		// BW1W120 inlined BW1M119 inlined
 		bool Collide(const List* other) const;
+		// BW1W120 00829330 BW1M119 0112d9f0 (LHCombined Release)
+		void IncreaseSize();
+		// BW1W120 inlined BW1M119 inlined
+		void Add(Obj* new_obj)
+		{
+			if (count == size)
+			{
+				IncreaseSize();
+			}
+			objs[count] = new_obj;
+			count++;
+		}
+
+		// Destructors
+
+		// BW1W120 00829260 BW1M119 01077390 (LHCombined Release)
+		~List();
 	};
 
 	struct Obj

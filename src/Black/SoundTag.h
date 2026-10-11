@@ -57,6 +57,8 @@ public:
 	static SoundTag* Create(const LHPoint& pos, unsigned long sample, bool param_3, unsigned long param_4,
 	                        unsigned long param_5, int param_6, int param_7, AUDIO_SFX_BANK_TYPE bank_type,
 	                        int param_9);
+	// BW1W120 0071ebe0 BW1M119 0151b7f0
+	static void Remove(GameThingWithPos* thing, unsigned long sample, AUDIO_SFX_BANK_TYPE bank_type);
 	// BW1W120 0071ed40 BW1M119 010a05d0
 	static LH_SAMPLE GetRandomSample(LH_SAMPLE first, unsigned long count);
 

@@ -19,6 +19,8 @@
 class Base;
 class Creature;
 class GAnimalInfo;
+class Flock;
+class GAnimalInfo;
 class GInterfaceStatus;
 class GPlayer;
 class GameOSFile;
@@ -347,6 +349,12 @@ public:
 	virtual uint8_t GetFinalState() const;
 	// BW1W120 0041b210 BW1M119 010585e0
 	virtual bool32_t IsPosValidForTurnAngle(const MapCoords& param_1);
+
+	// Static methods
+
+	// BW1W120 00419d10 BW1M119 01170710
+	static Animal* CreateFromType(const MapCoords& coords, const GAnimalInfo* info, Town* town, Flock* flock,
+	                              unsigned long param_5);
 
 	// Non-virtual methods
 

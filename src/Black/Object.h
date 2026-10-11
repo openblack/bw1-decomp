@@ -282,7 +282,7 @@ public:
 	// BW1W120 004025c0 BW1M119 01590950
 	virtual void SetSpecularColor(unsigned long color) {}
 	// BW1W120 004025d0 BW1M119 011748d0
-	virtual LH3DColor GetSpecularColor() { return LH3DColor(0); }
+	virtual unsigned long GetSpecularColor() { return 0; }
 	// BW1W120 004025e0 BW1M119 01173850
 	virtual void SetBeliefSprite(LH3DSprite* sprite) {}
 	// BW1W120 004025f0 BW1M119 0151b4a0

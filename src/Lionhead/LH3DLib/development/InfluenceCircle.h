@@ -3,9 +3,20 @@
 
 #include "LHPoint.h" /* For struct LHPoint */
 
+#include <re_common.h> /* For bool32_t */
+
+enum
+{
+	INFLUENCE_CIRCLE_PLAYER_COUNT = 8,
+};
+
 class InfluenceCircle
 {
 public:
+#ifdef INFLUENCE_CIRCLE_VALIDITY
+	// BW1W120 00eb9a1c BW1M119 011cea38 (LHCombined Release)
+	static bool32_t g_b_valid[INFLUENCE_CIRCLE_PLAYER_COUNT];
+#endif
 	// BW1W120 00c383dc BW1M119 011cea58 (LHCombined Release)
 	static float g_scale_inside_citadel;
 	// BW1W120 00ea9f20 BW1M119 011f1e08 (LHCombined Release)

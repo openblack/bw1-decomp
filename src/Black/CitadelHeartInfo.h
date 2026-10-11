@@ -17,20 +17,18 @@ class GCitadelHeartInfo : public GCitadelPartInfo
 public:
 	uint32_t field_0x134;
 	uint32_t field_0x138;
-	uint32_t field_0x13c;
-	float    field_0x140;
-	float    field_0x144;
-	float    field_0x148;
-	float    field_0x14c;
-	float    field_0x150;
+	uint32_t MaxAlignmentFlockSize;
+	float    LandInfluence[5];
 	float    TransferedDamageMultiplier;
 
 	// Override methods
 
-	// BW1W120 004643e0 BW1M119 011c95b0
-	virtual ~GCitadelHeartInfo();
 	// BW1W120 00464390 BW1M119 011c97a0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = sizeof(Infos) / sizeof(Infos[0]);
+		return GetInfo();
+	}
 
 	// Static data
 
