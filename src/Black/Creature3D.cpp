@@ -3874,7 +3874,7 @@ void LH3DCreature::DoStaticAction()
 				GLandscape::ConvertLandscapePointToMapCoord(anus, coords);
 				MobileObject* poo =
 					MobileObject::Create(coords, &GMobileObjectInfo::GetInfo()[MOBILE_OBJECT_INFO_LUMP_OF_POO], NULL,
-				                         GRand::GameFloatRand(6.2831855f, CREATURE_3D_FILE, 4870), Size1 * 1.5f);
+				                         (GRand::GameFloatRand(6.2831855f, CREATURE_3D_FILE, 4870)), Size1 * 1.5f);
 				poo->Pos.altitude = anus.y - GetAltitude(anus);
 				float   angle = Heading + 3.1415927f;
 				LHPoint velocity(5.0f * (float)sin(angle), 0.0f, 5.0f * -(float)cos(angle));

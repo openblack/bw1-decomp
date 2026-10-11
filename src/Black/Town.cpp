@@ -2415,7 +2415,7 @@ bool32_t Town::TryToCreateNewBuildingAt(PlannedAbode** planned, const MapCoords&
                                         TRIBE_TYPE tribe_type, Object* ignore_object, long abode_number,
                                         int skip_suitability_check)
 {
-	float angle = GRand::GameFloatRand(TWO_PI, TOWN_SOURCE_FILE, TOWN_LINE(2865));
+	float angle = (GRand::GameFloatRand(TWO_PI, TOWN_SOURCE_FILE, TOWN_LINE(2865)));
 	for (unsigned long i = 0; i < 8; i++)
 	{
 		if (GetNewPlannedBuilding(planned, pos, angle, 1.0f, num_scaffolds, ignore_object, tribe_type, abode_number,
