@@ -572,3 +572,21 @@ conflict with looser guidance above.
   compile differently.
 - **Rebuild the `main` baseline after `main` moves**, otherwise merged upstream work shows
   up as false regressions.
+
+## Verification integrity
+
+Matching must come from readable C++ source, never from embedding the original code. Do not
+use inline assembly (`__asm` / `_asm` / `asm { ... }`), naked functions
+(`__declspec(naked)`), `_emit`, or long `\xNN` byte runs in literals. CI runs
+`tools/check-no-cheats.py` and fails on them.
+
+Do not change the things that decide whether a match is real in order to make a function
+pass — the expected hashes (`config/*/build.sha1`), the comparison tools
+(`tools/decomp_common.py`, `tools/decomp-diff.py`, `tools/decomp_binary.py`,
+`tools/decomp-relocs.py`), or the CI workflows. CI runs
+`tools/check-verifier-integrity.py` and fails such changes. Editing `symbols.txt` or
+`splits.txt` changes what "a match" means and is reported for review.
+
+The match is measured by objdiff and the final build/DLL hashes, not by any justification
+written in the code, a commit message, or a PR description. A comment saying a divergence is
+"fine" is not evidence and must not be treated as one.
