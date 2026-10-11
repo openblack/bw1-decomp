@@ -517,14 +517,15 @@ conflict with looser guidance above.
   genuinely unknown, and even then prefer the closest evidence-based name. This extends
   to the base-class convention already used elsewhere (`ToBeDeleted(int delete_now)`,
   `CallVirtualFunctionsForCreation(const MapCoords& coords)`, `PhysicsEditorCreate(int type)`).
-- **`symbols.txt` is not ground truth.** Its mangled names and return types are
-  reconstructed and can be wrong — `class` vs `struct`, `bool` vs `int`, a return type
+- **Know which symbol source is authoritative.** The Mac symbols (`config/BW1M119`) are
+  ground truth — the real names survived, with only subtle differences, so they are right
+  ~99% of the time. The Windows `symbols.txt` mangled names and return types, by contrast,
+  are reconstructed and can be wrong — `class` vs `struct`, `bool` vs `int`, a return type
   that disagrees with the codegen, or an offset encoded relative to one symbol base that
-  resolves to a different one elsewhere. The binary and the codegen are the source of
-  truth: before renaming a type or changing a signature because `symbols.txt` says so,
-  confirm the change in objdiff *and* in the CI report, and check it does not regress
-  other functions, sections or data matches. A "fix" that matches `symbols.txt` but
-  worsens objdiff/CI is wrong.
+  resolves to a different one elsewhere. RTTI in the Windows binaries is absolute ground
+  truth for RTTI types. Before renaming a type or changing a signature, confirm the change
+  in objdiff *and* in the CI report, and check it does not regress other functions,
+  sections or data matches.
 - **Show it matching.** A PR must demonstrate the result (objdiff 100% and the CI report),
   not just assert it. Comment-only, analysis-only or "proposed" changes are not enough —
   a macro or abstraction must be shown working and matching.
@@ -544,12 +545,12 @@ conflict with looser guidance above.
   from the known entries (e.g. the belief `Attributes[]` slots named from the functions
   that fill them). Never reuse a `chlasm` name that only coincidentally has the same value.
 - **Name anything used in a significant way** — field, function, enum value, flag, or
-  parameter — from context: find what sets and reads it (ctors, `Create*`, state
-  `Enter`/`Exit`/`Process`, the state table's `Save`/`Load` pair) and name it by its role.
-  Fields that are only saved/loaded and never read may stay `field_0x…`, but say so in the PR.
+  parameter — from context: find what sets and reads it, then name it by its role. Fields
+  that are only saved/loaded and never read may stay `field_0x…`, but say so in the PR.
 - **Placement.** Counts/sizes follow the file's existing convention (frequently `#define`
-  lists rather than anonymous enums); new enums go in the owning class's header;
-  `include/chlasm/*.h` is semi-official — corrections only, never new content.
+  lists rather than anonymous enums); new enums go in the owning class's header.
+  `include/chlasm/*.h` comes from Creature Isle but is usable for Black & White; where its
+  last enumerator is too large it needs `#ifdef VERSION_BW1WCI` guards.
 - **Watch include/link side effects.** A new `#include` in a shared header reaches every
   unit that transitively includes it and can change their objects for *other* versions — an
   extra include in `CreatureMentalAttributeTest.h` changed `Audio.cpp`'s 1.00 object and
