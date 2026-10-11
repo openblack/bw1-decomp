@@ -380,6 +380,9 @@ analyses, name evidence and matching notes in the disassembly folder (see
   (an anonymous `enum { LH_... = n };` in the owning header, never new static data), use existing
   enums and Win32 names (`INFINITE`, `WAIT_FAILED`, `THREAD_PRIORITY_*`), `sizeof`/`ARRAY_SIZE`
   for repeated sizes, hex for colours and base 10 for line numbers.
+  `python tools/magic-scan.py [--since <ref>]` lists the numeric literals in the lines you added
+  (ignoring 0/1/2, comments, strings, enumerators, `#define`s, `static_assert`s and `FILEPATH` line
+  numbers; `--all` shows everything). Review each hit before pushing.
 - Full-register true/false values are `bool32_t` (returns, members, parameters, template helpers
   such as `LHLinkedList::Add`) with `true`/`false`, not `TRUE`/`FALSE`/`1`/`0`. It is `int`, so
   manglings do not change. Wide strings are `wchar_t`, not `char16_t` or `unsigned short`.
