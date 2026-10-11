@@ -12,6 +12,14 @@
 
 // Forward Declares
 
+enum FOREST_SIZE
+{
+	FOREST_SIZE_SMALL,
+	FOREST_SIZE_MEDIUM,
+	FOREST_SIZE_LARGE,
+	FOREST_SIZE_LAST
+};
+
 class Base;
 class Creature;
 class GFootpath;

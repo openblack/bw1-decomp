@@ -19,6 +19,13 @@
 #include "Object.h"           /* For struct Object */
 #include "Villager.h"         /* For struct Villager */
 
+enum ABODE_BEING_BUILT
+{
+	ABODE_BEING_BUILT_IS_BEING_BUILT,
+	ABODE_BEING_BUILT_IS_NOT_BEING_BUILT,
+	ABODE_BEING_BUILT_LAST
+};
+
 enum ABODE_EPP
 {
 	ABODE_EPP_LANTERN = 0x0,

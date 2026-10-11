@@ -23,6 +23,15 @@
 
 // Forward Declares
 
+enum CREATURE_HEIGHT
+{
+	CREATURE_HEIGHT_VERY_SMALL,
+	CREATURE_HEIGHT_SMALL,
+	CREATURE_HEIGHT_MEDIUM,
+	CREATURE_HEIGHT_BIG,
+	CREATURE_HEIGHT_LAST
+};
+
 class Base;
 struct BookmarkGraphic;
 struct Bubble;

@@ -9,38 +9,17 @@
 #include <chlasm/Enum.h>                        /* For MAGIC_TYPE_LAST, OBJECT_TYPE_LAST, enum CREATURE_DESIRES */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 
+#include "Abode.h"                 /* For ABODE_BEING_BUILT_LAST */
 #include "Base.h"                  /* For struct Base */
+#include "Creature.h"              /* For CREATURE_HEIGHT_LAST */
 #include "CreatureLearning.h"      /* For struct CreatureLearningEpisode */
 #include "CreatureLessonChooser.h" /* For _LESSON_TYPE_COUNT */
+#include "Forest.h"                /* For FOREST_SIZE_LAST */
 
 enum DECISION_TREE_TYPE
 {
 	DECISION_TREE_TYPE_0x0 = 0x0,
 	_DECISION_TREE_TYPE_COUNT = 0x1
-};
-
-enum CREATURE_HEIGHT
-{
-	CREATURE_HEIGHT_VERY_SMALL,
-	CREATURE_HEIGHT_SMALL,
-	CREATURE_HEIGHT_MEDIUM,
-	CREATURE_HEIGHT_BIG,
-	CREATURE_HEIGHT_LAST
-};
-
-enum FOREST_SIZE
-{
-	FOREST_SIZE_SMALL,
-	FOREST_SIZE_MEDIUM,
-	FOREST_SIZE_LARGE,
-	FOREST_SIZE_LAST
-};
-
-enum ABODE_BEING_BUILT
-{
-	ABODE_BEING_BUILT_IS_BEING_BUILT,
-	ABODE_BEING_BUILT_IS_NOT_BEING_BUILT,
-	ABODE_BEING_BUILT_LAST
 };
 
 class GameThingWithPos;
