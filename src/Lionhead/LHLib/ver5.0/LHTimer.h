@@ -36,8 +36,6 @@ struct LHTimer
 	void Reset(uint32_t value);
 	// BW1W120 inlined BW1M119 015cc950
 	void Restart(uint32_t value);
-	// BW1W120 inlined BW1M119 inlined
-	char* GetText();
 };
 
 #endif /* BW1_DECOMP_LH_TIMER_INCLUDED_H */
