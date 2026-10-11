@@ -21,6 +21,7 @@ enum VMType
 enum VMScriptType
 {
 	VMScriptType_0 = 0x0,
+	VMScriptType_0x18 = 0x18,
 	_VMScriptType_COUNT = 0x1
 };
 
@@ -138,6 +139,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 006f6840 BW1M119 0108e380
+	void LookIn(VMScriptType param_1);
 	// BW1W120 006f68c0 BW1M119 014efc20
 	void AutoStart();
 	// BW1W120 006f68f0 BW1M119 014efbb0
