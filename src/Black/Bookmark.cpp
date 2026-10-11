@@ -1,3 +1,390 @@
+#include <math.h> /* For cos, fabs */
+
+enum
+{
+	BOOKMARK_SENTINEL = -1,
+};
+
+inline int GetBookmarkSentinel()
+{
+	return BOOKMARK_SENTINEL;
+}
+
+static int BookmarkSentinel = GetBookmarkSentinel();
+
 #include "Bookmark.h"
 
-#include "ColourConstants.h" /* For White */
+#include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetAltitude */
+#include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For PI_F */
+#include <Lionhead/LH3DLib/development/LH3DRender.h> /* For LH3DRender::g_zsorter */
+#include <Lionhead/LH3DLib/development/LH3DSprite.h> /* For struct LH3DSprite */
+#include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For LH3DTech */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>             /* For operator new(size_t, const char*, uint32_t) */
+
+#include "Camera.h"
+#include "CameraModeNew3.h"
+#include "Game.h"
+#include "Game3DObject.h"
+#include "GameOSFile.h"
+#include "GameTimeConstants.h"
+#include "HelpSystem.h"
+#include "Interface.h"
+#include "InterfaceStatus.h"
+#include "Landscape.h"
+#include "LH3DZSorter.h"
+#include "Object.h"
+#include "Player.h"
+#include "StoragePit.h"
+#include "Town.h"
+#include "TownCentre.h"
+
+#define FILEPATH "C:\\dev\\MP\\Black\\Bookmark.cpp"
+
+#define BOOKMARK_PULSE_PERIOD       2000
+#define BOOKMARK_PULSE_PHASE_OFFSET 200
+#define BOOKMARK_PULSE_RATE         0.0005f
+#define BOOKMARK_PULSE_MINIMUM      0.2
+#define BOOKMARK_HEIGHT_OFFSET      2.0f
+#define BOOKMARK_FLY_TIME           0.3f
+#define BOOKMARK_CAMERA_MODE_LINE   243
+#define BOOKMARK_TOWN_OFFSET_X      24.45f
+#define BOOKMARK_TOWN_OFFSET_Y      28.3786f
+#define BOOKMARK_TOWN_OFFSET_Z      47.4f
+
+Bookmark Bookmark::Bookmarks[BOOKMARK_COUNT];
+int      Bookmark::CurrentBookmark;
+int      Bookmark::FollowBookmark = BOOKMARK_NONE;
+int      Bookmark::ShowBookmarks = 1;
+int      Bookmark::FocusTownID = BOOKMARK_NONE;
+
+int   BookmarkGraphic::PulseTime;
+float BookmarkGraphic::PulseWidth;
+float BookmarkGraphic::PulseHeight;
+
+Bookmark::Bookmark() {}
+
+Bookmark::~Bookmark()
+{
+	if (Graphic != NULL)
+	{
+		Graphic->Release();
+	}
+	Graphic = NULL;
+}
+
+void Bookmark::GetBookMarkSet()
+{
+	uint8_t flags = Flags & ~BOOKMARK_FLAG_SET;
+	Target = NULL;
+	Flags = flags;
+}
+
+void Bookmark::Clear(unsigned long index)
+{
+	Bookmarks[index].GetBookMarkSet();
+}
+
+void Bookmark::ClearAll()
+{
+	for (Bookmark* bookmark = Bookmarks; bookmark < &Bookmarks[BOOKMARK_COUNT]; bookmark++)
+	{
+		bookmark->GetBookMarkSet();
+	}
+}
+
+void Bookmark::ValidateTarget()
+{
+	if (Target != NULL && (Target->GameThing::Flags & GAME_THING_FLAG_UNAVAILABLE) == GAME_THING_FLAG_UNAVAILABLE)
+	{
+		Target = NULL;
+	}
+}
+
+void Bookmark::Process()
+{
+	if (Flags & BOOKMARK_FLAG_SET)
+	{
+		ValidateTarget();
+		if (Target != NULL)
+		{
+			Pos = Target->Pos;
+		}
+	}
+}
+
+void BookmarkGraphic::Release()
+{
+	delete this;
+}
+
+void BookmarkGraphic::SetPosition(const LHPoint& pos)
+{
+	sprite->pos = pos;
+}
+
+void BookmarkGraphic::AddDrawing()
+{
+	if (sprite != NULL)
+	{
+		LH3DRender::g_zsorter->NewZObject(this, (LH3DZSorter::DrawCallback)&BookmarkGraphic::Draw,
+		                                  LH3DTech::GetValueForZSorter(sprite->pos), 0);
+	}
+}
+
+unsigned int Bookmark::Save(GameOSFile& file)
+{
+	file.WriteSafe(Flags);
+	file.WriteSafe(CameraOffset);
+	file.WritePtr(Target);
+	file.WriteSafe(Pos);
+	file.WriteSafe(CameraOffset);
+	return true;
+}
+
+unsigned int Bookmark::Load(GameOSFile& file)
+{
+	file.ReadSafe(Flags);
+	file.ReadSafe(CameraOffset);
+	file.ReadPtr((GameThing**)&Target);
+	file.ReadSafe(Pos);
+	file.ReadSafe(CameraOffset);
+	return true;
+}
+
+unsigned int Bookmark::SaveAll(GameOSFile& file)
+{
+	for (int i = 0; i < BOOKMARK_COUNT; i++)
+	{
+		Bookmarks[i].Save(file);
+	}
+	file.WriteSafe(FollowBookmark);
+	file.WriteSafe(CurrentBookmark);
+	file.WriteSafe(ShowBookmarks);
+	return true;
+}
+
+unsigned int Bookmark::LoadAll(GameOSFile& file)
+{
+	for (int i = 0; i < BOOKMARK_COUNT; i++)
+	{
+		Bookmarks[i].Load(file);
+	}
+	file.ReadSafe(FollowBookmark);
+	file.ReadSafe(CurrentBookmark);
+	file.ReadSafe(ShowBookmarks);
+	return true;
+}
+
+void Bookmark::SetFollow(long index)
+{
+	if (index == BOOKMARK_NONE)
+	{
+		FollowBookmark = index;
+		return;
+	}
+	if (Bookmarks[index].Target == NULL)
+	{
+		SetCameraToBookMark(index);
+		FollowBookmark = BOOKMARK_NONE;
+		return;
+	}
+	if (Bookmarks[index].Flags & BOOKMARK_FLAG_SET)
+	{
+		FollowBookmark = FollowBookmark == index ? BOOKMARK_NONE : index;
+	}
+}
+
+void Bookmark::SetFocusBeforeJumpBookmark()
+{
+	SetCameraToBookMark(BOOKMARK_BEFORE_JUMP_INDEX);
+}
+
+void Bookmark::SetFocusNextBookmark()
+{
+	for (int step = 1; step < BOOKMARK_COUNT + 1; step++)
+	{
+		int index = (CurrentBookmark + step) % BOOKMARK_COUNT;
+		if (index < BOOKMARK_USER_COUNT && (Bookmarks[index].Flags & BOOKMARK_FLAG_SET) == BOOKMARK_FLAG_SET)
+		{
+			SetCameraToBookMark((CurrentBookmark + step) % BOOKMARK_COUNT);
+			return;
+		}
+	}
+}
+
+void Bookmark::SetFocusPreviousBookmark()
+{
+	for (int step = BOOKMARK_COUNT - 1; step > 0; step--)
+	{
+		int index = (CurrentBookmark + step) % BOOKMARK_COUNT;
+		if (index < BOOKMARK_USER_COUNT && (Bookmarks[index].Flags & BOOKMARK_FLAG_SET) == BOOKMARK_FLAG_SET)
+		{
+			SetCameraToBookMark((CurrentBookmark + step) % BOOKMARK_COUNT);
+			return;
+		}
+	}
+}
+
+void BookmarkGraphic::DrawLoopUpdate()
+{
+	PulseTime += LH3DTech::g_game_time_inc;
+	if (PulseTime > BOOKMARK_PULSE_PERIOD)
+	{
+		PulseTime %= BOOKMARK_PULSE_PERIOD;
+	}
+	float phase = PulseTime * BOOKMARK_PULSE_RATE;
+	PulseWidth = (float)(fabs(cos(phase * TWO_PI)) + BOOKMARK_PULSE_MINIMUM);
+	float offsetPhase = ((PulseTime + BOOKMARK_PULSE_PHASE_OFFSET) % BOOKMARK_PULSE_PERIOD) * BOOKMARK_PULSE_RATE;
+	PulseHeight = (float)(fabs(cos(offsetPhase * TWO_PI)) + BOOKMARK_PULSE_MINIMUM);
+}
+
+void Bookmark::DrawAll()
+{
+	if (ShowBookmarks)
+	{
+		HelpSystem* helpSystem = GGame::g_game->help_system;
+		if (!helpSystem->WideScreen || !helpSystem->WideScreenControl)
+		{
+			for (int i = 0; i < BOOKMARK_USER_COUNT; i++)
+			{
+				Bookmark& bookmark = Bookmarks[i];
+				if (bookmark.Flags & BOOKMARK_FLAG_SET)
+				{
+					if (bookmark.Graphic == NULL)
+					{
+						bookmark.Graphic = BookmarkGraphic::Create(i, (CREATURE_TYPE)BOOKMARK_NONE);
+					}
+					LHPoint point;
+					Object* target = bookmark.Target;
+					if (target != NULL)
+					{
+						if (target->Game3dObject != NULL)
+						{
+							point = target->Game3dObject->matrix.GetPos();
+						}
+						else
+						{
+							GLandscape::ConvertMapCoordToLandscapePoint(target->Pos, point);
+						}
+					}
+					else
+					{
+						GLandscape::ConvertMapCoordToLandscapePoint(bookmark.Pos, point);
+					}
+					point.y += BOOKMARK_HEIGHT_OFFSET;
+					bookmark.Graphic->SetPosition(point);
+					bookmark.Graphic->AddDrawing();
+				}
+			}
+		}
+	}
+}
+
+void Bookmark::SetBookMark(unsigned long index, Object* object)
+{
+	SetFollow(BOOKMARK_NONE);
+	CurrentBookmark = index;
+	Bookmarks[index].Flags |= BOOKMARK_FLAG_SET;
+	dynamic_cast<Object*>(object);
+	Bookmarks[index].Target = object;
+	Bookmarks[index].Pos = object->Pos;
+	GGame::g_game->GetCamera();
+	LHPoint cameraPos = LH3DTech::g_camera.pos;
+	LHPoint point;
+	GLandscape::ConvertMapCoordToLandscapePoint(object->Pos, point);
+	Bookmarks[index].CameraOffset = cameraPos - point;
+}
+
+void Bookmark::SetCameraToBookMark(unsigned long index)
+{
+	if ((Bookmarks[index].Flags & BOOKMARK_FLAG_SET) && GGame::g_game->ViewMode != GAME_VIEW_MODE_INSIDE_CITADEL)
+	{
+		CurrentBookmark = index;
+		if (FollowBookmark != index)
+		{
+			FollowBookmark = BOOKMARK_NONE;
+		}
+		CameraModeNew3* mode = dynamic_cast<CameraModeNew3*>(GGame::g_game->GetCamera()->GetCurrentMode());
+		if (mode == NULL)
+		{
+			new (FILEPATH, BOOKMARK_CAMERA_MODE_LINE) CameraModeNew3(GGame::g_game->GetCamera());
+			mode = dynamic_cast<CameraModeNew3*>(GGame::g_game->GetCamera()->GetCurrentMode());
+			if (mode == NULL)
+			{
+				return;
+			}
+		}
+		{
+			LHPoint focus;
+			GLandscape::ConvertMapCoordToLandscapePoint(Bookmarks[index].Pos, focus);
+			LHPoint pos = focus + Bookmarks[index].CameraOffset;
+			mode->FlyToPosFoc(pos, focus, BOOKMARK_FLY_TIME);
+		}
+
+		{
+			Bookmark& jump = Bookmarks[BOOKMARK_BEFORE_JUMP_INDEX];
+			jump.Flags |= BOOKMARK_FLAG_SET;
+			jump.Target = NULL;
+			jump.Pos = GGame::g_game->MyInterface()->status->Pos;
+			GGame::g_game->GetCamera();
+			LHPoint cameraPos = LH3DTech::g_camera.pos;
+			LHPoint cursor;
+			GLandscape::ConvertMapCoordToLandscapePoint(GGame::g_game->MyInterface()->status->Pos, cursor);
+			LHPoint offset = cameraPos - cursor;
+			jump.CameraOffset = offset;
+		}
+	}
+}
+
+void Bookmark::SetFocusToOwnedTown()
+{
+	bool searchAny = FocusTownID < 0;
+	for (;;)
+	{
+		for (Town* town = GGame::g_game->MyPlayer()->towns.GetLast(); town != NULL;
+		     town = GGame::g_game->MyPlayer()->towns.GetPrevious(town))
+		{
+			if (town->ID == FocusTownID || searchAny)
+			{
+				Town* next = GGame::g_game->MyPlayer()->towns.GetPrevious(town);
+				if (next == NULL)
+				{
+					next = GGame::g_game->MyPlayer()->towns.GetLast();
+				}
+				MapCoords coords;
+				if (next != NULL)
+				{
+					if (next->GetStoragePit() != NULL)
+					{
+						coords = next->GetStoragePit()->Pos;
+					}
+					else if (next->town_centre != NULL)
+					{
+						coords = next->town_centre->Pos;
+					}
+					else
+					{
+						continue;
+					}
+					SetBookMark(BOOKMARK_TOWN_INDEX, coords);
+					FocusTownID = next->ID;
+					CameraModeNew3* mode = dynamic_cast<CameraModeNew3*>(GGame::g_game->GetCamera()->GetCurrentMode());
+					if (mode != NULL)
+					{
+						const LHPoint& base = coords.GetLHPoint();
+						LHPoint        pos(base.x - BOOKMARK_TOWN_OFFSET_X, base.y + BOOKMARK_TOWN_OFFSET_Y,
+						                   base.z + BOOKMARK_TOWN_OFFSET_Z);
+						LHPoint        focus = coords.GetLHPoint();
+						mode->FlyToPosFoc(pos, focus, BOOKMARK_FLY_TIME);
+					}
+					return;
+				}
+			}
+		}
+		if (searchAny)
+		{
+			return;
+		}
+		searchAny = true;
+	}
+}
