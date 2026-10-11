@@ -6,3 +6,8 @@ bool TownDesireFlags::InteractsWithPhysicsObjects()
 {
 	return false;
 }
+
+bool32_t TownDesireFlags::CreatureMustAvoid(Creature* creature)
+{
+	return 0;
+}

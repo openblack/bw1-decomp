@@ -33,3 +33,13 @@ char* PuzzlePig::GetDebugText()
 {
 	return "PuzzleSheep: ";
 }
+
+bool32_t PuzzleVillager::AttackAllowedForChessGame(long x, long z)
+{
+	return 0;
+}
+
+bool32_t PuzzleVillager::MoveAllowedForChessGame(long x, long z)
+{
+	return 0;
+}

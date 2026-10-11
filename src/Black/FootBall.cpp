@@ -23,3 +23,8 @@ GBaseInfo* GFootballPositionInfo::GetBaseInfo(uint32_t& info_count)
 	info_count = FOOTBALL_POSITION_INFO_LAST;
 	return Infos;
 }
+
+bool32_t Football::CreatureMustAvoid(Creature* creature)
+{
+	return 0;
+}

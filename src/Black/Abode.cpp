@@ -1973,3 +1973,40 @@ float Abode::GetVillagerHealthTotal()
 	}
 	return total;
 }
+
+uint32_t GameThing::GetNearestPathTo(const MapCoords& map_coords, float param_2, int param_3)
+{
+	return 0;
+}
+
+uint32_t GameThing::AddFootpath(GFootpath* footpath)
+{
+	return 0;
+}
+
+uint32_t GameThing::RemoveFootpath(GFootpath* footpath)
+{
+	return 0;
+}
+
+uint32_t GameThing::GetResource(RESOURCE_TYPE type)
+{
+	return 0;
+}
+
+uint32_t GameThing::RemoveResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool* poisoned)
+{
+	return 0;
+}
+
+void GameThing::DrawInHand(GInterfaceStatus* interface_status) {}
+
+bool32_t GameThingWithPos::CanBePickedUpByCreature(Creature* creature)
+{
+	return 0;
+}
+
+bool32_t GameThingWithPos::CanBeDestroyedByStoning(Creature* creature)
+{
+	return 0;
+}

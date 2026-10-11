@@ -15,3 +15,8 @@ GBaseInfo* GMagicFireBallInfo::GetBaseInfo(uint32_t& info_count)
 	info_count = MAGIC_FIREBALL_TYPE_LAST;
 	return Infos;
 }
+
+uint32_t MagicFireBall::SaveObject(LHOSFile& l_h_o_s_file, const MapCoords* map_coords)
+{
+	return 0;
+}

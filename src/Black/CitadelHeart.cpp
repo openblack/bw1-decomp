@@ -172,3 +172,13 @@ void CitadelHeart::SetSpecularColor(unsigned long color)
 {
 	SpecularColor = color;
 }
+
+uint32_t LeashObj::SaveObject(LHOSFile& l_h_o_s_file, const MapCoords* map_coords)
+{
+	return 0;
+}
+
+MultiMapFixed* PlannedMultiMapFixed::CreatePlannedNoFixedCheck(float food)
+{
+	return NULL;
+}

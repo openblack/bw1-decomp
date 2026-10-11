@@ -46,3 +46,9 @@ Town* BuildingSite::GetTown()
 	}
 	return NULL;
 }
+
+void CitadelBuildingSite::SetPileWood(Pot* pot) {}
+
+void WorkshopBuildingSite::SetPileWood(Pot* pot) {}
+
+void WorkshopBuildingSite::RemovePotFromStructure(PotStructure* structure) {}

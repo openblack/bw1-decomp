@@ -21,3 +21,5 @@ char* ArenaSpellIcon::GetDebugText()
 {
 	return "SpellIcon:";
 }
+
+void GameThingWithPos::SetScale(float scale) {}

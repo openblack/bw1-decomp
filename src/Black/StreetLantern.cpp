@@ -9,3 +9,8 @@ SCRIPT_OBJECT_TYPE GStreetLantern::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_MOBILE_STATIC;
 }
+
+bool32_t GStreetLantern::CreatureMustAvoid(Creature* creature)
+{
+	return 0;
+}

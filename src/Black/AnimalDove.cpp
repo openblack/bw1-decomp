@@ -73,3 +73,8 @@ bool32_t Vulture::CanBeFrighteningToCreature(Creature* creature)
 {
 	return true;
 }
+
+bool32_t Dove::CanBePoodOn(Creature* creature)
+{
+	return 0;
+}

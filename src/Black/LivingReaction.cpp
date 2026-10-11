@@ -81,3 +81,5 @@ int Living::SetCurrentAndDestinationState(uint8_t current, uint8_t destination)
 	}
 	return LIVING_SET_STATE_EXIT_REFUSED;
 }
+
+void Living::SetupReactToNewBuilding(GameThingWithPos* game_thing_with_pos, Reaction* reaction) {}

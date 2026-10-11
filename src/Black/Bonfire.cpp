@@ -33,3 +33,8 @@ void Bonfire::PhysicsEditorCreate(int param_1)
 {
 	Pos.altitude = 0.0f;
 }
+
+bool32_t Rock::IsResourceStore(RESOURCE_TYPE resource_type)
+{
+	return 0;
+}
