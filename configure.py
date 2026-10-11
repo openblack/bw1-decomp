@@ -337,6 +337,13 @@ icc_version = "ICC/5.0.1"
 # LH3DP3.cpp is built with Intel C++ 5.0.1, repackaged at
 # github.com/bwrsandman/icc5.0.1.010525Z and fetched like the MSVC compilers.
 config.extra_compilers = {icc_version: ("icc", "main")}
+# LHLogR.dll was rebuilt for 1.20 with Visual Studio .NET 2002: its Rich header
+# lists 18 C++ objects from cl 13.00.9466 (Utc13_CPP), where 1.00 and 1.10 used
+# VC6 SP4 (Utc12_CPP 8799) like the rest of the game.
+msvc70_version = "MSVC/7.0"
+lhlog_compiler_version = msvc70_version if config.version == "BW1W120" else config.linker_version
+if lhlog_compiler_version == msvc70_version:
+    config.extra_compilers[msvc70_version] = ("compilers_msvc70", "release")
 includes_project = [
     "/I", "include",
     "/I", "orig/directx7.0/include",
@@ -483,6 +490,20 @@ cflags_multiplayer = [*(f for f in cflags_base if f != "/GR"), "/GX", "/D_LH_MUL
 
 def MultiplayerObject(completed, name, **options):
     return Object(completed, name, cflags=cflags_multiplayer, **options)
+
+
+# LHLogR.dll: C++ exception handling (EH funclets in LHGenLog and LHVersion), no RTTI.
+cflags_lhlog = [
+    *(f.replace(config.linker_version, lhlog_compiler_version) for f in cflags_base if f != "/GR"),
+    "/GX",
+    "/DLH_LOG_EXPORTS",
+    "/D_LH_LOG_LIB_",
+]
+# cl 7.0's PDB writer (mspdb70.dll) delay-loads RPCRT4!UuidCreate, which wibo does not
+# provide, so /Zi aborts the compile on Linux. /Z7 keeps the debug info in the object
+# instead; every other section is byte-identical to a /Zi build.
+if lhlog_compiler_version == msvc70_version:
+    cflags_lhlog = ["/Z7" if f == "/Zi" else f for f in cflags_lhlog]
 
 
 # delayimp.lib's delay-load helper, rebuilt from the source MSVC 6 ships in its include
@@ -1852,8 +1873,8 @@ config.libs = [
     },
     {
         "lib": "LHLog",
-        "compiler_version": config.linker_version,
-        "cflags": cflags_base,
+        "compiler_version": lhlog_compiler_version,
+        "cflags": cflags_lhlog,
         "progress_category": "sdk",
         "objects": [
             Object(NonMatching, "Lionhead/LHLog/ver4.0/ErrorCodes.cpp"),

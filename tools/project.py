@@ -2216,6 +2216,7 @@ def generate_objdiff_config(
         "Wii/1.7": "mwcc_43_213",
         "MSVC/6.4": "msvc6.4",
         "MSVC/6.5": "msvc6.5",
+        "MSVC/7.0": "msvc7.0",
         "ICC/5.0.1": "icc5.0.1-010525z",
     }
 
