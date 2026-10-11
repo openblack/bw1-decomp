@@ -44,7 +44,7 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
-	HandState(CHand* hand);
+	HandState(CHand* hand) : hand(hand) {}
 };
 
 #endif /* BW1_DECOMP_HAND_STATE_INCLUDED_H */

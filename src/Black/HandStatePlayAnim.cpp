@@ -4,7 +4,10 @@
 
 #include "ColourConstants.h" /* For White */
 
-HandStatePlayAnim::HandStatePlayAnim(CHand* hand) : HandState(hand), field_0x18(0) {}
+HandStatePlayAnim::HandStatePlayAnim(CHand* hand) : HandState(hand)
+{
+	field_0x18 = 0;
+}
 
 void HandStatePlayAnim::Enter()
 {
