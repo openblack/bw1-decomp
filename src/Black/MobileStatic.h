@@ -189,6 +189,13 @@ public:
 
 	// BW1W120 0055d790 BW1M119 inlined
 	GBaseOnly() {}
+	// BW1W120 inlined BW1M119 inlined
+	GBaseOnly(const MapCoords& coords, const GObjectInfo* info) : Object(coords, info) {}
+
+	// Static methods
+
+	// BW1W120 00609340 BW1M119 013c6a70
+	static GBaseOnly* Create(const MapCoords& coords, const GObjectInfo* info);
 };
 
 #endif /* BW1_DECOMP_MOBILE_STATIC_INCLUDED_H */

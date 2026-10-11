@@ -344,6 +344,17 @@ public:
 
 	// BW1W120 inlined BW1M119 0130fb80
 	PieceVillager() {}
+
+	// BW1W120 inlined BW1M119 inlined
+	PieceVillager(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3)
+		: Animal(coords, info, param_3)
+	{
+	}
+
+	// Static methods
+
+	// BW1W120 0041bb20 BW1M119 0116d300
+	static PieceVillager* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3);
 };
 
 class PieceWolf : public Wolf

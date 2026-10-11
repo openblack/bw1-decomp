@@ -1,6 +1,15 @@
 #include "Feature.h"
+#include "FeatureInfo.h" /* For GFeatureInfo */
 #include "Flowers.h"
 #include "PlannedFeature.h"
+
+#if defined(VERSION_BW1W100)
+#define FEATURE_FILE "C:\\dev\\black\\Feature.cpp"
+#elif defined(VERSION_BW1W110)
+#define FEATURE_FILE "C:\\dev\\Black\\Feature.cpp"
+#else
+#define FEATURE_FILE "C:\\dev\\MP\\Black\\Feature.cpp"
+#endif
 
 uint32_t Flowers::GetSaveType()
 {
@@ -20,4 +29,21 @@ SCRIPT_OBJECT_TYPE Feature::GetScriptObjectType()
 LH3DObject::ObjectType Flowers::Get3DType()
 {
 	return LH3DObject::MORPHABLE;
+}
+
+inline Feature::Feature(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale, float param_5,
+                        int param_6)
+	: MultiMapFixed(coords, info, y_angle, scale, param_5, param_6)
+{
+}
+
+Feature* Feature::Create(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale, float param_5,
+                         int param_6)
+{
+	Feature* feature = new (FEATURE_FILE, 19) Feature(coords, info, y_angle, scale, param_5, param_6);
+	if (feature != NULL)
+	{
+		feature->CallVirtualFunctionsForCreation(coords);
+	}
+	return feature;
 }

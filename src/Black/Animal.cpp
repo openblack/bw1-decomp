@@ -7,6 +7,8 @@
 #include "Utils.h"
 #include "AnimalInfo.h"
 #include "AnimalStateTableInfo.h"
+#include "Game3DObject.h" /* For Game3DObject */
+#include "PuzzleGame.h"   /* For PieceVillager */
 
 void Animal::SetStateSpeed() {}
 
@@ -211,4 +213,15 @@ uint32_t Animal::StalkAnimation()
 int Animal::CallOutofAnimationFunction(uint8_t state)
 {
 	return ANM_INVALID;
+}
+
+PieceVillager* PieceVillager::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3)
+{
+	PieceVillager* villager = new (ANIMAL_FILE, 2696) PieceVillager(coords, info, param_3);
+	if (villager != NULL)
+	{
+		villager->CallVirtualFunctionsForCreation(coords);
+		villager->Game3dObject->SetHumanShadowed(1);
+	}
+	return villager;
 }
