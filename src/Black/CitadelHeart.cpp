@@ -124,6 +124,8 @@ uint32_t PlannedTownCitadelHeart::GetSaveType()
 	return GAME_THING_TYPE_PLANNED_TOWN_CITADEL_HEART;
 }
 
+void CitadelHeart::UpdateLeashes() {}
+
 uint32_t UR_PlasmaInf::GetSaveType()
 {
 	return GAME_THING_TYPE_UR_PLASMA_INF;
