@@ -28,24 +28,29 @@ int Living::SetTopState(uint8_t state)
 	int result = LIVING_SET_STATE_EXIT_REFUSED;
 	if (CallExitStateFunction(state) != 0)
 	{
-		result = CallOutofAnimationFunction(state);
+		int anim = CallOutofAnimationFunction(state);
 		if (CallEntryStateFunction(state) != 0)
 		{
 			SetStateSpeed();
-			if (result != -1)
+			if (anim != -1)
 			{
-				SetAnim(result, 1);
-				return LIVING_SET_STATE_SUCCESS;
+				SetAnim(anim, 1);
 			}
-			SetStateAnim();
-			result = CallIntoAnimationFunction(state);
-			if (result != -1)
+			else
 			{
-				SetAnim(result, 1);
+				SetStateAnim();
+				anim = CallIntoAnimationFunction(state);
+				if (anim != -1)
+				{
+					SetAnim(anim, 1);
+				}
 			}
-			return LIVING_SET_STATE_SUCCESS;
+			result = LIVING_SET_STATE_SUCCESS;
 		}
-		return LIVING_SET_STATE_ENTRY_REFUSED;
+		else
+		{
+			result = LIVING_SET_STATE_ENTRY_REFUSED;
+		}
 	}
 	return result;
 }

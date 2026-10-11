@@ -19,7 +19,7 @@ struct DiscipleInfo;
 
 struct AgeToScale
 {
-	float values[20];
+	float values[21];
 };
 
 class GVillagerInfo : public GLivingInfo
@@ -84,9 +84,8 @@ public:
 	float           StarvingToLifeMultiplier;
 	uint32_t        FoodReqiredForDinner;
 	uint32_t        ProcessChecksEvery;
-	uint32_t        HavingSexTime; /* 0x2e0 */
-	uint32_t        DancingSpeed;
-	AgeToScale      ageToScale;
+	uint32_t        HavingSexTime;       /* 0x2e0 */
+	AgeToScale      ageToScale;          /* 0x2e4 */
 	ANIM_LIST       LAttractAnim[0x3];   /* 0x338 */
 	ANIM_LIST       LNeedAnim[0x3];      /* 0x344 */
 	float           MaxDistCarryFoodPit; /* 0x350 */
