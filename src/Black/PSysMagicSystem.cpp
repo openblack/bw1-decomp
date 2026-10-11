@@ -11,3 +11,13 @@ uint32_t UR_VolFXOnObject::AtomData::GetSaveType()
 {
 	return GAME_THING_TYPE_UR_VOL_FX_ON_OBJECT_ATOM_DATA;
 }
+
+char* UR_LightSheetOnObject::AtomData::GetDebugText()
+{
+	return "##a_class:";
+}
+
+char* UR_VolFXOnObject::AtomData::GetDebugText()
+{
+	return "##a_class:";
+}

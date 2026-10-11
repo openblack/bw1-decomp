@@ -16,3 +16,8 @@ uint32_t ArenaSpellIcon::GetSaveType()
 }
 
 void ArenaSpellIcon::Draw() {}
+
+char* ArenaSpellIcon::GetDebugText()
+{
+	return "SpellIcon:";
+}

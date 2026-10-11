@@ -48,3 +48,8 @@ bool32_t Citadel::IsCitadel()
 {
 	return true;
 }
+
+const char* Citadel::GetText()
+{
+	return "Citadel";
+}

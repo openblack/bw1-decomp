@@ -9,3 +9,8 @@ GPlayer* PSysManager::GetPlayer()
 {
 	return Player;
 }
+
+char* PSysManager::GetDebugText()
+{
+	return "##a_class:";
+}

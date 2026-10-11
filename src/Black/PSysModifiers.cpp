@@ -6,3 +6,8 @@ uint32_t UR_HealSpellChakra::AtomData::GetSaveType()
 {
 	return GAME_THING_TYPE_UR_HEAL_SPELL_CHAKRA_ATOM_DATA;
 }
+
+char* UR_HealSpellChakra::AtomData::GetDebugText()
+{
+	return "##a_class:";
+}

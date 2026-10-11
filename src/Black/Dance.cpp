@@ -19,3 +19,8 @@ SCRIPT_OBJECT_TYPE Dance::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_DANCE;
 }
+
+const char* Dance::GetText()
+{
+	return "Dance";
+}
