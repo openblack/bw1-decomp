@@ -23,12 +23,9 @@
 
 #define FILEPATH "C:\\dev\\MP\\Black\\Dance.cpp"
 
-/* Half a map cell in map coordinates */
 #define MAP_COORDS_HALF_CELL 0x8000
 
-/* Distance limit of the search for the town a dance makes footpaths from: any distance */
 const float DanceTownMaxDistance = FLT_MAX;
-/* The dance speeds the worship speeds of Dance::SetWorshipSpeed are spread over */
 const float MinDanceSpeed = 0.0f;
 const float MaxDanceSpeed = 4.0f;
 

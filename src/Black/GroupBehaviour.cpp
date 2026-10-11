@@ -17,7 +17,6 @@
 
 #define FILEPATH "C:\\dev\\MP\\Black\\GroupBehaviour.cpp"
 
-/* Seconds in a minute, the unit of GroupBehaviour::Length */
 #define SECONDS_PER_MINUTE 60
 
 template <typename T> static void ReadSafe(GameOSFile& file, LHOrderedLinkedList<T>& list)

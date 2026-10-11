@@ -8,14 +8,10 @@
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h>   /* For class LHLinkedList */
 #include <re_common.h>                            /* For bool32_t */
 
-/* Bytes of a dance light bitmap: 6 by 6 RGB pixels */
-#define DANCE_LIGHT_BITMAP_SIZE (6 * 6 * 3)
-/* Characters of a dance light bitmap name and of the path it is loaded from */
+#define DANCE_LIGHT_BITMAP_SIZE        (6 * 6 * 3)
 #define DANCE_LIGHT_BITMAP_NAME_LENGTH 256
-/* DanceLight::IndexInGroup of a light that is not attached to a group */
-#define DANCE_LIGHT_NOT_ATTACHED 0xffffffff
+#define DANCE_LIGHT_NOT_ATTACHED       0xffffffff
 
-/* The bitmap of a dance light, set by DANCE_GROUP_ACTION_TYPE_SET_LIGHT_BITMAP */
 enum DANCE_LIGHT_BITMAP
 {
 	DANCE_LIGHT_BITMAP_RED,
@@ -30,7 +26,6 @@ enum DANCE_LIGHT_BITMAP
 
 class GroupBehaviour;
 
-/* A light a dance shines on one of its groups, switched by the DANCE_GROUP_ACTION_TYPE_SET_LIGHT_* actions */
 class DanceLight
 {
 public:

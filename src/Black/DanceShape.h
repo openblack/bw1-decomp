@@ -3,16 +3,11 @@
 
 #include <assert.h> /* For static_assert */
 
-/* Points of the outline of every dance shape */
-#define DANCE_SHAPE_NUM_POINTS 256
-/* Characters of the name and of the file name of a dance shape */
+#define DANCE_SHAPE_NUM_POINTS  256
 #define DANCE_SHAPE_NAME_LENGTH 64
-/* Shape coordinates of the edge of a dance shape (GUtils::ShapePosToMeters) */
-#define DANCE_SHAPE_RADIUS 0x10000
-/* Characters of the path a dance shape is loaded from */
+#define DANCE_SHAPE_RADIUS      0x10000
 #define DANCE_SHAPE_PATH_LENGTH 256
 
-/* The shapes a dance group can take, set by DANCE_GROUP_ACTION_TYPE_SET_SHAPE, in the order of DanceShapeInfos */
 enum DANCE_SHAPE
 {
 	DANCE_SHAPE_CIRCLE,
@@ -64,7 +59,6 @@ enum DANCE_SHAPE
 	DANCE_SHAPE_LAST
 };
 
-/* A point of a dance shape outline */
 class JustXZ
 {
 public:
@@ -74,7 +68,6 @@ public:
 
 static_assert(sizeof(JustXZ) == 0x8, "Data type is of wrong size");
 
-/* The generators of the dance shapes; shapes kept in files are read by GData::LoadShape instead */
 class MakeShape
 {
 public:
@@ -110,8 +103,6 @@ public:
 	static void LoadShape(unsigned long shape);
 };
 
-/* A dance shape: its name in the dance editor, the generator of its points and the file they are loaded from when
- * the generator is MakeShape::LoadShape */
 struct DanceShapeInfo
 {
 	char Name[DANCE_SHAPE_NAME_LENGTH];

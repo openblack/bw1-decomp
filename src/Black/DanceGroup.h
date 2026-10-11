@@ -42,7 +42,6 @@ enum DANCE_GROUP_ACTION_TYPE
 	_DANCE_GROUP_ACTION_TYPE_COUNT = 0x18
 };
 
-/* Default end time of a dance group movement; the unit is not known (probably milliseconds) */
 #define DANCE_GROUP_MOVEMENT_DEFAULT_END_TIME 10000
 
 enum DANCE_GROUP_MOVEMENT_KIND
@@ -90,15 +89,11 @@ enum DANCE_GROUP_MOVEMENT_KIND
 	DANCE_GROUP_MOVEMENT_KIND_CREATURE_POINT = 0x28,
 };
 
-/* The first parameter of a DancerAction: a value, or the direction of DANCE_GROUP_MOVEMENT_KIND_ROTATE_DANCERS and
- * DANCE_GROUP_MOVEMENT_KIND_ROTATE_SHAPE */
 union DancerActionParam {
 	float    Value;
 	bool32_t Direction;
 };
 
-/* The movement a dance group performs, set by DANCE_GROUP_ACTION_TYPE_SET_ACTION: a kind of movement with up to two
- * parameters, running until EndTime. */
 struct DancerAction
 {
 	DANCE_GROUP_MOVEMENT_KIND Kind;
@@ -130,23 +125,17 @@ struct DanceGroupActionArgument
 
 static_assert(sizeof(DanceGroupActionArgument) == 0x38, "Data type is of wrong size");
 
-/* Number of dance groups that can be attached to a group used as their path */
-#define DANCE_GROUP_MAX_CHILD_GROUPS 32
-/* Number of characters of a dance group name, including the terminator */
-#define DANCE_GROUP_NAME_LENGTH 64
-/* Size given to a dance group by DanceGroup::Initialise */
-#define DANCE_GROUP_DEFAULT_SIZE 20.0f
-/* Proportion and numerator given to a dance group by DanceGroup::Initialise (all of the dancers) */
+#define DANCE_GROUP_MAX_CHILD_GROUPS   32
+#define DANCE_GROUP_NAME_LENGTH        64
+#define DANCE_GROUP_DEFAULT_SIZE       20.0f
 #define DANCE_GROUP_DEFAULT_PROPORTION 100
 
-/* The kind of dancer a dance group takes, as returned by Living::DanceType */
 enum DANCE_TYPE
 {
 	DANCE_TYPE_LIVING = 0,
 	DANCE_TYPE_CREATURE = 1,
 };
 
-/* Which villagers may join a dance group, one bit per SEX_TYPE */
 enum DANCE_GROUP_VILLAGER_TYPE
 {
 	DANCE_GROUP_VILLAGER_TYPE_MALE = 1 << SEX_MALE,
@@ -154,18 +143,13 @@ enum DANCE_GROUP_VILLAGER_TYPE
 	DANCE_GROUP_VILLAGER_TYPE_ANY = DANCE_GROUP_VILLAGER_TYPE_MALE | DANCE_GROUP_VILLAGER_TYPE_FEMALE,
 };
 
-/* Map coordinates are 16.16 fixed point cells */
 #define MAP_COORDS_UNITS_PER_CELL 65536.0f
 
-/* Dancer angles (DanceGroup::DancerAngle) count 256 units per turn */
 #define DANCE_DANCER_ANGLE_FULL_TURN 256.0f
-/* Dancer angles step by one unit, so the last one before a full turn is one unit short of it */
-#define DANCE_DANCER_ANGLE_UNIT 1.0f
-#define DANCE_DANCER_ANGLE_MAX  (DANCE_DANCER_ANGLE_FULL_TURN - DANCE_DANCER_ANGLE_UNIT)
-/* Shape angles (DanceGroup::Angle) count 2048 units per turn, like the game angles */
-#define DANCE_SHAPE_ANGLE_FULL_TURN 2048.0f
+#define DANCE_DANCER_ANGLE_UNIT      1.0f
+#define DANCE_DANCER_ANGLE_MAX       (DANCE_DANCER_ANGLE_FULL_TURN - DANCE_DANCER_ANGLE_UNIT)
+#define DANCE_SHAPE_ANGLE_FULL_TURN  2048.0f
 
-/* A position or an offset inside a dance, in metres */
 struct DancePos
 {
 	float x;
@@ -178,8 +162,6 @@ struct DancePos
 	}
 };
 
-/* The share of the dancers a dance group takes, set by DANCE_GROUP_ACTION_TYPE_PROPORTION: a fixed number of dancers,
- * or a proportion of them that GroupBehaviour::UpdateNumeratorsAndDenominator reduces to Numerator */
 struct DanceGroupProportion
 {
 	bool32_t      Fixed;
@@ -187,7 +169,6 @@ struct DanceGroupProportion
 	unsigned long Numerator;
 };
 
-/* What a dance group changes by every game turn while it performs its DancerAction */
 struct DanceGroupChange
 {
 	DancePos Move;

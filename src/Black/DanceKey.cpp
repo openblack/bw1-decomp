@@ -49,7 +49,6 @@ template <typename T> static void WriteSafe(GameOSFile& file, LHDynamicStack<T>&
 	}
 }
 
-/* Upper bound of the groups a key frame action can be split off from */
 #define DANCE_KEY_FRAME_MAX_REMOVED_GROUPS 256
 
 DanceKeyAction::DanceKeyAction()

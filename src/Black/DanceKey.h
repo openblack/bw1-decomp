@@ -11,7 +11,6 @@
 #include "DanceGroup.h" /* For enum DANCE_GROUP_ACTION_TYPE */
 #include "GameThing.h"  /* For struct GameThing */
 
-/* Key frames are matched to the dance time with a resolution of half a second */
 #define DANCE_KEY_FRAMES_PER_SECOND 2
 
 // Forward Declares

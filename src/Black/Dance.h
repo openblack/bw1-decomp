@@ -25,14 +25,10 @@ struct LHPoint;
 struct MapCoords;
 class Town;
 
-/* Characters of Dance::Label, including the terminator */
-#define DANCE_LABEL_LENGTH 16
-/* A dance starts once more than half of the dancers it expects are dancing, or after this many seconds */
+#define DANCE_LABEL_LENGTH                    16
 #define DANCE_MAX_SECONDS_WAITING_FOR_DANCERS 90
-/* Dance::SetWorshipSpeed keeps the worship speed to this many steps per unit */
-#define DANCE_WORSHIP_SPEED_STEPS 10.0f
-/* Worship speed a dance starts with */
-#define DANCE_DEFAULT_WORSHIP_SPEED 0.25f
+#define DANCE_WORSHIP_SPEED_STEPS             10.0f
+#define DANCE_DEFAULT_WORSHIP_SPEED           0.25f
 
 enum DANCE_STATE
 {

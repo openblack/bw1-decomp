@@ -25,15 +25,10 @@ class GameOSFile;
 class Living;
 struct MapCoords;
 
-/* Number of lights a dance can switch on */
-#define GROUP_BEHAVIOUR_MAX_LIGHTS 10
-/* Length of a dance before its time starts again, in minutes */
-#define GROUP_BEHAVIOUR_DEFAULT_LENGTH 5
-/* Denominator of the proportions of the dance groups when nothing reduces it */
-#define GROUP_BEHAVIOUR_DEFAULT_DENOMINATOR 100
-/* Default of GroupBehaviour::EditorValue, a dance editor setting kept in the .dnc files */
-#define GROUP_BEHAVIOUR_DEFAULT_EDITOR_VALUE 30
-/* Seconds the dance camera takes to travel to a new position by default */
+#define GROUP_BEHAVIOUR_MAX_LIGHTS                 10
+#define GROUP_BEHAVIOUR_DEFAULT_LENGTH             5
+#define GROUP_BEHAVIOUR_DEFAULT_DENOMINATOR        100
+#define GROUP_BEHAVIOUR_DEFAULT_EDITOR_VALUE       30
 #define GROUP_BEHAVIOUR_DEFAULT_CAMERA_TRAVEL_TIME 2.0f
 
 class GroupBehaviour : public GameThingWithPos
