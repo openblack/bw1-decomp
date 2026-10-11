@@ -503,11 +503,11 @@ LH_RETURN LHSession::ProcessMServePlayerList(LHNetEvent* net_event)
 
 	wcscpy(LastJoinChannelPlayerName, playerName);
 	LastJoinChannelEvent = playerEvent;
-	LastJoinPlayerID = player != NULL ? player->GetPlayerID() : -1;
+	LastJoinPlayerID = player != NULL ? player->PlayerId : -1;
 	for (LHLinkedListIterator<LHPlayer*> it = Players.GetStart(); it; it++)
 	{
 		LHPlayer* sessionPlayer = it.Get();
-		if (sessionPlayer->GetUserID() == GetUserID())
+		if (IsThisMe(sessionPlayer))
 		{
 			LocalPlayer = sessionPlayer;
 			break;
@@ -522,7 +522,7 @@ LH_RETURN LHSession::ProcessMServePlayerList(LHNetEvent* net_event)
 		for (LHLinkedListIterator<LHPlayer*> it = Players.GetStart(); it; it++)
 		{
 			LHPlayer* candidate = it.Get();
-			if (highest == NULL || candidate->GetPlayerID() > highest->GetPlayerID())
+			if (highest == NULL || candidate->PlayerId > highest->PlayerId)
 				highest = candidate;
 		}
 		Players.Remove(highest);
