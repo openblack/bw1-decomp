@@ -5,7 +5,7 @@
 
 DanceKeyAction::DanceKeyAction()
 {
-	field_0x3c = DANCE_KEY_ACTION_FIELD_0x3C_DEFAULT;
+	field_0x3c = 10000;
 	field_0x30 = 0;
 	field_0x38 = 0;
 	field_0x34 = 0;

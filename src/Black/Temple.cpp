@@ -31,7 +31,7 @@ void Temple::ProcessGameTurn()
 	if (GGame::g_game->GameFlags & GAME_FLAG_PAUSED)
 	{
 		GGlobal::Global.debug.ClearMessages(-1);
-		GScript::g_scriptDLL->LookIn(VMScriptType_0x18);
+		GScript::g_scriptDLL->LookIn(VMScriptType_RunWhilePaused);
 		GGlobal::Global.audio->ProcessAudioGameTurn();
 		if (GGame::g_game->help_system)
 		{
