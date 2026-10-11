@@ -1,13 +1,21 @@
 #include <Lionhead/LHAudio/ver7.0/LH_AudioBank.h> /* For class LH_AudioBank */
 
+#include <Lionhead/LH3DLib/development/LH3DTech.h>  /* For LH3DTech::g_camera */
 #include <Lionhead/LHAudio/ver7.0/LH_AudioSystem.h> /* For class LH_AudioSystem */
 
 #include "Audio.h"
-#include "GameOSFile.h"       /* For class GameOSFile */
+#include "GameOSFile.h" /* For class GameOSFile */
+#include "Game.h"
 #include "GameThingWithPos.h" /* For class GameThingWithPos */
+#include "Landscape.h"
 #include "ThingMusicInfo.h"
 
 #define MUSIC_DEFAULT_PLAY_DISTANCE 100.0f
+
+enum
+{
+	THING_MUSIC_RESULT_IN_RANGE = 1,
+};
 
 uint32_t ThingMusicInfo::GetSaveType()
 {
@@ -107,7 +115,7 @@ bool32_t GAudio::ProcessThingMusic()
 			}
 			else if (ThingMusicInRange(info->MusicType, thing))
 			{
-				result |= 1;
+				result |= THING_MUSIC_RESULT_IN_RANGE;
 			}
 		}
 		else
@@ -118,6 +126,53 @@ bool32_t GAudio::ProcessThingMusic()
 		node = next;
 	}
 	return result;
+}
+
+bool32_t GAudio::ThingMusicInRange(MUSIC_TYPE type, GameThingWithPos* thing)
+{
+	if (MusicBanks[type])
+	{
+		LHPoint pos;
+		GLandscape::ConvertMapCoordToLandscapePoint(thing->Pos, pos);
+		GGame::g_game->GetCamera();
+		LHPoint cameraPos = LH3DTech::g_camera.pos;
+		float   distance = pos.GetDistance(cameraPos);
+		if (GetPlayDistance(type) > distance)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool32_t GAudio::IsThingMusicPlaying(ThingMusicInfo* info)
+{
+	LH_AudioBank* bank = MusicBanks[info->MusicType];
+	if (bank)
+	{
+		LH_MusicInfo* music = AudioSystem->LHMusicGetInfo(bank);
+		if (music)
+		{
+			return AudioSystem->LHMusicGetStatus(music) != 0;
+		}
+	}
+	return false;
+}
+
+void GAudio::StopMusic(ThingMusicInfo* info, int fade)
+{
+	if (IsThingMusicPlaying(info))
+	{
+		LH_AudioBank* bank = MusicBanks[info->MusicType];
+		if (bank)
+		{
+			LH_MusicInfo* music = AudioSystem->LHMusicGetInfo(bank);
+			if (music)
+			{
+				AudioSystem->LHMusicStop(music, fade);
+			}
+		}
+	}
 }
 
 void GAudio::SwapThingMusic(GameThingWithPos* thing, GameThingWithPos* other)

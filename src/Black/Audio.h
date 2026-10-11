@@ -242,6 +242,8 @@ public:
 	bool32_t ThingMusicInRange(MUSIC_TYPE type, GameThingWithPos* thing);
 	// BW1W120 00429500 BW1M119 01186770
 	bool32_t ProcessThingMusic(ThingMusicInfo* info, GameThingWithPos* thing);
+	// BW1W120 00429680 BW1M119 inlined
+	bool32_t IsThingMusicPlaying(ThingMusicInfo* info);
 	// BW1W120 004296c0 BW1M119 01186660
 	void StopMusic(ThingMusicInfo* info, int param_2);
 	// BW1W120 00429880 BW1M119 011864f0
