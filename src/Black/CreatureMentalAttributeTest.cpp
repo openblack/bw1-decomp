@@ -22,7 +22,7 @@ const char* AttributeCreatureDominantDesire::TypeName()
 
 uint32_t AttributeCreatureDominantDesire::ValueRange()
 {
-	// The value can also be INVALID_CREATURE_DESIRE, for an action that serves no desire.
+	// The value is a desire (0 .. NUM_CREATURE_DESIRES - 1) or INVALID_CREATURE_DESIRE, which comes right after them.
 	return INVALID_CREATURE_DESIRE + 1;
 }
 
