@@ -83,9 +83,9 @@ GroupBehaviour::GroupBehaviour()
 {
 	Pos.Clear();
 	Speed = LastSpeed = 1.0f;
-	Unused[1] = 0;
-	Unused[0] = 0;
-	Unused[2] = 0;
+	Unused2 = 0;
+	Unused1 = 0;
+	Unused3 = 0;
 	Time = 0.0f;
 	NumGroups = 0;
 	EditorValue2 = 0;
@@ -343,9 +343,9 @@ uint32_t GroupBehaviour::Save(GameOSFile& file)
 	if (GameThingWithPos::Save(file))
 	{
 		file.WriteIt(Time);
-		file.WriteIt(Unused[0]);
-		file.WriteIt(Unused[1]);
-		file.WriteIt(Unused[2]);
+		file.WriteIt(Unused1);
+		file.WriteIt(Unused2);
+		file.WriteIt(Unused3);
 		WriteSafe(file, KeyFrames);
 		file.WriteIt(NumGroups);
 		file.WriteIt(EditorValue);
@@ -377,9 +377,9 @@ uint32_t GroupBehaviour::Load(GameOSFile& file)
 	if (GameThingWithPos::Load(file))
 	{
 		file.ReadIt(Time);
-		file.ReadIt(Unused[0]);
-		file.ReadIt(Unused[1]);
-		file.ReadIt(Unused[2]);
+		file.ReadIt(Unused1);
+		file.ReadIt(Unused2);
+		file.ReadIt(Unused3);
 		ReadSafe(file, KeyFrames);
 		file.ReadIt(NumGroups);
 		file.ReadIt(EditorValue);

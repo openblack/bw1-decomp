@@ -40,7 +40,9 @@ class GroupBehaviour : public GameThingWithPos
 {
 public:
 	float                              Time; /* 0x28 */
-	uint32_t                           Unused[3];
+	uint32_t                           Unused1;
+	uint32_t                           Unused2;
+	uint32_t                           Unused3;
 	LHOrderedLinkedList<DanceKeyFrame> KeyFrames; /* 0x38 */
 	unsigned long                      NumGroups; /* 0x40 */
 	uint32_t                           EditorValue;
