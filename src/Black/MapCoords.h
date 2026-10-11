@@ -57,8 +57,9 @@ struct JustMapXZ
 	MapCell* ToMap() const;
 };
 
-struct JustWholeMapXZ
+class JustWholeMapXZ
 {
+public:
 	int32_t x; /* 0x0 */
 	int32_t z;
 

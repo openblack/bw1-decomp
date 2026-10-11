@@ -47,7 +47,7 @@ class GameOSFile;
 struct GameThingVftable;
 struct GameThingWithPosVftable;
 struct GestureSystemPacketData;
-struct JustWholeMapXZ;
+class JustWholeMapXZ;
 class LHOSFile;
 struct LHPoint;
 class MagicTeleport;
