@@ -253,6 +253,15 @@ for i386 COFF/PE32. It provides evidence without automatically applying override
 python tools/decomp-relocs.py --unit Game --address 0054CE1E --symbol ProcessNetworkPackets --original orig/BW1W120/runblack-decrypted.exe --verify
 ```
 
+A function can score `100%` while an x87 instruction loads a different constant: only the
+relocation target differs. `check-constants.py` compares the values the original and our
+object load, in instruction order, and lists every constant that differs:
+
+```powershell
+python tools/check-constants.py Abode
+python tools/check-constants.py --all
+```
+
 ### Parallel work
 
 When parallel agents are requested, use them for independent investigations and give
