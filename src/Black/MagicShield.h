@@ -22,8 +22,6 @@ class MagicShield : public MapShield
 public:
 	// Override methods
 
-	// BW1W120 0072c230 BW1M119 0153cb90
-	virtual ~MagicShield();
 	// BW1W120 0072c220 BW1M119 0153cc70
 	virtual char* GetDebugText();
 	// BW1W120 0072c3d0 BW1M119 015398e0

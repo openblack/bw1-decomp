@@ -30,8 +30,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 0072cb20 BW1M119 0153c920
-	virtual ~PhysicalShield();
 	// BW1W120 0072cc50 BW1M119 01538b60
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 0072cb10 BW1M119 0153ca60
@@ -77,6 +75,11 @@ public:
 
 	// BW1W120 0072cb50 BW1M119 01538cd0
 	PhysicalShield();
+
+	// Non-virtual methods
+
+	// BW1W120 0072cb70 BW1M119 01538c00
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_PHYSICAL_SHIELD_INCLUDED_H */
