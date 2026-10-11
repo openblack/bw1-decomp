@@ -1045,7 +1045,7 @@ wait:
 	if (IsOpen())
 	{
 		AddToIncomingEventQ(
-			LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_MSERVE_HOST_MIGRATION_COMPLETE, LH_ALL_USERS, 0, NULL));
+			LHNetEvent::CreateSimple(LH_NETEVENT_TYPE_MSERVE_HOST_MIGRATION_COMPLETE, LH_EVERYONE, 0, NULL));
 		while (playerLists.Count != 0)
 			AddToIncomingEventQ(RemoveFromQueue(&playerLists));
 	}

@@ -41,7 +41,7 @@ static char Outlook9Key[] = "Software\\Microsoft\\Office\\9.0\\Outlook";
 
 static const char AddressBookSignature[] = "WhereTheWildRosesGrow";
 
-unsigned long LHMail::SeedCounter;
+unsigned long LHMail::SeedCounter = 0;
 
 void InetLogging(char* text)
 {

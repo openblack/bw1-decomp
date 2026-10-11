@@ -192,7 +192,7 @@ public:
 	// BW1W120 10001e80 BW1M119 null
 	static LHNetEvent* CreateSimple(long type, unsigned long length, void* data)
 	{
-		return CreateSimple((LH_NETEVENT_TYPE)type, LH_ALL_USERS, length, data);
+		return CreateSimple((LH_NETEVENT_TYPE)type, LH_EVERYONE, length, data);
 	}
 #else
 	// BW1W120 10001e80 BW1M119 null
