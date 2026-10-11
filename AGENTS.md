@@ -536,3 +536,29 @@ conflict with looser guidance above.
 - **Format and rebase before review.** Run `clang-format` 22 on every touched file and
   rebase onto the latest `main`; CI runs `check-format` and expects the report to show
   the claimed improvement.
+
+### Naming and values (from @qwerin's #425 review)
+
+- **Model values, don't relocate them.** Wrapping a literal in a macro
+  (`#define X (Y + 4)`) is still a magic number. Work out what the value *is* — an enum
+  count, a slot in a table with known entries, a flag — and model that, starting the enum
+  from the known entries (e.g. the belief `Attributes[]` slots named from the functions
+  that fill them). Never reuse a `chlasm` name that only coincidentally has the same value.
+- **Name anything used in a significant way** — field, function, enum value, flag, or
+  parameter — from context: find what sets and reads it (ctors, `Create*`, state
+  `Enter`/`Exit`/`Process`, the state table's `Save`/`Load` pair) and name it by its role.
+  Fields that are only saved/loaded and never read may stay `field_0x…`, but say so in the PR.
+- **Placement.** Counts/sizes follow the file's existing convention (frequently `#define`
+  lists rather than anonymous enums); new enums go in the owning class's header;
+  `include/chlasm/*.h` is semi-official — corrections only, never new content.
+- **Watch include/link side effects.** A new `#include` in a shared header reaches every
+  unit that transitively includes it and can change their objects for *other* versions — an
+  extra include in `CreatureMentalAttributeTest.h` changed `Audio.cpp`'s 1.00 object and
+  broke the BW1W100 hash while 1.20 still passed. Include heavy headers in the `.cpp` that
+  needs them, and compile changed files for BW1W100/BW1W110 as well.
+- **Verify readability passes with `tools/codegen-check.py snapshot`/`compare`**, not
+  `decomp-regress` against a `main` baseline — the latter cannot see a drop in a function
+  the PR itself adds (it was 0% in the baseline). Note `(status & F) == F` and `status & F`
+  compile differently.
+- **Rebuild the `main` baseline after `main` moves**, otherwise merged upstream work shows
+  up as false regressions.
