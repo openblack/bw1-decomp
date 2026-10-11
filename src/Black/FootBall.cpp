@@ -44,3 +44,8 @@ bool32_t Football::IsFootball()
 {
 	return true;
 }
+
+bool32_t Villager::FootballWonGoal()
+{
+	return true;
+}

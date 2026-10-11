@@ -59,6 +59,11 @@ SCRIPT_OBJECT_TYPE Dove::GetScriptObjectType()
 	return SCRIPT_OBJECT_TYPE_BIRD;
 }
 
+uint32_t Dove::IAmABird()
+{
+	return 1;
+}
+
 bool32_t Bat::CanBeFrighteningToCreature(Creature* creature)
 {
 	return true;

@@ -60,3 +60,8 @@ bool32_t MagicFireBall::CanBeFoughtByCreature(Creature* creature)
 {
 	return false;
 }
+
+uint32_t MagicFireBall::InterfaceValidToTap(GInterfaceStatus* interface_status)
+{
+	return 1;
+}

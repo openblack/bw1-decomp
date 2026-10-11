@@ -4,6 +4,11 @@
 
 LH3DMapCoords PuzzleGame::AppliedMapPos;
 
+bool32_t PuzzleTotem::NetworkFriendlyEndLockedSelect(GInterfaceStatus* interface_status)
+{
+	return true;
+}
+
 bool32_t PuzzleVillager::DecideWhatToDo()
 {
 	return true;
@@ -37,4 +42,14 @@ char* PuzzlePig::GetDebugText()
 bool32_t PuzzleCow::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;
+}
+
+bool32_t PuzzleSheep::DecideWhatToDo()
+{
+	return true;
+}
+
+uint32_t ChessPion::SaveObject(LHOSFile& file, const MapCoords* map_coords)
+{
+	return 1;
 }
