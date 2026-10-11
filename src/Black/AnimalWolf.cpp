@@ -31,3 +31,13 @@ bool32_t PieceWolf::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;
 }
+
+bool32_t Wolf::MoveToPos()
+{
+	return Animal::MoveToPos();
+}
+
+bool32_t Wolf::Wander()
+{
+	return Animal::Wander();
+}
