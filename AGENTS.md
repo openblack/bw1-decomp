@@ -506,3 +506,33 @@ name it).
 which translation unit owns the data and produces a mangled name (`?Name@@3...`) that will
 not match the real one. If a global cannot be declared in its proper header yet, leave
 the function nonmatching without it and record why in the notes or PR description.
+
+## Rules from maintainer review
+
+These are drawn from review feedback on earlier PRs and take precedence where they
+conflict with looser guidance above.
+
+- **Name parameters.** A function that matches must not keep `param_1`/`param_2`
+  placeholders. Name each argument from its role, the demangled Mac symbol, or its call
+  sites (`snake_case`). Keep `param_N` (or Hex-Rays `fVarN`) only when the signature is
+  genuinely unknown, and even then prefer the closest evidence-based name. This extends
+  to the base-class convention already used elsewhere (`ToBeDeleted(int delete_now)`,
+  `CallVirtualFunctionsForCreation(const MapCoords& coords)`, `PhysicsEditorCreate(int type)`).
+- **`symbols.txt` is not ground truth.** Its mangled names and return types are
+  reconstructed and can be wrong — `class` vs `struct`, `bool` vs `int`, a return type
+  that disagrees with the codegen, or an offset encoded relative to one symbol base that
+  resolves to a different one elsewhere. The binary and the codegen are the source of
+  truth: before renaming a type or changing a signature because `symbols.txt` says so,
+  confirm the change in objdiff *and* in the CI report, and check it does not regress
+  other functions, sections or data matches. A "fix" that matches `symbols.txt` but
+  worsens objdiff/CI is wrong.
+- **Show it matching.** A PR must demonstrate the result (objdiff 100% and the CI report),
+  not just assert it. Comment-only, analysis-only or "proposed" changes are not enough —
+  a macro or abstraction must be shown working and matching.
+- **Prefer the clearer of equal matches.** When two source shapes produce byte-identical
+  code (e.g. a member order reading `values[age]` vs the original order reading
+  `values[age - 1]`), the assembly does not pin the source down. Pick the more readable
+  form and note the ambiguity rather than treating the asm as proof of one shape.
+- **Format and rebase before review.** Run `clang-format` 22 on every touched file and
+  rebase onto the latest `main`; CI runs `check-format` and expects the report to show
+  the claimed improvement.
