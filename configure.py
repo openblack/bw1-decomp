@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.34"
+config.dtk_tag = "v0.0.35"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
@@ -229,6 +229,32 @@ if config.version == "BW1W120":
         "auto_01_1001AB00_edata",
         "auto_01_10054540_edata",
         "auto_01_1001A6F0_edata",
+    ]
+# Import tables, which lld-link regenerates from an import library and order
+# file read back from the original (generate_imports in config.yml).
+if config.version == "BW1W120":
+    config.linker_provided_units += [
+        "auto_01_10030000_idata_5",
+        "auto_01_10033260_idata_2",
+        "auto_01_100332EC_idata_3",
+        "auto_01_10033300_idata_4",
+        "auto_01_100335CC_idata_6",
+        "auto_01_10015000_idata_5",
+        "auto_01_1001A050_idata_2",
+        "auto_01_1001A0B4_idata_3",
+        "auto_01_1001A0C8_idata_4",
+        "auto_01_1001A2B4_idata_6",
+        "auto_03_1001D000_idata",
+        "auto_01_008A9000_idata_5",
+        "auto_01_009BF6E8_idata_2",
+        "auto_01_009BF88C_idata_3",
+        "auto_01_009BF8A0_idata_4",
+        "auto_01_009C0248_idata_6",
+        "auto_01_10050000_idata_5",
+        "auto_01_100534CC_idata_2",
+        "auto_01_10053544_idata_3",
+        "auto_01_10053558_idata_4",
+        "auto_01_100537CC_idata_6",
     ]
 elif args.debug:
     config.base_ldflags.append("/debug")

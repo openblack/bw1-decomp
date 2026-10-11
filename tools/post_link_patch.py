@@ -314,6 +314,19 @@ def write_bytes(pe, offset, data):
     pe.__data__[offset:offset + len(data)] = data
 
 
+def mark_imports_bound(pe):
+    """SafeDisc stamps every import descriptor as bound (TimeDateStamp and
+    ForwarderChain 0xFFFFFFFF), with no bound import directory and the IAT left
+    unbound."""
+    # pefile writes its parsed descriptors back over the raw bytes, so stamp
+    # those.
+    if not hasattr(pe, 'DIRECTORY_ENTRY_IMPORT'):
+        pe.parse_data_directories(directories=[pefile.DIRECTORY_ENTRY['IMAGE_DIRECTORY_ENTRY_IMPORT']])
+    for entry in pe.DIRECTORY_ENTRY_IMPORT:
+        entry.struct.TimeDateStamp = 0xFFFFFFFF
+        entry.struct.ForwarderChain = 0xFFFFFFFF
+
+
 def xor_dword(key, value):
     return struct.pack('<I', value ^ key)
 
@@ -850,6 +863,7 @@ def apply_BW1W120_patch(pe, cfg, out_dir, modules):
     apply_patch_safedisc(pe, cfg)
     apply_BW1W120_patch_safedisc_cleaner(pe)
     apply_BW1_common_patch(pe, cfg)
+    mark_imports_bound(pe)
 
     # Different safedisc decryptor easter egg
     # https://www.beatport.com/nl/track/crazy-bad-bwoy/682050

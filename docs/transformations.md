@@ -117,7 +117,47 @@ layout-neutral — that build still matches.
 The IAT tail padding itself is unexplained: link.exe's gap between IAT end and
 debug directory is 0 on its own output and on 1.30, 0xC on LHMultiplayerR.dll,
 but 0x18 on the 1.10/1.20 executables. Absorbing it into `.idata$5` sidesteps
-needing the rule.
+needing the rule. With linker-generated imports (below), dtk turns that extent
+into padding after the last IAT entry.
+
+## Import and export tables
+
+For 1.20 the linker writes the import tables of every image, and the export
+tables of the four DLLs, instead of the split objects copying them. As with the
+debug directory, `splits.txt` carves the tables into their own units (`.idata$N`,
+`.edata`) and `configure.py` holds those units back (`linker_provided_units`).
+`config.yml` turns on `generate_imports` / `generate_exports` for each module,
+and dtk passes the linker what the original tables say:
+
+- **Exports:** every split object carries `-export:` directives for the symbols it
+  defines that the image exports. A recompiled unit keeps cl.exe's own
+  `__declspec(dllexport)` directives. The image's DLL name and timestamp come in
+  through `exports.def` and `/TIMESTAMP:`. LHLog's link.exe 7.0 `/OPT:ICF` folds
+  are `alias` labels in its symbols. LHDialogLib.dll was linked incrementally and
+  exports through its `@ILT+n_` thunks.
+- **Imports:** `imports.lib` is a short-format import library holding the original
+  hints and imported names. `imports.order` gives lld-link's `/vc6imports:` the
+  layout link.exe produced: descriptor order, IAT slot order, and the hint/name
+  area with its DLL names, as listed below. This is because link.exe 6 laid the
+  tables out by its library-search order, which can't be redone without the
+  original import libraries.
+  - LHDialogLib.dll's incremental link left zero padding after each DLL's
+    entries, which the order file carries too.
+  - The executable's thunks (`jmp [__imp_X]`) stay in the split objects, as link.exe
+    placed them among the code.
+
+The executable's own "export table" (13 nameless entries all pointing at the
+image base) and LHMultiplayerR.dll's delay-load tables are still copied.
+
+`post_link_patch.py` restores what SafeDisc changed: every import descriptor of
+the executable is stamped bound (`TimeDateStamp` and `ForwarderChain`
+0xFFFFFFFF), although there is no bound import directory and the IAT is
+unbound.
+
+The report counts these units as well. For each held-back unit,
+`tools/linker_unit.py` compares our final image with the original over that
+range, and objdiff gets the target object as its base only if the bytes are
+identical.
 
 ## SHA verification
 
