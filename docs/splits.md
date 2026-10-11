@@ -67,3 +67,27 @@ path/to/file.cpp: [file attributes]
 - `align:` Specifies the alignment of the section. If not specified, the default alignment for the section is used.
 - `rename:` Writes this section under a different name when generating the split object.
 - `skip` Skips this data when writing the object file. Used for ignoring data that's linker-generated.
+
+## Per-unit `extra` symbols are shared COMDATs
+
+`objdiff` compares our **pre-link** object against the **post-link** split object. The shipped
+link resolved every shared COMDAT — header-defined inline functions, `__real@` constants, RTTI
+descriptors, and `/OPT:ICF`-folded identical bodies — to a single copy, which `dtk` assigns by
+address to one unit's split object. Our compiled object still carries a COMDAT copy of each of
+those it touches, so every surviving copy that did not land in this unit shows as **`extra`** in
+the diff. (See `tools/project.py` `add_unit`/`fold` and `configure.py`'s function-level-linking
+note.) Example: a unit can show hundreds of `extra` symbols and only a couple of `nonmatching`
+ones; the extras are inline members of unrelated classes pulled in by headers.
+
+So per-unit `extra` counts are **not** a source or split defect. To compare fairly, either diff
+against the unit's `.fold.o` (the `fold` step folds the recompiled unit's shared COMDATs onto the
+image's copies), or ignore `extra` symbols that are absent from `config/<ver>/symbols.txt`.
+
+## Lenient vs strict relocation comparison
+
+`objdiff-cli report generate` defaults to `functionRelocDiffs=none` (most lenient), under which a
+function can read 100% while a relocation references a different symbol/addend than the target.
+`configure.py`'s `config.progress_report_args` can pass
+`"--config functionRelocDiffs=data_value"` to make the report stricter. `tools/decomp-strict.py`
+surfaces strict-only mismatches read-only (functions 100% under the lenient comparison but below
+100% under `functionRelocDiffs=all`) without changing the report.
