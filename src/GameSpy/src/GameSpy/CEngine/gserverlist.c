@@ -435,7 +435,7 @@ static int ServerListFindServerMax(GServerList serverlist, unsigned int ip, int 
 }
 
 //find the server in the list, returns -1 if it does not exist
-int ServerListFindServer(GServerList serverlist, unsigned int ip, int port)
+static int ServerListFindServer(GServerList serverlist, unsigned int ip, int port)
 {
 	return ServerListFindServerMax(serverlist, ip, port, ArrayLength(serverlist->servers));
 }
