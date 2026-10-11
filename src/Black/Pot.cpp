@@ -35,9 +35,9 @@ bool32_t Pot::IsResourceStore(RESOURCE_TYPE param_1)
 	return false;
 }
 
-PileResource::PileResource(const MapCoords& param_1, const GPotInfo* info, uint32_t param_3, MultiMapFixed* param_4,
-                           Town* param_5, int param_6, float param_7, float param_8)
-	: PotStructure(param_1, info, param_3, param_4, param_5, param_6, param_7, param_8)
+PileResource::PileResource(const MapCoords& coords, const GPotInfo* info, uint32_t resource, MultiMapFixed* parent,
+                           Town* town, int param_6, float y_angle, float scale)
+	: PotStructure(coords, info, resource, parent, town, param_6, y_angle, scale)
 {
 }
 

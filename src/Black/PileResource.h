@@ -83,8 +83,8 @@ public:
 	// BW1W120 inlined BW1M119 0130ee50
 	PileResource() {}
 	// BW1W120 0066ec70 BW1M119 011218a0
-	PileResource(const MapCoords& param_1, const GPotInfo* info, uint32_t param_3, MultiMapFixed* param_4,
-	             Town* param_5, int param_6, float param_7, float param_8);
+	PileResource(const MapCoords& coords, const GPotInfo* info, uint32_t resource, MultiMapFixed* parent, Town* town,
+	             int param_6, float y_angle, float scale);
 };
 
 #endif /* BW1_DECOMP_PILE_RESOURCE_INCLUDED_H */

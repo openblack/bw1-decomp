@@ -69,7 +69,7 @@ public:
 	// BW1W120 0055e4d0 BW1M119 0130e2e0
 	Lion() {}
 	// BW1W120 0041fd30 BW1M119 0117ecc0
-	Lion(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3);
+	Lion(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_LION_INCLUDED_H */

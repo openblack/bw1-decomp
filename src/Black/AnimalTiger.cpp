@@ -15,9 +15,9 @@ uint32_t Tiger::GetSaveType()
 	return GAME_THING_TYPE_TIGER;
 }
 
-Tiger* Tiger::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3)
+Tiger* Tiger::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	Tiger* tiger = new (ANIMAL_TIGER_FILE, 26) Tiger(coords, info, param_3);
+	Tiger* tiger = new (ANIMAL_TIGER_FILE, 26) Tiger(coords, info, age);
 	if (tiger != NULL)
 	{
 		tiger->CallVirtualFunctionsForCreation(coords);

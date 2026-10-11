@@ -13,9 +13,9 @@ uint32_t Leopard::GetSaveType()
 	return GAME_THING_TYPE_LEOPARD;
 }
 
-Leopard* Leopard::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3)
+Leopard* Leopard::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	Leopard* leopard = new (ANIMAL_LEOPARD_FILE, 30) Leopard(coords, info, param_3);
+	Leopard* leopard = new (ANIMAL_LEOPARD_FILE, 30) Leopard(coords, info, age);
 	if (leopard != NULL)
 	{
 		leopard->CallVirtualFunctionsForCreation(coords);

@@ -374,7 +374,7 @@ public:
 	// BW1W120 0055e400 BW1M119 0130e110
 	Animal() { SetToZero(); }
 	// BW1W120 00416eb0 BW1M119 01175200
-	Animal(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3);
+	Animal(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 
 	// BW1W120 00417900 BW1M119 01175150
 	void SetToZero();

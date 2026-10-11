@@ -237,12 +237,12 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	PieceLion() {}
 	// BW1W120 inlined BW1M119 inlined
-	PieceLion(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3) : Lion(coords, info, param_3) {}
+	PieceLion(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Lion(coords, info, age) {}
 
 	// Static methods
 
 	// BW1W120 00420040 BW1M119 0117e5e0
-	static PieceLion* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3);
+	static PieceLion* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 class PiecePig : public Pig
@@ -277,14 +277,12 @@ public:
 	// BW1W120 inlined BW1M119 0130fc30
 	PieceSheep() {}
 	// BW1W120 inlined BW1M119 0112a190
-	PieceSheep(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3) : Sheep(coords, info, param_3)
-	{
-	}
+	PieceSheep(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Sheep(coords, info, age) {}
 
 	// Static methods
 
 	// BW1W120 0041d580 BW1M119 0117b0e0
-	static PieceSheep* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3);
+	static PieceSheep* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 class PieceTortoise : public Tortoise
@@ -346,15 +344,12 @@ public:
 	PieceVillager() {}
 
 	// BW1W120 inlined BW1M119 inlined
-	PieceVillager(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3)
-		: Animal(coords, info, param_3)
-	{
-	}
+	PieceVillager(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Animal(coords, info, age) {}
 
 	// Static methods
 
 	// BW1W120 0041bb20 BW1M119 0116d300
-	static PieceVillager* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3);
+	static PieceVillager* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 class PieceWolf : public Wolf

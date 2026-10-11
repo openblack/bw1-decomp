@@ -31,16 +31,16 @@ LH3DObject::ObjectType Flowers::Get3DType()
 	return LH3DObject::MORPHABLE;
 }
 
-inline Feature::Feature(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale, float param_5,
-                        int param_6)
-	: MultiMapFixed(coords, info, y_angle, scale, param_5, param_6)
+inline Feature::Feature(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale,
+                        float percent_built, int under_construction)
+	: MultiMapFixed(coords, info, y_angle, scale, percent_built, under_construction)
 {
 }
 
-Feature* Feature::Create(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale, float param_5,
-                         int param_6)
+Feature* Feature::Create(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale,
+                         float percent_built, int under_construction)
 {
-	Feature* feature = new (FEATURE_FILE, 19) Feature(coords, info, y_angle, scale, param_5, param_6);
+	Feature* feature = new (FEATURE_FILE, 19) Feature(coords, info, y_angle, scale, percent_built, under_construction);
 	if (feature != NULL)
 	{
 		feature->CallVirtualFunctionsForCreation(coords);

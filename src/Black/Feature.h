@@ -63,13 +63,14 @@ public:
 	// BW1W120 inlined BW1M119 0130dbd0
 	Feature() {}
 	// BW1W120 inlined BW1M119 010ab2f0
-	Feature(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale, float param_5, int param_6);
+	Feature(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale, float percent_built,
+	        int under_construction);
 
 	// Static methods
 
 	// BW1W120 00527350 BW1M119 010d5e70
-	static Feature* Create(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale, float param_5,
-	                       int param_6);
+	static Feature* Create(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale,
+	                       float percent_built, int under_construction);
 };
 
 #endif /* BW1_DECOMP_FEATURE_INCLUDED_H */

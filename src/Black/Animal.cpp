@@ -215,9 +215,9 @@ int Animal::CallOutofAnimationFunction(uint8_t state)
 	return ANM_INVALID;
 }
 
-PieceVillager* PieceVillager::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3)
+PieceVillager* PieceVillager::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	PieceVillager* villager = new (ANIMAL_FILE, 2696) PieceVillager(coords, info, param_3);
+	PieceVillager* villager = new (ANIMAL_FILE, 2696) PieceVillager(coords, info, age);
 	if (villager != NULL)
 	{
 		villager->CallVirtualFunctionsForCreation(coords);

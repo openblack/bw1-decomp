@@ -35,9 +35,9 @@ bool32_t PieceLion::CanBeFrighteningToCreature(Creature* creature)
 	return false;
 }
 
-PieceLion* PieceLion::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3)
+PieceLion* PieceLion::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
-	PieceLion* lion = new (ANIMAL_LION_FILE, 153) PieceLion(coords, info, param_3);
+	PieceLion* lion = new (ANIMAL_LION_FILE, 153) PieceLion(coords, info, age);
 	if (lion != NULL)
 	{
 		lion->CallVirtualFunctionsForCreation(coords);

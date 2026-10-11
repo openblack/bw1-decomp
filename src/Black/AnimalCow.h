@@ -63,7 +63,7 @@ public:
 	// BW1W120 0055e630 BW1M119 0130e070
 	Cow() {}
 	// BW1W120 0041d0b0 BW1M119 0117b700
-	Cow(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3);
+	Cow(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_COW_INCLUDED_H */

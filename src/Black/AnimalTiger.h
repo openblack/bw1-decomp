@@ -54,12 +54,12 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	Tiger() {}
 	// BW1W120 inlined BW1M119 inlined
-	Tiger(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3) : Lion(coords, info, param_3) {}
+	Tiger(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Lion(coords, info, age) {}
 
 	// Static methods
 
 	// BW1W120 004213c0 BW1M119 01181310
-	static Tiger* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long param_3);
+	static Tiger* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_TIGER_INCLUDED_H */
