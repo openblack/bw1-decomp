@@ -8466,3 +8466,43 @@ float Creature::HowInterestingIsPlayer(CreaturePlan& plan)
 {
 	return mind->AttitudeToPlayer.field_0x28;
 }
+
+void Creature::CommandActivityAndAction(CREATURE_DESIRES desire, CreatureBelief* activity_object,
+                                        CREATURE_ACTION action, CreatureBelief* object_to_act_on,
+                                        CreatureBelief* object_to_use)
+{
+	ForceActivityAndForceAction(desire, activity_object, action, object_to_act_on, object_to_use, 1, 1);
+	mind->agenda.CommandState.field_0x1c = 1;
+}
+
+float CreatureMental::CalculateDesirabilityOfProposedActivity(CREATURE_DESIRES  desire,
+                                                              GameThingWithPos* activity_object)
+{
+	CreatureBelief* belief = AddBeliefAboutObject(creature, activity_object);
+	float           distancePriority = CalculateDistancePriority(desire, belief);
+	float           desireLevel = desires.field_0x148[desire];
+	float           desirability = GetActivityObjectUsefulness(belief, desire) * desireLevel * distancePriority;
+	return desirability < 0.0f ? 0.0f : (desirability > 1.0f ? 1.0f : desirability);
+}
+
+float CreatureMental::FUN004c47d0(CREATURE_DESIRES desire, GameThingWithPos* activity_object)
+{
+	CreatureBelief* belief = activity_object ? AddBeliefAboutObject(creature, activity_object) : NULL;
+	CreaturePlan    plan;
+	plan.CreatureDesire = desire;
+	plan.ActivityObject = belief;
+	plan.field_0x1c = 1.0f;
+	creature->FindBestActionForPlan(plan);
+	if (plan.IsValid())
+	{
+		return plan.field_0x28;
+	}
+	return 0.0f;
+}
+
+float CreatureMental::FUN004c4870(CREATURE_DESIRES desire, GameThingWithPos* activity_object, CREATURE_ACTION action,
+                                  GameThingWithPos* object_to_act_on, GameThingWithPos* object_to_use)
+{
+	return FUN004c4640(desire, activity_object, action, object_to_act_on, object_to_use) -
+	       FUN004c47d0(desire, activity_object);
+}

@@ -710,6 +710,11 @@ public:
 	bool32_t ForceActivityAndDecideAction(CREATURE_DESIRES desire, CreatureBelief* activity_object);
 	// BW1W120 004f0a70 BW1M119 0127d450
 	void FindBestActionForPlan(CreaturePlan& plan);
+	// BW1W120 004f0ca0 BW1M119 0127d0d0
+	float GetActionPriorityModificationFromWhenLastDone(CREATURE_ACTION action);
+	// BW1W120 004c4580 BW1M119 01235750
+	void CommandActivityAndAction(CREATURE_DESIRES desire, CreatureBelief* activity_object, CREATURE_ACTION action,
+	                              CreatureBelief* object_to_act_on, CreatureBelief* object_to_use);
 	// BW1W120 004f1560 BW1M119 0127be20
 	void ConstructCurrentPlanFromPlan(CreaturePlan& plan, int param_2);
 	// BW1W120 004f1600 BW1M119 0127bcc0
