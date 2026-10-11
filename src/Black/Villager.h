@@ -97,17 +97,17 @@ struct DiscipleInfo
 
 enum VILLAGER_FLAGS
 {
-	VILLAGER_FLAG_AT_WORSHIP_SITE = 0x2, // read by IsAtOrOnTheWayToWorshipSite (#343)
+	VILLAGER_FLAG_AT_WORSHIP_SITE = 0x2,
 	VILLAGER_FLAG_AT_HOME = 0x4,
 	VILLAGER_FLAG_CHILD = 0x8,
-	VILLAGER_FLAG_DISCIPLE = 0x200,          // bit 9: holds a disciple role (SetVillagerDisciple) (#343)
-	VILLAGER_FLAG_DISCIPLE_FOLLOWER = 0x400, // bit 10: follows a disciple (SetDiscipleFollower) (#343)
+	VILLAGER_FLAG_DISCIPLE = 0x200,
+	VILLAGER_FLAG_DISCIPLE_FOLLOWER = 0x400,
 };
 
 class Villager : public Living
 {
 public:
-	uint16_t             Flags; /* bits 0-13 see VILLAGER_FLAGS; bits 14-15 hold the graphic index */
+	uint16_t             Flags;
 	LHListNode<Villager> next;
 	float                food;
 	int                  LastCheckTurn;
