@@ -4,8 +4,9 @@
 #include <re_common.h> /* For bool32_t */
 #include <stdint.h>    /* For uint32_t, uint8_t */
 
-struct LHTimer
+class LHTimer
 {
+public:
 	char     Text[0x100];
 	uint32_t TickCount; /* 0x100 */
 	int      ElapsedTime;
