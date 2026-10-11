@@ -133,6 +133,19 @@ locally by default. Layouts can differ between versions (e.g. `LHNetUser`), so g
 version-specific `static_assert`s and members with `#ifdef VERSION_BW1W120`, and compile
 touched units with each version's `/DBUILD_VERSION=<n> /DVERSION_<ver>` before pushing.
 
+`tools/decomp-versions.py` does this: it compiles the changed sources and the consumers of
+changed headers for BW1W100 and BW1W110 with the BW1W120 command rewritten per version
+(fetching MSVC 6.4 if missing). `--linked` also compares every linked unit that includes a
+changed header against a temporary worktree of the merge-base, for all three versions: a
+header edit can change a linked unit's object for 1.00/1.10 only (an added include once
+changed `Audio.cpp`'s BW1W100 object and broke that hash while 1.20 passed). Run both
+before pushing a header change; nothing outside `build/decomp-versions/` is written.
+
+```powershell
+python tools/decomp-versions.py --since origin/main            # compile check, 1.00 and 1.10
+python tools/decomp-versions.py --since origin/main --linked   # IDENTICAL / SAME-SECTIONS-REORDERED / DIFFERENT
+```
+
 The underlying utility used for splitting the binary is `dtk` (`build/tools/dtk`).
 It is already properly set up and almost never requires any meddling.
 
