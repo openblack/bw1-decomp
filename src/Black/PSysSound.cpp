@@ -14,5 +14,5 @@ uint32_t PSysSound::GetSaveType()
 
 char* DefensiveSphere::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }

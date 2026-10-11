@@ -18,7 +18,7 @@ public:
 	// Override methods
 
 	// BW1W120 0055ef00 BW1M119 inlined
-	virtual char* GetDebugText() { return "##a_class:"; }
+	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 	// BW1W120 00695010 BW1M119 inlined
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 006cbb30 BW1M119 inlined

@@ -27,7 +27,7 @@ public:
 	int      field_0x14;
 	float    field_0x18;
 	bool32_t isFinalState;
-	int      isTransientState;
+	bool32_t isTransientState;
 	uint32_t field_0x24;
 	uint32_t isScriptState;
 	uint32_t isScriptInterruptableState;
@@ -38,7 +38,7 @@ public:
 	uint32_t field_0xbc;
 	uint32_t field_0xc0;
 	uint32_t field_0xc4;
-	int      isReactiveState;
+	bool32_t isReactiveState;
 	uint32_t field_0xcc;
 	int      field_0xd0;
 	int      field_0xd4;
@@ -51,7 +51,7 @@ public:
 	uint32_t field_0xf0;
 	uint32_t field_0xf4;
 	uint32_t field_0xf8;
-	uint32_t canReact;
+	bool32_t canReact;
 	uint32_t field_0x100;
 	uint32_t field_0x104;
 	float    field_0x108;

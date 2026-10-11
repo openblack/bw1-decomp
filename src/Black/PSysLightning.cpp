@@ -7,5 +7,5 @@ uint32_t UR_Lightning_CollectionData::GetSaveType()
 
 char* UR_Lightning_CollectionData::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }

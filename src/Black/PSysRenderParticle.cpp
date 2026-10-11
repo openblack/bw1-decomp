@@ -31,55 +31,55 @@ uint32_t DrawOffsetLT::GetSaveType()
 
 char* Particle3DObj::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* RenderParticleCreatureRef::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* RenderParticleGameObjectRef::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* Particle3DAnim::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* RenderParticleMist::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* RenderParticleGameObject::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* ParticleLightMap::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* Chain::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* DrawOffset::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* DrawOffsetLT::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* DrawOffsetDecay::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }

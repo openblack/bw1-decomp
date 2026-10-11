@@ -14,10 +14,10 @@ uint32_t UR_VolFXOnObject::AtomData::GetSaveType()
 
 char* UR_LightSheetOnObject::AtomData::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* UR_VolFXOnObject::AtomData::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }

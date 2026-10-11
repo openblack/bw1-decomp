@@ -8,10 +8,10 @@ uint32_t AtomCore::GetSaveType()
 
 char* AtomCore::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }
 
 char* AtomCollection::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }

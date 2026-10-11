@@ -28,7 +28,7 @@ public:
 	// BW1W120 006c8a80 BW1M119 014837e0
 	virtual void SetRandJitter(float jitter);
 	// BW1W120 0055f0d0 BW1M119 0142bda0
-	virtual char* GetDebugText() { return "##a_class:"; }
+	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 	// BW1W120 006959d0 BW1M119 014250f0
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 006cc540 BW1M119 0148be80

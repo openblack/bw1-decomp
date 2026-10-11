@@ -8,5 +8,5 @@ uint32_t DefensiveShield::GetSaveType()
 
 char* DefensiveShield::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }

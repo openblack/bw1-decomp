@@ -132,6 +132,7 @@ public:
 	virtual ~Attribute();
 
 	// Virtual methods
+
 	// BW1W120 004cb6f0 BW1M119 01243290
 	virtual const char* TypeName();
 	// BW1W120 004cb700 BW1M119 012432d0

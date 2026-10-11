@@ -12,5 +12,5 @@ GPlayer* PSysManager::GetPlayer()
 
 char* PSysManager::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }

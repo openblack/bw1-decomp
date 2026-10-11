@@ -9,5 +9,5 @@ uint32_t UR_Explosion::CollectionData::GetSaveType()
 
 char* UR_Explosion::CollectionData::GetDebugText()
 {
-	return "##a_class:";
+	return PSYS_DEBUG_TEXT;
 }

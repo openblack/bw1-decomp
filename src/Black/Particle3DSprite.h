@@ -43,7 +43,7 @@ public:
 	// BW1W120 006c9e00 BW1M119 01094130
 	virtual ~Particle3DSprite();
 	// BW1W120 0055f050 BW1M119 inlined
-	virtual char* GetDebugText() { return "##a_class:"; }
+	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 	// BW1W120 0055f060 BW1M119 inlined
 	virtual Particle3DSprite* IsParticle3DSprite() { return this; }
 	// BW1W120 00695ac0 BW1M119 inlined

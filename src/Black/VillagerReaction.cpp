@@ -33,7 +33,7 @@ bool32_t Villager::IsAvailableForReaction(REACTION reaction)
 {
 	VILLAGER_STATES state = (VILLAGER_STATES)(GetFinalState() & VILLAGER_STATE_LAST_STATE);
 	uint16_t        flags = this->Flags;
-	if (!(flags & VILLAGER_FLAG_AT_WORSHIP_SITE) && GVillagerStateTableInfo::Infos[state].canReact != 0 &&
+	if (!(flags & VILLAGER_FLAG_AT_WORSHIP_SITE) && GVillagerStateTableInfo::Infos[state].canReact &&
 	    !(flags & VILLAGER_FLAG_PLAYING_FOOTBALL) && !IsDeathState(state))
 	{
 		const GVillagerInfo* villagerInfo = (const GVillagerInfo*)this->info;
@@ -65,8 +65,7 @@ void Villager::StorePreviousState()
 	// and the state*0x114 array-index expression (target copies state to ecx then indexes in eax).
 	VILLAGER_STATES state = (VILLAGER_STATES)(GetFinalState() & VILLAGER_STATE_LAST_STATE);
 	VILLAGER_STATES stateToStore = state;
-	if (GVillagerStateTableInfo::Infos[state].isTransientState != 0 ||
-	    GVillagerStateTableInfo::Infos[state].isReactiveState != 0)
+	if (GVillagerStateTableInfo::Infos[state].isTransientState || GVillagerStateTableInfo::Infos[state].isReactiveState)
 	{
 		stateToStore = (VILLAGER_STATES)this->action.states[LIVING_ACTION_INDEX_PREVIOUS];
 	}
