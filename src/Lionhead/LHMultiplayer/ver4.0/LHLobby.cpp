@@ -17,9 +17,12 @@
 #include "LHMPServerStartInfo.h"
 #include "LHSession.h"
 #include "LHMessageServer.h"
-#include "LHNetLog.h"
+#include "LHNetErrors.h"
 #include "LHPlayer.h"
 #include "LHServerListener.h"
+
+static LHErrorCode* LHLogErrorCodes = LH_NET_Errors;
+static char*        LHLogLibraryName = "MultiplayerLib";
 
 enum
 {
