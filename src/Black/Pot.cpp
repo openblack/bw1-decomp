@@ -34,3 +34,29 @@ bool32_t Pot::IsResourceStore(RESOURCE_TYPE param_1)
 {
 	return false;
 }
+
+PileResource::PileResource(const MapCoords& param_1, const GPotInfo* info, uint32_t param_3, MultiMapFixed* param_4,
+                           Town* param_5, int param_6, float param_7, float param_8)
+	: PotStructure(param_1, info, param_3, param_4, param_5, param_6, param_7, param_8)
+{
+}
+
+bool32_t PileResource::IsTuggable()
+{
+	return false;
+}
+
+bool32_t PileResource::IsField(Creature* creature)
+{
+	return false;
+}
+
+bool32_t PileResource::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
+{
+	return true;
+}
+
+bool32_t PileResource::NetworkUnfriendlyEndLockedSelect()
+{
+	return true;
+}
