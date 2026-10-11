@@ -8,6 +8,11 @@
 
 class LHFile;
 
+enum
+{
+	LOADER_ANON_LOAD_ID_SIZE = 12,
+};
+
 struct AnonInstance
 {
 	uint8_t       field_0x0[0x2e4];
@@ -51,7 +56,7 @@ struct LoaderAnon
 	uint32_t       field_0x4;
 	char           DetailPrefix[0x80];
 	char           EnumPrefix[0x80];
-	char           LoadId[0xc];
+	char           LoadId[LOADER_ANON_LOAD_ID_SIZE];
 	uint32_t       field_0x114;
 	unsigned char  TextBuffer[0x2000];
 	unsigned char* Cursor;

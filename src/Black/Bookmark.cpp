@@ -54,7 +54,7 @@ static int BookmarkSentinel = GetBookmarkSentinel();
 Bookmark Bookmark::Bookmarks[BOOKMARK_COUNT];
 int      Bookmark::CurrentBookmark;
 int      Bookmark::FollowBookmark = BOOKMARK_NONE;
-int      Bookmark::ShowBookmarks = 1;
+bool32_t Bookmark::ShowBookmarks = true;
 int      Bookmark::FocusTownID = BOOKMARK_NONE;
 
 int   BookmarkGraphic::PulseTime;

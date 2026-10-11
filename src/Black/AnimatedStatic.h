@@ -18,12 +18,17 @@ struct PhysOb;
 struct Point2D;
 struct RPHolder;
 
+enum
+{
+	ANIMATED_STATIC_GATE_STONE_COUNT = 3,
+};
+
 class AnimatedStatic : public Feature
 {
 public:
 	uint32_t field_0x7c;
-	Object*  GateStones[3];
-	uint32_t field_0x8c[3];
+	Object*  GateStones[ANIMATED_STATIC_GATE_STONE_COUNT];
+	uint32_t field_0x8c[ANIMATED_STATIC_GATE_STONE_COUNT];
 
 	// Override methods
 
