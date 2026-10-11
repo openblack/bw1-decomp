@@ -5,7 +5,10 @@
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedListIterator.h>
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
-#include "LHNetLog.h"
+#include "LHNetErrors.h"
+
+static LHErrorCode* LHLogErrorCodes = LH_NET_Errors;
+static char*        LHLogLibraryName = "MultiplayerLib";
 #include "LHPlayer.h"
 
 typedef LHLinkedList<LHPacketisableObject*> LHPacketisableObjectList;

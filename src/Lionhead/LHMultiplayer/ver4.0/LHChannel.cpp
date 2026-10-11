@@ -16,7 +16,10 @@
 #include "LHSession.h"
 #include "LHTransport.h"
 #include "LHNetUtils.h"
-#include "LHNetLog.h"
+#include "LHNetErrors.h"
+
+static LHErrorCode* LHLogErrorCodes = LH_NET_Errors;
+static char*        LHLogLibraryName = "MultiplayerLib";
 
 typedef LHLinkedList<LHPacketisableObject*> LHPacketisableObjectList;
 typedef LHPacketisableObject* (*LHPacketisableObjectFactory)();
