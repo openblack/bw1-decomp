@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/Enum.h>                      /* For enum DANCE_INFO */
+#include <chlasm/GStates.h>                   /* For enum VILLAGER_STATES */
 #include <chlasm/ScriptEnums.h>               /* For enum SCRIPT_OBJECT_TYPE */
 #include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For struct LHListNode */
 
@@ -23,22 +25,44 @@ struct LHPoint;
 struct MapCoords;
 class Town;
 
+#define DANCE_LABEL_LENGTH                    16
+#define DANCE_MAX_SECONDS_WAITING_FOR_DANCERS 90
+#define DANCE_WORSHIP_SPEED_STEPS             10.0f
+#define DANCE_DEFAULT_WORSHIP_SPEED           0.25f
+
+enum DANCE_STATE
+{
+	DANCE_STATE_DANCING = 0,
+	DANCE_STATE_WAITING = 1,
+};
+
 class Dance : public GroupBehaviour
 {
 public:
 	// BW1W120 0050bb60 BW1M119 0108ff50
 	static void ProcessDances();
 
-	uint32_t          field_0xe8;
-	LHListNode<Dance> next; /* 0xec */
-	uint8_t           field_0xf0[0x3c];
+	GFootpathLink*    FootpathLink; /* 0xe8 */
+	LHListNode<Dance> next;
+	DANCE_INFO        Type; /* 0xf0 */
+	uint32_t          Unused;
+	float             WorshipSpeed;
+	GameThingWithPos* Target;
+	DANCE_STATE       State; /* 0x100 */
+	uint32_t          Duration;
+	uint32_t          StartTurn;
+	bool32_t          WaitingForDancers;
+	uint32_t          WaitStartTurn; /* 0x110 */
+	uint32_t          NumDancersExpected;
+	char              Label[DANCE_LABEL_LENGTH];
+	bool32_t          FollowTarget; /* 0x128 */
 
 	// Override methods
 
-	// BW1W120 0050b770 BW1M119 012ad180
+	// BW1W120 0050b960 BW1M119 012ad180
 	virtual ~Dance();
 	// BW1W120 0050b970 BW1M119 012ace10
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 0050c250 BW1M119 012ac440
 	virtual int Get3DSoundPos(LHPoint* param_1);
 	// BW1W120 0050b720 BW1M119 012ab210
@@ -82,8 +106,29 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0050b7a0 BW1M119 012ad210
+	void Initialise(const char* file_name, DANCE_INFO type, const MapCoords& pos, GameThingWithPos* target,
+	                uint32_t duration, bool32_t follow_target, Town* town);
 	// BW1W120 0050bb40 BW1M119 012acce0
 	void StartDance();
+	// BW1W120 0050baf0 BW1M119 012acd70
+	void SetState(DANCE_STATE state);
+	// BW1W120 0050c290 BW1M119 012ac380
+	bool32_t HasDanceProperlyStarted();
+	// BW1W120 0050c440 BW1M119 012ac050
+	uint32_t GetGameTurnsActiveFor();
+	// BW1W120 0050c460 BW1M119 012abe30
+	GDanceInfo* GetInfo();
+	// BW1W120 0050c340 BW1M119 012ac220
+	void SetWorshipSpeed(float speed);
+	// BW1W120 0050c090 BW1M119 012ac5b0
+	void SetStateOfEveryVillagerDancing(VILLAGER_STATES state);
+	// BW1W120 0050c0f0 BW1M119 012ac4a0
+	void SetStateOfEveryVillagerDancingToDecideWhatToDo();
+	// BW1W120 0050beb0 BW1M119 012ac7c0
+	float CalculateAverageLifeDesiredByDancers();
+	// BW1W120 0050bf20 BW1M119 012ac6a0
+	float CalculateFoodNeededByDancers();
 	// BW1W120 0050c3d0 BW1M119 012ac0d0
 	Living* FindLiving(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE type,
 	                   uint32_t subtype);

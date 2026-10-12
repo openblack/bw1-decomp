@@ -542,42 +542,47 @@ Black/CreatureWhatToDoNext.cpp:
 Black/Creche.cpp:
 	.text       start:0x004E9190 end:0x004E93B0
 	.rdata      start:0x008104C8 end:0x008104D4
-	.data       start:0x00B145A4 end:0x00B145F4
+	.data       start:0x00B14578 end:0x00B14590
 	.bss        start:0x00BCEE9C end:0x00BCEEC0
 
 Black/CreditsRoom.cpp:
 	.text       start:0x004E9420 end:0x004E9AD0
 	.rdata      start:0x008104D4 end:0x00810E0C
-	.bss        start:0x00BCEEC0 end:0x00BE5ED4
+	.bss        start:0x00BCEEC0 end:0x00BCEED0
 
 Black/Creed.cpp:
 	.text       start:0x004E9AD0 end:0x004E9C60
+	.rdata      start:0x00810E0C end:0x00811668
+	.data       start:0x00B14590 end:0x00B145C8
 
 Black/Dance.cpp:
 	.text       start:0x004E9C60 end:0x004EAF20
-	.rdata      start:0x00810E0C end:0x00812C98
-	.data       start:0x00B145F4 end:0x00B16084
-	.bss        start:0x00BE5ED4 end:0x00BE7010
+	.rdata      start:0x00811668 end:0x00812DA0
+	.data       start:0x00B145C8 end:0x00B16084
+	.bss        start:0x00BE5ED0 end:0x00BE7010
 
 Black/DanceGroup.cpp:
 	.text       start:0x004EAF20 end:0x004EC220
-	.rdata      start:0x00812C98 end:0x00812DC4
+	.rdata      start:0x00812DA0 end:0x00812EDC
 	.CRT$XCU    start:0x008F6490 end:0x008F6498 align:4
 	.bss        start:0x00BE7010 end:0x00BE7234
 
 Black/DanceKey.cpp:
 	.text       start:0x004EC250 end:0x004ECF50
-	.rdata      start:0x00812DC4 end:0x00812FE8
-	.data       start:0x00B160A0 end:0x00B165E0
-	.bss        start:0x00BE7234 end:0x00BE725C
+	.rdata      start:0x00812EDC end:0x008130E4
+	.data       start:0x00B16084 end:0x00B160A0
+	.bss        start:0x00BE7234 end:0x00BE7238
 
 Black/DanceLight.cpp:
 	.text       start:0x004ECF80 end:0x004ED280
-	.rdata      start:0x00812FE8 end:0x00814924
+	.rdata      start:0x008130E4 end:0x008130F0
 	.CRT$XCU    start:0x008F64B4 end:0x008F64B8 align:4
+	.data       start:0x00B160A0 end:0x00B165E0
+	.bss        start:0x00BE7238 end:0x00BE7260
 
 Black/DanceShape.cpp:
 	.text       start:0x004ED280 end:0x004EDC20
+	.rdata      start:0x008130F0 end:0x00814924
 	.data       start:0x00B165E0 end:0x00B165E4
 
 Black/Data.cpp:

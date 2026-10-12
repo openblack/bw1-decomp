@@ -4,8 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LHLib/ver5.0/LHDynamicStack.h> /* For LHDynamicStack */
-#include <re_common.h>                            /* For bool32_t */
+#include <Lionhead/LHLib/ver5.0/LHDynamicStack.h>      /* For LHDynamicStack */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>        /* For LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHOrderedLinkedList.h> /* For LHOrderedLinkedList */
+#include <re_common.h>                                 /* For bool32_t */
 
 #include "DanceGroup.h"       /* For enum DANCE_GROUP_ACTION_TYPE */
 #include "DancePathInfo.h"    /* For struct DancePathInfo */
@@ -16,72 +18,78 @@
 
 class Base;
 class DanceGroup;
-struct DanceGroupActionArgument;
+class DanceKeyAction;
+class DanceKeyFrame;
+class DanceLight;
 class GameOSFile;
 class Living;
 struct MapCoords;
 
+#define GROUP_BEHAVIOUR_MAX_LIGHTS                 10
+#define GROUP_BEHAVIOUR_DEFAULT_LENGTH             5
+#define GROUP_BEHAVIOUR_DEFAULT_DENOMINATOR        100
+#define GROUP_BEHAVIOUR_DEFAULT_EDITOR_VALUE       30
+#define GROUP_BEHAVIOUR_DEFAULT_CAMERA_TRAVEL_TIME 2.0f
+
 class GroupBehaviour : public GameThingWithPos
 {
 public:
-	uint32_t      field_0x28;
-	uint32_t      field_0x2c;
-	uint32_t      field_0x30;
-	uint32_t      field_0x34;
-	uint32_t      field_0x38;
-	uint32_t      field_0x3c;
-	uint32_t      field_0x40;
-	uint32_t      field_0x44;
-	uint8_t       field_0x48;
-	uint32_t      field_0x4c[0xa];
-	uint32_t      field_0x74;
-	uint32_t      field_0x78;
-	uint32_t      field_0x7c;
-	uint32_t      field_0x80;
-	uint32_t      field_0x84;
-	uint32_t      field_0x88;
-	uint32_t      field_0x8c;
-	uint32_t      NumDancers;
-	uint32_t      field_0x94;
-	uint32_t      field_0x98;
-	float         field_0x9c;
-	float         field_0xa0;
-	uint32_t      field_0xa4;
-	uint32_t      field_0xa8;
-	float         GroupAngle;
-	bool32_t      UseDanceCamera;
-	uint32_t      field_0xb4;
-	bool32_t      DanceCameraCreated;
-	bool32_t      MarkedForDeletion;
-	uint32_t      field_0xc0;
-	uint32_t      field_0xc4;
-	DancePathInfo dance_path_info;
+	float                              Time; /* 0x28 */
+	uint32_t                           Unused1;
+	uint32_t                           Unused2;
+	uint32_t                           Unused3;
+	LHOrderedLinkedList<DanceKeyFrame> KeyFrames; /* 0x38 */
+	uint32_t                           NumGroups; /* 0x40 */
+	uint32_t                           EditorValue;
+	uint32_t                           EditorValue2;
+	DanceLight*                        Lights[GROUP_BEHAVIOUR_MAX_LIGHTS]; /* 0x4c */
+	uint32_t                           Length;                             /* 0x74 */
+	LHLinkedList<DanceGroup*>          DanceGroups;
+	LHLinkedList<DanceGroup*>          FixedGroups; /* 0x80 */
+	LHLinkedList<DanceGroup*>          ProportionGroups;
+	uint32_t                           NumDancers; /* 0x90 */
+	uint8_t                            ProportionCounter;
+	uint32_t                           Denominator;
+	float                              Speed;
+	float                              LastSpeed; /* 0xa0 */
+	LHLinkedList<Living*>              DanceMembers;
+	float                              GroupAngle;
+	bool32_t                           UseDanceCamera; /* 0xb0 */
+	bool32_t                           DanceCameraDisabled;
+	bool32_t                           DanceCameraCreated;
+	bool32_t                           MarkedForDeletion;
+	float                              CameraTravelTime; /* 0xc0 */
+	uint32_t                           CameraNearTurns;
+	DancePathInfo                      dance_path_info; /* 0xc8 */
 
 	// Override methods
 
 	// BW1W120 00596190 BW1M119 01103890
 	virtual ~GroupBehaviour();
 	// BW1W120 00596320 BW1M119 01103310
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 005985c0 BW1M119 010fe130
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00598240 BW1M119 010fee10
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 005964a0 BW1M119 01103120
 	virtual void Process();
+
+	// New virtual methods
+
 	// BW1W120 00596700 BW1M119 01102350
 	virtual void UpdateGroupBasedOnAction(DanceGroup* dance_group, DANCE_GROUP_ACTION_TYPE action_type,
-	                                      const DanceGroupActionArgument& argument, uint32_t param_4);
-	// BW1W120 00597300 BW1M119 01101ac0
-	virtual void AddAction(float time, LHDynamicStack<unsigned long>& stack, DANCE_GROUP_ACTION_TYPE action_type,
-	                       const DanceGroupActionArgument& argument);
+	                                      const DanceGroupActionArgument& argument, unsigned long light);
 	// BW1W120 00597270 BW1M119 01101cf0
-	virtual void AddAction(float param_1, uint32_t param_2, DANCE_GROUP_ACTION_TYPE action_type,
-	                       const DanceGroupActionArgument& arguments);
+	virtual void AddAction(float time, unsigned long group, DANCE_GROUP_ACTION_TYPE action_type,
+	                       const DanceGroupActionArgument& argument);
+	// BW1W120 00597300 BW1M119 01101ac0
+	virtual DanceKeyFrame* AddAction(float time, LHDynamicStack<unsigned long>& groups,
+	                                 DANCE_GROUP_ACTION_TYPE action_type, const DanceGroupActionArgument& argument);
 	// BW1W120 005978e0 BW1M119 01100230
-	virtual void LoadDance(const char* param_1);
+	virtual void LoadDance(const char* file_name);
 	// BW1W120 0050cc40 BW1M119 010fe0f0
-	virtual float GetAngle();
+	virtual float GetAngle() { return GroupAngle; }
 
 	// Constructors
 
@@ -90,125 +98,49 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00596550 BW1M119 011030a0
+	void ProcessGroups();
+	// BW1W120 00596570 BW1M119 01102fd0
+	void UpdateGroupsFromKeyFrame(DanceKeyFrame* key_frame);
+	// BW1W120 005965c0 BW1M119 01102db0
+	void UpdateGroupsBasedOnAction(DanceKeyAction* action);
+	// BW1W120 00596fd0 BW1M119 01102020
+	void UpdateGroupBasedOnDancerAction(DanceGroup& dance_group, const DancerAction& action, long time);
+	// BW1W120 00597190 BW1M119 01101ed0
+	void UpdateNumeratorsAndDenominator();
 	// BW1W120 00597400 BW1M119 011018b0
-	bool FindDanceGroup(Living* param_1);
+	bool FindDanceGroup(Living* living);
+	// BW1W120 00597ed0 BW1M119 01100070
+	Living* GetFirstDancer();
 	// BW1W120 005981d0 BW1M119 010ffa50
 	Living* FindFirstDanceMember(GameThingWithPos* exclude);
 	// BW1W120 00597f20 BW1M119 010ffc30
-	void CalculateDancePosition(const MapCoords& param_1, MapCoords* param_2, DanceGroup* param_3,
-	                            unsigned long param_4);
+	static void CalculateDancePosition(const MapCoords& centre, MapCoords* pos, DanceGroup* dance_group,
+	                                   unsigned long index);
 };
+
+static_assert(sizeof(GroupBehaviour) == 0xe8, "Data type is of wrong size");
 
 class DanceEditState : public GroupBehaviour
 {
 public:
+	// BW1W120 0050ccd0 BW1M119 0108ff10
+	static void UpdateEveryGameTurn();
 	// BW1W120 0050ccc0 BW1M119 01093b30
 	static void UpdateEveryRender();
 
 	// Override methods
 
-	// BW1W120 0050cc50 BW1M119 inlined
+	// BW1W120 0050cc80 BW1M119 inlined
 	virtual ~DanceEditState();
 	// BW1W120 0050cc90 BW1M119 inlined
 	virtual void ToBeDeleted(int delete_now);
+
+	// Constructors
+
+	DanceEditState();
 };
 
-/* Default end time of a dance group movement; the unit is not known (probably milliseconds) */
-#define DANCE_GROUP_MOVEMENT_DEFAULT_END_TIME 10000
-
-enum DANCE_GROUP_MOVEMENT_KIND
-{
-	DANCE_GROUP_MOVEMENT_KIND_STAND_STILL = 0x0,
-	DANCE_GROUP_MOVEMENT_KIND_ROTATE_DANCERS = 0x1,
-	DANCE_GROUP_MOVEMENT_KIND_LOOK_AT = 0x2,
-	DANCE_GROUP_MOVEMENT_KIND_SPIN_AROUND = 0x3,
-	DANCE_GROUP_MOVEMENT_KIND_RANDOM_DANCE = 0x4,
-	DANCE_GROUP_MOVEMENT_KIND_PRAY = 0x5,
-	DANCE_GROUP_MOVEMENT_KIND_FUNKY = 0x6,
-	DANCE_GROUP_MOVEMENT_KIND_FACE_IN = 0x7,
-	DANCE_GROUP_MOVEMENT_KIND_FACE_OUT = 0x8,
-	DANCE_GROUP_MOVEMENT_KIND_ROTATE_SHAPE = 0x9,
-	DANCE_GROUP_MOVEMENT_KIND_PLAY_ANIM = 0xa,
-	DANCE_GROUP_MOVEMENT_KIND_CHANGE_SIZE = 0xb,
-	DANCE_GROUP_MOVEMENT_KIND_MOVE_TO_POS = 0xc,
-	DANCE_GROUP_MOVEMENT_KIND_FACE_DIRECTION = 0xd,
-	DANCE_GROUP_MOVEMENT_KIND_IMPRESSED = 0xe,
-	DANCE_GROUP_MOVEMENT_KIND_SAD = 0xf,
-	DANCE_GROUP_MOVEMENT_KIND_HAPPY = 0x10,
-	DANCE_GROUP_MOVEMENT_KIND_LOOKING_FOR_SOMETHING = 0x11,
-	DANCE_GROUP_MOVEMENT_KIND_SEX = 0x12,
-	DANCE_GROUP_MOVEMENT_KIND_MOURNING = 0x13,
-	DANCE_GROUP_MOVEMENT_KIND_TALK = 0x14,
-	DANCE_GROUP_MOVEMENT_KIND_TALK_AND_POINT = 0x15,
-	DANCE_GROUP_MOVEMENT_KIND_WORSHIP_CREATURE = 0x16,
-	DANCE_GROUP_MOVEMENT_KIND_DANCE_X = 0x17,
-	DANCE_GROUP_MOVEMENT_KIND_DANCE_X_PARTNER = 0x18,
-	DANCE_GROUP_MOVEMENT_KIND_FEMALE_A = 0x19,
-	DANCE_GROUP_MOVEMENT_KIND_FEMALE_B = 0x1a,
-	DANCE_GROUP_MOVEMENT_KIND_FEMALE_C = 0x1b,
-	DANCE_GROUP_MOVEMENT_KIND_MALE_A = 0x1c,
-	DANCE_GROUP_MOVEMENT_KIND_MALE_B = 0x1d,
-	DANCE_GROUP_MOVEMENT_KIND_MALE_C = 0x1e,
-	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACE_IN = 0x1f,
-	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACE_OUT = 0x20,
-	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACE_DIRECTION = 0x21,
-	DANCE_GROUP_MOVEMENT_KIND_CREATURE_DANCE = 0x22,
-	DANCE_GROUP_MOVEMENT_KIND_CREATURE_INDIVIDUAL = 0x23,
-	DANCE_GROUP_MOVEMENT_KIND_CREATURE_STATIC = 0x24,
-	DANCE_GROUP_MOVEMENT_KIND_CREATURE_LOOK_AT = 0x25,
-	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACIAL = 0x26,
-	DANCE_GROUP_MOVEMENT_KIND_CREATURE_GESTURE = 0x27,
-	DANCE_GROUP_MOVEMENT_KIND_CREATURE_POINT = 0x28,
-};
-
-/* Parameters of the DANCE_GROUP_ACTION_TYPE_SET_ACTION dance group action: a kind of movement with up to two float
- * parameters. */
-struct DanceGroupMovement
-{
-	DANCE_GROUP_MOVEMENT_KIND Kind;
-	float                     Param1;
-	float                     Param2;
-	uint32_t                  EndTime;
-};
-
-/* Argument of an action performed on a dance group. Which members are used depends on the action type: Value/Value2
- * hold e.g. the shape, the position (as floats), the angle or the percentage chance for
- * DANCE_GROUP_ACTION_TYPE_SET_STATE_OF_PROPORTION; Movement belongs to DANCE_GROUP_ACTION_TYPE_SET_ACTION and
- * CameraPoints to DANCE_GROUP_ACTION_TYPE_SET_CAMERA. */
-struct DanceGroupActionArgument
-{
-	uint32_t           Value;
-	uint32_t           Value2;
-	uint32_t           Value3; /* Numerator of DANCE_GROUP_ACTION_TYPE_PROPORTION */
-	uint32_t           Unused; /* Never read or written by any code, only copied around with the rest */
-	DanceGroupMovement Movement;
-	float              CameraPoints[2][3];
-};
-
-static_assert(sizeof(DanceGroupActionArgument) == 0x38, "Data type is of wrong size");
-
-class DanceKeyAction : public GameThing
-{
-public:
-	LHDynamicStack<unsigned long> Groups;
-	DANCE_GROUP_ACTION_TYPE       Type;
-	DanceGroupActionArgument      Argument;
-
-	// Override methods
-
-	// BW1W120 0050e390 BW1M119 012b1ee0
-	virtual char* GetDebugText();
-	// BW1W120 0050ea00 BW1M119 012b16f0
-	virtual uint32_t Load(GameOSFile& file);
-	// BW1W120 0050e880 BW1M119 012b1920
-	virtual uint32_t Save(GameOSFile& file);
-	// BW1W120 0050e380 BW1M119 012b1ea0
-	virtual uint32_t GetSaveType();
-
-	// BW1W120 0050e340 BW1M119 012b1d30
-	DanceKeyAction();
-};
-
-static_assert(sizeof(DanceKeyAction) == 0x58, "Data type is of wrong size");
+static_assert(sizeof(DanceEditState) == 0xe8, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_GROUP_BEHAVIOUR_INCLUDED_H */

@@ -60,6 +60,7 @@
 #include "SoundGuidance.h"
 #include "SpellSeedInfo.h"
 #include "StoragePit.h"
+#include "Utils.h"
 #include "Totem.h"
 #include "TotemStatue.h"
 #include "TownCentre.h"
@@ -69,11 +70,11 @@
 #include "TownInfo.h"
 #include "Tree.h"
 #include "TribeInfo.h"
-#include "Utils.h"
 #include "VillagerInfo.h"
 #include "Wonder.h"
 #include "Workshop.h"
 #include "WorshipSite.h"
+#include "MapCoordsMeters.h" /* For MapCoords::MetersX */
 
 #if defined(VERSION_BW1W100)
 #define TOWN_SOURCE_FILE "C:\\dev\\black\\Town.cpp"
@@ -89,26 +90,6 @@
 #define TOWN_SOURCE_FILE "C:\\dev\\MP\\Black\\Town.cpp"
 #define TOWN_LINE(line)  (line)
 #endif
-
-inline float MapCoords::MetersX() const
-{
-	return (float)(WholeX() * MetresPerMapCell / (float)0x10000);
-}
-
-inline float MapCoords::MetersZ() const
-{
-	return (float)(WholeZ() * MetresPerMapCell / (float)0x10000);
-}
-
-inline void MapCoords::SetMetersX(float meters)
-{
-	SetWholeX((long)(meters * (float)0x10000 / MetresPerMapCell));
-}
-
-inline void MapCoords::SetMetersZ(float meters)
-{
-	SetWholeZ((long)(meters * (float)0x10000 / MetresPerMapCell));
-}
 
 inline MapCoords::MapCoords(float meters_x, float meters_z)
 {

@@ -43,7 +43,7 @@ struct GUtils
 	// BW1W120 0074cca0 BW1M119 013d2a10
 	static void SetupUtils();
 	// BW1W120 0074ccb0 BW1M119 0104bfa0
-	static void GetDistance(const MapCoords& param_1, const MapCoords& param_2);
+	static long GetDistance(const MapCoords& from, const MapCoords& to);
 	// BW1W120 0074cd70 BW1M119 0104bf00
 	static float GetDistanceInMetres(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074cde0 BW1M119 01036610
@@ -70,6 +70,12 @@ struct GUtils
 	static float ConvertWholeDistanceToMeters(int param_1);
 	// BW1W120 0074dce0 BW1M119 01590e30
 	static int ConvertMetersToWholeDistance(float meters);
+	// BW1W120 0074e1d0 BW1M119 01105a50
+	static long MetersToWholeX(float meters);
+	// BW1W120 0074e200 BW1M119 015728d0
+	static long MetersToWholeZ(float meters);
+	// BW1W120 0074e270 BW1M119 015a1bf0
+	static float ShapePosToMeters(float pos);
 	// BW1W120 0074dd70 BW1M119 011a8630
 	static Abode* FindClosestAbode(const MapCoords& pos, TRIBE_TYPE tribe_type, int param_3, int param_4, int param_5);
 	// BW1W120 0074e2b0 BW1M119 013e5570

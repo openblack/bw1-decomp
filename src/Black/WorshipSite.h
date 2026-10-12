@@ -193,6 +193,8 @@ public:
 	MapCoords* GetSpellIconPosFromSlot(MapCoords* coords, uint32_t slot, float angle);
 	// BW1W120 0077b080 BW1M119 015b9650
 	MapCoords* GetSpellIconPos(MapCoords* coords, int16_t* slot);
+	// BW1W120 0077bd60 BW1M119 015b8220
+	float GetAngleFromCitadel();
 	// BW1W120 0077bdb0 BW1M119 015b8130
 	int GetFood();
 	// BW1W120 0077db00 BW1M119 015b38b0

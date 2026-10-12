@@ -686,47 +686,51 @@ Black/Creche.cpp:
 	.text       start:0x0050A920 end:0x0050ABE0
 	.rdata      start:0x008D16B8 end:0x008D16C4
 	.CRT$XCU    start:0x009C66A0 end:0x009C66A8 align:4
-	.data       start:0x00BE6818 end:0x00BE68A4
+	.data       start:0x00BE6818 end:0x00BE6838
 	.bss        start:0x00CADB3C end:0x00CADB60
 
 Black/CreditsRoom.cpp:
 	.text       start:0x0050ABE0 end:0x0050B310
 	.rdata      start:0x008D16C4 end:0x008D1FFC
 	.CRT$XCU    start:0x009C66A8 end:0x009C66B8 align:4
-	.bss        start:0x00CADB60 end:0x00CC4B74
+	.bss        start:0x00CADB60 end:0x00CADB70
 
 Black/Creed.cpp:
 	.text       start:0x0050B310 end:0x0050B540
+	.rdata      start:0x008D1FFC end:0x008D2858
 	.CRT$XCU    start:0x009C66B8 end:0x009C66BC align:4
+	.data       start:0x00BE6838 end:0x00BE6878
 
 Black/Dance.cpp:
 	.text       start:0x0050B540 end:0x0050CBD0
-	.rdata      start:0x008D1FFC end:0x008D3E88
+	.rdata      start:0x008D2858 end:0x008D3F94
 	.CRT$XCU    start:0x009C66BC end:0x009C66D4 align:4
-	.data       start:0x00BE68A4 end:0x00BE83F4
-	.bss        start:0x00CC4B74 end:0x00CC5CB0
+	.data       start:0x00BE6878 end:0x00BE83F4
+	.bss        start:0x00CC4B70 end:0x00CC5CB0
 
 Black/DanceGroup.cpp:
 	.text       start:0x0050CBD0 end:0x0050E310
-	.rdata      start:0x008D3E88 end:0x008D44D0
+	.rdata      start:0x008D3F94 end:0x008D45E4
 	.CRT$XCU    start:0x009C66D4 end:0x009C6700 align:4
 	.bss        start:0x00CC5CB0 end:0x00CC5ED4
 
 Black/DanceKey.cpp:
 	.text       start:0x0050E310 end:0x0050F4E0
-	.rdata      start:0x008D44D0 end:0x008D46F0
+	.rdata      start:0x008D45E4 end:0x008D47EC
 	.CRT$XCU    start:0x009C6700 end:0x009C6708 align:4
-	.data       start:0x00BE83F4 end:0x00BE8954
-	.bss        start:0x00CC5ED4 end:0x00CC5EFC
+	.data       start:0x00BE83F4 end:0x00BE8414
+	.bss        start:0x00CC5ED4 end:0x00CC5ED8
 
 Black/DanceLight.cpp:
 	.text       start:0x0050F4E0 end:0x0050F960
-	.rdata      start:0x008D46F0 end:0x008D6034
+	.rdata      start:0x008D47EC end:0x008D47F8
 	.CRT$XCU    start:0x009C6708 end:0x009C6714 align:4
-	.bss        start:0x00CC5EFC end:0x00CC5F00
+	.data       start:0x00BE8414 end:0x00BE8954
+	.bss        start:0x00CC5ED8 end:0x00CC5F00
 
 Black/DanceShape.cpp:
 	.text       start:0x0050F960 end:0x005104E0
+	.rdata      start:0x008D47F8 end:0x008D6034
 	.CRT$XCU    start:0x009C6714 end:0x009C6718 align:4
 	.data       start:0x00BE8954 end:0x00BE8A08
 

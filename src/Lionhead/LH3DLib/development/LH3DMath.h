@@ -11,6 +11,9 @@
 
 struct LHPoint;
 
+#define LH_SIN_TABLE_ONE           65536.0f
+#define LH_SIN_TABLE_COSINE_OFFSET 0x200
+
 // 16.16 sine values for 2048 angle units per turn, with an extra quarter turn for cosine.
 // Free global: the Mac symbol is unmangled, and a static data member here would shift the
 // compiler-generated $S/$E numbering in every consumer (breaks Object.cpp).
