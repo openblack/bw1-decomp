@@ -1974,9 +1974,9 @@ float Abode::GetVillagerHealthTotal()
 	return total;
 }
 
-int GameThing::IsFootpathLink()
+bool32_t GameThing::IsFootpathLink()
 {
-	return 0;
+	return false;
 }
 
 GFootpathLink* GameThing::GetFootpathLink()

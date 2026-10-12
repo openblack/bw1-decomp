@@ -24,7 +24,7 @@ GBaseInfo* GFootballPositionInfo::GetBaseInfo(uint32_t& info_count)
 	return Infos;
 }
 
-int Football::CanBeHiddenIn()
+bool32_t Football::CanBeHiddenIn()
 {
-	return 0;
+	return false;
 }

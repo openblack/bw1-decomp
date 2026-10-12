@@ -35,7 +35,7 @@ bool32_t Pot::IsResourceStore(RESOURCE_TYPE param_1)
 	return false;
 }
 
-int PileResource::IsTuggable()
+bool32_t PileResource::IsTuggable()
 {
-	return 0;
+	return false;
 }
