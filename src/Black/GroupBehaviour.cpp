@@ -7,13 +7,14 @@
 
 #include <Lionhead/LHLib/ver5.0/LHDynamicStack.h> /* For class LHDynamicStack */
 
-#include "Dance.h"      /* For class Dance */
-#include "DanceKey.h"   /* For class DanceKeyFrame, class DanceKeyAction */
-#include "DanceLight.h" /* For class DanceLight */
-#include "GameInfo.h"   /* For class GGameInfo */
-#include "GameOSFile.h" /* For class GameOSFile */
-#include "Living.h"     /* For class Living */
-#include "Utils.h"      /* For class GUtils */
+#include "Dance.h"           /* For class Dance */
+#include "DanceKey.h"        /* For class DanceKeyFrame, class DanceKeyAction */
+#include "DanceLight.h"      /* For class DanceLight */
+#include "GameInfo.h"        /* For class GGameInfo */
+#include "GameOSFile.h"      /* For class GameOSFile */
+#include "Living.h"          /* For class Living */
+#include "Utils.h"           /* For class GUtils */
+#include "MapCoordsMeters.h" /* For MapCoords::MetersX */
 
 #if defined(VERSION_BW1W100)
 #define FILEPATH "C:\\dev\\black\\GroupBehaviour.cpp"
@@ -62,26 +63,6 @@ template <typename T> static void WriteSafe(GameOSFile& file, LHOrderedLinkedLis
 			file.WritePtr(iterator.Get());
 		}
 	}
-}
-
-inline float MapCoords::MetersX() const
-{
-	return (float)(WholeX() * MetresPerMapCell / MAP_COORDS_UNITS_PER_CELL);
-}
-
-inline float MapCoords::MetersZ() const
-{
-	return (float)(WholeZ() * MetresPerMapCell / MAP_COORDS_UNITS_PER_CELL);
-}
-
-inline void MapCoords::SetMetersX(float meters)
-{
-	SetWholeX((long)(meters * MAP_COORDS_UNITS_PER_CELL / MetresPerMapCell));
-}
-
-inline void MapCoords::SetMetersZ(float meters)
-{
-	SetWholeZ((long)(meters * MAP_COORDS_UNITS_PER_CELL / MetresPerMapCell));
 }
 
 GroupBehaviour::GroupBehaviour()

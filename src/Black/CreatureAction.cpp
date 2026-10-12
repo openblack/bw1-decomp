@@ -59,6 +59,7 @@ static_assert(sizeof(CreatureActionTableEntry) == 0x50, "Data type is of wrong s
 #include "Utils.h"                      /* For GUtils::GetDistanceInMetres */
 #include "Villager.h"                   /* For struct Villager */
 #include "WorshipSite.h"                /* For struct WorshipSite */
+#include "MapCoordsMeters.h"            /* For MapCoords::MetersX */
 
 #if defined(VERSION_BW1W100)
 #define CREATURE_ACTION_FILE "C:\\dev\\black\\CreatureAction.cpp"
@@ -76,26 +77,6 @@ static_assert(sizeof(CreatureActionTableEntry) == 0x50, "Data type is of wrong s
 
 const float CastExplosionDistance = 100.0f;
 const float CastSpellDistance = 50.0f;
-
-inline float MapCoords::MetersX() const
-{
-	return WholeX() * MetresPerMapCell / (float)0x10000;
-}
-
-inline float MapCoords::MetersZ() const
-{
-	return WholeZ() * MetresPerMapCell / (float)0x10000;
-}
-
-inline void MapCoords::SetMetersX(float meters)
-{
-	SetWholeX((long)(meters * (float)0x10000 / MetresPerMapCell));
-}
-
-inline void MapCoords::SetMetersZ(float meters)
-{
-	SetWholeZ((long)(meters * (float)0x10000 / MetresPerMapCell));
-}
 
 // fabricated: BW1M119 copies both points and calls Sub and GetNorme wherever this distance is taken.
 inline float PointDistance(const LHPoint& p1, const LHPoint& p2)

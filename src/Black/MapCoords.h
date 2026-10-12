@@ -10,6 +10,8 @@
 #include <chlasm/ScriptEnums.h>                         /* For enum SCRIPT_OBJECT_TYPE */
 #include <re_common.h>                                  /* For bool32_t */
 
+#define MAP_COORDS_UNITS_PER_CELL 65536.0f
+
 enum COLLIDE_TYPE
 {
 	COLLIDE_TYPE_NONE = 0x0,
