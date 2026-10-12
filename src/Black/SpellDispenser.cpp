@@ -10,3 +10,8 @@ uint32_t SpellDispenser::GetSaveType()
 {
 	return GAME_THING_TYPE_SPELL_DISPENSER;
 }
+
+SCRIPT_OBJECT_TYPE SpellDispenser::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_SPELL_DISPENSER;
+}

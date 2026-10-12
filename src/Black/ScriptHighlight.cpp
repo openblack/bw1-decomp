@@ -87,3 +87,8 @@ bool32_t ScriptHighlight::InterfaceMustBeInInfluenceForInteraction()
 {
 	return false;
 }
+
+SCRIPT_OBJECT_TYPE ScriptHighlight::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_HIGHLIGHT;
+}

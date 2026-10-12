@@ -23,3 +23,8 @@ uint32_t LandscapeVortexIn::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_VORTEX;
 }
+
+SCRIPT_OBJECT_TYPE LandscapeVortex::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_VORTEX;
+}
