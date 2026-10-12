@@ -7,10 +7,7 @@
 
 #define FILEPATH "LogUtils.cpp"
 
-enum
-{
-	LH_REGISTRY_VALUE_NAME_SIZE = 128,
-};
+#define LH_REGISTRY_VALUE_NAME_SIZE 128
 
 static HKEY CurrentKey = HKEY_CURRENT_USER;
 
