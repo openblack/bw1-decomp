@@ -101,6 +101,29 @@ static CitadelHeart* HeartList;
 // BW1W120 00c5e3d8
 static LH3DMesh* CollarMeshes[LEASH_TYPE_LAST];
 
+// The original defines the statics from DestructionEndDelay to DestructionVolFXEndTime between
+// CitadelHeart::GetDestructionTime and CitadelHeart::GetRandomSurfacePos (their initialisers are at 0x465b20 to
+// 0x465c20), and RouteAngleOffset and CollideAngleOffset just before their first users.
+static float DestructionEndDelay = 0.5f;
+static float HeartBeatFrequencies[HEART_BEAT_STAGES] = {0.63661975f, 1.2732395f, 3.9788735f};
+static float HeartBeatTimes[HEART_BEAT_STAGES] = {0.0f, 19.0f, 25.0f};
+
+static float DestructionVolFXIntensities[DESTRUCTION_VOL_FX_STAGES] = {0.0f, 5.0f, 5.0f, 10.0f};
+static float DestructionVolFXScales[DESTRUCTION_VOL_FX_STAGES] = {0.0f, 1.0f, 1.0f, 2.0f};
+static float DestructionVolFXTimes[DESTRUCTION_VOL_FX_STAGES] = {0.0f, 1.0f, 20.0f, 22.0f};
+
+static float DestructionFlashEndTime = DestructionExplodeTime + 0.3f;
+static float DestructionShockwaveTime = DestructionExplodeTime + DestructionShockwaveDelay;
+static float DestructionSmokeTime = DestructionExplodeTime + DestructionSmokeDelay;
+static float DestructionEndTime = DestructionExplodeTime + DestructionEndDelay;
+static float DestructionVolFXStartTime = DestructionFadeStartTime;
+static float DestructionVolFXEndTime = DestructionExplodeTime + DestructionVolFXDelay;
+static float RouteAngleOffset = 3.83f;
+static float CollideAngleOffset = 3.83f;
+
+// BW1W120 00466560 BW1M119 inlined
+static float InRange(float min, float value, float max);
+
 float GCitadelHeartInfo::GetTransferedDamageMultiplier()
 {
 	return GetInfo()->TransferedDamageMultiplier;
@@ -700,23 +723,6 @@ float CitadelHeart::GetDestructionTime()
 {
 	return DestructionTime;
 }
-
-static float DestructionEndDelay = 0.5f;
-static float HeartBeatFrequencies[HEART_BEAT_STAGES] = {0.63661975f, 1.2732395f, 3.9788735f};
-static float HeartBeatTimes[HEART_BEAT_STAGES] = {0.0f, 19.0f, 25.0f};
-
-static float DestructionVolFXIntensities[DESTRUCTION_VOL_FX_STAGES] = {0.0f, 5.0f, 5.0f, 10.0f};
-static float DestructionVolFXScales[DESTRUCTION_VOL_FX_STAGES] = {0.0f, 1.0f, 1.0f, 2.0f};
-static float DestructionVolFXTimes[DESTRUCTION_VOL_FX_STAGES] = {0.0f, 1.0f, 20.0f, 22.0f};
-
-static float DestructionFlashEndTime = DestructionExplodeTime + 0.3f;
-static float DestructionShockwaveTime = DestructionExplodeTime + DestructionShockwaveDelay;
-static float DestructionSmokeTime = DestructionExplodeTime + DestructionSmokeDelay;
-static float DestructionEndTime = DestructionExplodeTime + DestructionEndDelay;
-static float DestructionVolFXStartTime = DestructionFadeStartTime;
-static float DestructionVolFXEndTime = DestructionExplodeTime + DestructionVolFXDelay;
-
-static float InRange(float min, float value, float max);
 
 void CitadelHeart::GetRandomSurfacePos(LHPoint* pos, LHPoint* normal)
 {
@@ -1437,8 +1443,6 @@ float CitadelHeart::GetRoutePlanRadius(Creature* creature)
 	return Get2DRadius() * 0.33f;
 }
 
-static float RouteAngleOffset = 3.83f;
-
 void CitadelHeart::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
                                   void(__cdecl* callback)(int, Point2D, float, int))
 {
@@ -1824,8 +1828,6 @@ HELP_TEXT CitadelEntrance::GetQueryLastEnumText()
 {
 	return GetQueryFirstEnumText();
 }
-
-static float CollideAngleOffset = 3.83f;
 
 void CitadelHeart::CreateCollideData()
 {
