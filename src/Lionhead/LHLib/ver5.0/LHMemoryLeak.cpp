@@ -9,6 +9,8 @@
 
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
+#define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHMemoryLeak.cpp"
+
 // The global call-stack tracer, provided by LHLogR. gDebugStack is a plain global
 // (accessed by address, not via the import table); its 512-byte frame slots hold
 // the captured function names and the active depth byte sits at offset 0x4000.
@@ -139,26 +141,21 @@ void LHMemoryLeak::LeakNode::LogCallStack(bool allocStack)
 	fprintf(gMemoryLeakLogFile, "\n");
 }
 
-// TODO: nonmatching (96.9%) only because __FILE__ here expands to our build path
-// (e.g. "src/Lionhead/.../LHMemoryLeak.cpp") whereas the original was compiled as
-// "C:\Dev\Libs\lionhead\lhlib\VER5.0\LHMemoryLeak.cpp". The differing string length
-// changes the strlen/rep-movs sequence. Needs a build-wide __FILE__ override to match.
 void LHMemoryLeak::LeakNode::GrabFunctionNamesFromDebugStack(LHDebugStack* debugStack, bool allocStack)
 {
 	for (int i = 1; i < debugStack->GetDepth() - 2; ++i)
 	{
 		const char* name = debugStack->GetFunctionName(i);
-		char*       copy = (char*)operator new(strlen(name) + 1, __FILE__, __LINE__);
+		char*       copy = (char*)operator new(strlen(name) + 1, FILEPATH, 63);
 		strcpy(copy, name);
 		LHLinkedList<char*>* list = allocStack ? &AllocStack : &DeleteStack;
 		list->AddToEnd(copy);
 	}
 }
 
-// TODO: nonmatching (94.8%) same __FILE__ build-path issue as GrabFunctionNamesFromDebugStack.
 void LHMemoryLeak::LogAllocation(const char* file, int line, void* ptr, int size)
 {
-	LeakNode* node = new (__FILE__, __LINE__) LeakNode(file, line, size, ShouldLog, Tag);
+	LeakNode* node = new (FILEPATH, 80) LeakNode(file, line, size, ShouldLog, Tag);
 	if (!gDebugStackInitialised)
 	{
 		LHDebugStack::Initialise();
