@@ -76,6 +76,16 @@ block_relocations:
   - source: 0x005C0C26
 
 add_relocations:
+# Hand and input units: references dtk did not relocate.
+  - source: 0x0063F853
+    type: x86_rel32
+    target: '?GetActionFromKeys@ControlMap@@QAEHW4LH_KEY@@0@Z'
+  - source: 0x0063F920
+    type: x86_rel32
+    target: '?fn_00470A60@ControlMap@@QAEHK@Z'
+  - source: 0x0063F748
+    type: x86_rel32
+    target: '?InGameEditor@GInterface@@QBEHXZ'
 # LH3DCreature::StateAction's jump table (dtk misses it): one entry per case block.
   - source: 0x0048752C
     type: x86_abs32
