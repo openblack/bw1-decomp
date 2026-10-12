@@ -33,45 +33,45 @@ void LandscapeVortex::PhysicsEditorCreate(int param_1) {}
 
 bool32_t LandscapeVortex::CanBePickedUpByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t LandscapeVortex::CanBeSetOnFire(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t LandscapeVortex::CanBeStompedOnByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t LandscapeVortex::CanBeThrownByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t LandscapeVortex::CanBePutInAStoragePit(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t LandscapeVortex::CanBeDestroyedByStoning(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t LandscapeVortex::CanBeStonedAndEatenByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t LandscapeVortex::CanBeExaminedByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t LandscapeVortex::CanBeFoughtByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }

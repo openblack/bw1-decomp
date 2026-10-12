@@ -18,45 +18,45 @@ GBaseInfo* GMagicFireBallInfo::GetBaseInfo(uint32_t& info_count)
 
 bool32_t MagicFireBall::CanBePickedUpByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t MagicFireBall::CanBeSetOnFire(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t MagicFireBall::CanBeStompedOnByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t MagicFireBall::CanBeThrownByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t MagicFireBall::CanBePutInAStoragePit(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t MagicFireBall::CanBeDestroyedByStoning(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t MagicFireBall::CanBeStonedAndEatenByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t MagicFireBall::CanBeExaminedByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }
 
 bool32_t MagicFireBall::CanBeFoughtByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }

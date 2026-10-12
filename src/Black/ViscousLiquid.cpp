@@ -13,5 +13,5 @@ SOUND_COLLISION_TYPE Fragment::GetCollideSoundType()
 
 bool32_t Fragment::CanBePickedUpByCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }

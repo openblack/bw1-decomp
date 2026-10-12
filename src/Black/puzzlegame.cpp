@@ -37,5 +37,5 @@ char* PuzzlePig::GetDebugText()
 
 bool32_t PuzzleCow::CanBeFrighteningToCreature(Creature* creature)
 {
-	return 0;
+	return false;
 }
