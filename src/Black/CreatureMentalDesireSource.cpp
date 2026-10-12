@@ -6,6 +6,8 @@
 #include "GameTimeConstants.h"
 #include "CreatureInitialDesireInfo.h" /* For struct CreatureInitialDesireInfo */
 #include "CreatureMentalDesire.h"      /* For struct CreatureDesires */
+#include "CreatureInitialSourceInfo.h"
+#include "CreatureSourceBoundsInfo.h"
 
 // BW1W120 004de270 BW1M119 012618c0
 void CreatureDesires::InitialiseSources()
@@ -36,4 +38,22 @@ void CreatureDesires::InitialiseSources()
 			}
 		}
 	}
+}
+
+GBaseInfo* CreatureDesireSourceTable::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = NUM_CREATURE_DESIRE_SOURCES;
+	return Table;
+}
+
+GBaseInfo* CreatureInitialSourceInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = NUM_CREATURE_DESIRE_SOURCES;
+	return InitialValue;
+}
+
+GBaseInfo* CreatureSourceBoundsInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = NUM_CREATURE_DESIRE_SOURCES;
+	return ThresholdBounds;
 }
