@@ -33,8 +33,8 @@ public:
 	GroupBehaviour*    Behaviour;
 	LHPoint            LastPos;
 	LHPoint            Pos; /* 0x14 */
-	unsigned long      Group;
-	unsigned long      IndexInGroup;
+	uint32_t           Group;
+	uint32_t           IndexInGroup;
 	DANCE_LIGHT_BITMAP Bitmap;
 	bool32_t           Synchronised; /* 0x2c */
 	float              Brightness;

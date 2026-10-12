@@ -68,7 +68,7 @@ const DanceShapeInfo DanceShapeInfos[DANCE_SHAPE_LAST] = {
 
 void GData::InitialiseShapes()
 {
-	for (unsigned long i = 0; i < DANCE_SHAPE_LAST; i++)
+	for (uint32_t i = 0; i < DANCE_SHAPE_LAST; i++)
 	{
 		if (DanceShapeInfos[i].Make == MakeShape::LoadShape)
 		{
@@ -83,7 +83,7 @@ void GData::InitialiseShapes()
 
 void MakeShape::MakeShapeLineVertical(unsigned long shape)
 {
-	for (unsigned long i = 0; i < DANCE_SHAPE_NUM_POINTS; i++)
+	for (uint32_t i = 0; i < DANCE_SHAPE_NUM_POINTS; i++)
 	{
 		DanceShapePoints[shape][i].x = 0;
 		DanceShapePoints[shape][i].z = i * (2 * DANCE_SHAPE_RADIUS) / DANCE_SHAPE_NUM_POINTS - DANCE_SHAPE_RADIUS;
@@ -92,7 +92,7 @@ void MakeShape::MakeShapeLineVertical(unsigned long shape)
 
 void MakeShape::MakeShapeLineHorizontal(unsigned long shape)
 {
-	for (unsigned long i = 0; i < DANCE_SHAPE_NUM_POINTS; i++)
+	for (uint32_t i = 0; i < DANCE_SHAPE_NUM_POINTS; i++)
 	{
 		DanceShapePoints[shape][i].x = i * (2 * DANCE_SHAPE_RADIUS) / DANCE_SHAPE_NUM_POINTS - DANCE_SHAPE_RADIUS;
 		DanceShapePoints[shape][i].z = 0;
@@ -101,18 +101,18 @@ void MakeShape::MakeShapeLineHorizontal(unsigned long shape)
 
 void MakeShape::MakeShapeRandomScatter(unsigned long shape)
 {
-	for (unsigned long i = 0; i < DANCE_SHAPE_NUM_POINTS; i++)
+	for (uint32_t i = 0; i < DANCE_SHAPE_NUM_POINTS; i++)
 	{
 		float distance = GRand::GameFloatRand(DANCE_SHAPE_RADIUS, FILEPATH, 280);
 		float angle = GRand::GameFloatRand(TWO_PI, FILEPATH, 281);
-		DanceShapePoints[shape][i].x = (long)(cos(angle) * distance);
-		DanceShapePoints[shape][i].z = (long)(sin(angle) * distance);
+		DanceShapePoints[shape][i].x = (int32_t)(cos(angle) * distance);
+		DanceShapePoints[shape][i].z = (int32_t)(sin(angle) * distance);
 	}
 }
 
 void MakeShape::MakeShapePoint(unsigned long shape)
 {
-	for (unsigned long i = 0; i < DANCE_SHAPE_NUM_POINTS; i++)
+	for (uint32_t i = 0; i < DANCE_SHAPE_NUM_POINTS; i++)
 	{
 		DanceShapePoints[shape][i].x = 0;
 		DanceShapePoints[shape][i].z = 0;
@@ -127,9 +127,9 @@ void GData::LoadShape(const char* name, unsigned long shape)
 	sprintf(path, ".\\data\\%s.dan", name);
 	LHReleasedOSFile file;
 	file.Open(path, LH_FILE_MODE_READ_ONLY);
-	unsigned long numPoints;
+	uint32_t numPoints;
 	file.Read(&numPoints, sizeof(numPoints), NULL);
-	for (unsigned long i = 0; i < numPoints; i++)
+	for (uint32_t i = 0; i < numPoints; i++)
 	{
 		file.Read(&DanceShapePoints[shape][i].x, sizeof(DanceShapePoints[shape][i].x), NULL);
 		file.Read(&DanceShapePoints[shape][i].z, sizeof(DanceShapePoints[shape][i].z), NULL);
@@ -144,7 +144,7 @@ JustXZ GData::CalculatePointOnLine(JustXZ& from, JustXZ& to, int step, int num_s
 	double dz = from.z - to.z;
 	double distance = sqrt(dz * dz + dx * dx);
 	JustXZ point;
-	point.x = (long)(sin(angle) * distance * step / num_steps + from.x);
-	point.z = (long)(cos(angle) * distance * step / num_steps + from.z);
+	point.x = (int32_t)(sin(angle) * distance * step / num_steps + from.x);
+	point.z = (int32_t)(cos(angle) * distance * step / num_steps + from.z);
 	return point;
 }

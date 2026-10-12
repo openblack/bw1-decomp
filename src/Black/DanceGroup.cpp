@@ -160,12 +160,12 @@ void DanceGroup::Process()
 
 DancePos DanceGroup::InterpolatedShapePosition(unsigned long shape, float position)
 {
-	unsigned long index = (unsigned long)position;
-	float         fraction = position - (float)index;
-	DancePos      point;
+	uint32_t index = (uint32_t)position;
+	float    fraction = position - (float)index;
+	DancePos point;
 	point.x = (float)DanceShapePoints[shape][index].x;
 	point.z = (float)DanceShapePoints[shape][index].z;
-	unsigned long next = index + 1;
+	uint32_t next = index + 1;
 	if (next >= DANCE_SHAPE_NUM_POINTS)
 	{
 		next = 0;
@@ -190,8 +190,8 @@ void DanceGroup::RotateMapCoordsByAngle(MapCoords* coords, float angle)
 	point.x = (float)coords->x * MetresPerMapCell / MAP_COORDS_UNITS_PER_CELL;
 	point.z = (float)coords->z * MetresPerMapCell / MAP_COORDS_UNITS_PER_CELL;
 	DancePos rotated = RotatePointByAngle(point, angle);
-	coords->x = (long)(rotated.x * MAP_COORDS_UNITS_PER_CELL / MetresPerMapCell);
-	coords->z = (long)(rotated.z * MAP_COORDS_UNITS_PER_CELL / MetresPerMapCell);
+	coords->x = (int32_t)(rotated.x * MAP_COORDS_UNITS_PER_CELL / MetresPerMapCell);
+	coords->z = (int32_t)(rotated.z * MAP_COORDS_UNITS_PER_CELL / MetresPerMapCell);
 }
 
 DancePos DanceGroup::RotatePointByAngle(DancePos& point, float angle)
@@ -276,7 +276,7 @@ MapCoords DanceGroup::CalculateActualPos()
 
 long DanceGroup::GetTime()
 {
-	return (long)behaviour->Time;
+	return (int32_t)behaviour->Time;
 }
 
 MapCoords* DanceGroup::GetParentCentre()

@@ -39,11 +39,11 @@ public:
 	uint32_t                           Unused2;
 	uint32_t                           Unused3;
 	LHOrderedLinkedList<DanceKeyFrame> KeyFrames; /* 0x38 */
-	unsigned long                      NumGroups; /* 0x40 */
+	uint32_t                           NumGroups; /* 0x40 */
 	uint32_t                           EditorValue;
 	uint32_t                           EditorValue2;
 	DanceLight*                        Lights[GROUP_BEHAVIOUR_MAX_LIGHTS]; /* 0x4c */
-	unsigned long                      Length;                             /* 0x74 */
+	uint32_t                           Length;                             /* 0x74 */
 	LHLinkedList<DanceGroup*>          DanceGroups;
 	LHLinkedList<DanceGroup*>          FixedGroups; /* 0x80 */
 	LHLinkedList<DanceGroup*>          ProportionGroups;

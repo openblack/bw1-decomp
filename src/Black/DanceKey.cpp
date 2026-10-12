@@ -119,8 +119,8 @@ uint32_t DanceKeyFrame::Load(GameOSFile& file)
 
 bool32_t DanceKeyFrame::IsTimeEqualTo(float time)
 {
-	long ticksPerHalfSecond = GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.0f) / DANCE_KEY_FRAMES_PER_SECOND;
-	return (long)Time / ticksPerHalfSecond == (long)time / ticksPerHalfSecond;
+	int32_t ticksPerHalfSecond = GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.0f) / DANCE_KEY_FRAMES_PER_SECOND;
+	return (int32_t)Time / ticksPerHalfSecond == (int32_t)time / ticksPerHalfSecond;
 }
 
 bool32_t DanceKeyFrame::GroupList1SubsumesGroupList2(LHDynamicStack<unsigned long>& group_list1,
@@ -151,7 +151,7 @@ bool32_t DanceKeyFrame::IsGroupInGroupList(unsigned long group, LHDynamicStack<u
 void DanceKeyFrame::RemoveActionsWithSubsumedGroupLists(unsigned long index, DANCE_GROUP_ACTION_TYPE action_type,
                                                         LHDynamicStack<unsigned long>& groups)
 {
-	for (unsigned long i = index + 1; i < Actions.count; i++)
+	for (uint32_t i = index + 1; i < Actions.count; i++)
 	{
 		if (Actions.GetAtPosition(i)->Type == action_type &&
 		    GroupList1SubsumesGroupList2(groups, Actions.GetAtPosition(i)->Groups))
@@ -165,7 +165,7 @@ void DanceKeyFrame::RemoveActionsWithSubsumedGroupLists(unsigned long index, DAN
 void DanceKeyFrame::AddAction(LHDynamicStack<unsigned long>& groups, DANCE_GROUP_ACTION_TYPE action_type,
                               const DanceGroupActionArgument& arguments)
 {
-	for (unsigned long i = 0; i < Actions.count; i++)
+	for (uint32_t i = 0; i < Actions.count; i++)
 	{
 		if (Actions.GetAtPosition(i)->Type != action_type)
 		{

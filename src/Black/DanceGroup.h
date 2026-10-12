@@ -99,7 +99,7 @@ struct DancerAction
 	DANCE_GROUP_MOVEMENT_KIND Kind;
 	DancerActionParam         Param1;
 	float                     Param2;
-	long                      EndTime;
+	int32_t                   EndTime;
 
 	// BW1W120 inlined BW1M119 012b1ce0
 	DancerAction()
@@ -162,9 +162,9 @@ struct DancePos
 
 struct DanceGroupProportion
 {
-	bool32_t      Fixed;
-	unsigned long Value;
-	unsigned long Numerator;
+	bool32_t Fixed;
+	uint32_t Value;
+	uint32_t Numerator;
 };
 
 struct DanceGroupChange
@@ -203,7 +203,7 @@ public:
 	GroupBehaviour*   behaviour;
 
 	LHLinkedList<Living*> Dancers; /* 0x1c */
-	unsigned long         Index;
+	uint32_t              Index;
 	DanceGroupChange      Change; /* 0x28 */
 	bool32_t              Hidden;
 	bool32_t              IsPath; /* 0x40 */

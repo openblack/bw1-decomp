@@ -220,7 +220,7 @@ float Dance::GetAngle()
 
 void Dance::SetWorshipSpeed(float speed)
 {
-	float step = (float)(unsigned long)(speed * DANCE_WORSHIP_SPEED_STEPS) / DANCE_WORSHIP_SPEED_STEPS;
+	float step = (float)(uint32_t)(speed * DANCE_WORSHIP_SPEED_STEPS) / DANCE_WORSHIP_SPEED_STEPS;
 	Speed = step * (MaxDanceSpeed - MinDanceSpeed) + MinDanceSpeed;
 	if (State == DANCE_STATE_DANCING && Speed != LastSpeed)
 	{
@@ -286,8 +286,8 @@ uint32_t Dance::Load(GameOSFile& file)
 
 float Dance::CalculateAverageLifeDesiredByDancers()
 {
-	float         total = 0.0f;
-	unsigned long numDancers = 0;
+	float    total = 0.0f;
+	uint32_t numDancers = 0;
 	for (LHLinkedNode<DanceGroup*>* group = DanceGroups.GetStart(); group != NULL; group = group->next.Get())
 	{
 		numDancers += group->payload->Dancers.count;

@@ -102,8 +102,8 @@ void GroupBehaviour::Process()
 		}
 	}
 	Time += 1.0f;
-	if ((unsigned long)Time >= GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.0f) / DANCE_KEY_FRAMES_PER_SECOND *
-	                               Length * SECONDS_PER_MINUTE * DANCE_KEY_FRAMES_PER_SECOND)
+	if ((uint32_t)Time >= GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(1.0f) / DANCE_KEY_FRAMES_PER_SECOND *
+	                          Length * SECONDS_PER_MINUTE * DANCE_KEY_FRAMES_PER_SECOND)
 	{
 		Time = 0.0f;
 	}
@@ -119,7 +119,7 @@ void GroupBehaviour::ProcessGroups()
 
 void GroupBehaviour::UpdateGroupsFromKeyFrame(DanceKeyFrame* key_frame)
 {
-	for (unsigned long i = 0; i < key_frame->Actions.count; i++)
+	for (uint32_t i = 0; i < key_frame->Actions.count; i++)
 	{
 		UpdateGroupsBasedOnAction(key_frame->Actions.GetAtPosition(i));
 	}
@@ -129,7 +129,7 @@ void GroupBehaviour::UpdateGroupsBasedOnAction(DanceKeyAction* action)
 {
 	for (uint32_t i = 0; i < action->Groups.GetSize(); i++)
 	{
-		unsigned long group = action->Groups.GetNthMember(i);
+		uint32_t group = action->Groups.GetNthMember(i);
 		if (group >= DanceGroups.count)
 		{
 			DanceGroup* danceGroup = new (FILEPATH, 130) DanceGroup();
@@ -149,7 +149,7 @@ void GroupBehaviour::UpdateGroupsBasedOnAction(DanceKeyAction* action)
 
 void GroupBehaviour::UpdateNumeratorsAndDenominator()
 {
-	unsigned long              maxProportion = 0;
+	uint32_t                   maxProportion = 0;
 	LHLinkedNode<DanceGroup*>* node;
 	for (node = ProportionGroups.GetStart(); node != NULL; node = node->next.Get())
 	{
@@ -158,7 +158,7 @@ void GroupBehaviour::UpdateNumeratorsAndDenominator()
 			maxProportion = node->payload->Proportion.Value;
 		}
 	}
-	for (unsigned long divisor = maxProportion; divisor >= 1; divisor--)
+	for (uint32_t divisor = maxProportion; divisor >= 1; divisor--)
 	{
 		bool32_t dividesAll = true;
 		for (node = ProportionGroups.GetStart(); node != NULL; node = node->next.Get())
@@ -222,8 +222,8 @@ Living* GroupBehaviour::GetFirstDancer()
 void GroupBehaviour::CalculateDancePosition(const MapCoords& centre, MapCoords* pos, DanceGroup* dance_group,
                                             unsigned long index)
 {
-	MapCoords     offset;
-	unsigned long numPositions;
+	MapCoords offset;
+	uint32_t  numPositions;
 	if (dance_group->IsPath)
 	{
 		numPositions = dance_group->NumLights;
@@ -271,7 +271,7 @@ void GroupBehaviour::CalculateDancePosition(const MapCoords& centre, MapCoords* 
 
 Living* GroupBehaviour::FindFirstDanceMember(GameThingWithPos* exclude)
 {
-	for (unsigned long i = 0; i < NumGroups; i++)
+	for (uint32_t i = 0; i < NumGroups; i++)
 	{
 		for (LHLinkedNode<Living*>* node = DanceGroups.GetAtPosition(i)->Dancers.GetStart(); node != NULL;
 		     node = node->next.Get())
