@@ -16,6 +16,8 @@
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>
 #include <Lionhead/LHLib/ver5.0/LHWin.h>
 
+#define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHScript.cpp"
+
 // NB this TU builds with /Ob0, so the LHSys accessors would not inline; the
 // system aggregate's members are reached through LHSys::TheSystem directly.
 
@@ -274,12 +276,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 		{
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
-// The #line pins below reproduce the original build's __FILE__/__LINE__ values
-// in the memory-tracking operator new calls (evidence: the file/line immediates
-// pushed at each call site, e.g. 0x408 = 1032 in CreateVariable). Compiler
-// diagnostics for the rest of this file will report the original path/lines.
-#line 312 "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHScript.cpp"
-			LHSprite* sprite = new (__FILE__, __LINE__) LHSprite;
+			LHSprite* sprite = new (FILEPATH, 312) LHSprite;
 			result = LH_ERROR;
 			LHSys::TheSystem.ScriptResources[pram->number[1]].data = sprite;
 			if (!sprite)
@@ -298,8 +295,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 		{
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
-#line 333
-			LHSpriteList* spriteList = new (__FILE__, __LINE__) LHSpriteList;
+			LHSpriteList* spriteList = new (FILEPATH, 333) LHSpriteList;
 			result = LH_ERROR;
 			LHSys::TheSystem.ScriptResources[pram->number[1]].data = spriteList;
 			if (!spriteList)
@@ -324,7 +320,7 @@ template <class T> LH_RETURN LHScriptX<T>::ProcessCommand(long command, LHScript
 		{
 			if ((unsigned long)pram->number[1] >= 100)
 				return LH_ERROR;
-			LHSpriteList* spriteList = new (__FILE__, __LINE__) LHSpriteList;
+			LHSpriteList* spriteList = new (FILEPATH, 358) LHSpriteList;
 			result = LH_ERROR;
 			LHSys::TheSystem.ScriptResources[pram->number[1]].data = spriteList;
 			if (!spriteList)
@@ -552,8 +548,7 @@ template <class T> LH_RETURN LHScriptX<T>::ScanLine(T* line)
 			if (variable->value)
 				delete (T*)variable->value;
 			unsigned int length = LHStringOps<T>::strlen(word);
-#line 737
-			T* value = (T*)operator new(sizeof(T) * (length + 1), __FILE__, __LINE__);
+			T*           value = (T*)operator new(sizeof(T) * (length + 1), FILEPATH, 737);
 			variable->value = (long)value;
 			if (!value)
 				return LH_ERROR;
@@ -834,13 +829,11 @@ template <class T> LH_RETURN LHScriptX<T>::CommandIf(T* value1, T* condition, T*
 // command 23 = SLONG (number), 24 = FLOAT, 25 = CBYTE (string).
 template <class T> LH_RETURN LHScriptX<T>::CreateVariable(long command, LHScriptPramX<T>* pram)
 {
-#line 1032
-	LHScriptVariable<T>* variable = new (__FILE__, __LINE__) LHScriptVariable<T>;
+	LHScriptVariable<T>* variable = new (FILEPATH, 1032) LHScriptVariable<T>;
 	if (variable)
 	{
 		memset(variable, 0, sizeof(LHScriptVariable<T>));
-#line 1035
-		T* name = (T*)operator new(sizeof(T) * (LHStringOps<T>::strlen(pram->text[0]) + 1), __FILE__, __LINE__);
+		T* name = (T*)operator new(sizeof(T) * (LHStringOps<T>::strlen(pram->text[0]) + 1), FILEPATH, 1035);
 		variable->name = name;
 		if (name)
 		{
