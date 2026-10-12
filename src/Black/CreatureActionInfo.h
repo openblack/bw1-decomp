@@ -19,7 +19,8 @@ public:
 	float                       StrengthGain;
 	float                       EnergyCost;
 	float                       ExhaustionCost;
-	uint8_t                     field_0x1c[0x8];
+	IMPRESSIVE_TYPE             ImpressiveType;
+	float                       ImpressiveValue;
 	char                        Name[0x20];
 	uint8_t                     field_0x44[0x60];
 	bool32_t                    NeedsObjectToActOn;
@@ -32,16 +33,17 @@ public:
 	CREATURE_DESIRES            Desire;
 	uint8_t                     field_0xc8[0x8];
 	float                       CompletionFactor;
-	uint8_t                     field_0xd4[0x4];
+	float                       FullSkillCount;
 	bool32_t                    CompletionEnabled;
 	uint8_t                     field_0xdc[0x4];
 	float                       LearnWindow;
 	float                       InitialOpinion;
 	uint8_t                     field_0xe8[0x4];
 	bool32_t                    WorthFollowing;
-	uint8_t                     field_0xf0[0x10];
+	uint8_t                     field_0xf0[0xc];
+	float                       HowNiceChange;
 	bool32_t                    Learnable;
-	bool32_t                    CanBeStompedOn;
+	bool32_t                    IsRecoveryAction;
 	uint8_t                     field_0x108[0x8];
 
 	// Override methods
