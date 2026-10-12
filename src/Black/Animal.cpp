@@ -222,6 +222,71 @@ int Animal::CallOutofAnimationFunction(uint8_t state)
 	return ANM_INVALID;
 }
 
+uint32_t Animal::MoveAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::DyingAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::DeadAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::EatAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::StartToEatAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::FinishEatingAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::SleepAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::StandAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::PounceAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::StandardAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::InHandAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::LandedAnimation()
+{
+	return ANM_INVALID;
+}
+
+uint32_t Animal::ThrownAnimation()
+{
+	return ANM_INVALID;
+}
+
 PieceVillager* PieceVillager::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
 	PieceVillager* villager = new (ANIMAL_FILE, 2696) PieceVillager(coords, info, age);
