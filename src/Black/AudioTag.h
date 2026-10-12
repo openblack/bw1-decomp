@@ -7,13 +7,35 @@
 
 struct HelpDude;
 
+enum AUDIO_TAG_TARGET
+{
+	AUDIO_TAG_TARGET_THIS = 0,
+	AUDIO_TAG_TARGET_OTHER = 1,
+	AUDIO_TAG_TARGET_GOOD = 2,
+	AUDIO_TAG_TARGET_EVIL = 3,
+	AUDIO_TAG_TARGET_BOTH = 4,
+};
+
+enum AUDIO_TAG_COMMAND
+{
+	AUDIO_TAG_COMMAND_ANIM = 1,
+	AUDIO_TAG_COMMAND_ANIM_START = 2,
+	AUDIO_TAG_COMMAND_ANIM_RELEASE = 3,
+	AUDIO_TAG_COMMAND_EMOTION = 4,
+	AUDIO_TAG_COMMAND_LOOK = 5,
+	AUDIO_TAG_COMMAND_LOOK_START = 6,
+	AUDIO_TAG_COMMAND_LOOK_RELEASE = 7,
+};
+
+#define AUDIO_TAG_EMOTION_PERCENT 100.0f
+
 struct AudioTag
 {
 	float Time;
-	int   field_0x4;
-	int   field_0x8;
-	int   field_0xc;
-	int   field_0x10;
+	int   Target;
+	int   Command;
+	int   Index;
+	int   Value;
 
 	// BW1W120 00c5836c
 	static int ErrorCount;

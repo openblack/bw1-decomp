@@ -39,6 +39,23 @@ public:
 	virtual void StartGame();
 	// BW1W120 00440ac0 BW1M119 0118a3e0
 	virtual bool Connect();
+	// BW1W120 00441390 BW1M119 01189840
+	virtual void Disconnect();
+	// BW1W120 004415c0 BW1M119 01189380
+	virtual void KickPlayerFromChannel(MPFEPlayerDetails* player);
+	// BW1W120 004415d0 BW1M119 01189330
+	virtual void BanPlayerInChannel(MPFEPlayerDetails* player);
+#ifndef VERSION_BW1W100
+	// BW1W120 004413b0 BW1M119 01189810
+	virtual void LockChannel(bool lock);
+	// BW1W120 004413c0 BW1M119 011897e0
+	virtual void SetInvite(bool invite);
+#endif
+
+	// Non-virtual methods
+
+	// BW1W120 00440c20 BW1M119 011898e0
+	void Think();
 };
 
 #endif /* BW1_DECOMP_BW_LAN_INCLUDED_H */

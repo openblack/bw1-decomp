@@ -34,8 +34,6 @@ public:
 	virtual bool32_t IsDrawBuilding();
 	// BW1W120 005273d0 BW1M119 010d5cb0
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
-	// BW1W120 00422e90 BW1M119 010ab260
-	virtual ~Feature();
 	// BW1W120 00422e80 BW1M119 010d6380
 	virtual char* GetDebugText();
 	// BW1W120 00422e70 BW1M119 010d6340

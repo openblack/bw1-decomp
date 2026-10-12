@@ -73,7 +73,7 @@ public:
 	virtual void UpdateGroupBasedOnAction(DanceGroup* dance_group, DANCE_GROUP_ACTION_TYPE action_type,
 	                                      const DanceGroupActionArgument& argument, uint32_t param_4);
 	// BW1W120 00597300 BW1M119 01101ac0
-	virtual void AddAction(float param_1, LHDynamicStack<uint32_t>& stack, DANCE_GROUP_ACTION_TYPE action_type,
+	virtual void AddAction(float time, LHDynamicStack<unsigned long>& stack, DANCE_GROUP_ACTION_TYPE action_type,
 	                       const DanceGroupActionArgument& argument);
 	// BW1W120 00597270 BW1M119 01101cf0
 	virtual void AddAction(float param_1, uint32_t param_2, DANCE_GROUP_ACTION_TYPE action_type,
@@ -113,15 +113,89 @@ public:
 	virtual void ToBeDeleted(int delete_now);
 };
 
+/* Default end time of a dance group movement; the unit is not known (probably milliseconds) */
+#define DANCE_GROUP_MOVEMENT_DEFAULT_END_TIME 10000
+
+enum DANCE_GROUP_MOVEMENT_KIND
+{
+	DANCE_GROUP_MOVEMENT_KIND_STAND_STILL = 0x0,
+	DANCE_GROUP_MOVEMENT_KIND_ROTATE_DANCERS = 0x1,
+	DANCE_GROUP_MOVEMENT_KIND_LOOK_AT = 0x2,
+	DANCE_GROUP_MOVEMENT_KIND_SPIN_AROUND = 0x3,
+	DANCE_GROUP_MOVEMENT_KIND_RANDOM_DANCE = 0x4,
+	DANCE_GROUP_MOVEMENT_KIND_PRAY = 0x5,
+	DANCE_GROUP_MOVEMENT_KIND_FUNKY = 0x6,
+	DANCE_GROUP_MOVEMENT_KIND_FACE_IN = 0x7,
+	DANCE_GROUP_MOVEMENT_KIND_FACE_OUT = 0x8,
+	DANCE_GROUP_MOVEMENT_KIND_ROTATE_SHAPE = 0x9,
+	DANCE_GROUP_MOVEMENT_KIND_PLAY_ANIM = 0xa,
+	DANCE_GROUP_MOVEMENT_KIND_CHANGE_SIZE = 0xb,
+	DANCE_GROUP_MOVEMENT_KIND_MOVE_TO_POS = 0xc,
+	DANCE_GROUP_MOVEMENT_KIND_FACE_DIRECTION = 0xd,
+	DANCE_GROUP_MOVEMENT_KIND_IMPRESSED = 0xe,
+	DANCE_GROUP_MOVEMENT_KIND_SAD = 0xf,
+	DANCE_GROUP_MOVEMENT_KIND_HAPPY = 0x10,
+	DANCE_GROUP_MOVEMENT_KIND_LOOKING_FOR_SOMETHING = 0x11,
+	DANCE_GROUP_MOVEMENT_KIND_SEX = 0x12,
+	DANCE_GROUP_MOVEMENT_KIND_MOURNING = 0x13,
+	DANCE_GROUP_MOVEMENT_KIND_TALK = 0x14,
+	DANCE_GROUP_MOVEMENT_KIND_TALK_AND_POINT = 0x15,
+	DANCE_GROUP_MOVEMENT_KIND_WORSHIP_CREATURE = 0x16,
+	DANCE_GROUP_MOVEMENT_KIND_DANCE_X = 0x17,
+	DANCE_GROUP_MOVEMENT_KIND_DANCE_X_PARTNER = 0x18,
+	DANCE_GROUP_MOVEMENT_KIND_FEMALE_A = 0x19,
+	DANCE_GROUP_MOVEMENT_KIND_FEMALE_B = 0x1a,
+	DANCE_GROUP_MOVEMENT_KIND_FEMALE_C = 0x1b,
+	DANCE_GROUP_MOVEMENT_KIND_MALE_A = 0x1c,
+	DANCE_GROUP_MOVEMENT_KIND_MALE_B = 0x1d,
+	DANCE_GROUP_MOVEMENT_KIND_MALE_C = 0x1e,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACE_IN = 0x1f,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACE_OUT = 0x20,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACE_DIRECTION = 0x21,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_DANCE = 0x22,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_INDIVIDUAL = 0x23,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_STATIC = 0x24,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_LOOK_AT = 0x25,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_FACIAL = 0x26,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_GESTURE = 0x27,
+	DANCE_GROUP_MOVEMENT_KIND_CREATURE_POINT = 0x28,
+};
+
+/* Parameters of the DANCE_GROUP_ACTION_TYPE_SET_ACTION dance group action: a kind of movement with up to two float
+ * parameters. */
+struct DanceGroupMovement
+{
+	DANCE_GROUP_MOVEMENT_KIND Kind;
+	float                     Param1;
+	float                     Param2;
+	uint32_t                  EndTime;
+};
+
+/* Argument of an action performed on a dance group. Which members are used depends on the action type: Value/Value2
+ * hold e.g. the shape, the position (as floats), the angle or the percentage chance for
+ * DANCE_GROUP_ACTION_TYPE_SET_STATE_OF_PROPORTION; Movement belongs to DANCE_GROUP_ACTION_TYPE_SET_ACTION and
+ * CameraPoints to DANCE_GROUP_ACTION_TYPE_SET_CAMERA. */
+struct DanceGroupActionArgument
+{
+	uint32_t           Value;
+	uint32_t           Value2;
+	uint32_t           Value3; /* Numerator of DANCE_GROUP_ACTION_TYPE_PROPORTION */
+	uint32_t           Unused; /* Never read or written by any code, only copied around with the rest */
+	DanceGroupMovement Movement;
+	float              CameraPoints[2][3];
+};
+
+static_assert(sizeof(DanceGroupActionArgument) == 0x38, "Data type is of wrong size");
+
 class DanceKeyAction : public GameThing
 {
 public:
-	uint8_t field_0x14[0x44];
+	LHDynamicStack<unsigned long> Groups;
+	DANCE_GROUP_ACTION_TYPE       Type;
+	DanceGroupActionArgument      Argument;
 
 	// Override methods
 
-	// BW1W120 0050e3a0 BW1M119 012b1dd0
-	virtual ~DanceKeyAction();
 	// BW1W120 0050e390 BW1M119 012b1ee0
 	virtual char* GetDebugText();
 	// BW1W120 0050ea00 BW1M119 012b16f0
@@ -134,5 +208,7 @@ public:
 	// BW1W120 0050e340 BW1M119 012b1d30
 	DanceKeyAction();
 };
+
+static_assert(sizeof(DanceKeyAction) == 0x58, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_GROUP_BEHAVIOUR_INCLUDED_H */

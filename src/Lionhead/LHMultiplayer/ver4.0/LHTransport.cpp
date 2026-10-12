@@ -6,10 +6,13 @@
 
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
 #include <Lionhead/LHLog/ver4.0/LHLogger.h>
-#include "LHNetLog.h"
+#include "LHNetErrors.h"
 #include "LHNetEvent.h"
 #include "LHPacket.h"
 #include "LHTransportInfo.h"
+
+static LHErrorCode* LHLogErrorCodes = LH_NET_Errors;
+static char*        LHLogLibraryName = "MultiplayerLib";
 
 enum
 {

@@ -6,6 +6,7 @@
 #include "ColourConstants.h"    /* For White */
 #include "CreatureInfo.h"
 #include "CreaturePhysical.h"
+#include "DifferentCreatureInfo.h"
 
 uint32_t Creature::GetSaveType()
 {
@@ -177,4 +178,10 @@ bool32_t Creature::CanBecomeAPhysicsObject()
 bool Creature::InteractsWithPhysicsObjects()
 {
 	return true;
+}
+
+GBaseInfo* DifferentCreatureInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = CREATURE_TYPE_LAST;
+	return Infos;
 }

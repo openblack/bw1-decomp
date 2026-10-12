@@ -17,46 +17,48 @@ class GPlayer;
 class PlannedMultiMapFixed;
 class Villager;
 
+#define TOWN_STATS_PLAYER_COUNT 8
+
 class TownStats : public Base
 {
 public:
 	uint32_t NumAdults;
 	int      NumChildren;
-	uint32_t field_0x10;
-	uint32_t field_0x14;
-	uint32_t field_0x18;
-	uint32_t field_0x1c;
-	uint32_t field_0x20;
-	uint32_t field_0x24;
-	uint32_t field_0x28;
-	uint32_t field_0x2c;
-	uint32_t field_0x30;
+	uint32_t NumAbodes;
+	uint32_t NumPlannedBuildings;
+	uint32_t NumBuildingSites;
+	uint32_t NumCivicBuildings;
+	uint32_t NumCivicBuildingSites;
+	uint32_t NumPlannedCivicBuildings;
+	uint32_t NumPlannedWonders;
+	uint32_t NumWonderSites;
+	uint32_t TotalSpaceLeftInAbodes;
 	int      MaxVillagersInAbodes;
-	uint32_t field_0x38;
-	uint32_t field_0x3c;
-	uint32_t field_0x40;
+	uint32_t RecentDeaths;
+	uint32_t NumChildrenAdded;
+	uint32_t MaxChildrenInAbodes;
 	int      NumAbodesAdded;
-	int      field_0x48;
+	int      NumWonders;
 	uint32_t VillagerSpaceLeftInAbodes;
-	uint32_t field_0x50;
+	uint32_t ChildSpaceLeftInAbodes;
 	uint32_t NumMales;
 	uint32_t NumFemales;
-	uint32_t field_0x5c[0x8];
+	uint32_t DeathsByOwner[TOWN_STATS_PLAYER_COUNT];
 	uint32_t Deaths[DEATH_REASON_LAST];
-	uint32_t field_0xa4[0x9];
+	uint32_t DeathsByKiller[TOWN_STATS_PLAYER_COUNT + 1];
 	uint8_t  NumDisciples[VILLAGER_DISCIPLE_LAST];
-	uint32_t field_0xd8;
-	uint32_t field_0xdc;
-	uint32_t field_0xe0;
+	uint32_t LastDeathTurn;
+	uint32_t NumDeaths;
+	uint32_t LastAbodeAddedTurn;
 	float    FoodReqiredForDinner;
 	float    FoodUsed;
 	float    WoodUsed;
-	float    field_0xf0;
-	float    field_0xf4;
+	float    AverageFoodUsed;
+	float    AverageWoodUsed;
 	float    TotalFood;
 	float    TotalWood;
-	uint32_t field_0x100;
-	uint32_t field_0x104;
+	float    TotalBuildingSiteCost;
+	float    BuildingSiteCostSpent;
 	uint8_t  NumAbodesOfNumber[ABODE_NUMBER_LAST];
 
 	// Override methods
@@ -84,13 +86,13 @@ public:
 	// BW1W120 007493c0 BW1M119 0156ba80
 	void Remove(Villager* villager);
 	// BW1W120 00749490 BW1M119 0156b9e0
-	void ChildToAdult(Villager* param_1);
+	void ChildToAdult(Villager* villager);
 	// BW1W120 007494c0 BW1M119 0156b930
 	void VillagerMoveOutOfAbode(Villager* villager);
 	// BW1W120 00749500 BW1M119 0156b880
 	void VillagerMoveIntoAbode(Villager* villager);
 	// BW1W120 00749780 BW1M119 0156b770
-	void VillagerDead(Villager* villager, DEATH_REASON reason, GPlayer* player, float param_4);
+	void VillagerDead(Villager* villager, DEATH_REASON reason, GPlayer* player, float);
 	// BW1W120 00749800 BW1M119 0156b670
 	void ProcessBirthday();
 	// BW1W120 007498c0 BW1M119 0156b4c0
@@ -106,9 +108,9 @@ public:
 	// BW1W120 00749b50 BW1M119 0156af60
 	void Remove(BuildingSite* site);
 	// BW1W120 00749c60 BW1M119 0156ae50
-	void IncrementNumOfDisciples(VILLAGER_DISCIPLE param_1);
+	void IncrementNumOfDisciples(VILLAGER_DISCIPLE disciple);
 	// BW1W120 00749c80 BW1M119 0156ade0
-	void DecrementNumOfDisciples(VILLAGER_DISCIPLE param_1);
+	void DecrementNumOfDisciples(VILLAGER_DISCIPLE disciple);
 };
 
 #endif /* BW1_DECOMP_TOWN_STATS_INCLUDED_H */

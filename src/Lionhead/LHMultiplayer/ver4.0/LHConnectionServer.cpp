@@ -391,11 +391,10 @@ static void LHConnectionServerThread(void* context)
 
 long LHConnectionServer::WaitForAnyEvent(unsigned long timeout)
 {
-	LHLinkedNode<LHServerPlayer*>* node;
-	long                           index = 0;
-	for (node = Players.GetStart(); node != NULL; node = node->next.Get())
+	long index = 0;
+	for (LHLinkedListIterator<LHServerPlayer*> it = Players.GetStart(); it; it++)
 	{
-		if (node->payload->Connection->CheckForEvents())
+		if (it.Get()->Connection->CheckForEvents())
 			return index;
 		index++;
 	}
@@ -406,9 +405,9 @@ long LHConnectionServer::WaitForAnyEvent(unsigned long timeout)
 	if (Mode == LH_OPERATING_MODE_SYNCHRONOUS)
 	{
 		index = 0;
-		for (node = Players.GetStart(); node != NULL; node = node->next.Get())
+		for (LHLinkedListIterator<LHServerPlayer*> it = Players.GetStart(); it; it++)
 		{
-			if (node->payload->Connection->CheckForEvents())
+			if (it.Get()->Connection->CheckForEvents())
 				return index;
 			index++;
 		}
@@ -591,7 +590,7 @@ LH_RETURN LHConnectionServer::ConnectToConnection(LHConnection* connection)
 {
 	if (!connection->Open)
 		return LH_ERROR;
-	if (connection->Mode != Mode)
+	if (connection->GetMode() != Mode)
 		return LH_ERROR;
 	if (Players.count > 0 && Mode == LH_OPERATING_MODE_SYNCHRONOUS)
 		return LH_ERROR;
@@ -686,22 +685,27 @@ LH_RETURN LHConnectionServer::SendToConnection(LHConnection* connection, LHNetEv
 	return connection->Write(event);
 }
 
+inline char* GetTimerText(LHTimer* timer)
+{
+	unsigned long elapsed = timer->MSeconds();
+	bool32_t      running = timer->Running();
+	timer->Stop();
+	if (elapsed < 60000)
+		sprintf(timer->Text, "%d.%03ds ", elapsed / 1000, elapsed % 1000);
+	else
+		sprintf(timer->Text, "%dm %d.%03ds ", elapsed / 60000, elapsed / 1000 % 60, elapsed % 1000);
+	if (running)
+		timer->Start();
+	return timer->Text;
+}
+
 LH_RETURN LHConnectionServer::BaseSendGreeting(LHConnection* connection)
 {
 	char* modeName = Mode == LH_OPERATING_MODE_SYNCHRONOUS ? "SYNCHRONOUS" : "ASYNCHRONOUS";
 
-	unsigned long uptime = Timer.MSeconds();
-	bool32_t      running = Timer.Running();
-	Timer.Stop();
-	if (uptime < 60000)
-		sprintf(Timer.Text, "%d.%03ds ", uptime / 1000, uptime % 1000);
-	else
-		sprintf(Timer.Text, "%dm %d.%03ds ", uptime / 60000, uptime / 1000 % 60, uptime % 1000);
-	if (running)
-		Timer.Start();
-
 	if (connection->Write(LHNetEvent::VCreate(LH_NETEVENT_TYPE_SERVER_GREETING, NetUser.GetID(), RegisteredName,
-	                                          UserName, modeName, Players.count, Timer.Text, IdleTime)) != LH_OK)
+	                                          UserName, modeName, Players.count, GetTimerText(&Timer), IdleTime)) !=
+	    LH_OK)
 		return LH_FAIL;
 	return SendGreeting(connection);
 }

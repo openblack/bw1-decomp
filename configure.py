@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.33"
+config.dtk_tag = "v0.0.35"
 config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.2.0"
@@ -175,7 +175,7 @@ config.compilers_tag = {
     "BW1W120": "6.5",
 }[config.version]
 config.linker_version = f"MSVC/{config.compilers_tag}"
-config.lld_link_tag = "bw1-decomp-024"
+config.lld_link_tag = "bw1-decomp-025"
 # Static libraries to pull verbatim CRT objects from (see LibObject). They are
 # not committed and not downloaded — you must supply them yourself: place each
 # .lib at orig/libs/<package>/<lib>.lib. See the README for how to obtain them.
@@ -221,6 +221,41 @@ _debug_directory_unit = {
 if _debug_directory_unit is not None:
     config.base_ldflags.append("/debug")
     config.linker_provided_units = [_debug_directory_unit]
+# Export tables, which lld-link regenerates from the objects' -export:
+# directives (generate_exports in config.yml).
+if config.version == "BW1W120":
+    config.linker_provided_units = (config.linker_provided_units or []) + [
+        "auto_01_10034460_edata",
+        "auto_01_1001AB00_edata",
+        "auto_01_10054540_edata",
+        "auto_01_1001A6F0_edata",
+    ]
+# Import tables, which lld-link regenerates from an import library and order
+# file read back from the original (generate_imports in config.yml).
+if config.version == "BW1W120":
+    config.linker_provided_units += [
+        "auto_01_10030000_idata_5",
+        "auto_01_10033260_idata_2",
+        "auto_01_100332EC_idata_3",
+        "auto_01_10033300_idata_4",
+        "auto_01_100335CC_idata_6",
+        "auto_01_10015000_idata_5",
+        "auto_01_1001A050_idata_2",
+        "auto_01_1001A0B4_idata_3",
+        "auto_01_1001A0C8_idata_4",
+        "auto_01_1001A2B4_idata_6",
+        "auto_03_1001D000_idata",
+        "auto_01_008A9000_idata_5",
+        "auto_01_009BF6E8_idata_2",
+        "auto_01_009BF88C_idata_3",
+        "auto_01_009BF8A0_idata_4",
+        "auto_01_009C0248_idata_6",
+        "auto_01_10050000_idata_5",
+        "auto_01_100534CC_idata_2",
+        "auto_01_10053544_idata_3",
+        "auto_01_10053558_idata_4",
+        "auto_01_100537CC_idata_6",
+    ]
 elif args.debug:
     config.base_ldflags.append("/debug")
 # 1.00 was linked with /OPT:REF. Some of the CRT objects it links carry
@@ -1761,7 +1796,7 @@ config.libs = [
         "cflags": cflags_base,
         "progress_category": "sdk",
         "objects": [
-            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHChannel.cpp"),
+            MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHChannel.cpp"),
             MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHConnection.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHConnectionServer.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHDatabase.cpp"),
@@ -1774,14 +1809,14 @@ config.libs = [
             MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHMPPacketSave.cpp"),
             MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHNetErrors.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHNetEvent.cpp"),
-            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHNetTypes.cpp"),
+            MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHNetTypes.cpp"),
             MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHNetUser.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHNetUtils.cpp"),
             MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHPacketisableObject.cpp"),
             MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHPlayer.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHPOP3.cpp"),
             MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHSerial.cpp"),
-            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHServerListener.cpp"),
+            MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHServerListener.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSession.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSNMP.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSocket.cpp"),
@@ -1812,7 +1847,7 @@ config.libs = [
             GameSpyObject(MatchingFor("BW1W120"), "GameSpy/Chat/chatMain.c"),
             GameSpyObject(MatchingFor("BW1W120"), "GameSpy/Peer/peerCEngine.c"),
             GameSpyObject(MatchingFor("BW1W120"), "GameSpy/Peer/peerRooms.c"),
-            GameSpyObject(NonMatching, "GameSpy/Peer/peerPing.c"),
+            GameSpyObject(MatchingFor("BW1W120"), "GameSpy/Peer/peerPing.c"),
             GameSpyObject(NonMatching, "GameSpy/Peer/peerPlayers.c"),
             GameSpyObject(MatchingFor("BW1W120"), "GameSpy/queryreporting/gqueryreporting.c"),
             GameSpyObject(MatchingFor("BW1W120"), "GameSpy/Peer/peerGlobalCallbacks.c"),

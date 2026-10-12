@@ -1,3 +1,4 @@
+#include "Town.h"
 #include <stddef.h> /* For NULL in intrusive-list templates */
 #include "GameTimeConstants.h"
 #include "Citadel.h"
@@ -15,6 +16,20 @@ WorshipSite* Citadel::FindOrCreateWorshipSite(const GTribeInfo* tribe_info)
 	if (result == NULL)
 	{
 		result = RequestANewWorshipSite(tribe_info);
+	}
+	return result;
+}
+
+WorshipSite* Citadel::FindOrCreateWorshipSite(Town* town)
+{
+	if (town == NULL)
+	{
+		return NULL;
+	}
+	WorshipSite* result = NULL;
+	if (NumWorshipSites == 0 && town->IsAllowedToCreateWorshipSite())
+	{
+		result = FindOrCreateWorshipSite(town->GetTribe());
 	}
 	return result;
 }

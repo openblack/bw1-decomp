@@ -44,7 +44,7 @@ public:
 	uint32_t                    field_0x68;
 	float                       influence;
 	uint32_t                    field_0x70;
-	uint32_t                    field_0x74;
+	uint32_t                    NumWorshipSites;
 	float                       field_0x78;
 	Living*                     living;
 

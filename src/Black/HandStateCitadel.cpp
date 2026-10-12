@@ -4,4 +4,7 @@
 
 #include "ColourConstants.h" /* For White */
 
-HandStateCitadel::HandStateCitadel(CHand* hand) : HandState(hand), field_0x8(0) {}
+HandStateCitadel::HandStateCitadel(CHand* hand) : HandState(hand)
+{
+	AnimationTime = 0;
+}

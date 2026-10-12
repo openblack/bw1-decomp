@@ -13,6 +13,7 @@
 #include "LHChannel.h"      /* For class LHChannel */
 #include "LHConnection.h"   /* For class LHConnection, enum LH_OPERATING_MODE */
 #include "LHMPPacketSave.h" /* For class LHMPPacketSave, enum LH_PACKET_SOURCE */
+#include "LHMPServerStartInfo.h"
 #include "LHMultiplayerExport.h"
 #include "LHNetEvent.h"      /* For class LHNetEvent */
 #include "LHNetTypes.h"      /* For class LHLocalLobbyInfo */
@@ -52,7 +53,6 @@ class LHMessageServer;
 class LHP2P;
 class LHPlayer;
 class LHSession;
-struct LHMPServerStartInfo;
 
 class LH_MULTIPLAYER_API LHLobbyChannel : public LHChannel
 {

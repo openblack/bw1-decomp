@@ -340,7 +340,6 @@ Source must read as if a Lionhead programmer wrote it. The only comments it cont
   [Signatures](#signatures-function-boundaries-and-layouts), above declarations in headers.
   `.cpp` files carry no comments above definitions; a function with no header (file static,
   callback) keeps its address comment on a forward declaration in the `.cpp`.
-- `/* 0x1c */` offsets on data members.
 - `// Inliner IL size: N` — above an inline helper's address comment: its exact IL size, as measured by `tools/inline-budget.py size`
   (`<= 40` means never charged). Update it whenever the body changes.
 - Comments a Lionhead programmer could plausibly have written; prefer none.
@@ -506,3 +505,70 @@ name it).
 which translation unit owns the data and produces a mangled name (`?Name@@3...`) that will
 not match the real one. If a global cannot be declared in its proper header yet, leave
 the function nonmatching without it and record why in the notes or PR description.
+
+## Rules from maintainer review
+
+These are drawn from review feedback on earlier PRs and take precedence where they
+conflict with looser guidance above.
+
+- **Name parameters.** A function that matches must not keep `param_1`/`param_2`
+  placeholders. Name each argument from its role, the demangled Mac symbol, or its call
+  sites (`snake_case`). Keep `param_N` (or Hex-Rays `fVarN`) only when the signature is
+  genuinely unknown, and even then prefer the closest evidence-based name. This extends
+  to the base-class convention already used elsewhere (`ToBeDeleted(int delete_now)`,
+  `CallVirtualFunctionsForCreation(const MapCoords& coords)`, `PhysicsEditorCreate(int type)`).
+- **Know which symbol source is authoritative.** The Mac symbols (`config/BW1M119`) are
+  ground truth — the real names survived, with only subtle differences, so they are right
+  ~99% of the time. The Windows `symbols.txt` mangled names and return types, by contrast,
+  are reconstructed and can be wrong — `class` vs `struct`, `bool` vs `int`, a return type
+  that disagrees with the codegen, or an offset encoded relative to one symbol base that
+  resolves to a different one elsewhere. RTTI in the Windows binaries is absolute ground
+  truth for RTTI types. Before renaming a type or changing a signature, confirm the change
+  in objdiff *and* in the CI report, and check it does not regress other functions,
+  sections or data matches.
+- **Typedefs and `#define`d types don't survive in the mangling.** Two spellings of the
+  same underlying type — `BOOL` vs `int`, a `typedef` vs its expansion — mangle
+  identically, so the mangling leaves room to interpret which one the original wrote. The
+  game used `int` for booleans (likely `BOOL`), so the Mac symbol may show an `int`
+  parameter where the source said `BOOL`/`bool32_t`. Pick the spelling that reads best and
+  matches the surrounding code, and confirm the codegen is unchanged.
+- **Prefer `[u]intN_t` over the spelled-out equivalents** (`unsigned long`,
+  `unsigned char`, `unsigned short`, …) wherever it does not hurt matching — same size,
+  signedness and mangling. Plain `int` is fine. Do **not** use `uint16_t` for wide
+  characters; those are `wchar_t`.
+- **Show it matching.** A PR must demonstrate the result (objdiff 100% and the CI report),
+  not just assert it. Comment-only, analysis-only or "proposed" changes are not enough —
+  a macro or abstraction must be shown working and matching.
+- **Prefer the clearer of equal matches.** When two source shapes produce byte-identical
+  code (e.g. a member order reading `values[age]` vs the original order reading
+  `values[age - 1]`), the assembly does not pin the source down. Pick the more readable
+  form and note the ambiguity rather than treating the asm as proof of one shape.
+- **Format and rebase before review.** Run `clang-format` 22 on every touched file and
+  rebase onto the latest `main`; CI runs `check-format` and expects the report to show
+  the claimed improvement.
+
+### Naming and values (from @qwerin's #425 review)
+
+- **Model values, don't relocate them.** Wrapping a literal in a macro
+  (`#define X (Y + 4)`) is still a magic number. Work out what the value *is* — an enum
+  count, a slot in a table with known entries, a flag — and model that, starting the enum
+  from the known entries (e.g. the belief `Attributes[]` slots named from the functions
+  that fill them). Never reuse a `chlasm` name that only coincidentally has the same value.
+- **Name anything used in a significant way** — field, function, enum value, flag, or
+  parameter — from context: find what sets and reads it, then name it by its role. Fields
+  that are only saved/loaded and never read may stay `field_0x…`, but say so in the PR.
+- **Placement.** Counts/sizes follow the file's existing convention (frequently `#define`
+  lists rather than anonymous enums); new enums go in the owning class's header.
+  `include/chlasm/*.h` comes from Creature Isle but is usable for Black & White; where its
+  last enumerator is too large it needs `#ifdef VERSION_BW1WCI` guards.
+- **Watch include/link side effects.** A new `#include` in a shared header reaches every
+  unit that transitively includes it and can change their objects for *other* versions — an
+  extra include in `CreatureMentalAttributeTest.h` changed `Audio.cpp`'s 1.00 object and
+  broke the BW1W100 hash while 1.20 still passed. Include heavy headers in the `.cpp` that
+  needs them, and compile changed files for BW1W100/BW1W110 as well.
+- **Verify readability passes with `tools/codegen-check.py snapshot`/`compare`**, not
+  `decomp-regress` against a `main` baseline — the latter cannot see a drop in a function
+  the PR itself adds (it was 0% in the baseline). Note `(status & F) == F` and `status & F`
+  compile differently.
+- **Rebuild the `main` baseline after `main` moves**, otherwise merged upstream work shows
+  up as false regressions.

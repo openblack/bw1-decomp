@@ -4,4 +4,7 @@
 
 #include "ColourConstants.h" /* For White */
 
-HandStateTug::HandStateTug(CHand* hand) : HandState(hand), field_0x8(0) {}
+HandStateTug::HandStateTug(CHand* hand) : HandState(hand)
+{
+	TugPosition = 0;
+}

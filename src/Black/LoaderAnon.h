@@ -4,9 +4,13 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <re_common.h> /* For bool32_t */
+
 // Forward Declares
 
 class LHFile;
+
+#define LOADER_ANON_LOAD_ID_SIZE 12
 
 struct AnonInstance
 {
@@ -48,14 +52,15 @@ struct AnonGroup
 struct LoaderAnon
 {
 	AnonGroup*     Groups;
-	uint32_t       field_0x4;
+	AnonGroup*     CurrentGroup;
 	char           DetailPrefix[0x80];
 	char           EnumPrefix[0x80];
-	char           LoadId[0x10];
+	char           LoadId[LOADER_ANON_LOAD_ID_SIZE];
+	bool32_t       UseLoadId;
 	unsigned char  TextBuffer[0x2000];
 	unsigned char* Cursor;
 	uint32_t       ErrorCount;
-	uint32_t       field_0x2120;
+	uint32_t       NumTruncatedStrings;
 
 	// BW1W120 005f2af0 BW1M119 01109ea0
 	LoaderAnon(char* detail_prefix, char* enum_prefix, char* load_id);

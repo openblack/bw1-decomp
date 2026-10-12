@@ -38,6 +38,8 @@ public:
 	void*        Peer;
 	char         UserName[100];
 
+	// BW1W120 005ea980 BW1M119 0137e440
+	void Shutdown();
 	// BW1W120 005eb120
 	void Ping(LHTransportInfo* info);
 	// BW1W120 005eab10 BW1M119 0137e360

@@ -2,7 +2,13 @@ Sections:
 	.text       type:code align:4096
 	.text$x     type:code vaddr:0x1004F030 end:0x1004FD12
 	.rdata      type:rodata align:4096
+	.idata$5    type:rodata vaddr:0x10050000 end:0x10050274
 	.xdata$x    type:rodata vaddr:0x100524E8 end:0x10053388
+	.idata$2    type:rodata vaddr:0x100534CC end:0x10053544
+	.idata$3    type:rodata vaddr:0x10053544 end:0x10053558
+	.idata$4    type:rodata vaddr:0x10053558 end:0x100537CC
+	.idata$6    type:rodata vaddr:0x100537CC end:0x10054540
+	.edata      type:rodata vaddr:0x10054540 end:0x100608D5
 	.data       type:data align:4096
 	.CRT$XCA    type:data vaddr:0x10061000 end:0x10061004
 	.CRT$XCU    type:data vaddr:0x10061004 end:0x10061094

@@ -254,103 +254,101 @@ LH_FILE_DOWNLOAD_RETURNS LHFileDownload::Refresh()
 			State = LH_FILE_DOWNLOAD_STATE_DOWNLOADING;
 			return LH_FILE_DOWNLOAD_IN_PROGRESS;
 		case LH_HTTP_STATUS_RECEIVED:
-			break;
-		default:
-			StopDownload();
-			return LH_FILE_DOWNLOAD_RECEIVE_FAILED;
-		}
-
-		FileSize = Http->GetDocumentSize();
-		if (Buffer != NULL)
-		{
-			delete Buffer;
-		}
-		if (FileSize > 0)
-		{
-			Buffer = new char[FileSize];
-
-			GetDiskFreeSpace(NULL, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters);
-			unsigned long sectors = LH_FILE_DOWNLOAD_ROUND_UP(FileSize, bytesPerSector);
-			if (LH_FILE_DOWNLOAD_ROUND_UP(sectors, sectorsPerCluster) >= freeClusters)
+			FileSize = Http->GetDocumentSize();
+			if (Buffer != NULL)
 			{
+				delete Buffer;
+			}
+			if (FileSize > 0)
+			{
+				Buffer = new char[FileSize];
+
+				GetDiskFreeSpace(NULL, &sectorsPerCluster, &bytesPerSector, &freeClusters, &totalClusters);
+				unsigned long sectors = LH_FILE_DOWNLOAD_ROUND_UP(FileSize, bytesPerSector);
+				if (LH_FILE_DOWNLOAD_ROUND_UP(sectors, sectorsPerCluster) >= freeClusters)
+				{
+					Http->Close();
+					delete Http;
+					Http = NULL;
+					State = LH_FILE_DOWNLOAD_STATE_IDLE;
+					return LH_FILE_DOWNLOAD_DISK_FULL;
+				}
+
+				Http->GetDocument(Buffer);
+				if (Resume)
+				{
+					FILE* fp = fopen(LHSPrintf(LH_FILE_DOWNLOAD_PARTIAL_FORMAT, Filename), "ab");
+					if (fp == NULL)
+					{
+						delete Buffer;
+						State = LH_FILE_DOWNLOAD_STATE_IDLE;
+						StopDownload();
+						return LH_FILE_DOWNLOAD_FILE_ERROR;
+					}
+					fwrite(Buffer, 1, FileSize, fp);
+					fclose(fp);
+
+					fp = fopen(LHSPrintf(LH_FILE_DOWNLOAD_PARTIAL_FORMAT, Filename), "rb");
+					if (fp == NULL)
+					{
+						delete Buffer;
+						State = LH_FILE_DOWNLOAD_STATE_IDLE;
+						StopDownload();
+						return LH_FILE_DOWNLOAD_FILE_ERROR;
+					}
+					fseek(fp, 0, SEEK_END);
+					FileSize = ftell(fp);
+					fseek(fp, 0, SEEK_SET);
+					delete Buffer;
+					Buffer = new char[FileSize];
+					fread(Buffer, FileSize, 1, fp);
+					fclose(fp);
+				}
+				_unlink(LHSPrintf(LH_FILE_DOWNLOAD_PARTIAL_FORMAT, Filename));
+
+				if (Compressed)
+				{
+					uLongf size;
+					memcpy(&size, Buffer, sizeof(size));
+					char* data = new char[size];
+					if (uncompress((Bytef*)data, &size, (Bytef*)Buffer + sizeof(size), FileSize - sizeof(size)) > Z_OK)
+					{
+						State = LH_FILE_DOWNLOAD_STATE_IDLE;
+						StopDownload();
+						return LH_FILE_DOWNLOAD_DECOMPRESS_FAILED;
+					}
+					char* compressedData = Buffer;
+					Buffer = data;
+					FileSize = size;
+					delete compressedData;
+				}
+
 				Http->Close();
 				delete Http;
 				Http = NULL;
 				State = LH_FILE_DOWNLOAD_STATE_IDLE;
-				return LH_FILE_DOWNLOAD_DISK_FULL;
-			}
 
-			Http->GetDocument(Buffer);
-			if (Resume)
-			{
-				FILE* fp = fopen(LHSPrintf(LH_FILE_DOWNLOAD_PARTIAL_FORMAT, Filename), "ab");
+				_unlink(Filename);
+				FILE* fp = fopen(Filename, "wb+");
 				if (fp == NULL)
 				{
 					delete Buffer;
-					State = LH_FILE_DOWNLOAD_STATE_IDLE;
-					StopDownload();
+					Buffer = NULL;
 					return LH_FILE_DOWNLOAD_FILE_ERROR;
 				}
 				fwrite(Buffer, 1, FileSize, fp);
 				fclose(fp);
-
-				fp = fopen(LHSPrintf(LH_FILE_DOWNLOAD_PARTIAL_FORMAT, Filename), "rb");
-				if (fp == NULL)
-				{
-					delete Buffer;
-					State = LH_FILE_DOWNLOAD_STATE_IDLE;
-					StopDownload();
-					return LH_FILE_DOWNLOAD_FILE_ERROR;
-				}
-				fseek(fp, 0, SEEK_END);
-				FileSize = ftell(fp);
-				fseek(fp, 0, SEEK_SET);
-				delete Buffer;
-				Buffer = new char[FileSize];
-				fread(Buffer, FileSize, 1, fp);
-				fclose(fp);
-			}
-			_unlink(LHSPrintf(LH_FILE_DOWNLOAD_PARTIAL_FORMAT, Filename));
-
-			if (Compressed)
-			{
-				uLongf size;
-				memcpy(&size, Buffer, sizeof(size));
-				char* data = new char[size];
-				if (uncompress((Bytef*)data, &size, (Bytef*)Buffer + sizeof(size), FileSize - sizeof(size)) > Z_OK)
-				{
-					State = LH_FILE_DOWNLOAD_STATE_IDLE;
-					StopDownload();
-					return LH_FILE_DOWNLOAD_DECOMPRESS_FAILED;
-				}
-				char* compressedData = Buffer;
-				Buffer = data;
-				FileSize = size;
-				delete compressedData;
-			}
-
-			Http->Close();
-			delete Http;
-			Http = NULL;
-			State = LH_FILE_DOWNLOAD_STATE_IDLE;
-
-			_unlink(Filename);
-			FILE* fp = fopen(Filename, "wb+");
-			if (fp == NULL)
-			{
 				delete Buffer;
 				Buffer = NULL;
-				return LH_FILE_DOWNLOAD_FILE_ERROR;
+				return LH_FILE_DOWNLOAD_COMPLETE;
 			}
-			fwrite(Buffer, 1, FileSize, fp);
-			fclose(fp);
-			delete Buffer;
-			Buffer = NULL;
-			return LH_FILE_DOWNLOAD_COMPLETE;
+			StopDownload();
+			State = LH_FILE_DOWNLOAD_STATE_IDLE;
+			return LH_FILE_DOWNLOAD_RECEIVE_FAILED;
+		default:
+			StopDownload();
+			return LH_FILE_DOWNLOAD_RECEIVE_FAILED;
 		}
-		StopDownload();
-		State = LH_FILE_DOWNLOAD_STATE_IDLE;
-		return LH_FILE_DOWNLOAD_RECEIVE_FAILED;
 	}
 
 	return LH_FILE_DOWNLOAD_OK;

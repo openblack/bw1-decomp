@@ -32,8 +32,8 @@ enum
 	MIGRATION_TIMEOUT = 25000,
 };
 
-static LHDynamicQueue<LHNetEvent*>    SuperPacketQ;
-static LHDynamicQueue<unsigned long*> SuperPacketNGTQ;
+LHDynamicQueue<LHNetEvent*>    LHSession::SuperPacketQ;
+LHDynamicQueue<unsigned long*> LHSession::SuperPacketNGTQ;
 
 template <class T> static inline void EmptyQueue(LHDynamicQueue<T>* queue)
 {
@@ -503,11 +503,11 @@ LH_RETURN LHSession::ProcessMServePlayerList(LHNetEvent* net_event)
 
 	wcscpy(LastJoinChannelPlayerName, playerName);
 	LastJoinChannelEvent = playerEvent;
-	LastJoinPlayerID = player != NULL ? player->GetPlayerID() : -1;
+	LastJoinPlayerID = player != NULL ? player->PlayerId : -1;
 	for (LHLinkedListIterator<LHPlayer*> it = Players.GetStart(); it; it++)
 	{
 		LHPlayer* sessionPlayer = it.Get();
-		if (sessionPlayer->GetUserID() == GetUserID())
+		if (IsThisMe(sessionPlayer))
 		{
 			LocalPlayer = sessionPlayer;
 			break;
@@ -522,7 +522,7 @@ LH_RETURN LHSession::ProcessMServePlayerList(LHNetEvent* net_event)
 		for (LHLinkedListIterator<LHPlayer*> it = Players.GetStart(); it; it++)
 		{
 			LHPlayer* candidate = it.Get();
-			if (highest == NULL || candidate->GetPlayerID() > highest->GetPlayerID())
+			if (highest == NULL || candidate->PlayerId > highest->PlayerId)
 				highest = candidate;
 		}
 		Players.Remove(highest);
@@ -1117,14 +1117,15 @@ LH_RETURN LHSession::HostSession(LHDynamicQueue<LHNetEvent*>* player_lists)
 
 	for (LHDynamicQueueNode<LHNetEvent*>* listNode = player_lists->Head; listNode != NULL; listNode = listNode->Next)
 	{
+		LHNetEvent*             event = listNode->Payload;
 		char*                   channelName;
 		wchar_t*                playerName;
 		LH_USER_ID              user;
 		LH_PLAYER_EVENT         playerEvent;
 		LHLinkedList<LHPlayer*> playerList;
 
-		listNode->Payload->VDecode(LH_NETEVENT_TYPE_MSERVE_PLAYER_LIST, &channelName, &playerName, &user, &playerEvent,
-		                           LHPlayer::Create, &playerList);
+		event->VDecode(LH_NETEVENT_TYPE_MSERVE_PLAYER_LIST, &channelName, &playerName, &user, &playerEvent,
+		               LHPlayer::Create, &playerList);
 		for (int i = 0; i < count; i++)
 		{
 			if (playerIDs[i] == user)
@@ -1138,10 +1139,13 @@ LH_RETURN LHSession::HostSession(LHDynamicQueue<LHNetEvent*>* player_lists)
 
 	LHNetUser*      user = NetUser;
 	LHTransportInfo transportInfo;
-	unsigned short  port = LH_MESSAGE_SERVER_PORT;
-	LHLobby::MSAcceptorInfo.Set(LH_TRANSPORT_TYPE_UDP, sizeof(port), &port);
+	{
+		unsigned short port = LH_MESSAGE_SERVER_PORT;
+		LHLobby::MSAcceptorInfo.Set(LH_TRANSPORT_TYPE_UDP, sizeof(port), &port);
+	}
+	unsigned long    playerListCount = player_lists->Count;
 	LHMessageServer* server = LHLobby::StartInternalMessageServer(
-		user, LobbyChannel->GetName(), Players.count - player_lists->Count, GameTickInterval,
+		user, LobbyChannel->GetName(), Players.count - playerListCount, GameTickInterval,
 		LH_OPERATING_MODE_ASYNCHRONOUS, SuperPacketNumber + 1, playerNames, playerIDs);
 	if (server == NULL)
 		return LH_ERROR;

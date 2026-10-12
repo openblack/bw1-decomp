@@ -251,7 +251,7 @@ void Town::AddStructureToTown(MultiMapFixed* structure)
 	if (abode != NULL)
 	{
 		AbodeList.AddToFirst(abode);
-		stats.field_0xe0 = GGame::g_game->data.GameTurn;
+		stats.LastAbodeAddedTurn = GGame::g_game->data.GameTurn;
 	}
 	if (playtime != NULL)
 	{

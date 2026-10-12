@@ -30,8 +30,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 00429320 BW1M119 01185c80
-	virtual ~ThingMusicInfo();
 	// BW1W120 00429310 BW1M119 01185d50
 	virtual char* GetDebugText();
 	// BW1W120 00429ae0 BW1M119 01185d90

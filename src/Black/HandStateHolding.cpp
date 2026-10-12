@@ -4,4 +4,12 @@
 
 #include "ColourConstants.h" /* For White */
 
-HandStateHolding::HandStateHolding(CHand* hand) : HandState(hand), field_0x8(0), field_0x10(0) {}
+// Remaining time (ms) during which a held creature may still be given to a creature; counted down in Update
+static int GiveToCreatureTimeLeft;
+
+HandStateHolding::HandStateHolding(CHand* hand) : HandState(hand)
+{
+	GiveToCreatureTimeLeft = 0;
+	AnimationTime = 0;
+	UnusedClearedOnCreate = 0;
+}

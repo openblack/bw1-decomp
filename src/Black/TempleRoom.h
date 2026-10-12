@@ -185,6 +185,8 @@ public:
 	// BW1W120 00798430 BW1M119 015483d0
 	void DrawNameScrolls(int count, int fade, int highlighted, wchar_t** names, unsigned long (*colours)[3],
 	                     float param_6, float param_7);
+	// BW1W120 0079a5d0 BW1M119 01545880
+	void SetCameraToLookAtSubMesh(uint32_t sub_mesh, float pitch, float yaw, float roll);
 	// BW1W120 00798b30 BW1M119 01547650
 	void LoadOptionData(char* file_name, unsigned long count, int (**set_callbacks)(CallbackData&),
 	                    int (**get_callbacks)(CallbackData&), ControlDescriptionData* controls);
