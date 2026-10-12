@@ -172,3 +172,13 @@ void CitadelHeart::SetSpecularColor(unsigned long color)
 {
 	SpecularColor = color;
 }
+
+char* PSysBase::GetDebugText()
+{
+	return "##a_class:";
+}
+
+char* UR_PlasmaInf::GetDebugText()
+{
+	return "##a_class:";
+}
