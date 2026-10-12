@@ -17,3 +17,8 @@ bool32_t FireFly::CanBecomeAPhysicsObject()
 {
 	return false;
 }
+
+bool32_t FireFly::IsMoving() const
+{
+	return true;
+}
