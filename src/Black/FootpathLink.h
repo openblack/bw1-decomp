@@ -34,13 +34,13 @@ public:
 	// BW1W120 005360b0 BW1M119 010f1850
 	virtual uint32_t RemoveFootpath(GFootpath* param_1);
 	// BW1W120 0050cae0 BW1M119 010f4300
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "FootpathLink:"; }
 	// BW1W120 005365a0 BW1M119 010f0bd0
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 005364f0 BW1M119 010f0f00
 	virtual uint32_t Save(GameOSFile& file);
 	// BW1W120 0050cad0 BW1M119 010f42c0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GFOOTPATH_LINK; }
 
 	// Constructors
 

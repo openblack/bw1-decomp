@@ -18,11 +18,6 @@ int DanceGroup::NextUntitledNumber = 1;
 #include "Utils.h"        /* For class GUtils */
 #include "VillagerInfo.h" /* For class GVillagerInfo */
 
-float GroupBehaviour::GetAngle()
-{
-	return GroupAngle;
-}
-
 DanceEditState::DanceEditState() {}
 
 DanceEditState::~DanceEditState() {}
@@ -32,8 +27,6 @@ void DanceEditState::ToBeDeleted(int delete_now) {}
 void DanceEditState::UpdateEveryRender() {}
 
 void DanceEditState::UpdateEveryGameTurn() {}
-
-DanceGroup::~DanceGroup() {}
 
 uint32_t DanceGroup::GetSaveType()
 {

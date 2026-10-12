@@ -89,7 +89,7 @@ public:
 	// BW1W120 005978e0 BW1M119 01100230
 	virtual void LoadDance(const char* file_name);
 	// BW1W120 0050cc40 BW1M119 010fe0f0
-	virtual float GetAngle();
+	virtual float GetAngle() { return GroupAngle; }
 
 	// Constructors
 

@@ -233,8 +233,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 0050cf00 BW1M119 012ad510
-	virtual ~DanceGroup();
 	// BW1W120 0050cef0 BW1M119 012adc80
 	virtual char* GetDebugText();
 	// BW1W120 0050d9c0 BW1M119 012add40
