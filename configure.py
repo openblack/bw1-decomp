@@ -474,6 +474,11 @@ cflags_lhlog = [
     "/DLH_LOG_EXPORTS",
     "/D_LH_LOG_LIB_",
 ]
+# cl 7.0's PDB writer (mspdb70.dll) delay-loads RPCRT4!UuidCreate, which wibo does not
+# provide, so /Zi aborts the compile on Linux. /Z7 keeps the debug info in the object
+# instead; every other section is byte-identical to a /Zi build.
+if lhlog_compiler_version == msvc70_version:
+    cflags_lhlog = ["/Z7" if f == "/Zi" else f for f in cflags_lhlog]
 
 
 # delayimp.lib's delay-load helper, rebuilt from the source MSVC 6 ships in its include
