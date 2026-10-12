@@ -41,7 +41,7 @@ PileResource::PileResource(const MapCoords& coords, const GPotInfo* info, uint32
 {
 }
 
-bool32_t PileResource::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
+bool32_t PileResource::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* info)
 {
 	return true;
 }

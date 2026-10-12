@@ -18,7 +18,7 @@ bool32_t Fragment::CanBePickedUpByCreature(Creature* creature)
 	return false;
 }
 
-bool32_t Fragment::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t Fragment::ValidForPlaceInHand(GInterfaceStatus* status)
 {
 	return false;
 }

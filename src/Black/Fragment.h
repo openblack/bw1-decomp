@@ -59,7 +59,7 @@ public:
 	// BW1W120 0076ec00 BW1M119 01163fc0
 	virtual void Draw();
 	// BW1W120 0076e940 BW1M119 01162ce0
-	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+	virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* status);
 	// BW1W120 0076e950 BW1M119 01162d30
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
 	// BW1W120 0076ec40 BW1M119 01163f80

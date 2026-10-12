@@ -59,7 +59,7 @@ public:
 	// BW1W120 0066e710 BW1M119 01121f50
 	virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
 	// BW1W120 0066e830 BW1M119 01121ee0
-	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+	virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* info);
 	// BW1W120 0066e840 BW1M119 01121e90
 	virtual bool32_t NetworkUnfriendlyEndLockedSelect();
 	// BW1W120 0066e850 BW1M119 01121d60
