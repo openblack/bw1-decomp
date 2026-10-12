@@ -1093,11 +1093,23 @@ void CitadelHeart::DrawNow()
 	{
 		LH3DColor faded(object->color);
 		float     value = GJUtils::Linterp((float)faded.r, 255.0f, ArenaLight::g_land_fade);
-		faded.r = (uint8_t)(value > 255.0f ? 255.0f : value);
+		if (value > 255.0f)
+		{
+			value = 255.0f;
+		}
+		faded.r = (uint8_t)value;
 		value = GJUtils::Linterp((float)faded.g, 255.0f, ArenaLight::g_land_fade);
-		faded.g = (uint8_t)(value > 255.0f ? 255.0f : value);
+		if (value > 255.0f)
+		{
+			value = 255.0f;
+		}
+		faded.g = (uint8_t)value;
 		value = GJUtils::Linterp((float)faded.b, 255.0f, ArenaLight::g_land_fade);
-		faded.b = (uint8_t)(value > 255.0f ? 255.0f : value);
+		if (value > 255.0f)
+		{
+			value = 255.0f;
+		}
+		faded.b = (uint8_t)value;
 		object->color = faded.GetColor();
 	}
 	object->SetSnowlevel((LHPoint&)object->matrix.GetPos());
@@ -1316,10 +1328,7 @@ void CitadelHeart::ReactToPhysicsImpact(PhysicsObject* physics_object, bool tran
 		{
 			PhysOb& physics = physics_object->WhoHitMe->Physics;
 			float   damage = physics.Velocity.GetNorme() * physics.Mass * ImpactDamageScale;
-			if (0.2f < damage)
-			{
-				damage = 0.2f;
-			}
+			damage = min(0.2f, damage);
 			LastImpactTurn = GGame::g_game->data.GameTurn;
 			EffectValues values(EFFECT_TYPE_HIT, damage, player, 1.0f, NULL);
 			ApplyEffect(values, 0);
