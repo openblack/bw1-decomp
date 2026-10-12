@@ -11,11 +11,16 @@
 
 void WINAPI DebugBreak();
 
-enum
+enum LH_LOG_CODE
 {
-	LH_LOG_CODE_NO_MEMORY = 0xffffffff,
-	LH_LOG_CODE_ERROR = 0xfffffffe,
+	LH_LOG_CODE_NO_MEMORY = -1,
+	LH_LOG_CODE_ERROR = -2,
 };
+
+static char* LHLogLibraryName;
+
+// BW1W120 10002cd0 BW1M119 null
+bool32_t PassesFilter(char* filter, bool32_t invert, char* string, ...);
 
 #define LH_LOG_ERROR_AT(code, text, file, line)                                                                        \
 	{                                                                                                                  \

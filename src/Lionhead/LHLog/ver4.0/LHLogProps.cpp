@@ -8,55 +8,56 @@
 
 #define FILEPATH "LHLogProps.cpp"
 
-enum
-{
-	IDD_LOG_DIALOG = 102,
-	IDC_CLOSE = 1000,
-	IDC_LOG_FILENAME = 1001,
-	IDC_SOURCE_FLAG = 1002,
-	IDC_LINE_FLAG = 1003,
-	IDC_TIME_FLAG = 1004,
-	IDC_PID_FLAG = 1005,
-	IDC_DEBUGGER_FLAG = 1006,
-	IDC_FILE_FLAG = 1007,
-	IDC_WINDOW_FLAG = 1008,
-	IDC_LEVEL_0 = 1009,
-	IDC_HOST_IP = 1010,
-	IDC_LOG_FILTER = 1011,
-	IDC_REMOTE_FLAG = 1012,
-	IDC_LEVEL_1 = 1013,
-	IDC_LEVEL_2 = 1014,
-	IDC_ASSERT_FLAG = 1015,
-	IDC_RESTORE = 1016,
-	IDC_INVERT_LOG_FILTER_FLAG = 1017,
-	IDC_MESSAGES = 1018,
-	IDC_CLEAR_MESSAGES = 1019,
-	IDC_ASSERT_FILTER = 1020,
-	IDC_INVERT_ASSERT_FILTER_FLAG = 1021,
-	IDC_TRUNCATE_FLAG = 1022,
-	IDC_AUTO_SCROLL_FLAG = 1023,
-	IDC_DISPLAY_ON_START_FLAG = 1024,
-	IDC_THREAD_FLAG = 1025,
-	IDC_SYS_TIME_FLAG = 1026,
-	IDC_ASSERT_FILTER_AS_LOG_FLAG = 1027,
-	IDC_SHOW_ASSERT_FILTERS = 1028,
-	IDC_DISABLE_FILTER_FLAG = 1042,
-};
+#define IDD_LOG_DIALOG                102
+#define IDC_CLOSE                     1000
+#define IDC_LOG_FILENAME              1001
+#define IDC_SOURCE_FLAG               1002
+#define IDC_LINE_FLAG                 1003
+#define IDC_TIME_FLAG                 1004
+#define IDC_PID_FLAG                  1005
+#define IDC_DEBUGGER_FLAG             1006
+#define IDC_FILE_FLAG                 1007
+#define IDC_WINDOW_FLAG               1008
+#define IDC_LEVEL_0                   1009
+#define IDC_HOST_IP                   1010
+#define IDC_LOG_FILTER                1011
+#define IDC_REMOTE_FLAG               1012
+#define IDC_LEVEL_1                   1013
+#define IDC_LEVEL_2                   1014
+#define IDC_ASSERT_FLAG               1015
+#define IDC_RESTORE                   1016
+#define IDC_INVERT_LOG_FILTER_FLAG    1017
+#define IDC_MESSAGES                  1018
+#define IDC_CLEAR_MESSAGES            1019
+#define IDC_ASSERT_FILTER             1020
+#define IDC_INVERT_ASSERT_FILTER_FLAG 1021
+#define IDC_TRUNCATE_FLAG             1022
+#define IDC_AUTO_SCROLL_FLAG          1023
+#define IDC_DISPLAY_ON_START_FLAG     1024
+#define IDC_THREAD_FLAG               1025
+#define IDC_SYS_TIME_FLAG             1026
+#define IDC_ASSERT_FILTER_AS_LOG_FLAG 1027
+#define IDC_SHOW_ASSERT_FILTERS       1028
+#define IDC_DISABLE_FILTER_FLAG       1042
 
-enum
-{
-	WM_LH_LOG_CLOSE_DIALOG = WM_USER + 1,
-};
+#define WM_LH_LOG_CLOSE_DIALOG (WM_USER + 1)
 
-enum
-{
-	LH_LOG_LINE_SIZE = 256,
-	LH_LOG_LINE_BUFFER_SIZE = 276,
-	LH_LOG_DIALOG_SCROLL_LINES = 20,
-	LH_LOG_DIALOG_STARTING = -2,
-	LH_LOG_DIALOG_CLOSE_TIMEOUT = 300,
-	LH_LOG_DIALOG_THREAD_PRIORITY = -255,
-};
+#define LH_LOG_LINE_SIZE            256
+#define LH_LOG_LINE_BUFFER_SIZE     276
+#define LH_LOG_DIALOG_SCROLL_LINES  20
+#define LH_LOG_DIALOG_STARTING      (-2)
+#define LH_LOG_DIALOG_CLOSE_TIMEOUT 300
+
+#define LH_REG_WRITE_STRING(key, name, line)                                                                           \
+	if (RegSetValueExA(key, #name, 0, REG_SZ, (BYTE*)name, strlen(name)) != ERROR_SUCCESS)                             \
+	LH_LOG_WIN32_ERROR(line)
+#define LH_REG_WRITE_FLAG(key, name, line)                                                                             \
+	if (RegSetValueExA(key, #name, 0, REG_SZ, (BYTE*)(name ? "TRUE" : "FALSE"),                                        \
+	                   name ? sizeof("TRUE") - 1 : sizeof("FALSE") - 1) != ERROR_SUCCESS)                              \
+	LH_LOG_WIN32_ERROR(line)
+#define LH_REG_WRITE_DWORD(key, name, line)                                                                            \
+	if (RegSetValueExA(key, #name, 0, REG_DWORD, (BYTE*)&name, sizeof(name)) != ERROR_SUCCESS)                         \
+	LH_LOG_WIN32_ERROR(line)
 
 char* RegistryKey = "Software\\Lionhead Studios Ltd\\LHLog";
 char* DefaultLogFilename = "./lhlog.txt";
@@ -125,70 +126,29 @@ void LHLogPropsSet::WriteToRegistry()
 		return;
 	}
 
-	if (RegSetValueExA(key, "AssertFilter", 0, REG_SZ, (BYTE*)AssertFilter, strlen(AssertFilter)) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(109);
-	if (RegSetValueExA(key, "LogFilter", 0, REG_SZ, (BYTE*)LogFilter, strlen(LogFilter)) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(110);
-	if (RegSetValueExA(key, "InvertAssertFilterFlag", 0, REG_SZ, (BYTE*)(InvertAssertFilterFlag ? "TRUE" : "FALSE"),
-	                   InvertAssertFilterFlag ? 4 : 5) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(111);
-	if (RegSetValueExA(key, "AssertFilterAsLogFlag", 0, REG_SZ, (BYTE*)(AssertFilterAsLogFlag ? "TRUE" : "FALSE"),
-	                   AssertFilterAsLogFlag ? 4 : 5) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(112);
-	if (RegSetValueExA(key, "InvertLogFilterFlag", 0, REG_SZ, (BYTE*)(InvertLogFilterFlag ? "TRUE" : "FALSE"),
-	                   InvertLogFilterFlag ? 4 : 5) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(113);
-	if (RegSetValueExA(key, "DisableFilterFlag", 0, REG_SZ, (BYTE*)(DisableFilterFlag ? "TRUE" : "FALSE"),
-	                   DisableFilterFlag ? 4 : 5) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(114);
-	if (RegSetValueExA(key, "LogFilename", 0, REG_SZ, (BYTE*)LogFilename, strlen(LogFilename)) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(115);
-	if (RegSetValueExA(key, "HostIP", 0, REG_SZ, (BYTE*)HostIP, strlen(HostIP)) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(116);
-	if (RegSetValueExA(key, "SourceFlag", 0, REG_SZ, (BYTE*)(SourceFlag ? "TRUE" : "FALSE"), SourceFlag ? 4 : 5) !=
-	    ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(117);
-	if (RegSetValueExA(key, "LineFlag", 0, REG_SZ, (BYTE*)(LineFlag ? "TRUE" : "FALSE"), LineFlag ? 4 : 5) !=
-	    ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(118);
-	if (RegSetValueExA(key, "SysTimeFlag", 0, REG_SZ, (BYTE*)(SysTimeFlag ? "TRUE" : "FALSE"), SysTimeFlag ? 4 : 5) !=
-	    ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(119);
-	if (RegSetValueExA(key, "ThreadFlag", 0, REG_SZ, (BYTE*)(ThreadFlag ? "TRUE" : "FALSE"), ThreadFlag ? 4 : 5) !=
-	    ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(120);
-	if (RegSetValueExA(key, "TimeFlag", 0, REG_SZ, (BYTE*)(TimeFlag ? "TRUE" : "FALSE"), TimeFlag ? 4 : 5) !=
-	    ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(121);
-	if (RegSetValueExA(key, "PidFlag", 0, REG_SZ, (BYTE*)(PidFlag ? "TRUE" : "FALSE"), PidFlag ? 4 : 5) !=
-	    ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(122);
-	if (RegSetValueExA(key, "AssertFlag", 0, REG_SZ, (BYTE*)(AssertFlag ? "TRUE" : "FALSE"), AssertFlag ? 4 : 5) !=
-	    ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(123);
-	if (RegSetValueExA(key, "AutoScrollFlag", 0, REG_SZ, (BYTE*)(AutoScrollFlag ? "TRUE" : "FALSE"),
-	                   AutoScrollFlag ? 4 : 5) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(124);
-	if (RegSetValueExA(key, "DisplayOnStartFlag", 0, REG_SZ, (BYTE*)(DisplayOnStartFlag ? "TRUE" : "FALSE"),
-	                   DisplayOnStartFlag ? 4 : 5) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(125);
-	if (RegSetValueExA(key, "TruncateFlag", 0, REG_SZ, (BYTE*)(TruncateFlag ? "TRUE" : "FALSE"),
-	                   TruncateFlag ? 4 : 5) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(126);
-	if (RegSetValueExA(key, "DebuggerFlag", 0, REG_SZ, (BYTE*)(DebuggerFlag ? "TRUE" : "FALSE"),
-	                   DebuggerFlag ? 4 : 5) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(127);
-	if (RegSetValueExA(key, "FileFlag", 0, REG_SZ, (BYTE*)(FileFlag ? "TRUE" : "FALSE"), FileFlag ? 4 : 5) !=
-	    ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(128);
-	if (RegSetValueExA(key, "WindowFlag", 0, REG_SZ, (BYTE*)(WindowFlag ? "TRUE" : "FALSE"), WindowFlag ? 4 : 5) !=
-	    ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(129);
-	if (RegSetValueExA(key, "RemoteFlag", 0, REG_SZ, (BYTE*)(RemoteFlag ? "TRUE" : "FALSE"), RemoteFlag ? 4 : 5) !=
-	    ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(130);
-	if (RegSetValueExA(key, "Level", 0, REG_DWORD, (BYTE*)&Level, sizeof(Level)) != ERROR_SUCCESS)
-		LH_LOG_WIN32_ERROR(131);
+	LH_REG_WRITE_STRING(key, AssertFilter, 109);
+	LH_REG_WRITE_STRING(key, LogFilter, 110);
+	LH_REG_WRITE_FLAG(key, InvertAssertFilterFlag, 111);
+	LH_REG_WRITE_FLAG(key, AssertFilterAsLogFlag, 112);
+	LH_REG_WRITE_FLAG(key, InvertLogFilterFlag, 113);
+	LH_REG_WRITE_FLAG(key, DisableFilterFlag, 114);
+	LH_REG_WRITE_STRING(key, LogFilename, 115);
+	LH_REG_WRITE_STRING(key, HostIP, 116);
+	LH_REG_WRITE_FLAG(key, SourceFlag, 117);
+	LH_REG_WRITE_FLAG(key, LineFlag, 118);
+	LH_REG_WRITE_FLAG(key, SysTimeFlag, 119);
+	LH_REG_WRITE_FLAG(key, ThreadFlag, 120);
+	LH_REG_WRITE_FLAG(key, TimeFlag, 121);
+	LH_REG_WRITE_FLAG(key, PidFlag, 122);
+	LH_REG_WRITE_FLAG(key, AssertFlag, 123);
+	LH_REG_WRITE_FLAG(key, AutoScrollFlag, 124);
+	LH_REG_WRITE_FLAG(key, DisplayOnStartFlag, 125);
+	LH_REG_WRITE_FLAG(key, TruncateFlag, 126);
+	LH_REG_WRITE_FLAG(key, DebuggerFlag, 127);
+	LH_REG_WRITE_FLAG(key, FileFlag, 128);
+	LH_REG_WRITE_FLAG(key, WindowFlag, 129);
+	LH_REG_WRITE_FLAG(key, RemoteFlag, 130);
+	LH_REG_WRITE_DWORD(key, Level, 131);
 	RegCloseKey(key);
 }
 
@@ -507,7 +467,7 @@ void LHLogPropsSet::ReadFromRegistry()
 			}
 			if (type == REG_DWORD && _stricmp(name, "Level") == 0)
 			{
-				Level = *(unsigned long*)data;
+				Level = *(LH_LOG_PROPS_LEVEL*)data;
 			}
 			index++;
 			nameSize = sizeof(name);
@@ -739,6 +699,6 @@ void LHLogPropsSet::ShowDialog()
 	if (DialogHandle == INVALID_HANDLE_VALUE)
 	{
 		DialogHandle = (void*)LH_LOG_DIALOG_STARTING;
-		_lhbeginthread("Log Dialog", LogDialogThread, 0, this, LH_LOG_DIALOG_THREAD_PRIORITY);
+		_lhbeginthread("Log Dialog", LogDialogThread, 0, this, LH_THREAD_PRIORITY_UNCHANGED);
 	}
 }
