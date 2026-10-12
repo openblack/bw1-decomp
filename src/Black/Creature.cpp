@@ -185,3 +185,8 @@ GBaseInfo* DifferentCreatureInfo::GetBaseInfo(uint32_t& info_count)
 	info_count = CREATURE_TYPE_LAST;
 	return Infos;
 }
+
+SCRIPT_OBJECT_TYPE Creature::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_CREATURE;
+}

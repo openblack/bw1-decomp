@@ -31,3 +31,8 @@ GBaseInfo* GRewardProgress::GetBaseInfo(uint32_t& info_count)
 	info_count = REWARD_INFO_PROGRESS_GOOD_LAST;
 	return InfosGood;
 }
+
+SCRIPT_OBJECT_TYPE Reward::GetScriptObjectType()
+{
+	return SCRIPT_OBJECT_TYPE_REWARD;
+}
