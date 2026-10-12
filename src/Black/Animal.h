@@ -186,7 +186,7 @@ public:
 	// BW1W120 00418450 BW1M119 010060e0
 	virtual uint32_t CheckNeeds();
 	// BW1W120 00417520 BW1M119 0113bc20
-	virtual uint32_t IsOkToBeShepherd();
+	virtual bool32_t IsOkToBeShepherd();
 	// BW1W120 0041a3e0 BW1M119 0116fcf0
 	virtual uint32_t AddToFlock();
 	// BW1W120 0041b0f0 BW1M119 0116ea00

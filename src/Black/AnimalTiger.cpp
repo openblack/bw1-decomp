@@ -21,7 +21,7 @@ Tiger* Tiger::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned 
 	if (tiger != NULL)
 	{
 		tiger->CallVirtualFunctionsForCreation(coords);
-		tiger->Game3dObject->SetHumanShadowed(1);
+		tiger->Game3dObject->SetHumanShadowed(true);
 	}
 	return tiger;
 }

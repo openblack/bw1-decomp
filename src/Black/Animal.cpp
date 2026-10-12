@@ -8,7 +8,14 @@
 #include "AnimalInfo.h"
 #include "AnimalStateTableInfo.h"
 #include "Game3DObject.h" /* For Game3DObject */
-#include "PuzzleGame.h"   /* For PieceVillager */
+
+#if defined(VERSION_BW1W100)
+#define ANIMAL_FILE "C:\\dev\\black\\Animal.cpp"
+#elif defined(VERSION_BW1W110)
+#define ANIMAL_FILE "C:\\dev\\Black\\Animal.cpp"
+#else
+#define ANIMAL_FILE "C:\\dev\\MP\\Black\\Animal.cpp"
+#endif
 
 void Animal::SetStateSpeed() {}
 
@@ -91,9 +98,9 @@ Town* Object::GetTown()
 	return NULL;
 }
 
-uint32_t Animal::IsOkToBeShepherd()
+bool32_t Animal::IsOkToBeShepherd()
 {
-	return 0;
+	return false;
 }
 
 uint32_t Animal::IAmABird()
@@ -221,7 +228,7 @@ PieceVillager* PieceVillager::Create(const MapCoords& coords, const GAnimalInfo*
 	if (villager != NULL)
 	{
 		villager->CallVirtualFunctionsForCreation(coords);
-		villager->Game3dObject->SetHumanShadowed(1);
+		villager->Game3dObject->SetHumanShadowed(true);
 	}
 	return villager;
 }

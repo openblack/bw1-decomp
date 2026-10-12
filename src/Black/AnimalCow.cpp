@@ -9,7 +9,14 @@
 #include "AnimalZebra.h"
 #include "PuzzleGame.h"
 #include "Game3DObject.h" /* For Game3DObject */
-#include "PuzzleGame.h"   /* For PieceSheep */
+
+#if defined(VERSION_BW1W100)
+#define ANIMAL_COW_FILE "C:\\dev\\black\\AnimalCow.cpp"
+#elif defined(VERSION_BW1W110)
+#define ANIMAL_COW_FILE "C:\\dev\\Black\\AnimalCow.cpp"
+#else
+#define ANIMAL_COW_FILE "C:\\dev\\MP\\Black\\AnimalCow.cpp"
+#endif
 
 uint32_t Cow::GetSaveType()
 {
@@ -66,13 +73,15 @@ uint32_t PieceSheep::CheckNeeds()
 	return 0;
 }
 
+Cow::Cow(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Animal(coords, info, age) {}
+
 PieceSheep* PieceSheep::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
 	PieceSheep* sheep = new (ANIMAL_COW_FILE, 268) PieceSheep(coords, info, age);
 	if (sheep != NULL)
 	{
 		sheep->CallVirtualFunctionsForCreation(coords);
-		sheep->Game3dObject->SetHumanShadowed(1);
+		sheep->Game3dObject->SetHumanShadowed(true);
 	}
 	return sheep;
 }
@@ -83,7 +92,7 @@ Sheep* Sheep::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned 
 	if (sheep != NULL)
 	{
 		sheep->CallVirtualFunctionsForCreation(coords);
-		sheep->Game3dObject->SetHumanShadowed(1);
+		sheep->Game3dObject->SetHumanShadowed(true);
 	}
 	return sheep;
 }
@@ -94,7 +103,7 @@ Horse* Horse::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned 
 	if (horse != NULL)
 	{
 		horse->CallVirtualFunctionsForCreation(coords);
-		horse->Game3dObject->SetHumanShadowed(1);
+		horse->Game3dObject->SetHumanShadowed(true);
 	}
 	return horse;
 }
@@ -105,7 +114,7 @@ Pig* Pig::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long
 	if (pig != NULL)
 	{
 		pig->CallVirtualFunctionsForCreation(coords);
-		pig->Game3dObject->SetHumanShadowed(1);
+		pig->Game3dObject->SetHumanShadowed(true);
 	}
 	return pig;
 }
@@ -116,17 +125,17 @@ Tortoise* Tortoise::Create(const MapCoords& coords, const GAnimalInfo* info, uns
 	if (tortoise != NULL)
 	{
 		tortoise->CallVirtualFunctionsForCreation(coords);
-		tortoise->Game3dObject->SetHumanShadowed(1);
+		tortoise->Game3dObject->SetHumanShadowed(true);
 	}
 	return tortoise;
 }
 
-uint32_t Cow::IsOkToBeShepherd()
+bool32_t Cow::IsOkToBeShepherd()
 {
-	return 1;
+	return true;
 }
 
-bool32_t Cow::IsCow(Creature* param_1)
+bool32_t Cow::IsCow(Creature* creature)
 {
 	return true;
 }

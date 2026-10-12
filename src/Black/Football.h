@@ -79,9 +79,9 @@ public:
 	LHListNode<Football> next;
 	uint32_t             field_0x148;
 	LH3DMapCoords        field_0x14c[12];
-	uint32_t             field_0x1dc;
+	uint32_t             Functional;
 	uint8_t              field_0x1e0[0x20];
-	uint32_t             field_0x200;
+	FOOTBALL_STATES      PlayState;
 #if defined(VERSION_BW1W100)
 	uint8_t field_0x204[0x1c];
 #else
@@ -92,13 +92,13 @@ public:
 	LHLinkedList<Villager*> field_0x234[2];
 	Object*                 MarkTargets[2];
 	uint8_t                 field_0x24c[0x8];
-	uint32_t                field_0x254;
-	uint32_t                field_0x258;
+	Villager*               BallChaser;
+	Ball*                   TheBall;
 	LHPTR<Villager>         MexicanWave[40];
 	uint32_t                field_0x2fc;
-	uint32_t                field_0x300;
+	uint32_t                GoalTimer;
 	uint32_t                field_0x304;
-	uint32_t                field_0x308;
+	uint32_t                PlayStateTimer;
 	float                   field_0x30c;
 	uint32_t                field_0x310;
 	uint32_t                field_0x314;

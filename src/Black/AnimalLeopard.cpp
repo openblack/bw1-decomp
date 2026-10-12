@@ -3,6 +3,14 @@
 #include "AnimalLion.h"
 #include "Game3DObject.h" /* For Game3DObject */
 
+#if defined(VERSION_BW1W100)
+#define ANIMAL_LEOPARD_FILE "C:\\dev\\black\\AnimalLeopard.cpp"
+#elif defined(VERSION_BW1W110)
+#define ANIMAL_LEOPARD_FILE "C:\\dev\\Black\\AnimalLeopard.cpp"
+#else
+#define ANIMAL_LEOPARD_FILE "C:\\dev\\MP\\Black\\AnimalLeopard.cpp"
+#endif
+
 bool32_t Lion::CanBeFrighteningToCreature(Creature* creature)
 {
 	return true;
@@ -19,7 +27,7 @@ Leopard* Leopard::Create(const MapCoords& coords, const GAnimalInfo* info, unsig
 	if (leopard != NULL)
 	{
 		leopard->CallVirtualFunctionsForCreation(coords);
-		leopard->Game3dObject->SetHumanShadowed(1);
+		leopard->Game3dObject->SetHumanShadowed(true);
 	}
 	return leopard;
 }
