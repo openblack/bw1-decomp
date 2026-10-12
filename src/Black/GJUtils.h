@@ -45,6 +45,38 @@ inline float boundf(float low, float value, float high)
 	return value > low ? (value < high ? value : high) : low;
 }
 
+inline float LinterpTable(const float* keys, const float* values, int count, float key)
+{
+	if (key <= keys[0])
+	{
+		return values[0];
+	}
+	if (key >= keys[count - 1])
+	{
+		return values[count - 1];
+	}
+	for (int i = 0; i < count - 1; i++)
+	{
+		if (key < keys[i + 1])
+		{
+			return GJUtils::Linterp(values[i], values[i + 1], (key - keys[i]) / (keys[i + 1] - keys[i]));
+		}
+	}
+	return values[count - 1];
+}
+
+inline void Wrap(float& value, float range)
+{
+	float t = value;
+	value = t - (int)(t / range) * range;
+}
+
+inline void WrapScaled(float& value, float range, float inv_range)
+{
+	float t = value;
+	value = t - (int)(t * inv_range) * range;
+}
+
 class GlobalTextures
 {
 public:

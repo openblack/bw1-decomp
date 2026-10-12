@@ -173,13 +173,6 @@ GCitadelHeartInfo GCitadelHeartInfo::Infos[1];
 
 MapCoords PlannedTownCitadelHeart::ScriptPos;
 
-static inline void SetPositionOnMap(Game3DObject* object, const MapCoords& coords, float y_angle, float scale)
-{
-	LHPoint point;
-	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
-	object->LH3DObject::SetPosition(point, y_angle, scale);
-}
-
 // BW1W120 00c5e3d4
 static CitadelHeart* HeartList;
 // BW1W120 00c5e3d8
@@ -802,61 +795,6 @@ static float DestructionVolFXEndTime = DestructionExplodeTime + DestructionVolFX
 
 static float InRange(float min, float value, float max);
 
-inline float GetHeartBeatFrequency(float time)
-{
-	if (time <= HeartBeatTimes[0])
-	{
-		return HeartBeatFrequencies[0];
-	}
-	if (time >= HeartBeatTimes[HEART_BEAT_STAGES - 1])
-	{
-		return HeartBeatFrequencies[HEART_BEAT_STAGES - 1];
-	}
-	for (int i = 0; i < HEART_BEAT_STAGES - 1; i++)
-	{
-		if (time < HeartBeatTimes[i + 1])
-		{
-			return GJUtils::Linterp(HeartBeatFrequencies[i], HeartBeatFrequencies[i + 1],
-			                        (time - HeartBeatTimes[i]) / (HeartBeatTimes[i + 1] - HeartBeatTimes[i]));
-		}
-	}
-	return HeartBeatFrequencies[HEART_BEAT_STAGES - 1];
-}
-
-inline float GetDestructionVolFXValue(float time, const float* values)
-{
-	if (time <= DestructionVolFXTimes[0])
-	{
-		return values[0];
-	}
-	if (time >= DestructionVolFXTimes[DESTRUCTION_VOL_FX_STAGES - 1])
-	{
-		return values[DESTRUCTION_VOL_FX_STAGES - 1];
-	}
-	for (int i = 0; i < DESTRUCTION_VOL_FX_STAGES - 1; i++)
-	{
-		if (time < DestructionVolFXTimes[i + 1])
-		{
-			return GJUtils::Linterp(values[i], values[i + 1],
-			                        (time - DestructionVolFXTimes[i]) /
-			                            (DestructionVolFXTimes[i + 1] - DestructionVolFXTimes[i]));
-		}
-	}
-	return values[DESTRUCTION_VOL_FX_STAGES - 1];
-}
-
-inline void Wrap(float& value, float range)
-{
-	float t = value;
-	value = t - (int)(t / range) * range;
-}
-
-inline void WrapScaled(float& value, float range, float inv_range)
-{
-	float t = value;
-	value = t - (int)(t * inv_range) * range;
-}
-
 void CitadelHeart::GetRandomSurfacePos(LHPoint* pos, LHPoint* normal)
 {
 	do
@@ -883,7 +821,7 @@ void CitadelHeart::DestructionSequenceProcess()
 
 	float lastTime = DestructionTime;
 	float time = DestructionTime += GGameInfo::Info.MillisecondsPerGameTurn * 0.001f;
-	float frequency = GetHeartBeatFrequency(time);
+	float frequency = LinterpTable(HeartBeatTimes, HeartBeatFrequencies, HEART_BEAT_STAGES, time);
 	if (GetPlayer() == GGame::g_game->MyPlayer())
 	{
 		GGame::g_game->MyInterface()->GetStatus()->guidance->SetHeartBeatSFXFrequencyPerSecond(frequency);
@@ -1184,7 +1122,9 @@ void CitadelHeart::DrawDestruction()
 	float pulse = GetPlayer()->GetTempFirstInterfaceStatus()->guidance->GetInterpedHeartBeatPulseValue();
 	if (VolFXObject != NULL)
 	{
-		float scale = GetDestructionVolFXValue(GetDestructionTime(), DestructionVolFXScales) * DestructionVolFXScale;
+		float scale = LinterpTable(DestructionVolFXTimes, DestructionVolFXScales, DESTRUCTION_VOL_FX_STAGES,
+		                           GetDestructionTime()) *
+		              DestructionVolFXScale;
 		VolFXObject->scale = scale;
 		VolFXObject->matrix.SetScale(scale);
 		(LHPoint&)VolFXObject->matrix.GetPos() = Game3dObject->matrix.GetPos();
@@ -1196,7 +1136,9 @@ void CitadelHeart::DrawDestruction()
 			VolFX->SetVSpeed(DestructionVolFXVSpeed);
 			VolFX->SetField14(DestructionVolFXField14);
 			VolFX->SetField18(DestructionVolFXField18);
-			float intensity = GetDestructionVolFXValue(GetDestructionTime(), DestructionVolFXIntensities) * pulse;
+			float intensity = LinterpTable(DestructionVolFXTimes, DestructionVolFXIntensities,
+			                               DESTRUCTION_VOL_FX_STAGES, GetDestructionTime()) *
+			                  pulse;
 			VolFX->Intensity = intensity;
 			VolFX->Update(LH3DTech::GetGameTimeInc() * 0.001f);
 			VolFX->Draw();
