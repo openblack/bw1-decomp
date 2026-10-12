@@ -75,3 +75,28 @@ bool32_t LandscapeVortex::CanBeFoughtByCreature(Creature* creature)
 {
 	return false;
 }
+
+bool32_t LandscapeVortex::CanActAsAContainer(Creature* creature)
+{
+	return false;
+}
+
+bool32_t LandscapeVortex::CanBecomeAPhysicsObject()
+{
+	return false;
+}
+
+bool32_t LandscapeVortex::HandShouldFeelWithMeshIntersect()
+{
+	return false;
+}
+
+bool32_t LandscapeVortex::IsEffectReceiver(EffectValues* effect)
+{
+	return false;
+}
+
+bool32_t LandscapeVortex::ValidForPlaceInHand(GInterfaceStatus* status)
+{
+	return false;
+}

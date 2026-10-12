@@ -21,3 +21,13 @@ char* ArenaSpellIcon::GetDebugText()
 {
 	return "SpellIcon:";
 }
+
+bool32_t ArenaSpellIcon::CreatureMustAvoid(Creature* creature)
+{
+	return false;
+}
+
+bool32_t ArenaSpellIcon::IsEffectReceiver(EffectValues* effect)
+{
+	return false;
+}

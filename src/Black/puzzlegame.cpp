@@ -38,3 +38,33 @@ bool32_t PuzzleCow::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;
 }
+
+bool32_t PuzzleCow::CanBecomeAPhysicsObject()
+{
+	return false;
+}
+
+bool32_t PuzzleHorse::CanBecomeAPhysicsObject()
+{
+	return false;
+}
+
+bool32_t PuzzlePig::CanBecomeAPhysicsObject()
+{
+	return false;
+}
+
+bool32_t PuzzleTortoise::CanBecomeAPhysicsObject()
+{
+	return false;
+}
+
+bool32_t PuzzleHorse::DecideWhatToDo()
+{
+	return true;
+}
+
+bool32_t PuzzlePig::DecideWhatToDo()
+{
+	return true;
+}

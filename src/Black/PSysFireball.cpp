@@ -60,3 +60,13 @@ bool32_t MagicFireBall::CanBeFoughtByCreature(Creature* creature)
 {
 	return false;
 }
+
+bool32_t MagicFireBall::CanActAsAContainer(Creature* creature)
+{
+	return false;
+}
+
+bool32_t MagicFireBall::CanBecomeAPhysicsObject()
+{
+	return false;
+}
