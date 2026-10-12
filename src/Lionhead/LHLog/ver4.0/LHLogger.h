@@ -192,7 +192,7 @@ LH_LOG_API extern LHLogger LHSyslog;
 LH_LOG_API extern char* LH_LOG_NO_MEMORY_TEXT;
 
 // BW1W120 10003b00 BW1M119 0116daa0 (LHCombined Release)
-LH_LOG_API unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), unsigned int stack_size, void* argument,
+LH_LOG_API unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), uint32_t stack_size, void* argument,
                                         long priority);
 
 #endif /* BW1_DECOMP_LH_LOGGER_INCLUDED_H */

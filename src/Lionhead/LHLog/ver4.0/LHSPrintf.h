@@ -2,6 +2,7 @@
 #define BW1_DECOMP_LH_SPRINTF_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint16_t */
 #include <wchar.h>  /* For wchar_t */
 
 #include "LHLogExport.h"
@@ -38,7 +39,7 @@ public:
 	void CopyString(char* text);
 
 	// BW1W120 10001040 BW1M119 null
-	unsigned short GetBufSize() { return LH_SPRINTF_BUFFER_LENGTH; }
+	uint16_t GetBufSize() { return LH_SPRINTF_BUFFER_LENGTH; }
 	// BW1W120 10001050 BW1M119 01103cb0 (LHCombined Release)
 	operator char*() { return Text; }
 	// BW1W120 10001050 BW1M119 null
@@ -69,7 +70,7 @@ public:
 	void CopyString(wchar_t* text);
 
 	// BW1W120 10001040 BW1M119 null
-	unsigned short GetBufSize() { return LH_SPRINTF_BUFFER_LENGTH; }
+	uint16_t GetBufSize() { return LH_SPRINTF_BUFFER_LENGTH; }
 	// BW1W120 10001050 BW1M119 null
 	operator wchar_t*() { return Text; }
 	// BW1W120 10001050 BW1M119 null

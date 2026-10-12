@@ -609,7 +609,7 @@ BOOL CALLBACK LogDialogProc(HWND dialog, UINT message, WPARAM wparam, LPARAM lpa
 			LH_LOG_WIN32_ERROR(416);
 		LHLogPropsSet::DialogHandle = dialog;
 		props = (LHLogPropsSet*)lparam;
-		unsigned short index = props->MessageIndex;
+		uint16_t index = props->MessageIndex;
 		backup.CopyFrom(props);
 		props->WriteToDialog(dialog);
 		props->MessageCount = 0;
