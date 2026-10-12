@@ -24,6 +24,7 @@ class GameThing;
 class Living;
 class Object;
 struct PSysProcessInfo;
+class SpellSeed;
 class Reaction;
 class SpellSeedGraphic;
 struct SpellCastData;
@@ -63,7 +64,7 @@ public:
 	GameThing*        creator;
 	GPlayer*          Player;
 	GameThing*        InterfaceStatus;
-	GameThing*        field_0xac;
+	SpellSeed*        SpellSeedLink;
 	uint32_t          field_0xb0;
 	MAGIC_TYPE        magic_type;
 	float             field_0xb8;
@@ -197,6 +198,8 @@ public:
 	void CoreCloseDown();
 	// BW1W120 00720750 BW1M119 0151f9f0
 	float GetSpellStrength();
+	// BW1W120 007213b0 BW1M119 0151e1d0
+	void ClearSpellSeedLink();
 };
 
 #endif /* BW1_DECOMP_SPELL_INCLUDED_H */

@@ -123,6 +123,11 @@ public:
 
 	// BW1W120 00727f20 BW1M119 01535290
 	SpellSeed();
+
+	// Non-virtual methods
+
+	// BW1W120 00728200 BW1M119 01534c10
+	void ClearSpellLink();
 };
 
 #endif /* BW1_DECOMP_SPELL_SEED_INCLUDED_H */
