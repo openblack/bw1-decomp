@@ -40,7 +40,7 @@ public:
 	// BW1W120 007341b0 BW1M119 0115c4b0
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 007341d0 BW1M119 0115c420
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
 
 	// BW1W120 inlined BW1M119 inlined
 	GWaterfall() {}
