@@ -20,7 +20,7 @@ public:
 	// Override methods
 
 	// BW1W120 0055d820 BW1M119 013babf0
-	virtual char* GetDebugText() { return "##a_class:"; }
+	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 	// BW1W120 00600bf0 BW1M119 013bac40
 	virtual uint32_t Load(GameOSFile& file);
 	// BW1W120 00600ad0 BW1M119 013baf40

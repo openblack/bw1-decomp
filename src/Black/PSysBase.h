@@ -9,6 +9,8 @@
 
 // Forward Declares
 
+#define PSYS_DEBUG_TEXT "##a_class:"
+
 class Base;
 class GameOSFile;
 

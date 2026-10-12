@@ -33,7 +33,7 @@ public:
 	// BW1W120 0041f0b0 BW1M119 0117a420
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041f0d0 BW1M119 0117a4a0
-	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
 
 	// BW1W120 0055ead0 BW1M119 inlined
 	Vulture() {}

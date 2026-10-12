@@ -13,6 +13,11 @@ uint32_t Creature::GetSaveType()
 	return GAME_THING_TYPE_CREATURE;
 }
 
+bool32_t Living::DecideWhatToDo()
+{
+	return false;
+}
+
 uint32_t Creature::GetCreatureBeliefType()
 {
 	return CREATURE_BELIEF_TYPE_CREATURE;
@@ -110,7 +115,7 @@ bool32_t Creature::IsCreature(Creature* creature)
 	return true;
 }
 
-bool32_t Creature::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t Creature::CanBeFrighteningToCreature(Creature* creature)
 {
 	return true;
 }

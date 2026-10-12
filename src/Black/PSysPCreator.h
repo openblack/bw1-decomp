@@ -122,7 +122,7 @@ public:
 	// BW1W120 006c80c0 BW1M119 01484dd0
 	virtual ~RenderParticleGoldenShower();
 	// BW1W120 0055efd0 BW1M119 0142c050
-	virtual char* GetDebugText() { return "##a_class:"; }
+	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 
 	// BW1W120 0055efa0 BW1M119 inlined
 	RenderParticleGoldenShower() { Shower = NULL; }

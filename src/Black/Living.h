@@ -112,6 +112,7 @@ enum LIVING_SET_STATE_RESULT
 
 enum LIVING_STATUS
 {
+	LIVING_STATUS_DYING = 0x1,
 	LIVING_STATUS_SHOW_INFO = 0x200,
 };
 
@@ -213,7 +214,7 @@ public:
 	// BW1W120 00417350 BW1M119 01139590
 	virtual bool32_t CanBeAttackedByCreature(Creature* param_1);
 	// BW1W120 004173d0 BW1M119 01139750
-	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
 	// BW1W120 00417390 BW1M119 01139670
 	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
 	// BW1W120 004173e0 BW1M119 011397a0

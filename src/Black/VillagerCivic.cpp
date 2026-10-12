@@ -308,11 +308,9 @@ bool32_t ClearAreaPoint::ProcessPoint(const LHPoint& point)
 // BW1W120 007592e0 BW1M119 0157cf30
 bool32_t Villager::ArriveAtPushObject()
 {
-	// TODO: the wander area really spans 0x118..0x123 (JustWholeMapXZ at 0x118, float radius
-	// at 0x120); Villager.h models TargetThing/WanderArea separately, hence the casts.
-	MapCoords pushPos((JustWholeMapXZ*)&TargetThing);
-	float     wanderRadius = *(float*)&WanderArea.z;
-	if (CheckForClearArea(pushPos, wanderRadius) == 1)
+	MapCoords pushPos((JustWholeMapXZ*)ClearAreaPos);
+	float     radius = ClearAreaRadius;
+	if (CheckForClearArea(pushPos, radius) == 1)
 		return true;
 	return ReenterBuildingState();
 }

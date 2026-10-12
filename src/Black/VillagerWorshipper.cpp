@@ -321,8 +321,6 @@ bool32_t Villager::ExitAtWorshipSite(unsigned char state)
 }
 
 // BW1W120 0076c280 BW1M119 015a4d20
-// TODO: only a reloc-form diff remains (raw address vs GVillagerStateTableInfo::Infos symbol);
-// byte-identical after link
 bool32_t Villager::ExitGetFoodAtWorship(unsigned char state)
 {
 	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state) && GVillagerStateTableInfo::Infos[state].field_0xe8 == 0)

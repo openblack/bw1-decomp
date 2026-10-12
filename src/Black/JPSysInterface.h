@@ -38,7 +38,7 @@ public:
 	// BW1W120 0055ecb0 BW1M119 0142cc80
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GJPSYS_INTERFACE; }
 	// BW1W120 0055ecc0 BW1M119 0142ccc0
-	virtual char* GetDebugText() { return "##a_class:"; }
+	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 	// BW1W120 0055ecd0 BW1M119 010a2950
 	virtual void CloseDown() { manager->SetState(PSYS_MANAGER_STATE_CLOSE_DOWN); }
 	// BW1W120 0055ecf0 BW1M119 01074a90

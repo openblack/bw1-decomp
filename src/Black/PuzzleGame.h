@@ -232,7 +232,7 @@ public:
 	// BW1W120 004200c0 BW1M119 0117e4d0
 	virtual uint32_t GetSaveType();
 	// BW1W120 004200e0 BW1M119 0117e550
-	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
 
 	// BW1W120 inlined BW1M119 inlined
 	PieceLion() {}
@@ -322,7 +322,7 @@ public:
 	// BW1W120 0041bba0 BW1M119 0116d090
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041bbc0 BW1M119 0113c040
-	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
 	// BW1W120 0041cfd0 BW1M119 01176020
 	virtual uint32_t StandAnimation();
 
@@ -346,7 +346,7 @@ public:
 	// BW1W120 00421d70 BW1M119 01181410
 	virtual uint32_t GetSaveType();
 	// BW1W120 00421d90 BW1M119 0113bbd0
-	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
 
 	// BW1W120 inlined BW1M119 0130fb10
 	PieceWolf() {}
@@ -367,7 +367,7 @@ public:
 	// BW1W120 006dd670 BW1M119 0113aeb0
 	virtual uint32_t GetSaveType();
 	// BW1W120 006dd4b0 BW1M119 inlined
-	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
 	// BW1W120 006dd690 BW1M119 0113af30
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 0041c7e0 BW1M119 inlined

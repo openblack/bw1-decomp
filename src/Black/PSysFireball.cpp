@@ -8,6 +8,8 @@ uint32_t MagicFireBall::GetSaveType()
 
 void MagicFireBall::InsertMapObject() {}
 
+void MagicFireBall::Draw() {}
+
 GBaseInfo* GMagicFireBallInfo::GetBaseInfo(uint32_t& info_count)
 {
 	info_count = MAGIC_FIREBALL_TYPE_LAST;

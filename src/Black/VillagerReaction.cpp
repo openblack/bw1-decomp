@@ -33,8 +33,8 @@ bool32_t Villager::IsAvailableForReaction(REACTION reaction)
 {
 	VILLAGER_STATES state = (VILLAGER_STATES)(GetFinalState() & VILLAGER_STATE_LAST_STATE);
 	uint16_t        flags = this->Flags;
-	if (!(flags & 2) && GVillagerStateTableInfo::Infos[state].field_0xfc != 0 && !(flags & 0x80) &&
-	    !IsDeathState(state))
+	if (!(flags & VILLAGER_FLAG_AT_WORSHIP_SITE) && GVillagerStateTableInfo::Infos[state].canReact &&
+	    !(flags & VILLAGER_FLAG_PLAYING_FOOTBALL) && !IsDeathState(state))
 	{
 		const GVillagerInfo* villagerInfo = (const GVillagerInfo*)this->info;
 		if (GetLife() > villagerInfo->LifeWhenCrawlsWounded || reaction == REACTION_REACT_TO_FOOD)
@@ -65,7 +65,7 @@ void Villager::StorePreviousState()
 	// and the state*0x114 array-index expression (target copies state to ecx then indexes in eax).
 	VILLAGER_STATES state = (VILLAGER_STATES)(GetFinalState() & VILLAGER_STATE_LAST_STATE);
 	VILLAGER_STATES stateToStore = state;
-	if (GVillagerStateTableInfo::Infos[state].field_0x20 != 0 || GVillagerStateTableInfo::Infos[state].field_0xc8 != 0)
+	if (GVillagerStateTableInfo::Infos[state].isTransientState || GVillagerStateTableInfo::Infos[state].isReactiveState)
 	{
 		stateToStore = (VILLAGER_STATES)this->action.states[LIVING_ACTION_INDEX_PREVIOUS];
 	}
@@ -118,7 +118,7 @@ void Villager::SetupFleeFromPredator(GameThingWithPos* thing, Reaction* reaction
 {
 	if ((uint8_t)GetFinalState() == VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING)
 	{
-		this->field_0x10c = 0.0f;
+		this->HideTurns = 0;
 		return;
 	}
 	AddReaction(reaction, VILLAGER_STATE_FLEEING_FROM_PREDATOR_REACTION);
@@ -172,7 +172,7 @@ bool32_t Villager::FleeingFromPredatorReaction()
 		}
 		if ((uint8_t)GetFinalState() == VILLAGER_STATE_LOOK_TO_SEE_IF_IT_IS_SAFE)
 		{
-			Abode* abode = GetAbodeToHideInAtPos(MapCoords((JustWholeMapXZ*)&this->field_0x110));
+			Abode* abode = GetAbodeToHideInAtPos(MapCoords(&this->HidePos));
 			if (abode != NULL)
 			{
 				SetupMoveToOnFootpath(*abode, abode->GetArrivePos(), VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING);
@@ -221,10 +221,8 @@ bool32_t Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos* thing)
 		} while (abode != NULL);
 		if (bestAbode != NULL)
 		{
-			// TODO: 0x110 is really a JustWholeMapXZ (hide-area cell), not yet modelled in
-			// Villager.h — hence the cast
-			((JustWholeMapXZ*)&this->field_0x110)->Init(bestAbode->Pos);
-			this->field_0x10c = 0.0f;
+			this->HidePos.Init(bestAbode->Pos);
+			this->HideTurns = 0;
 			SetupMoveToOnFootpath(*bestAbode, bestAbode->GetArrivePos(), VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING);
 			return 1;
 		}
@@ -235,10 +233,7 @@ bool32_t Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos* thing)
 // BW1W120 00763d90 BW1M119 0159a9d0
 bool32_t Villager::GoAndHideInNearbyBuilding()
 {
-	// TODO: the distance callee is the unnamed 2D twin of GetDistanceInMetres at 0x74cd50;
-	// field_0x10c is an int
-	// hide-turns counter here (header declares float), hence the casts
-	MapCoords coords((JustWholeMapXZ*)&this->field_0x110);
+	MapCoords coords(&this->HidePos);
 	Abode*    abode = GetAbodeToHideInAtPos(coords);
 	if (this->ReactionObject.Get() != NULL && this->ReactionObject->IsAvailable() != 1)
 	{
@@ -257,11 +252,10 @@ bool32_t Villager::GoAndHideInNearbyBuilding()
 					return 1;
 				}
 			}
-			uint32_t hideTurns = *(uint32_t*)&this->field_0x10c + 1;
-			*(uint32_t*)&this->field_0x10c = hideTurns;
+			uint32_t hideTurns = ++this->HideTurns;
 			if (hideTurns > GRand::GameRand(150, FILEPATH, 422) + 150)
 			{
-				*(uint32_t*)&this->field_0x10c = 0;
+				this->HideTurns = 0;
 				// TODO: FindPosOutsideAbode is declared void but really returns the pos via
 				// hidden retbuf into the slot arrivePos occupies; passing arrivePos below
 				// reuses that slot until its return type is fixed
@@ -310,10 +304,10 @@ bool32_t Villager::LookToSeeIfItIsSafe()
 			uint8_t predatorState = ((Living*)this->ReactionObject.Get())->action.states[LIVING_ACTION_INDEX_TOP];
 			if (predatorState != ANIMAL_STATE_SLEEPS && predatorState != ANIMAL_STATE_HIDE_IN_LAIR)
 			{
-				Abode* abode = GetAbodeToHideInAtPos(MapCoords((JustWholeMapXZ*)&this->field_0x110));
+				Abode* abode = GetAbodeToHideInAtPos(MapCoords(&this->HidePos));
 				if (abode != NULL)
 				{
-					*(uint32_t*)&this->field_0x10c = 0;
+					this->HideTurns = 0;
 					SetupMoveToOnFootpath(*abode, abode->GetArrivePos(), VILLAGER_STATE_GO_AND_HIDE_IN_NEARBY_BUILDING);
 					return 1;
 				}
@@ -323,9 +317,7 @@ bool32_t Villager::LookToSeeIfItIsSafe()
 			}
 		}
 	}
-	// TODO: register allocation of the counter differs around the GameRand call
-	uint32_t safeTurns = *(uint32_t*)&this->field_0x10c + 1;
-	*(uint32_t*)&this->field_0x10c = safeTurns;
+	uint32_t safeTurns = ++this->HideTurns;
 	if (safeTurns > GRand::GameRand(25, FILEPATH, 469) + 25)
 	{
 		StopReactingAndSetState();
@@ -415,12 +407,12 @@ bool32_t Villager::PerformInspectionReaction()
 		StopReactingAndSetState();
 		return 1;
 	}
-	if (this->field_0x10c < 1.0f)
+	if (this->InspectDistance < 1.0f)
 	{
 		StopReactingAndSetState();
 		return 1;
 	}
-	if (--this->field_0x110 == 0)
+	if (--this->InspectTurnsUntilApproach == 0)
 	{
 		SetTopState(VILLAGER_STATE_APPROACH_OBJECT_REACTION);
 		return 1;

@@ -5,8 +5,12 @@
 
 #include "chlasm/Enum.h"
 #include "chlasm/GStates.h"
+#include "Abode.h"
+#include "Football.h"
+#include "FootpathNode.h"
 #include "Game.h"
 #include "Game3DObject.h"
+#include "GameInfo.h"
 #include "GameOSFile.h"
 #include "GameThing.h"
 #include "InterfaceStatus.h"
@@ -238,11 +242,41 @@ void Villager::CreateDroppedResource(LHPoint* param_1, LHPoint* param_2, LHPoint
 // BW1W120 00750ab0 BW1M119 015780f0
 bool32_t Villager::HasSunk()
 {
-	return false;
+	if (!IsAvailable())
+	{
+		return false;
+	}
+	if (GetInterfaceStatusWhoLastDroppedMe() != NULL)
+	{
+		GPlayer* player = GetInterfaceStatusWhoLastDroppedMe()->GetPlayer();
+		if (player != NULL)
+		{
+			player->ConsiderMakingCreatureMimicPlayer(GetInterfaceStatusWhoLastDroppedMe(),
+			                                          DETECTED_PLAYER_ACTION_THROW_IN_THE_SEA, this, MAGIC_TYPE_NONE);
+		}
+	}
+	TurnsUntilNextStateChange = ((const GVillagerInfo*)info)->DrowningTime;
+	if ((status & LIVING_STATUS_DYING) == LIVING_STATUS_DYING)
+	{
+		SetTopState(VILLAGER_STATE_DYING);
+		TurnsUntilNextStateChange = ((const GVillagerInfo*)info)->DyingTimeWithoutGraveyard;
+		return true;
+	}
+	SetTopState(VILLAGER_STATE_DROWNING);
+	return true;
 }
 
 // BW1W120 00750b50 BW1M119 01578000
-void Villager::TownDeleted() {}
+void Villager::TownDeleted()
+{
+	LHListHead<Villager>& withoutTown = GGame::g_game->GameLists.VillagersWithoutTown;
+	if (withoutTown.Find(this) == NULL)
+	{
+		withoutTown.AddToFirst(this);
+	}
+	SetTopState(VILLAGER_STATE_VAGRANT_START);
+	SetTown(NULL);
+}
 
 // BW1W120 00750bb0 BW1M119 01577e20
 void Villager::DebugText(int param_1) {}
@@ -311,7 +345,26 @@ void Villager::Birthday() {}
 // BW1W120 00751050 BW1M119 01024570
 int Villager::CheckChildGrownUp()
 {
-	return 0;
+	const GVillagerInfo* villagerInfo = (const GVillagerInfo*)info;
+	if (GetAge() >= villagerInfo->TeenAge)
+	{
+		Flags &= ~VILLAGER_FLAG_CHILD;
+		SetAge(max(VILLAGER_MIN_ADULT_AGE, ((const GVillagerInfo*)info)->TeenAge));
+		if (GetAbode() != NULL)
+		{
+			GetAbode()->ChildToAdult(this);
+			return ChildBecomesAdult();
+		}
+		if (GetTown() != NULL)
+		{
+			GetTown()->ChildToAdult(this);
+		}
+		return ChildBecomesAdult();
+	}
+	if (GGame::g_game->data.GameTurn % ((uint32_t)GGameInfo::Info.TimeScale / 4) == 0)
+	{
+		SetScaleForAge(GetAge());
+	}
 }
 
 // BW1W120 00751110 BW1M119 01577ad0
@@ -331,8 +384,16 @@ bool32_t Villager::StartMoveToObject(Object* object, VILLAGER_STATES state)
 }
 
 // BW1W120 007511b0 BW1M119 0109ea90
-unsigned short Villager::DropResource(RESOURCE_TYPE param_1, unsigned short param_2)
+unsigned short Villager::DropResource(RESOURCE_TYPE type, unsigned short amount)
 {
+	if (type == RESOURCE_TYPE_WOOD)
+	{
+		return DropWood(amount);
+	}
+	if (type == RESOURCE_TYPE_FOOD)
+	{
+		return DropFood(amount);
+	}
 	return 0;
 }
 
@@ -534,6 +595,13 @@ bool32_t Villager::GetPrayerSite()
 // BW1W120 00751980 BW1M119 01576c20
 bool Villager::RestartDance(VILLAGER_STATES state)
 {
+	MapCoords dancePos;
+	if (IsDancing())
+	{
+		CalculateDancePosition(dance_group->Dancer->Pos, &dancePos);
+		SetupMoveToPos(dancePos, state);
+		return true;
+	}
 	return false;
 }
 
@@ -611,11 +679,23 @@ Citadel* Villager::GetCitadel()
 // BW1W120 00751dd0 BW1M119 01051580
 uint8_t Villager::GetFinalState() const
 {
-	return VILLAGER_STATE_INVALID_STATE;
+	uint8_t state = action.states[LIVING_ACTION_INDEX_TOP];
+	if (!GVillagerStateTableInfo::Infos[state].isFinalState)
+	{
+		state = action.states[LIVING_ACTION_INDEX_FINAL];
+	}
+	return state;
 }
 
 // BW1W120 00751e10 BW1M119 01575df0
-void Villager::ResetStateAfterReacting() {}
+void Villager::ResetStateAfterReacting()
+{
+	PopFromPrevious();
+	if (GVillagerStateTableInfo::Infos[GetFinalState() & VILLAGER_STATE_LAST_STATE].isReactiveState)
+	{
+		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+	}
+}
 
 // BW1W120 00751e50 BW1M119 01575d30
 void Villager::PopFromPrevious()
@@ -677,10 +757,28 @@ VILLAGER_STATES Villager::FUN_00751f70()
 }
 
 // BW1W120 00751fa0 BW1M119 010039e0
-void Villager::ArriveHome() {}
+void Villager::ArriveHome()
+{
+	if (GetAbode() != NULL)
+	{
+		Flags |= GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE;
+		GetAbode()->ArriveHome();
+	}
+}
 
 // BW1W120 00751fd0 BW1M119 010a1b50
-void Villager::LeaveHome() {}
+void Villager::LeaveHome()
+{
+	if (Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE)
+	{
+		Flags &=
+			~(GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE | GAME_THING_WITH_POS_FLAG_CANNOT_BE_PICKED_UP);
+		if (GetAbode() != NULL)
+		{
+			GetAbode()->LeaveHome();
+		}
+	}
+}
 
 // BW1W120 00752010 BW1M119 0107e140
 int Villager::SetTopState(uint8_t state)
@@ -712,7 +810,11 @@ Abode* Villager::GetAbode()
 }
 
 // BW1W120 007521b0 BW1M119 015755c0
-void Villager::ToBeDeleted(int param_1) {}
+void Villager::ToBeDeleted(int delete_now)
+{
+	DeleteDependancys();
+	Living::ToBeDeleted(delete_now);
+}
 
 // BW1W120 007521d0 BW1M119 0104dce0
 uint32_t Villager::CallState()
@@ -794,12 +896,12 @@ bool32_t Villager::IsStateExitFunctionSameAs(unsigned long state) const
 bool Villager::IsReactiveState(unsigned long state)
 {
 	// TODO: 57% -- index/field semantics correct (GVillagerStateTableInfo::Infos[state]
-	// .field_0xc8 != 0). BLOCKED: symbols.txt names this thiscall (?...@@QAE_NK@Z) but the
+	// .isReactiveState). BLOCKED: symbols.txt names this thiscall (?...@@QAE_NK@Z) but the
 	// target body is __cdecl -- ends `c3` (ret, NO arg cleanup), reads state from [esp+4],
 	// never touches ecx(this), returns full eax. Not ICF (ret != ret4 => bytes differ). A
 	// faithful thiscall member compiles to `ret 4`+al. Calling-convention/symbol anomaly for
 	// the dispatcher (symbol may need to be static/cdecl).
-	return GVillagerStateTableInfo::Infos[state].field_0xc8 != 0;
+	return GVillagerStateTableInfo::Infos[state].isReactiveState;
 }
 
 // BW1W120 00752600 BW1M119 01022ae0
@@ -969,7 +1071,17 @@ uint16_t Villager::GetResourceFrom(Object* object, RESOURCE_TYPE resource_type, 
 }
 
 // BW1W120 00753410 BW1M119 01572f40
-void Villager::SetFoodSpeedup(bool param_1) {}
+void Villager::SetFoodSpeedup(bool value)
+{
+	if (value)
+	{
+		FoodSpeedUp = VILLAGER_FOOD_SPEED_UP_START;
+	}
+	else
+	{
+		FoodSpeedUp = 0;
+	}
+}
 
 // BW1W120 00753430 BW1M119 01053cf0
 // TODO: deferred -- body is
@@ -1103,7 +1215,7 @@ MapCoords Villager::GetResourceDropoffPos(RESOURCE_TYPE resource_type)
 // BW1W120 00753f00 BW1M119 inlined
 bool Villager::IsFinalState(uint8_t state)
 {
-	return false;
+	return GVillagerStateTableInfo::Infos[state].isFinalState;
 }
 
 // BW1W120 00753f20 BW1M119 015724c0
@@ -1164,328 +1276,474 @@ bool32_t Villager::FindDisciplePrayerPos(MapCoords* param_1)
 // BW1W120 00754280 BW1M119 01571b20
 uint32_t Villager::Save(GameOSFile& file)
 {
-	return 0;
+	if (Living::Save(file))
+	{
+		file.WriteIt(Flags);
+		file.WriteIt(food);
+		file.WriteIt(LastCheckTurn);
+		file.WriteIt(FoodSpeedUp);
+		file.WriteIt(CarriedObjectType);
+		file.WriteIt(DiscipleType);
+		file.WriteIt(ResourceHeld[RESOURCE_TYPE_FOOD]);
+		file.WriteIt(ResourceHeld[RESOURCE_TYPE_WOOD]);
+		file.WriteIt(is_pregnant);
+		file.WritePtr(home);
+		file.WritePtr(town);
+		file.WritePtr(mother);
+		uint32_t reserved = 0;
+		file.WriteIt(reserved);
+		file.WriteIt(reserved);
+		SaveStateFunction(file);
+		return true;
+	}
+	return false;
 }
 
 // BW1W120 00754580 BW1M119 01571730
 uint32_t Villager::Load(GameOSFile& file)
 {
-	return 0;
+	if (Living::Load(file))
+	{
+		file.ReadIt(Flags);
+		file.ReadIt(food);
+		file.ReadIt(LastCheckTurn);
+		file.ReadIt(FoodSpeedUp);
+		file.ReadIt(CarriedObjectType);
+		file.ReadIt(DiscipleType);
+		file.ReadIt(ResourceHeld[RESOURCE_TYPE_FOOD]);
+		file.ReadIt(ResourceHeld[RESOURCE_TYPE_WOOD]);
+		file.ReadIt(is_pregnant);
+		file.ReadPtr((GameThing**)&home);
+		file.ReadPtr((GameThing**)&town);
+		file.ReadPtr((GameThing**)&mother);
+		uint32_t reserved = 0;
+		file.ReadIt(reserved);
+		file.ReadIt(reserved);
+		LoadStateFunction(file);
+#ifndef VERSION_BW1W100
+		DrawYAngle = GetYAngle();
+#endif
+		return true;
+	}
+	return false;
 }
 
 // BW1W120 00754870 BW1M119 015716b0
 void Villager::ResolveLoad() {}
 
 // BW1W120 007548a0 BW1M119 015715c0
-bool32_t Villager::CallSaveStateFunction(GameOSFile& param_1, STATE_TYPE param_2)
+bool32_t Villager::CallSaveStateFunction(GameOSFile& file, STATE_TYPE state_type)
 {
 	return false;
 }
 
 // BW1W120 00754910 BW1M119 015714d0
-bool32_t Villager::CallLoadStateFunction(GameOSFile& param_1, STATE_TYPE param_2)
+bool32_t Villager::CallLoadStateFunction(GameOSFile& file, STATE_TYPE state_type)
 {
 	return false;
 }
 
 // BW1W120 00754980 BW1M119 01571420
-bool32_t Villager::SaveStateFunction(GameOSFile& param_1)
+bool32_t Villager::SaveStateFunction(GameOSFile& file)
 {
-	return false;
+	bool32_t topSaved = CallSaveStateFunction(file, STATE_TYPE_TOP);
+	bool32_t finalSaved = CallSaveStateFunction(file, STATE_TYPE_FINAL);
+	return (topSaved | finalSaved) != 0;
 }
 
 // BW1W120 007549b0 BW1M119 01571360
-bool32_t Villager::LoadStateFunction(GameOSFile& param_1)
+bool32_t Villager::LoadStateFunction(GameOSFile& file)
 {
+	uint32_t topLoaded = CallLoadStateFunction(file, STATE_TYPE_TOP);
+	uint32_t finalLoaded = CallLoadStateFunction(file, STATE_TYPE_FINAL);
+	if ((topLoaded | finalLoaded) > 0)
+	{
+		return true;
+	}
+	TurnsUntilNextStateChange = GRand::GameRand(VILLAGER_MAX_LOAD_STATE_CHANGE_DELAY, FILEPATH, 3293) + 1;
 	return false;
 }
 
 // BW1W120 00754a00 BW1M119 01571280
-bool32_t Villager::SaveBuilding(GameOSFile& param_1)
+bool32_t Villager::SaveBuilding(GameOSFile& file)
 {
-	return false;
+	file.WritePtr(building_site);
+	file.WriteIt(BuildPosIndex);
+	return true;
 }
 
 // BW1W120 00754a60 BW1M119 015711b0
-bool32_t Villager::LoadBuilding(GameOSFile& param_1)
+bool32_t Villager::LoadBuilding(GameOSFile& file)
 {
-	return false;
+	file.ReadPtr((GameThing**)&building_site);
+	file.ReadIt(BuildPosIndex);
+	return true;
 }
 
 // BW1W120 00754ac0 BW1M119 01571090
-bool32_t Villager::SaveDance(GameOSFile& param_1)
+bool32_t Villager::SaveDance(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(field_0x118);
+	file.WriteIt(field_0x11c);
+	return true;
 }
 
 // BW1W120 00754b60 BW1M119 01570f80
-bool32_t Villager::LoadDance(GameOSFile& param_1)
+bool32_t Villager::LoadDance(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(field_0x118);
+	file.ReadIt(field_0x11c);
+	return true;
 }
 
 // BW1W120 00754c00 BW1M119 01570eb0
-bool32_t Villager::SaveWorship(GameOSFile& param_1)
+bool32_t Villager::SaveWorship(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(RequestingToGoHome);
+	return true;
 }
 
 // BW1W120 00754c60 BW1M119 01570de0
-bool32_t Villager::LoadWorship(GameOSFile& param_1)
+bool32_t Villager::LoadWorship(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(RequestingToGoHome);
+	return true;
 }
 
 // BW1W120 00754cc0 BW1M119 01570d20
-bool32_t Villager::SaveDead(GameOSFile& param_1)
+bool32_t Villager::SaveDead(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(DeathReason);
+	return true;
 }
 
 // BW1W120 00754d20 BW1M119 01570c60
-bool32_t Villager::LoadDead(GameOSFile& param_1)
+bool32_t Villager::LoadDead(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(DeathReason);
+	return true;
 }
 
 // BW1W120 00754d80 BW1M119 01570b90
-bool32_t Villager::SaveInHand(GameOSFile& param_1)
+bool32_t Villager::SaveInHand(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(DiscipleOnPickUp);
+	return true;
 }
 
 // BW1W120 00754de0 BW1M119 01570ac0
-bool32_t Villager::LoadInHand(GameOSFile& param_1)
+bool32_t Villager::LoadInHand(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(DiscipleOnPickUp);
+	return true;
 }
 
 // BW1W120 00754e40 BW1M119 01570a50
-bool32_t Villager::SaveFishing(GameOSFile& param_1)
+bool32_t Villager::SaveFishing(GameOSFile& file)
 {
-	return false;
+	file.WritePtr(TargetThing);
+	return true;
 }
 
 // BW1W120 00754e60 BW1M119 015709e0
-bool32_t Villager::LoadFishing(GameOSFile& param_1)
+bool32_t Villager::LoadFishing(GameOSFile& file)
 {
-	return false;
+	file.ReadPtr(&TargetThing);
+	return true;
 }
 
 // BW1W120 00754e80 BW1M119 01570900
-bool32_t Villager::SaveFarming(GameOSFile& param_1)
+bool32_t Villager::SaveFarming(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(FarmPos);
+	file.WritePtr(InteractObject.Get());
+	return true;
 }
 
 // BW1W120 00754ef0 BW1M119 01570830
-bool32_t Villager::LoadFarming(GameOSFile& param_1)
+bool32_t Villager::LoadFarming(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(FarmPos);
+	file.ReadPtr((GameThing**)&InteractObject);
+	return true;
 }
 
 // BW1W120 00754f60 BW1M119 015706b0
-bool32_t Villager::SaveFootball(GameOSFile& param_1)
+bool32_t Villager::SaveFootball(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(FootballSubStateDone);
+	file.WriteIt(FootballSubStateTurns);
+	file.WriteIt(field_0x11a);
+	file.WritePtr(football.Get());
+	return true;
 }
 
 // BW1W120 00755040 BW1M119 01570550
-bool32_t Villager::LoadFootball(GameOSFile& param_1)
+bool32_t Villager::LoadFootball(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(FootballSubStateDone);
+	file.ReadIt(FootballSubStateTurns);
+	file.ReadIt(field_0x11a);
+	file.ReadPtr((GameThing**)&football);
+	return true;
 }
 
 // BW1W120 00755120 BW1M119 01570430
-bool32_t Villager::SaveShepherd(GameOSFile& param_1)
+bool32_t Villager::SaveShepherd(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(ShepherdWaitTurns);
+	file.WriteIt(ShepherdNextState);
+	return true;
 }
 
 // BW1W120 007551c0 BW1M119 01570320
-bool32_t Villager::LoadShepherd(GameOSFile& param_1)
+bool32_t Villager::LoadShepherd(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(ShepherdWaitTurns);
+	file.ReadIt(ShepherdNextState);
+	return true;
 }
 
 // BW1W120 00755260 BW1M119 01570160
-bool32_t Villager::SaveInScript(GameOSFile& param_1)
+bool32_t Villager::SaveInScript(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(ScriptWanderCentre);
+	file.WriteIt(ScriptWanderRadius);
+	file.WriteIt(WanderArea.x);
+	file.WriteIt(WanderArea.z);
+	return true;
 }
 
 // BW1W120 00755370 BW1M119 0156ffc0
-bool32_t Villager::LoadInScript(GameOSFile& param_1)
+bool32_t Villager::LoadInScript(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(ScriptWanderCentre);
+	file.ReadIt(ScriptWanderRadius);
+	file.ReadIt(WanderArea.x);
+	file.ReadIt(WanderArea.z);
+	return true;
 }
 
 // BW1W120 00755470 BW1M119 0156fe00
-bool32_t Villager::SaveScriptPos(GameOSFile& param_1)
+bool32_t Villager::SaveScriptPos(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(ScriptWanderCentre);
+	file.WriteIt(ScriptWanderRadius);
+	file.WriteIt(WanderArea.x);
+	file.WriteIt(WanderArea.z);
+	return true;
 }
 
 // BW1W120 00755580 BW1M119 0156fc60
-bool32_t Villager::LoadScriptPos(GameOSFile& param_1)
+bool32_t Villager::LoadScriptPos(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(ScriptWanderCentre);
+	file.ReadIt(ScriptWanderRadius);
+	file.ReadIt(WanderArea.x);
+	file.ReadIt(WanderArea.z);
+	return true;
 }
 
 // BW1W120 00755680 BW1M119 0156fb80
-bool32_t Villager::SaveFire(GameOSFile& param_1)
+bool32_t Villager::SaveFire(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(FirePos);
+	file.WritePtr(fire_effect);
+	return true;
 }
 
 // BW1W120 007556f0 BW1M119 0156fab0
-bool32_t Villager::LoadFire(GameOSFile& param_1)
+bool32_t Villager::LoadFire(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(FirePos);
+	file.ReadPtr((GameThing**)&fire_effect);
+	return true;
 }
 
 // BW1W120 00755760 BW1M119 0156fa30
-bool32_t Villager::SaveDiscipleNothingToDo(GameOSFile& param_1)
+bool32_t Villager::SaveDiscipleNothingToDo(GameOSFile& file)
 {
-	return false;
+	if (DiscipleType == VILLAGER_DISCIPLE_TRADER)
+	{
+		SaveTrader(file);
+	}
+	return true;
 }
 
 // BW1W120 00755780 BW1M119 0156f9b0
-bool32_t Villager::LoadDiscipleNothingToDo(GameOSFile& param_1)
+bool32_t Villager::LoadDiscipleNothingToDo(GameOSFile& file)
 {
-	return false;
+	if (DiscipleType == VILLAGER_DISCIPLE_TRADER)
+	{
+		LoadTrader(file);
+	}
+	return true;
 }
 
 // BW1W120 007557a0 BW1M119 0156f8d0
-bool32_t Villager::SaveTrader(GameOSFile& param_1)
+bool32_t Villager::SaveTrader(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(TradeResource);
+	file.WritePtr(TradeTown);
+	return true;
 }
 
 // BW1W120 00755810 BW1M119 0156f800
-bool32_t Villager::LoadTrader(GameOSFile& param_1)
+bool32_t Villager::LoadTrader(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(TradeResource);
+	file.ReadPtr((GameThing**)&TradeTown);
+	return true;
 }
 
 // BW1W120 00755880 BW1M119 0156f790
-bool32_t Villager::SaveInspectObject(GameOSFile& param_1)
+bool32_t Villager::SaveInspectObject(GameOSFile& file)
 {
-	return false;
+	file.WritePtr(TargetThing);
+	return true;
 }
 
 // BW1W120 007558a0 BW1M119 0156f720
-bool32_t Villager::LoadInspectObject(GameOSFile& param_1)
+bool32_t Villager::LoadInspectObject(GameOSFile& file)
 {
-	return false;
+	file.ReadPtr(&TargetThing);
+	return true;
 }
 
 // BW1W120 007558c0 BW1M119 0156f6e0
-bool32_t Villager::SaveReaction(GameOSFile& param_1)
+bool32_t Villager::SaveReaction(GameOSFile& file)
 {
-	return false;
+	return true;
 }
 
 // BW1W120 007558d0 BW1M119 0156f6a0
-bool32_t Villager::LoadReaction(GameOSFile& param_1)
+bool32_t Villager::LoadReaction(GameOSFile& file)
 {
-	return false;
+	return true;
 }
 
 // BW1W120 007558e0 BW1M119 0156f580
-bool32_t Villager::SaveClearArea(GameOSFile& param_1)
+bool32_t Villager::SaveClearArea(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(ClearAreaPos);
+	file.WriteIt(ClearAreaRadius);
+	return true;
 }
 
 // BW1W120 00755980 BW1M119 0156f470
-bool32_t Villager::LoadClearArea(GameOSFile& param_1)
+bool32_t Villager::LoadClearArea(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(ClearAreaPos);
+	file.ReadIt(ClearAreaRadius);
+	return true;
 }
 
 // BW1W120 00755a20 BW1M119 0156f390
-bool32_t Villager::SaveBreeder(GameOSFile& param_1)
+bool32_t Villager::SaveBreeder(GameOSFile& file)
 {
-	return false;
+	file.WritePtr(Partner.Get());
+	file.WriteIt(WanderArea);
+	return true;
 }
 
 // BW1W120 00755a80 BW1M119 0156f2c0
-bool32_t Villager::LoadBreeder(GameOSFile& param_1)
+bool32_t Villager::LoadBreeder(GameOSFile& file)
 {
-	return false;
+	file.ReadPtr((GameThing**)&Partner);
+	file.ReadIt(WanderArea);
+	return true;
 }
 
 // BW1W120 00755ae0 BW1M119 0156f250
-bool32_t Villager::SaveForesting(GameOSFile& param_1)
+bool32_t Villager::SaveForesting(GameOSFile& file)
 {
-	return false;
+	file.WritePtr(TargetThing);
+	return true;
 }
 
 // BW1W120 00755b00 BW1M119 0156f1e0
-bool32_t Villager::LoadForesting(GameOSFile& param_1)
+bool32_t Villager::LoadForesting(GameOSFile& file)
 {
-	return false;
+	file.ReadPtr(&TargetThing);
+	return true;
 }
 
 // BW1W120 00755b20 BW1M119 0156f150
-bool32_t Villager::SaveFootPath(GameOSFile& param_1)
+bool32_t Villager::SaveFootPath(GameOSFile& file)
 {
-	return false;
+	file.WritePtr(footpath);
+	file.WritePtr(footpath_node);
+	return true;
 }
 
 // BW1W120 00755b50 BW1M119 0156f0c0
-bool32_t Villager::LoadFootPath(GameOSFile& param_1)
+bool32_t Villager::LoadFootPath(GameOSFile& file)
 {
-	return false;
+	file.ReadPtr((GameThing**)&footpath);
+	file.ReadPtr((GameThing**)&footpath_node);
+	return true;
 }
 
 // BW1W120 00755b80 BW1M119 0156ef90
-bool32_t Villager::SaveInspectionReaction(GameOSFile& param_1)
+bool32_t Villager::SaveInspectionReaction(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(InspectDistance);
+	file.WriteIt(InspectTurnsUntilApproach);
+	return true;
 }
 
 // BW1W120 00755c20 BW1M119 0156ee70
-bool32_t Villager::LoadInspectionReaction(GameOSFile& param_1)
+bool32_t Villager::LoadInspectionReaction(GameOSFile& file)
 {
-	return false;
+	file.ReadIt(InspectDistance);
+	file.ReadIt(InspectTurnsUntilApproach);
+	return true;
 }
 
 // BW1W120 00755cc0 BW1M119 0156ed40
-bool32_t Villager::SaveMagicTreeReaction(GameOSFile& param_1)
+bool32_t Villager::SaveMagicTreeReaction(GameOSFile& file)
 {
-	return false;
+	file.WriteIt(BewilderedTreeIndex);
+	file.WriteIt(BewilderedTreesSeen);
+	return true;
 }
 
 // BW1W120 00755d60 BW1M119 0156ec20
-bool32_t Villager::LoadMagicTreeReaction(GameOSFile& param_1)
+bool32_t Villager::LoadMagicTreeReaction(GameOSFile& file)
 {
-	return 0;
+	file.ReadIt(BewilderedTreeIndex);
+	file.ReadIt(BewilderedTreesSeen);
+	return true;
 }
 
 // BW1W120 00755e00 BW1M119 0156eaf0
-bool32_t Villager::SaveHideInBuilding(GameOSFile& param_1)
+bool32_t Villager::SaveHideInBuilding(GameOSFile& file)
 {
-	return 0;
+	file.WriteIt(HideTurns);
+	file.WriteIt(HidePos);
+	return true;
 }
 
 // BW1W120 00755ea0 BW1M119 0156e9d0
-bool32_t Villager::LoadHideInBuilding(GameOSFile& param_1)
+bool32_t Villager::LoadHideInBuilding(GameOSFile& file)
 {
-	return 0;
+	file.ReadIt(HideTurns);
+	file.ReadIt(HidePos);
+	return true;
 }
 
 // BW1W120 00755f40 BW1M119 0156e900
-bool32_t Villager::SaveShieldReaction(GameOSFile& param_1)
+bool32_t Villager::SaveShieldReaction(GameOSFile& file)
 {
-	return 0;
+	file.WriteIt(ReactionPos);
+	return true;
 }
 
 // BW1W120 00755fa0 BW1M119 0156e830
-bool32_t Villager::LoadShieldReaction(GameOSFile& param_1)
+bool32_t Villager::LoadShieldReaction(GameOSFile& file)
 {
-	return 0;
+	file.ReadIt(ReactionPos);
+	return true;
 }
 
 // BW1W120 00756000 BW1M119 0100c4b0
@@ -1614,15 +1872,15 @@ bool32_t Villager::ScriptInCrowd()
 }
 
 // BW1W120 00756570 BW1M119 0156dd00
-bool32_t Villager::SaveLanded(GameOSFile& param_1)
+bool32_t Villager::SaveLanded(GameOSFile& file)
 {
-	return false;
+	return true;
 }
 
 // BW1W120 00756580 BW1M119 0156dcc0
-bool32_t Villager::LoadLanded(GameOSFile& param_1)
+bool32_t Villager::LoadLanded(GameOSFile& file)
 {
-	return false;
+	return true;
 }
 
 // BW1W120 00756590 BW1M119 inlined
@@ -1683,7 +1941,7 @@ void Villager::FindChildrenAndOrphanThem() {}
 // BW1W120 00756c60 BW1M119 0104feb0
 bool32_t Villager::IsMovingForAnimation()
 {
-	return false;
+	return GVillagerStateTableInfo::Infos[action.states[LIVING_ACTION_INDEX_TOP]].isMovingForAnimation;
 }
 #endif
 

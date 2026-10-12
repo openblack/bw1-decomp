@@ -641,14 +641,12 @@ bool32_t Villager::InHand()
 // BW1W120 0076afe0 BW1M119 inlined
 bool32_t Villager::EnterInHand(uint8_t param_1, uint8_t param_2)
 {
-	// field_0x10c is a float slot elsewhere; this state stashes the (remapped) disciple
-	// type into its raw bits, hence the reinterpret store rather than a float conversion.
 	uint32_t discipleType = DiscipleType;
 	if (discipleType == VILLAGER_DISCIPLE_MISSIONARY)
 	{
 		discipleType = VILLAGER_DISCIPLE_NONE;
 	}
-	*(uint32_t*)&field_0x10c = discipleType;
+	DiscipleOnPickUp = (VILLAGER_DISCIPLE)discipleType;
 	return 1;
 }
 
@@ -760,7 +758,7 @@ bool32_t Villager::GoAndChilloutOutsideHome()
 // BW1W120 0076b4e0 BW1M119 010623b0
 bool32_t Villager::SitAndChillout()
 {
-	uint32_t turns = (uint16_t)TurnsUntilNextStateChange;
+	uint16_t turns = TurnsUntilNextStateChange;
 	TurnsUntilNextStateChange = turns - 1;
 	if ((int16_t)turns > 0)
 	{

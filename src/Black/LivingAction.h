@@ -14,6 +14,12 @@ enum LIVING_ACTION_INDEX
 	_LIVING_ACTION_INDEX_COUNT = 0x3
 };
 
+enum STATE_TYPE
+{
+	STATE_TYPE_TOP = 0x0,
+	STATE_TYPE_FINAL = 0x1,
+};
+
 // Forward Declares
 
 class Living;

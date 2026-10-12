@@ -94,10 +94,11 @@ bool32_t Villager::CheckInteractWithAbode()
 	MultiMapFixed* mmf = dynamic_cast<MultiMapFixed*>((Object*)TargetThing);
 	if (mmf != NULL && mmf->IsAvailable())
 	{
+		bool sameTown;
 		if ((!mmf->IsBuilt() || mmf->GetDesireToBeRepaired() > 0.0f) && mmf->GetPlayer() == GetPlayer() &&
-		    (mmf->GetTown() == GetTown() || mmf->IsTownCentre()))
+		    ((sameTown = mmf->GetTown() == GetTown()) || mmf->IsTownCentre()))
 		{
-			if (mmf->GetTown() != GetTown())
+			if (!sameTown)
 				ForceMoveVillagerToAbode((Abode*)mmf);
 			if (SetupBuildingObject(mmf) == 1)
 			{

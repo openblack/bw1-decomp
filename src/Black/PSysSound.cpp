@@ -11,3 +11,8 @@ uint32_t PSysSound::GetSaveType()
 {
 	return GAME_THING_TYPE_PSYS_SOUND;
 }
+
+char* DefensiveSphere::GetDebugText()
+{
+	return PSYS_DEBUG_TEXT;
+}

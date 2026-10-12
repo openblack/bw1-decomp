@@ -23,6 +23,15 @@
 
 // Forward Declares
 
+enum CREATURE_HEIGHT
+{
+	CREATURE_HEIGHT_VERY_SMALL,
+	CREATURE_HEIGHT_SMALL,
+	CREATURE_HEIGHT_MEDIUM,
+	CREATURE_HEIGHT_BIG,
+	CREATURE_HEIGHT_LAST
+};
+
 class Base;
 struct BookmarkGraphic;
 struct Bubble;
@@ -362,7 +371,7 @@ public:
 	// BW1W120 004e4280 BW1M119 015ed600
 	virtual bool32_t CanBeAttackedByCreature(Creature* param_1);
 	// BW1W120 004740b0 BW1M119 011ea9b0
-	virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
+	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
 	// BW1W120 00474070 BW1M119 011ea860
 	virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
 	// BW1W120 00474060 BW1M119 011ea810

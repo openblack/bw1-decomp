@@ -125,7 +125,7 @@ public:
 		// BW1W120 0055fd70 BW1M119 01427820
 		virtual uint32_t GetSaveType() { return GAME_THING_TYPE_EMITTER_RULE_COLLECTION_DATA; }
 		// BW1W120 0055fd80 BW1M119 01427870
-		virtual char* GetDebugText() { return "##a_class:"; }
+		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006993d0 BW1M119 014214e0
 		virtual uint32_t Load(GameOSFile& file);
 		// BW1W120 006cfee0 BW1M119 014885d0

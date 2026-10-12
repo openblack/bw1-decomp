@@ -28,7 +28,7 @@ public:
 	// BW1W120 0055f1f0 BW1M119 0140a5c0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UNUSED_000; }
 	// BW1W120 0055f200 BW1M119 0140a600
-	virtual char* GetDebugText() { return "##a_class:"; }
+	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 	// BW1W120 0055f210 BW1M119 0130d430
 	virtual ~BaseAtomModifierData() {}
 	// BW1W120 006947e0 BW1M119 01426660
@@ -55,7 +55,7 @@ public:
 	// BW1W120 0055f280 BW1M119 0140a700
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UNUSED_000; }
 	// BW1W120 0055f290 BW1M119 0140a750
-	virtual char* GetDebugText() { return "##a_class:"; }
+	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 	// BW1W120 0055f2a0 BW1M119 0130d690
 	virtual ~BaseCollectionModifierData() {}
 	// BW1W120 00694810 BW1M119 014265b0

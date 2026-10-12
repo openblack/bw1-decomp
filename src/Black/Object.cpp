@@ -605,8 +605,7 @@ PhysicsObject* Object::InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& ang
 		{
 			GInterfaceStatus* myStatus = GGame::g_game->MyInterfaceStatus();
 			Villager*         villager = (Villager*)this;
-			// TODO: field_0x10c doubles as the last disciple type here; see VillagerStates.cpp.
-			if (myStatus == status && *(uint32_t*)&villager->field_0x10c != villager->DiscipleType)
+			if (myStatus == status && villager->DiscipleOnPickUp != villager->DiscipleType)
 			{
 				GGuidance::MakeDiscipleSFX(*myStatus, (VILLAGER_DISCIPLE)villager->DiscipleType);
 			}
