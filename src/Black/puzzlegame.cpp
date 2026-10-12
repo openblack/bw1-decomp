@@ -4,7 +4,6 @@
 
 LH3DMapCoords PuzzleGame::AppliedMapPos;
 
-<<<<<<< HEAD
 bool32_t PuzzleVillager::DecideWhatToDo()
 {
 	return true;
