@@ -29,3 +29,10 @@ float Scaffold::GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* par
 {
 	return -1.0f;
 }
+
+void Scaffold::SetCombinedTown(Scaffold* other)
+{
+	Town* combined = GetCombinedTown(other);
+	town = combined;
+	other->town = combined;
+}
