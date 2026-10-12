@@ -33,3 +33,8 @@ char* PuzzlePig::GetDebugText()
 {
 	return "PuzzleSheep: ";
 }
+
+bool32_t PuzzleCow::CanBeFrighteningToCreature(Creature* creature)
+{
+	return false;
+}
