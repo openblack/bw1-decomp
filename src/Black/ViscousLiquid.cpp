@@ -10,3 +10,8 @@ SOUND_COLLISION_TYPE Fragment::GetCollideSoundType()
 {
 	return SOUND_COLLISION_TYPE_BUSH;
 }
+
+bool32_t Fragment::CanBePickedUpByCreature(Creature* creature)
+{
+	return 0;
+}

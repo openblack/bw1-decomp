@@ -4,6 +4,7 @@
 
 LH3DMapCoords PuzzleGame::AppliedMapPos;
 
+<<<<<<< HEAD
 bool32_t PuzzleVillager::DecideWhatToDo()
 {
 	return true;
@@ -32,4 +33,9 @@ char* PuzzleCow::GetDebugText()
 char* PuzzlePig::GetDebugText()
 {
 	return "PuzzleSheep: ";
+}
+
+bool32_t PuzzleCow::CanBeFrighteningToCreature(Creature* creature)
+{
+	return 0;
 }
