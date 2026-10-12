@@ -1801,11 +1801,15 @@ void CitadelHeart::ValidateTransferedEffectObjects()
 
 void CitadelHeart::ProcessTransferedDamageEffect()
 {
-	float life = boundf(0.0f, GetLife(), 1.0f);
-	if (life >= 1.0f)
+	float currentLife = GetLife();
+	if (currentLife > 0.0f)
 	{
-		return;
+		if (currentLife >= 1.0f)
+		{
+			return;
+		}
 	}
+	float life = max(currentLife, 0.0f);
 	if (this != GetActualObjectToEffect(GetPlayer(), false))
 	{
 		return;
