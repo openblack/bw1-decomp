@@ -99,6 +99,13 @@ wchar_t WorldRoom::WorldStatisticsText[0x2000];
 
 static uint32_t UnusedStatic = 0;
 
+// TODO: fabricated; unrecovered counter slots that move Draw's local static guard to a number
+// whose name hashes into its original .bss slot, ahead of OneOnLogHalf.
+struct WorldRoomCounterPad
+{
+	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5, Pad6, Pad7, Pad8, Pad9, Pad10;
+};
+
 #define LIGHTEN_MARKER_COLOUR(colour)                                                                                  \
 	(0xff000000 | (((colour & 0xff0000) + ((0xff0000 - (colour & 0xff0000)) * 64 >> 8)) & 0xff0000) |                  \
 	 (((colour & 0xff00) + ((0xff00 - (colour & 0xff00)) * 64 >> 8)) & 0xff00) |                                       \
