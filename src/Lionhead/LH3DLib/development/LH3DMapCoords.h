@@ -87,4 +87,13 @@ struct LH3DMapCoords
 	}
 };
 
+class JustXZ
+{
+public:
+	int32_t x; /* 0x0 */
+	int32_t z;
+};
+
+static_assert(sizeof(JustXZ) == 0x8, "Data type is of wrong size");
+
 #endif /* BW1_DECOMP_LH3D_MAP_COORDS_INCLUDED_H */

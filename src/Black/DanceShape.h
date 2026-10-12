@@ -3,6 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 
+#include <Lionhead/LH3DLib/development/LH3DMapCoords.h> /* For class JustXZ */
+
 #define DANCE_SHAPE_NUM_POINTS  256
 #define DANCE_SHAPE_NAME_LENGTH 64
 #define DANCE_SHAPE_RADIUS      0x10000
@@ -58,15 +60,6 @@ enum DANCE_SHAPE
 	DANCE_SHAPE_LETTER_Z,
 	DANCE_SHAPE_LAST
 };
-
-class JustXZ
-{
-public:
-	long x;
-	long z;
-};
-
-static_assert(sizeof(JustXZ) == 0x8, "Data type is of wrong size");
 
 class MakeShape
 {
