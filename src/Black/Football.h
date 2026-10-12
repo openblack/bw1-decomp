@@ -78,19 +78,30 @@ public:
 	uint8_t              field_0xc8[0x7c];
 	LHListNode<Football> next;
 	uint32_t             field_0x148;
-	MapCoords            field_0x14c[12];
+	LH3DMapCoords        field_0x14c[12];
+	uint32_t             Functional;
+	uint8_t              field_0x1e0[0x20];
+	FOOTBALL_STATES      PlayState;
 #if defined(VERSION_BW1W100)
-	uint8_t field_0x1dc[0x44];
+	uint8_t field_0x204[0x1c];
 #else
-	uint8_t field_0x1dc[0x48];
+	uint8_t field_0x204[0x20];
 #endif
 	LHLinkedList<Villager*> HomeTeam;
 	LHLinkedList<Villager*> AwayTeam;
 	LHLinkedList<Villager*> field_0x234[2];
 	Object*                 MarkTargets[2];
-	uint8_t                 field_0x24c[0x10];
+	uint8_t                 field_0x24c[0x8];
+	Villager*               BallChaser;
+	Ball*                   TheBall;
 	LHPTR<Villager>         MexicanWave[40];
-	uint8_t                 field_0x2fc[0x1c];
+	uint32_t                field_0x2fc;
+	uint32_t                GoalTimer;
+	uint32_t                field_0x304;
+	uint32_t                PlayStateTimer;
+	float                   field_0x30c;
+	uint32_t                field_0x310;
+	uint32_t                field_0x314;
 
 	// Override methods
 
@@ -100,8 +111,6 @@ public:
 	virtual void MakeFunctional();
 	// BW1W120 00531300 BW1M119 012bc180
 	virtual bool32_t CanBeHiddenIn();
-	// BW1W120 00531330 BW1M119 012bbf00
-	virtual ~Football();
 	// BW1W120 00531360 BW1M119 012c0c20
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00532220 BW1M119 012bf2b0
@@ -143,6 +152,9 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	Football() : SavedThing(NULL) {}
+	// BW1W120 00531190 BW1M119 012c0ca0
+	Football(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
+	         int wood);
 
 	// Static methods
 
@@ -170,6 +182,8 @@ public:
 	int GetHowCloseToGoalIndex(Villager* villager);
 	// BW1W120 00534860 BW1M119 012c1840
 	void SetPlayState(FOOTBALL_STATES state);
+	// BW1W120 00531ce0 BW1M119 012bfa80
+	void SetToZero();
 };
 
 #endif /* BW1_DECOMP_FOOTBALL_INCLUDED_H */

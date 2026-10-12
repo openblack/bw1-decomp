@@ -34,3 +34,19 @@ bool32_t Pot::IsResourceStore(RESOURCE_TYPE param_1)
 {
 	return false;
 }
+
+PileResource::PileResource(const MapCoords& coords, const GPotInfo* info, uint32_t resource, MultiMapFixed* parent,
+                           Town* town, int param_6, float y_angle, float scale)
+	: PotStructure(coords, info, resource, parent, town, param_6, y_angle, scale)
+{
+}
+
+bool32_t PileResource::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* info)
+{
+	return true;
+}
+
+bool32_t PileResource::NetworkUnfriendlyEndLockedSelect()
+{
+	return true;
+}

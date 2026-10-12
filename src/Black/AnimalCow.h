@@ -26,7 +26,7 @@ public:
 	// BW1W120 0041d4a0 BW1M119 0117b370
 	virtual bool32_t StartToEat();
 	// BW1W120 0041d0e0 BW1M119 01137400
-	virtual uint32_t IsOkToBeShepherd();
+	virtual bool32_t IsOkToBeShepherd();
 	// BW1W120 0041d310 BW1M119 0106ad70
 	virtual uint32_t ReactToAnimalNeeds();
 	// BW1W120 0041d440 BW1M119 0106b4d0
@@ -56,12 +56,14 @@ public:
 	// BW1W120 0041d0f0 BW1M119 0117ad70
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041d110 BW1M119 01137440
-	virtual bool32_t IsCow(Creature* param_1);
+	virtual bool32_t IsCow(Creature* creature);
 	// BW1W120 0041d1b0 BW1M119 010113b0
 	virtual bool32_t DecideWhatToDo();
 
 	// BW1W120 0055e630 BW1M119 0130e070
 	Cow() {}
+	// BW1W120 0041d0b0 BW1M119 0117b700
+	Cow(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_COW_INCLUDED_H */

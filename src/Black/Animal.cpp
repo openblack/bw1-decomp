@@ -7,6 +7,15 @@
 #include "Utils.h"
 #include "AnimalInfo.h"
 #include "AnimalStateTableInfo.h"
+#include "Game3DObject.h" /* For Game3DObject */
+
+#if defined(VERSION_BW1W100)
+#define ANIMAL_FILE "C:\\dev\\black\\Animal.cpp"
+#elif defined(VERSION_BW1W110)
+#define ANIMAL_FILE "C:\\dev\\Black\\Animal.cpp"
+#else
+#define ANIMAL_FILE "C:\\dev\\MP\\Black\\Animal.cpp"
+#endif
 
 void Animal::SetStateSpeed() {}
 
@@ -89,9 +98,9 @@ Town* Object::GetTown()
 	return NULL;
 }
 
-uint32_t Animal::IsOkToBeShepherd()
+bool32_t Animal::IsOkToBeShepherd()
 {
-	return 0;
+	return false;
 }
 
 uint32_t Animal::IAmABird()
@@ -211,4 +220,15 @@ uint32_t Animal::StalkAnimation()
 int Animal::CallOutofAnimationFunction(uint8_t state)
 {
 	return ANM_INVALID;
+}
+
+PieceVillager* PieceVillager::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
+{
+	PieceVillager* villager = new (ANIMAL_FILE, 2696) PieceVillager(coords, info, age);
+	if (villager != NULL)
+	{
+		villager->CallVirtualFunctionsForCreation(coords);
+		villager->Game3dObject->SetHumanShadowed(true);
+	}
+	return villager;
 }

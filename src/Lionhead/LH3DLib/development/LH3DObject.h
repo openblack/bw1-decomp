@@ -158,7 +158,7 @@ public:
 	virtual bool32_t            IsInBuild();
 	virtual void                SetInBuild(int param_1);
 	virtual bool32_t            IsHumanShadowed(); /* 0xc0 */
-	virtual void __fastcall     SetHumanShadowed(int param_1);
+	virtual void __fastcall     SetHumanShadowed(bool32_t human_shadowed);
 	virtual bool32_t            IsGlowing();
 	virtual void                SetIsGlowing(int param_1);
 	virtual bool32_t            IsSuperSortedPolys(); /* 0xd0 */

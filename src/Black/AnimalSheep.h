@@ -8,6 +8,7 @@
 
 // Forward Declares
 
+class GAnimalInfo;
 class Base;
 class GameThing;
 class Object;
@@ -46,6 +47,13 @@ public:
 
 	// BW1W120 0055e6f0 BW1M119 0130e270
 	Sheep() {}
+	// BW1W120 inlined BW1M119 0117b1f0
+	Sheep(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Cow(coords, info, age) {}
+
+	// Static methods
+
+	// BW1W120 0041d4d0 BW1M119 0117b270
+	static Sheep* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_SHEEP_INCLUDED_H */

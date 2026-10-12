@@ -18,6 +18,7 @@
 
 class Base;
 class Creature;
+class GAnimalInfo;
 class GInterfaceStatus;
 class GPlayer;
 class GameOSFile;
@@ -185,7 +186,7 @@ public:
 	// BW1W120 00418450 BW1M119 010060e0
 	virtual uint32_t CheckNeeds();
 	// BW1W120 00417520 BW1M119 0113bc20
-	virtual uint32_t IsOkToBeShepherd();
+	virtual bool32_t IsOkToBeShepherd();
 	// BW1W120 0041a3e0 BW1M119 0116fcf0
 	virtual uint32_t AddToFlock();
 	// BW1W120 0041b0f0 BW1M119 0116ea00
@@ -372,6 +373,8 @@ public:
 
 	// BW1W120 0055e400 BW1M119 0130e110
 	Animal() { SetToZero(); }
+	// BW1W120 00416eb0 BW1M119 01175200
+	Animal(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 
 	// BW1W120 00417900 BW1M119 01175150
 	void SetToZero();

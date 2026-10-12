@@ -1,6 +1,14 @@
 #include "MobileStatic.h"
 #include "MobileStaticInfo.h"
 
+#if defined(VERSION_BW1W100)
+#define MOBILE_STATIC_FILE "C:\\dev\\black\\MobileStatic.cpp"
+#elif defined(VERSION_BW1W110)
+#define MOBILE_STATIC_FILE "C:\\dev\\Black\\MobileStatic.cpp"
+#else
+#define MOBILE_STATIC_FILE "C:\\dev\\MP\\Black\\MobileStatic.cpp"
+#endif
+
 GMobileStaticInfo GMobileStaticInfo::Infos[MOBILE_STATIC_INFO_LAST];
 
 bool32_t MobileStatic::CanBecomeAPhysicsObject()
@@ -21,4 +29,11 @@ SCRIPT_OBJECT_TYPE MobileStatic::GetScriptObjectType()
 bool MobileStatic::ChecksVerticesVObjects()
 {
 	return true;
+}
+
+GBaseOnly* GBaseOnly::Create(const MapCoords& coords, const GObjectInfo* info)
+{
+	GBaseOnly* base = new (MOBILE_STATIC_FILE, 583) GBaseOnly(coords, info);
+	base->CallVirtualFunctionsForCreation(coords);
+	return base;
 }
