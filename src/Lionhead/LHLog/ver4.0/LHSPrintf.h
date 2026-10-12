@@ -7,10 +7,7 @@
 
 #include "LHLogExport.h"
 
-enum
-{
-	LH_SPRINTF_BUFFER_LENGTH = 0x400,
-};
+#define LH_SPRINTF_BUFFER_LENGTH 0x400
 
 // BW1W120 10002780 BW1M119 0116e2a0 (LHCombined Release)
 LH_LOG_API int UNICODE_vsprintf(wchar_t* output, wchar_t* format, char* args);

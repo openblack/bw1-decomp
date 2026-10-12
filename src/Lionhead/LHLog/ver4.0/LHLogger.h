@@ -23,13 +23,10 @@ enum LH_LOG_LEVEL
 	LH_LOG_LEVEL_NONE = 0,
 };
 
-enum
-{
-	LH_LOG_MAX_ERROR_CODES = 1000,
-	LH_THREAD_PRIORITY_UNCHANGED = -255,
-};
+#define LH_LOG_MAX_ERROR_CODES       1000
+#define LH_THREAD_PRIORITY_UNCHANGED (-255)
 
-enum
+enum LH_LOG_LOCAL_ERROR
 {
 	LH_LOG_LOCAL_ERROR_NONE = 0,
 	LH_LOG_LOCAL_ERROR_NOT_INITIALISED = 1,
@@ -135,6 +132,11 @@ public:
 	static void SetDLLModule(void* module) { DLLHModule = module; }
 	// BW1W120 10001120 BW1M119 null
 	LHLogPropsSet* GetLogProps() { return LogProps; }
+
+	// BW1W120 100279c0 BW1M119 01389500 (LHCombined Release)
+	static unsigned long TlsIndex;
+	// BW1W120 100279d4 BW1M119 null
+	static void* DLLHModule;
 #else
 	// BW1W120 10001100 BW1M119 null
 	void* GetDLLHModule();
@@ -142,13 +144,6 @@ public:
 	static void SetDLLModule(void* module);
 	// BW1W120 10001120 BW1M119 null
 	LHLogPropsSet* GetLogProps();
-#endif
-
-#ifdef _LH_LOG_LIB_
-	// BW1W120 100279c0 BW1M119 01389500 (LHCombined Release)
-	static unsigned long TlsIndex;
-	// BW1W120 100279d4 BW1M119 null
-	static void* DLLHModule;
 #endif
 
 private:
@@ -178,13 +173,6 @@ private:
 };
 
 static_assert(sizeof(LHLogger) == 0x818, "LHLogger size is incorrect");
-
-#ifdef _LH_LOG_LIB_
-static char* LHLogLibraryName;
-
-// BW1W120 10002cd0 BW1M119 null
-bool32_t PassesFilter(char* filter, bool32_t invert, char* string, ...);
-#endif
 
 // BW1W120 100279e0 BW1M119 null
 LH_LOG_API extern LHLogger LHSyslog;
