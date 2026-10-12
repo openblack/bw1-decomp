@@ -4,12 +4,12 @@
 #include "ColourConstants.h" /* For White */
 #include "Chain.h"
 #include "PSysModifiers.h"
-#include "/mnt/c/codex/decompile/bw1-decomp/src/Black/Chain.h"
-#include "/mnt/c/codex/decompile/bw1-decomp/src/Black/PSysModifiers.h"
-#include "/mnt/c/codex/decompile/bw1-decomp/src/Black/PSysPCreator.h"
-#include "/mnt/c/codex/decompile/bw1-decomp/src/Black/Particle3DAnim.h"
-#include "/mnt/c/codex/decompile/bw1-decomp/src/Black/Particle3DObj.h"
-#include "/mnt/c/codex/decompile/bw1-decomp/src/Black/ParticleLightMap.h"
+#include "Chain.h"
+#include "PSysModifiers.h"
+#include "PSysPCreator.h"
+#include "Particle3DAnim.h"
+#include "Particle3DObj.h"
+#include "ParticleLightMap.h"
 
 uint32_t Chain::GetSaveType()
 {
