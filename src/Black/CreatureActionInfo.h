@@ -16,33 +16,33 @@ class Base;
 class CreatureActionInfo : public GBaseInfo
 {
 public:
-	float            StrengthGain;
-	float            EnergyCost;
-	float            ExhaustionCost;
-	uint8_t          field_0x1c[0x8];
-	char             Name[0x20];
-	uint8_t          field_0x44[0x60];
-	uint32_t         NeedsObjectToActOn;
-	uint32_t         PlanIndex;
-	uint32_t         KnownAboutCategory;
-	uint32_t         KnownAboutCategory2;
-	uint32_t         MagicType;
-	uint32_t         ExcludesCarriedObject;
-	uint8_t          field_0xbc[0x8];
-	CREATURE_DESIRES Desire;
-	uint8_t          field_0xc8[0x8];
-	float            CompletionFactor;
-	uint8_t          field_0xd4[0x4];
-	uint32_t         CompletionEnabled;
-	uint8_t          field_0xdc[0x4];
-	float            LearnWindow;
-	float            InitialOpinion;
-	uint8_t          field_0xe8[0x4];
-	uint32_t         WorthFollowing;
-	uint8_t          field_0xf0[0x10];
-	uint32_t         Learnable;
-	uint32_t         CanBeStompedOn;
-	uint8_t          field_0x108[0x8];
+	float                       StrengthGain;
+	float                       EnergyCost;
+	float                       ExhaustionCost;
+	uint8_t                     field_0x1c[0x8];
+	char                        Name[0x20];
+	uint8_t                     field_0x44[0x60];
+	bool32_t                    NeedsObjectToActOn;
+	uint32_t                    PlanIndex;
+	CREATURE_ACTION_KNOWN_ABOUT KnownAboutCategory;
+	CREATURE_ACTION_KNOWN_ABOUT KnownAboutCategory2;
+	MAGIC_TYPE                  MagicType;
+	bool32_t                    ExcludesCarriedObject;
+	uint8_t                     field_0xbc[0x8];
+	CREATURE_DESIRES            Desire;
+	uint8_t                     field_0xc8[0x8];
+	float                       CompletionFactor;
+	uint8_t                     field_0xd4[0x4];
+	bool32_t                    CompletionEnabled;
+	uint8_t                     field_0xdc[0x4];
+	float                       LearnWindow;
+	float                       InitialOpinion;
+	uint8_t                     field_0xe8[0x4];
+	bool32_t                    WorthFollowing;
+	uint8_t                     field_0xf0[0x10];
+	bool32_t                    Learnable;
+	bool32_t                    CanBeStompedOn;
+	uint8_t                     field_0x108[0x8];
 
 	// Override methods
 
