@@ -72,6 +72,8 @@ struct Temple
 
 	// BW1W120 00793ee0 BW1M119 0153fe70
 	void Update();
+	// BW1W120 00794830 BW1M119 0153f3f0
+	void ProcessKey(LH_KEY key, unsigned short modifier);
 	// BW1W120 00794370 BW1M119 0153f7c0
 	void Draw();
 	// BW1W120 00794a20 BW1M119 0153f010

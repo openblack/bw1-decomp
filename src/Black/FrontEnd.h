@@ -36,6 +36,8 @@ struct SetupTabButton;
 
 // BW1W120 0053b4a0 BW1M119 015ccb10
 char* WCHAR2CHAR(char16_t* text);
+// BW1W120 00540020
+bool fn_00540020();
 
 struct FrontEnd
 {
@@ -49,6 +51,8 @@ struct FrontEnd
 	static bool CursorOn;
 	// BW1W120 00cd065c
 	static MainMenu* MainMenuDialog;
+	// BW1W120 00cd063c
+	static DialogBoxBase* Dat_00CD063C;
 	// BW1W120 00cd0654
 	static TattooEditor* TattooDialog;
 	// BW1W120 00cd0b0c

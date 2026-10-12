@@ -104,6 +104,8 @@ struct Temple;
 class Town;
 class LHVideoPlayer;
 class LHMail;
+struct SetupBox;
+struct SetupControl;
 class FallingSpell;
 
 enum GAME_FLAGS
@@ -139,6 +141,14 @@ public:
 	static bool ScriptRebootRequested;
 	// BW1W120 00d46a78
 	static bool32_t DebugDrawCreatureBeliefs;
+	// BW1W120 00cd3af0
+	static SetupBox* Dat_00CD3AF0;
+	// BW1W120 00d01984
+	static bool Dat_00D01984;
+	// BW1W120 00d019d4
+	static bool32_t Dat_00D019D4;
+	// BW1W120 00fa51db
+	static bool Dat_00FA51DB;
 	// TODO: Original names are unrecovered; shared with tutorial and packet processing.
 	// BW1W120 00d019a4
 	static uint32_t TutorialState;
@@ -470,6 +480,8 @@ public:
 	GPlayer* GetNextPlayerWithNoCreature(GPlayer* param_1);
 	// BW1W120 00550a60 BW1M119 inlined
 	GPlayer* GetPlayer(PLAYER_NAME player_name);
+	// BW1W120 00550c50 BW1M119 010a7990
+	void SetPacket(PACKET_TYPE type, unsigned short param_2, unsigned short param_3);
 	// BW1W120 00550dd0 BW1M119 0157b2a0
 	void SetPacket(PACKET_TYPE type);
 	// BW1W120 00551690 BW1M119 010086d0
@@ -522,9 +534,15 @@ public:
 	void ProcessKey(LH_KEY key, unsigned short modifier);
 	// BW1W120 0063f710 BW1M119 0102af40
 	void ProcessMapKeys();
+	// BW1W120 0063ee10 BW1M119 013e3b80
+	void SwitchProfile(LH_KEY key);
 	// TODO: Original name unknown; callers supply this, callee selects LHInetWeather singleton.
 	// BW1W120 005557d0
 	void fn_005557D0();
+	// BW1W120 0054b1a0
+	static void __stdcall fn_0054B1A0(int message, SetupBox* box, SetupControl* control, int data1, int data2);
+	// BW1W120 0054da00
+	void fn_0054DA00();
 	// BW1W120 0063f830 BW1M119 010a1090
 	uint32_t ProcessBindableKeys(LH_KEY param_1, LH_KEY param_2, unsigned long param_3);
 	// BW1W120 0063f940 BW1M119 010a1200
@@ -540,6 +558,10 @@ template <typename T> inline void GTPointer<T>::SetGameTurnValidated()
 void SetTurnOffMouseMove(bool turn_off);
 // BW1W120 0054cb10 BW1M119 010cf8c0
 void DoOKGameRequestor(char16_t* text);
+// BW1W120 0054cb50
+void fn_0054CB50(char16_t* text);
+// BW1W120 0054cb90
+void fn_0054CB90(char16_t* text);
 // Milliseconds since the last frame, at most half a second.
 // BW1W120 005557e0 BW1M119 010caca0
 int GetAlexTimeInc();

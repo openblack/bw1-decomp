@@ -23,6 +23,9 @@ public:
 	static int MPDebugLoadState;
 	// BW1W120 00c20d60
 	static LHScriptCommandX<char> MapCommands[];
+	// Written by LoadMapFeatures; extent not established.
+	// BW1W120 00d99648
+	static char Dat_00D99648[];
 	// BW1W120 00714d10 BW1M119 01513e60
 	static LH_RETURN __cdecl MapCommandProcess(long command, LHScriptPramX<char>* params);
 	// win1.41 00715180 mac 105091d0 GSetup::FeatureMapCommandProcess<c>(long, LHScriptPramX<c> *)

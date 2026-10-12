@@ -173,6 +173,12 @@ public:
 	void ProcessFrameUpdates();
 	// BW1W120 005db710 BW1M119 01074d00
 	bool32_t IsPlayBack(uint32_t playback) const;
+	// BW1W120 005cee20 BW1M119 010059f0
+	bool32_t InGameEditor() const;
+	// BW1W120 005d03d0
+	void fn_005D03D0();
+	// BW1W120 005d0410
+	void fn_005D0410();
 	// BW1W120 inlined BW1M119 010789b0
 	CHand* GetRenderHand() { return hand.Get(); }
 	// BW1W120 005d0610 BW1M119 01086440
