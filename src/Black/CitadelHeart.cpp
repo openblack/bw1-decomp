@@ -28,6 +28,7 @@
 #include "Alignment.h"
 #include "Audio.h"
 #include "Camera.h"
+#include "CameraInline.h"
 #include "BuildingSite.h"
 #include "CitadelBuildingSite.h"
 #include "CameraExclusion.h"
@@ -1142,11 +1143,6 @@ void CitadelHeart::DrawCreaturePen()
 			}
 		}
 	}
-}
-
-inline void GCamera::GetPosition(LHPoint& pos)
-{
-	pos = LH3DTech::g_camera.pos;
 }
 
 void CitadelHeart::DrawBeam()

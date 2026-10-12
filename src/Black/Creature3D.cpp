@@ -32,6 +32,7 @@
 #include "AnimalDove.h"
 #include "Audio.h"
 #include "Camera.h"
+#include "CameraInline.h"
 #include "CameraExclusion.h"
 #include "CameraModeNew3.h"
 #include "ControlHand.h"
@@ -91,12 +92,6 @@ const int BruiseHealTimes[8] = {32, 64, 64, 64, 64, 64, 64, 1};
 // Time step (seconds per game turn) and acceleration of a creature moving along its route (ProcessMoveStraight).
 const float MoveTimeStep = 0.1f;
 const float MoveAcceleration = 12.0f;
-
-// Abode.cpp defines these the same way; Camera.h only declares them.
-inline void GCamera::GetPosition(LHPoint& pos)
-{
-	pos = LH3DTech::g_camera.pos;
-}
 
 inline float GCamera::GetDistance(const LHPoint& point)
 {

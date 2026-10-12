@@ -22,6 +22,7 @@
 #include "Alignment.h"
 #include "Arena.h"
 #include "Camera.h"
+#include "CameraInline.h"
 #include "Citadel.h"
 #include "Creature.h"
 #include "CreatureMental.h"
@@ -97,11 +98,6 @@
 
 #define DANCE_MUSIC_DISTANCE     75.0f
 #define DANCE_MUSIC_HEIGHT_RANGE 60.0f
-
-inline void GCamera::GetPosition(LHPoint& pos)
-{
-	pos = *LH3DTech::GetCameraPosition();
-}
 
 inline void GCamera::GetFocus(LHPoint& focus)
 {

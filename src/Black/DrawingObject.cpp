@@ -42,6 +42,7 @@ static const float UVTextureScale = 1.0f / 256.0f;
 #include <Lionhead/LHLib/ver5.0/LHCollide.h>
 #include "Audio.h"
 #include "Camera.h"
+#include "CameraInline.h"
 #include "SoundMap.h"
 #include "VillagerInfo.h"
 #include "HelpSystem.h"
@@ -276,11 +277,6 @@ static inline void DrawWithColor(Object* self, unsigned long color, unsigned lon
 	Game3DObject* object = self->Game3dObject;
 	object->CombineColorFromPos(color, specular);
 	object->AddForDrawing(self);
-}
-
-inline void GCamera::GetPosition(LHPoint& pos)
-{
-	pos = *LH3DTech::GetCameraPosition();
 }
 
 void Abode::Draw()

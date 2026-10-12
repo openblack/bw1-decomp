@@ -45,6 +45,7 @@
 #include "SoundGuidance.h"
 #include "EffectValues.h"
 #include "Camera.h"
+#include "CameraInline.h"
 #include "ControlHand.h"
 #include "Global.h"
 #include "Audio.h"
@@ -86,11 +87,6 @@
 #define ABODE_LINE(line)                                                                                               \
 	((line) - ((line) < 1019 ? 1 : (line) < 1359 ? 13 : (line) < 1856 ? 71 : (line) < 2210 ? 78 : 83))
 #endif
-
-inline void GCamera::GetPosition(LHPoint& pos)
-{
-	pos = LH3DTech::g_camera.pos;
-}
 
 inline float GCamera::GetDistance(const LHPoint& point)
 {
