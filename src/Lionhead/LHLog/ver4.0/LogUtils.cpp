@@ -86,7 +86,7 @@ HKEY OpenOrCreateRegistryKey(char* key)
 	return result;
 }
 
-LH_RETURN RegistryRetrieveVal(char* key, char* value, unsigned char* data, unsigned long* val_size, unsigned long type)
+LH_RETURN RegistryRetrieveVal(char* key, char* value, uint8_t* data, unsigned long* val_size, unsigned long type)
 {
 	LH_RETURN     result = LH_FAIL;
 	unsigned long bufferSize = *val_size;
@@ -95,8 +95,8 @@ LH_RETURN RegistryRetrieveVal(char* key, char* value, unsigned char* data, unsig
 	LH_ASSERT_FORCED(*val_size<10000, "Tim: Have you passed an uninitialised length to a registry routine?", 125);
 	// clang-format on
 
-	unsigned char* buffer = (unsigned char*)malloc(*val_size);
-	unsigned long  dataSize = *val_size;
+	uint8_t*      buffer = (uint8_t*)malloc(*val_size);
+	unsigned long dataSize = *val_size;
 	memset(buffer, 0, dataSize);
 
 	HKEY hkey = OpenRegistryKey(key);
@@ -116,7 +116,7 @@ LH_RETURN RegistryRetrieveVal(char* key, char* value, unsigned char* data, unsig
 		LONG error = RegEnumValueA(hkey, index, name, &nameSize, NULL, &valueType, buffer, &dataSize);
 		if (error == ERROR_MORE_DATA)
 		{
-			unsigned char* largeBuffer = (unsigned char*)operator new(dataSize);
+			uint8_t* largeBuffer = (uint8_t*)operator new(dataSize);
 			memset(largeBuffer, 0, dataSize);
 			error = RegEnumValueA(hkey, index, name, &nameSize, NULL, &valueType, largeBuffer, &dataSize);
 			if (error == ERROR_SUCCESS)
@@ -162,7 +162,7 @@ LH_RETURN RegistryRetrieveVal(char* key, char* value, unsigned char* data, unsig
 	return result;
 }
 
-LH_RETURN RegistrySetVal(char* key, char* value, unsigned char* data, unsigned long size, unsigned long type)
+LH_RETURN RegistrySetVal(char* key, char* value, uint8_t* data, unsigned long size, unsigned long type)
 {
 	HKEY hkey = OpenOrCreateRegistryKey(key);
 	if (hkey == NULL)
@@ -181,50 +181,50 @@ LH_RETURN RegistrySetVal(char* key, char* value, unsigned char* data, unsigned l
 LH_RETURN RegistryRetrieveULong(char* key, char* value, unsigned long* out)
 {
 	unsigned long size = sizeof(unsigned long);
-	return RegistryRetrieveVal(key, value, (unsigned char*)out, &size, REG_DWORD);
+	return RegistryRetrieveVal(key, value, (uint8_t*)out, &size, REG_DWORD);
 }
 
 LH_RETURN RegistrySetULong(char* key, char* value, unsigned long data)
 {
-	return RegistrySetVal(key, value, (unsigned char*)&data, sizeof(data), REG_DWORD);
+	return RegistrySetVal(key, value, (uint8_t*)&data, sizeof(data), REG_DWORD);
 }
 
 LH_RETURN RegistryRetrieveDouble(char* key, char* value, double* out)
 {
 	unsigned long size = sizeof(double);
-	return RegistryRetrieveVal(key, value, (unsigned char*)out, &size, REG_BINARY);
+	return RegistryRetrieveVal(key, value, (uint8_t*)out, &size, REG_BINARY);
 }
 
 LH_RETURN RegistrySetDouble(char* key, char* value, double data)
 {
-	return RegistrySetVal(key, value, (unsigned char*)&data, sizeof(data), REG_BINARY);
+	return RegistrySetVal(key, value, (uint8_t*)&data, sizeof(data), REG_BINARY);
 }
 
 LH_RETURN RegistryRetrieveINT64(char* key, char* value, __int64* out)
 {
 	unsigned long size = sizeof(__int64);
-	return RegistryRetrieveVal(key, value, (unsigned char*)out, &size, REG_BINARY);
+	return RegistryRetrieveVal(key, value, (uint8_t*)out, &size, REG_BINARY);
 }
 
 LH_RETURN RegistrySetINT64(char* key, char* value, __int64 data)
 {
-	return RegistrySetVal(key, value, (unsigned char*)&data, sizeof(data), REG_BINARY);
+	return RegistrySetVal(key, value, (uint8_t*)&data, sizeof(data), REG_BINARY);
 }
 
 LH_RETURN RegistryRetrieveString(char* key, char* value, char* out, unsigned long* size)
 {
-	return RegistryRetrieveVal(key, value, (unsigned char*)out, size, REG_SZ);
+	return RegistryRetrieveVal(key, value, (uint8_t*)out, size, REG_SZ);
 }
 
 LH_RETURN RegistrySetString(char* key, char* value, char* data)
 {
-	return RegistrySetVal(key, value, (unsigned char*)data, strlen(data), REG_SZ);
+	return RegistrySetVal(key, value, (uint8_t*)data, strlen(data), REG_SZ);
 }
 
 LH_RETURN RegistryRetrieveWString(char* key, char* value, wchar_t* out, unsigned long* size)
 {
 	*size = *size * 2 + 2;
-	LH_RETURN result = RegistryRetrieveVal(key, value, (unsigned char*)out, size, REG_BINARY);
+	LH_RETURN result = RegistryRetrieveVal(key, value, (uint8_t*)out, size, REG_BINARY);
 	*size = *size / 2 - 1;
 	out[*size] = L'\0';
 	return result;
@@ -232,26 +232,26 @@ LH_RETURN RegistryRetrieveWString(char* key, char* value, wchar_t* out, unsigned
 
 LH_RETURN RegistrySetWString(char* key, char* value, wchar_t* data)
 {
-	return RegistrySetVal(key, value, (unsigned char*)data, wcslen(data) * 2 + 2, REG_BINARY);
+	return RegistrySetVal(key, value, (uint8_t*)data, wcslen(data) * 2 + 2, REG_BINARY);
 }
 
 LH_RETURN RegistryRetrieveGUID(char* key, char* value, GUID* out)
 {
 	unsigned long size = sizeof(GUID);
-	return RegistryRetrieveVal(key, value, (unsigned char*)out, &size, REG_BINARY);
+	return RegistryRetrieveVal(key, value, (uint8_t*)out, &size, REG_BINARY);
 }
 
 LH_RETURN RegistrySetGUID(char* key, char* value, GUID* data)
 {
-	return RegistrySetVal(key, value, (unsigned char*)data, sizeof(GUID), REG_BINARY);
+	return RegistrySetVal(key, value, (uint8_t*)data, sizeof(GUID), REG_BINARY);
 }
 
-LH_RETURN RegistryRetrieveData(char* key, char* value, unsigned char* out, unsigned long* size)
+LH_RETURN RegistryRetrieveData(char* key, char* value, uint8_t* out, unsigned long* size)
 {
 	return RegistryRetrieveVal(key, value, out, size, REG_BINARY);
 }
 
-LH_RETURN RegistrySetData(char* key, char* value, unsigned char* data, unsigned long size)
+LH_RETURN RegistrySetData(char* key, char* value, uint8_t* data, unsigned long size)
 {
 	return RegistrySetVal(key, value, data, size, REG_BINARY);
 }

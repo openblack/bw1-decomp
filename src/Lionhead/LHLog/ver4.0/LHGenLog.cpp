@@ -471,7 +471,7 @@ char* LHLogger::GetFileName(char* path)
 		}
 		path = filename;
 	}
-	unsigned short i = strlen(path) - 1;
+	uint16_t i = strlen(path) - 1;
 	while (path[i] != '\\' && path[i] != '/' && i != 0)
 	{
 		i--;
@@ -738,8 +738,7 @@ static void __special_debug_thread(void* data)
 	free(details);
 }
 
-unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), unsigned int stack_size, void* argument,
-                             long priority)
+unsigned long _lhbeginthread(char* name, void(__cdecl* proc)(void*), uint32_t stack_size, void* argument, long priority)
 {
 	LHThreadDetails* details = (LHThreadDetails*)malloc(sizeof(LHThreadDetails));
 	details->Name = _strdup(name);
