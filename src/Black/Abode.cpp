@@ -1999,12 +1999,12 @@ bool GameThing::CanBecomeArtifact()
 	return false;
 }
 
-int GameThingWithPos::IsMoving() const
+bool32_t GameThingWithPos::IsMoving() const
 {
-	return 0;
+	return false;
 }
 
-int GameThingWithPos::IsObject() const
+bool32_t GameThingWithPos::IsObject() const
 {
-	return 0;
+	return false;
 }
