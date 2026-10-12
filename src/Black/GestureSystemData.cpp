@@ -155,119 +155,15 @@ int GestureSystemData::fn_00579090(int param_1, int param_2)
 	return 0;
 }
 
-LH_FILE_RESULT GestureSystemData::Serialise(LHOSFile* file, int saving)
+LH_FILE_RESULT GestureSystemData::Serialise(LHOSFile* file, bool32_t saving)
 {
-	if (saving == 0)
-	{
-		if (file->ReadChecked(Samples, sizeof(Samples)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	else
-	{
-		if (file->WriteChecked(Samples, sizeof(Samples)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	if (saving == 0)
-	{
-		if (file->ReadChecked(&SampleCount, sizeof(uint32_t)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	else
-	{
-		if (file->WriteChecked(&SampleCount, sizeof(uint32_t)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	if (saving == 0)
-	{
-		if (file->ReadChecked(&Gesture, sizeof(uint32_t)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	else
-	{
-		if (file->WriteChecked(&Gesture, sizeof(uint32_t)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	if (saving == 0)
-	{
-		if (file->ReadChecked(&field_0x64a, sizeof(uint32_t)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	else
-	{
-		if (file->WriteChecked(&field_0x64a, sizeof(uint32_t)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	if (saving == 0)
-	{
-		if (file->ReadChecked(&CheckDirection, sizeof(CheckDirection)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	else
-	{
-		if (file->WriteChecked(&CheckDirection, sizeof(CheckDirection)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	if (saving == 0)
-	{
-		if (file->ReadChecked(&AllowReverse, sizeof(AllowReverse)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	else
-	{
-		if (file->WriteChecked(&AllowReverse, sizeof(AllowReverse)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	if (saving == 0)
-	{
-		if (file->ReadChecked(&CheckAspectRatio, sizeof(CheckAspectRatio)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	else
-	{
-		if (file->WriteChecked(&CheckAspectRatio, sizeof(CheckAspectRatio)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	if (saving == 0)
-	{
-		if (file->ReadChecked(&AspectRatio, sizeof(AspectRatio)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
-	else
-	{
-		if (file->WriteChecked(&AspectRatio, sizeof(AspectRatio)) != LH_FILE_RESULT_OK)
-		{
-			return LH_FILE_RESULT_ERROR;
-		}
-	}
+	LH_FILE_SERIALISE(file, Samples, sizeof(Samples), saving);
+	LH_FILE_SERIALISE(file, &SampleCount, sizeof(uint32_t), saving);
+	LH_FILE_SERIALISE(file, &Gesture, sizeof(uint32_t), saving);
+	LH_FILE_SERIALISE(file, &field_0x64a, sizeof(uint32_t), saving);
+	LH_FILE_SERIALISE(file, &CheckDirection, sizeof(CheckDirection), saving);
+	LH_FILE_SERIALISE(file, &AllowReverse, sizeof(AllowReverse), saving);
+	LH_FILE_SERIALISE(file, &CheckAspectRatio, sizeof(CheckAspectRatio), saving);
+	LH_FILE_SERIALISE(file, &AspectRatio, sizeof(AspectRatio), saving);
 	return LH_FILE_RESULT_OK;
 }

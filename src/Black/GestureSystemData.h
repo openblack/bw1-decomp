@@ -68,7 +68,7 @@ public:
 	// BW1W120 00579090 BW1M119 null
 	int fn_00579090(int param_1, int param_2);
 	// BW1W120 005790a0 BW1M119 015bf800
-	LH_FILE_RESULT Serialise(LHOSFile* file, int saving);
+	LH_FILE_RESULT Serialise(LHOSFile* file, bool32_t saving);
 };
 
 #endif /* BW1_DECOMP_GESTURE_SYSTEM_DATA_INCLUDED_H */
