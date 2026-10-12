@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Build the objdiff base object for a linker-provided unit.
 
-A linker-provided unit is a region the linker writes itself (an export table, a
-debug directory), so no source compiles to it. The build holds back the split
-object for that region and lets the linker fill it. This compares what our
-final image holds there with the original image:
+A linker-provided unit is a region the linker writes itself (an import or export
+table, a debug directory); splits.txt marks its section `linker`, so no source
+compiles to it and its split object stays out of the link. This compares what our final
+image holds at each of the unit's ranges with the original image:
 
 - identical: the output is a copy of the target object, so the unit matches;
 - different: the output is the target object with its section data replaced by
@@ -16,6 +16,7 @@ import shutil
 import struct
 import sys
 from pathlib import Path
+from typing import Dict, Tuple
 
 
 def image_bytes(path: Path, address: int, size: int) -> bytes:
@@ -35,33 +36,65 @@ def image_bytes(path: Path, address: int, size: int) -> bytes:
     sys.exit(f"{path}: {address:#x}+{size:#x} is not inside a section")
 
 
+def parse_range(text: str) -> Tuple[str, int, int]:
+    section, _, span = text.rpartition("=")
+    start, _, end = span.partition(":")
+    return section, int(start, 0), int(end, 0)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--target", type=Path, required=True, help="split target object")
     parser.add_argument("--image", type=Path, required=True, help="our final image")
     parser.add_argument("--original", type=Path, required=True, help="original image")
-    parser.add_argument("--address", type=lambda s: int(s, 0), required=True, help="region start")
+    parser.add_argument(
+        "--range",
+        dest="ranges",
+        type=parse_range,
+        action="append",
+        required=True,
+        help="SECTION=START:END, one per section of the unit",
+    )
     parser.add_argument("-o", "--output", type=Path, required=True)
     args = parser.parse_args()
 
     obj = bytearray(args.target.read_bytes())
+    target = bytes(obj)
     nsec = struct.unpack_from("<H", obj, 2)[0]
     optsz = struct.unpack_from("<H", obj, 16)[0]
-    sections = [20 + optsz + i * 40 for i in range(nsec)]
-    data_sections = [h for h in sections if struct.unpack_from("<I", obj, h + 16)[0]]
-    if len(data_sections) != 1:
-        sys.exit(f"{args.target}: expected one section with data, found {len(data_sections)}")
-    header = data_sections[0]
-    size, raw = struct.unpack_from("<II", obj, header + 16)
+    symtab, nsyms = struct.unpack_from("<II", obj, 8)
+    strtab = symtab + nsyms * 18
+    headers: Dict[str, int] = {}
+    for i in range(nsec):
+        header = 20 + optsz + i * 40
+        name = obj[header : header + 8].rstrip(b"\0").decode("ascii")
+        if name.startswith("/"):
+            # Names longer than 8 characters live in the string table.
+            offset = strtab + int(name[1:])
+            name = obj[offset : obj.index(b"\0", offset)].decode("ascii")
+        if struct.unpack_from("<I", obj, header + 16)[0]:
+            headers[name] = header
 
-    ours = image_bytes(args.image, args.address, size)
-    if ours == image_bytes(args.original, args.address, size):
+    identical = True
+    differing = 0
+    for section, start, end in args.ranges:
+        header = headers.get(section)
+        if header is None:
+            sys.exit(f"{args.target}: no {section} section with data")
+        size, raw = struct.unpack_from("<II", obj, header + 16)
+        if size != end - start:
+            sys.exit(f"{args.target}: {section} is {size:#x} bytes, range {start:#x}-{end:#x} is {end - start:#x}")
+        ours = image_bytes(args.image, start, size)
+        if ours != image_bytes(args.original, start, size):
+            identical = False
+        # Relocated fields keep the target's addends, so they still show as differing.
+        obj[raw : raw + size] = ours
+        differing += sum(a != b for a, b in zip(ours, target[raw : raw + size]))
+
+    if identical:
         shutil.copyfile(args.target, args.output)
         return
-    # Relocated fields keep the target's addends, so they still show as differing.
-    obj[raw : raw + size] = ours
     args.output.write_bytes(obj)
-    differing = sum(a != b for a, b in zip(ours, args.target.read_bytes()[raw : raw + size]))
     print(f"{args.output}: {differing} byte(s) differ from the original image")
 
 

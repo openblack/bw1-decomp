@@ -4,14 +4,14 @@ Sections:
 	.rdata      type:rodata align:4096
 	.rdata$r    type:rodata vaddr:0x10019B58 end:0x10019D48
 	.xdata$x    type:rodata vaddr:0x10019D48 end:0x1001A6F0
-	.edata      type:rodata vaddr:0x1001A6F0 end:0x1001AB20
+	.edata      type:rodata vaddr:0x1001A6F0 end:0x1001AB20 linker
 	.data       type:data align:4096
 	.CRT$XCA    type:data vaddr:0x1001B000 end:0x1001B104
 	.CRT$XCL    type:data vaddr:0x1001B104 end:0x1001B208
 	.CRT$XCU    type:data vaddr:0x1001B208 end:0x1001B31C
 	.CRT$XCZ    type:data vaddr:0x1001B31C end:0x1001B630
 	.bss        type:bss vaddr:0x1001B928 end:0x1001CDE4
-	.idata      type:data align:4096
+	.idata      type:data align:4096 linker
 	.rsrc       type:rodata align:4096
 
 Lionhead/LHDialogLib/version_1.0/LHCameraParamsDialog.cpp:
