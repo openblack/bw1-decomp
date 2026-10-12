@@ -22,7 +22,7 @@ const char* AttributeCreatureDominantDesire::TypeName()
 
 uint32_t AttributeCreatureDominantDesire::ValueRange()
 {
-	// The value is a desire (0 .. NUM_CREATURE_DESIRES - 1) or INVALID_CREATURE_DESIRE, which comes right after them.
+	// Actions without a desire (e.g. gestures) store INVALID_CREATURE_DESIRE, the highest value.
 	return INVALID_CREATURE_DESIRE + 1;
 }
 
@@ -72,7 +72,7 @@ const char* AttributeCreatureSpellKnowledge::TypeName()
 
 uint32_t AttributeCreatureSpellKnowledge::ValueRange()
 {
-	// The value is how many spells the creature knows, from 0 up to MAGIC_TYPE_LAST.
+	// The value is a count of known spells; scripts can teach all MAGIC_TYPE_LAST of them.
 	return MAGIC_TYPE_LAST + 1;
 }
 
@@ -95,6 +95,7 @@ const char* AttributeCreatureWhatHeIsCarrying::TypeName()
 
 uint32_t AttributeCreatureWhatHeIsCarrying::ValueRange()
 {
+	// The value is an OBJECT_TYPE; carrying nothing stores OBJECT_TYPE_DUMMY.
 	return OBJECT_TYPE_LAST;
 }
 
