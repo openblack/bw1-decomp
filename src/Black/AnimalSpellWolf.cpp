@@ -8,10 +8,10 @@ uint32_t SpellWolf::GetSaveType()
 
 GPlayer* SpellWolf::GetPlayer()
 {
-	return field_0x198;
+	return Player;
 }
 
 void SpellWolf::SetPlayer(GPlayer* player)
 {
-	field_0x198 = player;
+	Player = player;
 }

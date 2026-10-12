@@ -28,7 +28,7 @@ public:
 	LHPlane   FinalDestPlane;
 	float     field_0x164;
 	Zoomer    FadeAlpha;
-	GPlayer*  field_0x198;
+	GPlayer*  Player;
 
 	// Override methods
 
