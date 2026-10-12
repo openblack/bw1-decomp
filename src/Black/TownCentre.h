@@ -32,6 +32,7 @@ class PhysicsObject;
 class PlannedMultiMapFixed;
 class TotemStatue;
 class Town;
+class SpellIcon;
 class TownCentreSpellIcon;
 class Villager;
 
@@ -141,6 +142,10 @@ public:
 	MapCoords* GetTotemPos(MapCoords* coords);
 	// BW1W120 00743fa0 BW1M119 015645f0
 	TownCentreSpellIcon* FindSpellIcon(SPELL_SEED_TYPE type);
+	// BW1W120 00743ff0 BW1M119 01564520
+	int GetSpellIconIndex(SpellIcon* icon);
+	// BW1W120 00744290 BW1M119 01563ec0
+	void RemoveSpellFromArray(TownCentreSpellIcon* icon);
 	// BW1W120 00744010 BW1M119 01564490
 	void AddPowerUp(SPELL_SEED_TYPE seed_type, POWER_UP_TYPE power_up_type);
 	// BW1W120 00744030 BW1M119 01564400

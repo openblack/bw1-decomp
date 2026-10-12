@@ -74,3 +74,5 @@ bool32_t MagicTeleport::IsEffectReceiver(EffectValues* param_1)
 {
 	return false;
 }
+
+MagicTeleport::~MagicTeleport() {}

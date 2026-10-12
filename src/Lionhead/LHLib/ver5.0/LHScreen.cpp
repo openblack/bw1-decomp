@@ -15,6 +15,8 @@
 #include <Lionhead/LHLib/ver5.0/LHWin.h>          /* For operator new(size_t, const char*, uint32_t) */
 #include <Lionhead/LHLog/ver4.0/LHRegistry.h>     /* For RegistryRetrieveULong */
 
+#define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHScreen.cpp"
+
 // -----------------------------------------------------------------------------
 // External symbols this translation unit depends on that have not been
 // decompiled yet.
@@ -135,7 +137,7 @@ LHScreen::LHScreen()
 	// Allocate DeviceInfoArray: 4-byte count header (=5) followed by five 248-byte
 	// display-device records. DeviceInfoArray points past the count header.
 	int*  devices;
-	void* mem = operator new(0x4dc, __FILE__, __LINE__);
+	void* mem = operator new(0x4dc, FILEPATH, 43);
 	if (mem)
 	{
 		*(int*)mem = 5;

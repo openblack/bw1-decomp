@@ -16,6 +16,10 @@
 #include <Lionhead/LHLib/ver5.0/LHSurface.h>       /* For struct LHSurface */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>           /* For operator new(size_t, const char*, uint32_t) */
 
+// The only source path this unit's code passes to operator new is LHWin.cpp's, and the binary
+// has no LHSystem.cpp path string, so this unit appears to be the original LHWin.cpp.
+#define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHWin.cpp"
+
 WINUSERAPI BOOL WINAPI TrackMouseEvent(LPTRACKMOUSEEVENT);
 
 // (LHScreen.cpp) per-message screen bookkeeping
@@ -544,7 +548,7 @@ int CreateGameWindow(HINSTANCE inst, int cmd_show, int windowed)
 	if (LHSys::GetMouse().AnimType == 3)
 		SendMessageA(LHSys::GetWindow(), 0x8005, 0, 0);
 	TurnOnMenu();
-	LHSys::TheSystem.TbIME = new (__FILE__, __LINE__) slim::TbIME();
+	LHSys::TheSystem.TbIME = new (FILEPATH, 193) slim::TbIME();
 	return 0;
 }
 

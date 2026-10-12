@@ -153,6 +153,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 006e8ed0 BW1M119 0114aba0
+	Town* GetCombinedTown(Scaffold* other);
+	// BW1W120 006e8f50 BW1M119 0114ab20
+	void SetCombinedTown(Scaffold* other);
 	// BW1W120 006e8500 BW1M119 0114bdb0
 	void SetToZero();
 	// BW1W120 006e8860 BW1M119 0114b700

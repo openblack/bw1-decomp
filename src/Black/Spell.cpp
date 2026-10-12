@@ -2,6 +2,7 @@
 #include "Spell.h"
 
 #include "ColourConstants.h" /* For White */
+#include "SpellSeed.h"       /* For SpellSeed */
 
 uint32_t Spell::GetSaveType()
 {
@@ -9,3 +10,13 @@ uint32_t Spell::GetSaveType()
 }
 
 void Spell::DebugDraw() {}
+
+void Spell::ClearSpellSeedLink()
+{
+	if (SpellSeedLink != NULL)
+	{
+		SpellSeed* seed = SpellSeedLink;
+		SpellSeedLink = NULL;
+		seed->ClearSpellLink();
+	}
+}
