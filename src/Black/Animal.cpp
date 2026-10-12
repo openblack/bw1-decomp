@@ -4,6 +4,8 @@
 #include "ColourConstants.h" /* For White */
 #include "Flock.h"
 #include "Utils.h"
+#include "AnimalInfo.h"
+#include "AnimalStateTableInfo.h"
 
 void Animal::SetStateSpeed() {}
 
@@ -141,4 +143,16 @@ uint32_t Animal::DecideAnimation()
 DEATH_REASON Animal::GetDeathReason()
 {
 	return (DEATH_REASON)DeathReason;
+}
+
+GBaseInfo* GAnimalInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = ANIMAL_INFO_LAST;
+	return Infos;
+}
+
+GBaseInfo* GAnimalStateTableInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = ANIMAL_STATE_LAST_STATE;
+	return Infos;
 }
