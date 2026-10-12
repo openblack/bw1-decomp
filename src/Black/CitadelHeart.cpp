@@ -81,7 +81,47 @@
 #define FILEPATH "C:\\dev\\MP\\Black\\CitadelHeart.cpp"
 #endif
 
-#define CITADEL_SCRIPT_SCALE 1000.0f
+#define CITADEL_SCRIPT_SCALE               1000.0f
+#define CREATURE_PEN_COLLAR_V_STEP         0.125f
+#define CREATURE_PEN_COLLAR_V_FIRST        0.375f
+#define CREATURE_PEN_SPRITE_FRAME_RANGE    15.0f
+#define CREATURE_PEN_LIGHT_ALPHA_SCALE     (1.0f / 6.0f)
+#define CREATURE_PEN_HAND_COLLAR_SIZE      173.52948f
+#define CREATURE_PEN_HAND_COLLAR_OFFSET_X  0.05f
+#define CREATURE_PEN_HAND_COLLAR_OFFSET_Y  0.25f
+#define CITADEL_SURFACE_MIN_NORMAL_Y       (-0.1f)
+#define MILLISECONDS_TO_SECONDS            0.001f
+#define DESTRUCTION_SMOKE_RANDOM_DURATION  0.4f
+#define DESTRUCTION_SMOKE_MIN_DURATION     0.8f
+#define CITADEL_LANTERN_MIN_STAGE          0.07f
+#define CITADEL_LANTERN_0_X                (-8.85f)
+#define CITADEL_LANTERN_0_Z                (-10.34f)
+#define CITADEL_LANTERN_1_X                (-2.3f)
+#define CITADEL_LANTERN_1_Z                (-13.4f)
+#define CITADEL_BEAM_ALPHA_SCALE           55.0f
+#define CITADEL_CAMERA_EXCLUSION_RADIUS    15.0f
+#define CITADEL_MIN_BUILT_FOR_PHYSICS      0.1
+#define MAX_IMPACT_DAMAGE                  0.2f
+#define CITADEL_DOOR_X                     (-13.82f)
+#define CITADEL_DOOR_Z                     (-29.09f)
+#define CITADEL_ROUTE_PLAN_RADIUS_SCALE    0.33f
+#define CITADEL_ROUTE_INNER_RADIUS_SCALE   0.64f
+#define CITADEL_ROUTE_INNER_MARGIN         1.1f
+#define CITADEL_ROUTE_SECTOR_START_SCALE   0.1f
+#define CITADEL_EVIL_ALIGNMENT             (-0.7f)
+#define CITADEL_NASTY_ALIGNMENT            (-0.3f)
+#define CITADEL_SECTOR_POINT_RADIUS_SCALE  0.11f
+#define CITADEL_SECTOR_STEP_SCALE          0.2f
+#define CITADEL_SECTOR_ARM_STEP_1          0.1f
+#define CITADEL_SECTOR_ARM_STEP_2          0.07f
+#define CITADEL_SECTOR_ARM_ANGLE_1         0.06f
+#define CITADEL_SECTOR_ARM_ANGLE_2         0.16f
+#define CITADEL_SECTOR_ARM_ANGLE_3         0.27f
+#define CITADEL_WORSHIP_SITE_DISTANCE      24.0f
+#define CITADEL_WORSHIP_SITE_RADIUS        12.0f
+#define CITADEL_COLLIDE_CORE_SCALE         0.7f
+#define CITADEL_COLLIDE_SECTOR_START_SCALE 0.74f
+#define TRANSFERED_DAMAGE_SPARK_MAX_LIFE   0.6f
 
 struct ExtraMetricsData
 {
@@ -223,12 +263,12 @@ TempleLeash::TempleLeash(LH3DObject* object, unsigned long player_number)
 		leash->collar->SetMesh(CollarMeshes[i], NULL, NULL);
 		leash->collar->SetPosition(pos, 0.0f, 1.0f);
 		leash->collar->SetDynamicLighting(true);
-		leash->collar->SetAnimatedUV_1(0.0f, i ? i * 0.125f : 0.375f);
+		leash->collar->SetAnimatedUV_1(0.0f, i ? i * CREATURE_PEN_COLLAR_V_STEP : CREATURE_PEN_COLLAR_V_FIRST);
 		leash->collar->SetNeedSorting(true);
 		leash->CollarUVOffset = Random(0.0f, 1.0f);
-		leash->CollarXSpin = Random(0.0f, 6.2831855f);
-		leash->CollarZSpin = Random(0.0f, 6.2831855f);
-		leash->SpriteFrame = Random(0.0f, 15.0f);
+		leash->CollarXSpin = Random(0.0f, TWO_PI);
+		leash->CollarZSpin = Random(0.0f, TWO_PI);
+		leash->SpriteFrame = Random(0.0f, CREATURE_PEN_SPRITE_FRAME_RANGE);
 		LH3DSprite* sprite = LH3DSprite::Create(1, 1);
 		leash->sprite = sprite;
 		// TODO: g_smoke_mat is a free LH3D global (unqualified on the Mac) with no owning class to declare it in.
@@ -729,7 +769,7 @@ void CitadelHeart::GetRandomSurfacePos(LHPoint* pos, LHPoint* normal)
 	do
 	{
 		GJUtils::GetRandomSurfacePos(Game3dObject->GetMesh(), Game3dObject->matrix, pos, normal);
-	} while (normal->y < -0.1f);
+	} while (normal->y < CITADEL_SURFACE_MIN_NORMAL_Y);
 }
 
 void CitadelHeart::DestructionSequenceProcess()
@@ -749,7 +789,7 @@ void CitadelHeart::DestructionSequenceProcess()
 	}
 
 	float lastTime = DestructionTime;
-	float time = DestructionTime += GGameInfo::Info.MillisecondsPerGameTurn * 0.001f;
+	float time = DestructionTime += GGameInfo::Info.MillisecondsPerGameTurn * MILLISECONDS_TO_SECONDS;
 	float frequency = LinterpTable(HeartBeatTimes, HeartBeatFrequencies, HEART_BEAT_STAGES, time);
 	if (GetPlayer() == GGame::g_game->MyPlayer())
 	{
@@ -858,8 +898,10 @@ void CitadelHeart::DestructionSequenceProcess()
 	{
 		GParticleContainer* smoke = GParticleContainer::CreateSpotVisualWithSpecifiedDuration(
 			Pos, SPOT_VISUAL_EVIL_SMOKE, 1.0f,
-			GGameInfo::Info.ConvertRealWorldSecondsToGameTicks((GRand::GameFloatRand(0.4f, FILEPATH, 1046) + 0.8f) *
-		                                                       DestructionSmokeDuration),
+			GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(
+				(GRand::GameFloatRand(DESTRUCTION_SMOKE_RANDOM_DURATION, FILEPATH, 1046) +
+		         DESTRUCTION_SMOKE_MIN_DURATION) *
+				DestructionSmokeDuration),
 			NULL);
 		if (smoke != NULL)
 		{
@@ -905,7 +947,7 @@ uint32_t CitadelHeart::Process()
 
 void CitadelHeart::DrawLantern()
 {
-	if (entrance != NULL && ((LH3DCitadel*)Game3dObject)->Stage > 0.07f)
+	if (entrance != NULL && ((LH3DCitadel*)Game3dObject)->Stage > CITADEL_LANTERN_MIN_STAGE)
 	{
 		if (entrance->lanterns[0] == NULL)
 		{
@@ -917,11 +959,11 @@ void CitadelHeart::DrawLantern()
 				LHPoint pos;
 				if (i != 0)
 				{
-					pos.Set(-2.3f, 0.0f, -13.4f);
+					pos.Set(CITADEL_LANTERN_1_X, 0.0f, CITADEL_LANTERN_1_Z);
 				}
 				else
 				{
-					pos.Set(-8.85f, 0.0f, -10.34f);
+					pos.Set(CITADEL_LANTERN_0_X, 0.0f, CITADEL_LANTERN_0_Z);
 				}
 				Game3dObject->matrix.TransformPoint(pos);
 				lantern->SetDynamicLighting(true);
@@ -957,7 +999,8 @@ void CitadelHeart::DrawCreaturePen()
 			Wrap(leash->CollarZSpin, TWO_PI);
 			leash->CollarUVOffset += CreaturePenUVSpeed * dt;
 			Wrap(leash->CollarUVOffset, 1.0f);
-			leash->collar->SetAnimatedUV_1(leash->CollarUVOffset, i != 0 ? i * 0.125f : 0.375f);
+			leash->collar->SetAnimatedUV_1(leash->CollarUVOffset,
+			                               i != 0 ? i * CREATURE_PEN_COLLAR_V_STEP : CREATURE_PEN_COLLAR_V_FIRST);
 			leash->collar->matrix = leash->Game3dObject->matrix;
 			LHMatrix rotation;
 			rotation.SetYXZMatrixOnly(0.0f, leash->CollarXSpin, leash->CollarZSpin);
@@ -966,10 +1009,10 @@ void CitadelHeart::DrawCreaturePen()
 			rotation._41 = 0.0f;
 			leash->collar->matrix.PreMultiply(rotation);
 			leash->SpriteFrame += CreaturePenFrameRate * dt;
-			WrapScaled(leash->SpriteFrame, 15.0f, 1.0f / 15.0f);
+			WrapScaled(leash->SpriteFrame, CREATURE_PEN_SPRITE_FRAME_RANGE, 1.0f / CREATURE_PEN_SPRITE_FRAME_RANGE);
 			leash->sprite->Frame = (uint8_t)leash->SpriteFrame;
 			const LH3DColor& light = LandCell::g_darkness_to_color[LAND_CELL_DARKNESS_LEVELS - 1];
-			int              alpha = (int)((light.r + light.g + light.b) * (1.0f / 6.0f));
+			int              alpha = (int)((light.r + light.g + light.b) * CREATURE_PEN_LIGHT_ALPHA_SCALE);
 			leash->collar->GetMesh();
 			if (i == leashes->CurrentLeash && GGame::g_game->MyPlayer() == GetPlayer())
 			{
@@ -988,10 +1031,11 @@ void CitadelHeart::DrawCreaturePen()
 				handMatrix.GetYXZ(&yAngle, &xAngle, &zAngle);
 				leash->collar->SetPosition(handMatrix.GetPos(), 0.0f, 1.0f);
 				leash->collar->matrix.SetYXZMatrixOnly(yAngle, xAngle, zAngle);
-				float    size = hand->scale * 173.52948f;
+				float    size = hand->scale * CREATURE_PEN_HAND_COLLAR_SIZE;
 				float    half = size * 0.5f;
 				LHMatrix scale;
-				LHPoint  offset(size * 0.05f, size * 0.25f, 0.0f);
+				LHPoint  offset(size * CREATURE_PEN_HAND_COLLAR_OFFSET_X, size * CREATURE_PEN_HAND_COLLAR_OFFSET_Y,
+				                0.0f);
 				scale.SetScale(half);
 				(LHPoint&)scale.GetPos() = offset;
 				leash->collar->matrix.PreMultiply(scale);
@@ -1035,8 +1079,8 @@ void CitadelHeart::DrawBeam()
 			colour = player->GetPlayerColour();
 		}
 		float pulse = GetPlayer()->GetTempFirstInterfaceStatus()->guidance->GetInterpedHeartBeatPulseValue();
-		pulse = boundf(0.0f, pulse, 1.0f);
-		uint8_t alpha = (uint8_t)((pulse + 1.0f) * 55.0f);
+		pulse = boundf(pulse, 0.0f, 1.0f);
+		uint8_t alpha = (uint8_t)((pulse + 1.0f) * CITADEL_BEAM_ALPHA_SCALE);
 		BeamObject->SetColorSpecular((alpha << 24) | (colour & 0xffffff), 0);
 		BeamObject->SetDrawWithGlobalAlpha(true);
 		if (!DestructionStarted || GetDestructionTime() < DestructionShockwaveTime)
@@ -1069,7 +1113,7 @@ void CitadelHeart::DrawDestruction()
 			                               DESTRUCTION_VOL_FX_STAGES, GetDestructionTime()) *
 			                  pulse;
 			VolFX->Intensity = intensity;
-			VolFX->Update(LH3DTech::GetGameTimeInc() * 0.001f);
+			VolFX->Update(LH3DTech::GetGameTimeInc() * MILLISECONDS_TO_SECONDS);
 			VolFX->Draw();
 		}
 	}
@@ -1222,9 +1266,9 @@ void CitadelHeart::CallVirtualFunctionsForCreation(const MapCoords& coords)
 		object->UpdateMelting();
 		entrance->Heart = this;
 		InsertMapObject();
-		camera_exclusion =
-			CameraExclusion::CreateDome(CAMERA_EXCLUSION_ID_CITADEL, *(LHPoint*)&Game3dObject->matrix._41, 15.0f,
-		                                Game3dObject->GetMesh()->BoundingBox.size.y * 2.0f);
+		camera_exclusion = CameraExclusion::CreateDome(
+			CAMERA_EXCLUSION_ID_CITADEL, *(LHPoint*)&Game3dObject->matrix._41, CITADEL_CAMERA_EXCLUSION_RADIUS,
+			Game3dObject->GetMesh()->BoundingBox.size.y * 2.0f);
 		if (camera_exclusion != NULL)
 		{
 			camera_exclusion->Saved = false;
@@ -1294,7 +1338,7 @@ bool CitadelHeart::ChecksVerticesVObjects()
 
 bool CitadelHeart::InteractsWithPhysicsObjects()
 {
-	return GetPercentBuilt() > 0.1;
+	return GetPercentBuilt() > CITADEL_MIN_BUILT_FOR_PHYSICS;
 }
 
 uint32_t CitadelHeart::GetPhysicsConstantsType()
@@ -1328,7 +1372,7 @@ void CitadelHeart::ReactToPhysicsImpact(PhysicsObject* physics_object, bool tran
 		{
 			PhysOb& physics = physics_object->WhoHitMe->Physics;
 			float   damage = physics.Velocity.GetNorme() * physics.Mass * ImpactDamageScale;
-			damage = min(0.2f, damage);
+			damage = min(MAX_IMPACT_DAMAGE, damage);
 			LastImpactTurn = GGame::g_game->data.GameTurn;
 			EffectValues values(EFFECT_TYPE_HIT, damage, player, 1.0f, NULL);
 			ApplyEffect(values, 0);
@@ -1338,7 +1382,7 @@ void CitadelHeart::ReactToPhysicsImpact(PhysicsObject* physics_object, bool tran
 
 MapCoords CitadelHeart::GetDoorPos()
 {
-	LHPoint pos(-13.82f, 0.0f, -29.09f);
+	LHPoint pos(CITADEL_DOOR_X, 0.0f, CITADEL_DOOR_Z);
 	GetCitadel()->GetCitadelHeart()->Game3dObject->matrix.TransformPoint(pos);
 	return MapCoords(pos);
 }
@@ -1449,7 +1493,7 @@ SCRIPT_OBJECT_TYPE CitadelHeart::GetScriptObjectType()
 
 float CitadelHeart::GetRoutePlanRadius(Creature* creature)
 {
-	return Get2DRadius() * 0.33f;
+	return Get2DRadius() * CITADEL_ROUTE_PLAN_RADIUS_SCALE;
 }
 
 void CitadelHeart::AddToRoutePlan(RPHolder* holder, Creature* creature, int update,
@@ -1458,23 +1502,23 @@ void CitadelHeart::AddToRoutePlan(RPHolder* holder, Creature* creature, int upda
 	LHPoint point;
 	GLandscape::ConvertMapCoordToLandscapePoint(Pos, point);
 	Point2D centre(point.x, point.z);
-	float   innerRadius = HeartRouteSize * 0.64f;
+	float   innerRadius = HeartRouteSize * CITADEL_ROUTE_INNER_RADIUS_SCALE;
 	if (callback != NULL)
 	{
-		callback((int)this, centre, innerRadius + 1.1f, update);
+		callback((int)this, centre, innerRadius + CITADEL_ROUTE_INNER_MARGIN, update);
 	}
 	else
 	{
-		holder->AddObject((int)this, centre, innerRadius + 1.1f, update);
+		holder->AddObject((int)this, centre, innerRadius + CITADEL_ROUTE_INNER_MARGIN, update);
 	}
 
 	float alignment = GetPlayer()->alignment->GetValue();
 	int   count;
-	if (alignment < -0.7f)
+	if (alignment < CITADEL_EVIL_ALIGNMENT)
 	{
 		count = 2;
 	}
-	else if (alignment < -0.3f)
+	else if (alignment < CITADEL_NASTY_ALIGNMENT)
 	{
 		count = 3;
 	}
@@ -1484,12 +1528,12 @@ void CitadelHeart::AddToRoutePlan(RPHolder* holder, Creature* creature, int upda
 	}
 
 	float angle = GetYAngle() + RouteAngleOffset;
-	float pointRadius = HeartRouteSize * 0.11f;
+	float pointRadius = HeartRouteSize * CITADEL_SECTOR_POINT_RADIUS_SCALE;
 	for (int i = 0; i < CITADEL_COLLIDE_SECTORS; i++)
 	{
 		float s = sin(angle);
 		float c = cos(angle);
-		float dist = HeartRouteSize * 0.1f + innerRadius;
+		float dist = HeartRouteSize * CITADEL_ROUTE_SECTOR_START_SCALE + innerRadius;
 		for (int j = 0; j < CITADEL_COLLIDE_RINGS; j++)
 		{
 			if (i < 2)
@@ -1499,25 +1543,25 @@ void CitadelHeart::AddToRoutePlan(RPHolder* holder, Creature* creature, int upda
 				{
 					pos.x = dist * c + centre.x;
 					pos.y = dist * s + centre.y;
-					dist += HeartRouteSize * 0.2f;
+					dist += HeartRouteSize * CITADEL_SECTOR_STEP_SCALE;
 				}
 				else if (j == 3)
 				{
-					float a = angle + (i == 0 ? 0.06f : -0.06f);
+					float a = angle + (i == 0 ? CITADEL_SECTOR_ARM_ANGLE_1 : -CITADEL_SECTOR_ARM_ANGLE_1);
 					pos.x = cos(a) * dist + centre.x;
 					pos.y = sin(a) * dist + centre.y;
-					dist += HeartRouteSize * 0.1f;
+					dist += HeartRouteSize * CITADEL_SECTOR_ARM_STEP_1;
 				}
 				else if (j == 4)
 				{
-					float a = angle + (i == 0 ? 0.16f : -0.16f);
+					float a = angle + (i == 0 ? CITADEL_SECTOR_ARM_ANGLE_2 : -CITADEL_SECTOR_ARM_ANGLE_2);
 					pos.x = cos(a) * dist + centre.x;
 					pos.y = sin(a) * dist + centre.y;
-					dist += HeartRouteSize * 0.07f;
+					dist += HeartRouteSize * CITADEL_SECTOR_ARM_STEP_2;
 				}
 				else if (j == 5)
 				{
-					float a = angle + (i == 0 ? 0.27f : -0.27f);
+					float a = angle + (i == 0 ? CITADEL_SECTOR_ARM_ANGLE_3 : -CITADEL_SECTOR_ARM_ANGLE_3);
 					pos.x = cos(a) * dist + centre.x;
 					pos.y = sin(a) * dist + centre.y;
 				}
@@ -1541,7 +1585,7 @@ void CitadelHeart::AddToRoutePlan(RPHolder* holder, Creature* creature, int upda
 				{
 					holder->AddObject((int)this, pos, pointRadius, update);
 				}
-				dist += HeartRouteSize * 0.2f;
+				dist += HeartRouteSize * CITADEL_SECTOR_STEP_SCALE;
 			}
 		}
 		if (creature != NULL && i != 0)
@@ -1552,19 +1596,19 @@ void CitadelHeart::AddToRoutePlan(RPHolder* holder, Creature* creature, int upda
 			{
 				float   a = angle + 0.5f;
 				Point2D pos;
-				pos.x = (float)cos(a) * 24.0f + centre.x;
-				pos.y = (float)sin(a) * 24.0f + centre.y;
+				pos.x = (float)cos(a) * CITADEL_WORSHIP_SITE_DISTANCE + centre.x;
+				pos.y = (float)sin(a) * CITADEL_WORSHIP_SITE_DISTANCE + centre.y;
 				if (callback != NULL)
 				{
-					callback((int)this, pos, 12.0f, update);
+					callback((int)this, pos, CITADEL_WORSHIP_SITE_RADIUS, update);
 				}
 				else
 				{
-					holder->AddObject((int)this, pos, 12.0f, update);
+					holder->AddObject((int)this, pos, CITADEL_WORSHIP_SITE_RADIUS, update);
 				}
 			}
 		}
-		angle += 0.8975979f;
+		angle += TWO_PI / CITADEL_COLLIDE_SECTORS;
 	}
 }
 
@@ -1707,7 +1751,7 @@ void CitadelHeart::ProcessTransferedDamageEffect()
 		float alpha = GJUtils::Linterp(TransferedDamagePlasmaStartAlpha, TransferedDamagePlasmaEndAlpha, life);
 		if (TransferContainer != NULL)
 		{
-			if (life <= 0.6f)
+			if (life <= TRANSFERED_DAMAGE_SPARK_MAX_LIFE)
 			{
 				static int           sampleIndex = 0;
 				LH_SamplePlayOptions options;
@@ -1850,14 +1894,15 @@ void CitadelHeart::CreateCollideData()
 	LHMatrix matrix;
 	GetWorldMatrix(&matrix);
 	LHPoint centre = matrix.GetPos();
-	CollideData->obj->IteratorList->Add(new (FILEPATH, 2424) NewCollide::Obj(CollideRadius * 0.7f, &centre));
+	CollideData->obj->IteratorList->Add(new (FILEPATH, 2424)
+	                                        NewCollide::Obj(CollideRadius * CITADEL_COLLIDE_CORE_SCALE, &centre));
 	float angle = GetYAngle() + CollideAngleOffset;
-	float sphereRadius = CollideRadius * 0.11f;
+	float sphereRadius = CollideRadius * CITADEL_SECTOR_POINT_RADIUS_SCALE;
 	for (int i = 0; i < CITADEL_COLLIDE_SECTORS; i++)
 	{
 		float   s = sin(angle);
 		float   c = cos(angle);
-		float   dist = CollideRadius * 0.74f;
+		float   dist = CollideRadius * CITADEL_COLLIDE_SECTOR_START_SCALE;
 		LHPoint pos;
 		for (int j = 0; j < CITADEL_COLLIDE_RINGS; j++)
 		{
@@ -1866,23 +1911,23 @@ void CitadelHeart::CreateCollideData()
 				if (j < 3)
 				{
 					pos.Set(dist * c + centre.x, centre.y, dist * s + centre.z);
-					dist += CollideRadius * 0.2f;
+					dist += CollideRadius * CITADEL_SECTOR_STEP_SCALE;
 				}
 				else if (j == 3)
 				{
-					float a = angle + (i == 0 ? 0.06f : -0.06f);
+					float a = angle + (i == 0 ? CITADEL_SECTOR_ARM_ANGLE_1 : -CITADEL_SECTOR_ARM_ANGLE_1);
 					pos.Set(cos(a) * dist + centre.x, centre.y, sin(a) * dist + centre.z);
-					dist += CollideRadius * 0.1f;
+					dist += CollideRadius * CITADEL_SECTOR_ARM_STEP_1;
 				}
 				else if (j == 4)
 				{
-					float a = angle + (i == 0 ? 0.16f : -0.16f);
+					float a = angle + (i == 0 ? CITADEL_SECTOR_ARM_ANGLE_2 : -CITADEL_SECTOR_ARM_ANGLE_2);
 					pos.Set(cos(a) * dist + centre.x, centre.y, sin(a) * dist + centre.z);
-					dist += CollideRadius * 0.07f;
+					dist += CollideRadius * CITADEL_SECTOR_ARM_STEP_2;
 				}
 				else if (j == 5)
 				{
-					float a = angle + (i == 0 ? 0.27f : -0.27f);
+					float a = angle + (i == 0 ? CITADEL_SECTOR_ARM_ANGLE_3 : -CITADEL_SECTOR_ARM_ANGLE_3);
 					pos.Set(cos(a) * dist + centre.x, centre.y, sin(a) * dist + centre.z);
 				}
 				CollideData->obj->IteratorList->Add(new (FILEPATH, 2479)
@@ -1893,7 +1938,7 @@ void CitadelHeart::CreateCollideData()
 				pos.Set(dist * c + centre.x, centre.y, s * dist + centre.z);
 				CollideData->obj->IteratorList->Add(new (FILEPATH, 2487)
 				                                        NewCollide::Obj(CollideSphereScale * sphereRadius, &pos));
-				dist += CollideRadius * 0.2f;
+				dist += CollideRadius * CITADEL_SECTOR_STEP_SCALE;
 			}
 		}
 		angle += TWO_PI / CITADEL_COLLIDE_SECTORS;
