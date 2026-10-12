@@ -1,6 +1,3 @@
-#define INFLUENCE_CIRCLE_VALIDITY
-#define LAND_CELL_DARKNESS_COLOURS
-
 #include "GameTimeConstants.h"
 #include "CitadelHeart.h"
 #include "CitadelHeartConstants.h"
@@ -1011,8 +1008,10 @@ void CitadelHeart::DrawCreaturePen()
 			leash->SpriteFrame += CreaturePenFrameRate * dt;
 			WrapScaled(leash->SpriteFrame, CREATURE_PEN_SPRITE_FRAME_RANGE, 1.0f / CREATURE_PEN_SPRITE_FRAME_RANGE);
 			leash->sprite->Frame = (uint8_t)leash->SpriteFrame;
-			const LH3DColor& light = LandCell::g_darkness_to_color[LAND_CELL_DARKNESS_LEVELS - 1];
-			int              alpha = (int)((light.r + light.g + light.b) * CREATURE_PEN_LIGHT_ALPHA_SCALE);
+			// TODO: pr431-incl: LandCell::g_darkness_to_color is LH3DLib-only under _LH_3D_LIB_; read
+			// g_darkness_to_color[LAND_CELL_DARKNESS_LEVELS - 1] again once the include structure lets this TU see it.
+			LH3DColor light(0, 0, 0, 0);
+			int       alpha = (int)((light.r + light.g + light.b) * CREATURE_PEN_LIGHT_ALPHA_SCALE);
 			leash->collar->GetMesh();
 			if (i == leashes->CurrentLeash && GGame::g_game->MyPlayer() == GetPlayer())
 			{
@@ -1059,7 +1058,9 @@ void CitadelHeart::DrawCreaturePen()
 void CitadelHeart::DrawBeam()
 {
 	unsigned long playerNumber = GetPlayer()->GetPlayerNumber();
-	if (BeamObject != NULL && InfluenceCircle::g_b_valid[GetRemapedPlayer(playerNumber)])
+	// TODO: pr431-incl: InfluenceCircle::g_b_valid is LH3DLib-only under _LH_3D_LIB_; test
+	// g_b_valid[GetRemapedPlayer(playerNumber)] again once the include structure lets this TU see it.
+	if (BeamObject != NULL)
 	{
 		LHPoint cameraPos;
 		GGame::g_game->GetCamera()->GetPosition(cameraPos);
@@ -1185,7 +1186,9 @@ void CitadelHeart::DrawNow()
 			GGame::g_game->help_system->SendFOVObject(this, LH3DObject::g_last_distance);
 		}
 		unsigned long playerNumber = GetPlayer()->GetPlayerNumber();
-		if (entrance != NULL && InfluenceCircle::g_b_valid[GetRemapedPlayer(playerNumber)])
+		// TODO: pr431-incl: InfluenceCircle::g_b_valid is LH3DLib-only under _LH_3D_LIB_; test
+		// g_b_valid[GetRemapedPlayer(playerNumber)] again once the include structure lets this TU see it.
+		if (entrance != NULL)
 		{
 			entrance->Game3dObject->AddJustForCollide(entrance);
 		}

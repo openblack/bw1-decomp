@@ -29,7 +29,7 @@ struct LandCell
 	uint8_t properties;
 	uint8_t flags;
 
-#ifdef LAND_CELL_DARKNESS_COLOURS
+#ifdef _LH_3D_LIB_
 	// Static data
 
 	// BW1W120 00edd90c BW1M119 01202f80 (LHCombined Release)
