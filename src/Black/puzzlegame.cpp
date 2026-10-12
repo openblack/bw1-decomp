@@ -33,3 +33,23 @@ char* PuzzlePig::GetDebugText()
 {
 	return "PuzzleSheep: ";
 }
+
+IMMERSION_EFFECT_TYPE PuzzleGrain::GetImmersionTexture()
+{
+	return IMMERSION_EFFECT_TYPE_MUSHROOM_CHALLENGE;
+}
+
+uint32_t PuzzleTortoise::GetSaveType()
+{
+	return GAME_THING_TYPE_PUZZLE_SHEEP;
+}
+
+uint32_t PuzzleCow::GetSaveType()
+{
+	return GAME_THING_TYPE_PUZZLE_SHEEP;
+}
+
+uint32_t PuzzlePig::GetSaveType()
+{
+	return GAME_THING_TYPE_PUZZLE_SHEEP;
+}

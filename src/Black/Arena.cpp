@@ -21,3 +21,8 @@ char* ArenaSpellIcon::GetDebugText()
 {
 	return "SpellIcon:";
 }
+
+MESH_LIST Object::GetMesh() const
+{
+	return MSH_DUMMY;
+}
