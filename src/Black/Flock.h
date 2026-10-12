@@ -27,10 +27,7 @@ class GameThingWithPos;
 class Living;
 class Town;
 
-enum
-{
-	FLOCK_MAGIC = 0xaba52,
-};
+#define FLOCK_MAGIC 0xaba52
 
 class Flock : public Container
 {

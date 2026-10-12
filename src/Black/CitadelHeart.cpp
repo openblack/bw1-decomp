@@ -1119,7 +1119,7 @@ void CitadelHeart::DrawCreaturePen()
 			if (i == leashes->CurrentLeash && GGame::g_game->MyPlayer() == GetPlayer())
 			{
 				LH3DComplexObject* hand = GGame::g_game->MyInterface()->GetRenderHand()->DynamicShadow;
-				if (hand->field_0xac != 0)
+				if (hand->Hidden != 0)
 				{
 					continue;
 				}
@@ -1258,10 +1258,10 @@ void CitadelHeart::DrawNow()
 	if (alpha <= 240 && DestructionStarted)
 	{
 		MaterialProperties props;
-		props.field_0x3 = true;
-		props.field_0x4 = true;
-		props.field_0x0 = false;
-		props.field_0x1 = false;
+		props.ApplyToMesh = true;
+		props.Transparent = true;
+		props.Additive = false;
+		props.AlphaBlend = false;
 		props.cull = false;
 		GJUtils::SetMaterialProperties(object->GetMesh(), props);
 		object->SetDrawWithGlobalAlpha(true);
@@ -1378,10 +1378,10 @@ void CitadelHeart::CallVirtualFunctionsForCreation(const MapCoords& coords)
 		BeamObject->SetMesh(LH3DMesh::GetPackedMesh(PSysGlobal::CitadelHeartBeamMesh), NULL, NULL);
 		LH3DMesh*          mesh = BeamObject->GetMesh();
 		MaterialProperties props;
-		props.field_0x3 = true;
-		props.field_0x4 = true;
-		props.field_0x0 = true;
-		props.field_0x1 = false;
+		props.ApplyToMesh = true;
+		props.Transparent = true;
+		props.Additive = true;
+		props.AlphaBlend = false;
 		props.cull = false;
 		GJUtils::SetMaterialProperties(mesh, props);
 		BeamObject->SetDisappear(false);

@@ -5,10 +5,7 @@
 
 #include <re_common.h> /* For bool32_t */
 
-enum
-{
-	INFLUENCE_CIRCLE_PLAYER_COUNT = 8,
-};
+#define INFLUENCE_CIRCLE_PLAYER_COUNT 8
 
 class InfluenceCircle
 {

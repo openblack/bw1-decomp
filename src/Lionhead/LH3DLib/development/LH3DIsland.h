@@ -16,10 +16,7 @@ struct LHCoord;
 struct LH3DMaterial;
 struct LH3DTexture;
 
-enum
-{
-	LAND_CELL_DARKNESS_LEVELS = 256,
-};
+#define LAND_CELL_DARKNESS_LEVELS 256
 
 struct LandCell
 {

@@ -12,11 +12,11 @@ struct LH3DTexture;
 
 struct MaterialProperties
 {
-	bool field_0x0;
-	bool field_0x1;
+	bool Additive;
+	bool AlphaBlend;
 	bool cull;
-	bool field_0x3;
-	bool field_0x4;
+	bool ApplyToMesh;
+	bool Transparent;
 };
 static_assert(sizeof(MaterialProperties) == 0x5, "Data type is of wrong size");
 

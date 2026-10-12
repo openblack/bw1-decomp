@@ -18,10 +18,7 @@ class GObjectInfo;
 class LHOSFile;
 struct MapCoords;
 
-enum
-{
-	CITADEL_ENTRANCE_LANTERNS = 2,
-};
+#define CITADEL_ENTRANCE_LANTERNS 2
 
 class CitadelEntrance : public Object
 {
