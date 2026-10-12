@@ -205,7 +205,7 @@ public:
 	// BW1W120 0041ad60 BW1M119 0116ec30
 	virtual uint32_t LookForSleepPos();
 	// BW1W120 004175b0 BW1M119 011376e0
-	virtual uint32_t IAmABird();
+	virtual bool32_t IAmABird();
 	// BW1W120 0041b420 BW1M119 0116e270
 	virtual uint32_t CalculeLairPos();
 	// BW1W120 004192e0 BW1M119 011720e0

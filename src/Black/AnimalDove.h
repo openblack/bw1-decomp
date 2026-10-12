@@ -53,7 +53,7 @@ public:
 	// BW1W120 0041e720 BW1M119 0117d750
 	virtual uint32_t LookForSleepPos();
 	// BW1W120 0041dd60 BW1M119 0117a560
-	virtual uint32_t IAmABird();
+	virtual bool32_t IAmABird();
 	// BW1W120 0041f260 BW1M119 010527f0
 	virtual uint32_t GetTimeToBank();
 	// BW1W120 0041f270 BW1M119 010363f0

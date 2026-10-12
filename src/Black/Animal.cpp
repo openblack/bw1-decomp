@@ -94,9 +94,9 @@ uint32_t Animal::IsOkToBeShepherd()
 	return 0;
 }
 
-uint32_t Animal::IAmABird()
+bool32_t Animal::IAmABird()
 {
-	return 0;
+	return false;
 }
 
 uint32_t Animal::GetCreatureBeliefType()
