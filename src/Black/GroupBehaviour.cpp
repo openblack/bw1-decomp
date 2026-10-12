@@ -26,45 +26,6 @@
 
 #define SECONDS_PER_MINUTE 60
 
-template <typename T> static void ReadSafe(GameOSFile& file, LHOrderedLinkedList<T>& list)
-{
-	if (GameOSFile::ReadEnabled)
-	{
-		long count;
-		file.ReadIt(count);
-		while (count > 0)
-		{
-			T* element;
-			file.ReadPtr((GameThing**)&element);
-			list.Insert(element);
-			count--;
-		}
-	}
-}
-
-template <typename T> static void WriteSafe(GameOSFile& file, LHOrderedLinkedList<T>& list)
-{
-	if (GameOSFile::WriteEnabled)
-	{
-		uint32_t count = list.count;
-		int      written = 0;
-		file.WriteIt(list.count);
-		for (LHOrderedLinkedListIterator<T> iterator(list); iterator.MoreToDo(); iterator++)
-		{
-			if (++written > (int)count)
-			{
-				GameOSFile::WriteEnabled = false;
-				break;
-			}
-			if (!GameOSFile::WriteEnabled)
-			{
-				break;
-			}
-			file.WritePtr(iterator.Get());
-		}
-	}
-}
-
 GroupBehaviour::GroupBehaviour()
 {
 	Pos.Clear();
@@ -332,7 +293,7 @@ uint32_t GroupBehaviour::Save(GameOSFile& file)
 		file.WriteIt(Unused1);
 		file.WriteIt(Unused2);
 		file.WriteIt(Unused3);
-		WriteSafe(file, KeyFrames);
+		file.WriteSafe(KeyFrames);
 		file.WriteIt(NumGroups);
 		file.WriteIt(EditorValue);
 		file.WriteIt(EditorValue2);
@@ -366,7 +327,7 @@ uint32_t GroupBehaviour::Load(GameOSFile& file)
 		file.ReadIt(Unused1);
 		file.ReadIt(Unused2);
 		file.ReadIt(Unused3);
-		ReadSafe(file, KeyFrames);
+		file.ReadSafe(KeyFrames);
 		file.ReadIt(NumGroups);
 		file.ReadIt(EditorValue);
 		file.ReadIt(EditorValue2);

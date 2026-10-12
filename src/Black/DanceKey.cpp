@@ -15,46 +15,6 @@
 #define FILEPATH "C:\\dev\\MP\\Black\\DanceKey.cpp"
 #endif
 
-template <typename T> static void ReadSafe(GameOSFile& file, LHDynamicStack<T>& stack)
-{
-	if (GameOSFile::ReadEnabled)
-	{
-		long count;
-		file.ReadIt(count);
-		while (count > 0)
-		{
-			T value;
-			file.ReadIt(value);
-			stack.Push(value);
-			count--;
-		}
-	}
-}
-
-template <typename T> static void WriteSafe(GameOSFile& file, LHDynamicStack<T>& stack)
-{
-	if (GameOSFile::WriteEnabled)
-	{
-		int      written = 0;
-		uint32_t count = stack.GetSize();
-		file.WriteIt(stack.GetSizeRef());
-		for (long i = stack.GetSize() - 1; i >= 0; i--)
-		{
-			if (++written > (int)count)
-			{
-				GameOSFile::WriteEnabled = false;
-				break;
-			}
-			if (!GameOSFile::WriteEnabled)
-			{
-				break;
-			}
-			T value = stack.GetNthMember(i);
-			file.WriteIt(value);
-		}
-	}
-}
-
 #define DANCE_KEY_FRAME_MAX_REMOVED_GROUPS 256
 
 DanceKeyAction::DanceKeyAction()
@@ -79,7 +39,7 @@ uint32_t DanceKeyAction::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
-		WriteSafe(file, Groups);
+		file.WriteSafe(Groups);
 		WRITE_IT(file, Type);
 		WRITE_IT(file, Argument);
 		return 1;
@@ -91,7 +51,7 @@ uint32_t DanceKeyAction::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
-		ReadSafe(file, Groups);
+		file.ReadSafe(Groups);
 		file.ReadIt(Type);
 		file.ReadIt(Argument);
 		return 1;

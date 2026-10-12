@@ -23,6 +23,9 @@
 
 template <class T> class GJVector;
 template <typename T> class GTPointer;
+template <typename T> class LHDynamicStack;
+template <typename T> class LHOrderedLinkedList;
+template <typename T> class LHOrderedLinkedListIterator;
 class CalculateDrawPosInfo;
 class ChainJoint;
 class CollectionAndOwnership;
@@ -455,6 +458,85 @@ public:
 			WriteIt(value);
 		}
 		return true;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	template <typename T> void ReadSafe(LHDynamicStack<T>& stack)
+	{
+		if (ReadEnabled)
+		{
+			long count;
+			ReadIt(count);
+			while (count > 0)
+			{
+				T value;
+				ReadIt(value);
+				stack.Push(value);
+				count--;
+			}
+		}
+	}
+	// BW1W120 inlined BW1M119 inlined
+	template <typename T> void WriteSafe(LHDynamicStack<T>& stack)
+	{
+		if (WriteEnabled)
+		{
+			int      written = 0;
+			uint32_t count = stack.GetSize();
+			WriteIt(stack.GetSizeRef());
+			for (long i = stack.GetSize() - 1; i >= 0; i--)
+			{
+				if (++written > (int)count)
+				{
+					WriteEnabled = false;
+					break;
+				}
+				if (!WriteEnabled)
+				{
+					break;
+				}
+				T value = stack.GetNthMember(i);
+				WriteIt(value);
+			}
+		}
+	}
+	// BW1W120 inlined BW1M119 inlined
+	template <typename T> void ReadSafe(LHOrderedLinkedList<T>& list)
+	{
+		if (ReadEnabled)
+		{
+			long count;
+			ReadIt(count);
+			while (count > 0)
+			{
+				T* element;
+				ReadPtr((GameThing**)&element);
+				list.Insert(element);
+				count--;
+			}
+		}
+	}
+	// BW1W120 inlined BW1M119 inlined
+	template <typename T> void WriteSafe(LHOrderedLinkedList<T>& list)
+	{
+		if (WriteEnabled)
+		{
+			uint32_t count = list.count;
+			int      written = 0;
+			WriteIt(list.count);
+			for (LHOrderedLinkedListIterator<T> iterator(list); iterator.MoreToDo(); iterator++)
+			{
+				if (++written > (int)count)
+				{
+					WriteEnabled = false;
+					break;
+				}
+				if (!WriteEnabled)
+				{
+					break;
+				}
+				WritePtr(iterator.Get());
+			}
+		}
 	}
 	// BW1W120 inlined BW1M119 01305f20
 	template <typename T> void WriteSafe(GTPointer<T>& pointer)
