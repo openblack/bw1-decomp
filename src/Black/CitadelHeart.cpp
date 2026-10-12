@@ -801,19 +801,6 @@ static float DestructionVolFXEndTime = DestructionExplodeTime + DestructionVolFX
 
 static float InRange(float min, float value, float max);
 
-inline float boundf(float value, float low, float high)
-{
-	if (value > low)
-	{
-		if (value < high)
-		{
-			return value;
-		}
-		return high;
-	}
-	return low;
-}
-
 inline float GetHeartBeatFrequency(float time)
 {
 	if (time <= HeartBeatTimes[0])
@@ -902,7 +889,7 @@ void CitadelHeart::DestructionSequenceProcess()
 	}
 
 	float fade = (DestructionTime - DestructionFadeStartTime) / DestructionFadeDuration;
-	fade = boundf(fade, 0.0f, 1.0f);
+	fade = boundf(0.0f, fade, 1.0f);
 	DrawColour = ((uint8_t)(255.0f - fade * 255.0f) << 24) | 0xffffff;
 
 	if (InRange(lastTime, DestructionVolFXStartTime, DestructionTime) && VolFXObject == NULL)
@@ -930,7 +917,7 @@ void CitadelHeart::DestructionSequenceProcess()
 		while (NextPlasmaTime < DestructionTime)
 		{
 			float fraction = (DestructionTime - DestructionPlasmaStartTime) / DestructionPlasmaDuration;
-			float t = boundf(fraction, 0.0f, 1.0f);
+			float t = boundf(0.0f, fraction, 1.0f);
 			float interval = GJUtils::Linterp(DestructionPlasmaStartInterval, DestructionPlasmaEndInterval, t);
 			NextPlasmaTime += interval;
 			if (DestructionPlasmaContainer == NULL)
@@ -1173,15 +1160,8 @@ void CitadelHeart::DrawBeam()
 		LHPoint  delta = cameraPos - pos;
 		float    angle = (float)atan2(delta.z, delta.x) + HALF_PI_F;
 		LHMatrix matrix;
-		matrix._11 = matrix._33 = (float)cos(angle);
-		matrix._12 = 0.0f;
-		float s = (float)sin(angle);
-		matrix._13 = s;
-		matrix._21 = 0.0f;
-		matrix._22 = 3.0f;
-		matrix._23 = 0.0f;
-		matrix._31 = -s;
-		matrix._32 = 0.0f;
+		matrix.SetRotationY(angle);
+		matrix.PreScale(1.0f, 3.0f, 1.0f);
 		matrix.SetTranslateOnly(pos);
 		BeamObject->matrix = matrix;
 		BeamObject->scale = 3.0f;
@@ -1192,7 +1172,7 @@ void CitadelHeart::DrawBeam()
 			colour = player->GetPlayerColour();
 		}
 		float pulse = GetPlayer()->GetTempFirstInterfaceStatus()->guidance->GetInterpedHeartBeatPulseValue();
-		pulse = boundf(pulse, 0.0f, 1.0f);
+		pulse = boundf(0.0f, pulse, 1.0f);
 		uint8_t alpha = (uint8_t)((pulse + 1.0f) * 55.0f);
 		BeamObject->SetColorSpecular((alpha << 24) | (colour & 0xffffff), 0);
 		BeamObject->SetDrawWithGlobalAlpha(true);
@@ -1821,19 +1801,10 @@ void CitadelHeart::ValidateTransferedEffectObjects()
 
 void CitadelHeart::ProcessTransferedDamageEffect()
 {
-	float currentLife = GetLife();
-	float life;
-	if (currentLife > 0.0f)
+	float life = boundf(0.0f, GetLife(), 1.0f);
+	if (life >= 1.0f)
 	{
-		if (currentLife >= 1.0f)
-		{
-			return;
-		}
-		life = currentLife;
-	}
-	else
-	{
-		life = 0.0f;
+		return;
 	}
 	if (this != GetActualObjectToEffect(GetPlayer(), false))
 	{
