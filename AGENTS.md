@@ -526,6 +526,16 @@ conflict with looser guidance above.
   truth for RTTI types. Before renaming a type or changing a signature, confirm the change
   in objdiff *and* in the CI report, and check it does not regress other functions,
   sections or data matches.
+- **Typedefs and `#define`d types don't survive in the mangling.** Two spellings of the
+  same underlying type — `BOOL` vs `int`, a `typedef` vs its expansion — mangle
+  identically, so the mangling leaves room to interpret which one the original wrote. The
+  game used `int` for booleans (likely `BOOL`), so the Mac symbol may show an `int`
+  parameter where the source said `BOOL`/`bool32_t`. Pick the spelling that reads best and
+  matches the surrounding code, and confirm the codegen is unchanged.
+- **Prefer `[u]intN_t` over the spelled-out equivalents** (`unsigned long`,
+  `unsigned char`, `unsigned short`, …) wherever it does not hurt matching — same size,
+  signedness and mangling. Plain `int` is fine. Do **not** use `uint16_t` for wide
+  characters; those are `wchar_t`.
 - **Show it matching.** A PR must demonstrate the result (objdiff 100% and the CI report),
   not just assert it. Comment-only, analysis-only or "proposed" changes are not enough —
   a macro or abstraction must be shown working and matching.
