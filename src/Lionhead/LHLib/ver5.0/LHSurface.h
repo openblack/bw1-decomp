@@ -8,6 +8,7 @@
 
 #include <Lionhead/LH3DLib/development/LHColor.h>
 
+#include "LHMem.h"
 #include "LHScreen.h"
 
 struct LHRegion;
@@ -52,6 +53,16 @@ struct LHSurface
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 inlined
+	LHSurface(uint16_t width, uint16_t height)
+	{
+		HasTransparentColor = 0;
+		Width = width;
+		Height = height;
+		Image = NULL;
+		SpriteFlags = 0;
+		Next = NULL;
+	}
 	// BW1W120 007e6290 BW1M119 0115d950 (LHCombined Release)
 	LHSurface(LHSprite* sprite, unsigned long flags);
 	// BW1W120 007e62d0 BW1M119 0115d840 (LHCombined Release)
@@ -90,12 +101,21 @@ struct LHSurface
 	                int useColorKey);
 	// BW1W120 007dc8b0
 	int CopyRegionFromScreen(LHRegion* region, LHCoord* pos, int from_primary);
+	// BW1W120 007e52b0 BW1M119 01144fe0 (LHCombined Release)
+	int Blit(LHRegion* region, LHCoord* pos, LH_SCREEN_BUFFER screen_buffer);
 	// BW1W120 007e68e0 BW1M119 0115caf0 (LHCombined Release)
 	void Add();
 	// BW1W120 007e6920 BW1M119 0115ca70 (LHCombined Release)
 	LHSurface* Remove();
 
 	// Static methods
+
+	// BW1W120 inlined BW1M119 null
+	static void* operator new(size_t size, const char* file_name, int line) { return LHMem::Alloc(size); }
+	// BW1W120 007e5320 BW1M119 null
+	static void operator delete(void* block, const char* file_name, int line) { LHMem::Free(block); }
+	// BW1W120 inlined BW1M119 null
+	static void operator delete(void* block) { LHMem::Free(block); }
 
 	// BW1W120 007e6960 BW1M119 0115c9b0 (LHCombined Release)
 	static int RestoreAll(int recreate);

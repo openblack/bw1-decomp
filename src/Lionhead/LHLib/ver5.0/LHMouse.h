@@ -147,12 +147,12 @@ struct LHMouse
 	int          NumButtons;
 	int          IsMultiFrame;
 	void*        FrameBank;
-	int*         FramePartOffsets;
+	LHCoord*     FramePartOffsets;
 	LHSurface**  FrameSurfaces;
 	uint16_t     FrameCount16;
 	uint16_t     field_5e;
-	int          CurrentFrame;
-	int          FrameCount;
+	uint32_t     CurrentFrame;
+	uint32_t     FrameCount;
 	uint16_t     AnimParam;
 	uint16_t     field_6a;
 	int          AnimType;
@@ -197,12 +197,21 @@ struct LHMouse
 		AccumDelta.y = 0;
 	}
 
+	// BW1W120 inlined BW1M119 01145180 (LHCombined Release)
+	void Lock() { EnterCriticalSection(&LHScreen::CriticalSection); }
+	// BW1W120 inlined BW1M119 01144f10 (LHCombined Release)
+	void Unlock() { LeaveCriticalSection(&LHScreen::CriticalSection); }
+	// BW1W120 inlined BW1M119 01144f40 (LHCombined Release)
+	void UnDraw();
+	// BW1W120 inlined BW1M119 inlined
+	void StopDoubleBuffering();
+
 	// BW1W120 007e4810 BW1M119 011c9478 (LHCombined Release)
-	int UpdateDeltaPos();
+	void UpdateDeltaPos();
 	// BW1W120 007e48c0 BW1M119 01146b10 (LHCombined Release)
 	int InitDirectInput();
 	// BW1W120 007e49a0 BW1M119 01007030 (LHCombined Release)
-	int UpdateCurrentPos(LHCoord coord);
+	void UpdateCurrentPos(LHCoord coord);
 	// BW1W120 007e4b40 BW1M119 01146a60 (LHCombined Release)
 	void SetMouseMargin(LHCoord margin);
 	// BW1W120 007e4b80 BW1M119 0103fa00 (LHCombined Release)
@@ -226,7 +235,7 @@ struct LHMouse
 	// BW1W120 007e5b20 BW1M119 01145690 (LHCombined Release)
 	void SetCurrentCursorAnimFrame(unsigned long frame);
 	// BW1W120 007e5b30 BW1M119 011454e0 (LHCombined Release)
-	int SetAnimFrame();
+	void SetAnimFrame();
 	// BW1W120 007e5bf0 BW1M119 011451b0 (LHCombined Release)
 	void SetAnimateImages(LH_ANIMATE_IMAGE_TYPE imageType, void* images, unsigned long index);
 	// BW1W120 007e5ea0 BW1M119 01144d10 (LHCombined Release)
@@ -242,7 +251,7 @@ struct LHMouse
 	// Static members
 
 	// Set on WM_ACTIVATEAPP so UpdateDeltaPos skips the stale wheel
-	// delta accumulated while the app was inactive. TODO: fabricated name.
+	// delta accumulated while the app was inactive.
 	// BW1W120 00c311a4
 	static uint8_t MouseWheelSkip;
 };
