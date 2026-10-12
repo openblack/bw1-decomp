@@ -15,6 +15,7 @@ import json
 import math
 import os
 import re
+import shlex
 import platform
 import sys
 from pathlib import Path
@@ -331,6 +332,11 @@ class ProjectConfig:
 
 def is_windows() -> bool:
     return os.name == "nt"
+
+
+def shell_quote(arg: str) -> str:
+    # Ninja runs commands through /bin/sh on POSIX, but directly on Windows.
+    return arg if is_windows() else shlex.quote(arg)
 
 
 # On Windows, we need this to use && in commands
@@ -1633,8 +1639,11 @@ def generate_build_ninja(
                     variables={
                         "image": serialize_path(step.output()),
                         "original": serialize_path(originals[step.name]),
+                        # Section names like .idata$5 need quoting from the POSIX
+                        # shell, and `$` escaping from Ninja.
                         "ranges": " ".join(
-                            f"--range {r['section']}={r['start']:#x}:{r['end']:#x}".replace("$", "$$")
+                            "--range "
+                            + shell_quote(f"{r['section']}={r['start']:#x}:{r['end']:#x}").replace("$", "$$")
                             for r in ranges
                         ),
                     },
