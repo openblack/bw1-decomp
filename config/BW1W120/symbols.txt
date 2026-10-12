@@ -41448,6 +41448,7 @@ lbl_00C235DC = .data:0x00C235DC; // type:object size:0x28
 ??_R0?AVMissionaryControl@@@8 = .data:0x00C23698; // type:object size:0x20
 lbl_00C236B8 = .data:0x00C236B8; // type:object size:0x1C
 lbl_00C236D4 = .data:0x00C236D4; // type:object size:0xB data:string
+??_C@_0CG@MPCF@C?3?2dev?2MP?2Black?2VillagerFisherma@ = .data:0x00C23750; // type:object size:0x28 scope:global data:string
 ??_R0?AUVillagerName@@@8 = .data:0x00C24558; // type:object size:0x1B
 ??_R0?AVGVillagerStateTableInfo@@@8 = .data:0x00C24608; // type:object size:0x26
 lbl_00C2462E = .data:0x00C2462E; // type:object size:0x2
