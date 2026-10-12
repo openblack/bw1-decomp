@@ -72,36 +72,36 @@ private:
 	void SaveText(char* text);
 
 public:
-	bool32_t       Uninitialised;                                /* 0x0 */
-	char*          Messages[LH_LOG_PROPS_MAX_MESSAGES];          /* 0x4 */
-	unsigned short MessageIndex;                                 /* 0x324 */
-	void*          DialogClosedEvent;                            /* 0x328 */
-	char           LogFilename[LH_LOG_PROPS_FILENAME_SIZE];      /* 0x32c */
-	char           LogFilter[LH_LOG_PROPS_FILTER_SIZE];          /* 0x3ac */
-	char           AssertFilter[LH_LOG_PROPS_FILTER_SIZE];       /* 0x474 */
-	char           ActiveAssertFilter[LH_LOG_PROPS_FILTER_SIZE]; /* 0x53c */
-	char           HostIP[LH_LOG_PROPS_HOST_IP_SIZE];            /* 0x604 */
-	bool32_t       SourceFlag;                                   /* 0x618 */
-	bool32_t       LineFlag;                                     /* 0x61c */
-	bool32_t       TimeFlag;                                     /* 0x620 */
-	bool32_t       SysTimeFlag;                                  /* 0x624 */
-	bool32_t       ThreadFlag;                                   /* 0x628 */
-	bool32_t       PidFlag;                                      /* 0x62c */
-	bool32_t       DebuggerFlag;                                 /* 0x630 */
-	bool32_t       FileFlag;                                     /* 0x634 */
-	bool32_t       WindowFlag;                                   /* 0x638 */
-	bool32_t       RemoteFlag;                                   /* 0x63c */
-	bool32_t       AssertFlag;                                   /* 0x640 */
-	bool32_t       AutoScrollFlag;                               /* 0x644 */
-	bool32_t       DisplayOnStartFlag;                           /* 0x648 */
-	bool32_t       TruncateFlag;                                 /* 0x64c */
-	bool32_t       InvertLogFilterFlag;                          /* 0x650 */
-	bool32_t       DisableFilterFlag;                            /* 0x654 */
-	bool32_t       InvertAssertFilterFlag;                       /* 0x658 */
-	bool32_t       InvertActiveAssertFilterFlag;                 /* 0x65c */
-	bool32_t       AssertFilterAsLogFlag;                        /* 0x660 */
-	unsigned long  Level;                                        /* 0x664 */
-	unsigned short MessageCount;                                 /* 0x668 */
+	bool32_t      Uninitialised;                                /* 0x0 */
+	char*         Messages[LH_LOG_PROPS_MAX_MESSAGES];          /* 0x4 */
+	uint16_t      MessageIndex;                                 /* 0x324 */
+	void*         DialogClosedEvent;                            /* 0x328 */
+	char          LogFilename[LH_LOG_PROPS_FILENAME_SIZE];      /* 0x32c */
+	char          LogFilter[LH_LOG_PROPS_FILTER_SIZE];          /* 0x3ac */
+	char          AssertFilter[LH_LOG_PROPS_FILTER_SIZE];       /* 0x474 */
+	char          ActiveAssertFilter[LH_LOG_PROPS_FILTER_SIZE]; /* 0x53c */
+	char          HostIP[LH_LOG_PROPS_HOST_IP_SIZE];            /* 0x604 */
+	bool32_t      SourceFlag;                                   /* 0x618 */
+	bool32_t      LineFlag;                                     /* 0x61c */
+	bool32_t      TimeFlag;                                     /* 0x620 */
+	bool32_t      SysTimeFlag;                                  /* 0x624 */
+	bool32_t      ThreadFlag;                                   /* 0x628 */
+	bool32_t      PidFlag;                                      /* 0x62c */
+	bool32_t      DebuggerFlag;                                 /* 0x630 */
+	bool32_t      FileFlag;                                     /* 0x634 */
+	bool32_t      WindowFlag;                                   /* 0x638 */
+	bool32_t      RemoteFlag;                                   /* 0x63c */
+	bool32_t      AssertFlag;                                   /* 0x640 */
+	bool32_t      AutoScrollFlag;                               /* 0x644 */
+	bool32_t      DisplayOnStartFlag;                           /* 0x648 */
+	bool32_t      TruncateFlag;                                 /* 0x64c */
+	bool32_t      InvertLogFilterFlag;                          /* 0x650 */
+	bool32_t      DisableFilterFlag;                            /* 0x654 */
+	bool32_t      InvertAssertFilterFlag;                       /* 0x658 */
+	bool32_t      InvertActiveAssertFilterFlag;                 /* 0x65c */
+	bool32_t      AssertFilterAsLogFlag;                        /* 0x660 */
+	unsigned long Level;                                        /* 0x664 */
+	uint16_t      MessageCount;                                 /* 0x668 */
 };
 
 static_assert(sizeof(LHLogPropsSet) == 0x66c, "LHLogPropsSet size is incorrect");

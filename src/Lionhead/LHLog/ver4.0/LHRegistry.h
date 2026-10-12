@@ -33,11 +33,10 @@ LH_LOG_API HKEY__* CreateRegistryKey(char* key);
 LH_LOG_API HKEY__* OpenOrCreateRegistryKey(char* key);
 
 // BW1W120 10008e00 BW1M119 01170ec0 (LHCombined Release)
-LH_LOG_API LH_RETURN RegistryRetrieveVal(char* key, char* value, unsigned char* data, unsigned long* val_size,
+LH_LOG_API LH_RETURN RegistryRetrieveVal(char* key, char* value, uint8_t* data, unsigned long* val_size,
                                          unsigned long type);
 // BW1W120 10009220 BW1M119 01170e00 (LHCombined Release)
-LH_LOG_API LH_RETURN RegistrySetVal(char* key, char* value, unsigned char* data, unsigned long size,
-                                    unsigned long type);
+LH_LOG_API LH_RETURN RegistrySetVal(char* key, char* value, uint8_t* data, unsigned long size, unsigned long type);
 
 // BW1W120 100092a0 BW1M119 011715b0 (LHCombined Release)
 LH_LOG_API LH_RETURN RegistryRetrieveULong(char* key, char* value, unsigned long* out);
@@ -64,8 +63,8 @@ LH_LOG_API LH_RETURN RegistryRetrieveGUID(char* key, char* value, _GUID* out);
 // BW1W120 10009440 BW1M119 01171080 (LHCombined Release)
 LH_LOG_API LH_RETURN RegistrySetGUID(char* key, char* value, _GUID* data);
 // BW1W120 10009460 BW1M119 01171020 (LHCombined Release)
-LH_LOG_API LH_RETURN RegistryRetrieveData(char* key, char* value, unsigned char* out, unsigned long* size);
+LH_LOG_API LH_RETURN RegistryRetrieveData(char* key, char* value, uint8_t* out, unsigned long* size);
 // BW1W120 10009480 BW1M119 01170fc0 (LHCombined Release)
-LH_LOG_API LH_RETURN RegistrySetData(char* key, char* value, unsigned char* data, unsigned long size);
+LH_LOG_API LH_RETURN RegistrySetData(char* key, char* value, uint8_t* data, unsigned long size);
 
 #endif /* BW1_DECOMP_LH_REGISTRY_INCLUDED_H */

@@ -88,9 +88,9 @@ int LHDebugStack::GetFunctionName(HINSTANCE__* instance, void* address, char* na
 		return false;
 	}
 
-	DWORD         displacement = 0;
-	HANDLE        process = GetCurrentProcess();
-	unsigned char buffer[sizeof(IMAGEHLP_SYMBOL) + LH_DEBUG_STACK_FUNCTION_NAME_SIZE];
+	DWORD   displacement = 0;
+	HANDLE  process = GetCurrentProcess();
+	uint8_t buffer[sizeof(IMAGEHLP_SYMBOL) + LH_DEBUG_STACK_FUNCTION_NAME_SIZE];
 	memset(buffer, 0, sizeof(buffer));
 	IMAGEHLP_SYMBOL* symbol = (IMAGEHLP_SYMBOL*)buffer;
 	symbol->SizeOfStruct = sizeof(buffer);
@@ -150,7 +150,7 @@ int LHDebugStack::UpdateStack(_EXCEPTION_POINTERS* exception)
 	}
 
 	FunctionCount = 0;
-	for (unsigned int j = 0; j < LH_DEBUG_STACK_MAX_FUNCTIONS && walking; j++)
+	for (uint32_t j = 0; j < LH_DEBUG_STACK_MAX_FUNCTIONS && walking; j++)
 	{
 		if (!GetFunctionName(NULL, (void*)frame.AddrPC.Offset, FunctionNames[j]))
 		{

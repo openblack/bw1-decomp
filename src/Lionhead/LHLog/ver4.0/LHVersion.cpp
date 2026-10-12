@@ -80,11 +80,11 @@ static void VersionDialogThread(void* argument);
 
 static bool32_t CheckForSameVersion(LHVersionBlock* block, LHVersionBlock* registry_block)
 {
-	char          name[LH_VERSION_REGISTRY_NAME_LENGTH];
-	unsigned char data[LH_VERSION_REGISTRY_DATA_LENGTH];
-	DWORD         nameSize;
-	DWORD         dataSize;
-	DWORD         type;
+	char    name[LH_VERSION_REGISTRY_NAME_LENGTH];
+	uint8_t data[LH_VERSION_REGISTRY_DATA_LENGTH];
+	DWORD   nameSize;
+	DWORD   dataSize;
+	DWORD   type;
 
 	HKEY  key = OpenRegistryKey(LHSPrintf("%s\\%s", RegistryPath, block->Name));
 	DWORD index = 0;
@@ -141,11 +141,11 @@ static bool32_t CheckForSameVersion(LHVersionBlock* block, LHVersionBlock* regis
 
 bool32_t LHVersion::CheckForNewerVersion(LHVersionBlock* registry_block)
 {
-	char          name[LH_VERSION_REGISTRY_NAME_LENGTH];
-	unsigned char data[LH_VERSION_REGISTRY_DATA_LENGTH];
-	DWORD         nameSize;
-	DWORD         dataSize;
-	DWORD         type;
+	char    name[LH_VERSION_REGISTRY_NAME_LENGTH];
+	uint8_t data[LH_VERSION_REGISTRY_DATA_LENGTH];
+	DWORD   nameSize;
+	DWORD   dataSize;
+	DWORD   type;
 
 	HKEY  key = OpenRegistryKey(LHSPrintf("%s\\%s", RegistryPath, Block->Name));
 	DWORD index = 0;
@@ -229,11 +229,11 @@ LH_RETURN LHVersion::UpdateRegistry(LHVersionBlock* block)
 	return LH_OK;
 }
 
-unsigned long LHVersion::ChecksumBlock(unsigned char* block, unsigned short length)
+unsigned long LHVersion::ChecksumBlock(uint8_t* block, uint16_t length)
 {
 	srand(LH_VERSION_CRYPT_SEED);
 	unsigned long checksum = 0;
-	for (unsigned short i = 0; i < length; i++)
+	for (uint16_t i = 0; i < length; i++)
 	{
 		checksum += block[i] + rand();
 		srand(checksum);
@@ -241,21 +241,21 @@ unsigned long LHVersion::ChecksumBlock(unsigned char* block, unsigned short leng
 	return checksum;
 }
 
-void LHVersion::DecryptBlock(unsigned char* block, unsigned short length)
+void LHVersion::DecryptBlock(uint8_t* block, uint16_t length)
 {
 	srand(LH_VERSION_CRYPT_SEED);
-	unsigned char* data = block;
-	for (unsigned short i = 0; i < length; i++)
+	uint8_t* data = block;
+	for (uint16_t i = 0; i < length; i++)
 	{
 		*data++ -= rand();
 	}
 }
 
-void LHVersion::EncryptBlock(unsigned char* block, unsigned short length)
+void LHVersion::EncryptBlock(uint8_t* block, uint16_t length)
 {
 	srand(LH_VERSION_CRYPT_SEED);
-	unsigned char* data = block;
-	for (unsigned short i = 0; i < length; i++)
+	uint8_t* data = block;
+	for (uint16_t i = 0; i < length; i++)
 	{
 		*data++ += rand();
 	}
@@ -500,9 +500,9 @@ void LHVersion::ComputeModuleChecksum()
 		return;
 	}
 
-	DWORD          size = GetFileSize(file, NULL);
-	unsigned char* buffer = (unsigned char*)malloc(size);
-	DWORD          bytesRead;
+	DWORD    size = GetFileSize(file, NULL);
+	uint8_t* buffer = (uint8_t*)malloc(size);
+	DWORD    bytesRead;
 	if (!ReadFile(file, buffer, size, &bytesRead, NULL) || bytesRead != size)
 	{
 		SetModuleChecksumError();
@@ -539,7 +539,7 @@ void LHVersion::ComputeModuleChecksum()
 	}
 }
 
-int LHVersion::CopyrightDialogProc(HWND__* hwnd, unsigned int msg, unsigned int wparam, long lparam)
+int LHVersion::CopyrightDialogProc(HWND__* hwnd, uint32_t msg, uint32_t wparam, long lparam)
 {
 	switch (msg)
 	{
@@ -639,9 +639,9 @@ LHVersion::VALIDATION LHVersion::ValidateBlock()
 	else if (!strcmp(LH_VERSION_ENCRYPTED_TAG, Block->StartTag))
 	{
 		validation = VALIDATION_ENCRYPTED;
-		DecryptBlock((unsigned char*)Block->Build, sizeof(LHVersionBlock) - sizeof(Block->StartTag));
+		DecryptBlock((uint8_t*)Block->Build, sizeof(LHVersionBlock) - sizeof(Block->StartTag));
 		strcpy(Block->StartTag, LH_VERSION_START_TAG);
-		unsigned long checksum = ChecksumBlock((unsigned char*)Block, offsetof(LHVersionBlock, Checksum));
+		unsigned long checksum = ChecksumBlock((uint8_t*)Block, offsetof(LHVersionBlock, Checksum));
 		if (*(unsigned long*)Block->Checksum != checksum)
 		{
 			validation = VALIDATION_INVALID;
@@ -722,7 +722,7 @@ void LHVersion::RepopulateList(HWND__* hwnd, unsigned long state)
 	}
 }
 
-int LHVersion::VersionDialogProc(HWND__* hwnd, unsigned int msg, unsigned int wparam, long lparam)
+int LHVersion::VersionDialogProc(HWND__* hwnd, uint32_t msg, uint32_t wparam, long lparam)
 {
 	LHSPrintf text;
 	switch (msg)
@@ -808,7 +808,7 @@ LH_RETURN LHVersion::GetMajorMinor(char* module, unsigned long* major, unsigned 
 LH_RETURN LHVersion::GetMajorMinorText(char* module, char** text)
 {
 	char key[] = "Xbed6d040xTbW&N4xxls%1m9c$Rr~(Ff9>Z/Ptw]l{$S2ze39+bg^#t,*j6uKBMx";
-	for (unsigned int i = 0; i < strlen(key); i++)
+	for (uint32_t i = 0; i < strlen(key); i++)
 	{
 		key[i]++;
 	}

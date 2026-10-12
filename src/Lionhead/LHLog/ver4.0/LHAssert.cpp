@@ -104,8 +104,8 @@ static LHAssertInfo*    IgnoreList;
 static bool             IgnoreAllGreen;
 static HBITMAP          PriorityBitmap;
 static LHAssertInfo*    FileIgnoreInfo;
-static unsigned short   DialogY;
-static unsigned short   DialogX;
+static uint16_t         DialogY;
+static uint16_t         DialogX;
 static LHAssertInfo*    AssertIgnoreInfo;
 static LHAssertInfo*    CurrentAssertion;
 static CRITICAL_SECTION AssertLock;
@@ -370,8 +370,8 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 					LHLogger::RawLogS(NULL);
 				}
 			}
-			DialogX = (unsigned short)rect.left;
-			DialogY = (unsigned short)rect.top;
+			DialogX = (uint16_t)rect.left;
+			DialogY = (uint16_t)rect.top;
 			EndDialog(dialog, TRUE);
 			return FALSE;
 
@@ -468,7 +468,7 @@ static BOOL CALLBACK AssertDialogProc(HWND dialog, UINT message, WPARAM wparam, 
 	return FALSE;
 }
 
-LH_ASSERT_RETURN LHAssertStatement(char* library, unsigned long ignore, char* text, char* file, unsigned short line,
+LH_ASSERT_RETURN LHAssertStatement(char* library, unsigned long ignore, char* text, char* file, uint16_t line,
                                    char* code, int forced, long priority)
 {
 	if (IgnoreAllGreen && priority == LH_ASSERT_PRIORITY_LOW)
@@ -597,7 +597,7 @@ ignored:
 	return LH_ASSERT_RETURN_CONTINUE;
 }
 
-LH_ASSERT_RETURN LHAssertStatement(char* library, unsigned long ignore, char* text, char* file, unsigned short line,
+LH_ASSERT_RETURN LHAssertStatement(char* library, unsigned long ignore, char* text, char* file, uint16_t line,
                                    char* code, int forced)
 {
 	return LHAssertStatement(library, ignore, text, file, line, code, forced, LH_ASSERT_PRIORITY_HIGH);
