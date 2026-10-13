@@ -19,7 +19,7 @@ struct CreatureLookState
 	uint32_t         field_0x28;
 	uint32_t         field_0x2c;
 	uint32_t         field_0x30;
-	uint32_t         field_0x34;
+	bool32_t         ScriptFocus;
 };
 static_assert(sizeof(CreatureLookState) == 0x38, "Data type is of wrong size");
 
