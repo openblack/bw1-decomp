@@ -2,7 +2,7 @@
 
 #include <chlasm/Enum.h> /* For SEX_TYPE_LAST, TOWN_DESIRE_INFO_LAST, TRIBE_TYPE_LAST */
 
-#include "GameThingWithPos.h" /* For CREATURE_BELIEF_TYPE_TOTEM_STATUE */
+#include "GameThingWithPos.h" /* For CREATURE_BELIEF_TYPE_LAST */
 
 const char* Attribute::TypeName()
 {
@@ -117,7 +117,7 @@ const char* AttributeType::TypeName()
 uint32_t AttributeType::ValueRange()
 {
 	// The value is the thing's CREATURE_BELIEF_TYPE.
-	return CREATURE_BELIEF_TYPE_TOTEM_STATUE + 1;
+	return CREATURE_BELIEF_TYPE_LAST;
 }
 
 ATTRIBUTE_TYPE AttributeType::GetType()
