@@ -8,10 +8,10 @@
 class MPFEMapErrorMessage : public MPFEMessageObject
 {
 public:
-	// Override methods
+	// Constructors
 
-	// BW1W120 00631510 BW1M119 013abdd0
-	virtual ~MPFEMapErrorMessage();
+	// BW1W120 006314c0 BW1M119 013affc0
+	MPFEMapErrorMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_MAP_ERROR_MESSAGE_INCLUDED_H */
