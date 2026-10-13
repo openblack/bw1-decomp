@@ -437,3 +437,41 @@ uint8_t Animal::ReactToConfusedPriority(Reaction* param_1, Reaction* param_2)
 {
 	return 0;
 }
+
+void Living::SetupReactToWood(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToMagicShield(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToHandPickUp(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToHandUsingTotem(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToObjectCrushed(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToFight(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToTeleport(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToHandPuttingStuffInStoragePit(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToDeath(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToDroppedByHand(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToFainting(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToConfused(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToCrowd(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToBreeder(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToTownCelebration(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToVillagerInHand(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToBurningObjectInHand(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToMagicShieldStruck(GameThingWithPos* param_1, Reaction* param_2) {}
+
+void Living::SetupReactToMagicShieldDestroyed(GameThingWithPos* param_1, Reaction* param_2) {}
