@@ -28,6 +28,7 @@ class PhysicsObject;
 class Reaction;
 class Town;
 class Game3DObject;
+class GScaffoldInfo;
 class PlannedAbode;
 
 enum PLANNED_TYPE
@@ -41,7 +42,7 @@ class Scaffold : public MobileObject
 public:
 	uint32_t             field_0x68;
 	PlannedAbode*        Planned;
-	PlannedAbode*        field_0x70;
+	PlannedAbode*        SecondPlanned;
 	Game3DObject*        HandObject;
 	uint32_t             FadeTime;
 	uint32_t             field_0x7c;
@@ -150,6 +151,14 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	Scaffold() { SetToZero(); }
+	// BW1W120 006e8390 BW1M119 0114c140
+	Scaffold(const MapCoords& coords, const GScaffoldInfo* info, Object* parent, float y_angle, float scale);
+
+	// Static methods
+
+	// BW1W120 006e8460 BW1M119 0114be20
+	static Scaffold* Create(const MapCoords& coords, const GScaffoldInfo* info, Town* town, Object* parent,
+	                        float y_angle, float scale);
 
 	// Non-virtual methods
 
@@ -165,6 +174,8 @@ public:
 	bool32_t IsPlannedValid(PLANNED_TYPE type);
 	// BW1W120 006e8c60 BW1M119 0114b120
 	void SwapPlannedAbodes();
+	// BW1W120 006ea9f0 BW1M119 01147810
+	void SetPlannedAbode(PlannedAbode* planned);
 	// BW1W120 006e9060 BW1M119 0114a920
 	PlannedAbode* GetPlannedAbodeForBuilding(Town* town);
 	// BW1W120 006e9610 BW1M119 01149e90
