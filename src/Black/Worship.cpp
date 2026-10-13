@@ -1,4 +1,7 @@
 #include "WorshipSite.h"
+#include "WorshipSiteInfo.h"
+
+GWorshipSiteInfo GWorshipSiteInfo::Infos[WORSHIP_SITE_INFO_LAST];
 
 SCRIPT_OBJECT_TYPE WorshipSite::GetScriptObjectType()
 {

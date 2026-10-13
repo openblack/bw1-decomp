@@ -1,5 +1,8 @@
 #include "GameTimeConstants.h"
 #include "BigForest.h"
+#include "BigForestInfo.h"
+
+GBigForestInfo GBigForestInfo::Infos[BIG_FOREST_INFO_LAST];
 
 bool BigForest::InteractsWithPhysicsObjects()
 {

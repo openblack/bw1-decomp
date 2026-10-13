@@ -1,10 +1,13 @@
 #include "GameTimeConstants.h"
+#include "MapShieldInfo.h"
 #include "SpellShield.h"
 
 #include "ColourConstants.h" /* For White */
 #include "MagicShield.h"
 #include "PhysicalShield.h"
 #include "PhysicsConstantsType.h" /* For PHYSICS_CONSTANTS_TYPE_SPELL_SHIELD */
+
+GMapShieldInfo GMapShieldInfo::Infos[MAP_SHIELD_INFO_LAST];
 
 uint32_t MagicShield::GetSaveType()
 {

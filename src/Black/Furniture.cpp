@@ -2,6 +2,8 @@
 #include "Furniture.h"
 #include "FurnitureInfo.h"
 
+GFurnitureInfo GFurnitureInfo::Infos[FURNITURE_INFO_LAST];
+
 uint32_t Furniture::SaveObject(LHOSFile& param_1, const MapCoords* param_2)
 {
 	return 1;

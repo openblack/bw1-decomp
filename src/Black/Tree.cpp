@@ -5,6 +5,9 @@
 #include "ColourConstants.h"      /* For White */
 #include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_* */
 #include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
+#include "TreeInfo.h"
+
+GTreeInfo GTreeInfo::Infos[TREE_INFO_LAST];
 
 bool32_t Tree::CanBecomeAPhysicsObject()
 {
