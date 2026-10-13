@@ -11,6 +11,8 @@
 
 class Base;
 class Citadel;
+class GCitadelPartInfo;
+struct MapCoords;
 class GameOSFile;
 class GameThing;
 
@@ -36,6 +38,9 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	PlannedCitadelPart() {}
+	// BW1W120 00469610 BW1M119 011ca8e0
+	PlannedCitadelPart(const MapCoords& coords, const GCitadelPartInfo* info, Citadel* citadel, float y_angle,
+	                   float scale);
 };
 
 #endif /* BW1_DECOMP_PLANNED_CITADEL_PART_INCLUDED_H */

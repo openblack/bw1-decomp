@@ -15,14 +15,12 @@ class GBaseInfo;
 class GWorshipSiteUpgradeInfo : public GFeatureInfo
 {
 public:
-	uint32_t field_0x124;
+	float Scale;
 
 	// Override methods
 
-	// BW1W120 0077ebc0 BW1M119 015bb080
-	virtual ~GWorshipSiteUpgradeInfo();
 	// BW1W120 0077eb70 BW1M119 015bb120
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count);
 
 	// Static data
 
@@ -35,7 +33,7 @@ public:
 	static GWorshipSiteUpgradeInfo* GetInfo() { return Infos; }
 
 	// TODO(#377): The original declared this class in WorshipSiteUpgrade.h.
-	INFO_DATA_BLOCK(field_0x124, field_0x124)
+	INFO_DATA_BLOCK(Scale, Scale)
 	INFO_DERIVED_LOADERS(GFeatureInfo, "WorshipSiteUpgrade.h", 13)
 };
 

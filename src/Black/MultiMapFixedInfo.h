@@ -29,7 +29,7 @@ public:
 	// Override methods
 
 	// BW1W120 0052eb60 BW1M119 010e4fa0
-	virtual bool IsOkToCreateAtPos(const MapCoords& pos, float param_2, float param_3) const;
+	virtual bool32_t IsOkToCreateAtPos(const MapCoords& coords, float y_angle, float scale) const;
 	// BW1W120 00421e80 BW1M119 010ab480
 	virtual ABODE_TYPE GetAbodeType() const { return ABODE_TYPE_GENERAL; }
 	// BW1W120 00421e90 BW1M119 010ab4c0

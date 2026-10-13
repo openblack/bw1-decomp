@@ -1829,7 +1829,7 @@ Black/Pot.cpp:
 	.rdata      start:0x00932F10 end:0x0093414C
 	.CRT$XCU    start:0x009C72A4 end:0x009C72B8 align:4
 	.data       start:0x00C02030 end:0x00C02064
-	.bss        start:0x00D4C658 end:0x00D4DE84
+	.bss        start:0x00D4C658 end:0x00D4DE80
 
 Black/PowerSpin.cpp:
 	.text       start:0x0066F730 end:0x00670600
@@ -1837,10 +1837,10 @@ Black/PowerSpin.cpp:
 	.data       start:0x00C02064 end:0x00C021E8
 
 Black/PrayerSite.cpp:
-	.text       start:0x00670600 end:0x00672A70
-	.rdata      start:0x0093414C end:0x009353C0
-	.CRT$XCU    start:0x009C72BC end:0x009C72DC align:4
-	.bss        start:0x00D4DE84 end:0x00D4E104
+	.text       start:0x00670600 end:0x00670A50
+	.rdata      start:0x00934170 end:0x00935380
+	.CRT$XCU    start:0x009C72BC end:0x009C72CC align:4
+	.bss        start:0x00D4DE80 end:0x00D4E0B8
 
 Black/PSys3d.cpp:
 	.text       start:0x00672A70 end:0x00673750
@@ -2621,42 +2621,44 @@ Black/Wonder.cpp:
 
 Black/Workshop.cpp:
 	.text       start:0x00779210 end:0x0077A7B0
-	.rdata      start:0x0099BB14 end:0x0099BB20
+	.rdata      start:0x0099BB14 end:0x0099C44C
 	.CRT$XCU    start:0x009C7AD8 end:0x009C7AE4 align:4
-	.data       start:0x00C24CC8 end:0x00C24D10
-	.bss        start:0x00DCBC94 end:0x00DCBD18
+	.data       start:0x00C24CC8 end:0x00C24CF0
+	.bss        start:0x00DCBC94 end:0x00DCBC98
 
 Black/Worship.cpp:
 	.text       start:0x0077A7B0 end:0x0077EB40
-	.rdata      start:0x0099BB20 end:0x0099D350
+	.rdata      start:0x0099C44C end:0x0099C9F0
 	.CRT$XCU    start:0x009C7AE4 end:0x009C7AFC align:4
-	.data       start:0x00C24D10 end:0x00C24DB4
-	.bss        start:0x00DCBD18 end:0x00DCCAC8
+	.data       start:0x00C24CF0 end:0x00C24D68
+	.bss        start:0x00DCBC98 end:0x00DCC998
 
 Black/WorshipSiteUpgrade.cpp:
 	.text       start:0x0077EB40 end:0x0077EFF0
+	.rdata      start:0x0099C9F0 end:0x0099D86C
 	.CRT$XCU    start:0x009C7AFC end:0x009C7B04 align:4
-	.data       start:0x00C24DB4 end:0x00C24E1C
+	.data       start:0x00C24D68 end:0x00C24E08
+	.bss        start:0x00DCC998 end:0x00DCCAC8
 
 Black/WorshipSpellIcon.cpp:
 	.text       start:0x0077EFF0 end:0x00780670
-	.rdata      start:0x0099D350 end:0x0099D878
+	.rdata      start:0x0099D86C end:0x0099E19C
 	.CRT$XCU    start:0x009C7B04 end:0x009C7B0C align:4
-	.data       start:0x00C24E1C end:0x00C24E54
+	.data       start:0x00C24E08 end:0x00C24E44
 	.bss        start:0x00DCCAC8 end:0x00DCCAD4
 
 Black/WorshipTotem.cpp:
 	.text       start:0x00780670 end:0x00781060
-	.rdata      start:0x0099D878 end:0x0099E1BC
+	.rdata      start:0x0099E19C end:0x0099EACC
 	.CRT$XCU    start:0x009C7B0C end:0x009C7B24 align:4
-	.data       start:0x00C24E54 end:0x00C25124
+	.data       start:0x00C24E44 end:0x00C24E78
 	.bss        start:0x00DCCAD4 end:0x00DD0BE0
 
 Black/ChallengeRoom.cpp:
 	.text       start:0x00781060 end:0x00786510
-	.rdata      start:0x0099E1BC end:0x0099EAD8
+	.rdata      start:0x0099EACC end:0x0099EAD8
 	.CRT$XCU    start:0x009C7B24 end:0x009C7B44 align:4
-	.data       start:0x00C25124 end:0x00C27630
+	.data       start:0x00C24E78 end:0x00C27630
 	.bss        start:0x00DD0BE0 end:0x00DE0F68
 
 Black/CreatureRoom.cpp:

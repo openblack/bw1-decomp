@@ -24,6 +24,7 @@ class Object;
 class Town;
 class TownCentre;
 class WorshipSite;
+class WorshipSpellIcon;
 
 class TownSpellIcon : public SpellIcon
 {
@@ -53,6 +54,8 @@ public:
 	virtual WorshipSite* GetWorshipSite();
 	// BW1W120 00748be0 BW1M119 0156aa40
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+	// BW1W120 00748f30 BW1M119 0156a150
+	virtual WorshipSpellIcon* GetWorshipSpellIcon();
 
 	// BW1W120 inlined BW1M119 0130efa0
 	TownSpellIcon() {}
@@ -82,6 +85,8 @@ public:
 	virtual void Draw();
 	// BW1W120 00748d20 BW1M119 0156a460
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
+	// BW1W120 00748e90 BW1M119 0156a3d0
+	virtual int GetSpellIconPlacementIndex();
 
 	// BW1W120 inlined BW1M119 inlined
 	TownCentreSpellIcon() { SetToZero(); }

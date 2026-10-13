@@ -47,6 +47,8 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	GFootpathFinder() {}
+	// BW1W120 00538ec0 BW1M119 010ec000
+	GFootpathFinder(GameThingWithPos* from, GameThingWithPos* to);
 
 	// Non-virtual methods
 

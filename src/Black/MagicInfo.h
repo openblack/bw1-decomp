@@ -2,9 +2,9 @@
 #define BW1_DECOMP_MAGIC_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum GESTURE_TYPE, enum MAGIC_TYPE, enum POWER_UP_TYPE, enum SPELL_SEED_TYPE */
+#include <chlasm/Enum.h> /* For enum CAST_RULE_TYPE, enum GESTURE_TYPE, enum IMMERSION_EFFECT_TYPE, enum IMPRESSIVE_TYPE, enum MAGIC_TYPE, enum PARTICLE_TYPE, enum POWER_UP_TYPE, enum SPELL_SEED_TYPE */
 
 #include "BaseInfo.h"    /* For struct GBaseInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK, INFO_ROOT_LOADERS */
@@ -22,12 +22,24 @@ struct MapCoords;
 class GMagicInfo : public GBaseInfo
 {
 public:
-	int             field_0x10;
-	uint8_t         field_0x14[0x14];
-	SPELL_SEED_TYPE SpellSeedType;
-	GESTURE_TYPE    GestureType;
-	POWER_UP_TYPE   PowerUpType;
-	uint8_t         field_0x34[0x24];
+	MAGIC_TYPE            MagicType;
+	IMMERSION_EFFECT_TYPE Immersion;
+	uint32_t              StopImmersion;
+	float                 PerceivedPower;
+	PARTICLE_TYPE         ParticleType;
+	IMPRESSIVE_TYPE       ImpressiveType;
+	SPELL_SEED_TYPE       SpellSeedType;
+	GESTURE_TYPE          GestureType;
+	POWER_UP_TYPE         PowerUpType;
+	CAST_RULE_TYPE        CastRuleType;
+	uint32_t              IsSpellSeedDrawnInHand;
+	uint32_t              IsSpellRecharged;
+	uint32_t              IsCreatureCastFromAbove;
+	uint32_t              OneOffSpellIsPlayful;
+	uint32_t              OneOffSpellIsAggressive;
+	uint32_t              OneOffSpellIsCompassionate;
+	uint32_t              OneOffSpellIsToRestoreHealth;
+	PARTICLE_TYPE         ParticleTypeInHand;
 
 	// Override methods
 
@@ -67,9 +79,13 @@ public:
 	const char* GetMagicInfoText() const;
 	// BW1W120 005fb680 BW1M119 013b5c30
 	GMagicEffectInfo* GetMagicEffectInfo() const;
+	// BW1W120 inlined BW1M119 013b4610
+	MAGIC_TYPE GetMagicType() const { return MagicType; }
+	// BW1W120 005fb830 BW1M119 013b56b0
+	float GetChantsRequiredToCreate() const;
 
 	// Out of line: LoadBinary at 0042d6b0, Load at 0042d670.
-	INFO_DATA_BLOCK(field_0x10, field_0x34)
+	INFO_DATA_BLOCK(MagicType, ParticleTypeInHand)
 	INFO_ROOT_LOADERS("MagicInfo.h", 37)
 };
 static_assert(sizeof(GMagicInfo) == 0x58, "Data type is of wrong size");

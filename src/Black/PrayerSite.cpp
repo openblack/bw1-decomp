@@ -3,7 +3,10 @@
 #include "PrayerIconInfo.h"
 #include "PrayerSiteInfo.h"
 
-void PrayerSite::ToBeDeleted(int param_1) {}
+GPrayerSiteInfo GPrayerSiteInfo::Infos[PRAYER_SITE_INFO_LAST];
+GPrayerIconInfo GPrayerIconInfo::Infos[PRAYER_ICON_INFO_LAST];
+
+void PrayerSite::ToBeDeleted(int delete_now) {}
 
 GPlayer* PrayerSite::GetPlayer()
 {
@@ -15,7 +18,7 @@ Town* PrayerSite::GetTown()
 	return NULL;
 }
 
-bool32_t PrayerSite::CreatureMustAvoid(Creature* param_1)
+bool32_t PrayerSite::CreatureMustAvoid(Creature* creature)
 {
 	return false;
 }
@@ -33,6 +36,6 @@ GBaseInfo* GPrayerSiteInfo::GetBaseInfo(uint32_t& info_count)
 
 GBaseInfo* GPrayerIconInfo::GetBaseInfo(uint32_t& info_count)
 {
-	info_count = PLAYER_INFO_LAST;
+	info_count = PRAYER_ICON_INFO_LAST;
 	return Infos;
 }

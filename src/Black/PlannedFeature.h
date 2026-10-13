@@ -9,19 +9,19 @@
 // Forward Declares
 
 class Base;
+class GFeatureInfo;
 class GameOSFile;
 class GameThing;
+struct MapCoords;
 class MultiMapFixed;
 
 class PlannedFeature : public PlannedMultiMapFixed
 {
 public:
-	GameThing* field_0x48;
+	GameThing* Owner;
 
 	// Override methods
 
-	// BW1W120 005274a0 BW1M119 010d6100
-	virtual ~PlannedFeature();
 	// BW1W120 00527490 BW1M119 010d61e0
 	virtual char* GetDebugText();
 	// BW1W120 00527580 BW1M119 010d5980
@@ -35,6 +35,8 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	PlannedFeature() {}
+	// BW1W120 00527440 BW1M119 010d5c10
+	PlannedFeature(const MapCoords& coords, const GFeatureInfo* info, GameThing* owner, float y_angle, float scale);
 };
 
 #endif /* BW1_DECOMP_PLANNED_FEATURE_INCLUDED_H */

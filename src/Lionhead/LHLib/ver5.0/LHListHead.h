@@ -22,6 +22,8 @@ struct LHListHead
 	uint32_t count;
 
 	inline LHListHead() { Clear(); }
+	// BW1W120 inlined BW1M119 01310160
+	~LHListHead() {}
 
 	// BW1W120 inlined BW1M119 014af430
 	T* Get() { return head; }
