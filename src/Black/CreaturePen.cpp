@@ -6,6 +6,6 @@
 
 GBaseInfo* GCreaturePenInfo::GetBaseInfo(uint32_t& info_count)
 {
-	info_count = 5;
+	info_count = ARRAY_SIZE(Infos);
 	return Infos;
 }

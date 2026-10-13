@@ -9,6 +9,6 @@ uint32_t MobileObject::GetSaveType()
 
 GBaseInfo* GArrowInfo::GetBaseInfo(uint32_t& info_count)
 {
-	info_count = 1;
+	info_count = ARRAY_SIZE(Infos);
 	return Infos;
 }
