@@ -172,3 +172,13 @@ void CitadelHeart::SetSpecularColor(unsigned long color)
 {
 	SpecularColor = color;
 }
+
+int PlannedTownCitadelHeart::IsCivic()
+{
+	return false;
+}
+
+int PlannedTownCitadelHeart::IsWonder()
+{
+	return false;
+}

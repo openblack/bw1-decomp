@@ -50,3 +50,8 @@ bool32_t PileResource::NetworkUnfriendlyEndLockedSelect()
 {
 	return true;
 }
+
+int PileResource::IsTuggable()
+{
+	return false;
+}
