@@ -59,3 +59,15 @@ bool32_t Tree::IsOkToCreateAtPos(MapCoords& coords)
 	}
 	return true;
 }
+
+float Tree::Decay(float amount)
+{
+	float scale = GetScale() - amount;
+	if (scale <= 0.0f)
+	{
+		ToBeDeleted(0);
+		return 0.0f;
+	}
+	SetScale(scale);
+	return amount;
+}

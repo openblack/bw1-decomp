@@ -210,6 +210,11 @@ public:
 
 	// BW1W120 00749f60 BW1M119 01161230
 	void SetToZero();
+
+	// Non-virtual methods
+
+	// BW1W120 0074a3a0 BW1M119 01160a20
+	float Decay(float amount);
 };
 
 #endif /* BW1_DECOMP_TREE_INCLUDED_H */
