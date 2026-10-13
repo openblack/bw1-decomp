@@ -44,3 +44,32 @@ bool32_t Football::IsFootball()
 {
 	return true;
 }
+
+bool32_t Football::CanBeHiddenIn()
+{
+	return false;
+}
+
+bool32_t Football::CreatureMustAvoid(Creature* creature)
+{
+	return false;
+}
+
+uint32_t Football::GetCreatureBeliefType()
+{
+	return CREATURE_BELIEF_TYPE_FEATURE;
+}
+
+bool32_t Football::IsRepaired()
+{
+	return GetPercentRepaired() >= 1.0f;
+}
+
+bool32_t Football::IsBuilt()
+{
+	if ((FixedFlags & FIXED_FLAG_UNDER_CONSTRUCTION) == FIXED_FLAG_UNDER_CONSTRUCTION)
+	{
+		return false;
+	}
+	return GetPercentBuilt() >= 1.0f;
+}
