@@ -163,6 +163,10 @@ public:
 	void ForceBuildBuilding(GPlayer* player);
 	// BW1W120 006ea950 BW1M119 01147a60
 	bool32_t IsPlannedValid(PLANNED_TYPE type);
+	// BW1W120 006e8c60 BW1M119 0114b120
+	void SwapPlannedAbodes();
+	// BW1W120 006e9060 BW1M119 0114a920
+	PlannedAbode* GetPlannedAbodeForBuilding(Town* town);
 	// BW1W120 006e9610 BW1M119 01149e90
 	void RemoveOldBuildingSite();
 	// BW1W120 inlined BW1M119 010c7770
