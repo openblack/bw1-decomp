@@ -68,6 +68,115 @@ bool32_t Living::CanBeFrighteningToCreature(Creature* creature)
 	return false;
 }
 
+bool32_t Living::ArrivesAtWoodReaction()
+{
+	return true;
+}
+
+bool32_t Living::EnterInHand(uint8_t current, uint8_t destination)
+{
+	return true;
+}
+
+bool32_t Living::IsAvailableForBeliefButNotReaction(REACTION)
+{
+	return false;
+}
+
+uint32_t Living::IsPosValidForMapCellExistance(const MapCoords&)
+{
+	return true;
+}
+
+bool32_t Living::CanBeCrushed()
+{
+	return true;
+}
+
+float Living::CalculateLifeDesire()
+{
+	return 0.0f;
+}
+
+bool32_t Living::IsSuitableForCreatureAction()
+{
+	return true;
+}
+
+bool32_t Living::CanBeThrownByCreature(Creature*)
+{
+	return false;
+}
+
+bool32_t Living::IsAnimate()
+{
+	return true;
+}
+
+bool32_t Living::CanBePoodUponByCreature(Creature*)
+{
+	return false;
+}
+
+bool32_t Living::IsAggressive(Creature*)
+{
+	return true;
+}
+
+bool32_t Living::IsLiving()
+{
+	return true;
+}
+
+bool32_t Living::IsNotLiving()
+{
+	return false;
+}
+
+void Living::SetStateAfterFinishingDance() {}
+
+void Living::SetupReactToMagicShieldDestroyed(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToMagicShieldStruck(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToBurningObjectInHand(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToVillagerInHand(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToTownCelebration(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToBreeder(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToCrowd(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToConfused(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToFainting(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToDroppedByHand(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToDeath(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToHandPuttingStuffInStoragePit(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToTeleport(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToFight(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToObjectCrushed(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToHandUsingTotem(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToHandPickUp(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToMagicShield(GameThingWithPos*, Reaction*) {}
+
+void Living::SetupReactToWood(GameThingWithPos*, Reaction*) {}
+
+void Living::UpdateHowImpressed(Reaction*, int) {}
+
+void Living::SetFoodSpeedup(bool value) {}
+
 uint32_t PieceVillager::GetSaveType()
 {
 	return GAME_THING_TYPE_PIECE_VILLAGER;
@@ -97,6 +206,58 @@ Town* Object::GetTown()
 {
 	return NULL;
 }
+
+MultiMapFixed* Object::AsMultiMapFixed()
+{
+	return NULL;
+}
+
+bool32_t Object::IsResourceStore(RESOURCE_TYPE type)
+{
+	return false;
+}
+
+bool32_t Object::ValidForLockedSelectProcess(GInterfaceStatus* status)
+{
+	return false;
+}
+
+bool32_t Object::NetworkFriendlyStartLockedSelect(GInterfaceStatus* status)
+{
+	return true;
+}
+
+uint32_t Object::InterfaceValidToTap(GInterfaceStatus* status)
+{
+	return 0;
+}
+
+bool32_t Object::IsSolidToNewAbode()
+{
+	return false;
+}
+
+GameThing* Object::GetTownArtifact()
+{
+	return NULL;
+}
+
+bool32_t Object::IsTownArtifact()
+{
+	return false;
+}
+
+bool32_t Object::ShouldFootpathsGoRound()
+{
+	return false;
+}
+
+NewCollide* Object::GetCollideData()
+{
+	return NULL;
+}
+
+void Object::StartOnFire() {}
 
 bool32_t Animal::IsOkToBeShepherd()
 {

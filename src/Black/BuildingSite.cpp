@@ -21,6 +21,10 @@ char* CitadelBuildingSite::GetDebugText()
 	return "CitadelBuildingSite:";
 }
 
+void CitadelBuildingSite::CreatePileWood() {}
+
+void CitadelBuildingSite::SetPileWood(Pot*) {}
+
 uint32_t StandardBuildingSite::GetSaveType()
 {
 	return GAME_THING_TYPE_STANDARD_BUILDING_SITE;
@@ -40,6 +44,17 @@ char* WorkshopBuildingSite::GetDebugText()
 {
 	return "WorkshopBuildingSite:";
 }
+
+uint32_t WorkshopBuildingSite::GetWoodForStats()
+{
+	return 0;
+}
+
+void WorkshopBuildingSite::Process() {}
+
+void WorkshopBuildingSite::RemovePotFromStructure(PotStructure* structure) {}
+
+void WorkshopBuildingSite::SetPileWood(Pot* pot) {}
 
 MultiMapFixed* BuildingSite::GetRootBuilding()
 {

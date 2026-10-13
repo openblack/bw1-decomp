@@ -55,3 +55,8 @@ int PileResource::IsTuggable()
 {
 	return false;
 }
+
+bool32_t PileResource::IsField(Creature* creature)
+{
+	return false;
+}

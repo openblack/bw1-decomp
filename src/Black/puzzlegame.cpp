@@ -9,6 +9,16 @@ bool32_t PuzzleVillager::DecideWhatToDo()
 	return true;
 }
 
+bool32_t PuzzleVillager::AttackAllowedForChessGame(long x, long z)
+{
+	return false;
+}
+
+bool32_t PuzzleVillager::MoveAllowedForChessGame(long x, long z)
+{
+	return false;
+}
+
 bool32_t PuzzleLion::DecideWhatToDo()
 {
 	return true;
