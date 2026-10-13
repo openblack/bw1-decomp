@@ -1789,7 +1789,8 @@ config.libs = [
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSocket.cpp"),
             MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHTCPServerListener.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHTransport.cpp"),
-            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp"),
+            MultiplayerObject(Matching, "Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/Version.cpp"),
 
             Object(Matching, "LHMultiplayer/delayimp/delayhlp.cpp", source="delayimp/delayhlp.cpp", cflags=cflags_delayimp),
 
