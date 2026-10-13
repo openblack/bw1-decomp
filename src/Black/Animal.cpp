@@ -297,3 +297,143 @@ PieceVillager* PieceVillager::Create(const MapCoords& coords, const GAnimalInfo*
 	}
 	return villager;
 }
+
+uint8_t Living::ReactToCrowdPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Living::ReactToBreederPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Living::ReactToTownCelebrationPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Living::ReactToVillagerInHandPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Living::ReactToBurningObjectInHandPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Living::ReactToMagicShieldStruckPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Living::ReactToMagicShieldDestroyedPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Living::ReactToScaffoldPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::FollowObjectPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::LookAtSpellPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::LookAtNiceSpellPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::FollowSpellPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToWoodPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToMagicTreePriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToBallPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToMagicShieldPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToCreatureGiftPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToNewBuildingPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToHandPickUpPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToHandUsingTotemPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToObjectCrushedPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToFightPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToTeleportPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToHandPuttingStuffInStoragePitPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToDeathPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToDroppedByHandPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToFaintingPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
+
+uint8_t Animal::ReactToConfusedPriority(Reaction* param_1, Reaction* param_2)
+{
+	return 0;
+}
