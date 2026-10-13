@@ -45,3 +45,13 @@ bool32_t Flock::IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature)
 {
 	return true;
 }
+
+bool32_t Flock::IsFlock() const
+{
+	return true;
+}
+
+bool32_t Flock::IsScriptContainer() const
+{
+	return true;
+}
