@@ -29,7 +29,8 @@ SpecialMessageTypes MPFEMessageObject::GetMessageType(wchar_t code)
 
 wchar_t MPFEMessageObject::GetMessageCode(SpecialMessageTypes type)
 {
-	if (type > 25)
+	// Types past the 26 upper-case letters continue into lower case.
+	if (type > L'Z' - L'A')
 	{
 		return L'a' + type;
 	}

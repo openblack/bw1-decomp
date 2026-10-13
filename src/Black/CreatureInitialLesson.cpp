@@ -1,6 +1,8 @@
 #include "CreatureMentalAttributeTest.h"
 
-#include <chlasm/Enum.h> /* For OBJECT_TYPE_GROUND, SEX_TYPE_LAST, TOWN_DESIRE_INFO_LAST, TRIBE_TYPE_LAST */
+#include <chlasm/Enum.h> /* For SEX_TYPE_LAST, TOWN_DESIRE_INFO_LAST, TRIBE_TYPE_LAST */
+
+#include "GameThingWithPos.h" /* For CREATURE_BELIEF_TYPE_TOTEM_STATUE */
 
 const char* Attribute::TypeName()
 {
@@ -114,8 +116,8 @@ const char* AttributeType::TypeName()
 
 uint32_t AttributeType::ValueRange()
 {
-	// UpdateValue clamps object types beyond OBJECT_TYPE_GROUND to it.
-	return OBJECT_TYPE_GROUND + 1;
+	// The value is the thing's CREATURE_BELIEF_TYPE.
+	return CREATURE_BELIEF_TYPE_TOTEM_STATUE + 1;
 }
 
 ATTRIBUTE_TYPE AttributeType::GetType()
