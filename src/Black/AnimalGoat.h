@@ -46,6 +46,13 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	Goat() {}
+	// BW1W120 inlined BW1M119 inlined
+	Goat(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Cow(coords, info, age) {}
+
+	// Static methods
+
+	// BW1W120 0041d660 BW1M119 inlined
+	static Goat* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_GOAT_INCLUDED_H */

@@ -64,6 +64,11 @@ public:
 	Cow() {}
 	// BW1W120 0041d0b0 BW1M119 0117b700
 	Cow(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
+
+	// Static methods
+
+	// BW1W120 0041d150 BW1M119 0117b5f0
+	static Cow* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_COW_INCLUDED_H */
