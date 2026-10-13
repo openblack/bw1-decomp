@@ -9,3 +9,5 @@ char* GMagicHand::GetDebugText()
 {
 	return "MagicHand:";
 }
+
+GMagicHand::~GMagicHand() {}

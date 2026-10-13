@@ -43,3 +43,5 @@ char* BigForest::GetDebugText()
 {
 	return "BigForest:";
 }
+
+BigForest::~BigForest() {}

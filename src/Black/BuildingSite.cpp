@@ -35,6 +35,8 @@ char* StandardBuildingSite::GetDebugText()
 	return "StandardBuildingSite:";
 }
 
+StandardBuildingSite::~StandardBuildingSite() {}
+
 uint32_t WorkshopBuildingSite::GetSaveType()
 {
 	return GAME_THING_TYPE_WORKSHOP_BUILDING_SITE;
@@ -49,6 +51,8 @@ uint32_t WorkshopBuildingSite::GetWoodForStats()
 {
 	return 0;
 }
+
+WorkshopBuildingSite::~WorkshopBuildingSite() {}
 
 void WorkshopBuildingSite::Process() {}
 

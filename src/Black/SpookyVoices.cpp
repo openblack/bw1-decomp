@@ -10,3 +10,5 @@ GBaseInfo* GSpookyVoiceInfo::GetBaseInfo(uint32_t& info_count)
 	info_count = NUM_SPOOKY_NAMES;
 	return Infos;
 }
+
+GSpookyVoices::~GSpookyVoices() {}

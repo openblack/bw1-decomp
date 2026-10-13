@@ -40,3 +40,5 @@ GBaseInfo* GSpecialVillagerInfo::GetBaseInfo(uint32_t& info_count)
 	info_count = SPECIAL_VILLAGER_INFO_LAST;
 	return Infos;
 }
+
+GSpecialVillagerInfo::~GSpecialVillagerInfo() {}
