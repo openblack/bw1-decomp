@@ -8,10 +8,10 @@
 class MPFECancelStartMessage : public MPFEMessageObject
 {
 public:
-	// Override methods
+	// Constructors
 
-	// BW1W120 00627640 BW1M119 013a3470
-	virtual ~MPFECancelStartMessage();
+	// BW1W120 006275e0 BW1M119 013a2300
+	MPFECancelStartMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_CANCEL_START_MESSAGE_INCLUDED_H */

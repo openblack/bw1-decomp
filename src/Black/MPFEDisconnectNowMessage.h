@@ -8,10 +8,10 @@
 class MPFEDisconnectNowMessage : public MPFEMessageObject
 {
 public:
-	// Override methods
+	// Constructors
 
-	// BW1W120 006302c0 BW1M119 0139b550
-	virtual ~MPFEDisconnectNowMessage();
+	// BW1W120 00630270 BW1M119 013ae360
+	MPFEDisconnectNowMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_DISCONNECT_NOW_MESSAGE_INCLUDED_H */

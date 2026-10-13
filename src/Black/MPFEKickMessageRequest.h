@@ -5,13 +5,17 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+// Forward Declares
+
+struct MPFEPlayerDetails;
+
 class MPFEKickMessageRequest : public MPFEMessageObject
 {
 public:
-	// Override methods
+	// Constructors
 
-	// BW1W120 00627790 BW1M119 0139f440
-	virtual ~MPFEKickMessageRequest();
+	// BW1W120 00627730 BW1M119 013a20e0
+	MPFEKickMessageRequest(MPFEPlayerDetails* player);
 };
 
 #endif /* BW1_DECOMP_MPFE_KICK_MESSAGE_REQUEST_INCLUDED_H */
