@@ -309,4 +309,17 @@ public:
 	void UpdateLeashes();
 };
 
+// TODO: placement unproven
+inline void Wrap(float& value, float range)
+{
+	float t = value;
+	value = t - (int)(t / range) * range;
+}
+
+inline void WrapScaled(float& value, float range, float inv_range)
+{
+	float t = value;
+	value = t - (int)(t * inv_range) * range;
+}
+
 #endif /* BW1_DECOMP_CITADEL_HEART_INCLUDED_H */

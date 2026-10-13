@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <re_common.h> /* For ARRAY_SIZE */
+
 #include "CitadelPartInfo.h" /* For struct GCitadelPartInfo */
 #include "InfoLoaders.h"     /* For INFO_DATA_BLOCK */
 
@@ -26,7 +28,7 @@ public:
 	// BW1W120 00464390 BW1M119 011c97a0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
 	{
-		num_infos = sizeof(Infos) / sizeof(Infos[0]);
+		num_infos = ARRAY_SIZE(Infos);
 		return GetInfo();
 	}
 

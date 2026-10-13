@@ -65,18 +65,6 @@ inline float LinterpTable(const float* keys, const float* values, int count, flo
 	return values[count - 1];
 }
 
-inline void Wrap(float& value, float range)
-{
-	float t = value;
-	value = t - (int)(t / range) * range;
-}
-
-inline void WrapScaled(float& value, float range, float inv_range)
-{
-	float t = value;
-	value = t - (int)(t * inv_range) * range;
-}
-
 class GlobalTextures
 {
 public:

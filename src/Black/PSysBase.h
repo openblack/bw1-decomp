@@ -31,7 +31,7 @@ public:
 	// BW1W120 006759c0 BW1M119 010892a0
 	virtual ~PSysBase();
 	// BW1W120 004664f0 BW1M119 0111a700
-	virtual char* GetDebugText() { return "##a_class:"; }
+	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 	// BW1W120 006944b0 BW1M119 01426b80
 	virtual bool32_t Load(GameOSFile& file);
 };
