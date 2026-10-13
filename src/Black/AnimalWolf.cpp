@@ -32,6 +32,11 @@ bool32_t PieceWolf::CanBeFrighteningToCreature(Creature* creature)
 	return false;
 }
 
+char* PieceWolf::GetDebugText()
+{
+	return "Animal: Wolf for Puzzle";
+}
+
 bool32_t Wolf::MoveToPos()
 {
 	return Animal::MoveToPos();
@@ -40,4 +45,9 @@ bool32_t Wolf::MoveToPos()
 bool32_t Wolf::Wander()
 {
 	return Animal::Wander();
+}
+
+char* Wolf::GetDebugText()
+{
+	return "Animal: Wolf";
 }

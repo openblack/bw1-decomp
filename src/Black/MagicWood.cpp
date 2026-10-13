@@ -14,3 +14,8 @@ bool32_t MagicWood::IsAWoodPileOutsideStoragePit(Creature* param_1)
 {
 	return true;
 }
+
+char* MagicWood::GetDebugText()
+{
+	return "MagicWood:";
+}

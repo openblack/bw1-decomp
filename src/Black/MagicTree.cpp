@@ -10,3 +10,8 @@ IMPRESSIVE_TYPE MagicTree::GetImpressiveType()
 {
 	return IMPRESSIVE_TYPE_MAGIC_TREE;
 }
+
+char* MagicTree::GetDebugText()
+{
+	return "MagicTree:";
+}

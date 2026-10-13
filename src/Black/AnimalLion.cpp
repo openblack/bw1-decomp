@@ -19,6 +19,11 @@ uint32_t Lion::GetSaveType()
 	return GAME_THING_TYPE_LION;
 }
 
+char* Lion::GetDebugText()
+{
+	return "Animal: Lion";
+}
+
 uint32_t PieceLion::GetSaveType()
 {
 	return GAME_THING_TYPE_PIECE_LION;
@@ -58,4 +63,9 @@ PieceLion* PieceLion::Create(const MapCoords& coords, const GAnimalInfo* info, u
 		lion->Game3dObject->SetHumanShadowed(true);
 	}
 	return lion;
+}
+
+char* PieceLion::GetDebugText()
+{
+	return "Animal: Lion for Puzzle";
 }

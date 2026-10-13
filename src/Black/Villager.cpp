@@ -1950,4 +1950,9 @@ uint32_t MissionaryControl::GetSaveType()
 	return GAME_THING_TYPE_MISSIONARY_CONTROL;
 }
 
+char* MissionaryControl::GetDebugText()
+{
+	return "MissionaryControl:";
+}
+
 void Villager::WallhugValidate() {}

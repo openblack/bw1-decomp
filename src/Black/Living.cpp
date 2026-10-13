@@ -12,9 +12,19 @@ uint32_t DataForScriptRemind::GetSaveType()
 	return GAME_THING_TYPE_DATA_FOR_SCRIPT_REMIND;
 }
 
+char* DataForScriptRemind::GetDebugText()
+{
+	return "DataForScriptRemind:";
+}
+
 uint32_t DataPath::GetSaveType()
 {
 	return GAME_THING_TYPE_DATA_PATH;
+}
+
+char* DataPath::GetDebugText()
+{
+	return "DataPath:";
 }
 
 bool32_t Living::CanBecomeAPhysicsObject()

@@ -36,3 +36,8 @@ SCRIPT_OBJECT_TYPE Reward::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_REWARD;
 }
+
+char* Reward::GetDebugText()
+{
+	return "Reward:";
+}

@@ -46,6 +46,11 @@ bool32_t FelledTree::IsARootedObject()
 	return false;
 }
 
+char* FelledTree::GetDebugText()
+{
+	return "FelledTree:";
+}
+
 RESOURCE_TYPE DeadTree::GetResourceType()
 {
 	return RESOURCE_TYPE_WOOD;
@@ -94,4 +99,9 @@ void DeadTree::StartOnFire()
 IMMERSION_EFFECT_TYPE DeadTree::GetInHandImmersionTexture()
 {
 	return Object::GetInHandImmersionTexture();
+}
+
+char* DeadTree::GetDebugText()
+{
+	return "DeadTree:";
 }

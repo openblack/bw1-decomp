@@ -6,6 +6,7 @@
 #include "MagicShield.h"
 #include "PhysicalShield.h"
 #include "PhysicsConstantsType.h" /* For PHYSICS_CONSTANTS_TYPE_SPELL_SHIELD */
+#include "SpellStormAndTornado.h"
 
 GMapShieldInfo GMapShieldInfo::Infos[MAP_SHIELD_INFO_LAST];
 
@@ -27,6 +28,11 @@ bool PhysicalShield::GetAlwaysRemainsInPhysicsInternalSystem()
 float SpellShield::GetRadius()
 {
 	return Get2DRadius();
+}
+
+char* SpellShield::GetDebugText()
+{
+	return "SpellShield:";
 }
 
 MapShield::MapShield() : spell(NULL), SpellInfo(NULL)
@@ -72,6 +78,11 @@ bool32_t MapShield::CanBecomeAPhysicsObject()
 	return false;
 }
 
+char* MapShield::GetDebugText()
+{
+	return "MapShield";
+}
+
 void MagicShield::ProcessShield() {}
 
 void MagicShield::DrawShield() {}
@@ -86,6 +97,11 @@ bool MagicShield::InteractsWithPhysicsObjects()
 	return false;
 }
 
+char* MagicShield::GetDebugText()
+{
+	return "MagicShield:";
+}
+
 void PhysicalShield::Draw() {}
 
 bool PhysicalShield::InteractsWithPhysicsObjects()
@@ -98,4 +114,14 @@ uint32_t PhysicalShield::GetPhysicsConstantsType()
 	return PHYSICS_CONSTANTS_TYPE_SPELL_SHIELD;
 }
 
+char* PhysicalShield::GetDebugText()
+{
+	return "PhysicalShield:";
+}
+
 void MagicShield::Draw() {}
+
+char* SpellStormAndTornado::GetDebugText()
+{
+	return "SpellStormAndTornado:";
+}

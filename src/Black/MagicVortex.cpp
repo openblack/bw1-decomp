@@ -17,14 +17,29 @@ uint32_t LandscapeVortexOut::GetSaveType()
 	return GAME_THING_TYPE_LANDSCAPE_VORTEX_OUT;
 }
 
+char* LandscapeVortexOut::GetDebugText()
+{
+	return "MagicVortexOut:";
+}
+
 uint32_t LandscapeVortexVolc::GetSaveType()
 {
 	return GAME_THING_TYPE_LANDSCAPE_VORTEX_VOLC;
 }
 
+char* LandscapeVortexVolc::GetDebugText()
+{
+	return "MagicVortexVolc:";
+}
+
 uint32_t LandscapeVortexIn::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_VORTEX;
+}
+
+char* LandscapeVortexIn::GetDebugText()
+{
+	return "MagicVortexIn:";
 }
 
 SCRIPT_OBJECT_TYPE LandscapeVortex::GetScriptObjectType()

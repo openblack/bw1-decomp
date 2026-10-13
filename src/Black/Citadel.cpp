@@ -68,3 +68,8 @@ const char* Citadel::GetText()
 {
 	return "Citadel";
 }
+
+char* Citadel::GetDebugText()
+{
+	return "Citadel:";
+}

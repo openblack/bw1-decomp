@@ -33,3 +33,8 @@ bool32_t WorshipTotem::IsSacrificeAltar()
 {
 	return true;
 }
+
+char* WorshipTotem::GetDebugText()
+{
+	return "WorshipTotem:";
+}

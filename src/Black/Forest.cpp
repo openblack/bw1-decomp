@@ -53,3 +53,8 @@ void Forest::RemoveForestFromTowns(Forest* forest)
 		node->payload->RemoveForest(forest);
 	}
 }
+
+char* Forest::GetDebugText()
+{
+	return "Forest:";
+}

@@ -20,3 +20,8 @@ LH3DObject::ObjectType Creche::Get3DType()
 {
 	return LH3DObject::MORPHABLE;
 }
+
+char* Creche::GetDebugText()
+{
+	return "Creche:";
+}

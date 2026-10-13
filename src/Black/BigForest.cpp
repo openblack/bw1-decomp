@@ -38,3 +38,8 @@ bool32_t BigForest::CreatureMustAvoid(Creature* param_1)
 {
 	return IsOnFire();
 }
+
+char* BigForest::GetDebugText()
+{
+	return "BigForest:";
+}

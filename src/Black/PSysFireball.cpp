@@ -72,3 +72,8 @@ bool32_t MagicFireBall::CanBecomeAPhysicsObject()
 {
 	return false;
 }
+
+char* MagicFireBall::GetDebugText()
+{
+	return "FireBall:";
+}

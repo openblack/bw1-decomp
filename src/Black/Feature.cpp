@@ -25,6 +25,11 @@ uint32_t PlannedFeature::GetSaveType()
 	return GAME_THING_TYPE_PLANNED_FEATURE;
 }
 
+char* PlannedFeature::GetDebugText()
+{
+	return "PlannedFeature:";
+}
+
 SCRIPT_OBJECT_TYPE Feature::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_FEATURE;
@@ -33,6 +38,11 @@ SCRIPT_OBJECT_TYPE Feature::GetScriptObjectType()
 LH3DObject::ObjectType Flowers::Get3DType()
 {
 	return LH3DObject::MORPHABLE;
+}
+
+char* Flowers::GetDebugText()
+{
+	return "Flowers:";
 }
 
 inline Feature::Feature(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale,

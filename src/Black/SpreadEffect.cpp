@@ -9,3 +9,8 @@ GPlayer* FireEffect::GetPlayer()
 {
 	return player;
 }
+
+char* FireEffect::GetDebugText()
+{
+	return "SpreadEffect:";
+}

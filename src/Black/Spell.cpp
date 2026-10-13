@@ -20,3 +20,8 @@ void Spell::ClearSpellSeedLink()
 		seed->ClearSpellLink();
 	}
 }
+
+char* Spell::GetDebugText()
+{
+	return "Spell:";
+}

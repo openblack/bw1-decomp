@@ -7,6 +7,11 @@ uint32_t SpellSeedGraphic::GetSaveType()
 	return GAME_THING_TYPE_SPELL_SEED_GRAPHIC;
 }
 
+char* SpellSeedGraphic::GetDebugText()
+{
+	return "SpellSeedGraphic:";
+}
+
 bool SpellIcon::InteractsWithPhysicsObjects()
 {
 	return false;

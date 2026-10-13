@@ -14,6 +14,11 @@ uint32_t Furniture::GetSaveType()
 	return GAME_THING_TYPE_UNUSED_000;
 }
 
+char* Furniture::GetDebugText()
+{
+	return "Furniture:";
+}
+
 GBaseInfo* GFurnitureInfo::GetBaseInfo(uint32_t& info_count)
 {
 	info_count = FURNITURE_INFO_LAST;

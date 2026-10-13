@@ -92,3 +92,8 @@ SCRIPT_OBJECT_TYPE ScriptHighlight::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_HIGHLIGHT;
 }
+
+char* ScriptHighlight::GetDebugText()
+{
+	return "ScriptHighlight:";
+}
