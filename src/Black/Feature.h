@@ -14,6 +14,7 @@
 class Base;
 class Creature;
 class GFeatureInfo;
+class GMultiMapFixedInfo;
 class GameThing;
 class GameThingWithPos;
 class LHOSFile;
@@ -64,7 +65,12 @@ public:
 	Feature() {}
 	// BW1W120 inlined BW1M119 010ab2f0
 	Feature(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale, float percent_built,
-	        bool32_t under_construction);
+	        bool32_t under_construction)
+		: MultiMapFixed(coords, (const GMultiMapFixedInfo*)info, y_angle, scale, percent_built, under_construction)
+	{
+	}
+	// BW1W120 inlined BW1M119 010ab260
+	~Feature() {}
 
 	// Static methods
 

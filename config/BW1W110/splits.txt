@@ -2115,19 +2115,21 @@ Black/Workshop.cpp:
 
 Black/Worship.cpp:
 	.text       start:0x0076A5F0 end:0x0076E950
-	.rdata      start:0x0098BA28 end:0x0098D258
-	.data       start:0x00C13B30 end:0x00C13BD4
-	.bss        start:0x00DBA6E0 end:0x00DBB490
+	.rdata      start:0x0098BA28 end:0x0098C8F8
+	.data       start:0x00C13B30 end:0x00C13B88
+	.bss        start:0x00DBA6E0 end:0x00DBB360
 
 Black/WorshipSiteUpgrade.cpp:
 	.text       start:0x0076E950 end:0x0076EDC0
+	.rdata      start:0x0098C8F8 end:0x0098D774
 	.CRT$XCU    start:0x009B7324 end:0x009B7328 align:4
-	.data       start:0x00C13BD4 end:0x00C13C34
+	.data       start:0x00C13B88 end:0x00C13C20
+	.bss        start:0x00DBB360 end:0x00DBB490
 
 Black/WorshipSpellIcon.cpp:
 	.text       start:0x0076EDC0 end:0x00770410
-	.rdata      start:0x0098D258 end:0x0098D780
-	.data       start:0x00C13C34 end:0x00C13C68
+	.rdata      start:0x0098D774 end:0x0098D780
+	.data       start:0x00C13C20 end:0x00C13C68
 
 Black/WorshipTotem.cpp:
 	.text       start:0x00770410 end:0x00770DD0

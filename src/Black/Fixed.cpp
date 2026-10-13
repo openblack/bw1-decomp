@@ -517,9 +517,9 @@ SingleMapFixed::~SingleMapFixed()
 	}
 }
 
-bool GMultiMapFixedInfo::IsOkToCreateAtPos(const MapCoords& pos, float param_2, float param_3) const
+bool32_t GMultiMapFixedInfo::IsOkToCreateAtPos(const MapCoords& coords, float y_angle, float scale) const
 {
-	return pos.IsSuitableForFixed(GetMesh(), param_2, param_3);
+	return coords.IsSuitableForFixed(GetMesh(), y_angle, scale) != false;
 }
 
 bool32_t Fixed::ValidForLockedSelectProcess(GInterfaceStatus* status)

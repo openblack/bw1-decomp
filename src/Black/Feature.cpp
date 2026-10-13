@@ -45,12 +45,6 @@ char* Flowers::GetDebugText()
 	return "Flowers:";
 }
 
-inline Feature::Feature(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale,
-                        float percent_built, bool32_t under_construction)
-	: MultiMapFixed(coords, info, y_angle, scale, percent_built, under_construction)
-{
-}
-
 Feature* Feature::Create(const MapCoords& coords, const GFeatureInfo* info, float y_angle, float scale,
                          float percent_built, bool32_t under_construction)
 {
