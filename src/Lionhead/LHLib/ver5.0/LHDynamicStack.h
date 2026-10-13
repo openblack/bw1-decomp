@@ -56,6 +56,26 @@ public:
 		return value;
 	}
 
+	// BW1W120 inlined BW1M119 0113e9f0
+	void Remove(T value)
+	{
+		LHDynamicStackNode<T>* previous = NULL;
+		for (LHDynamicStackNode<T>* node = head; node != NULL; node = node->next)
+		{
+			if (node->value == value)
+			{
+				if (previous == NULL)
+					head = head->next;
+				else
+					previous->next = node->next;
+				delete node;
+				size--;
+				return;
+			}
+			previous = node;
+		}
+	}
+
 	// BW1W120 inlined BW1M119 012b0e30
 	T GetNthMember(uint32_t n)
 	{

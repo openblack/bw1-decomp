@@ -724,7 +724,7 @@ public:
 	// BW1W120 005edc10 BW1M119 01387610
 	int SetupMoveOnFootpath(GFootpath* param_1, uint32_t param_2, uint32_t param_3, GFootpathNode* param_4);
 	// BW1W120 005edd20 BW1M119 0109a030
-	void SetupMoveToOnFootpath(GameThingWithPos& destination, const MapCoords& arrive_position, uint8_t state);
+	bool32_t SetupMoveToOnFootpath(GameThingWithPos& destination, const MapCoords& arrive_position, uint8_t state);
 	// BW1W120 005edde0 BW1M119 01386ec0
 	bool32_t MoveOnFootpath();
 	// BW1W120 005ee5f0 BW1M119 01386270

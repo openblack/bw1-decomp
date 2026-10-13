@@ -146,14 +146,7 @@ bool32_t Villager::CheckSatisfyOwnFoodDesire()
 }
 
 // BW1W120 0075bf20 BW1M119 01582d50
-// TODO: 87.5% — three residual diffs, all scheduler/fpu-leak, not source-shape:
-//  (1) trailing `fld [this->food]` returns food as a leaked float; ours adds `call __ftol`
-//      to honor the `unsigned int` (?EatFoodHeld@Villager@@QAEIXZ) return. fpu-leak-void-return
-//      family (see CHEATSHEET.md) — can't leak from a uint-returning body.
-//  (2) the (float)foodToEat conversion block (fild qword/fstp [esp+8]) schedules early in ours,
-//      after the ResourceHeld int setup in target — scheduler tie-break.
-//  (3) DropFood arg: target emits `mov ecx,esi; push eax`, ours `push eax; mov ecx,esi`.
-bool32_t Villager::EatFoodHeld()
+float Villager::EatFoodHeld()
 {
 	uint32_t foodToEat = GetAmountOfFoodToEat();
 	float    foodToEatF = (float)foodToEat;
@@ -167,21 +160,18 @@ bool32_t Villager::EatFoodHeld()
 	CLAMP(food, 0.0f, 1.0f);
 	if (GetTown())
 		GetTown()->UseFood((uint32_t)amountToEat);
-	return (uint32_t)food;
+	return food;
 }
 
 // BW1W120 0075c000 BW1M119 01582cc0
 bool32_t Villager::EatFood()
 {
-	// TODO: 71% — three residual diffs, none cleanly fixable from source:
-	//  (1) target discards EatFoodHeld's leaked float via `fstp st(0)`; our EatFoodHeld returns a
-	//      real int (uint mangling forces __ftol), so there's nothing to discard. Downstream of
-	//      the EatFoodHeld fpu-leak — resolves only when EatFoodHeld byte-matches.
-	//  (2) branchless ternary width: target does `neg al` (byte condition) then `sbb eax,eax;
+	// TODO: two residual diffs, none cleanly fixable from source:
+	//  (1) branchless ternary width: target does `neg al` (byte condition) then `sbb eax,eax;
 	//      and eax,0x31; add eax,0xa3` (dword result) — a width change mid-expression. Every
 	//      source phrasing tried keeps a single width (all-byte with the cond cast, all the
 	//      other way with a result cast); the byte-cond+dword-result mix wasn't reproduced.
-	//  (3) scheduler: target pushes the `1` arg and loads `this` (mov ecx,esi) AFTER the
+	//  (2) scheduler: target pushes the `1` arg and loads `this` (mov ecx,esi) AFTER the
 	//      IsPoisoned call; ours hoists `push 1` before it.
 	//  NAMING: 0xa3/0xd4 are VILLAGER_STATE_DECIDE_WHAT_TO_DO / VILLAGER_STATE_SHOW_POISONED
 	//  (PlayAnimThenSetState's uchar param is the state to enter, per matched neighbours in
@@ -225,10 +215,9 @@ bool32_t Villager::EatFoodAtHome()
 	if (required > 0)
 		GetFoodFromHome(required);
 	EatFoodHeld();
-	// TODO: residual diffs are the same deferred families as EatFood: EatFoodHeld leaks a float
-	// on ST0 that the target discards with `fstp st(0)` (our uint-returning EatFoodHeld has
-	// nothing to discard), and the branchless ternary below uses a byte condition (neg al) with a
-	// dword result (sbb/and/add eax) that no source phrasing reproduces. 0xd4/0x26 =
+	// TODO: residual diffs are the same deferred families as EatFood: the branchless ternary
+	// below uses a byte condition (neg al) with a dword result (sbb/and/add eax) that no source
+	// phrasing reproduces. 0xd4/0x26 =
 	// VILLAGER_STATE_SHOW_POISONED / VILLAGER_STATE_AT_HOME (SetTopState arg) — literal pending
 	// human sign-off on the naming.
 	SetTopState(IsPoisoned() ? 0xd4 : 0x26);

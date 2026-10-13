@@ -99,11 +99,20 @@ struct DiscipleInfo
 #define VILLAGER_FOOD_SPEED_UP_START         0xff
 #define VILLAGER_MAX_LOAD_STATE_CHANGE_DELAY 20
 
+enum VILLAGER_STATE_RESULT
+{
+	VILLAGER_STATE_RESULT_DIED = 0x21,
+	VILLAGER_STATE_RESULT_STATE_CHANGED = 0x23,
+};
+
+#define VILLAGER_WORSHIP_SITE_ARRIVE_DISTANCE 10.0f
+
 enum VILLAGER_FLAGS
 {
 	VILLAGER_FLAG_AT_WORSHIP_SITE = 0x2,
 	VILLAGER_FLAG_AT_HOME = 0x4,
 	VILLAGER_FLAG_CHILD = 0x8,
+	VILLAGER_FLAG_ON_WAY_TO_WORSHIP_SITE = 0x10,
 	VILLAGER_FLAG_PLAYING_FOOTBALL = 0x80,
 	VILLAGER_FLAG_DISCIPLE = 0x200,
 	VILLAGER_FLAG_DISCIPLE_FOLLOWER = 0x400,
@@ -769,7 +778,7 @@ public:
 	// BW1W120 007524d0 BW1M119 0109f200
 	bool IsStateEntryFunctionSameAs(unsigned long state_a, unsigned long state_b) const;
 	// BW1W120 007525b0 BW1M119 01574fa0
-	bool IsReactiveState(unsigned long state);
+	static bool32_t IsReactiveState(unsigned long state);
 	// BW1W120 00752600 BW1M119 01022ae0
 	bool32_t IsHungry();
 	// BW1W120 00752620 BW1M119 0106cf00
@@ -1197,7 +1206,7 @@ public:
 	// BW1W120 0075bf00 BW1M119 01098ca0
 	bool32_t CheckSatisfyOwnFoodDesire();
 	// BW1W120 0075bf20 BW1M119 01582d50
-	bool32_t EatFoodHeld();
+	float EatFoodHeld();
 	// BW1W120 0075c000 BW1M119 01582cc0
 	bool32_t EatFood();
 	// BW1W120 0075c040 BW1M119 01582be0
@@ -1844,7 +1853,7 @@ public:
 	// BW1W120 0076bcc0 BW1M119 015a5880
 	bool32_t GotoWorshipSiteForWorship();
 	// BW1W120 0076bda0 BW1M119 015a57a0
-	bool32_t SetGotoWorshipSpeed();
+	void SetGotoWorshipSpeed();
 	// BW1W120 0076be00 BW1M119 015a5680
 	bool32_t ArrivesAtWorshipSiteForWorship();
 	// BW1W120 0076bec0 BW1M119 015a54b0
@@ -1876,7 +1885,7 @@ public:
 	// BW1W120 0076c3f0 BW1M119 015a4920
 	bool32_t AddVillagerToWorshipSite();
 	// BW1W120 0076c440 BW1M119 015a47e0
-	bool RemoveVillagerFromWorshipSite();
+	bool32_t RemoveVillagerFromWorshipSite();
 	// BW1W120 0076c4c0 BW1M119 015a46d0
 	bool32_t StartWorshippingAtWorshipSite();
 	// BW1W120 0076c550 BW1M119 015a45d0
@@ -1886,15 +1895,15 @@ public:
 	// BW1W120 0076c680 BW1M119 015a4400
 	bool32_t WorshippingAtWorshipSite();
 	// BW1W120 0076c6e0 BW1M119 015a42a0
-	bool StartWorshippingCreature(Creature* creature);
+	bool32_t StartWorshippingCreature(Creature* creature);
 	// BW1W120 0076c7c0 BW1M119 015a4210
 	bool32_t WorshippingCreature();
 	// BW1W120 0076c800 BW1M119 015a40c0
-	bool32_t ReduceVillagerLifeByChant();
+	int ReduceVillagerLifeByChant();
 	// BW1W120 0076c890 BW1M119 015a4020
-	bool32_t ProcessInWorship();
+	int ProcessInWorship();
 	// BW1W120 0076c8d0 BW1M119 015a3f30
-	bool32_t CheckRequestGoHome();
+	void CheckRequestGoHome();
 	// BW1W120 0076c930 BW1M119 015a3df0
 	bool32_t CheckNeededForWorshipSiteBuilding();
 	// BW1W120 0076c9a0 BW1M119 015a3cc0
@@ -1902,7 +1911,7 @@ public:
 	// BW1W120 0076ca30 BW1M119 015a3b50
 	bool32_t GetFoodAtWorshipSite();
 	// BW1W120 0076caf0 BW1M119 015a3b00
-	bool32_t GetFoodDesireAtWorshipSite();
+	float GetFoodDesireAtWorshipSite();
 	// BW1W120 0076cb00 BW1M119 015a3a20
 	bool32_t GotoAltarForRest();
 	// BW1W120 0076cb80 BW1M119 015a3990

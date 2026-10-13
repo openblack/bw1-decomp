@@ -893,15 +893,9 @@ bool32_t Villager::IsStateExitFunctionSameAs(unsigned long state) const
 }
 
 // BW1W120 007525b0 BW1M119 01574fa0
-bool Villager::IsReactiveState(unsigned long state)
+bool32_t Villager::IsReactiveState(unsigned long state)
 {
-	// TODO: 57% -- index/field semantics correct (GVillagerStateTableInfo::Infos[state]
-	// .isReactiveState). BLOCKED: symbols.txt names this thiscall (?...@@QAE_NK@Z) but the
-	// target body is __cdecl -- ends `c3` (ret, NO arg cleanup), reads state from [esp+4],
-	// never touches ecx(this), returns full eax. Not ICF (ret != ret4 => bytes differ). A
-	// faithful thiscall member compiles to `ret 4`+al. Calling-convention/symbol anomaly for
-	// the dispatcher (symbol may need to be static/cdecl).
-	return GVillagerStateTableInfo::Infos[state].isReactiveState;
+	return GVillagerStateTableInfo::Infos[state].isReactiveState != 0;
 }
 
 // BW1W120 00752600 BW1M119 01022ae0

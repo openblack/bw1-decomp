@@ -187,6 +187,7 @@ struct DanceGroupChange
 // Forward Declares
 
 class Base;
+class Dance;
 class GameOSFile;
 class GameThingWithPos;
 class GroupBehaviour;
@@ -199,8 +200,8 @@ public:
 	// BW1W120 00be8290
 	static int NextUntitledNumber;
 
-	GameThingWithPos* Dancer; /* 0x14 */
-	GroupBehaviour*   behaviour;
+	Dance*          Dancer; /* 0x14 */
+	GroupBehaviour* behaviour;
 
 	LHLinkedList<Living*> Dancers; /* 0x1c */
 	uint32_t              Index;
