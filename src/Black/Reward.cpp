@@ -3,6 +3,11 @@
 #include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_* */
 #include "RewardInfo.h"
 
+GRewardInfo     GRewardInfo::Infos[REWARD_OBJECT_INFO_LAST];
+GRewardProgress GRewardProgress::InfosGood[REWARD_INFO_PROGRESS_GOOD_LAST];
+
+unsigned char LandAvoid[512][512];
+
 uint32_t Reward::GetSaveType()
 {
 	return GAME_THING_TYPE_REWARD;
