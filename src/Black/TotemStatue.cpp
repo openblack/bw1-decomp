@@ -40,3 +40,9 @@ bool32_t TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
 {
 	return true;
 }
+
+GBaseInfo* GTotemStatueInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = TRIBE_TYPE_LAST;
+	return Infos;
+}

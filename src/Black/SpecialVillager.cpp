@@ -34,3 +34,9 @@ bool SpecialVillager::CanShowName()
 		return false;
 	return (GameThing::Flags & GAME_THING_FLAG_NAME_HIDDEN) == 0;
 }
+
+GBaseInfo* GSpecialVillagerInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = SPECIAL_VILLAGER_INFO_LAST;
+	return Infos;
+}

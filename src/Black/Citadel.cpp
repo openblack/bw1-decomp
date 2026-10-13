@@ -3,6 +3,7 @@
 #include "GameTimeConstants.h"
 #include "Citadel.h"
 #include "Game.h"
+#include "CitadelInfo.h"
 
 // BW1W120 00464090 BW1M119 01030680
 float Citadel::GetInfluence()
@@ -72,4 +73,10 @@ const char* Citadel::GetText()
 char* Citadel::GetDebugText()
 {
 	return "Citadel:";
+}
+
+GBaseInfo* GCitadelInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = 1;
+	return Infos;
 }

@@ -37,3 +37,9 @@ GBaseOnly* GBaseOnly::Create(const MapCoords& coords, const GObjectInfo* info)
 	base->CallVirtualFunctionsForCreation(coords);
 	return base;
 }
+
+GBaseInfo* GMobileStaticInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = MOBILE_STATIC_INFO_LAST;
+	return Infos;
+}

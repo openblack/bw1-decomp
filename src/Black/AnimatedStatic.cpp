@@ -6,6 +6,7 @@
 #include "Feature.h"
 #include "Game.h"   /* For class GGame */
 #include "Object.h" /* For class Object */
+#include "FeatureInfo.h"
 
 uint32_t AnimatedStatic::GetSaveType()
 {
@@ -88,4 +89,10 @@ uint32_t Feature::GetCreatureBeliefType()
 char* Feature::GetDebugText()
 {
 	return "Feature:";
+}
+
+GBaseInfo* GFeatureInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = FEATURE_INFO_LAST;
+	return Infos;
 }

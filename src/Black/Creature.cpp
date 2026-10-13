@@ -205,3 +205,9 @@ char* Creature::GetDebugText()
 {
 	return "Creature:";
 }
+
+GBaseInfo* CreatureInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = CREATURE_TYPE_LAST;
+	return Infos;
+}

@@ -15,3 +15,9 @@ JustMapXZ MapXZDirections[4] = {
 	JustMapXZ(0xffff, 0),
 	JustMapXZ(0, 0xffff),
 };
+
+GBaseInfo* GTribeInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = TRIBE_TYPE_LAST;
+	return Infos;
+}

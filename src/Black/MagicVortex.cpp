@@ -118,3 +118,9 @@ bool32_t LandscapeVortex::ValidForPlaceInHand(GInterfaceStatus* status)
 {
 	return false;
 }
+
+GBaseInfo* GVortexInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = VORTEX_TYPE_LAST;
+	return Infos;
+}

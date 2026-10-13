@@ -1,6 +1,7 @@
 #include "GameTimeConstants.h"
 #include "SpellIcon.h"
 #include "SpellSeedGraphic.h"
+#include "SpellIconInfo.h"
 
 uint32_t SpellSeedGraphic::GetSaveType()
 {
@@ -20,4 +21,10 @@ bool SpellIcon::InteractsWithPhysicsObjects()
 uint32_t SpellIcon::Process()
 {
 	return 1;
+}
+
+GBaseInfo* GSpellIconInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = SPELL_ICON_INFO_LAST;
+	return Infos;
 }
