@@ -232,10 +232,15 @@ Lionhead/LHMultiplayer/ver4.0/LHTransport.cpp:
 	.bss        start:0x1006A5C4 end:0x1006A5C8
 
 Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp:
-	.text       start:0x10024340 end:0x10024490
-	.CRT$XCU    start:0x1006108C end:0x10061094 align:4
+	.text       start:0x10024340 end:0x10024440
+	.CRT$XCU    start:0x1006108C end:0x10061090 align:4
+	.bss        start:0x1006A5C8 end:0x1006A5CC
+
+Lionhead/LHMultiplayer/ver4.0/Version.cpp:
+	.text       start:0x10024440 end:0x10024490
+	.CRT$XCU    start:0x10061090 end:0x10061094 align:4
 	.data       start:0x10062B00 end:0x10062C94
-	.bss        start:0x1006A5C8 end:0x1006A770
+	.bss        start:0x1006A5D0 end:0x1006A770
 
 LHMultiplayer/delayimp/delayhlp.cpp:
 	.text       start:0x100247BC end:0x10024A70

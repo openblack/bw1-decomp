@@ -3,8 +3,6 @@
 
 #include <string.h>
 
-#include <Lionhead/LHLog/ver4.0/LHVersion.h>
-
 #include "LHNetUser.h"
 
 unsigned long LHTransportInfo::GetEncodedLength(unsigned long options, void* context)
@@ -43,6 +41,3 @@ void LHTransportInfo::ClearObject()
 {
 	ClearAllData();
 }
-
-LH_VERSION_INFO("LHMultiplayerLib", "3", "$Revision: 1 $", "$Author: Trance $", "$Date: 3/30/00 7:58p $",
-                LH_VERSION_NONE, "Added Internal lobby support - No need to run a message server now");
