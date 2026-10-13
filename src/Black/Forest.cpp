@@ -58,3 +58,8 @@ char* Forest::GetDebugText()
 {
 	return "Forest:";
 }
+
+const char* Forest::GetText()
+{
+	return "Forest";
+}

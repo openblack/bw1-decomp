@@ -12,6 +12,11 @@ char* GInterfaceStatus::GetDebugText()
 	return "InterfaceStatus:";
 }
 
+const char* GInterfaceStatus::GetText()
+{
+	return "Interface Status";
+}
+
 uint32_t GLeashStatus::GetSaveType()
 {
 	return GAME_THING_TYPE_GLEASH_STATUS;

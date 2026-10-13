@@ -68,3 +68,8 @@ bool32_t PuzzlePig::DecideWhatToDo()
 {
 	return true;
 }
+
+const char* ChessGamePuzzle::GetText()
+{
+	return "ChessGamePuzzle";
+}

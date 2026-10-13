@@ -1955,4 +1955,9 @@ char* MissionaryControl::GetDebugText()
 	return "MissionaryControl:";
 }
 
+const char* MissionaryControl::GetText()
+{
+	return "MissionaryControl";
+}
+
 void Villager::WallhugValidate() {}
