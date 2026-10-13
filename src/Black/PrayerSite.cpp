@@ -2,6 +2,31 @@
 #include "PrayerSite.h"
 #include "PrayerIconInfo.h"
 #include "PrayerSiteInfo.h"
+#include "WorshipSpellIcon.h"
+
+uint32_t PrayerIcon::GetCreatureBeliefType()
+{
+	return CREATURE_BELIEF_TYPE_MOBILE_OBJECT;
+}
+
+GPlayer* PrayerIcon::GetPlayer()
+{
+	return NULL;
+}
+
+Town* PrayerIcon::GetTown()
+{
+	return NULL;
+}
+
+Citadel* PrayerIcon::GetCitadel()
+{
+	return NULL;
+}
+
+void PrayerIcon::ToBeDeleted(int param_1) {}
+
+void PrayerIcon::Draw() {}
 
 void PrayerSite::ToBeDeleted(int param_1) {}
 
