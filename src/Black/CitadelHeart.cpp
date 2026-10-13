@@ -1062,8 +1062,8 @@ void CitadelHeart::DrawCreaturePen()
 			leash->SpriteFrame += CreaturePenFrameRate * dt;
 			WrapScaled(leash->SpriteFrame, CREATURE_PEN_SPRITE_FRAME_RANGE, 1.0f / CREATURE_PEN_SPRITE_FRAME_RANGE);
 			leash->sprite->Frame = (uint8_t)leash->SpriteFrame;
-			// TODO: pr431-incl: LandCell::g_darkness_to_color is LH3DLib-only under _LH_3D_LIB_; read
-			// g_darkness_to_color[LAND_CELL_DARKNESS_LEVELS - 1] again once the include structure lets this TU see it.
+			// TODO: LandCell::g_darkness_to_color is not declared for the game's units (declaring it in LH3DIsland.h
+			// renumbers their static initialisers); read g_darkness_to_color[LAND_CELL_DARKNESS_LEVELS - 1] here once it is.
 			LH3DColor light(0, 0, 0, 0);
 			int       alpha = (int)((light.r + light.g + light.b) * CREATURE_PEN_LIGHT_ALPHA_SCALE);
 			leash->collar->GetMesh();
@@ -1112,8 +1112,8 @@ void CitadelHeart::DrawCreaturePen()
 void CitadelHeart::DrawBeam()
 {
 	unsigned long playerNumber = GetPlayer()->GetPlayerNumber();
-	// TODO: pr431-incl: InfluenceCircle::g_b_valid is LH3DLib-only under _LH_3D_LIB_; test
-	// g_b_valid[GetRemapedPlayer(playerNumber)] again once the include structure lets this TU see it.
+	// TODO: InfluenceCircle::g_b_valid is not declared for the game's units (declaring it in InfluenceCircle.h
+	// renumbers their static initialisers); test g_b_valid[GetRemapedPlayer(playerNumber)] here once it is.
 	if (BeamObject != NULL)
 	{
 		LHPoint cameraPos;
@@ -1240,8 +1240,8 @@ void CitadelHeart::DrawNow()
 			GGame::g_game->help_system->SendFOVObject(this, LH3DObject::g_last_distance);
 		}
 		unsigned long playerNumber = GetPlayer()->GetPlayerNumber();
-		// TODO: pr431-incl: InfluenceCircle::g_b_valid is LH3DLib-only under _LH_3D_LIB_; test
-		// g_b_valid[GetRemapedPlayer(playerNumber)] again once the include structure lets this TU see it.
+		// TODO: InfluenceCircle::g_b_valid is not declared for the game's units (declaring it in InfluenceCircle.h
+		// renumbers their static initialisers); test g_b_valid[GetRemapedPlayer(playerNumber)] here once it is.
 		if (entrance != NULL)
 		{
 			entrance->Game3dObject->AddJustForCollide(entrance);
