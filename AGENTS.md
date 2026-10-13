@@ -274,6 +274,12 @@ Each `.o` file maps 1:1 to a `.cpp` file. The path is listed in `configure.py` u
 - `NonMatching` — work in progress. Not linked.
 - `Equivalent` — functionally equivalent but not byte-identical. Only linked with `--non-matching`.
 
+A translation unit is only **matched** when its `configure.py` entry is `Matching`. Matching
+functions inside a still-`NonMatching` unit is progress toward a matched TU, not a matched TU —
+the unit is not linked from our source until the entry is flipped. A PR that *matches a TU*
+therefore includes the `configure.py` flip; per-function work inside a `NonMatching` unit is a
+different kind of change.
+
 ### Directory structure mirrors game libraries
 
 The game ships as the executable `runblack.exe` plus a handful of runtime DLLs. The
