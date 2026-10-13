@@ -39,6 +39,21 @@ char* Bonfire::GetDebugText()
 	return "Bonfire:";
 }
 
+IMMERSION_EFFECT_TYPE Bonfire::GetInHandImmersionTexture()
+{
+	return Object::GetInHandImmersionTexture();
+}
+
+SCRIPT_OBJECT_TYPE Bonfire::GetScriptObjectType()
+{
+	return MobileStatic::GetScriptObjectType();
+}
+
+void Bonfire::Draw()
+{
+	Rock::Draw();
+}
+
 bool32_t MobileStatic::CanBeStompedOnByCreature(Creature*)
 {
 	return true;

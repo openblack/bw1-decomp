@@ -20,3 +20,8 @@ char* Workshop::GetDebugText()
 {
 	return "WorkShop:";
 }
+
+void Workshop::ResolveLoad()
+{
+	Object::ResolveLoad();
+}

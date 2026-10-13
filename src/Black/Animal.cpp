@@ -448,6 +448,11 @@ uint32_t Animal::ThrownAnimation()
 	return ANM_INVALID;
 }
 
+void Animal::ResolveLoad()
+{
+	Living::ResolveLoad();
+}
+
 PieceVillager* PieceVillager::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
 	PieceVillager* villager = new (ANIMAL_FILE, 2696) PieceVillager(coords, info, age);

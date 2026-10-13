@@ -44,4 +44,9 @@ char* BigForest::GetDebugText()
 	return "BigForest:";
 }
 
+void BigForest::Draw()
+{
+	MultiMapFixed::Draw();
+}
+
 BigForest::~BigForest() {}
