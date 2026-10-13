@@ -49,4 +49,9 @@ void BigForest::Draw()
 	MultiMapFixed::Draw();
 }
 
+void BigForest::CreateCollideData()
+{
+	MultiMapFixed::ReleaseCollideData();
+}
+
 BigForest::~BigForest() {}
