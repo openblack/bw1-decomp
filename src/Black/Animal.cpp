@@ -458,3 +458,18 @@ PieceVillager* PieceVillager::Create(const MapCoords& coords, const GAnimalInfo*
 	}
 	return villager;
 }
+
+bool32_t MobileWallHug::IsMobileWallHug() const
+{
+	return true;
+}
+
+bool32_t GameThingWithPos::IsWonder()
+{
+	return false;
+}
+
+BuildingSite* GameThingWithPos::CreateBuildingSite()
+{
+	return NULL;
+}

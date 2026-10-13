@@ -167,3 +167,5 @@ void CHand::SetSize(float size)
 	float fVar1 = 3.2f; /* = FUN_0046c040() */
 	Size2 = fVar1 / field_0x8c * field_0x4834 * Size1;
 }
+
+void HandStateInvisible::Update(float, LHMatrix*) {}
