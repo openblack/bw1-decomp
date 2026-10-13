@@ -690,6 +690,8 @@ public:
 	void CheckWhenNewBuildingCreated(MultiMapFixed& building);
 	// BW1W120 00741540 BW1M119 01550840
 	void ShuffleVillagersAroundAbodes();
+	// BW1W120 004e4d00 BW1M119 015eb6f0
+	Abode* GetMostImportantAbodeOnFire();
 	// BW1W120 00741820 BW1M119 015506e0
 	float GetDesireToGiveWorshippers();
 	// BW1W120 00741920 BW1M119 015505f0
