@@ -1,7 +1,11 @@
 #include "Feature.h"
 #include "FeatureInfo.h" /* For GFeatureInfo */
 #include "Flowers.h"
+#include "FlowersInfo.h"
 #include "PlannedFeature.h"
+
+GFeatureInfo GFeatureInfo::Infos[FEATURE_INFO_LAST];
+GFlowersInfo GFlowersInfo::Infos[FLOWERS_INFO_LAST];
 
 #if defined(VERSION_BW1W100)
 #define FEATURE_FILE "C:\\dev\\black\\Feature.cpp"

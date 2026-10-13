@@ -1,6 +1,8 @@
 #include "MagicFireBall.h"
 #include "MagicFireBallInfo.h"
 
+GMagicFireBallInfo GMagicFireBallInfo::Infos[MAGIC_FIREBALL_TYPE_LAST];
+
 uint32_t MagicFireBall::GetSaveType()
 {
 	return GAME_THING_TYPE_MAGIC_FIREBALL;

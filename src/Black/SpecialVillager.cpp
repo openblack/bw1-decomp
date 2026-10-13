@@ -2,6 +2,9 @@
 #include "SpecialVillager.h"
 
 #include "GameThing.h"
+#include "SpecialVillagerInfo.h"
+
+GSpecialVillagerInfo GSpecialVillagerInfo::Infos[SPECIAL_VILLAGER_INFO_LAST];
 
 // BW1W120 0071f0c0 BW1M119 0114f770
 // TODO: 79.5% (body correct; ~90% once wchar_t enabled) — blocked on the native-wchar_t

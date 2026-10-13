@@ -3,6 +3,9 @@
 
 #include "ColourConstants.h"      /* For White */
 #include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
+#include "VortexInfo.h"
+
+GVortexInfo GVortexInfo::Infos[VORTEX_TYPE_LAST];
 
 uint32_t LandscapeVortexIn::GetSaveType()
 {

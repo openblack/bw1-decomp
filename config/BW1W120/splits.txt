@@ -220,14 +220,14 @@ Black/Belief.cpp:
 	.rdata      start:0x008C5850 end:0x008C589C
 	.CRT$XCU    start:0x009C618C end:0x009C61A4 align:4
 	.data       start:0x009CD284 end:0x009CD2D8
-	.bss        start:0x00C58624 end:0x00C58B18
+	.bss        start:0x00C58624 end:0x00C58670
 
 Black/BigForest.cpp:
 	.text       start:0x00438BE0 end:0x004395C0
 	.rdata      start:0x008C589C end:0x008C621C
 	.CRT$XCU    start:0x009C61A4 end:0x009C61B0 align:4
 	.data       start:0x009CD2D8 end:0x009CD364
-	.bss        start:0x00C58B18 end:0x00C58B20
+	.bss        start:0x00C58670 end:0x00C58B20
 
 Black/Bonfire.cpp:
 	.text       start:0x004395C0 end:0x00439AD0

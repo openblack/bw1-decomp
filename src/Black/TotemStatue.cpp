@@ -3,9 +3,12 @@
 #include "GameTimeConstants.h"
 #include "TotemStatue.h"
 
+#include "TotemStatueInfo.h"
 #include "TownCentre.h"
 
 #include "ColourConstants.h" /* For White */
+
+GTotemStatueInfo GTotemStatueInfo::Infos[TRIBE_TYPE_LAST];
 
 bool TotemStatue::InteractsWithPhysicsObjects()
 {
