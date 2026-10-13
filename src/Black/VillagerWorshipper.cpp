@@ -39,7 +39,7 @@ bool32_t Villager::CheckNeededForWorship()
 		if (town->GetWorshipersNeeded(true, true, &worshippersNeeded) > 0)
 			return CheckWorshipActivity(worshippersNeeded);
 	}
-	return 0;
+	return false;
 }
 
 bool32_t Villager::CheckWorshipActivity(int num_needed)
@@ -152,10 +152,10 @@ bool32_t Villager::ArrivesAtWorshipSiteForWorship()
 			StartWorshippingAtWorshipSite();
 		else
 			StartHidingAtWorshipSite();
-		return 1;
+		return true;
 	}
 	SetupMoveToOnFootpath(*worshipSite, pos, VILLAGER_STATE_ARRIVES_AT_WORSHIP_SITE_FOR_WORSHIP);
-	return 1;
+	return true;
 }
 
 bool32_t Villager::CheckVillagerGoBackToTownFromWorship()
@@ -172,20 +172,20 @@ bool32_t Villager::CheckVillagerGoBackToTownFromWorship()
 			{
 				if (town->GetWorshipersNeeded(false, false, NULL) < 0 && GetWorshipSite()->CanIGoHome(this) &&
 				    SetTopState(VILLAGER_STATE_GO_HOME_FROM_WORSHIP) == LIVING_SET_STATE_SUCCESS)
-					return 1;
-				return 0;
+					return true;
+				return false;
 			}
 		}
 		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 bool32_t Villager::CheckNeededForSupplyWorship()
 {
 	GetWorshipSite();
-	return 0;
+	return false;
 }
 
 bool32_t Villager::GotoStoragePitForWorshipSupplies()
@@ -206,12 +206,12 @@ bool32_t Villager::GotoStoragePitForWorshipSupplies()
 					SetupMoveToOnFootpath(*GetStoragePit(),
 					                      GetStoragePit()->GetResourceNearestEdge(RESOURCE_TYPE_FOOD, this, 0),
 					                      VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_WORSHIP_SUPPLIES);
-					return 1;
+					return true;
 				}
 			}
 		}
 	}
-	return 0;
+	return false;
 }
 
 bool32_t Villager::ArrivesAtStoragePitForWorshipSupplies()
@@ -235,12 +235,12 @@ bool32_t Villager::ArrivesAtStoragePitForWorshipSupplies()
 
 bool32_t Villager::GotoWorshipSiteWithSupplies()
 {
-	return 0;
+	return false;
 }
 
 bool32_t Villager::MoveToWorshipSiteWithSupplies()
 {
-	return 1;
+	return true;
 }
 
 bool32_t Villager::ExitMoveToWorshipSiteWithSupplies(unsigned char state)
@@ -250,7 +250,7 @@ bool32_t Villager::ExitMoveToWorshipSiteWithSupplies(unsigned char state)
 		if (GetWorshipSite() != NULL)
 			GetWorshipSite()->RemoveFromFoodOnTheWay(ResourceHeld[RESOURCE_TYPE_FOOD]);
 	}
-	return 1;
+	return true;
 }
 
 bool32_t Villager::ExitMoveToWorshipSite(unsigned char state)
@@ -263,7 +263,7 @@ bool32_t Villager::ExitMoveToWorshipSite(unsigned char state)
 			GetTown()->RemoveVillagerOnWayToWorshipSite(this);
 		Flags &= ~VILLAGER_FLAG_ON_WAY_TO_WORSHIP_SITE;
 	}
-	return 1;
+	return true;
 }
 
 bool32_t Villager::ExitAtWorshipSite(unsigned char state)
@@ -292,7 +292,7 @@ bool32_t Villager::ExitGetFoodAtWorship(unsigned char state)
 {
 	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state) && GVillagerStateTableInfo::Infos[state].field_0xe8 == 0)
 		RemoveVillagerFromWorshipSite();
-	return 1;
+	return true;
 }
 
 bool32_t Villager::ArrivesAtWorshipSiteWithSupplies()
@@ -305,11 +305,11 @@ bool32_t Villager::ArrivesAtWorshipSiteWithSupplies()
 			uint32_t result = AtStructureAddResource(GetWorshipSite(), RESOURCE_TYPE_FOOD, amount, false);
 			GetWorshipSite()->RemoveFromFoodOnTheWay(amount);
 			if (result == VILLAGER_STATE_GO_HOME)
-				return 1;
+				return true;
 		}
 	}
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
-	return 1;
+	return true;
 }
 
 WorshipSite* Villager::GetWorshipSite()
@@ -325,7 +325,7 @@ bool32_t Villager::RestartWorshippingAtWorshipSite()
 {
 	if (StartWorshippingAtWorshipSite() != true)
 		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
-	return 1;
+	return true;
 }
 
 bool32_t Villager::RestartWorshippingCreature()
@@ -334,10 +334,10 @@ bool32_t Villager::RestartWorshippingCreature()
 	{
 		PerformDance(dance_group->Dancer->Pos, VILLAGER_STATE_WORSHIPPING_CREATURE,
 		             DANCE_GROUP_MOVEMENT_KIND_ROTATE_SHAPE);
-		return 1;
+		return true;
 	}
 	GoHome();
-	return 1;
+	return true;
 }
 
 bool32_t Villager::AddVillagerToWorshipSite()
@@ -381,11 +381,11 @@ bool32_t Villager::StartWorshippingAtWorshipSite()
 			if (SetupMoveToPos(pos, VILLAGER_STATE_WORSHIPPING_AT_WORSHIP_SITE))
 			{
 				AddVillagerToWorshipSite();
-				return 1;
+				return true;
 			}
 		}
 	}
-	return 0;
+	return false;
 }
 
 bool32_t Villager::StartHidingAtWorshipSite()
@@ -398,9 +398,9 @@ bool32_t Villager::StartHidingAtWorshipSite()
 	if (SetupMoveToOnFootpath(*worshipSite, pos, VILLAGER_STATE_HIDING_AT_WORSHIP_SITE))
 	{
 		AddVillagerToWorshipSite();
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 bool32_t Villager::HidingAtWorshipSite()
@@ -413,10 +413,10 @@ bool32_t Villager::HidingAtWorshipSite()
 		if (AreWeThere(pos, 1.0f))
 			return ProcessInWorship();
 		SetupMoveToWithHug(pos, VILLAGER_STATE_HIDING_AT_WORSHIP_SITE);
-		return 1;
+		return true;
 	}
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
-	return 1;
+	return true;
 }
 
 bool32_t Villager::WorshippingAtWorshipSite()
@@ -462,11 +462,11 @@ bool32_t Villager::WorshippingCreature()
 		if (dance->State == DANCE_STATE_DANCING)
 		{
 			PerformDance(dance->Pos, VILLAGER_STATE_WORSHIPPING_CREATURE, dance_group->Action.Kind);
-			return 1;
+			return true;
 		}
 		GoHome();
 	}
-	return 1;
+	return true;
 }
 
 int Villager::ReduceVillagerLifeByChant()
@@ -525,19 +525,19 @@ bool32_t Villager::CheckNeededForWorshipSiteBuilding()
 	{
 		Citadel* citadel = GetCitadel();
 		if (citadel == NULL)
-			return 0;
+			return false;
 		worshipSite = citadel->FindOrCreateWorshipSite(GetTown());
 		if (worshipSite == NULL)
-			return 0;
+			return false;
 	}
 	BuildingSite* buildingSite = GetTown()->GetBuildingSiteInList(worshipSite);
 	if (buildingSite != NULL)
 	{
 		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 		if (SetupBuildingObject(buildingSite) == true)
-			return 1;
+			return true;
 	}
-	return 0;
+	return false;
 }
 
 bool32_t Villager::CheckAllowedToRestAtWorshipSite(int move_to_food)
@@ -555,10 +555,10 @@ bool32_t Villager::CheckAllowedToRestAtWorshipSite(int move_to_food)
 			if (move_to_food != 0)
 				SetupMoveToWithHug(worshipSite->GetResourceNearestEdge(RESOURCE_TYPE_FOOD, this, 1),
 				                   VILLAGER_STATE_GET_FOOD_AT_WORSHIP_SITE);
-			return 1;
+			return true;
 		}
 	}
-	return 0;
+	return false;
 }
 
 bool32_t Villager::GetFoodAtWorshipSite()
@@ -573,14 +573,14 @@ bool32_t Villager::GetFoodAtWorshipSite()
 				GetResourceFrom(worshipSite, RESOURCE_TYPE_FOOD, amount);
 			EatFoodHeld();
 			PlayAnimThenSetState(VILLAGER_STATE_RESTART_WORSHIPPING_AT_WORSHIP_SITE, 1);
-			return 1;
+			return true;
 		}
 		SetupMoveToWithHug(worshipSite->GetResourceNearestEdge(RESOURCE_TYPE_FOOD, this, 1),
 		                   VILLAGER_STATE_GET_FOOD_AT_WORSHIP_SITE);
-		return 1;
+		return true;
 	}
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
-	return 1;
+	return true;
 }
 
 float Villager::GetFoodDesireAtWorshipSite()
@@ -595,10 +595,10 @@ bool32_t Villager::GotoAltarForRest()
 		MapCoords pos;
 		GetWorshipSite()->GetRestPos(&pos);
 		SetupMoveToOnFootpath(*GetWorshipSite(), pos, VILLAGER_STATE_ARRIVES_AT_ALTAR_FOR_REST);
-		return 1;
+		return true;
 	}
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
-	return 1;
+	return true;
 }
 
 bool32_t Villager::ArrivesAtAltarForRest()
@@ -606,7 +606,7 @@ bool32_t Villager::ArrivesAtAltarForRest()
 	if (CheckAllowedToRestAtWorshipSite(false) != true)
 		return AtAltarFinishedRest();
 	PlayAnimThenSetState(VILLAGER_STATE_AT_ALTAR_REST, 1);
-	return 1;
+	return true;
 }
 
 bool32_t Villager::AtAltarRest()
@@ -614,7 +614,7 @@ bool32_t Villager::AtAltarRest()
 	if (CheckAllowedToRestAtWorshipSite(false) != true)
 		return AtAltarFinishedRest();
 	PlayAnimThenSetState(VILLAGER_STATE_AT_ALTAR_REST, 1);
-	return 1;
+	return true;
 }
 
 bool32_t Villager::AtAltarFinishedRest()
