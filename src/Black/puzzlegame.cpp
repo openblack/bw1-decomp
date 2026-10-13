@@ -54,6 +54,11 @@ bool32_t PuzzleCow::CanBecomeAPhysicsObject()
 	return false;
 }
 
+bool32_t PuzzleCow::DecideWhatToDo()
+{
+	return true;
+}
+
 bool32_t PuzzleHorse::CanBecomeAPhysicsObject()
 {
 	return false;
@@ -67,6 +72,11 @@ bool32_t PuzzlePig::CanBecomeAPhysicsObject()
 bool32_t PuzzleTortoise::CanBecomeAPhysicsObject()
 {
 	return false;
+}
+
+bool32_t PuzzleTortoise::DecideWhatToDo()
+{
+	return true;
 }
 
 bool32_t PuzzleHorse::DecideWhatToDo()
@@ -92,4 +102,14 @@ bool32_t PuzzleTotem::NetworkFriendlyEndLockedSelect(GInterfaceStatus*)
 bool32_t PuzzleSheep::DecideWhatToDo()
 {
 	return true;
+}
+
+uint32_t PieceCow::ProcessNeeds()
+{
+	return 0;
+}
+
+uint32_t PieceCow::CheckNeeds()
+{
+	return 0;
 }
