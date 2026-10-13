@@ -133,7 +133,7 @@ public:
 	// BW1W120 004396b0 BW1M119 010b7030
 	virtual uint32_t ApplyOnlyAfterReleased();
 	// BW1W120 00609270 BW1M119 013c6c20
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 00608f40 BW1M119 013c7780
 	virtual void GetBoundingSphere(LHPoint& param_1, float& param_2);
 	// BW1W120 006090b0 BW1M119 013c7310

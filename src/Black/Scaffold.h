@@ -135,7 +135,7 @@ public:
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);
 	// BW1W120 006e8770 BW1M119 0114b930
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 006e8780 BW1M119 0114b790
 	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0055e110 BW1M119 01146a10

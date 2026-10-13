@@ -204,7 +204,7 @@ public:
 	// BW1W120 00467b40 BW1M119 011c5dc0
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00467b60 BW1M119 011c5d70
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 00467b70 BW1M119 011c5cc0
 	virtual void SetUpPhysOb(PhysOb* phys_ob);
 	// BW1W120 00467bb0 BW1M119 011c5a90

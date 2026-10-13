@@ -232,9 +232,9 @@ bool Abode::GetPSysFireLocalRndFlamePos(LHPoint* point, int* bone_index)
 	return Object::GetPSysFireLocalRndFlamePos(point, bone_index);
 }
 
-uint32_t Abode::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE Abode::GetPhysicsConstantsType()
 {
-	return 0;
+	return PHYSICS_CONSTANTS_TYPE_DEFAULT_UNMOVABLE;
 }
 
 void Abode::SetUpPhysOb(PhysOb* obj)

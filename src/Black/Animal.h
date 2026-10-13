@@ -118,7 +118,7 @@ public:
 	// BW1W120 0041b360 BW1M119 0116e2e0
 	virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
 	// BW1W120 005f04d0 BW1M119 0138d240
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 005f04e0 BW1M119 0138ccb0
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 005f0d80 BW1M119 0138c700

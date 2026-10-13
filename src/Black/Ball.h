@@ -75,7 +75,7 @@ public:
 	// BW1W120 00516870 BW1M119 010cf160
 	virtual void Draw();
 	// BW1W120 004360f0 BW1M119 010b2f40
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 
 	// Static methods
 

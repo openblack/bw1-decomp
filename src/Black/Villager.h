@@ -402,7 +402,7 @@ public:
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);
 	// BW1W120 005eff30 BW1M119 0138d7d0
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 005eff40 BW1M119 0138d280
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 005f0a60 BW1M119 0138c8c0

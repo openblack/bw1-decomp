@@ -12,9 +12,10 @@
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 #include <re_common.h>                               /* For bool32_t */
 
-#include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
-#include "MapCoords.h"        /* For struct MapCoords */
-#include "ObjectInfo.h"       /* For class GObjectInfo, needed by the inline getters below */
+#include "GameThingWithPos.h"     /* For struct GameThingWithPos, struct GameThingWithPosVftable */
+#include "MapCoords.h"            /* For struct MapCoords */
+#include "ObjectInfo.h"           /* For class GObjectInfo, needed by the inline getters below */
+#include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 
 // Forward Declares
 
@@ -550,7 +551,7 @@ public:
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);
 	// BW1W120 006376a0 BW1M119 013df0a0
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 006376b0 BW1M119 013defa0
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 006375a0 BW1M119 013df240

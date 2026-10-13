@@ -485,7 +485,7 @@ public:
 	// BW1W120 0047b1e0 BW1M119 inlined
 	virtual uint32_t CanBeDestroyedBySpell_1(Spell* param_1);
 	// BW1W120 00479b80 BW1M119 011de770
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 00479b90 BW1M119 011de590
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 00479970 BW1M119 011dea80

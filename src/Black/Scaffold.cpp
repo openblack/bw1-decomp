@@ -18,7 +18,7 @@ SCRIPT_OBJECT_TYPE Scaffold::GetScriptObjectType()
 	return SCRIPT_OBJECT_TYPE_SCAFFOLD;
 }
 
-uint32_t Scaffold::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE Scaffold::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_MOVABLE_SCAFFOLD;
 }

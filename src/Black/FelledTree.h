@@ -19,7 +19,7 @@ public:
 	// BW1W120 00511990 BW1M119 010c4770
 	virtual void Draw();
 	// BW1W120 00511910 BW1M119 010c4a80
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 00511920 BW1M119 010c4980
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 00511970 BW1M119 010c4920

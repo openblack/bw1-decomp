@@ -1395,9 +1395,9 @@ bool CitadelHeart::InteractsWithPhysicsObjects()
 	return GetPercentBuilt() > CITADEL_MIN_BUILT_FOR_PHYSICS;
 }
 
-uint32_t CitadelHeart::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE CitadelHeart::GetPhysicsConstantsType()
 {
-	return 0;
+	return PHYSICS_CONSTANTS_TYPE_DEFAULT_UNMOVABLE;
 }
 
 void CitadelHeart::SetUpPhysOb(PhysOb* phys_ob)
