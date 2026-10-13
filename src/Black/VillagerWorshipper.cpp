@@ -28,7 +28,7 @@ bool32_t Villager::CheckNeededForWorship()
 	if (Flags & VILLAGER_FLAG_AT_WORSHIP_SITE)
 	{
 		bool32_t result = StartWorshippingAtWorshipSite();
-		if (result != 1)
+		if (result != true)
 			RemoveVillagerFromWorshipSite();
 		return result;
 	}
@@ -48,12 +48,12 @@ bool32_t Villager::CheckWorshipActivity(int num_needed)
 	MagicTeleport* teleport = NULL;
 	Town*          town = GetTown();
 	if (GetWorshipSite() != NULL && town != NULL && town->town_centre != NULL &&
-	    town->town_centre->IsAvailable() == 1 && town->town_centre->IsBuilt() == 1)
+	    town->town_centre->IsAvailable() == true && town->town_centre->IsBuilt() == true)
 	{
 		WorshipSite* worshipSite = GetWorshipSite();
 		GPlayer*     townPlayer = town->GetPlayer();
 		if (worshipSite->GetPlayer() == townPlayer && (CanIGetToTheWorshipSite(teleport) || num_needed == 0) &&
-		    (CheckNeededForWorshipSiteBuilding() == 1 || GotoWorshipSiteForWorship() == 1))
+		    (CheckNeededForWorshipSiteBuilding() == true || GotoWorshipSiteForWorship() == true))
 		{
 			result = true;
 			if (teleport != NULL)
@@ -163,15 +163,15 @@ bool32_t Villager::CheckVillagerGoBackToTownFromWorship()
 	Town* town = GetTown();
 	if (town != NULL)
 	{
-		if (GetWorshipSite() != NULL && town->town_centre != NULL && town->town_centre->IsAvailable() == 1 &&
-		    town->town_centre->IsBuilt() == 1)
+		if (GetWorshipSite() != NULL && town->town_centre != NULL && town->town_centre->IsAvailable() == true &&
+		    town->town_centre->IsBuilt() == true)
 		{
 			WorshipSite* worshipSite = GetWorshipSite();
 			GPlayer*     townPlayer = town->GetPlayer();
 			if (worshipSite->GetPlayer() == townPlayer)
 			{
 				if (town->GetWorshipersNeeded(false, false, NULL) < 0 && GetWorshipSite()->CanIGoHome(this) &&
-				    SetTopState(VILLAGER_STATE_GO_HOME_FROM_WORSHIP) == 1)
+				    SetTopState(VILLAGER_STATE_GO_HOME_FROM_WORSHIP) == LIVING_SET_STATE_SUCCESS)
 					return 1;
 				return 0;
 			}
@@ -323,7 +323,7 @@ WorshipSite* Villager::GetWorshipSite()
 
 bool32_t Villager::RestartWorshippingAtWorshipSite()
 {
-	if (StartWorshippingAtWorshipSite() != 1)
+	if (StartWorshippingAtWorshipSite() != true)
 		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 	return 1;
 }
@@ -374,7 +374,7 @@ bool32_t Villager::StartWorshippingAtWorshipSite()
 	WorshipSite* worshipSite = GetWorshipSite();
 	if (worshipSite != NULL && worshipSite->IsAvailable() && worshipSite->dance.Get() != NULL)
 	{
-		if (worshipSite->dance->FindDanceGroup(this) == 1)
+		if (worshipSite->dance->FindDanceGroup(this) == true)
 		{
 			MapCoords pos;
 			CalculateDancePosition(worshipSite->dance->Pos, &pos);
@@ -493,7 +493,7 @@ int Villager::ReduceVillagerLifeByChant()
 
 int Villager::ProcessInWorship()
 {
-	if (CheckVillagerGoBackToTownFromWorship() == 1)
+	if (CheckVillagerGoBackToTownFromWorship() == true)
 		return VILLAGER_STATE_RESULT_STATE_CHANGED;
 	if (ReduceVillagerLifeByChant() == VILLAGER_STATE_RESULT_DIED)
 		return VILLAGER_STATE_RESULT_STATE_CHANGED;
@@ -534,7 +534,7 @@ bool32_t Villager::CheckNeededForWorshipSiteBuilding()
 	if (buildingSite != NULL)
 	{
 		SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
-		if (SetupBuildingObject(buildingSite) == 1)
+		if (SetupBuildingObject(buildingSite) == true)
 			return 1;
 	}
 	return 0;
@@ -603,7 +603,7 @@ bool32_t Villager::GotoAltarForRest()
 
 bool32_t Villager::ArrivesAtAltarForRest()
 {
-	if (CheckAllowedToRestAtWorshipSite(false) != 1)
+	if (CheckAllowedToRestAtWorshipSite(false) != true)
 		return AtAltarFinishedRest();
 	PlayAnimThenSetState(VILLAGER_STATE_AT_ALTAR_REST, 1);
 	return 1;
@@ -611,7 +611,7 @@ bool32_t Villager::ArrivesAtAltarForRest()
 
 bool32_t Villager::AtAltarRest()
 {
-	if (CheckAllowedToRestAtWorshipSite(false) != 1)
+	if (CheckAllowedToRestAtWorshipSite(false) != true)
 		return AtAltarFinishedRest();
 	PlayAnimThenSetState(VILLAGER_STATE_AT_ALTAR_REST, 1);
 	return 1;
@@ -620,12 +620,12 @@ bool32_t Villager::AtAltarRest()
 bool32_t Villager::AtAltarFinishedRest()
 {
 	bool32_t result = StartWorshippingAtWorshipSite();
-	if (result == 1)
+	if (result == true)
 		return result;
 	return DecideWhatToDo();
 }
 
 bool32_t Villager::CheckSatisfySuppyWorship()
 {
-	return GotoStoragePitForWorshipSupplies() == 1;
+	return GotoStoragePitForWorshipSupplies() == true;
 }

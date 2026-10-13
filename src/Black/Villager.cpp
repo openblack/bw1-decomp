@@ -895,7 +895,7 @@ bool32_t Villager::IsStateExitFunctionSameAs(unsigned long state) const
 // BW1W120 007525b0 BW1M119 01574fa0
 bool32_t Villager::IsReactiveState(unsigned long state)
 {
-	return GVillagerStateTableInfo::Infos[state].isReactiveState != 0;
+	return GVillagerStateTableInfo::Infos[state].isReactiveState != false;
 }
 
 // BW1W120 00752600 BW1M119 01022ae0
