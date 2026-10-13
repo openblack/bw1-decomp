@@ -116,7 +116,6 @@ const char* AttributeType::TypeName()
 
 uint32_t AttributeType::ValueRange()
 {
-	// The value is the thing's CREATURE_BELIEF_TYPE.
 	return CREATURE_BELIEF_TYPE_LAST;
 }
 
