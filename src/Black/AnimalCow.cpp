@@ -262,3 +262,68 @@ char* PieceTortoise::GetDebugText()
 {
 	return "Animal: Tortoise for Puzzle";
 }
+
+Cow* Cow::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
+{
+	Cow* cow = new (ANIMAL_COW_FILE, 29) Cow(coords, info, age);
+	if (cow != NULL)
+		cow->CallVirtualFunctionsForCreation(coords);
+	if (cow->Game3dObject != NULL)
+		cow->Game3dObject->SetHumanShadowed(true);
+	return cow;
+}
+
+PieceHorse* PieceHorse::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
+{
+	PieceHorse* horse = new (ANIMAL_COW_FILE, 319) PieceHorse(coords, info, age);
+	if (horse != NULL)
+	{
+		horse->CallVirtualFunctionsForCreation(coords);
+		horse->Game3dObject->SetHumanShadowed(true);
+	}
+	return horse;
+}
+
+Zebra* Zebra::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
+{
+	Zebra* zebra = new (ANIMAL_COW_FILE, 335) Zebra(coords, info, age);
+	if (zebra != NULL)
+	{
+		zebra->CallVirtualFunctionsForCreation(coords);
+		zebra->Game3dObject->SetHumanShadowed(true);
+	}
+	return zebra;
+}
+
+PiecePig* PiecePig::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
+{
+	PiecePig* pig = new (ANIMAL_COW_FILE, 368) PiecePig(coords, info, age);
+	if (pig != NULL)
+	{
+		pig->CallVirtualFunctionsForCreation(coords);
+		pig->Game3dObject->SetHumanShadowed(true);
+	}
+	return pig;
+}
+
+PieceTortoise* PieceTortoise::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
+{
+	PieceTortoise* tortoise = new (ANIMAL_COW_FILE, 401) PieceTortoise(coords, info, age);
+	if (tortoise != NULL)
+	{
+		tortoise->CallVirtualFunctionsForCreation(coords);
+		tortoise->Game3dObject->SetHumanShadowed(true);
+	}
+	return tortoise;
+}
+
+Goat* Goat::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
+{
+	Goat* goat = new (ANIMAL_COW_FILE, 287) Goat(coords, info, age);
+	if (goat != NULL)
+	{
+		goat->CallVirtualFunctionsForCreation(coords);
+		goat->Game3dObject->SetHumanShadowed(true);
+	}
+	return goat;
+}
