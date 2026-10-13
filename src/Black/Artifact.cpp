@@ -23,8 +23,3 @@ bool32_t Object::CanBeFrighteningToCreature(Creature* creature)
 {
 	return false;
 }
-
-bool32_t Object::CanBeCrushed()
-{
-	return false;
-}

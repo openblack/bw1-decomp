@@ -43,10 +43,3 @@ bool32_t ArenaSpellIcon::IsEffectReceiver(EffectValues* effect)
 }
 
 ArenaSpellIcon::~ArenaSpellIcon() {}
-
-float GameThingWithPos::GetScale()
-{
-	return 1.0f;
-}
-
-void GameThingWithPos::SetScale(float scale) {}
