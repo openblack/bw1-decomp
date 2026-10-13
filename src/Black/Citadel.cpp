@@ -77,6 +77,6 @@ char* Citadel::GetDebugText()
 
 GBaseInfo* GCitadelInfo::GetBaseInfo(uint32_t& info_count)
 {
-	info_count = 1;
+	info_count = ARRAY_SIZE(Infos);
 	return Infos;
 }
