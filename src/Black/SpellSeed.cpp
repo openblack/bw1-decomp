@@ -39,3 +39,8 @@ bool32_t SpellSeed::IsEffectReceiver(EffectValues* param_1)
 {
 	return false;
 }
+
+unsigned int SpellSeed::IsInterfacePowerUpWhenInHand() const
+{
+	return true;
+}

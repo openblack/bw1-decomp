@@ -132,3 +132,8 @@ bool32_t Field::IsField(Creature* creature)
 {
 	return true;
 }
+
+int Field::IsField()
+{
+	return true;
+}
