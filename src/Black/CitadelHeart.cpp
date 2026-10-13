@@ -25,7 +25,6 @@
 #include "Alignment.h"
 #include "Audio.h"
 #include "Camera.h"
-#include "CameraInline.h"
 #include "BuildingSite.h"
 #include "CitadelBuildingSite.h"
 #include "CameraExclusion.h"

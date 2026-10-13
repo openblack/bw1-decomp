@@ -45,7 +45,6 @@
 #include "SoundGuidance.h"
 #include "EffectValues.h"
 #include "Camera.h"
-#include "CameraInline.h"
 #include "ControlHand.h"
 #include "Global.h"
 #include "Audio.h"

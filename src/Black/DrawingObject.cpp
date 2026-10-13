@@ -42,7 +42,6 @@ static const float UVTextureScale = 1.0f / 256.0f;
 #include <Lionhead/LHLib/ver5.0/LHCollide.h>
 #include "Audio.h"
 #include "Camera.h"
-#include "CameraInline.h"
 #include "SoundMap.h"
 #include "VillagerInfo.h"
 #include "HelpSystem.h"

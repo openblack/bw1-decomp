@@ -22,7 +22,6 @@
 #include "Alignment.h"
 #include "Arena.h"
 #include "Camera.h"
-#include "CameraInline.h"
 #include "Citadel.h"
 #include "Creature.h"
 #include "CreatureMental.h"

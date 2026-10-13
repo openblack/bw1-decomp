@@ -32,7 +32,6 @@
 #include "AnimalDove.h"
 #include "Audio.h"
 #include "Camera.h"
-#include "CameraInline.h"
 #include "CameraExclusion.h"
 #include "CameraModeNew3.h"
 #include "ControlHand.h"

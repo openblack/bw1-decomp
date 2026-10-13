@@ -21,11 +21,6 @@
 #include "Landscape.h"
 #include "Utils.h"
 
-inline void GCamera::GetPosition(LHPoint& pos)
-{
-	pos = LH3DTech::g_camera.pos;
-}
-
 enum
 {
 	GESTURE_PACKET_TYPE_POINT = 0,
