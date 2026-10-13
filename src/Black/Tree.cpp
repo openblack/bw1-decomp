@@ -50,3 +50,12 @@ uint32_t Tree::GetOverwriteDropToolTip()
 {
 	return HELP_TEXT_TOOLTIP_117;
 }
+
+bool32_t Tree::IsOkToCreateAtPos(MapCoords& coords)
+{
+	if ((coords.CollideCollideWithFixe() & 8) && !coords.IsWater())
+	{
+		return false;
+	}
+	return true;
+}

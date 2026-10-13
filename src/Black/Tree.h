@@ -198,6 +198,8 @@ public:
 	// BW1W120 00749ee0 BW1M119 01161270
 	static Tree* Create(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float param_4, float param_5,
 	                    float param_6);
+	// BW1W120 0074c180 BW1M119 0115e5a0
+	static bool32_t IsOkToCreateAtPos(MapCoords& coords);
 
 	// Constructors
 
