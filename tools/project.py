@@ -1217,9 +1217,6 @@ def generate_build_ninja(
         missing_source: List[str] = []
         missing_config: List[str] = []
         linker_provided_units: Set[str] = set(config.linker_provided_units or [])
-        # (link step, unit name, target object) for each held-back unit, checked
-        # after linking.
-        linker_units: List[Tuple["LinkStep", str, str]] = []
 
         if config.precompiled_headers:
             for pch in config.precompiled_headers:
@@ -1416,7 +1413,6 @@ def generate_build_ninja(
             obj_path, obj_name = build_obj["object"], build_obj["name"]
             if obj_name in linker_provided_units:
                 linker_provided_units.remove(obj_name)
-                linker_units.append((link_step, obj_name, obj_path))
                 return
             obj = objects.get(obj_name)
             if obj is None:
@@ -1604,46 +1600,6 @@ def generate_build_ninja(
         # Add all build steps needed after linking and before native format generation
         write_custom_step("post-link", "post-compile")
 
-        # A linker-provided unit's objdiff base: the target object if our final
-        # image holds the original's bytes there, otherwise our bytes.
-        linker_unit_outputs: List[Path] = []
-        if linker_units:
-            import yaml
-
-            with open(config.config_path, encoding="utf-8") as f:
-                project_config = yaml.safe_load(f)
-            object_base = Path(project_config.get("object_base", "."))
-            originals = {project_config.get("name"): object_base / project_config["object"]}
-            for module in project_config.get("modules", []):
-                name = module.get("name") or Path(module["object"]).stem
-                originals[name] = object_base / module["object"]
-            linker_unit_script = config.tools_dir / "linker_unit.py"
-            n.rule(
-                name="linker_unit",
-                command=f"$python {linker_unit_script} --target $in --image $image "
-                "--original $original --address $address -o $out",
-                description="LINKER $out",
-            )
-            for step, unit_name, target in linker_units:
-                match = re.match(r"auto_\d+_([0-9A-Fa-f]+)_", unit_name)
-                if match is None:
-                    sys.exit(f"linker_provided_units: {unit_name} is not an address-named unit")
-                output = linker_unit_path(build_path, step.name, unit_name)
-                n.build(
-                    outputs=output,
-                    rule="linker_unit",
-                    inputs=target,
-                    implicit=[step.output(), originals[step.name], linker_unit_script],
-                    variables={
-                        "image": serialize_path(step.output()),
-                        "original": serialize_path(originals[step.name]),
-                        "address": f"0x{match.group(1)}",
-                    },
-                    order_only="post-link",
-                )
-                linker_unit_outputs.append(output)
-            n.newline()
-
         if config.platform == "dol":
             ###
             # Generate DOL
@@ -1787,7 +1743,7 @@ def generate_build_ninja(
         n.build(
             outputs=report_path,
             rule="report",
-            implicit=[objdiff, "objdiff.json", "all_source", *linker_unit_outputs],
+            implicit=[objdiff, "objdiff.json", "all_source"],
             order_only="post-build",
         )
 
@@ -1814,7 +1770,7 @@ def generate_build_ninja(
         n.build(
             outputs=report_baseline_path,
             rule="report",
-            implicit=[objdiff, "all_source", "always", *linker_unit_outputs],
+            implicit=[objdiff, "all_source", "always"],
             order_only="post-build",
         )
         n.build(
@@ -2106,11 +2062,6 @@ def generate_build_ninja(
 
 
 # Generate objdiff.json
-def linker_unit_path(build_path: Path, module_name: str, unit_name: str) -> Path:
-    """The objdiff base object built for a linker-provided unit."""
-    return build_path / "linker" / module_name / f"{unit_name}.o"
-
-
 def generate_objdiff_config(
     config: ProjectConfig,
     objects: Dict[str, Object],
@@ -2225,12 +2176,6 @@ def generate_objdiff_config(
 
         obj = objects.get(obj_name)
         if obj is None:
-            if obj_name in (config.linker_provided_units or []):
-                # The linker writes this region; the build checks it (linker_unit.py).
-                unit_config["base_path"] = linker_unit_path(
-                    config.out_path(), module_name, obj_name
-                )
-                unit_config["metadata"]["complete"] = True
             objdiff_config["units"].append(unit_config)
             return
 
