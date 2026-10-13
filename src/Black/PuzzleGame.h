@@ -210,10 +210,26 @@ class PieceHorse : public Horse
 public:
 	// Override methods
 
+	// BW1W120 0041d820 BW1M119 01139c80
+	virtual bool32_t DecideWhatToDo();
+	// BW1W120 0041d830 BW1M119 01139cc0
+	virtual uint32_t ProcessNeeds();
+	// BW1W120 0041d840 BW1M119 01139d00
+	virtual uint32_t CheckNeeds();
 	// BW1W120 0041d860 BW1M119 01139d80
 	virtual char* GetDebugText();
 	// BW1W120 0041d850 BW1M119 01139d40
 	virtual uint32_t GetSaveType();
+
+	// BW1W120 inlined BW1M119 inlined
+	PieceHorse() {}
+	// BW1W120 inlined BW1M119 01129e20
+	PieceHorse(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Horse(coords, info, age) {}
+
+	// Static methods
+
+	// BW1W120 0041d7c0 BW1M119 inlined
+	static PieceHorse* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 class PieceLion : public Lion
@@ -256,6 +272,20 @@ public:
 	virtual uint32_t GetSaveType();
 	// BW1W120 0041da70 BW1M119 0113a0d0
 	virtual bool32_t DecideWhatToDo();
+	// BW1W120 0041da60 BW1M119 0113a090
+	virtual uint32_t ProcessNeeds();
+	// BW1W120 0041da80 BW1M119 0113a110
+	virtual uint32_t CheckNeeds();
+
+	// BW1W120 inlined BW1M119 inlined
+	PiecePig() {}
+	// BW1W120 inlined BW1M119 011299a0
+	PiecePig(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Pig(coords, info, age) {}
+
+	// Static methods
+
+	// BW1W120 0041da00 BW1M119 inlined
+	static PiecePig* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 class PieceSheep : public Sheep
@@ -290,10 +320,26 @@ class PieceTortoise : public Tortoise
 public:
 	// Override methods
 
+	// BW1W120 0041dbf0 BW1M119 01139f50
+	virtual bool32_t DecideWhatToDo();
+	// BW1W120 0041dc00 BW1M119 01139f90
+	virtual uint32_t ProcessNeeds();
+	// BW1W120 0041dc10 BW1M119 01139fd0
+	virtual uint32_t CheckNeeds();
 	// BW1W120 0041dc30 BW1M119 0113a050
 	virtual char* GetDebugText();
 	// BW1W120 0041dc20 BW1M119 0113a010
 	virtual uint32_t GetSaveType();
+
+	// BW1W120 inlined BW1M119 inlined
+	PieceTortoise() {}
+	// BW1W120 inlined BW1M119 01129b50
+	PieceTortoise(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Tortoise(coords, info, age) {}
+
+	// Static methods
+
+	// BW1W120 0041db90 BW1M119 inlined
+	static PieceTortoise* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 class PieceVillager : public Animal

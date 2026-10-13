@@ -46,6 +46,13 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	Zebra() {}
+	// BW1W120 inlined BW1M119 inlined
+	Zebra(const MapCoords& coords, const GAnimalInfo* info, unsigned long age) : Cow(coords, info, age) {}
+
+	// Static methods
+
+	// BW1W120 0041d8a0 BW1M119 inlined
+	static Zebra* Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 };
 
 #endif /* BW1_DECOMP_ANIMAL_ZEBRA_INCLUDED_H */
