@@ -1195,7 +1195,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Worship.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSite.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSiteInfo.cpp"),
-            GameCodeObject(MatchingFor("BW1W120"), "Black/WorshipSiteUpgrade.cpp"),
+            GameCodeObject(Matching, "Black/WorshipSiteUpgrade.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSiteUpgradeInfo.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSpell.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSpellIcon.cpp"),

@@ -1,7 +1,6 @@
 #include "WorshipSiteUpgrade.h"
 #include "WorshipSiteUpgradeInfo.h"
 
-#ifndef VERSION_BW1W100
 #include <string.h> /* For strlen */
 
 #include "Game.h"
@@ -9,12 +8,19 @@
 #include "Setup.h"
 #include "WorshipSite.h"
 
+// TODO(#377): The original Feature.h, Fixed.h, Game.h and Worship.h declared these classes.
+#include "FlowersInfo.h"
+#include "GameInfo.h"
+#include "SingleMapFixedInfo.h"
+#include "WorshipSiteInfo.h"
+
+#ifndef VERSION_BW1W100
 #if defined(VERSION_BW1W110)
 #define FILEPATH "C:\\dev\\Black\\WorshipSiteUpgrade.cpp"
 #else
 #define FILEPATH "C:\\dev\\MP\\Black\\WorshipSiteUpgrade.cpp"
 #endif
-#endif
+#endif // VERSION_BW1W100
 
 GWorshipSiteUpgradeInfo GWorshipSiteUpgradeInfo::Infos[WORSHIP_SITE_UPGRADE_INFO_LAST];
 
@@ -117,4 +123,4 @@ WorshipSite* PlannedWorshipSiteUpgrade::GetOwnerWorshipSite()
 {
 	return dynamic_cast<WorshipSite*>(Owner);
 }
-#endif
+#endif // VERSION_BW1W100
