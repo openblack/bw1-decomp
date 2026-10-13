@@ -5,6 +5,7 @@
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For LHReleasedOSFile */
 
 #include "GestureConstants.h"
+#include "CellSize.h"
 #include "GestureSystemData.h"
 
 void GestureSystemDataList::Reset()
