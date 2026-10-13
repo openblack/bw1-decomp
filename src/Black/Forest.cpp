@@ -1,7 +1,9 @@
 #include "GameTimeConstants.h"
 #include "Forest.h"
 
+#include "Game.h"               /* For GGame */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "Town.h"               /* For Town */
 
 uint32_t Forest::GetSaveType()
 {
@@ -41,4 +43,13 @@ bool32_t Forest::IsFootpathLink()
 uint32_t Forest::GetNearestPathTo(const MapCoords& param_1, float param_2, int param_3)
 {
 	return 0;
+}
+
+void Forest::RemoveForestFromTowns(Forest* forest)
+{
+	for (LHLinkedNode<Town*>* node = GGame::g_game->GameLists.TownList.GetStart(); node != NULL;
+	     node = node->next.Get())
+	{
+		node->payload->RemoveForest(forest);
+	}
 }

@@ -109,6 +109,8 @@ public:
 	MapCoords GetNearestEdgeToPos(const MapCoords& pos);
 	// BW1W120 0053b280 BW1M119 010f8bf0
 	float GetWoodValue();
+	// BW1W120 0053ae10 BW1M119 010f97b0
+	static void RemoveForestFromTowns(Forest* forest);
 };
 
 #endif /* BW1_DECOMP_FOREST_INCLUDED_H */
