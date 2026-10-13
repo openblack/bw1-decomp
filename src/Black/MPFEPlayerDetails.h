@@ -16,7 +16,9 @@ struct MPFEPlayerDetails
 
 	wchar_t Name[NAME_SIZE];
 	bool    IsHost;
-	uint8_t field_0x101[0x1b];
+	uint8_t field_0x101[0xf];
+	int     Team; /* 0x110, set by AssignToTeam */
+	uint8_t field_0x114[0x8];
 	int     Ping; /* 0x11c */
 #if defined(VERSION_BW1W100)
 	LH_USER_ID ID;
