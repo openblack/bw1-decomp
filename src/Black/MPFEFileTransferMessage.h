@@ -8,10 +8,10 @@
 class MPFEFileTransferMessage : public MPFEMessageObject
 {
 public:
-	// Override methods
+	// Constructors
 
-	// BW1W120 0062f4a0 BW1M119 013acfb0
-	virtual ~MPFEFileTransferMessage();
+	// BW1W120 0062f430 BW1M119 013acaf0
+	MPFEFileTransferMessage(wchar_t* text);
 };
 
 #endif /* BW1_DECOMP_MPFE_FILE_TRANSFER_MESSAGE_INCLUDED_H */

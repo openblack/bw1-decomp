@@ -8,10 +8,10 @@
 class MPFEStartGameTransferFilesMessage : public MPFEMessageObject
 {
 public:
-	// Override methods
+	// Constructors
 
-	// BW1W120 00630050 BW1M119 013aec30
-	virtual ~MPFEStartGameTransferFilesMessage();
+	// BW1W120 00630000 BW1M119 013ae7b0
+	MPFEStartGameTransferFilesMessage();
 };
 
 #endif /* BW1_DECOMP_MPFE_START_GAME_TRANSFER_FILES_MESSAGE_INCLUDED_H */
