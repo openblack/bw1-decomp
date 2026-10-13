@@ -10,6 +10,11 @@ uint32_t Forest::GetSaveType()
 	return GAME_THING_TYPE_FOREST;
 }
 
+GFootpathLink* Forest::GetFootpathLink()
+{
+	return FootpathLink;
+}
+
 uint32_t Forest::GetCreatureBeliefType()
 {
 	return 1;

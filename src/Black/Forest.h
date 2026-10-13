@@ -41,7 +41,8 @@ public:
 	// BW1W120 00539d70 BW1M119 01027fe0
 	static void ProcessForests();
 
-	uint8_t                                            field_0x30[0x8];
+	GFootpathLink*                                     FootpathLink; /* 0x30 */
+	uint8_t                                            field_0x34[0x4];
 	BigForest*                                         BigForestObject;
 	bool32_t                                           IsScenic;
 	uint32_t                                           id;
