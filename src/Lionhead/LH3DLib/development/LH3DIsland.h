@@ -2,43 +2,19 @@
 #define BW1_DECOMP_LH3D_ISLAND_INCLUDED_H
 
 #include <assert.h>    /* For static_assert */
-#include <stddef.h>    /* For NULL */
-#include <stdint.h>    /* For uint32_t, uint8_t */
+#include <stdint.h>    /* For uint8_t */
 #include <re_common.h> /* For bool32_t */
 
-#include "LH3DColor.h" /* For struct LH3DColor */
 #include "LH3DMapCoords.h"
 #include "LHPoint.h"
 
 // Forward Declares
 
+struct LandBlock;
+struct LandCell;
 struct LHCoord;
 struct LH3DMaterial;
 struct LH3DTexture;
-
-#define LAND_CELL_DARKNESS_LEVELS 256
-
-struct LandCell
-{
-	uint8_t r; /* 0x0 */
-	uint8_t g;
-	uint8_t b;
-	uint8_t luminosity;
-	uint8_t altitude;
-	uint8_t SaveColor;
-	uint8_t properties;
-	uint8_t flags;
-
-	// Non-virtual methods
-
-	// BW1W120 inlined BW1M119 0100f850
-	bool32_t IsWater() { return properties & 0x10; }
-};
-
-struct LandBlock
-{
-	LandCell Cells[17][17];
-};
 
 class LH3DIsland
 {
@@ -53,39 +29,11 @@ public:
 	// Static methods
 
 	// BW1W120 inlined BW1M119 0102f130 (LHCombined Release)
-	static LandCell* GetCell(long x, long z)
-	{
-		if (x < 0 || x > 511 || z < 0 || z > 511)
-		{
-			return NULL;
-		}
-		uint32_t block = g_index_block[x >> 4][z >> 4];
-		if (block == 0)
-		{
-			return NULL;
-		}
-		return &g_ptr_blocks[block]->Cells[x & 0xf][z & 0xf];
-	}
+	static LandCell* GetCell(long x, long z);
 	// BW1W120 inlined BW1M119 01017640
-	static float GetHeightAsFloat(long x, long z)
-	{
-		LandCell* cell = GetCell(x, z);
-		if (cell != NULL)
-		{
-			return cell->altitude * g_height_unit;
-		}
-		return 0.0f;
-	}
+	static float GetHeightAsFloat(long x, long z);
 	// BW1W120 0060d3a0 BW1M119 inlined
-	static bool32_t IsWater(long x, long z)
-	{
-		LandCell* cell = GetCell(x, z);
-		if (cell != NULL)
-		{
-			return cell->IsWater();
-		}
-		return 1;
-	}
+	static bool32_t IsWater(long x, long z);
 
 	// BW1W120 00804790 BW1M119 01045ba0 (LHCombined Release)
 	static bool32_t Release();

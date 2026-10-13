@@ -5,14 +5,15 @@
 #include "CreatureAttitudeConstants.h"
 #include "Script.h"
 
-#include <Lionhead/LH3DLib/development/LH3DAnim.h>   /* For LH3DAnim::GetPackedAnim */
-#include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetAltitude */
-#include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For PI_F */
-#include <Lionhead/LH3DLib/development/LH3DText.h>   /* For CHAR2WCHAR */
-#include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For IsObjectOnScreen, IsPointOnScreen */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
-#include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint */
-#include <Lionhead/LHLog/ver4.0/LHSPrintf.h>         /* For UNICODE_sprintf */
+#include <Lionhead/LH3DLib/development/LH3DAnim.h>     /* For LH3DAnim::GetPackedAnim */
+#include <Lionhead/LH3DLib/development/LH3DIsland.h>   /* For LH3DIsland::GetAltitude */
+#include <Lionhead/LH3DLib/development/LH3DLandCell.h> /* For LH3DIsland::GetCell */
+#include <Lionhead/LH3DLib/development/LH3DMath.h>     /* For PI_F */
+#include <Lionhead/LH3DLib/development/LH3DText.h>     /* For CHAR2WCHAR */
+#include <Lionhead/LH3DLib/development/LH3DTech.h>     /* For IsObjectOnScreen, IsPointOnScreen */
+#include <Lionhead/LH3DLib/development/LHMatrix.h>     /* For struct LHMatrix */
+#include <Lionhead/LH3DLib/development/LHPoint.h>      /* For struct LHPoint */
+#include <Lionhead/LHLog/ver4.0/LHSPrintf.h>           /* For UNICODE_sprintf */
 
 #include "Alignment.h"
 #include "Camera.h"

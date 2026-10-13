@@ -18,7 +18,8 @@
 #include "VillagerInfo.h"
 #include "CreatureAttitudeConstants.h" // rogue include needed for matching .rdata
 
-#include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LH3DLib/development/LH3DLandCell.h> /* For LH3DIsland::IsWater */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>               /* For operator new(size_t, const char*, uint32_t) */
 
 #if defined(VERSION_BW1W100)
 #define MOBILE_WALL_HUG_FILE "C:\\dev\\black\\MobileWallHug.cpp"
