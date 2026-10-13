@@ -27,7 +27,7 @@ public:
 	// BW1W120 00527d30 BW1M119 010d63c0
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00528e50 BW1M119 010d8a90
-	virtual bool IsOkToCreateAtPos(const MapCoords& param_1, float param_2, float param_3) const;
+	virtual bool32_t IsOkToCreateAtPos(const MapCoords& coords, float y_angle, float scale) const;
 
 	// Static data
 

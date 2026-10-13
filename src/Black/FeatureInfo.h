@@ -22,8 +22,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 00527320 BW1M119 010aa100
-	virtual ~GFeatureInfo();
 	// BW1W120 00421eb0 BW1M119 010ab420
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00421ea0 BW1M119 010a8550
