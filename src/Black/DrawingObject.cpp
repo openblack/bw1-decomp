@@ -108,6 +108,7 @@ static const float UVTextureScale = 1.0f / 256.0f;
 #include "ScaffoldInfo.h"
 #include "PlannedAbode.h"
 #include "AbodeInfo.h"
+#include "PCInput.h"
 #include <chlasm/LHSample.h>
 #include <Lionhead/LH3DLib/development/LH3DComplexObject.h>
 
@@ -906,7 +907,7 @@ void Creature::Draw()
 		}
 	}
 
-	if (GGame::DebugDrawCreatureBeliefs)
+	if (DebugDrawCreatureBeliefs)
 	{
 		for (CreatureBelief* belief = mind->beliefs.lists[CREATURE_BELIEF_LIST_TYPE_OBJECT].Head; belief != NULL;
 		     belief = belief->Next)

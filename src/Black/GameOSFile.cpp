@@ -209,13 +209,13 @@
 // BW1W120 00558db0 BW1M119 null
 void OldTypeWarning(const char* message);
 
-char*    GameOSFile::RevisionPrefix = "$Revisio";
-char*    GameOSFile::RevisionSuffix = "n: 183 $";
-char*    GameOSFile::AutoSaveFilename = "20.sav";
-uint32_t GameOSFile::AutoSaveInterval = 6000;
-uint32_t GameOSFile::LastAutoSaveTurn;
-uint32_t GameOSFile::SaveCount;
-bool32_t GameOSFile::Saving;
+static char*    RevisionPrefix = "$Revisio";
+static char*    RevisionSuffix = "n: 183 $";
+static char*    AutoSaveFilename = "20.sav";
+static uint32_t AutoSaveInterval = 6000;
+uint32_t        GameOSFile::LastAutoSaveTurn;
+uint32_t        GameOSFile::SaveCount;
+static bool32_t Saving;
 
 bool32_t GameOSFile::WriteEnabled = true;
 bool32_t GameOSFile::ReadEnabled = true;

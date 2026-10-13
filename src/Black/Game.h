@@ -128,30 +128,19 @@ class GGame : public GameThing
 {
 public:
 	// BW1W120 00d0195c
-	static GGame* g_game;
-	// Video lifecycle storage. Descriptive identifiers; storage remains extracted.
-	static int           VideoFinished;      // 00d0198c
-	static int           VideoFramesReady;   // 00d01988
-	static int           VideoPreviousPause; // 00d0199c
-	static FallingSpell* FallingSpellVideo;  // 00cd3b10
+	static GGame*        g_game;
+	static FallingSpell* FallingSpellVideo; // 00cd3b10
 	// Single-reader globals: original names/scope unknown, provisional Game association.
 	static float VideoLetterboxScale; // 00bec16c, initial 1.0f
 	static char  VideoStatistics[];   // 00cd3618, extent unknown
 	// TODO: Original static member name is unrecovered.
 	// BW1W120 00d019a9
 	static bool ScriptRebootRequested;
-	// BW1W120 00d46a78
-	static bool32_t DebugDrawCreatureBeliefs;
 	// TODO: Original names are unrecovered; shared with tutorial and packet processing.
 	// BW1W120 00d019a4
 	static uint32_t TutorialState;
-	// BW1W120 00d019ac
-	static uint32_t StartTime;
 	// BW1W120 00d019b0
 	static uint32_t MemoryState;
-	// TODO: Descriptive name and provisional scope; no writer found in either target.
-	// BW1W120 00d0197c
-	static uint32_t RepairMissingMothers;
 	// TODO: Descriptive names/scope for game lifecycle globals, confirmed by constructor and teardown.
 	// BW1W120 00cd3af8
 	static CRITICAL_SECTION VideoTimerSection;
@@ -164,8 +153,6 @@ public:
 	static int PacketTimeHistory[10];
 	// BW1W120 00d01464
 	static unsigned long IncomingQueueHistory[100];
-	// BW1W120 00d01978
-	static uint32_t NetworkTurnsThisFrame;
 	// BW1W120 00bec280
 	static bool RenderLoopEnabled;
 	// Descriptive name for the Windows-only line-input object.
@@ -192,12 +179,6 @@ public:
 	// Extracted storage; full array extent is not established.
 	// BW1W120 00bea9a0
 	static uint8_t RealPlayerMap[];
-	// BW1W120 008df608
-	static char* const NetworkApplication;
-	// BW1W120 008df60c
-	static char* const NetworkChannel;
-	// BW1W120 008df610
-	static char* const NetworkPassword;
 
 	uint32_t         GameFlags;
 	GPlayer          players[0x8];

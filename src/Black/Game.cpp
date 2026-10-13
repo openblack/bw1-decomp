@@ -205,17 +205,20 @@ static_assert(offsetof(MPFEData, Conditions) == 0x15d4, "MPFEData condition offs
 
 GGame*                  GGame::g_game;
 uint32_t                GGame::TutorialState;
-uint32_t                GGame::StartTime;
+static uint32_t         StartTime;
 uint32_t                GGame::MemoryState;
 bool                    GGame::ScriptRebootRequested;
-uint32_t                GGame::RepairMissingMothers;
+static uint32_t         RepairMissingMothers;
 GGameInfo               GGameInfo::Info;
 CRITICAL_SECTION        GGame::VideoTimerSection;
 bool                    GGame::SavingMap;
 bool                    GGame::SystemExit;
 int                     GGame::PacketTimeHistory[10];
 unsigned long           GGame::IncomingQueueHistory[100];
-uint32_t                GGame::NetworkTurnsThisFrame;
+static uint32_t         NetworkTurnsThisFrame;
+static int              VideoFinished;
+static int              VideoFramesReady;
+static int              VideoPreviousPause;
 bool                    GGame::RenderLoopEnabled = true;
 CreatureDanceLineInput* GGame::CreatureDanceLineIn;
 LHMail*                 GGame::Mail;
@@ -223,9 +226,9 @@ bool                    GGame::InternetAvailable;
 bool                    GGame::Initialising;
 int                     GGame::LoadingFrameEnabled;
 int                     GGame::FootballEnabled;
-char* const             GGame::NetworkApplication = "Lionhead";
-char* const             GGame::NetworkChannel = "Channel";
-char* const             GGame::NetworkPassword = "Password";
+static char* const      NetworkApplication = "Lionhead";
+static char* const      NetworkChannel = "Channel";
+static char* const      NetworkPassword = "Password";
 
 // TODO: Original name unknown; tail-jumps to LHResetFPU, not an empty function.
 // BW1W120 0054d610

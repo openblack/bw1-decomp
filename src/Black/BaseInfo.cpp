@@ -6,10 +6,12 @@
 #include "ColourConstants.h" /* For White */
 #include "Game.h"            /* For g_game */
 
+static uint32_t InfoCount;
+
 // Unknown if this function is inlined. Put in cpp file to avoid circular header dependency issues.
 void GBaseInfo::SetInfoID()
 {
-	index = GBaseInfo::InfoCount++;
+	index = InfoCount++;
 	GGame::g_game->GameLists.BaseInfos.AddToFirst(this);
 }
 
