@@ -109,7 +109,7 @@ public:
 	// BW1W120 00597190 BW1M119 01101ed0
 	void UpdateNumeratorsAndDenominator();
 	// BW1W120 00597400 BW1M119 011018b0
-	bool FindDanceGroup(Living* living);
+	bool32_t FindDanceGroup(Living* living);
 	// BW1W120 00597ed0 BW1M119 01100070
 	Living* GetFirstDancer();
 	// BW1W120 005981d0 BW1M119 010ffa50

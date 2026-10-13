@@ -1,6 +1,7 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 #include "GameTimeConstants.h"
+#include "Dance.h"
 #include "DanceGroup.h"
 #include "GroupBehaviour.h"
 

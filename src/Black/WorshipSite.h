@@ -197,6 +197,8 @@ public:
 	float GetAngleFromCitadel();
 	// BW1W120 0077bdb0 BW1M119 015b8130
 	int GetFood();
+	// BW1W120 0077c100 BW1M119 015b7980
+	float GetWorshipSpeed();
 	// BW1W120 0077db00 BW1M119 015b38b0
 	void AddArtifact(Fixed* artifact, GPlayer* player);
 	// BW1W120 0077c4d0 BW1M119 015b6fd0
@@ -215,14 +217,26 @@ public:
 	void AddSpellIconIfNecessary(SPELL_SEED_TYPE seed_type);
 	// BW1W120 0077caa0 BW1M119 015b63b0
 	void RemoveSpellIconIfNecessary(SPELL_SEED_TYPE seed_type, int param_2);
+	// BW1W120 0077ce70 BW1M119 015b5c40
+	void GetRestPos(MapCoords* pos);
+	// BW1W120 0077ceb0 BW1M119 015b5bd0
+	void GetGatePos(MapCoords* pos);
 	// BW1W120 0077cf30 BW1M119 015b5a20
 	MapCoords GetTotemPos();
 	// BW1W120 0077dd40 BW1M119 015b3370
 	MapCoords CalculateCentrePos();
+	// BW1W120 0077d040 BW1M119 015b5670
+	void AddVillagerToWorshipCount(Villager* villager);
 	// BW1W120 0077d0a0 BW1M119 015b5540
-	void RemoveVillagerFromWorshipCount(Villager* param_1);
+	void RemoveVillagerFromWorshipCount(Villager* villager);
+	// BW1W120 0077d110 BW1M119 015b54a0
+	bool32_t IsVillagerInWorshipList(Villager* villager);
+	// BW1W120 0077e0a0 BW1M119 015b2dc0
+	bool32_t CanIGoHome(Villager* villager);
+	// BW1W120 0077e0c0 BW1M119 015b2ab0
+	void AddVillagerRequestingToGoHome(Villager* villager);
 	// BW1W120 0077e1d0 BW1M119 015b2900
-	void RemoveVillagerRequestingToGoHome(Villager* param_1);
+	void RemoveVillagerRequestingToGoHome(Villager* villager);
 	// BW1W120 0077e260 BW1M119 015b28b0
 	int GetNumVillagersRequestingToGoHome();
 	// BW1W120 0077b8a0 BW1M119 015b8ab0
