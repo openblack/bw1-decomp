@@ -13,6 +13,11 @@ char* SpellSeedGraphic::GetDebugText()
 	return "SpellSeedGraphic:";
 }
 
+const char* SpellSeedGraphic::GetText()
+{
+	return "Seed Graphics";
+}
+
 bool SpellIcon::InteractsWithPhysicsObjects()
 {
 	return false;

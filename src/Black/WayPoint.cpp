@@ -9,3 +9,8 @@ char* WayPoint::GetDebugText()
 {
 	return "WayPoint:";
 }
+
+const char* WayPoint::GetText()
+{
+	return "WayPoint";
+}

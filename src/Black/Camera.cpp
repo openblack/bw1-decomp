@@ -6,3 +6,8 @@ uint32_t GCamera::GetSaveType()
 {
 	return GAME_THING_TYPE_GCAMERA;
 }
+
+const char* GCamera::GetText()
+{
+	return "Camera";
+}
