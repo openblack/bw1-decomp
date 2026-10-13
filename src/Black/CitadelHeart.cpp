@@ -321,8 +321,7 @@ TempleLeash::TempleLeash(LH3DObject* object, unsigned long player_number)
 		leash->SpriteFrame = Random(0.0f, CREATURE_PEN_SPRITE_FRAME_RANGE);
 		LH3DSprite* sprite = LH3DSprite::Create(1, 1);
 		leash->sprite = sprite;
-		// TODO: g_smoke_mat is a free LH3D global (unqualified on the Mac) with no owning class to declare it in.
-		// sprite->SetMaterial(g_smoke_mat);
+		sprite->SetMaterial(g_smoke_mat);
 		sprite->SetSize(2.0f);
 		sprite->colour = LH3DColor(0x80ffffff);
 		sprite->pos = pos;
@@ -1070,8 +1069,7 @@ void CitadelHeart::DrawCreaturePen()
 					continue;
 				}
 				leash->sprite->colour = (alpha << 24) | 0xc18119;
-				// TODO: g_smoke_additif_mat is a free LH3D global (unqualified on the Mac) with no owning class to declare it in.
-				// leash->sprite->material = g_smoke_additif_mat;
+				leash->sprite->material = g_smoke_additif_mat;
 				LHMatrix handMatrix = *hand->Matrix0x80;
 				float    yAngle;
 				float    xAngle;
@@ -1094,8 +1092,7 @@ void CitadelHeart::DrawCreaturePen()
 			else
 			{
 				leash->sprite->colour = (alpha << 24) | 0xffffff;
-				// TODO: g_smoke_mat is a free LH3D global (unqualified on the Mac) with no owning class to declare it in.
-				// leash->sprite->material = g_smoke_mat;
+				leash->sprite->material = g_smoke_mat;
 				leash->sprite->AddDrawing();
 				leash->collar->AddDrawing();
 				GInterface::SendInvisibleDrawCollision(leashes->leashes[i], &pos, CreaturePenCollisionRadius);

@@ -267,4 +267,9 @@ public:
 	void __fastcall CombineColorWithCurrent(unsigned long color, unsigned long specular);
 };
 
+// BW1W120 00ea1abc BW1M119 012b3710 (LHCombined Release)
+extern LH3DMaterial* g_smoke_mat;
+// BW1W120 00ea1ac4 BW1M119 012b3708 (LHCombined Release)
+extern LH3DMaterial* g_smoke_additif_mat;
+
 #endif /* BW1_DECOMP_LH3D_OBJECT_INCLUDED_H */
