@@ -41,3 +41,8 @@ char* Reward::GetDebugText()
 {
 	return "Reward:";
 }
+
+void Reward::ResolveLoad()
+{
+	Object::ResolveLoad();
+}

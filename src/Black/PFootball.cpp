@@ -18,6 +18,11 @@ MESH_LIST PFootball::GetMesh() const
 	return info->GetMesh();
 }
 
+void PFootball::Draw()
+{
+	MultiMapFixed::Draw();
+}
+
 GBaseInfo* GPFootballInfo::GetBaseInfo(uint32_t& info_count)
 {
 	info_count = FOOTBALL_INFO_LAST;

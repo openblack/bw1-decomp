@@ -84,4 +84,9 @@ bool32_t Living::IsMovingForAnimation()
 {
 	return IsMoving();
 }
+
+void Living::ResolveLoad()
+{
+	Object::ResolveLoad();
+}
 #endif
