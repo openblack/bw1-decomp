@@ -78,7 +78,7 @@ PlannedMultiMapFixed* WorshipSiteUpgrade::ConvertToPlanned()
 		new (FILEPATH, 62) PlannedWorshipSiteUpgrade(Pos, GetInfo(), GetWorshipSite(), GetYAngle(), GetScale());
 	if (planned != NULL)
 	{
-		ToBeDeleted(0);
+		ToBeDeleted(false);
 	}
 	return planned;
 }
