@@ -36,3 +36,12 @@ void Scaffold::SetCombinedTown(Scaffold* other)
 	town = combined;
 	other->town = combined;
 }
+
+PlannedAbode* Scaffold::GetPlannedAbodeForBuilding(Town* town)
+{
+	if (IsPlannedValid(PLANNED_TYPE_1))
+	{
+		SwapPlannedAbodes();
+	}
+	return Planned;
+}
