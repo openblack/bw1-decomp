@@ -24,6 +24,11 @@ uint32_t Cow::GetSaveType()
 	return GAME_THING_TYPE_COW;
 }
 
+char* Cow::GetDebugText()
+{
+	return "Animal: Cow";
+}
+
 uint32_t Goat::GetSaveType()
 {
 	return GAME_THING_TYPE_GOAT;
@@ -47,6 +52,11 @@ uint32_t Pig::GetSaveType()
 uint32_t Sheep::GetSaveType()
 {
 	return GAME_THING_TYPE_SHEEP;
+}
+
+char* Sheep::GetDebugText()
+{
+	return "Animal: Sheep";
 }
 
 uint32_t Tortoise::GetSaveType()
@@ -183,6 +193,21 @@ uint32_t PieceHorse::GetSaveType()
 	return GAME_THING_TYPE_PIECE_SHEEP;
 }
 
+bool32_t PieceHorse::DecideWhatToDo()
+{
+	return true;
+}
+
+uint32_t PieceHorse::ProcessNeeds()
+{
+	return 0;
+}
+
+uint32_t PieceHorse::CheckNeeds()
+{
+	return 0;
+}
+
 char* PieceHorse::GetDebugText()
 {
 	return "Animal: Horse for Puzzle";
@@ -191,6 +216,16 @@ char* PieceHorse::GetDebugText()
 bool32_t PiecePig::DecideWhatToDo()
 {
 	return true;
+}
+
+uint32_t PiecePig::ProcessNeeds()
+{
+	return 0;
+}
+
+uint32_t PiecePig::CheckNeeds()
+{
+	return 0;
 }
 
 uint32_t PiecePig::GetSaveType()
@@ -206,6 +241,21 @@ char* PiecePig::GetDebugText()
 uint32_t PieceTortoise::GetSaveType()
 {
 	return GAME_THING_TYPE_PIECE_SHEEP;
+}
+
+bool32_t PieceTortoise::DecideWhatToDo()
+{
+	return true;
+}
+
+uint32_t PieceTortoise::ProcessNeeds()
+{
+	return 0;
+}
+
+uint32_t PieceTortoise::CheckNeeds()
+{
+	return 0;
 }
 
 char* PieceTortoise::GetDebugText()
