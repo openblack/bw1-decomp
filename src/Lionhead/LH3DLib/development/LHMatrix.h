@@ -113,7 +113,7 @@ struct LHMatrix
 	}
 	// Inliner IL size: <= 40, always inlined and never charged
 	// BW1W120 inlined BW1M119 01043dd0
-	const LHPoint& GetPos() const { return *(const LHPoint*)&m[9]; }
+	LHPoint& GetPos() const { return *(LHPoint*)&m[9]; }
 	// BW1W120 inlined BW1M119 01099510
 	LHPoint& GetVectorX() const { return *(LHPoint*)&m[0]; }
 	// BW1W120 inlined BW1M119 010995c0

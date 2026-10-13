@@ -1054,9 +1054,7 @@ void CitadelHeart::DrawCreaturePen()
 			leash->collar->matrix = leash->Game3dObject->matrix;
 			LHMatrix rotation;
 			rotation.SetYXZMatrixOnly(0.0f, leash->CollarXSpin, leash->CollarZSpin);
-			rotation._43 = 0.0f;
-			rotation._42 = 0.0f;
-			rotation._41 = 0.0f;
+			rotation.GetPos().SetNull();
 			leash->collar->matrix.PreMultiply(rotation);
 			leash->SpriteFrame += CreaturePenFrameRate * dt;
 			WrapScaled(leash->SpriteFrame, CREATURE_PEN_SPRITE_FRAME_RANGE, 1.0f / CREATURE_PEN_SPRITE_FRAME_RANGE);
