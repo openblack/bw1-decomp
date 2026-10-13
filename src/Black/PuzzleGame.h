@@ -423,6 +423,12 @@ public:
 class PieceCow : public Cow
 {
 public:
+	// Override methods
+
+	// BW1W120 006dd490 BW1M119 01139dc0
+	virtual uint32_t ProcessNeeds();
+	// BW1W120 006dd4a0 BW1M119 01139e00
+	virtual uint32_t CheckNeeds();
 };
 
 class PuzzleCow : public PieceCow
@@ -430,6 +436,8 @@ class PuzzleCow : public PieceCow
 public:
 	// Override methods
 
+	// BW1W120 006db140 BW1M119 0112df20
+	virtual bool32_t DecideWhatToDo();
 	// BW1W120 006dd680 BW1M119 0113aef0
 	virtual char* GetDebugText();
 	// BW1W120 006dd670 BW1M119 0113aeb0
@@ -687,6 +695,8 @@ class PuzzleTortoise : public PieceTortoise
 public:
 	// Override methods
 
+	// BW1W120 006db150 BW1M119 0112dee0
+	virtual bool32_t DecideWhatToDo();
 	// BW1W120 006dd5d0 BW1M119 0113abf0
 	virtual char* GetDebugText();
 	// BW1W120 006dd5c0 BW1M119 0113abb0
