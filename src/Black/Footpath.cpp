@@ -45,6 +45,8 @@ uint32_t GFootpathLink::Save(GameOSFile& file)
 	return 0;
 }
 
+void GFootpathLink::Update(MultiMapFixed* structure) {}
+
 uint32_t GFootpath::GetSaveType()
 {
 	return GAME_THING_TYPE_GFOOTPATH;

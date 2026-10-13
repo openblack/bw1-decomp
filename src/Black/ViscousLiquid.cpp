@@ -37,3 +37,10 @@ bool32_t Fragment::ShouldFootpathsGoRound()
 {
 	return false;
 }
+
+uint32_t Fragment::InterfaceValidToTap(GInterfaceStatus*)
+{
+	return 0;
+}
+
+void Fragment::ReactToPhysicsImpact(PhysicsObject*, bool) {}

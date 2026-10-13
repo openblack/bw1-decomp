@@ -89,6 +89,11 @@ char* Dove::GetDebugText()
 	return "Animal: Dove";
 }
 
+bool32_t Dove::CanBePoodOn(Creature*)
+{
+	return false;
+}
+
 bool32_t Bat::CanBeFrighteningToCreature(Creature* creature)
 {
 	return true;

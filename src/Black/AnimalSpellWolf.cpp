@@ -10,3 +10,10 @@ char* SpellWolf::GetDebugText()
 {
 	return "Animal: SpellWolf";
 }
+
+bool32_t SpellWolf::MoveToPosAndLookAround()
+{
+	return true;
+}
+
+void SpellWolf::SetSpeed(int) {}

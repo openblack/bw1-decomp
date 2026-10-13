@@ -39,10 +39,14 @@ char* RenderParticleCreatureRef::GetDebugText()
 	return PSYS_DEBUG_TEXT;
 }
 
+void RenderParticleCreatureRef::DrawAt(const DrawData& data) {}
+
 char* RenderParticleGameObjectRef::GetDebugText()
 {
 	return PSYS_DEBUG_TEXT;
 }
+
+void RenderParticleGameObjectRef::DrawAt(const DrawData& data) {}
 
 char* Particle3DAnim::GetDebugText()
 {

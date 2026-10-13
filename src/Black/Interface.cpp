@@ -14,3 +14,10 @@ char* GInterface::GetDebugText()
 {
 	return "Interface:";
 }
+
+bool32_t GInterface::LoadFiles()
+{
+	return true;
+}
+
+void GInterface::Cheat() {}
