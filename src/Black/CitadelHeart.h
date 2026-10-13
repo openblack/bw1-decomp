@@ -180,7 +180,7 @@ public:
 	// BW1W120 00464bf0 BW1M119 011c87d0
 	virtual ~CitadelHeart();
 	// BW1W120 00464c50 BW1M119 011c8570
-	virtual void ToBeDeleted(int delete_now);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00465000 BW1M119 011c7f50
 	virtual bool32_t Built();
 	// BW1W120 00465430 BW1M119 011c76c0

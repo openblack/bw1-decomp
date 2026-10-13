@@ -413,7 +413,7 @@ CitadelHeart::~CitadelHeart()
 	}
 }
 
-void CitadelHeart::ToBeDeleted(int delete_now)
+void CitadelHeart::ToBeDeleted(bool32_t delete_now)
 {
 	if (entrance != NULL)
 	{
@@ -708,12 +708,12 @@ PlannedMultiMapFixed* CitadelHeart::ConvertToPlanned()
 			new (FILEPATH, 709) PlannedTownCitadelHeart(Pos, GetInfo(), town, GetYAngle(), GetScale());
 		planned->FootpathLink.Set(FootpathLink);
 		FootpathLink = NULL;
-		ToBeDeleted(0);
+		ToBeDeleted(false);
 		return planned;
 	}
 	PlannedCitadelHeart* planned =
 		new (FILEPATH, 717) PlannedCitadelHeart(Pos, GetInfo(), citadel.Get(), GetYAngle(), GetScale());
-	ToBeDeleted(0);
+	ToBeDeleted(false);
 	return planned;
 }
 
