@@ -7,6 +7,9 @@
 // fabricated
 typedef int32_t LH3DMapCoordsFull;
 
+#define MAP_COORDS_UNITS_PER_CELL  ((float)0x10000)
+#define MAP_COORDS_METRES_PER_CELL 10.0f
+
 struct LH3DMapCoords
 {
 	union {
@@ -39,8 +42,8 @@ struct LH3DMapCoords
 	}
 	// World units to 16.16 fixed point: a cell is 10 units across.
 	LH3DMapCoords(float _x, float _z)
-		: x((LH3DMapCoordsFull)((float)(_x * (float)0x10000) / 10.0f)),
-		  z((LH3DMapCoordsFull)((float)(_z * (float)0x10000) / 10.0f)), altitude(0.0f)
+		: x((LH3DMapCoordsFull)((float)(_x * MAP_COORDS_UNITS_PER_CELL) / MAP_COORDS_METRES_PER_CELL)),
+		  z((LH3DMapCoordsFull)((float)(_z * MAP_COORDS_UNITS_PER_CELL) / MAP_COORDS_METRES_PER_CELL)), altitude(0.0f)
 	{
 	}
 

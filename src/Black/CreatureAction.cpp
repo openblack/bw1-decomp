@@ -1715,8 +1715,8 @@ int CreatureAgenda::ConstructSubActionsForPracticeThrow(unsigned long param_1)
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 	}
 	MapCoords coords = creature->Pos;
-	coords.SetWholeX((long)((coords.MetersX() + 3.0f * creature->GetHeight()) * (float)0x10000 / MetresPerMapCell));
-	coords.SetWholeZ((long)((coords.MetersZ() + 3.0f * creature->GetHeight()) * (float)0x10000 / MetresPerMapCell));
+	coords.SetMetersX(coords.MetersX() + 3.0f * creature->GetHeight());
+	coords.SetMetersZ(coords.MetersZ() + 3.0f * creature->GetHeight());
 	LHPoint pos;
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW_AT_POS,
@@ -6552,8 +6552,8 @@ int CreatureAgenda::ConstructSubActionsForBreakRock(unsigned long param_1)
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 	}
 	MapCoords coords = creature->Pos;
-	coords.SetWholeX((long)((coords.MetersX() + 3.0f * creature->GetHeight()) * (float)0x10000 / MetresPerMapCell));
-	coords.SetWholeZ((long)((coords.MetersZ() + 3.0f * creature->GetHeight()) * (float)0x10000 / MetresPerMapCell));
+	coords.SetMetersX(coords.MetersX() + 3.0f * creature->GetHeight());
+	coords.SetMetersZ(coords.MetersZ() + 3.0f * creature->GetHeight());
 	LHPoint pos;
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW_AT_POS,
@@ -8026,8 +8026,8 @@ int CreatureAgenda::ConstructSubActionsForThrowDie(unsigned long param_1)
 		                             &Creature::LookWhileGoingTowardsObject, NULL);
 	}
 	MapCoords coords = creature->Pos;
-	coords.SetWholeX((long)((coords.MetersX() + 1.2f * creature->GetHeight()) * (float)0x10000 / MetresPerMapCell));
-	coords.SetWholeZ((long)((coords.MetersZ() + 1.2f * creature->GetHeight()) * (float)0x10000 / MetresPerMapCell));
+	coords.SetMetersX(coords.MetersX() + 1.2f * creature->GetHeight());
+	coords.SetMetersZ(coords.MetersZ() + 1.2f * creature->GetHeight());
 	LHPoint pos;
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
 	SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_THROW_AT_POS,

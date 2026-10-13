@@ -52,6 +52,7 @@
 #include "Landscape.h"
 #include "LHNetBase.h"
 #include "MagicTeleport.h"
+#include "MapCoordsMeters.h"
 #include "MPFEConnectionStatus.h"
 #include "MPFEStartGameData.h"
 #include "Network.h"
@@ -1759,8 +1760,8 @@ WorshipSpellIcon* GPlayer::FindBestSpellIconForSpellSeed(GInterfaceStatus* statu
 
 inline MapCoords::MapCoords(float x, float z, float altitude)
 {
-	SetWholeX((long)(x * (float)0x10000 / MetresPerMapCell));
-	SetWholeZ((long)(z * (float)0x10000 / MetresPerMapCell));
+	SetMetersX(x);
+	SetMetersZ(z);
 	this->altitude = altitude;
 }
 

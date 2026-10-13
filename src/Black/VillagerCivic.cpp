@@ -195,8 +195,8 @@ bool32_t Villager::ArrivesAtBuildingSite()
 		{
 			LHPoint*  buildPoint = &building_site->BuildingPositions[index];
 			MapCoords buildPos;
-			buildPos.x = (int)(buildPoint->x * 6553.6f);
-			buildPos.z = (int)(buildPoint->z * 6553.6f);
+			buildPos.SetX(buildPoint->x);
+			buildPos.SetZ(buildPoint->z);
 			buildPos.altitude = 0.0f;
 			if (Pos.GetDistance(buildPos) > 0.2f)
 			{
@@ -285,8 +285,8 @@ static ClearAreaPoint g_ClearAreaPoint;
 bool32_t ClearAreaPoint::ProcessPoint(const LHPoint& point)
 {
 	MapCoords mc;
-	mc.x = (int)(point.x * 6553.6f);
-	mc.z = (int)(point.z * 6553.6f);
+	mc.SetX(point.x);
+	mc.SetZ(point.z);
 	mc.altitude = 0.0f;
 	for (Object* obj = mc.FindType(OBJECT_TYPE_ANY, NULL); obj != NULL; obj = mc.FindType(OBJECT_TYPE_ANY, obj))
 	{

@@ -10,8 +10,6 @@
 #include <chlasm/ScriptEnums.h>                         /* For enum SCRIPT_OBJECT_TYPE */
 #include <re_common.h>                                  /* For bool32_t */
 
-#define MAP_COORDS_UNITS_PER_CELL ((float)0x10000)
-
 enum COLLIDE_TYPE
 {
 	COLLIDE_TYPE_NONE = 0x0,
@@ -159,11 +157,11 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 inlined BW1M119 010247e0
 	void SetMetersZ(float meters);
 	// BW1W120 inlined BW1M119 inlined
-	void SetX(float _x) { SetWholeX((long)(_x * (float)0x10000 / 10.0f)); }
+	void SetX(float _x) { SetWholeX((long)(_x * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL)); }
 	// BW1W120 inlined BW1M119 0104d810
 	void SetWholeX(long _x) { x = _x; }
 	// BW1W120 inlined BW1M119 inlined
-	void SetZ(float _z) { SetWholeZ((long)(_z * (float)0x10000 / 10.0f)); }
+	void SetZ(float _z) { SetWholeZ((long)(_z * MAP_COORDS_UNITS_PER_CELL / MAP_COORDS_METRES_PER_CELL)); }
 	// BW1W120 inlined BW1M119 0104d850
 	void SetWholeZ(long _z) { z = _z; }
 	// Inliner IL size: 42
