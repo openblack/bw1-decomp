@@ -1,6 +1,7 @@
 #include "GameTimeConstants.h"
 #include "AnimalCow.h"
 
+#include "Rand.h"
 #include "AnimalGoat.h"
 #include "AnimalHorse.h"
 #include "AnimalPig.h"
@@ -167,6 +168,13 @@ bool32_t Cow::IsOkToBeShepherd()
 
 bool32_t Cow::IsCow(Creature* creature)
 {
+	return true;
+}
+
+bool32_t Cow::StartToEat()
+{
+	Animal::StartToEat();
+	TurnsUntilNextStateChange = GRand::GameRand(15, ANIMAL_COW_FILE, 183) + 20;
 	return true;
 }
 
