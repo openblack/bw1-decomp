@@ -83,8 +83,3 @@ void Football::Draw()
 {
 	MultiMapFixed::Draw();
 }
-
-bool32_t Villager::FootballWonGoal()
-{
-	return true;
-}
