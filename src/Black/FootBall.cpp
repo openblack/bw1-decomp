@@ -78,3 +78,8 @@ float Football::ReduceLife(float value, GPlayer* player)
 {
 	return 1.0f;
 }
+
+bool32_t Villager::FootballWonGoal()
+{
+	return true;
+}

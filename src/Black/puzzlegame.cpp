@@ -83,3 +83,13 @@ const char* ChessGamePuzzle::GetText()
 {
 	return "ChessGamePuzzle";
 }
+
+bool32_t PuzzleTotem::NetworkFriendlyEndLockedSelect(GInterfaceStatus*)
+{
+	return true;
+}
+
+bool32_t PuzzleSheep::DecideWhatToDo()
+{
+	return true;
+}
