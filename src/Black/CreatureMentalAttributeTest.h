@@ -19,6 +19,64 @@ enum DECISION_TREE_TYPE
 	_DECISION_TREE_TYPE_COUNT = 0x1
 };
 
+// Value ranges for the attributes whose values are a fixed set of names; the enumerator names
+// follow each attribute's ValueNames.
+
+enum ATTRIBUTE_ALLEGIANCE
+{
+	ALLEGIANCE_FRIENDLY,
+	ALLEGIANCE_ENEMY,
+	ALLEGIANCE_ALLY,
+	ALLEGIANCE_LAST
+};
+
+enum ATTRIBUTE_ORIGIN
+{
+	ORIGIN_NATURAL,
+	ORIGIN_MAN_MADE,
+	ORIGIN_MAGIC,
+	ORIGIN_LAST
+};
+
+enum ATTRIBUTE_LIFE
+{
+	LIFE_LOW,
+	LIFE_HIGH,
+	LIFE_LAST
+};
+
+enum ATTRIBUTE_ON_FIRE
+{
+	ON_FIRE_IS_ON_FIRE,
+	ON_FIRE_IS_NOT_ON_FIRE,
+	ON_FIRE_LAST
+};
+
+enum ATTRIBUTE_TOWN_BELIEF
+{
+	TOWN_BELIEF_VERY_LOW,
+	TOWN_BELIEF_LOW,
+	TOWN_BELIEF_MEDIUM,
+	TOWN_BELIEF_HIGH,
+	TOWN_BELIEF_LAST
+};
+
+enum ATTRIBUTE_TOWN_SIZE
+{
+	TOWN_SIZE_SMALL,
+	TOWN_SIZE_MEDIUM,
+	TOWN_SIZE_LARGE,
+	TOWN_SIZE_LAST
+};
+
+// Yes/no attributes, named "False" and "True" by ValueName.
+enum ATTRIBUTE_BOOL
+{
+	ATTRIBUTE_BOOL_FALSE,
+	ATTRIBUTE_BOOL_TRUE,
+	ATTRIBUTE_BOOL_LAST
+};
+
 class GameThingWithPos;
 class GPlayer;
 

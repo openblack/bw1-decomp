@@ -11,19 +11,19 @@
 
 #include "ColourConstants.h" /* For White */
 
-char AttributeAllegiance::ValueNames[3][64] = {
+char AttributeAllegiance::ValueNames[ALLEGIANCE_LAST][64] = {
 	"Friendly", //
 	"Enemy",    //
 	"Ally",     //
 };
 
-char AttributeOrigin::ValueNames[3][64] = {
+char AttributeOrigin::ValueNames[ORIGIN_LAST][64] = {
 	"Natural",  //
 	"Man-made", //
 	"Magic",    //
 };
 
-char AttributeLife::ValueNames[2][64] = {
+char AttributeLife::ValueNames[LIFE_LAST][64] = {
 	"Low",  //
 	"High", //
 };
@@ -40,14 +40,14 @@ char AttributeTribe::ValueNames[TRIBE_TYPE_LAST][64] = {
 	"Tibetan",  //
 };
 
-char AttributeTownReligiousBeliefInYou::ValueNames[4][64] = {
+char AttributeTownReligiousBeliefInYou::ValueNames[TOWN_BELIEF_LAST][64] = {
 	"VeryLow", //
 	"Low",     //
 	"Medium",  //
 	"High",    //
 };
 
-char AttributeTownSize::ValueNames[3][64] = {
+char AttributeTownSize::ValueNames[TOWN_SIZE_LAST][64] = {
 	"Small",
 	"Medium",
 	"Large",
