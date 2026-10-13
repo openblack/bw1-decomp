@@ -659,6 +659,10 @@ public:
 	LH3DCreature* GetCreature3D();
 	// BW1W120 0047cce0 BW1M119 011d82c0
 	bool32_t IsConfinedToArea();
+	// BW1W120 0047cd20 BW1M119 011d81d0
+	bool32_t IsPosOutsideConfinedArea(const MapCoords& pos);
+	// BW1W120 004e3d30 BW1M119 015ee940
+	float MaximumPickUpWeight();
 	// BW1W120 004c3990 BW1M119 01235120
 	float GetActionPriority(CREATURE_ACTION action, CreaturePlan& plan);
 	// BW1W120 004c39f0 BW1M119 01235090
@@ -988,6 +992,8 @@ public:
 	bool32_t IsAnimIndividual(unsigned long anim);
 	// BW1W120 004f6850 BW1M119 0128d9d0
 	void SetFocus(GameThingWithPos* thing);
+	// BW1W120 004f7060 BW1M119 0128ce00
+	void ScriptReleaseFromScript();
 	// BW1W120 004f6b60 BW1M119 0128d220
 	void ScriptMoveToPos(LHPoint* pos, float speed);
 	// BW1W120 004f6e30 BW1M119 0128d0e0

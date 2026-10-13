@@ -1,5 +1,6 @@
 #include "MultiMapFixed.h"
 #include "CreatureMentalLearnAction.h"
+#include "Creature.h" /* For Creature */
 
 bool32_t MultiMapFixed::IsBuildingWhichIsBeingBuilt(Creature* creature)
 {
@@ -14,4 +15,9 @@ GBaseInfo* CreatureActionKnownAboutEntry::GetBaseInfo(uint32_t& info_count)
 {
 	info_count = CREATURE_ACTION_KNOWN_ABOUT_LAST;
 	return NormalActionKnownAboutInfo;
+}
+
+float Creature::MaximumPickUpWeight()
+{
+	return GetWeight() * 0.8f;
 }

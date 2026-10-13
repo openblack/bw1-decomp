@@ -7,6 +7,7 @@
 #include "CreatureInfo.h"
 #include "CreaturePhysical.h"
 #include "DifferentCreatureInfo.h"
+#include "Utils.h" /* For GUtils */
 
 uint32_t Creature::GetSaveType()
 {
@@ -189,4 +190,13 @@ GBaseInfo* DifferentCreatureInfo::GetBaseInfo(uint32_t& info_count)
 SCRIPT_OBJECT_TYPE Creature::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_CREATURE;
+}
+
+bool32_t Creature::IsPosOutsideConfinedArea(const MapCoords& pos)
+{
+	if (IsConfinedToArea() && GUtils::GetDistanceInMetres(pos, ConfinementCentre) > ConfinementRadius)
+	{
+		return true;
+	}
+	return false;
 }
