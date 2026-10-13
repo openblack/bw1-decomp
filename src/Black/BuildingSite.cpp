@@ -16,14 +16,29 @@ uint32_t CitadelBuildingSite::GetSaveType()
 	return GAME_THING_TYPE_CITADEL_BUILDING_SITE;
 }
 
+char* CitadelBuildingSite::GetDebugText()
+{
+	return "CitadelBuildingSite:";
+}
+
 uint32_t StandardBuildingSite::GetSaveType()
 {
 	return GAME_THING_TYPE_STANDARD_BUILDING_SITE;
 }
 
+char* StandardBuildingSite::GetDebugText()
+{
+	return "StandardBuildingSite:";
+}
+
 uint32_t WorkshopBuildingSite::GetSaveType()
 {
 	return GAME_THING_TYPE_WORKSHOP_BUILDING_SITE;
+}
+
+char* WorkshopBuildingSite::GetDebugText()
+{
+	return "WorkshopBuildingSite:";
 }
 
 MultiMapFixed* BuildingSite::GetRootBuilding()

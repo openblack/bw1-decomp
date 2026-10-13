@@ -7,3 +7,8 @@ uint32_t SpellCreature::GetSaveType()
 {
 	return GAME_THING_TYPE_SPELL_CREATURE;
 }
+
+char* SpellCreature::GetDebugText()
+{
+	return "SpellCreature:";
+}

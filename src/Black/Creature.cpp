@@ -200,3 +200,8 @@ bool32_t Creature::IsPosOutsideConfinedArea(const MapCoords& pos)
 	}
 	return false;
 }
+
+char* Creature::GetDebugText()
+{
+	return "Creature:";
+}

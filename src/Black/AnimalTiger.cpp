@@ -25,3 +25,8 @@ Tiger* Tiger::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned 
 	}
 	return tiger;
 }
+
+char* Tiger::GetDebugText()
+{
+	return "Animal: Tiger";
+}

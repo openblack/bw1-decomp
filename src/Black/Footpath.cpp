@@ -50,9 +50,19 @@ uint32_t GFootpath::GetSaveType()
 	return GAME_THING_TYPE_GFOOTPATH;
 }
 
+char* GFootpath::GetDebugText()
+{
+	return "Footpath:";
+}
+
 uint32_t GFootpathFinder::GetSaveType()
 {
 	return GAME_THING_TYPE_GFOOTPATH_FINDER;
+}
+
+char* GFootpathFinder::GetDebugText()
+{
+	return "Footpath pathfinder:";
 }
 
 uint32_t GFootpathLinkSave::GetSaveType()
@@ -60,7 +70,17 @@ uint32_t GFootpathLinkSave::GetSaveType()
 	return GAME_THING_TYPE_GFOOTPATH_LINK_SAVE;
 }
 
+char* GFootpathLinkSave::GetDebugText()
+{
+	return "Footpath link for map save:";
+}
+
 uint32_t GFootpathNode::GetSaveType()
 {
 	return GAME_THING_TYPE_GFOOTPATH_NODE;
+}
+
+char* GFootpathNode::GetDebugText()
+{
+	return "Footpath node:";
 }

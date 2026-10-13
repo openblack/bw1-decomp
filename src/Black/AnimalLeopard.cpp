@@ -31,3 +31,8 @@ Leopard* Leopard::Create(const MapCoords& coords, const GAnimalInfo* info, unsig
 	}
 	return leopard;
 }
+
+char* Leopard::GetDebugText()
+{
+	return "Animal: Leopard";
+}

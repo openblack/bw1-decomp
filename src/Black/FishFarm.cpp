@@ -107,3 +107,8 @@ bool32_t FishFarm::NetworkUnfriendlyEndLockedSelect()
 {
 	return false;
 }
+
+char* FishFarm::GetDebugText()
+{
+	return "FishFarm:";
+}

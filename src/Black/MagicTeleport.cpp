@@ -75,4 +75,9 @@ bool32_t MagicTeleport::IsEffectReceiver(EffectValues* param_1)
 	return false;
 }
 
+char* MagicTeleport::GetDebugText()
+{
+	return "MagicTeleport:";
+}
+
 MagicTeleport::~MagicTeleport() {}

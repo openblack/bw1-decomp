@@ -10,3 +10,8 @@ IMPRESSIVE_TYPE MagicFood::GetImpressiveType()
 {
 	return IMPRESSIVE_TYPE_MAGIC_FOOD;
 }
+
+char* MagicFood::GetDebugText()
+{
+	return "MagicFood:";
+}

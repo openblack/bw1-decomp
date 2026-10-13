@@ -28,6 +28,11 @@ uint32_t Goat::GetSaveType()
 	return GAME_THING_TYPE_GOAT;
 }
 
+char* Goat::GetDebugText()
+{
+	return "Animal: Goat";
+}
+
 uint32_t Horse::GetSaveType()
 {
 	return GAME_THING_TYPE_HORSE;
@@ -51,6 +56,11 @@ uint32_t Tortoise::GetSaveType()
 uint32_t Zebra::GetSaveType()
 {
 	return GAME_THING_TYPE_ZEBRA;
+}
+
+char* Zebra::GetDebugText()
+{
+	return "Animal: Zebra";
 }
 
 uint32_t PieceSheep::GetSaveType()
@@ -86,6 +96,11 @@ PieceSheep* PieceSheep::Create(const MapCoords& coords, const GAnimalInfo* info,
 	return sheep;
 }
 
+char* PieceSheep::GetDebugText()
+{
+	return "Animal: Sheep for Puzzle";
+}
+
 Sheep* Sheep::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
 	Sheep* sheep = new (ANIMAL_COW_FILE, 250) Sheep(coords, info, age);
@@ -108,6 +123,11 @@ Horse* Horse::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned 
 	return horse;
 }
 
+char* Horse::GetDebugText()
+{
+	return "Animal: Horse";
+}
+
 Pig* Pig::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
 	Pig* pig = new (ANIMAL_COW_FILE, 351) Pig(coords, info, age);
@@ -119,6 +139,11 @@ Pig* Pig::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long
 	return pig;
 }
 
+char* Pig::GetDebugText()
+{
+	return "Animal: Pig";
+}
+
 Tortoise* Tortoise::Create(const MapCoords& coords, const GAnimalInfo* info, unsigned long age)
 {
 	Tortoise* tortoise = new (ANIMAL_COW_FILE, 385) Tortoise(coords, info, age);
@@ -128,6 +153,11 @@ Tortoise* Tortoise::Create(const MapCoords& coords, const GAnimalInfo* info, uns
 		tortoise->Game3dObject->SetHumanShadowed(true);
 	}
 	return tortoise;
+}
+
+char* Tortoise::GetDebugText()
+{
+	return "Animal: Tortoise";
 }
 
 bool32_t Cow::IsOkToBeShepherd()
@@ -145,6 +175,11 @@ uint32_t PieceHorse::GetSaveType()
 	return GAME_THING_TYPE_PIECE_SHEEP;
 }
 
+char* PieceHorse::GetDebugText()
+{
+	return "Animal: Horse for Puzzle";
+}
+
 bool32_t PiecePig::DecideWhatToDo()
 {
 	return true;
@@ -155,7 +190,17 @@ uint32_t PiecePig::GetSaveType()
 	return GAME_THING_TYPE_PIECE_SHEEP;
 }
 
+char* PiecePig::GetDebugText()
+{
+	return "Animal: Pig for Puzzle";
+}
+
 uint32_t PieceTortoise::GetSaveType()
 {
 	return GAME_THING_TYPE_PIECE_SHEEP;
+}
+
+char* PieceTortoise::GetDebugText()
+{
+	return "Animal: Tortoise for Puzzle";
 }

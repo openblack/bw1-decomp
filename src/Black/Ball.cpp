@@ -36,3 +36,8 @@ bool32_t Ball::IsToyBall(Creature* param_1)
 {
 	return true;
 }
+
+char* Ball::GetDebugText()
+{
+	return "Ball:";
+}

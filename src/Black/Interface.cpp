@@ -9,3 +9,8 @@ uint32_t GInterface::GetSaveType()
 {
 	return GAME_THING_TYPE_GPLAYER_INTERFACE;
 }
+
+char* GInterface::GetDebugText()
+{
+	return "Interface:";
+}

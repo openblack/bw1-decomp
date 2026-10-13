@@ -30,3 +30,8 @@ void WorshipSpellIcon::AddChantsToSeedOnSeedCreation(SpellSeed* seed)
 {
 	UseCreateChants(seed);
 }
+
+char* WorshipSpellIcon::GetDebugText()
+{
+	return "WorshipSpellIcon:";
+}

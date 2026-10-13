@@ -22,3 +22,8 @@ bool32_t FireFly::IsMoving() const
 {
 	return true;
 }
+
+char* FireFly::GetDebugText()
+{
+	return "FireFly:";
+}
