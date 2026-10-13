@@ -172,16 +172,10 @@ bool32_t Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE resourceType, un
 			Object*   pot = (Object*)GetTown()->GetTemporaryResourceStorePotOrPos(Pos, storePos, resourceType);
 			if (pot != NULL)
 			{
-				LHPoint       edgePos = pot->GetNearestEdgeOfObject(this);
-				LH3DMapCoords lh3dCoords;
-				storePos.x = (int)(edgePos.x * 6553.6f);
-				storePos.z = (int)(edgePos.z * 6553.6f);
-				float fixedX = edgePos.x * 65536.0f;
-				float fixedZ = edgePos.z * 65536.0f;
-				lh3dCoords.x = (int)(fixedX * 0.1f);
-				lh3dCoords.z = (int)(fixedZ * 0.1f);
-				lh3dCoords.altitude = 0.0f;
-				storePos.altitude = edgePos.y - LH3DIsland::GetAltitude(lh3dCoords);
+				LHPoint edgePos = pot->GetNearestEdgeOfObject(this);
+				storePos.SetX(edgePos.x);
+				storePos.SetZ(edgePos.z);
+				storePos.altitude = edgePos.y - LH3DIsland::GetAltitude(LH3DMapCoords(edgePos.x, edgePos.z));
 				if (AreWeThere(storePos, 0.0f))
 				{
 					pot->RemoveResource(resourceType, amount, NULL, NULL);

@@ -13,10 +13,11 @@ int DanceGroup::NextUntitledNumber = 1;
 
 #include <Lionhead/LH3DLib/development/LH3DMath.h> /* For LHSinTable, PI_F, HALF_PI_F, TWO_PI */
 
-#include "GameOSFile.h"   /* For class GameOSFile */
-#include "Living.h"       /* For class Living */
-#include "Utils.h"        /* For class GUtils */
-#include "VillagerInfo.h" /* For class GVillagerInfo */
+#include "GameOSFile.h"      /* For class GameOSFile */
+#include "Living.h"          /* For class Living */
+#include "MapCoordsMeters.h" /* For MapCoords::MetersX */
+#include "Utils.h"           /* For class GUtils */
+#include "VillagerInfo.h"    /* For class GVillagerInfo */
 
 DanceEditState::DanceEditState() {}
 
@@ -187,11 +188,11 @@ DancePos DanceGroup::InterpolatedShapePosition(unsigned long shape, float positi
 void DanceGroup::RotateMapCoordsByAngle(MapCoords* coords, float angle)
 {
 	DancePos point;
-	point.x = (float)coords->x * MetresPerMapCell / MAP_COORDS_UNITS_PER_CELL;
-	point.z = (float)coords->z * MetresPerMapCell / MAP_COORDS_UNITS_PER_CELL;
+	point.x = coords->MetersX();
+	point.z = coords->MetersZ();
 	DancePos rotated = RotatePointByAngle(point, angle);
-	coords->x = (int32_t)(rotated.x * MAP_COORDS_UNITS_PER_CELL / MetresPerMapCell);
-	coords->z = (int32_t)(rotated.z * MAP_COORDS_UNITS_PER_CELL / MetresPerMapCell);
+	coords->SetMetersX(rotated.x);
+	coords->SetMetersZ(rotated.z);
 }
 
 DancePos DanceGroup::RotatePointByAngle(DancePos& point, float angle)

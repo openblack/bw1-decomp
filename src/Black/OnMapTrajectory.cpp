@@ -46,8 +46,8 @@ void Villager::CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos
 	GLandscape::ConvertMapCoordToLandscapePoint(coords, *outPos);
 	if (!GVillagerStateTableInfo::Infos[action.states[LIVING_ACTION_INDEX_TOP]].isFinalState)
 	{
-		float stepX = step.x * MetresPerMapCell / (float)0x10000;
-		float stepZ = step.z * MetresPerMapCell / (float)0x10000;
+		float stepX = step.x * MetresPerMapCell / MAP_COORDS_UNITS_PER_CELL;
+		float stepZ = step.z * MetresPerMapCell / MAP_COORDS_UNITS_PER_CELL;
 		outPos->x += stepX * (uint32_t)(seconds * GGameInfo::Info.NumGameTicksPerSecond());
 		outPos->z += stepZ * (uint32_t)(seconds * GGameInfo::Info.NumGameTicksPerSecond());
 	}

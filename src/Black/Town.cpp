@@ -928,22 +928,22 @@ void Town::SetTownArea(Object* object)
 	float minX = object->Pos.MetersX() - object->GetRadius();
 	if (minX < AreaMin.MetersX())
 	{
-		AreaMin.SetWholeX((long)(minX * (float)0x10000 / MetresPerMapCell));
+		AreaMin.SetMetersX(minX);
 	}
 	float maxX = object->Pos.MetersX() + object->GetRadius();
 	if (maxX > AreaMax.MetersX())
 	{
-		AreaMax.SetWholeX((long)(maxX * (float)0x10000 / MetresPerMapCell));
+		AreaMax.SetMetersX(maxX);
 	}
 	float minZ = object->Pos.MetersZ() - object->GetRadius();
 	if (minZ < AreaMin.MetersZ())
 	{
-		AreaMin.SetWholeZ((long)(minZ * (float)0x10000 / MetresPerMapCell));
+		AreaMin.SetMetersZ(minZ);
 	}
 	float maxZ = object->Pos.MetersZ() + object->GetRadius();
 	if (maxZ > AreaMax.MetersZ())
 	{
-		AreaMax.SetWholeZ((long)(maxZ * (float)0x10000 / MetresPerMapCell));
+		AreaMax.SetMetersZ(maxZ);
 	}
 }
 

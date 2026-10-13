@@ -49,6 +49,7 @@
 #include "LandFeature.h"
 #include "Landscape.h"
 #include "Map.h"
+#include "MapCoordsMeters.h"
 #include "PhysicsObject.h"
 #include "PhysicsSaveInfo.h"
 #include "Player.h"
@@ -413,9 +414,7 @@ void Object::Create3DObjectAtPos()
 	const MapCoords& pos = Pos;
 	LH3DObject*      object3d = Game3dObject;
 	LHPoint          position;
-	position.x = pos.WholeX() * (10.0f / (float)0x10000);
-	position.z = pos.WholeZ() * (10.0f / (float)0x10000);
-	position.y = pos.Altitude();
+	GLandscape::ConvertAbsoluteMapCoordToLandscapePoint(pos, position);
 	position.y += LH3DIsland::GetAltitudeAndSetColorSpecular(pos, (unsigned long*)&object3d->color,
 	                                                         (unsigned long*)&object3d->specular);
 	object3d->LH3DObject::SetPosition(position, 0.0f, 1.0f);
@@ -444,9 +443,7 @@ LHPoint Object::GetNearestEdgeOfObject(Object* object)
 {
 	MapCoords coords = GetNearestPosOfObject(object);
 	LHPoint   point;
-	point.y = coords.Altitude() + LH3DIsland::GetAltitude(coords);
-	point.x = coords.WholeX() * (10.0f / (float)0x10000);
-	point.z = coords.WholeZ() * (10.0f / (float)0x10000);
+	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
 	return point;
 }
 
@@ -794,9 +791,7 @@ void Object::GetBoundingSphere(LHPoint& center, float& radius)
 	float radius2D = Get2DRadius();
 	radius = (float)sqrt(radius2D * radius2D + halfHeight * halfHeight);
 	const MapCoords& pos = Pos;
-	center.y = pos.Altitude() + LH3DIsland::GetAltitude(pos);
-	center.x = pos.WholeX() * (10.0f / (float)0x10000);
-	center.z = pos.WholeZ() * (10.0f / (float)0x10000);
+	GLandscape::ConvertMapCoordToLandscapePoint(pos, center);
 	center.y = center.y + halfHeight;
 }
 
@@ -1041,22 +1036,22 @@ bool32_t Object::IsTouching(const MapCoords& coords)
 
 bool32_t Object::IsTouching(const MapCoords& corner1, const MapCoords& corner2)
 {
-	float x1 = corner1.WholeX() * MetresPerMapCell * (1.0f / (float)0x10000);
-	float x2 = corner2.WholeX() * MetresPerMapCell * (1.0f / (float)0x10000);
+	float x1 = corner1.MetersX();
+	float x2 = corner2.MetersX();
 	float minX = min(x1, x2);
-	float z1 = corner1.WholeZ() * MetresPerMapCell * (1.0f / (float)0x10000);
-	float z2 = corner2.WholeZ() * MetresPerMapCell * (1.0f / (float)0x10000);
+	float z1 = corner1.MetersZ();
+	float z2 = corner2.MetersZ();
 	float minZ = min(z1, z2);
 	float maxX = max(x1, x2);
 	float maxZ = max(z1, z2);
 
 	float radius = Get2DRadius();
-	float myX = Pos.WholeX() * MetresPerMapCell * (1.0f / (float)0x10000);
+	float myX = Pos.MetersX();
 	if (myX + radius < minX || myX - radius > maxX)
 	{
 		return false;
 	}
-	float myZ = Pos.WholeZ() * MetresPerMapCell * (1.0f / (float)0x10000);
+	float myZ = Pos.MetersZ();
 	if (myZ + radius < minZ || myZ - radius > maxZ)
 	{
 		return false;
@@ -1579,9 +1574,7 @@ void Object::DrawValue(int param_1, float param_2)
 	{
 		const MapCoords& pos = Pos;
 		LHPoint          point;
-		point.y = pos.Altitude() + LH3DIsland::GetAltitude(pos);
-		point.x = pos.WholeX() * (10.0f / (float)0x10000);
-		point.z = pos.WholeZ() * (10.0f / (float)0x10000);
+		GLandscape::ConvertMapCoordToLandscapePoint(pos, point);
 		point.y += GetHeight();
 		if (GGame::g_game->GameFlags & GAME_FLAG_DRAW_VALUE_SPINNERS)
 		{

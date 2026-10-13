@@ -954,14 +954,14 @@ float MobileWallHug::GetDefaultSpeedInMetresPerSecond()
 
 void MapCoordsToPoint2D(Point2D& point, const MapCoords& coords)
 {
-	point.x = coords.x * (10.0f / (float)0x10000);
-	point.y = coords.z * (10.0f / (float)0x10000);
+	point.x = coords.x * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
+	point.y = coords.z * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
 }
 
 void WholeXZToPoint2D(Point2D& point, long x, long z)
 {
-	point.x = x * (10.0f / (float)0x10000);
-	point.y = z * (10.0f / (float)0x10000);
+	point.x = x * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
+	point.y = z * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
 }
 
 template <> Point2D Point2DCompare<false>::origin;
