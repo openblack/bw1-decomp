@@ -13,3 +13,9 @@ char* PlannedWorshipSite::GetDebugText()
 {
 	return "PlannedWorshipSite:";
 }
+
+GBaseInfo* GWorshipSiteInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = WORSHIP_SITE_INFO_LAST;
+	return Infos;
+}

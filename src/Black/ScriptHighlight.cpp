@@ -97,3 +97,9 @@ char* ScriptHighlight::GetDebugText()
 {
 	return "ScriptHighlight:";
 }
+
+GBaseInfo* GScriptHighlightInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = SCRIPT_HIGHLIGHT_INFO_LAST;
+	return Infos;
+}

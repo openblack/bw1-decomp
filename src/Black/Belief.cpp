@@ -16,3 +16,9 @@ void GBelief::SetBeliefInPlayerCap(GPlayer* player, float cap)
 {
 	BeliefInPlayerMax[player->GetPlayerNumber()] = cap;
 }
+
+GBaseInfo* GBeliefInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = 1;
+	return &Info;
+}

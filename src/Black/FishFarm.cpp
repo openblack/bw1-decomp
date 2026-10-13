@@ -1,5 +1,6 @@
 #include "GameTimeConstants.h"
 #include "FishFarm.h"
+#include "FishFarmInfo.h"
 
 uint32_t FishFarm::GetSaveType()
 {
@@ -111,4 +112,10 @@ bool32_t FishFarm::NetworkUnfriendlyEndLockedSelect()
 char* FishFarm::GetDebugText()
 {
 	return "FishFarm:";
+}
+
+GBaseInfo* GFishFarmInfo::GetBaseInfo(uint32_t& info_count)
+{
+	info_count = FISH_FARM_INFO_LAST;
+	return Infos;
 }
