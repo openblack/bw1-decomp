@@ -7,6 +7,8 @@
 #include "Creature.h" /* For CREATURE_HEIGHT_LAST */
 #include "Forest.h"   /* For FOREST_SIZE_LAST */
 
+#include <stdio.h> /* For sprintf */
+
 #include <chlasm/Enum.h> /* For ABODE_TYPE_LAST, SEX_TYPE_LAST, TRIBE_TYPE_LAST */
 
 #include "ColourConstants.h" /* For White */
@@ -107,7 +109,33 @@ char AttributeAbodeBeingBuilt::ValueNames[ABODE_BEING_BUILT_LAST][64] = {
 	"IsNotBeingBuilt",
 };
 
-char AttributeOnFire::ValueNames[2][64] = {
+char AttributeOnFire::ValueNames[ON_FIRE_LAST][64] = {
 	"IsOnFire",
 	"IsNotOnFire",
 };
+
+const char* AttributeCreatureSpellKnowledge::ValueName(unsigned long value)
+{
+	static char text[256];
+	sprintf(text, "%d", value);
+	return text;
+}
+
+const char* AttributePlayerNumber::ValueName(unsigned long value)
+{
+	static char text[256];
+	sprintf(text, "%d", value);
+	return text;
+}
+
+const char* AttributeIsHarderThanMe::ValueName(unsigned long value)
+{
+	return value == ATTRIBUTE_BOOL_TRUE ? "true" : "false";
+}
+
+const char* AttributeCreatureType::ValueName(unsigned long value)
+{
+	static char text[256];
+	sprintf(text, "%d", value);
+	return text;
+}
