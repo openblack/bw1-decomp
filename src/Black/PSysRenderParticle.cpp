@@ -8,6 +8,7 @@
 #include "Particle3DObj.h"
 #include "Particle3DAnim.h"
 #include "ParticleLightMap.h"
+#include "Particle3DObjAnimTextured.h"
 
 uint32_t Chain::GetSaveType()
 {
@@ -87,3 +88,7 @@ char* DrawOffsetDecay::GetDebugText()
 {
 	return PSYS_DEBUG_TEXT;
 }
+
+Particle3DObjAnimTextured::~Particle3DObjAnimTextured() {}
+
+RenderParticleGJMeshRotatingUV::~RenderParticleGJMeshRotatingUV() {}

@@ -1960,4 +1960,6 @@ const char* MissionaryControl::GetText()
 	return "MissionaryControl";
 }
 
+MissionaryControl::~MissionaryControl() {}
+
 void Villager::WallhugValidate() {}

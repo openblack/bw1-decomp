@@ -14,3 +14,5 @@ const char* WayPoint::GetText()
 {
 	return "WayPoint";
 }
+
+WayPoint::~WayPoint() {}

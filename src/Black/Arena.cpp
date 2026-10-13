@@ -41,3 +41,5 @@ bool32_t ArenaSpellIcon::IsEffectReceiver(EffectValues* effect)
 {
 	return false;
 }
+
+ArenaSpellIcon::~ArenaSpellIcon() {}

@@ -14,3 +14,5 @@ char* FireEffect::GetDebugText()
 {
 	return "SpreadEffect:";
 }
+
+FireEffect::~FireEffect() {}

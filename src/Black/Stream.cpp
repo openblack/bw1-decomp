@@ -18,4 +18,6 @@ uint32_t GWaterfall::Load(GameOSFile& file)
 	return 1;
 }
 
+GWaterfall::~GWaterfall() {}
+
 void GWaterfall::CallVirtualFunctionsForCreation(const MapCoords&) {}

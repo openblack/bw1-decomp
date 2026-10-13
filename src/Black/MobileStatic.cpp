@@ -31,6 +31,8 @@ bool MobileStatic::ChecksVerticesVObjects()
 	return true;
 }
 
+MobileStatic::~MobileStatic() {}
+
 GBaseOnly* GBaseOnly::Create(const MapCoords& coords, const GObjectInfo* info)
 {
 	GBaseOnly* base = new (MOBILE_STATIC_FILE, 583) GBaseOnly(coords, info);

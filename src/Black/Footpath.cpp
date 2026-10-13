@@ -57,6 +57,8 @@ char* GFootpath::GetDebugText()
 	return "Footpath:";
 }
 
+GFootpath::~GFootpath() {}
+
 uint32_t GFootpathFinder::GetSaveType()
 {
 	return GAME_THING_TYPE_GFOOTPATH_FINDER;
