@@ -445,13 +445,14 @@ Black/CreatureMental.cpp:
 	.rdata      start:0x008BF870 end:0x008BF994
 	.CRT$XCU    start:0x009B631C end:0x009B633C align:4
 	.data       start:0x009CCEF4 end:0x00BCE034
-	.bss        start:0x00C71D78 end:0x00C731C0
+	.bss        start:0x00C71D78 end:0x00C71FF0
 
 Black/CreatureMentalAttributeTest.cpp:
-	.text       start:0x004D2E70 end:0x004D63B0
+	.text       start:0x004D2E40 end:0x004D63B0
 	.rdata      start:0x008BF994 end:0x008BFDA4
-	.CRT$XCU    start:0x009B6340 end:0x009B6344 align:4
+	.CRT$XCU    start:0x009B633C end:0x009B6344 align:4
 	.data       start:0x00BCE050 end:0x00BCE9A4
+	.bss        start:0x00C71FF0 end:0x00C731C8
 
 Black/CreatureMentalBelief.cpp:
 	.text       start:0x004D63E0 end:0x004D79E0

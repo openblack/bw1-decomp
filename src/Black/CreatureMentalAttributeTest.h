@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
+#include <string.h> /* For strcpy */
 
 #include <re_common.h>                          /* For ARRAY_SIZE, bool32_t */
 #include <chlasm/CreatureEnum.h>                /* For enum ATTRIBUTE_TYPE, enum CREATURE_ACTION */
@@ -78,12 +79,32 @@ enum ATTRIBUTE_BOOL
 	ATTRIBUTE_BOOL_LAST
 };
 
+class Attribute;
 class CreatureBelief;
 class GameThingWithPos;
 class GPlayer;
 
+struct AttributeArrayEntry
+{
+	Attribute* Instance;
+	char       Name[64];
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeArrayEntry(Attribute* instance, const char* name)
+	{
+		Instance = instance;
+		strcpy(Name, name);
+	}
+};
+
 struct AttributeTest
 {
+	// Static members
+
+	static AttributeArrayEntry* AttributeArray[ATTRIBUTE_TYPE_LAST];
+
 	// BW1W120 004d52b0 BW1M119 012526c0
 	static void CreateAttributeArray();
 	// BW1W120 004d60e0 BW1M119 01252570
@@ -179,11 +200,6 @@ class Attribute : public Base
 public:
 	/* 0x8 */ uint32_t Value;
 
-	// Override methods
-
-	// BW1W120 004cb750 BW1M119 012412e0
-	virtual ~Attribute();
-
 	// Virtual methods
 
 	// BW1W120 004cb6f0 BW1M119 01243290
@@ -221,8 +237,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d6090 BW1M119 0124e390
-	virtual ~AttributeAbodeBeingBuilt();
 	// BW1W120 004d6050 BW1M119 0124e490
 	virtual const char* TypeName();
 	// BW1W120 004d6060 BW1M119 0124c4d0
@@ -253,8 +267,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d6020 BW1M119 0124e570
-	virtual ~AttributeAbodeType();
 	// BW1W120 004d5fe0 BW1M119 0124e650
 	virtual const char* TypeName();
 	// BW1W120 004d5ff0 BW1M119 0124c610
@@ -285,8 +297,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cb7c0 BW1M119 012501e0
-	virtual ~AttributeAllegiance();
 	// BW1W120 004cb780 BW1M119 012502c0
 	virtual const char* TypeName();
 	// BW1W120 004cb790 BW1M119 0124deb0
@@ -313,8 +323,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cb8b0 BW1M119 0124fe80
-	virtual ~AttributeAnimate();
 	// BW1W120 004cb860 BW1M119 0124ff60
 	virtual const char* TypeName();
 	// BW1W120 004cb870 BW1M119 0124dc60
@@ -341,8 +349,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d5da0 BW1M119 0124f2e0
-	virtual ~AttributeCreatureDominantDesire();
 	// BW1W120 004d5d70 BW1M119 0124f3e0
 	virtual const char* TypeName();
 	// BW1W120 004d5d80 BW1M119 0124d290
@@ -373,8 +379,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d5e10 BW1M119 0124f110
-	virtual ~AttributeCreatureHeight();
 	// BW1W120 004d5dd0 BW1M119 0124f200
 	virtual const char* TypeName();
 	// BW1W120 004d5de0 BW1M119 0124d0b0
@@ -401,8 +405,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d5e70 BW1M119 0124ef70
-	virtual ~AttributeCreatureSpellKnowledge();
 	// BW1W120 004d5e40 BW1M119 0124f070
 	virtual const char* TypeName();
 	// BW1W120 004d5e50 BW1M119 0124cf20
@@ -429,8 +431,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cbbe0 BW1M119 0124bb90
-	virtual ~AttributeCreatureType();
 	// BW1W120 004cbbb0 BW1M119 0124bc70
 	virtual const char* TypeName();
 	// BW1W120 004cbbc0 BW1M119 0124bcb0
@@ -457,8 +457,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d5ed0 BW1M119 0124edd0
-	virtual ~AttributeCreatureWhatHeIsCarrying();
 	// BW1W120 004d5ea0 BW1M119 0124eed0
 	virtual const char* TypeName();
 	// BW1W120 004d5eb0 BW1M119 0124cd40
@@ -489,8 +487,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d5f40 BW1M119 0124ec20
-	virtual ~AttributeForestSize();
 	// BW1W120 004d5f00 BW1M119 0124ed00
 	virtual const char* TypeName();
 	// BW1W120 004d5f10 BW1M119 0124cb90
@@ -517,8 +513,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cbb80 BW1M119 0124def0
-	virtual ~AttributeIsHarderThanMe();
 	// BW1W120 004cbb50 BW1M119 0124dfe0
 	virtual const char* TypeName();
 	// BW1W120 004cbb60 BW1M119 0124c070
@@ -549,8 +543,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cb980 BW1M119 0124fb80
-	virtual ~AttributeLife();
 	// BW1W120 004cb940 BW1M119 0124fc60
 	virtual const char* TypeName();
 	// BW1W120 004cb950 BW1M119 0124da00
@@ -581,8 +573,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004d5fb0 BW1M119 0124e720
-	virtual ~AttributeMobileObjectType();
 	// BW1W120 004d5f70 BW1M119 0124e820
 	virtual const char* TypeName();
 	// BW1W120 004d5f80 BW1M119 0124c750
@@ -613,8 +603,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cbac0 BW1M119 0124e1e0
-	virtual ~AttributeOnFire();
 	// BW1W120 004cba80 BW1M119 0124e2c0
 	virtual const char* TypeName();
 	// BW1W120 004cba90 BW1M119 0124c380
@@ -645,8 +633,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cb830 BW1M119 01250030
-	virtual ~AttributeOrigin();
 	// BW1W120 004cb7f0 BW1M119 01250110
 	virtual const char* TypeName();
 	// BW1W120 004cb800 BW1M119 0124dd70
@@ -673,8 +659,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cbb20 BW1M119 0124e070
-	virtual ~AttributePlayerNumber();
 	// BW1W120 004cbaf0 BW1M119 0124e150
 	virtual const char* TypeName();
 	// BW1W120 004cbb00 BW1M119 0124c250
@@ -705,8 +689,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cba50 BW1M119 0124e910
-	virtual ~AttributeSex();
 	// BW1W120 004cba10 BW1M119 0124e9f0
 	virtual const char* TypeName();
 	// BW1W120 004cba20 BW1M119 0124c880
@@ -737,8 +719,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cd710 BW1M119 0124f7d0
-	virtual ~AttributeTownReligiousBeliefInYou();
 	// BW1W120 004cd6d0 BW1M119 0124f8d0
 	virtual const char* TypeName();
 	// BW1W120 004cd6e0 BW1M119 0124d770
@@ -769,8 +749,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cd7e0 BW1M119 0124f480
-	virtual ~AttributeTownSize();
 	// BW1W120 004cd7a0 BW1M119 0124f560
 	virtual const char* TypeName();
 	// BW1W120 004cd7b0 BW1M119 0124d3f0
@@ -801,8 +779,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cd6a0 BW1M119 0124f9d0
-	virtual ~AttributeTribe();
 	// BW1W120 004cd660 BW1M119 0124fab0
 	virtual const char* TypeName();
 	// BW1W120 004cd670 BW1M119 0124d8a0
@@ -829,8 +805,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cb910 BW1M119 0124fd20
-	virtual ~AttributeType();
 	// BW1W120 004cb8e0 BW1M119 0124fe00
 	virtual const char* TypeName();
 	// BW1W120 004cb8f0 BW1M119 0124db50
@@ -857,8 +831,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cb9e0 BW1M119 0124eab0
-	virtual ~AttributeVillagerJob();
 	// BW1W120 004cb9b0 BW1M119 0124eb90
 	virtual const char* TypeName();
 	// BW1W120 004cb9c0 BW1M119 0124ca10
@@ -885,8 +857,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004cd770 BW1M119 0124f630
-	virtual ~AttributeWhatTownNeedsMost();
 	// BW1W120 004cd740 BW1M119 0124f730
 	virtual const char* TypeName();
 	// BW1W120 004cd750 BW1M119 0124d5a0
