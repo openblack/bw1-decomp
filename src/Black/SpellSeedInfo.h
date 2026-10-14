@@ -49,6 +49,8 @@ public:
 	static SPELL_SEED_TYPE GetInfoFromMagicType(MAGIC_TYPE magic_type);
 	// BW1W120 0072b100 BW1M119 01535bf0
 	static GESTURE_TYPE GetFirstGestureForMagicType(MAGIC_TYPE magic_type, POWER_UP_TYPE* power_up);
+	// BW1W120 0072b200 BW1M119 01535660
+	static SPELL_SEED_TYPE GetTypeFromInfo(const GSpellSeedInfo* info);
 
 	// Non-virtual methods
 

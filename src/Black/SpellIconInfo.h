@@ -18,7 +18,7 @@ class GSpellIconInfo : public GMultiMapFixedInfo
 public:
 	uint32_t field_0x120;
 	uint32_t field_0x124;
-	uint32_t field_0x128;
+	float    GatheringChantAddPerGameTurn;
 
 	// Override methods
 
@@ -41,7 +41,7 @@ public:
 
 	// TODO(#377): The original declared this class in SpellIcon.h.
 	// Out of line: LoadBinary at 0042f4e0, Load at 0042f440.
-	INFO_DATA_BLOCK(field_0x120, field_0x128)
+	INFO_DATA_BLOCK(field_0x120, GatheringChantAddPerGameTurn)
 	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "SpellIcon.h", 26)
 };
 

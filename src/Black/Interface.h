@@ -144,6 +144,8 @@ public:
 	void SendObjectDrawCollision(Object* object, float distance, LH3DObject* lh3d_object);
 	// BW1W120 005ced10 BW1M119 013629e0
 	Object* GetInteractObject();
+	// BW1W120 005da6f0 BW1M119 01371930
+	void PlaceObjectInMagicHand(Object* object);
 	// BW1W120 00519960 BW1M119 010261b0
 	static void SendInvisibleDrawCollision(Object* object, LHPoint* pos, float radius);
 
