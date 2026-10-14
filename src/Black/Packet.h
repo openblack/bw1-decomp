@@ -7,8 +7,6 @@
 #include "GestureSystemPacketData.h"
 #include "MusicMood.h"
 
-// Original enum types from Mac symbols. Original enumerator names are
-// unrecovered; the declared values are named after the code that sends them.
 enum PACKET_TYPE
 {
 	PACKET_TYPE_SPEECH = 0x48,

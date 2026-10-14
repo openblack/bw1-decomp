@@ -21,6 +21,8 @@
 #include "MapCoords.h"         /* For struct MapCoords */
 #include "MobileObject.h"      /* For struct MobileObject */
 
+#define CREATURE_LEASH_SLOT_COUNT 4
+
 // Forward Declares
 
 enum CREATURE_HEIGHT
@@ -217,7 +219,7 @@ public:
 	uint32_t                              LastImpressiveDanceTurn;
 	uint32_t                              LastImpressiveDanceType;
 	uint32_t                              field_0x1104;
-	uint32_t                              LeashEnabled[LEASH_TYPE_LAST + 1]; /* indexed by LEASH_TYPE, [0] unused */
+	uint32_t                              LeashEnabled[CREATURE_LEASH_SLOT_COUNT];
 	uint32_t                              field_0x1118;
 	uint32_t                              field_0x111c;
 	uint32_t                              field_0x1120;

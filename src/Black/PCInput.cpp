@@ -443,7 +443,7 @@ uint32_t GGame::DoAction(unsigned long param_1)
 		if (!(g_game->help_system->WideScreen && g_game->help_system->GetWideScreenControl()))
 		{
 			uint32_t flags = g_game->GameFlags;
-			g_game->GameFlags = flags ^ ((~flags ^ flags) & GAME_FLAG_UNKNOWN_0x20000);
+			g_game->GameFlags = flags ^ ((~flags ^ flags) & GAME_FLAG_SHOW_VILLAGER_NAMES);
 			return true;
 		}
 	case BINDABLE_ACTION_SHOW_VILLAGER_DETAILS:

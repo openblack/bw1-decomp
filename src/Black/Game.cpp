@@ -340,7 +340,7 @@ bool32_t GGame::Init()
 	if (Enum0x25017c == 0 && !GameOSFile::IsAutoSaveValid())
 		Enum0x25017c = 1;
 	SkirmishGame = false;
-	GameOverStarted = 0;
+	GameOverStarted = false;
 	field_0x205a14 = 0;
 	switch (Enum0x25017c)
 	{
@@ -822,7 +822,7 @@ uint32_t GGame::InitOneTimeOnly()
 	RenderLoadingFrame("...Finished PSysGlobal");
 	dialog_box_options = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x1025) DialogBoxOptions;
 	dialog_box_options->Init(780, 500, DialogBoxOptions::ControlCallback);
-	dialog_box_options->setup_box->AllowKeysInCitadel = 1;
+	dialog_box_options->setup_box->AllowKeysInCitadel = true;
 	dialog_box_key_binding = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102a) DialogBoxKeyBinding;
 	dialog_box_key_binding->Init(780, 500, DialogBoxKeyBinding::ControlCallback);
 	dialog_box_save_message = new ("C:\\dev\\MP\\Black\\Game.cpp", 0x102e) DialogBoxSaveMessage;
@@ -1177,7 +1177,7 @@ void GGame::ClearVariables()
 	field_0x2502e4 = NULL;
 	GameFlags = GAME_FLAG_UNKNOWN_0x20;
 	SkirmishGame = false;
-	GameOverStarted = 0;
+	GameOverStarted = false;
 	field_0x205a14 = 0;
 	LastSaveTurn = 0;
 	LastLoadTurn = 0;
@@ -1305,8 +1305,8 @@ void GGame::ClearMap()
 {
 	LHResetFPU();
 	g_game->GameFlags |= GAME_FLAG_CLEARING_MAP;
-	GameFlags &= ~(GAME_FLAG_UNKNOWN_0x20000 | GAME_FLAG_SHOW_VILLAGER_INFO);
-	GameOverStarted = 0;
+	GameFlags &= ~(GAME_FLAG_SHOW_VILLAGER_NAMES | GAME_FLAG_SHOW_VILLAGER_INFO);
+	GameOverStarted = false;
 	field_0x205a14 = 0;
 	SuperVillager* superVillager = SuperVillager::g_first;
 	while (superVillager != NULL)
@@ -2322,7 +2322,7 @@ void GGame::Process3dEngine()
 				CameraModeNew3::ForceField->Update((int)LH3DTech::g_game_time_inc * 0.001f);
 				CameraModeNew3::ForceField->DoTheDrawing(CameraModeNew3::ForceFieldMaterial);
 			}
-			float target = (GameFlags & GAME_FLAG_UNKNOWN_0x20000) ? 1.0f : 0.0f;
+			float target = (GameFlags & GAME_FLAG_SHOW_VILLAGER_NAMES) ? 1.0f : 0.0f;
 			float step = (int)LH3DTech::g_game_time_inc * 0.003f;
 			if (field_0x59b0 < target)
 			{
@@ -2583,7 +2583,7 @@ void GGame::EndTurn()
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->heart.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->GetCitadelHeart()->field_0xb8 != 0)
 	{
-		GameOverStarted = 1;
+		GameOverStarted = true;
 		g_game->script->StartScript("GameOver");
 	}
 	uint32_t interval = GameStats::UpdateInterval;

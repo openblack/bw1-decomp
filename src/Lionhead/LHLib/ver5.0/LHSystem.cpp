@@ -283,13 +283,13 @@ void MouseMoveHandler(int hwnd, int lparam, int msg_time)
 	pos.y = (short)HIWORD(lparam);
 	if (LHSys::GetMouse().ImageMode == 4)
 		SetCursor(LHSys::TheSystem.ArrowCursor);
-	else if (LHSys::GetMouse().ImageMode == 2)
+	else if (LHSys::GetMouse().ImageMode == LH_MOUSE_IMAGE_TYPE_ARROW)
 		SetCursor(LHSys::TheSystem.ArrowCursor);
 	else
 		SetCursor(NULL);
 	LHSys::GetMouse().UpdateCurrentPos(pos);
 	LHSys::GetMouse().DoubleBuffered = 1;
-	LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_0x4);
+	LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_MOVE);
 }
 
 // Reset all key-down state and the modifier flags.
@@ -689,7 +689,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 	case WM_RBUTTONDOWN:
 		SetCapture(hWnd);
 		LHSys::GetMouse().SetButtons(2);
-		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_BUTTON);
 		break;
 	case WM_LBUTTONDBLCLK:
 		LHSys::GetMouse().SetButtons(0x10);
@@ -699,7 +699,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 		LHSys::GetMouse().SetButtons(1);
 		if (LHSys::GetMouse().AnimType != 1 && LHSys::GetMouse().AnimType != 2)
 		{
-			LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+			LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_BUTTON);
 			break;
 		}
 		KillTimer(hWnd, 1);
@@ -709,24 +709,24 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 		LHSys::GetMouse().AnimReverse = 0;
 		// fall through to the shared Draw(1,2)
 	case WM_TIMER:
-		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)2);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_TIMER);
 		break;
 	case WM_LBUTTONUP:
 		LHSys::GetMouse().SetButtons(4);
-		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_BUTTON);
 		if ((LHSys::GetMouse().Buttons & 0x42) == 0)
 			ReleaseCapture();
 		break;
 	case WM_RBUTTONUP:
 		LHSys::GetMouse().SetButtons(8);
-		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_BUTTON);
 		if ((LHSys::GetMouse().Buttons & 0x41) == 0)
 			ReleaseCapture();
 		break;
 	case WM_MBUTTONDOWN:
 		SetCapture(hWnd);
 		LHSys::GetMouse().SetButtons(0x40);
-		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_BUTTON);
 		break;
 	case WM_MBUTTONDBLCLK:
 		LHSys::GetMouse().SetButtons(0);
@@ -736,7 +736,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 		break;
 	case WM_MBUTTONUP:
 		LHSys::GetMouse().SetButtons(0x80);
-		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, (LH_MOUSE_EVENT_TYPE)64);
+		LHSys::GetMouse().Draw((LH_SCREEN_BUFFER)1, LH_MOUSE_EVENT_TYPE_BUTTON);
 		if ((LHSys::GetMouse().Buttons & 3) == 0)
 			ReleaseCapture();
 		break;
@@ -764,7 +764,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 			LeaveCriticalSection(&LHScreen::CriticalSection);
 		}
 		break;
-	case WM_APP + 5:
+	case WM_LH_MOUSE_START_TIMER:
 		KillTimer(hWnd, 1);
 		SetTimer(hWnd, 1, (unsigned short)LHSys::GetMouse().AnimParam, 0);
 		break;
@@ -785,7 +785,7 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 		// TODO: identify the WM_USER+1 receiver type; binary dispatches vtable slot 20 here.
 		(*(WindowMessageHandler*)(*(int*)wParam + 80))(wParam, hWnd, lParam);
 		break;
-	case WM_APP + 6:
+	case WM_LH_MOUSE_STOP_TIMER:
 		KillTimer(hWnd, 1);
 		break;
 	case WM_APP + 9:
@@ -808,10 +808,10 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 			MouseMoveHandler((int)hWnd, lParam, GetMessageTime());
 		}
 		break;
-	case WM_APP + 7:
+	case WM_LH_MOUSE_SET_CURSOR:
 		if (LHSys::GetMouse().ImageMode == 4)
 			SetCursor(LHSys::TheSystem.ArrowCursor);
-		else if (LHSys::GetMouse().ImageMode == 2)
+		else if (LHSys::GetMouse().ImageMode == LH_MOUSE_IMAGE_TYPE_ARROW)
 			SetCursor(LHSys::TheSystem.ArrowCursor);
 		else
 			SetCursor(NULL);
@@ -856,7 +856,7 @@ int LHSurface::CopyRegionFromScreen(LHRegion* region, LHCoord* pos, int from_pri
 	{
 		surface = LHSys::GetScreen().PBackSurface;
 	}
-	return CopySurface(region, &coord, surface, LH_COPY_DIRECTION_0x0, 0);
+	return CopySurface(region, &coord, surface, LH_COPY_DIRECTION_FROM_SURFACE, 0);
 }
 
 static int GetCursorPosClient(int param_1, POINT* point)

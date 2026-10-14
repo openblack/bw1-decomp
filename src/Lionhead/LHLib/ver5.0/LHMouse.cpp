@@ -21,6 +21,14 @@
 
 #define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHMouse.cpp"
 
+#define LH_MOUSE_WINDOWS_CURSOR_TYPES                                                                                  \
+	(LH_MOUSE_IMAGE_TYPE_HIDDEN | LH_MOUSE_IMAGE_TYPE_ARROW | LH_MOUSE_IMAGE_TYPE_0x04)
+#define LH_MOUSE_CALLBACK_EVENT_TYPES                                                                                  \
+	(LH_MOUSE_EVENT_TYPE_FLIP | LH_MOUSE_EVENT_TYPE_TIMER | LH_MOUSE_EVENT_TYPE_MOVE | LH_MOUSE_EVENT_TYPE_BUTTON)
+#define LH_MOUSE_ALWAYS_DRAW_EVENT_TYPES                                                                               \
+	(LH_MOUSE_EVENT_TYPE_FLIP | LH_MOUSE_EVENT_TYPE_MOVE | LH_MOUSE_EVENT_TYPE_SET_CURSOR | 0x10 | 0x20 |              \
+	 LH_MOUSE_EVENT_TYPE_SET_SPRITE_FLAGS | LH_MOUSE_EVENT_TYPE_ANIMATE_START | LH_MOUSE_EVENT_TYPE_ANIMATE_STOP)
+
 CRITICAL_SECTION            LHScreen::CriticalSection;
 static IDirectInputA*       gDirectInput;
 static IDirectInputDeviceA* gMouseDevice;
@@ -49,7 +57,7 @@ inline int LHSurface::Blit(LHRegion* region, LHCoord* pos, LH_SCREEN_BUFFER scre
 	{
 		surface = LHSys::GetScreen().PBackSurface;
 	}
-	return CopySurface(region, &coord, surface, LH_COPY_DIRECTION_0x0, 0);
+	return CopySurface(region, &coord, surface, LH_COPY_DIRECTION_FROM_SURFACE, 0);
 }
 
 inline void LHMouse::UnDraw()
@@ -77,14 +85,14 @@ inline void LHMouse::StopDoubleBuffering()
 LHMouse::LHMouse()
 {
 	InitializeCriticalSection(&LHScreen::CriticalSection);
-	field_18 = 2;
-	ImageMode = 2;
+	field_18 = LH_MOUSE_IMAGE_TYPE_ARROW;
+	ImageMode = LH_MOUSE_IMAGE_TYPE_ARROW;
 	DoubleBuffered = 1;
 	Pinned = 0;
 	Locked = 1;
 	AnimType = 0;
 	field_10 = 0;
-	EventMask = 7;
+	EventMask = LH_MOUSE_EVENT_TYPE_FLIP | LH_MOUSE_EVENT_TYPE_TIMER | LH_MOUSE_EVENT_TYPE_MOVE;
 	BufferToggle = 0;
 	UsePadding = 0;
 	MouseWheelAccum = 0;
@@ -266,10 +274,10 @@ int LHMouse::SetPosition(LHCoord* position)
 {
 	if (LHSys::TheSystem.WindowedMode)
 	{
-		ImageMode = LH_MOUSE_IMAGE_TYPE_0x01;
-		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 7, 0, 0);
+		ImageMode = LH_MOUSE_IMAGE_TYPE_HIDDEN;
+		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_LH_MOUSE_SET_CURSOR, 0, 0);
 		LHSys::GetMouse().UpdateCurrentPos(*position);
-		LHSys::GetMouse().Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x4);
+		LHSys::GetMouse().Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_MOVE);
 	}
 	else
 	{
@@ -307,7 +315,7 @@ int LHMouse::SetWorkingArea(uint16_t width, uint16_t height)
 	}
 	if (field_10)
 		SingleSurface = new (FILEPATH, 328) LHSurface(width, height);
-	else if (ImageMode == 32)
+	else if (ImageMode == LH_MOUSE_IMAGE_TYPE_SPRITE)
 		SingleSurface = new (FILEPATH, 330) LHSurface(SingleSprite, 0);
 
 	if (SingleSurface)
@@ -390,7 +398,7 @@ int LHMouse::SetSpriteFlags(unsigned long flags)
 		for (uint16_t i = 0; i < FrameCount16; i++)
 			FrameSurfaces[i]->SetSpriteFlags(SpriteFlags & 0x60);
 	}
-	Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x80);
+	Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_SET_SPRITE_FLAGS);
 	Unlock();
 	return result;
 }
@@ -416,7 +424,7 @@ int LHMouse::SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, int reallocSu
 	}
 	if (ImageMode != LH_MOUSE_IMAGE_TYPE_ANIMATED)
 	{
-		if ((ImageMode & ~7) == 0)
+		if ((ImageMode & ~LH_MOUSE_WINDOWS_CURSOR_TYPES) == 0)
 		{
 			Lock();
 			if (DoubleBuffered)
@@ -431,16 +439,16 @@ int LHMouse::SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, int reallocSu
 				DoubleBuffered = false;
 			}
 			Unlock();
-			PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 7, 0, 0);
+			PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_LH_MOUSE_SET_CURSOR, 0, 0);
 		}
-		if ((ImageMode & ~7) != 0)
+		if ((ImageMode & ~LH_MOUSE_WINDOWS_CURSOR_TYPES) != 0)
 		{
-			Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x8);
+			Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_SET_CURSOR);
 			Unlock();
 			return 0;
 		}
 		StopDoubleBuffering();
-		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 7, 0, 0);
+		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_LH_MOUSE_SET_CURSOR, 0, 0);
 	}
 	Unlock();
 	return 0;
@@ -463,7 +471,7 @@ void LHMouse::PinImage(int16_t x, int16_t y)
 
 void LHMouse::UpdateDrawRegions(LHSurface* surface)
 {
-	if ((ImageMode & ~7) == 0)
+	if ((ImageMode & ~LH_MOUSE_WINDOWS_CURSOR_TYPES) == 0)
 		return;
 	if (!Pinned)
 		PinPos = DefaultPos;
@@ -543,7 +551,7 @@ void LHMouse::UpdateDrawRegions(LHSurface* surface)
 
 void LHMouse::Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType)
 {
-	if ((ImageMode & ~7) == 0)
+	if ((ImageMode & ~LH_MOUSE_WINDOWS_CURSOR_TYPES) == 0)
 	{
 		if (DrawCallback)
 		{
@@ -558,17 +566,18 @@ void LHMouse::Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType)
 
 	Lock();
 	LHSprite* sprite = NULL;
-	if (eventType == LH_MOUSE_EVENT_TYPE_0x2 && !AnimType)
+	if (eventType == LH_MOUSE_EVENT_TYPE_TIMER && !AnimType)
 	{
 		Unlock();
 		return;
 	}
 	int suppress;
 	ScreenBuffer = buffer;
-	if (DrawCallback && (eventType & 0x47) != 0)
+	if (DrawCallback && (eventType & LH_MOUSE_CALLBACK_EVENT_TYPES) != 0)
 		suppress = DrawCallback(CallbackArg1, eventType, CurrentFrame, CallbackArg2);
 	else
-		suppress = (eventType & 0x3BD) == 0 && ((eventType & LH_MOUSE_EVENT_TYPE_0x2) == 0 || !AnimType);
+		suppress = (eventType & LH_MOUSE_ALWAYS_DRAW_EVENT_TYPES) == 0 &&
+		           ((eventType & LH_MOUSE_EVENT_TYPE_TIMER) == 0 || !AnimType);
 
 	LHSurface* image;
 	switch (ImageMode)
@@ -587,7 +596,7 @@ void LHMouse::Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType)
 		break;
 	}
 	UpdateDrawRegions(image);
-	if (DoubleBuffered && LHSys::GetScreen().opened && (ImageMode & ~7) != 0 && !suppress)
+	if (DoubleBuffered && LHSys::GetScreen().opened && (ImageMode & ~LH_MOUSE_WINDOWS_CURSOR_TYPES) != 0 && !suppress)
 	{
 		if ((ImageMode == LH_MOUSE_IMAGE_TYPE_SPRITE || ImageMode == LH_MOUSE_IMAGE_TYPE_ANIMATED) &&
 		    ((SpriteFlags & 0xE) != 0 || SpriteColor16))
@@ -612,7 +621,7 @@ void LHMouse::Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType)
 		PrevSavedRegion = SavedRegion;
 		PrevDrawRegion = DrawRegion;
 		BufferToggle = BufferToggle == 0;
-		if (eventType == LH_MOUSE_EVENT_TYPE_0x2)
+		if (eventType == LH_MOUSE_EVENT_TYPE_TIMER)
 			SetAnimFrame();
 	}
 	Unlock();
@@ -635,7 +644,7 @@ void LHMouse::SetAnimFrame()
 		else
 		{
 			CurrentFrame = 0;
-			PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 6, 0, 0);
+			PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_LH_MOUSE_STOP_TIMER, 0, 0);
 		}
 		break;
 	case LH_ANIMATE_TYPE_PING_PONG:
@@ -658,7 +667,7 @@ void LHMouse::SetAnimFrame()
 		}
 		else
 		{
-			PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 6, 0, 0);
+			PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_LH_MOUSE_STOP_TIMER, 0, 0);
 		}
 		break;
 	case LH_ANIMATE_TYPE_ONE_SHOT:
@@ -691,7 +700,7 @@ void LHMouse::SetAnimateImages(LH_ANIMATE_IMAGE_TYPE imageType, void* images, un
 	{
 		switch (imageType)
 		{
-		case LH_ANIMATE_IMAGE_TYPE_0x1: {
+		case LH_ANIMATE_IMAGE_TYPE_SPRITE_LIST: {
 			IsMultiFrame = true;
 			FrameBank = (void*)((uint32_t*)images)[1];
 			FrameCount16 = ((uint16_t*)images)[4];
@@ -700,7 +709,7 @@ void LHMouse::SetAnimateImages(LH_ANIMATE_IMAGE_TYPE imageType, void* images, un
 				FrameSurfaces[i] = new (FILEPATH, 673) LHSurface((LHSprite*)FrameBank + i, SpriteFlags & 0x60);
 			break;
 		}
-		case LH_ANIMATE_IMAGE_TYPE_0x0: {
+		case LH_ANIMATE_IMAGE_TYPE_FRAME_BANK: {
 			IsMultiFrame = false;
 			FrameBank = (void*)(*(uint32_t*)images + 76 * index);
 			FrameCount16 = ((uint32_t*)FrameBank)[2];
@@ -746,29 +755,29 @@ void LHMouse::Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long fr
 	switch (animType)
 	{
 	case LH_ANIMATE_TYPE_STOP:
-		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 6, 0, 0);
+		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_LH_MOUSE_STOP_TIMER, 0, 0);
 		FrameCount = 0;
 		CurrentFrame = 0;
 		ImageMode = field_18;
-		if ((ImageMode & ~7) != 0)
+		if ((ImageMode & ~LH_MOUSE_WINDOWS_CURSOR_TYPES) != 0)
 		{
-			Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x200);
+			Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_ANIMATE_STOP);
 			Unlock();
 			return;
 		}
 		StopDoubleBuffering();
-		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 7, 0, 0);
+		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_LH_MOUSE_SET_CURSOR, 0, 0);
 		Unlock();
 		return;
 	case LH_ANIMATE_TYPE_LOOP:
 	case LH_ANIMATE_TYPE_PING_PONG:
-		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 6, 0, 0);
+		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_LH_MOUSE_STOP_TIMER, 0, 0);
 		if (FrameBank)
 			ImageMode = LH_MOUSE_IMAGE_TYPE_ANIMATED;
 		AnimReverse = false;
 		FrameCount = FrameCount16 ? FrameCount16 : frameCount;
 		CurrentFrame = 0;
-		Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x100);
+		Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_ANIMATE_START);
 		Unlock();
 		return;
 	case LH_ANIMATE_TYPE_ONE_SHOT:
@@ -777,8 +786,8 @@ void LHMouse::Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long fr
 		AnimReverse = false;
 		CurrentFrame = 0;
 		FrameCount = FrameCount16 ? FrameCount16 : frameCount;
-		Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x100);
-		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 5, 0, 0);
+		Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_ANIMATE_START);
+		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_LH_MOUSE_START_TIMER, 0, 0);
 		break;
 	}
 	Unlock();
@@ -844,7 +853,7 @@ int LHMouse::GetScreenUnderCursorNoSetup(LHSurface* surface, LHSurface* prevSurf
 			else
 			{
 				LHSurface* save = SaveSurface[BufferToggle];
-				result = surface->CopySurface(&clip, &coord, save->Surface, LH_COPY_DIRECTION_0x1,
+				result = surface->CopySurface(&clip, &coord, save->Surface, LH_COPY_DIRECTION_TO_SURFACE,
 				                              save->HasTransparentColor);
 				if (result)
 				{
@@ -863,7 +872,7 @@ int LHMouse::GetScreenUnderCursorNoSetup(LHSurface* surface, LHSurface* prevSurf
 				src.end.x += sdx;
 				src.end.y += sdy;
 				result = SaveSurface[BufferToggle]->CopySurface(
-					&src, &coord, prevSurface->Surface, LH_COPY_DIRECTION_0x1, prevSurface->HasTransparentColor);
+					&src, &coord, prevSurface->Surface, LH_COPY_DIRECTION_TO_SURFACE, prevSurface->HasTransparentColor);
 			}
 		}
 	}

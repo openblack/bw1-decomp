@@ -117,7 +117,7 @@ enum GAME_FLAGS
 	GAME_FLAG_DRAW_VALUE_SPINNERS = 0x4000,
 	GAME_FLAG_CLEARING_MAP = 0x8000,
 	GAME_FLAG_AUTO_SAVE_ENABLED = 0x10000,
-	GAME_FLAG_UNKNOWN_0x20000 = 0x20000,
+	GAME_FLAG_SHOW_VILLAGER_NAMES = 0x20000,
 	GAME_FLAG_WAIT_FOR_BUILDING_WOOD = 0x40000,
 	GAME_FLAG_SHOW_VILLAGER_INFO = 0x200000,
 	GAME_FLAG_FORCE_GAME_TURN = 0x400000,
@@ -229,7 +229,7 @@ public:
 	GMap                   map;
 	uint32_t               LandNumber;
 	bool32_t               SkirmishGame;
-	int                    GameOverStarted;
+	bool32_t               GameOverStarted;
 	int                    field_0x205a14;
 	uint32_t               LastSaveTurn;
 	int                    LastLoadTurn;

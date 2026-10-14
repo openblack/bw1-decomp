@@ -774,7 +774,7 @@ int LHScreen::Flip(bool32_t clear)
 	EnterCriticalSection(&LHScreen::CriticalSection);
 	LHSys::GetMouse().Locked = 1;
 	LeaveCriticalSection(&LHScreen::CriticalSection);
-	LHSys::GetMouse().Draw(LH_SCREEN_BUFFER_BACK, LH_MOUSE_EVENT_TYPE_0x1);
+	LHSys::GetMouse().Draw(LH_SCREEN_BUFFER_BACK, LH_MOUSE_EVENT_TYPE_FLIP);
 	int flipResult = LHFlip(clear);
 	LeaveCriticalSection(&LHScreen::CriticalSection);
 
@@ -1056,7 +1056,7 @@ int LHScreen::SaveBitmap()
 	EnterCriticalSection(&LHScreen::CriticalSection);
 	LHSys::GetMouse().Locked = 1;
 	LeaveCriticalSection(&LHScreen::CriticalSection);
-	LHSys::GetMouse().Draw(LH_SCREEN_BUFFER_BACK, LH_MOUSE_EVENT_TYPE_0x1);
+	LHSys::GetMouse().Draw(LH_SCREEN_BUFFER_BACK, LH_MOUSE_EVENT_TYPE_FLIP);
 	LeaveCriticalSection(&LHScreen::CriticalSection);
 
 	int result = sub_8A5590(fileName, backAddress);

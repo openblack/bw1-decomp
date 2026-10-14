@@ -276,7 +276,7 @@ int LHSurface::GetScreenSurface(LHRegion* rect, LHCoord* coord, LH_SCREEN_BUFFER
 	{
 		surface = LHSys::GetScreen().PBackSurface;
 	}
-	return CopySurface(&region, coord, surface, LH_COPY_DIRECTION_0x1, 0);
+	return CopySurface(&region, coord, surface, LH_COPY_DIRECTION_TO_SURFACE, 0);
 }
 
 LHSurface::~LHSurface()
@@ -308,7 +308,7 @@ int LHSurface::CopySurface(LHRegion* region, LHCoord* coord, IDirectDrawSurface7
 	int height = region ? (region->end.y - region->start.y + 1) : Height;
 	dstRect.bottom = height + y;
 	int hr;
-	if (direction == LH_COPY_DIRECTION_0x1)
+	if (direction == LH_COPY_DIRECTION_TO_SURFACE)
 	{
 		hr = Surface->Blt(&dstRect, dest, region ? &srcRect : NULL,
 		                  useColorKey ? (DDBLT_KEYSRC | DDBLT_WAIT) : DDBLT_WAIT, NULL);

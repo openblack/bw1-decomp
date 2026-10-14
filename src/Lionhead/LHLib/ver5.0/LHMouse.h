@@ -12,8 +12,8 @@
 enum LH_MOUSE_IMAGE_TYPE
 {
 	LH_MOUSE_IMAGE_TYPE_0x00 = 0x0,
-	LH_MOUSE_IMAGE_TYPE_0x01 = 0x1,
-	LH_MOUSE_IMAGE_TYPE_0x02 = 0x2,
+	LH_MOUSE_IMAGE_TYPE_HIDDEN = 0x1,
+	LH_MOUSE_IMAGE_TYPE_ARROW = 0x2,
 	LH_MOUSE_IMAGE_TYPE_0x03 = 0x3,
 	LH_MOUSE_IMAGE_TYPE_0x04 = 0x4,
 	LH_MOUSE_IMAGE_TYPE_0x05 = 0x5,
@@ -81,29 +81,34 @@ enum LH_MOUSE_IMAGE_TYPE
 
 enum LH_MOUSE_EVENT_TYPE
 {
-	LH_MOUSE_EVENT_TYPE_0x1 = 0x1,
-	LH_MOUSE_EVENT_TYPE_0x2 = 0x2,
-	LH_MOUSE_EVENT_TYPE_0x4 = 0x4,
-	LH_MOUSE_EVENT_TYPE_0x8 = 0x8,
-	LH_MOUSE_EVENT_TYPE_0x80 = 0x80,
-	LH_MOUSE_EVENT_TYPE_0x100 = 0x100,
-	LH_MOUSE_EVENT_TYPE_0x200 = 0x200,
+	LH_MOUSE_EVENT_TYPE_FLIP = 0x1,
+	LH_MOUSE_EVENT_TYPE_TIMER = 0x2,
+	LH_MOUSE_EVENT_TYPE_MOVE = 0x4,
+	LH_MOUSE_EVENT_TYPE_SET_CURSOR = 0x8,
+	LH_MOUSE_EVENT_TYPE_BUTTON = 0x40,
+	LH_MOUSE_EVENT_TYPE_SET_SPRITE_FLAGS = 0x80,
+	LH_MOUSE_EVENT_TYPE_ANIMATE_START = 0x100,
+	LH_MOUSE_EVENT_TYPE_ANIMATE_STOP = 0x200,
 };
+
+#define WM_LH_MOUSE_START_TIMER (WM_APP + 5)
+#define WM_LH_MOUSE_STOP_TIMER  (WM_APP + 6)
+#define WM_LH_MOUSE_SET_CURSOR  (WM_APP + 7)
 
 // Playback mode passed to LHMouse::Animate.
 enum LH_ANIMATE_TYPE
 {
-	LH_ANIMATE_TYPE_STOP = 0x0,      /* stop, restore the previous image */
-	LH_ANIMATE_TYPE_LOOP = 0x1,      /* loop forward */
-	LH_ANIMATE_TYPE_PING_PONG = 0x2, /* ping-pong */
-	LH_ANIMATE_TYPE_ONE_SHOT = 0x3,  /* one shot */
+	LH_ANIMATE_TYPE_STOP = 0x0, /* stop, restore the previous image */
+	LH_ANIMATE_TYPE_LOOP = 0x1,
+	LH_ANIMATE_TYPE_PING_PONG = 0x2,
+	LH_ANIMATE_TYPE_ONE_SHOT = 0x3,
 };
 
 // Source-image kind passed to LHMouse::SetAnimateImages.
 enum LH_ANIMATE_IMAGE_TYPE
 {
-	LH_ANIMATE_IMAGE_TYPE_0x0 = 0x0, /* LHSpriteFrameBank (multi-part frames) */
-	LH_ANIMATE_IMAGE_TYPE_0x1 = 0x1, /* LHSpriteList (single-part frames) */
+	LH_ANIMATE_IMAGE_TYPE_FRAME_BANK = 0x0,
+	LH_ANIMATE_IMAGE_TYPE_SPRITE_LIST = 0x1,
 };
 
 // Bits of LHMouse::Buttons, set by LHMouse::SetButtons from the window's mouse messages.
@@ -120,7 +125,6 @@ enum LH_MOUSE_BUTTON
 	LH_MOUSE_BUTTON_MIDDLE_UP = 0x80,
 };
 
-// Index into LHMouse::ButtonPos: the position recorded for each button event.
 enum LH_MOUSE_BUTTON_POS
 {
 	LH_MOUSE_BUTTON_POS_LEFT_DOWN = 0,
