@@ -747,7 +747,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/GestureSystemDataList.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystemMatch.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystemResult.cpp"),
-            GameCodeObject(NonMatching, "Black/GestureSystemSamples.cpp"),
+            GameCodeObject(Matching, "Black/GestureSystemSamples.cpp"),
             GameCodeObject(NonMatching, "Black/GJPersistent.cpp"),
             GameCodeObject(Matching, "Black/GJProperty.cpp"),
             GameCodeObject(NonMatching, "Black/GJSpline.cpp"),
