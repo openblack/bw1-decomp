@@ -32,12 +32,6 @@ template <class T> inline T POWER(T value, unsigned long power)
 	return result;
 }
 
-// BW1W120 inlined BW1M119 01054d10
-inline float boundf(float value, float low, float high)
-{
-	return value > low ? (value < high ? value : high) : low;
-}
-
 struct GUtils
 {
 	struct Circle

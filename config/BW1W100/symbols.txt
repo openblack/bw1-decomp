@@ -285,6 +285,7 @@ _pef_1038a080 = .text:0x004017B0; // type:function size:0x10
 ?CastTree@GameThing@@UAEPAVTree@@XZ = .text:0x004017D0; // type:function size:0x10 comdat
 ?SetDying@Object@@QAEXXZ = .text:0x004017E0; // type:label scope:global alias
 ?SetDying@Object@@UAEHXZ = .text:0x004017E0; // type:function size:0x10
+??1?$LHListHeadTail@UGameStatsListString@@@@QAE@XZ = .text:0x004017F0; // type:label scope:global alias
 ?AddToPlayer@MultiMapFixed@@UAEXXZ = .text:0x004017F0; // type:label scope:global alias
 ?CleanUpBeforeReset@GameThingWithPos@@UAEXXZ = .text:0x004017F0; // type:label scope:global alias
 ?CleanUpForSerialisation@Base@@UAEXXZ = .text:0x004017F0; // type:label scope:global alias

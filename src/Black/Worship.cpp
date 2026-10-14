@@ -33,6 +33,7 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "Game3DObject.h"
 #include "GameOSFile.h"
 #include "GameStats.h"
+#include "GJUtils.h"
 #include "FootpathFinder.h"
 #include "FootpathLink.h"
 #include "LandBalance.h"
@@ -363,8 +364,8 @@ void WorshipSite::DrawSpellIcons()
 {
 	if (Overloaded > 0.0f)
 	{
-		float overload = boundf(GetOverloadedValue(), 0.0f, 1.0f);
-		OverloadPulsePhase = fmod(((OverloadPulseMaxSpeed - OverloadPulseMinSpeed) * overload + OverloadPulseMinSpeed) *
+		float overload = boundf(0.0f, GetOverloadedValue(), 1.0f);
+		OverloadPulsePhase = fmod(GJUtils::Linterp(OverloadPulseMinSpeed, OverloadPulseMaxSpeed, overload) *
 		                                  LH3DTech::GetGameTimeInc() * SECONDS_PER_MILLISECOND +
 		                              OverloadPulsePhase,
 		                          TWO_PI);

@@ -1049,9 +1049,9 @@ void GameStatsPackage::SetToZero()
 
 char* GameStatsPackage::GetDatabaseStatsString()
 {
-	GameStatsStringList list;
-	unsigned long       length = 0;
-	unsigned long       users[4];
+	LHListHeadTail<GameStatsListString> list;
+	unsigned long                       length = 0;
+	unsigned long                       users[4];
 	memset(users, 0, sizeof(users));
 	GameStatsListString* string;
 	for (unsigned long i = 0; i < 4; i++)

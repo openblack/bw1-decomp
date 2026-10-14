@@ -30,6 +30,12 @@ public:
 	}
 };
 
+// BW1W120 inlined BW1M119 01054d10
+inline float boundf(float low, float value, float high)
+{
+	return value > low ? (value < high ? value : high) : low;
+}
+
 class GlobalTextures
 {
 public:
