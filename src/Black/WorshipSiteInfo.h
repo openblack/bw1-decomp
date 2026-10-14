@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum ABODE_TYPE */
+#include <chlasm/Enum.h> /* For enum ABODE_TYPE, enum POT_INFO */
 
 #include "CitadelPartInfo.h" /* For struct GCitadelPartInfo */
 #include "InfoLoaders.h"     /* For INFO_DATA_BLOCK */
@@ -19,24 +19,22 @@ class GObjectInfo;
 class GWorshipSiteInfo : public GCitadelPartInfo
 {
 public:
-	float    field_0x134;
-	uint32_t field_0x138;
-	uint32_t field_0x13c;
-	uint32_t field_0x140;
-	float    field_0x144;
-	float    field_0x148;
-	uint32_t MaxDancersVisible;
-	float    field_0x150;
-	float    field_0x154;
-	uint32_t field_0x158;
-	float    field_0x15c;
+	float     RadiusFromCitadel; /* 0x134 */
+	MESH_LIST BaseMesh;
+	POT_INFO  PotForResourceFood;
+	POT_INFO  PotForResourceWood; /* 0x140 */
+	float     ChantsPerVillager;
+	float     PrayerSiteDistance;
+	uint32_t  MaxDancersVisible;
+	float     ChantsToFillBattery; /* 0x150 */
+	float     EachVillagerAddToFillBattery;
+	float     ChantsToReserveForMaintaining;
+	float     ArtifactPowerupMultiplier;
 
 	// Override methods
 
-	// BW1W120 0077a920 BW1M119 015b7870
-	virtual ~GWorshipSiteInfo();
 	// BW1W120 0077a8b0 BW1M119 015bab80
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& info_count);
 	// BW1W120 00464370 BW1M119 inlined
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00464380 BW1M119 inlined
@@ -52,9 +50,14 @@ public:
 	// BW1W120 inlined BW1M119 015baae0
 	static GWorshipSiteInfo* GetInfo() { return Infos; }
 
+	// Non-virtual methods
+
+	// BW1W120 0077a950 BW1M119 inlined
+	float GetChantsToReserveForMaintaining() const;
+
 	// TODO(#377): The original declared this class in Worship.h.
 	// Out of line: LoadBinary at 0042f170, Load at 0042f0d0.
-	INFO_DATA_BLOCK(field_0x134, field_0x15c)
+	INFO_DATA_BLOCK(RadiusFromCitadel, ArtifactPowerupMultiplier)
 	INFO_DERIVED_LOADERS(GCitadelPartInfo, "Worship.h", 41)
 };
 

@@ -2035,13 +2035,14 @@ Black/Wonder.cpp:
 Black/Workshop.cpp:
 	.text       start:0x007025A0 end:0x00703910
 	.data       start:0x00B478FC end:0x00B47900
-	.bss        start:0x00CEC624 end:0x00CEC6A8
+	.bss        start:0x00CEC624 end:0x00CEC628
 
 Black/Worship.cpp:
 	.text       start:0x00703910 end:0x007074B0
-	.rdata      start:0x008D2BF0 end:0x008D3AC0
-	.data       start:0x00B47940 end:0x00B47998
-	.bss        start:0x00CEC6A8 end:0x00CED328
+	.rdata      start:0x008D351C end:0x008D3AC0
+	.CRT$XCU    start:0x008F72C0 end:0x008F72D4 align:4
+	.data       start:0x00B47920 end:0x00B47998
+	.bss        start:0x00CEC628 end:0x00CED328
 
 Black/WorshipSiteUpgrade.cpp:
 	.text       start:0x007074B0 end:0x00707530

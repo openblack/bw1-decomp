@@ -23,7 +23,9 @@ public:
 	MAGIC_TYPE   MagicTypes[POWER_UP_TYPE_LAST + 1];
 	uint8_t      field_0x134[0x10];
 	float        DrawScale;
-	uint8_t      field_0x148[0x48];
+	uint8_t      field_0x148[0x34];
+	bool32_t     Enabled; /* 0x17c */
+	uint8_t      field_0x180[0x10];
 
 	// Static data
 
@@ -68,7 +70,7 @@ public:
 	GMagicInfo* GetMagicInfo(GESTURE_TYPE gesture) const;
 
 	// Out of line: LoadBinary at 0042f620, Load at 0042f5b0.
-	INFO_DATA_BLOCK(Gesture, field_0x148)
+	INFO_DATA_BLOCK(Gesture, field_0x180)
 	INFO_DERIVED_LOADERS(GObjectInfo, "SpellSeedInfo.h", 43)
 };
 

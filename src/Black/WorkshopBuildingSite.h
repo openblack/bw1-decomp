@@ -44,7 +44,7 @@ public:
 	// BW1W120 0043d9f0 BW1M119 010ba7c0
 	virtual void CreatePileWood();
 	// BW1W120 0043da80 BW1M119 010ba5c0
-	virtual void GetResourcePosAndYAngle(uint32_t param_1, uint32_t param_2, float* param_3);
+	virtual MapCoords GetResourcePosAndYAngle(RESOURCE_TYPE type, unsigned long index, float* y_angle);
 	// BW1W120 0043da70 BW1M119 010ba760
 	virtual void RemovePotFromStructure(PotStructure* structure);
 
