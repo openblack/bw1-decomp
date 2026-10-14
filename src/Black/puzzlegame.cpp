@@ -1,6 +1,7 @@
 #include "ColourConstants.h" /* For White */
 #include "GameTimeConstants.h"
 #include "PuzzleGame.h"
+#include "GameOSFile.h" /* For class GameOSFile */
 
 LH3DMapCoords PuzzleGame::AppliedMapPos;
 
@@ -111,5 +112,25 @@ uint32_t PieceCow::ProcessNeeds()
 
 uint32_t PieceCow::CheckNeeds()
 {
+	return 0;
+}
+
+uint32_t PuzzleGrain::Load(GameOSFile& file)
+{
+	if (PileFood::Load(file))
+	{
+		file.ReadIt(field_0xbc);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t PuzzleGrain::Save(GameOSFile& file)
+{
+	if (PileFood::Save(file))
+	{
+		file.WriteIt(field_0xbc);
+		return 1;
+	}
 	return 0;
 }

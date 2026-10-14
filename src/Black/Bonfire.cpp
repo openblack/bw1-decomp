@@ -1,4 +1,5 @@
 #include "Bonfire.h"
+#include "GameOSFile.h" /* For class GameOSFile */
 
 uint32_t Bonfire::GetSaveType()
 {
@@ -52,4 +53,24 @@ SCRIPT_OBJECT_TYPE Bonfire::GetScriptObjectType()
 void Bonfire::Draw()
 {
 	Rock::Draw();
+}
+
+uint32_t Bonfire::Load(GameOSFile& file)
+{
+	if (Rock::Load(file))
+	{
+		file.ReadIt(field_0x94);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t Bonfire::Save(GameOSFile& file)
+{
+	if (Rock::Save(file))
+	{
+		file.WriteIt(field_0x94);
+		return 1;
+	}
+	return 0;
 }

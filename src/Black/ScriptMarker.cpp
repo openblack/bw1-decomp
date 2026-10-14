@@ -10,3 +10,21 @@ SCRIPT_OBJECT_TYPE ScriptMarker::GetScriptObjectType()
 {
 	return SCRIPT_OBJECT_TYPE_MARKER;
 }
+
+uint32_t ScriptMarker::Load(GameOSFile& file)
+{
+	if (GameThingWithPos::Load(file))
+	{
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t ScriptMarker::Save(GameOSFile& file)
+{
+	if (GameThingWithPos::Save(file))
+	{
+		return 1;
+	}
+	return 0;
+}
