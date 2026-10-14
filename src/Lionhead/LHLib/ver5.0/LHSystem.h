@@ -297,7 +297,7 @@ inline int LHDraw::Pixel(unsigned long x, unsigned long y, LHColor color, unsign
 	return Pixel24(x, y, color, mode);
 }
 
-// BW1W120 007e5af0
+// BW1W120 007e5af0 BW1M119 011458c0 (LHCombined Release)
 inline void LHCoord::AddMSWindowOffset()
 {
 	LHCoord offset;
