@@ -22,7 +22,7 @@ class Object;
 class MagicWood : public PileWood
 {
 public:
-	uint8_t field_0xb4[0x4];
+	GPlayer* Player; /* 0xb4 */
 
 	// Override methods
 

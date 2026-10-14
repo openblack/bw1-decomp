@@ -1,4 +1,6 @@
 #include "MagicWood.h"
+#include "GameOSFile.h" /* For class GameOSFile */
+#include "Player.h"     /* For class GPlayer */
 
 uint32_t MagicWood::GetSaveType()
 {
@@ -18,4 +20,29 @@ bool32_t MagicWood::IsAWoodPileOutsideStoragePit(Creature* param_1)
 char* MagicWood::GetDebugText()
 {
 	return "MagicWood:";
+}
+
+GPlayer* MagicWood::GetPlayer()
+{
+	return Player;
+}
+
+uint32_t MagicWood::Load(GameOSFile& file)
+{
+	if (PileWood::Load(file))
+	{
+		file.ReadPtr((GameThing**)&Player);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t MagicWood::Save(GameOSFile& file)
+{
+	if (PileWood::Save(file))
+	{
+		file.WritePtr(Player);
+		return 1;
+	}
+	return 0;
 }
