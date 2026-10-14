@@ -12,7 +12,7 @@ class GMobileWallHugInfo : public GMobileInfo
 public:
 	int32_t speed; /* 0x104 */
 	int32_t FleeingSpeed;
-	int32_t field_0x10c; /* speed threshold */
+	int32_t FastSpeedThreshold;
 	int32_t WalkingSpeed;
 	float   field_0x114;
 	int32_t RunningSpeed;

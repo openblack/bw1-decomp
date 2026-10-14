@@ -1133,14 +1133,21 @@ Black/Living.cpp:
 
 Black/LivingProjectile.cpp:
 	.text       start:0x005EA720 end:0x005EBCC0
-	.rdata      start:0x0091B4E8 end:0x0091B600
+	.rdata      start:0x0091B4E8 end:0x0091B5F8
 	.CRT$XCU    start:0x009B69F0 end:0x009B69F4 align:4
 
 Black/LivingReaction.cpp:
-	.text       start:0x005EBCF0 end:0x005ED8A0
-	.CRT$XCU    start:0x009B69F8 end:0x009B69FC align:4
-	.data       start:0x00BE2F24 end:0x00BE2F50
-	.bss        start:0x00D1F6A8 end:0x00D206D4
+	.text       start:0x005EBCC0 end:0x005ED520
+	.rdata      start:0x0091B5F8 end:0x0091B608
+	.CRT$XCU    start:0x009B69F4 end:0x009B69FC align:4
+	.data       start:0x00BE2F28 end:0x00BE2F48
+	.bss        start:0x00D1F6A8 end:0x00D1F6B8
+
+Black/LivingStates.cpp:
+	.text       start:0x005ED520 end:0x005ED8A0
+	.rdata      start:0x0091B608 end:0x0091B618
+	.CRT$XCU    start:0x009B69FC end:0x009B6A08 align:4
+	.bss        start:0x00D1F6B8 end:0x00D1F6C8
 
 Black/LoaderAnon.cpp:
 	.text       start:0x005ED8A0 end:0x005EE9F0

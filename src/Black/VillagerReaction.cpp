@@ -715,7 +715,7 @@ void Villager::SetupReactToTeleport(GameThingWithPos* thing, Reaction* reaction)
 		coords = GetFinalDestPos();
 		int speedNow = this->speed;
 		this->ReactionObject = thing;
-		AddReaction(reaction, speedNow > ((const GMobileWallHugInfo*)this->info)->field_0x10c
+		AddReaction(reaction, speedNow > ((const GMobileWallHugInfo*)this->info)->FastSpeedThreshold
 		                          ? VILLAGER_STATE_GO_TOWARDS_TELEPORT_REACTION_QUICKLY
 		                          : VILLAGER_STATE_GO_TOWARDS_TELEPORT_REACTION);
 	}

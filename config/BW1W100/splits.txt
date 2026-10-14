@@ -1049,13 +1049,21 @@ Black/Living.cpp:
 
 Black/LivingProjectile.cpp:
 	.text       start:0x005AE090 end:0x005AF600
-	.rdata      start:0x00869314 end:0x0086942C
+	.rdata      start:0x00869314 end:0x00869424
 	.CRT$XCU    start:0x008F69A8 end:0x008F69AC align:4
 
 Black/LivingReaction.cpp:
-	.text       start:0x005AF630 end:0x005B1000
-	.CRT$XCU    start:0x008F69B0 end:0x008F69B4 align:4
-	.bss        start:0x00C519A0 end:0x00C529CC
+	.text       start:0x005AF600 end:0x005B0D20
+	.rdata      start:0x00869424 end:0x00869434
+	.CRT$XCU    start:0x008F69AC end:0x008F69B4 align:4
+	.data       start:0x00B207C8 end:0x00B207E8
+	.bss        start:0x00C519A0 end:0x00C519B0
+
+Black/LivingStates.cpp:
+	.text       start:0x005B0D20 end:0x005B1000
+	.rdata      start:0x00869434 end:0x00869444
+	.CRT$XCU    start:0x008F69B4 end:0x008F69C0 align:4
+	.bss        start:0x00C519B0 end:0x00C519C0
 
 Black/LoaderAnon.cpp:
 	.text       start:0x005B1000 end:0x005B2150
@@ -1068,7 +1076,7 @@ Black/LoadingScreen.cpp:
 
 Black/Lobbybox.cpp:
 	.text       start:0x005B34D0 end:0x005B69D0
-	.rdata      start:0x00869434 end:0x008694D8
+	.rdata      start:0x00869444 end:0x008694D8
 	.CRT$XCU    start:0x008F69C8 end:0x008F69D0 align:4
 	.bss        start:0x00C529FC end:0x00C52A88
 
