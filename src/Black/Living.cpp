@@ -6,6 +6,7 @@
 #include "ColourConstants.h"    /* For White */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 #include "DataPath.h"
+#include "GameOSFile.h" /* For class GameOSFile */
 
 uint32_t DataForScriptRemind::GetSaveType()
 {
@@ -25,6 +26,36 @@ uint32_t DataPath::GetSaveType()
 char* DataPath::GetDebugText()
 {
 	return "DataPath:";
+}
+
+uint32_t DataPath::Load(GameOSFile& file)
+{
+	if (GameThing::Load(file))
+	{
+		file.ReadIt(TrackNo);
+		file.ReadIt(field_0x1c);
+		file.ReadIt(field_0x20);
+		file.ReadIt(field_0x24);
+		file.ReadIt(field_0x28);
+		file.ReadIt(field_0x2c);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t DataPath::Save(GameOSFile& file)
+{
+	if (GameThing::Save(file))
+	{
+		file.WriteIt(TrackNo);
+		file.WriteIt(field_0x1c);
+		file.WriteIt(field_0x20);
+		file.WriteIt(field_0x24);
+		file.WriteIt(field_0x28);
+		file.WriteIt(field_0x2c);
+		return 1;
+	}
+	return 0;
 }
 
 bool32_t Living::CanBecomeAPhysicsObject()

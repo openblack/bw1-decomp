@@ -1954,6 +1954,28 @@ const char* MissionaryControl::GetText()
 	return "MissionaryControl";
 }
 
+uint32_t MissionaryControl::Load(GameOSFile& file)
+{
+	if (GameThingWithPos::Load(file))
+	{
+		file.ReadPtr((GameThing**)&Missionary);
+		file.ReadPtr((GameThing**)&reaction);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t MissionaryControl::Save(GameOSFile& file)
+{
+	if (GameThingWithPos::Save(file))
+	{
+		file.WritePtr(Missionary);
+		file.WritePtr(reaction);
+		return 1;
+	}
+	return 0;
+}
+
 MissionaryControl::~MissionaryControl() {}
 
 void Villager::WallhugValidate() {}

@@ -100,6 +100,28 @@ bool32_t PuzzleTotem::NetworkFriendlyEndLockedSelect(GInterfaceStatus*)
 	return true;
 }
 
+uint32_t PuzzleTotem::Load(GameOSFile& file)
+{
+	if (Totem::Load(file))
+	{
+		file.ReadIt(MaxHeight);
+		file.ReadIt(ActualHeight);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t PuzzleTotem::Save(GameOSFile& file)
+{
+	if (Totem::Save(file))
+	{
+		file.WriteIt(MaxHeight);
+		file.WriteIt(ActualHeight);
+		return 1;
+	}
+	return 0;
+}
+
 bool32_t PuzzleSheep::DecideWhatToDo()
 {
 	return true;
@@ -130,6 +152,26 @@ uint32_t PuzzleGrain::Save(GameOSFile& file)
 	if (PileFood::Save(file))
 	{
 		file.WriteIt(field_0xbc);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t PuzzleMobileObject::Load(GameOSFile& file)
+{
+	if (MobileObject::Load(file))
+	{
+		file.ReadIt(field_0x68);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t PuzzleMobileObject::Save(GameOSFile& file)
+{
+	if (MobileObject::Save(file))
+	{
+		file.WriteIt(field_0x68);
 		return 1;
 	}
 	return 0;

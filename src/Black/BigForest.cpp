@@ -1,6 +1,8 @@
 #include "GameTimeConstants.h"
 #include "BigForest.h"
 #include "BigForestInfo.h"
+#include "GameOSFile.h" /* For class GameOSFile */
+#include "Forest.h"
 
 GBigForestInfo GBigForestInfo::Infos[BIG_FOREST_INFO_LAST];
 
@@ -52,6 +54,28 @@ void BigForest::Draw()
 void BigForest::CreateCollideData()
 {
 	MultiMapFixed::ReleaseCollideData();
+}
+
+uint32_t BigForest::Load(GameOSFile& file)
+{
+	if (MultiMapFixed::Load(file))
+	{
+		file.ReadPtr((GameThing**)&forest);
+		file.ReadIt(field_0x84);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t BigForest::Save(GameOSFile& file)
+{
+	if (MultiMapFixed::Save(file))
+	{
+		file.WritePtr(forest);
+		file.WriteIt(field_0x84);
+		return 1;
+	}
+	return 0;
 }
 
 BigForest::~BigForest() {}

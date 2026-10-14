@@ -5,6 +5,8 @@
 #include "CitadelBuildingSite.h"
 #include "StandardBuildingSite.h"
 #include "WorkshopBuildingSite.h"
+#include "GameOSFile.h" /* For class GameOSFile */
+#include "Pot.h"
 
 void BuildingSite::BuildBy(float amount)
 {
@@ -33,6 +35,16 @@ uint32_t StandardBuildingSite::GetSaveType()
 char* StandardBuildingSite::GetDebugText()
 {
 	return "StandardBuildingSite:";
+}
+
+uint32_t StandardBuildingSite::Save(GameOSFile& file)
+{
+	if (BuildingSite::Save(file))
+	{
+		file.WritePtr(WoodPile);
+		return 1;
+	}
+	return 0;
 }
 
 StandardBuildingSite::~StandardBuildingSite() {}
