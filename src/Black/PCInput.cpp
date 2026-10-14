@@ -126,7 +126,7 @@ void GGame::ProcessKey(LH_KEY key, unsigned short modifier)
 		{
 			if (!(g_game->help_system->WideScreen && g_game->help_system->GetWideScreenControl()))
 			{
-				Dat_00CD3AF0->Callback = fn_0054B1A0;
+				Dat_00CD3AF0->Callback = GameOverBoxCallback;
 				keyUsed = true;
 				SetupBox::SetCurrentActiveBox(Dat_00CD3AF0);
 				Dat_00CD3AF0->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DETAIL_00),
@@ -152,7 +152,8 @@ void GGame::ProcessKey(LH_KEY key, unsigned short modifier)
 				}
 				else
 				{
-					fn_0054CB90(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_NEWEST_GET_CREATURE_30));
+					DoAreYoSureLeaveLand0Requestor(
+						HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_NEWEST_GET_CREATURE_30));
 					PauseGame(true);
 				}
 			}
@@ -183,7 +184,7 @@ void GGame::ProcessKey(LH_KEY key, unsigned short modifier)
 		{
 			if (g_game->ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL)
 				g_game->LeaveInsideCitadel();
-			fn_0054CB50(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_131));
+			DoAreYouSureLand0Requestor(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_PAUSE_STATS_131));
 			PauseGame(true);
 		}
 		keyUsed = true;
@@ -241,12 +242,12 @@ void GGame::ProcessKey(LH_KEY key, unsigned short modifier)
 			{
 				if (!Dat_00D01984)
 				{
-					g_game->fn_0054DA00();
+					g_game->CancelIntro();
 					GGlobal::Global.audio->StartScriptMusic(MUSIC_TYPE_NONE);
 				}
 			}
 			else if (!(g_game->help_system->WideScreen && g_game->help_system->GetWideScreenControl()) &&
-			         fn_006EC670() && fn_00540020())
+			         GScript::InterruptRunningScript() && MainMenu::AreWeAllowedToReopen())
 			{
 				LHNetUseProfile(LHNetGetCurrentProfileNameFromRegistry());
 				PlayerProfile::WriteBackToRegistry(PlayerProfile::Profile);
@@ -255,10 +256,10 @@ void GGame::ProcessKey(LH_KEY key, unsigned short modifier)
 		}
 		break;
 	case KB_R:
-		MyInterface()->fn_005D0410();
+		MyInterface()->KeyBoardRepeatSpell();
 		return;
 	case KB_M:
-		MyInterface()->fn_005D03D0();
+		MyInterface()->KeyBoardStartSpellSelectionSystem();
 		return;
 	case KB_P:
 		if (modifier == 0)
@@ -342,46 +343,46 @@ void GGame::ProcessMapKeys()
 	}
 }
 
-uint32_t GGame::ProcessBindableKeys(LH_KEY param_1, LH_KEY param_2, unsigned long param_3)
+uint32_t GGame::ProcessBindableKeys(LH_KEY key, LH_KEY modifier, unsigned long mouse_button)
 {
-	if (param_1 != KB_NONE)
+	if (key != KB_NONE)
 	{
-		int action = g_game->control_map->GetActionFromKeys(param_1, param_2);
+		int action = g_game->control_map->GetActionFromKeys(key, modifier);
 		if (action != -1)
 			return DoAction(action);
-		if (param_1 == KB_1)
+		if (key == KB_1)
 		{
-			if (param_2 == KB_RALT || param_2 == KB_LALT)
+			if (modifier == KB_RALT || modifier == KB_LALT)
 			{
 				g_game->SetSpeed(max(0.5f, network.Speed * 0.5f));
 				return true;
 			}
 		}
-		else if (param_1 == KB_2)
+		else if (key == KB_2)
 		{
-			if (param_2 == KB_RALT || param_2 == KB_LALT)
+			if (modifier == KB_RALT || modifier == KB_LALT)
 			{
 				g_game->SetSpeed(min(2.0f, network.Speed * 2.0f));
 				return true;
 			}
 		}
 	}
-	if (param_3 != 0)
+	if (mouse_button != 0)
 	{
-		int action = g_game->control_map->fn_00470A60(param_3);
+		int action = g_game->control_map->IsMouseBeingUsed(mouse_button);
 		if (action != -1)
 			return DoAction(action);
 	}
 	return false;
 }
 
-uint32_t GGame::DoAction(unsigned long param_1)
+uint32_t GGame::DoAction(unsigned long action)
 {
 	HelpSystem* help = g_game->help_system;
 	if (help->WideScreen && help->GetWideScreenControl())
 		return false;
 
-	switch (param_1)
+	switch (action)
 	{
 	case BINDABLE_ACTION_HELP:
 		help->HelpQuery();

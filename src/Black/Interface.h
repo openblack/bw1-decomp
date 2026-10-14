@@ -175,10 +175,10 @@ public:
 	bool32_t IsPlayBack(uint32_t playback) const;
 	// BW1W120 005cee20 BW1M119 010059f0
 	bool32_t InGameEditor() const;
-	// BW1W120 005d03d0
-	void fn_005D03D0();
-	// BW1W120 005d0410
-	void fn_005D0410();
+	// BW1W120 005d03d0 BW1M119 013607c0
+	bool32_t KeyBoardStartSpellSelectionSystem();
+	// BW1W120 005d0410 BW1M119 013606d0
+	bool32_t KeyBoardRepeatSpell();
 	// BW1W120 inlined BW1M119 010789b0
 	CHand* GetRenderHand() { return hand.Get(); }
 	// BW1W120 005d0610 BW1M119 01086440

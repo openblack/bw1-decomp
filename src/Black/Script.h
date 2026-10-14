@@ -174,7 +174,9 @@ public:
 	// BW1W120 006ebb50 BW1M119 014dd830
 	bool32_t IsScreenFaded();
 	// BW1W120 006ebb00 BW1M119 014dd890
-	void SetupScreenFadeBackToNormal(signed char param_1);
+	void SetupScreenFadeBackToNormal(signed char time);
+	// BW1W120 006ec670 BW1M119 014dc620
+	static bool32_t InterruptRunningScript();
 	// BW1W120 00d95c10
 	static ScriptDLL* g_scriptDLL;
 	// TODO: Original name unknown; Reset/LoadBinary own this loaded-binary flag.
@@ -1367,8 +1369,5 @@ public:
 	INFO_DATA_BLOCK(field_0x10, field_0x10)
 	INFO_ROOT_LOADERS("Script.h", 923)
 };
-
-// BW1W120 006ec670
-bool32_t fn_006EC670();
 
 #endif /* BW1_DECOMP_SCRIPT_INCLUDED_H */

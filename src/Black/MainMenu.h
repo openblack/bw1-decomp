@@ -22,6 +22,9 @@ public:
 	virtual bool CanESCOut();
 	// BW1W120 0053fba0 BW1M119 015c6ce0
 	virtual void InitControls();
+
+	// BW1W120 00540020 BW1M119 015c6c60
+	static bool AreWeAllowedToReopen();
 };
 
 #endif /* BW1_DECOMP_MAIN_MENU_INCLUDED_H */

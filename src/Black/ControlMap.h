@@ -43,8 +43,8 @@ struct ControlMap
 	void GetText(LH_KEY key, char16_t* out_text);
 	// BW1W120 00470a00 BW1M119 011d2290
 	int GetActionFromKeys(LH_KEY key, LH_KEY modifier);
-	// BW1W120 00470a60
-	int fn_00470A60(unsigned long param_1);
+	// BW1W120 00470a60 BW1M119 010a0f00
+	int IsMouseBeingUsed(unsigned long button);
 	// BW1W120 00470ab0 BW1M119 01092cf0
 	void ProcessActionsPerformed();
 	// BW1W120 00470af0 BW1M119 01073e00

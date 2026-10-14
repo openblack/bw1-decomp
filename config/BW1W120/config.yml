@@ -82,7 +82,7 @@ add_relocations:
     target: '?GetActionFromKeys@ControlMap@@QAEHW4LH_KEY@@0@Z'
   - source: 0x0063F920
     type: x86_rel32
-    target: '?fn_00470A60@ControlMap@@QAEHK@Z'
+    target: '?IsMouseBeingUsed@ControlMap@@QAEHK@Z'
   - source: 0x0063F748
     type: x86_rel32
     target: '?InGameEditor@GInterface@@QBEHXZ'

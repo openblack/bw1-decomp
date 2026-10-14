@@ -539,14 +539,16 @@ public:
 	// TODO: Original name unknown; callers supply this, callee selects LHInetWeather singleton.
 	// BW1W120 005557d0
 	void fn_005557D0();
-	// BW1W120 0054b1a0
-	static void __stdcall fn_0054B1A0(int message, SetupBox* box, SetupControl* control, int data1, int data2);
-	// BW1W120 0054da00
-	void fn_0054DA00();
+	// BW1W120 0054da00 BW1M119 01497220
+	void CancelIntro();
+	// BW1W120 0054cb50 BW1M119 013f9590
+	static void DoAreYouSureLand0Requestor(wchar_t* text);
+	// BW1W120 0054cb90 BW1M119 01566860
+	static void DoAreYoSureLeaveLand0Requestor(wchar_t* text);
 	// BW1W120 0063f830 BW1M119 010a1090
-	uint32_t ProcessBindableKeys(LH_KEY param_1, LH_KEY param_2, unsigned long param_3);
+	uint32_t ProcessBindableKeys(LH_KEY key, LH_KEY modifier, unsigned long mouse_button);
 	// BW1W120 0063f940 BW1M119 010a1200
-	uint32_t DoAction(unsigned long param_1);
+	uint32_t DoAction(unsigned long action);
 };
 
 template <typename T> inline void GTPointer<T>::SetGameTurnValidated()
@@ -558,10 +560,8 @@ template <typename T> inline void GTPointer<T>::SetGameTurnValidated()
 void SetTurnOffMouseMove(bool turn_off);
 // BW1W120 0054cb10 BW1M119 010cf8c0
 void DoOKGameRequestor(char16_t* text);
-// BW1W120 0054cb50
-void fn_0054CB50(wchar_t* text);
-// BW1W120 0054cb90
-void fn_0054CB90(wchar_t* text);
+// BW1W120 0054b1a0 BW1M119 012641f0
+void __stdcall GameOverBoxCallback(int message, SetupBox* box, SetupControl* control, int data1, int data2);
 // Milliseconds since the last frame, at most half a second.
 // BW1W120 005557e0 BW1M119 010caca0
 int GetAlexTimeInc();

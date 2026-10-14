@@ -36,8 +36,6 @@ struct SetupTabButton;
 
 // BW1W120 0053b4a0 BW1M119 015ccb10
 char* WCHAR2CHAR(char16_t* text);
-// BW1W120 00540020
-bool fn_00540020();
 
 struct FrontEnd
 {
