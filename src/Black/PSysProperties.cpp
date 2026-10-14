@@ -1788,16 +1788,18 @@ void LandscapeCollide::DefineProperties(PropertyList* list)
 // RegisterParticleCreators names it directly; reaching it only through inlined map::operator[]
 // puts it after the _Tree helpers. The same IL also decides a register tie-break in
 // RegisterModifiers. This unreferenced helper (never emitted) stands in for the unknown original
-// reference. In BW1W100 that tie-break also depends on how many symbols are declared before
-// RegisterModifiers; the parameters pad the count.
+// reference. That tie-break also depends on how many symbols are declared before RegisterModifiers;
+// the parameters pad the count for each version.
 #if defined(VERSION_BW1W100)
-static std::string EmptyString(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6)
+static std::string EmptyString(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8,
+                               int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16,
+                               int arg17, int arg18, int arg19)
 {
 	std::string text[1];
 	return text[0];
 }
 #else
-static void EmptyString()
+static void EmptyString(int arg0)
 {
 	std::string text[2];
 }
@@ -2179,13 +2181,6 @@ DECLARE_MODIFIER(SetInitialRandomOrientations, 2418)
 
 void RegisterPersistent::RegisterModifiers()
 {
-#if defined(VERSION_BW1W100)
-	// TODO: fakematch. This unused local only shifts a c2 register tie-break in this function
-	// (edi holding 0 vs. an RTTI descriptor around UR_ChangeScaleXYZ/UR_ChangeStretchHeight).
-	// It became necessary once PSysBase::GetDebugText and UR_PlasmaInf::GetDebugText were made
-	// header-inline; tools/tiebreak-probe.py --dummies matches with 1 or 4 dummies only.
-	int tieBreakPadding;
-#endif
 	REGISTER_MODIFIER(AR_FadeAlpha);
 	REGISTER_MODIFIER(AR_FadeCollectionAlpha);
 	REGISTER_MODIFIER(AR_FadeOutOnceConditionTrue);
