@@ -509,7 +509,7 @@ RESOURCE_TYPE MobileObject::GetResourceType()
 	return RESOURCE_TYPE_NONE;
 }
 
-uint32_t MobileObject::Save(GameOSFile& file)
+bool32_t MobileObject::Save(GameOSFile& file)
 {
 	if (Mobile::Save(file))
 	{
@@ -518,12 +518,12 @@ uint32_t MobileObject::Save(GameOSFile& file)
 		WRITE_SAFE(file, (uint32_t&)XAngle);
 		WRITE_SAFE(file, (uint32_t&)ZAngle);
 		file.WritePtr(Path);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t MobileObject::Load(GameOSFile& file)
+bool32_t MobileObject::Load(GameOSFile& file)
 {
 	if (Mobile::Load(file))
 	{
@@ -531,9 +531,9 @@ uint32_t MobileObject::Load(GameOSFile& file)
 		file.ReadSafe((uint32_t&)XAngle);
 		file.ReadSafe((uint32_t&)ZAngle);
 		file.ReadPtr((GameThing**)&Path);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 // FieldCrop (and some Poo) methods were written in this file, not FieldCrop.cpp: FieldCrop::Create passes

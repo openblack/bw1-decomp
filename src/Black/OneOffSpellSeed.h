@@ -46,9 +46,9 @@ public:
 	// BW1W120 0055d160 BW1M119 0152ebb0
 	virtual char* GetDebugText() { return "OneOffSpellSeed:"; }
 	// BW1W120 0072aa20 BW1M119 0152f250
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0072a930 BW1M119 0152f3c0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055d150 BW1M119 0152eb70
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_ONE_OFF_SPELL_SEED; }
 	// BW1W120 0072ac50 BW1M119 0152ee20

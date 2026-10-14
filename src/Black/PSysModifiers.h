@@ -32,9 +32,9 @@ public:
 	// BW1W120 0055f210 BW1M119 0130d430
 	virtual ~BaseAtomModifierData() {}
 	// BW1W120 006947e0 BW1M119 01426660
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cb340 BW1M119 0148dcb0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 };
 static_assert(sizeof(BaseAtomModifierData) == 0x20, "Data type is of wrong size");
 
@@ -59,9 +59,9 @@ public:
 	// BW1W120 0055f2a0 BW1M119 0130d690
 	virtual ~BaseCollectionModifierData() {}
 	// BW1W120 00694810 BW1M119 014265b0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cb370 BW1M119 0148dc00
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 };
 static_assert(sizeof(BaseCollectionModifierData) == 0x20, "Data type is of wrong size");
 
@@ -75,9 +75,9 @@ public:
 	// BW1W120 006c7540 BW1M119 0142cac0
 	virtual char* GetDebugText();
 	// BW1W120 00694d90 BW1M119 01425d80
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cb8b0 BW1M119 0148cae0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 006c7530 BW1M119 0142ca80
 	virtual uint32_t GetSaveType();
 };
@@ -94,9 +94,9 @@ public:
 	// BW1W120 006c7810 BW1M119 0142c930
 	virtual char* GetDebugText();
 	// BW1W120 00694ea0 BW1M119 01425c20
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cb9c0 BW1M119 0148c980
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 006c7800 BW1M119 0142c8f0
 	virtual uint32_t GetSaveType();
 
@@ -116,9 +116,9 @@ public:
 	// BW1W120 006c75d0 BW1M119 0142ca40
 	virtual char* GetDebugText();
 	// BW1W120 00694df0 BW1M119 01425ce0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cb910 BW1M119 0148ca40
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 006c75c0 BW1M119 0142ca00
 	virtual uint32_t GetSaveType();
 

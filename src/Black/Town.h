@@ -224,9 +224,9 @@ public:
 	// BW1W120 0073af80 BW1M119 0155e850
 	virtual uint16_t GetNumberOfInstanceForGlobalList();
 	// BW1W120 0073f450 BW1M119 01553ef0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0073ed30 BW1M119 01555e20
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 007412e0 BW1M119 01550e80
 	virtual void ResolveLoad();
 	// BW1W120 0073bc40 BW1M119 0155d6b0

@@ -138,9 +138,9 @@ public:
 	// BW1W120 00591ab0 BW1M119 null
 	void ClearMapStage(bool32_t finished);
 	// BW1W120 00591ac0 BW1M119 0133a800
-	uint32_t Save(GameOSFile& file);
+	bool32_t Save(GameOSFile& file);
 	// BW1W120 00592040 BW1M119 01335a60
-	uint32_t Load(GameOSFile& file);
+	bool32_t Load(GameOSFile& file);
 };
 
 // GlobalGameLists itself only needs the element types declared, and its own TU has to see it

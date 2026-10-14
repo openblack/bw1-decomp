@@ -1268,7 +1268,7 @@ bool32_t Villager::FindDisciplePrayerPos(MapCoords* param_1)
 }
 
 // BW1W120 00754280 BW1M119 01571b20
-uint32_t Villager::Save(GameOSFile& file)
+bool32_t Villager::Save(GameOSFile& file)
 {
 	if (Living::Save(file))
 	{
@@ -1294,7 +1294,7 @@ uint32_t Villager::Save(GameOSFile& file)
 }
 
 // BW1W120 00754580 BW1M119 01571730
-uint32_t Villager::Load(GameOSFile& file)
+bool32_t Villager::Load(GameOSFile& file)
 {
 	if (Living::Load(file))
 	{
@@ -1952,6 +1952,28 @@ char* MissionaryControl::GetDebugText()
 const char* MissionaryControl::GetText()
 {
 	return "MissionaryControl";
+}
+
+bool32_t MissionaryControl::Load(GameOSFile& file)
+{
+	if (GameThingWithPos::Load(file))
+	{
+		file.ReadPtr((GameThing**)&Missionary);
+		file.ReadPtr((GameThing**)&reaction);
+		return true;
+	}
+	return false;
+}
+
+bool32_t MissionaryControl::Save(GameOSFile& file)
+{
+	if (GameThingWithPos::Save(file))
+	{
+		file.WritePtr(Missionary);
+		file.WritePtr(reaction);
+		return true;
+	}
+	return false;
 }
 
 MissionaryControl::~MissionaryControl() {}

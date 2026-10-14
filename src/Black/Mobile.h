@@ -26,9 +26,9 @@ public:
 	// BW1W120 inlined BW1M119 010c3ce0
 	virtual ~Mobile() {}
 	// BW1W120 00606c70 BW1M119 013c26c0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00606c10 BW1M119 013c2790
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00606cd0 BW1M119 013c2680
 	virtual bool32_t BlocksTownClearArea() const;
 	// BW1W120 00425b00 BW1M119 010b0820

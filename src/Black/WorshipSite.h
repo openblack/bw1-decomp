@@ -101,9 +101,9 @@ public:
 	// BW1W120 0077cd70 BW1M119 015b5ed0
 	virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
 	// BW1W120 0077d700 BW1M119 015b3ab0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0077d2f0 BW1M119 015b4810
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055dcd0 BW1M119 015baed0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_WORSHIP_SITE; }
 	// BW1W120 0077daf0 BW1M119 015b3a60

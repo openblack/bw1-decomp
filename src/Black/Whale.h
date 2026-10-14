@@ -32,9 +32,9 @@ public:
 	// BW1W120 005612b0 BW1M119 01168220
 	virtual char* GetDebugText() { return "Whale:"; }
 	// BW1W120 007752c0 BW1M119 011682b0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 007752a0 BW1M119 01168310
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005612a0 BW1M119 011681f0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_WHALE; }
 	// BW1W120 007752e0 BW1M119 01168260

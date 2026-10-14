@@ -61,9 +61,9 @@ public:
 	// BW1W120 0072ead0 BW1M119 01158bc0
 	virtual char* GetDebugText();
 	// BW1W120 00730df0 BW1M119 01153cc0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00730b00 BW1M119 01154180
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0072eac0 BW1M119 01158b80
 	virtual uint32_t GetSaveType();
 	// BW1W120 007310d0 BW1M119 01153c70

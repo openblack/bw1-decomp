@@ -64,9 +64,9 @@ public:
 	// BW1W120 0071be10 BW1M119 01517730
 	virtual uint32_t GetGuidanceResourceType();
 	// BW1W120 0041b710 BW1M119 0116daa0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0041b460 BW1M119 0116de20
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0041b9a0 BW1M119 0116da50
 	virtual void ResolveLoad();
 	// BW1W120 00417840 BW1M119 01138230

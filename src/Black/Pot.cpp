@@ -4,6 +4,7 @@
 #include "ColourConstants.h" /* For White */
 #include "PileFood.h"
 #include "PileWood.h"
+#include "GameOSFile.h" /* For class GameOSFile */
 
 uint32_t PileFood::GetSaveType()
 {
@@ -58,5 +59,25 @@ int PileResource::IsTuggable()
 
 bool32_t PileResource::IsField(Creature* creature)
 {
+	return false;
+}
+
+bool32_t PileResource::Load(GameOSFile& file)
+{
+	if (PotStructure::Load(file))
+	{
+		file.ReadIt(AltitudeZoomer);
+		return true;
+	}
+	return false;
+}
+
+bool32_t PileResource::Save(GameOSFile& file)
+{
+	if (PotStructure::Save(file))
+	{
+		file.WriteIt(AltitudeZoomer);
+		return true;
+	}
 	return false;
 }

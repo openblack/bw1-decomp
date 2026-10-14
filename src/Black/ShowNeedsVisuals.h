@@ -37,9 +37,9 @@ public:
 	// BW1W120 0055ddc0 BW1M119 0114cd60
 	virtual char* GetDebugText() { return "ShowNeedsVisuals:"; }
 	// BW1W120 0071a320 BW1M119 0114ce20
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0071a230 BW1M119 0114cfa0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055ddb0 BW1M119 0114cd20
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SHOW_NEEDS_VISUALS; }
 	// BW1W120 0071a410 BW1M119 0114cdb0

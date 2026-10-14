@@ -12,24 +12,24 @@ uint32_t Mobile::ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& 
 	return 0x16;
 }
 
-uint32_t Mobile::Save(GameOSFile& file)
+bool32_t Mobile::Save(GameOSFile& file)
 {
 	if (Object::Save(file))
 	{
 		WRITE_SAFE(file, field_0x54);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t Mobile::Load(GameOSFile& file)
+bool32_t Mobile::Load(GameOSFile& file)
 {
 	if (Object::Load(file))
 	{
 		file.ReadSafe(field_0x54);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 bool32_t Mobile::BlocksTownClearArea() const

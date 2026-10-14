@@ -20,7 +20,12 @@ class Object;
 class SpellDispenser : public Abode
 {
 public:
-	uint8_t field_0xc4[0x18];
+	uint32_t   field_0xc4;
+	uint32_t   field_0xc8;
+	GameThing* field_0xcc;
+	uint32_t   field_0xd0;
+	uint32_t   field_0xd4;
+	uint8_t    field_0xd8[0x4];
 
 	// Override methods
 
@@ -31,9 +36,9 @@ public:
 	// BW1W120 00722fa0 BW1M119 01522430
 	virtual char* GetDebugText();
 	// BW1W120 00722e80 BW1M119 01522490
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00722d50 BW1M119 01522650
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 007226f0 BW1M119 015221e0
 	virtual uint32_t GetSaveType();
 	// BW1W120 007226d0 BW1M119 01522150

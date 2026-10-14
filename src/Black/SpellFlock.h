@@ -20,16 +20,18 @@ struct SpellCastData;
 class SpellFlock : public SpellWithObjects
 {
 public:
-	uint8_t   field_0xf4[0xc];
-	MapCoords field_0x100;
-	uint8_t   field_0x10c[0x4];
+	GameThing* field_0xf4;
+	uint32_t   field_0xf8;
+	uint32_t   field_0xfc;
+	MapCoords  field_0x100;
+	uint32_t   field_0x10c;
 
 	// Override methods
 
 	// BW1W120 00724780 BW1M119 01523ce0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 007248a0 BW1M119 01523b10
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00723280 BW1M119 01525dd0
 	virtual bool NeedsContinualPackets(GInterfaceStatus* param_1);
 	// BW1W120 007233d0 BW1M119 01525a20

@@ -318,9 +318,9 @@ public:
 	// BW1W120 00564b30 BW1M119 01323e00
 	virtual ~GameStats();
 	// BW1W120 005654f0 BW1M119 013209a0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00565e70 BW1M119 0131ef20
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005667f0 BW1M119 0131ee50
 	virtual void SaveExtraData(GameOSFile& file);
 

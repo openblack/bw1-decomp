@@ -32,9 +32,9 @@ public:
 		manager = NULL;
 	}
 	// BW1W120 006944d0 BW1M119 01426ae0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cb060 BW1M119 0148dfd0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055ecb0 BW1M119 0142cc80
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GJPSYS_INTERFACE; }
 	// BW1W120 0055ecc0 BW1M119 0142ccc0

@@ -34,9 +34,9 @@ public:
 	// BW1W120 00719d30 BW1M119 0114da80
 	virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
 	// BW1W120 00719cf0 BW1M119 0114db00
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00719cb0 BW1M119 0114dba0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055dd20 BW1M119 0114e530
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SHOW_NEEDS; }
 

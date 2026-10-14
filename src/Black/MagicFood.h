@@ -22,7 +22,7 @@ class Object;
 class MagicFood : public PileFood
 {
 public:
-	uint8_t field_0xbc[0x4];
+	GPlayer* Player; /* 0xbc */
 
 	// Override methods
 
@@ -31,13 +31,13 @@ public:
 	// BW1W120 005fa980 BW1M119 013b3cd0
 	virtual GPlayer* GetPlayer();
 	// BW1W120 005fa970 BW1M119 013b3c90
-	virtual void SetPlayer(GPlayer* param_1);
+	virtual void SetPlayer(GPlayer* player);
 	// BW1W120 005fa9b0 BW1M119 013b3d90
 	virtual char* GetDebugText();
 	// BW1W120 005fab40 BW1M119 013b3dd0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 005fab00 BW1M119 013b3e60
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005fa9a0 BW1M119 013b3d50
 	virtual uint32_t GetSaveType();
 	// BW1W120 005fa990 BW1M119 013b3d10

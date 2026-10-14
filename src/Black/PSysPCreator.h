@@ -98,7 +98,7 @@ public:
 	// BW1W120 006c8120 BW1M119 0142c0f0
 	virtual char* GetDebugText();
 	// BW1W120 006957e0 BW1M119 014253a0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 
 	// BW1W120 006c80f0 BW1M119 01484d10
 	RenderParticleGameObjectRef();
@@ -114,9 +114,9 @@ public:
 	// BW1W120 0067b0f0 BW1M119 013f7b70
 	virtual void DrawAt(const DrawData& data);
 	// BW1W120 00695850 BW1M119 01425330
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cc3c0 BW1M119 0148c0b0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055efc0 BW1M119 0142c000
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_RENDER_PARTICLE_GOLDEN_SHOWER; }
 	// BW1W120 006c80c0 BW1M119 01484dd0

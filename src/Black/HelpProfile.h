@@ -36,9 +36,9 @@ public:
 	// BW1W120 005c4660 BW1M119 0108b5e0
 	void Process();
 	// BW1W120 005c4820 BW1M119 01353010
-	uint32_t Save(GameOSFile& file);
+	bool32_t Save(GameOSFile& file);
 	// BW1W120 005c4830 BW1M119 01352f40
-	uint32_t              Load(GameOSFile& file);
+	bool32_t              Load(GameOSFile& file);
 	CameraHelpAccumulator accumulators[0x31]; /* 0x8 */
 	uint32_t              field_0x3354;
 

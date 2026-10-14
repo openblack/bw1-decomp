@@ -24,7 +24,7 @@ public:
 	// BW1W120 006ca440 BW1M119 0142c650
 	virtual char* GetDebugText();
 	// BW1W120 00695180 BW1M119 014258a0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0067b220 BW1M119 013f7820
 	virtual void DrawAt(const DrawData& data);
 

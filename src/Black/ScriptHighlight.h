@@ -30,7 +30,13 @@ class ScriptHighlight : public SingleMapFixed
 public:
 	// BW1W120 007096e0 BW1M119 015035c0
 	static void                 OnClearMap();
-	uint8_t                     field_0x5c[0x2c];
+	uint32_t                    field_0x5c;
+	uint32_t                    field_0x60;
+	uint8_t                     field_0x64[0x14];
+	uint32_t                    field_0x78;
+	uint32_t                    field_0x7c;
+	uint32_t                    field_0x80;
+	uint32_t                    field_0x84;
 	LHListNode<ScriptHighlight> next;
 
 	// Override methods
@@ -42,9 +48,9 @@ public:
 	// BW1W120 00709860 BW1M119 015016b0
 	virtual char* GetDebugText();
 	// BW1W120 0070a8f0 BW1M119 01502260
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0070a760 BW1M119 015024a0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00709850 BW1M119 01501670
 	virtual uint32_t GetSaveType();
 	// BW1W120 007097f0 BW1M119 01501480

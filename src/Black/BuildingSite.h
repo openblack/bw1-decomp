@@ -56,9 +56,9 @@ public:
 	// BW1W120 0043c530 BW1M119 010be2c0
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 0043cad0 BW1M119 010bcfe0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0043c830 BW1M119 010bd820
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0043b7a0 BW1M119 010c1920
 	virtual uint32_t GetSaveType();
 	// BW1W120 0043b950 BW1M119 010c02a0

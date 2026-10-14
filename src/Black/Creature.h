@@ -319,9 +319,9 @@ public:
 	// BW1W120 0071bd50 BW1M119 01517850
 	virtual uint32_t GetSampleForAttack();
 	// BW1W120 004e5ff0 BW1M119 0126ef60
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 004e4ea0 BW1M119 01270820
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 004740c0 BW1M119 011eaa00
 	virtual uint32_t GetSaveType();
 	// BW1W120 004e6ab0 BW1M119 0126e8e0
@@ -1026,9 +1026,9 @@ public:
 	// BW1W120 0050b360 BW1M119 010c3800
 	virtual char* GetDebugText();
 	// BW1W120 0050b4e0 BW1M119 010c3890
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0050b4c0 BW1M119 010c38f0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0050b350 BW1M119 010c37d0
 	virtual uint32_t GetSaveType();
 	// BW1W120 0050b4a0 BW1M119 010c3950

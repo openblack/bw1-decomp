@@ -30,9 +30,9 @@ public:
 	// BW1W120 0055e000 BW1M119 010fd820
 	virtual char* GetDebugText() { return "GraveYard:"; }
 	// BW1W120 00595f50 BW1M119 010fd860
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00595ee0 BW1M119 010fd940
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055dff0 BW1M119 010fd7e0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GRAVEYARD; }
 	// BW1W120 0055df90 BW1M119 inlined

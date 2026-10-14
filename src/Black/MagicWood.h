@@ -22,7 +22,7 @@ class Object;
 class MagicWood : public PileWood
 {
 public:
-	uint8_t field_0xb4[0x4];
+	GPlayer* Player; /* 0xb4 */
 
 	// Override methods
 
@@ -33,9 +33,9 @@ public:
 	// BW1W120 00600de0 BW1M119 013c21e0
 	virtual char* GetDebugText();
 	// BW1W120 00600f60 BW1M119 013c2220
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00600f20 BW1M119 013c22b0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00600dd0 BW1M119 013c21a0
 	virtual uint32_t GetSaveType();
 	// BW1W120 00600db0 BW1M119 013c2110

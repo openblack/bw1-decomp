@@ -125,7 +125,7 @@ void GameThing::ToBeDeleted(int param_1)
 	}
 }
 
-uint32_t GameThing::Save(GameOSFile& file)
+bool32_t GameThing::Save(GameOSFile& file)
 {
 	uint32_t saveType = GetSaveType();
 	WRITE_SAFE(file, saveType);
@@ -135,12 +135,12 @@ uint32_t GameThing::Save(GameOSFile& file)
 		file.WriteCheckSum(this);
 		WRITE_SAFE(file, destroyed);
 		WRITE_SAFE(file, Flags);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t GameThing::Load(GameOSFile& file)
+bool32_t GameThing::Load(GameOSFile& file)
 {
 	RenderLoadingFrame(true);
 	file.ReadCheckSum(this);
@@ -148,7 +148,7 @@ uint32_t GameThing::Load(GameOSFile& file)
 	file.ReadSafe(destroyed);
 	file.ReadSafe(Flags);
 
-	return 1;
+	return true;
 }
 
 uint32_t GameThing::GetSaveType()
@@ -380,18 +380,18 @@ uint32_t GameThingWithPos::GetFOVHelpCondition()
 	return 0;
 }
 
-uint32_t GameThingWithPos::Save(GameOSFile& file)
+bool32_t GameThingWithPos::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
 		WRITE_SAFE(file, Pos);
 		WRITE_SAFE(file, Flags);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t GameThingWithPos::Load(GameOSFile& file)
+bool32_t GameThingWithPos::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
@@ -405,9 +405,9 @@ uint32_t GameThingWithPos::Load(GameOSFile& file)
 			Flags &= ~GAME_THING_WITH_POS_FLAG_IN_MAP;
 		}
 
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 uint32_t GameThingWithPos::GetSaveType()

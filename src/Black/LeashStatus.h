@@ -37,9 +37,9 @@ public:
 	// BW1W120 005e7630 BW1M119 01382c20
 	virtual GPlayer* GetPlayer();
 	// BW1W120 005e7430 BW1M119 01382c80
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 005e7230 BW1M119 01382f70
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005db930 BW1M119 01382b00
 	virtual uint32_t GetSaveType();
 	// BW1W120 005e71d0 BW1M119 01383280

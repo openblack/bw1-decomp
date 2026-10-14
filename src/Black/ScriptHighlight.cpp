@@ -3,6 +3,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include "ScriptHighlightInfo.h"
+#include "GameOSFile.h" /* For class GameOSFile */
 
 GScriptHighlightInfo GScriptHighlightInfo::Infos[SCRIPT_HIGHLIGHT_INFO_LAST];
 
@@ -96,6 +97,36 @@ SCRIPT_OBJECT_TYPE ScriptHighlight::GetScriptObjectType()
 char* ScriptHighlight::GetDebugText()
 {
 	return "ScriptHighlight:";
+}
+
+bool32_t ScriptHighlight::Load(GameOSFile& file)
+{
+	if (Fixed::Load(file))
+	{
+		file.ReadIt(field_0x5c);
+		file.ReadIt(field_0x60);
+		file.ReadIt(field_0x7c);
+		file.ReadIt(field_0x80);
+		file.ReadIt(field_0x78);
+		file.ReadIt(field_0x84);
+		return true;
+	}
+	return false;
+}
+
+bool32_t ScriptHighlight::Save(GameOSFile& file)
+{
+	if (Fixed::Save(file))
+	{
+		file.WriteIt(field_0x5c);
+		file.WriteIt(field_0x60);
+		file.WriteIt(field_0x7c);
+		file.WriteIt(field_0x80);
+		file.WriteIt(field_0x78);
+		file.WriteIt(field_0x84);
+		return true;
+	}
+	return false;
 }
 
 GBaseInfo* GScriptHighlightInfo::GetBaseInfo(uint32_t& info_count)

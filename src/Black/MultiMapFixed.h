@@ -127,9 +127,9 @@ public:
 	// BW1W120 0052ef70 BW1M119 010622d0
 	virtual bool32_t IsFunctional();
 	// BW1W120 0052f310 BW1M119 010e3990
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0052f250 BW1M119 010e3af0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00421fe0 BW1M119 011ce950
 	virtual MapCoords GetArrivePos() { return GetDoorPos(); }
 	// BW1W120 0052e480 BW1M119 010e5e30

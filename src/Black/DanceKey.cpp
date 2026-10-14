@@ -35,28 +35,28 @@ DanceKeyAction::DanceKeyAction(LHDynamicStack<unsigned long>& groups, DANCE_GROU
 	Argument = argument;
 }
 
-uint32_t DanceKeyAction::Save(GameOSFile& file)
+bool32_t DanceKeyAction::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
 		file.WriteSafe(Groups);
 		WRITE_IT(file, Type);
 		WRITE_IT(file, Argument);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t DanceKeyAction::Load(GameOSFile& file)
+bool32_t DanceKeyAction::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
 		file.ReadSafe(Groups);
 		file.ReadIt(Type);
 		file.ReadIt(Argument);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 uint32_t DanceKeyAction::GetSaveType()
@@ -93,28 +93,28 @@ void DanceKeyFrame::ToBeDeleted(int delete_now)
 	GameThing::ToBeDeleted(delete_now);
 }
 
-uint32_t DanceKeyFrame::Save(GameOSFile& file)
+bool32_t DanceKeyFrame::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
 		WRITE_IT(file, Time);
 		file.WriteSafe(Actions);
 		WRITE_IT(file, EditFlags);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t DanceKeyFrame::Load(GameOSFile& file)
+bool32_t DanceKeyFrame::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
 		file.ReadIt(Time);
 		file.ReadSafe(Actions);
 		file.ReadIt(EditFlags);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 bool32_t DanceKeyFrame::IsTimeEqualTo(float time)

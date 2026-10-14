@@ -28,9 +28,9 @@ public:
 	// BW1W120 0055de10 BW1M119 0115d5b0
 	virtual char* GetDebugText() { return "Stream:"; }
 	// BW1W120 007344e0 BW1M119 0115b8a0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00734380 BW1M119 0115be60
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055de00 BW1M119 0115d570
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GSTREAM; }
 	// BW1W120 00734640 BW1M119 0115b830

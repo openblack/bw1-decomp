@@ -42,9 +42,9 @@ public:
 	// BW1W120 004247b0 BW1M119 010aff70
 	virtual char* GetDebugText();
 	// BW1W120 004251d0 BW1M119 010ae160
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 004250d0 BW1M119 010ae2e0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 004247a0 BW1M119 010aff30
 	virtual uint32_t GetSaveType();
 	// BW1W120 00424790 BW1M119 010afef0
@@ -66,7 +66,13 @@ public:
 class ArenaSpellIcon : public Fixed
 {
 public:
-	uint8_t field_0x58[0x1c];
+	GameThing* field_0x58;
+	uint8_t    field_0x5c[0x4];
+	uint32_t   field_0x60;
+	uint32_t   field_0x64;
+	uint8_t    field_0x68[0x4];
+	uint32_t   field_0x6c;
+	uint8_t    field_0x70[0x4];
 
 	// Override methods
 
@@ -77,9 +83,9 @@ public:
 	// BW1W120 00425330 BW1M119 010ad580
 	virtual char* GetDebugText();
 	// BW1W120 004257d0 BW1M119 010ad7d0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 004256e0 BW1M119 010ad950
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00425320 BW1M119 010ad540
 	virtual uint32_t GetSaveType();
 	// BW1W120 00425540 BW1M119 010adc20

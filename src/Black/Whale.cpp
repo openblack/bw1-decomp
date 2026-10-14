@@ -7,3 +7,13 @@ void Whale::ResolveLoad()
 {
 	Object::ResolveLoad();
 }
+
+bool32_t Whale::Load(GameOSFile& file)
+{
+	return MobileObject::Load(file) != false;
+}
+
+bool32_t Whale::Save(GameOSFile& file)
+{
+	return MobileObject::Save(file) != false;
+}

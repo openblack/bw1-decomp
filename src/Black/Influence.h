@@ -62,9 +62,9 @@ public:
 	// BW1W120 0055ec60 BW1M119 011050f0
 	virtual char* GetDebugText() { return "InfluenceRing:"; }
 	// BW1W120 005cdd40 BW1M119 01105130
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 005cdc60 BW1M119 01105280
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055ec50 BW1M119 011050b0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_INFLUENCE_RING; }
 	// BW1W120 0055ebf0 BW1M119 01104eb0

@@ -623,7 +623,7 @@ void WorshipSpellIcon::StopRemoveFromPlayer()
 	}
 }
 
-uint32_t WorshipSpellIcon::Save(GameOSFile& file)
+bool32_t WorshipSpellIcon::Save(GameOSFile& file)
 {
 	if (SpellIcon::Save(file))
 	{
@@ -642,7 +642,7 @@ uint32_t WorshipSpellIcon::Save(GameOSFile& file)
 	return false;
 }
 
-uint32_t WorshipSpellIcon::Load(GameOSFile& file)
+bool32_t WorshipSpellIcon::Load(GameOSFile& file)
 {
 	if (SpellIcon::Load(file))
 	{

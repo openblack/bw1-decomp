@@ -23,9 +23,9 @@ public:
 	// BW1W120 0055cfc0 BW1M119 01527610
 	virtual char* GetDebugText() { return "SpellFood:"; }
 	// BW1W120 007252f0 BW1M119 015269a0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00725350 BW1M119 015268c0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055cfb0 BW1M119 015275d0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_RESOURCE; }
 	// BW1W120 00724c90 BW1M119 015273d0

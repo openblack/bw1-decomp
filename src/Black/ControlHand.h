@@ -241,9 +241,9 @@ public:
 	// BW1W120 0046c1b0 BW1M119 011d0600
 	void Show(bool32_t show);
 	// BW1W120 0046eb10 BW1M119 011cce70
-	uint32_t Save(GameOSFile& file);
+	bool32_t Save(GameOSFile& file);
 	// BW1W120 0046e930 BW1M119 011cd140
-	uint32_t Load(GameOSFile& file);
+	bool32_t Load(GameOSFile& file);
 	// BW1W120 0046ecf0 BW1M119 011ccd60
 	void ResolveLoad();
 

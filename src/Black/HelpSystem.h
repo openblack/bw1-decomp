@@ -350,9 +350,9 @@ public:
 	// BW1W120 005c9090 BW1M119 01048fc0
 	void SendFOVObject(Object* object, float distance);
 	// BW1W120 005c6eb0 BW1M119 013564b0
-	uint32_t Save(GameOSFile& file);
+	bool32_t Save(GameOSFile& file);
 	// BW1W120 005c73e0 BW1M119 01355620
-	uint32_t Load(GameOSFile& file);
+	bool32_t Load(GameOSFile& file);
 	// BW1W120 005c78b0 BW1M119 013555d0
 	void ResolveLoad();
 

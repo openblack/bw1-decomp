@@ -70,9 +70,9 @@ public:
 	// BW1W120 0055d470 BW1M119 0152e830
 	virtual char* GetDebugText() { return "SpellIcon:"; }
 	// BW1W120 00727a00 BW1M119 01529310
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00727940 BW1M119 01529440
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055d460 BW1M119 0152e7f0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_ICON; }
 	// BW1W120 0055d420 BW1M119 0152e6c0

@@ -27,9 +27,9 @@ public:
 	// BW1W120 0055d2e0 BW1M119 01523700
 	virtual char* GetDebugText() { return "SpellFlockGround:"; }
 	// BW1W120 00724bb0 BW1M119 015237b0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00724bd0 BW1M119 01523740
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055d2d0 BW1M119 015236c0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_FLOCK_GROUND; }
 	// BW1W120 00724290 BW1M119 01524470

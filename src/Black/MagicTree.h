@@ -20,7 +20,8 @@ class Object;
 class MagicTree : public Tree
 {
 public:
-	uint8_t field_0x6c[0x8];
+	uint32_t field_0x6c;
+	uint32_t field_0x70;
 
 	// Override methods
 
@@ -33,9 +34,9 @@ public:
 	// BW1W120 005fcf20 BW1M119 013ba300
 	virtual char* GetDebugText();
 	// BW1W120 005fd1c0 BW1M119 013ba340
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 005fd110 BW1M119 013ba460
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005fcf10 BW1M119 013ba2c0
 	virtual uint32_t GetSaveType();
 	// BW1W120 005fcf00 BW1M119 013ba280
