@@ -152,7 +152,7 @@ uint32_t CHand::LoadBinary(char* filename, int param_1)
 			{
 				// __dl__FPv(Matrix0x49ac);
 			}
-			// Matrix0x49ac = (LHMatrix*)__nw__FUl(field_0x47b8 * 0x30, __FILE__, __LINE__);
+			// Matrix0x49ac = (LHMatrix*)__nw__FUl(NumTransformedMatrices * 0x30, __FILE__, __LINE__);
 			return 1;
 		}
 	}

@@ -19,8 +19,8 @@ struct LHSprite;
 // What LHSurface::Image points at.
 enum LH_SURFACE_IMAGE_TYPE
 {
-	LH_SURFACE_IMAGE_TYPE_0x0 = 0x0, /* Image is an LHSpriteFrame* (multi-part) */
-	LH_SURFACE_IMAGE_TYPE_0x1 = 0x1, /* Image is an LHSprite* (single) */
+	LH_SURFACE_IMAGE_TYPE_SPRITE_FRAME = 0x0, /* Image is an LHSpriteFrame* (multi-part) */
+	LH_SURFACE_IMAGE_TYPE_SPRITE = 0x1,       /* Image is an LHSprite* (single) */
 	_LH_SURFACE_IMAGE_TYPE_COUNT = 0x2
 };
 

@@ -1575,7 +1575,7 @@ void CameraModeNew3::Reinitialise(bool keep_fight)
 	field_0x100 = 0;
 	field_0x8 = 0;
 	IdleTime = 0.0f;
-	field_0x2ec = 0;
+	InputDisabled = 0;
 	field_0x2f0 = 0;
 	RotatePoint = LHPoint(0.0f, 0.0f, 0.0f);
 	Global_00c5b0f4 = 0;
@@ -1837,7 +1837,7 @@ void CameraModeNew3::UpdateTricons()
 			Global_00c5b0f4 &= ~8;
 		}
 	}
-	if (field_0x2ec || field_0x2f0)
+	if (InputDisabled || field_0x2f0)
 	{
 		Global_00c5b0f4 = 0;
 	}
@@ -2266,7 +2266,7 @@ void CameraModeNew3::Update()
 	Global_00c5b0bc = Global_00c5b0b4;
 	Global_00c5b0b8 = Global_00c5b0ec;
 	MouseDelta = LHCoord(0, 0);
-	if (field_0x2ec == 0)
+	if (InputDisabled == 0)
 	{
 		HAND_STATE handState = GGame::g_game->MyInterface()->HandState.GetState();
 		Global_00c5b0f0 = handState == HAND_STATE_GRIP_LANDSCAPE;
@@ -2473,7 +2473,7 @@ void CameraModeNew3::Update()
 	Global_00c5b100.Update(dt);
 
 	int wheel = 0;
-	if (field_0x2ec == 0 && Global_00c5b100.GetCurrentValue() < 0.01f)
+	if (InputDisabled == 0 && Global_00c5b100.GetCurrentValue() < 0.01f)
 	{
 		if (GGame::g_game->control_map->IsActionPerformed(BINDABLE_ACTION_ZOOM_OUT))
 		{

@@ -19,7 +19,7 @@ enum LH_MOUSE_IMAGE_TYPE
 	LH_MOUSE_IMAGE_TYPE_0x05 = 0x5,
 	LH_MOUSE_IMAGE_TYPE_0x06 = 0x6,
 	LH_MOUSE_IMAGE_TYPE_0x07 = 0x7,
-	LH_MOUSE_IMAGE_TYPE_0x08 = 0x8,
+	LH_MOUSE_IMAGE_TYPE_SURFACE = 0x8,
 	LH_MOUSE_IMAGE_TYPE_0x09 = 0x9,
 	LH_MOUSE_IMAGE_TYPE_0x0a = 0xa,
 	LH_MOUSE_IMAGE_TYPE_0x0b = 0xb,
@@ -43,7 +43,7 @@ enum LH_MOUSE_IMAGE_TYPE
 	LH_MOUSE_IMAGE_TYPE_0x1d = 0x1d,
 	LH_MOUSE_IMAGE_TYPE_0x1e = 0x1e,
 	LH_MOUSE_IMAGE_TYPE_0x1f = 0x1f,
-	LH_MOUSE_IMAGE_TYPE_0x20 = 0x20,
+	LH_MOUSE_IMAGE_TYPE_SPRITE = 0x20,
 	LH_MOUSE_IMAGE_TYPE_0x21 = 0x21,
 	LH_MOUSE_IMAGE_TYPE_0x22 = 0x22,
 	LH_MOUSE_IMAGE_TYPE_0x23 = 0x23,
@@ -75,7 +75,7 @@ enum LH_MOUSE_IMAGE_TYPE
 	LH_MOUSE_IMAGE_TYPE_0x3d = 0x3d,
 	LH_MOUSE_IMAGE_TYPE_0x3e = 0x3e,
 	LH_MOUSE_IMAGE_TYPE_0x3f = 0x3f,
-	LH_MOUSE_IMAGE_TYPE_0x40 = 0x40,
+	LH_MOUSE_IMAGE_TYPE_ANIMATED = 0x40,
 	_LH_MOUSE_IMAGE_TYPE_COUNT = 0x41
 };
 
@@ -93,10 +93,10 @@ enum LH_MOUSE_EVENT_TYPE
 // Playback mode passed to LHMouse::Animate.
 enum LH_ANIMATE_TYPE
 {
-	LH_ANIMATE_TYPE_0x0 = 0x0, /* stop, restore the previous image */
-	LH_ANIMATE_TYPE_0x1 = 0x1, /* loop forward */
-	LH_ANIMATE_TYPE_0x2 = 0x2, /* ping-pong */
-	LH_ANIMATE_TYPE_0x3 = 0x3, /* one shot */
+	LH_ANIMATE_TYPE_STOP = 0x0,      /* stop, restore the previous image */
+	LH_ANIMATE_TYPE_LOOP = 0x1,      /* loop forward */
+	LH_ANIMATE_TYPE_PING_PONG = 0x2, /* ping-pong */
+	LH_ANIMATE_TYPE_ONE_SHOT = 0x3,  /* one shot */
 };
 
 // Source-image kind passed to LHMouse::SetAnimateImages.
@@ -118,6 +118,21 @@ enum LH_MOUSE_BUTTON
 	LH_MOUSE_BUTTON_RIGHT_DOUBLE_CLICK = 0x20,
 	LH_MOUSE_BUTTON_MIDDLE_DOWN = 0x40,
 	LH_MOUSE_BUTTON_MIDDLE_UP = 0x80,
+};
+
+// Index into LHMouse::ButtonPos: the position recorded for each button event.
+enum LH_MOUSE_BUTTON_POS
+{
+	LH_MOUSE_BUTTON_POS_LEFT_DOWN = 0,
+	LH_MOUSE_BUTTON_POS_RIGHT_DOWN = 1,
+	LH_MOUSE_BUTTON_POS_MIDDLE_DOWN = 2,
+	LH_MOUSE_BUTTON_POS_LEFT_UP = 3,
+	LH_MOUSE_BUTTON_POS_RIGHT_UP = 4,
+	LH_MOUSE_BUTTON_POS_MIDDLE_UP = 5,
+	LH_MOUSE_BUTTON_POS_LEFT_DOUBLE_CLICK = 6,
+	LH_MOUSE_BUTTON_POS_RIGHT_DOUBLE_CLICK = 7,
+	LH_MOUSE_BUTTON_POS_NONE = 8,
+	LH_MOUSE_BUTTON_POS_COUNT = 9,
 };
 
 struct LHSprite;
@@ -174,7 +189,7 @@ struct LHMouse
 	int          MouseWheelAccum;
 	uint8_t      Buttons;
 	uint8_t      _pad0x101[3];
-	LHCoord      ButtonPos[9];
+	LHCoord      ButtonPos[LH_MOUSE_BUTTON_POS_COUNT];
 	uint8_t      ButtonPressed;
 	uint8_t      _pad0x14d[3];
 	void*        CallbackArg1;

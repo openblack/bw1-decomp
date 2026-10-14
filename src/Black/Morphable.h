@@ -66,7 +66,7 @@ public:
 	Morphable_field_0x4314_t* field_0x4314[0xe8];
 	MorphableSoundEffect      SoundEffects[16];
 	int                       NumSoundEffects;
-	int                       field_0x47b8;
+	int                       NumTransformedMatrices;
 	int                       field_0x47bc;
 	CAnim*                    CycleAnim[4];
 	long                      CycleTime[4];

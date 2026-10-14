@@ -362,7 +362,7 @@ struct SetupBox
 	SetupControl* HoverWidget; /* 0xbc */
 	int           HoldColour;
 	float         Alpha;
-	uint32_t      field_0xc8;
+	uint32_t      AllowKeysInCitadel;
 
 	// Static methods
 

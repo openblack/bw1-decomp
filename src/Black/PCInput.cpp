@@ -49,26 +49,23 @@
 #include <Lionhead/LHMultiplayer/ver4.0/LHNetUtils.h> /* For LHNetUseProfile */
 #include <Lionhead/LHMultiplayer/ver4.0/LHSession.h>  /* For LHSession */
 
-enum
-{
-	CREATURE_SNAPSHOT_VERSION = 2409,
-	CREATURE_SNAPSHOT_USER_DATA_SIZE = 0x828,
-	CREATURE_SNAPSHOT_ANIM_COUNT = 441,
-};
+#define CREATURE_SNAPSHOT_VERSION        2409
+#define CREATURE_SNAPSHOT_USER_DATA_SIZE 0x828
+#define CREATURE_SNAPSHOT_ANIM_COUNT     441
 
 #define FILEPATH "C:\\dev\\MP\\Black\\PCInput.cpp"
 
 enum PROFILE
 {
 	PROFILE_NONE = 0,
-	PROFILE_J = 1,
-	PROFILE_M = 2,
-	PROFILE_G = 3,
-	PROFILE_C = 4,
-	PROFILE_D = 5,
-	PROFILE_K = 6,
-	PROFILE_T = 7,
-	PROFILE_B = 8,
+	PROFILE_KEY_J = 1,
+	PROFILE_KEY_M = 2,
+	PROFILE_KEY_G = 3,
+	PROFILE_KEY_C = 4,
+	PROFILE_KEY_D = 5,
+	PROFILE_KEY_K = 6,
+	PROFILE_KEY_T = 7,
+	PROFILE_KEY_B = 8,
 };
 
 unsigned char Dat_00D46A74;
@@ -82,28 +79,28 @@ void GGame::SwitchProfile(LH_KEY key)
 	switch (key)
 	{
 	case KB_J:
-		Profile = PROFILE_J;
+		Profile = PROFILE_KEY_J;
 		break;
 	case KB_M:
-		Profile = PROFILE_M;
+		Profile = PROFILE_KEY_M;
 		break;
 	case KB_G:
-		Profile = PROFILE_G;
+		Profile = PROFILE_KEY_G;
 		break;
 	case KB_C:
-		Profile = PROFILE_C;
+		Profile = PROFILE_KEY_C;
 		break;
 	case KB_D:
-		Profile = PROFILE_D;
+		Profile = PROFILE_KEY_D;
 		break;
 	case KB_K:
-		Profile = PROFILE_K;
+		Profile = PROFILE_KEY_K;
 		break;
 	case KB_T:
-		Profile = PROFILE_T;
+		Profile = PROFILE_KEY_T;
 		break;
 	case KB_B:
-		Profile = PROFILE_B;
+		Profile = PROFILE_KEY_B;
 		break;
 	case KB_0:
 		Profile = PROFILE_NONE;
@@ -125,7 +122,7 @@ void GGame::ProcessKey(LH_KEY key, unsigned short modifier)
 
 	if (key == KB_ESC)
 	{
-		if (g_game->field_0x205a10)
+		if (g_game->GameOverStarted)
 		{
 			if (!(g_game->help_system->WideScreen && g_game->help_system->GetWideScreenControl()))
 			{
@@ -201,7 +198,7 @@ void GGame::ProcessKey(LH_KEY key, unsigned short modifier)
 			return;
 		}
 		SetupBox::GetCurrentActiveBox()->Key(key, modifier);
-		if (SetupBox::GetCurrentActiveBox() != NULL && !SetupBox::GetCurrentActiveBox()->field_0xc8 &&
+		if (SetupBox::GetCurrentActiveBox() != NULL && !SetupBox::GetCurrentActiveBox()->AllowKeysInCitadel &&
 		    ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL)
 			return;
 	}
@@ -340,8 +337,8 @@ void GGame::ProcessMapKeys()
 	CameraModeNew3* mode = dynamic_cast<CameraModeNew3*>(g_game->GetCamera()->GetCurrentMode());
 	if (mode != NULL)
 	{
-		mode->field_0x2ec = ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL ||
-		                    (SetupBox::GetCurrentActiveBox() != NULL && SetupBox::Dat_00C4CCEE);
+		mode->InputDisabled = ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL ||
+		                      (SetupBox::GetCurrentActiveBox() != NULL && SetupBox::Dat_00C4CCEE);
 	}
 }
 
@@ -356,7 +353,7 @@ uint32_t GGame::ProcessBindableKeys(LH_KEY param_1, LH_KEY param_2, unsigned lon
 		{
 			if (param_2 == KB_RALT || param_2 == KB_LALT)
 			{
-				g_game->SetSpeed(max(0.5f, network.field_0x4 * 0.5f));
+				g_game->SetSpeed(max(0.5f, network.Speed * 0.5f));
 				return true;
 			}
 		}
@@ -364,7 +361,7 @@ uint32_t GGame::ProcessBindableKeys(LH_KEY param_1, LH_KEY param_2, unsigned lon
 		{
 			if (param_2 == KB_RALT || param_2 == KB_LALT)
 			{
-				g_game->SetSpeed(min(2.0f, network.field_0x4 * 2.0f));
+				g_game->SetSpeed(min(2.0f, network.Speed * 2.0f));
 				return true;
 			}
 		}
@@ -436,7 +433,7 @@ uint32_t GGame::DoAction(unsigned long param_1)
 		return true;
 	case BINDABLE_ACTION_LEASH_UNLEASH_CREATURE:
 		if (MyPlayer()->GetCreature() != NULL)
-			g_game->SetPacket(PACKET_TYPE_0x5f);
+			g_game->SetPacket(PACKET_TYPE_LEASH_UNLEASH_CREATURE);
 		return true;
 	case BINDABLE_ACTION_TALK:
 		LHSys::TheSystem.charRing.Clear();
@@ -469,20 +466,20 @@ uint32_t GGame::DoAction(unsigned long param_1)
 	case BINDABLE_ACTION_QUICK_SAVE:
 		if (!g_game->IsMultiplayerGame() &&
 		    !(g_game->help_system->WideScreen && g_game->help_system->GetWideScreenControl()) &&
-		    !g_game->field_0x205a10 && abs((int)(g_game->field_0x205a18 - g_game->data.GameTurn)) > 3)
+		    !g_game->GameOverStarted && abs((int)(g_game->LastSaveTurn - g_game->data.GameTurn)) > 3)
 		{
-			g_game->field_0x205a18 = g_game->data.GameTurn;
-			SetPacket(PACKET_TYPE_0x61);
+			g_game->LastSaveTurn = g_game->data.GameTurn;
+			SetPacket(PACKET_TYPE_SAVE_GAME);
 		}
 		return true;
 	case BINDABLE_ACTION_QUICK_LOAD:
-		if (!g_game->IsMultiplayerGame() && !g_game->field_0x205a10 &&
-		    abs((int)(g_game->field_0x205a1c - g_game->data.GameTurn)) > 3)
-			SetPacket(PACKET_TYPE_0x62);
+		if (!g_game->IsMultiplayerGame() && !g_game->GameOverStarted &&
+		    abs((int)(g_game->LastLoadTurn - g_game->data.GameTurn)) > 3)
+			SetPacket(PACKET_TYPE_LOAD_GAME);
 		return true;
 	case BINDABLE_ACTION_NEXT_LEASH: {
 		uint32_t leash;
-		switch (g_game->MyInterface()->status->LeashStatus->field_0x1c)
+		switch (g_game->MyInterface()->status->LeashStatus->LeashType)
 		{
 		case LEASH_TYPE_EVIL:
 			leash = LEASH_TYPE_GOOD;
@@ -495,13 +492,13 @@ uint32_t GGame::DoAction(unsigned long param_1)
 			break;
 		}
 		if (g_game->MyPlayer() != NULL && g_game->MyPlayer()->GetCreature() != NULL &&
-		    (&g_game->MyPlayer()->GetCreature()->field_0x1108)[(uint16_t)leash] == 1)
-			g_game->SetPacket(PACKET_TYPE_0x65, (uint16_t)leash, 0);
+		    g_game->MyPlayer()->GetCreature()->LeashEnabled[(uint16_t)leash] == 1)
+			g_game->SetPacket(PACKET_TYPE_CHANGE_LEASH, (uint16_t)leash, 0);
 		return true;
 	}
 	case BINDABLE_ACTION_PREVIOUS_LEASH: {
 		uint32_t leash;
-		switch (g_game->MyInterface()->status->LeashStatus->field_0x1c)
+		switch (g_game->MyInterface()->status->LeashStatus->LeashType)
 		{
 		case LEASH_TYPE_EVIL:
 			leash = LEASH_TYPE_ROPE;
@@ -514,8 +511,8 @@ uint32_t GGame::DoAction(unsigned long param_1)
 			break;
 		}
 		if (g_game->MyPlayer() != NULL && g_game->MyPlayer()->GetCreature() != NULL &&
-		    (&g_game->MyPlayer()->GetCreature()->field_0x1108)[(uint16_t)leash] == 1)
-			g_game->SetPacket(PACKET_TYPE_0x65, (uint16_t)leash, 0);
+		    g_game->MyPlayer()->GetCreature()->LeashEnabled[(uint16_t)leash] == 1)
+			g_game->SetPacket(PACKET_TYPE_CHANGE_LEASH, (uint16_t)leash, 0);
 		return true;
 	}
 	}
@@ -559,7 +556,7 @@ bool32_t SaveCreatureSnapshot()
 	fwrite(&visualTime, 1, sizeof(visualTime), file);
 	fwrite(&skyType, 1, sizeof(skyType), file);
 	fwrite(&alignment, 1, sizeof(alignment), file);
-	fwrite(&GGame::g_game->GetCamera()->field_0x8c, 1, sizeof(GGame::g_game->GetCamera()->field_0x8c), file);
+	fwrite(&GGame::g_game->GetCamera()->Weather, 1, sizeof(GGame::g_game->GetCamera()->Weather), file);
 
 	char* mapName = "mpm_2p_1";
 	if (GGame::g_game->IsMultiplayerGame())
@@ -599,7 +596,7 @@ bool32_t SaveCreatureSnapshot()
 		fwrite(&i, 1, sizeof(i), file);
 		fwrite(userData, 1, CREATURE_SNAPSHOT_USER_DATA_SIZE, file);
 
-		int       matrixCount = creature3D->field_0x47b8;
+		int       matrixCount = creature3D->NumTransformedMatrices;
 		LHMatrix* matrices = creature3D->TransformedMatrices;
 		fwrite(&matrixCount, 1, sizeof(matrixCount), file);
 		fwrite(matrices, sizeof(LHMatrix), matrixCount, file);

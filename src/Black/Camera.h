@@ -4,8 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <Lionhead/LH3DLib/development/Zoomer.h>  /* For struct Zoomer, struct Zoomer3d */
+#include <Lionhead/LH3DLib/development/LHPoint.h>     /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/WeatherInfo.h> /* For struct WeatherInfo */
+#include <Lionhead/LH3DLib/development/Zoomer.h>      /* For struct Zoomer, struct Zoomer3d */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
@@ -45,7 +46,7 @@ public:
 	uint8_t     field_0x7a;
 	uint8_t     field_0x7b;
 	uint32_t    field_0x7c;
-	uint8_t     field_0x8c[0x8]; /* 0x80 */
+	WeatherInfo Weather; /* 0x80 */
 	Zoomer3d    CameraHeadingZoomer;
 	Zoomer3d    CameraOriginZoomer; /* 0x118 */
 	Zoomer      FovZoomer;          /* 0x1a8 */

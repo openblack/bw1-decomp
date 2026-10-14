@@ -229,10 +229,10 @@ public:
 	GMap                   map;
 	uint32_t               LandNumber;
 	bool32_t               SkirmishGame;
-	int                    field_0x205a10;
+	int                    GameOverStarted;
 	int                    field_0x205a14;
-	uint32_t               field_0x205a18;
-	int                    field_0x205a1c;
+	uint32_t               LastSaveTurn;
+	int                    LastLoadTurn;
 	GLandscape             landscape;
 	GAME_VIEW_MODE         ViewMode;
 	uint32_t               field_0x205a2c;

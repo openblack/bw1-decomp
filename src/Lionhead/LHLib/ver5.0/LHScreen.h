@@ -5,8 +5,8 @@
 
 enum LH_SCREEN_BUFFER
 {
-	LH_SCREEN_BUFFER_0x0 = 0x0,
-	LH_SCREEN_BUFFER_0x1 = 0x1,
+	LH_SCREEN_BUFFER_BACK = 0x0,
+	LH_SCREEN_BUFFER_PRIMARY = 0x1,
 	_LH_SCREEN_BUFFER_COUNT = 0x2
 };
 #include <ddraw.h>  /* For IDirectDraw7, IDirectDrawClipper, IDirectDrawSurface7 */

@@ -14,6 +14,7 @@
 #include <Lionhead/LH3DLib/development/LHRegion.h>
 #include <Lionhead/LHLib/ver5.0/LHDraw.h>
 #include <Lionhead/LHLib/ver5.0/LHMem.h>
+#include <Lionhead/LHLib/ver5.0/LHReturn.h>
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>
 #include <Lionhead/LHLib/ver5.0/LHSurface.h>
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>
@@ -39,7 +40,7 @@ inline int LHSurface::Blit(LHRegion* region, LHCoord* pos, LH_SCREEN_BUFFER scre
 	coord.x = pos->x;
 	coord.y = pos->y;
 	IDirectDrawSurface7* surface;
-	if (screen_buffer == LH_SCREEN_BUFFER_0x1)
+	if (screen_buffer == LH_SCREEN_BUFFER_PRIMARY)
 	{
 		coord.AddMSWindowOffset();
 		surface = LHSys::GetScreen().PPrimarySurface;
@@ -56,7 +57,7 @@ inline void LHMouse::UnDraw()
 	Lock();
 	if (!Locked)
 	{
-		SaveSurface[BufferToggle]->Blit(&PrevSavedRegion, &PrevDrawRegion.start, LH_SCREEN_BUFFER_0x1);
+		SaveSurface[BufferToggle]->Blit(&PrevSavedRegion, &PrevDrawRegion.start, LH_SCREEN_BUFFER_PRIMARY);
 		Locked = true;
 	}
 	Unlock();
@@ -131,16 +132,16 @@ void LHMouse::UpdateDeltaPos()
 int LHMouse::InitDirectInput()
 {
 	if (DirectInputCreateA(LHSys::GetInstance(), DIRECTINPUT_VERSION, &gDirectInput, NULL) < 0)
-		return 2;
+		return LH_FAIL;
 	if (gDirectInput->CreateDevice(GUID_SysMouse, (LPDIRECTINPUTDEVICEA*)&gMouseDevice, NULL) < 0)
-		return 2;
+		return LH_FAIL;
 	if (gMouseDevice->SetDataFormat(&c_dfDIMouse) < 0)
-		return 2;
+		return LH_FAIL;
 	if (gMouseDevice->SetCooperativeLevel(LHSys::GetScreen().MsWindowHandle, DISCL_NONEXCLUSIVE | DISCL_FOREGROUND) < 0)
-		return 2;
+		return LH_FAIL;
 	if (gMouseDevice->Acquire() < 0)
-		return 2;
-	return 0;
+		return LH_FAIL;
+	return LH_OK;
 }
 
 int LHMouse::ShutdownDirectInput()
@@ -213,48 +214,48 @@ void LHMouse::SetButtons(uint8_t button)
 	switch (button)
 	{
 	case LH_MOUSE_BUTTON_RIGHT_DOWN:
-		ButtonPos[1] = DefaultPos;
+		ButtonPos[LH_MOUSE_BUTTON_POS_RIGHT_DOWN] = DefaultPos;
 		ButtonPressed &= ~LH_MOUSE_BUTTON_RIGHT_UP;
 		Buttons &= ~LH_MOUSE_BUTTON_RIGHT_UP;
 		Unlock();
 		break;
 	case LH_MOUSE_BUTTON_RIGHT_UP:
-		ButtonPos[4] = DefaultPos;
+		ButtonPos[LH_MOUSE_BUTTON_POS_RIGHT_UP] = DefaultPos;
 		Buttons &= ~LH_MOUSE_BUTTON_RIGHT_DOWN;
 		Unlock();
 		break;
 	case LH_MOUSE_BUTTON_MIDDLE_DOWN:
-		ButtonPos[2] = DefaultPos;
+		ButtonPos[LH_MOUSE_BUTTON_POS_MIDDLE_DOWN] = DefaultPos;
 		ButtonPressed &= ~LH_MOUSE_BUTTON_MIDDLE_UP;
 		Buttons &= ~LH_MOUSE_BUTTON_MIDDLE_UP;
 		Unlock();
 		break;
 	case LH_MOUSE_BUTTON_MIDDLE_UP:
-		ButtonPos[5] = DefaultPos;
+		ButtonPos[LH_MOUSE_BUTTON_POS_MIDDLE_UP] = DefaultPos;
 		Buttons &= ~LH_MOUSE_BUTTON_MIDDLE_DOWN;
 		Unlock();
 		break;
 	case LH_MOUSE_BUTTON_LEFT_DOWN:
-		ButtonPos[0] = DefaultPos;
+		ButtonPos[LH_MOUSE_BUTTON_POS_LEFT_DOWN] = DefaultPos;
 		ButtonPressed &= ~LH_MOUSE_BUTTON_LEFT_UP;
 		Buttons &= ~LH_MOUSE_BUTTON_LEFT_UP;
 		Unlock();
 		break;
 	case LH_MOUSE_BUTTON_LEFT_UP:
-		ButtonPos[3] = DefaultPos;
+		ButtonPos[LH_MOUSE_BUTTON_POS_LEFT_UP] = DefaultPos;
 		Buttons &= ~LH_MOUSE_BUTTON_LEFT_DOWN;
 		Unlock();
 		break;
 	case LH_MOUSE_BUTTON_LEFT_DOUBLE_CLICK:
-		ButtonPos[6] = DefaultPos;
+		ButtonPos[LH_MOUSE_BUTTON_POS_LEFT_DOUBLE_CLICK] = DefaultPos;
 		Unlock();
 		break;
 	case LH_MOUSE_BUTTON_RIGHT_DOUBLE_CLICK:
-		ButtonPos[7] = DefaultPos;
+		ButtonPos[LH_MOUSE_BUTTON_POS_RIGHT_DOUBLE_CLICK] = DefaultPos;
 		Unlock();
 		break;
 	case 0:
-		ButtonPos[8] = DefaultPos;
+		ButtonPos[LH_MOUSE_BUTTON_POS_NONE] = DefaultPos;
 	default:
 		Unlock();
 		break;
@@ -268,7 +269,7 @@ int LHMouse::SetPosition(LHCoord* position)
 		ImageMode = LH_MOUSE_IMAGE_TYPE_0x01;
 		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 7, 0, 0);
 		LHSys::GetMouse().UpdateCurrentPos(*position);
-		LHSys::GetMouse().Draw(LH_SCREEN_BUFFER_0x1, LH_MOUSE_EVENT_TYPE_0x4);
+		LHSys::GetMouse().Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x4);
 	}
 	else
 	{
@@ -389,7 +390,7 @@ int LHMouse::SetSpriteFlags(unsigned long flags)
 		for (uint16_t i = 0; i < FrameCount16; i++)
 			FrameSurfaces[i]->SetSpriteFlags(SpriteFlags & 0x60);
 	}
-	Draw(LH_SCREEN_BUFFER_0x1, LH_MOUSE_EVENT_TYPE_0x80);
+	Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x80);
 	Unlock();
 	return result;
 }
@@ -398,22 +399,22 @@ int LHMouse::SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, int reallocSu
 {
 	Lock();
 	field_18 = imageType;
-	if (ImageMode != LH_MOUSE_IMAGE_TYPE_0x40)
+	if (ImageMode != LH_MOUSE_IMAGE_TYPE_ANIMATED)
 		ImageMode = imageType;
 	SingleSprite = NULL;
 	Mode8Surface = NULL;
-	if (ImageMode == LH_MOUSE_IMAGE_TYPE_0x20)
+	if (ImageMode == LH_MOUSE_IMAGE_TYPE_SPRITE)
 		SingleSprite = (LHSprite*)image;
-	if (ImageMode == LH_MOUSE_IMAGE_TYPE_0x08)
+	if (ImageMode == LH_MOUSE_IMAGE_TYPE_SURFACE)
 		Mode8Surface = (LHSurface*)image;
 	if (reallocSurface)
 		SetWorkingArea(0, 0);
-	if (ImageMode == LH_MOUSE_IMAGE_TYPE_0x20)
+	if (ImageMode == LH_MOUSE_IMAGE_TYPE_SPRITE)
 	{
-		if (SingleSurface->Image != SingleSprite || SingleSurface->ImageType != LH_SURFACE_IMAGE_TYPE_0x1)
-			SingleSurface->SetImage(SingleSprite, LH_SURFACE_IMAGE_TYPE_0x1);
+		if (SingleSurface->Image != SingleSprite || SingleSurface->ImageType != LH_SURFACE_IMAGE_TYPE_SPRITE)
+			SingleSurface->SetImage(SingleSprite, LH_SURFACE_IMAGE_TYPE_SPRITE);
 	}
-	if (ImageMode != LH_MOUSE_IMAGE_TYPE_0x40)
+	if (ImageMode != LH_MOUSE_IMAGE_TYPE_ANIMATED)
 	{
 		if ((ImageMode & ~7) == 0)
 		{
@@ -434,7 +435,7 @@ int LHMouse::SetCursor(void* image, LH_MOUSE_IMAGE_TYPE imageType, int reallocSu
 		}
 		if ((ImageMode & ~7) != 0)
 		{
-			Draw(LH_SCREEN_BUFFER_0x1, LH_MOUSE_EVENT_TYPE_0x8);
+			Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x8);
 			Unlock();
 			return 0;
 		}
@@ -468,7 +469,7 @@ void LHMouse::UpdateDrawRegions(LHSurface* surface)
 		PinPos = DefaultPos;
 	long x;
 	long y;
-	if (ImageMode == LH_MOUSE_IMAGE_TYPE_0x40 && !IsMultiFrame)
+	if (ImageMode == LH_MOUSE_IMAGE_TYPE_ANIMATED && !IsMultiFrame)
 	{
 		LHCoord* offset = &FramePartOffsets[CurrentFrame];
 		x = PinPos.x - Hotspot.x - offset->x;
@@ -485,13 +486,13 @@ void LHMouse::UpdateDrawRegions(LHSurface* surface)
 	{
 		switch (ImageMode)
 		{
-		case LH_MOUSE_IMAGE_TYPE_0x08:
+		case LH_MOUSE_IMAGE_TYPE_SURFACE:
 			surface = Mode8Surface;
 			break;
-		case LH_MOUSE_IMAGE_TYPE_0x20:
+		case LH_MOUSE_IMAGE_TYPE_SPRITE:
 			surface = SingleSurface;
 			break;
-		case LH_MOUSE_IMAGE_TYPE_0x40:
+		case LH_MOUSE_IMAGE_TYPE_ANIMATED:
 			surface = FrameSurfaces[CurrentFrame];
 			break;
 		}
@@ -572,14 +573,14 @@ void LHMouse::Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType)
 	LHSurface* image;
 	switch (ImageMode)
 	{
-	case LH_MOUSE_IMAGE_TYPE_0x08:
+	case LH_MOUSE_IMAGE_TYPE_SURFACE:
 		image = Mode8Surface;
 		break;
-	case LH_MOUSE_IMAGE_TYPE_0x20:
+	case LH_MOUSE_IMAGE_TYPE_SPRITE:
 		image = SingleSurface;
 		sprite = SingleSprite;
 		break;
-	case LH_MOUSE_IMAGE_TYPE_0x40:
+	case LH_MOUSE_IMAGE_TYPE_ANIMATED:
 		image = FrameSurfaces[CurrentFrame];
 		if (IsMultiFrame == 1)
 			sprite = (LHSprite*)FrameBank + CurrentFrame;
@@ -588,7 +589,7 @@ void LHMouse::Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE eventType)
 	UpdateDrawRegions(image);
 	if (DoubleBuffered && LHSys::GetScreen().opened && (ImageMode & ~7) != 0 && !suppress)
 	{
-		if ((ImageMode == LH_MOUSE_IMAGE_TYPE_0x20 || ImageMode == LH_MOUSE_IMAGE_TYPE_0x40) &&
+		if ((ImageMode == LH_MOUSE_IMAGE_TYPE_SPRITE || ImageMode == LH_MOUSE_IMAGE_TYPE_ANIMATED) &&
 		    ((SpriteFlags & 0xE) != 0 || SpriteColor16))
 		{
 			GetScreenUnderCursorNoSetup(CurrentSurface, NULL);
@@ -626,7 +627,7 @@ void LHMouse::SetAnimFrame()
 {
 	switch (AnimType)
 	{
-	case LH_ANIMATE_TYPE_0x1:
+	case LH_ANIMATE_TYPE_LOOP:
 		if (CurrentFrame < (uint16_t)(FrameCount - 1))
 		{
 			CurrentFrame++;
@@ -637,7 +638,7 @@ void LHMouse::SetAnimFrame()
 			PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 6, 0, 0);
 		}
 		break;
-	case LH_ANIMATE_TYPE_0x2:
+	case LH_ANIMATE_TYPE_PING_PONG:
 		if (!AnimReverse)
 		{
 			if (CurrentFrame < (uint16_t)(FrameCount - 1))
@@ -660,7 +661,7 @@ void LHMouse::SetAnimFrame()
 			PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 6, 0, 0);
 		}
 		break;
-	case LH_ANIMATE_TYPE_0x3:
+	case LH_ANIMATE_TYPE_ONE_SHOT:
 		if (FrameCount16)
 			CurrentFrame = (CurrentFrame + 1) % FrameCount16;
 		else
@@ -726,7 +727,7 @@ void LHMouse::SetAnimateImages(LH_ANIMATE_IMAGE_TYPE imageType, void* images, un
 	}
 	else
 	{
-		Animate(LH_ANIMATE_TYPE_0x0, 0, 0xFFFFFFFF);
+		Animate(LH_ANIMATE_TYPE_STOP, 0, 0xFFFFFFFF);
 	}
 	if (field_10)
 		SetWorkingArea(SingleSurface->Width, SingleSurface->Height);
@@ -744,14 +745,14 @@ void LHMouse::Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long fr
 	AnimType = animType;
 	switch (animType)
 	{
-	case LH_ANIMATE_TYPE_0x0:
+	case LH_ANIMATE_TYPE_STOP:
 		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 6, 0, 0);
 		FrameCount = 0;
 		CurrentFrame = 0;
 		ImageMode = field_18;
 		if ((ImageMode & ~7) != 0)
 		{
-			Draw(LH_SCREEN_BUFFER_0x1, LH_MOUSE_EVENT_TYPE_0x200);
+			Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x200);
 			Unlock();
 			return;
 		}
@@ -759,24 +760,24 @@ void LHMouse::Animate(LH_ANIMATE_TYPE animType, uint16_t param, unsigned long fr
 		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 7, 0, 0);
 		Unlock();
 		return;
-	case LH_ANIMATE_TYPE_0x1:
-	case LH_ANIMATE_TYPE_0x2:
+	case LH_ANIMATE_TYPE_LOOP:
+	case LH_ANIMATE_TYPE_PING_PONG:
 		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 6, 0, 0);
 		if (FrameBank)
-			ImageMode = LH_MOUSE_IMAGE_TYPE_0x40;
+			ImageMode = LH_MOUSE_IMAGE_TYPE_ANIMATED;
 		AnimReverse = false;
 		FrameCount = FrameCount16 ? FrameCount16 : frameCount;
 		CurrentFrame = 0;
-		Draw(LH_SCREEN_BUFFER_0x1, LH_MOUSE_EVENT_TYPE_0x100);
+		Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x100);
 		Unlock();
 		return;
-	case LH_ANIMATE_TYPE_0x3:
+	case LH_ANIMATE_TYPE_ONE_SHOT:
 		if (FrameBank)
-			ImageMode = LH_MOUSE_IMAGE_TYPE_0x40;
+			ImageMode = LH_MOUSE_IMAGE_TYPE_ANIMATED;
 		AnimReverse = false;
 		CurrentFrame = 0;
 		FrameCount = FrameCount16 ? FrameCount16 : frameCount;
-		Draw(LH_SCREEN_BUFFER_0x1, LH_MOUSE_EVENT_TYPE_0x100);
+		Draw(LH_SCREEN_BUFFER_PRIMARY, LH_MOUSE_EVENT_TYPE_0x100);
 		PostMessageA(LHSys::GetScreen().MsWindowHandle, WM_APP + 5, 0, 0);
 		break;
 	}
