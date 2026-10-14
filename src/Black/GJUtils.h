@@ -33,6 +33,9 @@ public:
 class GlobalTextures
 {
 public:
+	// BW1W120 0057d440 BW1M119 012c3df0
+	static LH3DMaterial* GetLightSheetMaterial();
+
 	enum FROZ_MAT_TYPE
 	{
 		FROZ_MAT_TYPE_0 = 0x0,

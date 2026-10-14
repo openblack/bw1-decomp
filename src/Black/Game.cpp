@@ -2317,8 +2317,8 @@ void GGame::Process3dEngine()
 				CameraModeNew3::ForceField->count = CameraModeNew3::ForceFieldPointCount + 1;
 				int i;
 				for (i = 0; i < CameraModeNew3::ForceField->count - 1; ++i)
-					CameraModeNew3::ForceField->field_0x20[i] = CameraModeNew3::ForceFieldPoints[i];
-				CameraModeNew3::ForceField->field_0x20[i] = CameraModeNew3::ForceFieldPoints[0];
+					CameraModeNew3::ForceField->Points[i] = CameraModeNew3::ForceFieldPoints[i];
+				CameraModeNew3::ForceField->Points[i] = CameraModeNew3::ForceFieldPoints[0];
 				CameraModeNew3::ForceField->Update((int)LH3DTech::g_game_time_inc * 0.001f);
 				CameraModeNew3::ForceField->DoTheDrawing(CameraModeNew3::ForceFieldMaterial);
 			}
