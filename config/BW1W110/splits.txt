@@ -461,7 +461,7 @@ Black/CreatureMentalBelief.cpp:
 Black/CreatureMentalBeliefs.cpp:
 	.text       start:0x004D8200 end:0x004D9DE0
 	.rdata      start:0x008BFE64 end:0x008BFEBC
-	.CRT$XCU    start:0x009B6350 end:0x009B6358 align:4
+	.CRT$XCU    start:0x009B634C end:0x009B6358 align:4
 	.data       start:0x00BCE9CC end:0x00BCEA28
 	.bss        start:0x00C731D0 end:0x00C731D8
 
