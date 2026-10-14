@@ -41,8 +41,6 @@
 
 #define REACTION_NEAREST_WORSHIP_SITE_START_DISTANCE 9999999.0f
 
-#define REACTION_PRIORITY_MAX 255.0f
-
 ReactionInfo GInfoArrays::ReactionInfos[NUM_REACTION_FUNCTIONS];
 
 ReactionFunction ReactionFunction::Functions[NUM_REACTION_FUNCTIONS] = {

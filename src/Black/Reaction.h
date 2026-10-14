@@ -23,6 +23,8 @@ class Living;
 struct MapCoords;
 class ReactionInfo;
 
+#define REACTION_PRIORITY_MAX 255
+
 class Reaction : public GameThing
 {
 public:
