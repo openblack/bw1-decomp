@@ -694,7 +694,7 @@ public:
 	// BW1W120 005ec1d0 BW1M119 0138b420
 	bool32_t InvalidState();
 	// BW1W120 005ec270 BW1M119 0104f900
-	bool32_t MoveToPos();
+	int MoveToPos();
 	// BW1W120 005ec2c0 BW1M119 0138af80
 	bool32_t MoveToObject();
 	// BW1W120 005ec330 BW1M119 0138aed0

@@ -8,6 +8,9 @@
 #include "DataPath.h"
 #include "GameOSFile.h" /* For class GameOSFile */
 
+const uint32_t NumTurnsToDieOver = 600;
+const int16_t  NumTurnsDowned = 300;
+
 uint32_t DataForScriptRemind::GetSaveType()
 {
 	return GAME_THING_TYPE_DATA_FOR_SCRIPT_REMIND;
@@ -121,3 +124,51 @@ void Living::ResolveLoad()
 	Object::ResolveLoad();
 }
 #endif
+
+int Living::MoveToPos()
+{
+	if (GameThingWithPos::Flags & GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE)
+	{
+		return 0;
+	}
+	int result = MoveTo();
+	if (result == MOVE_TO_STATES_0xa)
+	{
+		SetTopStateToFinal();
+	}
+	return result;
+}
+
+bool32_t Living::WaitForCounter()
+{
+	if (--TurnsUntilNextStateChange <= 0)
+	{
+		SetTopStateToFinal();
+	}
+	return true;
+}
+
+uint32_t Living::GetNumTurnsToDieOver()
+{
+	return NumTurnsToDieOver;
+}
+
+bool32_t Living::Dying()
+{
+	PlayAnimThenSetState(VILLAGER_STATE_DEAD, 1);
+	return true;
+}
+
+bool32_t Living::Downed()
+{
+	PlayAnimThenSetState(VILLAGER_STATE_BEING_EATEN, 1);
+	TurnsUntilNextStateChange = NumTurnsDowned;
+	return true;
+}
+
+bool32_t Living::ExitMoveToPos(uint8_t state)
+{
+	circle_hug_info.Reset(this);
+	target = NULL;
+	return true;
+}
