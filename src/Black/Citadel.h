@@ -17,6 +17,7 @@ class CitadelHeart;
 class Creature;
 class GCitadelHeartInfo;
 class GTribeInfo;
+class GWorshipSiteInfo;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
@@ -111,6 +112,15 @@ public:
 	void Process();
 	// BW1W120 00463510 BW1M119 011c1ec0
 	void Cheat(int param_1);
+	// BW1W120 00463540 BW1M119 011c1d50
+	bool32_t FindNearestWorshipSitePosAngleAndSlotToPos(const GWorshipSiteInfo* info, float scale, MapCoords& pos,
+	                                                    float& y_angle, unsigned long& slot);
+	// BW1W120 00463610 BW1M119 011c1c60
+	float GetWorshipSiteAngle(unsigned long slot);
+	// BW1W120 00463770 BW1M119 011c1ba0
+	void AddWorshipSite(WorshipSite* site);
+	// BW1W120 004637c0 BW1M119 011c1b40
+	void RemoveWorshipSite(WorshipSite* site);
 	// BW1W120 00463920 BW1M119 0108cce0
 	void ProcessSpellIcons();
 	// BW1W120 00463980 BW1M119 0108fe80

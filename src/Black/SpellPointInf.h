@@ -11,6 +11,7 @@
 class Base;
 class GameOSFile;
 class GameThing;
+struct LHPoint;
 
 class SpellPointInf : public PSysBase
 {
@@ -30,6 +31,8 @@ public:
 
 	// BW1W120 0055f410 BW1M119 inlined
 	SpellPointInf() {}
+	// BW1W120 0069ac10 BW1M119 014304b0
+	SpellPointInf(const LHPoint& from, float speed, const LHPoint& to, unsigned long colour);
 };
 
 #endif /* BW1_DECOMP_SPELL_POINT_INF_INCLUDED_H */

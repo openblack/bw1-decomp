@@ -22,7 +22,7 @@ class TownArtifact : public GameThing
 public:
 	Fixed*                   Artifact;
 	Town*                    town;
-	GameThing*               field_0x1c;
+	WorshipSite*             Site;
 	LHListNode<TownArtifact> next;
 	GPlayer*                 Player;
 	float                    Value;
@@ -63,6 +63,8 @@ public:
 	TownArtifact() { SetToZero(); }
 	// BW1W120 00425d00 BW1M119 010b28e0
 	TownArtifact(Fixed* artifact, Town* town, GPlayer* player);
+	// BW1W120 00425db0 BW1M119 010b27c0
+	TownArtifact(Fixed* artifact, WorshipSite* site, GPlayer* player);
 
 	// Non-virtual methods
 
