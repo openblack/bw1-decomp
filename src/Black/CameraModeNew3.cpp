@@ -981,7 +981,7 @@ void CameraModeNew3::Initialise()
 		LH3DRender::RegisterFinishFrameCallback(1000, true, tricondraw, NULL);
 		ForceField = new ("C:\\dev\\MP\\Black\\CameraModeNew3.cpp", 956) LightSheet();
 		ForceField->Init(256);
-		ForceField->field_0x2c = 0x808080;
+		ForceField->Colour = 0x808080;
 		ForceField->ResetPulses();
 		ForceField->SetScaleFac(1.0f);
 		ForceFieldTexture = LH3DTexture::Create("data\\textures\\forcefield.raw", 0x41, 0, NULL);

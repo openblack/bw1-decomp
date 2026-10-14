@@ -26,6 +26,7 @@ class Fixed;
 class GPlayer;
 class GInterfaceStatus;
 class GTribeInfo;
+class GWorshipSiteInfo;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
@@ -63,16 +64,16 @@ public:
 	LHPTR<WorshipTotem>                             totem;
 	LHListHead<WorshipSpellIcon>                    IconList;
 	uint32_t                                        ResourcesOnTheWay[RESOURCE_TYPE_LAST]; /* 0xe8 */
-	float                                           ChantBattery;                          /* 0xf0 */
+	float                                           ChantStore;                            /* 0xf0 */
 	float                                           field_0xf4;
 	float                                           TotalChantsAvailable;
 	float                                           ChantsUsed;
 	float                                           ChantsRequested; /* 0x100 */
 	float                                           ChantDamage;
 	uint8_t                                         field_0x108[0xc];
-	float                                           field_0x114;
+	float                                           Overloaded; /* 0x114 */
 	float                                           field_0x118;
-	float                                           field_0x11c;
+	float                                           OverloadPulse;
 	LHOrderedLinkedList<SortVillagerOnNeedToGoHome> VillagersRequestingToGoHome;
 
 	// Override methods
@@ -192,9 +193,13 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 014f5770
-	float GetChantStore() { return ChantBattery; }
+	float GetChantStore() { return ChantStore; }
 	// BW1W120 inlined BW1M119 010c6110
-	void AddToChantStore(float amount) { ChantBattery += amount; }
+	void AddToChantStore(float amount) { ChantStore += amount; }
+	// BW1W120 inlined BW1M119 015bedf0
+	float GetOverloadedValue() { return Overloaded; }
+	// BW1W120 inlined BW1M119 015b7cb0
+	const GWorshipSiteInfo* GetInfo() const { return (const GWorshipSiteInfo*)info; }
 	// BW1W120 0077ae60 BW1M119 015b9bd0
 	void SetToZero();
 	// BW1W120 0077c2e0 BW1M119 015b7490
@@ -271,6 +276,12 @@ public:
 	float GetChantsVillagerCanSupply();
 	// BW1W120 0077b170 BW1M119 015b95a0
 	WorshipSpellIcon* GetSpellIconFromSeedType(SPELL_SEED_TYPE type);
+	// BW1W120 0077afb0 BW1M119 015b9990
+	bool GetIsSupplyingChants();
+	// BW1W120 0077b4b0 BW1M119 015b9030
+	bool IsWorshipSiteOverloaded();
+	// BW1W120 0077e780 BW1M119 015b20f0
+	float GetChantBatteryMax();
 };
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_INCLUDED_H */
