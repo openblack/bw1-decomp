@@ -146,7 +146,8 @@ public:
 class GComputerSeen : public GameThing
 {
 public:
-	uint8_t field_0x14[0x8];
+	GameThing* field_0x14;
+	uint32_t   field_0x18;
 
 	// Override methods
 

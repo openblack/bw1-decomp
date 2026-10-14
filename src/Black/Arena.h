@@ -66,7 +66,13 @@ public:
 class ArenaSpellIcon : public Fixed
 {
 public:
-	uint8_t field_0x58[0x1c];
+	GameThing* field_0x58;
+	uint8_t    field_0x5c[0x4];
+	uint32_t   field_0x60;
+	uint32_t   field_0x64;
+	uint8_t    field_0x68[0x4];
+	uint32_t   field_0x6c;
+	uint8_t    field_0x70[0x4];
 
 	// Override methods
 

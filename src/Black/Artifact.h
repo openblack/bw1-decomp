@@ -26,7 +26,10 @@ public:
 	LHListNode<TownArtifact> next;
 	GPlayer*                 Player;
 	float                    Value;
-	uint8_t                  field_0x2c[0x10];
+	GameThing*               field_0x2c;
+	uint32_t                 field_0x30;
+	uint32_t                 field_0x34;
+	GameThing*               field_0x38;
 	PlayerSymbolSprite*      Symbol;
 
 	// Override methods

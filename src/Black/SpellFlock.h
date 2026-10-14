@@ -20,9 +20,11 @@ struct SpellCastData;
 class SpellFlock : public SpellWithObjects
 {
 public:
-	uint8_t   field_0xf4[0xc];
-	MapCoords field_0x100;
-	uint8_t   field_0x10c[0x4];
+	GameThing* field_0xf4;
+	uint32_t   field_0xf8;
+	uint32_t   field_0xfc;
+	MapCoords  field_0x100;
+	uint32_t   field_0x10c;
 
 	// Override methods
 

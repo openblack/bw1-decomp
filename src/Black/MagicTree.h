@@ -20,7 +20,8 @@ class Object;
 class MagicTree : public Tree
 {
 public:
-	uint8_t field_0x6c[0x8];
+	uint32_t field_0x6c;
+	uint32_t field_0x70;
 
 	// Override methods
 

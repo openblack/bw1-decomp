@@ -20,7 +20,12 @@ class Object;
 class SpellDispenser : public Abode
 {
 public:
-	uint8_t field_0xc4[0x18];
+	uint32_t   field_0xc4;
+	uint32_t   field_0xc8;
+	GameThing* field_0xcc;
+	uint32_t   field_0xd0;
+	uint32_t   field_0xd4;
+	uint8_t    field_0xd8[0x4];
 
 	// Override methods
 

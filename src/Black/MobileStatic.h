@@ -32,7 +32,8 @@ class MobileStatic : public MultiMapFixed
 {
 public:
 	GPlayer* Player;
-	uint8_t  field_0x80[0x8];
+	uint32_t field_0x80;
+	uint32_t field_0x84;
 
 	// Override methods
 

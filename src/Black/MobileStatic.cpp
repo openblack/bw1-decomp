@@ -1,5 +1,7 @@
 #include "MobileStatic.h"
 #include "MobileStaticInfo.h"
+#include "GameOSFile.h" /* For class GameOSFile */
+#include "Player.h"
 
 #if defined(VERSION_BW1W100)
 #define MOBILE_STATIC_FILE "C:\\dev\\black\\MobileStatic.cpp"
@@ -29,6 +31,30 @@ SCRIPT_OBJECT_TYPE MobileStatic::GetScriptObjectType()
 bool MobileStatic::ChecksVerticesVObjects()
 {
 	return true;
+}
+
+uint32_t MobileStatic::Load(GameOSFile& file)
+{
+	if (MultiMapFixed::Load(file))
+	{
+		file.ReadPtr((GameThing**)&Player);
+		file.ReadIt(field_0x80);
+		file.ReadIt(field_0x84);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t MobileStatic::Save(GameOSFile& file)
+{
+	if (MultiMapFixed::Save(file))
+	{
+		file.WritePtr(Player);
+		file.WriteIt(field_0x80);
+		file.WriteIt(field_0x84);
+		return 1;
+	}
+	return 0;
 }
 
 MobileStatic::~MobileStatic() {}

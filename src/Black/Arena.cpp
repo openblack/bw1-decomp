@@ -4,6 +4,7 @@
 #include "Arena.h"
 
 #include "ColourConstants.h" /* For White */
+#include "GameOSFile.h"      /* For class GameOSFile */
 
 uint32_t GArena::GetSaveType()
 {
@@ -40,6 +41,32 @@ bool32_t ArenaSpellIcon::CreatureMustAvoid(Creature* creature)
 bool32_t ArenaSpellIcon::IsEffectReceiver(EffectValues* effect)
 {
 	return false;
+}
+
+uint32_t ArenaSpellIcon::Load(GameOSFile& file)
+{
+	if (Fixed::Load(file))
+	{
+		file.ReadPtr((GameThing**)&field_0x58);
+		file.ReadIt(field_0x60);
+		file.ReadIt(field_0x64);
+		file.ReadIt(field_0x6c);
+		return 1;
+	}
+	return 0;
+}
+
+uint32_t ArenaSpellIcon::Save(GameOSFile& file)
+{
+	if (Fixed::Save(file))
+	{
+		file.WritePtr(field_0x58);
+		file.WriteIt(field_0x60);
+		file.WriteIt(field_0x64);
+		file.WriteIt(field_0x6c);
+		return 1;
+	}
+	return 0;
 }
 
 ArenaSpellIcon::~ArenaSpellIcon() {}

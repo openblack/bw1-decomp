@@ -17,7 +17,8 @@ class GameThing;
 class ScriptTimer : public GameThingWithPos
 {
 public:
-	uint8_t field_0x28[0x8];
+	uint32_t field_0x28;
+	uint32_t field_0x2c;
 
 	// Override methods
 
