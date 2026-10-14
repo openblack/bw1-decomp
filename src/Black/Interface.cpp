@@ -42,4 +42,9 @@ bool32_t GInterface::Save(GameOSFile& file)
 	return false;
 }
 
+GPlayer* GInterface::GetPlayer()
+{
+	return status->GetPlayer();
+}
+
 void GInterface::Cheat() {}

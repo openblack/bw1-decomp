@@ -137,3 +137,8 @@ int Field::IsField()
 {
 	return true;
 }
+
+Town* Field::GetTown()
+{
+	return town.Get();
+}

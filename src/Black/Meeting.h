@@ -16,7 +16,9 @@ class Town;
 class Meeting : public GameThingWithPos
 {
 public:
-	uint8_t  field_0x28[0x14];
+	uint8_t  field_0x28[0xc];
+	Town*    town; /* 0x34 */
+	uint8_t  field_0x38[0x4];
 	Meeting* next;
 
 	// Override methods

@@ -29,7 +29,7 @@ public:
 	static void ProcessList();
 
 	GameThing* field_0x68;
-	GameThing* field_0x6c;
+	GPlayer*   Player;
 	uint8_t    field_0x70[0x4];
 	Town*      town;
 	uint32_t   field_0x78;
