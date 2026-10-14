@@ -190,7 +190,7 @@ class CreatureBeliefAboutCreature : public CreatureBelief
 {
 public:
 	/* 0x4c */ Attribute* Attributes[CREATURE_BELIEF_ATTRIBUTE_CREATURE_LAST];
-	/* 0x78 */ uint32_t   field_0x78;
+	/* 0x78 */ uint32_t   GameTurnLastReactedTo;
 
 	// Override methods
 

@@ -542,9 +542,11 @@ Black/CreaturePlan.cpp:
 	.data       start:0x00BCF834 end:0x00BCF838
 
 Black/CreatureReaction.cpp:
-	.text       start:0x004F0DF0 end:0x004F23B0
-	.CRT$XCU    start:0x009B643C end:0x009B6440 align:4
-	.data       start:0x00BCF8B4 end:0x00BCF8D8
+	.text       start:0x004F0DC0 end:0x004F23B0
+	.rdata      start:0x008C1574 end:0x008C1580
+	.CRT$XCU    start:0x009B6438 end:0x009B6440 align:4
+	.data       start:0x00BCF8B4 end:0x00BCF914
+	.bss        start:0x00C9C8E4 end:0x00C9C8F0
 
 Black/CreatureReceiveSpell.cpp:
 	.text       start:0x004F23B0 end:0x004F4790

@@ -33,7 +33,9 @@ public:
 	uint32_t field_0x284;
 	float    field_0x288[0x8];
 	uint32_t field_0x2a8;
-	float    field_0x2ac[0x26];
+	float    field_0x2ac[0xc];
+	float    SecondsBeforeReactingToSameCreatureAgain;
+	float    field_0x2e0[0x19];
 	uint32_t field_0x344;
 	float    MaxAlignmentChangePerGameTurn[0xf];
 	float    AlignmentChangeScale; /* 0x384 */

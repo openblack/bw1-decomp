@@ -4,13 +4,16 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <re_common.h> /* For bool32_t */
+
 #include "Base.h" /* For struct Base */
 
 class CreatureCommandState : public Base
 {
 public:
-	uint8_t  field_0x8[0x14];
-	uint32_t Commanded;
+	uint8_t  field_0x8[0x10];
+	bool32_t ControlledByTeleport;
+	bool32_t Commanded;
 	uint32_t field_0x20;
 	uint32_t field_0x24;
 	int      field_0x28;

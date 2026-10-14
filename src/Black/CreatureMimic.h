@@ -6,6 +6,7 @@
 
 #include <chlasm/CreatureEnum.h> /* For enum DETECTED_PLAYER_ACTION */
 #include <chlasm/Enum.h>         /* For enum MAGIC_TYPE */
+#include <re_common.h>           /* For bool32_t */
 
 #include "Base.h"      /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */
@@ -17,7 +18,7 @@ class GameThingWithPos;
 class CreatureMimicState : public Base
 {
 public:
-	uint32_t               field_0x8;
+	bool32_t               Mimicking;
 	uint32_t               field_0xc;
 	DETECTED_PLAYER_ACTION DetectedPlayerAction; /* 0x10 */
 	MAGIC_TYPE             magic_type;

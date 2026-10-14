@@ -714,7 +714,7 @@ int CreatureAgenda::ConstructSubActionsForFight(unsigned long param_1)
 	}
 	float value = creature->mind->learning.field_0x1522c;
 	creature->GetCreature3D()->field_0x4ab0 = value;
-	creature->field_0x10ac = 1;
+	creature->FightStarted = true;
 	Creature* other = plans[0].ObjectToActOn->GetPointer()->CastCreature();
 	if (other != NULL)
 	{
@@ -8455,7 +8455,7 @@ void Creature::CommandActivityAndAction(CREATURE_DESIRES desire, CreatureBelief*
                                         CreatureBelief* object_to_use)
 {
 	ForceActivityAndForceAction(desire, activity_object, action, object_to_act_on, object_to_use, 1, 1);
-	mind->agenda.CommandState.Commanded = 1;
+	mind->agenda.CommandState.Commanded = true;
 }
 
 float CreatureMental::CalculateDesirabilityOfProposedActivity(CREATURE_DESIRES  desire,
