@@ -24,8 +24,6 @@
 #include "Spell.h"
 #include "Utils.h"
 
-#include <limits.h> /* For UCHAR_MAX */
-
 #if defined(VERSION_BW1W100)
 #define FILEPATH "C:\\dev\\black\\CreatureReaction.cpp"
 #elif defined(VERSION_BW1W110)
@@ -199,7 +197,7 @@ uint8_t Creature::ReactToCreaturePriority(Reaction* reaction, Reaction* current_
 		return 0;
 	}
 	belief->GameTurnLastReactedTo = GGame::g_game->data.GameTurn;
-	return UCHAR_MAX;
+	return REACTION_PRIORITY_MAX;
 }
 
 void Creature::SetupReactToCreature(GameThingWithPos* thing, Reaction* reaction)

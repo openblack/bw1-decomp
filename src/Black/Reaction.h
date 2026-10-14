@@ -22,6 +22,8 @@ class GameThingWithPos;
 class Living;
 class ReactionInfo;
 
+#define REACTION_PRIORITY_MAX 255
+
 class Reaction : public GameThing
 {
 public:
