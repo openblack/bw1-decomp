@@ -13,8 +13,8 @@ public:
 
 enum LESSON_TYPE
 {
-	LESSON_TYPE_0x0 = 0x0,
-	LESSON_TYPE_0x1 = 0x1,
+	LESSON_TYPE_ACTIVITY_OBJECT = 0x0,
+	LESSON_TYPE_ACTION_OBJECT = 0x1,
 	_LESSON_TYPE_COUNT = 0x2
 };
 static_assert(sizeof(enum LESSON_TYPE) == 0x4, "Data type is of wrong size");

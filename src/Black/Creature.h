@@ -161,8 +161,7 @@ public:
 	uint32_t                              field_0x3bc[0x3];
 	uint32_t                              field_0x3c8;
 	uint32_t                              field_0x3cc;
-	Creature*                             next;
-	uint32_t                              field_0x3d4;
+	LHLinkedList<Creature*>               Friends;
 	MapCoords                             field_0x3d8;
 	uint32_t                              field_0x3e4;
 	uint32_t                              field_0x3e8;
