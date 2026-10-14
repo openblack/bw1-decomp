@@ -2,18 +2,10 @@
 
 bool32_t GStreetLight::Load(GameOSFile& file)
 {
-	if (GameThingWithPos::Load(file))
-	{
-		return true;
-	}
-	return false;
+	return GameThingWithPos::Load(file) != 0;
 }
 
 bool32_t GStreetLight::Save(GameOSFile& file)
 {
-	if (GameThingWithPos::Save(file))
-	{
-		return true;
-	}
-	return false;
+	return GameThingWithPos::Save(file) != 0;
 }

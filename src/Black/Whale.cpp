@@ -10,18 +10,10 @@ void Whale::ResolveLoad()
 
 bool32_t Whale::Load(GameOSFile& file)
 {
-	if (MobileObject::Load(file))
-	{
-		return true;
-	}
-	return false;
+	return MobileObject::Load(file) != 0;
 }
 
 bool32_t Whale::Save(GameOSFile& file)
 {
-	if (MobileObject::Save(file))
-	{
-		return true;
-	}
-	return false;
+	return MobileObject::Save(file) != 0;
 }

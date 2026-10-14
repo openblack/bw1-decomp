@@ -96,20 +96,12 @@ bool32_t Dove::CanBePoodOn(Creature*)
 
 bool32_t Dove::Load(GameOSFile& file)
 {
-	if (Animal::Load(file))
-	{
-		return true;
-	}
-	return false;
+	return Animal::Load(file) != 0;
 }
 
 bool32_t Dove::Save(GameOSFile& file)
 {
-	if (Animal::Save(file))
-	{
-		return true;
-	}
-	return false;
+	return Animal::Save(file) != 0;
 }
 
 bool32_t Bat::CanBeFrighteningToCreature(Creature* creature)

@@ -13,18 +13,10 @@ SCRIPT_OBJECT_TYPE ScriptMarker::GetScriptObjectType()
 
 bool32_t ScriptMarker::Load(GameOSFile& file)
 {
-	if (GameThingWithPos::Load(file))
-	{
-		return true;
-	}
-	return false;
+	return GameThingWithPos::Load(file) != 0;
 }
 
 bool32_t ScriptMarker::Save(GameOSFile& file)
 {
-	if (GameThingWithPos::Save(file))
-	{
-		return true;
-	}
-	return false;
+	return GameThingWithPos::Save(file) != 0;
 }
