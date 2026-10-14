@@ -827,6 +827,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/LivingInfo.cpp"),
             GameCodeObject(NonMatching, "Black/LivingProjectile.cpp"),
             GameCodeObject(NonMatching, "Black/LivingReaction.cpp"),
+            GameCodeObject(NonMatching, "Black/LivingStates.cpp"),
             GameCodeObject(NonMatching, "Black/LoaderAnon.cpp"),
             GameCodeObject(NonMatching, "Black/LoadingBox.cpp"),
             GameCodeObject(NonMatching, "Black/LoadingScreen.cpp"),
