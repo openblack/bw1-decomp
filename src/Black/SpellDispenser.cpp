@@ -44,3 +44,8 @@ bool32_t SpellDispenser::Save(GameOSFile& file)
 	}
 	return false;
 }
+
+bool32_t SpellDispenser::IsSpellSeedReturnPoint() const
+{
+	return true;
+}

@@ -645,7 +645,7 @@ public:
 	// BW1W120 00417320 BW1M119 01101a90
 	virtual uint32_t DanceType();
 	// BW1W120 005ee550 BW1M119 01386470
-	virtual bool CanBeHealedByHealSpell();
+	virtual bool32_t CanBeHealedByHealSpell();
 	// BW1W120 004174a0 BW1M119 0112aa80
 	virtual bool32_t MoveAllowedForChessGame(long x, long z) { return false; }
 	// BW1W120 004174b0 BW1M119 0112aac0

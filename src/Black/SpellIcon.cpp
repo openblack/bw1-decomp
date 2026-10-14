@@ -28,6 +28,11 @@ uint32_t SpellIcon::Process()
 	return 1;
 }
 
+int SpellIcon::GetSpellIconPlacementIndex()
+{
+	return 0;
+}
+
 GBaseInfo* GSpellIconInfo::GetBaseInfo(uint32_t& info_count)
 {
 	info_count = SPELL_ICON_INFO_LAST;
