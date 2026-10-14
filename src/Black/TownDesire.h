@@ -69,6 +69,8 @@ public:
 	// BW1W120 00745ff0 BW1M119 010789f0
 	// TODO: incorrect return type
 	void CheckVillagerNeededForTownDesire(Villager* villager, float trigger);
+	// BW1W120 00745e50 BW1M119 015677d0
+	TOWN_DESIRE_INFO GetMostDesired() const;
 	// BW1W120 00745f80 BW1M119 0105ff30
 	GTownDesireInfo* GetInfo(unsigned long desire) const;
 	// BW1W120 007465d0 BW1M119 01566d00
