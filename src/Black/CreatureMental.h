@@ -119,6 +119,10 @@ public:
 	float CalculateDistancePriority(CREATURE_DESIRES desire, CreatureBelief* object);
 	// BW1W120 004e9a70 BW1M119 01271bf0
 	float GetObjectToActOnUsefulness(CreatureBelief* object, CREATURE_DESIRES desire);
+	// BW1W120 004e3730 BW1M119 015ef7e0
+	bool32_t IsObjectSuitableForDesire(CreatureBelief* belief, CREATURE_DESIRES desire);
+	// BW1W120 004e3800 BW1M119 015ef750
+	bool32_t IsObjectSuitableForAction(GameThingWithPos* object, CREATURE_ACTION action);
 	// BW1W120 004d2800 BW1M119 null
 	void EmpathiseWithPlayer(CREATURE_DESIRES desire);
 	// BW1W120 004c4c80 BW1M119 012364d0

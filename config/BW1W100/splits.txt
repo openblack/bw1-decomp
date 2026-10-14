@@ -431,21 +431,22 @@ Black/CreatureMentalAttributeTest.cpp:
 
 Black/CreatureMentalBelief.cpp:
 	.text       start:0x004B9E80 end:0x004BBBD0
-	.rdata      start:0x0080EC50 end:0x0080ECF8
+	.rdata      start:0x0080EC50 end:0x0080ED14
 	.CRT$XCU    start:0x008F6304 end:0x008F6308 align:4
 
 Black/CreatureMentalBeliefs.cpp:
-	.text       start:0x004BBC00 end:0x004BD440
-	.CRT$XCU    start:0x008F630C end:0x008F6310 align:4
-	.data       start:0x00B0D630 end:0x00B0D6FE
-	.bss        start:0x00BA56F8 end:0x00BA5704
+	.text       start:0x004BBBD0 end:0x004BD440
+	.rdata      start:0x0080ED14 end:0x0080ED24
+	.CRT$XCU    start:0x008F6308 end:0x008F6310 align:4
+	.data       start:0x00B0D604 end:0x00B0D630
+	.bss        start:0x00BA56F8 end:0x00BA5700
 
 Black/CreatureMentalDesire.cpp:
 	.text       start:0x004BD4A0 end:0x004BF0C0
-	.rdata      start:0x0080ED30 end:0x0080EDF4
+	.rdata      start:0x0080ED24 end:0x0080EDF4
 	.CRT$XCU    start:0x008F631C end:0x008F632C align:4
-	.data       start:0x00B0D700 end:0x00B0D72C
-	.bss        start:0x00BA5704 end:0x00BAA600
+	.data       start:0x00B0D630 end:0x00B0D72C
+	.bss        start:0x00BA5700 end:0x00BAA600
 
 Black/CreatureMentalDesireSource.cpp:
 	.text       start:0x004BF0C0 end:0x004C1100

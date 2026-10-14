@@ -12,6 +12,7 @@
 #include "Base.h"                  /* For struct Base */
 #include "CreatureLearning.h"      /* For struct CreatureLearningEpisode */
 #include "CreatureLessonChooser.h" /* For _LESSON_TYPE_COUNT */
+#include "GameThingWithPos.h"      /* For enum CREATURE_BELIEF_TYPE */
 
 enum DECISION_TREE_TYPE
 {
@@ -77,6 +78,7 @@ enum ATTRIBUTE_BOOL
 	ATTRIBUTE_BOOL_LAST
 };
 
+class CreatureBelief;
 class GameThingWithPos;
 class GPlayer;
 
@@ -138,6 +140,11 @@ struct DecisionTreeAgenda
 
 	// BW1W120 004d43f0 BW1M119 01254ba0
 	DecisionTreeAgenda(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire);
+
+	// Static methods
+
+	// BW1W120 004d6140 BW1M119 01252070
+	static CreatureBelief* CreateBelief(CREATURE_BELIEF_TYPE type);
 };
 
 struct DecisionTreeAgendas
@@ -193,6 +200,13 @@ public:
 
 	static char ValueNames[][64];
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAbodeBeingBuilt() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAbodeBeingBuilt(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004d6090 BW1M119 0124e390
@@ -217,6 +231,13 @@ public:
 	// Static members
 
 	static char ValueNames[][64]; // fabricated name
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAbodeType() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAbodeType(uint32_t value) { Value = value; }
 
 	// Override methods
 
@@ -243,6 +264,13 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAllegiance() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAllegiance(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004cb7c0 BW1M119 012501e0
@@ -264,6 +292,13 @@ public:
 class AttributeAnimate : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAnimate() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAnimate(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004cb8b0 BW1M119 0124fe80
@@ -285,6 +320,13 @@ public:
 class AttributeCreatureDominantDesire : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureDominantDesire() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureDominantDesire(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004d5da0 BW1M119 0124f2e0
@@ -310,6 +352,13 @@ public:
 
 	static char ValueNames[][64];
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureHeight() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureHeight(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004d5e10 BW1M119 0124f110
@@ -331,6 +380,13 @@ public:
 class AttributeCreatureSpellKnowledge : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureSpellKnowledge() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureSpellKnowledge(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004d5e70 BW1M119 0124ef70
@@ -352,6 +408,13 @@ public:
 class AttributeCreatureType : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureType() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureType(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004cbbe0 BW1M119 0124bb90
@@ -373,6 +436,13 @@ public:
 class AttributeCreatureWhatHeIsCarrying : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureWhatHeIsCarrying() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureWhatHeIsCarrying(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004d5ed0 BW1M119 0124edd0
@@ -398,6 +468,13 @@ public:
 
 	static char ValueNames[][64];
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeForestSize() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeForestSize(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004d5f40 BW1M119 0124ec20
@@ -419,6 +496,13 @@ public:
 class AttributeIsHarderThanMe : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeIsHarderThanMe() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeIsHarderThanMe(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004cbb80 BW1M119 0124def0
@@ -443,6 +527,13 @@ public:
 	// Static members
 
 	static char ValueNames[][64]; // fabricated name
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeLife() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeLife(uint32_t value) { Value = value; }
 
 	// Override methods
 
@@ -469,6 +560,13 @@ public:
 
 	static char ValueNames[MOBILE_OBJECT_INFO_LAST][64];
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeMobileObjectType() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeMobileObjectType(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004d5fb0 BW1M119 0124e720
@@ -493,6 +591,13 @@ public:
 	// Static members
 
 	static char ValueNames[][64]; // fabricated name
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeOnFire() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeOnFire(uint32_t value) { Value = value; }
 
 	// Override methods
 
@@ -519,6 +624,13 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeOrigin() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeOrigin(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004cb830 BW1M119 01250030
@@ -540,6 +652,13 @@ public:
 class AttributePlayerNumber : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributePlayerNumber() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributePlayerNumber(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004cbb20 BW1M119 0124e070
@@ -564,6 +683,13 @@ public:
 	// Static members
 
 	static char ValueNames[][64]; // fabricated name
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeSex() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeSex(uint32_t value) { Value = value; }
 
 	// Override methods
 
@@ -590,6 +716,13 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTownReligiousBeliefInYou() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTownReligiousBeliefInYou(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004cd710 BW1M119 0124f7d0
@@ -614,6 +747,13 @@ public:
 	// Static members
 
 	static char ValueNames[][64]; // fabricated name
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTownSize() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTownSize(uint32_t value) { Value = value; }
 
 	// Override methods
 
@@ -640,6 +780,13 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTribe() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTribe(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004cd6a0 BW1M119 0124f9d0
@@ -661,6 +808,13 @@ public:
 class AttributeType : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeType() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeType(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004cb910 BW1M119 0124fd20
@@ -682,6 +836,13 @@ public:
 class AttributeVillagerJob : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeVillagerJob() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeVillagerJob(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004cb9e0 BW1M119 0124eab0
@@ -703,6 +864,13 @@ public:
 class AttributeWhatTownNeedsMost : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeWhatTownNeedsMost() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeWhatTownNeedsMost(uint32_t value) { Value = value; }
+
 	// Override methods
 
 	// BW1W120 004cd770 BW1M119 0124f630
