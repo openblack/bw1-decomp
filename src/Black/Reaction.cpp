@@ -212,7 +212,7 @@ Reaction::~Reaction()
 	}
 }
 
-void Reaction::ToBeDeleted(int delete_now)
+void Reaction::ToBeDeleted(bool32_t delete_now)
 {
 	Spell* spell = dynamic_cast<Spell*>(InitiatingObject);
 	if (spell != NULL)

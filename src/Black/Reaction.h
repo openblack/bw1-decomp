@@ -43,7 +43,7 @@ public:
 	// BW1W120 006e3a60 BW1M119 0113f170
 	virtual ~Reaction();
 	// BW1W120 006e3aa0 BW1M119 0113ee20
-	virtual void ToBeDeleted(int delete_now);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0055c7b0 BW1M119 0109bad0
 	virtual GPlayer* GetPlayer() { return player; }
 	// BW1W120 0055c7c0 BW1M119 0113ccd0
