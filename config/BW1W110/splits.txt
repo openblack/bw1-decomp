@@ -94,17 +94,19 @@ Black/AnimalLeopard.cpp:
 
 Black/AnimalLion.cpp:
 	.text       start:0x0041F960 end:0x0041FD60
-	.rdata      start:0x008AC434 end:0x008ADC98
+	.rdata      start:0x008AC434 end:0x008AE8C0
 	.data       start:0x009B8B48 end:0x009B8B60
 
 Black/AnimalReaction.cpp:
-	.text       start:0x0041FD60 end:0x00420360
-	.rdata      start:0x008ADC98 end:0x008AE8D8
-	.CRT$XCU    start:0x009B60A4 end:0x009B60AC align:4
+	.text       start:0x0041FD90 end:0x00420360
+	.rdata      start:0x008AE8C8 end:0x008AE8D4
+	.CRT$XCU    start:0x009B60A8 end:0x009B60AC align:4
+	.data       start:0x009B8B60 end:0x009B8B80
+	.bss        start:0x00C43B58 end:0x00C43B5C
 
 Black/AnimalSpellWolf.cpp:
 	.text       start:0x00420360 end:0x00420F00
-	.rdata      start:0x008AE8D8 end:0x008AE8F0
+	.rdata      start:0x008AE8D4 end:0x008AE8F0
 	.CRT$XCU    start:0x009B60AC end:0x009B60B0 align:4
 	.data       start:0x009B8B98 end:0x009B8BE4
 
