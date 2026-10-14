@@ -183,7 +183,7 @@ public:
 	uint32_t                              field_0x1060;
 	uint32_t                              field_0x1064;
 	uint32_t                              field_0x1068;
-	uint32_t                              field_0x106c;
+	bool32_t                              Invisible;
 	GPlayer*                              owner;
 	Dance*                                dance;
 	uint32_t                              field_0x1078;
@@ -283,7 +283,7 @@ public:
 	uint32_t                              field_0x12b4;
 	uint32_t                              field_0x12b8;
 	uint32_t                              field_0x12bc;
-	uint32_t                              field_0x12c0;
+	bool32_t                              IgnoredByVillagers;
 	uint32_t                              field_0x12c4;
 
 	// Override methods

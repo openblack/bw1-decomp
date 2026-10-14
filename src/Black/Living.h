@@ -2,6 +2,7 @@
 #define BW1_DECOMP_LIVING_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <limits.h> /* For CHAR_BIT */
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
 
 #include <chlasm/AllMeshes.h>                       /* For enum ANIM_LIST */
@@ -41,20 +42,23 @@ class PhysicsObject;
 class Reaction;
 struct ReactionDoneWhen;
 
+#define LIVING_MAP_CELL_SUBCELLS 20
+
 struct LivingMapCell
 {
-	uint8_t field_0x0;
+	uint8_t Occupied[LIVING_MAP_CELL_SUBCELLS][LIVING_MAP_CELL_SUBCELLS / CHAR_BIT];
 
 	// Constructors
 
 	// BW1W120 00767fe0 BW1M119 0159ca00
-	LivingMapCell(JustMapXZ& param_1);
+	LivingMapCell(JustMapXZ& cell);
 
 	// Non-virtual methods
 
 	// BW1W120 007680d0 BW1M119 0159c740
-	bool32_t FindFreePosition(JustMapXZ& param_1, const MapCoords& param_2, MapCoords* param_3);
+	bool32_t FindFreePosition(JustMapXZ& cell, const MapCoords& target, MapCoords* position);
 };
+static_assert(sizeof(LivingMapCell) == 0x28, "Data type is of wrong size");
 
 class DataForScriptRemind : public GameThing
 {

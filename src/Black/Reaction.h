@@ -78,6 +78,8 @@ public:
 
 	// BW1W120 006e4700 BW1M119 0108e570
 	ReactionInfo* GetInfo() const;
+	// BW1W120 inlined BW1M119 015967b0
+	GameThingWithPos* GetInitiatingObject() const { return target; }
 	// BW1W120 inlined BW1M119 01150160
 	REACTION GetFunctionIndex() const { return type; }
 	// BW1W120 006e48a0 BW1M119 0113db00
