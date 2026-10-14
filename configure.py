@@ -744,7 +744,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/GenerateCreatureHTML.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystem.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystemData.cpp"),
-            GameCodeObject(NonMatching, "Black/GestureSystemDataList.cpp"),
+            GameCodeObject(Matching, "Black/GestureSystemDataList.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystemMatch.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystemResult.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystemSamples.cpp"),

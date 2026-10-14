@@ -143,7 +143,7 @@ long GestureSystem::CalculateJunction(long key_point, long index)
 				break;
 			}
 			float turn = (float)fabs(CalculateTurn(keyPoint, samplePoint, currentPoint));
-			if (turn >= GESTURE_ANGLE_TOLERANCE && turn > sharpest)
+			if (turn >= GS_ANGLE_TOLERANCE && turn > sharpest)
 			{
 				sharpest = turn;
 				junction = sample;
@@ -158,7 +158,7 @@ long GestureSystem::CalculateJunction(long key_point, long index)
 		if (key_point != 0)
 		{
 			LHPoint* previousPoint = &GetSampleAt(GetPreviousKeyPointOffset(key_point))->Position;
-			if ((float)fabs(CalculateTurn(previousPoint, keyPoint, currentPoint)) >= GESTURE_ANGLE_TOLERANCE)
+			if ((float)fabs(CalculateTurn(previousPoint, keyPoint, currentPoint)) >= GS_ANGLE_TOLERANCE)
 			{
 				return key_point;
 			}
