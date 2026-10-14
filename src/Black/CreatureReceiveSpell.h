@@ -54,6 +54,8 @@ struct CreatureReceiveSpell
 
 	// Non-virtual methods
 
+	// BW1W120 004f5230 BW1M119 01284220
+	bool IsQueueFull();
 	// BW1W120 004f4c50 BW1M119 01284d30
 	void Draw();
 };

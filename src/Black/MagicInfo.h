@@ -41,9 +41,9 @@ public:
 	// Virtual methods
 
 	// BW1W120 005fb420 BW1M119 013b6200
-	virtual uint32_t CanCast(const MapCoords& coords, GameThing* caster) const;
+	virtual bool32_t CanCast(const MapCoords& coords, GameThing* caster) const;
 	// BW1W120 005fb430 BW1M119 013b6190
-	virtual uint32_t CanCast(Object* object, GameThing* caster) const;
+	virtual bool32_t CanCast(Object* object, GameThing* caster) const;
 	// BW1W120 005fb450 BW1M119 013b60c0
 	virtual Spell* AllocSpell(GameThing* caster) const;
 	// BW1W120 005fb780 BW1M119 013b5990
