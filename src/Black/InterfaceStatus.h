@@ -26,6 +26,7 @@ struct MapCoords;
 class Object;
 struct PSysProcessInfo;
 class Spell;
+class SpellSeed;
 
 class GInterfaceStatus : public GameThingWithPos
 {
@@ -120,6 +121,10 @@ public:
 	Object* GetFirstObjectInCurrentHand();
 	// BW1W120 005dc2f0 BW1M119 0107d890
 	bool IsSpaceInHands();
+	// BW1W120 005dc830 BW1M119 01096240
+	SpellSeed* GetSpellSeedInMagicHand();
+	// BW1W120 005dc890 BW1M119 0107d920
+	bool32_t IsHandReadyForObject();
 	// BW1W120 005dc8b0 BW1M119 010384a0
 	GInterface* GetInterface();
 	// BW1W120 005dd1a0 BW1M119 013746a0

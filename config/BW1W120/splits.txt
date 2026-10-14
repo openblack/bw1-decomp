@@ -2642,16 +2642,16 @@ Black/WorshipSiteUpgrade.cpp:
 
 Black/WorshipSpellIcon.cpp:
 	.text       start:0x0077EFF0 end:0x00780670
-	.rdata      start:0x0099D86C end:0x0099D878
+	.rdata      start:0x0099D86C end:0x0099E19C
 	.CRT$XCU    start:0x009C7B04 end:0x009C7B0C align:4
-	.data       start:0x00C24E08 end:0x00C24E54
+	.data       start:0x00C24E08 end:0x00C24E44
 	.bss        start:0x00DCCAC8 end:0x00DCCAD4
 
 Black/WorshipTotem.cpp:
 	.text       start:0x00780670 end:0x00781060
-	.rdata      start:0x0099D878 end:0x0099E1BC
+	.rdata      start:0x0099E19C end:0x0099E1BC
 	.CRT$XCU    start:0x009C7B0C end:0x009C7B24 align:4
-	.data       start:0x00C24E54 end:0x00C25124
+	.data       start:0x00C24E44 end:0x00C25124
 	.bss        start:0x00DCCAD4 end:0x00DD0BE0
 
 Black/ChallengeRoom.cpp:

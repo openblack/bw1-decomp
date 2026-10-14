@@ -4,9 +4,12 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h>        /* For enum HOLD_TYPE, enum IMMERSION_EFFECT_TYPE */
+#include <chlasm/Enum.h>        /* For enum HOLD_TYPE, enum IMMERSION_EFFECT_TYPE, enum POWER_UP_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
+#include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For LHListNode */
+
+#include "LHPTR.h"  /* For LHPTR */
 #include "Object.h" /* For struct Object */
 
 // Forward Declares
@@ -21,13 +24,23 @@ struct GestureSystemPacketData;
 class LHOSFile;
 struct MapCoords;
 class WorshipSite;
+class WorshipSpellIcon;
+
+enum SPELL_SEED_FLAG
+{
+	SPELL_SEED_FLAG_IN_SPELL_ICON_LIST = 0x1,
+};
 
 class SpellSeed : public Object
 {
 public:
-	uint8_t field_0x54[0x3c];
-	uint8_t DrawnInHand;
-	uint8_t field_0x91[0xf];
+	uint8_t                 SpellSeedFlags; /* 0x54 */
+	uint8_t                 field_0x55[0x7];
+	LHPTR<WorshipSpellIcon> Icon; /* 0x5c */
+	uint8_t                 field_0x60[0x30];
+	uint8_t                 DrawnInHand; /* 0x90 */
+	uint8_t                 field_0x91[0xb];
+	LHListNode<SpellSeed>   next; /* 0x9c */
 
 	// Override methods
 
@@ -128,6 +141,22 @@ public:
 
 	// BW1W120 00728200 BW1M119 01534c10
 	void ClearSpellLink();
+	// BW1W120 00729860 BW1M119 01531970
+	float GetChantNeededForSpellSeed(POWER_UP_TYPE power_up);
+	// BW1W120 00729890 BW1M119 015318e0
+	float GetChantRequiredForSpellSeed(POWER_UP_TYPE power_up);
+	// BW1W120 00729900 BW1M119 015317a0
+	void SetWaitBeforeActive(bool wait);
+	// BW1W120 00729a30 BW1M119 015314e0
+	float AddToChantStore(float amount);
+	// BW1W120 00729b30 BW1M119 01530fd0
+	void SetPowerUp(POWER_UP_TYPE power_up);
+
+	// Static methods
+
+	// BW1W120 007282a0 BW1M119 01534a60
+	static SpellSeed* Create(const MapCoords& coords, WorshipSpellIcon* icon, GInterfaceStatus* status,
+	                         POWER_UP_TYPE power_up, float power);
 };
 
 #endif /* BW1_DECOMP_SPELL_SEED_INCLUDED_H */

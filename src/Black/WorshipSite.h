@@ -43,6 +43,11 @@ class Villager;
 class WorshipSiteUpgrade;
 class WorshipTotem;
 
+enum WORSHIP_SITE_SPECIAL_POS
+{
+	WORSHIP_SITE_SPECIAL_POS_FIRST_SPELL_ICON = 10,
+};
+
 class WorshipSite : public CitadelPart
 {
 public:
@@ -57,7 +62,12 @@ public:
 	LHLinkedList<Villager*>                         Worshippers;
 	LHPTR<WorshipTotem>                             totem;
 	LHListHead<WorshipSpellIcon>                    IconList;
-	uint8_t                                         field_0xe8[0x1c];
+	uint32_t                                        ResourcesOnTheWay[RESOURCE_TYPE_LAST]; /* 0xe8 */
+	float                                           ChantBattery;                          /* 0xf0 */
+	float                                           field_0xf4;
+	float                                           TotalChantsAvailable;
+	float                                           ChantsUsed;
+	float                                           ChantsRequested; /* 0x100 */
 	float                                           ChantDamage;
 	uint8_t                                         field_0x108[0xc];
 	float                                           field_0x114;
@@ -181,6 +191,10 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 014f5770
+	float GetChantStore() { return ChantBattery; }
+	// BW1W120 inlined BW1M119 010c6110
+	void AddToChantStore(float amount) { ChantBattery += amount; }
 	// BW1W120 0077ae60 BW1M119 015b9bd0
 	void SetToZero();
 	// BW1W120 0077c2e0 BW1M119 015b7490
@@ -203,8 +217,12 @@ public:
 	void AddArtifact(Fixed* artifact, GPlayer* player);
 	// BW1W120 0077c4d0 BW1M119 015b6fd0
 	void RemoveFromFoodOnTheWay(uint32_t amount);
+	// BW1W120 0077bc50 BW1M119 015b84a0
+	float MaintainSpell(float amount);
 	// BW1W120 0077c430 BW1M119 015b7150
 	void AddSpellIcon(WorshipSpellIcon* icon);
+	// BW1W120 0077c450 BW1M119 015b7020
+	void RemoveSpellIcon(WorshipSpellIcon* icon);
 	// BW1W120 0077b920 BW1M119 015b8910
 	int CalculateFoodNeededFromTown();
 	// BW1W120 0077c910 BW1M119 015b6770
@@ -247,6 +265,10 @@ public:
 	float GetChantsAvailableForCharging(bool param_1);
 	// BW1W120 0077cc10 BW1M119 015b6140
 	float GetChantsAvailable();
+	// BW1W120 0077cc30 BW1M119 015b60e0
+	float GetTotalChantsAvailable();
+	// BW1W120 0077e060 BW1M119 015b2e20
+	float GetChantsVillagerCanSupply();
 	// BW1W120 0077b170 BW1M119 015b95a0
 	WorshipSpellIcon* GetSpellIconFromSeedType(SPELL_SEED_TYPE type);
 };

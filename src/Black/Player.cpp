@@ -1537,7 +1537,7 @@ bool32_t GPlayer::IsAtLeastOneSpellBeginToBeCharged()
 			{
 				for (WorshipSpellIcon* icon = site->IconList.head; icon != NULL; icon = icon->next)
 				{
-					if (icon->Charge > 0.0f)
+					if (icon->ChantStore > 0.0f)
 					{
 						return TRUE;
 					}
@@ -1560,7 +1560,7 @@ bool32_t GPlayer::IsSpellBeginToBeCharged(MAGIC_TYPE type)
 			{
 				for (WorshipSpellIcon* icon = site->IconList.head; icon != NULL; icon = icon->next)
 				{
-					if (icon->GetMagicType() == type && icon->Charge > 0.0f)
+					if (icon->GetMagicType() == type && icon->ChantStore > 0.0f)
 					{
 						return TRUE;
 					}

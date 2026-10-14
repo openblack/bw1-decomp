@@ -21,7 +21,7 @@ public:
 	uint32_t field_0x6c;
 	uint32_t field_0x70;
 	float    field_0x74;
-	float    field_0x78;
+	float    CostToCreate;
 	float    field_0x7c;
 	float    field_0x80;
 	float    field_0x84;
