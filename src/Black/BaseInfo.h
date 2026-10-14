@@ -19,6 +19,9 @@ public:
 	LHListNode<GBaseInfo> next; /* 0x8 */
 	int                   index;
 
+	// BW1W120 00c58604
+	static uint32_t InfoCount;
+
 	// Override methods
 
 	// BW1W120 004140b0 BW1M119 0112ba50

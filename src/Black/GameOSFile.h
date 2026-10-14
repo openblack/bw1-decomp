@@ -71,10 +71,20 @@ public:
 
 	// Static data
 
+	// BW1W120 00bec980
+	static char* RevisionPrefix;
+	// BW1W120 00bec984
+	static char* RevisionSuffix;
+	// BW1W120 00bec988
+	static char* AutoSaveFilename;
+	// BW1W120 00bec98c
+	static uint32_t AutoSaveInterval;
 	// BW1W120 00d01a80
 	static uint32_t LastAutoSaveTurn;
 	// BW1W120 00d01a84
 	static uint32_t SaveCount;
+	// BW1W120 00d01a9c
+	static bool32_t Saving;
 
 	// BW1W120 00bec990
 	static bool32_t WriteEnabled;

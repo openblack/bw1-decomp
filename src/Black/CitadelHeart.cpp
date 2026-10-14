@@ -1104,7 +1104,9 @@ void CitadelHeart::DrawCreaturePen()
 void CitadelHeart::DrawBeam()
 {
 	unsigned long playerNumber = GetPlayer()->GetPlayerNumber();
-	if (BeamObject != NULL && InfluenceCircle::g_b_valid[GetRemapedPlayer(playerNumber)])
+	// TODO: InfluenceCircle::g_b_valid is not declared for the game's units (declaring it in InfluenceCircle.h
+	// renumbers their static initialisers); test g_b_valid[GetRemapedPlayer(playerNumber)] here once it is.
+	if (BeamObject != NULL)
 	{
 		LHPoint cameraPos;
 		GGame::g_game->GetCamera()->GetPosition(cameraPos);
@@ -1230,7 +1232,9 @@ void CitadelHeart::DrawNow()
 			GGame::g_game->help_system->SendFOVObject(this, LH3DObject::g_last_distance);
 		}
 		unsigned long playerNumber = GetPlayer()->GetPlayerNumber();
-		if (entrance != NULL && InfluenceCircle::g_b_valid[GetRemapedPlayer(playerNumber)])
+		// TODO: InfluenceCircle::g_b_valid is not declared for the game's units (declaring it in InfluenceCircle.h
+		// renumbers their static initialisers); test g_b_valid[GetRemapedPlayer(playerNumber)] here once it is.
+		if (entrance != NULL)
 		{
 			entrance->Game3dObject->AddJustForCollide(entrance);
 		}

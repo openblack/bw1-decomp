@@ -7,21 +7,9 @@
 
 #define INFLUENCE_CIRCLE_PLAYER_COUNT 8
 
-struct LH3DMaterial;
-
 class InfluenceCircle
 {
 public:
-	// BW1W120 00eb9a1c BW1M119 011cea38 (LHCombined Release)
-	static bool32_t g_b_valid[INFLUENCE_CIRCLE_PLAYER_COUNT];
-	// BW1W120 00ea9efc BW1M119 011f1de4 (LHCombined Release)
-	static unsigned long g_players_color[INFLUENCE_CIRCLE_PLAYER_COUNT];
-	// BW1W120 00eb9a3c BW1M119 011f1e04 (LHCombined Release)
-	static float g_yangle_inside_citadel;
-	// BW1W120 00eb9a18 BW1M119 011f1e14 (LHCombined Release)
-	static LH3DMaterial* g_material;
-	// BW1W120 00eb9a14 BW1M119 011f1e18 (LHCombined Release)
-	static InfluenceCircle* g_first;
 	// BW1W120 00c383dc BW1M119 011cea58 (LHCombined Release)
 	static float g_scale_inside_citadel;
 	// BW1W120 00ea9f20 BW1M119 011f1e08 (LHCombined Release)
