@@ -4,6 +4,7 @@
 #include "AlignmentInfo.h"
 
 #include "ColourConstants.h"
+#include "ReactionFunction.h"
 
 #include <math.h>   /* For fabs */
 #include <stdio.h>  /* For sprintf */
@@ -28,7 +29,6 @@
 #include "ObjectInfo.h"
 #include "Player.h"
 #include "Reaction.h"
-#include "ReactionFunction.h"
 #include "SoundGuidance.h"
 #include "Town.h"
 #include "TownDesire.h"

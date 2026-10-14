@@ -2033,26 +2033,26 @@ Black/RandomBuildingPlacementDefence.cpp:
 	.rdata      start:0x00941750 end:0x009417BC
 	.CRT$XCU    start:0x009C7580 end:0x009C7594 align:4
 	.data       start:0x00C09BD8 end:0x00C09C48
-	.bss        start:0x00D4F5A8 end:0x00D4F6AC
+	.bss        start:0x00D4F5A8 end:0x00D4F6A8
 
 Black/Rank.cpp:
 	.text       start:0x006E0710 end:0x006E0D90
 	.CRT$XCU    start:0x009C7594 end:0x009C75A0 align:4
-	.data       start:0x00C09C48 end:0x00C0BE84
+	.data       start:0x00C09C48 end:0x00C09C80
 
 Black/Reaction.cpp:
 	.text       start:0x006E0D90 end:0x006E53D0
-	.rdata      start:0x009417BC end:0x009417EC
+	.rdata      start:0x009417D8 end:0x00941818
 	.CRT$XCU    start:0x009C75A0 end:0x009C75B0 align:4
-	.data       start:0x00C0BE84 end:0x00C0BF38
-	.bss        start:0x00D4F6AC end:0x00D50BF4
+	.data       start:0x00C09C80 end:0x00C0BEA8
+	.bss        start:0x00D4F6A8 end:0x00D506C0
 
 Black/Reward.cpp:
 	.text       start:0x006E53D0 end:0x006E6F40
-	.rdata      start:0x009417EC end:0x00941894
+	.rdata      start:0x00941818 end:0x00941894
 	.CRT$XCU    start:0x009C75B0 end:0x009C75C4 align:4
-	.data       start:0x00C0BF38 end:0x00C0BF6C
-	.bss        start:0x00D50BF4 end:0x00D959BC
+	.data       start:0x00C0BEA8 end:0x00C0BF6C
+	.bss        start:0x00D506C0 end:0x00D959BC
 
 Black/Rock.cpp:
 	.text       start:0x006E6F40 end:0x006E7AB0

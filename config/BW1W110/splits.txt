@@ -1701,22 +1701,24 @@ Black/RandomBuildingPlacement.cpp:
 
 Black/Rank.cpp:
 	.text       start:0x006D59E0 end:0x006D6030
-	.data       start:0x00BF8DA8 end:0x00BFAFDC
+	.data       start:0x00BF8DA8 end:0x00BF8DD8
 
 Black/RandomBuildingPlacementDefence.cpp:
 	.rdata      start:0x009316C8 end:0x00931734
-	.bss        start:0x00D3E278 end:0x00D3E37C
+	.bss        start:0x00D3E278 end:0x00D3E378
 
 Black/Reaction.cpp:
 	.text       start:0x006D6030 end:0x006DA640
-	.rdata      start:0x00931734 end:0x00931764
-	.data       start:0x00BFAFDC end:0x00BFB088
-	.bss        start:0x00D3E37C end:0x00D3F8C4
+	.rdata      start:0x00931750 end:0x00931790
+	.CRT$XCU    start:0x009B6FAC end:0x009B6FB8 align:4
+	.data       start:0x00BF8DD8 end:0x00BFAFF8
+	.bss        start:0x00D3E378 end:0x00D3F390
 
 Black/Reward.cpp:
 	.text       start:0x006DA640 end:0x006DC180
-	.rdata      start:0x00931764 end:0x0093180C
-	.bss        start:0x00D3F8C4 end:0x00D8468C
+	.rdata      start:0x00931790 end:0x0093180C
+	.data       start:0x00BFAFF8 end:0x00BFB088
+	.bss        start:0x00D3F390 end:0x00D8468C
 
 Black/Rock.cpp:
 	.text       start:0x006DC180 end:0x006DCDA0
