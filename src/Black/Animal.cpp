@@ -19,6 +19,11 @@
 
 void Animal::SetStateSpeed() {}
 
+void Animal::ResolveLoad()
+{
+	Living::ResolveLoad();
+}
+
 uint32_t Animal::KeepFlockMemberWithinFlockArea()
 {
 	MapCoords& flockPos = *flock->GetFlockPos();
