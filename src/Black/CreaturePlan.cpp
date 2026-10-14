@@ -17,3 +17,5 @@ void CreaturePlan::SetToZero()
 	field_0x20 = 0.0f;
 	ActivityPriority = 0.0f;
 }
+
+CreaturePlan::~CreaturePlan() {}

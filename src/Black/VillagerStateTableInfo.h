@@ -24,8 +24,8 @@ public:
 	static GVillagerStateTableInfo Infos[VILLAGER_STATE_LAST_STATE];
 
 	int      Anim;
-	int      field_0x14;
-	float    field_0x18;
+	int      TownDesireType;
+	float    TownDesireAmount;
 	bool32_t isFinalState;
 	bool32_t isTransientState;
 	bool32_t isMovingForAnimation;

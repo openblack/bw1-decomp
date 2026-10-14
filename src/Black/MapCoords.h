@@ -13,6 +13,7 @@
 enum COLLIDE_TYPE
 {
 	COLLIDE_TYPE_NONE = 0x0,
+	COLLIDE_TYPE_FIXED = 0x8,
 };
 
 // Forward Declares
@@ -40,6 +41,10 @@ struct JustMapXZ
 	JustMapXZ() { Init(0, 0); }
 	// BW1W120 inlined BW1M119 015a0680
 	JustMapXZ(unsigned short cell_x, unsigned short cell_z) : x(cell_x), z(cell_z) {}
+	// BW1W120 005e17c0 BW1M119 01108810
+	JustMapXZ(const MapCoords& coords);
+	// BW1W120 inlined BW1M119 0159c6a0
+	JustMapXZ(const JustMapXZ& other) : x(other.x), z(other.z) {}
 
 	// Non-virtual methods
 

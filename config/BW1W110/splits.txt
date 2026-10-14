@@ -94,17 +94,19 @@ Black/AnimalLeopard.cpp:
 
 Black/AnimalLion.cpp:
 	.text       start:0x0041F960 end:0x0041FD60
-	.rdata      start:0x008AC434 end:0x008ADC98
+	.rdata      start:0x008AC434 end:0x008AE8C0
 	.data       start:0x009B8B48 end:0x009B8B60
 
 Black/AnimalReaction.cpp:
-	.text       start:0x0041FD60 end:0x00420360
-	.rdata      start:0x008ADC98 end:0x008AE8D8
-	.CRT$XCU    start:0x009B60A4 end:0x009B60AC align:4
+	.text       start:0x0041FD90 end:0x00420360
+	.rdata      start:0x008AE8C8 end:0x008AE8D4
+	.CRT$XCU    start:0x009B60A8 end:0x009B60AC align:4
+	.data       start:0x009B8B60 end:0x009B8B80
+	.bss        start:0x00C43B58 end:0x00C43B5C
 
 Black/AnimalSpellWolf.cpp:
 	.text       start:0x00420360 end:0x00420F00
-	.rdata      start:0x008AE8D8 end:0x008AE8F0
+	.rdata      start:0x008AE8D4 end:0x008AE8F0
 	.CRT$XCU    start:0x009B60AC end:0x009B60B0 align:4
 	.data       start:0x009B8B98 end:0x009B8BE4
 
@@ -1151,14 +1153,21 @@ Black/Living.cpp:
 
 Black/LivingProjectile.cpp:
 	.text       start:0x005EA720 end:0x005EBCC0
-	.rdata      start:0x0091B4E8 end:0x0091B600
+	.rdata      start:0x0091B4E8 end:0x0091B5F8
 	.CRT$XCU    start:0x009B69F0 end:0x009B69F4 align:4
 
 Black/LivingReaction.cpp:
-	.text       start:0x005EBCF0 end:0x005ED8A0
-	.CRT$XCU    start:0x009B69F8 end:0x009B69FC align:4
-	.data       start:0x00BE2F24 end:0x00BE2F50
-	.bss        start:0x00D1F6A8 end:0x00D206D4
+	.text       start:0x005EBCC0 end:0x005ED520
+	.rdata      start:0x0091B5F8 end:0x0091B608
+	.CRT$XCU    start:0x009B69F4 end:0x009B69FC align:4
+	.data       start:0x00BE2F28 end:0x00BE2F48
+	.bss        start:0x00D1F6A8 end:0x00D1F6B8
+
+Black/LivingStates.cpp:
+	.text       start:0x005ED520 end:0x005ED8A0
+	.rdata      start:0x0091B608 end:0x0091B618
+	.CRT$XCU    start:0x009B69FC end:0x009B6A08 align:4
+	.bss        start:0x00D1F6B8 end:0x00D1F6C8
 
 Black/LoaderAnon.cpp:
 	.text       start:0x005ED8A0 end:0x005EE9F0
@@ -2061,11 +2070,12 @@ Black/villagernames.cpp:
 Black/VillagerReaction.cpp:
 	.text       start:0x00757090 end:0x0075B2D0
 	.CRT$XCU    start:0x009B72A0 end:0x009B72A4 align:4
-	.data       start:0x00C135F8 end:0x00C13620
+	.data       start:0x00C135F8 end:0x00C1361C
 
 Black/VillagerReactionToCreature.cpp:
-	.text       start:0x0075B300 end:0x0075C2A0
-	.CRT$XCU    start:0x009B72A8 end:0x009B72AC align:4
+	.text       start:0x0075B2D0 end:0x0075C2A0
+	.CRT$XCU    start:0x009B72A4 end:0x009B72AC align:4
+	.data       start:0x00C1361C end:0x00C13648
 
 Black/VillagerScript.cpp:
 	.text       start:0x0075C2D0 end:0x0075C840
@@ -2131,33 +2141,39 @@ Black/Wonder.cpp:
 Black/Workshop.cpp:
 	.text       start:0x007690B0 end:0x0076A5F0
 	.data       start:0x00C13AEC end:0x00C13AF0
-	.bss        start:0x00DBA65C end:0x00DBA6E0
+	.bss        start:0x00DBA65C end:0x00DBA660
 
 Black/Worship.cpp:
 	.text       start:0x0076A5F0 end:0x0076E950
-	.rdata      start:0x0098BA28 end:0x0098D258
-	.data       start:0x00C13B30 end:0x00C13BD4
-	.bss        start:0x00DBA6E0 end:0x00DBB490
+	.rdata      start:0x0098C354 end:0x0098C8F8
+	.CRT$XCU    start:0x009B7310 end:0x009B7324 align:4
+	.data       start:0x00C13B10 end:0x00C13B88
+	.bss        start:0x00DBA660 end:0x00DBB360
 
 Black/WorshipSiteUpgrade.cpp:
 	.text       start:0x0076E950 end:0x0076EDC0
+	.rdata      start:0x0098C8F8 end:0x0098D774
 	.CRT$XCU    start:0x009B7324 end:0x009B7328 align:4
-	.data       start:0x00C13BD4 end:0x00C13C34
+	.data       start:0x00C13B88 end:0x00C13C20
+	.bss        start:0x00DBB360 end:0x00DBB490
 
 Black/WorshipSpellIcon.cpp:
 	.text       start:0x0076EDC0 end:0x00770410
-	.rdata      start:0x0098D258 end:0x0098D780
-	.data       start:0x00C13C34 end:0x00C13C68
+	.rdata      start:0x0098D774 end:0x0098E09C
+	.CRT$XCU    start:0x009B7328 end:0x009B732C align:4
+	.data       start:0x00C13C20 end:0x00C13C58
+	.bss        start:0x00DBB490 end:0x00DBB49C
 
 Black/WorshipTotem.cpp:
 	.text       start:0x00770410 end:0x00770DD0
-	.rdata      start:0x0098D780 end:0x0098E0C4
-	.data       start:0x00C13C68 end:0x00C13F34
-	.bss        start:0x00DBB49C end:0x00DBF5A8
+	.rdata      start:0x0098E09C end:0x0098E9D4
+	.CRT$XCU    start:0x009B732C end:0x009B7340 align:4
+	.data       start:0x00C13C58 end:0x00C13C88
+	.bss        start:0x00DBB49C end:0x00DBB4B0
 
 Black/ChallengeRoom.cpp:
 	.text       start:0x00770DD0 end:0x007761F0
-	.rdata      start:0x0098E0C4 end:0x0098E9E0
+	.rdata      start:0x0098E9D4 end:0x0098E9E0
 	.CRT$XCU    start:0x009B7348 end:0x009B7354 align:4
 	.data       start:0x00C13F34 end:0x00C16398
 	.bss        start:0x00DBF5A8 end:0x00DCF930

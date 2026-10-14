@@ -28,9 +28,22 @@ public:
 	// BW1W120 006e6890 BW1M119 01090310
 	static void ProcessList();
 
-	uint8_t field_0x68[0xc];
-	Town*   town;
-	uint8_t field_0x78[0x30];
+	GameThing* field_0x68;
+	GameThing* field_0x6c;
+	uint8_t    field_0x70[0x4];
+	Town*      town;
+	uint32_t   field_0x78;
+	uint32_t   field_0x7c;
+	uint32_t   field_0x80;
+	uint32_t   field_0x84;
+	uint32_t   field_0x88;
+	uint32_t   field_0x8c;
+	uint32_t   field_0x90;
+	uint8_t    field_0x94[0x4];
+	uint32_t   field_0x98;
+	uint32_t   field_0x9c;
+	uint8_t    field_0xa0[0x4];
+	uint32_t   field_0xa4;
 
 	// Override methods
 
@@ -43,9 +56,9 @@ public:
 	// BW1W120 006e5680 BW1M119 01141c20
 	virtual char* GetDebugText();
 	// BW1W120 006e6c70 BW1M119 01141cb0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006e69c0 BW1M119 01142030
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 006e5670 BW1M119 01141be0
 	virtual uint32_t GetSaveType();
 	// BW1W120 006e6f00 BW1M119 01141c60

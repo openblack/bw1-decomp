@@ -109,7 +109,7 @@ void BookmarkGraphic::AddDrawing()
 	}
 }
 
-unsigned int Bookmark::Save(GameOSFile& file)
+bool32_t Bookmark::Save(GameOSFile& file)
 {
 	file.WriteSafe(Flags);
 	file.WriteSafe(CameraOffset);
@@ -119,7 +119,7 @@ unsigned int Bookmark::Save(GameOSFile& file)
 	return true;
 }
 
-unsigned int Bookmark::Load(GameOSFile& file)
+bool32_t Bookmark::Load(GameOSFile& file)
 {
 	file.ReadSafe(Flags);
 	file.ReadSafe(CameraOffset);
@@ -129,7 +129,7 @@ unsigned int Bookmark::Load(GameOSFile& file)
 	return true;
 }
 
-unsigned int Bookmark::SaveAll(GameOSFile& file)
+uint32_t Bookmark::SaveAll(GameOSFile& file)
 {
 	for (int i = 0; i < BOOKMARK_INDEX_LAST; i++)
 	{
@@ -141,7 +141,7 @@ unsigned int Bookmark::SaveAll(GameOSFile& file)
 	return true;
 }
 
-unsigned int Bookmark::LoadAll(GameOSFile& file)
+uint32_t Bookmark::LoadAll(GameOSFile& file)
 {
 	for (int i = 0; i < BOOKMARK_INDEX_LAST; i++)
 	{

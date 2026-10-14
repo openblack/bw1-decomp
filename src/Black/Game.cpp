@@ -2317,8 +2317,8 @@ void GGame::Process3dEngine()
 				CameraModeNew3::ForceField->count = CameraModeNew3::ForceFieldPointCount + 1;
 				int i;
 				for (i = 0; i < CameraModeNew3::ForceField->count - 1; ++i)
-					CameraModeNew3::ForceField->field_0x20[i] = CameraModeNew3::ForceFieldPoints[i];
-				CameraModeNew3::ForceField->field_0x20[i] = CameraModeNew3::ForceFieldPoints[0];
+					CameraModeNew3::ForceField->Points[i] = CameraModeNew3::ForceFieldPoints[i];
+				CameraModeNew3::ForceField->Points[i] = CameraModeNew3::ForceFieldPoints[0];
 				CameraModeNew3::ForceField->Update((int)LH3DTech::g_game_time_inc * 0.001f);
 				CameraModeNew3::ForceField->DoTheDrawing(CameraModeNew3::ForceFieldMaterial);
 			}
@@ -2730,11 +2730,11 @@ Town* GGame::FindTownWithID(unsigned long id)
 }
 
 // BW1W120 00554090 BW1M119 01366f90
-uint32_t GGame::Save(GameOSFile& file)
+bool32_t GGame::Save(GameOSFile& file)
 {
 	if (!GameThing::Save(file))
 	{
-		return 0;
+		return false;
 	}
 	char*    revision = "$Revision: 756 $";
 	uint32_t length = strlen(revision) + 1;
@@ -2863,15 +2863,15 @@ uint32_t GGame::Save(GameOSFile& file)
 #ifndef VERSION_BW1W100
 	file.WriteIt(script_creature_curse);
 #endif
-	return 1;
+	return true;
 }
 
 // BW1W120 00554830 BW1M119 0154ca00
-uint32_t GGame::Load(GameOSFile& file)
+bool32_t GGame::Load(GameOSFile& file)
 {
 	if (!GameThing::Load(file))
 	{
-		return 0;
+		return false;
 	}
 	char revision[256];
 	if (GameOSFile::ReadEnabled)
@@ -2990,7 +2990,7 @@ uint32_t GGame::Load(GameOSFile& file)
 #ifndef VERSION_BW1W100
 	file.ReadIt(script_creature_curse);
 #endif
-	return 1;
+	return true;
 }
 
 // BW1W120 00555080 BW1M119 01367ec0

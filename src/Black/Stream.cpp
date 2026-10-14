@@ -8,12 +8,16 @@ uint32_t GWaterfall::SaveObject(LHOSFile& file, const MapCoords* coords)
 	return 1;
 }
 
-uint32_t GWaterfall::Save(GameOSFile& file)
+bool32_t GWaterfall::Save(GameOSFile& file)
 {
-	return 1;
+	return true;
 }
 
-uint32_t GWaterfall::Load(GameOSFile& file)
+bool32_t GWaterfall::Load(GameOSFile& file)
 {
-	return 1;
+	return true;
 }
+
+GWaterfall::~GWaterfall() {}
+
+void GWaterfall::CallVirtualFunctionsForCreation(const MapCoords&) {}

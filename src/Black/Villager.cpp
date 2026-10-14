@@ -893,15 +893,9 @@ bool32_t Villager::IsStateExitFunctionSameAs(unsigned long state) const
 }
 
 // BW1W120 007525b0 BW1M119 01574fa0
-bool Villager::IsReactiveState(unsigned long state)
+bool32_t Villager::IsReactiveState(unsigned long state)
 {
-	// TODO: 57% -- index/field semantics correct (GVillagerStateTableInfo::Infos[state]
-	// .isReactiveState). BLOCKED: symbols.txt names this thiscall (?...@@QAE_NK@Z) but the
-	// target body is __cdecl -- ends `c3` (ret, NO arg cleanup), reads state from [esp+4],
-	// never touches ecx(this), returns full eax. Not ICF (ret != ret4 => bytes differ). A
-	// faithful thiscall member compiles to `ret 4`+al. Calling-convention/symbol anomaly for
-	// the dispatcher (symbol may need to be static/cdecl).
-	return GVillagerStateTableInfo::Infos[state].isReactiveState;
+	return GVillagerStateTableInfo::Infos[state].isReactiveState != false;
 }
 
 // BW1W120 00752600 BW1M119 01022ae0
@@ -1274,7 +1268,7 @@ bool32_t Villager::FindDisciplePrayerPos(MapCoords* param_1)
 }
 
 // BW1W120 00754280 BW1M119 01571b20
-uint32_t Villager::Save(GameOSFile& file)
+bool32_t Villager::Save(GameOSFile& file)
 {
 	if (Living::Save(file))
 	{
@@ -1300,7 +1294,7 @@ uint32_t Villager::Save(GameOSFile& file)
 }
 
 // BW1W120 00754580 BW1M119 01571730
-uint32_t Villager::Load(GameOSFile& file)
+bool32_t Villager::Load(GameOSFile& file)
 {
 	if (Living::Load(file))
 	{
@@ -1959,5 +1953,29 @@ const char* MissionaryControl::GetText()
 {
 	return "MissionaryControl";
 }
+
+bool32_t MissionaryControl::Load(GameOSFile& file)
+{
+	if (GameThingWithPos::Load(file))
+	{
+		file.ReadPtr((GameThing**)&Missionary);
+		file.ReadPtr((GameThing**)&reaction);
+		return true;
+	}
+	return false;
+}
+
+bool32_t MissionaryControl::Save(GameOSFile& file)
+{
+	if (GameThingWithPos::Save(file))
+	{
+		file.WritePtr(Missionary);
+		file.WritePtr(reaction);
+		return true;
+	}
+	return false;
+}
+
+MissionaryControl::~MissionaryControl() {}
 
 void Villager::WallhugValidate() {}

@@ -1846,7 +1846,7 @@ uint32_t Object::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Vill
 	return 0;
 }
 
-uint32_t Object::Save(GameOSFile& file)
+bool32_t Object::Save(GameOSFile& file)
 {
 	if (GameThingWithPos::Save(file))
 	{
@@ -1880,12 +1880,12 @@ uint32_t Object::Save(GameOSFile& file)
 			WRITE_SAFE(file, velocity);
 			WRITE_SAFE(file, point);
 		}
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t Object::Load(GameOSFile& file)
+bool32_t Object::Load(GameOSFile& file)
 {
 	if (GameThingWithPos::Load(file))
 	{
@@ -1901,9 +1901,9 @@ uint32_t Object::Load(GameOSFile& file)
 		{
 			PhysicsSaveInfo::ReadInfo(file);
 		}
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 void Object::ResolveLoad()

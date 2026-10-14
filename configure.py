@@ -827,6 +827,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/LivingInfo.cpp"),
             GameCodeObject(NonMatching, "Black/LivingProjectile.cpp"),
             GameCodeObject(NonMatching, "Black/LivingReaction.cpp"),
+            GameCodeObject(NonMatching, "Black/LivingStates.cpp"),
             GameCodeObject(NonMatching, "Black/LoaderAnon.cpp"),
             GameCodeObject(NonMatching, "Black/LoadingBox.cpp"),
             GameCodeObject(NonMatching, "Black/LoadingScreen.cpp"),
@@ -1195,7 +1196,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Worship.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSite.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSiteInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/WorshipSiteUpgrade.cpp"),
+            GameCodeObject(Matching, "Black/WorshipSiteUpgrade.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSiteUpgradeInfo.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSpell.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipSpellIcon.cpp"),
@@ -1789,7 +1790,8 @@ config.libs = [
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHSocket.cpp"),
             MultiplayerObject(MatchingFor("BW1W120"), "Lionhead/LHMultiplayer/ver4.0/LHTCPServerListener.cpp"),
             MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHTransport.cpp"),
-            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp"),
+            MultiplayerObject(Matching, "Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp"),
+            MultiplayerObject(NonMatching, "Lionhead/LHMultiplayer/ver4.0/Version.cpp"),
 
             Object(Matching, "LHMultiplayer/delayimp/delayhlp.cpp", source="delayimp/delayhlp.cpp", cflags=cflags_delayimp),
 

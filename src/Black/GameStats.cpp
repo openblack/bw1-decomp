@@ -532,7 +532,7 @@ uint32_t GameStats::GetCreatureNumMushroomsEaten()
 	return 0;
 }
 
-uint32_t GameStats::Load(GameOSFile& file)
+bool32_t GameStats::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
@@ -624,12 +624,12 @@ uint32_t GameStats::Load(GameOSFile& file)
 		file.ReadIt(TotalChantsUsed);
 		file.ReadIt(TotalNumSacrifices);
 		file.ReadIt(NumTownsAtStart);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t GameStats::Save(GameOSFile& file)
+bool32_t GameStats::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
@@ -721,9 +721,9 @@ uint32_t GameStats::Save(GameOSFile& file)
 		file.WriteIt(TotalChantsUsed);
 		file.WriteIt(TotalNumSacrifices);
 		file.WriteIt(NumTownsAtStart);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 void GameStats::SaveExtraData(GameOSFile& file)
@@ -1049,9 +1049,9 @@ void GameStatsPackage::SetToZero()
 
 char* GameStatsPackage::GetDatabaseStatsString()
 {
-	GameStatsStringList list;
-	unsigned long       length = 0;
-	unsigned long       users[4];
+	LHListHeadTail<GameStatsListString> list;
+	unsigned long                       length = 0;
+	unsigned long                       users[4];
 	memset(users, 0, sizeof(users));
 	GameStatsListString* string;
 	for (unsigned long i = 0; i < 4; i++)

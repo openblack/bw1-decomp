@@ -3046,7 +3046,7 @@ Forest* Town::FindNearestForestToPos(const MapCoords& pos)
 	return best != NULL ? best : bestScenic;
 }
 
-uint32_t Town::Save(GameOSFile& file)
+bool32_t Town::Save(GameOSFile& file)
 {
 	if (Container::Save(file))
 	{
@@ -3115,7 +3115,7 @@ uint32_t Town::Save(GameOSFile& file)
 	return false;
 }
 
-uint32_t Town::Load(GameOSFile& file)
+bool32_t Town::Load(GameOSFile& file)
 {
 	if (Container::Load(file))
 	{

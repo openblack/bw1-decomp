@@ -88,9 +88,9 @@ public:
 	// BW1W120 00474910 BW1M119 013c9820
 	virtual ~MobileWallHug();
 	// BW1W120 0060c740 BW1M119 013ca370
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0060c420 BW1M119 013ca860
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0060c070 BW1M119 01034b30
 	virtual float GetSpeedInMetres() const;
 	// BW1W120 0060c080 BW1M119 013cb2b0

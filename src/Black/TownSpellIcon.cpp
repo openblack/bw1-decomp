@@ -47,24 +47,24 @@ WorshipSite* TownSpellIcon::GetWorshipSite()
 	return NULL;
 }
 
-uint32_t TownSpellIcon::Save(GameOSFile& file)
+bool32_t TownSpellIcon::Save(GameOSFile& file)
 {
 	if (SpellIcon::Save(file))
 	{
 		file.WritePtr(town.Get());
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t TownSpellIcon::Load(GameOSFile& file)
+bool32_t TownSpellIcon::Load(GameOSFile& file)
 {
 	if (SpellIcon::Load(file))
 	{
 		file.ReadPtr((GameThing**)&town);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 TownCentreSpellIcon::~TownCentreSpellIcon() {}

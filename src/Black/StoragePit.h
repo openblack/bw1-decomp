@@ -52,9 +52,9 @@ public:
 	// BW1W120 0055cd40 BW1M119 01159850
 	virtual char* GetDebugText() { return "StoragePit:"; }
 	// BW1W120 00733920 BW1M119 01159b00
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 007338d0 BW1M119 01159ba0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055cd30 BW1M119 01159810
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_STORAGE_PIT; }
 	// BW1W120 0055ccb0 BW1M119 inlined

@@ -13,7 +13,7 @@ public:
 	uint32_t field_0x120;
 	uint8_t  move_to_state;
 	float    life;
-	float    field_0x12c;
+	float    Strength;
 	float    field_0x130;
 	int      field_0x134;
 	uint32_t TeenAge;

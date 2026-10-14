@@ -129,9 +129,9 @@ public:
 	// BW1W120 0043aa60 BW1M119 010b7b00
 	static void SetFocusToOwnedTown();
 	// BW1W120 0043a3f0 BW1M119 010b8990
-	static unsigned int SaveAll(GameOSFile& file);
+	static uint32_t SaveAll(GameOSFile& file);
 	// BW1W120 0043a5e0 BW1M119 010b8600
-	static unsigned int LoadAll(GameOSFile& file);
+	static uint32_t LoadAll(GameOSFile& file);
 
 	// Destructors
 
@@ -147,9 +147,9 @@ public:
 	// BW1W120 00439da0 BW1M119 01085260
 	void Process();
 	// BW1W120 0043a4e0 BW1M119 010b87d0
-	unsigned int Save(GameOSFile& file);
+	bool32_t Save(GameOSFile& file);
 	// BW1W120 0043a6d0 BW1M119 010b8460
-	unsigned int Load(GameOSFile& file);
+	bool32_t Load(GameOSFile& file);
 };
 static_assert(sizeof(Bookmark) == 0x24, "Data type is of wrong size");
 

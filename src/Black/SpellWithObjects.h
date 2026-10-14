@@ -27,9 +27,9 @@ public:
 	// BW1W120 0055cf70 BW1M119 01521560
 	virtual char* GetDebugText() { return "SpellWithObjects:"; }
 	// BW1W120 007210f0 BW1M119 0151e710
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 007211d0 BW1M119 0151e540
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055cf60 BW1M119 01521520
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_WITH_OBJECTS; }
 	// BW1W120 007212f0 BW1M119 0151e450

@@ -17,14 +17,26 @@ class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 class Living;
-struct MapCoords;
 class Object;
+class PSysInterface;
+class Reaction;
+class SpellTeleport;
+
+struct LivingMapCoordsPair
+{
+	Living*   LivingThing;
+	MapCoords Pos;
+};
 
 class MagicTeleport : public MobileStatic
 {
 public:
-	MagicTeleport* next;
-	uint8_t        field_0x8c[0x18];
+	MagicTeleport*                    next;
+	LHLinkedList<LivingMapCoordsPair> LivingMapCoordsPairs; /* 0x8c */
+	Reaction*                         TeleportReaction;
+	PSysInterface*                    PSys;
+	SpellTeleport*                    Spell;
+	GPlayer*                          Player; /* 0xa0 */
 
 	// Override methods
 
@@ -39,9 +51,9 @@ public:
 	// BW1W120 005fc0f0 BW1M119 013b70b0
 	virtual char* GetDebugText();
 	// BW1W120 005fbf50 BW1M119 013b9350
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 005fbfa0 BW1M119 013b92a0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005fc0e0 BW1M119 013b7070
 	virtual uint32_t GetSaveType();
 	// BW1W120 005fc040 BW1M119 013b6d40
@@ -91,5 +103,7 @@ public:
 	// BW1W120 005fc790 BW1M119 013b7950
 	void DoTeleport(Living* living, bool force);
 };
+
+static_assert(sizeof(MagicTeleport) == 0xa4, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_MAGIC_TELEPORT_INCLUDED_H */

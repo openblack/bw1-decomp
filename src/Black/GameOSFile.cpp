@@ -654,7 +654,7 @@ void GameOSFile::LoadInstance(GameThing** out_thing)
 	case GAME_THING_TYPE_CITADEL_ENTRANCE:
 		thing = new (GAME_OS_FILE_FILE, 830) CitadelEntrance;
 		break;
-	case GAME_THING_TYPE_CITADEL_HEART_2:
+	case GAME_THING_TYPE_PLANNED_WORSHIP_SITE:
 		thing = new (GAME_OS_FILE_FILE, 834) CitadelHeart;
 		break;
 	case GAME_THING_TYPE_WORSHIP_SITE:

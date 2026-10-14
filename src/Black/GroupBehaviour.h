@@ -69,9 +69,9 @@ public:
 	// BW1W120 00596320 BW1M119 01103310
 	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 005985c0 BW1M119 010fe130
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00598240 BW1M119 010fee10
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005964a0 BW1M119 01103120
 	virtual void Process();
 
@@ -109,7 +109,7 @@ public:
 	// BW1W120 00597190 BW1M119 01101ed0
 	void UpdateNumeratorsAndDenominator();
 	// BW1W120 00597400 BW1M119 011018b0
-	bool FindDanceGroup(Living* living);
+	bool32_t FindDanceGroup(Living* living);
 	// BW1W120 00597ed0 BW1M119 01100070
 	Living* GetFirstDancer();
 	// BW1W120 005981d0 BW1M119 010ffa50

@@ -240,7 +240,7 @@ GDanceInfo* Dance::GetInfo()
 	return &GDanceInfo::Infos[Type];
 }
 
-uint32_t Dance::Save(GameOSFile& file)
+bool32_t Dance::Save(GameOSFile& file)
 {
 	if (GroupBehaviour::Save(file))
 	{
@@ -257,12 +257,12 @@ uint32_t Dance::Save(GameOSFile& file)
 		file.WriteIt(Label);
 		file.WriteIt(FollowTarget);
 		file.WritePtr(FootpathLink);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t Dance::Load(GameOSFile& file)
+bool32_t Dance::Load(GameOSFile& file)
 {
 	if (GroupBehaviour::Load(file))
 	{
@@ -279,9 +279,9 @@ uint32_t Dance::Load(GameOSFile& file)
 		file.ReadIt(Label);
 		file.ReadIt(FollowTarget);
 		file.ReadPtr((GameThing**)&FootpathLink);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 float Dance::CalculateAverageLifeDesiredByDancers()

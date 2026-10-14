@@ -8,6 +8,7 @@
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 
 #include "CitadelPart.h" /* For struct CitadelPart */
+#include "LHPTR.h"       /* For LHPTR */
 #include "LightSheet.h"  /* For struct LightSheet */
 
 // Forward Declares
@@ -17,41 +18,54 @@ class EffectValues;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
+class GInterfaceStatus;
+class GWorshipSiteInfo;
 struct MapCoords;
 class Object;
+class Villager;
 class WorshipSite;
+
+#define WORSHIP_TOTEM_CHANTS_FOR_FULL_PSYS_POWER 11000.0f
+#define WORSHIP_TOTEM_CHARGE_RING_POINTS         10
 
 class WorshipTotem : public CitadelPart
 {
 public:
 	struct TChargingData
 	{
-		uint8_t    field_0x0;
-		LightSheet light_sheet;
-		uint32_t   field_0x6c;
+		bool        SheetInitialised; /* 0x0 */
+		LightSheet  Sheet;            /* 0x4 */
+		LH3DObject* PulseObject;      /* 0x6c */
 
 		// Constructors
 
 		// BW1W120 00780af0 BW1M119 inlined
 		TChargingData();
+		// BW1W120 00780b10 BW1M119 015befa0
+		~TChargingData();
+
+		// Non-virtual methods
+
+		// BW1W120 00780b40 BW1M119 015bee30
+		void Init();
+		// BW1W120 00780be0 BW1M119 015be9d0
+		void Draw(WorshipTotem* totem);
 	};
 
-	uint32_t      SpecularColor;
-	TChargingData ChargingData;
-	WorshipSite*  site;
+	uint32_t           SpecularColor; /* 0x8c */
+	TChargingData      ChargingData;  /* 0x90 */
+	LHPTR<WorshipSite> Site;          /* 0x100 */
 
 	// Override methods
 
-	// BW1W120 00780810 BW1M119 015be3e0
-	virtual ~WorshipTotem();
 	// BW1W120 007808e0 BW1M119 015bf440
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00780800 BW1M119 015be670
 	virtual char* GetDebugText();
 	// BW1W120 00780f10 BW1M119 015be820
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00780f90 BW1M119 015be730
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 007807f0 BW1M119 015be630
 	virtual uint32_t GetSaveType();
 	// BW1W120 00780f00 BW1M119 015be910
@@ -81,7 +95,9 @@ public:
 	// BW1W120 00780790 BW1M119 015be480
 	virtual bool32_t IsSpellSeedReturnPoint() const;
 	// BW1W120 007807a0 BW1M119 015be4d0
-	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
+	virtual bool32_t IsEffectReceiver(EffectValues* values);
+	// BW1W120 00781010 BW1M119 015be6b0
+	virtual void DiscipleInHandNear(Villager& villager, GInterfaceStatus& status);
 
 	// Static methods
 
@@ -97,6 +113,16 @@ public:
 
 	// Non-virtual methods
 
+#ifndef VERSION_BW1W100
+	// BW1W120 00780980 BW1M119 null
+	float GetMaxSinkDepth();
+	// BW1W120 007809c0 BW1M119 null
+	void SetSinkFromWorshipSpeed();
+	// BW1W120 007809f0 BW1M119 null
+	void SetWorshipSpeedFromSink();
+#endif // VERSION_BW1W100
+	// BW1W120 00780a60 BW1M119 015bf320
+	const GWorshipSiteInfo* GetInfo() const;
 	// BW1W120 00780ee0 BW1M119 015be960
 	void DrawMagicSystem();
 };

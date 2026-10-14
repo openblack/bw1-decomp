@@ -24,9 +24,9 @@ public:
 	// BW1W120 0055d010 BW1M119 015266c0
 	virtual char* GetDebugText() { return "SpellWater:"; }
 	// BW1W120 007253b0 BW1M119 015267e0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00725420 BW1M119 01526700
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055d000 BW1M119 01526680
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_WATER; }
 	// BW1W120 00724ed0 BW1M119 01526a80

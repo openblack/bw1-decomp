@@ -49,9 +49,9 @@ public:
 	// BW1W120 0066ee10 BW1M119 011213c0
 	virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 	// BW1W120 0066db10 BW1M119 01123f10
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0066da90 BW1M119 01124000
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055d640 BW1M119 0111fb20
 	virtual bool32_t CanBeThrownByPlayer() { return (bool)(ResourceAmount != 0); }
 	// BW1W120 0066db90 BW1M119 01123e50

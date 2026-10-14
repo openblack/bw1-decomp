@@ -77,3 +77,10 @@ char* MagicFireBall::GetDebugText()
 {
 	return "FireBall:";
 }
+
+uint32_t MagicFireBall::SaveObject(LHOSFile&, const MapCoords*)
+{
+	return 0;
+}
+
+MagicFireBall::~MagicFireBall() {}

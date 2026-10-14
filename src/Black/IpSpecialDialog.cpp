@@ -13,3 +13,8 @@ IPSpecialDialog::IPSpecialDialog()
 	field_0x20 = 0;
 	field_0x24 = false;
 }
+
+void IPSpecialDialog::Destroy()
+{
+	DialogBoxBase::Destroy();
+}

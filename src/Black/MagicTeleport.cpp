@@ -1,4 +1,8 @@
 #include "MagicTeleport.h"
+#include "GameOSFile.h" /* For class GameOSFile */
+#include "Reaction.h"
+#include "SpellTeleport.h"
+#include "Player.h"
 
 bool32_t MagicTeleport::CanBePickedUpByCreature(Creature* param_1)
 {
@@ -78,6 +82,30 @@ bool32_t MagicTeleport::IsEffectReceiver(EffectValues* param_1)
 char* MagicTeleport::GetDebugText()
 {
 	return "MagicTeleport:";
+}
+
+bool32_t MagicTeleport::Load(GameOSFile& file)
+{
+	if (MobileStatic::Load(file))
+	{
+		file.ReadPtr((GameThing**)&TeleportReaction);
+		file.ReadPtr((GameThing**)&Spell);
+		file.ReadPtr((GameThing**)&Player);
+		return true;
+	}
+	return false;
+}
+
+bool32_t MagicTeleport::Save(GameOSFile& file)
+{
+	if (MobileStatic::Save(file))
+	{
+		file.WritePtr(TeleportReaction);
+		file.WritePtr(Spell);
+		file.WritePtr(Player);
+		return true;
+	}
+	return false;
 }
 
 MagicTeleport::~MagicTeleport() {}

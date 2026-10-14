@@ -141,9 +141,9 @@ public:
 	// BW1W120 0064c470 BW1M119 0149a4e0
 	virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
 	// BW1W120 0064c4c0 BW1M119 01499760
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0064c8c0 BW1M119 01498780
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0064cc90 BW1M119 014986b0
 	virtual void SaveExtraData(GameOSFile& file);
 	// BW1W120 0064ccf0 BW1M119 01498680

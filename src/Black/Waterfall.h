@@ -32,9 +32,9 @@ public:
 	// BW1W120 0055de50 BW1M119 0115b770
 	virtual char* GetDebugText() { return "Waterfall:"; }
 	// BW1W120 00734660 BW1M119 0115b7b0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00734650 BW1M119 0115b7f0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055de40 BW1M119 0115b730
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GWATERFALL; }
 	// BW1W120 007341b0 BW1M119 0115c4b0

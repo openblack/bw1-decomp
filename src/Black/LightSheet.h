@@ -15,20 +15,18 @@ struct LightSheet
 	void          Update(float time);                   // 0083e4f0
 	void          DoTheDrawing(LH3DMaterial* material); // 0083e8c0
 	int           count;                                /* 0x0 */
-	float         field_0x4;
-	float         field_0x8;
-	float         field_0xc;
-	float         field_0x10;
-	float         field_0x14;
+	LHPoint       Centre;
+	float         ScaleFac; /* 0x10 */
+	float         WaveHeight;
 	float         field_0x18;
-	float         field_0x1c;
-	LHPoint*      field_0x20;
+	float         ScrollSpeed;
+	LHPoint*      Points; /* 0x20 */
 	float*        field_0x24;
 	float*        field_0x28;
-	uint32_t      field_0x2c;
+	uint32_t      Colour;
 	uint32_t      field_0x30;
 	float         field_0x34;
-	uint32_t      field_0x38;
+	float         PulseLevel;
 	uint32_t      field_0x3c;
 	float         field_0x40;
 	float*        field_0x44;
@@ -36,7 +34,7 @@ struct LightSheet
 	float*        field_0x4c;
 	uint32_t      field_0x50;
 	int           field_0x54;
-	LH3DMaterial* Material0x58;
+	LH3DMaterial* Material;
 	uint32_t      field_0x5c;
 	float         field_0x60;
 	uint32_t      field_0x64;
@@ -45,11 +43,13 @@ struct LightSheet
 
 	// BW1W120 0083e690 BW1M119 010cd9e0 (LHCombined Release)
 	LightSheet();
+	// BW1W120 0083e6b0 BW1M119 010afde0
+	~LightSheet();
 
 	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 011af650
-	void SetScaleFac(float scale_fac) { field_0x10 = scale_fac; }
+	void SetScaleFac(float scale_fac) { ScaleFac = scale_fac; }
 	// BW1W120 0083e710 BW1M119 010cd630 (LHCombined Release)
 	void Init(int count);
 	// BW1W120 inlined BW1M119 inlined
@@ -66,6 +66,10 @@ struct LightSheet
 	}
 	// BW1W120 0083e610 BW1M119 010cda30 (LHCombined Release)
 	void PulseForceField(LHPoint param_1, float param_2);
+	// BW1W120 0083e6b0 BW1M119 010cd8e0 (LHCombined Release)
+	void Close();
+	// BW1W120 004246e0 BW1M119 010929d0 (LHCombined Release)
+	void Draw() { DoTheDrawing(Material); }
 };
 
 #endif /* BW1_DECOMP_LIGHT_SHEET_INCLUDED_H */

@@ -22,11 +22,14 @@ class TownArtifact : public GameThing
 public:
 	Fixed*                   Artifact;
 	Town*                    town;
-	GameThing*               field_0x1c;
+	WorshipSite*             Site;
 	LHListNode<TownArtifact> next;
 	GPlayer*                 Player;
 	float                    Value;
-	uint8_t                  field_0x2c[0x10];
+	GameThing*               field_0x2c;
+	uint32_t                 field_0x30;
+	uint32_t                 field_0x34;
+	GameThing*               field_0x38;
 	PlayerSymbolSprite*      Symbol;
 
 	// Override methods
@@ -48,9 +51,9 @@ public:
 	// BW1W120 00426470 BW1M119 010b1640
 	virtual uint32_t SetVillagerActivity(Villager* param_1);
 	// BW1W120 004266c0 BW1M119 010b12d0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 004265a0 BW1M119 010b1480
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00425d70 BW1M119 010b0c30
 	virtual uint32_t GetSaveType();
 
@@ -60,6 +63,8 @@ public:
 	TownArtifact() { SetToZero(); }
 	// BW1W120 00425d00 BW1M119 010b28e0
 	TownArtifact(Fixed* artifact, Town* town, GPlayer* player);
+	// BW1W120 00425db0 BW1M119 010b27c0
+	TownArtifact(Fixed* artifact, WorshipSite* site, GPlayer* player);
 
 	// Non-virtual methods
 

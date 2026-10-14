@@ -73,9 +73,9 @@ public:
 	// BW1W120 0055e140 BW1M119 01146ad0
 	virtual char* GetDebugText() { return "Scaffold:"; }
 	// BW1W120 006ea3d0 BW1M119 011483d0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006ea240 BW1M119 01148610
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055e130 BW1M119 01146a90
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SCAFFOLD; }
 	// BW1W120 006ea560 BW1M119 01148290

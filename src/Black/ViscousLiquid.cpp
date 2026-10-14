@@ -37,3 +37,25 @@ bool32_t Fragment::ShouldFootpathsGoRound()
 {
 	return false;
 }
+
+uint32_t Fragment::InterfaceValidToTap(GInterfaceStatus*)
+{
+	return 0;
+}
+
+IMMERSION_EFFECT_TYPE Fragment::GetInHandImmersionTexture()
+{
+	return Object::GetInHandImmersionTexture();
+}
+
+void Fragment::ResolveLoad()
+{
+	Object::ResolveLoad();
+}
+
+SCRIPT_OBJECT_TYPE Fragment::GetScriptObjectType()
+{
+	return MobileStatic::GetScriptObjectType();
+}
+
+void Fragment::ReactToPhysicsImpact(PhysicsObject*, bool) {}

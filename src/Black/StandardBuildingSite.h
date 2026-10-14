@@ -29,9 +29,9 @@ public:
 	// BW1W120 0043d710 BW1M119 010c1760
 	virtual char* GetDebugText();
 	// BW1W120 0043d890 BW1M119 010bb1f0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0043d850 BW1M119 010bb290
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0043d700 BW1M119 010c1720
 	virtual uint32_t GetSaveType();
 	// BW1W120 0043d8d0 BW1M119 0107a440
@@ -45,7 +45,7 @@ public:
 	// BW1W120 0043d760 BW1M119 010bb500
 	virtual void CreatePileWood();
 	// BW1W120 0043c220 BW1M119 inlined
-	virtual void GetResourcePosAndYAngle(uint32_t param_1, uint32_t param_2, float* param_3);
+	virtual MapCoords GetResourcePosAndYAngle(RESOURCE_TYPE type, unsigned long index, float* y_angle);
 	// BW1W120 0043d800 BW1M119 010bb390
 	virtual void RemovePotFromStructure(PotStructure* param_1);
 	// BW1W120 0043d830 BW1M119 010bb330

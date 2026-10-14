@@ -11,6 +11,7 @@
 class Base;
 class GameOSFile;
 class GameThing;
+struct LHPoint;
 
 class SpellPointInf : public PSysBase
 {
@@ -22,14 +23,16 @@ public:
 	// BW1W120 0055f440 BW1M119 01428940
 	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 	// BW1W120 00698240 BW1M119 014222f0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006ced60 BW1M119 014893f0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055f430 BW1M119 01428900
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_POINT_INF; }
 
 	// BW1W120 0055f410 BW1M119 inlined
 	SpellPointInf() {}
+	// BW1W120 0069ac10 BW1M119 014304b0
+	SpellPointInf(const LHPoint& from, float speed, const LHPoint& to, unsigned long colour);
 };
 
 #endif /* BW1_DECOMP_SPELL_POINT_INF_INCLUDED_H */

@@ -58,9 +58,9 @@ public:
 	// BW1W120 0077a630 BW1M119 0116a1c0
 	virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
 	// BW1W120 0077a130 BW1M119 0116a880
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00779f40 BW1M119 0116ad10
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00779300 BW1M119 0116cc50
 	virtual uint32_t GetSaveType();
 	// BW1W120 0077a330 BW1M119 0116a830

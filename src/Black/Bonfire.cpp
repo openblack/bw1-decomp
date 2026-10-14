@@ -1,4 +1,5 @@
 #include "Bonfire.h"
+#include "GameOSFile.h" /* For class GameOSFile */
 
 uint32_t Bonfire::GetSaveType()
 {
@@ -37,4 +38,39 @@ void Bonfire::PhysicsEditorCreate(int param_1)
 char* Bonfire::GetDebugText()
 {
 	return "Bonfire:";
+}
+
+IMMERSION_EFFECT_TYPE Bonfire::GetInHandImmersionTexture()
+{
+	return Object::GetInHandImmersionTexture();
+}
+
+SCRIPT_OBJECT_TYPE Bonfire::GetScriptObjectType()
+{
+	return MobileStatic::GetScriptObjectType();
+}
+
+void Bonfire::Draw()
+{
+	Rock::Draw();
+}
+
+bool32_t Bonfire::Load(GameOSFile& file)
+{
+	if (Rock::Load(file))
+	{
+		file.ReadIt(field_0x94);
+		return true;
+	}
+	return false;
+}
+
+bool32_t Bonfire::Save(GameOSFile& file)
+{
+	if (Rock::Save(file))
+	{
+		file.WriteIt(field_0x94);
+		return true;
+	}
+	return false;
 }

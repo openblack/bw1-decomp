@@ -18,18 +18,18 @@ CitadelPart::CitadelPart(const MapCoords& coords, const GCitadelPartInfo* info, 
 	}
 }
 
-uint32_t CitadelPart::Load(GameOSFile& file)
+bool32_t CitadelPart::Load(GameOSFile& file)
 {
 	if (!MultiMapFixed::Load(file))
 	{
-		return 0;
+		return false;
 	}
 
 	file.ReadIt(Influence);
 	file.ReadPtr((GameThing**)&citadel);
 	file.ReadPtr((GameThing**)&GameThing0x88);
 
-	return 1;
+	return true;
 }
 
 uint32_t CitadelPart::GetSaveType()

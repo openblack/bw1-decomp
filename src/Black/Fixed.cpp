@@ -190,7 +190,7 @@ bool32_t Fixed::InterfaceSetInMagicHand(GInterfaceStatus* status)
 	return Object::InterfaceSetInMagicHand(status);
 }
 
-uint32_t Fixed::Save(GameOSFile& file)
+bool32_t Fixed::Save(GameOSFile& file)
 {
 	if (Object::Save(file))
 	{
@@ -200,7 +200,7 @@ uint32_t Fixed::Save(GameOSFile& file)
 	return false;
 }
 
-uint32_t Fixed::Load(GameOSFile& file)
+bool32_t Fixed::Load(GameOSFile& file)
 {
 	if (Object::Load(file))
 	{
@@ -517,9 +517,9 @@ SingleMapFixed::~SingleMapFixed()
 	}
 }
 
-bool GMultiMapFixedInfo::IsOkToCreateAtPos(const MapCoords& pos, float param_2, float param_3) const
+bool32_t GMultiMapFixedInfo::IsOkToCreateAtPos(const MapCoords& coords, float y_angle, float scale) const
 {
-	return pos.IsSuitableForFixed(GetMesh(), param_2, param_3);
+	return coords.IsSuitableForFixed(GetMesh(), y_angle, scale) != false;
 }
 
 bool32_t Fixed::ValidForLockedSelectProcess(GInterfaceStatus* status)
@@ -794,7 +794,7 @@ bool32_t MultiMapFixed::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, G
 	return false;
 }
 
-uint32_t MultiMapFixed::Save(GameOSFile& file)
+bool32_t MultiMapFixed::Save(GameOSFile& file)
 {
 	if (Fixed::Save(file))
 	{
@@ -807,7 +807,7 @@ uint32_t MultiMapFixed::Save(GameOSFile& file)
 	return false;
 }
 
-uint32_t MultiMapFixed::Load(GameOSFile& file)
+bool32_t MultiMapFixed::Load(GameOSFile& file)
 {
 	if (Fixed::Load(file))
 	{

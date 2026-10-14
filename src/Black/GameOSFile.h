@@ -500,43 +500,47 @@ public:
 		}
 	}
 	// BW1W120 inlined BW1M119 inlined
-	template <typename T> void ReadSafe(LHOrderedLinkedList<T>& list)
+	template <typename T> bool32_t ReadSafe(LHOrderedLinkedList<T>& list)
 	{
-		if (ReadEnabled)
+		if (!ReadEnabled)
 		{
-			long count;
-			ReadIt(count);
-			while (count > 0)
-			{
-				T* element;
-				ReadPtr((GameThing**)&element);
-				list.Insert(element);
-				count--;
-			}
+			return false;
 		}
+		long count;
+		ReadIt(count);
+		while (count > 0)
+		{
+			T* element;
+			ReadPtr((GameThing**)&element);
+			list.Insert(element);
+			count--;
+		}
+		return true;
 	}
 	// BW1W120 inlined BW1M119 inlined
-	template <typename T> void WriteSafe(LHOrderedLinkedList<T>& list)
+	template <typename T> bool32_t WriteSafe(LHOrderedLinkedList<T>& list)
 	{
-		if (WriteEnabled)
+		if (!WriteEnabled)
 		{
-			uint32_t count = list.count;
-			int      written = 0;
-			WriteIt(list.count);
-			for (LHOrderedLinkedListIterator<T> iterator(list); iterator.MoreToDo(); iterator++)
-			{
-				if (++written > (int)count)
-				{
-					WriteEnabled = false;
-					break;
-				}
-				if (!WriteEnabled)
-				{
-					break;
-				}
-				WritePtr(iterator.Get());
-			}
+			return false;
 		}
+		uint32_t count = list.count;
+		int      written = 0;
+		WriteIt(list.count);
+		for (LHOrderedLinkedListIterator<T> iterator(list); iterator.MoreToDo(); iterator++)
+		{
+			if (++written > (int)count)
+			{
+				WriteEnabled = false;
+				break;
+			}
+			if (!WriteEnabled)
+			{
+				break;
+			}
+			WritePtr(iterator.Get());
+		}
+		return true;
 	}
 	// BW1W120 inlined BW1M119 01305f20
 	template <typename T> void WriteSafe(GTPointer<T>& pointer)

@@ -52,9 +52,9 @@ public:
 	// BW1W120 0055c7f0 BW1M119 0113cda0
 	virtual char* GetDebugText() { return "Reaction:"; }
 	// BW1W120 006e4ba0 BW1M119 0113d100
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006e4990 BW1M119 0113d580
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055c7e0 BW1M119 0113cd60
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_REACTION; }
 
@@ -78,6 +78,8 @@ public:
 
 	// BW1W120 006e4700 BW1M119 0108e570
 	ReactionInfo* GetInfo() const;
+	// BW1W120 inlined BW1M119 015967b0
+	GameThingWithPos* GetInitiatingObject() const { return target; }
 	// BW1W120 inlined BW1M119 01150160
 	REACTION GetFunctionIndex() const { return type; }
 	// BW1W120 006e48a0 BW1M119 0113db00

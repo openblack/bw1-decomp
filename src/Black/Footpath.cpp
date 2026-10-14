@@ -10,7 +10,7 @@
 
 void GFootpathNode::ResolveLoad() {}
 
-uint32_t GFootpathLink::Save(GameOSFile& file)
+bool32_t GFootpathLink::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
@@ -40,10 +40,12 @@ uint32_t GFootpathLink::Save(GameOSFile& file)
 				GameOSFile::WriteEnabled = false;
 			}
 		}
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
+
+void GFootpathLink::Update(MultiMapFixed* structure) {}
 
 uint32_t GFootpath::GetSaveType()
 {
@@ -54,6 +56,8 @@ char* GFootpath::GetDebugText()
 {
 	return "Footpath:";
 }
+
+GFootpath::~GFootpath() {}
 
 uint32_t GFootpathFinder::GetSaveType()
 {

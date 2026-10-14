@@ -1176,24 +1176,24 @@ uint32_t PlannedAbode::IsOkToBuild()
 	return Pos.IsSuitableForFixed(info->GetMesh(), YAngle, GetScale() * 1.25);
 }
 
-uint32_t PlannedAbode::Save(GameOSFile& file)
+bool32_t PlannedAbode::Save(GameOSFile& file)
 {
 	if (PlannedMultiMapFixed::Save(file))
 	{
 		file.WritePtr(town.Get());
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t PlannedAbode::Load(GameOSFile& file)
+bool32_t PlannedAbode::Load(GameOSFile& file)
 {
 	if (PlannedMultiMapFixed::Load(file))
 	{
 		file.ReadPtr((GameThing**)&town);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 Windmill* Windmill::Create(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
@@ -1699,7 +1699,7 @@ Villager* Abode::FindVillager(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_O
 	return NULL;
 }
 
-uint32_t Abode::Save(GameOSFile& file)
+bool32_t Abode::Save(GameOSFile& file)
 {
 	if (MultiMapFixed::Save(file))
 	{
@@ -1719,12 +1719,12 @@ uint32_t Abode::Save(GameOSFile& file)
 		{
 			DestructionMesh->WriteToFile(file);
 		}
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t Abode::Load(GameOSFile& file)
+bool32_t Abode::Load(GameOSFile& file)
 {
 	if (MultiMapFixed::Load(file))
 	{
@@ -1747,9 +1747,9 @@ uint32_t Abode::Load(GameOSFile& file)
 			DestructionMesh =
 				new (ABODE_FILE, ABODE_LINE(2210)) FragMesh(file, LH3DMesh::GetPackedMesh(GetInfo()->GetMesh()));
 		}
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 bool32_t Abode::GetNearestWaterPos(MapCoords& coords)

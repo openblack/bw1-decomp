@@ -42,6 +42,15 @@ enum CREATURE_BELIEF_LIST_TYPE
 	CREATURE_BELIEF_LIST_TYPE_OBJECT = 1
 };
 
+enum TOWN_ATTITUDE_TO_CREATURE
+{
+	TOWN_ATTITUDE_TO_CREATURE_NEVER_SEEN = 0,
+	TOWN_ATTITUDE_TO_CREATURE_NONE = 1,
+	TOWN_ATTITUDE_TO_CREATURE_CURIOUS = 2,
+	TOWN_ATTITUDE_TO_CREATURE_FEAR = 3,
+	TOWN_ATTITUDE_TO_CREATURE_RESPECT = 4,
+};
+
 // Names from the belief type list (BW1W120 008cbf68, 0x40-byte entries).
 enum CREATURE_BELIEF_TYPE
 {
@@ -147,9 +156,9 @@ public:
 	// BW1W120 004178f0 BW1M119 011c6dc0
 	virtual char* GetDebugText();
 	// BW1W120 005704a0 BW1M119 0149aaf0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 005703f0 BW1M119 013ec380
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00570560 BW1M119 0114f380
 	virtual uint32_t GetSaveType();
 	// BW1W120 00401940 BW1M119 0104f9a0

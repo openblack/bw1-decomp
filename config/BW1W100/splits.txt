@@ -91,17 +91,19 @@ Black/AnimalLeopard.cpp:
 
 Black/AnimalLion.cpp:
 	.text       start:0x0041AD50 end:0x0041B0E0
-	.rdata      start:0x007FBE38 end:0x007FD694
+	.rdata      start:0x007FBE38 end:0x007FE2B8
 	.data       start:0x008F8148 end:0x008F8160
 
 Black/AnimalReaction.cpp:
-	.text       start:0x0041B0E0 end:0x0041B6A0
-	.rdata      start:0x007FD694 end:0x007FE2D4
-	.CRT$XCU    start:0x008F6068 end:0x008F6070 align:4
+	.text       start:0x0041B110 end:0x0041B6A0
+	.rdata      start:0x007FE2C0 end:0x007FE2CC
+	.CRT$XCU    start:0x008F606C end:0x008F6070 align:4
+	.data       start:0x008F8160 end:0x008F8180
+	.bss        start:0x00B765D8 end:0x00B765DC
 
 Black/AnimalSpellWolf.cpp:
 	.text       start:0x0041B6A0 end:0x0041C1E0
-	.rdata      start:0x007FE2D8 end:0x007FE2E8
+	.rdata      start:0x007FE2CC end:0x007FE2E8
 	.CRT$XCU    start:0x008F6070 end:0x008F6074 align:4
 	.data       start:0x008F8198 end:0x008F81E4
 
@@ -1066,13 +1068,21 @@ Black/Living.cpp:
 
 Black/LivingProjectile.cpp:
 	.text       start:0x005AE090 end:0x005AF600
-	.rdata      start:0x00869314 end:0x0086942C
+	.rdata      start:0x00869314 end:0x00869424
 	.CRT$XCU    start:0x008F69A8 end:0x008F69AC align:4
 
 Black/LivingReaction.cpp:
-	.text       start:0x005AF630 end:0x005B1000
-	.CRT$XCU    start:0x008F69B0 end:0x008F69B4 align:4
-	.bss        start:0x00C519A0 end:0x00C529CC
+	.text       start:0x005AF600 end:0x005B0D20
+	.rdata      start:0x00869424 end:0x00869434
+	.CRT$XCU    start:0x008F69AC end:0x008F69B4 align:4
+	.data       start:0x00B207C8 end:0x00B207E8
+	.bss        start:0x00C519A0 end:0x00C519B0
+
+Black/LivingStates.cpp:
+	.text       start:0x005B0D20 end:0x005B1000
+	.rdata      start:0x00869434 end:0x00869444
+	.CRT$XCU    start:0x008F69B4 end:0x008F69C0 align:4
+	.bss        start:0x00C519B0 end:0x00C519C0
 
 Black/LoaderAnon.cpp:
 	.text       start:0x005B1000 end:0x005B2150
@@ -1085,7 +1095,7 @@ Black/LoadingScreen.cpp:
 
 Black/Lobbybox.cpp:
 	.text       start:0x005B34D0 end:0x005B69D0
-	.rdata      start:0x00869434 end:0x008694D8
+	.rdata      start:0x00869444 end:0x008694D8
 	.CRT$XCU    start:0x008F69C8 end:0x008F69D0 align:4
 	.bss        start:0x00C529FC end:0x00C52A88
 
@@ -2054,32 +2064,39 @@ Black/Wonder.cpp:
 Black/Workshop.cpp:
 	.text       start:0x007025A0 end:0x00703910
 	.data       start:0x00B478FC end:0x00B47900
-	.bss        start:0x00CEC624 end:0x00CEC6A8
+	.bss        start:0x00CEC624 end:0x00CEC628
 
 Black/Worship.cpp:
 	.text       start:0x00703910 end:0x007074B0
-	.rdata      start:0x008D2BF0 end:0x008D3B10
-	.data       start:0x00B47940 end:0x00B47998
-	.bss        start:0x00CEC6A8 end:0x00CED458
+	.rdata      start:0x008D351C end:0x008D3AC0
+	.CRT$XCU    start:0x008F72C0 end:0x008F72D4 align:4
+	.data       start:0x00B47920 end:0x00B47998
+	.bss        start:0x00CEC628 end:0x00CED328
 
 Black/WorshipSiteUpgrade.cpp:
-	.text       start:0x007074B0 end:0x00707520
-	.data       start:0x00B479C0 end:0x00B479D4
+	.text       start:0x007074B0 end:0x00707530
+	.rdata      start:0x008D3AC0 end:0x008D3B0C
+	.CRT$XCU    start:0x008F72D4 end:0x008F72D8 align:4
+	.data       start:0x00B47998 end:0x00B479C0
+	.bss        start:0x00CED328 end:0x00CED458
 
 Black/WorshipSpellIcon.cpp:
-	.text       start:0x00707520 end:0x00708A70
-	.rdata      start:0x008D3B14 end:0x008D3B18
-	.data       start:0x00B479D4 end:0x00B47A08
+	.text       start:0x00707530 end:0x00708A70
+	.rdata      start:0x008D3B0C end:0x008D4434
+	.CRT$XCU    start:0x008F72D8 end:0x008F72DC align:4
+	.data       start:0x00B479C0 end:0x00B479F8
+	.bss        start:0x00CED458 end:0x00CED464
 
 Black/WorshipTotem.cpp:
 	.text       start:0x00708A70 end:0x007092F0
-	.rdata      start:0x008D3B18 end:0x008D445C
-	.data       start:0x00B47A08 end:0x00B47CD4
-	.bss        start:0x00CED464 end:0x00CF1570
+	.rdata      start:0x008D4434 end:0x008D4D6C
+	.CRT$XCU    start:0x008F72DC end:0x008F72F0 align:4
+	.data       start:0x00B479F8 end:0x00B47A28
+	.bss        start:0x00CED464 end:0x00CED478
 
 Black/ChallengeRoom.cpp:
 	.text       start:0x007092F0 end:0x0070DCD0
-	.rdata      start:0x008D445C end:0x008D4D78
+	.rdata      start:0x008D4D6C end:0x008D4D78
 	.CRT$XCU    start:0x008F72F8 end:0x008F7304 align:4
 	.data       start:0x00B47E9C end:0x00B4A1C0
 	.bss        start:0x00CF1570 end:0x00D018F8

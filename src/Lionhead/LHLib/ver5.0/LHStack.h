@@ -17,6 +17,8 @@ public:
 	uint32_t Size() const { return Current; }
 	// BW1W120 inlined BW1M119 012ae500
 	void Push(T value) { Data[Current++] = value; }
+	// BW1W120 inlined BW1M119 0159c600
+	T Pop() { return Data[--Current]; }
 	// BW1W120 inlined BW1M119 012af000
 	T&   operator[](uint32_t index) { return Data[index]; }
 	void Remove(T value)

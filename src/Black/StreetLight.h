@@ -29,9 +29,9 @@ public:
 	// BW1W120 00561410 BW1M119 0153e4b0
 	virtual char* GetDebugText() { return "StreetLight:"; }
 	// BW1W120 00735160 BW1M119 0153e550
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00735140 BW1M119 0153e5c0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561400 BW1M119 0153e470
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GSTREET_LIGHT; }
 	// BW1W120 00735180 BW1M119 0153e4f0

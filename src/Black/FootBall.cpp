@@ -73,3 +73,13 @@ bool32_t Football::IsBuilt()
 	}
 	return GetPercentBuilt() >= 1.0f;
 }
+
+float Football::ReduceLife(float value, GPlayer* player)
+{
+	return 1.0f;
+}
+
+void Football::Draw()
+{
+	MultiMapFixed::Draw();
+}

@@ -17,16 +17,17 @@ class GameThing;
 class ScriptTimer : public GameThingWithPos
 {
 public:
-	uint8_t field_0x28[0x8];
+	uint32_t field_0x28;
+	uint32_t field_0x2c;
 
 	// Override methods
 
 	// BW1W120 00561320 BW1M119 0150dbd0
 	virtual char* GetDebugText() { return "ScriptTimer:"; }
 	// BW1W120 007117b0 BW1M119 0150dc10
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00711700 BW1M119 0150dd30
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561310 BW1M119 0150db90
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SCRIPT_TIMER; }
 	// BW1W120 00561300 BW1M119 0150db40

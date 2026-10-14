@@ -64,9 +64,9 @@ public:
 	// BW1W120 0071be10 BW1M119 01517730
 	virtual uint32_t GetGuidanceResourceType();
 	// BW1W120 0041b710 BW1M119 0116daa0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0041b460 BW1M119 0116de20
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0041b9a0 BW1M119 0116da50
 	virtual void ResolveLoad();
 	// BW1W120 00417840 BW1M119 01138230
@@ -286,15 +286,15 @@ public:
 	// BW1W120 0041a280 BW1M119 0116fe90
 	virtual void ResetStateAfterReacting();
 	// BW1W120 00420440 BW1M119 0117f3b0
-	virtual void SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToCreature(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004204a0 BW1M119 0117f120
-	virtual void SetupReactToFlyingObject(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFlyingObject(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00420460 BW1M119 0117f330
-	virtual void SetupReactToFire(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFire(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00420480 BW1M119 0117f2b0
-	virtual void SetupReactToFallingTree(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFallingTree(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00420410 BW1M119 0117f430
-	virtual void SetupFleeFromPredator(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupFleeFromPredator(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004175c0 BW1M119 01137710
 	virtual uint8_t FollowObjectPriority(Reaction* param_1, Reaction* param_2);
 	// BW1W120 004175d0 BW1M119 01137760
@@ -310,7 +310,7 @@ public:
 	// BW1W120 00417620 BW1M119 01137900
 	virtual uint8_t ReactToBallPriority(Reaction* param_1, Reaction* param_2);
 	// BW1W120 004203a0 BW1M119 0117f640
-	virtual uint8_t ReactToFirePriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFirePriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00417630 BW1M119 01137950
 	virtual uint8_t ReactToMagicShieldPriority(Reaction* param_1, Reaction* param_2);
 	// BW1W120 00417640 BW1M119 011379b0
@@ -338,11 +338,11 @@ public:
 	// BW1W120 004176f0 BW1M119 01137da0
 	virtual uint8_t ReactToConfusedPriority(Reaction* param_1, Reaction* param_2);
 	// BW1W120 004203b0 BW1M119 0117f5c0
-	virtual uint8_t ReactToFallingTreePriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFallingTreePriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 0041bb00 BW1M119 0116d410
 	virtual bool32_t IsChild();
 	// BW1W120 00420550 BW1M119 0117edd0
-	virtual void GetFleeingPositionFromMovingObject(MapCoords* param_1, GameThingWithPos* param_2, float param_3);
+	virtual void GetFleeingPositionFromMovingObject(MapCoords* pos, GameThingWithPos* object, float distance);
 	// BW1W120 0041a240 BW1M119 0107eb10
 	virtual uint8_t GetFinalState() const;
 	// BW1W120 0041b210 BW1M119 010585e0

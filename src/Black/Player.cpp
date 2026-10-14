@@ -1537,7 +1537,7 @@ bool32_t GPlayer::IsAtLeastOneSpellBeginToBeCharged()
 			{
 				for (WorshipSpellIcon* icon = site->IconList.head; icon != NULL; icon = icon->next)
 				{
-					if (icon->Charge > 0.0f)
+					if (icon->ChantStore > 0.0f)
 					{
 						return TRUE;
 					}
@@ -1560,7 +1560,7 @@ bool32_t GPlayer::IsSpellBeginToBeCharged(MAGIC_TYPE type)
 			{
 				for (WorshipSpellIcon* icon = site->IconList.head; icon != NULL; icon = icon->next)
 				{
-					if (icon->GetMagicType() == type && icon->Charge > 0.0f)
+					if (icon->GetMagicType() == type && icon->ChantStore > 0.0f)
 					{
 						return TRUE;
 					}
@@ -1994,7 +1994,7 @@ void GPlayer::UpdateSpellInfo(Spell* spell, PSysProcessInfo* info)
 	}
 }
 
-uint32_t GPlayer::Save(GameOSFile& file)
+bool32_t GPlayer::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
@@ -2028,12 +2028,12 @@ uint32_t GPlayer::Save(GameOSFile& file)
 		file.WritePtrArray((GameThing**)interfaces, 18);
 		file.WriteIt(HasLost);
 		file.WriteIt(field_0x93c);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t GPlayer::Load(GameOSFile& file)
+bool32_t GPlayer::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
@@ -2067,9 +2067,9 @@ uint32_t GPlayer::Load(GameOSFile& file)
 		file.ReadPtrArray((GameThing**)interfaces);
 		file.ReadIt(HasLost);
 		file.ReadIt(field_0x93c);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 void GPlayer::SaveExtraData(GameOSFile& file)

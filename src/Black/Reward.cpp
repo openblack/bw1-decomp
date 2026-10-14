@@ -2,6 +2,8 @@
 #include "Reward.h"
 #include <chlasm/HelpTextEnums.h> /* For HELP_TEXT_* */
 #include "RewardInfo.h"
+#include "GameOSFile.h" /* For class GameOSFile */
+#include "Town.h"
 
 uint32_t Reward::GetSaveType()
 {
@@ -40,4 +42,53 @@ SCRIPT_OBJECT_TYPE Reward::GetScriptObjectType()
 char* Reward::GetDebugText()
 {
 	return "Reward:";
+}
+
+void Reward::ResolveLoad()
+{
+	Object::ResolveLoad();
+}
+
+bool32_t Reward::Load(GameOSFile& file)
+{
+	if (MobileObject::Load(file))
+	{
+		file.ReadPtr((GameThing**)&field_0x68);
+		file.ReadPtr((GameThing**)&field_0x6c);
+		file.ReadPtr((GameThing**)&town);
+		file.ReadIt(field_0x78);
+		file.ReadIt(field_0x7c);
+		file.ReadIt(field_0x80);
+		file.ReadIt(field_0x84);
+		file.ReadIt(field_0x88);
+		file.ReadIt(field_0x8c);
+		file.ReadIt(field_0x90);
+		file.ReadIt(field_0x98);
+		file.ReadIt(field_0x9c);
+		file.ReadIt(field_0xa4);
+		return true;
+	}
+	return false;
+}
+
+bool32_t Reward::Save(GameOSFile& file)
+{
+	if (MobileObject::Save(file))
+	{
+		file.WritePtr(field_0x68);
+		file.WritePtr(field_0x6c);
+		file.WritePtr(town);
+		file.WriteIt(field_0x78);
+		file.WriteIt(field_0x7c);
+		file.WriteIt(field_0x80);
+		file.WriteIt(field_0x84);
+		file.WriteIt(field_0x88);
+		file.WriteIt(field_0x8c);
+		file.WriteIt(field_0x90);
+		file.WriteIt(field_0x98);
+		file.WriteIt(field_0x9c);
+		file.WriteIt(field_0xa4);
+		return true;
+	}
+	return false;
 }

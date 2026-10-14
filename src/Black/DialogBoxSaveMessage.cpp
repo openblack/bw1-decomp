@@ -9,3 +9,8 @@ DialogBoxSaveMessage::DialogBoxSaveMessage()
 	field_0x1c = 0;
 	field_0x20 = false;
 }
+
+void DialogBoxSaveMessage::Destroy()
+{
+	DialogBoxBase::Destroy();
+}

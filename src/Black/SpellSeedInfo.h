@@ -23,7 +23,9 @@ public:
 	MAGIC_TYPE   MagicTypes[POWER_UP_TYPE_LAST + 1];
 	uint8_t      field_0x134[0x10];
 	float        DrawScale;
-	uint8_t      field_0x148[0x48];
+	uint8_t      field_0x148[0x34];
+	bool32_t     Enabled; /* 0x17c */
+	uint8_t      field_0x180[0x10];
 
 	// Static data
 
@@ -49,6 +51,8 @@ public:
 	static SPELL_SEED_TYPE GetInfoFromMagicType(MAGIC_TYPE magic_type);
 	// BW1W120 0072b100 BW1M119 01535bf0
 	static GESTURE_TYPE GetFirstGestureForMagicType(MAGIC_TYPE magic_type, POWER_UP_TYPE* power_up);
+	// BW1W120 0072b200 BW1M119 01535660
+	static SPELL_SEED_TYPE GetTypeFromInfo(const GSpellSeedInfo* info);
 
 	// Non-virtual methods
 
@@ -66,7 +70,7 @@ public:
 	GMagicInfo* GetMagicInfo(GESTURE_TYPE gesture) const;
 
 	// Out of line: LoadBinary at 0042f620, Load at 0042f5b0.
-	INFO_DATA_BLOCK(Gesture, field_0x148)
+	INFO_DATA_BLOCK(Gesture, field_0x180)
 	INFO_DERIVED_LOADERS(GObjectInfo, "SpellSeedInfo.h", 43)
 };
 

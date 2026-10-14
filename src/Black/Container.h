@@ -29,9 +29,9 @@ public:
 	// BW1W120 00462a50 BW1M119 0105f420
 	virtual GPlayer* GetPlayer() { return owner.Get(); }
 	// BW1W120 0046b960 BW1M119 010c2e30
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0046b920 BW1M119 010c2ed0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 
 	// Constructors
 

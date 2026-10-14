@@ -12,3 +12,8 @@ char* SpellCreature::GetDebugText()
 {
 	return "SpellCreature:";
 }
+
+void SpellCreature::CloseDown()
+{
+	Spell::CoreCloseDown();
+}

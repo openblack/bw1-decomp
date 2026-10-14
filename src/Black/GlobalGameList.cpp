@@ -218,7 +218,7 @@ void GlobalGameLists::ClearMap()
 
 void GlobalGameLists::ClearMapStage(bool32_t finished) {}
 
-uint32_t GlobalGameLists::Save(GameOSFile& file)
+bool32_t GlobalGameLists::Save(GameOSFile& file)
 {
 	file.WriteSafe(StreetLights);
 	file.WriteSafe(StreetLanterns);
@@ -267,7 +267,7 @@ uint32_t GlobalGameLists::Save(GameOSFile& file)
 	return TRUE;
 }
 
-uint32_t GlobalGameLists::Load(GameOSFile& file)
+bool32_t GlobalGameLists::Load(GameOSFile& file)
 {
 	file.ReadSafe(StreetLights);
 	file.ReadSafe(StreetLanterns);

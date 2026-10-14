@@ -34,9 +34,9 @@ public:
 	// BW1W120 00561840 BW1M119 01128020
 	virtual char* GetDebugText() { return "Hanoi block: "; }
 	// BW1W120 006db960 BW1M119 0112d130
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006db9f0 BW1M119 0112d020
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561830 BW1M119 01127fe0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_HANOI_BLOCK; }
 	// BW1W120 006de440 BW1M119 01128060

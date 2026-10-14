@@ -32,9 +32,9 @@ public:
 	// BW1W120 0055d210 BW1M119 015277f0
 	virtual char* GetDebugText() { return "SpellForest:"; }
 	// BW1W120 00725d50 BW1M119 01527830
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00725c90 BW1M119 01527960
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055d200 BW1M119 015277b0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_FOREST; }
 	// BW1W120 00725730 BW1M119 015284e0

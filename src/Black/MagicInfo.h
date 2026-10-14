@@ -22,7 +22,7 @@ struct MapCoords;
 class GMagicInfo : public GBaseInfo
 {
 public:
-	int             field_0x10;
+	MAGIC_TYPE      MagicType;
 	uint8_t         field_0x14[0x14];
 	SPELL_SEED_TYPE SpellSeedType;
 	GESTURE_TYPE    GestureType;
@@ -67,9 +67,13 @@ public:
 	const char* GetMagicInfoText() const;
 	// BW1W120 005fb680 BW1M119 013b5c30
 	GMagicEffectInfo* GetMagicEffectInfo() const;
+	// BW1W120 inlined BW1M119 013b4610
+	MAGIC_TYPE GetMagicType() const { return MagicType; }
+	// BW1W120 005fb830 BW1M119 013b56b0
+	float GetChantsRequiredToCreate() const;
 
 	// Out of line: LoadBinary at 0042d6b0, Load at 0042d670.
-	INFO_DATA_BLOCK(field_0x10, field_0x34)
+	INFO_DATA_BLOCK(MagicType, field_0x34)
 	INFO_ROOT_LOADERS("MagicInfo.h", 37)
 };
 static_assert(sizeof(GMagicInfo) == 0x58, "Data type is of wrong size");

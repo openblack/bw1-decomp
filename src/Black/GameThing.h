@@ -71,7 +71,7 @@ enum GAME_THING_TYPE
 	GAME_THING_TYPE_PLANNED_MULTI_MAP_FIXED = 0x38,
 	GAME_THING_TYPE_PLANNED_TOWN_CITADEL_HEART = 0x39,
 	GAME_THING_TYPE_CITADEL_HEART_1 = 0x3a,
-	GAME_THING_TYPE_CITADEL_HEART_2 = 0x3b,
+	GAME_THING_TYPE_PLANNED_WORSHIP_SITE = 0x3b,
 	GAME_THING_TYPE_WORSHIP_SITE = 0x3c,
 	GAME_THING_TYPE_SHOW_NEEDS_VISUALS = 0x3d,
 	GAME_THING_TYPE_SHOW_NEEDS = 0x3e,
@@ -453,9 +453,9 @@ public:
 	// BW1W120 00401930 BW1M119 011cfde0
 	virtual uint32_t GetShowNeedsPos(uint32_t need, MapCoords* pos) { return 0; }
 	// BW1W120 0056fcf0 BW1M119 011063a0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0056fbe0 BW1M119 013e4fb0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0056fd90 BW1M119 011af720
 	virtual uint32_t GetSaveType();
 	// BW1W120 0056fda0 BW1M119 013fd010

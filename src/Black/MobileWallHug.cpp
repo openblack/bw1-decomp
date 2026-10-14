@@ -1006,7 +1006,7 @@ void CircleHugInfo::ResolveLoad(MobileWallHug* mwh)
 	delete info;
 }
 
-uint32_t MobileWallHug::Save(GameOSFile& file)
+bool32_t MobileWallHug::Save(GameOSFile& file)
 {
 	if (Mobile::Save(file))
 	{
@@ -1043,12 +1043,12 @@ uint32_t MobileWallHug::Save(GameOSFile& file)
 		WRITE_SAFE(file, goal);
 		file.WritePtr(target.Get());
 		file.WriteIt(step);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t MobileWallHug::Load(GameOSFile& file)
+bool32_t MobileWallHug::Load(GameOSFile& file)
 {
 	if (Mobile::Load(file))
 	{
@@ -1094,9 +1094,9 @@ uint32_t MobileWallHug::Load(GameOSFile& file)
 		file.ReadIt(goal);
 		file.ReadPtr((GameThing**)&target);
 		file.ReadIt(step);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 // fabricated name. The step of a linear wall hug, measured from origin along the unit direction dir, against

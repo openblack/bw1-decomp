@@ -63,9 +63,9 @@ public:
 	// BW1W120 0071bde0 BW1M119 01517770
 	virtual uint32_t GetGuidanceResourceType();
 	// BW1W120 0066d820 BW1M119 01124580
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0066d730 BW1M119 011246f0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055d5a0 BW1M119 0111fdd0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_POT; }
 	// BW1W120 0055d580 BW1M119 0111fd50

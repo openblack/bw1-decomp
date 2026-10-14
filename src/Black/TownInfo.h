@@ -50,7 +50,7 @@ public:
 	float    StoragePitTakeAlignment;
 	float    field_0x140;
 	float    field_0x144;
-	float    field_0x148;
+	float    MaxDistanceThatVillagersWillGoToWorship;
 	float    field_0x14c;
 	uint32_t field_0x150;
 	float    field_0x154;

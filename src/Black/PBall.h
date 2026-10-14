@@ -14,6 +14,8 @@ class Object;
 class PBall : public MobileObject
 {
 public:
+	uint8_t field_0x68[0xc];
+
 	// Override methods
 
 	// BW1W120 0063e950 BW1M119 inlined
@@ -23,5 +25,6 @@ public:
 	// BW1W120 0063e980 BW1M119 inlined
 	virtual void Draw();
 };
+static_assert(sizeof(PBall) == 0x74, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_P_BALL_INCLUDED_H */

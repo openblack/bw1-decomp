@@ -40,9 +40,9 @@ public:
 	// BW1W120 0055ebc0 BW1M119 0110e1f0
 	virtual char* GetDebugText() { return "Mist:"; }
 	// BW1W120 00606a10 BW1M119 0110e290
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00606920 BW1M119 0110e3f0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055ebb0 BW1M119 0110e1c0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_MIST; }
 	// BW1W120 00606af0 BW1M119 0110e230

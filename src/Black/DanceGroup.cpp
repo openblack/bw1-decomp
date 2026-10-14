@@ -1,6 +1,7 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 #include "GameTimeConstants.h"
+#include "Dance.h"
 #include "DanceGroup.h"
 #include "GroupBehaviour.h"
 
@@ -290,7 +291,7 @@ DanceGroup* DanceGroup::GetGroup(unsigned long index)
 	return behaviour->DanceGroups.GetAtPosition(index);
 }
 
-uint32_t DanceGroup::Save(GameOSFile& file)
+bool32_t DanceGroup::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
@@ -321,12 +322,12 @@ uint32_t DanceGroup::Save(GameOSFile& file)
 		file.WriteIt(Proportion);
 		file.WriteSafe(ChildGroups);
 		file.WriteIt(VillagerType);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t DanceGroup::Load(GameOSFile& file)
+bool32_t DanceGroup::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
@@ -357,7 +358,7 @@ uint32_t DanceGroup::Load(GameOSFile& file)
 		file.ReadIt(Proportion);
 		file.ReadSafe(ChildGroups);
 		file.ReadIt(VillagerType);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

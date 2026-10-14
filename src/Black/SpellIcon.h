@@ -18,6 +18,8 @@
 class Base;
 class Creature;
 class GInterfaceStatus;
+class GMagicEffectInfo;
+class GMagicInfo;
 class GPlayer;
 class GSpellIconInfo;
 class GSpellSeedInfo;
@@ -27,6 +29,7 @@ class GameThingWithPos;
 class Object;
 class SpellSeedGraphic;
 class WorshipSite;
+class WorshipSpellIcon;
 
 class SpellIcon : public MultiMapFixed
 {
@@ -67,9 +70,9 @@ public:
 	// BW1W120 0055d470 BW1M119 0152e830
 	virtual char* GetDebugText() { return "SpellIcon:"; }
 	// BW1W120 00727a00 BW1M119 01529310
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00727940 BW1M119 01529440
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055d460 BW1M119 0152e7f0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_ICON; }
 	// BW1W120 0055d420 BW1M119 0152e6c0
@@ -120,6 +123,17 @@ public:
 		return GetPercentBuilt() >= 1.0f;
 	}
 
+	// Virtual methods
+
+	// BW1W120 00726130 BW1M119 0152ca60
+	virtual bool IsDrawSeedGraphic();
+	// BW1W120 00726120 BW1M119 0152caa0
+	virtual int GetSpellIconPlacementIndex();
+	// BW1W120 purecall BW1M119 purecall
+	virtual WorshipSpellIcon* GetWorshipSpellIcon() = 0;
+	// BW1W120 007262e0 BW1M119 0152c450
+	virtual bool32_t GetInteract();
+
 	// Constructors
 
 	// BW1W120 0055d320 BW1M119 0130f190
@@ -144,6 +158,10 @@ public:
 	SPELL_SEED_TYPE GetSpellSeedType();
 	// BW1W120 00726380 BW1M119 0152c1c0
 	MAGIC_TYPE GetMagicType();
+	// BW1W120 007262a0 BW1M119 0152c560
+	GMagicInfo* GetMagicInfoFromPULevel(POWER_UP_TYPE power_up);
+	// BW1W120 00726280 BW1M119 0152c5e0
+	GMagicEffectInfo* GetMagicEffectInfo(GESTURE_TYPE gesture);
 };
 
 #endif /* BW1_DECOMP_SPELL_ICON_INCLUDED_H */
