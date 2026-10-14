@@ -2041,11 +2041,12 @@ Black/villagernames.cpp:
 Black/VillagerReaction.cpp:
 	.text       start:0x00757090 end:0x0075B2D0
 	.CRT$XCU    start:0x009B72A0 end:0x009B72A4 align:4
-	.data       start:0x00C135F8 end:0x00C13620
+	.data       start:0x00C135F8 end:0x00C1361C
 
 Black/VillagerReactionToCreature.cpp:
-	.text       start:0x0075B300 end:0x0075C2A0
-	.CRT$XCU    start:0x009B72A8 end:0x009B72AC align:4
+	.text       start:0x0075B2D0 end:0x0075C2A0
+	.CRT$XCU    start:0x009B72A4 end:0x009B72AC align:4
+	.data       start:0x00C1361C end:0x00C13648
 
 Black/VillagerScript.cpp:
 	.text       start:0x0075C2D0 end:0x0075C840

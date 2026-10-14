@@ -714,7 +714,7 @@ public:
 	// Defined in other translation units
 
 	// BW1W120 007436f0 BW1M119 01562d50
-	void GetTownAttitudeToCreature(Creature* creature);
+	uint32_t GetTownAttitudeToCreature(Creature* creature);
 	// BW1W120 00743720 BW1M119 01562b70
 	void CreateCreatureInfo(Creature* creature);
 	// BW1W120 007437f0 BW1M119 01073a90

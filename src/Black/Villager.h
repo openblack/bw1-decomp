@@ -659,6 +659,8 @@ public:
 	uint32_t FootballWatchMatchAnimation();
 	// BW1W120 0074fb20 BW1M119 01579d80
 	void SetToZero();
+	// BW1W120 inlined BW1M119 01056380
+	bool IsDisciple() { return (Flags & VILLAGER_FLAG_DISCIPLE) != 0; }
 	// BW1W120 0051baf0 BW1M119 010563d0
 	void DrawCarriedObject();
 	// BW1W120 0074fb80 BW1M119 01579cb0
@@ -1678,13 +1680,13 @@ public:
 	// BW1W120 00767f70 BW1M119 0159cc60
 	bool32_t MoveTowardsCreatureReaction();
 	// BW1W120 007682a0 BW1M119 0159c3d0
-	void CalculateNearestFreeDestination(MapCoords* param_1);
+	void CalculateNearestFreeDestination(MapCoords* destination);
 	// BW1W120 007683f0 BW1M119 0159c370
 	void UpdateAttitudeToCreature();
 	// BW1W120 00768400 BW1M119 0159c150
-	bool32_t UpdateReactiveStateFromAttitudeToCreature();
+	void UpdateReactiveStateFromAttitudeToCreature();
 	// BW1W120 00768510 BW1M119 0159c0c0
-	void SetupMoveToCreatureReaction(const MapCoords& param_1, unsigned char param_2);
+	void SetupMoveToCreatureReaction(const MapCoords& destination, uint8_t state);
 	// BW1W120 00768680 BW1M119 0159e750
 	bool32_t SetupScriptWanderToPos(const MapCoords& pos, float radius, unsigned short min_turns,
 	                                unsigned short max_turns);

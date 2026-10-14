@@ -1,302 +1,518 @@
+#include "MaxFloat.h"
+#include "MapCellConstants.h"
 #include "GameTimeConstants.h"
 #include "Villager.h"
 
 #include "ColourConstants.h" /* For White */
+
+#include "Balance.h"
+#include "Creature.h"
+#include "CreatureAgenda.h"
+#include "CreatureMental.h"
+#include "CreatureMentalBelief.h"
+#include "Game.h"
+#include "GameInfo.h"
+#include "Map.h"
 #include "MapCoords.h"
+#include "MapCoordsMeters.h"
+#include "MobileWallHugInfo.h"
+#include "Rand.h"
 #include "Reaction.h"
+#include "ReactionInfo.h"
+#include "Town.h"
 #include "Utils.h"
-#include "MapCellConstants.h"
+#include "VillagerStateTableInfo.h"
 #include "CreatureAttitudeConstants.h"
 
-// BW1W120 00767630 BW1M119 0159db60
-void Villager::SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2)
+#include <string.h> /* For memset */
+
+#include <Lionhead/LHLib/ver5.0/LHStack.h>
+
+#if defined(VERSION_BW1W100)
+#define FILEPATH "C:\\dev\\black\\VillagerReactionToCreature.cpp"
+#elif defined(VERSION_BW1W110)
+#define FILEPATH "C:\\dev\\Black\\VillagerReactionToCreature.cpp"
+#else
+#define FILEPATH "C:\\dev\\MP\\Black\\VillagerReactionToCreature.cpp"
+#endif
+
+#define VILLAGER_INSPECT_CREATURE_START_DISTANCE    20.0f
+#define VILLAGER_INSPECT_CREATURE_DISTANCE_STEP     8.0f
+#define VILLAGER_INSPECT_CREATURE_MIN_DISTANCE      1.0f
+#define VILLAGER_INSPECT_CREATURE_MIN_SECONDS       1.5f
+#define VILLAGER_INSPECT_CREATURE_RAND_SECONDS      3.0f
+#define VILLAGER_REINSPECT_CREATURE_RAND_SECONDS    7.0f
+#define VILLAGER_RESPECT_CREATURE_SECONDS           4.0f
+#define VILLAGER_RESPECT_CREATURE_MAX_ANGLE         0x100
+#define VILLAGER_FLEE_CREATURE_DISTANCE_SCALE       1.2f
+#define VILLAGER_FLEE_CREATURE_STOP_SCALE           1.5f
+#define VILLAGER_FLEE_CREATURE_RAND_RANGE           10
+#define VILLAGER_CALCULATE_FREE_STACK_SIZE          8
+#define VILLAGER_NEVER_SEEN_CREATURE_PRIORITY_SCALE 1.5f
+#define VILLAGER_FEARED_CREATURE_PRIORITY_SCALE     2.0f
+
+const float HalfMetre = 0.5f;
+
+void Villager::SetupReactToCreature(GameThingWithPos* thing, Reaction* reaction)
 {
-	// TODO: deferred — void-call-eax-probed-by-caller blocker. The body switches on
-	// Town::GetTownAttitudeToCreature(c)'s result, but that symbol is mangled QAEX (void return,
-	// ground truth at 0x7436f0). Declaring it non-void to switch on it changes the call's mangled
-	// reloc and breaks the match; `switch(voidfunc())` won't compile. Semantics (from target asm):
-	//   Creature* c = dynamic_cast<Creature*>(param_1);
-	//   if (c->IsAvailable()) {
-	//     ReactionObject = c;
-	//     Town* t = GetTown();
-	//     if (t) {
-	//       t->CreateCreatureInfo(c);
-	//       switch (t->GetTownAttitudeToCreature(c)) {   // <-- void-return, eax probed
-	//         case 0: case 2: case 4: AddReaction(param_2, 0x92); return;
-	//         case 3: AddReaction(param_2, 0x9f); return;
-	//         default: return;   // case 1 and >4
-	//       }
-	//     }
-	//     AddReaction(param_2, 0x92);
-	//   }
-	// (GetTownAttitudeToCreature/CreateCreatureInfo are undeclared in Town.h — dispatcher should
-	//  add them, and resolve the void-return-type contradiction.)
+	Creature* creature = dynamic_cast<Creature*>(thing);
+	if (creature->IsAvailable())
+	{
+		ReactionObject = creature;
+		Town* town = GetTown();
+		if (town != NULL)
+		{
+			town->CreateCreatureInfo(creature);
+			switch (town->GetTownAttitudeToCreature(creature))
+			{
+			case TOWN_ATTITUDE_TO_CREATURE_FEAR:
+				AddReaction(reaction, VILLAGER_STATE_FLEEING_FROM_CREATURE_REACTION);
+				break;
+			case TOWN_ATTITUDE_TO_CREATURE_NEVER_SEEN:
+			case TOWN_ATTITUDE_TO_CREATURE_CURIOUS:
+			case TOWN_ATTITUDE_TO_CREATURE_RESPECT:
+				AddReaction(reaction, VILLAGER_STATE_INSPECT_CREATURE_REACTION);
+				break;
+			}
+			return;
+		}
+		AddReaction(reaction, VILLAGER_STATE_INSPECT_CREATURE_REACTION);
+	}
 }
 
-// BW1W120 007676e0 BW1M119 0159d880
-uint8_t Villager::ReactToCreaturePriority(Reaction* param_1, Reaction* param_2)
+uint8_t Villager::ReactToCreaturePriority(Reaction* reaction, Reaction* current_reaction)
 {
-	// TODO: deferred — void-call-eax-probed-by-caller blocker: switches on
-	// Town::GetTownAttitudeToCreature() (mangled QAEX void). Also depends on several globals
-	// (0x00d4f918/0x00d4f6c0/0x00d4f788 attitude bytes, 0xdb9e7c desire table) and a jump table.
-	return 0;
+	if (IsDancing() != false)
+	{
+		return 0;
+	}
+	Creature* creature = dynamic_cast<Creature*>(reaction->GetInitiatingObject());
+	if (creature == NULL || creature->IgnoredByVillagers != false || creature->Invisible != false)
+	{
+		return 0;
+	}
+	float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, creature->Pos);
+	if (distance > reaction->GetInfo()->MaxDistanceToRunAwayFromObject)
+	{
+		return 0;
+	}
+	Town* town = GetTown();
+	if (town != NULL)
+	{
+		switch (town->GetTownAttitudeToCreature(creature))
+		{
+		case TOWN_ATTITUDE_TO_CREATURE_NEVER_SEEN:
+			return GInfoArrays::ReactionInfos[REACTION_REACT_TO_CREATURE].priority *
+			       VILLAGER_NEVER_SEEN_CREATURE_PRIORITY_SCALE;
+		case TOWN_ATTITUDE_TO_CREATURE_CURIOUS:
+			return GInfoArrays::ReactionInfos[REACTION_REACT_TO_CREATURE].priority;
+		case TOWN_ATTITUDE_TO_CREATURE_FEAR:
+			return GInfoArrays::ReactionInfos[REACTION_FLEE_FROM_OBJECT].priority *
+			       VILLAGER_FEARED_CREATURE_PRIORITY_SCALE;
+		case TOWN_ATTITUDE_TO_CREATURE_RESPECT:
+			if (town->GetPlayer() == creature->GetPlayer())
+			{
+				if (IsDisciple())
+				{
+					break;
+				}
+				VILLAGER_STATES state = (VILLAGER_STATES)GetFinalState();
+				int             desireType = GVillagerStateTableInfo::Infos[state].TownDesireType;
+				if (desireType >= TOWN_DESIRE_INFO_FIRST && desireType < TOWN_DESIRE_INFO_LAST &&
+				    (town->desire.RawDesire[desireType] + town->desire.DesireBoost[desireType] +
+				     town->desire.DesireCheat[desireType]) *
+				            GVillagerStateTableInfo::Infos[state].TownDesireAmount >
+				        0.0f)
+				{
+					break;
+				}
+			}
+			return GInfoArrays::ReactionInfos[REACTION_FOLLOW_OBJECT].priority;
+		}
+		return 0;
+	}
+	return GInfoArrays::ReactionInfos[REACTION_REACT_TO_CREATURE].priority;
 }
 
-// BW1W120 007678a0 BW1M119 0159d750
 bool32_t Villager::InspectCreatureReaction()
 {
-	// TODO: deferred — blocked on two things outside this unit:
-	//  (1) an UNNAMED global at 0x00d01a38 (the divisor in `1000/global`, likely a game
-	//      frame/tick rate) that has no symbol in symbols.txt, so the load reloc can't match;
-	//  (2) GRand::GameRand(max, __FILE__, __LINE__) — the target's __FILE__ string (0xc245b0,
-	//      "...VillagerReaction...") and __LINE__=0xa0 can't be reproduced from this file
-	//      (same known blocker noted in VillagerStates.cpp:554).
-	// Semantics (from target asm):
-	//   InspectDistance = 20.0f;
-	//   int a = (int)((1000/global) * 1.5f);
-	//   InspectTurnsUntilApproach = a + GameRand((int)((1000/global) * 3.0f), __FILE__, __LINE__);
-	//   SetTopState(0x93); UpdateAttitudeToCreature(); return 1;   (else StopReactingAndSetState)
-	return 0;
-}
-
-// BW1W120 00767970 BW1M119 0159d610
-bool32_t Villager::PerformInspectCreatureReaction()
-{
-	// TODO: 95.7% — sole diff is FPU scheduling: target places FCOMP after the counter
-	// decrement (FLD;load;dec;FCOMP;store), ours emits FCOMP right after FLD. The compare is
-	// independent of the dec so MSVC is free to place it either side; no source order forces it.
 	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
-		InspectTurnsUntilApproach = InspectTurnsUntilApproach - 1;
-		if (InspectDistance < 1.0f)
+		InspectDistance = VILLAGER_INSPECT_CREATURE_START_DISTANCE;
+		uint32_t minTurns = GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_CREATURE_MIN_SECONDS);
+		uint32_t extraTurns = GRand::GameRand(
+			GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_CREATURE_RAND_SECONDS), FILEPATH, 160);
+		InspectTurnsUntilApproach = minTurns + extraTurns;
+		SetTopState(VILLAGER_STATE_PERFORM_INSPECT_CREATURE_REACTION);
+		UpdateAttitudeToCreature();
+		return true;
+	}
+	StopReactingAndSetState();
+	return true;
+}
+
+bool32_t Villager::PerformInspectCreatureReaction()
+{
+	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
+	{
+		InspectTurnsUntilApproach--;
+		if (InspectDistance < VILLAGER_INSPECT_CREATURE_MIN_DISTANCE)
 		{
 			if (InspectTurnsUntilApproach == 0)
 			{
 				StopReactingAndSetState();
-				return 1;
+				return true;
 			}
 		}
 		else if (InspectTurnsUntilApproach == 0)
 		{
 			SetTopState(VILLAGER_STATE_APPROACH_CREATURE_REACTION);
 			UpdateAttitudeToCreature();
-			return 1;
+			return true;
 		}
 		else
 		{
 			LookAtObject(ReactionObject.Get(), 1);
 		}
 		UpdateAttitudeToCreature();
-		return 1;
+		return true;
 	}
 	StopReactingAndSetState();
-	return 1;
+	return true;
 }
 
-// BW1W120 00767a00 BW1M119 0159d3c0
 bool32_t Villager::ApproachCreatureReaction()
 {
-	// TODO: deferred — triple-blocked: (1) unnamed global 0x00d01a38 (1000/global tick math);
-	// (2) GRand::GameRand(max, __FILE__, __LINE__) at line 0xe7 — string 0xc245b0 unmatchable;
-	// (3) self `coords` layout bug ([esi+0x2c] vs target [esi+0x14]). Distance/angle-gated approach
-	// that on arrival scales a random dwell time and SetupMoveToCreatureReaction / SetTopState(0x93).
-	return 0;
+	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
+	{
+		float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos);
+		if (distance - InspectDistance > VILLAGER_INSPECT_CREATURE_MIN_DISTANCE)
+		{
+			long      angle = GUtils::GetAngleFromXZ(Pos, ReactionObject->Pos);
+			long      dx = GUtils::GetXByAngleHugeDistance(angle, GUtils::MetersToWholeX(distance - InspectDistance));
+			long      dz = GUtils::GetZByAngleHugeDistance(angle, GUtils::MetersToWholeZ(distance - InspectDistance));
+			MapCoords destination = Pos;
+			destination.x += dx;
+			destination.z += dz;
+			SetupMoveToCreatureReaction(destination, VILLAGER_STATE_APPROACH_CREATURE_REACTION);
+			UpdateAttitudeToCreature();
+			return true;
+		}
+		uint32_t minTurns = GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_INSPECT_CREATURE_MIN_SECONDS);
+		uint32_t extraTurns = GRand::GameRand(
+			GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_REINSPECT_CREATURE_RAND_SECONDS), FILEPATH,
+			231);
+		InspectTurnsUntilApproach = minTurns + extraTurns;
+		InspectDistance -= VILLAGER_INSPECT_CREATURE_DISTANCE_STEP;
+		SetTopState(VILLAGER_STATE_PERFORM_INSPECT_CREATURE_REACTION);
+		UpdateAttitudeToCreature();
+		return true;
+	}
+	StopReactingAndSetState();
+	return true;
 }
 
-// BW1W120 00767ba0 BW1M119 0159d280
 bool32_t Villager::InitialiseRespectCreatureReaction()
 {
-	// TODO: deferred — hidden-retbuf signature blocker (cross-unit, dispatcher). The body calls
-	// Object::GetNearestEdgeOfObject(c), which is declared `void ...(Object*)` in Object.h but is
-	// really a hidden-retbuf function returning a float x,y,z position BY VALUE (call passes a
-	// retbuf + the Object*). Same shape as FindPosOutsideAbode noted in VillagerFood.cpp. Until
-	// Object.h's return type is fixed (and its definition unit updated), this can't be written.
-	// Semantics (from target asm):
-	//   if (ReactionObject && ReactionObject->IsAvailable()) {
-	//     Creature* c = dynamic_cast<Creature*>(ReactionObject);
-	//     LHCoord e = GetNearestEdgeOfObject(c);           // hidden retbuf
-	//     MapCoords m((int)(e.x*6553.6f), (int)(e.z*6553.6f), 0);
-	//     SetupMoveToCreatureReaction(m, 0xa0);
-	//     UpdateAttitudeToCreature(); return 1;
-	//   }
-	//   StopReactingAndSetState(); return 1;
-	return 0;
+	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
+	{
+		MapCoords destination;
+		destination.Clear();
+		Creature* creature = dynamic_cast<Creature*>(ReactionObject.Get());
+		LHPoint   edge;
+		edge = GetNearestEdgeOfObject(creature);
+		destination.SetX(edge.x);
+		destination.SetZ(edge.z);
+		destination.SetAltitude(0.0f);
+		SetupMoveToCreatureReaction(destination, VILLAGER_STATE_TURN_TO_FACE_CREATURE_REACTION);
+		UpdateAttitudeToCreature();
+		return true;
+	}
+	StopReactingAndSetState();
+	return true;
 }
 
-// BW1W120 00767c80 BW1M119 0159d190
 bool32_t Villager::TurnToFaceCreatureReaction()
 {
-	// TODO: 99.7% — sole diff is the scratch register for the reloaded ReactionObject passed to
-	// LookAtObject: target uses eax, ours ecx (register-allocation tie-break). A named local
-	// and reusing it both regress; body is otherwise byte-exact.
 	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
 		if (LookAtObject(ReactionObject.Get(), 2) == 1)
 		{
 			TurnsUntilNextStateChange = 0;
-			SetTopState(0x9c);
+			SetTopState(VILLAGER_STATE_PERFORM_RESPECT_CREATURE_REACTION);
 		}
 		UpdateAttitudeToCreature();
-		return 1;
+		return true;
 	}
 	StopReactingAndSetState();
-	return 1;
+	return true;
 }
 
-// BW1W120 00767ce0 BW1M119 0159d030
 bool32_t Villager::PerformRespectCreatureReaction()
 {
-	// TODO: deferred — blocked on the same UNNAMED global 0x00d01a38 (divisor in `1000/global`)
-	// as InspectCreatureReaction, plus the `coords` layout bug (self coords at [esi+0x2c] vs
-	// target [esi+0x14]). Semantics (from target asm):
-	//   if (ReactionObject && ReactionObject->IsAvailable()) {
-	//     int d = GUtils::GetAngleFromXZ(coords, ReactionObject->coords) - field_0x5c;
-	//     if (abs(d) > 0x100) { SetTopState(0xa0); return 1; }
-	//     ++TurnsUntilNextStateChange;   // field_0x58
-	//     if ((short)TurnsUntilNextStateChange > (int)((1000/global) * <c@0x8ab418>))
-	//         SetTopState(0x9d);
-	//     UpdateAttitudeToCreature(); return 1;
-	//   }
-	//   StopReactingAndSetState(); return 1;
-	return 0;
+	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
+	{
+		if ((uint32_t)abs(GUtils::GetAngleFromXZ(Pos, ReactionObject->Pos) - GameAngle) >
+		    VILLAGER_RESPECT_CREATURE_MAX_ANGLE)
+		{
+			SetTopState(VILLAGER_STATE_TURN_TO_FACE_CREATURE_REACTION);
+			return true;
+		}
+		TurnsUntilNextStateChange++;
+		if (TurnsUntilNextStateChange >
+		    (int)GGameInfo::Info.ConvertRealWorldSecondsToGameTicks(VILLAGER_RESPECT_CREATURE_SECONDS))
+		{
+			SetTopState(VILLAGER_STATE_FINISH_RESPECT_CREATURE_REACTION);
+		}
+		UpdateAttitudeToCreature();
+		return true;
+	}
+	StopReactingAndSetState();
+	return true;
 }
 
-// BW1W120 00767dc0 BW1M119 0159cf70
 bool32_t Villager::FinishRespectCreatureReaction()
 {
 	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
 		StopReactingAndSetState();
-		return 1;
+		return true;
 	}
 	StopReactingAndSetState();
-	return 1;
+	return true;
 }
 
-// BW1W120 00767e00 BW1M119 0159cd60
 bool32_t Villager::FleeingFromCreatureReaction()
 {
-	// TODO: deferred — blocked by: GRand::GameRand(0xa, __FILE__, __LINE__) at line 0x161 (string
-	// 0xc245b0 unmatchable), plus self `coords` layout bug ([esi+0x2c] vs [esi+0x14]). Reads the
-	// creature's speed/threat, computes a flee target via GetReaction()->GetInfo(), checks InBounds
-	// and SetSpeed, else SetupMoveToCreatureReaction.
-	return 0;
+	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
+	{
+		float fleeDistance = GetReaction()->GetInfo()->MaxReactionDistance * VILLAGER_FLEE_CREATURE_DISTANCE_SCALE;
+		if (GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos) <=
+		    fleeDistance * VILLAGER_FLEE_CREATURE_STOP_SCALE)
+		{
+			MapCoords destination;
+			destination.Clear();
+			GetFleeingPositionFromStationaryObject(&destination, ReactionObject.Get(), fleeDistance);
+			if (destination.InBounds() != false)
+			{
+				Creature* creature = ReactionObject->CastCreature();
+				if (creature != NULL && creature->mind->agenda.plans[0].ObjectToActOn != NULL &&
+				    creature->mind->agenda.plans[0].ObjectToActOn->Pointer != NULL)
+				{
+					if (GRand::GameRand(VILLAGER_FLEE_CREATURE_RAND_RANGE, FILEPATH, 353) != 0)
+					{
+						return true;
+					}
+					SetSpeed(((const GMobileWallHugInfo*)info)->FleeingSpeed / 2, 1);
+					SetupMoveToCreatureReaction(destination, VILLAGER_STATE_FLEEING_FROM_CREATURE_REACTION);
+					return true;
+				}
+				SetSpeed(((const GMobileWallHugInfo*)info)->FleeingSpeed, 1);
+				return true;
+			}
+			UpdateAttitudeToCreature();
+			return true;
+		}
+	}
+	StopReactingAndSetState();
+	return true;
 }
 
-// BW1W120 00767f70 BW1M119 0159cc60
 bool32_t Villager::MoveTowardsCreatureReaction()
 {
 	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
 		if (MoveTo() == 10)
 		{
-			// `Pos` here is the GameThingWithPos base member (0x14), not Object::coords (0x2c)
-			if (GUtils::GetDistanceInMetres(Pos, *GetDestPos()) <= 0.5f)
+			if (GUtils::GetDistanceInMetres(Pos, *GetDestPos()) <= HalfMetre)
 			{
 				SetTopStateToFinal();
 			}
 		}
 		UpdateAttitudeToCreature();
-		return 1;
+		return true;
 	}
 	StopReactingAndSetState();
-	return 1;
+	return true;
 }
 
-// BW1W120 00767fe0 BW1M119 0159ca00
-// TODO: deferred — struct-layout blocker (dispatcher). LivingMapCell is declared as a single
-// uint8_t in Living.h but is really a ~40-byte occupancy bitmap (ctor zeroes 10 dwords via
-// rep stosd, then ORs one bit per fixed object on the map at its grid cell). Cannot be matched
-// until LivingMapCell is given its true 40-byte layout. Body: memset(this,0,40); iterate
-// map->ToMap() fixed objects, for each set bit [x*2 + z/8] |= 1<<(z&7) using the float->grid math.
-LivingMapCell::LivingMapCell(JustMapXZ& param_1) {}
-
-// BW1W120 007680d0 BW1M119 0159c740
-// TODO: deferred — same LivingMapCell 40-byte layout blocker; reads the occupancy bitmap.
-bool32_t LivingMapCell::FindFreePosition(JustMapXZ& param_1, const MapCoords& param_2, MapCoords* param_3)
+LivingMapCell::LivingMapCell(JustMapXZ& cell)
 {
-	return 0;
+	memset(Occupied, 0, sizeof(Occupied));
+	MapCell*        mapCell = cell.ToMap();
+	MapCellIterator iter = mapCell->GetFirstIterator();
+	while (iter.object != NULL)
+	{
+		float    metresX = iter.object->Pos.MetersX();
+		uint32_t x = (metresX - metresX / MetresPerMapCell) * LIVING_MAP_CELL_SUBCELLS / MetresPerMapCell;
+		float    metresZ = iter.object->Pos.MetersZ();
+		uint32_t z = (metresZ - metresZ / MetresPerMapCell) * LIVING_MAP_CELL_SUBCELLS / MetresPerMapCell;
+		Occupied[x][z / CHAR_BIT] |= 1 << (z % CHAR_BIT);
+		iter.object = iter.object->GetMapChild(*iter.cell);
+		iter.MoveToMobileObsIfNeededAndPoss();
+	}
 }
 
-// BW1W120 007682a0 BW1M119 0159c3d0
-// TODO: deferred — blocked on undefined helper types/symbols (dispatcher):
-//  * LHStack__JustMapXZ (a fixed stack: short pairs array + `current` count at +0x20) — undefined;
-//  * fn_007685A0 is its push method (unnamed symbol, blocker #4);
-//  * LivingMapCell's true 40-byte layout (see ctor above);
-//  * a neighbour-offset table global at 0x00da59fe..0x00da5a0e.
-// Body does a BFS over grid neighbours pushing candidates onto local LHStack__JustMapXZ stacks,
-// building a LivingMapCell per candidate and calling FindFreePosition until one succeeds.
-void Villager::CalculateNearestFreeDestination(MapCoords* param_1) {}
+bool32_t LivingMapCell::FindFreePosition(JustMapXZ& cell, const MapCoords& target, MapCoords* position)
+{
+	float    bestDistance = MaxFloat;
+	uint32_t bestX;
+	uint32_t bestZ;
+	for (uint32_t x = 0; x < LIVING_MAP_CELL_SUBCELLS; x++)
+	{
+		for (uint32_t z = 0; z < LIVING_MAP_CELL_SUBCELLS; z++)
+		{
+			if ((Occupied[x][z / CHAR_BIT] & (1 << (z % CHAR_BIT))) == 0)
+			{
+				MapCoords pos;
+				pos.SetMetersX(cell.x * MetresPerMapCell + x * HalfMetre);
+				pos.SetMetersZ(cell.z * MetresPerMapCell + z * HalfMetre);
+				pos.SetAltitude(0.0f);
+				if ((pos.CollideCollideWithFixe() & COLLIDE_TYPE_FIXED) == 0)
+				{
+					float distance = GUtils::GetDistanceInMetres(pos, target);
+					if (distance < bestDistance)
+					{
+						bestDistance = distance;
+						bestX = x;
+						bestZ = z;
+					}
+				}
+			}
+		}
+	}
+	if (bestDistance < MaxFloat)
+	{
+		position->SetMetersX(cell.x * MetresPerMapCell + bestX * HalfMetre);
+		position->SetMetersZ(cell.z * MetresPerMapCell + bestZ * HalfMetre);
+		return true;
+	}
+	return false;
+}
 
-// BW1W120 007683f0 BW1M119 0159c370
+void Villager::CalculateNearestFreeDestination(MapCoords* destination)
+{
+	LHStack<JustMapXZ, VILLAGER_CALCULATE_FREE_STACK_SIZE> toVisit;
+	LHStack<JustMapXZ, VILLAGER_CALCULATE_FREE_STACK_SIZE> visited;
+	const MapCoords&                                       pos = Pos;
+	JustMapXZ                                              start(pos);
+	toVisit.Push(start);
+	for (;;)
+	{
+		JustMapXZ cell = toVisit.Pop();
+		visited.Push(cell);
+		LivingMapCell livingCell(cell);
+		if (livingCell.FindFreePosition(cell, pos, destination))
+		{
+			return;
+		}
+		for (uint32_t direction = 0; direction < ARRAY_SIZE(MapXZDirections); direction++)
+		{
+			JustMapXZ next(MapXZDirections[direction].x + cell.x, MapXZDirections[direction].z + cell.z);
+			bool32_t  found = false;
+			for (uint32_t i = 0; i < visited.Size(); i++)
+			{
+				if (visited[i].x == next.x && visited[i].z == next.z)
+				{
+					found = true;
+				}
+			}
+			if (found == false)
+			{
+				toVisit.Push(next);
+			}
+		}
+	}
+}
+
 void Villager::UpdateAttitudeToCreature()
 {
 	UpdateReactiveStateFromAttitudeToCreature();
 }
 
-// BW1W120 00768400 BW1M119 0159c150
-bool32_t Villager::UpdateReactiveStateFromAttitudeToCreature()
+void Villager::UpdateReactiveStateFromAttitudeToCreature()
 {
-	// TODO: deferred — void-call-eax-probed-by-caller blocker: the arena==0 path switches on
-	// Town::GetTownAttitudeToCreature(c) (mangled QAEX void) via an iVar==1/3/4 chain, same as
-	// SetupReactToCreature. (Globals ARE named here: GGame::g_game @0x00d0195c, Creature::arena
-	// @0x10a0.) Semantics (from target asm):
-	//   if (CheckNeededForWorship() == 1) return;
-	//   Creature* c = dynamic_cast<Creature*>(ReactionObject);
-	//   if (!c) return;
-	//   if (c->arena) {                      // arena != 0
-	//     StopReactingAndSetState();
-	//     for (Reaction* r = g_game->GameLists.<reactions>.head; r; r = r->next)
-	//       if (r->target == c->arena) { SetupReactToFight(c->arena, r); return; }
-	//     return;
-	//   }
-	//   if (!GetTown()) return;
-	//   switch (GetTownAttitudeToCreature(c)) {   // <-- void-return, eax probed
-	//     case 1: StopReactingAndSetState(); break;
-	//     case 3: if ((char)GetFinalState() != 0x9f) SetTopState(0x9f); break;
-	//     case 4: { uint8_t s = GetFinalState();
-	//               if (s < 0x9b || (s > 0x9d && s != 0xa0)) SetTopState(0x9b); break; }
-	//   }
-	return 0;
+	if (CheckNeededForWorship() == true)
+	{
+		return;
+	}
+	Creature* creature = dynamic_cast<Creature*>(ReactionObject.Get());
+	if (creature == NULL)
+	{
+		return;
+	}
+	if (creature->arena != NULL)
+	{
+		StopReactingAndSetState();
+		Reaction* reaction;
+		for (reaction = GGame::g_game->GameLists.reactions.head; reaction != NULL; reaction = reaction->next)
+		{
+			if (reaction->GetInitiatingObject() == creature->arena)
+			{
+				break;
+			}
+		}
+		if (reaction != NULL)
+		{
+			SetupReactToFight(creature->arena, reaction);
+		}
+		return;
+	}
+	if (GetTown() == NULL)
+	{
+		return;
+	}
+	switch (GetTown()->GetTownAttitudeToCreature(creature))
+	{
+	case TOWN_ATTITUDE_TO_CREATURE_NONE:
+		StopReactingAndSetState();
+		break;
+	case TOWN_ATTITUDE_TO_CREATURE_FEAR:
+		if (GetFinalState() != VILLAGER_STATE_FLEEING_FROM_CREATURE_REACTION)
+		{
+			SetTopState(VILLAGER_STATE_FLEEING_FROM_CREATURE_REACTION);
+		}
+		break;
+	case TOWN_ATTITUDE_TO_CREATURE_RESPECT: {
+		uint8_t state = GetFinalState();
+		if (state < VILLAGER_STATE_INITIALISE_RESPECT_CREATURE_REACTION ||
+		    (state > VILLAGER_STATE_FINISH_RESPECT_CREATURE_REACTION &&
+		     state != VILLAGER_STATE_TURN_TO_FACE_CREATURE_REACTION))
+		{
+			SetTopState(VILLAGER_STATE_INITIALISE_RESPECT_CREATURE_REACTION);
+		}
+		break;
+	}
+	}
 }
 
-// BW1W120 00768510 BW1M119 0159c0c0
-void Villager::SetupMoveToCreatureReaction(const MapCoords& destination, unsigned char state)
+void Villager::SetupMoveToCreatureReaction(const MapCoords& destination, uint8_t state)
 {
-	// TODO: 92.5% — target passes state (unsigned char) to SetupMoveToWithHug's
-	// VILLAGER_STATES (enum, 4-byte) param WITHOUT widening (`mov eax,[esp+8]; push eax`),
-	// but MSVC6 emits `and eax,0xff` for the required unsigned char->enum conversion here.
-	// The only C++ that omits the widen reads the padding bytes (fakematch), so left as-is.
 	SetupMoveToWithHug(destination, (VILLAGER_STATES)state);
 	action.SetState(LIVING_ACTION_INDEX_TOP, VILLAGER_STATE_MOVE_TOWARDS_CREATURE_REACTION);
 }
 
-// BW1W120 00768540 BW1M119 0159c070
 uint32_t GameThingWithPos::AttitudeToCreatureNone()
 {
-	return 1;
+	return TOWN_ATTITUDE_TO_CREATURE_NONE;
 }
 
-// BW1W120 00768550 BW1M119 0159c020
 uint32_t GameThingWithPos::AttitudeToCreatureFear()
 {
-	return 3;
+	return TOWN_ATTITUDE_TO_CREATURE_FEAR;
 }
 
-// BW1W120 00768560 BW1M119 0159bfd0
 uint32_t GameThingWithPos::AttitudeToCreatureRespect()
 {
-	return 4;
+	return TOWN_ATTITUDE_TO_CREATURE_RESPECT;
 }
 
-// BW1W120 00768570 BW1M119 0159bf80
 uint32_t GameThingWithPos::AttitudeToCreatureEating()
 {
-	return 1;
+	return TOWN_ATTITUDE_TO_CREATURE_NONE;
 }
 
-// BW1W120 00768580 BW1M119 0159bf00
 uint32_t Living::AttitudeToCreatureEating()
 {
-	return IsVillager(NULL) ? 3 : 1;
+	return IsVillager(NULL) ? TOWN_ATTITUDE_TO_CREATURE_FEAR : TOWN_ATTITUDE_TO_CREATURE_NONE;
 }
