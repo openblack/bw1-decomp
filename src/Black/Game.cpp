@@ -1994,7 +1994,7 @@ void GGame::Loop()
 		}
 	}
 	DialogBoxBase::HideAll();
-	if (GameOverStarted == 0 && !IsMultiplayerGame() && SkirmishGame == 0 && g_game->GameMode != GAME_MODE_4)
+	if (!GameOverStarted && !IsMultiplayerGame() && !SkirmishGame && g_game->GameMode != GAME_MODE_4)
 	{
 		if (GameMode == GAME_MODE_QUITTING)
 		{
@@ -2502,7 +2502,7 @@ void GGame::ProcessTurn()
 	if (g_game->help_system != NULL &&
 	    (g_game->help_system->WideScreen == 0 || g_game->help_system->WideScreenControl == 0))
 	{
-		if (!g_game->IsMultiplayerGame() && g_game->GameOverStarted == 0 && g_game->data.GameTurn % 2000 == 0 &&
+		if (!g_game->IsMultiplayerGame() && !g_game->GameOverStarted && g_game->data.GameTurn % 2000 == 0 &&
 		    StartTime != 0 && MemoryState == 0 && timeGetTime() > StartTime + 0x36ee80u &&
 		    (unsigned int)Base::ObjectHeap->GetFreeMemory() < 0x80000u &&
 		    abs((int)(g_game->LastSaveTurn - g_game->data.GameTurn)) > 3)
@@ -2512,7 +2512,7 @@ void GGame::ProcessTurn()
 			SetPacket(PACKET_TYPE_SAVE_GAME);
 		}
 	}
-	if (MemoryState == 2 && !g_game->IsMultiplayerGame() && g_game->GameOverStarted == 0 &&
+	if (MemoryState == 2 && !g_game->IsMultiplayerGame() && !g_game->GameOverStarted &&
 	    abs((int)(g_game->LastLoadTurn - g_game->data.GameTurn)) > 3)
 	{
 		MemoryState = 0;
@@ -2572,12 +2572,12 @@ void GGame::EndTurn()
 	}
 	map.CalculateMapInfluenceX();
 	GameFlags &= ~0x10u;
-	if ((GameFlags & GAME_FLAG_AUTO_SAVE_ENABLED) != 0 && GameOverStarted == 0)
+	if ((GameFlags & GAME_FLAG_AUTO_SAVE_ENABLED) != 0 && !GameOverStarted)
 	{
 		GameOSFile::AutoSave(false);
 	}
 	network.UpdateDebug();
-	if (GameOverStarted == 0 && g_game->SkirmishGame == false && !g_game->IsMultiplayerGame() &&
+	if (!GameOverStarted && !g_game->SkirmishGame && !g_game->IsMultiplayerGame() &&
 	    g_game->field_0x205a14 == 1 && &g_game->players[g_game->PlayerIndex] != NULL &&
 	    g_game->players[g_game->PlayerIndex].citadel.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->heart.Get() != NULL &&

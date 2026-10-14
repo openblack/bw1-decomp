@@ -219,7 +219,7 @@ public:
 	uint32_t                              LastImpressiveDanceTurn;
 	uint32_t                              LastImpressiveDanceType;
 	uint32_t                              field_0x1104;
-	uint32_t                              LeashEnabled[CREATURE_LEASH_SLOT_COUNT];
+	bool32_t                              LeashEnabled[CREATURE_LEASH_SLOT_COUNT];
 	uint32_t                              field_0x1118;
 	uint32_t                              field_0x111c;
 	uint32_t                              field_0x1120;

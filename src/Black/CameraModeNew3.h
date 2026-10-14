@@ -114,7 +114,7 @@ public:
 	LHCoord                  field_0x2dc;
 	float                    HeadingDistance;
 	float                    IdleTime;
-	int                      InputDisabled;
+	bool32_t                 InputDisabled;
 	int                      field_0x2f0;
 	CameraExclusion*         NearbyExclusions;
 	int                      field_0x2f8;

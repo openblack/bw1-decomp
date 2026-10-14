@@ -492,7 +492,7 @@ uint32_t GGame::DoAction(unsigned long param_1)
 			break;
 		}
 		if (g_game->MyPlayer() != NULL && g_game->MyPlayer()->GetCreature() != NULL &&
-		    g_game->MyPlayer()->GetCreature()->LeashEnabled[(uint16_t)leash] == 1)
+		    g_game->MyPlayer()->GetCreature()->LeashEnabled[(uint16_t)leash] == true)
 			g_game->SetPacket(PACKET_TYPE_CHANGE_LEASH, (uint16_t)leash, 0);
 		return true;
 	}
@@ -511,7 +511,7 @@ uint32_t GGame::DoAction(unsigned long param_1)
 			break;
 		}
 		if (g_game->MyPlayer() != NULL && g_game->MyPlayer()->GetCreature() != NULL &&
-		    g_game->MyPlayer()->GetCreature()->LeashEnabled[(uint16_t)leash] == 1)
+		    g_game->MyPlayer()->GetCreature()->LeashEnabled[(uint16_t)leash] == true)
 			g_game->SetPacket(PACKET_TYPE_CHANGE_LEASH, (uint16_t)leash, 0);
 		return true;
 	}
