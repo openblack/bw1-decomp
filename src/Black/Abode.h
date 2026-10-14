@@ -161,9 +161,9 @@ public:
 	// BW1W120 00406200 BW1M119 01062690
 	virtual bool32_t IsFunctional();
 	// BW1W120 00406d20 BW1M119 011d3810
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00406a10 BW1M119 01245790
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00407200 BW1M119 0108caf0
 	virtual bool32_t IsInteractable();
 	// BW1W120 004e43f0 BW1M119 015ed310

@@ -51,9 +51,9 @@ public:
 	// BW1W120 00426470 BW1M119 010b1640
 	virtual uint32_t SetVillagerActivity(Villager* param_1);
 	// BW1W120 004266c0 BW1M119 010b12d0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 004265a0 BW1M119 010b1480
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00425d70 BW1M119 010b0c30
 	virtual uint32_t GetSaveType();
 

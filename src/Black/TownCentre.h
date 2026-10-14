@@ -53,9 +53,9 @@ public:
 	// BW1W120 0055dba0 BW1M119 01565670
 	virtual char* GetDebugText() { return "TownCentre:"; }
 	// BW1W120 00744880 BW1M119 01563370
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00744830 BW1M119 01563410
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055db90 BW1M119 01565630
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_TOWN_CENTRE; }
 	// BW1W120 007448c0 BW1M119 015632f0

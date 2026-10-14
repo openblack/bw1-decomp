@@ -27,24 +27,24 @@ Container::Container(const MapCoords& coords, const GContainerInfo* info, GPlaye
 	owner = player;
 }
 
-uint32_t Container::Save(GameOSFile& file)
+bool32_t Container::Save(GameOSFile& file)
 {
 	if (GameThingWithPos::Save(file))
 	{
 		file.WriteInfo(info.Get());
 		file.WritePtr(owner.Get());
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t Container::Load(GameOSFile& file)
+bool32_t Container::Load(GameOSFile& file)
 {
 	if (GameThingWithPos::Load(file))
 	{
 		file.ReadInfo((const GBaseInfo**)&info);
 		file.ReadPtr((GameThing**)&owner);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

@@ -30,9 +30,9 @@ public:
 	// BW1W120 0055f0d0 BW1M119 0142bda0
 	virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 	// BW1W120 006959d0 BW1M119 014250f0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006cc540 BW1M119 0148be80
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055f0c0 BW1M119 0142bd60
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_RENDER_PARTICLE_CHAIN_JOINT; }
 

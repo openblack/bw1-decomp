@@ -17,7 +17,7 @@ SCRIPT_OBJECT_TYPE SpellDispenser::GetScriptObjectType()
 	return SCRIPT_OBJECT_TYPE_SPELL_DISPENSER;
 }
 
-uint32_t SpellDispenser::Load(GameOSFile& file)
+bool32_t SpellDispenser::Load(GameOSFile& file)
 {
 	if (Abode::Load(file))
 	{
@@ -26,12 +26,12 @@ uint32_t SpellDispenser::Load(GameOSFile& file)
 		file.ReadIt(field_0xc8);
 		file.ReadIt(field_0xd0);
 		file.ReadIt(field_0xd4);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t SpellDispenser::Save(GameOSFile& file)
+bool32_t SpellDispenser::Save(GameOSFile& file)
 {
 	if (Abode::Save(file))
 	{
@@ -40,7 +40,7 @@ uint32_t SpellDispenser::Save(GameOSFile& file)
 		file.WriteIt(field_0xc8);
 		file.WriteIt(field_0xd0);
 		file.WriteIt(field_0xd4);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

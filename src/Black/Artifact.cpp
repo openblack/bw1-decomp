@@ -23,7 +23,7 @@ Town* TownArtifact::GetTown()
 	return town;
 }
 
-uint32_t TownArtifact::Load(GameOSFile& file)
+bool32_t TownArtifact::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
@@ -35,12 +35,12 @@ uint32_t TownArtifact::Load(GameOSFile& file)
 		file.ReadPtr((GameThing**)&field_0x38);
 		file.ReadIt(field_0x30);
 		file.ReadIt(field_0x34);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t TownArtifact::Save(GameOSFile& file)
+bool32_t TownArtifact::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
@@ -52,9 +52,9 @@ uint32_t TownArtifact::Save(GameOSFile& file)
 		file.WritePtr(field_0x38);
 		file.WriteIt(field_0x30);
 		file.WriteIt(field_0x34);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 bool32_t Object::CanBeFrighteningToCreature(Creature* creature)

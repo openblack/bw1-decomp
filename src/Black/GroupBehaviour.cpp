@@ -285,7 +285,7 @@ Living* GroupBehaviour::FindFirstDanceMember(GameThingWithPos* exclude)
 	return NULL;
 }
 
-uint32_t GroupBehaviour::Save(GameOSFile& file)
+bool32_t GroupBehaviour::Save(GameOSFile& file)
 {
 	if (GameThingWithPos::Save(file))
 	{
@@ -314,12 +314,12 @@ uint32_t GroupBehaviour::Save(GameOSFile& file)
 		file.WriteIt(MarkedForDeletion);
 		file.WriteIt(CameraTravelTime);
 		file.WriteIt(CameraNearTurns);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t GroupBehaviour::Load(GameOSFile& file)
+bool32_t GroupBehaviour::Load(GameOSFile& file)
 {
 	if (GameThingWithPos::Load(file))
 	{
@@ -352,7 +352,7 @@ uint32_t GroupBehaviour::Load(GameOSFile& file)
 		file.ReadIt(MarkedForDeletion);
 		file.ReadIt(CameraTravelTime);
 		file.ReadIt(CameraNearTurns);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

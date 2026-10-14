@@ -41,9 +41,9 @@ public:
 	// BW1W120 00561210 BW1M119 01169570
 	virtual char* GetDebugText() { return "Wonder:"; }
 	// BW1W120 007790f0 BW1M119 01169710
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00779080 BW1M119 011697e0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561200 BW1M119 01169530
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_WONDER; }
 	// BW1W120 005611b0 BW1M119 inlined

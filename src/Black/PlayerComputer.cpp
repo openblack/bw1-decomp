@@ -13,44 +13,44 @@ SCRIPT_OBJECT_TYPE GComputerPlayer::GetScriptObjectType()
 
 void GComputerPlayer::Draw() {}
 
-uint32_t GComputerAttitudeToPlayer::Load(GameOSFile& file)
+bool32_t GComputerAttitudeToPlayer::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
 		file.ReadIt(Attitude);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t GComputerAttitudeToPlayer::Save(GameOSFile& file)
+bool32_t GComputerAttitudeToPlayer::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
 		file.WriteIt(Attitude);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t GComputerSeen::Load(GameOSFile& file)
+bool32_t GComputerSeen::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
 		file.ReadPtr((GameThing**)&field_0x14);
 		file.ReadIt(field_0x18);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t GComputerSeen::Save(GameOSFile& file)
+bool32_t GComputerSeen::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
 		file.WritePtr(field_0x14);
 		file.WriteIt(field_0x18);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

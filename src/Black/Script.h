@@ -164,9 +164,9 @@ class GScript : public Base
 {
 public:
 	// BW1W120 006ebea0 BW1M119 014dce80
-	uint32_t Save(GameOSFile& file);
+	bool32_t Save(GameOSFile& file);
 	// BW1W120 006ec270 BW1M119 014dc700
-	uint32_t Load(GameOSFile& file);
+	bool32_t Load(GameOSFile& file);
 	// BW1W120 006eb710 BW1M119 014de060
 	// RET 4 and script-object ECX at callers establish a member, not a static function.
 	// TODO: Existing int result retained pending a complete task-ID caller audit.

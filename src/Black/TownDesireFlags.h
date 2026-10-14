@@ -44,9 +44,9 @@ public:
 	// BW1W120 0055dad0 BW1M119 01565810
 	virtual char* GetDebugText() { return "TownDesireFlags:"; }
 	// BW1W120 00747030 BW1M119 01565b30
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00746f10 BW1M119 01565cf0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055dac0 BW1M119 015657d0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_TOWN_DESIRE_FLAGS; }
 	// BW1W120 0055daa0 BW1M119 01565740

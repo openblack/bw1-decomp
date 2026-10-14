@@ -190,7 +190,7 @@ bool32_t Fixed::InterfaceSetInMagicHand(GInterfaceStatus* status)
 	return Object::InterfaceSetInMagicHand(status);
 }
 
-uint32_t Fixed::Save(GameOSFile& file)
+bool32_t Fixed::Save(GameOSFile& file)
 {
 	if (Object::Save(file))
 	{
@@ -200,7 +200,7 @@ uint32_t Fixed::Save(GameOSFile& file)
 	return false;
 }
 
-uint32_t Fixed::Load(GameOSFile& file)
+bool32_t Fixed::Load(GameOSFile& file)
 {
 	if (Object::Load(file))
 	{
@@ -794,7 +794,7 @@ bool32_t MultiMapFixed::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, G
 	return false;
 }
 
-uint32_t MultiMapFixed::Save(GameOSFile& file)
+bool32_t MultiMapFixed::Save(GameOSFile& file)
 {
 	if (Fixed::Save(file))
 	{
@@ -807,7 +807,7 @@ uint32_t MultiMapFixed::Save(GameOSFile& file)
 	return false;
 }
 
-uint32_t MultiMapFixed::Load(GameOSFile& file)
+bool32_t MultiMapFixed::Load(GameOSFile& file)
 {
 	if (Fixed::Load(file))
 	{

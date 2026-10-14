@@ -90,9 +90,9 @@ public:
 	// BW1W120 0071bc30 BW1M119 015179f0
 	virtual uint32_t GetSampleForAttack();
 	// BW1W120 00721cd0 BW1M119 0151c7f0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00721930 BW1M119 0151cef0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0071faf0 BW1M119 0151c780
 	virtual uint32_t GetSaveType();
 	// BW1W120 0055cec0 BW1M119 013b9ef0

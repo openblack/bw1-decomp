@@ -43,7 +43,7 @@ bool32_t ArenaSpellIcon::IsEffectReceiver(EffectValues* effect)
 	return false;
 }
 
-uint32_t ArenaSpellIcon::Load(GameOSFile& file)
+bool32_t ArenaSpellIcon::Load(GameOSFile& file)
 {
 	if (Fixed::Load(file))
 	{
@@ -51,12 +51,12 @@ uint32_t ArenaSpellIcon::Load(GameOSFile& file)
 		file.ReadIt(field_0x60);
 		file.ReadIt(field_0x64);
 		file.ReadIt(field_0x6c);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t ArenaSpellIcon::Save(GameOSFile& file)
+bool32_t ArenaSpellIcon::Save(GameOSFile& file)
 {
 	if (Fixed::Save(file))
 	{
@@ -64,9 +64,9 @@ uint32_t ArenaSpellIcon::Save(GameOSFile& file)
 		file.WriteIt(field_0x60);
 		file.WriteIt(field_0x64);
 		file.WriteIt(field_0x6c);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 ArenaSpellIcon::~ArenaSpellIcon() {}

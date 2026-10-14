@@ -17,24 +17,24 @@ char* MagicTree::GetDebugText()
 	return "MagicTree:";
 }
 
-uint32_t MagicTree::Load(GameOSFile& file)
+bool32_t MagicTree::Load(GameOSFile& file)
 {
 	if (Tree::Load(file))
 	{
 		file.ReadIt(field_0x6c);
 		file.ReadIt(field_0x70);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t MagicTree::Save(GameOSFile& file)
+bool32_t MagicTree::Save(GameOSFile& file)
 {
 	if (Tree::Save(file))
 	{
 		file.WriteIt(field_0x6c);
 		file.WriteIt(field_0x70);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

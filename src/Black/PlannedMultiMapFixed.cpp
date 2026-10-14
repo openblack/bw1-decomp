@@ -10,7 +10,7 @@
 
 void PlannedMultiMapFixed::Draw() {}
 
-uint32_t PlannedMultiMapFixed::Load(GameOSFile& file)
+bool32_t PlannedMultiMapFixed::Load(GameOSFile& file)
 {
 	if (GameThingWithPos::Load(file))
 	{
@@ -21,12 +21,12 @@ uint32_t PlannedMultiMapFixed::Load(GameOSFile& file)
 		file.ReadIt(CreationTurn);
 		file.ReadPtr((GameThing**)&FootpathLink);
 		file.ReadInfo((const GBaseInfo**)&info);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t PlannedMultiMapFixed::Save(GameOSFile& file)
+bool32_t PlannedMultiMapFixed::Save(GameOSFile& file)
 {
 	if (GameThingWithPos::Save(file))
 	{
@@ -37,7 +37,7 @@ uint32_t PlannedMultiMapFixed::Save(GameOSFile& file)
 		file.WriteIt(CreationTurn);
 		file.WritePtr(FootpathLink.Get());
 		file.WriteInfo(info.Get());
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

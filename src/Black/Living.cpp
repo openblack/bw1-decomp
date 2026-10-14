@@ -28,7 +28,7 @@ char* DataPath::GetDebugText()
 	return "DataPath:";
 }
 
-uint32_t DataPath::Load(GameOSFile& file)
+bool32_t DataPath::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
@@ -38,12 +38,12 @@ uint32_t DataPath::Load(GameOSFile& file)
 		file.ReadIt(field_0x24);
 		file.ReadIt(field_0x28);
 		file.ReadIt(field_0x2c);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t DataPath::Save(GameOSFile& file)
+bool32_t DataPath::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
@@ -53,9 +53,9 @@ uint32_t DataPath::Save(GameOSFile& file)
 		file.WriteIt(field_0x24);
 		file.WriteIt(field_0x28);
 		file.WriteIt(field_0x2c);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 bool32_t Living::CanBecomeAPhysicsObject()

@@ -33,28 +33,28 @@ bool MobileStatic::ChecksVerticesVObjects()
 	return true;
 }
 
-uint32_t MobileStatic::Load(GameOSFile& file)
+bool32_t MobileStatic::Load(GameOSFile& file)
 {
 	if (MultiMapFixed::Load(file))
 	{
 		file.ReadPtr((GameThing**)&Player);
 		file.ReadIt(field_0x80);
 		file.ReadIt(field_0x84);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t MobileStatic::Save(GameOSFile& file)
+bool32_t MobileStatic::Save(GameOSFile& file)
 {
 	if (MultiMapFixed::Save(file))
 	{
 		file.WritePtr(Player);
 		file.WriteIt(field_0x80);
 		file.WriteIt(field_0x84);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 MobileStatic::~MobileStatic() {}

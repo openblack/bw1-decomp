@@ -37,14 +37,14 @@ char* StandardBuildingSite::GetDebugText()
 	return "StandardBuildingSite:";
 }
 
-uint32_t StandardBuildingSite::Save(GameOSFile& file)
+bool32_t StandardBuildingSite::Save(GameOSFile& file)
 {
 	if (BuildingSite::Save(file))
 	{
 		file.WritePtr(WoodPile);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 StandardBuildingSite::~StandardBuildingSite() {}

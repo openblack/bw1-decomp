@@ -127,9 +127,9 @@ public:
 		// BW1W120 0055fd80 BW1M119 01427870
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006993d0 BW1M119 014214e0
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cfee0 BW1M119 014885d0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	EmitterRule(PersistentOwner* owner) : AtomCreateRule(owner)

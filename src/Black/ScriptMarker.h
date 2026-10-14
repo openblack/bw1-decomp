@@ -24,9 +24,9 @@ public:
 	// BW1W120 00561060 BW1M119 01507fb0
 	virtual char* GetDebugText() { return "ScriptMarker:"; }
 	// BW1W120 0070d9f0 BW1M119 01507ff0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0070d9d0 BW1M119 01508060
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561050 BW1M119 01507f70
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SCRIPT_MARKER; }
 	// BW1W120 00561030 BW1M119 01507ee0

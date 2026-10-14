@@ -29,7 +29,7 @@ public:
 	// BW1W120 00731a90 BW1M119 inlined
 	virtual ~FireGraphic__SpritePos();
 	// BW1W120 006cb040 BW1M119 inlined
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 004664e0 BW1M119 inlined
 	virtual uint32_t GetSaveType();
 };

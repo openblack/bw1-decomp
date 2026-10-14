@@ -55,22 +55,22 @@ void Bonfire::Draw()
 	Rock::Draw();
 }
 
-uint32_t Bonfire::Load(GameOSFile& file)
+bool32_t Bonfire::Load(GameOSFile& file)
 {
 	if (Rock::Load(file))
 	{
 		file.ReadIt(field_0x94);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t Bonfire::Save(GameOSFile& file)
+bool32_t Bonfire::Save(GameOSFile& file)
 {
 	if (Rock::Save(file))
 	{
 		file.WriteIt(field_0x94);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

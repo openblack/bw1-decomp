@@ -100,26 +100,26 @@ bool32_t PuzzleTotem::NetworkFriendlyEndLockedSelect(GInterfaceStatus*)
 	return true;
 }
 
-uint32_t PuzzleTotem::Load(GameOSFile& file)
+bool32_t PuzzleTotem::Load(GameOSFile& file)
 {
 	if (Totem::Load(file))
 	{
 		file.ReadIt(MaxHeight);
 		file.ReadIt(ActualHeight);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t PuzzleTotem::Save(GameOSFile& file)
+bool32_t PuzzleTotem::Save(GameOSFile& file)
 {
 	if (Totem::Save(file))
 	{
 		file.WriteIt(MaxHeight);
 		file.WriteIt(ActualHeight);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 bool32_t PuzzleSheep::DecideWhatToDo()
@@ -137,42 +137,42 @@ uint32_t PieceCow::CheckNeeds()
 	return 0;
 }
 
-uint32_t PuzzleGrain::Load(GameOSFile& file)
+bool32_t PuzzleGrain::Load(GameOSFile& file)
 {
 	if (PileFood::Load(file))
 	{
 		file.ReadIt(field_0xbc);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t PuzzleGrain::Save(GameOSFile& file)
+bool32_t PuzzleGrain::Save(GameOSFile& file)
 {
 	if (PileFood::Save(file))
 	{
 		file.WriteIt(field_0xbc);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t PuzzleMobileObject::Load(GameOSFile& file)
+bool32_t PuzzleMobileObject::Load(GameOSFile& file)
 {
 	if (MobileObject::Load(file))
 	{
 		file.ReadIt(field_0x68);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t PuzzleMobileObject::Save(GameOSFile& file)
+bool32_t PuzzleMobileObject::Save(GameOSFile& file)
 {
 	if (MobileObject::Save(file))
 	{
 		file.WriteIt(field_0x68);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

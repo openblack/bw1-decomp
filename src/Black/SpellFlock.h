@@ -29,9 +29,9 @@ public:
 	// Override methods
 
 	// BW1W120 00724780 BW1M119 01523ce0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 007248a0 BW1M119 01523b10
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00723280 BW1M119 01525dd0
 	virtual bool NeedsContinualPackets(GInterfaceStatus* param_1);
 	// BW1W120 007233d0 BW1M119 01525a20

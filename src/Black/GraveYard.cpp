@@ -7,22 +7,22 @@ bool Graveyard::InteractsWithPhysicsObjects()
 	return false;
 }
 
-uint32_t Graveyard::Load(GameOSFile& file)
+bool32_t Graveyard::Load(GameOSFile& file)
 {
 	if (Abode::Load(file))
 	{
 		file.ReadIt(field_0xc4);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t Graveyard::Save(GameOSFile& file)
+bool32_t Graveyard::Save(GameOSFile& file)
 {
 	if (Abode::Save(file))
 	{
 		file.WriteIt(field_0xc4);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

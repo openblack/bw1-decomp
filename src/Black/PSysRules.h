@@ -46,9 +46,9 @@ public:
 		// BW1W120 0055f730 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696c70 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd7d0 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	RemoveSoundFromAtom(PersistentOwner* owner) : AppearanceUpdateRule(owner)
@@ -85,9 +85,9 @@ public:
 		// BW1W120 0055f6b0 BW1M119 0142ad50
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696c10 BW1M119 01424220
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd770 BW1M119 0148b0b0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	AddSoundToAtom(PersistentOwner* owner) : AppearanceUpdateRule(owner)
@@ -239,9 +239,9 @@ public:
 		// BW1W120 0055f630 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696b00 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd660 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	AR_FadeOutOnceConditionTrue(PersistentOwner* owner) : AppearanceUpdateRule(owner)
@@ -407,9 +407,9 @@ public:
 		// BW1W120 00560f00 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006987d0 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cf2b0 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 00683470 BW1M119 0140a370
@@ -561,9 +561,9 @@ public:
 		// BW1W120 0055f820 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696cd0 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd830 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006a1510 BW1M119 01439ea0
@@ -610,9 +610,9 @@ public:
 		// BW1W120 00560520 BW1M119 014299e0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00697520 BW1M119 014235d0
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ce090 BW1M119 0148a480
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_OrientWithVelocity(PersistentOwner* owner) : UpdateRule(owner)
@@ -653,9 +653,9 @@ public:
 		// BW1W120 00560e00 BW1M119 0142b0c0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696940 BW1M119 014244c0
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd4a0 BW1M119 0148b340
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_OrientSpriteWithVelocity(PersistentOwner* owner) : UpdateRule(owner)
@@ -695,9 +695,9 @@ public:
 		// BW1W120 005604a0 BW1M119 01429f50
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006972a0 BW1M119 014238b0
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cde10 BW1M119 0148a760
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_OrientSpriteWithRandomAngle(PersistentOwner* owner) : UpdateRule(owner)
@@ -938,9 +938,9 @@ public:
 		// BW1W120 00560c50 BW1M119 01429310
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00697c20 BW1M119 01422900
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ce710 BW1M119 014899f0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006d4150 BW1M119 01491ef0
@@ -997,9 +997,9 @@ public:
 		// BW1W120 006d4900 BW1M119 014916e0
 		virtual ~CollectionData();
 		// BW1W120 00698b30 BW1M119 01421a70
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cf610 BW1M119 01488b60
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	class AtomData : public BaseAtomModifierData
@@ -1024,9 +1024,9 @@ public:
 		// BW1W120 00560bb0 BW1M119 01427e50
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00698da0 BW1M119 01421990
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cf870 BW1M119 01488a80
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006d4700 BW1M119 014917f0
@@ -1106,9 +1106,9 @@ public:
 		// BW1W120 00560d00 BW1M119 01428770
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00698350 BW1M119 01422200
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cee70 BW1M119 01489300
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006d3910 BW1M119 014929d0
@@ -1218,9 +1218,9 @@ public:
 		// BW1W120 005609e0 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00698fc0 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cfaa0 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	class FlyingAtomData : public BaseAtomModifierData
@@ -1242,9 +1242,9 @@ public:
 		// BW1W120 00560a30 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00699070 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cfb50 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	class DebrisCollectionData : public BaseCollectionModifierData
@@ -1264,9 +1264,9 @@ public:
 		// BW1W120 00560990 BW1M119 01427d00
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00698f10 BW1M119 014218e0
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cf9f0 BW1M119 014889d0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	class CollectionData : public BaseCollectionModifierData
@@ -1303,9 +1303,9 @@ public:
 		// BW1W120 006d18a0 BW1M119 014953b0
 		virtual ~CollectionData();
 		// BW1W120 00699150 BW1M119 014215a0
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cfc40 BW1M119 01488690
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006d1680 BW1M119 01495460
@@ -1574,9 +1574,9 @@ public:
 		// BW1W120 006a2a30 BW1M119 014386e0
 		virtual ~CollectionData();
 		// BW1W120 00697bb0 BW1M119 014229b0
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ce6a0 BW1M119 01489aa0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_AddDefensiveSphere(PersistentOwner* owner) : UpdateRule(owner)
@@ -1615,9 +1615,9 @@ public:
 		// BW1W120 0055fa00 BW1M119 0142a7e0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696d90 BW1M119 01423e90
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd8f0 BW1M119 0148ad20
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006a2b40 BW1M119 01438440
@@ -1670,9 +1670,9 @@ public:
 		// BW1W120 0055fa80 BW1M119 014282e0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00698870 BW1M119 01421d20
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cf350 BW1M119 01488e10
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_SphereSurfaceTracer(PersistentOwner* owner) : UpdateRule(owner)
@@ -1730,9 +1730,9 @@ public:
 		// BW1W120 0055fb00 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00698a20 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cf500 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006a35e0 BW1M119 01437320
@@ -1782,9 +1782,9 @@ public:
 		// BW1W120 0055fb80 BW1M119 0142a690
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696ed0 BW1M119 01423df0
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cda40 BW1M119 0148ac80
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_VapourEndEffect(PersistentOwner* owner) : UpdateRule(owner) { ScaleFactor = NULL; }
@@ -1816,9 +1816,9 @@ public:
 		// BW1W120 0055fd00 BW1M119 01428190
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00698980 BW1M119 01421c70
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cf460 BW1M119 01488d60
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	CheckShieldDeflections(PersistentOwner* owner) : UpdateRule(owner)
@@ -1859,9 +1859,9 @@ public:
 		// BW1W120 0055fc00 BW1M119 0142a540
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696f30 BW1M119 01423d40
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cdaa0 BW1M119 0148abd0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	AddSubCollectionsToAtom(PersistentOwner* owner) : AtomCollectionModifier(owner) {}
@@ -1931,9 +1931,9 @@ public:
 		// BW1W120 0055fe00 BW1M119 01426eb0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00699ac0 BW1M119 01420d40
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006d0490 BW1M119 01487d90
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	EmitterRuleLightningSprite(PersistentOwner* owner) : AtomCreateRule(owner)
@@ -2049,9 +2049,9 @@ public:
 		// BW1W120 00560080 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006996a0 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006d01b0 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006a5b00 BW1M119 01433e20
@@ -2093,9 +2093,9 @@ public:
 		// BW1W120 00560e80 BW1M119 014295c0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00697800 BW1M119 01423040
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ce340 BW1M119 01489f90
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_AtomsAtEPTarget(PersistentOwner* owner) : AtomCreateRule(owner) { NumExtraPoints = 0; }
@@ -2134,9 +2134,9 @@ public:
 		// BW1W120 0055fe80 BW1M119 01427720
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006994b0 BW1M119 01421350
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cffc0 BW1M119 01488440
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006a6c20 BW1M119 01432630
@@ -2234,9 +2234,9 @@ public:
 		// BW1W120 0055f5b0 BW1M119 0142b380
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006967f0 BW1M119 01424660
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd350 BW1M119 0148b4d0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	class AtomData : public BaseAtomModifierData
@@ -2249,9 +2249,9 @@ public:
 		// BW1W120 0069c810 BW1M119 inlined
 		virtual char* GetDebugText();
 		// BW1W120 00696790 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd2f0 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 		// BW1W120 0069c800 BW1M119 inlined
 		virtual uint32_t GetSaveType();
 
@@ -2287,9 +2287,9 @@ public:
 		// BW1W120 0069cce0 BW1M119 inlined
 		virtual char* GetDebugText();
 		// BW1W120 00696720 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd280 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 		// BW1W120 0069ccd0 BW1M119 inlined
 		virtual uint32_t GetSaveType();
 
@@ -2385,9 +2385,9 @@ public:
 		// BW1W120 0055ff00 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006995c0 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006d00d0 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006a5810 BW1M119 014342a0
@@ -2432,9 +2432,9 @@ public:
 		// BW1W120 0055ff80 BW1M119 0142a2a0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696ff0 BW1M119 01423b10
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cdb60 BW1M119 0148a9b0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	class AtomData : public BaseAtomModifierData
@@ -2450,9 +2450,9 @@ public:
 		// BW1W120 0055ffd0 BW1M119 0142a150
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006970e0 BW1M119 01423a70
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cdc50 BW1M119 0148a910
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006a5300 BW1M119 01434b80
@@ -2544,9 +2544,9 @@ public:
 		// BW1W120 0067e1a0 BW1M119 inlined
 		virtual char* GetDebugText();
 		// BW1W120 006984d0 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cf000 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 		// BW1W120 0067e190 BW1M119 inlined
 		virtual uint32_t GetSaveType();
 
@@ -2567,9 +2567,9 @@ public:
 		// BW1W120 00560d80 BW1M119 01428570
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00698770 BW1M119 01421ea0
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cf250 BW1M119 01488f90
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 0067e090 BW1M119 01401d20
@@ -2704,9 +2704,9 @@ public:
 		// BW1W120 0055fc80 BW1M119 0142a3f0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696f90 BW1M119 01423bf0
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cdb00 BW1M119 0148aa80
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	CreateNewBaseAtom(PersistentOwner* owner) : AtomCreateRule(owner)
@@ -2763,9 +2763,9 @@ public:
 		// BW1W120 00682fa0 BW1M119 inlined
 		virtual ~AtomData();
 		// BW1W120 00696a50 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd5b0 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	AttatchFireBallToAtom(PersistentOwner* owner) : UpdateRule(owner) {}
@@ -2829,9 +2829,9 @@ public:
 		// BW1W120 00560100 BW1M119 01429de0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00697340 BW1M119 01423800
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cdeb0 BW1M119 0148a6b0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_SideSpin(PersistentOwner* owner) : UpdateRule(owner)
@@ -2870,9 +2870,9 @@ public:
 		// BW1W120 00560180 BW1M119 01429ca0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006973e0 BW1M119 01423750
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cdf50 BW1M119 0148a600
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_InitialSpin(PersistentOwner* owner) : UpdateRule(owner)
@@ -3033,9 +3033,9 @@ public:
 		// BW1W120 0069fef0 BW1M119 0143c000
 		virtual ~CollectionData();
 		// BW1W120 00699c00 BW1M119 01420b30
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006d05e0 BW1M119 01487b80
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 0069ff00 BW1M119 0143be80
@@ -3101,9 +3101,9 @@ public:
 		// BW1W120 005605a0 BW1M119 01428d70
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00698030 BW1M119 01422530
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ceb40 BW1M119 01489630
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 00677e70 BW1M119 013f4d50
@@ -3139,9 +3139,9 @@ public:
 		// BW1W120 00560620 BW1M119 01428c10
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006980e0 BW1M119 01422480
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cebf0 BW1M119 01489580
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_CreatureSpellItch(PersistentOwner* owner) : AtomCreateRule(owner)
@@ -3185,9 +3185,9 @@ public:
 		// BW1W120 005606a0 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00698140 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cec50 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_CreatureSpellFreeze(PersistentOwner* owner) : AtomCreateRule(owner)
@@ -3237,9 +3237,9 @@ public:
 		// BW1W120 00560750 BW1M119 01428ee0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00697ea0 BW1M119 01422660
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ce9a0 BW1M119 01489750
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	class AtomData : public BaseAtomModifierData
@@ -3262,9 +3262,9 @@ public:
 		// BW1W120 005607b0 BW1M119 01428f90
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00697d60 BW1M119 01422750
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ce850 BW1M119 01489840
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_CreatureSpellGeneric(PersistentOwner* owner) : AtomCreateRule(owner)
@@ -3322,9 +3322,9 @@ public:
 		// BW1W120 00560860 BW1M119 014291b0
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00697c80 BW1M119 01422830
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ce770 BW1M119 01489920
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_CreatureSpellCompassion(PersistentOwner* owner) : AtomCreateRule(owner)
@@ -3366,9 +3366,9 @@ public:
 		// BW1W120 00560200 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00699780 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006d0290 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	class AtomData : public BaseAtomModifierData
@@ -3384,9 +3384,9 @@ public:
 		// BW1W120 00560250 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00697600 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ce170 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_FollowTargets(PersistentOwner* owner) : AtomCreateRule(owner)
@@ -3426,9 +3426,9 @@ public:
 		// BW1W120 006a0970 BW1M119 inlined
 		virtual char* GetDebugText();
 		// BW1W120 00697140 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cdcb0 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 		// BW1W120 006a0960 BW1M119 inlined
 		virtual uint32_t GetSaveType();
 
@@ -3481,9 +3481,9 @@ public:
 		// BW1W120 00560310 BW1M119 01427190
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 006997e0 BW1M119 01420f80
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006d02f0 BW1M119 01487fd0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 006a4030 BW1M119 01436350
@@ -3541,9 +3541,9 @@ public:
 		// BW1W120 0055f4b0 BW1M119 0142b930
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00695fc0 BW1M119 01424be0
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ccb10 BW1M119 0148ba40
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_ManaPathNew(PersistentOwner* owner) : AtomCreateRule(owner)
@@ -3595,9 +3595,9 @@ public:
 		// BW1W120 0055f530 BW1M119 0142ba80
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00695f20 BW1M119 01424d00
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cca70 BW1M119 0148bb60
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	UR_BeliefSprite(PersistentOwner* owner) : AtomCreateRule(owner)
@@ -3742,9 +3742,9 @@ public:
 		// BW1W120 005603a0 BW1M119 inlined
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00699a60 BW1M119 inlined
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006d0430 BW1M119 inlined
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	LightningForkFlicker(PersistentOwner* owner) : AtomCollectionModifier(owner) { FlickerFreq = 1.0f; }
@@ -3846,9 +3846,9 @@ public:
 		// BW1W120 0055f240 BW1M119 014296c0
 		virtual ~SubCollectionData() {}
 		// BW1W120 00697670 BW1M119 01423110
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ce1e0 BW1M119 0148a050
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	class AtomData : public BaseAtomModifierData
@@ -3866,9 +3866,9 @@ public:
 		// BW1W120 0055f150 BW1M119 0142b220
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696850 BW1M119 01424590
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd3b0 BW1M119 0148b410
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 00675c50 BW1M119 013f0e70
@@ -3988,9 +3988,9 @@ public:
 		// BW1W120 0055f8a0 BW1M119 0142a930
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696d30 BW1M119 01424030
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd890 BW1M119 0148aec0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 };
 static_assert(sizeof(UR_BankedTurning::AtomData) == 0x24, "Data type is of wrong size");
@@ -4018,9 +4018,9 @@ public:
 		// BW1W120 0055f3a0 BW1M119 0142b6e0
 		virtual ~SubCollectionData() {}
 		// BW1W120 006963e0 BW1M119 01424a20
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006ccf60 BW1M119 0148b880
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	class AtomData : public BaseAtomModifierData
@@ -4042,9 +4042,9 @@ public:
 		// BW1W120 0055f390 BW1M119 0142b600
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00696570 BW1M119 01424940
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cd0c0 BW1M119 0148b7a0
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	// BW1W120 00676460 BW1M119 013f01d0
@@ -4235,9 +4235,9 @@ public:
 		// BW1W120 00560420 BW1M119 01429b40
 		virtual char* GetDebugText() { return PSYS_DEBUG_TEXT; }
 		// BW1W120 00697480 BW1M119 01423690
-		virtual uint32_t Load(GameOSFile& file);
+		virtual bool32_t Load(GameOSFile& file);
 		// BW1W120 006cdff0 BW1M119 0148a540
-		virtual uint32_t Save(GameOSFile& file);
+		virtual bool32_t Save(GameOSFile& file);
 	};
 
 	RemoveRuleAfterConditionTrue(PersistentOwner* owner) : RemoveRule(owner)

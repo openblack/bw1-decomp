@@ -18,7 +18,7 @@ bool32_t SpellWolf::MoveToPosAndLookAround()
 	return true;
 }
 
-uint32_t SpellWolf::Save(GameOSFile& file)
+bool32_t SpellWolf::Save(GameOSFile& file)
 {
 	if (Animal::Save(file))
 	{
@@ -27,9 +27,9 @@ uint32_t SpellWolf::Save(GameOSFile& file)
 		file.WriteIt(field_0x164);
 		file.WriteIt(FadeAlpha);
 		file.WritePtr(field_0x198);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 void SpellWolf::SetSpeed(int) {}

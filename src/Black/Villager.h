@@ -259,9 +259,9 @@ public:
 	// BW1W120 0055cb30 BW1M119 0157a2c0
 	virtual char* GetDebugText() { return "Villager:"; }
 	// BW1W120 00754580 BW1M119 01571730
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00754280 BW1M119 01571b20
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055cb20 BW1M119 0157a280
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_VILLAGER; }
 	// BW1W120 00754870 BW1M119 015716b0
@@ -2050,9 +2050,9 @@ public:
 	// BW1W120 00756730 BW1M119 0156c870
 	virtual char* GetDebugText();
 	// BW1W120 007568a0 BW1M119 0156d660
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 007568e0 BW1M119 0156d5c0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00756720 BW1M119 0156c830
 	virtual uint32_t GetSaveType();
 	// BW1W120 00756920 BW1M119 0156d4c0

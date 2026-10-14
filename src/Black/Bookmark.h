@@ -147,9 +147,9 @@ public:
 	// BW1W120 00439da0 BW1M119 01085260
 	void Process();
 	// BW1W120 0043a4e0 BW1M119 010b87d0
-	uint32_t Save(GameOSFile& file);
+	bool32_t Save(GameOSFile& file);
 	// BW1W120 0043a6d0 BW1M119 010b8460
-	uint32_t Load(GameOSFile& file);
+	bool32_t Load(GameOSFile& file);
 };
 static_assert(sizeof(Bookmark) == 0x24, "Data type is of wrong size");
 

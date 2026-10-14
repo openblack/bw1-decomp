@@ -80,9 +80,9 @@ public:
 	// BW1W120 005ef160 BW1M119 01384590
 	virtual char* GetDebugText();
 	// BW1W120 005ef570 BW1M119 01384620
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 005ef360 BW1M119 01384910
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005ef150 BW1M119 01384550
 	virtual uint32_t GetSaveType();
 
@@ -198,9 +198,9 @@ public:
 	// BW1W120 004172d0 BW1M119 01006720
 	virtual bool32_t IsFunctional();
 	// BW1W120 005ee960 BW1M119 013858a0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 005ee630 BW1M119 01385da0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005eed20 BW1M119 01385850
 	virtual void ResolveLoad();
 	// BW1W120 004173c0 BW1M119 01139720

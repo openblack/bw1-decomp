@@ -36,9 +36,9 @@ public:
 	// BW1W120 0052df20 BW1M119 010e6b20
 	virtual float GetTownArtifactValue();
 	// BW1W120 0052e170 BW1M119 010e6670
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0052e140 BW1M119 010e6700
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00401400 BW1M119 013eb100
 	virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return false; }
 	// BW1W120 00401410 BW1M119 014269b0

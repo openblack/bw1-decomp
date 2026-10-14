@@ -35,9 +35,9 @@ public:
 	// BW1W120 00561460 BW1M119 0153d290
 	virtual char* GetDebugText() { return "GStreetLantern:"; }
 	// BW1W120 00734be0 BW1M119 0153d590
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00734c90 BW1M119 0153d460
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561450 BW1M119 0153d250
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GSTREET_LANTERN; }
 	// BW1W120 00561440 BW1M119 0153d210

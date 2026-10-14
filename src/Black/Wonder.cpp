@@ -7,22 +7,22 @@ void Wonder::MakeFunctional()
 	Abode::MakeFunctional();
 }
 
-uint32_t Wonder::Load(GameOSFile& file)
+bool32_t Wonder::Load(GameOSFile& file)
 {
 	if (Abode::Load(file))
 	{
 		file.ReadIt(power);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t Wonder::Save(GameOSFile& file)
+bool32_t Wonder::Save(GameOSFile& file)
 {
 	if (Abode::Save(file))
 	{
 		file.WriteIt(power);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

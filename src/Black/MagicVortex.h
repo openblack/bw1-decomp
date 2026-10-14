@@ -64,9 +64,9 @@ public:
 	// BW1W120 005fe8f0 BW1M119 013be610
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 00600210 BW1M119 013bbc90
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00600000 BW1M119 013bc060
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005fd610 BW1M119 013c15b0
 	virtual void PhysicsEditorCreate(int param_1);
 	// BW1W120 005fd620 BW1M119 013c15f0
@@ -135,9 +135,9 @@ public:
 	// BW1W120 005fd7a0 BW1M119 013c1c00
 	virtual char* GetDebugText();
 	// BW1W120 00600550 BW1M119 013bba70
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00600460 BW1M119 013bbb80
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005fd790 BW1M119 013c1bc0
 	virtual uint32_t GetSaveType();
 	// BW1W120 005fd970 BW1M119 013c0770
@@ -169,9 +169,9 @@ public:
 	// BW1W120 005fddd0 BW1M119 013c1ab0
 	virtual char* GetDebugText();
 	// BW1W120 00600880 BW1M119 013bb240
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00600630 BW1M119 013bb690
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005fddc0 BW1M119 013c1a70
 	virtual uint32_t GetSaveType();
 	// BW1W120 005fdfe0 BW1M119 013bfa40

@@ -56,26 +56,26 @@ void BigForest::CreateCollideData()
 	MultiMapFixed::ReleaseCollideData();
 }
 
-uint32_t BigForest::Load(GameOSFile& file)
+bool32_t BigForest::Load(GameOSFile& file)
 {
 	if (MultiMapFixed::Load(file))
 	{
 		file.ReadPtr((GameThing**)&forest);
 		file.ReadIt(field_0x84);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t BigForest::Save(GameOSFile& file)
+bool32_t BigForest::Save(GameOSFile& file)
 {
 	if (MultiMapFixed::Save(file))
 	{
 		file.WritePtr(forest);
 		file.WriteIt(field_0x84);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 BigForest::~BigForest() {}

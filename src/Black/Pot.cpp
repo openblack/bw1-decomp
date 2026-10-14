@@ -62,22 +62,22 @@ bool32_t PileResource::IsField(Creature* creature)
 	return false;
 }
 
-uint32_t PileResource::Load(GameOSFile& file)
+bool32_t PileResource::Load(GameOSFile& file)
 {
 	if (PotStructure::Load(file))
 	{
 		file.ReadIt(AltitudeZoomer);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t PileResource::Save(GameOSFile& file)
+bool32_t PileResource::Save(GameOSFile& file)
 {
 	if (PotStructure::Save(file))
 	{
 		file.WriteIt(AltitudeZoomer);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

@@ -109,7 +109,7 @@ void BookmarkGraphic::AddDrawing()
 	}
 }
 
-uint32_t Bookmark::Save(GameOSFile& file)
+bool32_t Bookmark::Save(GameOSFile& file)
 {
 	file.WriteSafe(Flags);
 	file.WriteSafe(CameraOffset);
@@ -119,7 +119,7 @@ uint32_t Bookmark::Save(GameOSFile& file)
 	return true;
 }
 
-uint32_t Bookmark::Load(GameOSFile& file)
+bool32_t Bookmark::Load(GameOSFile& file)
 {
 	file.ReadSafe(Flags);
 	file.ReadSafe(CameraOffset);

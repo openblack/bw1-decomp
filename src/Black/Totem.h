@@ -45,9 +45,9 @@ public:
 	// BW1W120 00561570 BW1M119 0154b720
 	virtual char* GetDebugText() { return "Totem: "; }
 	// BW1W120 00737800 BW1M119 0154b890
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 007378b0 BW1M119 0154b760
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561560 BW1M119 0154b6f0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_TOTEM; }
 	// BW1W120 00561530 BW1M119 0113c380

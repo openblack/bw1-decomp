@@ -28,22 +28,22 @@ void MagicFood::SetPlayer(GPlayer* player)
 	Player = player;
 }
 
-uint32_t MagicFood::Load(GameOSFile& file)
+bool32_t MagicFood::Load(GameOSFile& file)
 {
 	if (PileFood::Load(file))
 	{
 		file.ReadPtr((GameThing**)&Player);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t MagicFood::Save(GameOSFile& file)
+bool32_t MagicFood::Save(GameOSFile& file)
 {
 	if (PileFood::Save(file))
 	{
 		file.WritePtr(Player);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

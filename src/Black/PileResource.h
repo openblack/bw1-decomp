@@ -37,9 +37,9 @@ public:
 	// BW1W120 0066d330 BW1M119 01003c70
 	virtual uint32_t JustAddResource(RESOURCE_TYPE type, uint32_t amount, bool param_3);
 	// BW1W120 0066f690 BW1M119 0111fe30
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0066f620 BW1M119 0111ff10
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0066e3d0 BW1M119 01122770
 	virtual float GetLife();
 	// BW1W120 0066e3c0 BW1M119 01122810

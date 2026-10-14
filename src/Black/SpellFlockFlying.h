@@ -31,9 +31,9 @@ public:
 	// BW1W120 0055d290 BW1M119 01526400
 	virtual char* GetDebugText() { return "SpellFlockFlying:"; }
 	// BW1W120 007249d0 BW1M119 015239a0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00724ac0 BW1M119 01523820
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055d280 BW1M119 015263c0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_SPELL_FLOCK_FLYING; }
 	// BW1W120 00723a30 BW1M119 015250b0

@@ -22,7 +22,7 @@ public:
 	// Override methods
 
 	// BW1W120 00537110 BW1M119 null
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 005371d0 BW1M119 null
 	virtual uint32_t GetSaveType();
 	// BW1W120 005371f0 BW1M119 010f0180
@@ -30,7 +30,7 @@ public:
 	// BW1W120 005371e0 BW1M119 010f41e0
 	virtual char* GetDebugText();
 	// BW1W120 005370a0 BW1M119 010ef6e0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 
 	// Constructors
 

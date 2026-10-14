@@ -22,24 +22,24 @@ bool32_t GInterface::LoadFiles()
 	return true;
 }
 
-uint32_t GInterface::Load(GameOSFile& file)
+bool32_t GInterface::Load(GameOSFile& file)
 {
 	if (GameThingWithPos::Load(file))
 	{
 		file.ReadPtr((GameThing**)&status);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t GInterface::Save(GameOSFile& file)
+bool32_t GInterface::Save(GameOSFile& file)
 {
 	if (GameThingWithPos::Save(file))
 	{
 		file.WritePtr(status);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 void GInterface::Cheat() {}

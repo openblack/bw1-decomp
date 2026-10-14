@@ -75,9 +75,9 @@ public:
 	// BW1W120 00561b60 BW1M119 0113c5e0
 	virtual char* GetDebugText() { return "PuzzleGame: "; }
 	// BW1W120 006d9d40 BW1M119 0112fc40
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006d96c0 BW1M119 011305d0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561b50 BW1M119 0113c5a0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PUZZLE_GAME; }
 	// BW1W120 00561b10 BW1M119 0113c480
@@ -163,9 +163,9 @@ public:
 	// BW1W120 00422190 BW1M119 inlined
 	virtual char* GetDebugText();
 	// BW1W120 00422bc0 BW1M119 inlined
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00422aa0 BW1M119 inlined
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00422180 BW1M119 inlined
 	virtual uint32_t GetSaveType();
 	// BW1W120 00422770 BW1M119 inlined
@@ -460,9 +460,9 @@ public:
 	// BW1W120 00561910 BW1M119 0113a430
 	virtual char* GetDebugText() { return "PuzzleGrain: "; }
 	// BW1W120 006dbe40 BW1M119 0112c5f0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006dbeb0 BW1M119 0112c510
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561900 BW1M119 0113a3f0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PUZZLE_GRAIN; }
 	// BW1W120 00561920 BW1M119 0113a470
@@ -623,9 +623,9 @@ public:
 	// BW1W120 00561ae0 BW1M119 0113a310
 	virtual char* GetDebugText() { return "Immersion Mushroom: "; }
 	// BW1W120 006dbf20 BW1M119 0112c430
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006dbf80 BW1M119 0112c350
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561ad0 BW1M119 0113a2d0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PUZZLE_MOBILE_OBJECT; }
 	// BW1W120 006dc510 BW1M119 0112b730
@@ -719,9 +719,9 @@ public:
 	// BW1W120 00561890 BW1M119 0113c180
 	virtual char* GetDebugText() { return "PuzzleTotem: "; }
 	// BW1W120 006da740 BW1M119 0112f2b0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 006da7f0 BW1M119 0112f180
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00561880 BW1M119 0113c140
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PUZZLE_TOTEM; }
 	// BW1W120 006da710 BW1M119 0112f3d0

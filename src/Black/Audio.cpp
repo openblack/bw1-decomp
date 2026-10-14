@@ -1050,7 +1050,7 @@ bool32_t GAudio::IsInsideCitadel() const
 	return GGame::g_game->ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL;
 }
 
-uint32_t GAudio::Save(GameOSFile& file)
+bool32_t GAudio::Save(GameOSFile& file)
 {
 	file.WriteSafe(ThingMusicList);
 	file.WriteIt(ScriptMusicType);
@@ -1060,7 +1060,7 @@ uint32_t GAudio::Save(GameOSFile& file)
 	return true;
 }
 
-uint32_t GAudio::Load(GameOSFile& file)
+bool32_t GAudio::Load(GameOSFile& file)
 {
 	CurrentMusicType = MUSIC_TYPE_UNSET;
 	LastAlignMusicType = MUSIC_TYPE_NONE;

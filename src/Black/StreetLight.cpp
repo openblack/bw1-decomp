@@ -1,19 +1,19 @@
 #include "StreetLight.h"
 
-uint32_t GStreetLight::Load(GameOSFile& file)
+bool32_t GStreetLight::Load(GameOSFile& file)
 {
 	if (GameThingWithPos::Load(file))
 	{
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t GStreetLight::Save(GameOSFile& file)
+bool32_t GStreetLight::Save(GameOSFile& file)
 {
 	if (GameThingWithPos::Save(file))
 	{
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

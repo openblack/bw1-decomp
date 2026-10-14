@@ -8,26 +8,26 @@ void SpellForest::SetToZero()
 	TreeAdded = false;
 }
 
-uint32_t SpellForest::Load(GameOSFile& file)
+bool32_t SpellForest::Load(GameOSFile& file)
 {
 	if (Spell::Load(file))
 	{
 		file.ReadIt(TreeAdded);
 		file.ReadPtr((GameThing**)&MagicForest);
 		file.ReadIt(MaxObjects);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t SpellForest::Save(GameOSFile& file)
+bool32_t SpellForest::Save(GameOSFile& file)
 {
 	if (Spell::Save(file))
 	{
 		file.WriteIt(TreeAdded);
 		file.WritePtr(MagicForest.Get());
 		file.WriteIt(MaxObjects);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

@@ -43,11 +43,11 @@ void CitadelHeart::SetToZero()
 	CollideData = NULL;
 }
 
-uint32_t CitadelHeart::Load(GameOSFile& file)
+bool32_t CitadelHeart::Load(GameOSFile& file)
 {
 	if (!CitadelPart::Load(file))
 	{
-		return 0;
+		return false;
 	}
 
 	file.ReadIt(field_0x8c);
@@ -65,7 +65,7 @@ uint32_t CitadelHeart::Load(GameOSFile& file)
 	file.ReadIt(field_0xb4);
 	file.ReadPtr(&field_0xdc);
 
-	return 1;
+	return true;
 }
 
 CitadelEntrance::CitadelEntrance() : Heart(NULL), field_0x58(0), field_0x5c(0), field_0x60(0), field_0x64(0) {}

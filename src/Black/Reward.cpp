@@ -49,7 +49,7 @@ void Reward::ResolveLoad()
 	Object::ResolveLoad();
 }
 
-uint32_t Reward::Load(GameOSFile& file)
+bool32_t Reward::Load(GameOSFile& file)
 {
 	if (MobileObject::Load(file))
 	{
@@ -66,12 +66,12 @@ uint32_t Reward::Load(GameOSFile& file)
 		file.ReadIt(field_0x98);
 		file.ReadIt(field_0x9c);
 		file.ReadIt(field_0xa4);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t Reward::Save(GameOSFile& file)
+bool32_t Reward::Save(GameOSFile& file)
 {
 	if (MobileObject::Save(file))
 	{
@@ -88,7 +88,7 @@ uint32_t Reward::Save(GameOSFile& file)
 		file.WriteIt(field_0x98);
 		file.WriteIt(field_0x9c);
 		file.WriteIt(field_0xa4);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

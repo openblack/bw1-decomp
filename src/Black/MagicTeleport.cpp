@@ -84,28 +84,28 @@ char* MagicTeleport::GetDebugText()
 	return "MagicTeleport:";
 }
 
-uint32_t MagicTeleport::Load(GameOSFile& file)
+bool32_t MagicTeleport::Load(GameOSFile& file)
 {
 	if (MobileStatic::Load(file))
 	{
 		file.ReadPtr((GameThing**)&TeleportReaction);
 		file.ReadPtr((GameThing**)&Spell);
 		file.ReadPtr((GameThing**)&Player);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t MagicTeleport::Save(GameOSFile& file)
+bool32_t MagicTeleport::Save(GameOSFile& file)
 {
 	if (MobileStatic::Save(file))
 	{
 		file.WritePtr(TeleportReaction);
 		file.WritePtr(Spell);
 		file.WritePtr(Player);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 MagicTeleport::~MagicTeleport() {}

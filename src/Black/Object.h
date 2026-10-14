@@ -111,9 +111,9 @@ public:
 	// BW1W120 005190e0 BW1M119 0108f6b0
 	virtual void DrawInHand(GInterfaceStatus* param_1);
 	// BW1W120 00639eb0 BW1M119 013d96d0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00639b90 BW1M119 013d9900
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0063a020 BW1M119 013d94f0
 	virtual void ResolveLoad();
 	// BW1W120 00402600 BW1M119 0104dac0

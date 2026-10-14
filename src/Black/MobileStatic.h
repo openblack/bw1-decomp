@@ -48,9 +48,9 @@ public:
 	// BW1W120 0055d750 BW1M119 013c1970
 	virtual char* GetDebugText() { return "MobileStatic:"; }
 	// BW1W120 00608590 BW1M119 013c8e20
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00608650 BW1M119 013c8ce0
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055d740 BW1M119 013c1930
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_MOBILE_STATIC; }
 	// BW1W120 0055d720 BW1M119 013b7140

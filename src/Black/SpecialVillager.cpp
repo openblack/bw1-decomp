@@ -36,24 +36,24 @@ bool SpecialVillager::CanShowName()
 	return (GameThing::Flags & GAME_THING_FLAG_NAME_HIDDEN) == 0;
 }
 
-uint32_t SpecialVillager::Load(GameOSFile& file)
+bool32_t SpecialVillager::Load(GameOSFile& file)
 {
 	if (Villager::Load(file))
 	{
 		file.ReadIt(InfoIndex);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t SpecialVillager::Save(GameOSFile& file)
+bool32_t SpecialVillager::Save(GameOSFile& file)
 {
 	if (Villager::Save(file))
 	{
 		file.WriteIt(InfoIndex);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 GBaseInfo* GSpecialVillagerInfo::GetBaseInfo(uint32_t& info_count)

@@ -99,7 +99,7 @@ char* ScriptHighlight::GetDebugText()
 	return "ScriptHighlight:";
 }
 
-uint32_t ScriptHighlight::Load(GameOSFile& file)
+bool32_t ScriptHighlight::Load(GameOSFile& file)
 {
 	if (Fixed::Load(file))
 	{
@@ -109,12 +109,12 @@ uint32_t ScriptHighlight::Load(GameOSFile& file)
 		file.ReadIt(field_0x80);
 		file.ReadIt(field_0x78);
 		file.ReadIt(field_0x84);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t ScriptHighlight::Save(GameOSFile& file)
+bool32_t ScriptHighlight::Save(GameOSFile& file)
 {
 	if (Fixed::Save(file))
 	{
@@ -124,9 +124,9 @@ uint32_t ScriptHighlight::Save(GameOSFile& file)
 		file.WriteIt(field_0x80);
 		file.WriteIt(field_0x78);
 		file.WriteIt(field_0x84);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 GBaseInfo* GScriptHighlightInfo::GetBaseInfo(uint32_t& info_count)

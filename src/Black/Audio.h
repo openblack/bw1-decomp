@@ -135,9 +135,9 @@ public:
 	// BW1W120 00426fe0 BW1M119 01184460
 	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 00428480 BW1M119 011828a0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00428310 BW1M119 01182e00
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 
 	// Non-virtual methods
 

@@ -25,7 +25,7 @@ public:
 	// Override methods
 
 	// BW1W120 006cb040 BW1M119 0148e070
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 004664e0 BW1M119 0111a6c0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_UNUSED_000; }
 	// BW1W120 006759c0 BW1M119 010892a0
@@ -33,7 +33,7 @@ public:
 	// BW1W120 004664f0 BW1M119 0111a700
 	virtual char* GetDebugText();
 	// BW1W120 006944b0 BW1M119 01426b80
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 };
 
 #endif /* BW1_DECOMP_P_SYS_BASE_INCLUDED_H */

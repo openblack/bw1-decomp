@@ -208,7 +208,7 @@ bool32_t GAudio::IsMusicThingFinished(GameThingWithPos* thing)
 	return true;
 }
 
-uint32_t ThingMusicInfo::Save(GameOSFile& file)
+bool32_t ThingMusicInfo::Save(GameOSFile& file)
 {
 	if (GameThing::Save(file))
 	{
@@ -219,12 +219,12 @@ uint32_t ThingMusicInfo::Save(GameOSFile& file)
 		WRITE_IT(file, Playing);
 		WRITE_IT(file, UseFixedPos);
 		WRITE_IT(file, FixedPos);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t ThingMusicInfo::Load(GameOSFile& file)
+bool32_t ThingMusicInfo::Load(GameOSFile& file)
 {
 	if (GameThing::Load(file))
 	{
@@ -235,9 +235,9 @@ uint32_t ThingMusicInfo::Load(GameOSFile& file)
 		file.ReadIt(Playing);
 		file.ReadIt(UseFixedPos);
 		file.ReadIt(FixedPos);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
 void GAudio::PlaySoundEffect(Base* object, uint32_t sample, uint32_t priority, uint32_t volume, int distance,

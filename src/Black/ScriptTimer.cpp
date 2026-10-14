@@ -8,24 +8,24 @@ SCRIPT_OBJECT_TYPE ScriptTimer::GetScriptObjectType()
 	return SCRIPT_OBJECT_TYPE_TIMER;
 }
 
-uint32_t ScriptTimer::Load(GameOSFile& file)
+bool32_t ScriptTimer::Load(GameOSFile& file)
 {
 	if (GameThingWithPos::Load(file))
 	{
 		file.ReadIt(field_0x28);
 		file.ReadIt(field_0x2c);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }
 
-uint32_t ScriptTimer::Save(GameOSFile& file)
+bool32_t ScriptTimer::Save(GameOSFile& file)
 {
 	if (GameThingWithPos::Save(file))
 	{
 		file.WriteIt(field_0x28);
 		file.WriteIt(field_0x2c);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

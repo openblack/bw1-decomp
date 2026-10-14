@@ -7,7 +7,7 @@ void SpellFlock::CloseDown()
 	SpellWithObjects::CloseDown();
 }
 
-uint32_t SpellFlock::Load(GameOSFile& file)
+bool32_t SpellFlock::Load(GameOSFile& file)
 {
 	if (SpellWithObjects::Load(file))
 	{
@@ -16,7 +16,7 @@ uint32_t SpellFlock::Load(GameOSFile& file)
 		file.ReadIt(field_0xfc);
 		file.ReadIt(field_0x100);
 		file.ReadIt(field_0x10c);
-		return 1;
+		return true;
 	}
-	return 0;
+	return false;
 }

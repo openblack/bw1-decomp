@@ -41,9 +41,9 @@ public:
 	// BW1W120 00560f70 BW1M119 01119690
 	virtual char* GetDebugText() { return "ParticleContainer:"; }
 	// BW1W120 0063e6d0 BW1M119 011196e0
-	virtual uint32_t Load(GameOSFile& file);
+	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0063e5d0 BW1M119 01119890
-	virtual uint32_t Save(GameOSFile& file);
+	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00560f60 BW1M119 01119650
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GPARTICLE_CONTAINER; }
 	// BW1W120 0063e3f0 BW1M119 01119d70
