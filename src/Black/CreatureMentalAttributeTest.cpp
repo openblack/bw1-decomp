@@ -10,6 +10,14 @@
 #include "CreatureMentalBelief.h"
 #include "Forest.h" /* For FOREST_SIZE_LAST */
 
+#if defined(VERSION_BW1W100)
+#define FILEPATH "C:\\dev\\black\\CreatureMentalAttributeTest.cpp"
+#elif defined(VERSION_BW1W110)
+#define FILEPATH "C:\\dev\\Black\\CreatureMentalAttributeTest.cpp"
+#else
+#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalAttributeTest.cpp"
+#endif
+
 bool32_t AttributeCreatureDominantDesire::IsDynamic()
 {
 	return true;
@@ -219,160 +227,29 @@ uint32_t CreatureBelief::GetType()
 	return GetNthAttribute(CREATURE_BELIEF_ATTRIBUTE_TYPE)->GetValue();
 }
 
-uint32_t CreatureBeliefSmall::GetNumAttributes()
+CreatureBelief* DecisionTreeAgenda::CreateBelief(CREATURE_BELIEF_TYPE type)
 {
-	return ARRAY_SIZE(Attributes);
+	switch (type)
+	{
+	case CREATURE_BELIEF_TYPE_TOWN:
+		return new (FILEPATH, 700) CreatureBeliefAboutTown;
+	case CREATURE_BELIEF_TYPE_FOREST:
+		return new (FILEPATH, 703) CreatureBeliefAboutForest;
+	case CREATURE_BELIEF_TYPE_CREATURE:
+		return new (FILEPATH, 706) CreatureBeliefAboutCreature;
+	case CREATURE_BELIEF_TYPE_VILLAGER:
+		return new (FILEPATH, 709) CreatureBeliefAboutVillager;
+	case CREATURE_BELIEF_TYPE_ABODE:
+		return new (FILEPATH, 712) CreatureBeliefAboutAbode;
+	case CREATURE_BELIEF_TYPE_CITADEL:
+		return new (FILEPATH, 715) CreatureBeliefAboutCitadel;
+	case CREATURE_BELIEF_TYPE_CONTEXT:
+		return new (FILEPATH, 718) CreatureBeliefAboutContext;
+	case CREATURE_BELIEF_TYPE_MOBILE_OBJECT:
+		return new (FILEPATH, 721) CreatureBeliefSmall;
+	case CREATURE_BELIEF_TYPE_FLOCK:
+		return new (FILEPATH, 724) CreatureBeliefAboutFlock;
+	default:
+		return new (FILEPATH, 727) CreatureBeliefSmall;
+	}
 }
-
-Attribute* CreatureBeliefSmall::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefSmall::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefSmall::~CreatureBeliefSmall() {}
-
-uint32_t CreatureBeliefAboutVillager::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutVillager::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutVillager::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutVillager::~CreatureBeliefAboutVillager() {}
-
-uint32_t CreatureBeliefAboutTown::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutTown::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutTown::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutTown::~CreatureBeliefAboutTown() {}
-
-uint32_t CreatureBeliefAboutFlock::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutFlock::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutFlock::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutFlock::~CreatureBeliefAboutFlock() {}
-
-uint32_t CreatureBeliefAboutCitadel::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutCitadel::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutCitadel::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutCitadel::~CreatureBeliefAboutCitadel() {}
-
-uint32_t CreatureBeliefAboutCreature::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutCreature::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutCreature::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutCreature::~CreatureBeliefAboutCreature() {}
-
-uint32_t CreatureBeliefAboutForest::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutForest::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutForest::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutForest::~CreatureBeliefAboutForest() {}
-
-uint32_t CreatureBeliefAboutAbode::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutAbode::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutAbode::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutAbode::~CreatureBeliefAboutAbode() {}
-
-uint32_t CreatureBeliefAboutContext::GetNumAttributes()
-{
-	return 0;
-}
-
-Attribute* CreatureBeliefAboutContext::GetNthAttribute(unsigned long index)
-{
-	return NULL;
-}
-
-Attribute** CreatureBeliefAboutContext::GetNthAttributePtr(unsigned long index)
-{
-	return NULL;
-}
-
-uint32_t CreatureBeliefAboutContext::GetType()
-{
-	return CREATURE_BELIEF_TYPE_CONTEXT;
-}
-
-CreatureBeliefAboutContext::~CreatureBeliefAboutContext() {}
