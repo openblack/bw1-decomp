@@ -3,6 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 
+#include <re_common.h> /* For bool32_t */
+
 // Forward Declares
 
 class LH3DObject;
@@ -41,6 +43,31 @@ public:
 
 	// BW1W120 0083efe0 BW1M119 010cd4e0 (LHCombined Release)
 	static LH3DGJAnimVolFX* Create(LH3DObject* object, LH3DMaterial* material);
+
+	// Static data
+
+	// BW1W120 00c3909c BW1M119 011d17c0 (LHCombined Release)
+	static bool32_t g_vol_fx_anim_uv;
+	// BW1W120 00c390a0 BW1M119 011d17c4 (LHCombined Release)
+	static float g_vol_fx_texture_frac_u;
+	// BW1W120 00c390a4 BW1M119 011d17c8 (LHCombined Release)
+	static float g_vol_fx_texture_frac_v;
+	// BW1W120 00c390a8 BW1M119 011d17cc (LHCombined Release)
+	static float g_vol_fx_xy_for_color_0;
+	// BW1W120 00c390ac BW1M119 011d17d0 (LHCombined Release)
+	static float g_vol_fx_xy_for_color_255;
+	// BW1W120 00c390b0 BW1M119 011d17d4 (LHCombined Release)
+	static float g_vol_fx_zoom;
+	// BW1W120 00c390b4 BW1M119 011d17d8 (LHCombined Release)
+	static bool32_t g_vol_fx_go_by_norm;
+	// BW1W120 00eddd28 BW1M119 01342210 (LHCombined Release)
+	static float g_vol_fx_normal_offset_z;
+	// BW1W120 00eddd24 BW1M119 01342214 (LHCombined Release)
+	static float g_vol_fx_normal_offset_x;
+	// BW1W120 00eddd20 BW1M119 01342218 (LHCombined Release)
+	static float g_vol_fx_offset_v;
+	// BW1W120 00eddd1c BW1M119 0134221c (LHCombined Release)
+	static float g_vol_fx_offset_u;
 
 	// Non-virtual methods
 
