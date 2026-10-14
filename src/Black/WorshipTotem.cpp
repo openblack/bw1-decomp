@@ -90,7 +90,7 @@ WorshipTotem::WorshipTotem(WorshipSite* site)
 	SpecularColor = 0;
 }
 
-void WorshipTotem::ToBeDeleted(int delete_now)
+void WorshipTotem::ToBeDeleted(bool32_t delete_now)
 {
 	if (Site.Get() != NULL && Site->IsAvailable())
 	{
@@ -259,7 +259,7 @@ void WorshipTotem::TChargingData::Draw(WorshipTotem* totem)
 	Sheet.PulseLevel = charge;
 	Sheet.ScrollSpeed = -site->GetOverloadedValue();
 	Sheet.Update((float)LH3DTech::g_delta_time * 0.001f);
-	Sheet.Material0x58 = GlobalTextures::GetLightSheetMaterial();
+	Sheet.Material = GlobalTextures::GetLightSheetMaterial();
 	if (LH3DRender::g_started_frame)
 	{
 		LH3DRender::g_zsorter->NewZObject(&Sheet, (LH3DZSorter::DrawCallback)&LightSheet::Draw,

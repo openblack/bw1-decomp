@@ -34,7 +34,7 @@ struct LightSheet
 	float*        field_0x4c;
 	uint32_t      field_0x50;
 	int           field_0x54;
-	LH3DMaterial* Material0x58;
+	LH3DMaterial* Material;
 	uint32_t      field_0x5c;
 	float         field_0x60;
 	uint32_t      field_0x64;
@@ -69,7 +69,7 @@ struct LightSheet
 	// BW1W120 0083e6b0 BW1M119 010cd8e0 (LHCombined Release)
 	void Close();
 	// BW1W120 004246e0 BW1M119 010929d0 (LHCombined Release)
-	void Draw() { DoTheDrawing(Material0x58); }
+	void Draw() { DoTheDrawing(Material); }
 };
 
 #endif /* BW1_DECOMP_LIGHT_SHEET_INCLUDED_H */
