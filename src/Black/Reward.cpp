@@ -4,6 +4,7 @@
 #include "RewardInfo.h"
 #include "GameOSFile.h" /* For class GameOSFile */
 #include "Town.h"
+#include "Player.h"
 
 uint32_t Reward::GetSaveType()
 {
@@ -54,7 +55,7 @@ bool32_t Reward::Load(GameOSFile& file)
 	if (MobileObject::Load(file))
 	{
 		file.ReadPtr((GameThing**)&field_0x68);
-		file.ReadPtr((GameThing**)&field_0x6c);
+		file.ReadPtr((GameThing**)&Player);
 		file.ReadPtr((GameThing**)&town);
 		file.ReadIt(field_0x78);
 		file.ReadIt(field_0x7c);
@@ -76,7 +77,7 @@ bool32_t Reward::Save(GameOSFile& file)
 	if (MobileObject::Save(file))
 	{
 		file.WritePtr(field_0x68);
-		file.WritePtr(field_0x6c);
+		file.WritePtr(Player);
 		file.WritePtr(town);
 		file.WriteIt(field_0x78);
 		file.WriteIt(field_0x7c);
@@ -91,4 +92,9 @@ bool32_t Reward::Save(GameOSFile& file)
 		return true;
 	}
 	return false;
+}
+
+GPlayer* Reward::GetPlayer()
+{
+	return Player;
 }

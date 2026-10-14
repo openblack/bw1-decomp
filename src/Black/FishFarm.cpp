@@ -114,6 +114,11 @@ char* FishFarm::GetDebugText()
 	return "FishFarm:";
 }
 
+Town* FishFarm::GetTown()
+{
+	return town.Get();
+}
+
 GBaseInfo* GFishFarmInfo::GetBaseInfo(uint32_t& info_count)
 {
 	info_count = FISH_FARM_INFO_LAST;
