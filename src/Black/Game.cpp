@@ -2577,9 +2577,8 @@ void GGame::EndTurn()
 		GameOSFile::AutoSave(false);
 	}
 	network.UpdateDebug();
-	if (!GameOverStarted && !g_game->SkirmishGame && !g_game->IsMultiplayerGame() &&
-	    g_game->field_0x205a14 == 1 && &g_game->players[g_game->PlayerIndex] != NULL &&
-	    g_game->players[g_game->PlayerIndex].citadel.Get() != NULL &&
+	if (!GameOverStarted && !g_game->SkirmishGame && !g_game->IsMultiplayerGame() && g_game->field_0x205a14 == 1 &&
+	    &g_game->players[g_game->PlayerIndex] != NULL && g_game->players[g_game->PlayerIndex].citadel.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->heart.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->GetCitadelHeart()->field_0xb8 != 0)
 	{

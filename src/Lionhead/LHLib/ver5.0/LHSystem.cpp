@@ -825,19 +825,6 @@ LRESULT CALLBACK GameWindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lPara
 	return DefWindowProcA(hWnd, msg, wParam, lParam);
 }
 
-// Add the windowed-mode client offset to a coordinate. Inlined into
-// CopyRegionFromScreen; the local LHCoord temp (not scalars, which MSVC would DCE) is what
-// produces the target's extra 8-byte stack slot.
-// BW1W120 007e5af0
-inline void LHCoord::AddMSWindowOffset()
-{
-	LHCoord offset;
-	offset.x = LHSys::GetScreen().MsClientOffsetX;
-	offset.y = LHSys::GetScreen().MsClientOffsetY;
-	x += offset.x;
-	y += offset.y;
-}
-
 // Blit a saved region back onto the screen (primary or back buffer),
 // applying the windowed-mode client offset when copying to the primary surface.
 // BW1W120 007dc8b0

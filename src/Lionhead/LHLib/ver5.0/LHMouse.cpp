@@ -33,15 +33,6 @@ CRITICAL_SECTION            LHScreen::CriticalSection;
 static IDirectInputA*       gDirectInput;
 static IDirectInputDeviceA* gMouseDevice;
 
-inline void LHCoord::AddMSWindowOffset()
-{
-	LHCoord offset;
-	offset.x = LHSys::GetScreen().MsClientOffsetX;
-	offset.y = LHSys::GetScreen().MsClientOffsetY;
-	x += offset.x;
-	y += offset.y;
-}
-
 inline int LHSurface::Blit(LHRegion* region, LHCoord* pos, LH_SCREEN_BUFFER screen_buffer)
 {
 	LHCoord coord;
