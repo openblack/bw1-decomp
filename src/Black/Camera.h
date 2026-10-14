@@ -8,7 +8,7 @@
 #include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/Zoomer.h>   /* For struct Zoomer, struct Zoomer3d */
 
-#include "CameraStore.h"      /* For struct CameraStore (Town.h includes it without Camera.h) */
+#include "CameraStore.h"      /* For struct CameraStore */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
 // Forward Declares
