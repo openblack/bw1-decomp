@@ -6,6 +6,8 @@
 
 #include <chlasm/Enum.h> /* For enum TRIBE_TYPE */
 
+#include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
+
 #include "PSysBase.h" /* For struct PSysBase */
 
 // Forward Declares
@@ -16,14 +18,41 @@ class LH3DCreature;
 struct LHMatrix;
 struct LHPoint;
 
+#if defined(VERSION_BW1W100)
+#define P_SYS_HAND_FX_SOURCE_FILE "C:\\dev\\black\\PSysHandFX.h"
+#elif defined(VERSION_BW1W110)
+#define P_SYS_HAND_FX_SOURCE_FILE "C:\\dev\\Black\\PSysHandFX.h"
+#else
+#define P_SYS_HAND_FX_SOURCE_FILE "C:\\dev\\MP\\Black\\PSysHandFX.h"
+#endif
+
 class HandGlow
 {
 public:
+	uint8_t field_0x0[0x14];
+
+	// Static methods
+
+	static HandGlow* Create() { return new (P_SYS_HAND_FX_SOURCE_FILE, 62) HandGlow(); }
+
+	// Constructors
+
+	// BW1W120 0068e070 BW1M119 01416210
+	HandGlow();
+
+	// Destructor
+
+	// BW1W120 0068e0f0 BW1M119 01416150
+	~HandGlow();
+
 	// Non-virtual methods
 
 	// BW1W120 0068e120 BW1M119 01415fa0
 	void DrawAt(const LHMatrix& matrix, float scale);
+	// BW1W120 0068e200 BW1M119 01415f70
+	void SetScale(float scale);
 };
+static_assert(sizeof(HandGlow) == 0x14, "Data type is of wrong size");
 
 struct HandGlows
 {
