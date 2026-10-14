@@ -98,3 +98,8 @@ GPlayer* Reward::GetPlayer()
 {
 	return Player;
 }
+
+bool32_t Reward::IsReward() const
+{
+	return true;
+}

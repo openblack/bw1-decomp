@@ -24,3 +24,9 @@ CreatureBelief* CreatureBelief::Copy()
 {
 	return NULL;
 }
+
+CreatureBelief* CreatureBelief::FindBestObjectToActOn(CREATURE_DESIRES desire, CreatureMental* mental,
+                                                      CREATURE_ACTION action, float* usefulness)
+{
+	return NULL;
+}

@@ -24,6 +24,11 @@ float Creature::MaximumPickUpWeight()
 	return GetWeight() * 0.8f;
 }
 
+bool32_t Creature::CanBePickedUpByCreature(Creature* creature)
+{
+	return false;
+}
+
 Abode* Town::GetMostImportantAbodeOnFire()
 {
 	Abode* found = NULL;
