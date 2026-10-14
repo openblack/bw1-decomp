@@ -3,8 +3,6 @@
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
-// TODO: placement unproven: CameraStore::Set is in Camera.cpp, but Object.cpp (through Town.h) never saw Camera.h's
-// LH3DTech::g_camera
 struct CameraStore
 {
 	LHPoint Position;
