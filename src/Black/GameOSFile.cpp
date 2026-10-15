@@ -1,3 +1,6 @@
+#include "GameTimeConstants.h"
+#include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "ColourConstants.h"    /* For White */
 #include "GameOSFile.h"
 
 #include "BaseInfo.h"
