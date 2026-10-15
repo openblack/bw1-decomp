@@ -417,7 +417,10 @@ Verify affected header consumers after layout, virtual-interface or include-boun
 
 Every static data member declared in a header bumps cl6's `_$E`/`_$S` counter in each TU
 that includes it, renumbering those TUs' initializers. If the game's numbering shows it never
-saw a module's statics, keep them out of the game's view (e.g. `#ifdef LH_MULTIPLAYER_EXPORTS`).
+saw a DLL module's statics, keep them out of the game's view with that module's own build
+define (e.g. `#ifdef LH_MULTIPLAYER_EXPORTS`). This applies only to the DLL modules: LH3DLib
+is linked into the executable, and hiding its declarations from the game with `_LH_3D_LIB_`
+is forbidden (see [Rules from maintainer review](#rules-from-maintainer-review)).
 
 ### Inline expansion
 
@@ -579,6 +582,14 @@ conflict with looser guidance above.
 - **Format and rebase before review.** Run `clang-format` 22 on every touched file and
   rebase onto the latest `main`; CI runs `check-format` and expects the report to show
   the claimed improvement.
+- **Never use `_LH_3D_LIB_`.** Do not test it (`#ifdef`, `#if defined`) in source or headers,
+  and do not add it to the MSVC compile flags, to give LH3DLib units statics, members or
+  inline bodies that the game units do not see. The same goes for any other invented
+  library-only define. Its only place is LH3DP3.cpp's reproduced Intel C++ command line in
+  `configure.py`. When an LH3DLib declaration would break matched game code (an executable
+  hash, or a function, initializer or section that currently matches), treat it like a
+  global that cannot be declared yet (see [Globals](#globals)): leave the function that needs
+  it nonmatching and record why.
 
 ### Naming and values (from @qwerin's #425 review)
 

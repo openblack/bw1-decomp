@@ -3403,9 +3403,16 @@ Lionhead/LH3DLib/development/LH3DHair.cpp:
 Lionhead/LH3DLib/development/Leash.cpp:
 	.text       start:0x008381D0 end:0x008397D0
 
+Lionhead/LH3DLib/development/LH3DObjectCollide.cpp:
+	.text       start:0x008397D0 end:0x0083A160
+	.rdata      start:0x00993A94 end:0x00993A98
+
 Lionhead/LH3DLib/development/LH3DPrimitive.cpp:
-	.text       start:0x008397D0 end:0x0084D600
+	.text       start:0x0083A160 end:0x0084D600
+	.rdata      start:0x00993A98 end:0x00993AB0
 	.CRT$XCU    start:0x009B75A4 end:0x009B75B8 align:4
+	.data       start:0x00C280B4 end:0x00C28110
+	.bss        start:0x00EE5F10 end:0x00EF3B54
 
 Lionhead/LH3DLib/development/LH3DVRAMTex.cpp:
 	.text       start:0x0084D600 end:0x0084E290
