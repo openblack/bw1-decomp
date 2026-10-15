@@ -73,13 +73,11 @@ class MobileWallHug : public Mobile
 {
 public:
 	union {
-		// Owned by the current state: most states count it down to the state change, reaction states count it up.
-		int16_t TurnsUntilNextStateChange;
-		// Owned by the magic tree reaction: PerformBewilderedByMagicTreeReaction sets both, LookAtMagicTree counts down.
+		int16_t TurnsUntilNextStateChange; // Current state's turn counter
 		struct
 		{
-			uint8_t StateTurnsLeft;
-			uint8_t StateTurnsTotal;
+			uint8_t StateTurnsLeft;  // Magic tree reaction: counted down
+			uint8_t StateTurnsTotal; // Magic tree reaction: initial count
 		};
 	};
 	uint16_t      speed;

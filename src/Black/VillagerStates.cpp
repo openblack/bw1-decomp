@@ -576,7 +576,7 @@ bool32_t Villager::SetupInspectObject(Object* param_1)
 bool32_t Villager::InspectObject()
 {
 	GameThingWithPos* target = (GameThingWithPos*)TargetThing;
-	if (target != NULL && LookAtObject(target, 1) == 0)
+	if (target != NULL && LookAtObject(target, LIVING_LOOK_AT_SPEED_NORMAL) == false)
 	{
 		return true;
 	}

@@ -91,7 +91,7 @@ uint8_t Villager::ReactToCreaturePriority(Reaction* reaction, Reaction* current_
 	{
 		return 0;
 	}
-	float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, creature->Pos);
+	float distance = GetDistanceInMetres(Pos, creature->Pos);
 	if (distance > reaction->GetInfo()->MaxDistanceToRunAwayFromObject)
 	{
 		return 0;
@@ -172,7 +172,7 @@ bool32_t Villager::PerformInspectCreatureReaction()
 		}
 		else
 		{
-			LookAtObject(ReactionObject.Get(), 1);
+			LookAtObject(ReactionObject.Get(), LIVING_LOOK_AT_SPEED_NORMAL);
 		}
 		UpdateAttitudeToCreature();
 		return true;
@@ -185,7 +185,7 @@ bool32_t Villager::ApproachCreatureReaction()
 {
 	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
-		float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos);
+		float distance = GetDistanceInMetres(Pos, ReactionObject->Pos);
 		if (distance - InspectDistance > VILLAGER_INSPECT_CREATURE_MIN_DISTANCE)
 		{
 			long      angle = GUtils::GetAngleFromXZ(Pos, ReactionObject->Pos);
@@ -236,7 +236,7 @@ bool32_t Villager::TurnToFaceCreatureReaction()
 {
 	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
-		if (LookAtObject(ReactionObject.Get(), 2) == 1)
+		if (LookAtObject(ReactionObject.Get(), LIVING_LOOK_AT_SPEED_FAST) == true)
 		{
 			TurnsUntilNextStateChange = 0;
 			SetTopState(VILLAGER_STATE_PERFORM_RESPECT_CREATURE_REACTION);
@@ -287,8 +287,7 @@ bool32_t Villager::FleeingFromCreatureReaction()
 	if (ReactionObject.Get() != NULL && ReactionObject->IsAvailable())
 	{
 		float fleeDistance = GetReaction()->GetInfo()->MaxReactionDistance * VILLAGER_FLEE_CREATURE_DISTANCE_SCALE;
-		if (GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos) <=
-		    fleeDistance * VILLAGER_FLEE_CREATURE_STOP_SCALE)
+		if (GetDistanceInMetres(Pos, ReactionObject->Pos) <= fleeDistance * VILLAGER_FLEE_CREATURE_STOP_SCALE)
 		{
 			MapCoords destination;
 			destination.Clear();

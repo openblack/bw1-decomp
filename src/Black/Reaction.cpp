@@ -244,7 +244,7 @@ void Reaction::ProcessReactions()
 		{
 			if (citadel->WorshipSites[i] != NULL)
 			{
-				float distance = GUtils::GetDistanceInMetres_0074cd50(pos, citadel->WorshipSites[i]->Pos);
+				float distance = GetDistanceInMetres(pos, citadel->WorshipSites[i]->Pos);
 				if (distance < nearestDistance)
 				{
 					nearestSite = citadel->WorshipSites[i];
@@ -346,7 +346,7 @@ void Reaction::SpreadReaction(const MapCoords& pos, uint16_t spiral_size, uint8_
 	{
 		if (cell.InBounds())
 		{
-			float distance = GUtils::GetDistanceInMetres_0074cd50(pos, cell);
+			float distance = GetDistanceInMetres(pos, cell);
 			if (distance <= spreading_reaction->GetRadius())
 			{
 				if (GGlobal::Global.debug.ShowReactions)

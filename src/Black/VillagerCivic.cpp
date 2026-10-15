@@ -203,7 +203,7 @@ bool32_t Villager::ArrivesAtBuildingSite()
 				SetupMoveToWithHug(buildPos, VILLAGER_STATE_ARRIVES_AT_BUILDING_SITE);
 				return 1;
 			}
-			if (LookAtObject(building_site->GetBuilding(), 1) == 1)
+			if (LookAtObject(building_site->GetBuilding(), LIVING_LOOK_AT_SPEED_NORMAL) == true)
 			{
 				int16_t wood = ResourceHeld[RESOURCE_TYPE_WOOD];
 				if (wood != 0)

@@ -183,7 +183,7 @@ public:
 		};
 		struct
 		{
-			uint32_t       HideTurns; // GO_AND_HIDE_IN_NEARBY_BUILDING: elapsed hiding turns.
+			uint32_t       HideTurns; // GO_AND_HIDE_IN_NEARBY_BUILDING / LOOK_TO_SEE_IF_IT_IS_SAFE: turns spent.
 			JustWholeMapXZ HidePos;   // GO_AND_HIDE_IN_NEARBY_BUILDING: hiding place.
 		};
 	};

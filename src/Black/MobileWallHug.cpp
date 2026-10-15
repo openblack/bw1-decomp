@@ -770,7 +770,7 @@ void MobileWallHug::SetNewWander(const MapCoords* centre, long min_dist, long ma
 	int angle = GameAngle;
 	if (centre != NULL)
 	{
-		int dist = (int)GUtils::GetDistanceInMetres_0074cd50(*centre, Pos);
+		int dist = (int)GetDistanceInMetres(*centre, Pos);
 		if (dist > max_dist)
 		{
 			angle = GUtils::GetAngleFromXZ(Pos, *centre);

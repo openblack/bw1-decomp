@@ -305,7 +305,7 @@ uint8_t Living::ReactToFoodPriority(Reaction* reaction, Reaction* current_reacti
 	if (!(food->Flags &
 	      (GAME_THING_WITH_POS_FLAG_UNAVAILABLE_FOR_STATE_CHANGE | GAME_THING_WITH_POS_FLAG_IN_PHYSICS)) &&
 	    food->GetResource(RESOURCE_TYPE_FOOD) &&
-	    GUtils::GetDistanceInMetres_0074cd50(Pos, food->Pos) <= reaction->GetInfo()->MaxDistanceToRunAwayFromObject)
+	    GetDistanceInMetres(Pos, food->Pos) <= reaction->GetInfo()->MaxDistanceToRunAwayFromObject)
 	{
 		if (IsInterestedInFoodObject(food))
 		{
@@ -423,8 +423,7 @@ uint32_t Living::NumGameTurnsBeforeReactingAgainToPredatorFunction(GameThingWith
 {
 	Animal* predator = dynamic_cast<Animal*>(thing);
 	if (predator != NULL && predator->GetSpeedInMetresPerSecond() <= LIVING_PREDATOR_CHASING_SPEED &&
-	    GUtils::GetDistanceInMetres_0074cd50(Pos, predator->Pos) >=
-	        GInfoArrays::ReactionInfos[reaction].MinDistanceToRunAwayFromObject)
+	    GetDistanceInMetres(Pos, predator->Pos) >= GInfoArrays::ReactionInfos[reaction].MinDistanceToRunAwayFromObject)
 	{
 		return StandardNumGameTurnsBeforeReactingAgainFunction(thing, reaction, distance);
 	}
@@ -520,8 +519,8 @@ bool32_t Living::FleeingFromObjectReaction()
 	{
 		return false;
 	}
-	if (GetReaction() != NULL && GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos) <=
-	                                 GetReaction()->GetInfo()->MaxDistanceToRunAwayFromObject)
+	if (GetReaction() != NULL &&
+	    GetDistanceInMetres(Pos, ReactionObject->Pos) <= GetReaction()->GetInfo()->MaxDistanceToRunAwayFromObject)
 	{
 		return FleeFromObjectIfComingTowardsMe(ReactionObject.Get(),
 		                                       VILLAGER_STATE_FLEEING_AND_LOOKING_AT_OBJECT_REACTION,
@@ -534,11 +533,11 @@ bool32_t Living::FleeingFromObjectReaction()
 bool32_t Living::FleeFromObjectIfComingTowardsMe(GameThingWithPos* object, VILLAGER_STATES look_state,
                                                  VILLAGER_STATES flee_state)
 {
-	float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos);
+	float distance = GetDistanceInMetres(Pos, ReactionObject->Pos);
 	if (distance > GetReaction()->GetInfo()->MinDistanceToRunAwayFromObject && !IsObjectTravellingTowardsMe(object))
 	{
 		SetTopState(look_state);
-		LookAtObject(object, 1);
+		LookAtObject(object, LIVING_LOOK_AT_SPEED_NORMAL);
 		return true;
 	}
 	MapCoords pos;
@@ -619,13 +618,12 @@ bool32_t Living::LookingAtObjectReaction()
 	{
 		return false;
 	}
-	if (GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos) >
-	    GetReaction()->GetInfo()->MaxDistanceToRunAwayFromObject)
+	if (GetDistanceInMetres(Pos, ReactionObject->Pos) > GetReaction()->GetInfo()->MaxDistanceToRunAwayFromObject)
 	{
 		StopReactingAndSetState();
 		return true;
 	}
-	LookAtObject(ReactionObject.Get(), 1);
+	LookAtObject(ReactionObject.Get(), LIVING_LOOK_AT_SPEED_NORMAL);
 	return true;
 }
 
@@ -640,7 +638,7 @@ bool32_t Living::FollowingObjectReaction()
 	{
 		return false;
 	}
-	float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos);
+	float distance = GetDistanceInMetres(Pos, ReactionObject->Pos);
 	if (distance > GetReaction()->GetInfo()->MaxDistanceToRunAwayFromObject)
 	{
 		long angle = GUtils::GetAngleFromXZ(Pos, ReactionObject->Pos);
@@ -654,7 +652,7 @@ bool32_t Living::FollowingObjectReaction()
 		SetupMoveToWithHug(destination, VILLAGER_STATE_FOLLOWING_OBJECT_REACTION);
 		return true;
 	}
-	LookAtObject(ReactionObject.Get(), 1);
+	LookAtObject(ReactionObject.Get(), LIVING_LOOK_AT_SPEED_NORMAL);
 	return true;
 }
 
@@ -717,7 +715,7 @@ bool32_t Living::ArrivesAtPickupBallReaction()
 
 bool32_t Living::LookAtFlyingObjectReaction()
 {
-	LookAtObject(ReactionObject.Get(), 1);
+	LookAtObject(ReactionObject.Get(), LIVING_LOOK_AT_SPEED_NORMAL);
 	SetAnim(1);
 	return true;
 }

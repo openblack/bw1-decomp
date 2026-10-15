@@ -38,7 +38,7 @@ bool32_t Animal::FleeingFromPredatorReaction()
 		StopReactingAndSetState();
 		return true;
 	}
-	float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos);
+	float distance = GetDistanceInMetres(Pos, ReactionObject->Pos);
 	if (distance > GetReaction()->GetInfo()->MaxDistanceToRunAwayFromObject)
 	{
 		StopReactingAndSetState();

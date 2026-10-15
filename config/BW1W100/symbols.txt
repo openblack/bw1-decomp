@@ -96,7 +96,6 @@ GAbodeInfo_vfunc11 = .text:0x00401120; // type:function size:0x10
 _pef_10362a90 = .text:0x004016A0; // type:function size:0x10
 ??0GestureSampleBase@@QAE@XZ = .text:0x004016A0; // type:label scope:global alias
 ?GetBuildingObject@MultiMapFixed@@UAEPAXXZ = .text:0x004016A0; // type:label scope:global alias
-?IsSpellShield@SpellShield@@UAEPAV1@XZ = .text:0x004016A0; // type:label scope:global alias
 ?Get3DObjectForPSys@Object@@QAEXXZ = .text:0x004016B0; // type:label scope:global alias
 ?Get3DObjectForPSys@Object@@UAEPAVGame3DObject@@XZ = .text:0x004016B0; // type:function size:0x10
 ?GetLife@Object@@QAEXXZ = .text:0x004016C0; // type:label scope:global alias
