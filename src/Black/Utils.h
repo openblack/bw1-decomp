@@ -45,14 +45,16 @@ struct GUtils
 	static void SetupUtils();
 	// BW1W120 0074ccb0 BW1M119 0104bfa0
 	static long GetDistance(const MapCoords& from, const MapCoords& to);
+	// BW1W120 0074cce0 BW1M119 null
+	static long GetDistance(const MapCoords* from, const MapCoords* to);
+	// BW1W120 0074cd50 BW1M119 null
+	static float GetDistanceInMetres(const MapCoords* from, const MapCoords* to);
 	// BW1W120 0074cd70 BW1M119 0104bf00
 	static float GetDistanceInMetres(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074cde0 BW1M119 01036610
 	static float GetDistance(const LHPoint& a, const LHPoint& b);
 	// BW1W120 0074caf0 BW1M119 01076080
 	static void __fastcall SetPointFromScreenPointAndDistance(LHCoord* coord, float distance, LHPoint* point);
-	// BW1W120 0074cd50 BW1M119 null
-	static float GetDistanceInMetres_0074cd50(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074d200 BW1M119 010516f0
 	static long GetAngleFromDXDZ(long dx, long dz);
 	// BW1W120 0074d240 BW1M119 01051760
