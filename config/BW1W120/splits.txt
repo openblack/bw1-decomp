@@ -685,14 +685,14 @@ Black/CreatureWhatToDoNext.cpp:
 	.text       start:0x00508E70 end:0x0050A920
 	.rdata      start:0x008D1698 end:0x008D16B8
 	.CRT$XCU    start:0x009C6688 end:0x009C66A0 align:4
-	.data       start:0x00BE67C8 end:0x00BE6818
+	.data       start:0x00BE67C8 end:0x00BE67F8
 	.bss        start:0x00CADB2C end:0x00CADB3C
 
 Black/Creche.cpp:
 	.text       start:0x0050A920 end:0x0050ABE0
 	.rdata      start:0x008D16B8 end:0x008D1FF0
 	.CRT$XCU    start:0x009C66A0 end:0x009C66A8 align:4
-	.data       start:0x00BE6818 end:0x00BE6838
+	.data       start:0x00BE67F8 end:0x00BE6838
 	.bss        start:0x00CADB3C end:0x00CADB60
 
 Black/CreditText.cpp:
@@ -1111,16 +1111,16 @@ Black/GlobalGameList.cpp:
 
 Black/GraveYard.cpp:
 	.text       start:0x00595C30 end:0x00596020
-	.rdata      start:0x009003D8 end:0x009003E8
+	.rdata      start:0x009003D8 end:0x009003E4
 	.CRT$XCU    start:0x009C6AC8 end:0x009C6AD4 align:4
-	.data       start:0x00BEFF00 end:0x00BEFF3C
+	.data       start:0x00BEFF00 end:0x00BEFF20
 	.bss        start:0x00D06AEC end:0x00D06AF0
 
 Black/GroupBehaviour.cpp:
 	.text       start:0x00596020 end:0x00598E20
-	.rdata      start:0x009003E8 end:0x00900A10
+	.rdata      start:0x009003E4 end:0x00900A10
 	.CRT$XCU    start:0x009C6AD4 end:0x009C6AE0 align:4
-	.data       start:0x00BEFF3C end:0x00BEFF68
+	.data       start:0x00BEFF20 end:0x00BEFF68
 	.bss        start:0x00D06AF0 end:0x00D09188
 
 Black/GSFunctions.cpp:
