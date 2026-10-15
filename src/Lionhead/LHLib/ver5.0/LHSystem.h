@@ -49,7 +49,7 @@ struct LHKeyEvent
 
 struct LHKeyboard
 {
-	// Same lock formerly named gKeyboardCritSec in LHSystem.cpp.
+	// Same lock formerly named gKeyboardCritSec in LHWin.cpp.
 	// TODO: Descriptive name; original class/file scope is unknown.
 	// BW1W120 00e8c118
 	static CRITICAL_SECTION CriticalSection;
@@ -146,7 +146,7 @@ struct CharRing
 
 namespace slim
 {
-// The IME helper, constructed on window creation (LHSystem.cpp).
+// The IME helper, constructed on window creation (LHWin.cpp).
 struct TbIME
 {
 	void* field_0x0;
@@ -233,7 +233,7 @@ struct LHSys
 	// BW1W120 007db800 BW1M119 inlined
 	LHSys();
 
-	// The one instance, at 0xE85040, built by LHSystem.cpp's static-init constructor.
+	// The one instance, at 0xE85040, built by LHWin.cpp's static-init constructor.
 	static LHSys TheSystem;
 
 	// Static inline accessors — the binary has no getters (neighbour TUs compile to
