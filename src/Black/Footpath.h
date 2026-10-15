@@ -91,10 +91,10 @@ public:
 	// BW1W120 005351a0 BW1M119 010f3400
 	GFootpathNode* GetNextNode(GFootpathNode* node, bool32_t backwards);
 	// BW1W120 005351f0 BW1M119 010f3300
-	int GetNextPos(const MapCoords& current_pos, GFootpathNode*& next_node, MapCoords& next_pos, bool32_t backwards,
-	               float max_distance);
+	FOOTPATH_POS GetNextPos(const MapCoords& current_pos, GFootpathNode*& next_node, MapCoords& next_pos,
+	                        bool32_t backwards, float max_distance);
 	// BW1W120 00535270 BW1M119 010f3240
-	int GetNextPos(GFootpathNode*& next_node, MapCoords& next_pos, bool32_t backwards);
+	FOOTPATH_POS GetNextPos(GFootpathNode*& next_node, MapCoords& next_pos, bool32_t backwards);
 	// BW1W120 005352c0 BW1M119 010f3110
 	GFootpathNode* GetNearestPos(const MapCoords& pos, bool32_t backwards);
 	// BW1W120 005355c0 BW1M119 010f2d00

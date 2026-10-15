@@ -140,8 +140,8 @@ GFootpathNode* GFootpath::GetNextNode(GFootpathNode* node, bool32_t backwards)
 	return node;
 }
 
-int GFootpath::GetNextPos(const MapCoords& current_pos, GFootpathNode*& next_node, MapCoords& next_pos,
-                          bool32_t backwards, float max_distance)
+FOOTPATH_POS GFootpath::GetNextPos(const MapCoords& current_pos, GFootpathNode*& next_node, MapCoords& next_pos,
+                                   bool32_t backwards, float max_distance)
 {
 	GFootpathNode* node = GetNearestPos(current_pos, backwards);
 	if (node != NULL && node->GetDistance(current_pos) <= max_distance)
@@ -158,7 +158,7 @@ int GFootpath::GetNextPos(const MapCoords& current_pos, GFootpathNode*& next_nod
 	return FOOTPATH_POS_NOT_ON_PATH;
 }
 
-int GFootpath::GetNextPos(GFootpathNode*& next_node, MapCoords& next_pos, bool32_t backwards)
+FOOTPATH_POS GFootpath::GetNextPos(GFootpathNode*& next_node, MapCoords& next_pos, bool32_t backwards)
 {
 	GFootpathNode* node = GetNextNode(next_node, backwards);
 	if (node != NULL)

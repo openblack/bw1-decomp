@@ -37,7 +37,7 @@ struct RPlan
 	float       field_0x44;
 	float       field_0x48;
 	float       field_0x4c;
-	uint32_t    State;
+	RPLAN_STATE State;
 	uint32_t    field_0x54;
 	VisitBlock* VisitBlocks;
 	float       field_0x5c;
