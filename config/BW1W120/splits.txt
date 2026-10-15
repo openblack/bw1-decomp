@@ -556,18 +556,18 @@ Black/CreatureMentalBeliefs.cpp:
 	.bss        start:0x00C84398 end:0x00C843A0
 
 Black/CreatureMentalDesire.cpp:
-	.text       start:0x004DB250 end:0x004DD030
+	.text       start:0x004DB250 end:0x004DD0F0
 	.rdata      start:0x008CFECC end:0x008CFFBC
 	.CRT$XCU    start:0x009C64BC end:0x009C64DC align:4
-	.data       start:0x00BDF458 end:0x00BDF5D8
-	.bss        start:0x00C843A0 end:0x00C892A0
+	.data       start:0x00BDF458 end:0x00BDF554
+	.bss        start:0x00C843A0 end:0x00C87E90
 
 Black/CreatureMentalDesireSource.cpp:
-	.text       start:0x004DD030 end:0x004DF220
+	.text       start:0x004DD0F0 end:0x004DF220
 	.rdata      start:0x008CFFBC end:0x008D0080
 	.CRT$XCU    start:0x009C64DC end:0x009C6514 align:4
-	.data       start:0x00BDF5D8 end:0x00BDF8D8
-	.bss        start:0x00C892A0 end:0x00C8DC28
+	.data       start:0x00BDF554 end:0x00BDF8D8
+	.bss        start:0x00C87E90 end:0x00C8DC28
 
 Black/CreatureMentalExploration.cpp:
 	.text       start:0x004DF220 end:0x004E0240

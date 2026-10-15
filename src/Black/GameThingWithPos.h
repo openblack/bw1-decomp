@@ -710,6 +710,8 @@ public:
 
 	// BW1W120 004e35c0 BW1M119 015eb4c0
 	float MultiplyUsefulnessIfInteresting(Creature* creature);
+	// BW1W120 004e35f0 BW1M119 015eb3e0
+	float MultiplyUsefulnessForPlayfulness(Creature* creature);
 	// BW1W120 004e3ee0 BW1M119 015ee310
 	bool32_t IsInsideCreatureHome(Creature* creature);
 	// BW1W120 0056fe70 BW1M119 013cb710
