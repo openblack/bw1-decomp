@@ -86,8 +86,8 @@ public:
 	uint32_t                  field_0x20d28;
 	uint32_t                  field_0x20d2c;
 	uint32_t                  field_0x20d230;
-	uint32_t                  field_0x20d234;
-	uint32_t                  field_0x20d238;
+	uint32_t                  GameTurnLastReactedToFlyingObject;
+	uint32_t                  GameTurnLastReactedToObjectCrushed;
 	uint32_t                  field_0x20d23c;
 
 	// Override methods
@@ -119,10 +119,18 @@ public:
 	float CalculateDistancePriority(CREATURE_DESIRES desire, CreatureBelief* object);
 	// BW1W120 004e9a70 BW1M119 01271bf0
 	float GetObjectToActOnUsefulness(CreatureBelief* object, CREATURE_DESIRES desire);
+	// BW1W120 004e3730 BW1M119 015ef7e0
+	bool32_t IsObjectSuitableForDesire(CreatureBelief* belief, CREATURE_DESIRES desire);
+	// BW1W120 004e3800 BW1M119 015ef750
+	bool32_t IsObjectSuitableForAction(GameThingWithPos* object, CREATURE_ACTION action);
 	// BW1W120 004d2800 BW1M119 null
 	void EmpathiseWithPlayer(CREATURE_DESIRES desire);
 	// BW1W120 004c4c80 BW1M119 012364d0
 	CreatureAttitudeToCreature* GetAttitudeToCreature(Creature* creature);
+	// BW1W120 004c4f10 BW1M119 01236090
+	void UpdateHowImpressiveIsCreature(Creature* creature, float impressiveness);
+	// BW1W120 004e2380 BW1M119 0126a110
+	bool32_t ConsiderLearningAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action);
 };
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_INCLUDED_H */

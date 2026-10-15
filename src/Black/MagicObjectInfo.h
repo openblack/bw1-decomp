@@ -21,7 +21,7 @@ public:
 	// Override methods
 
 	// BW1W120 005fba00 BW1M119 013b63e0
-	virtual uint32_t CanCast(const MapCoords& coords, GameThing* caster) const;
+	virtual bool32_t CanCast(const MapCoords& coords, GameThing* caster) const;
 };
 static_assert(sizeof(GMagicObjectInfo) == 0x5c, "Data type is of wrong size");
 

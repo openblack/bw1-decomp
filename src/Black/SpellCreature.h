@@ -46,6 +46,8 @@ public:
 
 	// BW1W120 007221e0 BW1M119 01522010
 	SpellCreature();
+	// BW1W120 00722270 BW1M119 01521f80
+	SpellCreature(MAGIC_TYPE type, GameThing* caster);
 };
 
 #endif /* BW1_DECOMP_SPELL_CREATURE_INCLUDED_H */

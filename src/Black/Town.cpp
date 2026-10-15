@@ -858,9 +858,8 @@ void Town::ResetAllDiscipleStates()
 	{
 		FOREACH_LH_LIST_HEAD(Villager, villager, abode->villagers)
 		{
-			uint32_t flags = villager->Flags;
-			uint8_t  discipleFlags = flags >> 9;
-			if ((discipleFlags & 1) && GVillagerInfo::GetDiscipleInfo()[villager->DiscipleType].field_0xc == 1)
+			if (villager->IsDisciple() &&
+			    GVillagerInfo::GetDiscipleInfo()[villager->DiscipleType].UsesNothingToDoState == true)
 			{
 				villager->SetVillagerDisciple(NULL, VILLAGER_DISCIPLE_NONE, 0);
 			}
@@ -1694,7 +1693,7 @@ void Town::SetToZero()
 {
 	NumVillagersOnWayToWorshipSite = 0;
 	worship_percentage = 0.0f;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	CompleteNewTownBuilt = false;
 #endif
 	WorshipCount = 0;

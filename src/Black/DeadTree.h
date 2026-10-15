@@ -14,10 +14,13 @@
 class Base;
 class Creature;
 class GInterfaceStatus;
+class GPlayer;
+class GTreeInfo;
 class GameOSFile;
 class GameThing;
 class GameThingWithPos;
 struct GestureSystemPacketData;
+struct LH3DMesh;
 class LHOSFile;
 struct LHPoint;
 struct MapCoords;
@@ -28,11 +31,17 @@ class PhysicsObject;
 class DeadTree : public Rock
 {
 public:
+	uint32_t field_0x94;
+	uint32_t field_0x98;
+	float    WoodMultiplier;
+
 	// BW1W120 00511210 BW1M119 010c5820
 	static void Init();
 	// BW1W120 00511250 BW1M119 010c57a0
 	static void Close();
-	uint8_t     field_0x94[0xc];
+	// BW1W120 00510bb0 BW1M119 010c6960
+	static DeadTree* Create(const MapCoords& coords, const GTreeInfo* info, GPlayer* player, float param_4,
+	                        float param_5, float param_6, float param_7, LH3DMesh* mesh);
 
 	// Override methods
 

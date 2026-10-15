@@ -1530,7 +1530,7 @@ char* GameStatsPackage::GetDatabaseStatsString()
 			list.AddToTail(string);
 			length += strlen(string->GetString());
 
-#ifndef VERSION_BW1W120
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 			string = new (GAME_STATS_SOURCE_FILE, 1626) GameStatsListString;
 			sprintf(string->GetString(), "CreatureNumPeopleKilled=%ld;", PerPlayer[i].CreatureNumPeopleKilled);
 			list.AddToTail(string);
@@ -1894,7 +1894,7 @@ void GameStats::PlayerLostTheGame(GPlayer& player, int reason)
 		if (other != &player && !other->HasLost && other->type == PLAYER_TYPE_HUMAN)
 		{
 			lastOpponent = other;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 			if (player.type == PLAYER_TYPE_HUMAN || GGame::g_game->SkirmishGame)
 #else
 			if (player.type == PLAYER_TYPE_HUMAN)

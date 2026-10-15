@@ -26,10 +26,15 @@ bool32_t SpellWolf::Save(GameOSFile& file)
 		file.WriteIt(FinalDestPlane);
 		file.WriteIt(field_0x164);
 		file.WriteIt(FadeAlpha);
-		file.WritePtr(field_0x198);
+		file.WritePtr(Player);
 		return true;
 	}
 	return false;
+}
+
+GPlayer* SpellWolf::GetPlayer()
+{
+	return Player;
 }
 
 void SpellWolf::SetSpeed(int) {}

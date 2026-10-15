@@ -38,7 +38,7 @@ struct LivingAction
 	// Non-virtual methods
 
 	// BW1W120 005ecc90 BW1M119 010749a0
-	void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
+	void SetState(uint32_t index, uint8_t state);
 	// BW1W120 inlined BW1M119 0104edb0
 	uint8_t GetState(unsigned long index) const { return states[index]; }
 };

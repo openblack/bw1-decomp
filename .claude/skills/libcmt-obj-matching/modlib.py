@@ -40,8 +40,10 @@ SELF_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SELF_DIR))
 from libobj import (  # noqa: E402
     CoffObj, masked_pattern, LLVM_AR, ROOT, REL_DIR32, REL_DIR32NB, REL_REL32,
-    SCN_LNK_COMDAT,
+    SCN_LNK_COMDAT, VERSIONS,
 )
+
+ALL_VERSIONS = set(VERSIONS)
 
 SCN_CNT_UNINIT = 0x80
 CACHE = ROOT / "build" / "modlib_cache"
@@ -1421,7 +1423,7 @@ def edit_configure(version, module, p, matching):
             m = LIBOBJ_LINE.match(lines[i])
             st = m.group("status")
             vers = set(re.findall(r'"(BW1W\d+)"', st)) if st.startswith("MatchingFor") else (
-                {"BW1W100", "BW1W110", "BW1W120"} if st == "Matching" else set())
+                set(ALL_VERSIONS) if st == "Matching" else set())
             if e["member"] in matching:
                 vers.add(version)
             else:
@@ -1438,7 +1440,7 @@ def edit_configure(version, module, p, matching):
 
 
 def status_expr(vers):
-    if vers >= {"BW1W100", "BW1W110", "BW1W120"}:
+    if vers >= ALL_VERSIONS:
         return "Matching"
     if not vers:
         return "NonMatching"

@@ -1,3 +1,6 @@
+#include "GameTimeConstants.h"
+#include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "ColourConstants.h"    /* For White */
 #include "GameOSFile.h"
 
 #include "BaseInfo.h"
@@ -242,7 +245,7 @@ void ResetCameraIfNecessary();
 GameOSFile::GameOSFile()
 {
 	Checksum = 0;
-	Status = 0;
+	MapFile = false;
 }
 
 GameOSFile::~GameOSFile()

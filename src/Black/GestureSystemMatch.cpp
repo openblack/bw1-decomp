@@ -186,8 +186,8 @@ bool32_t GestureSystemDataList::CheckForGestureRotations(GestureSystemData* stor
 			if (inputIndex < input->GetSampleCount() - 1)
 			{
 				float nextTurn = input->Samples[inputIndex].Turn;
-				if ((float)fabs(nextTurn) < GESTURE_WIDE_ANGLE_TOLERANCE ||
-				    (float)fabs(lastInputTurn) < GESTURE_WIDE_ANGLE_TOLERANCE)
+				if ((float)fabs(nextTurn) < GS_WIDE_ANGLE_TOLERANCE ||
+				    (float)fabs(lastInputTurn) < GS_WIDE_ANGLE_TOLERANCE)
 				{
 					skippedError = NormaliseAngle(error - nextTurn);
 					if ((float)fabs(skippedError) < (float)fabs(error))
@@ -200,8 +200,8 @@ bool32_t GestureSystemDataList::CheckForGestureRotations(GestureSystemData* stor
 			if (storedIndex < stored->GetSampleCount() - 1)
 			{
 				float nextTurn = stored->Samples[storedIndex].Turn;
-				if ((float)fabs(nextTurn) < GESTURE_WIDE_ANGLE_TOLERANCE ||
-				    (float)fabs(lastStoredTurn) < GESTURE_WIDE_ANGLE_TOLERANCE)
+				if ((float)fabs(nextTurn) < GS_WIDE_ANGLE_TOLERANCE ||
+				    (float)fabs(lastStoredTurn) < GS_WIDE_ANGLE_TOLERANCE)
 				{
 					skippedError = NormaliseAngle(nextTurn + error);
 					if ((float)fabs(skippedError) < (float)fabs(error))
@@ -211,7 +211,7 @@ bool32_t GestureSystemDataList::CheckForGestureRotations(GestureSystemData* stor
 					}
 				}
 			}
-			if ((float)fabs(error) > GESTURE_DOUBLE_ANGLE_TOLERANCE)
+			if ((float)fabs(error) > GS_DOUBLE_ANGLE_TOLERANCE)
 			{
 				goto next_start;
 			}
@@ -262,8 +262,8 @@ bool32_t GestureSystemDataList::CheckForInverseGestureRotations(GestureSystemDat
 			if (inputIndex < input->GetSampleCount() - 1)
 			{
 				float nextTurn = -input->Samples[inputIndex].Turn;
-				if ((float)fabs(nextTurn) < GESTURE_WIDE_ANGLE_TOLERANCE ||
-				    (float)fabs(lastInputTurn) < GESTURE_WIDE_ANGLE_TOLERANCE)
+				if ((float)fabs(nextTurn) < GS_WIDE_ANGLE_TOLERANCE ||
+				    (float)fabs(lastInputTurn) < GS_WIDE_ANGLE_TOLERANCE)
 				{
 					skippedError = error - nextTurn;
 					if ((float)fabs(skippedError) < (float)fabs(error))
@@ -276,8 +276,8 @@ bool32_t GestureSystemDataList::CheckForInverseGestureRotations(GestureSystemDat
 			if (storedIndex < stored->GetSampleCount() - 1)
 			{
 				float nextTurn = stored->Samples[storedIndex].Turn;
-				if ((float)fabs(nextTurn) < GESTURE_WIDE_ANGLE_TOLERANCE ||
-				    (float)fabs(lastStoredTurn) < GESTURE_WIDE_ANGLE_TOLERANCE)
+				if ((float)fabs(nextTurn) < GS_WIDE_ANGLE_TOLERANCE ||
+				    (float)fabs(lastStoredTurn) < GS_WIDE_ANGLE_TOLERANCE)
 				{
 					skippedError = nextTurn + error;
 					if ((float)fabs(skippedError) < (float)fabs(error))
@@ -287,7 +287,7 @@ bool32_t GestureSystemDataList::CheckForInverseGestureRotations(GestureSystemDat
 					}
 				}
 			}
-			if ((float)fabs(error) > GESTURE_DOUBLE_ANGLE_TOLERANCE)
+			if ((float)fabs(error) > GS_DOUBLE_ANGLE_TOLERANCE)
 			{
 				goto next_start;
 			}

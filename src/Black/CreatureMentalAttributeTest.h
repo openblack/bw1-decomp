@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
+#include <string.h> /* For strcpy */
 
 #include <re_common.h>                          /* For ARRAY_SIZE, bool32_t */
 #include <chlasm/CreatureEnum.h>                /* For enum ATTRIBUTE_TYPE, enum CREATURE_ACTION */
@@ -12,6 +13,7 @@
 #include "Base.h"                  /* For struct Base */
 #include "CreatureLearning.h"      /* For struct CreatureLearningEpisode */
 #include "CreatureLessonChooser.h" /* For _LESSON_TYPE_COUNT */
+#include "GameThingWithPos.h"      /* For enum CREATURE_BELIEF_TYPE */
 
 enum DECISION_TREE_TYPE
 {
@@ -77,11 +79,32 @@ enum ATTRIBUTE_BOOL
 	ATTRIBUTE_BOOL_LAST
 };
 
+class Attribute;
+class CreatureBelief;
 class GameThingWithPos;
 class GPlayer;
 
+struct AttributeArrayEntry
+{
+	Attribute* Instance;
+	char       Name[64];
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeArrayEntry(Attribute* instance, const char* name)
+	{
+		Instance = instance;
+		strcpy(Name, name);
+	}
+};
+
 struct AttributeTest
 {
+	// Static members
+
+	static AttributeArrayEntry* AttributeArray[ATTRIBUTE_TYPE_LAST];
+
 	// BW1W120 004d52b0 BW1M119 012526c0
 	static void CreateAttributeArray();
 	// BW1W120 004d60e0 BW1M119 01252570
@@ -123,6 +146,9 @@ struct DecisionTree
 
 	// BW1W120 004d4380 BW1M119 01254c90
 	DecisionTree(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
+
+	// BW1W120 004d4bf0 BW1M119 012541d0
+	float CalculateUtility(CreatureBelief* belief);
 };
 
 struct DecisionTreeAgenda
@@ -138,6 +164,11 @@ struct DecisionTreeAgenda
 
 	// BW1W120 004d43f0 BW1M119 01254ba0
 	DecisionTreeAgenda(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire);
+
+	// Static methods
+
+	// BW1W120 004d6140 BW1M119 01252070
+	static CreatureBelief* CreateBelief(CREATURE_BELIEF_TYPE type);
 };
 
 struct DecisionTreeAgendas
@@ -153,17 +184,21 @@ struct DecisionTreeCollection
 
 	// BW1W120 004d7220 BW1M119 01250860
 	DecisionTreeCollection();
+
+	// BW1W120 004d7670 BW1M119 01250390
+	float ConvertUtilityToUsefulness(float utility);
+	// BW1W120 inlined BW1M119 01272140
+	float GetActivityObjectUtility(CreatureBelief* belief, CREATURE_DESIRES desire)
+	{
+		DecisionTreeAgenda* agenda = agendas[LESSON_TYPE_ACTIVITY_OBJECT].contents[desire];
+		return agenda->trees[0].CalculateUtility(belief);
+	}
 };
 
 class Attribute : public Base
 {
 public:
 	/* 0x8 */ uint32_t Value;
-
-	// Override methods
-
-	// BW1W120 004cb750 BW1M119 012412e0
-	virtual ~Attribute();
 
 	// Virtual methods
 
@@ -193,10 +228,15 @@ public:
 
 	static char ValueNames[][64];
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAbodeBeingBuilt() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAbodeBeingBuilt(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004d6090 BW1M119 0124e390
-	virtual ~AttributeAbodeBeingBuilt();
 	// BW1W120 004d6050 BW1M119 0124e490
 	virtual const char* TypeName();
 	// BW1W120 004d6060 BW1M119 0124c4d0
@@ -218,10 +258,15 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAbodeType() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAbodeType(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004d6020 BW1M119 0124e570
-	virtual ~AttributeAbodeType();
 	// BW1W120 004d5fe0 BW1M119 0124e650
 	virtual const char* TypeName();
 	// BW1W120 004d5ff0 BW1M119 0124c610
@@ -243,10 +288,15 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAllegiance() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAllegiance(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cb7c0 BW1M119 012501e0
-	virtual ~AttributeAllegiance();
 	// BW1W120 004cb780 BW1M119 012502c0
 	virtual const char* TypeName();
 	// BW1W120 004cb790 BW1M119 0124deb0
@@ -264,10 +314,15 @@ public:
 class AttributeAnimate : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAnimate() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeAnimate(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cb8b0 BW1M119 0124fe80
-	virtual ~AttributeAnimate();
 	// BW1W120 004cb860 BW1M119 0124ff60
 	virtual const char* TypeName();
 	// BW1W120 004cb870 BW1M119 0124dc60
@@ -285,10 +340,15 @@ public:
 class AttributeCreatureDominantDesire : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureDominantDesire() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureDominantDesire(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004d5da0 BW1M119 0124f2e0
-	virtual ~AttributeCreatureDominantDesire();
 	// BW1W120 004d5d70 BW1M119 0124f3e0
 	virtual const char* TypeName();
 	// BW1W120 004d5d80 BW1M119 0124d290
@@ -310,10 +370,15 @@ public:
 
 	static char ValueNames[][64];
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureHeight() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureHeight(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004d5e10 BW1M119 0124f110
-	virtual ~AttributeCreatureHeight();
 	// BW1W120 004d5dd0 BW1M119 0124f200
 	virtual const char* TypeName();
 	// BW1W120 004d5de0 BW1M119 0124d0b0
@@ -331,10 +396,15 @@ public:
 class AttributeCreatureSpellKnowledge : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureSpellKnowledge() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureSpellKnowledge(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004d5e70 BW1M119 0124ef70
-	virtual ~AttributeCreatureSpellKnowledge();
 	// BW1W120 004d5e40 BW1M119 0124f070
 	virtual const char* TypeName();
 	// BW1W120 004d5e50 BW1M119 0124cf20
@@ -352,10 +422,15 @@ public:
 class AttributeCreatureType : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureType() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureType(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cbbe0 BW1M119 0124bb90
-	virtual ~AttributeCreatureType();
 	// BW1W120 004cbbb0 BW1M119 0124bc70
 	virtual const char* TypeName();
 	// BW1W120 004cbbc0 BW1M119 0124bcb0
@@ -373,10 +448,15 @@ public:
 class AttributeCreatureWhatHeIsCarrying : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureWhatHeIsCarrying() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeCreatureWhatHeIsCarrying(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004d5ed0 BW1M119 0124edd0
-	virtual ~AttributeCreatureWhatHeIsCarrying();
 	// BW1W120 004d5ea0 BW1M119 0124eed0
 	virtual const char* TypeName();
 	// BW1W120 004d5eb0 BW1M119 0124cd40
@@ -398,10 +478,15 @@ public:
 
 	static char ValueNames[][64];
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeForestSize() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeForestSize(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004d5f40 BW1M119 0124ec20
-	virtual ~AttributeForestSize();
 	// BW1W120 004d5f00 BW1M119 0124ed00
 	virtual const char* TypeName();
 	// BW1W120 004d5f10 BW1M119 0124cb90
@@ -419,10 +504,15 @@ public:
 class AttributeIsHarderThanMe : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeIsHarderThanMe() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeIsHarderThanMe(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cbb80 BW1M119 0124def0
-	virtual ~AttributeIsHarderThanMe();
 	// BW1W120 004cbb50 BW1M119 0124dfe0
 	virtual const char* TypeName();
 	// BW1W120 004cbb60 BW1M119 0124c070
@@ -444,10 +534,15 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeLife() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeLife(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cb980 BW1M119 0124fb80
-	virtual ~AttributeLife();
 	// BW1W120 004cb940 BW1M119 0124fc60
 	virtual const char* TypeName();
 	// BW1W120 004cb950 BW1M119 0124da00
@@ -469,10 +564,15 @@ public:
 
 	static char ValueNames[MOBILE_OBJECT_INFO_LAST][64];
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeMobileObjectType() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeMobileObjectType(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004d5fb0 BW1M119 0124e720
-	virtual ~AttributeMobileObjectType();
 	// BW1W120 004d5f70 BW1M119 0124e820
 	virtual const char* TypeName();
 	// BW1W120 004d5f80 BW1M119 0124c750
@@ -494,10 +594,15 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeOnFire() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeOnFire(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cbac0 BW1M119 0124e1e0
-	virtual ~AttributeOnFire();
 	// BW1W120 004cba80 BW1M119 0124e2c0
 	virtual const char* TypeName();
 	// BW1W120 004cba90 BW1M119 0124c380
@@ -519,10 +624,15 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeOrigin() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeOrigin(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cb830 BW1M119 01250030
-	virtual ~AttributeOrigin();
 	// BW1W120 004cb7f0 BW1M119 01250110
 	virtual const char* TypeName();
 	// BW1W120 004cb800 BW1M119 0124dd70
@@ -540,10 +650,15 @@ public:
 class AttributePlayerNumber : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributePlayerNumber() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributePlayerNumber(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cbb20 BW1M119 0124e070
-	virtual ~AttributePlayerNumber();
 	// BW1W120 004cbaf0 BW1M119 0124e150
 	virtual const char* TypeName();
 	// BW1W120 004cbb00 BW1M119 0124c250
@@ -565,10 +680,15 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeSex() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeSex(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cba50 BW1M119 0124e910
-	virtual ~AttributeSex();
 	// BW1W120 004cba10 BW1M119 0124e9f0
 	virtual const char* TypeName();
 	// BW1W120 004cba20 BW1M119 0124c880
@@ -590,10 +710,15 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTownReligiousBeliefInYou() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTownReligiousBeliefInYou(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cd710 BW1M119 0124f7d0
-	virtual ~AttributeTownReligiousBeliefInYou();
 	// BW1W120 004cd6d0 BW1M119 0124f8d0
 	virtual const char* TypeName();
 	// BW1W120 004cd6e0 BW1M119 0124d770
@@ -615,10 +740,15 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTownSize() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTownSize(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cd7e0 BW1M119 0124f480
-	virtual ~AttributeTownSize();
 	// BW1W120 004cd7a0 BW1M119 0124f560
 	virtual const char* TypeName();
 	// BW1W120 004cd7b0 BW1M119 0124d3f0
@@ -640,10 +770,15 @@ public:
 
 	static char ValueNames[][64]; // fabricated name
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTribe() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeTribe(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cd6a0 BW1M119 0124f9d0
-	virtual ~AttributeTribe();
 	// BW1W120 004cd660 BW1M119 0124fab0
 	virtual const char* TypeName();
 	// BW1W120 004cd670 BW1M119 0124d8a0
@@ -661,10 +796,15 @@ public:
 class AttributeType : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeType() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeType(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cb910 BW1M119 0124fd20
-	virtual ~AttributeType();
 	// BW1W120 004cb8e0 BW1M119 0124fe00
 	virtual const char* TypeName();
 	// BW1W120 004cb8f0 BW1M119 0124db50
@@ -682,10 +822,15 @@ public:
 class AttributeVillagerJob : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeVillagerJob() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeVillagerJob(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cb9e0 BW1M119 0124eab0
-	virtual ~AttributeVillagerJob();
 	// BW1W120 004cb9b0 BW1M119 0124eb90
 	virtual const char* TypeName();
 	// BW1W120 004cb9c0 BW1M119 0124ca10
@@ -703,10 +848,15 @@ public:
 class AttributeWhatTownNeedsMost : public Attribute
 {
 public:
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	AttributeWhatTownNeedsMost() {}
+	// BW1W120 inlined BW1M119 inlined
+	AttributeWhatTownNeedsMost(uint32_t value) { Value = value; }
+
 	// Override methods
 
-	// BW1W120 004cd770 BW1M119 0124f630
-	virtual ~AttributeWhatTownNeedsMost();
 	// BW1W120 004cd740 BW1M119 0124f730
 	virtual const char* TypeName();
 	// BW1W120 004cd750 BW1M119 0124d5a0

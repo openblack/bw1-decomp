@@ -47,6 +47,17 @@ static_assert(sizeof(InfoTransform) == 0x40, "Data type is of wrong size");
 class LH3DTech
 {
 public:
+	enum ClipCode
+	{
+		CLIP_CODE_BOTTOM = 0x2,
+		CLIP_CODE_TOP = 0x4,
+		CLIP_CODE_LEFT = 0x8,
+		CLIP_CODE_RIGHT = 0x10,
+		CLIP_CODE_NEAR = 0x20,
+		CLIP_CODE_FRUSTUM = 0x3f,
+		CLIP_CODE_PLANE = 0x800,
+	};
+
 	static InfoTransform g_info_transform; // 00e839e0
 	static LH3DCamera    g_camera;         // 00ea1db8
 	static int           g_delta_time;     // 00c38134
@@ -130,6 +141,14 @@ public:
 	                                                    long count);
 	// BW1W120 0081b5f0 BW1M119 010be620 (LHCombined Release)
 	static void __fastcall TransformProject(Vertex3D* out, LHPoint* points, long count);
+	// BW1W120 0081a760 BW1M119 0102c690 (LHCombined Release)
+	static void __fastcall ClipTriangle(uint16_t a, uint16_t b, uint16_t c, ClipCode code);
+	// BW1W120 0081aab0 BW1M119 010bed50 (LHCombined Release)
+	static void __fastcall ClipTriangleMT(uint16_t a, uint16_t b, uint16_t c, ClipCode code);
+	// BW1W120 0081d2c0 BW1M119 010bc060 (LHCombined Release)
+	static void __fastcall ClipTriangleWithPlane(uint16_t a, uint16_t b, uint16_t c);
+	// BW1W120 0081d4f0 BW1M119 010bbd30 (LHCombined Release)
+	static void __fastcall ClipTriangleInBuild(uint16_t a, uint16_t b, uint16_t c);
 };
 
 // BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)

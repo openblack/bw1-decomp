@@ -34,7 +34,7 @@ add_relocations:
     target: '__except_list'
   - source: 0x008963A1
     type: x86_abs32
-    target: '$T99291'
+    target: '$T99293'
   - source: 0x00927EEC
     type: x86_abs32
     target: '??_EParticlePointCreator@@UAEPAXI@Z'
@@ -544,8 +544,295 @@ add_relocations:
   - source: 0x008B70A4
     type: x86_abs32
     target: '??_EMPFEMessageObject@@UAEPAXI@Z'
+  - source: 0x007439F7
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x007440A3
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x007440EB
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x00744258
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x60
+  - source: 0x0074523A
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x00746729
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x133CC
+  - source: 0x0074896A
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x30
+  - source: 0x007489DA
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x40
+  - source: 0x0074A657
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
+  - source: 0x0074A709
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
 
 # TODO: Unsure why we get 0x832000, probably because of decryptor
+
+# LH3DPrimitive: dtk leaves LEA displacements into the transformed vertex cache (LH3DP3::Table1) as raw
+# immediates.
+  - source: 0x0083A81D
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083A82C
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083A83B
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083C0D2
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083C0E1
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083C0F0
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083C71B
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083C72A
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083C739
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083CB39
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083CB48
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083CB57
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083CECF
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+    addend: 0x3C80
+  - source: 0x0083CEE2
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+    addend: 0x3C80
+  - source: 0x0083CEF3
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+    addend: 0x3C80
+  - source: 0x0083E71F
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083E72E
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083E73D
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083EEB3
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083EEC2
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083EED1
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083F41D
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+    addend: 0x3C80
+  - source: 0x0083F430
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+    addend: 0x3C80
+  - source: 0x0083F441
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+    addend: 0x3C80
+  - source: 0x0083FE86
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+    addend: 0x5480
+  - source: 0x0083FEC1
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0083FEE0
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+    addend: 0x20
+  - source: 0x0083FF01
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+    addend: 0x40
+  - source: 0x00840610
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084061F
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084062E
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008414D5
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008414E4
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008414F3
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008429C9
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008429D8
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008429E7
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00844357
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00844366
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00844375
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00845855
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00845864
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00845873
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00845DB5
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00845DC4
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00845DD3
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008465E3
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008465F2
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00846601
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008470C6
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008470D5
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008470E4
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008477E0
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008477EF
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x008477FE
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00849257
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00849266
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00849275
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00849AB4
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00849AC3
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x00849AD2
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084A441
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084A450
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084A45F
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084A8A3
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084A8B2
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084A8C1
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084AF2C
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084AF32
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084AF41
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084BBCA
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084BBEA
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084BBF9
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084D432
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084D441
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+  - source: 0x0084D450
+    type: x86_abs32
+    target: '?Table1@LH3DP3@@2PAY07MA'
+
+# LH3DPrimitive::CalcFogTable's loop compares against the end of g_fog_table, not g_vertex_inside_triangle.
+  - source: 0x0083A4C4
+    type: x86_abs32
+    target: '?g_fog_table@LH3DPrimitive@@2PAY01KA'
+    addend: 0x2000
+
 force_size: 0x00902a0b
 linker_version: "6.0"
 safe_disc_version: "2.30.33"

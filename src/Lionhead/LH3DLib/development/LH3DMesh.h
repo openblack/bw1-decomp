@@ -59,7 +59,7 @@ struct LH3DMesh
 	char            magic[0x4]; /* 0x0 */
 	uint32_t        flags;
 	uint32_t        size;
-	uint32_t        SubmeshCount;
+	int             SubmeshCount;
 	LH3DSubMesh**   submeshes; /* 0x10 */
 	LH3DBoundingBox BoundingBox;
 	uint32_t        AnotherOffset; /* 0x34 */

@@ -31,28 +31,43 @@ a separate `ANIMAL_STATES` enum in the same header.
 
 ## Dispatch
 
-Each state has a `Living::StateTableEntry` (0x90 bytes, `src/Black/Living.h`):
-nine 0x10-byte sub-entries, each a member-function pointer + 12 bytes of
-adjustor/vtordisp fields (MSVC "pointer to member of virtual base" is 16 bytes):
+Each state has a `VillagerStateTableEntry` (0x90 bytes, `src/Black/VillagerStates.h`):
+nine member-function pointers of 16 bytes each. MSVC6 uses its general
+representation (function address plus three adjustor dwords) for a pointer to
+member of a class that is only forward-declared, and keeps it for the rest of
+the translation unit. `VillagerStates.h` declares the entry before `Villager` is
+complete, so it must be included ahead of `Villager.h`; no `/vmg` is needed.
 
-| off | sub-entry | signature (on `Living`) |
+| off | member | signature (on `Villager`) |
 |---|---|---|
-| 0x00 | `state` | `uint32_t ()()` — per-tick process function |
-| 0x10 | `EntryState` | `bool ()(VILLAGER_STATES, VILLAGER_STATES)` |
-| 0x20 | `ExitState` | `bool ()()` |
-| 0x30 | `save_state` | `bool ()()` |
-| 0x40 | `LoadState` | `bool ()()` |
-| 0x50 | `field_0x50` | unknown |
-| 0x60 | `field_0x60` | unknown |
-| 0x70 | `TransitionAnimation` | `bool ()()` |
-| 0x80 | `validate` | `bool ()()` |
+| 0x00 | `State` | `bool32_t ()` — per-tick process function |
+| 0x10 | `EntryState` | `bool32_t (uint8_t current, uint8_t destination)` |
+| 0x20 | `ExitState` | `bool32_t (uint8_t state)` |
+| 0x30 | `SaveState` | `bool32_t (GameOSFile&)` |
+| 0x40 | `LoadState` | `bool32_t (GameOSFile&)` |
+| 0x50 | `ReactToTownEmergency` | `uint32_t ()` |
+| 0x60 | `Animation` | `uint32_t ()` |
+| 0x70 | `TransitionAnimation` | `uint32_t (uint8_t into, uint8_t state)` |
+| 0x80 | `Validate` | `void ()` |
 
-`Villager::GetStateTable(VILLAGER_STATES)` (static, fully inlined in W120,
-`src/Black/Villager.h:526`) indexes the table. Drivers, all virtual on
-`Villager`:
+The table is `VillagerStateTableEntry::StateTable` (BW1W120 0x00D09198), defined
+in `GStates.cpp` and filled by a dynamic initializer at startup. Windows code
+indexes it directly: going through an inline accessor changes the generated
+code of `CallEntryStateFunction`, `CallExitStateFunction`, `IsInBuildingState`
+and the `Is*FunctionSameAs` checks. The Mac
+build wraps the table in `Villager::GetStateTable()`, an out-of-line function
+holding it as a guarded function-local static. Do not declare the table in
+`Villager.h`: every static data member there renumbers the `_$E`/`_$S`
+initializers of every `Game.h` consumer and reorders the `.bss` of the linked
+`Object.cpp` and `WorldRoom.cpp`.
+
+`Animal` uses the same layout as `AnimalStateTableEntry`, declared in `Animal.h`
+ahead of the class, with the table as `Animal::StateTable`.
+
+Drivers, all virtual on `Villager`:
 
 - `ProcessState()` @ 0x0074FF70 — per-tick entry
-- `CallState()` — invoke `entry.state`
+- `CallState()` — invoke `entry.State`
 - `CallEntryStateFunction(uint8_t)` @ 0x007523D0 and
   `CallEntryStateFunction(uint8_t, uint8_t)` @ 0x00752440
 - `CallExitStateFunction(uint8_t)` @ 0x00752320

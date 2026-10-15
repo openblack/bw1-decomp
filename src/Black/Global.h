@@ -22,7 +22,7 @@ struct GGlobal
 	GDebug   debug;
 	bool32_t EditorMode;
 	uint32_t field_0x2d2b0;
-	uint32_t field_0x2d2b4;
+	bool32_t ReactionsEnabled;
 	uint32_t field_0x2d2b8;
 	uint32_t field_0x2d2bc;
 	uint32_t field_0x2d2c0;

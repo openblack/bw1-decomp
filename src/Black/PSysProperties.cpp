@@ -1793,7 +1793,7 @@ void LandscapeCollide::DefineProperties(PropertyList* list)
 #if defined(VERSION_BW1W100)
 static std::string EmptyString(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8,
                                int arg9, int arg10, int arg11, int arg12, int arg13, int arg14, int arg15, int arg16,
-                               int arg17, int arg18, int arg19)
+                               int arg17, int arg18)
 {
 	std::string text[1];
 	return text[0];
@@ -1801,7 +1801,7 @@ static std::string EmptyString(int arg0, int arg1, int arg2, int arg3, int arg4,
 #else
 static void EmptyString(int arg0)
 {
-	std::string text[2];
+	std::string text;
 }
 #endif
 

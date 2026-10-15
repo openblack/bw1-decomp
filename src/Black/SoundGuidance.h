@@ -20,6 +20,7 @@ class GameThingWithPos;
 class LH_SamplePlayOptions;
 struct MapCoords;
 class Town;
+class Villager;
 
 enum RESOURCE_RAIN_TYPE
 {
@@ -85,6 +86,8 @@ public:
 	static void HelpSpritesCheckMoonPhase();
 	// BW1W120 0071bf10 BW1M119 01517210
 	static void MakeDiscipleSFX(GInterfaceStatus& status, VILLAGER_DISCIPLE disciple);
+	// BW1W120 0071c810 BW1M119 01516aa0
+	static void VillagerDeathSFX(GInterfaceStatus& status);
 
 	// Constructors
 
@@ -101,12 +104,18 @@ public:
 	void HelpSpritesAttackingTown(Town& town, EffectValues& values);
 	// BW1W120 0071d070 BW1M119 015151b0
 	void HelpSpritesDestroyBuilding(Abode& abode);
+	// BW1W120 0071c990 BW1M119 015166c0
+	void HelpSpritesLosingVillagers(Villager* villager);
 	// BW1W120 0071cbe0 BW1M119 01516150
 	void HelpSpritesLowOnPeople(Town& param_1);
 	// BW1W120 0071cd40 BW1M119 01515df0
 	void HelpSpritesCreatureFight(Creature& creature);
 	// BW1W120 0071ceb0 BW1M119 010257a0
 	void HelpSpritesAlignmentProcess(float change);
+	// BW1W120 0071ce70 BW1M119 01515960
+	void HelpSpritesKillingPeople(Villager& villager);
+	// BW1W120 0071cfe0 BW1M119 01515600
+	void HelpSpritesWorshippersDying();
 	// BW1W120 0071d100 BW1M119 01514f40
 	void HelpSpritesCheckPlayerWatching(GPlayer* player);
 	// BW1W120 0071d270 BW1M119 01514d30

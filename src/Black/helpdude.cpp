@@ -1801,8 +1801,8 @@ bool32_t HelpDude::Convert3DToHover(LHPoint& pos, float* x, float* y, bool32_t a
 	}
 	int      halfWidth = LHSys::GetScreen().width >> 1;
 	uint16_t halfHeight = LHSys::GetScreen().height >> 1;
-	*x = (projected.position.x - halfWidth) / halfWidth;
-	*y = (projected.position.y - halfHeight) / halfWidth;
+	*x = (projected.x - halfWidth) / halfWidth;
+	*y = (projected.y - halfHeight) / halfWidth;
 	return true;
 }
 

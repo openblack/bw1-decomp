@@ -21,6 +21,7 @@ struct LHPoint;
 enum LH3D_OBJECT_FLAGS2
 {
 	LH3D_OBJECT_FLAGS2_OUT_OF_MAP = 0x40,
+	LH3D_OBJECT_FLAGS2_NO_BUILD_OUTLINE = 0x200,
 };
 
 class LH3DObject
@@ -160,7 +161,7 @@ public:
 	virtual bool32_t            IsHumanShadowed(); /* 0xc0 */
 	virtual void __fastcall     SetHumanShadowed(bool32_t human_shadowed);
 	virtual bool32_t            IsGlowing();
-	virtual void                SetIsGlowing(int param_1);
+	virtual void __fastcall     SetIsGlowing(bool32_t is_glowing);
 	virtual bool32_t            IsSuperSortedPolys(); /* 0xd0 */
 	virtual void                SetSuperSortedPolys(int param_1);
 	virtual bool32_t            IsFastBlending();

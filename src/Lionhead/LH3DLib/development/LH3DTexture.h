@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <re_common.h> /* For bool32_t */
+
 enum TextureFormat
 {
 	TextureFormat_0x0 = 0x0,
@@ -56,6 +58,10 @@ struct LH3DTexture
 	void Release();
 	// BW1W120 00838430 BW1M119 010c8e30 (LHCombined Release)
 	void YouLostYourVRAM();
+	// BW1W120 00838a70 BW1M119 010003e0 (LHCombined Release)
+	bool32_t IsCollide(float u, float v);
+	// BW1W120 00838f00 BW1M119 010004d0 (LHCombined Release)
+	uint8_t* GetMaskCollide();
 	// BW1W120 inlined BW1M119 010107b0 (LHCombined Release)
 	uint32_t GetType() { return Flags & 0x3f; }
 };

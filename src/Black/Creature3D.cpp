@@ -5368,7 +5368,7 @@ void LH3DCreature::DoFightActionAction()
 								                  belief, belief, NULL, 1.0f);
 								winner->ForceActivityAndForceAction(plan, 1, 1);
 								winner->NumBattlesWon++;
-								winner->field_0x10b0 = 1;
+								winner->FightEnded = true;
 								if (winner->GetPlayer())
 								{
 									Reaction::CreateReaction(winner, REACTION_REACT_TO_FIGHT_WON, winner->GetPlayer(),
@@ -5376,7 +5376,7 @@ void LH3DCreature::DoFightActionAction()
 								}
 							}
 							loser->Faint();
-							loser->field_0x10b0 = 1;
+							loser->FightEnded = true;
 						}
 					}
 					else

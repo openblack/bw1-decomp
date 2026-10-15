@@ -13,9 +13,9 @@ struct GDebug
 {
 	LHTimer  field_0x0;
 	uint32_t field_0x110;
-	uint32_t field_0x114;
+	bool32_t ShowVillagerDebugText;
 	uint32_t field_0x118;
-	uint32_t field_0x11c;
+	bool32_t ShowReactions;
 	uint32_t field_0x120;
 	uint32_t field_0x124;
 	uint32_t field_0x128;
@@ -26,9 +26,9 @@ struct GDebug
 	uint32_t field_0x13c;
 	uint32_t field_0x140;
 	uint32_t field_0x144;
-	uint32_t field_0x148;
+	bool32_t LogVillagers;
 	uint32_t field_0x14c;
-	uint32_t field_0x150;
+	bool32_t LogTownDesire;
 	uint32_t field_0x154;
 	uint32_t field_0x158;
 	uint32_t field_0x15c;
@@ -51,6 +51,8 @@ struct GDebug
 	void ClearMessages(long category);
 	// BW1W120 00511da0 BW1M119 0102f280
 	void SetMessage(uint16_t category, char* fmt, ...);
+	// BW1W120 00511d80 BW1M119 0106a660
+	void SetMessage(char* fmt, ...);
 };
 
 #endif /* BW1_DECOMP_DEBUG_INCLUDED_H */

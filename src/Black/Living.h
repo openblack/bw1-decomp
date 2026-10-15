@@ -117,6 +117,7 @@ enum LIVING_SET_STATE_RESULT
 enum LIVING_STATUS
 {
 	LIVING_STATUS_DYING = 0x1,
+	LIVING_STATUS_SKELETON = 0x40,
 	LIVING_STATUS_SHOW_INFO = 0x200,
 };
 
@@ -138,47 +139,10 @@ public:
 class Living : public MobileWallHug
 {
 public:
-#ifndef VERSION_BW1W120
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 	// BW1W120 null BW1M119 01730978
 	static void* ReactionFunctionArray[0x668];
 #endif
-
-	struct StateTableSubEntry
-	{
-		bool (Living::*function)(); /* 0x0 */
-		uint32_t field_0x4;
-		uint32_t field_0x8;
-		int32_t  field_0xc;
-	};
-
-	struct StateTableSubEntryState
-	{
-		uint32_t (Living::*function)(); /* 0x0 */
-		uint32_t field_0x4;
-		uint32_t field_0x8;
-		int32_t  field_0xc;
-	};
-
-	struct StateTableSubEntryEntryState
-	{
-		bool (Living::*function)(VILLAGER_STATES param_1, VILLAGER_STATES param_2); /* 0x0 */
-		uint32_t field_0x4;
-		uint32_t field_0x8;
-		int32_t  field_0xc;
-	};
-
-	struct StateTableEntry
-	{
-		StateTableSubEntryState      state;      /* 0x0 */
-		StateTableSubEntryEntryState EntryState; /* 0x10 */
-		StateTableSubEntry           ExitState;  /* 0x20 */
-		StateTableSubEntry           save_state; /* 0x30 */
-		StateTableSubEntry           LoadState;  /* 0x40 */
-		StateTableSubEntry           field_0x50;
-		StateTableSubEntry           field_0x60;
-		StateTableSubEntry           TransitionAnimation; /* 0x70 */
-		StateTableSubEntry           validate;            /* 0x80 */
-	};
 
 	LivingAction                              action;
 	LHPTR<Reaction>                           reaction;
@@ -192,7 +156,7 @@ public:
 	uint16_t                                  status;
 	LHPTR<Flock>                              flock;
 	LHPTR<GameThingWithPos>                   ReactionObject;
-	uint32_t                                  field_0xc0;
+	Object*                                   StructureMovingOn;
 	uint32_t                                  field_0xc4;
 	GFootpath*                                footpath;
 	GFootpathNode*                            footpath_node;
@@ -203,8 +167,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 004749f0 BW1M119 011753b0
-	virtual ~Living();
 	// BW1W120 005ec0a0 BW1M119 0138b460
 	virtual void ToBeDeleted(int param_1);
 	// BW1W120 004172d0 BW1M119 01006720
@@ -252,7 +214,7 @@ public:
 	// BW1W120 00416f90 BW1M119 0105a140
 	virtual bool IsPoisoned();
 	// BW1W120 00417000 BW1M119 011384f0
-	virtual void SetSkeleton(int param_1);
+	virtual void SetSkeleton(bool32_t skeleton);
 	// BW1W120 005ee230 BW1M119 013866d0
 	virtual bool32_t MoveAlongPath();
 	// BW1W120 00417480 BW1M119 inlined
@@ -306,7 +268,7 @@ public:
 	// BW1W120 005ec3e0 BW1M119 0138acd0
 	virtual uint32_t GetNumTurnsToDieOver();
 	// BW1W120 005ec1e0 BW1M119 0138b350
-	virtual MapCoords GetFinalDestPos();
+	virtual void GetFinalDestPos(MapCoords* out);
 	// BW1W120 005f1d10 BW1M119 0138ef00
 	virtual bool32_t FleeingFromObjectReaction();
 	// BW1W120 005f23a0 BW1M119 0138e560
@@ -364,7 +326,7 @@ public:
 	// BW1W120 00473e50 BW1M119 011eaa80
 	virtual void SetStateSpeed();
 	// BW1W120 purecall BW1M119 null
-	virtual bool IsFinalState(uint8_t state) = 0;
+	virtual bool32_t IsFinalState(uint8_t state) = 0;
 	// BW1W120 005ecb80 BW1M119 inlined
 	virtual void SetAnim(int anim);
 	// BW1W120 005ecba0 BW1M119 inlined
@@ -398,7 +360,7 @@ public:
 	// BW1W120 005eddc0 BW1M119 01387270
 	virtual bool32_t ExitBeingEaten(uint8_t state);
 	// BW1W120 005f2a80 BW1M119 010749f0
-	virtual void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
+	virtual void SetState(uint32_t index, uint8_t state);
 	// BW1W120 005edd90 BW1M119 inlined
 	virtual uint32_t EnterMoveToPos(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
 	// BW1W120 005ed7e0 BW1M119 inlined
@@ -426,9 +388,9 @@ public:
 	// BW1W120 00473e80 BW1M119 inlined
 	virtual bool32_t IsStateExitFunctionSameAs(unsigned long state) const;
 	// BW1W120 005ecaa0 BW1M119 inlined
-	virtual bool IsDeathState(VILLAGER_STATES state) const;
+	virtual bool32_t IsDeathState(uint32_t state) const;
 	// BW1W120 005ed2b0 BW1M119 016e0b5c
-	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
+	virtual void DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 005ecc10 BW1M119 010866f0
 	virtual bool32_t IsDancing();
 	// BW1W120 00473e90 BW1M119 011eab90
@@ -637,7 +599,7 @@ public:
 	// BW1W120 004749e0 BW1M119 011385f0
 	virtual uint8_t GetFinalState() const;
 	// BW1W120 005ef930 BW1M119 0138c3d0
-	virtual void RemoveFromDance(int param_1);
+	virtual void RemoveFromDance(bool32_t is_worshipping);
 	// BW1W120 00417300 BW1M119 01139470
 	virtual void SetStateAfterFinishingDance();
 	// BW1W120 00417310 BW1M119 011394b0
@@ -645,7 +607,7 @@ public:
 	// BW1W120 00417320 BW1M119 01101a90
 	virtual uint32_t DanceType();
 	// BW1W120 005ee550 BW1M119 01386470
-	virtual bool CanBeHealedByHealSpell();
+	virtual bool32_t CanBeHealedByHealSpell();
 	// BW1W120 004174a0 BW1M119 0112aa80
 	virtual bool32_t MoveAllowedForChessGame(long x, long z) { return false; }
 	// BW1W120 004174b0 BW1M119 0112aac0
@@ -694,7 +656,7 @@ public:
 	// BW1W120 005ec1d0 BW1M119 0138b420
 	bool32_t InvalidState();
 	// BW1W120 005ec270 BW1M119 0104f900
-	bool32_t MoveToPos();
+	int MoveToPos();
 	// BW1W120 005ec2c0 BW1M119 0138af80
 	bool32_t MoveToObject();
 	// BW1W120 005ec330 BW1M119 0138aed0

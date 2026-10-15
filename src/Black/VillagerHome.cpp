@@ -31,12 +31,10 @@ bool32_t Villager::HomeDecideWhatToDo()
 		return true;
 	}
 	// TODO: target zero-extends Flags (`xor ecx,ecx` before `mov cx`); ours drops the dead xor
-	uint32_t flags = Flags;
-	uint8_t  disciple_flags = flags >> 9;
-	if (disciple_flags & 1)
+	if (IsDisciple())
 	{
 		uint32_t disciple = DiscipleType;
-		if (GVillagerInfo::GetDiscipleInfo()[(uint8_t)disciple].field_0xc == 1)
+		if (GVillagerInfo::GetDiscipleInfo()[(uint8_t)disciple].UsesNothingToDoState == true)
 		{
 			if ((uint8_t)disciple == VILLAGER_DISCIPLE_BREEDER)
 			{
@@ -51,7 +49,7 @@ bool32_t Villager::HomeDecideWhatToDo()
 			return DecideWhatToDo();
 		}
 	}
-	if (CheckNeededForSomething() == 1)
+	if (CheckNeededForSomething() == true)
 	{
 		return true;
 	}
@@ -124,10 +122,8 @@ bool32_t Villager::CheckNeedsAtHome()
 	}
 	// TODO: the target reloads `info` fresh in the max() re-evaluation arms; ours either
 	// reloads or caches it everywhere
-	uint32_t flags = Flags;
-	uint8_t  disciple_flags = flags >> 9;
-	float    desire;
-	if ((disciple_flags & 1) && GVillagerInfo::GetDiscipleInfo()[DiscipleType].field_0xc == 1)
+	float desire;
+	if (IsDisciple() && GVillagerInfo::GetDiscipleInfo()[DiscipleType].UsesNothingToDoState == true)
 	{
 		const GVillagerInfo* vi = (const GVillagerInfo*)info;
 		desire = max(GetLifeDesireFromLife(vi->DamageThresholdToGoHome), POWER(vi->StarvingForFood));
@@ -692,10 +688,6 @@ bool Villager::MakeHomelessNoStateChange()
 bool32_t Villager::HomelessStart()
 {
 	GetTown();
-	// TODO: 99.8% - target compares CheckHungry()'s bool result full-width
-	// (`cmp eax,1`); our build emits `cmp al,1`. bool-return width tie-break
-	// (CheckHungry is _N/bool and extern to this TU). int-local zext trick tried,
-	// does not force widening.
 	if (CheckHungry() != 1 && CheckNeededForSomething() != 1 && CheckHomelessMoveIntoAbode() == 0)
 	{
 		SetupNothingToDo();

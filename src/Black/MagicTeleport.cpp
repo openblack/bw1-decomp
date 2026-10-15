@@ -108,4 +108,9 @@ bool32_t MagicTeleport::Save(GameOSFile& file)
 	return false;
 }
 
+GPlayer* MagicTeleport::GetPlayer()
+{
+	return Player;
+}
+
 MagicTeleport::~MagicTeleport() {}

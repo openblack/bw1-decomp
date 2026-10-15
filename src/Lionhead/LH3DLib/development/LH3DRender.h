@@ -16,6 +16,7 @@ struct LH3DRender;
 struct LH3DTexture;
 struct LHMatrix;
 struct Vertex3D;
+struct Vertex3DMT;
 class LH3DZSorter;
 
 struct LH3DRender
@@ -30,10 +31,11 @@ struct LH3DRender
 	// Original Mac import g_b_do_update_material__10LH3DRender.
 	// BW1W120 00c38714 BW1M119 011d0e2c (LHCombined Release)
 	static int g_b_do_update_material;
-	// Descriptive names for the current material and depth-pass override state. Storage remains extracted.
-	static LH3DMaterial* CurrentMaterial;    // 00eca64c
-	static int           OverrideMaterial;   // 00eca658
-	static int           OverrideRenderMode; // 00eca65c
+	// BW1W120 00eca64c BW1M119 012cf82c (LHCombined Release)
+	static LH3DMaterial* g_current_active_material;
+	// Descriptive names for the depth-pass override state. Storage remains extracted.
+	static int OverrideMaterial;   // 00eca658
+	static int OverrideRenderMode; // 00eca65c
 	// BW1W120 00eca624 BW1M119 012cf854 (LHCombined Release)
 	static bool32_t b_need_init;
 	// BW1W120 00ec7fd0 BW1M119 012cf920 (LHCombined Release)
@@ -52,7 +54,13 @@ struct LH3DRender
 	static IDirect3DDevice7* Direct3DDevice7;
 
 	// BW1W120 0082f810 BW1M119 0102b030 (LHCombined Release)
-	static void DrawTriangle(Vertex3D* vertices, uint32_t param_2, uint16_t* param_3, uint32_t param_4);
+	static void __fastcall DrawTriangle(Vertex3D* vertices, unsigned long vertex_count, uint16_t* indices,
+	                                    unsigned long index_count);
+	// BW1W120 0082f920 BW1M119 01015200 (LHCombined Release)
+	static void __fastcall DrawTriangleMT(Vertex3DMT* vertices, unsigned long vertex_count, uint16_t* indices,
+	                                      unsigned long index_count);
+	// BW1W120 0082c430 BW1M119 0101cb10 (LHCombined Release)
+	static void Set2ndTex(int mode, LH3DMaterial* material, bool clear_material);
 	// BW1W120 00412940 BW1M119 01049520
 	static int SetRenderState(D3DRENDERSTATETYPE type, unsigned long value);
 	// BW1W120 inlined BW1M119 inlined
@@ -107,14 +115,7 @@ inline int LH3DRender::GetRenderState(D3DRENDERSTATETYPE type, uint32_t& value)
 	if (g_render_states[type] == 0xffffffff)
 	{
 		result = Direct3DDevice7->GetRenderState(type, (LPDWORD)&value);
-		if (result == S_OK)
-		{
-			g_render_states[type] = value;
-		}
-		else
-		{
-			g_render_states[type] = 0xffffffff;
-		}
+		g_render_states[type] = result != S_OK ? 0xffffffff : value;
 	}
 	else
 	{

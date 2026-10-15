@@ -37,7 +37,7 @@ public:
 	LH_USER_ID    id;          /* 0x000 */
 	unsigned long LoginValue1; /* 0x004 */
 	unsigned long LoginValue2; /* 0x008 */
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	char LoginText[LH_MAX_LOGIN_TEXT_LENGTH]; /* 0x00c */
 #endif
 	wchar_t        Name[LH_MAX_NAME_LENGTH + 1];         /* 0x070 */
@@ -48,7 +48,7 @@ public:
 	char*          LoginDocument;                        /* 0x110 */
 	LHHttp*        Http;                                 /* 0x114 */
 	unsigned short HttpResponseCode;                     /* 0x118 */
-#ifndef VERSION_BW1W120
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 	char LoginText[LH_MAX_LOGIN_TEXT_LENGTH];
 #endif
 
@@ -90,7 +90,7 @@ private:
 	// BW1W120 10018010 BW1M119 01102b60 (LHCombined Release)
 	LH_RETURN ParseUserData(char* document, unsigned long* user_id);
 };
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(sizeof(LHNetUser) == 0x11c, "Data type is of wrong size");
 #endif
 

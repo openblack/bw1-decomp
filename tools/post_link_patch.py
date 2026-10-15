@@ -103,6 +103,7 @@ BW1W110_LINK_TIME = datetime.fromisoformat('2001-06-26T15:07:58+00:00')
 BW1W110_PDB_TIME = datetime.fromisoformat('2001-06-04T14:50:17+00:00')
 BW1W120_LINK_TIME = datetime.fromisoformat('2002-06-18T06:13:22+00:00')
 BW1W120_PDB_TIME = datetime.fromisoformat('2002-05-27T11:24:14+00:00')
+BW1W130_LINK_TIME = datetime.fromisoformat('2003-03-06T21:30:42+00:00')
 
 # The CodeView record an IMAGE_DEBUG_DIRECTORY of type IMAGE_DEBUG_TYPE_CODEVIEW
 # points at: a reference to the (unshipped) .pdb rather than debug info itself.
@@ -117,12 +118,16 @@ __CV_INFO_PDB20_format__ = ('CV_INFO_PDB20', [
 ])
 
 
+# 1.30 has two reserved slots after the Rich header where every earlier version has three.
+RICH_RESERVED_SLOTS = {"BW1W130": 2}
+
+
 def rich_header_size(records):
     return len(RICH_PREAMBLE) + len(records) * RICH_RECORD_SIZE + len(RICH_TRAILER)
 
 
-def pe_offset_after_rich_header(records):
-    return LLDLINK_STUB_SIZE + rich_header_size(records) + RICH_HEADER_PAD
+def pe_offset_after_rich_header(records, reserved_slots=RICH_HEADER_RESERVED_SLOTS):
+    return LLDLINK_STUB_SIZE + rich_header_size(records) + reserved_slots * RICH_RECORD_SIZE
 
 
 # Version-specific Rich header data, decoded from each original exe.
@@ -192,6 +197,31 @@ BW1W120_RICH_RECORDS = [
     RichRecord(RichProductID.UTC12_CPP,    8966, 620),
     RichRecord(RichProductID.IMPORT_OLD,      0,   9),
     RichRecord(RichProductID.LINKER600,    8447,  26),
+]
+
+
+BW1W130_RICH_KEY = 0x10EE403D   # extracted from original exe at offset 0x134
+BW1W130_RICH_RECORDS = [
+    RichRecord(RichProductID.UTC12_C,      8168,   1),
+    RichRecord(RichProductID.UTC12_C,      8447,  23),
+    RichRecord(RichProductID.UTC70_CPP,    9178,   1),
+    RichRecord(RichProductID.ALIAS_OBJ,    7291,  14),
+    RichRecord(RichProductID.MASM613,      7299,  43),
+    RichRecord(RichProductID.UTC70_C,      9178,   1),
+    RichRecord(RichProductID.IMPORT_VS2002, 9210,  6),
+    RichRecord(RichProductID.UTC12_C,      8799,  35),
+    RichRecord(RichProductID.UTC12_CPP,    8799,   7),
+    RichRecord(RichProductID.UTC12_CPP,    8047,  26),
+    RichRecord(RichProductID.UTC12_C,      8047, 202),
+    RichRecord(RichProductID.UTC12_CPP,    8168,  12),
+    RichRecord(RichProductID.LINKER600,    8168,   2),
+    RichRecord(RichProductID.LINKER600SP5, 8034,  21),
+    RichRecord(RichProductID.IMPORT,          0, 588),
+    RichRecord(RichProductID.UTC12_CPP,    8447,   2),
+    RichRecord(RichProductID.CVTRES,       1735,   1),
+    RichRecord(RichProductID.UTC12_CPP,    8966, 645),
+    RichRecord(RichProductID.IMPORT_OLD,      0,   7),
+    RichRecord(RichProductID.LINKER600,    8447,  28),
 ]
 
 
@@ -570,6 +600,14 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0056F9DB, call_rel32(0x004017F9)),  # GameThing
     (0x0056FB0B, call_rel32(0x004017F9)),  # GameThing
     (0x005703CA, call_indirect(0x008A96E4)),  # GameThing: __imp__LHSampleSetVolume...
+    (0x00578B0A, call_indirect(0x008A903C)),  # GestureSystem: __imp__DirectXSetupGetVersion
+    (0x00578E1A, call_indirect(0x008A97B8)),  # GestureSystemData
+    (0x00578E9A, call_indirect(0x008A9490)),  # GestureSystemData
+    (0x00578F2B, call_rel32(0x004017F9)),  # GestureSystemData
+    (0x0057901B, call_rel32(0x004017F9)),  # GestureSystemData
+    (0x005799FB, call_rel32(0x004017F9)),  # GestureSystemDataList
+    (0x00579AAA, call_indirect(0x008A9978)),  # GestureSystemDataList: __imp__CoFileTimeToDosDateTime@12
+    (0x00579AEA, call_indirect(0x008A9180)),  # GestureSystemDataList: __imp__EnterCriticalSection@4
     (0x00583E6B, call_rel32(0x004017F9)),  # GJProperty
     (0x005854AA, call_indirect(0x008A9034)),  # GJProperty: __imp__DirectInputCreateA@4
     (0x0058600A, call_indirect(0x008A90A0)),  # GJProperty: __imp_?GetCurrentPosition@CImmMouse@@UAEHAAJ0@Z
@@ -883,6 +921,28 @@ def apply_BW1W120_patch(pe, cfg, out_dir, modules):
     apply_modules_patch(out_dir, cfg, modules)
 
 
+def apply_BW1W130_patch(pe, cfg, out_dir, modules):
+    ste = section_table_end(pe)
+    insert_header_padding(pe, ste, SAFEDISC_SECTION_BUMP)
+    # This decryptor also took "r 32-bit" off the front of the first comment
+    write_bytes(pe, ste + SAFEDISC_SECTION_BUMP, b'\x00' * (EXESTR_PREFIX_ERASE + len(b'r 32-bit')))
+
+    apply_patch_safedisc(pe, cfg)
+    # 4-byte marker immediately before IMAGE_NT_HEADERS; this SafeDisc Cleaner signs 0x2DAD.
+    write_bytes(pe, pe_offset_after_rich_header(BW1W130_RICH_RECORDS, RICH_RESERVED_SLOTS["BW1W130"]) - 4, bytes([0x0D, 0x00, 0x2D, 0xAD]))
+    apply_BW1_common_patch(pe, cfg)
+    mark_imports_bound(pe)
+
+    # Another decryptor easter egg
+    write_bytes(pe, 0x00000350, b'Myth / Deviance ')
+
+    # The debug directory names an NB10 record at the file's end, which the decryptor cut off
+    # (see force_size); only the entry itself survives.
+    restore_debug_directory(pe, 0x008ae9c0, BW1W130_LINK_TIME, 0x008c4000, 0x36)
+
+    apply_modules_patch(out_dir, cfg, modules)
+
+
 PATCHES = {
     "BW1W100": (BW1W100_RICH_KEY, BW1W100_RICH_RECORDS, apply_BW1W100_patch, {
         "LHAudio":       (BW1W100_LHAUDIO_RICH_KEY,       BW1W100_LHAUDIO_RICH_RECORDS,       BW1W100_LHAUDIO_RICH_SLOTS),
@@ -898,6 +958,13 @@ PATCHES = {
     }),
     "BW1W120": (BW1W120_RICH_KEY, BW1W120_RICH_RECORDS, apply_BW1W120_patch, {}),
     "BW1W120": (BW1W120_RICH_KEY, BW1W120_RICH_RECORDS, apply_BW1W120_patch, {
+        "LHAudio":       (BW1W120_LHAUDIO_RICH_KEY,       BW1W120_LHAUDIO_RICH_RECORDS,       BW1W120_LHAUDIO_RICH_SLOTS),
+        "LHLog":         (BW1W120_LHLOG_RICH_KEY,         BW1W120_LHLOG_RICH_RECORDS,         BW1W120_LHLOG_RICH_SLOTS),
+        "LHMultiplayer": (BW1W120_LHMULTIPLAYER_RICH_KEY, BW1W120_LHMULTIPLAYER_RICH_RECORDS, BW1W120_LHMULTIPLAYER_RICH_SLOTS),
+        "LHDialog":      (BW1W120_LHDIALOG_RICH_KEY,      BW1W120_LHDIALOG_RICH_RECORDS,      BW1W120_LHDIALOG_RICH_SLOTS),
+    }),
+    # The module DLLs shipped unchanged in 1.30
+    "BW1W130": (BW1W130_RICH_KEY, BW1W130_RICH_RECORDS, apply_BW1W130_patch, {
         "LHAudio":       (BW1W120_LHAUDIO_RICH_KEY,       BW1W120_LHAUDIO_RICH_RECORDS,       BW1W120_LHAUDIO_RICH_SLOTS),
         "LHLog":         (BW1W120_LHLOG_RICH_KEY,         BW1W120_LHLOG_RICH_RECORDS,         BW1W120_LHLOG_RICH_SLOTS),
         "LHMultiplayer": (BW1W120_LHMULTIPLAYER_RICH_KEY, BW1W120_LHMULTIPLAYER_RICH_RECORDS, BW1W120_LHMULTIPLAYER_RICH_SLOTS),
@@ -975,7 +1042,7 @@ def main():
     data = bytearray(args.input.read_bytes())
     pe   = pefile.PE(data=data)
 
-    insert_rich_header(pe, rich_key, rich_records)
+    insert_rich_header(pe, rich_key, rich_records, RICH_RESERVED_SLOTS.get(args.version, RICH_HEADER_RESERVED_SLOTS))
     zero_code_section_padding(pe)
     apply_safedisc(pe, cfg, out.parent, modules)
 

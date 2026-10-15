@@ -15,7 +15,7 @@
 #include <Lionhead/LH3DLib/development/LHRandom.h>          /* For Random */
 #include <Lionhead/LH3DLib/development/EclairagePublic.h>   /* For struct EclairagePublic */
 #include <Lionhead/LH3DLib/development/Leash.h>             /* For Leash::GetTexture */
-#include <Lionhead/LH3DLib/development/Glow.h>              /* For LH3DGJAnimVolFX */
+#include <Lionhead/LH3DLib/development/LH3DGJAnimVolFX.h>   /* For class LH3DGJAnimVolFX */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>          /* For TWO_PI */
 #include <Lionhead/LH3DLib/development/LH3DObjectCollide.h> /* For class LH3DObjectCollide */
 #include <Lionhead/LHLib/ver5.0/LHCollide.h>                /* For class NewCollide */

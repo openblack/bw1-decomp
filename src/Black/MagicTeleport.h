@@ -21,6 +21,7 @@ class Object;
 class PSysInterface;
 class Reaction;
 class SpellTeleport;
+class Villager;
 
 struct LivingMapCoordsPair
 {
@@ -102,6 +103,14 @@ public:
 
 	// BW1W120 005fc790 BW1M119 013b7950
 	void DoTeleport(Living* living, bool force);
+	// BW1W120 005fc4f0 BW1M119 013b81d0
+	bool32_t ApplyVillagerDirectlyToTeleport(GInterfaceStatus* status, Villager* villager);
+	// BW1W120 005fc4b0 BW1M119 013b8340
+	bool32_t ValidToApplyVillagerDirectlyToTeleport(GInterfaceStatus* status, Villager* villager);
+	// BW1W120 005fc590 BW1M119 013b8050
+	bool ShouldLivingThingReact(Living* living);
+	// BW1W120 005fc6a0 BW1M119 013b7ca0
+	void AddLivingMapCoordsPair(Living* living, const MapCoords& pos);
 };
 
 static_assert(sizeof(MagicTeleport) == 0xa4, "Data type is of wrong size");

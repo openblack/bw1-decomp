@@ -21,6 +21,7 @@ enum COLLIDE_TYPE
 class Citadel;
 class Game3DObject;
 class GameThingWithPos;
+struct LH3DColor;
 struct LHPoint;
 struct MapCell;
 struct MapCellIterator;
@@ -187,6 +188,8 @@ struct MapCoords : public LH3DMapCoords
 	void SetAltitude(float _altitude) { altitude = _altitude; }
 	// BW1W120 00603430 BW1M119 0104c540
 	MapCell* ToMap() const;
+	// BW1W120 006024d0 BW1M119 011a6820
+	void ShowMapCell(LH3DColor* color) const;
 	// BW1W120 006034b0 BW1M119 0102f600
 	Object* GetFirstObjectFixed() const;
 	// BW1W120 006034d0 BW1M119 0102f0e0

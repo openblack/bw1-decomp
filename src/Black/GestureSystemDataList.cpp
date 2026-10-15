@@ -5,6 +5,7 @@
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For LHReleasedOSFile */
 
 #include "GestureConstants.h"
+#include "CellSize.h"
 #include "GestureSystemData.h"
 
 void GestureSystemDataList::Reset()
@@ -113,11 +114,17 @@ void GestureSystemDataList::RenumberGesturesAbove(uint8_t gesture)
 
 GestureSystemData* GestureSystemDataList::GetData(int index) const
 {
-	if (index >= Count || index < 0)
+	if (index >= Count)
 	{
-		return NULL;
+		goto outOfRange;
+	}
+	if (index < 0)
+	{
+		goto outOfRange;
 	}
 	return &Data[index];
+outOfRange:
+	return NULL;
 }
 
 GestureSystemData* GestureSystemDataList::GetGestureFromResult(long gesture) const

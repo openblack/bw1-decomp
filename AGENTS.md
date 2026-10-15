@@ -43,7 +43,7 @@ Experiment discipline, learned the expensive way:
 ## Repository Layout
 
 - `configure.py`        — Project configuration and generator script.
-- `config/[VERSION]`    — Configuration files for each game version (`BW1W100`, `BW1W110`, `BW1W120`, `BW1M119`).
+- `config/[VERSION]`    — Configuration files for each game version (`BW1W100`, `BW1W110`, `BW1W120`, `BW1W130`, `BW1M119`).
     - `config.yml`      — decomp-toolkit project config
     - `symbols.txt`     — layout of the binaries, addresses, sizes, names etc for every symbol present
     - `splits.txt`      — per-TU section address ranges
@@ -129,10 +129,18 @@ executable hashes check.
 
 ### Game versions
 
-CI builds BW1W100, BW1W110 and BW1W120, including the DLL units; only BW1W120 is configured
-locally by default. Layouts can differ between versions (e.g. `LHNetUser`), so guard
-version-specific `static_assert`s and members with `#ifdef VERSION_BW1W120`, and compile
-touched units with each version's `/DBUILD_VERSION=<n> /DVERSION_<ver>` before pushing.
+CI builds BW1W100, BW1W110, BW1W120 and BW1W130, including the DLL units; only BW1W120 is
+configured locally by default. Layouts can differ between versions (e.g. `LHNetUser`), so guard
+version-specific `static_assert`s and members with the version macros, and compile touched units
+with each version's `/DBUILD_VERSION=<n> /DVERSION_<ver>` before pushing. BW1W130 shares 1.20's
+layouts: guard them with `#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)`.
+
+BW1W130 was ported from BW1W120 by `tools/port_version.py`. It was built from
+`D:\Work\Games\dd\Black\` rather than `C:\dev\MP\Black\`, has some changed code and layouts,
+and stale bytes fill some of its function padding. A unit matched for 1.20 is therefore not
+automatically matched for 1.30: list the versions it really matches in an inclusive
+`MatchingFor(...)`, and keep a version out of that list rather than changing source for it.
+The same applies when matching a new unit: check BW1W130 before using plain `Matching`.
 
 The underlying utility used for splitting the binary is `dtk` (`build/tools/dtk`).
 It is already properly set up and almost never requires any meddling.
@@ -369,14 +377,23 @@ analyses, name evidence and matching notes in the disassembly folder (see
 - Header guards use the `#ifndef BW1_DECOMP_<NAME>_INCLUDED_H` / `#define` / `#endif` pattern (e.g. `BW1_DECOMP_ABODE_INCLUDED_H`).
 - Use windef.h's `min`/`max` where the original did. `tools/minmax-scan.py --verify --apply <file>` finds
   hand-expanded selects and clamps and keeps only rewrites that compile byte-identical (`minmax-macros` skill).
-- No magic numbers. Name sizes, counts, lengths, ports, timeouts, ids and flags as enumerators
-  (an anonymous `enum { LH_... = n };` in the owning header, never new static data), use existing
+- No magic numbers. Name sizes, counts, lengths, ports, timeouts, ids and flags. A value that
+  belongs to a real enum is one of its enumerators: the number of entries in `TRIBE_TYPE` is
+  `TRIBE_TYPE_LAST`, not a separate constant. Any other standalone constant is a `#define` in the
+  owning header, never an anonymous `enum { ... }` and never new static data. Use existing
   enums and Win32 names (`INFINITE`, `WAIT_FAILED`, `THREAD_PRIORITY_*`), `sizeof`/`ARRAY_SIZE`
   for repeated sizes, hex for colours and base 10 for line numbers.
 - Full-register true/false values are `bool32_t` (returns, members, parameters, template helpers
   such as `LHLinkedList::Add`) with `true`/`false`, not `TRUE`/`FALSE`/`1`/`0`. It is `int`, so
   manglings do not change. Wide strings are `wchar_t`, not `char16_t` or `unsigned short`.
   `unsigned long` (`K`) and `uint32_t` (`I`) mangle differently: never swap them in signatures.
+- Declare each value as what it holds, then compare it in that type's own terms. A field, local,
+  parameter or return used only as a flag is `bool32_t`, tested directly or against `true`/`false`,
+  never `0`/`1`. A pointer is a pointer type compared with `NULL`, never a `uint32_t` cast back to a
+  pointer. An enum value has the enum type and is compared with enumerators. A cast inside a comparison
+  (`(uint8_t)GetTopState() != …`, `(uint32_t)NumAdults > …`) usually hides a wrong declaration: fix the
+  field, return or parameter type instead, and keep the cast only when codegen needs it. Naming a
+  `field_0x…` member includes giving it the right type.
 - Never use `__FILE__`, `__LINE__` or `#line`. For debug-new and logging calls define a TU-local
   `#define FILEPATH "C:\\dev\\MP\\..."` holding the binary's exact string and pass a base-10 line literal.
 - Boilerplate that recurs identically across modules is a shared macro, not per-file code
@@ -400,7 +417,10 @@ Verify affected header consumers after layout, virtual-interface or include-boun
 
 Every static data member declared in a header bumps cl6's `_$E`/`_$S` counter in each TU
 that includes it, renumbering those TUs' initializers. If the game's numbering shows it never
-saw a module's statics, keep them out of the game's view (e.g. `#ifdef LH_MULTIPLAYER_EXPORTS`).
+saw a DLL module's statics, keep them out of the game's view with that module's own build
+define (e.g. `#ifdef LH_MULTIPLAYER_EXPORTS`). This applies only to the DLL modules: LH3DLib
+is linked into the executable, and hiding its declarations from the game with `_LH_3D_LIB_`
+is forbidden (see [Rules from maintainer review](#rules-from-maintainer-review)).
 
 ### Inline expansion
 
@@ -562,6 +582,14 @@ conflict with looser guidance above.
 - **Format and rebase before review.** Run `clang-format` 22 on every touched file and
   rebase onto the latest `main`; CI runs `check-format` and expects the report to show
   the claimed improvement.
+- **Never use `_LH_3D_LIB_`.** Do not test it (`#ifdef`, `#if defined`) in source or headers,
+  and do not add it to the MSVC compile flags, to give LH3DLib units statics, members or
+  inline bodies that the game units do not see. The same goes for any other invented
+  library-only define. Its only place is LH3DP3.cpp's reproduced Intel C++ command line in
+  `configure.py`. When an LH3DLib declaration would break matched game code (an executable
+  hash, or a function, initializer or section that currently matches), treat it like a
+  global that cannot be declared yet (see [Globals](#globals)): leave the function that needs
+  it nonmatching and record why.
 
 ### Naming and values (from @qwerin's #425 review)
 
@@ -573,8 +601,8 @@ conflict with looser guidance above.
 - **Name anything used in a significant way** — field, function, enum value, flag, or
   parameter — from context: find what sets and reads it, then name it by its role. Fields
   that are only saved/loaded and never read may stay `field_0x…`, but say so in the PR.
-- **Placement.** Counts/sizes follow the file's existing convention (frequently `#define`
-  lists rather than anonymous enums); new enums go in the owning class's header.
+- **Placement.** Standalone counts/sizes are `#define`s in the owning header (no anonymous
+  enums); new named enums go in the owning class's header.
   `include/chlasm/*.h` comes from Creature Isle but is usable for Black & White; where its
   last enumerator is too large it needs `#ifdef VERSION_BW1WCI` guards.
 - **Watch include/link side effects.** A new `#include` in a shared header reaches every

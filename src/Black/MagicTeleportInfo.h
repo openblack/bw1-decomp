@@ -21,7 +21,7 @@ public:
 	// Override methods
 
 	// BW1W120 005fbe50 BW1M119 013b9660
-	virtual uint32_t CanCast(const MapCoords& coords, GameThing* caster) const;
+	virtual bool32_t CanCast(const MapCoords& coords, GameThing* caster) const;
 	// BW1W120 005fbdf0 BW1M119 013b97a0
 	virtual Spell* AllocSpell(GameThing* caster) const;
 

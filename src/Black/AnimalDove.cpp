@@ -104,6 +104,11 @@ bool32_t Dove::Save(GameOSFile& file)
 	return Animal::Save(file) != false;
 }
 
+bool32_t Dove::CanBeHealedByHealSpell()
+{
+	return false;
+}
+
 bool32_t Bat::CanBeFrighteningToCreature(Creature* creature)
 {
 	return true;
