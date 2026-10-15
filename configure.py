@@ -375,9 +375,13 @@ cflags_icc = [
 ]
 
 # The game code (Black/) was compiled for Pentium Pro (/G6); the static
-# libraries (Lionhead/, zlib/) were not. Black/ objects are declared with
-# GameCodeObject (below), which compiles them with these flags.
+# libraries other than LH3DLib (LHLib, zlib, ...) were not. Black/ objects are
+# declared with GameCodeObject (below), which compiles them with these flags.
 cflags_gamecode = [*cflags_base, "/G6"]
+# LH3DLib was also compiled for Pentium Pro, like LH3DP3.cpp's ICC banner says:
+# without /G6, LH3DMath::GetYAngle and the LH3DObjectCollide functions schedule
+# their integer instructions differently around the x87 code.
+cflags_lh3dlib = [*cflags_base, "/G6"]
 # 1.00 was built with function-level linking: every function is its own COMDAT,
 # so the link folds identical bodies (/OPT:ICF) and drops unreferenced ones
 # (/OPT:REF, lld's default without /debug).
@@ -488,6 +492,13 @@ def GameSpyObject(completed, name, **options):
 # extra_cflags still apply on top, as with Object.
 def GameCodeObject(completed, name, **options):
     return Object(completed, name, cflags=cflags_gamecode, **options)
+
+
+# An LH3DLib object, compiled with cflags_lh3dlib (Pentium Pro, /G6) and counted
+# in the "sdk" progress category.
+def LH3DLibObject(completed, name, **options):
+    options.setdefault("progress_category", "sdk")
+    return Object(completed, name, cflags=cflags_lh3dlib, **options)
 
 
 # An object built with Intel C++ 5.0 instead of MSVC. MSVC's bin stays on PATH
@@ -1380,7 +1391,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\nlsdata1.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcmt", "build\\intel\\mt_obj\\strftime.obj", progress_category="sdk"),
 
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DCameraChecker.cpp", progress_category="sdk"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DCameraChecker.cpp"),
 
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\cmiscdat.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcmt", "build\\intel\\mt_obj\\a_cmp.obj", progress_category="sdk"),
@@ -1514,32 +1525,33 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSpriteList.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHConvert.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSprite.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DSmoke.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DIsland.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DMesh.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DTech.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/Fish.cpp", progress_category="sdk"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSmoke.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DIsland.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMesh.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DTech.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Fish.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHCollide.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DRender.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DText.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/ValueSpinner.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DLightningSheet.cpp", progress_category="sdk"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DRender.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DText.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/ValueSpinner.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DLightningSheet.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/Route.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DOrientSprite.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/Glow.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DStorm.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DSprite.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DMath.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DMem.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DWay.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/Font.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LHVideoPlayer.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/Blob.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DHair.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/Leash.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DPrimitive.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/LH3DVRAMTex.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LH3DLib/development/CAnim.cpp", progress_category="sdk"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DOrientSprite.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Glow.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DStorm.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSprite.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMath.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMem.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DWay.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Font.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LHVideoPlayer.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Blob.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DHair.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Leash.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DObjectCollide.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DPrimitive.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DVRAMTex.cpp"),
+            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/CAnim.cpp"),
 
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcimt", "build\\intel\\mt_obj\\_ios.obj", progress_category="sdk"),
             LibObject(MatchingFor("BW1W110", "BW1W120", "BW1W130"), "libcimt", "build\\intel\\mt_obj\\fstream.obj", progress_category="sdk"),

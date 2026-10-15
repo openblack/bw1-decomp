@@ -10,17 +10,8 @@
 
 struct Vertex3D;
 
-enum
-{
-	// The size of the shadow texture, halved for low resolution textures.
-	LH3D_T_SHADOW_SIZE = 256,
-	// The size of the shadows DrawTextureShadow32x32 renders.
-	LH3D_T_SHADOW_32X32_SIZE = 32,
-	// The size of a material's collision mask.
-	LH3D_T_SHADOW_MASK_SIZE = 64,
-	// The distance in world units the shadow texture spans.
-	LH3D_T_SHADOW_WORLD_SIZE = 160,
-};
+// The size of the shadow texture, halved for low resolution textures.
+#define LH3D_T_SHADOW_SIZE 256
 
 // Renders object shadows into a texture, one scan line at a time.
 struct LH3DTShadow
