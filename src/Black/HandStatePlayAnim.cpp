@@ -3,6 +3,7 @@
 #include "HandStatePlayAnim.h"
 
 #include "ColourConstants.h" /* For White */
+#include <string>            /* For the std::basic_string instantiations */
 
 HandStatePlayAnim::HandStatePlayAnim(CHand* hand) : HandState(hand)
 {

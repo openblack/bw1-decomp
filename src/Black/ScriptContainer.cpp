@@ -1,5 +1,6 @@
 #include "GameTimeConstants.h"
 #include "Script.h"
+#include <string> /* For the std::basic_string instantiations */
 
 // BW1W120 00c0c740
 // Indexed by SCRIPT_OBJECT_TYPE - 1.

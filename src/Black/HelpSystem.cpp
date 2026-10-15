@@ -3,6 +3,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include "HelpSystemInfo.h"
+#include <string> /* For the std::basic_string instantiations */
 
 GBaseInfo* HelpSystemInfo::GetBaseInfo(uint32_t& info_count)
 {

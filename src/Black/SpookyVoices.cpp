@@ -2,6 +2,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include "SpookyVoiceInfo.h"
+#include <string> /* For the std::basic_string instantiations */
 
 GSpookyVoiceInfo GSpookyVoiceInfo::Infos[NUM_SPOOKY_NAMES];
 

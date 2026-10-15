@@ -1,6 +1,7 @@
 #include "LoaderAnon.h"
 
 #include <string.h> /* For strcpy */
+#include <string>   /* For the std::basic_string instantiations */
 
 #define LOADER_ANON_DEFAULT_LOAD_ID "DMPJGR"
 

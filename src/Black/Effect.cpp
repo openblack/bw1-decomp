@@ -1,5 +1,6 @@
 #include "EffectInfo.h"
 #include "MagicEffectInfo.h"
+#include <string> /* For the std::basic_string instantiations */
 
 GBaseInfo* GEffectInfo::GetBaseInfo(uint32_t& info_count)
 {

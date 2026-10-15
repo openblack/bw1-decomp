@@ -1,6 +1,7 @@
 #include "EditorHug.h"
 
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+#include <string>               /* For the std::basic_string instantiations */
 
 std::map<MapCoords, int> EditorHug::DebugCells;
 

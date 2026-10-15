@@ -6,6 +6,7 @@
 HeapStore* Base::ObjectHeapStore;
 
 #include "ColourConstants.h" /* For White */
+#include <string>            /* For the std::basic_string instantiations */
 
 bool ARGS_FORCEINETCONN;
 bool ARGS_NOINETCONN;

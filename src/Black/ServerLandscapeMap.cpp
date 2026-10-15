@@ -1,4 +1,5 @@
 #include "Setup.h"
+#include <string> /* For the std::basic_string instantiations */
 
 LHScriptCommandX<char> GSetup::MapCommands[] = {{(char*)"SET_NO_PLAYERS", "N         "},
                                                 {(char*)"LOAD_TRIBE_DANCE", "AN        "},
