@@ -415,9 +415,9 @@ void CreatureDesires::ModifyDesireAfterFeedback(const CreatureInfo* info, CREATU
 
 		CreatureDesireSource* desireSource = GetSource(source);
 		desireSource->Threshold +=
-			-(feedback * CreatureSourceBoundsInfo::GetThresholdBounds()[desireSource->type].FeedbackScale);
-		CLAMP(desireSource->Threshold, CreatureSourceBoundsInfo::GetThresholdBounds()[desireSource->type].MinThreshold,
-		      CreatureSourceBoundsInfo::GetThresholdBounds()[desireSource->type].MaxThreshold);
+			-(feedback * CreatureSourceBoundsInfo::GetThresholdBounds()[desireSource->Type].FeedbackScale);
+		CLAMP(desireSource->Threshold, CreatureSourceBoundsInfo::GetThresholdBounds()[desireSource->Type].MinThreshold,
+		      CreatureSourceBoundsInfo::GetThresholdBounds()[desireSource->Type].MaxThreshold);
 
 		MaxLevels[desire] += feedback * info->MaxDesireLevelFeedbackScale;
 		float lowest = max(0.0f, CreatureInitialDesireInfo::GetInfo()[desire].MaxLevel - MAX_LEVEL_FEEDBACK_RANGE);
