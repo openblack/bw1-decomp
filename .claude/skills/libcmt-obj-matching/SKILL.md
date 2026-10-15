@@ -1,12 +1,12 @@
 ---
 name: libcmt-obj-matching
-description: Make CRT objects from the downloaded LIBCMT.LIB / LIBCPMT.LIB link byte-exact into all three BW1 versions (BW1W100, BW1W110, BW1W120). Script-driven loop (.claude/skills/libcmt-obj-matching/libobj.py) that auto-matches clean objects with no agent judgement and flags the hard ones (E100 /OPT:REF dead-strip, trailing-alignment, __real@8 comdat fold) for hand work. Covers the worked numbers, the verify/recover cycle, and the manual symbol edits. The module DLLs (LHAudio, LHMultiplayer) use modlib.py instead, which places a whole DLL's CRT at once.
+description: Make CRT objects from the downloaded LIBCMT.LIB / LIBCPMT.LIB link byte-exact into every BW1 version (BW1W100, BW1W110, BW1W120, BW1W130). Script-driven loop (.claude/skills/libcmt-obj-matching/libobj.py) that auto-matches clean objects with no agent judgement and flags the hard ones (E100 /OPT:REF dead-strip, trailing-alignment, __real@8 comdat fold) for hand work. Covers the worked numbers, the verify/recover cycle, and the manual symbol edits. The module DLLs (LHAudio, LHMultiplayer) use modlib.py instead, which places a whole DLL's CRT at once.
 ---
 
-# Match a LIBCMT.LIB object — all 3 versions, script-driven
+# Match a LIBCMT.LIB object — every version, script-driven
 
 Goal: take members of `LIBCMT.LIB` / `LIBCPMT.LIB` and make them link **byte-exact**
-into BW1W100, BW1W110 and BW1W120. Nothing new is committed — the `.LIB` and the
+into BW1W100, BW1W110, BW1W120 and BW1W130. Nothing new is committed — the `.LIB` and the
 extracted `.obj` are build artifacts; the result is edits to `configure.py`,
 `config/<VER>/splits.txt` and `config/<VER>/symbols.txt`.
 
@@ -109,6 +109,13 @@ the split start is auto-repaired by `loop`; by hand, shrink that symbol (below).
     references `/OPT:REF` can see. **`purevirt.obj` is the canonical example of
     this — it matches E142 (NOREF) but not E100/E110 in isolation.** Do not try to
     force it with `/INCLUDE` linker flags; treat it as a `manual`/run-matching case.
+- **BW1W130 has stale bytes in some inter-object padding** (code fragments where
+  the linker would emit `0xCC`/`0x90`), and its `cpu_disp_mt.obj` and libcpmt
+  `.CRT$XCU` slots differ from the libraries. Such objects cannot link byte-exact
+  there: keep BW1W130 out of their `MatchingFor(...)` list. When an object stops
+  linking from the library for a version, give its extracted `.text` split the
+  library section's alignment (`align:16` for `memcpy`, `87disp`, ...), or it
+  lands at the previous object's end and shifts every call after it.
 - `dtk` is at `build/tools/dtk` (the loop auto-discovers the exact dtk+python the
   last `configure` used from `build.ninja`). `lld-link` at
   `build/tools/llvm/bin/lld-link`.
@@ -227,12 +234,14 @@ the branch base first). Rerunning it over a dtk-rewritten file is not idempotent
 Which libcmt each DLL used comes from its Rich header (`@comp.id` build numbers:
 8797 = SP4 / `msvc6.4`, 8047 = SP5 / `msvc6.5`):
 
+1.30 shipped the 1.20 DLLs unchanged (its module configs are copies), so its column is 1.20's.
+
 | DLL | 1.00 | 1.10 | 1.20 | archive id |
 |---|---|---|---|---|
-| LHAudio (one binary in all three) | SP4 | SP4 | SP4 | `libcmt64` (`"msvc6.4:libcmt"`) |
+| LHAudio (one binary in every version) | SP4 | SP4 | SP4 | `libcmt64` (`"msvc6.4:libcmt"`) |
 | LHMultiplayer | SP4 | SP4 | SP5 | `libcmt` |
 | LHLog | SP4, `/OPT:REF` | SP4, `/OPT:REF` | VC7 linker | skipped |
-| LHDialog | MSVCRTD.dll (dynamic), but the DLL startup objects `atonexit.obj` + `crtdll.obj` are static (identical in all three) | same | same | `msvcrtd` (`msvc6.5`'s msvcrtd.lib) |
+| LHDialog | MSVCRTD.dll (dynamic), but the DLL startup objects `atonexit.obj` + `crtdll.obj` are static (identical in every version) | same | same | `msvcrtd` (`msvc6.5`'s msvcrtd.lib) |
 
 LHLog 1.00/1.10 drop unreferenced COMDATs (dozens of members are partial:
 `crt0msg`, `crt0dat`, `mlock`, `sbheap`...). Placing only the complete members

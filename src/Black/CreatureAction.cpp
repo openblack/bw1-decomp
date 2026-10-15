@@ -1259,7 +1259,7 @@ int CreatureAgenda::ConstructSubActionsForCastImpressiveSpell(unsigned long para
 	{
 		MAGIC_TYPE      type = impressiveSpells[i];
 		CreatureMental* mind = creature->mind;
-#ifndef VERSION_BW1W120
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 		if (mind->ActionsKnownAbout.KnowsAction(CREATURE_ACTION_LEARNING_TYPE_MAGIC, type) &&
 		    Creature::ImpressiveSpellDoneWhen[i] <= oldest)
 		{
@@ -1272,7 +1272,7 @@ int CreatureAgenda::ConstructSubActionsForCastImpressiveSpell(unsigned long para
 			which = i;
 		}
 	}
-#ifndef VERSION_BW1W120
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 	Creature::ImpressiveSpellDoneWhen[which] = GGame::g_game->data.GameTurn;
 #endif
 	if (spell != MAGIC_TYPE_NONE)

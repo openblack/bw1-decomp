@@ -4,7 +4,7 @@
 /* Unused here; emits the guarded atexit registration of std::ctype<wchar_t>::id
    (.CRT$XCU thunk -> mov cl,[0xFAC934]; push 0x407870; call atexit) that every
    object derived from this one ends with. */
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 #include <string>
 #endif
 

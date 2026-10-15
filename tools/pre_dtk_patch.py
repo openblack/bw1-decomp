@@ -30,20 +30,29 @@ import struct
 import sys
 from pathlib import Path
 
-# The 24 bytes the decryptor zeroed off the front of the first exestr comment.
-# Constant for this toolchain (Intel C++ Compiler #pragma comment(exestr)).
-INTEL_COMMENT_PREFIX = b"Intel(R) C++ Compiler fo"
+# How every Intel exestr comment (Intel C++ Compiler #pragma comment(exestr)) begins. The
+# decryptor zeroed the front of the first one: 24 bytes ("Intel(R) C++ Compiler fo") in 1.10 and
+# 1.20, 32 ("... for 32-bit") in 1.30.
+INTEL_COMMENT_HEAD = b"Intel(R) C++ Compiler for 32-bit applications, Version "
 
 # Substring present in every Intel exestr comment -- full ("Intel(R) C++
-# Compiler for 32-bit applications ...") and the decryptor-truncated fragment
-# ("r 32-bit applications ..."). Used to pick the comment runs out of the header
-# padding while leaving cracker graffiti and unrelated linker markers (e.g. the
-# "BoG_" stamp near SizeOfHeaders) untouched.
-COMMENT_CONTENT_MARKER = b"32-bit applications"
+# Compiler for 32-bit applications, Version ...") and the decryptor-truncated
+# fragment. Used to pick the comment runs out of the header padding while leaving
+# cracker graffiti and unrelated linker markers (e.g. the "BoG_" stamp near
+# SizeOfHeaders) untouched.
+COMMENT_CONTENT_MARKER = b" applications, Version "
 
 # A comment run that does not start with this is a decryptor-truncated fragment
-# and gets INTEL_COMMENT_PREFIX prepended.
+# and gets the erased part of INTEL_COMMENT_HEAD prepended.
 COMMENT_MARKER = b"Intel(R)"
+
+
+def restore_comment_head(run: bytes) -> bytes:
+    """Prepend whatever part of INTEL_COMMENT_HEAD the decryptor zeroed off the run."""
+    for erased in range(len(INTEL_COMMENT_HEAD)):
+        if run.startswith(INTEL_COMMENT_HEAD[erased:]):
+            return INTEL_COMMENT_HEAD[:erased] + run
+    raise SystemExit(f"cannot tell how much of the comment was erased: {run[:40]!r}")
 
 
 def section_table_end(data: bytes) -> int:
@@ -92,7 +101,7 @@ def build_clean(data: bytes) -> bytes:
 
     # Restore the truncated first comment.
     if not comments[0].startswith(COMMENT_MARKER):
-        comments[0] = INTEL_COMMENT_PREFIX + comments[0]
+        comments[0] = restore_comment_head(comments[0])
 
     # Rebuild the whole padding: full comments, NUL-terminated, flush at the
     # section table (where link.exe emits them); the rest zeroed, wiping all

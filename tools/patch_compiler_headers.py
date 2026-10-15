@@ -46,7 +46,7 @@ def main() -> int:
         if not path.is_file():
             errors.append(f"{path}: not found")
             continue
-        text = path.read_text(encoding="utf-8", errors="replace")
+        original = text = path.read_text(encoding="utf-8", errors="replace")
         for old, new in replacements:
             if old not in text:
                 if new in text:  # already patched
@@ -54,7 +54,8 @@ def main() -> int:
                 errors.append(f"{path}: pattern not found:\n  {old!r}")
                 continue
             text = text.replace(old, new, 1)
-        path.write_text(text, encoding="utf-8")
+        if text != original:
+            path.write_text(text, encoding="utf-8")
 
     if errors:
         for e in errors:

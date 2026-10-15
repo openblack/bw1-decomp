@@ -79,7 +79,7 @@
 #define ABODE_FILE "C:\\dev\\MP\\Black\\Abode.cpp"
 #endif
 
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 #define ABODE_LINE(line) (line)
 #else
 // 1.10 and 1.00 lack the 1.20 win conditions, so their lines sit earlier.
@@ -656,11 +656,11 @@ uint32_t Abode::Process()
 			NeglectTimer += 1.0f / ABODE_NEGLECT_TURNS;
 			if (NeglectTimer >= 1.0f)
 			{
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 				LosingLifeFromNeglect = true;
 #endif
 				ReduceLife(GetInfo()->EmptyAbodeLifeReducer, NULL);
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 				LosingLifeFromNeglect = false;
 #endif
 				NeglectTimer = 0.0f;
@@ -768,7 +768,7 @@ bool32_t Abode::Built()
 	if (GetTown() != NULL && GetTown()->GetPlayer() != NULL)
 	{
 		GetTown()->GetPlayer()->GetStats()->IncrementAllBuildingsBuilt(this);
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		if (IsWonder())
 		{
 			GetPlayer()->AddToCondition(WC_WONDERS_BUILT, 1);
@@ -839,13 +839,13 @@ void Abode::MakeFunctional()
 				storage_pit->AddFootpath(footpath);
 			}
 		}
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		CheckForCompleteNewTown();
 #endif
 	}
 }
 
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 void Abode::CheckForCompleteNewTown()
 {
 	int townCentres = 0;
@@ -1335,7 +1335,7 @@ float Abode::ReduceLife(float value, GPlayer* player)
 				GetTown()->SetInStateOfEmergency();
 			}
 		}
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		else if (oldLife >= 1.0f)
 		{
 			AddSmashedCondition(player);
@@ -1541,7 +1541,7 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage
 				return;
 			}
 		}
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		Object* thrower = physics->CollidedWith;
 		if (thrower == NULL)
 		{
@@ -1553,7 +1553,7 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* physics, bool transferred_damage
 		}
 #endif
 		ApplyEffectsDueToPhysicalDestruction(hitterObject, player);
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		SmashedByCreature = false;
 #endif
 		return;
@@ -1860,13 +1860,13 @@ void Abode::StopBeingFunctional(GPlayer* player)
 	if (player != NULL && Age >= ABODE_SETTLED_AGE)
 	{
 		++player->game_stats->BuildingsDestroyed;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		AddSmashedCondition(player);
 #endif
 	}
 }
 
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 void Abode::AddSmashedCondition(GPlayer* player)
 {
 	if (!LosingLifeFromNeglect)

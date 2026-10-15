@@ -35,7 +35,7 @@ public:
 	bool                                   IsOOSGame;
 	bool                                   InGameChannel;
 	bool                                   IsHost;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	uint8_t      field_0x15c7[0xa];
 	bool         GameStarting;
 	WinCondition Conditions[WC_LAST];
@@ -65,7 +65,7 @@ public:
 
 	// BW1W120 006227c0 BW1M119 013a02f0
 	void Reset();
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	// BW1W120 00622a60 BW1M119 null
 	void ResetConditions();
 #endif

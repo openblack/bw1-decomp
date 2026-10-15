@@ -21,7 +21,7 @@
 // fabricated: unreferenced 4-byte .bss slot at 0x00d0607c; real name unknown
 static float unused;
 
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(offsetof(Town, belief) == 0x798, "Town belief offset is incorrect");
 #elif defined(VERSION_BW1W110)
 static_assert(offsetof(Town, belief) == 0x794, "Town belief offset is incorrect");

@@ -145,7 +145,7 @@ public:
 	int16_t              field_0xfa;
 	BuildingSite*        building_site;
 	Villager*            mother;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	GPlayer* LastPlayerToInteract;
 #endif
 #ifndef VERSION_BW1W100

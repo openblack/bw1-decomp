@@ -2,7 +2,7 @@
 
 #include <stdio.h> /* For sprintf, sscanf */
 // Only BW1W120's unit carries the std::ctype<unsigned short>::id guard of the STL headers.
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 #include <string> /* For the std::ctype<unsigned short>::id guard */
 #endif
 #include <stdlib.h> /* For atoi */
@@ -419,7 +419,7 @@ void BWGameSpy::Think()
 
 bool BWGameSpy::InitialiseLobbyState()
 {
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	if (LHNetBase::Instance.Peer != NULL && peerIsConnected(LHNetBase::Instance.Peer))
 	{
 		peerLeaveRoom(LHNetBase::Instance.Peer, StagingRoom);
@@ -989,7 +989,7 @@ void BWGameSpy::GOAPlayersCallback(PEER peer, PEERBool playing, char* outbuf, in
 void BWGameSpy::NickErrorCallback(PEER peer, int type, const char* nick, void* param)
 {
 	MPFEConnectionStatus::Status.LeaveLobbyScreen();
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	MPFELogin::Instance.setup_box->MessageBoxA(L"Username already in use.", MSGBOXSTYLE_SINGLE_BUTTON,
 	                                           LOBBY_MESSAGE_BOX_ERROR);
 	if (LHNetBase::Instance.Peer != NULL)
@@ -1099,7 +1099,7 @@ void BWGameSpy::CreateOrJoinRoom(wchar_t* name, wchar_t* password, MPFEChannelDe
 	                      JoinCallback, NULL, PEERTrue);
 #else
 	Locked = false;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	MPFEData::Data.ResetConditions();
 #endif
 	peerCreateStagingRoom(LHNetBase::Instance.Peer, roomName.Narrow, MPFEChannelSelector::MaxPlayers,
@@ -1171,7 +1171,7 @@ void BWGameSpy::EnterGameRoom(bool host, wchar_t* name)
 	MPFEData::Data.D_IJoinedRoom(name, host, LHNetBase::Instance.User->GetID());
 	if (!host)
 	{
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		const char* channelName = peerGetRoomChannel(LHNetBase::Instance.Peer, StagingRoom);
 		if (channelName == NULL)
 		{

@@ -85,7 +85,7 @@ public:
 	GPlayerStartPos     StartPos;
 	LHListNode<GPlayer> next;
 	MPFEStartGameData*  StartGameData;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	std::map<int, WinCondition> Conditions;
 	float                       ScoreHistory[500];
 	int                         ScoreHistoryIndex;

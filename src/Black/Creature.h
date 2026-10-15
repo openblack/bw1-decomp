@@ -102,7 +102,7 @@ public:
 	static void OnClearMap();
 	// BW1W120 00c5fcf8 BW1M119 01a7e57c
 	static LHLinkedList<Creature*> CreatureList;
-#ifndef VERSION_BW1W120
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 	// BW1W120 null BW1M119 01756bac
 	static uint32_t ImpressiveSpellDoneWhen[5];
 	// BW1W120 null BW1M119 01756cf0

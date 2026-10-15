@@ -43,7 +43,7 @@ Experiment discipline, learned the expensive way:
 ## Repository Layout
 
 - `configure.py`        — Project configuration and generator script.
-- `config/[VERSION]`    — Configuration files for each game version (`BW1W100`, `BW1W110`, `BW1W120`, `BW1M119`).
+- `config/[VERSION]`    — Configuration files for each game version (`BW1W100`, `BW1W110`, `BW1W120`, `BW1W130`, `BW1M119`).
     - `config.yml`      — decomp-toolkit project config
     - `symbols.txt`     — layout of the binaries, addresses, sizes, names etc for every symbol present
     - `splits.txt`      — per-TU section address ranges
@@ -129,10 +129,18 @@ executable hashes check.
 
 ### Game versions
 
-CI builds BW1W100, BW1W110 and BW1W120, including the DLL units; only BW1W120 is configured
-locally by default. Layouts can differ between versions (e.g. `LHNetUser`), so guard
-version-specific `static_assert`s and members with `#ifdef VERSION_BW1W120`, and compile
-touched units with each version's `/DBUILD_VERSION=<n> /DVERSION_<ver>` before pushing.
+CI builds BW1W100, BW1W110, BW1W120 and BW1W130, including the DLL units; only BW1W120 is
+configured locally by default. Layouts can differ between versions (e.g. `LHNetUser`), so guard
+version-specific `static_assert`s and members with the version macros, and compile touched units
+with each version's `/DBUILD_VERSION=<n> /DVERSION_<ver>` before pushing. BW1W130 shares 1.20's
+layouts: guard them with `#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)`.
+
+BW1W130 was ported from BW1W120 by `tools/port_version.py`. It was built from
+`D:\Work\Games\dd\Black\` rather than `C:\dev\MP\Black\`, has some changed code and layouts,
+and stale bytes fill some of its function padding. A unit matched for 1.20 is therefore not
+automatically matched for 1.30: list the versions it really matches in an inclusive
+`MatchingFor(...)`, and keep a version out of that list rather than changing source for it.
+The same applies when matching a new unit: check BW1W130 before using plain `Matching`.
 
 The underlying utility used for splitting the binary is `dtk` (`build/tools/dtk`).
 It is already properly set up and almost never requires any meddling.
