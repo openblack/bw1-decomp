@@ -142,6 +142,10 @@ public:
 	void UpdateHowImpressiveIsCreature(Creature* other_creature, float impressiveness);
 	// BW1W120 004e2380 BW1M119 0126a110
 	bool32_t ConsiderLearningAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action);
+	// BW1W120 004dce20 BW1M119 0125d210
+	void SetCheatDominantDesire(CREATURE_DESIRES desire, float seconds, bool32_t suppress_needs);
+	// BW1W120 004dcf20 BW1M119 0125d0a0
+	void ClearCheatDominantDesire();
 };
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_INCLUDED_H */

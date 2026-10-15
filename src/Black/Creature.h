@@ -1013,6 +1013,28 @@ public:
 	void SetupReactToNiceMagic(Reaction* reaction, MAGIC_TYPE magic_type, GameThingWithPos* thing);
 	// BW1W120 004f3210 BW1M119 0127fd10
 	void SetupReactToNastyMagic(Reaction* reaction, MAGIC_TYPE magic_type, GameThingWithPos* thing);
+	// BW1W120 00479440 BW1M119 011df8e0
+	bool32_t IsInGathering();
+	// BW1W120 004dc9a0 BW1M119 0125dc30
+	void MakeDesireFullyDominantAndChangeSource(unsigned long desire, const CreatureInfo* info);
+	// BW1W120 004df090 BW1M119 015eb350
+	bool32_t IsReadyToExplore();
+	// BW1W120 004df0c0 BW1M119 015eb2a0
+	bool32_t IsPlayerIgnoringMe();
+	// BW1W120 004df110 BW1M119 015eb240
+	bool32_t IsCreatureCold();
+	// BW1W120 004df130 BW1M119 015eb1e0
+	bool32_t IsCreatureWarm();
+	// BW1W120 004df150 BW1M119 015eb180
+	bool32_t HasPlayerBeenNasty();
+	// BW1W120 004df180 BW1M119 015eb140
+	bool32_t IsCreatureReadyForRest();
+	// BW1W120 004df190 BW1M119 015eb0e0
+	bool32_t HasNoticedActionWorthMimicking();
+	// BW1W120 004df1b0 BW1M119 015eb0a0
+	bool32_t CanCreatureBeFrightened();
+	// BW1W120 004df1c0 BW1M119 015eb020
+	bool32_t IsCreatureNearHome();
 };
 
 class Creed : public MobileObject

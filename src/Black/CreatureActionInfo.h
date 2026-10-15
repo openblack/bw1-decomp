@@ -24,7 +24,7 @@ public:
 	char                        Name[0x20];
 	uint8_t                     field_0x44[0x60];
 	bool32_t                    NeedsObjectToActOn;
-	uint32_t                    PlanIndex;
+	CREATURE_DESIRES            PlanIndex;
 	CREATURE_ACTION_KNOWN_ABOUT KnownAboutCategory;
 	CREATURE_ACTION_KNOWN_ABOUT KnownAboutCategory2;
 	MAGIC_TYPE                  MagicType;

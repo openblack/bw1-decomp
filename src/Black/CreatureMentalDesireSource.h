@@ -12,7 +12,7 @@ class Creature;
 struct CreatureDesireSource
 {
 	float                  value; /* 0x0 */
-	float                  field_0x4;
+	float                  Threshold;
 	float                  field_0x8;
 	CREATURE_DESIRE_SOURCE type;
 

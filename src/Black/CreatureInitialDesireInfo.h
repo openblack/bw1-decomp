@@ -20,14 +20,20 @@ class CreatureInitialDesireInfo : public GBaseInfo
 public:
 	CREATURE_DESIRE_SOURCE Sources[MAX_NUM_SOURCES_FOR_EACH_DESIRE];
 	bool32_t               Social;
-	uint32_t               field_0x34[0x6];
-	float                  DesireDecay;
-	float                  InitialValueMin;
-	float                  InitialValueMax;
+	bool32_t               Emotional;
+	uint32_t               field_0x38[0x3];
+	bool32_t               Physical;
+	bool32_t               CanBeHelped;
+	float                  MaxLevel;
+	float                  DecayRateMin;
+	float                  DecayRateMax;
 	float                  AlignmentChange;
-	uint32_t               field_0x5c[0x7];
-	float                  DesireGrowthRate;
-	uint32_t               field_0x7c;
+	float                  AlignmentThreshold;
+	uint32_t               field_0x60;
+	float                  IncreaseTimeFeedbackDivisor;
+	uint32_t               field_0x68[0x4];
+	float                  NumCompletionsToSatisfyUrge;
+	bool32_t               NumCompletionsChangeWithFeedback;
 	char                   Name[0x40];
 	uint32_t               field_0xc0[0x40];
 
