@@ -68,6 +68,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 004ef4f0 BW1M119 0127a570
+	float GetUserSize();
 	// BW1W120 inlined BW1M119 011e9d60
 	Object* GetObjectCarried() { return ObjectCarried; }
 	// BW1W120 inlined BW1M119 01509240

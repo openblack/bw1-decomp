@@ -27,7 +27,9 @@ public:
 	float                  AlignmentChange;
 	uint32_t               field_0x5c[0x7];
 	float                  DesireGrowthRate;
-	uint32_t               field_0x7c[0x51];
+	uint32_t               field_0x7c;
+	char                   Name[0x40];
+	uint32_t               field_0xc0[0x40];
 
 	// Override methods
 
@@ -45,7 +47,7 @@ public:
 	static CreatureInitialDesireInfo* GetInfo() { return g_CreatureInitialDesireInfos; }
 
 	// TODO(#377): The original declared this class in CreatureAction.h.
-	INFO_DATA_BLOCK(Sources, field_0x7c)
+	INFO_DATA_BLOCK(Sources, field_0xc0)
 	INFO_ROOT_LOADERS("CreatureAction.h", 54)
 };
 static_assert(sizeof(CreatureInitialDesireInfo) == 0x1c0, "Data type is of wrong size");
