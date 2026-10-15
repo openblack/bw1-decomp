@@ -55,9 +55,8 @@ Experiment discipline, learned the expensive way:
 - `tools/`              — Scripts shared between projects.
 - `docs/`               — documentation on reverse-engineering
 
-Keep detailed investigation records and task-specific handoffs in the user's disassembly
-folder (`C:\Users\Matt\Development\Disassembly\RE` in this environment), rather than
-adding them to `docs/`.
+Keep detailed investigation records and task-specific handoffs in your own notes folder
+outside the repository, rather than adding them to `docs/`.
 
 ## Build & Diff Workflow
 
@@ -342,14 +341,14 @@ Maps each source file to its section address ranges, telling dtk how to split th
 ### Naming
 
 - **Use original names wherever possible.** The symbols from the Mac version can be mapped to Windows methods 90%+ of the time.
-- Function arguments: `snake_case` (e.g., `food_amount`, `wood_amount`, `max_dist`). Or placeholders where unsure: `param_1`, `param_2`, etc.
-- Local variables: `camelCase` (e.g., `abodeType`, `maxVillagersInAbode`). Or Hex-Rays placeholders where unsure what name to choose: `fVar1`, `fVar2`, etc.
+- Function arguments: `snake_case` (e.g., `food_amount`, `wood_amount`, `max_dist`). Placeholders (`param_1`, `param_2`) only where the signature is genuinely unknown (see [Rules from maintainer review](#rules-from-maintainer-review)).
+- Local variables: `camelCase` (e.g., `abodeType`, `maxVillagersInAbode`). Hex-Rays placeholders (`fVar1`, `fVar2`) only under the same condition.
 - Classes: `PascalCase` (e.g., `Abode`, `Villager`, `Town`, `MapCoords`).
 - Enums: type name in `SCREAMING_SNAKE_CASE`, enumerators prefixed with the type name (e.g., `TOWN_STATUS` → `TOWN_STATUS_DEFAULT`, `TOWN_STATUS_CAPTURED`).
 - Member variables: `PascalCase`, no prefix (e.g., `AttachedThing`, `PreviousStatus`, `XOffset`, `FlashOn`). Real Lionhead headers show members are consistently `PascalCase` — not `snake_case`/`camelCase`, and never `m_`-prefixed. Member names don't survive in the binary, so where the true name is unknown, pick a readable `PascalCase` name.
-- Unknown members retain placeholder names like `field_0x7c`, `field_0x94`, encoding the hex offset.
+- Members our code does not use, or only saves and loads, retain placeholder names like `field_0x7c`, `field_0x94`, encoding the hex offset. A member the code uses gets a name and a type (see [Naming and values](#naming-and-values-from-qwerins-425-review)).
 - Method names use PascalCase: `ArriveHome()`, `AddVillagerToAbode()`, `CalcRandomPos()`.
-- Use comments to record specific evidence or uncertainty about a name or provisional ownership when useful. Do not add blanket comments such as "Descriptive member names" or comments merely stating that names are inferred rather than original; readable names for reconstructed members are expected.
+- Record evidence or uncertainty about a name or provisional ownership in the PR description, not in source comments (see [Comments](#comments--annotations-in-the-code)). Do not add blanket comments such as "Descriptive member names" or comments merely stating that names are inferred rather than original; readable names for reconstructed members are expected.
 
 ### Comments & annotations in the code
 
@@ -361,12 +360,13 @@ Source must read as if a Lionhead programmer wrote it. The only comments it cont
   callback) keeps its address comment on a forward declaration in the `.cpp`.
 - `// Inliner IL size: N` — above an inline helper's address comment: its exact IL size, as measured by `tools/inline-budget.py size`
   (`<= 40` means never charged). Update it whenever the body changes.
+- An empty trailing `//` after each entry of an initializer table, to keep clang-format at one entry per line (#506).
 - Comments a Lionhead programmer could plausibly have written; prefer none.
 
 Do not commit decompilation commentary: TODOs, "fabricated", match percentages, register,
 scheduling or inliner notes, evidence for a name, Mac/IDA references, layout prose, or
 dividers such as `// Static methods`. The match percentage is the TODO. Keep residual
-analyses, name evidence and matching notes in the disassembly folder (see
+analyses, name evidence and matching notes in your notes folder (see
 [Repository Layout](#repository-layout)) or the PR description.
 
 `#pragma dont_inline on/off` is code, not commentary, and stays where matching needs it.
@@ -549,13 +549,14 @@ the function nonmatching without it and record why in the notes or PR descriptio
 ## Rules from maintainer review
 
 These are drawn from review feedback on earlier PRs and take precedence where they
-conflict with looser guidance above.
+conflict with looser guidance above. `tools/review-lint.py` lists added lines that often
+draw these comments; it is a reviewer's aid, every hit needs a judgement.
 
 - **Name parameters.** A function that matches must not keep `param_1`/`param_2`
   placeholders. Name each argument from its role, the demangled Mac symbol, or its call
   sites (`snake_case`). Keep `param_N` (or Hex-Rays `fVarN`) only when the signature is
   genuinely unknown, and even then prefer the closest evidence-based name. This extends
-  to the base-class convention already used elsewhere (`ToBeDeleted(int delete_now)`,
+  to the base-class convention already used elsewhere (`ToBeDeleted(bool32_t delete_now)`,
   `CallVirtualFunctionsForCreation(const MapCoords& coords)`, `PhysicsEditorCreate(int type)`).
 - **Know which symbol source is authoritative.** The Mac symbols (`config/BW1M119`) are
   ground truth — the real names survived, with only subtle differences, so they are right
@@ -594,6 +595,29 @@ conflict with looser guidance above.
   hash, or a function, initializer or section that currently matches), treat it like a
   global that cannot be declared yet (see [Globals](#globals)): leave the function that needs
   it nonmatching and record why.
+- **One TU per PR.** Broad PRs over many units get tabled (#484). Prefer taking one
+  translation unit to `Matching` over partial progress across many, and wait for an open PR
+  that touches the same headers to land first.
+- **Ask the Mac binary before asking the reviewer.** What a body does (an empty destructor, a
+  helper's argument order) is in the BW1M119 code; `tools/mac-disasm.py` disassembles it
+  (#496). A new helper needs proof of where it lives and of its argument order. The Mac
+  symbol's class or namespace cannot be contradicted: resolve a duplicate inside it rather
+  than moving the function out (#501).
+- **Rename the placeholders your code uses.** New code that reads a `field_0x…`, `param_N` or
+  offset-named member (`Material0x58`) renames it in the same PR (#494). An address- or
+  offset-suffixed name (`GetDistanceInMetres_0074cd50`) is not a name (#501).
+- **Related values are an enum.** A set of values for one property
+  (`LIVING_LOOK_AT_SPEED_SLOW`/`_NORMAL`/`_FAST`) is a named enum in the owning header, not a
+  run of `#define`s (#501).
+- **Header code stays in headers.** A function a TU only instantiates from a header (an inline
+  or template body, COMDAT, `scope:weak`) is defined inline in that header, not in the TU's
+  `.cpp` (#441).
+- **Member-pointer tables** follow `VillagerStates.h` (#515): declare the entry struct while
+  its class is only forward-declared (MSVC's general 16-byte representation without `/vmg`) and
+  make the table a static member of the entry struct in its own small header. A static
+  member in a widely included class header bumps `_$E`/`_$S` in every consumer.
+- **Only ask real questions.** Odd code that matches is not a question for review: "If it
+  matches it matches" (#486). Raise only decisions the evidence cannot settle.
 
 ### Naming and values (from @qwerin's #425 review)
 
