@@ -21,7 +21,7 @@ class Object;
 class Graveyard : public Abode
 {
 public:
-	uint8_t field_0xc4[0x4];
+	uint32_t field_0xc4;
 
 	// Override methods
 
@@ -56,6 +56,9 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	Graveyard() {}
+	// BW1W120 00595c60 BW1M119 inlined
+	Graveyard(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
+	          int wood);
 
 	// Static methods
 

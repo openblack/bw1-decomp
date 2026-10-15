@@ -228,7 +228,7 @@ public:
 	virtual bool32_t __fastcall GetExtraPos(int param_1, LHMatrix* matrix);
 	virtual void                SetLod(int lod); /* 0x1d0 */
 	virtual float               GetLod();
-	virtual void                SetStatus(int status);
+	virtual void __fastcall     SetStatus(int status);
 	virtual float               GetStatus();
 	virtual void                CheckTriangleCollide(); /* 0x1e0 */
 	virtual void                CheckPixelCollide();
