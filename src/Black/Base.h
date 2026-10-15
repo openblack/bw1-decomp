@@ -62,6 +62,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00436a80 BW1M119 01036380
+	int GetUniqueId() const;
 	// BW1W120 00436b20 BW1M119 01001480
 	void SetInfo(BaseInfo* info) const;
 };

@@ -151,7 +151,7 @@ public:
 	static unsigned long GetMServeProtocolVersion();
 };
 static_assert(sizeof(LHMessageServer::LHChecksumInfo) == 0x14, "LHChecksumInfo size is incorrect");
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(sizeof(LHMessageServer) == 0x114c, "LHMessageServer size is incorrect");
 #endif
 

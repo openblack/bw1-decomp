@@ -2,9 +2,10 @@
 
 This note records how the back end of the project compiler orders instructions within a basic
 block and assigns registers. It is derived from disassembling `build/compilers/MSVC/6.5/c2.dll`
-(the 8966 / Processor Pack back end that builds BW1W120) and from a patched copy of that DLL that
-logs the scheduler's decisions (`tools/c2-sched-log.py`). Use it when the same instructions appear
-in a different order, or a store lands a few instructions away from where the target has it.
+(the 8966 / Processor Pack back end that builds BW1W120 and BW1W130) and from a patched copy of
+that DLL that logs the scheduler's decisions (`tools/c2-sched-log.py`). Use it when the same
+instructions appear in a different order, or a store lands a few instructions away from where the
+target has it.
 
 Confidence markers used below:
 

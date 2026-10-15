@@ -216,7 +216,7 @@ private:
 	void ClearListenerServer();
 };
 static_assert(sizeof(LHConnectionServer::LHServerPlayer) == 0x234, "LHServerPlayer size is incorrect");
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(sizeof(LHConnectionServer) == 0x450, "LHConnectionServer size is incorrect");
 #endif
 

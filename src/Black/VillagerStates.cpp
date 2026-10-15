@@ -1,4 +1,5 @@
 #include "GameTimeConstants.h"
+#include "VillagerStates.h"
 #include "VillagerStateTableInfo.h"
 
 #include <stdlib.h> /* For max */
@@ -800,7 +801,7 @@ bool32_t Villager::GoAndChilloutInTown()
 	{
 		MapCoords congregationPos = town->GetCongregationPos();
 		GetMeToMyChillOutPos((int (Villager::*)(MapCoords&))&Villager::GetChillOutPos, congregationPos,
-		                     town->GetInfo()->field_0x140, congregationPos);
+		                     town->GetInfo()->ChillOutRadius, congregationPos);
 		return true;
 	}
 	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);

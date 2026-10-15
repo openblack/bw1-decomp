@@ -1,7 +1,7 @@
 #ifndef BW1_DECOMP_CARRIED_OBJECT_INCLUDED_H
 #define BW1_DECOMP_CARRIED_OBJECT_INCLUDED_H
 
-#include <chlasm/Enum.h> /* For enum CARRIED_OBJECT */
+#include <chlasm/Enum.h> /* For enum CARRIED_OBJECT, CARRIED_OBJECT_LAST */
 
 class LH3DObject;
 
@@ -14,6 +14,8 @@ public:
 	static void Reset();
 	// BW1W120 00462900 BW1M119 0105a180
 	static LH3DObject* Get3DCarriedObject(CARRIED_OBJECT type);
+	// BW1W120 00c5e19c
+	static LH3DObject* Objects[CARRIED_OBJECT_LAST];
 };
 
 #endif /* BW1_DECOMP_CARRIED_OBJECT_INCLUDED_H */

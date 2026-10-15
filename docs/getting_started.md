@@ -9,6 +9,7 @@ See [Dependencies](dependencies.md) first.
    - `orig/BW1W100/runblack-decrypted.exe` — Windows v1.0 (decrypted)
    - `orig/BW1W110/runblack-decrypted.exe` — Windows v1.1 (decrypted)
    - `orig/BW1W120/runblack-decrypted.exe` — Windows v1.2 (decrypted)
+   - `orig/BW1W130/runblack-decrypted.exe` — Windows v1.3 (decrypted)
 
    The Windows builds also need the four DLLs shipped alongside the exe, in the same directory: `LHaudiodllR.dll`, `LHLogR.dll`, `LHMultiplayerR.dll`, `LHDialogLib.dll` (copy these from your own install — the build checks all five files' hashes against `config/<VERSION>/build.sha1` and fails at the split step with a clear "not found" message naming whichever one is missing).
 
@@ -34,7 +35,7 @@ See [Dependencies](dependencies.md) first.
    2. Extract `GERMAN/VS60SP4/VC98/LIB/LIBCMT.LIB` with `7z e <iso> "*LIBCMT.LIB" -r`, or mount directly.
    3. Copy it to `orig/libs/msvc6.4/libcmt.lib`.
 
-   **MSVC 6.0 RTM `libcpmt.lib` and `libcimt.lib` → `orig/libs/msvc6.0/`** (`libcpmt.lib` for BW1W100/BW1W110, `libcimt.lib` for BW1W110/BW1W120)
+   **MSVC 6.0 RTM `libcpmt.lib` and `libcimt.lib` → `orig/libs/msvc6.0/`** (`libcpmt.lib` for BW1W100/BW1W110, `libcimt.lib` for BW1W110/BW1W120/BW1W130)
 
    SP4 never shipped its own `libcpmt.lib` — checked three independent SP4 discs, none include it, since Microsoft only redistributes files that changed for a given service pack. The original 1998 RTM copy is the right one (a real SP4-era machine would still have it, untouched, in `VC98\Lib`). It's byte-different from SP5's, so don't substitute that one.
 
@@ -71,7 +72,7 @@ See [Dependencies](dependencies.md) first.
    3. Copy `AMaths.lib` to `orig/libs/amaths-2.0/amaths.lib`. As with the MSVC
       libs, the filename must be lowercase to match the config key.
 
-   **Intel C++ 5.0 `libircmt.lib` → `orig/libs/icc-5.0.115/`** (BW1W110/BW1W120)
+   **Intel C++ 5.0 `libircmt.lib` → `orig/libs/icc-5.0.115/`** (BW1W110/BW1W120/BW1W130)
 
    Needed: `libircmt.lib`, the multithreaded Intel C++ runtime. One member is
    linked, `cpu_disp_mt.obj` — the CPU dispatch code (`___intel_cpu_indicator`
@@ -110,7 +111,7 @@ See [Dependencies](dependencies.md) first.
    python configure.py --version BW1W100
    ```
 
-   Pass `--version BW1W100`, or `--version BW1W110` for the other targets. Default is `BW1W120`.
+   Pass `--version BW1W100`, `--version BW1W110` or `--version BW1W130` for the other targets. Default is `BW1W120`.
 
 5. Build:
 

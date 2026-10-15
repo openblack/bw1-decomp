@@ -127,7 +127,7 @@ public:
 	// lower there.
 	int ZeroBaseInfluence;
 #endif
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	// Absent from BW1W110 and BW1W100: ZeroBaseInfluence keeps its offset in BW1W110 while TemporaryResourceStorePots and every
 	// later member sit 4 bytes lower.
 	bool32_t CompleteNewTownBuilt;
@@ -729,6 +729,10 @@ public:
 	void SetInStateOfEmergency();
 	// BW1W120 00747a40 BW1M119 01569350
 	int CalculateFoodSpareForWorship();
+	// BW1W120 00747c60 BW1M119 01569130
+	uint32_t CalculateActualNumberOfBuildings();
+	// BW1W120 00747c70 BW1M119 01569090
+	uint32_t CalculateDesiredNumberOfBuildings();
 	// BW1W120 00747ea0 BW1M119 01568b10
 	bool32_t GetBestRepairBuildingSite();
 	// BW1W120 007635d0 BW1M119 010158b0

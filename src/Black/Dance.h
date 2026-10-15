@@ -68,9 +68,9 @@ public:
 	// BW1W120 0050b720 BW1M119 012ab210
 	virtual GFootpathLink* GetFootpathLink();
 	// BW1W120 0050ca60 BW1M119 012ab4c0
-	virtual uint32_t AddFootpath(GFootpath* param_1);
+	virtual bool32_t AddFootpath(GFootpath* footpath);
 	// BW1W120 0050cb10 BW1M119 012ab420
-	virtual uint32_t RemoveFootpath(GFootpath* param_1);
+	virtual bool32_t RemoveFootpath(GFootpath* footpath);
 	// BW1W120 0050b760 BW1M119 012ab2e0
 	virtual char* GetDebugText();
 	// BW1W120 0050c760 BW1M119 012ab680

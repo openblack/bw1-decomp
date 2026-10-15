@@ -114,7 +114,7 @@ bool32_t Villager::ExitControlledByCreature(unsigned char state)
 		// TODO: see unnamed-global blocker above — the creature participant-list removal is not
 		// yet representable in source. Only the tail (IsDancing/RemoveFromDance) is written.
 		if (IsDancing())
-			RemoveFromDance(1);
+			RemoveFromDance(true);
 	}
 	else if (state != VILLAGER_STATE_CONTROLLED_BY_CREATURE && state != VILLAGER_STATE_WORSHIPPING_CREATURE &&
 	         state != VILLAGER_STATE_DECIDE_WHAT_TO_DO)

@@ -59,7 +59,7 @@ public:
 	uint32_t          field_0xc34;
 	uint32_t          field_0xc38;
 	uint32_t          field_0xc3c;
-	uint32_t          field_0xc40;
+	Creature*         Partner;
 	uint32_t          field_0xc44;
 	uint32_t          field_0xc48;
 	uint32_t          field_0xc4c;

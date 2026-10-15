@@ -1,41 +1,10 @@
-#include <re_common.h>
-
-#include <chlasm/GStates.h> /* For enum VILLAGER_STATES, VILLAGER_STATE_LAST_STATE, ANIMAL_STATE_LAST_STATE */
-
-class Animal;
-class GameOSFile;
-class Villager;
-
-template <typename T> struct LivingStateTableEntry
-{
-	bool32_t (T::*state)();
-	bool32_t (T::*EntryState)(uint8_t, uint8_t);
-	bool32_t (T::*ExitState)(uint8_t);
-	bool32_t (T::*SaveState)(GameOSFile&);
-	bool32_t (T::*LoadState)(GameOSFile&);
-	uint32_t (T::*ReactToTownEmergency)();
-	uint32_t (T::*Animation)();
-	uint32_t (T::*TransitionAnimation)(uint8_t, uint8_t);
-	void (T::*validate)();
-};
-
-// Instantiates both specialisations while Villager and Animal are still incomplete,
-// forcing MSVC's most-general 16-byte pointer-to-member form and a 144-byte entry.
-// Once the definitions below are visible the classes look single-inheritance and the
-// pointers would shrink to 4. Do not move the includes above this.
-enum
-{
-	VillagerEntrySize = sizeof(LivingStateTableEntry<Villager>),
-	AnimalEntrySize = sizeof(LivingStateTableEntry<Animal>),
-};
-
+#include "VillagerStates.h"
 #include "Animal.h"
 #include "Living.h"
 #include "Villager.h"
 
 // clang-format off
-// BW1W120 00d09198
-LivingStateTableEntry<Villager> g_VillagerStateTable[VILLAGER_STATE_LAST_STATE] = {
+VillagerStateTableEntry VillagerStateTableEntry::StateTable[VILLAGER_STATE_LAST_STATE] = {
 	{&Living::InvalidState, 0, 0, 0, 0, 0, 0, 0, 0},
 	{&Living::MoveToPos, 0, &Living::ExitMoveToPos, 0, 0, &Villager::AlwaysReactToTownEmergency, &Villager::MoveToPosAnimation, &Villager::MoveToPosIntoOutofAnimation, &Villager::WallhugValidate},
 	{&Living::MoveToObject, 0, &Living::ExitMoveToPos, 0, 0, &Villager::AlwaysReactToTownEmergency, &Villager::MoveToPosAnimation, &Villager::MoveToPosIntoOutofAnimation, &Villager::MoveToObjectValidate},
@@ -297,7 +266,7 @@ LivingStateTableEntry<Villager> g_VillagerStateTable[VILLAGER_STATE_LAST_STATE] 
 	{&Villager::BreederJustLanded, 0, 0, 0, 0, &Villager::AlwaysReactToTownEmergency, 0, 0, 0},
 };
 
-LivingStateTableEntry<Animal> g_AnimalStateTable[ANIMAL_STATE_LAST_STATE] = {
+AnimalStateTableEntry Animal::StateTable[ANIMAL_STATE_LAST_STATE] = {
 	{&Living::InvalidState, 0, 0, 0, 0, 0, &Animal::MoveAnimation, 0, 0},
 	{&Animal::MoveToPos, 0, &Living::ExitMoveToPos, 0, 0, 0, &Animal::MoveAnimation, 0, 0},
 	{&Living::MoveToObject, 0, &Living::ExitMoveToPos, 0, 0, 0, &Animal::MoveAnimation, 0, 0},

@@ -12,6 +12,12 @@ struct RPHolder;
 struct Route;
 struct VisitBlock;
 
+enum RPLAN_STATE
+{
+	RPLAN_STATE_PLANNING = 0x2,
+	RPLAN_STATE_SUCCEEDED = 0x5,
+};
+
 struct RPlan
 {
 	RPHolder*   holder; /* 0x0 */
@@ -31,7 +37,7 @@ struct RPlan
 	float       field_0x44;
 	float       field_0x48;
 	float       field_0x4c;
-	uint32_t    field_0x50;
+	RPLAN_STATE State;
 	uint32_t    field_0x54;
 	VisitBlock* VisitBlocks;
 	float       field_0x5c;

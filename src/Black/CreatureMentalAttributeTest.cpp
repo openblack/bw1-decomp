@@ -10,6 +10,97 @@
 #include "CreatureMentalBelief.h"
 #include "Forest.h" /* For FOREST_SIZE_LAST */
 
+#if defined(VERSION_BW1W100)
+#define FILEPATH "C:\\dev\\black\\CreatureMentalAttributeTest.cpp"
+#elif defined(VERSION_BW1W110)
+#define FILEPATH "C:\\dev\\Black\\CreatureMentalAttributeTest.cpp"
+#else
+#define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalAttributeTest.cpp"
+#endif
+
+AttributeArrayEntry* AttributeTest::AttributeArray[ATTRIBUTE_TYPE_LAST];
+
+void AttributeTest::CreateAttributeArray()
+{
+	Attribute* attribute;
+
+	attribute = new (FILEPATH, 565) AttributeAllegiance;
+	AttributeArray[ATTRIBUTE_TYPE_ALLEGIANCE] = new (FILEPATH, 566) AttributeArrayEntry(attribute, "Allegiance");
+
+	attribute = new (FILEPATH, 569) AttributeOrigin;
+	AttributeArray[ATTRIBUTE_TYPE_ORIGIN] = new (FILEPATH, 570) AttributeArrayEntry(attribute, "Origin");
+
+	attribute = new (FILEPATH, 573) AttributeAnimate;
+	AttributeArray[ATTRIBUTE_TYPE_ANIMATE] = new (FILEPATH, 574) AttributeArrayEntry(attribute, "Animate?");
+
+	attribute = new (FILEPATH, 577) AttributePlayerNumber;
+	AttributeArray[ATTRIBUTE_TYPE_PLAYER_NUMBER] = new (FILEPATH, 578) AttributeArrayEntry(attribute, "PlayerNumber");
+
+	attribute = new (FILEPATH, 581) AttributeIsHarderThanMe;
+	AttributeArray[ATTRIBUTE_TYPE_HARDER_THAN_ME] = new (FILEPATH, 582) AttributeArrayEntry(attribute, "HarderThanMe");
+
+	attribute = new (FILEPATH, 585) AttributeCreatureType;
+	AttributeArray[ATTRIBUTE_TYPE_CREATURE_TYPE] = new (FILEPATH, 586) AttributeArrayEntry(attribute, "CreatureType");
+
+	attribute = new (FILEPATH, 589) AttributeType;
+	AttributeArray[ATTRIBUTE_TYPE_TYPE] = new (FILEPATH, 590) AttributeArrayEntry(attribute, "Type");
+
+	attribute = new (FILEPATH, 593) AttributeLife;
+	AttributeArray[ATTRIBUTE_TYPE_LIFE] = new (FILEPATH, 594) AttributeArrayEntry(attribute, "Life");
+
+	attribute = new (FILEPATH, 597) AttributeTribe;
+	AttributeArray[ATTRIBUTE_TYPE_TRIBE] = new (FILEPATH, 598) AttributeArrayEntry(attribute, "Tribe");
+
+	attribute = new (FILEPATH, 601) AttributeTownReligiousBeliefInYou;
+	AttributeArray[ATTRIBUTE_TYPE_RELIGIOUS_BELIEF_IN_YOU] =
+		new (FILEPATH, 602) AttributeArrayEntry(attribute, "TownReligiousBelief");
+
+	attribute = new (FILEPATH, 605) AttributeWhatTownNeedsMost;
+	AttributeArray[ATTRIBUTE_TYPE_TOWN_NEEDS_MOST] =
+		new (FILEPATH, 606) AttributeArrayEntry(attribute, "TownNeedsMost");
+
+	attribute = new (FILEPATH, 609) AttributeTownSize;
+	AttributeArray[ATTRIBUTE_TYPE_TOWN_SIZE] = new (FILEPATH, 610) AttributeArrayEntry(attribute, "TownSize");
+
+	attribute = new (FILEPATH, 613) AttributeCreatureDominantDesire;
+	AttributeArray[ATTRIBUTE_TYPE_CREATURE_DOMINANT_DESIRE] =
+		new (FILEPATH, 614) AttributeArrayEntry(attribute, "CreatureDesire");
+
+	attribute = new (FILEPATH, 617) AttributeCreatureHeight;
+	AttributeArray[ATTRIBUTE_TYPE_CREATURE_HEIGHT] =
+		new (FILEPATH, 618) AttributeArrayEntry(attribute, "CreatureHeight");
+
+	attribute = new (FILEPATH, 621) AttributeCreatureSpellKnowledge;
+	AttributeArray[ATTRIBUTE_TYPE_CREATURE_SPELL_KNOWLEDGE] =
+		new (FILEPATH, 622) AttributeArrayEntry(attribute, "CreatureSpellKnowledge");
+
+	attribute = new (FILEPATH, 625) AttributeCreatureWhatHeIsCarrying;
+	AttributeArray[ATTRIBUTE_TYPE_CREATURE_CARRYING] =
+		new (FILEPATH, 626) AttributeArrayEntry(attribute, "CreatureCarryingWhat");
+
+	attribute = new (FILEPATH, 629) AttributeForestSize;
+	AttributeArray[ATTRIBUTE_TYPE_FOREST_SIZE] = new (FILEPATH, 630) AttributeArrayEntry(attribute, "ForestSize");
+
+	attribute = new (FILEPATH, 633) AttributeVillagerJob;
+	AttributeArray[ATTRIBUTE_TYPE_VILLAGER_JOB] = new (FILEPATH, 634) AttributeArrayEntry(attribute, "Job");
+
+	attribute = new (FILEPATH, 637) AttributeSex;
+	AttributeArray[ATTRIBUTE_TYPE_SEX] = new (FILEPATH, 638) AttributeArrayEntry(attribute, "Sex");
+
+	attribute = new (FILEPATH, 641) AttributeMobileObjectType;
+	AttributeArray[ATTRIBUTE_TYPE_MOBILE_OBJECT_TYPE] = new (FILEPATH, 642) AttributeArrayEntry(attribute, "SubType");
+
+	attribute = new (FILEPATH, 645) AttributeAbodeType;
+	AttributeArray[ATTRIBUTE_TYPE_ABODE_TYPE] = new (FILEPATH, 646) AttributeArrayEntry(attribute, "SubType");
+
+	attribute = new (FILEPATH, 649) AttributeAbodeBeingBuilt;
+	AttributeArray[ATTRIBUTE_TYPE_ABODE_BEING_BUILT] =
+		new (FILEPATH, 650) AttributeArrayEntry(attribute, "AbodeBeingBuilt?");
+
+	attribute = new (FILEPATH, 653) AttributeCreatureDominantDesire;
+	AttributeArray[ATTRIBUTE_TYPE_ABODE_ON_FIRE] = new (FILEPATH, 654) AttributeArrayEntry(attribute, "OnFire?");
+}
+
 bool32_t AttributeCreatureDominantDesire::IsDynamic()
 {
 	return true;
@@ -30,8 +121,6 @@ ATTRIBUTE_TYPE AttributeCreatureDominantDesire::GetType()
 {
 	return ATTRIBUTE_TYPE_CREATURE_DOMINANT_DESIRE;
 }
-
-AttributeCreatureDominantDesire::~AttributeCreatureDominantDesire() {}
 
 bool32_t AttributeCreatureHeight::IsDynamic()
 {
@@ -58,8 +147,6 @@ ATTRIBUTE_TYPE AttributeCreatureHeight::GetType()
 	return ATTRIBUTE_TYPE_CREATURE_HEIGHT;
 }
 
-AttributeCreatureHeight::~AttributeCreatureHeight() {}
-
 bool32_t AttributeCreatureSpellKnowledge::IsDynamic()
 {
 	return true;
@@ -81,8 +168,6 @@ ATTRIBUTE_TYPE AttributeCreatureSpellKnowledge::GetType()
 	return ATTRIBUTE_TYPE_CREATURE_SPELL_KNOWLEDGE;
 }
 
-AttributeCreatureSpellKnowledge::~AttributeCreatureSpellKnowledge() {}
-
 bool32_t AttributeCreatureWhatHeIsCarrying::IsDynamic()
 {
 	return true;
@@ -103,8 +188,6 @@ ATTRIBUTE_TYPE AttributeCreatureWhatHeIsCarrying::GetType()
 {
 	return ATTRIBUTE_TYPE_CREATURE_CARRYING;
 }
-
-AttributeCreatureWhatHeIsCarrying::~AttributeCreatureWhatHeIsCarrying() {}
 
 bool32_t AttributeForestSize::IsDynamic()
 {
@@ -131,8 +214,6 @@ ATTRIBUTE_TYPE AttributeForestSize::GetType()
 	return ATTRIBUTE_TYPE_FOREST_SIZE;
 }
 
-AttributeForestSize::~AttributeForestSize() {}
-
 bool32_t AttributeMobileObjectType::IsDynamic()
 {
 	return false;
@@ -157,8 +238,6 @@ ATTRIBUTE_TYPE AttributeMobileObjectType::GetType()
 {
 	return ATTRIBUTE_TYPE_MOBILE_OBJECT_TYPE;
 }
-
-AttributeMobileObjectType::~AttributeMobileObjectType() {}
 
 bool32_t AttributeAbodeType::IsDynamic()
 {
@@ -185,8 +264,6 @@ ATTRIBUTE_TYPE AttributeAbodeType::GetType()
 	return ATTRIBUTE_TYPE_ABODE_TYPE;
 }
 
-AttributeAbodeType::~AttributeAbodeType() {}
-
 bool32_t AttributeAbodeBeingBuilt::IsDynamic()
 {
 	return true;
@@ -212,167 +289,43 @@ ATTRIBUTE_TYPE AttributeAbodeBeingBuilt::GetType()
 	return ATTRIBUTE_TYPE_ABODE_BEING_BUILT;
 }
 
-AttributeAbodeBeingBuilt::~AttributeAbodeBeingBuilt() {}
+void AttributeTest::DeleteAttributeArray()
+{
+	for (uint32_t i = 0; i < ATTRIBUTE_TYPE_LAST; i++)
+	{
+		delete AttributeArray[i]->Instance;
+		delete AttributeArray[i];
+	}
+}
 
 uint32_t CreatureBelief::GetType()
 {
 	return GetNthAttribute(CREATURE_BELIEF_ATTRIBUTE_TYPE)->GetValue();
 }
 
-uint32_t CreatureBeliefSmall::GetNumAttributes()
+CreatureBelief* DecisionTreeAgenda::CreateBelief(CREATURE_BELIEF_TYPE type)
 {
-	return ARRAY_SIZE(Attributes);
+	switch (type)
+	{
+	case CREATURE_BELIEF_TYPE_TOWN:
+		return new (FILEPATH, 700) CreatureBeliefAboutTown;
+	case CREATURE_BELIEF_TYPE_FOREST:
+		return new (FILEPATH, 703) CreatureBeliefAboutForest;
+	case CREATURE_BELIEF_TYPE_CREATURE:
+		return new (FILEPATH, 706) CreatureBeliefAboutCreature;
+	case CREATURE_BELIEF_TYPE_VILLAGER:
+		return new (FILEPATH, 709) CreatureBeliefAboutVillager;
+	case CREATURE_BELIEF_TYPE_ABODE:
+		return new (FILEPATH, 712) CreatureBeliefAboutAbode;
+	case CREATURE_BELIEF_TYPE_CITADEL:
+		return new (FILEPATH, 715) CreatureBeliefAboutCitadel;
+	case CREATURE_BELIEF_TYPE_CONTEXT:
+		return new (FILEPATH, 718) CreatureBeliefAboutContext;
+	case CREATURE_BELIEF_TYPE_MOBILE_OBJECT:
+		return new (FILEPATH, 721) CreatureBeliefSmall;
+	case CREATURE_BELIEF_TYPE_FLOCK:
+		return new (FILEPATH, 724) CreatureBeliefAboutFlock;
+	default:
+		return new (FILEPATH, 727) CreatureBeliefSmall;
+	}
 }
-
-Attribute* CreatureBeliefSmall::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefSmall::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefSmall::~CreatureBeliefSmall() {}
-
-uint32_t CreatureBeliefAboutVillager::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutVillager::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutVillager::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutVillager::~CreatureBeliefAboutVillager() {}
-
-uint32_t CreatureBeliefAboutTown::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutTown::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutTown::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutTown::~CreatureBeliefAboutTown() {}
-
-uint32_t CreatureBeliefAboutFlock::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutFlock::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutFlock::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutFlock::~CreatureBeliefAboutFlock() {}
-
-uint32_t CreatureBeliefAboutCitadel::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutCitadel::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutCitadel::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutCitadel::~CreatureBeliefAboutCitadel() {}
-
-uint32_t CreatureBeliefAboutCreature::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutCreature::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutCreature::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutCreature::~CreatureBeliefAboutCreature() {}
-
-uint32_t CreatureBeliefAboutForest::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutForest::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutForest::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutForest::~CreatureBeliefAboutForest() {}
-
-uint32_t CreatureBeliefAboutAbode::GetNumAttributes()
-{
-	return ARRAY_SIZE(Attributes);
-}
-
-Attribute* CreatureBeliefAboutAbode::GetNthAttribute(unsigned long index)
-{
-	return Attributes[index];
-}
-
-Attribute** CreatureBeliefAboutAbode::GetNthAttributePtr(unsigned long index)
-{
-	return &Attributes[index];
-}
-
-CreatureBeliefAboutAbode::~CreatureBeliefAboutAbode() {}
-
-uint32_t CreatureBeliefAboutContext::GetNumAttributes()
-{
-	return 0;
-}
-
-Attribute* CreatureBeliefAboutContext::GetNthAttribute(unsigned long index)
-{
-	return NULL;
-}
-
-Attribute** CreatureBeliefAboutContext::GetNthAttributePtr(unsigned long index)
-{
-	return NULL;
-}
-
-uint32_t CreatureBeliefAboutContext::GetType()
-{
-	return CREATURE_BELIEF_TYPE_CONTEXT;
-}
-
-CreatureBeliefAboutContext::~CreatureBeliefAboutContext() {}

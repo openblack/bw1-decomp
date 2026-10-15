@@ -330,7 +330,7 @@ public:
 	uint32_t GetMaxVillagersNeededToBuild();
 	// BW1W120 004046c0 BW1M119 013435f0
 	bool32_t IsTooCrowded();
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	// BW1W120 00404960 BW1M119 null
 	void CheckForCompleteNewTown();
 #endif
@@ -365,7 +365,7 @@ public:
 	MapCoords GetResourcePos(RESOURCE_TYPE type, uint32_t param_2);
 	// BW1W120 004072e0 BW1M119 0100f890
 	MapCoords GetPosOutside(float divisions, float min_dist, float rand_dist);
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	// BW1W120 004073f0 BW1M119 null
 	void AddSmashedCondition(GPlayer* player);
 #endif

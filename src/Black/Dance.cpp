@@ -380,7 +380,7 @@ Living* Dance::FindLiving(int(__cdecl* callback)(GameThingWithPos*, SCRIPT_OBJEC
 	return NULL;
 }
 
-uint32_t Dance::AddFootpath(GFootpath* footpath)
+bool32_t Dance::AddFootpath(GFootpath* footpath)
 {
 	if (GetFootpathLink() == NULL)
 	{
@@ -390,7 +390,7 @@ uint32_t Dance::AddFootpath(GFootpath* footpath)
 	return true;
 }
 
-uint32_t Dance::RemoveFootpath(GFootpath* footpath)
+bool32_t Dance::RemoveFootpath(GFootpath* footpath)
 {
 	if (GetFootpathLink() != NULL)
 	{

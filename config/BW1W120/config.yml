@@ -482,6 +482,46 @@ add_relocations:
     type: x86_abs32
     target: '?Bans@BWGameSpy@@2PAY0CA@DA'
     addend: -0x20
+  - source: 0x0074FF93
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x0074FFDB
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x00750148
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x60
+  - source: 0x007548BA
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x30
+  - source: 0x0075492A
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x40
+  - source: 0x007565A7
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
+  - source: 0x00756659
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
+  - source: 0x0074F8D7
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x0075116A
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x00752679
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x133CC
 
 # ScriptFunctions: string literals and dispatch-table entries dtk leaves as raw immediates.
   - source: 0x006F7CD1

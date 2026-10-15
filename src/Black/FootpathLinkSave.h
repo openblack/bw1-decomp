@@ -12,6 +12,8 @@
 class Base;
 class GFootpathLink;
 class GameOSFile;
+class MultiMapFixed;
+class PlannedMultiMapFixed;
 
 class GFootpathLinkSave : public GameThing
 {
@@ -21,26 +23,30 @@ public:
 
 	// Override methods
 
-	// BW1W120 00537110 BW1M119 null
-	virtual bool32_t Save(GameOSFile& file);
-	// BW1W120 005371d0 BW1M119 null
-	virtual uint32_t GetSaveType();
-	// BW1W120 005371f0 BW1M119 010f0180
-	virtual ~GFootpathLinkSave();
 	// BW1W120 005371e0 BW1M119 010f41e0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Footpath link for map save:"; }
 	// BW1W120 005370a0 BW1M119 010ef6e0
 	virtual bool32_t Load(GameOSFile& file);
+	// BW1W120 00537110 BW1M119 010ef5e0
+	virtual bool32_t Save(GameOSFile& file);
+	// BW1W120 005371d0 BW1M119 010f41a0
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GFOOTPATH_LINK_SAVE; }
 
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
 	GFootpathLinkSave() {}
+	// BW1W120 00537180 BW1M119 null
+	GFootpathLinkSave(MultiMapFixed* structure);
+	// BW1W120 00537210 BW1M119 null
+	GFootpathLinkSave(PlannedMultiMapFixed* planned);
 
 	// Non-virtual methods
 
-	// BW1W120 00536fa0 BW1M119 inlined
-	void FUN_00536fa0();
+	// BW1W120 00536fa0 BW1M119 010ef810
+	void Apply();
 };
+
+static_assert(sizeof(GFootpathLinkSave) == 0x24, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_FOOTPATH_LINK_SAVE_INCLUDED_H */

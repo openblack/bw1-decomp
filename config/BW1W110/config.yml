@@ -34,7 +34,7 @@ add_relocations:
     target: '__except_list'
   - source: 0x008963A1
     type: x86_abs32
-    target: '$T99291'
+    target: '$T99293'
   - source: 0x00927EEC
     type: x86_abs32
     target: '??_EParticlePointCreator@@UAEPAXI@Z'
@@ -544,6 +544,46 @@ add_relocations:
   - source: 0x008B70A4
     type: x86_abs32
     target: '??_EMPFEMessageObject@@UAEPAXI@Z'
+  - source: 0x007439F7
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x007440A3
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x007440EB
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x00744258
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x60
+  - source: 0x0074523A
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x00746729
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x133CC
+  - source: 0x0074896A
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x30
+  - source: 0x007489DA
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x40
+  - source: 0x0074A657
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
+  - source: 0x0074A709
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
 
 # TODO: Unsure why we get 0x832000, probably because of decryptor
 force_size: 0x00902a0b

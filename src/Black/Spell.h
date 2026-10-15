@@ -10,6 +10,7 @@
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
+#include "LHPTR.h"            /* For class LHPTR */
 #include "MapCoords.h"        /* For struct MapCoords */
 
 // Forward Declares
@@ -38,7 +39,7 @@ public:
 	static void ProcessSpells();
 	static void DrawSpells(); // 007203f0
 
-	uint32_t          field_0x28;
+	LHPTR<Reaction>   SpellReaction;
 	float             field_0x2c;
 	uint32_t          field_0x30;
 	uint32_t          field_0x34;
@@ -188,6 +189,10 @@ public:
 	Spell(MAGIC_TYPE type, GameThing* creator);
 	// BW1W120 007218e0 BW1M119 0151d760
 	GInterfaceStatus* GetInterfaceStatus();
+	// BW1W120 007218f0 BW1M119 0151d6e0
+	void SetHasAlreadyBeenLearnedFrom(bool learned);
+	// BW1W120 00721910 BW1M119 0151d660
+	bool GetHasAlreadyBeenLearnedFrom();
 	// BW1W120 007201d0 BW1M119 01520760
 	GMagicInfo* GetMagicInfo() const;
 	// BW1W120 0079ddf0 BW1M119 015aed70

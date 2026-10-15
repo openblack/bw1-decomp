@@ -63,6 +63,8 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	SpellForest() { SetToZero(); }
+	// BW1W120 inlined
+	SpellForest(MAGIC_TYPE type, GameThing* creator) : Spell(type, creator) { SetToZero(); }
 
 	// BW1W120 007254f0 BW1M119 01528ba0
 	void SetToZero();

@@ -109,6 +109,8 @@ public:
 
 	// BW1W120 inlined BW1M119 0108e840
 	LHPoint& GetCameraPos() { return CameraPos; }
+	// BW1W120 inlined BW1M119 01067450
+	MapCoords& GetHandCollide() { return Pos; }
 	// BW1W120 inlined BW1M119 01099000
 	LHPoint& GetHandPos() { return ReportedHandPos; }
 	// BW1W120 005cedc0 BW1M119 01362540

@@ -1517,6 +1517,42 @@ add_relocations:
   - source: 0x008061B8
     type: x86_abs32
     target: '??_EMPFEMessageObject@@UAEPAXI@Z'
+  - source: 0x006DFC07
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x131D0
+  - source: 0x006E0203
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x006E024B
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x80
+  - source: 0x006E03B8
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x60
+  - source: 0x006E2189
+    type: x86_abs32
+    target: '?InfoList@GVillagerInfo@@2PAV1@A'
+    addend: 0x133CC
+  - source: 0x006E438A
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x30
+  - source: 0x006E43FA
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x40
+  - source: 0x006E5C47
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
+  - source: 0x006E5CF9
+    type: x86_abs32
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
+    addend: 0x70
 
 dead_strip: true
 # The original 1.0 link used /OPT:REF, which only collects COMDATs. Until the

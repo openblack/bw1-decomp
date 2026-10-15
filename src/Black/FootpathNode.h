@@ -19,25 +19,32 @@ class GameOSFile;
 class GFootpathNode : public GameThing
 {
 public:
-	uint8_t                   field_0x14;
-	MapCoords                 coords;
-	LHListNode<GFootpathNode> next;
+	union {
+		uint8_t Flags; /* 0x14 */
+		struct
+		{
+			uint8_t Real : 1;
+			uint8_t Temporary : 1;
+			uint8_t Hidden : 1;
+			uint8_t InsideObstacle : 1;
+		};
+	};
+	MapCoords                 coords; /* 0x18 */
+	LHListNode<GFootpathNode> next;   /* 0x24 */
 	LHLinkedList<Living*>     followers;
 
 	// Override methods
 
-	// BW1W120 00534d70 BW1M119 010f4090
-	virtual ~GFootpathNode();
 	// BW1W120 00538970 BW1M119 010ed310
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00534d60 BW1M119 010f4160
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Footpath node:"; }
 	// BW1W120 00538c10 BW1M119 010ec6c0
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00538d70 BW1M119 010ec3c0
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00534d50 BW1M119 010f4120
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GFOOTPATH_NODE; }
 	// BW1W120 00538ea0 BW1M119 010ec380
 	virtual void ResolveLoad();
 
@@ -46,14 +53,20 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	GFootpathNode() {}
 	// BW1W120 00534cf0 BW1M119 010f3ea0
-	GFootpathNode(const MapCoords& coords, int param_2, int param_3);
+	GFootpathNode(const MapCoords& coords, bool32_t real, bool32_t temporary);
 
 	// Non-virtual methods
 
+	// BW1W120 00534d90 BW1M119 inlined
+	float GetDistance(const MapCoords& pos) const;
+	// BW1W120 inlined BW1M119 inlined
+	bool IsHidden() const { return Hidden || InsideObstacle; }
 	// BW1W120 005389d0 BW1M119 010ed1c0
 	void PurgeFollowerList();
 	// BW1W120 00538b10 BW1M119 010ece30
 	void ClearFromPreviousNode();
 };
+
+static_assert(sizeof(GFootpathNode) == 0x30, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_FOOTPATH_NODE_INCLUDED_H */

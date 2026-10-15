@@ -96,7 +96,7 @@ public:
 	LHListHead<WorshipSpellIcon>                    IconList;
 	uint32_t                                        ResourcesOnTheWay[RESOURCE_TYPE_LAST]; /* 0xe8 */
 	float                                           ChantStore;                            /* 0xf0 */
-	float                                           field_0xf4;
+	float                                           TotalSacrificeValue;
 	float                                           TotalChantsAvailable;
 	float                                           ChantsUsed;
 	float                                           ChantsRequested; /* 0x100 */

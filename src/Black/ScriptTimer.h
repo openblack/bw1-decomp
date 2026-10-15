@@ -40,10 +40,25 @@ public:
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 
 	// BW1W120 inlined BW1M119 inlined
-	ScriptTimer() { SetTime(0); }
+	ScriptTimer() { SetTime(0ul); }
+
+	// Static methods
+
+	// BW1W120 007115a0 BW1M119 0150e270
+	static ScriptTimer* Create(float seconds);
+
+	// Non-virtual methods
 
 	// BW1W120 00711610 BW1M119 010a1df0
 	void SetTime(unsigned long time);
+	// BW1W120 00711630 BW1M119 01001360
+	void SetTime(float seconds);
+	// BW1W120 00711670 BW1M119 0107e060
+	float GetTimeInSecondsRemaining();
+	// BW1W120 007116c0 BW1M119 0107dfe0
+	int GetTurnsSinceSet();
+	// BW1W120 007116d0 BW1M119 0150de60
+	float GetTimeInSecondsSinceSet();
 };
 
 #endif /* BW1_DECOMP_SCRIPT_TIMER_INCLUDED_H */

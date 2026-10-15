@@ -1791,7 +1791,7 @@ void LandscapeCollide::DefineProperties(PropertyList* list)
 // reference. In BW1W100 that tie-break also depends on how many symbols are declared before
 // RegisterModifiers; the parameters pad the count.
 #if defined(VERSION_BW1W100)
-static std::string EmptyString(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6)
+static std::string EmptyString(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5)
 {
 	std::string text[1];
 	return text[0];
@@ -1799,7 +1799,7 @@ static std::string EmptyString(int arg0, int arg1, int arg2, int arg3, int arg4,
 #else
 static void EmptyString()
 {
-	std::string text[2];
+	std::string text;
 }
 #endif
 
