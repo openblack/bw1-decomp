@@ -661,6 +661,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureWhatToDoNext.cpp"),
             GameCodeObject(NonMatching, "Black/Creche.cpp"),
             GameCodeObject(NonMatching, "Black/CreditsRoom.cpp"),
+            GameCodeObject(NonMatching, "Black/CreditText.cpp"),
             GameCodeObject(NonMatching, "Black/Creed.cpp"),
             GameCodeObject(NonMatching, "Black/Dance.cpp"),
             GameCodeObject(NonMatching, "Black/DanceGroup.cpp"),
@@ -742,6 +743,7 @@ config.libs = [
             GameCodeObject(Matching, "Black/GameThing.cpp"),
             GameCodeObject(NonMatching, "Black/GatheringBox.cpp"),
             GameCodeObject(NonMatching, "Black/GatheringInterface.cpp"),
+            GameCodeObject(NonMatching, "Black/GatheringText.cpp"),
             GameCodeObject(NonMatching, "Black/GenerateCreatureHTML.cpp"),
             GameCodeObject(Matching, "Black/GestureSystem.cpp"),
             GameCodeObject(Matching, "Black/GestureSystemData.cpp"),
@@ -749,6 +751,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/GestureSystemMatch.cpp"),
             GameCodeObject(NonMatching, "Black/GestureSystemResult.cpp"),
             GameCodeObject(Matching, "Black/GestureSystemSamples.cpp"),
+            GameCodeObject(NonMatching, "Black/GJBaseUtils.cpp"),
             GameCodeObject(NonMatching, "Black/GJPersistent.cpp"),
             GameCodeObject(Matching, "Black/GJProperty.cpp"),
             GameCodeObject(NonMatching, "Black/GJSpline.cpp"),
@@ -787,6 +790,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/HelpSpritesGuidance.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSystem.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSystemBubble.cpp"),
+            GameCodeObject(NonMatching, "Black/HelpSystemMessage.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSystemInfo.cpp"),
             GameCodeObject(NonMatching, "Black/HelpSystemToolTips.cpp"),
             GameCodeObject(NonMatching, "Black/HelpText.cpp"),
@@ -1203,6 +1207,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/WorshipSpellIcon.cpp"),
             GameCodeObject(NonMatching, "Black/WorshipTotem.cpp"),
             GameCodeObject(Matching, "Black/WorldRoom.cpp"),
+            GameCodeObject(NonMatching, "Black/WorldRoomCamera.cpp"),
 
             # Contains SSE instructions, could be result of compiling with intel compiler
             # P3 suggests pentium III. Instructions are for P3 and P4.
