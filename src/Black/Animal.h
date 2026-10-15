@@ -11,12 +11,11 @@
 
 #include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer */
 
-#include "Living.h"           /* For struct Living */
-#include "LivingAction.h"     /* For struct Living__StateTableEntry */
-#include "LivingStateTable.h" /* For struct LivingStateTableEntry */
+#include "Living.h" /* For struct Living */
 
 // Forward Declares
 
+class Animal;
 class Base;
 class Creature;
 class GAnimalInfo;
@@ -35,6 +34,20 @@ class PhysicsObject;
 class Reaction;
 class Spell;
 class Town;
+
+struct AnimalStateTableEntry
+{
+	bool32_t (Animal::*State)();
+	bool32_t (Animal::*EntryState)(uint8_t current, uint8_t destination);
+	bool32_t (Animal::*ExitState)(uint8_t state);
+	bool32_t (Animal::*SaveState)(GameOSFile& file);
+	bool32_t (Animal::*LoadState)(GameOSFile& file);
+	uint32_t (Animal::*ReactToTownEmergency)();
+	uint32_t (Animal::*Animation)();
+	uint32_t (Animal::*TransitionAnimation)(uint8_t into, uint8_t state);
+	void (Animal::*Validate)();
+};
+static_assert(sizeof(AnimalStateTableEntry) == 0x90, "Data type is of wrong size");
 
 class Animal : public Living
 {
@@ -378,7 +391,10 @@ public:
 	Animal(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
 
 	// BW1W120 00d12108
-	static LivingStateTableEntry<Animal> StateTable[ANIMAL_STATE_LAST_STATE];
+	static AnimalStateTableEntry StateTable[ANIMAL_STATE_LAST_STATE];
+
+	// BW1W120 inlined BW1M119 0100e9e0 (Black & White Support)
+	static AnimalStateTableEntry* GetStateTable();
 
 	// BW1W120 00417900 BW1M119 01175150
 	void SetToZero();

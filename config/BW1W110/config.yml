@@ -550,15 +550,15 @@ add_relocations:
     addend: 0x131D0
   - source: 0x007440A3
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x80
   - source: 0x007440EB
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x80
   - source: 0x00744258
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x60
   - source: 0x0074523A
     type: x86_abs32
@@ -570,19 +570,19 @@ add_relocations:
     addend: 0x133CC
   - source: 0x0074896A
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x30
   - source: 0x007489DA
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x40
   - source: 0x0074A657
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x70
   - source: 0x0074A709
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x70
 
 # TODO: Unsure why we get 0x832000, probably because of decryptor

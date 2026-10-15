@@ -144,43 +144,6 @@ public:
 	static void* ReactionFunctionArray[0x668];
 #endif
 
-	struct StateTableSubEntry
-	{
-		bool (Living::*function)(); /* 0x0 */
-		uint32_t field_0x4;
-		uint32_t field_0x8;
-		int32_t  field_0xc;
-	};
-
-	struct StateTableSubEntryState
-	{
-		uint32_t (Living::*function)(); /* 0x0 */
-		uint32_t field_0x4;
-		uint32_t field_0x8;
-		int32_t  field_0xc;
-	};
-
-	struct StateTableSubEntryEntryState
-	{
-		bool (Living::*function)(VILLAGER_STATES param_1, VILLAGER_STATES param_2); /* 0x0 */
-		uint32_t field_0x4;
-		uint32_t field_0x8;
-		int32_t  field_0xc;
-	};
-
-	struct StateTableEntry
-	{
-		StateTableSubEntryState      state;      /* 0x0 */
-		StateTableSubEntryEntryState EntryState; /* 0x10 */
-		StateTableSubEntry           ExitState;  /* 0x20 */
-		StateTableSubEntry           save_state; /* 0x30 */
-		StateTableSubEntry           LoadState;  /* 0x40 */
-		StateTableSubEntry           field_0x50;
-		StateTableSubEntry           field_0x60;
-		StateTableSubEntry           TransitionAnimation; /* 0x70 */
-		StateTableSubEntry           validate;            /* 0x80 */
-	};
-
 	LivingAction                              action;
 	LHPTR<Reaction>                           reaction;
 	ForgetfulLinkedList<ReactionDoneWhen*, 3> reaction_done_when;
