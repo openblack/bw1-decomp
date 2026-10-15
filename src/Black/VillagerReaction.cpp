@@ -198,7 +198,7 @@ uint8_t Villager::FleeFromPredatorPriority(Reaction* reaction, Reaction* current
 	{
 		return 0;
 	}
-	float    distance = GetDistanceInMetres(Pos, predator->Pos);
+	float    distance = GUtils::GetDistanceInMetres_0074cd50(Pos, predator->Pos);
 	bool32_t farAway = distance > reaction->GetInfo()->MinDistanceToRunAwayFromObject;
 	if (Flags & VILLAGER_FLAG_AT_HOME)
 	{
@@ -301,7 +301,7 @@ bool32_t Villager::FleeingFromPredatorReaction()
 		{
 			return false;
 		}
-		float distance = GetDistanceInMetres(Pos, ReactionObject->Pos);
+		float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos);
 		if (distance > GetReaction()->GetInfo()->MaxDistanceToRunAwayFromObject)
 		{
 			StopReactingAndSetState();
@@ -379,7 +379,7 @@ bool32_t Villager::GoAndHideInNearbyBuilding()
 		{
 			if (ReactionObject.Get() != NULL)
 			{
-				float distance = GetDistanceInMetres(Pos, ReactionObject->Pos);
+				float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos);
 				if (distance <= GetReaction()->GetInfo()->MinDistanceToRunAwayFromObject)
 				{
 					return true;
@@ -420,7 +420,7 @@ bool32_t Villager::LookToSeeIfItIsSafe()
 {
 	if (ReactionObject.Get() != NULL)
 	{
-		float distance = GetDistanceInMetres(Pos, ReactionObject->Pos);
+		float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos);
 		if (distance <= GetReaction()->GetInfo()->MaxReactionDistance && ReactionObject->IsAnimal())
 		{
 			uint8_t predatorState = ((Living*)ReactionObject.Get())->action.states[LIVING_ACTION_INDEX_TOP];
@@ -475,7 +475,8 @@ uint32_t Villager::NumGameTurnsToReactToBurningObjectFunction(GameThingWithPos* 
 uint32_t Villager::NumGameTurnsBeforeReactingAgainToBurningObjectFunction(GameThingWithPos* thing, uint32_t reaction,
                                                                           float distance)
 {
-	if (GetDistanceInMetres(Pos, thing->Pos) >= GInfoArrays::ReactionInfos[reaction].MinDistanceToRunAwayFromObject &&
+	if (GUtils::GetDistanceInMetres_0074cd50(Pos, thing->Pos) >=
+	        GInfoArrays::ReactionInfos[reaction].MinDistanceToRunAwayFromObject &&
 	    thing->GetSpeedInMetresPerSecond() <= VILLAGER_BURNING_OBJECT_STILL_SPEED)
 	{
 		return StandardNumGameTurnsBeforeReactingAgainFunction(thing, reaction, distance);
@@ -589,7 +590,7 @@ bool32_t Villager::ApproachObjectReaction()
 		StopReactingAndSetState();
 		return true;
 	}
-	float distance = GetDistanceInMetres(Pos, ReactionObject->Pos);
+	float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos);
 	if (distance - InspectDistance > VILLAGER_INSPECT_OBJECT_MIN_DISTANCE)
 	{
 		long      angle = GUtils::GetAngleFromXZ(Pos, ReactionObject->Pos);
@@ -927,7 +928,7 @@ bool32_t Villager::ApproachHandReaction()
 		StopReactingAndSetState();
 		return true;
 	}
-	GetDistanceInMetres(Pos, ReactionObject->Pos);
+	GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos);
 	LookAtObject(ReactionObject.Get(), LIVING_LOOK_AT_SPEED_NORMAL);
 	return true;
 }
@@ -1323,7 +1324,7 @@ bool32_t Villager::GoTowardsDeadPerson()
 		return false;
 	}
 	float lookDistance = GetReaction()->GetInfo()->MaxDistanceToRunAwayFromObject;
-	float distance = GetDistanceInMetres(Pos, ReactionObject->Pos);
+	float distance = GUtils::GetDistanceInMetres_0074cd50(Pos, ReactionObject->Pos);
 	if (distance > lookDistance * VILLAGER_DEAD_PERSON_APPROACH_SCALE)
 	{
 		long angle = GUtils::GetAngleFromXZ(Pos, ReactionObject->Pos);
@@ -1725,7 +1726,8 @@ uint8_t Villager::ReactToBurningObjectInHandPriority(Reaction* reaction, Reactio
 {
 	REACTION          type = reaction->GetFunctionIndex();
 	GameThingWithPos* burning = reaction->GetInitiatingObject();
-	if (GetDistanceInMetres(Pos, burning->Pos) > GInfoArrays::ReactionInfos[type].MinDistanceToRunAwayFromObject &&
+	if (GUtils::GetDistanceInMetres_0074cd50(Pos, burning->Pos) >
+	        GInfoArrays::ReactionInfos[type].MinDistanceToRunAwayFromObject &&
 	    burning->GetSpeedInMetresPerSecond() < VILLAGER_BURNING_OBJECT_SLOW_SPEED)
 	{
 		return 0;
