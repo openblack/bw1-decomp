@@ -1621,19 +1621,24 @@ Black/MPFEClanDetails.cpp:
 	.bss        start:0x00D40DF0 end:0x00D40E08
 
 Black/MPFEConditionMessages.cpp:
-	.text       start:0x0062C690 end:0x0062DAC0
-	.rdata      start:0x00930830 end:0x00930864
-	.CRT$XCU    start:0x009C6FD0 end:0x009C6FF8 align:4
-	.data       start:0x00BF4CBC end:0x00BFD888
-	.bss        start:0x00D40E08 end:0x00D40E50
+	.text       start:0x0062C690 end:0x0062CDC0
+	.rdata      start:0x00930830 end:0x00930850
+	.CRT$XCU    start:0x009C6FD0 end:0x009C6FE0 align:4
+	.data       start:0x00BF4CBC end:0x00BF4D40
+	.bss        start:0x00D40E08 end:0x00D40E20
 
 Black/MPFEConnectionStatus.cpp:
-	.text       start:0x0062DAC0 end:0x0062DAD0
+	.text       start:0x0062CDC0 end:0x0062DB10
+	.rdata      start:0x00930850 end:0x00930860
+	.CRT$XCU    start:0x009C6FE0 end:0x009C6FFC align:4
+	.data       start:0x00BF4D40 end:0x00BFD7E8
+	.bss        start:0x00D40E20 end:0x00D40E50
 
 Black/MPFEDatabase.cpp:
-	.text       start:0x0062DAD0 end:0x0062E540
-	.rdata      start:0x00930864 end:0x009308A8
-	.CRT$XCU    start:0x009C6FF8 end:0x009C7018 align:4
+	.text       start:0x0062DB10 end:0x0062E540
+	.rdata      start:0x00930860 end:0x009308A8
+	.CRT$XCU    start:0x009C6FFC end:0x009C7018 align:4
+	.data       start:0x00BFD7E8 end:0x00BFD888
 	.bss        start:0x00D40E50 end:0x00D40EC8
 
 Black/MPFEDownloads.cpp:

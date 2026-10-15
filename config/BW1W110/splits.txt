@@ -1354,24 +1354,22 @@ Black/MPFEChooseConnection.cpp:
 
 Black/MPFEClanDetails.cpp:
 	.text       start:0x00623720 end:0x00624430
-	.rdata      start:0x009207A0 end:0x009207CC
+	.rdata      start:0x009207A0 end:0x009207D4
 	.CRT$XCU    start:0x009B6B08 end:0x009B6B18 align:4
 	.data       start:0x00BE3F4C end:0x00BE3F60
 
-Black/MPFEConditionMessages.cpp:
-	.text       start:0x00624430 end:0x00625130
-	.rdata      start:0x009207CC end:0x009207E0
-	.CRT$XCU    start:0x009B6B18 end:0x009B6B30 align:4
-	.data       start:0x00BEC984 end:0x00BECAC8
-	.bss        start:0x00D2FAF0 end:0x00D2FB38
-
 Black/MPFEConnectionStatus.cpp:
-	.text       start:0x00625130 end:0x00625140
+	.text       start:0x00624430 end:0x00625150
+	.rdata      start:0x009207D4 end:0x009207E4
+	.CRT$XCU    start:0x009B6B18 end:0x009B6B30 align:4
+	.data       start:0x00BE3F80 end:0x00BECA28
+	.bss        start:0x00D2FB08 end:0x00D2FB38
 
 Black/MPFEDatabase.cpp:
-	.text       start:0x00625140 end:0x00625B50
-	.rdata      start:0x009207EC end:0x0092082C
+	.text       start:0x00625150 end:0x00625B50
+	.rdata      start:0x009207E4 end:0x0092082C
 	.CRT$XCU    start:0x009B6B30 end:0x009B6B48 align:4
+	.data       start:0x00BECA28 end:0x00BECAC8
 	.bss        start:0x00D2FB38 end:0x00D2FBB0
 
 Black/MPFEDownloads.cpp:
