@@ -46,6 +46,12 @@ def compilers_msvc_url(tag: str) -> str:
     return f"https://github.com/OmniBlade/decomp.me/releases/download/msvcwin9x/msvc{tag}.tar.gz"
 
 
+def compilers_msvc70_url(tag: str) -> str:
+    # Visual Studio .NET 2002 (cl 13.00.9466), repackaged. OmniBlade's "msvc7.0"
+    # asset is really 7.1 (13.10.3077), so 7.0 comes from the copy decomp.me uses.
+    return f"https://github.com/roblabla/MSVC-7.0-Portable/releases/download/{tag}/msvc7.0.tar.gz"
+
+
 def icc_url(tag: str) -> str:
     # Intel C++ 5.0.1, repackaged. No release assets: fetch the source archive
     # for a branch or tag directly.
@@ -120,6 +126,7 @@ TOOLS: Dict[str, Callable[[str], str]] = {
     "binutils": binutils_url,
     "compilers": compilers_url,
     "compilers_msvc": compilers_msvc_url,
+    "compilers_msvc70": compilers_msvc70_url,
     "dtk": dtk_url,
     "icc": icc_url,
     "llvm": llvm_url,

@@ -9,7 +9,7 @@
 #include <ddraw.h>
 
 #include <Lionhead/LH3DLib/development/LHColor.h> /* For struct LHColor */
-#include <Lionhead/LHLib/ver5.0/LHTimer.h>        /* For struct LHTimer */
+#include <Lionhead/LHLib/ver5.0/LHTimer.h>        /* For LHTimer */
 #include <Lionhead/LHLib/ver5.0/LHMouse.h>        /* For LHMouse::Draw */
 #include <Lionhead/LHLib/ver5.0/LHSystem.h>       /* For LHSys::TheSystem */
 #include <Lionhead/LHLib/ver5.0/LHWin.h>          /* For operator new(size_t, const char*, uint32_t) */

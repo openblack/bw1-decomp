@@ -4,8 +4,9 @@
 #include <re_common.h> /* For bool32_t */
 #include <stdint.h>    /* For uint32_t, uint8_t */
 
-struct LHTimer
+class LHTimer
 {
+public:
 	char     Text[0x100];
 	uint32_t TickCount; /* 0x100 */
 	int      ElapsedTime;
@@ -36,6 +37,10 @@ struct LHTimer
 	void Reset(uint32_t value);
 	// BW1W120 inlined BW1M119 015cc950
 	void Restart(uint32_t value);
+#ifdef _LH_LOG_LIB_
+	// BW1W120 10003060 BW1M119 null
+	char* GetTimeString();
+#endif
 };
 
 #endif /* BW1_DECOMP_LH_TIMER_INCLUDED_H */

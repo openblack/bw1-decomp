@@ -16,7 +16,7 @@ struct LH3DMaterial;
 class LH3DObject;
 struct LHMatrix;
 struct LHPoint;
-struct LHTimer;
+class LHTimer;
 struct Vertex3D;
 
 enum LH3D_PROJECT_RESULT
