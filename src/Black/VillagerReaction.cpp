@@ -936,10 +936,10 @@ bool32_t Villager::ApproachHandReaction()
 Villager* Villager::FindNearbyVillagerWhoIsntReacting()
 {
 	MapCoords pos = Pos;
-	int       cellsLeft = VILLAGER_FIND_NEARBY_VILLAGER_CELLS;
+	int       remaining = VILLAGER_FIND_NEARBY_VILLAGER_CELLS;
 	long      spiralX = 1;
 	long      spiralZ = 1;
-	do
+	while (remaining != 0)
 	{
 		if (pos.InBounds() == true)
 		{
@@ -953,9 +953,9 @@ Villager* Villager::FindNearbyVillagerWhoIsntReacting()
 				}
 			}
 		}
-		cellsLeft--;
+		remaining--;
 		pos += *GUtils::Spiral(spiralX, spiralZ);
-	} while (cellsLeft != 0);
+	}
 	return NULL;
 }
 
