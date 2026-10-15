@@ -895,7 +895,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/MPFEClanList.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEConditionMessages.cpp"),
             GameCodeObject(NonMatching, "Black/MPFECondtionUpdateMessage.cpp"),
-            GameCodeObject(Matching, "Black/MPFEConnectionStatus.cpp"),
+            GameCodeObject(NonMatching, "Black/MPFEConnectionStatus.cpp"),
             GameCodeObject(NonMatching, "Black/MPFECreateGame.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEDatabase.cpp"),
             GameCodeObject(NonMatching, "Black/MPFEDatabaseID.cpp"),
