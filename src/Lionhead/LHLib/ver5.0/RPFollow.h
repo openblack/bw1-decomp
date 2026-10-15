@@ -30,7 +30,7 @@ public:
 	void(__cdecl* field_0x64064)(int, int);
 	void(__cdecl* field_0x64068)(int, float, float);
 	float(__cdecl* field_0x6406c)(int);
-	RouteNode* field_0x64070;
+	RouteNode* CurrentNode;
 	Point2D    Dest;
 	float      field_0x6407c;
 	float      field_0x64080;
