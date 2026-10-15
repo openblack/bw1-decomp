@@ -50,7 +50,7 @@ struct FrontEnd
 	// BW1W120 00cd065c
 	static MainMenu* MainMenuDialog;
 	// BW1W120 00cd063c
-	static DialogBoxBase* Dat_00CD063C;
+	static GatheringBox* GatheringDialog;
 	// BW1W120 00cd0654
 	static TattooEditor* TattooDialog;
 	// BW1W120 00cd0b0c

@@ -7,10 +7,11 @@
 #include <time.h>
 #include <windows.h>
 
-#include <chlasm/Enum.h>                   /* For enum TRIBE_TYPE */
-#include <chlasm/LHKeyBoard.h>             /* For enum LH_KEY */
-#include <Lionhead/LHLib/ver5.0/LHTimer.h> /* For LHTimer */
-#include <Lionhead/LHLib/ver5.0/LHMouse.h> /* For enum LH_MOUSE_EVENT_TYPE */
+#include <chlasm/Enum.h>                           /* For enum TRIBE_TYPE */
+#include <chlasm/LHKeyBoard.h>                     /* For enum LH_KEY */
+#include <Lionhead/LHLib/ver5.0/LHTimer.h>         /* For LHTimer */
+#include <Lionhead/LH3DLib/development/LH3DFade.h> /* For LH3DFade */
+#include <Lionhead/LHLib/ver5.0/LHMouse.h>         /* For enum LH_MOUSE_EVENT_TYPE */
 
 #include "BindableAction.h"    /* For struct CMouse */
 #include "CreatureDatabase.h"  /* For struct CreatureDatabase */
@@ -142,13 +143,11 @@ public:
 	// BW1W120 00d46a78
 	static bool32_t DebugDrawCreatureBeliefs;
 	// BW1W120 00cd3af0
-	static SetupBox* Dat_00CD3AF0;
+	static SetupBox* RequestorBox;
 	// BW1W120 00d01984
-	static bool Dat_00D01984;
+	static bool NewProfilePending;
 	// BW1W120 00d019d4
-	static bool32_t Dat_00D019D4;
-	// BW1W120 00fa51db
-	static bool Dat_00FA51DB;
+	static bool32_t PausedFromKeyboard;
 	// TODO: Original names are unrecovered; shared with tutorial and packet processing.
 	// BW1W120 00d019a4
 	static uint32_t TutorialState;
@@ -230,7 +229,7 @@ public:
 	uint32_t               LandNumber;
 	bool32_t               SkirmishGame;
 	bool32_t               GameOverStarted;
-	int                    field_0x205a14;
+	bool32_t               MyPlayerHasCitadel;
 	uint32_t               LastSaveTurn;
 	int                    LastLoadTurn;
 	GLandscape             landscape;
@@ -481,7 +480,7 @@ public:
 	// BW1W120 00550a60 BW1M119 inlined
 	GPlayer* GetPlayer(PLAYER_NAME player_name);
 	// BW1W120 00550c50 BW1M119 010a7990
-	void SetPacket(PACKET_TYPE type, unsigned short param_2, unsigned short param_3);
+	void SetPacket(PACKET_TYPE type, unsigned short, unsigned short);
 	// BW1W120 00550dd0 BW1M119 0157b2a0
 	void SetPacket(PACKET_TYPE type);
 	// BW1W120 00551690 BW1M119 010086d0

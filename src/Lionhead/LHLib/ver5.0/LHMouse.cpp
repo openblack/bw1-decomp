@@ -22,7 +22,7 @@
 #define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHMouse.cpp"
 
 #define LH_MOUSE_WINDOWS_CURSOR_TYPES                                                                                  \
-	(LH_MOUSE_IMAGE_TYPE_HIDDEN | LH_MOUSE_IMAGE_TYPE_ARROW | LH_MOUSE_IMAGE_TYPE_0x04)
+	(LH_MOUSE_IMAGE_TYPE_HIDDEN | LH_MOUSE_IMAGE_TYPE_ARROW | LH_MOUSE_IMAGE_TYPE_WINDOWS_ARROW)
 #define LH_MOUSE_CALLBACK_EVENT_TYPES                                                                                  \
 	(LH_MOUSE_EVENT_TYPE_FLIP | LH_MOUSE_EVENT_TYPE_TIMER | LH_MOUSE_EVENT_TYPE_MOVE | LH_MOUSE_EVENT_TYPE_BUTTON)
 #define LH_MOUSE_ALWAYS_DRAW_EVENT_TYPES                                                                               \

@@ -6,7 +6,7 @@ class GLandAlignement
 public:
 	// TODO: Original member name and data split ownership are unrecovered.
 	// BW1W120 00bf337c
-	static float Dat_00BF337C;
+	static float TargetAlignement;
 	// BW1W120 00bf3380
 	static float VisualTime;
 	static void  DrawSky(); // 005e2160

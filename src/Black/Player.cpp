@@ -320,7 +320,7 @@ void GPlayer::Process()
 	{
 		if (GGame::g_game->MyPlayer() == this)
 		{
-			GGame::g_game->field_0x205a14 = 1;
+			GGame::g_game->MyPlayerHasCitadel = true;
 		}
 		citadel->Process();
 	}

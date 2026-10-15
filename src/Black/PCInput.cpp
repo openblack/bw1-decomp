@@ -10,6 +10,7 @@
 #include <string.h> /* For strcat, strlen */
 
 #include <Lionhead/LHLib/ver5.0/LHWin.h>           /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LH3DLib/development/LH3DFade.h> /* For LH3DFade */
 #include <Lionhead/LH3DLib/development/LH3DSky.h>  /* For LH3DSky */
 #include <Lionhead/LH3DLib/development/LH3DTech.h> /* For LH3DTech */
 
@@ -68,7 +69,7 @@ enum PROFILE
 	PROFILE_KEY_B = 8,
 };
 
-unsigned char Dat_00D46A74;
+unsigned char UpdatePhysicsWhenPaused;
 bool32_t      GGame::DebugDrawCreatureBeliefs;
 
 static GPlayer* ZoomPlayer;
@@ -126,18 +127,18 @@ void GGame::ProcessKey(LH_KEY key, unsigned short modifier)
 		{
 			if (!(g_game->help_system->WideScreen && g_game->help_system->GetWideScreenControl()))
 			{
-				Dat_00CD3AF0->Callback = GameOverBoxCallback;
+				RequestorBox->Callback = GameOverBoxCallback;
 				keyUsed = true;
-				SetupBox::SetCurrentActiveBox(Dat_00CD3AF0);
-				Dat_00CD3AF0->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DETAIL_00),
-				                          MSGBOXSTYLE_3, 0);
+				SetupBox::SetCurrentActiveBox(RequestorBox);
+				RequestorBox->MessageBoxA(HelpTextDataBase::HelpTextDatabase.GetHelpText(HELP_TEXT_DIALOG_DETAIL_00),
+				                          MSGBOXSTYLE_YES_NO, 0);
 			}
 		}
 		else if (!g_game->IsMultiplayerGame() && g_game->LandNumber == GAME_LAND_NUMBER_PLAYGROUND)
 		{
 			keyUsed = true;
 			if (!(g_game->help_system->WideScreen && g_game->help_system->GetWideScreenControl()) &&
-			    g_game->script->IsScreenFaded() && !Dat_00FA51DB)
+			    g_game->script->IsScreenFaded() && !LH3DFade::g_color.a)
 			{
 				g_game->script->SetupScreenFadeBackToNormal(0);
 				if (TutorialState)
@@ -172,7 +173,7 @@ void GGame::ProcessKey(LH_KEY key, unsigned short modifier)
 			{
 				if (SetupBox::GetCurrentActiveBox() == FrontEnd::MainMenuDialog->setup_box)
 					blocked = false;
-				if (SetupBox::GetCurrentActiveBox() == FrontEnd::Dat_00CD063C->setup_box)
+				if (SetupBox::GetCurrentActiveBox() == FrontEnd::GatheringDialog->setup_box)
 					blocked = false;
 			}
 		}
@@ -240,7 +241,7 @@ void GGame::ProcessKey(LH_KEY key, unsigned short modifier)
 		{
 			if (g_game->VideoPlayer != NULL)
 			{
-				if (!Dat_00D01984)
+				if (!NewProfilePending)
 				{
 					g_game->CancelIntro();
 					GGlobal::Global.audio->StartScriptMusic(MUSIC_TYPE_NONE);
@@ -264,7 +265,7 @@ void GGame::ProcessKey(LH_KEY key, unsigned short modifier)
 	case KB_P:
 		if (modifier == 0)
 		{
-			Dat_00D019D4 = !(g_game->GameFlags & GAME_FLAG_PAUSED);
+			PausedFromKeyboard = !(g_game->GameFlags & GAME_FLAG_PAUSED);
 			PauseGame(!(g_game->GameFlags & GAME_FLAG_PAUSED));
 			return;
 		}
@@ -339,7 +340,7 @@ void GGame::ProcessMapKeys()
 	if (mode != NULL)
 	{
 		mode->InputDisabled = ViewMode == GAME_VIEW_MODE_INSIDE_CITADEL ||
-		                      (SetupBox::GetCurrentActiveBox() != NULL && SetupBox::Dat_00C4CCEE);
+		                      (SetupBox::GetCurrentActiveBox() != NULL && SetupBox::WantMouse);
 	}
 }
 
@@ -553,7 +554,7 @@ bool32_t SaveCreatureSnapshot()
 
 	float visualTime = GGameInfo::Info.GetVisualTime();
 	float skyType = LH3DSky::Time2SkyType(visualTime);
-	float alignment = GLandAlignement::Dat_00BF337C * 0.5f;
+	float alignment = GLandAlignement::TargetAlignement * 0.5f;
 	fwrite(&visualTime, 1, sizeof(visualTime), file);
 	fwrite(&skyType, 1, sizeof(skyType), file);
 	fwrite(&alignment, 1, sizeof(alignment), file);
@@ -575,7 +576,7 @@ bool32_t SaveCreatureSnapshot()
 	{
 		value = false;
 		fwrite(&value, 1, sizeof(value), file);
-		mapName = GSetup::Dat_00D99648;
+		mapName = GSetup::MapPath;
 	}
 	value = strlen(mapName);
 	fwrite(&value, 1, sizeof(value), file);

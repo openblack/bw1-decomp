@@ -115,7 +115,7 @@ public:
 	float                    HeadingDistance;
 	float                    IdleTime;
 	bool32_t                 InputDisabled;
-	int                      field_0x2f0;
+	bool32_t                 LimitReached;
 	CameraExclusion*         NearbyExclusions;
 	int                      field_0x2f8;
 	uint32_t                 field_0x2fc;

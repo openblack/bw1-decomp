@@ -1576,7 +1576,7 @@ void CameraModeNew3::Reinitialise(bool keep_fight)
 	field_0x8 = 0;
 	IdleTime = 0.0f;
 	InputDisabled = false;
-	field_0x2f0 = 0;
+	LimitReached = false;
 	RotatePoint = LHPoint(0.0f, 0.0f, 0.0f);
 	Global_00c5b0f4 = 0;
 	memset(Global_00c5b0d8, 0, sizeof(Global_00c5b0d8));
@@ -1837,11 +1837,11 @@ void CameraModeNew3::UpdateTricons()
 			Global_00c5b0f4 &= ~8;
 		}
 	}
-	if (InputDisabled || field_0x2f0)
+	if (InputDisabled || LimitReached)
 	{
 		Global_00c5b0f4 = 0;
 	}
-	if (field_0x2f0 && (GetCameraFeatures() & CAMERA_FEATURE_HELP))
+	if (LimitReached && (GetCameraFeatures() & CAMERA_FEATURE_HELP))
 	{
 		Global_00c5b0f4 |= 8;
 	}
@@ -2307,13 +2307,13 @@ void CameraModeNew3::Update()
 			Global_00c5b0b4 = 0;
 			Global_00c5b0f0 = 0;
 		}
-		if (field_0x2f0)
+		if (LimitReached)
 		{
 			if (!Global_00c5b0f0 && !Global_00c5b0b4 && !Global_00c5b0ec && !Global_00c5b0b0 &&
 			    Global_00c5b0d4 == 0.0f && Global_00c5b0cc == 0.0f && Global_00c5b0d0 == 0.0f &&
 			    Global_00c5b0c4 == 0.0f && Global_00c5b0c8 == 0.0f)
 			{
-				field_0x2f0 = 0;
+				LimitReached = false;
 			}
 			else
 			{
@@ -3137,7 +3137,7 @@ void CameraModeNew3::Update()
 			{
 				MouseTriconFlags = 0x10;
 				local_4b = true;
-				field_0x2f0 = 1;
+				LimitReached = true;
 			}
 			else if (GetCameraFeatures() & CAMERA_FEATURE_MOVE)
 			{
@@ -3689,7 +3689,7 @@ void CameraModeNew3::Update()
 			LH3DCameraChecker::Create(100.0f, originDest, 1.0f, 400, false);
 			if (HandStatus != CAMERA_MODE_HAND_STATUS_PANNING)
 			{
-				field_0x2f0 = 1;
+				LimitReached = true;
 			}
 			if (ForceField != NULL)
 			{

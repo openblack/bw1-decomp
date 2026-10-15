@@ -341,7 +341,7 @@ bool32_t GGame::Init()
 		Enum0x25017c = 1;
 	SkirmishGame = false;
 	GameOverStarted = false;
-	field_0x205a14 = 0;
+	MyPlayerHasCitadel = false;
 	switch (Enum0x25017c)
 	{
 	case 0:
@@ -1178,7 +1178,7 @@ void GGame::ClearVariables()
 	GameFlags = GAME_FLAG_UNKNOWN_0x20;
 	SkirmishGame = false;
 	GameOverStarted = false;
-	field_0x205a14 = 0;
+	MyPlayerHasCitadel = false;
 	LastSaveTurn = 0;
 	LastLoadTurn = 0;
 }
@@ -1307,7 +1307,7 @@ void GGame::ClearMap()
 	g_game->GameFlags |= GAME_FLAG_CLEARING_MAP;
 	GameFlags &= ~(GAME_FLAG_SHOW_VILLAGER_NAMES | GAME_FLAG_SHOW_VILLAGER_INFO);
 	GameOverStarted = false;
-	field_0x205a14 = 0;
+	MyPlayerHasCitadel = false;
 	SuperVillager* superVillager = SuperVillager::g_first;
 	while (superVillager != NULL)
 	{
@@ -2132,7 +2132,7 @@ void GGame::ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2)
 void GGame::Process3dEngine()
 {
 	bool32_t drewLandscape = false;
-	if (Dat_00D46A74 && (GameFlags & GAME_FLAG_PAUSED) && (g_game->GameFlags & GAME_FLAG_PAUSED))
+	if (UpdatePhysicsWhenPaused && (GameFlags & GAME_FLAG_PAUSED) && (g_game->GameFlags & GAME_FLAG_PAUSED))
 	{
 		PhysicsObject::GameTurnUpdate();
 	}
@@ -2577,8 +2577,9 @@ void GGame::EndTurn()
 		GameOSFile::AutoSave(false);
 	}
 	network.UpdateDebug();
-	if (!GameOverStarted && !g_game->SkirmishGame && !g_game->IsMultiplayerGame() && g_game->field_0x205a14 == 1 &&
-	    &g_game->players[g_game->PlayerIndex] != NULL && g_game->players[g_game->PlayerIndex].citadel.Get() != NULL &&
+	if (!GameOverStarted && !g_game->SkirmishGame && !g_game->IsMultiplayerGame() &&
+	    g_game->MyPlayerHasCitadel == true && &g_game->players[g_game->PlayerIndex] != NULL &&
+	    g_game->players[g_game->PlayerIndex].citadel.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->heart.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->GetCitadelHeart()->field_0xb8 != 0)
 	{
@@ -2844,7 +2845,7 @@ bool32_t GGame::Save(GameOSFile& file)
 	file.WriteIt(ScriptRebootRequested);
 	file.WriteIt(SkirmishGame);
 	file.WriteIt(GameOverStarted);
-	file.WriteIt(field_0x205a14);
+	file.WriteIt(MyPlayerHasCitadel);
 	file.WriteIt(GameOSFile::LastAutoSaveTurn);
 	file.WriteIt(LastSaveTurn);
 	Bookmark::SaveAll(file);
@@ -2969,7 +2970,7 @@ bool32_t GGame::Load(GameOSFile& file)
 	file.ReadIt(ScriptRebootRequested);
 	file.ReadIt(SkirmishGame);
 	file.ReadIt(GameOverStarted);
-	file.ReadIt(field_0x205a14);
+	file.ReadIt(MyPlayerHasCitadel);
 	file.ReadIt(GameOSFile::LastAutoSaveTurn);
 	GameOSFile::LastAutoSaveTurn = GGame::g_game->data.GameTurn;
 	LastLoadTurn = GGame::g_game->data.GameTurn;

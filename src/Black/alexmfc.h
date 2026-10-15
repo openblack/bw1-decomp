@@ -311,7 +311,7 @@ struct SetupControl
 enum MSGBOXSTYLE
 {
 	MSGBOXSTYLE_SINGLE_BUTTON = 0,
-	MSGBOXSTYLE_3 = 3,
+	MSGBOXSTYLE_YES_NO = 3,
 	MSGBOXSTYLE_NO_BUTTONS = 5,
 };
 
@@ -322,7 +322,7 @@ struct SetupBox
 	// BW1W120 00c4cced
 	static bool WantKey;
 	// BW1W120 00c4ccee
-	static bool Dat_00C4CCEE;
+	static bool WantMouse;
 	// BW1W120 00c4cd1c
 	static SetupBox* CurrentInitBox;
 	// BW1W120 00c4cd20
