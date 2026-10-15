@@ -47,7 +47,8 @@ public:
 	float    DiscipleMinDesire;
 	float    DiscipleMaxDesire;
 	uint32_t ArtifactBeliefGiftTurns;
-	uint8_t  field_0x130[0x8];
+	float    PopulationForUnmodifiedBelief;
+	float    MultiplierForBeliefFromVillagersDancingAroundArtifact;
 	float    StoragePitGiveAlignment; /* 0x138 */
 	float    StoragePitTakeAlignment;
 	float    ChillOutRadius;

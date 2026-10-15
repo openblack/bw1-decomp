@@ -73,6 +73,8 @@ public:
 	GTownDesireInfo* GetInfo(unsigned long desire) const;
 	// BW1W120 007465d0 BW1M119 01566d00
 	DesireSort* GetSortedDesire(uint32_t index);
+	// BW1W120 00746660 BW1M119 01566c40
+	float GetDesireSignificanceToVillager(TOWN_DESIRE_INFO desire);
 	// BW1W120 007471c0 BW1M119 015659b0
 	void SaveObject(LHOSFile& file, const MapCoords& offset);
 	// BW1W120 00747150 BW1M119 01086730

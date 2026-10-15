@@ -72,7 +72,16 @@ struct GMoveBy
 class MobileWallHug : public Mobile
 {
 public:
-	int16_t       TurnsUntilNextStateChange;
+	union {
+		// Owned by the current state: most states count it down to the state change, reaction states count it up.
+		int16_t TurnsUntilNextStateChange;
+		// Owned by the magic tree reaction: PerformBewilderedByMagicTreeReaction sets both, LookAtMagicTree counts down.
+		struct
+		{
+			uint8_t StateTurnsLeft;
+			uint8_t StateTurnsTotal;
+		};
+	};
 	uint16_t      speed;
 	uint16_t      GameAngle;
 	uint8_t       MoveState;

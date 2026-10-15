@@ -101,8 +101,8 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	Dance() {}
 	// BW1W120 0050b6a0 BW1M119 012ad5a0
-	Dance(const MapCoords& param_1, const GDanceInfo* info, const GameThingWithPos* param_3, uint32_t param_4,
-	      int param_5, Town* town);
+	Dance(const MapCoords& pos, const GDanceInfo* info, const GameThingWithPos* target, uint32_t duration,
+	      bool32_t follow_target, Town* town);
 
 	// Non-virtual methods
 
