@@ -245,7 +245,7 @@ void ResetCameraIfNecessary();
 GameOSFile::GameOSFile()
 {
 	Checksum = 0;
-	Status = 0;
+	MapFile = false;
 }
 
 GameOSFile::~GameOSFile()

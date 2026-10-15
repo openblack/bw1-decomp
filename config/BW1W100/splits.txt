@@ -714,21 +714,22 @@ Black/Flock.cpp:
 
 Black/FootBall.cpp:
 	.text       start:0x00506D10 end:0x00509BA0
-	.rdata      start:0x0081BD54 end:0x0081C6E4
+	.rdata      start:0x0081BD54 end:0x0081C6D8
 	.CRT$XCU    start:0x008F65A4 end:0x008F65AC align:4
-	.data       start:0x00B17384 end:0x00B173BC
 	.bss        start:0x00BF1538 end:0x00BF17C0
 
 Black/Footpath.cpp:
 	.text       start:0x00509FE0 end:0x0050DFA0
-	.rdata      start:0x0081C700 end:0x0081CB24
-	.data       start:0x00B173BC end:0x00B1748C
-	.bss        start:0x00BF17C0 end:0x00BF1820
+	.rdata      start:0x0081C6D8 end:0x0081CB24
+	.CRT$XCU    start:0x008F65AC end:0x008F65C4 align:4
+	.data       start:0x00B17368 end:0x00B17458
+	.bss        start:0x00BF17C0 end:0x00BF1800
 
 Black/Forest.cpp:
 	.text       start:0x0050DFA0 end:0x0050F590
 	.rdata      start:0x0081CB24 end:0x0081D064
-	.bss        start:0x00BF1820 end:0x00BF1A50
+	.CRT$XCU    start:0x008F65C4 end:0x008F65D0 align:4
+	.bss        start:0x00BF1800 end:0x00BF1A50
 
 Black/frontend.cpp:
 	.text       start:0x0050F590 end:0x00519870

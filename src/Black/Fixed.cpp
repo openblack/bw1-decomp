@@ -632,7 +632,7 @@ void MultiMapFixed::SetPercentBuilt(float percent)
 	}
 }
 
-uint32_t MultiMapFixed::AddFootpath(GFootpath* footpath)
+bool32_t MultiMapFixed::AddFootpath(GFootpath* footpath)
 {
 	if (GetFootpathLink() == NULL)
 	{
@@ -642,7 +642,7 @@ uint32_t MultiMapFixed::AddFootpath(GFootpath* footpath)
 	return true;
 }
 
-uint32_t MultiMapFixed::RemoveFootpath(GFootpath* footpath)
+bool32_t MultiMapFixed::RemoveFootpath(GFootpath* footpath)
 {
 	if (GetFootpathLink() != NULL)
 	{
@@ -670,7 +670,7 @@ uint32_t MultiMapFixed::SaveObject(LHOSFile& file, const MapCoords* coords)
 {
 	if (coords != NULL && GetFootpathLink() != NULL)
 	{
-		GetFootpathLink()->SaveObject(file, *coords);
+		GetFootpathLink()->SaveObject(file, coords);
 	}
 	return true;
 }

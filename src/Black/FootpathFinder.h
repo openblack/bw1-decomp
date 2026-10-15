@@ -20,28 +20,28 @@ class GameThingWithPos;
 class GFootpathFinder : public GameThing
 {
 public:
-	RPHolder          holder;                /* 0x14 */
-	RPlan             plan;                  /* 0x64040 */
-	GameThingWithPos* GamethingwithposStart; /* 0x640b4 */
-	GameThingWithPos* GamethingwithposDest;
-	GFootpath*        Footpath0x7c;
+	RPHolder          holder; /* 0x14 */
+	RPlan             plan;   /* 0x64040 */
+	GameThingWithPos* From;   /* 0x640b4 */
+	GameThingWithPos* To;
+	GFootpath*        Footpath;
 	GFootpathNode*    StartNode; /* 0x640c0 */
 	GFootpathNode*    DestNode;
 
 	// Override methods
 
-	// BW1W120 00538ff0 BW1M119 010ebed0
+	// BW1W120 00539020 BW1M119 010ebed0
 	virtual ~GFootpathFinder();
 	// BW1W120 005391c0 BW1M119 010eb9b0
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 00538fe0 BW1M119 010eb1e0
-	virtual char* GetDebugText();
+	virtual char* GetDebugText() { return "Footpath pathfinder:"; }
 	// BW1W120 005390e0 BW1M119 010ebc90
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00539150 BW1M119 010ebbd0
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00538fd0 BW1M119 010eb1a0
-	virtual uint32_t GetSaveType();
+	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GFOOTPATH_FINDER; }
 
 	// Constructors
 

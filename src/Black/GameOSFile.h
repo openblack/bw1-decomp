@@ -60,7 +60,7 @@ enum GAME_OS_FILE_CREATURE_FLAG
 class GameOSFile : public LHReleasedOSFile
 {
 public:
-	uint32_t                    Status;
+	bool32_t                    MapFile;
 	char                        Filename[0x100]; /* 0x110 */
 	uint32_t                    field_0x210;
 	uint32_t                    Checksum; /* 0x214 */
