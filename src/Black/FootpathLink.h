@@ -42,8 +42,6 @@ public:
 	// BW1W120 0050cad0 BW1M119 010f42c0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GFOOTPATH_LINK; }
 
-	// Static methods
-
 	// BW1W120 00536c80 BW1M119 010efa10
 	static bool32_t LoadAll(char* filename);
 

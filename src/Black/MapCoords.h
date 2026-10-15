@@ -174,14 +174,14 @@ struct MapCoords : public LH3DMapCoords
 	// BW1W120 0060a010 BW1M119 inlined
 	void AddToWholeX(int dx)
 	{
-		long whole = WholeX();
+		int whole = WholeX();
 		x = whole + dx;
 	}
 	// Inliner IL size: 42
 	// BW1W120 0060a020 BW1M119 inlined
 	void AddToWholeZ(int dz)
 	{
-		long whole = WholeZ();
+		int whole = WholeZ();
 		z = whole + dz;
 	}
 	// BW1W120 inlined BW1M119 0104d890

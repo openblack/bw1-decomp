@@ -11,6 +11,7 @@
 #include <stack> /* For std::stack */
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetAltitude */
+#include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For SquareRoot */
 #include <Lionhead/LH3DLib/development/LHPoint.h>    /* For struct LHPoint, struct Point2D */
 #include <Lionhead/LHLib/ver5.0/Route.h>             /* For struct Route, class RouteNode */
 
@@ -313,7 +314,7 @@ public:
 		float   discriminant = b * b - 4.0f * a * c;
 		if (discriminant >= 0.0f)
 		{
-			float t = (-b + sqrt(discriminant)) / (2.0f * a);
+			float t = (-b + SquareRoot(discriminant)) / (2.0f * a);
 			if (t >= 1.0f)
 			{
 				exit = direction * t + start;
@@ -730,11 +731,7 @@ static bool32_t RangesOverlap(int start, int end, int low, int high)
 		maximum = start;
 		start = end;
 	}
-	if (start < high && low < maximum)
-	{
-		return true;
-	}
-	return false;
+	return start < high && low < maximum;
 }
 
 void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coords)
@@ -761,8 +758,8 @@ void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coord
 			{
 				if (!(node->IsHidden() || node->Temporary) && node->next != NULL && node->coords.x >= minX &&
 				    node->coords.x <= maxX && node->coords.z >= minZ && node->coords.z <= maxZ &&
-				    tbl_square((float)(uint32_t)node->coords.x - (float)(uint32_t)coords.x) +
-				            tbl_square((float)(uint32_t)node->coords.z - (float)(uint32_t)coords.z) <
+				    tbl_square((float)node->coords.x - (float)coords.x) +
+				            tbl_square((float)node->coords.z - (float)coords.z) <
 				        insideSq)
 				{
 					node->Hidden = true;
@@ -785,12 +782,12 @@ void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coord
 				if (RangesOverlap(previous->coords.WholeX(), node->coords.WholeX(), minX, maxX) &&
 				    RangesOverlap(previous->coords.WholeZ(), node->coords.WholeZ(), minZ, maxZ))
 				{
-					if (tbl_square((float)(uint32_t)previous->coords.x - (float)(uint32_t)coords.x) +
-					        tbl_square((float)(uint32_t)previous->coords.z - (float)(uint32_t)coords.z) >
+					if (tbl_square((float)previous->coords.x - (float)coords.x) +
+					        tbl_square((float)previous->coords.z - (float)coords.z) >
 					    insideSq)
 					{
-						if (tbl_square((float)(uint32_t)node->coords.x - (float)(uint32_t)coords.x) +
-						        tbl_square((float)(uint32_t)node->coords.z - (float)(uint32_t)coords.z) >
+						if (tbl_square((float)node->coords.x - (float)coords.x) +
+						        tbl_square((float)node->coords.z - (float)coords.z) >
 						    insideSq)
 						{
 							LHPoint start;

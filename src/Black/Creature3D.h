@@ -315,9 +315,9 @@ public:
 	int                 field_0x5730;
 	int                 field_0x5734;
 	int                 field_0x5738;
-	int                 field_0x573c;
-	int                 field_0x5740;
-	int                 field_0x5744;
+	int                 IdleActionTimer;
+	bool32_t            IdleActionDone;
+	int                 RPLookPointTimer;
 	LHPoint             RPLookPoint;
 	char                FileName[64];
 	int                 field_0x5794;
