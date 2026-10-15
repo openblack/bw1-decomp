@@ -1821,9 +1821,9 @@ void LH3DCreature::UpdateRPLookPoint()
 	{
 		// Both coordinates come from field_0x64074.x in the target and on the Mac (an original slip).
 		field_0x5748.Set(RpFollow->field_0x64074.x, 0.0f, RpFollow->field_0x64074.x);
-		if (RpFollow->field_0x640bc >= 0 && RpFollow->field_0x640bc < RpFollow->field_0x640b8)
+		if (RpFollow->PlanIndex >= 0 && RpFollow->PlanIndex < RpFollow->PlanCount)
 		{
-			Route* route = RpFollow->field_0x64090[RpFollow->field_0x640bc]->Route0x68;
+			Route* route = RpFollow->Plans[RpFollow->PlanIndex]->CurrentRoute;
 			if (route && route->Head)
 			{
 				field_0x5748.Set(route->Tail->field_0x8.x, 0.0f, route->Tail->field_0x8.y);
@@ -7487,7 +7487,7 @@ void LH3DCreature::UpdateMotion()
 		if (DoTheTurningBusiness())
 		{
 			Heading = RequiredHeading;
-			if (RpFollow->field_0x6408c && RpFollow->field_0x6408c->Route0x68)
+			if (RpFollow->CurrentPlan != NULL && RpFollow->CurrentPlan->CurrentRoute != NULL)
 			{
 				field_0x5190 = 6;
 				CycleTime[1] = 0;
@@ -7562,7 +7562,7 @@ void LH3DCreature::UpdateMotion()
 				move = CycleAnim[0]->Movement * (IntTimeInc * Size2 / (long)CycleAnim[0]->Duration);
 				move.y = 0.0f;
 				rotation.TransformPoint(move);
-				if (RpFollow->field_0x6408c && RpFollow->field_0x6408c->Route0x68)
+				if (RpFollow->CurrentPlan != NULL && RpFollow->CurrentPlan->CurrentRoute != NULL)
 				{
 					LHPoint pos(RpFollow->field_0x6402c.x, 0.0f, RpFollow->field_0x6402c.y);
 					SetPos(pos);

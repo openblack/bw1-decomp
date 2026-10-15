@@ -43,7 +43,7 @@ struct RPlan
 	float       field_0x5c;
 	Route*      Route0x60;
 	uint32_t    field_0x64;
-	Route*      Route0x68;
+	Route*      CurrentRoute;
 	Route*      Route0x6c;
 	Route*      Route0x70;
 
