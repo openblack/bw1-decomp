@@ -15,7 +15,7 @@ class GBWPlayers;
 struct GNetwork
 {
 	uint32_t                  field_0x0;
-	float                     field_0x4;
+	float                     Speed;
 	LHLinkedList<GBWPlayers*> Players; /* 0x8; descriptive member name */
 	LHSession*                session; /* 0x10 */
 	uint32_t                  field_0x14;

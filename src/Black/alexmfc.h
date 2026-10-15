@@ -311,6 +311,7 @@ struct SetupControl
 enum MSGBOXSTYLE
 {
 	MSGBOXSTYLE_SINGLE_BUTTON = 0,
+	MSGBOXSTYLE_YES_NO = 3,
 	MSGBOXSTYLE_NO_BUTTONS = 5,
 };
 
@@ -320,6 +321,8 @@ struct SetupBox
 	static bool CanEscape;
 	// BW1W120 00c4cced
 	static bool WantKey;
+	// BW1W120 00c4ccee
+	static bool WantMouse;
 	// BW1W120 00c4cd1c
 	static SetupBox* CurrentInitBox;
 	// BW1W120 00c4cd20
@@ -359,7 +362,7 @@ struct SetupBox
 	SetupControl* HoverWidget; /* 0xbc */
 	int           HoldColour;
 	float         Alpha;
-	uint32_t      field_0xc8;
+	bool32_t      AllowKeysInCitadel;
 
 	// Static methods
 

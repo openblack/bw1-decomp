@@ -33,7 +33,7 @@ extern uint16_t   gLHSurfaceCount; // 0xE906D4 number of registered surfaces
 
 LHSurface::LHSurface(LHSprite* sprite, unsigned long flags)
 {
-	ImageType = LH_SURFACE_IMAGE_TYPE_0x1;
+	ImageType = LH_SURFACE_IMAGE_TYPE_SPRITE;
 	Image = sprite;
 	Width = sprite->Width;
 	Height = sprite->Height;
@@ -44,7 +44,7 @@ LHSurface::LHSurface(LHSprite* sprite, unsigned long flags)
 
 LHSurface::LHSurface(LHSpriteFrame* frame, unsigned long flags)
 {
-	ImageType = LH_SURFACE_IMAGE_TYPE_0x0;
+	ImageType = LH_SURFACE_IMAGE_TYPE_SPRITE_FRAME;
 	HasTransparentColor = 0;
 	Next = NULL;
 	Image = frame;
@@ -188,7 +188,7 @@ int LHSurface::CopyImageIn()
 	Lock();
 	switch (ImageType)
 	{
-	case LH_SURFACE_IMAGE_TYPE_0x0: {
+	case LH_SURFACE_IMAGE_TYPE_SPRITE_FRAME: {
 		// TODO: This transcribes the original byte-for-byte. The frame path
 		// iterates the parts with a 16-bit part index that decrements past zero
 		// and never terminates (the exit condition is absent in the shipped
@@ -220,7 +220,7 @@ int LHSurface::CopyImageIn()
 			i += 0xFFFF;
 		}
 	}
-	case LH_SURFACE_IMAGE_TYPE_0x1: {
+	case LH_SURFACE_IMAGE_TYPE_SPRITE: {
 		unsigned long flags = SpriteFlags;
 		LHSprite*     sprite = (LHSprite*)Image;
 		int           bitDepth = BitDepth;
@@ -255,7 +255,7 @@ int LHSurface::SetSpriteFlags(unsigned long flags)
 int LHSurface::SetImage(void* image, LH_SURFACE_IMAGE_TYPE imageType)
 {
 	// The original hard-codes a single-sprite image regardless of imageType.
-	ImageType = LH_SURFACE_IMAGE_TYPE_0x1;
+	ImageType = LH_SURFACE_IMAGE_TYPE_SPRITE;
 	Image = image;
 	return CopyImageIn();
 }
@@ -264,7 +264,7 @@ int LHSurface::GetScreenSurface(LHRegion* rect, LHCoord* coord, LH_SCREEN_BUFFER
 {
 	LHRegion             region = *rect;
 	IDirectDrawSurface7* surface;
-	if (screenBuffer == LH_SCREEN_BUFFER_0x1)
+	if (screenBuffer == LH_SCREEN_BUFFER_PRIMARY)
 	{
 		region.start.x += LHSys::GetScreen().MsClientOffsetX;
 		region.start.y += LHSys::GetScreen().MsClientOffsetY;
@@ -276,7 +276,7 @@ int LHSurface::GetScreenSurface(LHRegion* rect, LHCoord* coord, LH_SCREEN_BUFFER
 	{
 		surface = LHSys::GetScreen().PBackSurface;
 	}
-	return CopySurface(&region, coord, surface, LH_COPY_DIRECTION_0x1, 0);
+	return CopySurface(&region, coord, surface, LH_COPY_DIRECTION_TO_SURFACE, 0);
 }
 
 LHSurface::~LHSurface()
@@ -308,7 +308,7 @@ int LHSurface::CopySurface(LHRegion* region, LHCoord* coord, IDirectDrawSurface7
 	int height = region ? (region->end.y - region->start.y + 1) : Height;
 	dstRect.bottom = height + y;
 	int hr;
-	if (direction == LH_COPY_DIRECTION_0x1)
+	if (direction == LH_COPY_DIRECTION_TO_SURFACE)
 	{
 		hr = Surface->Blt(&dstRect, dest, region ? &srcRect : NULL,
 		                  useColorKey ? (DDBLT_KEYSRC | DDBLT_WAIT) : DDBLT_WAIT, NULL);

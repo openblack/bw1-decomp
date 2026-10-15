@@ -171,6 +171,12 @@ public:
 	// RET 4 and script-object ECX at callers establish a member, not a static function.
 	// TODO: Existing int result retained pending a complete task-ID caller audit.
 	int StartScript(char* name);
+	// BW1W120 006ebb50 BW1M119 014dd830
+	bool32_t IsScreenFaded();
+	// BW1W120 006ebb00 BW1M119 014dd890
+	void SetupScreenFadeBackToNormal(signed char time);
+	// BW1W120 006ec670 BW1M119 014dc620
+	static bool32_t InterruptRunningScript();
 	// BW1W120 00d95c10
 	static ScriptDLL* g_scriptDLL;
 	// TODO: Original name unknown; Reset/LoadBinary own this loaded-binary flag.

@@ -458,9 +458,9 @@ bool32_t GameOSFile::LoadAllGame(char* filename)
 	Creature* creature = GGame::g_game->players[GGame::g_game->PlayerIndex].creature.Get();
 	if (creature)
 	{
-		creature->ScriptFlag0 = (LoadedCreatureFlags & GAME_OS_FILE_CREATURE_FLAG_SCRIPT_0) > 0;
-		creature->ScriptFlag1 = (LoadedCreatureFlags & GAME_OS_FILE_CREATURE_FLAG_SCRIPT_1) > 0;
-		creature->ScriptFlag2 = (LoadedCreatureFlags & GAME_OS_FILE_CREATURE_FLAG_SCRIPT_2) > 0;
+		creature->LeashEnabled[LEASH_TYPE_EVIL] = (LoadedCreatureFlags & GAME_OS_FILE_CREATURE_FLAG_SCRIPT_0) > 0;
+		creature->LeashEnabled[LEASH_TYPE_ROPE] = (LoadedCreatureFlags & GAME_OS_FILE_CREATURE_FLAG_SCRIPT_1) > 0;
+		creature->LeashEnabled[LEASH_TYPE_GOOD] = (LoadedCreatureFlags & GAME_OS_FILE_CREATURE_FLAG_SCRIPT_2) > 0;
 	}
 	for (Living* living = GGame::g_game->GameLists.LivingList.head; living; living = living->next)
 	{

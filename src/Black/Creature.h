@@ -21,6 +21,8 @@
 #include "MapCoords.h"         /* For struct MapCoords */
 #include "MobileObject.h"      /* For struct MobileObject */
 
+#define CREATURE_LEASH_SLOT_COUNT 4
+
 // Forward Declares
 
 enum CREATURE_HEIGHT
@@ -217,10 +219,7 @@ public:
 	uint32_t                              LastImpressiveDanceTurn;
 	uint32_t                              LastImpressiveDanceType;
 	uint32_t                              field_0x1104;
-	uint32_t                              field_0x1108;
-	uint32_t                              ScriptFlag0;
-	int                                   ScriptFlag1;
-	uint32_t                              ScriptFlag2;
+	bool32_t                              LeashEnabled[CREATURE_LEASH_SLOT_COUNT];
 	uint32_t                              field_0x1118;
 	uint32_t                              field_0x111c;
 	uint32_t                              field_0x1120;
@@ -1066,9 +1065,7 @@ public:
 static_assert(offsetof(Creature, HelpState) == 0x188, "Creature help offset is incorrect");
 static_assert(offsetof(Creature, HelpStackEntries) == 0x220, "Creature help stack offset is incorrect");
 static_assert(offsetof(Creature, ReceiveSpell) == 0x370, "Creature spell receiver offset is incorrect");
-static_assert(offsetof(Creature, ScriptFlag0) == 0x110c, "Creature flag offset is incorrect");
-static_assert(offsetof(Creature, ScriptFlag1) == 0x1110, "Creature flag offset is incorrect");
-static_assert(offsetof(Creature, ScriptFlag2) == 0x1114, "Creature flag offset is incorrect");
+static_assert(offsetof(Creature, LeashEnabled) == 0x1108, "Creature leash flags offset is incorrect");
 static_assert(sizeof(Creature) == 0x12c8, "Creature size is incorrect");
 
 #endif /* BW1_DECOMP_CREATURE_INCLUDED_H */

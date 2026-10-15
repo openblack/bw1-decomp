@@ -12,14 +12,14 @@
 enum LH_MOUSE_IMAGE_TYPE
 {
 	LH_MOUSE_IMAGE_TYPE_0x00 = 0x0,
-	LH_MOUSE_IMAGE_TYPE_0x01 = 0x1,
-	LH_MOUSE_IMAGE_TYPE_0x02 = 0x2,
+	LH_MOUSE_IMAGE_TYPE_HIDDEN = 0x1,
+	LH_MOUSE_IMAGE_TYPE_ARROW = 0x2,
 	LH_MOUSE_IMAGE_TYPE_0x03 = 0x3,
-	LH_MOUSE_IMAGE_TYPE_0x04 = 0x4,
+	LH_MOUSE_IMAGE_TYPE_WINDOWS_ARROW = 0x4,
 	LH_MOUSE_IMAGE_TYPE_0x05 = 0x5,
 	LH_MOUSE_IMAGE_TYPE_0x06 = 0x6,
 	LH_MOUSE_IMAGE_TYPE_0x07 = 0x7,
-	LH_MOUSE_IMAGE_TYPE_0x08 = 0x8,
+	LH_MOUSE_IMAGE_TYPE_SURFACE = 0x8,
 	LH_MOUSE_IMAGE_TYPE_0x09 = 0x9,
 	LH_MOUSE_IMAGE_TYPE_0x0a = 0xa,
 	LH_MOUSE_IMAGE_TYPE_0x0b = 0xb,
@@ -43,7 +43,7 @@ enum LH_MOUSE_IMAGE_TYPE
 	LH_MOUSE_IMAGE_TYPE_0x1d = 0x1d,
 	LH_MOUSE_IMAGE_TYPE_0x1e = 0x1e,
 	LH_MOUSE_IMAGE_TYPE_0x1f = 0x1f,
-	LH_MOUSE_IMAGE_TYPE_0x20 = 0x20,
+	LH_MOUSE_IMAGE_TYPE_SPRITE = 0x20,
 	LH_MOUSE_IMAGE_TYPE_0x21 = 0x21,
 	LH_MOUSE_IMAGE_TYPE_0x22 = 0x22,
 	LH_MOUSE_IMAGE_TYPE_0x23 = 0x23,
@@ -75,35 +75,40 @@ enum LH_MOUSE_IMAGE_TYPE
 	LH_MOUSE_IMAGE_TYPE_0x3d = 0x3d,
 	LH_MOUSE_IMAGE_TYPE_0x3e = 0x3e,
 	LH_MOUSE_IMAGE_TYPE_0x3f = 0x3f,
-	LH_MOUSE_IMAGE_TYPE_0x40 = 0x40,
+	LH_MOUSE_IMAGE_TYPE_ANIMATED = 0x40,
 	_LH_MOUSE_IMAGE_TYPE_COUNT = 0x41
 };
 
 enum LH_MOUSE_EVENT_TYPE
 {
-	LH_MOUSE_EVENT_TYPE_0x1 = 0x1,
-	LH_MOUSE_EVENT_TYPE_0x2 = 0x2,
-	LH_MOUSE_EVENT_TYPE_0x4 = 0x4,
-	LH_MOUSE_EVENT_TYPE_0x8 = 0x8,
-	LH_MOUSE_EVENT_TYPE_0x80 = 0x80,
-	LH_MOUSE_EVENT_TYPE_0x100 = 0x100,
-	LH_MOUSE_EVENT_TYPE_0x200 = 0x200,
+	LH_MOUSE_EVENT_TYPE_FLIP = 0x1,
+	LH_MOUSE_EVENT_TYPE_TIMER = 0x2,
+	LH_MOUSE_EVENT_TYPE_MOVE = 0x4,
+	LH_MOUSE_EVENT_TYPE_SET_CURSOR = 0x8,
+	LH_MOUSE_EVENT_TYPE_BUTTON = 0x40,
+	LH_MOUSE_EVENT_TYPE_SET_SPRITE_FLAGS = 0x80,
+	LH_MOUSE_EVENT_TYPE_ANIMATE_START = 0x100,
+	LH_MOUSE_EVENT_TYPE_ANIMATE_STOP = 0x200,
 };
+
+#define WM_LH_MOUSE_START_TIMER (WM_APP + 5)
+#define WM_LH_MOUSE_STOP_TIMER  (WM_APP + 6)
+#define WM_LH_MOUSE_SET_CURSOR  (WM_APP + 7)
 
 // Playback mode passed to LHMouse::Animate.
 enum LH_ANIMATE_TYPE
 {
-	LH_ANIMATE_TYPE_0x0 = 0x0, /* stop, restore the previous image */
-	LH_ANIMATE_TYPE_0x1 = 0x1, /* loop forward */
-	LH_ANIMATE_TYPE_0x2 = 0x2, /* ping-pong */
-	LH_ANIMATE_TYPE_0x3 = 0x3, /* one shot */
+	LH_ANIMATE_TYPE_STOP = 0x0, /* stop, restore the previous image */
+	LH_ANIMATE_TYPE_LOOP = 0x1,
+	LH_ANIMATE_TYPE_PING_PONG = 0x2,
+	LH_ANIMATE_TYPE_ONE_SHOT = 0x3,
 };
 
 // Source-image kind passed to LHMouse::SetAnimateImages.
 enum LH_ANIMATE_IMAGE_TYPE
 {
-	LH_ANIMATE_IMAGE_TYPE_0x0 = 0x0, /* LHSpriteFrameBank (multi-part frames) */
-	LH_ANIMATE_IMAGE_TYPE_0x1 = 0x1, /* LHSpriteList (single-part frames) */
+	LH_ANIMATE_IMAGE_TYPE_FRAME_BANK = 0x0,
+	LH_ANIMATE_IMAGE_TYPE_SPRITE_LIST = 0x1,
 };
 
 // Bits of LHMouse::Buttons, set by LHMouse::SetButtons from the window's mouse messages.
@@ -118,6 +123,20 @@ enum LH_MOUSE_BUTTON
 	LH_MOUSE_BUTTON_RIGHT_DOUBLE_CLICK = 0x20,
 	LH_MOUSE_BUTTON_MIDDLE_DOWN = 0x40,
 	LH_MOUSE_BUTTON_MIDDLE_UP = 0x80,
+};
+
+enum LH_MOUSE_BUTTON_POS
+{
+	LH_MOUSE_BUTTON_POS_LEFT_DOWN = 0,
+	LH_MOUSE_BUTTON_POS_RIGHT_DOWN = 1,
+	LH_MOUSE_BUTTON_POS_MIDDLE_DOWN = 2,
+	LH_MOUSE_BUTTON_POS_LEFT_UP = 3,
+	LH_MOUSE_BUTTON_POS_RIGHT_UP = 4,
+	LH_MOUSE_BUTTON_POS_MIDDLE_UP = 5,
+	LH_MOUSE_BUTTON_POS_LEFT_DOUBLE_CLICK = 6,
+	LH_MOUSE_BUTTON_POS_RIGHT_DOUBLE_CLICK = 7,
+	LH_MOUSE_BUTTON_POS_NONE = 8,
+	LH_MOUSE_BUTTON_POS_COUNT = 9,
 };
 
 struct LHSprite;
@@ -147,12 +166,12 @@ struct LHMouse
 	int          NumButtons;
 	int          IsMultiFrame;
 	void*        FrameBank;
-	int*         FramePartOffsets;
+	LHCoord*     FramePartOffsets;
 	LHSurface**  FrameSurfaces;
 	uint16_t     FrameCount16;
 	uint16_t     field_5e;
-	int          CurrentFrame;
-	int          FrameCount;
+	uint32_t     CurrentFrame;
+	uint32_t     FrameCount;
 	uint16_t     AnimParam;
 	uint16_t     field_6a;
 	int          AnimType;
@@ -174,7 +193,7 @@ struct LHMouse
 	int          MouseWheelAccum;
 	uint8_t      Buttons;
 	uint8_t      _pad0x101[3];
-	LHCoord      ButtonPos[9];
+	LHCoord      ButtonPos[LH_MOUSE_BUTTON_POS_COUNT];
 	uint8_t      ButtonPressed;
 	uint8_t      _pad0x14d[3];
 	void*        CallbackArg1;
@@ -197,12 +216,21 @@ struct LHMouse
 		AccumDelta.y = 0;
 	}
 
+	// BW1W120 inlined BW1M119 01145180 (LHCombined Release)
+	void Lock() { EnterCriticalSection(&LHScreen::CriticalSection); }
+	// BW1W120 inlined BW1M119 01144f10 (LHCombined Release)
+	void Unlock() { LeaveCriticalSection(&LHScreen::CriticalSection); }
+	// BW1W120 inlined BW1M119 01144f40 (LHCombined Release)
+	void UnDraw();
+	// BW1W120 inlined BW1M119 inlined
+	void StopDoubleBuffering();
+
 	// BW1W120 007e4810 BW1M119 011c9478 (LHCombined Release)
-	int UpdateDeltaPos();
+	void UpdateDeltaPos();
 	// BW1W120 007e48c0 BW1M119 01146b10 (LHCombined Release)
 	int InitDirectInput();
 	// BW1W120 007e49a0 BW1M119 01007030 (LHCombined Release)
-	int UpdateCurrentPos(LHCoord coord);
+	void UpdateCurrentPos(LHCoord coord);
 	// BW1W120 007e4b40 BW1M119 01146a60 (LHCombined Release)
 	void SetMouseMargin(LHCoord margin);
 	// BW1W120 007e4b80 BW1M119 0103fa00 (LHCombined Release)
@@ -226,7 +254,7 @@ struct LHMouse
 	// BW1W120 007e5b20 BW1M119 01145690 (LHCombined Release)
 	void SetCurrentCursorAnimFrame(unsigned long frame);
 	// BW1W120 007e5b30 BW1M119 011454e0 (LHCombined Release)
-	int SetAnimFrame();
+	void SetAnimFrame();
 	// BW1W120 007e5bf0 BW1M119 011451b0 (LHCombined Release)
 	void SetAnimateImages(LH_ANIMATE_IMAGE_TYPE imageType, void* images, unsigned long index);
 	// BW1W120 007e5ea0 BW1M119 01144d10 (LHCombined Release)
@@ -242,7 +270,7 @@ struct LHMouse
 	// Static members
 
 	// Set on WM_ACTIVATEAPP so UpdateDeltaPos skips the stale wheel
-	// delta accumulated while the app was inactive. TODO: fabricated name.
+	// delta accumulated while the app was inactive.
 	// BW1W120 00c311a4
 	static uint8_t MouseWheelSkip;
 };

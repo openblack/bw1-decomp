@@ -309,13 +309,13 @@ void LH3DCreature::GetBoundingSphere(LHPoint& centre, float& radius)
 		BoundingSphereCentre.SetNull();
 		LHMatrix* matrices = GetSafeBuffer();
 		int       i;
-		for (i = 0; i < field_0x47b8; i++)
+		for (i = 0; i < NumTransformedMatrices; i++)
 		{
 			BoundingSphereCentre.Add(matrices[i].GetPos());
 		}
-		BoundingSphereCentre *= 1.0f / field_0x47b8;
+		BoundingSphereCentre *= 1.0f / NumTransformedMatrices;
 		BoundingSphereRadius = 0.0f;
-		for (i = 0; i < field_0x47b8; i++)
+		for (i = 0; i < NumTransformedMatrices; i++)
 		{
 			float distance = matrices[i].GetPos().GetDistance(BoundingSphereCentre);
 			if (distance > BoundingSphereRadius)
@@ -737,7 +737,7 @@ void LH3DCreature::DisconnectFromGame(long param_1)
 	{
 		StartIndividualAction(param_1);
 	}
-	memcpy(SafeBuffer1, SafeBuffer0, field_0x47b8 * sizeof(LHMatrix));
+	memcpy(SafeBuffer1, SafeBuffer0, NumTransformedMatrices * sizeof(LHMatrix));
 }
 
 void LH3DCreature::ReconnectToGame()
@@ -1100,7 +1100,7 @@ long LH3DCreature::FindMirrorBone(long bone)
 	LHPoint   pos(matrices[bone]._41, matrices[bone]._42, matrices[bone]._43);
 	long      mirror = -1;
 	float     best = 100.0f;
-	for (long i = 0; i < field_0x47b8; i++)
+	for (long i = 0; i < NumTransformedMatrices; i++)
 	{
 		LHPoint mirrored(-matrices[i]._41, matrices[i]._42, matrices[i]._43);
 		float   distance = mirrored.GetDistance(pos);
@@ -1154,7 +1154,7 @@ void LH3DCreature::AddEvilGoodSparkles()
 			float         y = (int)(GRand::LocalRand(101) - 50) * 0.02f;
 			float         z = (int)(GRand::LocalRand(101) - 50) * 0.02f;
 			float         scale = GetStandingHeight() * 0.05f;
-			LHMatrix*     matrix = &SafeBuffer0[GRand::LocalRand(field_0x47b8)];
+			LHMatrix*     matrix = &SafeBuffer0[GRand::LocalRand(NumTransformedMatrices)];
 			LHPoint       pos(matrix->_41 + x * scale, matrix->_42 + y * scale, matrix->_43 + z * scale);
 			unsigned long alpha = (unsigned long)(EvilGood * 32.0f) << 24;
 			switch (GRand::LocalRand(6))
@@ -1197,7 +1197,7 @@ void LH3DCreature::AddEvilGoodSparkles()
 			float     y = (int)(GRand::LocalRand(101) - 50) * 0.02f;
 			float     z = (int)(GRand::LocalRand(101) - 50) * 0.02f;
 			float     scale = GetStandingHeight() * 0.05f;
-			LHMatrix* matrix = &SafeBuffer0[GRand::LocalRand(field_0x47b8)];
+			LHMatrix* matrix = &SafeBuffer0[GRand::LocalRand(NumTransformedMatrices)];
 			LHPoint   pos(matrix->_41 + x * scale, matrix->_42 + y * scale, matrix->_43 + z * scale);
 			switch (GRand::LocalRand(6))
 			{
@@ -3823,7 +3823,7 @@ void LH3DCreature::StateAction()
 	}
 	if (!creature || !(creature->Flags & GAME_THING_WITH_POS_FLAG_INTERACTING))
 	{
-		LogCurrentBufferMatrixes(SafeBuffer0, field_0x47b8, MoveState);
+		LogCurrentBufferMatrixes(SafeBuffer0, NumTransformedMatrices, MoveState);
 	}
 }
 
@@ -5454,7 +5454,7 @@ float LH3DCreature::GetForwardExtent()
 	LHPoint   forward(sin(heading), 0.0f, -cos(heading));
 	float     extent = 0.0f;
 	LHMatrix* matrix = GetSafeBuffer();
-	for (int i = 0; i < field_0x47b8; i++)
+	for (int i = 0; i < NumTransformedMatrices; i++)
 	{
 		const LHPoint& pos = matrix->GetPos();
 		LHPoint        offset(pos.x - position.x, pos.y - position.y, pos.z - position.z);
@@ -5575,7 +5575,7 @@ void LH3DCreature::AttemptToKeepOnFlatLand()
 	}
 	int     count = 0;
 	LHPoint sum(0.0f, 0.0f, 0.0f);
-	for (int i = 0; i < field_0x47b8; i++)
+	for (int i = 0; i < NumTransformedMatrices; i++)
 	{
 		const LHPoint* pos = &SafeBuffer0[i].GetPos();
 		if (!IsDestinationValid(pos))
@@ -5597,7 +5597,7 @@ void LH3DCreature::AttemptToKeepOnFlatLand()
 	{
 		return;
 	}
-	sum.SetSize(count * GetStandingHeight() / field_0x47b8 * 0.5f);
+	sum.SetSize(count * GetStandingHeight() / NumTransformedMatrices * 0.5f);
 	LHPoint newPos = position + sum;
 	if (IsDestinationValid(&newPos))
 	{
@@ -5900,7 +5900,7 @@ void LH3DCreature::DoDiscardAction()
 				HeldObject->Pos.altitude = handPos.y - altitude;
 				UpdateHeldObjects3Angles();
 				GPlayer* player = creature ? creature->GetPlayer() : NULL;
-				LogCurrentBufferMatrixes(SafeBuffer0, field_0x47b8, MoveState);
+				LogCurrentBufferMatrixes(SafeBuffer0, NumTransformedMatrices, MoveState);
 				FillHeldObjectMatrix(SafeBuffer0);
 				if (player)
 				{
@@ -6869,7 +6869,7 @@ void LH3DCreature::Unknown48f550()
 
 float LH3DCreature::CalculateRadius2D()
 {
-	if (field_0x47b8 == 0)
+	if (NumTransformedMatrices == 0)
 	{
 		return 0.0f;
 	}
@@ -6883,7 +6883,7 @@ float LH3DCreature::CalculateRadius2D()
 	anim->FillBuffer(SafeBuffer1, GetMesh(), field_0x47f4, field_0x47f8, 0, frame, NULL, 1);
 	LH3DAnim::FinishTransform(SafeBuffer1, GetMesh(), identity);
 	float radius = 0.0f;
-	for (int i = 0; i < field_0x47b8; i++)
+	for (int i = 0; i < NumTransformedMatrices; i++)
 	{
 		LHPoint pos;
 		pos = SafeBuffer1[i].GetPos();
