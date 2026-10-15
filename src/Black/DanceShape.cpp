@@ -8,6 +8,7 @@
 
 #include "Data.h" /* For class GData */
 #include "Rand.h" /* For class GRand */
+#include <string> /* For the std::basic_string instantiations */
 
 #if defined(VERSION_BW1W100)
 #define FILEPATH "C:\\dev\\black\\DanceShape.cpp"

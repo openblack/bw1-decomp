@@ -3,6 +3,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include "CreatureMimicInfo.h"
+#include <string> /* For the std::basic_string instantiations */
 
 GBaseInfo* CreatureMimicInfo::GetBaseInfo(uint32_t& info_count)
 {

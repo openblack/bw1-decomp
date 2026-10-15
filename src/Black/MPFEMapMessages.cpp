@@ -5,6 +5,7 @@
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
 #include "MPFEMapErrorMessage.h" /* For MPFEMapErrorMessage */
+#include <string>                /* For the std::basic_string instantiations */
 
 #if defined(VERSION_BW1W100)
 #define MPFE_MAP_MESSAGES_FILE "C:\\dev\\black\\MPFEMapMessages.cpp"

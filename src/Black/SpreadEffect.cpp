@@ -1,4 +1,5 @@
 #include "FireEffect.h"
+#include <string> /* For the std::basic_string instantiations */
 
 uint32_t FireEffect::GetSaveType()
 {

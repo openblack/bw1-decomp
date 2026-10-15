@@ -4,6 +4,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include "LHNetBase.h"       /* For class LHNetBase */
+#include <string>            /* For the std::basic_string instantiations */
 
 bool BWLan::InitialiseLobbyState()
 {

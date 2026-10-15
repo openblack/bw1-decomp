@@ -9,6 +9,7 @@
 #include "Particle3DAnim.h"
 #include "ParticleLightMap.h"
 #include "Particle3DObjAnimTextured.h"
+#include <string> /* For the std::basic_string instantiations */
 
 uint32_t Chain::GetSaveType()
 {

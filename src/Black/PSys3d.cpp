@@ -1,4 +1,5 @@
 #include "PSysManager.h"
+#include <string> /* For the std::basic_string instantiations */
 
 uint32_t PSysManager::GetSaveType()
 {

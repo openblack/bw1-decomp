@@ -1,5 +1,6 @@
 #include "GameTimeConstants.h"
 #include "DefensiveShield.h"
+#include <string> /* For the std::basic_string instantiations */
 
 uint32_t DefensiveShield::GetSaveType()
 {

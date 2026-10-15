@@ -1,6 +1,7 @@
 #include "GameTimeConstants.h"
 #include "PSysSound.h"
 #include "DefensiveSphere.h"
+#include <string> /* For the std::basic_string instantiations */
 
 uint32_t DefensiveSphere::GetSaveType()
 {

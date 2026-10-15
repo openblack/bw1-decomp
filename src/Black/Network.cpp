@@ -2,6 +2,7 @@
 
 #include "ColourConstants.h" /* For White */
 #include <Lionhead/LHMultiplayer/ver4.0/LHSession.h>
+#include <string> /* For the std::basic_string instantiations */
 
 // Original Mac name SendPacket(GPacket*, unsigned long).
 // BW1W120 00635450
