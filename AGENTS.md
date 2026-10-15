@@ -261,6 +261,10 @@ for i386 COFF/PE32. It provides evidence without automatically applying override
 python tools/decomp-relocs.py --unit Game --address 0054CE1E --symbol ProcessNetworkPackets --original orig/BW1W120/runblack-decrypted.exe --verify
 ```
 
+objdiff "extra" functions of other classes are usually COMDAT copies (inline functions, vftables, `??_G`) that the
+image keeps in an earlier unit; see [`docs/msvc6_comdat.md`](docs/msvc6_comdat.md) for the emission and link rules,
+and `tools/comdat-scan.py where --unit X` to see where each one is kept. Keep them inline in headers.
+
 ### Parallel work
 
 When parallel agents are requested, use them for independent investigations and give
