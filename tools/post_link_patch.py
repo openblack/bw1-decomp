@@ -570,6 +570,14 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0056F9DB, call_rel32(0x004017F9)),  # GameThing
     (0x0056FB0B, call_rel32(0x004017F9)),  # GameThing
     (0x005703CA, call_indirect(0x008A96E4)),  # GameThing: __imp__LHSampleSetVolume...
+    (0x00578B0A, call_indirect(0x008A903C)),  # GestureSystem: __imp__DirectXSetupGetVersion
+    (0x00578E1A, call_indirect(0x008A97B8)),  # GestureSystemData
+    (0x00578E9A, call_indirect(0x008A9490)),  # GestureSystemData
+    (0x00578F2B, call_rel32(0x004017F9)),  # GestureSystemData
+    (0x0057901B, call_rel32(0x004017F9)),  # GestureSystemData
+    (0x005799FB, call_rel32(0x004017F9)),  # GestureSystemDataList
+    (0x00579AAA, call_indirect(0x008A9978)),  # GestureSystemDataList: __imp__CoFileTimeToDosDateTime@12
+    (0x00579AEA, call_indirect(0x008A9180)),  # GestureSystemDataList: __imp__EnterCriticalSection@4
     (0x00583E6B, call_rel32(0x004017F9)),  # GJProperty
     (0x005854AA, call_indirect(0x008A9034)),  # GJProperty: __imp__DirectInputCreateA@4
     (0x0058600A, call_indirect(0x008A90A0)),  # GJProperty: __imp_?GetCurrentPosition@CImmMouse@@UAEHAAJ0@Z
