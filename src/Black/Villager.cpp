@@ -1,6 +1,7 @@
 #include "MapCellConstants.h"   /* For MetresPerMapCell */
 #include "GameTimeConstants.h"  /* For SecondsPerYear */
 #include "LandscapeConstants.h" /* For LandscapeExtent */
+#include "VillagerStates.h"
 #include "Villager.h"
 
 #include <stdio.h>
@@ -41,7 +42,6 @@
 #include "InterfaceStatus.h"
 #include "JobInfo.h"
 #include "LandBalance.h"
-#include "LivingStateTable.h"
 #include "MagicTeleport.h"
 #include "MapCoords.h"
 #include "MultiMapFixed.h"
@@ -303,19 +303,19 @@ bool32_t Villager::SetupJobLocation()
 typedef void (Villager::*VillagerValidateFn)();
 static inline VillagerValidateFn GetValidateFn(uint8_t state)
 {
-	return g_VillagerStateTable[state].validate;
+	return VillagerStateTableEntry::StateTable[state].Validate;
 }
 
 typedef uint32_t (Villager::*VillagerAnimationFn)();
 static inline VillagerAnimationFn GetAnimationFn(uint8_t state)
 {
-	return g_VillagerStateTable[state].Animation;
+	return VillagerStateTableEntry::StateTable[state].Animation;
 }
 
 typedef uint32_t (Villager::*VillagerTransitionAnimationFn)(uint8_t, uint8_t);
 static inline VillagerTransitionAnimationFn GetTransitionAnimationFn(uint8_t state)
 {
-	return g_VillagerStateTable[state].TransitionAnimation;
+	return VillagerStateTableEntry::StateTable[state].TransitionAnimation;
 }
 
 inline void Villager::CallValidate(LIVING_ACTION_INDEX index)
@@ -1567,7 +1567,7 @@ void Villager::ToBeDeleted(int delete_now)
 
 uint32_t Villager::CallState()
 {
-	bool32_t (Villager::*state)() = g_VillagerStateTable[action.states[LIVING_ACTION_INDEX_TOP]].state;
+	bool32_t (Villager::*state)() = VillagerStateTableEntry::StateTable[action.states[LIVING_ACTION_INDEX_TOP]].State;
 	return (this->*state)();
 }
 
@@ -1622,13 +1622,13 @@ uint32_t Villager::CallExitStateFunction(uint8_t state)
 	uint8_t  finalState = GetFinalState();
 	bool32_t topResult = true;
 	bool32_t finalResult = true;
-	if (g_VillagerStateTable[topState].ExitState)
+	if (VillagerStateTableEntry::StateTable[topState].ExitState)
 	{
-		topResult = (this->*g_VillagerStateTable[topState].ExitState)(state);
+		topResult = (this->*VillagerStateTableEntry::StateTable[topState].ExitState)(state);
 	}
-	if (topState != finalState && g_VillagerStateTable[finalState].ExitState)
+	if (topState != finalState && VillagerStateTableEntry::StateTable[finalState].ExitState)
 	{
-		finalResult = (this->*g_VillagerStateTable[finalState].ExitState)(state);
+		finalResult = (this->*VillagerStateTableEntry::StateTable[finalState].ExitState)(state);
 	}
 	return topResult == true && finalResult == true;
 }
@@ -1637,9 +1637,9 @@ uint32_t Villager::CallEntryStateFunction(uint8_t state)
 {
 	uint8_t  finalState = GetFinalState();
 	bool32_t result = true;
-	if (g_VillagerStateTable[state].EntryState)
+	if (VillagerStateTableEntry::StateTable[state].EntryState)
 	{
-		result = (this->*g_VillagerStateTable[state].EntryState)(finalState, state);
+		result = (this->*VillagerStateTableEntry::StateTable[state].EntryState)(finalState, state);
 	}
 	if (result == true)
 	{
@@ -1655,9 +1655,9 @@ uint32_t Villager::CallEntryStateFunction(uint8_t current, uint8_t destination)
 	if (CallEntryStateFunction(current))
 	{
 		bool32_t result = true;
-		if (g_VillagerStateTable[destination].EntryState)
+		if (VillagerStateTableEntry::StateTable[destination].EntryState)
 		{
-			result = (this->*g_VillagerStateTable[destination].EntryState)(finalState, destination);
+			result = (this->*VillagerStateTableEntry::StateTable[destination].EntryState)(finalState, destination);
 		}
 		if (result == true)
 		{
@@ -1674,12 +1674,14 @@ uint32_t Villager::CallEntryStateFunction(uint8_t current, uint8_t destination)
 
 bool Villager::IsStateEntryFunctionSameAs(unsigned long state_a, unsigned long state_b) const
 {
-	return g_VillagerStateTable[state_a].EntryState == g_VillagerStateTable[state_b].EntryState;
+	return VillagerStateTableEntry::StateTable[state_a].EntryState ==
+	       VillagerStateTableEntry::StateTable[state_b].EntryState;
 }
 
 bool32_t Villager::IsStateExitFunctionSameAs(unsigned long state) const
 {
-	if (g_VillagerStateTable[GetFinalState()].ExitState != g_VillagerStateTable[state].ExitState &&
+	if (VillagerStateTableEntry::StateTable[GetFinalState()].ExitState !=
+	        VillagerStateTableEntry::StateTable[state].ExitState &&
 	    GVillagerStateTableInfo::Infos[state].isFinalState)
 	{
 		return false;
@@ -2009,7 +2011,7 @@ void Villager::SetSpeedInMetres(float speed_in_metres, bool32_t scale_speed)
 bool Villager::IsInBuildingState()
 {
 	uint8_t state = GetFinalState();
-	if (g_VillagerStateTable[state].ExitState == &Villager::ExitBuilding)
+	if (VillagerStateTableEntry::StateTable[state].ExitState == &Villager::ExitBuilding)
 	{
 		return true;
 	}
@@ -2639,10 +2641,11 @@ void Villager::ResolveLoad()
 
 bool32_t Villager::CallSaveStateFunction(GameOSFile& file, STATE_TYPE state_type)
 {
-	bool32_t (Villager::*saveState)(GameOSFile&) = g_VillagerStateTable[action.states[state_type]].SaveState;
+	bool32_t (Villager::*saveState)(GameOSFile&) =
+		VillagerStateTableEntry::StateTable[action.states[state_type]].SaveState;
 	if (saveState != NULL)
 	{
-		saveState = g_VillagerStateTable[action.states[state_type]].SaveState;
+		saveState = VillagerStateTableEntry::StateTable[action.states[state_type]].SaveState;
 		return (this->*saveState)(file);
 	}
 	return false;
@@ -2650,10 +2653,11 @@ bool32_t Villager::CallSaveStateFunction(GameOSFile& file, STATE_TYPE state_type
 
 bool32_t Villager::CallLoadStateFunction(GameOSFile& file, STATE_TYPE state_type)
 {
-	bool32_t (Villager::*loadState)(GameOSFile&) = g_VillagerStateTable[action.states[state_type]].LoadState;
+	bool32_t (Villager::*loadState)(GameOSFile&) =
+		VillagerStateTableEntry::StateTable[action.states[state_type]].LoadState;
 	if (loadState != NULL)
 	{
-		loadState = g_VillagerStateTable[action.states[state_type]].LoadState;
+		loadState = VillagerStateTableEntry::StateTable[action.states[state_type]].LoadState;
 		return (this->*loadState)(file);
 	}
 	return false;
@@ -3243,11 +3247,11 @@ bool32_t Villager::LoadLanded(GameOSFile& file)
 int Villager::CallIntoAnimationFunction(uint8_t state)
 {
 	uint32_t (Villager::*transition)(uint8_t, uint8_t) =
-		g_VillagerStateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
+		VillagerStateTableEntry::StateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
 	if (transition)
 	{
 		uint32_t (Villager::*function)(uint8_t, uint8_t) =
-			g_VillagerStateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
+			VillagerStateTableEntry::StateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
 		int result = (this->*function)(1, state);
 		if (result != -1)
 		{
@@ -3263,11 +3267,11 @@ int Villager::CallOutofAnimationFunction(uint8_t state)
 	if (GVillagerStateTableInfo::Infos[state].SkipOutofAnimation == false)
 	{
 		uint32_t (Villager::*transition)(uint8_t, uint8_t) =
-			g_VillagerStateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
+			VillagerStateTableEntry::StateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
 		if (transition)
 		{
 			uint32_t (Villager::*function)(uint8_t, uint8_t) =
-				g_VillagerStateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
+				VillagerStateTableEntry::StateTable[action.states[LIVING_ACTION_INDEX_TOP]].TransitionAnimation;
 			int result = (this->*function)(0, state);
 			if (result != -1)
 			{

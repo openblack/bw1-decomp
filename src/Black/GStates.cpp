@@ -1,9 +1,10 @@
+#include "VillagerStates.h"
 #include "Animal.h"
 #include "Living.h"
 #include "Villager.h"
 
 // clang-format off
-LivingStateTableEntry<Villager> g_VillagerStateTable[VILLAGER_STATE_LAST_STATE] = {
+VillagerStateTableEntry VillagerStateTableEntry::StateTable[VILLAGER_STATE_LAST_STATE] = {
 	{&Living::InvalidState, 0, 0, 0, 0, 0, 0, 0, 0},
 	{&Living::MoveToPos, 0, &Living::ExitMoveToPos, 0, 0, &Villager::AlwaysReactToTownEmergency, &Villager::MoveToPosAnimation, &Villager::MoveToPosIntoOutofAnimation, &Villager::WallhugValidate},
 	{&Living::MoveToObject, 0, &Living::ExitMoveToPos, 0, 0, &Villager::AlwaysReactToTownEmergency, &Villager::MoveToPosAnimation, &Villager::MoveToPosIntoOutofAnimation, &Villager::MoveToObjectValidate},
@@ -265,7 +266,7 @@ LivingStateTableEntry<Villager> g_VillagerStateTable[VILLAGER_STATE_LAST_STATE] 
 	{&Villager::BreederJustLanded, 0, 0, 0, 0, &Villager::AlwaysReactToTownEmergency, 0, 0, 0},
 };
 
-LivingStateTableEntry<Animal> Animal::StateTable[ANIMAL_STATE_LAST_STATE] = {
+AnimalStateTableEntry Animal::StateTable[ANIMAL_STATE_LAST_STATE] = {
 	{&Living::InvalidState, 0, 0, 0, 0, 0, &Animal::MoveAnimation, 0, 0},
 	{&Animal::MoveToPos, 0, &Living::ExitMoveToPos, 0, 0, 0, &Animal::MoveAnimation, 0, 0},
 	{&Living::MoveToObject, 0, &Living::ExitMoveToPos, 0, 0, 0, &Animal::MoveAnimation, 0, 0},

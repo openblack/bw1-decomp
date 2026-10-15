@@ -18,7 +18,7 @@
 #include "LHPTR.h"            /* For class LHPTR */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "Living.h"           /* For struct Living, struct LivingVftable */
-#include "LivingAction.h"     /* For enum LIVING_ACTION_INDEX, enum STATE_TYPE, struct Living__StateTableEntry */
+#include "LivingAction.h"     /* For enum LIVING_ACTION_INDEX, enum STATE_TYPE */
 #include "Object.h"           /* For struct Object */
 #include "Reaction.h"         /* For MissionaryControl::GetPlayer */
 
@@ -70,6 +70,7 @@ struct SortedObject
 
 class GVillagerStateTableInfo;
 class Villager;
+struct VillagerStateTableEntry;
 
 // Search context for Villager::CheckForClearArea's point iteration.
 struct ClearAreaPoint
@@ -650,7 +651,7 @@ public:
 	// Static methods
 
 	// BW1W120 inlined BW1M119 01000000 (Black & White Support)
-	static Living::StateTableEntry& GetStateTable(VILLAGER_STATES state);
+	static VillagerStateTableEntry* GetStateTable();
 	// BW1W120 inlined BW1M119 01074f30
 	static GVillagerStateTableInfo* GetStateInfo(uint32_t state);
 	// BW1W120 0074fbe0 BW1M119 01579ab0

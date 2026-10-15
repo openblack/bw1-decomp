@@ -1,4 +1,5 @@
 #include "GameTimeConstants.h"
+#include "VillagerStates.h"
 #include "VillagerStateTableInfo.h"
 
 #include <stdlib.h> /* For max */
