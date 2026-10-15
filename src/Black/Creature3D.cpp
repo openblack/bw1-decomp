@@ -1759,30 +1759,19 @@ void LH3DCreature::UpdateLook()
 	}
 	if ((HasLookPoint() && CanUpdateLook()) || (MoveState == LH3D_CREATURE_STATE_FIGHT_MAIN && FightCreature))
 	{
-		// TODO: 99.9%: the target sums y*y + z*z + x*x in the normalisation, ours z*z + y*y + x*x. cl6 orders
-		// that sum by its internal numbering of dir's fields (the source order of the sum has no effect), and no
-		// tried way of filling dir (member copies in any order, struct copies, a shared local) gives both the
-		// target's sum order and its copy code (x and z kept on the x87 stack, y copied through edx).
 		LHPoint dir;
 		if (IsStandingStill())
 		{
 			UpdateRPLookPoint();
-			dir.x = RPLookPoint.x;
-			dir.y = RPLookPoint.y;
-			dir.z = RPLookPoint.z;
+			dir.Set(RPLookPoint);
 		}
 		else if (MoveState == LH3D_CREATURE_STATE_FIGHT_MAIN)
 		{
-			LHPoint* head = FightCreature->GetHeadPos();
-			dir.x = head->x;
-			dir.y = head->y;
-			dir.z = head->z;
+			dir.Set(FightCreature->GetHeadPos());
 		}
 		else
 		{
-			dir.x = LookPoint.x;
-			dir.y = LookPoint.y;
-			dir.z = LookPoint.z;
+			dir.Set(LookPoint);
 		}
 		LHPoint eye = position;
 		eye.y += GetStandingHeight();
@@ -1996,10 +1985,8 @@ bool32_t LH3DCreature::IsDestinationValidAndClear(LHPoint* pos)
 	RPAvoid* avoid = RpFollow->AvoidArray;
 	for (int i = 0; i < RpFollow->AvoidCount; i++)
 	{
-		const Point2D& centre = avoid->Centre;
-		float          dx = centre.x - point.x;
-		float          dz = centre.y - point.y;
-		if (dz * dz + dx * dx < avoid->Radius * avoid->Radius)
+		Point2D offset = avoid->Centre - point;
+		if (offset.DotProduct(&offset) < avoid->Radius * avoid->Radius)
 		{
 			RpFollow->Empty();
 			return false;
