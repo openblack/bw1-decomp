@@ -15,7 +15,7 @@ struct GDebug
 	uint32_t field_0x110;
 	uint32_t field_0x114;
 	uint32_t field_0x118;
-	uint32_t field_0x11c;
+	bool32_t ShowReactions;
 	uint32_t field_0x120;
 	uint32_t field_0x124;
 	uint32_t field_0x128;

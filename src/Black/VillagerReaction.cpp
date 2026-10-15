@@ -697,7 +697,7 @@ uint8_t Villager::ReactToTeleportPriority(Reaction* reaction_1, Reaction* reacti
 {
 	// TODO: tail deferred — MagicTeleport::ShouldLivingThingReact is declared void but the
 	// target consumes its result, and the priority byte is an unnamed global at 0xd4fe90
-	if (dynamic_cast<MagicTeleport*>(reaction_1->target) == NULL)
+	if (dynamic_cast<MagicTeleport*>(reaction_1->InitiatingObject) == NULL)
 	{
 		return 0;
 	}
@@ -726,7 +726,7 @@ bool32_t Villager::GoToTeleportReaction()
 {
 	// TODO: target materialises &teleport->Pos mid-copy where ours folds it into
 	// displacements; AreWeThere should return bool32_t (target tests full eax)
-	GameThingWithPos* teleport = GetReaction()->target;
+	GameThingWithPos* teleport = GetReaction()->InitiatingObject;
 	MapCoords         coords;
 	coords.x = teleport->Pos.x;
 	coords.z = teleport->Pos.z;
@@ -768,7 +768,7 @@ bool32_t Villager::TeleportReaction()
 	{
 		return 0;
 	}
-	GameThingWithPos* target = reaction->target;
+	GameThingWithPos* target = reaction->InitiatingObject;
 	if (dynamic_cast<MagicTeleport*>(target) == NULL)
 	{
 		return 0;
@@ -793,7 +793,7 @@ uint8_t Villager::ReactToDroppedByHandPriority(Reaction* param_1, Reaction* para
 // BW1W120 007665b0 BW1M119 01595f90
 void Villager::SetupReactToDeath(GameThingWithPos* thing, Reaction* reaction)
 {
-	if (reaction->target != NULL && reaction->target->IsCreature())
+	if (reaction->InitiatingObject != NULL && reaction->InitiatingObject->IsCreature())
 	{
 		AddReaction(reaction, VILLAGER_STATE_LOOKING_AT_OBJECT_REACTION);
 	}
@@ -812,7 +812,7 @@ void Villager::SetupReactToDeath(GameThingWithPos* thing, Reaction* reaction)
 // BW1W120 00766620 BW1M119 01595eb0
 void Villager::SetupReactToDroppedByHand(GameThingWithPos* thing, Reaction* reaction)
 {
-	GameThingWithPos* target = reaction->target;
+	GameThingWithPos* target = reaction->InitiatingObject;
 	Villager*         dropped = dynamic_cast<Villager*>(target);
 	if (dropped != NULL && dropped->IsAvailable() && !(this->Flags & VILLAGER_FLAG_DISCIPLE_FOLLOWER))
 	{

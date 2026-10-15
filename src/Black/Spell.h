@@ -10,6 +10,7 @@
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>     /* For struct LHListNode */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
+#include "LHPTR.h"            /* For class LHPTR */
 #include "MapCoords.h"        /* For struct MapCoords */
 
 // Forward Declares
@@ -38,7 +39,7 @@ public:
 	static void ProcessSpells();
 	static void DrawSpells(); // 007203f0
 
-	uint32_t          field_0x28;
+	LHPTR<Reaction>   SpellReaction;
 	float             field_0x2c;
 	uint32_t          field_0x30;
 	uint32_t          field_0x34;

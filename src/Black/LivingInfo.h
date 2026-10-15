@@ -4,6 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <chlasm/Enum.h> /* For NUM_REACTION_FUNCTIONS */
+#include <re_common.h>   /* For bool32_t */
+
 #include "MobileWallHugInfo.h" /* For struct GMobileWallHugInfo */
 #include "InfoLoaders.h"       /* For INFO_DATA_BLOCK */
 
@@ -19,26 +22,13 @@ public:
 	uint32_t TeenAge;
 	uint32_t MiddleAge;
 	uint32_t OldAge; /* 0x140 */
-	uint32_t field_0x144;
-	uint32_t field_0x148;
-	uint32_t field_0x14c;
-	uint32_t field_0x150;
-	uint32_t field_0x154;
-	uint32_t field_0x158;
-	uint32_t field_0x15c;
-	uint32_t field_0x160;
-	uint32_t field_0x164;
-	uint32_t field_0x168;
-	uint32_t field_0x16c;
-	uint8_t  field_0x170[0x8];
-	uint32_t field_0x178;
-	uint8_t  field_0x17c[0x34];
-	uint32_t field_0x1b0;
-	uint32_t field_0x1b4;
-	uint8_t  field_0x1b8[0x3c];
+	bool32_t IsReacting[NUM_REACTION_FUNCTIONS];
+	uint32_t IsShepherdable;
+	uint32_t MinFlockingValue;
+	uint32_t MaxFlockingValue;
 
 	// TODO(#377): The original declared this class in Living.h.
-	INFO_DATA_BLOCK(field_0x120, field_0x1b8)
+	INFO_DATA_BLOCK(field_0x120, MaxFlockingValue)
 	INFO_DERIVED_LOADERS(GMobileWallHugInfo, "Living.h", 197)
 };
 
