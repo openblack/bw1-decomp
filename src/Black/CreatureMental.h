@@ -30,6 +30,7 @@ class Creature;
 class CreatureAttitudeToCreature;
 class CreatureBelief;
 class GameThingWithPos;
+class GPlayer;
 
 struct CreatureInnatePersonality
 {
@@ -103,6 +104,22 @@ public:
 	CreatureBelief* GetBeliefAboutObject(GameThingWithPos* object);
 	// BW1W120 004d7bd0 BW1M119 01258250
 	CreatureBelief* AddBeliefAboutObject(Creature* creature, GameThingWithPos* object);
+	// BW1W120 004d7af0 BW1M119 012586a0
+	CreatureBelief* CreateBeliefAboutContext();
+	// BW1W120 004d7b00 BW1M119 012585c0
+	CreatureBelief* CreateBelief(GameThingWithPos* object, GPlayer* player);
+	// BW1W120 004d7b50 BW1M119 01258520
+	void DeleteBelief(CreatureBelief* belief);
+	// BW1W120 004d7d90 BW1M119 01257f90
+	bool32_t IsBeliefCurrentlyUsedInAgenda(CreatureBelief* belief);
+	// BW1W120 004d82a0 BW1M119 01257610
+	void UpdateBeliefAboutContext();
+	// BW1W120 004d83c0 BW1M119 01256b70
+	void RemoveBeliefsAboutDeletedObjects();
+	// BW1W120 004de800 BW1M119 01260940
+	void UpdateSourcesFromBelief(CreatureBelief* belief);
+	// BW1W120 004e1570 BW1M119 01267200
+	void ReconsiderDecision();
 	// BW1W120 004c45c0 BW1M119 012355d0
 	float CalculateDesirabilityOfProposedActivity(CREATURE_DESIRES desire, GameThingWithPos* activity_object);
 	// BW1W120 004c4640 BW1M119 null

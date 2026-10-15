@@ -257,7 +257,7 @@ public:
 	MapCoords                             DestPos;
 	LHLinkedList<LHPoint*>                DebugPath;
 	uint8_t                               field_0x1228[0x40];
-	int                                   field_0x1268;
+	DEVELOPMENT_PHASE                     DevelopmentPhase;
 	uint32_t                              field_0x126c;
 	uint32_t                              field_0x1270;
 	LHLinkedList<CreatureSpeechItem*>     SpeechItems;

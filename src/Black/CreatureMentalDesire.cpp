@@ -134,7 +134,7 @@ void CreatureDesires::Initialise(Creature* creature, const CreatureInfo* info)
 	ForceCompletion = false;
 	InitialiseSources();
 	CheatDominantDesireTurns = 0;
-	field_0x704 = 0.0f;
+	DesireToImpressFromVillagersWhoNeedIt = 0.0f;
 	CheatDominantDesire = INVALID_CREATURE_DESIRE;
 }
 

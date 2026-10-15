@@ -7,6 +7,7 @@
 
 #include <re_common.h> /* For bool32_t */
 
+#include <chlasm/Enum.h>          /* For enum CREATURE_ACTION_KNOWN_ABOUT */
 #include <chlasm/GStates.h>       /* For VILLAGER_STATE_LAST_STATE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 
@@ -24,40 +25,40 @@ public:
 	// BW1W120 00db9e68 BW1M119 01b9a988
 	static GVillagerStateTableInfo Infos[VILLAGER_STATE_LAST_STATE];
 
-	int       Anim;
-	int       TownDesireType;
-	float     TownDesireAmount;
-	bool32_t  isFinalState;
-	bool32_t  isTransientState;
-	bool32_t  isMovingForAnimation;
-	uint32_t  isScriptState;
-	uint32_t  isScriptInterruptableState;
-	int       ReturnState;
-	uint32_t  SpeedId;
-	char      name[0x80];
-	int       AvailableState;
-	uint32_t  field_0xbc;
-	bool32_t  CanBeCalledToDinner;
-	uint32_t  field_0xc4;
-	bool32_t  isReactiveState;
-	uint32_t  field_0xcc;
-	int       field_0xd0;
-	bool32_t  CanPauseForASecond;
-	float     FoodInterestMultiplier;
-	float     WoodInterestMultiplier;
-	uint32_t  field_0xe0;
-	uint32_t  field_0xe4;
-	bool32_t  IsWorshipState;
-	int       CarriedObject;
-	uint32_t  field_0xf0;
-	bool32_t  PerformsLivingChecks;
-	bool32_t  CanGoHomeWhenHurt;
-	bool32_t  canReact;
-	bool32_t  SkipOutofAnimation;
-	uint32_t  field_0x104;
-	float     LifeReductionPerTurn;
-	uint32_t  StateHelpText;
-	HELP_TEXT QueryHelpText;
+	int                         Anim;
+	int                         TownDesireType;
+	float                       TownDesireAmount;
+	bool32_t                    isFinalState;
+	bool32_t                    isTransientState;
+	bool32_t                    isMovingForAnimation;
+	uint32_t                    isScriptState;
+	uint32_t                    isScriptInterruptableState;
+	int                         ReturnState;
+	uint32_t                    SpeedId;
+	char                        name[0x80];
+	int                         AvailableState;
+	uint32_t                    field_0xbc;
+	bool32_t                    CanBeCalledToDinner;
+	uint32_t                    field_0xc4;
+	bool32_t                    isReactiveState;
+	uint32_t                    field_0xcc;
+	int                         field_0xd0;
+	bool32_t                    CanPauseForASecond;
+	float                       FoodInterestMultiplier;
+	float                       WoodInterestMultiplier;
+	uint32_t                    field_0xe0;
+	uint32_t                    field_0xe4;
+	bool32_t                    IsWorshipState;
+	int                         CarriedObject;
+	CREATURE_ACTION_KNOWN_ABOUT ActionKnownAbout;
+	bool32_t                    PerformsLivingChecks;
+	bool32_t                    CanGoHomeWhenHurt;
+	bool32_t                    canReact;
+	bool32_t                    SkipOutofAnimation;
+	uint32_t                    field_0x104;
+	float                       LifeReductionPerTurn;
+	uint32_t                    StateHelpText;
+	HELP_TEXT                   QueryHelpText;
 
 	// Override methods
 
