@@ -51,10 +51,10 @@ char* Creche::GetDebugText()
 
 Creche::~Creche() {}
 
-void Creche::ToBeDeleted(int param_1)
+void Creche::ToBeDeleted(bool32_t delete_now)
 {
 	DeleteDependancys();
-	Abode::ToBeDeleted(param_1);
+	Abode::ToBeDeleted(delete_now);
 }
 
 void Creche::DeleteDependancys()

@@ -26,7 +26,7 @@ public:
 	// BW1W120 0050aa00 BW1M119 012a6b20
 	virtual ~Creche();
 	// BW1W120 0050aa30 BW1M119 012a7100
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0050a9f0 BW1M119 012a6d50
 	virtual char* GetDebugText();
 	// BW1W120 0050a9e0 BW1M119 012a6d10

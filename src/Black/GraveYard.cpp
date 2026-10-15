@@ -14,19 +14,19 @@
 #endif
 
 // File-level constant: the original keeps it in this unit's .rdata.
-const float DeathsToStatus = 0.18f;
+const float GravesToStatus = 0.18f;
 
 Graveyard::Graveyard(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
                      float food, int wood)
 	: Abode(coords, info, town, y_angle, scale, food, wood)
 {
-	NumDeaths = 0;
+	NumGraves = 0;
 }
 
-void Graveyard::ToBeDeleted(int param_1)
+void Graveyard::ToBeDeleted(bool32_t delete_now)
 {
 	DeleteDependancys();
-	Abode::ToBeDeleted(param_1);
+	Abode::ToBeDeleted(delete_now);
 }
 
 bool Graveyard::InteractsWithPhysicsObjects()
@@ -85,11 +85,11 @@ void Graveyard::MakeFunctional()
 
 void Graveyard::ProcessNewDeath()
 {
-	if (GetTown() != NULL && IsFunctional() && NumDeaths < GRAVEYARD_MAX_NUM_DEATHS)
+	if (GetTown() != NULL && IsFunctional() && NumGraves < GRAVEYARD_MAX_NUM_GRAVES)
 	{
-		NumDeaths++;
-		int status = (int)(NumDeaths * DeathsToStatus);
-		if (status == 0 && NumDeaths != 0)
+		NumGraves++;
+		int status = (int)(NumGraves * GravesToStatus);
+		if (status == 0 && NumGraves != 0)
 		{
 			status++;
 		}
@@ -101,7 +101,7 @@ bool32_t Graveyard::Load(GameOSFile& file)
 {
 	if (Abode::Load(file))
 	{
-		file.ReadIt(NumDeaths);
+		file.ReadIt(NumGraves);
 		return true;
 	}
 	return false;
@@ -111,7 +111,7 @@ bool32_t Graveyard::Save(GameOSFile& file)
 {
 	if (Abode::Save(file))
 	{
-		file.WriteIt(NumDeaths);
+		file.WriteIt(NumGraves);
 		return true;
 	}
 	return false;
