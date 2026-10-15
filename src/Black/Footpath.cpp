@@ -567,7 +567,7 @@ void GFootpathFinder::GameTurnProcess()
 			}
 		}
 	}
-	else if (plan.State == RPLAN_STATE_SUCCEEDED && plan.Route0x68 != NULL)
+	else if (plan.State == RPLAN_STATE_SUCCEEDED && plan.CurrentRoute != NULL)
 	{
 		Done();
 	}
