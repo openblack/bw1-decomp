@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <re_common.h>           /* For bool32_t */
 #include <chlasm/CreatureEnum.h> /* For enum CREATURE_DESIRE_SOURCE */
 #include <chlasm/Enum.h>         /* For NUM_CREATURE_DESIRES */
 
@@ -18,7 +19,8 @@ class CreatureInitialDesireInfo : public GBaseInfo
 {
 public:
 	CREATURE_DESIRE_SOURCE Sources[MAX_NUM_SOURCES_FOR_EACH_DESIRE];
-	uint32_t               field_0x30[0x7];
+	bool32_t               Social;
+	uint32_t               field_0x34[0x6];
 	float                  DesireDecay;
 	float                  InitialValueMin;
 	float                  InitialValueMax;

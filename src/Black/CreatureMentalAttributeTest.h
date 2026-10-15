@@ -125,6 +125,9 @@ struct DecisionTree
 
 	// BW1W120 004d4380 BW1M119 01254c90
 	DecisionTree(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
+
+	// BW1W120 004d4bf0 BW1M119 012541d0
+	float CalculateUtility(CreatureBelief* belief);
 };
 
 struct DecisionTreeAgenda
@@ -160,6 +163,15 @@ struct DecisionTreeCollection
 
 	// BW1W120 004d7220 BW1M119 01250860
 	DecisionTreeCollection();
+
+	// BW1W120 004d7670 BW1M119 01250390
+	float ConvertUtilityToUsefulness(float utility);
+	// BW1W120 inlined BW1M119 01272140
+	float GetActivityObjectUtility(CreatureBelief* belief, CREATURE_DESIRES desire)
+	{
+		DecisionTreeAgenda* agenda = agendas[LESSON_TYPE_ACTIVITY_OBJECT].contents[desire];
+		return agenda->trees[0].CalculateUtility(belief);
+	}
 };
 
 class Attribute : public Base
