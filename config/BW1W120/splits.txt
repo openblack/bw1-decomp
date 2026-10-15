@@ -3713,10 +3713,10 @@ lib/libcmt/a_loc.obj:
 lib/libcmt/setmode.obj:
 	.text       start:0x007DB352 end:0x007DB410 align:1
 
-Lionhead/LHLib/ver5.0/LHWin.cpp:
+Lionhead/LHLib/ver5.0/LHSystem.cpp:
 	.text       start:0x007DB410 end:0x007DB7B0
 
-Lionhead/LHLib/ver5.0/LHSystem.cpp:
+Lionhead/LHLib/ver5.0/LHWin.cpp:
 	.text       start:0x007DB7B0 end:0x007DCE20
 	.text$x     start:0x008A7970 end:0x008A79C0 align:4
 	.CRT$XCU    start:0x009C7CF4 end:0x009C7CFC align:4
