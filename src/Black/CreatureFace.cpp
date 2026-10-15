@@ -3,4 +3,7 @@
 #include "CreatureFace.h"
 
 #include "ColourConstants.h" /* For White */
-#include <string>            /* For the std::basic_string instantiations */
+// The BW1W110 build of this unit has no std::basic_string initializers.
+#if !defined(VERSION_BW1W110)
+#include <string> /* For the std::basic_string instantiations */
+#endif
