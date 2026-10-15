@@ -117,6 +117,7 @@ enum LIVING_SET_STATE_RESULT
 enum LIVING_STATUS
 {
 	LIVING_STATUS_DYING = 0x1,
+	LIVING_STATUS_FOOTPATH_BACKWARDS = 0x8,
 	LIVING_STATUS_SKELETON = 0x40,
 	LIVING_STATUS_SHOW_INFO = 0x200,
 };
@@ -711,7 +712,7 @@ public:
 	// BW1W120 005edad0 BW1M119 01387b80
 	bool32_t StateInDance();
 	// BW1W120 005edc10 BW1M119 01387610
-	int SetupMoveOnFootpath(GFootpath* param_1, uint32_t param_2, uint32_t param_3, GFootpathNode* param_4);
+	int SetupMoveOnFootpath(GFootpath* footpath, bool32_t backwards, uint8_t state, GFootpathNode* node);
 	// BW1W120 005edd20 BW1M119 0109a030
 	bool32_t SetupMoveToOnFootpath(GameThingWithPos& destination, const MapCoords& arrive_position, uint8_t state);
 	// BW1W120 005edde0 BW1M119 01386ec0

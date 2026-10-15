@@ -10,8 +10,8 @@ struct RPAvoid
 {
 	float   field_0x0;
 	float   field_0x4;
-	Point2D field_0x8;
-	float   field_0x10;
+	Point2D Centre;
+	float   Radius;
 
 	// Non-virtual methods
 

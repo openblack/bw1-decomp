@@ -318,7 +318,7 @@ public:
 	int                 field_0x573c;
 	int                 field_0x5740;
 	int                 field_0x5744;
-	LHPoint             field_0x5748;
+	LHPoint             RPLookPoint;
 	char                FileName[64];
 	int                 field_0x5794;
 	int                 field_0x5798;

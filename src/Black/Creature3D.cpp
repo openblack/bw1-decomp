@@ -574,7 +574,7 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	field_0x5744 = 0;
 	field_0x5740 = 0;
 	field_0x573c = 0;
-	field_0x5748.SetNull();
+	RPLookPoint.SetNull();
 	field_0x5794 = 1;
 	field_0x4aac = 1.0f;
 	field_0x4aa8 = 1.0f;
@@ -1773,9 +1773,9 @@ void LH3DCreature::UpdateLook()
 		if (IsStandingStill())
 		{
 			UpdateRPLookPoint();
-			dir.x = field_0x5748.x;
-			dir.y = field_0x5748.y;
-			dir.z = field_0x5748.z;
+			dir.x = RPLookPoint.x;
+			dir.y = RPLookPoint.y;
+			dir.z = RPLookPoint.z;
 		}
 		else if (MoveState == LH3D_CREATURE_STATE_FIGHT_MAIN)
 		{
@@ -1819,17 +1819,17 @@ void LH3DCreature::UpdateRPLookPoint()
 	field_0x5744 -= AnimTimeInc;
 	if (field_0x5744 < 0)
 	{
-		// Both coordinates come from field_0x64074.x in the target and on the Mac (an original slip).
-		field_0x5748.Set(RpFollow->field_0x64074.x, 0.0f, RpFollow->field_0x64074.x);
+		// Both coordinates come from Dest.x in the target and on the Mac (an original slip).
+		RPLookPoint.Set(RpFollow->Dest.x, 0.0f, RpFollow->Dest.x);
 		if (RpFollow->PlanIndex >= 0 && RpFollow->PlanIndex < RpFollow->PlanCount)
 		{
 			Route* route = RpFollow->Plans[RpFollow->PlanIndex]->CurrentRoute;
 			if (route && route->Head)
 			{
-				field_0x5748.Set(route->Tail->field_0x8.x, 0.0f, route->Tail->field_0x8.y);
+				RPLookPoint.Set(route->Tail->End.x, 0.0f, route->Tail->End.y);
 			}
 		}
-		field_0x5748.y = LH3DIsland::GetAltitude(field_0x5748);
+		RPLookPoint.y = LH3DIsland::GetAltitude(RPLookPoint);
 		field_0x5744 = 2000;
 	}
 }
@@ -2003,10 +2003,10 @@ bool32_t LH3DCreature::IsDestinationValidAndClear(LHPoint* pos)
 	RPAvoid* avoid = RpFollow->AvoidArray;
 	for (int i = 0; i < RpFollow->AvoidCount; i++)
 	{
-		const Point2D& centre = avoid->field_0x8;
+		const Point2D& centre = avoid->Centre;
 		float          dx = centre.x - point.x;
 		float          dz = centre.y - point.y;
-		if (dz * dz + dx * dx < avoid->field_0x10 * avoid->field_0x10)
+		if (dz * dz + dx * dx < avoid->Radius * avoid->Radius)
 		{
 			RpFollow->Empty();
 			return false;
@@ -2172,7 +2172,7 @@ long LH3DCreature::GetStartState(LHPoint& param_1, LHPoint& param_2)
 LHPoint* LH3DCreature::GetDestination()
 {
 	static LHPoint destination;
-	destination.Set(RpFollow->field_0x64074.x, 0.0f, RpFollow->field_0x64074.y);
+	destination.Set(RpFollow->Dest.x, 0.0f, RpFollow->Dest.y);
 	return &destination;
 }
 
@@ -2226,7 +2226,7 @@ bool32_t LH3DCreature::StartMovingToPoint(const LHPoint& pos, float param_2, flo
 	else
 	{
 		Point2D  target(pos.x, pos.z);
-		Point2D* currentDest = &RpFollow->field_0x64074;
+		Point2D* currentDest = &RpFollow->Dest;
 		float    dx = target.x - currentDest->x;
 		float    dz = target.y - currentDest->y;
 		if (dz * dz + dx * dx < 0.01f)
@@ -6130,8 +6130,7 @@ void LH3DCreature::DoMovingAction()
 			if (creature)
 			{
 				// TODO: CreatureAgenda 0x1ad4 is an LHPoint (where the creature got trapped).
-				((LHPoint*)&creature->mind->agenda.field_0x1ad4)
-					->Set(RpFollow->field_0x64074.x, 0.0f, RpFollow->field_0x64074.y);
+				((LHPoint*)&creature->mind->agenda.field_0x1ad4)->Set(RpFollow->Dest.x, 0.0f, RpFollow->Dest.y);
 				creature->TrappedInEnclosedSpace(NumObjectsEncountered, ObjectsEncountered);
 			}
 			return;
@@ -7395,7 +7394,7 @@ void LH3DCreature::UpdateMotion()
 	case 0:
 		if (RpFollow->field_0x64054 == 3 || RpFollow->field_0x64054 == 4)
 		{
-			float length = RpFollow->field_0x64070->GetLength(RpFollow->AvoidArray);
+			float length = RpFollow->CurrentNode->GetLength(RpFollow->AvoidArray);
 			if (length < 0.01f)
 			{
 				length = 0.01f;
@@ -7416,7 +7415,7 @@ void LH3DCreature::UpdateMotion()
 				{
 				case 0:
 					UpdateRPLookPoint();
-					PointAt(&field_0x5748, true);
+					PointAt(&RPLookPoint, true);
 					field_0x573c = 6000;
 					break;
 				case 1:
@@ -7477,7 +7476,7 @@ void LH3DCreature::UpdateMotion()
 		break;
 	case 2:
 		UpdateRPLookPoint();
-		UpdatePointPoint(&field_0x5748);
+		UpdatePointPoint(&RPLookPoint);
 		DoPointAction(true);
 		break;
 	case 3:
@@ -7510,7 +7509,7 @@ void LH3DCreature::UpdateMotion()
 			RpFollow->FillPosAndHeading(RpFollow->field_0x6402c, RpFollow->field_0x64040, RpFollow->field_0x64038);
 			position.Set(RpFollow->field_0x6402c.x, 0.0f, RpFollow->field_0x6402c.y);
 			position.y = LH3DIsland::GetAltitude(position);
-			float length = RpFollow->field_0x64070->GetLength(RpFollow->AvoidArray);
+			float length = RpFollow->CurrentNode->GetLength(RpFollow->AvoidArray);
 			if (length < 0.01f)
 			{
 				length = 0.01f;
@@ -7571,7 +7570,7 @@ void LH3DCreature::UpdateMotion()
 						float   lastParam2 = RpFollow->field_0x64080;
 						float   lastParam3 = RpFollow->field_0x6407c;
 						float   lastParam4 = RpFollow->field_0x64084;
-						LHPoint dest(RpFollow->field_0x64074.x, 0.0f, RpFollow->field_0x64074.y);
+						LHPoint dest(RpFollow->Dest.x, 0.0f, RpFollow->Dest.y);
 						LHPoint validPos = position;
 						SpiralCheckForValidPoint(&position, &validPos);
 						SetPos(validPos);
@@ -7614,16 +7613,16 @@ void LH3DCreature::ProcessMoveStraight()
 	case 3:
 	case 4: {
 		float      maxSpeed = RpFollow->field_0x6403c;
-		RouteNode* next = RpFollow->field_0x64070->Next;
+		RouteNode* next = RpFollow->CurrentNode->Next;
 		if (!next)
 		{
-			float length = RpFollow->field_0x64070->GetLength(RpFollow->AvoidArray);
+			float length = RpFollow->CurrentNode->GetLength(RpFollow->AvoidArray);
 			maxSpeed = max(0.1f, (float)sqrt(2.0f * MoveAcceleration * (length - RpFollow->field_0x64038)));
 		}
-		else if (next->field_0x1c == 1)
+		else if (next->Arc == true)
 		{
-			float length = RpFollow->field_0x64070->GetLength(RpFollow->AvoidArray);
-			float arcSpeed = sqrt(RpFollow->AvoidArray[RpFollow->field_0x64070->field_0x10].field_0x10 * 12.0f);
+			float length = RpFollow->CurrentNode->GetLength(RpFollow->AvoidArray);
+			float arcSpeed = sqrt(RpFollow->AvoidArray[RpFollow->CurrentNode->Avoid].Radius * 12.0f);
 			maxSpeed = max(
 				0.1f, (float)sqrt(arcSpeed * arcSpeed + 2.0f * MoveAcceleration * (length - RpFollow->field_0x64038)));
 		}
@@ -7642,10 +7641,10 @@ void LH3DCreature::ProcessMoveStraight()
 		{
 			RpFollow->field_0x64034 = maxSpeed;
 		}
-		RouteNode* oldNode = RpFollow->field_0x64070;
+		RouteNode* oldNode = RpFollow->CurrentNode;
 		RpFollow->MoveAlongRoute();
 		CurrentSpeed = RpFollow->field_0x64034;
-		if (RpFollow->field_0x64070)
+		if (RpFollow->CurrentNode)
 		{
 			if ((float)fabs(angle_correct(Heading - RpFollow->field_0x64040)) < 0.5235988f)
 			{
@@ -7658,14 +7657,14 @@ void LH3DCreature::ProcessMoveStraight()
 			{
 				RpFollow->field_0x64034 = 0.0f;
 				CurrentSpeed = 0.0f;
-				if (RpFollow->field_0x64070 != oldNode)
+				if (RpFollow->CurrentNode != oldNode)
 				{
 					RpFollow->field_0x64038 = 0.0f;
 				}
 				RpFollow->FillPosAndHeading(RpFollow->field_0x6402c, RpFollow->field_0x64040, RpFollow->field_0x64038);
 				position.Set(RpFollow->field_0x6402c.x, 0.0f, RpFollow->field_0x6402c.y);
 				position.y = LH3DIsland::GetAltitude(position);
-				float length = RpFollow->field_0x64070->GetLength(RpFollow->AvoidArray);
+				float length = RpFollow->CurrentNode->GetLength(RpFollow->AvoidArray);
 				if (length < 0.01f)
 				{
 					length = 0.01f;
@@ -7681,7 +7680,7 @@ void LH3DCreature::ProcessMoveStraight()
 				float   lastParam2 = RpFollow->field_0x64080;
 				float   lastParam3 = RpFollow->field_0x6407c;
 				float   lastParam4 = RpFollow->field_0x64084;
-				LHPoint dest(RpFollow->field_0x64074.x, 0.0f, RpFollow->field_0x64074.y);
+				LHPoint dest(RpFollow->Dest.x, 0.0f, RpFollow->Dest.y);
 				LHPoint validPos = position;
 				SpiralCheckForValidPoint(&position, &validPos);
 				SetPos(validPos);

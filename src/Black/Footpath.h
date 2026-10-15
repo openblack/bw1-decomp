@@ -16,8 +16,8 @@ class GFootpathNode;
 class GameOSFile;
 class GameThingWithPos;
 class LHOSFile;
+struct LHPoint;
 struct MapCoords;
-class MultiMapFixed;
 struct Point2D;
 struct RPHolder;
 struct RPlan;
@@ -50,13 +50,13 @@ public:
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 00534de0 BW1M119 010f4340
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GFOOTPATH; }
+	// BW1W120 00534e40 BW1M119 010f3d80
+	virtual void ResolveLoad();
 
 	// Static methods
 
 	// BW1W120 00535550 BW1M119 010f2f20
 	static bool32_t SaveAll(LHOSFile& file, const MapCoords* offset);
-	// BW1W120 00535a80 BW1M119 inlined
-	static void FUN_00535a80(Point2D* param_1, MultiMapFixed* param_2, float point_x, float point_y);
 	// BW1W120 00535850 BW1M119 010f21f0
 	static void GenerateRoutesBetween(GameThingWithPos* from, GameThingWithPos* to);
 	// BW1W120 00535df0 BW1M119 010f2140
@@ -66,12 +66,20 @@ public:
 	static void SendFootpathsAroundObsticle(float radius, const MapCoords& coords);
 	// BW1W120 00537df0 BW1M119 010edd30
 	static void StopGoingRoundObsticle(float radius, const MapCoords& coords);
+	// BW1W120 00537ca0 BW1M119 010ee6f0
+	static bool32_t ArePracticallyCollinear2D(const LHPoint& a, const LHPoint& b, const LHPoint& c);
+	// BW1W120 00537d10 BW1M119 010ee460
+	static bool32_t ArePracticallyCollinear2D(const MapCoords& a, const MapCoords& b, const MapCoords& c);
+	// BW1W120 00537dd0 BW1M119 010ee3d0
+	static GFootpathNode* GetNextPermanentNode(GFootpathNode* node);
 	// BW1W120 00538340 BW1M119 010ed6d0
 	static void ConvertCreaturePlanToFootpath(RPHolder& holder, RPlan& plan, GFootpathNode* start, GFootpathNode* end,
-	                                          const MapCoords* coord);
+	                                          const MapCoords* obstacle);
+	// BW1W120 00538b90 BW1M119 010ecc40
+	static GFootpathNode* EraseNodesBetween(GFootpathNode* start, GFootpathNode* end);
 	// BW1W120 005387d0 BW1M119 010ed4c0
-	static uint32_t AttemptRerenderFootpathWithCreatureRP(GFootpathNode* start, GFootpathNode* end,
-	                                                      const MapCoords* coord);
+	static bool32_t AttemptRerenderFootpathWithCreatureRP(GFootpathNode* start, GFootpathNode* end,
+	                                                      const MapCoords* obstacle);
 
 	// Constructors
 
@@ -82,6 +90,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 00534e20 BW1M119 inlined
+	void CallVirtualFunctionsForCreation(const MapCoords* coords);
 	// BW1W120 00534f90 BW1M119 010f3720
 	int GetID();
 	// BW1W120 00534fc0 BW1M119 010f3630
