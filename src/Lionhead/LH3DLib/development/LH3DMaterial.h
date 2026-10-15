@@ -70,6 +70,8 @@ struct LH3DMaterial
 	bool32_t IsNeedTilling() { return Flags & FLAG_NEED_TILLING; }
 	// BW1W120 inlined BW1M119 0106b420 (LHCombined Release)
 	unsigned long GetTextureId() { return (unsigned long)texture; }
+	// BW1W120 007acf60 BW1M119 010c6de0 (LHCombined Release)
+	LH3DTexture* GetTexture();
 	// BW1W120 007acf70 BW1M119 null
 	unsigned long ModulateColor(LH3DColor modulate);
 };

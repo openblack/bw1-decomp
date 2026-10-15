@@ -10,20 +10,26 @@
 struct LH3DMaterial;
 struct LHMatrix;
 
+#define LH3D_SPRITE_DEFAULT_FRAMES_PER_ROW 8
+
 struct LH3DSprite
 {
-	LHPoint       pos;
-	float         Size;
-	float         Aspect;
-	float         angle;
-	float         OffsetX;
-	float         OffsetY;
-	LH3DColor     colour;
-	float         field_0x24;
+	LHPoint   pos;
+	float     Size;
+	float     Aspect;
+	float     angle;
+	float     OffsetX;
+	float     OffsetY;
+	LH3DColor colour;
+	LH3DColor specular;
+	// A Horizontal sprite lies flat in the x/z plane instead of facing the camera; a UseMaterial one sets its own
+	// material before it is drawn.
 	uint32_t      Frame : 6;
-	uint32_t      field_0x28_6 : 26;
+	uint32_t      Horizontal : 1;
+	uint32_t      UseMaterial : 1;
+	uint32_t      field_0x28_8 : 24;
 	LH3DMaterial* material;
-	uint8_t       field_0x30;
+	uint8_t       FramesPerRow;
 	uint8_t       field_0x31;
 	uint8_t       field_0x32;
 	uint8_t       field_0x33;
@@ -59,5 +65,11 @@ struct LH3DSprite
 	// BW1W120 00840cc0 BW1M119 010b44d0 (LHCombined Release)
 	void DrawSpecial1(LHMatrix* matrix);
 };
+
+// Texture coordinates of the four corners of a frame, in units of a 1/8 frame grid.
+// BW1W120 00c390cc BW1M119 011d14ac (LHCombined Release)
+extern float utex[4];
+// BW1W120 00c390dc BW1M119 011d14bc (LHCombined Release)
+extern float vtex[4];
 
 #endif /* BW1_DECOMP_LH3D_SPRITE_INCLUDED_H */
