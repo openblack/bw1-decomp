@@ -116,9 +116,9 @@ public:
 	// BW1W120 0052eec0 BW1M119 0109d350
 	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3);
 	// BW1W120 0052ee10 BW1M119 010e4730
-	virtual uint32_t AddFootpath(GFootpath* footpath);
+	virtual bool32_t AddFootpath(GFootpath* footpath);
 	// BW1W120 0052ee80 BW1M119 010e4680
-	virtual uint32_t RemoveFootpath(GFootpath* param_1);
+	virtual bool32_t RemoveFootpath(GFootpath* footpath);
 	// BW1W120 0052f180 BW1M119 010e3e80
 	virtual uint32_t AddResource(RESOURCE_TYPE type, uint32_t amount, GInterfaceStatus* status, bool param_4,
 	                             const MapCoords* coords, int param_6);

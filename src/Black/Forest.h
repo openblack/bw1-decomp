@@ -64,9 +64,9 @@ public:
 	// BW1W120 0053ad60 BW1M119 010f99b0
 	virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3);
 	// BW1W120 0053ac50 BW1M119 010f9cf0
-	virtual uint32_t AddFootpath(GFootpath* param_1);
+	virtual bool32_t AddFootpath(GFootpath* footpath);
 	// BW1W120 0053acc0 BW1M119 010f9c40
-	virtual uint32_t RemoveFootpath(GFootpath* param_1);
+	virtual bool32_t RemoveFootpath(GFootpath* footpath);
 	// BW1W120 00539a60 BW1M119 010f8830
 	virtual bool32_t IsFunctional();
 	// BW1W120 00539b10 BW1M119 010f8b60
