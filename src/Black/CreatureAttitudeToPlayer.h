@@ -46,7 +46,7 @@ public:
 	float                          Attitude; /* 0x18 */
 	uint32_t                       field_0x1c;
 	uint32_t                       field_0x20;
-	uint32_t                       field_0x24;
+	float                          ImpressedByPlayer;
 	float                          Interest;
 	uint32_t                       field_0x2c;
 	uint32_t                       field_0x30;

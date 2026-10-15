@@ -153,8 +153,8 @@ public:
 	uint8_t                               field_0x37d;
 	uint8_t                               field_0x37e;
 	uint8_t                               field_0x37f;
-	uint32_t                              field_0x380;
-	uint32_t                              field_0x384;
+	bool32_t                              CommandedByLeash;
+	bool32_t                              Fainted;
 	CreatureEmotionsForMusic              EmotionsForMusic;
 	uint32_t                              field_0x390[0xa];
 	uint32_t                              field_0x3b8;
@@ -180,7 +180,7 @@ public:
 	CreatureSubActionAgenda               SubActionAgenda;
 	int                                   field_0x1058;
 	uint32_t                              ActionForced;
-	uint32_t                              field_0x1060;
+	bool32_t                              ReactionsEnabled;
 	uint32_t                              field_0x1064;
 	uint32_t                              field_0x1068;
 	bool32_t                              Invisible;
@@ -199,8 +199,8 @@ public:
 	GArena*                               arena;
 	uint32_t                              field_0x10a4;
 	uint32_t                              field_0x10a8;
-	uint32_t                              field_0x10ac;
-	uint32_t                              field_0x10b0;
+	bool32_t                              FightStarted;
+	bool32_t                              FightEnded;
 	uint32_t                              field_0x10b4;
 	uint32_t                              field_0x10b8;
 	uint32_t                              field_0x10bc;
@@ -213,7 +213,7 @@ public:
 	uint32_t                              field_0x10e8;
 	uint32_t                              field_0x10ec;
 	uint32_t                              field_0x10f0;
-	uint32_t                              field_0x10f4;
+	bool32_t                              RespondingToEmergency;
 	Town*                                 LastTownImpressed;
 	uint32_t                              LastImpressiveDanceTurn;
 	uint32_t                              LastImpressiveDanceType;
@@ -241,7 +241,7 @@ public:
 	float                                 ObjectsDestroyed;
 	uint32_t                              field_0x11c4;
 	uint32_t                              field_0x11c8;
-	MapCoords                             field_0x11cc;
+	MapCoords                             DestPosBeforeTeleport;
 	uint8_t                               field_0x11d8[0xc];
 	GParticleContainer*                   ParticleContainer0x11e4;
 	uint32_t                              field_0x11e8;
@@ -269,8 +269,8 @@ public:
 	uint32_t                              field_0x1288;
 	uint32_t                              ScriptAnim;
 	uint32_t                              ScriptAnimRepeats;
-	uint32_t                              field_0x1294;
-	uint32_t                              field_0x1298;
+	bool32_t                              ConfinedToObject;
+	GameThingWithPos*                     ConfinementObject;
 	int                                   field_0x129c;
 	uint32_t                              field_0x12a0;
 	uint32_t                              field_0x12a4;
@@ -540,89 +540,89 @@ public:
 	// BW1W120 0047c670 BW1M119 011d9f60
 	virtual bool32_t IsDancing();
 	// BW1W120 004f2820 BW1M119 01281880
-	virtual bool32_t IsAvailableForReaction(REACTION param_1);
+	virtual bool32_t IsAvailableForReaction(REACTION reaction);
 	// BW1W120 004f2780 BW1M119 01281a20
 	virtual void UpdateHowImpressed(Reaction* param_1, int param_2);
-	// BW1W120 004f2680 BW1M119 inlined
-	virtual void AddReaction(Reaction* param_1, VILLAGER_STATES param_2);
+	// BW1W120 004f2680 BW1M119 01281c80
+	virtual void AddReaction(Reaction* reaction, VILLAGER_STATES state);
 	// BW1W120 004f26d0 BW1M119 01281b70
-	virtual void StartReacting(REACTION param_1, GameThingWithPos* param_2, Reaction* param_3);
+	virtual void StartReacting(REACTION type, GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00477f30 BW1M119 011e17e0
 	virtual void ResetStateAfterReacting();
 	// BW1W120 004f2b00 BW1M119 01281200
-	virtual void SetupFleeFromObject(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupFleeFromObject(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f2b40 BW1M119 01281130
-	virtual void SetupLookAtNiceSpell(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupLookAtNiceSpell(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f2ce0 BW1M119 01280c50
-	virtual void SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToCreature(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f2de0 BW1M119 01280a90
-	virtual void SetupReactToFood(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFood(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f2e50 BW1M119 01280950
-	virtual void SetupReactToMagicTree(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToMagicTree(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f35a0 BW1M119 0127f990
-	virtual void SetupReactToFlyingObject(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFlyingObject(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f2f70 BW1M119 01280470
-	virtual void SetupReactToFire(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFire(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f2ea0 BW1M119 012807b0
-	virtual void SetupReactToBall(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToBall(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f3090 BW1M119 012803f0
-	virtual void SetupReactToMagicShield(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToMagicShield(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f36b0 BW1M119 0127f680
-	virtual void SetupReactToHandPickUp(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToHandPickUp(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f3820 BW1M119 0127f480
-	virtual void SetupReactToHandUsingTotem(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToHandUsingTotem(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f3930 BW1M119 0127f1a0
-	virtual void SetupReactToObjectCrushed(GameThingWithPos* param_1, Reaction* param_2);
-	// BW1W120 004f3a00 BW1M119 016decbc
-	virtual void SetupReactToFight(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToObjectCrushed(GameThingWithPos* thing, Reaction* reaction);
+	// BW1W120 004f3a00 BW1M119 0127f040
+	virtual void SetupReactToFight(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f3a60 BW1M119 0127ede0
-	virtual void SetupReactToTeleport(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToTeleport(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f2b80 BW1M119 01281040
-	virtual void SetupReactToHandPuttingStuffInStoragePit(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToHandPuttingStuffInStoragePit(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f3b50 BW1M119 0127ec70
-	virtual void SetupReactToDeath(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToDeath(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f3b90 BW1M119 0127eb90
-	virtual void SetupReactToFainting(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFainting(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f3bd0 BW1M119 0127eaa0
-	virtual void SetupReactToConfused(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToConfused(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 004f2ab0 BW1M119 012812d0
-	virtual uint8_t FleeFromSpellPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t FleeFromSpellPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f2bf0 BW1M119 01280dc0
-	virtual uint8_t ReactToCreaturePriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToCreaturePriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f2d90 BW1M119 01280b60
-	virtual uint8_t ReactToFoodPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFoodPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f2e20 BW1M119 012809d0
-	virtual uint8_t ReactToMagicTreePriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToMagicTreePriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f3480 BW1M119 0127fad0
-	virtual uint8_t ReactToFlyingObjectPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFlyingObjectPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f2e70 BW1M119 01280890
-	virtual uint8_t ReactToBallPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToBallPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f2ee0 BW1M119 01280680
-	virtual uint8_t ReactToFirePriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFirePriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f3620 BW1M119 0127f820
-	virtual uint8_t ReactToHandPickUpPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToHandPickUpPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f37d0 BW1M119 0127f590
-	virtual uint8_t ReactToHandUsingTotemPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToHandUsingTotemPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f3870 BW1M119 0127f2c0
-	virtual uint8_t ReactToObjectCrushedPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToObjectCrushedPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f3990 BW1M119 0127f0a0
-	virtual uint8_t ReactToFightPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFightPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f3a10 BW1M119 0127ef60
-	virtual uint8_t ReactToTeleportPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToTeleportPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f2bc0 BW1M119 01280f60
-	virtual uint8_t ReactToHandPuttingStuffInStoragePitPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToHandPuttingStuffInStoragePitPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f3b20 BW1M119 0127ed40
-	virtual uint8_t ReactToDeathPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToDeathPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 004f29c0 BW1M119 012815c0
-	virtual uint32_t StandardNumGameTurnsToReactFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
+	virtual uint32_t StandardNumGameTurnsToReactFunction(GameThingWithPos* thing, uint32_t reaction, float distance);
 	// BW1W120 004f2a20 BW1M119 012814b0
-	virtual uint32_t StandardNumGameTurnsBeforeReactingAgainFunction(GameThingWithPos* param_1, uint32_t param_2,
-	                                                                 float param_3);
+	virtual uint32_t StandardNumGameTurnsBeforeReactingAgainFunction(GameThingWithPos* thing, uint32_t reaction,
+	                                                                 float distance);
 	// BW1W120 004f2a70 BW1M119 01281430
-	virtual uint32_t NumGameTurnsToReactToCreatureFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
+	virtual uint32_t NumGameTurnsToReactToCreatureFunction(GameThingWithPos* thing, uint32_t reaction, float distance);
 	// BW1W120 004f2a90 BW1M119 012813a0
-	virtual uint32_t NumGameTurnsBeforeReactingAgainToCreatureFunction(GameThingWithPos* param_1, uint32_t param_2,
-	                                                                   float param_3);
+	virtual uint32_t NumGameTurnsBeforeReactingAgainToCreatureFunction(GameThingWithPos* thing, uint32_t reaction,
+	                                                                   float distance);
 
 	// Static methods
 
@@ -1000,6 +1000,20 @@ public:
 	void ScriptPlayIndividualAnimation(unsigned long anim);
 	// BW1W120 004f6f10 BW1M119 0128cfa0
 	void ScriptPlayStaticAnimation(unsigned long anim, float param_2);
+	// BW1W120 0047b1c0 BW1M119 011dc140
+	bool32_t IsFighting();
+	// BW1W120 004d8bb0 BW1M119 01255f50
+	CreatureBelief* AddBeliefAboutAssociatedObject(CreatureBelief* belief);
+	// BW1W120 004f8ca0 BW1M119 0128e390
+	float NumTimesMagicActionMustBeSeenBeforeItIsLearnt(unsigned long magic_type);
+	// BW1W120 004f8850 BW1M119 0128ecd0
+	void ForceActionCastSpellOnObject(MAGIC_TYPE magic_type, Object* object);
+	// BW1W120 004f2930 BW1M119 012817f0
+	bool32_t LearnActionFromReaction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action);
+	// BW1W120 004f30b0 BW1M119 01280120
+	void SetupReactToNiceMagic(Reaction* reaction, MAGIC_TYPE magic_type, GameThingWithPos* thing);
+	// BW1W120 004f3210 BW1M119 0127fd10
+	void SetupReactToNastyMagic(Reaction* reaction, MAGIC_TYPE magic_type, GameThingWithPos* thing);
 };
 
 class Creed : public MobileObject
