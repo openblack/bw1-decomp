@@ -51,10 +51,23 @@ struct AnimalStateTableEntry
 };
 static_assert(sizeof(AnimalStateTableEntry) == 0x90, "Data type is of wrong size");
 
+enum ANIMAL_NEEDS
+{
+	ANIMAL_NEEDS_NONE = 0,
+	ANIMAL_NEEDS_FOOD = 1,
+	ANIMAL_NEEDS_SLEEP = 2,
+	ANIMAL_NEEDS_BREED = 3,
+};
+
 class Animal : public Living
 {
 public:
-	uint8_t        field_0xe0[0x14];
+	uint8_t        field_0xe0[0x4];
+	int16_t        field_0xe4;
+	int16_t        field_0xe6;
+	int16_t        field_0xe8;
+	int16_t        field_0xea;
+	uint8_t        field_0xec[0x8];
 	JustWholeMapXZ FoodPos;
 	uint8_t        field_0xfc[0x4];
 	JustMapXZ      PhysObPos;
@@ -218,7 +231,7 @@ public:
 	// BW1W120 004184d0 BW1M119 011732e0
 	virtual uint32_t ReactToAnimalFoodNeeds();
 	// BW1W120 0041ad50 BW1M119 0116ec70
-	virtual uint32_t LookForFoodPos();
+	virtual uint32_t LookForFoodPos(MapCoords* pos);
 	// BW1W120 0041ad60 BW1M119 0116ec30
 	virtual uint32_t LookForSleepPos();
 	// BW1W120 004175b0 BW1M119 011376e0
@@ -374,6 +387,14 @@ public:
 
 	// BW1W120 0041abb0 BW1M119 01089fb0
 	uint32_t KeepFlockMemberWithinFlockArea();
+	// BW1W120 0041a690 BW1M119 01006420
+	void LookForFlocksInSpiral(const MapCoords& coords, const GAnimalInfo* info, int max_dist, int param_4);
+	// BW1W120 0041a8b0 BW1M119 01035660
+	uint32_t LookForGrazePos(const MapCoords& coords, int max_dist, MapCoords* pos);
+	// BW1W120 0041aad0 BW1M119 01007d40
+	uint32_t KeepLeaderWithinDomain();
+	// BW1W120 00418220 BW1M119 01081640
+	void IncreaseBreed();
 	// BW1W120 00417c50 BW1M119 01174910
 	void SetTown(Town* town);
 	// BW1W120 0041b1f0 BW1M119 01034ef0

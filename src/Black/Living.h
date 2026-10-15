@@ -694,8 +694,10 @@ public:
 	bool32_t IsBeingUsedInTheDanceEditor();
 	// BW1W120 005ecd00 BW1M119 01389140
 	bool32_t MoveOnStructure();
-	// BW1W120 005ecf60 BW1M119 0106f650
-	MapCoords GetFlockPos();
+	// BW1W120 005ecf40 BW1M119 0106f650
+	MapCoords* GetFlockPos();
+	// BW1W120 005ecf60 BW1M119 01067e30
+	MapCoords* GetDomainCentrePos();
 	// BW1W120 005ecf70 BW1M119 0104e920
 	bool IAmFlockLeader();
 	// BW1W120 005ecfa0 BW1M119 01067cc0
