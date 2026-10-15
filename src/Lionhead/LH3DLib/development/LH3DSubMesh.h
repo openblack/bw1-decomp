@@ -1,8 +1,9 @@
 #ifndef BW1_DECOMP_LH3D_SUB_MESH_INCLUDED_H
 #define BW1_DECOMP_LH3D_SUB_MESH_INCLUDED_H
 
-#include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <assert.h>    /* For static_assert */
+#include <stdint.h>    /* For uint32_t, uint8_t */
+#include <re_common.h> /* For bool32_t */
 
 // Forward Declares
 
@@ -23,6 +24,9 @@ struct LH3DSubMesh
 	int             NumBones;
 	uint8_t*        Bones; /* 0x10 */
 
+	// BW1W120 00fa93bc BW1M119 012d3e1c (LHCombined Release)
+	static LH3DSubMesh* g_current_sub_mesh;
+
 	// Static methods
 
 	// BW1W120 0087fa00 BW1M119 010bb180 (LHCombined Release)
@@ -32,6 +36,8 @@ struct LH3DSubMesh
 
 	// BW1W120 00849e60 BW1M119 0106d1b0 (LHCombined Release)
 	long GetTriangleCount();
+	// BW1W120 007acde0 BW1M119 inlined
+	bool32_t HasBones();
 };
 
 #endif /* BW1_DECOMP_LH3D_SUB_MESH_INCLUDED_H */

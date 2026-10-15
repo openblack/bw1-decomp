@@ -2697,14 +2697,17 @@ Black/WorldRoom.cpp:
 	.bss        start:0x00EB7310 end:0x00EBB36C
 
 Lionhead/LH3DLib/development/LH3DP3.cpp:
-	.text       start:0x007A6480 end:0x007B2230
-	.text$x     start:0x008AB730 end:0x008AB748 align:4
+	.text       start:0x007A6480 end:0x007B2060
+	.CRT$XCU    start:0x00A47C80 end:0x00A47CC0 align:4
+	.data       start:0x00CAB980 end:0x00CAB9E8 align:32
+	.bss        start:0x00EBB3C0 end:0x00F04BE0 align:32
 	.data1      start:0x01041000 end:0x01041B40
 	.drectve    type:comment start:0x00400330 end:0x004004BB
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
-	.text       start:0x007B2230 end:0x007B36B0
-	.CRT$XCU    start:0x00A47CA0 end:0x00A47CA8 align:4
+	.text       start:0x007B2060 end:0x007B36B0
+	.text$x     start:0x008AB730 end:0x008AB748 align:4
+	.CRT$XCU    start:0x00A47CC0 end:0x00A47CC8 align:4
 
 lib/libcpmt/delop.obj:
 	.text       start:0x007B3EB0 end:0x007B3EBB align:1
@@ -2719,7 +2722,7 @@ lib/libcpmt/string.obj:
 	.rdata      start:0x00A1EC40 end:0x00A1EC98 align:4
 	.rdata$r    start:0x00A3AF68 end:0x00A3B054 align:8
 	.xdata$x    start:0x00A3C6A8 end:0x00A3C880 align:8
-	.CRT$XCU    start:0x00A47CA8 end:0x00A47CAC align:4
+	.CRT$XCU    start:0x00A47CC8 end:0x00A47CCC align:4
 	.data       start:0x00CAC0A0 end:0x00CAC100 align:8
 
 lib/libcpmt/ios.obj:
@@ -2740,7 +2743,7 @@ lib/libcpmt/locale0.obj:
 	.rdata      start:0x00A1ED14 end:0x00A1ED20 align:4
 	.rdata$r    start:0x00A3B0F4 end:0x00A3B144 align:8
 	.xdata$x    start:0x00A3CA40 end:0x00A3CB58 align:8
-	.CRT$XCU    start:0x00A47CAC end:0x00A47CB4 align:4
+	.CRT$XCU    start:0x00A47CCC end:0x00A47CD4 align:4
 	.data       start:0x00CAC150 end:0x00CAC174 align:8
 	.bss        start:0x00F04C50 end:0x00F04C64 align:4
 

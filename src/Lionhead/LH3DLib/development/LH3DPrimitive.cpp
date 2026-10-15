@@ -4,7 +4,6 @@
 #include <math.h>     /* For fabs */
 
 #include "LH3DObject.h"  /* For class LH3DObject */
-#include "LH3DP3.h"      /* For struct LH3DP3 */
 #include "LH3DTShadow.h" /* For struct LH3DTShadow */
 #include "LH3DTech.h"    /* For class LH3DTech */
 #include "LH3DTexture.h" /* For struct LH3DTexture */
@@ -244,9 +243,9 @@ void LH3DPrimitive::ApplyVBlendsAndSetFlags(Vertex3D* points, unsigned long* fla
 			{
 				points->x = 0.0f;
 			}
-			else if (points->x > g_MaxScreen[0])
+			else if (points->x > LH3DTech::g_max_screen[0])
 			{
-				points->x = g_MaxScreen[0];
+				points->x = LH3DTech::g_max_screen[0];
 			}
 			points->y =
 				LH3DTech::g_info_transform.HalfRes.y - (points->rhw * points->y) * LH3DTech::g_info_transform.HalfRes.y;
@@ -254,9 +253,9 @@ void LH3DPrimitive::ApplyVBlendsAndSetFlags(Vertex3D* points, unsigned long* fla
 			{
 				points->y = 0.0f;
 			}
-			else if (points->y > g_MaxScreen[1])
+			else if (points->y > LH3DTech::g_max_screen[1])
 			{
-				points->y = g_MaxScreen[1];
+				points->y = LH3DTech::g_max_screen[1];
 			}
 			points->rhw = LH3DTech::g_info_transform.NearClip * points->rhw;
 			points->z = 1.0f - points->rhw;
@@ -311,9 +310,9 @@ void LH3DPrimitive::ApplyVBlendsAndSetFlagsMT(Vertex3DMT* points, unsigned long*
 			{
 				points->x = 0.0f;
 			}
-			else if (points->x > g_MaxScreen[0])
+			else if (points->x > LH3DTech::g_max_screen[0])
 			{
-				points->x = g_MaxScreen[0];
+				points->x = LH3DTech::g_max_screen[0];
 			}
 			points->y =
 				LH3DTech::g_info_transform.HalfRes.y - (points->rhw * points->y) * LH3DTech::g_info_transform.HalfRes.y;
@@ -321,9 +320,9 @@ void LH3DPrimitive::ApplyVBlendsAndSetFlagsMT(Vertex3DMT* points, unsigned long*
 			{
 				points->y = 0.0f;
 			}
-			else if (points->y > g_MaxScreen[1])
+			else if (points->y > LH3DTech::g_max_screen[1])
 			{
-				points->y = g_MaxScreen[1];
+				points->y = LH3DTech::g_max_screen[1];
 			}
 			points->rhw = LH3DTech::g_info_transform.NearClip * points->rhw;
 			points->z = 1.0f - points->rhw;
@@ -495,8 +494,8 @@ bool32_t LH3DPrimitive::CheckTriangleCollideMorph()
 {
 	g_current_primitive = this;
 	LH3DVertex*    vertex = Vertices;
-	Vertex3D*      point = (Vertex3D*)LH3DP3::Table1;
-	unsigned long* flags = (unsigned long*)LH3DP3::Table0;
+	Vertex3D*      point = LH3DTech::g_cache_t_points;
+	unsigned long* flags = LH3DTech::g_cache_flags;
 	for (int i = 0; i < NumVertices; flags++, point++, vertex++, g_vertical_translate_vertices++, i++)
 	{
 		LHPoint position(vertex->position.x, vertex->position.y + *g_vertical_translate_vertices, vertex->position.z);
@@ -510,9 +509,9 @@ bool32_t LH3DPrimitive::CheckTriangleCollideMorph()
 			{
 				point->x = 0.0f;
 			}
-			else if (point->x > g_MaxScreen[0])
+			else if (point->x > LH3DTech::g_max_screen[0])
 			{
-				point->x = g_MaxScreen[0];
+				point->x = LH3DTech::g_max_screen[0];
 			}
 			point->y =
 				LH3DTech::g_info_transform.HalfRes.y - (point->rhw * point->y) * LH3DTech::g_info_transform.HalfRes.y;
@@ -520,20 +519,20 @@ bool32_t LH3DPrimitive::CheckTriangleCollideMorph()
 			{
 				point->y = 0.0f;
 			}
-			else if (point->y > g_MaxScreen[1])
+			else if (point->y > LH3DTech::g_max_screen[1])
 			{
-				point->y = g_MaxScreen[1];
+				point->y = LH3DTech::g_max_screen[1];
 			}
 			point->rhw = LH3DTech::g_info_transform.NearClip * point->rhw;
 		}
 	}
 
 	uint16_t pointsCount = NumVertices;
-	g_TriangleListSize = 0;
-	g_NumClipVerts = pointsCount;
+	LH3DTech::g_index_count = 0;
+	LH3DTech::g_points_count = pointsCount;
 	LH3DTriangle* triangle = Triangles;
-	g_NoBackfaceCull = Material.IsDoubleSided();
-	unsigned long* clipFlags = (unsigned long*)LH3DP3::Table0;
+	LH3DTech::g_clip_with_double_sided = Material.IsDoubleSided();
+	unsigned long* clipFlags = LH3DTech::g_cache_flags;
 	int            j;
 	uint16_t       a;
 	uint16_t       b;
@@ -554,15 +553,15 @@ bool32_t LH3DPrimitive::CheckTriangleCollideMorph()
 			}
 			else
 			{
-				g_TriangleList[g_TriangleListSize++] = a;
-				g_TriangleList[g_TriangleListSize++] = b;
-				g_TriangleList[g_TriangleListSize++] = c;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = b;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = c;
 			}
 		}
 	}
 	else
 	{
-		Vertex3D* points = (Vertex3D*)LH3DP3::Table1;
+		Vertex3D* points = LH3DTech::g_cache_t_points;
 		for (j = 0; j < NumTriangles; triangle++, j++)
 		{
 			a = triangle->A;
@@ -579,14 +578,14 @@ bool32_t LH3DPrimitive::CheckTriangleCollideMorph()
 			             (points[b].y - points[a].y) * (points[c].x - points[a].x) >
 			         0.0f)
 			{
-				g_TriangleList[g_TriangleListSize++] = a;
-				g_TriangleList[g_TriangleListSize++] = b;
-				g_TriangleList[g_TriangleListSize++] = c;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = a;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = b;
+				LH3DTech::g_list_indices[LH3DTech::g_index_count++] = c;
 			}
 		}
 	}
 
-	int triangleCount = g_TriangleListSize / 3;
+	int triangleCount = LH3DTech::g_index_count / 3;
 	if (triangleCount)
 	{
 		LHCoordF mouse;
@@ -594,9 +593,9 @@ bool32_t LH3DPrimitive::CheckTriangleCollideMorph()
 		mouse.y = (float)LH3DObject::g_selected_py;
 		for (j = 0; j < triangleCount; j++)
 		{
-			Vertex3D* pointA = &((Vertex3D*)LH3DP3::Table1)[g_TriangleList[j * 3]];
-			Vertex3D* pointB = &((Vertex3D*)LH3DP3::Table1)[g_TriangleList[j * 3 + 1]];
-			Vertex3D* pointC = &((Vertex3D*)LH3DP3::Table1)[g_TriangleList[j * 3 + 2]];
+			Vertex3D* pointA = &(LH3DTech::g_cache_t_points)[LH3DTech::g_list_indices[j * 3]];
+			Vertex3D* pointB = &(LH3DTech::g_cache_t_points)[LH3DTech::g_list_indices[j * 3 + 1]];
+			Vertex3D* pointC = &(LH3DTech::g_cache_t_points)[LH3DTech::g_list_indices[j * 3 + 2]];
 			LHCoordF  offset[3];
 			offset[0].x = pointA->x - mouse.x;
 			offset[0].y = pointA->y - mouse.y;
@@ -794,7 +793,7 @@ bool32_t __fastcall LH3DPrimitive::ComputeVertexInsideTriangle(Vertex3D* top, Ve
 
 void LH3DPrimitive::DoMouseCheckMT()
 {
-	int triangleCount = g_TriangleListSize / 3;
+	int triangleCount = LH3DTech::g_index_count / 3;
 	if (triangleCount)
 	{
 		LHCoordF mouse;
@@ -802,9 +801,9 @@ void LH3DPrimitive::DoMouseCheckMT()
 		mouse.y = (float)LH3DObject::g_selected_py;
 		for (int i = 0; i < triangleCount; i++)
 		{
-			Vertex3DMT* pointA = &((Vertex3DMT*)LH3DP3::Table1)[g_TriangleList[i * 3]];
-			Vertex3DMT* pointB = &((Vertex3DMT*)LH3DP3::Table1)[g_TriangleList[i * 3 + 1]];
-			Vertex3DMT* pointC = &((Vertex3DMT*)LH3DP3::Table1)[g_TriangleList[i * 3 + 2]];
+			Vertex3DMT* pointA = &((Vertex3DMT*)LH3DTech::g_cache_t_points)[LH3DTech::g_list_indices[i * 3]];
+			Vertex3DMT* pointB = &((Vertex3DMT*)LH3DTech::g_cache_t_points)[LH3DTech::g_list_indices[i * 3 + 1]];
+			Vertex3DMT* pointC = &((Vertex3DMT*)LH3DTech::g_cache_t_points)[LH3DTech::g_list_indices[i * 3 + 2]];
 			LHCoordF    offset[3];
 			offset[0].x = pointA->x - mouse.x;
 			offset[0].y = pointA->y - mouse.y;
@@ -853,7 +852,7 @@ void LH3DPrimitive::DoMouseCheckMT()
 
 void LH3DPrimitive::DoMouseCheck()
 {
-	int triangleCount = g_TriangleListSize / 3;
+	int triangleCount = LH3DTech::g_index_count / 3;
 	if (triangleCount)
 	{
 		LHCoordF mouse;
@@ -861,9 +860,9 @@ void LH3DPrimitive::DoMouseCheck()
 		mouse.y = (float)LH3DObject::g_selected_py;
 		for (int i = 0; i < triangleCount; i++)
 		{
-			Vertex3D* pointA = &((Vertex3D*)LH3DP3::Table1)[g_TriangleList[i * 3]];
-			Vertex3D* pointB = &((Vertex3D*)LH3DP3::Table1)[g_TriangleList[i * 3 + 1]];
-			Vertex3D* pointC = &((Vertex3D*)LH3DP3::Table1)[g_TriangleList[i * 3 + 2]];
+			Vertex3D* pointA = &(LH3DTech::g_cache_t_points)[LH3DTech::g_list_indices[i * 3]];
+			Vertex3D* pointB = &(LH3DTech::g_cache_t_points)[LH3DTech::g_list_indices[i * 3 + 1]];
+			Vertex3D* pointC = &(LH3DTech::g_cache_t_points)[LH3DTech::g_list_indices[i * 3 + 2]];
 			LHCoordF  offset[3];
 			offset[0].x = pointA->x - mouse.x;
 			offset[0].y = pointA->y - mouse.y;

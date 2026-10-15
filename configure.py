@@ -366,12 +366,18 @@ cflags_icc = [
     "/MT", "/W3", "/GX",
     "/O2", "/Ob1",
     *includes_project,
+    # AMaths.h, the header of Intel's Approximate Math Library linked from amaths.lib.
+    "/I", "orig/libs/amaths-2.0",
     "/I", f"build/compilers/{config.linker_version}/include",
     "/I", f"build/compilers/{icc_version}/include",
     "/DNDEBUG", "/D_LH_LIB_RELEASE", "/DWIN32", "/D_WINDOWS",
     "/D_LH_3D_LIB_", "/D_GOLD", "/D_GOLD_", "/D_USE_INTEL_COMPILER",
     f"/DBUILD_VERSION={version_num}",
     f"/DVERSION_{config.version}",
+    # The original compiler (5.0 Build 001120) has no post-pass scheduler: with
+    # 5.0.1's enabled, every function's instructions are reordered and its
+    # register assignment follows.
+    "/Qoption,c,-mP3OPT_pcg_post_sched=0",
 ]
 
 # The game code (Black/) was compiled for Pentium Pro (/G6); the static

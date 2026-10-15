@@ -8,6 +8,11 @@ struct LH3DVertexGroup
 {
 	uint16_t vertex_count; /* 0x0 */
 	uint16_t BoneIndex;
+
+	// BW1W120 007acdf0 BW1M119 0100d7c0 (LHCombined Release)
+	int GetBoneIndex();
+	// BW1W120 007ace00 BW1M119 inlined
+	int GetVertexCount();
 };
 static_assert(sizeof(LH3DVertexGroup) == 0x4, "Data type is of wrong size");
 

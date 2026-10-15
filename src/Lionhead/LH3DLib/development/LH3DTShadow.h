@@ -12,6 +12,8 @@ struct Vertex3D;
 
 // The size of the shadow texture, halved for low resolution textures.
 #define LH3D_T_SHADOW_SIZE 256
+// The width and height of the alpha pattern g_bitmap points at.
+#define LH3D_T_SHADOW_BITMAP_SIZE 64
 
 // Renders object shadows into a texture, one scan line at a time.
 struct LH3DTShadow
@@ -28,8 +30,12 @@ struct LH3DTShadow
 		float    MaxV; /* 0x18 */
 	};
 
+	// BW1W120 00c398ec BW1M119 011d172c (LHCombined Release)
+	static int g_pitch;
 	// BW1W120 00c398f0 BW1M119 011d1730 (LHCombined Release)
 	static float VMAX;
+	// BW1W120 00fa92d0 BW1M119 01340568 (LHCombined Release)
+	static uint8_t* g_buffer;
 	// BW1W120 00fa92d4 BW1M119 01340564 (LHCombined Release)
 	static uint8_t* g_bitmap;
 	// BW1W120 00fa76d0 BW1M119 0134056c (LHCombined Release)

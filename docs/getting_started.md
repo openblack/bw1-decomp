@@ -57,7 +57,7 @@ See [Dependencies](dependencies.md) first.
 
    **Intel Approximate Math Library (AM Library) → `orig/libs/amaths-2.0/`**
 
-   Needed: `amaths.lib`. The game links Intel's AM Library verbatim (SSE/SSE2
+   Needed: `amaths.lib` and its header `AMaths.h`. The game links Intel's AM Library verbatim (SSE/SSE2
    `sin`/`cos`/`sincos`/`tan`/`atan`/`exp`/`log`/`pow`), Release 2.0 (Oct/Nov
    2000). Intel's own download location is long gone; pull the package from
    the Wayback Machine:
@@ -66,11 +66,13 @@ See [Dependencies](dependencies.md) first.
       Pentium III devtools page:
       `https://web.archive.org/web/20060218064543id_/http://www.intel.com/design/pentiumiii/devtools/AMaths.zip`
       (the `id_` suffix returns the raw file instead of a replayed page).
-   2. Unzip it. It contains `AMaths.lib`, `AMaths.c`/`AMaths.h` (source, for
-      reference), `AMaths.pdf` (documentation), `MathTest.exe`/`.cpp` (Intel's
-      test harness), and license files.
+   2. Unzip it. It contains `AMaths.lib`, the header `AMaths.h`, `AMaths.c`
+      (source, for reference), `AMaths.pdf` (documentation),
+      `MathTest.exe`/`.cpp` (Intel's test harness), and license files.
    3. Copy `AMaths.lib` to `orig/libs/amaths-2.0/amaths.lib`. As with the MSVC
       libs, the filename must be lowercase to match the config key.
+   4. Copy `AMaths.h` to `orig/libs/amaths-2.0/AMaths.h`, keeping its name as
+      it is: `LH3DP3.cpp` includes it.
 
    **Intel C++ 5.0 `libircmt.lib` → `orig/libs/icc-5.0.115/`** (BW1W110/BW1W120/BW1W130)
 

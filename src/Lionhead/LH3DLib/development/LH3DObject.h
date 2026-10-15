@@ -73,6 +73,10 @@ public:
 	static bool32_t g_b_last_on_screen;
 	// BW1W120 00ea1af4 BW1M119 012b1ed4 (LHCombined Release)
 	static float g_last_distance;
+	// BW1W120 00c37ea0 BW1M119 011cfb50 (LHCombined Release)
+	static float g_last_radius;
+	// BW1W120 00ea1ae8 BW1M119 012b1ee0 (LHCombined Release)
+	static LH3DObject* g_current_object_in_draw;
 
 	// Virtual functions
 
