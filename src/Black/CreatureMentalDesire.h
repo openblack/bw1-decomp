@@ -5,6 +5,7 @@
 #include <re_common.h> /* For ARRAY_SIZE, bool32_t */
 #include <stdint.h>    /* For uint32_t */
 #include <string.h>    /* For memcpy */
+#include <wchar.h>     /* For wchar_t */
 
 #include <chlasm/Enum.h> /* For enum CREATURE_DESIRES, NUM_CREATURE_DESIRES */
 
@@ -125,20 +126,22 @@ public:
 	void InitialiseSources();
 	// BW1W120 004de370 BW1M119 012617a0
 	CreatureDesireSource* GetSource(CREATURE_DESIRE_SOURCE source);
-	// BW1W120 inlined BW1M119 012614c0
+	// BW1W120 004de3a0 BW1M119 null
+	float GetIncrementFromSource(CREATURE_DESIRE_SOURCE source);
+	// BW1W120 004de3c0 BW1M119 012614c0
 	float GetOverallThresholdChange(CREATURE_DESIRES desire);
 	// BW1W120 004de410 BW1M119 01261330
-	char* GetTextSummarisingAttitudeToDesire(CREATURE_DESIRES desire);
+	wchar_t* GetTextSummarisingAttitudeToDesire(CREATURE_DESIRES desire);
 	// BW1W120 004de550 BW1M119 01261200
 	float GetIncrementFromSources(CREATURE_DESIRES desire);
 	// BW1W120 004de5d0 BW1M119 01261130
-	uint32_t GetDominantSource(unsigned long desire);
+	CREATURE_DESIRE_SOURCE GetDominantSource(unsigned long desire);
 	// BW1W120 004de620 BW1M119 01260fe0
 	void UpdateSources();
 	// BW1W120 004de6c0 BW1M119 01260ee0
 	void SetSource(CREATURE_DESIRE_SOURCE source, float value);
 	// BW1W120 004de730 BW1M119 01260e20
-	void ChangeSource(CREATURE_DESIRE_SOURCE param_1, float param_2);
+	void ChangeSource(CREATURE_DESIRE_SOURCE source, float change);
 	// BW1W120 004de780 BW1M119 01260d40
 	void MakeAllSourcesMaximum(CREATURE_DESIRES desire);
 	// BW1W120 004de7c0 BW1M119 01260c00
@@ -267,14 +270,22 @@ public:
 class CreatureDesireSourceTable : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0x94];
+	CREATURE_DESIRES Desire;
+	bool32_t         ClearedWhenDesireIsSatisfied;
+	float            Decay;
+	float            InitialValueVariation;
+	float            ThresholdVariation;
+	char             Name[0x40];
+	char             ShortName[0x40];
 
 	// Override methods
 
-	// BW1W120 004dd1f0 BW1M119 01260ad0
-	virtual ~CreatureDesireSourceTable();
 	// BW1W120 004dd180 BW1M119 01262e80
-	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = ARRAY_SIZE(Table);
+		return Table;
+	}
 
 	// Static data
 
@@ -287,8 +298,9 @@ public:
 	static CreatureDesireSourceTable* GetTable() { return Table; }
 
 	// TODO(#377): The original declared this class in CreatureMentalDesireSource.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(Desire, ShortName)
 	INFO_ROOT_LOADERS("CreatureMentalDesireSource.h", 16)
 };
+static_assert(sizeof(CreatureDesireSourceTable) == 0xa4, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_DESIRE_INCLUDED_H */

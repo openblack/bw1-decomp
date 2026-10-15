@@ -1042,6 +1042,90 @@ public:
 	bool32_t CanCreatureBeFrightened();
 	// BW1W120 004df1c0 BW1M119 015eb020
 	bool32_t IsCreatureNearHome();
+	// BW1W120 004de8e0 BW1M119 01264190
+	float GetHungerSourceFromEnergy();
+	// BW1W120 004de8f0 BW1M119 01264110
+	void SetEnergyFromHungerSource(float value);
+	// BW1W120 004de940 BW1M119 012640c0
+	float GetPooSourceFromAmountOfPoo();
+	// BW1W120 004de950 BW1M119 01264070
+	void SetAmountOfPooFromPooSource(float value);
+	// BW1W120 004de960 BW1M119 01264020
+	float GetTirednessSourceFromExhaustion();
+	// BW1W120 004de970 BW1M119 01263f90
+	float GetTirednessSourceFromNightTime();
+	// BW1W120 004de990 BW1M119 01263f40
+	void SetExhaustionFromTirednessSource(float value);
+	// BW1W120 004de9a0 BW1M119 01263ef0
+	float GetThirstSourceFromDehydration();
+	// BW1W120 004de9b0 BW1M119 01263ea0
+	void SetDehydrationFromThirstSource(float value);
+	// BW1W120 004de9c0 BW1M119 01263e20
+	float GetRestoreHealthSourceFromLife();
+	// BW1W120 004de9d0 BW1M119 01263dc0
+	float GetSadnessSource();
+	// BW1W120 004de9f0 BW1M119 01263d40
+	void SetLifeFromRestoreHealthSource(float value);
+	// BW1W120 004dea10 BW1M119 01263c80
+	float GetAttractPlayerSourceFromLoneliness();
+	// BW1W120 004dea80 BW1M119 01263bc0
+	void SetLonelinessFromAttractPlayerSource(float value);
+	// BW1W120 004dead0 BW1M119 01263b00
+	float GetAttractPlayerSourceFromLackOfInteraction();
+	// BW1W120 004deb40 BW1M119 01263a30
+	void SetAmountOfInteractionFromAttractPlayerSource(float value);
+	// BW1W120 004deb90 BW1M119 012639a0
+	float GetManifestStateSourceFromUnsatisfiedDesires();
+	// BW1W120 004debd0 BW1M119 01263920
+	float GetWarmerSourceFromPhysicalWarmth();
+	// BW1W120 004dec10 BW1M119 012638a0
+	float GetColderSourceFromPhysicalWarmth();
+	// BW1W120 004dec50 BW1M119 01263840
+	float GetScratchSourceFromPhysicalItchiness();
+	// BW1W120 004dec60 BW1M119 012637c0
+	float GetRunAwayFromPlayerSource();
+	// BW1W120 004deca0 BW1M119 01263700
+	float GetGoHomeSource();
+	// BW1W120 004ded00 BW1M119 01263650
+	float GetHangAroundAtHomeSource();
+	// BW1W120 004ded60 BW1M119 012635d0
+	float GetUrgeToGetHigh();
+	// BW1W120 004deda0 BW1M119 01263590
+	void SetUrgeToGetHigh(float value);
+	// BW1W120 004dedb0 BW1M119 01263520
+	float GetSourceForCraziness();
+	// BW1W120 004dede0 BW1M119 01263440
+	float GetSourceForMissFriend();
+	// BW1W120 004dee60 BW1M119 01263320
+	float GetHowInterestingPlayerIsBeing();
+	// BW1W120 004deef0 BW1M119 012632c0
+	void SetHowInterestingPlayerIsBeing(float value);
+	// BW1W120 004def10 BW1M119 01263270
+	float GetInnateNicenessSource();
+	// BW1W120 004def20 BW1M119 01263210
+	float GetDesireToImpressFromVillagersWhoNeedIt();
+	// BW1W120 004def30 BW1M119 012631c0
+	float GetInnateAggressionSource();
+	// BW1W120 004def40 BW1M119 01263170
+	float GetInnateLethargySource();
+	// BW1W120 004def50 BW1M119 01263120
+	float GetInnateFriendlinessSource();
+	// BW1W120 004def60 BW1M119 012630d0
+	float GetInnateCommunicativenessSource();
+	// BW1W120 004def70 BW1M119 01263080
+	void SetInnateNicenessSource(float value);
+	// BW1W120 004def90 BW1M119 01263030
+	void SetInnateAggressionSource(float value);
+	// BW1W120 004defb0 BW1M119 01262fe0
+	void SetInnateLethargySource(float value);
+	// BW1W120 004defd0 BW1M119 01262f90
+	void SetInnateFriendlinessSource(float value);
+	// BW1W120 004deff0 BW1M119 01262f40
+	void SetInnateCommunicativenessSource(float value);
+	// BW1W120 004f6930 BW1M119 0128d940
+	void ScriptTurnOffAllDesires();
+	// BW1W120 004f78c0 BW1M119 0128e310
+	static float SigmoidThreshold(float threshold, float value);
 };
 
 class Creed : public MobileObject

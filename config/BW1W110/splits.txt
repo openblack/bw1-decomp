@@ -483,11 +483,11 @@ Black/CreatureMentalDesire.cpp:
 	.bss        start:0x00C731D8 end:0x00C76CC8
 
 Black/CreatureMentalDesireSource.cpp:
-	.text       start:0x004DBC50 end:0x004DDCF0
-	.rdata      start:0x008BFFAC end:0x008C0070
-	.CRT$XCU    start:0x009B6370 end:0x009B639C align:4
-	.data       start:0x00BCEB20 end:0x00BCEEA8
-	.bss        start:0x00C76CC8 end:0x00C7CA60
+	.text       start:0x004DBC50 end:0x004DD3C0
+	.rdata      start:0x008BFFAC end:0x008C0050
+	.CRT$XCU    start:0x009B6370 end:0x009B638C align:4
+	.data       start:0x00BCEB20 end:0x00BCEBD4
+	.bss        start:0x00C76CC8 end:0x00C7CA50
 
 Black/CreatureMentalExploration.cpp:
 	.text       start:0x004DDCF0 end:0x004DECB0
