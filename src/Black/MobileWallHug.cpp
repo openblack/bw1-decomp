@@ -128,7 +128,7 @@ inline CircleHugStateInfoT::performance CircleHugStateInfoT::evaluate(MobileWall
 	villager->goal = mwh->goal;
 	villager->step.Init(mwh->step.x, mwh->step.z, mwh->step.altitude);
 	villager->GameAngle = mwh->GameAngle;
-	villager->SetSpeed(mwh->speed * 4, 1);
+	villager->SetSpeed(mwh->speed * 4, true);
 
 	performance result;
 	if (swapped)
@@ -522,7 +522,7 @@ int MobileWallHug::MoveToObjectPos()
 			{
 				speedInMetres = targetSpeed;
 			}
-			SetSpeedInMetres(speedInMetres, 0);
+			SetSpeedInMetres(speedInMetres, false);
 		}
 		goal = pos;
 #if !defined(VERSION_BW1W100)
@@ -917,7 +917,7 @@ float MobileWallHug::GetSpeedInMetres() const
 	return GUtils::ConvertWholeDistanceToMeters(speed);
 }
 
-void MobileWallHug::SetSpeedInMetres(float speed_in_metres, int scale_speed)
+void MobileWallHug::SetSpeedInMetres(float speed_in_metres, bool32_t scale_speed)
 {
 	SetSpeed(GUtils::ConvertMetersToWholeDistance(speed_in_metres));
 }

@@ -81,7 +81,7 @@ bool32_t Villager::ShepherdMoveFlockToWater()
 			((uint16_t*)&TargetThing)[1] = VILLAGER_STATE_SHEPHERD_MOVE_FLOCK_BACK;
 			SetupMoveToWithHug(waterPos, VILLAGER_STATE_SHEPHERD_WAIT_FOR_FLOCK);
 			Living* animal = my_flock->Members.GetFirst();
-			SetSpeed(animal->speed, 0);
+			SetSpeed(animal->speed, false);
 			SetStateAnim();
 			return true;
 		}
@@ -208,7 +208,7 @@ bool32_t Villager::ShepherdMoveFlockBack()
 		my_flock->SetDomainCentrePos(my_flock->SavedDomainCentre);
 		SetupMoveToWithHug(my_flock->SavedDomainCentre, VILLAGER_STATE_SHEPHERD_RELEASES_CONTROL_OF_FLOCK);
 		Living* animal = my_flock->Members.GetFirst();
-		SetSpeed(animal->speed, 0);
+		SetSpeed(animal->speed, false);
 		SetStateAnim();
 		return 1;
 	}
@@ -292,7 +292,7 @@ bool32_t Villager::ShepherdCheckAnimalForSlaughter()
 				((int16_t*)&TargetThing)[0] = 5;
 				SetupMoveToWithHug(doorPos, VILLAGER_STATE_SHEPHERD_SLAUGHTER_ANIMAL);
 			}
-			SetSpeed(animal->speed, 0);
+			SetSpeed(animal->speed, false);
 			SetStateAnim();
 			return 1;
 		}

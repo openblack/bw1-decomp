@@ -190,7 +190,7 @@ public:
 	// BW1W120 00570220 BW1M119 01168c00
 	virtual float GetSpeedInMetres() const;
 	// BW1W120 00570210 BW1M119 016d59d4
-	virtual void SetSpeedInMetres(float speed, int scale);
+	virtual void SetSpeedInMetres(float speed_in_metres, bool32_t scale_speed);
 	// BW1W120 00570230 BW1M119 01105840
 	virtual float GetRunningSpeedInMetres();
 	// BW1W120 005702b0 BW1M119 01435340
@@ -656,7 +656,7 @@ public:
 	// BW1W120 005701c0 BW1M119 01381500
 	virtual bool32_t CanBeThrownByPlayer();
 	// BW1W120 00402460 BW1M119 01553e40
-	virtual void SetSkeleton(int index) {}
+	virtual void SetSkeleton(bool32_t skeleton) {}
 	// BW1W120 00402470 BW1M119 0107d710
 	virtual bool32_t IsSpellSeed() { return false; }
 	// BW1W120 00402480 BW1M119 010a7c40

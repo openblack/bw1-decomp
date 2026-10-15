@@ -114,7 +114,7 @@ struct GUtils
 	// BW1W120 0074ce10 BW1M119 012f8450
 	static int FastDistance(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 0074ecc0 BW1M119 010f1390
-	static void GetMidPoint(MapCoords& param_1, MapCoords& param_2, float param_3);
+	static MapCoords GetMidPoint(MapCoords& from, MapCoords& to, float distance);
 	// BW1W120 0074dc30 BW1M119 015a09e0
 	static uint32_t ConvertAngle3DToGame(float param_1);
 	// BW1W120 0074cf30 BW1M119 013d2e80

@@ -94,7 +94,7 @@ public:
 	// BW1W120 0060c070 BW1M119 01034b30
 	virtual float GetSpeedInMetres() const;
 	// BW1W120 0060c080 BW1M119 013cb2b0
-	virtual void SetSpeedInMetres(float speed_in_metres, int scale_speed);
+	virtual void SetSpeedInMetres(float speed_in_metres, bool32_t scale_speed);
 	// BW1W120 0060c0b0 BW1M119 013cb240
 	virtual float GetRunningSpeedInMetres();
 	// BW1W120 0060c0d0 BW1M119 013cb1d0

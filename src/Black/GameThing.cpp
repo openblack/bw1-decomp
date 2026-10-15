@@ -293,7 +293,7 @@ SCRIPT_OBJECT_TYPE GameThingWithPos::GetScriptObjectType()
 	return SCRIPT_OBJECT_TYPE_NONE;
 }
 
-void GameThingWithPos::SetSpeedInMetres(float param_1, int param_2) {}
+void GameThingWithPos::SetSpeedInMetres(float speed_in_metres, bool32_t scale_speed) {}
 
 float GameThingWithPos::GetSpeedInMetres() const
 {

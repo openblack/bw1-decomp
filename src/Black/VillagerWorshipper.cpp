@@ -131,11 +131,11 @@ void Villager::SetGotoWorshipSpeed()
 	if (GetWorshipSite() != NULL)
 	{
 		float worshipSpeedMultiplier = GetWorshipSite()->GetWorshipSpeed() + 1.0f;
-		SetSpeed((int)(worshipSpeedMultiplier * speed), 1);
+		SetSpeed((int)(worshipSpeedMultiplier * speed), true);
 	}
 	else
 	{
-		SetSpeed((int)speed, 1);
+		SetSpeed((int)speed, true);
 	}
 }
 
@@ -290,7 +290,8 @@ bool32_t Villager::ExitAtWorshipSite(unsigned char state)
 
 bool32_t Villager::ExitGetFoodAtWorship(unsigned char state)
 {
-	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state) && GVillagerStateTableInfo::Infos[state].field_0xe8 == 0)
+	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state) &&
+	    GVillagerStateTableInfo::Infos[state].IsWorshipState == false)
 		RemoveVillagerFromWorshipSite();
 	return true;
 }
@@ -447,7 +448,7 @@ bool32_t Villager::StartWorshippingCreature(Creature* creature)
 		if (dance_group.Get() != NULL)
 		{
 			CalculateDancePosition(creature->Pos, &pos);
-			SetSpeed(((const GVillagerInfo*)info)->WalkingSpeed, 1);
+			SetSpeed(((const GVillagerInfo*)info)->WalkingSpeed, true);
 			return true;
 		}
 	}
@@ -484,7 +485,7 @@ int Villager::ReduceVillagerLifeByChant()
 				player = GetTown()->GetPlayer();
 			else
 				player = NULL;
-			VillagerDead(DEATH_REASON_CHANT, player, damage, 1);
+			VillagerDead(DEATH_REASON_CHANT, player, damage, true);
 			return VILLAGER_STATE_RESULT_DIED;
 		}
 	}

@@ -248,7 +248,7 @@ void WorshipSite::SetToZero()
 	ChantsUsed = 0.0f;
 	TotalChantsAvailable = 0.0f;
 	ChantStore = 0.0f;
-	field_0xf4 = 0.0f;
+	TotalSacrificeValue = 0.0f;
 	CollideData = NULL;
 }
 
@@ -1073,7 +1073,7 @@ bool32_t WorshipSite::Save(GameOSFile& file)
 		file.WriteSafe(IconList);
 		file.WriteArray(ResourcesOnTheWay, RESOURCE_TYPE_LAST);
 		file.WriteIt(ChantStore);
-		file.WriteIt(field_0xf4);
+		file.WriteIt(TotalSacrificeValue);
 		file.WriteIt(TotalChantsAvailable);
 		file.WriteIt(ChantsUsed);
 		file.WriteIt(ChantsRequested);
@@ -1112,7 +1112,7 @@ bool32_t WorshipSite::Load(GameOSFile& file)
 		file.ReadSafe(IconList);
 		file.ReadArray(ResourcesOnTheWay);
 		file.ReadIt(ChantStore);
-		file.ReadIt(field_0xf4);
+		file.ReadIt(TotalSacrificeValue);
 		file.ReadIt(TotalChantsAvailable);
 		file.ReadIt(ChantsUsed);
 		file.ReadIt(ChantsRequested);

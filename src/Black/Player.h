@@ -360,6 +360,8 @@ public:
 	void SavePlayerAlignment(unsigned long game_turn);
 	// BW1W120 0064d2d0 BW1M119 01497bc0
 	void LoadPlayerAlignment();
+	// BW1W120 inlined BW1M119 0106b9f0
+	GAlignment* GetAlignment() { return alignment; }
 	// BW1W120 0064d360 BW1M119 01497900
 	bool FindNearestPosInsideInfluence(const MapCoords& pos, MapCoords& nearest);
 	// BW1W120 0064d530 BW1M119 0105efd0

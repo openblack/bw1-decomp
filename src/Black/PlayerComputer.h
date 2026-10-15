@@ -93,7 +93,7 @@ public:
 	// BW1W120 00657cd0 BW1M119 014ae8f0
 	virtual void SaveExtraData(GameOSFile& param_1);
 	// BW1W120 0055e390 BW1M119 014b3480
-	virtual void SetSpeedInMetres(float speed_in_metres, int scale_speed) { SetSpeed(speed_in_metres); }
+	virtual void SetSpeedInMetres(float speed_in_metres, bool32_t scale_speed) { SetSpeed(speed_in_metres); }
 	// BW1W120 0055e3a0 BW1M119 014b34e0
 	virtual const char* GetText() { return GetDebugText(); }
 	// BW1W120 0055e3c0 BW1M119 014b3540

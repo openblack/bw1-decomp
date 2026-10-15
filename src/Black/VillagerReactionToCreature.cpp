@@ -303,11 +303,11 @@ bool32_t Villager::FleeingFromCreatureReaction()
 					{
 						return true;
 					}
-					SetSpeed(((const GMobileWallHugInfo*)info)->FleeingSpeed / 2, 1);
+					SetSpeed(((const GMobileWallHugInfo*)info)->FleeingSpeed / 2, true);
 					SetupMoveToCreatureReaction(destination, VILLAGER_STATE_FLEEING_FROM_CREATURE_REACTION);
 					return true;
 				}
-				SetSpeed(((const GMobileWallHugInfo*)info)->FleeingSpeed, 1);
+				SetSpeed(((const GMobileWallHugInfo*)info)->FleeingSpeed, true);
 				return true;
 			}
 			UpdateAttitudeToCreature();
