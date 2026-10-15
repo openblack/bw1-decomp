@@ -28,74 +28,102 @@
 #include "VillagerStateTableInfo.h"
 
 char AttributeAllegiance::ValueNames[ALLEGIANCE_LAST][64] = {
-	"Friendly",
-	"Enemy",
-	"Ally",
+	"Friendly", //
+	"Enemy",    //
+	"Ally",     //
 };
 
 char AttributeOrigin::ValueNames[ORIGIN_LAST][64] = {
-	"Natural",
-	"Man-made",
-	"Magic",
+	"Natural",  //
+	"Man-made", //
+	"Magic",    //
 };
 
 char AttributeLife::ValueNames[LIFE_LAST][64] = {
-	"Low",
-	"High",
+	"Low",  //
+	"High", //
 };
 
 char AttributeTribe::ValueNames[TRIBE_TYPE_LAST][64] = {
-	"Celtic", "African", "Aztec", "Japanese", "Indian", "Egyptian", "Greek", "Norse", "Tibetan",
+	"Celtic",   //
+	"African",  //
+	"Aztec",    //
+	"Japanese", //
+	"Indian",   //
+	"Egyptian", //
+	"Greek",    //
+	"Norse",    //
+	"Tibetan",  //
 };
 
 char AttributeTownReligiousBeliefInYou::ValueNames[TOWN_BELIEF_LAST][64] = {
-	"VeryLow",
-	"Low",
-	"Medium",
-	"High",
+	"VeryLow", //
+	"Low",     //
+	"Medium",  //
+	"High",    //
 };
 
 char AttributeTownSize::ValueNames[TOWN_SIZE_LAST][64] = {
-	"Small",
-	"Medium",
-	"Large",
+	"Small",  //
+	"Medium", //
+	"Large",  //
 };
 
 char AttributeCreatureHeight::ValueNames[CREATURE_HEIGHT_LAST][64] = {
-	"VerySmall",
-	"Small",
-	"Medium",
-	"Big",
+	"VerySmall", //
+	"Small",     //
+	"Medium",    //
+	"Big",       //
 };
 
 char AttributeForestSize::ValueNames[FOREST_SIZE_LAST][64] = {
-	"Small",
-	"Medium",
-	"Large",
+	"Small",  //
+	"Medium", //
+	"Large",  //
 };
 
 char AttributeSex::ValueNames[SEX_TYPE_LAST][64] = {
-	"Male",
-	"Female",
+	"Male",   //
+	"Female", //
 };
 
 char AttributeMobileObjectType::ValueNames[MOBILE_OBJECT_INFO_LAST][64] = {
-	"Barrel", "Cart", "PotA", "PotB",    "Food",    "Poo",      "WaterJug",
-	"Arrow",  "Ball", "Cart", "FoodPot", "WoodPot", "FoodPile", "WoodPile",
+	"Barrel",   //
+	"Cart",     //
+	"PotA",     //
+	"PotB",     //
+	"Food",     //
+	"Poo",      //
+	"WaterJug", //
+	"Arrow",    //
+	"Ball",     //
+	"Cart",     //
+	"FoodPot",  //
+	"WoodPot",  //
+	"FoodPile", //
+	"WoodPile", //
 };
 
 char AttributeAbodeType::ValueNames[ABODE_TYPE_LAST][64] = {
-	"Invalid", "Living", "Invalid", "Windmill", "Totem", "Invalid", "Invalid", "Invalid", "StoragePit",
+	"Invalid",    //
+	"Living",     //
+	"Invalid",    //
+	"Windmill",   //
+	"Totem",      //
+	"Invalid",    //
+	"Invalid",    //
+	"Invalid",    //
+	"StoragePit", //
 };
 
 char AttributeAbodeBeingBuilt::ValueNames[ABODE_BEING_BUILT_LAST][64] = {
-	"IsBeingBuilt",
-	"IsNotBeingBuilt",
+	"IsBeingBuilt",    //
+	"IsNotBeingBuilt", //
 };
 
 char AttributeOnFire::ValueNames[ON_FIRE_LAST][64] = {
-	"IsOnFire",
-	"IsNotOnFire",
+	"IsOnFire",    //
+	"IsNotOnFire", //
 };
 
 void AttributeAllegiance::UpdateValue(GameThingWithPos* thing, GPlayer* player)
