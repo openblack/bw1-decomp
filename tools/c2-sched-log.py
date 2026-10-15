@@ -8,7 +8,7 @@ The tool patches a private copy of the unit's c2.dll so that its list scheduler
 prints every window, ready list and issued node to stderr. It then compiles the
 unit with its exact Ninja command and prints a readable schedule. The original
 compiler is never modified, and the patched copy produces byte-identical objects.
-Only the BW1W120 compiler (MSVC 6.5, c2.dll 8966) is supported.
+Only the BW1W120/BW1W130 compiler (MSVC 6.5, c2.dll 8966) is supported.
 
 Usage:
   # Every function of the unit with its window sizes (! = cut at 81 nodes)
@@ -291,7 +291,7 @@ def patch_c2(clang, original, patched):
     data = bytearray(Path(original).read_bytes())
     if hashlib.sha256(data).hexdigest() != C2_SHA256:
         raise RuntimeError(f"{original} is not c2.dll 8966. This tool supports only the MSVC 6.5 "
-                           "back end used for BW1W120; configure with `python configure.py --version BW1W120`.")
+                           "back end used for BW1W120 and BW1W130; configure with `python configure.py --version BW1W120`.")
     text = PE(bytes(data)).section_at(CAVE)
 
     def offset(va):

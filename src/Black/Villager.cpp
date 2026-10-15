@@ -166,7 +166,7 @@ void Villager::SetToZero()
 	town = NULL;
 	LastCheckTurn = 0;
 	mother = NULL;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	LastPlayerToInteract = NULL;
 #endif
 #ifndef VERSION_BW1W100
@@ -619,7 +619,7 @@ void Villager::VillagerDead(DEATH_REASON reason, GPlayer* player, float damage, 
 	{
 		return;
 	}
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	GetTown();
 	if (reason != DEATH_REASON_NONE && reason != DEATH_REASON_STARVING && reason != DEATH_REASON_ANIMAL &&
 	    reason != DEATH_REASON_CHANT && reason != DEATH_REASON_EXHAUSTION && reason != DEATH_REASON_OLD_AGE)
@@ -1220,14 +1220,14 @@ bool32_t Villager::DiscipleDecideWhatToDo()
 		}
 		break;
 	case VILLAGER_DISCIPLE_CHANGE_HOUSE: {
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		GPlayer* player = GetPlayer();
 #endif
 		SetVillagerDisciple(this, VILLAGER_DISCIPLE_NONE, 0);
 		if (CheckMoveHouse(GUtils::FindClosestAbode(Pos, TRIBE_TYPE_NONE, 0, 0, 0)) == true)
 		{
 			SetTopState(VILLAGER_STATE_GO_HOME_AND_CHANGE);
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 			if (player != GetPlayer())
 			{
 				GetPlayer()->AddToCondition(13, 1);

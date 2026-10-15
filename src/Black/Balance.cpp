@@ -196,7 +196,7 @@ char GInfoFileTable::InfoFiles[][GInfoFileTable::FILE_NAME_LENGTH] = {
 #ifndef VERSION_BW1W100
 	"scripts\\InfoScriptPatch1.txt",
 #endif
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	"scripts\\InfoScriptMultiplayer1.txt",
 #endif
 	"",

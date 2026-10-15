@@ -23,7 +23,7 @@ public:
 	uint8_t field_0x10[0x4];
 	bool    Showing;
 	uint8_t field_0x15[0x3f];
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	uint8_t field_0x54[4];
 #endif
 	int               PlayerIndex;
@@ -35,7 +35,7 @@ public:
 	bool              UploadErrorShown;      /* 0x61 */
 	END_GAME_RESULT   Result;
 	GameStatsPackage* Package;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	float PlayerScores[MAX_MULTIPLAYER_PLAYERS][4]; /* [player][?] */
 	float PlayerTotals[MAX_MULTIPLAYER_PLAYERS];    /* [player]; sum of that player's PlayerScores row */
 #endif
@@ -44,7 +44,7 @@ public:
 	                GameStatsPackage* package)
 	{
 		DialogBoxBase::Hide();
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		for (int i = 0; i < MAX_MULTIPLAYER_PLAYERS; i++)
 		{
 			memset(PlayerScores[i], 0, sizeof(PlayerScores[i]));

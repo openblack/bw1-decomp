@@ -208,7 +208,7 @@ public:
 	uint8_t          field_0x599d;
 	uint8_t          field_0x599e;
 	uint8_t          field_0x599f;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	uint32_t MultiplayerTimeLimit;
 #endif
 	uint32_t               field_0x59a4;

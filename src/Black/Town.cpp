@@ -1693,7 +1693,7 @@ void Town::SetToZero()
 {
 	NumVillagersOnWayToWorshipSite = 0;
 	worship_percentage = 0.0f;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	CompleteNewTownBuilt = false;
 #endif
 	WorshipCount = 0;

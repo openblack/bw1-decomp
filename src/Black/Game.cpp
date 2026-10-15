@@ -186,7 +186,7 @@ static_assert(offsetof(ValueSpinner, point) == 8, "ValueSpinner position offset 
 static_assert(offsetof(VillagerName, next) == 0x460, "VillagerName link offset is incorrect");
 static_assert(offsetof(TempleRoom, name) == 4, "TempleRoom vptr is missing");
 static_assert(offsetof(GScript, FocusPos) == 0x40, "Script timer fields changed its layout");
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(offsetof(GGame, setup) == 0x205a58, "GGame setup offset is incorrect");
 static_assert(offsetof(GGame, PlayerIndex) == 0x205a59, "GGame player index offset is incorrect");
 static_assert(offsetof(GPlayer, Conditions) == 0xf8, "GPlayer condition map offset is incorrect");
@@ -199,7 +199,7 @@ static_assert(offsetof(GPlayer, type) == 0xf8, "GPlayer layout is incorrect");
 static_assert(offsetof(ChannelBox, ConditionEnabled) == 0xac4, "ChannelBox condition offset is incorrect");
 static_assert(sizeof(ChannelBox) == 0xad4, "ChannelBox size is incorrect");
 static_assert(offsetof(MPFEData, ActiveDialog) == 0xa64, "MPFEData dialog offset is incorrect");
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(offsetof(MPFEData, Conditions) == 0x15d4, "MPFEData condition offset is incorrect");
 #endif
 
@@ -409,7 +409,7 @@ bool32_t GGame::Init()
 		}
 		_unlink("oos.txt");
 		_unlink("oos.lnd");
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 		MultiplayerTimeLimit *= 600;
 		for (GPlayer* player = GetNextActivePlayer(NULL); player; player = GetNextActivePlayer(player))
 		{
@@ -848,7 +848,7 @@ uint32_t GGame::InitOneTimeOnly()
 	{
 		internetOptions = 2;
 	}
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	MultiplayerTimeLimit = 30;
 #endif
 	Report3D__FPCce("LHCheckForInternetConnection\n");
@@ -1228,7 +1228,7 @@ bool32_t GGame::Close()
 {
 	ClearMap();
 	climate = NULL;
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	MultiplayerTimeLimit = 30;
 #endif
 	GameThing::ProcessDeadList(1);
@@ -1449,7 +1449,7 @@ GestureSystem::GestureSystem()
 	field_0xc94 = 1;
 }
 static_assert(sizeof(GPacket) == 0x110, "GPacket size is incorrect");
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(offsetof(GGame, Packet) == 0x205a60, "GPacket offset is incorrect");
 static_assert(offsetof(GGame, field_0x5978) == 0x5978, "Packet length offset is incorrect");
 static_assert(offsetof(GGame, VideoPlayer) == 0x250188, "Video player offset is incorrect");
@@ -1464,7 +1464,7 @@ static_assert(offsetof(GGame, VideoPlayer) == 0x24c234, "Video player offset is 
 #endif
 static_assert(sizeof(GNetwork) == 0x30, "GNetwork size is incorrect");
 static_assert(sizeof(GTerrainMap) == 0x4a130, "GTerrainMap size is incorrect");
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(sizeof(GGame) == 0x250544, "GGame size is incorrect");
 #elif defined(VERSION_BW1W110)
 static_assert(sizeof(GGame) == 0x24c600, "GGame size is incorrect");
@@ -1480,7 +1480,7 @@ static_assert(sizeof(Settings) == 0x104, "Settings size is incorrect");
 static_assert(offsetof(CreatureDanceLineInput, Analysis) == 0x28, "Line-input prefix offset is incorrect");
 static_assert(offsetof(Dance, next) == 0xec, "Dance link offset is incorrect");
 static_assert(sizeof(Dance) == 0x12c, "Dance size is incorrect");
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(offsetof(GGame, field_0x59ac) == 0x59ac, "Game start-time offset is incorrect");
 #else
 static_assert(offsetof(GGame, field_0x59ac) == 0x1a68, "Game start-time offset is incorrect");
@@ -1499,7 +1499,7 @@ static_assert(offsetof(GDebug, CellBoxes) == 0x2d2a0, "GDebug CellBoxes offset i
 static_assert(sizeof(GDebug) == 0x2d2a8, "GDebug size is incorrect");
 static_assert(offsetof(GPlayer, interfaces) == 0x14, "GPlayer interfaces offset is incorrect");
 static_assert(offsetof(GGame, players) == 0x18, "GGame players offset is incorrect");
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(sizeof(GPlayer) == 0xa60, "GPlayer stride is incorrect");
 static_assert(offsetof(GPlayer, type) == 0x8e0, "GPlayer type offset is incorrect");
 static_assert(offsetof(GPlayer, towns) == 0xa50, "GPlayer towns offset is incorrect");
@@ -1524,7 +1524,7 @@ static_assert(offsetof(GGame, camera) == 0x24c36c, "GGame camera offset is incor
 #endif
 #endif
 static_assert(offsetof(Town, ID) == 0x5b4, "Town ID offset is incorrect");
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(offsetof(Town, next) == 0x75c, "Town next offset is incorrect");
 static_assert(offsetof(GGame, field_0x205a5c) == 0x205a5c, "GGame serialized byte offset is incorrect");
 #elif defined(VERSION_BW1W110)
@@ -1536,7 +1536,7 @@ static_assert(offsetof(GGame, field_0x205a5c) == 0x201b18, "GGame serialized byt
 #endif
 static_assert(sizeof(CMouse) == 4, "CMouse size is incorrect");
 static_assert(offsetof(GCameraEditor, field_0x10) == 0x10, "GCameraEditor flag offset is incorrect");
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 static_assert(offsetof(GGame, field_0x205ba0) == 0x205ba0, "GGame serialized word offset is incorrect");
 static_assert(offsetof(GGame, script_creature_curse) == 0x250084, "GGame curse offset is incorrect");
 static_assert(offsetof(GGame, Mouse) == 0x2502b8, "GGame mouse offset is incorrect");

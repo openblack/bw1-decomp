@@ -2,8 +2,8 @@
 
 This note records how the back end of the project compiler decides which inline functions get
 expanded. It is derived from decompiling `build/compilers/MSVC/6.5/c2.dll` (the 8966 / Processor
-Pack back end that builds BW1W120) in Ghidra and checking the result against compiled output.
-Use it when a target function inlines a different subset of calls than our build does.
+Pack back end that builds BW1W120 and BW1W130) in Ghidra and checking the result against compiled
+output. Use it when a target function inlines a different subset of calls than our build does.
 
 Confidence markers used below:
 

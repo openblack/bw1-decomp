@@ -139,7 +139,7 @@ public:
 class Living : public MobileWallHug
 {
 public:
-#ifndef VERSION_BW1W120
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 	// BW1W120 null BW1M119 01730978
 	static void* ReactionFunctionArray[0x668];
 #endif

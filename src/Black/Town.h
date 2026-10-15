@@ -127,7 +127,7 @@ public:
 	// lower there.
 	int ZeroBaseInfluence;
 #endif
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	// Absent from BW1W110 and BW1W100: ZeroBaseInfluence keeps its offset in BW1W110 while TemporaryResourceStorePots and every
 	// later member sit 4 bytes lower.
 	bool32_t CompleteNewTownBuilt;
