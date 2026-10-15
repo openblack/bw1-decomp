@@ -18,10 +18,13 @@ class GameThingWithPos;
 struct MapCoords;
 class Object;
 
+// Deaths after which ProcessNewDeath stops advancing the graveyard's status.
+#define GRAVEYARD_MAX_NUM_DEATHS 100.0f
+
 class Graveyard : public Abode
 {
 public:
-	uint32_t field_0xc4;
+	uint32_t NumDeaths; /* 0xc4 */
 
 	// Override methods
 

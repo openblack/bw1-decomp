@@ -550,12 +550,11 @@ Black/CreatureSubActions.cpp:
 
 Black/CreatureWhatToDoNext.cpp:
 	.rdata      start:0x008104A8 end:0x008104C8
-	.data       start:0x00B14570 end:0x00B14574
 
 Black/Creche.cpp:
 	.text       start:0x004E9190 end:0x004E93B0
 	.rdata      start:0x008104C8 end:0x00810E00
-	.data       start:0x00B14578 end:0x00B14590
+	.data       start:0x00B14558 end:0x00B14590
 	.bss        start:0x00BCEE9C end:0x00BCEEC0
 
 Black/CreditText.cpp:
@@ -881,13 +880,13 @@ Black/GlobalGameList.cpp:
 
 Black/GraveYard.cpp:
 	.text       start:0x0055CD80 end:0x0055CFD0
-	.rdata      start:0x0083E1FC end:0x0083E204
-	.data       start:0x00B1CF00 end:0x00B1CF3C
+	.rdata      start:0x0083E1FC end:0x0083E208
+	.data       start:0x00B1CF00 end:0x00B1CF20
 
 Black/GroupBehaviour.cpp:
 	.text       start:0x0055CFD0 end:0x0055F690
-	.rdata      start:0x0083E204 end:0x0083E82C
-	.data       start:0x00B1CF3C end:0x00B1CF60
+	.rdata      start:0x0083E208 end:0x0083E82C
+	.data       start:0x00B1CF20 end:0x00B1CF60
 	.bss        start:0x00C27C20 end:0x00C2A2B8
 
 Black/GSFunctions.cpp:

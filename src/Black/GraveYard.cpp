@@ -13,15 +13,14 @@
 #define GRAVEYARD_FILE "C:\\dev\\MP\\Black\\GraveYard.cpp"
 #endif
 
-#define GRAVEYARD_MAX_NUM_DEATHS 100.0f
-
+// File-level constant: the original keeps it in this unit's .rdata.
 const float DeathsToStatus = 0.18f;
 
 Graveyard::Graveyard(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale,
                      float food, int wood)
 	: Abode(coords, info, town, y_angle, scale, food, wood)
 {
-	field_0xc4 = 0;
+	NumDeaths = 0;
 }
 
 void Graveyard::ToBeDeleted(int param_1)
@@ -86,11 +85,11 @@ void Graveyard::MakeFunctional()
 
 void Graveyard::ProcessNewDeath()
 {
-	if (GetTown() != NULL && IsFunctional() && field_0xc4 < GRAVEYARD_MAX_NUM_DEATHS)
+	if (GetTown() != NULL && IsFunctional() && NumDeaths < GRAVEYARD_MAX_NUM_DEATHS)
 	{
-		field_0xc4++;
-		int status = (int)(field_0xc4 * DeathsToStatus);
-		if (status == 0 && field_0xc4 != 0)
+		NumDeaths++;
+		int status = (int)(NumDeaths * DeathsToStatus);
+		if (status == 0 && NumDeaths != 0)
 		{
 			status++;
 		}
@@ -102,7 +101,7 @@ bool32_t Graveyard::Load(GameOSFile& file)
 {
 	if (Abode::Load(file))
 	{
-		file.ReadIt(field_0xc4);
+		file.ReadIt(NumDeaths);
 		return true;
 	}
 	return false;
@@ -112,7 +111,7 @@ bool32_t Graveyard::Save(GameOSFile& file)
 {
 	if (Abode::Save(file))
 	{
-		file.WriteIt(field_0xc4);
+		file.WriteIt(NumDeaths);
 		return true;
 	}
 	return false;
