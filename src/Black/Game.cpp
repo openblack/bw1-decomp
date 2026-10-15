@@ -1171,7 +1171,7 @@ void GGame::ClearVariables()
 	field_0x5318[0] = 0;
 	field_0x2502d0 = NULL;
 	field_0x2502d4 = NULL;
-	field_0x2502d8 = NULL;
+	TownDesireLogFile = NULL;
 	field_0x2502dc = NULL;
 	field_0x2502e0 = NULL;
 	field_0x2502e4 = NULL;
@@ -1198,7 +1198,7 @@ void GGame::ToBeDeleted(int delete_now)
 	delete SoundMap;
 	fclose(field_0x2502d0);
 	fclose(field_0x2502d4);
-	fclose(field_0x2502d8);
+	fclose(TownDesireLogFile);
 	fclose(field_0x2502dc);
 	fclose(field_0x2502e0);
 	fclose(field_0x2502e4);

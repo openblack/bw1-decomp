@@ -56,6 +56,8 @@ struct ValueSpinner : public DrawingObject
 	ValueSpinner* Update(float time);
 	// BW1W120 00833ae0 BW1M119 010c1ca0 (LHCombined Release)
 	void Init(const LHPoint& point, float value, TEXTTYPE_ENUM type);
+	// BW1W120 00833a00 BW1M119 010c1f00 (LHCombined Release)
+	void Init(const LHPoint& point, char16_t* text, const LH3DColor& color);
 	// BW1W120 00833b90 BW1M119 0103e9e0 (LHCombined Release)
 	void Draw();
 	// BW1W120 inlined BW1M119 0100b320

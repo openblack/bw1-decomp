@@ -83,7 +83,7 @@ void Villager::StopReacting()
 	{
 		if (IsDancing())
 		{
-			RemoveFromDance(1);
+			RemoveFromDance(true);
 		}
 	}
 	Living::StopReacting();
@@ -712,7 +712,7 @@ void Villager::SetupReactToTeleport(GameThingWithPos* thing, Reaction* reaction)
 	if (dynamic_cast<MagicTeleport*>(thing) != NULL)
 	{
 		MapCoords coords;
-		coords = GetFinalDestPos();
+		GetFinalDestPos(&coords);
 		int speedNow = this->speed;
 		this->ReactionObject = thing;
 		AddReaction(reaction, speedNow > ((const GMobileWallHugInfo*)this->info)->FastSpeedThreshold

@@ -369,14 +369,23 @@ analyses, name evidence and matching notes in the disassembly folder (see
 - Header guards use the `#ifndef BW1_DECOMP_<NAME>_INCLUDED_H` / `#define` / `#endif` pattern (e.g. `BW1_DECOMP_ABODE_INCLUDED_H`).
 - Use windef.h's `min`/`max` where the original did. `tools/minmax-scan.py --verify --apply <file>` finds
   hand-expanded selects and clamps and keeps only rewrites that compile byte-identical (`minmax-macros` skill).
-- No magic numbers. Name sizes, counts, lengths, ports, timeouts, ids and flags as enumerators
-  (an anonymous `enum { LH_... = n };` in the owning header, never new static data), use existing
+- No magic numbers. Name sizes, counts, lengths, ports, timeouts, ids and flags. A value that
+  belongs to a real enum is one of its enumerators: the number of entries in `TRIBE_TYPE` is
+  `TRIBE_TYPE_LAST`, not a separate constant. Any other standalone constant is a `#define` in the
+  owning header, never an anonymous `enum { ... }` and never new static data. Use existing
   enums and Win32 names (`INFINITE`, `WAIT_FAILED`, `THREAD_PRIORITY_*`), `sizeof`/`ARRAY_SIZE`
   for repeated sizes, hex for colours and base 10 for line numbers.
 - Full-register true/false values are `bool32_t` (returns, members, parameters, template helpers
   such as `LHLinkedList::Add`) with `true`/`false`, not `TRUE`/`FALSE`/`1`/`0`. It is `int`, so
   manglings do not change. Wide strings are `wchar_t`, not `char16_t` or `unsigned short`.
   `unsigned long` (`K`) and `uint32_t` (`I`) mangle differently: never swap them in signatures.
+- Declare each value as what it holds, then compare it in that type's own terms. A field, local,
+  parameter or return used only as a flag is `bool32_t`, tested directly or against `true`/`false`,
+  never `0`/`1`. A pointer is a pointer type compared with `NULL`, never a `uint32_t` cast back to a
+  pointer. An enum value has the enum type and is compared with enumerators. A cast inside a comparison
+  (`(uint8_t)GetTopState() != …`, `(uint32_t)NumAdults > …`) usually hides a wrong declaration: fix the
+  field, return or parameter type instead, and keep the cast only when codegen needs it. Naming a
+  `field_0x…` member includes giving it the right type.
 - Never use `__FILE__`, `__LINE__` or `#line`. For debug-new and logging calls define a TU-local
   `#define FILEPATH "C:\\dev\\MP\\..."` holding the binary's exact string and pass a base-10 line literal.
 - Boilerplate that recurs identically across modules is a shared macro, not per-file code
@@ -573,8 +582,8 @@ conflict with looser guidance above.
 - **Name anything used in a significant way** — field, function, enum value, flag, or
   parameter — from context: find what sets and reads it, then name it by its role. Fields
   that are only saved/loaded and never read may stay `field_0x…`, but say so in the PR.
-- **Placement.** Counts/sizes follow the file's existing convention (frequently `#define`
-  lists rather than anonymous enums); new enums go in the owning class's header.
+- **Placement.** Standalone counts/sizes are `#define`s in the owning header (no anonymous
+  enums); new named enums go in the owning class's header.
   `include/chlasm/*.h` comes from Creature Isle but is usable for Black & White; where its
   last enumerator is too large it needs `#ifdef VERSION_BW1WCI` guards.
 - **Watch include/link side effects.** A new `#include` in a shared header reaches every

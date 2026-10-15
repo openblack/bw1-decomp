@@ -75,6 +75,8 @@ public:
 	DesireSort* GetSortedDesire(uint32_t index);
 	// BW1W120 007471c0 BW1M119 015659b0
 	void SaveObject(LHOSFile& file, const MapCoords& offset);
+	// BW1W120 00747150 BW1M119 01086730
+	float CalculateAverageTownNeeds();
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INCLUDED_H */

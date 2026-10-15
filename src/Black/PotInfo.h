@@ -17,7 +17,10 @@ class GBaseInfo;
 class GPotInfo : public GMobileObjectInfo
 {
 public:
-	uint8_t field_0x114[0x30];
+	uint32_t      field_0x114;
+	RESOURCE_TYPE ResourceType; /* 0x118 */
+	uint32_t      MaxResource;  /* 0x11c */
+	uint8_t       field_0x120[0x24];
 
 	// Static data
 
@@ -43,7 +46,7 @@ public:
 	float GetResourceValue() const;
 
 	// TODO(#377): The original declared this class in Pot.h.
-	INFO_DATA_BLOCK(field_0x114, field_0x114)
+	INFO_DATA_BLOCK(field_0x114, field_0x120)
 	INFO_DERIVED_LOADERS(GMobileObjectInfo, "Pot.h", 23)
 };
 static_assert(sizeof(GPotInfo) == 0x144, "GPotInfo size is incorrect");

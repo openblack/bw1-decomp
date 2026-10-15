@@ -51,7 +51,7 @@ public:
 
 	// BW1W120 0071f1a0 BW1M119 0114f3c0
 	static SpecialVillager* Create(const MapCoords& coords, const GVillagerInfo* villager_info, uint32_t age,
-	                               bool skeleton, GSpecialVillagerInfo* info);
+	                               bool32_t skeleton, GSpecialVillagerInfo* info);
 
 	// Non-virtual methods
 

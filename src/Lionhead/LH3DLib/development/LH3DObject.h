@@ -160,7 +160,7 @@ public:
 	virtual bool32_t            IsHumanShadowed(); /* 0xc0 */
 	virtual void __fastcall     SetHumanShadowed(bool32_t human_shadowed);
 	virtual bool32_t            IsGlowing();
-	virtual void                SetIsGlowing(int param_1);
+	virtual void __fastcall     SetIsGlowing(bool32_t is_glowing);
 	virtual bool32_t            IsSuperSortedPolys(); /* 0xd0 */
 	virtual void                SetSuperSortedPolys(int param_1);
 	virtual bool32_t            IsFastBlending();

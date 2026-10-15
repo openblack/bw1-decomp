@@ -6,9 +6,10 @@
 
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 
-#include "BaseInfo.h"     /* For struct GBaseInfo */
-#include "MobileObject.h" /* For struct MobileObject */
-#include "InfoLoaders.h"  /* For INFO_DATA_BLOCK */
+#include "BaseInfo.h"          /* For struct GBaseInfo */
+#include "GameLandConstants.h" /* For GAME_NUM_CAMPAIGN_LANDS */
+#include "MobileObject.h"      /* For struct MobileObject */
+#include "InfoLoaders.h"       /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -98,7 +99,7 @@ class GRewardProgress : public GBaseInfo
 {
 public:
 	MAGIC_TYPE MagicType;
-	bool32_t   AvailableOnLand[6]; /* 0x14 */
+	bool32_t   AvailableOnLand[GAME_NUM_CAMPAIGN_LANDS]; /* 0x14 */
 
 	// BW1W120 00d55468
 	static GRewardProgress InfosGood[REWARD_INFO_PROGRESS_GOOD_LAST];

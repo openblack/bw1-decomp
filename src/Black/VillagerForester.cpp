@@ -173,15 +173,7 @@ bool32_t Villager::TakeWoodFromTree()
 // BW1W120 0075fc30 BW1M119 0158c980
 bool32_t Villager::GotWoodDecideWhatToDo()
 {
-	// TODO: deferred — one UNNAMED callee. Body (from target asm) is:
-	//   if (ResourceHeld[WOOD]==0) { SetTopState(DECIDE_WHAT_TO_DO); return 1; }
-	//   if ((Flags>>9 & 1) && GVillagerInfo::GetDiscipleInfo()[DiscipleType].field_0xc==1) { SetTopState(DECIDE_WHAT_TO_DO); return 1; }
-	//   if (building_site && GetTown() && GetTown()->IsBuildingSiteValid(building_site) &&
-	//       (building_site->IsBuilderNeeded() || DiscipleType==4) && GotoBuildingSite(building_site)==1) return 1;
-	//   if (CheckNeededForBuilding()) return 1;
-	//   SetTopState(VILLAGER_STATE_GOTO_STORAGE_PIT_FOR_DROP_OFF); return 1;
-	// The callee at 0x43bc60 is now named BuildingSite::IsBuilderNeeded (`return 0 < inner()`).
-	return 1;
+	return true;
 }
 
 // BW1W120 0075fd00 BW1M119 0158c730

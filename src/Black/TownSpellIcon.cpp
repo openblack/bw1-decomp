@@ -132,7 +132,7 @@ void TownStats::SetToZero()
 	TotalFood = 0;
 	TotalWood = 0;
 	TotalBuildingSiteCost = 0;
-	BuildingSiteCostSpent = 0;
+	NumWounded = 0;
 	NumMales = 0;
 	NumFemales = 0;
 	for (i = 0; i < VILLAGER_DISCIPLE_LAST; i++)

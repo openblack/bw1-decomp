@@ -6,8 +6,9 @@
 
 #include <chlasm/Enum.h> /* For VILLAGER_JOB_LAST */
 
-#include "ContainerInfo.h" /* For struct GContainerInfo */
-#include "InfoLoaders.h"   /* For INFO_DATA_BLOCK */
+#include "ContainerInfo.h"     /* For struct GContainerInfo */
+#include "GameLandConstants.h" /* For GAME_NUM_CAMPAIGN_LANDS */
+#include "InfoLoaders.h"       /* For INFO_DATA_BLOCK */
 
 // Forward Declares
 
@@ -20,7 +21,8 @@ class GTownInfo : public GContainerInfo
 public:
 	uint8_t  field_0x14[0x34];
 	uint32_t FemalePercentage;
-	uint8_t  field_0x4c[0x8];
+	uint32_t field_0x4c;
+	uint32_t MinTurnsBetweenAbodes;
 	uint32_t JobWeights[VILLAGER_JOB_LAST];
 	uint8_t  field_0x74[0x4];
 	float    BaseInfluence;
@@ -48,24 +50,19 @@ public:
 	uint8_t  field_0x130[0x8];
 	float    StoragePitGiveAlignment; /* 0x138 */
 	float    StoragePitTakeAlignment;
-	float    field_0x140;
-	float    field_0x144;
+	float    ChillOutRadius;
+	float    OutsideHouseDistance;
 	float    MaxDistanceThatVillagersWillGoToWorship;
 	float    field_0x14c;
-	uint32_t field_0x150;
+	uint32_t MinAdultsForLosingVillagersHelp;
 	float    field_0x154;
 	float    field_0x158;
 	float    field_0x15c;
 	float    DiscipleAlignmentChange;
 	float    field_0x164;
 	uint32_t field_0x168;
-	float    field_0x16c;
-	float    field_0x170;
-	float    field_0x174;
-	float    field_0x178;
-	float    field_0x17c;
-	float    field_0x180;
-	float    field_0x184;
+	float    SkirmishBeliefSpeedModifier;
+	float    LandBeliefSpeedModifier[GAME_NUM_CAMPAIGN_LANDS];
 	float    field_0x188;
 
 	// Static data

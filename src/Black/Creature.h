@@ -336,7 +336,7 @@ public:
 	// BW1W120 0047b160 BW1M119 011dc260
 	virtual void SetScale(float param_1);
 	// BW1W120 0047d810 BW1M119 011d6c80
-	virtual void SetSpeedInMetres(float param_1, int param_2);
+	virtual void SetSpeedInMetres(float speed_in_metres, bool32_t scale_speed);
 	// BW1W120 0047c630 BW1M119 011da0a0
 	virtual float GetRunningSpeedInMetres();
 	// BW1W120 0047c640 BW1M119 011da050
@@ -513,7 +513,7 @@ public:
 	// BW1W120 004753c0 BW1M119 011e5ef0
 	virtual MapCoords* GetDestPos();
 	// BW1W120 004753d0 BW1M119 011e5e70
-	virtual MapCoords* GetFinalDestPos(MapCoords* param_1);
+	virtual void GetFinalDestPos(MapCoords* out);
 	// BW1W120 004f0560 BW1M119 0127e040
 	virtual bool32_t DecideWhatToDo();
 	// BW1W120 0047b1a0 BW1M119 011dc1d0
@@ -525,7 +525,7 @@ public:
 	// BW1W120 00473f10 BW1M119 inlined
 	virtual int CallOutofAnimationFunction(uint8_t state);
 	// BW1W120 00473f40 BW1M119 inlined
-	virtual bool IsFinalState(uint8_t state);
+	virtual bool32_t IsFinalState(uint8_t state);
 	// BW1W120 00473f90 BW1M119 inlined
 	virtual void SetAnim(int anim);
 	// BW1W120 00473ef0 BW1M119 011ea1f0

@@ -11,8 +11,9 @@
 
 #include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer */
 
-#include "Living.h"       /* For struct Living */
-#include "LivingAction.h" /* For struct Living__StateTableEntry */
+#include "Living.h"           /* For struct Living */
+#include "LivingAction.h"     /* For struct Living__StateTableEntry */
+#include "LivingStateTable.h" /* For struct LivingStateTableEntry */
 
 // Forward Declares
 
@@ -262,7 +263,7 @@ public:
 	// BW1W120 00417830 BW1M119 01080ab0
 	virtual int CallOutofAnimationFunction(uint8_t state);
 	// BW1W120 0041b430 BW1M119 0116e200
-	virtual bool IsFinalState(uint8_t state);
+	virtual bool32_t IsFinalState(uint8_t state);
 	// BW1W120 00417fa0 BW1M119 01057730
 	virtual ANIM_LIST GetAnimId();
 	// BW1W120 0041a2c0 BW1M119 inlined
@@ -280,7 +281,7 @@ public:
 	// BW1W120 0041b100 BW1M119 inlined
 	virtual bool32_t IsStateExitFunctionSameAs(unsigned long state) const;
 	// BW1W120 0041b1c0 BW1M119 0116e740
-	virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
+	virtual void DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
 	// BW1W120 00419bc0 BW1M119 01170ad0
 	virtual bool IsInterestedInFoodObject(Object* param_1);
 	// BW1W120 0041a280 BW1M119 0116fe90
@@ -375,6 +376,9 @@ public:
 	Animal() { SetToZero(); }
 	// BW1W120 00416eb0 BW1M119 01175200
 	Animal(const MapCoords& coords, const GAnimalInfo* info, unsigned long age);
+
+	// BW1W120 00d12108
+	static LivingStateTableEntry<Animal> StateTable[ANIMAL_STATE_LAST_STATE];
 
 	// BW1W120 00417900 BW1M119 01175150
 	void SetToZero();

@@ -55,8 +55,8 @@ public:
 	float           AveageHeightOfAdult; /* 0x260 */
 	uint32_t        MaxFoodCarried;
 	uint32_t        MaxWoodCarried;
-	uint32_t        MinWoodToShowGraphic;
-	uint32_t        MinFoodToShowGraphic; /* 0x270 */
+	int             MinWoodToShowGraphic;
+	int             MinFoodToShowGraphic; /* 0x270 */
 	uint32_t        MaxTraderFoodCarried;
 	uint32_t        MaxTraderWoodCarried;
 	float           WoodUsedPerBuildCycle;
@@ -119,18 +119,26 @@ public:
 	static GVillagerInfo InfoList[VILLAGER_INFO_LAST];
 	// BW1W120 0099a1f8
 	static const DiscipleInfo DiscipleInfos[VILLAGER_DISCIPLE_LAST];
+	// BW1W120 00c234e4
+	static char* JobTextArray[VILLAGER_JOB_LAST + 1];
+	// BW1W120 00c23508
+	static char* VillagerNumberTextArray[VILLAGER_NUMBER_LAST + 1];
 
 	// Override methods
 
-	// BW1W120 0074f900 BW1M119 01574d70
-	virtual ~GVillagerInfo();
-	// BW1W120 0074f890 BW1M119 0157a1d0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 0074f880 BW1M119 0157a190
-	virtual MESH_LIST GetMesh() const;
+	virtual MESH_LIST GetMesh() const { return StdDetail; }
+	// BW1W120 0074f890 BW1M119 0157a1d0
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = VILLAGER_INFO_LAST;
+		return InfoList;
+	}
 
 	// Static methods
 
+	// BW1W120 00751130 BW1M119 null
+	static uint32_t GetMaxInfosPerTribe();
 	// BW1W120 007519e0 BW1M119 01576a80
 	static int GetInfoFromText(char* text);
 	// BW1W120 00752650 BW1M119 01574bc0
@@ -139,6 +147,11 @@ public:
 	static GVillagerInfo* GetInfo() { return InfoList; }
 	// BW1W120 inlined BW1M119 0101ffb0
 	static const DiscipleInfo* GetDiscipleInfo() { return DiscipleInfos; }
+
+	// Non-virtual methods
+
+	// BW1W120 00751aa0 BW1M119 inlined
+	char* GetVillagerNumberText() const;
 
 	// TODO(#377): The original declared this class in Villager.h.
 	// Out of line: LoadBinary at 0042e2a0, Load at 0042e190.

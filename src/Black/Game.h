@@ -12,18 +12,19 @@
 #include <Lionhead/LHLib/ver5.0/LHTimer.h> /* For LHTimer */
 #include <Lionhead/LHLib/ver5.0/LHMouse.h> /* For enum LH_MOUSE_EVENT_TYPE */
 
-#include "BindableAction.h"   /* For struct CMouse */
-#include "CreatureDatabase.h" /* For struct CreatureDatabase */
-#include "Data.h"             /* For struct GData */
-#include "GTPointer.h"        /* For GTPointer */
-#include "GameThing.h"        /* For struct GameThing */
-#include "GlobalGameLists.h"  /* For struct GlobalGameLists */
-#include "KeyBuffer.h"        /* For struct GKeyBuffer */
-#include "Landscape.h"        /* For struct GLandscape */
-#include "Language.h"         /* For struct GLanguage */
-#include "Map.h"              /* For struct GMap */
-#include "MapCoords.h"        /* For struct MapCoords */
-#include "Network.h"          /* For struct GNetwork */
+#include "BindableAction.h"    /* For struct CMouse */
+#include "CreatureDatabase.h"  /* For struct CreatureDatabase */
+#include "Data.h"              /* For struct GData */
+#include "GTPointer.h"         /* For GTPointer */
+#include "GameLandConstants.h" /* For GAME_LAND_NUMBER_PLAYGROUND */
+#include "GameThing.h"         /* For struct GameThing */
+#include "GlobalGameLists.h"   /* For struct GlobalGameLists */
+#include "KeyBuffer.h"         /* For struct GKeyBuffer */
+#include "Landscape.h"         /* For struct GLandscape */
+#include "Language.h"          /* For struct GLanguage */
+#include "Map.h"               /* For struct GMap */
+#include "MapCoords.h"         /* For struct MapCoords */
+#include "Network.h"           /* For struct GNetwork */
 #include "Packet.h"
 #include "PathCreator.h"         /* For struct PathCreator */
 #include "Player.h"              /* For enum PLAYER_NAME, struct GPlayer */
@@ -33,11 +34,7 @@
 #include "Setup.h"
 #include "TerrainMap.h" /* For struct GTerrainMap */
 
-enum
-{
-	GAME_LAND_NUMBER_PLAYGROUND = 6,
-	GAME_MILLISECONDS_PER_TURN = 100,
-};
+#define GAME_MILLISECONDS_PER_TURN 100
 
 enum GAME_VIEW_MODE
 {
@@ -307,7 +304,7 @@ public:
 	uint8_t               field_0x2502cf;
 	FILE*                 field_0x2502d0;
 	FILE*                 field_0x2502d4;
-	FILE*                 field_0x2502d8;
+	FILE*                 TownDesireLogFile;
 	FILE*                 field_0x2502dc;
 	FILE*                 field_0x2502e0;
 	FILE*                 field_0x2502e4;
