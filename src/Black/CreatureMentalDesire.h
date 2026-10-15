@@ -42,7 +42,7 @@ public:
 	CREATURE_DESIRES                    CheatDominantDesire;
 	uint32_t                            CheatDominantDesireTurns;
 	uint32_t                            CheatDominantDesireSeconds;
-	float                               field_0x704;
+	float                               DesireToImpressFromVillagersWhoNeedIt;
 
 	// Override methods
 

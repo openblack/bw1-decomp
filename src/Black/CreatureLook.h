@@ -6,13 +6,15 @@
 
 #include "MapCoords.h" /* For struct MapCoords */
 
+#define CREATURE_LOOK_PRIORITY_MOVING_OBJECT 0.5f
+
 struct CreatureLookState
 {
 	uint32_t         field_0x0;
 	uint32_t         field_0x4;
 	struct MapCoords coords;
 	uint32_t         GameTurn; /* 0x14 */
-	float            field_0x18;
+	float            Priority;
 	uint32_t         field_0x1c;
 	uint32_t         field_0x20;
 	uint32_t         field_0x24;

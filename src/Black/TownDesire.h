@@ -84,6 +84,8 @@ public:
 	void SaveObject(LHOSFile& file, const MapCoords& offset);
 	// BW1W120 00747150 BW1M119 01086730
 	float CalculateAverageTownNeeds();
+	// BW1W120 00745ea0 BW1M119 01567770
+	TOWN_DESIRE_INFO GetMostSignificantRawDesire(float minimum);
 };
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INCLUDED_H */
