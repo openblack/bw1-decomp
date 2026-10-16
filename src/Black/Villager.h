@@ -92,7 +92,7 @@ struct DiscipleInfo
 	bool32_t         ReactToDroppedByHand;
 	bool32_t         IsGlowing;
 	bool32_t         UsesNothingToDoState;
-	uint32_t         field_0x10;
+	bool32_t         CollectsWood;
 	TOWN_DESIRE_INFO desire_i_fulfil;
 	uint32_t         field_0x18;
 };
@@ -183,7 +183,7 @@ public:
 		};
 		struct
 		{
-			uint32_t       HideTurns; // GO_AND_HIDE_IN_NEARBY_BUILDING: elapsed hiding turns.
+			uint32_t       HideTurns; // GO_AND_HIDE_IN_NEARBY_BUILDING / LOOK_TO_SEE_IF_IT_IS_SAFE: turns spent.
 			JustWholeMapXZ HidePos;   // GO_AND_HIDE_IN_NEARBY_BUILDING: hiding place.
 		};
 	};
@@ -513,15 +513,15 @@ public:
 	// BW1W120 007528b0 BW1M119 015745c0
 	virtual void DebugShowTime(uint32_t time, uint8_t current, uint8_t destination);
 	// BW1W120 00764df0 BW1M119 01598700
-	virtual bool IsInterestedInFoodObject(Object* param_1);
+	virtual bool IsInterestedInFoodObject(Object* food);
 	// BW1W120 00764f60 BW1M119 01598410
-	virtual bool IsInterestedInWoodObject(Object* param_1);
+	virtual bool IsInterestedInWoodObject(Object* wood);
 	// BW1W120 00763390 BW1M119 01023dd0
 	virtual bool32_t IsAvailableForReaction(REACTION reaction);
 	// BW1W120 00763410 BW1M119 01011930
-	virtual bool32_t IsAvailableForBeliefButNotReaction(REACTION param_1);
+	virtual bool32_t IsAvailableForBeliefButNotReaction(REACTION reaction);
 	// BW1W120 007634c0 BW1M119 010071b0
-	virtual void UpdateHowImpressed(Reaction* param_1, int param_2);
+	virtual void UpdateHowImpressed(Reaction* reaction, int multiplier);
 	// BW1W120 00763440 BW1M119 inlined
 	virtual void AddReaction(Reaction* reaction, VILLAGER_STATES state);
 	// BW1W120 007637d0 BW1M119 0159ba30
@@ -535,19 +535,19 @@ public:
 	// BW1W120 00763ae0 BW1M119 0159b0e0
 	virtual void SetupLookAtNiceSpell(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00767630 BW1M119 0159db60
-	virtual void SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToCreature(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00765b70 BW1M119 015973d0
 	virtual void SetupReactToWood(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00763820 BW1M119 0159b750
 	virtual void SetupReactToMagicTree(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 007639d0 BW1M119 0159b240
-	virtual void SetupReactToFlyingObject(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFlyingObject(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00765540 BW1M119 01597b60
-	virtual void SetupReactToFire(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToFire(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00765c60 BW1M119 01596ff0
-	virtual void SetupReactToMagicShield(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToMagicShield(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00766010 BW1M119 01596b30
-	virtual void SetupReactToNewBuilding(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToNewBuilding(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00766e30 BW1M119 01594de0
 	virtual void SetupReactToFight(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00766250 BW1M119 015967f0
@@ -569,70 +569,70 @@ public:
 	// BW1W120 00763990 BW1M119 0159b390
 	virtual void SetupFleeFromPredator(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00766fd0 BW1M119 01594790
-	virtual void SetupReactToTownCelebration(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToTownCelebration(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 007672f0 BW1M119 015942a0
 	virtual void SetupReactToVillagerInHand(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00767490 BW1M119 01593e10
 	virtual void SetupReactToBurningObjectInHand(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 007674b0 BW1M119 01593cb0
-	virtual void SetupReactToMagicShieldStruck(GameThingWithPos* param_1, Reaction* param_2);
+	virtual void SetupReactToMagicShieldStruck(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 00767520 BW1M119 01593c20
 	virtual void SetupReactToMagicShieldDestroyed(GameThingWithPos* thing, Reaction* reaction);
 	// BW1W120 007676e0 BW1M119 0159d880
-	virtual uint8_t ReactToCreaturePriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToCreaturePriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00765260 BW1M119 01598070
-	virtual uint8_t ReactToFlyingObjectPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFlyingObjectPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00765610 BW1M119 01597830
-	virtual uint8_t ReactToFirePriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFirePriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00765bb0 BW1M119 01597250
-	virtual uint8_t ReactToMagicShieldPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToMagicShieldPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00766df0 BW1M119 01594e90
-	virtual uint8_t ReactToFightPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFightPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00766200 BW1M119 01596920
-	virtual uint8_t ReactToTeleportPriority(Reaction* reaction_1, Reaction* reaction_2);
+	virtual uint8_t ReactToTeleportPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00766440 BW1M119 01596330
-	virtual uint8_t ReactToDeathPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToDeathPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 007664b0 BW1M119 015960d0
-	virtual uint8_t ReactToDroppedByHandPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToDroppedByHandPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00766a10 BW1M119 01595670
-	virtual uint8_t ReactToFallingTreePriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToFallingTreePriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00766a50 BW1M119 01595550
-	virtual uint8_t ReactToCrowdPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToCrowdPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00767210 BW1M119 015944b0
-	virtual uint8_t ReactToBreederPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToBreederPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00767180 BW1M119 01594690
-	virtual uint8_t ReactToTownCelebrationPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToTownCelebrationPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00763850 BW1M119 0159b510
-	virtual uint8_t FleeFromPredatorPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t FleeFromPredatorPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00767320 BW1M119 01594130
-	virtual uint8_t ReactToVillagerInHandPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToVillagerInHandPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00767430 BW1M119 01593ed0
-	virtual uint8_t ReactToBurningObjectInHandPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToBurningObjectInHandPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00767540 BW1M119 01593a70
-	virtual uint8_t ReactToMagicShieldStruckPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToMagicShieldStruckPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 007675a0 BW1M119 015939f0
-	virtual uint8_t ReactToMagicShieldDestroyedPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToMagicShieldDestroyedPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 00763980 BW1M119 0159b490
-	virtual uint8_t ReactToScaffoldPriority(Reaction* param_1, Reaction* param_2);
+	virtual uint8_t ReactToScaffoldPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 007640a0 BW1M119 0159a610
-	virtual uint32_t NumGameTurnsToReactToPredatorFunction(GameThingWithPos* thing, uint32_t param_2, float param_3);
+	virtual uint32_t NumGameTurnsToReactToPredatorFunction(GameThingWithPos* thing, uint32_t reaction, float distance);
 	// BW1W120 007640e0 BW1M119 0159a520
-	virtual uint32_t NumGameTurnsBeforeReactingAgainToPredatorFunction(GameThingWithPos* param_1, uint32_t param_2,
-	                                                                   float param_3);
+	virtual uint32_t NumGameTurnsBeforeReactingAgainToPredatorFunction(GameThingWithPos* thing, uint32_t reaction,
+	                                                                   float distance);
 	// BW1W120 007648d0 BW1M119 01599220
-	virtual uint32_t StandardNumGameTurnsBeforeReactingToWoodAgainFunction(GameThingWithPos* param_1, uint32_t param_2,
-	                                                                       float param_3);
+	virtual uint32_t StandardNumGameTurnsBeforeReactingToWoodAgainFunction(GameThingWithPos* thing, uint32_t reaction,
+	                                                                       float distance);
 	// BW1W120 00764110 BW1M119 0159a490
-	virtual uint32_t NumGameTurnsToReactToBurningObjectFunction(GameThingWithPos* param_1, uint32_t param_2,
-	                                                            float param_3);
+	virtual uint32_t NumGameTurnsToReactToBurningObjectFunction(GameThingWithPos* thing, uint32_t reaction,
+	                                                            float distance);
 	// BW1W120 00764130 BW1M119 0159a360
-	virtual uint32_t NumGameTurnsBeforeReactingAgainToBurningObjectFunction(GameThingWithPos* param_1, uint32_t param_2,
-	                                                                        float param_3);
+	virtual uint32_t NumGameTurnsBeforeReactingAgainToBurningObjectFunction(GameThingWithPos* thing, uint32_t reaction,
+	                                                                        float distance);
 	// BW1W120 007641a0 BW1M119 0159a220
-	virtual uint32_t NumGameTurnsToReactToShieldFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
+	virtual uint32_t NumGameTurnsToReactToShieldFunction(GameThingWithPos* thing, uint32_t reaction, float distance);
 	// BW1W120 00764230 BW1M119 0159a0b0
-	virtual uint32_t NumGameTurnsBeforeReactingToShieldAgainFunction(GameThingWithPos* param_1, uint32_t param_2,
-	                                                                 float param_3);
+	virtual uint32_t NumGameTurnsBeforeReactingToShieldAgainFunction(GameThingWithPos* thing, uint32_t reaction,
+	                                                                 float distance);
 	// BW1W120 0055c970 BW1M119 010676b0
 	virtual bool32_t IsChild() { return (Flags & VILLAGER_FLAG_CHILD) != 0; }
 	// BW1W120 00751dd0 BW1M119 01051580
@@ -1634,7 +1634,7 @@ public:
 	// BW1W120 00765140 BW1M119 01598350
 	bool32_t ApproachHandReaction();
 	// BW1W120 007651a0 BW1M119 015981d0
-	bool32_t FindNearbyVillagerWhoIsntReacting();
+	Villager* FindNearbyVillagerWhoIsntReacting();
 	// BW1W120 00765320 BW1M119 01597ef0
 	bool32_t ArrivesAtPickupBallReaction();
 	// BW1W120 007653f0 BW1M119 01597e20
@@ -1686,9 +1686,9 @@ public:
 	// BW1W120 007673a0 BW1M119 01594050
 	bool32_t WaitForMate();
 	// BW1W120 00767410 BW1M119 01594010
-	bool32_t EnterDrowning(unsigned char param_1, unsigned char param_2);
+	bool32_t EnterDrowning(unsigned char current_state, unsigned char previous_state);
 	// BW1W120 00767420 BW1M119 01593fd0
-	bool32_t ExitDrowning(unsigned char param_1);
+	bool32_t ExitDrowning(unsigned char state);
 	// BW1W120 007678a0 BW1M119 0159d750
 	bool32_t InspectCreatureReaction();
 	// BW1W120 00767970 BW1M119 0159d610

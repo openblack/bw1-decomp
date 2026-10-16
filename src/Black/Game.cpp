@@ -560,7 +560,7 @@ void GGame::LoadMap(char* map_path)
 		g_game->ClearMap();
 		LH3DLandscape::Release();
 		LH3DIsland::Release();
-		g_game->data.MapLoadCount = 0;
+		g_game->data.InteractDesire = 0.0f;
 		GSetup::LoadMapFeatures(map_path);
 		Town::AsssignTownFeature();
 	}

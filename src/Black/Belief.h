@@ -13,6 +13,7 @@
 
 class GameThingWithPos;
 class GPlayer;
+class Reaction;
 class Town;
 
 class GBelief : public Base
@@ -44,6 +45,8 @@ public:
 	                 GUIDANCE_ALIGNMENT alignment);
 	// BW1W120 00438770 BW1M119 010b4310
 	static float DistanceChangeToBelief(float param_1, float param_2);
+	// BW1W120 00438790 BW1M119 01002610
+	void AddToBoredomMultiplier(Reaction* reaction, float multiplier);
 	// BW1W120 004387d0 BW1M119 010b4200
 	void SetBelief(unsigned long index, float value);
 	// BW1W120 00438910 BW1M119 010b4080

@@ -149,7 +149,7 @@ void Villager::FootballAttackerDribbleProcess(Football* football)
 // BW1W120 0075dbd0 BW1M119 01589b00
 void Villager::FootballAttackerIdleProcess(Football* football)
 {
-	LookAtObject((GameThingWithPos*)football->GetBall(), 1);
+	LookAtObject((GameThingWithPos*)football->GetBall(), LIVING_LOOK_AT_SPEED_NORMAL);
 	football->IsPlayerOnHomeTeam(this);
 	if (TurnsUntilNextStateChange >= 600 || (uint32_t)football->GetHowCloseToBallIndex(this) < 2)
 	{
@@ -293,7 +293,7 @@ void Villager::FootballDefenderGoToBallProcess(Football* football)
 // BW1W120 0075e6e0 BW1M119 01586c90
 void Villager::FootballDefenderIdleProcess(Football* football)
 {
-	LookAtObject((GameThingWithPos*)football->GetBall(), 1);
+	LookAtObject((GameThingWithPos*)football->GetBall(), LIVING_LOOK_AT_SPEED_NORMAL);
 	football->IsPlayerOnHomeTeam(this);
 	if (TurnsUntilNextStateChange >= 600 || (uint32_t)football->GetHowCloseToBallIndex(this) < 2)
 	{
@@ -506,7 +506,7 @@ bool32_t Villager::StartMoveToPickUpBallForDeadBall()
 bool32_t Villager::ArrivedAtPickUpBallForDeadBall()
 {
 	Football* football = GetFootball();
-	LookAtObject(football, 2);
+	LookAtObject(football, LIVING_LOOK_AT_SPEED_FAST);
 	SetTopState(VILLAGER_STATE_ARRIVED_AT_PUT_DOWN_BALL_FOR_DEAD_BALL_START);
 	return 1;
 }
