@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+
 #include "Base.h"                        /* For struct Base */
 #include "CreatureAction.h"              /* For struct CreatureActionOpinions, struct CreaturePreviousActions */
 #include "CreatureActionsKnownAbout.h"   /* For struct CreatureActionsKnownAbout */
@@ -12,6 +14,7 @@
 #include "CreatureExplorationMap.h"      /* For struct CreatureExplorationMap */
 #include "CreatureFace.h"                /* For struct CreatureFaceState */
 #include "CreatureLearning.h"            /* For struct CreatureLearning */
+#include "CreatureLessonChooser.h"       /* For enum LESSON_TYPE, enum LESSON_ORIGIN_TYPE */
 #include "CreatureLook.h"                /* For struct CreatureLookState */
 #include "CreatureMentalAttributeTest.h" /* For struct DecisionTreeCollection */
 #include "CreatureMentalBeliefs.h"       /* For struct CreatureBeliefs */
@@ -54,41 +57,40 @@ public:
 	static bool32_t DebugDrawObjectToActOn;
 
 	// BW1W120 004e7820 BW1M119 0126dfb0
-	void                      SaveMind(char* path);
-	CreatureDesires           desires;
-	CreatureAgenda            agenda;
-	CreatureBeliefs           beliefs;
-	DecisionTreeCollection    decision_tree_collection;
-	CreatureActionOpinions    ActionOpinions;
-	CreatureLearning          learning;
-	CreatureAttitudeToPlayer  AttitudeToPlayer;
-	uint32_t                  field_0x1a9f4;
-	uint32_t                  field_0x1a9f8;
-	CreatureActionsKnownAbout ActionsKnownAbout;
-	CreatureInnatePersonality InnatePersonality;
-	CreatureVisionState       VisionState;
-	CreatureExplorationMap    ExplorationMap;
-	uint8_t                   field_0x1ca98[0x400];
-	CreaturePreviousActions   PreviousActions;
-	CreatureLookState         LookState;
-	uint8_t                   field_0x1d3f8[0x14];
-	CreatureFaceState         FaceState;
-	CreatureObjectsInspected  ObjectsInspected;
-	uint32_t                  field_0x1d480;
-	CreatureBelief*           CitadelHeartBelief;
-	uint32_t                  field_0x1d488;
-	MapCoords                 field_0x1d48c[0x1e][0x28];
-	CreatureMentalDebug       debug;
-	Creature*                 creature;
-	int                       field_0x20d1c;
-	uint32_t                  field_0x20d20;
-	uint32_t                  field_0x20d24;
-	uint32_t                  field_0x20d28;
-	uint32_t                  field_0x20d2c;
-	uint32_t                  field_0x20d230;
-	uint32_t                  GameTurnLastReactedToFlyingObject;
-	uint32_t                  GameTurnLastReactedToObjectCrushed;
-	uint32_t                  field_0x20d23c;
+	void                                      SaveMind(char* path);
+	CreatureDesires                           desires;
+	CreatureAgenda                            agenda;
+	CreatureBeliefs                           beliefs;
+	DecisionTreeCollection                    decision_tree_collection;
+	CreatureActionOpinions                    ActionOpinions;
+	CreatureLearning                          learning;
+	CreatureAttitudeToPlayer                  AttitudeToPlayer;
+	LHLinkedList<CreatureAttitudeToCreature*> AttitudesToCreatures;
+	CreatureActionsKnownAbout                 ActionsKnownAbout;
+	CreatureInnatePersonality                 InnatePersonality;
+	CreatureVisionState                       VisionState;
+	CreatureExplorationMap                    ExplorationMap;
+	uint8_t                                   field_0x1ca98[0x400];
+	CreaturePreviousActions                   PreviousActions;
+	CreatureLookState                         LookState;
+	uint8_t                                   field_0x1d3f8[0x14];
+	CreatureFaceState                         FaceState;
+	CreatureObjectsInspected                  ObjectsInspected;
+	CreatureBelief*                           ContextBelief;
+	CreatureBelief*                           CitadelHeartBelief;
+	uint32_t                                  field_0x1d488;
+	MapCoords                                 field_0x1d48c[0x1e][0x28];
+	CreatureMentalDebug                       debug;
+	Creature*                                 creature;
+	int                                       field_0x20d1c;
+	uint32_t                                  field_0x20d20;
+	uint32_t                                  field_0x20d24;
+	uint32_t                                  field_0x20d28;
+	uint32_t                                  field_0x20d2c;
+	uint32_t                                  field_0x20d230;
+	uint32_t                                  GameTurnLastReactedToFlyingObject;
+	uint32_t                                  GameTurnLastReactedToObjectCrushed;
+	uint32_t                                  field_0x20d23c;
 
 	// Override methods
 
@@ -126,9 +128,18 @@ public:
 	// BW1W120 004d2800 BW1M119 null
 	void EmpathiseWithPlayer(CREATURE_DESIRES desire);
 	// BW1W120 004c4c80 BW1M119 012364d0
-	CreatureAttitudeToCreature* GetAttitudeToCreature(Creature* creature);
+	CreatureAttitudeToCreature* GetAttitudeToCreature(Creature* other_creature);
+	// BW1W120 004c4d20 BW1M119 012363b0
+	void UpdateAttitudesToCreatures();
+	// BW1W120 004c4d50 BW1M119 01236160
+	void UpdateHowNiceIsCreature(Creature* other_creature, float niceness);
+	// BW1W120 004c4f60 BW1M119 01235fc0
+	void UpdateHowMuchAttentionPaidToMeByCreature(Creature* other_creature, float attention);
+	// BW1W120 004e11c0 BW1M119 012674a0
+	void LearnParticularLessonFromFeedback(CreatureContext& context, float feedback, LESSON_TYPE lesson_type,
+	                                       int param_4, unsigned long* lesson_count, LESSON_ORIGIN_TYPE origin);
 	// BW1W120 004c4f10 BW1M119 01236090
-	void UpdateHowImpressiveIsCreature(Creature* creature, float impressiveness);
+	void UpdateHowImpressiveIsCreature(Creature* other_creature, float impressiveness);
 	// BW1W120 004e2380 BW1M119 0126a110
 	bool32_t ConsiderLearningAction(CREATURE_ACTION_LEARNING_TYPE type, unsigned long action);
 };

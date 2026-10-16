@@ -466,11 +466,11 @@ Black/CreatureAction.cpp:
 	.bss        start:0x00C64230 end:0x00C82644
 
 Black/CreatureAttitudeToCreature.cpp:
-	.text       start:0x004C4920 end:0x004C5530
-	.rdata      start:0x008CF354 end:0x008CF380
-	.CRT$XCU    start:0x009C63C0 end:0x009C63E4 align:4
+	.text       start:0x004C4C10 end:0x004C4FE0
+	.rdata      start:0x008CF35C end:0x008CF370
+	.CRT$XCU    start:0x009C63CC end:0x009C63D8 align:4
 	.data       start:0x009D9770 end:0x009D97A0
-	.bss        start:0x00C82644 end:0x00C82658
+	.bss        start:0x00C82648 end:0x00C82650
 
 Black/CreatureDevelopment.cpp:
 	.text       start:0x004C5530 end:0x004C5F80

@@ -4509,7 +4509,7 @@ int CreatureAgenda::ConstructSubActionsForShowCreatureHowNiceYouReckon(unsigned 
 	if (other != NULL)
 	{
 		CreatureAttitudeToCreature* attitude = creature->mind->GetAttitudeToCreature(other);
-		if (attitude->Attitude == 0.0f)
+		if (attitude->HowNice == 0.0f)
 		{
 			SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_FACIAL_ANIMATION,
 			                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3277))
@@ -4517,14 +4517,14 @@ int CreatureAgenda::ConstructSubActionsForShowCreatureHowNiceYouReckon(unsigned 
 			                                 &Creature::LookAtObjectArgument, NULL);
 			return 0;
 		}
-		if (attitude->Attitude > 0.0f)
+		if (attitude->HowNice > 0.0f)
 		{
 			SubActionAgenda.AddMainSubAction(
 				CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
 				new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3281)) SubArgumentInteger(0x37), NULL, NULL);
 			return 0;
 		}
-		if (attitude->Attitude < 0.0f)
+		if (attitude->HowNice < 0.0f)
 		{
 			SubActionAgenda.AddMainSubAction(
 				CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,

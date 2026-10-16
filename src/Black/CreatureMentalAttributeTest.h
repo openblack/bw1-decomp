@@ -10,15 +10,15 @@
 #include <chlasm/Enum.h>                        /* For enum CREATURE_DESIRES */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 
-#include "Base.h"                  /* For struct Base */
-#include "CreatureLearning.h"      /* For struct CreatureLearningEpisode */
-#include "CreatureLessonChooser.h" /* For _LESSON_TYPE_COUNT */
-#include "GameThingWithPos.h"      /* For enum CREATURE_BELIEF_TYPE */
+#include "Base.h"             /* For struct Base */
+#include "CreatureLearning.h" /* For struct CreatureLearningEpisode */
+#include "GameThingWithPos.h" /* For enum CREATURE_BELIEF_TYPE */
 
 enum DECISION_TREE_TYPE
 {
-	DECISION_TREE_TYPE_0x0 = 0x0,
-	_DECISION_TREE_TYPE_COUNT = 0x1
+	DECISION_TREE_TYPE_ACTIVITY_OBJECT = 0x0,
+	DECISION_TREE_TYPE_ACTION_OBJECT = 0x1,
+	_DECISION_TREE_TYPE_COUNT = 0x2
 };
 
 // Value ranges for the attributes whose values are a fixed set of names; the enumerator names
@@ -190,7 +190,7 @@ struct DecisionTreeAgendas
 
 struct DecisionTreeCollection
 {
-	DecisionTreeAgendas agendas[_LESSON_TYPE_COUNT]; /* 0x0 */
+	DecisionTreeAgendas agendas[_DECISION_TREE_TYPE_COUNT]; /* 0x0 */
 
 	// Constructors
 
@@ -202,7 +202,7 @@ struct DecisionTreeCollection
 	// BW1W120 inlined BW1M119 01272140
 	float GetActivityObjectUtility(CreatureBelief* belief, CREATURE_DESIRES desire)
 	{
-		DecisionTreeAgenda* agenda = agendas[LESSON_TYPE_ACTIVITY_OBJECT].contents[desire];
+		DecisionTreeAgenda* agenda = agendas[DECISION_TREE_TYPE_ACTIVITY_OBJECT].contents[desire];
 		return agenda->trees[0].CalculateUtility(belief);
 	}
 };
