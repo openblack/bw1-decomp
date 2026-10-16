@@ -141,7 +141,7 @@ public:
 	// BW1W120 005fd790 BW1M119 013c1bc0
 	virtual uint32_t GetSaveType();
 	// BW1W120 005fd970 BW1M119 013c0770
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 005fd8c0 BW1M119 013c0950
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 005fd8d0 BW1M119 013c08e0

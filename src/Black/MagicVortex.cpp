@@ -32,7 +32,7 @@ char* LandscapeVortexVolc::GetDebugText()
 	return "MagicVortexVolc:";
 }
 
-uint32_t LandscapeVortexIn::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE LandscapeVortexIn::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_VORTEX;
 }

@@ -42,7 +42,7 @@ public:
 	// BW1W120 006083d0 BW1M119 013c2e50
 	virtual HOLD_TYPE GetHoldType();
 	// BW1W120 006079c0 BW1M119 013c4220
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 };
 
 #endif /* BW1_DECOMP_POO_INCLUDED_H */

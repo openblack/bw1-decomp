@@ -219,7 +219,7 @@ public:
 	// BW1W120 00406830 BW1M119 01112a30
 	virtual uint32_t InterfaceTap(GInterfaceStatus* status);
 	// BW1W120 00402dc0 BW1M119 01590910
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 00402dd0 BW1M119 011501a0
 	virtual void SetUpPhysOb(PhysOb* obj);
 	// BW1W120 00406230 BW1M119 013ed2a0

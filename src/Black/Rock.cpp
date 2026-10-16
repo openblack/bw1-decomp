@@ -17,7 +17,7 @@ SCRIPT_OBJECT_TYPE Rock::GetScriptObjectType()
 	return SCRIPT_OBJECT_TYPE_ROCK;
 }
 
-uint32_t Rock::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE Rock::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_ROCK;
 }

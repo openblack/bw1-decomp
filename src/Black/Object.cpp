@@ -764,9 +764,10 @@ SOUND_COLLISION_TYPE Object::GetCollideSoundType()
 	return info->CollideSound;
 }
 
-uint32_t Object::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE Object::GetPhysicsConstantsType()
 {
-	return CanBecomeAPhysicsObject() != false;
+	return CanBecomeAPhysicsObject() ? PHYSICS_CONSTANTS_TYPE_DEFAULT_MOVABLE
+	                                 : PHYSICS_CONSTANTS_TYPE_DEFAULT_UNMOVABLE;
 }
 
 void Object::SetUpPhysOb(PhysOb* phys_ob)

@@ -114,7 +114,7 @@ bool PhysicalShield::InteractsWithPhysicsObjects()
 	return true;
 }
 
-uint32_t PhysicalShield::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE PhysicalShield::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_SPELL_SHIELD;
 }

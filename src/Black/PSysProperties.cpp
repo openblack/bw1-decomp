@@ -1788,16 +1788,16 @@ void LandscapeCollide::DefineProperties(PropertyList* list)
 // RegisterParticleCreators names it directly; reaching it only through inlined map::operator[]
 // puts it after the _Tree helpers. The same IL also decides a register tie-break in
 // RegisterModifiers. This unreferenced helper (never emitted) stands in for the unknown original
-// reference. In BW1W100 that tie-break also depends on how many symbols are declared before
-// RegisterModifiers; the parameters pad the count.
+// reference. That tie-break also depends on how many symbols are declared before RegisterModifiers;
+// the parameters pad the count for each version.
 #if defined(VERSION_BW1W100)
-static std::string EmptyString(int arg0)
+static std::string EmptyString()
 {
 	std::string text[1];
 	return text[0];
 }
 #else
-static void EmptyString()
+static void EmptyString(int arg0)
 {
 	std::string text;
 }
