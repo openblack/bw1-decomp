@@ -1,4 +1,5 @@
 #include "MobileWallHug.h"
+#include "ObjectMovementConstants.h"
 
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 #include "Landscape.h"
@@ -758,9 +759,9 @@ int MobileWallHug::SimpleMoveTo()
 	GetDestPos();
 	pos.x += step.x;
 	pos.z += step.z;
-	if (MoveMapObject(pos) == 7)
+	if (MoveMapObject(pos) == OBJECT_MOVE_RESULT_CHANGED_CELL)
 	{
-		result = 7;
+		result = OBJECT_MOVE_RESULT_CHANGED_CELL;
 	}
 	return result;
 }
@@ -796,7 +797,7 @@ int MobileWallHug::MoveToWander(const MapCoords* centre, long min_dist, long max
 {
 	int direction;
 	int result = MoveByStep(direction);
-	if (result == 7)
+	if (result == OBJECT_MOVE_RESULT_CHANGED_CELL)
 	{
 		SetNewWander(centre, min_dist, max_dist);
 	}

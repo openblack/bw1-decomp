@@ -1,5 +1,6 @@
 #include "GameTimeConstants.h"
 #include "AnimalCow.h"
+#include "ObjectMovementConstants.h"
 
 #include "Rand.h"
 #include "AnimalInfo.h"
@@ -297,7 +298,7 @@ bool32_t Cow::Wander()
 		return true;
 	}
 
-	if (MoveToWander(GetFlockPos(), 0, GetFlockDistance()) == 7)
+	if (MoveToWander(GetFlockPos(), 0, GetFlockDistance()) == OBJECT_MOVE_RESULT_CHANGED_CELL)
 	{
 		const GAnimalInfo* animalInfo = (const GAnimalInfo*)GetInfo();
 		LookForFlocksInSpiral(Pos, animalInfo, GetDomainRadius() * 2, animalInfo->field_0x234);
