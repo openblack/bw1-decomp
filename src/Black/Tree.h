@@ -13,6 +13,7 @@
 
 class Base;
 class Creature;
+class EffectValues;
 class Forest;
 class GInterfaceStatus;
 class GPlayer;
@@ -212,6 +213,8 @@ public:
 	// BW1W120 00749ee0 BW1M119 01161270
 	static Tree* Create(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float target_scale,
 	                    float y_angle, float scale);
+	// BW1W120 0074a7a0 BW1M119 null
+	static bool32_t IsForestTreeAtPos(MapCoords& coords);
 	// BW1W120 0074c180 BW1M119 0115e5a0
 	static bool32_t IsOkToCreateAtPos(MapCoords& coords);
 
@@ -239,6 +242,10 @@ public:
 	bool32_t GetPosForVillagerToSleepUnder(Villager* villager, MapCoords& pos);
 	// BW1W120 0074bd20 BW1M119 0115f040
 	void AddPermanentFootPrint();
+	// BW1W120 0074a6f0 BW1M119 null
+	float GetWoodRemovedByEffect(EffectValues& values);
+	// BW1W120 0074a750 BW1M119 null
+	float GetWoodAddedByEffect(EffectValues& values);
 	// BW1W120 0074a3f0 BW1M119 01160880
 	float Grow(float amount, bool param_2, bool param_3);
 };

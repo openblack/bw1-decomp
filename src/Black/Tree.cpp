@@ -409,6 +409,37 @@ uint32_t Tree::Process()
 	return true;
 }
 
+float Tree::GetWoodRemovedByEffect(EffectValues& values)
+{
+	float wood = GetWoodValue();
+	ApplyEffect(values, 0);
+	if (IsAvailable())
+	{
+		float removed = wood - GetWoodValue();
+		if (removed > 0.0f)
+		{
+			return removed;
+		}
+	}
+	return 0.0f;
+}
+
+float Tree::GetWoodAddedByEffect(EffectValues& values)
+{
+	float wood = GetWoodValue();
+	ApplyEffect(values, 0);
+	if (IsAvailable())
+	{
+		return GetWoodValue() - wood;
+	}
+	return 0.0f;
+}
+
+bool32_t Tree::IsForestTreeAtPos(MapCoords& coords)
+{
+	return coords.FindType(OBJECT_TYPE_FOREST_TREE, NULL) != NULL;
+}
+
 float Tree::Decay(float amount)
 {
 	float scale = GetScale() - amount;
