@@ -624,7 +624,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureActionInfo.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureActionsKnownAbout.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureAgenda.cpp"),
-            GameCodeObject(NonMatching, "Black/CreatureAttitudeToCreature.cpp"),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120"), "Black/CreatureAttitudeToCreature.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureAttitudeToPlayer.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureCommandState.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureContext.cpp"),

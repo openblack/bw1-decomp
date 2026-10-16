@@ -13,6 +13,7 @@
 // Forward Declares
 
 class Creature;
+class CreatureBelief;
 
 class CreatureContext : public Base
 {
@@ -25,10 +26,11 @@ public:
 	CREATURE_DESIRE_SOURCE     DesireSource;
 	CreatureActionContextStart ActionContextStart;
 
-	// Override methods
-
-	// BW1W120 004cfe60 BW1M119 011e1fa0
-	virtual ~CreatureContext();
+	// BW1W120 004e1b80 BW1M119 012669f0
+	CreatureContext(Creature* creature, CreaturePlan& plan, CREATURE_DESIRE_SOURCE desire_source, int param_4,
+	                CreatureBelief* context_belief);
+	// BW1W120 004e1c50 BW1M119 01266900
+	void CleanUp();
 };
 
 struct PreviousContextStack
