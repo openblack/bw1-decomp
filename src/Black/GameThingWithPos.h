@@ -230,8 +230,6 @@ public:
 	virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
 	// BW1W120 00401a50 BW1M119 015efff0
 	virtual bool32_t IsTown(Creature* creature) { return false; }
-	// BW1W120 00401ae0 BW1M119 0102dd00
-	virtual bool32_t IsTown() { return false; }
 	// BW1W120 00401a60 BW1M119 01568460
 	virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* creature) { return false; }
 	// BW1W120 00401a70 BW1M119 015efed0
@@ -248,6 +246,8 @@ public:
 	virtual bool32_t IsNotLiving() { return true; }
 	// BW1W120 00401ad0 BW1M119 010ca610
 	virtual bool32_t IsSuitableForCreatureActivity() { return false; }
+	// BW1W120 00401ae0 BW1M119 0102dd00
+	virtual bool32_t IsTown() { return false; }
 	// BW1W120 00401af0 BW1M119 01096120
 	virtual bool32_t IsTownCentre() { return false; }
 	// BW1W120 00401b00 BW1M119 0138a430
@@ -256,8 +256,6 @@ public:
 	virtual bool32_t IsTownDesireFlag() { return false; }
 	// BW1W120 00401b20 BW1M119 01566900
 	virtual bool32_t IsRock() { return false; }
-	// BW1W120 00401f50 BW1M119 01559b10
-	virtual bool32_t IsRock(Creature* creature) { return IsRock(); }
 	// BW1W120 00401b30 BW1M119 01558730
 	virtual bool32_t IsSpellDispenser() { return false; }
 	// BW1W120 00401b40 BW1M119 01363340
@@ -272,8 +270,6 @@ public:
 	virtual bool32_t IsAbode() { return false; }
 	// BW1W120 00401b80 BW1M119 012ffef0
 	virtual bool32_t IsField() { return false; }
-	// BW1W120 00401e40 BW1M119 010cfa60
-	virtual bool32_t IsField(Creature* creature) { return false; }
 	// BW1W120 00405320 BW1M119 01569a10
 	virtual bool32_t IsBuildingMaterial() { return false; }
 	// BW1W120 00401b90 BW1M119 010a0bd0
@@ -405,12 +401,12 @@ public:
 	virtual WorshipSite* GetWorshipSite() { return NULL; }
 	// BW1W120 00401e20 BW1M119 01567720
 	virtual bool32_t IsWorkshop(Creature* creature) { return false; }
-	// BW1W120 004023b0 BW1M119 0102f210
-	virtual bool32_t IsWorkshop() { return false; }
 	// BW1W120 004054c0 BW1M119 01567f80
 	virtual bool32_t IsBuildingWhichIsBeingBuilt(Creature* creature) { return false; }
 	// BW1W120 00401e30 BW1M119 01566d50
 	virtual bool32_t IsStoragePitWithFoodInIt(Creature* creature) { return false; }
+	// BW1W120 00401e40 BW1M119 010cfa60
+	virtual bool32_t IsField(Creature* creature) { return false; }
 	// BW1W120 00401e50 BW1M119 01567c50
 	virtual bool32_t IsFieldWhichNeedsWatering(Creature* creature) { return false; }
 	// BW1W120 00401e60 BW1M119 01566bf0
@@ -425,8 +421,6 @@ public:
 	virtual bool32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* creature) { return false; }
 	// BW1W120 00401eb0 BW1M119 0156e0a0
 	virtual bool32_t IsTree(Creature* creature) { return false; }
-	// BW1W120 00402320 BW1M119 01370d80
-	virtual bool32_t IsTree() { return false; }
 	// BW1W120 00401ec0 BW1M119 013d17d0
 	virtual bool32_t IsTreeNotTooNearPlannedForest(Creature* creature) { return false; }
 	// BW1W120 00401ed0 BW1M119 013d1770
@@ -442,12 +436,12 @@ public:
 	{
 		return IsRock() && CanBeUsedForBuilding(creature) && !IsInsideCreatureHome(creature);
 	}
+	// BW1W120 00401f50 BW1M119 01559b10
+	virtual bool32_t IsRock(Creature* creature) { return IsRock(); }
 	// BW1W120 00401f60 BW1M119 010e4430
 	virtual bool32_t IsPickupableRock(Creature* creature) { return IsRock() && CanBePickedUpByCreature(creature); }
 	// BW1W120 00401fa0 BW1M119 010bf8e0
 	virtual bool32_t IsCitadelPart(Creature* creature) { return false; }
-	// BW1W120 00402360 BW1M119 0159ff10
-	virtual bool32_t IsCitadelPart() { return false; }
 	// BW1W120 00401fb0 BW1M119 010bfb80
 	virtual bool32_t IsPlayingFootball(Creature* creature) { return false; }
 	// BW1W120 00401fc0 BW1M119 014dc5b0
@@ -498,8 +492,6 @@ public:
 	virtual bool32_t IsToyCuddly(Creature* creature) { return false; }
 	// BW1W120 00402100 BW1M119 013530e0
 	virtual bool32_t IsLiving(Creature* creature) { return IsLiving(); }
-	// BW1W120 00402350 BW1M119 015759c0
-	virtual bool32_t IsLiving() { return false; }
 	// BW1W120 00402110 BW1M119 010815c0
 	virtual bool32_t IsFence() { return false; }
 	// BW1W120 00402120 BW1M119 0130daf0
@@ -589,10 +581,16 @@ public:
 	virtual bool32_t IsMobileObject() { return false; }
 	// BW1W120 00402310 BW1M119 015792a0
 	virtual bool32_t IsMobileStatic() { return false; }
+	// BW1W120 00402320 BW1M119 01370d80
+	virtual bool32_t IsTree() { return false; }
 	// BW1W120 00402330 BW1M119 0116e680
 	virtual bool32_t IsAnyKindOfTree() { return false; }
 	// BW1W120 00402340 BW1M119 0136d6d0
 	virtual bool32_t IsDeadTree() { return false; }
+	// BW1W120 00402350 BW1M119 015759c0
+	virtual bool32_t IsLiving() { return false; }
+	// BW1W120 00402360 BW1M119 0159ff10
+	virtual bool32_t IsCitadelPart() { return false; }
 	// BW1W120 00402370 BW1M119 010ca5d0
 	virtual bool32_t IsPileFood() { return false; }
 	// BW1W120 00402380 BW1M119 0157a150
@@ -601,6 +599,8 @@ public:
 	virtual bool32_t IsScriptMarker() { return false; }
 	// BW1W120 004023a0 BW1M119 01000870
 	virtual bool32_t IsScriptHighlight() { return false; }
+	// BW1W120 004023b0 BW1M119 0102f210
+	virtual bool32_t IsWorkshop() { return false; }
 	// BW1W120 004178d0 BW1M119 01300cf0
 	virtual bool32_t IsWonder();
 	// BW1W120 004023c0 BW1M119 01301910
