@@ -366,12 +366,18 @@ cflags_icc = [
     "/MT", "/W3", "/GX",
     "/O2", "/Ob1",
     *includes_project,
+    # AMaths.h, the header of Intel's Approximate Math Library linked from amaths.lib.
+    "/I", "orig/libs/amaths-2.0",
     "/I", f"build/compilers/{config.linker_version}/include",
     "/I", f"build/compilers/{icc_version}/include",
     "/DNDEBUG", "/D_LH_LIB_RELEASE", "/DWIN32", "/D_WINDOWS",
     "/D_LH_3D_LIB_", "/D_GOLD", "/D_GOLD_", "/D_USE_INTEL_COMPILER",
     f"/DBUILD_VERSION={version_num}",
     f"/DVERSION_{config.version}",
+    # The original compiler (5.0 Build 001120) has no post-pass scheduler: with
+    # 5.0.1's enabled, every function's instructions are reordered and its
+    # register assignment follows.
+    "/Qoption,c,-mP3OPT_pcg_post_sched=0",
 ]
 
 # The game code (Black/) was compiled for Pentium Pro (/G6); the static
@@ -624,7 +630,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureActionInfo.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureActionsKnownAbout.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureAgenda.cpp"),
-            GameCodeObject(NonMatching, "Black/CreatureAttitudeToCreature.cpp"),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120"), "Black/CreatureAttitudeToCreature.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureAttitudeToPlayer.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureCommandState.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureContext.cpp"),
@@ -642,6 +648,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureLessonChooser.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureLook.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMental.cpp"),
+            GameCodeObject(NonMatching, "Black/CreatureMentalAttribute.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalAttributeTest.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalBelief.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalBeliefs.cpp"),
@@ -1511,8 +1518,8 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\setmode.obj", progress_category="sdk"),
 
             # TODO(#298): It's likely that LH3DLib was compiled with `/Gr` that sets __thiscall as __fastcall (e.g. first argument is in edx)
-            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp", progress_category="sdk"),
-            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSystem.cpp", progress_category="sdk", extra_cflags=["/GX"]),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSystem.cpp", progress_category="sdk"),
+            Object(NonMatching, "Lionhead/LHLib/ver5.0/LHWin.cpp", progress_category="sdk", extra_cflags=["/GX"]),
             Object(MatchingFor("BW1W100", "BW1W110", "BW1W120"), "Lionhead/LHLib/ver5.0/LHMem.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHScreen.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp", progress_category="sdk"),

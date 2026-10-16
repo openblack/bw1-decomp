@@ -54,7 +54,7 @@ bool32_t Villager::WaitForKickOff()
 bool32_t Villager::FootballMatchPaused()
 {
 	if (GetFootball() != NULL && GetFootball()->GetBall() != NULL)
-		LookAtObject((GameThingWithPos*)GetFootball()->GetBall(), 1);
+		LookAtObject((GameThingWithPos*)GetFootball()->GetBall(), LIVING_LOOK_AT_SPEED_NORMAL);
 	return 1;
 }
 
@@ -64,7 +64,7 @@ bool32_t Villager::FootballMexicanWave()
 	if (GetTown() == NULL)
 		return DecideWhatToDo();
 	Football* football = GetFootball();
-	LookAtObject(football, 2);
+	LookAtObject(football, LIVING_LOOK_AT_SPEED_FAST);
 	PlayAnimThenSetState(VILLAGER_STATE_FOOTBALL_WATCH_MATCH, 1);
 	return 1;
 }
@@ -82,9 +82,9 @@ bool32_t Villager::FootballWatchMatch()
 	// (pre-kickoff - look at the football), 1 (in play - look at the ball), 4 (match over).
 	int matchPhase = *(int*)((char*)football + 0x200);
 	if (matchPhase == 0)
-		return LookAtObject(football, 1);
+		return LookAtObject(football, LIVING_LOOK_AT_SPEED_NORMAL);
 	if (matchPhase == 1)
-		return LookAtObject(ball, 1);
+		return LookAtObject(ball, LIVING_LOOK_AT_SPEED_NORMAL);
 	if (matchPhase == 4)
 	{
 		Flags &= ~0x80;

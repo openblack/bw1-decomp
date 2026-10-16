@@ -573,6 +573,9 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004619AA, call_indirect(0x008A9970)),  # CameraModeScript
     (0x00461B7B, call_rel32(0x00401879)),  # CameraModeScript
     (0x0046B7AB, call_rel32(0x00401879)),  # Container
+    (0x004C4C5B, call_rel32(0x00401879)),  # CreatureAttitudeToCreature
+    (0x004C4F5A, call_indirect(0x008A900C)),  # CreatureAttitudeToCreature: __imp__GetUserNameA@4
+    (0x004C4FAA, call_indirect(0x008A9888)),  # CreatureAttitudeToCreature: __imp__mmioAscend@4
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
     (0x0052E3FA, call_indirect(0x008A901C)),  # Fixed: __imp__TrackMouseEvent@4
     (0x0052EE0A, call_indirect(0x008A97AC)),  # Fixed: __imp__ShellExecuteA@4

@@ -461,11 +461,11 @@ Black/CreatureAction.cpp:
 	.bss        start:0x00CE51F0 end:0x00D03604
 
 Black/CreatureAttitudeToCreature.cpp:
-	.text       start:0x004C6CB0 end:0x004C78C0
-	.rdata      start:0x008D435C end:0x008D4388
-	.CRT$XCU    start:0x00A463C8 end:0x00A463EC align:4
-	.data       start:0x00A59D30 end:0x00A59D60
-	.bss        start:0x00D03604 end:0x00D03618
+	.text       start:0x004C6FA0 end:0x004C7370
+	.rdata      start:0x008D4364 end:0x008D4378
+	.CRT$XCU    start:0x00A463D4 end:0x00A463E0 align:4
+	.data       start:0x00A59D30 end:0x00A59D68
+	.bss        start:0x00D03608 end:0x00D03610
 
 Black/CreatureDevelopment.cpp:
 	.text       start:0x004C78C0 end:0x004C8310
@@ -545,17 +545,17 @@ Black/CreatureMentalBeliefs.cpp:
 	.bss        start:0x00D05358 end:0x00D05360
 
 Black/CreatureMentalDesire.cpp:
-	.text       start:0x004DD5E0 end:0x004DF3C0
-	.rdata      start:0x008D4ED4 end:0x008D4FA4
+	.text       start:0x004DD5E0 end:0x004DF480
+	.rdata      start:0x008D4ED4 end:0x008D4FC4
 	.CRT$XCU    start:0x00A464C4 end:0x00A464E4 align:4
-	.data       start:0x00C5FA58 end:0x00C5FBE0
-	.bss        start:0x00D05360 end:0x00D0A260
+	.data       start:0x00C5FA58 end:0x00C5FB58
+	.bss        start:0x00D05360 end:0x00D08E50
 
 Black/CreatureMentalDesireSource.cpp:
-	.text       start:0x004DF3C0 end:0x004E15B0
-	.rdata      start:0x008D4FA4 end:0x008D5088
+	.text       start:0x004DF480 end:0x004E15B0
+	.rdata      start:0x008D4FC4 end:0x008D5088
 	.CRT$XCU    start:0x00A464E4 end:0x00A4651C align:4
-	.bss        start:0x00D0A260 end:0x00D0EBE8
+	.bss        start:0x00D08E50 end:0x00D0EBE8
 
 Black/CreatureMentalExploration.cpp:
 	.text       start:0x004E15B0 end:0x004E25D0
@@ -892,23 +892,24 @@ Black/Flock.cpp:
 
 Black/FootBall.cpp:
 	.text       start:0x00533FC0 end:0x00537D90
-	.rdata      start:0x008E2110 end:0x008E2FA0
+	.rdata      start:0x008E2110 end:0x008E2F98
 	.CRT$XCU    start:0x00A468A0 end:0x00A468BC align:4
-	.data       start:0x00C6A814 end:0x00C6AA04
+	.data       start:0x00C6A814 end:0x00C6A9B0
 	.bss        start:0x00D51198 end:0x00D51420
 
 Black/Footpath.cpp:
 	.text       start:0x00537D90 end:0x0053CA50
-	.rdata      start:0x008E2FA0 end:0x008E32E8
+	.rdata      start:0x008E2F98 end:0x008E33E4
 	.CRT$XCU    start:0x00A468BC end:0x00A468D8 align:4
-	.data       start:0x00C6AA04 end:0x00C6AADC
-	.bss        start:0x00D51420 end:0x00D51480
+	.data       start:0x00C6A9B0 end:0x00C6AAA8
+	.bss        start:0x00D51420 end:0x00D51460
 
 Black/Forest.cpp:
 	.text       start:0x0053CA50 end:0x0053E5A0
-	.rdata      start:0x008E32E8 end:0x008E3424
+	.rdata      start:0x008E33E4 end:0x008E3424
 	.CRT$XCU    start:0x00A468D8 end:0x00A468E8 align:4
-	.bss        start:0x00D51480 end:0x00D51AB8
+	.data       start:0x00C6AAA8 end:0x00C6ADDC
+	.bss        start:0x00D51460 end:0x00D51AB8
 
 Black/frontend.cpp:
 	.text       start:0x0053E5A0 end:0x00549540
@@ -2697,14 +2698,17 @@ Black/WorldRoom.cpp:
 	.bss        start:0x00EB7310 end:0x00EBB36C
 
 Lionhead/LH3DLib/development/LH3DP3.cpp:
-	.text       start:0x007A6480 end:0x007B2230
-	.text$x     start:0x008AB730 end:0x008AB748 align:4
+	.text       start:0x007A6480 end:0x007B2060
+	.CRT$XCU    start:0x00A47C80 end:0x00A47CC0 align:4
+	.data       start:0x00CAB980 end:0x00CAB9E8 align:32
+	.bss        start:0x00EBB3C0 end:0x00F04BE0 align:32
 	.data1      start:0x01041000 end:0x01041B40
 	.drectve    type:comment start:0x00400330 end:0x004004BB
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
-	.text       start:0x007B2230 end:0x007B36B0
-	.CRT$XCU    start:0x00A47CA0 end:0x00A47CA8 align:4
+	.text       start:0x007B2060 end:0x007B36B0
+	.text$x     start:0x008AB730 end:0x008AB748 align:4
+	.CRT$XCU    start:0x00A47CC0 end:0x00A47CC8 align:4
 
 lib/libcpmt/delop.obj:
 	.text       start:0x007B3EB0 end:0x007B3EBB align:1
@@ -2719,7 +2723,7 @@ lib/libcpmt/string.obj:
 	.rdata      start:0x00A1EC40 end:0x00A1EC98 align:4
 	.rdata$r    start:0x00A3AF68 end:0x00A3B054 align:8
 	.xdata$x    start:0x00A3C6A8 end:0x00A3C880 align:8
-	.CRT$XCU    start:0x00A47CA8 end:0x00A47CAC align:4
+	.CRT$XCU    start:0x00A47CC8 end:0x00A47CCC align:4
 	.data       start:0x00CAC0A0 end:0x00CAC100 align:8
 
 lib/libcpmt/ios.obj:
@@ -2740,7 +2744,7 @@ lib/libcpmt/locale0.obj:
 	.rdata      start:0x00A1ED14 end:0x00A1ED20 align:4
 	.rdata$r    start:0x00A3B0F4 end:0x00A3B144 align:8
 	.xdata$x    start:0x00A3CA40 end:0x00A3CB58 align:8
-	.CRT$XCU    start:0x00A47CAC end:0x00A47CB4 align:4
+	.CRT$XCU    start:0x00A47CCC end:0x00A47CD4 align:4
 	.data       start:0x00CAC150 end:0x00CAC174 align:8
 	.bss        start:0x00F04C50 end:0x00F04C64 align:4
 
@@ -3671,10 +3675,10 @@ lib/libcmt/a_loc.obj:
 lib/libcmt/setmode.obj:
 	.text       start:0x007E0372 end:0x007E0430 align:1
 
-Lionhead/LHLib/ver5.0/LHWin.cpp:
+Lionhead/LHLib/ver5.0/LHSystem.cpp:
 	.text       start:0x007E0430 end:0x007E07D0
 
-Lionhead/LHLib/ver5.0/LHSystem.cpp:
+Lionhead/LHLib/ver5.0/LHWin.cpp:
 	.text       start:0x007E07D0 end:0x007E1F60
 	.text$x     start:0x008ACAF0 end:0x008ACB40 align:4
 	.CRT$XCU    start:0x00A47D14 end:0x00A47D1C align:4

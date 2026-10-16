@@ -19,7 +19,7 @@ public:
 	uint32_t RealGameTurn;
 	uint32_t NumCreatedObjects;
 	uint32_t FrameCount;
-	uint32_t MapLoadCount;
+	float    InteractDesire;
 	uint32_t WorldPopulation;
 
 	// Override methods

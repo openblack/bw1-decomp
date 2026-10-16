@@ -21,6 +21,9 @@ struct DesireSort
 	uint32_t              field_0x0;
 	float                 field_0x4;
 	enum TOWN_DESIRE_INFO field_0x8;
+
+	// BW1W120 00746570 BW1M119 01080700
+	GTownDesireInfo* GetInfo() const;
 };
 
 class TownDesire : public Base
@@ -69,10 +72,14 @@ public:
 	// BW1W120 00745ff0 BW1M119 010789f0
 	// TODO: incorrect return type
 	void CheckVillagerNeededForTownDesire(Villager* villager, float trigger);
+	// BW1W120 00745e50 BW1M119 015677d0
+	TOWN_DESIRE_INFO GetMostDesired() const;
 	// BW1W120 00745f80 BW1M119 0105ff30
 	GTownDesireInfo* GetInfo(unsigned long desire) const;
 	// BW1W120 007465d0 BW1M119 01566d00
 	DesireSort* GetSortedDesire(uint32_t index);
+	// BW1W120 00746660 BW1M119 01566c40
+	float GetDesireSignificanceToVillager(TOWN_DESIRE_INFO desire);
 	// BW1W120 007471c0 BW1M119 015659b0
 	void SaveObject(LHOSFile& file, const MapCoords& offset);
 	// BW1W120 00747150 BW1M119 01086730

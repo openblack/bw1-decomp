@@ -24,7 +24,7 @@ public:
 	char                        Name[0x20];
 	uint8_t                     field_0x44[0x60];
 	bool32_t                    NeedsObjectToActOn;
-	uint32_t                    PlanIndex;
+	CREATURE_DESIRES            PlanIndex;
 	CREATURE_ACTION_KNOWN_ABOUT KnownAboutCategory;
 	CREATURE_ACTION_KNOWN_ABOUT KnownAboutCategory2;
 	MAGIC_TYPE                  MagicType;
@@ -44,7 +44,11 @@ public:
 	float                       HowNiceChange;
 	bool32_t                    Learnable;
 	bool32_t                    IsRecoveryAction;
-	uint8_t                     field_0x108[0x8];
+#ifdef VERSION_BW1W100
+	uint8_t field_0x108[0x4];
+#else
+	uint8_t field_0x108[0x8];
+#endif // VERSION_BW1W100
 
 	// Override methods
 
@@ -65,6 +69,10 @@ public:
 	INFO_DATA_BLOCK(StrengthGain, field_0x108)
 	INFO_ROOT_LOADERS("CreatureAction.h", 46)
 };
+#ifdef VERSION_BW1W100
+static_assert(sizeof(CreatureActionInfo) == 0x10c, "Data type is of wrong size");
+#else
 static_assert(sizeof(CreatureActionInfo) == 0x110, "Data type is of wrong size");
+#endif // VERSION_BW1W100
 
 #endif /* BW1_DECOMP_CREATURE_ACTION_INFO_INCLUDED_H */

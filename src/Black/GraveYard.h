@@ -18,15 +18,18 @@ class GameThingWithPos;
 struct MapCoords;
 class Object;
 
+// Graves after which ProcessNewDeath stops adding to the graveyard.
+#define GRAVEYARD_MAX_NUM_GRAVES 100.0f
+
 class Graveyard : public Abode
 {
 public:
-	uint8_t field_0xc4[0x4];
+	uint32_t NumGraves; /* 0xc4 */
 
 	// Override methods
 
 	// BW1W120 00595cb0 BW1M119 010fe070
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0055e000 BW1M119 010fd820
 	virtual char* GetDebugText() { return "GraveYard:"; }
 	// BW1W120 00595f50 BW1M119 010fd860
@@ -56,6 +59,9 @@ public:
 
 	// BW1W120 inlined BW1M119 inlined
 	Graveyard() {}
+	// BW1W120 00595c60 BW1M119 inlined
+	Graveyard(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food,
+	          int wood);
 
 	// Static methods
 

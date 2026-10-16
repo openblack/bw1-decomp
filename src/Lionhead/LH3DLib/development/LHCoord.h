@@ -18,7 +18,7 @@ struct LHCoord
 	LHCoord(const LHCoord* other);
 
 	// BW1W120 007e5af0 BW1M119 011458c0 (LHCombined Release)
-	// Defined out-of-line where the screen is in scope (LHSystem.cpp); inlined at call sites.
+	// Defined out-of-line where the screen is in scope (LHWin.cpp); inlined at call sites.
 	void AddMSWindowOffset();
 	// BW1W120 inlined BW1M119 01014140
 	long X() const { return x; }

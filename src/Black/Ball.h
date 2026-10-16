@@ -96,6 +96,8 @@ public:
 	void SetToZero();
 	// BW1W120 00435c40 BW1M119 010b3200
 	void KickBallAtDestination(const MapCoords& destination, float speed, int flag);
+	// BW1W120 00436000 BW1M119 010b3040
+	bool32_t AddToTown(Town* town);
 	// BW1W120 004360e0 BW1M119 010b2f80
 	bool IsBallFree();
 };

@@ -121,6 +121,13 @@ enum LIVING_STATUS
 	LIVING_STATUS_SHOW_INFO = 0x200,
 };
 
+enum LIVING_LOOK_AT_SPEED
+{
+	LIVING_LOOK_AT_SPEED_SLOW,
+	LIVING_LOOK_AT_SPEED_NORMAL,
+	LIVING_LOOK_AT_SPEED_FAST,
+};
+
 struct ReactionDoneWhen
 {
 	REACTION ReactionType;
@@ -662,13 +669,19 @@ public:
 	// BW1W120 005ec330 BW1M119 0138aed0
 	bool32_t Flying();
 	// BW1W120 005ec520 BW1M119 0138a880
-	uint32_t LookAtObject(GameThingWithPos* param_1, unsigned long param_2);
+	bool32_t LookAtObject(GameThingWithPos* object, unsigned long speed);
 	// BW1W120 005ec550 BW1M119 0138a720
-	bool LookAtPos(const MapCoords& pos, int param_2);
+	bool32_t LookAtPos(const MapCoords& pos, unsigned long speed);
 	// BW1W120 005ec960 BW1M119 010514d0
 	bool32_t IsReadyForNewAnimation(uint32_t index);
 	// BW1W120 005ec990 BW1M119 010577c0
 	bool32_t WaitForAnimation();
+	// BW1W120 005ec9d0 BW1M119 0138a2f0
+	float CalculateDesireChangeByDistance(Object* object, float max_distance);
+	// BW1W120 005ec9f0 BW1M119 0138a240
+	float CalculateDesireChangeByDistance(const MapCoords& pos, float max_distance);
+	// BW1W120 005eca20 BW1M119 0138a1b0
+	float CalculateDesireChangeByDistance(float distance, float max_distance);
 	// BW1W120 005eca60 BW1M119 0138a170
 	Reaction* GetReaction();
 	// BW1W120 005eca80 BW1M119 inlined
