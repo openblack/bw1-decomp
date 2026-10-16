@@ -18,4 +18,7 @@ public:
 	static void Add(long player, const LHPoint& position, float influence);
 };
 
+// BW1W120 00828a50 BW1M119 0104b990 (LHCombined Release)
+void ResetAllWhenLandscapeChange();
+
 #endif /* BW1_DECOMP_INFLUENCE_CIRCLE_INCLUDED_H */

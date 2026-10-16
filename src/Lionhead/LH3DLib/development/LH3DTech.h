@@ -146,6 +146,8 @@ public:
 	static LHPoint* GetCameraPosition() { return &g_camera.pos; }
 	// BW1W120 inlined BW1M119 01025530
 	static LHPoint* GetCameraTarget() { return &g_camera.foc; }
+	// BW1W120 inlined BW1M119 010101b0 (LHCombined Release)
+	static LHPoint* GetTargetVector() { return &g_camera.LookAtVector; }
 	// BW1W120 inlined BW1M119 01020d00
 	static LHPoint GetSun() { return g_sun_light; }
 	// BW1W120 007ace30 BW1M119 01022500 (LHCombined Release)

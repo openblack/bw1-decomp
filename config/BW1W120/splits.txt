@@ -3833,7 +3833,7 @@ lib/libcmt/constpow.obj:
 
 Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp:
 	.text       start:0x007E0440 end:0x007E0FA0
-	.CRT$XCU    start:0x009C7CFC end:0x009C7D64 align:4
+	.CRT$XCU    start:0x009C7CFC end:0x009C7D00 align:4
 	.data       start:0x00C33FBC end:0x00C34098
 
 Lionhead/LHLib/ver5.0/LHHeap2.cpp:
@@ -3878,8 +3878,12 @@ Lionhead/LH3DLib/development/LH3DSmoke.cpp:
 	.text$x     start:0x008A7D80 end:0x008A7DE0 align:4
 
 Lionhead/LH3DLib/development/LH3DIsland.cpp:
-	.text       start:0x007FF2D0 end:0x00804830
+	.text       start:0x007FE7B0 end:0x00804E90
 	.text$x     start:0x008A7DE0 end:0x008A7E10 align:4
+	.xdata$x    start:0x009BE9E0 end:0x009BEA18 align:4
+	.CRT$XCU    start:0x009C7D24 end:0x009C7D40 align:4
+	.data       start:0x00C37200 end:0x00C37D8C
+	.bss        start:0x00E9A130 end:0x00E9CDA0 align:8
 
 Lionhead/LH3DLib/development/LH3DMesh.cpp:
 	.text       start:0x00806460 end:0x00808390
