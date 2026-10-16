@@ -579,12 +579,25 @@ BW1W120_CPU_DISP_TEXT = 0x008A25B0
 
 def call_rel32(target):
     """`call target`, encoded for the address it is placed at."""
-    return lambda address: b'\xe8' + ((target - (address + 5)) & 0xFFFFFFFF).to_bytes(4, 'little')
+    return lambda pe, address: b'\xe8' + ((target - (address + 5)) & 0xFFFFFFFF).to_bytes(4, 'little')
 
 
 def call_indirect(slot):
     """`call [slot]`, an absolute indirect call such as through an import slot."""
-    return lambda address: b'\xff\x15' + slot.to_bytes(4, 'little')
+    return lambda pe, address: b'\xff\x15' + slot.to_bytes(4, 'little')
+
+
+def jmp_run(target):
+    """1.30's padding run up to the next 16-byte boundary: a copy of the bytes in front of
+    `target` whose last five are replaced by `jmp target`."""
+
+    def encode(pe, address):
+        end = (address | 0xF) + 1
+        offset = pe.get_offset_from_rva(target - pe.OPTIONAL_HEADER.ImageBase)
+        copy = bytes(pe.__data__[offset - (end - address):offset - 5])
+        return copy + b'\xe9' + ((target - end) & 0xFFFFFFFF).to_bytes(4, 'little')
+
+    return encode
 
 
 # SafeDisc left calls in inter-function padding that cl6 fills with nops. Absolute
@@ -611,6 +624,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004C4C5B, call_rel32(0x00401879)),  # CreatureAttitudeToCreature
     (0x004C4F5A, call_indirect(0x008A900C)),  # CreatureAttitudeToCreature: __imp__GetUserNameA@4
     (0x004C4FAA, call_indirect(0x008A9888)),  # CreatureAttitudeToCreature: __imp__mmioAscend@4
+    (0x004DF26B, call_rel32(0x00401879)),  # CreatureMentalEditor
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
     (0x0052E3FA, call_indirect(0x008A901C)),  # Fixed: __imp__TrackMouseEvent@4
     (0x0052EE0A, call_indirect(0x008A97AC)),  # Fixed: __imp__ShellExecuteA@4
@@ -731,6 +745,15 @@ BW1W120_SAFEDISC_CALLS = (
     (0x0063B8CB, call_rel32(0x004017F9)),  # OnMapTrajectory
 )
 
+
+# 1.30's SafeDisc left jumps instead: each run of padding nops up to the next 16-byte
+# boundary ends in a `jmp` back to the start of an earlier run (see `jmp_run`).
+BW1W130_SAFEDISC_CALLS = (
+    (0x004E15D3, jmp_run(0x004E1579)),  # CreatureMentalEditor
+    (0x004E16D1, jmp_run(0x004E15D3)),  # CreatureMentalEditor
+)
+
+
 BW1W100_GAMETHING_INCREMENTAL = (
     (0x840, b'\x33\xc0\xc3\x90\x90', b'\xe9\x7b\x5f\xec\xff'),  # 0053eee0: jmp 0x404e60 (GameThing::GetSaveType)
 )
@@ -752,9 +775,10 @@ def substitute_code(pe, base, rows):
 def restore_calls(pe, rows):
     code = []
     for address, call in rows:
-        shipped = call(address)
+        shipped = call(pe, address)
         code.append((address, b'\x90' * len(shipped), shipped))
     substitute_code(pe, 0, code)
+
 
 
 def insert_header_padding(pe, at, count):
@@ -960,6 +984,7 @@ def apply_BW1W120_patch(pe, cfg, out_dir, modules):
 
 
 def apply_BW1W130_patch(pe, cfg, out_dir, modules):
+    restore_calls(pe, BW1W130_SAFEDISC_CALLS)
     ste = section_table_end(pe)
     insert_header_padding(pe, ste, SAFEDISC_SECTION_BUMP)
     # This decryptor also took "r 32-bit" off the front of the first comment

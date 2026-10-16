@@ -558,11 +558,17 @@ Black/CreatureMentalDesireSource.cpp:
 	.data       start:0x00C5FB58 end:0x00C5FC18
 	.bss        start:0x00D08E50 end:0x00D0EBD8
 
+Black/CreatureMentalEditor.cpp:
+	.text       start:0x004E15B0 end:0x004E1710
+	.rdata      start:0x008D5084 end:0x008D5090
+	.CRT$XCU    start:0x00A4651C end:0x00A46528 align:4
+	.bss        start:0x00D0EBE8 end:0x00D0EBF8
+
 Black/CreatureMentalExploration.cpp:
-	.text       start:0x004E15B0 end:0x004E25D0
-	.rdata      start:0x008D5088 end:0x008D50E8
-	.CRT$XCU    start:0x00A4651C end:0x00A46538 align:4
-	.bss        start:0x00D0EBE8 end:0x00D2AC14
+	.text       start:0x004E1710 end:0x004E25D0
+	.rdata      start:0x008D5090 end:0x008D50E8
+	.CRT$XCU    start:0x00A46528 end:0x00A46538 align:4
+	.bss        start:0x00D0EBF8 end:0x00D2AC14
 
 Black/CreatureMentalLearn.cpp:
 	.text       start:0x004E25D0 end:0x004E4530
