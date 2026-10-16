@@ -20,7 +20,11 @@ public:
 	// BW1W120 0047f6d0 BW1M119 011d1110
 	LHReleasedFile() { ResetData(); }
 	// BW1W120 00837350 BW1M119 inlined
-	LHReleasedFile(const char* name);
+	LHReleasedFile(const char* name)
+	{
+		ResetData();
+		SetName(name);
+	}
 };
 
 #endif /* BW1_DECOMP_LH_RELEASED_FILE_INCLUDED_H */

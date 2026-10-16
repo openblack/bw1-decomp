@@ -72,6 +72,10 @@ class Object:
             # Executable to invoke, relative to the compiler directory. Defaults
             # to cl.exe; hand-supplied compilers may keep their own name/layout.
             "compiler_exe": None,
+            # MSVC precompiled header: {"header": name in the source's first
+            # #include, "source": .cpp that only includes it}. The unit is built
+            # with /Yu against a PCH compiled from that source with its own flags.
+            "pch": None,
             "progress_category": None,
             "scratch_preset_id": None,
             "shift_jis": None,
@@ -913,6 +917,13 @@ def generate_build_ninja(
             description="CL $out",
         )
         n.newline()
+        n.comment("Precompiled header for one unit (MSVC /Yc)")
+        n.rule(
+            name="cl_pch",
+            command=f"${{env}}{cl_prefix}{wrapper_cmd}{cl} /nologo $cflags /Yc$pch_header /Fp$out /c $in /Fo$pch_obj",
+            description="PCH $out",
+        )
+        n.newline()
         n.comment("Fold a recompiled unit's shared COMDATs onto the image's copies (see add_unit)")
         n.rule(
             name="fold",
@@ -1268,18 +1279,42 @@ def generate_build_ninja(
 
             if config.platform == "pe":
                 # CL (MSVC / clang-cl) build rule
+                cl_variables = {
+                    "compiler_version": Path(obj.options["compiler_version"]) if obj.options["compiler_version"] else "",
+                    "env": obj.options["env"] or "",
+                    "cl_exe": obj.options["compiler_exe"] or "cl.exe",
+                }
+                unit_implicit = list(cl_implicit)
+                pch = obj.options["pch"]
+                if pch is not None:
+                    # With /Zi, /Yu would need the PDB that built the PCH (C2858),
+                    # which tools that recompile elsewhere cannot provide: give
+                    # such units cflags without /Zi (the code is unchanged).
+                    pch_out = obj.src_obj_path.with_suffix(".pch")
+                    n.comment(f"{obj.name}: precompiled header {pch['header']}")
+                    n.build(
+                        outputs=pch_out,
+                        rule="cl_pch",
+                        inputs=pch["source"],
+                        implicit_outputs=pch_out.with_suffix(".pch.o"),
+                        variables={
+                            **cl_variables,
+                            "cflags": cflags_str,
+                            "pch_header": pch["header"],
+                            "pch_obj": pch_out.with_suffix(".pch.o"),
+                        },
+                        implicit=cl_implicit,
+                        order_only="pre-compile",
+                    )
+                    cflags_str = make_flags_str(all_cflags + [f"/Yu{pch['header']}", f"/Fp{pch_out}"])
+                    unit_implicit.append(pch_out)
                 n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")
                 n.build(
                     outputs=obj.src_obj_path,
                     rule="cl",
                     inputs=src_path,
-                    variables={
-                        "compiler_version": Path(obj.options["compiler_version"]) if obj.options["compiler_version"] else "",
-                        "cflags": cflags_str,
-                        "env": obj.options["env"] or "",
-                        "cl_exe": obj.options["compiler_exe"] or "cl.exe",
-                    },
-                    implicit=cl_implicit,
+                    variables={**cl_variables, "cflags": cflags_str},
+                    implicit=unit_implicit,
                     order_only="pre-compile",
                 )
                 used_compiler_versions.add(obj.options["compiler_version"])

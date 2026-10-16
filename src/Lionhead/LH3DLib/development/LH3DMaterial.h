@@ -2,6 +2,7 @@
 #define BW1_DECOMP_LH3D_MATERIAL_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint8_t */
 
 #include "LH3DColor.h" /* For struct LH3DColor */
@@ -61,6 +62,8 @@ struct LH3DMaterial
 	static void* g_list_render_func_normal[40];
 	// BW1W120 00c387c8 BW1M119 011d0ed8 (LHCombined Release)
 	static void* g_list_render_func_global_alpha[40];
+
+	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 0102b300 (LHCombined Release)
 	RenderMode GetMode() { return render_mode; }
