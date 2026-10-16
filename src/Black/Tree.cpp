@@ -394,7 +394,7 @@ uint32_t Tree::Process()
 		{
 			float amount = GetInfo()->GrowthAmount;
 			float rain = GClimate::GetMaxRainingOrSnowing(Pos.GetLHPoint()) * 0.01f;
-			amount += rain * GetInfo()->RainingAcceleratorMultiplier * amount;
+			amount += (float)(rain * GetInfo()->RainingAcceleratorMultiplier * amount);
 			amount *= Pos.GetAlignment() * 0.5f + 1.0f;
 			Grow(amount, false, false);
 			return IsGrowing() != false;
