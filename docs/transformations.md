@@ -52,12 +52,13 @@ Restores the pristine linker shape:
 
 - zeroes the whole header padding (`section_table_end … SizeOfHeaders`), wiping
   the cracker graffiti (`crazy bad bwoy`, `Safedisc2Cleaner …`, `BoG_`, etc.);
-- restores the first comment's 24-byte prefix (hardcoded — the decrypted exe no
-  longer has it; a future decryptor working from the encrypted image would carry
-  it through);
+- restores the front of the first comment that the decryptor erased (24 bytes in
+  1.10 and 1.20, 32 in 1.30; the erased part is read off the fixed way Intel's
+  comments begin — the decrypted exe no longer has it, and a future decryptor
+  working from the encrypted image would carry it through);
 - writes the full comments flush after the section table.
 
-Comments are identified by content (`32-bit applications`), so graffiti and
+Comments are identified by content (`applications, Version`), so graffiti and
 unrelated markers are never mistaken for them.
 
 ## dtk / lld-link
@@ -81,7 +82,7 @@ Reproduces everything the wrapping/decryptor did, at their final offsets:
 - inserts the Rich header (`insert_rich_header`), shifting the PE header and the
   free-floating comment bytes forward;
 - inserts the 0x50 SafeDisc bump after the section table so the comments land at
-  their decrypted offset, then re-applies the decryptor's 24-byte prefix erasure;
+  their decrypted offset, then re-applies the decryptor's prefix erasure (24 bytes; 32 in 1.30);
 - writes the cracker graffiti and SafeDisc markers.
 
 The Intel comment strings are no longer hardcoded here — they flow from the

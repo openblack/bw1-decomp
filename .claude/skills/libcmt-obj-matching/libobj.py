@@ -2,7 +2,7 @@
 """libobj.py — drive matching of downloaded LIBCMT.LIB / LIBCPMT.LIB objects.
 
 One CRT object at a time, made byte-exact into all three BW1 versions
-(BW1W100, BW1W110, BW1W120, BW1W130). Designed so a small model can run a loop with
+(BW1W100, BW1W110, BW1W120, BW1W130, BW1WCI). Designed so a small model can run a loop with
 minimal judgement: each subcommand prints a single JSON object to stdout.
 
 Subcommands
@@ -43,7 +43,9 @@ EXE = ".exe" if sys.platform == "win32" else ""
 LLVM_AR = ROOT / "build" / "tools" / "llvm" / "bin" / f"llvm-ar{EXE}"
 DTK = ROOT / "build" / "tools" / f"dtk{EXE}"
 NINJA = "ninja"
-VERSIONS = ["BW1W100", "BW1W110", "BW1W120", "BW1W130"]
+VERSIONS = ["BW1W100", "BW1W110", "BW1W120", "BW1W130", "BW1WCI"]
+# The original executable of each version, under orig/<version>/
+EXECUTABLE = {"BW1WCI": "CreatureIsle-decrypted.exe"}
 IMAGE_BASE = 0x400000
 
 # COFF i386 relocation types
@@ -430,7 +432,7 @@ def load_symbols(version):
 
 
 def read_exe(version):
-    return (ROOT / "orig" / version / "runblack-decrypted.exe").read_bytes()
+    return (ROOT / "orig" / version / EXECUTABLE.get(version, "runblack-decrypted.exe")).read_bytes()
 
 
 # --------------------------------------------------------------------------- #
@@ -1145,7 +1147,7 @@ def verify_one(version, dtk, py):
     # Authoritative check (robust to no-op ninja that prints no "files OK").
     sha = ROOT / "config" / version / "build.sha1"
     _, sout = _run([dtk, "shasum", "-c", str(sha)])
-    result["ok"] = "runblack-decrypted.exe: OK" in sout
+    result["ok"] = "%s: OK" % EXECUTABLE.get(version, "runblack-decrypted.exe") in sout
     result["errors"] = errs
     if not result["ok"]:
         result["tail"] = (out + "\n--SHA--\n" + sout)[-2500:]

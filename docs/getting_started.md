@@ -10,6 +10,7 @@ See [Dependencies](dependencies.md) first.
    - `orig/BW1W110/runblack-decrypted.exe` — Windows v1.1 (decrypted)
    - `orig/BW1W120/runblack-decrypted.exe` — Windows v1.2 (decrypted)
    - `orig/BW1W130/runblack-decrypted.exe` — Windows v1.3 (decrypted)
+   - `orig/BW1WCI/CreatureIsle-decrypted.exe` — Windows Creature Isle (decrypted)
 
    The Windows builds also need the four DLLs shipped alongside the exe, in the same directory: `LHaudiodllR.dll`, `LHLogR.dll`, `LHMultiplayerR.dll`, `LHDialogLib.dll` (copy these from your own install — the build checks all five files' hashes against `config/<VERSION>/build.sha1` and fails at the split step with a clear "not found" message naming whichever one is missing).
 
@@ -17,7 +18,7 @@ See [Dependencies](dependencies.md) first.
 
 3. Place the MSVC 6.0 static CRT libraries and the DirectX 7.0 SDK headers under `orig/` (they are not committed and not downloaded).
 
-   BW1W120 was built with VC6 **SP5**; BW1W100/BW1W110 with VC6 **SP4** (confirmed via Rich header build-number comparison — see `configure.py`). `configure.py` picks the right package automatically based on `--version`, so both sets need to be present side by side if you plan to work on more than one version.
+   BW1W120 was built with VC6 **SP5**; BW1W100/BW1W110 with VC6 **SP4** (confirmed via Rich header build-number comparison — see `configure.py`). BW1W130 and BW1WCI use BW1W120's libraries. `configure.py` picks the right package automatically based on `--version`, so both sets need to be present side by side if you plan to work on more than one version.
 
    **MSVC 6.0 SP5 static libs → `orig/libs/msvc6.5/`** (BW1W120)
 
@@ -113,7 +114,7 @@ See [Dependencies](dependencies.md) first.
    python configure.py --version BW1W100
    ```
 
-   Pass `--version BW1W100`, `--version BW1W110` or `--version BW1W130` for the other targets. Default is `BW1W120`.
+   Pass `--version BW1W100`, `--version BW1W110`, `--version BW1W130` or `--version BW1WCI` for the other targets. Default is `BW1W120`.
 
 5. Build:
 

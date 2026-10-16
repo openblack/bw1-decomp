@@ -1,28 +1,45 @@
 #!/usr/bin/env python3
-"""Port a version's splits.txt / symbols.txt / config.yml to another build of the same executable.
+"""Port a version's splits.txt / symbols.txt / config.yml to another build of the same program.
 
-The reference version (default BW1W120) has curated splits and symbol names. Another build of
-the same program (BW1W130, BW1WCI) is mostly the same code and data at shifted addresses, so
-the work is address translation: build a monotone map from reference addresses to target
-addresses, then rewrite every address in the config through it.
+The reference version (default BW1W120) has curated splits and symbol names. Other builds
+(BW1W130, BW1WCI and their DLLs) are mostly the same code and data at shifted addresses, so the
+work is address translation: build a monotone map from reference addresses to target addresses,
+then rewrite every address in the config through it.
 
-The map is evidence driven, never adjacency driven. Anything that cannot be placed with
-evidence is left out (the split or symbol is dropped, and dtk auto-generates the range) and is
-listed in the report, so a wrong guess cannot silently corrupt the config:
+The map is evidence driven, never adjacency driven. Whatever cannot be placed with evidence is
+left out (the split or symbol is dropped and dtk generates the range itself), so a wrong guess
+cannot silently corrupt the config. Dropped items are listed with --report.
 
-  .text        Each chunk between reference symbol/split boundaries is searched for in the target
-               with relocation-like operands (rel32 and abs32) wildcarded. Unique matches are
-               chained with a longest-increasing-subsequence, and the stretches between chained
-               anchors are walked chunk by chunk (tolerating struct offset changes inside a
-               function). A chunk is accepted only when its bytes verify.
-  .rdata/.data Unique 24-byte runs free of pointers anchor the section, the gaps are walked
-               with pointer-aware comparison (text pointers are translated through the text map).
-  .bss         Has no content; every address is placed from the operand pairs seen in matched
-               code and data (reference operand -> target operand at the same position).
+  .text         Each chunk between reference symbol/split boundaries is searched for in the
+                target with rel32/abs32 operands wildcarded. Unique matches are chained with a
+                longest-increasing-subsequence and the stretches between chained anchors are
+                walked chunk by chunk (tolerating struct offset changes inside a function). What
+                is still unmatched is diffed against the room it must fit.
+  .rdata/.data  Unique pointer-free runs anchor the section (pointers into already-mapped code are
+                translated first, so vtables and tables of function pointers match too). RTTI and
+                vtables, whose order inside a unit differs between builds, are placed by name
+                through dtk's own analysis of the target.
+  libraries     A unit that is a library object (the CRT) is the library's own bytes in every
+                build that links it: each of its sections is found by that content, relocated
+                fields left out, from the static libraries a build unpacked into build/lib.
+  .CRT$XCU      A unit's slice of the initializer table is the run of entries that point into
+                the unit's placed .text (an object's slice only lists its own _$E functions).
+  .bss          Has no content: every address comes from the operand pairs (reference operand ->
+                target operand at the same position) seen in matched code and data.
+  imports       The IAT is matched by import name, import thunks by the slot they jump through.
+
+Everything is checked the way it matters: after `ninja`, the relinked image has to be
+byte-identical to the original (see docs/porting_versions.md).
 
 Usage:
-  python3 tools/port_version.py emit --dst BW1W130                      # write config/<dst>/
-  python3 tools/port_version.py emit --dst BW1W130 --report dropped.txt  # and list what was left out
+  python3 tools/port_version.py emit --dst BW1WCI                        # write config/<dst>/
+  python3 tools/port_version.py emit --dst BW1WCI --report dropped.txt   # and list what was left out
+  python3 tools/port_version.py emit --dst BW1WCI --module LHAudio       # one module DLL
+  python3 tools/port_version.py emit --dst BW1WCI --reuse                # skip an alignment still valid
+
+then `python3 configure.py --version <dst>` and `ninja build/<dst>/config.json`, repeated (touch
+build/<dst>/runblack-preprocessed.exe in between) until dtk stops printing "Writing updated": it
+adds what it finds to the files it is given until they settle.
 
 The emitted config is a starting point, not a finished one. It writes symbols.txt before dtk has
 run over it, so a re-emit discards dtk's additions and every hand fix made since. After a re-emit,
@@ -31,7 +48,6 @@ check the dropped ranges of every linked unit, and diff the relinked exe against
 
 import argparse
 import bisect
-import json
 import re
 import struct
 import sys
@@ -136,6 +152,8 @@ def format_symbol(sym, addr=None, size=None):
     attrs = sym["attrs"]
     if size is not None and sym["size"] is not None:
         attrs = SIZE_RE.sub("size:0x%X" % size, attrs, count=1)
+    elif size is None and sym["size"] is not None:
+        attrs = re.sub(r"\s*size:0x[0-9A-Fa-f]+", "", attrs, count=1).strip()
     return "%s = %s:0x%08X; // %s" % (sym["name"], sym["sec"], sym["addr"] if addr is None else addr, attrs)
 
 
@@ -244,16 +262,27 @@ class AddrMap:
             return b[3]
         return b[2] + a - b[0]
 
-    def to_json(self):
-        return [list(b) for b in self.blocks]
-
 
 # ---------------------------------------------------------------------------------------------
 # Wildcarded regions
 # ---------------------------------------------------------------------------------------------
 
-# rel32 after call/jmp, and abs32 operands that land in the image (0x00XXYYZZ with XX in 0x40..0xFC).
-CODE_WILDCARD = re.compile(rb"(?s)[\xE8\xE9]....|..[\x40-\xFC]\x00")
+def code_wildcard(image):
+    """rel32 after call/jmp, and abs32 operands that land in the image.
+
+    An address is four little-endian bytes: two free ones, then the two high bytes, whose possible
+    values follow from the image's range (0x00401000..0x01055200 for the executables, 0x10001000..
+    for the DLLs).
+    """
+    lo, hi = image.base + 0x1000, image.base + image.size_of_image
+    alts = []
+    for top in range(lo >> 24, ((hi - 1) >> 24) + 1):
+        b2_lo = (lo >> 16) & 0xFF if top == lo >> 24 else 0
+        b2_hi = ((hi - 1) >> 16) & 0xFF if top == (hi - 1) >> 24 else 0xFF
+        alts.append(rb"..[\x%02x-\x%02x]\x%02x" % (b2_lo, b2_hi, top))
+    return re.compile(rb"(?s)[\xE8\xE9]....|" + b"|".join(alts))
+
+
 PADDING_BYTES = b"\x90\xcc"
 
 
@@ -265,6 +294,7 @@ class Region:
         self.name = name
         self.kind = kind
         self.va, self.raw = image.raw_bytes(name)
+        self.wild = code_wildcard(image)
         if lo_addr is not None or hi_addr is not None:
             lo_addr = self.va if lo_addr is None else lo_addr
             hi_addr = self.va + len(self.raw) if hi_addr is None else hi_addr
@@ -276,7 +306,7 @@ class Region:
     def _wild_code(self, hi):
         norm = bytearray(self.raw)
         mask = bytearray(len(norm))
-        for m in CODE_WILDCARD.finditer(self.raw):
+        for m in self.wild.finditer(self.raw):
             s, e = m.span()
             if self.raw[s] in (0xE8, 0xE9):
                 s += 1
@@ -294,9 +324,6 @@ class Region:
                 norm[i : i + 4] = b"\0\0\0\0"
                 mask[i : i + 4] = b"\1\1\1\1"
         return bytes(norm), bytes(mask)
-
-    def contains(self, addr):
-        return self.va <= addr < self.end
 
 
 def make_chunks(region, symbols, units, section_names):
@@ -326,14 +353,14 @@ class Aligner:
     size is exactly the sum of the chunk sizes).
     """
 
-    def __init__(self, a, b, chunks, translate=None, pairs=None):
+    def __init__(self, a, b, chunks, translate=None):
         self.a, self.b, self.chunks = a, b, chunks
         self.translate = translate  # reference pointer value -> target value or None (data only)
-        self.pairs = pairs if pairs is not None else {}  # reference operand -> {target operand: count}
         self.last_info = 0
         self.res = [None] * len(chunks)
         self.how = [None] * len(chunks)
         self.blen = {}  # target length of chunks whose size differs from the reference
+        self.loose = []  # reference ranges (sorted) whose functions are not 16-byte aligned
         self.stats = dict(seed=0, walk=0, infer=0, ident=0, lost=0)
 
     # -- verification ---------------------------------------------------------------------
@@ -742,6 +769,62 @@ class Aligner:
                                     self.res[t], self.how[t] = hi - after + sum(self.size(u) for u in run if real[0] < u < t), "bracket"
             k = j
 
+    def align_runs(self, snap=None, min_fraction=0.6):
+        """Place runs of unmatched functions by diffing the whole run against the gap it must fit.
+
+        A function that gained or lost an instruction shifts everything after it, which defeats the
+        position-by-position comparison; a sequence diff of the run against the room between its
+        placed neighbours still finds the common stretches. A chunk is placed when its first byte
+        lies in a common stretch and most of its bytes are common.
+        """
+        import difflib
+
+        n = len(self.chunks)
+        placed = 0
+        k = 0
+        while k < n:
+            if self.res[k] is not None:
+                k += 1
+                continue
+            j = k
+            while j < n and self.res[j] is None:
+                j += 1
+            lo = 0 if k == 0 else (self.res[k - 1] + self.size(k - 1) if self.res[k - 1] is not None else None)
+            hi = len(self.b.raw) if j >= n else self.res[j]
+            run = [t for t in range(k, j)]
+            if lo is not None and 0 < hi - lo <= 6 * sum(self.size(t) for t in run) + 0x400 and any(not self.is_dust(t) for t in run):
+                a0 = self.chunks[run[0]]["addr"] - self.a.va
+                a1 = self.chunks[run[-1]]["end"] - self.a.va
+                # wildcard bytes must not break matches: zero them on both sides
+                a_bytes = self.a.norm[a0:a1]
+                b_bytes = self.b.norm[lo:hi]
+                sm = difflib.SequenceMatcher(None, a_bytes, b_bytes, autojunk=False)
+                blocks = [m for m in sm.get_matching_blocks() if m.size >= 4]
+                starts = [m.a for m in blocks]
+                for t in run:
+                    if self.is_dust(t):
+                        continue
+                    c = self.chunks[t]
+                    s0 = c["addr"] - self.a.va - a0
+                    e0 = c["end"] - self.a.va - a0
+                    i = bisect.bisect_right(starts, s0) - 1
+                    if i < 0 or not (blocks[i].a <= s0 < blocks[i].a + blocks[i].size):
+                        continue
+                    common = sum(max(0, min(m.a + m.size, e0) - max(m.a, s0)) for m in blocks[max(0, i - 1) :] if m.a < e0)
+                    if common < min_fraction * (e0 - s0):
+                        continue
+                    pos = lo + blocks[i].b + (s0 - blocks[i].a)
+                    if snap is not None:
+                        near = [q for q in range(pos - 8, pos + 9) if q + self.b.va in snap]
+                        if near:
+                            pos = min(near, key=lambda q: abs(q - pos))
+                    if self.res[t] is None and pos >= lo and pos < hi:
+                        self.res[t], self.how[t] = pos, "diff"
+                        placed += 1
+            k = j
+        self.stats["diff"] = self.stats.get("diff", 0) + placed
+        return placed
+
     def make_monotone(self):
         """Drop placements that run backwards (a false anchor); report how many."""
         last = -1
@@ -754,6 +837,28 @@ class Aligner:
                 self.res[k] = None
                 continue
             last = st + self.size(k)
+        return dropped + self.drop_misaligned()
+
+    def drop_misaligned(self):
+        """Game code functions start on 16 bytes in every build (libraries declare their own alignment
+        in splits.txt and are left alone, as are data tables, whose alignment is incidental)."""
+        dropped = []
+        if self.a.kind != "code":
+            return dropped
+        loose = self.loose
+        starts = [r[0] for r in loose]
+        for k, st in enumerate(self.res):
+            if st is None or self.how[k] == "name":
+                continue
+            a = self.chunks[k]["addr"]
+            if a % 16:
+                continue
+            i = bisect.bisect_right(starts, a) - 1
+            if i >= 0 and a < loose[i][1]:
+                continue
+            if (self.b.va + st) % 16:
+                dropped.append(k)
+                self.res[k] = None
         return dropped
 
     def blocks(self, trusted=False):
@@ -781,7 +886,7 @@ def collect_pairs(al, pairs, verdicts=("yes",)):
         bo = al.res[k]
         if bo is None or al.how[k] in ("bracket", "infer", "resized", "pair"):
             continue
-        if al.verify(k, bo) not in verdicts and al.how[k] != "seed":
+        if al.how[k] not in ("seed", "name") and al.verify(k, bo) not in verdicts:
             continue
         ao = c["addr"] - a.va
         n = c["end"] - c["addr"]
@@ -800,7 +905,7 @@ def _vote(pairs, va, vb):
 
 def _collect_code(a, b, ao, bo, n, pairs):
     raw_a, raw_b = a.raw, b.raw
-    for m in CODE_WILDCARD.finditer(raw_a, ao, ao + n):
+    for m in a.wild.finditer(raw_a, ao, ao + n):
         s, e = m.span()
         off = s - ao
         if raw_a[s] in (0xE8, 0xE9):
@@ -882,21 +987,59 @@ def import_layout(image):
         base = image.base
         # thunks are zero terminated
         def span(rva):
+            if not rva or image.section_at(base + rva) is None:
+                return None
             n = 0
             while image.u32(base + rva + 4 * n):
                 n += 1
             return base + rva, base + rva + 4 * (n + 1)
-        a0, a1 = span(first)
-        iat_lo = a0 if not iat_lo else min(iat_lo, a0)
-        iat_hi = max(iat_hi, a1)
-        o0, o1 = span(orig)
-        ilt_lo = o0 if not ilt_lo else min(ilt_lo, o0)
-        ilt_hi = max(ilt_hi, o1)
+
+        thunks = span(first)
+        if thunks:
+            iat_lo = thunks[0] if not iat_lo else min(iat_lo, thunks[0])
+            iat_hi = max(iat_hi, thunks[1])
+        thunks = span(orig)
+        if thunks:
+            ilt_lo = thunks[0] if not ilt_lo else min(ilt_lo, thunks[0])
+            ilt_hi = max(ilt_hi, thunks[1])
         pos += 20
     return dict(
         import_dir=imp_va, import_end=imp_va + imp_size, export_dir=exp_va, export_size=exp_size,
         debug_dir=dbg_va, debug_size=dbg_size, iat=(iat_lo, iat_hi), ilt=(ilt_lo, ilt_hi),
     )
+
+
+def original_import_start(image, layout):
+    """Where the linker put the import descriptors inside .rdata.
+
+    Creature Isle's directory points at a rebuilt table in .MGD32, but the original descriptors
+    (name RVA -> "xxx.dll", FirstThunk -> the IAT) are still sitting in .rdata.
+    """
+    rdata = image.section(".rdata")
+    lo, hi = rdata["va"], rdata["va"] + rdata["rsize"]
+    if lo <= layout["import_dir"] < hi:
+        return layout["import_dir"]
+    base = image.base
+    best = (0, 0)  # (run length, start)
+    pos = lo
+    run = 0
+    start = 0
+    while pos < hi:
+        orig, _, _, name, first = struct.unpack("<IIIII", image.read(pos, 20))
+        ok = 0 < name and lo <= base + name < hi and lo <= base + first < hi
+        if ok:
+            ok = read_cstr(image, base + name).lower().endswith(".dll")
+        if ok:
+            if not run:
+                start = pos
+            run += 1
+            pos += 20
+            if run > best[0]:
+                best = (run, start)
+        else:
+            run = 0
+            pos += 4
+    return best[1]
 
 
 class Porter:
@@ -909,21 +1052,68 @@ class Porter:
         self.header, self.units = parse_splits(src_dir / "splits.txt")
         self.hdr_rows = parse_header_sections(self.header)
         self.la, self.lb = import_layout(self.A), import_layout(self.B)
+        self.a_imports = original_import_start(self.A, self.la)
+        self.b_imports = original_import_start(self.B, self.lb)
+        rdata = self.B.section(".rdata")
+        # False when the target's import tables were moved out of .rdata (Creature Isle)
+        self.standard_imports = rdata["va"] <= self.lb["import_dir"] < rdata["va"] + rdata["rsize"]
         self.pairs = {}
         self.clean = {}
+        self.native_functions = set()
+        self.native_sizes = {}
+        self.native_starts = []
+        self.name_pairs = {}
+        self.name_sizes = {}
+        self.native_structures = []
         self.aligners = {}
         self.map = AddrMap()
 
+    @staticmethod
+    def rdata_start(image, layout):
+        """Where the curated .rdata begins: after the IAT and, if the linker left one, the debug directory."""
+        rdata = image.section(".rdata")
+        if rdata["va"] <= layout["debug_dir"] < rdata["va"] + rdata["rsize"]:
+            return layout["debug_dir"] + layout["debug_size"]
+        return layout["iat"][1]
+
     # data regions that carry curated content (everything except the import machinery)
     def data_regions(self):
-        la, lb = self.la, self.lb
-        a_rdata_lo = la["debug_dir"] + la["debug_size"]
-        b_rdata_lo = lb["debug_dir"] + lb["debug_size"]
+        a_rdata_lo = self.rdata_start(self.A, self.la)
+        b_rdata_lo = self.rdata_start(self.B, self.lb)
         a_bss = next(r for r in self.hdr_rows if r["name"] == ".bss")["vaddr"]
         return {
-            ".rdata": ((a_rdata_lo, la["import_dir"]), (b_rdata_lo, lb["import_dir"])),
+            ".rdata": ((a_rdata_lo, self.a_imports), (b_rdata_lo, self.b_imports)),
             ".data": ((self.A.section(".data")["va"], a_bss), (self.B.section(".data")["va"], None)),
         }
+
+    def thunk_matches(self, a_addr, b_addr):
+        """For an import thunk (jmp dword ptr [__imp_X]) in the reference, whether the target has the
+        same thunk at b_addr; None when a_addr is no thunk."""
+        code = self.A.read(a_addr, 6)
+        if code[:2] != b"\xff\x25":
+            return None
+        if not hasattr(self, "_slots"):
+            self._slots = ({v: k for k, v in import_slots(self.A).items()}, import_slots(self.B))
+        key = self._slots[0].get(struct.unpack("<I", code[2:])[0])
+        if key is None:
+            return None
+        slot = self._slots[1].get(key)
+        return slot is not None and self.B.read(b_addr, 6) == b"\xff\x25" + struct.pack("<I", slot)
+
+    def placement_solid(self, addr):
+        """True when the chunk starting at a reference address was placed on content evidence:
+        matched outright, or placed by identity/inference and then confirmed by its bytes."""
+        for al in self.aligners.values():
+            if al.a.va <= addr < al.a.end:
+                if not hasattr(al, "_starts"):
+                    al._starts = {c["addr"]: k for k, c in enumerate(al.chunks)}
+                k = al._starts.get(addr)
+                if k is None or al.res[k] is None:
+                    return False
+                if al.how[k] in ("seed", "walk", "name", "group"):
+                    return True
+                return al.how[k] in ("ident", "bracket", "infer") and al.verify(k, al.res[k]) == "yes"
+        return False
 
     def combined_map(self, trusted=True):
         m = AddrMap()
@@ -944,14 +1134,23 @@ class Porter:
 
     def align_text(self):
         ra, rb = Region(self.A, ".text", "code"), Region(self.B, ".text", "code")
-        chunks = make_chunks(ra, self.symbols, self.units, {".text"})
+        chunks = make_chunks(ra, self.symbols, self.units, {".text", ".text$x"})
         al = Aligner(ra, rb, chunks)
+        al.loose = sorted(
+            (a, b)
+            for u in self.units
+            for sec, a, b, attrs in u["secs"]
+            if sec in (".text", ".text$x") and "align:" in attrs and int(re.search(r"align:(\d+)", attrs).group(1)) < 16
+        )
         seeds = al.chain(al.seed_chunks())
         al.place_seeds(seeds)
         al.fill_gaps()
         al.make_monotone()
         al.repair()
+        al.align_runs(self.native_functions)
+        al.make_monotone()
         self.aligners[".text"] = al
+        self.apply_name_pairs(".text")
         self.map = self.combined_map()
         self.log("text: %d chunks, %s, unplaced %d" % (len(chunks), al.stats, sum(r is None for r in al.res)))
 
@@ -984,8 +1183,17 @@ class Porter:
 
     def run(self, dtk, cache):
         """All alignment passes; each round feeds operand pairs and translations back in."""
-        self.collect_name_pairs(self.native_symbols(dtk, cache))
+        native = self.native_symbols(dtk, cache)
+        self.native_functions = {s["addr"] for s in native.values() if s["sec"] == ".text"}
+        self.native_sizes = {s["addr"]: s["size"] for s in native.values() if s["sec"] == ".text" and s["size"]}
+        self.native_starts = sorted(self.native_functions)
+        self.native_structures = [
+            (s["addr"], s["addr"] + s["size"]) for s in native.values() if s["size"] and s["name"].startswith(("??_R", "??_7"))
+        ]
+        self.collect_name_pairs(native)
+        self.collect_library_pairs()
         self.align_text()
+        self.settle_library_pairs(".text")
         self.align_data(".rdata")
         self.align_data(".data")
         for _ in range(2):
@@ -997,6 +1205,8 @@ class Porter:
         self.gather_pairs()
         for name in (".text", ".rdata", ".data"):
             self.refine(name)
+        for name in (".text", ".rdata", ".data"):
+            self.settle_library_pairs(name)
         self.map_bss()
 
     # -- name anchors ---------------------------------------------------------------------
@@ -1015,7 +1225,9 @@ class Porter:
                 exe = tmp / "target.exe"
                 exe.write_bytes(pre_dtk_patch.build_clean(self.B.data))
                 (tmp / "symbols.txt").write_text("")
-                (tmp / "splits.txt").write_text("Sections:\n\t.text       type:code align:4096\n\t.rdata      type:rodata align:4096\n\t.data       type:data align:4096\n\t.data1      type:data align:4096\n\tSELFMOD     type:data align:4096\n\t.rsrc       type:rodata align:4096\n")
+                kinds = {".text": "code", ".rdata": "rodata", ".rsrc": "rodata", ".reloc": "rodata"}
+                rows = ["\t%-11s type:%s align:4096" % (sec["name"], kinds.get(sec["name"], "data")) for sec in self.B.sections if sec["name"] != ".reloc"]
+                (tmp / "splits.txt").write_text("Sections:\n" + "\n".join(rows) + "\n")
                 (tmp / "config.yml").write_text(
                     "object: %s\nsymbols: %s\nsplits: %s\ngenerate_imports: true\n" % (exe, tmp / "symbols.txt", tmp / "splits.txt")
                 )
@@ -1040,7 +1252,6 @@ class Porter:
                 sizes[sym["addr"]] = sym["size"]
         # the rest of each class's RTTI hangs off its locator
         A, B = self.A, self.B
-        names = {s["addr"]: s["name"] for s in self.symbols if "raw" not in s}
         for sym in self.symbols:
             if "raw" in sym or not sym["name"].startswith("??_R4") or sym["addr"] not in pairs:
                 continue
@@ -1062,9 +1273,95 @@ class Porter:
                     continue  # shared base descriptor already placed from another class
                 pairs[a1] = b1
                 sizes[a1] = 24
+        # import thunks (jmp dword ptr [__imp_X]) are found by the slot they jump through
+        slots_a = {v: k for k, v in import_slots(A).items()}
+        slots_b = import_slots(B)
+        text_b = B.section(".text")
+        raw_b = B.data[text_b["raw"] : text_b["raw"] + min(text_b["rsize"], text_b["vsize"])]
+        thunks = 0
+        for sym in self.symbols:
+            if "raw" in sym or sym["sec"] != ".text" or sym["size"] != 6:
+                continue
+            code = A.read(sym["addr"], 6)
+            if code[:2] != b"\xff\x25":
+                continue
+            key = slots_a.get(struct.unpack("<I", code[2:])[0])
+            if key is None or key not in slots_b:
+                continue
+            needle = b"\xff\x25" + struct.pack("<I", slots_b[key])
+            found = [m.start() for m in re.finditer(re.escape(needle), raw_b)]
+            if len(found) > 1:
+                # a tail call can jump through the same slot; the thunk sits among other thunks
+                found = [f for f in found if raw_b[f - 6 : f - 4] == b"\xff\x25" or raw_b[f + 6 : f + 8] == b"\xff\x25"]
+            if len(found) == 1:
+                pairs[sym["addr"]] = text_b["va"] + found[0]
+                sizes[sym["addr"]] = 6
+                thunks += 1
         self.name_pairs = pairs
         self.name_sizes = sizes
-        self.log("name anchors: %d (RTTI, vtables)" % len(pairs))
+        self.log("name anchors: %d (RTTI, vtables, %d import thunks)" % (len(pairs), thunks))
+
+    def collect_library_pairs(self):
+        """Library units (the CRT) are the library's own bytes in every build that links them: find
+        each of their sections in the target by that content, relocated fields left out. A unique
+        match is an anchor; several are settled later by where the alignment expects the unit."""
+        members = library_members()
+        found = deferred = 0
+        self.library_candidates = {}
+        self.library_placed = set()
+        for u in self.units:
+            m = LIBRARY_UNIT.match(u["name"])
+            datas = members.get((m.group(1).lower(), m.group(2).lower())) if m else None
+            if not datas:
+                continue
+            for sec, s, e, attrs in u["secs"]:
+                if sec == ".bss" or sec == ".drectve":
+                    continue
+                for data, comdats in ((d, c) for d in datas for c in (True, False)):
+                    body, relocs = library_contribution(data, sec, comdats)
+                    if not body:
+                        continue
+                    # the reference has to hold this very object in that range
+                    if not (len(body) <= e - s < len(body) + 16) or not find_masked(self.A.read(s, len(body)), body, relocs):
+                        continue
+                    pe_a = self.A.section_at(s)
+                    pe_b = self.B.section(pe_a["name"])
+                    raw = self.B.data[pe_b["raw"] : pe_b["raw"] + min(pe_b["rsize"], pe_b["vsize"] or pe_b["rsize"])]
+                    align = re.search(r"align:(\d+)", attrs)
+                    align = int(align.group(1)) if align else 4
+                    hits = [pe_b["va"] + h for h in find_masked(raw, body, relocs) if (pe_b["va"] + h) % align == s % align]
+                    if len(hits) == 1:
+                        self.name_pairs[s] = hits[0]
+                        self.name_sizes[s] = len(body)
+                        self.library_placed.add(s)
+                        found += 1
+                    elif hits:
+                        self.library_candidates[s] = (hits, len(body))
+                        deferred += 1
+                    break
+        self.log("library objects: %d sections found by content, %d ambiguous" % (found, deferred))
+
+    def settle_library_pairs(self, name):
+        """Ambiguous library sections take the match the alignment around them predicts."""
+        settled = 0
+        for s, (hits, size) in list(self.library_candidates.items()):
+            al = self.aligners.get(name)
+            if al is None or not (al.a.va <= s < al.a.end):
+                continue
+            predicted = self.map.lookup(s)
+            if predicted is None:
+                continue
+            near = [h for h in hits if abs(h - predicted) < 16]
+            if len(near) == 1:
+                self.name_pairs[s] = near[0]
+                self.name_sizes[s] = size
+                self.library_placed.add(s)
+                del self.library_candidates[s]
+                settled += 1
+        if settled:
+            self.apply_name_pairs(name)
+            self.map = self.combined_map()
+        return settled
 
     def apply_name_pairs(self, name):
         """Place chunks that start at a named-symbol address exactly where the name says."""
@@ -1110,8 +1407,15 @@ class Porter:
         sec = self.B.section(".data")
         b_hi = sec["va"] + sec["vsize"]
         anchors = [(a, b) for a, b in sorted(self.clean.items()) if a_lo <= a < a_hi and b < b_hi]
+        # Creature Isle's raw size stops where the initialised data does, which pins where .bss starts
+        # (earlier builds round it up to a page and say nothing)
+        exact_start = sec["va"] + sec["rsize"] if sec["rsize"] % 0x1000 else None
         if anchors and anchors[0][0] - a_lo < 0x40:
-            anchors.insert(0, (a_lo, a_lo + anchors[0][1] - anchors[0][0]))
+            start = a_lo + anchors[0][1] - anchors[0][0]
+            if exact_start is None or start == exact_start:
+                anchors.insert(0, (a_lo, start))
+        elif exact_start is not None and anchors and anchors[0][1] - anchors[0][0] == exact_start - a_lo:
+            anchors.insert(0, (a_lo, exact_start))
         anchors.append((a_hi, b_hi))
         self.bss = BssMap(anchors)
         self.bss_range = (a_lo, a_hi)
@@ -1158,6 +1462,7 @@ class Porter:
             if prev_start[k] < start < next_start[k]:
                 res[k], al.how[k] = start, "pair"
                 placed += 1
+        al.drop_misaligned()
         self.map = self.combined_map()
         self.log("%s: placed %d more chunks from operand pairs" % (name, placed))
         return placed
@@ -1185,6 +1490,120 @@ class BssMap:
         return x + (bl - al) if bl - al == br - ar else None
 
     lookup_end = lookup
+
+
+# ---------------------------------------------------------------------------------------------
+# Library objects
+# ---------------------------------------------------------------------------------------------
+
+LIBRARY_UNIT = re.compile(r"^(?:\w+/)?lib/([^/]+)/([^/]+\.obj)$")
+IMAGE_SCN_LNK_INFO = 0x200
+IMAGE_SCN_LNK_REMOVE = 0x800
+IMAGE_SCN_LNK_COMDAT = 0x1000
+IMAGE_SCN_CNT_UNINITIALIZED_DATA = 0x80
+IMAGE_REL_I386_SECTION = 0x000A
+
+
+def ar_members(data):
+    """(member name, bytes) of every object in a COFF archive (.lib)."""
+    if data[:8] != b"!<arch>\n":
+        return
+    pos, longnames = 8, b""
+    while pos + 60 <= len(data):
+        name, size = data[pos : pos + 16].rstrip(), int(data[pos + 48 : pos + 58])
+        body = data[pos + 60 : pos + 60 + size]
+        pos += 60 + size + (size & 1)
+        if name == b"/":
+            continue  # linker members
+        if name == b"//":
+            longnames = body
+            continue
+        if name[:1] == b"/" and name[1:].isdigit():
+            off = int(name[1:])
+            end = min(i for i in (longnames.find(b"\0", off), longnames.find(b"/\n", off), len(longnames)) if i >= 0)
+            name = longnames[off:end]
+        yield name.rstrip(b"/").decode("latin-1"), body
+
+
+def coff_sections(data):
+    """[(name, contents, {offset: width of a relocated field}, characteristics)] of a COFF object."""
+    _, nsec, _, symptr, nsym, optsz, _ = struct.unpack_from("<HHIIIHH", data, 0)
+    strtab = symptr + 18 * nsym
+    out = []
+    for i in range(nsec):
+        raw_name, _, _, size, ptr, relptr, _, nrel, _, flags = struct.unpack_from("<8sIIIIIIHHI", data, 20 + optsz + 40 * i)
+        name = raw_name.rstrip(b"\0")
+        if name[:1] == b"/":
+            off = strtab + int(name[1:])
+            name = data[off : data.index(b"\0", off)]
+        relocs = {}
+        for r in range(nrel):
+            at, _, typ = struct.unpack_from("<IIH", data, relptr + 10 * r)
+            relocs[at] = 2 if typ == IMAGE_REL_I386_SECTION else 4
+        body = data[ptr : ptr + size] if ptr and not flags & IMAGE_SCN_CNT_UNINITIALIZED_DATA else None
+        out.append((name.decode("latin-1"), body, relocs, flags))
+    return out
+
+
+def library_contribution(data, name, comdats=True):
+    """What an object adds to an output section: its sections of that name back to back, each at
+    its own alignment, with the alignment padding and relocated fields as {offset: width}. A COMDAT
+    another object already defines (a shared string) is not linked again, hence comdats=False."""
+    body = bytearray()
+    relocs = {}
+    for sec, contents, rel, flags in coff_sections(data):
+        if sec != name or flags & (IMAGE_SCN_LNK_INFO | IMAGE_SCN_LNK_REMOVE) or contents is None:
+            continue
+        if flags & IMAGE_SCN_LNK_COMDAT and not comdats:
+            continue
+        align = 1 << (((flags >> 20) & 0xF) - 1) if (flags >> 20) & 0xF else 1
+        pad = -len(body) % align
+        if pad:
+            relocs[len(body)] = pad
+            body += b"\0" * pad
+        for at, width in rel.items():
+            relocs[len(body) + at] = width
+        body += contents
+    return bytes(body), relocs
+
+
+def library_members(lib_dir=REPO / "build" / "lib"):
+    """{(archive, object file name): [contents]} of the static libraries the build unpacked."""
+    out = {}
+    for lib in sorted(lib_dir.glob("*.lib")):
+        for name, data in ar_members(lib.read_bytes()):
+            out.setdefault((lib.stem.lower(), name.replace("\\", "/").rsplit("/", 1)[-1].lower()), []).append(data)
+    return out
+
+
+def find_masked(haystack, body, relocs, limit=16):
+    """Offsets where body occurs in haystack with its relocated fields ignored (none when there are
+    more than limit)."""
+    mask = bytearray(len(body))
+    for at, width in relocs.items():
+        mask[at : at + width] = b"\1" * width
+    # look for the longest run of fixed bytes, then check the rest
+    best, run_start = (0, 0), None
+    for i in range(len(body) + 1):
+        if i < len(body) and not mask[i]:
+            run_start = i if run_start is None else run_start
+        elif run_start is not None:
+            best = max(best, (i - run_start, run_start))
+            run_start = None
+    length, lo = best
+    if length < min(8, len(body)):
+        return []
+    needle = body[lo : lo + length]
+    out = []
+    at = haystack.find(needle)
+    while at >= 0 and len(out) <= limit:
+        start = at - lo
+        if 0 <= start and start + len(body) <= len(haystack):
+            window = haystack[start : start + len(body)]
+            if all(mask[i] or window[i] == body[i] for i in range(len(body))):
+                out.append(start)
+        at = haystack.find(needle, at + 1)
+    return out if len(out) <= limit else []
 
 
 def import_slots(image):
@@ -1241,7 +1660,8 @@ class FullMap:
             return self.bss.lookup(x)
         end = self.main.lookup_end(x)
         nxt = self.main.lookup(x) if x != self.bss_range[0] else None
-        if end is not None and nxt is not None and end > nxt and self.main._block(x) is not None and self.main._block(x)[0] == x:
+        last = self.main._block(x - 1)
+        if end is not None and nxt is not None and last is not None and last[2] <= nxt < end and self.main._block(x) is not None and self.main._block(x)[0] == x:
             return nxt  # the neighbour was placed inside this block's extrapolated tail
         return end
 
@@ -1260,7 +1680,10 @@ def build_full_map(porter):
             blocks.append((a, a + 4, sb[key]))
     # sections that move rigidly
     for name in (".data1", "SELFMOD", ".rsrc"):
-        a, b = A.section(name), B.section(name)
+        try:
+            a, b = A.section(name), B.section(name)
+        except KeyError:
+            continue
         blocks.append((a["va"], a["va"] + min(a["vsize"], b["vsize"]), b["va"]))
     skipped = 0
     for blk in sorted(blocks):
@@ -1291,32 +1714,72 @@ def drectve_ranges(porter):
 
 
 def rename_placeholder(name, a_addr, b_addr):
-    """Placeholder names carry their own address; re-key them to the target address."""
-    return name.replace("%08X" % a_addr, "%08X" % b_addr)
+    """Placeholder names carry their own address (fn_0040405A, dtk's de-duplicated data_0x100665a0);
+    re-key them to the target address."""
+    return name.replace("%08X" % a_addr, "%08X" % b_addr).replace("%08x" % a_addr, "%08x" % b_addr)
 
 
-def map_symbols(porter, fmap, boundaries=()):
+def map_symbols(porter, fmap, boundaries=(), starts_by_section=None, pad_to_unit_end=False):
     """Reference symbols rewritten for the target: (lines, dropped, clipped).
 
-    boundaries are target addresses where a split starts or ends; a symbol may not span one."""
-    bounds = sorted(set(boundaries))
+    boundaries are target addresses where a split starts or ends; a symbol may not span one, nor
+    the end of a section's raw data when that was trimmed (Creature Isle's .data1 holds less of
+    LH3DP3's tables than 1.20's)."""
+    # raw data cut short of the file alignment (Creature Isle's container trims it to the last byte)
+    align = porter.B.pe.OPTIONAL_HEADER.FileAlignment
+    short = {sec["name"]: sec["va"] + sec["rsize"] for sec in porter.B.sections if 0 < sec["rsize"] < sec["vsize"] and sec["rsize"] % align}
+    bounds = sorted(set(boundaries) | set(short.values()))
+    added = 0
     bysec = {}
     dropped = []
     for sym in porter.symbols:
         if "raw" in sym:
             continue
         b = fmap.start(sym["addr"])
-        if b is None:
+        if b is None or (sym["sec"] == ".text" and porter.thunk_matches(sym["addr"], b) is False):
+            # an import thunk that is not one here: the import is called directly in this build
             dropped.append(sym)
+            continue
+        if sym["sec"] in short and b >= short[sym["sec"]] and not fmap._in_bss(sym["addr"]):
+            dropped.append(sym)  # past the section's trimmed raw data, which an object cannot hold
             continue
         size = sym["size"]
         if size:
             e = fmap.end(sym["addr"] + size)
-            if e is not None and e > b:
+            solid = e is not None and e > b
+            confirmed = False
+            if solid:
                 size = e - b
+                # the next chunk starting where this one ends confirms the size; otherwise
+                # something may have been inserted in between
+                confirmed = fmap.start(sym["addr"] + sym["size"]) == e
+            if sym["sec"] == ".text":
+                if not (solid and porter.placement_solid(sym["addr"])):
+                    # a size inferred from the room available, or none at all: take dtk's own analysis
+                    # of the function where it has one, since a wrong size is worse than none
+                    size = porter.native_sizes.get(b)
+                elif not confirmed:
+                    # dtk will not accept a symbol running over a function start it finds itself
+                    i = bisect.bisect_right(porter.native_starts, b)
+                    if i < len(porter.native_starts) and porter.native_starts[i] < b + size:
+                        size = porter.native_starts[i] - b
+        if size is None and sym["size"] and "noreloc" in sym["attrs"]:
+            dropped.append(sym)  # dtk insists such symbols have a size, and regenerates them anyway
+            continue
         bysec.setdefault(sym["sec"], []).append([b, sym, size])
     lines = []
     clipped = 0
+    seen_names = set()
+    # dtk stretches a function over the gap that follows it, so every unit has to open on a symbol
+    for sec, starts in (starts_by_section or {}).items():
+        have = {t[0] for t in bysec.get(sec, [])}
+        for bs in sorted(starts - have):
+            ref = {".text": ("fn_", "function"), ".rdata": ("lbl_", "object"), ".data": ("lbl_", "object")}.get(sec)
+            if ref is None:
+                continue
+            fake = dict(name="%s%08X" % (ref[0], bs), sec=sec, addr=bs, size=None, attrs="type:%s" % ref[1])
+            bysec.setdefault(sec, []).append([bs, fake, None])
+            added += 1
     for sec in sorted(bysec, key=lambda n: {".text": 0, ".rdata": 1, ".data": 2}.get(n, 3)):
         items = sorted(bysec[sec], key=lambda t: t[0])  # stable: aliases keep their order
         for i in range(len(items)):
@@ -1330,10 +1793,33 @@ def map_symbols(porter, fmap, boundaries=()):
             if j < len(bounds) and bounds[j] < limit:
                 limit = bounds[j]
             if limit < b + size:
+                if items[i][1]["name"].startswith(("??_R", "??_7")):
+                    # placed by name, so the units around it moved independently: let dtk name it
+                    items[i][2] = -1
+                    continue
                 items[i][2] = limit - b
                 clipped += 1
+        if pad_to_unit_end:
+            # an object extracted from a unit loses the alignment padding after its last symbol, which
+            # shifts everything behind it when the next unit is packed (align:1): own the padding
+            ends = sorted((starts_by_section or {}).get(sec + ":end", ()))
+            for i, item in enumerate(items):
+                b, _, size = item
+                if not size or size == -1:
+                    continue
+                j = bisect.bisect_left(ends, b + size + 1)
+                if j < len(ends) and ends[j] - (b + size) < 4 and (i + 1 == len(items) or items[i + 1][0] >= ends[j]):
+                    item[2] = ends[j] - b
         for b, sym, size in items:
+            if size == -1:
+                dropped.append(sym)
+                continue
             named = dict(sym, name=rename_placeholder(sym["name"], sym["addr"], b))
+            if named["name"] in seen_names and sym["sec"] != ".text" and "alias" not in named["attrs"]:
+                # a name used by several statics (a CRT object's `_dststart`s): the extracted objects
+                # refer to symbols by name, so every copy after the first needs its own
+                named["name"] = "data_0x%08x" % b
+            seen_names.add(named["name"])
             if "scope:weak" in named["attrs"]:
                 # a weak COMDAT function in a unit that is linked from its extracted object makes
                 # lld-link crash; the reference only gets away with it because that unit is compiled
@@ -1342,7 +1828,7 @@ def map_symbols(porter, fmap, boundaries=()):
     return lines, dropped, clipped
 
 
-def bracket_runs(porter, mapped):
+def bracket_runs(porter, mapped, inferred):
     """Units whose own ends could not be placed, sandwiched between two placed neighbours with a
     gap of exactly their combined size, sit back to back inside that gap."""
     by_sec = {}
@@ -1376,25 +1862,142 @@ def bracket_runs(porter, mapped):
                         align = int(align.group(1)) if align else 4
                         if p % align == s % align:
                             mapped[ui][ri] = (sec, p, p + e - s, attrs)
+                            inferred.add((ui, ri))
                             recovered += 1
                         p += e - s
             i = j
     return recovered
 
 
+def adjacent_ends(porter, mapped, parts, inferred, tolerance=0.25, slack=0x40):
+    """A unit with an unplaced end borrows the neighbouring unit's boundary when the resulting
+    range is about as long as the reference's (so nothing big was inserted between them)."""
+    by_sec = {}
+    for ui, u in enumerate(porter.units):
+        for ri, (sec, s, e, attrs) in enumerate(u["secs"]):
+            if sec != ".drectve":
+                by_sec.setdefault(sec, []).append((s, e, ui, ri))
+    recovered = 0
+    for sec, items in by_sec.items():
+        items.sort()
+        for i, (s, e, ui, ri) in enumerate(items):
+            if mapped[ui][ri] is not None:
+                continue
+            attrs = porter.units[ui]["secs"][ri][3]
+            align = re.search(r"align:(\d+)", attrs)
+            align = int(align.group(1)) if align else 4
+            bs, be = parts[ui][ri]
+            if bs is None and i > 0 and items[i - 1][1] == s:
+                left = mapped[items[i - 1][2]][items[i - 1][3]]
+                bs = left[2] if left is not None else parts[items[i - 1][2]][items[i - 1][3]][1]
+            if be is None and i + 1 < len(items) and items[i + 1][0] == e:
+                right = mapped[items[i + 1][2]][items[i + 1][3]]
+                be = right[1] if right is not None else parts[items[i + 1][2]][items[i + 1][3]][0]
+            if bs is None or be is None or be <= bs or bs % align != s % align:
+                continue
+            length = e - s
+            if abs((be - bs) - length) <= tolerance * length + slack:
+                mapped[ui][ri] = (sec, bs, be, attrs)
+                inferred.add((ui, ri))
+                recovered += 1
+    return recovered
+
+
+def close_small_gaps(porter, mapped, limit=16, fixed=()):
+    """Units that touched in the reference but ended up a few bytes apart (padding that belongs to
+    one of them) touch again: dtk refuses a gap too small to be a unit of its own. Ranges in
+    `fixed` are exact and stay as they are."""
+    by_sec = {}
+    for ui, u in enumerate(porter.units):
+        for ri, (sec, s, e, attrs) in enumerate(u["secs"]):
+            if sec != ".drectve":
+                by_sec.setdefault(sec, []).append((s, e, ui, ri))
+    def padding(lo, hi):
+        return set(porter.B.read(lo, hi - lo)) <= set(PADDING_BYTES + b"\0")
+
+    closed = 0
+    for sec, items in by_sec.items():
+        items.sort()
+        for (s0, e0, u0, r0), (s1, e1, u1, r1) in zip(items, items[1:]):
+            a, b = mapped[u0][r0], mapped[u1][r1]
+            if e0 == s1 and a is not None and b is not None and 0 < b[1] - a[2] < limit and (u0, r0) not in fixed:
+                # code in the gap is an object of its own (a CRT function the reference does not link)
+                if sec.startswith(".text") and not padding(a[2], b[1]):
+                    continue
+                mapped[u0][r0] = (a[0], a[1], b[1], a[3])
+                closed += 1
+    # neighbours only in the target (a library object placed by its bytes after a different one):
+    # alignment padding between them goes to the first
+    rows = sorted((r[1], r[2], ui, ri) for ui, out in enumerate(mapped) for ri, r in enumerate(out) if r is not None and r[0] != ".drectve")
+    for (s0, e0, u0, r0), (s1, e1, u1, r1) in zip(rows, rows[1:]):
+        a, b = mapped[u0][r0], mapped[u1][r1]
+        if a[0] == b[0] and 0 < s1 - e0 < limit and (u0, r0) not in fixed and padding(e0, s1):
+            mapped[u0][r0] = (a[0], a[1], s1, a[3])
+            closed += 1
+    return closed
+
+
+def initializer_ranges(porter, mapped, table):
+    """Each unit's slice of the dynamic initializer table (.CRT$XCU), from what the entries point
+    at: an object's slice holds pointers to its own _$E functions only, so in the target it is the
+    run of entries that point into the unit's placed .text. The number of initializers changes
+    between builds (statics come and go), so the data map cannot be trusted with this table.
+    Returns {(unit, row): range or None} for every reference .CRT$XCU row."""
+    A, B = porter.A, porter.B
+    lo, hi = table
+    text = sorted((r[1], r[2], ui) for ui, out in enumerate(mapped) for r in out if r is not None and r[0] == ".text")
+    starts = [t[0] for t in text]
+
+    def owner(value):
+        i = bisect.bisect_right(starts, value) - 1
+        return text[i][2] if i >= 0 and value < text[i][1] else None
+
+    entries = [B.u32(a) for a in range(lo, hi, 4)]
+    runs = {}
+    for i, value in enumerate(entries):
+        o = owner(value) if value else None
+        if o is not None:
+            runs.setdefault(o, []).append(i)
+    out = {}
+    for ui, u in enumerate(porter.units):
+        own_text = [(s, e) for sec, s, e, _ in u["secs"] if sec == ".text"]
+        for ri, (sec, s, e, attrs) in enumerate(u["secs"]):
+            if sec != ".CRT$XCU":
+                continue
+            out[(ui, ri)] = None
+            values = [A.u32(a) for a in range(s, e, 4)]
+            # zero slots the reference gives the unit at either end (the table's leading padding)
+            lead = next((k for k, v in enumerate(values) if v), len(values))
+            trail = next((k for k, v in enumerate(reversed(values)) if v), 0)
+            inner = values[lead : len(values) - trail]
+            if not inner or not all(v and any(ts <= v < te for ts, te in own_text) for v in inner):
+                continue
+            idx = runs.get(ui)
+            if not idx or idx[-1] - idx[0] + 1 != len(idx):
+                continue
+            i0, i1 = idx[0] - lead, idx[-1] + 1 + trail
+            if i0 < 0 or i1 > len(entries) or any(entries[i0 : idx[0]]) or any(entries[idx[-1] + 1 : i1]):
+                continue
+            out[(ui, ri)] = (sec, lo + 4 * i0, lo + 4 * i1, attrs)
+    return out
+
+
 def map_units(porter, fmap, drectve):
     """Reference splits rewritten for the target: (units, dropped ranges, conflicts)."""
     rows = []  # (b_start, b_end, unit index, row index)
     mapped = []
+    parts = []
     dropped = []
     for ui, u in enumerate(porter.units):
         out = []
+        parts.append([])
         for sec, s, e, attrs in u["secs"]:
             if sec == ".drectve":
                 r = drectve.get((u["name"], s, e))
                 bs, be = r if r else (None, None)
             else:
                 bs, be = fmap.start(s), fmap.end(e)
+            parts[-1].append((bs, be))
             align = re.search(r"align:(\d+)", attrs)
             align = int(align.group(1)) if align else 4
             if sec == ".drectve":
@@ -1408,10 +2011,25 @@ def map_units(porter, fmap, drectve):
             out.append((sec, bs, be, attrs))
             rows.append((bs, be, ui, len(out) - 1, s))
         mapped.append(out)
-    bracket_runs(porter, mapped)
-    dropped = [(u["name"], sec, s_, e_) for u, out in zip(porter.units, mapped) for (sec, s_, e_, _), r in zip(u["secs"], out) if r is None]
-    # overlap / order checks in target address space
+    inferred = set()
+    bracket_runs(porter, mapped, inferred)
+    adjacent_ends(porter, mapped, parts, inferred)
+    table = header_ranges(porter, fmap).get(".CRT$XCU", (None, None))
+    tables = initializer_ranges(porter, mapped, table) if None not in table else {}
+    for (ui, ri), r in tables.items():
+        mapped[ui][ri] = r
+        inferred.discard((ui, ri))
+    # overlap / order checks in target address space; an inferred range gives way to a measured one
     conflicts = []
+    measured = sorted((r[1], r[2]) for ui, out in enumerate(mapped) for ri, r in enumerate(out) if r is not None and (ui, ri) not in inferred)
+    mstarts = [m[0] for m in measured]
+    for ui, ri in sorted(inferred):
+        r = mapped[ui][ri]
+        i = bisect.bisect_left(mstarts, r[2])
+        if (i > 0 and measured[i - 1][1] > r[1]) or (i < len(measured) and measured[i][0] < r[2]):
+            conflicts.append((porter.units[ui]["name"], r[0], "inferred range overlaps", ""))
+            mapped[ui][ri] = None
+    rows = [(r[1], r[2], ui, ri, 0) for ui, out in enumerate(mapped) for ri, r in enumerate(out) if r is not None]
     rows.sort()
     last_end = 0
     last = None
@@ -1428,12 +2046,75 @@ def map_units(porter, fmap, drectve):
             if r is not None:
                 a_start = porter.units[ui]["secs"][ri][1]
                 by_sec.setdefault(r[0], []).append((a_start, r[1], ui, ri))
+    library = getattr(porter, "library_placed", set())
+
+    def exact(ui, ri):
+        start = porter.units[ui]["secs"][ri][1]
+        return start in library and mapped[ui][ri] is not None and mapped[ui][ri][1] == porter.name_pairs.get(start)
+
     for sec, items in by_sec.items():
         items.sort()
         for (a0, b0, u0, r0), (a1, b1, u1, r1) in zip(items, items[1:]):
             if b1 < b0 and mapped[u1][r1] is not None:
-                conflicts.append((porter.units[u1]["name"], sec, "out of order", porter.units[u0]["name"]))
-                mapped[u1][r1] = None
+                # library objects found by their own bytes are where they are (the CRT's link order
+                # follows what each build pulls in); anything else out of order gives way
+                if exact(u0, r0) and exact(u1, r1):
+                    continue
+                ui, ri, other = (u0, r0, u1) if exact(u1, r1) else (u1, r1, u0)
+                conflicts.append((porter.units[ui]["name"], sec, "out of order", porter.units[other]["name"]))
+                mapped[ui][ri] = None
+    # one link order has to produce every section: two units that changed places in one section
+    # (library objects placed by their bytes) cannot keep the old order in another
+    placed = {}
+    for ui, out in enumerate(mapped):
+        for ri, r in enumerate(out):
+            if r is not None and r[0] != ".drectve":
+                placed.setdefault(ui, []).append((r[0], r[1], porter.units[ui]["secs"][ri][1], ri))
+    swapped = set()
+    for sec, items in by_sec.items():
+        live = sorted((a, b, u, r) for a, b, u, r in items if mapped[u][r] is not None)
+        for i, (a0, b0, u0, r0) in enumerate(live):
+            for a1, b1, u1, r1 in live[i + 1 :]:
+                if b1 < b0 and u0 != u1:
+                    swapped.add((u0, u1))
+    for u0, u1 in sorted(swapped):
+        for sec0, b0, a0, r0 in placed.get(u0, []):
+            for sec1, b1, a1, r1 in placed.get(u1, []):
+                if sec0 != sec1 or mapped[u0][r0] is None or mapped[u1][r1] is None:
+                    continue
+                if (b0 < b1) == (a0 < a1):  # this section kept the reference order
+                    ui, ri = (u0, r0) if not exact(u0, r0) else (u1, r1)
+                    if exact(ui, ri):
+                        continue
+                    conflicts.append((porter.units[ui]["name"], sec0, "link order", porter.units[u1 if ui == u0 else u0]["name"]))
+                    mapped[ui][ri] = None
+    close_small_gaps(porter, mapped, fixed=tables)
+    # a boundary inside a named structure (RTTI, vtable) cannot be right, unless the reference had it there too
+    def span_index(spans):
+        spans = sorted(set(spans))
+        starts = [x[0] for x in spans]
+
+        def inside(x):
+            i = bisect.bisect_right(starts, x) - 1
+            return i >= 0 and spans[i][0] < x < spans[i][1]
+
+        return inside
+
+    inside_b = span_index(
+        [(b, b + porter.name_sizes[a]) for a, b in porter.name_pairs.items() if porter.name_sizes.get(a)] + list(porter.native_structures)
+    )
+    inside_a = span_index(
+        [(s["addr"], s["addr"] + s["size"]) for s in porter.symbols if "raw" not in s and s["size"] and s["name"].startswith(("??_R", "??_7"))]
+    )
+    for ui, out in enumerate(mapped):
+        for ri, r in enumerate(out):
+            if r is None:
+                continue
+            _, a_start, a_end, _ = porter.units[ui]["secs"][ri]
+            if (inside_b(r[1]) and not inside_a(a_start)) or (inside_b(r[2]) and not inside_a(a_end)):
+                conflicts.append((porter.units[ui]["name"], r[0], "splits a named structure", ""))
+                mapped[ui][ri] = None
+    dropped = [(u["name"], sec, s_, e_) for u, out in zip(porter.units, mapped) for (sec, s_, e_, _), r in zip(u["secs"], out) if r is None]
     units = []
     for u, out in zip(porter.units, mapped):
         secs = [r for r in out if r is not None]
@@ -1455,27 +2136,52 @@ def format_units(units):
     return lines
 
 
+def header_ranges(porter, fmap):
+    """Target (start, end) of each row of the reference's 'Sections:' block, None where unmapped."""
+    rows = [m for m in (SPLIT_HDR_RE.match(line) for line in porter.header) if m]
+    mapped = {m.group(1): (fmap.start(int(m.group(3), 16)), fmap.end(int(m.group(4), 16))) for m in rows}
+    # the .CRT$ markers sit back to back; a range that did not map is whatever lies between its
+    # neighbours (the initializer table grows and shrinks between builds)
+    crt = [m.group(1) for m in rows if m.group(1).startswith(".CRT$")]
+    for i, name in enumerate(crt):
+        start, end = mapped[name]
+        if start is None and i > 0 and mapped[crt[i - 1]][1] is not None:
+            start = mapped[crt[i - 1]][1]
+        if end is None and i + 1 < len(crt) and mapped[crt[i + 1]][0] is not None:
+            end = mapped[crt[i + 1]][0]
+        mapped[name] = (start, end)
+    return mapped
+
+
 def map_header(porter, fmap):
     """The 'Sections:' block of splits.txt for the target. Returns (lines, problems)."""
     A, B, la, lb = porter.A, porter.B, porter.la, porter.lb
     rdata = B.section(".rdata")
-    overrides = {
-        ".idata$5": (lb["iat"][0], lb["debug_dir"]),
-        ".idata$2": (lb["import_dir"], lb["import_end"] - 0x14),
-        ".idata$3": (lb["import_end"] - 0x14, lb["import_end"]),
-        ".idata$4": (lb["import_end"], lb["ilt"][1]),
-        ".idata$6": (lb["ilt"][1], lb["export_dir"]),
-        ".edata": (lb["export_dir"], rdata["va"] + rdata["vsize"]),
-        ".xdata$x": (None, lb["import_dir"]),
-    }
+    overrides = {".xdata$x": (None, porter.b_imports)}
+    if porter.standard_imports:
+        overrides.update(
+            {
+                ".idata$5": (lb["iat"][0], porter.rdata_start(B, lb) - (lb["debug_size"] if porter.rdata_start(B, lb) != lb["iat"][1] else 0)),
+                ".idata$2": (lb["import_dir"], lb["import_end"] - 0x14),
+                ".idata$3": (lb["import_end"] - 0x14, lb["import_end"]),
+                ".idata$4": (lb["import_end"], lb["ilt"][1]),
+                ".idata$6": (lb["ilt"][1], lb["export_dir"]),
+                ".edata": (lb["export_dir"], rdata["va"] + rdata["vsize"]),
+            }
+        )
+    else:
+        overrides[".edata"] = (lb["export_dir"], rdata["va"] + rdata["rsize"])
     out, problems = [], []
-    for line in porter.header:
-        m = SPLIT_HDR_RE.match(line)
+    rows = [SPLIT_HDR_RE.match(line) for line in porter.header]
+    mapped = header_ranges(porter, fmap)
+    for line, m in zip(porter.header, rows):
         if not m:
             out.append(line)
             continue
         name, typ = m.group(1), m.group(2)
-        start, end = fmap.start(int(m.group(3), 16)), fmap.end(int(m.group(4), 16))
+        if name.startswith(".idata$") and not porter.standard_imports:
+            continue  # the import tables are ordinary data here
+        start, end = mapped[name]
         if name in overrides:
             o_start, o_end = overrides[name]
             start = o_start if o_start is not None else start
@@ -1487,10 +2193,15 @@ def map_header(porter, fmap):
             out.append(line)
             continue
         out.append("\t%-11s type:%s vaddr:0x%08X end:0x%08X%s" % (name, typ, start, end, (" " + m.group(5).strip()) if m.group(5).strip() else ""))
+    # sections the target has and the reference does not (SafeDisc leftovers in Creature Isle)
+    known = {r["name"] for r in porter.hdr_rows} | {sec["name"] for sec in A.sections}
+    for sec in B.sections:
+        if sec["name"] not in known:
+            out.append("\t%-11s type:data align:4096" % sec["name"])
     return out, problems
 
 
-def config_lines(porter, fmap, src_version, dst_version, dst_exe_rel, module_dst_dir=None):
+def config_lines(porter, fmap, src_version, dst_version, symbol_addrs, module_dst_dir=None):
     """config.yml for the target: reference file with addresses mapped and the PE fields re-read."""
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import hashlib
@@ -1499,34 +2210,53 @@ def config_lines(porter, fmap, src_version, dst_version, dst_exe_rel, module_dst
     A, B = porter.A, porter.B
     pe = B.pe.OPTIONAL_HEADER
     src_text = (REPO / "config" / src_version / "config.yml").read_text(encoding="utf-8").split("\n")
+    exe_name = EXECUTABLES[dst_version].rsplit("/", 1)[-1]
     out = []
     dropped = []
     i = 0
-    stanza = None  # drop the whole '- source' stanza when its address cannot be mapped
     section = None
-    skipping = False
     while i < len(src_text):
         line = src_text[i]
         i += 1
         m = re.match(r"^(\w+):", line)
         if m:
             section = m.group(1)
-            skipping = False
         m = re.match(r"^(\s*-\s+source:\s+)0x([0-9A-Fa-f]+)(.*)$", line)
-        if m and section in ("block_relocations", "add_relocations"):
-            a = int(m.group(2), 16)
-            b = fmap.start(a)
-            skipping = b is None
-            if skipping:
-                dropped.append((section, a))
-                continue
-            out.append("%s0x%08X%s" % (m.group(1), b, m.group(3)))
+        if not (m and section in ("block_relocations", "add_relocations")):
+            out.append(line)
             continue
-        if skipping and re.match(r"^\s+\w+:", line):
+        # one entry: the '- source' line and the indented fields that follow
+        body = []
+        while i < len(src_text) and re.match(r"^\s+(type|target|addend):", src_text[i]):
+            body.append(src_text[i])
+            i += 1
+        a = int(m.group(2), 16)
+        b = fmap.start(a)
+        if b is not None and section == "add_relocations":
+            fields = {re.match(r"^\s+(\w+):\s*(.*)$", f).group(1): re.match(r"^\s+(\w+):\s*(.*)$", f).group(2).strip("'") for f in body}
+            target = fields.get("target")
+            ref_addend = int(fields.get("addend", "0"), 0)
+            if target not in symbol_addrs or not (B.base <= B.u32(b) < B.base + B.size_of_image):
+                b = None  # the target did not make it across, or the operand is no address here
+            else:
+                # the addend is what the operand reads in this build minus the symbol's address (a
+                # one-past-the-end reference moves with the array's length); far from the reference's
+                # means the entry points somewhere else entirely in this build
+                addend = (B.u32(b) - symbol_addrs[target]) & 0xFFFFFFFF
+                if addend > 2 * ref_addend + 0x400:
+                    b = None
+                else:
+                    body = [("%s0x%X" % (re.match(r"^(\s+addend:\s+)", f).group(1), addend)) if "addend:" in f else f for f in body]
+                    if "addend" not in fields and addend:
+                        body.append("    addend: 0x%X" % addend)
+        if b is None:
+            dropped.append((section, a))
             continue
-        out.append(line)
+        out.append("%s0x%08X%s" % (m.group(1), b, m.group(3)))
+        out.extend(body)
     text = "\n".join(out)
     text = text.replace(src_version, dst_version)
+    text = text.replace(EXECUTABLES[src_version].rsplit("/", 1)[-1], exe_name)
     ts = datetime_from_stamp(B.pe.FILE_HEADER.TimeDateStamp)
     clean = pre_dtk_patch.build_clean(B.data)
     sha1 = hashlib.sha1(clean).hexdigest()
@@ -1546,8 +2276,31 @@ def config_lines(porter, fmap, src_version, dst_version, dst_exe_rel, module_dst
     rsrc_va, rsrc_size = B.directory("IMAGE_DIRECTORY_ENTRY_RESOURCE")
     replacements[r"^entry_resource_addr: .*$"] = "entry_resource_addr: 0x%08x" % rsrc_va
     replacements[r"^entry_resource_size: .*$"] = "entry_resource_size: 0x%X" % rsrc_size
+    if not porter.standard_imports:
+        # no linker-generated import tables to regenerate, and no SafeDisc stamp to restore
+        replacements[r"^generate_imports: .*$"] = "generate_imports: false"
+        replacements[r"^safe_disc_version: .*\n"] = ""
+        imp_va, imp_size = B.directory("IMAGE_DIRECTORY_ENTRY_IMPORT")
+        replacements[r"^entry_import_addr: .*$"] = "entry_import_addr: 0x%08x" % imp_va
+        replacements[r"^entry_import_size: .*$"] = "entry_import_size: 0x%X" % imp_size
     for pat, rep in replacements.items():
         text = re.sub(pat, rep, text, flags=re.M)
+    for module, dll in MODULE_DLLS.items():
+        path = REPO / "orig" / dst_version / dll
+        if path.exists():
+            text = re.sub(r"(- object: %s\n  hash: )[0-9a-f]{40}" % re.escape(dll), r"\g<1>%s" % sha1_of(path), text)
+    # a module whose config is copied from another version takes that version's stanza with it
+    # (its linker version and whether its import/export tables are regenerated go with its splits)
+    for module, version in module_sources(src_version, dst_version).items():
+        if version is None or version == src_version:
+            continue
+        lines, spans = module_stanzas(text)
+        other_lines, other_spans = module_stanzas((REPO / "config" / version / "config.yml").read_text(encoding="utf-8"))
+        if module in spans and module in other_spans:
+            a, b = spans[module]
+            c, d = other_spans[module]
+            lines[a:b] = [l.replace(version, dst_version) for l in other_lines[c:d]]
+            text = "\n".join(lines)
     return text.split("\n"), dropped
 
 
@@ -1576,20 +2329,51 @@ MODULE_DLLS = {
 }
 
 
+def module_sources(src, dst):
+    """{module: the version whose identical DLL already has a config, or None}."""
+    out = {}
+    for module, dll in MODULE_DLLS.items():
+        b = REPO / "orig" / dst / dll
+        out[module] = None
+        if not b.exists():
+            continue
+        for version in [src] + [v for v in EXECUTABLES if v not in (src, dst)]:
+            a = REPO / "orig" / version / dll
+            if a.exists() and (REPO / "config" / version / module).exists() and sha1_of(a) == sha1_of(b):
+                out[module] = version
+                break
+    return out
+
+
 def copy_modules(src, dst, log):
-    """DLLs that are byte-identical to the reference's keep its module configs verbatim."""
+    """DLLs that are byte-identical to a known version's keep that version's module configs verbatim."""
     import shutil
 
-    src_dir, dst_dir = REPO / "config" / src, REPO / "config" / dst
-    for module, dll in MODULE_DLLS.items():
-        a, b = REPO / "orig" / src / dll, REPO / "orig" / dst / dll
-        if not b.exists():
+    for module, version in module_sources(src, dst).items():
+        dll = MODULE_DLLS[module]
+        if not (REPO / "orig" / dst / dll).exists():
             log("module %s: %s missing for %s" % (module, dll, dst))
-        elif sha1_of(a) == sha1_of(b):
-            shutil.copytree(src_dir / module, dst_dir / module, dirs_exist_ok=True)
-            log("module %s: %s is identical to %s, config copied" % (module, dll, src))
+        elif version is not None:
+            shutil.copytree(REPO / "config" / version / module, REPO / "config" / dst / module, dirs_exist_ok=True)
+            log("module %s: %s is identical to %s, config copied" % (module, dll, version))
         else:
-            log("module %s: %s differs from %s, needs its own port" % (module, dll, src))
+            log("module %s: %s needs its own port (run: port_version.py emit --module %s --src %s --dst %s)" % (module, dll, module, src, dst))
+
+
+def module_stanzas(text):
+    """{module name: (start, end)} line spans of the '- object:' stanzas of a config.yml."""
+    lines = text.split("\n")
+    spans, start = {}, None
+    for i, line in enumerate(lines + ["- object:"]):
+        if line.startswith("- object:") or i == len(lines):
+            if start is not None:
+                end = i
+                while end > start and not lines[end - 1].strip():
+                    end -= 1
+                name = next((l.split(":", 1)[1].strip() for l in lines[start:end] if l.strip().startswith("name:")), None)
+                spans[name] = (start, end)
+            start = i
+    return lines, spans
 
 
 def write_file(path, lines):
@@ -1600,36 +2384,77 @@ def write_file(path, lines):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("command", choices=["emit"])
+    ap.add_argument("--module", choices=sorted(MODULE_DLLS), help="port one module DLL's splits and symbols instead of the executable's")
     ap.add_argument("--src", default="BW1W120")
     ap.add_argument("--dst", required=True)
     ap.add_argument("--report", type=Path, help="write the dropped symbols/ranges here")
+    ap.add_argument("--reuse", action="store_true", help="reuse the last alignment (build/port/*.pickle) unless the reference config changed since")
     ap.add_argument("--dtk", default="build/tools/dtk", help="dtk binary used to name the target's RTTI and vtables")
     args = ap.parse_args()
 
     log = lambda msg: print(msg, flush=True)
     src_dir = REPO / "config" / args.src
-    porter = Porter(src_dir, REPO / EXECUTABLES[args.src], REPO / EXECUTABLES[args.dst], log)
+    src_exe, dst_exe = REPO / EXECUTABLES[args.src], REPO / EXECUTABLES[args.dst]
+    tag = args.dst
+    if args.module:
+        dll = MODULE_DLLS[args.module]
+        src_dir, src_exe, dst_exe = src_dir / args.module, REPO / "orig" / args.src / dll, REPO / "orig" / args.dst / dll
+        tag = "%s-%s" % (args.dst, args.module)
+    cache = REPO / "build" / "port" / ("%s-%s.pickle" % (args.src, tag))
+    # the alignment is only valid for the reference config it was computed from
+    reference = sha1_of(src_dir / "splits.txt") + sha1_of(src_dir / "symbols.txt")
     t0 = time.time()
-    porter.run(REPO / args.dtk, REPO / "build" / "port" / (args.dst + "-native-symbols.txt"))
+    import pickle
+
+    porter = None
+    if args.reuse and cache.exists():
+        porter = pickle.loads(cache.read_bytes())
+        if getattr(porter, "reference", None) == reference:
+            porter.log = log
+            porter.map_bss()
+        else:
+            log("%s changed since the cached alignment, aligning again" % src_dir.relative_to(REPO))
+            porter = None
+    if porter is None:
+        porter = Porter(src_dir, src_exe, dst_exe, log)
+        porter.run(REPO / args.dtk, REPO / "build" / "port" / (tag + "-native-symbols.txt"))
+        porter.reference = reference
+        porter.log = None
+        cache.write_bytes(pickle.dumps(porter))
+        porter.log = log
     main_map, skipped = build_full_map(porter)
     fmap = FullMap(main_map, porter.bss, porter.bss_range)
     log("map built in %.0fs (%d blocks, %d conflicting blocks skipped)" % (time.time() - t0, len(main_map.blocks), skipped))
 
     dst_dir = REPO / "config" / args.dst
+    if args.module:
+        dst_dir = dst_dir / args.module
     units, dropped_ranges, conflicts = map_units(porter, fmap, drectve_ranges(porter))
     header, problems = map_header(porter, fmap)
     write_file(dst_dir / "splits.txt", list(header) + [""] + format_units(units))
     log("splits: %d units, %d ranges dropped, %d conflicts, %d header problems" % (len(units), len(dropped_ranges), len(conflicts), len(problems)))
 
     boundaries = [v for u in units for _, bs, be, _ in u["secs"] for v in (bs, be)]
-    symbols, dropped_symbols, clipped = map_symbols(porter, fmap, boundaries)
+    starts = {}
+    for u in units:
+        for sec, bs, be, _ in u["secs"]:
+            starts.setdefault(sec, set()).add(bs)
+            starts.setdefault(sec + ":end", set()).add(be)
+    symbols, dropped_symbols, clipped = map_symbols(porter, fmap, boundaries, starts, pad_to_unit_end=bool(args.module))
     write_file(dst_dir / "symbols.txt", symbols)
     log("symbols: %d written, %d dropped, %d sizes clipped" % (len(symbols), len(dropped_symbols), clipped))
 
-    cfg, dropped_cfg = config_lines(porter, fmap, args.src, args.dst, None)
-    write_file(dst_dir / "config.yml", cfg)
-    log("config.yml: %d relocation entries dropped" % len(dropped_cfg))
-    copy_modules(args.src, args.dst, log)
+    dropped_cfg = []
+    if not args.module:
+        addrs = {}
+        for line in symbols:
+            m = re.match(r"^(\S+) = [^:]+:0x([0-9A-Fa-f]+);", line)
+            if m:
+                addrs.setdefault(m.group(1), int(m.group(2), 16))
+        cfg, dropped_cfg = config_lines(porter, fmap, args.src, args.dst, addrs)
+        write_file(dst_dir / "config.yml", cfg)
+        log("config.yml: %d relocation entries dropped" % len(dropped_cfg))
+        copy_modules(args.src, args.dst, log)
 
     if args.report:
         out = []

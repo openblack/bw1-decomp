@@ -1,12 +1,12 @@
 ---
 name: libcmt-obj-matching
-description: Make CRT objects from the downloaded LIBCMT.LIB / LIBCPMT.LIB link byte-exact into every BW1 version (BW1W100, BW1W110, BW1W120, BW1W130). Script-driven loop (.claude/skills/libcmt-obj-matching/libobj.py) that auto-matches clean objects with no agent judgement and flags the hard ones (E100 /OPT:REF dead-strip, trailing-alignment, __real@8 comdat fold) for hand work. Covers the worked numbers, the verify/recover cycle, and the manual symbol edits. The module DLLs (LHAudio, LHMultiplayer) use modlib.py instead, which places a whole DLL's CRT at once.
+description: Make CRT objects from the downloaded LIBCMT.LIB / LIBCPMT.LIB link byte-exact into every BW1 version (BW1W100, BW1W110, BW1W120, BW1W130, BW1WCI). Script-driven loop (.claude/skills/libcmt-obj-matching/libobj.py) that auto-matches clean objects with no agent judgement and flags the hard ones (E100 /OPT:REF dead-strip, trailing-alignment, __real@8 comdat fold) for hand work. Covers the worked numbers, the verify/recover cycle, and the manual symbol edits. The module DLLs (LHAudio, LHMultiplayer) use modlib.py instead, which places a whole DLL's CRT at once.
 ---
 
 # Match a LIBCMT.LIB object — every version, script-driven
 
 Goal: take members of `LIBCMT.LIB` / `LIBCPMT.LIB` and make them link **byte-exact**
-into BW1W100, BW1W110, BW1W120 and BW1W130. Nothing new is committed — the `.LIB` and the
+into BW1W100, BW1W110, BW1W120, BW1W130 and BW1WCI. Nothing new is committed — the `.LIB` and the
 extracted `.obj` are build artifacts; the result is edits to `configure.py`,
 `config/<VER>/splits.txt` and `config/<VER>/symbols.txt`.
 
@@ -116,6 +116,9 @@ the split start is auto-repaired by `loop`; by hand, shrink that symbol (below).
   linking from the library for a version, give its extracted `.text` split the
   library section's alignment (`align:16` for `memcpy`, `87disp`, ...), or it
   lands at the previous object's end and shifts every call after it.
+- **BW1WCI's config is generated** by `tools/port_version.py`, which finds each CRT object by
+  its own bytes, so do not hand-edit `config/BW1WCI/`: when an object does not link byte-exact
+  there, keep BW1WCI out of its `MatchingFor(...)` list instead.
 - `dtk` is at `build/tools/dtk` (the loop auto-discovers the exact dtk+python the
   last `configure` used from `build.ninja`). `lld-link` at
   `build/tools/llvm/bin/lld-link`.

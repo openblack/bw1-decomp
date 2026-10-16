@@ -335,6 +335,10 @@ public:
 	// BW1W120 inlined BW1M119 011878b0
 	LH_AudioBank* GetBank(AUDIO_SFX_BANK_TYPE type) const { return AudioBanks[type]; }
 };
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(GAudio) == 0x3fc, "Data type is of wrong size");
+#else
 static_assert(sizeof(GAudio) == 0x3d4, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_AUDIO_INCLUDED_H */
