@@ -80,16 +80,16 @@ enum ANIMLIST
 	ANIM_LOOKUDSTABLE,		//Looks around before snapping back
 	ANIM_CHUCKLE,			//Chuckling
 #ifdef VERSION_BW1WCI
-	ANIM_BLOW
+	ANIM_BLOW,
 #else
 	ANIM_SPARE4,  //Unused
+#endif // VERSION_BW1WCI
 	ANIM_SPARE5,  //Unused
 	ANIM_SPARE6,  //Unused
 	ANIM_SPARE7,  //Unused
 	ANIM_SPARE8,  //Unused
 	ANIM_SPARE9,  //Unused
 	ANIM_SPARE10, //Unused
-#endif // VERSION_BW1WCI
 		ANIM_LAST,
 };
 

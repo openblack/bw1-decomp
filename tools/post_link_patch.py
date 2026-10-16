@@ -10,8 +10,10 @@ Usage (called by ninja automatically):
 """
 
 import argparse
+import base64
 import json
 import struct
+import zlib
 import yaml
 from datetime import datetime
 from enum import IntEnum
@@ -224,6 +226,39 @@ BW1W130_RICH_RECORDS = [
     RichRecord(RichProductID.LINKER600,    8447,  28),
 ]
 
+
+BW1WCI_LHAUDIO_RICH_KEY = 0x07EFD270   # extracted from original dll at offset 0xf4
+BW1WCI_LHAUDIO_RICH_SLOTS = 1
+BW1WCI_LHAUDIO_RICH_RECORDS = [
+    RichRecord(RichProductID.ALIAS_OBJ,    7291,   2),
+    RichRecord(RichProductID.UTC12_CPP,    8797,   8),
+    RichRecord(RichProductID.MASM613,      7299,  30),
+    RichRecord(RichProductID.UTC12_C,      8797, 119),
+    RichRecord(RichProductID.UTC12_C,      8799,   9),
+    RichRecord(RichProductID.UTC70_CPP,    8830,   1),
+    RichRecord(RichProductID.IMPORT_OLD,      0,   1),
+    RichRecord(RichProductID.LINKER600SP5, 8034,  11),
+    RichRecord(RichProductID.IMPORT,          0, 142),
+    RichRecord(RichProductID.UTC12_CPP,    8799,  22),
+    RichRecord(RichProductID.CVTRES,       1735,   1),
+    RichRecord(RichProductID.LINKER600,    8447,  37),
+]
+
+BW1WCI_LHMULTIPLAYER_RICH_KEY = 0xE12299CA   # extracted from original dll at offset 0xec
+BW1WCI_LHMULTIPLAYER_RICH_SLOTS = 3
+BW1WCI_LHMULTIPLAYER_RICH_RECORDS = [
+    RichRecord(RichProductID.UTC12_C,      8799,  23),
+    RichRecord(RichProductID.ALIAS_OBJ,    7291,   3),
+    RichRecord(RichProductID.UTC12_CPP,    8047,  10),
+    RichRecord(RichProductID.MASM613,      7299,  23),
+    RichRecord(RichProductID.UTC12_C,      8047, 144),
+    RichRecord(RichProductID.UTC12_C,      8447,  12),
+    RichRecord(RichProductID.UTC12_CPP,    8168,   3),
+    RichRecord(RichProductID.LINKER600SP5, 8034,  11),
+    RichRecord(RichProductID.IMPORT,          0, 182),
+    RichRecord(RichProductID.UTC12_CPP,    8966,  28),
+    RichRecord(RichProductID.LINKER600,    8447,   3),
+]
 
 BW1W100_LHAUDIO_RICH_KEY = 0x52ED8B05   # extracted from original dll at offset 0xec
 BW1W100_LHAUDIO_RICH_SLOTS = 2
@@ -946,6 +981,92 @@ def apply_BW1W130_patch(pe, cfg, out_dir, modules):
     apply_modules_patch(out_dir, cfg, modules)
 
 
+# --- BW1WCI ----------------------------------------------------------------------------------
+#
+# Creature Isle's executable is not link.exe output wrapped by SafeDisc but a rebuilt container:
+# nine sections (three of them SafeDisc/unpacker leftovers) in a fixed order and file alignment,
+# the import tables rebuilt in the last one, no Rich header, and a cracker's NFO in the header
+# padding. lld-link sorts non-standard sections by name, so the image is reassembled here from the
+# linked sections' contents.
+
+# name, RVA, virtual size, raw offset, raw size
+BW1WCI_SECTIONS = (
+    (b".text", 0x1000, 0x4D3000, 0x600, 0x4D2B2D),
+    (b".rdata", 0x4D4000, 0x162000, 0x4D3200, 0x161EB5),
+    (b".data", 0x636000, 0x60F000, 0x635200, 0x279E40),
+    (b".data1", 0xC45000, 0x1000, 0x8AF200, 0xB24),
+    (b"SELFMOD", 0xC46000, 0x1000, 0x8AFE00, 0xBED),
+    (b".rsrc", 0xC47000, 0x4000, 0x8B0A00, 0x393D),
+    (b"stxt774", 0xC4B000, 0x1000, 0x8B4400, 0x800),
+    (b"stxt371", 0xC4C000, 0x4000, 0x8B4C00, 0x3D62),
+    (b".MGD32", 0xC50000, 0x5200, 0x8B8A00, 0x5200),
+)
+BW1WCI_SECTION_FLAGS = 0xC0000040
+BW1WCI_FILE_SIZE = 0x8BDC00
+BW1WCI_HEADERS_END = 0x600
+BW1WCI_PE_OFFSET = 0x80
+# The header padding after the section table: the decryptor's NFO.
+BW1WCI_NFO_OFFSET = 0x2E0
+BW1WCI_NFO = zlib.decompress(base64.b64decode(
+    "eNrVkrsNxDAIhlOfdDt4/wqzDkhsYh1vki7tOYUNP3wGnOt6t74f+9Y6IsjM677MFtKFdy+ietpyWeqggQbzMLOLxxgU2zQX"
+    "GmoHggwK6+EuWniIi0W09ag1my/TJARtg0gkC4Ul3NimRR3aMcmjhGKYDZ3mgoh3mgEwLMh4qZSTBXGy9zQE4OkuqHe33rSY"
+    "o85inWynhpYQrAnsnmPqUHrRTk1kWksKxO4PF4I+Vd6D8zSqT2GC8yOAn+zC60/XD6EILeo="
+))
+# Directories the rebuilt container points at: the debug directory and the IAT, which sit in
+# .rdata and .MGD32 respectively (the import directory itself is in config.yml).
+BW1WCI_DEBUG_DIRECTORY = (0x4D4980, 0x1C)
+BW1WCI_IAT_DIRECTORY = (0xC4FAA0, 0xB0)
+BW1WCI_CHECKSUM = 0x10010
+BW1WCI_COFF_SYMTAB_POINTER = 0x4854  # "TH" of the decryptor's "MYTH" signature
+BW1WCI_SIZE_OF_HEADERS = 0x1000
+
+
+def build_BW1WCI_exe(linked, cfg):
+    """The shipped executable's container around the linked sections' contents."""
+    lpe = pefile.PE(data=linked)
+    contents = {}
+    for section in lpe.sections:
+        name = section.Name.rstrip(b"\0")
+        if name not in contents and section.SizeOfRawData:
+            contents[name] = section.get_data()
+    out = bytearray(BW1WCI_FILE_SIZE)
+
+    # DOS header and stub: lld-link's, with the fields MSVC 6's linker leaves
+    out[:BW1WCI_PE_OFFSET] = linked[:BW1WCI_PE_OFFSET]
+    struct.pack_into("<HH", out, 2, BW1WCI_PE_OFFSET + len(RICH_PREAMBLE), MSVC6_E_CP)
+    struct.pack_into("<H", out, 0x0C, MSVC6_E_MAXALLOC)
+    struct.pack_into("<H", out, 0x10, MSVC6_E_SP)
+
+    stamp = int(datetime.fromisoformat(cfg["timestamp"]).timestamp())
+    coff = struct.pack("<4sHHIIIHH", b"PE\0\0", 0x14C, len(BW1WCI_SECTIONS), stamp, BW1WCI_COFF_SYMTAB_POINTER, 0, 0xE0, 0x10F)
+    directories = [(0, 0)] * 16
+    directories[0] = (cfg["entry_export_addr"] - 0x400000, cfg["entry_export_size"])
+    directories[1] = (cfg["entry_import_addr"] - 0x400000, cfg["entry_import_size"])
+    directories[2] = (cfg["entry_resource_addr"] - 0x400000, cfg["entry_resource_size"])
+    directories[6] = (BW1WCI_DEBUG_DIRECTORY[0], BW1WCI_DEBUG_DIRECTORY[1])
+    directories[12] = BW1WCI_IAT_DIRECTORY
+    optional = struct.pack(
+        "<HBBIIIIIIIIIHHHHHHIIIIHHIIIIII",
+        0x10B, 6, 0, cfg["size_of_code"], cfg["size_of_initialized_data"], 0, lpe.OPTIONAL_HEADER.AddressOfEntryPoint,
+        0x1000, BW1WCI_SECTIONS[1][1], 0x400000, 0x1000, 0x200, 4, 0, 0, 0, 4, 0, 0, cfg["size_of_image"],
+        BW1WCI_SIZE_OF_HEADERS, BW1WCI_CHECKSUM, 2, 0, 0x100000, 0x1000, 0x100000, 0x1000, 0, 16,
+    ) + b"".join(struct.pack("<II", *d) for d in directories)
+    out[BW1WCI_PE_OFFSET : BW1WCI_PE_OFFSET + len(coff)] = coff
+    at = BW1WCI_PE_OFFSET + len(coff)
+    out[at : at + len(optional)] = optional
+    at += len(optional)
+    for name, rva, vsize, raw, rsize in BW1WCI_SECTIONS:
+        out[at : at + 40] = struct.pack("<8sIIIIIIHHI", name, vsize, rva, rsize, raw, 0, 0, 0, 0, BW1WCI_SECTION_FLAGS)
+        at += 40
+    assert at == BW1WCI_NFO_OFFSET
+    out[BW1WCI_NFO_OFFSET : BW1WCI_NFO_OFFSET + len(BW1WCI_NFO)] = BW1WCI_NFO
+
+    for name, rva, vsize, raw, rsize in BW1WCI_SECTIONS:
+        body = contents[name][:rsize]
+        out[raw : raw + len(body)] = body
+    return bytes(out)
+
+
 PATCHES = {
     "BW1W100": (BW1W100_RICH_KEY, BW1W100_RICH_RECORDS, apply_BW1W100_patch, {
         "LHAudio":       (BW1W100_LHAUDIO_RICH_KEY,       BW1W100_LHAUDIO_RICH_RECORDS,       BW1W100_LHAUDIO_RICH_SLOTS),
@@ -964,6 +1085,13 @@ PATCHES = {
         "LHAudio":       (BW1W120_LHAUDIO_RICH_KEY,       BW1W120_LHAUDIO_RICH_RECORDS,       BW1W120_LHAUDIO_RICH_SLOTS),
         "LHLog":         (BW1W120_LHLOG_RICH_KEY,         BW1W120_LHLOG_RICH_RECORDS,         BW1W120_LHLOG_RICH_SLOTS),
         "LHMultiplayer": (BW1W120_LHMULTIPLAYER_RICH_KEY, BW1W120_LHMULTIPLAYER_RICH_RECORDS, BW1W120_LHMULTIPLAYER_RICH_SLOTS),
+        "LHDialog":      (BW1W120_LHDIALOG_RICH_KEY,      BW1W120_LHDIALOG_RICH_RECORDS,      BW1W120_LHDIALOG_RICH_SLOTS),
+    }),
+    # LHLog shipped unchanged from 1.10 and LHDialog from 1.20
+    "BW1WCI": (None, None, None, {
+        "LHAudio":       (BW1WCI_LHAUDIO_RICH_KEY,        BW1WCI_LHAUDIO_RICH_RECORDS,        BW1WCI_LHAUDIO_RICH_SLOTS),
+        "LHLog":         (BW1W110_LHLOG_RICH_KEY,         BW1W110_LHLOG_RICH_RECORDS,         BW1W110_LHLOG_RICH_SLOTS),
+        "LHMultiplayer": (BW1WCI_LHMULTIPLAYER_RICH_KEY,  BW1WCI_LHMULTIPLAYER_RICH_RECORDS,  BW1WCI_LHMULTIPLAYER_RICH_SLOTS),
         "LHDialog":      (BW1W120_LHDIALOG_RICH_KEY,      BW1W120_LHDIALOG_RICH_RECORDS,      BW1W120_LHDIALOG_RICH_SLOTS),
     }),
     # The module DLLs shipped unchanged in 1.30
@@ -1015,6 +1143,15 @@ def apply_modules_patch(out_dir, cfg, modules):
             apply_module_patch(pe, module_cfg, pe_metadata)
 
         data[:] = pe.write()
+        if pe_metadata:
+            # link.exe sizes .reloc on its own terms (padded well past the entries); the file must
+            # reach the end of the raw data it claims
+            reloc = find_section_header(pe, '.reloc')
+            needed = (pe_metadata["reloc_virtual_size"] + 0xFFF) & ~0xFFF
+            if reloc.SizeOfRawData < needed:
+                reloc.SizeOfRawData = needed
+                data[:] = pe.write()
+                data += b'\x00' * (reloc.PointerToRawData + needed - len(data))
         # Trailing data (e.g. the CodeView debug record) that lld-link drops.
         if pe_metadata:
             data += bytes(pe_metadata["trailing_data"])
@@ -1041,6 +1178,12 @@ def main():
 
     out = args.output if args.output is not None else args.input
     out.parent.mkdir(parents=True, exist_ok=True)
+
+    if rich_key is None:
+        # a container of its own (see build_BW1WCI_exe)
+        out.write_bytes(build_BW1WCI_exe(args.input.read_bytes(), cfg))
+        apply_modules_patch(out.parent, cfg, modules)
+        return
 
     data = bytearray(args.input.read_bytes())
     pe   = pefile.PE(data=data)
