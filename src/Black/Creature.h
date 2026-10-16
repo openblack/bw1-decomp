@@ -1008,6 +1008,10 @@ public:
 	CreatureBelief* AddBeliefAboutAssociatedObject(CreatureBelief* belief);
 	// BW1W120 004f8ca0 BW1M119 0128e390
 	float NumTimesMagicActionMustBeSeenBeforeItIsLearnt(unsigned long magic_type);
+	// BW1W120 0047cda0 BW1M119 011d7fe0
+	void CreateLightbulb(float progress);
+	// BW1W120 004e29d0 BW1M119 01269a50
+	bool32_t PossibilityOfErrorFromLackOfSkill(CREATURE_ACTION action);
 	// BW1W120 004f8850 BW1M119 0128ecd0
 	void ForceActionCastSpellOnObject(MAGIC_TYPE magic_type, Object* object);
 	// BW1W120 004f2930 BW1M119 012817f0

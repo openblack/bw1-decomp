@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/CreatureEnum.h> /* For NUM_CREATURE_ACTIONS */
-#include <chlasm/Enum.h>         /* For MAGIC_TYPE_LAST, OBJECT_TYPE_LAST */
+#include <chlasm/Enum.h>         /* For CREATURE_ACTION_KNOWN_ABOUT_LAST, MAGIC_TYPE_LAST, OBJECT_TYPE_LAST */
 
 #include "Base.h"                   /* For struct Base */
 #include "CreatureAction.h"         /* For struct PreviousActionContextStack */
@@ -23,10 +23,10 @@ public:
 	PreviousActionContextStack previous_action_context_stack;
 	CreaturePreviousLesson     PreviousLesson;
 	float                      field_0x1522c;
-	uint32_t                   field_0x15230[0x6];
-	uint32_t                   field_0x15248[0x6];
+	uint32_t                   NumTimesNormalActionSeen[CREATURE_ACTION_KNOWN_ABOUT_LAST];
+	uint32_t                   GameTurnNormalActionFirstSeen[CREATURE_ACTION_KNOWN_ABOUT_LAST];
 	uint32_t                   NumTimesMagicActionSeen[MAGIC_TYPE_LAST];
-	uint32_t                   field_0x15308[0x2a]; // possibly [MAGIC_TYPE_LAST]
+	uint32_t                   GameTurnMagicActionLastSeen[MAGIC_TYPE_LAST];
 	uint32_t                   field_0x153b0[NUM_CREATURE_ACTIONS];
 	uint32_t                   HeldObjectActionCounts[OBJECT_TYPE_LAST];
 	uint32_t                   field_0x15984[0x2d];
@@ -37,7 +37,7 @@ public:
 	uint32_t                   field_0x15af8[0x2][0x28];
 	uint32_t                   field_0x15c38;
 	uint32_t                   field_0x15c3c;
-	uint32_t                   field_0x15c40[NUM_CREATURE_ACTIONS];
+	uint32_t                   NumTimesActionPerformed[NUM_CREATURE_ACTIONS];
 	Creature*                  field_0x16160;
 	uint32_t                   field_0x16164;
 
@@ -55,6 +55,8 @@ public:
 
 	// BW1W120 004e22e0 BW1M119 0126a740
 	float GetSkillAtAction(CREATURE_ACTION action);
+	// BW1W120 004e2350 BW1M119 0126a680
+	void SetSkillAtAction(CREATURE_ACTION action, float skill);
 };
 
 class CreatureLearningEpisode : public Base

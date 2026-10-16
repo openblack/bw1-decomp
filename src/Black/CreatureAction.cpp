@@ -708,7 +708,7 @@ int CreatureAgenda::ConstructSubActionsForExamineByLooking(unsigned long param_1
 int CreatureAgenda::ConstructSubActionsForFight(unsigned long param_1)
 {
 	creature->field_0x3b8 = 1;
-	if (creature->mind->learning.field_0x15c40[CREATURE_FIGHT] == 0)
+	if (creature->mind->learning.NumTimesActionPerformed[CREATURE_FIGHT] == 0)
 	{
 		creature->mind->learning.field_0x1522c = -creature->alignment->Value;
 	}
