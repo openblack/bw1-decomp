@@ -123,7 +123,11 @@ void Tree::CallVirtualFunctionsForCreation(const MapCoords& coords)
 	Game3dObject->SetDynamicLighting(false);
 	Game3dObject->SetShadowOnTextureChroma(true);
 	Game3dObject->SetCastDynamicShadow(false);
-	SetPositionOnMap(Game3dObject, coords, GetYAngle(), GetScale());
+	float   scale = GetScale();
+	float   yAngle = GetYAngle();
+	LHPoint point;
+	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
+	Game3dObject->LH3DObject::SetPosition(point, yAngle, scale);
 	Game3dObject->SetPaper(true);
 	AngleIndex = (int)(GetYAngle() * (TREE_NUM_ANGLES / TWO_PI) + 0.5f);
 	Game3dObject->importance = -0.1f;
@@ -207,7 +211,8 @@ void Tree::ReactToPhysicsImpact(PhysicsObject* physics_object, bool param_2)
 	if (hitter != NULL && hitter->IsResourceStore(RESOURCE_TYPE_WOOD))
 	{
 		Object::StoredMatrix = physics_object->Matrix;
-		if (hitter->DeleteObjectAndTakeResource(this, physics_object->status))
+		GInterfaceStatus* status = physics_object->status;
+		if (hitter->DeleteObjectAndTakeResource(this, status))
 		{
 			return;
 		}

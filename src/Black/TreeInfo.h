@@ -34,8 +34,6 @@ public:
 
 	// Override methods
 
-	// BW1W120 inlined BW1M119 0115da10
-	virtual ~GTreeInfo() {}
 	// BW1W120 0074c5a0 BW1M119 0115df10
 	virtual LH3DColor GetDebugColor() const;
 	// BW1W120 00749d60 BW1M119 0115d890
