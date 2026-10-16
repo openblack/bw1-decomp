@@ -33,9 +33,23 @@ class Villager;
 class Tree : public SingleMapFixed
 {
 public:
-	uint32_t field_0x5c;
-	int16_t  field_0x60;
-	float    field_0x64;
+	union {
+		uint16_t TreeFlags;
+		struct
+		{
+			uint16_t : 1;
+			uint16_t field_0x5c_1 : 1;
+			uint16_t AngleIndex : 4;
+			uint16_t DrawIndex : 4;
+		};
+	};
+	struct
+	{
+		uint8_t Growing : 1;
+		uint8_t NonScenic : 1;
+	};
+	uint16_t ProcessCountdown;
+	float    TargetScale;
 	Forest*  forest;
 
 	// Override methods
@@ -43,7 +57,7 @@ public:
 	// BW1W120 00749ed0 BW1M119 011613d0
 	virtual ~Tree();
 	// BW1W120 0074a210 BW1M119 01160c90
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(int delete_now);
 	// BW1W120 0055d8c0 BW1M119 011617b0
 	virtual GPlayer* GetPlayer() { return NULL; }
 	// BW1W120 0055d9f0 BW1M119 01161cd0
@@ -183,7 +197,7 @@ public:
 	// BW1W120 0055d900 BW1M119 011618c0
 	virtual uint32_t GetCarriedTreeType();
 	// BW1W120 0074a9d0 BW1M119 01160510
-	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
+	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
 	// BW1W120 0074c5f0 BW1M119 0115dd60
 	virtual void CreateCollideData();
 	// BW1W120 0074b810 BW1M119 0115f830
@@ -196,8 +210,8 @@ public:
 	// Static methods
 
 	// BW1W120 00749ee0 BW1M119 01161270
-	static Tree* Create(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float param_4, float param_5,
-	                    float param_6);
+	static Tree* Create(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float target_scale,
+	                    float y_angle, float scale);
 	// BW1W120 0074c180 BW1M119 0115e5a0
 	static bool32_t IsOkToCreateAtPos(MapCoords& coords);
 
@@ -206,10 +220,16 @@ public:
 	// BW1W120 inlined BW1M119 inlined
 	Tree() { SetToZero(); }
 	// BW1W120 00749e00 BW1M119 01161450
-	Tree(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float param_4, float param_5, float param_6);
+	Tree(const MapCoords& coords, const GTreeInfo* info, Forest* forest, float target_scale, float y_angle,
+	     float scale);
 
 	// BW1W120 00749f60 BW1M119 01161230
 	void SetToZero();
+
+	// BW1W120 inlined BW1M119 inlined
+	const GTreeInfo* GetInfo() const { return (const GTreeInfo*)info; }
+	// BW1W120 inlined BW1M119 inlined
+	bool32_t IsGrowing() { return Growing && GetScale() < TargetScale; }
 
 	// Non-virtual methods
 
@@ -217,6 +237,11 @@ public:
 	float Decay(float amount);
 	// BW1W120 0074c650 BW1M119 0115daf0
 	bool32_t GetPosForVillagerToSleepUnder(Villager* villager, MapCoords& pos);
+	// BW1W120 0074bd20 BW1M119 0115f040
+	void AddPermanentFootPrint();
+	// BW1W120 0074a3f0 BW1M119 01160880
+	float Grow(float amount, bool param_2, bool param_3);
 };
+static_assert(sizeof(Tree) == 0x6c, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_TREE_INCLUDED_H */
