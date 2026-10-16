@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/CreatureEnum.h> /* For enum DEVELOPMENT_PHASE */
+#include <chlasm/CreatureEnum.h> /* For enum CREATURE_ACTION, enum DEVELOPMENT_PHASE */
 #include <chlasm/Enum.h>         /* For CREATURE_ACTION_KNOWN_ABOUT_LAST, MAGIC_TYPE_LAST */
 #include <re_common.h>           /* For bool32_t */
 
@@ -47,7 +47,8 @@ static_assert(sizeof(CreatureActionKnownAboutEntry) == 0x68, "Data type is of wr
 class CreatureMagicActionKnownAboutEntry : public CreatureActionKnownAboutEntry
 {
 public:
-	uint8_t field_0x68[0x8];
+	CREATURE_ACTION MimickingAction;
+	uint32_t        field_0x6c;
 
 	// Static data
 
@@ -64,7 +65,7 @@ public:
 	// BW1W120 inlined BW1M119 0126b240
 	static CreatureMagicActionKnownAboutEntry* GetMagicActionKnownAboutInfo() { return MagicActionKnownAboutInfo; }
 
-	INFO_DATA_BLOCK(field_0x68, field_0x68)
+	INFO_DATA_BLOCK(MimickingAction, field_0x6c)
 	INFO_DERIVED_LOADERS(CreatureActionKnownAboutEntry, "CreatureMentalLearnAction.h", 27)
 };
 static_assert(sizeof(CreatureMagicActionKnownAboutEntry) == 0x70, "Data type is of wrong size");

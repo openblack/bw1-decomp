@@ -83,6 +83,11 @@ struct CreatureRecentTrees
 	uint32_t Count;
 
 	void Add(Tree* tree);
+	void Clear()
+	{
+		Index = 0;
+		Count = 0;
+	}
 };
 
 struct CreatureEmotionsForMusic
@@ -968,8 +973,28 @@ public:
 	bool32_t NothingScareyNearMe(CreaturePlan& plan, CREATURE_ACTION action);
 	// BW1W120 004e4680 BW1M119 015ecc10
 	bool32_t CanCastAmusingSpellOnCreature(CreaturePlan& plan, CREATURE_ACTION action);
-	// BW1W120 004ea670 BW1M119 0127da80
+	// BW1W120 004f0810 BW1M119 0127da80
 	void DecideOnNewPlan(CreaturePlan& param_1);
+	// BW1W120 004e9f40 BW1M119 01273670
+	void ProcessMimicState();
+	// BW1W120 004ea0a0 BW1M119 01273550
+	CREATURE_ACTION GetMimickingAction(DETECTED_PLAYER_ACTION action, unsigned long index, MAGIC_TYPE magic_type);
+	// BW1W120 004ea0e0 BW1M119 01273430
+	void MimicForceNoticingAction();
+	// BW1W120 004ea130 BW1M119 01272f60
+	void MimicForceCopyingAction();
+	// BW1W120 004ea540 BW1M119 01272dc0
+	void MimicForceDesire();
+	// BW1W120 004ea670 BW1M119 012729e0
+	void MimicPlayer(DETECTED_PLAYER_ACTION action, GameThingWithPos* object, MAGIC_TYPE magic_type);
+	// BW1W120 004f0f70 BW1M119 0127cb00
+	bool32_t FindBestObjectOfSameMimicTypeFromAction(CreaturePlan& plan);
+	// BW1W120 004f10a0 BW1M119 0127c940
+	bool32_t FindBestObjectToActOnFromAction(CreaturePlan& plan, CREATURE_BELIEF_TYPE belief_type);
+	// BW1W120 004f11b0 BW1M119 0127c830
+	bool32_t FindBestObjectToUseIfNecessary(CreaturePlan& plan);
+	// BW1W120 004f1b60 BW1M119 0127b370
+	bool32_t CanCreatureCurrentlyPerformAction(CREATURE_ACTION action, CreaturePlan& plan);
 	// BW1W120 004f6a90 BW1M119 0128d560
 	void PrepareCreatureForScriptedAction(int stop_moving);
 	// BW1W120 004f8b80 BW1M119 0128e470
@@ -1012,6 +1037,8 @@ public:
 	void CreateLightbulb(float progress);
 	// BW1W120 004e29d0 BW1M119 01269a50
 	bool32_t PossibilityOfErrorFromLackOfSkill(CREATURE_ACTION action);
+	// BW1W120 004e0de0 BW1M119 01267e80
+	void LearnLessonFromLeashInstruction(Object* object);
 	// BW1W120 004f8850 BW1M119 0128ecd0
 	void ForceActionCastSpellOnObject(MAGIC_TYPE magic_type, Object* object);
 	// BW1W120 004f2930 BW1M119 012817f0

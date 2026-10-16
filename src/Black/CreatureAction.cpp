@@ -4609,7 +4609,7 @@ int CreatureAgenda::ConstructSubActionsForMimicPlayer(unsigned long param_1)
 	                                       mind->AttitudeToPlayer.ObservedAction.Object,
 	                                       mind->AttitudeToPlayer.ObservedAction.MagicType);
 	mimic->StageProgress = mimic->StageLimit / 2;
-	creature->mind->agenda.MimicState.Stage = 1;
+	creature->mind->agenda.MimicState.Stage = MIMIC_STAGE_COPY_ACTION;
 	return 0;
 }
 
