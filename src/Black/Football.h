@@ -164,6 +164,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 005313e0 BW1M119 012c0aa0
+	void CreateBall();
 	// BW1W120 00531410 BW1M119 012c0a10
 	Ball* GetBall();
 	// BW1W120 005325d0 BW1M119 012bebf0

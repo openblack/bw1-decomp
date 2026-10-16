@@ -21,6 +21,9 @@ struct DesireSort
 	uint32_t              field_0x0;
 	float                 field_0x4;
 	enum TOWN_DESIRE_INFO field_0x8;
+
+	// BW1W120 00746570 BW1M119 01080700
+	GTownDesireInfo* GetInfo() const;
 };
 
 class TownDesire : public Base
