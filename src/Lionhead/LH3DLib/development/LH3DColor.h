@@ -47,4 +47,10 @@ struct LH3DColor
 	uint32_t GetColor() { return *(uint32_t*)this; }
 };
 
+// Moves each channel of from amount/256 of the way towards to; alpha is taken from to.
+#define LH3D_BLEND_COLOR(from, to, amount)                                                                             \
+	((((((to) & 0xff0000) - ((from) & 0xff0000)) * (amount) >> 8) + ((from) & 0xff0000)) & 0xff0000 |                  \
+	 (((((to) & 0xff00) - ((from) & 0xff00)) * (amount) >> 8) + ((from) & 0xff00)) & 0xff00 |                          \
+	 (((((to) & 0xff) - ((from) & 0xff)) * (amount) >> 8) + ((from) & 0xff)) & 0xff | ((to) & 0xff000000))
+
 #endif /* BW1_DECOMP_LH3D_COLOR_INCLUDED_H */

@@ -22,6 +22,12 @@ class LH3DZSorter;
 #define LH3D_RENDER_TEXTURE_STAGE_COUNT 8
 #define LH3D_RENDER_FUNC_ENTRIES        2
 
+enum LH3D_2ND_TEX_MODE
+{
+	LH3D_2ND_TEX_MODE_OFF = 0,
+	LH3D_2ND_TEX_MODE_SINGLE = 1,
+};
+
 struct LH3DRender
 {
 	// Original Mac imported names; storage remains extracted.

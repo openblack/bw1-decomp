@@ -15,6 +15,14 @@ struct SoftTri
 	static void __fastcall addedge(float x1, int y1, float x2, int y2);
 	// BW1W120 00880050 BW1M119 0100d930 (LHCombined Release)
 	static void __fastcall rendertri(void* buffer, int pitch, int color);
+	// BW1W120 inlined BW1M119 010aeb30 (LHCombined Release)
+	static void addedge_123(float x1, int y1, float x2, int y2, float x3, int y3, float x4, int y4, float x5, int y5,
+	                        float x6, int y6)
+	{
+		addedge(x1, y1, x2, y2);
+		addedge(x3, y3, x4, y4);
+		addedge(x5, y5, x6, y6);
+	}
 };
 
 #endif /* BW1_DECOMP_SOFT_TRI_INCLUDED_H */

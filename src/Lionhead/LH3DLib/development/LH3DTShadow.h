@@ -12,6 +12,10 @@ struct Vertex3D;
 
 // The size of the shadow texture, halved for low resolution textures.
 #define LH3D_T_SHADOW_SIZE 256
+// The size of the small shadow textures DrawTextureShadow32x32 rasterises.
+#define LH3D_T_SHADOW_SMALL_SIZE 32.0f
+// Scales a shadow corner projected onto the ground into the shadow texture.
+#define LH3D_T_SHADOW_SCALE 0.00625f
 // The width and height of the alpha pattern g_bitmap points at.
 #define LH3D_T_SHADOW_BITMAP_SIZE 64
 

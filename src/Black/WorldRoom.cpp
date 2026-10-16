@@ -47,6 +47,15 @@
 #include "GameTimeConstants.h" /* For SecondsPerYear */
 #include "ColourConstants.h"   /* For White */
 
+// fabricated: unrecovered counter slots. cl6 orders .bss by a hash of the symbol name, and Draw's
+// sign_texts guard ?$S<n> lands in the original's slot only for some n (246, 251, 252, 256, 262,
+// 305, 306). The headers above declare more static data members than the original's did, so
+// these pad the guard onto one of them.
+struct WorldRoomCounterPad
+{
+	static int Pad0, Pad1, Pad2;
+};
+
 // The name is a guess, but not a free one: cl6 orders .bss by a hash of the symbol name, and this
 // unit's .bss has the constant between Draw's sign_texts guard and White. PSysProperties.cpp and
 // Player.cpp hold the same constant as OneOverLogHalf, which sorts after White.
