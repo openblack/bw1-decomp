@@ -1,6 +1,8 @@
 #include "GameTimeConstants.h"
 #include "TerrainMaterialInfo.h"
+#if !defined(VERSION_BW1WCI) /* Creature Isle's build of this unit has no <string> initializers */
 #include "StdStringInitializers.h"
+#endif
 
 GTerrainMaterialInfo GTerrainMaterialInfo::Infos[TERRAIN_MATERIAL_TYPE_LAST];
 
