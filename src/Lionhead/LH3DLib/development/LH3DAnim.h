@@ -227,6 +227,8 @@ struct LH3DAnim
 
 	// Non-virtual methods
 
+	// BW1W120 00839980 BW1M119 010281a0 (LHCombined Release)
+	float SetTransform(LHMatrix* bones, LH3DMesh* mesh, long time, LHMatrix& transform);
 	// BW1W120 0083a6a0 BW1M119 0101f950 (LHCombined Release)
 	int GetListPtrFrames();
 	// BW1W120 0083add0 BW1M119 01033790 (LHCombined Release)

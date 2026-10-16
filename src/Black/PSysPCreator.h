@@ -5,6 +5,7 @@
 #include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint32_t */
 
+#include "GTPointer.h"          /* For class GTPointer */
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
 // Forward Declares
@@ -79,7 +80,7 @@ public:
 class RenderParticleGameObjectRef : public RenderParticle
 {
 public:
-	uint8_t field_0x18[0x8];
+	GTPointer<Object> GameObject;
 
 	// Override methods
 
@@ -102,6 +103,8 @@ public:
 
 	// BW1W120 006c80f0 BW1M119 01484d10
 	RenderParticleGameObjectRef();
+	// BW1W120 006c8150 BW1M119 01484c40
+	RenderParticleGameObjectRef(Object* object);
 };
 
 class RenderParticleGoldenShower : public RenderParticleGameObjectRef
@@ -126,6 +129,8 @@ public:
 
 	// BW1W120 0055efa0 BW1M119 inlined
 	RenderParticleGoldenShower() { Shower = NULL; }
+	// BW1W120 inlined BW1M119 inlined
+	RenderParticleGoldenShower(Object* object) : RenderParticleGameObjectRef(object) { Shower = NULL; }
 };
 
 class RenderParticleMist : public RenderParticle

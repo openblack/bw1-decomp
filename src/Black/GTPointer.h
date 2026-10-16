@@ -4,6 +4,8 @@
 #include <assert.h>
 #include <stddef.h>
 
+class GameThing;
+
 // Non-owning pointer with a cached validation turn; member names reconstructed.
 template <typename T> class GTPointer
 {
@@ -27,9 +29,37 @@ public:
 	void SetGameTurnValidated();
 	// BW1W120 inlined BW1M119 01022c70
 	void ValidateGameTurn(unsigned char max_age) const {}
+	// BW1W120 inlined BW1M119 inlined
+	T* operator->() const { return Pointer; }
+	// BW1W120 inlined BW1M119 inlined
+	bool IsValid()
+	{
+		if (Pointer == NULL)
+		{
+			return false;
+		}
+		ValidateGameTurn(1);
+		if (Pointer->IsAvailable() == true)
+		{
+			SetGameTurnValidated();
+			return true;
+		}
+		Pointer = NULL;
+		return false;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	T* Get() const
+	{
+		if (Pointer == NULL)
+		{
+			return NULL;
+		}
+		ValidateGameTurn(0);
+		return Pointer;
+	}
 };
 
-static_assert(sizeof(GTPointer<int>) == 8, "GTPointer size is incorrect");
-static_assert(offsetof(GTPointer<int>, Pointer) == 4, "GTPointer pointer offset is incorrect");
+static_assert(sizeof(GTPointer<GameThing>) == 8, "GTPointer size is incorrect");
+static_assert(offsetof(GTPointer<GameThing>, Pointer) == 4, "GTPointer pointer offset is incorrect");
 
 #endif /* BW1_DECOMP_GT_POINTER_INCLUDED_H */
