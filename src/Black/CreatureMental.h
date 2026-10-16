@@ -138,6 +138,18 @@ public:
 	// BW1W120 004e11c0 BW1M119 012674a0
 	void LearnParticularLessonFromFeedback(CreatureContext& context, float feedback, LESSON_TYPE lesson_type,
 	                                       int param_4, unsigned long* lesson_count, LESSON_ORIGIN_TYPE origin);
+	// BW1W120 004e29e0 BW1M119 01269950
+	uint32_t GetNumNormalActionsLeftToLearnWhichCanBeTaughtByComputerPlayer();
+	// BW1W120 004e2a20 BW1M119 null
+	uint32_t GetNumMagicActionsLeftToLearnWhichCanBeTaughtByComputerPlayer();
+	// BW1W120 004e2a60 BW1M119 01269850
+	bool32_t FillInFirstNormalActionLeftToLearn(CREATURE_ACTION_LEARNING_TYPE* type, unsigned long* action);
+	// BW1W120 004e2ac0 BW1M119 012696f0
+	bool32_t FillInFirstAggressiveMagicActionLeftToLearn(CREATURE_ACTION_LEARNING_TYPE* type, unsigned long* action);
+	// BW1W120 004e2b60 BW1M119 01269590
+	bool32_t FillInFirstCompassionateMagicActionLeftToLearn(CREATURE_ACTION_LEARNING_TYPE* type, unsigned long* action);
+	// BW1W120 004e2c00 BW1M119 01269450
+	bool32_t FillInFirstImpressiveMagicActionLeftToLearn(CREATURE_ACTION_LEARNING_TYPE* type, unsigned long* action);
 	// BW1W120 004c4f10 BW1M119 01236090
 	void UpdateHowImpressiveIsCreature(Creature* other_creature, float impressiveness);
 	// BW1W120 004e2380 BW1M119 0126a110
