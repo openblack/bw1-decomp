@@ -2517,7 +2517,7 @@ Black/VillagerTrader.cpp:
 	.text       start:0x00770730 end:0x007707F0
 	.rdata      start:0x00A1A440 end:0x00A1A44C
 	.CRT$XCU    start:0x00A47A64 end:0x00A47A6C align:4
-	.bss        start:0x00E4C318 end:0x00E4C31C
+	.bss        start:0x00E4C318 end:0x00E4C324
 
 Black/VillagerWorshipper.cpp:
 	.text       start:0x007707F0 end:0x00771A20
