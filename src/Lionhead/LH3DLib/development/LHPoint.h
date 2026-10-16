@@ -136,14 +136,14 @@ struct LHPoint
 		y += other.y;
 		z += other.z;
 	}
-	// BW1W120 0044ea20 BW1M119 01016330 (LHCombined Release)
+	// BW1W120 007ff0c0 BW1M119 01016330 (LHCombined Release)
 	void Mul(float rhs)
 	{
 		x *= rhs;
 		y *= rhs;
 		z *= rhs;
 	}
-	// BW1W120 inlined BW1M119 01012250 (LHCombined Release)
+	// BW1W120 006a3e20 BW1M119 01012250 (LHCombined Release)
 	void CrossProduct(const LHPoint& a, const LHPoint& b)
 	{
 		x = a.y * b.z - a.z * b.y;
@@ -194,7 +194,7 @@ struct LHPoint
 		float pz = z;
 		return sqrt(px * px + py * py + pz * pz);
 	}
-	// BW1W120 inlined BW1M119 0101fdf0
+	// BW1W120 00677d40 BW1M119 0101fdf0
 	void Set(float _x, float _y, float _z)
 	{
 		x = _x;

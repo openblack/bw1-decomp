@@ -59,6 +59,24 @@ enum CREATURE_BELIEF_ATTRIBUTE
 	CREATURE_BELIEF_ATTRIBUTE_MOBILE_OBJECT_LAST,
 };
 
+#define CREATURE_BELIEF_SOURCES_UPDATE_TURNS              200
+#define CREATURE_BELIEF_TOY_PLAY_SOURCE                   0.5f
+#define CREATURE_BELIEF_STEALABLE_STEAL_SOURCE            0.3f
+#define CREATURE_BELIEF_TOWN_COMPASSION_SECONDS           20.0f
+#define CREATURE_BELIEF_VILLAGER_FAR_FROM_STORAGE_PIT     40.0f
+#define CREATURE_BELIEF_IMPRESS_FROM_VILLAGER_INCREMENT   0.5f
+#define CREATURE_BELIEF_ATTENTION_FROM_CREATURE           0.02f
+#define CREATURE_BELIEF_FOREST_SEARCH_RADIUS              1000.0f
+#define CREATURE_BELIEF_FIXED_NAVIGATION_BLOCKED_SECONDS  60.0f
+#define CREATURE_BELIEF_MOBILE_NAVIGATION_BLOCKED_SECONDS 10.0f
+
+enum ATTRIBUTE_TEST_RESULT
+{
+	ATTRIBUTE_TEST_RESULT_SATISFIED = 0,
+	ATTRIBUTE_TEST_RESULT_NOT_SATISFIED = 1,
+	ATTRIBUTE_TEST_RESULT_NO_ATTRIBUTE = 2,
+};
+
 // Forward Declares
 
 class Archive;
@@ -97,18 +115,21 @@ public:
 	// Virtual methods
 
 	// BW1W120 004d7890 BW1M119 01239cc0
-	virtual uint32_t GetNumAttributes();
+	virtual uint32_t GetNumAttributes() { return 0; }
 	// BW1W120 004d78a0 BW1M119 011e4be0
-	virtual Attribute* GetNthAttribute(unsigned long index);
+	virtual Attribute* GetNthAttribute(unsigned long index) { return NULL; }
 	// BW1W120 004d78b0 BW1M119 01255170
-	virtual Attribute** GetNthAttributePtr(unsigned long index);
+	virtual Attribute** GetNthAttributePtr(unsigned long index) { return NULL; }
 	// BW1W120 004d7e80 BW1M119 01257c90
 	virtual void UpdateAttributes(Creature* creature, GameThingWithPos* thing, GPlayer* player);
 	// BW1W120 004d63f0 BW1M119 011e4b30
 	virtual uint32_t GetType();
 	// BW1W120 004d78c0 BW1M119 012551c0
 	virtual CreatureBelief* FindBestObjectToActOn(CREATURE_DESIRES desire, CreatureMental* mental,
-	                                              CREATURE_ACTION action, float* usefulness);
+	                                              CREATURE_ACTION action, float* usefulness)
+	{
+		return NULL;
+	}
 	// BW1W120 004d8b40 BW1M119 01256700
 	virtual CreatureBelief* Copy();
 	// BW1W120 004e8d90 BW1M119 0126c220
@@ -132,6 +153,29 @@ public:
 	GameThingWithPos* GetPointer() { return Pointer; }
 	// BW1W120 inlined BW1M119 01226670
 	Object* GetObjectPointer();
+	// BW1W120 inlined BW1M119 01258b80
+	bool32_t IsUsedInPlan(CREATURE_DESIRES desire)
+	{
+		return UsedInPlan[desire / CHAR_BIT] & (1 << (desire % CHAR_BIT));
+	}
+	// BW1W120 004d7a60 BW1M119 012587b0
+	void ClearAfterFreeingUp();
+	// BW1W120 004d7e20 BW1M119 01257e80
+	void FillInAllAttributes(GameThingWithPos* thing, GPlayer* player);
+	// BW1W120 004d8300 BW1M119 01257510
+	ATTRIBUTE_TEST_RESULT SatisfiesAttributeTest(ATTRIBUTE_TYPE type, unsigned long value);
+	// BW1W120 004d8360 BW1M119 01257410
+	bool32_t FindAttributeValue(ATTRIBUTE_TYPE type, unsigned long* value);
+	// BW1W120 004d8a90 BW1M119 012568e0
+	const char* AttributeTypeText(unsigned long index);
+	// BW1W120 004d8ab0 BW1M119 01256850
+	const char* AttributeValueText(unsigned long index, unsigned long value);
+	// BW1W120 004d8ad0 BW1M119 null
+	uint32_t AttributeValueRange(unsigned long index);
+	// BW1W120 004d8df0 BW1M119 01255ef0
+	void SetNavigationBlockedFlag();
+	// BW1W120 004d8e10 BW1M119 01255db0
+	bool32_t HasNavigationBeenBlockedRecently();
 };
 static_assert(sizeof(CreatureBelief) == 0x4c, "Data type is of wrong size");
 

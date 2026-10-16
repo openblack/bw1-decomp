@@ -43,7 +43,7 @@ Experiment discipline, learned the expensive way:
 ## Repository Layout
 
 - `configure.py`        — Project configuration and generator script.
-- `config/[VERSION]`    — Configuration files for each game version (`BW1W100`, `BW1W110`, `BW1W120`, `BW1W130`, `BW1M119`).
+- `config/[VERSION]`    — Configuration files for each game version (`BW1W100`, `BW1W110`, `BW1W120`, `BW1W130`, `BW1WCI`, `BW1M119`).
     - `config.yml`      — decomp-toolkit project config
     - `symbols.txt`     — layout of the binaries, addresses, sizes, names etc for every symbol present
     - `splits.txt`      — per-TU section address ranges
@@ -128,7 +128,7 @@ executable hashes check.
 
 ### Game versions
 
-CI builds BW1W100, BW1W110, BW1W120 and BW1W130, including the DLL units; only BW1W120 is
+CI builds BW1W100, BW1W110, BW1W120, BW1W130 and BW1WCI, including the DLL units; only BW1W120 is
 configured locally by default. Layouts can differ between versions (e.g. `LHNetUser`), so guard
 version-specific `static_assert`s and members with the version macros, and compile touched units
 with each version's `/DBUILD_VERSION=<n> /DVERSION_<ver>` before pushing. BW1W130 shares 1.20's
@@ -139,7 +139,17 @@ BW1W130 was ported from BW1W120 by `tools/port_version.py`. It was built from
 and stale bytes fill some of its function padding. A unit matched for 1.20 is therefore not
 automatically matched for 1.30: list the versions it really matches in an inclusive
 `MatchingFor(...)`, and keep a version out of that list rather than changing source for it.
-The same applies when matching a new unit: check BW1W130 before using plain `Matching`.
+The same applies when matching a new unit: check BW1W130 and BW1WCI before using plain `Matching`.
+
+BW1WCI (Creature Isle) was ported from BW1W120 the same way (see
+[`docs/porting_versions.md`](docs/porting_versions.md)), and its code is further from 1.20 than
+1.30's: list it in a unit's `MatchingFor(...)` only where the unit links byte-identical there too.
+CI compiles every source for it with `/DBUILD_VERSION=4 /DVERSION_BW1WCI`. Its `GGame`, `GPlayer`
+and `Town` layouts are not modeled, so a layout check that holds for 1.00 and 1.10 names those
+versions (`#elif defined(VERSION_BW1W100) || defined(VERSION_BW1W110)`) instead of taking a bare
+`#else`; a size known for Creature Isle gets its own branch (`GAudio` is 0x3fc there).
+`config/BW1WCI/` has no hand fixes yet: regenerate it with `port_version.py` when 1.20's splits or
+names improve.
 
 The underlying utility used for splitting the binary is `dtk` (`build/tools/dtk`).
 It is already properly set up and almost never requires any meddling.

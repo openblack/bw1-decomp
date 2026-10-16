@@ -15,6 +15,7 @@ class Base;
 class GameThing;
 class GMagicCreatureSpellInfo;
 class GMagicEffectInfo;
+class GSpellSeedInfo;
 class Object;
 class Spell;
 struct MapCoords;
@@ -65,6 +66,8 @@ public:
 
 	// BW1W120 005fb3f0 BW1M119 013b62c0
 	const char* GetMagicInfoText() const;
+	// BW1W120 005fb400 BW1M119 013b6250
+	GSpellSeedInfo* GetSpellSeedInfo() const;
 	// BW1W120 005fb680 BW1M119 013b5c30
 	GMagicEffectInfo* GetMagicEffectInfo() const;
 	// BW1W120 inlined BW1M119 013b4610

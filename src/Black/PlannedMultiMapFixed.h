@@ -37,14 +37,14 @@ public:
 
 	// Override methods
 
-	// BW1W120 0055cbe0 BW1M119 0111b0b0
-	virtual char* GetDebugText() { return "PlannedMultiMapFixed:"; }
 	// BW1W120 00648af0 BW1M119 0111e820
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 00648990 BW1M119 0111ea40
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0055cbd0 BW1M119 inlined
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_PLANNED_MULTI_MAP_FIXED; }
+	// BW1W120 0055cbe0 BW1M119 0111b0b0
+	virtual char* GetDebugText() { return "PlannedMultiMapFixed:"; }
 	// BW1W120 004050c0 BW1M119 01150d50
 	virtual float GetScale() { return scale; }
 	// BW1W120 004050d0 BW1M119 01155290

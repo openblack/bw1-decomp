@@ -84,8 +84,8 @@ public:
 
 	// Instantiations: BW1M119 013bc350 (unsigned char), 01091630 (BurnSFX).
 	long GetSize() const;
-	// Instantiations: BW1M119 012ff1b0 (float), 01342a80 (KPSI_Element<float>).
-	const T& Entry(long index) const;
+	// Instantiations: BW1M119 012ff1b0 (float), 01342a80 (KPSI_Element<float>), 014881b0 (PosScaleRotation).
+	T& Entry(long index) const;
 	// Instantiations: BW1M119 01343190 (float), 013431d0 (KPSI_Element<float>).
 	T& operator[](long index);
 
@@ -93,21 +93,74 @@ public:
 	long Size;
 };
 
+// A ring buffer: Add overwrites the oldest entry once the array is full, and Entry(0) is the newest entry.
+// On Mac, SetMaxSize calls GJArray::Clear and GJArray::SetSize on the start of the object.
 template <class T> class GJCircularArray
 {
 public:
 	// BW1W120 inlined BW1M119 01315770
-	GJCircularArray() : Data(NULL), MaxSize(0), NumFilled(0), Head(-1) {}
-	// BW1W120 inlined BW1M119 inlined
-	~GJCircularArray() { delete[] Data; }
+	GJCircularArray() : NumFilled(0), Head(-1) {}
 
+	// BW1W120 inlined BW1M119 0142d080
+	void SetMaxSize(long size);
+	// BW1W120 inlined BW1M119 0142d4e0
+	void Add(const T& item);
 	// BW1W120 006a7e30 BW1M119 0142d5e0
-	const T& Entry(long index) const;
+	T& Entry(long index) const;
+	// BW1W120 inlined BW1M119 0142d6f0
+	long GetMaxSize() const { return Array.Size; }
+	// BW1W120 inlined BW1M119 01442730
+	long GetNumFilled() const { return NumFilled; }
 
-	T*   Data;
-	long MaxSize;
-	long NumFilled;
-	long Head;
+	GJArray<T> Array;
+	long       NumFilled;
+	long       Head;
+};
+
+// Intrusive list: T has Previous and Next pointers.
+template <class T> class GJDoubleLinkList
+{
+public:
+	class Iterator
+	{
+	public:
+		// BW1W120 inlined BW1M119 013e9400
+		Iterator(GJDoubleLinkList<T>& list) : Current(list.First) {}
+		// BW1W120 inlined BW1M119 01054290
+		Iterator(const Iterator& other) : Current(other.Current) {}
+
+		// BW1W120 inlined BW1M119 013e91f0
+		bool IsFinished() { return Current == NULL; }
+		// BW1W120 inlined BW1M119 013e9250
+		Iterator operator++(int)
+		{
+			Current = Current->Next;
+			return *this;
+		}
+		// BW1W120 inlined BW1M119 01054c80
+		T* operator->() const { return Current; }
+		// BW1W120 inlined BW1M119 0148ced0
+		T*& GetRef() { return Current; }
+
+		T* Current;
+	};
+
+	// BW1W120 inlined BW1M119 0109e7c0
+	GJDoubleLinkList() : First(NULL), Count(0) {}
+	// BW1W120 inlined BW1M119 013ed760
+	~GJDoubleLinkList() {}
+
+	// BW1W120 00677400 BW1M119 0108ab60
+	void InsertIntoList(T* item);
+	// BW1W120 inlined BW1M119 01014c70
+	void RemoveFromList(T* item);
+	// BW1W120 inlined BW1M119 01054460
+	T* Head() { return First; }
+	// BW1W120 inlined BW1M119 0108c1c0
+	long GetCount() { return Count; }
+
+	T*   First;
+	long Count;
 };
 
 template <class T> class GJLowPassFilterVariableStep
@@ -141,6 +194,12 @@ public:
 
 	T Coefficients[4];
 };
+
+// BW1W120 inlined BW1M119 01442840
+template <class To, class From> inline To assert_cast(From from)
+{
+	return static_cast<To>(from);
+}
 
 #include "GJBaseUtils.inl"
 

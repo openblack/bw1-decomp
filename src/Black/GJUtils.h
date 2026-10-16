@@ -20,10 +20,17 @@ public:
 	static void SetMaterialProperties(LH3DMaterial* material, const MaterialProperties& prop);
 	// BW1W120 0057e1d0 BW1M119 012c2b70
 	static void SetMaterialProperties(LH3DMesh* mesh, const MaterialProperties& prop);
+	// BW1W120 0057d2b0 BW1M119 012c40a0
+	static void PostRotateByQuaternion(float angle, const LHPoint* axis, LHMatrix* matrix);
 	// BW1W120 005906e0 BW1M119 012ff530
 	static void GetRandomSurfacePos(LH3DMesh* mesh, LHMatrix& matrix, LHPoint* pos, LHPoint* normal);
 	// BW1W120 inlined BW1M119 01057f60
 	template <class T> static T Linterp(const T& from, const T& to, float t) { return from + (to - from) * t; }
+	// BW1W120 inlined BW1M119 010defc0
+	template <class T> static void Linterp(const T& from, const T& to, float t, T* result)
+	{
+		*result = from + (to - from) * t;
+	}
 	// BW1W120 inlined BW1M119 013fa270
 	template <class T> static void LinterpNoBoundsCheck(const T& from, const T& to, float t, T* result)
 	{

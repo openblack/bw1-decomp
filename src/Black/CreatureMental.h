@@ -30,6 +30,7 @@ class Creature;
 class CreatureAttitudeToCreature;
 class CreatureBelief;
 class GameThingWithPos;
+class GPlayer;
 
 struct CreatureInnatePersonality
 {
@@ -78,7 +79,7 @@ public:
 	CreatureObjectsInspected                  ObjectsInspected;
 	CreatureBelief*                           ContextBelief;
 	CreatureBelief*                           CitadelHeartBelief;
-	uint32_t                                  field_0x1d488;
+	bool32_t                                  AvoidOwnPlayersThingsWhenAngry;
 	MapCoords                                 field_0x1d48c[0x1e][0x28];
 	CreatureMentalDebug                       debug;
 	Creature*                                 creature;
@@ -103,6 +104,22 @@ public:
 	CreatureBelief* GetBeliefAboutObject(GameThingWithPos* object);
 	// BW1W120 004d7bd0 BW1M119 01258250
 	CreatureBelief* AddBeliefAboutObject(Creature* creature, GameThingWithPos* object);
+	// BW1W120 004d7af0 BW1M119 012586a0
+	CreatureBelief* CreateBeliefAboutContext();
+	// BW1W120 004d7b00 BW1M119 012585c0
+	CreatureBelief* CreateBelief(GameThingWithPos* object, GPlayer* player);
+	// BW1W120 004d7b50 BW1M119 01258520
+	void DeleteBelief(CreatureBelief* belief);
+	// BW1W120 004d7d90 BW1M119 01257f90
+	bool32_t IsBeliefCurrentlyUsedInAgenda(CreatureBelief* belief);
+	// BW1W120 004d82a0 BW1M119 01257610
+	void UpdateBeliefAboutContext();
+	// BW1W120 004d83c0 BW1M119 01256b70
+	void RemoveBeliefsAboutDeletedObjects();
+	// BW1W120 004de800 BW1M119 01260940
+	void UpdateSourcesFromBelief(CreatureBelief* belief);
+	// BW1W120 004e1570 BW1M119 01267200
+	void ReconsiderDecision();
 	// BW1W120 004c45c0 BW1M119 012355d0
 	float CalculateDesirabilityOfProposedActivity(CREATURE_DESIRES desire, GameThingWithPos* activity_object);
 	// BW1W120 004c4640 BW1M119 null
@@ -138,6 +155,18 @@ public:
 	// BW1W120 004e11c0 BW1M119 012674a0
 	void LearnParticularLessonFromFeedback(CreatureContext& context, float feedback, LESSON_TYPE lesson_type,
 	                                       int param_4, unsigned long* lesson_count, LESSON_ORIGIN_TYPE origin);
+	// BW1W120 004e29e0 BW1M119 01269950
+	uint32_t GetNumNormalActionsLeftToLearnWhichCanBeTaughtByComputerPlayer();
+	// BW1W120 004e2a20 BW1M119 null
+	uint32_t GetNumMagicActionsLeftToLearnWhichCanBeTaughtByComputerPlayer();
+	// BW1W120 004e2a60 BW1M119 01269850
+	bool32_t FillInFirstNormalActionLeftToLearn(CREATURE_ACTION_LEARNING_TYPE* type, unsigned long* action);
+	// BW1W120 004e2ac0 BW1M119 012696f0
+	bool32_t FillInFirstAggressiveMagicActionLeftToLearn(CREATURE_ACTION_LEARNING_TYPE* type, unsigned long* action);
+	// BW1W120 004e2b60 BW1M119 01269590
+	bool32_t FillInFirstCompassionateMagicActionLeftToLearn(CREATURE_ACTION_LEARNING_TYPE* type, unsigned long* action);
+	// BW1W120 004e2c00 BW1M119 01269450
+	bool32_t FillInFirstImpressiveMagicActionLeftToLearn(CREATURE_ACTION_LEARNING_TYPE* type, unsigned long* action);
 	// BW1W120 004c4f10 BW1M119 01236090
 	void UpdateHowImpressiveIsCreature(Creature* other_creature, float impressiveness);
 	// BW1W120 004e2380 BW1M119 0126a110

@@ -539,14 +539,14 @@ Black/CreatureMentalAttributeTest.cpp:
 	.text       start:0x004D4220 end:0x004D77C0
 	.rdata      start:0x008CF9A4 end:0x008CFE00
 	.CRT$XCU    start:0x009C6498 end:0x009C64A4 align:4
-	.data       start:0x00BDEA70 end:0x00BDF3CC
+	.data       start:0x00BDEA70 end:0x00BDF390
 	.bss        start:0x00C831B8 end:0x00C84390
 
 Black/CreatureMentalBelief.cpp:
 	.text       start:0x004D77C0 end:0x004D9640
 	.rdata      start:0x008CFE00 end:0x008CFE74
 	.CRT$XCU    start:0x009C64A4 end:0x009C64B0 align:4
-	.data       start:0x00BDF3CC end:0x00BDF3F8
+	.data       start:0x00BDF390 end:0x00BDF3F8
 	.bss        start:0x00C84390 end:0x00C84398
 
 Black/CreatureMentalBeliefs.cpp:
@@ -564,45 +564,51 @@ Black/CreatureMentalDesire.cpp:
 	.bss        start:0x00C843A0 end:0x00C87E90
 
 Black/CreatureMentalDesireSource.cpp:
-	.text       start:0x004DD0F0 end:0x004DF220
-	.rdata      start:0x008CFFBC end:0x008D0080
-	.CRT$XCU    start:0x009C64DC end:0x009C6514 align:4
-	.data       start:0x00BDF554 end:0x00BDF8D8
-	.bss        start:0x00C87E90 end:0x00C8DC28
+	.text       start:0x004DD0F0 end:0x004DE890
+	.rdata      start:0x008CFFBC end:0x008D0060
+	.CRT$XCU    start:0x009C64DC end:0x009C64FC align:4
+	.data       start:0x00BDF554 end:0x00BDF608
+	.bss        start:0x00C87E90 end:0x00C8DC18
+
+Black/CreatureMentalEditor.cpp:
+	.text       start:0x004DF220 end:0x004DF380
+	.rdata      start:0x008D007C end:0x008D0088
+	.CRT$XCU    start:0x009C6514 end:0x009C6520 align:4
+	.bss        start:0x00C8DC28 end:0x00C8DC38
 
 Black/CreatureMentalExploration.cpp:
-	.text       start:0x004DF220 end:0x004E0240
-	.rdata      start:0x008D0080 end:0x008D00FC
-	.CRT$XCU    start:0x009C6514 end:0x009C6530 align:4
+	.text       start:0x004DF380 end:0x004E0240
+	.rdata      start:0x008D0088 end:0x008D00FC
+	.CRT$XCU    start:0x009C6520 end:0x009C6530 align:4
 	.data       start:0x00BDF8D8 end:0x00BDF960
-	.bss        start:0x00C8DC28 end:0x00CA9C54
+	.bss        start:0x00C8DC38 end:0x00CA9C54
 
 Black/CreatureMentalLearn.cpp:
 	.text       start:0x004E0240 end:0x004E21A0
 	.rdata      start:0x008D00FC end:0x008D046C
 	.CRT$XCU    start:0x009C6530 end:0x009C653C align:4
-	.data       start:0x00BDF960 end:0x00BDFDD0
+	.data       start:0x00BDF960 end:0x00BDFD80
 	.bss        start:0x00CA9C54 end:0x00CA9C5C
 
 Black/CreatureMentalLearnAction.cpp:
 	.text       start:0x004E21A0 end:0x004E2CC0
 	.rdata      start:0x008D046C end:0x008D04B8
 	.CRT$XCU    start:0x009C653C end:0x009C6548 align:4
-	.data       start:0x00BDFDD0 end:0x00BDFE64
-	.bss        start:0x00CA9C5C end:0x00CAAED4
+	.data       start:0x00BDFD80 end:0x00BDFE00
+	.bss        start:0x00CA9C5C end:0x00CA9C64
 
 Black/CreatureMentalMisc.cpp:
 	.text       start:0x004E2CC0 end:0x004E4E20
 	.rdata      start:0x008D04B8 end:0x008D0590
 	.CRT$XCU    start:0x009C6548 end:0x009C6574 align:4
-	.data       start:0x00BDFE64 end:0x00BDFF2C
-	.bss        start:0x00CAAED4 end:0x00CAB164
+	.data       start:0x00BDFE00 end:0x00BDFF2C
+	.bss        start:0x00CA9C68 end:0x00CAB164
 
 Black/CreatureMentalSaveAndLoad.cpp:
 	.text       start:0x004E4E20 end:0x004E98B0
 	.rdata      start:0x008D0590 end:0x008D059C
 	.CRT$XCU    start:0x009C6574 end:0x009C6584 align:4
-	.data       start:0x00BDFF2C end:0x00BE004C
+	.data       start:0x00BDFF2C end:0x00BE0008
 	.bss        start:0x00CAB164 end:0x00CAB178
 
 Black/CreatureMentalUsefulness.cpp:
@@ -613,16 +619,16 @@ Black/CreatureMentalUsefulness.cpp:
 
 Black/CreatureMimic.cpp:
 	.text       start:0x004E9BF0 end:0x004EAC10
-	.rdata      start:0x008D05B4 end:0x008D0610
+	.rdata      start:0x008D05AC end:0x008D0610
 	.CRT$XCU    start:0x009C6590 end:0x009C65A0 align:4
-	.data       start:0x00BE004C end:0x00BE0080
-	.bss        start:0x00CAB184 end:0x00CAD410
+	.data       start:0x00BE0008 end:0x00BE007C
+	.bss        start:0x00CAB180 end:0x00CAD410
 
 Black/CreatureMorph.cpp:
 	.text       start:0x004EAC10 end:0x004EED30
 	.rdata      start:0x008D0610 end:0x008D0634
 	.CRT$XCU    start:0x009C65A0 end:0x009C65B0 align:4
-	.data       start:0x00BE0080 end:0x00BE0198
+	.data       start:0x00BE007C end:0x00BE0198
 	.bss        start:0x00CAD410 end:0x00CADA7C
 
 Black/CreaturePen.cpp:
@@ -2018,21 +2024,21 @@ Black/PSysMagicSystem.cpp:
 	.rdata      start:0x00936EC0 end:0x0093753C
 	.CRT$XCU    start:0x009C7468 end:0x009C74AC align:4
 	.data       start:0x00C04388 end:0x00C044D4
-	.bss        start:0x00D4EC98 end:0x00D4ED44
+	.bss        start:0x00D4EC98 end:0x00D4ED38
 
 Black/PSysModifiers.cpp:
 	.text       start:0x0069D9D0 end:0x006A8350
 	.rdata      start:0x0093753C end:0x00937B3C
 	.CRT$XCU    start:0x009C74AC end:0x009C74C0 align:4
 	.data       start:0x00C044D4 end:0x00C04808
-	.bss        start:0x00D4ED44 end:0x00D4ED78
+	.bss        start:0x00D4ED38 end:0x00D4ED54
 
 Black/PSysPCreator.cpp:
 	.text       start:0x006A8350 end:0x006AAE70
 	.rdata      start:0x00937B3C end:0x00937DB8
 	.CRT$XCU    start:0x009C74C0 end:0x009C74D4 align:4
 	.data       start:0x00C04808 end:0x00C04A80
-	.bss        start:0x00D4ED78 end:0x00D4ED90
+	.bss        start:0x00D4ED54 end:0x00D4ED90
 
 Black/PSysProperties.cpp:
 	.text       start:0x006AAE70 end:0x006C7460
@@ -3828,7 +3834,7 @@ lib/libcmt/constpow.obj:
 
 Lionhead/LHLib/ver5.0/LHMemoryLeak.cpp:
 	.text       start:0x007E0440 end:0x007E0FA0
-	.CRT$XCU    start:0x009C7CFC end:0x009C7D64 align:4
+	.CRT$XCU    start:0x009C7CFC end:0x009C7D00 align:4
 	.data       start:0x00C33FBC end:0x00C34098
 
 Lionhead/LHLib/ver5.0/LHHeap2.cpp:
@@ -3873,8 +3879,12 @@ Lionhead/LH3DLib/development/LH3DSmoke.cpp:
 	.text$x     start:0x008A7D80 end:0x008A7DE0 align:4
 
 Lionhead/LH3DLib/development/LH3DIsland.cpp:
-	.text       start:0x007FF2D0 end:0x00804830
+	.text       start:0x007FE7B0 end:0x00804E90
 	.text$x     start:0x008A7DE0 end:0x008A7E10 align:4
+	.xdata$x    start:0x009BE9E0 end:0x009BEA18 align:4
+	.CRT$XCU    start:0x009C7D24 end:0x009C7D40 align:4
+	.data       start:0x00C37200 end:0x00C37D8C
+	.bss        start:0x00E9A130 end:0x00E9CDA0 align:8
 
 Lionhead/LH3DLib/development/LH3DMesh.cpp:
 	.text       start:0x00806460 end:0x00808390

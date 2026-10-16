@@ -25,7 +25,7 @@ static float unused;
 static_assert(offsetof(Town, belief) == 0x798, "Town belief offset is incorrect");
 #elif defined(VERSION_BW1W110)
 static_assert(offsetof(Town, belief) == 0x794, "Town belief offset is incorrect");
-#else
+#elif defined(VERSION_BW1W100)
 static_assert(offsetof(Town, belief) == 0x790, "Town belief offset is incorrect");
 #endif
 

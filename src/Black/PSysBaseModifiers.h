@@ -34,7 +34,7 @@ public:
 	// BW1W120 00675a90 BW1M119 0109fb50
 	virtual void DeleteReference(AtomCollection* collection) const;
 	// BW1W120 00675b10 BW1M119 010437e0
-	virtual void ModifyAtomCollection(AtomCollection* collection) const;
+	virtual bool ModifyAtomCollection(AtomCollection* collection) const;
 	// BW1W120 00675b80 BW1M119 013ef070
 	virtual void ModifyAtomCore(AtomCore* core) const;
 
@@ -89,6 +89,8 @@ public:
 	long NextGroupsGet(unsigned long index);
 	// BW1W120 0069e0d0 BW1M119 0143e960
 	void NextGroupsSet(unsigned long index, long group);
+	// BW1W120 0069e0f0 BW1M119 null
+	void SetNextGroup(long group);
 
 	GJArray<long>    NextGroups;
 	ParticleCreator* PCreator;
@@ -111,13 +113,13 @@ public:
 	class CollectionData : public BaseCollectionModifierData
 	{
 	public:
-		long NumEmitted;
-		long EmitTime;
-		bool FirstUpdate;
+		float NextEmitTime;
+		long  NumEmitted;
+		bool  FirstUpdate;
 
 		// BW1W120 0055fd40 BW1M119 inlined
 		CollectionData(const AtomCollectionModifier* modifier)
-			: BaseCollectionModifierData(modifier), NumEmitted(0), EmitTime(0)
+			: BaseCollectionModifierData(modifier), NextEmitTime(0.0f), NumEmitted(0)
 		{
 			FirstUpdate = true;
 		}
@@ -146,7 +148,7 @@ public:
 	virtual void DefineProperties(PropertyList* list);
 
 	// BW1W120 006a63a0 BW1M119 01075040
-	void ShouldEmit(AtomCollection* collection) const;
+	bool ShouldEmit(AtomCollection* collection) const;
 
 	float           EmissionFreq;
 	long            MaxAtoms;

@@ -113,6 +113,8 @@ public:
 	float GetWoodValue();
 	// BW1W120 0053ae10 BW1M119 010f97b0
 	static void RemoveForestFromTowns(Forest* forest);
+	// BW1W120 0053a1a0 BW1M119 010faf60
+	static Forest* FindClosestForest(const MapCoords& pos, float max_distance, bool32_t empty_only);
 };
 
 #endif /* BW1_DECOMP_FOREST_INCLUDED_H */

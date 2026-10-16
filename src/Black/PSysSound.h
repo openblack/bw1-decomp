@@ -16,7 +16,12 @@ struct LHPoint;
 class PSysSound : public PSysBase
 {
 public:
-	uint8_t field_0x14[0x2c];
+	PSysSound* Previous;
+	PSysSound* Next;
+	long       Action;
+	uint8_t    field_0x20[0xc];
+	long       FadeStep;
+	uint8_t    field_0x30[0x10];
 
 	// Override methods
 
