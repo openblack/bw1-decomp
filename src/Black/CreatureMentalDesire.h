@@ -2,7 +2,7 @@
 #define BW1_DECOMP_CREATURE_MENTAL_DESIRE_INCLUDED_H
 
 #include <assert.h>    /* For static_assert */
-#include <re_common.h> /* For ARRAY_SIZE, bool32_t */
+#include <re_common.h> /* For ARRAY_SIZE, bool32_t, CLAMP */
 #include <stdint.h>    /* For uint32_t */
 #include <string.h>    /* For memcpy */
 
@@ -121,6 +121,12 @@ public:
 	bool32_t IsSuppressed(unsigned long desire) { return SuppressedTurns[desire] > 0; }
 	// BW1W120 inlined BW1M119 01235700
 	float GetDesire(unsigned long desire) { return Levels[desire]; }
+	// BW1W120 inlined BW1M119 inlined
+	void SetDesire(unsigned long desire, float level)
+	{
+		Levels[desire] = level;
+		CLAMP(Levels[desire], 0.0f, 1.0f);
+	}
 	// BW1W120 004de270 BW1M119 012618c0
 	void InitialiseSources();
 	// BW1W120 004de370 BW1M119 012617a0

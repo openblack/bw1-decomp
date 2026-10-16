@@ -79,7 +79,7 @@ public:
 	CreatureObjectsInspected                  ObjectsInspected;
 	CreatureBelief*                           ContextBelief;
 	CreatureBelief*                           CitadelHeartBelief;
-	uint32_t                                  field_0x1d488;
+	bool32_t                                  AvoidOwnPlayersThingsWhenAngry;
 	MapCoords                                 field_0x1d48c[0x1e][0x28];
 	CreatureMentalDebug                       debug;
 	Creature*                                 creature;

@@ -601,7 +601,7 @@ Black/CreatureMentalSaveAndLoad.cpp:
 	.text       start:0x004E4E20 end:0x004E98B0
 	.rdata      start:0x008D0590 end:0x008D059C
 	.CRT$XCU    start:0x009C6574 end:0x009C6584 align:4
-	.data       start:0x00BDFF2C end:0x00BE004C
+	.data       start:0x00BDFF2C end:0x00BE0008
 	.bss        start:0x00CAB164 end:0x00CAB178
 
 Black/CreatureMentalUsefulness.cpp:
@@ -612,16 +612,16 @@ Black/CreatureMentalUsefulness.cpp:
 
 Black/CreatureMimic.cpp:
 	.text       start:0x004E9BF0 end:0x004EAC10
-	.rdata      start:0x008D05B4 end:0x008D0610
+	.rdata      start:0x008D05AC end:0x008D0610
 	.CRT$XCU    start:0x009C6590 end:0x009C65A0 align:4
-	.data       start:0x00BE004C end:0x00BE0080
-	.bss        start:0x00CAB184 end:0x00CAD410
+	.data       start:0x00BE0008 end:0x00BE007C
+	.bss        start:0x00CAB180 end:0x00CAD410
 
 Black/CreatureMorph.cpp:
 	.text       start:0x004EAC10 end:0x004EED30
 	.rdata      start:0x008D0610 end:0x008D0634
 	.CRT$XCU    start:0x009C65A0 end:0x009C65B0 align:4
-	.data       start:0x00BE0080 end:0x00BE0198
+	.data       start:0x00BE007C end:0x00BE0198
 	.bss        start:0x00CAD410 end:0x00CADA7C
 
 Black/CreaturePen.cpp:
