@@ -30,7 +30,7 @@ public:
 	// BW1W120 0041d310 BW1M119 0106ad70
 	virtual uint32_t ReactToAnimalNeeds();
 	// BW1W120 0041d440 BW1M119 0106b4d0
-	virtual uint32_t LookForFoodPos();
+	virtual uint32_t LookForFoodPos(MapCoords* pos);
 	// BW1W120 0041c720 BW1M119 0109f190
 	virtual uint32_t MoveAnimation();
 	// BW1W120 0041c7f0 BW1M119 01177970

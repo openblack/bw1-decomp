@@ -1,13 +1,16 @@
 #include "GameTimeConstants.h"
 #include "AnimalCow.h"
+#include "ObjectMovementConstants.h"
 
 #include "Rand.h"
+#include "AnimalInfo.h"
 #include "AnimalGoat.h"
 #include "AnimalHorse.h"
 #include "AnimalPig.h"
 #include "AnimalSheep.h"
 #include "AnimalTortoise.h"
 #include "AnimalZebra.h"
+#include "Flock.h"
 #include "PuzzleGame.h"
 #include "Game3DObject.h" /* For Game3DObject */
 
@@ -185,6 +188,121 @@ bool32_t Cow::StartToEat()
 {
 	Animal::StartToEat();
 	TurnsUntilNextStateChange = GRand::GameRand(15, ANIMAL_COW_FILE, 183) + 20;
+	return true;
+}
+
+bool32_t Cow::DecideWhatToDo()
+{
+	if (CheckNeeds() == ANIMAL_NEEDS_BREED)
+	{
+		field_0xea = 0;
+		SetTopState(ANIMAL_STATE_GIVES_BIRTH);
+		return true;
+	}
+
+	const GAnimalInfo* animalInfo = (const GAnimalInfo*)GetInfo();
+	LookForFlocksInSpiral(Pos, animalInfo, GetDomainRadius() * 2, animalInfo->field_0x234);
+
+	if (flock.Get() != NULL)
+	{
+		if (flock->field_0x58 != 0)
+		{
+			uint32_t result = KeepFlockMemberWithinFlockArea();
+			if (result == ANIMAL_STATE_SLEEPS)
+			{
+				return result;
+			}
+			SetTopState(ANIMAL_STATE_WANDER);
+			return ANIMAL_STATE_SLEEPS;
+		}
+
+		if (KeepLeaderWithinDomain() == ANIMAL_STATE_SLEEPS)
+		{
+			return ANIMAL_STATE_SLEEPS;
+		}
+		if (KeepFlockMemberWithinFlockArea() == ANIMAL_STATE_SLEEPS)
+		{
+			return ANIMAL_STATE_SLEEPS;
+		}
+	}
+
+	if (ReactToAnimalNeeds() != ANIMAL_STATE_SLEEPS)
+	{
+		SetTopState(ANIMAL_STATE_START_WANDER);
+	}
+	return true;
+}
+
+uint32_t Cow::ReactToAnimalNeeds()
+{
+	MapCoords foodPos;
+	foodPos.Clear();
+	const GAnimalInfo* animalInfo = (const GAnimalInfo*)GetInfo();
+
+	if (animalInfo->field_0x218 != 0 && GetAge() >= animalInfo->TeenAge)
+	{
+		IncreaseBreed();
+		if (field_0xea >= animalInfo->field_0x218)
+		{
+			if (flock.Get() != NULL && flock->field_0x88 > flock->Members.GetSize())
+			{
+				field_0xea = 0;
+				SetTopState(ANIMAL_STATE_GIVES_BIRTH);
+				return ANIMAL_STATE_SLEEPS;
+			}
+			field_0xea = 0;
+		}
+	}
+
+	if (animalInfo->field_0x20c != 0 && field_0xe4 >= animalInfo->field_0x20c)
+	{
+		if (LookForFoodPos(&foodPos) != 0)
+		{
+			SetSpeed(GetInfo()->speed);
+			SetupMoveToPos(foodPos, ANIMAL_STATE_START_TO_EAT);
+			return ANIMAL_STATE_SLEEPS;
+		}
+	}
+	else if (animalInfo->field_0x214 != 0 && field_0xe8 >= animalInfo->field_0x214 &&
+	         (SleepPos.x != 0 || SleepPos.z != 0))
+	{
+		SetTopState(ANIMAL_STATE_SEEK_SLEEP);
+		return ANIMAL_STATE_SLEEPS;
+	}
+
+	return ANIMAL_STATE_SEEK_ENVIRONMENT;
+}
+
+uint32_t Cow::LookForFoodPos(MapCoords* pos)
+{
+	MapCoords grazePos;
+	grazePos.Clear();
+	if (LookForGrazePos(Pos, GetDomainRadius(), &grazePos) != 0)
+	{
+		*pos = grazePos;
+		return 1;
+	}
+	return 0;
+}
+
+bool32_t Cow::Wander()
+{
+	if (ReactToAnimalNeeds() == ANIMAL_STATE_SLEEPS)
+	{
+		return true;
+	}
+
+	if (PosWithinDomain(Pos, 1.0f) == 0)
+	{
+		SetTopState(ANIMAL_STATE_DECIDE_WHAT_TO_DO);
+		return true;
+	}
+
+	if (MoveToWander(GetFlockPos(), 0, GetFlockDistance()) == OBJECT_MOVE_RESULT_CHANGED_CELL)
+	{
+		const GAnimalInfo* animalInfo = (const GAnimalInfo*)GetInfo();
+		LookForFlocksInSpiral(Pos, animalInfo, GetDomainRadius() * 2, animalInfo->field_0x234);
+	}
 	return true;
 }
 
