@@ -2071,11 +2071,6 @@ void HelpDude::UpdateInterests(float dt, bool32_t active)
 	}
 }
 
-#define HELPDUDE_BLEND_RGB(from, to, alpha)                                                                            \
-	((((((to) & 0xff0000) - ((from) & 0xff0000)) * (alpha) >> 8) + ((from) & 0xff0000)) & 0xff0000 |                   \
-	 (((((to) & 0xff00) - ((from) & 0xff00)) * (alpha) >> 8) + ((from) & 0xff00)) & 0xff00 |                           \
-	 (((((to) & 0xff) - ((from) & 0xff)) * (alpha) >> 8) + ((from) & 0xff)) & 0xff | ((to) & 0xff000000))
-
 void HelpDude::Update1(float dt, bool32_t active, float min_z, bool32_t play_sound, bool32_t finish)
 {
 	WobbleTime += dt;
@@ -2284,7 +2279,7 @@ void HelpDude::Update1(float dt, bool32_t active, float min_z, bool32_t play_sou
 		unsigned long specular;
 		LH3DIsland::GetColorAndSpecular(&Transform.GetPos(), &colour, &specular);
 		unsigned long alpha = (int)(blend * 255.0f);
-		Object->SetColorSpecular(HELPDUDE_BLEND_RGB(0xffffffff, colour, alpha), HELPDUDE_BLEND_RGB(0, specular, alpha));
+		Object->SetColorSpecular(LH3D_BLEND_COLOR(0xffffffff, colour, alpha), LH3D_BLEND_COLOR(0, specular, alpha));
 	}
 	else
 	{

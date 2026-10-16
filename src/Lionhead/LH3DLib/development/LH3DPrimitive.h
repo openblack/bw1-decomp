@@ -21,15 +21,60 @@ struct SRTextured;
 struct SubCollideDataRender;
 struct TShadowInfo;
 
-#define LH3D_FOG_TABLE_SIZE     1024
-#define LH3D_ENV_MAP_TABLE_SIZE 16
+// The texture id that a primitive saved without a texture holds in place of its texture.
+#define LH3D_PRIMITIVE_NO_TEXTURE 0xffffffff
+
+#define LH3D_FOG_TABLE_SIZE 1024
 
 // GetGridIndex divides the map into cells of LH3D_GRID_CELL_SIZE units, LH3D_GRID_SIZE of them along each side.
 #define LH3D_GRID_SIZE      256
 #define LH3D_GRID_CELL_SIZE 10
 
+// The brightness of a fully lit vertex.
+#define LH3D_LIGHT_MAX 255
+
+// DrawComplex lights a vertex with LH3D_COMPLEX_LIGHT_SCALE times the cosine to the sun plus LH3D_COMPLEX_LIGHT_AMBIENT.
+#define LH3D_COMPLEX_LIGHT_SCALE   1.3f
+#define LH3D_COMPLEX_LIGHT_AMBIENT 0.4f
+
+// DrawSnow brightens the colour by LH3D_SNOW_WHITENESS/256 of the way to a grey of its green, and draws fences in
+// batches of up to LH3D_SNOW_BATCH_TRIANGLES flat-shaded triangles.
+#define LH3D_SNOW_WHITENESS       64
+#define LH3D_SNOW_BATCH_TRIANGLES 1000
+
+// DrawVolLight fades a vertex in by LH3D_VOL_LIGHT_ALPHA_SCALE times the slope of its normal against the camera.
+#define LH3D_VOL_LIGHT_ALPHA_SCALE 1024
+
+// DrawSpecialLight turns the texture of a skinned primitive by half a turn every LH3D_SPECIAL_LIGHT_HALF_TURN_TIME
+// milliseconds of LH3DTech::g_current_time.
+#define LH3D_SPECIAL_LIGHT_HALF_TURN_TIME 10000.0f
+
+// DrawLightMap blends towards the fog in 256 levels, LH3D_FOG_TABLE_STEPS_PER_LEVEL entries of g_fog_table each.
+#define LH3D_FOG_TABLE_STEPS_PER_LEVEL (LH3D_FOG_TABLE_SIZE / 256)
+
+// DrawInBuild draws nothing until the build plane is LH3D_IN_BUILD_MIN_HEIGHT above the object.
+#define LH3D_IN_BUILD_MIN_HEIGHT 0.2f
+
+// LH3DPrimitive::g_lightmap_remap_uvs points at the draw data of a sub mesh. DrawUnlitWithUVRemap and DrawLightMap map
+// the texture coordinates of its primitives into the rectangle that these floats of the draw data hold.
+enum LH3D_LIGHTMAP_REMAP
+{
+	LH3D_LIGHTMAP_REMAP_MIN_U = 17,
+	LH3D_LIGHTMAP_REMAP_MIN_V = 18,
+	LH3D_LIGHTMAP_REMAP_MAX_U = 19,
+	LH3D_LIGHTMAP_REMAP_MAX_V = 20,
+};
+
 // The size of l_point and l_bool.
 #define LH3D_MAX_L_POINTS 3000
+
+// The frozen draws transform the vertices into LH3DTech::g_cache_t_points from LH3D_FROZ_FIRST_POINT on, then copy
+// up to LH3D_FROZ_BATCH_TRIANGLES triangles at a time to its start to clip and draw them.
+#define LH3D_FROZ_FIRST_POINT     484
+#define LH3D_FROZ_BATCH_TRIANGLES 64
+
+// Maps a direction component in [-1, 1] to a texture coordinate in [0, 255/256].
+#define LH3D_ENV_MAP_UV_SCALE (255.0f / 512.0f)
 
 struct LH3DPrimitive
 {
@@ -106,6 +151,8 @@ struct LH3DPrimitive
 
 	// BW1W120 00807f30 BW1M119 01068ba0 (LHCombined Release)
 	void ComputeBoundingBox(LHPoint& maxima, LHPoint& minima, int& initialized);
+	// BW1W120 inlined BW1M119 0100e160 (LHCombined Release)
+	LH3DMaterial* GetMaterial() { return &Material; }
 	// BW1W120 inlined BW1M119 01067ea0 (LHCombined Release)
 	LH3DVertex* GetListVertex() { return Vertices; }
 	// BW1W120 inlined BW1M119 010165f0 (LHCombined Release)
