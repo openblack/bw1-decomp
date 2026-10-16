@@ -33,6 +33,7 @@ struct LHPoint;
 class Living;
 class Object;
 class Reaction;
+class SpellShield;
 class WorshipSite;
 
 // fabricated: selector returned by GetCreatureBeliefListType, which picks which of a creature's
@@ -660,7 +661,7 @@ public:
 	// BW1W120 00402470 BW1M119 0107d710
 	virtual bool32_t IsSpellSeed() { return false; }
 	// BW1W120 00402480 BW1M119 010a7c40
-	virtual bool32_t IsSpellShield() { return false; }
+	virtual SpellShield* IsSpellShield() { return NULL; }
 	// BW1W120 00402490 BW1M119 010a6f40
 	virtual bool32_t IsPileResource() { return false; }
 	// BW1W120 004024a0 BW1M119 013f97d0
@@ -709,6 +710,8 @@ public:
 
 	// BW1W120 004e35c0 BW1M119 015eb4c0
 	float MultiplyUsefulnessIfInteresting(Creature* creature);
+	// BW1W120 004e35f0 BW1M119 015eb3e0
+	float MultiplyUsefulnessForPlayfulness(Creature* creature);
 	// BW1W120 004e3ee0 BW1M119 015ee310
 	bool32_t IsInsideCreatureHome(Creature* creature);
 	// BW1W120 0056fe70 BW1M119 013cb710

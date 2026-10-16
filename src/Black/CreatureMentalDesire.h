@@ -2,7 +2,7 @@
 #define BW1_DECOMP_CREATURE_MENTAL_DESIRE_INCLUDED_H
 
 #include <assert.h>    /* For static_assert */
-#include <re_common.h> /* For bool32_t */
+#include <re_common.h> /* For ARRAY_SIZE, bool32_t */
 #include <stdint.h>    /* For uint32_t */
 #include <string.h>    /* For memcpy */
 
@@ -25,24 +25,24 @@ class CreatureInfo;
 class CreatureDesires : public Base
 {
 public:
-	uint32_t                            field_0x8[NUM_CREATURE_DESIRES];
-	float                               field_0xa8[NUM_CREATURE_DESIRES];
+	bool32_t                            Activated[NUM_CREATURE_DESIRES];
+	uint32_t                            SuppressedTurns[NUM_CREATURE_DESIRES];
 	float                               Levels[NUM_CREATURE_DESIRES];
 	float                               IncreaseTime[NUM_CREATURE_DESIRES]; /* 0x1e8 */
-	uint32_t                            field_0x288[NUM_CREATURE_DESIRES];
+	float                               DecayRates[NUM_CREATURE_DESIRES];
 	LHLinkedList<CreatureDesireSource*> SourceLists[NUM_CREATURE_DESIRES]; /* 0x328 */
-	uint32_t                            field_0x468[NUM_CREATURE_DESIRES];
-	uint32_t                            field_0x508[NUM_CREATURE_DESIRES];
-	uint32_t                            field_0x5a8[NUM_CREATURE_DESIRES];
+	float                               MaxLevels[NUM_CREATURE_DESIRES];
+	float                               NumCompletionsToSatisfyUrge[NUM_CREATURE_DESIRES];
+	uint32_t                            NumCompletions[NUM_CREATURE_DESIRES];
 	Creature*                           creature; /* 0x648 */
 	const CreatureInfo*                 creature_info;
-	uint32_t                            field_0x650;
-	uint32_t                            field_0x654;
+	bool32_t                            ForceCompletion;
+	float                               TotalLevel;
 	uint32_t                            field_0x658[NUM_CREATURE_DESIRES];
-	uint32_t                            field_0x6f8;
-	uint32_t                            field_0x6fc;
-	uint32_t                            field_0x700;
-	uint32_t                            field_0x704;
+	CREATURE_DESIRES                    CheatDominantDesire;
+	uint32_t                            CheatDominantDesireTurns;
+	uint32_t                            CheatDominantDesireSeconds;
+	float                               field_0x704;
 
 	// Override methods
 
@@ -59,15 +59,14 @@ public:
 	// BW1W120 004dc100 BW1M119 0125ee30
 	void Initialise(Creature* creature, const CreatureInfo* info);
 	// BW1W120 004dc210 BW1M119 0125ed10
-	void SuppressDesiresAfterDecidingOnActivity(uint32_t param_1);
+	void SuppressDesiresAfterDecidingOnActivity(unsigned long desire);
 	// BW1W120 004dc260 BW1M119 0125ec30
-	void SuppressDesire(uint32_t param_1, float param_2);
+	void SuppressDesire(unsigned long desire, float seconds);
 	// BW1W120 004dc2d0 BW1M119 0125ebe0
 	void UnsuppressDesire(unsigned long desire);
 	// BW1W120 004dc2f0 BW1M119 0125eaf0
 	void UnsuppressAllDesires();
 	// BW1W120 004dc310 BW1M119 inlined
-	// fabricated name; jitters IncreaseTime[desire] when the randomise cheat flag is set
 	void RandomiseIncreaseTime(unsigned long desire);
 	// BW1W120 004dc370 BW1M119 0125ea60
 	void MultiplyDesire(const CreatureInfo* info, unsigned long desire, float multiplier);
@@ -80,44 +79,52 @@ public:
 	// BW1W120 004dc510 BW1M119 0125e700
 	void UpdateDesiresAfterPerformingAction(unsigned long action, const CreatureInfo* info);
 	// BW1W120 004dc5b0 BW1M119 0125e630
-	void FindDominantDesire(uint32_t param_1);
+	CREATURE_DESIRES FindDominantDesire(unsigned long desire_to_ignore);
 	// BW1W120 004dc600 BW1M119 0125e520
-	uint32_t FindDominantDesireWhichIsManifestable(CREATURE_DESIRES desire);
+	CREATURE_DESIRES FindDominantDesireWhichIsManifestable(CREATURE_DESIRES desire_to_ignore);
 	// BW1W120 004dc680 BW1M119 0125e430
-	uint32_t FindDominantDesireWhichCanBeHelped();
+	CREATURE_DESIRES FindDominantDesireWhichCanBeHelped();
+	// BW1W120 004dc6f0 BW1M119 null
+	CREATURE_DESIRES FindDominantEmotionalDesire();
 	// BW1W120 004dc760 BW1M119 0125e370
 	uint32_t GetRankPositionOfDesire(unsigned long desire);
 	// BW1W120 004dc7b0 BW1M119 0125e290
-	uint32_t FindWeakestDesire();
+	CREATURE_DESIRES FindWeakestDesire();
 	// BW1W120 004dc800 BW1M119 0125e1a0
-	uint32_t FindStrongestPhysicalDesire();
+	CREATURE_DESIRES FindStrongestPhysicalDesire();
 	// BW1W120 004dc880 BW1M119 0125e100
 	float FindStrongestPhysicalDesireValue();
 	// BW1W120 004dc8a0 BW1M119 0125df20
-	void MakeDesireMostDominant(uint32_t param_1, const CreatureInfo* info, float param_3);
+	void MakeDesireMostDominant(unsigned long desire, const CreatureInfo* info, float multiplier);
 	// BW1W120 004dc920 BW1M119 0125dd90
 	void MakeDesireFullyDominant(unsigned long desire, const CreatureInfo* info);
 	// BW1W120 004dc970 BW1M119 0125dcf0
 	void MakeDesireMax(unsigned long desire);
 	// BW1W120 004dc9f0 BW1M119 0125db40
-	void MakeDesireLeastDominant(unsigned long desire, const CreatureInfo* info, float param_3);
+	void MakeDesireLeastDominant(unsigned long desire, const CreatureInfo* info, float divisor);
 	// BW1W120 004dca60 BW1M119 0125d550
 	void ModifyDesireAfterFeedback(const CreatureInfo* info, CREATURE_DESIRES desire, CREATURE_DESIRE_SOURCE source,
-	                               float param_4);
+	                               float feedback);
 	// BW1W120 004dcd50 BW1M119 0125d480
 	bool32_t UpdateAfterActionCompletionToSeeIfUrgeIsSatisfied(CREATURE_DESIRES desire);
 	// BW1W120 004dcda0 BW1M119 0125d400
-	bool32_t IsActivated(CREATURE_DESIRES param_1);
+	bool32_t IsActivated(CREATURE_DESIRES desire);
 	// BW1W120 004dcdd0 BW1M119 0125d3a0
-	void SetActivated(CREATURE_DESIRES desire, int value);
+	void SetActivated(CREATURE_DESIRES desire, bool32_t activated);
+	// BW1W120 004dcde0 BW1M119 null
+	uint32_t GetNumActiveDesires();
+	// BW1W120 004dcf70 BW1M119 null
+	uint32_t GetNumUnsuppressedDesires();
+	// BW1W120 004dcfb0 BW1M119 null
+	float GetAlignmentChange();
 	// BW1W120 inlined BW1M119 0125d040
-	bool32_t IsSuppressed(unsigned long desire);
+	bool32_t IsSuppressed(unsigned long desire) { return SuppressedTurns[desire] > 0; }
 	// BW1W120 inlined BW1M119 01235700
 	float GetDesire(unsigned long desire) { return Levels[desire]; }
 	// BW1W120 004de270 BW1M119 012618c0
 	void InitialiseSources();
 	// BW1W120 004de370 BW1M119 012617a0
-	void GetSource(CREATURE_DESIRE_SOURCE param_1);
+	CreatureDesireSource* GetSource(CREATURE_DESIRE_SOURCE source);
 	// BW1W120 inlined BW1M119 012614c0
 	float GetOverallThresholdChange(CREATURE_DESIRES desire);
 	// BW1W120 004de410 BW1M119 01261330
@@ -137,6 +144,7 @@ public:
 	// BW1W120 004de7c0 BW1M119 01260c00
 	void ClearSourcesAfterSatisfyingDesire(CREATURE_DESIRES desire);
 };
+static_assert(sizeof(CreatureDesires) == 0x708, "Data type is of wrong size");
 
 class CreatureDesireActionEntry : public GBaseInfo
 {
@@ -204,12 +212,16 @@ static_assert(sizeof(CreatureDesireAttributeEntry) == 0x38, "Data type is of wro
 class CreatureDesireDependency : public GBaseInfo
 {
 public:
-	uint32_t field_0x10[0x28];
+	float Dependencies[NUM_CREATURE_DESIRES];
 
 	// Override methods
 
 	// BW1W120 004db2e0 BW1M119 01260880
-	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = ARRAY_SIZE(g_CreatureDesireDependency);
+		return g_CreatureDesireDependency;
+	}
 
 	// Static methods
 
@@ -219,7 +231,7 @@ public:
 	// BW1W120 00c85cd0
 	static CreatureDesireDependency g_CreatureDesireDependency[NUM_CREATURE_DESIRES];
 
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(Dependencies, Dependencies)
 	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 165)
 };
 
@@ -231,7 +243,11 @@ public:
 	// Override methods
 
 	// BW1W120 004db3c0 BW1M119 012607c0
-	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = ARRAY_SIZE(InitialIncreaseTime);
+		return InitialIncreaseTime;
+	}
 
 	// Static data
 

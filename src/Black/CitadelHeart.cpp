@@ -7,7 +7,7 @@
 #include <Lionhead/LH3DLib/development/InfluenceCircle.h>   /* For InfluenceCircle::g_b_valid */
 #include <Lionhead/LH3DLib/development/LH3DCitadel.h>       /* For LH3DCitadel */
 #include <Lionhead/LH3DLib/development/LH3DComplexObject.h> /* For LH3DComplexObject */
-#include <Lionhead/LH3DLib/development/LH3DLandCell.h>      /* For LandCell::g_darkness_to_color */
+#include <Lionhead/LH3DLib/development/LH3DIsland.h>        /* For LandCell::g_darkness_to_color */
 #include <Lionhead/LH3DLib/development/LH3DMaterial.h>      /* For struct MaterialProperties */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>          /* For LH3DTech::g_camera */
 #include <Lionhead/LH3DLib/development/LH3DMesh.h>          /* For struct LH3DMesh */
@@ -1058,7 +1058,7 @@ void CitadelHeart::DrawCreaturePen()
 			leash->SpriteFrame += CreaturePenFrameRate * dt;
 			WrapScaled(leash->SpriteFrame, CREATURE_PEN_SPRITE_FRAME_RANGE, 1.0f / CREATURE_PEN_SPRITE_FRAME_RANGE);
 			leash->sprite->Frame = (uint8_t)leash->SpriteFrame;
-			const LH3DColor& light = LandCell::g_darkness_to_color[LAND_CELL_DARKNESS_LEVELS - 1];
+			const LH3DColor& light = (const LH3DColor&)LandCell::g_darkness_to_color[LAND_CELL_MAX_DARKNESS];
 			int              alpha = (int)((light.r + light.g + light.b) * CREATURE_PEN_LIGHT_ALPHA_SCALE);
 			leash->collar->GetMesh();
 			if (i == leashes->CurrentLeash && GGame::g_game->MyPlayer() == GetPlayer())

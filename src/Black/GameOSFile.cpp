@@ -1775,7 +1775,7 @@ void GameOSFile::WriteSafe(GData& value)
 	{
 		return;
 	}
-	WriteIt(value.MapLoadCount);
+	WriteIt(value.InteractDesire);
 	if (!WriteEnabled)
 	{
 		return;
@@ -1791,7 +1791,7 @@ void GameOSFile::ReadSafe(GData& value)
 	ReadIt(value.RealGameTurn);
 	ReadIt(value.NumCreatedObjects);
 	ReadIt(value.FrameCount);
-	ReadIt(value.MapLoadCount);
+	ReadIt(value.InteractDesire);
 	ReadIt(value.WorldPopulation);
 }
 

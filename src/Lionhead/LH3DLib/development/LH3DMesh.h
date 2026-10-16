@@ -32,6 +32,7 @@ enum LH3D_MESH_FLAGS
 struct LH3DMesh;
 struct LH3DSubMesh;
 struct LH3DTexture;
+struct LHMatrix;
 struct LHPoint;
 
 struct SubmeshName
@@ -74,6 +75,15 @@ struct LH3DMesh
 	static LH3DMeshPack* MeshPack; /* 0x00e9fe34 */
 	// BW1W120 00e9fe28 BW1M119 01215a7c (LHCombined Release)
 	static bool g_hinge_only;
+	// BW1W120 00c37d8c BW1M119 011cfb28 (LHCombined Release)
+	static unsigned long g_color;
+	// BW1W120 00c37d90 BW1M119 011cfb2c (LHCombined Release)
+	static unsigned long g_special_color;
+	// BW1W120 00e9fe2c BW1M119 01215a60 (LHCombined Release)
+	static unsigned long g_specular;
+	// The bone matrices of the object being drawn.
+	// BW1W120 00e9fe48 BW1M119 01215a40 (LHCombined Release)
+	static LHMatrix* g_current_matrix;
 
 	// Static methods
 
@@ -95,6 +105,8 @@ struct LH3DMesh
 	static void CreatePackInternal(const void* data);
 	// BW1W120 00807c60 BW1M119 01069000 (LHCombined Release)
 	static void CreatePack();
+	// BW1W120 007acdd0 BW1M119 0100d440 (LHCombined Release)
+	static LHMatrix* GetCurrentMatrix();
 
 	// Non-virtual methods
 

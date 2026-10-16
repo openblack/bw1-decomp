@@ -1,8 +1,6 @@
 #ifndef BW1_DECOMP_GLOW_INCLUDED_H
 #define BW1_DECOMP_GLOW_INCLUDED_H
 
-#include "LH3DGJAnimVolFX.h" /* For class LH3DGJAnimVolFX */
-
 // Forward Declares
 
 struct LH3DColor;

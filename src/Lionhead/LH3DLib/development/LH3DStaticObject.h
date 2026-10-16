@@ -12,6 +12,13 @@ struct SubMeshDrawData;
 class LH3DStaticObject : public LH3DMeshedObject
 {
 public:
+	// Static data
+
+	// BW1W120 00ea1b1c BW1M119 012b1aa4 (LHCombined Release)
+	static float g_fizz_r_u;
+	// BW1W120 00ea1b20 BW1M119 012b1aa0 (LHCombined Release)
+	static float g_fizz_r_v;
+
 	// Virtual methods
 
 	// BW1W120 0080f990 BW1M119 0107a7b0 (LHCombined Release)

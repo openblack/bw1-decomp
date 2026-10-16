@@ -19,6 +19,8 @@ struct Vertex3D;
 struct Vertex3DMT;
 class LH3DZSorter;
 
+#define LH3D_RENDER_TEXTURE_STAGE_COUNT 8
+
 struct LH3DRender
 {
 	// Original Mac imported names; storage remains extracted.
@@ -52,6 +54,19 @@ struct LH3DRender
 	static bool32_t b_open;
 	// BW1W120 00eca638
 	static IDirect3DDevice7* Direct3DDevice7;
+	// BW1W120 00c386ec BW1M119 011d0e04 (LHCombined Release)
+	static void(__fastcall* g_draw_triangle_func)(Vertex3D* vertices, unsigned long vertex_count, uint16_t* indices,
+	                                              unsigned long index_count);
+	// BW1W120 00eca650 BW1M119 012cf828 (LHCombined Release)
+	static LH3DMaterial* g_current_other_material;
+	// BW1W120 00ec81c4 BW1M119 012d1e14 (LHCombined Release)
+	static bool g_use_multipass;
+	// BW1W120 00ec81c8 BW1M119 012d1e18 (LHCombined Release)
+	static LH3DMaterial* g_curmat2tex;
+	// BW1W120 00ec81cc BW1M119 012d1e1c (LHCombined Release)
+	static int g_curmode2tex;
+	// BW1W120 00ec81d0 BW1M119 012cf9e0 (LHCombined Release)
+	static IDirectDrawSurface7* g_texture_stage_ptr[LH3D_RENDER_TEXTURE_STAGE_COUNT];
 
 	// BW1W120 0082f810 BW1M119 0102b030 (LHCombined Release)
 	static void __fastcall DrawTriangle(Vertex3D* vertices, unsigned long vertex_count, uint16_t* indices,
@@ -85,6 +100,14 @@ struct LH3DRender
 	static void SetD3DTillingOn(int index);
 	// BW1W120 0082ff50 BW1M119 0102eed0 (LHCombined Release)
 	static void SetD3DTillingOff(int index);
+	// BW1W120 0082feb0 BW1M119 010108b0 (LHCombined Release)
+	static void PushTillingMode(int index);
+	// BW1W120 0082fed0 BW1M119 010107f0 (LHCombined Release)
+	static void PopTillingMode(int index);
+	// BW1W120 inlined BW1M119 0101ceb0 (LHCombined Release)
+	static void SetTexture(IDirectDrawSurface7* surface, int stage);
+	// BW1W120 007ace50 BW1M119 inlined
+	static void SetMaterial(LH3DMaterial* material, int stage);
 	// BW1W120 0082fd30 BW1M119 0109f910 (LHCombined Release)
 	static LH3DMaterial* CreateMaterial(LH3DMaterial::RenderMode render_mode, LH3DTexture* texture);
 	// BW1W120 0082f2c0 BW1M119 010a0340 (LHCombined Release)
@@ -106,6 +129,15 @@ inline int LH3DRender::SetRenderState(D3DRENDERSTATETYPE type, unsigned long val
 		g_render_states[type] = result != S_OK ? 0xffffffff : value;
 	}
 	return result;
+}
+
+inline void LH3DRender::SetTexture(IDirectDrawSurface7* surface, int stage)
+{
+	if (g_texture_stage_ptr[stage] != surface)
+	{
+		Direct3DDevice7->SetTexture(stage, surface);
+		g_texture_stage_ptr[stage] = surface;
+	}
 }
 
 inline int LH3DRender::GetRenderState(D3DRENDERSTATETYPE type, uint32_t& value)

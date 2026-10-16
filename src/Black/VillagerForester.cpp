@@ -2,10 +2,13 @@
 #include "Villager.h"
 
 #include "BigForest.h"
+#include "BuildingSite.h"
 #include "Forest.h"
 #include "Player.h"
+#include "Town.h"
 #include "Tree.h"
 #include "Utils.h"
+#include "VillagerInfo.h"
 
 // BW1W120 0075f4a0 BW1M119 0158d960
 bool32_t Villager::CheckSatisfyWoodDesire()
@@ -173,6 +176,26 @@ bool32_t Villager::TakeWoodFromTree()
 // BW1W120 0075fc30 BW1M119 0158c980
 bool32_t Villager::GotWoodDecideWhatToDo()
 {
+	if ((uint16_t)ResourceHeld[RESOURCE_TYPE_WOOD] > 0 &&
+	    (!IsDisciple() || GVillagerInfo::GetDiscipleInfo()[DiscipleType].UsesNothingToDoState != true))
+	{
+		if (building_site != NULL)
+		{
+			Town* town = GetTown();
+			if (town != NULL && town->IsBuildingSiteValid(building_site) &&
+			    (building_site->IsBuilderNeeded() || DiscipleType == VILLAGER_DISCIPLE_BUILDER) &&
+			    GotoBuildingSite(building_site) == true)
+			{
+				return true;
+			}
+		}
+		if (!CheckNeededForBuilding())
+		{
+			SetTopState(VILLAGER_STATE_GOTO_STORAGE_PIT_FOR_DROP_OFF);
+		}
+		return true;
+	}
+	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 	return true;
 }
 

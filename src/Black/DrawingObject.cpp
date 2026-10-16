@@ -16,9 +16,9 @@ static LHPoint ZeroPoint(0.0f, 0.0f, 0.0f);
 // UV size of one texel of a 256x256 texture.
 static const float UVTextureScale = 1.0f / 256.0f;
 
-#include <Lionhead/LH3DLib/development/LH3DAnim.h>     /* For struct LH3DAnim */
-#include <Lionhead/LH3DLib/development/LH3DLandCell.h> /* For LH3DIsland::GetCell */
-#include <Lionhead/LH3DLib/development/LHMatrix.h>     /* For struct LHMatrix */
+#include <Lionhead/LH3DLib/development/LH3DAnim.h>   /* For struct LH3DAnim */
+#include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetCell */
+#include <Lionhead/LH3DLib/development/LHMatrix.h>   /* For struct LHMatrix */
 
 #include "Abode.h"
 #include "AnimalWolf.h"

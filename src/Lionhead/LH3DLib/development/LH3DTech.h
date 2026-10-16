@@ -19,6 +19,8 @@ struct LHPoint;
 struct LHTimer;
 struct Vertex3D;
 
+#define LH3D_MAX_POINTS 0x2000
+
 enum LH3D_PROJECT_RESULT
 {
 	LH3D_PROJECT_BEHIND_CAMERA = 0,
@@ -47,6 +49,8 @@ static_assert(sizeof(InfoTransform) == 0x40, "Data type is of wrong size");
 class LH3DTech
 {
 public:
+	// One bit per frustum plane in the cached clip flags. ClipTriangle clips against the plane it is given and
+	// carries on with the next ones.
 	enum ClipCode
 	{
 		CLIP_CODE_BOTTOM = 0x2,
@@ -88,6 +92,28 @@ public:
 	// Original Mac symbol: g_game_time_inc__8LH3DTech.
 	// BW1W120 00ea9ec0 BW1M119 012d3e68 (LHCombined Release)
 	static uint32_t g_game_time_inc;
+	// BW1W120 00e3b5e0 BW1M119 012dc1a8 (LHCombined Release)
+	static unsigned long g_cache_flags[LH3D_MAX_POINTS];
+	// BW1W120 00e437e0 BW1M119 012e41a8 (LHCombined Release)
+	static Vertex3D g_cache_t_points[LH3D_MAX_POINTS];
+	// BW1W120 00c2ab00
+	static float g_max_screen[2];
+	// BW1W120 00ea9eb4 BW1M119 012d3e74 (LHCombined Release)
+	static bool32_t g_b_P3;
+	// BW1W120 00ea9eb8 BW1M119 012d3e70 (LHCombined Release)
+	static bool32_t g_clip_with_double_sided;
+	// BW1W120 00ea9e10 BW1M119 012dc054 (LHCombined Release)
+	static LHMatrix g_local_to_clipping;
+	// BW1W120 00ea9e80 BW1M119 012d3f9c (LHCombined Release)
+	static LHPoint g_sun_light_clipping;
+	// BW1W120 00ea5de0 BW1M119 012d7fbc (LHCombined Release)
+	static uint16_t g_list_indices[LH3D_MAX_POINTS];
+	// BW1W120 00ea1de0 BW1M119 012d3fbc (LHCombined Release)
+	static uint16_t g_list_indices_2[LH3D_MAX_POINTS];
+	// BW1W120 00ea9ea4 BW1M119 012d3fb8 (LHCombined Release)
+	static long g_index_count;
+	// BW1W120 00ea9ea8 BW1M119 012d3fb4 (LHCombined Release)
+	static uint16_t g_points_count;
 	// BW1W120 00819030 BW1M119 010bfe40 (LHCombined Release)
 	static void UpdateViewPort(long width, long height);
 	// BW1W120 00819390 BW1M119 01037930 (LHCombined Release)
@@ -122,6 +148,8 @@ public:
 	static LHPoint* GetCameraTarget() { return &g_camera.foc; }
 	// BW1W120 inlined BW1M119 01020d00
 	static LHPoint GetSun() { return g_sun_light; }
+	// BW1W120 007ace30 BW1M119 01022500 (LHCombined Release)
+	static LHPoint GetClippingSun();
 	// BW1W120 0081e1f0 BW1M119 0101c120 (LHCombined Release)
 	static LHPoint SetSun(const LHPoint& sun);
 	// BW1W120 00819920 BW1M119 01034f90 (LHCombined Release)

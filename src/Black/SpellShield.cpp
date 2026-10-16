@@ -25,6 +25,11 @@ bool PhysicalShield::GetAlwaysRemainsInPhysicsInternalSystem()
 	return true;
 }
 
+SpellShield* SpellShield::IsSpellShield()
+{
+	return this;
+}
+
 float SpellShield::GetRadius()
 {
 	return Get2DRadius();

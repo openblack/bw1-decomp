@@ -23,7 +23,7 @@ public:
 
 	// Override methods
 
-	// BW1W120 00464370 BW1M119 inlined
+	// BW1W120 00464370 BW1M119 011c22c0
 	virtual MESH_LIST GetMesh() const { return mesh; }
 	// BW1W120 00464380 BW1M119 011c9760
 	virtual ABODE_TYPE GetAbodeType() const { return ABODE_TYPE_CITADEL; }

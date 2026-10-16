@@ -374,13 +374,14 @@ Black/CreatureAction.cpp:
 	.rdata      start:0x0080DF64 end:0x0080E20C
 	.CRT$XCU    start:0x008F6230 end:0x008F6264 align:4
 	.data       start:0x008FFCB8 end:0x00907E18
-	.bss        start:0x00B85AB0 end:0x00BA3EC4
+	.bss        start:0x00B85AB0 end:0x00BA39A0
 
 Black/CreatureAttitudeToCreature.cpp:
-	.text       start:0x004ABC30 end:0x004AC760
-	.rdata      start:0x0080E20C end:0x0080E238
-	.CRT$XCU    start:0x008F6274 end:0x008F627C align:4
-	.data       start:0x00907E18 end:0x00907E1C
+	.text       start:0x004ABEA0 end:0x004AC240
+	.rdata      start:0x0080E214 end:0x0080E228
+	.CRT$XCU    start:0x008F626C end:0x008F6274 align:4
+	.data       start:0x00907E18 end:0x00907E44
+	.bss        start:0x00BA39A8 end:0x00BA39B0
 
 Black/CreatureDevelopment.cpp:
 	.rdata      start:0x0080E238 end:0x0080E248
@@ -419,10 +420,16 @@ Black/CreatureLook.cpp:
 	.rdata      start:0x0080E6F4 end:0x0080E718
 
 Black/CreatureMental.cpp:
-	.text       start:0x004B5A70 end:0x004B77C0
-	.CRT$XCU    start:0x008F62D8 end:0x008F62F8 align:4
+	.text       start:0x004B5A70 end:0x004B6E40
+	.CRT$XCU    start:0x008F62D8 end:0x008F62F0 align:4
+	.bss        start:0x00BA42A0 end:0x00BA42D0
+
+Black/CreatureMentalAttribute.cpp:
+	.text       start:0x004B6E40 end:0x004B77C0
+	.rdata      start:0x0080E828 end:0x0080E838
+	.CRT$XCU    start:0x008F62F0 end:0x008F62F8 align:4
 	.data       start:0x0090BC68 end:0x00B0CDA8
-	.bss        start:0x00BA42A0 end:0x00BA4518
+	.bss        start:0x00BA42D0 end:0x00BA4518
 
 Black/CreatureMentalAttributeTest.cpp:
 	.text       start:0x004B77C0 end:0x004B9E50
@@ -444,18 +451,18 @@ Black/CreatureMentalBeliefs.cpp:
 	.bss        start:0x00BA56F8 end:0x00BA5700
 
 Black/CreatureMentalDesire.cpp:
-	.text       start:0x004BD4A0 end:0x004BF0C0
+	.text       start:0x004BD440 end:0x004BF0C0
 	.rdata      start:0x0080ED24 end:0x0080EE14
-	.CRT$XCU    start:0x008F631C end:0x008F632C align:4
-	.data       start:0x00B0D630 end:0x00B0D72C
-	.bss        start:0x00BA5700 end:0x00BAA600
+	.CRT$XCU    start:0x008F6310 end:0x008F632C align:4
+	.data       start:0x00B0D630 end:0x00B0D728
+	.bss        start:0x00BA5700 end:0x00BA91F0
 
 Black/CreatureMentalDesireSource.cpp:
 	.text       start:0x004BF0C0 end:0x004C1100
 	.rdata      start:0x0080EE14 end:0x0080EED8
 	.CRT$XCU    start:0x008F632C end:0x008F6358 align:4
-	.data       start:0x00B0D7B0 end:0x00B0DAB0
-	.bss        start:0x00BAA600 end:0x00BAEF88
+	.data       start:0x00B0D728 end:0x00B0DAB0
+	.bss        start:0x00BA91F0 end:0x00BAEF88
 
 Black/CreatureMentalExploration.cpp:
 	.text       start:0x004C1100 end:0x004C1C30
@@ -551,12 +558,11 @@ Black/CreatureSubActions.cpp:
 
 Black/CreatureWhatToDoNext.cpp:
 	.rdata      start:0x008104A8 end:0x008104C8
-	.data       start:0x00B14570 end:0x00B14574
 
 Black/Creche.cpp:
 	.text       start:0x004E9190 end:0x004E93B0
 	.rdata      start:0x008104C8 end:0x00810E00
-	.data       start:0x00B14578 end:0x00B14590
+	.data       start:0x00B14558 end:0x00B14590
 	.bss        start:0x00BCEE9C end:0x00BCEEC0
 
 Black/CreditText.cpp:
@@ -882,13 +888,13 @@ Black/GlobalGameList.cpp:
 
 Black/GraveYard.cpp:
 	.text       start:0x0055CD80 end:0x0055CFD0
-	.rdata      start:0x0083E1FC end:0x0083E204
-	.data       start:0x00B1CF00 end:0x00B1CF3C
+	.rdata      start:0x0083E1FC end:0x0083E208
+	.data       start:0x00B1CF00 end:0x00B1CF20
 
 Black/GroupBehaviour.cpp:
 	.text       start:0x0055CFD0 end:0x0055F690
-	.rdata      start:0x0083E204 end:0x0083E82C
-	.data       start:0x00B1CF3C end:0x00B1CF60
+	.rdata      start:0x0083E208 end:0x0083E82C
+	.data       start:0x00B1CF20 end:0x00B1CF60
 	.bss        start:0x00C27C20 end:0x00C2A2B8
 
 Black/GSFunctions.cpp:
@@ -3059,10 +3065,10 @@ lib/libcmt/a_loc.obj:
 lib/libcmt/setmode.obj:
 	.text       start:0x00746BEF end:0x00746C50 align:1
 
-Lionhead/LHLib/ver5.0/LHWin.cpp:
+Lionhead/LHLib/ver5.0/LHSystem.cpp:
 	.text       start:0x00746C50 end:0x00746D90
 
-Lionhead/LHLib/ver5.0/LHSystem.cpp:
+Lionhead/LHLib/ver5.0/LHWin.cpp:
 	.text       start:0x00746D90 end:0x00748230
 	.text$x     start:0x007E9910 end:0x007E9960 align:4
 	.CRT$XCU    start:0x008F7410 end:0x008F7414 align:4

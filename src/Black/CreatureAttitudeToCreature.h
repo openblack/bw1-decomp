@@ -2,7 +2,9 @@
 #define BW1_DECOMP_CREATURE_ATTITUDE_TO_CREATURE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
+
+#define CREATURE_HOW_IMPRESSIVE_DECAY                0.999999f
+#define CREATURE_HOW_MUCH_ATTENTION_PAID_TO_ME_DECAY 0.9999f
 
 // Forward Declares
 
@@ -12,9 +14,9 @@ class CreatureAttitudeToCreature
 {
 public:
 	Creature* creature;
-	float     Attitude;
-	uint32_t  field_0x8;
-	uint32_t  field_0xc;
+	float     HowNice;
+	float     HowImpressive;
+	float     HowMuchAttentionPaidToMe;
 
 	// Constructors
 

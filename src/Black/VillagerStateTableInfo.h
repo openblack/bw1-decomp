@@ -43,8 +43,8 @@ public:
 	uint32_t  field_0xcc;
 	int       field_0xd0;
 	bool32_t  CanPauseForASecond;
-	float     field_0xd8;
-	float     field_0xdc;
+	float     FoodInterestMultiplier;
+	float     WoodInterestMultiplier;
 	uint32_t  field_0xe0;
 	uint32_t  field_0xe4;
 	bool32_t  IsWorshipState;

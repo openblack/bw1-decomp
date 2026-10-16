@@ -467,11 +467,11 @@ Black/CreatureAction.cpp:
 	.bss        start:0x00C64230 end:0x00C82644
 
 Black/CreatureAttitudeToCreature.cpp:
-	.text       start:0x004C4920 end:0x004C5530
-	.rdata      start:0x008CF354 end:0x008CF380
-	.CRT$XCU    start:0x009C63C0 end:0x009C63E4 align:4
+	.text       start:0x004C4C10 end:0x004C4FE0
+	.rdata      start:0x008CF35C end:0x008CF370
+	.CRT$XCU    start:0x009C63CC end:0x009C63D8 align:4
 	.data       start:0x009D9770 end:0x009D97A0
-	.bss        start:0x00C82644 end:0x00C82658
+	.bss        start:0x00C82648 end:0x00C82650
 
 Black/CreatureDevelopment.cpp:
 	.text       start:0x004C5530 end:0x004C5F80
@@ -523,11 +523,17 @@ Black/CreatureLook.cpp:
 	.bss        start:0x00C82F38 end:0x00C82F40
 
 Black/CreatureMental.cpp:
-	.text       start:0x004D22A0 end:0x004D4220
-	.rdata      start:0x008CF89C end:0x008CF9A4
-	.CRT$XCU    start:0x009C6468 end:0x009C6498 align:4
+	.text       start:0x004D22A0 end:0x004D3870
+	.rdata      start:0x008CF89C end:0x008CF98C
+	.CRT$XCU    start:0x009C6468 end:0x009C648C align:4
+	.bss        start:0x00C82F40 end:0x00C82F70
+
+Black/CreatureMentalAttribute.cpp:
+	.text       start:0x004D3870 end:0x004D4220
+	.rdata      start:0x008CF98C end:0x008CF99C
+	.CRT$XCU    start:0x009C648C end:0x009C6498 align:4
 	.data       start:0x009DD914 end:0x00BDEA54
-	.bss        start:0x00C82F40 end:0x00C831B8
+	.bss        start:0x00C82F70 end:0x00C831B8
 
 Black/CreatureMentalAttributeTest.cpp:
 	.text       start:0x004D4220 end:0x004D77C0
@@ -551,18 +557,18 @@ Black/CreatureMentalBeliefs.cpp:
 	.bss        start:0x00C84398 end:0x00C843A0
 
 Black/CreatureMentalDesire.cpp:
-	.text       start:0x004DB250 end:0x004DD030
+	.text       start:0x004DB250 end:0x004DD0F0
 	.rdata      start:0x008CFECC end:0x008CFFBC
 	.CRT$XCU    start:0x009C64BC end:0x009C64DC align:4
-	.data       start:0x00BDF458 end:0x00BDF5D8
-	.bss        start:0x00C843A0 end:0x00C892A0
+	.data       start:0x00BDF458 end:0x00BDF554
+	.bss        start:0x00C843A0 end:0x00C87E90
 
 Black/CreatureMentalDesireSource.cpp:
-	.text       start:0x004DD030 end:0x004DF220
+	.text       start:0x004DD0F0 end:0x004DF220
 	.rdata      start:0x008CFFBC end:0x008D0080
 	.CRT$XCU    start:0x009C64DC end:0x009C6514 align:4
-	.data       start:0x00BDF5D8 end:0x00BDF8D8
-	.bss        start:0x00C892A0 end:0x00C8DC28
+	.data       start:0x00BDF554 end:0x00BDF8D8
+	.bss        start:0x00C87E90 end:0x00C8DC28
 
 Black/CreatureMentalExploration.cpp:
 	.text       start:0x004DF220 end:0x004E0240
@@ -686,14 +692,14 @@ Black/CreatureWhatToDoNext.cpp:
 	.text       start:0x00508E70 end:0x0050A920
 	.rdata      start:0x008D1698 end:0x008D16B8
 	.CRT$XCU    start:0x009C6688 end:0x009C66A0 align:4
-	.data       start:0x00BE67C8 end:0x00BE6818
+	.data       start:0x00BE67C8 end:0x00BE67F8
 	.bss        start:0x00CADB2C end:0x00CADB3C
 
 Black/Creche.cpp:
 	.text       start:0x0050A920 end:0x0050ABE0
 	.rdata      start:0x008D16B8 end:0x008D1FF0
 	.CRT$XCU    start:0x009C66A0 end:0x009C66A8 align:4
-	.data       start:0x00BE6818 end:0x00BE6838
+	.data       start:0x00BE67F8 end:0x00BE6838
 	.bss        start:0x00CADB3C end:0x00CADB60
 
 Black/CreditText.cpp:
@@ -1112,16 +1118,16 @@ Black/GlobalGameList.cpp:
 
 Black/GraveYard.cpp:
 	.text       start:0x00595C30 end:0x00596020
-	.rdata      start:0x009003D8 end:0x009003E8
+	.rdata      start:0x009003D8 end:0x009003E4
 	.CRT$XCU    start:0x009C6AC8 end:0x009C6AD4 align:4
-	.data       start:0x00BEFF00 end:0x00BEFF3C
+	.data       start:0x00BEFF00 end:0x00BEFF20
 	.bss        start:0x00D06AEC end:0x00D06AF0
 
 Black/GroupBehaviour.cpp:
 	.text       start:0x00596020 end:0x00598E20
-	.rdata      start:0x009003E8 end:0x00900A10
+	.rdata      start:0x009003E4 end:0x00900A10
 	.CRT$XCU    start:0x009C6AD4 end:0x009C6AE0 align:4
-	.data       start:0x00BEFF3C end:0x00BEFF68
+	.data       start:0x00BEFF20 end:0x00BEFF68
 	.bss        start:0x00D06AF0 end:0x00D09188
 
 Black/GSFunctions.cpp:
@@ -2828,13 +2834,16 @@ Black/WorldRoomCamera.cpp:
 	.bss        start:0x00E3A1B8 end:0x00E3A204
 
 Lionhead/LH3DLib/development/LH3DP3.cpp:
-	.text       start:0x007A1480 end:0x007AD230
-	.text$x     start:0x008A65B0 end:0x008A65C8 align:4
+	.text       start:0x007A1480 end:0x007AD060
+	.CRT$XCU    start:0x009C7C40 end:0x009C7C80 align:4
+	.data       start:0x00C2AAC0 end:0x00C2AB28 align:32
+	.bss        start:0x00E3A220 end:0x00E83A40 align:32
 	.data1      start:0x00FC0000 end:0x00FC0B40
 	.drectve    type:comment start:0x00400328 end:0x004004B3
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
-	.text       start:0x007AD230 end:0x007AE6B0
+	.text       start:0x007AD060 end:0x007AE6B0
+	.text$x     start:0x008A65B0 end:0x008A65C8 align:4
 	.CRT$XCU    start:0x009C7C80 end:0x009C7C88 align:4
 
 lib/libcpmt/delop.obj:
@@ -3802,10 +3811,10 @@ lib/libcmt/a_loc.obj:
 lib/libcmt/setmode.obj:
 	.text       start:0x007DB352 end:0x007DB410 align:1
 
-Lionhead/LHLib/ver5.0/LHWin.cpp:
+Lionhead/LHLib/ver5.0/LHSystem.cpp:
 	.text       start:0x007DB410 end:0x007DB7B0
 
-Lionhead/LHLib/ver5.0/LHSystem.cpp:
+Lionhead/LHLib/ver5.0/LHWin.cpp:
 	.text       start:0x007DB7B0 end:0x007DCE20
 	.text$x     start:0x008A7970 end:0x008A79C0 align:4
 	.CRT$XCU    start:0x009C7CF4 end:0x009C7CFC align:4

@@ -7,12 +7,16 @@
 #include <chlasm/Enum.h> /* For enum CREATURE_ACTION_LEARNING_TYPE */
 #include <re_common.h>   /* For bool32_t */
 
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+
 #include "Base.h" /* For struct Base */
+
+class CreatureActionKnownAbout;
 
 class CreatureActionsKnownAbout : public Base
 {
 public:
-	uint32_t field_0x8[0x2][0x2];
+	LHLinkedList<CreatureActionKnownAbout*> ActionsKnown[CREATURE_ACTION_LEARNING_TYPE_LAST];
 
 	// Override methods
 

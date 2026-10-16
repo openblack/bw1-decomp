@@ -99,6 +99,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 0053a5b0 BW1M119 010fa800
+	Tree* GetTree(unsigned long index);
 	// BW1W120 0053a220 BW1M119 010facd0
 	void RemoveTree(Tree* tree);
 	// BW1W120 0053a310 BW1M119 010fab00

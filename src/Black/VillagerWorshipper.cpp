@@ -147,7 +147,7 @@ bool32_t Villager::ArrivesAtWorshipSiteForWorship()
 		return DecideWhatToDo();
 	MapCoords pos;
 	worshipSite->GetGatePos(&pos);
-	if (GUtils::GetDistanceInMetres_0074cd50(Pos, pos) < VILLAGER_WORSHIP_SITE_ARRIVE_DISTANCE)
+	if (GUtils::GetDistanceInMetres(&Pos, &pos) < VILLAGER_WORSHIP_SITE_ARRIVE_DISTANCE)
 	{
 		if (worshipSite->dance->NumDancers < ((const GWorshipSiteInfo*)worshipSite->info)->MaxDancersVisible)
 			StartWorshippingAtWorshipSite();

@@ -709,12 +709,15 @@ def generate_build_ninja(
             )
 
     # Extra compilers (see `extra_compilers`): fetched the same way the main
-    # compiler is, so a clean tree restores them without manual steps.
+    # compiler is, so a clean tree restores them without manual steps. A local
+    # compilers directory (--compilers) is used as is, like the main compiler.
     local_compiler_dirs: List[Path] = []
     if config.extra_compilers and compilers is not None:
         for compiler_version, (tool, tag) in config.extra_compilers.items():
             dest = compilers / compiler_version
             local_compiler_dirs.append(dest)
+            if config.compilers_path is not None:
+                continue
             n.build(
                 outputs=dest,
                 rule="download_tool",

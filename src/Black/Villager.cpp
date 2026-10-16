@@ -2555,7 +2555,7 @@ bool32_t Villager::EnterDiscipleNothingToDo(uint8_t current, uint8_t destination
 {
 	if (GetTown() != NULL && GetTown()->GetTownCentre() != NULL)
 	{
-		LookAtObject(GetTown()->GetTownCentre(), 2);
+		LookAtObject(GetTown()->GetTownCentre(), LIVING_LOOK_AT_SPEED_FAST);
 	}
 	return true;
 }

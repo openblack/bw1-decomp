@@ -18,8 +18,7 @@
 #include "VillagerInfo.h"
 #include "CreatureAttitudeConstants.h" // rogue include needed for matching .rdata
 
-#include <Lionhead/LH3DLib/development/LH3DLandCell.h> /* For LH3DIsland::IsWater */
-#include <Lionhead/LHLib/ver5.0/LHWin.h>               /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
 #if defined(VERSION_BW1W100)
 #define MOBILE_WALL_HUG_FILE "C:\\dev\\black\\MobileWallHug.cpp"
@@ -771,7 +770,7 @@ void MobileWallHug::SetNewWander(const MapCoords* centre, long min_dist, long ma
 	int angle = GameAngle;
 	if (centre != NULL)
 	{
-		int dist = (int)GUtils::GetDistanceInMetres_0074cd50(*centre, Pos);
+		int dist = (int)GUtils::GetDistanceInMetres(centre, &Pos);
 		if (dist > max_dist)
 		{
 			angle = GUtils::GetAngleFromXZ(Pos, *centre);

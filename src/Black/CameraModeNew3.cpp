@@ -977,7 +977,7 @@ void CameraModeNew3::Initialise()
 		TriconSprite->SetSize(2.0f);
 		TriconSprite->colour = LH3DColor(0xffffffff);
 		TriconSprite->Frame = 12;
-		TriconSprite->field_0x30 = 4;
+		TriconSprite->FramesPerRow = 4;
 		LH3DRender::RegisterFinishFrameCallback(1000, true, tricondraw, NULL);
 		ForceField = new ("C:\\dev\\MP\\Black\\CameraModeNew3.cpp", 956) LightSheet();
 		ForceField->Init(256);
@@ -1053,7 +1053,7 @@ void CameraModeNew3::DrawHandTricon()
 	TriconSprite->colour = colour;
 	int time = GetTickCount();
 	TriconSprite->angle = 0.0f;
-	TriconSprite->field_0x30 = 8;
+	TriconSprite->FramesPerRow = 8;
 	// TriconSprite->SetMaterial(BlobMaterial);
 	TriconSprite->SetSize(size * 0.75f);
 	TriconSprite->Frame = (time / 50) & 0xf;
@@ -1061,7 +1061,7 @@ void CameraModeNew3::DrawHandTricon()
 	TriconSprite->SetSize(size * 0.5f);
 	TriconSprite->Frame = 15 - ((time / 100) & 0xf);
 	TriconSprite->Draw();
-	TriconSprite->field_0x30 = 4;
+	TriconSprite->FramesPerRow = 4;
 }
 
 // BW1W120 009ce6bc

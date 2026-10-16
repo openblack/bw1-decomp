@@ -72,7 +72,14 @@ struct GMoveBy
 class MobileWallHug : public Mobile
 {
 public:
-	int16_t       TurnsUntilNextStateChange;
+	union {
+		int16_t TurnsUntilNextStateChange; // Current state's turn counter
+		struct
+		{
+			uint8_t StateTurnsLeft;  // Magic tree reaction: counted down
+			uint8_t StateTurnsTotal; // Magic tree reaction: initial count
+		};
+	};
 	uint16_t      speed;
 	uint16_t      GameAngle;
 	uint8_t       MoveState;

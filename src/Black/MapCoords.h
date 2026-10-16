@@ -206,8 +206,8 @@ struct MapCoords : public LH3DMapCoords
 	bool32_t IsSuitableForFixedAbodeInTown(MESH_LIST mesh, const Town* town, float y_angle, float scale) const;
 	// BW1W120 006038b0 BW1M119 015aa7d0
 	bool32_t IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3) const;
-	// BW1W120 00603dc0 BW1M119 01121940
-	void IsSuitableForFixed(Game3DObject* object) const;
+	// BW1W120 00604020 BW1M119 01121940
+	bool32_t IsSuitableForFixed(Game3DObject* object) const;
 	// BW1W120 00603dc0 BW1M119 0154e6c0
 	bool32_t IsSuitableForAbodeBuildFixed(Game3DObject* object, float param_2, float param_3, Object* param_4) const;
 	// BW1W120 006045c0 BW1M119 0101c170

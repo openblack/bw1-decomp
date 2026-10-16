@@ -28,7 +28,6 @@ Sections:
 	.data1      type:data align:4096
 	SELFMOD     type:data align:4096
 	.rsrc       type:rodata align:4096
-	.drectve    type:comment vaddr:0x00400328 end:0x004004B3
 
 lib/libcmt/crt0init.obj:
 	.CRT$XCA    start:0x009B6000 end:0x009B6004 align:4
@@ -400,9 +399,11 @@ Black/CreatureAction.cpp:
 	.bss        start:0x00C53068 end:0x00C7147C
 
 Black/CreatureAttitudeToCreature.cpp:
-	.text       start:0x004C38E0 end:0x004C4410
-	.rdata      start:0x008BF344 end:0x008BF370
-	.CRT$XCU    start:0x009B62B0 end:0x009B62C0 align:4
+	.text       start:0x004C3B50 end:0x004C3EF0
+	.rdata      start:0x008BF34C end:0x008BF360
+	.CRT$XCU    start:0x009B62B0 end:0x009B62B8 align:4
+	.data       start:0x009C8D70 end:0x009C8D9C
+	.bss        start:0x00C71480 end:0x00C71488
 
 Black/CreatureDevelopment.cpp:
 	.text       start:0x004C48A0 end:0x004C4D30
@@ -442,11 +443,17 @@ Black/CreatureLook.cpp:
 	.data       start:0x009CCDEC end:0x009CCEE4
 
 Black/CreatureMental.cpp:
-	.text       start:0x004D0F80 end:0x004D2E40
-	.rdata      start:0x008BF88C end:0x008BF994
-	.CRT$XCU    start:0x009B631C end:0x009B633C align:4
+	.text       start:0x004D0F80 end:0x004D24C0
+	.rdata      start:0x008BF88C end:0x008BF97C
+	.CRT$XCU    start:0x009B631C end:0x009B6334 align:4
+	.bss        start:0x00C71D78 end:0x00C71DA8
+
+Black/CreatureMentalAttribute.cpp:
+	.text       start:0x004D24C0 end:0x004D2E40
+	.rdata      start:0x008BF97C end:0x008BF98C
+	.CRT$XCU    start:0x009B6334 end:0x009B633C align:4
 	.data       start:0x009CCEF4 end:0x00BCE034
-	.bss        start:0x00C71D78 end:0x00C71FF0
+	.bss        start:0x00C71DA8 end:0x00C71FF0
 
 Black/CreatureMentalAttributeTest.cpp:
 	.text       start:0x004D2E40 end:0x004D63B0
@@ -463,23 +470,23 @@ Black/CreatureMentalBelief.cpp:
 Black/CreatureMentalBeliefs.cpp:
 	.text       start:0x004D8200 end:0x004D9DE0
 	.rdata      start:0x008BFE64 end:0x008BFEBC
-	.CRT$XCU    start:0x009B634C end:0x009B6358 align:4
+	.CRT$XCU    start:0x009B634C end:0x009B6354 align:4
 	.data       start:0x00BCE9CC end:0x00BCEA28
 	.bss        start:0x00C731D0 end:0x00C731D8
 
 Black/CreatureMentalDesire.cpp:
-	.text       start:0x004D9E40 end:0x004DBC50
+	.text       start:0x004D9DE0 end:0x004DBC50
 	.rdata      start:0x008BFEBC end:0x008BFFAC
-	.CRT$XCU    start:0x009B6360 end:0x009B6370 align:4
-	.data       start:0x00BCEA28 end:0x00BCEB24
-	.bss        start:0x00C731D8 end:0x00C780D8
+	.CRT$XCU    start:0x009B6354 end:0x009B6370 align:4
+	.data       start:0x00BCEA28 end:0x00BCEB20
+	.bss        start:0x00C731D8 end:0x00C76CC8
 
 Black/CreatureMentalDesireSource.cpp:
 	.text       start:0x004DBC50 end:0x004DDCF0
 	.rdata      start:0x008BFFAC end:0x008C0070
 	.CRT$XCU    start:0x009B6370 end:0x009B639C align:4
-	.data       start:0x00BCEBA8 end:0x00BCEEA8
-	.bss        start:0x00C780D8 end:0x00C7CA60
+	.data       start:0x00BCEB20 end:0x00BCEEA8
+	.bss        start:0x00C76CC8 end:0x00C7CA60
 
 Black/CreatureMentalExploration.cpp:
 	.text       start:0x004DDCF0 end:0x004DECB0
@@ -586,7 +593,7 @@ Black/CreatureWhatToDoNext.cpp:
 Black/Creche.cpp:
 	.text       start:0x00508E10 end:0x005090A0
 	.rdata      start:0x008C16A8 end:0x008C1FE0
-	.data       start:0x00BD5D98 end:0x00BD5DB0
+	.data       start:0x00BD5D78 end:0x00BD5DB0
 	.bss        start:0x00C9C974 end:0x00C9C998
 
 Black/CreditText.cpp:
@@ -949,13 +956,13 @@ Black/GlobalGameList.cpp:
 
 Black/GraveYard.cpp:
 	.text       start:0x00591B40 end:0x00591ED0
-	.rdata      start:0x008F03A0 end:0x008F03B0
-	.data       start:0x00BDF388 end:0x00BDF3C4
+	.rdata      start:0x008F03A0 end:0x008F03AC
+	.data       start:0x00BDF388 end:0x00BDF3A8
 
 Black/GroupBehaviour.cpp:
 	.text       start:0x00591ED0 end:0x00594CA0
-	.rdata      start:0x008F03B0 end:0x008F09D8
-	.data       start:0x00BDF3C4 end:0x00BDF3E8
+	.rdata      start:0x008F03AC end:0x008F09D8
+	.data       start:0x00BDF3A8 end:0x00BDF3E8
 	.bss        start:0x00CF5918 end:0x00CF7FB0
 
 Black/GSFunctions.cpp:
@@ -2102,9 +2109,11 @@ Black/villagernames.cpp:
 	.bss        start:0x00DA8AF4 end:0x00DA8AFC
 
 Black/VillagerReaction.cpp:
-	.text       start:0x00757090 end:0x0075B2D0
-	.CRT$XCU    start:0x009B72A0 end:0x009B72A4 align:4
-	.data       start:0x00C135F8 end:0x00C1361C
+	.text       start:0x00757060 end:0x0075B2D0
+	.rdata      start:0x0098A944 end:0x0098A958
+	.CRT$XCU    start:0x009B729C end:0x009B72A4 align:4
+	.data       start:0x00C135E4 end:0x00C1361C
+	.bss        start:0x00DA8B00 end:0x00DA8B08
 
 Black/VillagerReactionToCreature.cpp:
 	.text       start:0x0075B2D0 end:0x0075C2A0
@@ -2285,12 +2294,17 @@ Black/WorldRoom.cpp:
 	.bss        start:0x00E24B20 end:0x00E28B7C
 
 Lionhead/LH3DLib/development/LH3DP3.cpp:
-	.text       start:0x00790BB0 end:0x0079C960
-	.text$x     start:0x008963B0 end:0x008963C8 align:16
+	.text       start:0x00790BB0 end:0x0079C790
+	.CRT$XCU    start:0x009B7400 end:0x009B7440 align:4
+	.data       start:0x00C198C0 end:0x00C19928 align:32
+	.bss        start:0x00E28BE0 end:0x00E72400 align:32
+	.data1      start:0x00FAF000 end:0x00FAFB40
+	.drectve    type:comment start:0x00400328 end:0x004004B3
 
 Lionhead/LHDLL/ver1.0/LHDLL.cpp:
-	.text       start:0x0079C960 end:0x0079DDE0
-	.CRT$XCU    start:0x009B7440 end:0x009B7444 align:4
+	.text       start:0x0079C790 end:0x0079DDE0
+	.text$x     start:0x008963B0 end:0x008963C8 align:16
+	.CRT$XCU    start:0x009B7440 end:0x009B7448 align:4
 
 lib/libcpmt/delop.obj:
 	.text       start:0x0079E5C2 end:0x0079E5CD align:1
@@ -3253,10 +3267,10 @@ lib/libcmt/a_loc.obj:
 lib/libcmt/setmode.obj:
 	.text       start:0x007CB158 end:0x007CB212 align:1
 
-Lionhead/LHLib/ver5.0/LHWin.cpp:
+Lionhead/LHLib/ver5.0/LHSystem.cpp:
 	.text       start:0x007CB220 end:0x007CB5C0
 
-Lionhead/LHLib/ver5.0/LHSystem.cpp:
+Lionhead/LHLib/ver5.0/LHWin.cpp:
 	.text       start:0x007CB5C0 end:0x007CCC30
 	.text$x     start:0x008977F0 end:0x00897840 align:4
 	.CRT$XCU    start:0x009B74B0 end:0x009B74B8 align:4

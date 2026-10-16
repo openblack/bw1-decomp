@@ -14,7 +14,9 @@ class Base;
 class CreatureSourceBoundsInfo : public GBaseInfo
 {
 public:
-	uint8_t field_0x10[0xc];
+	float MinThreshold;
+	float MaxThreshold;
+	float FeedbackScale;
 
 	// Override methods
 
@@ -34,7 +36,7 @@ public:
 	static CreatureSourceBoundsInfo* GetThresholdBounds() { return ThresholdBounds; }
 
 	// TODO(#377): The original declared this class in CreatureMentalDesireSource.h.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(MinThreshold, FeedbackScale)
 	INFO_ROOT_LOADERS("CreatureMentalDesireSource.h", 33)
 };
 

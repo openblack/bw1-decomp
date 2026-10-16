@@ -1053,7 +1053,7 @@ Town* Town::GetNearestTownToPos(const MapCoords& coords, TRIBE_TYPE tribe_type, 
 	{
 		FOREACH_LH_LIST_HEAD(Town, town, player->towns)
 		{
-			float dist = GUtils::GetDistanceInMetres_0074cd50(coords, town->Pos);
+			float dist = GUtils::GetDistanceInMetres(&coords, &town->Pos);
 			if (dist < bestDist)
 			{
 				if (tribe_type == town->GetTribe()->type || tribe_type == TRIBE_TYPE_NONE)
