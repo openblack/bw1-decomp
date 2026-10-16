@@ -977,7 +977,7 @@ void CitadelHeart::DestructionSequenceProcess()
 			VolFX->Release();
 			VolFX = NULL;
 		}
-		ToBeDeleted(0);
+		ToBeDeleted(false);
 	}
 }
 
