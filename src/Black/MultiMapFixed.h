@@ -91,26 +91,10 @@ public:
 	BuildingSite*  building_site; /* 0x74 */
 	NewCollide*    CollideData;
 
-	// Override methods
+	// Virtual methods
 
-	// BW1W120 00401530 BW1M119 01577410
-	virtual bool32_t IsSolidToNewAbode() { return true; }
-	// BW1W120 00401540 BW1M119 01362a90
-	virtual MultiMapFixed* CastMultiMapFixed() { return this; }
-	// BW1W120 004015e0 BW1M119 015750f0
-	virtual bool32_t IsBeingBuilt(Creature* creature) { return IsBuilt() != true; }
-	// BW1W120 00401600 BW1M119 0157f8e0
-	virtual bool32_t NeedsRepair(Creature* creature) { return !IsRepaired(); }
-	// BW1W120 00401610 BW1M119 01387ed0
-	virtual bool32_t IsFootpathLink() { return true; }
-	// BW1W120 00401620 BW1M119 0109d450
-	virtual GFootpathLink* GetFootpathLink() { return FootpathLink; }
-	// BW1W120 00401630 BW1M119 inlined
-	virtual NewCollide* GetCollideData() { return CollideData; }
 	// BW1W120 0052e2b0 BW1M119 010e60f0
 	virtual void ToBeDeleted(int param_1);
-	// BW1W120 004220a0 BW1M119 010a8ac0
-	virtual Town* GetTown() { return NULL; }
 	// BW1W120 0052eeb0 BW1M119 010e4630
 	virtual uint32_t GetNearestPathTo(const MapCoords& param_1, float param_2, int param_3);
 	// BW1W120 0052eec0 BW1M119 0109d350
@@ -136,8 +120,6 @@ public:
 	virtual bool32_t IsObjectInMap();
 	// BW1W120 004e41c0 BW1M119 015ed920
 	virtual bool32_t IsBuildingWhichIsBeingBuilt(Creature* creature);
-	// BW1W120 00422050 BW1M119 010a8920
-	virtual bool32_t IsWonder() { return false; }
 	// BW1W120 0052f590 BW1M119 010e32d0
 	virtual BuildingSite* CreateBuildingSite();
 	// BW1W120 0052e400 BW1M119 01036580
@@ -176,9 +158,6 @@ public:
 	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
 	// BW1W120 0052e490 BW1M119 010e5d30
 	virtual bool32_t IsObjectFullyInMap();
-
-	// Virtual methods
-
 	// BW1W120 0052e370 BW1M119 0102ee50
 	virtual MapCoords GetDoorPos();
 	// BW1W120 0052eca0 BW1M119 0104d8d0
@@ -227,8 +206,14 @@ public:
 	virtual float RemoveDamage() { return 0.0f; }
 	// BW1W120 00401520 BW1M119 010625f0
 	virtual void* GetBuildingObject() { return this; }
+	// BW1W120 00401530 BW1M119 01577410
+	virtual bool32_t IsSolidToNewAbode() { return true; }
+	// BW1W120 00401540 BW1M119 01362a90
+	virtual MultiMapFixed* CastMultiMapFixed() { return this; }
 	// BW1W120 00422040 BW1M119 010a88e0
 	virtual bool32_t IsCivic() { return false; }
+	// BW1W120 00422050 BW1M119 010a8920
+	virtual bool32_t IsWonder() { return false; }
 	// BW1W120 00422060 BW1M119 010a8960
 	virtual ABODE_TYPE GetAbodeType() { return ABODE_TYPE_GENERAL; }
 	// BW1W120 00401550 BW1M119 014f0c10
@@ -261,8 +246,20 @@ public:
 	}
 	// BW1W120 004015d0 BW1M119 01177c30
 	virtual int CalulateAmountOverMaximum(RESOURCE_TYPE type) { return 0; }
+	// BW1W120 004015e0 BW1M119 015750f0
+	virtual bool32_t IsBeingBuilt(Creature* creature) { return IsBuilt() != true; }
+	// BW1W120 00401600 BW1M119 0157f8e0
+	virtual bool32_t NeedsRepair(Creature* creature) { return !IsRepaired(); }
+	// BW1W120 00401610 BW1M119 01387ed0
+	virtual bool32_t IsFootpathLink() { return true; }
+	// BW1W120 00401620 BW1M119 0109d450
+	virtual GFootpathLink* GetFootpathLink() { return FootpathLink; }
+	// BW1W120 00401630 BW1M119 inlined
+	virtual NewCollide* GetCollideData() { return CollideData; }
 	// BW1W120 00422090 BW1M119 010a8a80
 	virtual void SetTown(Town* town) {}
+	// BW1W120 004220a0 BW1M119 010a8ac0
+	virtual Town* GetTown() { return NULL; }
 	// BW1W120 0052f160 BW1M119 010e3f30
 	virtual void RemovePotFromStructure(PotStructure* structure);
 	// BW1W120 004220b0 BW1M119 010a8b00
