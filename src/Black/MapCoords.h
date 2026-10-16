@@ -227,6 +227,10 @@ struct MapCoords : public LH3DMapCoords
 	LHPoint GetLHPoint() const;
 	// BW1W120 00605cd0 BW1M119 01053320
 	float GetDistance(const MapCoords& other) const;
+	// BW1W120 006057b0 BW1M119 0106b8f0
+	float GetAlignment() const;
+	// BW1W120 00605250 BW1M119 011ab0a0
+	Object* IsWithinBuilingSite();
 	// BW1W120 00605fb0 BW1M119 01034c00
 	float GetMetresDistanceSq(const MapCoords& param_2) const;
 	// BW1W120 inlined BW1M119 010ea620
