@@ -1,7 +1,9 @@
 #include "LoaderAnon.h"
 
 #include <string.h> /* For strcpy */
-#include "StdStringInitializers.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 #define LOADER_ANON_DEFAULT_LOAD_ID "DMPJGR"
 

@@ -2,7 +2,9 @@
 #include "GameTimeConstants.h"
 #include "HelpProfile.h"
 #include "CameraHelp.h"
-#include "StdStringInitializers.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 // Defaults verified in the original data and restored by GGame::ClearMap.
 // TODO: Current splits attribute these bytes to CameraEditor; fix ownership before source linkage.

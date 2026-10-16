@@ -3,6 +3,8 @@
 #include "CreatureSelect.h"
 
 #include "ColourConstants.h" /* For White */
-#include "StdStringInitializers.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 void Prss::StringFunction(int, char*, int) {}

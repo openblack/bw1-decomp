@@ -7,7 +7,9 @@
 #include "MPFEDisconnectNowMessage.h"          /* For MPFEDisconnectNowMessage */
 #include "MPFEStartGameTransferFilesMessage.h" /* For MPFEStartGameTransferFilesMessage */
 #include "MPFEStopGameStartMessage.h"          /* For MPFEStopGameStartMessage */
-#include "StdStringInitializers.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 #if defined(VERSION_BW1W100)
 #define MPFE_GAME_START_MESSAGES_FILE "C:\\dev\\black\\MPFEGameStartMessages.cpp"

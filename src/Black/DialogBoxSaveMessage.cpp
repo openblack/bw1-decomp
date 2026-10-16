@@ -1,5 +1,7 @@
 #include "DialogBoxSaveMessage.h"
-#include "StdStringInitializers.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 // BW1W120 00515990 BW1M119 012b99d0
 DialogBoxSaveMessage::DialogBoxSaveMessage()

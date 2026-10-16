@@ -15,7 +15,9 @@
 #include "MagicEffectInfo.h"
 #include "MagicInfo.h"
 #include "SpellSeedInfo.h"
-#include "StdStringInitializers.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 #if defined(VERSION_BW1W100)
 #define FILEPATH "C:\\dev\\black\\CreatureMentalLearnAction.cpp"

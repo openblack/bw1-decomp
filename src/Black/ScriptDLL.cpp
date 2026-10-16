@@ -3,7 +3,9 @@
 #include "ColourConstants.h" /* For White */
 
 #include <stddef.h> /* For NULL */
-#include "StdStringInitializers.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 ScriptDLL* ScriptDLL::Create(const char* library_path)
 {

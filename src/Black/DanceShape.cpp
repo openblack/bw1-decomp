@@ -8,7 +8,9 @@
 
 #include "Data.h" /* For class GData */
 #include "Rand.h" /* For class GRand */
-#include "StdStringInitializers.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 #if defined(VERSION_BW1W100)
 #define FILEPATH "C:\\dev\\black\\DanceShape.cpp"
