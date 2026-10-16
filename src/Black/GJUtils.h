@@ -5,6 +5,8 @@
 
 struct LH3DMaterial;
 struct LH3DMesh;
+struct LHMatrix;
+struct LHPoint;
 struct MaterialProperties;
 
 // Giles Jermy's static helpers (see GJBaseUtils.h for the attribution) (meshes, materials, spheres, quaternions and interpolation templates such
@@ -18,8 +20,15 @@ public:
 	static void SetMaterialProperties(LH3DMaterial* material, const MaterialProperties& prop);
 	// BW1W120 0057e1d0 BW1M119 012c2b70
 	static void SetMaterialProperties(LH3DMesh* mesh, const MaterialProperties& prop);
+	// BW1W120 0057d2b0 BW1M119 012c40a0
+	static void PostRotateByQuaternion(float angle, const LHPoint* axis, LHMatrix* matrix);
 	// BW1W120 inlined BW1M119 01057f60
 	template <class T> static T Linterp(const T& from, const T& to, float t) { return from + (to - from) * t; }
+	// BW1W120 inlined BW1M119 010defc0
+	template <class T> static void Linterp(const T& from, const T& to, float t, T* result)
+	{
+		*result = from + (to - from) * t;
+	}
 	// BW1W120 inlined BW1M119 010c8150
 	static unsigned long ModulateColor(unsigned long color1, unsigned long color2)
 	{
