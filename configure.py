@@ -658,6 +658,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureMentalDebug.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDesire.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDesireSource.cpp"),
+            GameCodeObject(Matching, "Black/CreatureMentalEditor.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalExploration.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalLearn.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalLearnAction.cpp"),
