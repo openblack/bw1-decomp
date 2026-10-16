@@ -1,7 +1,7 @@
 #include "AudioTag.h"
 
 #include "HelpDude.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 void AudioTag::ApplyToDude(HelpDude* dude, int resolve_target, int play_sound)
 {

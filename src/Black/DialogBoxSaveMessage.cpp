@@ -1,5 +1,5 @@
 #include "DialogBoxSaveMessage.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 // BW1W120 00515990 BW1M119 012b99d0
 DialogBoxSaveMessage::DialogBoxSaveMessage()

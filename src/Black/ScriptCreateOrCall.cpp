@@ -1,6 +1,6 @@
 #include "Script.h"
 #include "Balance.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 GBaseInfo* GScriptOpposingCreature::GetBaseInfo(uint32_t& info_count)
 {

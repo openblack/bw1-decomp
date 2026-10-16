@@ -1,6 +1,6 @@
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 #include "LandAlignement.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 float GLandAlignement::VisualTime = 12.0f;

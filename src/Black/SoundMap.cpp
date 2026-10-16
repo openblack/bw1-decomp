@@ -1,7 +1,7 @@
 #include "GameTimeConstants.h"
 #include "SoundMap.h"
 #include "SoundInfo.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 GBaseInfo* GSoundInfo::GetBaseInfo(uint32_t& info_count)
 {

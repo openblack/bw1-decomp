@@ -1,6 +1,6 @@
 #include "GameTimeConstants.h"
 #include "TerrainMaterialInfo.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 GTerrainMaterialInfo GTerrainMaterialInfo::Infos[TERRAIN_MATERIAL_TYPE_LAST];
 

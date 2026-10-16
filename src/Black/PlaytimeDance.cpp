@@ -2,7 +2,7 @@
 #include "PlaytimeDance.h"
 #include "CellSize.h"
 #include "PlaytimeInfo.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 GPlaytimeInfo GPlaytimeInfo::Infos[PLAYTIME_INFO_LAST];
 

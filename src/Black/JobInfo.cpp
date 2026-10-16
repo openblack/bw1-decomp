@@ -1,6 +1,6 @@
 #include "GameTimeConstants.h"
 #include "JobInfo.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 GBaseInfo* GJobInfo::GetBaseInfo(uint32_t& info_count)
 {

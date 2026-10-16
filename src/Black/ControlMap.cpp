@@ -3,7 +3,7 @@
 #include "ColourConstants.h" /* For White */
 
 #include <string.h>
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 // BW1W120 0046f6c0 BW1M119 011d3320
 ControlMap::ControlMap()

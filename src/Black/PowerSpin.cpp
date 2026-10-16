@@ -1,5 +1,5 @@
 #include "PowerSpin.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 // TODO: Original BSS is currently included in the preceding Pot split.
 PowerSpinRunner* PowerSpinRunner::First;

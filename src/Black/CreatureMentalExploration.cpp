@@ -1,6 +1,6 @@
 #include "CreatureExplorationMap.h"
 #include "CreatureMentalEditor.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 void CreatureMentalEditor::Draw() {}
 

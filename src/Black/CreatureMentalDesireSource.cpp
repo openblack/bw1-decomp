@@ -8,7 +8,7 @@
 #include "CreatureMentalDesire.h"      /* For struct CreatureDesires */
 #include "CreatureInitialSourceInfo.h"
 #include "CreatureSourceBoundsInfo.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 // BW1W120 004de270 BW1M119 012618c0
 void CreatureDesires::InitialiseSources()

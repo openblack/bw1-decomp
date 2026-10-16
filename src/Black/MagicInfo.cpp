@@ -1,4 +1,4 @@
 #include "MagicInfo.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 GMagicInfo* GMagicInfo::Infos[MAGIC_TYPE_LAST];

@@ -9,7 +9,7 @@
 #include "CreatureMental.h"
 #include "CreatureMentalDesire.h"
 #include "CreaturePlan.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 #if defined(VERSION_BW1W100)
 #define FILEPATH "C:\\dev\\black\\CreatureAttitudeToCreature.cpp"

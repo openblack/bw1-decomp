@@ -9,7 +9,7 @@
 #include "MPFEKickMessage.h"        /* For MPFEKickMessage */
 #include "MPFEKickMessageRequest.h" /* For MPFEKickMessageRequest */
 #include "MPFEPlayerDetails.h"      /* For MPFEPlayerDetails */
-#include <string>                   /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 #if defined(VERSION_BW1W100)
 #define MPFE_CHANNEL_MESSAGES_FILE "C:\\dev\\black\\MPFEChannelMessages.cpp"

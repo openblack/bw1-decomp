@@ -2,7 +2,7 @@
 #include "GameInfo.h"
 
 #include "LandAlignement.h"
-#include <string> /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 // BW1W120 005575a0 BW1M119 010695d0
 float GGameInfo::GetVisualTime()

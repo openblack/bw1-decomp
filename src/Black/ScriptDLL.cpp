@@ -3,7 +3,7 @@
 #include "ColourConstants.h" /* For White */
 
 #include <stddef.h> /* For NULL */
-#include <string>   /* For the std::basic_string instantiations */
+#include "StdStringInitializers.h"
 
 ScriptDLL* ScriptDLL::Create(const char* library_path)
 {
