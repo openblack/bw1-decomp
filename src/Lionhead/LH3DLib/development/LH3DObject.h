@@ -268,6 +268,9 @@ public:
 	void __fastcall CombineColorWithCurrent(unsigned long color, unsigned long specular);
 };
 
+// TODO(bwrsandman): These externs stay until we find a correct declaration. Two other ways did not work:
+// - As LH3DObject static members, they move the Object.cpp .bss and runblack.exe fails in 1.00, 1.10 and 1.20.
+// - Without them, TempleLeash::TempleLeash and CitadelHeart::DrawCreaturePen do not match.
 // BW1W120 00ea1abc BW1M119 012b3710 (LHCombined Release)
 extern LH3DMaterial* g_smoke_mat;
 // BW1W120 00ea1ac4 BW1M119 012b3708 (LHCombined Release)
