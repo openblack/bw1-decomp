@@ -32,8 +32,10 @@ enum LH3D_MESH_FLAGS
 struct LH3DMesh;
 struct LH3DSubMesh;
 struct LH3DTexture;
+struct LH3DTnLData;
 struct LHMatrix;
 struct LHPoint;
+struct TShadowInfo;
 
 struct SubmeshName
 {
@@ -75,12 +77,18 @@ struct LH3DMesh
 	static LH3DMeshPack* MeshPack; /* 0x00e9fe34 */
 	// BW1W120 00e9fe28 BW1M119 01215a7c (LHCombined Release)
 	static bool g_hinge_only;
+	// BW1W120 00e9fe54 BW1M119 01212a34 (LHCombined Release)
+	static bool32_t g_b_dont_care_about_texture;
 	// BW1W120 00c37d8c BW1M119 011cfb28 (LHCombined Release)
 	static unsigned long g_color;
 	// BW1W120 00c37d90 BW1M119 011cfb2c (LHCombined Release)
 	static unsigned long g_special_color;
 	// BW1W120 00e9fe2c BW1M119 01215a60 (LHCombined Release)
 	static unsigned long g_specular;
+	// BW1W120 00e9fe30 BW1M119 01215a5c (LHCombined Release)
+	static TShadowInfo* g_current_shadow;
+	// BW1W120 00e9ce24 BW1M119 01215a80 (LHCombined Release)
+	static LH3DTnLData* g_current_vb;
 	// The bone matrices of the object being drawn.
 	// BW1W120 00e9fe48 BW1M119 01215a40 (LHCombined Release)
 	static LHMatrix* g_current_matrix;
