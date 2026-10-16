@@ -254,13 +254,6 @@ static void DrawStatBar(unsigned long colour, int x_min, int y_min, int x_max, i
 // BW1W120 0051a830 BW1M119 010ca660
 static void ConvertToCameraFacingMatrix(LHMatrix* matrix);
 
-static inline void SetPositionOnMap(Game3DObject* object, const MapCoords& coords, float y_angle, float scale)
-{
-	LHPoint point;
-	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
-	object->LH3DObject::SetPosition(point, y_angle, scale);
-}
-
 static inline void SetPositionOnLand(Game3DObject* object, const MapCoords& coords, float y_angle, float scale,
                                      Object* owner)
 {
@@ -276,11 +269,6 @@ static inline void DrawWithColor(Object* self, unsigned long color, unsigned lon
 	Game3DObject* object = self->Game3dObject;
 	object->CombineColorFromPos(color, specular);
 	object->AddForDrawing(self);
-}
-
-inline void GCamera::GetPosition(LHPoint& pos)
-{
-	pos = *LH3DTech::GetCameraPosition();
 }
 
 void Abode::Draw()

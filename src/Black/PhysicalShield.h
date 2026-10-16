@@ -57,7 +57,7 @@ public:
 	// BW1W120 0072cc80 BW1M119 01538ae0
 	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0072d7e0 BW1M119 015377d0
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 0072ceb0 BW1M119 01538560
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 0072d600 BW1M119 01537b40

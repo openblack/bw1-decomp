@@ -1,0 +1,1011 @@
+Sections:
+	.text       type:code align:4096
+	.text$x     type:code vaddr:0x1004F5A0 end:0x10050282
+	.rdata      type:rodata align:4096
+	.idata$5    type:rodata vaddr:0x10051000 end:0x10051280
+	.xdata$x    type:rodata vaddr:0x100534E8 end:0x100544CC
+	.idata$2    type:rodata vaddr:0x100544CC end:0x10054544
+	.idata$3    type:rodata vaddr:0x10054544 end:0x10054558
+	.idata$4    type:rodata vaddr:0x10054558 end:0x100547D4
+	.idata$6    type:rodata vaddr:0x100547D4 end:0x10055580
+	.edata      type:rodata vaddr:0x10055580 end:0x10061A19
+	.data       type:data align:4096
+	.CRT$XCA    type:data vaddr:0x10062000 end:0x10062004
+	.CRT$XCU    type:data vaddr:0x10062004 end:0x10062094
+	.CRT$XCZ    type:data vaddr:0x10062094 end:0x10062098
+	.CRT$XIA    type:data vaddr:0x10062098 end:0x1006209C
+	.CRT$XIC    type:data vaddr:0x1006209C end:0x100620AC
+	.CRT$XIY    type:data vaddr:0x100620AC end:0x100620B0
+	.CRT$XIZ    type:data vaddr:0x100620B0 end:0x100620B4
+	.CRT$XPA    type:data vaddr:0x100620B4 end:0x100620B8
+	.CRT$XPX    type:data vaddr:0x100620B8 end:0x100620BC
+	.CRT$XPZ    type:data vaddr:0x100620BC end:0x100620C0
+	.CRT$XTA    type:data vaddr:0x100620C0 end:0x100620C4
+	.CRT$XTB    type:data vaddr:0x100620C4 end:0x100620C8
+	.CRT$XTZ    type:data vaddr:0x100620C8 end:0x100620CC
+	.bss        type:bss vaddr:0x10069460 end:0x1006F130
+
+LHMultiplayer/lib/libcmt/crt0init.obj:
+	.CRT$XCA    start:0x10062000 end:0x10062004
+	.CRT$XCZ    start:0x10062094 end:0x10062098
+	.CRT$XIA    start:0x10062098 end:0x1006209C
+	.CRT$XIZ    start:0x100620B0 end:0x100620B4
+	.CRT$XPA    start:0x100620B4 end:0x100620B8
+	.CRT$XPZ    start:0x100620BC end:0x100620C0
+	.CRT$XTA    start:0x100620C0 end:0x100620C4
+	.CRT$XTZ    start:0x100620C8 end:0x100620CC
+
+Lionhead/LHMultiplayer/ver4.0/LHChannel.cpp:
+	.text       start:0x10001000 end:0x10004650
+	.text$x     start:0x1004F5A0 end:0x1004F720
+	.rdata      start:0x1005129C end:0x1005158C
+	.xdata$x    start:0x100534E8 end:0x100536B0
+	.CRT$XCU    start:0x10062004 end:0x10062008 align:4
+	.data       start:0x100620D0 end:0x100620F8
+	.bss        start:0x10069460 end:0x10069468
+
+Lionhead/LHMultiplayer/ver4.0/LHConnection.cpp:
+	.text       start:0x10004650 end:0x10005500
+	.CRT$XCU    start:0x10062008 end:0x10062010 align:4
+	.data       start:0x100620F8 end:0x100622AC
+	.bss        start:0x10069468 end:0x10069640
+
+Lionhead/LHMultiplayer/ver4.0/LHConnectionServer.cpp:
+	.text       start:0x10005500 end:0x10007140
+	.text$x     start:0x1004F720 end:0x1004F7B0
+	.rdata      start:0x1005158C end:0x100515C0
+	.xdata$x    start:0x100536B0 end:0x10053758
+	.CRT$XCU    start:0x10062010 end:0x10062014 align:4
+	.data       start:0x100622AC end:0x10062368
+	.bss        start:0x10069640 end:0x10069644
+
+Lionhead/LHMultiplayer/ver4.0/LHDatabase.cpp:
+	.text       start:0x10007140 end:0x10008410
+	.text$x     start:0x1004F7B0 end:0x1004F820
+	.rdata      start:0x100515C0 end:0x100515D8
+	.xdata$x    start:0x10053758 end:0x100537E0
+	.CRT$XCU    start:0x10062014 end:0x10062018 align:4
+	.data       start:0x10062368 end:0x10062460
+	.bss        start:0x10069644 end:0x10069B44
+
+Lionhead/LHMultiplayer/ver4.0/LHFileDownload.cpp:
+	.text       start:0x10008410 end:0x10008F90
+	.text$x     start:0x1004F820 end:0x1004F890
+	.rdata      start:0x100515D8 end:0x100515E4
+	.xdata$x    start:0x100537E0 end:0x10053868
+	.data       start:0x10062460 end:0x10062480
+
+Lionhead/LHMultiplayer/ver4.0/LHHttp.cpp:
+	.text       start:0x10008F90 end:0x1000C540
+	.text$x     start:0x1004F890 end:0x1004F980
+	.rdata      start:0x100515E4 end:0x10051634
+	.xdata$x    start:0x10053868 end:0x10053980
+	.CRT$XCU    start:0x10062018 end:0x1006201C align:4
+	.data       start:0x10062480 end:0x1006264C
+	.bss        start:0x10069B44 end:0x10069B50
+
+Lionhead/LHMultiplayer/ver4.0/LHLobby.cpp:
+	.text       start:0x1000C540 end:0x1000F0D0
+	.text$x     start:0x1004F980 end:0x1004FC50
+	.rdata      start:0x10051634 end:0x10051674
+	.xdata$x    start:0x10053980 end:0x10053C30
+	.CRT$XCU    start:0x1006201C end:0x10062034 align:4
+	.data       start:0x1006264C end:0x10062690
+	.bss        start:0x10069B50 end:0x10069EE0
+
+Lionhead/LHMultiplayer/ver4.0/LHLobbyServer.cpp:
+	.text       start:0x1000F0D0 end:0x10011AE0
+	.text$x     start:0x1004FC50 end:0x1004FD00
+	.rdata      start:0x10051674 end:0x10051688
+	.xdata$x    start:0x10053C30 end:0x10053D08
+	.CRT$XCU    start:0x10062034 end:0x1006203C align:4
+	.data       start:0x10062690 end:0x1006284C
+	.bss        start:0x10069EE0 end:0x1006A084
+
+Lionhead/LHMultiplayer/ver4.0/LHMail.cpp:
+	.text       start:0x10011AE0 end:0x10013B40
+	.text$x     start:0x1004FD00 end:0x1004FDC0
+	.rdata      start:0x10051688 end:0x100516E8
+	.xdata$x    start:0x10053D08 end:0x10053E18
+	.CRT$XCU    start:0x1006203C end:0x10062040 align:4
+	.data       start:0x1006284C end:0x10062BA0
+	.bss        start:0x1006A084 end:0x1006A128
+
+Lionhead/LHMultiplayer/ver4.0/LHMessageServer.cpp:
+	.text       start:0x10013B40 end:0x10015A00
+	.CRT$XCU    start:0x10062040 end:0x10062048 align:4
+	.data       start:0x10062BA0 end:0x10062D5C
+	.bss        start:0x1006A128 end:0x1006A460
+
+Lionhead/LHMultiplayer/ver4.0/LHMPPacketSave.cpp:
+	.text       start:0x10015A00 end:0x10016150
+	.text$x     start:0x1004FDC0 end:0x1004FDE0
+	.xdata$x    start:0x10053E18 end:0x10053E40
+	.CRT$XCU    start:0x10062048 end:0x1006204C align:4
+	.data       start:0x10062D5C end:0x10062D70
+	.bss        start:0x1006A460 end:0x1006A468
+
+Lionhead/LHMultiplayer/ver4.0/LHNetErrors.cpp:
+	.data       start:0x10062D70 end:0x10063340
+
+Lionhead/LHMultiplayer/ver4.0/LHNetEvent.cpp:
+	.text       start:0x10016150 end:0x10017090
+	.CRT$XCU    start:0x1006204C end:0x10062050 align:4
+	.data       start:0x10063340 end:0x10063608
+	.bss        start:0x1006A468 end:0x1006A470
+
+Lionhead/LHMultiplayer/ver4.0/LHNetTypes.cpp:
+	.text       start:0x10017090 end:0x10017910
+	.text$x     start:0x1004FDE0 end:0x1004FE20
+	.xdata$x    start:0x10053E40 end:0x10053E90
+	.CRT$XCU    start:0x10062050 end:0x10062058 align:4
+	.data       start:0x10063608 end:0x10063610
+	.bss        start:0x1006A470 end:0x1006A584
+
+Lionhead/LHMultiplayer/ver4.0/LHNetUser.cpp:
+	.text       start:0x10017910 end:0x100182B0
+	.text$x     start:0x1004FE20 end:0x1004FE80
+	.xdata$x    start:0x10053E90 end:0x10053EF8
+	.CRT$XCU    start:0x10062058 end:0x1006205C align:4
+	.data       start:0x10063610 end:0x100636E8
+	.bss        start:0x1006A584 end:0x1006A588
+
+Lionhead/LHMultiplayer/ver4.0/LHNetUtils.cpp:
+	.text       start:0x100182B0 end:0x10019F40
+	.text$x     start:0x1004FE80 end:0x1004FEA0
+	.xdata$x    start:0x10053EF8 end:0x10053F20
+	.CRT$XCU    start:0x1006205C end:0x10062060 align:4
+	.data       start:0x100636E8 end:0x10063910
+	.bss        start:0x1006A588 end:0x1006B7A0
+
+Lionhead/LHMultiplayer/ver4.0/LHPacketisableObject.cpp:
+	.text       start:0x10019F40 end:0x1001A100
+	.CRT$XCU    start:0x10062060 end:0x10062064 align:4
+	.data       start:0x10063910 end:0x10063918
+	.bss        start:0x1006B7A0 end:0x1006B7A4
+
+Lionhead/LHMultiplayer/ver4.0/LHPlayer.cpp:
+	.text       start:0x1001A100 end:0x1001A920
+	.CRT$XCU    start:0x10062064 end:0x10062068 align:4
+	.data       start:0x10063918 end:0x10063920
+	.bss        start:0x1006B7A4 end:0x1006B7A8
+
+Lionhead/LHMultiplayer/ver4.0/LHPOP3.cpp:
+	.text       start:0x1001A920 end:0x1001C530
+	.text$x     start:0x1004FEA0 end:0x1004FF00
+	.xdata$x    start:0x10053F20 end:0x10053F98
+	.CRT$XCU    start:0x10062068 end:0x1006206C align:4
+	.data       start:0x10063920 end:0x10063A00
+	.bss        start:0x1006B7A8 end:0x1006B7B0
+
+Lionhead/LHMultiplayer/ver4.0/LHSerial.cpp:
+	.text       start:0x1001C530 end:0x1001C830
+	.CRT$XCU    start:0x1006206C end:0x10062070 align:4
+	.data       start:0x10063A00 end:0x10063A10
+	.bss        start:0x1006B7B0 end:0x1006B7B4
+
+Lionhead/LHMultiplayer/ver4.0/LHServerListener.cpp:
+	.text       start:0x1001C830 end:0x1001CB70
+	.text$x     start:0x1004FF00 end:0x1004FF60
+	.rdata      start:0x100516E8 end:0x10051740
+	.xdata$x    start:0x10053F98 end:0x10054018
+	.CRT$XCU    start:0x10062070 end:0x10062074 align:4
+	.data       start:0x10063A10 end:0x10063A18
+	.bss        start:0x1006B7B4 end:0x1006B7B8
+
+Lionhead/LHMultiplayer/ver4.0/LHSession.cpp:
+	.text       start:0x1001CB70 end:0x1001FA40
+	.text$x     start:0x1004FF60 end:0x100500F0
+	.xdata$x    start:0x10054018 end:0x10054188
+	.CRT$XCU    start:0x10062074 end:0x10062080 align:4
+	.data       start:0x10063A18 end:0x10063A6C
+	.bss        start:0x1006B7B8 end:0x1006B7D8
+
+Lionhead/LHMultiplayer/ver4.0/LHSNMP.cpp:
+	.text       start:0x1001FA40 end:0x100203E0
+	.text$x     start:0x100500F0 end:0x10050110
+	.xdata$x    start:0x10054188 end:0x100541B0
+	.data       start:0x10063A6C end:0x10063ACC
+
+Lionhead/LHMultiplayer/ver4.0/LHSocket.cpp:
+	.text       start:0x100203E0 end:0x10022510
+	.text$x     start:0x10050110 end:0x10050130
+	.xdata$x    start:0x100541B0 end:0x100541D8
+	.CRT$XCU    start:0x10062080 end:0x10062084 align:4
+	.data       start:0x10063ACC end:0x10063AD4
+	.bss        start:0x1006B7D8 end:0x1006B7E0
+
+Lionhead/LHMultiplayer/ver4.0/LHTCPServerListener.cpp:
+	.text       start:0x10022510 end:0x100229C0
+	.text$x     start:0x10050130 end:0x10050150
+	.xdata$x    start:0x100541D8 end:0x10054208
+	.CRT$XCU    start:0x10062084 end:0x10062088 align:4
+	.data       start:0x10063AD4 end:0x10063ADC
+	.bss        start:0x1006B7E0 end:0x1006B7EC
+
+Lionhead/LHMultiplayer/ver4.0/LHTransport.cpp:
+	.text       start:0x100229C0 end:0x10024920
+	.text$x     start:0x10050150 end:0x10050282
+	.xdata$x    start:0x10054208 end:0x10054388
+	.CRT$XCU    start:0x10062088 end:0x1006208C align:4
+	.data       start:0x10063ADC end:0x10063B00
+	.bss        start:0x1006B7EC end:0x1006B7F0
+
+Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp:
+	.text       start:0x10024920 end:0x10024A20
+	.CRT$XCU    start:0x1006208C end:0x10062090 align:4
+	.bss        start:0x1006B7F0 end:0x1006B7F8
+
+Lionhead/LHMultiplayer/ver4.0/Version.cpp:
+	.text       start:0x10024A20 end:0x10024A70
+	.CRT$XCU    start:0x10062090 end:0x10062094 align:4
+	.data       start:0x10063B00 end:0x10063C94
+	.bss        start:0x1006B7F8 end:0x1006B99C
+
+LHMultiplayer/delayimp/delayhlp.cpp:
+	.text       start:0x10024DA8 end:0x10025060
+	.bss        start:0x1006B99C end:0x1006B9A8
+
+LHMultiplayer/zlib/uncompr.c:
+	.text       start:0x10025060 end:0x10025100
+	.data       start:0x10063C94 end:0x10063C9C
+
+LHMultiplayer/zlib/compress.c:
+	.text       start:0x10025100 end:0x100251D0
+
+LHMultiplayer/zlib/inflate.c:
+	.text       start:0x100251D0 end:0x10025960
+	.rdata      start:0x1005174C end:0x10051750
+	.data       start:0x10063C9C end:0x10063D0C
+
+LHMultiplayer/zlib/deflate.c:
+	.text       start:0x10025960 end:0x10027020
+	.rdata      start:0x10051750 end:0x10051800
+	.data       start:0x10063D0C end:0x10063D10
+
+LHMultiplayer/zlib/infblock.c:
+	.text       start:0x10027020 end:0x10027ED0
+	.rdata      start:0x10051800 end:0x1005184C
+	.data       start:0x10063D10 end:0x10063D84
+
+LHMultiplayer/zlib/adler32.c:
+	.text       start:0x10027ED0 end:0x10028000
+
+LHMultiplayer/zlib/zutil.c:
+	.text       start:0x10028000 end:0x10028060
+	.data       start:0x10063D84 end:0x10063E20
+
+LHMultiplayer/zlib/trees.c:
+	.text       start:0x10028060 end:0x10029CA0
+	.rdata      start:0x1005184C end:0x1005227C
+	.data       start:0x10063E20 end:0x10063E64
+
+LHMultiplayer/zlib/infcodes.c:
+	.text       start:0x10029CA0 end:0x1002A4B0
+	.data       start:0x10063E64 end:0x10063E98
+
+LHMultiplayer/zlib/inftrees.c:
+	.text       start:0x1002A4B0 end:0x1002ABF0
+	.rdata      start:0x1005227C end:0x10052498
+	.data       start:0x10063E98 end:0x10065090
+
+LHMultiplayer/zlib/infutil.c:
+	.text       start:0x1002ABF0 end:0x1002AD30
+	.data       start:0x10065090 end:0x100650D4
+
+LHMultiplayer/zlib/inffast.c:
+	.text       start:0x1002AD30 end:0x1002B0C0
+
+LHMultiplayer/lib/libcmt/purevirt.obj:
+	.text       start:0x1002B162 end:0x1002B16B align:1
+
+LHMultiplayer/lib/libcmt/trnsctrl.obj:
+	.text       start:0x1002B16B end:0x1002B474 align:1
+
+LHMultiplayer/lib/libcmt/exsup.obj:
+	.text       start:0x1002B474 end:0x1002B562 align:1
+	.data       start:0x100650D4 end:0x100650E4
+
+LHMultiplayer/lib/libcmt/delete.obj:
+	.text       start:0x1002B562 end:0x1002B56D align:1
+
+LHMultiplayer/lib/libcmt/ehvecdtr.obj:
+	.text       start:0x1002B56D end:0x1002B670 align:1
+	.rdata      start:0x10052498 end:0x100524B8
+
+LHMultiplayer/lib/libcmt/strncpy.obj:
+	.text       start:0x1002B670 end:0x1002B76E align:1
+	.data       start:0x100650E4 end:0x100650F0
+
+LHMultiplayer/lib/libcmt/ehvecctr.obj:
+	.text       start:0x1002B76E end:0x1002B7F0 align:1
+	.rdata      start:0x100524B8 end:0x100524C8
+
+LHMultiplayer/lib/libcmt/free.obj:
+	.text       start:0x1002B7F0 end:0x1002B8D9 align:1
+	.rdata      start:0x100524C8 end:0x100524E0
+
+LHMultiplayer/lib/libcmt/malloc.obj:
+	.text       start:0x1002B8D9 end:0x1002BA13 align:1
+	.rdata      start:0x100524E0 end:0x100524F8
+
+LHMultiplayer/lib/libcmt/new.obj:
+	.text       start:0x1002BA13 end:0x1002BA21 align:1
+
+LHMultiplayer/lib/libcmt/wcsncpy.obj:
+	.text       start:0x1002BA21 end:0x1002BA5E align:1
+
+LHMultiplayer/lib/libcmt/rand.obj:
+	.text       start:0x1002BA5E end:0x1002BA8D align:1
+
+LHMultiplayer/lib/libcmt/onexit.obj:
+	.text       start:0x1002BA8D end:0x1002BB4C align:1
+	.CRT$XIC    start:0x1006209C end:0x100620A0
+
+LHMultiplayer/lib/libcmt/fpinit.obj:
+	.text       start:0x1002BB4C end:0x1002BBAC align:1
+	.data       start:0x100650F0 end:0x10065104
+	.bss        start:0x1006B9A8 end:0x1006B9B0
+
+LHMultiplayer/lib/libcmt/ftol.obj:
+	.text       start:0x1002BBAC end:0x1002BBD3 align:1
+
+LHMultiplayer/lib/libcmt/sprintf.obj:
+	.text       start:0x1002BBD3 end:0x1002BC25 align:1
+
+LHMultiplayer/lib/libcmt/time.obj:
+	.text       start:0x1002BC25 end:0x1002BD01 align:1
+	.bss        start:0x1006B9B0 end:0x1006B9C8
+
+LHMultiplayer/lib/libcmt/sscanf.obj:
+	.text       start:0x1002BD01 end:0x1002BD40 align:1
+
+LHMultiplayer/lib/libcmt/strstr.obj:
+	.text       start:0x1002BD40 end:0x1002BDC0 align:1
+	.data       start:0x10065104 end:0x10065110
+
+LHMultiplayer/lib/libcmt/fread.obj:
+	.text       start:0x1002BDC0 end:0x1002BED7 align:1
+
+LHMultiplayer/lib/libcmt/ftell.obj:
+	.text       start:0x1002BED7 end:0x1002C05A align:1
+
+LHMultiplayer/lib/libcmt/fseek.obj:
+	.text       start:0x1002C05A end:0x1002C113 align:1
+
+LHMultiplayer/lib/libcmt/fclose.obj:
+	.text       start:0x1002C113 end:0x1002C190 align:1
+
+LHMultiplayer/lib/libcmt/fopen.obj:
+	.text       start:0x1002C2C9 end:0x1002C310 align:1
+
+LHMultiplayer/lib/libcmt/chkstk.obj:
+	.text       start:0x1002C310 end:0x1002C340 align:1
+
+LHMultiplayer/lib/libcmt/strncmp.obj:
+	.text       start:0x1002C340 end:0x1002C378 align:1
+
+LHMultiplayer/lib/libcmt/strlwr.obj:
+	.text       start:0x1002C378 end:0x1002C4AC align:1
+
+LHMultiplayer/lib/libcmt/atox.obj:
+	.text       start:0x1002C4AC end:0x1002C5FC align:1
+
+LHMultiplayer/lib/libcmt/_wctype.obj:
+	.text       start:0x1002C5FC end:0x1002C6C6 align:1
+
+LHMultiplayer/lib/libcmt/wcscat.obj:
+	.text       start:0x1002C6C6 end:0x1002C715 align:1
+
+LHMultiplayer/lib/libcmt/fprintf.obj:
+	.text       start:0x1002C715 end:0x1002C751 align:1
+
+LHMultiplayer/lib/libcmt/strftime.obj:
+	.text       start:0x1002C751 end:0x1002D359 align:1
+	.rdata      start:0x100524F8 end:0x10052628
+	.data       start:0x10065110 end:0x100651C8
+
+LHMultiplayer/lib/libcmt/gmtime.obj:
+	.text       start:0x1002D359 end:0x1002D463 align:1
+	.bss        start:0x1006B9C8 end:0x1006B9F0
+
+LHMultiplayer/lib/libcmt/wcslen.obj:
+	.text       start:0x1002D463 end:0x1002D480 align:1
+
+LHMultiplayer/lib/libcmt/calloc.obj:
+	.text       start:0x1002D480 end:0x1002D5BD align:1
+	.rdata      start:0x10052628 end:0x10052640
+
+LHMultiplayer/lib/libcmt/_ctype.obj:
+	.text       start:0x1002D5BD end:0x1002D821 align:1
+
+LHMultiplayer/lib/libcmt/wcscmp.obj:
+	.text       start:0x1002D821 end:0x1002D856 align:1
+
+LHMultiplayer/lib/libcmt/toupper.obj:
+	.text       start:0x1002D856 end:0x1002D999 align:1
+
+LHMultiplayer/lib/libcmt/tolower.obj:
+	.text       start:0x1002D999 end:0x1002DADB align:1
+
+LHMultiplayer/lib/libcmt/mktime.obj:
+	.text       start:0x1002DADB end:0x1002DCDB align:1
+
+LHMultiplayer/lib/libcmt/tzset.obj:
+	.text       start:0x1002DCDB end:0x1002E2B3 align:1
+	.rdata      start:0x10052640 end:0x10052648
+	.data       start:0x100651C8 end:0x100651E4
+	.bss        start:0x1006B9F0 end:0x1006BAAC
+
+LHMultiplayer/lib/libcmt/putenv.obj:
+	.text       start:0x1002E2B3 end:0x1002E368 align:1
+
+LHMultiplayer/lib/libcmt/dllcrt0.obj:
+	.text       start:0x1002E368 end:0x1002E511 align:1
+	.data       start:0x100651E4 end:0x100651E8
+	.bss        start:0x1006BAAC end:0x1006BAC0
+
+LHMultiplayer/lib/libcmt/frame.obj:
+	.text       start:0x1002E511 end:0x1002ED30 align:1
+	.rdata      start:0x10052648 end:0x10052690
+	.data       start:0x100651E8 end:0x100651EC
+
+LHMultiplayer/lib/libcmt/lowhelpr.obj:
+	.text       start:0x1002ED30 end:0x1002ED7C align:1
+	.data       start:0x100651EC end:0x100651F0
+
+LHMultiplayer/lib/libcmt/tidtable.obj:
+	.text       start:0x1002ED7C end:0x1002EF14 align:1
+	.data       start:0x100651F0 end:0x100651F4
+
+LHMultiplayer/lib/libcmt/hooks.obj:
+	.text       start:0x1002EF14 end:0x1002EFE4 align:1
+	.rdata      start:0x10052690 end:0x100526C0
+	.data       start:0x100651F4 end:0x100651F8
+
+LHMultiplayer/lib/libcmt/exsup3.obj:
+	.text       start:0x1002EFE4 end:0x1002F0C4 align:1
+
+LHMultiplayer/lib/libcmt/heapinit.obj:
+	.text       start:0x1002F0C4 end:0x1002F33E align:1
+	.rdata      start:0x100526C0 end:0x100526F0
+	.data       start:0x100651F8 end:0x10065200
+
+LHMultiplayer/lib/libcmt/sbheap.obj:
+	.text       start:0x1002F33E end:0x10030BA4 align:1
+	.data       start:0x10065200 end:0x10067228
+	.bss        start:0x1006BAC0 end:0x1006BAC8
+
+LHMultiplayer/lib/libcmt/mlock.obj:
+	.text       start:0x10030BA4 end:0x10030CC7 align:1
+	.data       start:0x10067228 end:0x100672E8
+	.bss        start:0x1006BAC8 end:0x1006BB28
+
+LHMultiplayer/lib/libcmt/_newmode.obj:
+	.bss        start:0x1006BB28 end:0x1006BB2C
+
+LHMultiplayer/lib/libcmt/handler.obj:
+	.text       start:0x10030CC7 end:0x10030D0C align:1
+	.bss        start:0x1006BB2C end:0x1006BB30
+
+LHMultiplayer/lib/libcmt/crt0dat.obj:
+	.text       start:0x10030D0C end:0x10030E4A align:1
+	.bss        start:0x1006BB30 end:0x1006BB74
+
+LHMultiplayer/lib/libcmt/realloc.obj:
+	.text       start:0x10030E4A end:0x10031179 align:1
+	.rdata      start:0x100526F0 end:0x10052708
+
+LHMultiplayer/lib/libcmt/msize.obj:
+	.text       start:0x10031179 end:0x10031267 align:1
+	.rdata      start:0x10052708 end:0x10052720
+
+LHMultiplayer/lib/libcmt/fp8.obj:
+	.text       start:0x10031267 end:0x10031279 align:1
+
+LHMultiplayer/lib/libcmt/testfdiv.obj:
+	.text       start:0x10031279 end:0x100312E0 align:1
+	.rdata      start:0x10052720 end:0x10052760
+
+LHMultiplayer/lib/libcmt/cvt.obj:
+	.text       start:0x100312E0 end:0x10031706 align:1
+	.rdata      start:0x10052760 end:0x10052770
+
+LHMultiplayer/lib/libcmt/_flsbuf.obj:
+	.text       start:0x10031706 end:0x1003181E align:1
+
+LHMultiplayer/lib/libcmt/cmiscdat.obj:
+	.data       start:0x100672E8 end:0x10067300
+
+LHMultiplayer/lib/libcmt/output.obj:
+	.text       start:0x1003181E end:0x10032028 align:1
+	.rdata      start:0x10052770 end:0x100527E4
+	.data       start:0x10067300 end:0x10067308
+
+LHMultiplayer/lib/libcmt/dtoxtime.obj:
+	.text       start:0x10032028 end:0x100320EA align:1
+
+LHMultiplayer/lib/libcmt/input.obj:
+	.text       start:0x100320EA end:0x10032BA0 align:1
+	.data       start:0x10067308 end:0x10067320
+
+LHMultiplayer/lib/libcmt/strlen.obj:
+	.text       start:0x10032BA0 end:0x10032C20 align:1
+
+LHMultiplayer/lib/libcmt/strchr.obj:
+	.text       start:0x10032C20 end:0x10032CEC align:1
+
+LHMultiplayer/lib/libcmt/_file.obj:
+	.text       start:0x10032CEC end:0x10032E4C align:1
+	.CRT$XIC    start:0x100620A0 end:0x100620A4
+	.CRT$XPX    start:0x100620B8 end:0x100620BC
+	.data       start:0x10067320 end:0x100675A0
+	.bss        start:0x1006BB74 end:0x1006BB78
+
+LHMultiplayer/lib/libcmt/_filbuf.obj:
+	.text       start:0x10032E4C end:0x10032F28 align:1
+
+LHMultiplayer/lib/libcmt/read.obj:
+	.text       start:0x10032F28 end:0x10033166 align:1
+
+LHMultiplayer/lib/libcmt/dosmap.obj:
+	.text       start:0x100334A5 end:0x1003352A align:1
+	.data       start:0x100675A0 end:0x10067708
+
+LHMultiplayer/lib/libcmt/ioinit.obj:
+	.text       start:0x1003352A end:0x1003373A align:1
+	.data       start:0x10067708 end:0x1006772C
+
+LHMultiplayer/lib/libcmt/lseek.obj:
+	.text       start:0x1003373A end:0x10033812 align:1
+
+LHMultiplayer/lib/libcmt/fflush.obj:
+	.text       start:0x10033812 end:0x10033978 align:1
+
+LHMultiplayer/lib/libcmt/close.obj:
+	.text       start:0x10033978 end:0x10033A58 align:1
+
+LHMultiplayer/lib/libcmt/_freebuf.obj:
+	.text       start:0x10033A58 end:0x10033A83 align:1
+
+LHMultiplayer/lib/libcmt/_open.obj:
+	.text       start:0x10033C73 end:0x10033DE3 align:1
+
+LHMultiplayer/lib/libcmt/stream.obj:
+	.text       start:0x10033DE3 end:0x10033EB0 align:1
+
+LHMultiplayer/lib/libcmt/strcat.obj:
+	.text       start:0x10033EB0 end:0x10033FA0 align:1
+	.data       start:0x1006772C end:0x10067730
+
+LHMultiplayer/lib/libcmt/a_map.obj:
+	.text       start:0x10033FA0 end:0x100341EF align:1
+	.rdata      start:0x100527E4 end:0x10052808 align:1
+	.bss        start:0x1006BB78 end:0x1006BB7C
+
+LHMultiplayer/lib/libcmt/setlocal.obj:
+	.text       start:0x100341EF end:0x10034868 align:1
+	.rdata      start:0x10052808 end:0x1005285C
+	.data       start:0x10067730 end:0x10067888
+	.bss        start:0x1006BB7C end:0x1006BB88
+
+LHMultiplayer/lib/libcmt/isctype.obj:
+	.text       start:0x10034868 end:0x100348E0 align:1
+
+LHMultiplayer/lib/libcmt/ctype.obj:
+	.data       start:0x10067888 end:0x10067A94
+
+LHMultiplayer/lib/libcmt/nlsdata1.obj:
+	.data       start:0x10067A94 end:0x10067AA0
+
+LHMultiplayer/lib/libcmt/timeset.obj:
+	.rdata      start:0x1005285C end:0x1005289C align:1
+	.data       start:0x10067AA0 end:0x10067B34
+
+LHMultiplayer/lib/libcmt/llmul.obj:
+	.text       start:0x100348E0 end:0x10034914 align:1
+	.data       start:0x10067B34 end:0x10067B40
+
+LHMultiplayer/lib/libcmt/iswctype.obj:
+	.text       start:0x10034914 end:0x10034976 align:1
+
+LHMultiplayer/lib/libcmt/nlsdata2.obj:
+	.bss        start:0x1006BB88 end:0x1006BBA8
+
+LHMultiplayer/lib/libcmt/_sftbuf.obj:
+	.text       start:0x10034976 end:0x10034A30 align:1
+	.bss        start:0x1006BBA8 end:0x1006BBB0
+
+LHMultiplayer/lib/libcmt/stricmp.obj:
+	.text       start:0x10034A30 end:0x10034B00 align:1
+
+LHMultiplayer/lib/libcmt/memset.obj:
+	.text       start:0x10034B00 end:0x10034B58 align:1
+
+LHMultiplayer/lib/libcmt/localtim.obj:
+	.text       start:0x10034B58 end:0x10034CC0 align:1
+
+LHMultiplayer/lib/libcmt/days.obj:
+	.data       start:0x10067B40 end:0x10067BA8
+
+LHMultiplayer/lib/libcmt/strcmp.obj:
+	.text       start:0x10034CC0 end:0x10034D44 align:1
+	.data       start:0x10067BA8 end:0x10067BB0
+
+LHMultiplayer/lib/libcmt/getenv.obj:
+	.text       start:0x10034D44 end:0x10034DE2 align:1
+
+LHMultiplayer/lib/libcmt/wsetenv.obj:
+	.text       start:0x10034DE2 end:0x10035038 align:1
+
+LHMultiplayer/lib/libcmt/setenv.obj:
+	.text       start:0x10035038 end:0x1003527E align:1
+
+LHMultiplayer/lib/libcmt/stdenvp.obj:
+	.text       start:0x1003527E end:0x10035337 align:1
+
+LHMultiplayer/lib/libcmt/stdargv.obj:
+	.text       start:0x10035337 end:0x10035584 align:1
+	.bss        start:0x1006BBB0 end:0x1006BCB4
+
+LHMultiplayer/lib/libcmt/a_env.obj:
+	.text       start:0x10035584 end:0x100356B6 align:1
+	.bss        start:0x1006BCB4 end:0x1006BCB8
+
+LHMultiplayer/lib/libcmt/dllmain.obj:
+	.text       start:0x100356B6 end:0x100356BC align:1
+
+LHMultiplayer/lib/libcmt/crt0msg.obj:
+	.text       start:0x100356BC end:0x10035879 align:1
+	.rdata      start:0x1005289C end:0x10052B88
+	.data       start:0x10067BB0 end:0x10067C40
+	.bss        start:0x1006BCB8 end:0x1006BCBC
+
+LHMultiplayer/lib/libcmt/unhandld.obj:
+	.text       start:0x10035879 end:0x100358DD align:1
+	.CRT$XIY    start:0x100620AC end:0x100620B0
+	.CRT$XTB    start:0x100620C4 end:0x100620C8
+	.bss        start:0x1006BCBC end:0x1006BCC0
+
+LHMultiplayer/lib/libcmt/validate.obj:
+	.text       start:0x100358DD end:0x10035930 align:1
+
+LHMultiplayer/lib/libcmt/memmove.obj:
+	.text       start:0x10035930 end:0x10035C65 align:1
+
+LHMultiplayer/lib/libcmt/winxfltr.obj:
+	.text       start:0x10035C65 end:0x10035DDD align:1
+	.data       start:0x10067C40 end:0x10067CC8
+
+LHMultiplayer/lib/libcmt/abort.obj:
+	.text       start:0x10035DDD end:0x10035DF4 align:1
+
+LHMultiplayer/lib/libcmt/strtol.obj:
+	.text       start:0x10035DF4 end:0x10036027 align:1
+
+LHMultiplayer/lib/libcmt/ieee87.obj:
+	.text       start:0x10036027 end:0x10036214 align:1
+
+LHMultiplayer/lib/libcmt/intrncvt.obj:
+	.text       start:0x10036214 end:0x100366A8 align:1
+	.data       start:0x10067CC8 end:0x10067CF8
+
+LHMultiplayer/lib/libcmt/_fptostr.obj:
+	.text       start:0x100366A8 end:0x1003671F align:1
+
+LHMultiplayer/lib/libcmt/cfout.obj:
+	.text       start:0x1003671F end:0x10036831 align:1
+
+LHMultiplayer/lib/libcmt/crt0fp.obj:
+	.text       start:0x10036831 end:0x1003683A align:1
+
+LHMultiplayer/lib/libcmt/_getbuf.obj:
+	.text       start:0x1003683A end:0x1003687E align:1
+
+LHMultiplayer/lib/libcmt/isatty.obj:
+	.text       start:0x1003687E end:0x100368A7 align:1
+
+LHMultiplayer/lib/libcmt/wctomb.obj:
+	.text       start:0x100368A7 end:0x10036970 align:1
+
+LHMultiplayer/lib/libcmt/ulldiv.obj:
+	.text       start:0x10036970 end:0x100369E0 align:1
+	.data       start:0x10067CF8 end:0x10067D00
+
+LHMultiplayer/lib/libcmt/ullrem.obj:
+	.text       start:0x100369E0 end:0x10036A55 align:1
+
+LHMultiplayer/lib/libcmt/mbtowc.obj:
+	.text       start:0x10036A55 end:0x10036B80 align:1
+
+LHMultiplayer/lib/libcmt/llshl.obj:
+	.text       start:0x10036B80 end:0x10036B9F align:1
+
+LHMultiplayer/lib/libcmt/ungetc.obj:
+	.text       start:0x10036B9F end:0x10036C36 align:1
+
+LHMultiplayer/lib/libcmt/closeall.obj:
+	.text       start:0x10036C36 end:0x10036CB7 align:1
+
+LHMultiplayer/lib/libcmt/osfinfo.obj:
+	.text       start:0x10036CB7 end:0x1003703F align:1
+
+LHMultiplayer/lib/libcmt/commit.obj:
+	.text       start:0x1003703F end:0x100370D2 align:1
+
+LHMultiplayer/lib/libcmt/open.obj:
+	.text       start:0x100370D2 end:0x100373B8 align:1
+
+LHMultiplayer/lib/libcmt/ncommode.obj:
+	.bss        start:0x1006BCC0 end:0x1006BCC4
+
+LHMultiplayer/lib/libcmt/inittime.obj:
+	.text       start:0x100373B8 end:0x10037927 align:1
+	.bss        start:0x1006BCC4 end:0x1006BCC8
+
+LHMultiplayer/lib/libcmt/initnum.obj:
+	.text       start:0x10037927 end:0x10037B33 align:1
+	.bss        start:0x1006BCC8 end:0x1006BCD4
+
+LHMultiplayer/lib/libcmt/initmon.obj:
+	.text       start:0x10037B33 end:0x10037DA5 align:1
+	.bss        start:0x1006BCD4 end:0x1006BCD8
+
+LHMultiplayer/lib/libcmt/initctyp.obj:
+	.text       start:0x10037DA5 end:0x10037FEA align:1
+	.bss        start:0x1006BCD8 end:0x1006BCE0
+
+LHMultiplayer/lib/libcmt/initcoll.obj:
+	.text       start:0x10037FEA end:0x10037FF0 align:1
+
+LHMultiplayer/lib/libcmt/strcspn.obj:
+	.text       start:0x10037FF0 end:0x10038030 align:1
+
+LHMultiplayer/lib/libcmt/strpbrk.obj:
+	.text       start:0x10038030 end:0x1003806A align:1
+
+LHMultiplayer/lib/libcmt/nlsdata3.obj:
+	.bss        start:0x1006BCE0 end:0x1006BD04
+
+LHMultiplayer/lib/libcmt/getqloc.obj:
+	.text       start:0x1003806A end:0x10038911 align:1
+	.rdata      start:0x10052B88 end:0x10053210
+	.data       start:0x10067D00 end:0x10068478
+	.bss        start:0x1006BD04 end:0x1006BD28
+
+LHMultiplayer/lib/libcmt/a_str.obj:
+	.text       start:0x10038911 end:0x10038A5A align:1
+	.rdata      start:0x10053210 end:0x10053220
+	.bss        start:0x1006BD28 end:0x1006BD2C
+
+LHMultiplayer/lib/libcmt/w_str.obj:
+	.text       start:0x10038A5A end:0x10038C1F align:1
+	.rdata      start:0x10053220 end:0x10053238
+	.bss        start:0x1006BD2C end:0x1006BD30
+
+LHMultiplayer/lib/libcmt/mbsnbico.obj:
+	.text       start:0x10038C1F end:0x10038C5E align:1
+
+LHMultiplayer/lib/libcmt/wtombenv.obj:
+	.text       start:0x10038C5E end:0x10038CCC align:1
+
+LHMultiplayer/lib/libcmt/mbtowenv.obj:
+	.text       start:0x10038CCC end:0x10038D34 align:1
+
+LHMultiplayer/lib/libcmt/wcschr.obj:
+	.text       start:0x10038D34 end:0x10038D5D align:1
+
+LHMultiplayer/lib/libcmt/wcsnicol.obj:
+	.text       start:0x10038D5D end:0x10038E3E align:1
+
+LHMultiplayer/lib/libcmt/wcsdup.obj:
+	.text       start:0x10038E3E end:0x10038E6C align:1
+
+LHMultiplayer/lib/libcmt/mbschr.obj:
+	.text       start:0x10038E6C end:0x10038F03 align:1
+
+LHMultiplayer/lib/libcmt/strdup.obj:
+	.text       start:0x10038F03 end:0x10038F2E align:1
+
+LHMultiplayer/lib/libcmt/mbctype.obj:
+	.text       start:0x10038F2E end:0x10039332 align:1
+	.CRT$XIC    start:0x100620A4 end:0x100620A8
+	.data       start:0x10068478 end:0x10068570
+	.bss        start:0x1006BD30 end:0x1006BD34
+
+LHMultiplayer/lib/libcmt/crtmbox.obj:
+	.text       start:0x10039332 end:0x100393BB align:1
+	.rdata      start:0x10053238 end:0x10053274
+	.bss        start:0x1006BD34 end:0x1006BD40
+
+LHMultiplayer/lib/libcmt/winsig.obj:
+	.text       start:0x100393BB end:0x10039770 align:1
+	.bss        start:0x1006BD40 end:0x1006BD54
+
+LHMultiplayer/lib/libcmt/mantold.obj:
+	.text       start:0x10039770 end:0x10039911 align:1
+
+LHMultiplayer/lib/libcmt/strgtold.obj:
+	.text       start:0x10039911 end:0x10039E1E align:1
+
+LHMultiplayer/lib/libcmt/x10fout.obj:
+	.text       start:0x10039E1E end:0x1003A0B1 align:1
+	.rdata      start:0x10053274 end:0x10053298 align:1
+
+LHMultiplayer/lib/libcmt/chsize.obj:
+	.text       start:0x1003A0B1 end:0x1003A22F align:1
+
+LHMultiplayer/lib/libcmt/txtmode.obj:
+	.bss        start:0x1006BD54 end:0x1006BD58
+
+LHMultiplayer/lib/libcmt/inithelp.obj:
+	.text       start:0x1003A22F end:0x1003A367 align:1
+	.bss        start:0x1006BD58 end:0x1006BD60
+
+LHMultiplayer/lib/libcmt/lconv.obj:
+	.text       start:0x1003A367 end:0x1003A36D align:1
+	.data       start:0x10068570 end:0x100685AC
+	.bss        start:0x1006BD60 end:0x1006BD64
+
+LHMultiplayer/lib/libcmt/xtoa.obj:
+	.text       start:0x1003A36D end:0x1003A510 align:1
+
+LHMultiplayer/lib/libcmt/strnicmp.obj:
+	.text       start:0x1003A510 end:0x1003A611 align:1
+	.data       start:0x100685AC end:0x100685B0
+
+LHMultiplayer/lib/libcmt/a_cmp.obj:
+	.text       start:0x1003A611 end:0x1003A8B9 align:1
+	.rdata      start:0x10053298 end:0x100532B0
+	.bss        start:0x1006BD64 end:0x1006BD68
+
+LHMultiplayer/lib/libcmt/w_cmp.obj:
+	.text       start:0x1003A8B9 end:0x1003AB04 align:1
+	.rdata      start:0x100532B0 end:0x100532C8
+	.bss        start:0x1006BD68 end:0x1006BD6C
+
+LHMultiplayer/lib/libcmt/wcsnicmp.obj:
+	.text       start:0x1003AB04 end:0x1003ABFC align:1
+
+LHMultiplayer/lib/libcmt/tenpow.obj:
+	.text       start:0x1003ABFC end:0x1003AE98 align:1
+
+LHMultiplayer/lib/libcmt/setmode.obj:
+	.text       start:0x1003AE98 end:0x1003AF52 align:1
+
+LHMultiplayer/lib/libcmt/w_loc.obj:
+	.text       start:0x1003AF52 end:0x1003B065 align:1
+	.rdata      start:0x100532C8 end:0x100532D8
+	.bss        start:0x1006BD6C end:0x1006BD70
+
+LHMultiplayer/lib/libcmt/a_loc.obj:
+	.text       start:0x1003B065 end:0x1003B183 align:1
+	.rdata      start:0x100532D8 end:0x100532E8
+	.bss        start:0x1006BD70 end:0x1006BD74
+
+LHMultiplayer/lib/libcmt/towlower.obj:
+	.text       start:0x1003B183 end:0x1003B272 align:1
+
+LHMultiplayer/lib/libcmt/w_map.obj:
+	.text       start:0x1003B272 end:0x1003B4AB align:1
+	.rdata      start:0x100532E8 end:0x10053300
+	.bss        start:0x1006BD74 end:0x1006BD78
+
+LHMultiplayer/lib/libcmt/constpow.obj:
+	.data       start:0x100685B0 end:0x1006886C
+
+GameSpy/Peer/peerMain.c:
+	.text       start:0x1003B4C0 end:0x1003CD90
+	.data       start:0x1006886C end:0x10068890
+
+GameSpy/gcdkey/gcdkeyc.c:
+	.text       start:0x1003CD90 end:0x1003CEB0
+	.data       start:0x10068890 end:0x100688C0
+
+GameSpy/Peer/peerCallbacks.c:
+	.text       start:0x1003CEB0 end:0x1003E770
+	.rdata      start:0x10053300 end:0x100534A0
+
+GameSpy/Peer/peerOperations.c:
+	.text       start:0x1003E770 end:0x1003F4D0
+	.data       start:0x100688C0 end:0x100688EC
+
+GameSpy/nonport.c:
+	.text       start:0x1003F4D0 end:0x1003F830
+	.data       start:0x100688EC end:0x10068964
+	.bss        start:0x1006BD78 end:0x1006BE80
+
+GameSpy/Chat/chatMain.c:
+	.text       start:0x1003F910 end:0x10040C50
+	.data       start:0x10068968 end:0x10068BA0
+
+GameSpy/Peer/peerCEngine.c:
+	.text       start:0x10040C50 end:0x10041590
+	.data       start:0x10068BA0 end:0x10068C24
+
+GameSpy/Peer/peerRooms.c:
+	.text       start:0x10041590 end:0x10041A10
+
+GameSpy/Peer/peerPing.c:
+	.text       start:0x10041A10 end:0x10042550
+	.data       start:0x10068C24 end:0x10068C28
+
+GameSpy/Peer/peerPlayers.c:
+	.text       start:0x10042550 end:0x10042AF0
+
+GameSpy/queryreporting/gqueryreporting.c:
+	.text       start:0x10042AF0 end:0x10043B40
+	.data       start:0x10068C28 end:0x10068E38
+	.bss        start:0x1006BE80 end:0x1006C198
+
+GameSpy/Peer/peerGlobalCallbacks.c:
+	.text       start:0x10043B40 end:0x10044A40
+	.data       start:0x10068E38 end:0x10068EC8
+	.bss        start:0x1006C198 end:0x1006C3B0
+
+GameSpy/Peer/peerMangle.c:
+	.text       start:0x10044A40 end:0x10044D60
+	.rdata      start:0x100534A0 end:0x100534CC
+	.data       start:0x10068EC8 end:0x10068F1C
+	.bss        start:0x1006C3B0 end:0x1006C3D0
+
+GameSpy/CEngine/gserver.c:
+	.text       start:0x10044D60 end:0x10045500
+	.data       start:0x10068F1C end:0x10068F3C
+	.bss        start:0x1006C3D0 end:0x1006C3D4
+
+GameSpy/md5c.c:
+	.text       start:0x10045500 end:0x10046110
+	.data       start:0x10068F3C end:0x10068F84
+
+GameSpy/CEngine/gserverlist.c:
+	.text       start:0x10046110 end:0x100477C0
+	.rdata      start:0x100534CC end:0x100534E8
+	.data       start:0x10068F84 end:0x10069160
+	.bss        start:0x1006C3D4 end:0x1006CC2C
+
+GameSpy/darray.c:
+	.text       start:0x100477C0 end:0x10047CE0
+
+GameSpy/Chat/chatSocket.c:
+	.text       start:0x10047CE0 end:0x10048C80
+	.data       start:0x10069160 end:0x10069188
+	.bss        start:0x1006CC2C end:0x1006DD2C
+
+GameSpy/Chat/chatCallbacks.c:
+	.text       start:0x10048C80 end:0x1004A040
+
+GameSpy/Chat/chatChannel.c:
+	.text       start:0x1004A040 end:0x1004B0C0
+
+GameSpy/Chat/chatHandlers.c:
+	.text       start:0x1004B0C0 end:0x1004E040
+	.data       start:0x10069188 end:0x100693DC
+
+GameSpy/hashtable.c:
+	.text       start:0x1004E040 end:0x1004E340
+
+GameSpy/pinger/pingerMain.c:
+	.text       start:0x1004E340 end:0x1004EF90
+	.data       start:0x100693DC end:0x100693E0
+	.bss        start:0x1006DD2C end:0x1006DD58
+
+LHMultiplayer/lib/libcmt/unlink.obj:
+	.text       start:0x1004EF90 end:0x1004EFC5 align:1
+
+LHMultiplayer/lib/libcmt/clock.obj:
+	.text       start:0x1004EFC5 end:0x1004F03D align:1
+	.CRT$XIC    start:0x100620A8 end:0x100620AC
+	.bss        start:0x1006DD58 end:0x1006DD80
+
+LHMultiplayer/lib/libcmt/atof.obj:
+	.text       start:0x1004F03D end:0x1004F08A align:1
+
+LHMultiplayer/lib/libcmt/qsort.obj:
+	.text       start:0x1004F08A end:0x1004F258 align:1
+
+LHMultiplayer/lib/libcmt/vsprintf.obj:
+	.text       start:0x1004F258 end:0x1004F2A9 align:1
+
+LHMultiplayer/lib/libcmt/strtok.obj:
+	.text       start:0x1004F2A9 end:0x1004F34D align:1

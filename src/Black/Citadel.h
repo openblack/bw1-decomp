@@ -16,6 +16,8 @@ class Base;
 class CitadelHeart;
 class Creature;
 class GCitadelHeartInfo;
+class GCitadelInfo;
+class GPlayer;
 class GTribeInfo;
 class GWorshipSiteInfo;
 class GameOSFile;
@@ -82,6 +84,8 @@ public:
 
 	// BW1W120 004629f0 BW1M119 011c3350
 	Citadel();
+	// BW1W120 00462b10 BW1M119 inlined
+	Citadel(const MapCoords& coords, const GCitadelInfo* info, GPlayer* player);
 
 	// Static methods
 
@@ -121,6 +125,8 @@ public:
 	void AddWorshipSite(WorshipSite* site);
 	// BW1W120 004637c0 BW1M119 011c1b40
 	void RemoveWorshipSite(WorshipSite* site);
+	// BW1W120 004637e0 BW1M119 011c18a0
+	bool32_t IsObjectPartOfCitadel(GameThingWithPos* object);
 	// BW1W120 00463920 BW1M119 0108cce0
 	void ProcessSpellIcons();
 	// BW1W120 00463980 BW1M119 0108fe80

@@ -87,11 +87,6 @@
 	((line) - ((line) < 1019 ? 1 : (line) < 1359 ? 13 : (line) < 1856 ? 71 : (line) < 2210 ? 78 : 83))
 #endif
 
-inline void GCamera::GetPosition(LHPoint& pos)
-{
-	pos = LH3DTech::g_camera.pos;
-}
-
 inline float GCamera::GetDistance(const LHPoint& point)
 {
 	LHPoint pos;
@@ -237,9 +232,9 @@ bool Abode::GetPSysFireLocalRndFlamePos(LHPoint* point, int* bone_index)
 	return Object::GetPSysFireLocalRndFlamePos(point, bone_index);
 }
 
-uint32_t Abode::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE Abode::GetPhysicsConstantsType()
 {
-	return 0;
+	return PHYSICS_CONSTANTS_TYPE_DEFAULT_UNMOVABLE;
 }
 
 void Abode::SetUpPhysOb(PhysOb* obj)

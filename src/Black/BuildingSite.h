@@ -35,7 +35,7 @@ public:
 	uint8_t                 field_0x28[0xc];
 	LHPoint                 BuildingPositions[0x7f]; /* 0x34 */
 	uint8_t                 field_0x628[0x14];
-	float                   ForcedDesire;
+	float                   ForcedDesire; /* 0x63c */
 	float                   life;
 
 	// Override methods

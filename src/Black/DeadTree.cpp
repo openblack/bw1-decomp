@@ -16,7 +16,7 @@ uint32_t FelledTree::GetSaveType()
 	return GAME_THING_TYPE_FELLED_TREE;
 }
 
-uint32_t FelledTree::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE FelledTree::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_TREE;
 }

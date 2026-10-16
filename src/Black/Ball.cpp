@@ -23,7 +23,7 @@ uint32_t Ball::Process()
 	return 1;
 }
 
-uint32_t Ball::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE Ball::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_FOOTBALL;
 }

@@ -10,6 +10,7 @@
 #include "GTPointer.h"
 
 class GameThing;
+class GameThingWithPos;
 
 class SpellTargets
 {
@@ -38,6 +39,20 @@ public:
 	void AddTarget(GameThing* target);
 	// BW1W120 00670cf0 BW1M119 013e7cd0
 	void AddTarget(const LHPoint& point);
+	// BW1W120 00670e30 BW1M119 013e7b60
+	void GetNext(LHPoint* point);
+	// BW1W120 00670f00 BW1M119 013e7a20
+	void TakeTarget(LHPoint* point);
+	// BW1W120 00671030 BW1M119 013e7960
+	GameThingWithPos* TakeTargetObject();
+	// BW1W120 00671080 BW1M119 013e7800
+	GameThingWithPos* GetTargetObject();
+	// BW1W120 006710b0 BW1M119 013e7780
+	long GetSize();
+	// BW1W120 006710c0 BW1M119 01082150
+	long GetNumObjects();
+	// BW1W120 006710d0 BW1M119 013e7620
+	long GetNumPoints();
 };
 
 static_assert(offsetof(SpellTargets, Points) == 0x14, "SpellTargets points offset is incorrect");

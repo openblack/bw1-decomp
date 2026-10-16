@@ -36,9 +36,9 @@ uint32_t Creature::GetCreatureBeliefListType()
 	return 0;
 }
 
-uint32_t Creature::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE Creature::GetPhysicsConstantsType()
 {
-	return 0;
+	return PHYSICS_CONSTANTS_TYPE_DEFAULT_UNMOVABLE;
 }
 
 uint32_t Creature::InterfaceGiveObject(GInterfaceStatus* param_1, Object* param_2)

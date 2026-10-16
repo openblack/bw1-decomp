@@ -152,7 +152,7 @@ static float MaxDistance = 500.0f;
 // BW1W120 009ce6ac
 static float MaxHeight = 500.0f;
 // BW1W120 009ce6b0
-static bool32_t UseExclusions = true;
+bool32_t CameraExclusion::UseExclusions = true;
 // BW1W120 00c5e14c
 static bool32_t UseMaxHeight;
 // BW1W120 00c5e148
@@ -1922,7 +1922,7 @@ void CameraModeNew3::UpdateClickParams(LHPoint& pos, LHPoint& focus, bool grab)
 float CameraModeNew3::GetAltitude(LHPoint& pos)
 {
 	float altitude = LH3DIsland::GetAltitude(LH3DMapCoords(pos.x, pos.z));
-	if (UseExclusions)
+	if (CameraExclusion::UseExclusions)
 	{
 		for (CameraExclusion* exclusion = NearbyExclusions; exclusion != NULL; exclusion = exclusion->NextNearby)
 		{
@@ -3558,7 +3558,7 @@ void CameraModeNew3::Update()
 	matrix._31 = margin * forward.x;
 	matrix._32 = margin * forward.y;
 	matrix._33 = margin * forward.z;
-	if (UseExclusions)
+	if (CameraExclusion::UseExclusions)
 	{
 		for (CameraExclusion* exclusion = NearbyExclusions; exclusion != NULL; exclusion = exclusion->NextNearby)
 		{
@@ -3719,7 +3719,7 @@ void CameraModeNew3::Update()
 		originDest.y = groundAltitude;
 		pushed = true;
 	}
-	if (UseExclusions && originDest.y > maxAltitude)
+	if (CameraExclusion::UseExclusions && originDest.y > maxAltitude)
 	{
 		float   over = originDest.y - maxAltitude;
 		LHPoint direction = focusDest - originDest;

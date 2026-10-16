@@ -113,7 +113,7 @@ struct LHMatrix
 	}
 	// Inliner IL size: <= 40, always inlined and never charged
 	// BW1W120 inlined BW1M119 01043dd0
-	const LHPoint& GetPos() const { return *(const LHPoint*)&m[9]; }
+	LHPoint& GetPos() const { return *(LHPoint*)&m[9]; }
 	// BW1W120 inlined BW1M119 01099510
 	LHPoint& GetVectorX() const { return *(LHPoint*)&m[0]; }
 	// BW1W120 inlined BW1M119 010995c0
@@ -143,7 +143,34 @@ struct LHMatrix
 		_33 *= c;
 		_33 -= t;
 	}
-	// BW1W120 inlined BW1M119 inlined
+	// BW1W120 006a12f0 BW1M119 inlined
+	void PostRotateX(float angle)
+	{
+		float c = cos(angle);
+		float s = sin(angle);
+		float t;
+		t = _12 * s;
+		_12 *= c;
+		_12 += _13 * s;
+		_13 *= c;
+		_13 -= t;
+		t = _22 * s;
+		_22 *= c;
+		_22 += _23 * s;
+		_23 *= c;
+		_23 -= t;
+		t = _32 * s;
+		_32 *= c;
+		_32 += _33 * s;
+		_33 *= c;
+		_33 -= t;
+		t = _42 * s;
+		_42 *= c;
+		_42 += _43 * s;
+		_43 *= c;
+		_43 -= t;
+	}
+	// BW1W120 0067a4a0 BW1M119 inlined
 	void PostRotateY(float angle)
 	{
 		float c = cos(angle);
@@ -170,7 +197,7 @@ struct LHMatrix
 		_43 *= c;
 		_43 += t;
 	}
-	// BW1W120 inlined BW1M119 inlined
+	// BW1W120 006a24e0 BW1M119 inlined
 	void PostRotateZ(float angle)
 	{
 		float c = cos(angle);

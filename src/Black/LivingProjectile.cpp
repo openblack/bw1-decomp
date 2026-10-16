@@ -3,12 +3,12 @@
 #include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 #include "Villager.h"
 
-uint32_t Villager::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE Villager::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_VILLAGER;
 }
 
-uint32_t Animal::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE Animal::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_ANIMAL;
 }

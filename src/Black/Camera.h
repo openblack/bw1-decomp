@@ -4,9 +4,11 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <Lionhead/LH3DLib/development/Zoomer.h>  /* For struct Zoomer, struct Zoomer3d */
+#include <Lionhead/LH3DLib/development/LH3DTech.h> /* For LH3DTech::g_camera */
+#include <Lionhead/LH3DLib/development/LHPoint.h>  /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/Zoomer.h>   /* For struct Zoomer, struct Zoomer3d */
 
+#include "CameraStore.h"      /* For struct CameraStore */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
 // Forward Declares
@@ -16,17 +18,6 @@ class CameraMode;
 class GameOSFile;
 class GameThing;
 struct MapCoords;
-
-struct CameraStore
-{
-	LHPoint Position;
-	LHPoint Focus;
-
-	// Non-virtual methods
-
-	// BW1W120 00441840 BW1M119 011a3b60
-	void Set(LHPoint& position, LHPoint& focus);
-};
 
 class GCamera : public GameThingWithPos
 {
@@ -115,7 +106,7 @@ public:
 	// BW1W120 004438c0 BW1M119 011a13d0
 	void SetPositionAndFocus(const LHPoint& position, const LHPoint& focus);
 	// BW1W120 inlined BW1M119 011a1680
-	void GetPosition(LHPoint& pos);
+	void GetPosition(LHPoint& pos) { pos = LH3DTech::g_camera.pos; }
 	// BW1W120 inlined BW1M119 011a1600
 	void GetFocus(LHPoint& focus);
 	// BW1W120 inlined BW1M119 inlined

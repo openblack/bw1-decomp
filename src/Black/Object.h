@@ -12,9 +12,10 @@
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 #include <re_common.h>                               /* For bool32_t */
 
-#include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
-#include "MapCoords.h"        /* For struct MapCoords */
-#include "ObjectInfo.h"       /* For class GObjectInfo, needed by the inline getters below */
+#include "GameThingWithPos.h"     /* For struct GameThingWithPos, struct GameThingWithPosVftable */
+#include "MapCoords.h"            /* For struct MapCoords */
+#include "ObjectInfo.h"           /* For class GObjectInfo, needed by the inline getters below */
+#include "PhysicsConstantsType.h" /* For enum PHYSICS_CONSTANTS_TYPE */
 
 // Forward Declares
 
@@ -116,16 +117,10 @@ public:
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 0063a020 BW1M119 013d94f0
 	virtual void ResolveLoad();
-	// BW1W120 00402600 BW1M119 0104dac0
-	virtual float GetLife() { return life; }
-	// BW1W120 00402520 BW1M119 01047700
-	virtual float GetScale() { return scale; }
 	// BW1W120 00639200 BW1M119 013dbbd0
 	virtual void SetScale(float scale);
 	// BW1W120 006394e0 BW1M119 013db590
 	virtual void GetPhysicsMovementDirection(LHPoint* pos);
-	// BW1W120 00402710 BW1M119 01034f80
-	virtual bool32_t IsMoving() const { return Pos.x != coords.x || Pos.z != coords.z; }
 	// BW1W120 0063a780 BW1M119 013d8a80
 	virtual bool32_t IsDrowning();
 	// BW1W120 006377f0 BW1M119 013dec60
@@ -134,24 +129,10 @@ public:
 	virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
 	// BW1W120 00638550 BW1M119 013dced0
 	virtual bool32_t IsBuildingMaterial();
-	// BW1W120 00402a20 BW1M119 010a3100
-	virtual bool32_t IsSuitableForCreatureAction() { return info->CanCreatureInteractWithMe; }
 	// BW1W120 004e48c0 BW1M119 015ec660
 	virtual bool32_t CanBeEatenByCreature(Creature* creature);
-	// BW1W120 00402a40 BW1M119 010a31b0
-	virtual bool32_t CanBeAttackedByCreature(Creature* creature)
-	{
-		// Creature is only forward declared in this header, so the upcast has to be spelled out.
-		return info->CanCreatureAttackMe && reinterpret_cast<Object*>(creature) != this;
-	}
 	// BW1W120 00425c60 BW1M119 010b0a10
 	virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
-	// BW1W120 00402a80 BW1M119 010a3320
-	virtual bool32_t CanBeHelpedByCreature(Creature* creature) { return true; }
-	// BW1W120 00402a60 BW1M119 010a3260
-	virtual bool32_t CanBePlayedWithByCreature(Creature* creature) { return info->CanCreaturePlayWithMe; }
-	// BW1W120 00402a70 BW1M119 010a32d0
-	virtual bool32_t CanBeImpressedByCreature(Creature* creature) { return false; }
 	// BW1W120 004e3b40 BW1M119 015eedf0
 	virtual bool32_t CanBeInspectedByCreature(Creature* creature);
 	// BW1W120 004e3eb0 BW1M119 015ee3c0
@@ -166,18 +147,12 @@ public:
 	virtual bool32_t CanBeThrownByCreature(Creature* creature);
 	// BW1W120 004e3d40 BW1M119 015ee850
 	virtual bool32_t CanBePutInAStoragePit(Creature* creature);
-	// BW1W120 00402a90 BW1M119 010a3370
-	virtual bool32_t CanBeExaminedByCreature(Creature* creature) { return true; }
-	// BW1W120 00402aa0 BW1M119 015937e0
-	virtual bool32_t IsOnFire(Creature* creature) { return IsOnFire(); }
 	// BW1W120 004e3d90 BW1M119 015ee770
 	virtual bool32_t CanBePutInFoodPile(Creature* creature);
 	// BW1W120 004e3dd0 BW1M119 015ee6a0
 	virtual bool32_t CanBePutInWoodPile(Creature* creature);
 	// BW1W120 004e3bb0 BW1M119 015eec50
 	virtual bool32_t CanBeBroughtBackToCitadel(Creature* creature);
-	// BW1W120 00402a30 BW1M119 010a3170
-	virtual bool32_t CanBePoodOn(Creature* creature) { return true; }
 	// BW1W120 004e4320 BW1M119 015ed3c0
 	virtual bool32_t CanBeKickedByCreature(Creature* creature);
 	// BW1W120 0063b8d0 BW1M119 013e2770
@@ -186,8 +161,6 @@ public:
 	virtual float GetHeight();
 	// BW1W120 00639b20 BW1M119 013d9e40
 	virtual void SetInScript(int param_1);
-	// BW1W120 004029f0 BW1M119 01024540
-	virtual bool32_t IsObject() const { return true; }
 	// BW1W120 00638580 BW1M119 013dce10
 	virtual HELP_TEXT GetQueryFirstEnumText();
 	// BW1W120 00638590 BW1M119 013dcdb0
@@ -204,6 +177,8 @@ public:
 	virtual float GetYAngle() { return y_angle; }
 	// BW1W120 00402510 BW1M119 010584c0
 	virtual float GetZAngle() { return 0.0f; }
+	// BW1W120 00402520 BW1M119 01047700
+	virtual float GetScale() { return scale; }
 	// BW1W120 006393a0 BW1M119 0102c540
 	virtual void SetFocus(const LHPoint& focus);
 	// BW1W120 00638d00 BW1M119 01045ab0
@@ -282,11 +257,13 @@ public:
 	// BW1W120 004025c0 BW1M119 01590950
 	virtual void SetSpecularColor(unsigned long color) {}
 	// BW1W120 004025d0 BW1M119 011748d0
-	virtual LH3DColor GetSpecularColor() { return LH3DColor(0); }
+	virtual unsigned long GetSpecularColor() { return 0; }
 	// BW1W120 004025e0 BW1M119 01173850
 	virtual void SetBeliefSprite(LH3DSprite* sprite) {}
 	// BW1W120 004025f0 BW1M119 0151b4a0
 	virtual LH3DSprite* GetBeliefSprite() { return NULL; }
+	// BW1W120 00402600 BW1M119 0104dac0
+	virtual float GetLife() { return life; }
 	// BW1W120 0063a140 BW1M119 01053f60
 	virtual void SetLife(float life);
 	// BW1W120 00402610 BW1M119 01061cb0
@@ -389,6 +366,8 @@ public:
 	virtual float GetWoodValue();
 	// BW1W120 00402700 BW1M119 01064db0
 	virtual FOOD_TYPE GetFoodType() { return info->GetFoodType(); }
+	// BW1W120 00402710 BW1M119 01034f80
+	virtual bool32_t IsMoving() const { return Pos.x != coords.x || Pos.z != coords.z; }
 	// BW1W120 00639390 BW1M119 013db7b0
 	virtual float GetImpressiveValue();
 	// BW1W120 00402730 BW1M119 013ee160
@@ -539,6 +518,8 @@ public:
 	virtual uint32_t FightThisToObject(GInterfaceStatus* status, Object* target) { return 1; }
 	// BW1W120 004029e0 BW1M119 010067d0
 	virtual bool32_t IsEffectReceiver(EffectValues* values) { return true; }
+	// BW1W120 004029f0 BW1M119 01024540
+	virtual bool32_t IsObject() const { return true; }
 	// BW1W120 00639960 BW1M119 013dab40
 	virtual bool32_t CanBeDestroyedBySpell(Spell* param_1);
 	// BW1W120 00638cf0 BW1M119 013dbec0
@@ -550,7 +531,7 @@ public:
 	virtual PhysicsInitialisation InitialisePhysics(const LHPoint& param_1, const LHPoint& param_2, Object* param_3,
 	                                                bool param_4, GInterfaceStatus* param_5);
 	// BW1W120 006376a0 BW1M119 013df0a0
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 006376b0 BW1M119 013defa0
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 006375a0 BW1M119 013df240
@@ -573,6 +554,26 @@ public:
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00402a10 BW1M119 010a30b0
 	virtual bool GetAlwaysRemainsInPhysicsInternalSystem() { return false; }
+	// BW1W120 00402a20 BW1M119 010a3100
+	virtual bool32_t IsSuitableForCreatureAction() { return info->CanCreatureInteractWithMe; }
+	// BW1W120 00402a30 BW1M119 010a3170
+	virtual bool32_t CanBePoodOn(Creature* creature) { return true; }
+	// BW1W120 00402a40 BW1M119 010a31b0
+	virtual bool32_t CanBeAttackedByCreature(Creature* creature)
+	{
+		// Creature is only forward declared in this header, so the upcast has to be spelled out.
+		return info->CanCreatureAttackMe && reinterpret_cast<Object*>(creature) != this;
+	}
+	// BW1W120 00402a60 BW1M119 010a3260
+	virtual bool32_t CanBePlayedWithByCreature(Creature* creature) { return info->CanCreaturePlayWithMe; }
+	// BW1W120 00402a70 BW1M119 010a32d0
+	virtual bool32_t CanBeImpressedByCreature(Creature* creature) { return false; }
+	// BW1W120 00402a80 BW1M119 010a3320
+	virtual bool32_t CanBeHelpedByCreature(Creature* creature) { return true; }
+	// BW1W120 00402a90 BW1M119 010a3370
+	virtual bool32_t CanBeExaminedByCreature(Creature* creature) { return true; }
+	// BW1W120 00402aa0 BW1M119 015937e0
+	virtual bool32_t IsOnFire(Creature* creature) { return IsOnFire(); }
 	// BW1W120 00637470 BW1M119 013df620
 	virtual bool32_t HasSunk();
 	// BW1W120 00638740 BW1M119 013dc880

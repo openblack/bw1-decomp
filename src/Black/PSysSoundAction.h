@@ -5,10 +5,12 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#define PSYS_SOUND_ACTION_NONE -1
+
 class PSysSoundAction
 {
 public:
-	PSysSoundAction() : Action(-1), field_0x4(1), field_0x8(2), field_0xc(2), field_0x10(0)
+	PSysSoundAction() : Action(PSYS_SOUND_ACTION_NONE), field_0x4(1), Level(2), field_0xc(2), field_0x10(0)
 	{
 		Looping = 0;
 		Flag1 = 0;
@@ -20,7 +22,7 @@ public:
 
 	long     Action;
 	uint32_t field_0x4;
-	uint32_t field_0x8;
+	uint32_t Level;
 	uint32_t field_0xc;
 	uint32_t field_0x10;
 	uint8_t  Looping : 1;

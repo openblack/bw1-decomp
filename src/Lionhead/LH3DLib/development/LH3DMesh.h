@@ -112,6 +112,8 @@ struct LH3DMesh
 
 	// BW1W120 inlined BW1M119 0102dc80
 	LH3DBoundingBox& GetBoundingBox() { return BoundingBox; }
+	// BW1W120 0080b250 BW1M119 01064300 (LHCombined Release)
+	void SetAllTextures(LH3DTexture* texture);
 
 	// BW1W120 inlined BW1M119 01010fd0
 	bool32_t IsContainsLandscapeFeature() { return flags & LH3D_MESH_FLAGS_CONTAINS_LANDSCAPE_FEATURE; }

@@ -22,7 +22,7 @@ class GLeashStatus : public GameThing
 {
 public:
 	uint32_t          field_0x14;
-	uint32_t          field_0x18;
+	bool32_t          LeashWorks;
 	LEASH_TYPE        LeashType;
 	uint32_t          field_0x20;
 	Object*           ObjectAttachedTo;

@@ -44,7 +44,7 @@ SCRIPT_OBJECT_TYPE Tree::GetScriptObjectType()
 	return SCRIPT_OBJECT_TYPE_TREE;
 }
 
-uint32_t Tree::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE Tree::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_TREE;
 }

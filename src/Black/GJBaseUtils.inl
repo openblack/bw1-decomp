@@ -117,7 +117,7 @@ template <class T> inline long GJArray<T>::GetSize() const
 	return Size;
 }
 
-template <class T> inline const T& GJArray<T>::Entry(long index) const
+template <class T> inline T& GJArray<T>::Entry(long index) const
 {
 	return Data[index];
 }
@@ -125,6 +125,67 @@ template <class T> inline const T& GJArray<T>::Entry(long index) const
 template <class T> inline T& GJArray<T>::operator[](long index)
 {
 	return Data[index];
+}
+
+// GJCircularArray
+
+template <class T> inline void GJCircularArray<T>::SetMaxSize(long size)
+{
+	Array.Clear();
+	Array.SetSize(size);
+	NumFilled = 0;
+	Head = -1;
+}
+
+template <class T> inline void GJCircularArray<T>::Add(const T& item)
+{
+	if (Array.Size != 0)
+	{
+		Head = (Head + 1) % Array.Size;
+		if (NumFilled < GetMaxSize())
+		{
+			NumFilled++;
+		}
+		Entry(0) = item;
+	}
+}
+
+template <class T> inline T& GJCircularArray<T>::Entry(long index) const
+{
+	return Array.Data[(Head - index + Array.GetSize()) % Array.GetSize()];
+}
+
+// GJDoubleLinkList
+
+template <class T> inline void GJDoubleLinkList<T>::InsertIntoList(T* item)
+{
+	item->Next = First;
+	item->Previous = NULL;
+	if (First)
+	{
+		First->Previous = item;
+	}
+	First = item;
+	Count++;
+}
+
+template <class T> inline void GJDoubleLinkList<T>::RemoveFromList(T* item)
+{
+	if (item->Previous)
+	{
+		item->Previous->Next = item->Next;
+	}
+	else
+	{
+		First = item->Next;
+	}
+	if (item->Next)
+	{
+		item->Next->Previous = item->Previous;
+	}
+	Count--;
+	item->Next = NULL;
+	item->Previous = NULL;
 }
 
 #undef GJ_BASE_UTILS_FILE

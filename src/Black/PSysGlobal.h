@@ -9,6 +9,13 @@ class Object;
 class PSysGlobal
 {
 public:
+	// Static data
+
+	// BW1W120 00c02978
+	static long CitadelHeartBeamMesh;
+
+	// Static methods
+
 	static void DrawLoop(); // 0068f5e0
 	// BW1W120 0068f750 BW1M119 01418710
 	static void InitializeOneTimeOnly();

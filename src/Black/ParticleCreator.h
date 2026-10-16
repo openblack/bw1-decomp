@@ -18,6 +18,7 @@ class FloatProvider;
 class LH3DObject;
 class LH3DSprite;
 class PropertyList;
+class RenderParticle;
 
 class ParticleCreator : public Persistent
 {
@@ -44,7 +45,7 @@ public:
 	// BW1W120 006b34c0 BW1M119 01460880
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 purecall BW1M119 purecall
-	virtual void CreateParticle(AtomCore* core) = 0;
+	virtual RenderParticle* CreateParticle(AtomCore* core) = 0;
 	// BW1W120 006a88e0 BW1M119 013e5f30
 	virtual void PreLoadData();
 	// BW1W120 00670ae0 BW1M119 013e7e80
@@ -99,13 +100,13 @@ public:
 	// BW1W120 inlined BW1M119 014443a0
 	virtual ~ParticleBaseChainCreator() {}
 	// BW1W120 006aa760 BW1M119 01448f50
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 006aa770 BW1M119 01448fa0
 	virtual bool32_t IsParticleBaseChainCreator();
 	// BW1W120 purecall BW1M119 purecall
-	virtual void CreateChain(long index) = 0;
+	virtual Chain* CreateChain(long index) = 0;
 	// BW1W120 purecall BW1M119 purecall
-	virtual void CreateChainParticle(AtomCore* core, Chain* chain, long index) = 0;
+	virtual RenderParticle* CreateChainParticle(AtomCore* core, Chain* chain, long index) = 0;
 
 	uint32_t field_0x34;
 	uint32_t field_0x38;
@@ -120,7 +121,7 @@ public:
 	// BW1W120 006b35c0 BW1M119 014606f0
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006a8770 BW1M119 0109cff0
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 };
 static_assert(sizeof(ParticlePointCreator) == 0x34, "Data type is of wrong size");
 
@@ -133,7 +134,7 @@ public:
 	// BW1W120 006b35d0 BW1M119 01460470
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006aad00 BW1M119 014432c0
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 inlined BW1M119 null
 	virtual void CreateChain(long index);
 	// BW1W120 inlined BW1M119 null
@@ -165,7 +166,7 @@ public:
 	// BW1W120 006b38b0 BW1M119 0145ff90
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006a8b00 BW1M119 01448580
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 006a8a30 BW1M119 014489a0
 	virtual void PreLoadData();
 	// BW1W120 006a8aa0 BW1M119 01448890
@@ -196,7 +197,7 @@ public:
 	// BW1W120 006b3970 BW1M119 0145fbe0
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006a8da0 BW1M119 01447bd0
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 006a8cb0 BW1M119 01448160
 	virtual void PreLoadData();
 	// BW1W120 006a8d20 BW1M119 01448020
@@ -247,7 +248,7 @@ public:
 	// BW1W120 006b3b10 BW1M119 0145f9f0
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006a9120 BW1M119 01447750
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 
 	uint32_t    field_0x34;
 	std::string MeshFileName;
@@ -268,7 +269,7 @@ public:
 	// BW1W120 006b3c00 BW1M119 0145f770
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006aa530 BW1M119 01444910
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 006aa540 BW1M119 01444860
 	virtual void* GetBitmap();
 
@@ -302,7 +303,7 @@ public:
 	// BW1W120 006b3d70 BW1M119 0145f420
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006a98c0 BW1M119 01446a20
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 006a9550 BW1M119 01447240
 	virtual void PreLoadData();
 	// BW1W120 006a9760 BW1M119 01446f80
@@ -346,7 +347,7 @@ public:
 	// BW1W120 006b40c0 BW1M119 0145f1b0
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006aaa00 BW1M119 01443990
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 
 	ParticleCreator* PCreatorEvil;
 	ParticleCreator* PCreatorGood;
@@ -363,7 +364,7 @@ public:
 	// BW1W120 006b42a0 BW1M119 0145f0c0
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006a9b00 BW1M119 01445ff0
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 006a9a00 BW1M119 014465f0
 	virtual void PreLoadData();
 	// BW1W120 006a9ae0 BW1M119 01446270
@@ -384,7 +385,7 @@ public:
 	// BW1W120 006b4380 BW1M119 0145ed60
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006aa010 BW1M119 0101e980
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 006aa020 BW1M119 01445690
 	virtual void PreLoadData();
 	// BW1W120 006aa070 BW1M119 0101d0b0
@@ -431,7 +432,7 @@ public:
 	// BW1W120 006b45d0 BW1M119 0145ebc0
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006aa300 BW1M119 01444b00
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 };
 static_assert(sizeof(ParticleSymbolSpriteCreator) == 0x34, "Data type is of wrong size");
 
@@ -444,7 +445,7 @@ public:
 	// BW1W120 006b45e0 BW1M119 0145e930
 	virtual void DefineProperties(PropertyList* list);
 	// BW1W120 006a9d30 BW1M119 01445d40
-	virtual void CreateParticle(AtomCore* core);
+	virtual RenderParticle* CreateParticle(AtomCore* core);
 	// BW1W120 006a9d40 BW1M119 01445c90
 	virtual void* GetBitmap();
 
@@ -486,9 +487,9 @@ public:
 	// BW1W120 006aa7f0 BW1M119 014440e0
 	virtual void PreLoadData();
 	// BW1W120 006aa880 BW1M119 01443e90
-	virtual void CreateChain(long index);
+	virtual Chain* CreateChain(long index);
 	// BW1W120 006aa900 BW1M119 01443c00
-	virtual void CreateChainParticle(AtomCore* core, Chain* chain, long index);
+	virtual RenderParticle* CreateChainParticle(AtomCore* core, Chain* chain, long index);
 
 	std::string TextureFileName;
 	bool        UseAdditiveAlpha;

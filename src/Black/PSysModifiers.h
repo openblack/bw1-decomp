@@ -12,6 +12,7 @@ class AtomCollectionModifier;
 class Base;
 class GameOSFile;
 class GameThing;
+struct LHPoint;
 
 class BaseAtomModifierData : public PSysBase
 {
@@ -20,7 +21,7 @@ public:
 	BaseAtomModifierData*         Next;
 	const AtomCollectionModifier* Modifier;
 
-	// BW1W120 inlined BW1M119 0130d4d0
+	// BW1W120 006939d0 BW1M119 0130d4d0
 	BaseAtomModifierData(const AtomCollectionModifier* modifier) : Previous(NULL), Next(NULL), Modifier(modifier) {}
 
 	// Override methods
@@ -45,7 +46,7 @@ public:
 	BaseCollectionModifierData*   Next;
 	const AtomCollectionModifier* Modifier;
 
-	// BW1W120 inlined BW1M119 0130d730
+	// BW1W120 00676950 BW1M119 0130d730
 	BaseCollectionModifierData(const AtomCollectionModifier* modifier) : Previous(NULL), Next(NULL), Modifier(modifier)
 	{
 	}
@@ -80,6 +81,13 @@ public:
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 006c7530 BW1M119 0142ca80
 	virtual uint32_t GetSaveType();
+
+	// Virtual methods
+
+	// BW1W120 purecall BW1M119 purecall
+	virtual void GetOffset(LHPoint* offset) = 0;
+	// BW1W120 006c7510 BW1M119 01486510
+	virtual void SetRefPos(const LHPoint& pos, float amount);
 };
 
 class DrawOffsetDecay : public DrawOffset
@@ -99,9 +107,13 @@ public:
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 006c7800 BW1M119 0142c8f0
 	virtual uint32_t GetSaveType();
+	// BW1W120 006c7960 BW1M119 01485ed0
+	virtual void GetOffset(LHPoint* offset);
 
 	// BW1W120 006c77d0 BW1M119 014860e0
 	DrawOffsetDecay();
+	// BW1W120 006c7840 BW1M119 01485fd0
+	DrawOffsetDecay(const LHPoint& offset);
 };
 
 class DrawOffsetLT : public DrawOffset
@@ -121,6 +133,10 @@ public:
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 006c75c0 BW1M119 0142ca00
 	virtual uint32_t GetSaveType();
+	// BW1W120 006c7690 BW1M119 0102a850
+	virtual void GetOffset(LHPoint* offset);
+	// BW1W120 006c7600 BW1M119 0101bf60
+	virtual void SetRefPos(const LHPoint& pos, float amount);
 
 	// BW1W120 006c75a0 BW1M119 01486330
 	DrawOffsetLT();

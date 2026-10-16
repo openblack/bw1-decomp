@@ -122,6 +122,12 @@ public:
 	void HelpSpiritSay(unsigned long text, GUIDANCE_SFX_TYPE sfx);
 	// BW1W120 0071d0b0 BW1M119 015150a0
 	void HelpSpritesSayOneOffGuidanceIfNecessary(ONE_OFF_GUIDANCE_TYPE type);
+	// BW1W120 0071c3f0 BW1M119 01516e00
+	void SetHeartBeatSFXFrequencyPerSecond(float frequency);
+	// BW1W120 0071c450 BW1M119 01516cf0
+	float GetNonInterpedHeartBeatPulseValue();
+	// BW1W120 0071c430 BW1M119 0107f770
+	float GetInterpedHeartBeatPulseValue();
 };
 
 #endif /* BW1_DECOMP_SOUND_GUIDANCE_INCLUDED_H */

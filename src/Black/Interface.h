@@ -175,6 +175,8 @@ public:
 	bool32_t IsPlayBack(uint32_t playback) const;
 	// BW1W120 inlined BW1M119 010789b0
 	CHand* GetRenderHand() { return hand.Get(); }
+	// BW1W120 inlined BW1M119 01079860
+	GInterfaceStatus* GetStatus() { return status; }
 	// BW1W120 005d0610 BW1M119 01086440
 	void UpdateHandRenderCollide();
 	// BW1W120 005ce3f0 BW1M119 01363de0

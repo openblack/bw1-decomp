@@ -18,4 +18,10 @@ typedef int32_t bool32_t;
 #define CLAMP(value, low, high) if (value < low) { value = low; } else if (value > high) { value = high; }
 // clang-format on
 
+inline void WrapScaled(float& value, float range, float inv_range)
+{
+	float t = value;
+	value = t - (int)(t * inv_range) * range;
+}
+
 #endif /* BW1_DECOMP_REVERSING_UTILS_COMMON_INCLUDED_H */

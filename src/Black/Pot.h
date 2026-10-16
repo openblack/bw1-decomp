@@ -121,7 +121,7 @@ public:
 	virtual PhysicsObject* InitialisePhysicsFromHand(LHPoint& velocity, LHPoint& angular_velocity,
 	                                                 GInterfaceStatus* status, Object* thrower, bool32_t dont_replant);
 	// BW1W120 0066cef0 BW1M119 01125fc0
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 0066dbd0 BW1M119 01123cd0
 	virtual Object* EndPhysics(PhysicsObject* param_1, bool param_2);
 	// BW1W120 0066ced0 BW1M119 01126050

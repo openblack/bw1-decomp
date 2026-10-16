@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 #include "Base.h" /* For struct Base */
@@ -15,7 +17,7 @@ public:
 	uint32_t field_0xc;
 	uint32_t field_0x10;
 	uint32_t field_0x14;
-	uint32_t field_0x18;
+	bool32_t IsProcessing;
 	uint32_t field_0x1c;
 	uint32_t field_0x20;
 	LHPoint  LineStart;

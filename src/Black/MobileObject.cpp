@@ -377,7 +377,7 @@ int MobileObject::HasFinishedPath()
 	return HasReachedPathPercentage(Path->field_0x1c);
 }
 
-uint32_t Poo::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE Poo::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_POO;
 }
@@ -392,7 +392,7 @@ bool MobileObject::IsPoisoned()
 	return info == &GMobileObjectInfo::GetInfo()[MOBILE_OBJECT_INFO_TOADSTOOL] ? true : false;
 }
 
-uint32_t MobileObject::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE MobileObject::GetPhysicsConstantsType()
 {
 	if (info == &GMobileObjectInfo::GetInfo()[MOBILE_OBJECT_INFO_CHAMPI])
 	{
@@ -668,7 +668,7 @@ bool32_t FieldCrop::CanBecomeAPhysicsObject()
 	return true;
 }
 
-uint32_t FieldCrop::GetPhysicsConstantsType()
+PHYSICS_CONSTANTS_TYPE FieldCrop::GetPhysicsConstantsType()
 {
 	return PHYSICS_CONSTANTS_TYPE_TREE;
 }

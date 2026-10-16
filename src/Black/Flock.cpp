@@ -55,3 +55,15 @@ bool32_t Flock::IsScriptContainer() const
 {
 	return true;
 }
+
+void Flock::ResetForIteration()
+{
+	Members.Current = Members.First;
+}
+
+Living* Flock::IterateToNext()
+{
+	Living* living = Members.Current != NULL ? Members.Current->Data : NULL;
+	Members.MoveForward();
+	return living;
+}

@@ -50,6 +50,8 @@ public:
 
 	// BW1W120 00644f00 BW1M119 0111ccf0
 	Object* GetGameObjectWhoHitMe();
+	// BW1W120 00644f10 BW1M119 0111cc90
+	GInterfaceStatus* GetInterfaceStatusWhoHitMe();
 
 	// BW1W120 00d47088 BW1M119 01a202b4
 	static PhysOb PredictionPhysOb;
