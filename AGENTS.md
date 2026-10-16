@@ -287,6 +287,33 @@ only their own objects (with the compile command from `ninja -t compdb cl`, or
 `codegen-check.py`), never run bare `ninja`, and never edit `config/`; one coordinator applies
 symbol, split and config requests and re-splits between waves.
 
+#### Using every core for long verifications
+
+A full build of one version keeps all cores busy only while compiling; splitting, linking,
+hashing and the report are mostly serial, so it averages a fraction of the machine. Run
+independent builds side by side instead of one after another, for example `main` against the
+branch, or the five versions of one revision:
+
+- One checkout builds one version at a time. The root `objdiff.json` (read by the report) and
+  `.ninja_log`/`.ninja_deps` belong to the version `configure.py -v` last set up.
+- Add checkouts with `git worktree add --detach <dir> <rev>`. In each, symlink `orig`,
+  `build/tools` and `build/compilers` to the main checkout, copy `build/lib` (its copy command
+  embeds the checkout path) and the root `.ninja_log`/`.ninja_deps`.
+- Fresh checkout timestamps make the tool downloads look out of date, and ninja would rewrite the
+  shared `build/tools`. Backdate the worktree's files and confirm nothing shared is dirty:
+
+  ```sh
+  find . -path ./build -prune -o -path ./orig -prune -o -type f -print0 | xargs -0 touch -d 2001-01-01
+  python configure.py -v BW1W100 && ninja -n -d explain | grep -E 'build/(tools|compilers)/'
+  ```
+
+- Give each checkout its own list of versions and run them as background jobs, then `wait`.
+  Delete `build/<version>/src/**/*.o` first after header changes (the `cl` rule has no header
+  dependencies), and restore `config/*/symbols.txt` afterwards if dtk rewrote labels.
+- For sweeps over one unit (knob counts, alternative spellings), use
+  `tools/tiebreak-probe.py --variants FILE -j <cores>`: each variant compiles from a private copy
+  of `src/`, in parallel, with an exact byte comparison. Do not loop over single-object rebuilds.
+
 ## Source Organization
 
 Each `.o` file maps 1:1 to a `.cpp` file. The path is listed in `configure.py` under `config.libs`. Each object has a status:
