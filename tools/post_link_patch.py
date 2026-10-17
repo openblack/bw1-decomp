@@ -624,6 +624,13 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004C4C5B, call_rel32(0x00401879)),  # CreatureAttitudeToCreature
     (0x004C4F5A, call_indirect(0x008A900C)),  # CreatureAttitudeToCreature: __imp__GetUserNameA@4
     (0x004C4FAA, call_indirect(0x008A9888)),  # CreatureAttitudeToCreature: __imp__mmioAscend@4
+    (0x004D968B, call_rel32(0x00401879)),  # CreatureMentalBeliefs
+    (0x004DA00A, call_indirect(0x008A9944)),  # CreatureMentalBeliefs: __imp__BinkNextFrame@4
+    (0x004DA5DA, call_indirect(0x008A9970)),  # CreatureMentalBeliefs: __imp__GetOpenFileNameA@4
+    (0x004DA6EB, call_rel32(0x00401879)),  # CreatureMentalBeliefs
+    (0x004DA6FB, call_rel32(0x00401879)),  # CreatureMentalBeliefs
+    (0x004DA8AA, call_indirect(0x008A9028)),  # CreatureMentalBeliefs: __imp__DirectDrawEnumerateA@4
+    (0x004DADBA, call_indirect(0x008A9124)),  # CreatureMentalBeliefs: __imp__ImmGetCandidateListA@4
     (0x004DF26B, call_rel32(0x00401879)),  # CreatureMentalEditor
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
     (0x0052E3FA, call_indirect(0x008A901C)),  # Fixed: __imp__TrackMouseEvent@4
