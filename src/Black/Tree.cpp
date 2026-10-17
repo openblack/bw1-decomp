@@ -25,7 +25,9 @@
 #include "ValueSpinner.h"
 #include "WorshipSite.h"
 #include "RootsPile.h"
+#include "ParticleContainer.h"
 #include "Script.h"
+#include "Town.h"
 #include "Setup.h"
 #include "SoundTag.h"
 #include "Alignment.h"
@@ -40,6 +42,7 @@
 #include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For TWO_PI */
 #include <Lionhead/LH3DLib/development/LH3DRender.h> /* For LH3DRender */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For LH3DTech */
+#include <Lionhead/LH3DLib/development/SmokyStuff.h> /* For SmokyStuff */
 #include <Lionhead/LH3DLib/development/LH3DText.h>   /* For CHAR2WCHAR */
 #include <Lionhead/LH3DLib/development/LHRandom.h>   /* For Random */
 #include <Lionhead/LHLib/ver5.0/LHCollide.h>         /* For NewCollide */
@@ -67,6 +70,7 @@ static float SwaySpeed[TREE_NUM_ANGLES];
 static float SwayX[TREE_NUM_ANGLES];
 static float SwayZ[TREE_NUM_ANGLES];
 static int   Brightness = -1;
+static float ForestSearchRadius = 25.0f;
 static float FireAlpha;
 
 static const float FireAlphaCold = 230.0f;
@@ -405,6 +409,129 @@ PHYSICS_CONSTANTS_TYPE Tree::GetPhysicsConstantsType()
 void Tree::SetOnFire(float amount)
 {
 	Object::SetOnFire(amount);
+}
+
+Object* Tree::EndPhysics(PhysicsObject* physics_object, bool param_2)
+{
+	if (!(Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) || (GameThing::Flags & GAME_THING_FLAG_PSYS_FLYING))
+	{
+		return this;
+	}
+	if (!param_2)
+	{
+		return Fixed::EndPhysics(physics_object, false);
+	}
+	if (physics_object->Flags & PHYSICS_OBJECT_FLAG_LANDED)
+	{
+		if (field_0x5c_1 == 1)
+		{
+			return Fixed::EndPhysics(physics_object, param_2);
+		}
+		if (Pos.IsLand() && GetFireEffect() == NULL)
+		{
+			MapCoords searchPos = Pos;
+			bool32_t  nearBuilding = false;
+			Forest*   nearestForest = NULL;
+			float     nearestDistance = 99999.0f;
+			Pos.altitude = 0.0f;
+			LHPoint       point = Game3dObject->matrix.GetPos();
+			LH3DMapCoords cell(point.x, point.z);
+			point.y = LH3DIsland::GetAltitude(cell);
+			SmokyStuff::Create(&point, 1, 1.0f, 0xffffffff);
+			GInterfaceStatus* status = GetInterfaceStatusWhoLastDroppedMe();
+			if (status != NULL)
+			{
+				status->GetInterface()->StartImmersion(IMMERSION_EFFECT_TYPE_PLANT_OBJECT, 0x80000000);
+			}
+			int  count = 1000;
+			long spiralX = 1;
+			long spiralZ = 1;
+			for (; count != 0;)
+			{
+				if (GUtils::GetDistanceInMetres(Pos, searchPos) > ForestSearchRadius + 10.0f)
+				{
+					break;
+				}
+				for (Object* object = searchPos.GetFirstObjectFixed(); object != NULL;
+				     object = object->GetMapChild(searchPos))
+				{
+					float distance = object->Pos.GetDistance(Pos) - object->Get2DRadius();
+					if (distance < ForestSearchRadius && (object->GetTown() != NULL || object->IsCitadelPart()))
+					{
+						nearBuilding = true;
+						if (object->GetTown() != NULL)
+						{
+							for (LHLinkedNode<Forest*>* node = object->GetTown()->forests.GetStart(); node != NULL;
+							     node = node->next.Get())
+							{
+								if (node->payload->IsScenic)
+								{
+									nearestDistance = 0.0f;
+									nearestForest = node->payload;
+								}
+							}
+						}
+						break;
+					}
+					Tree* tree = dynamic_cast<Tree*>(object);
+					if (tree != NULL && tree->GetForest() != NULL && distance < nearestDistance)
+					{
+						nearestDistance = distance;
+						nearestForest = tree->GetForest();
+					}
+				}
+				count--;
+				searchPos += *GUtils::Spiral(spiralX, spiralZ);
+			}
+			if (GetForest() != NULL)
+			{
+				GetForest()->RemoveTree(this);
+				forest = NULL;
+			}
+			NonScenic = nearBuilding;
+			if (nearestForest != NULL)
+			{
+				forest = nearestForest;
+				nearestForest->AddTree(this);
+			}
+			else if (!NonScenic)
+			{
+				forest = new (FILEPATH, 859) Forest(Pos, 0);
+				forest->AddTree(this);
+			}
+			if (!NonScenic)
+			{
+				GParticleContainer* visual = GParticleContainer::CreateSpotVisualWithSpecifiedDuration(
+					Pos, SPOT_VISUAL_FOREST_CREATED, 0.3f, 50, NULL);
+				if (visual != NULL)
+				{
+					visual->SetPlayer(physics_object->GetPlayer());
+				}
+			}
+			GPlayer* player = physics_object->GetPlayer();
+			if (player != NULL)
+			{
+				player->ConsiderMakingCreatureMimicPlayer(physics_object->status, DETECTED_PLAYER_ACTION_PLANT_TREE,
+				                                          this, MAGIC_TYPE_NONE);
+				player->alignment->Update(player, this, true);
+			}
+			return Fixed::EndPhysics(physics_object, param_2);
+		}
+	}
+	DeadTree* deadTree = DeadTree::Create(this, physics_object->GetPlayer());
+	if (deadTree == NULL)
+	{
+		return this;
+	}
+	deadTree->coords = deadTree->Pos;
+	deadTree->InsertMapObject();
+	deadTree->field_0x98_4 = true;
+	if (IsInScript())
+	{
+		GScript::ReplaceScriptGameThing(this, deadTree);
+	}
+	ToBeDeleted(false);
+	return deadTree;
 }
 
 uint32_t Tree::DropSfx()
