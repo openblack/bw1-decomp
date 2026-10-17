@@ -38,6 +38,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For TWO_PI */
+#include <Lionhead/LH3DLib/development/LH3DRender.h> /* For LH3DRender */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For LH3DTech */
 #include <Lionhead/LH3DLib/development/LH3DText.h>   /* For CHAR2WCHAR */
 #include <Lionhead/LH3DLib/development/LHRandom.h>   /* For Random */
@@ -66,6 +67,9 @@ static float SwaySpeed[TREE_NUM_ANGLES];
 static float SwayX[TREE_NUM_ANGLES];
 static float SwayZ[TREE_NUM_ANGLES];
 static int   Brightness = -1;
+static float FireAlpha;
+
+static const float FireAlphaCold = 230.0f;
 
 GBaseInfo* GTreeInfo::GetBaseInfo(uint32_t& num_infos)
 {
@@ -416,6 +420,57 @@ uint32_t Tree::DropSfx()
 	options.Looping = 0;
 	GGlobal::Global.audio->PlaySoundEffect(&options);
 	return true;
+}
+
+void Tree::SpecialDrawOnFire(bool selectable)
+{
+	int   heat;
+	float maxTemperature = GetCombustionTemperature() * 1.5f;
+	if (GetTemperature() > maxTemperature)
+	{
+		heat = 255;
+	}
+	else
+	{
+		heat = (int)((GetTemperature() - GetCombustionTemperature()) * 255.0f /
+		             (maxTemperature - GetCombustionTemperature()));
+	}
+	uint32_t brightness = 50;
+	if (GetLife() > 0.9f)
+	{
+		brightness = (uint32_t)max(50.0f, 255.0f - (1.0f - GetLife()) * 2550.0f);
+	}
+	brightness = min(brightness, (uint32_t)Brightness);
+	unsigned long color = Game3dObject->color;
+	Game3dObject->color = (((color & 0xff0000) * brightness & 0xff0000ff) | ((color & 0xff00) * brightness & 0xff0000) |
+	                       ((color & 0xff) * brightness & 0xff00)) >>
+	                          8 |
+	                      (color & 0xff000000);
+	FireAlpha = (255.0f - FireAlphaCold) * heat * (1.0f / 255.0f) + FireAlphaCold;
+	if (FireAlpha >= 254.0f)
+	{
+		FireAlpha = 254.0f;
+	}
+	LH3DRender::OverrideMaterial = true;
+	LH3DRender::OverrideRenderMode = (int)FireAlpha;
+	if (GetLife() < 0.2f)
+	{
+		float     shrink = 1.0f - (0.2f - GetLife()) * 5.0f;
+		LHMatrix& matrix = Game3dObject->matrix;
+		LHMatrix  saved = matrix;
+		matrix.GetVectorX() *= shrink;
+		matrix.GetVectorZ() *= shrink;
+		Game3dObject->AddForDrawing(selectable ? this : NULL);
+		Game3dObject->matrix = saved;
+	}
+	else
+	{
+		Game3dObject->AddForDrawing(selectable ? this : NULL);
+	}
+	bool32_t onScreen = LH3DObject::g_b_last_on_screen;
+	LH3DRender::OverrideMaterial = false;
+	DrawFireEffect();
+	LH3DObject::g_b_last_on_screen = onScreen;
 }
 
 void Tree::AddPermanentFootPrint()

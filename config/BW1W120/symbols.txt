@@ -44013,6 +44013,7 @@ _SecondsPerYear = .data:0x00DA2920; // type:object size:0x4 scope:local
 ?InfoList@GTownDesireInfo@@2PAV1@A = .data:0x00DA2930; // type:object size:0x990 scope:global
 ?Infos@DesireFunctions@@2PAV1@A = .data:0x00DA32C8; // type:object size:0x6E8 scope:global
 _SecondsPerYear = .data:0x00DA39C0; // type:object size:0x4 scope:local
+_FireAlpha = .data:0x00DA39C8; // type:object size:0x4 scope:local
 _SwayZ = .data:0x00DA39CC; // type:object size:0x40 scope:local
 _SwayX = .data:0x00DA3A0C; // type:object size:0x40 scope:local
 _SwaySpeed = .data:0x00DA3A4C; // type:object size:0x40 scope:local
