@@ -251,7 +251,7 @@ public:
 	// BW1W120 0074a750 BW1M119 null
 	float GetWoodAddedByEffect(EffectValues& values);
 	// BW1W120 0074a3f0 BW1M119 01160880
-	float Grow(float amount, bool param_2, bool param_3);
+	float Grow(float amount, bool instant, bool raise_target);
 };
 static_assert(sizeof(Tree) == 0x6c, "Data type is of wrong size");
 
