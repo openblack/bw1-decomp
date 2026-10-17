@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 class Base;
@@ -20,9 +22,9 @@ class LH_SamplePlayOptions
 public:
 	uint32_t      field_0x0;
 	LH_AudioBank* Bank;
-	uint32_t      Positional;
-	uint32_t      Follow;
-	uint32_t      Doppler;
+	bool32_t      Positional;
+	bool32_t      Follow;
+	bool32_t      Doppler;
 	uint8_t       field_0x14[0xc];
 	Base*         AttachedObject;
 	uint32_t      SampleNumber;

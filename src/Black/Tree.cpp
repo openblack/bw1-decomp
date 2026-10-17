@@ -655,9 +655,9 @@ uint32_t Tree::DropSfx()
 	options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
 	options.SampleNumber = LH_SAMPLE_G_PLANTTREE_01 + GetTickCount() % 3;
 	options.AttachedObject = this;
-	options.Positional = 1;
+	options.Positional = true;
 	options.Pos = point;
-	options.Follow = 0;
+	options.Follow = false;
 	GGlobal::Global.audio->PlaySoundEffect(&options);
 	return true;
 }
@@ -752,9 +752,9 @@ uint32_t Tree::ApplyThisToObject(GInterfaceStatus* status, Object* object, Gestu
 				options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
 				options.SampleNumber = LH_SAMPLE_G_SACRIFICE_01;
 				options.AttachedObject = this;
-				options.Positional = 1;
+				options.Positional = true;
 				options.Pos = pos;
-				options.Follow = 0;
+				options.Follow = false;
 				GGlobal::Global.audio->PlaySoundEffect(&options);
 			}
 			if (status == GGame::g_game->MyInterfaceStatus())
@@ -823,7 +823,7 @@ bool32_t Tree::InterfaceSetInMagicHand(GInterfaceStatus* status)
 {
 	if (!(Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS))
 	{
-		SoundTag::Create(Pos, SoundTag::GetRandomSample(LH_SAMPLE_G_TREEBREAK_01, 3), false, 3, 0, 0, 1,
+		SoundTag::Create(Pos, SoundTag::GetRandomSample(LH_SAMPLE_G_TREEBREAK_01, 3), false, 3, 0, false, true,
 		                 AUDIO_SFX_BANK_TYPE_IN_GAME, 0);
 		GPlayer* player = status->GetPlayer();
 		if (player != NULL)
