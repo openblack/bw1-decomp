@@ -17,6 +17,7 @@
 #include "Player.h"
 #include "Creature.h"
 #include "Creature3D.h"
+#include "DeadTree.h"
 #include "Rand.h"
 #include "Map.h"
 #include "Utils.h"
@@ -32,10 +33,11 @@
 #include "TreeInfo.h"
 #include "Villager.h"
 
-#include <Lionhead/LH3DLib/development/LH3DMath.h> /* For TWO_PI */
-#include <Lionhead/LH3DLib/development/LH3DTech.h> /* For LH3DTech */
-#include <Lionhead/LH3DLib/development/LHRandom.h> /* For Random */
-#include <Lionhead/LHLib/ver5.0/LHCollide.h>       /* For NewCollide */
+#include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland */
+#include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For TWO_PI */
+#include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For LH3DTech */
+#include <Lionhead/LH3DLib/development/LHRandom.h>   /* For Random */
+#include <Lionhead/LHLib/ver5.0/LHCollide.h>         /* For NewCollide */
 
 #include <math.h>    /* For cos, sin */
 #include <stdio.h>   /* For sprintf */
@@ -222,6 +224,46 @@ uint32_t Tree::SaveObject(LHOSFile& file, const MapCoords* coords)
 		GSetup::WriteToFile(this, file, text, strlen(text));
 	}
 	return saved;
+}
+
+void Tree::DrawOutOfMap(bool selectable)
+{
+	if (Game3dObject != NULL)
+	{
+		Game3dObject->Flags2 |= LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
+		if (IsARootedObject())
+		{
+			DeadTree::DrawRoots(Game3dObject);
+		}
+		Game3DObject*        object = Game3dObject;
+		const LH3DMapCoords& coords = Pos;
+		LH3DIsland::GetColorAndSpecular(coords, &object->color, &object->specular);
+		LHPoint point;
+		point.x = (uint32_t)coords.WholeX() * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
+		point.y = 0.0f;
+		point.z = (uint32_t)coords.WholeZ() * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
+		object->specular = LH3DIsland::GetFogValue(&point, object->specular, &object->color);
+		Game3dObject->field_0x5c = 0x40;
+		Game3dObject->field_0x60 = 0x80;
+		if (GetFireEffect() != NULL)
+		{
+			SpecialDrawOnFire(selectable);
+		}
+		else
+		{
+			unsigned long color = Game3dObject->color;
+			Game3dObject->color =
+				(((color & 0xff0000) * Brightness & 0xff0000ff) | ((color & 0xff00) * Brightness & 0xff0000) |
+			     ((color & 0xff) * Brightness & 0xff00)) >>
+					8 |
+				(color & 0xff000000);
+			Game3dObject->AddForDrawing(selectable ? this : NULL);
+		}
+		if (Game3dObject != NULL)
+		{
+			Game3dObject->Flags2 &= ~LH3D_OBJECT_FLAGS2_OUT_OF_MAP;
+		}
+	}
 }
 
 float Tree::GetHoldRadius()

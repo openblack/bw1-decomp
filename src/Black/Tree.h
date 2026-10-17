@@ -242,6 +242,8 @@ public:
 
 	// BW1W120 0074a3a0 BW1M119 01160a20
 	float Decay(float amount);
+	// BW1W120 0074b3a0 BW1M119 0115fee0
+	void SpecialDrawOnFire(bool selectable);
 	// BW1W120 0074bd20 BW1M119 0115f040
 	void AddPermanentFootPrint();
 	// BW1W120 0074a6f0 BW1M119 null
