@@ -28,9 +28,9 @@ public:
 	// BW1W120 0041d0e0 BW1M119 01137400
 	virtual bool32_t IsOkToBeShepherd();
 	// BW1W120 0041d310 BW1M119 0106ad70
-	virtual uint32_t ReactToAnimalNeeds();
+	virtual ANIMAL_BEHAVIOUR_RESULT ReactToAnimalNeeds();
 	// BW1W120 0041d440 BW1M119 0106b4d0
-	virtual uint32_t LookForFoodPos();
+	virtual bool32_t LookForFoodPos(MapCoords* pos);
 	// BW1W120 0041c720 BW1M119 0109f190
 	virtual uint32_t MoveAnimation();
 	// BW1W120 0041c7f0 BW1M119 01177970
@@ -58,7 +58,7 @@ public:
 	// BW1W120 0041d110 BW1M119 01137440
 	virtual bool32_t IsCow(Creature* creature);
 	// BW1W120 0041d1b0 BW1M119 010113b0
-	virtual bool32_t DecideWhatToDo();
+	virtual int DecideWhatToDo();
 
 	// BW1W120 0055e630 BW1M119 0130e070
 	Cow() {}

@@ -124,7 +124,7 @@ public:
 	// BW1W120 004219e0 BW1M119 01181700
 	virtual bool32_t HideInLair();
 	// BW1W120 00421950 BW1M119 01181b20
-	virtual uint32_t ReactToAnimalNeeds();
+	virtual ANIMAL_BEHAVIOUR_RESULT ReactToAnimalNeeds();
 	// BW1W120 00421730 BW1M119 01181c60
 	virtual uint32_t CalculeLairPos();
 	// BW1W120 0041c4b0 BW1M119 011782c0

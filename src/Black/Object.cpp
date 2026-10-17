@@ -2,6 +2,7 @@
 #include "GameTimeConstants.h"         /* For SecondsPerYear */
 #include "CreatureAttitudeConstants.h" /* For AttitudeFeedbackDecay */
 #include "Object.h"
+#include "ObjectMovementConstants.h"
 
 #include <math.h>  /* For sqrt */
 #include <stdio.h> /* For sprintf */
@@ -371,10 +372,10 @@ int Object::MoveMapObject(const MapCoords& coords)
 	if (Pos.MapX() == coords.MapX() && Pos.MapZ() == coords.MapZ())
 	{
 		Pos = coords;
-		return 6;
+		return OBJECT_MOVE_RESULT_SAME_CELL;
 	}
 	ActualMoveMapObject(coords);
-	return 7;
+	return OBJECT_MOVE_RESULT_CHANGED_CELL;
 }
 
 bool32_t Object::IsTuggable()

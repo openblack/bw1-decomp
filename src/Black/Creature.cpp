@@ -14,7 +14,7 @@ uint32_t Creature::GetSaveType()
 	return GAME_THING_TYPE_CREATURE;
 }
 
-bool32_t Living::DecideWhatToDo()
+int Living::DecideWhatToDo()
 {
 	return false;
 }

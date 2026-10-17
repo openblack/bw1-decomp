@@ -22,13 +22,13 @@ public:
 	// Override methods
 
 	// BW1W120 0041fe70 BW1M119 0117e8e0
-	virtual bool32_t DecideWhatToDo();
+	virtual int DecideWhatToDo();
 	// BW1W120 004203c0 BW1M119 0117f4e0
 	virtual uint8_t FleeFromPredatorPriority(Reaction* reaction, Reaction* current_reaction);
 	// BW1W120 0041fe40 BW1M119 0117ea70
 	virtual bool32_t Eat();
 	// BW1W120 0041ff40 BW1M119 0117e770
-	virtual uint32_t ReactToAnimalFoodNeeds();
+	virtual ANIMAL_BEHAVIOUR_RESULT ReactToAnimalFoodNeeds();
 	// BW1W120 00420010 BW1M119 0117e6f0
 	virtual uint32_t CalculeLairPos();
 	// BW1W120 0041c0e0 BW1M119 01178d60
