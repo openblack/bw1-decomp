@@ -298,6 +298,10 @@ Black/CameraModeNew3.cpp:
 	.data       start:0x00A3E120 end:0x00A3E240
 	.bss        start:0x00CCED38 end:0x00CD1EB4
 
+Black/CarriedObject.cpp:
+	.text       start:0x0046C130 end:0x0046C520
+	.bss        start:0x00CD46E4 end:0x00CD4724
+
 Black/CameraModePath.cpp:
 	.rdata      start:0x008F3DCC end:0x008F3E20
 	.rdata$r    start:0x00A192F8 end:0x00A19348

@@ -303,6 +303,7 @@ Black/CameraModeTwoObjects.cpp:
 
 Black/CarriedObject.cpp:
 	.text       start:0x0044DE90 end:0x0044E280
+	.bss        start:0x00B7FA24 end:0x00B7FA64
 
 Black/Citadel.cpp:
 	.text       start:0x0044E280 end:0x0044F810

@@ -600,6 +600,18 @@ def jmp_run(target):
     return encode
 
 
+def copy_run(source):
+    """1.30's padding run up to the next 16-byte boundary: a plain copy of the bytes in front
+    of `source`, with no `jmp`."""
+
+    def encode(pe, address):
+        end = (address | 0xF) + 1
+        offset = pe.get_offset_from_rva(source - pe.OPTIONAL_HEADER.ImageBase)
+        return bytes(pe.__data__[offset - (end - address):offset])
+
+    return encode
+
+
 # SafeDisc left calls in inter-function padding that cl6 fills with nops. Absolute
 # addresses; each call is restored over nops of its own length, and rows are skipped
 # where it is already present (the owning unit is still linked from its split object).
@@ -747,8 +759,11 @@ BW1W120_SAFEDISC_CALLS = (
 
 
 # 1.30's SafeDisc left jumps instead: each run of padding nops up to the next 16-byte
-# boundary ends in a `jmp` back to the start of an earlier run (see `jmp_run`).
+# boundary ends in a `jmp` back to the start of an earlier run (see `jmp_run`), or repeats
+# the bytes in front of one (see `copy_run`).
 BW1W130_SAFEDISC_CALLS = (
+    (0x00463399, jmp_run(0x00462FC1)),  # CarriedObject
+    (0x004633E4, copy_run(0x00463399)),  # CarriedObject
     (0x004E15D3, jmp_run(0x004E1579)),  # CreatureMentalEditor
     (0x004E16D1, jmp_run(0x004E15D3)),  # CreatureMentalEditor
 )
