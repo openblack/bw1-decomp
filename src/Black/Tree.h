@@ -58,7 +58,7 @@ public:
 	// BW1W120 00749ed0 BW1M119 011613d0
 	virtual ~Tree();
 	// BW1W120 0074a210 BW1M119 01160c90
-	virtual void ToBeDeleted(int delete_now);
+	virtual void ToBeDeleted(bool32_t delete_now);
 	// BW1W120 0055d8c0 BW1M119 011617b0
 	virtual GPlayer* GetPlayer() { return NULL; }
 	// BW1W120 0055d9f0 BW1M119 01161cd0
