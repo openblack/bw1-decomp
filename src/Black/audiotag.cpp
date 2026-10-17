@@ -1,6 +1,9 @@
 #include "AudioTag.h"
 
 #include "HelpDude.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 void AudioTag::ApplyToDude(HelpDude* dude, int resolve_target, int play_sound)
 {

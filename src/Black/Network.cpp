@@ -2,6 +2,9 @@
 
 #include "ColourConstants.h" /* For White */
 #include <Lionhead/LHMultiplayer/ver4.0/LHSession.h>
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 // Original Mac name SendPacket(GPacket*, unsigned long).
 // BW1W120 00635450

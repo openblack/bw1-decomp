@@ -9,6 +9,9 @@
 #include "Particle3DAnim.h"
 #include "ParticleLightMap.h"
 #include "Particle3DObjAnimTextured.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 uint32_t Chain::GetSaveType()
 {

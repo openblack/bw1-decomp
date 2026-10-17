@@ -30,6 +30,9 @@
 #include "Utils.h"
 #include "Villager.h"
 #include "VillagerInfo.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 #if defined(VERSION_BW1W100)
 #define FILEPATH "C:\\dev\\black\\CreatureMimic.cpp"

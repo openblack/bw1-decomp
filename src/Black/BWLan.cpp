@@ -4,6 +4,9 @@
 
 #include "ColourConstants.h" /* For White */
 #include "LHNetBase.h"       /* For class LHNetBase */
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 bool BWLan::InitialiseLobbyState()
 {

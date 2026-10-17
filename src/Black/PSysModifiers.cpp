@@ -35,6 +35,9 @@ static float OneOverLogHalf = 1.0f / (float)log(0.5);
 #include "SpellEventInfo.h"  /* For struct SpellEventInfo */
 
 #include <windows.h> /* For max, min */
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 #if defined(VERSION_BW1W100)
 #define PSYS_MODIFIERS_FILE "C:\\dev\\black\\PSysModifiers.cpp"

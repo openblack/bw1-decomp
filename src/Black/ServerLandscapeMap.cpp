@@ -1,4 +1,7 @@
 #include "Setup.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 LHScriptCommandX<char> GSetup::MapCommands[] = {{(char*)"SET_NO_PLAYERS", "N         "},
                                                 {(char*)"LOAD_TRIBE_DANCE", "AN        "},

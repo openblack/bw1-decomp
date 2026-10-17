@@ -6,6 +6,9 @@
 #include <Lionhead/LHLib/ver5.0/LHWin.h> /* For operator new(size_t, const char*, uint32_t) */
 
 #include "MPFEFileTransferMessage.h" /* For MPFEFileTransferMessage */
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 #if defined(VERSION_BW1W100)
 #define MPFE_FILE_TRANSFER_FILE "C:\\dev\\black\\MPFEFileTransfer.cpp"

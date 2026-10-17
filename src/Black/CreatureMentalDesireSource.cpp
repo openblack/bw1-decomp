@@ -19,6 +19,9 @@
 #include "Global.h"
 #include "HelpText.h"
 #include "Rand.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 #if defined(VERSION_BW1W100)
 #define FILEPATH "C:\\dev\\black\\CreatureMentalDesireSource.cpp"

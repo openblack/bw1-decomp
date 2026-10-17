@@ -9,6 +9,9 @@
 #include "CreatureMental.h"
 #include "CreatureMentalDesire.h"
 #include "CreaturePlan.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 #if defined(VERSION_BW1W100)
 #define FILEPATH "C:\\dev\\black\\CreatureAttitudeToCreature.cpp"

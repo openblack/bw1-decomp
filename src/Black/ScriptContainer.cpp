@@ -1,5 +1,8 @@
 #include "GameTimeConstants.h"
 #include "Script.h"
+#if !defined(VERSION_BW1W100) && !defined(VERSION_BW1W110)
+#include <string>
+#endif
 
 // BW1W120 00c0c740
 // Indexed by SCRIPT_OBJECT_TYPE - 1.
