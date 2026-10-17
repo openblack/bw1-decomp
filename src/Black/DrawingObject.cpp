@@ -234,9 +234,9 @@ enum CREATURE_BUBBLE_FONT
 #define VILLAGER_NAME_FEMALE_LIGHTEN 145
 #define VILLAGER_DRAW_TURN_RATE      0.003f
 
-// Turns after a villager sits down during which the chair sounds still play.
-#define SITTING_DOWN1_SOUND_TURNS 15
-#define SITTING_DOWN2_SOUND_TURNS 10
+// Turns after a villager is thrown during which the thrown animation sounds still play.
+#define THROWN_SOUND_TURNS        15
+#define THROWN_VORTEX_SOUND_TURNS 10
 
 bool32_t CreatureStatsDisplay::Interacting;
 int      CreatureStatsDisplay::Alpha;
@@ -519,18 +519,18 @@ void Object::CheckSounds(const LH3DAnim* anim, long start_frame, long end_frame)
 						return;
 					}
 				}
-				if (((LH3DAnim*)anim)->GetIndexInCache() == ANM_P_SITTING_DOWN1_SITTING)
+				if (((LH3DAnim*)anim)->GetIndexInCache() == ANM_P_THROWN)
 				{
-					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < SITTING_DOWN1_SOUND_TURNS)
+					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < THROWN_SOUND_TURNS)
 					{
 						GGlobal::Global.audio->SamplePlayAnimEffect(
 							this, distance, sound, event->Variation,
 							GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR), 1, 0.0f, 0.0f);
 					}
 				}
-				else if (((LH3DAnim*)anim)->GetIndexInCache() == ANM_P_SITTING_DOWN2_OUT_OF)
+				else if (((LH3DAnim*)anim)->GetIndexInCache() == ANM_P_THROWN_VORTEX)
 				{
-					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < SITTING_DOWN2_SOUND_TURNS)
+					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < THROWN_VORTEX_SOUND_TURNS)
 					{
 						GGlobal::Global.audio->SamplePlayAnimEffect(
 							this, distance, sound, event->Variation,

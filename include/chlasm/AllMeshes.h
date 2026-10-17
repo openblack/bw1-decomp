@@ -1,1200 +1,1238 @@
 #ifndef _ALL_MESHES_AND_ANIMS_H_
 #define _ALL_MESHES_AND_ANIMS_H_
 
+#ifdef VERSION_BW1WCI
 //  704 Meshes.
 //  471 Anims.
+#else
+//  626 Meshes.
+//  441 Anims.
+#endif // VERSION_BW1WCI
 //  0 with substitution.
 //  0 with dummy object.
 
 enum MESH_LIST
 {
-    MSH_INVALID                             =   -1,	//	
-    MSH_DUMMY                               =    0,	//	
-    MSH_A_CROC_1                            =    1,	//	
-    MSH_A_CROC_2                            =    2,	//	
-    MSH_A_CROC_3                            =    3,	//	
-    MSH_DOLPHIN_BONED                       =    4,	//	
-    MSH_B_CREATURE_DOJO                     =    5,	//	
-    MSH_B_CREATURE_DOJO_HEADS_BASE          =    6,	//	
-    MSH_B_CREATURE_RACE_PILLER              =    7,	//	
-    MSH_B_CREATURE_STADIUM_2_5              =    8,	//	
-    MSH_B_DOJO_APE                          =    9,	//	
-    MSH_B_DOJO_BEAR                         =   10,	//	
-    MSH_B_DOJO_CHICK                        =   11,	//	
-    MSH_B_DOJO_CHIMP                        =   12,	//	
-    MSH_B_DOJO_COW                          =   13,	//	
-    MSH_B_DOJO_CROC                         =   14,	//	
-    MSH_B_DOJO_GORILLA                      =   15,	//	
-    MSH_B_DOJO_HORSE                        =   16,	//	
-    MSH_B_DOJO_LEOPARD                      =   17,	//	
-    MSH_B_DOJO_LION                         =   18,	//	
-    MSH_B_DOJO_MANDRILL                     =   19,	//	
-    MSH_B_DOJO_POLAR_BEAR                   =   20,	//	
-    MSH_B_DOJO_RHINO                        =   21,	//	
-    MSH_B_DOJO_SHEEP                        =   22,	//	
-    MSH_B_DOJO_TIGER                        =   23,	//	
-    MSH_B_DOJO_TORTOISE                     =   24,	//	
-    MSH_B_DOJO_WOLF                         =   25,	//	
-    MSH_B_DOJO_ZEBRA                        =   26,	//	
-    MSH_LH_BASE_BATS                        =   27,	//	
-    MSH_LH_BASE_CREATURE_FIGHT              =   28,	//	
-    MSH_LH_BASE_CREATURE_SPEED              =   29,	//	
-    MSH_LH_BASE_CREATURE_SWAP               =   30,	//	
-    MSH_LH_BASE_FUNGUS                      =   31,	//	
-    MSH_LH_BASE_ICE                         =   32,	//	
-    MSH_LH_BASE_NO_ENCOUNTER                =   33,	//	
-    MSH_LH_BASE_SWAMP                       =   34,	//	
-    MSH_LH_BASE_TELEPORT                    =   35,	//	
-    MSH_I_MINISCROLL_FIGHT                  =   36,	//	
-    MSH_I_MINISCROLL_GOLD_BROTHERHOOD       =   37,	//	
-    MSH_I_MINISCROLL_GOLD_CANCEL            =   38,	//	
-    MSH_I_MINISCROLL_SILVER_CANCEL          =   39,	//	
-    MSH_I_MINISCROLL_SWAP                   =   40,	//	
-    MSH_I_POINTER_HAND                      =   41,	//	
-    MSH_BROTHERHOODRING01                   =   42,	//	
-    MSH_BROTHERHOODRING02                   =   43,	//	
-    MSH_BROTHERHOODRING03                   =   44,	//	
-    MSH_EGGTREE_COMPANION1                  =   45,	//	
-    MSH_EGGTREE_COMPANION2                  =   46,	//	
-    MSH_EGGTREE_COMPANION3                  =   47,	//	
-    MSH_LH_BASE_BROTHERHOOD                 =   48,	//	
-    MSH_LH_BASE_BROTHERHOOD_HALF_SIZE       =   49,	//	
-    MSH_MARBLE_C1                           =   50,	//	
-    MSH_MARBLE_C2                           =   51,	//	
-    MSH_MARBLE_C3                           =   52,	//	
-    MSH_MARBLE_C4                           =   53,	//	
-    MSH_MARBLE_C5                           =   54,	//	
-    MSH_MARBLE_C6                           =   55,	//	
-    MSH_MARBLE_S1                           =   56,	//	
-    MSH_MARBLE_S2                           =   57,	//	
-    MSH_MARBLE_S3                           =   58,	//	
-    MSH_MARBLE_S4                           =   59,	//	
-    MSH_MARBLE_S5                           =   60,	//	
-    MSH_MARBLE_S6                           =   61,	//	
-    MSH_O_BALISTA_BALISTA                   =   62,	//	
-    MSH_O_BALISTA_PIVOT                     =   63,	//	
-    MSH_O_BALISTA_TOWER                     =   64,	//	
-    MSH_O_EGG                               =   65,	//	
-    MSH_O_EGGTREE                           =   66,	//	
-    MSH_O_FISH                              =   67,	//	
-    MSH_O_FISH_IN_HAND                      =   68,	//	
-    MSH_O_FOOTY_BALL                        =   69,	//	
-    MSH_O_GRASS_DETAIL                      =   70,	//	
-    MSH_O_INFO_SIGN_NOMARK                  =   71,	//	
-    MSH_O_INFO_SIGN_NOMARK_BIG              =   72,	//	
-    MSH_O_MARBLES_BASE                      =   73,	//	
-    MSH_O_PADIFIELD                         =   74,	//	
-    MSH_O_PUCK                              =   75,	//	
-    MSH_O_SPECIALCROPS                      =   76,	//	
-    MSH_O_WATER                             =   77,	//	
-    MSH_O_WATER_CANNON_BASE                 =   78,	//	
-    MSH_O_WATER_CANNON_CANNON               =   79,	//	
-    MSH_SUNFLOWERSFINAL                     =   80,	//	
-    MSH_S_PHILE_ANTI_MIRACLE                =   81,	//	
-    MSH_S_PHILE_CREATURE_SPEED              =   82,	//	
-    MSH_P_EGPT_M_BUST                       =   83,	//	
-    MSH_P_MULE_MAN                          =   84,	//	
-    MSH_P_PIG_THING                         =   85,	//	
-    MSH_A_BAT_1                             =   86,	//	
-    MSH_A_BAT_2                             =   87,	//	
-    MSH_A_CROW_1                            =   88,	//	
-    MSH_A_CROW_2                            =   89,	//	
-    MSH_A_DOVE_1                            =   90,	//	
-    MSH_A_DOVE_2                            =   91,	//	
-    MSH_A_PIGEON_1                          =   92,	//	
-    MSH_A_PIGEON_2                          =   93,	//	
-    MSH_A_SEAGULL_1                         =   94,	//	
-    MSH_A_SEAGULL_2                         =   95,	//	
-    MSH_A_SPELL_DOVE                        =   96,	//	
-    MSH_A_SWALLOW_1                         =   97,	//	
-    MSH_A_SWALLOW_2                         =   98,	//	
-    MSH_A_VULTURE_1                         =   99,	//	
-    MSH_A_VULTURE_2                         =  100,	//	
-    MSH_A_COW_1                             =  101,	//	
-    MSH_A_COW_2                             =  102,	//	
-    MSH_A_COW_3                             =  103,	//	
-    MSH_A_HORSE_1                           =  104,	//	
-    MSH_A_HORSE_2                           =  105,	//	
-    MSH_A_HORSE_3                           =  106,	//	
-    MSH_A_LEOPARD_1                         =  107,	//	
-    MSH_A_LEOPARD_2                         =  108,	//	
-    MSH_A_LEOPARD_3                         =  109,	//	
-    MSH_A_LION_1                            =  110,	//	
-    MSH_A_LION_2                            =  111,	//	
-    MSH_A_LION_3                            =  112,	//	
-    MSH_A_PIG_1                             =  113,	//	
-    MSH_A_PIG_2                             =  114,	//	
-    MSH_A_PIG_3                             =  115,	//	
-    MSH_SHARK_BONED                         =  116,	//	
-    MSH_A_SHEEP_1                           =  117,	//	
-    MSH_A_SHEEP_2                           =  118,	//	
-    MSH_A_SHEEP_3                           =  119,	//	
-    MSH_A_TIGER_1                           =  120,	//	
-    MSH_A_TIGER_2                           =  121,	//	
-    MSH_A_TIGER_3                           =  122,	//	
-    MSH_A_TORTOISE_1                        =  123,	//	
-    MSH_A_TORTOISE_2                        =  124,	//	
-    MSH_A_TORTOISE_3                        =  125,	//	
-    MSH_A_WOLF_1                            =  126,	//	
-    MSH_A_WOLF_2                            =  127,	//	
-    MSH_A_WOLF_3                            =  128,	//	
-    MSH_A_ZEBRA_1                           =  129,	//	
-    MSH_A_ZEBRA_2                           =  130,	//	
-    MSH_A_ZEBRA_3                           =  131,	//	
-    MSH_B_AMCN_1                            =  132,	//	
-    MSH_B_AMCN_1_A                          =  133,	//	
-    MSH_B_AMCN_2                            =  134,	//	
-    MSH_B_AMCN_2_A                          =  135,	//	
-    MSH_B_AMCN_3                            =  136,	//	
-    MSH_B_AMCN_3_A                          =  137,	//	
-    MSH_B_AMCN_4                            =  138,	//	
-    MSH_B_AMCN_5                            =  139,	//	
-    MSH_B_AMCN_CRECHE                       =  140,	//	
-    MSH_B_AMCN_FENCE                        =  141,	//	
-    MSH_B_AMCN_GRAVEYARD                    =  142,	//	
-    MSH_B_AMCN_TOTEM                        =  143,	//	
-    MSH_B_AMCN_WONDER                       =  144,	//	
-    MSH_B_AMCN_WORKSHOP                     =  145,	//	
-    MSH_B_AZTC_1                            =  146,	//	
-    MSH_B_AZTC_2                            =  147,	//	
-    MSH_B_AZTC_3                            =  148,	//	
-    MSH_B_AZTC_4                            =  149,	//	
-    MSH_B_AZTC_5                            =  150,	//	
-    MSH_B_AZTC_CRECHE                       =  151,	//	
-    MSH_B_AZTC_GRAVEYARD                    =  152,	//	
-    MSH_B_AZTC_OLMECHEAD                    =  153,	//	
-    MSH_B_AZTC_STATUE                       =  154,	//	
-    MSH_B_AZTC_TEMPLE                       =  155,	//	
-    MSH_B_AZTC_TOTEM                        =  156,	//	
-    MSH_B_AZTC_WONDER                       =  157,	//	
-    MSH_B_AZTC_WORKSHOP                     =  158,	//	
-    MSH_B_CELT_1                            =  159,	//	
-    MSH_B_CELT_2                            =  160,	//	
-    MSH_B_CELT_3                            =  161,	//	
-    MSH_B_CELT_4                            =  162,	//	
-    MSH_B_CELT_5                            =  163,	//	
-    MSH_B_CELT_5A                           =  164,	//	
-    MSH_B_CELT_CRECHE                       =  165,	//	
-    MSH_B_CELT_FENCE_SHORT                  =  166,	//	
-    MSH_B_CELT_FENCE_TALL                   =  167,	//	
-    MSH_B_CELT_GRAVEYARD                    =  168,	//	
-    MSH_B_CELT_GRAVE_01                     =  169,	//	
-    MSH_B_CELT_GRAVE_02                     =  170,	//	
-    MSH_B_CELT_GRAVE_03                     =  171,	//	
-    MSH_B_CELT_TOTEM                        =  172,	//	
-    MSH_B_CELT_WALLGATE_SPELL               =  173,	//	
-    MSH_B_CELT_WALLTOWER_SPELL              =  174,	//	
-    MSH_B_CELT_WALL_SPELL                   =  175,	//	
-    MSH_B_CELT_WONDER                       =  176,	//	
-    MSH_B_CELT_WORKSHOP                     =  177,	//	
-    MSH_B_CITADEL_AMCN_ALTAR                =  178,	//	
-    MSH_B_CITADEL_AZTC_ALTAR                =  179,	//	
-    MSH_B_CITADEL_CELT_ALTAR                =  180,	//	
-    MSH_B_CITADEL_DESIRE_HUNGRY             =  181,	//	
-    MSH_B_CITADEL_DESIRE_SLEEP              =  182,	//	
-    MSH_B_CITADEL_EGPT_ALTAR                =  183,	//	
-    MSH_B_CITADEL_GREK_ALTAR                =  184,	//	
-    MSH_B_CITADEL_JAPN_ALTAR                =  185,	//	
-    MSH_B_CITADEL_NORS_ALTAR                =  186,	//	
-    MSH_B_CITADEL_POP_COUNTER_BEAD          =  187,	//	
-    MSH_B_CITADEL_TIBT_ALTAR                =  188,	//	
-    MSH_B_EGPT_1                            =  189,	//	
-    MSH_B_EGPT_1_A                          =  190,	//	
-    MSH_B_EGPT_2                            =  191,	//	
-    MSH_B_EGPT_2_A                          =  192,	//	
-    MSH_B_EGPT_3                            =  193,	//	
-    MSH_B_EGPT_4                            =  194,	//	
-    MSH_B_EGPT_5                            =  195,	//	
-    MSH_B_EGPT_5_A                          =  196,	//	
-    MSH_B_EGPT_BARREL                       =  197,	//	
-    MSH_B_EGPT_CART                         =  198,	//	
-    MSH_B_EGPT_CRECHE                       =  199,	//	
-    MSH_B_EGPT_GRAVEYARD                    =  200,	//	
-    MSH_B_EGPT_NEEDLE                       =  201,	//	
-    MSH_B_EGPT_POT_A                        =  202,	//	
-    MSH_B_EGPT_POT_B                        =  203,	//	
-    MSH_B_EGPT_TOTEM                        =  204,	//	
-    MSH_B_EGPT_WELL                         =  205,	//	
-    MSH_B_EGPT_WINDMILL                     =  206,	//	
-    MSH_B_EGPT_WONDER                       =  207,	//	
-    MSH_B_EGPT_WORKSHOP                     =  208,	//	
-    MSH_B_GREK_1                            =  209,	//	
-    MSH_B_GREK_2                            =  210,	//	
-    MSH_B_GREK_2_A                          =  211,	//	
-    MSH_B_GREK_3                            =  212,	//	
-    MSH_B_GREK_4                            =  213,	//	
-    MSH_B_GREK_5                            =  214,	//	
-    MSH_B_GREK_5A                           =  215,	//	
-    MSH_B_GREK_CRECHE                       =  216,	//	
-    MSH_B_GREK_GRAVEYARD                    =  217,	//	
-    MSH_B_GREK_SAIL                         =  218,	//	
-    MSH_B_GREK_STATUE                       =  219,	//	
-    MSH_B_GREK_TOTEM                        =  220,	//	
-    MSH_B_GREK_WONDER                       =  221,	//	
-    MSH_B_GREK_WORKSHOP                     =  222,	//	
-    MSH_B_JAPN_1                            =  223,	//	
-    MSH_B_JAPN_2                            =  224,	//	
-    MSH_B_JAPN_3                            =  225,	//	
-    MSH_B_JAPN_4                            =  226,	//	
-    MSH_B_JAPN_5                            =  227,	//	
-    MSH_B_JAPN_CRECHE                       =  228,	//	
-    MSH_B_JAPN_GRAVEYARD                    =  229,	//	
-    MSH_B_JAPN_TOTEM                        =  230,	//	
-    MSH_B_JAPN_WONDER                       =  231,	//	
-    MSH_B_JAPN_WORKSHOP                     =  232,	//	
-    MSH_B_CAMPFIRE                          =  233,	//	
-    MSH_B_CREATURE_PEN_LEASH_POLE           =  234,	//	
-    MSH_B_FOOTBALL_CENTRECIRCLE             =  235,	//	
-    MSH_B_FOOTBALL_CORNERFLAG               =  236,	//	
-    MSH_B_FOOTBALL_GOAL                     =  237,	//	
-    MSH_B_FOOTBALL_PITCH                    =  238,	//	
-    MSH_B_FOOTBALL_PITCH_BIG                =  239,	//	
-    MSH_B_MINE_ENTRANCE                     =  240,	//	
-    MSH_B_PIER                              =  241,	//	
-    MSH_B_SCAFFOLD_01                       =  242,	//	
-    MSH_B_SCAFFOLD_02                       =  243,	//	
-    MSH_B_SCAFFOLD_03                       =  244,	//	
-    MSH_B_XANDO_BASE                        =  245,	//	
-    MSH_B_XANDO_O                           =  246,	//	
-    MSH_B_XANDO_X                           =  247,	//	
-    MSH_PIPER_ENTRANCE_PHYS_1               =  248,	//	
-    MSH_B_AMCN_VILLAGECENTRE                =  249,	//	
-    MSH_B_AZTC_VILLAGECENTRE                =  250,	//	
-    MSH_B_CELT_VILLAGECENTRE                =  251,	//	
-    MSH_B_DESIRE_FLAG_ABODE                 =  252,	//	
-    MSH_B_DESIRE_FLAG_CHILDREN              =  253,	//	
-    MSH_B_DESIRE_FLAG_CIVIC_BUILDING        =  254,	//	
-    MSH_B_DESIRE_FLAG_FOOD                  =  255,	//	
-    MSH_B_DESIRE_FLAG_PLAYTIME              =  256,	//	
-    MSH_B_DESIRE_FLAG_PROTECTION            =  257,	//	
-    MSH_B_DESIRE_FLAG_RAIN                  =  258,	//	
-    MSH_B_DESIRE_FLAG_SUN                   =  259,	//	
-    MSH_B_DESIRE_FLAG_WOOD                  =  260,	//	
-    MSH_B_EGPT_VILLAGECENTRE                =  261,	//	
-    MSH_B_GREK_VILLAGECENTRE                =  262,	//	
-    MSH_B_JAPN_VILLAGECENTRE                =  263,	//	
-    MSH_B_NORS_VILLAGECENTRE                =  264,	//	
-    MSH_B_PLAYER_ICON01                     =  265,	//	
-    MSH_B_PLAYER_ICON01_PLINTH              =  266,	//	
-    MSH_B_PLAYER_ICON_APE                   =  267,	//	
-    MSH_B_PLAYER_ICON_BEAR                  =  268,	//	
-    MSH_B_PLAYER_ICON_COW                   =  269,	//	
-    MSH_B_PLAYER_ICON_HORSE                 =  270,	//	
-    MSH_B_PLAYER_ICON_LEOPARD               =  271,	//	
-    MSH_B_PLAYER_ICON_LION                  =  272,	//	
-    MSH_B_PLAYER_ICON_PLINTH_AMCN           =  273,	//	
-    MSH_B_PLAYER_ICON_PLINTH_AZTC           =  274,	//	
-    MSH_B_PLAYER_ICON_PLINTH_CELT           =  275,	//	
-    MSH_B_PLAYER_ICON_PLINTH_EGPT           =  276,	//	
-    MSH_B_PLAYER_ICON_PLINTH_GREK           =  277,	//	
-    MSH_B_PLAYER_ICON_PLINTH_JAPN           =  278,	//	
-    MSH_B_PLAYER_ICON_PLINTH_NORS           =  279,	//	
-    MSH_B_PLAYER_ICON_PLINTH_TIBT           =  280,	//	
-    MSH_B_PLAYER_ICON_POLARBEAR             =  281,	//	
-    MSH_B_PLAYER_ICON_SHEEP                 =  282,	//	
-    MSH_B_PLAYER_ICON_TIGER                 =  283,	//	
-    MSH_B_PLAYER_ICON_TORTOISE              =  284,	//	
-    MSH_B_PLAYER_ICON_WOLF                  =  285,	//	
-    MSH_B_PLAYER_ICON_ZEBRA                 =  286,	//	
-    MSH_B_TIBT_VILLAGECENTRE                =  287,	//	
-    MSH_B_VILLAGECENTRE_SPELLHAND           =  288,	//	
-    MSH_B_NORS_1                            =  289,	//	
-    MSH_B_NORS_2                            =  290,	//	
-    MSH_B_NORS_2_A                          =  291,	//	
-    MSH_B_NORS_3                            =  292,	//	
-    MSH_B_NORS_3_A                          =  293,	//	
-    MSH_B_NORS_4                            =  294,	//	
-    MSH_B_NORS_5                            =  295,	//	
-    MSH_B_NORS_CRECHE                       =  296,	//	
-    MSH_B_NORS_GATE                         =  297,	//	
-    MSH_B_NORS_GRAVEYARD                    =  298,	//	
-    MSH_B_NORS_PIGPEN                       =  299,	//	
-    MSH_B_NORS_TEMPLE                       =  300,	//	
-    MSH_B_NORS_TOTEM                        =  301,	//	
-    MSH_B_NORS_WONDER                       =  302,	//	
-    MSH_B_NORS_WORKSHOP                     =  303,	//	
-    MSH_NORS_GATE_PHYS_1                    =  304,	//	
-    MSH_NORS_GATE_PHYS_2                    =  305,	//	
-    MSH_B_AMCN_STORAGE_PIT                  =  306,	//	
-    MSH_B_AZTC_STORAGE_PIT                  =  307,	//	
-    MSH_B_CELT_STORAGE_PIT                  =  308,	//	
-    MSH_B_EGPT_STORAGE_PIT                  =  309,	//	
-    MSH_B_GRAIN                             =  310,	//	
-    MSH_B_GREK_STORAGE_PIT                  =  311,	//	
-    MSH_B_JAPN_STORAGE_PIT                  =  312,	//	
-    MSH_B_NORS_STORAGE_PIT                  =  313,	//	
-    MSH_B_TIBT_STORAGE_PIT                  =  314,	//	
-    MSH_B_WOOD_00                           =  315,	//	
-    MSH_B_WOOD_01                           =  316,	//	
-    MSH_B_WOOD_02                           =  317,	//	
-    MSH_B_WOOD_03                           =  318,	//	
-    MSH_B_WOOD_04                           =  319,	//	
-    MSH_B_WOOD_OUTSIDE                      =  320,	//	
-    MSH_B_TIBT_1                            =  321,	//	
-    MSH_B_TIBT_2                            =  322,	//	
-    MSH_B_TIBT_3                            =  323,	//	
-    MSH_B_TIBT_3_A                          =  324,	//	
-    MSH_B_TIBT_4                            =  325,	//	
-    MSH_B_TIBT_5                            =  326,	//	
-    MSH_B_TIBT_5_A                          =  327,	//	
-    MSH_B_TIBT_CRECHE                       =  328,	//	
-    MSH_B_TIBT_GRAVEYARD                    =  329,	//	
-    MSH_B_TIBT_LARGE_PILLER                 =  330,	//	
-    MSH_B_TIBT_MINI_TEMPLE                  =  331,	//	
-    MSH_B_TIBT_TOTEM                        =  332,	//	
-    MSH_B_TIBT_WONDER                       =  333,	//	
-    MSH_B_TIBT_WORKSHOP                     =  334,	//	
-    MSH_B_SPELLHAND                         =  335,	//	
-    MSH_B_WORSHIPGRAIN                      =  336,	//	
-    MSH_B_WORSHIPSITE_01_NEUTRAL            =  337,	//	
-    MSH_BOULDER1_CHALK                      =  338,	//	
-    MSH_BOULDER1_LIME                       =  339,	//	
-    MSH_BOULDER1_SAND                       =  340,	//	
-    MSH_BOULDER1_VOLCANIC                   =  341,	//	
-    MSH_BOULDER2_CHALK                      =  342,	//	
-    MSH_BOULDER2_LIME                       =  343,	//	
-    MSH_BOULDER2_SAND                       =  344,	//	
-    MSH_BOULDER2_VOLCANIC                   =  345,	//	
-    MSH_BOULDER3_CHALK                      =  346,	//	
-    MSH_BOULDER3_LIME                       =  347,	//	
-    MSH_BOULDER3_SAND                       =  348,	//	
-    MSH_BOULDER3_VOLCANIC                   =  349,	//	
-    MSH_FAT_PILAR_CHALK                     =  350,	//	
-    MSH_FAT_PILAR_LIME                      =  351,	//	
-    MSH_FAT_PILAR_SAND                      =  352,	//	
-    MSH_FAT_PILAR_VOLCANIC                  =  353,	//	
-    MSH_F_CREATURE_CAVE                     =  354,	//	
-    MSH_F_FOREST                            =  355,	//	
-    MSH_F_FOREST01                          =  356,	//	
-    MSH_F_FOREST02                          =  357,	//	
-    MSH_F_FOREST03                          =  358,	//	
-    MSH_F_FOREST_BOOK01                     =  359,	//	
-    MSH_F_GIANTSKELETON                     =  360,	//	
-    MSH_F_GIANTSKULL                        =  361,	//	
-    MSH_F_IDOL                              =  362,	//	
-    MSH_F_PIPER_CAVE                        =  363,	//	
-    MSH_F_RIB1                              =  364,	//	
-    MSH_F_RIB2                              =  365,	//	
-    MSH_F_SPOUTHOLE                         =  366,	//	
-    MSH_F_VERTABRAE                         =  367,	//	
-    MSH_PILAR2_CHALK                        =  368,	//	
-    MSH_PILAR2_LIME                         =  369,	//	
-    MSH_PILAR2_SAND                         =  370,	//	
-    MSH_PILAR2_VOLCANIC                     =  371,	//	
-    MSH_PILAR3_CHALK                        =  372,	//	
-    MSH_PILAR3_LIME                         =  373,	//	
-    MSH_PILAR3_SAND                         =  374,	//	
-    MSH_PILAR3_VOLCANIC                     =  375,	//	
-    MSH_PILAR_CHALK                         =  376,	//	
-    MSH_PILAR_LIME                          =  377,	//	
-    MSH_PILAR_SAND                          =  378,	//	
-    MSH_PILAR_VOLCANIC                      =  379,	//	
-    MSH_PUZZLE_1                            =  380,	//	
-    MSH_PUZZLE_2                            =  381,	//	
-    MSH_PUZZLE_3                            =  382,	//	
-    MSH_PUZZLE_4                            =  383,	//	
-    MSH_PUZZLE_5                            =  384,	//	
-    MSH_SPIKEY_PILAR_CHALK                  =  385,	//	
-    MSH_SPIKEY_PILAR_LIME                   =  386,	//	
-    MSH_SPIKEY_PILAR_SAND                   =  387,	//	
-    MSH_SPIKEY_PILAR_VOLCANIC               =  388,	//	
-    MSH_Z_PHONEBOX                          =  389,	//	
-    MSH_I_BLAST                             =  390,	//	
-    MSH_I_FIREBALL                          =  391,	//	
-    MSH_I_FOOD                              =  392,	//	
-    MSH_I_FOOTBALL                          =  393,	//	
-    MSH_I_FOREST                            =  394,	//	
-    MSH_I_HEAL                              =  395,	//	
-    MSH_I_LIGHTNING                         =  396,	//	
-    MSH_I_LIGHTNING2                        =  397,	//	
-    MSH_I_MINISCROLL                        =  398,	//	
-    MSH_I_MINISCROLL_ACTIVE                 =  399,	//	
-    MSH_I_MINISCROLL_BRONZE                 =  400,	//	
-    MSH_I_MINISCROLL_BRONZE_ACTIVE          =  401,	//	
-    MSH_I_MINISCROLL_GOLD                   =  402,	//	
-    MSH_I_MINISCROLL_GOLD_ACTIVE            =  403,	//	
-    MSH_I_MINISCROLL_SILVER                 =  404,	//	
-    MSH_I_MINISCROLL_SILVER_ACTIVE          =  405,	//	
-    MSH_I_OFFERING_BEDROLL                  =  406,	//	
-    MSH_I_OFFERING_FERTILITY                =  407,	//	
-    MSH_I_OFFERING_FOOD                     =  408,	//	
-    MSH_I_OFFERING_PLAY                     =  409,	//	
-    MSH_I_OFFERING_PROTECTION               =  410,	//	
-    MSH_I_OFFERING_SKULL                    =  411,	//	
-    MSH_I_OFFERING_VILLAGE_IMPROVE          =  412,	//	
-    MSH_I_OFFERING_WATER                    =  413,	//	
-    MSH_I_OFFERING_WOOD                     =  414,	//	
-    MSH_I_PRIEST                            =  415,	//	
-    MSH_I_SHIELD                            =  416,	//	
-    MSH_I_SKELETON                          =  417,	//	
-    MSH_I_SPELLGEM                          =  418,	//	
-    MSH_I_TREES                             =  419,	//	
-    MSH_I_WALL                              =  420,	//	
-    MSH_BOWLINGTHING                        =  421,	//	
-    MSH_GATE_TOTEM_PLINTHE_PHYS_1           =  422,	//	
-    MSH_GATE_TOTEM_PLINTHE_PHYS_2           =  423,	//	
-    MSH_GATE_TOTEM_PLINTHE_PHYS_3           =  424,	//	
-    MSH_O_ARK                               =  425,	//	
-    MSH_O_ARK_DRY_DOCK                      =  426,	//	
-    MSH_O_ARK_WRECK                         =  427,	//	
-    MSH_O_AXE                               =  428,	//	
-    MSH_O_BAG                               =  429,	//	
-    MSH_O_BALL                              =  430,	//	
-    MSH_O_BELLTOWER                         =  431,	//	
-    MSH_O_BOX_FRAME                         =  432,	//	
-    MSH_O_BRANCH_EVERGREEN_INHAND           =  433,	//	
-    MSH_O_BRANCH_FRUIT_INHAND               =  434,	//	
-    MSH_O_BRANCH_HARDWOOD_INHAND            =  435,	//	
-    MSH_O_BURNT_TREE                        =  436,	//	
-    MSH_O_CAULDRON                          =  437,	//	
-    MSH_O_CHAMPI                            =  438,	//	
-    MSH_O_CREATURE_TURD                     =  439,	//	
-    MSH_O_CROOK                             =  440,	//	
-    MSH_O_FISHINGROD                        =  441,	//	
-    MSH_O_FLATROCK_CHALK                    =  442,	//	
-    MSH_O_FLATROCK_LIMESTONE                =  443,	//	
-    MSH_O_FLATROCK_SANDSTONE                =  444,	//	
-    MSH_O_FLATROCK_VOLCANIC                 =  445,	//	
-    MSH_O_FLOWER_BED_1                      =  446,	//	
-    MSH_O_FLOWER_BED_2                      =  447,	//	
-    MSH_O_GATE_TOTEM_APE                    =  448,	//	
-    MSH_O_GATE_TOTEM_BLANK                  =  449,	//	
-    MSH_O_GATE_TOTEM_COW                    =  450,	//	
-    MSH_O_GATE_TOTEM_PLINTHE                =  451,	//	
-    MSH_O_GATE_TOTEM_TIGER                  =  452,	//	
-    MSH_O_HAMMER                            =  453,	//	
-    MSH_O_INFO_SIGN                         =  454,	//	
-    MSH_O_JAPN_STONETHING                   =  455,	//	
-    MSH_O_LARGE_FISH_DEAD                   =  456,	//	
-    MSH_O_LIGHT_BULB                        =  457,	//	
-    MSH_O_LOGS_INHAND                       =  458,	//	
-    MSH_O_LONGROCK_CHALK                    =  459,	//	
-    MSH_O_LONGROCK_LIMESTONE                =  460,	//	
-    MSH_O_LONGROCK_SANDSTONE                =  461,	//	
-    MSH_O_LONGROCK_VOLCANIC                 =  462,	//	
-    MSH_O_MAGIC_MUSHROOM                    =  463,	//	
-    MSH_O_MALLET_HEAVY                      =  464,	//	
-    MSH_O_MOSES_BASKET                      =  465,	//	
-    MSH_O_ROCK_CHALK                        =  466,	//	
-    MSH_O_ROCK_LIMESTONE                    =  467,	//	
-    MSH_O_ROCK_SANDSTONE                    =  468,	//	
-    MSH_O_ROCK_VOLCANIC                     =  469,	//	
-    MSH_O_SAW                               =  470,	//	
-    MSH_O_SCYTHE                            =  471,	//	
-    MSH_O_SHARPROCK_CHALK                   =  472,	//	
-    MSH_O_SHARPROCK_LIMESTONE               =  473,	//	
-    MSH_O_SHARPROCK_SANDSTONE               =  474,	//	
-    MSH_O_SHARPROCK_VOLCANIC                =  475,	//	
-    MSH_O_SKULL_TOTEM                       =  476,	//	
-    MSH_O_SPADE                             =  477,	//	
-    MSH_O_SQUAREROCK_CHALK                  =  478,	//	
-    MSH_O_SQUAREROCK_LIMESTONE              =  479,	//	
-    MSH_O_SQUAREROCK_SANDSTONE              =  480,	//	
-    MSH_O_SQUAREROCK_VOLCANIC               =  481,	//	
-    MSH_O_TICKERTAPE                        =  482,	//	
-    MSH_O_TOADSTOOL                         =  483,	//	
-    MSH_O_TOMBSTONE                         =  484,	//	
-    MSH_O_TOWNLIGHT                         =  485,	//	
-    MSH_O_TOY_BALL                          =  486,	//	
-    MSH_O_TOY_BOWLING_BALL                  =  487,	//	
-    MSH_O_TOY_CUDDLY                        =  488,	//	
-    MSH_O_TOY_DIE                           =  489,	//	
-    MSH_O_TOY_SKITTLE                       =  490,	//	
-    MSH_O_WHEAT_ENCLOSURE                   =  491,	//	
-    MSH_O_WHEAT_INHAND                      =  492,	//	
-    MSH_O_WOOD_INHAND                       =  493,	//	
-    MSH_REWARD_CHEST_EXPLODE                =  494,	//	
-    MSH_SCULPTURE_IN_PROGRESS               =  495,	//	
-    MSH_SINGING_STONE_CENTER                =  496,	//	
-    MSH_SINGING_STONE                       =  497,	//	
-    MSH_NEW_SHAOLIN                         =  498,	//	
-    MSH_P_AMCN_F_A_1                        =  499,	//	
-    MSH_P_AMCN_F_A_2                        =  500,	//	
-    MSH_P_AMCN_F_A_3                        =  501,	//	
-    MSH_P_AMCN_M_A_1                        =  502,	//	
-    MSH_P_AMCN_M_A_2                        =  503,	//	
-    MSH_P_AMCN_M_A_3                        =  504,	//	
-    MSH_P_ANIMAL_BREEDER                    =  505,	//	
-    MSH_P_ANIMAL_TRAINER                    =  506,	//	
-    MSH_P_AZTC_F_A_1                        =  507,	//	
-    MSH_P_AZTC_F_A_2                        =  508,	//	
-    MSH_P_AZTC_F_A_3                        =  509,	//	
-    MSH_P_AZTC_LEADER                       =  510,	//	
-    MSH_P_AZTC_M_A_1                        =  511,	//	
-    MSH_P_AZTC_M_A_2                        =  512,	//	
-    MSH_P_AZTC_M_A_3                        =  513,	//	
-    MSH_P_BANDIT                            =  514,	//	
-    MSH_P_BOY_BLACK_1                       =  515,	//	
-    MSH_P_BOY_BLACK_2                       =  516,	//	
-    MSH_P_BOY_BLACK_3                       =  517,	//	
-    MSH_P_BOY_ORIENTAL_1                    =  518,	//	
-    MSH_P_BOY_ORIENTAL_2                    =  519,	//	
-    MSH_P_BOY_ORIENTAL_3                    =  520,	//	
-    MSH_P_BOY_TAN_1                         =  521,	//	
-    MSH_P_BOY_TAN_2                         =  522,	//	
-    MSH_P_BOY_TAN_3                         =  523,	//	
-    MSH_P_BOY_WHITE_1                       =  524,	//	
-    MSH_P_BOY_WHITE_2                       =  525,	//	
-    MSH_P_BOY_WHITE_3                       =  526,	//	
-    MSH_P_CELT_FOOTBALLER                   =  527,	//	
-    MSH_P_CELT_F_A_1                        =  528,	//	
-    MSH_P_CELT_F_A_2                        =  529,	//	
-    MSH_P_CELT_F_A_3                        =  530,	//	
-    MSH_P_CELT_M_A_1                        =  531,	//	
-    MSH_P_CELT_M_A_2                        =  532,	//	
-    MSH_P_CELT_M_A_3                        =  533,	//	
-    MSH_P_CRUSADER                          =  534,	//	
-    MSH_P_CULT_PRIEST                       =  535,	//	
-    MSH_P_CULT_PRIESTESS                    =  536,	//	
-    MSH_P_EGPT_F_A_1                        =  537,	//	
-    MSH_P_EGPT_F_A_2                        =  538,	//	
-    MSH_P_EGPT_F_A_3                        =  539,	//	
-    MSH_P_EGPT_M_A_1                        =  540,	//	
-    MSH_P_EGPT_M_A_2                        =  541,	//	
-    MSH_P_EGPT_M_A_3                        =  542,	//	
-    MSH_P_ENGINEER                          =  543,	//	
-    MSH_P_GIRL_BLACK_1                      =  544,	//	
-    MSH_P_GIRL_BLACK_2                      =  545,	//	
-    MSH_P_GIRL_BLACK_3                      =  546,	//	
-    MSH_P_GIRL_ORIENTAL_1                   =  547,	//	
-    MSH_P_GIRL_ORIENTAL_2                   =  548,	//	
-    MSH_P_GIRL_ORIENTAL_3                   =  549,	//	
-    MSH_P_GIRL_TAN_1                        =  550,	//	
-    MSH_P_GIRL_TAN_2                        =  551,	//	
-    MSH_P_GIRL_TAN_3                        =  552,	//	
-    MSH_P_GIRL_WHITE_1                      =  553,	//	
-    MSH_P_GIRL_WHITE_2                      =  554,	//	
-    MSH_P_GIRL_WHITE_3                      =  555,	//	
-    MSH_P_GREK_F_A_1                        =  556,	//	
-    MSH_P_GREK_F_A_2                        =  557,	//	
-    MSH_P_GREK_F_A_3                        =  558,	//	
-    MSH_P_GREK_M_A_1                        =  559,	//	
-    MSH_P_GREK_M_A_2                        =  560,	//	
-    MSH_P_GREK_M_A_3                        =  561,	//	
-    MSH_P_HERMIT                            =  562,	//	
-    MSH_P_HIPPY                             =  563,	//	
-    MSH_P_IDOL_BUILDER                      =  564,	//	
-    MSH_P_INTRO_F                           =  565,	//	
-    MSH_P_INTRO_M                           =  566,	//	
-    MSH_P_JAPANESE_F_A_2                    =  567,	//	
-    MSH_P_JAPANESE_F_A_3                    =  568,	//	
-    MSH_P_JAPANESE_M_A_1                    =  569,	//	
-    MSH_P_JAPANESE_M_A_2                    =  570,	//	
-    MSH_P_JAPANESE_M_A_3                    =  571,	//	
-    MSH_P_JAPN_F_A_1                        =  572,	//	
-    MSH_P_JAPN_F_A_2                        =  573,	//	
-    MSH_P_JAPN_F_A_3                        =  574,	//	
-    MSH_P_JAPN_M_A_1                        =  575,	//	
-    MSH_P_JAPN_M_A_2                        =  576,	//	
-    MSH_P_JAPN_M_A_3                        =  577,	//	
-    MSH_P_NOMAD                             =  578,	//	
-    MSH_P_NORS_FOOTBALLER                   =  579,	//	
-    MSH_P_NORS_F_A_1                        =  580,	//	
-    MSH_P_NORS_F_A_2                        =  581,	//	
-    MSH_P_NORS_F_A_3                        =  582,	//	
-    MSH_P_NORS_M_A_1                        =  583,	//	
-    MSH_P_NORS_M_A_2                        =  584,	//	
-    MSH_P_NORS_M_A_3                        =  585,	//	
-    MSH_P_NORS_SAILOR                       =  586,	//	
-    MSH_P_PIED_PIPER                        =  587,	//	
-    MSH_P_SAILOR_ACCORDIAN                  =  588,	//	
-    MSH_P_SCULPTOR                          =  589,	//	
-    MSH_P_SHAOLIN_MONK                      =  590,	//	
-    MSH_P_SHEPERD                           =  591,	//	
-    MSH_P_SKELETON_F                        =  592,	//	
-    MSH_P_SKELETON_M                        =  593,	//	
-    MSH_P_TIBETAN_F_A_2                     =  594,	//	
-    MSH_P_TIBETAN_F_A_3                     =  595,	//	
-    MSH_P_TIBETAN_M_A_1                     =  596,	//	
-    MSH_P_TIBETAN_M_A_2                     =  597,	//	
-    MSH_P_TIBETAN_M_A_3                     =  598,	//	
-    MSH_P_TIBT_F_A_1                        =  599,	//	
-    MSH_P_TIBT_F_A_2                        =  600,	//	
-    MSH_P_TIBT_F_A_3                        =  601,	//	
-    MSH_P_TIBT_M_A_1                        =  602,	//	
-    MSH_P_TIBT_M_A_2                        =  603,	//	
-    MSH_P_TIBT_M_A_3                        =  604,	//	
-    MSH_CREED                               =  605,	//	
-    MSH_S_BLAST_CONE                        =  606,	//	
-    MSH_S_BLAST_CENTRE                      =  607,	//	
-    MSH_S_BLAST_INNER                       =  608,	//	
-    MSH_S_BLAST_OUTER                       =  609,	//	
-    MSH_S_COLUMN                            =  610,	//	
-    MSH_S_FIREBALL_TAIL                     =  611,	//	
-    MSH_S_HEAL_MESH                         =  612,	//	
-    MSH_S_GRAIN_PILE                        =  613,	//	
-    MSH_S_HORN_OF_PLENTY                    =  614,	//	
-    MSH_S_PHILE                             =  615,	//	
-    MSH_S_PHILE_ANGRY                       =  616,	//	
-    MSH_S_PHILE_BIG                         =  617,	//	
-    MSH_S_PHILE_FAT                         =  618,	//	
-    MSH_S_PHILE_FREEZE                      =  619,	//	
-    MSH_S_PHILE_FRIGHTEN                    =  620,	//	
-    MSH_S_PHILE_HUNGRY                      =  621,	//	
-    MSH_S_PHILE_ILL                         =  622,	//	
-    MSH_S_PHILE_INVISIBLE                   =  623,	//	
-    MSH_S_PHILE_ITCHY                       =  624,	//	
-    MSH_S_PHILE_LOVE                        =  625,	//	
-    MSH_S_PHILE_SMALL                       =  626,	//	
-    MSH_S_PHILE_STRONG                      =  627,	//	
-    MSH_S_PHILE_THIN                        =  628,	//	
-    MSH_S_PHILE_THIRSTY                     =  629,	//	
-    MSH_S_PHILE_TIRED                       =  630,	//	
-    MSH_S_PHILE_WEAK                        =  631,	//	
-    MSH_S_RAIN_CONE                         =  632,	//	
-    MSH_S_SHIELDMAGICLOWPOLY                =  633,	//	
-    MSH_S_SOLID_SHIELD                      =  634,	//	
-    MSH_S_SPELLBALLSURFACE02                =  635,	//	
-    MSH_S_SKULL_ICON                        =  636,	//	
-    MSH_S_SPELL_CREATOR                     =  637,	//	
-    MSH_S_VORTEXCYLINDER                    =  638,	//	
-    MSH_S_ZCHEATBOX                         =  639,	//	
-    MSH_S_PULSE_IN                          =  640,	//	
-    MSH_S_PULSE_OUT                         =  641,	//	
-    MSH_A_WORM                              =  642,	//	
-    MSH_B_DUMMY_CITADEL                     =  643,	//	
-    MSH_Z_APPLE_BARREL                      =  644,	//	
-    MSH_Z_ARROW                             =  645,	//	
-    MSH_Z_SPELLROCK01                       =  646,	//	
-    MSH_Z_SPELLROCK02                       =  647,	//	
-    MSH_T_COPSE                             =  648,	//	
-    MSH_T_COPSE_A                           =  649,	//	
-    MSH_T_BEECH                             =  650,	//	
-    MSH_T_BIRCH                             =  651,	//	
-    MSH_T_BUSH                              =  652,	//	
-    MSH_T_BUSH_A                            =  653,	//	
-    MSH_T_BUSH_B                            =  654,	//	
-    MSH_T_CEDAR                             =  655,	//	
-    MSH_T_CONIFER                           =  656,	//	
-    MSH_T_CONIFER_A                         =  657,	//	
-    MSH_T_CYPRESS                           =  658,	//	
-    MSH_T_CYPRESS_A                         =  659,	//	
-    MSH_T_HEDGE                             =  660,	//	
-    MSH_T_HEDGE_A                           =  661,	//	
-    MSH_T_OAK                               =  662,	//	
-    MSH_T_OAK_A                             =  663,	//	
-    MSH_T_OLIVE                             =  664,	//	
-    MSH_T_PALM                              =  665,	//	
-    MSH_T_PALM_A                            =  666,	//	
-    MSH_T_PALM_B                            =  667,	//	
-    MSH_T_PALM_C                            =  668,	//	
-    MSH_T_PINE                              =  669,	//	
-    MSH_T_RICE                              =  670,	//	
-    MSH_T_ROOTS                             =  671,	//	
-    MSH_T_ROOTS_PILE                        =  672,	//	
-    MSH_T_WHEAT                             =  673,	//	
-    MSH_U_AXE                               =  674,	//	
-    MSH_U_BAG                               =  675,	//	
-    MSH_U_BALL                              =  676,	//	
-    MSH_U_BENCH                             =  677,	//	
-    MSH_U_BUCKET                            =  678,	//	
-    MSH_U_BUCKET02                          =  679,	//	
-    MSH_U_CART                              =  680,	//	
-    MSH_U_CHEST                             =  681,	//	
-    MSH_U_CHEST_TOP                         =  682,	//	
-    MSH_U_CROOK                             =  683,	//	
-    MSH_U_FISHING_ROD                       =  684,	//	
-    MSH_U_FRAME                             =  685,	//	
-    MSH_U_FRAME_SKIN                        =  686,	//	
-    MSH_U_HAMMER                            =  687,	//	
-    MSH_U_MALLET_HEAVY                      =  688,	//	
-    MSH_U_SAW                               =  689,	//	
-    MSH_U_SCYTHE                            =  690,	//	
-    MSH_U_SPADE                             =  691,	//	
-    MSH_U_STOOL                             =  692,	//	
-    MSH_U_STOOL01                           =  693,	//	
-    MSH_U_TABLE                             =  694,	//	
-    MSH_U_TROUGH                            =  695,	//	
-    MSH_U_WASHING_LINE_AMCN                 =  696,	//	
-    MSH_U_WASHING_LINE_AZTC                 =  697,	//	
-    MSH_U_WASHING_LINE_CELT                 =  698,	//	
-    MSH_U_WASHING_LINE_EGPT                 =  699,	//	
-    MSH_U_WASHING_LINE_GREK                 =  700,	//	
-    MSH_U_WASHING_LINE_JAPN                 =  701,	//	
-    MSH_U_WASHING_LINE_NORS                 =  702,	//	
-    MSH_U_WASHING_LINE_TIBT                 =  703,	//	
-    MAX_COUNT_3D_MESHES                     =  704,	//	
+    MSH_INVALID                             = -1,
+    MSH_DUMMY,
+#ifdef VERSION_BW1WCI
+    MSH_A_CROC_1,
+    MSH_A_CROC_2,
+    MSH_A_CROC_3,
+    MSH_DOLPHIN_BONED,
+    MSH_B_CREATURE_DOJO,
+    MSH_B_CREATURE_DOJO_HEADS_BASE,
+    MSH_B_CREATURE_RACE_PILLER,
+    MSH_B_CREATURE_STADIUM_2_5,
+    MSH_B_DOJO_APE,
+    MSH_B_DOJO_BEAR,
+    MSH_B_DOJO_CHICK,
+    MSH_B_DOJO_CHIMP,
+    MSH_B_DOJO_COW,
+    MSH_B_DOJO_CROC,
+    MSH_B_DOJO_GORILLA,
+    MSH_B_DOJO_HORSE,
+    MSH_B_DOJO_LEOPARD,
+    MSH_B_DOJO_LION,
+    MSH_B_DOJO_MANDRILL,
+    MSH_B_DOJO_POLAR_BEAR,
+    MSH_B_DOJO_RHINO,
+    MSH_B_DOJO_SHEEP,
+    MSH_B_DOJO_TIGER,
+    MSH_B_DOJO_TORTOISE,
+    MSH_B_DOJO_WOLF,
+    MSH_B_DOJO_ZEBRA,
+    MSH_LH_BASE_BATS,
+    MSH_LH_BASE_CREATURE_FIGHT,
+    MSH_LH_BASE_CREATURE_SPEED,
+    MSH_LH_BASE_CREATURE_SWAP,
+    MSH_LH_BASE_FUNGUS,
+    MSH_LH_BASE_ICE,
+    MSH_LH_BASE_NO_ENCOUNTER,
+    MSH_LH_BASE_SWAMP,
+    MSH_LH_BASE_TELEPORT,
+    MSH_I_MINISCROLL_FIGHT,
+    MSH_I_MINISCROLL_GOLD_BROTHERHOOD,
+    MSH_I_MINISCROLL_GOLD_CANCEL,
+    MSH_I_MINISCROLL_SILVER_CANCEL,
+    MSH_I_MINISCROLL_SWAP,
+    MSH_I_POINTER_HAND,
+    MSH_BROTHERHOODRING01,
+    MSH_BROTHERHOODRING02,
+    MSH_BROTHERHOODRING03,
+    MSH_EGGTREE_COMPANION1,
+    MSH_EGGTREE_COMPANION2,
+    MSH_EGGTREE_COMPANION3,
+    MSH_LH_BASE_BROTHERHOOD,
+    MSH_LH_BASE_BROTHERHOOD_HALF_SIZE,
+    MSH_MARBLE_C1,
+    MSH_MARBLE_C2,
+    MSH_MARBLE_C3,
+    MSH_MARBLE_C4,
+    MSH_MARBLE_C5,
+    MSH_MARBLE_C6,
+    MSH_MARBLE_S1,
+    MSH_MARBLE_S2,
+    MSH_MARBLE_S3,
+    MSH_MARBLE_S4,
+    MSH_MARBLE_S5,
+    MSH_MARBLE_S6,
+    MSH_O_BALISTA_BALISTA,
+    MSH_O_BALISTA_PIVOT,
+    MSH_O_BALISTA_TOWER,
+    MSH_O_EGG,
+    MSH_O_EGGTREE,
+    MSH_O_FISH,
+    MSH_O_FISH_IN_HAND,
+    MSH_O_FOOTY_BALL,
+    MSH_O_GRASS_DETAIL,
+    MSH_O_INFO_SIGN_NOMARK,
+    MSH_O_INFO_SIGN_NOMARK_BIG,
+    MSH_O_MARBLES_BASE,
+    MSH_O_PADIFIELD,
+    MSH_O_PUCK,
+    MSH_O_SPECIALCROPS,
+    MSH_O_WATER,
+    MSH_O_WATER_CANNON_BASE,
+    MSH_O_WATER_CANNON_CANNON,
+    MSH_SUNFLOWERSFINAL,
+    MSH_S_PHILE_ANTI_MIRACLE,
+    MSH_S_PHILE_CREATURE_SPEED,
+    MSH_P_EGPT_M_BUST,
+    MSH_P_MULE_MAN,
+    MSH_P_PIG_THING,
+#endif // VERSION_BW1WCI
+    MSH_A_BAT_1,
+    MSH_A_BAT_2,
+    MSH_A_CROW_1,
+    MSH_A_CROW_2,
+    MSH_A_DOVE_1,
+    MSH_A_DOVE_2,
+    MSH_A_PIGEON_1,
+    MSH_A_PIGEON_2,
+    MSH_A_SEAGULL_1,
+    MSH_A_SEAGULL_2,
+    MSH_A_SPELL_DOVE,
+    MSH_A_SWALLOW_1,
+    MSH_A_SWALLOW_2,
+    MSH_A_VULTURE_1,
+    MSH_A_VULTURE_2,
+    MSH_A_COW_1,
+    MSH_A_COW_2,
+    MSH_A_COW_3,
+    MSH_A_HORSE_1,
+    MSH_A_HORSE_2,
+    MSH_A_HORSE_3,
+    MSH_A_LEOPARD_1,
+    MSH_A_LEOPARD_2,
+    MSH_A_LEOPARD_3,
+    MSH_A_LION_1,
+    MSH_A_LION_2,
+    MSH_A_LION_3,
+    MSH_A_PIG_1,
+    MSH_A_PIG_2,
+    MSH_A_PIG_3,
+    MSH_SHARK_BONED,
+    MSH_A_SHEEP_1,
+    MSH_A_SHEEP_2,
+    MSH_A_SHEEP_3,
+    MSH_A_TIGER_1,
+    MSH_A_TIGER_2,
+    MSH_A_TIGER_3,
+    MSH_A_TORTOISE_1,
+    MSH_A_TORTOISE_2,
+    MSH_A_TORTOISE_3,
+    MSH_A_WOLF_1,
+    MSH_A_WOLF_2,
+    MSH_A_WOLF_3,
+    MSH_A_ZEBRA_1,
+    MSH_A_ZEBRA_2,
+    MSH_A_ZEBRA_3,
+    MSH_B_AMCN_1,
+    MSH_B_AMCN_1_A,
+    MSH_B_AMCN_2,
+    MSH_B_AMCN_2_A,
+    MSH_B_AMCN_3,
+    MSH_B_AMCN_3_A,
+    MSH_B_AMCN_4,
+    MSH_B_AMCN_5,
+    MSH_B_AMCN_CRECHE,
+    MSH_B_AMCN_FENCE,
+    MSH_B_AMCN_GRAVEYARD,
+    MSH_B_AMCN_TOTEM,
+    MSH_B_AMCN_WONDER,
+    MSH_B_AMCN_WORKSHOP,
+    MSH_B_AZTC_1,
+    MSH_B_AZTC_2,
+    MSH_B_AZTC_3,
+    MSH_B_AZTC_4,
+    MSH_B_AZTC_5,
+    MSH_B_AZTC_CRECHE,
+    MSH_B_AZTC_GRAVEYARD,
+    MSH_B_AZTC_OLMECHEAD,
+    MSH_B_AZTC_STATUE,
+    MSH_B_AZTC_TEMPLE,
+    MSH_B_AZTC_TOTEM,
+    MSH_B_AZTC_WONDER,
+    MSH_B_AZTC_WORKSHOP,
+    MSH_B_CELT_1,
+    MSH_B_CELT_2,
+    MSH_B_CELT_3,
+    MSH_B_CELT_4,
+    MSH_B_CELT_5,
+    MSH_B_CELT_5A,
+    MSH_B_CELT_CRECHE,
+    MSH_B_CELT_FENCE_SHORT,
+    MSH_B_CELT_FENCE_TALL,
+    MSH_B_CELT_GRAVEYARD,
+    MSH_B_CELT_GRAVE_01,
+    MSH_B_CELT_GRAVE_02,
+    MSH_B_CELT_GRAVE_03,
+    MSH_B_CELT_TOTEM,
+    MSH_B_CELT_WALLGATE_SPELL,
+    MSH_B_CELT_WALLTOWER_SPELL,
+    MSH_B_CELT_WALL_SPELL,
+    MSH_B_CELT_WONDER,
+    MSH_B_CELT_WORKSHOP,
+    MSH_B_CITADEL_AMCN_ALTAR,
+    MSH_B_CITADEL_AZTC_ALTAR,
+    MSH_B_CITADEL_CELT_ALTAR,
+    MSH_B_CITADEL_DESIRE_HUNGRY,
+    MSH_B_CITADEL_DESIRE_SLEEP,
+    MSH_B_CITADEL_EGPT_ALTAR,
+    MSH_B_CITADEL_GREK_ALTAR,
+    MSH_B_CITADEL_JAPN_ALTAR,
+    MSH_B_CITADEL_NORS_ALTAR,
+    MSH_B_CITADEL_POP_COUNTER_BEAD,
+    MSH_B_CITADEL_TIBT_ALTAR,
+    MSH_B_EGPT_1,
+    MSH_B_EGPT_1_A,
+    MSH_B_EGPT_2,
+    MSH_B_EGPT_2_A,
+    MSH_B_EGPT_3,
+    MSH_B_EGPT_4,
+    MSH_B_EGPT_5,
+    MSH_B_EGPT_5_A,
+    MSH_B_EGPT_BARREL,
+    MSH_B_EGPT_CART,
+    MSH_B_EGPT_CRECHE,
+    MSH_B_EGPT_GRAVEYARD,
+    MSH_B_EGPT_NEEDLE,
+    MSH_B_EGPT_POT_A,
+    MSH_B_EGPT_POT_B,
+    MSH_B_EGPT_TOTEM,
+    MSH_B_EGPT_WELL,
+    MSH_B_EGPT_WINDMILL,
+    MSH_B_EGPT_WONDER,
+    MSH_B_EGPT_WORKSHOP,
+    MSH_B_GREK_1,
+    MSH_B_GREK_2,
+    MSH_B_GREK_2_A,
+    MSH_B_GREK_3,
+    MSH_B_GREK_4,
+    MSH_B_GREK_5,
+    MSH_B_GREK_5A,
+    MSH_B_GREK_CRECHE,
+    MSH_B_GREK_GRAVEYARD,
+    MSH_B_GREK_SAIL,
+    MSH_B_GREK_STATUE,
+    MSH_B_GREK_TOTEM,
+    MSH_B_GREK_WONDER,
+    MSH_B_GREK_WORKSHOP,
+    MSH_B_JAPN_1,
+    MSH_B_JAPN_2,
+    MSH_B_JAPN_3,
+    MSH_B_JAPN_4,
+    MSH_B_JAPN_5,
+    MSH_B_JAPN_CRECHE,
+    MSH_B_JAPN_GRAVEYARD,
+    MSH_B_JAPN_TOTEM,
+    MSH_B_JAPN_WONDER,
+    MSH_B_JAPN_WORKSHOP,
+    MSH_B_CAMPFIRE,
+    MSH_B_CREATURE_PEN_LEASH_POLE,
+    MSH_B_FOOTBALL_CENTRECIRCLE,
+    MSH_B_FOOTBALL_CORNERFLAG,
+    MSH_B_FOOTBALL_GOAL,
+    MSH_B_FOOTBALL_PITCH,
+    MSH_B_FOOTBALL_PITCH_BIG,
+    MSH_B_MINE_ENTRANCE,
+    MSH_B_PIER,
+    MSH_B_SCAFFOLD_01,
+    MSH_B_SCAFFOLD_02,
+    MSH_B_SCAFFOLD_03,
+    MSH_B_XANDO_BASE,
+    MSH_B_XANDO_O,
+    MSH_B_XANDO_X,
+    MSH_PIPER_ENTRANCE_PHYS_1,
+    MSH_B_AMCN_VILLAGECENTRE,
+    MSH_B_AZTC_VILLAGECENTRE,
+    MSH_B_CELT_VILLAGECENTRE,
+    MSH_B_DESIRE_FLAG_ABODE,
+    MSH_B_DESIRE_FLAG_CHILDREN,
+    MSH_B_DESIRE_FLAG_CIVIC_BUILDING,
+    MSH_B_DESIRE_FLAG_FOOD,
+    MSH_B_DESIRE_FLAG_PLAYTIME,
+    MSH_B_DESIRE_FLAG_PROTECTION,
+    MSH_B_DESIRE_FLAG_RAIN,
+    MSH_B_DESIRE_FLAG_SUN,
+    MSH_B_DESIRE_FLAG_WOOD,
+    MSH_B_EGPT_VILLAGECENTRE,
+    MSH_B_GREK_VILLAGECENTRE,
+    MSH_B_JAPN_VILLAGECENTRE,
+    MSH_B_NORS_VILLAGECENTRE,
+    MSH_B_PLAYER_ICON01,
+    MSH_B_PLAYER_ICON01_PLINTH,
+    MSH_B_PLAYER_ICON_APE,
+    MSH_B_PLAYER_ICON_BEAR,
+    MSH_B_PLAYER_ICON_COW,
+    MSH_B_PLAYER_ICON_HORSE,
+    MSH_B_PLAYER_ICON_LEOPARD,
+    MSH_B_PLAYER_ICON_LION,
+    MSH_B_PLAYER_ICON_PLINTH_AMCN,
+    MSH_B_PLAYER_ICON_PLINTH_AZTC,
+    MSH_B_PLAYER_ICON_PLINTH_CELT,
+    MSH_B_PLAYER_ICON_PLINTH_EGPT,
+    MSH_B_PLAYER_ICON_PLINTH_GREK,
+    MSH_B_PLAYER_ICON_PLINTH_JAPN,
+    MSH_B_PLAYER_ICON_PLINTH_NORS,
+    MSH_B_PLAYER_ICON_PLINTH_TIBT,
+    MSH_B_PLAYER_ICON_POLARBEAR,
+    MSH_B_PLAYER_ICON_SHEEP,
+    MSH_B_PLAYER_ICON_TIGER,
+    MSH_B_PLAYER_ICON_TORTOISE,
+    MSH_B_PLAYER_ICON_WOLF,
+    MSH_B_PLAYER_ICON_ZEBRA,
+    MSH_B_TIBT_VILLAGECENTRE,
+    MSH_B_VILLAGECENTRE_SPELLHAND,
+    MSH_B_NORS_1,
+    MSH_B_NORS_2,
+    MSH_B_NORS_2_A,
+    MSH_B_NORS_3,
+    MSH_B_NORS_3_A,
+    MSH_B_NORS_4,
+    MSH_B_NORS_5,
+    MSH_B_NORS_CRECHE,
+    MSH_B_NORS_GATE,
+    MSH_B_NORS_GRAVEYARD,
+    MSH_B_NORS_PIGPEN,
+    MSH_B_NORS_TEMPLE,
+    MSH_B_NORS_TOTEM,
+    MSH_B_NORS_WONDER,
+    MSH_B_NORS_WORKSHOP,
+    MSH_NORS_GATE_PHYS_1,
+    MSH_NORS_GATE_PHYS_2,
+    MSH_B_AMCN_STORAGE_PIT,
+    MSH_B_AZTC_STORAGE_PIT,
+    MSH_B_CELT_STORAGE_PIT,
+    MSH_B_EGPT_STORAGE_PIT,
+    MSH_B_GRAIN,
+    MSH_B_GREK_STORAGE_PIT,
+    MSH_B_JAPN_STORAGE_PIT,
+    MSH_B_NORS_STORAGE_PIT,
+    MSH_B_TIBT_STORAGE_PIT,
+    MSH_B_WOOD_00,
+    MSH_B_WOOD_01,
+    MSH_B_WOOD_02,
+    MSH_B_WOOD_03,
+    MSH_B_WOOD_04,
+    MSH_B_WOOD_OUTSIDE,
+    MSH_B_TIBT_1,
+    MSH_B_TIBT_2,
+    MSH_B_TIBT_3,
+    MSH_B_TIBT_3_A,
+    MSH_B_TIBT_4,
+    MSH_B_TIBT_5,
+    MSH_B_TIBT_5_A,
+    MSH_B_TIBT_CRECHE,
+    MSH_B_TIBT_GRAVEYARD,
+    MSH_B_TIBT_LARGE_PILLER,
+    MSH_B_TIBT_MINI_TEMPLE,
+    MSH_B_TIBT_TOTEM,
+    MSH_B_TIBT_WONDER,
+    MSH_B_TIBT_WORKSHOP,
+    MSH_B_SPELLHAND,
+    MSH_B_WORSHIPGRAIN,
+    MSH_B_WORSHIPSITE_01_NEUTRAL,
+    MSH_BOULDER1_CHALK,
+    MSH_BOULDER1_LIME,
+    MSH_BOULDER1_SAND,
+    MSH_BOULDER1_VOLCANIC,
+    MSH_BOULDER2_CHALK,
+    MSH_BOULDER2_LIME,
+    MSH_BOULDER2_SAND,
+    MSH_BOULDER2_VOLCANIC,
+    MSH_BOULDER3_CHALK,
+    MSH_BOULDER3_LIME,
+    MSH_BOULDER3_SAND,
+    MSH_BOULDER3_VOLCANIC,
+    MSH_FAT_PILAR_CHALK,
+    MSH_FAT_PILAR_LIME,
+    MSH_FAT_PILAR_SAND,
+    MSH_FAT_PILAR_VOLCANIC,
+    MSH_F_CREATURE_CAVE,
+    MSH_F_FOREST,
+    MSH_F_FOREST01,
+    MSH_F_FOREST02,
+    MSH_F_FOREST03,
+    MSH_F_FOREST_BOOK01,
+    MSH_F_GIANTSKELETON,
+    MSH_F_GIANTSKULL,
+    MSH_F_IDOL,
+    MSH_F_PIPER_CAVE,
+    MSH_F_RIB1,
+    MSH_F_RIB2,
+    MSH_F_SPOUTHOLE,
+    MSH_F_VERTABRAE,
+    MSH_PILAR2_CHALK,
+    MSH_PILAR2_LIME,
+    MSH_PILAR2_SAND,
+    MSH_PILAR2_VOLCANIC,
+    MSH_PILAR3_CHALK,
+    MSH_PILAR3_LIME,
+    MSH_PILAR3_SAND,
+    MSH_PILAR3_VOLCANIC,
+    MSH_PILAR_CHALK,
+    MSH_PILAR_LIME,
+    MSH_PILAR_SAND,
+    MSH_PILAR_VOLCANIC,
+    MSH_PUZZLE_1,
+    MSH_PUZZLE_2,
+    MSH_PUZZLE_3,
+    MSH_PUZZLE_4,
+    MSH_PUZZLE_5,
+    MSH_SPIKEY_PILAR_CHALK,
+    MSH_SPIKEY_PILAR_LIME,
+    MSH_SPIKEY_PILAR_SAND,
+    MSH_SPIKEY_PILAR_VOLCANIC,
+    MSH_Z_PHONEBOX,
+    MSH_I_BLAST,
+    MSH_I_FIREBALL,
+    MSH_I_FOOD,
+    MSH_I_FOOTBALL,
+    MSH_I_FOREST,
+    MSH_I_HEAL,
+    MSH_I_LIGHTNING,
+    MSH_I_LIGHTNING2,
+    MSH_I_MINISCROLL,
+    MSH_I_MINISCROLL_ACTIVE,
+    MSH_I_MINISCROLL_BRONZE,
+    MSH_I_MINISCROLL_BRONZE_ACTIVE,
+    MSH_I_MINISCROLL_GOLD,
+    MSH_I_MINISCROLL_GOLD_ACTIVE,
+    MSH_I_MINISCROLL_SILVER,
+    MSH_I_MINISCROLL_SILVER_ACTIVE,
+    MSH_I_OFFERING_BEDROLL,
+    MSH_I_OFFERING_FERTILITY,
+    MSH_I_OFFERING_FOOD,
+    MSH_I_OFFERING_PLAY,
+    MSH_I_OFFERING_PROTECTION,
+    MSH_I_OFFERING_SKULL,
+    MSH_I_OFFERING_VILLAGE_IMPROVE,
+    MSH_I_OFFERING_WATER,
+    MSH_I_OFFERING_WOOD,
+    MSH_I_PRIEST,
+    MSH_I_SHIELD,
+    MSH_I_SKELETON,
+    MSH_I_SPELLGEM,
+    MSH_I_TREES,
+    MSH_I_WALL,
+#ifdef VERSION_BW1WCI
+    MSH_BOWLINGTHING,
+#endif // VERSION_BW1WCI
+    MSH_GATE_TOTEM_PLINTHE_PHYS_1,
+    MSH_GATE_TOTEM_PLINTHE_PHYS_2,
+    MSH_GATE_TOTEM_PLINTHE_PHYS_3,
+    MSH_O_ARK,
+    MSH_O_ARK_DRY_DOCK,
+    MSH_O_ARK_WRECK,
+    MSH_O_AXE,
+    MSH_O_BAG,
+    MSH_O_BALL,
+    MSH_O_BELLTOWER,
+    MSH_O_BOX_FRAME,
+    MSH_O_BRANCH_EVERGREEN_INHAND,
+    MSH_O_BRANCH_FRUIT_INHAND,
+    MSH_O_BRANCH_HARDWOOD_INHAND,
+    MSH_O_BURNT_TREE,
+    MSH_O_CAULDRON,
+    MSH_O_CHAMPI,
+    MSH_O_CREATURE_TURD,
+    MSH_O_CROOK,
+    MSH_O_FISHINGROD,
+    MSH_O_FLATROCK_CHALK,
+    MSH_O_FLATROCK_LIMESTONE,
+    MSH_O_FLATROCK_SANDSTONE,
+    MSH_O_FLATROCK_VOLCANIC,
+    MSH_O_FLOWER_BED_1,
+    MSH_O_FLOWER_BED_2,
+    MSH_O_GATE_TOTEM_APE,
+    MSH_O_GATE_TOTEM_BLANK,
+    MSH_O_GATE_TOTEM_COW,
+    MSH_O_GATE_TOTEM_PLINTHE,
+    MSH_O_GATE_TOTEM_TIGER,
+    MSH_O_HAMMER,
+    MSH_O_INFO_SIGN,
+    MSH_O_JAPN_STONETHING,
+    MSH_O_LARGE_FISH_DEAD,
+    MSH_O_LIGHT_BULB,
+    MSH_O_LOGS_INHAND,
+    MSH_O_LONGROCK_CHALK,
+    MSH_O_LONGROCK_LIMESTONE,
+    MSH_O_LONGROCK_SANDSTONE,
+    MSH_O_LONGROCK_VOLCANIC,
+    MSH_O_MAGIC_MUSHROOM,
+    MSH_O_MALLET_HEAVY,
+#ifdef VERSION_BW1WCI
+    MSH_O_MOSES_BASKET,
+#endif // VERSION_BW1WCI
+    MSH_O_ROCK_CHALK,
+    MSH_O_ROCK_LIMESTONE,
+    MSH_O_ROCK_SANDSTONE,
+    MSH_O_ROCK_VOLCANIC,
+    MSH_O_SAW,
+    MSH_O_SCYTHE,
+    MSH_O_SHARPROCK_CHALK,
+    MSH_O_SHARPROCK_LIMESTONE,
+    MSH_O_SHARPROCK_SANDSTONE,
+    MSH_O_SHARPROCK_VOLCANIC,
+    MSH_O_SKULL_TOTEM,
+    MSH_O_SPADE,
+    MSH_O_SQUAREROCK_CHALK,
+    MSH_O_SQUAREROCK_LIMESTONE,
+    MSH_O_SQUAREROCK_SANDSTONE,
+    MSH_O_SQUAREROCK_VOLCANIC,
+    MSH_O_TICKERTAPE,
+    MSH_O_TOADSTOOL,
+    MSH_O_TOMBSTONE,
+    MSH_O_TOWNLIGHT,
+    MSH_O_TOY_BALL,
+    MSH_O_TOY_BOWLING_BALL,
+    MSH_O_TOY_CUDDLY,
+    MSH_O_TOY_DIE,
+    MSH_O_TOY_SKITTLE,
+    MSH_O_WHEAT_ENCLOSURE,
+    MSH_O_WHEAT_INHAND,
+    MSH_O_WOOD_INHAND,
+    MSH_REWARD_CHEST_EXPLODE,
+    MSH_SCULPTURE_IN_PROGRESS,
+    MSH_SINGING_STONE_CENTER,
+    MSH_SINGING_STONE,
+#ifndef VERSION_BW1WCI
+    MSH_IDOL_BUILDER,
+#endif // VERSION_BW1WCI
+    MSH_NEW_SHAOLIN,
+    MSH_P_AMCN_F_A_1,
+    MSH_P_AMCN_F_A_2,
+    MSH_P_AMCN_F_A_3,
+    MSH_P_AMCN_M_A_1,
+    MSH_P_AMCN_M_A_2,
+    MSH_P_AMCN_M_A_3,
+    MSH_P_ANIMAL_BREEDER,
+    MSH_P_ANIMAL_TRAINER,
+    MSH_P_AZTC_F_A_1,
+    MSH_P_AZTC_F_A_2,
+    MSH_P_AZTC_F_A_3,
+    MSH_P_AZTC_LEADER,
+    MSH_P_AZTC_M_A_1,
+    MSH_P_AZTC_M_A_2,
+    MSH_P_AZTC_M_A_3,
+    MSH_P_BANDIT,
+    MSH_P_BOY_BLACK_1,
+    MSH_P_BOY_BLACK_2,
+    MSH_P_BOY_BLACK_3,
+    MSH_P_BOY_ORIENTAL_1,
+    MSH_P_BOY_ORIENTAL_2,
+    MSH_P_BOY_ORIENTAL_3,
+    MSH_P_BOY_TAN_1,
+    MSH_P_BOY_TAN_2,
+    MSH_P_BOY_TAN_3,
+#ifndef VERSION_BW1WCI
+    MSH_P_BOY_WHITE,
+#endif // VERSION_BW1WCI
+    MSH_P_BOY_WHITE_1,
+    MSH_P_BOY_WHITE_2,
+    MSH_P_BOY_WHITE_3,
+    MSH_P_CELT_FOOTBALLER,
+    MSH_P_CELT_F_A_1,
+    MSH_P_CELT_F_A_2,
+    MSH_P_CELT_F_A_3,
+    MSH_P_CELT_M_A_1,
+    MSH_P_CELT_M_A_2,
+    MSH_P_CELT_M_A_3,
+    MSH_P_CRUSADER,
+    MSH_P_CULT_PRIEST,
+    MSH_P_CULT_PRIESTESS,
+    MSH_P_EGPT_F_A_1,
+    MSH_P_EGPT_F_A_2,
+    MSH_P_EGPT_F_A_3,
+    MSH_P_EGPT_M_A_1,
+    MSH_P_EGPT_M_A_2,
+    MSH_P_EGPT_M_A_3,
+#ifndef VERSION_BW1WCI
+    MSH_P_EGPT_M_B_1,
+    MSH_P_EGPT_M_B_2,
+#endif // VERSION_BW1WCI
+    MSH_P_ENGINEER,
+    MSH_P_GIRL_BLACK_1,
+    MSH_P_GIRL_BLACK_2,
+    MSH_P_GIRL_BLACK_3,
+    MSH_P_GIRL_ORIENTAL_1,
+    MSH_P_GIRL_ORIENTAL_2,
+    MSH_P_GIRL_ORIENTAL_3,
+    MSH_P_GIRL_TAN_1,
+    MSH_P_GIRL_TAN_2,
+    MSH_P_GIRL_TAN_3,
+#ifndef VERSION_BW1WCI
+    MSH_P_GIRL_WHITE,
+#endif // VERSION_BW1WCI
+    MSH_P_GIRL_WHITE_1,
+    MSH_P_GIRL_WHITE_2,
+    MSH_P_GIRL_WHITE_3,
+    MSH_P_GREK_F_A_1,
+    MSH_P_GREK_F_A_2,
+    MSH_P_GREK_F_A_3,
+    MSH_P_GREK_M_A_1,
+    MSH_P_GREK_M_A_2,
+    MSH_P_GREK_M_A_3,
+    MSH_P_HERMIT,
+    MSH_P_HIPPY,
+    MSH_P_IDOL_BUILDER,
+    MSH_P_INTRO_F,
+    MSH_P_INTRO_M,
+    MSH_P_JAPANESE_F_A_2,
+    MSH_P_JAPANESE_F_A_3,
+    MSH_P_JAPANESE_M_A_1,
+    MSH_P_JAPANESE_M_A_2,
+    MSH_P_JAPANESE_M_A_3,
+    MSH_P_JAPN_F_A_1,
+    MSH_P_JAPN_F_A_2,
+    MSH_P_JAPN_F_A_3,
+    MSH_P_JAPN_M_A_1,
+    MSH_P_JAPN_M_A_2,
+    MSH_P_JAPN_M_A_3,
+    MSH_P_NOMAD,
+    MSH_P_NORS_FOOTBALLER,
+    MSH_P_NORS_F_A_1,
+    MSH_P_NORS_F_A_2,
+    MSH_P_NORS_F_A_3,
+    MSH_P_NORS_M_A_1,
+    MSH_P_NORS_M_A_2,
+    MSH_P_NORS_M_A_3,
+    MSH_P_NORS_SAILOR,
+    MSH_P_PIED_PIPER,
+    MSH_P_SAILOR_ACCORDIAN,
+    MSH_P_SCULPTOR,
+    MSH_P_SHAOLIN_MONK,
+    MSH_P_SHEPERD,
+    MSH_P_SKELETON_F,
+    MSH_P_SKELETON_M,
+    MSH_P_TIBETAN_F_A_2,
+    MSH_P_TIBETAN_F_A_3,
+    MSH_P_TIBETAN_M_A_1,
+    MSH_P_TIBETAN_M_A_2,
+    MSH_P_TIBETAN_M_A_3,
+    MSH_P_TIBT_F_A_1,
+    MSH_P_TIBT_F_A_2,
+    MSH_P_TIBT_F_A_3,
+    MSH_P_TIBT_M_A_1,
+    MSH_P_TIBT_M_A_2,
+    MSH_P_TIBT_M_A_3,
+#ifndef VERSION_BW1WCI
+    MSH_P_TIBT_M_B_1,
+    MSH_P_TIBT_M_B_2,
+#endif // VERSION_BW1WCI
+    MSH_CREED,
+    MSH_S_BLAST_CONE,
+    MSH_S_BLAST_CENTRE,
+    MSH_S_BLAST_INNER,
+    MSH_S_BLAST_OUTER,
+    MSH_S_COLUMN,
+    MSH_S_FIREBALL_TAIL,
+    MSH_S_HEAL_MESH,
+    MSH_S_GRAIN_PILE,
+    MSH_S_HORN_OF_PLENTY,
+    MSH_S_PHILE,
+    MSH_S_PHILE_ANGRY,
+    MSH_S_PHILE_BIG,
+    MSH_S_PHILE_FAT,
+    MSH_S_PHILE_FREEZE,
+    MSH_S_PHILE_FRIGHTEN,
+    MSH_S_PHILE_HUNGRY,
+    MSH_S_PHILE_ILL,
+    MSH_S_PHILE_INVISIBLE,
+    MSH_S_PHILE_ITCHY,
+    MSH_S_PHILE_LOVE,
+    MSH_S_PHILE_SMALL,
+    MSH_S_PHILE_STRONG,
+    MSH_S_PHILE_THIN,
+    MSH_S_PHILE_THIRSTY,
+    MSH_S_PHILE_TIRED,
+    MSH_S_PHILE_WEAK,
+    MSH_S_RAIN_CONE,
+    MSH_S_SHIELDMAGICLOWPOLY,
+    MSH_S_SOLID_SHIELD,
+    MSH_S_SPELLBALLSURFACE02,
+    MSH_S_SKULL_ICON,
+    MSH_S_SPELL_CREATOR,
+#ifndef VERSION_BW1WCI
+    MSH_S_SPELL_DISPENSER,
+#endif // VERSION_BW1WCI
+    MSH_S_VORTEXCYLINDER,
+    MSH_S_ZCHEATBOX,
+    MSH_S_PULSE_IN,
+    MSH_S_PULSE_OUT,
+    MSH_A_WORM,
+    MSH_B_DUMMY_CITADEL,
+    MSH_Z_APPLE_BARREL,
+    MSH_Z_ARROW,
+    MSH_Z_SPELLROCK01,
+    MSH_Z_SPELLROCK02,
+    MSH_T_COPSE,
+    MSH_T_COPSE_A,
+    MSH_T_BEECH,
+    MSH_T_BIRCH,
+    MSH_T_BUSH,
+    MSH_T_BUSH_A,
+    MSH_T_BUSH_B,
+    MSH_T_CEDAR,
+    MSH_T_CONIFER,
+    MSH_T_CONIFER_A,
+    MSH_T_CYPRESS,
+    MSH_T_CYPRESS_A,
+    MSH_T_HEDGE,
+    MSH_T_HEDGE_A,
+    MSH_T_OAK,
+    MSH_T_OAK_A,
+    MSH_T_OLIVE,
+    MSH_T_PALM,
+    MSH_T_PALM_A,
+    MSH_T_PALM_B,
+    MSH_T_PALM_C,
+    MSH_T_PINE,
+    MSH_T_RICE,
+    MSH_T_ROOTS,
+    MSH_T_ROOTS_PILE,
+    MSH_T_WHEAT,
+#ifndef VERSION_BW1WCI
+    MSH_T_WHEAT_INFIELD,
+#endif // VERSION_BW1WCI
+    MSH_U_AXE,
+    MSH_U_BAG,
+    MSH_U_BALL,
+    MSH_U_BENCH,
+    MSH_U_BUCKET,
+    MSH_U_BUCKET02,
+    MSH_U_CART,
+    MSH_U_CHEST,
+    MSH_U_CHEST_TOP,
+    MSH_U_CROOK,
+    MSH_U_FISHING_ROD,
+    MSH_U_FRAME,
+    MSH_U_FRAME_SKIN,
+    MSH_U_HAMMER,
+    MSH_U_MALLET_HEAVY,
+    MSH_U_SAW,
+    MSH_U_SCYTHE,
+    MSH_U_SPADE,
+    MSH_U_STOOL,
+    MSH_U_STOOL01,
+    MSH_U_TABLE,
+    MSH_U_TROUGH,
+    MSH_U_WASHING_LINE_AMCN,
+    MSH_U_WASHING_LINE_AZTC,
+    MSH_U_WASHING_LINE_CELT,
+    MSH_U_WASHING_LINE_EGPT,
+    MSH_U_WASHING_LINE_GREK,
+    MSH_U_WASHING_LINE_JAPN,
+    MSH_U_WASHING_LINE_NORS,
+    MSH_U_WASHING_LINE_TIBT,
+    MAX_COUNT_3D_MESHES,
 };
 
 
 enum ANIM_LIST 
 {
-    ANM_DONT_DRAW                         =   -4,	//	
-    ANM_NO_MOVE_ANIM_SET                  =   -3,	//	
-    ANM_NO_ANIM_SET                       =   -2,	//	
-    ANM_INVALID                           =   -1,	//	
-    ANM_DOLPHIN_DIVE_JUMP_SUMMERSAULT     =    0,	//	
-    ANM_DOLPHIN_DIVE_SURFACE              =    1,	//	
-    ANM_DOLPHIN_DIVE_SURFACE_HEAD         =    2,	//	
-    ANM_DOLPHIN_DIVE_SURFACE_ON_TAIL      =    3,	//	
-    ANM_DOLPHIN_DOWN_FROM_TAIL            =    4,	//	
-    ANM_DOLPHIN_HEAD_BOB                  =    5,	//	
-    ANM_DOLPHIN_ON_TAIL                   =    6,	//	
-    ANM_DOLPHIN_SWIM                      =    7,	//	
-    ANM_DOLPHIN_SWIM_GLIDE                =    8,	//	
-    ANM_DOLPHIN_SWIM_JUMP                 =    9,	//	
-    ANM_DOLPHIN_SWIM_TURN180              =   10,	//	
-    ANM_DOLPHIN_SWIM_TURN_90LEFT          =   11,	//	
-    ANM_DOLPHIN_SWIM_TURN_90RIGHT         =   12,	//	
-    ANM_BALISTA_BALISTA_PULLBACK          =   13,	//	
-    ANM_BALISTA_BALISTA_SHOOT             =   14,	//	
-    ANM_WATER_CANNON_PUMP                 =   15,	//	
-    ANM_WATER_CANNON_SHOOT                =   16,	//	
-    ANM_P_FLYING_MULE_DUDE                =   17,	//	
-    ANM_P_MISSIONARY_IT_S_VERY_BIG        =   18,	//	
-    ANM_P_MISSIONARY_MONKEY_MIMIC         =   19,	//	
-    ANM_P_MISSIONARY_RECIEVES_SLAPS       =   20,	//	
-    ANM_P_MISSIONARY_RIGHT_LEFT_PUNCH     =   21,	//	
-    ANM_P_MISSIONARY_RIGHT_LEFT_SLAP      =   22,	//	
-    ANM_P_SLEEPING_RESTLESS_1             =   23,	//	
-    ANM_P_SLEEPING_RESTLESS_2             =   24,	//	
-    ANM_BAT_ERATICGLIDE                   =   25,	//	
-    ANM_BAT_FLAP                          =   26,	//	
-    ANM_BAT_GLIDE                         =   27,	//	
-    ANM_CROW_FLAP                         =   28,	//	
-    ANM_CROW_GLIDE                        =   29,	//	
-    ANM_CROW_LANDING                      =   30,	//	
-    ANM_CROW_SIT                          =   31,	//	
-    ANM_CROW_TAKEOFF                      =   32,	//	
-    ANM_DOVE_FLAP                         =   33,	//	
-    ANM_DOVE_GLIDE                        =   34,	//	
-    ANM_DOVE_LANDING                      =   35,	//	
-    ANM_DOVE_SIT                          =   36,	//	
-    ANM_DOVE_TAKEOFF                      =   37,	//	
-    ANM_PIGEON_FLAP                       =   38,	//	
-    ANM_PIGEON_GLIDE                      =   39,	//	
-    ANM_PIGEON_LANDING                    =   40,	//	
-    ANM_PIGEON_SIT                        =   41,	//	
-    ANM_PIGEON_TAKEOFF                    =   42,	//	
-    ANM_SEAGULL_FLAP                      =   43,	//	
-    ANM_SEAGULL_GENTLEFLAP                =   44,	//	
-    ANM_SEAGULL_GLIDE                     =   45,	//	
-    ANM_SEAGULL_LANDING                   =   46,	//	
-    ANM_SEAGULL_TAKEOFF                   =   47,	//	
-    ANM_SPELL_DOVE_FLAP                   =   48,	//	
-    ANM_SPELL_DOVE_GLIDE                  =   49,	//	
-    ANM_SWALLOW_CALMGLIDE                 =   50,	//	
-    ANM_SWALLOW_ERATICGLIDE               =   51,	//	
-    ANM_SWALLOW_FLAP                      =   52,	//	
-    ANM_A_COW_DEAD                        =   53,	//	
-    ANM_A_COW_DEAD_ON_LHS                 =   54,	//	
-    ANM_A_COW_DEAD_ON_RHS                 =   55,	//	
-    ANM_A_COW_DIE                         =   56,	//	
-    ANM_A_COW_DOWNED_ON_LHS               =   57,	//	
-    ANM_A_COW_DOWNED_ON_RHS               =   58,	//	
-    ANM_A_COW_DROWNING                    =   59,	//	
-    ANM_A_COW_EAT_1                       =   60,	//	
-    ANM_A_COW_EAT_2                       =   61,	//	
-    ANM_A_COW_GOTO_EAT                    =   62,	//	
-    ANM_A_COW_IN_HAND                     =   63,	//	
-    ANM_A_COW_LANDED_LEFT_SIDE            =   64,	//	
-    ANM_A_COW_LANDED_RIGHT_SIDE           =   65,	//	
-    ANM_A_COW_RUN                         =   66,	//	
-    ANM_A_COW_STAND                       =   67,	//	
-    ANM_A_COW_THROWN                      =   68,	//	
-    ANM_A_COW_UPFROM_EAT                  =   69,	//	
-    ANM_A_COW_WALK                        =   70,	//	
-    ANM_A_HORSE_DEADLHS                   =   71,	//	
-    ANM_A_HORSE_DEADRHS                   =   72,	//	
-    ANM_A_HORSE_EAT1                      =   73,	//	
-    ANM_A_HORSE_EAT2                      =   74,	//	
-    ANM_A_HORSE_FALL_DEADLHS              =   75,	//	
-    ANM_A_HORSE_FALL_DEADRHS              =   76,	//	
-    ANM_A_HORSE_GOTO_EAT                  =   77,	//	
-    ANM_A_HORSE_IN_HAND                   =   78,	//	
-    ANM_A_HORSE_LAND_GET_UPLHS            =   79,	//	
-    ANM_A_HORSE_LAND_GET_UPRHS            =   80,	//	
-    ANM_A_HORSE_RUN                       =   81,	//	
-    ANM_A_HORSE_STAND                     =   82,	//	
-    ANM_A_HORSE_THROWN                    =   83,	//	
-    ANM_A_HORSE_TROT                      =   84,	//	
-    ANM_A_HORSE_UP_FROM_EAT               =   85,	//	
-    ANM_A_HORSE_WALK                      =   86,	//	
-    ANM_A_LEOPARD_DEAD                    =   87,	//	
-    ANM_A_LEOPARD_DEAD_ON_LEFT            =   88,	//	
-    ANM_A_LEOPARD_DEAD_ON_RIGHT           =   89,	//	
-    ANM_A_LEOPARD_DIE                     =   90,	//	
-    ANM_A_LEOPARD_EAT                     =   91,	//	
-    ANM_A_LEOPARD_GET_UP_FROM_LEFT        =   92,	//	
-    ANM_A_LEOPARD_GET_UP_FROM_RIGHT       =   93,	//	
-    ANM_A_LEOPARD_GOTO_EAT                =   94,	//	
-    ANM_A_LEOPARD_GOTO_SIT                =   95,	//	
-    ANM_A_LEOPARD_GOTO_SLEEP              =   96,	//	
-    ANM_A_LEOPARD_IN_HAND                 =   97,	//	
-    ANM_A_LEOPARD_POUNCE                  =   98,	//	
-    ANM_A_LEOPARD_POUNCE_HI               =   99,	//	
-    ANM_A_LEOPARD_POUNCE_LO               =  100,	//	
-    ANM_A_LEOPARD_PROWL                   =  101,	//	
-    ANM_A_LEOPARD_RUN                     =  102,	//	
-    ANM_A_LEOPARD_SIT                     =  103,	//	
-    ANM_A_LEOPARD_SLEEP                   =  104,	//	
-    ANM_A_LEOPARD_STAND                   =  105,	//	
-    ANM_A_LEOPARD_THROWN                  =  106,	//	
-    ANM_A_LEOPARD_UPFROM_EAT              =  107,	//	
-    ANM_A_LEOPARD_UPFROM_SIT              =  108,	//	
-    ANM_A_LEOPARD_UPFROM_SLEEP            =  109,	//	
-    ANM_A_LEOPARD_WALK                    =  110,	//	
-    ANM_A_LION_DEAD                       =  111,	//	
-    ANM_A_LION_DEAD_ON_LEFT               =  112,	//	
-    ANM_A_LION_DEAD_ON_RIGHT              =  113,	//	
-    ANM_A_LION_DIE                        =  114,	//	
-    ANM_A_LION_DOWNED_ON_LHS              =  115,	//	
-    ANM_A_LION_DOWNED_ON_RHS              =  116,	//	
-    ANM_A_LION_EAT                        =  117,	//	
-    ANM_A_LION_GET_UP_FROM_LEFT           =  118,	//	
-    ANM_A_LION_GET_UP_FROM_RIGHT          =  119,	//	
-    ANM_A_LION_GOTO_EAT                   =  120,	//	
-    ANM_A_LION_GOTO_SIT                   =  121,	//	
-    ANM_A_LION_GOTO_SLEEP                 =  122,	//	
-    ANM_A_LION_IN_HAND                    =  123,	//	
-    ANM_A_LION_POUNCE                     =  124,	//	
-    ANM_A_LION_POUNCE_HI                  =  125,	//	
-    ANM_A_LION_POUNCE_LO                  =  126,	//	
-    ANM_A_LION_PROWL                      =  127,	//	
-    ANM_A_LION_RUN                        =  128,	//	
-    ANM_A_LION_SIT                        =  129,	//	
-    ANM_A_LION_SLEEP                      =  130,	//	
-    ANM_A_LION_STAND                      =  131,	//	
-    ANM_A_LION_THROWN                     =  132,	//	
-    ANM_A_LION_TURN_LEFT_90_DEGREES       =  133,	//	
-    ANM_A_LION_TURN_RIGHT_90_DEGREES      =  134,	//	
-    ANM_A_LION_UPFROM_EAT                 =  135,	//	
-    ANM_A_LION_UPFROM_SIT                 =  136,	//	
-    ANM_A_LION_UPFROM_SLEEP               =  137,	//	
-    ANM_A_LION_WALK                       =  138,	//	
-    ANM_A_PIG_DEADLHS                     =  139,	//	
-    ANM_A_PIG_DEADRHS                     =  140,	//	
-    ANM_A_PIG_EAT1                        =  141,	//	
-    ANM_A_PIG_EAT2                        =  142,	//	
-    ANM_A_PIG_FALL_DEADLHS                =  143,	//	
-    ANM_A_PIG_FALL_DEADRHS                =  144,	//	
-    ANM_A_PIG_GOTO_EAT                    =  145,	//	
-    ANM_A_PIG_IN_HAND                     =  146,	//	
-    ANM_A_PIG_LAND_GET_UPLHS              =  147,	//	
-    ANM_A_PIG_LAND_GET_UPRHS              =  148,	//	
-    ANM_A_PIG_OUT_OF_EAT                  =  149,	//	
-    ANM_A_PIG_RUN                         =  150,	//	
-    ANM_A_PIG_STAND                       =  151,	//	
-    ANM_A_PIG_THROWN                      =  152,	//	
-    ANM_A_PIG_WALK                        =  153,	//	
-    ANM_SHARK_BONED_SWIM                  =  154,	//	
-    ANM_A_SHEEP_DEAD_LHS                  =  155,	//	
-    ANM_A_SHEEP_DEAD_RHS                  =  156,	//	
-    ANM_A_SHEEP_EAT1                      =  157,	//	
-    ANM_A_SHEEP_EAT2                      =  158,	//	
-    ANM_A_SHEEP_FALL_DEADLHS              =  159,	//	
-    ANM_A_SHEEP_FALL_DEADRHS              =  160,	//	
-    ANM_A_SHEEP_GOTO_EAT                  =  161,	//	
-    ANM_A_SHEEP_IN_HAND                   =  162,	//	
-    ANM_A_SHEEP_LANDED_GETUPLHS           =  163,	//	
-    ANM_A_SHEEP_LANDED_GETUPRHS           =  164,	//	
-    ANM_A_SHEEP_OUT_OF_EAT                =  165,	//	
-    ANM_A_SHEEP_RUN                       =  166,	//	
-    ANM_A_SHEEP_STAND                     =  167,	//	
-    ANM_A_SHEEP_THROWN                    =  168,	//	
-    ANM_A_SHEEP_TROT                      =  169,	//	
-    ANM_A_SHEEP_WALK                      =  170,	//	
-    ANM_A_TIGER_DEAD                      =  171,	//	
-    ANM_A_TIGER_DEAD_ON_LEFT              =  172,	//	
-    ANM_A_TIGER_DEAD_ON_RIGHT             =  173,	//	
-    ANM_A_TIGER_DIE                       =  174,	//	
-    ANM_A_TIGER_EAT                       =  175,	//	
-    ANM_A_TIGER_GET_UP_FROM_LEFT          =  176,	//	
-    ANM_A_TIGER_GET_UP_FROM_RIGHT         =  177,	//	
-    ANM_A_TIGER_GOTO_EAT                  =  178,	//	
-    ANM_A_TIGER_GOTO_SIT                  =  179,	//	
-    ANM_A_TIGER_GOTO_SLEEP                =  180,	//	
-    ANM_A_TIGER_IN_HAND                   =  181,	//	
-    ANM_A_TIGER_POUNCE                    =  182,	//	
-    ANM_A_TIGER_POUNCE_HI                 =  183,	//	
-    ANM_A_TIGER_POUNCE_LO                 =  184,	//	
-    ANM_A_TIGER_PROWL                     =  185,	//	
-    ANM_A_TIGER_RUN                       =  186,	//	
-    ANM_A_TIGER_SIT                       =  187,	//	
-    ANM_A_TIGER_SLEEP                     =  188,	//	
-    ANM_A_TIGER_STAND                     =  189,	//	
-    ANM_A_TIGER_THROWN                    =  190,	//	
-    ANM_A_TIGER_UPFROM_EAT                =  191,	//	
-    ANM_A_TIGER_UPFROM_SIT                =  192,	//	
-    ANM_A_TIGER_UPFROM_SLEEP              =  193,	//	
-    ANM_A_TIGER_WALK                      =  194,	//	
-    ANM_A_TORTOISE_DEAD                   =  195,	//	
-    ANM_A_TORTOISE_STAND                  =  196,	//	
-    ANM_A_TORTOISE_WALK                   =  197,	//	
-    ANM_A_WOLF_DIE                        =  198,	//	
-    ANM_A_WOLF_EAT                        =  199,	//	
-    ANM_A_WOLF_GOTO_EAT                   =  200,	//	
-    ANM_A_WOLF_GOTO_SIT                   =  201,	//	
-    ANM_A_WOLF_GOTO_SLEEP                 =  202,	//	
-    ANM_A_WOLF_HOWL                       =  203,	//	
-    ANM_A_WOLF_POUNCE                     =  204,	//	
-    ANM_A_WOLF_PROWL                      =  205,	//	
-    ANM_A_WOLF_RUN                        =  206,	//	
-    ANM_A_WOLF_SIT                        =  207,	//	
-    ANM_A_WOLF_SLEEP                      =  208,	//	
-    ANM_A_WOLF_STAND                      =  209,	//	
-    ANM_A_WOLF_UPFROM_EAT                 =  210,	//	
-    ANM_A_WOLF_UPFROM_SIT                 =  211,	//	
-    ANM_A_WOLF_UPFROM_SLEEP               =  212,	//	
-    ANM_A_WOLF_WALK                       =  213,	//	
-    ANM_MINE_ENTRANCE                     =  214,	//	
-    ANM_PLAYER_ICON01_PLINTH              =  215,	//	
-    ANM_NORS_GATE                         =  216,	//	
-    ANM_PHONEBOX                          =  217,	//	
-    ANM_PIPER_CAVE_CLOSING                =  218,	//	
-    ANM_PIPER_CAVE_OPENING                =  219,	//	
-    ANM_GATE_TOTEM_PLINTHE                =  220,	//	
-    ANM_PIED_PIPER_DANCE_STAND            =  221,	//	
-    ANM_PIED_PIPER_DANCE_STAND_SPIN       =  222,	//	
-    ANM_PIED_PIPER_DANCE_WALK             =  223,	//	
-    ANM_PIED_PIPER_DANCE_WALK_SPIN        =  224,	//	
-    ANM_PIED_PIPER_SUMMON                 =  225,	//	
-    ANM_PIED_PIPER_WALK                   =  226,	//	
-    ANM_P_AFRICAN_DRUMMER                 =  227,	//	
-    ANM_P_AMBIENT1                        =  228,	//	
-    ANM_P_AMBIENT2                        =  229,	//	
-    ANM_P_ARSONIST                        =  230,	//	
-    ANM_P_ATTACKED_BY_LION                =  231,	//	
-    ANM_P_ATTRACT_YOUR_ATTENTION          =  232,	//	
-    ANM_P_AVOID_OBJECT_DIVE               =  233,	//	
-    ANM_P_AVOID_OBJECT_DODGE              =  234,	//	
-    ANM_P_BECKON                          =  235,	//	
-    ANM_P_BLOW_RASPBERRY                  =  236,	//	
-    ANM_P_CARRYING_BAG                    =  237,	//	
-    ANM_P_CARRYING_POT                    =  238,	//	
-    ANM_P_CARRYING_STICKS                 =  239,	//	
-    ANM_P_CARRY_AXE                       =  240,	//	
-    ANM_P_CARRY_OBJECT_RUN                =  241,	//	
-    ANM_P_CHOPPING_TREE                   =  242,	//	
-    ANM_P_CLAP_1                          =  243,	//	
-    ANM_P_CLAP_2                          =  244,	//	
-    ANM_P_CLAP_3                          =  245,	//	
-    ANM_P_CLAP_4                          =  246,	//	
-    ANM_P_CONDUCT_MEETING                 =  247,	//	
-    ANM_P_CONFUSED_MALE1                  =  248,	//	
-    ANM_P_CONFUSED_MALE2                  =  249,	//	
-    ANM_P_CONFUSED_MALE3                  =  250,	//	
-    ANM_P_CONFUSED_MALE4                  =  251,	//	
-    ANM_P_CONFUSED_MALE5                  =  252,	//	
-    ANM_P_COUPLE_KISS_MAN                 =  253,	//	
-    ANM_P_COUPLE_KISS_WOMAN               =  254,	//	
-    ANM_P_CRAWL_INJURED                   =  255,	//	
-    ANM_P_CRAWL_INJURED_INTO              =  256,	//	
-    ANM_P_CROWD_IMPRESSED_1               =  257,	//	
-    ANM_P_CROWD_IMPRESSED_2               =  258,	//	
-    ANM_P_CROWD_LOST                      =  259,	//	
-    ANM_P_CROWD_LOST_2                    =  260,	//	
-    ANM_P_CROWD_MEXICAN_WAVE              =  261,	//	
-    ANM_P_CROWD_UNIMPRESSED_1             =  262,	//	
-    ANM_P_CROWD_UNIMPRESSED_2             =  263,	//	
-    ANM_P_CROWD_WON                       =  264,	//	
-    ANM_P_CROWD_WON_2                     =  265,	//	
-    ANM_P_DANCE_PISS_TAKE_                =  266,	//	
-    ANM_P_DANCE_STAND                     =  267,	//	
-    ANM_P_DANCE_TOGETHER_ARMLINK          =  268,	//	
-    ANM_P_DANCE_TOGETHER_CIRCLING         =  269,	//	
-    ANM_P_DANCE_TOGETHER_CIRCLING_PARTNER =  270,	//	
-    ANM_P_DANCE_X                         =  271,	//	
-    ANM_P_DANCE_X_PARTNER                 =  272,	//	
-    ANM_P_DEAD1                           =  273,	//	
-    ANM_P_DEAD1_GOTO_HEAVEN               =  274,	//	
-    ANM_P_DEAD1_GOTO_HELL                 =  275,	//	
-    ANM_P_DEAD2                           =  276,	//	
-    ANM_P_DEAD2_GOTO_HEAVEN               =  277,	//	
-    ANM_P_DEAD2_GOTO_HELL                 =  278,	//	
-    ANM_P_DEAD_DROWNED                    =  279,	//	
-    ANM_P_DEAD_IN_HAND                    =  280,	//	
-    ANM_P_DRIBBLE_BALL                    =  281,	//	
-    ANM_P_DROWNING                        =  282,	//	
-    ANM_P_DYING                           =  283,	//	
-    ANM_P_EAT                             =  284,	//	
-    ANM_P_FAKE_FOUL_FALL                  =  285,	//	
-    ANM_P_FARMER                          =  286,	//	
-    ANM_P_FARMER_HARVESTING               =  287,	//	
-    ANM_P_FARMER_SHOO_SHEEP               =  288,	//	
-    ANM_P_FARMER_SOWING_SEEDS             =  289,	//	
-    ANM_P_FARMER_STOKE_SHEEP              =  290,	//	
-    ANM_P_FARMER_TURNING_SOIL             =  291,	//	
-    ANM_P_FISHERMAN                       =  292,	//	
-    ANM_P_FRIGHT_DUCK                     =  293,	//	
-    ANM_P_FRIGHT_JUMP                     =  294,	//	
-    ANM_P_F_DANCE_A                       =  295,	//	
-    ANM_P_F_DANCE_B                       =  296,	//	
-    ANM_P_F_DANCE_C                       =  297,	//	
-    ANM_P_GIVE_BIRTH                      =  298,	//	
-    ANM_P_GOALKEEPER                      =  299,	//	
-    ANM_P_GOALKEEPER_2                    =  300,	//	
-    ANM_P_GOALKEEPER_3                    =  301,	//	
-    ANM_P_GOSSIP_MAN                      =  302,	//	
-    ANM_P_GOSSIP_WOMAN_1                  =  303,	//	
-    ANM_P_GOSSIP_WOMAN_2                  =  304,	//	
-    ANM_P_GOSSIP_WOMAN_3                  =  305,	//	
-    ANM_P_HAMMERING                       =  306,	//	
-    ANM_P_HELP_SOMEONE_HELPEE             =  307,	//	
-    ANM_P_HELP_SOMEONE_HELPER             =  308,	//	
-    ANM_P_HUG                             =  309,	//	
-    ANM_P_INSPECT_OBJECT_1                =  310,	//	
-    ANM_P_INSPECT_OBJECT_2                =  311,	//	
-    ANM_P_INSPECT_OBJECT_3                =  312,	//	
-    ANM_P_INTO_DEAD_DROWNED               =  313,	//	
-    ANM_P_INTO_HAMMERING                  =  314,	//	
-    ANM_P_INTO_MOURNING                   =  315,	//	
-    ANM_P_INTO_POINTING                   =  316,	//	
-    ANM_P_INTO_PRAY                       =  317,	//	
-    ANM_P_INTO_PULL_OBJECT                =  318,	//	
-    ANM_P_INTO_PUSH_OBJECT                =  319,	//	
-    ANM_P_INTO_RUN_MAN                    =  320,	//	
-    ANM_P_INTO_RUN_WOMAN                  =  321,	//	
-    ANM_P_INTO_SAW_WOOD                   =  322,	//	
-    ANM_P_INTO_SLEDGEHAMMER               =  323,	//	
-    ANM_P_INTO_SLEEP                      =  324,	//	
-    ANM_P_INTO_SPRINT_MAN                 =  325,	//	
-    ANM_P_INTO_SPRINT_WOMAN               =  326,	//	
-    ANM_P_INTO_WALK_MAN                   =  327,	//	
-    ANM_P_INTO_WALK_WOMAN                 =  328,	//	
-    ANM_P_JUMP_A                          =  329,	//	
-    ANM_P_JUMP_AT_HAND                    =  330,	//	
-    ANM_P_JUMP_AT_HAND_2                  =  331,	//	
-    ANM_P_KICK_BALL                       =  332,	//	
-    ANM_P_KICK_BALL_PASS                  =  333,	//	
-    ANM_P_KICK_BALL_PASS_PT1              =  334,	//	
-    ANM_P_KICK_BALL_PASS_PT2              =  335,	//	
-    ANM_P_LANDED                          =  336,	//	
-    ANM_P_LANDED_FROM_BACK                =  337,	//	
-    ANM_P_LANDED_FROM_FEET                =  338,	//	
-    ANM_P_LANDED_FROM_FEET_CARRY_OBJECT   =  339,	//	
-    ANM_P_LOOKING_FOR_SOMETHING           =  340,	//	
-    ANM_P_LOOK_AT_HAND                    =  341,	//	
-    ANM_P_LOVING_TOUCH                    =  342,	//	
-    ANM_P_MOURNING                        =  343,	//	
-    ANM_P_M_DANCE_A                       =  344,	//	
-    ANM_P_M_DANCE_B                       =  345,	//	
-    ANM_P_M_DANCE_C                       =  346,	//	
-    ANM_P_ON_FIRE_DIE                     =  347,	//	
-    ANM_P_ON_FIRE_DOUSED                  =  348,	//	
-    ANM_P_ON_FIRE_RUN                     =  349,	//	
-    ANM_P_OUT_OF_HAMMERING                =  350,	//	
-    ANM_P_OUT_OF_MOURNING                 =  351,	//	
-    ANM_P_OUT_OF_POINTING                 =  352,	//	
-    ANM_P_OUT_OF_PRAY                     =  353,	//	
-    ANM_P_OUT_OF_PULL_OBJECT              =  354,	//	
-    ANM_P_OUT_OF_PUSH_OBJECT              =  355,	//	
-    ANM_P_OUT_OF_RUN_MAN                  =  356,	//	
-    ANM_P_OUT_OF_RUN_WOMAN                =  357,	//	
-    ANM_P_OUT_OF_SAW_WOOD                 =  358,	//	
-    ANM_P_OUT_OF_SLEDGEHAMMER             =  359,	//	
-    ANM_P_OUT_OF_SLEEP                    =  360,	//	
-    ANM_P_OUT_OF_WALK_WOMAN               =  361,	//	
-    ANM_P_OVERWORKED1                     =  362,	//	
-    ANM_P_OVERWORKED2                     =  363,	//	
-    ANM_P_PANIC_MAN                       =  364,	//	
-    ANM_P_PANIC_WOMAN                     =  365,	//	
-    ANM_P_PICKUP_BALL_PT1                 =  366,	//	
-    ANM_P_PICKUP_BALL_PT2                 =  367,	//	
-    ANM_P_PICK_UP_BAG                     =  368,	//	
-    ANM_P_PICK_UP_POT_ON_HEAD             =  369,	//	
-    ANM_P_PICK_UP_STICKS                  =  370,	//	
-    ANM_P_PLAY_ACCORDIAN                  =  371,	//	
-    ANM_P_POISONED                        =  372,	//	
-    ANM_P_PRAY                            =  373,	//	
-    ANM_P_PROD_CAMPFIRE                   =  374,	//	
-    ANM_P_PULL_OBJECT                     =  375,	//	
-    ANM_P_PUSH_OBJECT                     =  376,	//	
-    ANM_P_PUT_DOWN_BAG                    =  377,	//	
-    ANM_P_PUT_DOWN_STICKS                 =  378,	//	
-    ANM_P_PUT_OUT_FIRE                    =  379,	//	
-    ANM_P_PUZZLED                         =  380,	//	
-    ANM_P_RUN_MAN                         =  381,	//	
-    ANM_P_RUN_WITH_BALL                   =  382,	//	
-    ANM_P_RUN_WOMAN                       =  383,	//	
-    ANM_P_SAW_WOOD                        =  384,	//	
-    ANM_P_SCARED_STIFF                    =  385,	//	
-    ANM_P_SCARED_STIFF_2                  =  386,	//	
-    ANM_P_SCORE_GOAL                      =  387,	//	
-    ANM_P_SCRIPT1                         =  388,	//	
-    ANM_P_SCRUBBS                         =  389,	//	
-    ANM_P_SCULPTOR                        =  390,	//	
-    ANM_P_SHAKE_FIST_FEMALE               =  391,	//	
-    ANM_P_SHOOT_AT_GOAL                   =  392,	//	
-    ANM_P_SHOOT_AT_GOAL_2                 =  393,	//	
-    ANM_P_SHOOT_AT_GOAL_PT_1              =  394,	//	
-    ANM_P_SHOOT_AT_GOAL_PT_2              =  395,	//	
-    ANM_P_SHRUG_SHOULDERS                 =  396,	//	
-    ANM_P_SITTING_DOWN1_INTO              =  397,	//	
-    ANM_P_SITTING_DOWN1_OUT_OF            =  398,	//	
-    ANM_P_SITTING_DOWN1_SITTING           =  399,	//	
-    ANM_P_SITTING_DOWN2_INTO              =  400,	//	
-    ANM_P_SITTING_DOWN2_OUT_OF            =  401,	//	
-    ANM_P_SITTING_DOWN2_SITTING           =  402,	//	
-    ANM_P_SITTING_DOWN_DANCE_SAILING1     =  403,	//	
-    ANM_P_SITTING_DOWN_DANCE_SAILING2     =  404,	//	
-    ANM_P_SITTING_DOWN_DANCE_SAILING3     =  405,	//	
-    ANM_P_SITTING_DOWN_MALE1              =  406,	//	
-    ANM_P_SITTING_DOWN_MALE2              =  407,	//	
-    ANM_P_SITTING_SWINGING_LEGS           =  408,	//	
-    ANM_P_SKIP02                          =  409,	//	
-    ANM_P_SLEDGEHAMMER                    =  410,	//	
-    ANM_P_SLEEP                           =  411,	//	
-    ANM_P_SLEEPING                        =  412,	//	
-    ANM_P_SPRINT_RUN_MAN                  =  413,	//	
-    ANM_P_SPRINT_RUN_WOMAN                =  414,	//	
-    ANM_P_STAND                           =  415,	//	
-    ANM_P_STAND_DESPAIR_1                 =  416,	//	
-    ANM_P_STAND_DESPAIR_2                 =  417,	//	
-    ANM_P_STAND_DESPAIR_3                 =  418,	//	
-    ANM_P_STIR_POT01                      =  419,	//	
-    ANM_P_SWIM2                           =  420,	//	
-    ANM_P_TALK1_FEMALE                    =  421,	//	
-    ANM_P_TALK1_MALE                      =  422,	//	
-    ANM_P_TALK2_FEMALE                    =  423,	//	
-    ANM_P_TALK2_MALE                      =  424,	//	
-    ANM_P_TALKING_AND_POINTING            =  425,	//	
-    ANM_P_TALK_TO_NEIGHBOUR               =  426,	//	
-    ANM_P_THANK_YOU                       =  427,	//	
-    ANM_P_THANK_YOU_FEMALE                =  428,	//	
-    ANM_P_THROWN                          =  429,	//	
-    ANM_P_THROWN_DEAD                     =  430,	//	
-    ANM_P_THROWN_VORTEX                   =  431,	//	
-    ANM_P_THROW_BALL_PT_1                 =  432,	//	
-    ANM_P_THROW_BALL_PT_2                 =  433,	//	
-    ANM_P_THROW_ROCK                      =  434,	//	
-    ANM_P_THROW_WATER                     =  435,	//	
-    ANM_P_TITANIC                         =  436,	//	
-    ANM_P_TURN_180                        =  437,	//	
-    ANM_P_TURN_90_LEFT                    =  438,	//	
-    ANM_P_TURN_90_RIGHT                   =  439,	//	
-    ANM_P_TURN_ON_THE_SPOT_LEFT           =  440,	//	
-    ANM_P_TURN_ON_THE_SPOT_RIGHT          =  441,	//	
-    ANM_P_WAITING_FOR_BALL                =  442,	//	
-    ANM_P_WAITING_FOR_BALL_2              =  443,	//	
-    ANM_P_WAITING_FOR_KICK_OFF            =  444,	//	
-    ANM_P_WAITING_FOR_KICK_OFF_2          =  445,	//	
-    ANM_P_WAITING_FOR_KICK_OFF_3          =  446,	//	
-    ANM_P_WAITING_FOR_KICK_OFF_4          =  447,	//	
-    ANM_P_WAITING_IMPATEINTLY             =  448,	//	
-    ANM_P_WALK_BECKON02                   =  449,	//	
-    ANM_P_WALK_DESPAIR_AWAY_1             =  450,	//	
-    ANM_P_WALK_DESPAIR_AWAY_2             =  451,	//	
-    ANM_P_WALK_DESPAIR_AWAY_3             =  452,	//	
-    ANM_P_WALK_DESPAIR_TO_1               =  453,	//	
-    ANM_P_WALK_DESPAIR_TO_2               =  454,	//	
-    ANM_P_WALK_DESPAIR_TO_3               =  455,	//	
-    ANM_P_WALK_INJURED                    =  456,	//	
-    ANM_P_WALK_MAN                        =  457,	//	
-    ANM_P_WALK_POINT                      =  458,	//	
-    ANM_P_WALK_TIRED_EYES                 =  459,	//	
-    ANM_P_WALK_TO_STAND_WOMAN             =  460,	//	
-    ANM_P_WALK_WOMAN                      =  461,	//	
-    ANM_P_WELL_DONE__FEMALE               =  462,	//	
-    ANM_P_WHITTLING_AT_STICK              =  463,	//	
-    ANM_P_YANKED_UNDERGROUND              =  464,	//	
-    ANM_P_YANKED_UNDERGROUND2             =  465,	//	
-    ANM_P_YANKED_UNDERGROUND3             =  466,	//	
-    ANM_P_YAWN                            =  467,	//	
-    ANM_P_YAWN2                           =  468,	//	
-    ANM_S_PRIEST_SUCK_LIFE_FORCE          =  469,	//	
-    ANM_A_WORM                            =  470,	//	
-    MAX_COUNT_3D_ANIMS                    =  471,	//	
+    ANM_DONT_DRAW                           = -4,
+    ANM_NO_MOVE_ANIM_SET,
+    ANM_NO_ANIM_SET,
+    ANM_INVALID,
+#ifdef VERSION_BW1WCI
+    ANM_DOLPHIN_DIVE_JUMP_SUMMERSAULT,
+    ANM_DOLPHIN_DIVE_SURFACE,
+    ANM_DOLPHIN_DIVE_SURFACE_HEAD,
+    ANM_DOLPHIN_DIVE_SURFACE_ON_TAIL,
+    ANM_DOLPHIN_DOWN_FROM_TAIL,
+    ANM_DOLPHIN_HEAD_BOB,
+    ANM_DOLPHIN_ON_TAIL,
+    ANM_DOLPHIN_SWIM,
+    ANM_DOLPHIN_SWIM_GLIDE,
+    ANM_DOLPHIN_SWIM_JUMP,
+    ANM_DOLPHIN_SWIM_TURN180,
+    ANM_DOLPHIN_SWIM_TURN_90LEFT,
+    ANM_DOLPHIN_SWIM_TURN_90RIGHT,
+    ANM_BALISTA_BALISTA_PULLBACK,
+    ANM_BALISTA_BALISTA_SHOOT,
+    ANM_WATER_CANNON_PUMP,
+    ANM_WATER_CANNON_SHOOT,
+    ANM_P_FLYING_MULE_DUDE,
+    ANM_P_MISSIONARY_IT_S_VERY_BIG,
+    ANM_P_MISSIONARY_MONKEY_MIMIC,
+    ANM_P_MISSIONARY_RECIEVES_SLAPS,
+    ANM_P_MISSIONARY_RIGHT_LEFT_PUNCH,
+    ANM_P_MISSIONARY_RIGHT_LEFT_SLAP,
+    ANM_P_SLEEPING_RESTLESS_1,
+    ANM_P_SLEEPING_RESTLESS_2,
+#endif // VERSION_BW1WCI
+    ANM_BAT_ERATICGLIDE,
+    ANM_BAT_FLAP,
+    ANM_BAT_GLIDE,
+    ANM_CROW_FLAP,
+    ANM_CROW_GLIDE,
+    ANM_CROW_LANDING,
+    ANM_CROW_SIT,
+    ANM_CROW_TAKEOFF,
+    ANM_DOVE_FLAP,
+    ANM_DOVE_GLIDE,
+    ANM_DOVE_LANDING,
+    ANM_DOVE_SIT,
+    ANM_DOVE_TAKEOFF,
+    ANM_PIGEON_FLAP,
+    ANM_PIGEON_GLIDE,
+    ANM_PIGEON_LANDING,
+    ANM_PIGEON_SIT,
+    ANM_PIGEON_TAKEOFF,
+    ANM_SEAGULL_FLAP,
+    ANM_SEAGULL_GENTLEFLAP,
+    ANM_SEAGULL_GLIDE,
+    ANM_SEAGULL_LANDING,
+    ANM_SEAGULL_TAKEOFF,
+    ANM_SPELL_DOVE_FLAP,
+    ANM_SPELL_DOVE_GLIDE,
+    ANM_SWALLOW_CALMGLIDE,
+    ANM_SWALLOW_ERATICGLIDE,
+    ANM_SWALLOW_FLAP,
+    ANM_A_COW_DEAD,
+    ANM_A_COW_DEAD_ON_LHS,
+    ANM_A_COW_DEAD_ON_RHS,
+    ANM_A_COW_DIE,
+    ANM_A_COW_DOWNED_ON_LHS,
+    ANM_A_COW_DOWNED_ON_RHS,
+    ANM_A_COW_DROWNING,
+    ANM_A_COW_EAT_1,
+    ANM_A_COW_EAT_2,
+    ANM_A_COW_GOTO_EAT,
+    ANM_A_COW_IN_HAND,
+    ANM_A_COW_LANDED_LEFT_SIDE,
+    ANM_A_COW_LANDED_RIGHT_SIDE,
+    ANM_A_COW_RUN,
+    ANM_A_COW_STAND,
+    ANM_A_COW_THROWN,
+    ANM_A_COW_UPFROM_EAT,
+    ANM_A_COW_WALK,
+    ANM_A_HORSE_DEADLHS,
+    ANM_A_HORSE_DEADRHS,
+    ANM_A_HORSE_EAT1,
+    ANM_A_HORSE_EAT2,
+    ANM_A_HORSE_FALL_DEADLHS,
+    ANM_A_HORSE_FALL_DEADRHS,
+    ANM_A_HORSE_GOTO_EAT,
+    ANM_A_HORSE_IN_HAND,
+    ANM_A_HORSE_LAND_GET_UPLHS,
+    ANM_A_HORSE_LAND_GET_UPRHS,
+    ANM_A_HORSE_RUN,
+    ANM_A_HORSE_STAND,
+    ANM_A_HORSE_THROWN,
+    ANM_A_HORSE_TROT,
+    ANM_A_HORSE_UP_FROM_EAT,
+    ANM_A_HORSE_WALK,
+    ANM_A_LEOPARD_DEAD,
+    ANM_A_LEOPARD_DEAD_ON_LEFT,
+    ANM_A_LEOPARD_DEAD_ON_RIGHT,
+    ANM_A_LEOPARD_DIE,
+    ANM_A_LEOPARD_EAT,
+    ANM_A_LEOPARD_GET_UP_FROM_LEFT,
+    ANM_A_LEOPARD_GET_UP_FROM_RIGHT,
+    ANM_A_LEOPARD_GOTO_EAT,
+    ANM_A_LEOPARD_GOTO_SIT,
+    ANM_A_LEOPARD_GOTO_SLEEP,
+    ANM_A_LEOPARD_IN_HAND,
+    ANM_A_LEOPARD_POUNCE,
+    ANM_A_LEOPARD_POUNCE_HI,
+    ANM_A_LEOPARD_POUNCE_LO,
+    ANM_A_LEOPARD_PROWL,
+    ANM_A_LEOPARD_RUN,
+    ANM_A_LEOPARD_SIT,
+    ANM_A_LEOPARD_SLEEP,
+    ANM_A_LEOPARD_STAND,
+    ANM_A_LEOPARD_THROWN,
+    ANM_A_LEOPARD_UPFROM_EAT,
+    ANM_A_LEOPARD_UPFROM_SIT,
+    ANM_A_LEOPARD_UPFROM_SLEEP,
+    ANM_A_LEOPARD_WALK,
+    ANM_A_LION_DEAD,
+    ANM_A_LION_DEAD_ON_LEFT,
+    ANM_A_LION_DEAD_ON_RIGHT,
+    ANM_A_LION_DIE,
+    ANM_A_LION_DOWNED_ON_LHS,
+    ANM_A_LION_DOWNED_ON_RHS,
+    ANM_A_LION_EAT,
+    ANM_A_LION_GET_UP_FROM_LEFT,
+    ANM_A_LION_GET_UP_FROM_RIGHT,
+    ANM_A_LION_GOTO_EAT,
+    ANM_A_LION_GOTO_SIT,
+    ANM_A_LION_GOTO_SLEEP,
+    ANM_A_LION_IN_HAND,
+    ANM_A_LION_POUNCE,
+    ANM_A_LION_POUNCE_HI,
+    ANM_A_LION_POUNCE_LO,
+    ANM_A_LION_PROWL,
+    ANM_A_LION_RUN,
+    ANM_A_LION_SIT,
+    ANM_A_LION_SLEEP,
+    ANM_A_LION_STAND,
+    ANM_A_LION_THROWN,
+    ANM_A_LION_TURN_LEFT_90_DEGREES,
+    ANM_A_LION_TURN_RIGHT_90_DEGREES,
+    ANM_A_LION_UPFROM_EAT,
+    ANM_A_LION_UPFROM_SIT,
+    ANM_A_LION_UPFROM_SLEEP,
+    ANM_A_LION_WALK,
+    ANM_A_PIG_DEADLHS,
+    ANM_A_PIG_DEADRHS,
+    ANM_A_PIG_EAT1,
+    ANM_A_PIG_EAT2,
+    ANM_A_PIG_FALL_DEADLHS,
+    ANM_A_PIG_FALL_DEADRHS,
+    ANM_A_PIG_GOTO_EAT,
+    ANM_A_PIG_IN_HAND,
+    ANM_A_PIG_LAND_GET_UPLHS,
+    ANM_A_PIG_LAND_GET_UPRHS,
+    ANM_A_PIG_OUT_OF_EAT,
+    ANM_A_PIG_RUN,
+    ANM_A_PIG_STAND,
+    ANM_A_PIG_THROWN,
+    ANM_A_PIG_WALK,
+    ANM_SHARK_BONED_SWIM,
+    ANM_A_SHEEP_DEAD_LHS,
+    ANM_A_SHEEP_DEAD_RHS,
+    ANM_A_SHEEP_EAT1,
+    ANM_A_SHEEP_EAT2,
+    ANM_A_SHEEP_FALL_DEADLHS,
+    ANM_A_SHEEP_FALL_DEADRHS,
+    ANM_A_SHEEP_GOTO_EAT,
+    ANM_A_SHEEP_IN_HAND,
+    ANM_A_SHEEP_LANDED_GETUPLHS,
+    ANM_A_SHEEP_LANDED_GETUPRHS,
+    ANM_A_SHEEP_OUT_OF_EAT,
+    ANM_A_SHEEP_RUN,
+    ANM_A_SHEEP_STAND,
+    ANM_A_SHEEP_THROWN,
+    ANM_A_SHEEP_TROT,
+    ANM_A_SHEEP_WALK,
+    ANM_A_TIGER_DEAD,
+    ANM_A_TIGER_DEAD_ON_LEFT,
+    ANM_A_TIGER_DEAD_ON_RIGHT,
+    ANM_A_TIGER_DIE,
+    ANM_A_TIGER_EAT,
+    ANM_A_TIGER_GET_UP_FROM_LEFT,
+    ANM_A_TIGER_GET_UP_FROM_RIGHT,
+    ANM_A_TIGER_GOTO_EAT,
+    ANM_A_TIGER_GOTO_SIT,
+    ANM_A_TIGER_GOTO_SLEEP,
+    ANM_A_TIGER_IN_HAND,
+    ANM_A_TIGER_POUNCE,
+    ANM_A_TIGER_POUNCE_HI,
+    ANM_A_TIGER_POUNCE_LO,
+    ANM_A_TIGER_PROWL,
+    ANM_A_TIGER_RUN,
+    ANM_A_TIGER_SIT,
+    ANM_A_TIGER_SLEEP,
+    ANM_A_TIGER_STAND,
+    ANM_A_TIGER_THROWN,
+    ANM_A_TIGER_UPFROM_EAT,
+    ANM_A_TIGER_UPFROM_SIT,
+    ANM_A_TIGER_UPFROM_SLEEP,
+    ANM_A_TIGER_WALK,
+    ANM_A_TORTOISE_DEAD,
+    ANM_A_TORTOISE_STAND,
+    ANM_A_TORTOISE_WALK,
+    ANM_A_WOLF_DIE,
+    ANM_A_WOLF_EAT,
+    ANM_A_WOLF_GOTO_EAT,
+    ANM_A_WOLF_GOTO_SIT,
+    ANM_A_WOLF_GOTO_SLEEP,
+    ANM_A_WOLF_HOWL,
+    ANM_A_WOLF_POUNCE,
+    ANM_A_WOLF_PROWL,
+    ANM_A_WOLF_RUN,
+    ANM_A_WOLF_SIT,
+    ANM_A_WOLF_SLEEP,
+    ANM_A_WOLF_STAND,
+    ANM_A_WOLF_UPFROM_EAT,
+    ANM_A_WOLF_UPFROM_SIT,
+    ANM_A_WOLF_UPFROM_SLEEP,
+    ANM_A_WOLF_WALK,
+    ANM_MINE_ENTRANCE,
+    ANM_PLAYER_ICON01_PLINTH,
+    ANM_NORS_GATE,
+    ANM_PHONEBOX,
+    ANM_PIPER_CAVE_CLOSING,
+    ANM_PIPER_CAVE_OPENING,
+    ANM_GATE_TOTEM_PLINTHE,
+    ANM_PIED_PIPER_DANCE_STAND,
+    ANM_PIED_PIPER_DANCE_STAND_SPIN,
+    ANM_PIED_PIPER_DANCE_WALK,
+    ANM_PIED_PIPER_DANCE_WALK_SPIN,
+    ANM_PIED_PIPER_SUMMON,
+    ANM_PIED_PIPER_WALK,
+    ANM_P_AFRICAN_DRUMMER,
+    ANM_P_AMBIENT1,
+    ANM_P_AMBIENT2,
+    ANM_P_ARSONIST,
+    ANM_P_ATTACKED_BY_LION,
+    ANM_P_ATTRACT_YOUR_ATTENTION,
+    ANM_P_AVOID_OBJECT_DIVE,
+    ANM_P_AVOID_OBJECT_DODGE,
+    ANM_P_BECKON,
+    ANM_P_BLOW_RASPBERRY,
+    ANM_P_CARRYING_BAG,
+    ANM_P_CARRYING_POT,
+    ANM_P_CARRYING_STICKS,
+    ANM_P_CARRY_AXE,
+    ANM_P_CARRY_OBJECT_RUN,
+    ANM_P_CHOPPING_TREE,
+    ANM_P_CLAP_1,
+    ANM_P_CLAP_2,
+    ANM_P_CLAP_3,
+    ANM_P_CLAP_4,
+    ANM_P_CONDUCT_MEETING,
+#ifdef VERSION_BW1WCI
+    ANM_P_CONFUSED_MALE1,
+    ANM_P_CONFUSED_MALE2,
+    ANM_P_CONFUSED_MALE3,
+    ANM_P_CONFUSED_MALE4,
+    ANM_P_CONFUSED_MALE5,
+#endif // VERSION_BW1WCI
+    ANM_P_COUPLE_KISS_MAN,
+    ANM_P_COUPLE_KISS_WOMAN,
+    ANM_P_CRAWL_INJURED,
+    ANM_P_CRAWL_INJURED_INTO,
+    ANM_P_CROWD_IMPRESSED_1,
+    ANM_P_CROWD_IMPRESSED_2,
+    ANM_P_CROWD_LOST,
+    ANM_P_CROWD_LOST_2,
+    ANM_P_CROWD_MEXICAN_WAVE,
+    ANM_P_CROWD_UNIMPRESSED_1,
+    ANM_P_CROWD_UNIMPRESSED_2,
+    ANM_P_CROWD_WON,
+    ANM_P_CROWD_WON_2,
+    ANM_P_DANCE_PISS_TAKE_,
+    ANM_P_DANCE_STAND,
+    ANM_P_DANCE_TOGETHER_ARMLINK,
+    ANM_P_DANCE_TOGETHER_CIRCLING,
+    ANM_P_DANCE_TOGETHER_CIRCLING_PARTNER,
+    ANM_P_DANCE_X,
+    ANM_P_DANCE_X_PARTNER,
+    ANM_P_DEAD1,
+    ANM_P_DEAD1_GOTO_HEAVEN,
+    ANM_P_DEAD1_GOTO_HELL,
+    ANM_P_DEAD2,
+    ANM_P_DEAD2_GOTO_HEAVEN,
+    ANM_P_DEAD2_GOTO_HELL,
+    ANM_P_DEAD_DROWNED,
+    ANM_P_DEAD_IN_HAND,
+    ANM_P_DRIBBLE_BALL,
+    ANM_P_DROWNING,
+    ANM_P_DYING,
+    ANM_P_EAT,
+    ANM_P_FAKE_FOUL_FALL,
+    ANM_P_FARMER,
+    ANM_P_FARMER_HARVESTING,
+    ANM_P_FARMER_SHOO_SHEEP,
+    ANM_P_FARMER_SOWING_SEEDS,
+    ANM_P_FARMER_STOKE_SHEEP,
+    ANM_P_FARMER_TURNING_SOIL,
+    ANM_P_FISHERMAN,
+    ANM_P_FRIGHT_DUCK,
+    ANM_P_FRIGHT_JUMP,
+    ANM_P_F_DANCE_A,
+    ANM_P_F_DANCE_B,
+    ANM_P_F_DANCE_C,
+    ANM_P_GIVE_BIRTH,
+    ANM_P_GOALKEEPER,
+    ANM_P_GOALKEEPER_2,
+    ANM_P_GOALKEEPER_3,
+    ANM_P_GOSSIP_MAN,
+    ANM_P_GOSSIP_WOMAN_1,
+    ANM_P_GOSSIP_WOMAN_2,
+    ANM_P_GOSSIP_WOMAN_3,
+    ANM_P_HAMMERING,
+    ANM_P_HELP_SOMEONE_HELPEE,
+    ANM_P_HELP_SOMEONE_HELPER,
+    ANM_P_HUG,
+    ANM_P_INSPECT_OBJECT_1,
+    ANM_P_INSPECT_OBJECT_2,
+    ANM_P_INSPECT_OBJECT_3,
+    ANM_P_INTO_DEAD_DROWNED,
+    ANM_P_INTO_HAMMERING,
+    ANM_P_INTO_MOURNING,
+    ANM_P_INTO_POINTING,
+    ANM_P_INTO_PRAY,
+    ANM_P_INTO_PULL_OBJECT,
+    ANM_P_INTO_PUSH_OBJECT,
+    ANM_P_INTO_RUN_MAN,
+    ANM_P_INTO_RUN_WOMAN,
+    ANM_P_INTO_SAW_WOOD,
+    ANM_P_INTO_SLEDGEHAMMER,
+    ANM_P_INTO_SLEEP,
+    ANM_P_INTO_SPRINT_MAN,
+    ANM_P_INTO_SPRINT_WOMAN,
+    ANM_P_INTO_WALK_MAN,
+    ANM_P_INTO_WALK_WOMAN,
+    ANM_P_JUMP_A,
+    ANM_P_JUMP_AT_HAND,
+    ANM_P_JUMP_AT_HAND_2,
+    ANM_P_KICK_BALL,
+    ANM_P_KICK_BALL_PASS,
+    ANM_P_KICK_BALL_PASS_PT1,
+    ANM_P_KICK_BALL_PASS_PT2,
+    ANM_P_LANDED,
+    ANM_P_LANDED_FROM_BACK,
+    ANM_P_LANDED_FROM_FEET,
+    ANM_P_LANDED_FROM_FEET_CARRY_OBJECT,
+    ANM_P_LOOKING_FOR_SOMETHING,
+    ANM_P_LOOK_AT_HAND,
+    ANM_P_LOVING_TOUCH,
+    ANM_P_MOURNING,
+    ANM_P_M_DANCE_A,
+    ANM_P_M_DANCE_B,
+    ANM_P_M_DANCE_C,
+    ANM_P_ON_FIRE_DIE,
+    ANM_P_ON_FIRE_DOUSED,
+    ANM_P_ON_FIRE_RUN,
+    ANM_P_OUT_OF_HAMMERING,
+    ANM_P_OUT_OF_MOURNING,
+    ANM_P_OUT_OF_POINTING,
+    ANM_P_OUT_OF_PRAY,
+    ANM_P_OUT_OF_PULL_OBJECT,
+    ANM_P_OUT_OF_PUSH_OBJECT,
+    ANM_P_OUT_OF_RUN_MAN,
+    ANM_P_OUT_OF_RUN_WOMAN,
+    ANM_P_OUT_OF_SAW_WOOD,
+    ANM_P_OUT_OF_SLEDGEHAMMER,
+    ANM_P_OUT_OF_SLEEP,
+    ANM_P_OUT_OF_WALK_WOMAN,
+    ANM_P_OVERWORKED1,
+    ANM_P_OVERWORKED2,
+    ANM_P_PANIC_MAN,
+    ANM_P_PANIC_WOMAN,
+    ANM_P_PICKUP_BALL_PT1,
+    ANM_P_PICKUP_BALL_PT2,
+    ANM_P_PICK_UP_BAG,
+    ANM_P_PICK_UP_POT_ON_HEAD,
+    ANM_P_PICK_UP_STICKS,
+    ANM_P_PLAY_ACCORDIAN,
+    ANM_P_POISONED,
+    ANM_P_PRAY,
+    ANM_P_PROD_CAMPFIRE,
+    ANM_P_PULL_OBJECT,
+    ANM_P_PUSH_OBJECT,
+    ANM_P_PUT_DOWN_BAG,
+    ANM_P_PUT_DOWN_STICKS,
+    ANM_P_PUT_OUT_FIRE,
+    ANM_P_PUZZLED,
+    ANM_P_RUN_MAN,
+    ANM_P_RUN_WITH_BALL,
+    ANM_P_RUN_WOMAN,
+    ANM_P_SAW_WOOD,
+    ANM_P_SCARED_STIFF,
+    ANM_P_SCARED_STIFF_2,
+    ANM_P_SCORE_GOAL,
+    ANM_P_SCRIPT1,
+    ANM_P_SCRUBBS,
+    ANM_P_SCULPTOR,
+    ANM_P_SHAKE_FIST_FEMALE,
+    ANM_P_SHOOT_AT_GOAL,
+    ANM_P_SHOOT_AT_GOAL_2,
+    ANM_P_SHOOT_AT_GOAL_PT_1,
+    ANM_P_SHOOT_AT_GOAL_PT_2,
+    ANM_P_SHRUG_SHOULDERS,
+    ANM_P_SITTING_DOWN1_INTO,
+    ANM_P_SITTING_DOWN1_OUT_OF,
+    ANM_P_SITTING_DOWN1_SITTING,
+    ANM_P_SITTING_DOWN2_INTO,
+    ANM_P_SITTING_DOWN2_OUT_OF,
+    ANM_P_SITTING_DOWN2_SITTING,
+    ANM_P_SITTING_DOWN_DANCE_SAILING1,
+    ANM_P_SITTING_DOWN_DANCE_SAILING2,
+    ANM_P_SITTING_DOWN_DANCE_SAILING3,
+    ANM_P_SITTING_DOWN_MALE1,
+    ANM_P_SITTING_DOWN_MALE2,
+    ANM_P_SITTING_SWINGING_LEGS,
+    ANM_P_SKIP02,
+    ANM_P_SLEDGEHAMMER,
+    ANM_P_SLEEP,
+    ANM_P_SLEEPING,
+    ANM_P_SPRINT_RUN_MAN,
+    ANM_P_SPRINT_RUN_WOMAN,
+    ANM_P_STAND,
+    ANM_P_STAND_DESPAIR_1,
+    ANM_P_STAND_DESPAIR_2,
+    ANM_P_STAND_DESPAIR_3,
+    ANM_P_STIR_POT01,
+    ANM_P_SWIM2,
+    ANM_P_TALK1_FEMALE,
+    ANM_P_TALK1_MALE,
+    ANM_P_TALK2_FEMALE,
+    ANM_P_TALK2_MALE,
+    ANM_P_TALKING_AND_POINTING,
+    ANM_P_TALK_TO_NEIGHBOUR,
+    ANM_P_THANK_YOU,
+    ANM_P_THANK_YOU_FEMALE,
+    ANM_P_THROWN,
+    ANM_P_THROWN_DEAD,
+    ANM_P_THROWN_VORTEX,
+    ANM_P_THROW_BALL_PT_1,
+    ANM_P_THROW_BALL_PT_2,
+    ANM_P_THROW_ROCK,
+    ANM_P_THROW_WATER,
+    ANM_P_TITANIC,
+    ANM_P_TURN_180,
+    ANM_P_TURN_90_LEFT,
+    ANM_P_TURN_90_RIGHT,
+    ANM_P_TURN_ON_THE_SPOT_LEFT,
+    ANM_P_TURN_ON_THE_SPOT_RIGHT,
+    ANM_P_WAITING_FOR_BALL,
+    ANM_P_WAITING_FOR_BALL_2,
+    ANM_P_WAITING_FOR_KICK_OFF,
+    ANM_P_WAITING_FOR_KICK_OFF_2,
+    ANM_P_WAITING_FOR_KICK_OFF_3,
+    ANM_P_WAITING_FOR_KICK_OFF_4,
+    ANM_P_WAITING_IMPATEINTLY,
+    ANM_P_WALK_BECKON02,
+    ANM_P_WALK_DESPAIR_AWAY_1,
+    ANM_P_WALK_DESPAIR_AWAY_2,
+    ANM_P_WALK_DESPAIR_AWAY_3,
+    ANM_P_WALK_DESPAIR_TO_1,
+    ANM_P_WALK_DESPAIR_TO_2,
+    ANM_P_WALK_DESPAIR_TO_3,
+    ANM_P_WALK_INJURED,
+    ANM_P_WALK_MAN,
+    ANM_P_WALK_POINT,
+    ANM_P_WALK_TIRED_EYES,
+    ANM_P_WALK_TO_STAND_WOMAN,
+    ANM_P_WALK_WOMAN,
+    ANM_P_WELL_DONE__FEMALE,
+    ANM_P_WHITTLING_AT_STICK,
+    ANM_P_YANKED_UNDERGROUND,
+    ANM_P_YANKED_UNDERGROUND2,
+    ANM_P_YANKED_UNDERGROUND3,
+    ANM_P_YAWN,
+    ANM_P_YAWN2,
+    ANM_S_PRIEST_SUCK_LIFE_FORCE,
+    ANM_A_WORM,
+    MAX_COUNT_3D_ANIMS,
 };
 
 

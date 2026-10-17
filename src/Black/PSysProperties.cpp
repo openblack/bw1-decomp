@@ -31,6 +31,8 @@ static float unused;
 
 #include <Lionhead/LHFile/ver3.0/LHOSFile.h>         /* For LHFileLength, LHLoadData */
 #include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For class LHReleasedOSFile */
+#include <chlasm/LHSample.h>
+#include <chlasm/ScriptSfxEnum.h>
 
 #if defined(VERSION_BW1W100)
 #define PSYS_PROPERTIES_FILE "C:\\dev\\black\\PSysProperties.cpp"
