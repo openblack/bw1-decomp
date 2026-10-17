@@ -217,6 +217,8 @@ public:
 	                    float y_angle, float scale);
 	// BW1W120 0074a7a0 BW1M119 null
 	static bool32_t IsForestTreeAtPos(MapCoords& coords);
+	// BW1W120 0074a7c0 BW1M119 01035d40
+	static void PreDraw();
 	// BW1W120 0074c180 BW1M119 0115e5a0
 	static bool32_t IsOkToCreateAtPos(MapCoords& coords);
 
