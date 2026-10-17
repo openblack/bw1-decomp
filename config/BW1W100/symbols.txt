@@ -4020,7 +4020,6 @@ _$E6 = .text:0x004BBC10; // type:function size:0x10 scope:local
 ?FindBestObjectToActOn@CreatureBeliefAboutContext@@UAEPAVCreatureBelief@@W4CREATURE_DESIRES@@PAVCreatureMental@@W4CREATURE_ACTION@@PAM@Z = .text:0x004BD3C0; // type:label scope:global alias
 ?FindBestObjectToActOn@CreatureBeliefAboutVillager@@UAEPAVCreatureBelief@@W4CREATURE_DESIRES@@PAVCreatureMental@@W4CREATURE_ACTION@@PAM@Z = .text:0x004BD3C0; // type:label scope:global alias
 ??0CreatureBeliefAboutVillager@@QAE@PAVAttribute@@0000000000@Z = .text:0x004BD3D0; // type:function size:0x61
-??0CreatureBeliefAboutTown@@QAE@PAVAttribute@@0000000000@Z = .text:0x004BD3D0; // type:label scope:global alias
 _$E2 = .text:0x004BD440; // type:function size:0x10 scope:local
 _$E1 = .text:0x004BD450; // type:function size:0x20 scope:local
 _$E20 = .text:0x004BD470; // type:function size:0x10 scope:local
