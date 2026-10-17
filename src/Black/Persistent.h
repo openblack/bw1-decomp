@@ -43,7 +43,7 @@ public:
 	// BW1W120 00580a40 BW1M119 012cea40
 	virtual ~Persistent();
 	// BW1W120 00580a30 BW1M119 012ce4d0
-	virtual void DefineProperties(PropertyList* list);
+	virtual void DefineProperties(PropertyList* list) {}
 
 	PersistentOwner* Owner;
 	std::string*     Name;

@@ -36,7 +36,7 @@ public:
 	// BW1W120 00675b10 BW1M119 010437e0
 	virtual bool ModifyAtomCollection(AtomCollection* collection) const;
 	// BW1W120 00675b80 BW1M119 013ef070
-	virtual void ModifyAtomCore(AtomCore* core) const;
+	virtual void ModifyAtomCore(AtomCore* core) const {}
 
 	mutable short    ReferenceCount;
 	uint16_t         field_0xe;

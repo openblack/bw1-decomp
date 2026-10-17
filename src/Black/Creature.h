@@ -366,7 +366,7 @@ public:
 	// BW1W120 00474030 BW1M119 011ea710
 	virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature);
 	// BW1W120 004c5e50 BW1M119 01236990
-	virtual bool32_t FalseFunction();
+	virtual bool32_t FalseFunction() { return false; }
 	// BW1W120 00473fd0 BW1M119 011ea560
 	virtual bool32_t IsSuitableForCreatureActivity();
 	// BW1W120 00474050 BW1M119 011ea7c0

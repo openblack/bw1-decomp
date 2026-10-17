@@ -23,9 +23,9 @@ public:
 	// BW1W120 00545470 BW1M119 015c0620
 	virtual bool WantsMouseControl();
 	// BW1W120 005454f0 BW1M119 015c05e0
-	virtual bool CanESCOut();
+	virtual bool CanESCOut() { return false; }
 	// BW1W120 005453c0 BW1M119 015c0880
-	virtual void InitControls();
+	virtual void InitControls() {}
 };
 
 #endif /* BW1_DECOMP_HISTORY_BOX_INCLUDED_H */

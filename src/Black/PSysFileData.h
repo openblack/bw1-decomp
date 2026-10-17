@@ -49,7 +49,7 @@ public:
 	// BW1W120 00672580 BW1M119 013e6360
 	unsigned long GetMaxGroups();
 	// BW1W120 00672590 BW1M119 013e6320
-	void SetMaxGroups(unsigned long max_groups);
+	void SetMaxGroups(unsigned long max_groups) {}
 	// BW1W120 006725a0 BW1M119 013e62d0
 	bool GetInitiallyCreated(unsigned long group);
 	// BW1W120 006725b0 BW1M119 013e6280

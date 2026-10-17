@@ -1975,9 +1975,9 @@ public:
 	// BW1W120 005ac9d0 BW1M119 inlined
 	bool32_t LoadWaitForAnim(GameOSFile& file) { return 1; }
 	// BW1W120 005319c0 BW1M119 012c0330
-	bool32_t FootballWonGoal();
+	bool32_t FootballWonGoal() { return true; }
 	// BW1W120 005319d0 BW1M119 012c02f0
-	bool32_t FootballLostGoal();
+	bool32_t FootballLostGoal() { return true; }
 	// BW1W120 00757c90 BW1M119 01070040
 	bool32_t ChildAtCreche();
 	// BW1W120 00766fb0 BW1M119 01594b10

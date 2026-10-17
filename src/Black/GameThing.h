@@ -392,9 +392,9 @@ public:
 	// BW1W120 004018b0 BW1M119 011a2760
 	virtual GPlayer* GetPlayerWhoLastDroppedMe() { return NULL; }
 	// BW1W120 00405160 BW1M119 01179070
-	virtual bool32_t IsFootpathLink();
+	virtual bool32_t IsFootpathLink() { return false; }
 	// BW1W120 00405170 BW1M119 011d0240
-	virtual GFootpathLink* GetFootpathLink();
+	virtual GFootpathLink* GetFootpathLink() { return NULL; }
 	// BW1W120 004018c0 BW1M119 011a7300
 	virtual uint32_t AddFootpathLink(GFootpath* footpath) { return 0; }
 	// BW1W120 00405180 BW1M119 010af4e0
@@ -425,9 +425,9 @@ public:
 	// BW1W120 004018f0 BW1M119 0157ef70
 	virtual OneOffSpellSeed* CastOneOffSpellSeed() { return NULL; }
 	// BW1W120 004051e0 BW1M119 01583290
-	virtual Abode* CastAbode();
+	virtual Abode* CastAbode() { return NULL; }
 	// BW1W120 004051f0 BW1M119 011d0280
-	virtual MultiMapFixed* CastMultiMapFixed();
+	virtual MultiMapFixed* CastMultiMapFixed() { return NULL; }
 	// BW1W120 00401900 BW1M119 010a27c0
 	virtual SpellIcon* CastSpellIcon() { return NULL; }
 	// BW1W120 00401910 BW1M119 01497180
@@ -439,17 +439,17 @@ public:
 	// BW1W120 00405210 BW1M119 015832d0
 	virtual float GetTownArtifactValue();
 	// BW1W120 00405220 BW1M119 0116fb50
-	virtual bool CanBecomeArtifact();
+	virtual bool CanBecomeArtifact() { return false; }
 	// BW1W120 00405230 BW1M119 0116ebe0
-	virtual void DrawInHand(GInterfaceStatus* param_1);
+	virtual void DrawInHand(GInterfaceStatus* param_1) {}
 	// BW1W120 00405240 BW1M119 0106a010
 	virtual bool32_t IsFunctional();
 	// BW1W120 00425da0 BW1M119 014a3120
 	virtual char* GetDebugText();
 	// BW1W120 0071bc20 BW1M119 01517ad0
-	virtual uint32_t GetSampleForAttack();
+	virtual uint32_t GetSampleForAttack() { return 0; }
 	// BW1W120 0071bdd0 BW1M119 01517810
-	virtual uint32_t GetGuidanceResourceType();
+	virtual uint32_t GetGuidanceResourceType() { return 0; }
 	// BW1W120 00401930 BW1M119 011cfde0
 	virtual uint32_t GetShowNeedsPos(uint32_t need, MapCoords* pos) { return 0; }
 	// BW1W120 0056fcf0 BW1M119 011063a0
