@@ -43692,6 +43692,7 @@ _SecondsPerYear = .data:0x00D18844; // type:object size:0x4 scope:local
 _SecondsPerYear = .data:0x00D18874; // type:object size:0x4 scope:local
 ?Instance@IPSpecialDialog@@2PAV1@A = .data:0x00D189C8; // type:object size:0x4 scope:global
 _SecondsPerYear = .data:0x00D189CC; // type:object size:0x4 scope:local
+?g_list@FlyingObjects@@2PAU1@A = .data:0x00D19A48; // type:object size:0xE0 scope:global align:4
 _SecondsPerYear = .data:0x00D19C28; // type:object size:0x4 scope:local
 ?InfoList@GJobInfo@@2PAV1@A = .data:0x00D19CC8; // type:object size:0x580 scope:global
 _SecondsPerYear = .data:0x00D1A248; // type:object size:0x4 scope:local
