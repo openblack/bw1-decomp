@@ -39,7 +39,7 @@ public:
 	// BW1W120 00749d60 BW1M119 0115d890
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos);
 	// BW1W120 0074c5c0 BW1M119 0115de10
-	virtual void UpdateValue(float value, uint32_t offset, uint32_t param_3);
+	virtual void UpdateValue(float value, unsigned long offset, unsigned long param_3);
 
 	// Static data
 
