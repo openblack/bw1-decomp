@@ -28,22 +28,22 @@ enum LH_SAMPLE_PLAY_TYPE
 class LH_SamplePlayOptions
 {
 public:
-	uint32_t      field_0x0;
-	LH_AudioBank* Bank;
-	bool32_t      Positional;
-	bool32_t      Follow;
-	bool32_t      Doppler;
-	uint8_t       field_0x14[0xc];
-	Base*         AttachedObject;
-	uint32_t      SampleNumber;
-	uint8_t       field_0x28[0x8];
-	LHPoint       Pos;
-	uint8_t       field_0x3c[0xc];
-	uint32_t      Pitch;
-	uint32_t      LoopCount;
-	uint32_t      PlayType;
-	uint8_t       field_0x54[0x110];
-	uint32_t      KeepData;
+	uint32_t            field_0x0;
+	LH_AudioBank*       Bank;
+	bool32_t            Positional;
+	bool32_t            Follow;
+	bool32_t            Doppler;
+	uint8_t             field_0x14[0xc];
+	Base*               AttachedObject;
+	uint32_t            SampleNumber;
+	uint8_t             field_0x28[0x8];
+	LHPoint             Pos;
+	uint8_t             field_0x3c[0xc];
+	uint32_t            Pitch;
+	uint32_t            LoopCount;
+	LH_SAMPLE_PLAY_TYPE PlayType;
+	uint8_t             field_0x54[0x110];
+	uint32_t            KeepData;
 
 	// Constructors
 
