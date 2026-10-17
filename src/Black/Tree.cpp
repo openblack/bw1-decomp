@@ -854,7 +854,7 @@ bool32_t Tree::IsOkToCreateAtPos(MapCoords& coords)
 	return true;
 }
 
-void Tree::ToBeDeleted(int delete_now)
+void Tree::ToBeDeleted(bool32_t delete_now)
 {
 	Forest* treeForest = GetForest();
 	if (treeForest != NULL)
@@ -951,7 +951,7 @@ float Tree::Decay(float amount)
 	float scale = GetScale() - amount;
 	if (scale <= 0.0f)
 	{
-		ToBeDeleted(0);
+		ToBeDeleted(false);
 		return 0.0f;
 	}
 	SetScale(scale);
