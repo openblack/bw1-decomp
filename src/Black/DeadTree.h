@@ -39,7 +39,7 @@ public:
 		struct
 		{
 			uint16_t : 4;
-			uint16_t field_0x98_4 : 1;
+			uint16_t CreateFallingRoot : 1;
 		};
 	};
 	uint16_t field_0x9a;
