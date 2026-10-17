@@ -19,6 +19,8 @@
 #include "Creature3D.h"
 #include "DeadTree.h"
 #include "Interface.h"
+#include "JCMisc.h"
+#include "Camera.h"
 #include "Rand.h"
 #include "Map.h"
 #include "Utils.h"
@@ -40,6 +42,7 @@
 
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For TWO_PI */
+#include <Lionhead/LH3DLib/development/LH3DMesh.h>   /* For LH3DMesh */
 #include <Lionhead/LH3DLib/development/LH3DRender.h> /* For LH3DRender */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For LH3DTech */
 #include <Lionhead/LH3DLib/development/SmokyStuff.h> /* For SmokyStuff */
@@ -60,6 +63,14 @@
 #define TREE_SWAY_PHASE_RATE        0.0010606061f
 #define TREE_SWAY_AMPLITUDE         0.03
 
+#define TREE_BEND_MIN           0.75f
+#define TREE_BEND_LIGHT         0.3f
+#define TREE_BEND_MEDIUM        0.67f
+#define TREE_RUSTLE_CHANCE_TIME 1000.0f
+#define TREE_RUSTLE_DISTANCE    10.0f
+#define TREE_RUSTLE_HEIGHT      18.0f
+#define TREE_RUSTLE_MIN_HEIGHT  10.0f
+
 #define FILEPATH "C:\\dev\\MP\\Black\\Tree.cpp"
 
 GTreeInfo GTreeInfo::Infos[TREE_INFO_LAST];
@@ -73,6 +84,7 @@ static int   Brightness = -1;
 static float ForestSearchRadius = 25.0f;
 static float FireAlpha;
 
+static const float FlyingObjectBendAngle = 0.47123894f;
 static const float FireAlphaCold = 230.0f;
 
 GBaseInfo* GTreeInfo::GetBaseInfo(uint32_t& num_infos)
@@ -232,6 +244,117 @@ uint32_t Tree::SaveObject(LHOSFile& file, const MapCoords* coords)
 		GSetup::WriteToFile(this, file, text, strlen(text));
 	}
 	return saved;
+}
+
+void Tree::Draw()
+{
+	LH3DIsland::GetColorAndSpecularWithFog(Pos, &Game3dObject->color, &Game3dObject->specular);
+	if (Game3dObject != NULL)
+	{
+		Game3dObject->DrawAsFence = true;
+	}
+	LHMatrix savedMatrix;
+	float    savedX;
+	float    savedZ;
+	if (DrawIndex != 0)
+	{
+		FlyingObjects* flying = &FlyingObjects::Getg_list()[DrawIndex];
+		float          scale = GetScale();
+		if (flying->Pos.y <= scale * Game3dObject->GetMesh()->GetBoundingBox().size.y * 2.0f + Game3dObject->matrix._42)
+		{
+			LHPoint flyingPos = flying->Pos;
+			flyingPos.y = Game3dObject->matrix._42;
+			LHPoint offset(&flyingPos);
+			offset.Sub(LHPoint(&Game3dObject->matrix.GetPos()));
+			float distance = offset.GetNorme();
+			float radius = flying->Radius;
+			if (distance < radius)
+			{
+				LHPoint direction = Game3dObject->matrix.GetPos();
+				direction -= flyingPos;
+				direction *= InverseSquareRoot(direction.x * direction.x + direction.y * direction.y +
+				                               direction.z * direction.z);
+				LHPoint  down(0.0f, -1.0f, 0.0f);
+				float    angle = LH3DMath::GetYAngle(&down, &direction) + HALF_PI_F;
+				float    bend = 1.0f - (TREE_BEND_MIN + distance * (radius - TREE_BEND_MIN) / radius) / radius;
+				LHMatrix matrix;
+				matrix.SetRotationY(GetYAngle() - angle);
+				matrix.PostRotateX(FlyingObjectBendAngle * bend);
+				matrix.PostRotateY(angle);
+				matrix.PostTranslation(Game3dObject->matrix.GetPos());
+				matrix.ScaleMatrixOnly(GetScale());
+				savedMatrix = Game3dObject->matrix;
+				Game3dObject->matrix = matrix;
+				IMPACT_SOUND_LEVEL level;
+				if (bend < TREE_BEND_LIGHT)
+				{
+					level = IMPACT_SOUND_LEVEL_LIGHT;
+				}
+				else if (bend < TREE_BEND_MEDIUM)
+				{
+					level = IMPACT_SOUND_LEVEL_MEDIUM;
+				}
+				else
+				{
+					level = IMPACT_SOUND_LEVEL_HEAVY;
+				}
+				long    sound[SOUND_KEY_LENGTH] = {level, 0, 0, IMPACT_SOUND_TARGET_TREE, IMPACT_SOUND_EVENT_COLLISION};
+				LHPoint camera;
+				GGame::g_game->GetCamera()->GetPosition(camera);
+				LHPoint toCamera = camera - Game3dObject->matrix.GetPos();
+				GGlobal::Global.audio->SamplePlayAnimEffect(this, sqrt(toCamera * toCamera), sound, 0,
+				                                            GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR),
+				                                            0, 0.0f, 0.0f);
+				goto draw;
+			}
+		}
+		DrawIndex = 0;
+	}
+	savedX = Game3dObject->matrix._21;
+	savedZ = Game3dObject->matrix._23;
+	Game3dObject->matrix._21 = GetScale() * SwayX[AngleIndex];
+	Game3dObject->matrix._23 = GetScale() * SwayZ[AngleIndex];
+draw:
+	if (GetFireEffect() != NULL)
+	{
+		SpecialDrawOnFire(true);
+	}
+	else
+	{
+		unsigned long color = Game3dObject->color;
+		Game3dObject->color = (((color & 0xff0000) * Brightness & 0xff0000ff) |
+		                       ((color & 0xff00) * Brightness & 0xff0000) | ((color & 0xff) * Brightness & 0xff00)) >>
+		                          8 |
+		                      (color & 0xff000000);
+		Game3dObject->AddForDrawing(this);
+	}
+	if (DrawIndex != 0)
+	{
+		DrawIndex = 0;
+		Game3dObject->matrix = savedMatrix;
+	}
+	else
+	{
+		Game3dObject->matrix._21 = savedX;
+		Game3dObject->matrix._23 = savedZ;
+	}
+	if (GRand::LocalRand((long)(TREE_RUSTLE_CHANCE_TIME / GGame::g_game->TimeInc)) == 1)
+	{
+		LHPoint pos;
+		Get3DSoundPos(&pos);
+		LHPoint camera;
+		GGame::g_game->GetCamera()->GetPosition(camera);
+		if ((float)fabs(pos.x - camera.x) <= TREE_RUSTLE_DISTANCE &&
+		    (float)fabs(pos.z - camera.z) <= TREE_RUSTLE_DISTANCE &&
+		    (float)fabs(camera.y - pos.y) < TREE_RUSTLE_HEIGHT && GetHeight() > TREE_RUSTLE_MIN_HEIGHT)
+		{
+			long sound[SOUND_KEY_LENGTH] = {0, 0, IMPACT_SOUND_HITTER_TREE_RUSTLE, 0, IMPACT_SOUND_EVENT_TREE_RUSTLE};
+			LHPoint toCamera(pos.x - camera.x, pos.y - camera.y, pos.z - camera.z);
+			GGlobal::Global.audio->SamplePlayAnimEffect(this, sqrt(toCamera * toCamera), sound, 0,
+			                                            GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR), 1,
+			                                            0.0f, 0.0f);
+		}
+	}
 }
 
 void Tree::DrawOutOfMap(bool selectable)
