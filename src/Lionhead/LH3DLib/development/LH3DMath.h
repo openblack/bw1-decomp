@@ -10,7 +10,7 @@
 #include <math.h>   /* For sqrt */
 #include <stdint.h> /* For uint8_t */
 
-struct LHPoint;
+#include "LHPoint.h" /* For struct LHPoint */
 
 #define LH_SIN_TABLE_ONE           65536.0f
 #define LH_SIN_TABLE_COSINE_OFFSET 0x200
@@ -38,6 +38,14 @@ struct LH3DMath
 	static float GetYAngle(LHPoint* point);
 	// BW1W120 00841260 BW1M119 01012630 (LHCombined Release)
 	static float GetYAngle(LHPoint* from, LHPoint* to);
+	// Inliner IL size: 60
+	// BW1W120 inlined BW1M119 inlined
+	static float GetDistance(const LHPoint* from, const LHPoint* to)
+	{
+		LHPoint offset(from);
+		offset.Sub(LHPoint(to));
+		return offset.GetNorme();
+	}
 };
 
 // BW1W120 00841170 BW1M119 010d50e0 (LHCombined Release)
