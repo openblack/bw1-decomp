@@ -18,6 +18,7 @@
 #include "Creature.h"
 #include "Creature3D.h"
 #include "Rand.h"
+#include "Map.h"
 #include "Utils.h"
 #include "RootsPile.h"
 #include "Script.h"
@@ -222,6 +223,51 @@ void Tree::ReactToPhysicsImpact(PhysicsObject* physics_object, bool param_2)
 
 bool32_t Tree::IsARootedObject()
 {
+	return true;
+}
+
+bool32_t Tree::GetPosForVillagerToSleepUnder(Villager* villager, MapCoords& pos)
+{
+	MapCoords coords = Pos;
+	MapCoords shelterPos;
+	bool32_t  foundShelter = false;
+	int       count = 9;
+	long      spiralX = 1;
+	long      spiralZ = 1;
+	for (; count != 0;)
+	{
+		for (MapCellIterator it = coords.GetFirstIterator(); it.object != NULL;
+		     it.object = it.object->GetMapChild(*it.cell), it.MoveToMobileObsIfNeededAndPoss())
+		{
+			Object* object = it.object;
+			if (Pos.GetDistance(object->Pos) - object->Get2DRadius() < 4.0f)
+			{
+				if (it.object->IsVillager(NULL))
+				{
+					if (((Villager*)it.object)->action.GetState(0) != VILLAGER_STATE_SLEEP_IN_TENT)
+					{
+						continue;
+					}
+				}
+				else if (!(it.object->Flags & GAME_THING_WITH_POS_FLAG_FIXED))
+				{
+					continue;
+				}
+				if (foundShelter)
+				{
+					return false;
+				}
+				foundShelter = true;
+				shelterPos = it.object->Pos;
+			}
+		}
+		count--;
+		coords += *GUtils::Spiral(spiralX, spiralZ);
+	}
+	pos.Set(Pos);
+	float angle =
+		foundShelter ? GUtils::Get3DAngleFromXZ(shelterPos, Pos) : GUtils::Get3DAngleFromXZ(Pos, villager->Pos);
+	pos += GUtils::GetPosFromAngle(angle, 2.0f);
 	return true;
 }
 
