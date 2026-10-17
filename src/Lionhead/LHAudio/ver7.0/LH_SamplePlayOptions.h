@@ -11,6 +11,14 @@
 class Base;
 class LH_AudioBank;
 
+enum LH_SAMPLE_PLAY_TYPE
+{
+	LH_SAMPLE_PLAY_TYPE_STEAL = 0,
+	LH_SAMPLE_PLAY_TYPE_OVERLAP = 1,
+	LH_SAMPLE_PLAY_TYPE_ONCE = 2,
+	LH_SAMPLE_PLAY_TYPE_RESTART = 3,
+};
+
 #ifdef LH_AUDIO_EXPORTS
 #define LH_AUDIO_OPTIONS_API __declspec(dllexport)
 #else

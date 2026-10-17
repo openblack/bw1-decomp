@@ -682,7 +682,7 @@ void WorldRoom::UpdateKeyboard(LH_KEY key, uint16_t modifiers)
 	options.AttachedObject = attached_object;                                                                          \
 	options.SampleNumber = sample;                                                                                     \
 	options.Positional = false;                                                                                        \
-	options.PlayType = 3;                                                                                              \
+	options.PlayType = LH_SAMPLE_PLAY_TYPE_RESTART;                                                                    \
 	options.Pitch = pitch;                                                                                             \
 	GGlobal::Global.audio->PlaySoundEffect(&options)
 
