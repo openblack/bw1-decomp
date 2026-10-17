@@ -39,7 +39,7 @@ public:
 		struct
 		{
 			uint16_t : 1;
-			uint16_t field_0x5c_1 : 1;
+			uint16_t Magic : 1;
 			uint16_t AngleIndex : 4;
 			uint16_t DrawIndex : 4;
 		};

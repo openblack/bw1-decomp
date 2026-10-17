@@ -55,8 +55,7 @@
 #include <string.h>  /* For strlen */
 #include <windows.h> /* For max, min */
 
-#define TREE_NUM_ANGLES       16
-#define TREE_ROOTS_PILE_PARAM 593
+#define TREE_NUM_ANGLES 16
 
 #define TREE_WIND_ANGLE             0.0
 #define TREE_SWAY_SPEED_CHANGE_TIME 2000
@@ -537,7 +536,7 @@ Object* Tree::EndPhysics(PhysicsObject* physics_object, bool param_2)
 	}
 	if (physics_object->Flags & PHYSICS_OBJECT_FLAG_LANDED)
 	{
-		if (field_0x5c_1 == 1)
+		if (Magic == true)
 		{
 			return Fixed::EndPhysics(physics_object, param_2);
 		}
@@ -639,7 +638,7 @@ Object* Tree::EndPhysics(PhysicsObject* physics_object, bool param_2)
 	}
 	deadTree->coords = deadTree->Pos;
 	deadTree->InsertMapObject();
-	deadTree->field_0x98_4 = true;
+	deadTree->CreateFallingRoot = true;
 	if (IsInScript())
 	{
 		GScript::ReplaceScriptGameThing(this, deadTree);
@@ -716,7 +715,7 @@ void Tree::SpecialDrawOnFire(bool selectable)
 
 void Tree::AddPermanentFootPrint()
 {
-	new (FILEPATH, 927) RootsPile(Game3dObject, TREE_ROOTS_PILE_PARAM);
+	new (FILEPATH, 927) RootsPile(Game3dObject, MSH_T_ROOTS_PILE);
 }
 
 uint32_t Tree::ValidToApplyThisToObject(GInterfaceStatus* status, Object* object)
