@@ -33,8 +33,11 @@
 #include "Villager.h"
 
 #include <Lionhead/LH3DLib/development/LH3DMath.h> /* For TWO_PI */
+#include <Lionhead/LH3DLib/development/LH3DTech.h> /* For LH3DTech */
+#include <Lionhead/LH3DLib/development/LHRandom.h> /* For Random */
 #include <Lionhead/LHLib/ver5.0/LHCollide.h>       /* For NewCollide */
 
+#include <math.h>    /* For cos, sin */
 #include <stdio.h>   /* For sprintf */
 #include <string.h>  /* For strlen */
 #include <windows.h> /* For min */
@@ -42,9 +45,21 @@
 #define TREE_NUM_ANGLES       16
 #define TREE_ROOTS_PILE_PARAM 593
 
+#define TREE_WIND_ANGLE             0.0
+#define TREE_SWAY_SPEED_CHANGE_TIME 2000
+#define TREE_SWAY_PHASE_RATE        0.0010606061f
+#define TREE_SWAY_AMPLITUDE         0.03
+
 #define FILEPATH "C:\dev\MP\Black\Tree.cpp"
 
 GTreeInfo GTreeInfo::Infos[TREE_INFO_LAST];
+
+static int   SwayTimer;
+static float SwayPhase[TREE_NUM_ANGLES];
+static float SwaySpeed[TREE_NUM_ANGLES];
+static float SwayX[TREE_NUM_ANGLES];
+static float SwayZ[TREE_NUM_ANGLES];
+static int   Brightness = -1;
 
 GBaseInfo* GTreeInfo::GetBaseInfo(uint32_t& num_infos)
 {
@@ -161,6 +176,34 @@ void Tree::SetLife(float life)
 	{
 		Object::SetLife(life);
 	}
+}
+
+void Tree::PreDraw()
+{
+	SwayTimer += GGame::g_game->TimeInc;
+	for (uint32_t i = 0; i < TREE_NUM_ANGLES; i++)
+	{
+		if (SwayTimer > TREE_SWAY_SPEED_CHANGE_TIME)
+		{
+			SwaySpeed[i] = Random(1.0f, 2.0f);
+		}
+		SwayPhase[i] += GGame::g_game->TimeInc * SwaySpeed[i] * TREE_SWAY_PHASE_RATE;
+		float sway = cos(SwayPhase[i]) * TREE_SWAY_AMPLITUDE;
+		SwayX[i] = sway * sin(TREE_WIND_ANGLE);
+		SwayZ[i] = -sway * cos(TREE_WIND_ANGLE);
+	}
+	if (SwayTimer > TREE_SWAY_SPEED_CHANGE_TIME)
+	{
+		SwayTimer = 0;
+	}
+	LHPoint camTarget = *LH3DTech::GetCameraTarget();
+	LHPoint sun = LH3DTech::GetSun();
+	LHPoint light = camTarget - sun;
+	LHPoint view(LH3DTech::GetTargetVector()->x, 0.0f, LH3DTech::GetTargetVector()->z);
+	light.Normalise();
+	view.Normalise();
+	float dot = light * view;
+	Brightness = (int)(dot < 0.0f ? 200.0f : dot * 55.0f + 200.0f);
 }
 
 uint32_t Tree::SaveObject(LHOSFile& file, const MapCoords* coords)
