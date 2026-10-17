@@ -199,6 +199,8 @@ public:
 	virtual uint32_t GetCarriedTreeType();
 	// BW1W120 0074a9d0 BW1M119 01160510
 	virtual uint32_t SaveObject(LHOSFile& file, const MapCoords* coords);
+	// BW1W120 0074c650 BW1M119 0115daf0
+	bool32_t GetPosForVillagerToSleepUnder(Villager* villager, MapCoords& pos);
 	// BW1W120 0074c5f0 BW1M119 0115dd60
 	virtual void CreateCollideData();
 	// BW1W120 0074b810 BW1M119 0115f830
@@ -238,8 +240,6 @@ public:
 
 	// BW1W120 0074a3a0 BW1M119 01160a20
 	float Decay(float amount);
-	// BW1W120 0074c650 BW1M119 0115daf0
-	bool32_t GetPosForVillagerToSleepUnder(Villager* villager, MapCoords& pos);
 	// BW1W120 0074bd20 BW1M119 0115f040
 	void AddPermanentFootPrint();
 	// BW1W120 0074a6f0 BW1M119 null
