@@ -51,17 +51,17 @@ public:
 	static void ProcessSoundTags();
 
 	// BW1W120 0071e840 BW1M119 0151bd10
-	static SoundTag* Create(GameThingWithPos* param_1, unsigned long param_2, bool param_3, unsigned long param_4,
-	                        unsigned long param_5, int param_6, int param_7, AUDIO_SFX_BANK_TYPE bank_type,
-	                        int param_9);
+	static SoundTag* Create(GameThingWithPos* thing, unsigned long sample, bool follow, unsigned long play_type,
+	                        unsigned long loop_count, int doppler, int positional, AUDIO_SFX_BANK_TYPE bank_type,
+	                        int delay);
 	// BW1W120 0071ea40 BW1M119 0109dc20
-	static SoundTag* Create(const LHPoint& pos, unsigned long sample, bool param_3, unsigned long param_4,
-	                        unsigned long param_5, int param_6, int param_7, AUDIO_SFX_BANK_TYPE bank_type,
-	                        int param_9);
+	static SoundTag* Create(const LHPoint& pos, unsigned long sample, bool follow, unsigned long play_type,
+	                        unsigned long loop_count, int doppler, int positional, AUDIO_SFX_BANK_TYPE bank_type,
+	                        int delay);
 	// BW1W120 0071eb60 BW1M119 0109c5e0
-	static SoundTag* Create(const MapCoords& coords, unsigned long sample, bool param_3, unsigned long param_4,
-	                        unsigned long param_5, int param_6, int param_7, AUDIO_SFX_BANK_TYPE bank_type,
-	                        int param_9);
+	static SoundTag* Create(const MapCoords& coords, unsigned long sample, bool follow, unsigned long play_type,
+	                        unsigned long loop_count, int doppler, int positional, AUDIO_SFX_BANK_TYPE bank_type,
+	                        int delay);
 	// BW1W120 0071ebe0 BW1M119 0151b7f0
 	static void Remove(GameThingWithPos* thing, unsigned long sample, AUDIO_SFX_BANK_TYPE bank_type);
 	// BW1W120 0071ed40 BW1M119 010a05d0
