@@ -134,7 +134,7 @@ LH3DColor GTreeInfo::GetDebugColor() const
 	return LH3DColor(121, 238, 94, 255);
 }
 
-void GTreeInfo::UpdateValue(float value, uint32_t offset, uint32_t param_3)
+void GTreeInfo::UpdateValue(float value, unsigned long offset, unsigned long param_3)
 {
 	uint32_t numInfos;
 	GetBaseInfo(numInfos);
