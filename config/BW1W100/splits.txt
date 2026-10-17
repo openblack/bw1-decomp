@@ -2053,12 +2053,13 @@ Black/VillagerStates.cpp:
 	.text       start:0x006F74F0 end:0x006F9930
 	.rdata      start:0x008D1B4C end:0x008D1B90
 	.data       start:0x00B47498 end:0x00B474E0
-	.bss        start:0x00CDAAF0 end:0x00CEBDF8
+	.bss        start:0x00CDAAF0 end:0x00CEBE00
 
 Black/VillagerTrader.cpp:
 	.text       start:0x006F9930 end:0x006F9960
 	.rdata      start:0x008D1B90 end:0x008D1B9C
-	.bss        start:0x00CEBDF8 end:0x00CEBE04
+	.CRT$XCU    start:0x008F727C end:0x008F7280 align:4
+	.bss        start:0x00CEBE00 end:0x00CEBE04
 
 Black/VillagerWorshipper.cpp:
 	.text       start:0x006F9960 end:0x006FAA60

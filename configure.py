@@ -1220,7 +1220,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/VillagerShepherd.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerStates.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerStateTableInfo.cpp"),
-            GameCodeObject(NonMatching, "Black/VillagerTrader.cpp"),
+            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120"), "Black/VillagerTrader.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerWorshipper.cpp"),
             GameCodeObject(NonMatching, "Black/VirtualInfluence.cpp"),
             GameCodeObject(NonMatching, "Black/ViscousLiquid.cpp"),

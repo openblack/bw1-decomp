@@ -2627,13 +2627,13 @@ Black/VillagerStates.cpp:
 	.rdata      start:0x0099AA0C end:0x0099AA50
 	.CRT$XCU    start:0x009C7A2C end:0x009C7A44 align:4
 	.data       start:0x00C24608 end:0x00C24658
-	.bss        start:0x00DB9E58 end:0x00DCB160
+	.bss        start:0x00DB9E58 end:0x00DCB168
 
 Black/VillagerTrader.cpp:
 	.text       start:0x0076B950 end:0x0076BA10
 	.rdata      start:0x0099AA50 end:0x0099AA5C
 	.CRT$XCU    start:0x009C7A44 end:0x009C7A4C align:4
-	.bss        start:0x00DCB160 end:0x00DCB16C
+	.bss        start:0x00DCB168 end:0x00DCB16C
 
 Black/VillagerWorshipper.cpp:
 	.text       start:0x0076BA10 end:0x0076CC40
