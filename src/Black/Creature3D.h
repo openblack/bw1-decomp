@@ -7,6 +7,7 @@
 #include <Lionhead/LH3DLib/development/LH3DMeshIntersect.h> /* For struct TextureRef */
 #include <Lionhead/LH3DLib/development/LHPoint.h>           /* For struct LHPoint */
 #include <Lionhead/LH3DLib/development/Zoomer.h>            /* For struct Zoomer3d */
+#include <chlasm/SoundAction.h>                             /* For enum LHSoundAction */
 #include <re_common.h>                                      /* For bool32_t */
 
 #include "Morphable.h" /* For struct Morphable */
@@ -58,11 +59,6 @@ struct LH3DCreatureTattoo
 	uint16_t : 6;
 	uint16_t Skin : 2;
 	uint16_t : 8;
-};
-
-enum LHSoundAction
-{
-	LH_SOUND_ACTION_UNKNOWN
 };
 
 enum LH3D_CREATURE_STATE
