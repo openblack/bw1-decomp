@@ -139,6 +139,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 01084cb0
+	MapCoords& GetHandRenderCollidePos() { return interface_collide.pos; }
 	// BW1W120 005d8a10 BW1M119 0136f240
 	void StartImmersion(IMMERSION_EFFECT_TYPE type, unsigned long param_2);
 	// BW1W120 005d8af0 BW1M119 0136f110

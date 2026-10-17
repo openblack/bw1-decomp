@@ -18,9 +18,12 @@
 #include "Creature.h"
 #include "Creature3D.h"
 #include "DeadTree.h"
+#include "Interface.h"
 #include "Rand.h"
 #include "Map.h"
 #include "Utils.h"
+#include "ValueSpinner.h"
+#include "WorshipSite.h"
 #include "RootsPile.h"
 #include "Script.h"
 #include "Setup.h"
@@ -36,6 +39,7 @@
 #include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland */
 #include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For TWO_PI */
 #include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For LH3DTech */
+#include <Lionhead/LH3DLib/development/LH3DText.h>   /* For CHAR2WCHAR */
 #include <Lionhead/LH3DLib/development/LHRandom.h>   /* For Random */
 #include <Lionhead/LHLib/ver5.0/LHCollide.h>         /* For NewCollide */
 
@@ -430,6 +434,53 @@ uint32_t Tree::ValidToApplyThisToObject(GInterfaceStatus* status, Object* object
 		return true;
 	}
 	return false;
+}
+
+uint32_t Tree::ApplyThisToObject(GInterfaceStatus* status, Object* object, GestureSystemPacketData* data)
+{
+	WorshipTotem* totem = dynamic_cast<WorshipTotem*>(object);
+	if (totem != NULL)
+	{
+		if (!(Flags & GAME_THING_WITH_POS_FLAG_INDESTRUCTIBLE))
+		{
+			float        sacrifice = GetSacrificeValue();
+			WorshipSite* site = totem->Site.Get();
+			sacrifice *= GetLife();
+			site->ChantStore += sacrifice;
+			site->TotalSacrificeValue += sacrifice;
+			GoolooGooloo(this);
+			ToBeDeleted(false);
+			if (status != NULL)
+			{
+				LHPoint              pos = status->GetHandPos();
+				LH_SamplePlayOptions options;
+				options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
+				options.SampleNumber = LH_SAMPLE_G_SACRIFICE_01;
+				options.AttachedObject = this;
+				options.Positional = 1;
+				options.Pos = pos;
+				options.Looping = 0;
+				GGlobal::Global.audio->PlaySoundEffect(&options);
+			}
+			if (status == GGame::g_game->MyInterfaceStatus())
+			{
+				ValueSpinner* spinner = new (FILEPATH, 976) ValueSpinner;
+				char          text[12];
+				sprintf(text, "%3.0f", sacrifice);
+				LH3DColor colour(255, 0, 0);
+				LHPoint   pos = GGame::g_game->MyInterface()->GetHandRenderCollidePos().GetLHPoint();
+				spinner->Init(pos, CHAR2WCHAR(text), colour);
+			}
+			return OBJECT_APPLY_RESULT_RESOURCE_TAKEN;
+		}
+		return OBJECT_APPLY_RESULT_NONE;
+	}
+	if (object != NULL && object->IsResourceStore(RESOURCE_TYPE_WOOD) &&
+	    object->DeleteObjectAndTakeResource(this, status))
+	{
+		return OBJECT_APPLY_RESULT_RESOURCE_TAKEN;
+	}
+	return OBJECT_APPLY_RESULT_NONE;
 }
 
 uint32_t Tree::ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords, GestureSystemPacketData* data)
