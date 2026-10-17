@@ -42,7 +42,7 @@
 #include <math.h>    /* For cos, sin */
 #include <stdio.h>   /* For sprintf */
 #include <string.h>  /* For strlen */
-#include <windows.h> /* For min */
+#include <windows.h> /* For max, min */
 
 #define TREE_NUM_ANGLES       16
 #define TREE_ROOTS_PILE_PARAM 593
@@ -141,11 +141,7 @@ void Tree::CallVirtualFunctionsForCreation(const MapCoords& coords)
 	Game3dObject->SetDynamicLighting(false);
 	Game3dObject->SetShadowOnTextureChroma(true);
 	Game3dObject->SetCastDynamicShadow(false);
-	float   scale = GetScale();
-	float   yAngle = GetYAngle();
-	LHPoint point;
-	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
-	Game3dObject->LH3DObject::SetPosition(point, yAngle, scale);
+	SetPositionOnMap(Game3dObject, coords, GetYAngle(), GetScale());
 	Game3dObject->SetPaper(true);
 	AngleIndex = (int)(GetYAngle() * (TREE_NUM_ANGLES / TWO_PI) + 0.5f);
 	Game3dObject->importance = -0.1f;
@@ -538,6 +534,33 @@ uint32_t Tree::Process()
 		return false;
 	}
 	return true;
+}
+
+float Tree::Grow(float amount, bool instant, bool raise_target)
+{
+	float scale = GetScale();
+	if (raise_target)
+	{
+		TargetScale = max(TargetScale, scale + amount);
+	}
+	if (scale == TargetScale)
+	{
+		return 0.0f;
+	}
+	float newScale = min(scale + amount, TargetScale);
+	if (scale == newScale || instant)
+	{
+		SetScale(newScale);
+	}
+	else
+	{
+		SetJustScale(newScale);
+		if (Game3dObject != NULL)
+		{
+			SetPositionOnMap(Game3dObject, Pos, GetYAngle(), GetScale());
+		}
+	}
+	return GetScale() - scale;
 }
 
 float Tree::GetWoodRemovedByEffect(EffectValues& values)
