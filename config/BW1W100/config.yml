@@ -20,6 +20,11 @@ block_relocations:
   - source: 0x008FC3AC
 
 add_relocations:
+# CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
+  - source: 0x0044E24C
+    type: x86_abs32
+    target: '?Objects@CarriedObject@@2PAPAVLH3DObject@@A'
+    addend: 0x40
 # PSysProperties shared callback aliases and istream exception boundaries.
   - source: 0x0065A9E8
     type: x86_abs32
