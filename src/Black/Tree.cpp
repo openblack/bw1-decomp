@@ -264,9 +264,7 @@ void Tree::Draw()
 		{
 			LHPoint flyingPos = flying->Pos;
 			flyingPos.y = Game3dObject->matrix._42;
-			LHPoint offset(&flyingPos);
-			offset.Sub(LHPoint(&Game3dObject->matrix.GetPos()));
-			float distance = offset.GetNorme();
+			float distance = LH3DMath::GetDistance(&flyingPos, &Game3dObject->matrix.GetPos());
 			float radius = flying->Radius;
 			if (distance < radius)
 			{
