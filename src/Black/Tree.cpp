@@ -255,6 +255,7 @@ void Tree::Draw()
 	LHMatrix savedMatrix;
 	float    savedX;
 	float    savedZ;
+	bool32_t bent = false;
 	if (DrawIndex != 0)
 	{
 		FlyingObjects* flying = &FlyingObjects::Getg_list()[DrawIndex];
@@ -302,16 +303,21 @@ void Tree::Draw()
 				GGlobal::Global.audio->SamplePlayAnimEffect(this, sqrt(toCamera * toCamera), sound, 0,
 				                                            GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR),
 				                                            0, 0.0f, 0.0f);
-				goto draw;
+				bent = true;
 			}
 		}
-		DrawIndex = 0;
+		if (!bent)
+		{
+			DrawIndex = 0;
+		}
 	}
-	savedX = Game3dObject->matrix._21;
-	savedZ = Game3dObject->matrix._23;
-	Game3dObject->matrix._21 = GetScale() * SwayX[AngleIndex];
-	Game3dObject->matrix._23 = GetScale() * SwayZ[AngleIndex];
-draw:
+	if (!bent)
+	{
+		savedX = Game3dObject->matrix._21;
+		savedZ = Game3dObject->matrix._23;
+		Game3dObject->matrix._21 = GetScale() * SwayX[AngleIndex];
+		Game3dObject->matrix._23 = GetScale() * SwayZ[AngleIndex];
+	}
 	if (GetFireEffect() != NULL)
 	{
 		SpecialDrawOnFire(true);
