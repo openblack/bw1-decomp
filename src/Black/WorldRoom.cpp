@@ -670,7 +670,7 @@ void WorldRoom::UpdateKeyboard(LH_KEY key, uint16_t modifiers)
 	options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];                                     \
 	options.AttachedObject = attached_object;                                                                          \
 	options.SampleNumber = sample;                                                                                     \
-	options.Positional = 0;                                                                                            \
+	options.Positional = false;                                                                                        \
 	options.PlayType = 3;                                                                                              \
 	options.Pitch = pitch;                                                                                             \
 	GGlobal::Global.audio->PlaySoundEffect(&options)

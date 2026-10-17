@@ -313,19 +313,19 @@ public:
 	// BW1W120 0042a370 BW1M119 011876f0
 	void ReleaseSFXBanks();
 	// BW1W120 00429d60 BW1M119 010001c0
-	void PlaySoundEffect(Base* object, uint32_t sample, uint32_t play_type, uint32_t loop_count, int doppler,
-	                     int positional, AUDIO_SFX_BANK_TYPE bank_type);
+	void PlaySoundEffect(Base* object, uint32_t sample, uint32_t play_type, uint32_t loop_count, bool32_t doppler,
+	                     bool32_t positional, AUDIO_SFX_BANK_TYPE bank_type);
 	// BW1W120 00429da0 BW1M119 01000240
 	void PlaySoundEffect(Base* object, unsigned long sample, unsigned long play_type, unsigned long loop_count,
-	                     int doppler, int positional, LH_AudioBank* bank);
+	                     bool32_t doppler, bool32_t positional, LH_AudioBank* bank);
 	// BW1W120 00429e30 BW1M119 010230f0
 	void PlaySoundEffect(LH_SamplePlayOptions* options);
 	// BW1W120 0042a040 BW1M119 010004c0
 	void PlaySoundEffect(Base* object, const LHPoint& pos, uint32_t sample, uint32_t play_type, uint32_t loop_count,
-	                     int doppler, int positional, LH_AudioBank* bank);
+	                     bool32_t doppler, bool32_t positional, LH_AudioBank* bank);
 	// BW1W120 0042a000 BW1M119 01187f00
 	void PlaySoundEffect(Base* object, const LHPoint& pos, uint32_t sample, uint32_t play_type, uint32_t loop_count,
-	                     int doppler, int positional, AUDIO_SFX_BANK_TYPE bank_type);
+	                     bool32_t doppler, bool32_t positional, AUDIO_SFX_BANK_TYPE bank_type);
 	// BW1W120 0042a4b0 BW1M119 01062bd0
 	uint32_t SamplePlayAnimEffect(void* object, float distance, long* sound, int param_4, LH_AudioBank* bank,
 	                              int param_6, float param_7, float param_8);

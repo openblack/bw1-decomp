@@ -390,7 +390,7 @@ void GPlayer::ClaimTown(Town* town)
 			options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
 			options.SampleNumber = LH_SAMPLE_G_TAKEOVERTOWN_01;
 			options.AttachedObject = NULL;
-			options.Positional = 0;
+			options.Positional = false;
 			GGlobal::Global.audio->PlaySoundEffect(&options);
 		}
 	}
