@@ -11,6 +11,7 @@
 
 // Forward Declares
 
+class Game3DObject;
 class Base;
 class Creature;
 class GInterfaceStatus;
@@ -39,6 +40,8 @@ public:
 	static void Init();
 	// BW1W120 00511250 BW1M119 010c57a0
 	static void Close();
+	// BW1W120 00511270 BW1M119 010c5620
+	static void DrawRoots(Game3DObject* object);
 	// BW1W120 00510bb0 BW1M119 010c6960
 	static DeadTree* Create(const MapCoords& coords, const GTreeInfo* info, GPlayer* player, float param_4,
 	                        float param_5, float param_6, float param_7, LH3DMesh* mesh);
