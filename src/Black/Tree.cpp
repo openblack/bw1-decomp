@@ -326,10 +326,7 @@ void Tree::Draw()
 	else
 	{
 		unsigned long color = Game3dObject->color;
-		Game3dObject->color = (((color & 0xff0000) * Brightness & 0xff0000ff) |
-		                       ((color & 0xff00) * Brightness & 0xff0000) | ((color & 0xff) * Brightness & 0xff00)) >>
-		                          8 |
-		                      (color & 0xff000000);
+		Game3dObject->color = LH3D_SCALE_COLOR(color, Brightness);
 		Game3dObject->AddForDrawing(this);
 	}
 	if (DrawIndex != 0)
@@ -380,11 +377,7 @@ void Tree::DrawOutOfMap(bool selectable)
 		else
 		{
 			unsigned long color = Game3dObject->color;
-			Game3dObject->color =
-				(((color & 0xff0000) * Brightness & 0xff0000ff) | ((color & 0xff00) * Brightness & 0xff0000) |
-			     ((color & 0xff) * Brightness & 0xff00)) >>
-					8 |
-				(color & 0xff000000);
+			Game3dObject->color = LH3D_SCALE_COLOR(color, Brightness);
 			Game3dObject->AddForDrawing(selectable ? this : NULL);
 		}
 		if (Game3dObject != NULL)
