@@ -669,7 +669,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureMentalAttribute.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalAttributeTest.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalBelief.cpp"),
-            GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120"), "Black/CreatureMentalBeliefs.cpp"),
+            GameCodeObject(MatchingFor("BW1W110", "BW1W120"), "Black/CreatureMentalBeliefs.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDebug.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDesire.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDesireSource.cpp"),
