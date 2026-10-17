@@ -1930,7 +1930,7 @@ uint32_t Villager::ApplyThisToObject(GInterfaceStatus* status, Object* object, G
 			options.AttachedObject = this;
 			options.Positional = 1;
 			options.Pos = soundPos;
-			options.Looping = 0;
+			options.Follow = 0;
 			GGlobal::Global.audio->PlaySoundEffect(&options);
 			if (IsChild())
 			{

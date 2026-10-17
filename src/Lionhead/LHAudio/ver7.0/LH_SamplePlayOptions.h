@@ -21,16 +21,17 @@ public:
 	uint32_t      field_0x0;
 	LH_AudioBank* Bank;
 	uint32_t      Positional;
-	uint32_t      Looping;
-	uint8_t       field_0x10[0x10];
+	uint32_t      Follow;
+	uint32_t      Doppler;
+	uint8_t       field_0x14[0xc];
 	Base*         AttachedObject;
 	uint32_t      SampleNumber;
 	uint8_t       field_0x28[0x8];
 	LHPoint       Pos;
 	uint8_t       field_0x3c[0xc];
 	uint32_t      Pitch;
-	uint32_t      field_0x4c;
-	uint32_t      Priority;
+	uint32_t      LoopCount;
+	uint32_t      PlayType;
 	uint8_t       field_0x54[0x110];
 	uint32_t      KeepData;
 
