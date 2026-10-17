@@ -59,7 +59,8 @@
 
 #define TREE_WIND_ANGLE             0.0
 #define TREE_SWAY_SPEED_CHANGE_TIME 2000
-#define TREE_SWAY_PHASE_RATE        0.0010606061f
+#define TREE_SWAY_PHASE_PER_FRAME   0.035f
+#define TREE_SWAY_FRAME_TIME        33
 #define TREE_SWAY_AMPLITUDE         0.03
 
 #define TREE_BEND_MIN           0.75f
@@ -208,7 +209,7 @@ void Tree::PreDraw()
 		{
 			SwaySpeed[i] = Random(1.0f, 2.0f);
 		}
-		SwayPhase[i] += GGame::g_game->TimeInc * SwaySpeed[i] * TREE_SWAY_PHASE_RATE;
+		SwayPhase[i] += GGame::g_game->TimeInc * SwaySpeed[i] * (TREE_SWAY_PHASE_PER_FRAME / TREE_SWAY_FRAME_TIME);
 		float sway = cos(SwayPhase[i]) * TREE_SWAY_AMPLITUDE;
 		SwayX[i] = sway * sin(TREE_WIND_ANGLE);
 		SwayZ[i] = -sway * cos(TREE_WIND_ANGLE);
