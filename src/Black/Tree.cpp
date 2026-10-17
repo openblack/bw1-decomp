@@ -84,7 +84,7 @@ static int   Brightness = -1;
 static float ForestSearchRadius = 25.0f;
 static float FireAlpha;
 
-static const float FlyingObjectBendAngle = 0.47123894f;
+static const float FlyingObjectBendAngle = PI_F * 0.15f;
 static const float FireAlphaCold = 230.0f;
 
 GBaseInfo* GTreeInfo::GetBaseInfo(uint32_t& num_infos)
