@@ -243,14 +243,7 @@ void Tree::DrawOutOfMap(bool selectable)
 		{
 			DeadTree::DrawRoots(Game3dObject);
 		}
-		Game3DObject*        object = Game3dObject;
-		const LH3DMapCoords& coords = Pos;
-		LH3DIsland::GetColorAndSpecular(coords, &object->color, &object->specular);
-		LHPoint point;
-		point.x = (uint32_t)coords.WholeX() * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
-		point.y = 0.0f;
-		point.z = (uint32_t)coords.WholeZ() * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
-		object->specular = LH3DIsland::GetFogValue(&point, object->specular, &object->color);
+		LH3DIsland::GetColorAndSpecularWithFog(Pos, &Game3dObject->color, &Game3dObject->specular);
 		Game3dObject->field_0x5c = 0x40;
 		Game3dObject->field_0x60 = 0x80;
 		if (GetFireEffect() != NULL)
