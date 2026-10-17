@@ -143,6 +143,12 @@ public:
 		SetToZero();
 		CollideData = NULL;
 	}
+	// BW1W120 inlined BW1M119 inlined
+	SingleMapFixed(const MapCoords& coords, const GObjectInfo* info, float y_angle, float scale)
+		: Fixed(coords, info, y_angle, scale)
+	{
+		CollideData = NULL;
+	}
 
 	// Non-virtual methods
 

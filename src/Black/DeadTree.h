@@ -11,6 +11,8 @@
 
 // Forward Declares
 
+class Game3DObject;
+class Tree;
 class Base;
 class Creature;
 class GInterfaceStatus;
@@ -32,13 +34,25 @@ class DeadTree : public Rock
 {
 public:
 	uint32_t field_0x94;
-	uint32_t field_0x98;
+	union {
+		uint16_t DeadTreeFlags;
+		struct
+		{
+			uint16_t : 4;
+			uint16_t field_0x98_4 : 1;
+		};
+	};
+	uint16_t field_0x9a;
 	float    WoodMultiplier;
 
 	// BW1W120 00511210 BW1M119 010c5820
 	static void Init();
 	// BW1W120 00511250 BW1M119 010c57a0
 	static void Close();
+	// BW1W120 00511270 BW1M119 010c5620
+	static void DrawRoots(Game3DObject* object);
+	// BW1W120 00510b70 BW1M119 010c6ae0
+	static DeadTree* Create(Tree* tree, GPlayer* player);
 	// BW1W120 00510bb0 BW1M119 010c6960
 	static DeadTree* Create(const MapCoords& coords, const GTreeInfo* info, GPlayer* player, float param_4,
 	                        float param_5, float param_6, float param_7, LH3DMesh* mesh);

@@ -518,6 +518,16 @@ public:
 	}
 	// BW1W120 00802120 BW1M119 01026d00 (LHCombined Release)
 	static void GetColorAndSpecular(const LH3DMapCoords& coords, unsigned long* color, unsigned long* specular);
+	// BW1W120 inlined BW1M119 inlined
+	static void GetColorAndSpecularWithFog(const LH3DMapCoords& coords, unsigned long* color, unsigned long* specular)
+	{
+		GetColorAndSpecular(coords, color, specular);
+		LHPoint point;
+		point.x = (uint32_t)coords.WholeX() * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
+		point.y = 0.0f;
+		point.z = (uint32_t)coords.WholeZ() * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
+		*specular = GetFogValue(&point, *specular, color);
+	}
 };
 
 // BW1W120 00804e60 BW1M119 01045220 (LHCombined Release)
