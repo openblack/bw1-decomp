@@ -657,7 +657,7 @@ uint32_t Tree::DropSfx()
 	options.AttachedObject = this;
 	options.Positional = 1;
 	options.Pos = point;
-	options.Looping = 0;
+	options.Follow = 0;
 	GGlobal::Global.audio->PlaySoundEffect(&options);
 	return true;
 }
@@ -754,7 +754,7 @@ uint32_t Tree::ApplyThisToObject(GInterfaceStatus* status, Object* object, Gestu
 				options.AttachedObject = this;
 				options.Positional = 1;
 				options.Pos = pos;
-				options.Looping = 0;
+				options.Follow = 0;
 				GGlobal::Global.audio->PlaySoundEffect(&options);
 			}
 			if (status == GGame::g_game->MyInterfaceStatus())

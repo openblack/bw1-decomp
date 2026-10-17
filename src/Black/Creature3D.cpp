@@ -5768,7 +5768,7 @@ void LH3DCreature::DoBlendedAction()
 			options.AttachedObject = (Base*)this;
 			options.Positional = 1;
 			options.Pos = pos;
-			options.Looping = 0;
+			options.Follow = 0;
 			GGlobal::Global.audio->PlaySoundEffect(&options);
 			rock->SplitInTwo();
 		}
@@ -5793,7 +5793,7 @@ void LH3DCreature::DoBlendedAction()
 			options.AttachedObject = (Base*)this;
 			options.Positional = 1;
 			options.Pos = pos;
-			options.Looping = 0;
+			options.Follow = 0;
 			GGlobal::Global.audio->PlaySoundEffect(&options);
 			rock->SplitInTwo();
 		}

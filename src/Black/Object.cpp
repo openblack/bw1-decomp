@@ -2236,7 +2236,7 @@ void Object::DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* pa
 		options.AttachedObject = param_1;
 		options.Positional = 1;
 		options.Pos = pos;
-		options.Looping = 0;
+		options.Follow = 0;
 		GGlobal::Global.audio->PlaySoundEffect(&options);
 	}
 	GoolooGooloo(param_1);
