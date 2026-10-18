@@ -503,6 +503,18 @@ def GameCodeObject(completed, name, **options):
     return Object(completed, name, cflags=cflags_gamecode, **options)
 
 
+# A game-code object built against its own precompiled header, which sits next
+# to it in src/Black/ with a one-line .cpp that includes it. As with
+# LH3DLibPCHObject, /Yu lays out the unit's .bss in reverse order of each
+# variable's first definition or use after the header (uses inside the header do
+# not count) instead of in name-hash order; the original game code was built this
+# way. /Zi is left out for the same reason.
+def GameCodePCHObject(completed, name, header, **options):
+    source = "src/" + name.rsplit("/", 1)[0] + "/" + header.replace(".h", ".cpp")
+    options.setdefault("pch", {"header": header, "source": source})
+    return Object(completed, name, cflags=[flag for flag in cflags_gamecode if flag != "/Zi"], **options)
+
+
 # An LH3DLib object, compiled with cflags_lh3dlib (Pentium Pro, /G6) and counted
 # in the "sdk" progress category.
 def LH3DLibObject(completed, name, **options):
@@ -596,7 +608,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Bookmark.cpp"),
             GameCodeObject(NonMatching, "Black/Bubble.cpp"),
             GameCodeObject(NonMatching, "Black/BuildingSite.cpp"),
-            GameCodeObject(NonMatching, "Black/BWGameSpy.cpp"),
+            GameCodePCHObject(NonMatching, "Black/BWGameSpy.cpp", "BWGameSpyPCH.h"),
             GameCodeObject(NonMatching, "Black/BWLan.cpp"),
             GameCodeObject(NonMatching, "Black/Camera.cpp"),
             GameCodeObject(NonMatching, "Black/CameraEditor.cpp"),

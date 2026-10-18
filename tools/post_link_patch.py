@@ -620,6 +620,13 @@ BW1W120_SAFEDISC_CALLS = (
     (0x00426C9B, call_rel32(0x00401879)),  # Audio
     (0x004271FA, call_indirect(0x008A98A8)),  # Audio: __imp__waveInClose@4
     (0x004282AB, call_rel32(0x00401879)),  # Audio
+    (0x0043DD5B, call_rel32(0x00401879)),  # BWGameSpy
+    (0x0043DDAB, call_rel32(0x00401879)),  # BWGameSpy
+    (0x0043EB6B, call_rel32(0x00401879)),  # BWGameSpy
+    (0x0043EF2A, call_indirect(0x008A9328)),  # BWGameSpy: __imp__LHEditBox__YAHPBDKKKK0HPAD_Z@4
+    (0x0043FA0B, call_rel32(0x00401879)),  # BWGameSpy
+    (0x004401CA, call_indirect(0x008A901C)),  # BWGameSpy: __imp__TrackMouseEvent@4
+    (0x0044059A, call_indirect(0x008A97AC)),  # BWGameSpy: __imp__ShellExecuteA@4
     (0x0044ABCA, call_indirect(0x008A9190)),  # CameraModeDance: __imp__RemoveDirectoryA@4
     (0x0044AC8B, call_rel32(0x00401879)),  # CameraModeDance
     (0x0044ACCA, call_indirect(0x008A96C4)),  # CameraModeDance: __imp__LHWaveGetQMixerDirectSoundObject...

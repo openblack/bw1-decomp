@@ -1,13 +1,18 @@
+#include "BWGameSpyPCH.h"
+
 #include "BWGameSpy.h"
 
-#include <stdio.h> /* For sprintf, sscanf */
-// Only BW1W120's unit carries the std::ctype<unsigned short>::id guard of the STL headers.
-#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-#include <string> /* For the std::ctype<unsigned short>::id guard */
+int  BWGameSpy::NumBans;
+char BWGameSpy::ChatServer[CHAT_SERVER_SIZE];
+#ifndef VERSION_BW1W100
+bool BWGameSpy::Locked;
 #endif
-#include <stdlib.h> /* For atoi */
-#include <string.h> /* For strcpy, strcmp, strnicmp */
-#include <wchar.h>  /* For wcslen, wcscpy, wcsncpy */
+int  LayerCommunication::NumPeopleInRoom;
+int  BWGameSpy::NumPlayersExpected;
+bool LayerCommunication::Connected;
+
+#include "ColourConstants.h" /* For White */
+#include "GameTimeConstants.h"
 
 #include <chlasm/HelpTextEnums.h>                  /* For HELP_TEXT_DIALOG_ADDITION_18 */
 #include <Lionhead/LH3DLib/development/LH3DText.h> /* For CHAR2WCHAR */
@@ -16,9 +21,6 @@
 #include <Lionhead/LHLog/ver4.0/LHRegistry.h>      /* For RegistryRetrieveULong */
 #include <Lionhead/LHLog/ver4.0/LHSPrintf.h>       /* For LHSPrintf, LHSPrintfW */
 #include <Lionhead/LHLog/ver4.0/LHVersion.h>       /* For LHVersion::GetModuleChecksum */
-
-#include "ColourConstants.h" /* For White */
-#include "GameTimeConstants.h"
 
 #include "alexmfc.h"                      /* For SetupBox */
 #include "DialogBoxBase.h"                /* For DialogBoxBase::Hide */
@@ -89,8 +91,17 @@ enum LOBBY_MESSAGE_BOX
 	LOBBY_MESSAGE_BOX_CONNECTING = 2,
 };
 
+GServer       BWGameSpy::CurrentServer;
+RoomType      BWGameSpy::CurrentRoom;
 BWGameSpy     BWGameSpy::Instance;
+int           BWGameSpy::NumPlayersEnumerated;
+CHAT          BWGameSpy::Chat;
 static DBInfo ChatServerQuery;
+#ifndef VERSION_BW1W100
+CHATChannelMode BWGameSpy::ChannelMode;
+#endif
+char BWGameSpy::Bans[MAX_BANS][BAN_NAME_SIZE];
+char BWGameSpy::BanChannel[CHANNEL_NAME_SIZE];
 
 PEERCallbacks BWGameSpy::Callbacks = {
 	BWGameSpy::DisconnectedCallback,      BWGameSpy::RoomMessageCallback,   BWGameSpy::RoomUTMCallback,
@@ -158,25 +169,6 @@ static ProtectionMarker CreatureVersionMarker = {
 	{                                                                                                                  \
 		((void (*)())(marker).Words[3])();                                                                             \
 	}
-
-bool LayerCommunication::Connected;
-int  LayerCommunication::NumPeopleInRoom;
-
-CHAT     BWGameSpy::Chat;
-int      BWGameSpy::NumPlayersEnumerated;
-RoomType BWGameSpy::CurrentRoom;
-GServer  BWGameSpy::CurrentServer;
-int      BWGameSpy::NumPlayersExpected;
-#ifndef VERSION_BW1W100
-bool BWGameSpy::Locked;
-#endif
-char BWGameSpy::ChatServer[CHAT_SERVER_SIZE];
-char BWGameSpy::BanChannel[CHANNEL_NAME_SIZE];
-char BWGameSpy::Bans[MAX_BANS][BAN_NAME_SIZE];
-int  BWGameSpy::NumBans;
-#ifndef VERSION_BW1W100
-CHATChannelMode BWGameSpy::ChannelMode;
-#endif
 
 static bool GetLHUIDFromIRCNick(const char* nick, LH_USER_ID* id)
 {
