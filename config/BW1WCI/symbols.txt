@@ -2873,6 +2873,7 @@ CannonAmmo_vfunc1 = .text:0x0046B910; // type:function
 CannonAmmo_vfunc507 = .text:0x0046B9F0; // type:function
 CannonAmmo_vfunc498 = .text:0x0046BBB0; // type:function
 CannonAmmo_vfunc405 = .text:0x0046BBC0; // type:function
+?Init@CarriedObject@@SAXXZ = .text:0x0046C130; // type:function size:0x3A0 scope:global
 ?Reset@CarriedObject@@SAXXZ = .text:0x0046C4D0; // type:function size:0x30
 ?Get3DCarriedObject@CarriedObject@@SAPAVLH3DObject@@W4CARRIED_OBJECT@@@Z = .text:0x0046C500; // type:function size:0x20
 _$E15 = .text:0x0046C520; // type:function scope:local

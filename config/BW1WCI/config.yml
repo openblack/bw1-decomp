@@ -71,6 +71,11 @@ block_relocations:
   - source: 0x0040C28E
   - source: 0x0040CCDB
 add_relocations:
+# CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
+  - source: 0x0046C4EC
+    type: x86_abs32
+    target: '?Objects@CarriedObject@@2PAPAVLH3DObject@@A'
+    addend: 0x40
 # LH3DCreature::StateAction's jump table (dtk misses it): one entry per case block.
   - source: 0x00492B1C
     type: x86_abs32

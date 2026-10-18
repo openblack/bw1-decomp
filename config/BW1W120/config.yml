@@ -104,6 +104,11 @@ block_relocations:
   - source: 0x0040C2FE
   - source: 0x0040CD4B
 add_relocations:
+# CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
+  - source: 0x004628EC
+    type: x86_abs32
+    target: '?Objects@CarriedObject@@2PAPAVLH3DObject@@A'
+    addend: 0x40
 # LH3DIsland: loop bounds one past the end of an array (dtk reads them as the next symbol).
   - source: 0x007FF560
     type: x86_abs32

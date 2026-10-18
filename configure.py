@@ -617,7 +617,7 @@ config.libs = [
             GameCodeObject(MatchingFor("BW1W120"), "Black/CameraModePath.cpp"),
             GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120"), "Black/CameraModeScript.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeTwoObjects.cpp"),
-            GameCodeObject(NonMatching, "Black/CarriedObject.cpp"),
+            GameCodeObject(Matching, "Black/CarriedObject.cpp"),
             GameCodeObject(NonMatching, "Black/CDBox.cpp"),
             GameCodeObject(NonMatching, "Black/Chain.cpp"),
             GameCodeObject(NonMatching, "Black/ChallengeRoom.cpp"),
