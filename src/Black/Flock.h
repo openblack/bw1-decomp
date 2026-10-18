@@ -40,7 +40,7 @@ public:
 	uint16_t                         DomainRadius;
 	uint16_t                         FlockDistance;
 	float                            FlyingHeight;
-	uint32_t                         field_0x58;
+	bool32_t                         FollowShepherd;
 	uint32_t                         field_0x5c;
 	MapCoords                        SavedDomainCentre;
 	MapCoords                        field_0x6c;
@@ -48,7 +48,7 @@ public:
 	uint32_t                         field_0x7c;
 	uint32_t                         field_0x80;
 	GameThing*                       SavedThing;
-	uint32_t                         field_0x88;
+	uint32_t                         MaxMembers;
 	uint32_t                         field_0x8c;
 
 	// Override methods
@@ -109,7 +109,7 @@ public:
 	// BW1W120 005302e0 BW1M119 010e9370
 	void SetToZero();
 	// BW1W120 0052fb50 BW1M119 010ea6c0
-	void RemoveLivingFromFlock(Living* living, int update);
+	void RemoveLivingFromFlock(Living* living, bool32_t delete_if_empty);
 	// BW1W120 0052fc20 BW1M119 010ea580
 	void SetDomainCentrePos(const MapCoords& param_1);
 	// BW1W120 00530510 BW1M119 010e8d70
@@ -119,8 +119,7 @@ public:
 	Animal* FindAnimal(int(__cdecl* param_1)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, uint32_t),
 	                   SCRIPT_OBJECT_TYPE param_2, uint32_t param_3);
 	// BW1W120 0052fe10 BW1M119 010ea170
-	// TODO: incorrect return type
-	void SeperateLivingIntoNewFlock(Living* living, int update);
+	Flock* SeperateLivingIntoNewFlock(Living* living, bool32_t delete_if_empty);
 	// BW1W120 00530570 BW1M119 0106ac10
 	MapCoords* GetFlockPos();
 };
