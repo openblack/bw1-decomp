@@ -771,6 +771,40 @@ BW1W120_SAFEDISC_CALLS = (
 BW1W130_SAFEDISC_CALLS = (
     (0x00463399, jmp_run(0x00462FC1)),  # CarriedObject
     (0x004633E4, copy_run(0x00463399)),  # CarriedObject
+    (0x004DB9F3, jmp_run(0x004DB994)),  # CreatureMentalBeliefs
+    (0x004DBA1B, call_rel32(0x00403C49)),  # CreatureMentalBeliefs
+    (0x004DBB84, copy_run(0x004DBA1B)),  # CreatureMentalBeliefs
+    (0x004DBD65, copy_run(0x004DBB84)),  # CreatureMentalBeliefs
+    (0x004DBF27, copy_run(0x004DBD65)),  # CreatureMentalBeliefs
+    (0x004DC017, jmp_run(0x004DBF27)),  # CreatureMentalBeliefs
+    (0x004DC0E1, copy_run(0x004DC017)),  # CreatureMentalBeliefs
+    (0x004DC203, copy_run(0x004DC0E1)),  # CreatureMentalBeliefs
+    (0x004DC39A, call_indirect(0x008AE12C)),  # CreatureMentalBeliefs
+    (0x004DC543, copy_run(0x004DC39A)),  # CreatureMentalBeliefs
+    (0x004DC6E3, copy_run(0x004DC543)),  # CreatureMentalBeliefs
+    (0x004DC7D1, jmp_run(0x004DC6E3)),  # CreatureMentalBeliefs
+    (0x004DC96A, call_indirect(0x008AE934)),  # CreatureMentalBeliefs
+    (0x004DCA8B, call_rel32(0x00403C49)),  # CreatureMentalBeliefs
+    (0x004DCC3A, call_indirect(0x008AE00C)),  # CreatureMentalBeliefs
+    (0x004DCD53, jmp_run(0x004DCC3A)),  # CreatureMentalBeliefs
+    (0x004DCE32, jmp_run(0x004DCD53)),  # CreatureMentalBeliefs
+    (0x004DCE71, jmp_run(0x004DCE32)),  # CreatureMentalBeliefs
+    (0x004DCEB1, jmp_run(0x004DCE71)),  # CreatureMentalBeliefs
+    (0x004DCEF1, jmp_run(0x004DCEB1)),  # CreatureMentalBeliefs
+    (0x004DCF31, jmp_run(0x004DCEF1)),  # CreatureMentalBeliefs
+    (0x004DCF71, jmp_run(0x004DCF31)),  # CreatureMentalBeliefs
+    (0x004DCFB1, jmp_run(0x004DCF71)),  # CreatureMentalBeliefs
+    (0x004DCFF1, jmp_run(0x004DCFB1)),  # CreatureMentalBeliefs
+    (0x004DD031, jmp_run(0x004DCFF1)),  # CreatureMentalBeliefs
+    (0x004DD071, jmp_run(0x004DD031)),  # CreatureMentalBeliefs
+    (0x004DD095, jmp_run(0x004DD071)),  # CreatureMentalBeliefs
+    (0x004DD14A, call_indirect(0x008AE624)),  # CreatureMentalBeliefs
+    (0x004DD1F7, jmp_run(0x004DD14A)),  # CreatureMentalBeliefs
+    (0x004DD2E5, copy_run(0x004DD1F7)),  # CreatureMentalBeliefs
+    (0x004DD3F5, jmp_run(0x004DD2E5)),  # CreatureMentalBeliefs
+    (0x004DD461, copy_run(0x004DD3F5)),  # CreatureMentalBeliefs
+    (0x004DD501, copy_run(0x004DD461)),  # CreatureMentalBeliefs
+    (0x004DD5A4, copy_run(0x004DD501)),  # CreatureMentalBeliefs
     (0x004E15D3, jmp_run(0x004E1579)),  # CreatureMentalEditor
     (0x004E16D1, jmp_run(0x004E15D3)),  # CreatureMentalEditor
 )
