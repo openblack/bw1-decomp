@@ -103,7 +103,8 @@ deterministic but chaotic:
    matches, the difference is elsewhere: go back to §0.
 2. **Screen natural candidates once.** Write ≤ 20 plausible alternatives (helper forms backed
    by evidence, math wrappers, local layout) into a variants JSON and run
-   `tiebreak-probe.py --variants`. Any variant whose hash equals `baseline` doesn't touch the
+   `tiebreak-probe.py --variants` (or `variant-sweep.py`, which also ranks by objdiff score and
+   lists the rejected inline calls of each variant). Any variant whose hash equals `baseline` doesn't touch the
    tie at all; never build it into a bigger sweep.
 3. **Stop.** If nothing matches, ask the human: leave it nonmatching (the recommended
    default), or accept a fakematch. Unused locals of a type with an inline constructor, at a

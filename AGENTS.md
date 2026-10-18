@@ -316,6 +316,10 @@ branch, or the five versions of one revision:
 - For sweeps over one unit (knob counts, alternative spellings), use
   `tools/tiebreak-probe.py --variants FILE -j <cores>`: each variant compiles from a private copy
   of `src/`, in parallel, with an exact byte comparison. Do not loop over single-object rebuilds.
+- When no variant is expected to match exactly, use `tools/variant-sweep.py` instead. It takes
+  the same variant list, or knobs (named alternatives, swept as every combination or one knob at
+  a time), and ranks the variants by objdiff score. For each function it also lists the inline
+  calls c2 rejected, so a budget shift shows up next to the score.
 
 ## Source Organization
 
