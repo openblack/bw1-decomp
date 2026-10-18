@@ -47,9 +47,9 @@ public:
 	// BW1W120 0041e250 BW1M119 0117dad0
 	virtual bool32_t LandAtPos();
 	// BW1W120 0041e600 BW1M119 01057870
-	virtual uint32_t ReactToAnimalNeeds();
+	virtual ANIMAL_BEHAVIOUR_RESULT ReactToAnimalNeeds();
 	// BW1W120 0041e6c0 BW1M119 0117d840
-	virtual uint32_t LookForFoodPos();
+	virtual bool32_t LookForFoodPos(MapCoords* pos);
 	// BW1W120 0041e720 BW1M119 0117d750
 	virtual uint32_t LookForSleepPos();
 	// BW1W120 0041dd60 BW1M119 0117a560
@@ -107,7 +107,7 @@ public:
 	// Override methods
 
 	// BW1W120 0041e6b0 BW1M119 0117d8f0
-	virtual uint32_t ReactToAnimalNeeds();
+	virtual ANIMAL_BEHAVIOUR_RESULT ReactToAnimalNeeds();
 	// BW1W120 0041f2f0 BW1M119 0117c240
 	virtual void StartFadeOut(float time);
 	// BW1W120 0041f4c0 BW1M119 0117c0e0

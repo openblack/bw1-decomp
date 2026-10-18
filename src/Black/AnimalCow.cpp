@@ -1,13 +1,16 @@
 #include "GameTimeConstants.h"
 #include "AnimalCow.h"
+#include "ObjectMovementConstants.h"
 
 #include "Rand.h"
+#include "AnimalInfo.h"
 #include "AnimalGoat.h"
 #include "AnimalHorse.h"
 #include "AnimalPig.h"
 #include "AnimalSheep.h"
 #include "AnimalTortoise.h"
 #include "AnimalZebra.h"
+#include "Flock.h"
 #include "PuzzleGame.h"
 #include "Game3DObject.h" /* For Game3DObject */
 
@@ -185,6 +188,124 @@ bool32_t Cow::StartToEat()
 {
 	Animal::StartToEat();
 	TurnsUntilNextStateChange = GRand::GameRand(15, ANIMAL_COW_FILE, 183) + 20;
+	return true;
+}
+
+int Cow::DecideWhatToDo()
+{
+	if (CheckNeeds() == ANIMAL_NEEDS_BREED)
+	{
+		BreedingUrge = ANIMAL_BREEDING_URGE_NONE;
+		SetTopState(ANIMAL_STATE_GIVES_BIRTH);
+		return true;
+	}
+
+	const GAnimalInfo* animalInfo = (const GAnimalInfo*)GetInfo();
+	LookForFlocksInSpiral(Pos, animalInfo, GetDomainRadius() * ANIMAL_FLOCK_SEARCH_RADIUS_MULTIPLIER,
+	                      animalInfo->CanFlock);
+
+	if (flock.Get() != NULL)
+	{
+		if (flock->FollowShepherd)
+		{
+			ANIMAL_BEHAVIOUR_RESULT result = KeepFlockMemberWithinFlockArea();
+			if (result == ANIMAL_BEHAVIOUR_RESULT_HANDLED)
+			{
+				return result;
+			}
+			SetTopState(ANIMAL_STATE_WANDER);
+			return ANIMAL_BEHAVIOUR_RESULT_HANDLED;
+		}
+
+		if (KeepLeaderWithinDomain() == ANIMAL_BEHAVIOUR_RESULT_HANDLED)
+		{
+			return ANIMAL_BEHAVIOUR_RESULT_HANDLED;
+		}
+		if (KeepFlockMemberWithinFlockArea() == ANIMAL_BEHAVIOUR_RESULT_HANDLED)
+		{
+			return ANIMAL_BEHAVIOUR_RESULT_HANDLED;
+		}
+	}
+
+	if (ReactToAnimalNeeds() != ANIMAL_BEHAVIOUR_RESULT_HANDLED)
+	{
+		SetTopState(ANIMAL_STATE_START_WANDER);
+	}
+	return true;
+}
+
+ANIMAL_BEHAVIOUR_RESULT Cow::ReactToAnimalNeeds()
+{
+	MapCoords foodPos;
+	foodPos.Clear();
+	const GAnimalInfo* animalInfo = (const GAnimalInfo*)GetInfo();
+
+	if (animalInfo->BreedingThreshold != ANIMAL_NEED_THRESHOLD_DISABLED && GetAge() >= animalInfo->TeenAge)
+	{
+		IncreaseBreed();
+		if (BreedingUrge >= animalInfo->BreedingThreshold)
+		{
+			if (flock.Get() != NULL && flock->MaxMembers > flock->Members.GetSize())
+			{
+				BreedingUrge = ANIMAL_BREEDING_URGE_NONE;
+				SetTopState(ANIMAL_STATE_GIVES_BIRTH);
+				return ANIMAL_BEHAVIOUR_RESULT_HANDLED;
+			}
+			BreedingUrge = ANIMAL_BREEDING_URGE_NONE;
+		}
+	}
+
+	if (animalInfo->HungerThreshold != ANIMAL_NEED_THRESHOLD_DISABLED && Hunger >= animalInfo->HungerThreshold)
+	{
+		if (LookForFoodPos(&foodPos))
+		{
+			SetSpeed(GetInfo()->speed);
+			SetupMoveToPos(foodPos, ANIMAL_STATE_START_TO_EAT);
+			return ANIMAL_BEHAVIOUR_RESULT_HANDLED;
+		}
+	}
+	else if (animalInfo->TirednessThreshold != ANIMAL_NEED_THRESHOLD_DISABLED &&
+	         Tiredness >= animalInfo->TirednessThreshold &&
+	         (SleepPos.x != ANIMAL_SLEEP_POS_UNSET || SleepPos.z != ANIMAL_SLEEP_POS_UNSET))
+	{
+		SetTopState(ANIMAL_STATE_SEEK_SLEEP);
+		return ANIMAL_BEHAVIOUR_RESULT_HANDLED;
+	}
+
+	return ANIMAL_BEHAVIOUR_RESULT_UNHANDLED;
+}
+
+bool32_t Cow::LookForFoodPos(MapCoords* pos)
+{
+	MapCoords grazePos;
+	grazePos.Clear();
+	if (LookForGrazePos(Pos, GetDomainRadius(), &grazePos))
+	{
+		*pos = grazePos;
+		return true;
+	}
+	return false;
+}
+
+bool32_t Cow::Wander()
+{
+	if (ReactToAnimalNeeds() == ANIMAL_BEHAVIOUR_RESULT_HANDLED)
+	{
+		return true;
+	}
+
+	if (!PosWithinDomain(Pos, LIVING_DOMAIN_FULL_RADIUS_SCALE))
+	{
+		SetTopState(ANIMAL_STATE_DECIDE_WHAT_TO_DO);
+		return true;
+	}
+
+	if (MoveToWander(GetFlockPos(), 0, GetFlockDistance()) == OBJECT_MOVE_RESULT_CHANGED_CELL)
+	{
+		const GAnimalInfo* animalInfo = (const GAnimalInfo*)GetInfo();
+		LookForFlocksInSpiral(Pos, animalInfo, GetDomainRadius() * ANIMAL_FLOCK_SEARCH_RADIUS_MULTIPLIER,
+		                      animalInfo->CanFlock);
+	}
 	return true;
 }
 
