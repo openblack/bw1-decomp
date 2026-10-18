@@ -766,6 +766,7 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004633E4, copy_run(0x00463399)),  # CarriedObject
     (0x004E15D3, jmp_run(0x004E1579)),  # CreatureMentalEditor
     (0x004E16D1, jmp_run(0x004E15D3)),  # CreatureMentalEditor
+    (0x007707B6, jmp_run(0x007706F9)),  # VillagerTrader
 )
 
 
