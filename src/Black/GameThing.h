@@ -447,9 +447,9 @@ public:
 	// BW1W120 00425da0 BW1M119 014a3120
 	virtual char* GetDebugText();
 	// BW1W120 0071bc20 BW1M119 01517ad0
-	virtual uint32_t GetSampleForAttack();
+	virtual uint32_t GetSampleForAttack() { return 0; }
 	// BW1W120 0071bdd0 BW1M119 01517810
-	virtual uint32_t GetGuidanceResourceType();
+	virtual uint32_t GetGuidanceResourceType() { return 0; }
 	// BW1W120 00401930 BW1M119 011cfde0
 	virtual uint32_t GetShowNeedsPos(uint32_t need, MapCoords* pos) { return 0; }
 	// BW1W120 0056fcf0 BW1M119 011063a0
