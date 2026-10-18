@@ -122,7 +122,10 @@ python tools/codegen-check.py compare tidy                # add --ignore-comdat-
 ```
 
 It recompiles with the exact Ninja commands into `build/codegen-check/` and ignores
-compiler-numbered labels. COMDAT/RTTI section order reacts to unrelated header contents and
+compiler-numbered labels. For one unit, `tools/c2-il.py compare --source <file> --file <variant>`
+goes further: it compares the IL the front end hands to `c2.dll` and reports identical (no object
+can change), same code (only section or COMDAT order can move) or different (see
+[`docs/msvc6_passes.md`](docs/msvc6_passes.md)). COMDAT/RTTI section order reacts to unrelated header contents and
 even the source path, so an order-only difference matters only for linked units, which the
 executable hashes check.
 
