@@ -24,28 +24,28 @@ void Animal::ResolveLoad()
 	Living::ResolveLoad();
 }
 
-uint32_t Animal::KeepFlockMemberWithinFlockArea()
+ANIMAL_BEHAVIOUR_RESULT Animal::KeepFlockMemberWithinFlockArea()
 {
 	MapCoords& flockPos = *flock->GetFlockPos();
 
-	if (PosWithinDomain(coords, 1.0f) != 0)
+	if (PosWithinDomain(coords, LIVING_DOMAIN_FULL_RADIUS_SCALE))
 	{
 		float distToFlock = GUtils::GetDistanceInMetres(flockPos, coords);
 		if (distToFlock <= (float)GetFlockDistance())
 		{
-			return 1;
+			return ANIMAL_BEHAVIOUR_RESULT_IN_POSITION;
 		}
 	}
 
 	float     flockDistance = (float)GetFlockDistance();
-	MapCoords randomPos = CalcRandomPos(flockPos, 0.0f, flockDistance);
-	int       flockPosInDomain = PosWithinDomain(flockPos, 1.0f);
-	int       randomPosInDomain = PosWithinDomain(randomPos, 1.0f);
-	if (randomPosInDomain != 0 || flockPosInDomain == 0)
+	MapCoords randomPos = CalcRandomPos(flockPos, LIVING_RANDOM_POS_MIN_DISTANCE, flockDistance);
+	bool32_t  flockPosInDomain = PosWithinDomain(flockPos, LIVING_DOMAIN_FULL_RADIUS_SCALE);
+	bool32_t  randomPosInDomain = PosWithinDomain(randomPos, LIVING_DOMAIN_FULL_RADIUS_SCALE);
+	if (randomPosInDomain || !flockPosInDomain)
 	{
 		SetupMoveToPos(randomPos, ANIMAL_STATE_DECIDE_WHAT_TO_DO);
 	}
-	return 0x23;
+	return ANIMAL_BEHAVIOUR_RESULT_HANDLED;
 }
 
 RESOURCE_TYPE Animal::GetResourceType()

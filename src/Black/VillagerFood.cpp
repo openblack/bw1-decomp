@@ -2,6 +2,7 @@
 #include "Villager.h"
 
 #include "Abode.h"
+#include "StoragePit.h"
 #include "Town.h"
 #include "VillagerInfo.h"
 
@@ -30,6 +31,47 @@ bool32_t Villager::ShowPoisoned()
 	}
 	PlayAnimThenSetState(0xa3, 1);
 	return true;
+}
+
+bool32_t Villager::ChangeStateToFindFoodToEat()
+{
+	uint32_t        foodRequired = GetAmountOfFoodRequiredForMeal();
+	VILLAGER_STATES eatState =
+		(Flags & VILLAGER_FLAG_AT_HOME) ? VILLAGER_STATE_EAT_FOOD_AT_HOME : VILLAGER_STATE_EAT_FOOD;
+	if (foodRequired == 0)
+	{
+		SetTopState(eatState);
+		return true;
+	}
+	if (GetAbode() != NULL && GetAbode()->IsFunctional() &&
+	    GetAbode()->GetResource(RESOURCE_TYPE_FOOD) + ResourceHeld[RESOURCE_TYPE_FOOD] >= foodRequired)
+	{
+		SetTopState((Flags & VILLAGER_FLAG_AT_HOME) ? VILLAGER_STATE_EAT_FOOD_AT_HOME : VILLAGER_STATE_GO_HOME);
+		return true;
+	}
+	if (GetStoragePit() != NULL && GetStoragePit()->IsFunctional())
+	{
+		if (GetStoragePit()->GetResource(RESOURCE_TYPE_FOOD) >= foodRequired)
+		{
+			SetTopState(VILLAGER_STATE_GOTO_STORAGE_PIT_FOR_FOOD);
+			return true;
+		}
+	}
+	else
+	{
+		MapCoords dropoffPos = GetResourceDropoffPos(RESOURCE_TYPE_FOOD);
+		if (!dropoffPos.IsCloseToEqual(Pos, 0.0f))
+		{
+			SetupMoveToWithHug(dropoffPos, VILLAGER_STATE_ARRIVES_AT_STORAGE_PIT_FOR_FOOD);
+			return true;
+		}
+	}
+	if (ResourceHeld[RESOURCE_TYPE_FOOD] != 0)
+	{
+		SetTopState(eatState);
+		return true;
+	}
+	return false;
 }
 
 // TODO: 86.7% — the real symbol is ?POWER@@YGMM@Z (float __stdcall POWER(float)); it returns
@@ -132,12 +174,6 @@ uint32_t Villager::GetAmountOfFoodToEat()
 }
 
 // BW1W120 0075bf00 BW1M119 01098ca0
-// TODO: 91.7% — only diff is a `> and eax,0xff` after the ChangeStateToFindFoodToEat call.
-// ChangeStateToFindFoodToEat is `_N` (real C++ bool); returning it as unsigned int widens the
-// byte. In the original TU ChangeStateToFindFoodToEat is DEFINED (0x0075b990, same unit), so
-// MSVC6 sees the clean 0/1 bool and elides the mask. Our build only has an extern decl (callee
-// still `missing`) so it masks conservatively. This will match automatically once
-// ChangeStateToFindFoodToEat is implemented in this unit. See bool-return-mask-needs-callee-defined.
 bool32_t Villager::CheckSatisfyOwnFoodDesire()
 {
 	if (IsHungry())

@@ -13,10 +13,19 @@ class Base;
 class GBaseInfo;
 class GObjectInfo;
 
+#define ANIMAL_NEED_THRESHOLD_DISABLED 0
+
 class GAnimalInfo : public GLivingInfo
 {
 public:
-	uint8_t field_0x1f4[0xd8];
+	uint8_t  field_0x1f4[0x18];
+	int32_t  HungerThreshold;
+	uint8_t  field_0x210[0x4];
+	int32_t  TirednessThreshold;
+	int32_t  BreedingThreshold;
+	uint8_t  field_0x21c[0x18];
+	bool32_t CanFlock;
+	uint8_t  field_0x238[0x94];
 
 	// Override methods
 
@@ -37,9 +46,7 @@ public:
 	// BW1W120 inlined BW1M119 01175730
 	static GAnimalInfo* GetInfo() { return Infos; }
 
-	// TODO(#377): The original declared this class in Animal.h.
-	// Out of line: LoadBinary at 0042ec10, Load at 0042eb70.
-	INFO_DATA_BLOCK(field_0x1f4, field_0x1f4)
+	INFO_DATA_BLOCK(field_0x1f4, field_0x238)
 	INFO_DERIVED_LOADERS(GLivingInfo, "Animal.h", 72)
 };
 

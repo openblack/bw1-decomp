@@ -143,6 +143,9 @@ public:
 	ForgetfulLinkedList() {}
 };
 
+#define LIVING_DOMAIN_FULL_RADIUS_SCALE 1.0f
+#define LIVING_RANDOM_POS_MIN_DISTANCE  0.0f
+
 class Living : public MobileWallHug
 {
 public:
@@ -311,7 +314,7 @@ public:
 	// BW1W120 005ec620 BW1M119 0138a690
 	virtual bool32_t InHand();
 	// BW1W120 00474940 BW1M119 0138baa0
-	virtual bool32_t DecideWhatToDo();
+	virtual int DecideWhatToDo();
 	// BW1W120 005ec8f0 BW1M119 016e0a6c
 	virtual void Birthday();
 	// BW1W120 005ecaf0 BW1M119 0104eed0
@@ -694,8 +697,10 @@ public:
 	bool32_t IsBeingUsedInTheDanceEditor();
 	// BW1W120 005ecd00 BW1M119 01389140
 	bool32_t MoveOnStructure();
-	// BW1W120 005ecf60 BW1M119 0106f650
-	MapCoords GetFlockPos();
+	// BW1W120 005ecf40 BW1M119 0106f650
+	MapCoords* GetFlockPos();
+	// BW1W120 005ecf60 BW1M119 01067e30
+	MapCoords* GetDomainCentrePos();
 	// BW1W120 005ecf70 BW1M119 0104e920
 	bool IAmFlockLeader();
 	// BW1W120 005ecfa0 BW1M119 01067cc0
@@ -719,7 +724,7 @@ public:
 	// BW1W120 005ee5f0 BW1M119 01386270
 	void SetFlock(Flock* param_1);
 	// BW1W120 005ed010 BW1M119 01067d10
-	uint32_t PosWithinDomain(const MapCoords& param_1, float param_2);
+	bool32_t PosWithinDomain(const MapCoords& coords, float radius_scale);
 	// BW1W120 005ef9c0 BW1M119 0138c340
 	bool CalculateDancePosition(const MapCoords& param_1, MapCoords* param_2);
 	// BW1W120 005ef9f0 BW1M119 0138bec0

@@ -36,10 +36,22 @@ uint32_t Villager::CheckNeededForTownDesire()
 	{
 		float trigger = GetOwnDesiresTrigger();
 		GetTown()->desire.CheckVillagerNeededForTownDesire(this, trigger);
-		Flags &= 0xfffe;
+		Flags &= ~VILLAGER_FLAG_AFTER_TAP_ON_ABODE;
 	}
 	else
 		return 0;
+}
+
+float Villager::GetOwnDesiresTrigger()
+{
+	if (Flags & VILLAGER_FLAG_AFTER_TAP_ON_ABODE)
+		return 0.0f;
+	float foodDesire = IsHungry() ? GetDesireForFood() : 0.0f;
+	float lifeDesire = max(GetDesireForLife() - GetInfo()->OwnDesireThreshold, 0.0f);
+	float trigger = max(foodDesire, lifeDesire) + min(foodDesire, lifeDesire) * 0.5f;
+	if (IsChild() && trigger <= 0.11f)
+		trigger = 0.11f;
+	return min(trigger, 1.0f);
 }
 
 // BW1W120 007582f0 BW1M119 0157eeb0

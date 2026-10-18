@@ -39,7 +39,7 @@ class Town;
 
 struct AnimalStateTableEntry
 {
-	bool32_t (Animal::*State)();
+	int (Animal::*State)();
 	bool32_t (Animal::*EntryState)(uint8_t current, uint8_t destination);
 	bool32_t (Animal::*ExitState)(uint8_t state);
 	bool32_t (Animal::*SaveState)(GameOSFile& file);
@@ -51,10 +51,35 @@ struct AnimalStateTableEntry
 };
 static_assert(sizeof(AnimalStateTableEntry) == 0x90, "Data type is of wrong size");
 
+enum ANIMAL_NEEDS
+{
+	ANIMAL_NEEDS_NONE = 0,
+	ANIMAL_NEEDS_FOOD = 1,
+	ANIMAL_NEEDS_SLEEP = 2,
+	ANIMAL_NEEDS_BREED = 3,
+};
+
+enum ANIMAL_BEHAVIOUR_RESULT
+{
+	ANIMAL_BEHAVIOUR_RESULT_NO_ACTION = 0,
+	ANIMAL_BEHAVIOUR_RESULT_IN_POSITION = 1,
+	ANIMAL_BEHAVIOUR_RESULT_HANDLED = 35,
+	ANIMAL_BEHAVIOUR_RESULT_UNHANDLED = 36,
+};
+
+#define ANIMAL_FLOCK_SEARCH_RADIUS_MULTIPLIER 2
+#define ANIMAL_BREEDING_URGE_NONE             0
+#define ANIMAL_SLEEP_POS_UNSET                0
+
 class Animal : public Living
 {
 public:
-	uint8_t        field_0xe0[0x14];
+	uint8_t        field_0xe0[0x4];
+	int16_t        Hunger;
+	int16_t        field_0xe6;
+	int16_t        Tiredness;
+	int16_t        BreedingUrge;
+	uint8_t        field_0xec[0x8];
 	JustWholeMapXZ FoodPos;
 	uint8_t        field_0xfc[0x4];
 	JustMapXZ      PhysObPos;
@@ -214,11 +239,11 @@ public:
 	// BW1W120 00418fd0 BW1M119 01172660
 	virtual uint32_t HuntingMoveToPosAbaondon();
 	// BW1W120 004183c0 BW1M119 011735e0
-	virtual uint32_t ReactToAnimalNeeds();
+	virtual ANIMAL_BEHAVIOUR_RESULT ReactToAnimalNeeds();
 	// BW1W120 004184d0 BW1M119 011732e0
-	virtual uint32_t ReactToAnimalFoodNeeds();
+	virtual ANIMAL_BEHAVIOUR_RESULT ReactToAnimalFoodNeeds();
 	// BW1W120 0041ad50 BW1M119 0116ec70
-	virtual uint32_t LookForFoodPos();
+	virtual bool32_t LookForFoodPos(MapCoords* pos);
 	// BW1W120 0041ad60 BW1M119 0116ec30
 	virtual uint32_t LookForSleepPos();
 	// BW1W120 004175b0 BW1M119 011376e0
@@ -270,7 +295,7 @@ public:
 	// BW1W120 0041a3f0 BW1M119 0100eaf0
 	virtual void SetNewWander(const MapCoords* centre, long min_dist, long max_dist);
 	// BW1W120 0041acc0 BW1M119 0116eda0
-	virtual bool32_t DecideWhatToDo();
+	virtual int DecideWhatToDo();
 	// BW1W120 0041a2b0 BW1M119 0107ec70
 	virtual void SetStateSpeed();
 	// BW1W120 00417820 BW1M119 01080b00
@@ -373,7 +398,15 @@ public:
 	// Non-virtual methods
 
 	// BW1W120 0041abb0 BW1M119 01089fb0
-	uint32_t KeepFlockMemberWithinFlockArea();
+	ANIMAL_BEHAVIOUR_RESULT KeepFlockMemberWithinFlockArea();
+	// BW1W120 0041a690 BW1M119 01006420
+	bool32_t LookForFlocksInSpiral(const MapCoords& coords, const GAnimalInfo* info, int max_dist, bool32_t can_flock);
+	// BW1W120 0041a8b0 BW1M119 01035660
+	bool32_t LookForGrazePos(const MapCoords& coords, int max_dist, MapCoords* pos);
+	// BW1W120 0041aad0 BW1M119 01007d40
+	ANIMAL_BEHAVIOUR_RESULT KeepLeaderWithinDomain();
+	// BW1W120 00418220 BW1M119 01081640
+	void IncreaseBreed();
 	// BW1W120 00417c50 BW1M119 01174910
 	void SetTown(Town* town);
 	// BW1W120 0041b1f0 BW1M119 01034ef0
