@@ -60,7 +60,7 @@ public:
 	// BW1W120 0055da30 BW1M119 01161dd0
 	virtual char* GetDebugText() { return "Tree:"; }
 	// BW1W120 0071be20 BW1M119 015176f0
-	virtual uint32_t GetGuidanceResourceType();
+	virtual RESOURCE_RAIN_TYPE GetGuidanceResourceType();
 	// BW1W120 0074c2a0 BW1M119 0115e2b0
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0074c1b0 BW1M119 0115e420

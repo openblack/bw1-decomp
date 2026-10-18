@@ -54,7 +54,7 @@ public:
 	// BW1W120 005109f0 BW1M119 010c7200
 	virtual char* GetDebugText();
 	// BW1W120 0071be30 BW1M119 015176b0
-	virtual uint32_t GetGuidanceResourceType();
+	virtual RESOURCE_RAIN_TYPE GetGuidanceResourceType();
 	// BW1W120 00511630 BW1M119 010c4ee0
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 005115c0 BW1M119 010c4fc0

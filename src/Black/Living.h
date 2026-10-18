@@ -612,7 +612,7 @@ public:
 	// BW1W120 00417310 BW1M119 011394b0
 	virtual float CalculateLifeDesire();
 	// BW1W120 00417320 BW1M119 01101a90
-	virtual uint32_t DanceType() { return 0; }
+	virtual DANCE_INFO DanceType() { return DANCE_INFO_WORSHIP; }
 	// BW1W120 005ee550 BW1M119 01386470
 	virtual bool32_t CanBeHealedByHealSpell();
 	// BW1W120 004174a0 BW1M119 0112aa80

@@ -2221,7 +2221,7 @@ void Object::DoDeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* pa
 		DoCreatureMimicAfterAddingResource(param_1->GetResourceType(), *param_2);
 		if (param_2 == GGame::g_game->MyInterfaceStatus())
 		{
-			GGuidance::ResourceDropSFX(*param_2, Pos, (RESOURCE_RAIN_TYPE)GetGuidanceResourceType());
+			GGuidance::ResourceDropSFX(*param_2, Pos, GetGuidanceResourceType());
 		}
 	}
 	if (param_1->GetResourceType() == RESOURCE_TYPE_WOOD && !param_1->IsPot())

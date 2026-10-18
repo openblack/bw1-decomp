@@ -61,7 +61,7 @@ public:
 	// BW1W120 0055d5b0 BW1M119 0111fe00
 	virtual char* GetDebugText() { return "Pot:"; }
 	// BW1W120 0071bde0 BW1M119 01517770
-	virtual uint32_t GetGuidanceResourceType();
+	virtual RESOURCE_RAIN_TYPE GetGuidanceResourceType();
 	// BW1W120 0066d820 BW1M119 01124580
 	virtual bool32_t Load(GameOSFile& file);
 	// BW1W120 0066d730 BW1M119 011246f0

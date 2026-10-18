@@ -7,7 +7,8 @@
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 #include <chlasm/Enum.h>                        /* For enum VILLAGER_DISCIPLE */
 
-#include "Base.h" /* For struct Base */
+#include "Base.h"             /* For struct Base */
+#include "ResourceRainType.h" /* For enum RESOURCE_RAIN_TYPE */
 
 // Forward Declares
 
@@ -21,11 +22,6 @@ class LH_SamplePlayOptions;
 struct MapCoords;
 class Town;
 class Villager;
-
-enum RESOURCE_RAIN_TYPE
-{
-	RESOURCE_RAIN_TYPE_0 = 0
-};
 
 class GGuidance : public Base
 {
