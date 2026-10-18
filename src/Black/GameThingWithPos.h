@@ -159,7 +159,7 @@ public:
 	// BW1W120 004247e0 BW1M119 013f9550
 	virtual float GetScale();
 	// BW1W120 004247f0 BW1M119 011ce9c0
-	virtual void SetScale(float scale);
+	virtual void SetScale(float scale) {}
 	// BW1W120 0056fe60 BW1M119 0142c830
 	virtual float GetPower() const;
 	// BW1W120 0056fec0 BW1M119 0149aaa0
@@ -199,7 +199,7 @@ public:
 	// BW1W120 004019f0 BW1M119 0149b9d0
 	virtual MapCoords GetInteractPos();
 	// BW1W120 004052b0 BW1M119 010ad630
-	virtual bool32_t IsMoving() const;
+	virtual bool32_t IsMoving() const { return false; }
 	// BW1W120 004052c0 BW1M119 013e0960
 	virtual bool32_t IsObjectInMap();
 	// BW1W120 004052d0 BW1M119 011ac2d0
@@ -577,7 +577,7 @@ public:
 	// BW1W120 00405540 BW1M119 013ca060
 	virtual bool32_t IsHouse() { return false; }
 	// BW1W120 00405550 BW1M119 011a68b0
-	virtual bool32_t IsObject() const;
+	virtual bool32_t IsObject() const { return false; }
 	// BW1W120 004022d0 BW1M119 010e1d20
 	virtual bool32_t IsFootball() { return false; }
 	// BW1W120 004022e0 BW1M119 0142fbc0
@@ -609,7 +609,7 @@ public:
 	// BW1W120 004023b0 BW1M119 0102f210
 	virtual bool32_t IsWorkshop() { return false; }
 	// BW1W120 004178d0 BW1M119 01300cf0
-	virtual bool32_t IsWonder();
+	virtual bool32_t IsWonder() { return false; }
 	// BW1W120 004023c0 BW1M119 01301910
 	virtual bool32_t IsInfluenceRing() { return false; }
 	// BW1W120 004023d0 BW1M119 01568340
@@ -643,7 +643,7 @@ public:
 	// BW1W120 004024a0 BW1M119 013f97d0
 	virtual bool32_t IsScriptTimer() { return false; }
 	// BW1W120 004178e0 BW1M119 013e3d40
-	virtual BuildingSite* CreateBuildingSite();
+	virtual BuildingSite* CreateBuildingSite() { return NULL; }
 	// BW1W120 00405560 BW1M119 01516bb0
 	virtual HELP_TEXT GetQueryFirstEnumText() { return HELP_TEXT_NONE; }
 	// BW1W120 00405570 BW1M119 011c6c60

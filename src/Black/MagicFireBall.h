@@ -83,13 +83,13 @@ public:
 	// BW1W120 00682e80 BW1M119 014068e0
 	virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
 	// BW1W120 00682a40 BW1M119 01407700
-	virtual bool32_t IsTuggable();
+	virtual bool32_t IsTuggable() { return false; }
 	// BW1W120 00682e40 BW1M119 01406b70
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
 	// BW1W120 00682e50 BW1M119 01406a30
 	virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
 	// BW1W120 00682a60 BW1M119 01407780
-	virtual bool InteractsWithPhysicsObjects();
+	virtual bool InteractsWithPhysicsObjects() { return false; }
 	// BW1W120 00682a70 BW1M119 014077d0
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00682b20 BW1M119 01407b50

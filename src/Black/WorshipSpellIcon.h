@@ -188,21 +188,21 @@ public:
 	// BW1W120 00670960 BW1M119 inlined
 	virtual ~PrayerIcon();
 	// BW1W120 00670980 BW1M119 inlined
-	virtual void ToBeDeleted(int param_1);
+	virtual void ToBeDeleted(int param_1) {}
 	// BW1W120 006709a0 BW1M119 inlined
-	virtual GPlayer* GetPlayer();
+	virtual GPlayer* GetPlayer() { return NULL; }
 	// BW1W120 006709b0 BW1M119 inlined
-	virtual Town* GetTown();
+	virtual Town* GetTown() { return NULL; }
 	// BW1W120 00670940 BW1M119 inlined
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 006709e0 BW1M119 inlined
-	virtual Citadel* GetCitadel();
+	virtual Citadel* GetCitadel() { return NULL; }
 	// BW1W120 006709d0 BW1M119 inlined
 	virtual uint32_t Process();
 	// BW1W120 00670950 BW1M119 inlined
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 006709f0 BW1M119 inlined
-	virtual void Draw();
+	virtual void Draw() {}
 };
 
 #endif /* BW1_DECOMP_WORSHIP_SPELL_ICON_INCLUDED_H */

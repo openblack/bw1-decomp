@@ -47,15 +47,15 @@ public:
 	// BW1W120 purecall BW1M119 purecall
 	virtual RenderParticle* CreateParticle(AtomCore* core) = 0;
 	// BW1W120 006a88e0 BW1M119 013e5f30
-	virtual void PreLoadData();
+	virtual void PreLoadData() {}
 	// BW1W120 00670ae0 BW1M119 013e7e80
-	virtual LH3DSprite* CreateSprite();
+	virtual LH3DSprite* CreateSprite() { return NULL; }
 	// BW1W120 00670af0 BW1M119 013e7e40
-	virtual LH3DObject* CreateLH3DObject();
+	virtual LH3DObject* CreateLH3DObject() { return NULL; }
 	// BW1W120 00670b00 BW1M119 013e7e00
-	virtual void* GetBitmap();
+	virtual void* GetBitmap() { return NULL; }
 	// BW1W120 006a88f0 BW1M119 013e7f10
-	virtual bool32_t IsParticleBaseChainCreator();
+	virtual bool32_t IsParticleBaseChainCreator() { return false; }
 
 	bool  LoopAnim;
 	bool  UsePlayerColor;

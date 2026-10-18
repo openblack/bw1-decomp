@@ -73,7 +73,7 @@ public:
 	// BW1W120 00425b60 BW1M119 010b0590
 	virtual uint32_t GetCreatureMimicType();
 	// BW1W120 00425bc0 BW1M119 010b0760
-	virtual bool32_t IsMobileObject();
+	virtual bool32_t IsMobileObject() { return true; }
 	// BW1W120 006079e0 BW1M119 013c4150
 	virtual bool IsPoisoned();
 	// BW1W120 00607b60 BW1M119 013c3d40

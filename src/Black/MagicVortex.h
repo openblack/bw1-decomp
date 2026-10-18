@@ -106,7 +106,7 @@ public:
 	// BW1W120 005fffa0 BW1M119 013bc590
 	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 005fff80 BW1M119 013bc630
-	virtual bool InteractsWithPhysicsObjects();
+	virtual bool InteractsWithPhysicsObjects() { return false; }
 	// BW1W120 005fff90 BW1M119 013bc5e0
 	virtual bool32_t CanBecomeAPhysicsObject();
 
@@ -143,7 +143,7 @@ public:
 	// BW1W120 005fd970 BW1M119 013c0770
 	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 005fd8c0 BW1M119 013c0950
-	virtual bool InteractsWithPhysicsObjects();
+	virtual bool InteractsWithPhysicsObjects() { return true; }
 	// BW1W120 005fd8d0 BW1M119 013c08e0
 	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
 	// BW1W120 005fd8e0 BW1M119 013c07c0

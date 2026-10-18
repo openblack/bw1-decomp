@@ -83,7 +83,7 @@ public:
 	// BW1W120 007807b0 BW1M119 inlined
 	virtual void SetSpecularColor(unsigned long color);
 	// BW1W120 007807c0 BW1M119 015be560
-	virtual unsigned long GetSpecularColor();
+	virtual unsigned long GetSpecularColor() { return 0; }
 	// BW1W120 00780a70 BW1M119 015bf2c0
 	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00519360 BW1M119 010cb170
