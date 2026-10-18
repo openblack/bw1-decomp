@@ -1493,7 +1493,7 @@ static_assert(offsetof(LHSys, mouse) + offsetof(LHMouse, CallbackArg1) == 0x314,
 
 static_assert(sizeof(GGlobal) == 0x2d500, "GGlobal size is incorrect");
 static_assert(offsetof(GGlobal, EditorMode) == 0x2d2ac, "GGlobal editor mode offset is incorrect");
-static_assert(offsetof(GGlobal, field_0x2d2e4) == 0x2d2e4, "GGlobal editor pointer offset is incorrect");
+static_assert(offsetof(GGlobal, Editor) == 0x2d2e4, "GGlobal editor pointer offset is incorrect");
 static_assert(sizeof(Prss) == 0x10, "Prss size is incorrect");
 static_assert(offsetof(GDebug, CellBoxes) == 0x2d2a0, "GDebug CellBoxes offset is incorrect");
 static_assert(sizeof(GDebug) == 0x2d2a8, "GDebug size is incorrect");
@@ -1740,8 +1740,8 @@ void GGame::ProcessNetworkPackets()
 			}
 			if (GGlobal::Global.EditorMode != 0)
 			{
-				GGlobal::Global.field_0x2d2e4 = GGlobal::Global.field_0x2d2e4->ProcessTurn();
-				if (GGlobal::Global.field_0x2d2e4 == NULL)
+				GGlobal::Global.Editor = GGlobal::Global.Editor->ProcessTurn();
+				if (GGlobal::Global.Editor == NULL)
 				{
 					GGlobal::Global.EditorMode = false;
 				}
@@ -2262,7 +2262,7 @@ void GGame::Process3dEngine()
 			PhysicsObject::DrawAll();
 			MyInterface()->hand.Get()->UpdateHeldObject();
 			if (GGlobal::Global.EditorMode)
-				GGlobal::Global.field_0x2d2e4->Display();
+				GGlobal::Global.Editor->Display();
 			if (hand)
 				hand->AddDrawing();
 			for (GPlayer* player = GetNextPlayer(NULL); player; player = GetNextPlayer(player))
@@ -2554,8 +2554,8 @@ void GGame::EndTurn()
 	}
 	if (GGlobal::Global.EditorMode != 0)
 	{
-		GGlobal::Global.field_0x2d2e4 = GGlobal::Global.field_0x2d2e4->ProcessTurn();
-		if (GGlobal::Global.field_0x2d2e4 == NULL)
+		GGlobal::Global.Editor = GGlobal::Global.Editor->ProcessTurn();
+		if (GGlobal::Global.Editor == NULL)
 		{
 			GGlobal::Global.EditorMode = 0;
 		}
@@ -2581,7 +2581,7 @@ void GGame::EndTurn()
 	    g_game->field_0x205a14 == 1 && &g_game->players[g_game->PlayerIndex] != NULL &&
 	    g_game->players[g_game->PlayerIndex].citadel.Get() != NULL &&
 	    g_game->players[g_game->PlayerIndex].GetCitadel()->heart.Get() != NULL &&
-	    g_game->players[g_game->PlayerIndex].GetCitadel()->GetCitadelHeart()->field_0xb8 != 0)
+	    g_game->players[g_game->PlayerIndex].GetCitadel()->GetCitadelHeart()->DestructionStarted != 0)
 	{
 		field_0x205a10 = 1;
 		g_game->script->StartScript("GameOver");

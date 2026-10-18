@@ -26,9 +26,9 @@ class CreatureVisionState : public Base
 {
 public:
 	CreatureInterestingThingToLookAt ThingToLookAt; /* 0x8 */
-	uint32_t                         field_0x28;
+	bool32_t                         SeenObjectToActOn;
 	uint32_t                         field_0x2c;
-	uint32_t                         field_0x30;
+	bool32_t                         SeenObjectToUse;
 	uint32_t                         field_0x34;
 	uint32_t                         field_0x38;
 	uint32_t                         field_0x3c;

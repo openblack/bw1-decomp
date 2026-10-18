@@ -708,7 +708,7 @@ int CreatureAgenda::ConstructSubActionsForExamineByLooking(unsigned long param_1
 int CreatureAgenda::ConstructSubActionsForFight(unsigned long param_1)
 {
 	creature->field_0x3b8 = 1;
-	if (creature->mind->learning.field_0x15c40[CREATURE_FIGHT] == 0)
+	if (creature->mind->learning.NumTimesActionPerformed[CREATURE_FIGHT] == 0)
 	{
 		creature->mind->learning.field_0x1522c = -creature->alignment->Value;
 	}
@@ -4609,7 +4609,7 @@ int CreatureAgenda::ConstructSubActionsForMimicPlayer(unsigned long param_1)
 	                                       mind->AttitudeToPlayer.ObservedAction.Object,
 	                                       mind->AttitudeToPlayer.ObservedAction.MagicType);
 	mimic->StageProgress = mimic->StageLimit / 2;
-	creature->mind->agenda.MimicState.Stage = 1;
+	creature->mind->agenda.MimicState.Stage = MIMIC_STAGE_COPY_ACTION;
 	return 0;
 }
 

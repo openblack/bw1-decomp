@@ -26,10 +26,6 @@ public:
 	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 	// BW1W120 00421ea0 BW1M119 010a8550
 	virtual MESH_LIST GetMesh() const;
-	// BW1W120 00421e80 BW1M119 inlined
-	virtual ABODE_TYPE GetAbodeType() const;
-	// BW1W120 00421e90 BW1M119 inlined
-	virtual ABODE_NUMBER GetAbodeNumber() const;
 
 	// Static data
 

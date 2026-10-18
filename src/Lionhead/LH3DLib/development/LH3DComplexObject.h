@@ -26,7 +26,7 @@ public:
 	float              FizzAmount;
 	uint32_t           field_0xa4;
 	uint32_t           field_0xa8;
-	uint32_t           field_0xac;
+	uint32_t           Hidden;
 	LH3DComplexObject* next;
 	uint32_t           field_0xb4;
 	uint32_t           field_0xb8;

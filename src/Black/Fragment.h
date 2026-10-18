@@ -63,7 +63,7 @@ public:
 	// BW1W120 0076e950 BW1M119 01162d30
 	virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
 	// BW1W120 0076ec40 BW1M119 01163f80
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 0076ec50 BW1M119 01163710
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 0076f3f0 BW1M119 01163450

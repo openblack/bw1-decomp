@@ -1950,10 +1950,6 @@ void __fastcall LH3DP3::DrawPrimitive3(LH3DPrimitive* primitive)
 	}
 }
 
-// LH3DMaterial::g_list_render_func points at a table with a pair of entries for each render mode: the function that
-// sets the mode up, then a flag.
-#define LH3D_RENDER_FUNC_ENTRIES 2
-
 static inline void SinCos(float* sin_result, float* cos_result, float angle)
 {
 	__m128 s;
@@ -3171,47 +3167,6 @@ int LH3DVertexGroup::GetVertexCount()
 LHPoint LH3DTech::GetClippingSun()
 {
 	return g_sun_light_clipping;
-}
-
-void LH3DRender::SetMaterial(LH3DMaterial* material, int stage)
-{
-	if (stage > 0 && material == NULL)
-	{
-		SetTexture(NULL, stage);
-		return;
-	}
-	if (g_b_do_update_material)
-	{
-		if (stage == 0)
-		{
-			g_current_active_material = material;
-		}
-		else
-		{
-			g_current_other_material = material;
-			if (g_curmode2tex)
-			{
-				g_curmat2tex = material;
-			}
-		}
-		if (material && (stage == 0 || (!g_use_multipass && g_curmode2tex)))
-		{
-			((LH3DMaterial::RenderFunc*)
-			     LH3DMaterial::g_list_render_func)[material->GetMode() * LH3D_RENDER_FUNC_ENTRIES](material, stage);
-			if (g_b_need_tilling || material->IsNeedTilling())
-			{
-				SetD3DTillingOn(stage);
-			}
-			else
-			{
-				SetD3DTillingOff(stage);
-			}
-			if (stage == 0)
-			{
-				SetRenderState(D3DRENDERSTATE_CULLMODE, material->IsDoubleSided() ? D3DCULL_NONE : D3DCULL_CCW);
-			}
-		}
-	}
 }
 
 LH3DTexture* LH3DMaterial::GetTexture()

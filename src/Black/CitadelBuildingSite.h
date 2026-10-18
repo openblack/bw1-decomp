@@ -14,6 +14,8 @@ class Base;
 class GInterfaceStatus;
 class GameOSFile;
 class GameThing;
+class MultiMapFixed;
+class PlannedMultiMapFixed;
 struct MapCoords;
 class Pot;
 class PotStructure;
@@ -61,6 +63,13 @@ public:
 
 	// BW1W120 0043d120 BW1M119 010bc600
 	CitadelBuildingSite();
+
+	// Constructors
+
+	// BW1W120 0043d1e0 BW1M119 010bc580
+	CitadelBuildingSite(MultiMapFixed* site);
+	// BW1W120 0043d200 BW1M119 010bc4f0
+	CitadelBuildingSite(PlannedMultiMapFixed* site);
 };
 
 #endif /* BW1_DECOMP_CITADEL_BUILDING_SITE_INCLUDED_H */

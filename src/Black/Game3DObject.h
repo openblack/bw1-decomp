@@ -7,6 +7,8 @@
 #include <chlasm/AllMeshes.h>                        /* For enum MESH_LIST */
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType, struct LH3DObject */
 
+#include "Landscape.h" /* For GLandscape */
+
 // Forward Declares
 
 struct LHPoint;
@@ -64,5 +66,12 @@ public:
 	// BW1W120 0063b7e0 BW1M119 01026a50
 	void __fastcall AddJustForCollide(Object* object);
 };
+
+inline void SetPositionOnMap(Game3DObject* object, const MapCoords& coords, float y_angle, float scale)
+{
+	LHPoint point;
+	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
+	object->LH3DObject::SetPosition(point, y_angle, scale);
+}
 
 #endif /* BW1_DECOMP_GAME_3D_OBJECT_INCLUDED_H */

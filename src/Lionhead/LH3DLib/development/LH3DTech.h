@@ -77,6 +77,10 @@ public:
 	static LHMatrix* g_current_matrix;
 	// BW1W120 00ea1d28 BW1M119 012dc0b4 (LHCombined Release)
 	static LHMatrix g_world_to_camera;
+	// BW1W120 00ea9de0 BW1M119 012dc0e4 (LHCombined Release)
+	static LHMatrix g_clipping_to_world;
+	// BW1W120 00ea1cc8 BW1M119 012dc024 (LHCombined Release)
+	static LHMatrix g_world_to_local;
 	// BW1W120 00ea9e90 BW1M119 012d3fa8 (LHCombined Release)
 	static LHPoint g_sun_light;
 	// BW1W120 inlined BW1M119 010e7360
@@ -92,6 +96,8 @@ public:
 	// Original Mac symbol: g_game_time_inc__8LH3DTech.
 	// BW1W120 00ea9ec0 BW1M119 012d3e68 (LHCombined Release)
 	static uint32_t g_game_time_inc;
+	// BW1W120 00ea9eb0 BW1M119 012d3e78 (LHCombined Release)
+	static int g_current_time;
 	// BW1W120 00e3b5e0 BW1M119 012dc1a8 (LHCombined Release)
 	static unsigned long g_cache_flags[LH3D_MAX_POINTS];
 	// BW1W120 00e437e0 BW1M119 012e41a8 (LHCombined Release)
@@ -146,6 +152,8 @@ public:
 	static LHPoint* GetCameraPosition() { return &g_camera.pos; }
 	// BW1W120 inlined BW1M119 01025530
 	static LHPoint* GetCameraTarget() { return &g_camera.foc; }
+	// BW1W120 inlined BW1M119 010101b0 (LHCombined Release)
+	static LHPoint* GetTargetVector() { return &g_camera.LookAtVector; }
 	// BW1W120 inlined BW1M119 01020d00
 	static LHPoint GetSun() { return g_sun_light; }
 	// BW1W120 007ace30 BW1M119 01022500 (LHCombined Release)
@@ -178,6 +186,10 @@ public:
 	// BW1W120 0081d4f0 BW1M119 010bbd30 (LHCombined Release)
 	static void __fastcall ClipTriangleInBuild(uint16_t a, uint16_t b, uint16_t c);
 };
+
+// Shared by several units, so extern: static gives each unit a zeroed copy; LH3DTech.cpp inits it before g_sun_light.
+// BW1W120 00ea1c88 BW1M119 012dbfbc (LHCombined Release)
+extern LHPoint DEFAULT_SUN;
 
 // BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)
 void __cdecl Report3D__FPCce(const char* fmt, ...);

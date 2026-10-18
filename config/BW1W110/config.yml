@@ -18,6 +18,11 @@ block_relocations:
   - source: 0x009BCF2C
 
 add_relocations:
+# CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
+  - source: 0x00461B2C
+    type: x86_abs32
+    target: '?Objects@CarriedObject@@2PAPAVLH3DObject@@A'
+    addend: 0x40
 # PSysProperties weak deleting-destructor aliases and istream exception metadata.
   - source: 0x006BC3CC
     type: x86_abs32

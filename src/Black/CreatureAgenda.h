@@ -17,6 +17,7 @@
 class Creature;
 class CreatureBelief;
 class CreatureInfo;
+class GameThingWithPos;
 
 class CreatureAgenda : public Base
 {
@@ -52,7 +53,7 @@ public:
 	uint32_t                field_0x1ae0;
 	uint32_t                field_0x1ae4;
 	uint32_t                field_0x1ae8;
-	uint32_t                field_0x1aec;
+	uint32_t                NumTurnsWithoutAction;
 	uint32_t                field_0x1af0;
 	uint32_t                field_0x1af4;
 
@@ -70,6 +71,8 @@ public:
 
 	// BW1W120 004d36a0 BW1M119 0124b7f0
 	bool32_t ConstructSubActionsFromActionAgenda(CREATURE_ACTION action);
+	// BW1W120 004e3880 BW1M119 015ef450
+	bool32_t IsObjectSuitableForAction(GameThingWithPos* object, CREATURE_ACTION action);
 	// BW1W120 0049a7d0 BW1M119 01232ca0
 	int ConstructSubActionsForExamineByPickingUp(unsigned long param_1);
 	// BW1W120 0049aa20 BW1M119 01232ac0

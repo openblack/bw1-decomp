@@ -830,7 +830,7 @@ void GScript::DeleteObject()
 			CitadelHeart* heart = dynamic_cast<CitadelHeart*>(thing);
 			if (heart != NULL)
 			{
-				if (heart->field_0xb8)
+				if (heart->DestructionStarted)
 				{
 					PSysGlobal::ExplodeObjectMesh(heart, heart->Pos.GetLHPoint(), 80.0f, 3.0f, false);
 				}

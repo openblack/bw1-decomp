@@ -12,6 +12,7 @@
 // Forward Declares
 
 struct LH3DAnim;
+struct LH3DEnvMatInfo;
 struct LH3DLODData;
 struct LH3DMaterial;
 struct LH3DMesh;
@@ -77,6 +78,18 @@ public:
 	static float g_last_radius;
 	// BW1W120 00ea1ae8 BW1M119 012b1ee0 (LHCombined Release)
 	static LH3DObject* g_current_object_in_draw;
+	// BW1W120 00ea1afc BW1M119 012b1ecc (LHCombined Release)
+	static int g_env_map_mode;
+	// BW1W120 00ea0284 BW1M119 012b1f04 (LHCombined Release)
+	static LH3DEnvMatInfo* g_cur_env_mat_info;
+	// BW1W120 00c37ea4 BW1M119 011cfb54 (LHCombined Release)
+	static float g_env_map_zoom_x;
+	// BW1W120 00c37ea8 BW1M119 011cfb58 (LHCombined Release)
+	static float g_env_map_zoom_y;
+	// BW1W120 00ea1af8 BW1M119 012b1ed0 (LHCombined Release)
+	static bool g_env_map_tex_color_env_alpha;
+	// BW1W120 00ea1b08 BW1M119 012b1ec0 (LHCombined Release)
+	static float g_env_map_z_rot;
 
 	// Virtual functions
 
@@ -271,5 +284,13 @@ public:
 	// BW1W120 0080bf10 BW1M119 0107f4f0 (LHCombined Release)
 	void __fastcall CombineColorWithCurrent(unsigned long color, unsigned long specular);
 };
+
+// TODO(bwrsandman): These externs stay until we find a correct declaration. Two other ways did not work:
+// - As LH3DObject static members, they move the Object.cpp .bss and runblack.exe fails in 1.00, 1.10 and 1.20.
+// - Without them, TempleLeash::TempleLeash and CitadelHeart::DrawCreaturePen do not match.
+// BW1W120 00ea1abc BW1M119 012b3710 (LHCombined Release)
+extern LH3DMaterial* g_smoke_mat;
+// BW1W120 00ea1ac4 BW1M119 012b3708 (LHCombined Release)
+extern LH3DMaterial* g_smoke_additif_mat;
 
 #endif /* BW1_DECOMP_LH3D_OBJECT_INCLUDED_H */

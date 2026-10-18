@@ -15,6 +15,8 @@ block_relocations:
   - source: 0x009D1148
 # Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate, like SetupColourPicker's.
   - source: 0x00403267
+# CitadelHeart::DrawCreaturePen's sprite colour 0xc18119 is an immediate, not a pointer into g_scriptFunctionTable.
+  - source: 0x00466A04
 # WS_OVERLAPPEDWINDOW immediates, not pointers into GGlobal::Global.
   - source: 0x007DBAD7
   - source: 0x007DBB1D
@@ -75,6 +77,25 @@ block_relocations:
 # HelpDude::Draw's evil smoke tint 0x7F1F1F is an immediate, not a pointer into LHDraw::ScaledSprite24.
   - source: 0x005C0C26
 
+# 0x800000 (a flag, and the float bits of 1.0e-38) and deflate's 0x800020/0x800080 configuration words read as
+# addresses inside ComputeFlags (LH3DIsland).
+  - source: 0x004035C4
+  - source: 0x008185F6
+  - source: 0x00818611
+  - source: 0x008187AD
+  - source: 0x008A26AC
+  - source: 0x008A26ED
+  - source: 0x0099F8FC
+  - source: 0x0099F910
+  - source: 0x00C392C0
+  - source: 0x00C3C640
+  - source: 0x00C3C644
+  - source: 0x00C3C648
+  - source: 0x00C3C64C
+  - source: 0x00FC075C
+# MeshLodInfo's triangle tables (LH3DIsland) hold pairs of vertex indices that read as code addresses.
+  - source: 0x00C37230
+    end: 0x00C37BF0
 # SetupBox's IME candidate list control ID 0x85b680 is an immediate, not a pointer into
 # LH3DPrimitive::DrawInShadowTnL.
   - source: 0x00408133
@@ -83,6 +104,36 @@ block_relocations:
   - source: 0x0040C2FE
   - source: 0x0040CD4B
 add_relocations:
+# CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
+  - source: 0x004628EC
+    type: x86_abs32
+    target: '?Objects@CarriedObject@@2PAPAVLH3DObject@@A'
+    addend: 0x40
+# LH3DIsland: loop bounds one past the end of an array (dtk reads them as the next symbol).
+  - source: 0x007FF560
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x402
+  - source: 0x0080188D
+    type: x86_abs32
+    target: '?g_list_material@LH3DLandscape@@2PAPAUMaterial@1@A'
+    addend: 0xC8
+  - source: 0x008018A2
+    type: x86_abs32
+    target: '?g_list_country@LH3DLandscape@@2PAPAUCountry@1@A'
+    addend: 0xC8
+  - source: 0x00801A12
+    type: x86_abs32
+    target: '?g_list_material@LH3DLandscape@@2PAPAUMaterial@1@A'
+    addend: 0xC8
+  - source: 0x00801C2A
+    type: x86_abs32
+    target: '?g_index_block@LH3DIsland@@2PAY0CA@EA'
+    addend: 0x400
+  - source: 0x008046AB
+    type: x86_abs32
+    target: '?g_list_country@LH3DLandscape@@2PAPAUCountry@1@A'
+    addend: 0xC8
 # LH3DCreature::StateAction's jump table (dtk misses it): one entry per case block.
   - source: 0x0048752C
     type: x86_abs32

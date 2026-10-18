@@ -234,9 +234,9 @@ enum CREATURE_BUBBLE_FONT
 #define VILLAGER_NAME_FEMALE_LIGHTEN 145
 #define VILLAGER_DRAW_TURN_RATE      0.003f
 
-// Turns after a villager sits down during which the chair sounds still play.
-#define SITTING_DOWN1_SOUND_TURNS 15
-#define SITTING_DOWN2_SOUND_TURNS 10
+// Turns after a villager is thrown during which the thrown animation sounds still play.
+#define THROWN_SOUND_TURNS        15
+#define THROWN_VORTEX_SOUND_TURNS 10
 
 bool32_t CreatureStatsDisplay::Interacting;
 int      CreatureStatsDisplay::Alpha;
@@ -254,13 +254,6 @@ static void DrawStatBar(unsigned long colour, int x_min, int y_min, int x_max, i
 // BW1W120 0051a830 BW1M119 010ca660
 static void ConvertToCameraFacingMatrix(LHMatrix* matrix);
 
-static inline void SetPositionOnMap(Game3DObject* object, const MapCoords& coords, float y_angle, float scale)
-{
-	LHPoint point;
-	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
-	object->LH3DObject::SetPosition(point, y_angle, scale);
-}
-
 static inline void SetPositionOnLand(Game3DObject* object, const MapCoords& coords, float y_angle, float scale,
                                      Object* owner)
 {
@@ -276,11 +269,6 @@ static inline void DrawWithColor(Object* self, unsigned long color, unsigned lon
 	Game3DObject* object = self->Game3dObject;
 	object->CombineColorFromPos(color, specular);
 	object->AddForDrawing(self);
-}
-
-inline void GCamera::GetPosition(LHPoint& pos)
-{
-	pos = *LH3DTech::GetCameraPosition();
 }
 
 void Abode::Draw()
@@ -531,18 +519,18 @@ void Object::CheckSounds(const LH3DAnim* anim, long start_frame, long end_frame)
 						return;
 					}
 				}
-				if (((LH3DAnim*)anim)->GetIndexInCache() == ANM_P_SITTING_DOWN1_SITTING)
+				if (((LH3DAnim*)anim)->GetIndexInCache() == ANM_P_THROWN)
 				{
-					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < SITTING_DOWN1_SOUND_TURNS)
+					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < THROWN_SOUND_TURNS)
 					{
 						GGlobal::Global.audio->SamplePlayAnimEffect(
 							this, distance, sound, event->Variation,
 							GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR), 1, 0.0f, 0.0f);
 					}
 				}
-				else if (((LH3DAnim*)anim)->GetIndexInCache() == ANM_P_SITTING_DOWN2_OUT_OF)
+				else if (((LH3DAnim*)anim)->GetIndexInCache() == ANM_P_THROWN_VORTEX)
 				{
-					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < SITTING_DOWN2_SOUND_TURNS)
+					if (IsVillager(NULL) && ((Villager*)this)->action.TurnsSinceStateChange < THROWN_VORTEX_SOUND_TURNS)
 					{
 						GGlobal::Global.audio->SamplePlayAnimEffect(
 							this, distance, sound, event->Variation,
@@ -634,18 +622,9 @@ void DrawGroundCircle(const LHPoint& centre, float radius, float red, float gree
 	}
 }
 
-// Moves each channel of from amount/256 of the way towards to; alpha is taken from to.
-static inline unsigned long BlendColour(long amount, unsigned long from, unsigned long to)
-{
-	return (to & 0xff000000) |
-	       (((from & 0xff0000) + ((((to & 0xff0000) - (from & 0xff0000)) * amount) >> 8)) & 0xff0000) |
-	       (((from & 0xff00) + ((((to & 0xff00) - (from & 0xff00)) * amount) >> 8)) & 0xff00) |
-	       (((from & 0xff) + ((((to & 0xff) - (from & 0xff)) * amount) >> 8)) & 0xff);
-}
-
 static void DrawStatBar(unsigned long colour, int x_min, int y_min, int x_max, int y_max, float fraction, bool centred)
 {
-	unsigned long darkColour = BlendColour(STAT_BAR_SHADE, colour, 0xff000000);
+	unsigned long darkColour = LH3D_BLEND_COLOR(colour, 0xff000000, STAT_BAR_SHADE);
 	SetupThing::DrawBevBox(x_min, y_min, x_max, y_max, STAT_BAR_BEVEL_STYLE, STAT_BAR_OUTLINE_THICKNESS, -1,
 	                       0xffffffff);
 	int fillEnd = (int)(x_min + STAT_BAR_BORDER + (x_max - x_min - 2 * STAT_BAR_BORDER) * fraction);
@@ -710,18 +689,18 @@ void DrawCreatureFightStats(float life1, float energy1, wchar_t* name1, float li
 		lives[i] = lives[i] > 0.0f ? min(lives[i], 1.0f) : 0.0f;
 		energies[i] = energies[i] > 0.0f ? min(energies[i], 1.0f) : 0.0f;
 
-		DrawStatBar(BlendColour((long)(energies[i] * 255.0f), 0xff2080ff, 0xff8080ff), x,
+		DrawStatBar(LH3D_BLEND_COLOR(0xff2080ff, 0xff8080ff, (long)(energies[i] * 255.0f)), x,
 		            (int)(y + unit * FIGHT_STATS_ENERGY_BAR_TOP), x + unit * FIGHT_STATS_BAR_WIDTH,
 		            (int)(y + unit * FIGHT_STATS_ENERGY_BAR_BOTTOM), energies[i], false);
 
 		unsigned long lifeColour;
 		if (lives[i] < 0.5f)
 		{
-			lifeColour = BlendColour((long)(lives[i] * HALF_BLEND_SCALE), 0xffff0000, 0xffffff00);
+			lifeColour = LH3D_BLEND_COLOR(0xffff0000, 0xffffff00, (long)(lives[i] * HALF_BLEND_SCALE));
 		}
 		else
 		{
-			lifeColour = BlendColour((long)((lives[i] - 0.5f) * HALF_BLEND_SCALE), 0xffffff00, 0xff00ff00);
+			lifeColour = LH3D_BLEND_COLOR(0xffffff00, 0xff00ff00, (long)((lives[i] - 0.5f) * HALF_BLEND_SCALE));
 		}
 		DrawStatBar(lifeColour, x, y, x + unit * FIGHT_STATS_BAR_WIDTH, y + unit * FIGHT_STATS_LIFE_BAR_HEIGHT,
 		            lives[i], false);
@@ -2055,7 +2034,7 @@ bool Villager::DrawVillagerInfo()
 #ifndef VERSION_BW1W100
 		if (IsFemaleVillager())
 		{
-			*(uint32_t*)&color = BlendColour(VILLAGER_NAME_FEMALE_LIGHTEN, *(uint32_t*)&color, 0xffffffff);
+			*(uint32_t*)&color = LH3D_BLEND_COLOR(*(uint32_t*)&color, 0xffffffff, VILLAGER_NAME_FEMALE_LIGHTEN);
 		}
 #endif
 		VillagerName::Add(1.0f, point, text, color);

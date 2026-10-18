@@ -12,7 +12,7 @@
 #include "Artifact.h"             /* For struct TownArtifact */
 #include "Belief.h"               /* For struct GBelief */
 #include "BuildingSite.h"         /* For struct BuildingSite */
-#include "Camera.h"               /* For struct CameraStore */
+#include "CameraStore.h"          /* For struct CameraStore */
 #include "Container.h"            /* For struct Container */
 #include "EffectValues.h"         /* For struct EffectValues */
 #include "Field.h"                /* For struct Field */

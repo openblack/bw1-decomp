@@ -32,7 +32,7 @@ struct CreatureObservedPlayerAction
 {
 	DETECTED_PLAYER_ACTION Action; /* 0x0 */
 	GameThingWithPos*      Object;
-	uint32_t               field_0x8;
+	GameThingWithPos*      AssociatedObject;
 	MAGIC_TYPE             MagicType;
 };
 

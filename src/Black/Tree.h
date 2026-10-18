@@ -158,7 +158,7 @@ public:
 	virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* status, const MapCoords& coords,
 	                                     GestureSystemPacketData* param_3);
 	// BW1W120 0074b640 BW1M119 0115fd70
-	virtual uint32_t GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
 	// BW1W120 0074b650 BW1M119 0115fc80
 	virtual void SetUpPhysOb(PhysOb* param_1);
 	// BW1W120 0074b830 BW1M119 0115f260

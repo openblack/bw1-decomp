@@ -17,6 +17,8 @@ class Base;
 class GPlayer;
 class GameOSFile;
 class GameThing;
+struct LHPoint;
+struct MapCoords;
 
 class GParticleContainer : public GameThingWithPos
 {
@@ -55,12 +57,22 @@ public:
 	// BW1W120 0063e540 BW1M119 01001ee0
 	static GParticleContainer* CreateSpotVisual(const MapCoords& pos, SPOT_VISUAL_TYPE type, float scale,
 	                                            GameThingWithPos* thing);
+	// BW1W120 0063e580 BW1M119 01003070
+	static GParticleContainer* CreateSpotVisualWithSpecifiedDuration(const MapCoords& pos, SPOT_VISUAL_TYPE type,
+	                                                                 float scale, long duration,
+	                                                                 GameThingWithPos* thing);
 
 	// BW1W120 inlined BW1M119 inlined
 	GParticleContainer() { SetToZero(); }
 
 	// BW1W120 0063e1b0 BW1M119 010a0640
 	void SetToZero();
+	// BW1W120 0063e3a0 BW1M119 01119ee0
+	void AddTarget(GameThing* target);
+	// BW1W120 0063e380 BW1M119 01119f60
+	void AddTarget(const LHPoint& target);
+	// BW1W120 0063e3e0 BW1M119 01119de0
+	void SetParticleStrength(float strength);
 };
 
 #endif /* BW1_DECOMP_PARTICLE_CONTAINER_INCLUDED_H */

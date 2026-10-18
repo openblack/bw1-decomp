@@ -20,6 +20,13 @@ struct Vertex3DMT;
 class LH3DZSorter;
 
 #define LH3D_RENDER_TEXTURE_STAGE_COUNT 8
+#define LH3D_RENDER_FUNC_ENTRIES        2
+
+enum LH3D_2ND_TEX_MODE
+{
+	LH3D_2ND_TEX_MODE_OFF = 0,
+	LH3D_2ND_TEX_MODE_SINGLE = 1,
+};
 
 struct LH3DRender
 {
@@ -106,6 +113,7 @@ struct LH3DRender
 	static void PopTillingMode(int index);
 	// BW1W120 inlined BW1M119 0101ceb0 (LHCombined Release)
 	static void SetTexture(IDirectDrawSurface7* surface, int stage);
+	// Inliner IL size: 214
 	// BW1W120 007ace50 BW1M119 inlined
 	static void SetMaterial(LH3DMaterial* material, int stage);
 	// BW1W120 0082fd30 BW1M119 0109f910 (LHCombined Release)
@@ -137,6 +145,47 @@ inline void LH3DRender::SetTexture(IDirectDrawSurface7* surface, int stage)
 	{
 		Direct3DDevice7->SetTexture(stage, surface);
 		g_texture_stage_ptr[stage] = surface;
+	}
+}
+
+inline void LH3DRender::SetMaterial(LH3DMaterial* material, int stage)
+{
+	if (stage > 0 && material == NULL)
+	{
+		SetTexture(NULL, stage);
+		return;
+	}
+	if (g_b_do_update_material)
+	{
+		if (stage == 0)
+		{
+			g_current_active_material = material;
+		}
+		else
+		{
+			g_current_other_material = material;
+			if (g_curmode2tex)
+			{
+				g_curmat2tex = material;
+			}
+		}
+		if (material != NULL && (stage == 0 || (!g_use_multipass && g_curmode2tex)))
+		{
+			((LH3DMaterial::RenderFunc*)
+			     LH3DMaterial::g_list_render_func)[material->GetMode() * LH3D_RENDER_FUNC_ENTRIES](material, stage);
+			if (g_b_need_tilling || material->IsNeedTilling())
+			{
+				SetD3DTillingOn(stage);
+			}
+			else
+			{
+				SetD3DTillingOff(stage);
+			}
+			if (stage == 0)
+			{
+				SetRenderState(D3DRENDERSTATE_CULLMODE, material->IsDoubleSided() ? D3DCULL_NONE : D3DCULL_CCW);
+			}
+		}
 	}
 }
 

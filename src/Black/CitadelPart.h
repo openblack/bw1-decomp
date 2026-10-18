@@ -9,7 +9,8 @@
 #include <Lionhead/LHLib/ver5.0/LHFastPointer.h>     /* For LHFastPointer */
 #include <Lionhead/LHLib/ver5.0/LHListNode.h>        /* For LHListNode */
 
-#include "MultiMapFixed.h" /* For struct MultiMapFixed */
+#include "CitadelPartInfo.h" /* For class GCitadelPartInfo */
+#include "MultiMapFixed.h"   /* For struct MultiMapFixed */
 
 // Forward Declares
 
@@ -52,40 +53,40 @@ public:
 	virtual bool32_t Save(GameOSFile& file);
 	// BW1W120 004694d0 BW1M119 011cafa0
 	virtual uint32_t GetSaveType();
-	// BW1W120 00464aa0 BW1M119 011c9e40
-	virtual uint32_t GetCreatureBeliefType();
-	// BW1W120 00464a80 BW1M119 0108cdc0
-	virtual Citadel* GetCitadel();
-	// BW1W120 00464b10 BW1M119 inlined
-	virtual bool32_t IsCitadelPart(Creature* creature) { return true; }
-	// BW1W120 00464b00 BW1M119 inlined
-	virtual bool32_t IsCitadelPart() { return true; }
 	// BW1W120 00469780 BW1M119 011ca430
 	virtual void* GetActualObjectToEffect(GPlayer* param_1, bool param_2);
 	// BW1W120 004695c0 BW1M119 011caae0
 	virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
 	// BW1W120 00469490 BW1M119 011c27d0
 	virtual uint32_t Process();
-	// BW1W120 00464a90 BW1M119 011c9de0
-	virtual MESH_LIST GetMesh() const;
 	// BW1W120 00469760 BW1M119 011ca550
 	virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
 	// BW1W120 004694b0 BW1M119 011caf10
 	virtual LH3DObject::ObjectType Get3DType();
 	// BW1W120 004695d0 BW1M119 inlined
-	virtual bool32_t CanBeDestroyedBySpell(Spell* spell) { return false; }
+	virtual bool32_t CanBeDestroyedBySpell(Spell* spell);
 	// BW1W120 004697f0 BW1M119 011ca350
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 004694c0 BW1M119 011caf50
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 	// BW1W120 004694f0 BW1M119 011cb020
 	virtual bool32_t ShouldFootpathsGoRound();
-	// BW1W120 00464ab0 BW1M119 011c82c0
-	virtual bool32_t IsRepaired();
-	// BW1W120 00464ad0 BW1M119 010834a0
-	virtual bool32_t IsBuilt();
 	// BW1W120 004694a0 BW1M119 011c20d0
 	virtual PlannedMultiMapFixed* ConvertToPlanned();
+	// BW1W120 00464a80 BW1M119 0108cdc0
+	virtual Citadel* GetCitadel() { return citadel.Get(); }
+	// BW1W120 00464a90 BW1M119 011c9de0
+	virtual MESH_LIST GetMesh() const { return ((const GCitadelPartInfo*)info)->mesh; }
+	// BW1W120 00464aa0 BW1M119 011c9e40
+	virtual uint32_t GetCreatureBeliefType() { return CREATURE_BELIEF_TYPE_CITADEL_PART; }
+	// BW1W120 00464ab0 BW1M119 011c82c0
+	virtual bool32_t IsRepaired() { return GetPercentRepaired() >= 1.0f; }
+	// BW1W120 00464ad0 BW1M119 010834a0
+	virtual bool32_t IsBuilt() { return !UnderConstruction && GetPercentBuilt() >= 1.0f; }
+	// BW1W120 00464b00 BW1M119 inlined
+	virtual bool32_t IsCitadelPart() { return true; }
+	// BW1W120 00464b10 BW1M119 inlined
+	virtual bool32_t IsCitadelPart(Creature* creature) { return true; }
 
 	// Constructors
 

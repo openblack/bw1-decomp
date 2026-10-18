@@ -92,7 +92,7 @@ public:
 	// BW1W120 0055d380 BW1M119 inlined
 	virtual void SetSpecularColor(unsigned long color) { SpecularColor = color; }
 	// BW1W120 0055d390 BW1M119 0152e580
-	virtual LH3DColor GetSpecularColor();
+	virtual unsigned long GetSpecularColor();
 	// BW1W120 007265c0 BW1M119 0152bcb0
 	virtual uint32_t Process();
 	// BW1W120 0055d440 BW1M119 0152e750

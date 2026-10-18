@@ -220,10 +220,7 @@ public:
 class CreatureActionKnownAbout : public Base
 {
 public:
-	// Override methods
-
-	// BW1W120 004e29b0 BW1M119 0126a9e0
-	virtual ~CreatureActionKnownAbout();
+	unsigned long Action;
 };
 
 class CreatureFalling : public LH3DCreature

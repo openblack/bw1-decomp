@@ -51,6 +51,12 @@ public:
 
 	// BW1W120 005b2b80 BW1M119 013421b0
 	HandStateGrain(CHand* hand);
+
+	// Static methods
+
+	// BW1W120 005b2f70 BW1M119 01341e30
+	static void StartTimedPour(bool clamp_hand, float total_time, float height_to_raise, float angle_to_raise,
+	                           POUR_TYPE type);
 };
 
 static_assert(sizeof(HandStateGrain) == 0x228, "Data type is of wrong size");

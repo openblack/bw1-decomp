@@ -6,6 +6,12 @@
 
 #include "LHPoint.h" /* For struct LHPoint */
 
+// Transforms point by matrix into result; point is evaluated once for every term.
+#define LHMATRIX_TRANSFORM_POINT(result, point, matrix)                                                                \
+	(result).x = (matrix).m[0] * (point).x + (matrix).m[3] * (point).y + (matrix).m[6] * (point).z + (matrix).m[9];    \
+	(result).y = (matrix).m[1] * (point).x + (matrix).m[4] * (point).y + (matrix).m[7] * (point).z + (matrix).m[10];   \
+	(result).z = (matrix).m[2] * (point).x + (matrix).m[5] * (point).y + (matrix).m[8] * (point).z + (matrix).m[11]
+
 // The element names are fabricated, after D3DMATRIX (DirectX 7): the Mac build's GetVectorX/Y/Z and GetPos
 // accessors return the rows at 0x0, 0xc, 0x18 and 0x24.
 // The union is inferred from MSVC6 inliner costs, not from symbols: a store to a named float member costs
@@ -113,7 +119,7 @@ struct LHMatrix
 	}
 	// Inliner IL size: <= 40, always inlined and never charged
 	// BW1W120 inlined BW1M119 01043dd0
-	const LHPoint& GetPos() const { return *(const LHPoint*)&m[9]; }
+	LHPoint& GetPos() const { return *(LHPoint*)&m[9]; }
 	// BW1W120 inlined BW1M119 01099510
 	LHPoint& GetVectorX() const { return *(LHPoint*)&m[0]; }
 	// BW1W120 inlined BW1M119 010995c0
@@ -143,7 +149,34 @@ struct LHMatrix
 		_33 *= c;
 		_33 -= t;
 	}
-	// BW1W120 inlined BW1M119 inlined
+	// BW1W120 006a12f0 BW1M119 inlined
+	void PostRotateX(float angle)
+	{
+		float c = cos(angle);
+		float s = sin(angle);
+		float t;
+		t = _12 * s;
+		_12 *= c;
+		_12 += _13 * s;
+		_13 *= c;
+		_13 -= t;
+		t = _22 * s;
+		_22 *= c;
+		_22 += _23 * s;
+		_23 *= c;
+		_23 -= t;
+		t = _32 * s;
+		_32 *= c;
+		_32 += _33 * s;
+		_33 *= c;
+		_33 -= t;
+		t = _42 * s;
+		_42 *= c;
+		_42 += _43 * s;
+		_43 *= c;
+		_43 -= t;
+	}
+	// BW1W120 0067a4a0 BW1M119 inlined
 	void PostRotateY(float angle)
 	{
 		float c = cos(angle);
@@ -170,7 +203,7 @@ struct LHMatrix
 		_43 *= c;
 		_43 += t;
 	}
-	// BW1W120 inlined BW1M119 inlined
+	// BW1W120 006a24e0 BW1M119 inlined
 	void PostRotateZ(float angle)
 	{
 		float c = cos(angle);
@@ -265,16 +298,60 @@ struct LHMatrix
 	void SetInverse();
 	// BW1W120 007faff0 BW1M119 01028040 (LHCombined Release)
 	void __fastcall PostMultiply(const LHMatrix& r);
+	// BW1W120 inlined BW1M119 inlined
+	void Set(const LHMatrix& r)
+	{
+		m[0] = r.m[0];
+		m[1] = r.m[1];
+		m[2] = r.m[2];
+		m[3] = r.m[3];
+		m[4] = r.m[4];
+		m[5] = r.m[5];
+		m[6] = r.m[6];
+		m[7] = r.m[7];
+		m[8] = r.m[8];
+		m[9] = r.m[9];
+		m[10] = r.m[10];
+		m[11] = r.m[11];
+	}
+	// BW1W120 005b5b90 BW1M119 0100c2e0 (LHCombined Release)
+	void __fastcall SetMatrixOnly(const LHMatrix& r)
+	{
+		m[0] = r.m[0];
+		m[1] = r.m[1];
+		m[2] = r.m[2];
+		m[3] = r.m[3];
+		m[4] = r.m[4];
+		m[5] = r.m[5];
+		m[6] = r.m[6];
+		m[7] = r.m[7];
+		m[8] = r.m[8];
+	}
 	// fabricated name: PostMultiply for the 3x3 part only. The out-of-line copy sits among the ControlHand.cpp
 	// functions; the Mac inlines it into ConvertToCameraFacingMatrix with a nested SetMatrixOnly call.
 	// BW1W120 0046d9d0 BW1M119 inlined
-	void __fastcall PostMultiplyMatrixOnly(const LHMatrix& r);
+	void __fastcall PostMultiplyMatrixOnly(const LHMatrix& r)
+	{
+		LHMatrix temp;
+		temp.SetMatrixOnly(*this);
+		m[0] = temp.m[0] * r.m[0] + temp.m[1] * r.m[3] + temp.m[2] * r.m[6];
+		m[1] = temp.m[0] * r.m[1] + temp.m[1] * r.m[4] + temp.m[2] * r.m[7];
+		m[2] = temp.m[0] * r.m[2] + temp.m[1] * r.m[5] + temp.m[2] * r.m[8];
+		m[3] = temp.m[3] * r.m[0] + temp.m[4] * r.m[3] + temp.m[5] * r.m[6];
+		m[4] = temp.m[3] * r.m[1] + temp.m[4] * r.m[4] + temp.m[5] * r.m[7];
+		m[5] = temp.m[3] * r.m[2] + temp.m[4] * r.m[5] + temp.m[5] * r.m[8];
+		m[6] = temp.m[6] * r.m[0] + temp.m[7] * r.m[3] + temp.m[8] * r.m[6];
+		m[7] = temp.m[6] * r.m[1] + temp.m[7] * r.m[4] + temp.m[8] * r.m[7];
+		m[8] = temp.m[6] * r.m[2] + temp.m[7] * r.m[5] + temp.m[8] * r.m[8];
+	}
 	// BW1W120 007fab30 BW1M119 0100ee90 (LHCombined Release)
 	void GetYXZ(float* y, float* x, float* z) const;
 	// BW1W120 007fb5c0 BW1M119 01022550 (LHCombined Release)
 	void NormaliseMatrixOnly();
 	// BW1W120 007fac10 BW1M119 01032770 (LHCombined Release)
 	void SetYXZMatrixOnly(float y, float x, float z);
+	// BW1W120 007facc0 BW1M119 01021010 (LHCombined Release)
+	void SetZXYMatrixOnly(float z, float x, float y);
 	// Inliner IL size: 183
 	// BW1W120 inlined BW1M119 inlined
 	LHPoint operator*(const LHPoint& point) const

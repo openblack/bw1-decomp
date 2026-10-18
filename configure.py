@@ -507,7 +507,22 @@ def GameCodeObject(completed, name, **options):
 # in the "sdk" progress category.
 def LH3DLibObject(completed, name, **options):
     options.setdefault("progress_category", "sdk")
-    return Object(completed, name, cflags=cflags_lh3dlib, **options)
+    options.setdefault("cflags", cflags_lh3dlib)
+    return Object(completed, name, **options)
+
+
+# An LH3DLib object built against the LH3DLibPCH.h precompiled header. With /Yu,
+# cl lays out zero-initialised and dynamically initialised globals in reverse
+# order of their first mention in the unit instead of in its name-hash order,
+# and only that reproduces the .bss of these units. /Zi is left out because a
+# /Yu build with it needs the PDB that built the PCH; the code is the same.
+def LH3DLibPCHObject(completed, name, **options):
+    options.setdefault("cflags", [flag for flag in cflags_lh3dlib if flag != "/Zi"])
+    options.setdefault("pch", {
+        "header": "LH3DLibPCH.h",
+        "source": "src/Lionhead/LH3DLib/development/LH3DLibPCH.cpp",
+    })
+    return LH3DLibObject(completed, name, **options)
 
 
 # An object built with Intel C++ 5.0 instead of MSVC. MSVC's bin stays on PATH
@@ -602,7 +617,7 @@ config.libs = [
             GameCodeObject(MatchingFor("BW1W120"), "Black/CameraModePath.cpp"),
             GameCodeObject(MatchingFor("BW1W100", "BW1W110", "BW1W120"), "Black/CameraModeScript.cpp"),
             GameCodeObject(NonMatching, "Black/CameraModeTwoObjects.cpp"),
-            GameCodeObject(NonMatching, "Black/CarriedObject.cpp"),
+            GameCodeObject(Matching, "Black/CarriedObject.cpp"),
             GameCodeObject(NonMatching, "Black/CDBox.cpp"),
             GameCodeObject(NonMatching, "Black/Chain.cpp"),
             GameCodeObject(NonMatching, "Black/ChallengeRoom.cpp"),
@@ -658,6 +673,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureMentalDebug.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDesire.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDesireSource.cpp"),
+            GameCodeObject(Matching, "Black/CreatureMentalEditor.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalExploration.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalLearn.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalLearnAction.cpp"),
@@ -1536,7 +1552,7 @@ config.libs = [
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHConvert.cpp", progress_category="sdk"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHSprite.cpp", progress_category="sdk"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DSmoke.cpp"),
-            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DIsland.cpp"),
+            LH3DLibPCHObject(NonMatching, "Lionhead/LH3DLib/development/LH3DIsland.cpp", extra_cflags=["/GX"]),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DMesh.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DTech.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Fish.cpp"),

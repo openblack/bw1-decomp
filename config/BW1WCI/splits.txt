@@ -298,6 +298,10 @@ Black/CameraModeNew3.cpp:
 	.data       start:0x00A3E120 end:0x00A3E240
 	.bss        start:0x00CCED38 end:0x00CD1EB4
 
+Black/CarriedObject.cpp:
+	.text       start:0x0046C130 end:0x0046C520
+	.bss        start:0x00CD46E4 end:0x00CD4724
+
 Black/CameraModePath.cpp:
 	.rdata      start:0x008F3DCC end:0x008F3E20
 	.rdata$r    start:0x00A192F8 end:0x00A19348
@@ -469,11 +473,17 @@ Black/CreatureMentalDesireSource.cpp:
 	.data       start:0x00C4F974 end:0x00C4FCF0
 	.bss        start:0x00CFFA40 end:0x00D05BA8
 
+Black/CreatureMentalEditor.cpp:
+	.text       start:0x004EF9C0 end:0x004EFAF0
+	.rdata      start:0x008FE2A0 end:0x008FE2AC
+	.CRT$XCU    start:0x00A363BC end:0x00A363C4 align:4
+	.bss        start:0x00D05BA8 end:0x00D05BB8
+
 Black/CreatureMentalExploration.cpp:
-	.text       start:0x004EF9C0 end:0x004F0980
-	.CRT$XCU    start:0x00A363BC end:0x00A363D0 align:4
+	.text       start:0x004EFAF0 end:0x004F0980
+	.CRT$XCU    start:0x00A363C4 end:0x00A363D0 align:4
 	.data       start:0x00C4FCF0 end:0x00C4FD50
-	.bss        start:0x00D05BA8 end:0x00D21BD4
+	.bss        start:0x00D05BB8 end:0x00D21BD4
 
 Black/CreatureMentalLearn.cpp:
 	.data       start:0x00C4FD50 end:0x00C501D8

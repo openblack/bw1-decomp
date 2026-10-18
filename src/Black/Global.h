@@ -34,7 +34,7 @@ struct GGlobal
 	uint32_t field_0x2d2d8;
 	uint32_t field_0x2d2dc;
 	uint32_t field_0x2d2e0;
-	Prss*    field_0x2d2e4; // Active editor interface; concrete subtype unrecovered.
+	Prss*    Editor; // Active editor interface; concrete subtype unrecovered.
 	uint8_t  field_0x2d2e8[0xc];
 	char     CurrentDirectory[0x100]; /* 0x2d2f4 */
 	uint8_t  field_0x2d3f4[0x10c];

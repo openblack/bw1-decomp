@@ -81,6 +81,9 @@ public:
 	// BW1W120 00675a30 BW1M119 013ef210
 	virtual float GetValueForCollection(AtomCollection* collection);
 
+	// BW1W120 inlined BW1M119 inlined
+	float GetValue() const { return Value; }
+
 	float Value;
 };
 

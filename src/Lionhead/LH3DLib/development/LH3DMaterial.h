@@ -2,6 +2,7 @@
 #define BW1_DECOMP_LH3D_MATERIAL_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For NULL */
 #include <stdint.h> /* For uint8_t */
 
 #include "LH3DColor.h" /* For struct LH3DColor */
@@ -14,13 +15,15 @@ struct LH3DTexture;
 
 struct MaterialProperties
 {
-	bool field_0x0;
-	bool field_0x1;
+	bool Additive;
+	bool AlphaBlend;
 	bool cull;
-	bool field_0x3;
-	bool field_0x4;
+	bool ApplyToMesh;
+	bool Transparent;
 };
 static_assert(sizeof(MaterialProperties) == 0x5, "Data type is of wrong size");
+
+#define LH3D_ENV_MAP_TABLE_SIZE 16
 
 struct LH3DMaterial
 {
@@ -43,6 +46,7 @@ struct LH3DMaterial
 	{
 		FLAG_DOUBLE_SIDED = 0x1,
 		FLAG_NEED_TILLING = 0x4,
+		FLAG_ENV_MAP = 0x20,
 	};
 
 	// Sets up the device to draw with a material in a texture stage.
@@ -61,6 +65,10 @@ struct LH3DMaterial
 	static void* g_list_render_func_normal[40];
 	// BW1W120 00c387c8 BW1M119 011d0ed8 (LHCombined Release)
 	static void* g_list_render_func_global_alpha[40];
+	// BW1W120 00eca660 BW1M119 012cf818 (LHCombined Release)
+	static bool32_t g_b_force_double_sided;
+
+	// Non-virtual methods
 
 	// BW1W120 inlined BW1M119 0102b300 (LHCombined Release)
 	RenderMode GetMode() { return render_mode; }
@@ -68,6 +76,8 @@ struct LH3DMaterial
 	bool32_t IsDoubleSided() { return Flags & FLAG_DOUBLE_SIDED; }
 	// BW1W120 inlined BW1M119 0102b710 (LHCombined Release)
 	bool32_t IsNeedTilling() { return Flags & FLAG_NEED_TILLING; }
+	// BW1W120 inlined BW1M119 inlined
+	int GetEnvMap() { return (Flags / FLAG_ENV_MAP) & (LH3D_ENV_MAP_TABLE_SIZE - 1); }
 	// BW1W120 inlined BW1M119 0106b420 (LHCombined Release)
 	unsigned long GetTextureId() { return (unsigned long)texture; }
 	// BW1W120 007acf60 BW1M119 010c6de0 (LHCombined Release)

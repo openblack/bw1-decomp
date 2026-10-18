@@ -1,0 +1,32 @@
+name: Triage
+on:
+  push:
+    branches:
+      - main
+
+  # Build runs on every pull request push, including from forks, so this
+  # rechecks a rebased branch without needing pull_request_target
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+# Every run rescans all open pull requests, so only the newest one matters
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  merge-conflicts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mschilde/auto-label-merge-conflicts@master
+        with:
+          CONFLICT_LABEL_NAME: "needs-rebase"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAX_RETRIES: 5
+          WAIT_MS: 5000

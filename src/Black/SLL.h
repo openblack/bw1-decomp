@@ -34,6 +34,14 @@ public:
 	T* GetLast() { return Last != NULL ? Last->Data : NULL; }
 	// BW1W120 inlined BW1M119 0104e6c0
 	unsigned long GetSize() { return Size; }
+	// BW1W120 inlined BW1M119 0101fef0
+	void MoveForward()
+	{
+		if (Current != NULL)
+		{
+			Current = Current->Next;
+		}
+	}
 };
 
 #endif /* BW1_DECOMP_SLL_INCLUDED_H */

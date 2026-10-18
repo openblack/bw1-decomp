@@ -11,19 +11,21 @@
 // Forward Declares
 
 class CitadelHeart;
+struct EclairagePublic;
+class LH3DObject;
 class GInterfaceStatus;
 class GObjectInfo;
 class LHOSFile;
 struct MapCoords;
 
+#define CITADEL_ENTRANCE_LANTERNS 2
+
 class CitadelEntrance : public Object
 {
 public:
-	CitadelHeart* Heart; /* 0x54 */
-	uint32_t      field_0x58;
-	uint32_t      field_0x5c;
-	uint32_t      field_0x60;
-	uint32_t      field_0x64;
+	CitadelHeart*    Heart; /* 0x54 */
+	LH3DObject*      lanterns[CITADEL_ENTRANCE_LANTERNS];
+	EclairagePublic* lights[CITADEL_ENTRANCE_LANTERNS];
 
 	// Override methods
 
