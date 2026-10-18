@@ -471,6 +471,9 @@ on one side only), the cause is the compiler's inline budget, not optimization f
 the c2.dll inliner rules (per-function budget, the 40-unit free threshold, nested budget
 shares), measured sizes, and per-construct costs.
 
+- `tools/c2-inline-log.py --source <file> -f <function>` compiles with a logging copy of c2.dll
+  and prints every inline decision: callee IL size, budget left, nested share, and why each call
+  was or was not inlined. Start here for any budget difference.
 - `tools/inline-budget.py size` measures an inline call's exact IL size with the unit's real
   compile command.
 - `tools/inline-budget.py sim` replays the budget algorithm on a call tree. It must reproduce
