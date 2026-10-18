@@ -293,6 +293,7 @@ _pef_1038a080 = .text:0x004017B0; // type:function size:0x10
 ?ShouldFootpathsGoRound@Object@@UAEHXZ = .text:0x004017D0; // type:label scope:global alias
 ?showmanyc@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = .text:0x004017D0; // type:label scope:global alias
 ?sync@?$basic_streambuf@DU?$char_traits@D@std@@@std@@MAEHXZ = .text:0x004017D0; // type:label scope:global alias
+?DanceType@Living@@UAE?AW4DANCE_INFO@@XZ = .text:0x004017D0; // type:label scope:global alias
 ?CastTree@GameThing@@UAEPAVTree@@XZ = .text:0x004017D0; // type:function size:0x10 comdat
 ?SetDying@Object@@QAEXXZ = .text:0x004017E0; // type:label scope:global alias
 ?SetDying@Object@@UAEHXZ = .text:0x004017E0; // type:function size:0x10
