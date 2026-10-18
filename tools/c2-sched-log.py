@@ -33,28 +33,21 @@ The hooks are assembled with the project's LLVM clang (build/tools/llvm/bin/clan
 """
 
 import argparse
-import hashlib
-import os
 import re
-import shutil
 import struct
 import subprocess
 import sys
-import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 
 sys.dont_write_bytecode = True
 
+import c2_patch
 import msvc_probe as mp
-from decomp_binary import PE, Coff
-from decomp_common import ROOT
+from c2_patch import saved
+from decomp_binary import PE
 
 WORK = "build/probe-sched"
-EXE = ".exe" if os.name == "nt" else ""
-CLANG = f"build/tools/llvm/bin/clang{EXE}"
-
-C2_SHA256 = "d50100ac2380d58f3f6f756961fb1319d35f5248e5fa6cafb866ca657e5dda4a"  # 12.00.8966
 
 # c2.dll preferred VAs, from the address table in docs/msvc6_scheduler.md.
 SCHEDULER_ENTRY = 0x107374AA
@@ -69,65 +62,10 @@ WINDOW = 0x1079F268  # current window list head
 WEIGHTS = 0x10799204  # pointer to the per-CPU priority weight row
 OPNAMES, OPCOUNT = 0x107A5A90, 270  # opcode name pointer table
 
-IOB, FFLUSH, VFPRINTF = 0x107A0074, 0x107A0094, 0x107A00C4  # MSVCRT IAT slots
-STDERR = 0x40  # &_iob[2]: a FILE is 0x20 bytes
-CAVE, CAVE_END = 0x10798400, 0x10799000  # zero padding at the end of .text's raw data
 FCOUNT = 0x1079F910  # function counter: past .bssbe's VirtualSize, in its last page
-
-PE_HEADER_POINTER = 0x3C  # e_lfanew
-OPTIONAL_HEADER_SIZE = 20  # offset of SizeOfOptionalHeader from the PE signature
-PE_HEADERS = 24  # signature + COFF file header
-SECTION_HEADER = 40
-VIRTUAL_SIZE = 8  # offset of VirtualSize in a section header
 
 NOP = 354  # IL node that emits nothing
 WINDOW_NODES = 81
-
-# Offsets of the registers saved by `pushad` on the hook's stack.
-SAVED = dict(edi=0, esi=4, ebp=8, esp=12, ebx=16, edx=20, ecx=24, eax=28)
-
-
-def saved(reg):
-    return f"dword ptr [esp+{SAVED[reg]}]"
-
-
-# Explicit encodings: clang would pick a 16-bit push for a label defined later,
-# and the absolute targets must become rel32 without relocations.
-PRELUDE = f"""
-.intel_syntax noprefix
-.set CAVE, {CAVE:#x}
-.macro push_va label
-  .byte 0x68
-  .long \\label - __start + CAVE
-.endm
-.macro jmp_va address
-  .byte 0xe9
-  .long \\address - (CAVE + . + 4 - __start)
-.endm
-.macro call_va address
-  .byte 0xe8
-  .long \\address - (CAVE + . + 4 - __start)
-.endm
-__start:
-logf:
-  push ebp
-  mov ebp, esp
-  lea eax, [ebp+12]
-  push eax
-  push dword ptr [ebp+8]
-  mov eax, dword ptr [{IOB:#x}]
-  add eax, {STDERR:#x}
-  push eax
-  call dword ptr [{VFPRINTF:#x}]
-  add esp, 12
-  mov eax, dword ptr [{IOB:#x}]
-  add eax, {STDERR:#x}
-  push eax
-  call dword ptr [{FFLUSH:#x}]
-  add esp, 4
-  pop ebp
-  ret
-"""
 
 STRINGS = {
     "nl": "\\n",
@@ -262,60 +200,6 @@ HOOKS = [
 ]
 
 
-def hook_source():
-    source = PRELUDE
-    for i, (at, orig, displaced, body) in enumerate(HOOKS):
-        back = at + len(orig) // 2
-        source += f"\nhook{i}:\n pushfd\n pushad\n{body}\n popad\n popfd\n {displaced}\n jmp_va {back:#x}\n"
-    for name, text in STRINGS.items():
-        source += f'{name}: .asciz "{text}"\n'
-    return source
-
-
-def assemble(clang):
-    """Assemble the hooks for CAVE. Returns (code, [VA of each hook])."""
-    with tempfile.TemporaryDirectory() as tmp:
-        asm, obj = Path(tmp) / "hooks.s", Path(tmp) / "hooks.obj"
-        asm.write_text(hook_source())
-        subprocess.run([clang, "--target=i386-pc-windows-msvc", "-c", str(asm), "-o", str(obj)], check=True)
-        coff = Coff.read(obj)
-    text = next(s for s in coff.sections if s.name == ".text")
-    if text.relocations:
-        raise RuntimeError("hook code needs relocations")
-    labels = {s.name: CAVE + s.value for s in coff.symbols.values() if s.section == text.index}
-    return coff.bytes(text.index, 0, text.size), [labels[f"hook{i}"] for i in range(len(HOOKS))]
-
-
-def patch_c2(clang, original, patched):
-    """Write a logging copy of c2.dll 8966."""
-    data = bytearray(Path(original).read_bytes())
-    if hashlib.sha256(data).hexdigest() != C2_SHA256:
-        raise RuntimeError(f"{original} is not c2.dll 8966. This tool supports only the MSVC 6.5 "
-                           "back end used for BW1W120 and BW1W130; configure with `python configure.py --version BW1W120`.")
-    text = PE(bytes(data)).section_at(CAVE)
-
-    def offset(va):
-        return text.raw_offset + va - text.address
-
-    code, hooks = assemble(clang)
-    if CAVE + len(code) > CAVE_END:
-        raise RuntimeError("hook code does not fit in the .text padding")
-    assert not any(data[offset(CAVE):offset(CAVE_END)]), "code cave is not zero-filled"
-    data[offset(CAVE):offset(CAVE) + len(code)] = code
-    for (at, orig, *_), hook in zip(HOOKS, hooks):
-        size = len(orig) // 2
-        jump = b"\xe9" + struct.pack("<i", hook - (at + 5))
-        data[offset(at):offset(at) + size] = jump + b"\x90" * (size - len(jump))
-
-    # Let .text's VirtualSize cover the cave (it stays within the raw size).
-    pe_header, = struct.unpack_from("<I", data, PE_HEADER_POINTER)
-    optional_size, = struct.unpack_from("<H", data, pe_header + OPTIONAL_HEADER_SIZE)
-    header = pe_header + PE_HEADERS + optional_size + SECTION_HEADER * (text.index - 1)
-    struct.pack_into("<I", data, header + VIRTUAL_SIZE, text.size)
-    patched.unlink(missing_ok=True)
-    patched.write_bytes(data)
-
-
 def opcode_names(c2):
     pe = PE.read(c2)
     names = {NOP: "nop-node"}
@@ -329,31 +213,9 @@ def opcode_names(c2):
 
 def compile_logged(unit):
     """Compile the unit with a logging copy of its compiler. Returns (log, listing, c2 copy)."""
-    clang = Path(ROOT) / CLANG
-    if not clang.exists():
-        raise RuntimeError(f"{CLANG} is missing; run ninja once to download the LLVM toolchain")
-    argv, source, _ = mp.compile_command(unit)
-    index = next(i for i, a in enumerate(argv) if os.path.basename(a).lower() == "cl.exe")
-    compiler = Path(ROOT) / argv[index]
-    work = mp.make_workdir(WORK)
-    cc = work / "cc"
-    cc.mkdir(exist_ok=True)
-    for path in compiler.parent.iterdir():
-        if path.is_file() and path.name != "c2.dll":
-            shutil.copy2(path, cc / path.name)
-    patch_c2(clang, compiler.parent / "c2.dll", cc / "c2.dll")
-
-    stem = Path(source).stem
-    cmd = mp.retarget(argv, source, source, f"{WORK}/{stem}.obj")
-    cmd[index] = f"{WORK}/cc/cl.exe"
-    cmd += ["/FAs", f"/Fa{WORK}/{stem}.asm"]
-    proc = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, errors="replace")
-    log = (proc.stdout + proc.stderr).replace("\r", "")
-    (work / f"{stem}.log").write_text(log)
-    if proc.returncode:
-        errors = [l for l in log.splitlines() if " error " in l or "fatal error" in l]
-        raise RuntimeError("compile failed:\n" + "\n".join(errors or log.splitlines()[-5:]))
-    return log, (work / f"{stem}.asm").read_text(errors="replace"), cc / "c2.dll"
+    stem = Path(mp.compile_command(unit)[1]).stem
+    log, _, work, c2 = c2_patch.compile_logged(unit, WORK, HOOKS, STRINGS, ["/FAs", f"/Fa{WORK}/{stem}.asm"])
+    return log, (work / f"{stem}.asm").read_text(errors="replace"), c2
 
 
 @dataclass
