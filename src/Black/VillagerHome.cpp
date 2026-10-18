@@ -106,6 +106,27 @@ bool32_t Villager::CheckNeededForSpecial()
 	return CheckSatisfyOwnDesire(GetInfo()->OwnDesireThreshold) == 1;
 }
 
+bool32_t Villager::CheckSatisfyOwnDesire(float threshold)
+{
+	float foodDesire = GetDesireForFood() - threshold;
+	float lifeDesire = GetDesireForLife() - threshold;
+	if (foodDesire > lifeDesire && foodDesire > 0.0f)
+	{
+		if (CheckSatisfyOwnFoodDesire())
+			return true;
+		if (lifeDesire > 0.0f)
+			return CheckSatisfySleep();
+	}
+	else if (lifeDesire > 0.0f)
+	{
+		if (CheckSatisfySleep())
+			return true;
+		if (foodDesire > 0.0f)
+			return CheckSatisfyOwnFoodDesire();
+	}
+	return false;
+}
+
 // BW1W120 00760110 BW1M119 0100f140
 bool32_t Villager::CheckNeedsAtHome()
 {
@@ -721,7 +742,7 @@ void Villager::SetupAfterTapOnAbode(MapCoords& pos, VILLAGER_STATES previous_sta
 {
 	action.SetState(LIVING_ACTION_INDEX_PREVIOUS, previous_state);
 	SetupMoveToPos(pos, VILLAGER_STATE_AFTER_TAP_ON_ABODE);
-	Flags |= 1;
+	Flags |= VILLAGER_FLAG_AFTER_TAP_ON_ABODE;
 }
 
 // BW1W120 00761440 BW1M119 0158e6b0
@@ -748,7 +769,8 @@ bool32_t Villager::CheckSatisfyRelaxation()
 // BW1W120 00761490 BW1M119 0109e8c0
 bool32_t Villager::CheckSatisfySleep()
 {
-	if ((Flags & 1) == 0 || ((const GVillagerInfo*)info)->DamageThresholdToGoHome > GetLife())
+	if ((Flags & VILLAGER_FLAG_AFTER_TAP_ON_ABODE) == 0 ||
+	    ((const GVillagerInfo*)info)->DamageThresholdToGoHome > GetLife())
 	{
 		// TODO: target folds this to `test byte ptr [Flags],4`; ours splits the byte load
 		if (Flags & 4)
