@@ -16,7 +16,7 @@ uint32_t Creature::GetSaveType()
 
 int Living::DecideWhatToDo()
 {
-	return false;
+	return 0;
 }
 
 uint32_t Creature::GetCreatureBeliefType()
