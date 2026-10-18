@@ -8,8 +8,7 @@
 #include <re_common.h>                        /* For bool32_t */
 #include <Lionhead/LHLib/ver5.0/LHListNode.h> /* For LHListNode */
 
-#include "Base.h"             /* For struct Base, struct BaseVftable */
-#include "ResourceRainType.h" /* For enum RESOURCE_RAIN_TYPE */
+#include "Base.h" /* For struct Base, struct BaseVftable */
 
 enum GAME_THING_TYPE
 {
@@ -450,7 +449,7 @@ public:
 	// BW1W120 0071bc20 BW1M119 01517ad0
 	virtual uint32_t GetSampleForAttack();
 	// BW1W120 0071bdd0 BW1M119 01517810
-	virtual RESOURCE_RAIN_TYPE GetGuidanceResourceType() { return RESOURCE_RAIN_TYPE_0; }
+	virtual uint32_t GetGuidanceResourceType();
 	// BW1W120 00401930 BW1M119 011cfde0
 	virtual uint32_t GetShowNeedsPos(uint32_t need, MapCoords* pos) { return 0; }
 	// BW1W120 0056fcf0 BW1M119 011063a0
