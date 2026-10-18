@@ -33,13 +33,13 @@ public:
 
 	virtual void Enter();
 	// BW1W120 0046e5e0 BW1M119 011cde50
-	virtual void DrawTheHeldObject() {}
+	virtual void DrawTheHeldObject();
 	// BW1W120 005b02d0 BW1M119 011ccd30
 	virtual void Exit() {}
 	// BW1W120 purecall BW1M119 purecall
 	virtual void Update(float param_1, LHMatrix* param_2) = 0;
 	// BW1W120 0046be80 BW1M119 011af760
-	virtual bool AllowCameraTricons() { return false; }
+	virtual bool AllowCameraTricons();
 
 	// Constructors
 
