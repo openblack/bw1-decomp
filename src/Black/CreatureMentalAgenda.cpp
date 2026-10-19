@@ -37,7 +37,7 @@ bool32_t CreatureAgenda::ConstructSubActionsFromActionAgenda(CREATURE_ACTION act
 		ActionUnavailableWhenConfined[action] = true;
 		return false;
 	}
-	if (SubActionAgenda.MainSubAction == -1)
+	if (SubActionAgenda.MainSubAction == CREATURE_SUB_ACTION_NO_MAIN)
 	{
 		if (SubActionAgenda.NumSubActions == 0)
 		{

@@ -2,6 +2,7 @@
 #define BW1_DECOMP_CREATURE_SUB_ACTION_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <limits.h> /* For ULONG_MAX */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
@@ -37,7 +38,8 @@ public:
 static_assert(sizeof(CreatureSubAction) == 0x60, "Data type is of wrong size");
 
 // NextPart moves on to the next sub-action once SubActionState reaches this.
-#define CREATURE_SUB_ACTION_PARTS 3
+#define CREATURE_SUB_ACTION_PARTS   3
+#define CREATURE_SUB_ACTION_NO_MAIN ULONG_MAX
 
 class CreatureSubActionAgenda : public Base
 {
@@ -47,7 +49,7 @@ public:
 	int               SubActionState;
 	unsigned long     NumSubActions;
 	uint32_t          field_0x18;
-	int               MainSubAction;
+	unsigned long     MainSubAction;
 	uint32_t          field_0x20;
 	uint32_t          field_0x24;
 	CreatureSubAction SubActions[0x20];
