@@ -17,7 +17,7 @@ bool LayerCommunication::Connected;
 #include <chlasm/HelpTextEnums.h>                  /* For HELP_TEXT_DIALOG_ADDITION_18 */
 #include <Lionhead/LH3DLib/development/LH3DText.h> /* For CHAR2WCHAR */
 #include <Lionhead/LHLib/ver5.0/LHTimer.h>         /* For LHTimer */
-#ifndef VERSION_BW1W120
+#if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
 #endif
 #include <Lionhead/LHLib/ver5.0/LHWin.h>      /* For operator new(size_t, const char*, uint32_t) */
@@ -67,6 +67,9 @@ bool LayerCommunication::Connected;
 #elif defined(VERSION_BW1W110)
 #define BW_GAME_SPY_SOURCE_FILE "C:\\dev\\Black\\BWGameSpy.cpp"
 #define BW_GAME_SPY_LINE_OFFSET 0
+#elif defined(VERSION_BW1W130)
+#define BW_GAME_SPY_SOURCE_FILE "D:\\Work\\Games\\dd\\Black\\BWGameSpy.cpp"
+#define BW_GAME_SPY_LINE_OFFSET 7
 #else
 #define BW_GAME_SPY_SOURCE_FILE "C:\\dev\\MP\\Black\\BWGameSpy.cpp"
 #define BW_GAME_SPY_LINE_OFFSET 7
@@ -148,6 +151,22 @@ static ProtectionMarker CreatureVersionMarker = {
      0x419f56e7, 0x888333bc, 0x2e45e45b, 0x1347a545, 0x1d7512bf, 0x1ca51b38, 0xb8fa11ce, 0xe3eff2ab,
      0x0e6d3385, 0x00000000, 0x677263f2, 0x90d52f0f, 0xbc1f732c, 0xfb811d80},
 	{{0x0000007d, 0x00000000, 0x00000000, 0x00000000}},
+};
+#elif defined(VERSION_BW1W130)
+static ProtectionMarker InfoVersionMarker = {
+	{0xff93ca03, 0x9174d762, 0x6e050ff1, 0x231f1fe1, 0xb51a2fd1, 0x47013fc7, 0x00000000, 0xd90c4fb5,
+     0x6b0b5fa7, 0xfd267f95, 0x8f3d7f8a, 0x21388f7a, 0x00000000, 0xb7118f59, 0x4522af58, 0xd729bf4f,
+     0x043a5e40, 0x6992053e, 0xfb13df2d, 0x8d1eef1c, 0x00000010, 0x00000000, 0xe120f041, 0xad80c897,
+     0x46afce86, 0x00c9c8a2, 0xf97f4ec6, 0xf97f4ec6, 0x8b7a5eb2, 0x1d616ea4},
+	{{0x00000000, 0x00000000, 0x00000000, 0x00000000}},
+};
+
+static ProtectionMarker CreatureVersionMarker = {
+	{0xff71d893, 0x9fd5c47d, 0x60a41d66, 0x3e5d3acf, 0xdef95830, 0x7d85759b, 0x00000000, 0x1c2192fe,
+     0xbccdb065, 0x5b79ddc8, 0xfa35eb32, 0x9ad00895, 0x00000000, 0x3d4a35cf, 0xd8184361, 0x78a460cb,
+     0x043a5e60, 0x17e4a6bd, 0xb7ac9b97, 0x56c8b8f9, 0x00000010, 0x00000000, 0x06c42534, 0x13798b7e,
+     0x94933724, 0xaed910ca, 0x1263695d, 0x1263695d, 0xb10f86c1, 0x51aba429},
+	{{0x00000000, 0x00000000, 0x00000000, 0x00000000}},
 };
 #else
 static ProtectionMarker InfoVersionMarker = {
@@ -473,7 +492,7 @@ void BWGameSpy::DisconnectedCallback(PEER peer, const char* reason, void* param)
 	}
 }
 
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 #define BW_GAME_SPY_LHTIMER_PART 1
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
 #undef BW_GAME_SPY_LHTIMER_PART
@@ -505,7 +524,7 @@ void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* m
 	}
 }
 
-#ifdef VERSION_BW1W120
+#if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 #define BW_GAME_SPY_LHTIMER_PART 2
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
 #undef BW_GAME_SPY_LHTIMER_PART

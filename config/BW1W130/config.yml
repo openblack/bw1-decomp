@@ -70,6 +70,9 @@ block_relocations:
   - source: 0x00CA0FB0
   - source: 0x00CA11D0
 
+# BWGameSpy's InfoVersionMarker holds 0x00C9C8A2, which reads as an address inside
+# g_scriptFunctionTable; it is marker data, not a pointer.
+  - source: 0x00A4D8F4
 # BWGameSpy's L"Username already in use." and MPFEMessageObject's type descriptor name contain
 # words that read as code addresses; they are text, not pointers.
   - source: 0x00A4DBFC

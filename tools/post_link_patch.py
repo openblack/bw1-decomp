@@ -769,6 +769,42 @@ BW1W120_SAFEDISC_CALLS = (
 # boundary ends in a `jmp` back to the start of an earlier run (see `jmp_run`), or repeats
 # the bytes in front of one (see `copy_run`).
 BW1W130_SAFEDISC_CALLS = (
+    (0x0043DD5B, call_rel32(0x00403C49)),  # BWGameSpy
+    (0x0043DD83, copy_run(0x0043DD5B)),  # BWGameSpy
+    (0x0043DDAB, call_rel32(0x00403C49)),  # BWGameSpy
+    (0x0043DF64, copy_run(0x0043DDAB)),  # BWGameSpy
+    (0x0043E027, copy_run(0x0043DF64)),  # BWGameSpy
+    (0x0043E069, copy_run(0x0043E027)),  # BWGameSpy
+    (0x0043E137, jmp_run(0x0043E069)),  # BWGameSpy
+    (0x0043E191, jmp_run(0x0043E137)),  # BWGameSpy
+    (0x0043E281, copy_run(0x0043E191)),  # BWGameSpy
+    (0x0043E516, jmp_run(0x0043E281)),  # BWGameSpy
+    (0x0043E881, copy_run(0x0043E516)),  # BWGameSpy
+    (0x0043E916, jmp_run(0x0043E881)),  # BWGameSpy
+    (0x0043E959, jmp_run(0x0043E916)),  # BWGameSpy
+    (0x0043E9B6, jmp_run(0x0043E959)),  # BWGameSpy
+    (0x0043EA43, copy_run(0x0043E9B6)),  # BWGameSpy
+    (0x0043EB6B, call_rel32(0x00403C49)),  # BWGameSpy
+    (0x0043EBB2, jmp_run(0x0043EB6B)),  # BWGameSpy
+    (0x0043EC44, copy_run(0x0043EBB2)),  # BWGameSpy
+    (0x0043EDA7, copy_run(0x0043EC44)),  # BWGameSpy
+    (0x0043EE81, copy_run(0x0043EDA7)),  # BWGameSpy
+    (0x0043EF2A, call_indirect(0x008AE594)),  # BWGameSpy: __imp___1DBInfo__QAE_XZ@4
+    (0x0043EFC4, copy_run(0x0043EF2A)),  # BWGameSpy
+    (0x0043F089, copy_run(0x0043EFC4)),  # BWGameSpy
+    (0x0043F229, copy_run(0x0043F089)),  # BWGameSpy
+    (0x0043F355, jmp_run(0x0043F229)),  # BWGameSpy
+    (0x0043F435, jmp_run(0x0043F355)),  # BWGameSpy
+    (0x0043F517, jmp_run(0x0043F435)),  # BWGameSpy
+    (0x0043F5D7, jmp_run(0x0043F517)),  # BWGameSpy
+    (0x0043FA0B, call_rel32(0x00403C49)),  # BWGameSpy
+    (0x0043FC21, copy_run(0x0043FA0B)),  # BWGameSpy
+    (0x0043FDD9, jmp_run(0x0043FC21)),  # BWGameSpy
+    (0x00440139, jmp_run(0x0043FDD9)),  # BWGameSpy
+    (0x004401CA, call_indirect(0x008AE03C)),  # BWGameSpy: __imp__DirectXSetupGetVersion
+    (0x004401E8, copy_run(0x004401CA)),  # BWGameSpy
+    (0x00440392, jmp_run(0x004401E8)),  # BWGameSpy
+    (0x0044059A, call_indirect(0x008AE01C)),  # BWGameSpy: __imp__TrackMouseEvent@4
     (0x00463399, jmp_run(0x00462FC1)),  # CarriedObject
     (0x004633E4, copy_run(0x00463399)),  # CarriedObject
     (0x004E15D3, jmp_run(0x004E1579)),  # CreatureMentalEditor
