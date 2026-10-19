@@ -17,6 +17,16 @@
 
 class Creature;
 
+struct CreatureDesireFeedback
+{
+	unsigned long field_0x0;
+	float         field_0x4;
+
+	// BW1W120 inlined BW1M119 01269400
+	CreatureDesireFeedback() : field_0x0(0), field_0x4(0.0f) {}
+};
+static_assert(sizeof(CreatureDesireFeedback) == 0x8, "Data type is of wrong size");
+
 class CreatureLearning : public Base
 {
 public:
@@ -37,15 +47,15 @@ public:
 #ifdef VERSION_BW1WCI
 	bool32_t CanLearn[CREATURE_ACTION_KNOWN_ABOUT_LAST];
 #endif
-	uint32_t  field_0x15aec;
-	uint32_t  field_0x15af0;
-	uint32_t  field_0x15af4;
-	uint32_t  field_0x15af8[0x2][0x28];
-	uint32_t  field_0x15c38;
-	uint32_t  field_0x15c3c;
-	uint32_t  NumTimesActionPerformed[NUM_CREATURE_ACTIONS];
-	Creature* field_0x16160;
-	uint32_t  field_0x16164;
+	uint32_t               field_0x15aec;
+	uint32_t               field_0x15af0;
+	uint32_t               field_0x15af4;
+	CreatureDesireFeedback DesireFeedback[NUM_CREATURE_DESIRES];
+	uint32_t               field_0x15c38;
+	uint32_t               field_0x15c3c;
+	uint32_t               NumTimesActionPerformed[NUM_CREATURE_ACTIONS];
+	Creature*              field_0x16160;
+	uint32_t               field_0x16164;
 #ifdef VERSION_BW1WCI
 	uint32_t ci_padding_0x2424;
 #endif
