@@ -2297,15 +2297,16 @@ Black/VillagerShepherd.cpp:
 	.bss        start:0x00E42A50 end:0x00E42A58
 
 Black/VillagerStates.cpp:
-	.text       start:0x00785900 end:0x00787D80
+	.text       start:0x00785900 end:0x00787D50
 	.rdata      start:0x00A0A364 end:0x00A0A3A8
-	.CRT$XCU    start:0x00A37318 end:0x00A37328 align:4
-	.bss        start:0x00E42A58 end:0x00E53D60
+	.CRT$XCU    start:0x00A37318 end:0x00A37324 align:4
+	.bss        start:0x00E42A58 end:0x00E53D68
 
 Black/VillagerTrader.cpp:
-	.text       start:0x00787D80 end:0x00787DE0
+	.text       start:0x00787D50 end:0x00787DE0
 	.rdata      start:0x00A0A3A8 end:0x00A0A3B4
-	.bss        start:0x00E53D60 end:0x00E53D6C
+	.CRT$XCU    start:0x00A37324 end:0x00A37328 align:4
+	.bss        start:0x00E53D68 end:0x00E53D6C
 
 Black/VillagerWorshipper.cpp:
 	.text       start:0x00787DE0 end:0x00788FE0

@@ -2141,14 +2141,20 @@ Black/VillagerStates.cpp:
 	.rdata      start:0x0098A984 end:0x0098A9C8
 	.CRT$XCU    start:0x009B72B4 end:0x009B72B8 align:4
 	.data       start:0x00C13668 end:0x00C13694
-	.bss        start:0x00DA8B28 end:0x00DB9E30
+	.bss        start:0x00DA8B28 end:0x00DB9E38
 
 Black/VillagerStateTableInfo.cpp:
 	.text       start:0x0075F050 end:0x0075F580
 
+Black/VillagerTrader.cpp:
+	.text       start:0x0075F580 end:0x0075F610
+	.rdata      start:0x0098A9C8 end:0x0098A9D4
+	.CRT$XCU    start:0x009B72CC end:0x009B72D0 align:4
+	.bss        start:0x00DB9E38 end:0x00DB9E3C
+
 Black/VillagerWorshipper.cpp:
-	.text       start:0x0075F640 end:0x00760810
-	.CRT$XCU    start:0x009B72D4 end:0x009B72D8 align:4
+	.text       start:0x0075F610 end:0x00760810
+	.CRT$XCU    start:0x009B72D0 end:0x009B72D8 align:4
 
 Black/VirtualInfluence.cpp:
 	.text       start:0x00760810 end:0x00761000
