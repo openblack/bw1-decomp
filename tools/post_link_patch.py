@@ -645,6 +645,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004DF08B, call_rel32(0x00401879)),  # CreatureMentalDesireTests
     (0x004DF26B, call_rel32(0x00401879)),  # CreatureMentalEditor
     (0x004E35BB, call_rel32(0x00401879)),  # CreatureMentalObjectMultipliers
+    (0x004F231B, call_rel32(0x00401879)),  # CreaturePreviousContext
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
     (0x0052E3FA, call_indirect(0x008A901C)),  # Fixed: __imp__TrackMouseEvent@4
     (0x0052EE0A, call_indirect(0x008A97AC)),  # Fixed: __imp__ShellExecuteA@4
@@ -798,6 +799,11 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004E594B, call_rel32(0x00403C49)),  # CreatureMentalObjectMultipliers
     (0x004E5973, jmp_run(0x004E594B)),  # CreatureMentalObjectMultipliers
     (0x004E59C4, copy_run(0x004E5973)),  # CreatureMentalObjectMultipliers
+    (0x004F4683, copy_run(0x004F4568)),  # CreaturePreviousContext
+    (0x004F46AB, call_rel32(0x00403C49)),  # CreaturePreviousContext
+    (0x004F4745, copy_run(0x004F46AB)),  # CreaturePreviousContext
+    (0x004F4958, jmp_run(0x004F4743)),  # CreaturePreviousContext
+    (0x004F4988, copy_run(0x004F4958)),  # CreaturePreviousContext
     (0x007707B6, jmp_run(0x007706F9)),  # VillagerTrader
 )
 

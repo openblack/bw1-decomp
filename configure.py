@@ -692,6 +692,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreaturePenInfo.cpp"),
             GameCodeObject(NonMatching, "Black/CreaturePhysical.cpp"),
             GameCodeObject(NonMatching, "Black/CreaturePlan.cpp"),
+            GameCodeObject(Matching, "Black/CreaturePreviousContext.cpp"),
             GameCodeObject(NonMatching, "Black/CreaturePreviousLesson.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureReaction.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureReceiveSpell.cpp"),

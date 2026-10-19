@@ -59,15 +59,12 @@ public:
 	static bool32_t DebugDrawObjectToActOn;
 
 	// BW1W120 004e7820 BW1M119 0126dfb0
-	void                   SaveMind(char* path);
-	CreatureDesires        desires;
-	CreatureAgenda         agenda;
-	CreatureBeliefs        beliefs;
-	DecisionTreeCollection decision_tree_collection;
-	CreatureActionOpinions ActionOpinions;
-#ifdef VERSION_BW1WCI
-	uint32_t ci_padding_0x2b1c;
-#endif
+	void                                      SaveMind(char* path);
+	CreatureDesires                           desires;
+	CreatureAgenda                            agenda;
+	CreatureBeliefs                           beliefs;
+	DecisionTreeCollection                    decision_tree_collection;
+	CreatureActionOpinions                    ActionOpinions;
 	CreatureLearning                          learning;
 	CreatureAttitudeToPlayer                  AttitudeToPlayer;
 	LHLinkedList<CreatureAttitudeToCreature*> AttitudesToCreatures;

@@ -8103,9 +8103,9 @@ CreatureActionOpinions::CreatureActionOpinions(const CreatureInfo* info)
 
 CreatureActionContext::CreatureActionContext(CreatureContext& context, float priority)
 {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < NUM_ACTION_CONTEXT_VALUES; i++)
 	{
-		start.Values[i] = context.ActionContextStart.Values[i];
+		start.Values[i] = context.ActionContextStart[i];
 	}
 	Priority = priority;
 }
