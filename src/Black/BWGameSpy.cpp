@@ -67,6 +67,9 @@ bool LayerCommunication::Connected;
 #elif defined(VERSION_BW1W110)
 #define BW_GAME_SPY_SOURCE_FILE "C:\\dev\\Black\\BWGameSpy.cpp"
 #define BW_GAME_SPY_LINE_OFFSET 0
+#elif defined(VERSION_BW1WCI)
+#define BW_GAME_SPY_SOURCE_FILE "C:\\dev\\black\\BWGameSpy.cpp"
+#define BW_GAME_SPY_LINE_OFFSET 0
 #elif defined(VERSION_BW1W130)
 #define BW_GAME_SPY_SOURCE_FILE "D:\\Work\\Games\\dd\\Black\\BWGameSpy.cpp"
 #define BW_GAME_SPY_LINE_OFFSET 7
@@ -151,6 +154,22 @@ static ProtectionMarker CreatureVersionMarker = {
      0x419f56e7, 0x888333bc, 0x2e45e45b, 0x1347a545, 0x1d7512bf, 0x1ca51b38, 0xb8fa11ce, 0xe3eff2ab,
      0x0e6d3385, 0x00000000, 0x677263f2, 0x90d52f0f, 0xbc1f732c, 0xfb811d80},
 	{{0x0000007d, 0x00000000, 0x00000000, 0x00000000}},
+};
+#elif defined(VERSION_BW1WCI)
+static ProtectionMarker InfoVersionMarker = {
+	{0x0b6707b0, 0x0b04d780, 0x1648fc18, 0x227141d0, 0x2d9c1ec1, 0x39032670, 0x00000000, 0x4fd135d5,
+     0x5b383d81, 0x668f5531, 0x72064ce1, 0x7d6d5490, 0x8812af38, 0x947f3530, 0x9f01363f, 0x00000000,
+     0xb5dc46c0, 0xc1d782b0, 0xcd3e8a60, 0x03ac37f0, 0xe40c99c7, 0xef77f7b0, 0xfadaa98b, 0x0622ed4f,
+     0x00000010, 0xe1f56974, 0xd6c1124a, 0x3efe688f, 0xa5397347, 0x3e497f60},
+	{{0xef1af39b, 0x00000000, 0x00000000, 0x00000000}},
+};
+
+static ProtectionMarker CreatureVersionMarker = {
+	{0x01c52139, 0x01a6f181, 0x03e99242, 0x050b342b, 0x071484e5, 0x08d9a61d, 0x00000000, 0x0c63e88a,
+     0x0e2909c9, 0x0ffe3b00, 0x11b34c3b, 0x13786d73, 0x159e5e9c, 0x1746f865, 0x18648c77, 0x00000000,
+     0x1ffe2e50, 0x1e1734c9, 0x1fdc5602, 0x03ac37e0, 0x23669872, 0x252fee2d, 0x26f0da4d, 0x28d6a176,
+     0x00000010, 0xe1f56974, 0xa516f3d3, 0x58fc3c79, 0x014fb64f, 0xecb026bf},
+	{{0xa6563aec, 0x00000000, 0x00000000, 0x00000000}},
 };
 #elif defined(VERSION_BW1W130)
 static ProtectionMarker InfoVersionMarker = {

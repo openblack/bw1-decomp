@@ -3590,10 +3590,18 @@ enum     HELP_TEXT
 #define HELP_TEXT_DIALOG_PREVIOUSGAMEWENTOUTOFSYNC                                                        3507
 #define HELP_TEXT_DIALOG_NOTENOUGHINFO                                                                    3508
 #define HELP_TEXT_DIALOG_DIALUPERROR                                                                      3509
+#ifdef VERSION_BW1WCI
+#define HELP_TEXT_DIALOG_CONNECT                                                                          3518
+#else
 #define HELP_TEXT_DIALOG_CONNECT                                                                          3510
+#endif // VERSION_BW1WCI
 #define HELP_TEXT_DIALOG_DISCONNECT                                                                       3511
 #define HELP_TEXT_DIALOG_REFRESH                                                                          3512
+#ifdef VERSION_BW1WCI
+#define HELP_TEXT_DIALOG_JOIN                                                                             3521
+#else
 #define HELP_TEXT_DIALOG_JOIN                                                                             3513
+#endif // VERSION_BW1WCI
 #define HELP_TEXT_DIALOG_TYPEMESSAGE                                                                      3514
 #define HELP_TEXT_DIALOG_LEAVECHANNEL                                                                     3515
 #define HELP_TEXT_DIALOG_LOBBYSTARTGAME                                                                   3516
@@ -6478,7 +6486,11 @@ enum     HELP_TEXT
 #define HELP_TEXT_STATE_SCRIPT_GO_AND_MOVE_ALONG_PATH                                                     6395
 #define HELP_TEXT_MPFE_TITLE_CHOOSE_CONNECTION                                                            6396
 #define HELP_TEXT_MPFE_STATUS_CC_STATUS_LIST                                                              6397
+#ifdef VERSION_BW1WCI
+#define HELP_TEXT_MPFE_STATUS_CC_STATUS_BACK                                                              6423
+#else
 #define HELP_TEXT_MPFE_STATUS_CC_STATUS_BACK                                                              6398
+#endif // VERSION_BW1WCI
 #define HELP_TEXT_MPFE_STATUS_CC_STATUS_CONTINUE                                                          6399
 #define HELP_TEXT_MPFE_LAN_STRING                                                                         6400
 #define HELP_TEXT_MPFE_FG_TITLE                                                                           6401
@@ -6806,9 +6818,21 @@ enum     HELP_TEXT
 #define HELP_TEXT_DIALOG_ADDITION_15                                                                      6723
 #define HELP_TEXT_DIALOG_ADDITION_16                                                                      6724
 #define HELP_TEXT_DIALOG_ADDITION_17                                                                      6725
+#ifdef VERSION_BW1WCI
+#define HELP_TEXT_DIALOG_ADDITION_18                                                                      6744
+#else
 #define HELP_TEXT_DIALOG_ADDITION_18                                                                      6726
+#endif // VERSION_BW1WCI
+#ifdef VERSION_BW1WCI
+#define HELP_TEXT_DIALOG_ADDITION_19                                                                      6745
+#else
 #define HELP_TEXT_DIALOG_ADDITION_19                                                                      6727
+#endif // VERSION_BW1WCI
+#ifdef VERSION_BW1WCI
+#define HELP_TEXT_DIALOG_ADDITION_20                                                                      6746
+#else
 #define HELP_TEXT_DIALOG_ADDITION_20                                                                      6728
+#endif // VERSION_BW1WCI
 #define HELP_TEXT_DIALOG_ADDITION_21                                                                      6729
 #define HELP_TEXT_DIALOG_ADDITION_22                                                                      6730
 #define HELP_TEXT_DIALOG_ADDITION_23                                                                      6731

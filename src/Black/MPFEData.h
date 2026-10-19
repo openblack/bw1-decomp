@@ -25,16 +25,28 @@ public:
 	};
 
 	LHOrderedLinkedList<MPFEPlayerDetails> Teams[MAX_TEAMS];
-	uint8_t                                field_0x28[0xa34];
-	MPFEChannelDetails*                    CurrentChannel;
-	LayerCommunication*                    Layer;
-	ChannelBox*                            ActiveDialog;
-	uint8_t                                field_0xa68[0x6c];
-	LHLinkedList<MPFEPlayerDetails*>       UnassignedPlayers;
-	uint8_t                                field_0xadc[0xae8];
-	bool                                   IsOOSGame;
-	bool                                   InGameChannel;
-	bool                                   IsHost;
+#ifdef VERSION_BW1WCI
+	uint8_t field_0x28[0xa48];
+#else
+	uint8_t field_0x28[0xa34];
+#endif
+	MPFEChannelDetails* CurrentChannel;
+	LayerCommunication* Layer;
+	ChannelBox*         ActiveDialog;
+#ifdef VERSION_BW1WCI
+	uint8_t field_0xa7c[0x6c];
+#else
+	uint8_t field_0xa68[0x6c];
+#endif
+	LHLinkedList<MPFEPlayerDetails*> UnassignedPlayers;
+#ifdef VERSION_BW1WCI
+	uint8_t field_0xaf0[0xae8];
+#else
+	uint8_t field_0xadc[0xae8];
+#endif
+	bool IsOOSGame;
+	bool InGameChannel;
+	bool IsHost;
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	uint8_t      field_0x15c7[0xa];
 	bool         GameStarting;
@@ -42,6 +54,12 @@ public:
 	uint8_t      field_0x16c4[0x74];
 	uint32_t     LocalPlayerID;
 	wchar_t      LocalPlayerName[PLAYER_NAME_SIZE];
+#elif defined(VERSION_BW1WCI)
+	uint8_t  field_0x15db[0x8];
+	bool     GameStarting;
+	uint8_t  field_0x15e4[0x64];
+	uint32_t LocalPlayerID;
+	wchar_t  LocalPlayerName[PLAYER_NAME_SIZE];
 #else
 	uint8_t  field_0x15c7[0x7];
 	bool     GameStarting;

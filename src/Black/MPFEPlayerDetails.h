@@ -22,7 +22,7 @@ struct MPFEPlayerDetails
 	int     Ping; /* 0x11c */
 #if defined(VERSION_BW1W100)
 	LH_USER_ID ID;
-#elif defined(VERSION_BW1W110)
+#elif defined(VERSION_BW1W110) || defined(VERSION_BW1WCI)
 	uint8_t    field_0x120[0x4];
 	LH_USER_ID ID;
 #else
