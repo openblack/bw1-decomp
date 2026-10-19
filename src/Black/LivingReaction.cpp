@@ -496,7 +496,7 @@ uint32_t Living::NumGameTurnsBeforeReactingAgainToCreatureFunction(GameThingWith
 		scale *= LIVING_VERY_IMPRESSIVE_CREATURE_AGAIN_SCALE;
 		break;
 	}
-	CREATURE_ACTION creatureAction = creature->mind->agenda.plans[0].creature_action;
+	CREATURE_ACTION creatureAction = creature->mind->agenda.CurrentPlan.creature_action;
 	if (creatureAction < NUM_CREATURE_ACTIONS &&
 	    CreatureActionInfo::g_CreatureActionInfos[creatureAction].ImpressiveType !=
 	        IMPRESSIVE_TYPE_CREATURE_NOT_IMPRESSIVE)

@@ -363,6 +363,10 @@ public:
 	virtual bool32_t IsCreature() { return false; }
 	// BW1W120 00401830 BW1M119 01574ee0
 	virtual bool32_t IsCreature(Creature* creature) { return false; }
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 00401830 BW1M119 null
+	virtual bool32_t CreatureIsleVirtual0x38(uint32_t param_1) { return false; }
+#endif
 	// BW1W120 00401840 BW1M119 01480930
 	virtual bool32_t IsCreatureNotTooNear(Creature* creature) { return false; }
 	// BW1W120 00405130 BW1M119 013e8040
@@ -373,6 +377,10 @@ public:
 	virtual GComputerSeen* GetComputerSeen() { return NULL; }
 	// BW1W120 0056ff10 BW1M119 01387ea0
 	virtual Town* GetTown();
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 00401870 BW1M119 null
+	virtual bool CreatureIsleVirtual0x50() { return false; }
+#endif
 	// BW1W120 00401870 BW1M119 01575490
 	virtual float GetVillagerActivityDesire(Villager* villager) { return 0.0f; }
 	// BW1W120 00401880 BW1M119 014ffab0
@@ -387,6 +395,10 @@ public:
 	virtual float GetRadius();
 	// BW1W120 00405150 BW1M119 01502990
 	virtual float Get2DRadius();
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 004018b0 BW1M119 null
+	virtual void CreatureIsleVirtual0x70(uint32_t param_1) {}
+#endif
 	// BW1W120 004018a0 BW1M119 01187f90
 	virtual GPlayer* GetPlayerWhoLastPickedMeUp() { return NULL; }
 	// BW1W120 004018b0 BW1M119 011a2760
@@ -462,6 +474,10 @@ public:
 	virtual void SaveExtraData(GameOSFile& file);
 	// BW1W120 00405250 BW1M119 013e3d10
 	virtual void ResolveLoad();
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 004051f0 BW1M119 null
+	virtual void CreatureIsleVirtual0x108();
+#endif
 
 	// Static methods
 

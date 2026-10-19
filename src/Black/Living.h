@@ -323,6 +323,16 @@ public:
 	virtual void SetAge(uint32_t age);
 	// BW1W120 005f26d0 BW1M119 0138de80
 	virtual bool32_t LookAtFlyingObjectReaction();
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 0047e0c0 BW1M119 null
+	virtual int CreatureIsleVirtual0x92c() { return 0; }
+	// BW1W120 null BW1WCI 0047e0d0 BW1M119 null
+	virtual void CreatureIsleVirtual0x930(uint32_t param_1) {}
+	// BW1W120 null BW1WCI 0047e0e0 BW1M119 null
+	virtual int CreatureIsleVirtual0x934() { return 0; }
+	// BW1W120 null BW1WCI 0047e0f0 BW1M119 null
+	virtual void CreatureIsleVirtual0x938(uint32_t param_1) {}
+#endif
 	// BW1W120 005f2980 BW1M119 01078700
 	virtual int SetCurrentAndDestinationState(uint8_t current, uint8_t destination);
 	// BW1W120 purecall BW1M119 null
@@ -598,6 +608,10 @@ public:
 	virtual uint32_t IsPosValidForMapCellExistance(const MapCoords& param_1);
 	// BW1W120 005ec340 BW1M119 0138adf0
 	virtual void MoveByTeleport(const MapCoords& param_1);
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 0047e180 BW1M119 null
+	virtual bool32_t CreatureIsleVirtual0xb54(uint32_t param_1, uint32_t param_2) { return false; }
+#endif
 	// BW1W120 00417270 BW1M119 01139210
 	virtual bool32_t IsDead();
 	// BW1W120 00473ed0 BW1M119 011ead00
