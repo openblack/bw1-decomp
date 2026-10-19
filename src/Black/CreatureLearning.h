@@ -60,9 +60,6 @@ public:
 	uint32_t               NumTimesActionPerformed[NUM_CREATURE_ACTIONS];
 	Creature*              field_0x16160;
 	uint32_t               field_0x16164;
-#ifdef VERSION_BW1WCI
-	uint32_t ci_padding_0x2424;
-#endif
 
 	// Override methods
 

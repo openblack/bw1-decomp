@@ -174,9 +174,11 @@ struct CreatureActionContext;
 
 struct CreatureActionTableEntry;
 
+#define NUM_ACTION_CONTEXT_VALUES 5
+
 struct CreatureActionContextStart
 {
-	uint32_t Values[5];
+	float Values[NUM_ACTION_CONTEXT_VALUES];
 };
 
 struct CreatureActionContext

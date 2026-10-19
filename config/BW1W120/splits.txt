@@ -686,15 +686,21 @@ Black/CreaturePhysical.cpp:
 	.bss        start:0x00CADA84 end:0x00CADA8C
 
 Black/CreaturePlan.cpp:
-	.text       start:0x004F0320 end:0x004F2630
-	.rdata      start:0x008D1528 end:0x008D1584
-	.CRT$XCU    start:0x009C65CC end:0x009C65F0 align:4
+	.text       start:0x004F0320 end:0x004F22D0
+	.rdata      start:0x008D1528 end:0x008D1574
+	.CRT$XCU    start:0x009C65CC end:0x009C65E4 align:4
 	.data       start:0x00BE0290 end:0x00BE0314
-	.bss        start:0x00CADA8C end:0x00CADAAC
+	.bss        start:0x00CADA8C end:0x00CADAA4
+
+Black/CreaturePreviousContext.cpp:
+	.text       start:0x004F22D0 end:0x004F2630
+	.rdata      start:0x008D1574 end:0x008D1580
+	.CRT$XCU    start:0x009C65E4 end:0x009C65F0 align:4
+	.bss        start:0x00CADAA4 end:0x00CADAAC
 
 Black/CreatureReaction.cpp:
 	.text       start:0x004F2630 end:0x004F3C50
-	.rdata      start:0x008D1584 end:0x008D1590
+	.rdata      start:0x008D1580 end:0x008D1590
 	.CRT$XCU    start:0x009C65F0 end:0x009C65FC align:4
 	.data       start:0x00BE0314 end:0x00BE037C
 	.bss        start:0x00CADAAC end:0x00CADAB8
