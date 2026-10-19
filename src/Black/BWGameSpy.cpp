@@ -16,11 +16,14 @@ bool LayerCommunication::Connected;
 
 #include <chlasm/HelpTextEnums.h>                  /* For HELP_TEXT_DIALOG_ADDITION_18 */
 #include <Lionhead/LH3DLib/development/LH3DText.h> /* For CHAR2WCHAR */
-#include <Lionhead/LHLib/ver5.0/LHTimer.inl>       /* For LHTimer */
-#include <Lionhead/LHLib/ver5.0/LHWin.h>           /* For operator new(size_t, const char*, uint32_t) */
-#include <Lionhead/LHLog/ver4.0/LHRegistry.h>      /* For RegistryRetrieveULong */
-#include <Lionhead/LHLog/ver4.0/LHSPrintf.h>       /* For LHSPrintf, LHSPrintfW */
-#include <Lionhead/LHLog/ver4.0/LHVersion.h>       /* For LHVersion::GetModuleChecksum */
+#include <Lionhead/LHLib/ver5.0/LHTimer.h>         /* For LHTimer */
+#ifndef VERSION_BW1W120
+#include <Lionhead/LHLib/ver5.0/LHTimer.inl>
+#endif
+#include <Lionhead/LHLib/ver5.0/LHWin.h>      /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LHLog/ver4.0/LHRegistry.h> /* For RegistryRetrieveULong */
+#include <Lionhead/LHLog/ver4.0/LHSPrintf.h>  /* For LHSPrintf, LHSPrintfW */
+#include <Lionhead/LHLog/ver4.0/LHVersion.h>  /* For LHVersion::GetModuleChecksum */
 
 #include "alexmfc.h"                      /* For SetupBox */
 #include "DialogBoxBase.h"                /* For DialogBoxBase::Hide */
@@ -470,6 +473,12 @@ void BWGameSpy::DisconnectedCallback(PEER peer, const char* reason, void* param)
 	}
 }
 
+#ifdef VERSION_BW1W120
+#define BW_GAME_SPY_LHTIMER_PART 1
+#include <Lionhead/LHLib/ver5.0/LHTimer.inl>
+#undef BW_GAME_SPY_LHTIMER_PART
+#endif
+
 void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* message, MessageType messageType,
                                       void* param)
 {
@@ -495,6 +504,12 @@ void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* m
 		delete text;
 	}
 }
+
+#ifdef VERSION_BW1W120
+#define BW_GAME_SPY_LHTIMER_PART 2
+#include <Lionhead/LHLib/ver5.0/LHTimer.inl>
+#undef BW_GAME_SPY_LHTIMER_PART
+#endif
 
 void BWGameSpy::RoomMessageCallback(PEER peer, RoomType roomType, const char* nick, const char* message,
                                     MessageType messageType, void* param)

@@ -608,7 +608,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/Bookmark.cpp"),
             GameCodeObject(NonMatching, "Black/Bubble.cpp"),
             GameCodeObject(NonMatching, "Black/BuildingSite.cpp"),
-            GameCodePCHObject(NonMatching, "Black/BWGameSpy.cpp", "BWGameSpyPCH.h"),
+            GameCodePCHObject(MatchingFor("BW1W120"), "Black/BWGameSpy.cpp", "BWGameSpyPCH.h"),
             GameCodeObject(NonMatching, "Black/BWLan.cpp"),
             GameCodeObject(NonMatching, "Black/Camera.cpp"),
             GameCodeObject(NonMatching, "Black/CameraEditor.cpp"),
