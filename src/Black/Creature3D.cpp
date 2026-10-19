@@ -566,8 +566,8 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	ResetMorphAnims();
 	field_0x51ec = 0;
 	RPLookPointTimer = 0;
-	field_0x5740 = 0;
-	field_0x573c = 0;
+	IdleActionDone = false;
+	IdleActionTimer = 0;
 	RPLookPoint.SetNull();
 	field_0x5794 = 1;
 	field_0x4aac = 1.0f;
@@ -1823,7 +1823,7 @@ void LH3DCreature::UpdateRPLookPoint()
 			}
 		}
 		RPLookPoint.y = LH3DIsland::GetAltitude(RPLookPoint);
-		RPLookPointTimer = 2000;
+		RPLookPointTimer = LH3D_CREATURE_RP_LOOK_POINT_REFRESH_TIME;
 	}
 }
 
@@ -2208,8 +2208,8 @@ bool32_t LH3DCreature::StartMovingToPoint(const LHPoint& pos, float param_2, flo
 		Point2D currentPos(position.x, position.z);
 		RpFollow->SetPos(currentPos, GetNavRadius());
 		field_0x5190 = 0;
-		field_0x573c = 3000;
-		field_0x5740 = 0;
+		IdleActionTimer = LH3D_CREATURE_IDLE_ACTION_TIME;
+		IdleActionDone = false;
 		RPLookPointTimer = 0;
 		if (!creature || !creature->field_0x12a8)
 		{
@@ -7399,21 +7399,21 @@ void LH3DCreature::UpdateMotion()
 		}
 		else
 		{
-			field_0x573c -= AnimTimeInc;
-			if (field_0x573c < 0)
+			IdleActionTimer -= AnimTimeInc;
+			if (IdleActionTimer < 0)
 			{
-				long action = field_0x5740 ? GRand::GameRand(3, CREATURE_3D_FILE, 8920) : 0;
-				field_0x5740 = 1;
+				long action = IdleActionDone ? GRand::GameRand(3, CREATURE_3D_FILE, 8920) : 0;
+				IdleActionDone = true;
 				switch (action)
 				{
 				case 0:
 					UpdateRPLookPoint();
 					PointAt(&RPLookPoint, true);
-					field_0x573c = 6000;
+					IdleActionTimer = LH3D_CREATURE_IDLE_LOOK_TIME;
 					break;
 				case 1:
-					StartFacialAction(C_FACE_PUZZLED, 2000);
-					field_0x573c = 3000;
+					StartFacialAction(C_FACE_PUZZLED, LH3D_CREATURE_IDLE_PUZZLED_FACE_TIME);
+					IdleActionTimer = LH3D_CREATURE_IDLE_ACTION_TIME;
 					break;
 				case 2:
 					if (GetAnim(C_INDIVIDUAL_CONFUSED, 0))
@@ -7433,12 +7433,12 @@ void LH3DCreature::UpdateMotion()
 		{
 			AdvanceSimple(C_INDIVIDUAL_CONFUSED, CycleTime[0], AnimTimeInc);
 			field_0x5190 = 0;
-			field_0x573c = 3000;
+			IdleActionTimer = LH3D_CREATURE_IDLE_ACTION_TIME;
 		}
 		break;
 	case 2:
-		field_0x573c -= AnimTimeInc;
-		if (field_0x573c < 0)
+		IdleActionTimer -= AnimTimeInc;
+		if (IdleActionTimer < 0)
 		{
 			field_0x5190 = 3;
 		}
@@ -7451,7 +7451,7 @@ void LH3DCreature::UpdateMotion()
 			{
 				AdvanceSimple(C_POINT_HI_LEFT, CycleTime[0], AnimTimeInc);
 				field_0x5190 = 0;
-				field_0x573c = 3000;
+				IdleActionTimer = LH3D_CREATURE_IDLE_ACTION_TIME;
 				RPLookPointTimer = 0;
 			}
 		}
