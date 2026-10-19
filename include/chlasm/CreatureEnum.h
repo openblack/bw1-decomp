@@ -469,10 +469,8 @@ enum     CREATURE_ACTION
     CREATURE_KICK_AT_POS                            =  334 ,
     CREATURE_BOWL                                   =  335 ,
     CREATURE_TELL_CREATURE_TO_GO_AWAY               =  336 ,
-    NUM_CREATURE_ACTIONS                            =  337 ,
-#else
-    NUM_CREATURE_ACTIONS                            =  328 ,
 #endif // VERSION_BW1WCI
+    NUM_CREATURE_ACTIONS
 };
 
 //*****************************************************************************
