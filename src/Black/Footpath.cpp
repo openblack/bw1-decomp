@@ -815,19 +815,13 @@ void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coord
 								MapCoords exitCoords;
 								LHPoint   entry = nearest - direction - centre;
 								LHPoint   exit = nearest + direction - centre;
-								LHPoint   exitPoint = exit + centre;
-								exitCoords.SetX(exitPoint.x);
-								exitCoords.SetZ(exitPoint.z);
-								exitCoords.SetAltitude(0.0f);
+								GLandscape::ConvertLandscapePointToMapCoord(exit + centre, exitCoords);
 								float stepSq = (radius * ArcStepScale) * (radius * ArcStepScale);
 								if ((entry ^ exit).y > 0.0f)
 								{
 									while (entry.GetDistanceSq(exit) > stepSq)
 									{
-										LHPoint point = entry + centre;
-										entryCoords.SetX(point.x);
-										entryCoords.SetZ(point.z);
-										entryCoords.SetAltitude(0.0f);
+										GLandscape::ConvertLandscapePointToMapCoord(entry + centre, entryCoords);
 										previous->next = new (FILEPATH, 2290) GFootpathNode(entryCoords, true, true);
 										previous = previous->next;
 										entry =
@@ -839,10 +833,7 @@ void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coord
 								{
 									while (entry.GetDistanceSq(exit) > stepSq)
 									{
-										LHPoint point = entry + centre;
-										entryCoords.SetX(point.x);
-										entryCoords.SetZ(point.z);
-										entryCoords.SetAltitude(0.0f);
+										GLandscape::ConvertLandscapePointToMapCoord(entry + centre, entryCoords);
 										previous->next = new (FILEPATH, 2300) GFootpathNode(entryCoords, true, true);
 										previous = previous->next;
 										entry =
