@@ -550,6 +550,10 @@ public:
 	virtual bool PhysicallyDestroysAbodes() { return false; }
 	// BW1W120 006377c0 BW1M119 013dedc0
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1M119 null
+	virtual void CreatureIsleVirtual0x7f0();
+#endif
 	// BW1W120 006377e0 BW1M119 013decf0
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00402a10 BW1M119 010a30b0
@@ -657,6 +661,10 @@ public:
 	virtual const char* GetText() { return info->DebugString; }
 	// BW1W120 00402b50 BW1M119 010a3610
 	virtual uint32_t StandAnimation() { return ANM_INVALID; }
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1M119 null
+	virtual void CreatureIsleVirtual0x89c(uint32_t param_1) {}
+#endif
 	// BW1W120 00419b30 BW1M119 0109ea50
 	virtual NewCollide* GetCollideData() { return NULL; }
 
