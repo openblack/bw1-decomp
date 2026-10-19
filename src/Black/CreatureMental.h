@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stddef.h> /* For offsetof */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <stdio.h>  /* For FILE */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 
@@ -184,6 +185,8 @@ public:
 	void SetCheatDominantDesire(CREATURE_DESIRES desire, float seconds, bool32_t suppress_needs);
 	// BW1W120 004dcf20 BW1M119 0125d0a0
 	void ClearCheatDominantDesire();
+	// BW1W120 004c7660 BW1M119 null
+	void Dump(FILE* file, unsigned long indent);
 };
 #ifdef VERSION_BW1WCI
 static_assert(offsetof(CreatureMental, learning) == 0x2b20, "Data member is at the wrong offset");

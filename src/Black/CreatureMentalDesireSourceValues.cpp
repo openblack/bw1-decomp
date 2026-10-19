@@ -152,7 +152,7 @@ float Creature::GetScratchSourceFromPhysicalItchiness()
 
 float Creature::GetRunAwayFromPlayerSource()
 {
-	float source = -mind->AttitudeToPlayer.Attitude;
+	float source = -mind->AttitudeToPlayer.HowNicePlayerHasBeenToMe;
 	CLAMP(source, MIN_SOURCE_VALUE, MAX_SOURCE_VALUE);
 	return source;
 }
