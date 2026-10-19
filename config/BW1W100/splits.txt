@@ -427,9 +427,15 @@ Black/CreatureLook.cpp:
 	.rdata      start:0x0080E6F4 end:0x0080E718
 
 Black/CreatureMental.cpp:
-	.text       start:0x004B5A70 end:0x004B6A60
-	.CRT$XCU    start:0x008F62D8 end:0x008F62E8 align:4
-	.bss        start:0x00BA42A0 end:0x00BA42C8
+	.text       start:0x004B5A70 end:0x004B5F90
+	.CRT$XCU    start:0x008F62D8 end:0x008F62E0 align:4
+	.bss        start:0x00BA42A0 end:0x00BA42C0
+
+Black/CreatureMentalActionTests.cpp:
+	.text       start:0x004B5F90 end:0x004B6A60
+	.rdata      start:0x0080E7C0 end:0x0080E7DC
+	.CRT$XCU    start:0x008F62E0 end:0x008F62E8 align:4
+	.bss        start:0x00BA42C0 end:0x00BA42C8
 
 Black/CreatureMentalAgenda.cpp:
 	.text       start:0x004B6A60 end:0x004B6E40

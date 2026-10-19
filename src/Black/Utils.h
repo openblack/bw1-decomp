@@ -51,6 +51,8 @@ struct GUtils
 	static float GetDistanceInMetres(const MapCoords* from, const MapCoords* to);
 	// BW1W120 0074cd70 BW1M119 0104bf00
 	static float GetDistanceInMetres(const MapCoords& param_1, const MapCoords& param_2);
+	// BW1W120 0074cd90 BW1M119 null
+	static float GetDistanceInMetres(const MapCoords& from, const JustMapXZ& to);
 	// BW1W120 0074cde0 BW1M119 01036610
 	static float GetDistance(const LHPoint& a, const LHPoint& b);
 	// BW1W120 0074caf0 BW1M119 01076080

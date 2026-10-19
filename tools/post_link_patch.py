@@ -637,6 +637,10 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004C4F5A, call_indirect(0x008A900C)),  # CreatureAttitudeToCreature: __imp__GetUserNameA@4
     (0x004C4FAA, call_indirect(0x008A9888)),  # CreatureAttitudeToCreature: __imp__mmioAscend@4
     (0x004C765B, call_rel32(0x00401879)),  # CreatureDump
+    (0x004D293B, call_rel32(0x00401879)),  # CreatureMentalActionTests
+    (0x004D2A1A, call_indirect(0x008A93CC)),  # CreatureMentalActionTests: __imp___0LHVersion__QAE_PAULHVersionBlock___Z@4
+    (0x004D2C7B, call_rel32(0x00401879)),  # CreatureMentalActionTests
+    (0x004D342A, call_indirect(0x008A911C)),  # CreatureMentalActionTests: __imp__ImmSetCompositionStringA@4
     (0x004DE8DB, call_rel32(0x00401879)),  # CreatureMentalDesireSourceValues
     (0x004DE94A, call_indirect(0x008A9328)),  # CreatureMentalDesireSourceValues: __imp_LHEditBox...
     (0x004DE96A, call_indirect(0x008A901C)),  # CreatureMentalDesireSourceValues: __imp__TrackMouseEvent@4
@@ -791,6 +795,32 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004C9FE4, copy_run(0x004C9FA4)),  # CreatureDump
     (0x004CA103, copy_run(0x004C9FE4)),  # CreatureDump
     (0x004CA132, jmp_run(0x004CA103)),  # CreatureDump
+    (0x004D4CA3, copy_run(0x004D4BF3)),  # CreatureMentalActionTests
+    (0x004D4CCB, call_rel32(0x00403C49)),  # CreatureMentalActionTests
+    (0x004D4DAA, call_indirect(0x008AE050)),  # CreatureMentalActionTests
+    (0x004D4EA9, copy_run(0x004D4DAA)),  # CreatureMentalActionTests
+    (0x004D4F21, copy_run(0x004D4EA9)),  # CreatureMentalActionTests
+    (0x004D4FB1, jmp_run(0x004D4F21)),  # CreatureMentalActionTests
+    (0x004D500B, call_rel32(0x00403C49)),  # CreatureMentalActionTests
+    (0x004D5032, jmp_run(0x004D500B)),  # CreatureMentalActionTests
+    (0x004D50A5, copy_run(0x004D5032)),  # CreatureMentalActionTests
+    (0x004D50E5, copy_run(0x004D50A5)),  # CreatureMentalActionTests
+    (0x004D5227, copy_run(0x004D513C)),  # CreatureMentalActionTests
+    (0x004D52D3, jmp_run(0x004D5227)),  # CreatureMentalActionTests
+    (0x004D53A8, copy_run(0x004D52D3)),  # CreatureMentalActionTests
+    (0x004D53C4, copy_run(0x004D53A8)),  # CreatureMentalActionTests
+    (0x004D53E4, copy_run(0x004D53C4)),  # CreatureMentalActionTests
+    (0x004D5404, copy_run(0x004D53E4)),  # CreatureMentalActionTests
+    (0x004D5466, copy_run(0x004D5404)),  # CreatureMentalActionTests
+    (0x004D5496, jmp_run(0x004D5466)),  # CreatureMentalActionTests
+    (0x004D54C6, copy_run(0x004D5496)),  # CreatureMentalActionTests
+    (0x004D5516, jmp_run(0x004D54C6)),  # CreatureMentalActionTests
+    (0x004D5557, jmp_run(0x004D5516)),  # CreatureMentalActionTests
+    (0x004D5586, copy_run(0x004D5557)),  # CreatureMentalActionTests
+    (0x004D56E7, copy_run(0x004D564D)),  # CreatureMentalActionTests
+    (0x004D5757, jmp_run(0x004D56E7)),  # CreatureMentalActionTests
+    (0x004D5793, jmp_run(0x004D5757)),  # CreatureMentalActionTests
+    (0x004D57BA, call_indirect(0x008AE3E0)),  # CreatureMentalActionTests
     (0x004E0C43, copy_run(0x004E0BE4)),  # CreatureMentalDesireSourceValues
     (0x004E0CFA, call_indirect(0x008AE01C)),  # CreatureMentalDesireSourceValues
     (0x004E0D73, jmp_run(0x004E0CFA)),  # CreatureMentalDesireSourceValues

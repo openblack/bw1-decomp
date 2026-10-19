@@ -5,6 +5,8 @@
 #include "CreatureAction.h"
 #include "CreatureActionTableEntry.h"
 
+#include <limits.h> /* For ULONG_MAX */
+
 #include <Lionhead/LH3DLib/development/LH3DAtmos.h>  /* For LH3DAtmos::GetMoonPos */
 #include <Lionhead/LH3DLib/development/LH3DObject.h> /* For struct LH3DObject */
 #include <chlasm/Enum.h>                             /* For NUM_CREATURE_DESIRES */
@@ -18,6 +20,7 @@
 #include "CreatureActionInfo.h"         /* For struct CreatureActionInfo */
 #include "CreatureAgenda.h"             /* For struct CreatureAgenda */
 #include "CreatureAttitudeToCreature.h" /* For struct CreatureAttitudeToCreature */
+#include "CreatureImpressiveSpells.h"   /* For struct CreatureImpressiveSpells */
 #include "CreatureInfo.h"               /* For struct CreatureInfo */
 #include "CreatureInitialDesireInfo.h"  /* For struct CreatureInitialDesireInfo */
 #include "CreatureMental.h"             /* For struct CreatureMental */
@@ -425,6 +428,16 @@ CreatureActionTableEntry CreatureAgenda::ActionTable[NUM_CREATURE_ACTIONS] = {
 	{"SprinkleMagicWaterPU1OnCrops", &Creature::CanCreatureCastSpell, &CreatureAgenda::ConstructSubActionsForCastMagicWater, MAGIC_TYPE_WATER_PU_ONE, &GameThingWithPos::BenefitsFromHavingWaterSprinkledOnIt, NULL, NULL, &GameThingWithPos::AttitudeToCreatureRespect, 0, NULL}, // CREATURE_SPRINKLE_MAGIC_WATER_PU1_ON_CROPS
 	{"WaterTreeForTown", &Creature::CanCreatureCastSpell, &CreatureAgenda::ConstructSubActionsForWaterTreeForTown, MAGIC_TYPE_WATER, NULL, &GameThingWithPos::IsTree, NULL, &GameThingWithPos::AttitudeToCreatureRespect, 1, NULL}, // CREATURE_WATER_TREE_FOR_TOWN
 	{"WaterTree", &Creature::CanCreatureCastSpell, &CreatureAgenda::ConstructSubActionsForWaterTreeForTown, MAGIC_TYPE_WATER_PU_ONE, NULL, &GameThingWithPos::IsTree, NULL, &GameThingWithPos::AttitudeToCreatureRespect, 1, NULL}, // CREATURE_WATER_TREE_PU1_FOR_TOWN
+};
+// clang-format on
+
+// clang-format off
+MAGIC_TYPE CreatureImpressiveSpells::Spells[NUM_CREATURE_IMPRESSIVE_SPELLS] = {
+	MAGIC_TYPE_FOOD,
+	MAGIC_TYPE_HEAL,
+	MAGIC_TYPE_STORM_WIND_RAIN,
+	MAGIC_TYPE_HEAL_PU_ONE,
+	MAGIC_TYPE_FLOCK_FLYING,
 };
 // clang-format on
 
@@ -837,7 +850,7 @@ int CreatureAgenda::ConstructSubActionsForStroke(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForDanceImpressivelyWithVillagers(unsigned long dance_type)
 {
 	creature->LastImpressiveDanceTurn = GGame::g_game->data.GameTurn;
-	creature->LastImpressiveDanceType = dance_type;
+	creature->LastImpressiveDanceType = (DANCE_INFO)dance_type;
 	return ConstructSubActionsForDanceWithVillagers(dance_type);
 }
 
@@ -1236,14 +1249,12 @@ int CreatureAgenda::ConstructSubActionsForCastImpressiveSpell(unsigned long para
 	                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(993))
 	                                 SubArgumentObjectAndFloat(CurrentPlan.ObjectToActOn, 0.1f),
 	                             &Creature::LookAtObjectArgument, NULL);
-	static MAGIC_TYPE impressiveSpells[5] = {MAGIC_TYPE_FOOD, MAGIC_TYPE_HEAL, MAGIC_TYPE_STORM_WIND_RAIN,
-	                                         MAGIC_TYPE_HEAL_PU_ONE, MAGIC_TYPE_FLOCK_FLYING};
-	MAGIC_TYPE        spell = MAGIC_TYPE_NONE;
-	unsigned long     oldest = 0xffffffff;
-	unsigned long     which = 0;
-	for (unsigned long i = 1; i < 5; i++)
+	MAGIC_TYPE    spell = MAGIC_TYPE_NONE;
+	unsigned long oldest = ULONG_MAX;
+	unsigned long which = 0;
+	for (unsigned long i = 1; i < NUM_CREATURE_IMPRESSIVE_SPELLS; i++)
 	{
-		MAGIC_TYPE      type = impressiveSpells[i];
+		MAGIC_TYPE      type = CreatureImpressiveSpells::Spells[i];
 		CreatureMental* mind = creature->mind;
 #if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 		if (mind->ActionsKnownAbout.KnowsAction(CREATURE_ACTION_LEARNING_TYPE_MAGIC, type) &&

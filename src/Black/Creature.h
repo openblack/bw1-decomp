@@ -235,7 +235,7 @@ public:
 	bool32_t            RespondingToEmergency;
 	Town*               LastTownImpressed;
 	uint32_t            LastImpressiveDanceTurn;
-	uint32_t            LastImpressiveDanceType;
+	DANCE_INFO          LastImpressiveDanceType;
 	uint32_t            field_0x1104;
 	uint32_t            field_0x1108;
 	uint32_t            ScriptFlag0;
@@ -812,6 +812,14 @@ public:
 	GInterfaceStatus* GetNearestCameraInterfaceStatus();
 	// BW1W120 0047d740 BW1M119 011d6ce0
 	GInterfaceStatus* GetNearestHandInterfaceStatus();
+	// BW1W120 004775d0 BW1M119 011e28a0
+	GInterfaceStatus* GetInterfaceStatusLookingAtCreature();
+	// BW1W120 00479450 BW1M119 011df860
+	bool32_t IsCreatureFarFromHome();
+	// BW1W120 0047afb0 BW1M119 011dc580
+	bool32_t HasPerformedActionInLastNSeconds(CREATURE_ACTION action, float seconds);
+	// BW1W120 0047aee0 BW1M119 011dc640
+	float GetScreenWidthInWorldMetres();
 	// BW1W120 004dfbe0 BW1M119 01264bb0
 	bool32_t FindClearArea(MapCoords* coords, float radius, int param_3);
 	// BW1W120 004c4450 BW1M119 01235990

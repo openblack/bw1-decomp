@@ -44,7 +44,7 @@ public:
 	uint32_t               GameTurnNormalActionFirstSeen[CREATURE_ACTION_KNOWN_ABOUT_LAST];
 	uint32_t               NumTimesMagicActionSeen[MAGIC_TYPE_LAST];
 	uint32_t               GameTurnMagicActionLastSeen[MAGIC_TYPE_LAST];
-	uint32_t               field_0x153b0[NUM_CREATURE_ACTIONS];
+	uint32_t               GameTurnActionLastPerformed[NUM_CREATURE_ACTIONS];
 	uint32_t               HeldObjectActionCounts[OBJECT_TYPE_LAST];
 	uint32_t               field_0x15984[OBJECT_TYPE_LAST];
 	uint32_t               field_0x15a38[OBJECT_TYPE_LAST];
