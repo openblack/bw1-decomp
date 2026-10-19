@@ -49,7 +49,6 @@ public:
 	bool32_t                ActionUnavailableWhenConfined[NUM_CREATURE_ACTIONS];
 	uint32_t                GameTurnLastPlanDecided;
 	Town*                   SpellSeedTown;
-	uint8_t                 field_0x1ab4[0xc];
 	void (Creature::*ForcedActionFunction)(CreatureBelief* belief, long argument);
 	CreatureBelief* ForcedActionBelief;
 	LHPoint         ForcedActionPos;
