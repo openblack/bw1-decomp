@@ -35,6 +35,13 @@ Larger callees are accepted only if they fit in what remains, then charged. Nest
 `remaining / count`, where `count` = candidates not yet processed at the parent level,
 current one included. Everything else in this branch is arithmetic.
 
+0. **Log our build's decisions** (one compile):
+   ```bash
+   python tools/c2-inline-log.py --source <file> -f "<function>"
+   ```
+   It prints every candidate with its exact IL size, the budget left, the nested share and
+   the decision (charged, free, or rejected by budget/depth/global/veto). This replaces
+   steps 1–3 for our build; the target's numbers are still solved for in steps 4–6.
 1. **List the candidates** in source order, nested ones in parentheses. Every inline
    function the call reaches counts; virtual calls and non-inline functions do not. Ask
    the Mac binary which calls exist. CodeWarrior leaves non-inlined calls as `bl`, which
@@ -96,7 +103,8 @@ deterministic but chaotic:
    matches, the difference is elsewhere: go back to §0.
 2. **Screen natural candidates once.** Write ≤ 20 plausible alternatives (helper forms backed
    by evidence, math wrappers, local layout) into a variants JSON and run
-   `tiebreak-probe.py --variants`. Any variant whose hash equals `baseline` doesn't touch the
+   `tiebreak-probe.py --variants` (or `variant-sweep.py`, which also ranks by objdiff score and
+   lists the rejected inline calls of each variant). Any variant whose hash equals `baseline` doesn't touch the
    tie at all; never build it into a bigger sweep.
 3. **Stop.** If nothing matches, ask the human: leave it nonmatching (the recommended
    default), or accept a fakematch. Unused locals of a type with an inline constructor, at a

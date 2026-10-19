@@ -122,7 +122,10 @@ python tools/codegen-check.py compare tidy                # add --ignore-comdat-
 ```
 
 It recompiles with the exact Ninja commands into `build/codegen-check/` and ignores
-compiler-numbered labels. COMDAT/RTTI section order reacts to unrelated header contents and
+compiler-numbered labels. For one unit, `tools/c2-il.py compare --source <file> --file <variant>`
+goes further: it compares the IL the front end hands to `c2.dll` and reports identical (no object
+can change), same code (only section or COMDAT order can move) or different (see
+[`docs/msvc6_passes.md`](docs/msvc6_passes.md)). COMDAT/RTTI section order reacts to unrelated header contents and
 even the source path, so an order-only difference matters only for linked units, which the
 executable hashes check.
 
@@ -313,6 +316,10 @@ branch, or the five versions of one revision:
 - For sweeps over one unit (knob counts, alternative spellings), use
   `tools/tiebreak-probe.py --variants FILE -j <cores>`: each variant compiles from a private copy
   of `src/`, in parallel, with an exact byte comparison. Do not loop over single-object rebuilds.
+- When no variant is expected to match exactly, use `tools/variant-sweep.py` instead. It takes
+  the same variant list, or knobs (named alternatives, swept as every combination or one knob at
+  a time), and ranks the variants by objdiff score. For each function it also lists the inline
+  calls c2 rejected, so a budget shift shows up next to the score.
 
 ## Source Organization
 
@@ -471,6 +478,9 @@ on one side only), the cause is the compiler's inline budget, not optimization f
 the c2.dll inliner rules (per-function budget, the 40-unit free threshold, nested budget
 shares), measured sizes, and per-construct costs.
 
+- `tools/c2-inline-log.py --source <file> -f <function>` compiles with a logging copy of c2.dll
+  and prints every inline decision: callee IL size, budget left, nested share, and why each call
+  was or was not inlined. Start here for any budget difference.
 - `tools/inline-budget.py size` measures an inline call's exact IL size with the unit's real
   compile command.
 - `tools/inline-budget.py sim` replays the budget algorithm on a call tree. It must reproduce

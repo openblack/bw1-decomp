@@ -100,6 +100,44 @@ A call site becomes a candidate when its callee:
 
 The returned count feeds the `remaining / count` share described above.
 
+## Logging the inliner's decisions
+
+`tools/c2-inline-log.py` compiles a unit with a patched copy of its `c2.dll` that prints every
+decision the worker makes, then shows them as a tree. Each candidate shows its exact IL size, the
+budget left when it is reached, the count used for nested shares, and whether it was inlined
+(charged or free) or rejected (budget, depth, global cap or veto). Nested sites show their share
+and how much of it they used. The patched compiler writes byte-identical objects.
+
+```bash
+python tools/c2-inline-log.py --source src/Black/Tree.cpp                 # every function
+python tools/c2-inline-log.py --source src/Black/Tree.cpp -f Tree::Draw   # one tree
+python tools/c2-inline-log.py --source src/Black/Tree.cpp --file variant.cpp -f Tree::Draw
+```
+
+An excerpt for `Tree::Draw` (own IL size 1265, budget 2530):
+
+```
+LHMatrix::SetRotationY  size=81  left=2062  count=19  -> inlined (charged 81)
+  nested: share=104 used=101
+    LHMatrix::SetIdentity  size=101  left=104  count=1  -> inlined (charged 101)
+```
+
+`SetIdentity` fits its share with 3 units to spare, so one more inline call site later in `Draw`
+(count 20) leaves a share of 99 and makes it a call. Run the logger first on any budget problem:
+it gives every number that `inline-budget.py size` and `sim` reconstruct, for our build, in one
+compile. The target's numbers still have to be solved for, as below.
+
+| Hook | Address | What it logs |
+|---|---|---|
+| driver | `0x1071810A` | function name and own IL size (`fn+0x18`, `fn+0x6d`) |
+| worker entry | `0x107181A8` | depth and budget of each (nested) worker call |
+| candidate | `0x1071871E` | budget left `[esp+0x48]`, count `[esp+0x30]`, depth `[esp+0x34]`, the site's depth limit, callee size, flags and name |
+| reject / accept | `0x10718242` / `0x10718777` | the decision |
+| nested return | `0x10718890` | budget the nested sites used |
+| veto | `0x10794032` | the expansion was discarded |
+
+The patching machinery is shared with `tools/c2-sched-log.py` in `tools/c2_patch.py`.
+
 ## Measuring IL sizes
 
 The size units are internal. Measure them empirically with a threshold probe.
@@ -233,8 +271,9 @@ The function now scores 99.0%. The rest is an x87 operand-order tie-break (see b
   that count exceeds `(argcount + 2) · DAT_107ae244`, with extra allowance when some EH-related
   flag is set. When the veto fires, the expansion is discarded (`FUN_10762258`).
   - It is unknown which command-line switch sets `DAT_107ac0b4`, and what `DAT_107ae244` holds.
-  - The size model above fits every case tested without this veto, which suggests it is inactive
-    under `/O2 /Ob1`. That has not been proven.
+  - The size model above fits every case tested without this veto. `tools/c2-inline-log.py`
+    hooks the discard path (`0x10794032`): it never fired for any of the 1,400 candidates in
+    `Tree.cpp`, `Abode.cpp` and `Creature3D.cpp` under the project flags.
 - **Veto side effects [decompiled].**
   - A callee's own size is subtracted from the budget before its nested sites are expanded. If
     the veto then fires, the body is discarded and the call stays, but the budget spent on it is
@@ -338,7 +377,8 @@ The step-by-step procedure, with build budgets and stop rules, is the
 [`inline-budget-matching`](../.claude/skills/inline-budget-matching/SKILL.md) skill. In short:
 
 1. **Classify.** `tools/inline-budget.py callsets` shows whether the helper call sets differ
-   (budget) or only the operand order does (tie-break).
+   (budget) or only the operand order does (tie-break). For a budget difference, run
+   `tools/c2-inline-log.py -f <function>` to see every size, share and decision of our build.
 2. **Measure and simulate.** `tools/inline-budget.py size` for each helper, then
    `tools/inline-budget.py sim` must reproduce our object's call set before you trust it
    for the target.
