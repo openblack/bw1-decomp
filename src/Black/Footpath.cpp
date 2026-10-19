@@ -834,7 +834,7 @@ void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coord
 									break;
 								}
 								direction.FastNormalizeInline();
-								direction *= sqrt(chordSq);
+								direction *= SquareRoot(chordSq);
 								MapCoords entryCoords;
 								MapCoords exitCoords;
 								LHPoint   entry = nearest - direction - centre;

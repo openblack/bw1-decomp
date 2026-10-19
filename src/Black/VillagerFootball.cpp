@@ -6,13 +6,11 @@
 #include "Ball.h"
 #include "ColourConstants.h" /* For White */
 #include "Football.h"
+#include "MapCoordsMeters.h"
 #include "Object.h"
 #include "Rand.h"
 
 #define FILEPATH "C:\\dev\\MP\\Black\\VillagerFootball.cpp"
-
-// Metres-per-cell scale used by the kick-target fixed-point<->metres conversions below.
-const float villager_football_float10p0_0x0099a980 = 10.0f;
 
 // BW1W120 0075d130 BW1M119 0158c600
 void Villager::AssignFootballSubState()
@@ -63,13 +61,9 @@ void Villager::FootballAttackerLobNearGoalProcess(Football* football)
 		{
 			MapCoords goalPos = football->GetGoalPosition(football->IsPlayerOnHomeTeam(this));
 			float     jitterX = GRand::GameFloatRand(4.0f, FILEPATH, 199) - 2.0f;
-			goalPos.x = (int)(((float)goalPos.WholeX() * villager_football_float10p0_0x0099a980 / 65536.0f + jitterX) *
-			                  65536.0f / villager_football_float10p0_0x0099a980);
-			// TODO: fstp-discard placement — target pops the dead jitter right after __ftol,
-			// ours 2 slots later (scheduler tie).
+			goalPos.SetMetersX(goalPos.MetersX() + jitterX);
 			float jitterZ = GRand::GameFloatRand(4.0f, FILEPATH, 200) - 2.0f;
-			goalPos.z = (int)(((float)goalPos.WholeZ() * villager_football_float10p0_0x0099a980 / 65536.0f + jitterZ) *
-			                  65536.0f / villager_football_float10p0_0x0099a980);
+			goalPos.SetMetersZ(goalPos.MetersZ() + jitterZ);
 			MapCoords kickPos = goalPos;
 			football->PerturbTarget(&kickPos, this);
 			ball->KickBallAtDestination(kickPos, GRand::GameFloatRand(1.0f, FILEPATH, 203) + 3.0f, 1);
@@ -191,13 +185,9 @@ void Villager::FootballDefenderSaveProcess(Football* football)
 		{
 			MapCoords goalPos = football->GetGoalPosition(football->IsPlayerOnHomeTeam(this));
 			float     jitterX = GRand::GameFloatRand(10.0f, FILEPATH, 489) - 5.0f;
-			goalPos.x = (int)(((float)goalPos.WholeX() * villager_football_float10p0_0x0099a980 / 65536.0f + jitterX) *
-			                  65536.0f / villager_football_float10p0_0x0099a980);
-			// TODO: fstp-discard placement — target pops the dead jitter right after __ftol,
-			// ours 2 slots later (scheduler tie).
+			goalPos.SetMetersX(goalPos.MetersX() + jitterX);
 			float jitterZ = GRand::GameFloatRand(10.0f, FILEPATH, 490) - 5.0f;
-			goalPos.z = (int)(((float)goalPos.WholeZ() * villager_football_float10p0_0x0099a980 / 65536.0f + jitterZ) *
-			                  65536.0f / villager_football_float10p0_0x0099a980);
+			goalPos.SetMetersZ(goalPos.MetersZ() + jitterZ);
 			MapCoords kickPos = goalPos;
 			ball->KickBallAtDestination(kickPos, GRand::GameFloatRand(3.0f, FILEPATH, 492) + 8.0f, 1);
 			TurnsUntilNextStateChange = 0;

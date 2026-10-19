@@ -2205,11 +2205,9 @@ bool32_t LH3DCreature::StartMovingToPoint(const LHPoint& pos, float param_2, flo
 	}
 	else
 	{
-		Point2D  target(pos.x, pos.z);
-		Point2D* currentDest = &RpFollow->Dest;
-		float    dx = target.x - currentDest->x;
-		float    dz = target.y - currentDest->y;
-		if (dz * dz + dx * dx < 0.01f)
+		Point2D target(pos.x, pos.z);
+		Point2D offset = target - RpFollow->Dest;
+		if (offset.DotProduct(&offset) < 0.01f)
 		{
 			return 4;
 		}
