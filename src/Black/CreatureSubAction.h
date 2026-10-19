@@ -25,18 +25,16 @@ public:
 	LHPoint                    field_0x14;
 	uint8_t                    field_0x20[0xc];
 	uint32_t                   field_0x2c;
-	uint8_t                    field_0x30[0x30];
-
-	// Override methods
-
-	// BW1W120 00473dd0 BW1M119 011e6340
-	virtual ~CreatureSubAction();
+	uint8_t                    field_0x30[0x10];
+	int (Creature::*LookFunction)(MapCoords* destination);
+	void (Creature::*FaceFunction)();
 
 	// Constructors
 
 	// BW1W120 00473db0 BW1M119 011e7e10
 	CreatureSubAction();
 };
+static_assert(sizeof(CreatureSubAction) == 0x60, "Data type is of wrong size");
 
 // NextPart moves on to the next sub-action once SubActionState reaches this.
 #define CREATURE_SUB_ACTION_PARTS 3
@@ -49,12 +47,12 @@ public:
 	int               SubActionState;
 	unsigned long     NumSubActions;
 	uint32_t          field_0x18;
-	int               field_0x1c;
+	int               MainSubAction;
 	uint32_t          field_0x20;
 	uint32_t          field_0x24;
 	CreatureSubAction SubActions[0x20];
 	Creature*         creature; /* 0xc28 */
-	uint32_t          field_0xc2c;
+	bool32_t          GoesOutsideConfinedArea;
 	uint32_t          field_0xc30;
 	uint32_t          field_0xc34;
 	uint32_t          field_0xc38;
@@ -63,11 +61,6 @@ public:
 	uint32_t          field_0xc44;
 	uint32_t          field_0xc48;
 	uint32_t          field_0xc4c;
-
-	// Override methods
-
-	// BW1W120 00473df0 BW1M119 011e7d60
-	virtual ~CreatureSubActionAgenda();
 
 	// Constructors
 
@@ -97,5 +90,6 @@ public:
 	void AddOrder(Creature* creature, CREATURE_SUB_STATE_ACTIONS action, SubArgument* argument,
 	              int (Creature::*look_function)(MapCoords* destination), void (Creature::*face_function)());
 };
+static_assert(sizeof(CreatureSubActionAgenda) == 0xc50, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_CREATURE_SUB_ACTION_INCLUDED_H */

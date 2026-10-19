@@ -100,6 +100,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 004d3800 BW1M119 0124b5a0
+	bool32_t IsActionSufficientlyCompletedToBePerceived();
 	// BW1W120 004d7b80 BW1M119 01258470
 	CreatureBelief* GetBeliefAboutObject(GameThingWithPos* object);
 	// BW1W120 004d7bd0 BW1M119 01258250

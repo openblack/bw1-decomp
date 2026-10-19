@@ -2,15 +2,20 @@
 #define BW1_DECOMP_CREATURE_AGENDA_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For int32_t, uint32_t, uint8_t */
+#include <stddef.h> /* For offsetof */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
-#include "Base.h"                 /* For struct Base */
-#include "CreatureAction.h"       /* For struct CreatureActionTableEntry */
-#include "CreatureCommandState.h" /* For struct CreatureCommandState */
-#include "CreatureMimic.h"        /* For struct CreatureMimicState */
-#include "CreaturePlan.h"         /* For struct CreaturePlan, struct CreaturePlanState */
-#include "CreatureSubAction.h"    /* For struct CreatureSubActionAgenda */
-#include "MapCoords.h"            /* For struct MapCoords */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <re_common.h>                            /* For bool32_t */
+
+#include "Base.h"                     /* For struct Base */
+#include "CreatureAction.h"           /* For enum CREATURE_ACTION */
+#include "CreatureActionTableEntry.h" /* For struct CreatureActionTableEntry */
+#include "CreatureCommandState.h"     /* For struct CreatureCommandState */
+#include "CreatureMimic.h"            /* For struct CreatureMimicState */
+#include "CreaturePlan.h"             /* For struct CreaturePlan, struct CreaturePlanState */
+#include "CreatureSubAction.h"        /* For struct CreatureSubActionAgenda */
+#include "MapCoords.h"                /* For struct MapCoords */
 
 // Forward Declares
 
@@ -18,59 +23,56 @@ class Creature;
 class CreatureBelief;
 class CreatureInfo;
 class GameThingWithPos;
+class Object;
+class Town;
 
 class CreatureAgenda : public Base
 {
 public:
 	CreaturePlanState       PlanState;
-	CreaturePlan            plans[0x2];
+	CreaturePlan            CurrentPlan;
+	CreaturePlan            PreviousPlan;
 	CreatureSubActionAgenda SubActionAgenda;
 	CreatureCommandState    CommandState;
 	Creature*               creature;
-	uint32_t                field_0x1518;
-	uint32_t                field_0x151c;
+	bool32_t                StartActionAgain;
+	bool32_t                PlayerHasBeenTold;
 	CreatureMimicState      MimicState;
-	uint32_t                field_0x155c;
+	Object*                 CreatedObject;
 	CreatureBelief*         belief;
-	uint32_t                field_0x1564;
+	Object*                 ObjectToThrowInPile;
 	MapCoords               Destination;
 	MapCoords               PosToRunAwayFrom;
-	uint32_t                field_0x1580;
-	uint32_t                field_0x1584;
-	uint32_t                field_0x1588;
-	uint32_t                ActionUnavailableWhenConfined[NUM_CREATURE_ACTIONS];
-	uint32_t                field_0x1aac;
-	uint32_t                field_0x1ab0;
+	int                     DanceStage;
+	float                   SwapMindTargetHeight;
+	float                   SwapMindTargetAlignment;
+	bool32_t                ActionUnavailableWhenConfined[NUM_CREATURE_ACTIONS];
+	uint32_t                GameTurnLastPlanDecided;
+	Town*                   SpellSeedTown;
 	uint8_t                 field_0x1ab4[0xc];
-	uint32_t                field_0x1ac0;
-	uint32_t                field_0x1ac4;
-	uint32_t                field_0x1ac8;
-	int32_t                 field_0x1acc;
-	uint32_t                field_0x1ad0;
-	uint32_t                field_0x1ad4;
-	uint32_t                field_0x1ad8;
-	uint32_t                field_0x1adc;
-	uint32_t                field_0x1ae0;
-	uint32_t                field_0x1ae4;
-	uint32_t                field_0x1ae8;
-	uint32_t                NumTurnsWithoutAction;
-	uint32_t                field_0x1af0;
-	uint32_t                field_0x1af4;
-
-	// Override methods
-
-	// BW1W120 004d3600 BW1M119 0124b3e0
-	virtual ~CreatureAgenda();
+	void (Creature::*ForcedActionFunction)(CreatureBelief* belief, long argument);
+	CreatureBelief* ForcedActionBelief;
+	LHPoint         ForcedActionPos;
+	long            ForcedActionArgument;
+	uint32_t        field_0x1ae4;
+	uint32_t        NumTurnsPerformingAction;
+	uint32_t        NumTurnsWithoutAction;
+	float           field_0x1af0;
+	uint32_t        field_0x1af4;
 
 	// Constructors
 
 	// BW1W120 004d34b0 BW1M119 0124b950
-	CreatureAgenda(CreatureInfo* info);
+	CreatureAgenda(Creature* creature, const CreatureInfo* info);
 
 	// Non-virtual methods
 
 	// BW1W120 004d36a0 BW1M119 0124b7f0
 	bool32_t ConstructSubActionsFromActionAgenda(CREATURE_ACTION action);
+	// BW1W120 004d3760 BW1M119 0124b710
+	void Clear();
+	// BW1W120 004d37f0 BW1M119 0124b6d0
+	void Process();
 	// BW1W120 004e3880 BW1M119 015ef450
 	bool32_t IsObjectSuitableForAction(GameThingWithPos* object, CREATURE_ACTION action);
 	// BW1W120 0049a7d0 BW1M119 01232ca0
@@ -609,5 +611,7 @@ public:
 	// BW1W120 009d1678
 	static CreatureActionTableEntry ActionTable[NUM_CREATURE_ACTIONS];
 };
+static_assert(offsetof(CreatureAgenda, ForcedActionFunction) == 0x1ac0, "Data member is at the wrong offset");
+static_assert(sizeof(CreatureAgenda) == 0x1af8, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_CREATURE_AGENDA_INCLUDED_H */

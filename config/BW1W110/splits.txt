@@ -441,13 +441,21 @@ Black/CreatureLessonChooser.cpp:
 Black/CreatureLook.cpp:
 	.text       start:0x004CF000 end:0x004D0F80
 	.rdata      start:0x008BF84C end:0x008BF88C
-	.data       start:0x009CCDEC end:0x009CCEE4
+	.data       start:0x009CCDEC end:0x009CCE10
 
 Black/CreatureMental.cpp:
-	.text       start:0x004D0F80 end:0x004D24C0
-	.rdata      start:0x008BF88C end:0x008BF97C
-	.CRT$XCU    start:0x009B631C end:0x009B6334 align:4
-	.bss        start:0x00C71D78 end:0x00C71DA8
+	.text       start:0x004D0F80 end:0x004D20E0
+	.rdata      start:0x008BF88C end:0x008BF930
+	.CRT$XCU    start:0x009B631C end:0x009B632C align:4
+	.data       start:0x009CCE10 end:0x009CCEA0
+	.bss        start:0x00C71D78 end:0x00C71DA0
+
+Black/CreatureMentalAgenda.cpp:
+	.text       start:0x004D20E0 end:0x004D24C0
+	.rdata      start:0x008BF930 end:0x008BF97C
+	.CRT$XCU    start:0x009B632C end:0x009B6334 align:4
+	.data       start:0x009CCEA0 end:0x009CCEF4
+	.bss        start:0x00C71DA0 end:0x00C71DA8
 
 Black/CreatureMentalAttribute.cpp:
 	.text       start:0x004D24C0 end:0x004D2E40

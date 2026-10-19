@@ -239,7 +239,7 @@ public:
 	uint8_t                               field_0x1194[0x14];
 	MapCoords                             ConfinementCentre;
 	float                                 ConfinementRadius;
-	uint32_t                              field_0x11b8;
+	bool32_t                              GoingBackToConfinedArea;
 	uint32_t                              field_0x11bc;
 	float                                 ObjectsDestroyed;
 	uint32_t                              field_0x11c4;
