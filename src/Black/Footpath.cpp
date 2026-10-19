@@ -824,7 +824,7 @@ void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coord
 							LHPoint direction = end - start;
 							LHPoint offset = centre - start;
 							LHPoint nearest = direction * ((offset * direction) / direction.GetNormeSq()) + start;
-							float   chordSq = radius * radius - (centre - nearest).GetNormeSq();
+							float   chordSq = radius * radius - centre.GetDistanceSq(nearest);
 							previous->ClearToNextNode();
 							node->ClearFromPreviousNode();
 							if (chordSq > FOOTPATH_OBSTACLE_MIN_CHORD_SQ)
