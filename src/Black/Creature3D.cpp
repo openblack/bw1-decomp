@@ -565,10 +565,10 @@ void LH3DCreature::Init(LHPoint& pos, void* param_2)
 	field_0x485c = 47.12389f;
 	ResetMorphAnims();
 	field_0x51ec = 0;
-	field_0x5744 = 0;
+	RPLookPointTimer = 0;
 	field_0x5740 = 0;
 	field_0x573c = 0;
-	field_0x5748.SetNull();
+	RPLookPoint.SetNull();
 	field_0x5794 = 1;
 	field_0x4aac = 1.0f;
 	field_0x4aa8 = 1.0f;
@@ -1767,9 +1767,9 @@ void LH3DCreature::UpdateLook()
 		if (IsStandingStill())
 		{
 			UpdateRPLookPoint();
-			dir.x = field_0x5748.x;
-			dir.y = field_0x5748.y;
-			dir.z = field_0x5748.z;
+			dir.x = RPLookPoint.x;
+			dir.y = RPLookPoint.y;
+			dir.z = RPLookPoint.z;
 		}
 		else if (MoveState == LH3D_CREATURE_STATE_FIGHT_MAIN)
 		{
@@ -1810,20 +1810,20 @@ bool32_t LH3DCreature::IsStandingStill()
 
 void LH3DCreature::UpdateRPLookPoint()
 {
-	field_0x5744 -= AnimTimeInc;
-	if (field_0x5744 < 0)
+	RPLookPointTimer -= AnimTimeInc;
+	if (RPLookPointTimer < 0)
 	{
-		field_0x5748.Set(RpFollow->Dest.x, 0.0f, RpFollow->Dest.x);
+		RPLookPoint.Set(RpFollow->Dest.x, 0.0f, RpFollow->Dest.x);
 		if (RpFollow->field_0x640bc >= 0 && RpFollow->field_0x640bc < RpFollow->field_0x640b8)
 		{
 			Route* route = RpFollow->field_0x64090[RpFollow->field_0x640bc]->Route0x68;
 			if (route && route->Head)
 			{
-				field_0x5748.Set(route->Tail->field_0x8.x, 0.0f, route->Tail->field_0x8.y);
+				RPLookPoint.Set(route->Tail->field_0x8.x, 0.0f, route->Tail->field_0x8.y);
 			}
 		}
-		field_0x5748.y = LH3DIsland::GetAltitude(field_0x5748);
-		field_0x5744 = 2000;
+		RPLookPoint.y = LH3DIsland::GetAltitude(RPLookPoint);
+		RPLookPointTimer = 2000;
 	}
 }
 
@@ -2210,7 +2210,7 @@ bool32_t LH3DCreature::StartMovingToPoint(const LHPoint& pos, float param_2, flo
 		field_0x5190 = 0;
 		field_0x573c = 3000;
 		field_0x5740 = 0;
-		field_0x5744 = 0;
+		RPLookPointTimer = 0;
 		if (!creature || !creature->field_0x12a8)
 		{
 			field_0x519c = 1;
@@ -7408,7 +7408,7 @@ void LH3DCreature::UpdateMotion()
 				{
 				case 0:
 					UpdateRPLookPoint();
-					PointAt(&field_0x5748, true);
+					PointAt(&RPLookPoint, true);
 					field_0x573c = 6000;
 					break;
 				case 1:
@@ -7452,7 +7452,7 @@ void LH3DCreature::UpdateMotion()
 				AdvanceSimple(C_POINT_HI_LEFT, CycleTime[0], AnimTimeInc);
 				field_0x5190 = 0;
 				field_0x573c = 3000;
-				field_0x5744 = 0;
+				RPLookPointTimer = 0;
 			}
 		}
 		break;
@@ -7469,7 +7469,7 @@ void LH3DCreature::UpdateMotion()
 		break;
 	case 2:
 		UpdateRPLookPoint();
-		UpdatePointPoint(&field_0x5748);
+		UpdatePointPoint(&RPLookPoint);
 		DoPointAction(true);
 		break;
 	case 3:
