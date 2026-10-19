@@ -19,6 +19,9 @@ bool LayerCommunication::Connected;
 #include <Lionhead/LHLib/ver5.0/LHTimer.h>         /* For LHTimer */
 #if !defined(VERSION_BW1W120) && !defined(VERSION_BW1W130)
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
+#else
+// Avoid exposing windows.h macros to game headers.
+extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount(void);
 #endif
 #include <Lionhead/LHLib/ver5.0/LHWin.h>      /* For operator new(size_t, const char*, uint32_t) */
 #include <Lionhead/LHLog/ver4.0/LHRegistry.h> /* For RegistryRetrieveULong */
@@ -511,10 +514,30 @@ void BWGameSpy::DisconnectedCallback(PEER peer, const char* reason, void* param)
 	}
 }
 
+// BW1W120 and BW1W130 define the LHTimer bodies here, after Think, rather than through LHTimer.inl.
+// c2 compiles an inline copy at its definition position when that comes after its first out-of-line
+// caller, so these placements put Stop after DisconnectedCallback and MSeconds and SetSpeedUpFactor
+// after PlayerMessageCallback, as in those versions.
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-#define LH_TIMER_INL_START_STOP
-#include <Lionhead/LHLib/ver5.0/LHTimer.inl>
-#undef LH_TIMER_INL_START_STOP
+inline bool32_t LHTimer::Running()
+{
+	return SpeedUpFactor != 0.0f;
+}
+
+inline void LHTimer::Start()
+{
+	SpeedUpFactor = 0.00001f;
+	SetSpeedUpFactor(SpeedUpFactor2);
+}
+
+inline void LHTimer::Stop()
+{
+	if (Running())
+	{
+		SpeedUpFactor2 = GetSpeedUpFactor();
+		SetSpeedUpFactor(0.0f);
+	}
+}
 #endif
 
 void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* message, MessageType messageType,
@@ -544,9 +567,43 @@ void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* m
 }
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-#define LH_TIMER_INL_SPEED_UP_FACTOR
-#include <Lionhead/LHLib/ver5.0/LHTimer.inl>
-#undef LH_TIMER_INL_SPEED_UP_FACTOR
+inline int LHTimer::MSeconds()
+{
+	unsigned long ticks = GetTickCount() - TickCount;
+	return ticks * SpeedUpFactor + (uint32_t)ElapsedTime;
+}
+
+inline float LHTimer::GetSpeedUpFactor()
+{
+	return Running() ? SpeedUpFactor : SpeedUpFactor2;
+}
+
+inline void LHTimer::SetSpeedUpFactor(float factor)
+{
+	if (Running())
+	{
+		ElapsedTime = MSeconds();
+		TickCount = GetTickCount();
+		SpeedUpFactor = factor;
+	}
+	else
+	{
+		SpeedUpFactor2 = factor;
+	}
+}
+
+inline void LHTimer::Reset(uint32_t value)
+{
+	TickCount = GetTickCount();
+	ElapsedTime = value;
+	Stop();
+}
+
+inline void LHTimer::Restart(uint32_t value)
+{
+	Reset(value);
+	Start();
+}
 #endif
 
 void BWGameSpy::RoomMessageCallback(PEER peer, RoomType roomType, const char* nick, const char* message,

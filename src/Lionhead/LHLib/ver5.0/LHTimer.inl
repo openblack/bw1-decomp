@@ -1,7 +1,5 @@
-#if !defined(BW1_DECOMP_LH_TIMER_INCLUDED_INL) || defined(LH_TIMER_INL_START_STOP) || defined(LH_TIMER_INL_SPEED_UP_FACTOR)
-#if !defined(LH_TIMER_INL_START_STOP) && !defined(LH_TIMER_INL_SPEED_UP_FACTOR)
+#ifndef BW1_DECOMP_LH_TIMER_INCLUDED_INL
 #define BW1_DECOMP_LH_TIMER_INCLUDED_INL
-#endif
 
 // TODO: Very unlikely .inl is canonical. It should be removed and rewritten
 
@@ -14,7 +12,6 @@
 // Avoid exposing windows.h macros to game headers.
 extern "C" __declspec(dllimport) unsigned long __stdcall GetTickCount(void);
 
-#ifndef LH_TIMER_INL_SPEED_UP_FACTOR
 inline bool32_t LHTimer::Running()
 {
 	return SpeedUpFactor != 0.0f;
@@ -34,9 +31,7 @@ inline void LHTimer::Stop()
 		SetSpeedUpFactor(0.0f);
 	}
 }
-#endif
 
-#ifndef LH_TIMER_INL_START_STOP
 inline int LHTimer::MSeconds()
 {
 	unsigned long ticks = GetTickCount() - TickCount;
@@ -74,6 +69,5 @@ inline void LHTimer::Restart(uint32_t value)
 	Reset(value);
 	Start();
 }
-#endif
 
 #endif /* BW1_DECOMP_LH_TIMER_INCLUDED_INL */
