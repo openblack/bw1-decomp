@@ -612,11 +612,23 @@ Black/CreatureMentalLearnAction.cpp:
 	.bss        start:0x00D2AC1C end:0x00D2AC24
 
 Black/CreatureMentalMisc.cpp:
-	.text       start:0x004E5050 end:0x004E71B0
-	.rdata      start:0x008D54C0 end:0x008D5598
-	.CRT$XCU    start:0x00A46550 end:0x00A4657C align:4
+	.text       start:0x004E5050 end:0x004E5900
+	.rdata      start:0x008D54C0 end:0x008D556C
+	.CRT$XCU    start:0x00A46550 end:0x00A46564 align:4
 	.data       start:0x00C60428 end:0x00C6055C
-	.bss        start:0x00D2AC28 end:0x00D2C124
+	.bss        start:0x00D2AC28 end:0x00D2C110
+
+Black/CreatureMentalObjectMultipliers.cpp:
+	.text       start:0x004E5900 end:0x004E5A00
+	.rdata      start:0x008D556C end:0x008D5578
+	.CRT$XCU    start:0x00A46564 end:0x00A46570 align:4
+	.bss        start:0x00D2C110 end:0x00D2C118
+
+Black/CreatureMentalObjectTests.cpp:
+	.text       start:0x004E5A00 end:0x004E71B0
+	.rdata      start:0x008D5578 end:0x008D5598
+	.CRT$XCU    start:0x00A46570 end:0x00A4657C align:4
+	.bss        start:0x00D2C118 end:0x00D2C124
 
 Black/CreatureMentalSaveAndLoad.cpp:
 	.text       start:0x004E71B0 end:0x004EBC40
