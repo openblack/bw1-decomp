@@ -482,11 +482,18 @@ Black/CreatureDevelopment.cpp:
 	.bss        start:0x00C82658 end:0x00C82820
 
 Black/CreatureDirectControl.cpp:
-	.text       start:0x004C5F80 end:0x004C8440
-	.rdata      start:0x008CF394 end:0x008CF400
-	.CRT$XCU    start:0x009C63F4 end:0x009C6418 align:4
-	.data       start:0x009D97E0 end:0x009D9B80
-	.bss        start:0x00C82820 end:0x00C8283C
+	.text       start:0x004C5F80 end:0x004C7610
+	.rdata      start:0x008CF394 end:0x008CF3BC
+	.CRT$XCU    start:0x009C63F4 end:0x009C6400 align:4
+	.data       start:0x009D97E0 end:0x009D9830
+	.bss        start:0x00C82820 end:0x00C8282C
+
+Black/CreatureDump.cpp:
+	.text       start:0x004C7610 end:0x004C7DE0
+	.rdata      start:0x008CF3BC end:0x008CF3C8
+	.CRT$XCU    start:0x009C6400 end:0x009C640C align:4
+	.data       start:0x009D9830 end:0x009D9B58
+	.bss        start:0x00C8282C end:0x00C82834
 
 Black/CreatureFace.cpp:
 	.text       start:0x004C8440 end:0x004C88D0

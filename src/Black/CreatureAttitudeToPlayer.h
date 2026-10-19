@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <stdio.h>  /* For FILE */
 
 #include <chlasm/CreatureEnum.h> /* For enum DETECTED_PLAYER_ACTION */
 #include <chlasm/Enum.h>         /* For enum MAGIC_TYPE */
@@ -39,11 +40,11 @@ struct CreatureObservedPlayerAction
 class CreatureAttitudeToPlayer : public Base
 {
 public:
-	uint32_t                       field_0x8;
+	uint32_t                       NumGameTicksPlayerHasBeenCurrentlyWatchingMe;
 	uint32_t                       TicksSinceAttention;
-	uint32_t                       field_0x10;
+	uint32_t                       TotalNumGameTicksPlayerHasBeenWatchingMe;
 	uint32_t                       TicksSinceInteraction;
-	float                          Attitude; /* 0x18 */
+	float                          HowNicePlayerHasBeenToMe; /* 0x18 */
 	uint32_t                       field_0x1c;
 	uint32_t                       field_0x20;
 	float                          ImpressedByPlayer;
@@ -61,6 +62,11 @@ public:
 
 	// BW1W120 004c81a0 BW1M119 0123a9d0
 	virtual ~CreatureAttitudeToPlayer();
+
+	// Non-virtual methods
+
+	// BW1W120 004c7d20 BW1M119 null
+	void Dump(FILE* file, unsigned long indent);
 };
 
 #endif /* BW1_DECOMP_CREATURE_ATTITUDE_TO_PLAYER_INCLUDED_H */
