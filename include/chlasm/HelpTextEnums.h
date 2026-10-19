@@ -6820,17 +6820,11 @@ enum     HELP_TEXT
 #define HELP_TEXT_DIALOG_ADDITION_17                                                                      6725
 #ifdef VERSION_BW1WCI
 #define HELP_TEXT_DIALOG_ADDITION_18                                                                      6744
-#else
-#define HELP_TEXT_DIALOG_ADDITION_18                                                                      6726
-#endif // VERSION_BW1WCI
-#ifdef VERSION_BW1WCI
 #define HELP_TEXT_DIALOG_ADDITION_19                                                                      6745
-#else
-#define HELP_TEXT_DIALOG_ADDITION_19                                                                      6727
-#endif // VERSION_BW1WCI
-#ifdef VERSION_BW1WCI
 #define HELP_TEXT_DIALOG_ADDITION_20                                                                      6746
 #else
+#define HELP_TEXT_DIALOG_ADDITION_18                                                                      6726
+#define HELP_TEXT_DIALOG_ADDITION_19                                                                      6727
 #define HELP_TEXT_DIALOG_ADDITION_20                                                                      6728
 #endif // VERSION_BW1WCI
 #define HELP_TEXT_DIALOG_ADDITION_21                                                                      6729

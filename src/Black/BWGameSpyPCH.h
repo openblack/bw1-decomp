@@ -4,7 +4,6 @@
 #include "LayerCommunication.h"
 
 #include <stdio.h> /* For sprintf, sscanf */
-// Only BW1W120's unit carries the std::ctype<unsigned short>::id guard of the STL headers.
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 #include <string> /* For the std::ctype<unsigned short>::id guard */
 #endif

@@ -512,9 +512,9 @@ void BWGameSpy::DisconnectedCallback(PEER peer, const char* reason, void* param)
 }
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-#define BW_GAME_SPY_LHTIMER_PART 1
+#define LH_TIMER_INL_START_STOP
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
-#undef BW_GAME_SPY_LHTIMER_PART
+#undef LH_TIMER_INL_START_STOP
 #endif
 
 void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* message, MessageType messageType,
@@ -544,9 +544,9 @@ void BWGameSpy::PlayerMessageCallback(PEER peer, const char* nick, const char* m
 }
 
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
-#define BW_GAME_SPY_LHTIMER_PART 2
+#define LH_TIMER_INL_SPEED_UP_FACTOR
 #include <Lionhead/LHLib/ver5.0/LHTimer.inl>
-#undef BW_GAME_SPY_LHTIMER_PART
+#undef LH_TIMER_INL_SPEED_UP_FACTOR
 #endif
 
 void BWGameSpy::RoomMessageCallback(PEER peer, RoomType roomType, const char* nick, const char* message,
