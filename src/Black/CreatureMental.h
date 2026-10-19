@@ -35,11 +35,11 @@ class GPlayer;
 
 struct CreatureInnatePersonality
 {
-	float field_0x0;
-	float field_0x4;
-	float field_0x8;
-	float field_0xc;
-	float field_0x10;
+	float Niceness;
+	float Aggression;
+	float Lethargy;
+	float Friendliness;
+	float Communicativeness;
 	float field_0x14;
 	float field_0x18[0x3];
 };

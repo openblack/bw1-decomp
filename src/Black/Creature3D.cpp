@@ -3881,8 +3881,7 @@ void LH3DCreature::DoStaticAction()
 				poo->InitialisePhysics(velocity, spin, creature, true, NULL);
 				if (creature)
 				{
-					// TODO: CreaturePhysical::field_0x2c is the float AmountOfPoo (BW1M119 GetAmountOfPoo reads 0x2c).
-					creature->physical->field_0x2c = 0;
+					creature->physical->AmountOfPoo = 0.0f;
 					CreatureDesires& desires = creature->mind->desires;
 					desires.Levels[CREATURE_DESIRE_TO_POO] = 0.0f;
 					CLAMP(desires.Levels[CREATURE_DESIRE_TO_POO], 0.0f, 1.0f);
