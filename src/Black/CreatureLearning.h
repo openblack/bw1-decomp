@@ -6,6 +6,7 @@
 
 #include <chlasm/CreatureEnum.h> /* For NUM_CREATURE_ACTIONS */
 #include <chlasm/Enum.h>         /* For CREATURE_ACTION_KNOWN_ABOUT_LAST, MAGIC_TYPE_LAST, OBJECT_TYPE_LAST */
+#include <re_common.h>           /* For bool32_t */
 
 #include "Base.h"                   /* For struct Base */
 #include "CreatureAction.h"         /* For struct PreviousActionContextStack */
@@ -19,27 +20,35 @@ class Creature;
 class CreatureLearning : public Base
 {
 public:
-	PreviousContextStack       previous_context_stack;
+	PreviousContextStack previous_context_stack;
+#ifndef VERSION_BW1WCI
 	PreviousActionContextStack previous_action_context_stack;
-	CreaturePreviousLesson     PreviousLesson;
-	float                      field_0x1522c;
-	uint32_t                   NumTimesNormalActionSeen[CREATURE_ACTION_KNOWN_ABOUT_LAST];
-	uint32_t                   GameTurnNormalActionFirstSeen[CREATURE_ACTION_KNOWN_ABOUT_LAST];
-	uint32_t                   NumTimesMagicActionSeen[MAGIC_TYPE_LAST];
-	uint32_t                   GameTurnMagicActionLastSeen[MAGIC_TYPE_LAST];
-	uint32_t                   field_0x153b0[NUM_CREATURE_ACTIONS];
-	uint32_t                   HeldObjectActionCounts[OBJECT_TYPE_LAST];
-	uint32_t                   field_0x15984[0x2d];
-	uint32_t                   field_0x15a38[0x2d];
-	uint32_t                   field_0x15aec;
-	uint32_t                   field_0x15af0;
-	uint32_t                   field_0x15af4;
-	uint32_t                   field_0x15af8[0x2][0x28];
-	uint32_t                   field_0x15c38;
-	uint32_t                   field_0x15c3c;
-	uint32_t                   NumTimesActionPerformed[NUM_CREATURE_ACTIONS];
-	Creature*                  field_0x16160;
-	uint32_t                   field_0x16164;
+#endif
+	CreaturePreviousLesson PreviousLesson;
+	float                  field_0x1522c;
+	uint32_t               NumTimesNormalActionSeen[CREATURE_ACTION_KNOWN_ABOUT_LAST];
+	uint32_t               GameTurnNormalActionFirstSeen[CREATURE_ACTION_KNOWN_ABOUT_LAST];
+	uint32_t               NumTimesMagicActionSeen[MAGIC_TYPE_LAST];
+	uint32_t               GameTurnMagicActionLastSeen[MAGIC_TYPE_LAST];
+	uint32_t               field_0x153b0[NUM_CREATURE_ACTIONS];
+	uint32_t               HeldObjectActionCounts[OBJECT_TYPE_LAST];
+	uint32_t               field_0x15984[OBJECT_TYPE_LAST];
+	uint32_t               field_0x15a38[OBJECT_TYPE_LAST];
+#ifdef VERSION_BW1WCI
+	bool32_t CanLearn[CREATURE_ACTION_KNOWN_ABOUT_LAST];
+#endif
+	uint32_t  field_0x15aec;
+	uint32_t  field_0x15af0;
+	uint32_t  field_0x15af4;
+	uint32_t  field_0x15af8[0x2][0x28];
+	uint32_t  field_0x15c38;
+	uint32_t  field_0x15c3c;
+	uint32_t  NumTimesActionPerformed[NUM_CREATURE_ACTIONS];
+	Creature* field_0x16160;
+	uint32_t  field_0x16164;
+#ifdef VERSION_BW1WCI
+	uint32_t ci_padding_0x2424;
+#endif
 
 	// Override methods
 
@@ -58,6 +67,11 @@ public:
 	// BW1W120 004e2350 BW1M119 0126a680
 	void SetSkillAtAction(CREATURE_ACTION action, float skill);
 };
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(CreatureLearning) == 0x2428, "Data type is of wrong size");
+#else
+static_assert(sizeof(CreatureLearning) == 0x16168, "Data type is of wrong size");
+#endif
 
 class CreatureLearningEpisode : public Base
 {

@@ -459,17 +459,20 @@ enum     CREATURE_ACTION
     CREATURE_SPRINKLE_MAGIC_WATER_PU1_ON_CROPS      =  325 ,
     CREATURE_WATER_TREE_FOR_TOWN                    =  326 ,
     CREATURE_WATER_TREE_PU1_FOR_TOWN                =  327 ,
+#ifdef VERSION_BW1WCI
+    CREATURE_CREATE_PLANNED_ABODE                   =  328 ,
+    CREATURE_CREATE_PLANNED_CIVIC_BUILDING          =  329 ,
+    CREATURE_PLAY_SINGLE_PLAYER_DICE_GAME           =  330 ,
+    CREATURE_PLAY_TWO_PLAYER_DICE_GAME              =  331 ,
+    CREATURE_CAST_ANTI_SPELL                        =  332 ,
+    CREATURE_CAST_FAST_SPELL                        =  333 ,
+    CREATURE_KICK_AT_POS                            =  334 ,
+    CREATURE_BOWL                                   =  335 ,
+    CREATURE_TELL_CREATURE_TO_GO_AWAY               =  336 ,
+    NUM_CREATURE_ACTIONS                            =  337 ,
+#else
     NUM_CREATURE_ACTIONS                            =  328 ,
-    // CREATURE_CREATE_PLANNED_ABODE                   =  328 ,
-    // CREATURE_CREATE_PLANNED_CIVIC_BUILDING          =  329 ,
-    // CREATURE_PLAY_SINGLE_PLAYER_DICE_GAME           =  330 ,
-    // CREATURE_PLAY_TWO_PLAYER_DICE_GAME              =  331 ,
-    // CREATURE_CAST_ANTI_SPELL                        =  332 ,
-    // CREATURE_CAST_FAST_SPELL                        =  333 ,
-    // CREATURE_KICK_AT_POS                            =  334 ,
-    // CREATURE_BOWL                                   =  335 ,
-    // CREATURE_TELL_CREATURE_TO_GO_AWAY               =  336 ,
-    // NUM_CREATURE_ACTIONS                            =  337 ,
+#endif // VERSION_BW1WCI
 };
 
 //*****************************************************************************

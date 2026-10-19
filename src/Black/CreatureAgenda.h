@@ -611,7 +611,14 @@ public:
 	// BW1W120 009d1678
 	static CreatureActionTableEntry ActionTable[NUM_CREATURE_ACTIONS];
 };
+#ifdef VERSION_BW1WCI
+static_assert(offsetof(CreatureAgenda, creature) == 0x1518, "Data member is at the wrong offset");
+static_assert(offsetof(CreatureAgenda, ForcedActionFunction) == 0x1ae0, "Data member is at the wrong offset");
+static_assert(sizeof(CreatureAgenda) == 0x1b18, "Data type is of wrong size");
+#else
+static_assert(offsetof(CreatureAgenda, creature) == 0x1514, "Data member is at the wrong offset");
 static_assert(offsetof(CreatureAgenda, ForcedActionFunction) == 0x1ac0, "Data member is at the wrong offset");
 static_assert(sizeof(CreatureAgenda) == 0x1af8, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_CREATURE_AGENDA_INCLUDED_H */

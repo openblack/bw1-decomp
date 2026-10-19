@@ -15,13 +15,20 @@ class CreatureCommand;
 class CreatureCommandState : public Base
 {
 public:
-	uint32_t                       field_0x8;
-	MapCoords                      Destination;
-	bool32_t                       ControlledByTeleport;
+	uint32_t  field_0x8;
+	MapCoords Destination;
+	bool32_t  ControlledByTeleport;
+#ifdef VERSION_BW1WCI
+	uint32_t ci_field_0x1c;
+#endif
 	bool32_t                       Commanded;
 	bool32_t                       ForcedByPlayerAction;
 	LHLinkedList<CreatureCommand*> Commands;
 };
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(CreatureCommandState) == 0x30, "Data type is of wrong size");
+#else
 static_assert(sizeof(CreatureCommandState) == 0x2c, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_CREATURE_COMMAND_STATE_INCLUDED_H */
