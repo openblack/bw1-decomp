@@ -58,7 +58,7 @@ public:
 	uint32_t          field_0xc30;
 	uint32_t          field_0xc34;
 	uint32_t          field_0xc38;
-	uint32_t          field_0xc3c;
+	bool32_t          AskedToPlayGame;
 	Creature*         Partner;
 	uint32_t          field_0xc44;
 	uint32_t          field_0xc48;

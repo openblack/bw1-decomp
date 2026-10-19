@@ -33,7 +33,7 @@ struct GGlobal
 	uint32_t field_0x2d2d4;
 	uint32_t field_0x2d2d8;
 	uint32_t field_0x2d2dc;
-	uint32_t field_0x2d2e0;
+	bool32_t CreatureSpellsNeedPlayerMagic;
 	Prss*    Editor; // Active editor interface; concrete subtype unrecovered.
 	uint8_t  field_0x2d2e8[0xc];
 	char     CurrentDirectory[0x100]; /* 0x2d2f4 */

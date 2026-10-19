@@ -110,18 +110,21 @@ public:
 	uint8_t     player_number;
 	float       worship_percentage;
 	int         WorshipCount;
-	float       influence;
-	uint32_t    NumVillagersOnWayToWorshipSite;
-	float       AverageGameTurnsToTravelToWorshipSite;
-	float       Promiscuity;
-	float       BeliefInNeutralPlayer;
-	float       BalanceBeliefScale;
-	bool32_t    Raining;
-	bool32_t    BuildingRequested;
-	bool32_t    DesireDirty;
-	uint32_t    DesireDirtyTimer;
-	bool32_t    CannotBuildWorshipSite;
-	bool32_t    Uninhabitable;
+#ifdef VERSION_BW1WCI
+	uint32_t ci_field_0x5c8;
+#endif
+	float    influence;
+	uint32_t NumVillagersOnWayToWorshipSite;
+	float    AverageGameTurnsToTravelToWorshipSite;
+	float    Promiscuity;
+	float    BeliefInNeutralPlayer;
+	float    BalanceBeliefScale;
+	bool32_t Raining;
+	bool32_t BuildingRequested;
+	bool32_t DesireDirty;
+	uint32_t DesireDirtyTimer;
+	bool32_t CannotBuildWorshipSite;
+	bool32_t Uninhabitable;
 #ifndef VERSION_BW1W100
 	// Absent from BW1W100: unlike BW1W110, its Town::Load does not clear it, and the later members sit 8 bytes
 	// lower there.
