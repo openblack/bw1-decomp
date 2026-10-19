@@ -62,12 +62,97 @@ static const float  ObstacleRangeScale = 1.03f;
 #define MOVE_OUT_OF_OBJECT_NUDGE           0.01f
 #define MOVE_OUT_OF_OBJECT_EXTRA_RADIUS    0.1f
 
+class MoveOutOfObject
+{
+public:
+	// BW1W120 00cd0468
+	static Point2D ObjectCentre;
+	// BW1W120 00cd0470
+	static Point2D Target;
+	// BW1W120 00cd0478
+	static Point2D* Point;
+
+	// BW1W120 inlined BW1M119 inlined
+	static bool FindCircleExit(const Point2D& start, const Point2D& end, const Point2D& centre, float radius,
+	                           Point2D& exit)
+	{
+		Point2D direction = end - start;
+		Point2D offset = centre - start;
+		float   c = offset.GetNormSq() - radius * radius;
+		float   b = -2.0f * (offset * direction);
+		float   a = direction.GetNormSq();
+		float   discriminant = b * b - 4.0f * a * c;
+		if (discriminant >= 0.0f)
+		{
+			float t = (-b + SquareRoot(discriminant)) / (2.0f * a);
+			if (t >= 1.0f)
+			{
+				exit = direction * t + start;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	// BW1W120 00535bd0 BW1M119 010f27f0
+	static void CallbackFunction(int object_id, Point2D pos, float radius, int update)
+	{
+		Point2D exit;
+		if (FindCircleExit(ObjectCentre, *Point, pos, radius + MOVE_OUT_OF_OBJECT_EXTRA_RADIUS, exit))
+		{
+			*Point = exit;
+		}
+	}
+
+	// BW1W120 00535a80 BW1M119 inlined
+	static void Move(Point2D* point, MultiMapFixed* structure, Point2D target)
+	{
+		RPHolder* holder = new (FILEPATH, 981) RPHolder;
+		holder->ObjectMargin = FOOTPATH_ROUTE_OBJECT_MARGIN;
+		Target = target;
+		Point = point;
+		ObjectCentre = ConvertMapCoordsToPoint2D(structure->GetPos());
+		if (*Point == ObjectCentre)
+		{
+			Point2D direction = Target - *Point;
+			direction.Normalize();
+			*Point += direction * MOVE_OUT_OF_OBJECT_NUDGE;
+		}
+		structure->AddToRoutePlan(holder, NULL, 0, CallbackFunction);
+		delete holder;
+	}
+};
+
 // BW1W120 00537260 BW1M119 inlined
 static bool32_t RangesOverlap(int start, int end, int low, int high);
 
 template <typename T> inline T tbl_square(T value)
 {
 	return value * value;
+}
+
+// BW1W120 inlined BW1M119 inlined
+static inline Point2D RotateClockwise(const Point2D& point, float cos_angle, float sin_angle)
+{
+	return Point2D(point.x * cos_angle + point.y * sin_angle, point.y * cos_angle - point.x * sin_angle);
+}
+
+// BW1W120 inlined BW1M119 inlined
+static inline Point2D RotateAnticlockwise(const Point2D& point, float cos_angle, float sin_angle)
+{
+	return Point2D(point.x * cos_angle - point.y * sin_angle, point.y * cos_angle + point.x * sin_angle);
+}
+
+// BW1W120 inlined BW1M119 inlined
+static inline LHPoint RotateClockwise(const LHPoint& point, double cos_angle, double sin_angle)
+{
+	return LHPoint(point.x * cos_angle + point.z * sin_angle, 0.0f, point.z * cos_angle - point.x * sin_angle);
+}
+
+// BW1W120 inlined BW1M119 inlined
+static inline LHPoint RotateAnticlockwise(const LHPoint& point, double cos_angle, double sin_angle)
+{
+	return LHPoint(point.x * cos_angle - point.z * sin_angle, 0.0f, point.z * cos_angle + point.x * sin_angle);
 }
 
 GFootpathNode::GFootpathNode(const MapCoords& coords, bool32_t real, bool32_t temporary)
@@ -291,67 +376,6 @@ MapCoords ConvertPoint2DToMapCoords(const Point2D& point)
 	GLandscape::ConvertLandscapePointToMapCoord(LHPoint(point.x, 0.0f, point.y), coords);
 	return coords;
 }
-
-class MoveOutOfObject
-{
-public:
-	// BW1W120 00cd0468
-	static Point2D ObjectCentre;
-	// BW1W120 00cd0470
-	static Point2D Target;
-	// BW1W120 00cd0478
-	static Point2D* Point;
-
-	// BW1W120 inlined BW1M119 inlined
-	static bool FindCircleExit(const Point2D& start, const Point2D& end, const Point2D& centre, float radius,
-	                           Point2D& exit)
-	{
-		Point2D direction = end - start;
-		Point2D offset = centre - start;
-		float   c = offset.GetNormSq() - radius * radius;
-		float   b = -2.0f * (offset * direction);
-		float   a = direction.GetNormSq();
-		float   discriminant = b * b - 4.0f * a * c;
-		if (discriminant >= 0.0f)
-		{
-			float t = (-b + SquareRoot(discriminant)) / (2.0f * a);
-			if (t >= 1.0f)
-			{
-				exit = direction * t + start;
-				return true;
-			}
-		}
-		return false;
-	}
-
-	// BW1W120 00535bd0 BW1M119 010f27f0
-	static void CallbackFunction(int object_id, Point2D pos, float radius, int update)
-	{
-		Point2D exit;
-		if (FindCircleExit(ObjectCentre, *Point, pos, radius + MOVE_OUT_OF_OBJECT_EXTRA_RADIUS, exit))
-		{
-			*Point = exit;
-		}
-	}
-
-	// BW1W120 00535a80 BW1M119 inlined
-	static void Move(Point2D* point, MultiMapFixed* structure, Point2D target)
-	{
-		RPHolder* holder = new (FILEPATH, 981) RPHolder;
-		holder->ObjectMargin = FOOTPATH_ROUTE_OBJECT_MARGIN;
-		Target = target;
-		Point = point;
-		ObjectCentre = ConvertMapCoordsToPoint2D(structure->GetPos());
-		if (*Point == ObjectCentre)
-		{
-			Point2D direction = Target - *Point;
-			direction.Normalize();
-			*Point += direction * MOVE_OUT_OF_OBJECT_NUDGE;
-		}
-		structure->AddToRoutePlan(holder, NULL, 0, CallbackFunction);
-		delete holder;
-	}
-};
 
 Point2D  MoveOutOfObject::ObjectCentre;
 Point2D  MoveOutOfObject::Target;
@@ -824,9 +848,7 @@ void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coord
 										GLandscape::ConvertLandscapePointToMapCoord(entry + centre, entryCoords);
 										previous->next = new (FILEPATH, 2290) GFootpathNode(entryCoords, true, true);
 										previous = previous->next;
-										entry =
-											LHPoint(entry.x * FOOTPATH_DETOUR_COS + entry.z * FOOTPATH_DETOUR_SIN, 0.0f,
-										            entry.z * FOOTPATH_DETOUR_COS - entry.x * FOOTPATH_DETOUR_SIN);
+										entry = RotateClockwise(entry, FOOTPATH_DETOUR_COS, FOOTPATH_DETOUR_SIN);
 									}
 								}
 								else
@@ -836,9 +858,7 @@ void GFootpath::SendFootpathsAroundObsticle(float radius, const MapCoords& coord
 										GLandscape::ConvertLandscapePointToMapCoord(entry + centre, entryCoords);
 										previous->next = new (FILEPATH, 2300) GFootpathNode(entryCoords, true, true);
 										previous = previous->next;
-										entry =
-											LHPoint(entry.x * FOOTPATH_DETOUR_COS - entry.z * FOOTPATH_DETOUR_SIN, 0.0f,
-										            entry.z * FOOTPATH_DETOUR_COS + entry.x * FOOTPATH_DETOUR_SIN);
+										entry = RotateAnticlockwise(entry, FOOTPATH_DETOUR_COS, FOOTPATH_DETOUR_SIN);
 									}
 								}
 								previous->next = new (FILEPATH, 2305) GFootpathNode(exitCoords, true, true);
@@ -1147,8 +1167,7 @@ void GFootpath::ConvertCreaturePlanToFootpath(RPHolder& holder, RPlan& plan, GFo
 					node->next =
 						new (FILEPATH, 2611) GFootpathNode(ConvertPoint2DToMapCoords(centre + from), true, true);
 					node = node->next;
-					from = Point2D(from.y * FOOTPATH_ARC_SIN + from.x * FOOTPATH_ARC_COS,
-					               from.y * FOOTPATH_ARC_COS - from.x * FOOTPATH_ARC_SIN);
+					from = RotateClockwise(from, FOOTPATH_ARC_COS, FOOTPATH_ARC_SIN);
 				}
 			}
 			else
@@ -1158,8 +1177,7 @@ void GFootpath::ConvertCreaturePlanToFootpath(RPHolder& holder, RPlan& plan, GFo
 					node->next =
 						new (FILEPATH, 2621) GFootpathNode(ConvertPoint2DToMapCoords(centre + from), true, true);
 					node = node->next;
-					from = Point2D(from.x * FOOTPATH_ARC_COS - from.y * FOOTPATH_ARC_SIN,
-					               from.y * FOOTPATH_ARC_COS + from.x * FOOTPATH_ARC_SIN);
+					from = RotateAnticlockwise(from, FOOTPATH_ARC_COS, FOOTPATH_ARC_SIN);
 				}
 			}
 			node->next = new (FILEPATH, 2627) GFootpathNode(ConvertPoint2DToMapCoords(to + centre), true, true);
