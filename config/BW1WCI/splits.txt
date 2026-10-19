@@ -475,10 +475,22 @@ Black/CreatureMentalDesire.cpp:
 	.bss        start:0x00CFBD80 end:0x00CFFA40
 
 Black/CreatureMentalDesireSource.cpp:
-	.text       start:0x004ED8E0 end:0x004EF9C0
-	.CRT$XCU    start:0x00A36390 end:0x00A363BC align:4
+	.text       start:0x004ED8E0 end:0x004EF050
+	.CRT$XCU    start:0x00A36390 end:0x00A363AC align:4
 	.data       start:0x00C4F974 end:0x00C4FCF0
-	.bss        start:0x00CFFA40 end:0x00D05BA8
+	.bss        start:0x00CFFA40 end:0x00D05B98
+
+Black/CreatureMentalDesireSourceValues.cpp:
+	.text       start:0x004EF050 end:0x004EF810
+	.rdata      start:0x008FE284 end:0x008FE294
+	.CRT$XCU    start:0x00A363AC end:0x00A363B4 align:4
+	.bss        start:0x00D05B98 end:0x00D05BA0
+
+Black/CreatureMentalDesireTests.cpp:
+	.text       start:0x004EF810 end:0x004EF9C0
+	.rdata      start:0x008FE294 end:0x008FE2A0
+	.CRT$XCU    start:0x00A363B4 end:0x00A363BC align:4
+	.bss        start:0x00D05BA0 end:0x00D05BA8
 
 Black/CreatureMentalEditor.cpp:
 	.text       start:0x004EF9C0 end:0x004EFAF0
