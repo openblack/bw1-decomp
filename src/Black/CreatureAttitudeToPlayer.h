@@ -42,7 +42,7 @@ public:
 	uint32_t                       field_0x8;
 	uint32_t                       TicksSinceAttention;
 	uint32_t                       field_0x10;
-	uint32_t                       field_0x14;
+	uint32_t                       TicksSinceInteraction;
 	float                          Attitude; /* 0x18 */
 	uint32_t                       field_0x1c;
 	uint32_t                       field_0x20;

@@ -235,7 +235,7 @@ void AttributeTownSize::UpdateValue(GameThingWithPos* thing, GPlayer* player)
 void AttributeCreatureDominantDesire::UpdateValue(GameThingWithPos* thing, GPlayer* player)
 {
 	Creature* creature = dynamic_cast<Creature*>(thing);
-	Value = CreatureActionInfo::GetInfo()[creature->mind->agenda.plans[0].creature_action].Desire;
+	Value = CreatureActionInfo::GetInfo()[creature->mind->agenda.CurrentPlan.creature_action].Desire;
 	if (Value > ValueRange() - 1)
 		Value = ValueRange() - 1;
 }

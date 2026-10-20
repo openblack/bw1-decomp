@@ -201,11 +201,11 @@ CreatureBelief* CreatureMental::AddBeliefAboutObject(Creature* creature, GameThi
 		LookState.GameTurn = GGame::g_game->data.GameTurn;
 		LookState.Priority = CREATURE_LOOK_PRIORITY_MOVING_OBJECT;
 	}
-	if (agenda.plans[0].ObjectToActOn != NULL && object == agenda.plans[0].ObjectToActOn->Pointer)
+	if (agenda.CurrentPlan.ObjectToActOn != NULL && object == agenda.CurrentPlan.ObjectToActOn->Pointer)
 	{
 		VisionState.SeenObjectToActOn = true;
 	}
-	if (agenda.plans[0].ObjectToUse != NULL && object == agenda.plans[0].ObjectToUse->Pointer)
+	if (agenda.CurrentPlan.ObjectToUse != NULL && object == agenda.CurrentPlan.ObjectToUse->Pointer)
 	{
 		VisionState.SeenObjectToUse = true;
 	}
@@ -252,13 +252,13 @@ void CreatureBeliefList::Add(CreatureBelief* belief, CreatureMental* mental)
 
 bool32_t CreatureMental::IsBeliefCurrentlyUsedInAgenda(CreatureBelief* belief)
 {
-	bool agendaValid = agenda.plans[0].IsValid() && agenda.SubActionAgenda.IsValid();
+	bool agendaValid = agenda.CurrentPlan.IsValid() && agenda.SubActionAgenda.IsValid();
 	if (!agendaValid)
 	{
 		return false;
 	}
-	if (belief == agenda.plans[0].ActivityObject || belief == agenda.plans[0].ObjectToActOn ||
-	    belief == agenda.plans[0].ObjectToUse)
+	if (belief == agenda.CurrentPlan.ActivityObject || belief == agenda.CurrentPlan.ObjectToActOn ||
+	    belief == agenda.CurrentPlan.ObjectToUse)
 	{
 		return true;
 	}
@@ -343,7 +343,7 @@ void CreatureBeliefAboutVillager::UpdateAttributes(Creature* creature, GameThing
 		return;
 	}
 
-	switch (creature->mind->agenda.plans[0].CreatureDesire)
+	switch (creature->mind->agenda.CurrentPlan.CreatureDesire)
 	{
 	case CREATURE_DESIRE_TO_IMPRESS:
 	case CREATURE_DESIRE_COMPASSION:

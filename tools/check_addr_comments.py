@@ -3,16 +3,18 @@
 
 Every comment that starts with a version tag must be exactly
 
-    // BW1W120 <windows> [BW1M119 <mac> [(<module>)]]
+    // BW1W120 <windows> [BW1WCI <creature isle>] [BW1M119 <mac> [(<module>)]]
 
 on a line of its own, where
-  <windows>  is 8 lowercase hex digits or one of: inlined purecall null
-  <mac>      is 8 lowercase hex digits or one of: inlined null purecall
-  <module>   is a directory under config/BW1M119/
+  <windows>        is 8 lowercase hex digits or one of: inlined purecall null
+  <creature isle>  is 8 lowercase hex digits or one of: inlined purecall null
+  <mac>            is 8 lowercase hex digits or one of: inlined null purecall
+  <module>         is a directory under config/BW1M119/
 
-and both addresses must be symbols: the Windows one in config/BW1W120/symbols.txt or
-one of its DLL modules, the Mac one in config/BW1M119/symbols.txt or the tagged
-module's symbols.txt.
+and every address must be a symbol: the Windows one in config/BW1W120/symbols.txt or
+one of its DLL modules, the Creature Isle one in config/BW1WCI/symbols.txt or one of
+its DLL modules, the Mac one in config/BW1M119/symbols.txt or the tagged module's
+symbols.txt.
 
 Notes belong on their own comment line; prose may mention an address mid-sentence.
 
@@ -53,6 +55,7 @@ def canonical_re(mac_modules):
     mods = "|".join(map(re.escape, mac_modules))
     return re.compile(
         r"^\s*// BW1W120 (?P<win>" + word(WORDS) + r")"
+        r"(?: BW1WCI (?P<ci>" + word(WORDS) + r"))?"
         r"(?: BW1M119 (?P<mac>" + word(WORDS) + r")(?: \((?P<mod>" + mods + r")\))?)?$"
     )
 
@@ -68,10 +71,16 @@ def source_files():
                     yield os.path.join(dirpath, name)
 
 
+def version_addresses(version):
+    out = addresses(os.path.join(ROOT, "config", version, "symbols.txt"))
+    for mod in modules(version):
+        out |= addresses(os.path.join(ROOT, "config", version, mod, "symbols.txt"))
+    return out
+
+
 def main(argv):
-    win_addrs = addresses(os.path.join(ROOT, "config", "BW1W120", "symbols.txt"))
-    for mod in modules("BW1W120"):
-        win_addrs |= addresses(os.path.join(ROOT, "config", "BW1W120", mod, "symbols.txt"))
+    win_addrs = version_addresses("BW1W120")
+    ci_addrs = version_addresses("BW1WCI")
     mac_mods = modules("BW1M119")
     mac_addrs = {None: addresses(os.path.join(ROOT, "config", "BW1M119", "symbols.txt"))}
     for mod in mac_mods:
@@ -97,9 +106,12 @@ def main(argv):
                 print("%s:%d: error: %s: %s" % (rel, no, why, line.strip()))
                 errors += 1
                 continue
-            win, mac, mod = m.group("win"), m.group("mac"), m.group("mod")
+            win, ci, mac, mod = m.group("win"), m.group("ci"), m.group("mac"), m.group("mod")
             if win not in WORDS and int(win, 16) not in win_addrs:
                 print("%s:%d: error: BW1W120 %s is not a symbol in config/BW1W120" % (rel, no, win))
+                errors += 1
+            if ci and ci not in WORDS and int(ci, 16) not in ci_addrs:
+                print("%s:%d: error: BW1WCI %s is not a symbol in config/BW1WCI" % (rel, no, ci))
                 errors += 1
             if mac and mac not in WORDS and int(mac, 16) not in mac_addrs[mod]:
                 where = "config/BW1M119/%s" % mod if mod else "config/BW1M119/symbols.txt"
@@ -107,7 +119,7 @@ def main(argv):
                 errors += 1
 
     if errors:
-        print("\n%d address comment problem(s). Format: // BW1W120 <w> [BW1M119 <m> [(<module>)]]" % errors)
+        print("\n%d address comment problem(s). Format: // BW1W120 <w> [BW1WCI <c>] [BW1M119 <m> [(<module>)]]" % errors)
         return 1
     print("address comments OK (%d files)" % len(files))
     return 0

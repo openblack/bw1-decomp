@@ -427,10 +427,17 @@ Black/CreatureLook.cpp:
 	.bss        start:0x00CFA918 end:0x00CFA920
 
 Black/CreatureMental.cpp:
-	.text       start:0x004E2A30 end:0x004E3FA0
-	.rdata      start:0x008FDAC4 end:0x008FDBB4
-	.CRT$XCU    start:0x00A3633C end:0x00A36354 align:4
-	.bss        start:0x00CFA920 end:0x00CFA950
+	.text       start:0x004E2A30 end:0x004E3B90
+	.rdata      start:0x008FDAC4 end:0x008FDB68
+	.CRT$XCU    start:0x00A3633C end:0x00A36350 align:4
+	.bss        start:0x00CFA920 end:0x00CFA948
+
+Black/CreatureMentalAgenda.cpp:
+	.text       start:0x004E3B90 end:0x004E3FA0
+	.rdata      start:0x008FDB68 end:0x008FDBB4
+	.CRT$XCU    start:0x00A36350 end:0x00A36354 align:4
+	.data       start:0x00A4DAD0 end:0x00A4DB00
+	.bss        start:0x00CFA948 end:0x00CFA950
 
 Black/CreatureMentalAttribute.cpp:
 	.text       start:0x004E3FA0 end:0x004E48F0
@@ -468,10 +475,22 @@ Black/CreatureMentalDesire.cpp:
 	.bss        start:0x00CFBD80 end:0x00CFFA40
 
 Black/CreatureMentalDesireSource.cpp:
-	.text       start:0x004ED8E0 end:0x004EF9C0
-	.CRT$XCU    start:0x00A36390 end:0x00A363BC align:4
+	.text       start:0x004ED8E0 end:0x004EF050
+	.CRT$XCU    start:0x00A36390 end:0x00A363AC align:4
 	.data       start:0x00C4F974 end:0x00C4FCF0
-	.bss        start:0x00CFFA40 end:0x00D05BA8
+	.bss        start:0x00CFFA40 end:0x00D05B98
+
+Black/CreatureMentalDesireSourceValues.cpp:
+	.text       start:0x004EF050 end:0x004EF810
+	.rdata      start:0x008FE284 end:0x008FE294
+	.CRT$XCU    start:0x00A363AC end:0x00A363B4 align:4
+	.bss        start:0x00D05B98 end:0x00D05BA0
+
+Black/CreatureMentalDesireTests.cpp:
+	.text       start:0x004EF810 end:0x004EF9C0
+	.rdata      start:0x008FE294 end:0x008FE2A0
+	.CRT$XCU    start:0x00A363B4 end:0x00A363BC align:4
+	.bss        start:0x00D05BA0 end:0x00D05BA8
 
 Black/CreatureMentalEditor.cpp:
 	.text       start:0x004EF9C0 end:0x004EFAF0
@@ -494,11 +513,23 @@ Black/CreatureMentalLearnAction.cpp:
 	.bss        start:0x00D21BDC end:0x00D22F34
 
 Black/CreatureMentalMisc.cpp:
-	.text       start:0x004F34E0 end:0x004F56B0
-	.rdata      start:0x008FE6BC end:0x008FE794
-	.CRT$XCU    start:0x00A363E0 end:0x00A36400 align:4
+	.text       start:0x004F34E0 end:0x004F3D60
+	.rdata      start:0x008FE6BC end:0x008FE768
+	.CRT$XCU    start:0x00A363E0 end:0x00A363F0 align:4
 	.data       start:0x00C5026C end:0x00C5032C
-	.bss        start:0x00D22F34 end:0x00D231C8
+	.bss        start:0x00D22F34 end:0x00D231B0
+
+Black/CreatureMentalObjectMultipliers.cpp:
+	.text       start:0x004F3D60 end:0x004F3E30
+	.rdata      start:0x008FE768 end:0x008FE774
+	.CRT$XCU    start:0x00A363F0 end:0x00A363F8 align:4
+	.bss        start:0x00D231B0 end:0x00D231B8
+
+Black/CreatureMentalObjectTests.cpp:
+	.text       start:0x004F3E30 end:0x004F56B0
+	.rdata      start:0x008FE774 end:0x008FE794
+	.CRT$XCU    start:0x00A363F8 end:0x00A36400 align:4
+	.bss        start:0x00D231B8 end:0x00D231C8
 
 Black/CreatureMentalSaveAndLoad.cpp:
 	.text       start:0x004F56B0 end:0x004FABC0

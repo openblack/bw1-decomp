@@ -930,9 +930,9 @@ void Creature::Draw()
 		physical->Creature3d->HasLookPoint();
 	}
 
-	if (CreatureMental::DebugDrawObjectToActOn && mind->agenda.plans[0].ObjectToActOn != NULL)
+	if (CreatureMental::DebugDrawObjectToActOn && mind->agenda.CurrentPlan.ObjectToActOn != NULL)
 	{
-		CreatureBelief* belief = mind->agenda.plans[0].ObjectToActOn;
+		CreatureBelief* belief = mind->agenda.CurrentPlan.ObjectToActOn;
 		LHPoint         objectPos;
 		GLandscape::ConvertMapCoordToLandscapePoint(belief->Pos, objectPos);
 		LH3DColor red(255, 0, 0);

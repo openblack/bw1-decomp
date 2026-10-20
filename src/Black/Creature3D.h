@@ -103,6 +103,11 @@ enum LH3D_CREATURE_STATE
 	LH3D_CREATURE_STATE_CREATION,          // 0x25 LoadBinary; C_FIGHT_EXTRA_CREATION
 };
 
+#define LH3D_CREATURE_RP_LOOK_POINT_REFRESH_TIME 2000
+#define LH3D_CREATURE_IDLE_ACTION_TIME           3000
+#define LH3D_CREATURE_IDLE_LOOK_TIME             6000
+#define LH3D_CREATURE_IDLE_PUZZLED_FACE_TIME     2000
+
 class LH3DCreature : public Morphable
 {
 public:
@@ -311,10 +316,10 @@ public:
 	int                 field_0x5730;
 	int                 field_0x5734;
 	int                 field_0x5738;
-	int                 field_0x573c;
-	int                 field_0x5740;
-	int                 field_0x5744;
-	LHPoint             field_0x5748;
+	int                 IdleActionTimer;
+	bool32_t            IdleActionDone;
+	int                 RPLookPointTimer;
+	LHPoint             RPLookPoint;
 	char                FileName[64];
 	int                 field_0x5794;
 	int                 field_0x5798;

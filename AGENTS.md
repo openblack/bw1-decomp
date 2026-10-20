@@ -506,10 +506,11 @@ reports (`decomp-regress.py --refresh --baseline <saved report>`) before keeping
 Each function and global declaration in a header carries an address comment:
 
 ```cpp
-// BW1W120 <windows addr> BW1M119 <mac addr> [(<module>)]
+// BW1W120 <windows addr> [BW1WCI <creature isle addr>] BW1M119 <mac addr> [(<module>)]
 // BW1W120 0054cbd0 BW1M119 010cca10
 // BW1W120 00c386e0 BW1M119 011d0df8 (LHCombined Release)
 // BW1W120 0051f180 BW1M119 inlined
+// BW1W120 null BW1WCI 00401830 BW1M119 null
 ```
 
 The Mac address comes from `config/BW1M119/symbols.txt`, or from a module's own
@@ -520,6 +521,9 @@ Symbols exported from the game's DLLs use their DLL address (e.g. LHMultiplayerR
 The line holds nothing else: notes go on a comment line of their own above it, and it
 never trails code. CI runs `python3 tools/check_addr_comments.py`, which also checks that
 the Mac address is a real BW1M119 symbol.
+A function that exists only in Creature Isle (under `#ifdef VERSION_BW1WCI`) adds its
+Creature Isle address after the Windows field: `BW1WCI <addr>`, a symbol in
+`config/BW1WCI/symbols.txt`. No Mac build has Creature Isle code.
 Older comments with `BW1M100` (actually 1.1.0 or 1.1.9 addresses at base 0x10000000)
 and a trailing function name are historical. Use `tools/mac_symbol_version.py` to audit them.
 
