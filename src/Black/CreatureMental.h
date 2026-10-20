@@ -31,6 +31,7 @@
 class Creature;
 class CreatureAttitudeToCreature;
 class CreatureBelief;
+class CreatureInfo;
 class GameThingWithPos;
 class GPlayer;
 
@@ -41,8 +42,11 @@ struct CreatureInnatePersonality
 	float Lethargy;
 	float Friendliness;
 	float Communicativeness;
-	float field_0x14;
-	float field_0x18[0x3];
+	float Extroversion;
+	float InterestInThingToLookAt[THING_TO_LOOK_AT_TYPE_LAST];
+
+	// BW1W120 004e2e70 BW1M119 0126ad50
+	CreatureInnatePersonality(const CreatureInfo* info);
 };
 
 class CreatureMental : public Base

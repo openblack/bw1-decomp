@@ -58,6 +58,9 @@ public:
 	float                 ArtifactMultiplier;
 	float                 DrawImportance;
 	float                 ComputerAttackDesire;
+#ifdef VERSION_BW1WCI
+	uint32_t ci_field_0x100;
+#endif
 
 	// Static data
 
@@ -93,7 +96,11 @@ public:
 	float GetMesh2DRadius(float scale) const;
 
 	// Out of line: LoadBinary at 0042ea60, Load at 0042e980.
+#ifdef VERSION_BW1WCI
+	INFO_DATA_BLOCK(type, ci_field_0x100)
+#else
 	INFO_DATA_BLOCK(type, ComputerAttackDesire)
+#endif
 	INFO_ROOT_LOADERS_UNTAGGED()
 };
 

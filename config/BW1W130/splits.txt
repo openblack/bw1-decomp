@@ -628,7 +628,7 @@ Black/CreatureMentalMisc.cpp:
 	.text       start:0x004E5050 end:0x004E5900
 	.rdata      start:0x008D54C0 end:0x008D556C
 	.CRT$XCU    start:0x00A46550 end:0x00A46564 align:4
-	.data       start:0x00C60428 end:0x00C6055C
+	.data       start:0x00C60428 end:0x00C60510
 	.bss        start:0x00D2AC28 end:0x00D2C110
 
 Black/CreatureMentalObjectMultipliers.cpp:
@@ -647,7 +647,7 @@ Black/CreatureMentalSaveAndLoad.cpp:
 	.text       start:0x004E71B0 end:0x004EBC40
 	.rdata      start:0x008D5598 end:0x008D55A4
 	.CRT$XCU    start:0x00A4657C end:0x00A4658C align:4
-	.data       start:0x00C6055C end:0x00C60640
+	.data       start:0x00C60510 end:0x00C60640
 	.bss        start:0x00D2C124 end:0x00D2C138
 
 Black/CreatureMentalUsefulness.cpp:

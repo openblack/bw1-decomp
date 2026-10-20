@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/CreatureEnum.h> /* For CREATURE_TYPE_LAST */
+#include <chlasm/CreatureEnum.h> /* For CREATURE_TYPE_LAST, THING_TO_LOOK_AT_TYPE_LAST */
 
 #include "LivingInfo.h"  /* For struct GLivingInfo */
 #include "InfoLoaders.h" /* For INFO_DATA_BLOCK */
@@ -41,7 +41,16 @@ public:
 	float    SecondsBeforeReactingToSameCreatureAgain;
 	float    field_0x2e0[0x19];
 	uint32_t field_0x344;
-	float    MaxAlignmentChangePerGameTurn[0xf];
+	float    MaxAlignmentChangePerGameTurn;
+	float    field_0x34c;
+	float    InnateNiceness; /* 0x350 */
+	float    InnateAggression;
+	float    InnateLethargy;
+	float    InnateFriendliness;
+	float    InnateCommunicativeness; /* 0x360 */
+	float    InnateExtroversion;
+	float    InterestInThingToLookAt[THING_TO_LOOK_AT_TYPE_LAST];
+	float    field_0x374[0x4];
 	float    AlignmentChangeScale; /* 0x384 */
 	float    field_0x388[0x3];
 
