@@ -194,7 +194,8 @@ CreatureBelief* CreatureBeliefList::GetBeliefAboutObject(GameThingWithPos* objec
 
 CreatureBelief* CreatureMental::AddBeliefAboutObject(Creature* creature, GameThingWithPos* object)
 {
-	if (object->IsMoving() && object != this->creature && LookState.Priority <= CREATURE_LOOK_PRIORITY_MOVING_OBJECT)
+	if (object->IsMoving() && object != this->creature.Get() &&
+	    LookState.Priority <= CREATURE_LOOK_PRIORITY_MOVING_OBJECT)
 	{
 		LookState.coords = object->Pos;
 		LookState.coords.altitude = object->GetHeight();
@@ -422,7 +423,7 @@ void CreatureMental::UpdateBeliefAboutContext()
 	for (unsigned long i = 0; i < ContextBelief->GetNumAttributes(); i++)
 	{
 		Attribute* attribute = ContextBelief->GetNthAttribute(i);
-		Creature*  owner = creature;
+		Creature*  owner = creature.Get();
 		attribute->UpdateValue(owner, owner->GetPlayer());
 	}
 }

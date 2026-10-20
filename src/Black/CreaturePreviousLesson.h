@@ -11,11 +11,6 @@ class CreaturePreviousLesson : public Base
 public:
 	uint32_t field_0x8;
 	uint8_t  field_0xc[0x1200];
-
-	// Override methods
-
-	// BW1W120 004e03a0 BW1M119 0124a880
-	virtual ~CreaturePreviousLesson();
 };
 
 #endif /* BW1_DECOMP_CREATURE_PREVIOUS_LESSON_INCLUDED_H */

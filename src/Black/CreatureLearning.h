@@ -61,11 +61,6 @@ public:
 	Creature*              field_0x16160;
 	uint32_t               field_0x16164;
 
-	// Override methods
-
-	// BW1W120 004e03d0 BW1M119 0124b1a0
-	virtual ~CreatureLearning();
-
 	// Constructors
 
 	// BW1W120 004e0290 BW1M119 01268fd0

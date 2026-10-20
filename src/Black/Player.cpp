@@ -1210,12 +1210,12 @@ LH3DColor GPlayer::GetPlayer3DColor()
 	return colour;
 }
 
-void GPlayer::MakeCreatureEmpathiseWithPlayer(CREATURE_DESIRES desire, const MapCoords& pos)
+void GPlayer::MakeCreatureEmpathiseWithPlayer(CREATURE_DESIRE_SOURCE source, const MapCoords& pos)
 {
 	Creature* creature = this->creature.Get();
 	if (creature != NULL && creature->CanSeePos(pos))
 	{
-		creature->mind->EmpathiseWithPlayer(desire);
+		creature->mind->EmpathiseWithPlayer(source);
 	}
 }
 

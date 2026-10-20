@@ -196,6 +196,8 @@ struct DecisionTreeCollection
 
 	// BW1W120 004d7220 BW1M119 01250860
 	DecisionTreeCollection();
+	// BW1W120 004d7290 BW1M119 012507a0
+	~DecisionTreeCollection();
 
 	// BW1W120 004d7670 BW1M119 01250390
 	float ConvertUtilityToUsefulness(float utility);
