@@ -15,7 +15,9 @@
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 #include <re_common.h>                          /* For bool32_t */
 
+#include "ClearAreaState.h"    /* For struct ClearAreaState */
 #include "CreatureHelp.h"      /* For struct CreatureHelpStackEntry, struct CreatureHelpState */
+#include "CreaturePlan.h"      /* For CreatureActionsTried */
 #include "CreatureSubAction.h" /* For struct CreatureSubActionAgenda */
 #include "Living.h"            /* For struct Living */
 #include "MapCoords.h"         /* For struct MapCoords */
@@ -170,16 +172,7 @@ public:
 	uint32_t                 field_0x3c8;
 	uint32_t                 field_0x3cc;
 	LHLinkedList<Creature*>  Friends;
-	MapCoords                field_0x3d8;
-	uint32_t                 field_0x3e4;
-	uint32_t                 field_0x3e8;
-	MapCoords                field_0x3ec;
-	uint8_t                  field_0x3f8;
-	uint8_t                  field_0x3f9;
-	uint8_t                  field_0x3fa;
-	uint8_t                  field_0x3fb;
-	float                    field_0x3fc;
-	float                    field_0x400;
+	ClearAreaState           ClearArea;
 	uint8_t                  field_0x404;
 	uint8_t                  field_0x405;
 	uint8_t                  field_0x406;
@@ -235,7 +228,7 @@ public:
 	bool32_t            RespondingToEmergency;
 	Town*               LastTownImpressed;
 	uint32_t            LastImpressiveDanceTurn;
-	uint32_t            LastImpressiveDanceType;
+	DANCE_INFO          LastImpressiveDanceType;
 	uint32_t            field_0x1104;
 	uint32_t            field_0x1108;
 	uint32_t            ScriptFlag0;
@@ -812,14 +805,26 @@ public:
 	GInterfaceStatus* GetNearestCameraInterfaceStatus();
 	// BW1W120 0047d740 BW1M119 011d6ce0
 	GInterfaceStatus* GetNearestHandInterfaceStatus();
+	// BW1W120 004775d0 BW1M119 011e28a0
+	GInterfaceStatus* GetInterfaceStatusLookingAtCreature();
+	// BW1W120 00479450 BW1M119 011df860
+	bool32_t IsCreatureFarFromHome();
+	// BW1W120 0047afb0 BW1M119 011dc580
+	bool32_t HasPerformedActionInLastNSeconds(CREATURE_ACTION action, float seconds);
+	// BW1W120 0047aee0 BW1M119 011dc640
+	float GetScreenWidthInWorldMetres();
 	// BW1W120 004dfbe0 BW1M119 01264bb0
-	bool32_t FindClearArea(MapCoords* coords, float radius, int param_3);
+	bool32_t FindClearArea(MapCoords* coords, float radius, bool32_t avoid_living);
 	// BW1W120 004c4450 BW1M119 01235990
 	void ForceActivityAndForceAction(CREATURE_DESIRES desire, CreatureBelief* activity_object, CREATURE_ACTION action,
 	                                 CreatureBelief* object_to_act_on, CreatureBelief* object_to_use, int param_6,
 	                                 int param_7);
 	// BW1W120 004c44b0 BW1M119 01235820
 	void ForceActivityAndForceAction(CreaturePlan& plan, int param_2, int param_3);
+	// BW1W120 004c8230 BW1M119 01239d00
+	float ComputeCurrentPlayerInterestingness();
+	// BW1W120 004c81f0 BW1M119 01239f60
+	void ProcessPlayerInterestingness();
 	// BW1W120 004c84b0 BW1M119 0123b450
 	void SetFaceForMoodFrightened();
 	// BW1W120 004c8500 BW1M119 0123b3a0
@@ -1056,6 +1061,9 @@ public:
 	bool32_t IsFighting();
 	// BW1W120 004d8bb0 BW1M119 01255f50
 	CreatureBelief* AddBeliefAboutAssociatedObject(CreatureBelief* belief);
+	// BW1W120 004f1c40 BW1M119 0127b060
+	void FindBestActionFromObject(CreaturePlan& plan, CreatureActionsTried* actions_tried, CreatureBelief* belief,
+	                              bool32_t require_object_to_act_on);
 	// BW1W120 004f8ca0 BW1M119 0128e390
 	float NumTimesMagicActionMustBeSeenBeforeItIsLearnt(unsigned long magic_type);
 	// BW1W120 0047cda0 BW1M119 011d7fe0

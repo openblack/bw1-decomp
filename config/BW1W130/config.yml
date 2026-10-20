@@ -496,31 +496,31 @@ add_relocations:
     addend: -0x20
   - source: 0x00754D73
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x80
   - source: 0x00754DBB
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x80
   - source: 0x00754F28
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x60
   - source: 0x0075969A
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x30
   - source: 0x0075970A
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x40
   - source: 0x0075B387
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x70
   - source: 0x0075B439
     type: x86_abs32
-    target: '?g_VillagerStateTable@@3PAU?$LivingStateTableEntry@VVillager@@@@A'
+    target: '?StateTable@VillagerStateTableEntry@@2PAU1@A'
     addend: 0x70
   - source: 0x007546B7
     type: x86_abs32

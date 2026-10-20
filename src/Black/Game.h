@@ -211,12 +211,15 @@ public:
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)
 	uint32_t MultiplayerTimeLimit;
 #endif
-	uint32_t               field_0x59a4;
-	uint32_t               field_0x59a8;
-	time_t                 field_0x59ac;
-	float                  field_0x59b0;
-	Temple*                temple;
-	GMap                   map;
+	uint32_t field_0x59a4;
+	uint32_t field_0x59a8;
+	time_t   field_0x59ac;
+	float    field_0x59b0;
+	Temple*  temple;
+	GMap     map;
+#ifdef VERSION_BW1WCI
+	uint8_t ci_field_0x201b04[0x10];
+#endif
 	uint32_t               LandNumber;
 	bool32_t               SkirmishGame;
 	int                    field_0x205a10;

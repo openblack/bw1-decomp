@@ -51,6 +51,8 @@ struct GUtils
 	static float GetDistanceInMetres(const MapCoords* from, const MapCoords* to);
 	// BW1W120 0074cd70 BW1M119 0104bf00
 	static float GetDistanceInMetres(const MapCoords& param_1, const MapCoords& param_2);
+	// BW1W120 0074cd90 BW1M119 null
+	static float GetDistanceInMetres(const MapCoords& from, const JustMapXZ& to);
 	// BW1W120 0074cde0 BW1M119 01036610
 	static float GetDistance(const LHPoint& a, const LHPoint& b);
 	// BW1W120 0074caf0 BW1M119 01076080
@@ -68,7 +70,7 @@ struct GUtils
 	// BW1W120 0074d810 BW1M119 01024840
 	static void SpiralIncrement(MapCoords& param_1, long& param_2, long& param_3, float param_4);
 	// BW1W120 0074dbf0 BW1M119 01358130
-	static unsigned long Spread(unsigned long index, unsigned long range);
+	static int16_t Spread(unsigned long index, unsigned long range);
 	// BW1W120 0074dc50 BW1M119 0104f6e0
 	static float ConvertGameAngleTo3D(long angle);
 	// BW1W120 0074dc80 BW1M119 0101b2e0

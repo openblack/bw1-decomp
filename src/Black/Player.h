@@ -243,7 +243,7 @@ public:
 	// BW1W120 0064b590 BW1M119 0149c420
 	LH3DColor GetPlayer3DColor();
 	// BW1W120 0064b5b0 BW1M119 null
-	void MakeCreatureEmpathiseWithPlayer(CREATURE_DESIRES desire, const MapCoords& pos);
+	void MakeCreatureEmpathiseWithPlayer(CREATURE_DESIRE_SOURCE source, const MapCoords& pos);
 	// BW1W120 0064b650 BW1M119 0149c2c0
 	unsigned long GetPlayerTotemForTown();
 	// BW1W120 0064b680 BW1M119 0101c970
@@ -407,7 +407,9 @@ public:
 	void ConsiderMakingCreatureMimicPlayer(GInterfaceStatus* status, DETECTED_PLAYER_ACTION action,
 	                                       GameThingWithPos* thing, MAGIC_TYPE magic);
 	// BW1W120 004c80f0 BW1M119 0123a2b0
-	void MakeCreatureEmpathiseWithPlayerTownDesire(TOWN_DESIRE_INFO param_1, float param_2, const MapCoords& param_3);
+	void MakeCreatureEmpathiseWithPlayerTownDesire(TOWN_DESIRE_INFO desire, float amount, const MapCoords& pos);
+	// BW1W120 004c80b0 BW1M119 0123a3e0
+	void MakeCreatureEmpathiseWithPlayer(CREATURE_DESIRES desire, float amount, const MapCoords& pos);
 
 	// Static data
 

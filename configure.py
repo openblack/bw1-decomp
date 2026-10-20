@@ -251,11 +251,16 @@ if config.version == "BW1W100":
     # nomemory.obj 1.00 never linked at all. Likewise GJProperty's
     # Persistent::SetUniqueName and PersistenceStreamer writers: 1.00 has no
     # PSysFileData::SaveToFile, so they were dropped too, and with them the only
-    # users of PersistentOwner::IsNameUsed and typeid's ___RTtypeid.
+    # users of PersistentOwner::IsNameUsed and typeid's ___RTtypeid. Villager's
+    # SetGotoWorshipSpeed and CheckRequestGoHome have no callers in 1.00, so
+    # they were dropped too, with the only users of WorshipSite's
+    # GetWorshipSpeed and AddVillagerRequestingToGoHome.
     for _dead_function in [
         "?_Nomemory@std@@YAXXZ",
         "?IsNameUsed@PersistentOwner@@QAEHPBD@Z",
         "___RTtypeid",
+        "?GetWorshipSpeed@WorshipSite@@QAEMXZ",
+        "?AddVillagerRequestingToGoHome@WorshipSite@@QAEXPAVVillager@@@Z",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
     # GAudio's MusicSwitch, Shutdown and bank SampleSet3DPosition wrappers have
@@ -652,9 +657,11 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureCommandState.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureContext.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureDatabase.cpp"),
+            GameCodeObject(Matching, "Black/CreatureDecision.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureDevelopment.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureDirectControl.cpp"),
             GameCodeObject(Matching, "Black/CreatureDump.cpp"),
+            GameCodeObject(Matching, "Black/CreatureEmpathy.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureExplorationMap.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureFace.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureHelp.cpp"),
@@ -666,11 +673,12 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureLessonChooser.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureLook.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMental.cpp"),
+            GameCodeObject(Matching, "Black/CreatureMentalActionTests.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalAgenda.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalAttribute.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalAttributeTest.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalBelief.cpp"),
-            GameCodeObject(NonMatching, "Black/CreatureMentalBeliefs.cpp"),
+            GameCodeObject(Matching, "Black/CreatureMentalBeliefs.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDebug.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDesire.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMentalDesireSource.cpp"),
@@ -1227,7 +1235,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/VillagerStates.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerStateTableInfo.cpp"),
             GameCodeObject(Matching, "Black/VillagerTrader.cpp"),
-            GameCodeObject(NonMatching, "Black/VillagerWorshipper.cpp"),
+            GameCodeObject(Matching, "Black/VillagerWorshipper.cpp"),
             GameCodeObject(NonMatching, "Black/VirtualInfluence.cpp"),
             GameCodeObject(NonMatching, "Black/ViscousLiquid.cpp"),
             GameCodeObject(NonMatching, "Black/VortexInfo.cpp"),

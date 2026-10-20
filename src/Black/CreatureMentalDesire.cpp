@@ -531,16 +531,17 @@ void CreatureMental::SetCheatDominantDesire(CREATURE_DESIRES desire, float secon
 	if (desires.CheatDominantDesire == CREATURE_DESIRE_COMPASSION)
 	{
 		desires.UnsuppressDesire(CREATURE_DESIRE_TO_BE_FRIENDS);
-		creature->MakeDesireFullyDominantAndChangeSource(CREATURE_DESIRE_TO_BE_FRIENDS, creature->GetInfo());
+		creature.Get()->MakeDesireFullyDominantAndChangeSource(CREATURE_DESIRE_TO_BE_FRIENDS,
+		                                                       creature.Get()->GetInfo());
 	}
 	desires.UnsuppressDesire(desires.CheatDominantDesire);
-	creature->MakeDesireFullyDominantAndChangeSource(desires.CheatDominantDesire, creature->GetInfo());
+	creature.Get()->MakeDesireFullyDominantAndChangeSource(desires.CheatDominantDesire, creature.Get()->GetInfo());
 }
 
 void CreatureMental::ClearCheatDominantDesire()
 {
-	if (creature->GetPlayer() == NULL ||
-	    creature->GetPlayer()->GetTempFirstInterfaceStatus()->LeashStatus->LeashType == LEASH_TYPE_ROPE)
+	if (creature.Get()->GetPlayer() == NULL ||
+	    creature.Get()->GetPlayer()->GetTempFirstInterfaceStatus()->LeashStatus->LeashType == LEASH_TYPE_ROPE)
 	{
 		if (desires.CheatDominantDesire != INVALID_CREATURE_DESIRE)
 		{

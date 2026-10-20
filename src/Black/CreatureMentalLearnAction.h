@@ -29,10 +29,12 @@ public:
 
 	// Override methods
 
-	// BW1W120 004e2db0 BW1M119 0126b4a0
-	virtual ~CreatureActionKnownAboutEntry();
 	// BW1W120 004e2d50 BW1M119 0126b710
-	virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos)
+	{
+		num_infos = CREATURE_ACTION_KNOWN_ABOUT_LAST;
+		return GetNormalActionKnownAboutInfo();
+	}
 
 	// Static methods
 
@@ -54,11 +56,6 @@ public:
 
 	// BW1W120 00ca9c70
 	static CreatureMagicActionKnownAboutEntry MagicActionKnownAboutInfo[MAGIC_TYPE_LAST];
-
-	// Override methods
-
-	// BW1W120 004e2e50 BW1M119 0126b370
-	virtual ~CreatureMagicActionKnownAboutEntry();
 
 	// Static methods
 

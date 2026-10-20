@@ -37,6 +37,9 @@ struct GDebug
 	uint8_t  field_0x2d1a4[0xc];
 	uint32_t field_0x2d1b0;
 	uint8_t  field_0x2d1b4[0xd0];
+#ifdef VERSION_BW1WCI
+	uint32_t ci_field_0x2d284;
+#endif
 	int      field_0x2d284;
 	uint32_t field_0x2d288;
 	uint32_t field_0x2d28c;

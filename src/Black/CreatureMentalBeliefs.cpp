@@ -14,10 +14,12 @@ const float TownObjectToActOnUsefulness = 0.1f;
 #include "Object.h"
 #include "Tree.h"
 
-#if defined(VERSION_BW1W100)
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
 #define FILEPATH "C:\\dev\\black\\CreatureMentalBeliefs.cpp"
 #elif defined(VERSION_BW1W110)
 #define FILEPATH "C:\\dev\\Black\\CreatureMentalBeliefs.cpp"
+#elif defined(VERSION_BW1W130)
+#define FILEPATH "D:\\Work\\Games\\dd\\Black\\CreatureMentalBeliefs.cpp"
 #else
 #define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalBeliefs.cpp"
 #endif
@@ -102,11 +104,14 @@ void CreatureBeliefAboutVillager::CreateAttributes()
 	Attributes[CREATURE_BELIEF_ATTRIBUTE_VILLAGER_ON_FIRE] = new (FILEPATH, 98) AttributeOnFire(0);
 }
 
+// 1.00 has no CreatureBeliefAboutMobileObject.
+#if !defined(VERSION_BW1W100)
 void CreatureBeliefAboutMobileObject::CreateAttributes()
 {
 	CreateCommonAttributes();
 	Attributes[CREATURE_BELIEF_ATTRIBUTE_MOBILE_OBJECT_TYPE] = new (FILEPATH, 105) AttributeMobileObjectType(0);
 }
+#endif
 
 void CreatureBeliefAboutAbode::CreateAttributes()
 {
@@ -234,6 +239,8 @@ CreatureBelief* CreatureBeliefAboutVillager::Copy()
 	return belief;
 }
 
+// 1.00 has no CreatureBeliefAboutMobileObject.
+#if !defined(VERSION_BW1W100)
 CreatureBelief* CreatureBeliefAboutMobileObject::Copy()
 {
 	CreatureBeliefAboutMobileObject* belief = new (FILEPATH, 246) CreatureBeliefAboutMobileObject;
@@ -249,6 +256,7 @@ CreatureBelief* CreatureBeliefAboutMobileObject::Copy()
 		AttributeMobileObjectType(GetNthAttributeValue(CREATURE_BELIEF_ATTRIBUTE_MOBILE_OBJECT_TYPE));
 	return belief;
 }
+#endif
 
 CreatureBelief* CreatureBeliefAboutAbode::Copy()
 {
@@ -335,6 +343,8 @@ CreatureBeliefAboutForest::~CreatureBeliefAboutForest()
 	}
 }
 
+// 1.00 has no CreatureBeliefAboutMobileObject.
+#if !defined(VERSION_BW1W100)
 CreatureBeliefAboutMobileObject::~CreatureBeliefAboutMobileObject()
 {
 	for (uint32_t i = 0; i < GetNumAttributes(); i++)
@@ -342,6 +352,7 @@ CreatureBeliefAboutMobileObject::~CreatureBeliefAboutMobileObject()
 		delete Attributes[i];
 	}
 }
+#endif
 
 CreatureBeliefAboutVillager::~CreatureBeliefAboutVillager()
 {
@@ -494,11 +505,14 @@ CreatureBelief* CreatureBeliefAboutVillager::FindBestObjectToActOn(CREATURE_DESI
 	return NULL;
 }
 
+// 1.00 has no CreatureBeliefAboutMobileObject.
+#if !defined(VERSION_BW1W100)
 CreatureBelief* CreatureBeliefAboutMobileObject::FindBestObjectToActOn(CREATURE_DESIRES desire, CreatureMental* mental,
                                                                        CREATURE_ACTION action, float* usefulness)
 {
 	return NULL;
 }
+#endif
 
 CreatureBelief* CreatureBeliefAboutAbode::FindBestObjectToActOn(CREATURE_DESIRES desire, CreatureMental* mental,
                                                                 CREATURE_ACTION action, float* usefulness)

@@ -44,7 +44,7 @@ public:
 	uint32_t               GameTurnNormalActionFirstSeen[CREATURE_ACTION_KNOWN_ABOUT_LAST];
 	uint32_t               NumTimesMagicActionSeen[MAGIC_TYPE_LAST];
 	uint32_t               GameTurnMagicActionLastSeen[MAGIC_TYPE_LAST];
-	uint32_t               field_0x153b0[NUM_CREATURE_ACTIONS];
+	uint32_t               GameTurnActionLastPerformed[NUM_CREATURE_ACTIONS];
 	uint32_t               HeldObjectActionCounts[OBJECT_TYPE_LAST];
 	uint32_t               field_0x15984[OBJECT_TYPE_LAST];
 	uint32_t               field_0x15a38[OBJECT_TYPE_LAST];
@@ -60,11 +60,6 @@ public:
 	uint32_t               NumTimesActionPerformed[NUM_CREATURE_ACTIONS];
 	Creature*              field_0x16160;
 	uint32_t               field_0x16164;
-
-	// Override methods
-
-	// BW1W120 004e03d0 BW1M119 0124b1a0
-	virtual ~CreatureLearning();
 
 	// Constructors
 

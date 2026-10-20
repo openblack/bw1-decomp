@@ -213,10 +213,10 @@ class CreaturePreviousActions : public Base
 public:
 	float field_0x8[NUM_CREATURE_ACTIONS];
 
-	// Override methods
+	// Constructors
 
-	// BW1W120 004f2040 BW1M119 0124aef0
-	virtual ~CreaturePreviousActions();
+	// BW1W120 004f1ff0 BW1M119 0127aa10
+	CreaturePreviousActions();
 };
 
 class CreatureActionKnownAbout : public Base

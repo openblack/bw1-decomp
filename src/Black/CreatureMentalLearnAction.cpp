@@ -83,7 +83,7 @@ bool32_t CreatureMental::ConsiderLearningAction(CREATURE_ACTION_LEARNING_TYPE ty
 	switch (type)
 	{
 	case CREATURE_ACTION_LEARNING_TYPE_NORMAL:
-		if (creature->DevelopmentPhase >=
+		if (creature.Get()->DevelopmentPhase >=
 		    CreatureActionKnownAboutEntry::GetNormalActionKnownAboutInfo()[action].DevelopmentPhase)
 		{
 			if (learning.GameTurnNormalActionFirstSeen[action] == 0)
@@ -99,25 +99,25 @@ bool32_t CreatureMental::ConsiderLearningAction(CREATURE_ACTION_LEARNING_TYPE ty
 				learnt = true;
 				if (!ActionsKnownAbout.KnowsAction(CREATURE_ACTION_LEARNING_TYPE_NORMAL, action))
 				{
-					creature->CreateLightbulb(1.0f);
+					creature.Get()->CreateLightbulb(1.0f);
 				}
-				ActionsKnownAbout.AddActionLearnt(creature, type, action, true);
+				ActionsKnownAbout.AddActionLearnt(creature.Get(), type, action, true);
 			}
 			else if (!ActionsKnownAbout.KnowsAction(CREATURE_ACTION_LEARNING_TYPE_NORMAL, action))
 			{
-				creature->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_NEARLY_LEARNT_NORMAL_ACTION, action,
-				                                  NULL, NULL, 0);
-				creature->CreateLightbulb(NEARLY_LEARNT_NORMAL_ACTION_LIGHTBULB);
+				creature.Get()->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_NEARLY_LEARNT_NORMAL_ACTION,
+				                                        action, NULL, NULL, 0);
+				creature.Get()->CreateLightbulb(NEARLY_LEARNT_NORMAL_ACTION_LIGHTBULB);
 			}
 		}
 		else
 		{
-			creature->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_CANT_LEARN_NORMAL_ACTION_YET, action, NULL,
-			                                  NULL, 0);
+			creature.Get()->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_CANT_LEARN_NORMAL_ACTION_YET, action,
+			                                        NULL, NULL, 0);
 		}
 		break;
 	case CREATURE_ACTION_LEARNING_TYPE_MAGIC:
-		if (creature->DevelopmentPhase >=
+		if (creature.Get()->DevelopmentPhase >=
 		    CreatureMagicActionKnownAboutEntry::GetMagicActionKnownAboutInfo()[action].DevelopmentPhase)
 		{
 			if (GGame::g_game->data.GameTurn - learning.GameTurnMagicActionLastSeen[action] >
@@ -125,45 +125,45 @@ bool32_t CreatureMental::ConsiderLearningAction(CREATURE_ACTION_LEARNING_TYPE ty
 			    learning.GameTurnMagicActionLastSeen[action] == 0)
 			{
 				learning.NumTimesMagicActionSeen[action]++;
-				if (creature->GetInterfaceStatusLeashOn() != NULL &&
-				    creature->GetInterfaceStatusLeashOn()->LeashStatus != NULL &&
-				    creature->GetInterfaceStatusLeashOn()->LeashStatus->LeashType == LEASH_TYPE_ROPE)
+				if (creature.Get()->GetInterfaceStatusLeashOn() != NULL &&
+				    creature.Get()->GetInterfaceStatusLeashOn()->LeashStatus != NULL &&
+				    creature.Get()->GetInterfaceStatusLeashOn()->LeashStatus->LeashType == LEASH_TYPE_ROPE)
 				{
 					learning.NumTimesMagicActionSeen[action] += ROPE_LEASH_EXTRA_MAGIC_ACTION_SIGHTINGS;
 				}
 			}
 			learning.GameTurnMagicActionLastSeen[action] = GGame::g_game->data.GameTurn;
-			ActionsKnownAbout.AddActionLearnt(creature, type, action, false);
+			ActionsKnownAbout.AddActionLearnt(creature.Get(), type, action, false);
 
 			if (learning.NumTimesMagicActionSeen[action] >=
-			    creature->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(action))
+			    creature.Get()->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(action))
 			{
 				learnt = true;
-				creature->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_LEARN_MAGIC_ACTION, action, NULL, NULL,
-				                                  0);
+				creature.Get()->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_LEARN_MAGIC_ACTION, action, NULL,
+				                                        NULL, 0);
 				if (learning.NumTimesMagicActionSeen[action] -
-				        creature->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(action) <
+				        creature.Get()->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(action) <
 				    MAGIC_ACTION_RECENTLY_LEARNT_SIGHTINGS)
 				{
-					creature->CreateLightbulb(1.0f);
+					creature.Get()->CreateLightbulb(1.0f);
 				}
 			}
 			else
 			{
 				float progress = min(1.0f, learning.NumTimesMagicActionSeen[action] /
-				                               creature->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(action));
+				                               creature.Get()->NumTimesMagicActionMustBeSeenBeforeItIsLearnt(action));
 				if (progress >= NEARLY_LEARNT_MAGIC_ACTION_FRACTION)
 				{
-					creature->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_NEARLY_LEARNT_MAGIC_ACTION, action,
-					                                  NULL, NULL, 0);
+					creature.Get()->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_NEARLY_LEARNT_MAGIC_ACTION,
+					                                        action, NULL, NULL, 0);
 				}
-				creature->CreateLightbulb(progress);
+				creature.Get()->CreateLightbulb(progress);
 			}
 		}
 		else
 		{
-			creature->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_CANT_LEARN_MAGIC_ACTION_YET, action, NULL,
-			                                  NULL, 0);
+			creature.Get()->SendCandidateHelpScript(CREATURE_HELP_TYPE_SHOW_LESSON_CANT_LEARN_MAGIC_ACTION_YET, action,
+			                                        NULL, NULL, 0);
 		}
 		break;
 	}

@@ -27,18 +27,18 @@ class CreatureVisionState : public Base
 public:
 	CreatureInterestingThingToLookAt ThingToLookAt; /* 0x8 */
 	bool32_t                         SeenObjectToActOn;
-	uint32_t                         field_0x2c;
+	bool32_t                         LookedAtPosOfObjectToActOn;
 	bool32_t                         SeenObjectToUse;
-	uint32_t                         field_0x34;
+	bool32_t                         LookedAtPosOfObjectToUse;
 	uint32_t                         field_0x38;
 	uint32_t                         field_0x3c;
 	uint32_t                         field_0x40;
 	uint32_t                         field_0x44;
 
-	// Override methods
+	// Constructors
 
-	// BW1W120 004d0370 BW1M119 0124a180
-	virtual ~CreatureVisionState();
+	// BW1W120 004d0340 BW1M119 0124a0e0
+	CreatureVisionState();
 };
 
 #endif /* BW1_DECOMP_CREATURE_VISION_STATE_INCLUDED_H */

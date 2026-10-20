@@ -1491,12 +1491,23 @@ static_assert(sizeof(GInterfaceMessageBuffer) == 0x14, "Message buffer size is i
 static_assert(offsetof(LHSys, mouse) + offsetof(LHMouse, DrawCallback) == 0x1c8, "Mouse callback offset is incorrect");
 static_assert(offsetof(LHSys, mouse) + offsetof(LHMouse, CallbackArg1) == 0x314, "Mouse context offset is incorrect");
 
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(GGlobal) == 0x2d504, "GGlobal size is incorrect");
+static_assert(offsetof(GGlobal, EditorMode) == 0x2d2b0, "GGlobal editor mode offset is incorrect");
+static_assert(offsetof(GGlobal, Editor) == 0x2d2e8, "GGlobal editor pointer offset is incorrect");
+#else
 static_assert(sizeof(GGlobal) == 0x2d500, "GGlobal size is incorrect");
 static_assert(offsetof(GGlobal, EditorMode) == 0x2d2ac, "GGlobal editor mode offset is incorrect");
 static_assert(offsetof(GGlobal, Editor) == 0x2d2e4, "GGlobal editor pointer offset is incorrect");
+#endif
 static_assert(sizeof(Prss) == 0x10, "Prss size is incorrect");
+#ifdef VERSION_BW1WCI
+static_assert(offsetof(GDebug, CellBoxes) == 0x2d2a4, "GDebug CellBoxes offset is incorrect");
+static_assert(sizeof(GDebug) == 0x2d2ac, "GDebug size is incorrect");
+#else
 static_assert(offsetof(GDebug, CellBoxes) == 0x2d2a0, "GDebug CellBoxes offset is incorrect");
 static_assert(sizeof(GDebug) == 0x2d2a8, "GDebug size is incorrect");
+#endif
 static_assert(offsetof(GPlayer, interfaces) == 0x14, "GPlayer interfaces offset is incorrect");
 static_assert(offsetof(GGame, players) == 0x18, "GGame players offset is incorrect");
 #if defined(VERSION_BW1W120) || defined(VERSION_BW1W130)

@@ -6,7 +6,8 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 #include <stdio.h>  /* For FILE */
 
-#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
+#include <Lionhead/LHLib/ver5.0/LHFastPointer.h> /* For struct LHFastPointer */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h>  /* For struct LHLinkedList */
 
 #include "Base.h"                        /* For struct Base */
 #include "CreatureAction.h"              /* For struct CreatureActionOpinions, struct CreaturePreviousActions */
@@ -23,6 +24,7 @@
 #include "CreatureMentalDebug.h"         /* For struct CreatureMentalDebug */
 #include "CreatureMentalDesire.h"        /* For struct CreatureDesires */
 #include "CreatureObjectsInspected.h"    /* For struct CreatureObjectsInspected */
+#include "CreaturePlan.h"                /* For CreatureDesiresTried */
 #include "CreatureVisionState.h"         /* For struct CreatureVisionState */
 #include "MapCoords.h"                   /* For struct MapCoords */
 
@@ -31,8 +33,23 @@
 class Creature;
 class CreatureAttitudeToCreature;
 class CreatureBelief;
+class CreatureInfo;
 class GameThingWithPos;
 class GPlayer;
+
+enum CREATURE_DECISION_TYPE
+{
+	CREATURE_DECISION_NORMAL,
+};
+
+#define MAX_NUM_ACTIONS_FOR_EACH_DESIRE 30
+
+struct CreatureActionConsidered
+{
+	float Priority;
+	float NoveltyModification;
+	float Possible;
+};
 
 struct CreatureInnatePersonality
 {
@@ -41,8 +58,11 @@ struct CreatureInnatePersonality
 	float Lethargy;
 	float Friendliness;
 	float Communicativeness;
-	float field_0x14;
-	float field_0x18[0x3];
+	float Extroversion;
+	float InterestInThingToLookAt[THING_TO_LOOK_AT_TYPE_LAST];
+
+	// BW1W120 004e2e70 BW1M119 0126ad50
+	CreatureInnatePersonality(const CreatureInfo* info);
 };
 
 class CreatureMental : public Base
@@ -73,7 +93,6 @@ public:
 	CreatureInnatePersonality                 InnatePersonality;
 	CreatureVisionState                       VisionState;
 	CreatureExplorationMap                    ExplorationMap;
-	uint8_t                                   field_0x1ca98[0x400];
 	CreaturePreviousActions                   PreviousActions;
 	CreatureLookState                         LookState;
 	uint8_t                                   field_0x1d3f8[0x14];
@@ -82,28 +101,44 @@ public:
 	CreatureBelief*                           ContextBelief;
 	CreatureBelief*                           CitadelHeartBelief;
 	bool32_t                                  AvoidOwnPlayersThingsWhenAngry;
-	MapCoords                                 field_0x1d48c[0x1e][0x28];
+	CreatureActionConsidered                  ActionsConsidered[NUM_CREATURE_DESIRES][MAX_NUM_ACTIONS_FOR_EACH_DESIRE];
 	CreatureMentalDebug                       debug;
-	Creature*                                 creature;
-	int                                       field_0x20d1c;
-	uint32_t                                  field_0x20d20;
-	uint32_t                                  field_0x20d24;
-	uint32_t                                  field_0x20d28;
-	uint32_t                                  field_0x20d2c;
-	uint32_t                                  field_0x20d230;
+	LHFastPointer<Creature>                   creature;
+	TOWN_DESIRE_INFO                          TownDesireToHelp;
+	uint32_t                                  TownDesireToHelpIndex;
+	bool32_t                                  CanChooseTownDesireToHelp;
+	float                                     TownDesireToHelpLevel;
+	uint32_t                                  NumTimesTownDesireHelped;
+	bool32_t                                  IsDemobilised;
 	uint32_t                                  GameTurnLastReactedToFlyingObject;
 	uint32_t                                  GameTurnLastReactedToObjectCrushed;
-	uint32_t                                  field_0x20d23c;
+	uint32_t                                  field_0x20d3c;
 #ifdef VERSION_BW1WCI
 	uint32_t ci_field_0xd068;
 #endif
 
+	// Constructors
+
+	// BW1W120 004d22f0 BW1M119 0124aa30
+	CreatureMental(Creature* creature, const CreatureInfo* info, const MapCoords& pos, GPlayer* player);
+
 	// Override methods
 
-	// BW1W120 004d2560 BW1M119 0124a460
+	// BW1W120 004d2590 BW1M119 0124a460
 	virtual ~CreatureMental();
 
 	// Non-virtual methods
+
+#ifndef VERSION_BW1WCI
+	// BW1W120 004d26e0 BW1M119 inlined
+	void ClearActionsConsidered();
+#endif // VERSION_BW1WCI
+	// BW1W120 004d2710 BW1M119 0124a3d0
+	bool32_t IsReadyToFinishAction();
+	// BW1W120 004d2740 BW1M119 0124a320
+	void CheckIfIHaveSeenTheMostImportantObjects();
+	// BW1W120 004d2780 BW1M119 0124a210
+	void CheckIfIHaveSeenAnImportantObject(CreatureBelief* belief, bool32_t looked_at_pos, bool32_t seen);
 
 	// BW1W120 004d3800 BW1M119 0124b5a0
 	bool32_t IsActionSufficientlyCompletedToBePerceived();
@@ -147,10 +182,25 @@ public:
 	float GetObjectToActOnUsefulness(CreatureBelief* object, CREATURE_DESIRES desire);
 	// BW1W120 004e3730 BW1M119 015ef7e0
 	bool32_t IsObjectSuitableForDesire(CreatureBelief* belief, CREATURE_DESIRES desire);
+	// BW1W120 004c5030 BW1M119 015e8980
+	void ConsiderActivitiesWhichDontRequireAnObject(CreaturePlan& plan, CreatureDesiresTried& desires_tried,
+	                                                CREATURE_DECISION_TYPE decision_type,
+	                                                bool32_t               allow_no_object_to_act_on);
+	// BW1W120 004c5130 BW1M119 015e86f0
+	void AssessParticularObject(CreatureBelief* belief, CreaturePlan& plan, CreatureDesiresTried& desires_tried,
+	                            CREATURE_DECISION_TYPE decision_type);
+	// BW1W120 004c5280 BW1M119 015e85e0
+	CREATURE_DESIRES FindBestGoalForActivityObject(CreatureBelief* belief, CreatureDesiresTried& desires_tried);
+	// BW1W120 004c52d0 BW1M119 015e8450
+	bool32_t FindSomethingToDoOnParticularObject(CreatureBelief* activity_object, CreatureBelief* object_to_act_on,
+	                                             CreaturePlan& plan);
+	// BW1W120 004c5390 BW1M119 015e81f0
+	bool32_t FindSomethingToDoOnObjectUsingObject(CreatureBelief* activity_object, CreatureBelief* object_to_act_on,
+	                                              CreatureBelief* object_to_use, CreaturePlan& plan);
 	// BW1W120 004e3800 BW1M119 015ef750
 	bool32_t IsObjectSuitableForAction(GameThingWithPos* object, CREATURE_ACTION action);
 	// BW1W120 004d2800 BW1M119 null
-	void EmpathiseWithPlayer(CREATURE_DESIRES desire);
+	void EmpathiseWithPlayer(CREATURE_DESIRE_SOURCE source);
 	// BW1W120 004c4c80 BW1M119 012364d0
 	CreatureAttitudeToCreature* GetAttitudeToCreature(Creature* other_creature);
 	// BW1W120 004c4d20 BW1M119 012363b0

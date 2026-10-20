@@ -49,6 +49,10 @@ public:
 	INFO_DATA_BLOCK(field_0x114, field_0x120)
 	INFO_DERIVED_LOADERS(GMobileObjectInfo, "Pot.h", 23)
 };
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(GPotInfo) == 0x148, "GPotInfo size is incorrect");
+#else
 static_assert(sizeof(GPotInfo) == 0x144, "GPotInfo size is incorrect");
+#endif
 
 #endif /* BW1_DECOMP_POT_INFO_INCLUDED_H */
