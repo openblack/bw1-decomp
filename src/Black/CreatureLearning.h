@@ -13,7 +13,6 @@
 #include "Base.h"                   /* For struct Base */
 #include "CreatureAction.h"         /* For struct PreviousActionContextStack */
 #include "CreatureContext.h"        /* For struct PreviousContextStack */
-#include "CreatureLessonChooser.h"  /* For enum LESSON_TYPE */
 #include "CreaturePreviousLesson.h" /* For struct CreaturePreviousLesson */
 
 // Forward Declares
@@ -22,6 +21,23 @@ class Creature;
 class CreatureBelief;
 class CreatureLearningContext;
 class CreatureMental;
+
+enum LESSON_TYPE
+{
+	LESSON_TYPE_DESIRE = 0x0,
+	LESSON_TYPE_ACTIVITY_OBJECT = 0x1,
+	LESSON_TYPE_ACTION_OBJECT = 0x2,
+	LESSON_TYPE_ACTION = 0x3,
+	_LESSON_TYPE_COUNT = 0x4
+};
+static_assert(sizeof(enum LESSON_TYPE) == 0x4, "Data type is of wrong size");
+
+enum LESSON_ORIGIN_TYPE
+{
+	LESSON_ORIGIN_TYPE_DIRECT_PLAYER_FEEDBACK = 0x0,
+	LESSON_ORIGIN_TYPE_FEEDBACK_FROM_EATING = 0x1,
+	LESSON_ORIGIN_TYPE_INDIRECT_FEEDBACK_FROM_PLAYER_WATCHING = 0x2
+};
 
 struct CreatureDesireFeedback
 {
