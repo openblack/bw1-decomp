@@ -3,19 +3,23 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <stdio.h>  /* For FILE */
 
-#include <chlasm/CreatureEnum.h> /* For NUM_CREATURE_ACTIONS */
+#include <chlasm/CreatureEnum.h> /* For enum CREATURE_ACTION, NUM_CREATURE_ACTIONS */
 #include <chlasm/Enum.h>         /* For CREATURE_ACTION_KNOWN_ABOUT_LAST, MAGIC_TYPE_LAST, OBJECT_TYPE_LAST */
 #include <re_common.h>           /* For bool32_t */
 
 #include "Base.h"                   /* For struct Base */
 #include "CreatureAction.h"         /* For struct PreviousActionContextStack */
 #include "CreatureContext.h"        /* For struct PreviousContextStack */
+#include "CreatureLessonChooser.h"  /* For enum LESSON_TYPE */
 #include "CreaturePreviousLesson.h" /* For struct CreaturePreviousLesson */
 
 // Forward Declares
 
 class Creature;
+class CreatureBelief;
+class CreatureLearningContext;
 
 struct CreatureDesireFeedback
 {
@@ -56,9 +60,6 @@ public:
 	uint32_t               NumTimesActionPerformed[NUM_CREATURE_ACTIONS];
 	Creature*              field_0x16160;
 	uint32_t               field_0x16164;
-#ifdef VERSION_BW1WCI
-	uint32_t ci_padding_0x2424;
-#endif
 
 	// Override methods
 
@@ -86,21 +87,35 @@ static_assert(sizeof(CreatureLearning) == 0x16168, "Data type is of wrong size")
 class CreatureLearningEpisode : public Base
 {
 public:
-	uint8_t field_0x8[0xc];
+	CreatureLearningContext* Context;    /* 0x8 */
+	float                    Feedback;   /* 0xc */
+	uint32_t                 field_0x10; /* 0x10 */
 
 	// Override methods
 
 	// BW1W120 004cbc00 BW1M119 012549f0
 	virtual ~CreatureLearningEpisode();
+
+	// Non-virtual methods
+
+	// BW1W120 004c76d0 BW1M119 null
+	void Dump(FILE* file, unsigned long indent);
 };
+static_assert(sizeof(CreatureLearningEpisode) == 0x14, "Data type is of wrong size");
 
 class CreatureLearningContext : public Base
 {
 public:
+	LESSON_TYPE      Type;   /* 0x8 */
+	CREATURE_DESIRES Goal;   /* 0xc */
+	CREATURE_ACTION  Action; /* 0x10 */
+	CreatureBelief*  Belief; /* 0x14 */
+
 	// Override methods
 
 	// BW1W120 004e1d30 BW1M119 01266760
 	virtual ~CreatureLearningContext();
 };
+static_assert(sizeof(CreatureLearningContext) == 0x18, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_CREATURE_LEARNING_INCLUDED_H */

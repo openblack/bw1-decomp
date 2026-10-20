@@ -37,7 +37,7 @@ bool32_t Creature::IsCreatureWarm()
 
 bool32_t Creature::HasPlayerBeenNasty()
 {
-	return mind->AttitudeToPlayer.Attitude < 0.0f;
+	return mind->AttitudeToPlayer.HowNicePlayerHasBeenToMe < 0.0f;
 }
 
 bool32_t Creature::IsCreatureReadyForRest()

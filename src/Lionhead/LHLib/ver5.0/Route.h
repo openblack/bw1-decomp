@@ -2,23 +2,32 @@
 #define BW1_DECOMP_ROUTE_INCLUDED_H
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct Point2D */
+#include <re_common.h>                            /* For bool32_t */
 
 // Forward Declares
 
 struct RPAvoid;
 
+#define ROUTE_NODE_NO_AVOID -1
+
+enum ROUTE_NODE_SIDE
+{
+	ROUTE_NODE_SIDE_CLOCKWISE = 0x1,
+	ROUTE_NODE_SIDE_ANTICLOCKWISE = 0x2,
+};
+
 class RouteNode
 {
 public:
-	Point2D    field_0x0;
-	Point2D    field_0x8;
-	int        field_0x10;
-	int        field_0x14;
-	int        field_0x18;
-	int        field_0x1c;
-	int        field_0x20;
-	RouteNode* Next;
-	RouteNode* Prev;
+	Point2D         Start;
+	Point2D         End;
+	int             Avoid;
+	ROUTE_NODE_SIDE Side;
+	int             field_0x18;
+	bool32_t        Arc;
+	float           Length;
+	RouteNode*      Next;
+	RouteNode*      Prev;
 
 	// Non-virtual methods
 

@@ -4351,7 +4351,7 @@ int CreatureAgenda::ConstructSubActionsForGoOutAndLookForFood(unsigned long para
 int CreatureAgenda::ConstructSubActionsForShowPlayerHowNiceYouReckon(unsigned long param_1)
 {
 	SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_TURN_TO_FACE_CAMERA, NULL, &Creature::LookAtCamera, NULL);
-	if (creature->mind->AttitudeToPlayer.Attitude > 0.0f)
+	if (creature->mind->AttitudeToPlayer.HowNicePlayerHasBeenToMe > 0.0f)
 	{
 		SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_INDIVIDUAL_ACTION,
 		                                 new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3156))
@@ -8103,9 +8103,9 @@ CreatureActionOpinions::CreatureActionOpinions(const CreatureInfo* info)
 
 CreatureActionContext::CreatureActionContext(CreatureContext& context, float priority)
 {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < NUM_ACTION_CONTEXT_VALUES; i++)
 	{
-		start.Values[i] = context.ActionContextStart.Values[i];
+		start.Values[i] = context.ActionContextStart[i];
 	}
 	Priority = priority;
 }
@@ -8340,7 +8340,7 @@ float Creature::HowMuchDangerNearMe(CreaturePlan& plan)
 
 float Creature::HowAbusiveIsPlayer(CreaturePlan& plan)
 {
-	return -mind->AttitudeToPlayer.Attitude;
+	return -mind->AttitudeToPlayer.HowNicePlayerHasBeenToMe;
 }
 
 float Creature::HowNeglectfulIsPlayer(CreaturePlan& plan)
