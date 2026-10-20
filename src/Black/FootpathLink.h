@@ -42,6 +42,9 @@ public:
 	// BW1W120 0050cad0 BW1M119 010f42c0
 	virtual uint32_t GetSaveType() { return GAME_THING_TYPE_GFOOTPATH_LINK; }
 
+	// BW1W120 00536c80 BW1M119 010efa10
+	static bool32_t LoadAll(char* filename);
+
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined
@@ -56,8 +59,8 @@ public:
 	GFootpath* GetNearestPathToQuick(const MapCoords& pos, const MapCoords& dest, float max_distance,
 	                                 bool32_t& backwards, GFootpathNode** nearest_node);
 	// BW1W120 005362e0 BW1M119 010f1190
-	uint32_t UseFootpathIfNecessary(Living* living, const MapCoords& coord, uint8_t state,
-	                                GameThingWithPos* game_thing_with_pos);
+	bool32_t UseFootpathIfNecessary(Living* living, const MapCoords& coords, uint8_t state,
+	                                GameThingWithPos* destination);
 	// BW1W120 00536440 BW1M119 010f1060
 	bool32_t SaveObject(LHOSFile& file, const MapCoords* offset);
 	// BW1W120 005364e0 BW1M119 null
