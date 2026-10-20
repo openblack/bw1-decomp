@@ -5,6 +5,9 @@
 
 #include <chlasm/CreatureEnum.h> /* For enum CREATURE_DESIRE_SOURCE */
 
+#define MIN_SOURCE_VALUE 0.0f
+#define MAX_SOURCE_VALUE 1.0f
+
 // Forward Declares
 
 class Creature;

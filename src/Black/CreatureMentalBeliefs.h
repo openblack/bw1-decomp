@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
+#include <stdio.h>  /* For FILE */
 
 #include "Base.h"               /* For struct Base */
 #include "CreatureBeliefType.h" /* For enum CREATURE_BELIEF_TYPE */
@@ -100,6 +101,8 @@ public:
 	void Initialise();
 	// BW1W120 004d8af0 BW1M119 01256740
 	uint32_t GetNumBeliefsAboutType(CREATURE_BELIEF_TYPE type);
+	// BW1W120 004c7c60 BW1M119 null
+	void Dump(FILE* file, unsigned long indent);
 };
 static_assert(sizeof(CreatureBeliefs) == 0x270, "Data type is of wrong size");
 

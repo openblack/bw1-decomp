@@ -295,8 +295,8 @@ bool32_t Villager::FleeingFromCreatureReaction()
 			if (destination.InBounds() != false)
 			{
 				Creature* creature = ReactionObject->CastCreature();
-				if (creature != NULL && creature->mind->agenda.plans[0].ObjectToActOn != NULL &&
-				    creature->mind->agenda.plans[0].ObjectToActOn->Pointer != NULL)
+				if (creature != NULL && creature->mind->agenda.CurrentPlan.ObjectToActOn != NULL &&
+				    creature->mind->agenda.CurrentPlan.ObjectToActOn->Pointer != NULL)
 				{
 					if (GRand::GameRand(VILLAGER_FLEE_CREATURE_RAND_RANGE, FILEPATH, 353) != 0)
 					{

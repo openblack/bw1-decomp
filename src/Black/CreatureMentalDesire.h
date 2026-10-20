@@ -4,6 +4,7 @@
 #include <assert.h>    /* For static_assert */
 #include <re_common.h> /* For ARRAY_SIZE, bool32_t, CLAMP */
 #include <stdint.h>    /* For uint32_t */
+#include <stdio.h>     /* For FILE */
 #include <string.h>    /* For memcpy */
 #include <wchar.h>     /* For wchar_t */
 
@@ -152,6 +153,8 @@ public:
 	void MakeAllSourcesMaximum(CREATURE_DESIRES desire);
 	// BW1W120 004de7c0 BW1M119 01260c00
 	void ClearSourcesAfterSatisfyingDesire(CREATURE_DESIRES desire);
+	// BW1W120 004c78c0 BW1M119 null
+	void Dump(FILE* file, unsigned long indent);
 };
 static_assert(sizeof(CreatureDesires) == 0x708, "Data type is of wrong size");
 

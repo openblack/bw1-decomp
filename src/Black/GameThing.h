@@ -363,6 +363,10 @@ public:
 	virtual bool32_t IsCreature() { return false; }
 	// BW1W120 00401830 BW1M119 01574ee0
 	virtual bool32_t IsCreature(Creature* creature) { return false; }
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 00401830 BW1M119 null
+	virtual bool32_t CreatureIsleVirtual0x38(uint32_t param_1) { return false; }
+#endif
 	// BW1W120 00401840 BW1M119 01480930
 	virtual bool32_t IsCreatureNotTooNear(Creature* creature) { return false; }
 	// BW1W120 00405130 BW1M119 013e8040
@@ -373,6 +377,10 @@ public:
 	virtual GComputerSeen* GetComputerSeen() { return NULL; }
 	// BW1W120 0056ff10 BW1M119 01387ea0
 	virtual Town* GetTown();
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 00401870 BW1M119 null
+	virtual bool CreatureIsleVirtual0x50() { return false; }
+#endif
 	// BW1W120 00401870 BW1M119 01575490
 	virtual float GetVillagerActivityDesire(Villager* villager) { return 0.0f; }
 	// BW1W120 00401880 BW1M119 014ffab0
@@ -387,14 +395,18 @@ public:
 	virtual float GetRadius();
 	// BW1W120 00405150 BW1M119 01502990
 	virtual float Get2DRadius();
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 004018b0 BW1M119 null
+	virtual void CreatureIsleVirtual0x70(uint32_t param_1) {}
+#endif
 	// BW1W120 004018a0 BW1M119 01187f90
 	virtual GPlayer* GetPlayerWhoLastPickedMeUp() { return NULL; }
 	// BW1W120 004018b0 BW1M119 011a2760
 	virtual GPlayer* GetPlayerWhoLastDroppedMe() { return NULL; }
 	// BW1W120 00405160 BW1M119 01179070
-	virtual bool32_t IsFootpathLink();
+	virtual bool32_t IsFootpathLink() { return false; }
 	// BW1W120 00405170 BW1M119 011d0240
-	virtual GFootpathLink* GetFootpathLink();
+	virtual GFootpathLink* GetFootpathLink() { return NULL; }
 	// BW1W120 004018c0 BW1M119 011a7300
 	virtual uint32_t AddFootpathLink(GFootpath* footpath) { return 0; }
 	// BW1W120 00405180 BW1M119 010af4e0
@@ -425,9 +437,9 @@ public:
 	// BW1W120 004018f0 BW1M119 0157ef70
 	virtual OneOffSpellSeed* CastOneOffSpellSeed() { return NULL; }
 	// BW1W120 004051e0 BW1M119 01583290
-	virtual Abode* CastAbode();
+	virtual Abode* CastAbode() { return NULL; }
 	// BW1W120 004051f0 BW1M119 011d0280
-	virtual MultiMapFixed* CastMultiMapFixed();
+	virtual MultiMapFixed* CastMultiMapFixed() { return NULL; }
 	// BW1W120 00401900 BW1M119 010a27c0
 	virtual SpellIcon* CastSpellIcon() { return NULL; }
 	// BW1W120 00401910 BW1M119 01497180
@@ -439,17 +451,17 @@ public:
 	// BW1W120 00405210 BW1M119 015832d0
 	virtual float GetTownArtifactValue();
 	// BW1W120 00405220 BW1M119 0116fb50
-	virtual bool CanBecomeArtifact();
+	virtual bool CanBecomeArtifact() { return false; }
 	// BW1W120 00405230 BW1M119 0116ebe0
-	virtual void DrawInHand(GInterfaceStatus* param_1);
+	virtual void DrawInHand(GInterfaceStatus* param_1) {}
 	// BW1W120 00405240 BW1M119 0106a010
 	virtual bool32_t IsFunctional();
 	// BW1W120 00425da0 BW1M119 014a3120
 	virtual char* GetDebugText();
 	// BW1W120 0071bc20 BW1M119 01517ad0
-	virtual uint32_t GetSampleForAttack();
+	virtual uint32_t GetSampleForAttack() { return 0; }
 	// BW1W120 0071bdd0 BW1M119 01517810
-	virtual uint32_t GetGuidanceResourceType();
+	virtual uint32_t GetGuidanceResourceType() { return 0; }
 	// BW1W120 00401930 BW1M119 011cfde0
 	virtual uint32_t GetShowNeedsPos(uint32_t need, MapCoords* pos) { return 0; }
 	// BW1W120 0056fcf0 BW1M119 011063a0
@@ -462,6 +474,10 @@ public:
 	virtual void SaveExtraData(GameOSFile& file);
 	// BW1W120 00405250 BW1M119 013e3d10
 	virtual void ResolveLoad();
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 004051f0 BW1M119 null
+	virtual void CreatureIsleVirtual0x108();
+#endif
 
 	// Static methods
 

@@ -2,7 +2,9 @@
 #define BW1_DECOMP_CREATURE_MENTAL_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stddef.h> /* For offsetof */
 #include <stdint.h> /* For uint32_t, uint8_t */
+#include <stdio.h>  /* For FILE */
 
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 
@@ -29,18 +31,22 @@
 class Creature;
 class CreatureAttitudeToCreature;
 class CreatureBelief;
+class CreatureInfo;
 class GameThingWithPos;
 class GPlayer;
 
 struct CreatureInnatePersonality
 {
-	float field_0x0;
-	float field_0x4;
-	float field_0x8;
-	float field_0xc;
-	float field_0x10;
-	float field_0x14;
-	float field_0x18[0x3];
+	float Niceness;
+	float Aggression;
+	float Lethargy;
+	float Friendliness;
+	float Communicativeness;
+	float Extroversion;
+	float InterestInThingToLookAt[THING_TO_LOOK_AT_TYPE_LAST];
+
+	// BW1W120 004e2e70 BW1M119 0126ad50
+	CreatureInnatePersonality(const CreatureInfo* info);
 };
 
 class CreatureMental : public Base
@@ -92,6 +98,9 @@ public:
 	uint32_t                                  GameTurnLastReactedToFlyingObject;
 	uint32_t                                  GameTurnLastReactedToObjectCrushed;
 	uint32_t                                  field_0x20d23c;
+#ifdef VERSION_BW1WCI
+	uint32_t ci_field_0xd068;
+#endif
 
 	// Override methods
 
@@ -100,6 +109,8 @@ public:
 
 	// Non-virtual methods
 
+	// BW1W120 004d3800 BW1M119 0124b5a0
+	bool32_t IsActionSufficientlyCompletedToBePerceived();
 	// BW1W120 004d7b80 BW1M119 01258470
 	CreatureBelief* GetBeliefAboutObject(GameThingWithPos* object);
 	// BW1W120 004d7bd0 BW1M119 01258250
@@ -175,6 +186,19 @@ public:
 	void SetCheatDominantDesire(CREATURE_DESIRES desire, float seconds, bool32_t suppress_needs);
 	// BW1W120 004dcf20 BW1M119 0125d0a0
 	void ClearCheatDominantDesire();
+	// BW1W120 004c7660 BW1M119 null
+	void Dump(FILE* file, unsigned long indent);
 };
+#ifdef VERSION_BW1WCI
+static_assert(offsetof(CreatureMental, learning) == 0x2b20, "Data member is at the wrong offset");
+static_assert(offsetof(CreatureMental, AttitudeToPlayer) == 0x4f48, "Data member is at the wrong offset");
+static_assert(offsetof(CreatureMental, creature) == 0xd044, "Data member is at the wrong offset");
+static_assert(sizeof(CreatureMental) == 0xd070, "Data type is of wrong size");
+#else
+static_assert(offsetof(CreatureMental, learning) == 0x2ad8, "Data member is at the wrong offset");
+static_assert(offsetof(CreatureMental, AttitudeToPlayer) == 0x18c40, "Data member is at the wrong offset");
+static_assert(offsetof(CreatureMental, creature) == 0x20d18, "Data member is at the wrong offset");
+static_assert(sizeof(CreatureMental) == 0x20d40, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_INCLUDED_H */

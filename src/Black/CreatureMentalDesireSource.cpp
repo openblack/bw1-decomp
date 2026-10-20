@@ -30,8 +30,6 @@
 #define FILEPATH "C:\\dev\\MP\\Black\\CreatureMentalDesireSource.cpp"
 #endif
 
-#define MIN_SOURCE_VALUE                  0.0f
-#define MAX_SOURCE_VALUE                  1.0f
 #define MIN_THRESHOLD_CHANGE              -1.0f
 #define MAX_THRESHOLD_CHANGE              1.0f
 #define HELP_TEXT_CREATURE_ATTITUDE_FIRST 1120

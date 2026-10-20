@@ -5,7 +5,7 @@
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t */
 
 // fabricated
-typedef int32_t LH3DMapCoordsFull;
+typedef uint32_t LH3DMapCoordsFull;
 
 #define MAP_COORDS_UNITS_PER_CELL  ((float)0x10000)
 #define MAP_COORDS_METRES_PER_CELL 10.0f

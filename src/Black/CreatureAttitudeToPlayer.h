@@ -2,31 +2,49 @@
 #define BW1_DECOMP_CREATURE_ATTITUDE_TO_PLAYER_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <stddef.h> /* For offsetof */
+#include <stdint.h> /* For uint32_t */
+#include <stdio.h>  /* For FILE */
 
-#include <chlasm/CreatureEnum.h> /* For enum DETECTED_PLAYER_ACTION */
-#include <chlasm/Enum.h>         /* For enum MAGIC_TYPE */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <chlasm/CreatureEnum.h>                  /* For enum DETECTED_PLAYER_ACTION */
+#include <chlasm/Enum.h> /* For enum CREATURE_DESIRES, enum MAGIC_TYPE, enum TOWN_DESIRE_INFO */
+#include <re_common.h>   /* For bool32_t */
 
-#include "Base.h" /* For struct Base */
+#include "Base.h"           /* For struct Base */
+#include "ForgetfulStack.h" /* For struct ForgetfulStack */
+
+#define PERCEIVED_DESIRE_HISTORY_SIZE 30
 
 // Forward Declares
 
+class Creature;
 class GameThingWithPos;
-
-struct CreaturePerceivedPlayerDesires_field_0x15c
-{
-	uint8_t field_0x0[0x20];
-};
 
 struct CreaturePerceivedPlayerDesires
 {
-	uint32_t                                   field_0x0[0x28];
-	uint32_t                                   field_0xa0[0x11];
-	uint8_t                                    field_0xe4[0x78];
-	CreaturePerceivedPlayerDesires_field_0x15c field_0x15c[0x28];
-	uint8_t                                    field_0x65c[0xf00];
-	CreaturePerceivedPlayerDesires_field_0x15c field_0x155c[0x11];
+	float                                                Desires[NUM_CREATURE_DESIRES];              /* 0x0 */
+	float                                                TownDesires[TOWN_DESIRE_INFO_LAST];         /* 0xa0 */
+	ForgetfulStack<float, PERCEIVED_DESIRE_HISTORY_SIZE> PreviousDesires[NUM_CREATURE_DESIRES];      /* 0xe4 */
+	ForgetfulStack<float, PERCEIVED_DESIRE_HISTORY_SIZE> PreviousTownDesires[TOWN_DESIRE_INFO_LAST]; /* 0x14e4 */
+
+	// BW1W120 004c7e50 BW1M119 inlined
+	CreaturePerceivedPlayerDesires();
+
+	// BW1W120 004c7eb0 BW1M119 0123a800
+	void Process();
+	// BW1W120 004c7ed0 BW1M119 0123a710
+	CREATURE_DESIRES GetDominantDesire(Creature* creature);
+	// BW1W120 004c7f20 BW1M119 inlined
+	void DecayDesires();
+	// BW1W120 004c7f60 BW1M119 0123a590
+	void StorePreviousValues();
+	// BW1W120 004c8000 BW1M119 0123a4f0
+	void IncreaseDesire(CREATURE_DESIRES desire, float amount);
+	// BW1W120 004c8050 BW1M119 inlined
+	void IncreaseTownDesire(TOWN_DESIRE_INFO desire, float amount);
 };
+static_assert(sizeof(CreaturePerceivedPlayerDesires) == 0x1d64, "Data type is of wrong size");
 
 struct CreatureObservedPlayerAction
 {
@@ -34,33 +52,38 @@ struct CreatureObservedPlayerAction
 	GameThingWithPos*      Object;
 	GameThingWithPos*      AssociatedObject;
 	MAGIC_TYPE             MagicType;
+
+	// BW1W120 004c7e30 BW1M119 inlined
+	CreatureObservedPlayerAction();
 };
 
 class CreatureAttitudeToPlayer : public Base
 {
 public:
-	uint32_t                       field_0x8;
+	uint32_t                       NumGameTicksPlayerHasBeenCurrentlyWatchingMe;
 	uint32_t                       TicksSinceAttention;
-	uint32_t                       field_0x10;
-	uint32_t                       field_0x14;
-	float                          Attitude; /* 0x18 */
-	uint32_t                       field_0x1c;
-	uint32_t                       field_0x20;
+	uint32_t                       TotalNumGameTicksPlayerHasBeenWatchingMe;
+	uint32_t                       TicksSinceInteraction;
+	float                          HowNicePlayerHasBeenToMe; /* 0x18 */
+	float                          MostRecentPlayerFeedbackValue;
+	uint32_t                       GameTurnOfMostRecentPlayerFeedback;
 	float                          ImpressedByPlayer;
 	float                          Interest;
-	uint32_t                       field_0x2c;
-	uint32_t                       field_0x30;
-	uint32_t                       field_0x34;
-	uint32_t                       field_0x38;
-	uint32_t                       field_0x3c;
-	CreaturePerceivedPlayerDesires field_0x40;
-	uint8_t                        field_0x17bc[0x5e8];
-	CreatureObservedPlayerAction   ObservedAction; /* 0x1da4 */
+	LHPoint                        PreviousHandPos; /* 0x2c */
+	float                          HandMovement;
+	bool32_t                       HandPosNeedsInitialising;
+	CreaturePerceivedPlayerDesires PerceivedPlayerDesires; /* 0x40 */
+	CreatureObservedPlayerAction   ObservedAction;         /* 0x1da4 */
 
-	// Override methods
+	// BW1W120 004c8130 BW1M119 0123a070
+	CreatureAttitudeToPlayer();
 
-	// BW1W120 004c81a0 BW1M119 0123a9d0
-	virtual ~CreatureAttitudeToPlayer();
+	// BW1W120 004c81d0 BW1M119 0123a000
+	void UpdatePlayerFeedback(float feedback);
+	// BW1W120 004c7d20 BW1M119 null
+	void Dump(FILE* file, unsigned long indent);
 };
+static_assert(offsetof(CreatureAttitudeToPlayer, PerceivedPlayerDesires) == 0x40, "Data member is at the wrong offset");
+static_assert(sizeof(CreatureAttitudeToPlayer) == 0x1db4, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_CREATURE_ATTITUDE_TO_PLAYER_INCLUDED_H */

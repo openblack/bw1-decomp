@@ -407,7 +407,9 @@ public:
 	void ConsiderMakingCreatureMimicPlayer(GInterfaceStatus* status, DETECTED_PLAYER_ACTION action,
 	                                       GameThingWithPos* thing, MAGIC_TYPE magic);
 	// BW1W120 004c80f0 BW1M119 0123a2b0
-	void MakeCreatureEmpathiseWithPlayerTownDesire(TOWN_DESIRE_INFO param_1, float param_2, const MapCoords& param_3);
+	void MakeCreatureEmpathiseWithPlayerTownDesire(TOWN_DESIRE_INFO desire, float amount, const MapCoords& pos);
+	// BW1W120 004c80b0 BW1M119 0123a3e0
+	void MakeCreatureEmpathiseWithPlayer(CREATURE_DESIRES desire, float amount, const MapCoords& pos);
 
 	// Static data
 

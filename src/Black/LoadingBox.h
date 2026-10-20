@@ -17,7 +17,7 @@ public:
 	// BW1W120 0053d4f0 BW1M119 015ca250
 	virtual void Destroy();
 	// BW1W120 0053d500 BW1M119 015ca210
-	virtual void InitControls();
+	virtual void InitControls() {}
 };
 
 #endif /* BW1_DECOMP_LOADING_BOX_INCLUDED_H */

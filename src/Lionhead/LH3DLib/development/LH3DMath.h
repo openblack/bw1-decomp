@@ -7,6 +7,7 @@
 #define QUARTER_PI_F 0.7853982f
 #define EIGHTH_PI_F  0.3926991f
 
+#include <math.h>   /* For sqrt */
 #include <stdint.h> /* For uint8_t */
 
 struct LHPoint;
@@ -41,6 +42,11 @@ struct LH3DMath
 
 // BW1W120 00841170 BW1M119 010d50e0 (LHCombined Release)
 float __cdecl InverseSquareRoot(float x);
+// BW1W120 inlined BW1M119 010d9260 (LHCombined Release)
+inline float SquareRoot(float x)
+{
+	return (float)sqrt(x);
+}
 
 // TODO: Judging by the function address, this is the wrong TU for this:
 

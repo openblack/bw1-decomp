@@ -1191,13 +1191,12 @@ void WorshipSite::BuildBy(float amount)
 
 LHPoint WorshipSite::GetNearestEdgeOfObject(Object* object)
 {
-	float     angle = GUtils::Get3DAngleFromXZ(Pos, object->Pos);
-	float     radius = object->Get2DRadius();
-	MapCoords edge = CalculateCentrePos() + GUtils::GetPosFromAngle(angle, GetRealRadius() + radius);
-	float     altitude = edge.altitude;
-	altitude += LH3DIsland::GetAltitude(edge);
-	return LHPoint(edge.x * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL), altitude,
-	               edge.z * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL));
+	float   angle = GUtils::Get3DAngleFromXZ(Pos, object->Pos);
+	float   radius = object->Get2DRadius();
+	LHPoint edge;
+	GLandscape::ConvertMapCoordToLandscapePoint(
+		CalculateCentrePos() + GUtils::GetPosFromAngle(angle, GetRealRadius() + radius), edge);
+	return edge;
 }
 
 MapCoords WorshipSite::CalculateCentrePos()

@@ -14,6 +14,7 @@
 
 class Creature;
 class CreatureBelief;
+class CreatureInfo;
 class CreatureMental;
 
 class CreaturePlan : public Base
@@ -38,15 +39,15 @@ public:
 	// Constructors
 
 	// BW1W120 inlined BW1M119 0127c3b0
-	CreaturePlan() { SetToZero(); }
+	CreaturePlan() { Clear(); }
 	// BW1W120 004f1230 BW1M119 0127c760
 	CreaturePlan(CREATURE_DESIRES param_1, CREATURE_ACTION param_2, CreatureBelief* param_3, CreatureBelief* param_4,
 	             CreatureBelief* param_5, float param_6);
 
 	// Non-virtual methods
 
-	// BW1W120 004f12b0 BW1M119 inlined
-	void SetToZero();
+	// BW1W120 004f12b0 BW1M119 0127c650
+	void Clear();
 	// BW1W120 004f12e0 BW1M119 0127c4e0
 	bool32_t IsValid();
 };
@@ -76,10 +77,13 @@ struct CreaturePlanState
 class CreatureTimeToWait : public Base
 {
 public:
-	// Override methods
+	uint32_t field_0x8;
+	uint32_t field_0xc;
+	uint32_t field_0x10;
 
-	// BW1W120 004e34e0 BW1M119 inlined
-	virtual ~CreatureTimeToWait();
+	// BW1W120 004e34a0 BW1M119 null
+	CreatureTimeToWait(const CreatureInfo* info);
 };
+static_assert(sizeof(CreatureTimeToWait) == 0x14, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_CREATURE_PLAN_INCLUDED_H */

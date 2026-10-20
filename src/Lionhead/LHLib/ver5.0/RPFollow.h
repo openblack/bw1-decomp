@@ -8,6 +8,8 @@
 class RouteNode;
 struct RPlan;
 
+#define RPFOLLOW_MAX_PLANS 5
+
 // TODO: Original member names are unrecovered. Constructor and route-update code
 // establish the RPHolder prefix and the typed state below; no opaque size padding.
 class RPFollow : public RPHolder
@@ -28,17 +30,17 @@ public:
 	void(__cdecl* field_0x64064)(int, int);
 	void(__cdecl* field_0x64068)(int, float, float);
 	float(__cdecl* field_0x6406c)(int);
-	RouteNode* field_0x64070;
-	Point2D    field_0x64074;
+	RouteNode* CurrentNode;
+	Point2D    Dest;
 	float      field_0x6407c;
 	float      field_0x64080;
 	float      field_0x64084;
 	int        field_0x64088;
-	RPlan*     field_0x6408c;
-	RPlan*     field_0x64090[5];
+	RPlan*     CurrentPlan;
+	RPlan*     Plans[RPFOLLOW_MAX_PLANS];
 	RouteNode* field_0x640a4[5];
-	int        field_0x640b8;
-	int        field_0x640bc;
+	int        PlanCount;
+	int        PlanIndex;
 
 	// BW1W120 008639e0 BW1M119 010a9040 (LHCombined Release)
 	RPFollow();

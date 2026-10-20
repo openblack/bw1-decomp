@@ -85,17 +85,17 @@ void GAlignment::Update(Town& town)
 void GAlignment::Update(Creature& creature)
 {
 	float change = 0.0f;
-	if (creature.mind->agenda.plans[0].IsValid())
+	if (creature.mind->agenda.CurrentPlan.IsValid())
 	{
-		CREATURE_DESIRES desire = creature.mind->agenda.plans[0].CreatureDesire;
+		CREATURE_DESIRES desire = creature.mind->agenda.CurrentPlan.CreatureDesire;
 		if (desire >= 0 && desire < NUM_CREATURE_DESIRES)
 		{
 			change =
 				CreatureInitialDesireInfo::GetInfo()[desire].AlignmentChange * creature.GetInfo()->AlignmentChangeScale;
 		}
-		if (desire == CREATURE_DESIRE_HUNGER && creature.mind->agenda.plans[0].ObjectToActOn != NULL)
+		if (desire == CREATURE_DESIRE_HUNGER && creature.mind->agenda.CurrentPlan.ObjectToActOn != NULL)
 		{
-			Object* object = creature.mind->agenda.plans[0].ObjectToActOn->GetObjectPointer();
+			Object* object = creature.mind->agenda.CurrentPlan.ObjectToActOn->GetObjectPointer();
 			if (object != NULL && object->IsVillager(NULL))
 			{
 				ALIGNMENT_TYPE type = object->info->GetAlignmentType();

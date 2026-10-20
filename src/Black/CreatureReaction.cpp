@@ -56,7 +56,7 @@ void Creature::AddReaction(Reaction* reaction, VILLAGER_STATES state)
 
 void Creature::StartReacting(REACTION type, GameThingWithPos* thing, Reaction* reaction)
 {
-	mind->agenda.plans[1] = mind->agenda.plans[0];
+	mind->agenda.PreviousPlan = mind->agenda.CurrentPlan;
 	Living::StartReacting(type, thing, reaction);
 }
 
@@ -87,9 +87,9 @@ bool32_t Creature::IsAvailableForReaction(REACTION reaction)
 	if (IsFunctional() != false && ReactionsEnabled != false && IsBeingUsedInTheDanceEditor() == false &&
 	    !(Flags & GAME_THING_WITH_POS_FLAG_ON_STRUCTURE) && !(Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) &&
 	    (mind->agenda.CommandState.Commanded == false || CommandedByLeash != false) && IsFighting() == false &&
-	    mind->agenda.plans[0].creature_action != CREATURE_FIGHT &&
+	    mind->agenda.CurrentPlan.creature_action != CREATURE_FIGHT &&
 	    (mind->agenda.SubActionAgenda.Partner == NULL ||
-	     mind->agenda.SubActionAgenda.Partner->mind->agenda.plans[0].creature_action != CREATURE_FIGHT) &&
+	     mind->agenda.SubActionAgenda.Partner->mind->agenda.CurrentPlan.creature_action != CREATURE_FIGHT) &&
 	    Fainted == false && FightStarted == false && FightEnded == false &&
 	    !(Flags & GAME_THING_WITH_POS_FLAG_INTERACTING) &&
 	    (mind->agenda.MimicState.Mimicking == false ||
@@ -181,8 +181,8 @@ uint8_t Creature::ReactToCreaturePriority(Reaction* reaction, Reaction* current_
 {
 	if (reaction->GetInitiatingObject() == this || mind->agenda.CommandState.Commanded != false ||
 	    mind->agenda.SubActionAgenda.Partner != NULL ||
-	    (mind->agenda.plans[0].ObjectToActOn != NULL &&
-	     mind->agenda.plans[0].ObjectToActOn->Pointer == reaction->GetInitiatingObject()) ||
+	    (mind->agenda.CurrentPlan.ObjectToActOn != NULL &&
+	     mind->agenda.CurrentPlan.ObjectToActOn->Pointer == reaction->GetInitiatingObject()) ||
 	    (ConfinedToObject != false && ConfinementObject == reaction->GetInitiatingObject()))
 	{
 		return 0;
@@ -206,7 +206,7 @@ void Creature::SetupReactToCreature(GameThingWithPos* thing, Reaction* reaction)
 		dynamic_cast<CreatureBeliefAboutCreature*>(mind->GetBeliefAboutObject(creature));
 	float usefulness = mind->GetObjectToActOnUsefulness(belief, CREATURE_DESIRE_CURIOSITY);
 	ReactionObject = creature;
-	if (mind->agenda.plans[0].ObjectToActOn != belief && usefulness > 0.0f)
+	if (mind->agenda.CurrentPlan.ObjectToActOn != belief && usefulness > 0.0f)
 	{
 		ForceActivityAndForceAction(CREATURE_DESIRE_CURIOSITY, NULL, CREATURE_INSPECT_CREATURE, belief, NULL, 0, 1);
 	}
@@ -450,7 +450,7 @@ uint8_t Creature::ReactToFlyingObjectPriority(Reaction* reaction, Reaction* curr
 		return 0;
 	}
 	Object* object = dynamic_cast<Object*>(reaction->GetInitiatingObject());
-	if (mind->agenda.plans[0].creature_action == CREATURE_CATCH)
+	if (mind->agenda.CurrentPlan.creature_action == CREATURE_CATCH)
 	{
 		return 0;
 	}
@@ -497,7 +497,7 @@ uint8_t Creature::ReactToHandPickUpPriority(Reaction* reaction, Reaction* curren
 
 void Creature::SetupReactToHandPickUp(GameThingWithPos* thing, Reaction* reaction)
 {
-	mind->agenda.plans[1] = mind->agenda.plans[0];
+	mind->agenda.PreviousPlan = mind->agenda.CurrentPlan;
 	ForceActivityAndForceAction(CREATURE_DESIRE_CURIOSITY, NULL, CREATURE_LOOK_AT_HAND,
 	                            mind->GetBeliefAboutObject(this), NULL, 0, 1);
 	ReactionObject = thing;
@@ -545,7 +545,7 @@ uint8_t Creature::ReactToObjectCrushedPriority(Reaction* reaction, Reaction* cur
 	{
 		return 0;
 	}
-	if (mind->agenda.plans[0].CreatureDesire == CREATURE_DESIRE_ANGER)
+	if (mind->agenda.CurrentPlan.CreatureDesire == CREATURE_DESIRE_ANGER)
 	{
 		return 0;
 	}
@@ -568,7 +568,7 @@ void Creature::SetupReactToObjectCrushed(GameThingWithPos* thing, Reaction* reac
 uint8_t Creature::ReactToFightPriority(Reaction* reaction, Reaction* current_reaction)
 {
 	if (reaction->GetInitiatingObject() == NULL || reaction->GetInitiatingObject() == this ||
-	    mind->agenda.plans[0].creature_action == CREATURE_FIGHT ||
+	    mind->agenda.CurrentPlan.creature_action == CREATURE_FIGHT ||
 	    CanSeePos(reaction->GetInitiatingObject()->Pos) == false)
 	{
 		return 0;

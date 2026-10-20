@@ -327,7 +327,7 @@ public:
 	// BW1W120 004026a0 BW1M119 010bd680
 	virtual bool32_t CanBePickedUp() { return false; }
 	// BW1W120 00425c50 BW1M119 010b0910
-	virtual bool32_t CanBeCrushed();
+	virtual bool32_t CanBeCrushed() { return false; }
 	// BW1W120 00638160 BW1M119 013dd350
 	virtual float GetTopPos();
 	// BW1W120 004026b0 BW1M119 010e0380
@@ -375,7 +375,7 @@ public:
 	// BW1W120 00402740 BW1M119 013eb470
 	virtual bool32_t IsABeliever() { return false; }
 	// BW1W120 004192c0 BW1M119 010ad6a0
-	virtual MultiMapFixed* AsMultiMapFixed();
+	virtual MultiMapFixed* AsMultiMapFixed() { return NULL; }
 	// BW1W120 0063a8e0 BW1M119 013d8650
 	virtual float ApplyWaterSpell(SpellWater* spell);
 	// BW1W120 004192d0 BW1M119 010ad6e0
@@ -413,7 +413,7 @@ public:
 	// BW1W120 00637e60 BW1M119 013dd920
 	virtual bool32_t IsTouching(const MapCoords& param_1, const MapCoords& param_2);
 	// BW1W120 00419300 BW1M119 010ad730
-	virtual void StartOnFire();
+	virtual void StartOnFire() {}
 	// BW1W120 004027b0 BW1M119 011776b0
 	virtual void EndOnFire() {}
 	// BW1W120 00637fb0 BW1M119 013dd850
@@ -543,13 +543,17 @@ public:
 	// BW1W120 006377b0 BW1M119 013dee10
 	virtual bool InteractsWithPhysicsObjects();
 	// BW1W120 00419890 BW1M119 010ad760
-	virtual bool ChecksVerticesVObjects();
+	virtual bool ChecksVerticesVObjects() { return true; }
 	// BW1W120 006377d0 BW1M119 013ded30
 	virtual bool ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
 	// BW1W120 00402a00 BW1M119 013ed5b0
 	virtual bool PhysicallyDestroysAbodes() { return false; }
 	// BW1W120 006377c0 BW1M119 013dedc0
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 0064d810 BW1M119 null
+	virtual void CreatureIsleVirtual0x7f0();
+#endif
 	// BW1W120 006377e0 BW1M119 013decf0
 	virtual bool32_t CanBecomeAPhysicsObject();
 	// BW1W120 00402a10 BW1M119 010a30b0
@@ -592,7 +596,7 @@ public:
 	// BW1W120 00637690 BW1M119 013df110
 	virtual SOUND_COLLISION_TYPE GetCollideSoundType();
 	// BW1W120 004198a0 BW1M119 01125130
-	virtual bool32_t IsSolidToNewAbode();
+	virtual bool32_t IsSolidToNewAbode() { return false; }
 	// BW1W120 00639b50 BW1M119 013d9e00
 	virtual uint32_t RemoveFromGame();
 	// BW1W120 00638430 BW1M119 013dd160
@@ -610,9 +614,9 @@ public:
 	// BW1W120 00638cd0 BW1M119 013dbf00
 	virtual bool32_t GetSpecialPos(uint32_t index, MapCoords* pos);
 	// BW1W120 00419960 BW1M119 010b0a60
-	virtual GameThing* GetTownArtifact();
+	virtual GameThing* GetTownArtifact() { return NULL; }
 	// BW1W120 00419970 BW1M119 010b0aa0
-	virtual bool32_t IsTownArtifact();
+	virtual bool32_t IsTownArtifact() { return false; }
 	// BW1W120 00639ad0 BW1M119 0108c800
 	virtual uint32_t ProcessInHand();
 	// BW1W120 00639b10 BW1M119 013d9e80
@@ -650,15 +654,19 @@ public:
 	// BW1W120 0063a7c0 BW1M119 013d8a10
 	virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 	// BW1W120 00419a50 BW1M119 010a8c40
-	virtual bool32_t ShouldFootpathsGoRound();
+	virtual bool32_t ShouldFootpathsGoRound() { return false; }
 	// BW1W120 0063a640 BW1M119 013d8dc0
 	virtual void InitialiseIsFixedForMapList();
 	// BW1W120 00402b40 BW1M119 010a35c0
 	virtual const char* GetText() { return info->DebugString; }
 	// BW1W120 00402b50 BW1M119 010a3610
 	virtual uint32_t StandAnimation() { return ANM_INVALID; }
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 00402c40 BW1M119 null
+	virtual void CreatureIsleVirtual0x89c(uint32_t param_1) {}
+#endif
 	// BW1W120 00419b30 BW1M119 0109ea50
-	virtual NewCollide* GetCollideData();
+	virtual NewCollide* GetCollideData() { return NULL; }
 
 	// Override methods
 

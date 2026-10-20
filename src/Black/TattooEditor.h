@@ -21,7 +21,7 @@ public:
 	// BW1W120 005427e0 BW1M119 015c48a0
 	virtual void Destroy();
 	// BW1W120 0053bd20 BW1M119 015ccbc0
-	virtual bool CanESCOut();
+	virtual bool CanESCOut() { return false; }
 	// BW1W120 005433e0 BW1M119 015c3740
 	virtual void InitControls();
 

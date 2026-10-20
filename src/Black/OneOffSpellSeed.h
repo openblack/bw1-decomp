@@ -90,7 +90,7 @@ public:
 	// BW1W120 0072a520 BW1M119 0152fe90
 	virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 	// BW1W120 0072a920 BW1M119 0152f540
-	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType();
+	virtual PHYSICS_CONSTANTS_TYPE GetPhysicsConstantsType() { return PHYSICS_CONSTANTS_TYPE_ONE_OFF_SPELL; }
 	// BW1W120 0072ab80 BW1M119 0152eec0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 

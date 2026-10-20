@@ -151,143 +151,168 @@ public:
 	CreatureHelpState                     HelpState;
 	LHLinkedList<CreatureHelpStackEntry*> HelpStackEntries[0x2a];
 	CreatureReceiveSpell*                 ReceiveSpell;
-	float                                 field_0x374;
-	float                                 field_0x378;
-	uint8_t                               field_0x37c;
-	uint8_t                               field_0x37d;
-	uint8_t                               field_0x37e;
-	uint8_t                               field_0x37f;
-	bool32_t                              CommandedByLeash;
-	bool32_t                              Fainted;
-	CreatureEmotionsForMusic              EmotionsForMusic;
-	uint32_t                              field_0x390[0xa];
-	uint32_t                              field_0x3b8;
-	uint32_t                              field_0x3bc[0x3];
-	uint32_t                              field_0x3c8;
-	uint32_t                              field_0x3cc;
-	LHLinkedList<Creature*>               Friends;
-	MapCoords                             field_0x3d8;
-	uint32_t                              field_0x3e4;
-	uint32_t                              field_0x3e8;
-	MapCoords                             field_0x3ec;
-	uint8_t                               field_0x3f8;
-	uint8_t                               field_0x3f9;
-	uint8_t                               field_0x3fa;
-	uint8_t                               field_0x3fb;
-	float                                 field_0x3fc;
-	float                                 field_0x400;
-	uint8_t                               field_0x404;
-	uint8_t                               field_0x405;
-	uint8_t                               field_0x406;
-	uint8_t                               field_0x407;
-	CreatureSubActionAgenda               SubActionAgenda;
-	int                                   field_0x1058;
-	uint32_t                              ActionForced;
-	bool32_t                              ReactionsEnabled;
-	uint32_t                              field_0x1064;
-	uint32_t                              field_0x1068;
-	bool32_t                              Invisible;
-	GPlayer*                              owner;
-	Dance*                                dance;
-	uint32_t                              field_0x1078;
-	GParticleContainer*                   ParticleContainer0x107c;
-	GParticleContainer*                   ParticleContainer0x1080;
-	uint32_t                              field_0x1084;
-	uint32_t                              field_0x1088;
-	uint32_t                              field_0x108c;
-	uint32_t                              field_0x1090;
-	uint32_t                              field_0x1094;
-	int                                   ActionPriorityUpdateIndex;
-	LH3DSmoke*                            smoke;
-	GArena*                               arena;
-	uint32_t                              field_0x10a4;
-	uint32_t                              field_0x10a8;
-	bool32_t                              FightStarted;
-	bool32_t                              FightEnded;
-	uint32_t                              field_0x10b4;
-	uint32_t                              field_0x10b8;
-	uint32_t                              field_0x10bc;
-	uint32_t                              field_0x10c0;
-	uint8_t                               field_0x10c4[0x8];
-	uint32_t                              field_0x10cc;
-	uint32_t                              field_0x10d0;
-	uint32_t                              field_0x10d4;
-	uint8_t                               field_0x10d8[0x10];
-	uint32_t                              field_0x10e8;
-	uint32_t                              field_0x10ec;
-	uint32_t                              field_0x10f0;
-	bool32_t                              RespondingToEmergency;
-	Town*                                 LastTownImpressed;
-	uint32_t                              LastImpressiveDanceTurn;
-	uint32_t                              LastImpressiveDanceType;
-	uint32_t                              field_0x1104;
-	uint32_t                              field_0x1108;
-	uint32_t                              ScriptFlag0;
-	int                                   ScriptFlag1;
-	uint32_t                              ScriptFlag2;
-	uint32_t                              field_0x1118;
-	uint32_t                              field_0x111c;
-	uint32_t                              field_0x1120;
-	int                                   GameTurn;
-	CreatureRecentTrees                   RecentTrees;
-	uint32_t                              field_0x1158;
-	uint32_t                              field_0x115c;
-	uint32_t                              field_0x1160;
-	MapCoords                             field_0x1164;
-	uint32_t                              field_0x1170[0x8];
-	uint32_t                              field_0x1190;
-	uint8_t                               field_0x1194[0x14];
-	MapCoords                             ConfinementCentre;
-	float                                 ConfinementRadius;
-	uint32_t                              field_0x11b8;
-	uint32_t                              field_0x11bc;
-	float                                 ObjectsDestroyed;
-	uint32_t                              field_0x11c4;
-	uint32_t                              field_0x11c8;
-	MapCoords                             DestPosBeforeTeleport;
-	uint8_t                               field_0x11d8[0xc];
-	GParticleContainer*                   ParticleContainer0x11e4;
-	uint32_t                              field_0x11e8;
-	BookmarkGraphic*                      bookmark_graphic;
-	uint8_t                               field_0x11f0;
-	uint8_t                               field_0x11f1;
-	uint8_t                               field_0x11f2;
-	uint8_t                               field_0x11f3;
-	LH3DObject*                           field_0x11f4;
-	uint32_t                              field_0x11f8;
-	uint32_t                              HomeExists;
-	MapCoords                             HomePos;
-	uint32_t                              field_0x120c;
-	uint32_t                              field_0x1210;
-	MapCoords                             DestPos;
-	LHLinkedList<LHPoint*>                DebugPath;
-	uint8_t                               field_0x1228[0x40];
-	DEVELOPMENT_PHASE                     DevelopmentPhase;
-	uint32_t                              field_0x126c;
-	uint32_t                              field_0x1270;
-	LHLinkedList<CreatureSpeechItem*>     SpeechItems;
-	Bubble*                               bubble;
-	uint32_t                              field_0x1280;
-	uint32_t                              field_0x1284;
-	uint32_t                              field_0x1288;
-	uint32_t                              ScriptAnim;
-	uint32_t                              ScriptAnimRepeats;
-	bool32_t                              ConfinedToObject;
-	GameThingWithPos*                     ConfinementObject;
-	int                                   field_0x129c;
-	uint32_t                              field_0x12a0;
-	uint32_t                              field_0x12a4;
-	uint32_t                              field_0x12a8;
-	uint8_t                               field_0x12ac;
-	uint8_t                               field_0x12ad;
-	uint8_t                               field_0x12ae;
-	uint8_t                               field_0x12af;
-	uint32_t                              field_0x12b0;
-	uint32_t                              field_0x12b4;
-	uint32_t                              field_0x12b8;
-	uint32_t                              field_0x12bc;
-	bool32_t                              IgnoredByVillagers;
-	uint32_t                              field_0x12c4;
+#ifdef VERSION_BW1WCI
+	uint32_t ci_field_0x374;
+	uint32_t ci_field_0x378;
+#endif
+	float                    field_0x374;
+	float                    field_0x378;
+	uint8_t                  field_0x37c;
+	uint8_t                  field_0x37d;
+	uint8_t                  field_0x37e;
+	uint8_t                  field_0x37f;
+	bool32_t                 CommandedByLeash;
+	bool32_t                 Fainted;
+	CreatureEmotionsForMusic EmotionsForMusic;
+	uint32_t                 field_0x390[0xa];
+	uint32_t                 field_0x3b8;
+	uint32_t                 field_0x3bc[0x3];
+	uint32_t                 field_0x3c8;
+	uint32_t                 field_0x3cc;
+	LHLinkedList<Creature*>  Friends;
+	MapCoords                field_0x3d8;
+	uint32_t                 field_0x3e4;
+	uint32_t                 field_0x3e8;
+	MapCoords                field_0x3ec;
+	uint8_t                  field_0x3f8;
+	uint8_t                  field_0x3f9;
+	uint8_t                  field_0x3fa;
+	uint8_t                  field_0x3fb;
+	float                    field_0x3fc;
+	float                    field_0x400;
+	uint8_t                  field_0x404;
+	uint8_t                  field_0x405;
+	uint8_t                  field_0x406;
+	uint8_t                  field_0x407;
+	CreatureSubActionAgenda  SubActionAgenda;
+	int                      field_0x1058;
+#ifdef VERSION_BW1WCI
+	bool32_t CanDrop;
+	uint32_t ci_field_0x1068;
+	uint32_t ci_field_0x106c;
+	uint32_t ci_field_0x1070;
+	uint32_t ci_field_0x1074;
+	bool32_t RightHandOnly;
+	uint32_t ci_field_0x107c;
+	uint32_t ci_field_0x1080;
+	uint8_t  Tattoos;
+	uint8_t  ci_field_0x1085[0x3];
+#endif
+	uint32_t            ActionForced;
+	bool32_t            ReactionsEnabled;
+	uint32_t            field_0x1064;
+	uint32_t            field_0x1068;
+	bool32_t            Invisible;
+	GPlayer*            owner;
+	Dance*              dance;
+	uint32_t            field_0x1078;
+	GParticleContainer* ParticleContainer0x107c;
+	GParticleContainer* ParticleContainer0x1080;
+	uint32_t            field_0x1084;
+	uint32_t            field_0x1088;
+	uint32_t            field_0x108c;
+	uint32_t            field_0x1090;
+	uint32_t            field_0x1094;
+	int                 ActionPriorityUpdateIndex;
+	LH3DSmoke*          smoke;
+	GArena*             arena;
+	uint32_t            field_0x10a4;
+	uint32_t            field_0x10a8;
+	bool32_t            FightStarted;
+	bool32_t            FightEnded;
+	uint32_t            field_0x10b4;
+	uint32_t            field_0x10b8;
+	uint32_t            field_0x10bc;
+	uint32_t            field_0x10c0;
+	uint8_t             field_0x10c4[0x8];
+	uint32_t            field_0x10cc;
+	uint32_t            field_0x10d0;
+	uint32_t            field_0x10d4;
+	uint8_t             field_0x10d8[0x10];
+	uint32_t            field_0x10e8;
+	uint32_t            field_0x10ec;
+	uint32_t            field_0x10f0;
+	bool32_t            RespondingToEmergency;
+	Town*               LastTownImpressed;
+	uint32_t            LastImpressiveDanceTurn;
+	DANCE_INFO          LastImpressiveDanceType;
+	uint32_t            field_0x1104;
+	uint32_t            field_0x1108;
+	uint32_t            ScriptFlag0;
+	int                 ScriptFlag1;
+	uint32_t            ScriptFlag2;
+	uint32_t            field_0x1118;
+	uint32_t            field_0x111c;
+	uint32_t            field_0x1120;
+	int                 GameTurn;
+	CreatureRecentTrees RecentTrees;
+	uint32_t            field_0x1158;
+	uint32_t            field_0x115c;
+	uint32_t            field_0x1160;
+	MapCoords           field_0x1164;
+#ifdef VERSION_BW1WCI
+	uint32_t ci_field_0x119c;
+	uint32_t ci_field_0x11a0;
+	uint32_t ci_field_0x11a4;
+#endif
+	uint32_t                          field_0x1170[0x8];
+	uint32_t                          field_0x1190;
+	uint8_t                           field_0x1194[0x14];
+	MapCoords                         ConfinementCentre;
+	float                             ConfinementRadius;
+	bool32_t                          GoingBackToConfinedArea;
+	uint32_t                          field_0x11bc;
+	float                             ObjectsDestroyed;
+	uint32_t                          field_0x11c4;
+	uint32_t                          field_0x11c8;
+	MapCoords                         DestPosBeforeTeleport;
+	uint8_t                           field_0x11d8[0xc];
+	GParticleContainer*               ParticleContainer0x11e4;
+	uint32_t                          field_0x11e8;
+	BookmarkGraphic*                  bookmark_graphic;
+	uint8_t                           field_0x11f0;
+	uint8_t                           field_0x11f1;
+	uint8_t                           field_0x11f2;
+	uint8_t                           field_0x11f3;
+	LH3DObject*                       field_0x11f4;
+	uint32_t                          field_0x11f8;
+	uint32_t                          HomeExists;
+	MapCoords                         HomePos;
+	uint32_t                          field_0x120c;
+	uint32_t                          field_0x1210;
+	MapCoords                         DestPos;
+	LHLinkedList<LHPoint*>            DebugPath;
+	uint8_t                           field_0x1228[0x40];
+	DEVELOPMENT_PHASE                 DevelopmentPhase;
+	uint32_t                          field_0x126c;
+	uint32_t                          field_0x1270;
+	LHLinkedList<CreatureSpeechItem*> SpeechItems;
+	Bubble*                           bubble;
+	uint32_t                          field_0x1280;
+	uint32_t                          field_0x1284;
+	uint32_t                          field_0x1288;
+	uint32_t                          ScriptAnim;
+	uint32_t                          ScriptAnimRepeats;
+	bool32_t                          ConfinedToObject;
+	GameThingWithPos*                 ConfinementObject;
+	int                               field_0x129c;
+	uint32_t                          field_0x12a0;
+	uint32_t                          field_0x12a4;
+#ifdef VERSION_BW1WCI
+	bool32_t FollowMaster;
+	float    DistanceFromHome;
+#endif
+	uint32_t field_0x12a8;
+	uint8_t  field_0x12ac;
+	uint8_t  field_0x12ad;
+	uint8_t  field_0x12ae;
+	uint8_t  field_0x12af;
+	uint32_t field_0x12b0;
+	uint32_t field_0x12b4;
+	uint32_t field_0x12b8;
+	uint32_t field_0x12bc;
+	bool32_t IgnoredByVillagers;
+	uint32_t field_0x12c4;
 
 	// Override methods
 
@@ -366,7 +391,7 @@ public:
 	// BW1W120 00474030 BW1M119 011ea710
 	virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* creature);
 	// BW1W120 004c5e50 BW1M119 01236990
-	virtual bool32_t FalseFunction();
+	virtual bool32_t FalseFunction() { return false; }
 	// BW1W120 00473fd0 BW1M119 011ea560
 	virtual bool32_t IsSuitableForCreatureActivity();
 	// BW1W120 00474050 BW1M119 011ea7c0
@@ -787,6 +812,14 @@ public:
 	GInterfaceStatus* GetNearestCameraInterfaceStatus();
 	// BW1W120 0047d740 BW1M119 011d6ce0
 	GInterfaceStatus* GetNearestHandInterfaceStatus();
+	// BW1W120 004775d0 BW1M119 011e28a0
+	GInterfaceStatus* GetInterfaceStatusLookingAtCreature();
+	// BW1W120 00479450 BW1M119 011df860
+	bool32_t IsCreatureFarFromHome();
+	// BW1W120 0047afb0 BW1M119 011dc580
+	bool32_t HasPerformedActionInLastNSeconds(CREATURE_ACTION action, float seconds);
+	// BW1W120 0047aee0 BW1M119 011dc640
+	float GetScreenWidthInWorldMetres();
 	// BW1W120 004dfbe0 BW1M119 01264bb0
 	bool32_t FindClearArea(MapCoords* coords, float radius, int param_3);
 	// BW1W120 004c4450 BW1M119 01235990
@@ -795,6 +828,10 @@ public:
 	                                 int param_7);
 	// BW1W120 004c44b0 BW1M119 01235820
 	void ForceActivityAndForceAction(CreaturePlan& plan, int param_2, int param_3);
+	// BW1W120 004c8230 BW1M119 01239d00
+	float ComputeCurrentPlayerInterestingness();
+	// BW1W120 004c81f0 BW1M119 01239f60
+	void ProcessPlayerInterestingness();
 	// BW1W120 004c84b0 BW1M119 0123b450
 	void SetFaceForMoodFrightened();
 	// BW1W120 004c8500 BW1M119 0123b3a0
@@ -1206,9 +1243,21 @@ public:
 static_assert(offsetof(Creature, HelpState) == 0x188, "Creature help offset is incorrect");
 static_assert(offsetof(Creature, HelpStackEntries) == 0x220, "Creature help stack offset is incorrect");
 static_assert(offsetof(Creature, ReceiveSpell) == 0x370, "Creature spell receiver offset is incorrect");
+#ifdef VERSION_BW1WCI
+static_assert(offsetof(Creature, CommandedByLeash) == 0x388, "Creature leash offset is incorrect");
+static_assert(offsetof(Creature, ActionForced) == 0x1088, "Creature action offset is incorrect");
+static_assert(offsetof(Creature, ScriptFlag0) == 0x1138, "Creature flag offset is incorrect");
+static_assert(offsetof(Creature, ScriptFlag1) == 0x113c, "Creature flag offset is incorrect");
+static_assert(offsetof(Creature, ScriptFlag2) == 0x1140, "Creature flag offset is incorrect");
+static_assert(offsetof(Creature, ConfinementCentre) == 0x11e0, "Creature confinement offset is incorrect");
+static_assert(offsetof(Creature, DevelopmentPhase) == 0x12a0, "Creature phase offset is incorrect");
+static_assert(offsetof(Creature, field_0x12a8) == 0x12e8, "Creature field offset is incorrect");
+static_assert(sizeof(Creature) == 0x1308, "Creature size is incorrect");
+#else
 static_assert(offsetof(Creature, ScriptFlag0) == 0x110c, "Creature flag offset is incorrect");
 static_assert(offsetof(Creature, ScriptFlag1) == 0x1110, "Creature flag offset is incorrect");
 static_assert(offsetof(Creature, ScriptFlag2) == 0x1114, "Creature flag offset is incorrect");
 static_assert(sizeof(Creature) == 0x12c8, "Creature size is incorrect");
+#endif
 
 #endif /* BW1_DECOMP_CREATURE_INCLUDED_H */

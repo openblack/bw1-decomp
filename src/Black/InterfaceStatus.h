@@ -58,7 +58,7 @@ public:
 	float              field_0xf4;
 	float              field_0xf8;
 	float              field_0xfc;
-	float              field_0x100;
+	float              HandSpeed;
 	float              field_0x104;
 	float              field_0x108;
 	LHPoint            HandVelocity;

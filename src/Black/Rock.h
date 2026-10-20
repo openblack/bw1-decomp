@@ -34,7 +34,7 @@ public:
 	// Override methods
 
 	// BW1W120 00439730 BW1M119 010b6b00
-	virtual bool32_t IsRock();
+	virtual bool32_t IsRock() { return true; }
 	// BW1W120 006e77a0 BW1M119 01145620
 	virtual GPlayer* GetPlayer();
 	// BW1W120 00439720 BW1M119 010b6ac0
@@ -93,9 +93,9 @@ public:
 	// BW1W120 006e7930 BW1M119 01145270
 	virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
 	// BW1W120 00439770 BW1M119 010b6bf0
-	virtual bool32_t ShouldFootpathsGoRound();
+	virtual bool32_t ShouldFootpathsGoRound() { return true; }
 	// BW1W120 00439740 BW1M119 010b6b30
-	virtual bool IsMovable();
+	virtual bool IsMovable() { return true; }
 
 	// Constructors
 

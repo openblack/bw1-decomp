@@ -31,18 +31,18 @@ class CreaturePhysical : public Base
 public:
 	uint32_t          Age;
 	float             strength;
-	uint32_t          field_0x10;
+	float             Warmth;
 	float             field_0x14;
 	float             field_0x18;
 	float             Energy;
-	uint32_t          field_0x20;
+	float             Itchiness;
 	uint16_t          field_0x24;
 	uint8_t           field_0x26;
 	uint8_t           field_0x27;
 	Object*           ObjectCarried;
-	uint32_t          field_0x2c;
+	float             AmountOfPoo;
 	float             Exhaustion;
-	uint32_t          field_0x34;
+	float             Dehydration;
 	uint32_t          field_0x38;
 	float             DefaultSpeedInMetres;
 	float             RunningSpeedInMetres;
@@ -70,6 +70,8 @@ public:
 
 	// BW1W120 004ef4f0 BW1M119 0127a570
 	float GetUserSize();
+	// BW1W120 004efc20 BW1M119 01279cd0
+	bool32_t IsKnackered(const CreatureInfo* info);
 	// BW1W120 004efc70 BW1M119 01279b30
 	uint32_t GetVisionRange();
 	// BW1W120 inlined BW1M119 011e9d60
@@ -78,6 +80,14 @@ public:
 	float GetEnergy() { return Energy; }
 	// BW1W120 inlined BW1M119 0128f450
 	float GetExhaustion() { return Exhaustion; }
+	// BW1W120 inlined BW1M119 012a0300
+	float GetAmountOfPoo() { return AmountOfPoo; }
+	// BW1W120 inlined BW1M119 015091c0
+	float GetDehydration() { return Dehydration; }
+	// BW1W120 inlined BW1M119 01509200
+	float GetItchiness() { return Itchiness; }
+	// BW1W120 inlined BW1M119 015092c0
+	float GetWarmth() { return Warmth; }
 };
 
 #endif /* BW1_DECOMP_CREATURE_PHYSICAL_INCLUDED_H */
