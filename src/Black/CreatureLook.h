@@ -8,6 +8,10 @@
 
 #define CREATURE_LOOK_PRIORITY_MOVING_OBJECT 0.5f
 
+// Forward Declares
+
+class CreatureInfo;
+
 struct CreatureLookState
 {
 	uint32_t         field_0x0;
@@ -22,6 +26,9 @@ struct CreatureLookState
 	uint32_t         field_0x2c;
 	uint32_t         field_0x30;
 	bool32_t         ScriptFocus;
+
+	// BW1W120 004d0b80 BW1M119 012495d0
+	CreatureLookState(const CreatureInfo* info);
 };
 static_assert(sizeof(CreatureLookState) == 0x38, "Data type is of wrong size");
 

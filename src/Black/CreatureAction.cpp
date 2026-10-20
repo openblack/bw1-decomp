@@ -8468,7 +8468,7 @@ void Creature::CommandActivityAndAction(CREATURE_DESIRES desire, CreatureBelief*
 float CreatureMental::CalculateDesirabilityOfProposedActivity(CREATURE_DESIRES  desire,
                                                               GameThingWithPos* activity_object)
 {
-	CreatureBelief* belief = AddBeliefAboutObject(creature, activity_object);
+	CreatureBelief* belief = AddBeliefAboutObject(creature.Get(), activity_object);
 	float           distancePriority = CalculateDistancePriority(desire, belief);
 	float           desireLevel = desires.Levels[desire];
 	float           desirability = GetActivityObjectUsefulness(belief, desire) * desireLevel * distancePriority;
@@ -8477,12 +8477,12 @@ float CreatureMental::CalculateDesirabilityOfProposedActivity(CREATURE_DESIRES  
 
 float CreatureMental::FUN004c47d0(CREATURE_DESIRES desire, GameThingWithPos* activity_object)
 {
-	CreatureBelief* belief = activity_object ? AddBeliefAboutObject(creature, activity_object) : NULL;
+	CreatureBelief* belief = activity_object ? AddBeliefAboutObject(creature.Get(), activity_object) : NULL;
 	CreaturePlan    plan;
 	plan.CreatureDesire = desire;
 	plan.ActivityObject = belief;
 	plan.ActivityPriority = 1.0f;
-	creature->FindBestActionForPlan(plan);
+	creature.Get()->FindBestActionForPlan(plan);
 	if (plan.IsValid())
 	{
 		return plan.ActionPriority;

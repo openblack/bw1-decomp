@@ -22,13 +22,13 @@ float CreatureMental::GetActivityObjectUsefulness(CreatureBelief* object, CREATU
 		return 0.0f;
 	}
 
-	GInterfaceStatus* status = creature->GetInterfaceStatusLeashOn();
+	GInterfaceStatus* status = creature.Get()->GetInterfaceStatusLeashOn();
 	if (status != NULL && status->LeashStatus->ObjectAttachedTo != NULL)
 	{
 		CreatureBelief* belief = GetBeliefAboutObject(status->LeashStatus->ObjectAttachedTo);
 		if (belief != NULL)
 		{
-			CreatureBelief* associated = creature->AddBeliefAboutAssociatedObject(belief);
+			CreatureBelief* associated = creature.Get()->AddBeliefAboutAssociatedObject(belief);
 			if (associated != NULL && associated != object)
 			{
 				return 0.0f;
@@ -36,8 +36,8 @@ float CreatureMental::GetActivityObjectUsefulness(CreatureBelief* object, CREATU
 		}
 	}
 
-	if (creature->IsConfinedToArea() != false &&
-	    GUtils::GetDistanceInMetres(creature->Pos, object->Pos) > creature->ConfinementRadius)
+	if (creature.Get()->IsConfinedToArea() != false &&
+	    GUtils::GetDistanceInMetres(creature.Get()->Pos, object->Pos) > creature.Get()->ConfinementRadius)
 	{
 		if (desire != CREATURE_DESIRE_TO_HANG_AROUND_AT_HOME || object->Pointer->IsCitadelPart() == false)
 		{
@@ -48,8 +48,8 @@ float CreatureMental::GetActivityObjectUsefulness(CreatureBelief* object, CREATU
 	if (desire == CREATURE_DESIRE_ANGER && object->Pointer != NULL && object->Pointer->IsCreature() != false)
 	{
 		Creature* other = object->Pointer->CastCreature();
-		if (other != NULL &&
-		    (creature->Friends.IsThisInList(other) != false || other->Friends.IsThisInList(creature) != false))
+		if (other != NULL && (creature.Get()->Friends.IsThisInList(other) != false ||
+		                      other->Friends.IsThisInList(creature.Get()) != false))
 		{
 			return 0.0f;
 		}

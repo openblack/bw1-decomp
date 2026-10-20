@@ -243,7 +243,7 @@ public:
 	// BW1W120 0064b590 BW1M119 0149c420
 	LH3DColor GetPlayer3DColor();
 	// BW1W120 0064b5b0 BW1M119 null
-	void MakeCreatureEmpathiseWithPlayer(CREATURE_DESIRES desire, const MapCoords& pos);
+	void MakeCreatureEmpathiseWithPlayer(CREATURE_DESIRE_SOURCE source, const MapCoords& pos);
 	// BW1W120 0064b650 BW1M119 0149c2c0
 	unsigned long GetPlayerTotemForTown();
 	// BW1W120 0064b680 BW1M119 0101c970

@@ -14,21 +14,27 @@ class CreatureMentalDebug : public Base
 {
 public:
 	uint32_t field_0x8;
-	uint32_t field_0xc;
+	int      NumLostMostImportantObjectMessages;
 	uint32_t field_0x10;
 	uint32_t field_0x14;
 	bool32_t IsProcessing;
-	uint32_t field_0x1c;
-	uint32_t field_0x20;
+	bool32_t ShowMaterialEffects;
+	bool32_t IsLooking;
 	LHPoint  LineStart;
 	LHPoint  LineEnd;
 	int      LineTurnsLeft;
 	LHPoint  MarkerPos;
 
-	// Override methods
+	// Constructors
 
-	// BW1W120 004d2540 BW1M119 0124adc0
-	virtual ~CreatureMentalDebug();
+	// BW1W120 inlined BW1M119 inlined
+	CreatureMentalDebug()
+	{
+		LineTurnsLeft = 0;
+		field_0x8 = NumLostMostImportantObjectMessages = field_0x10 = field_0x14 = 0;
+		ShowMaterialEffects = IsLooking = true;
+	}
 };
+static_assert(sizeof(CreatureMentalDebug) == 0x4c, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_DEBUG_INCLUDED_H */

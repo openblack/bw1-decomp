@@ -431,11 +431,13 @@ Black/CreatureLessonChooser.cpp:
 
 Black/CreatureLook.cpp:
 	.text       start:0x004B3B00 end:0x004B5A70
-	.rdata      start:0x0080E6F4 end:0x0080E718
+	.rdata      start:0x0080E6F4 end:0x0080E734
 
 Black/CreatureMental.cpp:
 	.text       start:0x004B5A70 end:0x004B5F90
+	.rdata      start:0x0080E734 end:0x0080E7C0
 	.CRT$XCU    start:0x008F62D8 end:0x008F62E0 align:4
+	.data       start:0x0090BB80 end:0x0090BC10
 	.bss        start:0x00BA42A0 end:0x00BA42C0
 
 Black/CreatureMentalActionTests.cpp:

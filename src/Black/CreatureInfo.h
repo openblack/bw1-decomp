@@ -39,7 +39,9 @@ public:
 	float    MaxDesireLevelFeedbackScale;
 	float    field_0x2d4[0x2];
 	float    SecondsBeforeReactingToSameCreatureAgain;
-	float    field_0x2e0[0x19];
+	float    field_0x2e0[0x16];
+	float    EmpathySourceIncrease; /* 0x338 */
+	float    field_0x33c[0x2];
 	uint32_t field_0x344;
 	float    MaxAlignmentChangePerGameTurn;
 	float    field_0x34c;

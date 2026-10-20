@@ -47,6 +47,15 @@ public:
 	CreatureBelief* Tail;       /* 0xc */
 	uint32_t        NumBeliefs; /* 0x10 */
 
+	// Constructors
+
+	// BW1W120 inlined BW1M119 0124b380
+	CreatureBeliefList()
+	{
+		NumBeliefs = 0;
+		Head = Tail = NULL;
+	}
+
 	// Non-virtual methods
 
 	// BW1W120 004d7bb0 BW1M119 012583f0
@@ -89,6 +98,11 @@ class CreatureBeliefs : public Base
 public:
 	CreatureBeliefList  lists[0x2];                                /* 0x8 */
 	AllocatedBeliefList AllocatedLists[CREATURE_BELIEF_TYPE_LAST]; /* 0x30 */
+
+	// Constructors
+
+	// BW1W120 inlined BW1M119 inlined
+	CreatureBeliefs() { Initialise(); }
 
 	// Override methods
 

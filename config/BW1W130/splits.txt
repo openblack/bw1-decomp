@@ -526,14 +526,14 @@ Black/CreatureLessonChooser.cpp:
 
 Black/CreatureLook.cpp:
 	.text       start:0x004D2680 end:0x004D4630
-	.rdata      start:0x008D4848 end:0x008D4888
+	.rdata      start:0x008D4848 end:0x008D48A4
 	.CRT$XCU    start:0x00A46464 end:0x00A46470 align:4
 	.data       start:0x00A5DDF4 end:0x00A5DE20
 	.bss        start:0x00D03EF8 end:0x00D03F00
 
 Black/CreatureMental.cpp:
 	.text       start:0x004D4630 end:0x004D4C80
-	.rdata      start:0x008D4888 end:0x008D4930
+	.rdata      start:0x008D48A4 end:0x008D4930
 	.CRT$XCU    start:0x00A46470 end:0x00A4647C align:4
 	.data       start:0x00A5DE20 end:0x00A5DEB0
 	.bss        start:0x00D03F00 end:0x00D03F20

@@ -29,10 +29,13 @@ public:
 	MapCoords coords;
 	uint16_t  field_0x18[0x40][0x40];
 
+	// Constructors
+
+	// BW1W120 004df4f0 BW1M119 01265e70
+	CreatureExplorationMap(const MapCoords& pos);
+
 	// Override methods
 
-	// BW1W120 004df5c0 BW1M119 0124af90
-	virtual ~CreatureExplorationMap();
 	// BW1W120 004df9b0 BW1M119 01265320
 	virtual void Dump();
 
