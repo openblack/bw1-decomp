@@ -384,6 +384,12 @@ Black/CreatureAttitudeToCreature.cpp:
 	.data       start:0x00907E18 end:0x00907E44
 	.bss        start:0x00BA39A8 end:0x00BA39B0
 
+Black/CreatureDecision.cpp:
+	.text       start:0x004AC240 end:0x004AC760
+	.rdata      start:0x0080E228 end:0x0080E238
+	.CRT$XCU    start:0x008F6274 end:0x008F627C align:4
+	.bss        start:0x00BA39B0 end:0x00BA39B8
+
 Black/CreatureDevelopment.cpp:
 	.rdata      start:0x0080E238 end:0x0080E248
 

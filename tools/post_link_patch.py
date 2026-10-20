@@ -636,6 +636,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004C4C5B, call_rel32(0x00401879)),  # CreatureAttitudeToCreature
     (0x004C4F5A, call_indirect(0x008A900C)),  # CreatureAttitudeToCreature: __imp__GetUserNameA@4
     (0x004C4FAA, call_indirect(0x008A9888)),  # CreatureAttitudeToCreature: __imp__mmioAscend@4
+    (0x004C502B, call_rel32(0x00401879)),  # CreatureDecision
     (0x004C765B, call_rel32(0x00401879)),  # CreatureDump
     (0x004C7E2B, call_rel32(0x00401879)),  # CreatureEmpathy
     (0x004C80EA, call_indirect(0x008A9328)),  # CreatureEmpathy: __imp_LHEditBox...
@@ -789,6 +790,11 @@ BW1W120_SAFEDISC_CALLS = (
 BW1W130_SAFEDISC_CALLS = (
     (0x00463399, jmp_run(0x00462FC1)),  # CarriedObject
     (0x004633E4, copy_run(0x00463399)),  # CarriedObject
+    (0x004C7393, jmp_run(0x004C733A)),  # CreatureDecision
+    (0x004C73BB, call_rel32(0x00403C49)),  # CreatureDecision
+    (0x004C74B5, jmp_run(0x004C73BB)),  # CreatureDecision
+    (0x004C7605, copy_run(0x004C74B3)),  # CreatureDecision
+    (0x004C7885, copy_run(0x004C7605)),  # CreatureDecision
     (0x004C99C3, copy_run(0x004C9966)),  # CreatureDump
     (0x004C99EB, call_rel32(0x00403C49)),  # CreatureDump
     (0x004C9A51, jmp_run(0x004C99EB)),  # CreatureDump

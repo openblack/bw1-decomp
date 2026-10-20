@@ -24,6 +24,7 @@
 #include "CreatureMentalDebug.h"         /* For struct CreatureMentalDebug */
 #include "CreatureMentalDesire.h"        /* For struct CreatureDesires */
 #include "CreatureObjectsInspected.h"    /* For struct CreatureObjectsInspected */
+#include "CreaturePlan.h"                /* For CreatureDesiresTried */
 #include "CreatureVisionState.h"         /* For struct CreatureVisionState */
 #include "MapCoords.h"                   /* For struct MapCoords */
 
@@ -35,6 +36,11 @@ class CreatureBelief;
 class CreatureInfo;
 class GameThingWithPos;
 class GPlayer;
+
+enum CREATURE_DECISION_TYPE
+{
+	CREATURE_DECISION_NORMAL,
+};
 
 #define MAX_NUM_ACTIONS_FOR_EACH_DESIRE 30
 
@@ -177,6 +183,21 @@ public:
 	float GetObjectToActOnUsefulness(CreatureBelief* object, CREATURE_DESIRES desire);
 	// BW1W120 004e3730 BW1M119 015ef7e0
 	bool32_t IsObjectSuitableForDesire(CreatureBelief* belief, CREATURE_DESIRES desire);
+	// BW1W120 004c5030 BW1M119 015e8980
+	void ConsiderActivitiesWhichDontRequireAnObject(CreaturePlan& plan, CreatureDesiresTried& desires_tried,
+	                                                CREATURE_DECISION_TYPE decision_type,
+	                                                bool32_t               allow_no_object_to_act_on);
+	// BW1W120 004c5130 BW1M119 015e86f0
+	void AssessParticularObject(CreatureBelief* belief, CreaturePlan& plan, CreatureDesiresTried& desires_tried,
+	                            CREATURE_DECISION_TYPE decision_type);
+	// BW1W120 004c5280 BW1M119 015e85e0
+	CREATURE_DESIRES FindBestGoalForActivityObject(CreatureBelief* belief, CreatureDesiresTried& desires_tried);
+	// BW1W120 004c52d0 BW1M119 015e8450
+	bool32_t FindSomethingToDoOnParticularObject(CreatureBelief* activity_object, CreatureBelief* object_to_act_on,
+	                                             CreaturePlan& plan);
+	// BW1W120 004c5390 BW1M119 015e81f0
+	bool32_t FindSomethingToDoOnObjectUsingObject(CreatureBelief* activity_object, CreatureBelief* object_to_act_on,
+	                                              CreatureBelief* object_to_use, CreaturePlan& plan);
 	// BW1W120 004e3800 BW1M119 015ef750
 	bool32_t IsObjectSuitableForAction(GameThingWithPos* object, CREATURE_ACTION action);
 	// BW1W120 004d2800 BW1M119 null
