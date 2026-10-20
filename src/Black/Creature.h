@@ -15,6 +15,7 @@
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 #include <re_common.h>                          /* For bool32_t */
 
+#include "ClearAreaState.h"    /* For struct ClearAreaState */
 #include "CreatureHelp.h"      /* For struct CreatureHelpStackEntry, struct CreatureHelpState */
 #include "CreatureSubAction.h" /* For struct CreatureSubActionAgenda */
 #include "Living.h"            /* For struct Living */
@@ -170,16 +171,7 @@ public:
 	uint32_t                 field_0x3c8;
 	uint32_t                 field_0x3cc;
 	LHLinkedList<Creature*>  Friends;
-	MapCoords                field_0x3d8;
-	uint32_t                 field_0x3e4;
-	uint32_t                 field_0x3e8;
-	MapCoords                field_0x3ec;
-	uint8_t                  field_0x3f8;
-	uint8_t                  field_0x3f9;
-	uint8_t                  field_0x3fa;
-	uint8_t                  field_0x3fb;
-	float                    field_0x3fc;
-	float                    field_0x400;
+	ClearAreaState           ClearArea;
 	uint8_t                  field_0x404;
 	uint8_t                  field_0x405;
 	uint8_t                  field_0x406;
@@ -821,7 +813,7 @@ public:
 	// BW1W120 0047aee0 BW1M119 011dc640
 	float GetScreenWidthInWorldMetres();
 	// BW1W120 004dfbe0 BW1M119 01264bb0
-	bool32_t FindClearArea(MapCoords* coords, float radius, int param_3);
+	bool32_t FindClearArea(MapCoords* coords, float radius, bool32_t avoid_living);
 	// BW1W120 004c4450 BW1M119 01235990
 	void ForceActivityAndForceAction(CREATURE_DESIRES desire, CreatureBelief* activity_object, CREATURE_ACTION action,
 	                                 CreatureBelief* object_to_act_on, CreatureBelief* object_to_use, int param_6,

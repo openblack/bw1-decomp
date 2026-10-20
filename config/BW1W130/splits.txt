@@ -613,15 +613,16 @@ Black/CreatureMentalEditor.cpp:
 
 Black/CreatureMentalExploration.cpp:
 	.text       start:0x004E1710 end:0x004E25D0
-	.rdata      start:0x008D5090 end:0x008D50E8
+	.rdata      start:0x008D5090 end:0x008D5104
 	.CRT$XCU    start:0x00A46528 end:0x00A46538 align:4
+	.data       start:0x00C5FC20 end:0x00C5FF30
 	.bss        start:0x00D0EBF8 end:0x00D2AC14
 
 Black/CreatureMentalLearn.cpp:
 	.text       start:0x004E25D0 end:0x004E4530
-	.rdata      start:0x008D50E8 end:0x008D5474
+	.rdata      start:0x008D5104 end:0x008D5474
 	.CRT$XCU    start:0x00A46538 end:0x00A46544 align:4
-	.data       start:0x00C5FF78 end:0x00C603A0
+	.data       start:0x00C5FF30 end:0x00C603A0
 	.bss        start:0x00D2AC14 end:0x00D2AC1C
 
 Black/CreatureMentalLearnAction.cpp:

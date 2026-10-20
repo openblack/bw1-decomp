@@ -861,7 +861,7 @@ int CreatureAgenda::ConstructSubActionsForDanceWithVillagers(unsigned long param
 	{
 		MapCoords coords = villager->Pos;
 		float     radius = max(1.5f * creature->Get2DRadius(), 30.0f);
-		if (creature->FindClearArea(&coords, radius, 0))
+		if (creature->FindClearArea(&coords, radius, false))
 		{
 			LHPoint pos = coords.GetLHPoint();
 			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_STOP_MOVING, NULL, NULL, NULL);
@@ -1010,7 +1010,7 @@ int CreatureAgenda::ConstructSubActionsForGoToHillAndLook(unsigned long param_1)
 	MapCoords coords;
 	if (!creature->mind->ExplorationMap.FindNearest(REGION_TYPE_HILL, creature->Pos, &coords,
 	                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_0, 1) &&
-	    !creature->mind->ExplorationMap.FindNearest(REGION_TYPE_7, creature->Pos, &coords,
+	    !creature->mind->ExplorationMap.FindNearest(REGION_TYPE_LAND, creature->Pos, &coords,
 	                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_0, 1))
 	{
 		creature->mind->ExplorationMap.Dump();
@@ -1034,7 +1034,7 @@ int CreatureAgenda::ConstructSubActionsForGoToHillAndSit(unsigned long param_1)
 	{
 		GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
 	}
-	else if (creature->mind->ExplorationMap.FindNearest(REGION_TYPE_7, creature->Pos, &coords,
+	else if (creature->mind->ExplorationMap.FindNearest(REGION_TYPE_LAND, creature->Pos, &coords,
 	                                                    PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_0, 1))
 	{
 		GLandscape::ConvertMapCoordToLandscapePoint(coords, pos);
@@ -1057,7 +1057,7 @@ int CreatureAgenda::ConstructSubActionsForGoToHillAndWalkAlongRidge(unsigned lon
 	MapCoords coords;
 	if (!creature->mind->ExplorationMap.FindNearest(REGION_TYPE_HILL, creature->Pos, &coords,
 	                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_0, 1) &&
-	    !creature->mind->ExplorationMap.FindNearest(REGION_TYPE_7, creature->Pos, &coords,
+	    !creature->mind->ExplorationMap.FindNearest(REGION_TYPE_LAND, creature->Pos, &coords,
 	                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_0, 1))
 	{
 		creature->mind->ExplorationMap.Dump();
@@ -1299,7 +1299,7 @@ int CreatureAgenda::ConstructSubActionsForThrowInTheSea(unsigned long param_1)
 	}
 	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
 	                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
-	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, creature->Pos, &sea,
+	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, creature->Pos, &sea,
 	                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
 	LHPoint coastPos;
 	GLandscape::ConvertMapCoordToLandscapePoint(coast, coastPos);
@@ -1350,7 +1350,7 @@ int CreatureAgenda::ConstructSubActionsForLookAtReflection(unsigned long param_1
 {
 	MapCoords sea;
 	MapCoords coast;
-	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, creature->Pos, &sea,
+	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, creature->Pos, &sea,
 	                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
 	LHPoint seaPos;
 	GLandscape::ConvertMapCoordToLandscapePoint(sea, seaPos);
@@ -1403,7 +1403,7 @@ int CreatureAgenda::ConstructSubActionsForCastFireball(unsigned long param_1)
 {
 	float     radius = 5.0f * creature->Get2DRadius();
 	MapCoords coords = creature->Pos;
-	if (creature->FindClearArea(&coords, radius, 0))
+	if (creature->FindClearArea(&coords, radius, false))
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
 		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1097))
@@ -1624,9 +1624,9 @@ int CreatureAgenda::ConstructSubActionsForThrowStonesInTheSeaWithFriend(unsigned
 		                GRand::GameFloatRand(3.0f, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1240)));
 		spot.SetMetersZ(coast.MetersZ() + creature->GetHeight() +
 		                GRand::GameFloatRand(3.0f, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1241)));
-		creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, creature->Pos, &sea,
+		creature->mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, creature->Pos, &sea,
 		                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
-		creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, sea, &farSea,
+		creature->mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, sea, &farSea,
 		                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 0);
 		LHPoint coastPos;
 		GLandscape::ConvertMapCoordToLandscapePoint(coast, coastPos);
@@ -1776,7 +1776,7 @@ int CreatureAgenda::ConstructSubActionsForDrinkFromTheSea(unsigned long param_1)
 	{
 		creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
 		                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
-		creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, coast, &water,
+		creature->mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, coast, &water,
 		                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
 		GLandscape::ConvertMapCoordToLandscapePoint(coast, coastPos);
 		GLandscape::ConvertMapCoordToLandscapePoint(water, pos);
@@ -2294,7 +2294,7 @@ int CreatureAgenda::ConstructSubActionsForExploreCoast(unsigned long param_1)
 	MapCoords coords;
 	if (!creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coords,
 	                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_0, 1) &&
-	    !creature->mind->ExplorationMap.FindNearest(REGION_TYPE_7, creature->Pos, &coords,
+	    !creature->mind->ExplorationMap.FindNearest(REGION_TYPE_LAND, creature->Pos, &coords,
 	                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_0, 1))
 	{
 		creature->mind->ExplorationMap.Dump();
@@ -2314,7 +2314,7 @@ int CreatureAgenda::ConstructSubActionsForExploreTowns(unsigned long param_1)
 	MapCoords coords;
 	if (!creature->mind->ExplorationMap.FindNearest(REGION_TYPE_TOWN, creature->Pos, &coords,
 	                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_0, 1) &&
-	    !creature->mind->ExplorationMap.FindNearest(REGION_TYPE_7, creature->Pos, &coords,
+	    !creature->mind->ExplorationMap.FindNearest(REGION_TYPE_LAND, creature->Pos, &coords,
 	                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_0, 1))
 	{
 		creature->mind->ExplorationMap.Dump();
@@ -2396,7 +2396,7 @@ int CreatureAgenda::ConstructSubActionsForSitDown(unsigned long param_1)
 	if (!(creature->Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT))
 	{
 		float radius = creature->Get2DRadius() * 4.0f;
-		if (creature->FindClearArea(&coords, radius, 0))
+		if (creature->FindClearArea(&coords, radius, false))
 		{
 			SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
 			                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(1816))
@@ -3175,7 +3175,7 @@ int CreatureAgenda::ConstructSubActionsForGoToTeleport(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForRunRaceWithFriend(unsigned long param_1)
 {
 	MapCoords coords = creature->Pos;
-	if (creature->FindClearArea(&coords, max(creature->Get2DRadius() * 1.5f, 50.0f), 0))
+	if (creature->FindClearArea(&coords, max(creature->Get2DRadius() * 1.5f, 50.0f), false))
 	{
 		CreatureBelief* friendBelief = CurrentPlan.ObjectToActOn;
 		Creature*       other = dynamic_cast<Creature*>(friendBelief->GetPointer());
@@ -3268,7 +3268,7 @@ int CreatureAgenda::ConstructSubActionsForPlayGameOfThrowingStonesAtCan(unsigned
 {
 	MapCoords coords = creature->Pos;
 	float     radius = max(creature->Get2DRadius() * 1.5f, 40.0f);
-	if (creature->FindClearArea(&coords, radius, 0))
+	if (creature->FindClearArea(&coords, radius, false))
 	{
 		LHPoint canPos;
 		GLandscape::ConvertMapCoordToLandscapePoint(coords, canPos);
@@ -3414,7 +3414,7 @@ int CreatureAgenda::ConstructSubActionsForSitOnTopOfHillWithFriend(unsigned long
 			                             &Creature::LookAtObjectArgument, NULL);
 			MapCoords coords = hill;
 			float     radius = (creature->Get2DRadius() + other->Get2DRadius()) * 4.0f;
-			if (creature->FindClearArea(&coords, radius, 0))
+			if (creature->FindClearArea(&coords, radius, false))
 			{
 				if (!creature->CanSeeAnObject(dynamic_cast<Object*>(CurrentPlan.ObjectToActOn->GetPointer())))
 				{
@@ -3680,7 +3680,7 @@ int CreatureAgenda::ConstructSubActionsForDiePermanently(unsigned long param_1)
 int CreatureAgenda::ConstructSubActionsForSitDownByBeach(unsigned long param_1)
 {
 	MapCoords sea;
-	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, creature->Pos, &sea,
+	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, creature->Pos, &sea,
 	                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
 	MapCoords coords = sea;
 	float     radius = 4.0f * creature->Get2DRadius();
@@ -4760,7 +4760,7 @@ int CreatureAgenda::ConstructSubActionsForLookOutToSea(unsigned long param_1)
 	LHPoint   seaPos;
 	if (creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
 	                                               PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1) &&
-	    creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, coast, &sea,
+	    creature->mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, coast, &sea,
 	                                               PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1))
 	{
 		coastPos = coast.ConvertToLHPoint();
@@ -4853,7 +4853,7 @@ int CreatureAgenda::ConstructSubActionsForDrinkWithFriend(unsigned long param_1)
 	MapCoords sea;
 	int       foundCoast = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
 	                                                                  PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
-	int       foundSea = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, coast, &sea,
+	int       foundSea = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, coast, &sea,
 	                                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
 	if (foundCoast && foundSea)
 	{
@@ -4970,7 +4970,7 @@ int CreatureAgenda::ConstructSubActionsForSitWithFriend(unsigned long param_1)
 		LHPoint       middle = myBody->GetPos() + (otherBody->GetPos() - myBody->GetPos()) * 0.5f;
 		MapCoords     coords(middle);
 		float         radius = (creature->GetHeight() + other->GetHeight()) * 1.7f;
-		if (creature->FindClearArea(&coords, radius, 0))
+		if (creature->FindClearArea(&coords, radius, false))
 		{
 			middle = coords.GetLHPoint();
 			LHPoint offset(radius * 0.25f, 0.0f, radius * 0.25f);
@@ -5079,7 +5079,7 @@ int CreatureAgenda::ConstructSubActionsForSleepWithFriend(unsigned long param_1)
 	{
 		MapCoords coords = creature->Pos;
 		float     radius = 2.0f * (creature->GetHeight() + other->GetHeight());
-		if (creature->FindClearArea(&coords, radius, 0))
+		if (creature->FindClearArea(&coords, radius, false))
 		{
 			if (GRand::GameRand(2, CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(3667)) == 0)
 			{
@@ -5144,7 +5144,7 @@ int CreatureAgenda::ConstructSubActionsForGoToBeachWithFriend(unsigned long para
 	MapCoords sea;
 	int       foundCoast = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
 	                                                                  PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
-	int       foundSea = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, coast, &sea,
+	int       foundSea = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, coast, &sea,
 	                                                                PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
 	if (foundCoast && foundSea)
 	{
@@ -5907,7 +5907,7 @@ int CreatureAgenda::ConstructSubActionsForCastMagicWaterOnMyself(unsigned long p
 {
 	float     radius = 1.7f * creature->GetHeight();
 	MapCoords coords = creature->Pos;
-	if (creature->FindClearArea(&coords, radius, 0))
+	if (creature->FindClearArea(&coords, radius, false))
 	{
 		SubActionAgenda.AddSubAction(CREATURE_SUB_STATE_ACTIONS_MOVE_TO_POS,
 		                             new (CREATURE_ACTION_FILE, CREATURE_ACTION_LINE(4164))
@@ -6323,7 +6323,7 @@ int CreatureAgenda::ConstructSubActionsForOrderFriendAround(unsigned long param_
 		LHPoint   target = other->GetCreature3D()->GetPos() + direction * 1.0f;
 		MapCoords coords(target);
 		float     radius = other->Get2DRadius() * 4.0f;
-		if (other->FindClearArea(&coords, radius, 0))
+		if (other->FindClearArea(&coords, radius, false))
 		{
 			target = coords.GetLHPoint();
 			SubActionAgenda.AddMainSubAction(CREATURE_SUB_STATE_ACTIONS_POINT_AT_POINT,
@@ -6849,7 +6849,7 @@ int CreatureAgenda::ConstructSubActionsForGetFriendToGiveMeFish(unsigned long pa
 		MapCoords sea;
 		int foundCoast = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
 		                                                            PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
-		int foundSea = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, coast, &sea,
+		int foundSea = creature->mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, coast, &sea,
 		                                                          PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
 		if (other != NULL && foundSea && foundCoast)
 		{
@@ -7489,7 +7489,7 @@ int CreatureAgenda::ConstructSubActionsForDanceOnYourOwnByTheSea(unsigned long p
 	MapCoords sea;
 	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_COAST, creature->Pos, &coast,
 	                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
-	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, creature->Pos, &sea,
+	creature->mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, creature->Pos, &sea,
 	                                           PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
 	LHPoint coastPos;
 	GLandscape::ConvertMapCoordToLandscapePoint(coast, coastPos);
@@ -8304,7 +8304,8 @@ float Creature::HowNearIsSea(CreaturePlan& plan)
 {
 	MapCoords sea;
 	sea.Clear();
-	if (mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, Pos, &sea, PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1))
+	if (mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, Pos, &sea, PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1,
+	                                     1))
 	{
 		float distance = GUtils::GetDistanceInMetres(Pos, sea);
 		if (distance >= 300.0f)
