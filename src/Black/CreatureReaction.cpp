@@ -86,7 +86,7 @@ bool32_t Creature::IsAvailableForReaction(REACTION reaction)
 {
 	if (IsFunctional() != false && ReactionsEnabled != false && IsBeingUsedInTheDanceEditor() == false &&
 	    !(Flags & GAME_THING_WITH_POS_FLAG_ON_STRUCTURE) && !(Flags & GAME_THING_WITH_POS_FLAG_CONTROLLED_BY_SCRIPT) &&
-	    (mind->agenda.CommandState.Commanded == false || CommandedByLeash != false) && IsFighting() == false &&
+	    (mind->agenda.CommandState.Commanded == false || LeashControl != LEASH_CONTROL_NONE) && IsFighting() == false &&
 	    mind->agenda.CurrentPlan.creature_action != CREATURE_FIGHT &&
 	    (mind->agenda.SubActionAgenda.Partner == NULL ||
 	     mind->agenda.SubActionAgenda.Partner->mind->agenda.CurrentPlan.creature_action != CREATURE_FIGHT) &&
@@ -182,8 +182,11 @@ uint8_t Creature::ReactToCreaturePriority(Reaction* reaction, Reaction* current_
 	if (reaction->GetInitiatingObject() == this || mind->agenda.CommandState.Commanded != false ||
 	    mind->agenda.SubActionAgenda.Partner != NULL ||
 	    (mind->agenda.CurrentPlan.ObjectToActOn != NULL &&
-	     mind->agenda.CurrentPlan.ObjectToActOn->Pointer == reaction->GetInitiatingObject()) ||
-	    (ConfinedToObject != false && ConfinementObject == reaction->GetInitiatingObject()))
+	     mind->agenda.CurrentPlan.ObjectToActOn->Pointer == reaction->GetInitiatingObject())
+#ifndef VERSION_BW1W100
+	    || (ConfinedToObject != false && ConfinementObject == reaction->GetInitiatingObject())
+#endif
+	)
 	{
 		return 0;
 	}
@@ -424,7 +427,7 @@ void Creature::SetupReactToNastyMagic(Reaction* reaction, MAGIC_TYPE magic_type,
 		if (object != NULL)
 		{
 			ForceActionCastSpellOnObject(magic_type, object);
-			CommandedByLeash = true;
+			LeashControl = LEASH_CONTROL_PULL;
 		}
 	}
 	ReactionObject = thing;

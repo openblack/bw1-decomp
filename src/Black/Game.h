@@ -477,6 +477,8 @@ public:
 	void SetPacket(PACKET_TYPE type);
 	// BW1W120 00550c50 BW1M119 010a7990
 	void SetPacket(PACKET_TYPE type, unsigned short param_2, unsigned short param_3);
+	// BW1W120 00551530 BW1M119 01108490
+	void SetPacket(PACKET_TYPE type, unsigned long object_index, unsigned long player_number, float value);
 	// BW1W120 00551690 BW1M119 010086d0
 	void SendPacketCompressed(PACKET_TYPE type, SETPACKET_FUNCTION_NUMBER function_number);
 	// BW1W120 00552620 BW1M119 0105fc60

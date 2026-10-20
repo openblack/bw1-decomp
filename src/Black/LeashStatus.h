@@ -14,20 +14,20 @@ class Base;
 class GInterfaceStatus;
 class GPlayer;
 class GameOSFile;
-class Object;
+class GameThingWithPos;
 
 class Creature;
 
 class GLeashStatus : public GameThing
 {
 public:
-	uint32_t          field_0x14;
+	bool32_t          Activated;
 	bool32_t          LeashWorks;
 	LEASH_TYPE        LeashType;
-	uint32_t          field_0x20;
-	Object*           ObjectAttachedTo;
+	float             AppliedForce;
+	GameThingWithPos* ObjectAttachedTo;
 	uint32_t          field_0x28;
-	uint32_t          field_0x2c;
+	float             LeashLength;
 	uint8_t           player_number;
 	uint32_t          field_0x34;
 	GInterfaceStatus* InterfaceStatus;
@@ -53,6 +53,12 @@ public:
 
 	// BW1W120 005e6980 BW1M119 01384380
 	void CalculateLeashLengthFromCreature(Creature* creature);
+	// BW1W120 005e6f70 BW1M119 01383450
+	void SetOn(Creature* creature, bool32_t on);
+	// BW1W120 inlined BW1M119 01244b60
+	GameThingWithPos* GetObjectAttachedTo() const { return ObjectAttachedTo; }
+	// BW1W120 inlined BW1M119 inlined
+	float GetLeashLength() const { return LeashLength; }
 };
 
 #endif /* BW1_DECOMP_LEASH_STATUS_INCLUDED_H */

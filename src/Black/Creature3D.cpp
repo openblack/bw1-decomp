@@ -818,7 +818,7 @@ float LH3DCreature::GetKissingDistance(LH3DCreature* other)
 
 float LH3DCreature::GetNavRadius()
 {
-	if (creature && !creature->field_0x12a8)
+	if (creature && !creature->Trapped)
 	{
 		return creature->physical->field_0x6c / Size1 * field_0x5228;
 	}
@@ -2198,7 +2198,7 @@ bool32_t LH3DCreature::StartMovingToPoint(const LHPoint& pos, float param_2, flo
 		IdleActionTimer = LH3D_CREATURE_IDLE_ACTION_TIME;
 		IdleActionDone = false;
 		RPLookPointTimer = 0;
-		if (!creature || !creature->field_0x12a8)
+		if (!creature || !creature->Trapped)
 		{
 			field_0x519c = 1;
 		}

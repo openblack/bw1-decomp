@@ -40,7 +40,7 @@ public:
 	const CreatureInfo*                 creature_info;
 	bool32_t                            ForceCompletion;
 	float                               TotalLevel;
-	uint32_t                            field_0x658[NUM_CREATURE_DESIRES];
+	uint32_t                            NumTimesStoppedByLeash[NUM_CREATURE_DESIRES];
 	CREATURE_DESIRES                    CheatDominantDesire;
 	uint32_t                            CheatDominantDesireTurns;
 	uint32_t                            CheatDominantDesireSeconds;

@@ -670,6 +670,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureInitialLesson.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureInitialSourceInfo.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureLearning.cpp"),
+            GameCodeObject(Matching, "Black/CreatureLeash.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureLessonChooser.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureLook.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureMental.cpp"),

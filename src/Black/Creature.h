@@ -34,6 +34,13 @@ enum CREATURE_HEIGHT
 	CREATURE_HEIGHT_LAST
 };
 
+enum LEASH_CONTROL
+{
+	LEASH_CONTROL_NONE,
+	LEASH_CONTROL_PULL,
+	LEASH_CONTROL_DIRECT
+};
+
 class Base;
 struct BookmarkGraphic;
 struct Bubble;
@@ -101,7 +108,8 @@ struct CreatureEmotionsForMusic
 class Creature : public Living
 {
 public:
-	static void DrawLeashInfo(); // 004cefb0
+	// BW1W120 004cefb0 BW1M119 01015ef0
+	static void DrawLeashInfo();
 	// BW1W120 004e70c0 BW1M119 0126e740
 	void Save3D(char* path);
 	// BW1W120 0047d830 BW1M119 011d6c10
@@ -163,7 +171,7 @@ public:
 	uint8_t                  field_0x37d;
 	uint8_t                  field_0x37e;
 	uint8_t                  field_0x37f;
-	bool32_t                 CommandedByLeash;
+	LEASH_CONTROL            LeashControl;
 	bool32_t                 Fainted;
 	CreatureEmotionsForMusic EmotionsForMusic;
 	uint32_t                 field_0x390[0xa];
@@ -213,8 +221,8 @@ public:
 	uint32_t            field_0x10a8;
 	bool32_t            FightStarted;
 	bool32_t            FightEnded;
-	uint32_t            field_0x10b4;
-	uint32_t            field_0x10b8;
+	bool32_t            TouchedByLeash;
+	bool32_t            DirectedByLeash;
 	uint32_t            field_0x10bc;
 	uint32_t            field_0x10c0;
 	uint8_t             field_0x10c4[0x8];
@@ -230,10 +238,7 @@ public:
 	uint32_t            LastImpressiveDanceTurn;
 	DANCE_INFO          LastImpressiveDanceType;
 	uint32_t            field_0x1104;
-	uint32_t            field_0x1108;
-	uint32_t            ScriptFlag0;
-	int                 ScriptFlag1;
-	uint32_t            ScriptFlag2;
+	bool32_t            LeashEnabled[LEASH_TYPE_LAST + 1];
 	uint32_t            field_0x1118;
 	uint32_t            field_0x111c;
 	uint32_t            field_0x1120;
@@ -286,16 +291,18 @@ public:
 	uint32_t                          field_0x1288;
 	uint32_t                          ScriptAnim;
 	uint32_t                          ScriptAnimRepeats;
-	bool32_t                          ConfinedToObject;
-	GameThingWithPos*                 ConfinementObject;
-	int                               field_0x129c;
-	uint32_t                          field_0x12a0;
-	uint32_t                          field_0x12a4;
+#ifndef VERSION_BW1W100
+	bool32_t          ConfinedToObject;
+	GameThingWithPos* ConfinementObject;
+	int               field_0x129c;
+	uint32_t          field_0x12a0;
+	uint32_t          field_0x12a4;
+#endif
 #ifdef VERSION_BW1WCI
 	bool32_t FollowMaster;
 	float    DistanceFromHome;
 #endif
-	uint32_t field_0x12a8;
+	bool32_t Trapped;
 	uint8_t  field_0x12ac;
 	uint8_t  field_0x12ad;
 	uint8_t  field_0x12ae;
@@ -305,7 +312,9 @@ public:
 	uint32_t field_0x12b8;
 	uint32_t field_0x12bc;
 	bool32_t IgnoredByVillagers;
+#ifndef VERSION_BW1W100
 	uint32_t field_0x12c4;
+#endif
 
 	// Override methods
 
@@ -773,6 +782,47 @@ public:
 	bool32_t HasFinishedBuildingHome();
 	// BW1W120 004cf060 BW1M119 01243630
 	GInterfaceStatus* GetInterfaceStatusLeashOn();
+	// BW1W120 004ce320 BW1M119 012446b0
+	void UpdateLeash();
+	// BW1W120 004ce6e0 BW1M119 012445c0
+	void ApplyLeashForce(float force);
+	// BW1W120 004ce750 BW1M119 01244300
+	void LocalUpdateCreatureLeash(float force);
+	// BW1W120 004ce8e0 BW1M119 01243f60
+	void LeashMakesCreatureMoveToHand(Object* object);
+	// BW1W120 004cec00 BW1M119 01243db0
+	void LeashMakesCreatureStop();
+	// BW1W120 004cecf0 BW1M119 01243bb0
+	void LeashForceCreatureToActOnHandObject(Object* object);
+	// BW1W120 004cee70 BW1M119 01243b30
+	void LeashForceCreatureToActOnAttachedObject(Object* object);
+	// BW1W120 004cefc0 BW1M119 01243830
+	void UpdateMoodsFromLeash(LEASH_TYPE type);
+	// BW1W120 004cf020 BW1M119 012437d0
+	bool32_t IsMatureEnoughForLeash();
+	// BW1W120 004cf030 BW1M119 01243770
+	bool32_t IsMatureEnoughForAdvancedLeash();
+	// BW1W120 004cf040 BW1M119 012436f0
+	int GetNumLeashesKnowsAbout();
+	// BW1W120 004cf0a0 BW1M119 01243580
+	GInterfaceStatus* IsLeashWorking();
+	// BW1W120 004cf0e0 BW1M119 012434d0
+	GInterfaceStatus* IsLeashAttachedToObject();
+	// BW1W120 004cf120 BW1M119 01243410
+	GameThingWithPos* GetObjectWhichLeashIsAttachedTo();
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 004d6940 BW1M119 null
+	void ForceGoToMapCoords(const MapCoords& coords, float speed);
+#else
+	// BW1W120 004c7220 BW1M119 01237e00
+	void ForceGoToMapCoords(const MapCoords& coords);
+#endif // VERSION_BW1WCI
+	// BW1W120 004c5ff0 BW1M119 01238e20
+	void ForceActOnObject(Object* object);
+	// BW1W120 004f0980 BW1M119 0127d7a0
+	CREATURE_DESIRES FindBestDesireForActivityObject(CreatureBelief* belief);
+	// BW1W120 0050a760 BW1M119 012a4d90
+	void GiveFoodToWorshippers(CreatureBelief* belief, long argument);
 	// BW1W120 004f82f0 BW1M119 0128f550
 	bool32_t HasEnoughEnergyToCastSpell(MAGIC_TYPE magic_type);
 	// BW1W120 004f8940 BW1M119 0128eaa0
@@ -1240,19 +1290,21 @@ static_assert(offsetof(Creature, HelpState) == 0x188, "Creature help offset is i
 static_assert(offsetof(Creature, HelpStackEntries) == 0x220, "Creature help stack offset is incorrect");
 static_assert(offsetof(Creature, ReceiveSpell) == 0x370, "Creature spell receiver offset is incorrect");
 #ifdef VERSION_BW1WCI
-static_assert(offsetof(Creature, CommandedByLeash) == 0x388, "Creature leash offset is incorrect");
+static_assert(offsetof(Creature, LeashControl) == 0x388, "Creature leash offset is incorrect");
 static_assert(offsetof(Creature, ActionForced) == 0x1088, "Creature action offset is incorrect");
-static_assert(offsetof(Creature, ScriptFlag0) == 0x1138, "Creature flag offset is incorrect");
-static_assert(offsetof(Creature, ScriptFlag1) == 0x113c, "Creature flag offset is incorrect");
-static_assert(offsetof(Creature, ScriptFlag2) == 0x1140, "Creature flag offset is incorrect");
+static_assert(offsetof(Creature, LeashEnabled) == 0x1134, "Creature leash flags offset is incorrect");
 static_assert(offsetof(Creature, ConfinementCentre) == 0x11e0, "Creature confinement offset is incorrect");
 static_assert(offsetof(Creature, DevelopmentPhase) == 0x12a0, "Creature phase offset is incorrect");
-static_assert(offsetof(Creature, field_0x12a8) == 0x12e8, "Creature field offset is incorrect");
+static_assert(offsetof(Creature, Trapped) == 0x12e8, "Creature trapped offset is incorrect");
 static_assert(sizeof(Creature) == 0x1308, "Creature size is incorrect");
+#elif defined(VERSION_BW1W100)
+static_assert(offsetof(Creature, LeashEnabled) == 0x1108, "Creature leash flags offset is incorrect");
+static_assert(offsetof(Creature, Trapped) == 0x1294, "Creature trapped offset is incorrect");
+static_assert(offsetof(Creature, IgnoredByVillagers) == 0x12ac, "Creature villager offset is incorrect");
+static_assert(sizeof(Creature) == 0x12b0, "Creature size is incorrect");
 #else
-static_assert(offsetof(Creature, ScriptFlag0) == 0x110c, "Creature flag offset is incorrect");
-static_assert(offsetof(Creature, ScriptFlag1) == 0x1110, "Creature flag offset is incorrect");
-static_assert(offsetof(Creature, ScriptFlag2) == 0x1114, "Creature flag offset is incorrect");
+static_assert(offsetof(Creature, LeashEnabled) == 0x1108, "Creature leash flags offset is incorrect");
+static_assert(offsetof(Creature, Trapped) == 0x12a8, "Creature trapped offset is incorrect");
 static_assert(sizeof(Creature) == 0x12c8, "Creature size is incorrect");
 #endif
 

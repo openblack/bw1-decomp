@@ -642,6 +642,12 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004C80EA, call_indirect(0x008A9328)),  # CreatureEmpathy: __imp_LHEditBox...
     (0x004C812A, call_indirect(0x008A901C)),  # CreatureEmpathy: __imp__TrackMouseEvent@4
     (0x004C840B, call_rel32(0x00401879)),  # CreatureEmpathy
+    (0x004CE31B, call_rel32(0x00401879)),  # CreatureLeash
+    (0x004CE6DB, call_rel32(0x00401879)),  # CreatureLeash
+    (0x004CF05A, call_indirect(0x008A991C)),  # CreatureLeash: __imp__ioctlsocket@4
+    (0x004CF09A, call_indirect(0x008A935C)),  # CreatureLeash: __imp_??0LHSPrintf@@QAA@PADZZ
+    (0x004CF0DA, call_indirect(0x008A9124)),  # CreatureLeash: __imp__ImmGetCandidateListA@4
+    (0x004CF11A, call_indirect(0x008A905C)),  # CreatureLeash: __imp__GetDeviceCaps@4
     (0x004D293B, call_rel32(0x00401879)),  # CreatureMentalActionTests
     (0x004D2A1A, call_indirect(0x008A93CC)),  # CreatureMentalActionTests: __imp___0LHVersion__QAE_PAULHVersionBlock___Z@4
     (0x004D2C7B, call_rel32(0x00401879)),  # CreatureMentalActionTests
@@ -828,6 +834,16 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004CA579, jmp_run(0x004CA553)),  # CreatureEmpathy
     (0x004CA5B5, jmp_run(0x004CA579)),  # CreatureEmpathy
     (0x004CA79B, call_rel32(0x00403C49)),  # CreatureEmpathy
+    (0x004D0683, copy_run(0x004D0622)),  # CreatureLeash
+    (0x004D06AB, call_rel32(0x00403C49)),  # CreatureLeash
+    (0x004D0A6B, call_rel32(0x00403C49)),  # CreatureLeash
+    (0x004D0C62, copy_run(0x004D0A6B)),  # CreatureLeash
+    (0x004D1077, jmp_run(0x004D0C62)),  # CreatureLeash
+    (0x004D13EA, call_indirect(0x008AE958)),  # CreatureLeash
+    (0x004D142A, call_indirect(0x008AE2B0)),  # CreatureLeash
+    (0x004D146A, call_indirect(0x008AE828)),  # CreatureLeash
+    (0x004D14AA, call_indirect(0x008AE090)),  # CreatureLeash
+    (0x004D14F5, jmp_run(0x004D14AA)),  # CreatureLeash
     (0x004D4CA3, copy_run(0x004D4BF3)),  # CreatureMentalActionTests
     (0x004D4CCB, call_rel32(0x00403C49)),  # CreatureMentalActionTests
     (0x004D4DAA, call_indirect(0x008AE050)),  # CreatureMentalActionTests

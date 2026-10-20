@@ -37,44 +37,47 @@ class GInterface : public GameThingWithPos
 {
 public:
 	// BW1W120 005d05f0 BW1M119 01360150
-	void                    Validate();
-	uint32_t                field_0x28;
-	LiquidParticleGroup*    liquid_particle_group;
-	GInterfaceFlags         flags;
-	int                     ActionState;
-	uint32_t                field_0x48;
-	uint32_t                field_0x4c;
-	LHReleasedOSFile        file;               /* 0x50 */
-	uint32_t                IsSpecificPlayback; /* 0x15c */
-	uint32_t                IsAnyPlayback;      /* 0x160 */
-	uint8_t                 field_0x164[0x30];
-	uint32_t                field_0x194;
-	Leash*                  Leash0x198;
-	Leash*                  Leash0x19c;
-	Leash*                  Leash0x1a0;
-	uint32_t                field_0x1a4;
-	uint32_t                field_0x1a8;
-	uint32_t                field_0x1ac;
-	uint32_t                field_0x1b0;
-	uint32_t                field_0x1b4;
-	uint32_t                field_0x1b8;
-	LHPlayer*               player;
-	uint8_t                 field_0x1c0[0x1a0];
-	uint32_t                field_0x360;
-	uint32_t                field_0x364;
-	uint32_t                field_0x368;
-	uint32_t                field_0x36c;
-	uint32_t                field_0x370;
-	uint32_t                field_0x374;
-	uint32_t                field_0x378;
-	uint32_t                field_0x37c;
-	uint32_t                field_0x380;
-	uint32_t                field_0x384;
-	uint32_t                field_0x388;
-	uint32_t                field_0x38c;
-	uint32_t                field_0x390;
-	uint32_t                field_0x394;
-	uint32_t                field_0x398;
+	void                 Validate();
+	uint32_t             field_0x28;
+	LiquidParticleGroup* liquid_particle_group;
+	GInterfaceFlags      flags;
+	int                  ActionState;
+	uint32_t             field_0x48;
+	uint32_t             field_0x4c;
+	LHReleasedOSFile     file;               /* 0x50 */
+	uint32_t             IsSpecificPlayback; /* 0x15c */
+	uint32_t             IsAnyPlayback;      /* 0x160 */
+	uint8_t              field_0x164[0x30];
+	uint32_t             field_0x194;
+	Leash*               Leash0x198;
+	Leash*               Leash0x19c;
+	Leash*               Leash0x1a0;
+	uint32_t             field_0x1a4;
+	uint32_t             field_0x1a8;
+	uint32_t             field_0x1ac;
+	uint32_t             field_0x1b0;
+	uint32_t             field_0x1b4;
+	uint32_t             field_0x1b8;
+	LHPlayer*            player;
+	uint8_t              field_0x1c0[0x1a0];
+	uint32_t             field_0x360;
+	uint32_t             field_0x364;
+	uint32_t             field_0x368;
+	uint32_t             field_0x36c;
+	uint32_t             field_0x370;
+	uint32_t             field_0x374;
+	uint32_t             field_0x378;
+	uint32_t             field_0x37c;
+	uint32_t             field_0x380;
+	uint32_t             field_0x384;
+	uint32_t             field_0x388;
+	uint32_t             field_0x38c;
+	uint32_t             field_0x390;
+	uint32_t             field_0x394;
+	uint32_t             field_0x398;
+#ifdef VERSION_BW1WCI
+	uint32_t ci_field_0x39c[0x6];
+#endif
 	GInterfaceStatus*       status;
 	LHFastPointer<CHand>    hand; /* 0x3a0 */
 	InterfaceHandState      HandState;
@@ -193,12 +196,21 @@ public:
 	bool32_t IsLeaderInterface();
 	// BW1W120 005da100 BW1M119 013725b0
 	uint32_t ApplyChangesToHand(uint32_t ret, Object* object, const MapCoords* coords);
+	// BW1W120 005d95e0 BW1M119 0136f9b0
+	float GetLocalLeashAppliedForce();
 };
 
 // LHReleasedOSFile already includes its 0x104-byte filename storage.
 static_assert(offsetof(GInterface, IsSpecificPlayback) == 0x15c, "GInterface playback offset is incorrect");
+#ifdef VERSION_BW1WCI
+static_assert(offsetof(GInterface, hand) == 0x3b8, "GInterface hand offset is incorrect");
+static_assert(offsetof(GInterface, HandState) == 0x3bc, "GInterface hand state offset is incorrect");
+static_assert(offsetof(GInterface, interface_collide) == 0x3c8, "GInterface collide offset is incorrect");
+#else
 static_assert(offsetof(GInterface, hand) == 0x3a0, "GInterface hand offset is incorrect");
-static_assert(sizeof(LHFastPointer<CHand>) == 4, "GInterface hand pointer size is incorrect");
 static_assert(offsetof(GInterface, HandState) == 0x3a4, "GInterface hand state offset is incorrect");
+static_assert(offsetof(GInterface, interface_collide) == 0x3b0, "GInterface collide offset is incorrect");
+#endif // VERSION_BW1WCI
+static_assert(sizeof(LHFastPointer<CHand>) == 4, "GInterface hand pointer size is incorrect");
 
 #endif /* BW1_DECOMP_INTERFACE_INCLUDED_H */
