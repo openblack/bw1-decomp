@@ -547,13 +547,14 @@ Black/CreatureMentalExploration.cpp:
 	.text       start:0x004DDE20 end:0x004DECB0
 	.rdata      start:0x008C0078 end:0x008C00EC
 	.CRT$XCU    start:0x009B63A4 end:0x009B63B0 align:4
+	.data       start:0x00BCEBD8 end:0x00BCEED8
 	.bss        start:0x00C7CA70 end:0x00C98A8C
 
 Black/CreatureMentalLearn.cpp:
 	.text       start:0x004DECE0 end:0x004E0870
 	.rdata      start:0x008C00EC end:0x008C045C
 	.CRT$XCU    start:0x009B63B4 end:0x009B63B8 align:4
-	.data       start:0x00BCEF20 end:0x00BCF340
+	.data       start:0x00BCEED8 end:0x00BCF340
 
 Black/CreatureMentalLearnAction.cpp:
 	.text       start:0x004E0BE0 end:0x004E16D0

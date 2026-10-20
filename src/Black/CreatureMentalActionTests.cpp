@@ -297,8 +297,8 @@ bool32_t Creature::IsSlightlySleepy(CreaturePlan& plan, CREATURE_ACTION action)
 bool32_t Creature::IsNearWater(CreaturePlan& plan, CREATURE_ACTION action)
 {
 	MapCoords water;
-	return mind->ExplorationMap.FindNearest(REGION_TYPE_SEA, Pos, &water, PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1,
-	                                        1);
+	return mind->ExplorationMap.FindNearest(REGION_TYPE_WATER, Pos, &water,
+	                                        PREFERENCE_THAT_REGION_HAS_NOT_BEEN_VISITED_1, 1);
 }
 
 bool32_t Creature::IsCrossWithPlayer(CreaturePlan& plan, CREATURE_ACTION action)
