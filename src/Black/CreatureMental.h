@@ -42,8 +42,6 @@ enum CREATURE_DECISION_TYPE
 	CREATURE_DECISION_NORMAL,
 };
 
-#define MAX_NUM_ACTIONS_FOR_EACH_DESIRE 30
-
 struct CreatureActionConsidered
 {
 	float Priority;
@@ -209,9 +207,32 @@ public:
 	void UpdateHowNiceIsCreature(Creature* other_creature, float niceness);
 	// BW1W120 004c4f60 BW1M119 01235fc0
 	void UpdateHowMuchAttentionPaidToMeByCreature(Creature* other_creature, float attention);
+	// BW1W120 004e0410 BW1M119 01268cf0
+	float GetBestContextToLearnFrom(CreatureContext& context);
+	// BW1W120 004e06a0 BW1M119 01268230
+	void RespondToPlayerFeedback(float feedback);
+	// BW1W120 004e0fc0 BW1M119 01267cc0
+	void LearnLessonsFromFeedback(CreatureContext& context, float feedback, bool32_t player_involved,
+	                              LESSON_ORIGIN_TYPE origin, unsigned long* lesson_count);
+	// BW1W120 004e1080 BW1M119 01267ba0
+	void UpdateAttitudeToPlayerFromFeedback(float feedback);
+	// BW1W120 004e1150 BW1M119 012679a0
+	void LearnFromPlayerWatchingAndNotPunishing(CreatureContext& context);
 	// BW1W120 004e11c0 BW1M119 012674a0
-	void LearnParticularLessonFromFeedback(CreatureContext& context, float feedback, LESSON_TYPE lesson_type,
-	                                       int param_4, unsigned long* lesson_count, LESSON_ORIGIN_TYPE origin);
+	bool32_t LearnParticularLessonFromFeedback(CreatureContext& context, float feedback, LESSON_TYPE lesson_type,
+	                                           bool32_t player_involved, unsigned long* lesson_count,
+	                                           LESSON_ORIGIN_TYPE origin);
+	// BW1W120 004e14c0 BW1M119 01267370
+	AttributeTest* LearnParticularLesson(CreatureLearningContext* context, float feedback);
+	// BW1W120 004e15a0 BW1M119 01267110
+	bool32_t UpdateDesireFromLesson(CreatureContext& context, float feedback, bool32_t player_involved);
+	// BW1W120 004e15e0 BW1M119 null
+	void UpdateActionOpinionFromLesson(CreatureContext& context, float feedback);
+	// BW1W120 004e1670 BW1M119 01266c80
+	void UpdateLessonText(CreatureContext& context, unsigned long lesson_index, AttributeTest* test,
+	                      LESSON_ORIGIN_TYPE origin);
+	// BW1W120 004e1f70 BW1M119 01266330
+	float HowMuchCreatureKnowsAboutSatisfyingDesire(CREATURE_DESIRES desire);
 	// BW1W120 004e29e0 BW1M119 01269950
 	uint32_t GetNumNormalActionsLeftToLearnWhichCanBeTaughtByComputerPlayer();
 	// BW1W120 004e2a20 BW1M119 null

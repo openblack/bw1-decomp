@@ -24,7 +24,7 @@ struct GDebug
 	uint32_t field_0x134;
 	uint32_t field_0x138;
 	uint32_t field_0x13c;
-	uint32_t field_0x140;
+	bool32_t ShowIndirectFeedbackLessons;
 	uint32_t field_0x144;
 	bool32_t LogVillagers;
 	uint32_t field_0x14c;

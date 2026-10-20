@@ -201,7 +201,7 @@ public:
 #endif
 	uint32_t            ActionForced;
 	bool32_t            ReactionsEnabled;
-	uint32_t            field_0x1064;
+	bool32_t            LearningEnabled;
 	uint32_t            field_0x1068;
 	bool32_t            Invisible;
 	GPlayer*            owner;
@@ -230,7 +230,7 @@ public:
 	uint32_t            field_0x10d0;
 	uint32_t            field_0x10d4;
 	uint8_t             field_0x10d8[0x10];
-	uint32_t            field_0x10e8;
+	uint32_t            TurnsBeforeConsideringDecision;
 	uint32_t            field_0x10ec;
 	uint32_t            field_0x10f0;
 	bool32_t            RespondingToEmergency;
@@ -823,6 +823,14 @@ public:
 	CREATURE_DESIRES FindBestDesireForActivityObject(CreatureBelief* belief);
 	// BW1W120 0050a760 BW1M119 012a4d90
 	void GiveFoodToWorshippers(CreatureBelief* belief, long argument);
+	// BW1W120 0050a1f0 BW1M119 012a5390
+	void RepeatLastAction(CreatureBelief* belief, long argument);
+	// BW1W120 00509130 BW1M119 012a6530
+	void BeSad(CreatureBelief* belief, long argument);
+	// BW1W120 00509070 BW1M119 012a68d0
+	void BeHappy(CreatureBelief* belief, long argument);
+	// BW1W120 00509010 BW1M119 012a6a70
+	void BeFrightened(CreatureBelief* belief, long argument);
 	// BW1W120 004f82f0 BW1M119 0128f550
 	bool32_t HasEnoughEnergyToCastSpell(MAGIC_TYPE magic_type);
 	// BW1W120 004f8940 BW1M119 0128eaa0
@@ -1122,6 +1130,8 @@ public:
 	bool32_t PossibilityOfErrorFromLackOfSkill(CREATURE_ACTION action);
 	// BW1W120 004e0de0 BW1M119 01267e80
 	void LearnLessonFromLeashInstruction(Object* object);
+	// BW1W120 004e1100 BW1M119 01267ac0
+	void LearnFromPlayerWatchingAndNotPunishing();
 	// BW1W120 004f8850 BW1M119 0128ecd0
 	void ForceActionCastSpellOnObject(MAGIC_TYPE magic_type, Object* object);
 	// BW1W120 004f2930 BW1M119 012817f0

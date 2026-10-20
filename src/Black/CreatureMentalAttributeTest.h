@@ -127,7 +127,7 @@ struct AttributeTest
 	static void                            DeleteBeliefArray();
 	LHLinkedList<CreatureLearningEpisode*> episodes; /* 0x0 */
 	uint32_t                               field_0x8;
-	uint32_t                               field_0xc;
+	AttributeTest*                         Parent;
 	uint32_t                               field_0x10;
 	uint32_t                               field_0x14;
 	uint32_t                               field_0x18;
@@ -143,6 +143,11 @@ struct AttributeTest
 
 	// BW1W120 004d4c20 BW1M119 01254050
 	AttributeTest(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
+
+	// Non-virtual methods
+
+	// BW1W120 004d74a0 BW1M119 01250560
+	char* CalculateText();
 };
 
 struct DecisionTreeNode
@@ -159,6 +164,8 @@ struct DecisionTree
 	// BW1W120 004d4380 BW1M119 01254c90
 	DecisionTree(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
 
+	// BW1W120 004d4bd0 BW1M119 01254240
+	AttributeTest* CalculateTestForBelief(CreatureBelief* belief);
 	// BW1W120 004d4bf0 BW1M119 012541d0
 	float CalculateUtility(CreatureBelief* belief);
 };
@@ -176,6 +183,13 @@ struct DecisionTreeAgenda
 
 	// BW1W120 004d43f0 BW1M119 01254ba0
 	DecisionTreeAgenda(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire);
+
+	// Non-virtual methods
+
+	// BW1W120 004d42c0 BW1M119 01254e90
+	void AddExample(CreatureLearningEpisode* episode);
+	// BW1W120 004d4340 BW1M119 01254e20
+	void ConstructBestTreeForExamples();
 
 	// Static methods
 
@@ -201,6 +215,8 @@ struct DecisionTreeCollection
 
 	// BW1W120 004d7670 BW1M119 01250390
 	float ConvertUtilityToUsefulness(float utility);
+	// BW1W120 004e1530 BW1M119 012672a0
+	DecisionTreeAgenda* GetDecisionTreeFromContext(CreatureLearningContext* context);
 	// BW1W120 inlined BW1M119 01272140
 	float GetActivityObjectUtility(CreatureBelief* belief, CREATURE_DESIRES desire)
 	{
@@ -810,6 +826,11 @@ public:
 class AttributeType : public Attribute
 {
 public:
+	// Static members
+
+	// BW1W120 008cbf68 BW1M119 null
+	static const char ValueNames[CREATURE_BELIEF_TYPE_LAST][64];
+
 	// Constructors
 
 	// BW1W120 inlined BW1M119 inlined

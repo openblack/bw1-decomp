@@ -8,7 +8,8 @@
 #include <string.h>    /* For memcpy */
 #include <wchar.h>     /* For wchar_t */
 
-#include <chlasm/Enum.h> /* For enum CREATURE_DESIRES, NUM_CREATURE_DESIRES */
+#include <chlasm/CreatureEnum.h> /* For enum CREATURE_ACTION */
+#include <chlasm/Enum.h>         /* For enum CREATURE_DESIRES, NUM_CREATURE_DESIRES */
 
 #include <Lionhead/LHFile/ver3.0/LHFile.h>      /* For struct LHFile */
 #include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
@@ -158,10 +159,12 @@ public:
 };
 static_assert(sizeof(CreatureDesires) == 0x708, "Data type is of wrong size");
 
+#define MAX_NUM_ACTIONS_FOR_EACH_DESIRE 30
+
 class CreatureDesireActionEntry : public GBaseInfo
 {
 public:
-	uint32_t Actions[0x1e];
+	CREATURE_ACTION Actions[MAX_NUM_ACTIONS_FOR_EACH_DESIRE];
 
 	// Override methods
 

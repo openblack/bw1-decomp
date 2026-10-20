@@ -641,14 +641,14 @@ Black/CreatureMentalLearn.cpp:
 	.text       start:0x004E0240 end:0x004E21A0
 	.rdata      start:0x008D00FC end:0x008D046C
 	.CRT$XCU    start:0x009C6530 end:0x009C653C align:4
-	.data       start:0x00BDF918 end:0x00BDFD80
+	.data       start:0x00BDF918 end:0x00BDFAE0
 	.bss        start:0x00CA9C54 end:0x00CA9C5C
 
 Black/CreatureMentalLearnAction.cpp:
 	.text       start:0x004E21A0 end:0x004E2CC0
 	.rdata      start:0x008D046C end:0x008D04B8
 	.CRT$XCU    start:0x009C653C end:0x009C6548 align:4
-	.data       start:0x00BDFD80 end:0x00BDFE00
+	.data       start:0x00BDFAE0 end:0x00BDFE00
 	.bss        start:0x00CA9C5C end:0x00CA9C64
 
 Black/CreatureMentalMisc.cpp:

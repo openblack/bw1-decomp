@@ -56,7 +56,7 @@ public:
 	uint32_t        field_0x1ae4;
 	uint32_t        NumTurnsPerformingAction;
 	uint32_t        NumTurnsWithoutAction;
-	float           field_0x1af0;
+	float           MinSecondsPerformingActionToLearn;
 	uint32_t        field_0x1af4;
 
 	// Constructors
