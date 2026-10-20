@@ -2120,8 +2120,9 @@ Black/VillagerTrader.cpp:
 	.bss        start:0x00CEBE00 end:0x00CEBE04
 
 Black/VillagerWorshipper.cpp:
-	.text       start:0x006F9960 end:0x006FAA60
+	.text       start:0x006F9960 end:0x006FAA30
 	.rdata      start:0x008D1B9C end:0x008D1BA4
+	.CRT$XCU    start:0x008F7280 end:0x008F7288 align:4
 	.bss        start:0x00CEBE04 end:0x00CEBE0C
 
 Black/VirtualInfluence.cpp:

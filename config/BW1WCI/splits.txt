@@ -2369,7 +2369,7 @@ Black/VillagerWorshipper.cpp:
 	.text       start:0x00787DE0 end:0x00788FE0
 	.rdata      start:0x00A0A3B4 end:0x00A0A3BC
 	.CRT$XCU    start:0x00A37328 end:0x00A37330 align:4
-	.bss        start:0x00E53D6C end:0x00E53D7C
+	.bss        start:0x00E53D6C end:0x00E53D74
 
 Black/VirtualInfluence.cpp:
 	.text       start:0x00788FE0 end:0x007897D0

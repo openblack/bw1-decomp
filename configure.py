@@ -251,11 +251,16 @@ if config.version == "BW1W100":
     # nomemory.obj 1.00 never linked at all. Likewise GJProperty's
     # Persistent::SetUniqueName and PersistenceStreamer writers: 1.00 has no
     # PSysFileData::SaveToFile, so they were dropped too, and with them the only
-    # users of PersistentOwner::IsNameUsed and typeid's ___RTtypeid.
+    # users of PersistentOwner::IsNameUsed and typeid's ___RTtypeid. Villager's
+    # SetGotoWorshipSpeed and CheckRequestGoHome have no callers in 1.00, so
+    # they were dropped too, with the only users of WorshipSite's
+    # GetWorshipSpeed and AddVillagerRequestingToGoHome.
     for _dead_function in [
         "?_Nomemory@std@@YAXXZ",
         "?IsNameUsed@PersistentOwner@@QAEHPBD@Z",
         "___RTtypeid",
+        "?GetWorshipSpeed@WorshipSite@@QAEMXZ",
+        "?AddVillagerRequestingToGoHome@WorshipSite@@QAEXPAVVillager@@@Z",
     ]:
         config.base_ldflags.append(f"/alternatename:{_dead_function}=_abort")
     # GAudio's MusicSwitch, Shutdown and bank SampleSet3DPosition wrappers have
@@ -1229,7 +1234,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/VillagerStates.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerStateTableInfo.cpp"),
             GameCodeObject(Matching, "Black/VillagerTrader.cpp"),
-            GameCodeObject(NonMatching, "Black/VillagerWorshipper.cpp"),
+            GameCodeObject(Matching, "Black/VillagerWorshipper.cpp"),
             GameCodeObject(NonMatching, "Black/VirtualInfluence.cpp"),
             GameCodeObject(NonMatching, "Black/ViscousLiquid.cpp"),
             GameCodeObject(NonMatching, "Black/VortexInfo.cpp"),

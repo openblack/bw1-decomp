@@ -873,6 +873,31 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004F4958, jmp_run(0x004F4743)),  # CreaturePreviousContext
     (0x004F4988, copy_run(0x004F4958)),  # CreaturePreviousContext
     (0x007707B6, jmp_run(0x007706F9)),  # VillagerTrader
+    (0x00770813, jmp_run(0x007707B6)),  # VillagerWorshipper
+    (0x0077083B, call_rel32(0x004034F9)),  # VillagerWorshipper
+    (0x007709F7, jmp_run(0x0077083B)),  # VillagerWorshipper
+    (0x00770A94, jmp_run(0x007709F7)),  # VillagerWorshipper
+    (0x00770B77, jmp_run(0x00770A94)),  # VillagerWorshipper
+    (0x00770C94, jmp_run(0x00770B77)),  # VillagerWorshipper
+    (0x00770D7B, call_rel32(0x004034F9)),  # VillagerWorshipper
+    (0x00770E51, jmp_run(0x00770D7B)),  # VillagerWorshipper
+    (0x00770EF6, jmp_run(0x00770E51)),  # VillagerWorshipper
+    (0x007710A2, copy_run(0x00770EF6)),  # VillagerWorshipper
+    (0x00771193, jmp_run(0x007710A2)),  # VillagerWorshipper
+    (0x007711CB, call_rel32(0x004034F9)),  # VillagerWorshipper
+    (0x00771212, jmp_run(0x007711CB)),  # VillagerWorshipper
+    (0x007713BA, jmp_run(0x00771212)),  # VillagerWorshipper
+    (0x007714B3, jmp_run(0x007713BA)),  # VillagerWorshipper
+    (0x007715D9, jmp_run(0x007714B3)),  # VillagerWorshipper
+    (0x0077166A, copy_run(0x007715D9)),  # VillagerWorshipper
+    (0x007716AA, copy_run(0x0077166A)),  # VillagerWorshipper
+    (0x00771703, copy_run(0x007716AA)),  # VillagerWorshipper
+    (0x00771803, copy_run(0x00771703)),  # VillagerWorshipper
+    (0x007718D7, jmp_run(0x00771803)),  # VillagerWorshipper
+    (0x00771952, jmp_run(0x007718D7)),  # VillagerWorshipper
+    (0x0077198A, copy_run(0x00771952)),  # VillagerWorshipper
+    (0x007719BA, jmp_run(0x0077198A)),  # VillagerWorshipper
+    (0x007719DB, call_rel32(0x004034F9)),  # VillagerWorshipper
 )
 
 

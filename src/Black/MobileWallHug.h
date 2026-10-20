@@ -122,6 +122,10 @@ public:
 	virtual void SetYAngle(float angle);
 	// BW1W120 0060ad60 BW1M119 0104d590
 	virtual bool32_t AreWeThere(const MapCoords& coords, float extra_distance);
+#ifdef VERSION_BW1WCI
+	// BW1W120 0060ad40 BW1WCI 006239e0 BW1M119 01061c20
+	virtual bool32_t AreWeThere(float extra_distance);
+#endif
 	// BW1W120 00416f70 BW1M119 0104ac10
 	virtual MapCoords* GetDestPos();
 	// BW1W120 0060fc50 BW1M119 01086610
@@ -176,8 +180,10 @@ public:
 	void SetupMobileMoveToPos(const MapCoords& coords, MOVE_TO_STATES move_to_state);
 	// BW1W120 0060acd0 BW1M119 013cbeb0
 	void SetupMobileMoveToObject(Object* object);
+#ifndef VERSION_BW1WCI
 	// BW1W120 0060ad40 BW1M119 01061c20
 	bool32_t AreWeThere(float extra_distance);
+#endif
 	// BW1W120 0060adc0 BW1M119 013cbb60
 	int MoveToObjectPos();
 	// BW1W120 0060af20 BW1M119 01049c90
