@@ -14,6 +14,7 @@
 
 class Creature;
 class CreatureBelief;
+class CreatureInfo;
 class CreatureMental;
 
 class CreaturePlan : public Base
@@ -76,10 +77,13 @@ struct CreaturePlanState
 class CreatureTimeToWait : public Base
 {
 public:
-	// Override methods
+	uint32_t field_0x8;
+	uint32_t field_0xc;
+	uint32_t field_0x10;
 
-	// BW1W120 004e34e0 BW1M119 inlined
-	virtual ~CreatureTimeToWait();
+	// BW1W120 004e34a0 BW1M119 null
+	CreatureTimeToWait(const CreatureInfo* info);
 };
+static_assert(sizeof(CreatureTimeToWait) == 0x14, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_CREATURE_PLAN_INCLUDED_H */

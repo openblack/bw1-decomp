@@ -101,6 +101,10 @@ public:
 	INFO_DATA_BLOCK(AbodeType, DykCategory)
 	INFO_DERIVED_LOADERS(GMultiMapFixedInfo, "Abode.h", 35)
 };
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(GAbodeInfo) == 0x1cc, "Data type is of wrong size");
+#else
 static_assert(sizeof(GAbodeInfo) == 0x1c8, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_ABODE_INFO_INCLUDED_H */

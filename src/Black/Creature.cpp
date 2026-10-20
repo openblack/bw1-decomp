@@ -68,7 +68,7 @@ uint32_t Creature::GetAge()
 
 float Creature::GetMaxAlignmentChangePerGameTurn()
 {
-	return GetInfo()->MaxAlignmentChangePerGameTurn[0];
+	return GetInfo()->MaxAlignmentChangePerGameTurn;
 }
 
 float Creature::GetRunningSpeedInMetres()
