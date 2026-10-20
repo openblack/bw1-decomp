@@ -16,10 +16,17 @@
 
 #define EDITOR_ICON_TEXT_SIZE 0x100
 
+enum EDITOR_ICON_FLAGS
+{
+	EDITOR_ICON_FLAG_CONSTANT_TEXT = 0x2,
+};
+
 // Forward Declares
 
 class EditorIconPlace;
+class EditorInitialisedMenu;
 class Game3DObject;
+struct LHCoord;
 
 class EditorIconShow : public EditorIconBase
 {
@@ -42,6 +49,9 @@ public:
 
 	// Constructors
 
+	// BW1W120 0051fb80 BW1M119 012baa00
+	EditorIconShow(const LHCoord& coord, const char* text, unsigned long flags, LH3DColor* active_color,
+	               LH3DColor* inactive_color, LH3DColor* hilite_color, LH3DColor* text_color);
 	// BW1W120 0051fb20 BW1M119 012bab40
 	EditorIconShow(LHRegion region, const char* text, unsigned long flags, LH3DColor* active_color,
 	               LH3DColor* inactive_color, LH3DColor* hilite_color, LH3DColor* text_color);
@@ -88,8 +98,114 @@ public:
 	void SetG3DObject(MESH_LIST mesh, int param_2);
 	// BW1W120 0051fd90 BW1M119 012ba330
 	void SetText(const char* text);
+	// BW1W120 0051fd70 BW1M119 012ba4e0
+	void SetTextToConstant(const char* text);
 };
 static_assert(sizeof(EditorIconShow) == 0x148, "Data type is of wrong size");
+
+class EditorIconBool : public EditorIconShow
+{
+public:
+	char* FalseText; /* 0x148 */
+	int*  Value;
+
+	// BW1W120 005200b0 BW1M119 012b9de0
+	EditorIconBool(const LHCoord& coord, int& value, const char* text, const char* false_text, unsigned long flags);
+
+	// BW1W120 00520150 BW1M119 012b9d30
+	~EditorIconBool();
+
+	// BW1W120 00520200 BW1M119 012b9bc0
+	virtual int Process();
+	// BW1W120 00520270 BW1M119 012b9b70
+	virtual void Draw(bool32_t parent_active);
+	// BW1W120 00520090 BW1M119 012baca0
+	virtual int IsActive();
+	// BW1W120 00520280 BW1M119 012b9aa0
+	virtual char* GetText();
+
+	// BW1W120 00520070 BW1M119 012b9b30
+	virtual int GetValue();
+	// BW1W120 00520080 BW1M119 012b9cf0
+	virtual void SetValue(int value);
+};
+static_assert(sizeof(EditorIconBool) == 0x150, "Data type is of wrong size");
+
+template <typename T> class EditorIconButton : public EditorIconShow
+{
+public:
+	EditorInitialisedMenu* Menu; /* 0x148 */
+	T*                     Owner;
+	bool32_t               HasParameter;
+	void (T::*Callback)(EditorInitialisedMenu* menu);
+	void (T::*ParameterCallback)(EditorInitialisedMenu* menu, unsigned long parameter);
+	void (*ProcessFunction)(EditorIconButton<T>* button);
+	unsigned long Parameter;
+
+	// BW1W120 inlined BW1M119 inlined
+	EditorIconButton(const LHCoord& coord, const char* text, T* owner, void (T::*callback)(EditorInitialisedMenu* menu),
+	                 LH3DColor* active_color = &DefaultActiveColor, LH3DColor* inactive_color = &DefaultInactiveColor,
+	                 LH3DColor* hilite_color = &DefaultHiliteColor, LH3DColor* text_color = &DefaultTextColor)
+		: EditorIconShow(coord, text, 0, active_color, inactive_color, hilite_color, text_color)
+	{
+		Menu = NULL;
+		Owner = owner;
+		HasParameter = false;
+		Callback = callback;
+		SetTextToConstant(text);
+		ProcessFunction = NULL;
+	}
+	// BW1W120 inlined BW1M119 inlined
+	EditorIconButton(const LHCoord& coord, const char* text, T* owner,
+	                 void (T::*callback)(EditorInitialisedMenu* menu, unsigned long parameter), unsigned long parameter,
+	                 LH3DColor* active_color = &DefaultActiveColor, LH3DColor* inactive_color = &DefaultInactiveColor,
+	                 LH3DColor* hilite_color = &DefaultHiliteColor, LH3DColor* text_color = &DefaultTextColor)
+		: EditorIconShow(coord, text, 0, active_color, inactive_color, hilite_color, text_color)
+	{
+		Menu = NULL;
+		Owner = owner;
+		HasParameter = true;
+		ParameterCallback = callback;
+		Parameter = parameter;
+		SetTextToConstant(text);
+		ProcessFunction = NULL;
+	}
+
+	// BW1W120 004d0220 BW1M119 01245cd0
+	virtual int Process()
+	{
+		LeftClicked = false;
+		RightClicked = false;
+		Processed = true;
+		if (MakeActive())
+		{
+			if (ProcessFunction != NULL)
+			{
+				ProcessFunction(this);
+			}
+			if (LHSys::TheSystem.mouse.ButtonPressed & LH_MOUSE_BUTTON_LEFT_DOWN)
+			{
+				LeftClicked = true;
+				LHSys::TheSystem.mouse.ButtonPressed &= ~LH_MOUSE_BUTTON_LEFT_DOWN;
+				if (HasParameter)
+				{
+					(Owner->*ParameterCallback)(Menu, Parameter);
+				}
+				else
+				{
+					(Owner->*Callback)(Menu);
+				}
+			}
+			if (LHSys::TheSystem.mouse.ButtonPressed & LH_MOUSE_BUTTON_RIGHT_DOWN)
+			{
+				RightClicked = true;
+				LHSys::TheSystem.mouse.ButtonPressed &= ~LH_MOUSE_BUTTON_RIGHT_DOWN;
+			}
+			return true;
+		}
+		return false;
+	}
+};
 
 template <typename T, typename U> class EditorIconNumber : public EditorIconShow
 {

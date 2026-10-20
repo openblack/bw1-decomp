@@ -16,8 +16,7 @@
 #include "CreatureAttitudeToPlayer.h"    /* For struct CreatureAttitudeToPlayer */
 #include "CreatureExplorationMap.h"      /* For struct CreatureExplorationMap */
 #include "CreatureFace.h"                /* For struct CreatureFaceState */
-#include "CreatureLearning.h"            /* For struct CreatureLearning */
-#include "CreatureLessonChooser.h"       /* For enum LESSON_TYPE, enum LESSON_ORIGIN_TYPE */
+#include "CreatureLearning.h"            /* For struct CreatureLearning, enum LESSON_TYPE, enum LESSON_ORIGIN_TYPE */
 #include "CreatureLook.h"                /* For struct CreatureLookState */
 #include "CreatureMentalAttributeTest.h" /* For struct DecisionTreeCollection */
 #include "CreatureMentalBeliefs.h"       /* For struct CreatureBeliefs */
