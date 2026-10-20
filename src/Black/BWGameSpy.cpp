@@ -514,7 +514,7 @@ void BWGameSpy::DisconnectedCallback(PEER peer, const char* reason, void* param)
 	}
 }
 
-// BW1W120 and BW1W130 define the LHTimer bodies here, after Think, rather than through LHTimer.inl.
+// In 1.20 and 1.30 the LHTimer bodies are defined here, after Think, rather than through LHTimer.inl.
 // c2 compiles an inline copy at its definition position when that comes after its first out-of-line
 // caller, so these placements put Stop after DisconnectedCallback and MSeconds and SetSpeedUpFactor
 // after PlayerMessageCallback, as in those versions.
