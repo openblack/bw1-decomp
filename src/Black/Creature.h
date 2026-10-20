@@ -16,6 +16,7 @@
 #include <re_common.h>                          /* For bool32_t */
 
 #include "CreatureHelp.h"      /* For struct CreatureHelpStackEntry, struct CreatureHelpState */
+#include "CreaturePlan.h"      /* For CreatureActionsTried */
 #include "CreatureSubAction.h" /* For struct CreatureSubActionAgenda */
 #include "Living.h"            /* For struct Living */
 #include "MapCoords.h"         /* For struct MapCoords */
@@ -1068,6 +1069,9 @@ public:
 	bool32_t IsFighting();
 	// BW1W120 004d8bb0 BW1M119 01255f50
 	CreatureBelief* AddBeliefAboutAssociatedObject(CreatureBelief* belief);
+	// BW1W120 004f1c40 BW1M119 0127b060
+	void FindBestActionFromObject(CreaturePlan& plan, CreatureActionsTried* actions_tried, CreatureBelief* belief,
+	                              bool32_t require_object_to_act_on);
 	// BW1W120 004f8ca0 BW1M119 0128e390
 	float NumTimesMagicActionMustBeSeenBeforeItIsLearnt(unsigned long magic_type);
 	// BW1W120 0047cda0 BW1M119 011d7fe0

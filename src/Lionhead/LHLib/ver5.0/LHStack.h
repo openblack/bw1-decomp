@@ -1,7 +1,8 @@
 #ifndef BW1_DECOMP_LH_STACK_INCLUDED_H
 #define BW1_DECOMP_LH_STACK_INCLUDED_H
 
-#include <stdint.h> /* For uint32_t */
+#include <stdint.h>    /* For uint32_t */
+#include <re_common.h> /* For bool32_t */
 
 template <typename T, int N> class LHStack
 {
@@ -20,7 +21,19 @@ public:
 	// BW1W120 inlined BW1M119 0159c600
 	T Pop() { return Data[--Current]; }
 	// BW1W120 inlined BW1M119 012af000
-	T&   operator[](uint32_t index) { return Data[index]; }
+	T& operator[](uint32_t index) { return Data[index]; }
+	// BW1W120 inlined BW1M119 inlined
+	bool32_t IsThisInStack(T value)
+	{
+		for (uint32_t i = 0; i < Current; i++)
+		{
+			if (Data[i] == value)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 	void Remove(T value)
 	{
 		for (uint32_t i = 0; i < Current; i++)

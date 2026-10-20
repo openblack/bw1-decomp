@@ -4,9 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/CreatureEnum.h> /* For enum CREATURE_ACTION */
-#include <chlasm/Enum.h>         /* For enum CREATURE_DESIRES */
-#include <re_common.h>           /* For bool32_t */
+#include <chlasm/CreatureEnum.h>           /* For enum CREATURE_ACTION */
+#include <chlasm/Enum.h>                   /* For enum CREATURE_DESIRES, NUM_CREATURE_DESIRES */
+#include <Lionhead/LHLib/ver5.0/LHStack.h> /* For struct LHStack */
+#include <re_common.h>                     /* For bool32_t */
 
 #include "Base.h" /* For struct Base */
 
@@ -16,6 +17,11 @@ class Creature;
 class CreatureBelief;
 class CreatureInfo;
 class CreatureMental;
+
+#define MAX_ACTIONS_TRIED 31
+
+typedef LHStack<CREATURE_DESIRES, NUM_CREATURE_DESIRES + 1> CreatureDesiresTried;
+typedef LHStack<CREATURE_ACTION, MAX_ACTIONS_TRIED>         CreatureActionsTried;
 
 class CreaturePlan : public Base
 {
@@ -29,7 +35,7 @@ public:
 	float            field_0x20;
 	float            field_0x24;
 	float            ActionPriority;
-	float            field_0x2c;
+	float            AgendaPriority;
 
 	// Override methods
 
@@ -50,6 +56,8 @@ public:
 	void Clear();
 	// BW1W120 004f12e0 BW1M119 0127c4e0
 	bool32_t IsValid();
+	// BW1W120 004f1340 BW1M119 0127c430
+	bool32_t IsActivityValid();
 };
 
 struct CreaturePlanState
