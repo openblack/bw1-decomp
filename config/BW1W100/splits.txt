@@ -390,13 +390,13 @@ Black/CreatureDecision.cpp:
 	.CRT$XCU    start:0x008F6274 end:0x008F627C align:4
 	.bss        start:0x00BA39B0 end:0x00BA39B8
 
-Black/CreatureDevelopment.cpp:
-	.rdata      start:0x0080E238 end:0x0080E248
-
 Black/CreatureDirectControl.cpp:
 	.text       start:0x004ACE50 end:0x004AE350
 	.CRT$XCU    start:0x008F6288 end:0x008F6290 align:4
 	.data       start:0x00907E60 end:0x00907E88
+
+Black/CreatureDevelopment.cpp:
+	.rdata      start:0x0080E238 end:0x0080E248
 
 Black/CreatureDump.cpp:
 	.text       start:0x004AE350 end:0x004AE6D0
@@ -423,16 +423,23 @@ Black/CreatureHelp.cpp:
 	.CRT$XCU    start:0x008F62A8 end:0x008F62B8 align:4
 
 Black/CreatureInitialLesson.cpp:
-	.text       start:0x004B1A70 end:0x004B2AA0
-	.rdata      start:0x0080E2BC end:0x0080E680
-	.CRT$XCU    start:0x008F62B8 end:0x008F62C8 align:4
-	.data       start:0x0090B844 end:0x0090BA68
+	.text       start:0x004B1A70 end:0x004B1FF0
+	.rdata      start:0x0080E2BC end:0x0080E664
+	.CRT$XCU    start:0x008F62B8 end:0x008F62C0 align:4
+	.data       start:0x0090B844 end:0x0090B980
+
+Black/CreatureLeash.cpp:
+	.text       start:0x004B1FF0 end:0x004B2AA0
+	.rdata      start:0x0080E664 end:0x0080E678
+	.CRT$XCU    start:0x008F62C0 end:0x008F62C8 align:4
+	.data       start:0x0090B980 end:0x0090B9D0
+	.bss        start:0x00BA3C7C end:0x00BA3C84
 
 Black/CreatureLessonChooser.cpp:
 	.text       start:0x004B2AA0 end:0x004B3B00
-	.rdata      start:0x0080E684 end:0x0080E6F4
+	.rdata      start:0x0080E678 end:0x0080E6F4
 	.CRT$XCU    start:0x008F62C8 end:0x008F62D0 align:4
-	.data       start:0x0090BA90 end:0x0090BB5A
+	.data       start:0x0090B9D0 end:0x0090BB5A
 	.bss        start:0x00BA4288 end:0x00BA4298
 
 Black/CreatureLook.cpp:
@@ -527,16 +534,17 @@ Black/CreatureMentalExploration.cpp:
 	.bss        start:0x00BAEF98 end:0x00BCAFB4
 
 Black/CreatureMentalLearn.cpp:
-	.text       start:0x004C1C60 end:0x004C36D0
+	.text       start:0x004C1C30 end:0x004C3920
 	.rdata      start:0x0080EF54 end:0x0080F2C4
-	.CRT$XCU    start:0x008F6370 end:0x008F6374 align:4
-	.data       start:0x00B0DAD8 end:0x00B0DF40
+	.CRT$XCU    start:0x008F636C end:0x008F6374 align:4
+	.data       start:0x00B0DAD8 end:0x00B0DCA0
+	.bss        start:0x00BCAFB4 end:0x00BCAFBC
 
 Black/CreatureMentalLearnAction.cpp:
 	.text       start:0x004C3920 end:0x004C42E0
 	.rdata      start:0x0080F2C4 end:0x0080F310
 	.CRT$XCU    start:0x008F6374 end:0x008F637C align:4
-	.data       start:0x00B0DF40 end:0x00B0DFC0
+	.data       start:0x00B0DCA0 end:0x00B0DFC0
 	.bss        start:0x00BCAFBC end:0x00BCAFC4
 
 Black/CreatureMentalMisc.cpp:

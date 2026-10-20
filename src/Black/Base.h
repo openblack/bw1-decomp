@@ -62,8 +62,20 @@ public:
 
 	// Non-virtual methods
 
+#ifndef VERSION_BW1W100
+	// BW1W120 00436a70 BW1M119 010b9de0
+	int GetIndexOffset() const;
+#endif // VERSION_BW1W100
 	// BW1W120 00436a80 BW1M119 01036380
 	int GetUniqueId() const;
+#ifndef VERSION_BW1W100
+	// BW1W120 00436a90 BW1M119 0115ef00
+	static int GetUniqueId(void* address);
+	// BW1W120 00436ab0 BW1M119 011a2e70
+	static int GetUniqueId(unsigned long offset);
+	// BW1W120 00436af0 BW1M119 01045ff0
+	static bool32_t IsUniqueIdAtOffsetTheSame(unsigned long offset, unsigned long id);
+#endif // VERSION_BW1W100
 	// BW1W120 00436b20 BW1M119 01001480
 	void SetInfo(BaseInfo* info) const;
 };

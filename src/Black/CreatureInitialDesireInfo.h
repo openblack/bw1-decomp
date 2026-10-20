@@ -21,7 +21,9 @@ public:
 	CREATURE_DESIRE_SOURCE Sources[MAX_NUM_SOURCES_FOR_EACH_DESIRE];
 	bool32_t               Social;
 	bool32_t               Emotional;
-	uint32_t               field_0x38[0x3];
+	bool32_t               CanLearnFromFeedback;
+	bool32_t               CanLearnFromPlayerWatching;
+	uint32_t               field_0x40;
 	bool32_t               Physical;
 	bool32_t               CanBeHelped;
 	float                  MaxLevel;
@@ -35,7 +37,10 @@ public:
 	float                  NumCompletionsToSatisfyUrge;
 	bool32_t               NumCompletionsChangeWithFeedback;
 	char                   Name[0x40];
-	uint32_t               field_0xc0[0x40];
+	char                   LessonName[0x40];
+	char                   field_0x100[0x40];
+	char                   LessonFeelingText[0x40];
+	char                   LessonTryingText[0x40];
 
 	// Override methods
 
@@ -53,7 +58,7 @@ public:
 	static CreatureInitialDesireInfo* GetInfo() { return g_CreatureInitialDesireInfos; }
 
 	// TODO(#377): The original declared this class in CreatureAction.h.
-	INFO_DATA_BLOCK(Sources, field_0xc0)
+	INFO_DATA_BLOCK(Sources, LessonTryingText)
 	INFO_ROOT_LOADERS("CreatureAction.h", 54)
 };
 static_assert(sizeof(CreatureInitialDesireInfo) == 0x1c0, "Data type is of wrong size");

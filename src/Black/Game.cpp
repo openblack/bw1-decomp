@@ -2777,8 +2777,9 @@ bool32_t GGame::Save(GameOSFile& file)
 	if (creature)
 	{
 		// The original combines low bytes by addition, without Boolean normalization.
-		creatureFlags = (unsigned char)creature->ScriptFlag0 + 2 * (unsigned char)creature->ScriptFlag1 +
-		                4 * (unsigned char)creature->ScriptFlag2;
+		creatureFlags = (unsigned char)creature->LeashEnabled[LEASH_TYPE_EVIL] +
+		                2 * (unsigned char)creature->LeashEnabled[LEASH_TYPE_ROPE] +
+		                4 * (unsigned char)creature->LeashEnabled[LEASH_TYPE_GOOD];
 	}
 	file.WriteIt(creatureFlags);
 	file.WriteIt(field_0x205a5c);

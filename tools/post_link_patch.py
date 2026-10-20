@@ -642,6 +642,12 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004C80EA, call_indirect(0x008A9328)),  # CreatureEmpathy: __imp_LHEditBox...
     (0x004C812A, call_indirect(0x008A901C)),  # CreatureEmpathy: __imp__TrackMouseEvent@4
     (0x004C840B, call_rel32(0x00401879)),  # CreatureEmpathy
+    (0x004CE31B, call_rel32(0x00401879)),  # CreatureLeash
+    (0x004CE6DB, call_rel32(0x00401879)),  # CreatureLeash
+    (0x004CF05A, call_indirect(0x008A991C)),  # CreatureLeash: __imp__ioctlsocket@4
+    (0x004CF09A, call_indirect(0x008A935C)),  # CreatureLeash: __imp_??0LHSPrintf@@QAA@PADZZ
+    (0x004CF0DA, call_indirect(0x008A9124)),  # CreatureLeash: __imp__ImmGetCandidateListA@4
+    (0x004CF11A, call_indirect(0x008A905C)),  # CreatureLeash: __imp__GetDeviceCaps@4
     (0x004D293B, call_rel32(0x00401879)),  # CreatureMentalActionTests
     (0x004D2A1A, call_indirect(0x008A93CC)),  # CreatureMentalActionTests: __imp___0LHVersion__QAE_PAULHVersionBlock___Z@4
     (0x004D2C7B, call_rel32(0x00401879)),  # CreatureMentalActionTests
@@ -661,6 +667,9 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004DEC9A, call_indirect(0x008A920C)),  # CreatureMentalDesireSourceValues: __imp__SetEndOfFile@4
     (0x004DF08B, call_rel32(0x00401879)),  # CreatureMentalDesireTests
     (0x004DF26B, call_rel32(0x00401879)),  # CreatureMentalEditor
+    (0x004E028B, call_rel32(0x00401879)),  # CreatureMentalLearn
+    (0x004E0FBB, call_rel32(0x00401879)),  # CreatureMentalLearn
+    (0x004E152A, call_indirect(0x008A9024)),  # CreatureMentalLearn: __imp__DirectDrawCreateEx@4
     (0x004E35BB, call_rel32(0x00401879)),  # CreatureMentalObjectMultipliers
     (0x004F231B, call_rel32(0x00401879)),  # CreaturePreviousContext
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
@@ -828,6 +837,16 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004CA579, jmp_run(0x004CA553)),  # CreatureEmpathy
     (0x004CA5B5, jmp_run(0x004CA579)),  # CreatureEmpathy
     (0x004CA79B, call_rel32(0x00403C49)),  # CreatureEmpathy
+    (0x004D0683, copy_run(0x004D0622)),  # CreatureLeash
+    (0x004D06AB, call_rel32(0x00403C49)),  # CreatureLeash
+    (0x004D0A6B, call_rel32(0x00403C49)),  # CreatureLeash
+    (0x004D0C62, copy_run(0x004D0A6B)),  # CreatureLeash
+    (0x004D1077, jmp_run(0x004D0C62)),  # CreatureLeash
+    (0x004D13EA, call_indirect(0x008AE958)),  # CreatureLeash
+    (0x004D142A, call_indirect(0x008AE2B0)),  # CreatureLeash
+    (0x004D146A, call_indirect(0x008AE828)),  # CreatureLeash
+    (0x004D14AA, call_indirect(0x008AE090)),  # CreatureLeash
+    (0x004D14F5, jmp_run(0x004D14AA)),  # CreatureLeash
     (0x004D4CA3, copy_run(0x004D4BF3)),  # CreatureMentalActionTests
     (0x004D4CCB, call_rel32(0x00403C49)),  # CreatureMentalActionTests
     (0x004D4DAA, call_indirect(0x008AE050)),  # CreatureMentalActionTests
@@ -910,6 +929,27 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004E157B, jmp_run(0x004E1543)),  # CreatureMentalDesireTests
     (0x004E15D3, jmp_run(0x004E1579)),  # CreatureMentalEditor
     (0x004E16D1, jmp_run(0x004E15D3)),  # CreatureMentalEditor
+    (0x004E25F3, jmp_run(0x004E1FF4)),  # CreatureMentalLearn
+    (0x004E261B, call_rel32(0x00403C49)),  # CreatureMentalLearn
+    (0x004E2755, jmp_run(0x004E261B)),  # CreatureMentalLearn
+    (0x004E2798, jmp_run(0x004E2753)),  # CreatureMentalLearn
+    (0x004E334B, call_rel32(0x00403C49)),  # CreatureMentalLearn
+    (0x004E3408, copy_run(0x004E334B)),  # CreatureMentalLearn
+    (0x004E3544, copy_run(0x004E3408)),  # CreatureMentalLearn
+    (0x004E38BA, call_indirect(0x008AE990)),  # CreatureMentalLearn
+    (0x004E3927, copy_run(0x004E38BA)),  # CreatureMentalLearn
+    (0x004E3966, copy_run(0x004E3927)),  # CreatureMentalLearn
+    (0x004E3F06, copy_run(0x004E3966)),  # CreatureMentalLearn
+    (0x004E4049, copy_run(0x004E3F06)),  # CreatureMentalLearn
+    (0x004E4075, jmp_run(0x004E4049)),  # CreatureMentalLearn
+    (0x004E40B7, jmp_run(0x004E4075)),  # CreatureMentalLearn
+    (0x004E4129, copy_run(0x004E40B7)),  # CreatureMentalLearn
+    (0x004E4159, jmp_run(0x004E4129)),  # CreatureMentalLearn
+    (0x004E4184, copy_run(0x004E4159)),  # CreatureMentalLearn
+    (0x004E41A7, copy_run(0x004E4184)),  # CreatureMentalLearn
+    (0x004E41D3, jmp_run(0x004E41A7)),  # CreatureMentalLearn
+    (0x004E42F3, jmp_run(0x004E41D3)),  # CreatureMentalLearn
+    (0x004E44F9, jmp_run(0x004E42F3)),  # CreatureMentalLearn
     (0x004E5923, copy_run(0x004E5861)),  # CreatureMentalObjectMultipliers
     (0x004E594B, call_rel32(0x00403C49)),  # CreatureMentalObjectMultipliers
     (0x004E5973, jmp_run(0x004E594B)),  # CreatureMentalObjectMultipliers

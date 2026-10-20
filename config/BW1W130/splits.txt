@@ -517,18 +517,25 @@ Black/CreatureHelp.cpp:
 	.bss        start:0x00D03804 end:0x00D038D4
 
 Black/CreatureInitialLesson.cpp:
-	.text       start:0x004CD700 end:0x004D1530
-	.rdata      start:0x008D4428 end:0x008D47EC
-	.CRT$XCU    start:0x00A46440 end:0x00A46458 align:4
-	.data       start:0x00A5D9CC end:0x00A5DCD0
-	.bss        start:0x00D038D4 end:0x00D03EE8
+	.text       start:0x004CD700 end:0x004D0660
+	.rdata      start:0x008D4428 end:0x008D47D0
+	.CRT$XCU    start:0x00A46440 end:0x00A4644C align:4
+	.data       start:0x00A5D9CC end:0x00A5DB40
+	.bss        start:0x00D038D4 end:0x00D038DC
+
+Black/CreatureLeash.cpp:
+	.text       start:0x004D0660 end:0x004D1530
+	.rdata      start:0x008D47D0 end:0x008D47E8
+	.CRT$XCU    start:0x00A4644C end:0x00A46458 align:4
+	.data       start:0x00A5DB40 end:0x00A5DC38
+	.bss        start:0x00D038DC end:0x00D038E4
 
 Black/CreatureLessonChooser.cpp:
 	.text       start:0x004D1530 end:0x004D2680
-	.rdata      start:0x008D47EC end:0x008D4848
+	.rdata      start:0x008D47E8 end:0x008D4848
 	.CRT$XCU    start:0x00A46458 end:0x00A46464 align:4
-	.data       start:0x00A5DCD0 end:0x00A5DDF4
-	.bss        start:0x00D03EE8 end:0x00D03EF8
+	.data       start:0x00A5DC38 end:0x00A5DDF4
+	.bss        start:0x00D038E4 end:0x00D03EF8
 
 Black/CreatureLook.cpp:
 	.text       start:0x004D2680 end:0x004D4630
@@ -628,14 +635,14 @@ Black/CreatureMentalLearn.cpp:
 	.text       start:0x004E25D0 end:0x004E4530
 	.rdata      start:0x008D5104 end:0x008D5474
 	.CRT$XCU    start:0x00A46538 end:0x00A46544 align:4
-	.data       start:0x00C5FF30 end:0x00C603A0
+	.data       start:0x00C5FF30 end:0x00C60100
 	.bss        start:0x00D2AC14 end:0x00D2AC1C
 
 Black/CreatureMentalLearnAction.cpp:
 	.text       start:0x004E4530 end:0x004E5050
 	.rdata      start:0x008D5474 end:0x008D54C0
 	.CRT$XCU    start:0x00A46544 end:0x00A46550 align:4
-	.data       start:0x00C603A0 end:0x00C60428
+	.data       start:0x00C60100 end:0x00C60428
 	.bss        start:0x00D2AC1C end:0x00D2AC24
 
 Black/CreatureMentalMisc.cpp:

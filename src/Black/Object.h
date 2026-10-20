@@ -771,6 +771,8 @@ public:
 	long MoveAnimByDist(const LH3DAnim* anim, long frame, float distance);
 	// BW1W120 00518050 BW1M119 010cd310
 	void DrawObjectOnFire();
+	// BW1W120 004cee80 BW1M119 01243980
+	void TellCreatureWhatToDoWhenAttachedToMe(Creature* creature);
 };
 
 #endif /* BW1_DECOMP_OBJECT_INCLUDED_H */
