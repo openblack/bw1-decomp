@@ -126,7 +126,7 @@ void CreatureDesires::Initialise(Creature* creature, const CreatureInfo* info)
 		MaxLevels[i] = CreatureInitialDesireInfo::GetInfo()[i].MaxLevel;
 		NumCompletionsToSatisfyUrge[i] = CreatureInitialDesireInfo::GetInfo()[i].NumCompletionsToSatisfyUrge;
 		NumCompletions[i] = 0;
-		field_0x658[i] = 0;
+		NumTimesStoppedByLeash[i] = 0;
 	}
 
 	creature_info = info;

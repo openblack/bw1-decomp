@@ -59,7 +59,7 @@ public:
 	uint32_t               field_0x15c3c;
 	uint32_t               NumTimesActionPerformed[NUM_CREATURE_ACTIONS];
 	Creature*              field_0x16160;
-	uint32_t               field_0x16164;
+	uint32_t               GameTurnNicenessLastUpdated;
 
 	// Constructors
 

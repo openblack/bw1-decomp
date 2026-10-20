@@ -1034,7 +1034,7 @@ void CitadelHeart::DrawCreaturePen()
 		LEASH_TYPE types[LEASH_TYPE_LAST] = {LEASH_TYPE_EVIL, LEASH_TYPE_ROPE, LEASH_TYPE_GOOD};
 		for (; i < LEASH_TYPE_LAST; i++)
 		{
-			if ((&creature->ScriptFlag0)[types[i] - 1] == 0)
+			if (creature->LeashEnabled[types[i]] == false)
 			{
 				continue;
 			}

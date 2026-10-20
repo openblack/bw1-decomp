@@ -15,7 +15,7 @@ class CreatureCommand;
 class CreatureCommandState : public Base
 {
 public:
-	uint32_t  field_0x8;
+	bool32_t  TakingFromHand;
 	MapCoords Destination;
 	bool32_t  ControlledByTeleport;
 #ifdef VERSION_BW1WCI

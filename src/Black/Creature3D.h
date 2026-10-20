@@ -408,6 +408,8 @@ public:
 	void ApplyForce(LHPoint& param_1, LHPoint& param_2);
 	// BW1W120 0047fbf0 BW1M119 012024b0
 	void AnalyseLeashForcePacket(float param_1);
+	// BW1W120 inlined BW1M119 inlined
+	float GetLeashForce() const { return LeashForce; }
 	// BW1W120 0047fc20 BW1M119 01201e20
 	void Init(LHPoint& pos, void* param_2);
 	// BW1W120 004806c0 BW1M119 01201870

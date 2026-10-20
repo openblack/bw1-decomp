@@ -68,6 +68,8 @@ public:
 
 	// BW1W120 00719e90 BW1M119 0114d250
 	void Draw(unsigned long param_1);
+	// BW1W120 0071a200 BW1M119 0114d130
+	float GetNeedPercentage();
 };
 
 #endif /* BW1_DECOMP_SHOW_NEEDS_VISUALS_INCLUDED_H */
