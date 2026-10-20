@@ -489,9 +489,16 @@ Black/CreatureDump.cpp:
 	.data       start:0x00A59E08 end:0x00A5A130
 	.bss        start:0x00D037EC end:0x00D037F4
 
+Black/CreatureEmpathy.cpp:
+	.text       start:0x004CA170 end:0x004CA7D0
+	.rdata      start:0x008D43D0 end:0x008D4408
+	.CRT$XCU    start:0x00A46414 end:0x00A46420 align:4
+	.data       start:0x00A5A130 end:0x00A5A158
+	.bss        start:0x00D037F4 end:0x00D037FC
+
 Black/CreatureFace.cpp:
 	.text       start:0x004CA7D0 end:0x004CAC60
-	.rdata      start:0x008D43E4 end:0x008D4418
+	.rdata      start:0x008D4408 end:0x008D4418
 	.CRT$XCU    start:0x00A46420 end:0x00A4642C align:4
 	.data       start:0x00A5A158 end:0x00A5A3AC
 	.bss        start:0x00D037FC end:0x00D03804

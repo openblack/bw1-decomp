@@ -655,6 +655,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/CreatureDevelopment.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureDirectControl.cpp"),
             GameCodeObject(Matching, "Black/CreatureDump.cpp"),
+            GameCodeObject(Matching, "Black/CreatureEmpathy.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureExplorationMap.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureFace.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureHelp.cpp"),

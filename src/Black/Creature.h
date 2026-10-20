@@ -828,6 +828,10 @@ public:
 	                                 int param_7);
 	// BW1W120 004c44b0 BW1M119 01235820
 	void ForceActivityAndForceAction(CreaturePlan& plan, int param_2, int param_3);
+	// BW1W120 004c8230 BW1M119 01239d00
+	float ComputeCurrentPlayerInterestingness();
+	// BW1W120 004c81f0 BW1M119 01239f60
+	void ProcessPlayerInterestingness();
 	// BW1W120 004c84b0 BW1M119 0123b450
 	void SetFaceForMoodFrightened();
 	// BW1W120 004c8500 BW1M119 0123b3a0

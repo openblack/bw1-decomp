@@ -637,6 +637,10 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004C4F5A, call_indirect(0x008A900C)),  # CreatureAttitudeToCreature: __imp__GetUserNameA@4
     (0x004C4FAA, call_indirect(0x008A9888)),  # CreatureAttitudeToCreature: __imp__mmioAscend@4
     (0x004C765B, call_rel32(0x00401879)),  # CreatureDump
+    (0x004C7E2B, call_rel32(0x00401879)),  # CreatureEmpathy
+    (0x004C80EA, call_indirect(0x008A9328)),  # CreatureEmpathy: __imp_LHEditBox...
+    (0x004C812A, call_indirect(0x008A901C)),  # CreatureEmpathy: __imp__TrackMouseEvent@4
+    (0x004C840B, call_rel32(0x00401879)),  # CreatureEmpathy
     (0x004D293B, call_rel32(0x00401879)),  # CreatureMentalActionTests
     (0x004D2A1A, call_indirect(0x008A93CC)),  # CreatureMentalActionTests: __imp___0LHVersion__QAE_PAULHVersionBlock___Z@4
     (0x004D2C7B, call_rel32(0x00401879)),  # CreatureMentalActionTests
@@ -795,6 +799,22 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004C9FE4, copy_run(0x004C9FA4)),  # CreatureDump
     (0x004CA103, copy_run(0x004C9FE4)),  # CreatureDump
     (0x004CA132, jmp_run(0x004CA103)),  # CreatureDump
+    (0x004CA193, jmp_run(0x004CA132)),  # CreatureEmpathy
+    (0x004CA1BB, call_rel32(0x00403C49)),  # CreatureEmpathy
+    (0x004CA1D5, jmp_run(0x004CA1BB)),  # CreatureEmpathy
+    (0x004CA233, jmp_run(0x004CA1D4)),  # CreatureEmpathy
+    (0x004CA251, jmp_run(0x004CA233)),  # CreatureEmpathy
+    (0x004CA2E5, copy_run(0x004CA251)),  # CreatureEmpathy
+    (0x004CA389, copy_run(0x004CA2E5)),  # CreatureEmpathy
+    (0x004CA3D3, jmp_run(0x004CA389)),  # CreatureEmpathy
+    (0x004CA438, jmp_run(0x004CA3D3)),  # CreatureEmpathy
+    (0x004CA47A, call_indirect(0x008AE6A4)),  # CreatureEmpathy
+    (0x004CA4BA, call_indirect(0x008AE03C)),  # CreatureEmpathy
+    (0x004CA521, copy_run(0x004CA4BA)),  # CreatureEmpathy
+    (0x004CA553, jmp_run(0x004CA521)),  # CreatureEmpathy
+    (0x004CA579, jmp_run(0x004CA553)),  # CreatureEmpathy
+    (0x004CA5B5, jmp_run(0x004CA579)),  # CreatureEmpathy
+    (0x004CA79B, call_rel32(0x00403C49)),  # CreatureEmpathy
     (0x004D4CA3, copy_run(0x004D4BF3)),  # CreatureMentalActionTests
     (0x004D4CCB, call_rel32(0x00403C49)),  # CreatureMentalActionTests
     (0x004D4DAA, call_indirect(0x008AE050)),  # CreatureMentalActionTests
