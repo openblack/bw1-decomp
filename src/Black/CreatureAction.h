@@ -196,6 +196,18 @@ struct PreviousActionContextStack
 {
 	uint32_t              indexes[0x2][0x148]; /* 0x0 */
 	CreatureActionContext stack[0x148][0xa];   /* 0xa40 */
+
+	// Constructors
+
+	// BW1W120 004f2190 BW1M119 015efc00
+	PreviousActionContextStack();
+
+	// Non-virtual methods
+
+	// BW1W120 004f21e0 BW1M119 015efb00
+	void Push(CREATURE_ACTION action, const CreatureActionContext& context);
+	// BW1W120 004f2250 BW1M119 null
+	CreatureActionContext* GetTop(CREATURE_ACTION action);
 };
 
 struct CreatureActionOpinions
@@ -206,6 +218,11 @@ struct CreatureActionOpinions
 
 	// BW1W120 004c3930 BW1M119 01235290
 	CreatureActionOpinions(const CreatureInfo* info);
+
+	// Non-virtual methods
+
+	// BW1W120 inlined BW1M119 inlined
+	float GetOpinion(CREATURE_ACTION action) { return entries[action]; }
 };
 
 class CreaturePreviousActions : public Base

@@ -16,28 +16,39 @@
 class Creature;
 class CreatureBelief;
 
+enum CREATURE_CONTEXT_SELECTION
+{
+	CREATURE_CONTEXT_SELECTION_CURRENT = 0x0,
+	CREATURE_CONTEXT_SELECTION_CURRENT_AS_PREVIOUS_TOO_OLD = 0x1,
+	CREATURE_CONTEXT_SELECTION_PREVIOUS = 0x2,
+	CREATURE_CONTEXT_SELECTION_SELECTED = 0x3,
+	CREATURE_CONTEXT_SELECTION_OLDEST = 0x5
+};
+
 class CreatureContext : public Base
 {
 public:
-	CreaturePlan           plan; /* 0x8 */
-	uint32_t               field_0x38;
-	bool32_t               WasSeen;
-	bool32_t               HasBeenLearntFrom;
-	int                    field_0x44;
-	bool32_t               FinishedSuccessfully;
-	uint32_t               GameTurnWasSeen;
-	uint32_t               field_0x50;
-	CreatureBelief*        ContextBelief;
-	CREATURE_DESIRE_SOURCE DesireSource;
-	float                  ActionContextStart[NUM_ACTION_CONTEXT_VALUES];
+	CreaturePlan               plan; /* 0x8 */
+	uint32_t                   field_0x38;
+	bool32_t                   WasSeen;
+	bool32_t                   HasBeenLearntFrom;
+	bool32_t                   ForcedByPlayer;
+	bool32_t                   FinishedSuccessfully;
+	uint32_t                   GameTurnWasSeen;
+	CREATURE_CONTEXT_SELECTION Selection;
+	CreatureBelief*            ContextBelief;
+	CREATURE_DESIRE_SOURCE     DesireSource;
+	float                      ActionContextStart[NUM_ACTION_CONTEXT_VALUES];
 
 	// BW1W120 004e1b40 BW1M119 01266bd0
 	CreatureContext();
 	// BW1W120 004e1b80 BW1M119 012669f0
-	CreatureContext(Creature* creature, CreaturePlan& plan, CREATURE_DESIRE_SOURCE desire_source, int param_4,
-	                CreatureBelief* context_belief);
+	CreatureContext(Creature* creature, CreaturePlan& plan, CREATURE_DESIRE_SOURCE desire_source,
+	                bool32_t forced_by_player, CreatureBelief* context_belief);
 	// BW1W120 004e1c50 BW1M119 01266900
 	void CleanUp();
+	// BW1W120 004e0600 BW1M119 01268bb0
+	float CalculateLearningPriority();
 };
 static_assert(sizeof(CreatureContext) == 0x70, "Data type is of wrong size");
 

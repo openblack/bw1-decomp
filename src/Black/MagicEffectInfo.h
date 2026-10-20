@@ -64,6 +64,9 @@ public:
 	uint32_t         field_0x110;
 	float            field_0x114;
 	float            field_0x118;
+#ifdef VERSION_BW1WCI
+	uint32_t field_0x11c;
+#endif
 
 	// Override methods
 
@@ -89,8 +92,17 @@ public:
 
 	// TODO(#377): The original declared this class in Effect.h.
 	// Out of line: LoadBinary at 0042d5e0, Load at 0042d570.
+#ifdef VERSION_BW1WCI
+	INFO_DATA_BLOCK(name, field_0x11c)
+#else
 	INFO_DATA_BLOCK(name, field_0x118)
+#endif
 	INFO_DERIVED_LOADERS(GEffectInfo, "Effect.h", 38)
 };
+#ifdef VERSION_BW1WCI
+static_assert(sizeof(GMagicEffectInfo) == 0x120, "Data type is of wrong size");
+#else
+static_assert(sizeof(GMagicEffectInfo) == 0x11c, "Data type is of wrong size");
+#endif
 
 #endif /* BW1_DECOMP_MAGIC_EFFECT_INFO_INCLUDED_H */

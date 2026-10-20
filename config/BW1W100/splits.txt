@@ -390,13 +390,13 @@ Black/CreatureDecision.cpp:
 	.CRT$XCU    start:0x008F6274 end:0x008F627C align:4
 	.bss        start:0x00BA39B0 end:0x00BA39B8
 
-Black/CreatureDevelopment.cpp:
-	.rdata      start:0x0080E238 end:0x0080E248
-
 Black/CreatureDirectControl.cpp:
 	.text       start:0x004ACE50 end:0x004AE350
 	.CRT$XCU    start:0x008F6288 end:0x008F6290 align:4
 	.data       start:0x00907E60 end:0x00907E88
+
+Black/CreatureDevelopment.cpp:
+	.rdata      start:0x0080E238 end:0x0080E248
 
 Black/CreatureDump.cpp:
 	.text       start:0x004AE350 end:0x004AE6D0
@@ -534,16 +534,17 @@ Black/CreatureMentalExploration.cpp:
 	.bss        start:0x00BAEF98 end:0x00BCAFB4
 
 Black/CreatureMentalLearn.cpp:
-	.text       start:0x004C1C60 end:0x004C36D0
+	.text       start:0x004C1C30 end:0x004C3920
 	.rdata      start:0x0080EF54 end:0x0080F2C4
-	.CRT$XCU    start:0x008F6370 end:0x008F6374 align:4
-	.data       start:0x00B0DAD8 end:0x00B0DF40
+	.CRT$XCU    start:0x008F636C end:0x008F6374 align:4
+	.data       start:0x00B0DAD8 end:0x00B0DCA0
+	.bss        start:0x00BCAFB4 end:0x00BCAFBC
 
 Black/CreatureMentalLearnAction.cpp:
 	.text       start:0x004C3920 end:0x004C42E0
 	.rdata      start:0x0080F2C4 end:0x0080F310
 	.CRT$XCU    start:0x008F6374 end:0x008F637C align:4
-	.data       start:0x00B0DF40 end:0x00B0DFC0
+	.data       start:0x00B0DCA0 end:0x00B0DFC0
 	.bss        start:0x00BCAFBC end:0x00BCAFC4
 
 Black/CreatureMentalMisc.cpp:

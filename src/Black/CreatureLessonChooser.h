@@ -16,7 +16,8 @@ enum LESSON_TYPE
 	LESSON_TYPE_DESIRE = 0x0,
 	LESSON_TYPE_ACTIVITY_OBJECT = 0x1,
 	LESSON_TYPE_ACTION_OBJECT = 0x2,
-	LESSON_TYPE_ACTION = 0x3
+	LESSON_TYPE_ACTION = 0x3,
+	_LESSON_TYPE_COUNT = 0x4
 };
 static_assert(sizeof(enum LESSON_TYPE) == 0x4, "Data type is of wrong size");
 

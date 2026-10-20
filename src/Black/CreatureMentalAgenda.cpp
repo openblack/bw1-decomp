@@ -65,7 +65,7 @@ void CreatureAgenda::Clear()
 	field_0x1ae4 = 0;
 	NumTurnsWithoutAction = 0;
 	NumTurnsPerformingAction = 0;
-	field_0x1af0 = 0.0f;
+	MinSecondsPerformingActionToLearn = 0.0f;
 	belief = NULL;
 	DanceStage = 0;
 	PlayerHasBeenTold = false;

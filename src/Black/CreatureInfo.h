@@ -34,7 +34,9 @@ public:
 	float    MinDesireIncreaseTime;
 	float    MaxDesireIncreaseTime;
 	uint32_t field_0x284;
-	float    field_0x288[0x8];
+	float    field_0x288[0x6];
+	float    WatchingFeedback;
+	float    MinFeedback;
 	uint32_t field_0x2a8;
 	float    field_0x2ac[0x9];
 	float    MaxDesireLevelFeedbackScale;
