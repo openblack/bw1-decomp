@@ -645,6 +645,13 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004D2A1A, call_indirect(0x008A93CC)),  # CreatureMentalActionTests: __imp___0LHVersion__QAE_PAULHVersionBlock___Z@4
     (0x004D2C7B, call_rel32(0x00401879)),  # CreatureMentalActionTests
     (0x004D342A, call_indirect(0x008A911C)),  # CreatureMentalActionTests: __imp__ImmSetCompositionStringA@4
+    (0x004D968B, call_rel32(0x00401879)),  # CreatureMentalBeliefs
+    (0x004DA00A, call_indirect(0x008A9944)),  # CreatureMentalBeliefs: __imp__BinkNextFrame@4
+    (0x004DA5DA, call_indirect(0x008A9970)),  # CreatureMentalBeliefs: __imp__GetOpenFileNameA@4
+    (0x004DA6EB, call_rel32(0x00401879)),  # CreatureMentalBeliefs
+    (0x004DA6FB, call_rel32(0x00401879)),  # CreatureMentalBeliefs
+    (0x004DA8AA, call_indirect(0x008A9028)),  # CreatureMentalBeliefs: __imp__DirectDrawEnumerateA@4
+    (0x004DADBA, call_indirect(0x008A9124)),  # CreatureMentalBeliefs: __imp__ImmGetCandidateListA@4
     (0x004DE8DB, call_rel32(0x00401879)),  # CreatureMentalDesireSourceValues
     (0x004DE94A, call_indirect(0x008A9328)),  # CreatureMentalDesireSourceValues: __imp_LHEditBox...
     (0x004DE96A, call_indirect(0x008A901C)),  # CreatureMentalDesireSourceValues: __imp__TrackMouseEvent@4
@@ -841,6 +848,40 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004D5757, jmp_run(0x004D56E7)),  # CreatureMentalActionTests
     (0x004D5793, jmp_run(0x004D5757)),  # CreatureMentalActionTests
     (0x004D57BA, call_indirect(0x008AE3E0)),  # CreatureMentalActionTests
+    (0x004DB9F3, jmp_run(0x004DB994)),  # CreatureMentalBeliefs
+    (0x004DBA1B, call_rel32(0x00403C49)),  # CreatureMentalBeliefs
+    (0x004DBB84, copy_run(0x004DBA1B)),  # CreatureMentalBeliefs
+    (0x004DBD65, copy_run(0x004DBB84)),  # CreatureMentalBeliefs
+    (0x004DBF27, copy_run(0x004DBD65)),  # CreatureMentalBeliefs
+    (0x004DC017, jmp_run(0x004DBF27)),  # CreatureMentalBeliefs
+    (0x004DC0E1, copy_run(0x004DC017)),  # CreatureMentalBeliefs
+    (0x004DC203, copy_run(0x004DC0E1)),  # CreatureMentalBeliefs
+    (0x004DC39A, call_indirect(0x008AE12C)),  # CreatureMentalBeliefs
+    (0x004DC543, copy_run(0x004DC39A)),  # CreatureMentalBeliefs
+    (0x004DC6E3, copy_run(0x004DC543)),  # CreatureMentalBeliefs
+    (0x004DC7D1, jmp_run(0x004DC6E3)),  # CreatureMentalBeliefs
+    (0x004DC96A, call_indirect(0x008AE934)),  # CreatureMentalBeliefs
+    (0x004DCA8B, call_rel32(0x00403C49)),  # CreatureMentalBeliefs
+    (0x004DCC3A, call_indirect(0x008AE00C)),  # CreatureMentalBeliefs
+    (0x004DCD53, jmp_run(0x004DCC3A)),  # CreatureMentalBeliefs
+    (0x004DCE32, jmp_run(0x004DCD53)),  # CreatureMentalBeliefs
+    (0x004DCE71, jmp_run(0x004DCE32)),  # CreatureMentalBeliefs
+    (0x004DCEB1, jmp_run(0x004DCE71)),  # CreatureMentalBeliefs
+    (0x004DCEF1, jmp_run(0x004DCEB1)),  # CreatureMentalBeliefs
+    (0x004DCF31, jmp_run(0x004DCEF1)),  # CreatureMentalBeliefs
+    (0x004DCF71, jmp_run(0x004DCF31)),  # CreatureMentalBeliefs
+    (0x004DCFB1, jmp_run(0x004DCF71)),  # CreatureMentalBeliefs
+    (0x004DCFF1, jmp_run(0x004DCFB1)),  # CreatureMentalBeliefs
+    (0x004DD031, jmp_run(0x004DCFF1)),  # CreatureMentalBeliefs
+    (0x004DD071, jmp_run(0x004DD031)),  # CreatureMentalBeliefs
+    (0x004DD095, jmp_run(0x004DD071)),  # CreatureMentalBeliefs
+    (0x004DD14A, call_indirect(0x008AE624)),  # CreatureMentalBeliefs
+    (0x004DD1F7, jmp_run(0x004DD14A)),  # CreatureMentalBeliefs
+    (0x004DD2E5, copy_run(0x004DD1F7)),  # CreatureMentalBeliefs
+    (0x004DD3F5, jmp_run(0x004DD2E5)),  # CreatureMentalBeliefs
+    (0x004DD461, copy_run(0x004DD3F5)),  # CreatureMentalBeliefs
+    (0x004DD501, copy_run(0x004DD461)),  # CreatureMentalBeliefs
+    (0x004DD5A4, copy_run(0x004DD501)),  # CreatureMentalBeliefs
     (0x004E0C43, copy_run(0x004E0BE4)),  # CreatureMentalDesireSourceValues
     (0x004E0CFA, call_indirect(0x008AE01C)),  # CreatureMentalDesireSourceValues
     (0x004E0D73, jmp_run(0x004E0CFA)),  # CreatureMentalDesireSourceValues
