@@ -115,6 +115,7 @@ enum VILLAGER_STATE_RESULT
 
 enum VILLAGER_FLAGS
 {
+	VILLAGER_FLAG_AFTER_TAP_ON_ABODE = 0x1,
 	VILLAGER_FLAG_AT_WORSHIP_SITE = 0x2,
 	VILLAGER_FLAG_AT_HOME = 0x4,
 	VILLAGER_FLAG_CHILD = 0x8,
@@ -1216,7 +1217,7 @@ public:
 	// BW1W120 0075b940 BW1M119 01583810
 	bool32_t ShowPoisoned();
 	// BW1W120 0075b990 BW1M119 0100c160
-	bool ChangeStateToFindFoodToEat();
+	bool32_t ChangeStateToFindFoodToEat();
 	// BW1W120 0075baf0 BW1M119 015835f0
 	bool32_t CheckHungryAtHome();
 	// BW1W120 0075bb00 BW1M119 01583500
@@ -1424,7 +1425,7 @@ public:
 	// BW1W120 00760010 BW1M119 01098e30
 	bool32_t CheckNeededForSpecial();
 	// BW1W120 00760050 BW1M119 010979c0
-	bool32_t CheckSatisfyOwnDesire(float param_1);
+	bool32_t CheckSatisfyOwnDesire(float threshold);
 	// BW1W120 00760110 BW1M119 0100f140
 	bool32_t CheckNeedsAtHome();
 	// BW1W120 00760240 BW1M119 01590af0

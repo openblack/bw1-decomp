@@ -1,4 +1,5 @@
 #include "MobileWallHug.h"
+#include "ObjectMovementConstants.h"
 
 #include "LandscapeConstants.h" /* For LandscapeExtent */
 #include "Landscape.h"
@@ -498,8 +499,8 @@ bool32_t MobileWallHug::AreWeThere(float extra_distance)
 
 bool32_t MobileWallHug::AreWeThere(const MapCoords& coords, float extra_distance)
 {
-	float dx = (float)(Pos.x - coords.x);
-	float dz = (float)(Pos.z - coords.z);
+	float dx = (float)(Pos.WholeX() - coords.WholeX());
+	float dz = (float)(Pos.WholeZ() - coords.WholeZ());
 	float r = (float)speed + extra_distance;
 	return dx * dx + dz * dz < r * r;
 }
@@ -637,9 +638,8 @@ int MobileWallHug::MoveTo()
 		float limit = (float)turns * (1.0f / 0x4000) * (float)turns;
 		if (Pos.GetMetresDistanceSq(goal) < limit)
 		{
-			// TODO: the target converts the coordinates as unsigned 32-bit values here
-			float dz = (float)(uint32_t)Pos.z - (float)(uint32_t)goal.z;
-			float dx = (float)(uint32_t)Pos.x - (float)(uint32_t)goal.x;
+			float dz = (float)Pos.z - (float)goal.z;
+			float dx = (float)Pos.x - (float)goal.x;
 			if (step.x * dz - step.z * dx < 0.0f && dx * step.x + dz * step.z < 0.0f)
 			{
 				InitStepsXZSetAngle(GUtils::GetAngleFromXZ(circle_hug_info.GetObjCoords(), Pos));
@@ -680,9 +680,8 @@ int MobileWallHug::MoveTo()
 		float limit = (float)turns * (1.0f / 0x4000) * (float)turns;
 		if (Pos.GetMetresDistanceSq(goal) < limit)
 		{
-			// TODO: the target converts the coordinates as unsigned 32-bit values here
-			float dz = (float)(uint32_t)Pos.z - (float)(uint32_t)goal.z;
-			float dx = (float)(uint32_t)Pos.x - (float)(uint32_t)goal.x;
+			float dz = (float)Pos.z - (float)goal.z;
+			float dx = (float)Pos.x - (float)goal.x;
 			if (step.x * dz - step.z * dx > 0.0f && dx * step.x + dz * step.z < 0.0f)
 			{
 				InitStepsXZSetAngle(GUtils::GetAngleFromXZ(circle_hug_info.GetObjCoords(), Pos));
@@ -758,9 +757,9 @@ int MobileWallHug::SimpleMoveTo()
 	GetDestPos();
 	pos.x += step.x;
 	pos.z += step.z;
-	if (MoveMapObject(pos) == 7)
+	if (MoveMapObject(pos) == OBJECT_MOVE_RESULT_CHANGED_CELL)
 	{
-		result = 7;
+		result = OBJECT_MOVE_RESULT_CHANGED_CELL;
 	}
 	return result;
 }
@@ -796,7 +795,7 @@ int MobileWallHug::MoveToWander(const MapCoords* centre, long min_dist, long max
 {
 	int direction;
 	int result = MoveByStep(direction);
-	if (result == 7)
+	if (result == OBJECT_MOVE_RESULT_CHANGED_CELL)
 	{
 		SetNewWander(centre, min_dist, max_dist);
 	}
@@ -954,8 +953,8 @@ float MobileWallHug::GetDefaultSpeedInMetresPerSecond()
 
 void MapCoordsToPoint2D(Point2D& point, const MapCoords& coords)
 {
-	point.x = coords.x * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
-	point.y = coords.z * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
+	point.x = coords.WholeX() * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
+	point.y = coords.WholeZ() * (MAP_COORDS_METRES_PER_CELL / MAP_COORDS_UNITS_PER_CELL);
 }
 
 void WholeXZToPoint2D(Point2D& point, long x, long z)

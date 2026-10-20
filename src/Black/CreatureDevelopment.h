@@ -48,7 +48,9 @@ public:
 class CreatureDevelopmentPhaseEntry : public GBaseInfo
 {
 public:
-	uint32_t field_0x10[0x1d];
+	uint32_t field_0x10[0xc];
+	float    GoHomeDistance;
+	uint32_t field_0x44[0x10];
 
 	// Override methods
 
@@ -71,7 +73,7 @@ public:
 
 	// TODO(#377): The original declared this class in CreatureMentalDesire.h.
 	// Out of line: LoadBinary at 0042e030, Load at 0042dff0.
-	INFO_DATA_BLOCK(field_0x10, field_0x10)
+	INFO_DATA_BLOCK(field_0x10, field_0x44)
 	INFO_ROOT_LOADERS("CreatureMentalDesire.h", 181)
 };
 

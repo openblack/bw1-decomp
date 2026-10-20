@@ -122,7 +122,10 @@ python tools/codegen-check.py compare tidy                # add --ignore-comdat-
 ```
 
 It recompiles with the exact Ninja commands into `build/codegen-check/` and ignores
-compiler-numbered labels. COMDAT/RTTI section order reacts to unrelated header contents and
+compiler-numbered labels. For one unit, `tools/c2-il.py compare --source <file> --file <variant>`
+goes further: it compares the IL the front end hands to `c2.dll` and reports identical (no object
+can change), same code (only section or COMDAT order can move) or different (see
+[`docs/msvc6_passes.md`](docs/msvc6_passes.md)). COMDAT/RTTI section order reacts to unrelated header contents and
 even the source path, so an order-only difference matters only for linked units, which the
 executable hashes check.
 
@@ -313,6 +316,10 @@ branch, or the five versions of one revision:
 - For sweeps over one unit (knob counts, alternative spellings), use
   `tools/tiebreak-probe.py --variants FILE -j <cores>`: each variant compiles from a private copy
   of `src/`, in parallel, with an exact byte comparison. Do not loop over single-object rebuilds.
+- When no variant is expected to match exactly, use `tools/variant-sweep.py` instead. It takes
+  the same variant list, or knobs (named alternatives, swept as every combination or one knob at
+  a time), and ranks the variants by objdiff score. For each function it also lists the inline
+  calls c2 rejected, so a budget shift shows up next to the score.
 
 ## Source Organization
 
@@ -471,6 +478,9 @@ on one side only), the cause is the compiler's inline budget, not optimization f
 the c2.dll inliner rules (per-function budget, the 40-unit free threshold, nested budget
 shares), measured sizes, and per-construct costs.
 
+- `tools/c2-inline-log.py --source <file> -f <function>` compiles with a logging copy of c2.dll
+  and prints every inline decision: callee IL size, budget left, nested share, and why each call
+  was or was not inlined. Start here for any budget difference.
 - `tools/inline-budget.py size` measures an inline call's exact IL size with the unit's real
   compile command.
 - `tools/inline-budget.py sim` replays the budget algorithm on a call tree. It must reproduce
@@ -496,10 +506,11 @@ reports (`decomp-regress.py --refresh --baseline <saved report>`) before keeping
 Each function and global declaration in a header carries an address comment:
 
 ```cpp
-// BW1W120 <windows addr> BW1M119 <mac addr> [(<module>)]
+// BW1W120 <windows addr> [BW1WCI <creature isle addr>] BW1M119 <mac addr> [(<module>)]
 // BW1W120 0054cbd0 BW1M119 010cca10
 // BW1W120 00c386e0 BW1M119 011d0df8 (LHCombined Release)
 // BW1W120 0051f180 BW1M119 inlined
+// BW1W120 null BW1WCI 00401830 BW1M119 null
 ```
 
 The Mac address comes from `config/BW1M119/symbols.txt`, or from a module's own
@@ -510,6 +521,9 @@ Symbols exported from the game's DLLs use their DLL address (e.g. LHMultiplayerR
 The line holds nothing else: notes go on a comment line of their own above it, and it
 never trails code. CI runs `python3 tools/check_addr_comments.py`, which also checks that
 the Mac address is a real BW1M119 symbol.
+A function that exists only in Creature Isle (under `#ifdef VERSION_BW1WCI`) adds its
+Creature Isle address after the Windows field: `BW1WCI <addr>`, a symbol in
+`config/BW1WCI/symbols.txt`. No Mac build has Creature Isle code.
 Older comments with `BW1M100` (actually 1.1.0 or 1.1.9 addresses at base 0x10000000)
 and a trailing function name are historical. Use `tools/mac_symbol_version.py` to audit them.
 

@@ -92,7 +92,7 @@ public:
 	// BW1W120 0055d380 BW1M119 inlined
 	virtual void SetSpecularColor(unsigned long color) { SpecularColor = color; }
 	// BW1W120 0055d390 BW1M119 0152e580
-	virtual unsigned long GetSpecularColor();
+	virtual unsigned long GetSpecularColor() { return 0; }
 	// BW1W120 007265c0 BW1M119 0152bcb0
 	virtual uint32_t Process();
 	// BW1W120 0055d440 BW1M119 0152e750
@@ -126,7 +126,7 @@ public:
 	// Virtual methods
 
 	// BW1W120 00726130 BW1M119 0152ca60
-	virtual bool IsDrawSeedGraphic();
+	virtual bool IsDrawSeedGraphic() { return true; }
 	// BW1W120 00726120 BW1M119 0152caa0
 	virtual int GetSpellIconPlacementIndex();
 	// BW1W120 purecall BW1M119 purecall

@@ -165,7 +165,7 @@ void Creature::ProcessMimicState()
 		}
 
 		CreatureAgenda* agenda = &mind->agenda;
-		if (agenda->plans[0].IsValid() && agenda->SubActionAgenda.IsValid())
+		if (agenda->CurrentPlan.IsValid() && agenda->SubActionAgenda.IsValid())
 		{
 			mimic->ActionUnderway = true;
 		}

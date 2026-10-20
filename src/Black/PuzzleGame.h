@@ -512,7 +512,7 @@ public:
 	// BW1W120 00561a60 BW1M119 0113aac0
 	virtual bool32_t CanBecomeAPhysicsObject() { return false; }
 	// BW1W120 006dc550 BW1M119 0112b6f0
-	virtual IMMERSION_EFFECT_TYPE GetImmersionTexture();
+	virtual IMMERSION_EFFECT_TYPE GetImmersionTexture() { return IMMERSION_EFFECT_TYPE_MUSHROOM_CHALLENGE; }
 
 	// BW1W120 inlined BW1M119 inlined
 	PuzzleGrain() { ResourceType = RESOURCE_TYPE_NONE; }

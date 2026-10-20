@@ -600,6 +600,18 @@ def jmp_run(target):
     return encode
 
 
+def copy_run(source):
+    """1.30's padding run up to the next 16-byte boundary: a plain copy of the bytes in front
+    of `source`, with no `jmp`."""
+
+    def encode(pe, address):
+        end = (address | 0xF) + 1
+        offset = pe.get_offset_from_rva(source - pe.OPTIONAL_HEADER.ImageBase)
+        return bytes(pe.__data__[offset - (end - address):offset])
+
+    return encode
+
+
 # SafeDisc left calls in inter-function padding that cl6 fills with nops. Absolute
 # addresses; each call is restored over nops of its own length, and rows are skipped
 # where it is already present (the owning unit is still linked from its split object).
@@ -624,7 +636,17 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004C4C5B, call_rel32(0x00401879)),  # CreatureAttitudeToCreature
     (0x004C4F5A, call_indirect(0x008A900C)),  # CreatureAttitudeToCreature: __imp__GetUserNameA@4
     (0x004C4FAA, call_indirect(0x008A9888)),  # CreatureAttitudeToCreature: __imp__mmioAscend@4
+    (0x004C765B, call_rel32(0x00401879)),  # CreatureDump
+    (0x004DE8DB, call_rel32(0x00401879)),  # CreatureMentalDesireSourceValues
+    (0x004DE94A, call_indirect(0x008A9328)),  # CreatureMentalDesireSourceValues: __imp_LHEditBox...
+    (0x004DE96A, call_indirect(0x008A901C)),  # CreatureMentalDesireSourceValues: __imp__TrackMouseEvent@4
+    (0x004DE9AA, call_indirect(0x008A97AC)),  # CreatureMentalDesireSourceValues: __imp__ShellExecuteA@4
+    (0x004DEC5A, call_indirect(0x008A998C)),  # CreatureMentalDesireSourceValues: __imp_GetNoDialUpConnections...
+    (0x004DEC9A, call_indirect(0x008A920C)),  # CreatureMentalDesireSourceValues: __imp__SetEndOfFile@4
+    (0x004DF08B, call_rel32(0x00401879)),  # CreatureMentalDesireTests
     (0x004DF26B, call_rel32(0x00401879)),  # CreatureMentalEditor
+    (0x004E35BB, call_rel32(0x00401879)),  # CreatureMentalObjectMultipliers
+    (0x004F231B, call_rel32(0x00401879)),  # CreaturePreviousContext
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
     (0x0052E3FA, call_indirect(0x008A901C)),  # Fixed: __imp__TrackMouseEvent@4
     (0x0052EE0A, call_indirect(0x008A97AC)),  # Fixed: __imp__ShellExecuteA@4
@@ -747,10 +769,60 @@ BW1W120_SAFEDISC_CALLS = (
 
 
 # 1.30's SafeDisc left jumps instead: each run of padding nops up to the next 16-byte
-# boundary ends in a `jmp` back to the start of an earlier run (see `jmp_run`).
+# boundary ends in a `jmp` back to the start of an earlier run (see `jmp_run`), or repeats
+# the bytes in front of one (see `copy_run`).
 BW1W130_SAFEDISC_CALLS = (
+    (0x00463399, jmp_run(0x00462FC1)),  # CarriedObject
+    (0x004633E4, copy_run(0x00463399)),  # CarriedObject
+    (0x004C99C3, copy_run(0x004C9966)),  # CreatureDump
+    (0x004C99EB, call_rel32(0x00403C49)),  # CreatureDump
+    (0x004C9A51, jmp_run(0x004C99EB)),  # CreatureDump
+    (0x004C9C45, copy_run(0x004C9A51)),  # CreatureDump
+    (0x004C9D68, copy_run(0x004C9C45)),  # CreatureDump
+    (0x004C9DA4, copy_run(0x004C9D68)),  # CreatureDump
+    (0x004C9DE4, copy_run(0x004C9DA4)),  # CreatureDump
+    (0x004C9E24, copy_run(0x004C9DE4)),  # CreatureDump
+    (0x004C9E64, copy_run(0x004C9E24)),  # CreatureDump
+    (0x004C9EA4, copy_run(0x004C9E64)),  # CreatureDump
+    (0x004C9EE4, copy_run(0x004C9EA4)),  # CreatureDump
+    (0x004C9F24, copy_run(0x004C9EE4)),  # CreatureDump
+    (0x004C9F64, copy_run(0x004C9F24)),  # CreatureDump
+    (0x004C9FA4, copy_run(0x004C9F64)),  # CreatureDump
+    (0x004C9FE4, copy_run(0x004C9FA4)),  # CreatureDump
+    (0x004CA103, copy_run(0x004C9FE4)),  # CreatureDump
+    (0x004CA132, jmp_run(0x004CA103)),  # CreatureDump
+    (0x004E0C43, copy_run(0x004E0BE4)),  # CreatureMentalDesireSourceValues
+    (0x004E0CFA, call_indirect(0x008AE01C)),  # CreatureMentalDesireSourceValues
+    (0x004E0D73, jmp_run(0x004E0CFA)),  # CreatureMentalDesireSourceValues
+    (0x004E0D9A, jmp_run(0x004E0D73)),  # CreatureMentalDesireSourceValues
+    (0x004E0E55, jmp_run(0x004E0D99)),  # CreatureMentalDesireSourceValues
+    (0x004E0F15, jmp_run(0x004E0E55)),  # CreatureMentalDesireSourceValues
+    (0x004E0F97, jmp_run(0x004E0F15)),  # CreatureMentalDesireSourceValues
+    (0x004E0FEA, call_indirect(0x008AE050)),  # CreatureMentalDesireSourceValues
+    (0x004E102A, call_indirect(0x008AE350)),  # CreatureMentalDesireSourceValues
+    (0x004E1087, copy_run(0x004E102A)),  # CreatureMentalDesireSourceValues
+    (0x004E1165, copy_run(0x004E1087)),  # CreatureMentalDesireSourceValues
+    (0x004E11E6, copy_run(0x004E1165)),  # CreatureMentalDesireSourceValues
+    (0x004E1393, jmp_run(0x004E11E6)),  # CreatureMentalDesireSourceValues
+    (0x004E13F3, jmp_run(0x004E1393)),  # CreatureMentalDesireTests
+    (0x004E141B, call_rel32(0x00403C49)),  # CreatureMentalDesireTests
+    (0x004E1445, copy_run(0x004E141B)),  # CreatureMentalDesireTests
+    (0x004E1493, jmp_run(0x004E1445)),  # CreatureMentalDesireTests
+    (0x004E1516, jmp_run(0x004E1493)),  # CreatureMentalDesireTests
+    (0x004E154A, copy_run(0x004E1516)),  # CreatureMentalDesireTests
+    (0x004E157B, jmp_run(0x004E1543)),  # CreatureMentalDesireTests
     (0x004E15D3, jmp_run(0x004E1579)),  # CreatureMentalEditor
     (0x004E16D1, jmp_run(0x004E15D3)),  # CreatureMentalEditor
+    (0x004E5923, copy_run(0x004E5861)),  # CreatureMentalObjectMultipliers
+    (0x004E594B, call_rel32(0x00403C49)),  # CreatureMentalObjectMultipliers
+    (0x004E5973, jmp_run(0x004E594B)),  # CreatureMentalObjectMultipliers
+    (0x004E59C4, copy_run(0x004E5973)),  # CreatureMentalObjectMultipliers
+    (0x004F4683, copy_run(0x004F4568)),  # CreaturePreviousContext
+    (0x004F46AB, call_rel32(0x00403C49)),  # CreaturePreviousContext
+    (0x004F4745, copy_run(0x004F46AB)),  # CreaturePreviousContext
+    (0x004F4958, jmp_run(0x004F4743)),  # CreaturePreviousContext
+    (0x004F4988, copy_run(0x004F4958)),  # CreaturePreviousContext
+    (0x007707B6, jmp_run(0x007706F9)),  # VillagerTrader
 )
 
 

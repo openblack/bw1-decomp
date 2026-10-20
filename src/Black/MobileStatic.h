@@ -58,7 +58,7 @@ public:
 	// BW1W120 00608b10 BW1M119 013c8190
 	virtual uint32_t GetCreatureBeliefType();
 	// BW1W120 00439700 BW1M119 010b71c0
-	virtual bool32_t IsCastShadowAtNight();
+	virtual bool32_t IsCastShadowAtNight() { return true; }
 	// BW1W120 004e48d0 BW1M119 015ec5e0
 	virtual bool32_t CanBeEatenByCreature(Creature* param_1);
 	// BW1W120 00439640 BW1M119 010b6d00
@@ -88,7 +88,7 @@ public:
 	// BW1W120 004d1af0 BW1M119 01247a50
 	virtual float GetHowMuchCreatureWantsToLookAtMe();
 	// BW1W120 004396f0 BW1M119 010b7180
-	virtual bool32_t IsMobileStatic();
+	virtual bool32_t IsMobileStatic() { return true; }
 	// BW1W120 00609330 BW1M119 01008370
 	virtual SCRIPT_OBJECT_TYPE GetScriptObjectType();
 	// BW1W120 00439610 BW1M119 010b6c30
@@ -154,7 +154,7 @@ public:
 	// BW1W120 00439690 BW1M119 010b6f90
 	virtual bool32_t IsSolidToNewAbode();
 	// BW1W120 00439660 BW1M119 010b6db0
-	virtual uint32_t GetTastiness();
+	virtual uint32_t GetTastiness() { return 0; }
 	// BW1W120 006088e0 BW1M119 013c82f0
 	virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords* param_2);
 

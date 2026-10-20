@@ -1057,8 +1057,8 @@ void GScript::HasPlayed()
 			{
 				CreatureAgenda& agenda = creature->mind->agenda;
 				bool32_t        finished;
-				if (agenda.plans[0].IsValid() && agenda.SubActionAgenda.IsValid() &&
-				    creature->mind->agenda.plans[0].creature_action != CREATURE_IDLE)
+				if (agenda.CurrentPlan.IsValid() && agenda.SubActionAgenda.IsValid() &&
+				    creature->mind->agenda.CurrentPlan.creature_action != CREATURE_IDLE)
 				{
 					finished = FALSE;
 				}
@@ -1231,7 +1231,7 @@ void GScript::GetTargetObject()
 	Creature* creature = dynamic_cast<Creature*>(thing);
 	if (creature != NULL)
 	{
-		CreatureBelief* belief = creature->mind->agenda.plans[0].ObjectToActOn;
+		CreatureBelief* belief = creature->mind->agenda.CurrentPlan.ObjectToActOn;
 		if (belief != NULL)
 		{
 			GameThingWithPos* target = belief->Pointer;
@@ -1262,7 +1262,7 @@ void GScript::DesireIs()
 	if (creature != NULL)
 	{
 		g_scriptDLL->PUSH(
-			(void*)(desire == CreatureActionInfo::GetInfo()[creature->mind->agenda.plans[0].creature_action].Desire),
+			(void*)(desire == CreatureActionInfo::GetInfo()[creature->mind->agenda.CurrentPlan.creature_action].Desire),
 			VMType_BOOLEAN);
 		return;
 	}

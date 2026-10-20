@@ -63,8 +63,12 @@ public:
 	bool IsHidden() const { return Hidden || InsideObstacle; }
 	// BW1W120 005389d0 BW1M119 010ed1c0
 	void PurgeFollowerList();
+	// BW1W120 00538a40 BW1M119 010ecee0
+	void ClearForDeletion(GFootpathNode* next_node, GFootpathNode* previous_node);
 	// BW1W120 00538b10 BW1M119 010ece30
 	void ClearFromPreviousNode();
+	// BW1W120 00538b50 BW1M119 010ecd80
+	void ClearToNextNode();
 };
 
 static_assert(sizeof(GFootpathNode) == 0x30, "Data type is of wrong size");

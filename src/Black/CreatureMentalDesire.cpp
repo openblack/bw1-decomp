@@ -158,7 +158,7 @@ void CreatureDesires::SuppressDesire(unsigned long desire, float seconds)
 	if (turns > SuppressedTurns[desire])
 	{
 		SuppressedTurns[desire] = turns;
-		creature->mind->agenda.PlanState.plans[desire].SetToZero();
+		creature->mind->agenda.PlanState.plans[desire].Clear();
 	}
 }
 

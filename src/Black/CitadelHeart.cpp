@@ -854,7 +854,7 @@ void CitadelHeart::DestructionSequenceProcess()
 		VolFXObject = LH3DObject::Create(LH3DObject::STATIC);
 		if (VolFXObject != NULL)
 		{
-			VolFXObject->SetMesh(LH3DMesh::GetPackedMesh(MSH_P_BOY_WHITE_2), NULL, NULL);
+			VolFXObject->SetMesh(LH3DMesh::GetPackedMesh(MSH_CREED), NULL, NULL);
 			VolFX = LH3DGJAnimVolFX::Create(VolFXObject,
 			                                GlobalTextures::GetAnimVolFXMaterial(GlobalTextures::VOL_FX_MAT_TYPE_6));
 		}
@@ -1004,7 +1004,7 @@ void CitadelHeart::DrawLantern()
 			{
 				entrance->lanterns[i] = LH3DObject::Create(LH3DObject::STATIC);
 				LH3DObject* lantern = entrance->lanterns[i];
-				lantern->SetMesh(LH3DMesh::GetPackedMesh(MSH_I_MINISCROLL), NULL, NULL);
+				lantern->SetMesh(LH3DMesh::GetPackedMesh(MSH_O_TOWNLIGHT), NULL, NULL);
 				LHPoint pos;
 				if (i != 0)
 				{

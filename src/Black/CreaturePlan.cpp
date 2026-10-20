@@ -8,7 +8,7 @@
 #include <string>
 #endif
 
-void CreaturePlan::SetToZero()
+void CreaturePlan::Clear()
 {
 	ObjectToUse = NULL;
 	ObjectToActOn = NULL;

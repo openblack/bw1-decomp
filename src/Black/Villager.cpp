@@ -379,7 +379,7 @@ ANIM_LIST Villager::GetAnimId()
 	                    action.GetState(LIVING_ACTION_INDEX_TOP) == VILLAGER_STATE_INVALID_STATE;
 	if (invalidState)
 	{
-		return ANM_P_SCARED_STIFF;
+		return ANM_P_STAND;
 	}
 	SetStateCarriedObject();
 	if (GetAnimationFn(action.GetState(LIVING_ACTION_INDEX_TOP)) != NULL)
