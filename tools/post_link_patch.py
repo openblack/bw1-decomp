@@ -633,6 +633,7 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004619AA, call_indirect(0x008A9970)),  # CameraModeScript
     (0x00461B7B, call_rel32(0x00401879)),  # CameraModeScript
     (0x0046B7AB, call_rel32(0x00401879)),  # Container
+    (0x00471ADB, call_rel32(0x00401879)),  # CPUCheck
     (0x004C4C5B, call_rel32(0x00401879)),  # CreatureAttitudeToCreature
     (0x004C4F5A, call_indirect(0x008A900C)),  # CreatureAttitudeToCreature: __imp__GetUserNameA@4
     (0x004C4FAA, call_indirect(0x008A9888)),  # CreatureAttitudeToCreature: __imp__mmioAscend@4
@@ -799,6 +800,12 @@ BW1W120_SAFEDISC_CALLS = (
 BW1W130_SAFEDISC_CALLS = (
     (0x00463399, jmp_run(0x00462FC1)),  # CarriedObject
     (0x004633E4, copy_run(0x00463399)),  # CarriedObject
+    (0x00473DB2, jmp_run(0x00473D55)),  # CPUCheck
+    (0x00473E1B, call_rel32(0x00403C49)),  # CPUCheck
+    (0x00473E48, copy_run(0x00473E1B)),  # CPUCheck
+    (0x00473F14, jmp_run(0x00473E48)),  # CPUCheck
+    (0x004749E2, copy_run(0x00473F14)),  # CPUCheck
+    (0x00474A06, copy_run(0x004749E2)),  # CPUCheck
     (0x004C7393, jmp_run(0x004C733A)),  # CreatureDecision
     (0x004C73BB, call_rel32(0x00403C49)),  # CreatureDecision
     (0x004C74B5, jmp_run(0x004C73BB)),  # CreatureDecision

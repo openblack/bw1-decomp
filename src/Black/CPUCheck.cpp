@@ -8,8 +8,10 @@
 
 #include <ddraw.h> /* For DirectDrawEnumerateA */
 
-static char DeviceDescription[CPU_CHECK_DEVICE_INFO_SIZE];
-static char DriverInfo[CPU_CHECK_DEVICE_INFO_SIZE];
+// fabricated names: without a PCH, cl6 lays out .bss by a hash of each name, and these four
+// hash in the target's order (DriverDesc, DriverVersionInfo, DriverIds, DriverWHQL).
+static char DriverDesc[CPU_CHECK_DEVICE_INFO_SIZE];
+static char DriverVersionInfo[CPU_CHECK_DEVICE_INFO_SIZE];
 static char DriverIds[CPU_CHECK_DEVICE_INFO_SIZE];
 static char DriverWHQL[CPU_CHECK_DEVICE_INFO_SIZE];
 
@@ -54,55 +56,32 @@ bool CPUCheck::IsEarlyPentium()
 	return result;
 }
 
-bool CPUCheck::HasCPUID()
+void CPUCheck::CreateStrings()
 {
-	bool result;
-	__asm
+	if (Summary)
 	{
-		pushfd
-		pop eax
-		mov ebx, eax
-		xor eax, CPU_CHECK_EFLAGS_ID_FLAG
-		push eax
-		popfd
-		pushfd
-		pop eax
-		xor eax, ebx
-		setne al
-		mov result, al
+		delete Summary;
 	}
-	return result;
-}
-
-unsigned long CPUCheck::GetNumberOfProcessors()
-{
-	SYSTEM_INFO info;
-	GetSystemInfo(&info);
-	return info.dwNumberOfProcessors;
-}
-
-int CPUCheck::GetCPUSpeed()
-{
-	__int64 start;
-	__int64 end;
-	__asm
-		{
-		rdtsc
-		mov dword ptr start, eax
-		mov dword ptr start + CPU_CHECK_TSC_HIGH_OFFSET, edx
-	    }
-	DWORD startTime = GetTickCount();
-	Sleep(CPU_CHECK_SPEED_SLEEP_MILLISECONDS);
-	DWORD endTime = GetTickCount();
-	__asm
+	Summary = NULL;
+	GetDisplayInfo();
+	if (!HasCPUID())
 	{
-		rdtsc
-		mov dword ptr end, eax
-		mov dword ptr end + CPU_CHECK_TSC_HIGH_OFFSET, edx
+		Summary = new char[CPU_CHECK_SHORT_SUMMARY_SIZE];
+		sprintf(Summary, "CPUID Is not present on this PC. (Either its a poor Intel clone, or a pre-pentium chip).\n%s",
+		        DisplayInfo);
+		return;
 	}
-	int speed = (int)((end - start) / (endTime - startTime) / CPU_CHECK_KHZ_PER_MHZ);
-	Report3D__FPCce("CPU SPEED %d\n", speed);
-	return speed;
+	if (IsEarlyPentium())
+	{
+		Summary = new char[CPU_CHECK_SHORT_SUMMARY_SIZE];
+		sprintf(Summary, "Processor is an Early Pentium\n%s", DisplayInfo);
+		return;
+	}
+	Summary = new char[CPU_CHECK_FULL_SUMMARY_SIZE];
+	GetProcessorInfo();
+	sprintf(Summary,
+	        "Number of processors:%d\nProcessor Manufacturer:%s\nProcessor Model:%s\nProcessor Stepping:%x\n%s",
+	        GetNumberOfProcessors(), Vendor, ModelString, Signature & CPU_CHECK_STEPPING_MASK, DisplayInfo);
 }
 
 void CPUCheck::GetProcessorInfo()
@@ -443,32 +422,31 @@ void CPUCheck::GetProcessorInfo()
 	}
 }
 
-BOOL WINAPI DisplayEnumCallback(GUID* guid, LPSTR description, LPSTR name, LPVOID context)
+bool CPUCheck::HasCPUID()
 {
-	LPDIRECTDRAW7       directDraw;
-	DDDEVICEIDENTIFIER2 identifier;
-	if (DirectDrawCreateEx(guid, (LPVOID*)&directDraw, IID_IDirectDraw7, NULL) == DD_OK)
+	bool result;
+	__asm
 	{
-		directDraw->GetDeviceIdentifier(&identifier, 0);
-		directDraw->Release();
-		DWORD high = identifier.liDriverVersion.HighPart;
-		DWORD low = identifier.liDriverVersion.LowPart;
-		sprintf(DeviceDescription, "Driver desc:%s, Driver name:%s\n", identifier.szDriver, identifier.szDescription);
-		sprintf(DriverInfo, "Driver info:Product:0x%u, Version:0x%u, SubVersion:0x%u, Build:0x%u\n", HIWORD(high),
-		        LOWORD(high), HIWORD(low), LOWORD(low));
-		sprintf(DriverIds, "Driver Vendor ID:0x%X, Driver device ID:0x%X\nDriver SubSysID:0x%X ,Driver Revision:0x%X\n",
-		        identifier.dwVendorId, identifier.dwDeviceId, identifier.dwSubSysId, identifier.dwRevision);
-		sprintf(DriverWHQL, "Driver Windows Hardware Quality Lab Level:%u\n", identifier.dwWHQLLevel);
-		strcat((char*)context, DeviceDescription);
-		strcat((char*)context, DriverInfo);
-		strcat((char*)context, DriverIds);
-		strcat((char*)context, DriverWHQL);
-		return TRUE;
+		pushfd
+		pop eax
+		mov ebx, eax
+		xor eax, CPU_CHECK_EFLAGS_ID_FLAG
+		push eax
+		popfd
+		pushfd
+		pop eax
+		xor eax, ebx
+		setne al
+		mov result, al
 	}
-	strcat((char*)context, "\nCould not create DirectDraw device to get details from, but managed to get:\n");
-	sprintf(DeviceDescription, "Driver desc:%s, Driver name:%s\n", description, name);
-	strcat((char*)context, DeviceDescription);
-	return TRUE;
+	return result;
+}
+
+unsigned long CPUCheck::GetNumberOfProcessors()
+{
+	SYSTEM_INFO info;
+	GetSystemInfo(&info);
+	return info.dwNumberOfProcessors;
 }
 
 void CPUCheck::GetDisplayInfo()
@@ -481,30 +459,56 @@ void CPUCheck::GetDisplayInfo()
 	strcat(DisplayInfo, "\n");
 }
 
-void CPUCheck::CreateStrings()
+BOOL WINAPI DisplayEnumCallback(GUID* guid, LPSTR description, LPSTR name, LPVOID context)
 {
-	if (Summary)
+	LPDIRECTDRAW7       directDraw;
+	DDDEVICEIDENTIFIER2 identifier;
+	if (DirectDrawCreateEx(guid, (LPVOID*)&directDraw, IID_IDirectDraw7, NULL) == DD_OK)
 	{
-		delete Summary;
+		directDraw->GetDeviceIdentifier(&identifier, 0);
+		directDraw->Release();
+		WORD product = HIWORD(identifier.liDriverVersion.HighPart);
+		WORD version = LOWORD(identifier.liDriverVersion.HighPart);
+		WORD subVersion = HIWORD(identifier.liDriverVersion.LowPart);
+		WORD build = LOWORD(identifier.liDriverVersion.LowPart);
+		sprintf(DriverDesc, "Driver desc:%s, Driver name:%s\n", identifier.szDriver, identifier.szDescription);
+		sprintf(DriverVersionInfo, "Driver info:Product:0x%u, Version:0x%u, SubVersion:0x%u, Build:0x%u\n", product,
+		        version, subVersion, build);
+		sprintf(DriverIds, "Driver Vendor ID:0x%X, Driver device ID:0x%X\nDriver SubSysID:0x%X ,Driver Revision:0x%X\n",
+		        identifier.dwVendorId, identifier.dwDeviceId, identifier.dwSubSysId, identifier.dwRevision);
+		sprintf(DriverWHQL, "Driver Windows Hardware Quality Lab Level:%u\n", identifier.dwWHQLLevel);
+		strcat((char*)context, DriverDesc);
+		strcat((char*)context, DriverVersionInfo);
+		strcat((char*)context, DriverIds);
+		strcat((char*)context, DriverWHQL);
+		return TRUE;
 	}
-	Summary = NULL;
-	GetDisplayInfo();
-	if (!HasCPUID())
+	strcat((char*)context, "\nCould not create DirectDraw device to get details from, but managed to get:\n");
+	sprintf(DriverDesc, "Driver desc:%s, Driver name:%s\n", description, name);
+	strcat((char*)context, DriverDesc);
+	return TRUE;
+}
+
+int CPUCheck::GetCPUSpeed()
+{
+	__int64 start;
+	__int64 end;
+	__asm
+		{
+		rdtsc
+		mov dword ptr start, eax
+		mov dword ptr start + CPU_CHECK_TSC_HIGH_OFFSET, edx
+	    }
+	DWORD startTime = GetTickCount();
+	Sleep(CPU_CHECK_SPEED_SLEEP_MILLISECONDS);
+	DWORD endTime = GetTickCount();
+	__asm
 	{
-		Summary = new char[CPU_CHECK_SHORT_SUMMARY_SIZE];
-		sprintf(Summary, "CPUID Is not present on this PC. (Either its a poor Intel clone, or a pre-pentium chip).\n%s",
-		        DisplayInfo);
-		return;
+		rdtsc
+		mov dword ptr end, eax
+		mov dword ptr end + CPU_CHECK_TSC_HIGH_OFFSET, edx
 	}
-	if (IsEarlyPentium())
-	{
-		Summary = new char[CPU_CHECK_SHORT_SUMMARY_SIZE];
-		sprintf(Summary, "Processor is an Early Pentium\n%s", DisplayInfo);
-		return;
-	}
-	Summary = new char[CPU_CHECK_FULL_SUMMARY_SIZE];
-	GetProcessorInfo();
-	sprintf(Summary,
-	        "Number of processors:%d\nProcessor Manufacturer:%s\nProcessor Model:%s\nProcessor Stepping:%x\n%s",
-	        GetNumberOfProcessors(), Vendor, ModelString, Signature & CPU_CHECK_STEPPING_MASK, DisplayInfo);
+	int speed = (int)((end - start) / (endTime - startTime) / CPU_CHECK_KHZ_PER_MHZ);
+	Report3D__FPCce("CPU SPEED %d\n", speed);
+	return speed;
 }

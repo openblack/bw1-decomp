@@ -367,17 +367,21 @@ Black/Container.cpp:
 
 Black/ControlHand.cpp:
 	.text       start:0x0046AB50 end:0x0046DE90
-	.rdata      start:0x008BBE70 end:0x008BBF34
+	.rdata      start:0x008BBE70 end:0x008BBF20
 	.CRT$XCU    start:0x009B621C end:0x009B6224 align:4
-	.data       start:0x009BE320 end:0x009BEFE8
+	.data       start:0x009BE320 end:0x009BE470
 
 Black/ControlMap.cpp:
-	.text       start:0x0046DE90 end:0x00470AF0
+	.text       start:0x0046DE90 end:0x00470AC0
 	.CRT$XCU    start:0x009B6224 end:0x009B622C align:4
-	.bss        start:0x00C4D704 end:0x00C4EB58
+	.bss        start:0x00C4D704 end:0x00C4D714
 
 Black/CPUCheck.cpp:
-	.text       start:0x00470AF0 end:0x00471A80
+	.text       start:0x00470AC0 end:0x00471A80
+	.rdata      start:0x008BBF20 end:0x008BBF28
+	.rdata$r    start:0x00999258 end:0x0099929C
+	.data       start:0x009BE470 end:0x009BED38
+	.bss        start:0x00C4D714 end:0x00C4E6B4
 
 Black/Creature.cpp:
 	.text       start:0x00471A80 end:0x0047E160
