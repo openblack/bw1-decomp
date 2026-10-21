@@ -764,7 +764,7 @@ public:
 	// BW1W120 005f2640 BW1M119 0138dfa0
 	bool32_t GotoPickupBallReaction();
 	// BW1W120 005f27f0 BW1M119 01058aa0
-	VILLAGER_STATES GetTopState() const;
+	uint8_t GetTopState() const;
 	// BW1W120 005f2800 BW1M119 01391b50
 	bool SetupMoveToObject(Object* param_1, unsigned char param_2);
 	// BW1W120 005f2830 BW1M119 0102bdb0
@@ -775,6 +775,8 @@ public:
 	float GetWalkPathPercentage();
 	// BW1W120 005f2890 BW1M119 01013b30
 	bool32_t SetupMoveToWithHug(const MapCoords& coords, uint8_t state);
+	// BW1W120 005f2a30 BW1M119 01391940
+	bool32_t SetupMoveOnStructure(Object* structure, const MapCoords& coords, uint8_t end_state);
 	// BW1W120 006e44a0 BW1M119 0113e540
 	void SetReactionDoneWhen(REACTION reaction);
 	// BW1W120 00768640 BW1M119 0159e860

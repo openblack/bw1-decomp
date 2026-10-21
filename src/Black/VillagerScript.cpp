@@ -184,12 +184,12 @@ bool32_t Living::ExitPlayAnim(uint8_t state)
 // BW1W120 007689d0 BW1M119 0100cac0
 bool32_t Villager::IsScriptAnimationComplete()
 {
-	VILLAGER_STATES state = GetTopState();
-	if ((uint8_t)state == VILLAGER_STATE_WAIT_FOR_ANIMATION)
+	uint8_t state = GetTopState();
+	if (state == VILLAGER_STATE_WAIT_FOR_ANIMATION)
 	{
 		return false;
 	}
-	if ((uint8_t)state == VILLAGER_STATE_SCRIPT_PLAY_ANIM)
+	if (state == VILLAGER_STATE_SCRIPT_PLAY_ANIM)
 	{
 		return WanderArea.z == 0;
 	}
