@@ -86,13 +86,15 @@ int Living::SetCurrentAndDestinationState(uint8_t current, uint8_t destination)
 			if (anim != -1)
 			{
 				SetAnim(anim, 1);
-				return LIVING_SET_STATE_SUCCESS;
 			}
-			SetStateAnim();
-			anim = CallIntoAnimationFunction(destination);
-			if (anim != -1)
+			else
 			{
-				SetAnim(anim, 1);
+				SetStateAnim();
+				anim = CallIntoAnimationFunction(destination);
+				if (anim != -1)
+				{
+					SetAnim(anim, 1);
+				}
 			}
 			return LIVING_SET_STATE_SUCCESS;
 		}
