@@ -304,9 +304,9 @@ void AttributeForestSize::UpdateValue(GameThingWithPos* thing, GPlayer* player)
 
 void AttributeVillagerJob::UpdateValue(GameThingWithPos* thing, GPlayer* player)
 {
-	Villager*       villager = dynamic_cast<Villager*>(thing);
-	VILLAGER_STATES state = villager->GetTopState();
-	Value = GVillagerStateTableInfo::GetInfo()[(uint8_t)state].TownDesireType;
+	Villager* villager = dynamic_cast<Villager*>(thing);
+	int       state = villager->GetTopState();
+	Value = GVillagerStateTableInfo::GetInfo()[state].TownDesireType;
 	if (Value > ValueRange() - 1)
 		Value = ValueRange() - 1;
 }
