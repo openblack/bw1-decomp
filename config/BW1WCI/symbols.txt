@@ -19650,6 +19650,7 @@ WorshipSpellIcon_vfunc493 = .text:0x007976F0; // type:function
 ?Load@WorshipSpellIcon@@UAEHAAVGameOSFile@@@Z = .text:0x00798880; // type:function size:0x290 scope:global
 ?GetNumGameTurnsToCreate@WorshipSpellIcon@@QAEMXZ = .text:0x00798B10; // type:function size:0x84
 ?GetChargeUpSpeedDesire@WorshipSpellIcon@@QAEMXZ = .text:0x00798BA0; // type:function size:0x95
+?GetChargeUpProgress@WorshipSpellIcon@@QAEMXZ = .text:0x00798C40; // type:function size:0x88 scope:global
 _$E2 = .text:0x00798CD0; // type:function scope:local
 _$E1 = .text:0x00798CE0; // type:function scope:local
 _$E5 = .text:0x00798CF0; // type:function scope:local

@@ -9,7 +9,7 @@
 #include <re_common.h>                              /* For bool32_t */
 
 #include "LightSheet.h"    /* For struct LightSheet */
-#include "MapCoords.h"     /* For struct MapCoords */
+#include "MapCoords.h"     /* For struct LH3DMapCoords, struct MapCoords */
 #include "LHPTR.h"         /* For LHPTR */
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 
@@ -52,7 +52,7 @@ public:
 	LHPTR<const GSpellSeedInfo>     seed_info;
 	uint32_t                        field_0x84;
 	TChargingData                   ChargingData;
-	MapCoords                       SpellCoords;
+	LH3DMapCoords                   SpellCoords;
 	unsigned long                   SpecularColor;
 
 	// Override methods

@@ -21599,6 +21599,7 @@ _$E14 = .text:0x00783DE0; // type:function size:0x20 scope:local
 ?Load@WorshipSpellIcon@@UAEHAAVGameOSFile@@@Z = .text:0x00784FD0; // type:function size:0x290 scope:global
 ?GetNumGameTurnsToCreate@WorshipSpellIcon@@QAEMXZ = .text:0x00785260; // type:function size:0x84
 ?GetChargeUpSpeedDesire@WorshipSpellIcon@@QAEMXZ = .text:0x007852F0; // type:function size:0x95
+?GetChargeUpProgress@WorshipSpellIcon@@QAEMXZ = .text:0x00785390; // type:function size:0x88 scope:global
 _$E22 = .text:0x00785420; // type:function size:0x20 scope:local
 _$E21 = .text:0x00785440; // type:function size:0x10 scope:local
 _$E2 = .text:0x00785450; // type:function size:0x10 scope:local

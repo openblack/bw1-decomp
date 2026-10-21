@@ -18391,6 +18391,7 @@ fn_0076EDC0 = .text:0x0076EDC0; // type:function size:0x30
 ?Load@WorshipSpellIcon@@UAEHAAVGameOSFile@@@Z = .text:0x0076FFC0; // type:function size:0x290
 ?GetNumGameTurnsToCreate@WorshipSpellIcon@@QAEMXZ = .text:0x00770250; // type:function size:0x84
 ?GetChargeUpSpeedDesire@WorshipSpellIcon@@QAEMXZ = .text:0x007702E0; // type:function size:0x95
+?GetChargeUpProgress@WorshipSpellIcon@@QAEMXZ = .text:0x00770380; // type:function size:0x88 scope:global
 _$E2 = .text:0x00770410; // type:function size:0x10 scope:local
 _$E1 = .text:0x00770420; // type:function size:0x10 scope:local
 _$E5 = .text:0x00770430; // type:function size:0x10 scope:local
