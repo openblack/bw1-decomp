@@ -176,6 +176,10 @@ public:
 	float GetNumGameTurnsToCreate();
 	// BW1W120 00780510 BW1M119 015bb390
 	float GetChargeUpSpeedDesire();
+	// fabricated name: GetChargeUpSpeedDesire's chant total as a fraction of the cost, capped at
+	// 1. Nothing calls it.
+	// BW1W120 007805b0 BW1M119 null
+	float GetChargeUpProgress();
 	// BW1W120 inlined BW1M119 015b8fe0
 	LHListHead<SpellSeed>& GetCreatedSpellList() { return CreatedSpells; }
 };

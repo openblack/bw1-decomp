@@ -694,3 +694,14 @@ float WorshipSpellIcon::GetChargeUpSpeedDesire()
 	}
 	return chants / (GetMagicEffectInfo(GESTURE_TYPE_NONE)->CostToCreate + WORSHIP_SPELL_ICON_MIN_CHANTS);
 }
+
+float WorshipSpellIcon::GetChargeUpProgress()
+{
+	WorshipSite* site = GetWorshipSite();
+	float        chants = GetChantStore() + WORSHIP_SPELL_ICON_MIN_CHANTS;
+	if (site != NULL)
+	{
+		chants += site->GetChantStore() + site->GetChantsAvailable();
+	}
+	return min(chants / (GetMagicEffectInfo(GESTURE_TYPE_NONE)->CostToCreate + WORSHIP_SPELL_ICON_MIN_CHANTS), 1.0f);
+}
