@@ -10,6 +10,7 @@
 #include "Base.h"      /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */
 
+class Creature;
 class CreatureCommand;
 
 class CreatureCommandState : public Base
@@ -19,11 +20,16 @@ public:
 	MapCoords Destination;
 	bool32_t  ControlledByTeleport;
 #ifdef VERSION_BW1WCI
-	uint32_t ci_field_0x1c;
+	bool32_t CommandedByMaster;
 #endif
 	bool32_t                       Commanded;
 	bool32_t                       ForcedByPlayerAction;
 	LHLinkedList<CreatureCommand*> Commands;
+
+	// Non-virtual methods
+
+	// BW1W120 004c74e0 BW1M119 01237b60
+	bool32_t ProcessStoredCommands(Creature* creature);
 };
 #ifdef VERSION_BW1WCI
 static_assert(sizeof(CreatureCommandState) == 0x30, "Data type is of wrong size");

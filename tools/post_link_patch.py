@@ -672,6 +672,12 @@ BW1W120_SAFEDISC_CALLS = (
     (0x004E0FBB, call_rel32(0x00401879)),  # CreatureMentalLearn
     (0x004E152A, call_indirect(0x008A9024)),  # CreatureMentalLearn: __imp__DirectDrawCreateEx@4
     (0x004E35BB, call_rel32(0x00401879)),  # CreatureMentalObjectMultipliers
+    (0x004F036B, call_rel32(0x00401879)),  # CreaturePlan
+    (0x004F11AB, call_rel32(0x00401879)),  # CreaturePlan
+    (0x004F126B, call_rel32(0x00401879)),  # CreaturePlan
+    (0x004F12AB, call_rel32(0x00401879)),  # CreaturePlan
+    (0x004F1B5B, call_rel32(0x00401879)),  # CreaturePlan
+    (0x004F218B, call_rel32(0x00401879)),  # CreaturePreviousActionContext
     (0x004F231B, call_rel32(0x00401879)),  # CreaturePreviousContext
     (0x0052DB8B, call_rel32(0x00401879)),  # Fixed
     (0x0052E3FA, call_indirect(0x008A901C)),  # Fixed: __imp__TrackMouseEvent@4
@@ -961,6 +967,45 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004E594B, call_rel32(0x00403C49)),  # CreatureMentalObjectMultipliers
     (0x004E5973, jmp_run(0x004E594B)),  # CreatureMentalObjectMultipliers
     (0x004E59C4, copy_run(0x004E5973)),  # CreatureMentalObjectMultipliers
+    (0x004F26D3, jmp_run(0x004F2672)),  # CreaturePlan
+    (0x004F26FB, call_rel32(0x00403C49)),  # CreaturePlan
+    (0x004F2887, copy_run(0x004F26FB)),  # CreaturePlan
+    (0x004F28E7, copy_run(0x004F2887)),  # CreaturePlan
+    (0x004F29A3, copy_run(0x004F28E7)),  # CreaturePlan
+    (0x004F2C59, jmp_run(0x004F29A3)),  # CreaturePlan
+    (0x004F2D07, copy_run(0x004F2C59)),  # CreaturePlan
+    (0x004F2DF9, jmp_run(0x004F2D07)),  # CreaturePlan
+    (0x004F2F94, jmp_run(0x004F2DF9)),  # CreaturePlan
+    (0x004F2FB8, jmp_run(0x004F2F94)),  # CreaturePlan
+    (0x004F2FD5, jmp_run(0x004F2FB8)),  # CreaturePlan
+    (0x004F32F3, jmp_run(0x004F2FD5)),  # CreaturePlan
+    (0x004F3426, copy_run(0x004F32F3)),  # CreaturePlan
+    (0x004F353B, call_rel32(0x00403C49)),  # CreaturePlan
+    (0x004F35B2, jmp_run(0x004F353B)),  # CreaturePlan
+    (0x004F35FB, call_rel32(0x00403C49)),  # CreaturePlan
+    (0x004F363B, call_rel32(0x00403C49)),  # CreaturePlan
+    (0x004F36C3, copy_run(0x004F363B)),  # CreaturePlan
+    (0x004F3702, copy_run(0x004F36C3)),  # CreaturePlan
+    (0x004F3794, jmp_run(0x004F3702)),  # CreaturePlan
+    (0x004F37D5, jmp_run(0x004F3794)),  # CreaturePlan
+    (0x004F3808, copy_run(0x004F37D5)),  # CreaturePlan
+    (0x004F38B9, jmp_run(0x004F3808)),  # CreaturePlan
+    (0x004F38E7, copy_run(0x004F38B9)),  # CreaturePlan
+    (0x004F3985, copy_run(0x004F38E7)),  # CreaturePlan
+    (0x004F3A41, copy_run(0x004F3985)),  # CreaturePlan
+    (0x004F3EEB, call_rel32(0x00403C49)),  # CreaturePlan
+    (0x004F3FC2, copy_run(0x004F3EEB)),  # CreaturePlan
+    (0x004F40D5, jmp_run(0x004F3FC2)),  # CreaturePlan
+    (0x004F4195, jmp_run(0x004F40D5)),  # CreaturePlan
+    (0x004F4272, jmp_run(0x004F4195)),  # CreaturePlan
+    (0x004F4374, jmp_run(0x004F4272)),  # CreaturePlan
+    (0x004F43C9, copy_run(0x004F4374)),  # CreaturePlan
+    (0x004F43F3, jmp_run(0x004F43C9)),  # CreaturePlan
+    (0x004F4491, jmp_run(0x004F43F3)),  # CreaturePlan
+    (0x004F44F3, jmp_run(0x004F4491)),  # CreaturePreviousActionContext
+    (0x004F451B, call_rel32(0x00403C49)),  # CreaturePreviousActionContext
+    (0x004F4545, copy_run(0x004F451B)),  # CreaturePreviousActionContext
+    (0x004F4568, copy_run(0x004F4542)),  # CreaturePreviousActionContext
     (0x004F4683, copy_run(0x004F4568)),  # CreaturePreviousContext
     (0x004F46AB, call_rel32(0x00403C49)),  # CreaturePreviousContext
     (0x004F4745, copy_run(0x004F46AB)),  # CreaturePreviousContext

@@ -33,7 +33,8 @@ public:
 	float                  AlignmentThreshold;
 	uint32_t               field_0x60;
 	float                  IncreaseTimeFeedbackDivisor;
-	uint32_t               field_0x68[0x4];
+	float                  DistancePriorityScale;
+	uint32_t               field_0x6c[0x3];
 	float                  NumCompletionsToSatisfyUrge;
 	bool32_t               NumCompletionsChangeWithFeedback;
 	char                   Name[0x40];

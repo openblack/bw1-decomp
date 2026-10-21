@@ -355,7 +355,7 @@ bool32_t Villager::BreederDisciple()
 {
 	if (!IsPregnant())
 	{
-		if (GetTown()->desire.GetSortedDesire(0)->field_0x8 != TOWN_DESIRE_INFO_FOR_SLEEP)
+		if (GetTown()->desire.GetSortedDesire(0)->Type != TOWN_DESIRE_INFO_FOR_SLEEP)
 		{
 			if (TurnsUntilNextStateChange-- > 0)
 			{

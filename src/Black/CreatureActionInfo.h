@@ -41,7 +41,8 @@ public:
 	uint8_t                     field_0xe8[0x4];
 	bool32_t                    WorthFollowing;
 	bool32_t                    EatCarriedObjectWhenPraised;
-	uint8_t                     field_0xf4[0x8];
+	bool32_t                    ShowsCurrentSource;
+	uint8_t                     field_0xf8[0x4];
 	float                       HowNiceChange;
 	bool32_t                    Learnable;
 	bool32_t                    IsRecoveryAction;

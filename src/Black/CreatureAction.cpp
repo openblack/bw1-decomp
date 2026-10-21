@@ -17,6 +17,7 @@
 #include "CitadelHeart.h"               /* For struct CitadelHeart */
 #include "ColourConstants.h"            /* For White */
 #include "Creature.h"                   /* For struct Creature */
+#include "CreatureActionIndices.h"      /* For struct CreatureActionIndices */
 #include "CreatureActionInfo.h"         /* For struct CreatureActionInfo */
 #include "CreatureAgenda.h"             /* For struct CreatureAgenda */
 #include "CreatureAttitudeToCreature.h" /* For struct CreatureAttitudeToCreature */
@@ -8157,25 +8158,24 @@ bool32_t Creature::ForceActivityAndDecideAction(CREATURE_DESIRES desire, Creatur
 	FindBestActionForPlan(plan);
 	if (plan.IsValid())
 	{
-		ConstructCurrentPlanFromPlan(plan, 0);
+		ConstructCurrentPlanFromPlan(plan, false);
 		return true;
 	}
 	return false;
 }
 
-static uint32_t CreatureActionIndex[NUM_CREATURE_ACTIONS];
-
 void Creature::ComputeActionIndices()
 {
 	for (uint32_t i = 0; i < NUM_CREATURE_ACTIONS; i++)
 	{
-		CreatureActionIndex[i] = 0;
+		CreatureActionIndices::Index[i] = 0;
 	}
 	for (uint32_t desire = 0; desire < NUM_CREATURE_DESIRES; desire++)
 	{
-		for (uint32_t j = 0; j < 0x1e; j++)
+		for (uint32_t j = 0; j < MAX_NUM_ACTIONS_FOR_EACH_DESIRE; j++)
 		{
-			CreatureActionIndex[CreatureDesireActionEntry::g_CreatureDesireActionEntries[desire].Actions[j]] = j;
+			CreatureActionIndices::Index[CreatureDesireActionEntry::g_CreatureDesireActionEntries[desire].Actions[j]] =
+				j;
 		}
 	}
 }

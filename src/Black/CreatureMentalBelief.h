@@ -158,6 +158,18 @@ public:
 	{
 		return UsedInPlan[desire / CHAR_BIT] & (1 << (desire % CHAR_BIT));
 	}
+	// BW1W120 inlined BW1M119 inlined
+	void SetUsedInPlan(CREATURE_DESIRES desire, bool32_t used)
+	{
+		if (used)
+		{
+			UsedInPlan[desire / CHAR_BIT] |= 1 << (desire % CHAR_BIT);
+		}
+		else
+		{
+			UsedInPlan[desire / CHAR_BIT] &= ~(1 << (desire % CHAR_BIT));
+		}
+	}
 	// BW1W120 004d7a60 BW1M119 012587b0
 	void ClearAfterFreeingUp();
 	// BW1W120 004d7e20 BW1M119 01257e80

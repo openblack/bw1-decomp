@@ -38,7 +38,7 @@ bool32_t Villager::HomeDecideWhatToDo()
 		{
 			if ((uint8_t)disciple == VILLAGER_DISCIPLE_BREEDER)
 			{
-				if (GetTown()->desire.GetSortedDesire(0)->field_0x8 == TOWN_DESIRE_INFO_FOR_SLEEP)
+				if (GetTown()->desire.GetSortedDesire(0)->Type == TOWN_DESIRE_INFO_FOR_SLEEP)
 				{
 					if (CheckSatisfySleep() != 0)
 					{
@@ -436,7 +436,7 @@ bool32_t Villager::DoSleeping(float rest_multiplier)
 			IncreaseLife(rest_multiplier * ((const GVillagerInfo*)info)->RestAtHomeRestoresLifeBy);
 		}
 		Town* town = GetTown();
-		if (town == NULL || town->desire.GetSortedDesire(0)->field_0x8 != TOWN_DESIRE_INFO_FOR_SLEEP)
+		if (town == NULL || town->desire.GetSortedDesire(0)->Type != TOWN_DESIRE_INFO_FOR_SLEEP)
 		{
 			const GVillagerInfo* vi2 = (const GVillagerInfo*)info;
 			if (GetLife() >= vi2->DamageThresholdToSleepUntil)
