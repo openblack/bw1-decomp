@@ -646,7 +646,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/ControlHand.cpp"),
             GameCodeObject(NonMatching, "Black/ControlMap.cpp"),
             GameCodeObject(NonMatching, "Black/Cow.cpp"),
-            GameCodeObject(NonMatching, "Black/CPUCheck.cpp"),
+            GameCodeObject(Matching, "Black/CPUCheck.cpp"),
             GameCodeObject(NonMatching, "Black/Creature.cpp"),
             GameCodeObject(NonMatching, "Black/Creature3D.cpp"),
             GameCodeObject(NonMatching, "Black/CreatureAction.cpp"),
