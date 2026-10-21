@@ -58,7 +58,7 @@ public:
 	float    TotalFood;
 	float    TotalWood;
 	float    TotalBuildingSiteCost;
-	uint32_t NumWounded;
+	int      NumWounded;
 	uint8_t  NumAbodesOfNumber[ABODE_NUMBER_LAST];
 
 	// Override methods

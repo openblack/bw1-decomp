@@ -5,8 +5,9 @@
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For MAGIC_TYPE_LAST, TOWN_DESIRE_INFO_LAST, enum ABODE_TYPE, enum LIVING_TYPE, enum MAGIC_TYPE, enum RESOURCE_TYPE, enum TOWN_DESIRE_INFO, enum TRIBE_TYPE */
-#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
-#include <re_common.h>          /* For bool32_t */
+#include <chlasm/ScriptEnums.h>            /* For enum SCRIPT_OBJECT_TYPE */
+#include <Lionhead/LHLib/ver5.0/LHStack.h> /* For struct LHStack */
+#include <re_common.h>                     /* For bool32_t */
 
 #include "Abode.h"                /* For struct Abode */
 #include "Artifact.h"             /* For struct TownArtifact */
@@ -570,6 +571,8 @@ public:
 	float GetDesire(TOWN_DESIRE_INFO desire_type);
 	// BW1W120 0073e420 BW1M119 01057ad0
 	float GetRawDesire(TOWN_DESIRE_INFO desire_type);
+	// BW1W120 004f2070 BW1M119 0127a8e0
+	void FillListWithMostImportantDesires(LHStack<TOWN_DESIRE_INFO, TOWN_DESIRE_INFO_LAST>& desires);
 	// BW1W120 0073e440 BW1M119 01558640
 	void VillagerDead(Villager* villager, DEATH_REASON reason, GPlayer* player, float param_4);
 	// BW1W120 0073e4b0 BW1M119 01070000

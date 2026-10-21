@@ -535,6 +535,7 @@ Black/CreatureMentalEditor.cpp:
 	.text       start:0x004EF9C0 end:0x004EFAF0
 	.rdata      start:0x008FE2A0 end:0x008FE2AC
 	.CRT$XCU    start:0x00A363BC end:0x00A363C4 align:4
+	.data       start:0x00C4FA24 end:0x00C4FA28
 	.bss        start:0x00D05BA8 end:0x00D05BB8
 
 Black/CreatureMentalExploration.cpp:
@@ -608,13 +609,20 @@ Black/CreaturePhysical.cpp:
 	.text       start:0x005008C0 end:0x00501970
 	.rdata      start:0x008FF740 end:0x008FF7B0
 	.CRT$XCU    start:0x00A36438 end:0x00A36440 align:4
-	.data       start:0x00C50628 end:0x00C5069C
+	.data       start:0x00C50628 end:0x00C50678
 
 Black/CreaturePlan.cpp:
-	.text       start:0x00501970 end:0x00503BD0
-	.rdata      start:0x008FF7B0 end:0x008FF7FC
-	.CRT$XCU    start:0x00A36440 end:0x00A36450 align:4
-	.data       start:0x00C5069C end:0x00C5071C
+	.text       start:0x00501970 end:0x00503B80
+	.rdata      start:0x008FF7B0 end:0x008FF7F0
+	.CRT$XCU    start:0x00A36440 end:0x00A36448 align:4
+	.data       start:0x00C50678 end:0x00C50708
+	.bss        start:0x00D25B64 end:0x00D25B74
+
+Black/CreaturePreviousActionContext.cpp:
+	.text       start:0x00503B80 end:0x00503BD0
+	.rdata      start:0x008FF7F0 end:0x008FF7FC
+	.CRT$XCU    start:0x00A36448 end:0x00A36450 align:4
+	.bss        start:0x00D25B74 end:0x00D25B7C
 
 Black/CreaturePreviousContext.cpp:
 	.text       start:0x00503BD0 end:0x00503F00

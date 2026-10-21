@@ -175,6 +175,18 @@ public:
 	float GetUsefulnessOfUsingObject(CreatureBelief* object, CREATURE_ACTION action);
 	// BW1W120 004f1ef0 BW1M119 0127aaf0
 	float CalculateDistancePriority(CREATURE_DESIRES desire, CreatureBelief* object);
+	// BW1W120 004f1e30 BW1M119 0127acf0
+	CreatureBelief* FindBestObjectToUseForAction(CREATURE_DESIRES desire, CREATURE_ACTION action,
+	                                             CreatureBelief* object_to_act_on);
+	// BW1W120 004f17f0 BW1M119 0127b7a0
+	CREATURE_ACTION GetNthActionForPlan(CreaturePlan& plan, unsigned long index);
+	// BW1W120 004f1a10 BW1M119 0127b540
+	bool32_t ConsiderAction(CREATURE_DESIRES desire, CREATURE_ACTION action, CreatureBelief* object_to_act_on,
+	                        CreatureActionsTried* actions_tried, CreaturePlan& plan);
+	// BW1W120 004e36c0 BW1M119 015ef9d0
+	bool32_t IsObjectSuitableAsActivityObject(CREATURE_DESIRES desire, GameThingWithPos* object);
+	// BW1W120 004e3820 BW1M119 015ef570
+	bool32_t IsObjectSuitableToUse(CreatureBelief* belief, CREATURE_ACTION action);
 	// BW1W120 004e9a70 BW1M119 01271bf0
 	float GetObjectToActOnUsefulness(CreatureBelief* object, CREATURE_DESIRES desire);
 	// BW1W120 004e3730 BW1M119 015ef7e0

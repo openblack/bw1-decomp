@@ -37,8 +37,11 @@ public:
 	float    field_0x288[0x6];
 	float    WatchingFeedback;
 	float    MinFeedback;
-	uint32_t field_0x2a8;
-	float    field_0x2ac[0x9];
+	uint32_t ActionNoveltyTurns;
+	float    field_0x2ac[0x6];
+	float    DistancePriorityRange;
+	float    CarriedObjectDistancePriority;
+	float    field_0x2cc;
 	float    MaxDesireLevelFeedbackScale;
 	float    field_0x2d4[0x2];
 	float    SecondsBeforeReactingToSameCreatureAgain;

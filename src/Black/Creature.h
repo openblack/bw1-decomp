@@ -190,9 +190,9 @@ public:
 #ifdef VERSION_BW1WCI
 	bool32_t CanDrop;
 	uint32_t ci_field_0x1068;
-	uint32_t ci_field_0x106c;
-	uint32_t ci_field_0x1070;
-	uint32_t ci_field_0x1074;
+	uint32_t GameTurnLastHealedConfinedCreature;
+	uint32_t GameTurnLastFedConfinedCreature;
+	uint32_t GameTurnLastSleptWithConfinedCreature;
 	bool32_t RightHandOnly;
 	uint32_t ci_field_0x107c;
 	uint32_t ci_field_0x1080;
@@ -292,11 +292,10 @@ public:
 	uint32_t                          ScriptAnim;
 	uint32_t                          ScriptAnimRepeats;
 #ifndef VERSION_BW1W100
-	bool32_t          ConfinedToObject;
-	GameThingWithPos* ConfinementObject;
-	int               field_0x129c;
-	uint32_t          field_0x12a0;
-	uint32_t          field_0x12a4;
+	bool32_t                ConfinedToObject;
+	GameThingWithPos*       ConfinementObject;
+	int                     field_0x129c;
+	LHLinkedList<Creature*> ConfinedCreatures;
 #endif
 #ifdef VERSION_BW1WCI
 	bool32_t FollowMaster;
@@ -699,6 +698,9 @@ public:
 	float MaximumPickUpWeight();
 	// BW1W120 004c3990 BW1M119 01235120
 	float GetActionPriority(CREATURE_ACTION action, CreaturePlan& plan);
+	// BW1W120 004f0d30 BW1M119 0127cff0
+	void FillInActionPriorityAndNoveltyModification(CREATURE_ACTION action, CreaturePlan& plan, float* priority,
+	                                                float* novelty_modification);
 	// BW1W120 004c39f0 BW1M119 01235090
 	void UpdateActionPriority();
 	// BW1W120 004c3aa0 BW1M119 01235040
@@ -755,17 +757,47 @@ public:
 	float HowInterestingIsPlayer(CreaturePlan& plan);
 	// BW1W120 004c43a0 BW1M119 01235aa0
 	bool32_t ForceActivityAndDecideAction(CREATURE_DESIRES desire, CreatureBelief* activity_object);
+	// BW1W120 004f0370 BW1M119 0127e390
+	void ConsiderDecision();
+	// BW1W120 004f0500 BW1M119 0127e250
+	bool32_t ConsiderOverridingCurrentPlan();
+	// BW1W120 004f05e0 BW1M119 0127dfd0
+	void FindBestPlanForGoal();
+	// BW1W120 004f0600 BW1M119 0127df60
+	void FindBestPlanForCurrentGoal();
+	// BW1W120 004f0620 BW1M119 0127dc40
+	void FindBestPlanForParticularGoal(CREATURE_DESIRES desire);
+	// BW1W120 004f08d0 BW1M119 0127d930
+	void FindBestActivityObjectForPlan(CreaturePlan& plan);
 	// BW1W120 004f0a70 BW1M119 0127d450
 	void FindBestActionForPlan(CreaturePlan& plan);
+	// BW1W120 004f0c10 BW1M119 0127d3b0
+	bool32_t FindBestActionFromActivityObject(CreaturePlan& plan, CreatureActionsTried* actions_tried);
+	// BW1W120 004f0c30 BW1M119 0127d330
+	bool32_t FindBestActionFromObjectToActOn(CreaturePlan& plan);
+	// BW1W120 004f0c50 BW1M119 0127d240
+	bool32_t FindBestObjectToActOnFromActivityObjectAndAction(CreaturePlan& plan);
 	// BW1W120 004f0ca0 BW1M119 0127d0d0
 	float GetActionPriorityModificationFromWhenLastDone(CREATURE_ACTION action);
+	// BW1W120 004f0d60 BW1M119 0127ccb0
+	bool32_t FindBestActionFromGoal(CreaturePlan& plan, CreatureActionsTried* actions_tried);
 	// BW1W120 004c4580 BW1M119 01235750
 	void CommandActivityAndAction(CREATURE_DESIRES desire, CreatureBelief* activity_object, CREATURE_ACTION action,
 	                              CreatureBelief* object_to_act_on, CreatureBelief* object_to_use);
+	// BW1W120 004f1410 BW1M119 0127c1a0
+	void FindNextPlannableGoal();
+	// BW1W120 004f14e0 BW1M119 0127bfd0
+	void ConsiderGivingHelpOnCurrentAction();
+	// BW1W120 004f1530 BW1M119 0127bf50
+	void ConstructCurrentPlanFromBestPlan(bool32_t forced_by_player);
 	// BW1W120 004f1560 BW1M119 0127be20
-	void ConstructCurrentPlanFromPlan(CreaturePlan& plan, int param_2);
+	void ConstructCurrentPlanFromPlan(CreaturePlan& plan, bool32_t forced_by_player);
 	// BW1W120 004f1600 BW1M119 0127bcc0
-	void CopyPlanToPreviousContext(int param_1);
+	void CopyPlanToPreviousContext(bool32_t forced_by_player);
+	// BW1W120 004f16c0 BW1M119 0127bae0
+	void SetBeliefsUsedInPlan(CreaturePlan& plan, bool32_t used);
+	// BW1W120 004f1d50 BW1M119 0127aea0
+	void CalculateOverallPriority(CreaturePlan& plan);
 	// BW1W120 00490950 BW1M119 011ec1c0
 	void SetInCreatureHand(Creature* creature);
 	// BW1W120 00490910 BW1M119 011ec210
@@ -1117,11 +1149,15 @@ public:
 	void ScriptPlayStaticAnimation(unsigned long anim, float param_2);
 	// BW1W120 0047b1c0 BW1M119 011dc140
 	bool32_t IsFighting();
+#ifdef VERSION_BW1WCI
+	// BW1W120 null BW1WCI 00487e00 BW1M119 null
+	bool32_t NeedsHelp();
+#endif // VERSION_BW1WCI
 	// BW1W120 004d8bb0 BW1M119 01255f50
 	CreatureBelief* AddBeliefAboutAssociatedObject(CreatureBelief* belief);
 	// BW1W120 004f1c40 BW1M119 0127b060
-	void FindBestActionFromObject(CreaturePlan& plan, CreatureActionsTried* actions_tried, CreatureBelief* belief,
-	                              bool32_t require_object_to_act_on);
+	bool32_t FindBestActionFromObject(CreaturePlan& plan, CreatureActionsTried* actions_tried, CreatureBelief* belief,
+	                                  bool32_t require_object_to_act_on);
 	// BW1W120 004f8ca0 BW1M119 0128e390
 	float NumTimesMagicActionMustBeSeenBeforeItIsLearnt(unsigned long magic_type);
 	// BW1W120 0047cda0 BW1M119 011d7fe0

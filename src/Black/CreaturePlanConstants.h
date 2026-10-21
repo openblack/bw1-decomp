@@ -1,0 +1,7 @@
+#ifndef BW1_DECOMP_CREATURE_PLAN_CONSTANTS_INCLUDED_H
+#define BW1_DECOMP_CREATURE_PLAN_CONSTANTS_INCLUDED_H
+
+const float MaximumActionPriority = 0.01f;
+const float MinimumUsefulness = 0.1f;
+
+#endif /* BW1_DECOMP_CREATURE_PLAN_CONSTANTS_INCLUDED_H */

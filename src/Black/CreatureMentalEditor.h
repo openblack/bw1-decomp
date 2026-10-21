@@ -1,6 +1,8 @@
 #ifndef BW1_DECOMP_CREATURE_MENTAL_EDITOR_INCLUDED_H
 #define BW1_DECOMP_CREATURE_MENTAL_EDITOR_INCLUDED_H
 
+#include <chlasm/Enum.h> /* For enum TOWN_DESIRE_INFO */
+
 class CreatureMental;
 struct LHPixel16;
 struct MapCoords;
@@ -39,6 +41,8 @@ public:
 	// BW1W120 004df340 BW1M119 01093c10
 	static void Update();
 
+	// BW1W120 00bdf608 BW1M119 null
+	static TOWN_DESIRE_INFO TownDesireBeingHelped;
 	// BW1W120 00c8dc30 BW1M119 null
 	static CreatureMental* Mind;
 	// BW1W120 00c8dc34 BW1M119 null

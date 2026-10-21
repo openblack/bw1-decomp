@@ -188,14 +188,19 @@ struct CreatureActionContext
 
 	// Constructors
 
+	// BW1W120 inlined BW1M119 015efce0
+	CreatureActionContext() {}
 	// BW1W120 004c3960 BW1M119 01235210
 	CreatureActionContext(CreatureContext& context, float priority);
 };
 
+#define NUM_PREVIOUS_ACTION_CONTEXTS 10
+
 struct PreviousActionContextStack
 {
-	uint32_t              indexes[0x2][0x148]; /* 0x0 */
-	CreatureActionContext stack[0x148][0xa];   /* 0xa40 */
+	uint32_t              NextSlot[NUM_CREATURE_ACTIONS];
+	uint32_t              Size[NUM_CREATURE_ACTIONS];
+	CreatureActionContext contexts[NUM_CREATURE_ACTIONS][NUM_PREVIOUS_ACTION_CONTEXTS];
 
 	// Constructors
 
@@ -204,10 +209,16 @@ struct PreviousActionContextStack
 
 	// Non-virtual methods
 
+	// BW1W120 004f21c0 BW1M119 null
+	bool32_t HasContexts(CREATURE_ACTION action);
 	// BW1W120 004f21e0 BW1M119 015efb00
 	void Push(CREATURE_ACTION action, const CreatureActionContext& context);
 	// BW1W120 004f2250 BW1M119 null
 	CreatureActionContext* GetTop(CREATURE_ACTION action);
+	// BW1W120 004f2260 BW1M119 null
+	CreatureActionContext* GetNth(CREATURE_ACTION action, unsigned long n);
+	// BW1W120 004f2290 BW1M119 null
+	unsigned long GetSize(CREATURE_ACTION action);
 };
 
 struct CreatureActionOpinions
@@ -228,7 +239,7 @@ struct CreatureActionOpinions
 class CreaturePreviousActions : public Base
 {
 public:
-	float field_0x8[NUM_CREATURE_ACTIONS];
+	uint32_t TurnsSinceLastDone[NUM_CREATURE_ACTIONS];
 
 	// Constructors
 

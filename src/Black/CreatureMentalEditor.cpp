@@ -6,6 +6,7 @@
 
 #include "CreatureMental.h"
 
+TOWN_DESIRE_INFO      CreatureMentalEditor::TownDesireBeingHelped = TOWN_DESIRE_INFO_NONE;
 CreatureMental*       CreatureMentalEditor::Mind;
 CreatureMentalEditor* CreatureMentalEditor::Instance;
 
