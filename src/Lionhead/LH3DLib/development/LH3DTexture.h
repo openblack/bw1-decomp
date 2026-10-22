@@ -73,6 +73,10 @@ struct LH3DTexture
 
 	// Static methods
 
+	// BW1W120 008378c0 BW1M119 010c9ac0 (LHCombined Release)
+	static bool32_t Open();
+	// BW1W120 00837930 BW1M119 010c9990 (LHCombined Release)
+	static bool32_t Close();
 	// BW1W120 008379e0 BW1M119 010c9310 (LHCombined Release)
 	static LH3DTexture* Create(void* param_0, unsigned long param_1, unsigned long param_2, TextureFormat* param_3);
 	// BW1W120 008377e0 BW1M119 inlined
@@ -84,6 +88,8 @@ struct LH3DTexture
 
 	// BW1W120 00837d40 BW1M119 010c9130 (LHCombined Release)
 	void Release();
+	// BW1W120 00837df0 BW1M119 0102df60 (LHCombined Release)
+	void Activate(int stage);
 	// BW1W120 00838430 BW1M119 010c8e30 (LHCombined Release)
 	void YouLostYourVRAM();
 	// BW1W120 00838a70 BW1M119 010003e0 (LHCombined Release)
@@ -99,6 +105,12 @@ struct LH3DTexture
 	// BW1W120 inlined BW1M119 010107b0 (LHCombined Release)
 	uint32_t GetType() { return Flags & 0x3f; }
 };
+
+// Set by LHScreen for the 3dfx Voodoo2 and Banshee, which only draw one texture at a time.
+// BW1W120 00edd450 BW1M119 013404e0 (LHCombined Release)
+extern bool32_t g_b_voodoo2;
+// BW1W120 00edd44c BW1M119 013404e4 (LHCombined Release)
+extern bool32_t g_b_banshee;
 
 // BW1W120 00871170 BW1M119 010b4fb0 (LHCombined Release)
 HRESULT GLock(IDirectDrawSurface7* surface, RECT* rect, DDSURFACEDESC2* desc, unsigned long flags, HANDLE event);

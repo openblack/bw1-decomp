@@ -19,13 +19,18 @@ public:
 	// BW1W120 00ea1b20 BW1M119 012b1aa0 (LHCombined Release)
 	static float g_fizz_r_v;
 
+	// Static methods
+
+	// BW1W120 00813770 BW1M119 0100ac40 (LHCombined Release)
+	static void StartFrameIncFizzVars();
+
 	// Virtual methods
 
 	// BW1W120 0080f990 BW1M119 0107a7b0 (LHCombined Release)
 	virtual void DrawLightMap(SubMeshDrawData* sub_mesh_data, int param_2, int param_3, int param_4, int param_5,
 	                          bool param_6);
-	// BW1W120 008103b0 BW1M119 0100ac40 (LHCombined Release)
-	virtual void StartFrameIncFizzVars();
+	// BW1W120 008103b0 BW1M119 01079db0 (LHCombined Release)
+	virtual void DrawJustPhys() const;
 
 	// Constructors
 

@@ -3858,19 +3858,20 @@ Lionhead/LH3DLib/development/Fish.cpp:
 	.text$x     start:0x008AD110 end:0x008AD150 align:4
 
 Lionhead/LHLib/ver5.0/LHCollide.cpp:
-	.text       start:0x0082C7D0 end:0x00830380
+	.text       start:0x0082C7D0 end:0x00830280
 	.text$x     start:0x008AD150 end:0x008AD1F0 align:4
-	.CRT$XCU    start:0x00A47DC0 end:0x00A47DD0 align:4
+	.CRT$XCU    start:0x00A47DE4 end:0x00A47DF0 align:4
 
 Lionhead/LH3DLib/development/LH3DRender.cpp:
-	.text       start:0x008303B0 end:0x008351E0
-	.CRT$XCU    start:0x00A47DD0 end:0x00A47DD4 align:4
-	.bss        start:0x00F49188 end:0x00F4B808 align:8
+	.text       start:0x00830280 end:0x00835230
+	.rdata      start:0x00A23368 end:0x00A23378
+	.CRT$XCU    start:0x00A47DF0 end:0x00A47DFC align:4
+	.data       start:0x00CB95F8 end:0x00CB9CD4
+	.bss        start:0x00F3AC78 end:0x00F4B848 align:8
 
 Lionhead/LH3DLib/development/LH3DText.cpp:
-	.text       start:0x008351E0 end:0x00838B90
+	.text       start:0x00835230 end:0x00838B90
 	.text$x     start:0x008AD1F0 end:0x008AD220 align:4
-	.CRT$XCU    start:0x00A47DD4 end:0x00A47DE4 align:4
 
 Lionhead/LH3DLib/development/ValueSpinner.cpp:
 	.text       start:0x00838B90 end:0x00838E80
@@ -3882,7 +3883,6 @@ Lionhead/LH3DLib/development/LH3DLightningSheet.cpp:
 
 Lionhead/LHLib/ver5.0/Route.cpp:
 	.text       start:0x00840410 end:0x008419C0
-	.CRT$XCU    start:0x00A47DE4 end:0x00A47E00 align:4
 
 Lionhead/LH3DLib/development/LH3DOrientSprite.cpp:
 	.text       start:0x00841AB0 end:0x00841F90

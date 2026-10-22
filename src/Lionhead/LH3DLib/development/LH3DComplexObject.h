@@ -28,9 +28,12 @@ public:
 	uint32_t           field_0xa8;
 	uint32_t           Hidden;
 	LH3DComplexObject* next;
-	uint32_t           field_0xb4;
-	uint32_t           field_0xb8;
+	bool32_t           DrawAfterFrame;
+	bool32_t           DrawnAfterFrame;
 	uint32_t           field_0xbc;
+
+	// BW1W120 00ea1aec BW1M119 012b1edc (LHCombined Release)
+	static LH3DComplexObject* g_first_co;
 
 	// Constructors
 

@@ -98,15 +98,15 @@ GObjectInfo GObjectInfo::Definitions[OBJECT_TYPE_LAST];
 
 // TODO: fabricated; unrecovered counter slots that move DefaultAIPlayerObjectInfo's destructor
 // guard to a number whose name hashes into DefaultAIPlayerObjectInfo's .bss bucket, ahead of it
-// ($S200), while Definitions' guard ($S173) stays ahead of Definitions. The static data members
+// ($S200), while Definitions' guard ($S175) stays ahead of Definitions. The static data members
 // declared by Player.h, PlayerInfo.h, Reward.h, Network.h, LH3DMesh.h, LH3DObject.h, LH3DIsland.h,
 // LH3DTech.h, LH3DRender.h, LH3DPrimitive.h, LH3DSubMesh.h, LH3DLandscape.h, LHCollide.h, Abode.h
-// and Game.h already put Definitions' guard 44 slots later than the original's $S129, so the
+// and Game.h already put Definitions' guard 46 slots later than the original's $S129, so the
 // original pair ($S129/$S140) is out of reach.
 struct ObjectCounterPadBetween
 {
 	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5, Pad6, Pad7, Pad8, Pad9, Pad10, Pad11, Pad12, Pad13, Pad14, Pad15,
-		Pad16, Pad17, Pad18, Pad19, Pad20;
+		Pad16, Pad17, Pad18;
 };
 
 GObjectInfo GObjectInfo::DefaultAIPlayerObjectInfo;

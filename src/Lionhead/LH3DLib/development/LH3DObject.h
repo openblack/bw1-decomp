@@ -19,6 +19,9 @@ struct LH3DMesh;
 struct LHBoundingBox;
 struct LHPoint;
 
+// The materials an object drawn with DrawTriangleFastBlending can blend into, one per primitive.
+#define LH3D_OBJECT_FAST_BLENDING_MATERIALS 256
+
 enum LH3D_OBJECT_FLAGS2
 {
 	LH3D_OBJECT_FLAGS2_OUT_OF_MAP = 0x40,
@@ -60,7 +63,7 @@ public:
 	float         v;
 	LH3DObject*   next;
 	uint32_t      field_0x74;
-	uint8_t       field_0x78;
+	uint8_t       Alpha;
 
 	// Static data
 
@@ -90,6 +93,10 @@ public:
 	static bool g_env_map_tex_color_env_alpha;
 	// BW1W120 00ea1b08 BW1M119 012b1ec0 (LHCombined Release)
 	static float g_env_map_z_rot;
+	// BW1W120 00ea1a88 BW1M119 012b1ef4 (LHCombined Release)
+	static int g_count_static_object;
+	// BW1W120 00e9fe84 BW1M119 012b1ac0 (LHCombined Release)
+	static LH3DMaterial* g_fb_list_mat[LH3D_OBJECT_FAST_BLENDING_MATERIALS];
 
 	// Virtual functions
 
@@ -271,6 +278,10 @@ public:
 
 	// BW1W120 0080b4d0 BW1M119 0107fb80 (LHCombined Release)
 	static LH3DObject* __fastcall Create(ObjectType object_type);
+	// BW1W120 0080bbd0 BW1M119 0107f910 (LHCombined Release)
+	static bool32_t Open();
+	// BW1W120 0080bd70 BW1M119 0107f750 (LHCombined Release)
+	static bool32_t Close();
 
 	// Constructors
 

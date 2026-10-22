@@ -136,7 +136,7 @@ void DrawLoading(float fade, float progress)
 			int videoHeight = screenHeight * 0.64f;
 			int alphaByte = alpha * 255.0f;
 
-			LH3DRender::g_mode_cleaning = true;
+			LH3DRender::g_mode_cleaning = LH3D_CLEANING_MODE_SCREEN;
 			LHSys::TheSystem.mouse.SetCursor(NULL, LH_MOUSE_IMAGE_TYPE_0x01, 0);
 			GatheringText* font = GatheringText::gamefont;
 			LH3DRender::StartFrame();
@@ -362,7 +362,7 @@ void StartTipOfTheDayText()
 			LHSys::TheSystem.screen.Flip(true);
 		}
 		firstTip = false;
-		LH3DRender::g_mode_cleaning = false;
+		LH3DRender::g_mode_cleaning = LH3D_CLEANING_MODE_NONE;
 		LHResetFPU();
 	}
 }
@@ -435,8 +435,8 @@ void RenderLoadingFrame(bool flip)
 			{
 				LHSys::TheSystem.screen.Flip(true);
 			}
-			LH3DRender::Direct3DDevice7->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0, 1.0f, 0);
-			LH3DRender::g_mode_cleaning = false;
+			LH3DRender::D3DDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0, 1.0f, 0);
+			LH3DRender::g_mode_cleaning = LH3D_CLEANING_MODE_NONE;
 			LHResetFPU();
 		}
 	}

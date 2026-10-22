@@ -4,6 +4,15 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+// A colour packed in an unsigned long is 0xAARRGGBB, a byte for each channel.
+#define LH3D_COLOR_CHANNEL_MASK 0xff
+#define LH3D_COLOR_GREEN_SHIFT  8
+#define LH3D_COLOR_RED_SHIFT    16
+#define LH3D_COLOR_ALPHA_SHIFT  24
+#define LH3D_COLOR_RGB_MASK     0xffffff
+// The alpha of an opaque colour.
+#define LH3D_COLOR_OPAQUE 0xff
+
 struct LH3DColor
 {
 	uint8_t b; /* 0x0 */

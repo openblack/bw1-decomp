@@ -4,12 +4,13 @@
 
 #include "Bookmark.h"
 
-#include <Lionhead/LH3DLib/development/LH3DIsland.h> /* For LH3DIsland::GetAltitude */
-#include <Lionhead/LH3DLib/development/LH3DMath.h>   /* For PI_F */
-#include <Lionhead/LH3DLib/development/LH3DRender.h> /* For LH3DRender::g_zsorter */
-#include <Lionhead/LH3DLib/development/LH3DSprite.h> /* For struct LH3DSprite */
-#include <Lionhead/LH3DLib/development/LH3DTech.h>   /* For LH3DTech */
-#include <Lionhead/LHLib/ver5.0/LHWin.h>             /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LH3DLib/development/LH3DIsland.h>  /* For LH3DIsland::GetAltitude */
+#include <Lionhead/LH3DLib/development/LH3DMath.h>    /* For PI_F */
+#include <Lionhead/LH3DLib/development/LH3DRender.h>  /* For LH3DRender::g_zsorter */
+#include <Lionhead/LH3DLib/development/LH3DSprite.h>  /* For struct LH3DSprite */
+#include <Lionhead/LH3DLib/development/LH3DTech.h>    /* For LH3DTech */
+#include <Lionhead/LH3DLib/development/LH3DZSorter.h> /* For LH3DZSorter */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>              /* For operator new(size_t, const char*, uint32_t) */
 
 #include "Camera.h"
 #include "CameraModeNew3.h"
@@ -21,7 +22,6 @@
 #include "Interface.h"
 #include "InterfaceStatus.h"
 #include "Landscape.h"
-#include "LH3DZSorter.h"
 #include "Object.h"
 #include "Player.h"
 #include "StoragePit.h"

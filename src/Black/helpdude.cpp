@@ -358,7 +358,7 @@ void HelpDude::DrawFeel()
 	}
 	LH3DRender::SetRenderState(D3DRENDERSTATE_SRCBLEND, D3DBLEND_ONE);
 	LH3DRender::SetRenderState(D3DRENDERSTATE_DESTBLEND, D3DBLEND_ONE);
-	IDirect3DDevice7* device = LH3DRender::Direct3DDevice7;
+	IDirect3DDevice7* device = LH3DRender::D3DDevice;
 	device->SetTexture(0, NULL);
 
 	for (int i = 0; i < HELPDUDE_FEEL_COLUMNS; i++)

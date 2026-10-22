@@ -2149,8 +2149,7 @@ void __fastcall LH3DP3::DrawSprite(LH3DSprite* sprite)
 				LH3DRender::g_current_active_material = material;
 				if (material)
 				{
-					((LH3DMaterial::RenderFunc*)
-					     LH3DMaterial::g_list_render_func)[material->GetMode() * LH3D_RENDER_FUNC_ENTRIES](material, 0);
+					LH3DMaterial::g_list_render_func[material->GetMode()].Func(material, 0);
 					if (LH3DRender::g_b_need_tilling || material->IsNeedTilling())
 					{
 						LH3DRender::SetD3DTillingOn(0);

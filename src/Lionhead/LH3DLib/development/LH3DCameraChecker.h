@@ -23,6 +23,8 @@ struct LH3DCameraChecker
 
 	// BW1W120 00821050 BW1M119 010d9180 (LHCombined Release)
 	static void Create(float max_distance, LHPoint point, float param_3, long param_4, bool y_only);
+	// BW1W120 00821270 BW1M119 0100aa50 (LHCombined Release)
+	static void Process();
 
 	// Non-virtual methods
 

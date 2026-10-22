@@ -1911,7 +1911,7 @@ void LH3DPrimitive::DrawFroz()
 			{
 				LH3DRender::g_current_active_material->Flags &= ~LH3DMaterial::FLAG_DOUBLE_SIDED;
 			}
-			uint32_t zFunc;
+			unsigned long zFunc;
 			LH3DRender::GetRenderState(D3DRENDERSTATE_ZFUNC, zFunc);
 			LH3DRender::SetRenderState(D3DRENDERSTATE_ZFUNC, D3DCMP_EQUAL);
 			Draw3DClipTriangle(count * 3, LH3DTech::g_cache_t_points, count, indices,
@@ -2298,7 +2298,7 @@ void LH3DPrimitive::DrawCage(float scale)
 	if (LH3DTech::g_index_count)
 	{
 		LH3DMaterial::RenderMode renderMode = Material.render_mode;
-		Material.render_mode = LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_0xd;
+		Material.render_mode = LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_ADDITIF_NZ;
 		LH3DRender::SetMaterial(&Material, 0);
 		Material.render_mode = renderMode;
 		LH3DRender::g_draw_triangle_func(LH3DTech::g_cache_t_points, LH3DTech::g_points_count, LH3DTech::g_list_indices,
@@ -4956,8 +4956,7 @@ void LH3DPrimitive::DrawLightMap(LH3DMaterial* light_map, float* uvs, bool32_t r
 		}
 		if (light_map && !LH3DRender::g_use_multipass)
 		{
-			((LH3DMaterial::RenderFunc*)
-			     LH3DMaterial::g_list_render_func)[light_map->GetMode() * LH3D_RENDER_FUNC_ENTRIES](light_map, 1);
+			LH3DMaterial::g_list_render_func[light_map->GetMode()].Func(light_map, 1);
 		}
 		LH3DRender::DrawTriangleMT((Vertex3DMT*)LH3DTech::g_cache_t_points, LH3DTech::g_points_count,
 		                           LH3DTech::g_list_indices, LH3DTech::g_index_count);
@@ -5994,9 +5993,9 @@ void LH3DPrimitive::DrawLitTnL()
 	if (LH3DMesh::g_current_vb && LH3DMesh::g_current_vb->VertexBuffer)
 	{
 		LH3DRender::SetMaterial(&Material, 0);
-		LH3DRender::Direct3DDevice7->DrawIndexedPrimitiveVB(D3DPT_TRIANGLELIST, LH3DMesh::g_current_vb->VertexBuffer, 0,
-		                                                    GetVerticesCount(), LH3DMesh::g_current_vb->Indices,
-		                                                    NumTriangles * 3, 0);
+		LH3DRender::D3DDevice->DrawIndexedPrimitiveVB(D3DPT_TRIANGLELIST, LH3DMesh::g_current_vb->VertexBuffer, 0,
+		                                              GetVerticesCount(), LH3DMesh::g_current_vb->Indices,
+		                                              NumTriangles * 3, 0);
 		LH3DMesh::g_current_vb++;
 		return;
 	}

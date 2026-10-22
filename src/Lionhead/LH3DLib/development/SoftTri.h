@@ -11,6 +11,8 @@ struct SoftTri
 	// BW1W120 00faa7d0 BW1M119 012d2370 (LHCombined Release)
 	static int miny;
 
+	// BW1W120 00880f20 BW1M119 010ad540 (LHCombined Release)
+	static void CalcColTab(short start, short count);
 	// BW1W120 0087ff70 BW1M119 0100df70 (LHCombined Release)
 	static void __fastcall addedge(float x1, int y1, float x2, int y2);
 	// BW1W120 00880050 BW1M119 0100d930 (LHCombined Release)

@@ -985,7 +985,8 @@ void CameraModeNew3::Initialise()
 		ForceField->ResetPulses();
 		ForceField->SetScaleFac(1.0f);
 		ForceFieldTexture = LH3DTexture::Create("data\\textures\\forcefield.raw", 0x41, 0, NULL);
-		ForceFieldMaterial = LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_0xd, ForceFieldTexture);
+		ForceFieldMaterial = LH3DRender::CreateMaterial(
+			LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_ADDITIF_NZ, ForceFieldTexture);
 		ForceFieldMaterial->Flags |= LH3DMaterial::FLAG_NEED_TILLING;
 		ForceFieldMaterial->Flags |= LH3DMaterial::FLAG_DOUBLE_SIDED;
 	}

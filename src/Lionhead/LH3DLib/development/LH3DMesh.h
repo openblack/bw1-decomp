@@ -113,6 +113,10 @@ struct LH3DMesh
 	static void CreatePackInternal(const void* data);
 	// BW1W120 00807c60 BW1M119 01069000 (LHCombined Release)
 	static void CreatePack();
+	// BW1W120 00807e40 BW1M119 01068f70 (LHCombined Release)
+	static bool32_t Open();
+	// BW1W120 00807e80 BW1M119 01068e60 (LHCombined Release)
+	static bool32_t Close();
 	// BW1W120 007acdd0 BW1M119 0100d440 (LHCombined Release)
 	static LHMatrix* GetCurrentMatrix();
 

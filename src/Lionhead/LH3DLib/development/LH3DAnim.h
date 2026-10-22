@@ -195,19 +195,19 @@ struct LH3DAnim
 
 	// Static data
 
-	// BW1W120 00edd508
-	static LH3DAnimPack* AnimPack;
+	// BW1W120 00edd508 BW1M119 011e36d4 (LHCombined Release)
+	static LH3DAnimPack* g_pack;
 
 	// Static methods
 
 	// BW1W120 inlined BW1M119 inlined
 	static LH3DAnim* GetPackedAnim(int index)
 	{
-		if (index < AnimPack->AnimCount && index >= 0)
+		if (index < g_pack->AnimCount && index >= 0)
 		{
-			return AnimPack->Anims[index];
+			return g_pack->Anims[index];
 		}
-		return AnimPack->Anims[0];
+		return g_pack->Anims[0];
 	}
 	// BW1W120 0083a0e0 BW1M119 0113e8f0 (LHCombined Release)
 	static void GetGraspPoint(LHMatrix* matrices, LH3DMesh* mesh, LHPoint& point, long bone);
@@ -227,6 +227,8 @@ struct LH3DAnim
 
 	// Non-virtual methods
 
+	// BW1W120 00839970 BW1M119 011281e0 (LHCombined Release)
+	void Release();
 	// BW1W120 00839980 BW1M119 010281a0 (LHCombined Release)
 	float SetTransform(LHMatrix* bones, LH3DMesh* mesh, long time, LHMatrix& transform);
 	// BW1W120 0083a6a0 BW1M119 0101f950 (LHCombined Release)

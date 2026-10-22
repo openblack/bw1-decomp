@@ -1,0 +1,9 @@
+#ifndef BW1_DECOMP_ERROR_CODES_INCLUDED_H
+#define BW1_DECOMP_ERROR_CODES_INCLUDED_H
+
+#include "LHLogger.h" /* For LHErrorCode */
+
+// BW1W120 1001d050 BW1M119 011df5bc (LHCombined Release)
+LH_LOG_API LHErrorCode LH_DX_Errors[];
+
+#endif /* BW1_DECOMP_ERROR_CODES_INCLUDED_H */

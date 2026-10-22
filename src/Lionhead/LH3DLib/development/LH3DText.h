@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t, uint16_t, uint32_t */
+#include <string.h> /* For memset */
 #include <uchar.h>  /* For char16_t */
 
 enum TEXTJUSTIFY
@@ -44,25 +45,46 @@ struct FontFile
 	bool ReadFromFile(const char* filename);
 };
 
+#define FONT_CACHE_ENTRIES      2048
+#define FONT_CACHE_PAGES        4
+#define FONT_CACHE_LINES        4
+#define FONT_CACHE_LINE_ENTRIES 16
+#define FONT_CACHE_BITS_SIZE    0x8000
+
 struct CacheEntry
 {
-	// TODO(decomp): field layout unknown (fill from disassembly)
-	uint8_t field_0x0;
+	wchar_t Code;
+	uint8_t field_0x2[6];
 };
+static_assert(sizeof(CacheEntry) == 0x8, "Data type is of wrong size");
 
 struct CacheLine
 {
-	// TODO(decomp): field layout unknown (fill from disassembly)
+	uint8_t     Width;
+	uint8_t     Count;
+	CacheEntry* Entries[FONT_CACHE_LINE_ENTRIES];
 
 	// Non-virtual methods
 
+	// BW1W120 inlined BW1M119 010a01b0 (LHCombined Release)
+	void Clear()
+	{
+		for (int i = 0; i < Count; i++)
+		{
+			Entries[i]->Code = 0;
+		}
+		Width = 0;
+		Count = 0;
+	}
 	// BW1W120 00830b80 BW1M119 010c5cc0 (LHCombined Release)
 	void Rebuild();
 };
+static_assert(sizeof(CacheLine) == 0x44, "Data type is of wrong size");
 
 struct CachePage
 {
-	// TODO(decomp): field layout unknown (fill from disassembly)
+	uint8_t   field_0x0[0x18];
+	CacheLine Lines[FONT_CACHE_LINES];
 
 	// Non-virtual methods
 
@@ -79,10 +101,41 @@ struct CachePage
 	// BW1W120 00830c10 BW1M119 010c5590 (LHCombined Release)
 	void RenderChar(CacheEntry* entry);
 };
+static_assert(sizeof(CachePage) == 0x128, "Data type is of wrong size");
 
 struct FontCache
 {
-	// TODO(decomp): field layout unknown (fill from disassembly)
+	// BW1W120 00eccd18 BW1M119 01332248 (LHCombined Release)
+	static uint8_t cachetime;
+	// BW1W120 00ecce20 BW1M119 01332b5c (LHCombined Release)
+	static CacheEntry cache[FONT_CACHE_ENTRIES];
+	// BW1W120 00ed0e20 BW1M119 0133224c (LHCombined Release)
+	static CachePage page[FONT_CACHE_PAGES];
+	// BW1W120 00ed12c0 BW1M119 01337b64 (LHCombined Release)
+	static uint8_t bits[FONT_CACHE_BITS_SIZE];
+	// BW1W120 00ed92c8 BW1M119 0133fc64 (LHCombined Release)
+	static int cachedamage;
+
+	// Static methods
+
+	// BW1W120 inlined BW1M119 010a0050 (LHCombined Release)
+	static void Reset()
+	{
+		int i;
+		for (i = 0; i < FONT_CACHE_ENTRIES; i++)
+		{
+			cache[i].Code = 0;
+		}
+		for (i = 0; i < FONT_CACHE_PAGES; i++)
+		{
+			for (int j = 0; j < FONT_CACHE_LINES; j++)
+			{
+				page[i].Lines[j].Clear();
+			}
+		}
+		memset(bits, 0, sizeof(bits));
+		cachedamage = 0;
+	}
 
 	// Non-virtual methods
 

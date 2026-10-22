@@ -1,6 +1,8 @@
 #ifndef BW1_DECOMP_LH_LOGGER_INCLUDED_H
 #define BW1_DECOMP_LH_LOGGER_INCLUDED_H
 
+#include <re_common.h> /* For bool32_t */
+
 #ifdef LH_LOG_EXPORTS
 #define LH_LOG_API __declspec(dllexport)
 #else
@@ -16,7 +18,10 @@ struct LHErrorCode
 class LH_LOG_API LHLogger
 {
 public:
-	static void          LogS(char* library, char* file, unsigned long line, char* format, ...);
+	static void LogS(char* library, char* file, unsigned long line, char* format, ...);
+	// BW1W120 10003a00 BW1M119 null
+	static bool32_t LogErrorCodeS(char* library, char* file, unsigned long line, LHErrorCode* codes, unsigned long code,
+	                              ...);
 	static unsigned long GetCode();
 	static char*         GetText();
 	static char*         GetFileName(char* path);
