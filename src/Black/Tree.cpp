@@ -903,7 +903,12 @@ float Tree::Grow(float amount, bool instant, bool raise_target)
 		SetJustScale(newScale);
 		if (Game3dObject != NULL)
 		{
-			SetPositionOnMap(Game3dObject, Pos, GetYAngle(), GetScale());
+			float         currentScale = GetScale();
+			float         yAngle = GetYAngle();
+			Game3DObject* object = Game3dObject;
+			LHPoint       point;
+			GLandscape::ConvertMapCoordToLandscapePoint(Pos, point);
+			object->LH3DObject::SetPosition(point, yAngle, currentScale);
 		}
 	}
 	return GetScale() - scale;
