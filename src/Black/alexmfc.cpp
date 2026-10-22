@@ -2109,7 +2109,7 @@ void SetupThing::Init()
 {
 	Font = GatheringText::gamefont;
 	TextureFormat format;
-	format.Type = LH3DTexture::g_b_use_low_res ? 3 : 0;
+	format.Type = LH3DTexture::g_b_use_low_res ? TEXTURE_FORMAT_FIXED_256 : TEXTURE_FORMAT_DEFAULT;
 	ButtonMaterial = LH3DRender::CreateMaterial(
 		LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_NZ,
 		LH3DTexture::Create((void*)"data\\textures\\Front_end_buttons.raw", 0x41, 0xffffffff, &format));

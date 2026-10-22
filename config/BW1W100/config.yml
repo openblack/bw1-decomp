@@ -6,6 +6,8 @@ symbols: config/BW1W100/symbols.txt
 splits: config/BW1W100/splits.txt
 
 block_relocations:
+  - source: 0x007BECD0
+  - source: 0x007BF268
 # Abode::CallVirtualFunctionsForCreation's workshop smoke colour 0x808080 is an immediate.
   - source: 0x00401FE7
 # GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874.
@@ -59,6 +61,25 @@ add_relocations:
     type: x86_abs32
     target: '?page@FontCache@@2PAUCachePage@@A'
     addend: 0x4B9
+  - source: 0x007BCC8F
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x007BCD22
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x007BD815
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+  - source: 0x007BD840
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+    addend: 0x28
+  - source: 0x007BE9F7
+    type: x86_abs32
+    target: '_sky_texture'
+    addend: 0xC
   - source: 0x007BD16C
     type: x86_abs32
     target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'

@@ -32,6 +32,9 @@ class LH3DZSorter;
 // The vertex format of Vertex3DMT.
 #define LH3D_FVF_VERTEX3D_MT (D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_SPECULAR | D3DFVF_TEX2)
 
+// BW1W120 00c386d8 BW1M119 011d0df0 (LHCombined Release)
+extern bool32_t g_b_zbuffer_16b;
+
 // The second texture modes of Set2ndTex, each with the state block that draws it.
 enum LH3D_2ND_TEX_MODE
 {

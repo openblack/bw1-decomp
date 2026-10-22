@@ -7,6 +7,8 @@ splits: config/BW1W130/splits.txt
 generate_imports: true
 
 block_relocations:
+  - source: 0x00870DE0
+  - source: 0x00871378
 # A 0x009C009B in .data that reads as a pointer into the import lookup tables.
   - source: 0x00CB1F3C
 # Text in Creature3D.cpp's .data that reads as code addresses: "tic" of PhysicalActionNames' "StartStatic" and
@@ -169,6 +171,25 @@ add_relocations:
     type: x86_abs32
     target: '?page@FontCache@@2PAUCachePage@@A'
     addend: 0x4B9
+  - source: 0x0086ED9F
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x0086EE32
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x0086F925
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+  - source: 0x0086F950
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+    addend: 0x28
+  - source: 0x00870B07
+    type: x86_abs32
+    target: '_sky_texture'
+    addend: 0xC
   - source: 0x0086F27C
     type: x86_abs32
     target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
