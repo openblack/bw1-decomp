@@ -260,8 +260,9 @@ void Tree::Draw()
 	if (DrawIndex != 0)
 	{
 		FlyingObjects* flying = &FlyingObjects::Getg_list()[DrawIndex];
+		Game3DObject*  object = Game3dObject;
 		float          scale = GetScale();
-		if (flying->Pos.y <= scale * Game3dObject->GetMesh()->GetBoundingBox().size.y * 2.0f + Game3dObject->matrix._42)
+		if (flying->Pos.y <= scale * object->GetMesh()->GetBoundingBox().size.y * 2.0f + Game3dObject->matrix._42)
 		{
 			LHPoint flyingPos = flying->Pos;
 			flyingPos.y = Game3dObject->matrix._42;
@@ -300,8 +301,8 @@ void Tree::Draw()
 				long    sound[SOUND_KEY_LENGTH] = {level, 0, 0, IMPACT_SOUND_TARGET_TREE, IMPACT_SOUND_EVENT_COLLISION};
 				LHPoint camera;
 				GGame::g_game->GetCamera()->GetPosition(camera);
-				LHPoint toCamera = camera - Game3dObject->matrix.GetPos();
-				GGlobal::Global.audio->SamplePlayAnimEffect(this, sqrt(toCamera * toCamera), sound, 0,
+				camera -= Game3dObject->matrix.GetPos();
+				GGlobal::Global.audio->SamplePlayAnimEffect(this, sqrt(camera * camera), sound, 0,
 				                                            GGlobal::Global.audio->GetBank(AUDIO_SFX_BANK_TYPE_EDITOR),
 				                                            0, 0.0f, 0.0f);
 				bent = true;
