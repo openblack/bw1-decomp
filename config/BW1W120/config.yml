@@ -190,6 +190,29 @@ add_relocations:
     type: x86_abs32
     target: '?page@FontCache@@2PAUCachePage@@A'
     addend: 0x4B9
+  - source: 0x0086A0FC
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD3
+  - source: 0x0086A100
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xD9
+  - source: 0x0086A104
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xE9
+  - source: 0x0086A108
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0xF9
+  - source: 0x0086A10C
+    type: x86_abs32
+    target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
+    addend: 0x109
+  - source: 0x0086A0DB
+    type: x86_abs32
+    target: '__real@4@4002c000000000000000'
 # CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
   - source: 0x004628EC
     type: x86_abs32
