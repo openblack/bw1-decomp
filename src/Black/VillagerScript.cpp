@@ -9,10 +9,7 @@
 // BW1W120 00768630 BW1M119 0159e900
 bool32_t Villager::IsReadyForNewScriptAction()
 {
-	// == IN_SCRIPT, written as a byte subtraction so MSVC6 emits the original's
-	// sub al,4 / neg al / sbb / inc arithmetic form (a plain == on constant 4 emits sete;
-	// only == 1 gets the arithmetic form for free, via dec).
-	return (unsigned char)((uint8_t)GetTopState() - VILLAGER_STATE_IN_SCRIPT) == 0;
+	return GetTopState() == VILLAGER_STATE_IN_SCRIPT;
 }
 
 // BW1W120 00768640 BW1M119 0159e860

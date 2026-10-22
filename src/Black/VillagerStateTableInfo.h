@@ -42,7 +42,7 @@ public:
 	uint32_t                    field_0xc4;
 	bool32_t                    isReactiveState;
 	uint32_t                    field_0xcc;
-	int                         field_0xd0;
+	bool32_t                    IsHomeState;
 	bool32_t                    CanPauseForASecond;
 	float                       FoodInterestMultiplier;
 	float                       WoodInterestMultiplier;

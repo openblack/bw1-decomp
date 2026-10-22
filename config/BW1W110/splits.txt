@@ -2195,11 +2195,15 @@ Black/VillagerForester.cpp:
 	.text       start:0x007533E0 end:0x00753D10
 
 Black/VillagerHome.cpp:
-	.text       start:0x00753E20 end:0x00755A40
-	.data       start:0x00C134E0 end:0x00C13588
+	.text       start:0x00753D10 end:0x00755A40
+	.rdata      start:0x0098A90C end:0x0098A914
+	.CRT$XCU    start:0x009B728C end:0x009B7290 align:4
+	.data       start:0x00C134E0 end:0x00C13500
+	.bss        start:0x00DA8AE8 end:0x00DA8AEC
 
 Black/VillagerHousewife.cpp:
-	.text       start:0x00756010 end:0x00756460
+	.text       start:0x00755A40 end:0x00756460 align:16
+	.data       start:0x00C13500 end:0x00C135A8 align:4
 
 Black/villagernames.cpp:
 	.text       start:0x007564A0 end:0x00756E00

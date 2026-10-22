@@ -63,9 +63,8 @@ class Town;
 class Tree;
 class WorshipSite;
 
-struct SortedObject
+class SortedObject : public Object
 {
-	uint8_t field_0x0;
 };
 
 class GVillagerStateTableInfo;
@@ -94,7 +93,7 @@ struct DiscipleInfo
 	bool32_t         UsesNothingToDoState;
 	bool32_t         CollectsWood;
 	TOWN_DESIRE_INFO desire_i_fulfil;
-	uint32_t         field_0x18;
+	bool32_t         MovesToTownOfObject;
 };
 
 #define VILLAGER_NUM_CLEAR_AREA_COORDS          2
@@ -113,6 +112,28 @@ enum VILLAGER_STATE_RESULT
 
 #define VILLAGER_WORSHIP_SITE_ARRIVE_DISTANCE 10.0f
 
+#define VILLAGER_GO_TO_BED_CHANCE          4
+#define VILLAGER_HOME_DESIRE_SCALE         0.9f
+#define VILLAGER_MATING_SLEEP_DESIRE       1.0f
+#define VILLAGER_SEX_TOUCH_DISTANCE        0.57f
+#define VILLAGER_DEFAULT_PROMISCUITY       0.5f
+#define VILLAGER_ADULT_SCALE               0.95f
+#define VILLAGER_CHANGE_TRIBE_SMOKE_COLOUR 0xffffffff
+
+#define BROKEN_HOME_TENT_DISTANCE     5.0f
+#define BROKEN_HOME_TENT_MIN_DISTANCE 5.0f
+
+#define TENT_TREE_SEARCH_RADIUS  50.0f
+#define TENT_POS_ATTEMPTS        3
+#define TENT_SPACING_SPIRAL_SIZE 9
+#define TENT_SPACING             5.0f
+#define TENT_RETRY_DISTANCE      5.0f
+#define TENT_RETRY_MIN_DISTANCE  3.0f
+
+#define ARTIFACT_DANCE_CLEAR_RADIUS_SCALE 1.2f
+#define ARTIFACT_DANCE_WAIT_DISTANCE      12.0f
+#define ARTIFACT_DANCE_CLEAR_AREA_STEP    1.0f
+
 enum VILLAGER_FLAGS
 {
 	VILLAGER_FLAG_AFTER_TAP_ON_ABODE = 0x1,
@@ -127,6 +148,7 @@ enum VILLAGER_FLAGS
 	VILLAGER_FLAG_DISCIPLE_FOLLOWER = 0x400,
 	VILLAGER_FLAG_IN_TRANSITION_ANIMATION = 0x800,
 	VILLAGER_FLAG_INTO_ANIMATION_PENDING = 0x1000,
+	VILLAGER_FLAG_BEEN_TO_BED = 0x2000,
 	VILLAGER_FLAG_WOOD_GRAPHIC = 0xc000,
 };
 
@@ -1011,7 +1033,7 @@ public:
 	// BW1W120 00756e20 BW1M119 0157b4d0
 	uint32_t GetDiscipleInteractState();
 	// BW1W120 00756e80 BW1M119 0102d9a0
-	bool32_t FindCloseObjectsForInteract(LHOrderedLinkedList<SortedObject>* param_1, const MapCoords& param_2);
+	bool32_t FindCloseObjectsForInteract(LHOrderedLinkedList<SortedObject>* objects, const MapCoords& pos);
 	// BW1W120 00757180 BW1M119 0157b170
 	bool32_t CheckMoveHouse(Object* object);
 	// BW1W120 00757210 BW1M119 0157b080
@@ -1224,6 +1246,8 @@ public:
 	float GetDesireToPickupFood();
 	// BW1W120 0075bb50 BW1M119 01089d20
 	float GetDesireForFood();
+	// BW1W120 0075bb60 BW1M119 01007670
+	float GetFoodDesireFromFood(float food_amount);
 	// BW1W120 0075bba0 BW1M119 01024060
 	float GetDesireForLife();
 	// BW1W120 0075bbc0 BW1M119 0102b110
@@ -1432,12 +1456,16 @@ public:
 	bool32_t CheckIllAtHome();
 	// BW1W120 00760250 BW1M119 01590990
 	bool32_t GoHomeDropResource();
+	// BW1W120 inlined BW1M119 01590a50
+	bool32_t IsHoldingWood() { return ResourceHeld[RESOURCE_TYPE_WOOD] != 0; }
+	// BW1W120 inlined BW1M119 01590aa0
+	bool32_t IsHoldingFood() { return ResourceHeld[RESOURCE_TYPE_FOOD] != 0; }
 	// BW1W120 00760270 BW1M119 010a0ae0
 	bool32_t GoHome();
 	// BW1W120 00760280 BW1M119 0109c2d0
-	bool32_t DoGoingHome(VILLAGER_STATES state_1, VILLAGER_STATES state_2);
+	bool32_t DoGoingHome(VILLAGER_STATES arrive_state, VILLAGER_STATES tent_state);
 	// BW1W120 007604f0 BW1M119 01590690
-	Town* GetTentPos(MapCoords& coords);
+	bool32_t GetTentPos(MapCoords& coords);
 	// BW1W120 007606e0 BW1M119 015900e0
 	bool32_t Landed();
 	// BW1W120 00760930 BW1M119 0100ee50
@@ -1485,7 +1513,7 @@ public:
 	// BW1W120 007610d0 BW1M119 0158efd0
 	bool32_t IsPromiscious();
 	// BW1W120 00761110 BW1M119 0158eee0
-	bool32_t FindAMateAtHome();
+	Villager* FindAMateAtHome();
 	// BW1W120 00761180 BW1M119 0158ee60
 	bool32_t CheckForSexAtHome();
 	// BW1W120 007611b0 BW1M119 0158edb0
@@ -1493,9 +1521,9 @@ public:
 	// BW1W120 007611f0 BW1M119 0158ed00
 	void HomeDeleted();
 	// BW1W120 00761220 BW1M119 0158ec80
-	bool MakeHomeless();
+	bool32_t MakeHomeless();
 	// BW1W120 00761240 BW1M119 0158ea60
-	bool MakeHomelessNoStateChange();
+	bool32_t MakeHomelessNoStateChange();
 	// BW1W120 00761320 BW1M119 0158e9a0
 	bool32_t HomelessStart();
 	// BW1W120 00761360 BW1M119 0158e810
@@ -1515,19 +1543,19 @@ public:
 	// BW1W120 007615c0 BW1M119 0158e260
 	bool32_t WaitForArtifactDance();
 	// BW1W120 00761800 BW1M119 0158e210
-	bool32_t EnterWaitForArtifactDance(unsigned char param_1, unsigned char param_2);
+	bool32_t EnterWaitForArtifactDance(uint8_t current, uint8_t destination);
 	// BW1W120 00761810 BW1M119 0158e090
 	bool32_t GoHomeAndChange();
 	// BW1W120 007618c0 BW1M119 0158df30
-	void ChangeTribeIfRequired(TRIBE_TYPE param_1, int param_2);
+	void ChangeTribeIfRequired(TRIBE_TYPE tribe, bool32_t show_effect);
 	// BW1W120 00761980 BW1M119 0158de20
-	bool32_t ExitGoHomeAndChange(unsigned char state);
+	bool32_t ExitGoHomeAndChange(uint8_t state);
 	// BW1W120 00761a00 BW1M119 0158dbf0
-	bool32_t ChangeInfo(const GVillagerInfo* param_1);
+	void ChangeInfo(const GVillagerInfo* new_info);
 	// BW1W120 00761ae0 BW1M119 0158daf0
 	bool32_t SleepInTent();
 	// BW1W120 00761b40 BW1M119 01097740
-	bool32_t ExitAtHome(unsigned char state);
+	bool32_t ExitAtHome(uint8_t state);
 	// BW1W120 00761b70 BW1M119 0158da50
 	bool32_t GoHomeFromWorship();
 	// BW1W120 00761c00 BW1M119 01592550

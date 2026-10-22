@@ -170,7 +170,7 @@ void Villager::UpdateHowImpressed(Reaction* reaction, int multiplier)
 
 void Villager::StopReacting()
 {
-	if ((uint8_t)Living::GetTopState() == VILLAGER_STATE_DANCE_WHILE_REACTING)
+	if (Living::GetTopState() == VILLAGER_STATE_DANCE_WHILE_REACTING)
 	{
 		if (IsDancing())
 		{

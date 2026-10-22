@@ -2550,14 +2550,14 @@ Black/VillagerHome.cpp:
 	.text       start:0x00764C50 end:0x007669B0
 	.rdata      start:0x00A1A384 end:0x00A1A38C
 	.CRT$XCU    start:0x00A479FC end:0x00A47A04 align:4
-	.data       start:0x00CA5264 end:0x00CA530C
+	.data       start:0x00CA5260 end:0x00CA5288
 	.bss        start:0x00E3AFD0 end:0x00E3AFD4
 
 Black/VillagerHousewife.cpp:
-	.text       start:0x007669B0 end:0x00767490
+	.text       start:0x007669B0 end:0x00767490 align:16
 	.rdata      start:0x00A1A38C end:0x00A1A39C
 	.CRT$XCU    start:0x00A47A04 end:0x00A47A0C align:4
-	.data       start:0x00CA530C end:0x00CA5334
+	.data       start:0x00CA5288 end:0x00CA533C align:4
 	.bss        start:0x00E3AFD4 end:0x00E3AFD8
 
 Black/VillagerLeader.cpp:

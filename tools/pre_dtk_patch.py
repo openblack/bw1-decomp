@@ -20,6 +20,14 @@ section_table_end + 0). dtk then extracts the full comments, lld re-emits them
 flush, and post_link_patch.py re-applies the SafeDisc bump + vandalism to
 reproduce the decrypted target byte-for-byte.
 
+The Creature Isle decryptor additionally strips the code/execute flags from
+the .text section header (0xC0000040 -- read/write data -- instead of link.exe's
+0x60000020). dtk's x86 linear sweep only scans sections marked as code, so
+without this restoration it finds zero rel32 relocations and every call in the
+extracted objects is baked in as a raw offset. post_link_patch.py re-applies
+the mangled flags when rebuilding the final exe, so the target hash is
+unaffected.
+
 Future: when we start from the encrypted image and run our own decryptor, this
 restoration step folds into that decryptor and the hardcoded prefix below is
 sourced from the encrypted exe instead.
@@ -84,7 +92,33 @@ def scan_runs(data: bytes, start: int, end: int):
         yield run_start, data[run_start:end]
 
 
+IMAGE_SCN_CNT_CODE = 0x00000020
+TEXT_SECTION_FLAGS = 0x60000020  # CNT_CODE | MEM_EXECUTE | MEM_READ, as link.exe emits
+
+
+def restore_text_section_flags(data: bytes) -> bytes:
+    """Restore the code/execute flags SafeDisc's decryptor stripped from .text.
+
+    No-op for exes whose .text is already marked as code (1.00-1.30)."""
+    e_lfanew = struct.unpack_from("<I", data, 0x3C)[0]
+    num_sections = struct.unpack_from("<H", data, e_lfanew + 6)[0]
+    size_opt = struct.unpack_from("<H", data, e_lfanew + 20)[0]
+    sec_off = e_lfanew + 4 + 20 + size_opt
+    out = bytearray(data)
+    for i in range(num_sections):
+        off = sec_off + i * 40
+        if bytes(out[off : off + 8]).rstrip(b"\x00") == b".text":
+            chars_off = off + 36
+            chars = struct.unpack_from("<I", out, chars_off)[0]
+            if not (chars & IMAGE_SCN_CNT_CODE):
+                struct.pack_into("<I", out, chars_off, TEXT_SECTION_FLAGS)
+            break
+    return bytes(out)
+
+
 def build_clean(data: bytes) -> bytes:
+    data = restore_text_section_flags(data)
+
     ste = section_table_end(data)
     soh = size_of_headers(data)
 

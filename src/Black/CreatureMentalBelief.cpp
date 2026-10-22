@@ -372,7 +372,7 @@ void CreatureBeliefAboutVillager::UpdateAttributes(Creature* creature, GameThing
 	}
 
 	Villager*       villager = dynamic_cast<Villager*>(thing);
-	VILLAGER_STATES state = (VILLAGER_STATES)(uint8_t)villager->GetTopState();
+	VILLAGER_STATES state = (VILLAGER_STATES)villager->GetTopState();
 	if (state == VILLAGER_STATE_WAIT_FOR_ANIMATION)
 	{
 		state = (VILLAGER_STATES)villager->action.states[LIVING_ACTION_INDEX_FINAL];

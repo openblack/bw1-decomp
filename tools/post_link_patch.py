@@ -494,7 +494,7 @@ def apply_BW1_common_patch(pe, cfg):
     linker_version = cfg.get("linker_version")
     if linker_version:
         pe.OPTIONAL_HEADER.MajorLinkerVersion, pe.OPTIONAL_HEADER.MinorLinkerVersion = map(int, linker_version.split("."))
-    
+
     # Size of code and size of Initialized Data might not match
     # TODO: Is this a sign of bad objs or link arguments or something missing from the linker?
     size_of_code = cfg.get("size_of_code")
@@ -1011,6 +1011,36 @@ BW1W130_SAFEDISC_CALLS = (
     (0x004F4745, copy_run(0x004F46AB)),  # CreaturePreviousContext
     (0x004F4958, jmp_run(0x004F4743)),  # CreaturePreviousContext
     (0x004F4988, copy_run(0x004F4958)),  # CreaturePreviousContext
+    (0x00764C73, jmp_run(0x00764C12)),  # VillagerHome
+    (0x00764D52, jmp_run(0x00764C73)),  # VillagerHome
+    (0x00764DE6, copy_run(0x00764D52)),  # VillagerHome
+    (0x00764E26, copy_run(0x00764DE6)),  # VillagerHome
+    (0x007652C9, copy_run(0x00764E26)),  # VillagerHome
+    (0x00765707, copy_run(0x007652C9)),  # VillagerHome
+    (0x00765906, copy_run(0x00765707)),  # VillagerHome
+    (0x00765A55, jmp_run(0x00765906)),  # VillagerHome
+    (0x00765A79, jmp_run(0x00765A55)),  # VillagerHome
+    (0x00765B49, copy_run(0x00765A79)),  # VillagerHome
+    (0x00765B8A, copy_run(0x00765B49)),  # VillagerHome
+    (0x00765CB3, jmp_run(0x00765B8A)),  # VillagerHome
+    (0x00765D2A, copy_run(0x00765CB3)),  # VillagerHome
+    (0x00765D66, copy_run(0x00765D2A)),  # VillagerHome
+    (0x00765E16, jmp_run(0x00765D66)),  # VillagerHome
+    (0x00765E43, copy_run(0x00765E16)),  # VillagerHome
+    (0x00765E69, copy_run(0x00765E43)),  # VillagerHome
+    (0x00765EA9, copy_run(0x00765E69)),  # VillagerHome
+    (0x00765F5A, jmp_run(0x00765EA9)),  # VillagerHome
+    (0x00765F82, copy_run(0x00765F5A)),  # VillagerHome
+    (0x00766139, jmp_run(0x00765F82)),  # VillagerHome
+    (0x007661D6, jmp_run(0x00766139)),  # VillagerHome
+    (0x00766211, jmp_run(0x007661D6)),  # VillagerHome
+    (0x00766236, jmp_run(0x00766211)),  # VillagerHome
+    (0x0076626A, copy_run(0x00766236)),  # VillagerHome
+    (0x00766397, jmp_run(0x0076626A)),  # VillagerHome
+    (0x00766691, jmp_run(0x00766397)),  # VillagerHome
+    (0x00766752, jmp_run(0x00766691)),  # VillagerHome
+    (0x007667D9, jmp_run(0x00766752)),  # VillagerHome
+    (0x0076691B, call_rel32(0x004034F9)),  # VillagerHome
     (0x007707B6, jmp_run(0x007706F9)),  # VillagerTrader
     (0x00770813, jmp_run(0x007707B6)),  # VillagerWorshipper
     (0x0077083B, call_rel32(0x004034F9)),  # VillagerWorshipper
@@ -1372,8 +1402,12 @@ def build_BW1WCI_exe(linked, cfg):
     assert at == BW1WCI_NFO_OFFSET
     out[BW1WCI_NFO_OFFSET : BW1WCI_NFO_OFFSET + len(BW1WCI_NFO)] = BW1WCI_NFO
 
+    # The linked executable carries the .MGD32 content in a .zMGD32 section: the
+    # linker sorts output sections by name, and the z prefix keeps .data1 at the
+    # RVA the .text references were linked against.
+    linked_names = {b".MGD32": b".zMGD32"}
     for name, rva, vsize, raw, rsize in BW1WCI_SECTIONS:
-        body = contents[name][:rsize]
+        body = contents[linked_names.get(name, name)][:rsize]
         out[raw : raw + len(body)] = body
     return bytes(out)
 
