@@ -18,6 +18,7 @@
 #include "LH3DMesh.h"
 #include "LH3DObject.h"
 #include "LH3DPrimitive.h"
+#include "LH3DZBuffer.h"
 #include "LH3DRender.h"
 #include "LH3DSubMesh.h"
 #include "LH3DTech.h"
