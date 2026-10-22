@@ -17,6 +17,9 @@
 #include "InterfaceMessage.h"       /* For enum INTERFACE_MESSAGE_TYPES */
 #include "InterfaceMessageBuffer.h" /* For struct GInterfaceMessageBuffer */
 
+// Immersion Foundation Classes: keep an effect's current iteration count
+#define IMM_EFFECT_DONT_CHANGE 0x80000000
+
 // Forward Declares
 
 class Base;
@@ -142,7 +145,7 @@ public:
 	// BW1W120 inlined BW1M119 01084cb0
 	MapCoords& GetHandRenderCollidePos() { return interface_collide.pos; }
 	// BW1W120 005d8a10 BW1M119 0136f240
-	void StartImmersion(IMMERSION_EFFECT_TYPE type, unsigned long param_2);
+	void StartImmersion(IMMERSION_EFFECT_TYPE type, unsigned long iterations);
 	// BW1W120 005d8af0 BW1M119 0136f110
 	void StopAllImmersion();
 	// BW1W120 005d56c0 BW1M119 0107d9c0
