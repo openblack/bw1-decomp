@@ -165,7 +165,12 @@ void Tree::CallVirtualFunctionsForCreation(const MapCoords& coords)
 	Game3dObject->SetDynamicLighting(false);
 	Game3dObject->SetShadowOnTextureChroma(true);
 	Game3dObject->SetCastDynamicShadow(false);
-	SetPositionOnMap(Game3dObject, coords, GetYAngle(), GetScale());
+	float         scale = GetScale();
+	float         yAngle = GetYAngle();
+	Game3DObject* object = Game3dObject;
+	LHPoint       point;
+	GLandscape::ConvertMapCoordToLandscapePoint(coords, point);
+	object->LH3DObject::SetPosition(point, yAngle, scale);
 	Game3dObject->SetPaper(true);
 	AngleIndex = (int)(GetYAngle() * (TREE_NUM_ANGLES / TWO_PI) + 0.5f);
 	Game3dObject->importance = -0.1f;
