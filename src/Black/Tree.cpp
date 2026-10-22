@@ -555,7 +555,7 @@ Object* Tree::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_ma
 			GInterfaceStatus* status = GetInterfaceStatusWhoLastDroppedMe();
 			if (status != NULL)
 			{
-				status->GetInterface()->StartImmersion(IMMERSION_EFFECT_TYPE_PLANT_OBJECT, 0x80000000);
+				status->GetInterface()->StartImmersion(IMMERSION_EFFECT_TYPE_PLANT_OBJECT, IMM_EFFECT_DONT_CHANGE);
 			}
 			int  count = 1000;
 			long spiralX = 1;
@@ -683,10 +683,7 @@ void Tree::SpecialDrawOnFire(bool selectable)
 	}
 	brightness = min(brightness, (uint32_t)Brightness);
 	unsigned long color = Game3dObject->color;
-	Game3dObject->color = (((color & 0xff0000) * brightness & 0xff0000ff) | ((color & 0xff00) * brightness & 0xff0000) |
-	                       ((color & 0xff) * brightness & 0xff00)) >>
-	                          8 |
-	                      (color & 0xff000000);
+	Game3dObject->color = LH3D_SCALE_COLOR(color, brightness);
 	FireAlpha = (255.0f - FireAlphaCold) * heat * (1.0f / 255.0f) + FireAlphaCold;
 	if (FireAlpha >= 254.0f)
 	{
