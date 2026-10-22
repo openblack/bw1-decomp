@@ -691,8 +691,8 @@ void Tree::SpecialDrawOnFire(bool selectable)
 	{
 		FireAlpha = 254.0f;
 	}
-	LH3DRender::OverrideMaterial = true;
-	LH3DRender::OverrideRenderMode = (int)FireAlpha;
+	LH3DRender::g_b_active_g_alpha_ref = true;
+	LH3DRender::g_alpha_ref = (unsigned long)FireAlpha;
 	if (GetLife() < 0.2f)
 	{
 		float     shrink = 1.0f - (0.2f - GetLife()) * 5.0f;
@@ -708,7 +708,7 @@ void Tree::SpecialDrawOnFire(bool selectable)
 		Game3dObject->AddForDrawing(selectable ? this : NULL);
 	}
 	bool32_t onScreen = LH3DObject::g_b_last_on_screen;
-	LH3DRender::OverrideMaterial = false;
+	LH3DRender::g_b_active_g_alpha_ref = false;
 	DrawFireEffect();
 	LH3DObject::g_b_last_on_screen = onScreen;
 }
