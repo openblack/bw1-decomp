@@ -5766,9 +5766,9 @@ void LH3DCreature::DoBlendedAction()
 			}
 			// TODO: the attached object is this LH3DCreature, not a Base.
 			options.AttachedObject = (Base*)this;
-			options.Positional = 1;
+			options.Positional = true;
 			options.Pos = pos;
-			options.Looping = 0;
+			options.Follow = false;
 			GGlobal::Global.audio->PlaySoundEffect(&options);
 			rock->SplitInTwo();
 		}
@@ -5791,9 +5791,9 @@ void LH3DCreature::DoBlendedAction()
 			}
 			// TODO: the attached object is this LH3DCreature, not a Base.
 			options.AttachedObject = (Base*)this;
-			options.Positional = 1;
+			options.Positional = true;
 			options.Pos = pos;
-			options.Looping = 0;
+			options.Follow = false;
 			GGlobal::Global.audio->PlaySoundEffect(&options);
 			rock->SplitInTwo();
 		}

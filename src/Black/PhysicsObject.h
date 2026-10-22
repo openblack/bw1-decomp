@@ -67,18 +67,7 @@ public:
 	GInterfaceStatus* status;
 	PhysOb            Physics;
 	uint8_t           field_0x1a4[0x4];
-	float             field_0x1a8;
-	uint32_t          field_0x1ac;
-	uint32_t          field_0x1b0;
-	uint32_t          field_0x1b4;
-	float             field_0x1b8;
-	uint32_t          field_0x1bc;
-	uint32_t          field_0x1c0;
-	uint32_t          field_0x1c4;
-	float             field_0x1c8;
-	uint32_t          field_0x1cc;
-	uint32_t          field_0x1d0;
-	uint32_t          field_0x1d4;
+	LHMatrix          Matrix;
 	uint32_t          Flags;
 
 	// Override methods

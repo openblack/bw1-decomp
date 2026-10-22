@@ -1663,9 +1663,9 @@ uint32_t Abode::InterfaceTap(GInterfaceStatus* status)
 			KnockSample = 0;
 		}
 		options.AttachedObject = this;
-		options.Positional = 1;
+		options.Positional = true;
 		options.Pos = pos;
-		options.Looping = 0;
+		options.Follow = false;
 		GGlobal::Global.audio->PlaySoundEffect(&options);
 	}
 	return 1;

@@ -239,7 +239,7 @@ uint32_t LeashObj::InterfaceTap(GInterfaceStatus* status)
 			options.Bank = GGlobal::Global.audio->AudioBanks[AUDIO_SFX_BANK_TYPE_IN_GAME];
 			options.SampleNumber = LH_SAMPLE_G_CLICKONSPELL_01;
 			options.AttachedObject = NULL;
-			options.Positional = 0;
+			options.Positional = false;
 			GGlobal::Global.audio->PlaySoundEffect(&options);
 		}
 		temple_leash->CurrentLeash = LeashIndex;
@@ -1736,10 +1736,10 @@ void CitadelHeart::SetTransferedEffectObject(Object* object, bool show_effect)
 					sampleIndex = 0;
 				}
 				options.AttachedObject = this;
-				options.Positional = 1;
+				options.Positional = true;
 				LHPoint soundPos = Pos.GetLHPoint();
 				options.Pos = soundPos;
-				options.Looping = 0;
+				options.Follow = false;
 				GGlobal::Global.audio->PlaySoundEffect(&options);
 				TransferContainer->AddTarget(new (FILEPATH, 2179) UR_PlasmaInf(
 					start, end, LHPoint(0.0f, 1.0f, 0.0f), LHPoint(0.0f, -1.0f, 0.0f), TransferedEffectPlasmaWidth,
@@ -1812,10 +1812,10 @@ void CitadelHeart::ProcessTransferedDamageEffect()
 					sampleIndex = 0;
 				}
 				options.AttachedObject = this;
-				options.Positional = 1;
+				options.Positional = true;
 				LHPoint soundPos = Pos.GetLHPoint();
 				options.Pos = soundPos;
-				options.Looping = 0;
+				options.Follow = false;
 				GGlobal::Global.audio->PlaySoundEffect(&options);
 			}
 			TransferContainer->AddTarget(new (FILEPATH, 2255) UR_PlasmaInf(start, end, startNormal, endNormal, width,

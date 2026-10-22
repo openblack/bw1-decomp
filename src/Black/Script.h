@@ -217,6 +217,8 @@ public:
 	static GScript* Create();
 	// BW1W120 006ec780 BW1M119 014dc4f0
 	static void StopHelpScripts();
+	// BW1W120 0070d080 BW1M119 01507620
+	static void ReplaceScriptGameThing(GameThingWithPos* old_thing, GameThingWithPos* new_thing);
 	// BW1W120 006eb9a0 BW1M119 0101e7e0
 	static uint32_t ConvertScriptPlayerToGamePlayer(unsigned long player);
 	// BW1W120 0070cf90 BW1M119 010069f0

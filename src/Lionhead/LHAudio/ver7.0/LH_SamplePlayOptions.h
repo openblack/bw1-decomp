@@ -4,10 +4,20 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <re_common.h> /* For bool32_t */
+
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 class Base;
 class LH_AudioBank;
+
+enum LH_SAMPLE_PLAY_TYPE
+{
+	LH_SAMPLE_PLAY_TYPE_STEAL = 0,
+	LH_SAMPLE_PLAY_TYPE_OVERLAP = 1,
+	LH_SAMPLE_PLAY_TYPE_ONCE = 2,
+	LH_SAMPLE_PLAY_TYPE_RESTART = 3,
+};
 
 #ifdef LH_AUDIO_EXPORTS
 #define LH_AUDIO_OPTIONS_API __declspec(dllexport)
@@ -18,21 +28,22 @@ class LH_AudioBank;
 class LH_SamplePlayOptions
 {
 public:
-	uint32_t      field_0x0;
-	LH_AudioBank* Bank;
-	uint32_t      Positional;
-	uint32_t      Looping;
-	uint8_t       field_0x10[0x10];
-	Base*         AttachedObject;
-	uint32_t      SampleNumber;
-	uint8_t       field_0x28[0x8];
-	LHPoint       Pos;
-	uint8_t       field_0x3c[0xc];
-	uint32_t      Pitch;
-	uint32_t      field_0x4c;
-	uint32_t      Priority;
-	uint8_t       field_0x54[0x110];
-	uint32_t      KeepData;
+	uint32_t            field_0x0;
+	LH_AudioBank*       Bank;
+	bool32_t            Positional;
+	bool32_t            Follow;
+	bool32_t            Doppler;
+	uint8_t             field_0x14[0xc];
+	Base*               AttachedObject;
+	uint32_t            SampleNumber;
+	uint8_t             field_0x28[0x8];
+	LHPoint             Pos;
+	uint8_t             field_0x3c[0xc];
+	uint32_t            Pitch;
+	uint32_t            LoopCount;
+	LH_SAMPLE_PLAY_TYPE PlayType;
+	uint8_t             field_0x54[0x110];
+	uint32_t            KeepData;
 
 	// Constructors
 
