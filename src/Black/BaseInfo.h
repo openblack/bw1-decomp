@@ -31,7 +31,7 @@ public:
 	// BW1W120 purecall BW1M119 purecall
 	virtual GBaseInfo* GetBaseInfo(uint32_t& num_infos) = 0;
 	// BW1W120 00401230 BW1M119 0112ba90
-	virtual void UpdateValue(float value, unsigned long offset, unsigned long param_3) {}
+	virtual void UpdateValue(float value, unsigned long offset, unsigned long unused) {}
 
 	// Static methods
 

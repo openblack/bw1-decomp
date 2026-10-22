@@ -134,7 +134,7 @@ LH3DColor GTreeInfo::GetDebugColor() const
 	return LH3DColor(121, 238, 94, 255);
 }
 
-void GTreeInfo::UpdateValue(float value, unsigned long offset, unsigned long param_3)
+void GTreeInfo::UpdateValue(float value, unsigned long offset, unsigned long unused)
 {
 	uint32_t numInfos;
 	GetBaseInfo(numInfos);
@@ -169,7 +169,7 @@ void Tree::CallVirtualFunctionsForCreation(const MapCoords& coords)
 	Game3dObject->SetPaper(true);
 	AngleIndex = (int)(GetYAngle() * (TREE_NUM_ANGLES / TWO_PI) + 0.5f);
 	Game3dObject->importance = -0.1f;
-	Game3dObject->Flags2 |= LH3D_OBJECT_FLAGS2_0x80;
+	Game3dObject->Flags2 |= LH3D_OBJECT_FLAGS2_NEED_CLIPPING;
 }
 
 float Tree::GetRoutePlanRadius(Creature* creature)
@@ -413,7 +413,7 @@ bool Tree::InteractsWithPhysicsObjects()
 	return false;
 }
 
-void Tree::ReactToPhysicsImpact(PhysicsObject* physics_object, bool param_2)
+void Tree::ReactToPhysicsImpact(PhysicsObject* physics_object, bool transferred_damage)
 {
 	Object* hitter = physics_object->GetGameObjectWhoHitMe();
 	if (hitter != NULL && hitter->IsResourceStore(RESOURCE_TYPE_WOOD))
@@ -425,7 +425,7 @@ void Tree::ReactToPhysicsImpact(PhysicsObject* physics_object, bool param_2)
 			return;
 		}
 	}
-	Object::ReactToPhysicsImpact(physics_object, param_2);
+	Object::ReactToPhysicsImpact(physics_object, transferred_damage);
 }
 
 bool32_t Tree::IsARootedObject()
@@ -525,13 +525,13 @@ void Tree::SetOnFire(float amount)
 	Object::SetOnFire(amount);
 }
 
-Object* Tree::EndPhysics(PhysicsObject* physics_object, bool param_2)
+Object* Tree::EndPhysics(PhysicsObject* physics_object, bool insert_back_into_map)
 {
 	if (!(Flags & GAME_THING_WITH_POS_FLAG_IN_PHYSICS) || (GameThing::Flags & GAME_THING_FLAG_PSYS_FLYING))
 	{
 		return this;
 	}
-	if (!param_2)
+	if (!insert_back_into_map)
 	{
 		return Fixed::EndPhysics(physics_object, false);
 	}
@@ -539,7 +539,7 @@ Object* Tree::EndPhysics(PhysicsObject* physics_object, bool param_2)
 	{
 		if (Magic == true)
 		{
-			return Fixed::EndPhysics(physics_object, param_2);
+			return Fixed::EndPhysics(physics_object, insert_back_into_map);
 		}
 		if (Pos.IsLand() && GetFireEffect() == NULL)
 		{
@@ -629,7 +629,7 @@ Object* Tree::EndPhysics(PhysicsObject* physics_object, bool param_2)
 				                                          this, MAGIC_TYPE_NONE);
 				player->alignment->Update(player, this, true);
 			}
-			return Fixed::EndPhysics(physics_object, param_2);
+			return Fixed::EndPhysics(physics_object, insert_back_into_map);
 		}
 	}
 	DeadTree* deadTree = DeadTree::Create(this, physics_object->GetPlayer());
