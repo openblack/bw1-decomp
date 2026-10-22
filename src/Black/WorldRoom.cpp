@@ -1,3 +1,5 @@
+#include "BlackPCH.h"
+
 #include "WorldRoom.h"
 
 #include <math.h>    /* For cos, log, sin */
@@ -46,15 +48,6 @@
 #include "MapCellConstants.h"  /* For MetresPerMapCell, ahead of the GameTimeConstants.h pair in .rdata */
 #include "GameTimeConstants.h" /* For SecondsPerYear */
 #include "ColourConstants.h"   /* For White */
-
-// fabricated: unrecovered counter slots. cl6 orders .bss by a hash of the symbol name, and Draw's
-// sign_texts guard ?$S<n> lands in the original's slot only for some n (246, 251, 252, 256, 262,
-// 305, 306). The headers above declare more static data members than the original's did, so
-// these pad the guard onto one of them.
-struct WorldRoomCounterPad
-{
-	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5;
-};
 
 // The name is a guess, but not a free one: cl6 orders .bss by a hash of the symbol name, and this
 // unit's .bss has the constant between Draw's sign_texts guard and White. PSysProperties.cpp and
@@ -110,8 +103,6 @@ bool32_t WorldRoom::DisplayMagicActivity = true;
 bool32_t WorldRoom::DisplayInfluence = true;
 bool32_t WorldRoom::DisplayCreature = true;
 bool32_t WorldRoom::DisplayChallenges = true;
-
-wchar_t WorldRoom::WorldStatisticsText[0x2000];
 
 static uint32_t UnusedStatic = 0;
 
@@ -1118,3 +1109,5 @@ void WorldRoom::LoadButtonConfig(GameOSFile& file)
 	file.ReadSafe(DisplayChallenges);
 	ShowInfluence = DisplayInfluence;
 }
+
+wchar_t WorldRoom::WorldStatisticsText[WORLD_ROOM_STATISTICS_TEXT_CAPACITY];

@@ -298,8 +298,8 @@ struct LHMatrix
 	void SetInverse();
 	// BW1W120 007faff0 BW1M119 01028040 (LHCombined Release)
 	void __fastcall PostMultiply(const LHMatrix& r);
-	// BW1W120 inlined BW1M119 inlined
-	void Set(const LHMatrix& r)
+	// BW1W120 005feda0 BW1M119 inlined
+	void __fastcall Set(const LHMatrix& r)
 	{
 		m[0] = r.m[0];
 		m[1] = r.m[1];

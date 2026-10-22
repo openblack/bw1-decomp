@@ -1,3 +1,5 @@
+#include "BlackPCH.h"
+
 #include "MapCellConstants.h"
 #include "CreatureAttitudeConstants.h"
 #include "GameTimeConstants.h"
@@ -238,12 +240,12 @@ enum CREATURE_BUBBLE_FONT
 #define THROWN_SOUND_TURNS        15
 #define THROWN_VORTEX_SOUND_TURNS 10
 
-bool32_t CreatureStatsDisplay::Interacting;
-int      CreatureStatsDisplay::Alpha;
-float    CreatureStatsDisplay::HandValue;
-float    CreatureStatsDisplay::Exhaustion;
-float    CreatureStatsDisplay::EnergyLoss;
+int      CreatureStatsDisplay::Alpha = 0;
+bool32_t CreatureStatsDisplay::Interacting = false;
 float    CreatureStatsDisplay::LifeLoss;
+float    CreatureStatsDisplay::EnergyLoss;
+float    CreatureStatsDisplay::Exhaustion;
+float    CreatureStatsDisplay::HandValue;
 
 // BW1W120 005168a0 BW1M119 null
 void DrawGroundCircle(const LHPoint& centre, float radius, float red, float green, float blue);

@@ -6,6 +6,8 @@ symbols: config/BW1W110/symbols.txt
 splits: config/BW1W110/splits.txt
 
 block_relocations:
+  - source: 0x0085BA70
+  - source: 0x0085C008
 # GInfoFileTable::InfoFiles entries ending in "txt\0" read as 0x00747874.
   - source: 0x009BAE44
   - source: 0x009BAEA8
@@ -57,6 +59,25 @@ add_relocations:
     type: x86_abs32
     target: '?page@FontCache@@2PAUCachePage@@A'
     addend: 0x4B9
+  - source: 0x00859A2F
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x00859AC2
+    type: x86_abs32
+    target: '?g_darkness_to_color@LandCell@@2PAKA'
+    addend: 0x400
+  - source: 0x0085A5B5
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+  - source: 0x0085A5E0
+    type: x86_abs32
+    target: '?bitmaps@LH3DSky@@2PAY02PAUBitmap16B@@A'
+    addend: 0x28
+  - source: 0x0085B797
+    type: x86_abs32
+    target: '_sky_texture'
+    addend: 0xC
   - source: 0x00859F0C
     type: x86_abs32
     target: '?ConvertTime@LH3DSky@@SAMMMMMMMMMM@Z'
