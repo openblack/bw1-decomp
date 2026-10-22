@@ -61,7 +61,7 @@
 #define TREE_SWAY_SPEED_CHANGE_TIME 2000
 #define TREE_SWAY_PHASE_PER_FRAME   0.035f
 #define TREE_SWAY_FRAME_TIME        33
-#define TREE_SWAY_AMPLITUDE         0.03
+#define TREE_SWAY_AMPLITUDE         0.03f
 
 #define TREE_BEND_MIN           0.75f
 #define TREE_BEND_LIGHT         0.3f
@@ -696,7 +696,7 @@ void Tree::SpecialDrawOnFire(bool selectable)
 	LH3DRender::g_alpha_ref = (unsigned long)FireAlpha;
 	if (GetLife() < 0.2f)
 	{
-		float     shrink = 1.0f - (0.2f - GetLife()) * 5.0f;
+		float     shrink = 1.0f - (0.2f - GetLife()) / 0.2f;
 		LHMatrix& matrix = Game3dObject->matrix;
 		LHMatrix  saved = matrix;
 		matrix.GetVectorX() *= shrink;
