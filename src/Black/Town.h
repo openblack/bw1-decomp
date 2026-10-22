@@ -71,6 +71,14 @@ class Wonder;
 class Workshop;
 class WorshipSite;
 
+#define TOWN_FAR_DISTANCE             100.0f
+#define TOWN_FAR_APPROACH_DISTANCE    25.0f
+#define TOWN_FAR_MIN_DISTANCE         10.0f
+#define TOWN_NEAR_WANDER_DISTANCE     8.0f
+#define TOWN_NEAR_MIN_DISTANCE        2.0f
+#define TOWN_TENTLESS_WANDER_DISTANCE 20.0f
+#define TOWN_TENTLESS_MIN_DISTANCE    10.0f
+
 struct PlayerTownInteract
 {
 	uint32_t     field_0x0;

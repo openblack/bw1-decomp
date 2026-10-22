@@ -215,6 +215,8 @@ public:
 
 	// BW1W120 0074a3a0 BW1M119 01160a20
 	float Decay(float amount);
+	// BW1W120 0074c650 BW1M119 0115daf0
+	bool32_t GetPosForVillagerToSleepUnder(Villager* villager, MapCoords& pos);
 };
 
 #endif /* BW1_DECOMP_TREE_INCLUDED_H */

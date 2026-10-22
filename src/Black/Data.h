@@ -17,6 +17,10 @@ public:
 	uint32_t InitialRandSeed;
 	uint32_t GameTurn;
 	uint32_t RealGameTurn;
+#if defined(VERSION_BW1W130)
+	uint32_t field_0x18;
+	uint32_t field_0x1c;
+#endif
 	uint32_t NumCreatedObjects;
 	uint32_t FrameCount;
 	float    InteractDesire;

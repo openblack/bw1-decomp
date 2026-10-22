@@ -103,12 +103,12 @@ public:
 	float           LifeWhenWalksWounded;
 	float           LifeWhenCrawlsWounded; /* 0x380 */
 	uint32_t        AmountOfWoodPerBuilderWanted;
-	uint32_t        KeepMeshWhenChangeTown;
+	bool32_t        KeepMeshWhenChangeTown;
 	float           OwnDesireThreshold;
 	float           MaxDistanceFromArtifactDanceCanBe; /* 0x390 */
 	uint16_t        InitialChillOutTime;
 	uint16_t        SubsequentChillOutTime;
-	uint16_t        TimeToWaitForArtifactDance;
+	int16_t         TimeToWaitForArtifactDance;
 	uint16_t        DrowningTime;
 	float           FoodPowerupIncrease;
 	float           MissionaryImpressiveValue; /* 0x3a0 */

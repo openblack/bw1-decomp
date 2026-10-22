@@ -1,7 +1,7 @@
 object_base: orig/BW1WCI
 name: runblack
 object: ../../build/BW1WCI/runblack-preprocessed.exe
-hash: 0643d257bcb5607a6f72d89da2f65c55b8fd2643
+hash: 9fa0ae02f23a5d72e0d19f985e31620d9c57b477
 symbols: config/BW1WCI/symbols.txt
 splits: config/BW1WCI/splits.txt
 generate_imports: false
@@ -71,6 +71,12 @@ block_relocations:
   - source: 0x0040C28E
   - source: 0x0040CCDB
 add_relocations:
+# UnDecorator::getOperatorName indexes nameTable by the operator character from '2',
+# so dtk reads the folded base (nameTable - '2' * 4) as msize's scope table.
+  - source: 0x007E98D8
+    type: x86_abs32
+    target: 'nameTable'
+    addend: -0xC8
 # CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
   - source: 0x0046C4EC
     type: x86_abs32

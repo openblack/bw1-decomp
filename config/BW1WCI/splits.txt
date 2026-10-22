@@ -1,6 +1,6 @@
 Sections:
 	.text       type:code align:4096
-	.text$x     type:code vaddr:0x008D1500 end:0x008D3B15
+	.text$x     type:code vaddr:0x008D1500 end:0x008D3B2D
 	.rdata      type:rodata align:4096
 	.rdata$r    type:rodata vaddr:0x00A18914 end:0x00A2C6F0
 	.xdata$x    type:rodata vaddr:0x00A2C6F0 end:0x00A30268
@@ -26,6 +26,7 @@ Sections:
 	stxt774     type:data align:4096
 	stxt371     type:data align:4096
 	.MGD32      type:data align:4096
+	.zMGD32     type:data vaddr:0x01050000 end:0x01055200
 
 lib/libcmt/crt0init.obj:
 	.CRT$XCA    start:0x00A36000 end:0x00A36004 align:4
@@ -1452,14 +1453,14 @@ Black/MPFEChannelData.cpp:
 	.bss        start:0x00DC1A50 end:0x00DC1A90
 
 Black/MPFEChannelMessages.cpp:
-	.text       start:0x0063D730 end:0x0063F1E0
-	.CRT$XCU    start:0x00A36B24 end:0x00A36B40 align:4
+	.text       start:0x0063D730 end:0x0063EC70
+	.CRT$XCU    start:0x00A36B24 end:0x00A36B34 align:4
 	.data       start:0x00C654C8 end:0x00C65734
 	.bss        start:0x00DC1A90 end:0x00DC1B58
 
 Black/MPFEChannelSelector.cpp:
-	.text       start:0x0063F1E0 end:0x00641650
-	.CRT$XCU    start:0x00A36B40 end:0x00A36B44 align:4
+	.text       start:0x0063EC70 end:0x00641650
+	.CRT$XCU    start:0x00A36B34 end:0x00A36B44 align:4
 	.data       start:0x00C65734 end:0x00C657F4
 	.bss        start:0x00DC1B58 end:0x00DC1FB4
 
@@ -2331,14 +2332,14 @@ Black/VillagerHome.cpp:
 	.text       start:0x0077C520 end:0x0077E250
 	.rdata      start:0x00A0A2EC end:0x00A0A2F4
 	.CRT$XCU    start:0x00A372E4 end:0x00A372E8 align:4
-	.data       start:0x00C97B88 end:0x00C97C2C
+	.data       start:0x00C97B88 end:0x00C97BA8
 	.bss        start:0x00E42A18 end:0x00E42A1C
 
 Black/VillagerHousewife.cpp:
-	.text       start:0x0077E250 end:0x0077EC70
+	.text       start:0x0077E250 end:0x0077EC70 align:16
 	.rdata      start:0x00A0A2F4 end:0x00A0A304
 	.CRT$XCU    start:0x00A372E8 end:0x00A372EC align:4
-	.data       start:0x00C97C2C end:0x00C97C54
+	.data       start:0x00C97BA8 end:0x00C97C54
 	.bss        start:0x00E42A1C end:0x00E42A20
 
 Black/VillagerLeader.cpp:
@@ -2601,7 +2602,7 @@ lib/libcpmt/locale.obj:
 	.text$x     start:0x008D181C end:0x008D1AA4 align:4
 
 lib/libcpmt/iostream.obj:
-	.text$x     start:0x008D1AE0 end:0x008D1BA4 align:4
+	.text$x     start:0x008D1AA4 end:0x008D1BA4 align:4
 
 lib/libcpmt/wiostrea.obj:
 	.text       start:0x007CA521 end:0x007CB3E8 align:1
@@ -3638,7 +3639,7 @@ lib/libcimt/_ios.obj:
 	.rdata      start:0x00A1416C end:0x00A14180
 
 lib/libcimt/ostream.obj:
-	.text$x     start:0x008D3748 end:0x008D37EC
+	.text$x     start:0x008D3748 end:0x008D38E0
 
 lib/libcimt/fstream.obj:
 	.text       start:0x008A4BC7 end:0x008A4FE8 align:1
@@ -3691,7 +3692,7 @@ lib/libcmt/strlwr.obj:
 	.text       start:0x008D0EB3 end:0x008D0FE7 align:1
 
 lib/libcimt/istream.obj:
-	.text$x     start:0x008D3A54 end:0x008D3AF8
+	.text$x     start:0x008D3A54 end:0x008D3B2D
 	.rdata      start:0x00A141E0 end:0x00A14200
 	.rdata$r    start:0x00A2C668 end:0x00A2C6EC
 	.xdata$x    start:0x00A30178 end:0x00A30240

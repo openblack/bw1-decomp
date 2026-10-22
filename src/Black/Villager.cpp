@@ -245,7 +245,7 @@ void Villager::DeleteDependancys()
 	{
 		SetTopState(VILLAGER_STATE_SET_DYING);
 	}
-	if ((uint8_t)GetTopState() != VILLAGER_STATE_MOVE_ON_PATH && footpath_node != NULL &&
+	if (GetTopState() != VILLAGER_STATE_MOVE_ON_PATH && footpath_node != NULL &&
 	    footpath_node->followers.IsThisInList(this))
 	{
 		footpath_node->followers.Remove(this);

@@ -766,7 +766,7 @@ public:
 	// BW1W120 005f27f0 BW1M119 01058aa0
 	uint8_t GetTopState() const;
 	// BW1W120 005f2800 BW1M119 01391b50
-	bool SetupMoveToObject(Object* param_1, unsigned char param_2);
+	bool SetupMoveToObject(Object* object, uint8_t end_state);
 	// BW1W120 005f2830 BW1M119 0102bdb0
 	bool32_t SetupMoveToPos(const MapCoords& coord, uint8_t end_state);
 	// BW1W120 005ee100 BW1M119 01386b70

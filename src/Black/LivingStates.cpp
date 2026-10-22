@@ -11,7 +11,7 @@ uint8_t Living::GetTopState() const
 	return action.GetState(LIVING_ACTION_INDEX_TOP);
 }
 
-bool Living::SetupMoveToObject(Object* object, unsigned char end_state)
+bool Living::SetupMoveToObject(Object* object, uint8_t end_state)
 {
 	SetupMobileMoveToObject(object);
 	return SetCurrentAndDestinationState(VILLAGER_STATE_MOVE_TO_OBJECT, end_state) == LIVING_SET_STATE_SUCCESS;

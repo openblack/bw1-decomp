@@ -1,9 +1,12 @@
 #include "GameTimeConstants.h"
 #include "Villager.h"
 
+#include <windows.h> /* For min */
+
 #include "Abode.h"
 #include "StoragePit.h"
 #include "Town.h"
+#include "Utils.h"
 #include "VillagerInfo.h"
 
 // BW1W120 0075b940 BW1M119 01583810
@@ -74,16 +77,6 @@ bool32_t Villager::ChangeStateToFindFoodToEat()
 	return false;
 }
 
-// TODO: 86.7% — the real symbol is ?POWER@@YGMM@Z (float __stdcall POWER(float)); it returns
-// its float result in ST0 (no leak issue here). The loop trip count is a hardcoded immediate 2,
-// modelled via the POWER<2> explicit specialization. Only residual diff: the loop body emits
-// `fmul st,[esp+4]` (long-latency) BEFORE `dec eax` in our build but AFTER it in the target,
-// even though the source order is `--i; result *= clamped;` (matches Ghidra). Scheduler
-// tie-break: the independent fmul is hoisted ahead of the counter decrement. No source shape
-// found to force dec-before-fmul without adding a fake dependency.
-template <int T> float __stdcall POWER(float base);
-template <> float __stdcall POWER<2>(float base);
-
 // BW1W120 0075bae0 BW1M119 01583630
 float Villager::CalculateLifeDesire()
 {
@@ -108,20 +101,12 @@ float Villager::GetDesireToPickupFood()
 // BW1W120 0075bb50 BW1M119 01089d20
 float Villager::GetDesireForFood()
 {
-	return POWER<2>(food);
+	return GetFoodDesireFromFood(food);
 }
 
-template <> float __stdcall POWER<2>(float base)
+float Villager::GetFoodDesireFromFood(float food_amount)
 {
-	float clamped = (base < 1.0f) ? base : 1.0f;
-	float result = clamped;
-	int   i = 2;
-	do
-	{
-		--i;
-		result *= clamped;
-	} while (i != 0);
-	return 1.0f - result;
+	return 1.0f - POWER(min(food_amount, 1.0f), 3);
 }
 
 // BW1W120 0075bba0 BW1M119 01024060

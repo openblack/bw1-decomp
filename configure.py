@@ -251,7 +251,9 @@ if config.version == "BW1W100":
     # nomemory.obj 1.00 never linked at all. Likewise GJProperty's
     # Persistent::SetUniqueName and PersistenceStreamer writers: 1.00 has no
     # PSysFileData::SaveToFile, so they were dropped too, and with them the only
-    # users of PersistentOwner::IsNameUsed and typeid's ___RTtypeid. Villager's
+    # users of PersistentOwner::IsNameUsed and typeid's ___RTtypeid. Nothing
+    # calls VillagerHome's Villager::ShallIWaitForDinner either, and it is the
+    # only caller of Villager::HousewifeAskForMeal. Villager's
     # SetGotoWorshipSpeed and CheckRequestGoHome have no callers in 1.00, so
     # they were dropped too, with the only users of WorshipSite's
     # GetWorshipSpeed and AddVillagerRequestingToGoHome.
@@ -259,6 +261,7 @@ if config.version == "BW1W100":
         "?_Nomemory@std@@YAXXZ",
         "?IsNameUsed@PersistentOwner@@QAEHPBD@Z",
         "___RTtypeid",
+        "?HousewifeAskForMeal@Villager@@QAEHXZ",
         "?GetWorshipSpeed@WorshipSite@@QAEMXZ",
         "?AddVillagerRequestingToGoHome@WorshipSite@@QAEXPAVVillager@@@Z",
     ]:
@@ -1224,7 +1227,7 @@ config.libs = [
             GameCodeObject(NonMatching, "Black/VillagerFood.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerFootball.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerForester.cpp"),
-            GameCodeObject(NonMatching, "Black/VillagerHome.cpp"),
+            GameCodeObject(Matching, "Black/VillagerHome.cpp", extra_cflags=["/vmg"]),
             GameCodeObject(NonMatching, "Black/VillagerHousewife.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerInfo.cpp"),
             GameCodeObject(NonMatching, "Black/VillagerLeader.cpp"),

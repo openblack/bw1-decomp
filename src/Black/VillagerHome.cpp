@@ -3,35 +3,52 @@
 
 #include <stdlib.h> /* For max */
 
-#include "chlasm/GStates.h"
+#include <Lionhead/LH3DLib/development/LH3DMath.h> /* For TWO_PI, HALF_PI_F, QUARTER_PI_F, EIGHTH_PI_F */
+#include <Lionhead/LH3DLib/development/LH3DMesh.h> /* For LH3DMesh::GetPackedMesh */
+#include <chlasm/GStates.h>                        /* For enum VILLAGER_STATES */
 
+#include "Abode.h"
+#include "Alignment.h"
+#include "Dance.h"
+#include "DanceGroup.h"
+#include "Game.h"
+#include "Game3DObject.h"
+#include "GameStats.h"
+#include "InterfaceStatus.h"
+#include "Map.h"
+#include "Player.h"
 #include "Rand.h"
+#include "Reaction.h"
+#include "Town.h"
+#include "Tree.h"
 #include "Utils.h"
 #include "VillagerInfo.h"
 #include "VillagerStateTableInfo.h"
-#include "Abode.h"
-#include "Town.h"
-#include "Game.h"
 
+#if defined(VERSION_BW1W100) || defined(VERSION_BW1WCI)
+#define FILEPATH "C:\\dev\\black\\VillagerHome.cpp"
+#elif defined(VERSION_BW1W110)
+#define FILEPATH "C:\\dev\\Black\\VillagerHome.cpp"
+#elif defined(VERSION_BW1W130)
+#define FILEPATH "D:\\Work\\Games\\dd\\Black\\VillagerHome.cpp"
+#else
 #define FILEPATH "C:\\dev\\MP\\Black\\VillagerHome.cpp"
+#endif
 
-// BW1W120 0075bb60
-float __stdcall POWER(float base);
-
-// BW1W120 0075fea0 BW1M119 01099070
 bool32_t Villager::HomeDecideWhatToDo()
 {
-	if (GetAbode() != NULL && GetTown() != NULL && GetTown()->IsInStateOfEmergency() != 0)
+	if (GetAbode() != NULL && GetTown() != NULL && GetTown()->IsInStateOfEmergency())
 	{
 		SetTopState(VILLAGER_STATE_GOTO_BED_AT_HOME);
 		return true;
 	}
-	if (CheckNeedsAtHome() == 1)
+	if (CheckNeedsAtHome() == true)
 	{
 		return true;
 	}
-	// TODO: target zero-extends Flags (`xor ecx,ecx` before `mov cx`); ours drops the dead xor
+#if !defined(VERSION_BW1W100)
 	if (IsDisciple())
+#endif
 	{
 		uint32_t disciple = DiscipleType;
 		if (GVillagerInfo::GetDiscipleInfo()[(uint8_t)disciple].UsesNothingToDoState == true)
@@ -40,7 +57,7 @@ bool32_t Villager::HomeDecideWhatToDo()
 			{
 				if (GetTown()->desire.GetSortedDesire(0)->Type == TOWN_DESIRE_INFO_FOR_SLEEP)
 				{
-					if (CheckSatisfySleep() != 0)
+					if (CheckSatisfySleep())
 					{
 						return true;
 					}
@@ -54,28 +71,26 @@ bool32_t Villager::HomeDecideWhatToDo()
 		return true;
 	}
 	HomeNothingToDo();
-	return 0;
+	return false;
 }
 
-// BW1W120 0075ff80 BW1M119 0100c3e0
 bool32_t Villager::CheckNeededForSomething()
 {
 	if (GetAbode() == NULL)
 	{
-		if (CheckHomelessMoveIntoAbode() != 0)
+		if (CheckHomelessMoveIntoAbode())
 		{
 			return true;
 		}
 	}
-	return CheckNeededForSpecial() == 1;
+	return CheckNeededForSpecial() == true;
 }
 
-// BW1W120 0075ffb0 BW1M119 01590d80
 bool32_t Villager::HomeNothingToDo()
 {
-	if (Flags & 4)
+	if (Flags & VILLAGER_FLAG_AT_HOME)
 	{
-		if (GRand::GameRand(4, FILEPATH, 75) == 0)
+		if (GRand::GameRand(VILLAGER_GO_TO_BED_CHANCE, FILEPATH, 75) == 0)
 		{
 			TurnsUntilNextStateChange = 0;
 			SetTopState(VILLAGER_STATE_GOTO_BED_AT_HOME);
@@ -86,24 +101,22 @@ bool32_t Villager::HomeNothingToDo()
 	return true;
 }
 
-// BW1W120 00760000 BW1M119 01590d40
 bool32_t Villager::NothingToDo()
 {
 	return true;
 }
 
-// BW1W120 00760010 BW1M119 01098e30
 bool32_t Villager::CheckNeededForSpecial()
 {
-	if (CheckNeededForWorship() == 1)
+	if (CheckNeededForWorship() == true)
 	{
 		return true;
 	}
-	if (CheckNeededForCivic() == 1)
+	if (CheckNeededForCivic() == true)
 	{
 		return true;
 	}
-	return CheckSatisfyOwnDesire(GetInfo()->OwnDesireThreshold) == 1;
+	return CheckSatisfyOwnDesire(GetInfo()->OwnDesireThreshold) == true;
 }
 
 bool32_t Villager::CheckSatisfyOwnDesire(float threshold)
@@ -127,40 +140,41 @@ bool32_t Villager::CheckSatisfyOwnDesire(float threshold)
 	return false;
 }
 
-// BW1W120 00760110 BW1M119 0100f140
 bool32_t Villager::CheckNeedsAtHome()
 {
 	if (IsWoman())
 	{
-		if (WomanSpecial() == 1)
+		if (WomanSpecial() == true)
 		{
 			return true;
 		}
-		if (IsPregnant() != 0)
+		if (IsPregnant())
 		{
 			return true;
 		}
 	}
-	// TODO: the target reloads `info` fresh in the max() re-evaluation arms; ours either
-	// reloads or caches it everywhere
 	float desire;
+#if defined(VERSION_BW1W100)
+	if (GVillagerInfo::GetDiscipleInfo()[DiscipleType].UsesNothingToDoState == true)
+#else
 	if (IsDisciple() && GVillagerInfo::GetDiscipleInfo()[DiscipleType].UsesNothingToDoState == true)
+#endif
 	{
-		const GVillagerInfo* vi = (const GVillagerInfo*)info;
-		desire = max(GetLifeDesireFromLife(vi->DamageThresholdToGoHome), POWER(vi->StarvingForFood));
+		desire = max(GetLifeDesireFromLife(GetInfo()->DamageThresholdToGoHome),
+		             GetFoodDesireFromFood(GetInfo()->StarvingForFood));
 	}
 	else
 	{
-		const GVillagerInfo* vi = (const GVillagerInfo*)info;
-		desire = max(GetLifeDesireFromLife(vi->DamageThresholdToSleepUntil), POWER(vi->HungryForFood));
+		desire = max(GetLifeDesireFromLife(GetInfo()->DamageThresholdToSleepUntil),
+		             GetFoodDesireFromFood(GetInfo()->HungryForFood));
 	}
-	if (CheckSatisfyOwnDesire(desire * 0.9f) == 1)
+	if (CheckSatisfyOwnDesire(desire * VILLAGER_HOME_DESIRE_SCALE) == true)
 	{
 		return true;
 	}
-	if (IsChild() != 0)
+	if (IsChild())
 	{
-		if (CheckChildActivity() == 1)
+		if (CheckChildActivity() == true)
 		{
 			return true;
 		}
@@ -168,48 +182,42 @@ bool32_t Villager::CheckNeedsAtHome()
 	return false;
 }
 
-// BW1W120 00760240 BW1M119 01590af0
 bool32_t Villager::CheckIllAtHome()
 {
 	return false;
 }
 
-// BW1W120 00760250 BW1M119 01590990
 bool32_t Villager::GoHomeDropResource()
 {
-	// TODO: 87.5% - target lays out the GotoStoragePit tail-jmp block before the
-	// GoHome one; our build orders them the other way (semantics identical).
-	// Block-ordering tie-break, unaffected by if/else vs &&/|| phrasing.
-	if (ResourceHeld[RESOURCE_TYPE_FOOD] != 0 || ResourceHeld[RESOURCE_TYPE_WOOD] != 0)
+	bool32_t holding = IsHoldingFood() || IsHoldingWood();
+	if (holding)
 	{
 		return GotoStoragePitForDropOff();
 	}
 	return GoHome();
 }
 
-// BW1W120 00760270 BW1M119 010a0ae0
 bool32_t Villager::GoHome()
 {
 	return DoGoingHome(VILLAGER_STATE_ARRIVES_HOME, VILLAGER_STATE_SLEEP_IN_TENT);
 }
 
-// BW1W120 00760280 BW1M119 0109c2d0
 bool32_t Villager::DoGoingHome(VILLAGER_STATES arrive_state, VILLAGER_STATES tent_state)
 {
-	if (IsDancing() != 0)
+	if (IsDancing())
 	{
-		RemoveFromDance((Flags >> 1) & 1);
+		RemoveFromDance((Flags & VILLAGER_FLAG_AT_WORSHIP_SITE) != 0);
 	}
 	Abode* abode = GetAbode();
 	if (abode != NULL)
 	{
-		if (Flags & 4)
+		if (Flags & VILLAGER_FLAG_AT_HOME)
 		{
 			SetTopState(VILLAGER_STATE_AT_HOME);
 			return true;
 		}
-		uint32_t final_state = (uint8_t)GetFinalState();
-		if (final_state != arrive_state)
+		uint32_t finalState = GetFinalState();
+		if (finalState != arrive_state)
 		{
 			SetupMoveToOnFootpath(*abode, abode->GetArrivePos(), (uint8_t)arrive_state);
 		}
@@ -218,76 +226,190 @@ bool32_t Villager::DoGoingHome(VILLAGER_STATES arrive_state, VILLAGER_STATES ten
 	Town* town = GetTown();
 	if (town != NULL)
 	{
-		// TODO: callee-save register allocation is swapped vs the target; the distance callee
-		// is the unnamed GetDistanceInMetres twin at 0x74cd50
 		MapCoords pos = Pos;
-		uint32_t  end_state;
-		if (GUtils::GetDistanceInMetres(Pos, GetTown()->Pos) > 100.0f)
+		uint32_t  endState;
+		if (GUtils::GetDistanceInMetres(&Pos, &GetTown()->Pos) > TOWN_FAR_DISTANCE)
 		{
-			end_state = action.states[LIVING_ACTION_INDEX_TOP];
-			float angle = GRand::GameFloatRand(1.5707964f, FILEPATH, 295) - 0.78539819f +
-			              GUtils::Get3DAngleFromXZ(Pos, town->Pos);
-			float dist = (GRand::GameFloatRand(25.0f, FILEPATH, 296)) + 10.0f;
-			pos = town->Pos + GUtils::GetPosFromAngle(angle, dist);
+			endState = action.states[LIVING_ACTION_INDEX_TOP];
+			float angle = GRand::GameFloatRand(HALF_PI_F, FILEPATH, 295) - QUARTER_PI_F +
+			              GUtils::Get3DAngleFromXZ(town->Pos, Pos);
+			pos = town->Pos +
+			      GUtils::GetPosFromAngle(angle, (GRand::GameFloatRand(TOWN_FAR_APPROACH_DISTANCE, FILEPATH, 296)) +
+			                                         TOWN_FAR_MIN_DISTANCE);
 		}
 		else
 		{
-			pos += GUtils::GetPosFromAngle(GRand::GameFloatRand(6.2831855f, FILEPATH, 300),
-			                               GRand::GameFloatRand(8.0f, FILEPATH, 300) + 2.0f);
-			if (GetTentPos(pos) == NULL)
+			pos += GUtils::GetPosFromAngle((GRand::GameFloatRand(TWO_PI, FILEPATH, 300)),
+			                               GRand::GameFloatRand(TOWN_NEAR_WANDER_DISTANCE, FILEPATH, 300) +
+			                                   TOWN_NEAR_MIN_DISTANCE);
+			if (!GetTentPos(pos))
 			{
-				end_state = action.states[LIVING_ACTION_INDEX_TOP];
-				pos += GUtils::GetPosFromAngle(GRand::GameFloatRand(6.2831855f, FILEPATH, 304),
-				                               GRand::GameFloatRand(20.0f, FILEPATH, 304) + 10.0f);
+				endState = action.states[LIVING_ACTION_INDEX_TOP];
+				pos += GUtils::GetPosFromAngle((GRand::GameFloatRand(TWO_PI, FILEPATH, 304)),
+				                               GRand::GameFloatRand(TOWN_TENTLESS_WANDER_DISTANCE, FILEPATH, 304) +
+				                                   TOWN_TENTLESS_MIN_DISTANCE);
 			}
 			else
 			{
-				end_state = tent_state;
+				endState = tent_state;
 			}
 		}
-		SetupMoveToWithHug(pos, (VILLAGER_STATES)end_state);
+		SetupMoveToWithHug(pos, (VILLAGER_STATES)endState);
 		return true;
 	}
 	SetTopState(VILLAGER_STATE_VAGRANT_START);
 	return true;
 }
 
-// BW1W120 00760930 BW1M119 0100ee50
+bool32_t Villager::GetTentPos(MapCoords& coords)
+{
+	MapCoords pos;
+	pos.SetWholeX(Pos.WholeX());
+	pos.SetWholeZ(Pos.WholeZ());
+	pos.SetAltitude(Pos.Altitude());
+	Object* tree = pos.FindObject(&Object::IsTree, TENT_TREE_SEARCH_RADIUS, NULL);
+	if (tree != NULL && ((Tree*)tree)->GetPosForVillagerToSleepUnder(this, pos))
+	{
+		coords.Set(pos);
+		return true;
+	}
+	pos.Set(coords);
+	for (uint8_t attempt = 0; attempt < TENT_POS_ATTEMPTS; attempt++)
+	{
+		if (pos.Collide((COLLIDE_TYPE)(COLLIDE_TYPE_WATER | COLLIDE_TYPE_FIXED | COLLIDE_TYPE_OFF_MAP)) == 0)
+		{
+			bool32_t clear = true;
+			long     spiralX = 1;
+			long     spiralZ = 1;
+			for (int count = TENT_SPACING_SPIRAL_SIZE; count != 0; count--)
+			{
+				for (MapCellIterator it = pos.GetFirstIterator(); it.object != NULL;)
+				{
+					if (it.object->IsVillager(NULL) && pos.GetDistance(it.object->Pos) < TENT_SPACING &&
+					    ((Villager*)it.object)->action.GetState(LIVING_ACTION_INDEX_TOP) ==
+					        VILLAGER_STATE_SLEEP_IN_TENT)
+					{
+						clear = false;
+						break;
+					}
+					it.object = it.object->GetMapChild(*it.cell);
+					it.MoveToMobileObsIfNeededAndPoss();
+				}
+				pos += *GUtils::Spiral(spiralX, spiralZ);
+			}
+			if (clear)
+			{
+				coords.Set(pos);
+				return true;
+			}
+		}
+		pos +=
+			GUtils::GetPosFromAngle((GRand::GameFloatRand(TWO_PI, FILEPATH, 365)),
+		                            GRand::GameFloatRand(TENT_RETRY_DISTANCE, FILEPATH, 365) + TENT_RETRY_MIN_DISTANCE);
+	}
+	return false;
+}
+
+bool32_t Villager::Landed()
+{
+	if ((Flags & VILLAGER_FLAG_BEEN_PICKED_UP) && IsDisciple())
+	{
+		uint32_t disciple = DiscipleType;
+		if (action.TurnsSinceStateChange == 1)
+		{
+			GInterfaceStatus*      status = GetInterfaceStatusWhoLastDroppedMe();
+			GPlayer*               player = status != NULL ? status->GetPlayer() : NULL;
+			DETECTED_PLAYER_ACTION playerAction =
+				(DETECTED_PLAYER_ACTION)(DETECTED_PLAYER_ACTION_THROW_IN_THE_SEA + disciple);
+			if (player != NULL)
+			{
+				if (playerAction < DETECTED_PLAYER_ACTION_LAST)
+				{
+					player->ConsiderMakingCreatureMimicPlayer(status, playerAction, this, MAGIC_TYPE_NONE);
+				}
+				if (DiscipleOnPickUp != disciple)
+				{
+					player->GetAlignment()->UpdateFromDisciple(player, this);
+				}
+			}
+		}
+		if (!IsReadyForNewAnimation(1))
+		{
+			return true;
+		}
+		Reaction::RemoveAllReactionsOfTypeInitiatedByObject(this, REACTION_REACT_TO_VILLAGER_IN_HAND);
+		Flags &= ~VILLAGER_FLAG_BEEN_PICKED_UP;
+		if (disciple != VILLAGER_DISCIPLE_NONE)
+		{
+			LHOrderedLinkedList<SortedObject> objects;
+			if (FindCloseObjectsForInteract(&objects, Pos) && objects.GetHead() != NULL)
+			{
+				SortedObject* object = objects.GetHead()->GetData();
+				Town*         town = GetTown();
+				if (town != NULL && DiscipleOnPickUp != disciple)
+				{
+					town->GetPlayer()->GetStats()->IncrementCorrectDisciple((VILLAGER_DISCIPLE)disciple);
+				}
+				if (GVillagerInfo::GetDiscipleInfo()[disciple].MovesToTownOfObject)
+				{
+					Town* objectTown = object->GetTown();
+					if (objectTown != NULL && objectTown != town && CheckMoveIntoTown(*objectTown))
+					{
+						ChangeTribeIfRequired(objectTown->tribe_type, true);
+					}
+				}
+				if (GVillagerInfo::GetDiscipleInfo()[disciple].begin_state == VILLAGER_STATE_INVALID_STATE)
+				{
+					SetupInspectObject(object);
+				}
+				else
+				{
+					SetTopState(GVillagerInfo::GetDiscipleInfo()[disciple].begin_state);
+				}
+				return true;
+			}
+		}
+	}
+	Reaction::RemoveAllReactionsOfTypeInitiatedByObject(this, REACTION_REACT_TO_VILLAGER_IN_HAND);
+	PlayAnimThenSetState(VILLAGER_STATE_DECIDE_WHAT_TO_DO, 1);
+	return true;
+}
+
 bool32_t Villager::ArrivesHome()
 {
-	// TODO: IsBuilt/IsRepaired dispatch through the wrong Abode vtable slots (the Abode
-	// hierarchy headers declare 10 extra virtuals before them); AreWeThere should return
-	// bool32_t (target tests full eax)
 	Abode* abode = GetAbode();
 	if (abode != NULL)
 	{
 		if (AreWeThere(abode->GetArrivePos(), 0.0f))
 		{
-			if (abode->IsBuilt() == 0 || abode->IsRepaired() == 0)
+			if (!abode->IsBuilt() || !abode->IsRepaired())
 			{
 				if (GetLife() < GetInfo()->DamageThresholdToGoHome)
 				{
-					if (abode->IsFunctional() == 0)
+					if (!abode->IsFunctional())
 					{
-						float angle = 0.39269909f - GRand::GameFloatRand(0.78539819f, FILEPATH, 465);
-						angle += GUtils::Get3DAngleFromXZ(Pos, abode->Pos);
-						float     dist = (GRand::GameFloatRand(5.0f, FILEPATH, 466)) + 5.0f;
-						MapCoords spot = Pos + GUtils::GetPosFromAngle(angle, dist);
-						if (GetTentPos(spot) != NULL)
+						float     angle = (GUtils::Get3DAngleFromXZ(abode->Pos, Pos) +
+						                   (EIGHTH_PI_F - GRand::GameFloatRand(QUARTER_PI_F, FILEPATH, 465)));
+						MapCoords spot =
+							Pos + GUtils::GetPosFromAngle(
+									  angle, (GRand::GameFloatRand(BROKEN_HOME_TENT_DISTANCE, FILEPATH, 466)) +
+												 BROKEN_HOME_TENT_MIN_DISTANCE);
+						if (GetTentPos(spot))
 						{
 							SetupMoveToWithHug(spot, VILLAGER_STATE_SLEEP_IN_TENT);
+							return true;
 						}
 						return true;
 					}
 				}
-				else if (food < ((const GVillagerInfo*)info)->HungryForFood)
+				else if (food < GetInfo()->HungryForFood)
 				{
-					if (abode->IsFunctional() == 0)
+					if (!abode->IsFunctional())
 					{
 						SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
 					}
 				}
-				else if (SetupBuildingObject((MultiMapFixed*)abode) == 1)
+				else if (SetupBuildingObject((MultiMapFixed*)abode) == true)
 				{
 					return true;
 				}
@@ -303,48 +425,43 @@ bool32_t Villager::ArrivesHome()
 	return false;
 }
 
-// BW1W120 00760b10 BW1M119 01004990
 bool32_t Villager::AtHome()
 {
 	HomeDecideWhatToDo();
 	return true;
 }
 
-// BW1W120 00760b20 BW1M119 0158fff0
 bool32_t Villager::SitsDownToDinner()
 {
 	return true;
 }
 
-// BW1W120 00760b30 BW1M119 01003a90
 bool32_t Villager::GotoBedAtHome()
 {
 	SetTopState(VILLAGER_STATE_SLEEPING_AT_HOME);
-	TurnsUntilNextStateChange = (int16_t)((const GVillagerInfo*)info)->RestAtHomeTime;
+	TurnsUntilNextStateChange = (int16_t)GetInfo()->RestAtHomeTime;
 	return true;
 }
 
-// BW1W120 00760b60 BW1M119 0109cd80
 bool32_t Villager::CheckWhenGoingToBed()
 {
-	uint32_t flags = Flags;
-	if ((flags & 0x2000) == 0)
+	if ((Flags & VILLAGER_FLAG_BEEN_TO_BED) == 0)
 	{
-		// TODO: target `or eax,0x2000`; ours narrows to `or ah,0x20`
-		Flags = (uint16_t)(flags | 0x2000);
-		if (CheckDeathFromOldAge() != 0)
+		Flags |= VILLAGER_FLAG_BEEN_TO_BED;
+		if (CheckDeathFromOldAge())
 		{
 			return false;
 		}
 		if (GetTown() != NULL)
 		{
-			if (GetTown()->GetRawDesire(TOWN_DESIRE_INFO_FOR_SLEEP) >= 1.0f && IsSexuallyActive() != 0)
+			if (GetTown()->GetRawDesire(TOWN_DESIRE_INFO_FOR_SLEEP) >= VILLAGER_MATING_SLEEP_DESIRE &&
+			    IsSexuallyActive())
 			{
-				if (IsFemaleVillager() != 0)
+				if (IsFemaleVillager())
 				{
 					FOREACH_LH_LIST_HEAD(Villager, mate, GetAbode()->villagers)
 					{
-						if (mate->IsMaleVillager() != 0 && (mate->Flags & 4))
+						if (mate->IsMaleVillager() && (mate->Flags & VILLAGER_FLAG_AT_HOME))
 						{
 							CheckGetPregnantAtHome();
 							return true;
@@ -352,11 +469,11 @@ bool32_t Villager::CheckWhenGoingToBed()
 					}
 					return true;
 				}
-				if (IsMaleVillager() != 0)
+				if (IsMaleVillager())
 				{
 					FOREACH_LH_LIST_HEAD(Villager, mate, GetAbode()->villagers)
 					{
-						if (mate->IsFemaleVillager() != 0 && (mate->Flags & 4))
+						if (mate->IsFemaleVillager() && (mate->Flags & VILLAGER_FLAG_AT_HOME))
 						{
 							mate->CheckGetPregnantAtHome();
 						}
@@ -368,45 +485,33 @@ bool32_t Villager::CheckWhenGoingToBed()
 	return true;
 }
 
-// BW1W120 00760c80 BW1M119 0158f9b0
 bool32_t Villager::CheckGetPregnantAtHome()
 {
-	bool32_t r = WillHousewifeGetPregnant(NULL);
-	if (r != 0)
+	bool32_t pregnant = WillHousewifeGetPregnant(NULL);
+	if (pregnant)
 	{
-		r = HousewifeGetsPregnant(NULL);
+		pregnant = HousewifeGetsPregnant(NULL);
 	}
-	return r;
+	return pregnant;
 }
 
-// BW1W120 00760ca0 BW1M119 0100fc80
 bool32_t Villager::CheckDeathFromOldAge()
 {
-	const GVillagerInfo* vi = (const GVillagerInfo*)info;
-	if (GetAge() > vi->MiddleAge)
+	if (GetAge() > GetInfo()->MiddleAge)
 	{
-		// TODO: loop-body FPU scheduling differs
-		const GVillagerInfo* vi2 = (const GVillagerInfo*)info;
-		uint32_t             range = vi2->OldAge - vi2->MiddleAge;
-		float                rnd = GRand::GameFloatRand(1.0f, FILEPATH, 600);
-		float                acc = rnd;
-		for (int i = 0; i < 2; i++)
+		uint32_t oldAgeSpan = GetInfo()->OldAge - GetInfo()->MiddleAge;
+		float    chance = POWER(GRand::GameFloatRand(1.0f, FILEPATH, 600), 3);
+		float    span = oldAgeSpan;
+		int      extra = GRand::GameRand((uint32_t)(chance * span), FILEPATH, 602);
+		if (GetAge() + extra > GetInfo()->OldAge)
 		{
-			acc *= rnd;
-		}
-		int extra = GRand::GameRand((uint32_t)(acc * range), FILEPATH, 602);
-
-		const GVillagerInfo* vi3 = (const GVillagerInfo*)info;
-		if (GetAge() + extra > vi3->OldAge)
-		{
-			VillagerDead(DEATH_REASON_OLD_AGE, NULL, ((const GVillagerInfo*)info)->life, 1);
+			VillagerDead(DEATH_REASON_OLD_AGE, NULL, GetInfo()->life, true);
 			return true;
 		}
 	}
 	return false;
 }
 
-// BW1W120 00760d70 BW1M119 01025d90
 bool32_t Villager::SleepingAtHome()
 {
 	if (GetTown() != NULL)
@@ -414,7 +519,7 @@ bool32_t Villager::SleepingAtHome()
 		TurnsUntilNextStateChange--;
 		if (TurnsUntilNextStateChange == 0)
 		{
-			if (DoSleeping(1.0f) == 0)
+			if (!DoSleeping(1.0f))
 			{
 				SetTopState(VILLAGER_STATE_AT_HOME);
 			}
@@ -423,50 +528,43 @@ bool32_t Villager::SleepingAtHome()
 	return true;
 }
 
-// BW1W120 00760db0 BW1M119 0158f780
 bool32_t Villager::DoSleeping(float rest_multiplier)
 {
-	if ((uint8_t)IsPoisoned() == 0)
+	if (!IsPoisoned())
 	{
-		const GVillagerInfo* vi = (const GVillagerInfo*)info;
-		if (GetLife() < vi->life)
+		if (GetLife() < GetInfo()->life)
 		{
-			// TODO: target emits `fstp st(0)` after this call — IncreaseLife likely
-			// returned float originally
-			IncreaseLife(rest_multiplier * ((const GVillagerInfo*)info)->RestAtHomeRestoresLifeBy);
+			IncreaseLife(rest_multiplier * GetInfo()->RestAtHomeRestoresLifeBy);
 		}
 		Town* town = GetTown();
 		if (town == NULL || town->desire.GetSortedDesire(0)->Type != TOWN_DESIRE_INFO_FOR_SLEEP)
 		{
-			const GVillagerInfo* vi2 = (const GVillagerInfo*)info;
-			if (GetLife() >= vi2->DamageThresholdToSleepUntil)
+			if (GetLife() >= GetInfo()->DamageThresholdToSleepUntil)
 			{
 				return false;
 			}
 		}
-		TurnsUntilNextStateChange = (int16_t)((const GVillagerInfo*)info)->RestAtHomeTime;
+		TurnsUntilNextStateChange = (int16_t)GetInfo()->RestAtHomeTime;
 		return true;
 	}
 	return false;
 }
 
-// BW1W120 00760e50 BW1M119 0158f720
 bool32_t Villager::WakeUpAtHome()
 {
 	return GoHome();
 }
 
-// BW1W120 00760e60 BW1M119 0158f600
 bool32_t Villager::StartHavingSex()
 {
 	Villager* mate = (Villager*)TargetThing;
-	if (mate != NULL && mate->IsAvailable() != 0)
+	if (mate != NULL && mate->IsAvailable())
 	{
-		if (mate->IsTouching(this, 0.57f))
+		if (mate->IsTouching(this, VILLAGER_SEX_TOUCH_DISTANCE))
 		{
 			MakeVillagerFaceObject(mate);
 			mate->MakeVillagerFaceObject(this);
-			if (StartHavingSex(mate, VILLAGER_STATE_HAVING_SEX) == 1)
+			if (StartHavingSex(mate, VILLAGER_STATE_HAVING_SEX) == true)
 			{
 				return true;
 			}
@@ -481,15 +579,13 @@ bool32_t Villager::StartHavingSex()
 	return true;
 }
 
-// BW1W120 00760ee0 BW1M119 0158f510
 bool32_t Villager::HavingSex()
 {
-	if (IsReadyForNewAnimation(1) != 0)
+	if (IsReadyForNewAnimation(1))
 	{
-		if (((const GVillagerInfo*)info)->sex == SEX_FEMALE && IsSexuallyActive() != 0)
+		if (GetInfo()->sex == SEX_FEMALE && IsSexuallyActive())
 		{
-			const GVillagerInfo* vi = (const GVillagerInfo*)info;
-			if (GRand::GameFloatRand(1.0f, FILEPATH, 691) < vi->PregnancyChance)
+			if (GRand::GameFloatRand(1.0f, FILEPATH, 691) < GetInfo()->PregnancyChance)
 			{
 				HousewifeGetsPregnant(NULL);
 			}
@@ -499,10 +595,9 @@ bool32_t Villager::HavingSex()
 	return true;
 }
 
-// BW1W120 00760f50 BW1M119 0158f490
 bool32_t Villager::StopHavingSex()
 {
-	if (Flags & 4)
+	if (Flags & VILLAGER_FLAG_AT_HOME)
 	{
 		return GoHome();
 	}
@@ -510,27 +605,21 @@ bool32_t Villager::StopHavingSex()
 	return true;
 }
 
-// BW1W120 00760f80 BW1M119 0158f450
 bool32_t Villager::StartHavingSexAtHome()
 {
 	return true;
 }
 
-// BW1W120 00760f90 BW1M119 0158f300
 bool32_t Villager::StartHavingSex(Villager* mate, VILLAGER_STATES state)
 {
-	uint32_t time = ((const GVillagerInfo*)info)->HavingSexTime;
+	uint32_t time = GetInfo()->HavingSexTime;
 	if (mate != NULL)
 	{
-		if (mate->IsAvailable() == 0)
+		if (!mate->IsAvailable())
 		{
 			return false;
 		}
-		// TODO: SetTopState call setup is hoisted into the sum in our build; scheduling
-		// differs around the calls
-		time =
-			(((const GVillagerInfo*)mate->info)->HavingSexTime + ((const GVillagerInfo*)info)->HavingSexTime + time) /
-			2;
+		time = (mate->GetInfo()->HavingSexTime + GetInfo()->HavingSexTime + time) / 2;
 		mate->SetTopState(state);
 		mate->TargetThing = this;
 		mate->TurnsUntilNextStateChange = (int16_t)(time + 1);
@@ -541,54 +630,44 @@ bool32_t Villager::StartHavingSex(Villager* mate, VILLAGER_STATES state)
 	return true;
 }
 
-// BW1W120 00761010 BW1M119 0158f2c0
 bool32_t Villager::HavingSexAtHome()
 {
 	return true;
 }
 
-// BW1W120 00761020 BW1M119 0158f280
 bool32_t Villager::StopHavingSexAtHome()
 {
 	return true;
 }
 
-// BW1W120 00761030 BW1M119 0158f240
 bool32_t Villager::WaitForDinner()
 {
 	return true;
 }
 
-// BW1W120 00761040 BW1M119 0158f1a0
 float Villager::GetPromiscuity()
 {
 	if (GetTown() != NULL)
 	{
 		return GetTown()->Promiscuity;
 	}
-	return 0.5f;
+	return VILLAGER_DEFAULT_PROMISCUITY;
 }
 
-// BW1W120 00761070 BW1M119 0158f120
 bool32_t Villager::IsAvailableForSex()
 {
-	if (GetVillagerAvailableState() & 1)
+	if (GetVillagerAvailableState() & VILLAGER_AVAILABLE_FREE)
 	{
 		return IsSexuallyActive();
 	}
-	return 0;
+	return false;
 }
 
-// BW1W120 00761090 BW1M119 0158f050
 bool32_t Villager::IsSexuallyActive()
 {
-	const GVillagerInfo* vi = (const GVillagerInfo*)info;
-	if (GetAge() >= vi->StartHavingSexAge)
+	if (GetAge() >= GetInfo()->StartHavingSexAge)
 	{
-		// TODO: 90.9% - only the prologue `push edi` placement differs (target
-		// schedules it after the first vtable load); scheduler tie-break.
-		const GVillagerInfo* vi2 = (const GVillagerInfo*)info;
-		if (GetAge() < vi2->StopHavingSexAge)
+		if (GetAge() < GetInfo()->StopHavingSexAge)
 		{
 			return true;
 		}
@@ -596,7 +675,6 @@ bool32_t Villager::IsSexuallyActive()
 	return false;
 }
 
-// BW1W120 007610d0 BW1M119 0158efd0
 bool32_t Villager::IsPromiscious()
 {
 	if (GRand::GameFloatRand(1.0f, FILEPATH, 845) < GetPromiscuity())
@@ -606,48 +684,42 @@ bool32_t Villager::IsPromiscious()
 	return false;
 }
 
-// BW1W120 00761110 BW1M119 0158eee0
-bool32_t Villager::FindAMateAtHome()
+Villager* Villager::FindAMateAtHome()
 {
-	if (IsPromiscious() != 0)
+	if (IsPromiscious())
 	{
 		FOREACH_LH_LIST_HEAD(Villager, mate, GetAbode()->villagers)
 		{
-			if (mate != this && ((const GVillagerInfo*)mate->info)->sex != ((const GVillagerInfo*)info)->sex &&
-			    (mate->Flags & 4) && mate->IsAvailableForSex() != 0 && (mate->Flags & 4))
+			if (mate != this && mate->GetInfo()->sex != GetInfo()->sex && (mate->Flags & VILLAGER_FLAG_AT_HOME) &&
+			    mate->IsAvailableForSex() && (mate->Flags & VILLAGER_FLAG_AT_HOME))
 			{
-				// TODO: the target returns the found mate pointer raw — the true return
-				// type is likely Villager*
-				return (bool32_t)mate;
+				return mate;
 			}
 		}
 	}
-	return 0;
+	return NULL;
 }
 
-// BW1W120 00761180 BW1M119 0158ee60
 bool32_t Villager::CheckForSexAtHome()
 {
-	if ((Flags & 4) && IsSexuallyActive() != 0)
+	if ((Flags & VILLAGER_FLAG_AT_HOME) && IsSexuallyActive())
 	{
 		return StartHavingSexAtHome();
 	}
-	return 0;
+	return false;
 }
 
-// BW1W120 007611b0 BW1M119 0158edb0
 bool32_t Villager::ShallIWaitForDinner()
 {
-	if (IsHungry() != 0 && HousewifeAskForMeal() == 0)
+	if (IsHungry() && !HousewifeAskForMeal())
 	{
-		return 0;
+		return false;
 	}
-	TurnsUntilNextStateChange = (int16_t)((const GVillagerInfo*)info)->WaitAtHome;
+	TurnsUntilNextStateChange = (int16_t)GetInfo()->WaitAtHome;
 	SetTopState(VILLAGER_STATE_WAIT_FOR_DINNER);
 	return true;
 }
 
-// BW1W120 007611f0 BW1M119 0158ed00
 void Villager::HomeDeleted()
 {
 	Abode* abode = GetAbode();
@@ -665,19 +737,14 @@ void Villager::HomeDeleted()
 	}
 }
 
-// BW1W120 00761220 BW1M119 0158ec80
-bool Villager::MakeHomeless()
+bool32_t Villager::MakeHomeless()
 {
-	// TODO: 96.9% - target saves MakeHomelessNoStateChange()'s bool result full-width
-	// in edi; we store bl. Likely resolves once MakeHomelessNoStateChange is DEFINED
-	// in-TU (bool-return width). `int result` forces edi but adds a return-normalization.
-	bool result = MakeHomelessNoStateChange();
+	bool32_t result = MakeHomelessNoStateChange();
 	SetTopState(VILLAGER_STATE_HOMELESS_START);
 	return result;
 }
 
-// BW1W120 00761240 BW1M119 0158ea60
-bool Villager::MakeHomelessNoStateChange()
+bool32_t Villager::MakeHomelessNoStateChange()
 {
 	Town* town = GetTown();
 	if (GetAbode() != NULL)
@@ -694,50 +761,43 @@ bool Villager::MakeHomelessNoStateChange()
 	{
 		return false;
 	}
-	// TODO: 74% - target's VillagersWithoutTown.Remove(this) inline has a membership
-	// pre-scan loop (walk once to confirm `this` is present, bail if not) that
-	// LHListHead<T>::Remove lacks; also count-- emits in-place `dec [mem]` there vs
-	// our load/dec/store. Both stem from LHListHead::Remove's shape (shared header,
-	// dispatcher-owned). Plus bool-width epilogue (xor eax vs xor al, mov eax,1 vs
-	// mov al,1) and push edi prologue scheduling.
-	GGame::g_game->GameLists.VillagersWithoutTown.Remove(this);
+	if (GGame::g_game->GameLists.VillagersWithoutTown.Find(this) != NULL)
+	{
+		GGame::g_game->GameLists.VillagersWithoutTown.Remove(this);
+	}
 	town->HomelessList.AddToFirst(this);
 	return true;
 }
 
-// BW1W120 00761320 BW1M119 0158e9a0
 bool32_t Villager::HomelessStart()
 {
 	GetTown();
-	if (CheckHungry() != 1 && CheckNeededForSomething() != 1 && CheckHomelessMoveIntoAbode() == 0)
+	if (CheckHungry() != true && CheckNeededForSomething() != true && !CheckHomelessMoveIntoAbode())
 	{
 		SetupNothingToDo();
 	}
 	return true;
 }
 
-// BW1W120 00761360 BW1M119 0158e810
 bool32_t Villager::CheckHomelessMoveIntoAbode()
 {
 	Town*  town = GetTown();
 	Abode* abode;
 	if (town == NULL || (abode = town->FindAbodeWithSpaceInTown(this, 0.0f)) == NULL)
 	{
-		return 0;
+		return false;
 	}
 	town->HomelessList.Remove(this);
 	abode->AddVillagerToAbode(this);
 	SetTopState(VILLAGER_STATE_GO_HOME);
-	return 1;
+	return true;
 }
 
-// BW1W120 007613f0 BW1M119 0158e7d0
 bool32_t Villager::VillagerGossips()
 {
 	return true;
 }
 
-// BW1W120 00761400 BW1M119 0158e710
 void Villager::SetupAfterTapOnAbode(MapCoords& pos, VILLAGER_STATES previous_state)
 {
 	action.SetState(LIVING_ACTION_INDEX_PREVIOUS, previous_state);
@@ -745,18 +805,12 @@ void Villager::SetupAfterTapOnAbode(MapCoords& pos, VILLAGER_STATES previous_sta
 	Flags |= VILLAGER_FLAG_AFTER_TAP_ON_ABODE;
 }
 
-// BW1W120 00761440 BW1M119 0158e6b0
 bool32_t Villager::AfterTapOnAbode()
 {
-	// TODO: 85.7% - target zero-extends the byte arg (`xor eax,eax; mov al,[..]`);
-	// ours emits only `mov al`. states[] is uint8 and PlayAnimThenSetState's first
-	// param is unsigned char, so the upper bits are dead and MSVC drops the xor.
-	// uint32/enum-cast local tricks do not force it (prototype-visibility tie-break).
 	PlayAnimThenSetState(action.states[LIVING_ACTION_INDEX_PREVIOUS], 1);
 	return true;
 }
 
-// BW1W120 00761460 BW1M119 01097530
 bool32_t Villager::CheckSatisfyRelaxation()
 {
 	if (GetTown() != NULL && GetTown()->SetVillagerActivity(this) != 0)
@@ -766,16 +820,13 @@ bool32_t Villager::CheckSatisfyRelaxation()
 	return false;
 }
 
-// BW1W120 00761490 BW1M119 0109e8c0
 bool32_t Villager::CheckSatisfySleep()
 {
-	if ((Flags & VILLAGER_FLAG_AFTER_TAP_ON_ABODE) == 0 ||
-	    ((const GVillagerInfo*)info)->DamageThresholdToGoHome > GetLife())
+	if ((Flags & VILLAGER_FLAG_AFTER_TAP_ON_ABODE) == 0 || GetInfo()->DamageThresholdToGoHome > GetLife())
 	{
-		// TODO: target folds this to `test byte ptr [Flags],4`; ours splits the byte load
-		if (Flags & 4)
+		if (Flags & VILLAGER_FLAG_AT_HOME)
 		{
-			if (CheckWhenGoingToBed() != 0)
+			if (CheckWhenGoingToBed())
 			{
 				SetTopState(VILLAGER_STATE_GOTO_BED_AT_HOME);
 			}
@@ -794,13 +845,10 @@ bool32_t Villager::CheckSatisfySleep()
 	return false;
 }
 
-// BW1W120 00761510 BW1M119 0158e530
 bool32_t Villager::ArtifactDance()
 {
 	MapCoords dancePos;
 	CalculateDancePosition(dance_group->Dancer->Pos, &dancePos);
-	// TODO: PerformDance should take const MapCoords& (other callers still use the pointer
-	// form); retbuf scheduling around the GetArrivePos compare also differs
 	if (Pos != dancePos)
 	{
 		if (Pos == dance_group->Dancer->GetArrivePos())
@@ -813,14 +861,50 @@ bool32_t Villager::ArtifactDance()
 	return true;
 }
 
-// BW1W120 00761800 BW1M119 0158e210
-bool32_t Villager::EnterWaitForArtifactDance(unsigned char param_1, unsigned char param_2)
+bool32_t Villager::WaitForArtifactDance()
+{
+	if (dance_group.Get() != NULL && dance_group->Dancer != NULL)
+	{
+		float radius = Get2DRadius() * ARTIFACT_DANCE_CLEAR_RADIUS_SCALE;
+		if (dance_group->Dancer->Pos.GetDistance(Pos) > ARTIFACT_DANCE_WAIT_DISTANCE)
+		{
+			MapCoords pos = dance_group->Dancer->Pos;
+			float     angle =
+				(GRand::GameFloatRand(QUARTER_PI_F, FILEPATH, 1107)) + GUtils::Get3DAngleFromXZ(pos, Pos) - EIGHTH_PI_F;
+			pos += GUtils::GetPosFromAngle(angle, (GRand::GameFloatRand(ARTIFACT_DANCE_WAIT_DISTANCE, FILEPATH, 1108)));
+			if (Town::FindClearArea(pos, pos, ARTIFACT_DANCE_WAIT_DISTANCE, ARTIFACT_DANCE_CLEAR_AREA_STEP, radius,
+			                        &Object::IsObject, this))
+			{
+				SetupMoveToWithHug(pos, VILLAGER_STATE_WAIT_FOR_ARTIFACT_DANCE);
+				return true;
+			}
+		}
+		else if (TurnsUntilNextStateChange == 0 && !Town::CheckForClearArea(Pos, radius, &Object::IsObject, this))
+		{
+			MapCoords pos = Pos;
+			if (Town::FindClearArea(pos, pos, ARTIFACT_DANCE_WAIT_DISTANCE, ARTIFACT_DANCE_CLEAR_AREA_STEP, radius,
+			                        &Object::IsObject, this))
+			{
+				SetupMoveToWithHug(pos, VILLAGER_STATE_WAIT_FOR_ARTIFACT_DANCE);
+				return true;
+			}
+		}
+		else if (TurnsUntilNextStateChange++ >= GetInfo()->TimeToWaitForArtifactDance)
+		{
+			dance_group->Dancer->StartDance();
+		}
+		return true;
+	}
+	SetTopState(VILLAGER_STATE_DECIDE_WHAT_TO_DO);
+	return true;
+}
+
+bool32_t Villager::EnterWaitForArtifactDance(uint8_t current, uint8_t destination)
 {
 	TurnsUntilNextStateChange = 0;
 	return true;
 }
 
-// BW1W120 00761810 BW1M119 0158e090
 bool32_t Villager::GoHomeAndChange()
 {
 	Abode*          abode = GetAbode();
@@ -828,57 +912,53 @@ bool32_t Villager::GoHomeAndChange()
 	if (abode != NULL)
 	{
 		const MapCoords* pos = &abode->GetArrivePos();
-		if (AreWeThere(*pos, 0.0f) == 0)
+		if (!AreWeThere(*pos, 0.0f))
 		{
 			SetupMoveToWithHug(*pos, VILLAGER_STATE_GO_HOME_AND_CHANGE);
 			return true;
 		}
-		state = (Flags & 4) ? VILLAGER_STATE_AT_HOME : VILLAGER_STATE_ARRIVES_HOME;
+		state = (Flags & VILLAGER_FLAG_AT_HOME) ? VILLAGER_STATE_AT_HOME : VILLAGER_STATE_ARRIVES_HOME;
 	}
 	else
 	{
 		state = VILLAGER_STATE_DECIDE_WHAT_TO_DO;
 	}
 	SetTopState(state);
-	if (GetScale() < 0.95f)
+	if (GetScale() < VILLAGER_ADULT_SCALE)
 	{
 		SetScaleForAge(GetAge());
 	}
 	return true;
 }
 
-// BW1W120 007618c0 BW1M119 0158df30
-void Villager::ChangeTribeIfRequired(TRIBE_TYPE tribe, int show_effect)
+void Villager::ChangeTribeIfRequired(TRIBE_TYPE tribe, bool32_t show_effect)
 {
-	const GVillagerInfo* vi = (const GVillagerInfo*)info;
-	if (vi->KeepMeshWhenChangeTown == 0)
+	const GVillagerInfo* villagerInfo = GetInfo();
+	if (!villagerInfo->KeepMeshWhenChangeTown)
 	{
-		GVillagerInfo* new_info = GVillagerInfo::Find(tribe, vi->VillagerNumber);
+		GVillagerInfo* newInfo = GVillagerInfo::Find(tribe, villagerInfo->VillagerNumber);
 		if (GetTown() != NULL)
 		{
-			uint32_t newFood = new_info->FoodReqiredForDinner;
-			uint32_t oldFood = vi->FoodReqiredForDinner;
-			float    diff = (float)newFood - (float)oldFood;
+			uint32_t newFood = newInfo->FoodReqiredForDinner;
+			uint32_t oldFood = villagerInfo->FoodReqiredForDinner;
+			float    diff = ((float)newFood - (float)oldFood);
 			GetTown()->stats.FoodReqiredForDinner += diff;
 		}
-		ChangeInfo(new_info);
-		if (show_effect != 0)
+		ChangeInfo(newInfo);
+		if (show_effect)
 		{
-			CreateSmokyStuff(1, 1.0f, LH3DColor(0xffffffff));
+			CreateSmokyStuff(1, 1.0f, VILLAGER_CHANGE_TRIBE_SMOKE_COLOUR);
 		}
 	}
 }
 
-// BW1W120 00761980 BW1M119 0158de20
-bool32_t Villager::ExitGoHomeAndChange(unsigned char state)
+bool32_t Villager::ExitGoHomeAndChange(uint8_t state)
 {
-	if (IsStateExitFunctionSameAs((VILLAGER_STATES)state) == 0)
+	if (!IsStateExitFunctionSameAs((VILLAGER_STATES)state))
 	{
 		Town*      town = GetTown();
-		TRIBE_TYPE tribe = town != NULL ? town->tribe_type : ((const GVillagerInfo*)info)->TribeType;
-		// TODO: only a reloc-form diff remains (raw address vs GVillagerStateTableInfo::Infos
-		// symbol); byte-identical after link
-		ChangeTribeIfRequired(tribe, GVillagerStateTableInfo::Infos[state].field_0xd0 == 0);
+		TRIBE_TYPE tribe = town != NULL ? town->tribe_type : GetInfo()->TribeType;
+		ChangeTribeIfRequired(tribe, !GVillagerStateTableInfo::Infos[state].IsHomeState);
 	}
 	if (DiscipleType == VILLAGER_DISCIPLE_CHANGE_HOUSE)
 	{
@@ -887,43 +967,56 @@ bool32_t Villager::ExitGoHomeAndChange(unsigned char state)
 	return true;
 }
 
-// BW1W120 00761ae0 BW1M119 0158daf0
+void Villager::ChangeInfo(const GVillagerInfo* new_info)
+{
+	info = new_info;
+	if (IsChild())
+	{
+		Game3dObject->SetMesh(LH3DMesh::GetPackedMesh(GetInfo()->ChildMeshHigh),
+		                      LH3DMesh::GetPackedMesh(GetInfo()->ChildMeshHigh),
+		                      LH3DMesh::GetPackedMesh(GetInfo()->ChildMeshHigh));
+	}
+	else
+	{
+		Game3dObject->SetMesh(LH3DMesh::GetPackedMesh(GetDetailMesh(0)), LH3DMesh::GetPackedMesh(GetDetailMesh(1)),
+		                      LH3DMesh::GetPackedMesh(GetDetailMesh(2)));
+	}
+}
+
 bool32_t Villager::SleepInTent()
 {
 	if (TurnsUntilNextStateChange == 0)
 	{
-		if (DoSleeping(1.0f) != 0)
+		if (DoSleeping(1.0f))
 		{
 			return true;
 		}
 		if (GetAbode() == NULL)
 		{
-			if (CheckHomelessMoveIntoAbode() != 0)
+			if (CheckHomelessMoveIntoAbode())
 			{
 				return true;
 			}
 		}
-		if (HomeDecideWhatToDo() != 0 && action.states[LIVING_ACTION_INDEX_TOP] != VILLAGER_STATE_SLEEP_IN_TENT)
+		if (HomeDecideWhatToDo() && action.states[LIVING_ACTION_INDEX_TOP] != VILLAGER_STATE_SLEEP_IN_TENT)
 		{
 			return true;
 		}
-		TurnsUntilNextStateChange = (int16_t)((const GVillagerInfo*)info)->RestAtHomeTime;
+		TurnsUntilNextStateChange = (int16_t)GetInfo()->RestAtHomeTime;
 	}
 	TurnsUntilNextStateChange--;
 	return true;
 }
 
-// BW1W120 00761b40 BW1M119 01097740
-bool32_t Villager::ExitAtHome(unsigned char state)
+bool32_t Villager::ExitAtHome(uint8_t state)
 {
-	if (GVillagerStateTableInfo::Infos[state].field_0xd0 == 0)
+	if (!GVillagerStateTableInfo::Infos[state].IsHomeState)
 	{
 		LeaveHome();
 	}
 	return true;
 }
 
-// BW1W120 00761b70 BW1M119 0158da50
 bool32_t Villager::GoHomeFromWorship()
 {
 	return DoGoingHome(VILLAGER_STATE_ARRIVES_HOME_FROM_WORSHIP, VILLAGER_STATE_SLEEP_IN_TENT_FROM_WORSHIP);
