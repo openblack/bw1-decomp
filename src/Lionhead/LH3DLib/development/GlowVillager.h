@@ -10,6 +10,9 @@ public:
 	static LH3DObject* g_the_one;
 	// BW1W120 00eb99e8 BW1M119 011f1e54 (LHCombined Release)
 	static int g_index;
+
+	// BW1W120 00824400 BW1M119 0100ab40 (LHCombined Release)
+	static void SetNewFrame();
 };
 
 #endif /* BW1_DECOMP_GLOW_VILLAGER_INCLUDED_H */

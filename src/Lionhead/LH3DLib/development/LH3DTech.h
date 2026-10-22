@@ -18,6 +18,7 @@ struct LHMatrix;
 struct LHPoint;
 struct LHTimer;
 struct Vertex3D;
+struct Vertex3DMT;
 
 #define LH3D_MAX_POINTS 0x2000
 
@@ -98,6 +99,8 @@ public:
 	static uint32_t g_game_time_inc;
 	// BW1W120 00ea9eb0 BW1M119 012d3e78 (LHCombined Release)
 	static int g_current_time;
+	// BW1W120 00ea9eac BW1M119 012d3e7c (LHCombined Release)
+	static int g_previous_time;
 	// BW1W120 00e3b5e0 BW1M119 012dc1a8 (LHCombined Release)
 	static unsigned long g_cache_flags[LH3D_MAX_POINTS];
 	// BW1W120 00e437e0 BW1M119 012e41a8 (LHCombined Release)
@@ -136,6 +139,16 @@ public:
 	static int GetGameTimeInc() { return g_game_time_inc; }
 	// BW1W120 inlined BW1M119 01049620
 	static float GetNearClipping() { return g_info_transform.NearClip; }
+	// BW1W120 inlined BW1M119 01037d60 (LHCombined Release)
+	static uint16_t GetPointCount() { return g_points_count; }
+	// BW1W120 inlined BW1M119 01037da0 (LHCombined Release)
+	static long GetIndiceCount() { return g_index_count; }
+	// BW1W120 inlined BW1M119 01037de0 (LHCombined Release)
+	static Vertex3D* GetCachePoints() { return g_cache_t_points; }
+	// BW1W120 inlined BW1M119 0109c430 (LHCombined Release)
+	static Vertex3DMT* GetCachePointsMT() { return (Vertex3DMT*)g_cache_t_points; }
+	// BW1W120 inlined BW1M119 01037e20 (LHCombined Release)
+	static uint16_t* GetIndiceList() { return g_list_indices; }
 	// BW1W120 inlined BW1M119 inlined
 	static void SetNearClipping(float near_clipping)
 	{
@@ -163,7 +176,7 @@ public:
 	// BW1W120 00819920 BW1M119 01034f90 (LHCombined Release)
 	static void UpdateCamera(const LHPoint& position, const LHPoint& focus);
 	// BW1W120 00818c60 BW1M119 010bffa0 (LHCombined Release)
-	static void RenderInitialization(long width, long height);
+	static void __fastcall RenderInitialization(long width, long height);
 	// BW1W120 0081c5c0 BW1M119 010337e0 (LHCombined Release)
 	static void __fastcall Draw3DScreenTriangle(long num_points, LHPoint* positions, LH3DColor* colors, float* uvs,
 	                                            long num_indices, long* indices, LH3DMaterial* material, int param_8);
@@ -190,6 +203,10 @@ public:
 // Shared by several units, so extern: static gives each unit a zeroed copy; LH3DTech.cpp inits it before g_sun_light.
 // BW1W120 00ea1c88 BW1M119 012dbfbc (LHCombined Release)
 extern LHPoint DEFAULT_SUN;
+
+// Set by LHScreen when one of the display devices is a 3dfx Voodoo.
+// BW1W120 00ea9e9c BW1M119 012dc174 (LHCombined Release)
+extern bool32_t g_b_any_voodoo;
 
 // BW1W120 0081bbd0 BW1M119 010bd5b0 (LHCombined Release)
 void __cdecl Report3D__FPCce(const char* fmt, ...);

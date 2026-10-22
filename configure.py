@@ -1576,7 +1576,7 @@ config.libs = [
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DTech.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/Fish.cpp"),
             Object(NonMatching, "Lionhead/LHLib/ver5.0/LHCollide.cpp", progress_category="sdk"),
-            LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DRender.cpp"),
+            LH3DLibPCHObject(Matching, "Lionhead/LH3DLib/development/LH3DRender.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DText.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/ValueSpinner.cpp"),
             LH3DLibObject(NonMatching, "Lionhead/LH3DLib/development/LH3DLightningSheet.cpp"),

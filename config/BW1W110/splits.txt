@@ -3459,19 +3459,20 @@ Lionhead/LH3DLib/development/Fish.cpp:
 	.text$x     start:0x00897E10 end:0x00897E50 align:4
 
 Lionhead/LHLib/ver5.0/LHCollide.cpp:
-	.text       start:0x00817450 end:0x0081B030
+	.text       start:0x00817450 end:0x0081AF00
 	.text$x     start:0x00897E50 end:0x00897EF0 align:4
-	.CRT$XCU    start:0x009B755C end:0x009B756C align:4
+	.CRT$XCU    start:0x009B755C end:0x009B7568 align:4
 
 Lionhead/LH3DLib/development/LH3DRender.cpp:
-	.text       start:0x0081B030 end:0x0081FE60
-	.CRT$XCU    start:0x009B756C end:0x009B7570 align:4
-	.bss        start:0x00EB6998 end:0x00EB9018
+	.text       start:0x0081AF00 end:0x0081FEB0
+	.rdata      start:0x00993880 end:0x00993890
+	.CRT$XCU    start:0x009B7568 end:0x009B7574 align:4
+	.data       start:0x00C27520 end:0x00C27BEC
+	.bss        start:0x00EA8488 end:0x00EB9058 align:8
 
 Lionhead/LH3DLib/development/LH3DText.cpp:
-	.text       start:0x0081FE60 end:0x00823810
+	.text       start:0x0081FEB0 end:0x00823810
 	.text$x     start:0x00897EF0 end:0x00897F20 align:4
-	.CRT$XCU    start:0x009B7570 end:0x009B7574 align:4
 
 Lionhead/LH3DLib/development/ValueSpinner.cpp:
 	.text       start:0x00823810 end:0x00823B00

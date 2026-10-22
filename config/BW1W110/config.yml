@@ -18,6 +18,45 @@ block_relocations:
   - source: 0x009BCF2C
 
 add_relocations:
+# LH3DRender's tilling helpers: the stage's D3DTSS_ADDRESS cache entry (dtk leaves the displacement unrelocated).
+  - source: 0x0081FCF3
+    type: x86_abs32
+    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
+    addend: 0x30
+  - source: 0x0081FD2C
+    type: x86_abs32
+    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
+    addend: 0x30
+  - source: 0x0081FD6C
+    type: x86_abs32
+    target: '?g_texture_stage_state@LH3DRender@@2PAY0BAA@IA'
+    addend: 0x30
+# LH3DRender::Close2TexStuff and ResetAllState: loop bounds one past the end of an array.
+  - source: 0x0081C485
+    type: x86_abs32
+    target: '?g_stateblock2tex@LH3DRender@@2PAULH3DStateBlock2Tex@@A'
+    addend: 0x40
+  - source: 0x0081C7B3
+    type: x86_abs32
+    target: '?g_original_render_states@@3PAIA'
+    addend: 0x400
+# LH3DRender::FinishFrame: loop bounds one past the end of an array (dtk reads them as the next symbol).
+  - source: 0x0081F3D9
+    type: x86_abs32
+    target: '?g_list_vertex@BackgroundBox@@2PAUVertex3D@@A'
+    addend: 0x88
+  - source: 0x0081F45C
+    type: x86_abs32
+    target: '?g_list_vertex@BackgroundBox@@2PAUVertex3D@@A'
+    addend: 0x88
+  - source: 0x0081F580
+    type: x86_abs32
+    target: '?cache@FontCache@@2PAUCacheEntry@@A'
+    addend: 0x4000
+  - source: 0x0081F5C1
+    type: x86_abs32
+    target: '?page@FontCache@@2PAUCachePage@@A'
+    addend: 0x4B9
 # CarriedObject::Reset: loop bound one past the end of Objects (dtk reads it as the next address).
   - source: 0x00461B2C
     type: x86_abs32

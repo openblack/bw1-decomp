@@ -353,6 +353,11 @@ remaining `LH*` directories and `zlib` are static libraries linked into the exec
 | `src/Lionhead/LHMultiplayer` | `LHMultiplayerR` (DLL) | Multiplayer networking — sockets, packets, lobby/sessions, players and transport. |
 | `src/zlib` | static lib | Third-party zlib compression library. |
 
+The Mac build linked the Lionhead libraries into a separate module, `LHCombined Release`, so a
+class whose BW1M119 symbols carry the `(LHCombined Release)` tag belongs to a library, not to the
+game: its header and source go under `src/Lionhead/` (usually `LH3DLib/development/`), never
+`src/Black/`. Game-side headers include it by its full path (`<Lionhead/LH3DLib/development/...>`).
+
 ## Key Data Files
 
 ### `config/BW1W120/symbols.txt`

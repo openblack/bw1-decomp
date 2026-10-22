@@ -8,12 +8,14 @@
 #include <windows.h>
 #include <ddraw.h>
 
-#include <Lionhead/LH3DLib/development/LHColor.h> /* For struct LHColor */
-#include <Lionhead/LHLib/ver5.0/LHTimer.h>        /* For struct LHTimer */
-#include <Lionhead/LHLib/ver5.0/LHMouse.h>        /* For LHMouse::Draw */
-#include <Lionhead/LHLib/ver5.0/LHSystem.h>       /* For LHSys::TheSystem */
-#include <Lionhead/LHLib/ver5.0/LHWin.h>          /* For operator new(size_t, const char*, uint32_t) */
-#include <Lionhead/LHLog/ver4.0/LHRegistry.h>     /* For RegistryRetrieveULong */
+#include <Lionhead/LH3DLib/development/LH3DTech.h>    /* For g_b_any_voodoo */
+#include <Lionhead/LH3DLib/development/LH3DTexture.h> /* For g_b_banshee, g_b_voodoo2 */
+#include <Lionhead/LH3DLib/development/LHColor.h>     /* For struct LHColor */
+#include <Lionhead/LHLib/ver5.0/LHTimer.h>            /* For struct LHTimer */
+#include <Lionhead/LHLib/ver5.0/LHMouse.h>            /* For LHMouse::Draw */
+#include <Lionhead/LHLib/ver5.0/LHSystem.h>           /* For LHSys::TheSystem */
+#include <Lionhead/LHLib/ver5.0/LHWin.h>              /* For operator new(size_t, const char*, uint32_t) */
+#include <Lionhead/LHLog/ver4.0/LHRegistry.h>         /* For RegistryRetrieveULong */
 
 #define FILEPATH "C:\\Dev\\Libs\\lionhead\\lhlib\\VER5.0\\LHScreen.cpp"
 
@@ -48,10 +50,6 @@ extern int                dword_C3132C;             // 0xC3132C one-time DDraw-i
 // Device enumeration state.
 extern unsigned int unk_E8C5C8; // number of enumerated devices
 extern void*        unk_E8C5D4; // registry-selected device GUID
-extern int          unk_EDD450; // force-fullscreen device flag
-extern int          unk_EA9E9C; // Voodoo detected
-extern int          unk_EDD44C; // Banshee detected
-extern int          unk_ECA5F0; // PowerVR-KYRO detected
 
 // Lock/Unlock bookkeeping and the mouse/render back-buffer publish target.
 extern int unk_E8C5D8;                       // Lock() double-lock marker
@@ -91,8 +89,7 @@ extern ScreenModeCallback unk_E8C5CC;   // windowed/fullscreen change callback
 void                      sub_7E69B0(); // pre-mode-switch teardown
 
 // AltTab().
-extern ScreenModeCallback   unk_E8C5D0; // alt-tab callback
-extern IDirectDrawSurface7* unk_ECA63C; // extra surface restored on reactivate
+extern ScreenModeCallback unk_E8C5D0; // alt-tab callback
 // Defined here: it sits in this TU's screen-state .data cluster.
 // BW1W120 00e8c5e0
 int LHScreen::AltTabbedAway;
@@ -391,29 +388,29 @@ int LHScreen::DDrawInitialiseDevices()
 		DirectDrawCreateEx((GUID*)&records[248 * i + 204], (LPVOID*)&PDirectDraw, IID_IDirectDraw7, NULL);
 		selected = i;
 		if (*((int*)DeviceInfoArray + 62 * i + 59))
-			unk_EDD450 = 1;
+			g_b_voodoo2 = true;
 		if (*(int*)((char*)DeviceInfoArray + v7 + 244))
-			unk_EA9E9C = 1;
+			g_b_any_voodoo = true;
 		if (*(int*)((char*)DeviceInfoArray + v7 + 240))
-			unk_EDD44C = 1;
+			g_b_banshee = true;
 		PDirectDraw->GetDeviceIdentifier((LPDDDEVICEIDENTIFIER2)deviceIdentifierA, 0);
-		unk_ECA5F0 |= CheckDescForPowerVRKYRO(deviceIdentifierB);
-		unk_ECA5F0 |= CheckDescForPowerVRKYRO(deviceIdentifierA);
+		g_b_any_kyro |= CheckDescForPowerVRKYRO(deviceIdentifierB);
+		g_b_any_kyro |= CheckDescForPowerVRKYRO(deviceIdentifierA);
 	}
 	else
 	{
 	fallback:
 		DirectDrawCreateEx(NULL, (LPVOID*)&PDirectDraw, IID_IDirectDraw7, NULL);
 		PDirectDraw->GetDeviceIdentifier((LPDDDEVICEIDENTIFIER2)deviceIdentifierA, 0);
-		unk_EA9E9C |= CheckDescForVoodoo(deviceIdentifierB);
-		unk_EA9E9C |= CheckDescForVoodoo(deviceIdentifierA);
-		unk_EDD44C |= CheckDescForBanshee(deviceIdentifierB);
-		unk_EDD44C |= CheckDescForBanshee(deviceIdentifierA);
-		unk_ECA5F0 |= CheckDescForPowerVRKYRO(deviceIdentifierB);
-		unk_ECA5F0 |= CheckDescForPowerVRKYRO(deviceIdentifierA);
+		g_b_any_voodoo |= CheckDescForVoodoo(deviceIdentifierB);
+		g_b_any_voodoo |= CheckDescForVoodoo(deviceIdentifierA);
+		g_b_banshee |= CheckDescForBanshee(deviceIdentifierB);
+		g_b_banshee |= CheckDescForBanshee(deviceIdentifierA);
+		g_b_any_kyro |= CheckDescForPowerVRKYRO(deviceIdentifierB);
+		g_b_any_kyro |= CheckDescForPowerVRKYRO(deviceIdentifierA);
 	}
 
-	if (unk_EDD450)
+	if (g_b_voodoo2)
 		LHSys::GetScreen().SetFullscreenMode(1);
 	Report3D("Display selected: %s.\n", (char*)DeviceInfoArray + 248 * selected);
 	return 0;
@@ -952,7 +949,7 @@ void LHScreen::AltTabReactivate()
 {
 	PPrimarySurface->Restore();
 	PBackSurface->Restore();
-	unk_ECA63C->Restore();
+	LH3DRender::ZBufferSurface->Restore();
 	LH3DVRAMTexAllocAllVRAM();
 	if (unk_E8C5D0)
 		unk_E8C5D0(1);
@@ -962,7 +959,7 @@ void LHScreen::AltTabReactivate()
 // BW1W120 007de730 BW1M119 0114cef0 (LHCombined Release)
 int LHScreen::RunInMSWindow(int param_1)
 {
-	if (unk_EDD450)
+	if (g_b_voodoo2)
 		return 0;
 
 	int result = 0;

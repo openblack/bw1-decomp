@@ -1067,6 +1067,45 @@ BW1W130_SAFEDISC_CALLS = (
     (0x0077198A, copy_run(0x00771952)),  # VillagerWorshipper
     (0x007719BA, jmp_run(0x0077198A)),  # VillagerWorshipper
     (0x007719DB, call_rel32(0x004034F9)),  # VillagerWorshipper
+    (0x00830379, jmp_run(0x00830053)),  # LH3DRender
+    (0x008303A9, copy_run(0x00830379)),  # LH3DRender
+    (0x00830413, jmp_run(0x008303A9)),  # LH3DRender
+    (0x0083045B, call_rel32(0x004034F9)),  # LH3DRender
+    (0x008304F2, jmp_run(0x0083045B)),  # LH3DRender
+    (0x00830B48, copy_run(0x008304F2)),  # LH3DRender
+    (0x00830B94, jmp_run(0x00830B48)),  # LH3DRender
+    (0x00830D43, copy_run(0x00830B94)),  # LH3DRender
+    (0x00831577, jmp_run(0x00830D43)),  # LH3DRender
+    (0x008315B4, jmp_run(0x00831577)),  # LH3DRender
+    (0x00832746, copy_run(0x008315B4)),  # LH3DRender
+    (0x00832878, jmp_run(0x00832746)),  # LH3DRender
+    (0x008329A8, copy_run(0x00832878)),  # LH3DRender
+    (0x00832C2A, copy_run(0x008329A8)),  # LH3DRender
+    (0x00832DA1, copy_run(0x00832C2A)),  # LH3DRender
+    (0x0083309A, jmp_run(0x00832DA1)),  # LH3DRender
+    (0x008335F5, jmp_run(0x0083309A)),  # LH3DRender
+    (0x0083382B, call_rel32(0x004034F9)),  # LH3DRender
+    (0x008339BB, call_rel32(0x004034F9)),  # LH3DRender
+    (0x00833CDB, call_rel32(0x004034F9)),  # LH3DRender
+    (0x00833E5B, call_rel32(0x004034F9)),  # LH3DRender
+    (0x00833FD1, jmp_run(0x00833E5B)),  # LH3DRender
+    (0x00833FF8, jmp_run(0x00833FD1)),  # LH3DRender
+    (0x008340D9, jmp_run(0x00833FF8)),  # LH3DRender
+    (0x00834269, copy_run(0x008340D9)),  # LH3DRender
+    (0x00834441, copy_run(0x00834269)),  # LH3DRender
+    (0x008345E3, copy_run(0x00834441)),  # LH3DRender
+    (0x00834991, jmp_run(0x008345E3)),  # LH3DRender
+    (0x00834C38, jmp_run(0x00834991)),  # LH3DRender
+    (0x00834E59, jmp_run(0x00834C38)),  # LH3DRender
+    (0x00834EB7, jmp_run(0x00834E59)),  # LH3DRender
+    (0x00834EFB, call_rel32(0x004034F9)),  # LH3DRender
+    (0x00835035, jmp_run(0x00834EFB)),  # LH3DRender
+    (0x0083505B, call_rel32(0x004034F9)),  # LH3DRender
+    (0x00835099, jmp_run(0x0083505B)),  # LH3DRender
+    (0x008350D4, jmp_run(0x00835099)),  # LH3DRender
+    (0x00835116, jmp_run(0x008350D4)),  # LH3DRender
+    (0x00835188, copy_run(0x00835116)),  # LH3DRender
+    (0x008351D2, jmp_run(0x00835188)),  # LH3DRender
 )
 
 

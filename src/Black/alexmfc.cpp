@@ -2111,7 +2111,7 @@ void SetupThing::Init()
 	TextureFormat format;
 	format.Type = LH3DTexture::g_b_use_low_res ? 3 : 0;
 	ButtonMaterial = LH3DRender::CreateMaterial(
-		LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_0x6,
+		LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA_NZ,
 		LH3DTexture::Create((void*)"data\\textures\\Front_end_buttons.raw", 0x41, 0xffffffff, &format));
 	Initialised = true;
 }

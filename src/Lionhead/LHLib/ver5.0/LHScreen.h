@@ -88,6 +88,8 @@ struct LHScreen
 	uint16_t Width() { return width; }
 	// BW1W120 inlined BW1M119 01008310
 	uint16_t Height() { return height; }
+	// BW1W120 inlined BW1M119 01145840 (LHCombined Release)
+	IDirectDrawSurface7* GetBackSurface() { return PBackSurface; }
 
 	// BW1W120 007dd850 BW1M119 0114e510 (LHCombined Release)
 	// LHScreen::`vbase destructor'(void)

@@ -21,6 +21,11 @@ public:
 
 	// BW1W120 007f9560 BW1M119 010b2e10 (LHCombined Release)
 	LH3DMist();
+
+	// Static methods
+
+	// BW1W120 007f9540 BW1M119 010b2f60 (LHCombined Release)
+	static bool32_t Close();
 };
 
 #endif /* BW1_DECOMP_LH3D_MIST_INCLUDED_H */

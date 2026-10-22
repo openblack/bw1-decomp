@@ -53,7 +53,7 @@
 // these pad the guard onto one of them.
 struct WorldRoomCounterPad
 {
-	static int Pad0, Pad1, Pad2;
+	static int Pad0, Pad1, Pad2, Pad3, Pad4, Pad5;
 };
 
 // The name is a guess, but not a free one: cl6 orders .bss by a hash of the symbol name, and this
@@ -208,7 +208,8 @@ void WorldRoom::InitEngine()
 	camera = new (WORLD_ROOM_SOURCE_FILE, 150) WorldRoomCamera;
 	camera->Init("data\\citadel\\engine\\main.cam");
 	ScrollTexture = LH3DTexture::Create("Data\\Citadel\\Controls\\ChallengeScroll.raw", 0x44, 0, NULL);
-	ScrollMaterial = LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_0x5, ScrollTexture);
+	ScrollMaterial =
+		LH3DRender::CreateMaterial(LH3DMaterial::LH3D_MATERIAL_RENDER_MODE_ALPHA_TEXTURED_ALPHA, ScrollTexture);
 	InitNameScrolls(SignNames, NUM_SIGNS);
 	SubmeshNameData* names = (SubmeshNameData*)inner_room->Mesh->GetNameData();
 	for (unsigned long i = 0; i < names->Count; i++)

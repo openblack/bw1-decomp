@@ -11,6 +11,8 @@ public:
 	static void SetDayNightTimes(float night, float dusk_start, float dusk_end, float day);
 	// BW1W120 0086a1b0 BW1M119 01033e10 (LHCombined Release)
 	static float Time2SkyType(float time);
+	// BW1W120 0086bb60 BW1M119 01014060 (LHCombined Release)
+	static void PostDrawSun();
 };
 
 #endif /* BW1_DECOMP_LH3D_SKY_INCLUDED_H */

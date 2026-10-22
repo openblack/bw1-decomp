@@ -7,7 +7,7 @@
 #include "EditorIconBase.h"
 #include "FallingSpell.h"
 #include "FireFly.h"
-#include "LH3DZSorter.h"
+#include <Lionhead/LH3DLib/development/LH3DZSorter.h>
 #include "LightSheet.h"
 #include "LiquidParticle.h"
 #include "MagicHand.h"
@@ -2158,7 +2158,7 @@ void GGame::Process3dEngine()
 		{
 		case GAME_VIEW_MODE_FALLING_SPELL_VIDEO:
 			LH3DAtmos::Update3D((int)LH3DTech::g_delta_time * 0.001f);
-			LH3DRender::g_mode_cleaning = 0;
+			LH3DRender::g_mode_cleaning = LH3D_CLEANING_MODE_NONE;
 			fn_00553A60();
 			if (!VideoPlayer || FallingSpellVideo->field_0x20 == 4)
 			{
@@ -2171,7 +2171,7 @@ void GGame::Process3dEngine()
 			break;
 		case GAME_VIEW_MODE_INSIDE_CITADEL:
 			LH3DAtmos::Update3D((int)LH3DTech::g_delta_time * 0.001f);
-			LH3DRender::g_mode_cleaning = 0;
+			LH3DRender::g_mode_cleaning = LH3D_CLEANING_MODE_NONE;
 			LH3DSky::g_b_we_are_inside_citadel = 1;
 			TemporaryShadow::UpdateAll();
 			GLandAlignement::DrawSky();
