@@ -1,5 +1,3 @@
-#include "LH3DLibPCH.h"
-
 #include "LH3DRender.h"
 
 #include <Lionhead/LHLib/ver5.0/LHScreen.h>   /* For LHResetFPU */
